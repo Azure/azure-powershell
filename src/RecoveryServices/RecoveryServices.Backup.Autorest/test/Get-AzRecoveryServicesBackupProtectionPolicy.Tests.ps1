@@ -15,7 +15,7 @@ if(($null -eq $TestName) -or ($TestName -contains 'Get-AzRecoveryServicesBackupP
 }
 
 Describe 'Get-AzRecoveryServicesBackupProtectionPolicy' {
-    It 'GetPolicyByName' -skip {
+    It 'GetPolicyByName' {
         # get the variables
         $subscriptionId = $env.TestCommon.SubscriptionId
         $resourceGroupName = $env.TestCommon.ResourceGroupName
@@ -26,7 +26,7 @@ Describe 'Get-AzRecoveryServicesBackupProtectionPolicy' {
         $policyByName.Name | Should -Be "HourlyLogBackup"
     }
 
-    It 'ListPolicy' -skip {
+    It 'ListPolicy' {
         # get the variables
         $subscriptionId = $env.TestCommon.SubscriptionId
         $resourceGroupName = $env.TestCommon.ResourceGroupName

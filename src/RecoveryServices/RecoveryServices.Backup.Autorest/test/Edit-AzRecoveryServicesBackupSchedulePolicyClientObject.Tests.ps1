@@ -44,7 +44,7 @@ Describe 'Edit-AzRecoveryServicesBackupSchedulePolicyClientObject' {
         New-AzRecoveryServicesBackupPolicy -ResourceGroupName $rgName -VaultName $vaultName -Policy $testPolicy -PolicyName $newPolicyName
 
         # this Policy should be there - then delete it and then this policy shouldn't be there
-        $policy = Get-AzRecoveryServicesBackupPolicy -ResourceGroupName $rgName -VaultName $vaultName -PolicyName $newPolicyName
+        $policy = Get-AzRecoveryServicesBackupProtectionPolicy -ResourceGroupName $rgName -VaultName $vaultName -Name $newPolicyName
         $policy.Name | Should be $newPolicyName
 
         Remove-AzRecoveryServicesBackupPolicy -PolicyName $newPolicyName -ResourceGroupName $rgName -VaultName $vaultName
@@ -79,7 +79,7 @@ Describe 'Edit-AzRecoveryServicesBackupSchedulePolicyClientObject' {
         New-AzRecoveryServicesBackupPolicy -ResourceGroupName $rgName -VaultName $vaultName -Policy $testPolicy -PolicyName $newPolicyName
 
         # this Policy should be there - then delete it and then this policy shouldn't be there
-        $policy = Get-AzRecoveryServicesBackupPolicy -ResourceGroupName $rgName -VaultName $vaultName -PolicyName $newPolicyName
+        $policy = Get-AzRecoveryServicesBackupProtectionPolicy -ResourceGroupName $rgName -VaultName $vaultName -Name $newPolicyName
         $policy.Name | Should be $newPolicyName
 
         Remove-AzRecoveryServicesBackupPolicy -PolicyName $newPolicyName -ResourceGroupName $rgName -VaultName $vaultName
@@ -117,7 +117,7 @@ Describe 'Edit-AzRecoveryServicesBackupSchedulePolicyClientObject' {
         New-AzRecoveryServicesBackupPolicy -ResourceGroupName $rgName -VaultName $vaultName -Policy $testPolicy -PolicyName $newPolicyName
 
         # this Policy should be there - then delete it and then this policy shouldn't be there
-        $policy = Get-AzRecoveryServicesBackupPolicy -ResourceGroupName $rgName -VaultName $vaultName -PolicyName $newPolicyName
+        $policy = Get-AzRecoveryServicesBackupProtectionPolicy -ResourceGroupName $rgName -VaultName $vaultName -Name $newPolicyName
         $policy.Name | Should be $newPolicyName
 
         Remove-AzRecoveryServicesBackupPolicy -PolicyName $newPolicyName -ResourceGroupName $rgName -VaultName $vaultName
@@ -147,7 +147,7 @@ Describe 'Edit-AzRecoveryServicesBackupSchedulePolicyClientObject' {
         New-AzRecoveryServicesBackupPolicy -ResourceGroupName $rgName -VaultName $vaultName -Policy $testPolicy -PolicyName $newPolicyName
 
         # this Policy should be there - then delete it and then this policy shouldn't be there
-        $policy = Get-AzRecoveryServicesBackupPolicy -ResourceGroupName $rgName -VaultName $vaultName -PolicyName $newPolicyName
+        $policy = Get-AzRecoveryServicesBackupProtectionPolicy -ResourceGroupName $rgName -VaultName $vaultName -Name $newPolicyName
         $policy.Name | Should be $newPolicyName
 
         Remove-AzRecoveryServicesBackupPolicy -PolicyName $newPolicyName -ResourceGroupName $rgName -VaultName $vaultName
@@ -201,7 +201,7 @@ Describe 'Edit-AzRecoveryServicesBackupSchedulePolicyClientObject' {
         New-AzRecoveryServicesBackupPolicy -ResourceGroupName $rgName -VaultName $vaultName -Policy $testPolicy -PolicyName $newPolicyName
     
         # this Policy should be there - then delete it and then this policy shouldn't be there
-        $policy = Get-AzRecoveryServicesBackupPolicy -ResourceGroupName $rgName -VaultName $vaultName -PolicyName $newPolicyName
+        $policy = Get-AzRecoveryServicesBackupProtectionPolicy -ResourceGroupName $rgName -VaultName $vaultName -Name $newPolicyName
         $policy.Name | Should be $newPolicyName
 
         Remove-AzRecoveryServicesBackupPolicy -PolicyName $newPolicyName -ResourceGroupName $rgName -VaultName $vaultName
@@ -255,7 +255,7 @@ Describe 'Edit-AzRecoveryServicesBackupSchedulePolicyClientObject' {
         New-AzRecoveryServicesBackupPolicy -ResourceGroupName $rgName -VaultName $vaultName -Policy $testPolicy -PolicyName $newPolicyName
 
         # this Policy should be there - then delete it and then this policy shouldn't be there
-        $policy = Get-AzRecoveryServicesBackupPolicy -ResourceGroupName $rgName -VaultName $vaultName -PolicyName $newPolicyName
+        $policy = Get-AzRecoveryServicesBackupProtectionPolicy -ResourceGroupName $rgName -VaultName $vaultName -Name $newPolicyName
         $policy.Name | Should be $newPolicyName
 
         Remove-AzRecoveryServicesBackupPolicy -PolicyName $newPolicyName -ResourceGroupName $rgName -VaultName $vaultName
@@ -284,7 +284,7 @@ Describe 'Edit-AzRecoveryServicesBackupSchedulePolicyClientObject' {
         New-AzRecoveryServicesBackupPolicy -ResourceGroupName $rgName -VaultName $vaultName -Policy $testPolicy -PolicyName $newPolicyName
 
         # this Policy should be there - then delete it and then this policy shouldn't be there
-        $policy = Get-AzRecoveryServicesBackupPolicy -ResourceGroupName $rgName -VaultName $vaultName -PolicyName $newPolicyName
+        $policy = Get-AzRecoveryServicesBackupProtectionPolicy -ResourceGroupName $rgName -VaultName $vaultName -Name $newPolicyName
         $policy.Name | Should be $newPolicyName
 
         Remove-AzRecoveryServicesBackupPolicy -PolicyName $newPolicyName -ResourceGroupName $rgName -VaultName $vaultName

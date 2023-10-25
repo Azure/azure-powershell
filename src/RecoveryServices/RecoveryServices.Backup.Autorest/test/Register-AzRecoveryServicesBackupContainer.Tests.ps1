@@ -28,8 +28,7 @@ Describe 'Register-AzRecoveryServicesBackupContainer' {
 
         # unregister - TODO
         
-        # register
-        
+        # register        
         ## get container should be null
         $container = Get-AzRecoveryServicesBackupContainer -ResourceGroupName $resourceGroupName -VaultName $vaultName -SubscriptionId $subscriptionId -ContainerType AzureVMAppContainer -DatasourceType MSSQL | Where-Object { $_.Name -match $containerFriendlyName }
         $container | Should -Be $null
@@ -38,7 +37,7 @@ Describe 'Register-AzRecoveryServicesBackupContainer' {
         $reg.Property.SourceResourceId -match $resourceId | Should -Be $true
     }
 
-    It 'ReRegister' -skip {
+    It 'ReRegister' {
         $subscriptionId = $env.TestCommon.SubscriptionId
         $resourceGroupName = $env.TestCommon.ResourceGroupName
         $vaultName = $env.TestCommon.VaultName

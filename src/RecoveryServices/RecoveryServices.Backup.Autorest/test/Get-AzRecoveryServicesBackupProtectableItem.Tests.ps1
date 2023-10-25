@@ -15,7 +15,7 @@ if(($null -eq $TestName) -or ($TestName -contains 'Get-AzRecoveryServicesBackupP
 }
 
 Describe 'Get-AzRecoveryServicesBackupProtectableItem' {
-    It 'List' -skip {
+    It 'List' {
         $subscriptionId = $env.TestCommon.SubscriptionId
         $resourceGroupName = $env.TestCommon.ResourceGroupName
         $vaultName = $env.TestCommon.VaultName

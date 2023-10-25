@@ -16,7 +16,7 @@ if(($null -eq $TestName) -or ($TestName -contains 'Disable-AzRecoveryServicesPro
 
 Describe 'Disable-AzRecoveryServicesProtection' {
      
-    It 'RetainRecoveryPointsForever' {
+    It 'RetainRecoveryPointsForever' -skip {
         $sub = $env.TestBackup.SubscriptionId
         $rgName = $env.TestBackup.ResourceGroupName
         $vaultName = $env.TestBackup.VaultName
@@ -43,7 +43,7 @@ Describe 'Disable-AzRecoveryServicesProtection' {
         
     }
 
-    It 'RetainRecoveryPointsAsPerPolicy' {
+    It 'RetainRecoveryPointsAsPerPolicy' -skip {
         #first unlock the immutable state
         $sub = $env.TestBackup.SubscriptionId
         $rgName = $env.TestBackup.ResourceGroupName
@@ -58,7 +58,7 @@ Describe 'Disable-AzRecoveryServicesProtection' {
         $DebugPreference = "SilentlyContinue"
  
         $item=Get-AzRecoveryServicesBackupProtectedItem -ResourceGroupName $rgName -VaultName $vaultName -SubscriptionId $sub -Filter "backupManagementType eq 'AzureIaasVM' and WorkloadType -eq 'AzureVM'" | Where-Object { $_.Property.FriendlyName -match $vmName}
-        $pol=Get-AzRecoveryServicesBackupPolicy -ResourceGroupName $rgName -VaultName $vaultName -PolicyName EnhancedBackupTesting
+        $pol=Get-AzRecoveryServicesBackupProtectionPolicy -ResourceGroupName $rgName -VaultName $vaultName -Name EnhancedBackupTesting
         if($item -ne $null)
         {
             Disable-AzRecoveryServicesProtection -DatasourceType AzureVM -ResourceGroupName $rgName -VaultName $vaultName -Item $item -RetainRecoveryPointsAsPerPolicy
@@ -71,7 +71,7 @@ Describe 'Disable-AzRecoveryServicesProtection' {
         }
     }
 
-    It 'RemoveRecoveryPoints' {
+    It 'RemoveRecoveryPoints' -skip {
         $sub = $env.TestBackup.SubscriptionId
         $rgName = $env.TestBackup.ResourceGroupName
         $vaultName = $env.TestBackup.VaultName

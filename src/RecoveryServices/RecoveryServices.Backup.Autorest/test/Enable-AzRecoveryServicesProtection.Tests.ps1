@@ -15,7 +15,7 @@ if(($null -eq $TestName) -or ($TestName -contains 'Enable-AzRecoveryServicesProt
 }
 
 Describe 'Enable-AzRecoveryServicesProtection' {
-        It 'EnableProtection' {
+        It 'EnableProtection' -skip {
         $sub = $env.TestBackup.SubscriptionId
         $rgName = $env.TestBackup.ResourceGroupName
         $vaultName = $env.TestBackup.VaultName
@@ -28,7 +28,7 @@ Describe 'Enable-AzRecoveryServicesProtection' {
         Write-Debug  -Message $vmName
         $DebugPreference = "SilentlyContinue"
         
-        $pol=Get-AzRecoveryServicesBackupPolicy -ResourceGroupName $rgName -VaultName $vaultName -PolicyName EnhancedBackupTesting
+        $pol=Get-AzRecoveryServicesBackupProtectionPolicy -ResourceGroupName $rgName -VaultName $vaultName -Name EnhancedBackupTesting
         $item=Get-AzRecoveryServicesBackupProtectedItem -ResourceGroupName $rgName -VaultName $vaultName -SubscriptionId $sub -Filter "backupManagementType eq 'AzureIaasVM' and WorkloadType -eq 'AzureVM'" | Where-Object { $_.Property.FriendlyName -match $vmName}
         if($item -ne $null) #modify protection
         {

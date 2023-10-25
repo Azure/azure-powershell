@@ -34,11 +34,11 @@ Describe 'Edit-AzRecoveryServicesBackupRetentionPolicyClientObject' {
         New-AzRecoveryServicesBackupPolicy -ResourceGroupName $rgName -VaultName $vaultName -Policy $pol1 -PolicyName $newPolicyName
         
         # this Policy should be there - then delete it and then this policy shouldn't be there
-        $policy=Get-AzRecoveryServicesBackupPolicy -ResourceGroupName $rgName -VaultName $vaultName -PolicyName $newPolicyName
+        $policy=Get-AzRecoveryServicesBackupProtectionPolicy -ResourceGroupName $rgName -VaultName $vaultName -Name $newPolicyName
         $policy.Name | Should be $newPolicyName
  
         Remove-AzRecoveryServicesBackupPolicy -PolicyName $newPolicyName -ResourceGroupName $rgName -VaultName $vaultName
-        #$pol = Get-AzRecoveryServicesBackupPolicy -VaultName $vaultName -ResourceGroupName $rgName -PolicyName $newPolicyName
+        #$pol = Get-AzRecoveryServicesBackupProtectionPolicy -VaultName $vaultName -ResourceGroupName $rgName -Name $newPolicyName
         #$pol | Should -Be "NotFound"
     }
  
@@ -67,7 +67,7 @@ Describe 'Edit-AzRecoveryServicesBackupRetentionPolicyClientObject' {
         New-AzRecoveryServicesBackupPolicy -ResourceGroupName $rgName -VaultName $vaultName -Policy $pol1 -PolicyName $newPolicyName
  
         # this Policy should be there - then delete it and then this policy shouldn't be there
-        $policy=Get-AzRecoveryServicesBackupPolicy -ResourceGroupName $rgName -VaultName $vaultName -PolicyName $newPolicyName
+        $policy=Get-AzRecoveryServicesBackupProtectionPolicy -ResourceGroupName $rgName -VaultName $vaultName -Name $newPolicyName
  
         # verify policy modifications
         $policy.Name | Should be $newPolicyName
@@ -86,7 +86,7 @@ Describe 'Edit-AzRecoveryServicesBackupRetentionPolicyClientObject' {
  
         # remove policy
         Remove-AzRecoveryServicesBackupPolicy -PolicyName $newPolicyName -ResourceGroupName $rgName -VaultName $vaultName
-        #$pol = Get-AzRecoveryServicesBackupPolicy -VaultName $vaultName -ResourceGroupName $rgName -PolicyName $newPolicyName
+        #$pol = Get-AzRecoveryServicesBackupProtectionPolicy -VaultName $vaultName -ResourceGroupName $rgName -Name $newPolicyName
         #$pol | Should -Be "NotFound"
     }
  
@@ -121,7 +121,7 @@ Describe 'Edit-AzRecoveryServicesBackupRetentionPolicyClientObject' {
         New-AzRecoveryServicesBackupPolicy -ResourceGroupName $rgName -VaultName $vaultName -Policy $pol1 -PolicyName $newPolicyName
  
         # this Policy should be there - then delete it and then this policy shouldn't be there
-        $policy=Get-AzRecoveryServicesBackupPolicy -ResourceGroupName $rgName -VaultName $vaultName -PolicyName $newPolicyName
+        $policy=Get-AzRecoveryServicesBackupProtectionPolicy -ResourceGroupName $rgName -VaultName $vaultName -Name $newPolicyName
  
         # verify policy modifications
         $policy.Name | Should be $newPolicyName
@@ -137,7 +137,7 @@ Describe 'Edit-AzRecoveryServicesBackupRetentionPolicyClientObject' {
  
         # remove policy
         Remove-AzRecoveryServicesBackupPolicy -PolicyName $newPolicyName -ResourceGroupName $rgName -VaultName $vaultName
-        #$pol = Get-AzRecoveryServicesBackupPolicy -VaultName $vaultName -ResourceGroupName $rgName -PolicyName $newPolicyName
+        #$pol = Get-AzRecoveryServicesBackupProtectionPolicy -VaultName $vaultName -ResourceGroupName $rgName -Name $newPolicyName
         #$pol | Should -Be "NotFound"
     }
         
@@ -173,7 +173,7 @@ Describe 'Edit-AzRecoveryServicesBackupRetentionPolicyClientObject' {
         New-AzRecoveryServicesBackupPolicy -ResourceGroupName $rgName -VaultName $vaultName -Policy $pol1 -PolicyName $newPolicyName
  
         # this Policy should be there - then delete it and then this policy shouldn't be there
-        $policy=Get-AzRecoveryServicesBackupPolicy -ResourceGroupName $rgName -VaultName $vaultName -PolicyName $newPolicyName
+        $policy=Get-AzRecoveryServicesBackupProtectionPolicy -ResourceGroupName $rgName -VaultName $vaultName -Name $newPolicyName
  
         # verify policy modifications
         $policy.Name | Should be $newPolicyName
@@ -199,7 +199,7 @@ Describe 'Edit-AzRecoveryServicesBackupRetentionPolicyClientObject' {
  
         # remove policy
         Remove-AzRecoveryServicesBackupPolicy -PolicyName $newPolicyName -ResourceGroupName $rgName -VaultName $vaultName
-        #$pol = Get-AzRecoveryServicesBackupPolicy -VaultName $vaultName -ResourceGroupName $rgName -PolicyName $newPolicyName
+        #$pol = Get-AzRecoveryServicesBackupProtectionPolicy -VaultName $vaultName -ResourceGroupName $rgName -Name $newPolicyName
         #$pol | Should -Be "NotFound"
     }
 
@@ -215,7 +215,7 @@ Describe 'Edit-AzRecoveryServicesBackupRetentionPolicyClientObject' {
         #create a new policy with enable tiering
         New-AzRecoveryServicesBackupPolicy -ResourceGroupName $rgName -VaultName $vaultName -Policy $pol1 -PolicyName $newPolicyName -MoveToArchiveTier $true -TierAfterDuration 54 -TieringMode TierAfter -TierAfterDurationType Days
 
-        $policy=Get-AzRecoveryServicesBackupPolicy -ResourceGroupName $rgName -VaultName $vaultName -PolicyName $newPolicyName
+        $policy=Get-AzRecoveryServicesBackupProtectionPolicy -ResourceGroupName $rgName -VaultName $vaultName -Name $newPolicyName
 
         # verify policy modifications
         $policy.Name | Should be $newPolicyName
@@ -225,7 +225,7 @@ Describe 'Edit-AzRecoveryServicesBackupRetentionPolicyClientObject' {
 
         # remove policy
         Remove-AzRecoveryServicesBackupPolicy -PolicyName $newPolicyName -ResourceGroupName $rgName -VaultName $vaultName
-        #$pol = Get-AzRecoveryServicesBackupPolicy -VaultName $vaultName -ResourceGroupName $rgName -PolicyName $newPolicyName
+        #$pol = Get-AzRecoveryServicesBackupProtectionPolicy -VaultName $vaultName -ResourceGroupName $rgName -Name $newPolicyName
         #$pol | Should -Be "NotFound"
     }
 
@@ -241,7 +241,7 @@ Describe 'Edit-AzRecoveryServicesBackupRetentionPolicyClientObject' {
         #create a new policy with enable tiering
         New-AzRecoveryServicesBackupPolicy -ResourceGroupName $rgName -VaultName $vaultName -Policy $pol1 -PolicyName $newPolicyName -MoveToArchiveTier $true -TieringMode TierRecommended
 
-        $policy=Get-AzRecoveryServicesBackupPolicy -ResourceGroupName $rgName -VaultName $vaultName -PolicyName $newPolicyName
+        $policy=Get-AzRecoveryServicesBackupProtectionPolicy -ResourceGroupName $rgName -VaultName $vaultName -Name $newPolicyName
 
         # verify policy modifications
         $policy.Name | Should be $newPolicyName
@@ -251,7 +251,7 @@ Describe 'Edit-AzRecoveryServicesBackupRetentionPolicyClientObject' {
 
         # remove policy
         Remove-AzRecoveryServicesBackupPolicy -PolicyName $newPolicyName -ResourceGroupName $rgName -VaultName $vaultName
-        #$pol = Get-AzRecoveryServicesBackupPolicy -VaultName $vaultName -ResourceGroupName $rgName -PolicyName $newPolicyName
+        #$pol = Get-AzRecoveryServicesBackupProtectionPolicy -VaultName $vaultName -ResourceGroupName $rgName -Name $newPolicyName
         #$pol | Should -Be "NotFound"
     }
 

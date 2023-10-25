@@ -100,7 +100,7 @@
             $null = $PSBoundParameters.Add("Filter", $filter)
         }
 
-        $containersList = Get-AzRecoveryServicesBackupProtectionContainer @PSBoundParameters
+        $containersList = Az.RecoveryServices.Internal\Get-AzRecoveryServicesBackupProtectionContainer @PSBoundParameters
         
         # filter by container resource group
         if($containerResourceGroupName -ne ""){

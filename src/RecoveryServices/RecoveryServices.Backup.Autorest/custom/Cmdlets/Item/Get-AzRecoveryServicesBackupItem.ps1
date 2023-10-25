@@ -112,10 +112,10 @@
         
         $itemsList = $null
         if($SubscriptionId -ne $null){
-            $itemsList = Get-AzRecoveryServicesBackupProtectedItem -ResourceGroupName $ResourceGroupName -VaultName $VaultName -SubscriptionId $SubscriptionId -Filter $filter
+            $itemsList = Az.RecoveryServices.Internal\Get-AzRecoveryServicesBackupProtectedItem -ResourceGroupName $ResourceGroupName -VaultName $VaultName -SubscriptionId $SubscriptionId -Filter $filter
         }
         else{
-            $itemsList = Get-AzRecoveryServicesBackupProtectedItem -ResourceGroupName $ResourceGroupName -VaultName $VaultName -Filter $filter
+            $itemsList = Az.RecoveryServices.Internal\Get-AzRecoveryServicesBackupProtectedItem -ResourceGroupName $ResourceGroupName -VaultName $VaultName -Filter $filter
         }
 
         # filter on policy or container
@@ -167,10 +167,10 @@
 
                 $itemDetails = $null
                 if($SubscriptionId -ne $null){
-                    $itemDetails = Get-AzRecoveryServicesProtectedItem -ContainerName $containerName -FabricName "Azure" -Name $item.Name -ResourceGroupName $ResourceGroupName -VaultName $VaultName -SubscriptionId $SubscriptionId -Filter "expand eq 'extendedinfo'"
+                    $itemDetails = Az.RecoveryServices.Internal\Get-AzRecoveryServicesProtectedItem -ContainerName $containerName -FabricName "Azure" -Name $item.Name -ResourceGroupName $ResourceGroupName -VaultName $VaultName -SubscriptionId $SubscriptionId -Filter "expand eq 'extendedinfo'"
                 }
                 else{
-                    $itemDetails = Get-AzRecoveryServicesProtectedItem -ContainerName $containerName -FabricName "Azure" -Name $item.Name -ResourceGroupName $ResourceGroupName -VaultName $VaultName -Filter "expand eq 'extendedinfo'"
+                    $itemDetails = Az.RecoveryServices.Internal\Get-AzRecoveryServicesProtectedItem -ContainerName $containerName -FabricName "Azure" -Name $item.Name -ResourceGroupName $ResourceGroupName -VaultName $VaultName -Filter "expand eq 'extendedinfo'"
                 }
 
                 $item.Property.ExtendedInfo = $itemDetails.Property.ExtendedInfo

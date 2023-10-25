@@ -15,7 +15,7 @@ if(($null -eq $TestName) -or ($TestName -contains 'Get-AzRecoveryServicesBackupC
 }
 
 Describe 'Get-AzRecoveryServicesBackupContainer' {
-    It '__AllParameterSets' -skip {        
+    It '__AllParameterSets' {        
         $subscriptionId = $env.TestCommon.SubscriptionId
         $resourceGroupName = $env.TestCommon.ResourceGroupName
         $vaultName = $env.TestCommon.VaultName
