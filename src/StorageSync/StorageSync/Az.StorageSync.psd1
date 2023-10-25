@@ -75,16 +75,14 @@ FunctionsToExport = @()
 # Cmdlets to export from this module, for best performance, do not use wildcards and do not delete the entry, use an empty array if there are no cmdlets to export.
 CmdletsToExport = 'Invoke-AzStorageSyncCompatibilityCheck', 
                'New-AzStorageSyncService', 'Get-AzStorageSyncService', 
-               'Set-AzStorageSyncService', 'Remove-AzStorageSyncService', 
+               'Set-AzStorageSyncService', 'Set-AzStorageSyncServiceIdentity','Remove-AzStorageSyncService', 
                'New-AzStorageSyncGroup', 'Get-AzStorageSyncGroup', 
                'Remove-AzStorageSyncGroup', 'New-AzStorageSyncCloudEndpoint', 
-               'Get-AzStorageSyncCloudEndpoint', 
-               'Remove-AzStorageSyncCloudEndpoint', 
-               'New-AzStorageSyncServerEndpoint', 
-               'Get-AzStorageSyncServerEndpoint', 
-               'Remove-AzStorageSyncServerEndpoint', 
-               'Set-AzStorageSyncServerEndpoint', 'Register-AzStorageSyncServer', 
-               'Unregister-AzStorageSyncServer', 'Get-AzStorageSyncServer', 
+               'Get-AzStorageSyncCloudEndpoint', 'Set-AzStorageSyncCloudEndpointPermission', 'Remove-AzStorageSyncCloudEndpoint', 
+               'Remove-AzStorageSyncCloudEndpointPermission',
+               'New-AzStorageSyncServerEndpoint', 'Get-AzStorageSyncServerEndpoint','Remove-AzStorageSyncServerEndpoint', 
+               'Set-AzStorageSyncServerEndpoint','Set-AzStorageSyncServerEndpointPermission',
+               'Register-AzStorageSyncServer', 'Unregister-AzStorageSyncServer','Patch-AzStorageSyncServer', 'Get-AzStorageSyncServer', 
                'Reset-AzStorageSyncServerCertificate', 
                'Invoke-AzStorageSyncChangeDetection'
 
