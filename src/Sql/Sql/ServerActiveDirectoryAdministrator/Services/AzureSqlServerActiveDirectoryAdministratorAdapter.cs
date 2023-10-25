@@ -142,8 +142,8 @@ namespace Microsoft.Azure.Commands.Sql.ServerActiveDirectoryAdministrator.Servic
                 model.ResourceGroupName = resourceGroup;
                 model.ServerName = serverName;
                 model.DisplayName = admin.Login;
-                model.ObjectId = admin.Sid;
-                model.IsAzureADOnlyAuthentication = admin.AzureADOnlyAuthentication;
+                model.ObjectId = admin.Sid.Value;
+                model.IsAzureADOnlyAuthentication = admin.AzureAdOnlyAuthentication;
                 return model;
             }
 

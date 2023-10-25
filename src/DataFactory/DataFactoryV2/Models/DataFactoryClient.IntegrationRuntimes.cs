@@ -40,7 +40,7 @@ namespace Microsoft.Azure.Commands.DataFactoryV2
                     resourceGroupName,
                     dataFactoryName,
                     integrationRuntimeName,
-                    resource);
+                    resource?.Properties);
         }
 
         public virtual PSIntegrationRuntime CreateOrUpdateIntegrationRuntime(CreatePSIntegrationRuntimeParameters parameters)
@@ -229,7 +229,7 @@ namespace Microsoft.Azure.Commands.DataFactoryV2
                     resourceGroupName,
                     dataFactoryName,
                     integrationRuntimeName,
-                    new IntegrationRuntimeRegenerateKeyParameters(keyName));
+                    keyName);
 
             return new PSIntegrationRuntimeKeys(response.AuthKey1, response.AuthKey2);
         }
@@ -343,7 +343,7 @@ namespace Microsoft.Azure.Commands.DataFactoryV2
                 dataFactoryName,
                 integrationRuntimeName,
                 nodeName,
-                request);
+                request?.ConcurrentJobsLimit);
         }
 
         public virtual async Task<IntegrationRuntimeNodeIpAddress> GetIntegrationRuntimeNodeIpAsync(
@@ -381,7 +381,7 @@ namespace Microsoft.Azure.Commands.DataFactoryV2
                 resourceGroupName,
                 dataFactoryName,
                 integrationRuntimeName,
-                request);
+                request?.AutoUpdate,request?.UpdateDelayOffset);
 
             return new PSSelfHostedIntegrationRuntime(
                 response,
@@ -399,7 +399,7 @@ namespace Microsoft.Azure.Commands.DataFactoryV2
                 resourceGroupName,
                 dataFactoryName,
                 integrationRuntimeName,
-                new LinkedIntegrationRuntimeRequest(linkedDataFactoryName));
+                linkedDataFactoryName);
 
             return response.Response.StatusCode;
         }

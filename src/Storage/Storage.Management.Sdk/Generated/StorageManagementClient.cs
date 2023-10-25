@@ -376,7 +376,7 @@ namespace Microsoft.Azure.Management.Storage
             this.FileServices = new FileServicesOperations(this);
             this.FileShares = new FileSharesOperations(this);
             this.BaseUri = new System.Uri("https://management.azure.com");
-            this.ApiVersion = "2022-09-01";
+            this.ApiVersion = "2023-01-01";
             this.AcceptLanguage = "en-US";
             this.LongRunningOperationRetryTimeout = 30;
             this.GenerateClientRequestId = true;

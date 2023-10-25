@@ -1,4 +1,6 @@
 ## Upcoming Release
+## 0.2.3
+* Fix Update-Module errors when Az modules are installed using Az.Tools.Installer [#21262]
 
 ## 0.2.2
 * Updated the docs of parameter `Scope` [#16768]

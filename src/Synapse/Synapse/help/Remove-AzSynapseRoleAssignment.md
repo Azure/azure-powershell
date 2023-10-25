@@ -186,7 +186,7 @@ Accept wildcard characters: False
 ```
 
 ### -ObjectId
-The Azure AD ObjectId of the User, Group or Service Principal.
+The Microsoft Entra ObjectId of the User, Group or Service Principal.
 
 ```yaml
 Type: System.String

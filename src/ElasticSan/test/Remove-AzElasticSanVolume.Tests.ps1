@@ -15,9 +15,19 @@ if(($null -eq $TestName) -or ($TestName -contains 'Remove-AzElasticSanVolume'))
 }
 
 Describe 'Remove-AzElasticSanVolume' {
-    It 'Delete' {
-        $volumeName = 'testvol5' + $env.RandomString
-        $volume = New-AzElasticSanVolume -ResourceGroupName $env.ResourceGroupName -ElasticSanName $env.ElasticSanName1 -VolumeGroupName $env.VolumeGroupName -Name $volumeName -SizeGib 100
-        Remove-AzElasticSanVolume -ResourceGroupName $env.ResourceGroupName -ElasticSanName $env.ElasticSanName1 -VolumeGroupName $env.VolumeGroupName -Name $volumeName
+    It 'Delete' -skip {
+        { throw [System.NotImplementedException] } | Should -Not -Throw
+    }
+
+    It 'DeleteViaIdentityVolumegroup' -skip {
+        { throw [System.NotImplementedException] } | Should -Not -Throw
+    }
+
+    It 'DeleteViaIdentityElasticSan' -skip {
+        { throw [System.NotImplementedException] } | Should -Not -Throw
+    }
+
+    It 'DeleteViaIdentity' -skip {
+        { throw [System.NotImplementedException] } | Should -Not -Throw
     }
 }

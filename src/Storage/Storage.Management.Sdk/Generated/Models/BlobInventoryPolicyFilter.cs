@@ -58,7 +58,10 @@ namespace Microsoft.Azure.Management.Storage.Models
         /// definition.schemaFields must include &#39;Deleted and RemainingRetentionDays&#39;,
         /// else it must be excluded.
         /// </param>
-        public BlobInventoryPolicyFilter(System.Collections.Generic.IList<string> prefixMatch = default(System.Collections.Generic.IList<string>), System.Collections.Generic.IList<string> excludePrefix = default(System.Collections.Generic.IList<string>), System.Collections.Generic.IList<string> blobTypes = default(System.Collections.Generic.IList<string>), bool? includeBlobVersions = default(bool?), bool? includeSnapshots = default(bool?), bool? includeDeleted = default(bool?))
+
+        /// <param name="creationTime">This property is used to filter objects based on the object creation time
+        /// </param>
+        public BlobInventoryPolicyFilter(System.Collections.Generic.IList<string> prefixMatch = default(System.Collections.Generic.IList<string>), System.Collections.Generic.IList<string> excludePrefix = default(System.Collections.Generic.IList<string>), System.Collections.Generic.IList<string> blobTypes = default(System.Collections.Generic.IList<string>), bool? includeBlobVersions = default(bool?), bool? includeSnapshots = default(bool?), bool? includeDeleted = default(bool?), BlobInventoryCreationTime creationTime = default(BlobInventoryCreationTime))
 
         {
             this.PrefixMatch = prefixMatch;
@@ -67,6 +70,7 @@ namespace Microsoft.Azure.Management.Storage.Models
             this.IncludeBlobVersions = includeBlobVersions;
             this.IncludeSnapshots = includeSnapshots;
             this.IncludeDeleted = includeDeleted;
+            this.CreationTime = creationTime;
             CustomInit();
         }
 
@@ -126,5 +130,28 @@ namespace Microsoft.Azure.Management.Storage.Models
         /// </summary>
         [Newtonsoft.Json.JsonProperty(PropertyName = "includeDeleted")]
         public bool? IncludeDeleted {get; set; }
+
+        /// <summary>
+        /// Gets or sets this property is used to filter objects based on the object
+        /// creation time
+        /// </summary>
+        [Newtonsoft.Json.JsonProperty(PropertyName = "creationTime")]
+        public BlobInventoryCreationTime CreationTime {get; set; }
+        /// <summary>
+        /// Validate the object.
+        /// </summary>
+        /// <exception cref="Microsoft.Rest.ValidationException">
+        /// Thrown if validation fails
+        /// </exception>
+        public virtual void Validate()
+        {
+
+
+
+            if (this.CreationTime != null)
+            {
+                this.CreationTime.Validate();
+            }
+        }
     }
 }

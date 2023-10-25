@@ -18,14 +18,8 @@ Enables or disables Microsoft Defender plans for a subscription in Microsoft Def
 
 ### SubscriptionLevelResource (Default)
 ```
-Set-AzSecurityPricing -Name <String> -PricingTier <String> [-DefaultProfile <IAzureContextContainer>] [-WhatIf]
- [-Confirm] [<CommonParameters>]
-```
-
-### SubscriptionLevelResource (With  optional SubPlan)
-```
-Set-AzSecurityPricing -Name <String> -PricingTier <String> -SubPlan <String> [-DefaultProfile <IAzureContextContainer>] [-WhatIf]
- [-Confirm] [<CommonParameters>]
+Set-AzSecurityPricing -Name <String> -PricingTier <String> [-SubPlan <String>] [-Extension <String>]
+ [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### InputObject
@@ -54,6 +48,12 @@ Set-AzSecurityPricing -Name "AppServices" -PricingTier "Standard"
 Set-AzSecurityPricing -Name "VirtualMachines" -PricingTier "Standard" -SubPlan P2
 ```
 
+### Example 3
+
+```powershell
+Set-AzSecurityPricing -Name "CloudPosture" -PricingTier "Standard" -Extension '[{"name":"SensitiveDataDiscovery","isEnabled":"True","additionalExtensionProperties":null},{"name":"ContainerRegistriesVulnerabilityAssessments","isEnabled":"True","additionalExtensionProperties":null},{"name":"AgentlessDiscoveryForKubernetes","isEnabled":"True","additionalExtensionProperties":null},{"name":"AgentlessVmScanning","isEnabled":"True","additionalExtensionProperties":{"ExclusionTags":"[{\"key\":\"Microsoft\",\"value\":\"Defender\"},{\"key\":\"For\",\"value\":\"Cloud\"}]"}}]'
+```
+
 Enables **Azure Defender for servers** for the subscription.
 
 "Standard" refers to the "On" state for an Azure Defender plan as shown in Azure Security Center's pricing and settings area of the Azure portal.
@@ -68,6 +68,21 @@ The credentials, account, tenant, and subscription used for communication with A
 Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer
 Parameter Sets: (All)
 Aliases: AzContext, AzureRmContext, AzureCredential
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -Extension
+The extensions offered under the plan
+
+```yaml
+Type: System.String
+Parameter Sets: SubscriptionLevelResource
+Aliases:
 
 Required: False
 Position: Named
@@ -178,11 +193,9 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ## INPUTS
 
 ### Microsoft.Azure.Commands.Security.Models.Pricings.PSSecurityPricing
-
 ## OUTPUTS
 
 ### Microsoft.Azure.Commands.Security.Models.Pricings.PSSecurityPricing
-
 ## NOTES
 
 ## RELATED LINKS

@@ -973,7 +973,7 @@ namespace Microsoft.Azure.Commands.Sql.Auditing.Services
         protected override void ModelizeAuditPolicy(ServerDevOpsAuditModel model, ServerDevOpsAuditingSettings policy)
         {
             ModelizeAuditPolicy(model,
-                policy.State, policy.StorageEndpoint, null, policy.StorageAccountSubscriptionId,
+                policy.State.Value, policy.StorageEndpoint, null, policy.StorageAccountSubscriptionId,
                 policy.IsAzureMonitorTargetEnabled, null, policy.IsManagedIdentityInUse);
         }
 

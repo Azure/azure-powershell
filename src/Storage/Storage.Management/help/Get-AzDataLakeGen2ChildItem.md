@@ -190,7 +190,7 @@ Accept wildcard characters: False
 ```
 
 ### -OutputUserPrincipalName
-If speicify this parameter, the user identity values returned in the owner and group fields of each list entry will be transformed from Azure Active Directory Object IDs to User Principal Names. If not speicify this parameter, the values will be returned as Azure Active Directory Object IDs. Note that group and application Object IDs are not translated because they do not have unique friendly names.
+If speicify this parameter, the user identity values returned in the owner and group fields of each list entry will be transformed from Microsoft Entra Object IDs to User Principal Names. If not speicify this parameter, the values will be returned as Microsoft Entra Object IDs. Note that group and application Object IDs are not translated because they do not have unique friendly names.
 
 ```yaml
 Type: System.Management.Automation.SwitchParameter
