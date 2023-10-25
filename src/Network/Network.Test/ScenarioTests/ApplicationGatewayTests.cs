@@ -298,7 +298,7 @@ namespace Commands.Network.Test.ScenarioTests
         [Trait(Category.Owner, NrpTeamAlias.nvadev_subset1)]
         public void ApplicationGatewayFirewallPolicyCustomRuleRemoval()
         {
-            TestRunner.RunTestScript("Test-ApplicationGatewayFirewallPolicyWithRateLimitRule");
+            TestRunner.RunTestScript("Test-ApplicationGatewayFirewallPolicyCustomRuleRemoval");
         }
 
         [Fact]
