@@ -6,7 +6,7 @@
       "value": "2023-08-15"
     },
     "userAssignedManagedIdentityName": {
-      "value": "uaMisxfpla"
+      "value": "uaMi3w8cj7"
     },
     "kustoSkuName": {
       "value": "Dev(No SLA)_Standard_E2a_v4"
@@ -21,13 +21,13 @@
       "value": "Standard"
     },
     "kustoClusterName": {
-      "value": "pssdksxfpla"
+      "value": "pssdk3w8cj7"
     },
     "kustoFollowerClusterName": {
-      "value": "pssdkfollowsxfpla"
+      "value": "pssdkfollow3w8cj7"
     },
     "kustoMigrationClusterName": {
-      "value": "pssdkmigrsxfpla"
+      "value": "pssdkmigr3w8cj7"
     },
     "kustoDatabaseName": {
       "value": "TestDb"
@@ -45,16 +45,16 @@
       "value": "713c3475-5021-4f3b-a650-eaa9a83f25a4"
     },
     "eventHubNameSpaceName": {
-      "value": "EHNamespacesxfpla"
+      "value": "EHNamespace3w8cj7"
     },
     "eventHubName": {
-      "value": "ehsxfpla"
+      "value": "eh3w8cj7"
     },
     "iotHubName": {
-      "value": "iotsxfpla"
+      "value": "iot3w8cj7"
     },
     "cosmosDbAccountName": {
-      "value": "cosmossxfpla"
+      "value": "cosmos3w8cj7"
     },
     "cosmosDbDatabaseName": {
       "value": "cosmostestdb"
@@ -63,22 +63,22 @@
       "value": "cosmostestcontainer"
     },
     "storageAccountName": {
-      "value": "sasxfpla"
+      "value": "sa3w8cj7"
     },
     "virtualNetworkName": {
-      "value": "vnetsxfpla"
+      "value": "vnet3w8cj7"
     },
     "subnetName": {
-      "value": "subnetsxfpla"
+      "value": "subnet3w8cj7"
     },
     "privateEndpointName": {
-      "value": "pesxfpla"
+      "value": "pe3w8cj7"
     },
     "keyVaultName": {
-      "value": "kvPwshsxfpla"
+      "value": "kvPwsh3w8cj7"
     },
     "keyName": {
-      "value": "byoksxfpla"
+      "value": "byok3w8cj7"
     }
   }
 }

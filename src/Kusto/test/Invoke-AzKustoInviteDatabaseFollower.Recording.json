@@ -1,8 +1,8 @@
 {
-  "Invoke-AzKustoInviteDatabaseFollower+[NoContext]+InviteExpanded+$POST+https://management.azure.com/subscriptions/e8257c73-24c5-4791-94dc-8b7901c90dbf/resourceGroups/PWSH-SDK-sxfpla/providers/Microsoft.Kusto/Clusters/pssdksxfpla/Databases/TestDb/inviteFollower?api-version=2023-08-15+1": {
+  "Invoke-AzKustoInviteDatabaseFollower+[NoContext]+InviteExpanded+$POST+https://management.azure.com/subscriptions/e8257c73-24c5-4791-94dc-8b7901c90dbf/resourceGroups/PWSH-SDK-3w8cj7/providers/Microsoft.Kusto/Clusters/pssdk3w8cj7/Databases/TestDb/inviteFollower?api-version=2023-08-15+1": {
     "Request": {
       "Method": "POST",
-      "RequestUri": "https://management.azure.com/subscriptions/e8257c73-24c5-4791-94dc-8b7901c90dbf/resourceGroups/PWSH-SDK-sxfpla/providers/Microsoft.Kusto/Clusters/pssdksxfpla/Databases/TestDb/inviteFollower?api-version=2023-08-15",
+      "RequestUri": "https://management.azure.com/subscriptions/e8257c73-24c5-4791-94dc-8b7901c90dbf/resourceGroups/PWSH-SDK-3w8cj7/providers/Microsoft.Kusto/Clusters/pssdk3w8cj7/Databases/TestDb/inviteFollower?api-version=2023-08-15",
       "Content": "{\r\n  \"inviteeEmail\": \"user@contoso.com\"\r\n}",
       "isContentBase64": false,
       "Headers": {
@@ -17,28 +17,28 @@
       "Headers": {
         "Cache-Control": [ "no-cache" ],
         "Pragma": [ "no-cache" ],
-        "x-ms-request-id": [ "caf2d5cc-4233-4361-b49f-66a953c2b958" ],
+        "x-ms-request-id": [ "87f3c784-dded-45e7-ad26-e99887a8fe6e" ],
         "Server": [ "Microsoft-HTTPAPI/2.0" ],
-        "x-ms-ratelimit-remaining-subscription-writes": [ "1199" ],
-        "x-ms-correlation-request-id": [ "f3431e9c-97dc-42e1-ab87-959f95b65959" ],
-        "x-ms-routing-request-id": [ "QATARCENTRAL:20231024T103156Z:f3431e9c-97dc-42e1-ab87-959f95b65959" ],
+        "x-ms-ratelimit-remaining-subscription-writes": [ "1187" ],
+        "x-ms-correlation-request-id": [ "43933bd4-e72d-43f0-8c56-87bcca22be70" ],
+        "x-ms-routing-request-id": [ "QATARCENTRAL:20231024T203542Z:43933bd4-e72d-43f0-8c56-87bcca22be70" ],
         "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
         "X-Content-Type-Options": [ "nosniff" ],
-        "Date": [ "Tue, 24 Oct 2023 10:31:56 GMT" ]
+        "Date": [ "Tue, 24 Oct 2023 20:35:41 GMT" ]
       },
       "ContentHeaders": {
         "Content-Length": [ "1035" ],
         "Content-Type": [ "application/json; charset=utf-8" ],
         "Expires": [ "-1" ]
       },
-      "Content": "{\"generatedInvitation\":\"eyJhbGciOiJSUzI1NiIsImtpZCI6IkIzODc0QzExMjQ1QTdGNjgzNEU3MjY5Mjg0MDhFMDcwM0U3QTQwNEQiLCJ4NXQiOiJzNGRNRVNSYWYyZzA1eWFTaEFqZ2NENTZRRTAiLCJ0eXAiOiJKV1QifQ.eyJyZXNvdXJjZV9pZCI6Ii9zdWJzY3JpcHRpb25zL2U4MjU3YzczLTI0YzUtNDc5MS05NGRjLThiNzkwMWM5MGRiZi9yZXNvdXJjZUdyb3Vwcy9QV1NILVNESy1zeGZwbGEvcHJvdmlkZXJzL01pY3Jvc29mdC5LdXN0by9DbHVzdGVycy9wc3Nka3N4ZnBsYS9EYXRhYmFzZXMvVGVzdERiIiwic291cmNlX3RlbmFudF9pZCI6IjcyZjk4OGJmLTg2ZjEtNDFhZi05MWFiLTJkN2NkMDExZGI0NyIsImludml0ZWVfZW1haWwiOiJ1c2VyQGNvbnRvc28uY29tIiwicmVnaW9uIjoiRWFzdCBVUyIsImludml0ZXJfb2JqZWN0X2lkIjoiODIwZTRlNmEtMTU4My00NGZkLTg3OWMtZTNmN2ZhOTk5N2NhIiwibmJmIjoxNjk4MTQzNTE2LCJleHAiOjE2OTgyMjk5MTYsImlhdCI6MTY5ODE0MzUxNn0.VgeVVr2Eg6vBqH4ZjI6C8gvn1F1g1u6Knl55wDrpCXztUP5cFau8svSC8yBKPzS67VVwXB2mjIji1EBVIVKQOiGcJmzNDuk77pJfo8FoO13aEs5OWLF2199xn0MCz9BaCJ1g8BThYsZ44fctPCg5YK77AeQU145ORw9l9bH450a327D76mD1OBZhCiqI8PVnlqcwlQdy1zL7w2_C7A2nlV_gEJjyiA6mcdoBqzD82ZEZri_ezxUf10ZU_4zS5Q7u5dIlBbcVHzZbpYEuL9q7WQfylpxO8O6_JMcZxRnJHOt-Q-aAPhcb47qHMTIxYpkmgLeq50NijhbvlPR7dQXq3Q\"}",
+      "Content": "{\"generatedInvitation\":\"eyJhbGciOiJSUzI1NiIsImtpZCI6IkIzODc0QzExMjQ1QTdGNjgzNEU3MjY5Mjg0MDhFMDcwM0U3QTQwNEQiLCJ4NXQiOiJzNGRNRVNSYWYyZzA1eWFTaEFqZ2NENTZRRTAiLCJ0eXAiOiJKV1QifQ.eyJyZXNvdXJjZV9pZCI6Ii9zdWJzY3JpcHRpb25zL2U4MjU3YzczLTI0YzUtNDc5MS05NGRjLThiNzkwMWM5MGRiZi9yZXNvdXJjZUdyb3Vwcy9QV1NILVNESy0zdzhjajcvcHJvdmlkZXJzL01pY3Jvc29mdC5LdXN0by9DbHVzdGVycy9wc3NkazN3OGNqNy9EYXRhYmFzZXMvVGVzdERiIiwic291cmNlX3RlbmFudF9pZCI6IjcyZjk4OGJmLTg2ZjEtNDFhZi05MWFiLTJkN2NkMDExZGI0NyIsImludml0ZWVfZW1haWwiOiJ1c2VyQGNvbnRvc28uY29tIiwicmVnaW9uIjoiRWFzdCBVUyIsImludml0ZXJfb2JqZWN0X2lkIjoiODIwZTRlNmEtMTU4My00NGZkLTg3OWMtZTNmN2ZhOTk5N2NhIiwibmJmIjoxNjk4MTc5NzQyLCJleHAiOjE2OTgyNjYxNDIsImlhdCI6MTY5ODE3OTc0Mn0.wYJ4fIrMszSxwYGvHy-e1Qx3KOsLMXUJeJIm3E5fU0mB0t8CImMe7mBxA6odsbofiK9m1gSmioDOzl3iAfD_yx5XeCaKyhe-VCwltqUy2Y8Q2S8utZw3D-NOkyMCaCnhvyxeVYukeIII8X_DcTCXxAo12J9siSyawZiFJ2XsCzP4Alr_u6_ZHchV9iN4NswMObYmnbUBDVvwANgLCimyAtQ8kyKCNohLxg_qf_hgTwvoYXabFzWIM2DZ1WRiYVoUHEi8tapDJhR2ijh7WrJ-I5p7sGXtMW4WCuGo-kbWZtaIFEsTmfW8-IqelNry3M4GPOduCxNoFrBusUE1Cj7Oyw\"}",
       "isContentBase64": false
     }
   },
-  "Invoke-AzKustoInviteDatabaseFollower+[NoContext]+Invite+$POST+https://management.azure.com/subscriptions/e8257c73-24c5-4791-94dc-8b7901c90dbf/resourceGroups/PWSH-SDK-sxfpla/providers/Microsoft.Kusto/Clusters/pssdksxfpla/Databases/TestDb/inviteFollower?api-version=2023-08-15+1": {
+  "Invoke-AzKustoInviteDatabaseFollower+[NoContext]+Invite+$POST+https://management.azure.com/subscriptions/e8257c73-24c5-4791-94dc-8b7901c90dbf/resourceGroups/PWSH-SDK-3w8cj7/providers/Microsoft.Kusto/Clusters/pssdk3w8cj7/Databases/TestDb/inviteFollower?api-version=2023-08-15+1": {
     "Request": {
       "Method": "POST",
-      "RequestUri": "https://management.azure.com/subscriptions/e8257c73-24c5-4791-94dc-8b7901c90dbf/resourceGroups/PWSH-SDK-sxfpla/providers/Microsoft.Kusto/Clusters/pssdksxfpla/Databases/TestDb/inviteFollower?api-version=2023-08-15",
+      "RequestUri": "https://management.azure.com/subscriptions/e8257c73-24c5-4791-94dc-8b7901c90dbf/resourceGroups/PWSH-SDK-3w8cj7/providers/Microsoft.Kusto/Clusters/pssdk3w8cj7/Databases/TestDb/inviteFollower?api-version=2023-08-15",
       "Content": "{\r\n  \"inviteeEmail\": \"user@contoso.com\"\r\n}",
       "isContentBase64": false,
       "Headers": {
@@ -53,33 +53,33 @@
       "Headers": {
         "Cache-Control": [ "no-cache" ],
         "Pragma": [ "no-cache" ],
-        "x-ms-request-id": [ "ea5902d2-7089-4c02-88f7-5811d04b0196" ],
+        "x-ms-request-id": [ "277095bd-2989-468e-924a-b5999e5c178f" ],
         "Server": [ "Microsoft-HTTPAPI/2.0" ],
-        "x-ms-ratelimit-remaining-subscription-writes": [ "1198" ],
-        "x-ms-correlation-request-id": [ "102375ce-3769-4969-abbe-9bfad0e74606" ],
-        "x-ms-routing-request-id": [ "QATARCENTRAL:20231024T103158Z:102375ce-3769-4969-abbe-9bfad0e74606" ],
+        "x-ms-ratelimit-remaining-subscription-writes": [ "1186" ],
+        "x-ms-correlation-request-id": [ "d8f55bd1-3bc9-46dc-80f1-20bfb47f5750" ],
+        "x-ms-routing-request-id": [ "QATARCENTRAL:20231024T203543Z:d8f55bd1-3bc9-46dc-80f1-20bfb47f5750" ],
         "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
         "X-Content-Type-Options": [ "nosniff" ],
-        "Date": [ "Tue, 24 Oct 2023 10:31:58 GMT" ]
+        "Date": [ "Tue, 24 Oct 2023 20:35:43 GMT" ]
       },
       "ContentHeaders": {
         "Content-Length": [ "1035" ],
         "Content-Type": [ "application/json; charset=utf-8" ],
         "Expires": [ "-1" ]
       },
-      "Content": "{\"generatedInvitation\":\"eyJhbGciOiJSUzI1NiIsImtpZCI6IkIzODc0QzExMjQ1QTdGNjgzNEU3MjY5Mjg0MDhFMDcwM0U3QTQwNEQiLCJ4NXQiOiJzNGRNRVNSYWYyZzA1eWFTaEFqZ2NENTZRRTAiLCJ0eXAiOiJKV1QifQ.eyJyZXNvdXJjZV9pZCI6Ii9zdWJzY3JpcHRpb25zL2U4MjU3YzczLTI0YzUtNDc5MS05NGRjLThiNzkwMWM5MGRiZi9yZXNvdXJjZUdyb3Vwcy9QV1NILVNESy1zeGZwbGEvcHJvdmlkZXJzL01pY3Jvc29mdC5LdXN0by9DbHVzdGVycy9wc3Nka3N4ZnBsYS9EYXRhYmFzZXMvVGVzdERiIiwic291cmNlX3RlbmFudF9pZCI6IjcyZjk4OGJmLTg2ZjEtNDFhZi05MWFiLTJkN2NkMDExZGI0NyIsImludml0ZWVfZW1haWwiOiJ1c2VyQGNvbnRvc28uY29tIiwicmVnaW9uIjoiRWFzdCBVUyIsImludml0ZXJfb2JqZWN0X2lkIjoiODIwZTRlNmEtMTU4My00NGZkLTg3OWMtZTNmN2ZhOTk5N2NhIiwibmJmIjoxNjk4MTQzNTE4LCJleHAiOjE2OTgyMjk5MTgsImlhdCI6MTY5ODE0MzUxOH0.jkHZoGqV-B56OUs7Psae15LfeL2fKc79P9dkIa02v6s_UNxQPUtbPCBn9vygMn7q-1ktw5F38DP-k0_WFAv6BkP5aULP0jCKdJVDqMj-IlU7x8GSMz0O984ZL8IuLA4E9Zc4A1IS8qlwyTuwgTijBZKec6GRNn8Izllpo4vzVN3Gy6iw18Z7_cJXgNW88iZC-zIqk8JyY8GvXdZzE3qsviUD78NPFRZ_cJ00gFiCVntb_-7v73rJ6G6uLyPaevgjLSWFQDqWe66Fih10lJECt_xvDcCuKp64rIFJyKgWTsA6WELIUhFL1rau35PJlIFbKzjdajW1bMYDqvNwh2T1bQ\"}",
+      "Content": "{\"generatedInvitation\":\"eyJhbGciOiJSUzI1NiIsImtpZCI6IkIzODc0QzExMjQ1QTdGNjgzNEU3MjY5Mjg0MDhFMDcwM0U3QTQwNEQiLCJ4NXQiOiJzNGRNRVNSYWYyZzA1eWFTaEFqZ2NENTZRRTAiLCJ0eXAiOiJKV1QifQ.eyJyZXNvdXJjZV9pZCI6Ii9zdWJzY3JpcHRpb25zL2U4MjU3YzczLTI0YzUtNDc5MS05NGRjLThiNzkwMWM5MGRiZi9yZXNvdXJjZUdyb3Vwcy9QV1NILVNESy0zdzhjajcvcHJvdmlkZXJzL01pY3Jvc29mdC5LdXN0by9DbHVzdGVycy9wc3NkazN3OGNqNy9EYXRhYmFzZXMvVGVzdERiIiwic291cmNlX3RlbmFudF9pZCI6IjcyZjk4OGJmLTg2ZjEtNDFhZi05MWFiLTJkN2NkMDExZGI0NyIsImludml0ZWVfZW1haWwiOiJ1c2VyQGNvbnRvc28uY29tIiwicmVnaW9uIjoiRWFzdCBVUyIsImludml0ZXJfb2JqZWN0X2lkIjoiODIwZTRlNmEtMTU4My00NGZkLTg3OWMtZTNmN2ZhOTk5N2NhIiwibmJmIjoxNjk4MTc5NzQzLCJleHAiOjE2OTgyNjYxNDMsImlhdCI6MTY5ODE3OTc0M30.fYU1RbrAiA40raUB8L9b_UfkaL00gCfMDxSRA5Eqvks_h-61TobFB9pbq6iOWtS3fjxwLVt-FdQmyge9IwRf-MTVSXTt85mo5ACORmx1DynSTfpxF3PwRtjFUcQR06nuV0hxdRKTm6xZPhpwKaDxvMYCjCkjYMEDJ5o5k-OGOSHON2eJGdHHeGWF5BFXC41HhcB8VfTqlwv7L5zort60DIMFz9P5KwpJPL7_RLoT9jPjBQHgNiTuhz3hPgIcRL7xgWXJYFD9RUx6e_hnXxz6-kieFGJf5dLt2D6d7mTLCPMxdEyLyCb2ub40TeT0yEoXMWOPYWTYBOzn5pgnnfiq8Q\"}",
       "isContentBase64": false
     }
   },
-  "Invoke-AzKustoInviteDatabaseFollower+[NoContext]+InviteViaIdentityExpanded+$GET+https://management.azure.com/subscriptions/e8257c73-24c5-4791-94dc-8b7901c90dbf/resourceGroups/PWSH-SDK-sxfpla/providers/Microsoft.Kusto/Clusters/pssdksxfpla/Databases/TestDb?api-version=2023-08-15+1": {
+  "Invoke-AzKustoInviteDatabaseFollower+[NoContext]+InviteViaIdentityExpanded+$GET+https://management.azure.com/subscriptions/e8257c73-24c5-4791-94dc-8b7901c90dbf/resourceGroups/PWSH-SDK-3w8cj7/providers/Microsoft.Kusto/Clusters/pssdk3w8cj7/Databases/TestDb?api-version=2023-08-15+1": {
     "Request": {
       "Method": "GET",
-      "RequestUri": "https://management.azure.com/subscriptions/e8257c73-24c5-4791-94dc-8b7901c90dbf/resourceGroups/PWSH-SDK-sxfpla/providers/Microsoft.Kusto/Clusters/pssdksxfpla/Databases/TestDb?api-version=2023-08-15",
+      "RequestUri": "https://management.azure.com/subscriptions/e8257c73-24c5-4791-94dc-8b7901c90dbf/resourceGroups/PWSH-SDK-3w8cj7/providers/Microsoft.Kusto/Clusters/pssdk3w8cj7/Databases/TestDb?api-version=2023-08-15",
       "Content": null,
       "isContentBase64": false,
       "Headers": {
-        "x-ms-unique-id": [ "3" ],
-        "x-ms-client-request-id": [ "f26dfc44-5c0c-4129-a4bb-ff9ce0fd16ea" ],
+        "x-ms-unique-id": [ "273" ],
+        "x-ms-client-request-id": [ "d60d7e11-3e11-4862-97c7-430b97a87057" ],
         "CommandName": [ "Get-AzKustoDatabase" ],
         "FullCommandName": [ "Get-AzKustoDatabase_Get" ],
         "ParameterSetName": [ "__AllParameterSets" ],
@@ -94,28 +94,28 @@
       "Headers": {
         "Cache-Control": [ "no-cache" ],
         "Pragma": [ "no-cache" ],
-        "x-ms-request-id": [ "54eb2355-89c2-4048-8fdd-d722ab6bb4f0" ],
+        "x-ms-request-id": [ "9b29e88a-95ac-4376-985b-8e8524a3797a" ],
         "Server": [ "Microsoft-HTTPAPI/2.0" ],
-        "x-ms-ratelimit-remaining-subscription-resource-requests": [ "299" ],
-        "x-ms-correlation-request-id": [ "8660c593-e7a7-4566-b0ca-e1c8e9252822" ],
-        "x-ms-routing-request-id": [ "QATARCENTRAL:20231024T103159Z:8660c593-e7a7-4566-b0ca-e1c8e9252822" ],
+        "x-ms-ratelimit-remaining-subscription-resource-requests": [ "295" ],
+        "x-ms-correlation-request-id": [ "617b3933-2c8f-479d-9928-ced2c8405030" ],
+        "x-ms-routing-request-id": [ "QATARCENTRAL:20231024T203544Z:617b3933-2c8f-479d-9928-ced2c8405030" ],
         "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
         "X-Content-Type-Options": [ "nosniff" ],
-        "Date": [ "Tue, 24 Oct 2023 10:31:59 GMT" ]
+        "Date": [ "Tue, 24 Oct 2023 20:35:44 GMT" ]
       },
       "ContentHeaders": {
         "Content-Length": [ "410" ],
         "Content-Type": [ "application/json; charset=utf-8" ],
         "Expires": [ "-1" ]
       },
-      "Content": "{\"id\":\"/subscriptions/e8257c73-24c5-4791-94dc-8b7901c90dbf/resourceGroups/PWSH-SDK-sxfpla/providers/Microsoft.Kusto/Clusters/pssdksxfpla/Databases/TestDb\",\"name\":\"pssdksxfpla/TestDb\",\"type\":\"Microsoft.Kusto/Clusters/Databases\",\"location\":\"East US\",\"kind\":\"ReadWrite\",\"properties\":{\"softDeletePeriod\":\"P365D\",\"hotCachePeriod\":\"P31D\",\"statistics\":{\"size\":0.0},\"isFollowed\":false,\"provisioningState\":\"Succeeded\"}}",
+      "Content": "{\"id\":\"/subscriptions/e8257c73-24c5-4791-94dc-8b7901c90dbf/resourceGroups/PWSH-SDK-3w8cj7/providers/Microsoft.Kusto/Clusters/pssdk3w8cj7/Databases/TestDb\",\"name\":\"pssdk3w8cj7/TestDb\",\"type\":\"Microsoft.Kusto/Clusters/Databases\",\"location\":\"East US\",\"kind\":\"ReadWrite\",\"properties\":{\"softDeletePeriod\":\"P365D\",\"hotCachePeriod\":\"P31D\",\"statistics\":{\"size\":0.0},\"isFollowed\":false,\"provisioningState\":\"Succeeded\"}}",
       "isContentBase64": false
     }
   },
-  "Invoke-AzKustoInviteDatabaseFollower+[NoContext]+InviteViaIdentityExpanded+$POST+https://management.azure.com/subscriptions/e8257c73-24c5-4791-94dc-8b7901c90dbf/resourceGroups/PWSH-SDK-sxfpla/providers/Microsoft.Kusto/Clusters/pssdksxfpla/Databases/TestDb/inviteFollower?api-version=2023-08-15+2": {
+  "Invoke-AzKustoInviteDatabaseFollower+[NoContext]+InviteViaIdentityExpanded+$POST+https://management.azure.com/subscriptions/e8257c73-24c5-4791-94dc-8b7901c90dbf/resourceGroups/PWSH-SDK-3w8cj7/providers/Microsoft.Kusto/Clusters/pssdk3w8cj7/Databases/TestDb/inviteFollower?api-version=2023-08-15+2": {
     "Request": {
       "Method": "POST",
-      "RequestUri": "https://management.azure.com/subscriptions/e8257c73-24c5-4791-94dc-8b7901c90dbf/resourceGroups/PWSH-SDK-sxfpla/providers/Microsoft.Kusto/Clusters/pssdksxfpla/Databases/TestDb/inviteFollower?api-version=2023-08-15",
+      "RequestUri": "https://management.azure.com/subscriptions/e8257c73-24c5-4791-94dc-8b7901c90dbf/resourceGroups/PWSH-SDK-3w8cj7/providers/Microsoft.Kusto/Clusters/pssdk3w8cj7/Databases/TestDb/inviteFollower?api-version=2023-08-15",
       "Content": "{\r\n  \"inviteeEmail\": \"user@contoso.com\"\r\n}",
       "isContentBase64": false,
       "Headers": {
@@ -130,33 +130,33 @@
       "Headers": {
         "Cache-Control": [ "no-cache" ],
         "Pragma": [ "no-cache" ],
-        "x-ms-request-id": [ "b4e52b30-c748-4f8c-8459-36ab88d5c787" ],
+        "x-ms-request-id": [ "e845f48f-05ff-4507-8c57-b795e68ff977" ],
         "Server": [ "Microsoft-HTTPAPI/2.0" ],
-        "x-ms-ratelimit-remaining-subscription-writes": [ "1197" ],
-        "x-ms-correlation-request-id": [ "c6057736-845b-460a-a61a-9934810c7bfc" ],
-        "x-ms-routing-request-id": [ "QATARCENTRAL:20231024T103201Z:c6057736-845b-460a-a61a-9934810c7bfc" ],
+        "x-ms-ratelimit-remaining-subscription-writes": [ "1185" ],
+        "x-ms-correlation-request-id": [ "b5da8950-5a92-4c40-a493-103d236ba53a" ],
+        "x-ms-routing-request-id": [ "QATARCENTRAL:20231024T203546Z:b5da8950-5a92-4c40-a493-103d236ba53a" ],
         "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
         "X-Content-Type-Options": [ "nosniff" ],
-        "Date": [ "Tue, 24 Oct 2023 10:32:01 GMT" ]
+        "Date": [ "Tue, 24 Oct 2023 20:35:45 GMT" ]
       },
       "ContentHeaders": {
         "Content-Length": [ "1035" ],
         "Content-Type": [ "application/json; charset=utf-8" ],
         "Expires": [ "-1" ]
       },
-      "Content": "{\"generatedInvitation\":\"eyJhbGciOiJSUzI1NiIsImtpZCI6IkIzODc0QzExMjQ1QTdGNjgzNEU3MjY5Mjg0MDhFMDcwM0U3QTQwNEQiLCJ4NXQiOiJzNGRNRVNSYWYyZzA1eWFTaEFqZ2NENTZRRTAiLCJ0eXAiOiJKV1QifQ.eyJyZXNvdXJjZV9pZCI6Ii9zdWJzY3JpcHRpb25zL2U4MjU3YzczLTI0YzUtNDc5MS05NGRjLThiNzkwMWM5MGRiZi9yZXNvdXJjZUdyb3Vwcy9QV1NILVNESy1zeGZwbGEvcHJvdmlkZXJzL01pY3Jvc29mdC5LdXN0by9DbHVzdGVycy9wc3Nka3N4ZnBsYS9EYXRhYmFzZXMvVGVzdERiIiwic291cmNlX3RlbmFudF9pZCI6IjcyZjk4OGJmLTg2ZjEtNDFhZi05MWFiLTJkN2NkMDExZGI0NyIsImludml0ZWVfZW1haWwiOiJ1c2VyQGNvbnRvc28uY29tIiwicmVnaW9uIjoiRWFzdCBVUyIsImludml0ZXJfb2JqZWN0X2lkIjoiODIwZTRlNmEtMTU4My00NGZkLTg3OWMtZTNmN2ZhOTk5N2NhIiwibmJmIjoxNjk4MTQzNTIxLCJleHAiOjE2OTgyMjk5MjEsImlhdCI6MTY5ODE0MzUyMX0.R2AYkptUKzE2UzIOrBB9afxok2IoRv04mwpAi-PGi4Dbk5Ivmy85JPTZo7ZIQkaA_hgvPvZQRCzAtrqo7jIlQaqpnQkMFZaJXTNY2E1AaAuVA0mjoD2lw7n7imBN7bWXHtShGIme7ghwCAvn2j0pWL313xABSVh8TJ49cwZNpJWJOeoBa9z7V4BL-BkTu7JDVIWH_swDaIEWhutvbHi_RHewTV7TqQPPjmzGti2sghMzBHW_6JoflfgzSxrZFH0vO970dSjMxpDmffeR8twFwbawDET9vvYP42ixxJS_8J6J3NxLYpHSwbNcGHtc6TdKzaDWgi6A124E6_OTBhGV2A\"}",
+      "Content": "{\"generatedInvitation\":\"eyJhbGciOiJSUzI1NiIsImtpZCI6IkIzODc0QzExMjQ1QTdGNjgzNEU3MjY5Mjg0MDhFMDcwM0U3QTQwNEQiLCJ4NXQiOiJzNGRNRVNSYWYyZzA1eWFTaEFqZ2NENTZRRTAiLCJ0eXAiOiJKV1QifQ.eyJyZXNvdXJjZV9pZCI6Ii9zdWJzY3JpcHRpb25zL2U4MjU3YzczLTI0YzUtNDc5MS05NGRjLThiNzkwMWM5MGRiZi9yZXNvdXJjZUdyb3Vwcy9QV1NILVNESy0zdzhjajcvcHJvdmlkZXJzL01pY3Jvc29mdC5LdXN0by9DbHVzdGVycy9wc3NkazN3OGNqNy9EYXRhYmFzZXMvVGVzdERiIiwic291cmNlX3RlbmFudF9pZCI6IjcyZjk4OGJmLTg2ZjEtNDFhZi05MWFiLTJkN2NkMDExZGI0NyIsImludml0ZWVfZW1haWwiOiJ1c2VyQGNvbnRvc28uY29tIiwicmVnaW9uIjoiRWFzdCBVUyIsImludml0ZXJfb2JqZWN0X2lkIjoiODIwZTRlNmEtMTU4My00NGZkLTg3OWMtZTNmN2ZhOTk5N2NhIiwibmJmIjoxNjk4MTc5NzQ1LCJleHAiOjE2OTgyNjYxNDUsImlhdCI6MTY5ODE3OTc0NX0.FFWrSq5Nkpx8lU-_6btD5Wes-GHF-XKdbO6ylnL5Ll7mBTMzrzyWDf6uqC6ftuVHuTo3oIyt5wmNhWVJzvG5GbTfb-ybRwb_G1kjHAdiewHkl5GO3HFgGdNt6G43RKhXzGydJiCUiI_SR1evYR1cJLytyqDiGb2ezZ_GYIao9rz7JW4cU7jFZ5zAiuKSPd3r9D-w6OUcfhuBRohQ-L8GVUF6_B4Zi2GgxLbCundKO4cLNUJKuKr9uEzoY1uF5BF5BYhXOT_ZL3zIvHWD0ZoePGlecwiLHJU0MLEPHurbJxNxeCmovuy5xOCXMXKIsPaU-Tgtaox3HojnJgVuFWRCbQ\"}",
       "isContentBase64": false
     }
   },
-  "Invoke-AzKustoInviteDatabaseFollower+[NoContext]+InviteViaIdentity+$GET+https://management.azure.com/subscriptions/e8257c73-24c5-4791-94dc-8b7901c90dbf/resourceGroups/PWSH-SDK-sxfpla/providers/Microsoft.Kusto/Clusters/pssdksxfpla/Databases/TestDb?api-version=2023-08-15+1": {
+  "Invoke-AzKustoInviteDatabaseFollower+[NoContext]+InviteViaIdentity+$GET+https://management.azure.com/subscriptions/e8257c73-24c5-4791-94dc-8b7901c90dbf/resourceGroups/PWSH-SDK-3w8cj7/providers/Microsoft.Kusto/Clusters/pssdk3w8cj7/Databases/TestDb?api-version=2023-08-15+1": {
     "Request": {
       "Method": "GET",
-      "RequestUri": "https://management.azure.com/subscriptions/e8257c73-24c5-4791-94dc-8b7901c90dbf/resourceGroups/PWSH-SDK-sxfpla/providers/Microsoft.Kusto/Clusters/pssdksxfpla/Databases/TestDb?api-version=2023-08-15",
+      "RequestUri": "https://management.azure.com/subscriptions/e8257c73-24c5-4791-94dc-8b7901c90dbf/resourceGroups/PWSH-SDK-3w8cj7/providers/Microsoft.Kusto/Clusters/pssdk3w8cj7/Databases/TestDb?api-version=2023-08-15",
       "Content": null,
       "isContentBase64": false,
       "Headers": {
-        "x-ms-unique-id": [ "5" ],
-        "x-ms-client-request-id": [ "9f741b30-e518-413c-b2bf-9feafe6721ee" ],
+        "x-ms-unique-id": [ "275" ],
+        "x-ms-client-request-id": [ "103133db-2302-493d-a14b-41fb50c205d8" ],
         "CommandName": [ "Get-AzKustoDatabase" ],
         "FullCommandName": [ "Get-AzKustoDatabase_Get" ],
         "ParameterSetName": [ "__AllParameterSets" ],
@@ -171,28 +171,28 @@
       "Headers": {
         "Cache-Control": [ "no-cache" ],
         "Pragma": [ "no-cache" ],
-        "x-ms-request-id": [ "f0dfa0ef-2c40-4d5f-bcca-c4cc7a1872e0" ],
+        "x-ms-request-id": [ "696c6484-8a04-4c24-86dc-4ed09143a9da" ],
         "Server": [ "Microsoft-HTTPAPI/2.0" ],
-        "x-ms-ratelimit-remaining-subscription-resource-requests": [ "298" ],
-        "x-ms-correlation-request-id": [ "5873c76a-507c-4f1e-ad24-502158400f2c" ],
-        "x-ms-routing-request-id": [ "QATARCENTRAL:20231024T103202Z:5873c76a-507c-4f1e-ad24-502158400f2c" ],
+        "x-ms-ratelimit-remaining-subscription-resource-requests": [ "294" ],
+        "x-ms-correlation-request-id": [ "f531b4d1-1c52-4f98-8bbc-3481b7c1412c" ],
+        "x-ms-routing-request-id": [ "QATARCENTRAL:20231024T203546Z:f531b4d1-1c52-4f98-8bbc-3481b7c1412c" ],
         "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
         "X-Content-Type-Options": [ "nosniff" ],
-        "Date": [ "Tue, 24 Oct 2023 10:32:01 GMT" ]
+        "Date": [ "Tue, 24 Oct 2023 20:35:46 GMT" ]
       },
       "ContentHeaders": {
         "Content-Length": [ "410" ],
         "Content-Type": [ "application/json; charset=utf-8" ],
         "Expires": [ "-1" ]
       },
-      "Content": "{\"id\":\"/subscriptions/e8257c73-24c5-4791-94dc-8b7901c90dbf/resourceGroups/PWSH-SDK-sxfpla/providers/Microsoft.Kusto/Clusters/pssdksxfpla/Databases/TestDb\",\"name\":\"pssdksxfpla/TestDb\",\"type\":\"Microsoft.Kusto/Clusters/Databases\",\"location\":\"East US\",\"kind\":\"ReadWrite\",\"properties\":{\"softDeletePeriod\":\"P365D\",\"hotCachePeriod\":\"P31D\",\"statistics\":{\"size\":0.0},\"isFollowed\":false,\"provisioningState\":\"Succeeded\"}}",
+      "Content": "{\"id\":\"/subscriptions/e8257c73-24c5-4791-94dc-8b7901c90dbf/resourceGroups/PWSH-SDK-3w8cj7/providers/Microsoft.Kusto/Clusters/pssdk3w8cj7/Databases/TestDb\",\"name\":\"pssdk3w8cj7/TestDb\",\"type\":\"Microsoft.Kusto/Clusters/Databases\",\"location\":\"East US\",\"kind\":\"ReadWrite\",\"properties\":{\"softDeletePeriod\":\"P365D\",\"hotCachePeriod\":\"P31D\",\"statistics\":{\"size\":0.0},\"isFollowed\":false,\"provisioningState\":\"Succeeded\"}}",
       "isContentBase64": false
     }
   },
-  "Invoke-AzKustoInviteDatabaseFollower+[NoContext]+InviteViaIdentity+$POST+https://management.azure.com/subscriptions/e8257c73-24c5-4791-94dc-8b7901c90dbf/resourceGroups/PWSH-SDK-sxfpla/providers/Microsoft.Kusto/Clusters/pssdksxfpla/Databases/TestDb/inviteFollower?api-version=2023-08-15+2": {
+  "Invoke-AzKustoInviteDatabaseFollower+[NoContext]+InviteViaIdentity+$POST+https://management.azure.com/subscriptions/e8257c73-24c5-4791-94dc-8b7901c90dbf/resourceGroups/PWSH-SDK-3w8cj7/providers/Microsoft.Kusto/Clusters/pssdk3w8cj7/Databases/TestDb/inviteFollower?api-version=2023-08-15+2": {
     "Request": {
       "Method": "POST",
-      "RequestUri": "https://management.azure.com/subscriptions/e8257c73-24c5-4791-94dc-8b7901c90dbf/resourceGroups/PWSH-SDK-sxfpla/providers/Microsoft.Kusto/Clusters/pssdksxfpla/Databases/TestDb/inviteFollower?api-version=2023-08-15",
+      "RequestUri": "https://management.azure.com/subscriptions/e8257c73-24c5-4791-94dc-8b7901c90dbf/resourceGroups/PWSH-SDK-3w8cj7/providers/Microsoft.Kusto/Clusters/pssdk3w8cj7/Databases/TestDb/inviteFollower?api-version=2023-08-15",
       "Content": "{\r\n  \"inviteeEmail\": \"user@contoso.com\"\r\n}",
       "isContentBase64": false,
       "Headers": {
@@ -207,21 +207,21 @@
       "Headers": {
         "Cache-Control": [ "no-cache" ],
         "Pragma": [ "no-cache" ],
-        "x-ms-request-id": [ "1cbcb8ab-5c1f-4993-a381-062209b2f397" ],
+        "x-ms-request-id": [ "bc79a46f-9dee-4ae7-a41a-3d8c18b78f8f" ],
         "Server": [ "Microsoft-HTTPAPI/2.0" ],
-        "x-ms-ratelimit-remaining-subscription-writes": [ "1196" ],
-        "x-ms-correlation-request-id": [ "f3c83010-d47f-4c5f-924f-c2d2e0a12818" ],
-        "x-ms-routing-request-id": [ "QATARCENTRAL:20231024T103203Z:f3c83010-d47f-4c5f-924f-c2d2e0a12818" ],
+        "x-ms-ratelimit-remaining-subscription-writes": [ "1184" ],
+        "x-ms-correlation-request-id": [ "56d74bce-0b4b-4225-8d43-63c1874ce4a8" ],
+        "x-ms-routing-request-id": [ "QATARCENTRAL:20231024T203548Z:56d74bce-0b4b-4225-8d43-63c1874ce4a8" ],
         "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
         "X-Content-Type-Options": [ "nosniff" ],
-        "Date": [ "Tue, 24 Oct 2023 10:32:03 GMT" ]
+        "Date": [ "Tue, 24 Oct 2023 20:35:47 GMT" ]
       },
       "ContentHeaders": {
         "Content-Length": [ "1035" ],
         "Content-Type": [ "application/json; charset=utf-8" ],
         "Expires": [ "-1" ]
       },
-      "Content": "{\"generatedInvitation\":\"eyJhbGciOiJSUzI1NiIsImtpZCI6IkIzODc0QzExMjQ1QTdGNjgzNEU3MjY5Mjg0MDhFMDcwM0U3QTQwNEQiLCJ4NXQiOiJzNGRNRVNSYWYyZzA1eWFTaEFqZ2NENTZRRTAiLCJ0eXAiOiJKV1QifQ.eyJyZXNvdXJjZV9pZCI6Ii9zdWJzY3JpcHRpb25zL2U4MjU3YzczLTI0YzUtNDc5MS05NGRjLThiNzkwMWM5MGRiZi9yZXNvdXJjZUdyb3Vwcy9QV1NILVNESy1zeGZwbGEvcHJvdmlkZXJzL01pY3Jvc29mdC5LdXN0by9DbHVzdGVycy9wc3Nka3N4ZnBsYS9EYXRhYmFzZXMvVGVzdERiIiwic291cmNlX3RlbmFudF9pZCI6IjcyZjk4OGJmLTg2ZjEtNDFhZi05MWFiLTJkN2NkMDExZGI0NyIsImludml0ZWVfZW1haWwiOiJ1c2VyQGNvbnRvc28uY29tIiwicmVnaW9uIjoiRWFzdCBVUyIsImludml0ZXJfb2JqZWN0X2lkIjoiODIwZTRlNmEtMTU4My00NGZkLTg3OWMtZTNmN2ZhOTk5N2NhIiwibmJmIjoxNjk4MTQzNTIzLCJleHAiOjE2OTgyMjk5MjMsImlhdCI6MTY5ODE0MzUyM30.ZJ2xXkqBrHHGMW21JB9PwNxXQ269rdqcEdoDqIFxXUX0FmGy4JeMy0-Jw78oGNKC8tDBPRbHV1wTNRIcziT_k_LjUrFEt5iWqApgs_6bsQpv7RWWTkWNLM5lFfeY8mwAjls91ndS_rMj3bgJzSRt2ou0gPgryWETsI5uz26nwga2-IERwQBlZF3J2ibWEFByfFItjORrWTCSp53642gfTVNnpi52W5ZLVG4K4QIVi0xsz_h4z_5fC_wxFamxqztFq4RYyaj4t_GCvnWgVuEI4OobR8S9p3DFntQXhVONHnwhHfVjTutuqC_PCS5glQidCAL2r-ZeZj0fk4CXFDbNMg\"}",
+      "Content": "{\"generatedInvitation\":\"eyJhbGciOiJSUzI1NiIsImtpZCI6IkIzODc0QzExMjQ1QTdGNjgzNEU3MjY5Mjg0MDhFMDcwM0U3QTQwNEQiLCJ4NXQiOiJzNGRNRVNSYWYyZzA1eWFTaEFqZ2NENTZRRTAiLCJ0eXAiOiJKV1QifQ.eyJyZXNvdXJjZV9pZCI6Ii9zdWJzY3JpcHRpb25zL2U4MjU3YzczLTI0YzUtNDc5MS05NGRjLThiNzkwMWM5MGRiZi9yZXNvdXJjZUdyb3Vwcy9QV1NILVNESy0zdzhjajcvcHJvdmlkZXJzL01pY3Jvc29mdC5LdXN0by9DbHVzdGVycy9wc3NkazN3OGNqNy9EYXRhYmFzZXMvVGVzdERiIiwic291cmNlX3RlbmFudF9pZCI6IjcyZjk4OGJmLTg2ZjEtNDFhZi05MWFiLTJkN2NkMDExZGI0NyIsImludml0ZWVfZW1haWwiOiJ1c2VyQGNvbnRvc28uY29tIiwicmVnaW9uIjoiRWFzdCBVUyIsImludml0ZXJfb2JqZWN0X2lkIjoiODIwZTRlNmEtMTU4My00NGZkLTg3OWMtZTNmN2ZhOTk5N2NhIiwibmJmIjoxNjk4MTc5NzQ4LCJleHAiOjE2OTgyNjYxNDgsImlhdCI6MTY5ODE3OTc0OH0.sc9ufW9PvFitRve_qKkAcETo7ysUM0cuER3M5DU37Tvrg_U3EMKGx-5-Euwd0x4-gqGIpumF_zZnYXshnttNon0yEHujgjypw129k2Dvnx8RrKc7tdqT2CByPo8UXqM02eu_GT1YeF1iXB0O-BzM4OntgAdjW17y3jOsh4VAQ9GC-hNHd3Riqjqo3azbFmdTkn3IUNWZQI7kPHnp9gN_ZiGrgogetFGb6XBfFhT4BcKEI9X2hsp9F97gDhhW_YnOHUXxnoTedvU8YrVnM8DlzCEFdjTXSmYtu-AaLhhvTIvbx6ayksIZI2QYtrgml_Qrt8QLdT4EnLTC4JwqnilSfA\"}",
       "isContentBase64": false
     }
   }

@@ -1,13 +1,13 @@
 {
-  "[NoDescription]+[NoContext]+RemoveExpanded+$POST+https://management.azure.com/subscriptions/e8257c73-24c5-4791-94dc-8b7901c90dbf/resourceGroups/PWSH-SDK-sxfpla/providers/Microsoft.Kusto/Clusters/pssdksxfpla/Databases/TestDb/listPrincipals?api-version=2023-08-15+1": {
+  "[NoDescription]+[NoContext]+RemoveExpanded+$POST+https://management.azure.com/subscriptions/e8257c73-24c5-4791-94dc-8b7901c90dbf/resourceGroups/PWSH-SDK-3w8cj7/providers/Microsoft.Kusto/Clusters/pssdk3w8cj7/Databases/TestDb/listPrincipals?api-version=2023-08-15+1": {
     "Request": {
       "Method": "POST",
-      "RequestUri": "https://management.azure.com/subscriptions/e8257c73-24c5-4791-94dc-8b7901c90dbf/resourceGroups/PWSH-SDK-sxfpla/providers/Microsoft.Kusto/Clusters/pssdksxfpla/Databases/TestDb/listPrincipals?api-version=2023-08-15",
+      "RequestUri": "https://management.azure.com/subscriptions/e8257c73-24c5-4791-94dc-8b7901c90dbf/resourceGroups/PWSH-SDK-3w8cj7/providers/Microsoft.Kusto/Clusters/pssdk3w8cj7/Databases/TestDb/listPrincipals?api-version=2023-08-15",
       "Content": null,
       "isContentBase64": false,
       "Headers": {
-        "x-ms-unique-id": [ "422" ],
-        "x-ms-client-request-id": [ "f3660274-f438-45ea-b1af-bd0871c56d34" ],
+        "x-ms-unique-id": [ "531" ],
+        "x-ms-client-request-id": [ "d1914759-05d8-4bf5-bf25-3c7924b23aa0" ],
         "CommandName": [ "Get-AzKustoDatabasePrincipal" ],
         "FullCommandName": [ "Get-AzKustoDatabasePrincipal_List" ],
         "ParameterSetName": [ "__AllParameterSets" ],
@@ -22,14 +22,14 @@
       "Headers": {
         "Cache-Control": [ "no-cache" ],
         "Pragma": [ "no-cache" ],
-        "x-ms-request-id": [ "cc8ae35a-a4e3-4566-a771-f12eea29813b" ],
+        "x-ms-request-id": [ "e002ec3f-5458-45e2-aee9-dfe7642efa57" ],
         "Server": [ "Microsoft-HTTPAPI/2.0" ],
         "x-ms-ratelimit-remaining-subscription-writes": [ "1197" ],
-        "x-ms-correlation-request-id": [ "a6bc5b4e-04a1-436a-b492-7d64ac2a8071" ],
-        "x-ms-routing-request-id": [ "QATARCENTRAL:20231023T224939Z:a6bc5b4e-04a1-436a-b492-7d64ac2a8071" ],
+        "x-ms-correlation-request-id": [ "34581904-194c-487b-a38b-8c1e0e9babfa" ],
+        "x-ms-routing-request-id": [ "QATARCENTRAL:20231024T215557Z:34581904-194c-487b-a38b-8c1e0e9babfa" ],
         "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
         "X-Content-Type-Options": [ "nosniff" ],
-        "Date": [ "Mon, 23 Oct 2023 22:49:38 GMT" ]
+        "Date": [ "Tue, 24 Oct 2023 21:55:56 GMT" ]
       },
       "ContentHeaders": {
         "Content-Length": [ "730" ],
@@ -40,10 +40,10 @@
       "isContentBase64": false
     }
   },
-  "[NoDescription]+[NoContext]+RemoveExpanded+$POST+https://management.azure.com/subscriptions/e8257c73-24c5-4791-94dc-8b7901c90dbf/resourceGroups/PWSH-SDK-sxfpla/providers/Microsoft.Kusto/Clusters/pssdksxfpla/Databases/TestDb/removePrincipals?api-version=2023-08-15+2": {
+  "[NoDescription]+[NoContext]+RemoveExpanded+$POST+https://management.azure.com/subscriptions/e8257c73-24c5-4791-94dc-8b7901c90dbf/resourceGroups/PWSH-SDK-3w8cj7/providers/Microsoft.Kusto/Clusters/pssdk3w8cj7/Databases/TestDb/removePrincipals?api-version=2023-08-15+2": {
     "Request": {
       "Method": "POST",
-      "RequestUri": "https://management.azure.com/subscriptions/e8257c73-24c5-4791-94dc-8b7901c90dbf/resourceGroups/PWSH-SDK-sxfpla/providers/Microsoft.Kusto/Clusters/pssdksxfpla/Databases/TestDb/removePrincipals?api-version=2023-08-15",
+      "RequestUri": "https://management.azure.com/subscriptions/e8257c73-24c5-4791-94dc-8b7901c90dbf/resourceGroups/PWSH-SDK-3w8cj7/providers/Microsoft.Kusto/Clusters/pssdk3w8cj7/Databases/TestDb/removePrincipals?api-version=2023-08-15",
       "Content": "{\r\n  \"value\": [\r\n    {\r\n      \"role\": \"Admin\",\r\n      \"name\": \"Michael Shikh (michaelshikh@microsoft.com)\",\r\n      \"type\": \"User\",\r\n      \"email\": \"michaelshikh@microsoft.com\",\r\n      \"appId\": \"\"\r\n    }\r\n  ]\r\n}",
       "isContentBase64": false,
       "Headers": {
@@ -58,14 +58,14 @@
       "Headers": {
         "Cache-Control": [ "no-cache" ],
         "Pragma": [ "no-cache" ],
-        "x-ms-request-id": [ "9dd6a3b6-21aa-40dd-ab0b-b725e9caad72" ],
+        "x-ms-request-id": [ "e7a421fa-285a-43e5-892e-ecc66939d2db" ],
         "Server": [ "Microsoft-HTTPAPI/2.0" ],
         "x-ms-ratelimit-remaining-subscription-writes": [ "1196" ],
-        "x-ms-correlation-request-id": [ "3eca25e3-da7b-4ef3-a952-17d70e90af6e" ],
-        "x-ms-routing-request-id": [ "QATARCENTRAL:20231023T224940Z:3eca25e3-da7b-4ef3-a952-17d70e90af6e" ],
+        "x-ms-correlation-request-id": [ "906137a3-fd2f-4f73-8e9d-0242d3144ace" ],
+        "x-ms-routing-request-id": [ "QATARCENTRAL:20231024T215558Z:906137a3-fd2f-4f73-8e9d-0242d3144ace" ],
         "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
         "X-Content-Type-Options": [ "nosniff" ],
-        "Date": [ "Mon, 23 Oct 2023 22:49:40 GMT" ]
+        "Date": [ "Tue, 24 Oct 2023 21:55:58 GMT" ]
       },
       "ContentHeaders": {
         "Content-Length": [ "484" ],
@@ -76,10 +76,10 @@
       "isContentBase64": false
     }
   },
-  "[NoDescription]+[NoContext]+RemoveExpanded+$POST+https://management.azure.com/subscriptions/e8257c73-24c5-4791-94dc-8b7901c90dbf/resourceGroups/PWSH-SDK-sxfpla/providers/Microsoft.Kusto/Clusters/pssdksxfpla/Databases/TestDb/addPrincipals?api-version=2023-08-15+3": {
+  "[NoDescription]+[NoContext]+RemoveExpanded+$POST+https://management.azure.com/subscriptions/e8257c73-24c5-4791-94dc-8b7901c90dbf/resourceGroups/PWSH-SDK-3w8cj7/providers/Microsoft.Kusto/Clusters/pssdk3w8cj7/Databases/TestDb/addPrincipals?api-version=2023-08-15+3": {
     "Request": {
       "Method": "POST",
-      "RequestUri": "https://management.azure.com/subscriptions/e8257c73-24c5-4791-94dc-8b7901c90dbf/resourceGroups/PWSH-SDK-sxfpla/providers/Microsoft.Kusto/Clusters/pssdksxfpla/Databases/TestDb/addPrincipals?api-version=2023-08-15",
+      "RequestUri": "https://management.azure.com/subscriptions/e8257c73-24c5-4791-94dc-8b7901c90dbf/resourceGroups/PWSH-SDK-3w8cj7/providers/Microsoft.Kusto/Clusters/pssdk3w8cj7/Databases/TestDb/addPrincipals?api-version=2023-08-15",
       "Content": "{\r\n  \"value\": [\r\n    {\r\n      \"role\": \"Admin\",\r\n      \"name\": \"Michael Shikh (michaelshikh@microsoft.com)\",\r\n      \"type\": \"User\",\r\n      \"email\": \"michaelshikh@microsoft.com\",\r\n      \"appId\": \"\"\r\n    }\r\n  ]\r\n}",
       "isContentBase64": false,
       "Headers": {
@@ -94,14 +94,14 @@
       "Headers": {
         "Cache-Control": [ "no-cache" ],
         "Pragma": [ "no-cache" ],
-        "x-ms-request-id": [ "16e57a06-ec67-491b-a7fe-13d2215595d1" ],
+        "x-ms-request-id": [ "364c880e-8bab-48a6-bad4-d85365ce2bc2" ],
         "Server": [ "Microsoft-HTTPAPI/2.0" ],
         "x-ms-ratelimit-remaining-subscription-writes": [ "1195" ],
-        "x-ms-correlation-request-id": [ "1439237d-42cd-40a3-a6c2-c519dbddeaff" ],
-        "x-ms-routing-request-id": [ "QATARCENTRAL:20231023T224942Z:1439237d-42cd-40a3-a6c2-c519dbddeaff" ],
+        "x-ms-correlation-request-id": [ "ab2276ef-5884-4054-8540-58ad4127f16d" ],
+        "x-ms-routing-request-id": [ "QATARCENTRAL:20231024T215600Z:ab2276ef-5884-4054-8540-58ad4127f16d" ],
         "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
         "X-Content-Type-Options": [ "nosniff" ],
-        "Date": [ "Mon, 23 Oct 2023 22:49:41 GMT" ]
+        "Date": [ "Tue, 24 Oct 2023 21:55:59 GMT" ]
       },
       "ContentHeaders": {
         "Content-Length": [ "730" ],
