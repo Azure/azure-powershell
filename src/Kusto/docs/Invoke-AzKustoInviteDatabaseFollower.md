@@ -61,8 +61,8 @@ Generates an invitation token that allows attaching a follower database to this 
 ```powershell
 Invoke-AzKustoInviteDatabaseFollower -ClusterName "myCluster" -DatabaseName "myDatabase" -ResourceGroupName "myResourceGroup" -InviteeEmail "user@contoso.com"
 ```
-Invite a user to follow database "myDatabase" in cluster "myCluster" in resource group "myResourceGroup"
 
+Invite a user to follow database "myDatabase" in cluster "myCluster" in resource group "myResourceGroup"
 
 ## PARAMETERS
 

@@ -32,7 +32,6 @@ Creates or updates a sandbox custom image.
 ## EXAMPLES
 
 ### Example 1: Create a sandbox custom image
-
 ```powershell
 New-AzKustoSandboxCustomImage -ClusterName "myCluster" -Name "myImage" -ResourceGroupName "myResourceGroup" -SubscriptionId "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx" -LanguageVersion "3.9.7" -RequirementsFileContent "Pillow"
 ```
