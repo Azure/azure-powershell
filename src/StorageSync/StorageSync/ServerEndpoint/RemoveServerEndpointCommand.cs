@@ -21,7 +21,10 @@ using Microsoft.Azure.Commands.StorageSync.Properties;
 using Microsoft.Azure.Management.Internal.Resources.Utilities.Models;
 using Microsoft.Azure.Management.StorageSync;
 using Microsoft.WindowsAzure.Commands.Utilities.Common;
+using System.Linq;
+using System;
 using System.Management.Automation;
+using StorageSyncModels = Microsoft.Azure.Management.StorageSync.Models;
 
 namespace Microsoft.Azure.Commands.StorageSync.Cmdlets
 {
@@ -180,7 +183,52 @@ namespace Microsoft.Azure.Commands.StorageSync.Cmdlets
                 {
                     if (Force || ShouldContinue(string.Format(StorageSyncResources.RemoveServerEndpointPromptFormat, Target), string.Empty))
                     {
+
+                        StorageSyncModels.ServerEndpoint serverEndpoint = null;
+
+                        try
+                        {
+                            serverEndpoint = StorageSyncClientWrapper.StorageSyncManagementClient.ServerEndpoints.Get(resourceGroupName, storageSyncServiceName, parentResourceName, resourceName);
+                        }
+                        catch(Exception ex)
+                        {
+                            StorageSyncClientWrapper.VerboseLogger.Invoke($"Skipping RoleAssignments removal. Unable to get ServerEndpoint with error {ex.Message}");
+                        }
+
                         StorageSyncClientWrapper.StorageSyncManagementClient.ServerEndpoints.Delete(resourceGroupName, storageSyncServiceName, parentResourceName, resourceName);
+
+                        if (serverEndpoint != null)
+                        {
+                            // Get Registered Server
+                            var serverResourceIdentifier = new ResourceIdentifier(serverEndpoint.ServerResourceId);
+                            StorageSyncModels.RegisteredServer registeredServer = StorageSyncClientWrapper.StorageSyncManagementClient.RegisteredServers.Get(resourceGroupName, storageSyncServiceName, serverResourceIdentifier.ResourceName);
+
+                            if (registeredServer == null)
+                            {
+                                throw new PSArgumentException(StorageSyncResources.MissingServerResourceIdErrorMessage);
+                            }
+
+                            if (!String.IsNullOrEmpty(registeredServer.ApplicationId) && Guid.TryParse(registeredServer.ApplicationId, out Guid serverIdentityGuid))
+                            {
+                                StorageSyncModels.CloudEndpoint cloudEndpoint = StorageSyncClientWrapper.StorageSyncManagementClient.CloudEndpoints
+                                .ListBySyncGroup(resourceGroupName, storageSyncServiceName, parentResourceName).FirstOrDefault();
+
+                                if (cloudEndpoint == null)
+                                {
+                                    throw new PSArgumentException(StorageSyncResources.MissingParentResourceIdErrorMessage);
+                                }
+                                var storageAccountResourceIdentifier = new ResourceIdentifier(cloudEndpoint.StorageAccountResourceId);
+                                var scope = $"{cloudEndpoint.StorageAccountResourceId}/fileServices/default/fileshares/{cloudEndpoint.AzureFileShareName}";
+                                bool success = StorageSyncClientWrapper.DeleteRoleAssignmentWithIdentity(storageAccountResourceIdentifier.Subscription,
+                                   serverIdentityGuid,
+                                   Common.StorageSyncClientWrapper.StorageFileDataPrivilegedContributorRoleDefinitionId,
+                                   scope);
+                                if (success)
+                                {
+                                    StorageSyncClientWrapper.VerboseLogger($"Role Assignment is successfully deleted");
+                                }
+                            }
+                        }
                     }
                 }
             });
