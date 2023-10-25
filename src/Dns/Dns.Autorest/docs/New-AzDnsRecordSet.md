@@ -120,7 +120,8 @@ Accept wildcard characters: False
 ```
 
 ### -DefaultProfile
-The credentials, account, tenant, and subscription used for communication with Azure.
+The DefaultProfile parameter is not functional.
+Use the SubscriptionId parameter when available if executing the cmdlet against a different subscription.
 
 ```yaml
 Type: System.Management.Automation.PSObject
@@ -578,63 +579,6 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ### Microsoft.Azure.PowerShell.Cmdlets.Dns.Models.Api20230701Preview.IRecordSet
 
 ## NOTES
-
-ALIASES
-
-COMPLEX PARAMETER PROPERTIES
-
-To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
-
-
-AAAARECORD <IAaaaRecord[]>: The list of AAAA records in the record set.
-  - `[Ipv6Address <String>]`: The IPv6 address of this AAAA record.
-
-ARECORD <IARecord[]>: The list of A records in the record set.
-  - `[Ipv4Address <String>]`: The IPv4 address of this A record.
-
-CAARECORD <ICaaRecord[]>: The list of CAA records in the record set.
-  - `[Flag <Int32?>]`: The flags for this CAA record as an integer between 0 and 255.
-  - `[Tag <String>]`: The tag for this CAA record.
-  - `[Value <String>]`: The value for this CAA record.
-
-DSRECORD <IDsRecord[]>: The list of DS records in the record set.
-  - `[Algorithm <Int32?>]`: The security algorithm type represents the standard security algorithm number of the DNSKEY Resource Record. See: https://www.iana.org/assignments/dns-sec-alg-numbers/dns-sec-alg-numbers.xhtml
-  - `[DigestAlgorithmType <Int32?>]`: The digest algorithm type represents the standard digest algorithm number used to construct the digest. See: https://www.iana.org/assignments/ds-rr-types/ds-rr-types.xhtml
-  - `[DigestValue <String>]`: The digest value is a cryptographic hash value of the referenced DNSKEY Resource Record.
-  - `[KeyTag <Int32?>]`: The key tag value is used to determine which DNSKEY Resource Record is used for signature verification.
-
-MXRECORD <IMxRecord[]>: The list of MX records in the record set.
-  - `[Exchange <String>]`: The domain name of the mail host for this MX record.
-  - `[Preference <Int32?>]`: The preference value for this MX record.
-
-NAPTRRECORD <INaptrRecord[]>: The list of NAPTR records in the record set.
-  - `[Flag <String>]`: The flags specific to DDDS applications. Values currently defined in RFC 3404 are uppercase and lowercase letters "A", "P", "S", and "U", and the empty string, "". Enclose Flags in quotation marks.
-  - `[Order <Int32?>]`: The order in which the NAPTR records MUST be processed in order to accurately represent the ordered list of rules. The ordering is from lowest to highest. Valid values: 0-65535.
-  - `[Preference <Int32?>]`: The preference specifies the order in which NAPTR records with equal 'order' values should be processed, low numbers being processed before high numbers. Valid values: 0-65535.
-  - `[Regexp <String>]`: The regular expression that the DDDS application uses to convert an input value into an output value. For example: an IP phone system might use a regular expression to convert a phone number that is entered by a user into a SIP URI. Enclose the regular expression in quotation marks. Specify either a value for 'regexp' or a value for 'replacement'.
-  - `[Replacement <String>]`: The replacement is a fully qualified domain name (FQDN) of the next domain name that you want the DDDS application to submit a DNS query for. The DDDS application replaces the input value with the value specified for replacement. Specify either a value for 'regexp' or a value for 'replacement'. If you specify a value for 'regexp', specify a dot (.) for 'replacement'.
-  - `[Service <String>]`: The services specific to DDDS applications. Enclose Services in quotation marks.
-
-NSRECORD <INsRecord[]>: The list of NS records in the record set.
-  - `[Nsdname <String>]`: The name server name for this NS record.
-
-PTRRECORD <IPtrRecord[]>: The list of PTR records in the record set.
-  - `[Ptrdname <String>]`: The PTR target domain name for this PTR record.
-
-SRVRECORD <ISrvRecord[]>: The list of SRV records in the record set.
-  - `[Port <Int32?>]`: The port value for this SRV record.
-  - `[Priority <Int32?>]`: The priority value for this SRV record.
-  - `[Target <String>]`: The target domain name for this SRV record.
-  - `[Weight <Int32?>]`: The weight value for this SRV record.
-
-TLSARECORD <ITlsaRecord[]>: The list of TLSA records in the record set.
-  - `[CertAssociationData <String>]`: This specifies the certificate association data to be matched.
-  - `[MatchingType <Int32?>]`: The matching type specifies how the certificate association is presented.
-  - `[Selector <Int32?>]`: The selector specifies which part of the TLS certificate presented by the server will be matched against the association data.
-  - `[Usage <Int32?>]`: The usage specifies the provided association that will be used to match the certificate presented in the TLS handshake.
-
-TXTRECORD <ITxtRecord[]>: The list of TXT records in the record set.
-  - `[Value <String[]>]`: The text value of this TXT record.
 
 ## RELATED LINKS
 

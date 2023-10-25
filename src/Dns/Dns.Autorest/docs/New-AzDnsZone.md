@@ -51,7 +51,8 @@ Does not modify DNS records within the zone.
 ## PARAMETERS
 
 ### -DefaultProfile
-The credentials, account, tenant, and subscription used for communication with Azure.
+The DefaultProfile parameter is not functional.
+Use the SubscriptionId parameter when available if executing the cmdlet against a different subscription.
 
 ```yaml
 Type: System.Management.Automation.PSObject
@@ -279,19 +280,6 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ### Microsoft.Azure.PowerShell.Cmdlets.Dns.Models.Api20230701Preview.IZone
 
 ## NOTES
-
-ALIASES
-
-COMPLEX PARAMETER PROPERTIES
-
-To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
-
-
-REGISTRATIONVIRTUALNETWORK <ISubResource[]>: A list of references to virtual networks that register hostnames in this DNS zone. This is a only when ZoneType is Private.
-  - `[Id <String>]`: Resource Id.
-
-RESOLUTIONVIRTUALNETWORK <ISubResource[]>: A list of references to virtual networks that resolve records in this DNS zone. This is a only when ZoneType is Private.
-  - `[Id <String>]`: Resource Id.
 
 ## RELATED LINKS
 

@@ -37,10 +37,6 @@ This operation cannot be undone.
 Remove-AzDnsDnssecConfig -ResourceGroupName dnssecrg -ZoneName contoso.com
 ```
 
-```output
-
-```
-
 This command disables DNSSEC on an existing DNS zone.
 
 ## PARAMETERS
@@ -61,7 +57,8 @@ Accept wildcard characters: False
 ```
 
 ### -DefaultProfile
-The credentials, account, tenant, and subscription used for communication with Azure.
+The DefaultProfile parameter is not functional.
+Use the SubscriptionId parameter when available if executing the cmdlet against a different subscription.
 
 ```yaml
 Type: System.Management.Automation.PSObject
@@ -227,21 +224,6 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ### System.Boolean
 
 ## NOTES
-
-ALIASES
-
-COMPLEX PARAMETER PROPERTIES
-
-To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
-
-
-INPUTOBJECT <IDnsIdentity>: Identity Parameter
-  - `[Id <String>]`: Resource identity path
-  - `[RecordType <RecordType?>]`: The type of DNS record in this record set.
-  - `[RelativeRecordSetName <String>]`: The name of the record set, relative to the name of the zone.
-  - `[ResourceGroupName <String>]`: The name of the resource group. The name is case insensitive.
-  - `[SubscriptionId <String>]`: The ID of the target subscription.
-  - `[ZoneName <String>]`: The name of the DNS zone (without a terminating dot).
 
 ## RELATED LINKS
 
