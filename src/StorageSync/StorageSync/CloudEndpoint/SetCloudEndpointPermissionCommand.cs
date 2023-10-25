@@ -78,7 +78,6 @@ namespace Microsoft.Azure.Commands.StorageSync.CloudEndpoint
         [ResourceNameCompleter("Microsoft.StorageSync/storageSyncServices/syncGroups", "ResourceGroupName", "StorageSyncServiceName")]
         public string SyncGroupName { get; set; }
 
-
         /// <summary>
         /// Gets or sets the parent object.
         /// </summary>

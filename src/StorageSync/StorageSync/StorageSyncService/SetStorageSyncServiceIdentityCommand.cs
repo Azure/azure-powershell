@@ -162,11 +162,12 @@ namespace Microsoft.Azure.Commands.StorageSync.StorageSyncService
                         }
                     }
 
-                    // TODO : Check if we need SkipServerValidation Property in case only CloudEndpoint was added
                     if(candidateServersLookup.Count == 0)
                     {
                         throw new PSArgumentException("No server found which is available for migration.");
                     }
+
+                    StorageSyncClientWrapper.VerboseLogger.Invoke($"Found {candidateServersLookup.Count} servers out of {registeredServers.Count()} total servers to migrate");
 
                     // 2. Set System Assigned managed identity to Storage Sync service
                     var updateParameters = new StorageSyncServiceUpdateParameters()
@@ -191,7 +192,7 @@ namespace Microsoft.Azure.Commands.StorageSync.StorageSyncService
 
                         if (cloudEndpoint == null)
                         {
-                            // TODO : Verbose logging for skipping Syncgroup
+                            StorageSyncClientWrapper.VerboseLogger.Invoke($"Skipping SyncGroup. No cloud Endpoint found for sync group {syncGroup.Name}");
                             continue;
                         }
                         var storageAccountResourceIdentifier = new ResourceIdentifier(cloudEndpoint.StorageAccountResourceId);
@@ -215,7 +216,6 @@ namespace Microsoft.Azure.Commands.StorageSync.StorageSyncService
                         {
                             if (candidateServersLookup.ContainsKey(serverEndpoint.ServerResourceId))
                             {
-
                                 // Identity , RoleDef, Scope
                                 scope = $"{cloudEndpoint.StorageAccountResourceId}/fileServices/default/fileshares/{cloudEndpoint.AzureFileShareName}";
                                 identityRoleAssignmentForFilsShareScope = StorageSyncClientWrapper.EnsureRoleAssignmentWithIdentity(storageAccountResourceIdentifier.Subscription,
