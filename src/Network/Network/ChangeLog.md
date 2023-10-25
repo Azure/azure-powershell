@@ -24,6 +24,7 @@
 * Updated cmdlet `New-AzLoadBalancerBackendAddressPool` to support managed IP based backend
 * Added cmdlet `New-AzSaaSNetworkVirtualAppliance` for creating a NetworkVirtualAppliance of SaaS type.
 * Added control knobs to virtual network gateways and ExpressRoute gateways as well to cmdlets operating on those.
+* Added cmdlet 'Remove-AzApplicationGatewayFirewallCustomRule' to support removing custom rule in Firewall Policy.
 
 ## Version 6.2.0
 * Added support for new Application Gateway SKU type, Basic SKU
