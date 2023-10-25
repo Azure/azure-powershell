@@ -32,7 +32,6 @@ Describe 'New-AzKustoSandboxCustomImage' {
     It 'Create' {
         $clusterName = $env.kustoFollowerClusterName
         $resourceGroupName = $env.resourceGroupName
-        $subscriptionId = $env.subscriptionId
         $sandboxCustomImageName = "testimage"
         $sandboxCustomImageParameter = @{
             LanguageVersion = "3.9.7"
