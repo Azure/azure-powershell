@@ -176,6 +176,10 @@ namespace Microsoft.Azure.Commands.KeyVault
         {
             // todo: do we want to use 1000 as batch count in msgraph API?
             List<PSADObject> result = new List<PSADObject>();
+
+            if (graphClient == null || objectIds == null || !objectIds.Any())
+                return result;
+            
             IList<Common.MSGraph.Version1_0.DirectoryObjects.Models.MicrosoftGraphDirectoryObject> adObjects;
             int objectIdBatchCount;
             const int batchCount = 1000;
@@ -196,8 +200,8 @@ namespace Microsoft.Azure.Commands.KeyVault
                         new Common.MSGraph.Version1_0.DirectoryObjects.Models.Body()
                         {
                             Ids = objectIdBatch
-                        }).Value;
-                    result.AddRange(adObjects.Select(o => o.ToPSADObject()));
+                        })?.Value;
+                    result.AddRange(adObjects?.Select(o => o.ToPSADObject()));
                 }
                 catch (Common.MSGraph.Version1_0.DirectoryObjects.Models.OdataErrorException)
                 {
@@ -209,12 +213,20 @@ namespace Microsoft.Azure.Commands.KeyVault
 
         internal static IEnumerable<PSKeyVaultAccessPolicy> ToPSKeyVaultAccessPolicies(this IEnumerable<AccessPolicyEntry> accessPolicies, IMicrosoftGraphClient graphClient)
         {
+            if (graphClient == null)
+            {
+                return accessPolicies.Select(s => new PSKeyVaultAccessPolicy(s, graphClient));
+            }
+            
             List<PSKeyVaultAccessPolicy> psAccessPolicies = new List<PSKeyVaultAccessPolicy>();
+
             // The size of accessPolicies is 0
             if (accessPolicies == null || !accessPolicies.Any())
                 {
                     return psAccessPolicies;
-            }         // accessPolicies size of assignments is 1
+            }
+
+            //  size of accessPolicies is 1
             if (accessPolicies.Count() == 1)
             {
                 // Get assignment
@@ -222,8 +234,7 @@ namespace Microsoft.Azure.Commands.KeyVault
                 return psAccessPolicies;
             }
 
-            // The size of assignments > 1
-
+            // The size of accessPolicies > 1
             // List ad objects
             List<string> objectIds = accessPolicies.Select(r => r.ObjectId).Distinct().ToList();
             List<PSADObject> adObjects = null;
