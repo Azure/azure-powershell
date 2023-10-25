@@ -14,12 +14,12 @@
   <ItemGroup>
     <PackageReference Include="Microsoft.Azure.KeyVault" Version="3.0.1" />
     <PackageReference Include="Microsoft.Azure.KeyVault.WebKey" Version="3.0.1" />
-	<PackageReference Include="Microsoft.Azure.Management.ServiceFabric" Version="1.3.0" />
   </ItemGroup>
-
-	<ItemGroup>
-		<ProjectReference Include="..\ServiceFabricManagedClusters.Management.Sdk\ServiceFabricManagedClusters.Management.sdk.csproj" />
-	</ItemGroup>
+  
+  <ItemGroup>
+    <ProjectReference Include="..\ServiceFabricManagedClusters.Management.Sdk\ServiceFabricManagedClusters.Management.sdk.csproj" />
+    <ProjectReference Include="..\ServiceFabric.Management.Sdk\ServiceFabric.Management.sdk.csproj" />
+  </ItemGroup>
 
   <ItemGroup>
     <None Update="Template\**\*.json" CopyToOutputDirectory="PreserveNewest" />
