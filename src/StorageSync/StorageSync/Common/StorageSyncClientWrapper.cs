@@ -332,6 +332,72 @@ namespace Microsoft.Azure.Commands.StorageSync.Common
             }
         }
 
+        /// <summary>
+        /// This function will try to delete role assignment if it exists.
+        /// </summary>
+        /// <param name="storageAccountSubscriptionId">Subscription id where role assignment will be created.</param>
+        /// <param name="principalId">Storage sync service identity id</param>
+        /// <param name="roleDefinitionId">Role definition id</param>
+        /// <param name="scope">Scope</param>
+        /// <returns>true if delete is successful</returns>
+        public bool DeleteRoleAssignmentWithIdentity(string storageAccountSubscriptionId, Guid principalId, string roleDefinitionId, string scope)
+        {
+            string currentSubscriptionId = AuthorizationManagementClient.SubscriptionId;
+            bool hasMismatchSubscription = currentSubscriptionId != storageAccountSubscriptionId;
+
+            try
+            {
+                if (hasMismatchSubscription)
+                {
+                    AuthorizationManagementClient.SubscriptionId = storageAccountSubscriptionId;
+                }
+
+                var resourceIdentifier = new ResourceIdentifier(scope);
+                string roleDefinitionScope = "/";
+                RoleDefinition roleDefinition = AuthorizationManagementClient.RoleDefinitions.Get(roleDefinitionScope, roleDefinitionId);
+
+                var serverPrincipalId = principalId.ToString();
+                var roleAssignments = AuthorizationManagementClient.RoleAssignments
+                    .ListForResource(
+                    resourceIdentifier.ResourceGroupName,
+                    ResourceIdentifier.GetProviderFromResourceType(resourceIdentifier.ResourceType),
+                    resourceIdentifier.ParentResource ?? "/",
+                    ResourceIdentifier.GetTypeFromResourceType(resourceIdentifier.ResourceType),
+                    resourceIdentifier.ResourceName,
+                    odataQuery: new ODataQuery<RoleAssignmentFilter>(f => f.AssignedTo(serverPrincipalId)));
+                var roleAssignmentScope = scope;
+
+                RoleAssignment roleAssignment = roleAssignments.FirstOrDefault();
+                if (roleAssignment != null)
+                {
+                    roleAssignment = AuthorizationManagementClient.RoleAssignments.Delete(roleAssignmentScope, roleAssignment.Name);
+                    StorageSyncResourceManager.Wait();
+                    VerboseLogger.Invoke($"Successfully created role assignment {roleAssignment.Id}");
+                    return true;
+                }
+            }
+            catch (Exception ex)
+            {
+                VerboseLogger.Invoke($"Failed to delete role assignment with exception {ex.Message}. Please delete role assignment using troubleshooting documents.");
+            }
+            finally
+            {
+                if (hasMismatchSubscription)
+                {
+                    AuthorizationManagementClient.SubscriptionId = currentSubscriptionId;
+                }
+            }
+            return false;
+        }
+
+        /// <summary>
+        /// This function will try to create role assignment if not already created.
+        /// </summary>
+        /// <param name="storageAccountSubscriptionId">Subscription id where role assignment will be created.</param>
+        /// <param name="principalId">Storage sync service identity id</param>
+        /// <param name="roleDefinitionId">Role definition id</param>
+        /// <param name="scope">Scope</param>
+        /// <returns>Role Assignment</returns>
         public RoleAssignment EnsureRoleAssignmentWithIdentity(string storageAccountSubscriptionId, Guid principalId, string roleDefinitionId, string scope)
         {
             string currentSubscriptionId = AuthorizationManagementClient.SubscriptionId;
