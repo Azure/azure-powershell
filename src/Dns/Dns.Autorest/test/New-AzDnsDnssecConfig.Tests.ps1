@@ -15,11 +15,17 @@ if(($null -eq $TestName) -or ($TestName -contains 'New-AzDnsDnssecConfig'))
 }
 
 Describe 'New-AzDnsDnssecConfig' {
-    It 'Create' -skip {
-        { throw [System.NotImplementedException] } | Should -Not -Throw
-    }
+    It 'Create' {
+        try {            
+            # SETUP
+            New-AzDnsZone -ResourceGroupName $env.ResourceGroup -Name $env.ZoneName2 -Location $env.Location     
 
-    It 'CreateViaIdentity' -skip {
-        { throw [System.NotImplementedException] } | Should -Not -Throw
+            # TEST
+            $config = New-AzDnsDnssecConfig -ResourceGroupName $env.ResourceGroup -ZoneName $env.ZoneName2
+            $config.SigningKey.Count | Should -Be 2
+        }
+        finally {
+            Remove-AzDnsZone -ResourceGroupName $env.ResourceGroup -Name $env.ZoneName2
+        }
     }
 }

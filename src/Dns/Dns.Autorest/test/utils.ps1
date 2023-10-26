@@ -18,6 +18,14 @@ function setupEnv() {
     # as default. You could change them if needed.
     $env.SubscriptionId = (Get-AzContext).Subscription.Id
     $env.Tenant = (Get-AzContext).Tenant.Id
+
+    # Setup zone, location, resource group
+    $env.ResourceGroup = 'dnssecrg'
+    $env.Location = 'global'
+    $env.ZoneName1 = 'dnstest' + (RandomString -allChars $false -len 6) + '.com'
+    $env.ZoneName2 = 'dnstest' + (RandomString -allChars $false -len 6) + '.com'
+    $env.ZoneName3 = 'dnstest' + (RandomString -allChars $false -len 6) + '.com'
+
     # For any resources you created for test, you should add it to $env here.
     $envFile = 'env.json'
     if ($TestMode -eq 'live') {

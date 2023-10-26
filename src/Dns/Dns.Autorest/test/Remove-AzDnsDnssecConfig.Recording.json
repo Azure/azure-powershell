@@ -1,0 +1,444 @@
+{
+  "Remove-AzDnsDnssecConfig+[NoContext]+Delete+$PUT+https://management.azure.com/subscriptions/a984ce58-225e-44d2-bc79-20a834ce85ae/resourceGroups/dnssecrg/providers/Microsoft.Network/dnsZones/dnstestd9k0ar.com?api-version=2023-07-01-preview+1": {
+    "Request": {
+      "Method": "PUT",
+      "RequestUri": "https://management.azure.com/subscriptions/a984ce58-225e-44d2-bc79-20a834ce85ae/resourceGroups/dnssecrg/providers/Microsoft.Network/dnsZones/dnstestd9k0ar.com?api-version=2023-07-01-preview",
+      "Content": "{\r\n  \"location\": \"global\"\r\n}",
+      "isContentBase64": false,
+      "Headers": {
+      },
+      "ContentHeaders": {
+        "Content-Type": [ "application/json" ],
+        "Content-Length": [ "28" ]
+      }
+    },
+    "Response": {
+      "StatusCode": 201,
+      "Headers": {
+        "Cache-Control": [ "private" ],
+        "ETag": [ "179a5a16-b525-4deb-8293-0bc75b1cca86" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "x-ms-request-id": [ "e0bd37c5-b3e3-47da-bcc7-5d89afbbfb39" ],
+        "Server": [ "Microsoft-IIS/10.0" ],
+        "X-Powered-By": [ "ASP.NET" ],
+        "x-ms-ratelimit-remaining-subscription-resource-requests": [ "11997" ],
+        "x-ms-correlation-request-id": [ "24abdb47-29b9-4d3a-ad96-2d06778a74b4" ],
+        "x-ms-routing-request-id": [ "WESTCENTRALUS:20231026T002304Z:24abdb47-29b9-4d3a-ad96-2d06778a74b4" ],
+        "Date": [ "Thu, 26 Oct 2023 00:23:04 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "542" ],
+        "Content-Type": [ "application/json; charset=utf-8" ]
+      },
+      "Content": "{\"id\":\"\\/subscriptions\\/a984ce58-225e-44d2-bc79-20a834ce85ae\\/resourceGroups\\/dnssecrg\\/providers\\/Microsoft.Network\\/dnszones\\/dnstestd9k0ar.com\",\"name\":\"dnstestd9k0ar.com\",\"type\":\"Microsoft.Network\\/dnszones\",\"etag\":\"179a5a16-b525-4deb-8293-0bc75b1cca86\",\"location\":\"global\",\"tags\":{},\"properties\":{\"maxNumberOfRecordSets\":10000,\"maxNumberOfRecordsPerRecordSet\":null,\"nameServers\":[\"ns1-83.ppe.azure-dns.com.\",\"ns2-83.ppe.azure-dns.net.\",\"ns3-83.ppe.azure-dns.org.\",\"ns4-83.ppe.azure-dns.info.\"],\"numberOfRecordSets\":2,\"zoneType\":\"Public\"}}",
+      "isContentBase64": false
+    }
+  },
+  "Remove-AzDnsDnssecConfig+[NoContext]+Delete+$PUT+https://management.azure.com/subscriptions/a984ce58-225e-44d2-bc79-20a834ce85ae/resourceGroups/dnssecrg/providers/Microsoft.Network/dnsZones/dnstestd9k0ar.com/dnssecConfigs/default?api-version=2023-07-01-preview+2": {
+    "Request": {
+      "Method": "PUT",
+      "RequestUri": "https://management.azure.com/subscriptions/a984ce58-225e-44d2-bc79-20a834ce85ae/resourceGroups/dnssecrg/providers/Microsoft.Network/dnsZones/dnstestd9k0ar.com/dnssecConfigs/default?api-version=2023-07-01-preview",
+      "Content": null,
+      "isContentBase64": false,
+      "Headers": {
+        "x-ms-unique-id": [ "17" ],
+        "x-ms-client-request-id": [ "7b6040ac-35a8-4831-ab92-cdd0835700fa" ],
+        "CommandName": [ "New-AzDnsDnssecConfig" ],
+        "FullCommandName": [ "New-AzDnsDnssecConfig_Create" ],
+        "ParameterSetName": [ "__AllParameterSets" ],
+        "User-Agent": [ "AzurePowershell/v0.0.0", "PSVersion/v7.3.8", "Az.Dns/2.1.0" ],
+        "Authorization": [ "[Filtered]" ]
+      },
+      "ContentHeaders": {
+      }
+    },
+    "Response": {
+      "StatusCode": 201,
+      "Headers": {
+        "Cache-Control": [ "private" ],
+        "ETag": [ "2b4badf0-7326-480b-b9ef-d678c8c636e3" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "x-ms-request-id": [ "7b6040ac-35a8-4831-ab92-cdd0835700fa" ],
+        "Server": [ "Microsoft-IIS/10.0" ],
+        "X-Powered-By": [ "ASP.NET" ],
+        "x-ms-ratelimit-remaining-subscription-resource-requests": [ "11997" ],
+        "x-ms-correlation-request-id": [ "c3194e8a-db3d-4a6e-9faa-cfa8baee071c" ],
+        "x-ms-routing-request-id": [ "WESTCENTRALUS:20231026T002306Z:c3194e8a-db3d-4a6e-9faa-cfa8baee071c" ],
+        "Date": [ "Thu, 26 Oct 2023 00:23:05 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "349" ],
+        "Content-Type": [ "application/json; charset=utf-8" ]
+      },
+      "Content": "{\"id\":\"\\/subscriptions\\/a984ce58-225e-44d2-bc79-20a834ce85ae\\/resourceGroups\\/dnssecrg\\/providers\\/Microsoft.Network\\/dnszones\\/dnstestd9k0ar.com\\/dnssecConfigs\\/default\",\"name\":\"default\",\"type\":\"Microsoft.Network\\/dnszones\\/dnssecConfigs\",\"etag\":\"2b4badf0-7326-480b-b9ef-d678c8c636e3\",\"properties\":{\"provisioningState\":\"Creating\",\"signingKeys\":[]}}",
+      "isContentBase64": false
+    }
+  },
+  "Remove-AzDnsDnssecConfig+[NoContext]+Delete+$GET+https://management.azure.com/subscriptions/a984ce58-225e-44d2-bc79-20a834ce85ae/resourceGroups/dnssecrg/providers/Microsoft.Network/dnsZones/dnstestd9k0ar.com/dnssecConfigs/default?api-version=2023-07-01-preview+3": {
+    "Request": {
+      "Method": "GET",
+      "RequestUri": "https://management.azure.com/subscriptions/a984ce58-225e-44d2-bc79-20a834ce85ae/resourceGroups/dnssecrg/providers/Microsoft.Network/dnsZones/dnstestd9k0ar.com/dnssecConfigs/default?api-version=2023-07-01-preview",
+      "Content": null,
+      "isContentBase64": false,
+      "Headers": {
+        "Authorization": [ "[Filtered]" ],
+        "x-ms-unique-id": [ "18" ],
+        "x-ms-client-request-id": [ "7b6040ac-35a8-4831-ab92-cdd0835700fa" ],
+        "CommandName": [ "New-AzDnsDnssecConfig" ],
+        "FullCommandName": [ "New-AzDnsDnssecConfig_Create" ],
+        "ParameterSetName": [ "__AllParameterSets" ],
+        "User-Agent": [ "AzurePowershell/v0.0.0", "PSVersion/v7.3.8", "Az.Dns/2.1.0" ]
+      },
+      "ContentHeaders": {
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Cache-Control": [ "private" ],
+        "ETag": [ "d2944680-9530-48ff-932c-c504f686ff34" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "x-ms-request-id": [ "7b6040ac-35a8-4831-ab92-cdd0835700fa" ],
+        "Server": [ "Microsoft-IIS/10.0" ],
+        "X-Powered-By": [ "ASP.NET" ],
+        "x-ms-ratelimit-remaining-subscription-resource-requests": [ "494" ],
+        "x-ms-correlation-request-id": [ "43856cee-9553-4801-997c-b711bc352158" ],
+        "x-ms-routing-request-id": [ "WESTCENTRALUS:20231026T002336Z:43856cee-9553-4801-997c-b711bc352158" ],
+        "Date": [ "Thu, 26 Oct 2023 00:23:35 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "941" ],
+        "Content-Type": [ "application/json; charset=utf-8" ]
+      },
+      "Content": "{\"id\":\"\\/subscriptions\\/a984ce58-225e-44d2-bc79-20a834ce85ae\\/resourceGroups\\/dnssecrg\\/providers\\/Microsoft.Network\\/dnszones\\/dnstestd9k0ar.com\\/dnssecConfigs\\/default\",\"name\":\"default\",\"type\":\"Microsoft.Network\\/dnszones\\/dnssecConfigs\",\"etag\":\"d2944680-9530-48ff-932c-c504f686ff34\",\"properties\":{\"provisioningState\":\"Succeeded\",\"signingKeys\":[{\"delegationSignerInfo\":[],\"flags\":256,\"keyTag\":10068,\"protocol\":3,\"publicKey\":\"bh3+jJlgiOjemK4ztdP3kfIAfsIT8BTTaaj3tD7KLwGbbUeExUNiPxUnY\\/90DNdpeWuO\\/jOhOT+ByID1lcgUjw==\",\"securityAlgorithmType\":13},{\"delegationSignerInfo\":[{\"digestAlgorithmType\":2,\"digestValue\":\"92A14D86A8A5F7475343E3595F80F0B666D8BF63D5BDFB2531A1169BA12FE378\",\"record\":\"11899 13 2 92A14D86A8A5F7475343E3595F80F0B666D8BF63D5BDFB2531A1169BA12FE378\"}],\"flags\":257,\"keyTag\":11899,\"protocol\":3,\"publicKey\":\"pfuM0UPzKBKIpdh1Lv9egxQS5Pre6s3Hs9y2Y3PD6FW5pws8gHjm\\/Xl6SNAVY6AL7zmnXbr4RahyZECs7D5WRw==\",\"securityAlgorithmType\":13}]}}",
+      "isContentBase64": false
+    }
+  },
+  "Remove-AzDnsDnssecConfig+[NoContext]+Delete+$GET+https://management.azure.com/subscriptions/a984ce58-225e-44d2-bc79-20a834ce85ae/resourceGroups/dnssecrg/providers/Microsoft.Network/dnsZones/dnstestd9k0ar.com/dnssecConfigs/default?api-version=2023-07-01-preview+4": {
+    "Request": {
+      "Method": "GET",
+      "RequestUri": "https://management.azure.com/subscriptions/a984ce58-225e-44d2-bc79-20a834ce85ae/resourceGroups/dnssecrg/providers/Microsoft.Network/dnsZones/dnstestd9k0ar.com/dnssecConfigs/default?api-version=2023-07-01-preview",
+      "Content": null,
+      "isContentBase64": false,
+      "Headers": {
+        "Authorization": [ "[Filtered]" ],
+        "x-ms-unique-id": [ "19" ],
+        "x-ms-client-request-id": [ "7b6040ac-35a8-4831-ab92-cdd0835700fa" ],
+        "CommandName": [ "New-AzDnsDnssecConfig" ],
+        "FullCommandName": [ "New-AzDnsDnssecConfig_Create" ],
+        "ParameterSetName": [ "__AllParameterSets" ],
+        "User-Agent": [ "AzurePowershell/v0.0.0", "PSVersion/v7.3.8", "Az.Dns/2.1.0" ]
+      },
+      "ContentHeaders": {
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Cache-Control": [ "private" ],
+        "ETag": [ "d2944680-9530-48ff-932c-c504f686ff34" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "x-ms-request-id": [ "7b6040ac-35a8-4831-ab92-cdd0835700fa" ],
+        "Server": [ "Microsoft-IIS/10.0" ],
+        "X-Powered-By": [ "ASP.NET" ],
+        "x-ms-ratelimit-remaining-subscription-resource-requests": [ "493" ],
+        "x-ms-correlation-request-id": [ "7be8a184-b256-4547-9f4e-7068003fa1e1" ],
+        "x-ms-routing-request-id": [ "WESTCENTRALUS:20231026T002336Z:7be8a184-b256-4547-9f4e-7068003fa1e1" ],
+        "Date": [ "Thu, 26 Oct 2023 00:23:35 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "941" ],
+        "Content-Type": [ "application/json; charset=utf-8" ]
+      },
+      "Content": "{\"id\":\"\\/subscriptions\\/a984ce58-225e-44d2-bc79-20a834ce85ae\\/resourceGroups\\/dnssecrg\\/providers\\/Microsoft.Network\\/dnszones\\/dnstestd9k0ar.com\\/dnssecConfigs\\/default\",\"name\":\"default\",\"type\":\"Microsoft.Network\\/dnszones\\/dnssecConfigs\",\"etag\":\"d2944680-9530-48ff-932c-c504f686ff34\",\"properties\":{\"provisioningState\":\"Succeeded\",\"signingKeys\":[{\"delegationSignerInfo\":[],\"flags\":256,\"keyTag\":10068,\"protocol\":3,\"publicKey\":\"bh3+jJlgiOjemK4ztdP3kfIAfsIT8BTTaaj3tD7KLwGbbUeExUNiPxUnY\\/90DNdpeWuO\\/jOhOT+ByID1lcgUjw==\",\"securityAlgorithmType\":13},{\"delegationSignerInfo\":[{\"digestAlgorithmType\":2,\"digestValue\":\"92A14D86A8A5F7475343E3595F80F0B666D8BF63D5BDFB2531A1169BA12FE378\",\"record\":\"11899 13 2 92A14D86A8A5F7475343E3595F80F0B666D8BF63D5BDFB2531A1169BA12FE378\"}],\"flags\":257,\"keyTag\":11899,\"protocol\":3,\"publicKey\":\"pfuM0UPzKBKIpdh1Lv9egxQS5Pre6s3Hs9y2Y3PD6FW5pws8gHjm\\/Xl6SNAVY6AL7zmnXbr4RahyZECs7D5WRw==\",\"securityAlgorithmType\":13}]}}",
+      "isContentBase64": false
+    }
+  },
+  "Remove-AzDnsDnssecConfig+[NoContext]+Delete+$DELETE+https://management.azure.com/subscriptions/a984ce58-225e-44d2-bc79-20a834ce85ae/resourceGroups/dnssecrg/providers/Microsoft.Network/dnsZones/dnstestd9k0ar.com/dnssecConfigs/default?api-version=2023-07-01-preview+5": {
+    "Request": {
+      "Method": "DELETE",
+      "RequestUri": "https://management.azure.com/subscriptions/a984ce58-225e-44d2-bc79-20a834ce85ae/resourceGroups/dnssecrg/providers/Microsoft.Network/dnsZones/dnstestd9k0ar.com/dnssecConfigs/default?api-version=2023-07-01-preview",
+      "Content": null,
+      "isContentBase64": false,
+      "Headers": {
+        "x-ms-unique-id": [ "20" ],
+        "x-ms-client-request-id": [ "2500d1da-b1e0-4c28-b425-dec51624f22e" ],
+        "CommandName": [ "Remove-AzDnsDnssecConfig" ],
+        "FullCommandName": [ "Remove-AzDnsDnssecConfig_Delete" ],
+        "ParameterSetName": [ "__AllParameterSets" ],
+        "User-Agent": [ "AzurePowershell/v0.0.0", "PSVersion/v7.3.8", "Az.Dns/2.1.0" ],
+        "Authorization": [ "[Filtered]" ]
+      },
+      "ContentHeaders": {
+      }
+    },
+    "Response": {
+      "StatusCode": 202,
+      "Headers": {
+        "Cache-Control": [ "private" ],
+        "Location": [ "https://management.azure.com/subscriptions/a984ce58-225e-44d2-bc79-20a834ce85ae/resourceGroups/dnssecrg/providers/Microsoft.Network/dnsOperationResults/RnJvbnRFbmRBc3luY09wZXJhdGlvbjtEZWxldGVab25lRG5zc2VjOzBhZmUyOGY2LTIyZDMtNDM2NS05MGUwLWQ5ZGIxNmExMzRiNA==?api-version=2023-07-01-preview\u0026t=638338766177395739\u0026c=MIIHHjCCBgagAwIBAgITfwHPHxKTmgA4c2tO5AAEAc8fEjANBgkqhkiG9w0BAQsFADBEMRMwEQYKCZImiZPyLGQBGRYDR0JMMRMwEQYKCZImiZPyLGQBGRYDQU1FMRgwFgYDVQQDEw9BTUUgSW5mcmEgQ0EgMDIwHhcNMjMwODAyMDY0ODMxWhcNMjQwNzI3MDY0ODMxWjBAMT4wPAYDVQQDEzVhc3luY29wZXJhdGlvbnNpZ25pbmdjZXJ0aWZpY2F0ZS5tYW5hZ2VtZW50LmF6dXJlLmNvbTCCASIwDQYJKoZIhvcNAQEBBQADggEPADCCAQoCggEBAMhsLKVwXCEctdIBSuxepGRU-bDlA63PQ-s4EzPR1B6S4OSTTk0a0Sxl_gs9xzXpjiuqW1XasW2mdnH9-eCqSmWfuokYD5CrV9-tUQSHefCzPU5-h7OhO2CMEchlYEv7PGeLi6xoSene3rm1xUTD3MSRDuaRC3WOBKEnhPSWdRJvxE13KZV0o3fRjQ2cvuOP5jsJZBX3kLXBDZngsALFQ4gXWXVn7CO7HD0LttkpsIpm4ppWcvcExZ4ct27mOZHEAOzQ_5vpUPM4kFAVoez6DQWsOPEmrmczFl_IDPNfZnQ64S3O36TnpdS8-JkREseyUzJdJrjzFQ2lnxqCRP_qJgECAwEAAaOCBAswggQHMCcGCSsGAQQBgjcVCgQaMBgwCgYIKwYBBQUHAwEwCgYIKwYBBQUHAwIwPQYJKwYBBAGCNxUHBDAwLgYmKwYBBAGCNxUIhpDjDYTVtHiE8Ys-hZvdFs6dEoFggvX2K4Py0SACAWQCAQowggHaBggrBgEFBQcBAQSCAcwwggHIMGYGCCsGAQUFBzAChlpodHRwOi8vY3JsLm1pY3Jvc29mdC5jb20vcGtpaW5mcmEvQ2VydHMvQkwyUEtJSU5UQ0EwMS5BTUUuR0JMX0FNRSUyMEluZnJhJTIwQ0ElMjAwMig0KS5jcnQwVgYIKwYBBQUHMAKGSmh0dHA6Ly9jcmwxLmFtZS5nYmwvYWlhL0JMMlBLSUlOVENBMDEuQU1FLkdCTF9BTUUlMjBJbmZyYSUyMENBJTIwMDIoNCkuY3J0MFYGCCsGAQUFBzAChkpodHRwOi8vY3JsMi5hbWUuZ2JsL2FpYS9CTDJQS0lJTlRDQTAxLkFNRS5HQkxfQU1FJTIwSW5mcmElMjBDQSUyMDAyKDQpLmNydDBWBggrBgEFBQcwAoZKaHR0cDovL2NybDMuYW1lLmdibC9haWEvQkwyUEtJSU5UQ0EwMS5BTUUuR0JMX0FNRSUyMEluZnJhJTIwQ0ElMjAwMig0KS5jcnQwVgYIKwYBBQUHMAKGSmh0dHA6Ly9jcmw0LmFtZS5nYmwvYWlhL0JMMlBLSUlOVENBMDEuQU1FLkdCTF9BTUUlMjBJbmZyYSUyMENBJTIwMDIoNCkuY3J0MB0GA1UdDgQWBBTkraQRH5WmxdPc9yZtH-shaeLpoTAOBgNVHQ8BAf8EBAMCBaAwggE1BgNVHR8EggEsMIIBKDCCASSgggEgoIIBHIZCaHR0cDovL2NybC5taWNyb3NvZnQuY29tL3BraWluZnJhL0NSTC9BTUUlMjBJbmZyYSUyMENBJTIwMDIoNCkuY3JshjRodHRwOi8vY3JsMS5hbWUuZ2JsL2NybC9BTUUlMjBJbmZyYSUyMENBJTIwMDIoNCkuY3JshjRodHRwOi8vY3JsMi5hbWUuZ2JsL2NybC9BTUUlMjBJbmZyYSUyMENBJTIwMDIoNCkuY3JshjRodHRwOi8vY3JsMy5hbWUuZ2JsL2NybC9BTUUlMjBJbmZyYSUyMENBJTIwMDIoNCkuY3JshjRodHRwOi8vY3JsNC5hbWUuZ2JsL2NybC9BTUUlMjBJbmZyYSUyMENBJTIwMDIoNCkuY3JsMBcGA1UdIAQQMA4wDAYKKwYBBAGCN3sBATAfBgNVHSMEGDAWgBSuecJrXSWIEwb2BwnDl3x7l48dVTAdBgNVHSUEFjAUBggrBgEFBQcDAQYIKwYBBQUHAwIwDQYJKoZIhvcNAQELBQADggEBAA39junRQopC8uRS_tBsR6-M6E04h_HoqhY9NYKs6e2gE1P_mO05iJYTllHMf6Ow3lqyZUIDqiFotgObCVH6fRLL3RLdGlUX5H3hTNh2lhtMXf7Q4uJZu6CDnvKvIiUKIC_LpFjzXaBA8W2OyM1wngAx4djk4L_BBonrspi5Ox23l2sIA7ad7pa9wees8j8bqK2ZptGZfAEt6Tbgv1G0sPL_QJcqfI-lRpEcdFWllxJG4w26KINRMT9KFEIIZQDh3GjOA2JIWOhjOMr9rlsSYDjTJsNH3smFtZCuBnOIbfLKYgeeKF7u8jHXAJWruGk8NM9qRTuoSezGwrqehGhLzuI\u0026s=H1bRe3U8iY73b3ZO25q5HqQUOrS-4HXo0zCB5SDEety-2tosIgWJypPoRoih6eZMsyh-1CMjeZKnsZqgAUO6AyR8q1UKY-BfEYj53pcdnee9oCSbi-CwVp5qSCn_ntALJZg7If671iSE1jzj_yzIOUcz-tBTw_yZfYdI3qSx9MpG3G1QqS5nLgo_AQgxONu2B2EzOsEnfIJGcWVb58IMzhixcdSdDlbMO6dDz2fVhYfYmlUwoHUNyIeQExGhY_tcElI4_S5qLJx1Ko3ayKsFZTC_c1E3_wZ7wexvc0s5CHmsb-82THrIho08KotdTKXgOAvoeFd46E6z1ekmoUAp8w\u0026h=RR_amo-6kUX66rap7ZAHps-1lNJOPXKzro4pPLCF3NU" ],
+        "Retry-After": [ "3" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "Azure-AsyncOperation": [ "https://management.azure.com/subscriptions/a984ce58-225e-44d2-bc79-20a834ce85ae/resourceGroups/dnssecrg/providers/Microsoft.Network/dnsOperationStatuses/RnJvbnRFbmRBc3luY09wZXJhdGlvbjtEZWxldGVab25lRG5zc2VjOzBhZmUyOGY2LTIyZDMtNDM2NS05MGUwLWQ5ZGIxNmExMzRiNA==?api-version=2023-07-01-preview\u0026t=638338766177395739\u0026c=MIIHHjCCBgagAwIBAgITfwHPHxKTmgA4c2tO5AAEAc8fEjANBgkqhkiG9w0BAQsFADBEMRMwEQYKCZImiZPyLGQBGRYDR0JMMRMwEQYKCZImiZPyLGQBGRYDQU1FMRgwFgYDVQQDEw9BTUUgSW5mcmEgQ0EgMDIwHhcNMjMwODAyMDY0ODMxWhcNMjQwNzI3MDY0ODMxWjBAMT4wPAYDVQQDEzVhc3luY29wZXJhdGlvbnNpZ25pbmdjZXJ0aWZpY2F0ZS5tYW5hZ2VtZW50LmF6dXJlLmNvbTCCASIwDQYJKoZIhvcNAQEBBQADggEPADCCAQoCggEBAMhsLKVwXCEctdIBSuxepGRU-bDlA63PQ-s4EzPR1B6S4OSTTk0a0Sxl_gs9xzXpjiuqW1XasW2mdnH9-eCqSmWfuokYD5CrV9-tUQSHefCzPU5-h7OhO2CMEchlYEv7PGeLi6xoSene3rm1xUTD3MSRDuaRC3WOBKEnhPSWdRJvxE13KZV0o3fRjQ2cvuOP5jsJZBX3kLXBDZngsALFQ4gXWXVn7CO7HD0LttkpsIpm4ppWcvcExZ4ct27mOZHEAOzQ_5vpUPM4kFAVoez6DQWsOPEmrmczFl_IDPNfZnQ64S3O36TnpdS8-JkREseyUzJdJrjzFQ2lnxqCRP_qJgECAwEAAaOCBAswggQHMCcGCSsGAQQBgjcVCgQaMBgwCgYIKwYBBQUHAwEwCgYIKwYBBQUHAwIwPQYJKwYBBAGCNxUHBDAwLgYmKwYBBAGCNxUIhpDjDYTVtHiE8Ys-hZvdFs6dEoFggvX2K4Py0SACAWQCAQowggHaBggrBgEFBQcBAQSCAcwwggHIMGYGCCsGAQUFBzAChlpodHRwOi8vY3JsLm1pY3Jvc29mdC5jb20vcGtpaW5mcmEvQ2VydHMvQkwyUEtJSU5UQ0EwMS5BTUUuR0JMX0FNRSUyMEluZnJhJTIwQ0ElMjAwMig0KS5jcnQwVgYIKwYBBQUHMAKGSmh0dHA6Ly9jcmwxLmFtZS5nYmwvYWlhL0JMMlBLSUlOVENBMDEuQU1FLkdCTF9BTUUlMjBJbmZyYSUyMENBJTIwMDIoNCkuY3J0MFYGCCsGAQUFBzAChkpodHRwOi8vY3JsMi5hbWUuZ2JsL2FpYS9CTDJQS0lJTlRDQTAxLkFNRS5HQkxfQU1FJTIwSW5mcmElMjBDQSUyMDAyKDQpLmNydDBWBggrBgEFBQcwAoZKaHR0cDovL2NybDMuYW1lLmdibC9haWEvQkwyUEtJSU5UQ0EwMS5BTUUuR0JMX0FNRSUyMEluZnJhJTIwQ0ElMjAwMig0KS5jcnQwVgYIKwYBBQUHMAKGSmh0dHA6Ly9jcmw0LmFtZS5nYmwvYWlhL0JMMlBLSUlOVENBMDEuQU1FLkdCTF9BTUUlMjBJbmZyYSUyMENBJTIwMDIoNCkuY3J0MB0GA1UdDgQWBBTkraQRH5WmxdPc9yZtH-shaeLpoTAOBgNVHQ8BAf8EBAMCBaAwggE1BgNVHR8EggEsMIIBKDCCASSgggEgoIIBHIZCaHR0cDovL2NybC5taWNyb3NvZnQuY29tL3BraWluZnJhL0NSTC9BTUUlMjBJbmZyYSUyMENBJTIwMDIoNCkuY3JshjRodHRwOi8vY3JsMS5hbWUuZ2JsL2NybC9BTUUlMjBJbmZyYSUyMENBJTIwMDIoNCkuY3JshjRodHRwOi8vY3JsMi5hbWUuZ2JsL2NybC9BTUUlMjBJbmZyYSUyMENBJTIwMDIoNCkuY3JshjRodHRwOi8vY3JsMy5hbWUuZ2JsL2NybC9BTUUlMjBJbmZyYSUyMENBJTIwMDIoNCkuY3JshjRodHRwOi8vY3JsNC5hbWUuZ2JsL2NybC9BTUUlMjBJbmZyYSUyMENBJTIwMDIoNCkuY3JsMBcGA1UdIAQQMA4wDAYKKwYBBAGCN3sBATAfBgNVHSMEGDAWgBSuecJrXSWIEwb2BwnDl3x7l48dVTAdBgNVHSUEFjAUBggrBgEFBQcDAQYIKwYBBQUHAwIwDQYJKoZIhvcNAQELBQADggEBAA39junRQopC8uRS_tBsR6-M6E04h_HoqhY9NYKs6e2gE1P_mO05iJYTllHMf6Ow3lqyZUIDqiFotgObCVH6fRLL3RLdGlUX5H3hTNh2lhtMXf7Q4uJZu6CDnvKvIiUKIC_LpFjzXaBA8W2OyM1wngAx4djk4L_BBonrspi5Ox23l2sIA7ad7pa9wees8j8bqK2ZptGZfAEt6Tbgv1G0sPL_QJcqfI-lRpEcdFWllxJG4w26KINRMT9KFEIIZQDh3GjOA2JIWOhjOMr9rlsSYDjTJsNH3smFtZCuBnOIbfLKYgeeKF7u8jHXAJWruGk8NM9qRTuoSezGwrqehGhLzuI\u0026s=fejJu208jcNA1LsOuN1W-as1WmZoWUAWiEDpQOfJn8p1sffMie8HrcFkuCEIza917JOA8Gkbn2CPPdC_4HxLsKG2-eISRAL3KN2dxieaqkgXuATg7L10oRnRt1XuV3mzr2phRihlB07UGtv1w214kW3yvHzVNmc4BhyGd2Brle-RE0rylTt453058vxSIvQAws1Fv1QmI3QGFgZKIh8PO67-F0ItAc11y7DWH22vx7ylmXg5yudTJStuEDI3AU76gevBcsIld8FJGxVcDkeXAqxznvK2o23rM8iSP5j1LY1Vki6VlSJGSv5zRWhQjauyQ0IBnlHdJKVQadti_UB25g\u0026h=j2FMptXNuchvRc5CkmnoO01X-E1253ooz4WSPk6NCnA" ],
+        "x-ms-request-id": [ "2500d1da-b1e0-4c28-b425-dec51624f22e" ],
+        "Server": [ "Microsoft-IIS/10.0" ],
+        "X-Powered-By": [ "ASP.NET" ],
+        "x-ms-ratelimit-remaining-subscription-resource-requests": [ "11999" ],
+        "x-ms-correlation-request-id": [ "6513494a-76b5-40a7-b063-3208b7bc81e3" ],
+        "x-ms-routing-request-id": [ "WESTCENTRALUS:20231026T002337Z:6513494a-76b5-40a7-b063-3208b7bc81e3" ],
+        "Date": [ "Thu, 26 Oct 2023 00:23:36 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "0" ]
+      },
+      "Content": null,
+      "isContentBase64": false
+    }
+  },
+  "Remove-AzDnsDnssecConfig+[NoContext]+Delete+$GET+https://management.azure.com/subscriptions/a984ce58-225e-44d2-bc79-20a834ce85ae/resourceGroups/dnssecrg/providers/Microsoft.Network/dnsOperationStatuses/RnJvbnRFbmRBc3luY09wZXJhdGlvbjtEZWxldGVab25lRG5zc2VjOzBhZmUyOGY2LTIyZDMtNDM2NS05MGUwLWQ5ZGIxNmExMzRiNA==?api-version=2023-07-01-preview\u0026t=638338766177395739\u0026c=MIIHHjCCBgagAwIBAgITfwHPHxKTmgA4c2tO5AAEAc8fEjANBgkqhkiG9w0BAQsFADBEMRMwEQYKCZImiZPyLGQBGRYDR0JMMRMwEQYKCZImiZPyLGQBGRYDQU1FMRgwFgYDVQQDEw9BTUUgSW5mcmEgQ0EgMDIwHhcNMjMwODAyMDY0ODMxWhcNMjQwNzI3MDY0ODMxWjBAMT4wPAYDVQQDEzVhc3luY29wZXJhdGlvbnNpZ25pbmdjZXJ0aWZpY2F0ZS5tYW5hZ2VtZW50LmF6dXJlLmNvbTCCASIwDQYJKoZIhvcNAQEBBQADggEPADCCAQoCggEBAMhsLKVwXCEctdIBSuxepGRU-bDlA63PQ-s4EzPR1B6S4OSTTk0a0Sxl_gs9xzXpjiuqW1XasW2mdnH9-eCqSmWfuokYD5CrV9-tUQSHefCzPU5-h7OhO2CMEchlYEv7PGeLi6xoSene3rm1xUTD3MSRDuaRC3WOBKEnhPSWdRJvxE13KZV0o3fRjQ2cvuOP5jsJZBX3kLXBDZngsALFQ4gXWXVn7CO7HD0LttkpsIpm4ppWcvcExZ4ct27mOZHEAOzQ_5vpUPM4kFAVoez6DQWsOPEmrmczFl_IDPNfZnQ64S3O36TnpdS8-JkREseyUzJdJrjzFQ2lnxqCRP_qJgECAwEAAaOCBAswggQHMCcGCSsGAQQBgjcVCgQaMBgwCgYIKwYBBQUHAwEwCgYIKwYBBQUHAwIwPQYJKwYBBAGCNxUHBDAwLgYmKwYBBAGCNxUIhpDjDYTVtHiE8Ys-hZvdFs6dEoFggvX2K4Py0SACAWQCAQowggHaBggrBgEFBQcBAQSCAcwwggHIMGYGCCsGAQUFBzAChlpodHRwOi8vY3JsLm1pY3Jvc29mdC5jb20vcGtpaW5mcmEvQ2VydHMvQkwyUEtJSU5UQ0EwMS5BTUUuR0JMX0FNRSUyMEluZnJhJTIwQ0ElMjAwMig0KS5jcnQwVgYIKwYBBQUHMAKGSmh0dHA6Ly9jcmwxLmFtZS5nYmwvYWlhL0JMMlBLSUlOVENBMDEuQU1FLkdCTF9BTUUlMjBJbmZyYSUyMENBJTIwMDIoNCkuY3J0MFYGCCsGAQUFBzAChkpodHRwOi8vY3JsMi5hbWUuZ2JsL2FpYS9CTDJQS0lJTlRDQTAxLkFNRS5HQkxfQU1FJTIwSW5mcmElMjBDQSUyMDAyKDQpLmNydDBWBggrBgEFBQcwAoZKaHR0cDovL2NybDMuYW1lLmdibC9haWEvQkwyUEtJSU5UQ0EwMS5BTUUuR0JMX0FNRSUyMEluZnJhJTIwQ0ElMjAwMig0KS5jcnQwVgYIKwYBBQUHMAKGSmh0dHA6Ly9jcmw0LmFtZS5nYmwvYWlhL0JMMlBLSUlOVENBMDEuQU1FLkdCTF9BTUUlMjBJbmZyYSUyMENBJTIwMDIoNCkuY3J0MB0GA1UdDgQWBBTkraQRH5WmxdPc9yZtH-shaeLpoTAOBgNVHQ8BAf8EBAMCBaAwggE1BgNVHR8EggEsMIIBKDCCASSgggEgoIIBHIZCaHR0cDovL2NybC5taWNyb3NvZnQuY29tL3BraWluZnJhL0NSTC9BTUUlMjBJbmZyYSUyMENBJTIwMDIoNCkuY3JshjRodHRwOi8vY3JsMS5hbWUuZ2JsL2NybC9BTUUlMjBJbmZyYSUyMENBJTIwMDIoNCkuY3JshjRodHRwOi8vY3JsMi5hbWUuZ2JsL2NybC9BTUUlMjBJbmZyYSUyMENBJTIwMDIoNCkuY3JshjRodHRwOi8vY3JsMy5hbWUuZ2JsL2NybC9BTUUlMjBJbmZyYSUyMENBJTIwMDIoNCkuY3JshjRodHRwOi8vY3JsNC5hbWUuZ2JsL2NybC9BTUUlMjBJbmZyYSUyMENBJTIwMDIoNCkuY3JsMBcGA1UdIAQQMA4wDAYKKwYBBAGCN3sBATAfBgNVHSMEGDAWgBSuecJrXSWIEwb2BwnDl3x7l48dVTAdBgNVHSUEFjAUBggrBgEFBQcDAQYIKwYBBQUHAwIwDQYJKoZIhvcNAQELBQADggEBAA39junRQopC8uRS_tBsR6-M6E04h_HoqhY9NYKs6e2gE1P_mO05iJYTllHMf6Ow3lqyZUIDqiFotgObCVH6fRLL3RLdGlUX5H3hTNh2lhtMXf7Q4uJZu6CDnvKvIiUKIC_LpFjzXaBA8W2OyM1wngAx4djk4L_BBonrspi5Ox23l2sIA7ad7pa9wees8j8bqK2ZptGZfAEt6Tbgv1G0sPL_QJcqfI-lRpEcdFWllxJG4w26KINRMT9KFEIIZQDh3GjOA2JIWOhjOMr9rlsSYDjTJsNH3smFtZCuBnOIbfLKYgeeKF7u8jHXAJWruGk8NM9qRTuoSezGwrqehGhLzuI\u0026s=fejJu208jcNA1LsOuN1W-as1WmZoWUAWiEDpQOfJn8p1sffMie8HrcFkuCEIza917JOA8Gkbn2CPPdC_4HxLsKG2-eISRAL3KN2dxieaqkgXuATg7L10oRnRt1XuV3mzr2phRihlB07UGtv1w214kW3yvHzVNmc4BhyGd2Brle-RE0rylTt453058vxSIvQAws1Fv1QmI3QGFgZKIh8PO67-F0ItAc11y7DWH22vx7ylmXg5yudTJStuEDI3AU76gevBcsIld8FJGxVcDkeXAqxznvK2o23rM8iSP5j1LY1Vki6VlSJGSv5zRWhQjauyQ0IBnlHdJKVQadti_UB25g\u0026h=j2FMptXNuchvRc5CkmnoO01X-E1253ooz4WSPk6NCnA+6": {
+    "Request": {
+      "Method": "GET",
+      "RequestUri": "https://management.azure.com/subscriptions/a984ce58-225e-44d2-bc79-20a834ce85ae/resourceGroups/dnssecrg/providers/Microsoft.Network/dnsOperationStatuses/RnJvbnRFbmRBc3luY09wZXJhdGlvbjtEZWxldGVab25lRG5zc2VjOzBhZmUyOGY2LTIyZDMtNDM2NS05MGUwLWQ5ZGIxNmExMzRiNA==?api-version=2023-07-01-preview\u0026t=638338766177395739\u0026c=MIIHHjCCBgagAwIBAgITfwHPHxKTmgA4c2tO5AAEAc8fEjANBgkqhkiG9w0BAQsFADBEMRMwEQYKCZImiZPyLGQBGRYDR0JMMRMwEQYKCZImiZPyLGQBGRYDQU1FMRgwFgYDVQQDEw9BTUUgSW5mcmEgQ0EgMDIwHhcNMjMwODAyMDY0ODMxWhcNMjQwNzI3MDY0ODMxWjBAMT4wPAYDVQQDEzVhc3luY29wZXJhdGlvbnNpZ25pbmdjZXJ0aWZpY2F0ZS5tYW5hZ2VtZW50LmF6dXJlLmNvbTCCASIwDQYJKoZIhvcNAQEBBQADggEPADCCAQoCggEBAMhsLKVwXCEctdIBSuxepGRU-bDlA63PQ-s4EzPR1B6S4OSTTk0a0Sxl_gs9xzXpjiuqW1XasW2mdnH9-eCqSmWfuokYD5CrV9-tUQSHefCzPU5-h7OhO2CMEchlYEv7PGeLi6xoSene3rm1xUTD3MSRDuaRC3WOBKEnhPSWdRJvxE13KZV0o3fRjQ2cvuOP5jsJZBX3kLXBDZngsALFQ4gXWXVn7CO7HD0LttkpsIpm4ppWcvcExZ4ct27mOZHEAOzQ_5vpUPM4kFAVoez6DQWsOPEmrmczFl_IDPNfZnQ64S3O36TnpdS8-JkREseyUzJdJrjzFQ2lnxqCRP_qJgECAwEAAaOCBAswggQHMCcGCSsGAQQBgjcVCgQaMBgwCgYIKwYBBQUHAwEwCgYIKwYBBQUHAwIwPQYJKwYBBAGCNxUHBDAwLgYmKwYBBAGCNxUIhpDjDYTVtHiE8Ys-hZvdFs6dEoFggvX2K4Py0SACAWQCAQowggHaBggrBgEFBQcBAQSCAcwwggHIMGYGCCsGAQUFBzAChlpodHRwOi8vY3JsLm1pY3Jvc29mdC5jb20vcGtpaW5mcmEvQ2VydHMvQkwyUEtJSU5UQ0EwMS5BTUUuR0JMX0FNRSUyMEluZnJhJTIwQ0ElMjAwMig0KS5jcnQwVgYIKwYBBQUHMAKGSmh0dHA6Ly9jcmwxLmFtZS5nYmwvYWlhL0JMMlBLSUlOVENBMDEuQU1FLkdCTF9BTUUlMjBJbmZyYSUyMENBJTIwMDIoNCkuY3J0MFYGCCsGAQUFBzAChkpodHRwOi8vY3JsMi5hbWUuZ2JsL2FpYS9CTDJQS0lJTlRDQTAxLkFNRS5HQkxfQU1FJTIwSW5mcmElMjBDQSUyMDAyKDQpLmNydDBWBggrBgEFBQcwAoZKaHR0cDovL2NybDMuYW1lLmdibC9haWEvQkwyUEtJSU5UQ0EwMS5BTUUuR0JMX0FNRSUyMEluZnJhJTIwQ0ElMjAwMig0KS5jcnQwVgYIKwYBBQUHMAKGSmh0dHA6Ly9jcmw0LmFtZS5nYmwvYWlhL0JMMlBLSUlOVENBMDEuQU1FLkdCTF9BTUUlMjBJbmZyYSUyMENBJTIwMDIoNCkuY3J0MB0GA1UdDgQWBBTkraQRH5WmxdPc9yZtH-shaeLpoTAOBgNVHQ8BAf8EBAMCBaAwggE1BgNVHR8EggEsMIIBKDCCASSgggEgoIIBHIZCaHR0cDovL2NybC5taWNyb3NvZnQuY29tL3BraWluZnJhL0NSTC9BTUUlMjBJbmZyYSUyMENBJTIwMDIoNCkuY3JshjRodHRwOi8vY3JsMS5hbWUuZ2JsL2NybC9BTUUlMjBJbmZyYSUyMENBJTIwMDIoNCkuY3JshjRodHRwOi8vY3JsMi5hbWUuZ2JsL2NybC9BTUUlMjBJbmZyYSUyMENBJTIwMDIoNCkuY3JshjRodHRwOi8vY3JsMy5hbWUuZ2JsL2NybC9BTUUlMjBJbmZyYSUyMENBJTIwMDIoNCkuY3JshjRodHRwOi8vY3JsNC5hbWUuZ2JsL2NybC9BTUUlMjBJbmZyYSUyMENBJTIwMDIoNCkuY3JsMBcGA1UdIAQQMA4wDAYKKwYBBAGCN3sBATAfBgNVHSMEGDAWgBSuecJrXSWIEwb2BwnDl3x7l48dVTAdBgNVHSUEFjAUBggrBgEFBQcDAQYIKwYBBQUHAwIwDQYJKoZIhvcNAQELBQADggEBAA39junRQopC8uRS_tBsR6-M6E04h_HoqhY9NYKs6e2gE1P_mO05iJYTllHMf6Ow3lqyZUIDqiFotgObCVH6fRLL3RLdGlUX5H3hTNh2lhtMXf7Q4uJZu6CDnvKvIiUKIC_LpFjzXaBA8W2OyM1wngAx4djk4L_BBonrspi5Ox23l2sIA7ad7pa9wees8j8bqK2ZptGZfAEt6Tbgv1G0sPL_QJcqfI-lRpEcdFWllxJG4w26KINRMT9KFEIIZQDh3GjOA2JIWOhjOMr9rlsSYDjTJsNH3smFtZCuBnOIbfLKYgeeKF7u8jHXAJWruGk8NM9qRTuoSezGwrqehGhLzuI\u0026s=fejJu208jcNA1LsOuN1W-as1WmZoWUAWiEDpQOfJn8p1sffMie8HrcFkuCEIza917JOA8Gkbn2CPPdC_4HxLsKG2-eISRAL3KN2dxieaqkgXuATg7L10oRnRt1XuV3mzr2phRihlB07UGtv1w214kW3yvHzVNmc4BhyGd2Brle-RE0rylTt453058vxSIvQAws1Fv1QmI3QGFgZKIh8PO67-F0ItAc11y7DWH22vx7ylmXg5yudTJStuEDI3AU76gevBcsIld8FJGxVcDkeXAqxznvK2o23rM8iSP5j1LY1Vki6VlSJGSv5zRWhQjauyQ0IBnlHdJKVQadti_UB25g\u0026h=j2FMptXNuchvRc5CkmnoO01X-E1253ooz4WSPk6NCnA",
+      "Content": null,
+      "isContentBase64": false,
+      "Headers": {
+        "Authorization": [ "[Filtered]" ],
+        "x-ms-unique-id": [ "21" ],
+        "x-ms-client-request-id": [ "2500d1da-b1e0-4c28-b425-dec51624f22e" ],
+        "CommandName": [ "Remove-AzDnsDnssecConfig" ],
+        "FullCommandName": [ "Remove-AzDnsDnssecConfig_Delete" ],
+        "ParameterSetName": [ "__AllParameterSets" ],
+        "User-Agent": [ "AzurePowershell/v0.0.0", "PSVersion/v7.3.8", "Az.Dns/2.1.0" ]
+      },
+      "ContentHeaders": {
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Cache-Control": [ "private" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "x-ms-request-id": [ "2500d1da-b1e0-4c28-b425-dec51624f22e" ],
+        "Server": [ "Microsoft-IIS/10.0" ],
+        "X-Powered-By": [ "ASP.NET" ],
+        "x-ms-ratelimit-remaining-subscription-resource-requests": [ "497" ],
+        "x-ms-correlation-request-id": [ "b3c1e857-1dde-42d4-9f3e-bdcf1b1d58c1" ],
+        "x-ms-routing-request-id": [ "WESTCENTRALUS:20231026T002340Z:b3c1e857-1dde-42d4-9f3e-bdcf1b1d58c1" ],
+        "Date": [ "Thu, 26 Oct 2023 00:23:40 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "22" ],
+        "Content-Type": [ "application/json; charset=utf-8" ]
+      },
+      "Content": "{\"status\":\"Succeeded\"}",
+      "isContentBase64": false
+    }
+  },
+  "Remove-AzDnsDnssecConfig+[NoContext]+Delete+$GET+https://management.azure.com/subscriptions/a984ce58-225e-44d2-bc79-20a834ce85ae/resourceGroups/dnssecrg/providers/Microsoft.Network/dnsOperationResults/RnJvbnRFbmRBc3luY09wZXJhdGlvbjtEZWxldGVab25lRG5zc2VjOzBhZmUyOGY2LTIyZDMtNDM2NS05MGUwLWQ5ZGIxNmExMzRiNA==?api-version=2023-07-01-preview\u0026t=638338766177395739\u0026c=MIIHHjCCBgagAwIBAgITfwHPHxKTmgA4c2tO5AAEAc8fEjANBgkqhkiG9w0BAQsFADBEMRMwEQYKCZImiZPyLGQBGRYDR0JMMRMwEQYKCZImiZPyLGQBGRYDQU1FMRgwFgYDVQQDEw9BTUUgSW5mcmEgQ0EgMDIwHhcNMjMwODAyMDY0ODMxWhcNMjQwNzI3MDY0ODMxWjBAMT4wPAYDVQQDEzVhc3luY29wZXJhdGlvbnNpZ25pbmdjZXJ0aWZpY2F0ZS5tYW5hZ2VtZW50LmF6dXJlLmNvbTCCASIwDQYJKoZIhvcNAQEBBQADggEPADCCAQoCggEBAMhsLKVwXCEctdIBSuxepGRU-bDlA63PQ-s4EzPR1B6S4OSTTk0a0Sxl_gs9xzXpjiuqW1XasW2mdnH9-eCqSmWfuokYD5CrV9-tUQSHefCzPU5-h7OhO2CMEchlYEv7PGeLi6xoSene3rm1xUTD3MSRDuaRC3WOBKEnhPSWdRJvxE13KZV0o3fRjQ2cvuOP5jsJZBX3kLXBDZngsALFQ4gXWXVn7CO7HD0LttkpsIpm4ppWcvcExZ4ct27mOZHEAOzQ_5vpUPM4kFAVoez6DQWsOPEmrmczFl_IDPNfZnQ64S3O36TnpdS8-JkREseyUzJdJrjzFQ2lnxqCRP_qJgECAwEAAaOCBAswggQHMCcGCSsGAQQBgjcVCgQaMBgwCgYIKwYBBQUHAwEwCgYIKwYBBQUHAwIwPQYJKwYBBAGCNxUHBDAwLgYmKwYBBAGCNxUIhpDjDYTVtHiE8Ys-hZvdFs6dEoFggvX2K4Py0SACAWQCAQowggHaBggrBgEFBQcBAQSCAcwwggHIMGYGCCsGAQUFBzAChlpodHRwOi8vY3JsLm1pY3Jvc29mdC5jb20vcGtpaW5mcmEvQ2VydHMvQkwyUEtJSU5UQ0EwMS5BTUUuR0JMX0FNRSUyMEluZnJhJTIwQ0ElMjAwMig0KS5jcnQwVgYIKwYBBQUHMAKGSmh0dHA6Ly9jcmwxLmFtZS5nYmwvYWlhL0JMMlBLSUlOVENBMDEuQU1FLkdCTF9BTUUlMjBJbmZyYSUyMENBJTIwMDIoNCkuY3J0MFYGCCsGAQUFBzAChkpodHRwOi8vY3JsMi5hbWUuZ2JsL2FpYS9CTDJQS0lJTlRDQTAxLkFNRS5HQkxfQU1FJTIwSW5mcmElMjBDQSUyMDAyKDQpLmNydDBWBggrBgEFBQcwAoZKaHR0cDovL2NybDMuYW1lLmdibC9haWEvQkwyUEtJSU5UQ0EwMS5BTUUuR0JMX0FNRSUyMEluZnJhJTIwQ0ElMjAwMig0KS5jcnQwVgYIKwYBBQUHMAKGSmh0dHA6Ly9jcmw0LmFtZS5nYmwvYWlhL0JMMlBLSUlOVENBMDEuQU1FLkdCTF9BTUUlMjBJbmZyYSUyMENBJTIwMDIoNCkuY3J0MB0GA1UdDgQWBBTkraQRH5WmxdPc9yZtH-shaeLpoTAOBgNVHQ8BAf8EBAMCBaAwggE1BgNVHR8EggEsMIIBKDCCASSgggEgoIIBHIZCaHR0cDovL2NybC5taWNyb3NvZnQuY29tL3BraWluZnJhL0NSTC9BTUUlMjBJbmZyYSUyMENBJTIwMDIoNCkuY3JshjRodHRwOi8vY3JsMS5hbWUuZ2JsL2NybC9BTUUlMjBJbmZyYSUyMENBJTIwMDIoNCkuY3JshjRodHRwOi8vY3JsMi5hbWUuZ2JsL2NybC9BTUUlMjBJbmZyYSUyMENBJTIwMDIoNCkuY3JshjRodHRwOi8vY3JsMy5hbWUuZ2JsL2NybC9BTUUlMjBJbmZyYSUyMENBJTIwMDIoNCkuY3JshjRodHRwOi8vY3JsNC5hbWUuZ2JsL2NybC9BTUUlMjBJbmZyYSUyMENBJTIwMDIoNCkuY3JsMBcGA1UdIAQQMA4wDAYKKwYBBAGCN3sBATAfBgNVHSMEGDAWgBSuecJrXSWIEwb2BwnDl3x7l48dVTAdBgNVHSUEFjAUBggrBgEFBQcDAQYIKwYBBQUHAwIwDQYJKoZIhvcNAQELBQADggEBAA39junRQopC8uRS_tBsR6-M6E04h_HoqhY9NYKs6e2gE1P_mO05iJYTllHMf6Ow3lqyZUIDqiFotgObCVH6fRLL3RLdGlUX5H3hTNh2lhtMXf7Q4uJZu6CDnvKvIiUKIC_LpFjzXaBA8W2OyM1wngAx4djk4L_BBonrspi5Ox23l2sIA7ad7pa9wees8j8bqK2ZptGZfAEt6Tbgv1G0sPL_QJcqfI-lRpEcdFWllxJG4w26KINRMT9KFEIIZQDh3GjOA2JIWOhjOMr9rlsSYDjTJsNH3smFtZCuBnOIbfLKYgeeKF7u8jHXAJWruGk8NM9qRTuoSezGwrqehGhLzuI\u0026s=H1bRe3U8iY73b3ZO25q5HqQUOrS-4HXo0zCB5SDEety-2tosIgWJypPoRoih6eZMsyh-1CMjeZKnsZqgAUO6AyR8q1UKY-BfEYj53pcdnee9oCSbi-CwVp5qSCn_ntALJZg7If671iSE1jzj_yzIOUcz-tBTw_yZfYdI3qSx9MpG3G1QqS5nLgo_AQgxONu2B2EzOsEnfIJGcWVb58IMzhixcdSdDlbMO6dDz2fVhYfYmlUwoHUNyIeQExGhY_tcElI4_S5qLJx1Ko3ayKsFZTC_c1E3_wZ7wexvc0s5CHmsb-82THrIho08KotdTKXgOAvoeFd46E6z1ekmoUAp8w\u0026h=RR_amo-6kUX66rap7ZAHps-1lNJOPXKzro4pPLCF3NU+7": {
+    "Request": {
+      "Method": "GET",
+      "RequestUri": "https://management.azure.com/subscriptions/a984ce58-225e-44d2-bc79-20a834ce85ae/resourceGroups/dnssecrg/providers/Microsoft.Network/dnsOperationResults/RnJvbnRFbmRBc3luY09wZXJhdGlvbjtEZWxldGVab25lRG5zc2VjOzBhZmUyOGY2LTIyZDMtNDM2NS05MGUwLWQ5ZGIxNmExMzRiNA==?api-version=2023-07-01-preview\u0026t=638338766177395739\u0026c=MIIHHjCCBgagAwIBAgITfwHPHxKTmgA4c2tO5AAEAc8fEjANBgkqhkiG9w0BAQsFADBEMRMwEQYKCZImiZPyLGQBGRYDR0JMMRMwEQYKCZImiZPyLGQBGRYDQU1FMRgwFgYDVQQDEw9BTUUgSW5mcmEgQ0EgMDIwHhcNMjMwODAyMDY0ODMxWhcNMjQwNzI3MDY0ODMxWjBAMT4wPAYDVQQDEzVhc3luY29wZXJhdGlvbnNpZ25pbmdjZXJ0aWZpY2F0ZS5tYW5hZ2VtZW50LmF6dXJlLmNvbTCCASIwDQYJKoZIhvcNAQEBBQADggEPADCCAQoCggEBAMhsLKVwXCEctdIBSuxepGRU-bDlA63PQ-s4EzPR1B6S4OSTTk0a0Sxl_gs9xzXpjiuqW1XasW2mdnH9-eCqSmWfuokYD5CrV9-tUQSHefCzPU5-h7OhO2CMEchlYEv7PGeLi6xoSene3rm1xUTD3MSRDuaRC3WOBKEnhPSWdRJvxE13KZV0o3fRjQ2cvuOP5jsJZBX3kLXBDZngsALFQ4gXWXVn7CO7HD0LttkpsIpm4ppWcvcExZ4ct27mOZHEAOzQ_5vpUPM4kFAVoez6DQWsOPEmrmczFl_IDPNfZnQ64S3O36TnpdS8-JkREseyUzJdJrjzFQ2lnxqCRP_qJgECAwEAAaOCBAswggQHMCcGCSsGAQQBgjcVCgQaMBgwCgYIKwYBBQUHAwEwCgYIKwYBBQUHAwIwPQYJKwYBBAGCNxUHBDAwLgYmKwYBBAGCNxUIhpDjDYTVtHiE8Ys-hZvdFs6dEoFggvX2K4Py0SACAWQCAQowggHaBggrBgEFBQcBAQSCAcwwggHIMGYGCCsGAQUFBzAChlpodHRwOi8vY3JsLm1pY3Jvc29mdC5jb20vcGtpaW5mcmEvQ2VydHMvQkwyUEtJSU5UQ0EwMS5BTUUuR0JMX0FNRSUyMEluZnJhJTIwQ0ElMjAwMig0KS5jcnQwVgYIKwYBBQUHMAKGSmh0dHA6Ly9jcmwxLmFtZS5nYmwvYWlhL0JMMlBLSUlOVENBMDEuQU1FLkdCTF9BTUUlMjBJbmZyYSUyMENBJTIwMDIoNCkuY3J0MFYGCCsGAQUFBzAChkpodHRwOi8vY3JsMi5hbWUuZ2JsL2FpYS9CTDJQS0lJTlRDQTAxLkFNRS5HQkxfQU1FJTIwSW5mcmElMjBDQSUyMDAyKDQpLmNydDBWBggrBgEFBQcwAoZKaHR0cDovL2NybDMuYW1lLmdibC9haWEvQkwyUEtJSU5UQ0EwMS5BTUUuR0JMX0FNRSUyMEluZnJhJTIwQ0ElMjAwMig0KS5jcnQwVgYIKwYBBQUHMAKGSmh0dHA6Ly9jcmw0LmFtZS5nYmwvYWlhL0JMMlBLSUlOVENBMDEuQU1FLkdCTF9BTUUlMjBJbmZyYSUyMENBJTIwMDIoNCkuY3J0MB0GA1UdDgQWBBTkraQRH5WmxdPc9yZtH-shaeLpoTAOBgNVHQ8BAf8EBAMCBaAwggE1BgNVHR8EggEsMIIBKDCCASSgggEgoIIBHIZCaHR0cDovL2NybC5taWNyb3NvZnQuY29tL3BraWluZnJhL0NSTC9BTUUlMjBJbmZyYSUyMENBJTIwMDIoNCkuY3JshjRodHRwOi8vY3JsMS5hbWUuZ2JsL2NybC9BTUUlMjBJbmZyYSUyMENBJTIwMDIoNCkuY3JshjRodHRwOi8vY3JsMi5hbWUuZ2JsL2NybC9BTUUlMjBJbmZyYSUyMENBJTIwMDIoNCkuY3JshjRodHRwOi8vY3JsMy5hbWUuZ2JsL2NybC9BTUUlMjBJbmZyYSUyMENBJTIwMDIoNCkuY3JshjRodHRwOi8vY3JsNC5hbWUuZ2JsL2NybC9BTUUlMjBJbmZyYSUyMENBJTIwMDIoNCkuY3JsMBcGA1UdIAQQMA4wDAYKKwYBBAGCN3sBATAfBgNVHSMEGDAWgBSuecJrXSWIEwb2BwnDl3x7l48dVTAdBgNVHSUEFjAUBggrBgEFBQcDAQYIKwYBBQUHAwIwDQYJKoZIhvcNAQELBQADggEBAA39junRQopC8uRS_tBsR6-M6E04h_HoqhY9NYKs6e2gE1P_mO05iJYTllHMf6Ow3lqyZUIDqiFotgObCVH6fRLL3RLdGlUX5H3hTNh2lhtMXf7Q4uJZu6CDnvKvIiUKIC_LpFjzXaBA8W2OyM1wngAx4djk4L_BBonrspi5Ox23l2sIA7ad7pa9wees8j8bqK2ZptGZfAEt6Tbgv1G0sPL_QJcqfI-lRpEcdFWllxJG4w26KINRMT9KFEIIZQDh3GjOA2JIWOhjOMr9rlsSYDjTJsNH3smFtZCuBnOIbfLKYgeeKF7u8jHXAJWruGk8NM9qRTuoSezGwrqehGhLzuI\u0026s=H1bRe3U8iY73b3ZO25q5HqQUOrS-4HXo0zCB5SDEety-2tosIgWJypPoRoih6eZMsyh-1CMjeZKnsZqgAUO6AyR8q1UKY-BfEYj53pcdnee9oCSbi-CwVp5qSCn_ntALJZg7If671iSE1jzj_yzIOUcz-tBTw_yZfYdI3qSx9MpG3G1QqS5nLgo_AQgxONu2B2EzOsEnfIJGcWVb58IMzhixcdSdDlbMO6dDz2fVhYfYmlUwoHUNyIeQExGhY_tcElI4_S5qLJx1Ko3ayKsFZTC_c1E3_wZ7wexvc0s5CHmsb-82THrIho08KotdTKXgOAvoeFd46E6z1ekmoUAp8w\u0026h=RR_amo-6kUX66rap7ZAHps-1lNJOPXKzro4pPLCF3NU",
+      "Content": null,
+      "isContentBase64": false,
+      "Headers": {
+        "Authorization": [ "[Filtered]" ],
+        "x-ms-unique-id": [ "22" ],
+        "x-ms-client-request-id": [ "2500d1da-b1e0-4c28-b425-dec51624f22e" ],
+        "CommandName": [ "Remove-AzDnsDnssecConfig" ],
+        "FullCommandName": [ "Remove-AzDnsDnssecConfig_Delete" ],
+        "ParameterSetName": [ "__AllParameterSets" ],
+        "User-Agent": [ "AzurePowershell/v0.0.0", "PSVersion/v7.3.8", "Az.Dns/2.1.0" ]
+      },
+      "ContentHeaders": {
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Cache-Control": [ "private" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "x-ms-request-id": [ "2500d1da-b1e0-4c28-b425-dec51624f22e" ],
+        "Server": [ "Microsoft-IIS/10.0" ],
+        "X-Powered-By": [ "ASP.NET" ],
+        "x-ms-ratelimit-remaining-subscription-resource-requests": [ "497" ],
+        "x-ms-correlation-request-id": [ "512c089f-0707-43b8-9030-c765d00ee7f4" ],
+        "x-ms-routing-request-id": [ "WESTCENTRALUS:20231026T002341Z:512c089f-0707-43b8-9030-c765d00ee7f4" ],
+        "Date": [ "Thu, 26 Oct 2023 00:23:40 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "0" ]
+      },
+      "Content": null,
+      "isContentBase64": false
+    }
+  },
+  "Remove-AzDnsDnssecConfig+[NoContext]+Delete+$GET+https://management.azure.com/subscriptions/a984ce58-225e-44d2-bc79-20a834ce85ae/resourceGroups/dnssecrg/providers/Microsoft.Network/dnsZones/dnstestd9k0ar.com/dnssecConfigs/default?api-version=2023-07-01-preview+8": {
+    "Request": {
+      "Method": "GET",
+      "RequestUri": "https://management.azure.com/subscriptions/a984ce58-225e-44d2-bc79-20a834ce85ae/resourceGroups/dnssecrg/providers/Microsoft.Network/dnsZones/dnstestd9k0ar.com/dnssecConfigs/default?api-version=2023-07-01-preview",
+      "Content": null,
+      "isContentBase64": false,
+      "Headers": {
+        "x-ms-unique-id": [ "23" ],
+        "x-ms-client-request-id": [ "c264c73d-f289-4862-85d2-b89fdda1677e" ],
+        "CommandName": [ "Get-AzDnsDnssecConfig" ],
+        "FullCommandName": [ "Get-AzDnsDnssecConfig_Get" ],
+        "ParameterSetName": [ "__AllParameterSets" ],
+        "User-Agent": [ "AzurePowershell/v0.0.0", "PSVersion/v7.3.8", "Az.Dns/2.1.0" ],
+        "Authorization": [ "[Filtered]" ]
+      },
+      "ContentHeaders": {
+      }
+    },
+    "Response": {
+      "StatusCode": 404,
+      "Headers": {
+        "Cache-Control": [ "private" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "x-ms-request-id": [ "c264c73d-f289-4862-85d2-b89fdda1677e" ],
+        "Server": [ "Microsoft-IIS/10.0" ],
+        "X-Powered-By": [ "ASP.NET" ],
+        "x-ms-ratelimit-remaining-subscription-resource-requests": [ "492" ],
+        "x-ms-correlation-request-id": [ "d29cad03-8391-4e1c-8c00-391854807739" ],
+        "x-ms-routing-request-id": [ "WESTCENTRALUS:20231026T002341Z:d29cad03-8391-4e1c-8c00-391854807739" ],
+        "Date": [ "Thu, 26 Oct 2023 00:23:40 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "171" ],
+        "Content-Type": [ "application/json; charset=utf-8" ]
+      },
+      "Content": "{\"code\":\"NotFound\",\"message\":\"DNSSEC is not enabled for DNS zone \u0027dnstestd9k0ar.com\u0027 in resource group \u0027dnssecrg\u0027 of subscription \u0027a984ce58-225e-44d2-bc79-20a834ce85ae\u0027.\"}",
+      "isContentBase64": false
+    }
+  },
+  "Remove-AzDnsDnssecConfig+[NoContext]+Delete+$DELETE+https://management.azure.com/subscriptions/a984ce58-225e-44d2-bc79-20a834ce85ae/resourceGroups/dnssecrg/providers/Microsoft.Network/dnsZones/dnstestd9k0ar.com?api-version=2023-07-01-preview+9": {
+    "Request": {
+      "Method": "DELETE",
+      "RequestUri": "https://management.azure.com/subscriptions/a984ce58-225e-44d2-bc79-20a834ce85ae/resourceGroups/dnssecrg/providers/Microsoft.Network/dnsZones/dnstestd9k0ar.com?api-version=2023-07-01-preview",
+      "Content": null,
+      "isContentBase64": false,
+      "Headers": {
+        "x-ms-unique-id": [ "24" ],
+        "x-ms-client-request-id": [ "79f29e3d-468a-41c9-bfa8-54face2a43db" ],
+        "CommandName": [ "Remove-AzDnsZone" ],
+        "FullCommandName": [ "Remove-AzDnsZone_Delete" ],
+        "ParameterSetName": [ "__AllParameterSets" ],
+        "User-Agent": [ "AzurePowershell/v0.0.0", "PSVersion/v7.3.8", "Az.Dns/2.1.0" ],
+        "Authorization": [ "[Filtered]" ]
+      },
+      "ContentHeaders": {
+      }
+    },
+    "Response": {
+      "StatusCode": 202,
+      "Headers": {
+        "Cache-Control": [ "private" ],
+        "Location": [ "https://management.azure.com/subscriptions/a984ce58-225e-44d2-bc79-20a834ce85ae/resourceGroups/dnssecrg/providers/Microsoft.Network/dnsOperationResults/00000000-0000-0000-0000-000000000053;17;dnstestd9k0ar.com;Regular?api-version=2023-07-01-preview\u0026t=638338766260997198\u0026c=MIIHHjCCBgagAwIBAgITfwHPHxKTmgA4c2tO5AAEAc8fEjANBgkqhkiG9w0BAQsFADBEMRMwEQYKCZImiZPyLGQBGRYDR0JMMRMwEQYKCZImiZPyLGQBGRYDQU1FMRgwFgYDVQQDEw9BTUUgSW5mcmEgQ0EgMDIwHhcNMjMwODAyMDY0ODMxWhcNMjQwNzI3MDY0ODMxWjBAMT4wPAYDVQQDEzVhc3luY29wZXJhdGlvbnNpZ25pbmdjZXJ0aWZpY2F0ZS5tYW5hZ2VtZW50LmF6dXJlLmNvbTCCASIwDQYJKoZIhvcNAQEBBQADggEPADCCAQoCggEBAMhsLKVwXCEctdIBSuxepGRU-bDlA63PQ-s4EzPR1B6S4OSTTk0a0Sxl_gs9xzXpjiuqW1XasW2mdnH9-eCqSmWfuokYD5CrV9-tUQSHefCzPU5-h7OhO2CMEchlYEv7PGeLi6xoSene3rm1xUTD3MSRDuaRC3WOBKEnhPSWdRJvxE13KZV0o3fRjQ2cvuOP5jsJZBX3kLXBDZngsALFQ4gXWXVn7CO7HD0LttkpsIpm4ppWcvcExZ4ct27mOZHEAOzQ_5vpUPM4kFAVoez6DQWsOPEmrmczFl_IDPNfZnQ64S3O36TnpdS8-JkREseyUzJdJrjzFQ2lnxqCRP_qJgECAwEAAaOCBAswggQHMCcGCSsGAQQBgjcVCgQaMBgwCgYIKwYBBQUHAwEwCgYIKwYBBQUHAwIwPQYJKwYBBAGCNxUHBDAwLgYmKwYBBAGCNxUIhpDjDYTVtHiE8Ys-hZvdFs6dEoFggvX2K4Py0SACAWQCAQowggHaBggrBgEFBQcBAQSCAcwwggHIMGYGCCsGAQUFBzAChlpodHRwOi8vY3JsLm1pY3Jvc29mdC5jb20vcGtpaW5mcmEvQ2VydHMvQkwyUEtJSU5UQ0EwMS5BTUUuR0JMX0FNRSUyMEluZnJhJTIwQ0ElMjAwMig0KS5jcnQwVgYIKwYBBQUHMAKGSmh0dHA6Ly9jcmwxLmFtZS5nYmwvYWlhL0JMMlBLSUlOVENBMDEuQU1FLkdCTF9BTUUlMjBJbmZyYSUyMENBJTIwMDIoNCkuY3J0MFYGCCsGAQUFBzAChkpodHRwOi8vY3JsMi5hbWUuZ2JsL2FpYS9CTDJQS0lJTlRDQTAxLkFNRS5HQkxfQU1FJTIwSW5mcmElMjBDQSUyMDAyKDQpLmNydDBWBggrBgEFBQcwAoZKaHR0cDovL2NybDMuYW1lLmdibC9haWEvQkwyUEtJSU5UQ0EwMS5BTUUuR0JMX0FNRSUyMEluZnJhJTIwQ0ElMjAwMig0KS5jcnQwVgYIKwYBBQUHMAKGSmh0dHA6Ly9jcmw0LmFtZS5nYmwvYWlhL0JMMlBLSUlOVENBMDEuQU1FLkdCTF9BTUUlMjBJbmZyYSUyMENBJTIwMDIoNCkuY3J0MB0GA1UdDgQWBBTkraQRH5WmxdPc9yZtH-shaeLpoTAOBgNVHQ8BAf8EBAMCBaAwggE1BgNVHR8EggEsMIIBKDCCASSgggEgoIIBHIZCaHR0cDovL2NybC5taWNyb3NvZnQuY29tL3BraWluZnJhL0NSTC9BTUUlMjBJbmZyYSUyMENBJTIwMDIoNCkuY3JshjRodHRwOi8vY3JsMS5hbWUuZ2JsL2NybC9BTUUlMjBJbmZyYSUyMENBJTIwMDIoNCkuY3JshjRodHRwOi8vY3JsMi5hbWUuZ2JsL2NybC9BTUUlMjBJbmZyYSUyMENBJTIwMDIoNCkuY3JshjRodHRwOi8vY3JsMy5hbWUuZ2JsL2NybC9BTUUlMjBJbmZyYSUyMENBJTIwMDIoNCkuY3JshjRodHRwOi8vY3JsNC5hbWUuZ2JsL2NybC9BTUUlMjBJbmZyYSUyMENBJTIwMDIoNCkuY3JsMBcGA1UdIAQQMA4wDAYKKwYBBAGCN3sBATAfBgNVHSMEGDAWgBSuecJrXSWIEwb2BwnDl3x7l48dVTAdBgNVHSUEFjAUBggrBgEFBQcDAQYIKwYBBQUHAwIwDQYJKoZIhvcNAQELBQADggEBAA39junRQopC8uRS_tBsR6-M6E04h_HoqhY9NYKs6e2gE1P_mO05iJYTllHMf6Ow3lqyZUIDqiFotgObCVH6fRLL3RLdGlUX5H3hTNh2lhtMXf7Q4uJZu6CDnvKvIiUKIC_LpFjzXaBA8W2OyM1wngAx4djk4L_BBonrspi5Ox23l2sIA7ad7pa9wees8j8bqK2ZptGZfAEt6Tbgv1G0sPL_QJcqfI-lRpEcdFWllxJG4w26KINRMT9KFEIIZQDh3GjOA2JIWOhjOMr9rlsSYDjTJsNH3smFtZCuBnOIbfLKYgeeKF7u8jHXAJWruGk8NM9qRTuoSezGwrqehGhLzuI\u0026s=qMMB-RJtjIXjdEQt0DHmLBOExw8wr5TG8KwqdLYBzMsU-qyrbAAiE3VX856i8DalpSmGLesvkrrUDEouolvh4bCre-Cxs01Izg5hJKXSlAezJ2BC-UToW4veqHMw9nI5faf4VaMMBkuQKndpiPIqafQU2qyH8go1j7nxyT9P1dyR5-xCSt2jp1W4A8x5pPsdKqv_1OS0b2Z-uCyYvEmkrSG88UT2SCYkyGyCZHt1KC9ErBOYBDXIwDYq-JlML7BB9RcLMYCbVsb-1SQ6ScGSJdzfeTQOu3EzLDaso92i7L1wOYK3hWC8AFaLa8cJZm4l7D8_-z2Z2tTgAEwaNEYg_g\u0026h=4qksAhqWnvIoCzqYEsu1fzYYEARHNwTiMUbWk6In9TM" ],
+        "Retry-After": [ "3" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "Azure-AsyncOperation": [ "https://management.azure.com/subscriptions/a984ce58-225e-44d2-bc79-20a834ce85ae/resourceGroups/dnssecrg/providers/Microsoft.Network/dnsOperationStatuses/00000000-0000-0000-0000-000000000053;17;dnstestd9k0ar.com;Regular?api-version=2023-07-01-preview\u0026t=638338766260997198\u0026c=MIIHHjCCBgagAwIBAgITfwHPHxKTmgA4c2tO5AAEAc8fEjANBgkqhkiG9w0BAQsFADBEMRMwEQYKCZImiZPyLGQBGRYDR0JMMRMwEQYKCZImiZPyLGQBGRYDQU1FMRgwFgYDVQQDEw9BTUUgSW5mcmEgQ0EgMDIwHhcNMjMwODAyMDY0ODMxWhcNMjQwNzI3MDY0ODMxWjBAMT4wPAYDVQQDEzVhc3luY29wZXJhdGlvbnNpZ25pbmdjZXJ0aWZpY2F0ZS5tYW5hZ2VtZW50LmF6dXJlLmNvbTCCASIwDQYJKoZIhvcNAQEBBQADggEPADCCAQoCggEBAMhsLKVwXCEctdIBSuxepGRU-bDlA63PQ-s4EzPR1B6S4OSTTk0a0Sxl_gs9xzXpjiuqW1XasW2mdnH9-eCqSmWfuokYD5CrV9-tUQSHefCzPU5-h7OhO2CMEchlYEv7PGeLi6xoSene3rm1xUTD3MSRDuaRC3WOBKEnhPSWdRJvxE13KZV0o3fRjQ2cvuOP5jsJZBX3kLXBDZngsALFQ4gXWXVn7CO7HD0LttkpsIpm4ppWcvcExZ4ct27mOZHEAOzQ_5vpUPM4kFAVoez6DQWsOPEmrmczFl_IDPNfZnQ64S3O36TnpdS8-JkREseyUzJdJrjzFQ2lnxqCRP_qJgECAwEAAaOCBAswggQHMCcGCSsGAQQBgjcVCgQaMBgwCgYIKwYBBQUHAwEwCgYIKwYBBQUHAwIwPQYJKwYBBAGCNxUHBDAwLgYmKwYBBAGCNxUIhpDjDYTVtHiE8Ys-hZvdFs6dEoFggvX2K4Py0SACAWQCAQowggHaBggrBgEFBQcBAQSCAcwwggHIMGYGCCsGAQUFBzAChlpodHRwOi8vY3JsLm1pY3Jvc29mdC5jb20vcGtpaW5mcmEvQ2VydHMvQkwyUEtJSU5UQ0EwMS5BTUUuR0JMX0FNRSUyMEluZnJhJTIwQ0ElMjAwMig0KS5jcnQwVgYIKwYBBQUHMAKGSmh0dHA6Ly9jcmwxLmFtZS5nYmwvYWlhL0JMMlBLSUlOVENBMDEuQU1FLkdCTF9BTUUlMjBJbmZyYSUyMENBJTIwMDIoNCkuY3J0MFYGCCsGAQUFBzAChkpodHRwOi8vY3JsMi5hbWUuZ2JsL2FpYS9CTDJQS0lJTlRDQTAxLkFNRS5HQkxfQU1FJTIwSW5mcmElMjBDQSUyMDAyKDQpLmNydDBWBggrBgEFBQcwAoZKaHR0cDovL2NybDMuYW1lLmdibC9haWEvQkwyUEtJSU5UQ0EwMS5BTUUuR0JMX0FNRSUyMEluZnJhJTIwQ0ElMjAwMig0KS5jcnQwVgYIKwYBBQUHMAKGSmh0dHA6Ly9jcmw0LmFtZS5nYmwvYWlhL0JMMlBLSUlOVENBMDEuQU1FLkdCTF9BTUUlMjBJbmZyYSUyMENBJTIwMDIoNCkuY3J0MB0GA1UdDgQWBBTkraQRH5WmxdPc9yZtH-shaeLpoTAOBgNVHQ8BAf8EBAMCBaAwggE1BgNVHR8EggEsMIIBKDCCASSgggEgoIIBHIZCaHR0cDovL2NybC5taWNyb3NvZnQuY29tL3BraWluZnJhL0NSTC9BTUUlMjBJbmZyYSUyMENBJTIwMDIoNCkuY3JshjRodHRwOi8vY3JsMS5hbWUuZ2JsL2NybC9BTUUlMjBJbmZyYSUyMENBJTIwMDIoNCkuY3JshjRodHRwOi8vY3JsMi5hbWUuZ2JsL2NybC9BTUUlMjBJbmZyYSUyMENBJTIwMDIoNCkuY3JshjRodHRwOi8vY3JsMy5hbWUuZ2JsL2NybC9BTUUlMjBJbmZyYSUyMENBJTIwMDIoNCkuY3JshjRodHRwOi8vY3JsNC5hbWUuZ2JsL2NybC9BTUUlMjBJbmZyYSUyMENBJTIwMDIoNCkuY3JsMBcGA1UdIAQQMA4wDAYKKwYBBAGCN3sBATAfBgNVHSMEGDAWgBSuecJrXSWIEwb2BwnDl3x7l48dVTAdBgNVHSUEFjAUBggrBgEFBQcDAQYIKwYBBQUHAwIwDQYJKoZIhvcNAQELBQADggEBAA39junRQopC8uRS_tBsR6-M6E04h_HoqhY9NYKs6e2gE1P_mO05iJYTllHMf6Ow3lqyZUIDqiFotgObCVH6fRLL3RLdGlUX5H3hTNh2lhtMXf7Q4uJZu6CDnvKvIiUKIC_LpFjzXaBA8W2OyM1wngAx4djk4L_BBonrspi5Ox23l2sIA7ad7pa9wees8j8bqK2ZptGZfAEt6Tbgv1G0sPL_QJcqfI-lRpEcdFWllxJG4w26KINRMT9KFEIIZQDh3GjOA2JIWOhjOMr9rlsSYDjTJsNH3smFtZCuBnOIbfLKYgeeKF7u8jHXAJWruGk8NM9qRTuoSezGwrqehGhLzuI\u0026s=FPz1wMKOqN4FWn6GJ06y5coc-epAU9mVTGzB783HFFZlz9rBiUSBDaWX8gFDq4bIVUwATvB2MQyQu3MAc2UPjeUXt3eJiKx4ghS3HTJ2_kvE6Va_C4cnPTpj-xrS4x3YwwqXiYSDEiiOLdDoJxER5Cmpr9g2WpSV2doulkDbifhzaLZChmKYIV9SfPlq_sSbgIDSg2EUcavESXb8J3XIJlC4vWVsMO9FS6ISJ3sTB-g3NcO937KCk7VAcFxP85bKy1PIMpkPtHuOF7TfNRtaGK6zgeOv-iP3fLbCVsaPqFgRklLK3L6dfkVn2Se5LSwBtHKNSJjir0gQEZo3S0rtiw\u0026h=cxNDTz6elnjBJJQPOIxnMSSMJuE2Dk3djwjK0QebWe8" ],
+        "x-ms-request-id": [ "79f29e3d-468a-41c9-bfa8-54face2a43db" ],
+        "Server": [ "Microsoft-IIS/10.0" ],
+        "X-Powered-By": [ "ASP.NET" ],
+        "x-ms-ratelimit-remaining-subscription-resource-requests": [ "11997" ],
+        "x-ms-correlation-request-id": [ "42c27397-1df0-4506-8b77-82eaec751ede" ],
+        "x-ms-routing-request-id": [ "WESTCENTRALUS:20231026T002346Z:42c27397-1df0-4506-8b77-82eaec751ede" ],
+        "Date": [ "Thu, 26 Oct 2023 00:23:45 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "0" ]
+      },
+      "Content": null,
+      "isContentBase64": false
+    }
+  },
+  "Remove-AzDnsDnssecConfig+[NoContext]+Delete+$GET+https://management.azure.com/subscriptions/a984ce58-225e-44d2-bc79-20a834ce85ae/resourceGroups/dnssecrg/providers/Microsoft.Network/dnsOperationStatuses/00000000-0000-0000-0000-000000000053;17;dnstestd9k0ar.com;Regular?api-version=2023-07-01-preview\u0026t=638338766260997198\u0026c=MIIHHjCCBgagAwIBAgITfwHPHxKTmgA4c2tO5AAEAc8fEjANBgkqhkiG9w0BAQsFADBEMRMwEQYKCZImiZPyLGQBGRYDR0JMMRMwEQYKCZImiZPyLGQBGRYDQU1FMRgwFgYDVQQDEw9BTUUgSW5mcmEgQ0EgMDIwHhcNMjMwODAyMDY0ODMxWhcNMjQwNzI3MDY0ODMxWjBAMT4wPAYDVQQDEzVhc3luY29wZXJhdGlvbnNpZ25pbmdjZXJ0aWZpY2F0ZS5tYW5hZ2VtZW50LmF6dXJlLmNvbTCCASIwDQYJKoZIhvcNAQEBBQADggEPADCCAQoCggEBAMhsLKVwXCEctdIBSuxepGRU-bDlA63PQ-s4EzPR1B6S4OSTTk0a0Sxl_gs9xzXpjiuqW1XasW2mdnH9-eCqSmWfuokYD5CrV9-tUQSHefCzPU5-h7OhO2CMEchlYEv7PGeLi6xoSene3rm1xUTD3MSRDuaRC3WOBKEnhPSWdRJvxE13KZV0o3fRjQ2cvuOP5jsJZBX3kLXBDZngsALFQ4gXWXVn7CO7HD0LttkpsIpm4ppWcvcExZ4ct27mOZHEAOzQ_5vpUPM4kFAVoez6DQWsOPEmrmczFl_IDPNfZnQ64S3O36TnpdS8-JkREseyUzJdJrjzFQ2lnxqCRP_qJgECAwEAAaOCBAswggQHMCcGCSsGAQQBgjcVCgQaMBgwCgYIKwYBBQUHAwEwCgYIKwYBBQUHAwIwPQYJKwYBBAGCNxUHBDAwLgYmKwYBBAGCNxUIhpDjDYTVtHiE8Ys-hZvdFs6dEoFggvX2K4Py0SACAWQCAQowggHaBggrBgEFBQcBAQSCAcwwggHIMGYGCCsGAQUFBzAChlpodHRwOi8vY3JsLm1pY3Jvc29mdC5jb20vcGtpaW5mcmEvQ2VydHMvQkwyUEtJSU5UQ0EwMS5BTUUuR0JMX0FNRSUyMEluZnJhJTIwQ0ElMjAwMig0KS5jcnQwVgYIKwYBBQUHMAKGSmh0dHA6Ly9jcmwxLmFtZS5nYmwvYWlhL0JMMlBLSUlOVENBMDEuQU1FLkdCTF9BTUUlMjBJbmZyYSUyMENBJTIwMDIoNCkuY3J0MFYGCCsGAQUFBzAChkpodHRwOi8vY3JsMi5hbWUuZ2JsL2FpYS9CTDJQS0lJTlRDQTAxLkFNRS5HQkxfQU1FJTIwSW5mcmElMjBDQSUyMDAyKDQpLmNydDBWBggrBgEFBQcwAoZKaHR0cDovL2NybDMuYW1lLmdibC9haWEvQkwyUEtJSU5UQ0EwMS5BTUUuR0JMX0FNRSUyMEluZnJhJTIwQ0ElMjAwMig0KS5jcnQwVgYIKwYBBQUHMAKGSmh0dHA6Ly9jcmw0LmFtZS5nYmwvYWlhL0JMMlBLSUlOVENBMDEuQU1FLkdCTF9BTUUlMjBJbmZyYSUyMENBJTIwMDIoNCkuY3J0MB0GA1UdDgQWBBTkraQRH5WmxdPc9yZtH-shaeLpoTAOBgNVHQ8BAf8EBAMCBaAwggE1BgNVHR8EggEsMIIBKDCCASSgggEgoIIBHIZCaHR0cDovL2NybC5taWNyb3NvZnQuY29tL3BraWluZnJhL0NSTC9BTUUlMjBJbmZyYSUyMENBJTIwMDIoNCkuY3JshjRodHRwOi8vY3JsMS5hbWUuZ2JsL2NybC9BTUUlMjBJbmZyYSUyMENBJTIwMDIoNCkuY3JshjRodHRwOi8vY3JsMi5hbWUuZ2JsL2NybC9BTUUlMjBJbmZyYSUyMENBJTIwMDIoNCkuY3JshjRodHRwOi8vY3JsMy5hbWUuZ2JsL2NybC9BTUUlMjBJbmZyYSUyMENBJTIwMDIoNCkuY3JshjRodHRwOi8vY3JsNC5hbWUuZ2JsL2NybC9BTUUlMjBJbmZyYSUyMENBJTIwMDIoNCkuY3JsMBcGA1UdIAQQMA4wDAYKKwYBBAGCN3sBATAfBgNVHSMEGDAWgBSuecJrXSWIEwb2BwnDl3x7l48dVTAdBgNVHSUEFjAUBggrBgEFBQcDAQYIKwYBBQUHAwIwDQYJKoZIhvcNAQELBQADggEBAA39junRQopC8uRS_tBsR6-M6E04h_HoqhY9NYKs6e2gE1P_mO05iJYTllHMf6Ow3lqyZUIDqiFotgObCVH6fRLL3RLdGlUX5H3hTNh2lhtMXf7Q4uJZu6CDnvKvIiUKIC_LpFjzXaBA8W2OyM1wngAx4djk4L_BBonrspi5Ox23l2sIA7ad7pa9wees8j8bqK2ZptGZfAEt6Tbgv1G0sPL_QJcqfI-lRpEcdFWllxJG4w26KINRMT9KFEIIZQDh3GjOA2JIWOhjOMr9rlsSYDjTJsNH3smFtZCuBnOIbfLKYgeeKF7u8jHXAJWruGk8NM9qRTuoSezGwrqehGhLzuI\u0026s=FPz1wMKOqN4FWn6GJ06y5coc-epAU9mVTGzB783HFFZlz9rBiUSBDaWX8gFDq4bIVUwATvB2MQyQu3MAc2UPjeUXt3eJiKx4ghS3HTJ2_kvE6Va_C4cnPTpj-xrS4x3YwwqXiYSDEiiOLdDoJxER5Cmpr9g2WpSV2doulkDbifhzaLZChmKYIV9SfPlq_sSbgIDSg2EUcavESXb8J3XIJlC4vWVsMO9FS6ISJ3sTB-g3NcO937KCk7VAcFxP85bKy1PIMpkPtHuOF7TfNRtaGK6zgeOv-iP3fLbCVsaPqFgRklLK3L6dfkVn2Se5LSwBtHKNSJjir0gQEZo3S0rtiw\u0026h=cxNDTz6elnjBJJQPOIxnMSSMJuE2Dk3djwjK0QebWe8+10": {
+    "Request": {
+      "Method": "GET",
+      "RequestUri": "https://management.azure.com/subscriptions/a984ce58-225e-44d2-bc79-20a834ce85ae/resourceGroups/dnssecrg/providers/Microsoft.Network/dnsOperationStatuses/00000000-0000-0000-0000-000000000053;17;dnstestd9k0ar.com;Regular?api-version=2023-07-01-preview\u0026t=638338766260997198\u0026c=MIIHHjCCBgagAwIBAgITfwHPHxKTmgA4c2tO5AAEAc8fEjANBgkqhkiG9w0BAQsFADBEMRMwEQYKCZImiZPyLGQBGRYDR0JMMRMwEQYKCZImiZPyLGQBGRYDQU1FMRgwFgYDVQQDEw9BTUUgSW5mcmEgQ0EgMDIwHhcNMjMwODAyMDY0ODMxWhcNMjQwNzI3MDY0ODMxWjBAMT4wPAYDVQQDEzVhc3luY29wZXJhdGlvbnNpZ25pbmdjZXJ0aWZpY2F0ZS5tYW5hZ2VtZW50LmF6dXJlLmNvbTCCASIwDQYJKoZIhvcNAQEBBQADggEPADCCAQoCggEBAMhsLKVwXCEctdIBSuxepGRU-bDlA63PQ-s4EzPR1B6S4OSTTk0a0Sxl_gs9xzXpjiuqW1XasW2mdnH9-eCqSmWfuokYD5CrV9-tUQSHefCzPU5-h7OhO2CMEchlYEv7PGeLi6xoSene3rm1xUTD3MSRDuaRC3WOBKEnhPSWdRJvxE13KZV0o3fRjQ2cvuOP5jsJZBX3kLXBDZngsALFQ4gXWXVn7CO7HD0LttkpsIpm4ppWcvcExZ4ct27mOZHEAOzQ_5vpUPM4kFAVoez6DQWsOPEmrmczFl_IDPNfZnQ64S3O36TnpdS8-JkREseyUzJdJrjzFQ2lnxqCRP_qJgECAwEAAaOCBAswggQHMCcGCSsGAQQBgjcVCgQaMBgwCgYIKwYBBQUHAwEwCgYIKwYBBQUHAwIwPQYJKwYBBAGCNxUHBDAwLgYmKwYBBAGCNxUIhpDjDYTVtHiE8Ys-hZvdFs6dEoFggvX2K4Py0SACAWQCAQowggHaBggrBgEFBQcBAQSCAcwwggHIMGYGCCsGAQUFBzAChlpodHRwOi8vY3JsLm1pY3Jvc29mdC5jb20vcGtpaW5mcmEvQ2VydHMvQkwyUEtJSU5UQ0EwMS5BTUUuR0JMX0FNRSUyMEluZnJhJTIwQ0ElMjAwMig0KS5jcnQwVgYIKwYBBQUHMAKGSmh0dHA6Ly9jcmwxLmFtZS5nYmwvYWlhL0JMMlBLSUlOVENBMDEuQU1FLkdCTF9BTUUlMjBJbmZyYSUyMENBJTIwMDIoNCkuY3J0MFYGCCsGAQUFBzAChkpodHRwOi8vY3JsMi5hbWUuZ2JsL2FpYS9CTDJQS0lJTlRDQTAxLkFNRS5HQkxfQU1FJTIwSW5mcmElMjBDQSUyMDAyKDQpLmNydDBWBggrBgEFBQcwAoZKaHR0cDovL2NybDMuYW1lLmdibC9haWEvQkwyUEtJSU5UQ0EwMS5BTUUuR0JMX0FNRSUyMEluZnJhJTIwQ0ElMjAwMig0KS5jcnQwVgYIKwYBBQUHMAKGSmh0dHA6Ly9jcmw0LmFtZS5nYmwvYWlhL0JMMlBLSUlOVENBMDEuQU1FLkdCTF9BTUUlMjBJbmZyYSUyMENBJTIwMDIoNCkuY3J0MB0GA1UdDgQWBBTkraQRH5WmxdPc9yZtH-shaeLpoTAOBgNVHQ8BAf8EBAMCBaAwggE1BgNVHR8EggEsMIIBKDCCASSgggEgoIIBHIZCaHR0cDovL2NybC5taWNyb3NvZnQuY29tL3BraWluZnJhL0NSTC9BTUUlMjBJbmZyYSUyMENBJTIwMDIoNCkuY3JshjRodHRwOi8vY3JsMS5hbWUuZ2JsL2NybC9BTUUlMjBJbmZyYSUyMENBJTIwMDIoNCkuY3JshjRodHRwOi8vY3JsMi5hbWUuZ2JsL2NybC9BTUUlMjBJbmZyYSUyMENBJTIwMDIoNCkuY3JshjRodHRwOi8vY3JsMy5hbWUuZ2JsL2NybC9BTUUlMjBJbmZyYSUyMENBJTIwMDIoNCkuY3JshjRodHRwOi8vY3JsNC5hbWUuZ2JsL2NybC9BTUUlMjBJbmZyYSUyMENBJTIwMDIoNCkuY3JsMBcGA1UdIAQQMA4wDAYKKwYBBAGCN3sBATAfBgNVHSMEGDAWgBSuecJrXSWIEwb2BwnDl3x7l48dVTAdBgNVHSUEFjAUBggrBgEFBQcDAQYIKwYBBQUHAwIwDQYJKoZIhvcNAQELBQADggEBAA39junRQopC8uRS_tBsR6-M6E04h_HoqhY9NYKs6e2gE1P_mO05iJYTllHMf6Ow3lqyZUIDqiFotgObCVH6fRLL3RLdGlUX5H3hTNh2lhtMXf7Q4uJZu6CDnvKvIiUKIC_LpFjzXaBA8W2OyM1wngAx4djk4L_BBonrspi5Ox23l2sIA7ad7pa9wees8j8bqK2ZptGZfAEt6Tbgv1G0sPL_QJcqfI-lRpEcdFWllxJG4w26KINRMT9KFEIIZQDh3GjOA2JIWOhjOMr9rlsSYDjTJsNH3smFtZCuBnOIbfLKYgeeKF7u8jHXAJWruGk8NM9qRTuoSezGwrqehGhLzuI\u0026s=FPz1wMKOqN4FWn6GJ06y5coc-epAU9mVTGzB783HFFZlz9rBiUSBDaWX8gFDq4bIVUwATvB2MQyQu3MAc2UPjeUXt3eJiKx4ghS3HTJ2_kvE6Va_C4cnPTpj-xrS4x3YwwqXiYSDEiiOLdDoJxER5Cmpr9g2WpSV2doulkDbifhzaLZChmKYIV9SfPlq_sSbgIDSg2EUcavESXb8J3XIJlC4vWVsMO9FS6ISJ3sTB-g3NcO937KCk7VAcFxP85bKy1PIMpkPtHuOF7TfNRtaGK6zgeOv-iP3fLbCVsaPqFgRklLK3L6dfkVn2Se5LSwBtHKNSJjir0gQEZo3S0rtiw\u0026h=cxNDTz6elnjBJJQPOIxnMSSMJuE2Dk3djwjK0QebWe8",
+      "Content": null,
+      "isContentBase64": false,
+      "Headers": {
+        "Authorization": [ "[Filtered]" ],
+        "x-ms-unique-id": [ "25" ],
+        "x-ms-client-request-id": [ "79f29e3d-468a-41c9-bfa8-54face2a43db" ],
+        "CommandName": [ "Remove-AzDnsZone" ],
+        "FullCommandName": [ "Remove-AzDnsZone_Delete" ],
+        "ParameterSetName": [ "__AllParameterSets" ],
+        "User-Agent": [ "AzurePowershell/v0.0.0", "PSVersion/v7.3.8", "Az.Dns/2.1.0" ]
+      },
+      "ContentHeaders": {
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Cache-Control": [ "private" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "x-ms-request-id": [ "79f29e3d-468a-41c9-bfa8-54face2a43db" ],
+        "Server": [ "Microsoft-IIS/10.0" ],
+        "X-Powered-By": [ "ASP.NET" ],
+        "x-ms-ratelimit-remaining-subscription-resource-requests": [ "496" ],
+        "x-ms-correlation-request-id": [ "729410dc-f256-416b-a829-3262c29faa4c" ],
+        "x-ms-routing-request-id": [ "WESTCENTRALUS:20231026T002349Z:729410dc-f256-416b-a829-3262c29faa4c" ],
+        "Date": [ "Thu, 26 Oct 2023 00:23:48 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "22" ],
+        "Content-Type": [ "application/json; charset=utf-8" ]
+      },
+      "Content": "{\"status\":\"Succeeded\"}",
+      "isContentBase64": false
+    }
+  },
+  "Remove-AzDnsDnssecConfig+[NoContext]+Delete+$GET+https://management.azure.com/subscriptions/a984ce58-225e-44d2-bc79-20a834ce85ae/resourceGroups/dnssecrg/providers/Microsoft.Network/dnsOperationResults/00000000-0000-0000-0000-000000000053;17;dnstestd9k0ar.com;Regular?api-version=2023-07-01-preview\u0026t=638338766260997198\u0026c=MIIHHjCCBgagAwIBAgITfwHPHxKTmgA4c2tO5AAEAc8fEjANBgkqhkiG9w0BAQsFADBEMRMwEQYKCZImiZPyLGQBGRYDR0JMMRMwEQYKCZImiZPyLGQBGRYDQU1FMRgwFgYDVQQDEw9BTUUgSW5mcmEgQ0EgMDIwHhcNMjMwODAyMDY0ODMxWhcNMjQwNzI3MDY0ODMxWjBAMT4wPAYDVQQDEzVhc3luY29wZXJhdGlvbnNpZ25pbmdjZXJ0aWZpY2F0ZS5tYW5hZ2VtZW50LmF6dXJlLmNvbTCCASIwDQYJKoZIhvcNAQEBBQADggEPADCCAQoCggEBAMhsLKVwXCEctdIBSuxepGRU-bDlA63PQ-s4EzPR1B6S4OSTTk0a0Sxl_gs9xzXpjiuqW1XasW2mdnH9-eCqSmWfuokYD5CrV9-tUQSHefCzPU5-h7OhO2CMEchlYEv7PGeLi6xoSene3rm1xUTD3MSRDuaRC3WOBKEnhPSWdRJvxE13KZV0o3fRjQ2cvuOP5jsJZBX3kLXBDZngsALFQ4gXWXVn7CO7HD0LttkpsIpm4ppWcvcExZ4ct27mOZHEAOzQ_5vpUPM4kFAVoez6DQWsOPEmrmczFl_IDPNfZnQ64S3O36TnpdS8-JkREseyUzJdJrjzFQ2lnxqCRP_qJgECAwEAAaOCBAswggQHMCcGCSsGAQQBgjcVCgQaMBgwCgYIKwYBBQUHAwEwCgYIKwYBBQUHAwIwPQYJKwYBBAGCNxUHBDAwLgYmKwYBBAGCNxUIhpDjDYTVtHiE8Ys-hZvdFs6dEoFggvX2K4Py0SACAWQCAQowggHaBggrBgEFBQcBAQSCAcwwggHIMGYGCCsGAQUFBzAChlpodHRwOi8vY3JsLm1pY3Jvc29mdC5jb20vcGtpaW5mcmEvQ2VydHMvQkwyUEtJSU5UQ0EwMS5BTUUuR0JMX0FNRSUyMEluZnJhJTIwQ0ElMjAwMig0KS5jcnQwVgYIKwYBBQUHMAKGSmh0dHA6Ly9jcmwxLmFtZS5nYmwvYWlhL0JMMlBLSUlOVENBMDEuQU1FLkdCTF9BTUUlMjBJbmZyYSUyMENBJTIwMDIoNCkuY3J0MFYGCCsGAQUFBzAChkpodHRwOi8vY3JsMi5hbWUuZ2JsL2FpYS9CTDJQS0lJTlRDQTAxLkFNRS5HQkxfQU1FJTIwSW5mcmElMjBDQSUyMDAyKDQpLmNydDBWBggrBgEFBQcwAoZKaHR0cDovL2NybDMuYW1lLmdibC9haWEvQkwyUEtJSU5UQ0EwMS5BTUUuR0JMX0FNRSUyMEluZnJhJTIwQ0ElMjAwMig0KS5jcnQwVgYIKwYBBQUHMAKGSmh0dHA6Ly9jcmw0LmFtZS5nYmwvYWlhL0JMMlBLSUlOVENBMDEuQU1FLkdCTF9BTUUlMjBJbmZyYSUyMENBJTIwMDIoNCkuY3J0MB0GA1UdDgQWBBTkraQRH5WmxdPc9yZtH-shaeLpoTAOBgNVHQ8BAf8EBAMCBaAwggE1BgNVHR8EggEsMIIBKDCCASSgggEgoIIBHIZCaHR0cDovL2NybC5taWNyb3NvZnQuY29tL3BraWluZnJhL0NSTC9BTUUlMjBJbmZyYSUyMENBJTIwMDIoNCkuY3JshjRodHRwOi8vY3JsMS5hbWUuZ2JsL2NybC9BTUUlMjBJbmZyYSUyMENBJTIwMDIoNCkuY3JshjRodHRwOi8vY3JsMi5hbWUuZ2JsL2NybC9BTUUlMjBJbmZyYSUyMENBJTIwMDIoNCkuY3JshjRodHRwOi8vY3JsMy5hbWUuZ2JsL2NybC9BTUUlMjBJbmZyYSUyMENBJTIwMDIoNCkuY3JshjRodHRwOi8vY3JsNC5hbWUuZ2JsL2NybC9BTUUlMjBJbmZyYSUyMENBJTIwMDIoNCkuY3JsMBcGA1UdIAQQMA4wDAYKKwYBBAGCN3sBATAfBgNVHSMEGDAWgBSuecJrXSWIEwb2BwnDl3x7l48dVTAdBgNVHSUEFjAUBggrBgEFBQcDAQYIKwYBBQUHAwIwDQYJKoZIhvcNAQELBQADggEBAA39junRQopC8uRS_tBsR6-M6E04h_HoqhY9NYKs6e2gE1P_mO05iJYTllHMf6Ow3lqyZUIDqiFotgObCVH6fRLL3RLdGlUX5H3hTNh2lhtMXf7Q4uJZu6CDnvKvIiUKIC_LpFjzXaBA8W2OyM1wngAx4djk4L_BBonrspi5Ox23l2sIA7ad7pa9wees8j8bqK2ZptGZfAEt6Tbgv1G0sPL_QJcqfI-lRpEcdFWllxJG4w26KINRMT9KFEIIZQDh3GjOA2JIWOhjOMr9rlsSYDjTJsNH3smFtZCuBnOIbfLKYgeeKF7u8jHXAJWruGk8NM9qRTuoSezGwrqehGhLzuI\u0026s=qMMB-RJtjIXjdEQt0DHmLBOExw8wr5TG8KwqdLYBzMsU-qyrbAAiE3VX856i8DalpSmGLesvkrrUDEouolvh4bCre-Cxs01Izg5hJKXSlAezJ2BC-UToW4veqHMw9nI5faf4VaMMBkuQKndpiPIqafQU2qyH8go1j7nxyT9P1dyR5-xCSt2jp1W4A8x5pPsdKqv_1OS0b2Z-uCyYvEmkrSG88UT2SCYkyGyCZHt1KC9ErBOYBDXIwDYq-JlML7BB9RcLMYCbVsb-1SQ6ScGSJdzfeTQOu3EzLDaso92i7L1wOYK3hWC8AFaLa8cJZm4l7D8_-z2Z2tTgAEwaNEYg_g\u0026h=4qksAhqWnvIoCzqYEsu1fzYYEARHNwTiMUbWk6In9TM+11": {
+    "Request": {
+      "Method": "GET",
+      "RequestUri": "https://management.azure.com/subscriptions/a984ce58-225e-44d2-bc79-20a834ce85ae/resourceGroups/dnssecrg/providers/Microsoft.Network/dnsOperationResults/00000000-0000-0000-0000-000000000053;17;dnstestd9k0ar.com;Regular?api-version=2023-07-01-preview\u0026t=638338766260997198\u0026c=MIIHHjCCBgagAwIBAgITfwHPHxKTmgA4c2tO5AAEAc8fEjANBgkqhkiG9w0BAQsFADBEMRMwEQYKCZImiZPyLGQBGRYDR0JMMRMwEQYKCZImiZPyLGQBGRYDQU1FMRgwFgYDVQQDEw9BTUUgSW5mcmEgQ0EgMDIwHhcNMjMwODAyMDY0ODMxWhcNMjQwNzI3MDY0ODMxWjBAMT4wPAYDVQQDEzVhc3luY29wZXJhdGlvbnNpZ25pbmdjZXJ0aWZpY2F0ZS5tYW5hZ2VtZW50LmF6dXJlLmNvbTCCASIwDQYJKoZIhvcNAQEBBQADggEPADCCAQoCggEBAMhsLKVwXCEctdIBSuxepGRU-bDlA63PQ-s4EzPR1B6S4OSTTk0a0Sxl_gs9xzXpjiuqW1XasW2mdnH9-eCqSmWfuokYD5CrV9-tUQSHefCzPU5-h7OhO2CMEchlYEv7PGeLi6xoSene3rm1xUTD3MSRDuaRC3WOBKEnhPSWdRJvxE13KZV0o3fRjQ2cvuOP5jsJZBX3kLXBDZngsALFQ4gXWXVn7CO7HD0LttkpsIpm4ppWcvcExZ4ct27mOZHEAOzQ_5vpUPM4kFAVoez6DQWsOPEmrmczFl_IDPNfZnQ64S3O36TnpdS8-JkREseyUzJdJrjzFQ2lnxqCRP_qJgECAwEAAaOCBAswggQHMCcGCSsGAQQBgjcVCgQaMBgwCgYIKwYBBQUHAwEwCgYIKwYBBQUHAwIwPQYJKwYBBAGCNxUHBDAwLgYmKwYBBAGCNxUIhpDjDYTVtHiE8Ys-hZvdFs6dEoFggvX2K4Py0SACAWQCAQowggHaBggrBgEFBQcBAQSCAcwwggHIMGYGCCsGAQUFBzAChlpodHRwOi8vY3JsLm1pY3Jvc29mdC5jb20vcGtpaW5mcmEvQ2VydHMvQkwyUEtJSU5UQ0EwMS5BTUUuR0JMX0FNRSUyMEluZnJhJTIwQ0ElMjAwMig0KS5jcnQwVgYIKwYBBQUHMAKGSmh0dHA6Ly9jcmwxLmFtZS5nYmwvYWlhL0JMMlBLSUlOVENBMDEuQU1FLkdCTF9BTUUlMjBJbmZyYSUyMENBJTIwMDIoNCkuY3J0MFYGCCsGAQUFBzAChkpodHRwOi8vY3JsMi5hbWUuZ2JsL2FpYS9CTDJQS0lJTlRDQTAxLkFNRS5HQkxfQU1FJTIwSW5mcmElMjBDQSUyMDAyKDQpLmNydDBWBggrBgEFBQcwAoZKaHR0cDovL2NybDMuYW1lLmdibC9haWEvQkwyUEtJSU5UQ0EwMS5BTUUuR0JMX0FNRSUyMEluZnJhJTIwQ0ElMjAwMig0KS5jcnQwVgYIKwYBBQUHMAKGSmh0dHA6Ly9jcmw0LmFtZS5nYmwvYWlhL0JMMlBLSUlOVENBMDEuQU1FLkdCTF9BTUUlMjBJbmZyYSUyMENBJTIwMDIoNCkuY3J0MB0GA1UdDgQWBBTkraQRH5WmxdPc9yZtH-shaeLpoTAOBgNVHQ8BAf8EBAMCBaAwggE1BgNVHR8EggEsMIIBKDCCASSgggEgoIIBHIZCaHR0cDovL2NybC5taWNyb3NvZnQuY29tL3BraWluZnJhL0NSTC9BTUUlMjBJbmZyYSUyMENBJTIwMDIoNCkuY3JshjRodHRwOi8vY3JsMS5hbWUuZ2JsL2NybC9BTUUlMjBJbmZyYSUyMENBJTIwMDIoNCkuY3JshjRodHRwOi8vY3JsMi5hbWUuZ2JsL2NybC9BTUUlMjBJbmZyYSUyMENBJTIwMDIoNCkuY3JshjRodHRwOi8vY3JsMy5hbWUuZ2JsL2NybC9BTUUlMjBJbmZyYSUyMENBJTIwMDIoNCkuY3JshjRodHRwOi8vY3JsNC5hbWUuZ2JsL2NybC9BTUUlMjBJbmZyYSUyMENBJTIwMDIoNCkuY3JsMBcGA1UdIAQQMA4wDAYKKwYBBAGCN3sBATAfBgNVHSMEGDAWgBSuecJrXSWIEwb2BwnDl3x7l48dVTAdBgNVHSUEFjAUBggrBgEFBQcDAQYIKwYBBQUHAwIwDQYJKoZIhvcNAQELBQADggEBAA39junRQopC8uRS_tBsR6-M6E04h_HoqhY9NYKs6e2gE1P_mO05iJYTllHMf6Ow3lqyZUIDqiFotgObCVH6fRLL3RLdGlUX5H3hTNh2lhtMXf7Q4uJZu6CDnvKvIiUKIC_LpFjzXaBA8W2OyM1wngAx4djk4L_BBonrspi5Ox23l2sIA7ad7pa9wees8j8bqK2ZptGZfAEt6Tbgv1G0sPL_QJcqfI-lRpEcdFWllxJG4w26KINRMT9KFEIIZQDh3GjOA2JIWOhjOMr9rlsSYDjTJsNH3smFtZCuBnOIbfLKYgeeKF7u8jHXAJWruGk8NM9qRTuoSezGwrqehGhLzuI\u0026s=qMMB-RJtjIXjdEQt0DHmLBOExw8wr5TG8KwqdLYBzMsU-qyrbAAiE3VX856i8DalpSmGLesvkrrUDEouolvh4bCre-Cxs01Izg5hJKXSlAezJ2BC-UToW4veqHMw9nI5faf4VaMMBkuQKndpiPIqafQU2qyH8go1j7nxyT9P1dyR5-xCSt2jp1W4A8x5pPsdKqv_1OS0b2Z-uCyYvEmkrSG88UT2SCYkyGyCZHt1KC9ErBOYBDXIwDYq-JlML7BB9RcLMYCbVsb-1SQ6ScGSJdzfeTQOu3EzLDaso92i7L1wOYK3hWC8AFaLa8cJZm4l7D8_-z2Z2tTgAEwaNEYg_g\u0026h=4qksAhqWnvIoCzqYEsu1fzYYEARHNwTiMUbWk6In9TM",
+      "Content": null,
+      "isContentBase64": false,
+      "Headers": {
+        "Authorization": [ "[Filtered]" ],
+        "x-ms-unique-id": [ "26" ],
+        "x-ms-client-request-id": [ "79f29e3d-468a-41c9-bfa8-54face2a43db" ],
+        "CommandName": [ "Remove-AzDnsZone" ],
+        "FullCommandName": [ "Remove-AzDnsZone_Delete" ],
+        "ParameterSetName": [ "__AllParameterSets" ],
+        "User-Agent": [ "AzurePowershell/v0.0.0", "PSVersion/v7.3.8", "Az.Dns/2.1.0" ]
+      },
+      "ContentHeaders": {
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Cache-Control": [ "private" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "x-ms-request-id": [ "79f29e3d-468a-41c9-bfa8-54face2a43db" ],
+        "Server": [ "Microsoft-IIS/10.0" ],
+        "X-Powered-By": [ "ASP.NET" ],
+        "x-ms-ratelimit-remaining-subscription-resource-requests": [ "496" ],
+        "x-ms-correlation-request-id": [ "e973b4da-8ec5-4e5d-854a-980308f70896" ],
+        "x-ms-routing-request-id": [ "WESTCENTRALUS:20231026T002349Z:e973b4da-8ec5-4e5d-854a-980308f70896" ],
+        "Date": [ "Thu, 26 Oct 2023 00:23:48 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "4" ],
+        "Content-Type": [ "application/json; charset=utf-8" ]
+      },
+      "Content": "dHJ1ZQ==",
+      "isContentBase64": false
+    }
+  }
+}
