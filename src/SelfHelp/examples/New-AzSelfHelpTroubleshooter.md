@@ -14,4 +14,4 @@ Name                                 SystemDataCreatedAt SystemDataCreatedBy Sys
 12d59989-f8a9-4b69-9919-1ef51df4eff6
 ```
 
-{{ Add description here }}
+Creates new troubleshooter resource.
