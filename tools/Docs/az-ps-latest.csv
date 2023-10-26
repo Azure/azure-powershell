@@ -148,7 +148,7 @@ pac146,[ps=true;customSource=https://azpspackage.blob.core.windows.net/docs-rele
 pac147,[ps=true;customSource=https://azpspackage.blob.core.windows.net/docs-release/Az.StackHCI.2.2.2.nupkg;sourceType=sa]Az.StackHCI,2.2.2
 pac148,[ps=true;customSource=https://azpspackage.blob.core.windows.net/docs-release/Az.Storage.5.10.1.nupkg;sourceType=sa]Az.Storage,5.10.1
 pac149,[ps=true;customSource=https://azpspackage.blob.core.windows.net/docs-release/Az.StorageCache.0.1.0.nupkg;sourceType=sa]Az.StorageCache,0.1.0
-pac150,[ps=true;customSource=https://azpspackage.blob.core.windows.net/docs-release/Az.StorageMover.1.0.1.nupkg;sourceType=sa]Az.StorageMover,1.0.1
+pac150,[ps=true;customSource=https://azpspackage.blob.core.windows.net/docs-release/Az.StorageMover.1.2.0.nupkg;sourceType=sa]Az.StorageMover,1.2.0
 pac151,[ps=true;customSource=https://azpspackage.blob.core.windows.net/docs-release/Az.StorageSync.2.0.0.nupkg;sourceType=sa]Az.StorageSync,2.0.0
 pac152,[ps=true;customSource=https://azpspackage.blob.core.windows.net/docs-release/Az.StreamAnalytics.2.0.0.nupkg;sourceType=sa]Az.StreamAnalytics,2.0.0
 pac153,[ps=true;customSource=https://azpspackage.blob.core.windows.net/docs-release/Az.Subscription.0.10.1.nupkg;sourceType=sa]Az.Subscription,0.10.1

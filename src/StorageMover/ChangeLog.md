@@ -18,6 +18,8 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
+
+## Version 1.2.0
 *  Supported SmbFileShareEndpoint and SmbEndpoint
 
 ## Version 1.0.1
