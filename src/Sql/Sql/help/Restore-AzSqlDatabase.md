@@ -171,7 +171,7 @@ Accept wildcard characters: False
 ```
 
 ### -AssignIdentity
-Generate and assign an Azure Active Directory Identity for this database for use with key management services like Azure KeyVault.
+Generate and assign a Microsoft Entra identity for this database for use with key management services like Azure KeyVault.
 
 ```yaml
 Type: System.Management.Automation.SwitchParameter
@@ -673,4 +673,3 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 [Get-AzSqlDeletedDatabaseBackup](./Get-AzSqlDeletedDatabaseBackup.md)
 
 [SQL Database Documentation](https://learn.microsoft.com/azure/sql-database/)
-

@@ -153,20 +153,20 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ContainerInstance.Models.Api2022100
         /// <summary>Internal Acessors for LivenessProbeHttpGet</summary>
         Microsoft.Azure.PowerShell.Cmdlets.ContainerInstance.Models.Api20221001Preview.IContainerHttpGet Microsoft.Azure.PowerShell.Cmdlets.ContainerInstance.Models.Api20221001Preview.IContainerInternal.LivenessProbeHttpGet { get => ((Microsoft.Azure.PowerShell.Cmdlets.ContainerInstance.Models.Api20221001Preview.IContainerPropertiesInternal)Property).LivenessProbeHttpGet; set => ((Microsoft.Azure.PowerShell.Cmdlets.ContainerInstance.Models.Api20221001Preview.IContainerPropertiesInternal)Property).LivenessProbeHttpGet = value; }
 
-        /// <summary>Internal Acessors for PreviouState</summary>
-        string Microsoft.Azure.PowerShell.Cmdlets.ContainerInstance.Models.Api20221001Preview.IContainerInternal.PreviouState { get => ((Microsoft.Azure.PowerShell.Cmdlets.ContainerInstance.Models.Api20221001Preview.IContainerPropertiesInternal)Property).PreviouState; set => ((Microsoft.Azure.PowerShell.Cmdlets.ContainerInstance.Models.Api20221001Preview.IContainerPropertiesInternal)Property).PreviouState = value; }
+        /// <summary>Internal Acessors for PreviousState</summary>
+        string Microsoft.Azure.PowerShell.Cmdlets.ContainerInstance.Models.Api20221001Preview.IContainerInternal.PreviousState { get => ((Microsoft.Azure.PowerShell.Cmdlets.ContainerInstance.Models.Api20221001Preview.IContainerPropertiesInternal)Property).PreviousState; set => ((Microsoft.Azure.PowerShell.Cmdlets.ContainerInstance.Models.Api20221001Preview.IContainerPropertiesInternal)Property).PreviousState = value; }
 
-        /// <summary>Internal Acessors for PreviouStateDetailStatus</summary>
-        string Microsoft.Azure.PowerShell.Cmdlets.ContainerInstance.Models.Api20221001Preview.IContainerInternal.PreviouStateDetailStatus { get => ((Microsoft.Azure.PowerShell.Cmdlets.ContainerInstance.Models.Api20221001Preview.IContainerPropertiesInternal)Property).PreviouStateDetailStatus; set => ((Microsoft.Azure.PowerShell.Cmdlets.ContainerInstance.Models.Api20221001Preview.IContainerPropertiesInternal)Property).PreviouStateDetailStatus = value; }
+        /// <summary>Internal Acessors for PreviousStateDetailStatus</summary>
+        string Microsoft.Azure.PowerShell.Cmdlets.ContainerInstance.Models.Api20221001Preview.IContainerInternal.PreviousStateDetailStatus { get => ((Microsoft.Azure.PowerShell.Cmdlets.ContainerInstance.Models.Api20221001Preview.IContainerPropertiesInternal)Property).PreviousStateDetailStatus; set => ((Microsoft.Azure.PowerShell.Cmdlets.ContainerInstance.Models.Api20221001Preview.IContainerPropertiesInternal)Property).PreviousStateDetailStatus = value; }
 
-        /// <summary>Internal Acessors for PreviouStateExitCode</summary>
-        int? Microsoft.Azure.PowerShell.Cmdlets.ContainerInstance.Models.Api20221001Preview.IContainerInternal.PreviouStateExitCode { get => ((Microsoft.Azure.PowerShell.Cmdlets.ContainerInstance.Models.Api20221001Preview.IContainerPropertiesInternal)Property).PreviouStateExitCode; set => ((Microsoft.Azure.PowerShell.Cmdlets.ContainerInstance.Models.Api20221001Preview.IContainerPropertiesInternal)Property).PreviouStateExitCode = value; }
+        /// <summary>Internal Acessors for PreviousStateExitCode</summary>
+        int? Microsoft.Azure.PowerShell.Cmdlets.ContainerInstance.Models.Api20221001Preview.IContainerInternal.PreviousStateExitCode { get => ((Microsoft.Azure.PowerShell.Cmdlets.ContainerInstance.Models.Api20221001Preview.IContainerPropertiesInternal)Property).PreviousStateExitCode; set => ((Microsoft.Azure.PowerShell.Cmdlets.ContainerInstance.Models.Api20221001Preview.IContainerPropertiesInternal)Property).PreviousStateExitCode = value; }
 
-        /// <summary>Internal Acessors for PreviouStateFinishTime</summary>
-        global::System.DateTime? Microsoft.Azure.PowerShell.Cmdlets.ContainerInstance.Models.Api20221001Preview.IContainerInternal.PreviouStateFinishTime { get => ((Microsoft.Azure.PowerShell.Cmdlets.ContainerInstance.Models.Api20221001Preview.IContainerPropertiesInternal)Property).PreviouStateFinishTime; set => ((Microsoft.Azure.PowerShell.Cmdlets.ContainerInstance.Models.Api20221001Preview.IContainerPropertiesInternal)Property).PreviouStateFinishTime = value; }
+        /// <summary>Internal Acessors for PreviousStateFinishTime</summary>
+        global::System.DateTime? Microsoft.Azure.PowerShell.Cmdlets.ContainerInstance.Models.Api20221001Preview.IContainerInternal.PreviousStateFinishTime { get => ((Microsoft.Azure.PowerShell.Cmdlets.ContainerInstance.Models.Api20221001Preview.IContainerPropertiesInternal)Property).PreviousStateFinishTime; set => ((Microsoft.Azure.PowerShell.Cmdlets.ContainerInstance.Models.Api20221001Preview.IContainerPropertiesInternal)Property).PreviousStateFinishTime = value; }
 
-        /// <summary>Internal Acessors for PreviouStateStartTime</summary>
-        global::System.DateTime? Microsoft.Azure.PowerShell.Cmdlets.ContainerInstance.Models.Api20221001Preview.IContainerInternal.PreviouStateStartTime { get => ((Microsoft.Azure.PowerShell.Cmdlets.ContainerInstance.Models.Api20221001Preview.IContainerPropertiesInternal)Property).PreviouStateStartTime; set => ((Microsoft.Azure.PowerShell.Cmdlets.ContainerInstance.Models.Api20221001Preview.IContainerPropertiesInternal)Property).PreviouStateStartTime = value; }
+        /// <summary>Internal Acessors for PreviousStateStartTime</summary>
+        global::System.DateTime? Microsoft.Azure.PowerShell.Cmdlets.ContainerInstance.Models.Api20221001Preview.IContainerInternal.PreviousStateStartTime { get => ((Microsoft.Azure.PowerShell.Cmdlets.ContainerInstance.Models.Api20221001Preview.IContainerPropertiesInternal)Property).PreviousStateStartTime; set => ((Microsoft.Azure.PowerShell.Cmdlets.ContainerInstance.Models.Api20221001Preview.IContainerPropertiesInternal)Property).PreviousStateStartTime = value; }
 
         /// <summary>Internal Acessors for Property</summary>
         Microsoft.Azure.PowerShell.Cmdlets.ContainerInstance.Models.Api20221001Preview.IContainerProperties Microsoft.Azure.PowerShell.Cmdlets.ContainerInstance.Models.Api20221001Preview.IContainerInternal.Property { get => (this._property = this._property ?? new Microsoft.Azure.PowerShell.Cmdlets.ContainerInstance.Models.Api20221001Preview.ContainerProperties()); set { {_property = value;} } }
@@ -205,25 +205,25 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ContainerInstance.Models.Api2022100
 
         /// <summary>The state of the container instance.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.ContainerInstance.Origin(Microsoft.Azure.PowerShell.Cmdlets.ContainerInstance.PropertyOrigin.Inlined)]
-        public string PreviouState { get => ((Microsoft.Azure.PowerShell.Cmdlets.ContainerInstance.Models.Api20221001Preview.IContainerPropertiesInternal)Property).PreviouState; }
+        public string PreviousState { get => ((Microsoft.Azure.PowerShell.Cmdlets.ContainerInstance.Models.Api20221001Preview.IContainerPropertiesInternal)Property).PreviousState; }
 
         /// <summary>The human-readable status of the container instance state.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.ContainerInstance.Origin(Microsoft.Azure.PowerShell.Cmdlets.ContainerInstance.PropertyOrigin.Inlined)]
-        public string PreviouStateDetailStatus { get => ((Microsoft.Azure.PowerShell.Cmdlets.ContainerInstance.Models.Api20221001Preview.IContainerPropertiesInternal)Property).PreviouStateDetailStatus; }
+        public string PreviousStateDetailStatus { get => ((Microsoft.Azure.PowerShell.Cmdlets.ContainerInstance.Models.Api20221001Preview.IContainerPropertiesInternal)Property).PreviousStateDetailStatus; }
 
         /// <summary>
         /// The container instance exit codes correspond to those from the `docker run` command.
         /// </summary>
         [Microsoft.Azure.PowerShell.Cmdlets.ContainerInstance.Origin(Microsoft.Azure.PowerShell.Cmdlets.ContainerInstance.PropertyOrigin.Inlined)]
-        public int? PreviouStateExitCode { get => ((Microsoft.Azure.PowerShell.Cmdlets.ContainerInstance.Models.Api20221001Preview.IContainerPropertiesInternal)Property).PreviouStateExitCode; }
+        public int? PreviousStateExitCode { get => ((Microsoft.Azure.PowerShell.Cmdlets.ContainerInstance.Models.Api20221001Preview.IContainerPropertiesInternal)Property).PreviousStateExitCode; }
 
         /// <summary>The date-time when the container instance state finished.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.ContainerInstance.Origin(Microsoft.Azure.PowerShell.Cmdlets.ContainerInstance.PropertyOrigin.Inlined)]
-        public global::System.DateTime? PreviouStateFinishTime { get => ((Microsoft.Azure.PowerShell.Cmdlets.ContainerInstance.Models.Api20221001Preview.IContainerPropertiesInternal)Property).PreviouStateFinishTime; }
+        public global::System.DateTime? PreviousStateFinishTime { get => ((Microsoft.Azure.PowerShell.Cmdlets.ContainerInstance.Models.Api20221001Preview.IContainerPropertiesInternal)Property).PreviousStateFinishTime; }
 
         /// <summary>The date-time when the container instance state started.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.ContainerInstance.Origin(Microsoft.Azure.PowerShell.Cmdlets.ContainerInstance.PropertyOrigin.Inlined)]
-        public global::System.DateTime? PreviouStateStartTime { get => ((Microsoft.Azure.PowerShell.Cmdlets.ContainerInstance.Models.Api20221001Preview.IContainerPropertiesInternal)Property).PreviouStateStartTime; }
+        public global::System.DateTime? PreviousStateStartTime { get => ((Microsoft.Azure.PowerShell.Cmdlets.ContainerInstance.Models.Api20221001Preview.IContainerPropertiesInternal)Property).PreviousStateStartTime; }
 
         /// <summary>Backing field for <see cref="Property" /> property.</summary>
         private Microsoft.Azure.PowerShell.Cmdlets.ContainerInstance.Models.Api20221001Preview.IContainerProperties _property;
@@ -519,7 +519,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ContainerInstance.Models.Api2022100
         Description = @"The state of the container instance.",
         SerializedName = @"state",
         PossibleTypes = new [] { typeof(string) })]
-        string PreviouState { get;  }
+        string PreviousState { get;  }
         /// <summary>The human-readable status of the container instance state.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.ContainerInstance.Runtime.Info(
         Required = false,
@@ -527,7 +527,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ContainerInstance.Models.Api2022100
         Description = @"The human-readable status of the container instance state.",
         SerializedName = @"detailStatus",
         PossibleTypes = new [] { typeof(string) })]
-        string PreviouStateDetailStatus { get;  }
+        string PreviousStateDetailStatus { get;  }
         /// <summary>
         /// The container instance exit codes correspond to those from the `docker run` command.
         /// </summary>
@@ -537,7 +537,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ContainerInstance.Models.Api2022100
         Description = @"The container instance exit codes correspond to those from the `docker run` command.",
         SerializedName = @"exitCode",
         PossibleTypes = new [] { typeof(int) })]
-        int? PreviouStateExitCode { get;  }
+        int? PreviousStateExitCode { get;  }
         /// <summary>The date-time when the container instance state finished.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.ContainerInstance.Runtime.Info(
         Required = false,
@@ -545,7 +545,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ContainerInstance.Models.Api2022100
         Description = @"The date-time when the container instance state finished.",
         SerializedName = @"finishTime",
         PossibleTypes = new [] { typeof(global::System.DateTime) })]
-        global::System.DateTime? PreviouStateFinishTime { get;  }
+        global::System.DateTime? PreviousStateFinishTime { get;  }
         /// <summary>The date-time when the container instance state started.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.ContainerInstance.Runtime.Info(
         Required = false,
@@ -553,7 +553,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ContainerInstance.Models.Api2022100
         Description = @"The date-time when the container instance state started.",
         SerializedName = @"startTime",
         PossibleTypes = new [] { typeof(global::System.DateTime) })]
-        global::System.DateTime? PreviouStateStartTime { get;  }
+        global::System.DateTime? PreviousStateStartTime { get;  }
         /// <summary>The commands to execute within the container.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.ContainerInstance.Runtime.Info(
         Required = false,
@@ -749,17 +749,17 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ContainerInstance.Models.Api2022100
         /// <summary>The exposed ports on the container instance.</summary>
         Microsoft.Azure.PowerShell.Cmdlets.ContainerInstance.Models.Api20221001Preview.IContainerPort[] Port { get; set; }
         /// <summary>The state of the container instance.</summary>
-        string PreviouState { get; set; }
+        string PreviousState { get; set; }
         /// <summary>The human-readable status of the container instance state.</summary>
-        string PreviouStateDetailStatus { get; set; }
+        string PreviousStateDetailStatus { get; set; }
         /// <summary>
         /// The container instance exit codes correspond to those from the `docker run` command.
         /// </summary>
-        int? PreviouStateExitCode { get; set; }
+        int? PreviousStateExitCode { get; set; }
         /// <summary>The date-time when the container instance state finished.</summary>
-        global::System.DateTime? PreviouStateFinishTime { get; set; }
+        global::System.DateTime? PreviousStateFinishTime { get; set; }
         /// <summary>The date-time when the container instance state started.</summary>
-        global::System.DateTime? PreviouStateStartTime { get; set; }
+        global::System.DateTime? PreviousStateStartTime { get; set; }
         /// <summary>The properties of the container instance.</summary>
         Microsoft.Azure.PowerShell.Cmdlets.ContainerInstance.Models.Api20221001Preview.IContainerProperties Property { get; set; }
         /// <summary>The readiness probe.</summary>

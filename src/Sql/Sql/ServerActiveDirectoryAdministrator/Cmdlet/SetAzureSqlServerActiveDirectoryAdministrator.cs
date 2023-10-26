@@ -27,7 +27,7 @@ namespace Microsoft.Azure.Commands.Sql.ServerActiveDirectoryAdministrator.Cmdlet
     public class SetAzureSqlServerActiveDirectoryAdministrator : AzureSqlServerActiveDirectoryAdministratorCmdletBase
     {
         /// <summary>
-        /// Azure Active Directory display name for a user or group
+        /// Microsoft Entra display name for a user or group
         /// </summary>
         [Parameter(Mandatory = true,
             ValueFromPipelineByPropertyName = true,
@@ -37,12 +37,12 @@ namespace Microsoft.Azure.Commands.Sql.ServerActiveDirectoryAdministrator.Cmdlet
         public string DisplayName { get; set; }
 
         /// <summary>
-        /// Azure Active Directory object id for a user or group
+        /// Microsoft Entra object id for a user or group
         /// </summary>
         [Parameter(Mandatory = false,
             ValueFromPipelineByPropertyName = true,
             Position = 3,
-            HelpMessage = "Specifies the object ID of the user or group in Azure Active Directory for which to grant permissions.")]
+            HelpMessage = "Specifies the object ID of the user or group in Microsoft Entra for which to grant permissions.")]
         [ValidateNotNullOrEmpty()]
         public Guid ObjectId { get; set; }
 

@@ -85,60 +85,6 @@ namespace Microsoft.Azure.Commands.ContainerRegistry
         protected const string InvalidRegistryOrReplicationResourceIdErrorMessage = "This is an invalid container registry resource id or replication resource id";
         protected const string InvalidReplicationResourceIdErrorMessage = "This is an invalid replication resource id";
 
-        protected struct PasswordNameStrings
-        {
-            internal const string Password = "password";
-            internal const string Password2 = "password2";
-        }
-
-        private ContainerRegistryClient _RegistryClient;
-
-        public ContainerRegistryClient RegistryClient
-        {
-            get
-            {
-                if (_RegistryClient == null)
-                {
-                    _RegistryClient = new ContainerRegistryClient(DefaultContext)
-                    {
-                        VerboseLogger = WriteVerboseWithTimestamp,
-                        ErrorLogger = WriteErrorWithTimestamp,
-                        WarningLogger = WriteWarningWithTimestamp
-                    };
-                }
-                return _RegistryClient;
-            }
-
-            set
-            {
-                _RegistryClient = value;
-            }
-        }
-
-        private ResourceManagerClient _ResourceManagerClient;
-
-        public ResourceManagerClient ResourceManagerClient
-        {
-            get
-            {
-                if (_ResourceManagerClient == null)
-                {
-                    _ResourceManagerClient = new ResourceManagerClient(DefaultContext)
-                    {
-                        VerboseLogger = WriteVerboseWithTimestamp,
-                        ErrorLogger = WriteErrorWithTimestamp,
-                        WarningLogger = WriteWarningWithTimestamp
-                    };
-                }
-                return _ResourceManagerClient;
-            }
-
-            set
-            {
-                _ResourceManagerClient = value;
-            }
-        }
-
         private const string _acrTokenCacheKey = "AcrTokenCacheKey";
         private ContainerRegistryDataPlaneClient _RegistryDataPlaneClient;
         public ContainerRegistryDataPlaneClient RegistryDataPlaneClient

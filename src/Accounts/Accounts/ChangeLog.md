@@ -19,6 +19,7 @@
 -->
 
 ## Upcoming Release
+* Upgraded Azure.Core to 1.35.0.
 
 ## Version 2.13.1
 * Added the module name in breaking change messages 

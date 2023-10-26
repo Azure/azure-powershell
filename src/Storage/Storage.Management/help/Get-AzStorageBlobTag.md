@@ -45,6 +45,7 @@ The **Get-AzStorageBlobTag** gets blob tags of a specific blob.
 ```powershell
 Get-AzStorageBlobTag -Container "containername" -Blob testblob
 ```
+
 ```output
 Name                           Value                                                                                                                                                                                 
 ----                           -----                                                                                                                                                                                 
@@ -58,6 +59,7 @@ This command gets blob tags on a specific blob.
 ```powershell
 Get-AzStorageBlobTag -Container "containername" -Blob testblob -TagCondition """tag1""='value1'"
 ```
+
 ```output
 Name                           Value                                                                                                                                                                                 
 ----                           -----                                                                                                                                                                                 

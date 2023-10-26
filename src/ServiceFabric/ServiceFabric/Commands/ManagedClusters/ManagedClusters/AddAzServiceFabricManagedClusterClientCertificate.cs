@@ -148,6 +148,11 @@ namespace Microsoft.Azure.Commands.ServiceFabric.Commands
 
             currentCluster.Clients.Add(newCert);
 
+            if (string.IsNullOrEmpty(currentCluster.PublicIPPrefixId))
+            {
+                currentCluster.PublicIPPrefixId = null;
+            }
+
             return currentCluster;
         }
 

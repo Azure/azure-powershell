@@ -19,6 +19,9 @@
 -->
 ## Upcoming Release
 
+## Version 0.1.2
+* Added support for CMK and volume snapshots
+
 ## Version 0.1.1
 * Added support for private endpoint for ElasticSan
 

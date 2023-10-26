@@ -402,14 +402,14 @@ function Test-SimpleNewVmWithDefaultDomainName2
             -ResourceGroupName $rgname `
             -Name $vmname `
             -Credential $cred `
-            -ImageName "ubuntults"
+            -ImageName "ubuntu2204"
 
         # second VM
         $x2 = New-AzVM `
             -ResourceGroupName $rgname2 `
             -Name $vmname `
             -Credential $cred `
-            -ImageName "ubuntults"
+            -ImageName "ubuntu2204"
     }
     finally
     {

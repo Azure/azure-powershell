@@ -65,8 +65,8 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Databricks.Models.Api20230201
             {
                 return;
             }
-            {_managedService = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Databricks.Runtime.Json.JsonObject>("managedServices"), out var __jsonManagedServices) ? Microsoft.Azure.PowerShell.Cmdlets.Databricks.Models.Api20230201.EncryptionV2.FromJson(__jsonManagedServices) : ManagedService;}
-            {_managedDisk = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Databricks.Runtime.Json.JsonObject>("managedDisk"), out var __jsonManagedDisk) ? Microsoft.Azure.PowerShell.Cmdlets.Databricks.Models.Api20230201.ManagedDiskEncryption.FromJson(__jsonManagedDisk) : ManagedDisk;}
+            {_managedService = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Databricks.Runtime.Json.JsonObject>("managedServices"), out var __jsonManagedServices) ? Microsoft.Azure.PowerShell.Cmdlets.Databricks.Models.Api20230201.EncryptionV2.FromJson(__jsonManagedServices) : _managedService;}
+            {_managedDisk = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Databricks.Runtime.Json.JsonObject>("managedDisk"), out var __jsonManagedDisk) ? Microsoft.Azure.PowerShell.Cmdlets.Databricks.Models.Api20230201.ManagedDiskEncryption.FromJson(__jsonManagedDisk) : _managedDisk;}
             AfterFromJson(json);
         }
 

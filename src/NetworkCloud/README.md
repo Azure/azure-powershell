@@ -42,7 +42,6 @@ input-file:
 # You need to specify your swagger files here.
   - $(repo)/specification/networkcloud/resource-manager/Microsoft.NetworkCloud/stable/2023-07-01/networkcloud.json
 
-# For new RP, the version is 0.1.0
 module-version: 0.1.0
 # Normally, title is the service name
 title: NetworkCloud

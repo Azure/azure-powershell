@@ -1,0 +1,95 @@
+{
+  "resourceType": "mobileNetworks/slices",
+  "apiVersion": "2022-11-01",
+  "learnMore": {
+    "url": "https://learn.microsoft.com/powershell/module/az.mobilenetwork"
+  },
+  "commands": [
+    {
+      "name": "Get-AzMobileNetworkSlice",
+      "description": "Gets information about the specified network slice.",
+      "path": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.MobileNetwork/mobileNetworks/{mobileNetworkName}/slices/{sliceName}",
+      "help": {
+        "learnMore": {
+          "url": "https://learn.microsoft.com/powershell/module/az.mobilenetwork/get-azmobilenetworkslice"
+        },
+        "parameterSets": [
+          {
+            "parameters": [
+              "-MobileNetworkName <String>",
+              "-ResourceGroupName <String>",
+              "-SliceName <String>",
+              "[-SubscriptionId <String[]>]"
+            ]
+          }
+        ]
+      },
+      "examples": [
+        {
+          "description": "Gets information about the specified network slice.",
+          "parameters": [
+            {
+              "name": "-MobileNetworkName",
+              "value": "[Path.mobileNetworkName]"
+            },
+            {
+              "name": "-ResourceGroupName",
+              "value": "[Path.resourceGroupName]"
+            },
+            {
+              "name": "-SliceName",
+              "value": "[Path.sliceName]"
+            },
+            {
+              "name": "-SubscriptionId",
+              "value": "[Path.subscriptionId]"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Remove-AzMobileNetworkSlice",
+      "description": "Deletes the specified network slice.",
+      "path": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.MobileNetwork/mobileNetworks/{mobileNetworkName}/slices/{sliceName}",
+      "help": {
+        "learnMore": {
+          "url": "https://learn.microsoft.com/powershell/module/az.mobilenetwork/remove-azmobilenetworkslice"
+        },
+        "parameterSets": [
+          {
+            "parameters": [
+              "-MobileNetworkName <String>",
+              "-ResourceGroupName <String>",
+              "-SliceName <String>",
+              "[-SubscriptionId <String>]"
+            ]
+          }
+        ]
+      },
+      "examples": [
+        {
+          "description": "Deletes the specified network slice.",
+          "parameters": [
+            {
+              "name": "-MobileNetworkName",
+              "value": "[Path.mobileNetworkName]"
+            },
+            {
+              "name": "-ResourceGroupName",
+              "value": "[Path.resourceGroupName]"
+            },
+            {
+              "name": "-SliceName",
+              "value": "[Path.sliceName]"
+            },
+            {
+              "name": "-SubscriptionId",
+              "value": "[Path.subscriptionId]"
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

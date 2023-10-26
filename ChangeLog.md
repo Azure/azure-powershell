@@ -1,3 +1,7 @@
+## 10.4.1 - September 2023
+#### Az.Resources 6.11.1
+* Reverted commits that caused regression in 'Get-AzRoleAssignment'. [#22863]
+
 ## 10.4.0 - September 2023
 #### Az.Accounts 2.13.1
 * Added the module name in breaking change messages 

@@ -99,7 +99,7 @@ function Install-AzModule_Default {
         }
 
         if ($Force -or $PSCmdlet.ShouldProcess('Remove Az if installed', 'Az', 'Remove')) {
-            PowerShellGet\Uninstall-Module -Name 'Az' -AllVersion -AllowPrerelease -ErrorAction SilentlyContinue
+            PowerShellGet\Uninstall-Module -Name 'Az' -AllVersion -AllowPrerelease -ErrorAction 'SilentlyContinue'
         }
 
         if ($modules) {
@@ -111,7 +111,7 @@ function Install-AzModule_Default {
             }
             $installModuleParams = @{
                 ModuleList = $moduleList
-                RepositoryUrl = (Get-RepositoryUrl $Repository)
+                Repository = $Repository
                 AllowPrerelease = $AllowPrerelease
                 Scope = if ($Scope) {$Scope} else {'CurrentUser'}
                 RemovePrevious = $RemovePrevious
