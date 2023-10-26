@@ -1089,5 +1089,91 @@ namespace Microsoft.Azure.Commands.Sql.ElasticJobs.Services
         }
 
         #endregion
+
+        #region Job Private Endpoints
+
+        /// <summary>
+        /// Upserts an elastic job private endpoint 
+        /// </summary>
+        /// <param name="model">The job private endpoint object</param>
+        /// <returns>The job private endpoint object</returns>
+        public AzureSqlElasticJobPrivateEndpointModel UpsertJobPrivateEndpoint(AzureSqlElasticJobPrivateEndpointModel model)
+        {
+            var param = new JobPrivateEndpoint
+            {
+                TargetServerAzureResourceId = model.TargetServerAzureResourceId,
+            };
+
+            var resp = Communicator.CreateOrUpdatePrivateEndpoint(model.ResourceGroupName, model.ServerName, model.AgentName, model.PrivateEndpointName, param);
+            return CreateAgentPrivateEndpointModelFromResponse(model.ResourceGroupName, model.ServerName, model.AgentName, resp);
+        }
+
+        /// <summary>
+        /// Gets a job private endpoint 
+        /// </summary>
+        /// <param name="resourceGroupName">The resource group name</param>
+        /// <param name="serverName">The server name</param>
+        /// <param name="agentName">The agent name</param>
+        /// <param name="privateEndpointName">The job private endpoint name</param>
+        /// <returns></returns>
+        public AzureSqlElasticJobPrivateEndpointModel GetJobPrivateEndpoint(string resourceGroupName, string serverName, string agentName, string privateEndpointName)
+        {
+
+            var resp = Communicator.GetPrivateEndpoint(resourceGroupName, serverName, agentName, privateEndpointName);
+            return CreateAgentPrivateEndpointModelFromResponse(resourceGroupName, serverName, agentName, resp);
+        }
+
+        /// <summary>
+        /// Gets a list of job private endpoints by agent
+        /// </summary>
+        /// <param name="resourceGroupName">The resource group name</param>
+        /// <param name="serverName">The server name</param>
+        /// <param name="agentName">The agent name</param>
+        /// <returns>A list of job private endpoint model</returns>
+        public List<AzureSqlElasticJobPrivateEndpointModel> ListJobPrivateEndpoints(string resourceGroupName, string serverName, string agentName)
+        {
+            var resp = Communicator.ListPrivateEndpointsByAgent(resourceGroupName, serverName, agentName);
+            return resp.Select(privateEndpoint => CreateAgentPrivateEndpointModelFromResponse(resourceGroupName, serverName, agentName, privateEndpoint)).ToList();
+        }
+
+        /// <summary>
+        /// Removes a job private endpoint
+        /// </summary>
+        /// <param name="resourceGroupName">The resource group name</param>
+        /// <param name="serverName">The server name</param>
+        /// <param name="agentName">The agent name</param>
+        /// <param name="privateEndpointName">The job private endpoint name</param>
+        public void RemoveJobPrivateEndpoint(string resourceGroupName, string serverName, string agentName, string privateEndpointName)
+        {
+            Communicator.RemovePrivateEndpoint(resourceGroupName, serverName, agentName, privateEndpointName);
+        }
+
+        /// <summary>
+        /// Converts a job private endpoint response to a AzureSqlElasticJobPrivateEndpointModel object
+        /// </summary>
+        /// <param name="resourceGroupName">The resource group name</param>
+        /// <param name="serverName">The server name</param>
+        /// <param name="agentName">The agent name</param>
+        /// <param name="resp">The job private endpoint response</param>
+        /// <returns></returns>
+        private static AzureSqlElasticJobPrivateEndpointModel CreateAgentPrivateEndpointModelFromResponse(string resourceGroupName, string serverName, string agentName, JobPrivateEndpoint resp)
+        {
+            AzureSqlElasticJobPrivateEndpointModel privateEndpoint = new AzureSqlElasticJobPrivateEndpointModel
+            {
+                ResourceGroupName = resourceGroupName,
+                ServerName = serverName,
+                AgentName = agentName,
+                ResourceId = resp.Id,
+                Type = resp.Type,
+                PrivateEndpointName = resp.Name,
+                TargetServerAzureResourceId = resp.TargetServerAzureResourceId,
+                PrivateEndpointId = resp.PrivateEndpointId,
+            };
+
+            return privateEndpoint;
+        }
+
+
+        #endregion Job Private Endpoints
     }
 }

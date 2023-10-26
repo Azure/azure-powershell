@@ -155,7 +155,7 @@ namespace Microsoft.Azure.Commands.Sql.ElasticJobs.Cmdlet
                 DatabaseName = model.FirstOrDefault().DatabaseName, // Note: control database cannot be updated
                 Location = model.FirstOrDefault().Location,
                 Tags = TagsConversionHelper.ReadOrFetchTags(this, model.First().Tags),
-                WorkerCount = model.FirstOrDefault().WorkerCount    // TODO: In the future, we will expose this.
+                WorkerCount = model.FirstOrDefault().WorkerCount    // TODO: In the future, we will expose this. (the time has come..)
             };
 
             return new List<AzureSqlElasticJobAgentModel> { newEntity };
@@ -169,7 +169,7 @@ namespace Microsoft.Azure.Commands.Sql.ElasticJobs.Cmdlet
         protected override IEnumerable<AzureSqlElasticJobAgentModel> PersistChanges(IEnumerable<AzureSqlElasticJobAgentModel> entity)
         {
             // Note: We are currently using Update / PATCH.
-            // We will need to update this to UpsertAgent when we expose worker count when we GA.
+            // We will need to update this to UpsertAgent when we expose worker count when we GA. (TODO-JP: why?)
             return new List<AzureSqlElasticJobAgentModel> { ModelAdapter.UpdateAgent(entity.First()) };
         }
     }
