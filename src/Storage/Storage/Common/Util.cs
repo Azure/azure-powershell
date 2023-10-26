@@ -790,22 +790,35 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Common
             }
         }
 
-        public static QueueClient GetTrack2QueueClient(string queueName, AzureStorageContext context, QueueClientOptions options)
+        public static QueueServiceClient GetTrack2QueueServiceClient(AzureStorageContext context, QueueClientOptions options = null)
         {
             if (context == null || string.IsNullOrEmpty(context.ConnectionString))
             {
                 throw new ArgumentException(Resources.DefaultStorageCredentialsNotFound);
             }
 
-            string connectionString = context.ConnectionString;
-            if (context != null && context.StorageAccount != null && context.StorageAccount.Credentials != null && context.StorageAccount.Credentials.IsSAS)
+            QueueServiceClient queueServiceClient;
+            if (context != null && context.StorageAccount != null && context.StorageAccount.Credentials != null && context.StorageAccount.Credentials.IsToken)
             {
-                connectionString = connectionString.Replace("SharedAccessSignature=?", "SharedAccessSignature=");
+                queueServiceClient = new QueueServiceClient(context.StorageAccount.QueueEndpoint, context.Track2OauthToken, options);
             }
+            else
+            {
+                string connectionString = context.ConnectionString;
+                // remove the "?" at the begin of SAS if any
+                if (context != null && context.StorageAccount != null && context.StorageAccount.Credentials != null && context.StorageAccount.Credentials.IsSAS)
+                {
+                    connectionString = connectionString.Replace("SharedAccessSignature=?", "SharedAccessSignature=");
+                }
+                queueServiceClient = new QueueServiceClient(connectionString, options);
+            }
+            return queueServiceClient;
+        }
 
-            QueueClient queueClient;
 
-            queueClient = new QueueClient(connectionString, queueName, options);
+        public static QueueClient GetTrack2QueueClient(string queueName, AzureStorageContext context, QueueClientOptions options)
+        {
+            QueueClient queueClient = GetTrack2QueueServiceClient(context, options).GetQueueClient(queueName);
             return queueClient;
         }
 
