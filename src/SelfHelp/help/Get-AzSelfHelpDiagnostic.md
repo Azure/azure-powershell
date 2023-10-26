@@ -114,21 +114,9 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.SelfHelp.Models.Api20230601.IDiagnosticResource
+### Microsoft.Azure.PowerShell.Cmdlets.SelfHelp.Models.Api20230901Preview.IDiagnosticResource
 
 ## NOTES
-
-ALIASES
-
-COMPLEX PARAMETER PROPERTIES
-
-To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
-
-
-`INPUTOBJECT <ISelfHelpIdentity>`: Identity Parameter
-  - `[DiagnosticsResourceName <String>]`: Unique resource name for insight resources
-  - `[Id <String>]`: Resource identity path
-  - `[Scope <String>]`: This is an extension resource provider and only resource level extension is supported at the moment.
 
 ## RELATED LINKS
 
