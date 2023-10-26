@@ -6967,8 +6967,8 @@ function Test-VMDefaultsToTrustedLaunchWithManagedDisk
 {
     # TODO: complete this test
     # Setup
-    $rgname = "adsandvmd2";#Get-ComputeTestResourceName;
-    $loc = "eastus2";#Get-ComputeVMLocation;
+    $rgname = "adsandvmd16";#Get-ComputeTestResourceName;
+    $loc = "eastus";#Get-ComputeVMLocation;
 
     try
     {
@@ -7017,9 +7017,37 @@ function Test-VMDefaultsToTrustedLaunchWithManagedDisk
         Set-AzVMOSDisk -Windows -ManagedDiskId $disk.Id -CreateOption Attach -VM $vmConfig;
         
         New-AzVM -ResourceGroupName $rgname -Location $loc -VM $vmConfig;
+        
+        # Initialize status to creating  
+        $status = "Creating"  
+  
+        # While loop to check status  
+        while ($status -eq "Creating") {  
+            # Get VM status  
+            $vmStatus = Get-AzVM -ResourceGroupName $rgname -Name $vmname -Status  
+      
+            # Update status  
+            $status = $vmStatus.Statuses[1].Code.Split("/")[1]  
+  
+            # Check status  
+            if ($status -eq "Creating") {  
+            # If status is still creating, wait for 5 minutes before checking again  
+                Start-Sleep -Seconds 300  
+            } elseif ($status -eq "Succeeded" -or $status -eq "Running") {  
+                # If status is succeeded or running, print success message and break loop  
+                # Write-Output "VM successfully created or running"  
+                break  
+            } else {  
+                # If status is anything else, print error message and break loop  
+                # Write-Output "Error creating VM, status: $status"  
+                break  
+            }  
+        }  
+        
         $vm = Get-AzVM -ResourceGroupName $rgname -Name $vmname;
         
         # Validate VMConfig scenario
+        # this.VM.StorageProfile.OsDisk.ManagedDisk
         Assert-AreEqual $vm.SecurityProfile.SecurityType $securityTypeTL;
         Assert-AreEqual $vm.SecurityProfile.UefiSettings.SecureBootEnabled $enable;
         Assert-AreEqual $vm.SecurityProfile.UefiSettings.VTpmEnabled $enable;

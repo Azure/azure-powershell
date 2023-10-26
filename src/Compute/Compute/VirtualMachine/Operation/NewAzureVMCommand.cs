@@ -971,7 +971,34 @@ namespace Microsoft.Azure.Commands.Compute
                 ExtendedLocation = new CM.ExtendedLocation { Name = this.EdgeZone, Type = CM.ExtendedLocationTypes.EdgeZone };
             }
 
+            // Disk attached scenario for TL defaulting
+            if ((this.VM.SecurityProfile?.SecurityType == null || this.VM.SecurityProfile?.SecurityType == ConstantValues.TrustedLaunchSecurityType)
+                && this.VM.StorageProfile?.OsDisk?.ManagedDisk?.Id != null)
+            {
+                /*
+                var compClient = AzureSession.Instance.ClientFactory.CreateArmClient<ComputeManagementClient>(
+                            DefaultProfile.DefaultContext,
+                            AzureEnvironment.Endpoint.ResourceManager);
+                */
+                var mDiskId = this.VM.StorageProfile?.OsDisk?.ManagedDisk.Id.ToString();
+                // /subscriptions/e37510d7-33b6-4676-886f-ee75bcc01871/resourceGroups/adsandvmd3/providers/Microsoft.Compute/disks/v2adsandvmd3d1
+                var diskIdParts = mDiskId.Split(new char[] { '/' }, StringSplitOptions.RemoveEmptyEntries);
+                string rgName = diskIdParts[Array.IndexOf(diskIdParts, "resourceGroups") + 1];
+                string diskName = diskIdParts[Array.IndexOf(diskIdParts, "disks") + 1];
+                var getManagedDisk = ComputeClient.ComputeManagementClient.Disks.Get(rgName, diskName);
+                // getManagedDisk.SecurityProfile.SecurityType == TrustedLaunch
+                if (getManagedDisk.SecurityProfile.SecurityType.ToString().ToLower() == ConstantValues.TrustedLaunchSecurityType)
+                {
+                    if (this.VM.SecurityProfile == null)
+                    {
+                        this.VM.SecurityProfile = new SecurityProfile();
+                    }
+                    this.VM.SecurityProfile.SecurityType = ConstantValues.TrustedLaunchSecurityType;
+                }
+            }
+
             // Guest Attestation extension defaulting scenario check.
+            // And SecureBootEnabled and VtpmEnabled defaulting scenario.
             if (this.VM?.SecurityProfile?.SecurityType?.ToLower() == ConstantValues.TrustedLaunchSecurityType || this.VM?.SecurityProfile?.SecurityType?.ToLower() == ConstantValues.ConfidentialVMSecurityType)
             {
                 if (this.VM?.SecurityProfile?.UefiSettings != null)
@@ -992,10 +1019,11 @@ namespace Microsoft.Azure.Commands.Compute
                 this.VM.Identity = new VirtualMachineIdentity(null, null, Microsoft.Azure.Management.Compute.Models.ResourceIdentityType.SystemAssigned);
             }
 
-            // TODO might not need this. 
+            // TODO might not need this. Can they add an image in a cmdlet diff from new-azvmconfig?
             // Default TrustedLaunch Image, but this was already handled in NEw-AzVMConfig!
             if (this.VM.SecurityProfile.SecurityType == ConstantValues.TrustedLaunchSecurityType
-                && this.VM?.StorageProfile?.ImageReference == null)
+                && this.VM?.StorageProfile?.ImageReference == null
+                && this.VM.StorageProfile?.OsDisk?.ManagedDisk?.Id == null) //had to add this
             {
                 this.VM.StorageProfile.ImageReference = new ImageReference
                 {
@@ -1005,6 +1033,7 @@ namespace Microsoft.Azure.Commands.Compute
                     Version = "latest"
                 };
             }
+            
 
             if (ShouldProcess(this.VM.Name, VerbsCommon.New))
             {
