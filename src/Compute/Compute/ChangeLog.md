@@ -23,6 +23,7 @@
 * Added update functionality in `Update-AzVmss` for parameters `SecurityType`, `EnableSecureBoot`, and `EnableVtpm` for the parameter set with the Put operation.
 * Upgraded Azure.Core to 1.35.0.
 * [Breaking change] Removed unversioned and outdated linux image aliases of `CentOS`, `RHEL`, `UbuntuLTS` and `Debian`.
+* Remove unversioned and outdated images from New-AzVmss `-ImageName` argument completers.
 
 ## Version 6.3.0
 * Added `-Hibernate` switch parameter to `Stop-AzVmss` default parameter set. 
