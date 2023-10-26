@@ -9,14 +9,15 @@ $env = @{}
 function setupEnv() {
     # If you want to record a single test do the following for exmple pwsh test-module.ps1 --Record --TestName Update-AzKustoDataConnection
     # 1. comment cleanupEnv- you don't want clean up of the resource group
-    # 2. run playback and create the resources
-    # 3. comment all content of setupEnv, you want to reuse the resources.
-    # 4. leave only $env = Get-Content .\test\env.json | ConvertFrom-Json, to load the $env 
+    # 2. run Record and create the resources
+    # 3. comment all content of setupEnv, you want to reuse the resources from previous session instead of creating again
+    # 4. add the following line $env = Get-Content .\test\env.json | ConvertFrom-Json, to load the $env 
+    # 5. Run the recording of a specific test for exmple pwsh test-module.ps1 --Record --TestName Update-AzKustoDataConnection
 
-    $env.subscriptionId = "fbccad30-f0ed-4ac4-9497-93bf6141062f" # Kusto_Dev_Kusto_Ilay_00
-    $env.location = 'UK South'
-    #$env.subscriptionId = "e8257c73-24c5-4791-94dc-8b7901c90dbf" # Kusto_Dev_Kusto_Ilay_04_Test
-    #$env.location = 'East US'
+    #$env = Get-Content .\test\env.json | ConvertFrom-Json
+    
+    $env.subscriptionId = "e8257c73-24c5-4791-94dc-8b7901c90dbf" # Kusto_Dev_Kusto_Ilay_04_Test
+    $env.location = 'East US'
     Write-Host "Setting up and connection to subcription " $env.SubscriptionId -ForegroundColor Green
     Connect-AzAccount -Subscription $env.SubscriptionId
     $env.Tenant = (Get-AzContext).Tenant.Id
@@ -112,7 +113,7 @@ function setupEnv() {
 
 function cleanupEnv() {
     # If you want to keep the resources after recording - disable remove of RG
-    Remove-AzResourceGroup -Name $env.resourceGroupName
+    #Remove-AzResourceGroup -Name $env.resourceGroupName #TODO - uncomment this line
 }
 
 function Update-Parameter
