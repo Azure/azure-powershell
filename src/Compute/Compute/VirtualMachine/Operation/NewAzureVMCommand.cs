@@ -772,14 +772,14 @@ namespace Microsoft.Azure.Commands.Compute
                 if (!this.IsParameterBound(c => c.Image) && !this.IsParameterBound(c => c.ImageReferenceId) && !this.IsParameterBound(c => c.SharedGalleryImageId))
                 {
                     this.Image = ConstantValues.TrustedLaunchDefaultImageAlias;
-                }
-                if (!this.IsParameterBound(c => c.EnableSecureBoot))
-                {
-                    this.EnableSecureBoot = true;
-                }
-                if (!this.IsParameterBound(c => c.EnableVtpm))
-                {
-                    this.EnableVtpm = true;
+                    if (!this.IsParameterBound(c => c.EnableSecureBoot))
+                    {
+                        this.EnableSecureBoot = true;
+                    }
+                    if (!this.IsParameterBound(c => c.EnableVtpm))
+                    {
+                        this.EnableVtpm = true;
+                    }
                 }
             }
             
