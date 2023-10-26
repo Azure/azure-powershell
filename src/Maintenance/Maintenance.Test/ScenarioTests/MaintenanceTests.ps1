@@ -509,14 +509,15 @@ Test New-AzMaintenanceConfiguration, Get-AzApplyUpdate, Remove-AzMaintenanceConf
 #>
 function Test-AzApplyUpdateCancelConfiguration
 {
-    $startTime = (Get-Date -AsUTC).AddMinutes(12)
+    $actualStartTime = (Get-Date -AsUTC).AddMinutes(12)
 
     $resourceGroupName = Get-RandomResourceGroupName
     $maintenanceConfigurationName = Get-RandomMaintenanceConfigurationName
     $location = "eastus2euap"
     $maintenanceScope = "InGuestPatch"
     $duration = "02:00"
-    $startDateTime = $startTime.ToString("yyyy-MM-dd HH:mm")
+    $actualStartDateTime = $actualStartTime.ToString("yyyy-MM-dd HH:mm")
+    $startDateTime = [Microsoft.Azure.Test.HttpRecorder.HttpMockServer]::GetVariable("startDateTime", $actualStartDateTime)
     $expirationDateTime = "9999-12-31 00:00"
     $recurEvery = "Day"
     $timezone = "UTC"
@@ -527,7 +528,8 @@ function Test-AzApplyUpdateCancelConfiguration
 
     $providerName = "Microsoft.Maintenance"
     $resourceType = "maintenanceConfigurations"
-    $applyUpdateName = $startTime.ToString("yyyyMMddHHmm00")
+    $actualApplyUpdateName = $actualStartTime.ToString("yyyyMMddHHmm00")
+    $applyUpdateName = [Microsoft.Azure.Test.HttpRecorder.HttpMockServer]::GetVariable("applyUpdateName", $actualApplyUpdateName)
     $status = "Cancel"
 
     try 
@@ -540,7 +542,7 @@ function Test-AzApplyUpdateCancelConfiguration
         Assert-AreEqual $maintenanceConfigurationCreated.Name $maintenanceConfigurationName
 
         ### Wait for configuration cancellation window to start
-        Start-Sleep -Seconds (4 * 60)
+        Start-TestSleep -Seconds (4 * 60)
 
         ### Cancel the config
         $cancelResponse =  New-AzApplyUpdate -ResourceGroupName $resourceGroupName -ProviderName $providerName -ResourceType $resourceType -ResourceName $maintenanceConfigurationName -ApplyUpdateName $applyUpdateName -Status $status
