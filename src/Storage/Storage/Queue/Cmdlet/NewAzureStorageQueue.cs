@@ -15,9 +15,10 @@
 namespace Microsoft.WindowsAzure.Commands.Storage.Queue
 {
     using Commands.Common.Storage.ResourceModel;
+    using global::Azure.Storage.Queues;
+    using global::Azure.Storage.Queues.Models;
     using Microsoft.WindowsAzure.Commands.Storage.Common;
     using Microsoft.WindowsAzure.Commands.Storage.Model.Contract;
-    using Microsoft.Azure.Storage.Queue;
     using System;
     using System.Management.Automation;
     using System.Security.Permissions;
@@ -50,37 +51,20 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Queue
         }
 
         /// <summary>
-        /// create an azure queue
-        /// </summary>
-        /// <param name="name">queue name</param>
-        /// <returns>an AzureStorageQueue object</returns>
-        internal AzureStorageQueue CreateAzureQueue(string name)
-        {
-            if (!NameUtil.IsValidQueueName(name))
-            {
-                throw new ArgumentException(String.Format(Resources.InvalidQueueName, name));
-            }
-
-            QueueRequestOptions requestOptions = RequestOptions;
-            CloudQueue queue = Channel.GetQueueReference(name);
-            bool created = Channel.CreateQueueIfNotExists(queue, requestOptions, OperationContext);
-
-            if (!created)
-            {
-                throw new ResourceAlreadyExistException(String.Format(Resources.QueueAlreadyExists, name));
-            }
-
-            return new AzureStorageQueue(queue);
-        }
-
-        /// <summary>
         /// execute command
         /// </summary>
         [PermissionSet(SecurityAction.Demand, Name = "FullTrust")]
         public override void ExecuteCmdlet()
         {
-            AzureStorageQueue azureQueue = CreateAzureQueue(Name);
-            WriteObjectWithStorageContext(azureQueue);
+            if (!NameUtil.IsValidQueueName(this.Name))
+            {
+                throw new ArgumentException(String.Format(Resources.InvalidQueueName, this.Name));
+            }
+
+            QueueClient queueClient = Util.GetTrack2QueueClient(this.Name, (AzureStorageContext)this.Context, this.ClientOptions);
+            queueClient.Create(cancellationToken: this.CmdletCancellationToken);
+            QueueProperties queueProperties = queueClient.GetProperties(cancellationToken: this.CmdletCancellationToken);
+            WriteObject(new AzureStorageQueue(queueClient, queueProperties, (AzureStorageContext)this.Context));
         }
     }
 }

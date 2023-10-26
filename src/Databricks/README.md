@@ -49,7 +49,16 @@ identity-correction-for-post: true
 nested-object-to-string: true
 
 directive:
-  # Remove cmdlet, Private link related resource should be ignored. 
+# Worked around this issue: https://github.com/Azure/autorest.powershell/issues/1258
+  - from: EncryptionEntitiesDefinition.json.cs
+    where: $
+    transform: $ = $.replace('ManagedService;', '_managedService;')
+
+  - from: EncryptionEntitiesDefinition.json.cs
+    where: $
+    transform: $ = $.replace('ManagedDisk;', '_managedDisk;')
+
+# Remove cmdlet, Private link related resource should be ignored. 
   - where:
      subject: PrivateEndpointConnection|PrivateLinkResource
     remove: true

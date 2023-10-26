@@ -17,6 +17,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.EventHub.Cmdlets
     [global::System.Management.Automation.OutputType(typeof(Microsoft.Azure.PowerShell.Cmdlets.EventHub.Models.Api202301Preview.IPrivateEndpointConnection))]
     [global::Microsoft.Azure.PowerShell.Cmdlets.EventHub.Description(@"Creates or updates PrivateEndpointConnections of service namespace.")]
     [global::Microsoft.Azure.PowerShell.Cmdlets.EventHub.Generated]
+    [global::Microsoft.Azure.PowerShell.Cmdlets.EventHub.HttpPath(Path = "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.EventHub/namespaces/{namespaceName}/privateEndpointConnections/{privateEndpointConnectionName}", ApiVersion = "2023-01-01-preview")]
     public partial class NewAzEventHubPrivateEndpointConnection_CreateExpanded : global::System.Management.Automation.PSCmdlet,
         Microsoft.Azure.PowerShell.Cmdlets.EventHub.Runtime.IEventListener
     {

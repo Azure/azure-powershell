@@ -171,7 +171,7 @@ To create the parameters described below, construct a hash table containing the 
   - `[AdministratorLogin <String>]`: The administrator's login name of a server. Can only be specified when the server is being created (and is required for creation).
   - `[EarliestRestoreDate <DateTime?>]`: Earliest restore point creation time (ISO8601 format)
   - `[FullyQualifiedDomainName <String>]`: The fully qualified domain name of a server.
-  - `[IdentityType <IdentityType?>]`: The identity type. Set this to 'SystemAssigned' in order to automatically create and assign an Azure Active Directory principal for the resource.
+  - `[IdentityType <IdentityType?>]`: The identity type. Set this to 'SystemAssigned' in order to automatically create and assign a Microsoft Entra principal for the resource.
   - `[InfrastructureEncryption <InfrastructureEncryption?>]`: Status showing whether the server enabled infrastructure encryption.
   - `[MasterServerId <String>]`: The master server id of a replica server.
   - `[MinimalTlsVersion <MinimalTlsVersionEnum?>]`: Enforce a minimal Tls version for the server.
@@ -192,4 +192,3 @@ To create the parameters described below, construct a hash table containing the 
   - `[Version <ServerVersion?>]`: Server version.
 
 ## RELATED LINKS
-

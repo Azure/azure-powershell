@@ -43,12 +43,7 @@ namespace Microsoft.Azure.Management.Search.Models
         /// The search service is in error state, indicating either a failure to provision or to be deleted.
         /// </summary>
         [System.Runtime.Serialization.EnumMember(Value = "error")]
-        Error,
-        /// <summary>
-        /// The search service is in a subscription that's disabled.
-        /// </summary>
-        [System.Runtime.Serialization.EnumMember(Value = "stopped")]
-        Stopped
+        Error
     }
     internal static class SearchServiceStatusEnumExtension
     {
@@ -72,8 +67,6 @@ namespace Microsoft.Azure.Management.Search.Models
                     return "disabled";
                 case SearchServiceStatus.Error:
                     return "error";
-                case SearchServiceStatus.Stopped:
-                    return "stopped";
             }
             return null;
         }
@@ -93,8 +86,6 @@ namespace Microsoft.Azure.Management.Search.Models
                     return SearchServiceStatus.Disabled;
                 case "error":
                     return SearchServiceStatus.Error;
-                case "stopped":
-                    return SearchServiceStatus.Stopped;
             }
             return null;
         }

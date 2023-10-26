@@ -119,10 +119,10 @@ namespace Microsoft.Azure.Commands.ServiceFabric.Commands
 
             if (currentNodeType.VmExtensions == null)
             {
-                currentNodeType.VmExtensions = new List<VMSSExtension>();
+                currentNodeType.VmExtensions = new List<VmssExtension>();
             }
 
-            currentNodeType.VmExtensions.Add(new VMSSExtension()
+            currentNodeType.VmExtensions.Add(new VmssExtension()
             {
                 Name = this.Name,
                 Publisher = this.Publisher,

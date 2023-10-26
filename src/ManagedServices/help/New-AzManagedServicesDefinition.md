@@ -75,7 +75,7 @@ Accept wildcard characters: False
 ```
 
 ### -Authorization
-The collection of authorization objects describing the access Azure Active Directory principals in the managedBy tenant will receive on the delegated resource in the managed tenant.
+The collection of authorization objects describing the access Microsoft Entra principals in the managedBy tenant will receive on the delegated resource in the managed tenant.
 To construct, see NOTES section for AUTHORIZATION properties and create a hash table.
 
 ```yaml
@@ -121,7 +121,7 @@ Accept wildcard characters: False
 ```
 
 ### -EligibleAuthorization
-The collection of eligible authorization objects describing the just-in-time access Azure Active Directory principals in the managedBy tenant will receive on the delegated resource in the managed tenant.
+The collection of eligible authorization objects describing the just-in-time access Microsoft Entra principals in the managedBy tenant will receive on the delegated resource in the managed tenant.
 To construct, see NOTES section for ELIGIBLEAUTHORIZATION properties and create a hash table.
 
 ```yaml
@@ -320,21 +320,20 @@ COMPLEX PARAMETER PROPERTIES
 To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
 
 
-AUTHORIZATION <IAuthorization[]>: The collection of authorization objects describing the access Azure Active Directory principals in the managedBy tenant will receive on the delegated resource in the managed tenant.
-  - `PrincipalId <String>`: The identifier of the Azure Active Directory principal.
-  - `RoleDefinitionId <String>`: The identifier of the Azure built-in role that defines the permissions that the Azure Active Directory principal will have on the projected scope.
+AUTHORIZATION <IAuthorization[]>: The collection of authorization objects describing the access Microsoft Entra principals in the managedBy tenant will receive on the delegated resource in the managed tenant.
+  - `PrincipalId <String>`: The identifier of the Microsoft Entra principal.
+  - `RoleDefinitionId <String>`: The identifier of the Azure built-in role that defines the permissions that the Microsoft Entra principal will have on the projected scope.
   - `[DelegatedRoleDefinitionId <String[]>]`: The delegatedRoleDefinitionIds field is required when the roleDefinitionId refers to the User Access Administrator Role. It is the list of role definition ids which define all the permissions that the user in the authorization can assign to other principals.
-  - `[PrincipalIdDisplayName <String>]`: The display name of the Azure Active Directory principal.
+  - `[PrincipalIdDisplayName <String>]`: The display name of the Microsoft Entra principal.
 
-ELIGIBLEAUTHORIZATION <IEligibleAuthorization[]>: The collection of eligible authorization objects describing the just-in-time access Azure Active Directory principals in the managedBy tenant will receive on the delegated resource in the managed tenant.
-  - `PrincipalId <String>`: The identifier of the Azure Active Directory principal.
-  - `RoleDefinitionId <String>`: The identifier of the Azure built-in role that defines the permissions that the Azure Active Directory principal will have on the projected scope.
+ELIGIBLEAUTHORIZATION <IEligibleAuthorization[]>: The collection of eligible authorization objects describing the just-in-time access Microsoft Entra principals in the managedBy tenant will receive on the delegated resource in the managed tenant.
+  - `PrincipalId <String>`: The identifier of the Microsoft Entra principal.
+  - `RoleDefinitionId <String>`: The identifier of the Azure built-in role that defines the permissions that the Microsoft Entra principal will have on the projected scope.
   - `[JustInTimeAccessPolicyManagedByTenantApprover <IEligibleApprover[]>]`: The list of managedByTenant approvers for the eligible authorization.
-    - `PrincipalId <String>`: The identifier of the Azure Active Directory principal.
-    - `[PrincipalIdDisplayName <String>]`: The display name of the Azure Active Directory principal.
+    - `PrincipalId <String>`: The identifier of the Microsoft Entra principal.
+    - `[PrincipalIdDisplayName <String>]`: The display name of the Microsoft Entra principal.
   - `[JustInTimeAccessPolicyMaximumActivationDuration <TimeSpan?>]`: The maximum access duration in ISO 8601 format for just-in-time access requests.
   - `[JustInTimeAccessPolicyMultiFactorAuthProvider <MultiFactorAuthProvider?>]`: The multi-factor authorization provider to be used for just-in-time access requests.
-  - `[PrincipalIdDisplayName <String>]`: The display name of the Azure Active Directory principal.
+  - `[PrincipalIdDisplayName <String>]`: The display name of the Microsoft Entra principal.
 
 ## RELATED LINKS
-
