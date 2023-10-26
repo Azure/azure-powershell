@@ -19,10 +19,13 @@
 -->
 
 ## Upcoming Release
-* Migrated AMCS with autorest
-    - `Breaking changes for parameter Inputobject`
-    - `Added data collection endpoint`
-    - `Used New and Update cmdlets instead of Set cmdlets`
+  * [Breaking Change] Data collection Rule upgraded API version to stable 2022-06-01
+  * [Breaking Change] AMCS removed `Set-AzDataCollectionRule` cmdlet
+  * Added cmdlets for data collection endpoint:
+    * `Get-AzDataCollectionEndpoint`
+    * `New-AzDataCollectionEndpoint`
+    * `Remove-AzDataCollectionEndpoint`
+    * `Update-AzDataCollectionEndpoint`
 
 ## Version 4.6.0
 * Fixed `Get-AzInsightsPrivateLinkScope` to support `ResourceId` parameter [#22568]
