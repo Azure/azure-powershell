@@ -6,13 +6,14 @@
 namespace Microsoft.Azure.PowerShell.Cmdlets.Migrate.Support
 {
 
-    /// <summary>
-    /// The recovery point type. Values from LatestTime, LatestTag or Custom. In the case of custom, the recovery point provided
-    /// by RecoveryPointId will be used. In the other two cases, recovery point id will be ignored.
-    /// </summary>
+    /// <summary>Gets or sets the recovery point type.</summary>
     public partial struct RecoveryPointType :
         System.IEquatable<RecoveryPointType>
     {
+        public static Microsoft.Azure.PowerShell.Cmdlets.Migrate.Support.RecoveryPointType ApplicationConsistent = @"ApplicationConsistent";
+
+        public static Microsoft.Azure.PowerShell.Cmdlets.Migrate.Support.RecoveryPointType CrashConsistent = @"CrashConsistent";
+
         public static Microsoft.Azure.PowerShell.Cmdlets.Migrate.Support.RecoveryPointType Custom = @"Custom";
 
         public static Microsoft.Azure.PowerShell.Cmdlets.Migrate.Support.RecoveryPointType LatestTag = @"LatestTag";

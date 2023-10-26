@@ -12,7 +12,11 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Migrate.Support
     {
         public static Microsoft.Azure.PowerShell.Cmdlets.Migrate.Support.ProvisioningState Accepted = @"Accepted";
 
+        public static Microsoft.Azure.PowerShell.Cmdlets.Migrate.Support.ProvisioningState Canceled = @"Canceled";
+
         public static Microsoft.Azure.PowerShell.Cmdlets.Migrate.Support.ProvisioningState Creating = @"Creating";
+
+        public static Microsoft.Azure.PowerShell.Cmdlets.Migrate.Support.ProvisioningState Deleted = @"Deleted";
 
         public static Microsoft.Azure.PowerShell.Cmdlets.Migrate.Support.ProvisioningState Deleting = @"Deleting";
 
@@ -21,6 +25,8 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Migrate.Support
         public static Microsoft.Azure.PowerShell.Cmdlets.Migrate.Support.ProvisioningState Moving = @"Moving";
 
         public static Microsoft.Azure.PowerShell.Cmdlets.Migrate.Support.ProvisioningState Succeeded = @"Succeeded";
+
+        public static Microsoft.Azure.PowerShell.Cmdlets.Migrate.Support.ProvisioningState Updating = @"Updating";
 
         /// <summary>the value for an instance of the <see cref="ProvisioningState" /> Enum.</summary>
         private string _value { get; set; }
