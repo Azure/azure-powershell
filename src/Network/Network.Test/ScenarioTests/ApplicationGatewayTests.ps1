@@ -5033,9 +5033,9 @@ function Test-ApplicationGatewayFirewallPolicyCustomRuleRemoval
 		Assert-AreEqual $policy1.CustomRules[0].State "Disabled"
 
 		#Remove Custom Rule
-		Remove-AzApplicationGatewayFirewallCustomRule -Name $customRule -ResourceGroupName $rgname -PolicyName $wafPolicyName
+		Remove-AzApplicationGatewayFirewallCustomRule -Name $customRule.Name -ResourceGroupName $rgname -PolicyName $wafPolicyName
 		$policynew = Get-AzApplicationGatewayFirewallPolicy -Name $wafPolicyName -ResourceGroupName $rgname
-		Assert-Null $policynew.CustomRules
+		Assert-Null $policynew.CustomRules[0]
 	}
 	finally
 	{

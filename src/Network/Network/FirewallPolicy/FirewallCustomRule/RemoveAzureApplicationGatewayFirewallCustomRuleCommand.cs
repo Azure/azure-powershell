@@ -79,6 +79,7 @@ namespace Microsoft.Azure.Commands.Network
                 {
                     firewallPolicy.CustomRules.Remove(rule);
                 }
+                break;
             }
 
             // Map to the sdk object
