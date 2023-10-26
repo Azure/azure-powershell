@@ -179,10 +179,10 @@ namespace Microsoft.WindowsAzure.Build.Tasks
         {
             List<string> csprojList = GetRelatedCsprojList(moduleName, csprojMap)
                 .Where(x => x.Contains("Test")).ToList();
-            if (csprojList.Count == 0)
-            {
-                csprojList.Add(moduleName);
-            }
+            // if (csprojList.Count == 0)
+            // {
+            //     csprojList.Add(moduleName);
+            // }
             return csprojList;
         }
 
@@ -193,10 +193,6 @@ namespace Microsoft.WindowsAzure.Build.Tasks
                 [BUILD_PHASE] = new HashSet<string>(GetBuildCsprojList(TargetModule, csprojMap).ToList()),
                 [TEST_PHASE] = new HashSet<string>(GetTestCsprojList(TargetModule, csprojMap).ToList())
             };
-            foreach (var analysisPhase in ANALYSIS_PHASE_LIST)
-            {
-                influencedModuleInfo.Add(analysisPhase, new HashSet<string>(GetDependenceModuleList(TargetModule, csprojMap).ToList()));
-            }
 
             Console.WriteLine("----------------- InfluencedModuleInfo TargetModule -----------------");
             foreach (string phaseName in influencedModuleInfo.Keys)
