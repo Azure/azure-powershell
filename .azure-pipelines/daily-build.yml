@@ -49,7 +49,7 @@ jobs:
     inputs:
       command: custom
       custom: msbuild
-      arguments: 'build.proj /t:"Build" /p:"Configuration=Release;TurnOnTestCoverage=true;ModifiedModuleBuild=true"'
+      arguments: 'build.proj /t:"Build" /p:"Configuration=Release;TurnOnTestCoverage=true"'
 
   - task: PowerShell@2
     displayName: 'Bump Version'
@@ -74,7 +74,7 @@ jobs:
     inputs:
       command: custom
       custom: msbuild
-      arguments: 'build.proj /t:Build /p:Configuration=Release;TurnOnTestCoverage=true'
+      arguments: 'build.proj /t:Build /p:Configuration=Release;TurnOnTestCoverage=true;ModifiedModuleBuild=true'
 
   - task: EsrpCodeSigning@1
     inputs:
