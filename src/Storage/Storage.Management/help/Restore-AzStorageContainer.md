@@ -29,7 +29,7 @@ Get-AzStorageContainer -IncludeDeleted -Context $ctx | Where-Object { $_.IsDelet
 ```
 
 ```output
-   Storage Account Name: storageaccountname
+Storage Account Name: storageaccountname
 
 Name                 PublicAccess         LastModified                   IsDeleted  VersionId                                                                                                                                                                                                                                                         
 ----                 ------------         ------------                   ---------  ---------                                                                                                                                                                    
@@ -41,6 +41,8 @@ This command lists all containers include deleted containers, filter out all the
 
 ### Example 2: Restore a single deleted container
 <!-- Skip: Output cannot be splitted from code -->
+
+
 ```
 PS C:\> Get-AzStorageContainer -IncludeDeleted -Context $ctx | Where-Object { $_.IsDeleted } 
 
@@ -157,7 +159,7 @@ Accept wildcard characters: False
 ```
 
 ### CommonParameters
-This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable. For more information, see about_CommonParameters (http://go.microsoft.com/fwlink/?LinkID=113216).
+This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable. For more information, see [about_CommonParameters](http://go.microsoft.com/fwlink/?LinkID=113216).
 
 ## INPUTS
 

@@ -32,6 +32,8 @@ This command gets the keys for the specified Azure Storage account.
 
 ### Example 2: Get a specific access key for a Storage account
 <!-- Skip: Output cannot be splitted from code -->
+
+
 ```
 This command gets a specific key for a Storage account.
 PS C:\>(Get-AzStorageAccountKey -ResourceGroupName "RG01" -Name "mystorageaccount")| Where-Object {$_.KeyName -eq "key1"}
@@ -43,7 +45,7 @@ key1    <KeyValue>        Full
 This command gets a specific key value for a Storage account. 
 PS C:\>(Get-AzStorageAccountKey -ResourceGroupName "RG01" -Name "mystorageaccount")[0].Value
 
-<KeyValue> 
+<KeyValue>
 ```
 
 ### Example 3: Lists the access keys for a Storage account, include the Kerberos keys (if active directory enabled)
@@ -119,7 +121,7 @@ Accept wildcard characters: False
 ```
 
 ### CommonParameters
-This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable. For more information, see about_CommonParameters (http://go.microsoft.com/fwlink/?LinkID=113216).
+This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable. For more information, see [about_CommonParameters](http://go.microsoft.com/fwlink/?LinkID=113216).
 
 ## INPUTS
 
