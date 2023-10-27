@@ -24,22 +24,29 @@ namespace Microsoft.Azure.Management.Sql.Models
         /// <summary>
         /// Initializes a new instance of the FailoverGroupUpdate class.
         /// </summary>
-        /// <param name="readWriteEndpoint">Read-write endpoint of the failover
-        /// group instance.</param>
-        /// <param name="readOnlyEndpoint">Read-only endpoint of the failover
-        /// group instance.</param>
-        /// <param name="databases">List of databases in the failover
-        /// group.</param>
-        /// <param name="partnerServers">List of partner server information for
-        /// the failover group.</param>
-        /// <param name="tags">Resource tags.</param>
-        public FailoverGroupUpdate(FailoverGroupReadWriteEndpoint readWriteEndpoint = default(FailoverGroupReadWriteEndpoint), FailoverGroupReadOnlyEndpoint readOnlyEndpoint = default(FailoverGroupReadOnlyEndpoint), IList<string> databases = default(IList<string>), IList<PartnerInfo> partnerServers = default(IList<PartnerInfo>), IDictionary<string, string> tags = default(IDictionary<string, string>))
+
+        /// <param name="tags">Resource tags.
+        /// </param>
+
+        /// <param name="readWriteEndpoint">Read-write endpoint of the failover group instance.
+        /// </param>
+
+        /// <param name="readOnlyEndpoint">Read-only endpoint of the failover group instance.
+        /// </param>
+
+        /// <param name="databases">List of databases in the failover group.
+        /// </param>
+
+        /// <param name="partnerServers">List of partner server information for the failover group.
+        /// </param>
+        public FailoverGroupUpdate(System.Collections.Generic.IDictionary<string, string> tags = default(System.Collections.Generic.IDictionary<string, string>), FailoverGroupReadWriteEndpoint readWriteEndpoint = default(FailoverGroupReadWriteEndpoint), FailoverGroupReadOnlyEndpoint readOnlyEndpoint = default(FailoverGroupReadOnlyEndpoint), System.Collections.Generic.IList<string> databases = default(System.Collections.Generic.IList<string>), System.Collections.Generic.IList<PartnerInfo> partnerServers = default(System.Collections.Generic.IList<PartnerInfo>))
+
         {
-            ReadWriteEndpoint = readWriteEndpoint;
-            ReadOnlyEndpoint = readOnlyEndpoint;
-            Databases = databases;
-            PartnerServers = partnerServers;
-            Tags = tags;
+            this.Tags = tags;
+            this.ReadWriteEndpoint = readWriteEndpoint;
+            this.ReadOnlyEndpoint = readOnlyEndpoint;
+            this.Databases = databases;
+            this.PartnerServers = partnerServers;
             CustomInit();
         }
 
@@ -70,22 +77,14 @@ namespace Microsoft.Azure.Management.Sql.Models
         /// <summary>
         /// Gets or sets list of databases in the failover group.
         /// </summary>
-        [JsonProperty(PropertyName = "properties.databases")]
-        public IList<string> Databases { get; set; }
+        [Newtonsoft.Json.JsonProperty(PropertyName = "properties.databases")]
+        public System.Collections.Generic.IList<string> Databases {get; set; }
 
         /// <summary>
-        /// Gets or sets list of partner server information for the failover
-        /// group.
+        /// Gets or sets list of partner server information for the failover group.
         /// </summary>
-        [JsonProperty(PropertyName = "properties.partnerServers")]
-        public IList<PartnerInfo> PartnerServers { get; set; }
-
-        /// <summary>
-        /// Gets or sets resource tags.
-        /// </summary>
-        [JsonProperty(PropertyName = "tags")]
-        public IDictionary<string, string> Tags { get; set; }
-
+        [Newtonsoft.Json.JsonProperty(PropertyName = "properties.partnerServers")]
+        public System.Collections.Generic.IList<PartnerInfo> PartnerServers {get; set; }
         /// <summary>
         /// Validate the object.
         /// </summary>
@@ -99,9 +98,11 @@ namespace Microsoft.Azure.Management.Sql.Models
             {
                 this.ReadWriteEndpoint.Validate();
             }
-            if (PartnerServers != null)
+
+
+            if (this.PartnerServers != null)
             {
-                foreach (var element in PartnerServers)
+                foreach (var element in this.PartnerServers)
                 {
                     if (element != null)
                     {

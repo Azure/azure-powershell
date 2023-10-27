@@ -23,15 +23,17 @@ namespace Microsoft.Azure.Management.Sql.Models
         /// <summary>
         /// Initializes a new instance of the FailoverGroupReadOnlyEndpoint class.
         /// </summary>
-        /// <param name="failoverPolicy">Failover policy of the read-only
-        /// endpoint for the failover group. Possible values include:
-        /// 'Disabled', 'Enabled'</param>
-        /// <param name="targetServer">The target partner server where the
-        /// read-only endpoint points to.</param>
+
+        /// <param name="failoverPolicy">Failover policy of the read-only endpoint for the failover group.
+        /// Possible values include: 'Disabled', 'Enabled'</param>
+
+        /// <param name="targetServer">The target partner server where the read-only endpoint points to.
+        /// </param>
         public FailoverGroupReadOnlyEndpoint(string failoverPolicy = default(string), string targetServer = default(string))
+
         {
-            FailoverPolicy = failoverPolicy;
-            TargetServer = targetServer;
+            this.FailoverPolicy = failoverPolicy;
+            this.TargetServer = targetServer;
             CustomInit();
         }
 
@@ -45,15 +47,14 @@ namespace Microsoft.Azure.Management.Sql.Models
         /// Gets or sets failover policy of the read-only endpoint for the failover
         /// group. Possible values include: &#39;Disabled&#39;, &#39;Enabled&#39;
         /// </summary>
-        [JsonProperty(PropertyName = "failoverPolicy")]
-        public string FailoverPolicy { get; set; }
+        [Newtonsoft.Json.JsonProperty(PropertyName = "failoverPolicy")]
+        public string FailoverPolicy {get; set; }
 
         /// <summary>
-        /// Gets or sets the target partner server where the read-only endpoint
-        /// points to.
+        /// Gets or sets the target partner server where the read-only endpoint points
+        /// to.
         /// </summary>
-        [JsonProperty(PropertyName = "targetServer")]
-        public string TargetServer { get; set; }
-
+        [Newtonsoft.Json.JsonProperty(PropertyName = "targetServer")]
+        public string TargetServer {get; set; }
     }
 }
