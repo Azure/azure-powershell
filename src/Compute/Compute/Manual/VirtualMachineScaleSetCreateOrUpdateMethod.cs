@@ -283,19 +283,18 @@ namespace Microsoft.Azure.Commands.Compute.Automation
             public ImageAndOsType ImageAndOsType { get; set; }
 
             public string DefaultLocation => "eastus";
-
+            
             public async Task<ResourceConfig<VirtualMachineScaleSet>> CreateConfigAsync()
             {
-                if (_cmdlet.OrchestrationMode != null)
-                {
-                    return await SimpleParameterSetOrchestrationMode();
-                }
-                else
+                if (_cmdlet.OrchestrationMode == uniformOrchestrationMode)
                 {
                     return await SimpleParameterSetNormalMode();
                 }
+                else
+                {
+                    return await SimpleParameterSetOrchestrationModeFlexible();
+                }
             }
-
             private async Task<ResourceConfig<VirtualMachineScaleSet>> SimpleParameterSetNormalMode()
             {
                 ImageAndOsType = await _client.UpdateImageAndOsTypeAsync(
@@ -471,32 +470,10 @@ namespace Microsoft.Azure.Commands.Compute.Automation
                     );
             }
 
-            private async Task<ResourceConfig<VirtualMachineScaleSet>> SimpleParameterSetOrchestrationMode()
-            {
-                switch (_cmdlet.OrchestrationMode)
-                {
-                    case flexibleOrchestrationMode:
-                        return await SimpleParameterSetOrchestrationModeFlexible();
-                    default:
-                        // When the OrchestrationMode is set but it is Uniform, which represents the current behavior. 
-                        return await SimpleParameterSetNormalMode();
-                }
-            }
-
             private async Task<ResourceConfig<VirtualMachineScaleSet>> SimpleParameterSetOrchestrationModeFlexible()
             {
-                //check omode params and throw error otherwise
-                checkFlexibleOrchestrationModeParams();
                 int platformFaultDomainCountFlexibleDefault = 1;
                 SwitchParameter singlePlacementGroupFlexibleDefault = false;
-
-                // Temporary message until after the Ignite 2023 release that should remove these outdated image aliases. 
-                if ((_cmdlet.ImageName == "CentOS" || _cmdlet.ImageName == "Debian" || _cmdlet.ImageName == "RHEL"
-                     || _cmdlet.ImageName == "UbuntuLTS"))
-                {
-                    string ImageOutdatedMessage = "You are using the image " + _cmdlet.ImageName + ", which is outdated and this image name will be removed in October 2023. Please update to a newer versioned image alias as seen here, [Find and use Azure Marketplace VM images with Azure PowerShell](https://learn.microsoft.com/en-us/azure/virtual-machines/windows/cli-ps-findimage#default-images).";
-                    _cmdlet.WriteInformation(ImageOutdatedMessage, new string[] { "PSHOST" });
-                }
 
                 ImageAndOsType = await _client.UpdateImageAndOsTypeAsync(
                         ImageAndOsType, _cmdlet.ResourceGroupName, _cmdlet.ImageName, Location);
@@ -605,22 +582,14 @@ namespace Microsoft.Azure.Commands.Compute.Automation
                     scaleInPolicy: _cmdlet.ScaleInPolicy,
                     doNotRunExtensionsOnOverprovisionedVMs: _cmdlet.SkipExtensionsOnOverprovisionedVMs.IsPresent,
                     encryptionAtHost: _cmdlet.EncryptionAtHost.IsPresent,
-                    platformFaultDomainCount: platformFaultDomainCountFlexibleDefault,
+                    platformFaultDomainCount: _cmdlet.IsParameterBound(c => c.PlatformFaultDomainCount) ? _cmdlet.PlatformFaultDomainCount : platformFaultDomainCountFlexibleDefault,
                     edgeZone: _cmdlet.EdgeZone,
-                    orchestrationMode: _cmdlet.IsParameterBound(c => c.OrchestrationMode) ? _cmdlet.OrchestrationMode : null,
+                    orchestrationMode: flexibleOrchestrationMode,
                     capacityReservationId: _cmdlet.IsParameterBound(c => c.CapacityReservationGroupId) ? _cmdlet.CapacityReservationGroupId : null,
                     securityType: _cmdlet.SecurityType,
                     enableVtpm: _cmdlet.EnableVtpm,
                     enableSecureBoot: _cmdlet.EnableSecureBoot
                     );
-            }
-
-            private void checkFlexibleOrchestrationModeParams()
-            {
-                if (_cmdlet.IsParameterBound(c => c.UpgradePolicyMode))
-                {
-                    throw new Exception("UpgradePolicy is not currently supported for a VMSS with OrchestrationMode set to Flexible.");
-                }
             }
         }
 

@@ -38,7 +38,7 @@ using Microsoft.WindowsAzure.Commands.Common.CustomAttributes;
 namespace Microsoft.Azure.Commands.Compute.Automation
 {
     [GenericBreakingChangeWithVersion("Starting November 2023, the \"New-AzVmss\" cmdlet will default to Trusted Launch VMSS. For more info, visit https://aka.ms/TLaD.", "11.0.0", "7.0.0")]
-    [GenericBreakingChangeWithVersion("Starting November 2023, the \"New-AzVmss\" cmdlet will use new defaults: Flexible orchestration mode and enable NATv2 configuration for Load Balancer. To learn more about Flexible Orchestration modes, visit https://aka.ms/orchestrationModeVMSS.", "11.0.0", "7.0.0")]
+
     [Cmdlet(VerbsCommon.New, ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "Vmss", DefaultParameterSetName = "DefaultParameter", SupportsShouldProcess = true)]
     [OutputType(typeof(PSVirtualMachineScaleSet))]
     public partial class NewAzureRmVmss : ComputeAutomationBaseCmdlet
@@ -79,7 +79,9 @@ namespace Microsoft.Azure.Commands.Compute.Automation
                                     "Consider using \"latest\" as the image version. This allows VMSS to auto upgrade when a newer version is available.");
                             }
 
-                            if (parameters?.OrchestrationMode == "Flexible")
+                            if (parameters.OrchestrationMode == null) { parameters.OrchestrationMode = flexibleOrchestrationMode; }
+
+                            if (parameters?.OrchestrationMode == flexibleOrchestrationMode)
                             {
                                 if (parameters?.VirtualMachineProfile?.NetworkProfile?.NetworkInterfaceConfigurations != null)
                                 {
@@ -94,8 +96,6 @@ namespace Microsoft.Azure.Commands.Compute.Automation
                                         }
                                     }
                                 }
-
-                                parameters.UpgradePolicy = null;
 
                                 flexibleOrchestrationModeDefaultParameters(parameters);
                                 checkFlexibleOrchestrationModeParamsDefaultParamSet(parameters);
@@ -300,19 +300,11 @@ namespace Microsoft.Azure.Commands.Compute.Automation
         /// There is some concern with the above behavior being correct or not, and requires additional testing before changing.
         private void checkFlexibleOrchestrationModeParamsDefaultParamSet(VirtualMachineScaleSet parameters)
         {
-            if (parameters?.UpgradePolicy != null)
-            {
-                throw new Exception("UpgradePolicy is not currently supported for a VMSS with OrchestrationMode set to Flexible.");
-            }
-            else if (parameters?.VirtualMachineProfile?.NetworkProfile?.NetworkApiVersion != null
+            if (parameters?.VirtualMachineProfile?.NetworkProfile?.NetworkApiVersion != null
                 && convertAPIVersionToInt(parameters?.VirtualMachineProfile?.NetworkProfile?.NetworkApiVersion) < vmssFlexibleOrchestrationModeNetworkAPIVersionMinimumInt)
             {
                 throw new Exception("The value for NetworkApiVersion is not valid for a VMSS with OrchestrationMode set to Flexible. You must use a valid Network API Version equal to or greater than " + vmssFlexibleOrchestrationModeNetworkAPIVersionMinimum);
             }
-            //else if (convertAPIVersionToInt(parameters?.VirtualMachineProfile?.NetworkProfile?.NetworkApiVersion) < vmssFlexibleOrchestrationModeNetworkAPIVersionMinimumInt)
-            //{
-            //    throw new Exception("The value for NetworkApiVersion is not valid for a VMSS with OrchestrationMode set to Flexible. You must use a valid Network API Version equal to or greater than " + vmssFlexibleOrchestrationModeNetworkAPIVersionMinimum);
-            //}
         }
 
         private void flexibleOrchestrationModeDefaultParameters(VirtualMachineScaleSet parameters)
@@ -322,10 +314,7 @@ namespace Microsoft.Azure.Commands.Compute.Automation
             {
                 parameters.VirtualMachineProfile.NetworkProfile.NetworkApiVersion = vmssFlexibleOrchestrationModeNetworkAPIVersionMinimum;
             }
-            /*if (parameters?.VirtualMachineProfile?.NetworkProfile?.NetworkApiVersion == null)
-            {
-                parameters.VirtualMachineProfile.NetworkProfile.NetworkApiVersion = vmssFlexibleOrchestrationModeNetworkAPIVersionMinimum;
-            }*/
+
             if (parameters?.PlatformFaultDomainCount == null)
             {
                 parameters.PlatformFaultDomainCount = 1;
