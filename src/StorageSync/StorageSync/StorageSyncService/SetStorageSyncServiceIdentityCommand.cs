@@ -178,9 +178,13 @@ namespace Microsoft.Azure.Commands.StorageSync.StorageSyncService
                         }
                     };
                     storageSyncService = StorageSyncClientWrapper.StorageSyncManagementClient.StorageSyncServices.Update(resourceGroupName, resourceName, updateParameters);
-                    if (storageSyncService.Identity != null && storageSyncService.Identity.PrincipalId.GetValueOrDefault(Guid.Empty) != Guid.Empty)
+                    if (storageSyncService.Identity == null || storageSyncService.Identity.PrincipalId.GetValueOrDefault(Guid.Empty) == Guid.Empty)
                     {
                         throw new PSArgumentException("Not able to set identity. Please reach out to administrator for further troubleshooting");
+                    }
+                    else
+                    {
+                        StorageSyncClientWrapper.VerboseLogger.Invoke($"Storage Sync Service is capable with identity {storageSyncService.Identity.PrincipalId}");
                     }
 
                     // 3. RBAC permission set for Cloud Endpoints and Server Endpoints
@@ -232,7 +236,7 @@ namespace Microsoft.Azure.Commands.StorageSync.StorageSyncService
                         UseIdentity = true
                     };
                     storageSyncService = StorageSyncClientWrapper.StorageSyncManagementClient.StorageSyncServices.Update(resourceGroupName, resourceName, updateParameters);
-                    if (storageSyncService.UseIdentity.GetValueOrDefault(false))
+                    if (!storageSyncService.UseIdentity.GetValueOrDefault(false))
                     {
                         throw new PSArgumentException("Not able to set UseIdentity. Please reach out to administrator for further troubleshooting");
                     }
