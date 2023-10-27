@@ -18,6 +18,7 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
+* Fixed minor issues
 
 ## Version 1.17.0
 * Added DisablePublish to Set_AzDataFactoryV2 Command

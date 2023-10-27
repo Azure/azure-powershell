@@ -13,13 +13,17 @@
 // ----------------------------------------------------------------------------------
 
 using Newtonsoft.Json;
+using Newtonsoft.Json.Linq;
 using System.Collections.Generic;
 
 namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.SdkModels
 {
     public class TemplateFile
     {
+        [JsonProperty("definitions")]
+        public JObject Definitions { get; set; }
+
         [JsonProperty("parameters")]
-        public IDictionary<string, TemplateFileParameterV1> Parameters { get; set; }
+        public IDictionary<string, TemplateFileParameter> Parameters { get; set; }
     }
 }

@@ -15,55 +15,58 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Support
         /// to enable the staging/registration (and eventual deregistration/destaging) of MSIX apps that have been set up by the tenant
         /// admin. This checks whether the component had any failures during package staging. Failures in staging will prevent some
         /// MSIX apps from working properly for the end user. If this check fails, it is non fatal and the machine still can service
-        /// connections, main issue may be certain apps will not work for end-users.
+        /// connections, main issue may be certain apps will not work for end-users. (Currently Enabled)
         /// </summary>
         public static Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Support.HealthCheckName AppAttachHealthCheck = @"AppAttachHealthCheck";
 
         /// <summary>
         /// Verifies the SessionHost is joined to a domain. If this check fails is classified as fatal as no connection can succeed
-        /// if the SessionHost is not joined to the domain.
+        /// if the SessionHost is not joined to the domain. (Currently Enabled)
         /// </summary>
         public static Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Support.HealthCheckName DomainJoinedCheck = @"DomainJoinedCheck";
 
         /// <summary>
         /// Verifies the domain the SessionHost is joined to is still reachable. If this check fails is classified as fatal as no
-        /// connection can succeed if the domain the SessionHost is joined is not reachable at the time of connection.
+        /// connection can succeed if the domain the SessionHost is joined is not reachable at the time of connection. (Currently
+        /// Disabled)
         /// </summary>
         public static Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Support.HealthCheckName DomainReachable = @"DomainReachable";
 
         /// <summary>
         /// Verifies the SessionHost is not experiencing domain trust issues that will prevent authentication on SessionHost at connection
         /// time when session is created. If this check fails is classified as fatal as no connection can succeed if we cannot reach
-        /// the domain for authentication on the SessionHost.
+        /// the domain for authentication on the SessionHost. (Currently Enabled)
         /// </summary>
         public static Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Support.HealthCheckName DomainTrustCheck = @"DomainTrustCheck";
 
         /// <summary>
         /// Verifies the FSLogix service is up and running to make sure users' profiles are loaded in the session. If this check fails
         /// is classified as fatal as even if the connection can succeed, user experience is bad as the user profile cannot be loaded
-        /// and user will get a temporary profile in the session.
+        /// and user will get a temporary profile in the session. (Currently Disabled)
         /// </summary>
         public static Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Support.HealthCheckName FsLogixHealthCheck = @"FSLogixHealthCheck";
 
-        /// <summary>Verifies the metadata service is accessible and return compute properties.</summary>
+        /// <summary>
+        /// Verifies the metadata service is accessible and return compute properties. (Currently Enabled)
+        /// </summary>
         public static Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Support.HealthCheckName MetaDataServiceCheck = @"MetaDataServiceCheck";
 
         /// <summary>
         /// Verifies that the required Geneva agent is running. If this check fails, it is non fatal and the machine still can service
-        /// connections, main issue may be that monitoring agent is missing or running (possibly) older version.
+        /// connections, main issue may be that monitoring agent is missing or running (possibly) older version. (Currently Enabled)
         /// </summary>
         public static Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Support.HealthCheckName MonitoringAgentCheck = @"MonitoringAgentCheck";
 
         /// <summary>
         /// Verifies the value of SecurityLayer registration key. If the value is 0 (SecurityLayer.RDP) this check fails with Error
         /// code = NativeMethodErrorCode.E_FAIL and is fatal. If the value is 1 (SecurityLayer.Negotiate) this check fails with Error
-        /// code = NativeMethodErrorCode.ERROR_SUCCESS and is non fatal.
+        /// code = NativeMethodErrorCode.ERROR_SUCCESS and is non fatal. (Currently Disabled)
         /// </summary>
         public static Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Support.HealthCheckName SupportedEncryptionCheck = @"SupportedEncryptionCheck";
 
         /// <summary>
         /// Verifies that the SxS stack is up and running so connections can succeed. If this check fails is classified as fatal as
-        /// no connection can succeed if the SxS stack is not ready.
+        /// no connection can succeed if the SxS stack is not ready. (Currently Enabled)
         /// </summary>
         public static Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Support.HealthCheckName SxSStackListenerCheck = @"SxSStackListenerCheck";
 
@@ -71,7 +74,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Support
         /// Verifies that the required WVD service and Geneva URLs are reachable from the SessionHost. These URLs are: RdTokenUri,
         /// RdBrokerURI, RdDiagnosticsUri and storage blob URLs for agent monitoring (geneva). If this check fails, it is non fatal
         /// and the machine still can service connections, main issue may be that monitoring agent is unable to store warm path data
-        /// (logs, operations ...).
+        /// (logs, operations ...). (Currently Disabled)
         /// </summary>
         public static Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Support.HealthCheckName UrlsAccessibleCheck = @"UrlsAccessibleCheck";
 
@@ -79,7 +82,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Support
         /// Verifies whether the WebRTCRedirector component is healthy. The WebRTCRedirector component is used to optimize video and
         /// audio performance in Microsoft Teams. This checks whether the component is still running, and whether there is a higher
         /// version available. If this check fails, it is non fatal and the machine still can service connections, main issue may
-        /// be the WebRTCRedirector component has to be restarted or updated.
+        /// be the WebRTCRedirector component has to be restarted or updated. (Currently Disabled)
         /// </summary>
         public static Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Support.HealthCheckName WebRtcRedirectorCheck = @"WebRTCRedirectorCheck";
 

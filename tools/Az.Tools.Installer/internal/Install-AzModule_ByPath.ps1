@@ -51,7 +51,7 @@ function Install-AzModule_ByPath {
     process {
         if ($RemoveAzureRm -and ($Force -or $PSCmdlet.ShouldProcess('Remove AzureRm modules', 'AzureRm modules', 'Remove'))) {
             Write-Progress -Id $script:FixProgressBarId "Uninstall Azure and AzureRM."
-            Remove-AzureRM -ErrorVariable +errorRecords
+            Remove-AzureRM
         }
 
         if ($Force -or $PSCmdlet.ShouldProcess('Remove Az if installed', 'Az', 'Remove')) {
@@ -65,14 +65,14 @@ function Install-AzModule_ByPath {
                 [string]$tempRepo = Join-Path ([Path]::GetTempPath()) ((New-Guid).Guid)
                 #$tempRepo = Join-Path 'D:/PSLocalRepo/' (Get-Date -Format "yyyyddMM-HHmm")
                 if (Test-Path -Path $tempRepo) {
-                    Microsoft.PowerShell.Management\Remove-Item -Path $tempRepo -Recurse -WhatIf:$false -ErrorVariable +errorRecords
+                    Microsoft.PowerShell.Management\Remove-Item -Path $tempRepo -Recurse -WhatIf:$false
                 }
-                $null = Microsoft.PowerShell.Management\New-Item -ItemType Directory -Path $tempRepo -WhatIf:$false -ErrorVariable +errorRecords
+                $null = Microsoft.PowerShell.Management\New-Item -ItemType Directory -Path $tempRepo -WhatIf:$false
                 Write-Debug "[$Invoker] The repository folder $tempRepo is created."
 
-                PowerShellGet\Unregister-PSRepository -Name $script:AzTempRepoName -ErrorAction 'SilentlyContinue'
-                PowerShellGet\Register-PSRepository -Name $script:AzTempRepoName -SourceLocation $tempRepo -ErrorAction 'Stop' -ErrorVariable +errorRecords
-                PowerShellGet\Set-PSRepository -Name $script:AzTempRepoName -InstallationPolicy Trusted -ErrorVariable +errorRecords
+                $null = PowerShellGet\Unregister-PSRepository -Name $script:AzTempRepoName -ErrorAction 'SilentlyContinue'
+                $null = PowerShellGet\Register-PSRepository -Name $script:AzTempRepoName -SourceLocation $tempRepo -ErrorAction 'Stop' -ErrorVariable +errorRecords
+                PowerShellGet\Set-PSRepository -Name $script:AzTempRepoName -InstallationPolicy Trusted
                 Write-Debug "[$Invoker] The temporary repository $script:AzTempRepoName is registered."
 
                 $installModuleParams = @{
@@ -83,18 +83,18 @@ function Install-AzModule_ByPath {
                     Force = $Force
                     Invoker = $Invoker
                 }
-                Install-SingleModuleFromPackage @installModuleParams -ErrorVariable +errorRecords
+                Install-SingleModuleFromPackage @installModuleParams
             }
         }
         finally {
             if ($Force -or !$WhatIfPreference) {
                 if (!$DontClean) {
                     Write-Debug "[$Invoker] The temporary repository $script:AzTempRepoName is unregistered."
-                    PowerShellGet\Unregister-PSRepository -Name $script:AzTempRepoName -ErrorAction 'Continue' -ErrorVariable +errorRecords
+                    $null = PowerShellGet\Unregister-PSRepository -Name $script:AzTempRepoName -ErrorAction 'Continue'
 
                     Write-Debug "[$Invoker] The Repository folder $tempRepo is removed."
                     if (Test-Path -Path $tempRepo) {
-                        Microsoft.PowerShell.Management\Remove-Item -Path $tempRepo -Recurse -WhatIf:$false -ErrorVariable +errorRecords
+                        Microsoft.PowerShell.Management\Remove-Item -Path $tempRepo -Recurse -WhatIf:$false
                     }
                 }
             }

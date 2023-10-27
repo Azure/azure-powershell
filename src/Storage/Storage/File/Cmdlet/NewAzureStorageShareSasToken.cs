@@ -29,7 +29,6 @@ namespace Microsoft.WindowsAzure.Commands.Storage.File.Cmdlet
     using Microsoft.WindowsAzure.Commands.Common.CustomAttributes;
     using global::Azure.Storage;
 
-    [GenericBreakingChangeWithVersion("The leading question mark '?' of the created SAS token will be removed in a future release.", "11.0.0", "6.0.0")]
     [Cmdlet("New", Azure.Commands.ResourceManager.Common.AzureRMConstants.AzurePrefix + "StorageShareSASToken"), OutputType(typeof(String))]
     public class NewAzureStorageShareSasToken : AzureStorageFileCmdletBase
     {
@@ -127,10 +126,9 @@ namespace Microsoft.WindowsAzure.Commands.Storage.File.Cmdlet
 
             //Create SAS and output it
             string sasToken = SasTokenHelper.GetFileSharedAccessSignature(Channel.StorageContext, sasBuilder, CmdletCancellationToken);
-            if (sasToken[0] != '?')
-            {
-                sasToken = "?" + sasToken;
-            }
+
+            // remove prefix "?" of SAS if any
+            sasToken = Util.GetSASStringWithoutQuestionMark(sasToken);
 
             if (FullUri)
             {

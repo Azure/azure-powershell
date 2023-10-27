@@ -28,42 +28,21 @@ Create or update a scaling plan.
 
 ## EXAMPLES
 
-### Example 1: Create a Windows Virtual Desktop Scaling Plan
+### Example 1: Create a Windows Virtual Desktop Scaling Plan without a schedule
 ```powershell
 New-AzWvdScalingPlan `
             -ResourceGroupName ResourceGroupName `
-            -Name 'scalingPlan1' `
+            -Name 'ScalingPlan1' `
             -Location 'westcentralus' `
             -Description 'Description' `
             -FriendlyName 'Friendly Name' `
             -HostPoolType 'Pooled' `
-            -TimeZone '(UTC-08:00) Pacific Time (US & Canada)' `
-            -Schedule @(
-                @{
-                    'name'                           = 'Work Week';
-                    'daysOfWeek'                     = @('Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday');
-                    'rampUpStartTime'                = '1900-01-01T06:00:00Z';
-                    'rampUpLoadBalancingAlgorithm'   = 'BreadthFirst';
-                    'rampUpMinimumHostsPct'          = 20;
-                    'rampUpCapacityThresholdPct'     = 20;
-                    'peakStartTime'                  = '1900-01-01T08:00:00Z';
-                    'peakLoadBalancingAlgorithm'     = 'DepthFirst';
-                    'RampDownStartTime'              = '1900-01-01T18:00:00Z';
-                    'rampDownLoadBalancingAlgorithm' = 'BreadthFirst';
-                    'rampDownMinimumHostsPct'        = 20;
-                    'rampDownCapacityThresholdPct'   = 20;
-                    'rampDownForceLogoffUser'        = $true;
-                    'rampDownWaitTimeMinute'         = 30;
-                    'rampDownNotificationMessage'    = 'Log out now, please.';
-                    'rampDownStopHostsWhen'          = 'ZeroSessions';
-                    'offPeakStartTime'               = '1900-01-01T20:00:00Z';
-                    'offPeakLoadBalancingAlgorithm'  = 'DepthFirst';
-                }
-            ) `
+            -TimeZone 'Pacific Standard Time' `
+            -Schedule @() `
             -HostPoolReference @(
                 @{
-                    'hostPoolArmPath' = '/subscriptions/SubscriptionId/resourceGroups/ResourceGroupName/providers/Microsoft.DesktopVirtualization/hostPools/HostPoolName';
-                    'scalingPlanEnabled' = $false;
+                    'HostPoolArmPath' = '/subscriptions/SubscriptionId/resourceGroups/ResourceGroupName/providers/Microsoft.DesktopVirtualization/hostPools/HostPoolName';
+                    'ScalingPlanEnabled' = $false;
                 }
             )
 ```
@@ -75,6 +54,71 @@ westcentralus scalingPlan1 Microsoft.DesktopVirtualization/scalingplans
 ```
 
 This command creates a new Windows Virtual Desktop Scaling Plan in a Resource Group.
+
+### Example 2: Create a Windows Virtual Desktop Scaling Plan with a pooled schedule (Only available for Pooled HostPools)
+```powershell
+New-AzWvdScalingPlan `
+            -ResourceGroupName ResourceGroupName `
+            -Name 'ScalingPlan1' `
+            -Location 'westcentralus' `
+            -Description 'Description' `
+            -FriendlyName 'Friendly Name' `
+            -HostPoolType 'Pooled' `
+            -TimeZone 'Pacific Standard Time' `
+            -Schedule @(
+                @{
+                    'Name'                           = 'Work Week';
+                    'DaysOfWeek'                     = @('Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday');
+                    'RampUpStartTime'                = @{
+                                                            'Hour' = 6
+                                                            'Minute' = 0
+                                                        };
+                    'RampUpLoadBalancingAlgorithm'   = 'BreadthFirst';
+                    'RampUpMinimumHostsPct'          = 20;
+                    'RampUpCapacityThresholdPct'     = 20;
+
+                    'PeakStartTime'                  = @{
+                                                            'Hour' = 8
+                                                            'Minute' = 30
+                                                        };
+                    'PeakLoadBalancingAlgorithm'     = 'DepthFirst';
+
+                    'RampDownStartTime'              = @{
+                                                            'Hour' = 16
+                                                            'Minute' = 15
+                                                        };
+                    'RampDownLoadBalancingAlgorithm' = 'BreadthFirst';
+                    'RampDownMinimumHostsPct'        = 20;
+                    'RampDownCapacityThresholdPct'   = 20;
+                    'RampDownForceLogoffUser'       = $true;
+                    'RampDownWaitTimeMinute'        = 30;
+                    'RampDownNotificationMessage'    = 'Log out now, please.';
+                    'RampDownStopHostsWhen'          = 'ZeroSessions';
+
+                    'OffPeakStartTime'               = @{
+                                                            'Hour' = 18
+                                                            'Minute' = 0
+                                                        };
+                    'OffPeakLoadBalancingAlgorithm'  = 'DepthFirst';
+                }
+            ) `
+            -HostPoolReference @(
+                @{
+                    'HostPoolArmPath' = '/subscriptions/SubscriptionId/resourceGroups/ResourceGroupName/providers/Microsoft.DesktopVirtualization/hostPools/HostPoolName';
+                    'ScalingPlanEnabled' = $false;
+                }
+            )
+```
+
+```output
+Location      Name         Type
+--------      ----         ----
+westcentralus scalingPlan1 Microsoft.DesktopVirtualization/scalingplans 
+```
+
+This command creates a new Windows Virtual Desktop Scaling Plan in a Resource Group with a pooled schedule assigned at creation.
+This method is only available for pooled host pools.
+Please create a scaling plan, and then use New-AzWvdScalingPersonalSchedule or New-AzWvdScalingPooledSchedule to assign schedules after scaling plan creation.
 
 ## PARAMETERS
 
@@ -144,7 +188,7 @@ List of ScalingHostPoolReference definitions.
 To construct, see NOTES section for HOSTPOOLREFERENCE properties and create a hash table.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.Api202209.IScalingHostPoolReference[]
+Type: Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.Api20230905.IScalingHostPoolReference[]
 Parameter Sets: (All)
 Aliases:
 
@@ -350,7 +394,7 @@ List of ScalingPlanPooledSchedule definitions.
 To construct, see NOTES section for SCHEDULE properties and create a hash table.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.Api202209.IScalingSchedule[]
+Type: Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.Api20230905.IScalingSchedule[]
 Parameter Sets: (All)
 Aliases:
 
@@ -523,44 +567,9 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.Api202209.IScalingPlan
+### Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.Api20230905.IScalingPlan
 
 ## NOTES
-
-ALIASES
-
-COMPLEX PARAMETER PROPERTIES
-
-To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
-
-
-`HOSTPOOLREFERENCE <IScalingHostPoolReference[]>`: List of ScalingHostPoolReference definitions.
-  - `[HostPoolArmPath <String>]`: Arm path of referenced hostpool.
-  - `[ScalingPlanEnabled <Boolean?>]`: Is the scaling plan enabled for this hostpool.
-
-`SCHEDULE <IScalingSchedule[]>`: List of ScalingPlanPooledSchedule definitions.
-  - `[DaysOfWeek <String[]>]`: Set of days of the week on which this schedule is active.
-  - `[Name <String>]`: Name of the ScalingPlanPooledSchedule.
-  - `[OffPeakLoadBalancingAlgorithm <SessionHostLoadBalancingAlgorithm?>]`: Load balancing algorithm for off-peak period.
-  - `[OffPeakStartTimeHour <Int32?>]`: The hour.
-  - `[OffPeakStartTimeMinute <Int32?>]`: The minute.
-  - `[PeakLoadBalancingAlgorithm <SessionHostLoadBalancingAlgorithm?>]`: Load balancing algorithm for peak period.
-  - `[PeakStartTimeHour <Int32?>]`: The hour.
-  - `[PeakStartTimeMinute <Int32?>]`: The minute.
-  - `[RampDownCapacityThresholdPct <Int32?>]`: Capacity threshold for ramp down period.
-  - `[RampDownForceLogoffUser <Boolean?>]`: Should users be logged off forcefully from hosts.
-  - `[RampDownLoadBalancingAlgorithm <SessionHostLoadBalancingAlgorithm?>]`: Load balancing algorithm for ramp down period.
-  - `[RampDownMinimumHostsPct <Int32?>]`: Minimum host percentage for ramp down period.
-  - `[RampDownNotificationMessage <String>]`: Notification message for users during ramp down period.
-  - `[RampDownStartTimeHour <Int32?>]`: The hour.
-  - `[RampDownStartTimeMinute <Int32?>]`: The minute.
-  - `[RampDownStopHostsWhen <StopHostsWhen?>]`: Specifies when to stop hosts during ramp down period.
-  - `[RampDownWaitTimeMinute <Int32?>]`: Number of minutes to wait to stop hosts during ramp down period.
-  - `[RampUpCapacityThresholdPct <Int32?>]`: Capacity threshold for ramp up period.
-  - `[RampUpLoadBalancingAlgorithm <SessionHostLoadBalancingAlgorithm?>]`: Load balancing algorithm for ramp up period.
-  - `[RampUpMinimumHostsPct <Int32?>]`: Minimum host percentage for ramp up period.
-  - `[RampUpStartTimeHour <Int32?>]`: The hour.
-  - `[RampUpStartTimeMinute <Int32?>]`: The minute.
 
 ## RELATED LINKS
 
