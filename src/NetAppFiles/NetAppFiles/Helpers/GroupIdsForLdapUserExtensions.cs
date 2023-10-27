@@ -21,7 +21,7 @@ namespace Microsoft.Azure.Commands.NetAppFiles.Helpers
 {
     public static class GroupIdsForLdapUserExtensions
     {
-        public static PSGetGroupIdListForLDAPUserResponse ConvertToPs(this Management.NetApp.Models.GetGroupIdListForLDAPUserResponse getGroupIdListForLDAPUserResponse)
+        public static PSGetGroupIdListForLDAPUserResponse ConvertToPs(this Management.NetApp.Models.GetGroupIdListForLdapUserResponse getGroupIdListForLDAPUserResponse)
         {
             var psGetGroupIdListForLDAPUser = new PSGetGroupIdListForLDAPUserResponse()
             {

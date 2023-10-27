@@ -17,7 +17,8 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ResourceMover
 
         /// <summary>
         /// Removes the set of move resources included in the request body from move collection. The orchestration is done by service.
-        /// To aid the user to prerequisite the operation the client can call operation with validateOnly property set to true.
+        /// To aid the user to prerequisite the operation the client can call operation with validateOnly property set to true.<br><br>**The
+        /// 'Invoke-AzResourceMoverBulkRemove ' command remains same for both 'RegionToRegion' and 'RegionToZone' type move collections.**
         /// </summary>
         /// <param name="subscriptionId">The Subscription ID.</param>
         /// <param name="resourceGroupName"></param>
@@ -31,9 +32,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ResourceMover
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        public async global::System.Threading.Tasks.Task MoveCollectionsBulkRemove(string subscriptionId, string resourceGroupName, string moveCollectionName, Microsoft.Azure.PowerShell.Cmdlets.ResourceMover.Models.Api20210801.IBulkRemoveRequest body, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.ResourceMover.Models.Api20210801.IOperationStatus>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.ResourceMover.Models.Api20210801.ICloudError>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.ResourceMover.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.ResourceMover.Runtime.ISendAsync sender)
+        public async global::System.Threading.Tasks.Task MoveCollectionsBulkRemove(string subscriptionId, string resourceGroupName, string moveCollectionName, Microsoft.Azure.PowerShell.Cmdlets.ResourceMover.Models.Api20230801.IBulkRemoveRequest body, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.ResourceMover.Models.Api20230801.IOperationStatus>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.ResourceMover.Models.Api20230801.ICloudError>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.ResourceMover.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.ResourceMover.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2021-08-01";
+            var apiVersion = @"2023-08-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -69,7 +70,8 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ResourceMover
 
         /// <summary>
         /// Removes the set of move resources included in the request body from move collection. The orchestration is done by service.
-        /// To aid the user to prerequisite the operation the client can call operation with validateOnly property set to true.
+        /// To aid the user to prerequisite the operation the client can call operation with validateOnly property set to true.<br><br>**The
+        /// 'Invoke-AzResourceMoverBulkRemove ' command remains same for both 'RegionToRegion' and 'RegionToZone' type move collections.**
         /// </summary>
         /// <param name="viaIdentity"></param>
         /// <param name="body">Defines the request body for bulk remove of move resources operation.</param>
@@ -81,9 +83,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ResourceMover
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        public async global::System.Threading.Tasks.Task MoveCollectionsBulkRemoveViaIdentity(global::System.String viaIdentity, Microsoft.Azure.PowerShell.Cmdlets.ResourceMover.Models.Api20210801.IBulkRemoveRequest body, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.ResourceMover.Models.Api20210801.IOperationStatus>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.ResourceMover.Models.Api20210801.ICloudError>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.ResourceMover.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.ResourceMover.Runtime.ISendAsync sender)
+        public async global::System.Threading.Tasks.Task MoveCollectionsBulkRemoveViaIdentity(global::System.String viaIdentity, Microsoft.Azure.PowerShell.Cmdlets.ResourceMover.Models.Api20230801.IBulkRemoveRequest body, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.ResourceMover.Models.Api20230801.IOperationStatus>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.ResourceMover.Models.Api20230801.ICloudError>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.ResourceMover.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.ResourceMover.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2021-08-01";
+            var apiVersion = @"2023-08-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -139,7 +141,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ResourceMover
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        internal async global::System.Threading.Tasks.Task MoveCollectionsBulkRemove_Call(global::System.Net.Http.HttpRequestMessage request, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.ResourceMover.Models.Api20210801.IOperationStatus>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.ResourceMover.Models.Api20210801.ICloudError>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.ResourceMover.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.ResourceMover.Runtime.ISendAsync sender)
+        internal async global::System.Threading.Tasks.Task MoveCollectionsBulkRemove_Call(global::System.Net.Http.HttpRequestMessage request, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.ResourceMover.Models.Api20230801.IOperationStatus>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.ResourceMover.Models.Api20230801.ICloudError>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.ResourceMover.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.ResourceMover.Runtime.ISendAsync sender)
         {
             using( NoSynchronizationContext )
             {
@@ -208,7 +210,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ResourceMover
                                     switch( state?.ToString()?.ToLower() )
                                     {
                                       case "failed":
-                                          //error = true;
+                                          error = true;
                                           break;
                                       case "succeeded":
                                       case "canceled":
@@ -226,7 +228,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ResourceMover
                                 // we really don't want to do anything special.
                             }
                             if (error) {
-                                throw new Microsoft.Azure.PowerShell.Cmdlets.ResourceMover.Runtime.UndeclaredResponseException(_response);
+                                await onDefault(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.ResourceMover.Models.Api20230801.CloudError.FromJson(Microsoft.Azure.PowerShell.Cmdlets.ResourceMover.Runtime.Json.JsonNode.Parse(body.Result)) ));
                             }
                         }
 
@@ -244,6 +246,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ResourceMover
 
                         // make the final call
                         _response = await sender.SendAsync(request,  eventListener);
+                        await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.ResourceMover.Runtime.Events.Polling, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
                         break;
                     }
                     var _contentType = _response.Content.Headers.ContentType?.MediaType;
@@ -253,13 +256,13 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ResourceMover
                         case global::System.Net.HttpStatusCode.OK:
                         {
                             await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.ResourceMover.Runtime.Events.BeforeResponseDispatch, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
-                            await onOk(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.ResourceMover.Models.Api20210801.OperationStatus.FromJson(Microsoft.Azure.PowerShell.Cmdlets.ResourceMover.Runtime.Json.JsonNode.Parse(body.Result)) ));
+                            await onOk(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.ResourceMover.Models.Api20230801.OperationStatus.FromJson(Microsoft.Azure.PowerShell.Cmdlets.ResourceMover.Runtime.Json.JsonNode.Parse(body.Result)) ));
                             break;
                         }
                         default:
                         {
                             await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.ResourceMover.Runtime.Events.BeforeResponseDispatch, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
-                            await onDefault(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.ResourceMover.Models.Api20210801.CloudError.FromJson(Microsoft.Azure.PowerShell.Cmdlets.ResourceMover.Runtime.Json.JsonNode.Parse(body.Result)) ));
+                            await onDefault(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.ResourceMover.Models.Api20230801.CloudError.FromJson(Microsoft.Azure.PowerShell.Cmdlets.ResourceMover.Runtime.Json.JsonNode.Parse(body.Result)) ));
                             break;
                         }
                     }
@@ -286,7 +289,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ResourceMover
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        internal async global::System.Threading.Tasks.Task MoveCollectionsBulkRemove_Validate(string subscriptionId, string resourceGroupName, string moveCollectionName, Microsoft.Azure.PowerShell.Cmdlets.ResourceMover.Models.Api20210801.IBulkRemoveRequest body, Microsoft.Azure.PowerShell.Cmdlets.ResourceMover.Runtime.IEventListener eventListener)
+        internal async global::System.Threading.Tasks.Task MoveCollectionsBulkRemove_Validate(string subscriptionId, string resourceGroupName, string moveCollectionName, Microsoft.Azure.PowerShell.Cmdlets.ResourceMover.Models.Api20230801.IBulkRemoveRequest body, Microsoft.Azure.PowerShell.Cmdlets.ResourceMover.Runtime.IEventListener eventListener)
         {
             using( NoSynchronizationContext )
             {
@@ -302,7 +305,8 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ResourceMover
         /// Commits the set of resources included in the request body. The commit operation is triggered on the moveResources in the
         /// moveState 'CommitPending' or 'CommitFailed', on a successful completion the moveResource moveState do a transition to
         /// Committed. To aid the user to prerequisite the operation the client can call operation with validateOnly property set
-        /// to true.
+        /// to true.<br><br>**The 'Invoke-AzResourceMoverCommit' command remains same for both 'RegionToRegion' and 'RegionToZone'
+        /// type move collections.**
         /// </summary>
         /// <param name="subscriptionId">The Subscription ID.</param>
         /// <param name="resourceGroupName">The Resource Group Name.</param>
@@ -316,9 +320,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ResourceMover
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        public async global::System.Threading.Tasks.Task MoveCollectionsCommit(string subscriptionId, string resourceGroupName, string moveCollectionName, Microsoft.Azure.PowerShell.Cmdlets.ResourceMover.Models.Api20210801.ICommitRequest body, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.ResourceMover.Models.Api20210801.IOperationStatus>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.ResourceMover.Models.Api20210801.ICloudError>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.ResourceMover.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.ResourceMover.Runtime.ISendAsync sender)
+        public async global::System.Threading.Tasks.Task MoveCollectionsCommit(string subscriptionId, string resourceGroupName, string moveCollectionName, Microsoft.Azure.PowerShell.Cmdlets.ResourceMover.Models.Api20230801.ICommitRequest body, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.ResourceMover.Models.Api20230801.IOperationStatus>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.ResourceMover.Models.Api20230801.ICloudError>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.ResourceMover.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.ResourceMover.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2021-08-01";
+            var apiVersion = @"2023-08-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -356,7 +360,8 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ResourceMover
         /// Commits the set of resources included in the request body. The commit operation is triggered on the moveResources in the
         /// moveState 'CommitPending' or 'CommitFailed', on a successful completion the moveResource moveState do a transition to
         /// Committed. To aid the user to prerequisite the operation the client can call operation with validateOnly property set
-        /// to true.
+        /// to true.<br><br>**The 'Invoke-AzResourceMoverCommit' command remains same for both 'RegionToRegion' and 'RegionToZone'
+        /// type move collections.**
         /// </summary>
         /// <param name="viaIdentity"></param>
         /// <param name="body">Defines the request body for commit operation.</param>
@@ -368,9 +373,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ResourceMover
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        public async global::System.Threading.Tasks.Task MoveCollectionsCommitViaIdentity(global::System.String viaIdentity, Microsoft.Azure.PowerShell.Cmdlets.ResourceMover.Models.Api20210801.ICommitRequest body, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.ResourceMover.Models.Api20210801.IOperationStatus>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.ResourceMover.Models.Api20210801.ICloudError>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.ResourceMover.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.ResourceMover.Runtime.ISendAsync sender)
+        public async global::System.Threading.Tasks.Task MoveCollectionsCommitViaIdentity(global::System.String viaIdentity, Microsoft.Azure.PowerShell.Cmdlets.ResourceMover.Models.Api20230801.ICommitRequest body, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.ResourceMover.Models.Api20230801.IOperationStatus>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.ResourceMover.Models.Api20230801.ICloudError>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.ResourceMover.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.ResourceMover.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2021-08-01";
+            var apiVersion = @"2023-08-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -426,7 +431,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ResourceMover
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        internal async global::System.Threading.Tasks.Task MoveCollectionsCommit_Call(global::System.Net.Http.HttpRequestMessage request, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.ResourceMover.Models.Api20210801.IOperationStatus>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.ResourceMover.Models.Api20210801.ICloudError>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.ResourceMover.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.ResourceMover.Runtime.ISendAsync sender)
+        internal async global::System.Threading.Tasks.Task MoveCollectionsCommit_Call(global::System.Net.Http.HttpRequestMessage request, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.ResourceMover.Models.Api20230801.IOperationStatus>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.ResourceMover.Models.Api20230801.ICloudError>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.ResourceMover.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.ResourceMover.Runtime.ISendAsync sender)
         {
             using( NoSynchronizationContext )
             {
@@ -495,7 +500,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ResourceMover
                                     switch( state?.ToString()?.ToLower() )
                                     {
                                       case "failed":
-                                          //error = true;
+                                          error = true;
                                           break;
                                       case "succeeded":
                                       case "canceled":
@@ -513,7 +518,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ResourceMover
                                 // we really don't want to do anything special.
                             }
                             if (error) {
-                                throw new Microsoft.Azure.PowerShell.Cmdlets.ResourceMover.Runtime.UndeclaredResponseException(_response);
+                                await onDefault(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.ResourceMover.Models.Api20230801.CloudError.FromJson(Microsoft.Azure.PowerShell.Cmdlets.ResourceMover.Runtime.Json.JsonNode.Parse(body.Result)) ));
                             }
                         }
 
@@ -531,6 +536,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ResourceMover
 
                         // make the final call
                         _response = await sender.SendAsync(request,  eventListener);
+                        await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.ResourceMover.Runtime.Events.Polling, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
                         break;
                     }
                     var _contentType = _response.Content.Headers.ContentType?.MediaType;
@@ -540,13 +546,13 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ResourceMover
                         case global::System.Net.HttpStatusCode.OK:
                         {
                             await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.ResourceMover.Runtime.Events.BeforeResponseDispatch, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
-                            await onOk(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.ResourceMover.Models.Api20210801.OperationStatus.FromJson(Microsoft.Azure.PowerShell.Cmdlets.ResourceMover.Runtime.Json.JsonNode.Parse(body.Result)) ));
+                            await onOk(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.ResourceMover.Models.Api20230801.OperationStatus.FromJson(Microsoft.Azure.PowerShell.Cmdlets.ResourceMover.Runtime.Json.JsonNode.Parse(body.Result)) ));
                             break;
                         }
                         default:
                         {
                             await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.ResourceMover.Runtime.Events.BeforeResponseDispatch, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
-                            await onDefault(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.ResourceMover.Models.Api20210801.CloudError.FromJson(Microsoft.Azure.PowerShell.Cmdlets.ResourceMover.Runtime.Json.JsonNode.Parse(body.Result)) ));
+                            await onDefault(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.ResourceMover.Models.Api20230801.CloudError.FromJson(Microsoft.Azure.PowerShell.Cmdlets.ResourceMover.Runtime.Json.JsonNode.Parse(body.Result)) ));
                             break;
                         }
                     }
@@ -573,7 +579,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ResourceMover
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        internal async global::System.Threading.Tasks.Task MoveCollectionsCommit_Validate(string subscriptionId, string resourceGroupName, string moveCollectionName, Microsoft.Azure.PowerShell.Cmdlets.ResourceMover.Models.Api20210801.ICommitRequest body, Microsoft.Azure.PowerShell.Cmdlets.ResourceMover.Runtime.IEventListener eventListener)
+        internal async global::System.Threading.Tasks.Task MoveCollectionsCommit_Validate(string subscriptionId, string resourceGroupName, string moveCollectionName, Microsoft.Azure.PowerShell.Cmdlets.ResourceMover.Models.Api20230801.ICommitRequest body, Microsoft.Azure.PowerShell.Cmdlets.ResourceMover.Runtime.IEventListener eventListener)
         {
             using( NoSynchronizationContext )
             {
@@ -585,7 +591,11 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ResourceMover
             }
         }
 
-        /// <summary>Creates or updates a move collection.</summary>
+        /// <summary>
+        /// Creates or updates a move collection. The following types of move collections based on the move scenario are supported
+        /// currently:<br><br>**1. RegionToRegion** (Moving resources across regions)<br><br>**2. RegionToZone** (Moving virtual machines
+        /// into a zone within the same region)
+        /// </summary>
         /// <param name="subscriptionId">The Subscription ID.</param>
         /// <param name="resourceGroupName">The Resource Group Name.</param>
         /// <param name="moveCollectionName">The Move Collection Name.</param>
@@ -599,9 +609,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ResourceMover
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        public async global::System.Threading.Tasks.Task MoveCollectionsCreate(string subscriptionId, string resourceGroupName, string moveCollectionName, Microsoft.Azure.PowerShell.Cmdlets.ResourceMover.Models.Api20210801.IMoveCollection body, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.ResourceMover.Models.Api20210801.IMoveCollection>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.ResourceMover.Models.Api20210801.IMoveCollection>, global::System.Threading.Tasks.Task> onCreated, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.ResourceMover.Models.Api20210801.ICloudError>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.ResourceMover.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.ResourceMover.Runtime.ISendAsync sender)
+        public async global::System.Threading.Tasks.Task MoveCollectionsCreate(string subscriptionId, string resourceGroupName, string moveCollectionName, Microsoft.Azure.PowerShell.Cmdlets.ResourceMover.Models.Api20230801.IMoveCollection body, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.ResourceMover.Models.Api20230801.IMoveCollection>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.ResourceMover.Models.Api20230801.IMoveCollection>, global::System.Threading.Tasks.Task> onCreated, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.ResourceMover.Models.Api20230801.ICloudError>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.ResourceMover.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.ResourceMover.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2021-08-01";
+            var apiVersion = @"2023-08-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -634,7 +644,11 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ResourceMover
             }
         }
 
-        /// <summary>Creates or updates a move collection.</summary>
+        /// <summary>
+        /// Creates or updates a move collection. The following types of move collections based on the move scenario are supported
+        /// currently:<br><br>**1. RegionToRegion** (Moving resources across regions)<br><br>**2. RegionToZone** (Moving virtual machines
+        /// into a zone within the same region)
+        /// </summary>
         /// <param name="viaIdentity"></param>
         /// <param name="body">Define the move collection.</param>
         /// <param name="onOk">a delegate that is called when the remote service returns 200 (OK).</param>
@@ -646,9 +660,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ResourceMover
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        public async global::System.Threading.Tasks.Task MoveCollectionsCreateViaIdentity(global::System.String viaIdentity, Microsoft.Azure.PowerShell.Cmdlets.ResourceMover.Models.Api20210801.IMoveCollection body, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.ResourceMover.Models.Api20210801.IMoveCollection>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.ResourceMover.Models.Api20210801.IMoveCollection>, global::System.Threading.Tasks.Task> onCreated, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.ResourceMover.Models.Api20210801.ICloudError>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.ResourceMover.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.ResourceMover.Runtime.ISendAsync sender)
+        public async global::System.Threading.Tasks.Task MoveCollectionsCreateViaIdentity(global::System.String viaIdentity, Microsoft.Azure.PowerShell.Cmdlets.ResourceMover.Models.Api20230801.IMoveCollection body, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.ResourceMover.Models.Api20230801.IMoveCollection>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.ResourceMover.Models.Api20230801.IMoveCollection>, global::System.Threading.Tasks.Task> onCreated, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.ResourceMover.Models.Api20230801.ICloudError>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.ResourceMover.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.ResourceMover.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2021-08-01";
+            var apiVersion = @"2023-08-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -704,7 +718,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ResourceMover
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        internal async global::System.Threading.Tasks.Task MoveCollectionsCreate_Call(global::System.Net.Http.HttpRequestMessage request, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.ResourceMover.Models.Api20210801.IMoveCollection>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.ResourceMover.Models.Api20210801.IMoveCollection>, global::System.Threading.Tasks.Task> onCreated, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.ResourceMover.Models.Api20210801.ICloudError>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.ResourceMover.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.ResourceMover.Runtime.ISendAsync sender)
+        internal async global::System.Threading.Tasks.Task MoveCollectionsCreate_Call(global::System.Net.Http.HttpRequestMessage request, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.ResourceMover.Models.Api20230801.IMoveCollection>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.ResourceMover.Models.Api20230801.IMoveCollection>, global::System.Threading.Tasks.Task> onCreated, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.ResourceMover.Models.Api20230801.ICloudError>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.ResourceMover.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.ResourceMover.Runtime.ISendAsync sender)
         {
             using( NoSynchronizationContext )
             {
@@ -722,19 +736,19 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ResourceMover
                         case global::System.Net.HttpStatusCode.OK:
                         {
                             await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.ResourceMover.Runtime.Events.BeforeResponseDispatch, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
-                            await onOk(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.ResourceMover.Models.Api20210801.MoveCollection.FromJson(Microsoft.Azure.PowerShell.Cmdlets.ResourceMover.Runtime.Json.JsonNode.Parse(body.Result)) ));
+                            await onOk(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.ResourceMover.Models.Api20230801.MoveCollection.FromJson(Microsoft.Azure.PowerShell.Cmdlets.ResourceMover.Runtime.Json.JsonNode.Parse(body.Result)) ));
                             break;
                         }
                         case global::System.Net.HttpStatusCode.Created:
                         {
                             await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.ResourceMover.Runtime.Events.BeforeResponseDispatch, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
-                            await onCreated(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.ResourceMover.Models.Api20210801.MoveCollection.FromJson(Microsoft.Azure.PowerShell.Cmdlets.ResourceMover.Runtime.Json.JsonNode.Parse(body.Result)) ));
+                            await onCreated(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.ResourceMover.Models.Api20230801.MoveCollection.FromJson(Microsoft.Azure.PowerShell.Cmdlets.ResourceMover.Runtime.Json.JsonNode.Parse(body.Result)) ));
                             break;
                         }
                         default:
                         {
                             await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.ResourceMover.Runtime.Events.BeforeResponseDispatch, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
-                            await onDefault(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.ResourceMover.Models.Api20210801.CloudError.FromJson(Microsoft.Azure.PowerShell.Cmdlets.ResourceMover.Runtime.Json.JsonNode.Parse(body.Result)) ));
+                            await onDefault(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.ResourceMover.Models.Api20230801.CloudError.FromJson(Microsoft.Azure.PowerShell.Cmdlets.ResourceMover.Runtime.Json.JsonNode.Parse(body.Result)) ));
                             break;
                         }
                     }
@@ -761,7 +775,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ResourceMover
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        internal async global::System.Threading.Tasks.Task MoveCollectionsCreate_Validate(string subscriptionId, string resourceGroupName, string moveCollectionName, Microsoft.Azure.PowerShell.Cmdlets.ResourceMover.Models.Api20210801.IMoveCollection body, Microsoft.Azure.PowerShell.Cmdlets.ResourceMover.Runtime.IEventListener eventListener)
+        internal async global::System.Threading.Tasks.Task MoveCollectionsCreate_Validate(string subscriptionId, string resourceGroupName, string moveCollectionName, Microsoft.Azure.PowerShell.Cmdlets.ResourceMover.Models.Api20230801.IMoveCollection body, Microsoft.Azure.PowerShell.Cmdlets.ResourceMover.Runtime.IEventListener eventListener)
         {
             using( NoSynchronizationContext )
             {
@@ -773,7 +787,10 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ResourceMover
             }
         }
 
-        /// <summary>Deletes a move collection.</summary>
+        /// <summary>
+        /// Deletes a move collection.<br><br>**The 'Remove-AzResourceMoverMoveCollection' command remains same for both 'RegionToRegion'
+        /// and 'RegionToZone' type move collections.**
+        /// </summary>
         /// <param name="subscriptionId">The Subscription ID.</param>
         /// <param name="resourceGroupName">The Resource Group Name.</param>
         /// <param name="moveCollectionName">The Move Collection Name.</param>
@@ -786,9 +803,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ResourceMover
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        public async global::System.Threading.Tasks.Task MoveCollectionsDelete(string subscriptionId, string resourceGroupName, string moveCollectionName, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.ResourceMover.Models.Api20210801.IOperationStatus>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task> onNoContent, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.ResourceMover.Models.Api20210801.ICloudError>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.ResourceMover.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.ResourceMover.Runtime.ISendAsync sender)
+        public async global::System.Threading.Tasks.Task MoveCollectionsDelete(string subscriptionId, string resourceGroupName, string moveCollectionName, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.ResourceMover.Models.Api20230801.IOperationStatus>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task> onNoContent, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.ResourceMover.Models.Api20230801.ICloudError>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.ResourceMover.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.ResourceMover.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2021-08-01";
+            var apiVersion = @"2023-08-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -817,7 +834,10 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ResourceMover
             }
         }
 
-        /// <summary>Deletes a move collection.</summary>
+        /// <summary>
+        /// Deletes a move collection.<br><br>**The 'Remove-AzResourceMoverMoveCollection' command remains same for both 'RegionToRegion'
+        /// and 'RegionToZone' type move collections.**
+        /// </summary>
         /// <param name="viaIdentity"></param>
         /// <param name="onOk">a delegate that is called when the remote service returns 200 (OK).</param>
         /// <param name="onNoContent">a delegate that is called when the remote service returns 204 (NoContent).</param>
@@ -828,9 +848,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ResourceMover
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        public async global::System.Threading.Tasks.Task MoveCollectionsDeleteViaIdentity(global::System.String viaIdentity, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.ResourceMover.Models.Api20210801.IOperationStatus>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task> onNoContent, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.ResourceMover.Models.Api20210801.ICloudError>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.ResourceMover.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.ResourceMover.Runtime.ISendAsync sender)
+        public async global::System.Threading.Tasks.Task MoveCollectionsDeleteViaIdentity(global::System.String viaIdentity, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.ResourceMover.Models.Api20230801.IOperationStatus>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task> onNoContent, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.ResourceMover.Models.Api20230801.ICloudError>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.ResourceMover.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.ResourceMover.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2021-08-01";
+            var apiVersion = @"2023-08-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -882,7 +902,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ResourceMover
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        internal async global::System.Threading.Tasks.Task MoveCollectionsDelete_Call(global::System.Net.Http.HttpRequestMessage request, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.ResourceMover.Models.Api20210801.IOperationStatus>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task> onNoContent, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.ResourceMover.Models.Api20210801.ICloudError>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.ResourceMover.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.ResourceMover.Runtime.ISendAsync sender)
+        internal async global::System.Threading.Tasks.Task MoveCollectionsDelete_Call(global::System.Net.Http.HttpRequestMessage request, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.ResourceMover.Models.Api20230801.IOperationStatus>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task> onNoContent, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.ResourceMover.Models.Api20230801.ICloudError>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.ResourceMover.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.ResourceMover.Runtime.ISendAsync sender)
         {
             using( NoSynchronizationContext )
             {
@@ -951,7 +971,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ResourceMover
                                     switch( state?.ToString()?.ToLower() )
                                     {
                                       case "failed":
-                                          //error = true;
+                                          error = true;
                                           break;
                                       case "succeeded":
                                       case "canceled":
@@ -969,7 +989,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ResourceMover
                                 // we really don't want to do anything special.
                             }
                             if (error) {
-                                throw new Microsoft.Azure.PowerShell.Cmdlets.ResourceMover.Runtime.UndeclaredResponseException(_response);
+                                await onDefault(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.ResourceMover.Models.Api20230801.CloudError.FromJson(Microsoft.Azure.PowerShell.Cmdlets.ResourceMover.Runtime.Json.JsonNode.Parse(body.Result)) ));
                             }
                         }
 
@@ -987,6 +1007,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ResourceMover
 
                         // make the final call
                         _response = await sender.SendAsync(request,  eventListener);
+                        await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.ResourceMover.Runtime.Events.Polling, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
                         break;
                     }
                     var _contentType = _response.Content.Headers.ContentType?.MediaType;
@@ -996,7 +1017,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ResourceMover
                         case global::System.Net.HttpStatusCode.OK:
                         {
                             await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.ResourceMover.Runtime.Events.BeforeResponseDispatch, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
-                            await onOk(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.ResourceMover.Models.Api20210801.OperationStatus.FromJson(Microsoft.Azure.PowerShell.Cmdlets.ResourceMover.Runtime.Json.JsonNode.Parse(body.Result)) ));
+                            await onOk(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.ResourceMover.Models.Api20230801.OperationStatus.FromJson(Microsoft.Azure.PowerShell.Cmdlets.ResourceMover.Runtime.Json.JsonNode.Parse(body.Result)) ));
                             break;
                         }
                         case global::System.Net.HttpStatusCode.NoContent:
@@ -1008,7 +1029,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ResourceMover
                         default:
                         {
                             await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.ResourceMover.Runtime.Events.BeforeResponseDispatch, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
-                            await onDefault(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.ResourceMover.Models.Api20210801.CloudError.FromJson(Microsoft.Azure.PowerShell.Cmdlets.ResourceMover.Runtime.Json.JsonNode.Parse(body.Result)) ));
+                            await onDefault(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.ResourceMover.Models.Api20230801.CloudError.FromJson(Microsoft.Azure.PowerShell.Cmdlets.ResourceMover.Runtime.Json.JsonNode.Parse(body.Result)) ));
                             break;
                         }
                     }
@@ -1048,7 +1069,8 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ResourceMover
         /// Discards the set of resources included in the request body. The discard operation is triggered on the moveResources in
         /// the moveState 'CommitPending' or 'DiscardFailed', on a successful completion the moveResource moveState do a transition
         /// to MovePending. To aid the user to prerequisite the operation the client can call operation with validateOnly property
-        /// set to true.
+        /// set to true.<br><br>**The 'Invoke-AzResourceMoverDiscard' command is not applicable on move collections with moveType
+        /// 'RegionToZone' since discard is not a valid operation for region to zone move scenario.**
         /// </summary>
         /// <param name="subscriptionId">The Subscription ID.</param>
         /// <param name="resourceGroupName">The Resource Group Name.</param>
@@ -1062,9 +1084,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ResourceMover
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        public async global::System.Threading.Tasks.Task MoveCollectionsDiscard(string subscriptionId, string resourceGroupName, string moveCollectionName, Microsoft.Azure.PowerShell.Cmdlets.ResourceMover.Models.Api20210801.IDiscardRequest body, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.ResourceMover.Models.Api20210801.IOperationStatus>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.ResourceMover.Models.Api20210801.ICloudError>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.ResourceMover.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.ResourceMover.Runtime.ISendAsync sender)
+        public async global::System.Threading.Tasks.Task MoveCollectionsDiscard(string subscriptionId, string resourceGroupName, string moveCollectionName, Microsoft.Azure.PowerShell.Cmdlets.ResourceMover.Models.Api20230801.IDiscardRequest body, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.ResourceMover.Models.Api20230801.IOperationStatus>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.ResourceMover.Models.Api20230801.ICloudError>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.ResourceMover.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.ResourceMover.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2021-08-01";
+            var apiVersion = @"2023-08-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -1102,7 +1124,8 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ResourceMover
         /// Discards the set of resources included in the request body. The discard operation is triggered on the moveResources in
         /// the moveState 'CommitPending' or 'DiscardFailed', on a successful completion the moveResource moveState do a transition
         /// to MovePending. To aid the user to prerequisite the operation the client can call operation with validateOnly property
-        /// set to true.
+        /// set to true.<br><br>**The 'Invoke-AzResourceMoverDiscard' command is not applicable on move collections with moveType
+        /// 'RegionToZone' since discard is not a valid operation for region to zone move scenario.**
         /// </summary>
         /// <param name="viaIdentity"></param>
         /// <param name="body">Defines the request body for discard operation.</param>
@@ -1114,9 +1137,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ResourceMover
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        public async global::System.Threading.Tasks.Task MoveCollectionsDiscardViaIdentity(global::System.String viaIdentity, Microsoft.Azure.PowerShell.Cmdlets.ResourceMover.Models.Api20210801.IDiscardRequest body, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.ResourceMover.Models.Api20210801.IOperationStatus>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.ResourceMover.Models.Api20210801.ICloudError>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.ResourceMover.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.ResourceMover.Runtime.ISendAsync sender)
+        public async global::System.Threading.Tasks.Task MoveCollectionsDiscardViaIdentity(global::System.String viaIdentity, Microsoft.Azure.PowerShell.Cmdlets.ResourceMover.Models.Api20230801.IDiscardRequest body, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.ResourceMover.Models.Api20230801.IOperationStatus>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.ResourceMover.Models.Api20230801.ICloudError>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.ResourceMover.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.ResourceMover.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2021-08-01";
+            var apiVersion = @"2023-08-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -1172,7 +1195,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ResourceMover
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        internal async global::System.Threading.Tasks.Task MoveCollectionsDiscard_Call(global::System.Net.Http.HttpRequestMessage request, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.ResourceMover.Models.Api20210801.IOperationStatus>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.ResourceMover.Models.Api20210801.ICloudError>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.ResourceMover.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.ResourceMover.Runtime.ISendAsync sender)
+        internal async global::System.Threading.Tasks.Task MoveCollectionsDiscard_Call(global::System.Net.Http.HttpRequestMessage request, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.ResourceMover.Models.Api20230801.IOperationStatus>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.ResourceMover.Models.Api20230801.ICloudError>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.ResourceMover.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.ResourceMover.Runtime.ISendAsync sender)
         {
             using( NoSynchronizationContext )
             {
@@ -1241,7 +1264,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ResourceMover
                                     switch( state?.ToString()?.ToLower() )
                                     {
                                       case "failed":
-                                          //error = true;
+                                          error = true;
                                           break;
                                       case "succeeded":
                                       case "canceled":
@@ -1259,7 +1282,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ResourceMover
                                 // we really don't want to do anything special.
                             }
                             if (error) {
-                                throw new Microsoft.Azure.PowerShell.Cmdlets.ResourceMover.Runtime.UndeclaredResponseException(_response);
+                                await onDefault(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.ResourceMover.Models.Api20230801.CloudError.FromJson(Microsoft.Azure.PowerShell.Cmdlets.ResourceMover.Runtime.Json.JsonNode.Parse(body.Result)) ));
                             }
                         }
 
@@ -1277,6 +1300,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ResourceMover
 
                         // make the final call
                         _response = await sender.SendAsync(request,  eventListener);
+                        await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.ResourceMover.Runtime.Events.Polling, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
                         break;
                     }
                     var _contentType = _response.Content.Headers.ContentType?.MediaType;
@@ -1286,13 +1310,13 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ResourceMover
                         case global::System.Net.HttpStatusCode.OK:
                         {
                             await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.ResourceMover.Runtime.Events.BeforeResponseDispatch, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
-                            await onOk(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.ResourceMover.Models.Api20210801.OperationStatus.FromJson(Microsoft.Azure.PowerShell.Cmdlets.ResourceMover.Runtime.Json.JsonNode.Parse(body.Result)) ));
+                            await onOk(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.ResourceMover.Models.Api20230801.OperationStatus.FromJson(Microsoft.Azure.PowerShell.Cmdlets.ResourceMover.Runtime.Json.JsonNode.Parse(body.Result)) ));
                             break;
                         }
                         default:
                         {
                             await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.ResourceMover.Runtime.Events.BeforeResponseDispatch, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
-                            await onDefault(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.ResourceMover.Models.Api20210801.CloudError.FromJson(Microsoft.Azure.PowerShell.Cmdlets.ResourceMover.Runtime.Json.JsonNode.Parse(body.Result)) ));
+                            await onDefault(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.ResourceMover.Models.Api20230801.CloudError.FromJson(Microsoft.Azure.PowerShell.Cmdlets.ResourceMover.Runtime.Json.JsonNode.Parse(body.Result)) ));
                             break;
                         }
                     }
@@ -1319,7 +1343,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ResourceMover
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        internal async global::System.Threading.Tasks.Task MoveCollectionsDiscard_Validate(string subscriptionId, string resourceGroupName, string moveCollectionName, Microsoft.Azure.PowerShell.Cmdlets.ResourceMover.Models.Api20210801.IDiscardRequest body, Microsoft.Azure.PowerShell.Cmdlets.ResourceMover.Runtime.IEventListener eventListener)
+        internal async global::System.Threading.Tasks.Task MoveCollectionsDiscard_Validate(string subscriptionId, string resourceGroupName, string moveCollectionName, Microsoft.Azure.PowerShell.Cmdlets.ResourceMover.Models.Api20230801.IDiscardRequest body, Microsoft.Azure.PowerShell.Cmdlets.ResourceMover.Runtime.IEventListener eventListener)
         {
             using( NoSynchronizationContext )
             {
@@ -1331,7 +1355,10 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ResourceMover
             }
         }
 
-        /// <summary>Gets the move collection.</summary>
+        /// <summary>
+        /// Gets the move collection.<br><br>**The 'Get-AzResourceMoverMoveCollection' command remains same for both 'RegionToRegion'
+        /// and 'RegionToZone' type move collections.**
+        /// </summary>
         /// <param name="subscriptionId">The Subscription ID.</param>
         /// <param name="resourceGroupName">The Resource Group Name.</param>
         /// <param name="moveCollectionName">The Move Collection Name.</param>
@@ -1343,9 +1370,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ResourceMover
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        public async global::System.Threading.Tasks.Task MoveCollectionsGet(string subscriptionId, string resourceGroupName, string moveCollectionName, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.ResourceMover.Models.Api20210801.IMoveCollection>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.ResourceMover.Models.Api20210801.ICloudError>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.ResourceMover.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.ResourceMover.Runtime.ISendAsync sender)
+        public async global::System.Threading.Tasks.Task MoveCollectionsGet(string subscriptionId, string resourceGroupName, string moveCollectionName, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.ResourceMover.Models.Api20230801.IMoveCollection>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.ResourceMover.Models.Api20230801.ICloudError>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.ResourceMover.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.ResourceMover.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2021-08-01";
+            var apiVersion = @"2023-08-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -1374,7 +1401,10 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ResourceMover
             }
         }
 
-        /// <summary>Gets the move collection.</summary>
+        /// <summary>
+        /// Gets the move collection.<br><br>**The 'Get-AzResourceMoverMoveCollection' command remains same for both 'RegionToRegion'
+        /// and 'RegionToZone' type move collections.**
+        /// </summary>
         /// <param name="viaIdentity"></param>
         /// <param name="onOk">a delegate that is called when the remote service returns 200 (OK).</param>
         /// <param name="onDefault">a delegate that is called when the remote service returns default (any response code not handled
@@ -1384,9 +1414,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ResourceMover
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        public async global::System.Threading.Tasks.Task MoveCollectionsGetViaIdentity(global::System.String viaIdentity, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.ResourceMover.Models.Api20210801.IMoveCollection>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.ResourceMover.Models.Api20210801.ICloudError>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.ResourceMover.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.ResourceMover.Runtime.ISendAsync sender)
+        public async global::System.Threading.Tasks.Task MoveCollectionsGetViaIdentity(global::System.String viaIdentity, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.ResourceMover.Models.Api20230801.IMoveCollection>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.ResourceMover.Models.Api20230801.ICloudError>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.ResourceMover.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.ResourceMover.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2021-08-01";
+            var apiVersion = @"2023-08-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -1437,7 +1467,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ResourceMover
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        internal async global::System.Threading.Tasks.Task MoveCollectionsGet_Call(global::System.Net.Http.HttpRequestMessage request, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.ResourceMover.Models.Api20210801.IMoveCollection>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.ResourceMover.Models.Api20210801.ICloudError>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.ResourceMover.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.ResourceMover.Runtime.ISendAsync sender)
+        internal async global::System.Threading.Tasks.Task MoveCollectionsGet_Call(global::System.Net.Http.HttpRequestMessage request, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.ResourceMover.Models.Api20230801.IMoveCollection>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.ResourceMover.Models.Api20230801.ICloudError>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.ResourceMover.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.ResourceMover.Runtime.ISendAsync sender)
         {
             using( NoSynchronizationContext )
             {
@@ -1455,13 +1485,13 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ResourceMover
                         case global::System.Net.HttpStatusCode.OK:
                         {
                             await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.ResourceMover.Runtime.Events.BeforeResponseDispatch, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
-                            await onOk(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.ResourceMover.Models.Api20210801.MoveCollection.FromJson(Microsoft.Azure.PowerShell.Cmdlets.ResourceMover.Runtime.Json.JsonNode.Parse(body.Result)) ));
+                            await onOk(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.ResourceMover.Models.Api20230801.MoveCollection.FromJson(Microsoft.Azure.PowerShell.Cmdlets.ResourceMover.Runtime.Json.JsonNode.Parse(body.Result)) ));
                             break;
                         }
                         default:
                         {
                             await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.ResourceMover.Runtime.Events.BeforeResponseDispatch, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
-                            await onDefault(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.ResourceMover.Models.Api20210801.CloudError.FromJson(Microsoft.Azure.PowerShell.Cmdlets.ResourceMover.Runtime.Json.JsonNode.Parse(body.Result)) ));
+                            await onDefault(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.ResourceMover.Models.Api20230801.CloudError.FromJson(Microsoft.Azure.PowerShell.Cmdlets.ResourceMover.Runtime.Json.JsonNode.Parse(body.Result)) ));
                             break;
                         }
                     }
@@ -1498,10 +1528,11 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ResourceMover
         }
 
         /// <summary>
-        /// Moves the set of resources included in the request body. The move operation is triggered after the moveResources are in
+        /// Moves the set of resources included in the request body.The move operation is triggered after the moveResources are in
         /// the moveState 'MovePending' or 'MoveFailed', on a successful completion the moveResource moveState do a transition to
-        /// CommitPending. To aid the user to prerequisite the operation the client can call operation with validateOnly property
-        /// set to true.
+        /// CommitPending.To aid the user to prerequisite the operation the client can call operation with validateOnly property set
+        /// to true.<br><br>**The 'Invoke-AzResourceMoverInitiateMove' command remains same for both 'RegionToRegion' and 'RegionToZone'
+        /// type move collections.**
         /// </summary>
         /// <param name="subscriptionId">The Subscription ID.</param>
         /// <param name="resourceGroupName">The Resource Group Name.</param>
@@ -1515,9 +1546,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ResourceMover
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        public async global::System.Threading.Tasks.Task MoveCollectionsInitiateMove(string subscriptionId, string resourceGroupName, string moveCollectionName, Microsoft.Azure.PowerShell.Cmdlets.ResourceMover.Models.Api20210801.IResourceMoveRequest body, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.ResourceMover.Models.Api20210801.IOperationStatus>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.ResourceMover.Models.Api20210801.ICloudError>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.ResourceMover.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.ResourceMover.Runtime.ISendAsync sender)
+        public async global::System.Threading.Tasks.Task MoveCollectionsInitiateMove(string subscriptionId, string resourceGroupName, string moveCollectionName, Microsoft.Azure.PowerShell.Cmdlets.ResourceMover.Models.Api20230801.IResourceMoveRequest body, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.ResourceMover.Models.Api20230801.IOperationStatus>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.ResourceMover.Models.Api20230801.ICloudError>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.ResourceMover.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.ResourceMover.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2021-08-01";
+            var apiVersion = @"2023-08-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -1552,10 +1583,11 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ResourceMover
         }
 
         /// <summary>
-        /// Moves the set of resources included in the request body. The move operation is triggered after the moveResources are in
+        /// Moves the set of resources included in the request body.The move operation is triggered after the moveResources are in
         /// the moveState 'MovePending' or 'MoveFailed', on a successful completion the moveResource moveState do a transition to
-        /// CommitPending. To aid the user to prerequisite the operation the client can call operation with validateOnly property
-        /// set to true.
+        /// CommitPending.To aid the user to prerequisite the operation the client can call operation with validateOnly property set
+        /// to true.<br><br>**The 'Invoke-AzResourceMoverInitiateMove' command remains same for both 'RegionToRegion' and 'RegionToZone'
+        /// type move collections.**
         /// </summary>
         /// <param name="viaIdentity"></param>
         /// <param name="body">Defines the request body for resource move operation.</param>
@@ -1567,9 +1599,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ResourceMover
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        public async global::System.Threading.Tasks.Task MoveCollectionsInitiateMoveViaIdentity(global::System.String viaIdentity, Microsoft.Azure.PowerShell.Cmdlets.ResourceMover.Models.Api20210801.IResourceMoveRequest body, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.ResourceMover.Models.Api20210801.IOperationStatus>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.ResourceMover.Models.Api20210801.ICloudError>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.ResourceMover.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.ResourceMover.Runtime.ISendAsync sender)
+        public async global::System.Threading.Tasks.Task MoveCollectionsInitiateMoveViaIdentity(global::System.String viaIdentity, Microsoft.Azure.PowerShell.Cmdlets.ResourceMover.Models.Api20230801.IResourceMoveRequest body, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.ResourceMover.Models.Api20230801.IOperationStatus>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.ResourceMover.Models.Api20230801.ICloudError>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.ResourceMover.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.ResourceMover.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2021-08-01";
+            var apiVersion = @"2023-08-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -1625,7 +1657,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ResourceMover
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        internal async global::System.Threading.Tasks.Task MoveCollectionsInitiateMove_Call(global::System.Net.Http.HttpRequestMessage request, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.ResourceMover.Models.Api20210801.IOperationStatus>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.ResourceMover.Models.Api20210801.ICloudError>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.ResourceMover.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.ResourceMover.Runtime.ISendAsync sender)
+        internal async global::System.Threading.Tasks.Task MoveCollectionsInitiateMove_Call(global::System.Net.Http.HttpRequestMessage request, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.ResourceMover.Models.Api20230801.IOperationStatus>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.ResourceMover.Models.Api20230801.ICloudError>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.ResourceMover.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.ResourceMover.Runtime.ISendAsync sender)
         {
             using( NoSynchronizationContext )
             {
@@ -1694,7 +1726,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ResourceMover
                                     switch( state?.ToString()?.ToLower() )
                                     {
                                       case "failed":
-                                          //error = true;
+                                          error = true;
                                           break;
                                       case "succeeded":
                                       case "canceled":
@@ -1712,7 +1744,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ResourceMover
                                 // we really don't want to do anything special.
                             }
                             if (error) {
-                                throw new Microsoft.Azure.PowerShell.Cmdlets.ResourceMover.Runtime.UndeclaredResponseException(_response);
+                                await onDefault(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.ResourceMover.Models.Api20230801.CloudError.FromJson(Microsoft.Azure.PowerShell.Cmdlets.ResourceMover.Runtime.Json.JsonNode.Parse(body.Result)) ));
                             }
                         }
 
@@ -1730,6 +1762,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ResourceMover
 
                         // make the final call
                         _response = await sender.SendAsync(request,  eventListener);
+                        await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.ResourceMover.Runtime.Events.Polling, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
                         break;
                     }
                     var _contentType = _response.Content.Headers.ContentType?.MediaType;
@@ -1739,13 +1772,13 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ResourceMover
                         case global::System.Net.HttpStatusCode.OK:
                         {
                             await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.ResourceMover.Runtime.Events.BeforeResponseDispatch, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
-                            await onOk(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.ResourceMover.Models.Api20210801.OperationStatus.FromJson(Microsoft.Azure.PowerShell.Cmdlets.ResourceMover.Runtime.Json.JsonNode.Parse(body.Result)) ));
+                            await onOk(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.ResourceMover.Models.Api20230801.OperationStatus.FromJson(Microsoft.Azure.PowerShell.Cmdlets.ResourceMover.Runtime.Json.JsonNode.Parse(body.Result)) ));
                             break;
                         }
                         default:
                         {
                             await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.ResourceMover.Runtime.Events.BeforeResponseDispatch, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
-                            await onDefault(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.ResourceMover.Models.Api20210801.CloudError.FromJson(Microsoft.Azure.PowerShell.Cmdlets.ResourceMover.Runtime.Json.JsonNode.Parse(body.Result)) ));
+                            await onDefault(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.ResourceMover.Models.Api20230801.CloudError.FromJson(Microsoft.Azure.PowerShell.Cmdlets.ResourceMover.Runtime.Json.JsonNode.Parse(body.Result)) ));
                             break;
                         }
                     }
@@ -1772,7 +1805,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ResourceMover
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        internal async global::System.Threading.Tasks.Task MoveCollectionsInitiateMove_Validate(string subscriptionId, string resourceGroupName, string moveCollectionName, Microsoft.Azure.PowerShell.Cmdlets.ResourceMover.Models.Api20210801.IResourceMoveRequest body, Microsoft.Azure.PowerShell.Cmdlets.ResourceMover.Runtime.IEventListener eventListener)
+        internal async global::System.Threading.Tasks.Task MoveCollectionsInitiateMove_Validate(string subscriptionId, string resourceGroupName, string moveCollectionName, Microsoft.Azure.PowerShell.Cmdlets.ResourceMover.Models.Api20230801.IResourceMoveRequest body, Microsoft.Azure.PowerShell.Cmdlets.ResourceMover.Runtime.IEventListener eventListener)
         {
             using( NoSynchronizationContext )
             {
@@ -1795,9 +1828,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ResourceMover
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        public async global::System.Threading.Tasks.Task MoveCollectionsListMoveCollectionsByResourceGroup(string subscriptionId, string resourceGroupName, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.ResourceMover.Models.Api20210801.IMoveCollectionResultList>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.ResourceMover.Models.Api20210801.ICloudError>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.ResourceMover.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.ResourceMover.Runtime.ISendAsync sender)
+        public async global::System.Threading.Tasks.Task MoveCollectionsListMoveCollectionsByResourceGroup(string subscriptionId, string resourceGroupName, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.ResourceMover.Models.Api20230801.IMoveCollectionResultList>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.ResourceMover.Models.Api20230801.ICloudError>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.ResourceMover.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.ResourceMover.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2021-08-01";
+            var apiVersion = @"2023-08-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -1835,9 +1868,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ResourceMover
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        public async global::System.Threading.Tasks.Task MoveCollectionsListMoveCollectionsByResourceGroupViaIdentity(global::System.String viaIdentity, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.ResourceMover.Models.Api20210801.IMoveCollectionResultList>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.ResourceMover.Models.Api20210801.ICloudError>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.ResourceMover.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.ResourceMover.Runtime.ISendAsync sender)
+        public async global::System.Threading.Tasks.Task MoveCollectionsListMoveCollectionsByResourceGroupViaIdentity(global::System.String viaIdentity, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.ResourceMover.Models.Api20230801.IMoveCollectionResultList>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.ResourceMover.Models.Api20230801.ICloudError>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.ResourceMover.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.ResourceMover.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2021-08-01";
+            var apiVersion = @"2023-08-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -1888,7 +1921,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ResourceMover
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        internal async global::System.Threading.Tasks.Task MoveCollectionsListMoveCollectionsByResourceGroup_Call(global::System.Net.Http.HttpRequestMessage request, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.ResourceMover.Models.Api20210801.IMoveCollectionResultList>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.ResourceMover.Models.Api20210801.ICloudError>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.ResourceMover.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.ResourceMover.Runtime.ISendAsync sender)
+        internal async global::System.Threading.Tasks.Task MoveCollectionsListMoveCollectionsByResourceGroup_Call(global::System.Net.Http.HttpRequestMessage request, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.ResourceMover.Models.Api20230801.IMoveCollectionResultList>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.ResourceMover.Models.Api20230801.ICloudError>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.ResourceMover.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.ResourceMover.Runtime.ISendAsync sender)
         {
             using( NoSynchronizationContext )
             {
@@ -1906,13 +1939,13 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ResourceMover
                         case global::System.Net.HttpStatusCode.OK:
                         {
                             await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.ResourceMover.Runtime.Events.BeforeResponseDispatch, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
-                            await onOk(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.ResourceMover.Models.Api20210801.MoveCollectionResultList.FromJson(Microsoft.Azure.PowerShell.Cmdlets.ResourceMover.Runtime.Json.JsonNode.Parse(body.Result)) ));
+                            await onOk(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.ResourceMover.Models.Api20230801.MoveCollectionResultList.FromJson(Microsoft.Azure.PowerShell.Cmdlets.ResourceMover.Runtime.Json.JsonNode.Parse(body.Result)) ));
                             break;
                         }
                         default:
                         {
                             await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.ResourceMover.Runtime.Events.BeforeResponseDispatch, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
-                            await onDefault(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.ResourceMover.Models.Api20210801.CloudError.FromJson(Microsoft.Azure.PowerShell.Cmdlets.ResourceMover.Runtime.Json.JsonNode.Parse(body.Result)) ));
+                            await onDefault(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.ResourceMover.Models.Api20230801.CloudError.FromJson(Microsoft.Azure.PowerShell.Cmdlets.ResourceMover.Runtime.Json.JsonNode.Parse(body.Result)) ));
                             break;
                         }
                     }
@@ -1956,9 +1989,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ResourceMover
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        public async global::System.Threading.Tasks.Task MoveCollectionsListMoveCollectionsBySubscription(string subscriptionId, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.ResourceMover.Models.Api20210801.IMoveCollectionResultList>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.ResourceMover.Models.Api20210801.ICloudError>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.ResourceMover.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.ResourceMover.Runtime.ISendAsync sender)
+        public async global::System.Threading.Tasks.Task MoveCollectionsListMoveCollectionsBySubscription(string subscriptionId, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.ResourceMover.Models.Api20230801.IMoveCollectionResultList>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.ResourceMover.Models.Api20230801.ICloudError>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.ResourceMover.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.ResourceMover.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2021-08-01";
+            var apiVersion = @"2023-08-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -1994,9 +2027,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ResourceMover
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        public async global::System.Threading.Tasks.Task MoveCollectionsListMoveCollectionsBySubscriptionViaIdentity(global::System.String viaIdentity, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.ResourceMover.Models.Api20210801.IMoveCollectionResultList>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.ResourceMover.Models.Api20210801.ICloudError>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.ResourceMover.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.ResourceMover.Runtime.ISendAsync sender)
+        public async global::System.Threading.Tasks.Task MoveCollectionsListMoveCollectionsBySubscriptionViaIdentity(global::System.String viaIdentity, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.ResourceMover.Models.Api20230801.IMoveCollectionResultList>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.ResourceMover.Models.Api20230801.ICloudError>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.ResourceMover.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.ResourceMover.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2021-08-01";
+            var apiVersion = @"2023-08-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -2044,7 +2077,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ResourceMover
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        internal async global::System.Threading.Tasks.Task MoveCollectionsListMoveCollectionsBySubscription_Call(global::System.Net.Http.HttpRequestMessage request, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.ResourceMover.Models.Api20210801.IMoveCollectionResultList>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.ResourceMover.Models.Api20210801.ICloudError>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.ResourceMover.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.ResourceMover.Runtime.ISendAsync sender)
+        internal async global::System.Threading.Tasks.Task MoveCollectionsListMoveCollectionsBySubscription_Call(global::System.Net.Http.HttpRequestMessage request, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.ResourceMover.Models.Api20230801.IMoveCollectionResultList>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.ResourceMover.Models.Api20230801.ICloudError>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.ResourceMover.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.ResourceMover.Runtime.ISendAsync sender)
         {
             using( NoSynchronizationContext )
             {
@@ -2062,13 +2095,13 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ResourceMover
                         case global::System.Net.HttpStatusCode.OK:
                         {
                             await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.ResourceMover.Runtime.Events.BeforeResponseDispatch, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
-                            await onOk(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.ResourceMover.Models.Api20210801.MoveCollectionResultList.FromJson(Microsoft.Azure.PowerShell.Cmdlets.ResourceMover.Runtime.Json.JsonNode.Parse(body.Result)) ));
+                            await onOk(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.ResourceMover.Models.Api20230801.MoveCollectionResultList.FromJson(Microsoft.Azure.PowerShell.Cmdlets.ResourceMover.Runtime.Json.JsonNode.Parse(body.Result)) ));
                             break;
                         }
                         default:
                         {
                             await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.ResourceMover.Runtime.Events.BeforeResponseDispatch, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
-                            await onDefault(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.ResourceMover.Models.Api20210801.CloudError.FromJson(Microsoft.Azure.PowerShell.Cmdlets.ResourceMover.Runtime.Json.JsonNode.Parse(body.Result)) ));
+                            await onDefault(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.ResourceMover.Models.Api20230801.CloudError.FromJson(Microsoft.Azure.PowerShell.Cmdlets.ResourceMover.Runtime.Json.JsonNode.Parse(body.Result)) ));
                             break;
                         }
                     }
@@ -2100,7 +2133,12 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ResourceMover
             }
         }
 
-        /// <summary>List of the move resources for which an arm resource is required for.</summary>
+        /// <summary>
+        /// List of the move resources for which an arm resource is required for.<br><br>**The 'Get-AzResourceMoverRequiredForResources'
+        /// command is applicable for 'RegionToRegion' type move collections.<br><br>However, for move collections with moveType 'RegionToZone'
+        /// dependencies are automatically added to the move collection once 'Resolve-AzResourceMoverMoveCollectionDependency' is
+        /// executed. Please refer to 'Resolve-AzResourceMoverMoveCollectionDependency' command documentation for additional details.**
+        /// </summary>
         /// <param name="subscriptionId">The Subscription ID.</param>
         /// <param name="resourceGroupName">The Resource Group Name.</param>
         /// <param name="moveCollectionName">The Move Collection Name.</param>
@@ -2113,9 +2151,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ResourceMover
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        public async global::System.Threading.Tasks.Task MoveCollectionsListRequiredFor(string subscriptionId, string resourceGroupName, string moveCollectionName, string sourceId, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.ResourceMover.Models.Api20210801.IRequiredForResourcesCollection>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.ResourceMover.Models.Api20210801.ICloudError>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.ResourceMover.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.ResourceMover.Runtime.ISendAsync sender)
+        public async global::System.Threading.Tasks.Task MoveCollectionsListRequiredFor(string subscriptionId, string resourceGroupName, string moveCollectionName, string sourceId, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.ResourceMover.Models.Api20230801.IRequiredForResourcesCollection>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.ResourceMover.Models.Api20230801.ICloudError>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.ResourceMover.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.ResourceMover.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2021-08-01";
+            var apiVersion = @"2023-08-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -2147,7 +2185,12 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ResourceMover
             }
         }
 
-        /// <summary>List of the move resources for which an arm resource is required for.</summary>
+        /// <summary>
+        /// List of the move resources for which an arm resource is required for.<br><br>**The 'Get-AzResourceMoverRequiredForResources'
+        /// command is applicable for 'RegionToRegion' type move collections.<br><br>However, for move collections with moveType 'RegionToZone'
+        /// dependencies are automatically added to the move collection once 'Resolve-AzResourceMoverMoveCollectionDependency' is
+        /// executed. Please refer to 'Resolve-AzResourceMoverMoveCollectionDependency' command documentation for additional details.**
+        /// </summary>
         /// <param name="viaIdentity"></param>
         /// <param name="sourceId">The sourceId for which the api is invoked.</param>
         /// <param name="onOk">a delegate that is called when the remote service returns 200 (OK).</param>
@@ -2158,9 +2201,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ResourceMover
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        public async global::System.Threading.Tasks.Task MoveCollectionsListRequiredForViaIdentity(global::System.String viaIdentity, string sourceId, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.ResourceMover.Models.Api20210801.IRequiredForResourcesCollection>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.ResourceMover.Models.Api20210801.ICloudError>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.ResourceMover.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.ResourceMover.Runtime.ISendAsync sender)
+        public async global::System.Threading.Tasks.Task MoveCollectionsListRequiredForViaIdentity(global::System.String viaIdentity, string sourceId, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.ResourceMover.Models.Api20230801.IRequiredForResourcesCollection>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.ResourceMover.Models.Api20230801.ICloudError>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.ResourceMover.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.ResourceMover.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2021-08-01";
+            var apiVersion = @"2023-08-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -2214,7 +2257,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ResourceMover
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        internal async global::System.Threading.Tasks.Task MoveCollectionsListRequiredFor_Call(global::System.Net.Http.HttpRequestMessage request, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.ResourceMover.Models.Api20210801.IRequiredForResourcesCollection>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.ResourceMover.Models.Api20210801.ICloudError>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.ResourceMover.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.ResourceMover.Runtime.ISendAsync sender)
+        internal async global::System.Threading.Tasks.Task MoveCollectionsListRequiredFor_Call(global::System.Net.Http.HttpRequestMessage request, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.ResourceMover.Models.Api20230801.IRequiredForResourcesCollection>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.ResourceMover.Models.Api20230801.ICloudError>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.ResourceMover.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.ResourceMover.Runtime.ISendAsync sender)
         {
             using( NoSynchronizationContext )
             {
@@ -2232,13 +2275,13 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ResourceMover
                         case global::System.Net.HttpStatusCode.OK:
                         {
                             await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.ResourceMover.Runtime.Events.BeforeResponseDispatch, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
-                            await onOk(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.ResourceMover.Models.Api20210801.RequiredForResourcesCollection.FromJson(Microsoft.Azure.PowerShell.Cmdlets.ResourceMover.Runtime.Json.JsonNode.Parse(body.Result)) ));
+                            await onOk(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.ResourceMover.Models.Api20230801.RequiredForResourcesCollection.FromJson(Microsoft.Azure.PowerShell.Cmdlets.ResourceMover.Runtime.Json.JsonNode.Parse(body.Result)) ));
                             break;
                         }
                         default:
                         {
                             await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.ResourceMover.Runtime.Events.BeforeResponseDispatch, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
-                            await onDefault(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.ResourceMover.Models.Api20210801.CloudError.FromJson(Microsoft.Azure.PowerShell.Cmdlets.ResourceMover.Runtime.Json.JsonNode.Parse(body.Result)) ));
+                            await onDefault(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.ResourceMover.Models.Api20230801.CloudError.FromJson(Microsoft.Azure.PowerShell.Cmdlets.ResourceMover.Runtime.Json.JsonNode.Parse(body.Result)) ));
                             break;
                         }
                     }
@@ -2280,7 +2323,8 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ResourceMover
         /// Initiates prepare for the set of resources included in the request body. The prepare operation is on the moveResources
         /// that are in the moveState 'PreparePending' or 'PrepareFailed', on a successful completion the moveResource moveState do
         /// a transition to MovePending. To aid the user to prerequisite the operation the client can call operation with validateOnly
-        /// property set to true.
+        /// property set to true.<br><br>**The 'Invoke-AzResourceMoverPrepare' command is not applicable on move collections with
+        /// moveType 'RegionToZone' since prepare is not a valid operation for region to zone move scenario.**
         /// </summary>
         /// <param name="subscriptionId">The Subscription ID.</param>
         /// <param name="resourceGroupName">The Resource Group Name.</param>
@@ -2294,9 +2338,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ResourceMover
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        public async global::System.Threading.Tasks.Task MoveCollectionsPrepare(string subscriptionId, string resourceGroupName, string moveCollectionName, Microsoft.Azure.PowerShell.Cmdlets.ResourceMover.Models.Api20210801.IPrepareRequest body, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.ResourceMover.Models.Api20210801.IOperationStatus>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.ResourceMover.Models.Api20210801.ICloudError>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.ResourceMover.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.ResourceMover.Runtime.ISendAsync sender)
+        public async global::System.Threading.Tasks.Task MoveCollectionsPrepare(string subscriptionId, string resourceGroupName, string moveCollectionName, Microsoft.Azure.PowerShell.Cmdlets.ResourceMover.Models.Api20230801.IPrepareRequest body, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.ResourceMover.Models.Api20230801.IOperationStatus>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.ResourceMover.Models.Api20230801.ICloudError>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.ResourceMover.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.ResourceMover.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2021-08-01";
+            var apiVersion = @"2023-08-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -2334,7 +2378,8 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ResourceMover
         /// Initiates prepare for the set of resources included in the request body. The prepare operation is on the moveResources
         /// that are in the moveState 'PreparePending' or 'PrepareFailed', on a successful completion the moveResource moveState do
         /// a transition to MovePending. To aid the user to prerequisite the operation the client can call operation with validateOnly
-        /// property set to true.
+        /// property set to true.<br><br>**The 'Invoke-AzResourceMoverPrepare' command is not applicable on move collections with
+        /// moveType 'RegionToZone' since prepare is not a valid operation for region to zone move scenario.**
         /// </summary>
         /// <param name="viaIdentity"></param>
         /// <param name="body">Defines the request body for initiate prepare operation.</param>
@@ -2346,9 +2391,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ResourceMover
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        public async global::System.Threading.Tasks.Task MoveCollectionsPrepareViaIdentity(global::System.String viaIdentity, Microsoft.Azure.PowerShell.Cmdlets.ResourceMover.Models.Api20210801.IPrepareRequest body, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.ResourceMover.Models.Api20210801.IOperationStatus>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.ResourceMover.Models.Api20210801.ICloudError>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.ResourceMover.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.ResourceMover.Runtime.ISendAsync sender)
+        public async global::System.Threading.Tasks.Task MoveCollectionsPrepareViaIdentity(global::System.String viaIdentity, Microsoft.Azure.PowerShell.Cmdlets.ResourceMover.Models.Api20230801.IPrepareRequest body, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.ResourceMover.Models.Api20230801.IOperationStatus>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.ResourceMover.Models.Api20230801.ICloudError>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.ResourceMover.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.ResourceMover.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2021-08-01";
+            var apiVersion = @"2023-08-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -2404,7 +2449,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ResourceMover
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        internal async global::System.Threading.Tasks.Task MoveCollectionsPrepare_Call(global::System.Net.Http.HttpRequestMessage request, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.ResourceMover.Models.Api20210801.IOperationStatus>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.ResourceMover.Models.Api20210801.ICloudError>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.ResourceMover.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.ResourceMover.Runtime.ISendAsync sender)
+        internal async global::System.Threading.Tasks.Task MoveCollectionsPrepare_Call(global::System.Net.Http.HttpRequestMessage request, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.ResourceMover.Models.Api20230801.IOperationStatus>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.ResourceMover.Models.Api20230801.ICloudError>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.ResourceMover.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.ResourceMover.Runtime.ISendAsync sender)
         {
             using( NoSynchronizationContext )
             {
@@ -2473,7 +2518,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ResourceMover
                                     switch( state?.ToString()?.ToLower() )
                                     {
                                       case "failed":
-                                          //error = true;
+                                          error = true;
                                           break;
                                       case "succeeded":
                                       case "canceled":
@@ -2491,7 +2536,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ResourceMover
                                 // we really don't want to do anything special.
                             }
                             if (error) {
-                                throw new Microsoft.Azure.PowerShell.Cmdlets.ResourceMover.Runtime.UndeclaredResponseException(_response);
+                                await onDefault(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.ResourceMover.Models.Api20230801.CloudError.FromJson(Microsoft.Azure.PowerShell.Cmdlets.ResourceMover.Runtime.Json.JsonNode.Parse(body.Result)) ));
                             }
                         }
 
@@ -2509,6 +2554,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ResourceMover
 
                         // make the final call
                         _response = await sender.SendAsync(request,  eventListener);
+                        await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.ResourceMover.Runtime.Events.Polling, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
                         break;
                     }
                     var _contentType = _response.Content.Headers.ContentType?.MediaType;
@@ -2518,13 +2564,13 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ResourceMover
                         case global::System.Net.HttpStatusCode.OK:
                         {
                             await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.ResourceMover.Runtime.Events.BeforeResponseDispatch, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
-                            await onOk(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.ResourceMover.Models.Api20210801.OperationStatus.FromJson(Microsoft.Azure.PowerShell.Cmdlets.ResourceMover.Runtime.Json.JsonNode.Parse(body.Result)) ));
+                            await onOk(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.ResourceMover.Models.Api20230801.OperationStatus.FromJson(Microsoft.Azure.PowerShell.Cmdlets.ResourceMover.Runtime.Json.JsonNode.Parse(body.Result)) ));
                             break;
                         }
                         default:
                         {
                             await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.ResourceMover.Runtime.Events.BeforeResponseDispatch, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
-                            await onDefault(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.ResourceMover.Models.Api20210801.CloudError.FromJson(Microsoft.Azure.PowerShell.Cmdlets.ResourceMover.Runtime.Json.JsonNode.Parse(body.Result)) ));
+                            await onDefault(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.ResourceMover.Models.Api20230801.CloudError.FromJson(Microsoft.Azure.PowerShell.Cmdlets.ResourceMover.Runtime.Json.JsonNode.Parse(body.Result)) ));
                             break;
                         }
                     }
@@ -2551,7 +2597,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ResourceMover
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        internal async global::System.Threading.Tasks.Task MoveCollectionsPrepare_Validate(string subscriptionId, string resourceGroupName, string moveCollectionName, Microsoft.Azure.PowerShell.Cmdlets.ResourceMover.Models.Api20210801.IPrepareRequest body, Microsoft.Azure.PowerShell.Cmdlets.ResourceMover.Runtime.IEventListener eventListener)
+        internal async global::System.Threading.Tasks.Task MoveCollectionsPrepare_Validate(string subscriptionId, string resourceGroupName, string moveCollectionName, Microsoft.Azure.PowerShell.Cmdlets.ResourceMover.Models.Api20230801.IPrepareRequest body, Microsoft.Azure.PowerShell.Cmdlets.ResourceMover.Runtime.IEventListener eventListener)
         {
             using( NoSynchronizationContext )
             {
@@ -2564,7 +2610,12 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ResourceMover
         }
 
         /// <summary>
-        /// Computes, resolves and validate the dependencies of the moveResources in the move collection.
+        /// Computes, resolves and validate the dependencies of the moveResources in the move collection.<br><br>**Please note that
+        /// for 'RegionToRegion' type move collections the 'Resolve-AzResourceMoverMoveCollectionDependency' command just resolves
+        /// the move collection, the user is required to identify the list of unresolved dependencies using 'Get-AzResourceMoverUnresolvedDependency'
+        /// and then manually add them to the move collection using 'Add-AzResourceMoverMoveResource' command.**<br><br>**However,
+        /// for moveType 'RegionToZone' this command finds the required dependencies and automatically adds them to the move collection
+        /// in a single step.**
         /// </summary>
         /// <param name="subscriptionId">The Subscription ID.</param>
         /// <param name="resourceGroupName">The Resource Group Name.</param>
@@ -2577,9 +2628,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ResourceMover
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        public async global::System.Threading.Tasks.Task MoveCollectionsResolveDependencies(string subscriptionId, string resourceGroupName, string moveCollectionName, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.ResourceMover.Models.Api20210801.IOperationStatus>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.ResourceMover.Models.Api20210801.ICloudError>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.ResourceMover.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.ResourceMover.Runtime.ISendAsync sender)
+        public async global::System.Threading.Tasks.Task MoveCollectionsResolveDependencies(string subscriptionId, string resourceGroupName, string moveCollectionName, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.ResourceMover.Models.Api20230801.IOperationStatus>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.ResourceMover.Models.Api20230801.ICloudError>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.ResourceMover.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.ResourceMover.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2021-08-01";
+            var apiVersion = @"2023-08-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -2610,7 +2661,12 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ResourceMover
         }
 
         /// <summary>
-        /// Computes, resolves and validate the dependencies of the moveResources in the move collection.
+        /// Computes, resolves and validate the dependencies of the moveResources in the move collection.<br><br>**Please note that
+        /// for 'RegionToRegion' type move collections the 'Resolve-AzResourceMoverMoveCollectionDependency' command just resolves
+        /// the move collection, the user is required to identify the list of unresolved dependencies using 'Get-AzResourceMoverUnresolvedDependency'
+        /// and then manually add them to the move collection using 'Add-AzResourceMoverMoveResource' command.**<br><br>**However,
+        /// for moveType 'RegionToZone' this command finds the required dependencies and automatically adds them to the move collection
+        /// in a single step.**
         /// </summary>
         /// <param name="viaIdentity"></param>
         /// <param name="onOk">a delegate that is called when the remote service returns 200 (OK).</param>
@@ -2621,9 +2677,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ResourceMover
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        public async global::System.Threading.Tasks.Task MoveCollectionsResolveDependenciesViaIdentity(global::System.String viaIdentity, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.ResourceMover.Models.Api20210801.IOperationStatus>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.ResourceMover.Models.Api20210801.ICloudError>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.ResourceMover.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.ResourceMover.Runtime.ISendAsync sender)
+        public async global::System.Threading.Tasks.Task MoveCollectionsResolveDependenciesViaIdentity(global::System.String viaIdentity, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.ResourceMover.Models.Api20230801.IOperationStatus>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.ResourceMover.Models.Api20230801.ICloudError>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.ResourceMover.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.ResourceMover.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2021-08-01";
+            var apiVersion = @"2023-08-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -2675,7 +2731,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ResourceMover
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        internal async global::System.Threading.Tasks.Task MoveCollectionsResolveDependencies_Call(global::System.Net.Http.HttpRequestMessage request, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.ResourceMover.Models.Api20210801.IOperationStatus>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.ResourceMover.Models.Api20210801.ICloudError>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.ResourceMover.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.ResourceMover.Runtime.ISendAsync sender)
+        internal async global::System.Threading.Tasks.Task MoveCollectionsResolveDependencies_Call(global::System.Net.Http.HttpRequestMessage request, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.ResourceMover.Models.Api20230801.IOperationStatus>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.ResourceMover.Models.Api20230801.ICloudError>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.ResourceMover.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.ResourceMover.Runtime.ISendAsync sender)
         {
             using( NoSynchronizationContext )
             {
@@ -2744,7 +2800,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ResourceMover
                                     switch( state?.ToString()?.ToLower() )
                                     {
                                       case "failed":
-                                          //error = true;
+                                          error = true;
                                           break;
                                       case "succeeded":
                                       case "canceled":
@@ -2762,7 +2818,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ResourceMover
                                 // we really don't want to do anything special.
                             }
                             if (error) {
-                                throw new Microsoft.Azure.PowerShell.Cmdlets.ResourceMover.Runtime.UndeclaredResponseException(_response);
+                                await onDefault(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.ResourceMover.Models.Api20230801.CloudError.FromJson(Microsoft.Azure.PowerShell.Cmdlets.ResourceMover.Runtime.Json.JsonNode.Parse(body.Result)) ));
                             }
                         }
 
@@ -2780,6 +2836,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ResourceMover
 
                         // make the final call
                         _response = await sender.SendAsync(request,  eventListener);
+                        await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.ResourceMover.Runtime.Events.Polling, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
                         break;
                     }
                     var _contentType = _response.Content.Headers.ContentType?.MediaType;
@@ -2789,13 +2846,13 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ResourceMover
                         case global::System.Net.HttpStatusCode.OK:
                         {
                             await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.ResourceMover.Runtime.Events.BeforeResponseDispatch, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
-                            await onOk(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.ResourceMover.Models.Api20210801.OperationStatus.FromJson(Microsoft.Azure.PowerShell.Cmdlets.ResourceMover.Runtime.Json.JsonNode.Parse(body.Result)) ));
+                            await onOk(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.ResourceMover.Models.Api20230801.OperationStatus.FromJson(Microsoft.Azure.PowerShell.Cmdlets.ResourceMover.Runtime.Json.JsonNode.Parse(body.Result)) ));
                             break;
                         }
                         default:
                         {
                             await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.ResourceMover.Runtime.Events.BeforeResponseDispatch, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
-                            await onDefault(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.ResourceMover.Models.Api20210801.CloudError.FromJson(Microsoft.Azure.PowerShell.Cmdlets.ResourceMover.Runtime.Json.JsonNode.Parse(body.Result)) ));
+                            await onDefault(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.ResourceMover.Models.Api20230801.CloudError.FromJson(Microsoft.Azure.PowerShell.Cmdlets.ResourceMover.Runtime.Json.JsonNode.Parse(body.Result)) ));
                             break;
                         }
                     }
@@ -2844,9 +2901,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ResourceMover
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        public async global::System.Threading.Tasks.Task MoveCollectionsUpdate(string subscriptionId, string resourceGroupName, string moveCollectionName, Microsoft.Azure.PowerShell.Cmdlets.ResourceMover.Models.Api20210801.IUpdateMoveCollectionRequest body, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.ResourceMover.Models.Api20210801.IMoveCollection>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.ResourceMover.Models.Api20210801.ICloudError>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.ResourceMover.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.ResourceMover.Runtime.ISendAsync sender)
+        public async global::System.Threading.Tasks.Task MoveCollectionsUpdate(string subscriptionId, string resourceGroupName, string moveCollectionName, Microsoft.Azure.PowerShell.Cmdlets.ResourceMover.Models.Api20230801.IUpdateMoveCollectionRequest body, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.ResourceMover.Models.Api20230801.IMoveCollection>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.ResourceMover.Models.Api20230801.ICloudError>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.ResourceMover.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.ResourceMover.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2021-08-01";
+            var apiVersion = @"2023-08-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -2890,9 +2947,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ResourceMover
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        public async global::System.Threading.Tasks.Task MoveCollectionsUpdateViaIdentity(global::System.String viaIdentity, Microsoft.Azure.PowerShell.Cmdlets.ResourceMover.Models.Api20210801.IUpdateMoveCollectionRequest body, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.ResourceMover.Models.Api20210801.IMoveCollection>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.ResourceMover.Models.Api20210801.ICloudError>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.ResourceMover.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.ResourceMover.Runtime.ISendAsync sender)
+        public async global::System.Threading.Tasks.Task MoveCollectionsUpdateViaIdentity(global::System.String viaIdentity, Microsoft.Azure.PowerShell.Cmdlets.ResourceMover.Models.Api20230801.IUpdateMoveCollectionRequest body, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.ResourceMover.Models.Api20230801.IMoveCollection>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.ResourceMover.Models.Api20230801.ICloudError>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.ResourceMover.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.ResourceMover.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2021-08-01";
+            var apiVersion = @"2023-08-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -2947,7 +3004,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ResourceMover
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        internal async global::System.Threading.Tasks.Task MoveCollectionsUpdate_Call(global::System.Net.Http.HttpRequestMessage request, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.ResourceMover.Models.Api20210801.IMoveCollection>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.ResourceMover.Models.Api20210801.ICloudError>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.ResourceMover.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.ResourceMover.Runtime.ISendAsync sender)
+        internal async global::System.Threading.Tasks.Task MoveCollectionsUpdate_Call(global::System.Net.Http.HttpRequestMessage request, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.ResourceMover.Models.Api20230801.IMoveCollection>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.ResourceMover.Models.Api20230801.ICloudError>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.ResourceMover.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.ResourceMover.Runtime.ISendAsync sender)
         {
             using( NoSynchronizationContext )
             {
@@ -2965,13 +3022,13 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ResourceMover
                         case global::System.Net.HttpStatusCode.OK:
                         {
                             await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.ResourceMover.Runtime.Events.BeforeResponseDispatch, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
-                            await onOk(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.ResourceMover.Models.Api20210801.MoveCollection.FromJson(Microsoft.Azure.PowerShell.Cmdlets.ResourceMover.Runtime.Json.JsonNode.Parse(body.Result)) ));
+                            await onOk(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.ResourceMover.Models.Api20230801.MoveCollection.FromJson(Microsoft.Azure.PowerShell.Cmdlets.ResourceMover.Runtime.Json.JsonNode.Parse(body.Result)) ));
                             break;
                         }
                         default:
                         {
                             await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.ResourceMover.Runtime.Events.BeforeResponseDispatch, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
-                            await onDefault(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.ResourceMover.Models.Api20210801.CloudError.FromJson(Microsoft.Azure.PowerShell.Cmdlets.ResourceMover.Runtime.Json.JsonNode.Parse(body.Result)) ));
+                            await onDefault(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.ResourceMover.Models.Api20230801.CloudError.FromJson(Microsoft.Azure.PowerShell.Cmdlets.ResourceMover.Runtime.Json.JsonNode.Parse(body.Result)) ));
                             break;
                         }
                     }
@@ -2998,7 +3055,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ResourceMover
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        internal async global::System.Threading.Tasks.Task MoveCollectionsUpdate_Validate(string subscriptionId, string resourceGroupName, string moveCollectionName, Microsoft.Azure.PowerShell.Cmdlets.ResourceMover.Models.Api20210801.IUpdateMoveCollectionRequest body, Microsoft.Azure.PowerShell.Cmdlets.ResourceMover.Runtime.IEventListener eventListener)
+        internal async global::System.Threading.Tasks.Task MoveCollectionsUpdate_Validate(string subscriptionId, string resourceGroupName, string moveCollectionName, Microsoft.Azure.PowerShell.Cmdlets.ResourceMover.Models.Api20230801.IUpdateMoveCollectionRequest body, Microsoft.Azure.PowerShell.Cmdlets.ResourceMover.Runtime.IEventListener eventListener)
         {
             using( NoSynchronizationContext )
             {
@@ -3010,7 +3067,10 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ResourceMover
             }
         }
 
-        /// <summary>Creates or updates a Move Resource in the move collection.</summary>
+        /// <summary>
+        /// Creates or updates a Move Resource in the move collection.<br><br>**The 'Add-AzResourceMoverMoveResource' command remains
+        /// same for both 'RegionToRegion' and 'RegionToZone' type move collections.**
+        /// </summary>
         /// <param name="subscriptionId">The Subscription ID.</param>
         /// <param name="resourceGroupName">The Resource Group Name.</param>
         /// <param name="moveCollectionName">The Move Collection Name.</param>
@@ -3024,9 +3084,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ResourceMover
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        public async global::System.Threading.Tasks.Task MoveResourcesCreate(string subscriptionId, string resourceGroupName, string moveCollectionName, string moveResourceName, Microsoft.Azure.PowerShell.Cmdlets.ResourceMover.Models.Api20210801.IMoveResource body, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.ResourceMover.Models.Api20210801.IMoveResource>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.ResourceMover.Models.Api20210801.ICloudError>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.ResourceMover.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.ResourceMover.Runtime.ISendAsync sender)
+        public async global::System.Threading.Tasks.Task MoveResourcesCreate(string subscriptionId, string resourceGroupName, string moveCollectionName, string moveResourceName, Microsoft.Azure.PowerShell.Cmdlets.ResourceMover.Models.Api20230801.IMoveResource body, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.ResourceMover.Models.Api20230801.IMoveResource>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.ResourceMover.Models.Api20230801.ICloudError>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.ResourceMover.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.ResourceMover.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2021-08-01";
+            var apiVersion = @"2023-08-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -3061,7 +3121,10 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ResourceMover
             }
         }
 
-        /// <summary>Creates or updates a Move Resource in the move collection.</summary>
+        /// <summary>
+        /// Creates or updates a Move Resource in the move collection.<br><br>**The 'Add-AzResourceMoverMoveResource' command remains
+        /// same for both 'RegionToRegion' and 'RegionToZone' type move collections.**
+        /// </summary>
         /// <param name="viaIdentity"></param>
         /// <param name="body">Defines the move resource.</param>
         /// <param name="onOk">a delegate that is called when the remote service returns 200 (OK).</param>
@@ -3072,9 +3135,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ResourceMover
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        public async global::System.Threading.Tasks.Task MoveResourcesCreateViaIdentity(global::System.String viaIdentity, Microsoft.Azure.PowerShell.Cmdlets.ResourceMover.Models.Api20210801.IMoveResource body, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.ResourceMover.Models.Api20210801.IMoveResource>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.ResourceMover.Models.Api20210801.ICloudError>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.ResourceMover.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.ResourceMover.Runtime.ISendAsync sender)
+        public async global::System.Threading.Tasks.Task MoveResourcesCreateViaIdentity(global::System.String viaIdentity, Microsoft.Azure.PowerShell.Cmdlets.ResourceMover.Models.Api20230801.IMoveResource body, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.ResourceMover.Models.Api20230801.IMoveResource>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.ResourceMover.Models.Api20230801.ICloudError>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.ResourceMover.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.ResourceMover.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2021-08-01";
+            var apiVersion = @"2023-08-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -3132,7 +3195,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ResourceMover
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        internal async global::System.Threading.Tasks.Task MoveResourcesCreate_Call(global::System.Net.Http.HttpRequestMessage request, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.ResourceMover.Models.Api20210801.IMoveResource>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.ResourceMover.Models.Api20210801.ICloudError>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.ResourceMover.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.ResourceMover.Runtime.ISendAsync sender)
+        internal async global::System.Threading.Tasks.Task MoveResourcesCreate_Call(global::System.Net.Http.HttpRequestMessage request, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.ResourceMover.Models.Api20230801.IMoveResource>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.ResourceMover.Models.Api20230801.ICloudError>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.ResourceMover.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.ResourceMover.Runtime.ISendAsync sender)
         {
             using( NoSynchronizationContext )
             {
@@ -3200,7 +3263,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ResourceMover
                                     switch( state?.ToString()?.ToLower() )
                                     {
                                       case "failed":
-                                          //error = true;
+                                          error = true;
                                           break;
                                       case "succeeded":
                                       case "canceled":
@@ -3218,7 +3281,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ResourceMover
                                 // we really don't want to do anything special.
                             }
                             if (error) {
-                                throw new Microsoft.Azure.PowerShell.Cmdlets.ResourceMover.Runtime.UndeclaredResponseException(_response);
+                                await onDefault(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.ResourceMover.Models.Api20230801.CloudError.FromJson(Microsoft.Azure.PowerShell.Cmdlets.ResourceMover.Runtime.Json.JsonNode.Parse(body.Result)) ));
                             }
                         }
 
@@ -3236,6 +3299,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ResourceMover
 
                         // make the final call
                         _response = await sender.SendAsync(request,  eventListener);
+                        await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.ResourceMover.Runtime.Events.Polling, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
                         break;
                     }
                     var _contentType = _response.Content.Headers.ContentType?.MediaType;
@@ -3245,13 +3309,13 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ResourceMover
                         case global::System.Net.HttpStatusCode.OK:
                         {
                             await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.ResourceMover.Runtime.Events.BeforeResponseDispatch, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
-                            await onOk(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.ResourceMover.Models.Api20210801.MoveResource.FromJson(Microsoft.Azure.PowerShell.Cmdlets.ResourceMover.Runtime.Json.JsonNode.Parse(body.Result)) ));
+                            await onOk(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.ResourceMover.Models.Api20230801.MoveResource.FromJson(Microsoft.Azure.PowerShell.Cmdlets.ResourceMover.Runtime.Json.JsonNode.Parse(body.Result)) ));
                             break;
                         }
                         default:
                         {
                             await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.ResourceMover.Runtime.Events.BeforeResponseDispatch, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
-                            await onDefault(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.ResourceMover.Models.Api20210801.CloudError.FromJson(Microsoft.Azure.PowerShell.Cmdlets.ResourceMover.Runtime.Json.JsonNode.Parse(body.Result)) ));
+                            await onDefault(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.ResourceMover.Models.Api20230801.CloudError.FromJson(Microsoft.Azure.PowerShell.Cmdlets.ResourceMover.Runtime.Json.JsonNode.Parse(body.Result)) ));
                             break;
                         }
                     }
@@ -3279,7 +3343,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ResourceMover
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        internal async global::System.Threading.Tasks.Task MoveResourcesCreate_Validate(string subscriptionId, string resourceGroupName, string moveCollectionName, string moveResourceName, Microsoft.Azure.PowerShell.Cmdlets.ResourceMover.Models.Api20210801.IMoveResource body, Microsoft.Azure.PowerShell.Cmdlets.ResourceMover.Runtime.IEventListener eventListener)
+        internal async global::System.Threading.Tasks.Task MoveResourcesCreate_Validate(string subscriptionId, string resourceGroupName, string moveCollectionName, string moveResourceName, Microsoft.Azure.PowerShell.Cmdlets.ResourceMover.Models.Api20230801.IMoveResource body, Microsoft.Azure.PowerShell.Cmdlets.ResourceMover.Runtime.IEventListener eventListener)
         {
             using( NoSynchronizationContext )
             {
@@ -3292,7 +3356,10 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ResourceMover
             }
         }
 
-        /// <summary>Deletes a Move Resource from the move collection.</summary>
+        /// <summary>
+        /// Deletes a Move Resource from the move collection.<br><br>**The 'Remove-AzResourceMoverMoveResource' command remains same
+        /// for both 'RegionToRegion' and 'RegionToZone' type move collections.**
+        /// </summary>
         /// <param name="subscriptionId">The Subscription ID.</param>
         /// <param name="resourceGroupName">The Resource Group Name.</param>
         /// <param name="moveCollectionName">The Move Collection Name.</param>
@@ -3306,9 +3373,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ResourceMover
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        public async global::System.Threading.Tasks.Task MoveResourcesDelete(string subscriptionId, string resourceGroupName, string moveCollectionName, string moveResourceName, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.ResourceMover.Models.Api20210801.IOperationStatus>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task> onNoContent, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.ResourceMover.Models.Api20210801.ICloudError>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.ResourceMover.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.ResourceMover.Runtime.ISendAsync sender)
+        public async global::System.Threading.Tasks.Task MoveResourcesDelete(string subscriptionId, string resourceGroupName, string moveCollectionName, string moveResourceName, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.ResourceMover.Models.Api20230801.IOperationStatus>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task> onNoContent, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.ResourceMover.Models.Api20230801.ICloudError>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.ResourceMover.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.ResourceMover.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2021-08-01";
+            var apiVersion = @"2023-08-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -3339,7 +3406,10 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ResourceMover
             }
         }
 
-        /// <summary>Deletes a Move Resource from the move collection.</summary>
+        /// <summary>
+        /// Deletes a Move Resource from the move collection.<br><br>**The 'Remove-AzResourceMoverMoveResource' command remains same
+        /// for both 'RegionToRegion' and 'RegionToZone' type move collections.**
+        /// </summary>
         /// <param name="viaIdentity"></param>
         /// <param name="onOk">a delegate that is called when the remote service returns 200 (OK).</param>
         /// <param name="onNoContent">a delegate that is called when the remote service returns 204 (NoContent).</param>
@@ -3350,9 +3420,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ResourceMover
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        public async global::System.Threading.Tasks.Task MoveResourcesDeleteViaIdentity(global::System.String viaIdentity, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.ResourceMover.Models.Api20210801.IOperationStatus>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task> onNoContent, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.ResourceMover.Models.Api20210801.ICloudError>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.ResourceMover.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.ResourceMover.Runtime.ISendAsync sender)
+        public async global::System.Threading.Tasks.Task MoveResourcesDeleteViaIdentity(global::System.String viaIdentity, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.ResourceMover.Models.Api20230801.IOperationStatus>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task> onNoContent, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.ResourceMover.Models.Api20230801.ICloudError>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.ResourceMover.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.ResourceMover.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2021-08-01";
+            var apiVersion = @"2023-08-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -3407,7 +3477,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ResourceMover
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        internal async global::System.Threading.Tasks.Task MoveResourcesDelete_Call(global::System.Net.Http.HttpRequestMessage request, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.ResourceMover.Models.Api20210801.IOperationStatus>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task> onNoContent, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.ResourceMover.Models.Api20210801.ICloudError>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.ResourceMover.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.ResourceMover.Runtime.ISendAsync sender)
+        internal async global::System.Threading.Tasks.Task MoveResourcesDelete_Call(global::System.Net.Http.HttpRequestMessage request, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.ResourceMover.Models.Api20230801.IOperationStatus>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task> onNoContent, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.ResourceMover.Models.Api20230801.ICloudError>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.ResourceMover.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.ResourceMover.Runtime.ISendAsync sender)
         {
             using( NoSynchronizationContext )
             {
@@ -3476,7 +3546,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ResourceMover
                                     switch( state?.ToString()?.ToLower() )
                                     {
                                       case "failed":
-                                          //error = true;
+                                          error = true;
                                           break;
                                       case "succeeded":
                                       case "canceled":
@@ -3494,7 +3564,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ResourceMover
                                 // we really don't want to do anything special.
                             }
                             if (error) {
-                                throw new Microsoft.Azure.PowerShell.Cmdlets.ResourceMover.Runtime.UndeclaredResponseException(_response);
+                                await onDefault(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.ResourceMover.Models.Api20230801.CloudError.FromJson(Microsoft.Azure.PowerShell.Cmdlets.ResourceMover.Runtime.Json.JsonNode.Parse(body.Result)) ));
                             }
                         }
 
@@ -3512,6 +3582,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ResourceMover
 
                         // make the final call
                         _response = await sender.SendAsync(request,  eventListener);
+                        await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.ResourceMover.Runtime.Events.Polling, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
                         break;
                     }
                     var _contentType = _response.Content.Headers.ContentType?.MediaType;
@@ -3521,7 +3592,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ResourceMover
                         case global::System.Net.HttpStatusCode.OK:
                         {
                             await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.ResourceMover.Runtime.Events.BeforeResponseDispatch, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
-                            await onOk(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.ResourceMover.Models.Api20210801.OperationStatus.FromJson(Microsoft.Azure.PowerShell.Cmdlets.ResourceMover.Runtime.Json.JsonNode.Parse(body.Result)) ));
+                            await onOk(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.ResourceMover.Models.Api20230801.OperationStatus.FromJson(Microsoft.Azure.PowerShell.Cmdlets.ResourceMover.Runtime.Json.JsonNode.Parse(body.Result)) ));
                             break;
                         }
                         case global::System.Net.HttpStatusCode.NoContent:
@@ -3533,7 +3604,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ResourceMover
                         default:
                         {
                             await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.ResourceMover.Runtime.Events.BeforeResponseDispatch, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
-                            await onDefault(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.ResourceMover.Models.Api20210801.CloudError.FromJson(Microsoft.Azure.PowerShell.Cmdlets.ResourceMover.Runtime.Json.JsonNode.Parse(body.Result)) ));
+                            await onDefault(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.ResourceMover.Models.Api20230801.CloudError.FromJson(Microsoft.Azure.PowerShell.Cmdlets.ResourceMover.Runtime.Json.JsonNode.Parse(body.Result)) ));
                             break;
                         }
                     }
@@ -3571,7 +3642,10 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ResourceMover
             }
         }
 
-        /// <summary>Gets the Move Resource.</summary>
+        /// <summary>
+        /// Gets the Move Resource.<br><br>**The 'Get-AzResourceMoverMoveResource' command remains same for both 'RegionToRegion'
+        /// and 'RegionToZone' type move collections.**
+        /// </summary>
         /// <param name="subscriptionId">The Subscription ID.</param>
         /// <param name="resourceGroupName">The Resource Group Name.</param>
         /// <param name="moveCollectionName">The Move Collection Name.</param>
@@ -3584,9 +3658,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ResourceMover
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        public async global::System.Threading.Tasks.Task MoveResourcesGet(string subscriptionId, string resourceGroupName, string moveCollectionName, string moveResourceName, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.ResourceMover.Models.Api20210801.IMoveResource>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.ResourceMover.Models.Api20210801.ICloudError>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.ResourceMover.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.ResourceMover.Runtime.ISendAsync sender)
+        public async global::System.Threading.Tasks.Task MoveResourcesGet(string subscriptionId, string resourceGroupName, string moveCollectionName, string moveResourceName, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.ResourceMover.Models.Api20230801.IMoveResource>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.ResourceMover.Models.Api20230801.ICloudError>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.ResourceMover.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.ResourceMover.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2021-08-01";
+            var apiVersion = @"2023-08-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -3617,7 +3691,10 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ResourceMover
             }
         }
 
-        /// <summary>Gets the Move Resource.</summary>
+        /// <summary>
+        /// Gets the Move Resource.<br><br>**The 'Get-AzResourceMoverMoveResource' command remains same for both 'RegionToRegion'
+        /// and 'RegionToZone' type move collections.**
+        /// </summary>
         /// <param name="viaIdentity"></param>
         /// <param name="onOk">a delegate that is called when the remote service returns 200 (OK).</param>
         /// <param name="onDefault">a delegate that is called when the remote service returns default (any response code not handled
@@ -3627,9 +3704,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ResourceMover
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        public async global::System.Threading.Tasks.Task MoveResourcesGetViaIdentity(global::System.String viaIdentity, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.ResourceMover.Models.Api20210801.IMoveResource>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.ResourceMover.Models.Api20210801.ICloudError>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.ResourceMover.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.ResourceMover.Runtime.ISendAsync sender)
+        public async global::System.Threading.Tasks.Task MoveResourcesGetViaIdentity(global::System.String viaIdentity, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.ResourceMover.Models.Api20230801.IMoveResource>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.ResourceMover.Models.Api20230801.ICloudError>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.ResourceMover.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.ResourceMover.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2021-08-01";
+            var apiVersion = @"2023-08-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -3683,7 +3760,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ResourceMover
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        internal async global::System.Threading.Tasks.Task MoveResourcesGet_Call(global::System.Net.Http.HttpRequestMessage request, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.ResourceMover.Models.Api20210801.IMoveResource>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.ResourceMover.Models.Api20210801.ICloudError>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.ResourceMover.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.ResourceMover.Runtime.ISendAsync sender)
+        internal async global::System.Threading.Tasks.Task MoveResourcesGet_Call(global::System.Net.Http.HttpRequestMessage request, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.ResourceMover.Models.Api20230801.IMoveResource>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.ResourceMover.Models.Api20230801.ICloudError>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.ResourceMover.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.ResourceMover.Runtime.ISendAsync sender)
         {
             using( NoSynchronizationContext )
             {
@@ -3701,13 +3778,13 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ResourceMover
                         case global::System.Net.HttpStatusCode.OK:
                         {
                             await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.ResourceMover.Runtime.Events.BeforeResponseDispatch, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
-                            await onOk(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.ResourceMover.Models.Api20210801.MoveResource.FromJson(Microsoft.Azure.PowerShell.Cmdlets.ResourceMover.Runtime.Json.JsonNode.Parse(body.Result)) ));
+                            await onOk(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.ResourceMover.Models.Api20230801.MoveResource.FromJson(Microsoft.Azure.PowerShell.Cmdlets.ResourceMover.Runtime.Json.JsonNode.Parse(body.Result)) ));
                             break;
                         }
                         default:
                         {
                             await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.ResourceMover.Runtime.Events.BeforeResponseDispatch, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
-                            await onDefault(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.ResourceMover.Models.Api20210801.CloudError.FromJson(Microsoft.Azure.PowerShell.Cmdlets.ResourceMover.Runtime.Json.JsonNode.Parse(body.Result)) ));
+                            await onDefault(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.ResourceMover.Models.Api20230801.CloudError.FromJson(Microsoft.Azure.PowerShell.Cmdlets.ResourceMover.Runtime.Json.JsonNode.Parse(body.Result)) ));
                             break;
                         }
                     }
@@ -3759,9 +3836,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ResourceMover
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        public async global::System.Threading.Tasks.Task MoveResourcesList(string subscriptionId, string resourceGroupName, string moveCollectionName, string Filter, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.ResourceMover.Models.Api20210801.IMoveResourceCollection>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.ResourceMover.Models.Api20210801.ICloudError>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.ResourceMover.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.ResourceMover.Runtime.ISendAsync sender)
+        public async global::System.Threading.Tasks.Task MoveResourcesList(string subscriptionId, string resourceGroupName, string moveCollectionName, string Filter, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.ResourceMover.Models.Api20230801.IMoveResourceCollection>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.ResourceMover.Models.Api20230801.ICloudError>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.ResourceMover.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.ResourceMover.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2021-08-01";
+            var apiVersion = @"2023-08-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -3805,9 +3882,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ResourceMover
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        public async global::System.Threading.Tasks.Task MoveResourcesListViaIdentity(global::System.String viaIdentity, string Filter, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.ResourceMover.Models.Api20210801.IMoveResourceCollection>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.ResourceMover.Models.Api20210801.ICloudError>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.ResourceMover.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.ResourceMover.Runtime.ISendAsync sender)
+        public async global::System.Threading.Tasks.Task MoveResourcesListViaIdentity(global::System.String viaIdentity, string Filter, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.ResourceMover.Models.Api20230801.IMoveResourceCollection>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.ResourceMover.Models.Api20230801.ICloudError>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.ResourceMover.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.ResourceMover.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2021-08-01";
+            var apiVersion = @"2023-08-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -3861,7 +3938,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ResourceMover
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        internal async global::System.Threading.Tasks.Task MoveResourcesList_Call(global::System.Net.Http.HttpRequestMessage request, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.ResourceMover.Models.Api20210801.IMoveResourceCollection>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.ResourceMover.Models.Api20210801.ICloudError>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.ResourceMover.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.ResourceMover.Runtime.ISendAsync sender)
+        internal async global::System.Threading.Tasks.Task MoveResourcesList_Call(global::System.Net.Http.HttpRequestMessage request, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.ResourceMover.Models.Api20230801.IMoveResourceCollection>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.ResourceMover.Models.Api20230801.ICloudError>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.ResourceMover.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.ResourceMover.Runtime.ISendAsync sender)
         {
             using( NoSynchronizationContext )
             {
@@ -3879,13 +3956,13 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ResourceMover
                         case global::System.Net.HttpStatusCode.OK:
                         {
                             await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.ResourceMover.Runtime.Events.BeforeResponseDispatch, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
-                            await onOk(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.ResourceMover.Models.Api20210801.MoveResourceCollection.FromJson(Microsoft.Azure.PowerShell.Cmdlets.ResourceMover.Runtime.Json.JsonNode.Parse(body.Result)) ));
+                            await onOk(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.ResourceMover.Models.Api20230801.MoveResourceCollection.FromJson(Microsoft.Azure.PowerShell.Cmdlets.ResourceMover.Runtime.Json.JsonNode.Parse(body.Result)) ));
                             break;
                         }
                         default:
                         {
                             await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.ResourceMover.Runtime.Events.BeforeResponseDispatch, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
-                            await onDefault(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.ResourceMover.Models.Api20210801.CloudError.FromJson(Microsoft.Azure.PowerShell.Cmdlets.ResourceMover.Runtime.Json.JsonNode.Parse(body.Result)) ));
+                            await onDefault(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.ResourceMover.Models.Api20230801.CloudError.FromJson(Microsoft.Azure.PowerShell.Cmdlets.ResourceMover.Runtime.Json.JsonNode.Parse(body.Result)) ));
                             break;
                         }
                     }
@@ -3932,9 +4009,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ResourceMover
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        public async global::System.Threading.Tasks.Task OperationsDiscoveryGet(global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.ResourceMover.Models.Api20210801.IOperationsDiscoveryCollection>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.ResourceMover.Models.Api20210801.ICloudError>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.ResourceMover.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.ResourceMover.Runtime.ISendAsync sender)
+        public async global::System.Threading.Tasks.Task OperationsDiscoveryGet(global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.ResourceMover.Models.Api20230801.IOperationsDiscoveryCollection>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.ResourceMover.Models.Api20230801.ICloudError>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.ResourceMover.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.ResourceMover.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2021-08-01";
+            var apiVersion = @"2023-08-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -3967,9 +4044,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ResourceMover
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        public async global::System.Threading.Tasks.Task OperationsDiscoveryGetViaIdentity(global::System.String viaIdentity, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.ResourceMover.Models.Api20210801.IOperationsDiscoveryCollection>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.ResourceMover.Models.Api20210801.ICloudError>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.ResourceMover.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.ResourceMover.Runtime.ISendAsync sender)
+        public async global::System.Threading.Tasks.Task OperationsDiscoveryGetViaIdentity(global::System.String viaIdentity, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.ResourceMover.Models.Api20230801.IOperationsDiscoveryCollection>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.ResourceMover.Models.Api20230801.ICloudError>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.ResourceMover.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.ResourceMover.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2021-08-01";
+            var apiVersion = @"2023-08-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -4012,7 +4089,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ResourceMover
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        internal async global::System.Threading.Tasks.Task OperationsDiscoveryGet_Call(global::System.Net.Http.HttpRequestMessage request, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.ResourceMover.Models.Api20210801.IOperationsDiscoveryCollection>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.ResourceMover.Models.Api20210801.ICloudError>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.ResourceMover.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.ResourceMover.Runtime.ISendAsync sender)
+        internal async global::System.Threading.Tasks.Task OperationsDiscoveryGet_Call(global::System.Net.Http.HttpRequestMessage request, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.ResourceMover.Models.Api20230801.IOperationsDiscoveryCollection>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.ResourceMover.Models.Api20230801.ICloudError>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.ResourceMover.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.ResourceMover.Runtime.ISendAsync sender)
         {
             using( NoSynchronizationContext )
             {
@@ -4030,13 +4107,13 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ResourceMover
                         case global::System.Net.HttpStatusCode.OK:
                         {
                             await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.ResourceMover.Runtime.Events.BeforeResponseDispatch, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
-                            await onOk(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.ResourceMover.Models.Api20210801.OperationsDiscoveryCollection.FromJson(Microsoft.Azure.PowerShell.Cmdlets.ResourceMover.Runtime.Json.JsonNode.Parse(body.Result)) ));
+                            await onOk(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.ResourceMover.Models.Api20230801.OperationsDiscoveryCollection.FromJson(Microsoft.Azure.PowerShell.Cmdlets.ResourceMover.Runtime.Json.JsonNode.Parse(body.Result)) ));
                             break;
                         }
                         default:
                         {
                             await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.ResourceMover.Runtime.Events.BeforeResponseDispatch, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
-                            await onDefault(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.ResourceMover.Models.Api20210801.CloudError.FromJson(Microsoft.Azure.PowerShell.Cmdlets.ResourceMover.Runtime.Json.JsonNode.Parse(body.Result)) ));
+                            await onDefault(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.ResourceMover.Models.Api20230801.CloudError.FromJson(Microsoft.Azure.PowerShell.Cmdlets.ResourceMover.Runtime.Json.JsonNode.Parse(body.Result)) ));
                             break;
                         }
                     }
@@ -4067,7 +4144,12 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ResourceMover
             }
         }
 
-        /// <summary>Gets a list of unresolved dependencies.</summary>
+        /// <summary>
+        /// Gets a list of unresolved dependencies.<br><br>**The 'Get-AzResourceMoverUnresolvedDependency' command is applicable for
+        /// 'RegionToRegion' type move collections.**<br><br>**However, for move collections with moveType 'RegionToZone' dependencies
+        /// are automatically added to the move collection once 'Resolve-AzResourceMoverMoveCollectionDependency' is executed. Please
+        /// refer to 'Resolve-AzResourceMoverMoveCollectionDependency' command documentation for additional details.**
+        /// </summary>
         /// <param name="subscriptionId">The Subscription ID.</param>
         /// <param name="resourceGroupName">The Resource Group Name.</param>
         /// <param name="moveCollectionName">The Move Collection Name.</param>
@@ -4082,9 +4164,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ResourceMover
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        public async global::System.Threading.Tasks.Task UnresolvedDependenciesGet(string subscriptionId, string resourceGroupName, string moveCollectionName, Microsoft.Azure.PowerShell.Cmdlets.ResourceMover.Support.DependencyLevel? dependencyLevel, string Orderby, string Filter, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.ResourceMover.Models.Api20210801.IUnresolvedDependencyCollection>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.ResourceMover.Models.Api20210801.ICloudError>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.ResourceMover.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.ResourceMover.Runtime.ISendAsync sender)
+        public async global::System.Threading.Tasks.Task UnresolvedDependenciesGet(string subscriptionId, string resourceGroupName, string moveCollectionName, Microsoft.Azure.PowerShell.Cmdlets.ResourceMover.Support.DependencyLevel? dependencyLevel, string Orderby, string Filter, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.ResourceMover.Models.Api20230801.IUnresolvedDependencyCollection>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.ResourceMover.Models.Api20230801.ICloudError>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.ResourceMover.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.ResourceMover.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2021-08-01";
+            var apiVersion = @"2023-08-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -4120,7 +4202,12 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ResourceMover
             }
         }
 
-        /// <summary>Gets a list of unresolved dependencies.</summary>
+        /// <summary>
+        /// Gets a list of unresolved dependencies.<br><br>**The 'Get-AzResourceMoverUnresolvedDependency' command is applicable for
+        /// 'RegionToRegion' type move collections.**<br><br>**However, for move collections with moveType 'RegionToZone' dependencies
+        /// are automatically added to the move collection once 'Resolve-AzResourceMoverMoveCollectionDependency' is executed. Please
+        /// refer to 'Resolve-AzResourceMoverMoveCollectionDependency' command documentation for additional details.**
+        /// </summary>
         /// <param name="viaIdentity"></param>
         /// <param name="dependencyLevel">Defines the dependency level.</param>
         /// <param name="Orderby">OData order by query option. For example, you can use $orderby=Count desc.</param>
@@ -4133,9 +4220,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ResourceMover
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        public async global::System.Threading.Tasks.Task UnresolvedDependenciesGetViaIdentity(global::System.String viaIdentity, Microsoft.Azure.PowerShell.Cmdlets.ResourceMover.Support.DependencyLevel? dependencyLevel, string Orderby, string Filter, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.ResourceMover.Models.Api20210801.IUnresolvedDependencyCollection>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.ResourceMover.Models.Api20210801.ICloudError>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.ResourceMover.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.ResourceMover.Runtime.ISendAsync sender)
+        public async global::System.Threading.Tasks.Task UnresolvedDependenciesGetViaIdentity(global::System.String viaIdentity, Microsoft.Azure.PowerShell.Cmdlets.ResourceMover.Support.DependencyLevel? dependencyLevel, string Orderby, string Filter, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.ResourceMover.Models.Api20230801.IUnresolvedDependencyCollection>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.ResourceMover.Models.Api20230801.ICloudError>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.ResourceMover.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.ResourceMover.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2021-08-01";
+            var apiVersion = @"2023-08-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -4193,7 +4280,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ResourceMover
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        internal async global::System.Threading.Tasks.Task UnresolvedDependenciesGet_Call(global::System.Net.Http.HttpRequestMessage request, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.ResourceMover.Models.Api20210801.IUnresolvedDependencyCollection>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.ResourceMover.Models.Api20210801.ICloudError>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.ResourceMover.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.ResourceMover.Runtime.ISendAsync sender)
+        internal async global::System.Threading.Tasks.Task UnresolvedDependenciesGet_Call(global::System.Net.Http.HttpRequestMessage request, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.ResourceMover.Models.Api20230801.IUnresolvedDependencyCollection>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.ResourceMover.Models.Api20230801.ICloudError>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.ResourceMover.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.ResourceMover.Runtime.ISendAsync sender)
         {
             using( NoSynchronizationContext )
             {
@@ -4211,13 +4298,13 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ResourceMover
                         case global::System.Net.HttpStatusCode.OK:
                         {
                             await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.ResourceMover.Runtime.Events.BeforeResponseDispatch, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
-                            await onOk(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.ResourceMover.Models.Api20210801.UnresolvedDependencyCollection.FromJson(Microsoft.Azure.PowerShell.Cmdlets.ResourceMover.Runtime.Json.JsonNode.Parse(body.Result)) ));
+                            await onOk(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.ResourceMover.Models.Api20230801.UnresolvedDependencyCollection.FromJson(Microsoft.Azure.PowerShell.Cmdlets.ResourceMover.Runtime.Json.JsonNode.Parse(body.Result)) ));
                             break;
                         }
                         default:
                         {
                             await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.ResourceMover.Runtime.Events.BeforeResponseDispatch, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
-                            await onDefault(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.ResourceMover.Models.Api20210801.CloudError.FromJson(Microsoft.Azure.PowerShell.Cmdlets.ResourceMover.Runtime.Json.JsonNode.Parse(body.Result)) ));
+                            await onDefault(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.ResourceMover.Models.Api20230801.CloudError.FromJson(Microsoft.Azure.PowerShell.Cmdlets.ResourceMover.Runtime.Json.JsonNode.Parse(body.Result)) ));
                             break;
                         }
                     }

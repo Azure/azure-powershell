@@ -83,7 +83,7 @@ namespace Microsoft.Azure.Commands.Sql.InstanceActiveDirectoryOnlyAuthentication
         /// <returns>The upserted Azure SQL Managed Insance AD Only Authentication</returns>
         internal AzureSqlInstanceActiveDirectoryOnlyAuthenticationModel UpsertAzureADOnlyAuthenticaion(string resourceGroup, string InstanceName, AzureSqlInstanceActiveDirectoryOnlyAuthenticationModel model)
         {
-            var resp = Communicator.CreateOrUpdate(resourceGroup, InstanceName, new ManagedInstanceAzureADOnlyAuthentication(model.AzureADOnlyAuthentication));
+            var resp = Communicator.CreateOrUpdate(resourceGroup, InstanceName, new ManagedInstanceAzureADOnlyAuthentication(azureAdOnlyAuthentication: model.AzureADOnlyAuthentication));
 
             return CreateInstanceActiveDirectoryOnlyAuthenticationModelFromResponse(resourceGroup, InstanceName, resp);
         }
@@ -103,7 +103,7 @@ namespace Microsoft.Azure.Commands.Sql.InstanceActiveDirectoryOnlyAuthentication
 
                 model.ResourceGroupName = resourceGroup;
                 model.InstanceName = InstanceName;
-                model.AzureADOnlyAuthentication = serverAzureADOnlyAuthentication.AzureADOnlyAuthentication;
+                model.AzureADOnlyAuthentication = serverAzureADOnlyAuthentication.AzureAdOnlyAuthentication.Value;
                 return model;
             }
 

@@ -8,8 +8,10 @@ schema: 2.0.0
 # New-AzSelfHelpDiagnostic
 
 ## SYNOPSIS
-Diagnostics tells you precisely the root cause of the issue and how to address it.
-You can get diagnostics once you discover and identify the relevant solution for your Azure issue.\<br/\>\<br/\> You can create diagnostics using the ‘solutionId’  from Solution Discovery API response and ‘additionalParameters’ \<br/\>\<br/\> \<b\>Note: \</b\>‘requiredParameterSets’ from Solutions Discovery API response must be passed via ‘additionalParameters’ as an input to Diagnostics API
+Creates a diagnostic for the specific resource using solutionId and requiredInputs* from discovery solutions.
+\<br/\>Diagnostics tells you precisely the root cause of the issue and the steps to address it.
+You can get diagnostics once you discover the relevant solution for your Azure issue.
+\<br/\>\<br/\> \<b\>Note: \</b\> requiredInputs’ from Discovery solutions response must be passed via ‘additionalParameters’ as an input to Diagnostics API.
 
 ## SYNTAX
 
@@ -20,8 +22,10 @@ New-AzSelfHelpDiagnostic -Scope <String> -SResourceName <String> [-GlobalParamet
 ```
 
 ## DESCRIPTION
-Diagnostics tells you precisely the root cause of the issue and how to address it.
-You can get diagnostics once you discover and identify the relevant solution for your Azure issue.\<br/\>\<br/\> You can create diagnostics using the ‘solutionId’  from Solution Discovery API response and ‘additionalParameters’ \<br/\>\<br/\> \<b\>Note: \</b\>‘requiredParameterSets’ from Solutions Discovery API response must be passed via ‘additionalParameters’ as an input to Diagnostics API
+Creates a diagnostic for the specific resource using solutionId and requiredInputs* from discovery solutions.
+\<br/\>Diagnostics tells you precisely the root cause of the issue and the steps to address it.
+You can get diagnostics once you discover the relevant solution for your Azure issue.
+\<br/\>\<br/\> \<b\>Note: \</b\> requiredInputs’ from Discovery solutions response must be passed via ‘additionalParameters’ as an input to Diagnostics API.
 
 ## EXAMPLES
 
@@ -94,7 +98,7 @@ SolutionIds that are needed to be invoked.
 To construct, see NOTES section for INSIGHT properties and create a hash table.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.SelfHelp.Models.Api20230601.IDiagnosticInvocation[]
+Type: Microsoft.Azure.PowerShell.Cmdlets.SelfHelp.Models.Api20230901Preview.IDiagnosticInvocation[]
 Parameter Sets: (All)
 Aliases:
 
@@ -188,21 +192,9 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.SelfHelp.Models.Api20230601.IDiagnosticResource
+### Microsoft.Azure.PowerShell.Cmdlets.SelfHelp.Models.Api20230901Preview.IDiagnosticResource
 
 ## NOTES
-
-ALIASES
-
-COMPLEX PARAMETER PROPERTIES
-
-To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
-
-
-`INSIGHT <IDiagnosticInvocation[]>`: SolutionIds that are needed to be invoked.
-  - `[AdditionalParameter <IDiagnosticInvocationAdditionalParameters>]`: Additional parameters required to invoke the solutionId.
-    - `[(Any) <String>]`: This indicates any property can be added to this object.
-  - `[SolutionId <String>]`: Solution Id to invoke.
 
 ## RELATED LINKS
 

@@ -18,8 +18,30 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
-* Added warning messages for an upcoming breaking change that the output Permissions will be changed to a string when creating and updating a Queue access policy
+* Supported customer initiated migration
+* Supported creationTime filter in Blob Inventory
+    - `New-AzStorageBlobInventoryPolicyRule`
+* Upgraded Azure.Core to 1.35.0.
+* [Breaking Change] Removed prefix '?' of the created SAS token
+    - `New-AzStorageBlobSasToken`
+    - `New-AzStorageContainerSasToken`
+    - `New-AzStorageAccountSasToken`
+    - `New-AzStorageFileSasToken`
+    - `New-AzStorageShareSasToken`
+    - `New-AzStorageQueueSasToken`
+    - `New-AzStorageTableSasToken`
+* Migrated following Azure Queue dataplane cmdlets from 'Microsoft.Azure.Storage.Queue 11.2.2' to 'Azure.Storage.Queues 12.16.0'
+    - `New-AzStorageQueue`
+    - `Get-AzStorageQueue`
+    - `Remove-AzStorageQueue`
     - `New-AzStorageQueueStoredAccessPolicy`
+    - `Get-AzStorageQueueStoredAccessPolicy`
+    - `Set-AzStorageQueueStoredAccessPolicy`
+    - `Remove-AzStorageQueueStoredAccessPolicy`
+
+## Version 5.10.1
+* Added warning messages for an upcoming breaking change that the output Permissions will be changed to a string when creating and updating a Queue access policy
+    - `Get-AzStorageQueueStoredAccessPolicy`
     - `Set-AzStorageQueueStoredAccessPolicy`
 
 ## Version 5.10.0

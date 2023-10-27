@@ -200,7 +200,14 @@ namespace Microsoft.Azure.Commands.ServiceFabric.Commands
 
             if (this.InstanceCount.HasValue)
             {
-                currentNodeType.VmInstanceCount = this.InstanceCount.Value;
+                if (currentNodeType.Sku != null)
+                {
+                    currentNodeType.Sku.Capacity = this.InstanceCount.Value;
+                }
+                else
+                {
+                    currentNodeType.VmInstanceCount = this.InstanceCount.Value;
+                }
             }
 
             if (this.ApplicationStartPort.HasValue && this.ApplicationEndPort.HasValue)

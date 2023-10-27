@@ -346,10 +346,10 @@ namespace Microsoft.Azure.PowerShell.Tools.AzPredictor
 
             // There must be two parts (verb and noun) to be a valid PowerShell commands.
             // The first part must be an approved PowerShell verb and the second part must begin with "Az".
-            if (commandParts?.Length == 2 )
+            if (commandParts?.Length == 2)
             {
                 return AzPredictorConstants.ApprovedPowerShellVerbs.Contains(commandParts[0])
-                    && commandParts[1].StartsWith(AzPredictorConstants.AzCommandMoniker, StringComparison.OrdinalIgnoreCase);
+                    && AzPredictorConstants.AzNounPattern.IsMatch(commandParts[1]);
             }
 
             return false;

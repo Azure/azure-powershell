@@ -24,7 +24,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Runtime.PowerShell
     public bool UseExpandedFormat { get; set; }
 
     private const string ModelNamespace = @"Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Models";
-    private const string SupportNamespace = @"Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Support";
+    private const string SupportNamespace = @"${$project.supportNamespace.fullName}";
 
     protected override void ProcessRecord()
     {

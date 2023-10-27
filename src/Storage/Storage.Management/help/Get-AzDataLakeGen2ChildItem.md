@@ -26,11 +26,11 @@ This cmdlet only works if Hierarchical Namespace is enabled for the Storage acco
 
 ### Example 1: List the direct sub items from a Filesystem
 ```powershell
-Get-AzDataLakeGen2ChildItem -FileSystem "filesystem1" 
+Get-AzDataLakeGen2ChildItem -FileSystem "filesystem1"
 ```
 
 ```output
-   FileSystem Name: filesystem1
+FileSystem Name: filesystem1
 
 Path                 IsDirectory  Length          LastModified         Permissions  Owner                Group               
 ----                 -----------  ------          ------------         -----------  -----                -----               
@@ -46,7 +46,7 @@ Get-AzDataLakeGen2ChildItem -FileSystem "filesystem1" -Path "dir1/" -Recurse -Fe
 ```
 
 ```output
-   FileSystem Name: filesystem1
+FileSystem Name: filesystem1
 
 Path                 IsDirectory  Length          LastModified         Permissions  Owner                Group               
 ----                 -----------  ------          ------------         -----------  -----                -----               
@@ -190,7 +190,7 @@ Accept wildcard characters: False
 ```
 
 ### -OutputUserPrincipalName
-If speicify this parameter, the user identity values returned in the owner and group fields of each list entry will be transformed from Azure Active Directory Object IDs to User Principal Names. If not speicify this parameter, the values will be returned as Azure Active Directory Object IDs. Note that group and application Object IDs are not translated because they do not have unique friendly names.
+If speicify this parameter, the user identity values returned in the owner and group fields of each list entry will be transformed from Microsoft Entra Object IDs to User Principal Names. If not speicify this parameter, the values will be returned as Microsoft Entra Object IDs. Note that group and application Object IDs are not translated because they do not have unique friendly names.
 
 ```yaml
 Type: System.Management.Automation.SwitchParameter
@@ -237,7 +237,7 @@ Accept wildcard characters: False
 ```
 
 ### CommonParameters
-This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable. For more information, see about_CommonParameters (http://go.microsoft.com/fwlink/?LinkID=113216).
+This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable. For more information, see [about_CommonParameters](http://go.microsoft.com/fwlink/?LinkID=113216).
 
 ## INPUTS
 

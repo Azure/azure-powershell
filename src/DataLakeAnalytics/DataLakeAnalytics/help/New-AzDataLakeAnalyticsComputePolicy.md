@@ -8,7 +8,7 @@ schema: 2.0.0
 # New-AzDataLakeAnalyticsComputePolicy
 
 ## SYNOPSIS
-Creates a Data Lake Analytics compute policy rule for a specific AAD entity.
+Creates a Data Lake Analytics compute policy rule for a specific Microsoft Entra entity.
 
 ## SYNTAX
 
@@ -19,7 +19,7 @@ New-AzDataLakeAnalyticsComputePolicy [-ResourceGroupName <String>] [-Account] <S
 ```
 
 ## DESCRIPTION
-The **New-AzDataLakeAnalyticsComputePolicy** creates the specified compute policy rule for a specific AAD entity in an Azure Data Lake Analytics account.
+The **New-AzDataLakeAnalyticsComputePolicy** creates the specified compute policy rule for a specific Microsoft Entra entity in an Azure Data Lake Analytics account.
 
 ## EXAMPLES
 
@@ -117,7 +117,7 @@ Accept wildcard characters: False
 ```
 
 ### -ObjectId
-The Azure Active Directory object id for the user or group to apply the policy to.
+The Microsoft Entra object id for the user or group to apply the policy to.
 
 ```yaml
 Type: System.Guid
@@ -132,7 +132,7 @@ Accept wildcard characters: False
 ```
 
 ### -ObjectType
-The Azure Active Directory object type for the object ID passed in.
+The Microsoft Entra object type for the object ID passed in.
 
 ```yaml
 Type: System.String

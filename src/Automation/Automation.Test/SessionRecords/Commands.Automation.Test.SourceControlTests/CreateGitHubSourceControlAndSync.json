@@ -142,7 +142,7 @@
       "RequestUri": "/subscriptions/422b6c61-95b0-4213-b3be-7282315df71d/resourceGroups/to-delete-01/providers/Microsoft.Automation/automationAccounts/fbs-aa-02/sourceControls/AASourceControl-GitHub?api-version=2020-01-13-preview",
       "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvNDIyYjZjNjEtOTViMC00MjEzLWIzYmUtNzI4MjMxNWRmNzFkL3Jlc291cmNlR3JvdXBzL3RvLWRlbGV0ZS0wMS9wcm92aWRlcnMvTWljcm9zb2Z0LkF1dG9tYXRpb24vYXV0b21hdGlvbkFjY291bnRzL2Zicy1hYS0wMi9zb3VyY2VDb250cm9scy9BQVNvdXJjZUNvbnRyb2wtR2l0SHViP2FwaS12ZXJzaW9uPTIwMjAtMDEtMTMtcHJldmlldw==",
       "RequestMethod": "PUT",
-      "RequestBody": "{\r\n  \"properties\": {\r\n    \"repoUrl\": \"https://github.com/sharma224/SwaggerAndCmdletsTests.git\",\r\n    \"branch\": \"ps\",\r\n    \"folderPath\": \"/\",\r\n    \"autoSync\": false,\r\n    \"publishRunbook\": false,\r\n    \"sourceType\": \"GitHub\",\r\n    \"securityToken\": {\r\n      \"accessToken\": \"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\",\r\n      \"tokenType\": \"PersonalAccessToken\"\r\n    }\r\n  }\r\n}",
+      "RequestBody": "{\r\n  \"properties\": {\r\n    \"repoUrl\": \"https://github.com/sharma224/SwaggerAndCmdletsTests.git\",\r\n    \"branch\": \"ps\",\r\n    \"folderPath\": \"/\",\r\n    \"autoSync\": false,\r\n    \"publishRunbook\": false,\r\n    \"sourceType\": \"GitHub\",\r\n    \"securityToken\": {\r\n      \"accessToken\": \"Sanitized\",\r\n      \"tokenType\": \"PersonalAccessToken\"\r\n    }\r\n  }\r\n}",
       "RequestHeaders": {
         "x-ms-client-request-id": [
           "2cc13ffe-c497-481a-884c-e9d5951cdc5e"

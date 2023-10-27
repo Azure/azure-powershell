@@ -155,12 +155,12 @@ namespace Microsoft.Azure.Commands.Management.Storage
                         }
                         break;
                     case IpRuleStringParameterSet:
-                        if (storageACL.IpRules == null)
-                            storageACL.IpRules = new List<IPRule>();
+                        if (storageACL.IPRules == null)
+                            storageACL.IPRules = new List<IPRule>();
                         foreach (string s in IPAddressOrRange)
                         {
                             IPRule rule = new IPRule(s);
-                            if (!RemoveIpRule(storageACL.IpRules, rule))
+                            if (!RemoveIpRule(storageACL.IPRules, rule))
                                 throw new ArgumentOutOfRangeException("IPAddressOrRange", String.Format("Can't remove IpRule with specific IPAddressOrRange since not exist: {0}", rule.IPAddressOrRange));
                         }
                         break;
@@ -184,11 +184,11 @@ namespace Microsoft.Azure.Commands.Management.Storage
                         }
                         break;
                     case IpRuleObjectParameterSet:
-                        if (storageACL.IpRules == null)
-                            storageACL.IpRules = new List<IPRule>();
+                        if (storageACL.IPRules == null)
+                            storageACL.IPRules = new List<IPRule>();
                         foreach (PSIpRule rule in IPRule)
                         {
-                            if (!RemoveIpRule(storageACL.IpRules, PSNetworkRuleSet.ParseStorageNetworkRuleIPRule(rule)))
+                            if (!RemoveIpRule(storageACL.IPRules, PSNetworkRuleSet.ParseStorageNetworkRuleIPRule(rule)))
                                 throw new ArgumentOutOfRangeException("IPRule", String.Format("Can't remove IpRule with specific IPAddressOrRange since not exist: {0}", rule.IPAddressOrRange));
                         }
                         break;

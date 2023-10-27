@@ -72,7 +72,7 @@ namespace Microsoft.Azure.Commands.Sql.Server.Cmdlet
         public string ServerVersion { get; set; }
 
         [Parameter(Mandatory = false,
-            HelpMessage = "Generate and assign an Azure Active Directory Identity for this server for use with key management services like Azure KeyVault.")]
+            HelpMessage = "Generate and assign a Microsoft Entra Identity for this server for use with key management services like Azure KeyVault.")]
         public SwitchParameter AssignIdentity { get; set; }
 
         [Parameter(Mandatory = false,
@@ -140,14 +140,14 @@ namespace Microsoft.Azure.Commands.Sql.Server.Cmdlet
         /// Azure Active Directory display name for a user or group
         /// </summary>
         [Parameter(Mandatory = false,
-            HelpMessage = "Specifies the display name of the user, group or application which is the Azure Active Directory administrator for the server. This display name must exist in the active directory associated with the current subscription.")]
+            HelpMessage = "Specifies the display name of the user, group or application which is the Microsoft Entra administrator for the server. This display name must exist in the active directory associated with the current subscription.")]
         public string ExternalAdminName { get; set; }
 
         /// <summary>
         /// Azure Active Directory object id for a user, group or application
         /// </summary>
         [Parameter(Mandatory = false,
-            HelpMessage = "Specifies the object ID of the user, group or application which is the Azure Active Directory administrator.")]
+            HelpMessage = "Specifies the object ID of the user, group or application which is the Microsoft Entra administrator.")]
         public Guid? ExternalAdminSID { get; set; }
 
         /// <summary>
@@ -234,7 +234,7 @@ namespace Microsoft.Azure.Commands.Sql.Server.Cmdlet
                 FederatedClientId = this.FederatedClientId,
                 Administrators = new Management.Sql.Models.ServerExternalAdministrator()
                 {
-                    AzureADOnlyAuthentication = (this.EnableActiveDirectoryOnlyAuthentication.IsPresent) ? (bool?)true : null,
+                    AzureAdOnlyAuthentication = (this.EnableActiveDirectoryOnlyAuthentication.IsPresent) ? (bool?)true : null,
                     Login = this.ExternalAdminName,
                     Sid = this.ExternalAdminSID
                 }              

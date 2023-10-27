@@ -40,7 +40,7 @@ namespace Microsoft.Azure.Commands.Management.Search.Models
             }
             return new PSNetworkRuleSet()
             {
-                IpRules = v.IpRules.Select(ipRule => (PSIpRule)ipRule).ToList()
+                IpRules = v.IPRules.Select(ipRule => (PSIpRule)ipRule).ToList()
             };
         }
 
