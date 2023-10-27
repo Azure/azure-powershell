@@ -19,7 +19,11 @@
 --->
 
 ## Upcoming Release
+* Added DefaultOutboundAccess parameter on subnet creation
+* Updated cmdlet `New-AzPublicIpPrefix` and `New-PublicIpAddress` to require Location parameter
+* Updated cmdlet `New-AzLoadBalancerBackendAddressPool` to support managed IP based backend
 * Added cmdlet `New-AzSaaSNetworkVirtualAppliance` for creating a NetworkVirtualAppliance of SaaS type.
+* Added control knobs to virtual network gateways and ExpressRoute gateways as well to cmdlets operating on those.
 * Updated cmdlets to add Hostnames property for Application gateway Listener Configuration
 	- `Set-AzApplicationGatewayListener`
 	- `Add-AzApplicationGatewayListener`

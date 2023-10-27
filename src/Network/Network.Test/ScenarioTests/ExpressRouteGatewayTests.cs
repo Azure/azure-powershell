@@ -12,20 +12,26 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
+using System;
+using Microsoft.Azure.Commands.Network.Test.ScenarioTests;
+using Microsoft.WindowsAzure.Commands.ScenarioTest;
+using Xunit;
 
-namespace Microsoft.Azure.Commands.Network.Models
+namespace Commands.Network.Test.ScenarioTests
 {
-    public class PSNetworkVirtualApplianceDelegationProperties
+    public class ExpressRouteGatewayTests : NetworkTestRunner
     {
-
-        public string ServiceName { get; set; }
-        public string ProvisioningState { get; set; }
-
-        public PSNetworkVirtualApplianceDelegationProperties() { }
-
-        public PSNetworkVirtualApplianceDelegationProperties(string serviceName)
+        public ExpressRouteGatewayTests(Xunit.Abstractions.ITestOutputHelper output)
+            : base(output)
         {
-            this.ServiceName = serviceName;
+        }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        [Trait(Category.Owner, NrpTeamAlias.exrdev)]
+        public void TestExpressRouteGatewayUpdatesForDifferentCustomerBlockTrafficPreferences()
+        {
+            TestRunner.RunTestScript("Test-ExpressRouteGatewayForDifferentCustomerBlockTrafficPreferences");
         }
     }
 }
