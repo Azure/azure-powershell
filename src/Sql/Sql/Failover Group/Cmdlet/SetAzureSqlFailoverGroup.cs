@@ -124,7 +124,7 @@ namespace Microsoft.Azure.Commands.Sql.FailoverGroup.Cmdlet
             string location = ModelAdapter.GetServerLocation(ResourceGroupName, ServerName);
             List<AzureSqlFailoverGroupModel> newEntity = new List<AzureSqlFailoverGroupModel>();
             AzureSqlFailoverGroupModel newModel = model.First();
-            bool isMultiSecondary = (newModel.PartnerServers != null && newModel.PartnerServers.Any() && newModel.PartnerServers.Count > 1);
+            bool isMultiSecondary = (newModel.PartnerServers != null && newModel.PartnerServers.Count > 1) || MyInvocation.BoundParameters.ContainsKey("PartnerServerList");
 
             FailoverPolicy effectivePolicy = FailoverPolicy;
             if (!MyInvocation.BoundParameters.ContainsKey("FailoverPolicy"))
@@ -171,7 +171,8 @@ namespace Microsoft.Azure.Commands.Sql.FailoverGroup.Cmdlet
         /// <returns>The input entity</returns>
         protected override IEnumerable<AzureSqlFailoverGroupModel> PersistChanges(IEnumerable<AzureSqlFailoverGroupModel> entity)
         {
-            bool useV2 = entity.First().PartnerServers.Count() > 1;
+            AzureSqlFailoverGroupModel model = entity.First();
+            bool useV2 = (model.PartnerServers != null && model.PartnerServers.Count > 1);
             return new List<AzureSqlFailoverGroupModel>() {
                 ModelAdapter.PatchUpdateFailoverGroup(entity.First(), useV2)
             };

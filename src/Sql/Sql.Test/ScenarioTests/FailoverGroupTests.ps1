@@ -430,7 +430,7 @@ function Test-FailoverGroupMultipleSecondaries()
 		$partnerServers = $server.ResourceId, $partnerServer.ResourceId
 
 		$fgName = Get-FailoverGroupName
-		$fg = New-AzSqlDatabaseFailoverGroup -ResourceGroupName $primaryServer.ResourceGroupName -ServerName $primaryServer.ServerName -PartnerServerName $partnerServer.ServerName -FailoverGroupName $fgName -FailoverPolicy Automatic -GracePeriodWithDataLossHours 1 -AllowReadOnlyFailoverToPrimary Enabled -PartnerServers $partnerServers -ReadOnlyEndpointTargetServer $partnerServer.ResourceId
-		Validate-FailoverGroup $primaryServer $partnerServer $fgName Primary Automatic 1 Enabled @() $fg
+		$fg = New-AzSqlDatabaseFailoverGroup -ResourceGroupName $primaryServer.ResourceGroupName -ServerName $primaryServer.ServerName -PartnerServerName $partnerServer.ServerName -FailoverGroupName $fgName -FailoverPolicy Automatic -GracePeriodWithDataLossHours 1 -AllowReadOnlyFailoverToPrimary Enabled -PartnerServerList $partnerServers -ReadOnlyEndpointTargetServer $partnerServer.ResourceId
+		Validate-FailoverGroup $primaryServer $server $fgName Primary Automatic 1 Enabled @() $fg
 	}
 }
