@@ -95,6 +95,37 @@ namespace Microsoft.Azure.Commands.Dns
         [ValidateLength(DnsRecordBase.CaaRecordMinLength, DnsRecordBase.CaaRecordMaxLength)]
         public string CaaValue { get; set; }
 
+        [Parameter(Mandatory = true, ValueFromPipelineByPropertyName = true, HelpMessage = "The key tag field of the DS record to add.", ParameterSetName = "DS")]
+        [ValidateNotNullOrEmpty]
+        public int KeyTag { get; set; }
+
+        [Parameter(Mandatory = true, ValueFromPipelineByPropertyName = true, HelpMessage = "The algorithm field of the DS record to add.", ParameterSetName = "DS")]
+        [ValidateNotNullOrEmpty]
+        public int Algorithm { get; set; }
+
+        [Parameter(Mandatory = true, ValueFromPipelineByPropertyName = true, HelpMessage = "The digest type field of the DS record to add.", ParameterSetName = "DS")]
+        [ValidateNotNullOrEmpty]
+        public int DigestType { get; set; }
+
+        [Parameter(Mandatory = true, ValueFromPipelineByPropertyName = true, HelpMessage = "The digest field of the DS record to add.", ParameterSetName = "DS")]
+        [ValidateNotNullOrEmpty]
+        public string Digest { get; set; }
+
+        [Parameter(Mandatory = true, ValueFromPipelineByPropertyName = true, HelpMessage = "The usage field of the TLSA record to add.", ParameterSetName = "TLSA")]
+        [ValidateNotNullOrEmpty]
+        public int Usage { get; set; }
+
+        [Parameter(Mandatory = true, ValueFromPipelineByPropertyName = true, HelpMessage = "The selector field of the TLSA record to add.", ParameterSetName = "TLSA")]
+        [ValidateNotNullOrEmpty]
+        public int Selector { get; set; }
+
+        [Parameter(Mandatory = true, ValueFromPipelineByPropertyName = true, HelpMessage = "The matching type field of the TLSA record to add.", ParameterSetName = "TLSA")]
+        [ValidateNotNullOrEmpty]
+        public int MatchingType { get; set; }
+
+        [Parameter(Mandatory = true, ValueFromPipelineByPropertyName = true, HelpMessage = "The certificate association data field of the TLSA record to add.", ParameterSetName = "TLSA")]
+        [ValidateNotNullOrEmpty]
+        public string CertificateAssociationData { get; set; }
 
         public override void ExecuteCmdlet()
         {
@@ -173,6 +204,16 @@ namespace Microsoft.Azure.Commands.Dns
                 case RecordType.CAA:
                     {
                         result.Records.Add(new CaaRecord { Flags = this.CaaFlags, Tag = this.CaaTag, Value = this.CaaValue});
+                        break;
+                    }
+                case RecordType.DS:
+                    {
+                        result.Records.Add(new DsRecord { KeyTag = this.KeyTag, Algorithm = this.Algorithm, DigestType = this.DigestType, Digest = this.Digest });
+                        break;
+                    }
+                case RecordType.TLSA:
+                    {
+                        result.Records.Add(new TlsaRecord { Usage = this.Usage, Selector = this.Selector, MatchingType = this.MatchingType, CertificateAssociationData = this.CertificateAssociationData });
                         break;
                     }
                 default:

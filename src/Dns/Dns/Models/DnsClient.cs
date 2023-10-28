@@ -18,7 +18,6 @@ using System.Collections.Generic;
 using System.Linq;
 using Microsoft.Azure.Commands.Common.Authentication;
 using Microsoft.Azure.Commands.Common.Authentication.Abstractions;
-using Microsoft.Azure.Commands.Common.Authentication.Models;
 using Microsoft.Azure.Commands.Dns.Extensions;
 using Microsoft.Azure.Commands.ResourceManager.Common.Tags;
 using Microsoft.Azure.Management.Dns;
@@ -44,7 +43,9 @@ namespace Microsoft.Azure.Commands.Dns.Models
             {RecordType.PTR, typeof (PtrRecord)},
             {RecordType.SRV, typeof (SrvRecord)},
             {RecordType.TXT, typeof (TxtRecord)},
-            {RecordType.CAA, typeof (CaaRecord)}
+            {RecordType.CAA, typeof (CaaRecord)},
+            {RecordType.DS, typeof (DsRecord)},
+            {RecordType.TLSA, typeof (TlsaRecord)},
         };
 
         public DnsClient(IAzureContext context)
@@ -213,7 +214,7 @@ namespace Microsoft.Azure.Commands.Dns.Models
             }
             else
             {
-                FillEmptyRecordsForType( properties, recordType);
+                FillEmptyRecordsForType(properties, recordType);
 
                 if (!string.IsNullOrEmpty(targetResourceId))
                 {
@@ -229,7 +230,7 @@ namespace Microsoft.Azure.Commands.Dns.Models
             switch (recordType)
             {
                 case RecordType.A:
-                    properties.ARecords = resourceRecords.Select(x => (Sdk.ARecord) (x as ARecord).ToMamlRecord()).ToList();
+                    properties.ARecords = resourceRecords.Select(x => (Sdk.ARecord)(x as ARecord).ToMamlRecord()).ToList();
                     break;
                 case RecordType.AAAA:
                     properties.AaaaRecords = resourceRecords.Select(x => (Sdk.AaaaRecord)(x as AaaaRecord).ToMamlRecord()).ToList();
@@ -240,7 +241,7 @@ namespace Microsoft.Azure.Commands.Dns.Models
                         throw new ArgumentException(ProjectResources.Error_AddRecordMultipleCnames);
                     }
 
-                    properties.CnameRecord = (Sdk.CnameRecord) resourceRecords[0].ToMamlRecord();
+                    properties.CnameRecord = (Sdk.CnameRecord)resourceRecords[0].ToMamlRecord();
                     break;
                 case RecordType.MX:
                     properties.MxRecords = resourceRecords.Select(x => (Sdk.MxRecord)(x as MxRecord).ToMamlRecord()).ToList();
@@ -258,10 +259,16 @@ namespace Microsoft.Azure.Commands.Dns.Models
                     properties.TxtRecords = resourceRecords.Select(x => (Sdk.TxtRecord)(x as TxtRecord).ToMamlRecord()).ToList();
                     break;
                 case RecordType.SOA:
-                    properties.SoaRecord = (Sdk.SoaRecord) resourceRecords[0].ToMamlRecord();
+                    properties.SoaRecord = (Sdk.SoaRecord)resourceRecords[0].ToMamlRecord();
                     break;
                 case RecordType.CAA:
                     properties.CaaRecords = resourceRecords.Select(x => (Sdk.CaaRecord)(x as CaaRecord).ToMamlRecord()).ToList();
+                    break;
+                case RecordType.DS:
+                    properties.DsRecords = resourceRecords.Select(x => (Sdk.DsRecord)(x as DsRecord).ToMamlRecord()).ToList();
+                    break;
+                case RecordType.TLSA:
+                    properties.TlsaRecords = resourceRecords.Select(x => (Sdk.TlsaRecord)(x as TlsaRecord).ToMamlRecord()).ToList();
                     break;
             }
         }
@@ -278,6 +285,8 @@ namespace Microsoft.Azure.Commands.Dns.Models
             properties.SrvRecords = recordType == RecordType.SRV ? new List<Management.Dns.Models.SrvRecord>() : null;
             properties.TxtRecords = recordType == RecordType.TXT ? new List<Management.Dns.Models.TxtRecord>() : null;
             properties.CaaRecords = recordType == RecordType.CAA ? new List<Management.Dns.Models.CaaRecord>() : null;
+            properties.DsRecords = recordType == RecordType.DS ? new List<Management.Dns.Models.DsRecord>() : null;
+            properties.TlsaRecords = recordType == RecordType.TLSA ? new List<Management.Dns.Models.TlsaRecord>() : null;
         }
 
         public DnsRecordSet UpdateDnsRecordSet(DnsRecordSet recordSet, bool overwrite)
@@ -332,6 +341,14 @@ namespace Microsoft.Azure.Commands.Dns.Models
                         recordSet.RecordType == RecordType.CAA
                             ? GetMamlRecords<CaaRecord, Management.Dns.Models.CaaRecord>(recordSet.Records)
                             : null,
+                    DsRecords =
+                        recordSet.RecordType == RecordType.DS
+                            ? GetMamlRecords<DsRecord, Management.Dns.Models.DsRecord>(recordSet.Records)
+                            : null,
+                    TlsaRecords =
+                        recordSet.RecordType == RecordType.TLSA
+                            ? GetMamlRecords<TlsaRecord, Management.Dns.Models.TlsaRecord>(recordSet.Records)
+                            : null
                 },
                 ifMatch: overwrite ? "*" : recordSet.Etag,
                 ifNoneMatch: null);
@@ -429,7 +446,7 @@ namespace Microsoft.Azure.Commands.Dns.Models
             // e.g. "/subscriptions/<guid>/resourceGroups/<rg>/providers/microsoft.dns/dnszones/<zone>/A/<recordset>"
             string recordTypeAsString = mamlRecordSet.Id.Split('/').Reverse().Skip(1).First();
 
-            RecordType recordType = (RecordType) Enum.Parse(typeof (RecordType), recordTypeAsString, ignoreCase: true);
+            RecordType recordType = (RecordType)Enum.Parse(typeof(RecordType), recordTypeAsString, ignoreCase: true);
 
             return new DnsRecordSet
             {
@@ -440,7 +457,7 @@ namespace Microsoft.Azure.Commands.Dns.Models
                 Records = GetPowerShellRecords(mamlRecordSet),
                 Metadata = TagsConversionHelper.CreateTagHashtable(mamlRecordSet.Metadata),
                 ResourceGroupName = resourceGroupName,
-                Ttl = (uint) mamlRecordSet.TTL.GetValueOrDefault(),
+                Ttl = (uint)mamlRecordSet.TTL.GetValueOrDefault(),
                 ZoneName = zoneName,
                 TargetResourceId = mamlRecordSet.TargetResource != null ? mamlRecordSet.TargetResource.Id : string.Empty,
                 ProvisioningState = mamlRecordSet.ProvisioningState,
@@ -458,6 +475,8 @@ namespace Microsoft.Azure.Commands.Dns.Models
             result.AddRange(GetPowerShellRecords(recordSet.TxtRecords));
             result.AddRange(GetPowerShellRecords(recordSet.PtrRecords));
             result.AddRange(GetPowerShellRecords(recordSet.CaaRecords));
+            result.AddRange(GetPowerShellRecords(recordSet.DsRecords));
+            result.AddRange(GetPowerShellRecords(recordSet.TlsaRecords));
             if (recordSet.CnameRecord != null)
             {
                 result.Add(DnsRecordBase.FromMamlRecord(recordSet.CnameRecord));
@@ -506,6 +525,7 @@ namespace Microsoft.Azure.Commands.Dns.Models
                 ZoneType = zone.ZoneType,
                 RegistrationVirtualNetworkIds = zone.RegistrationVirtualNetworks.ToVirtualNetworkIds().ToList(),
                 ResolutionVirtualNetworkIds = zone.ResolutionVirtualNetworks.ToVirtualNetworkIds().ToList(),
+                SigningKeys = zone.SigningKeys != null ? zone.SigningKeys.ToList() : new List<SigningKey>(),
             };
         }
 
