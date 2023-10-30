@@ -24,10 +24,6 @@
   </ItemGroup>
 	
   <ItemGroup>
-    <PackageReference Update="Azure.Core" Version="1.34.0" />
-  </ItemGroup>
-	
-  <ItemGroup>
     <Folder Include="SessionRecords\" />
   </ItemGroup>
 
