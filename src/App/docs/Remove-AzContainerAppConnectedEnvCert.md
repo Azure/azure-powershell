@@ -132,7 +132,7 @@ Name of the Certificate.
 ```yaml
 Type: System.String
 Parameter Sets: Delete, DeleteViaIdentityConnectedEnvironment
-Aliases:
+Aliases: CertificateName
 
 Required: True
 Position: Named

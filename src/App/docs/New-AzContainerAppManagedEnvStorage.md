@@ -230,7 +230,7 @@ Name of the storage.
 ```yaml
 Type: System.String
 Parameter Sets: CreateExpanded, CreateViaIdentityManagedEnvironmentExpanded, CreateViaJsonFilePath, CreateViaJsonString
-Aliases:
+Aliases: StorageName
 
 Required: True
 Position: Named

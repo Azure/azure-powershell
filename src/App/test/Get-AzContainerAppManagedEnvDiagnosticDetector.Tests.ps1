@@ -19,11 +19,11 @@ Describe 'Get-AzContainerAppManagedEnvDiagnosticDetector' {
         { throw [System.NotImplementedException] } | Should -Not -Throw
     }
 
-    It 'GetViaIdentityManagedEnvironment' -skip {
+    It 'Get' -skip {
         { throw [System.NotImplementedException] } | Should -Not -Throw
     }
 
-    It 'Get' -skip {
+    It 'GetViaIdentityManagedEnvironment' -skip {
         { throw [System.NotImplementedException] } | Should -Not -Throw
     }
 

@@ -284,7 +284,7 @@ Name of the Environment.
 ```yaml
 Type: System.String
 Parameter Sets: UpdateExpanded, UpdateViaJsonFilePath, UpdateViaJsonString
-Aliases:
+Aliases: EnvName
 
 Required: True
 Position: Named

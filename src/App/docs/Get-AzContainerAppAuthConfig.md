@@ -151,7 +151,7 @@ Name of the Container App AuthConfig.
 ```yaml
 Type: System.String
 Parameter Sets: Get, GetViaIdentityContainerApp
-Aliases:
+Aliases: AuthConfigName
 
 Required: True
 Position: Named

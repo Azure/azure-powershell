@@ -370,7 +370,7 @@ Name of the Container App AuthConfig.
 ```yaml
 Type: System.String
 Parameter Sets: CreateExpanded, CreateViaIdentityContainerAppExpanded, CreateViaJsonFilePath, CreateViaJsonString
-Aliases:
+Aliases: AuthConfigName
 
 Required: True
 Position: Named

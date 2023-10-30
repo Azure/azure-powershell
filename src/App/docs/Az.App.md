@@ -251,9 +251,6 @@ Delete a Dapr Component from a Managed Environment.
 ### [Remove-AzContainerAppManagedEnvStorage](Remove-AzContainerAppManagedEnvStorage.md)
 Delete storage for a managedEnvironment.
 
-### [Remove-AzContainerAppSourceControl](Remove-AzContainerAppSourceControl.md)
-Delete a Container App SourceControl.
-
 ### [Restart-AzContainerAppRevision](Restart-AzContainerAppRevision.md)
 Restarts a revision for a Container App
 

@@ -19,11 +19,11 @@ Describe 'Get-AzContainerAppConnectedEnvCert' {
         { throw [System.NotImplementedException] } | Should -Not -Throw
     }
 
-    It 'GetViaIdentityConnectedEnvironment' -skip {
+    It 'Get' -skip {
         { throw [System.NotImplementedException] } | Should -Not -Throw
     }
 
-    It 'Get' -skip {
+    It 'GetViaIdentityConnectedEnvironment' -skip {
         { throw [System.NotImplementedException] } | Should -Not -Throw
     }
 

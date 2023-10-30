@@ -1,22 +1,10 @@
-### Example 1: {{ Add title here }}
+### Example 1: Terminates execution of a running container apps job.
 ```powershell
-{{ Add code here }}
+Stop-AzContainerAppJobExecution -JobName azps-app-job2 -ResourceGroupName azps_test_group_app -Name azps-app-job-vvhlnul -PassThru
 ```
 
 ```output
-{{ Add output here (remove the output block if the example doesn't have an output) }}
+True
 ```
 
-{{ Add description here }}
-
-### Example 2: {{ Add title here }}
-```powershell
-{{ Add code here }}
-```
-
-```output
-{{ Add output here (remove the output block if the example doesn't have an output) }}
-```
-
-{{ Add description here }}
-
+Terminates execution of a running container apps job.

@@ -152,7 +152,7 @@ Name of the Certificate.
 ```yaml
 Type: System.String
 Parameter Sets: Get, GetViaIdentityConnectedEnvironment
-Aliases:
+Aliases: CertificateName
 
 Required: True
 Position: Named

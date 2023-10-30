@@ -41,27 +41,19 @@ Get the diagnostics data for a Managed Environment used to host container apps.
 
 ## EXAMPLES
 
-### Example 1: {{ Add title here }}
+### Example 1: Get the diagnostics data for a Managed Environment used to host container apps.
 ```powershell
-{{ Add code here }}
+Get-AzContainerAppManagedEnvDiagnosticDetector -EnvName azps-env -ResourceGroupName azps_test_group_app
 ```
 
 ```output
-{{ Add output here (remove the output block if the example doesn't have an output) }}
+Name                                 ResourceGroupName
+----                                 -----------------
+containerappenvironmentreplicacounts azps_test_group_app
+managedenvironmentdeployment         azps_test_group_app
 ```
 
-{{ Add description here }}
-
-### Example 2: {{ Add title here }}
-```powershell
-{{ Add code here }}
-```
-
-```output
-{{ Add output here (remove the output block if the example doesn't have an output) }}
-```
-
-{{ Add description here }}
+Get the diagnostics data for a Managed Environment used to host container apps.
 
 ## PARAMETERS
 
@@ -134,7 +126,7 @@ Name of the Managed Environment detector.
 ```yaml
 Type: System.String
 Parameter Sets: Get, GetViaIdentityManagedEnvironment
-Aliases:
+Aliases: DetectorName
 
 Required: True
 Position: Named

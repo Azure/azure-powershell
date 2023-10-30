@@ -23,10 +23,6 @@ Describe 'Update-AzContainerAppManagedEnvDapr' {
         { throw [System.NotImplementedException] } | Should -Not -Throw
     }
 
-    It 'UpdateViaIdentityManagedEnvironment' -skip {
-        { throw [System.NotImplementedException] } | Should -Not -Throw
-    }
-
     It 'UpdateViaIdentityExpanded' -skip {
         { throw [System.NotImplementedException] } | Should -Not -Throw
     }

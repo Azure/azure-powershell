@@ -151,7 +151,7 @@ Name of the Dapr Component.
 ```yaml
 Type: System.String
 Parameter Sets: Get, GetViaIdentityManagedEnvironment
-Aliases:
+Aliases: DaprName
 
 Required: True
 Position: Named

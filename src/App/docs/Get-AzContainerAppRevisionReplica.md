@@ -174,7 +174,7 @@ Name of the Container App Revision Replica.
 ```yaml
 Type: System.String
 Parameter Sets: Get, GetViaIdentityContainerApp, GetViaIdentityRevision
-Aliases:
+Aliases: ReplicaName
 
 Required: True
 Position: Named

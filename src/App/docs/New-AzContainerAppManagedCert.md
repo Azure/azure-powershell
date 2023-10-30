@@ -52,27 +52,20 @@ Create a Managed Certificate.
 
 ## EXAMPLES
 
-### Example 1: {{ Add title here }}
+### Example 1: Create a Managed Certificate.
 ```powershell
-{{ Add code here }}
+New-AzContainerAppManagedCert -EnvName azps-env -Name azps-managedcert -ResourceGroupName azps_test_group_app -Location eastus -DomainControlValidation TXT -SubjectName "mycertweb.com"
 ```
 
 ```output
-{{ Add output here (remove the output block if the example doesn't have an output) }}
+Name             SubjectName   Location ResourceGroupName   DomainControlValidation
+----             -----------   -------- -----------------   -----------------------
+azps-managedcert mycertweb.com East US  azps_test_group_app TXT
 ```
 
-{{ Add description here }}
-
-### Example 2: {{ Add title here }}
-```powershell
-{{ Add code here }}
-```
-
-```output
-{{ Add output here (remove the output block if the example doesn't have an output) }}
-```
-
-{{ Add description here }}
+Create a Managed Certificate.
+Users need to create new resources about "App Service Domain" and "DNS zone" in the same resource group.
+Follow the steps in the help file to configure the resource "DNS zone" that you just created: https://learn.microsoft.com/en-us/azure/container-apps/custom-domains-managed-certificates?pivots=azure-portal
 
 ## PARAMETERS
 

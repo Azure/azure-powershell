@@ -180,7 +180,7 @@ Name of the Certificate.
 ```yaml
 Type: System.String
 Parameter Sets: UpdateExpanded, UpdateViaIdentityConnectedEnvironmentExpanded, UpdateViaJsonFilePath, UpdateViaJsonString
-Aliases:
+Aliases: CertificateName
 
 Required: True
 Position: Named

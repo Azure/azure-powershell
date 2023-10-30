@@ -132,7 +132,7 @@ Name of the storage.
 ```yaml
 Type: System.String
 Parameter Sets: Delete, DeleteViaIdentityConnectedEnvironment
-Aliases:
+Aliases: StorageName
 
 Required: True
 Position: Named

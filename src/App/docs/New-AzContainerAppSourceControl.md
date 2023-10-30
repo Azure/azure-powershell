@@ -397,7 +397,7 @@ Name of the Container App SourceControl.
 ```yaml
 Type: System.String
 Parameter Sets: CreateExpanded, CreateViaIdentityContainerAppExpanded, CreateViaJsonFilePath, CreateViaJsonString
-Aliases:
+Aliases: SourceControlName
 
 Required: True
 Position: Named

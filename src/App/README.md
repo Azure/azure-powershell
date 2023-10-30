@@ -433,56 +433,67 @@ directive:
       parameter-name: CertificateName
     set:
       parameter-name: Name
+      alias: CertificateName
   - where:
       subject: ContainerAppConnectedEnvDapr
       parameter-name: DaprName
     set:
       parameter-name: Name
+      alias: DaprName
   - where:
       subject: ContainerAppConnectedEnvStorage
       parameter-name: StorageName
     set:
       parameter-name: Name
+      alias: StorageName
   - where:
       subject: ContainerAppAuthConfig
       parameter-name: AuthConfigName
     set:
       parameter-name: Name
+      alias: AuthConfigName
   - where:
       subject: ContainerAppSourceControl
       parameter-name: SourceControlName
     set:
       parameter-name: Name
+      alias: SourceControlName
   - where:
       subject: ContainerAppManagedEnv
       parameter-name: EnvName
     set:
       parameter-name: Name
+      alias: EnvName
   - where:
       subject: ContainerAppManagedEnvDapr
       parameter-name: DaprName
     set:
       parameter-name: Name
+      alias: DaprName
   - where:
       subject: ContainerAppManagedEnvStorage
       parameter-name: StorageName
     set:
       parameter-name: Name
+      alias: StorageName
   - where:
       subject: ContainerAppRevision
       parameter-name: RevisionName
     set:
       parameter-name: Name
+      alias: RevisionName
   - where:
       subject: ContainerAppRevisionReplica
       parameter-name: ReplicaName
     set:
       parameter-name: Name
+      alias: ReplicaName
   - where:
       subject: ContainerAppManagedEnvDiagnosticDetector
       parameter-name: DetectorName
     set:
       parameter-name: Name
+      alias: DetectorName
 
   - where:
       model-name: ManagedEnvironment
@@ -655,4 +666,11 @@ directive:
           - Location
           - ResourceGroupName
           - DomainControlValidation
+
+  # This command requires the user to provide the github token, but the command is missing this parameter, 
+  # so the command cannot be used normally. Wait for the next version to fix the problem
+  - where:
+      verb: Remove
+      subject: ContainerAppSourceControl
+    remove: true
 ```

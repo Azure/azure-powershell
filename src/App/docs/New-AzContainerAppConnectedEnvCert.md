@@ -202,7 +202,7 @@ Name of the Certificate.
 ```yaml
 Type: System.String
 Parameter Sets: CreateExpanded, CreateViaIdentityConnectedEnvironmentExpanded, CreateViaJsonFilePath, CreateViaJsonString
-Aliases:
+Aliases: CertificateName
 
 Required: True
 Position: Named

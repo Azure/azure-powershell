@@ -129,7 +129,7 @@ Name of the Container App Revision.
 ```yaml
 Type: System.String
 Parameter Sets: Restart, RestartViaIdentityContainerApp
-Aliases:
+Aliases: RevisionName
 
 Required: True
 Position: Named

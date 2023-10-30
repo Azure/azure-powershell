@@ -166,7 +166,7 @@ Name of the Container App Revision.
 ```yaml
 Type: System.String
 Parameter Sets: Get, GetViaIdentityContainerApp
-Aliases:
+Aliases: RevisionName
 
 Required: True
 Position: Named

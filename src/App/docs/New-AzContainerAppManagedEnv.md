@@ -345,7 +345,7 @@ Name of the Environment.
 ```yaml
 Type: System.String
 Parameter Sets: CreateExpanded, CreateViaJsonFilePath, CreateViaJsonString
-Aliases:
+Aliases: EnvName
 
 Required: True
 Position: Named

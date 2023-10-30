@@ -23,10 +23,6 @@ Describe 'Update-AzContainerAppAuthConfig' {
         { throw [System.NotImplementedException] } | Should -Not -Throw
     }
 
-    It 'UpdateViaIdentityContainerApp' -skip {
-        { throw [System.NotImplementedException] } | Should -Not -Throw
-    }
-
     It 'UpdateViaIdentityExpanded' -skip {
         { throw [System.NotImplementedException] } | Should -Not -Throw
     }

@@ -14,7 +14,7 @@ azps-connectedenvdapr state.azure.cosmosdb False       60s         azps_test_gro
 
 Create a Dapr Component in a connected environment.
 
-### Example 1: Create a Dapr Component in a connected environment.
+### Example 2: Create a Dapr Component in a connected environment.
 ```powershell
 $secretObject = New-AzContainerAppSecretObject -Name "masterkey" -Value "keyvalue"
 $daprMetaData = New-AzContainerAppDaprMetadataObject -Name "masterkey" -Value "masterkey"
@@ -31,7 +31,7 @@ azps-connectedenvdapr state.azure.cosmosdb False       60s         azps_test_gro
 
 Create a Dapr Component in a connected environment.
 
-### Example 1: Create a Dapr Component in a connected environment.
+### Example 3: Create a Dapr Component in a connected environment.
 ```powershell
 $secretObject = New-AzContainerAppSecretObject -Name "masterkey" -Value "keyvalue"
 $daprMetaData = New-AzContainerAppDaprMetadataObject -Name "masterkey" -Value "masterkey"

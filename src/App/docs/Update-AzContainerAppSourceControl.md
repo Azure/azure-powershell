@@ -386,7 +386,7 @@ Name of the Container App SourceControl.
 ```yaml
 Type: System.String
 Parameter Sets: UpdateExpanded, UpdateViaIdentityContainerAppExpanded
-Aliases:
+Aliases: SourceControlName
 
 Required: True
 Position: Named

@@ -40,27 +40,31 @@ Get the specified Managed Certificate.
 
 ## EXAMPLES
 
-### Example 1: {{ Add title here }}
+### Example 1: Get the specified Managed Certificate.
 ```powershell
-{{ Add code here }}
+Get-AzContainerAppManagedCert -EnvName azps-env -Name azps-managedcert -ResourceGroupName azps_test_group_app
 ```
 
 ```output
-{{ Add output here (remove the output block if the example doesn't have an output) }}
+Name             SubjectName   Location ResourceGroupName   DomainControlValidation
+----             -----------   -------- -----------------   -----------------------
+azps-managedcert mycertweb.com East US  azps_test_group_app TXT
 ```
 
-{{ Add description here }}
+Get the specified Managed Certificate.
 
-### Example 2: {{ Add title here }}
+### Example 2: Get the specified Managed Certificate.
 ```powershell
-{{ Add code here }}
+Get-AzContainerAppManagedCert -EnvName azps-env -ResourceGroupName azps_test_group_app
 ```
 
 ```output
-{{ Add output here (remove the output block if the example doesn't have an output) }}
+Name             SubjectName   Location ResourceGroupName   DomainControlValidation
+----             -----------   -------- -----------------   -----------------------
+azps-managedcert mycertweb.com East US  azps_test_group_app TXT
 ```
 
-{{ Add description here }}
+Get the specified Managed Certificate.
 
 ## PARAMETERS
 

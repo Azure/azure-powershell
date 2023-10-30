@@ -151,7 +151,7 @@ Name of the Container App SourceControl.
 ```yaml
 Type: System.String
 Parameter Sets: Get, GetViaIdentityContainerApp
-Aliases:
+Aliases: SourceControlName
 
 Required: True
 Position: Named

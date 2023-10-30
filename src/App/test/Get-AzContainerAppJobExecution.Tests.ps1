@@ -15,7 +15,15 @@ if(($null -eq $TestName) -or ($TestName -contains 'Get-AzContainerAppJobExecutio
 }
 
 Describe 'Get-AzContainerAppJobExecution' {
-    It 'List' -skip {
+    It 'Job' -skip {
+        { throw [System.NotImplementedException] } | Should -Not -Throw
+    }
+
+    It 'JobViaIdentityJob' -skip {
+        { throw [System.NotImplementedException] } | Should -Not -Throw
+    }
+
+    It 'JobViaIdentity' -skip {
         { throw [System.NotImplementedException] } | Should -Not -Throw
     }
 }

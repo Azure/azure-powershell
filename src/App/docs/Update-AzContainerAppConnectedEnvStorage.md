@@ -217,7 +217,7 @@ Name of the storage.
 ```yaml
 Type: System.String
 Parameter Sets: UpdateExpanded, UpdateViaIdentityConnectedEnvironmentExpanded
-Aliases:
+Aliases: StorageName
 
 Required: True
 Position: Named

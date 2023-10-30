@@ -234,7 +234,7 @@ Name of the Dapr Component.
 ```yaml
 Type: System.String
 Parameter Sets: CreateExpanded, CreateViaIdentityManagedEnvironmentExpanded, CreateViaJsonFilePath, CreateViaJsonString
-Aliases:
+Aliases: DaprName
 
 Required: True
 Position: Named

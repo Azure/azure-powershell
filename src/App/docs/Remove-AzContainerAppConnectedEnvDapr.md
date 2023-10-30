@@ -132,7 +132,7 @@ Name of the Dapr Component.
 ```yaml
 Type: System.String
 Parameter Sets: Delete, DeleteViaIdentityConnectedEnvironment
-Aliases:
+Aliases: DaprName
 
 Required: True
 Position: Named
