@@ -1,0 +1,52 @@
+{
+  "resourceType": "vaults/backupPolicies",
+  "apiVersion": "2023-02-01",
+  "learnMore": {
+    "url": "https://learn.microsoft.com/powershell/module/az.recoveryservices"
+  },
+  "commands": [
+    {
+      "name": "Remove-AzRecoveryServicesBackupProtectionPolicy",
+      "description": "Deletes specified backup policy from your Recovery Services Vault.\nThis is an asynchronous operation.\nStatus of the\\r\\noperation can be fetched using GetProtectionPolicyOperationResult API.",
+      "path": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.RecoveryServices/vaults/{vaultName}/backupPolicies/{policyName}",
+      "help": {
+        "learnMore": {
+          "url": "https://learn.microsoft.com/powershell/module/az.recoveryservices/remove-azrecoveryservicesbackupprotectionpolicy"
+        },
+        "parameterSets": [
+          {
+            "parameters": [
+              "-PolicyName <String>",
+              "-ResourceGroupName <String>",
+              "[-SubscriptionId <String>]",
+              "-VaultName <String>"
+            ]
+          }
+        ]
+      },
+      "examples": [
+        {
+          "description": "Deletes specified backup policy from your Recovery Services Vault. This is an asynchronous operation. Status of the\\r\\noperation can be fetched using GetProtectionPolicyOperationResult API.",
+          "parameters": [
+            {
+              "name": "-PolicyName",
+              "value": "[Path.policyName]"
+            },
+            {
+              "name": "-ResourceGroupName",
+              "value": "[Path.resourceGroupName]"
+            },
+            {
+              "name": "-SubscriptionId",
+              "value": "[Path.subscriptionId]"
+            },
+            {
+              "name": "-VaultName",
+              "value": "[Path.vaultName]"
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

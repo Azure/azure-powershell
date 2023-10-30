@@ -1,0 +1,103 @@
+﻿{
+  "filterPolicyBasedonWorkloadType": false,
+  "allowedSubProtectionPolicyTypes": [ "Full" ],
+  "allowedBackupFrequencies": [ "Daily", "Weekly", "Hourly" ],
+  "supportsEnhanced": true,
+  "allowedDifferentialParams": [],
+  "allowedIncrementalParams": [],
+  "allowedLogParams": [],
+  "allowedDaysOfTheWeek": [ "Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday" ],
+  "allowedMonthsOfTheYear": [ "January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December" ],
+  "allowedWeeksOfTheMonth": [ "First", "Second", "Third", "Fourth", "Last" ],
+  "IsSmartTieringSupported": true,
+  "containerInquiryType": null,
+  "protectedItemType": "AzureIaaSvmProtectedItem",
+  "policySettings": {
+    "defaultPolicy": {
+      "backupManagementType": "AzureIaasVM",
+      "policyType": "V1",
+      "instantRPDetails": {},
+      "schedulePolicy": {
+        "schedulePolicyType": "SimpleSchedulePolicy",
+        "scheduleRunFrequency": "Daily",
+        "scheduleRunTimes": [
+          "2023-05-22T14:00:00Z"
+        ],
+        "scheduleWeeklyFrequency": 0
+      },
+      "retentionPolicy": {
+        "retentionPolicyType": "LongTermRetentionPolicy",
+        "dailySchedule": {
+          "retentionTimes": [
+            "2023-05-22T14:00:00Z"
+          ],
+          "retentionDuration": {
+            "count": 180,
+            "durationType": "Days"
+          }
+        },
+        "weeklySchedule": {
+          "daysOfTheWeek": [
+            "Sunday"
+          ],
+          "retentionTimes": [
+            "2023-05-22T14:00:00Z"
+          ],
+          "retentionDuration": {
+            "count": 12,
+            "durationType": "Weeks"
+          }
+        },
+        "monthlySchedule": {
+          "retentionScheduleFormatType": "Weekly",
+          "retentionScheduleWeekly": {
+            "daysOfTheWeek": [
+              "Sunday"
+            ],
+            "weeksOfTheMonth": [
+              "First"
+            ]
+          },
+          "retentionTimes": [
+            "2023-05-22T14:00:00Z"
+          ],
+          "retentionDuration": {
+            "count": 60,
+            "durationType": "Months"
+          }
+        },
+        "yearlySchedule": {
+          "retentionScheduleFormatType": "Weekly",
+          "monthsOfYear": [
+            "January"
+          ],
+          "retentionScheduleWeekly": {
+            "daysOfTheWeek": [
+              "Sunday"
+            ],
+            "weeksOfTheMonth": [
+              "First"
+            ]
+          },
+          "retentionTimes": [
+            "2023-05-22T14:00:00Z"
+          ],
+          "retentionDuration": {
+            "count": 10,
+            "durationType": "Years"
+          }
+        }
+      },
+      "tieringPolicy": {
+        "ArchivedRP": {
+          "tieringMode": "DoNotTier",
+          "duration": 0,
+          "durationType": "Invalid"
+        }
+      },
+      "instantRpRetentionRangeInDays": 2,
+      "timeZone": "UTC",
+      "protectedItemsCount": 0
+    }
+  }
+}
