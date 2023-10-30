@@ -30,9 +30,9 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Test.Queue
         public void InitCommand()
         {
             command = new NewAzureStorageQueueCommand(queueMock)
-                {
-                    CommandRuntime = MockCmdRunTime
-                };
+            {
+                CommandRuntime = MockCmdRunTime
+            };
         }
 
         [TestCleanup]
@@ -41,43 +41,6 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Test.Queue
             command = null;
         }
 
-        [TestMethod]
-        public void CreateAzureQueueWithInvalidNameTest()
-        {
-            string name = String.Empty;
-            AssertThrows<ArgumentException>(() => command.CreateAzureQueue(name),
-                String.Format(Resources.InvalidQueueName, name));
-
-            name = "a";
-            AssertThrows<ArgumentException>(() => command.CreateAzureQueue(name),
-                String.Format(Resources.InvalidQueueName, name));
-
-            name = "&*(";
-            AssertThrows<ArgumentException>(() => command.CreateAzureQueue(name),
-                String.Format(Resources.InvalidQueueName, name));
-        }
-
-        [TestMethod]
-        public void CreateAzureQueueWithExistsQueueTest()
-        {
-            AddTestQueues();
-            string name = "text";
-            AssertThrows<ResourceAlreadyExistException>(() => command.CreateAzureQueue(name),
-                String.Format(Resources.QueueAlreadyExists, name));
-        }
-
-        [TestMethod]
-        public void CreateAzureQueueSuccessfullyTest()
-        {
-            MockCmdRunTime.ResetPipelines();
-            string name = "test";
-            AzureStorageQueue queue = command.CreateAzureQueue(name);
-            Assert.AreEqual("test", queue.Name);
-
-            MockCmdRunTime.ResetPipelines();
-            AssertThrows<ResourceAlreadyExistException>(() => command.CreateAzureQueue(name),
-                String.Format(Resources.QueueAlreadyExists, name));
-        }
 
         [TestMethod]
         public void ExcuteCommandNewQueueTest()

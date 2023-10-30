@@ -17,7 +17,8 @@ New-AzSearchService [-ResourceGroupName] <String> [-Name] <String> [-Sku] <PSSku
  [-PartitionCount <Int32>] [-ReplicaCount <Int32>] [-HostingMode <PSHostingMode>]
  [-PublicNetworkAccess <PSPublicNetworkAccess>] [-IdentityType <PSIdentityType>] [-IPRuleList <PSIpRule[]>]
  [-DisableLocalAuth <Boolean>] [-AuthOption <PSAuthOptionName>] [-AadAuthFailureMode <PSAadAuthFailureMode>]
- [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-SemanticSearchMode <PSSemanticSearchMode>] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
+ [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -241,6 +242,22 @@ Aliases:
 
 Required: True
 Position: 0
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -SemanticSearchMode
+(Optional) Option to control the availability of semantic search. This configuration is only possible for certain Azure Cognitive Search SKUs in certain locations
+
+```yaml
+Type: System.Nullable`1[Microsoft.Azure.Commands.Management.Search.Models.PSSemanticSearchMode]
+Parameter Sets: (All)
+Aliases:
+Accepted values: Disabled, Free, Standard
+
+Required: False
+Position: Named
 Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False

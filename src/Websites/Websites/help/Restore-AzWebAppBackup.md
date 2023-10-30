@@ -38,7 +38,7 @@ The **Restore-AzWebAppBackup** cmdlet restores an Azure Web App Backup.
 Restore-AzWebAppBackup -ResourceGroupName "Default-Web-WestUS" -Name "ContosoWebApp" -StorageAccountUrl "https://storageaccount.file.core.windows.net" -BlobName "myBlob"
 ```
 
-Restores a backup of the specified app ContosoWebApp that is within resource group Default-Web-WestUS in blob "myBlob" located at https://storageaccount.file.core.windows.net
+Restores a backup of the specified app ContosoWebApp that is within resource group Default-Web-WestUS in blob "myBlob" located at `https://storageaccount.file.core.windows.net`
 
 ### Example 2
 

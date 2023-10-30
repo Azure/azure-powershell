@@ -1,4 +1,4 @@
-Microsoft Visual Studio Solution File, Format Version 12.00
+﻿Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.4.33403.182
 MinimumVisualStudioVersion = 10.0.40219.1
@@ -27,6 +27,8 @@ EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Storage.Management.Sdk", "Storage.Management.Sdk\Storage.Management.Sdk.csproj", "{1BA85EC7-F8E5-423F-BA1B-B3918D0D59A3}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "AssemblyLoading", "..\Accounts\AssemblyLoading\AssemblyLoading.csproj", "{02615977-4499-48E6-9824-8B9F431E30EA}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Az.Storage", "Storage.Autorest\Az.Storage.csproj", "{30A6EDE1-2AAC-43D3-8E9C-F11C1CC3C8A8}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -82,6 +84,10 @@ Global
 		{02615977-4499-48E6-9824-8B9F431E30EA}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{02615977-4499-48E6-9824-8B9F431E30EA}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{02615977-4499-48E6-9824-8B9F431E30EA}.Release|Any CPU.Build.0 = Release|Any CPU
+		{30A6EDE1-2AAC-43D3-8E9C-F11C1CC3C8A8}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{30A6EDE1-2AAC-43D3-8E9C-F11C1CC3C8A8}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{30A6EDE1-2AAC-43D3-8E9C-F11C1CC3C8A8}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{30A6EDE1-2AAC-43D3-8E9C-F11C1CC3C8A8}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

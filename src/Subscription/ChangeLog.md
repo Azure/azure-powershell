@@ -19,6 +19,11 @@
 -->
 ## Upcoming Release
 
+## Version 0.10.1
+* Removed the default value for the `New-AzSubscriptionAlias` cmdlet parameter `SubscriptionId`.
+* Removed the default value for the `Get-AzSubscriptionAcceptOwnershipStatus` cmdlet parameter `SubscriptionId` and mark the parameter as mandatory.
+* Removed the default value for the `Invoke-AzSubscriptionAcceptOwnership` cmdlet parameter `SubscriptionId` and mark the parameter as mandatory.
+
 ## Version 0.10.0
 * Upgrade API version to 2021-10-01.
 

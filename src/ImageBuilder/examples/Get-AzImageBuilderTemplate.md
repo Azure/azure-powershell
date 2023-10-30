@@ -1,45 +1,42 @@
-### Example 1: List all template under a subscription
+### Example 1: List information about virtual machine image template by SubscriptionId.
 ```powershell
 Get-AzImageBuilderTemplate
 ```
 
 ```output
-Location Name                SystemDataCreatedAt SystemDataCreatedBy SystemDataCreatedByType SystemDataLastModifiedAt SystemDataLastModifiedBy SystemDataLastModifiedByType
--------- ----                ------------------- ------------------- ----------------------- ------------------------ ------------------------ ----------------------------
-eastus   bez-test-img-temp
-eastus   bez-test-img-temp12
-eastus   bez-test-img-temp13
-eastus   test-img-temp
+Location Name       ResourceGroupName
+-------- ----       -----------------
+eastus   azps-ibt-1 azps_test_group_imagebuilder
+eastus   azps-ibt-2 azps_test_group_imagebuilder
+eastus   azps-ibt-3 azps_test_group_imagebuilder
 ```
 
-This command lists all template under a subscription.
+List information about virtual machine image template by SubscriptionId.
 
-### Example 2: List all template under a resource group
+### Example 2: List information about virtual machine image template by ResourceGroupName.
 ```powershell
-Get-AzImageBuilderTemplate -ResourceGroupName bez-rg
+Get-AzImageBuilderTemplate -resourceGroupName azps_test_group_imagebuilder
 ```
 
 ```output
-Location Name                SystemDataCreatedAt SystemDataCreatedBy SystemDataCreatedByType SystemDataLastModifiedAt SystemDataLastModifiedBy SystemDataLastModifiedByType
--------- ----                ------------------- ------------------- ----------------------- ------------------------ ------------------------ ----------------------------
-eastus   bez-test-img-temp
-eastus   bez-test-img-temp12
-eastus   bez-test-img-temp13
-eastus   test-img-temp
+Location Name       ResourceGroupName
+-------- ----       -----------------
+eastus   azps-ibt-1 azps_test_group_imagebuilder
+eastus   azps-ibt-2 azps_test_group_imagebuilder
+eastus   azps-ibt-3 azps_test_group_imagebuilder
 ```
 
-This command lists all template under a resource group.
+List information about virtual machine image template by ResourceGroupName.
 
-### Example 3: Get a template under a resource group
+### Example 3: Get information about a virtual machine image template by Name.
 ```powershell
-Get-AzImageBuilderTemplate -Name test-img-temp -ResourceGroupName bez-rg
+Get-AzImageBuilderTemplate -resourceGroupName azps_test_group_imagebuilder -Name azps-ibt-1
 ```
 
 ```output
-Location Name          SystemDataCreatedAt SystemDataCreatedBy SystemDataCreatedByType SystemDataLastModifiedAt SystemDataLastModifiedBy
--------- ----          ------------------- ------------------- ----------------------- ------------------------ ------------------ 
-eastus   test-img-temp
+Location Name       ResourceGroupName
+-------- ----       -----------------
+eastus   azps-ibt-1 azps_test_group_imagebuilder
 ```
 
-This command gets a template under a resource group.
-
+Get information about a virtual machine image template by Name.

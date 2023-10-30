@@ -59,7 +59,9 @@ New-AzSqlVM -Name <String> -ResourceGroupName <String> -Location <String> [-Subs
 ```
 
 ## DESCRIPTION
-Creates or updates a SQL virtual machine.
+Creates or updates a SQL virtual machine. 
+
+If you are updating an existing SQL virtual machine and a parameter such as -Tag is omitted, then the previously defined values may be removed. For this reason, it is recommended to use [Update-AzSqlVM](https://learn.microsoft.com/powershell/module/az.sqlvirtualmachine/update-azsqlvm) to prevent overwriting of unintended parameters.
 
 ## EXAMPLES
 
@@ -557,7 +559,7 @@ Accept wildcard characters: False
 
 ### -IdentityType
 The identity type.
-Set this to 'SystemAssigned' in order to automatically create and assign an Azure Active Directory principal for the resource.
+Set this to 'SystemAssigned' in order to automatically create and assign a Microsoft Entra principal for the resource.
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.SqlVirtualMachine.Support.IdentityType
@@ -1493,4 +1495,3 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ALIASES
 
 ## RELATED LINKS
-

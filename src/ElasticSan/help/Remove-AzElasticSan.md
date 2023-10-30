@@ -205,21 +205,5 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## NOTES
 
-ALIASES
-
-COMPLEX PARAMETER PROPERTIES
-
-To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
-
-
-`INPUTOBJECT <IElasticSanIdentity>`: Identity Parameter
-  - `[ElasticSanName <String>]`: The name of the ElasticSan.
-  - `[Id <String>]`: Resource identity path
-  - `[PrivateEndpointConnectionName <String>]`: The name of the Private Endpoint connection.
-  - `[ResourceGroupName <String>]`: The name of the resource group. The name is case insensitive.
-  - `[SubscriptionId <String>]`: The ID of the target subscription.
-  - `[VolumeGroupName <String>]`: The name of the VolumeGroup.
-  - `[VolumeName <String>]`: The name of the Volume.
-
 ## RELATED LINKS
 

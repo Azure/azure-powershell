@@ -72,7 +72,7 @@ namespace Microsoft.Azure.Commands.Sql.OutboundFirewallRules.Services
 
         public Management.Sql.Models.OutboundFirewallRule CreateOrUpdate(string resourceGroupName, string serverName, string outboundFirewallRuleFQDN)
         {
-            return GetCurrentSqlClient().OutboundFirewallRules.CreateOrUpdate(resourceGroupName, serverName, outboundFirewallRuleFQDN);
+            return GetCurrentSqlClient().OutboundFirewallRules.CreateOrUpdate(resourceGroupName, serverName, outboundFirewallRuleFQDN, new Management.Sql.Models.OutboundFirewallRule());
         }
 
         /// <summary>

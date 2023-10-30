@@ -22,8 +22,8 @@ New-AzSqlDatabase -DatabaseName <String> [-CollationName <String>] [-CatalogColl
  [-MinimumCapacity <Double>] [-HighAvailabilityReplicaCount <Int32>] [-BackupStorageRedundancy <String>]
  [-SecondaryType <String>] [-MaintenanceConfigurationId <String>] [-EnableLedger]
  [-PreferredEnclaveType <String>] [-AssignIdentity] [-EncryptionProtector <String>]
- [-UserAssignedIdentityId <System.Collections.Generic.List`1[System.String]>]
- [-KeyList <System.Collections.Generic.List`1[System.String]>] [-FederatedClientId <Guid>]
+ [-UserAssignedIdentityId <String[]>] [-KeyList <String[]>] [-FederatedClientId <Guid>]
+ [-EncryptionProtectorAutoRotation] [-UseFreeLimit] [-FreeLimitExhaustionBehavior <String>]
  [-ServerName] <String> [-ResourceGroupName] <String> [-DefaultProfile <IAzureContextContainer>] [-WhatIf]
  [-Confirm] [<CommonParameters>]
 ```
@@ -37,8 +37,8 @@ New-AzSqlDatabase -DatabaseName <String> [-CollationName <String>] [-CatalogColl
  [-MinimumCapacity <Double>] [-HighAvailabilityReplicaCount <Int32>] [-BackupStorageRedundancy <String>]
  [-SecondaryType <String>] [-MaintenanceConfigurationId <String>] [-EnableLedger]
  [-PreferredEnclaveType <String>] [-AssignIdentity] [-EncryptionProtector <String>]
- [-UserAssignedIdentityId <System.Collections.Generic.List`1[System.String]>]
- [-KeyList <System.Collections.Generic.List`1[System.String]>] [-FederatedClientId <Guid>]
+ [-UserAssignedIdentityId <String[]>] [-KeyList <String[]>] [-FederatedClientId <Guid>]
+ [-EncryptionProtectorAutoRotation] [-UseFreeLimit] [-FreeLimitExhaustionBehavior <String>]
  [-ServerName] <String> [-ResourceGroupName] <String> [-DefaultProfile <IAzureContextContainer>] [-WhatIf]
  [-Confirm] [<CommonParameters>]
 ```
@@ -221,7 +221,7 @@ Accept wildcard characters: False
 ```
 
 ### -AssignIdentity
-Generate and assign an Azure Active Directory Identity for this database for use with key management services like Azure KeyVault.
+Generate and assign a Microsoft Entra identity for this database for use with key management services like Azure KeyVault.
 
 ```yaml
 Type: System.Management.Automation.SwitchParameter
@@ -437,6 +437,21 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### -EncryptionProtectorAutoRotation
+The AKV Key Auto Rotation status
+
+```yaml
+Type: System.Management.Automation.SwitchParameter
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: True (ByPropertyName)
+Accept wildcard characters: False
+```
+
 ### -FederatedClientId
 The federated client id for the SQL Database. It is used for cross tenant CMK scenario.
 
@@ -467,6 +482,21 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### -FreeLimitExhaustionBehavior
+Exhaustion behavior of free limit database.
+
+```yaml
+Type: System.String
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
 ### -HighAvailabilityReplicaCount
 The number of readonly secondary replicas associated with the database to which readonly application intent connections may be routed. This property is only settable for Hyperscale edition databases.
 
@@ -486,7 +516,7 @@ Accept wildcard characters: False
 The list of AKV keys for the SQL Database.
 
 ```yaml
-Type: System.Collections.Generic.List`1[System.String]
+Type: System.String[]
 Parameter Sets: (All)
 Aliases:
 
@@ -685,11 +715,26 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### -UseFreeLimit
+Use free limit on this database.
+
+```yaml
+Type: System.Management.Automation.SwitchParameter
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
 ### -UserAssignedIdentityId
 The list of user assigned identity for the SQL Database.
 
 ```yaml
-Type: System.Collections.Generic.List`1[System.String]
+Type: System.String[]
 Parameter Sets: (All)
 Aliases:
 
@@ -791,4 +836,3 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 [Suspend-AzSqlDatabase](./Suspend-AzSqlDatabase.md)
 
 [SQL Database Documentation](https://learn.microsoft.com/azure/sql-database/)
-

@@ -2,7 +2,7 @@
 
 function Update-AzDataProtectionResourceGuard
 {   
-	[OutputType('Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api202301.IResourceGuardResource')]
+	[OutputType('Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20230501.IResourceGuardResource')]
     [CmdletBinding(PositionalBinding=$false, SupportsShouldProcess)]
     [Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Description('Updates a resource guard belonging to a resource group')]
 
@@ -23,7 +23,7 @@ function Update-AzDataProtectionResourceGuard
         [System.String]
         ${ETag},
 
-        [Parameter(ParameterSetName="UpdateResourceGuardOperations", Mandatory=$false, HelpMessage='The identityType to be updated in resource guard, example: SystemAssigned, None')]
+        [Parameter(ParameterSetName="UpdateResourceGuardOperations", Mandatory=$false, HelpMessage='This parameter is no longer in use and will be depricated')]
         [System.String]
         ${IdentityType},
         
@@ -31,7 +31,7 @@ function Update-AzDataProtectionResourceGuard
         [Hashtable]
         ${Tag},
 
-        [Parameter(ParameterSetName="UpdateResourceGuardOperations", Mandatory=$false, HelpMessage='List of critical operations which are not protected by this resourceGuard. Supported values are DeleteProtection, UpdateProtection, UpdatePolicy, GetSecurityPin')]
+        [Parameter(ParameterSetName="UpdateResourceGuardOperations", Mandatory=$false, HelpMessage='List of critical operations which are not protected by this resourceGuard. Supported values are DeleteProtection, UpdateProtection, UpdatePolicy, GetSecurityPin, DeleteBackupInstance')]
         [System.String[]]
         ${CriticalOperationExclusionList},
         
@@ -87,7 +87,7 @@ function Update-AzDataProtectionResourceGuard
         }       
         
         # modify Critical operation exclusion list 
-        $CriticalOperationsMap = @{ DeleteProtection = "Microsoft.RecoveryServices/vaults/backupFabrics/protectionContainers/protectedItems/delete"; UpdateProtection = "Microsoft.RecoveryServices/vaults/backupFabrics/protectionContainers/protectedItems/write"; UpdatePolicy = "Microsoft.RecoveryServices/vaults/backupPolicies/write"; GetSecurityPin = "Microsoft.RecoveryServices/vaults/backupSecurityPIN/action" }
+        $CriticalOperationsMap = @{ DeleteProtection = "Microsoft.RecoveryServices/vaults/backupFabrics/protectionContainers/protectedItems/delete"; UpdateProtection = "Microsoft.RecoveryServices/vaults/backupFabrics/protectionContainers/protectedItems/write"; UpdatePolicy = "Microsoft.RecoveryServices/vaults/backupPolicies/write"; GetSecurityPin = "Microsoft.RecoveryServices/vaults/backupSecurityPIN/action"; DeleteBackupInstance = "Microsoft.DataProtection/backupVaults/backupInstances/delete" }
        
         $CriticalOperationExclusionListInternal = [System.Collections.ArrayList]@()
 
@@ -98,7 +98,7 @@ function Update-AzDataProtectionResourceGuard
             }
             else {
                 $arrayIndex = $CriticalOperationExclusionListInternal.Add($item)
-            }            
+            }
         }
 
         if($PSBoundParameters.ContainsKey("CriticalOperationExclusionList"))
@@ -110,6 +110,13 @@ function Update-AzDataProtectionResourceGuard
         # Add Location
         $null = $PSBoundParameters.Add("Location", $ResGuard.Location)
         
+        if($PSBoundParameters.ContainsKey("IdentityType"))
+        {
+            $null = $PSBoundParameters.Remove("IdentityType")
+            # DppRef : need to move this to parameter level 
+            Write-Warning "Parameter IdentityType is no longer in use and will be depricated in upcoming breaking change release"
+        }
+
         Az.DataProtection.Internal\New-AzDataProtectionResourceGuard @PSBoundParameters
     }
 }

@@ -73,6 +73,7 @@ namespace Microsoft.Azure.Commands.Security.Common
 
         public const string PricingTier = "The pricing tier value. Microsoft Defender for Cloud is provided in two pricing tiers: Free or Standard.";
         public const string SubPlan = "The sub-plan selected for a Standard pricing configuration, when more than one sub-plan is available. When not specified, full plan is applied.";
+        public const string Extension = "The extensions offered under the plan";
 
         #endregion
 

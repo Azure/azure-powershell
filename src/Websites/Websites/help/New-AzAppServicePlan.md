@@ -276,7 +276,7 @@ Size of web worker
 Type: System.String
 Parameter Sets: (All)
 Aliases:
-Accepted values: Small, Medium, Large, ExtraLarge
+Accepted values: ExtraSmall, Small, Medium, Large, ExtraLarge, ExtraExtraLarge
 
 Required: False
 Position: 5

@@ -37,6 +37,7 @@ using Microsoft.Azure.Management.Storage.Version2017_10_01;
 using Microsoft.WindowsAzure.Commands.Common.CustomAttributes;
 using Sku = Microsoft.Azure.Commands.Common.Compute.Version_2018_04.Models.Sku;
 using LoadBalancingRule = Microsoft.Azure.Management.Internal.Network.Version2017_10_01.Models.LoadBalancingRule;
+using UpgradeMode = Microsoft.Azure.Commands.Common.Compute.Version_2018_04.Models.UpgradeMode;
 
 namespace Microsoft.Azure.Commands.ServiceFabric.Commands
 {

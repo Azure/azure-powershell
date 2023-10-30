@@ -410,6 +410,10 @@ function Test-NewAndSetResourceGroupDeploymentStackWithBicep
 		$deployment = New-AzResourceGroupDeploymentStack -Name $rname -ResourceGroupName $rgname -TemplateFile StacksRGTemplate.bicep -TemplateParameterFile StacksRGTemplateParams.bicepparam -DenySettingsMode None -Force
 		Assert-AreEqual "succeeded" $deployment.ProvisioningState
 
+		# Test - .bicepparam file only
+		$deployment = Set-AzResourceGroupDeploymentStack -Name $rname -ResourceGroupName $rgname -TemplateParameterFile StacksRGTemplateParams.bicepparam -DenySettingsMode None -Force
+		Assert-AreEqual "succeeded" $deployment.ProvisioningState
+
 		# Test - Set-AzResourceGroupDeploymentStacks
 		$deployment = Set-AzResourceGroupDeploymentStack -Name $rname -ResourceGroupName $rgname -TemplateFile StacksRGTemplatePlus.bicep -TemplateParameterFile StacksRGTemplatePlusParams.json -DenySettingsMode None -Force
 		Assert-AreEqual "succeeded" $deployment.ProvisioningState
@@ -977,6 +981,10 @@ function Test-NewAndSetSubscriptionDeploymentStackWithBicep
 		$deployment = New-AzSubscriptionDeploymentStack -Name $rname -TemplateFile StacksSubTemplate.bicep -TemplateParameterFile StacksSubTemplateParams.bicepparam -Location $location -DenySettingsMode None -Force
 		Assert-AreEqual "succeeded" $deployment.ProvisioningState
 
+		# Test - .bicepparam file only
+		$deployment = Set-AzSubscriptionDeploymentStack -Name $rname -TemplateParameterFile StacksSubTemplateParams.bicepparam -Location $location -DenySettingsMode None -Force
+		Assert-AreEqual "succeeded" $deployment.ProvisioningState
+
 		# Test - Set-AzSubscriptionDeploymentStacks
 		$deployment = Set-AzSubscriptionDeploymentStack -Name $rname -TemplateFile StacksSubTemplatePlus.bicep -TemplateParameterFile StacksSubTemplatePlusParams.json -Location $location -DenySettingsMode None -Force
 		Assert-AreEqual "succeeded" $deployment.ProvisioningState
@@ -1244,8 +1252,12 @@ function Test-NewManagementGroupDeploymentStack
 		
 		# --- ParameterlessTemplateFileParameterSetName ---
 
-		# Test - Success
+		# Test - Success - blank template
 		$deployment = New-AzManagementGroupDeploymentStack -Name $rname -Description "A Stack" -ManagementGroupId $mgid -DeploymentSubscriptionId $subId -TemplateFile blankTemplate.json -Location $location -DenySettingsMode None -Force
+		Assert-AreEqual "succeeded" $deployment.ProvisioningState
+
+		# Test - Success - MG scoped deployment
+		$deployment = New-AzManagementGroupDeploymentStack -Name $rname -Description "A Stack" -ManagementGroupId $mgid -TemplateFile StacksMGTemplateMGDeployment.json -Location $location -DenySettingsMode None -Force
 		Assert-AreEqual "succeeded" $deployment.ProvisioningState
 
 		# Test - Failure - template file not found
@@ -1431,6 +1443,10 @@ function Test-SetManagementGroupDeploymentStack
 		$deployment = Set-AzManagementGroupDeploymentStack -Name $rname -Description "A Stack" -ManagementGroup $mgid  -DeploymentSubscriptionId $subId -TemplateFile StacksMGTemplate.json -TemplateParameterFile StacksMGTemplateParams.json -Location $location -DenySettingsMode None -Force
 		Assert-AreEqual "succeeded" $deployment.ProvisioningState
 
+		# Test - Success - MG scoped deployment
+		$deployment = Set-AzManagementGroupDeploymentStack -Name $rname -Description "A Stack" -ManagementGroupId $mgid -TemplateFile StacksMGTemplateMGDeployment.json -Location $location -DenySettingsMode None -Force
+		Assert-AreEqual "succeeded" $deployment.ProvisioningState
+
 		# Test - Failure - template file not found
 		$missingFile = "missingFile142.json"
 		$exceptionMessage = "The provided file $missingFile doesn't exist"
@@ -1533,6 +1549,10 @@ function Test-NewAndSetManagementGroupDeploymentStackWithBicep
 	{
 		# Test - NewByNameAndManagementGroupAndBicepTemplateFile
 		$deployment = New-AzManagementGroupDeploymentStack -Name $rname -ManagementGroupId $mgid -DeploymentSubscriptionId $subId -TemplateFile StacksMGTemplate.bicep -TemplateParameterFile StacksMGTemplateParams.bicepparam -Location $location -DenySettingsMode None -Force
+		Assert-AreEqual "succeeded" $deployment.ProvisioningState
+
+		# Test - .bicepparam file only
+		$deployment = Set-AzManagementGroupDeploymentStack -Name $rname -ManagementGroupId $mgid -DeploymentSubscriptionId $subId -TemplateParameterFile StacksMGTemplateParams.bicepparam -Location $location -DenySettingsMode None -Force
 		Assert-AreEqual "succeeded" $deployment.ProvisioningState
 
 		# Test - Set-AzManagementGroupDeploymentStacks

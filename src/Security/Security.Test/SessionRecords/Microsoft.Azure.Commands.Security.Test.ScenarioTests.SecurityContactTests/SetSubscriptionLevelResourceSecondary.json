@@ -6,13 +6,13 @@
       "RequestMethod": "PUT",
       "RequestHeaders": {
         "x-ms-client-request-id": [
-          "fa0fa1aa-c852-4a55-b7e6-272ea6e8fa36"
+          "3326be5c-c1ce-400b-a7aa-4fbf5b2f7831"
         ],
         "Accept-Language": [
           "en-US"
         ],
         "User-Agent": [
-          "FxVersion/4.700.22.51102",
+          "FxVersion/6.0.2323.48002",
           "OSName/Windows",
           "OSVersion/Microsoft.Windows.10.0.22621",
           "Microsoft.Azure.Management.Security.SecurityCenterClient/4.0.0.0"
@@ -42,13 +42,13 @@
           "Kestrel"
         ],
         "x-ms-request-id": [
-          "cda6390b-ca19-452b-bb4b-035d5f485091"
+          "deff9d4b-0856-4d5c-bf92-9640705d7bba"
         ],
         "x-ms-correlation-request-id": [
-          "cda6390b-ca19-452b-bb4b-035d5f485091"
+          "deff9d4b-0856-4d5c-bf92-9640705d7bba"
         ],
         "x-ms-routing-request-id": [
-          "FRANCESOUTH:20221117T150805Z:cda6390b-ca19-452b-bb4b-035d5f485091"
+          "FRANCESOUTH:20231011T082916Z:deff9d4b-0856-4d5c-bf92-9640705d7bba"
         ],
         "Strict-Transport-Security": [
           "max-age=31536000; includeSubDomains"
@@ -57,7 +57,7 @@
           "nosniff"
         ],
         "Date": [
-          "Thu, 17 Nov 2022 15:08:04 GMT"
+          "Wed, 11 Oct 2023 08:29:16 GMT"
         ],
         "Content-Length": [
           "425"
@@ -69,7 +69,7 @@
           "-1"
         ]
       },
-      "ResponseBody": "{\r\n  \"properties\": {\r\n    \"notificationsByRole\": {\r\n      \"state\": \"Off\",\r\n      \"roles\": []\r\n    },\r\n    \"emails\": \"ascasc@microsoft.com\",\r\n    \"phone\": \"123123123\",\r\n    \"alertNotifications\": {\r\n      \"state\": \"Off\",\r\n      \"minimalSeverity\": \"\"\r\n    }\r\n  },\r\n  \"id\": \"/subscriptions/487bb485-b5b0-471e-9c0d-10717612f869/providers/Microsoft.Security/securityContacts/default\",\r\n  \"name\": \"default\",\r\n  \"type\": \"Microsoft.Security/securityContacts\",\r\n  \"etag\": \"\\\"1a038825-0000-0d00-0000-63764e550000\\\"\",\r\n  \"location\": \"West Europe\"\r\n}",
+      "ResponseBody": "{\r\n  \"properties\": {\r\n    \"notificationsByRole\": {\r\n      \"state\": \"Off\",\r\n      \"roles\": []\r\n    },\r\n    \"emails\": \"ascasc@microsoft.com\",\r\n    \"phone\": \"123123123\",\r\n    \"alertNotifications\": {\r\n      \"state\": \"Off\",\r\n      \"minimalSeverity\": \"\"\r\n    }\r\n  },\r\n  \"id\": \"/subscriptions/487bb485-b5b0-471e-9c0d-10717612f869/providers/Microsoft.Security/securityContacts/default\",\r\n  \"name\": \"default\",\r\n  \"type\": \"Microsoft.Security/securityContacts\",\r\n  \"etag\": \"\\\"32003b8e-0000-0d00-0000-65265cdc0000\\\"\",\r\n  \"location\": \"West Europe\"\r\n}",
       "StatusCode": 200
     }
   ],

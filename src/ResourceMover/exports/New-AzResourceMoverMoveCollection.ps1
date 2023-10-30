@@ -17,22 +17,34 @@
 <#
 .Synopsis
 Creates or updates a move collection.
+The following types of move collections based on the move scenario are supported currently:
+
+**1.
+RegionToRegion** (Moving resources across regions)
+
+**2.
+RegionToZone** (Moving virtual machines into a zone within the same region)
 .Description
 Creates or updates a move collection.
-.Example
-PS C:\> New-AzResourceMoverMoveCollection -Name "PS-centralus-westcentralus-demoRMS"  -ResourceGroupName "RG-MoveCollection-demoRMS" -SourceRegion "centralus" -TargetRegion "westcentralus" -Location "centraluseuap" -IdentityType "SystemAssigned"
+The following types of move collections based on the move scenario are supported currently:
 
-Etag                                   Location      Name                               Type                             
-----                                   --------      ----                               ----                             
-"0200d92f-0000-3300-0000-6021e9ec0000" centraluseuap PS-centralus-westcentralus-demoRMs Microsoft.Migrate/moveCollections
+**1.
+RegionToRegion** (Moving resources across regions)
+
+**2.
+RegionToZone** (Moving virtual machines into a zone within the same region)
+.Example
+New-AzResourceMoverMoveCollection -Name "PS-centralus-westcentralus-demoRMS"  -ResourceGroupName "RG-MoveCollection-demoRMS" -SourceRegion "centralus" -TargetRegion "westcentralus" -Location "centraluseuap" -IdentityType "SystemAssigned"
+.Example
+New-AzResourceMoverMoveCollection -Name "PS-demo-RegionToZone"  -ResourceGroupName "RG-MoveCollection-demoRMS" -MoveRegion "eastus" -Location "eastus2euap" -IdentityType "SystemAssigned" -MoveType "RegionToZone"
 
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.ResourceMover.Models.Api20210801.IMoveCollection
+Microsoft.Azure.PowerShell.Cmdlets.ResourceMover.Models.Api20230801.IMoveCollection
 .Link
 https://learn.microsoft.com/powershell/module/az.resourcemover/new-azresourcemovermovecollection
 #>
 function New-AzResourceMoverMoveCollection {
-[OutputType([Microsoft.Azure.PowerShell.Cmdlets.ResourceMover.Models.Api20210801.IMoveCollection])]
+[OutputType([Microsoft.Azure.PowerShell.Cmdlets.ResourceMover.Models.Api20230801.IMoveCollection])]
 [CmdletBinding(DefaultParameterSetName='CreateExpanded', PositionalBinding=$false, SupportsShouldProcess, ConfirmImpact='Medium')]
 param(
     [Parameter(Mandatory)]
@@ -83,12 +95,25 @@ param(
     [Parameter()]
     [Microsoft.Azure.PowerShell.Cmdlets.ResourceMover.Category('Body')]
     [System.String]
+    # Gets or sets the move region which indicates the region where the VM Regional to Zonal move will be conducted.
+    ${MoveRegion},
+
+    [Parameter()]
+    [ArgumentCompleter([Microsoft.Azure.PowerShell.Cmdlets.ResourceMover.Support.MoveType])]
+    [Microsoft.Azure.PowerShell.Cmdlets.ResourceMover.Category('Body')]
+    [Microsoft.Azure.PowerShell.Cmdlets.ResourceMover.Support.MoveType]
+    # Defines the MoveType.
+    ${MoveType},
+
+    [Parameter()]
+    [Microsoft.Azure.PowerShell.Cmdlets.ResourceMover.Category('Body')]
+    [System.String]
     # Gets or sets the source region.
     ${SourceRegion},
 
     [Parameter()]
     [Microsoft.Azure.PowerShell.Cmdlets.ResourceMover.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.ResourceMover.Runtime.Info(PossibleTypes=([Microsoft.Azure.PowerShell.Cmdlets.ResourceMover.Models.Api20210801.IMoveCollectionTags]))]
+    [Microsoft.Azure.PowerShell.Cmdlets.ResourceMover.Runtime.Info(PossibleTypes=([Microsoft.Azure.PowerShell.Cmdlets.ResourceMover.Models.Api20230801.IMoveCollectionTags]))]
     [System.Collections.Hashtable]
     # Resource tags.
     ${Tag},
@@ -100,11 +125,18 @@ param(
     ${TargetRegion},
 
     [Parameter()]
+    [Microsoft.Azure.PowerShell.Cmdlets.ResourceMover.Category('Body')]
+    [System.String]
+    # Gets or sets the version of move collection.
+    ${Version},
+
+    [Parameter()]
     [Alias('AzureRMContext', 'AzureCredential')]
     [ValidateNotNull()]
     [Microsoft.Azure.PowerShell.Cmdlets.ResourceMover.Category('Azure')]
     [System.Management.Automation.PSObject]
-    # The credentials, account, tenant, and subscription used for communication with Azure.
+    # The DefaultProfile parameter is not functional.
+    # Use the SubscriptionId parameter when available if executing the cmdlet against a different subscription.
     ${DefaultProfile},
 
     [Parameter(DontShow)]
@@ -154,6 +186,24 @@ begin {
             $PSBoundParameters['OutBuffer'] = 1
         }
         $parameterSet = $PSCmdlet.ParameterSetName
+
+        if ($null -eq [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion) {
+            [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion = $PSVersionTable.PSVersion.ToString()
+        }         
+        $preTelemetryId = [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::TelemetryId
+        if ($preTelemetryId -eq '') {
+            [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::TelemetryId =(New-Guid).ToString()
+            [Microsoft.Azure.PowerShell.Cmdlets.ResourceMover.module]::Instance.Telemetry.Invoke('Create', $MyInvocation, $parameterSet, $PSCmdlet)
+        } else {
+            $internalCalledCmdlets = [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::InternalCalledCmdlets
+            if ($internalCalledCmdlets -eq '') {
+                [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::InternalCalledCmdlets = $MyInvocation.MyCommand.Name
+            } else {
+                [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::InternalCalledCmdlets += ',' + $MyInvocation.MyCommand.Name
+            }
+            [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::TelemetryId = 'internal'
+        }
+
         $mapping = @{
             CreateExpanded = 'Az.ResourceMover.private\New-AzResourceMoverMoveCollection_CreateExpanded';
         }
@@ -167,6 +217,7 @@ begin {
         $steppablePipeline = $scriptCmd.GetSteppablePipeline($MyInvocation.CommandOrigin)
         $steppablePipeline.Begin($PSCmdlet)
     } catch {
+        [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::ClearTelemetryContext()
         throw
     }
 }
@@ -175,15 +226,32 @@ process {
     try {
         $steppablePipeline.Process($_)
     } catch {
+        [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::ClearTelemetryContext()
         throw
     }
-}
 
+    finally {
+        $backupTelemetryId = [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::TelemetryId
+        $backupInternalCalledCmdlets = [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::InternalCalledCmdlets
+        [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::ClearTelemetryContext()
+    }
+
+}
 end {
     try {
         $steppablePipeline.End()
+
+        [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::TelemetryId = $backupTelemetryId
+        [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::InternalCalledCmdlets = $backupInternalCalledCmdlets
+        if ($preTelemetryId -eq '') {
+            [Microsoft.Azure.PowerShell.Cmdlets.ResourceMover.module]::Instance.Telemetry.Invoke('Send', $MyInvocation, $parameterSet, $PSCmdlet)
+            [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::ClearTelemetryContext()
+        }
+        [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::TelemetryId = $preTelemetryId
+
     } catch {
+        [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::ClearTelemetryContext()
         throw
     }
-}
+} 
 }

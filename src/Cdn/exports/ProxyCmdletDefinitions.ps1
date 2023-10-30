@@ -12996,6 +12996,8 @@ $tags = @{
     Tag2 = 22
 }
 Get-AzCdnEndpoint -ResourceGroupName testps-rg-da16jm -ProfileName cdn001 -Name endptest001 | Update-AzCdnEndpoint -Tag $tags -DefaultOriginGroupId $originGroup.Id
+.Example
+Update-AzCdnEndpoint -Name cdntestcert -ProfileName classicCDNtest -ResourceGroupName yaoshitest -IsCompressionEnabled:$true
 
 .Inputs
 Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.ICdnIdentity
@@ -13620,6 +13622,8 @@ Updates an existing origin within an endpoint.
 Update-AzCdnOrigin -ResourceGroupName testps-rg-da16jm -ProfileName cdn001 -EndpointName endptest001 -Name origin1 -HttpPort 456 -HttpsPort 789
 .Example
 Get-AzCdnOrigin -ResourceGroupName testps-rg-da16jm -ProfileName cdn001 -EndpointName endptest001 -Name origin1 | Update-AzCdnOrigin -HttpPort 456 -HttpsPort 789
+.Example
+Update-AzCdnOrigin -ResourceGroupName testps-rg-da16jm -ProfileName cdn001 -EndpointName endptest001 -Name origin1 -HttpPort 456 -HttpsPort 789
 
 .Inputs
 Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.ICdnIdentity
@@ -14863,6 +14867,8 @@ Updates an existing origin within an origin group.
 Update-AzFrontDoorCdnOrigin -ResourceGroupName testps-rg-da16jm -ProfileName fdp-v542q6 -OriginGroupName org001 -OriginName ori001 -Weight 999
 .Example
 Get-AzFrontDoorCdnOrigin -ResourceGroupName testps-rg-da16jm -ProfileName fdp-v542q6 -OriginGroupName org001 -OriginName ori001 | Update-AzFrontDoorCdnOrigin -Weight 999
+.Example
+Update-AzFrontDoorCdnOrigin -ResourceGroupName testps-rg-da16jm -ProfileName fdp-v542q6 -OriginGroupName org001 -OriginName ori001 -EnforceCertificateNameCheck:$false
 
 .Inputs
 Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.ICdnIdentity
@@ -15176,6 +15182,8 @@ Updates an existing route with the specified route name under the specified subs
 Update-AzFrontDoorCdnRoute -ResourceGroupName testps-rg-da16jm -ProfileName fdp-v542q6 -EndpointName end001 -Name route001 -EnabledState "Enabled"
 .Example
 Get-AzFrontDoorCdnRoute -ResourceGroupName testps-rg-da16jm -ProfileName fdp-v542q6 -EndpointName end001 -Name route001  | Update-AzFrontDoorCdnRoute -EnabledState "Enabled"
+.Example
+Update-AzFrontDoorCdnRoute -ResourceGroupName testps-rg-da16jm -ProfileName fdp-v542q6 -EndpointName end001 -Name route001 -CompressionSettingIsCompressionEnabled:true
 
 .Inputs
 Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.ICdnIdentity

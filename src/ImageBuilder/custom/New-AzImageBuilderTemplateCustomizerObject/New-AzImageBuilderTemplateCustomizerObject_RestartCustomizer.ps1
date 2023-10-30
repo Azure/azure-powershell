@@ -21,12 +21,12 @@ Create an in-memory object for ImageTemplateCustomizer.
 Create an in-memory object for ImageTemplateCustomizer.
 
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.ImageBuilder.Models.Api20220214.ImageTemplateRestartCustomizer
+Microsoft.Azure.PowerShell.Cmdlets.ImageBuilder.Models.Api20220701.ImageTemplateRestartCustomizer
 .Link
 https://learn.microsoft.com/powershell/module/az.ImageBuilder/new-azimagebuildertemplatecustomizerobject
 #>
 function New-AzImageBuilderTemplateCustomizerObject_RestartCustomizer {
-    [OutputType('Microsoft.Azure.PowerShell.Cmdlets.ImageBuilder.Models.Api20220214.ImageTemplateRestartCustomizer')]
+    [OutputType('Microsoft.Azure.PowerShell.Cmdlets.ImageBuilder.Models.Api20220701.ImageTemplateRestartCustomizer')]
     [CmdletBinding(PositionalBinding=$false)]
     Param(
 
@@ -52,7 +52,7 @@ function New-AzImageBuilderTemplateCustomizerObject_RestartCustomizer {
     )
 
     process {
-        $Object = [Microsoft.Azure.PowerShell.Cmdlets.ImageBuilder.Models.Api20220214.ImageTemplateRestartCustomizer]::New()
+        $Object = [Microsoft.Azure.PowerShell.Cmdlets.ImageBuilder.Models.Api20220701.ImageTemplateRestartCustomizer]::New()
 
         if ($PSBoundParameters.ContainsKey('RestartCheckCommand')) {
             $Object.RestartCheckCommand = $RestartCheckCommand

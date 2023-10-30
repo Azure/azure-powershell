@@ -190,11 +190,11 @@ This command creates a VM from a marketplace image without a Public IP.
 
 ### Example 4: Create a VM with a UserData value:
 ```powershell
-## VM Account
+# VM Account
 $VMLocalAdminUser = "LocalAdminUser";
 $VMLocalAdminSecurePassword = ConvertTo-SecureString "Password" -AsPlainText -Force;
 
-## Azure Account
+# Azure Account
 $LocationName = "eastus";
 $ResourceGroupName = "MyResourceGroup";
 
@@ -209,7 +209,7 @@ $bytes = [System.Text.Encoding]::Unicode.GetBytes($text);
 $userData = [Convert]::ToBase64String($bytes);
 
 # Create VM
-New-AzVM -ResourceGroupName $ResourceGroupName -Name $VMName -Credential $cred -DomainNameLabel $domainNameLabel -UserData $userData;
+New-AzVM -ResourceGroupName $ResourceGroupName -Name $VMName -Credential $Credential -DomainNameLabel $domainNameLabel -UserData $userData;
 $vm = Get-AzVM -ResourceGroupName $ResourceGroupName -Name $VMName -UserData;
 ```
 
@@ -236,19 +236,23 @@ This example deploys a Windows VM from the marketplace in one resource group wit
 
 ### Example 6: Creating a new VM as part of a VMSS with a PlatformFaultDomain value.
 ```powershell
-$resourceGroupName= "Resource Group Name"
-$domainNameLabel = "Domain Name Label Name"
-$vmname = "Virtual Machine Name"
-$platformFaultDomainVMDefaultSet = 2
-$securePassword = "Password" | ConvertTo-SecureString -AsPlainText -Force
-$user = "Username"
-$cred = New-Object System.Management.Automation.PSCredential ($user, $securePassword)
-$vmssName = "Vmss Name";
+$resourceGroupName= "ResourceGroupName";
+$loc = 'eastus';
+New-AzResourceGroup -Name $resourceGroupName -Location $loc -Force;
+
+$domainNameLabel = "d1" + $resourceGroupName;
+$vmname = "vm" + $resourceGroupName;
+$platformFaultDomainVMDefaultSet = 2;
+$vmssFaultDomain = 3;
+$securePassword = <PASSWORD> | ConvertTo-SecureString -AsPlainText -Force;
+$user = <USERNAME>;
+$cred = New-Object System.Management.Automation.PSCredential ($user, $securePassword);
+$vmssName = "vmss" + $resourceGroupName;
 
 $vmssConfig = New-AzVmssConfig -Location $loc -PlatformFaultDomainCount $vmssFaultDomain;
 $vmss = New-AzVmss -ResourceGroupName $resourceGroupName -Name $vmssName -VirtualMachineScaleSet $vmssConfig;
 
-$vm = New-AzVM -ResourceGroupName $resourceGroupName -Name $vmname -Credential $cred -DomainNameLabel $domainNameLabel -PlatformFaultDomain $platformFaultDomainVMDefaultSet -VmssId $vmss.Id
+$vm = New-AzVM -ResourceGroupName $resourceGroupName -Name $vmname -Credential $cred -DomainNameLabel $domainNameLabel -PlatformFaultDomain $platformFaultDomainVMDefaultSet -VmssId $vmss.Id;
 ```
 
 This example creates a new VM as part of a VMSS with a PlatformFaultDomain value.
@@ -329,14 +333,14 @@ $securePassword = "<Password>" | ConvertTo-SecureString -AsPlainText -Force
 $user = "<Username>"
 $cred = New-Object System.Management.Automation.PSCredential ($user, $securePassword)
 
-New-AzResourceGroup -Name $rgname -Location $loc -Force
+New-AzResourceGroup -Name $resourceGroupName -Location $loc -Force
 
 # Create a VM using an Image alias.
-$vmname = 'v' + $rgname
-$domainNameLabel = "d" + $rgname
-$vm = New-AzVM -ResourceGroupName $rgname -Name $vmname -Credential $cred -Image OpenSuseLeap154Gen2 -DomainNameLabel $domainNameLabel
+$vmname = 'v' + $resourceGroupName
+$domainNameLabel = "d" + $resourceGroupName
+$vm = New-AzVM -ResourceGroupName $resourceGroupName -Name $vmname -Credential $cred -Image OpenSuseLeap154Gen2 -DomainNameLabel $domainNameLabel
 
-$vm = Get-AzVM -ResourceGroupName $rgname -Name $vmname
+$vm = Get-AzVM -ResourceGroupName $resourceGroupName -Name $vmname
 ```
 
 This example creates a new VM using the -Image parameter, providing many default values to the VM. 
@@ -757,7 +761,7 @@ Accept wildcard characters: False
 ```
 
 ### -Image
-The friendly image name upon which the VM will be built. The available aliases are: Win2022AzureEditionCore, Win2019Datacenter, Win2016Datacenter, Win2012R2Datacenter, Win2012Datacenter, UbuntuLTS, Ubuntu2204, CentOS, CentOS85Gen2, Debian, Debian11, OpenSuseLeap154Gen2, RHEL, RHELRaw8LVMGen2, SuseSles15SP3, FlatcarLinuxFreeGen2.
+The friendly image name upon which the VM will be built. The available aliases are: Win2022AzureEditionCore, Win2019Datacenter, Win2016Datacenter, Win2012R2Datacenter, Win2012Datacenter, Ubuntu2204, CentOS85Gen2, Debian11, OpenSuseLeap154Gen2, RHELRaw8LVMGen2, SuseSles15SP3, FlatcarLinuxFreeGen2.
 
 ```yaml
 Type: System.String

@@ -54,7 +54,6 @@ using Microsoft.WindowsAzure.Commands.Common.CustomAttributes;
 
 namespace Microsoft.Azure.Commands.Compute
 {
-    [GenericBreakingChangeWithVersion("Consider using the image alias including the version of the distribution you want to use in the \"-Image\" parameter of the \"New-AzVM\" cmdlet. On April 30, 2023, the image deployed using `UbuntuLTS` will reach its end of life. In October 2023, the aliases `UbuntuLTS`, `CentOS`, `Debian`, and `RHEL` will be removed.", "11.0.0", "7.0.0")]
     [GenericBreakingChangeWithVersion("Starting in November 2023 the \"New-AzVM\" cmdlet will deploy with the Trusted Launch configuration by default. To know more about Trusted Launch, please visit https://aka.ms/TLaD", "11.0.0", "7.0.0")]
     [Cmdlet("New", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "VM", SupportsShouldProcess = true, DefaultParameterSetName = "SimpleParameterSet")]
     [OutputType(typeof(PSAzureOperationResponse), typeof(PSVirtualMachine))]
@@ -534,14 +533,6 @@ namespace Microsoft.Azure.Commands.Compute
 
                 if (_cmdlet.DiskFile == null)
                 {
-                    // Temporary message until after the Ignite 2023 release that should remove these outdated image aliases. 
-                    if ((_cmdlet.Image == "CentOS" || _cmdlet.Image == "Debian" || _cmdlet.Image == "RHEL"
-                         || _cmdlet.Image == "UbuntuLTS"))
-                    {
-                        string ImageOutdatedMessage = "You are using the image " + _cmdlet.Image + ", which is outdated and this image name will be removed in October 2023. Please update to a newer versioned image alias as seen here, [Find and use Azure Marketplace VM images with Azure PowerShell](https://learn.microsoft.com/en-us/azure/virtual-machines/windows/cli-ps-findimage#default-images).";
-                        _cmdlet.WriteInformation(ImageOutdatedMessage, new string[] { "PSHOST" });
-                    }
-
                     ImageAndOsType = await _client.UpdateImageAndOsTypeAsync(
                         ImageAndOsType, _cmdlet.ResourceGroupName, _cmdlet.Image, Location);
                 }

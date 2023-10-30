@@ -14,10 +14,10 @@ Updates the configs of Azure PowerShell.
 
 ```
 Update-AzConfig [-AppliesTo <String>] [-Scope <ConfigScope>] [-DefaultProfile <IAzureContextContainer>]
- [-WhatIf] [-Confirm] [-DefaultSubscriptionForLogin <String>] [-DisableErrorRecordsPersistence <Boolean>]
- [-DisplayBreakingChangeWarning <Boolean>] [-DisplayRegionIdentified <Boolean>]
- [-DisplaySurveyMessage <Boolean>] [-EnableDataCollection <Boolean>] [-EnableLoginByWam <Boolean>]
- [<CommonParameters>]
+ [-WhatIf] [-Confirm] [-CheckForUpgrade <Boolean>] [-DefaultSubscriptionForLogin <String>]
+ [-DisableErrorRecordsPersistence <Boolean>] [-DisplayBreakingChangeWarning <Boolean>]
+ [-DisplayRegionIdentified <Boolean>] [-DisplaySurveyMessage <Boolean>] [-EnableDataCollection <Boolean>]
+ [-EnableLoginByWam <Boolean>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -90,6 +90,21 @@ Required: False
 Position: Named
 Default value: None
 Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -CheckForUpgrade
+When enabled, Azure PowerShell will check for updates automatically and display a hint message when an update is available. The default value will be changed from false to true in Az version 11.0.0.
+
+```yaml
+Type: System.Boolean
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
 ```
 

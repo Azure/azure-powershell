@@ -315,7 +315,7 @@ namespace Microsoft.WindowsAzure.Commands.Common.Storage.ResourceModel
             Uri blobUri = uriBuilder.ToUri();
             if (storageContext.StorageAccount != null && storageContext.StorageAccount.Credentials != null && storageContext.StorageAccount.Credentials.IsSAS)
             {
-                blobUri= new Uri(blobUri.ToString() + storageContext.StorageAccount.Credentials.SASToken);
+                blobUri= new Uri(blobUri.ToString() + "?" + Util.GetSASStringWithoutQuestionMark(storageContext.StorageAccount.Credentials.SASToken));
             }
             this.privateBlobBaseClient = Util.GetTrack2BlobClient(blobUri, storageContext, options);
 

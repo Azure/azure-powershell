@@ -15,8 +15,8 @@ Deletes a file.
 
 ### ShareName (Default)
 ```
-Remove-AzStorageFile [-ShareName] <String> [-Path] <String> [-PassThru] [-Context <IStorageContext>]
- [-ServerTimeoutPerRequest <Int32>] [-ClientTimeoutPerRequest <Int32>]
+Remove-AzStorageFile [-ShareName] <String> [-Path] <String> [-PassThru] [-DisAllowTrailingDot]
+ [-Context <IStorageContext>] [-ServerTimeoutPerRequest <Int32>] [-ClientTimeoutPerRequest <Int32>]
  [-DefaultProfile <IAzureContextContainer>] [-ConcurrentTaskCount <Int32>] [-WhatIf] [-Confirm]
  [<CommonParameters>]
 ```
@@ -147,6 +147,21 @@ Required: True
 Position: 0
 Default value: None
 Accept pipeline input: True (ByPropertyName, ByValue)
+Accept wildcard characters: False
+```
+
+### -DisAllowTrailingDot
+Disallow trailing dot (.) to suffix directory and file names.
+
+```yaml
+Type: System.Management.Automation.SwitchParameter
+Parameter Sets: ShareName
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
 Accept wildcard characters: False
 ```
 

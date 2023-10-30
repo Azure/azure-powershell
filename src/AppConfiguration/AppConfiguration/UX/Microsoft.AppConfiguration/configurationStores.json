@@ -1,85 +1,123 @@
 {
-    "resourceType": "configurationStores",
-    "apiVersion": "2020-06-01",
-    "learnMore": {
-        "url": "https://learn.microsoft.com/powershell/module/az.appconfiguration/"
-    },
-    "commands": [
+  "resourceType": "configurationStores",
+  "apiVersion": "2022-05-01",
+  "learnMore": {
+    "url": "https://learn.microsoft.com/powershell/module/az.appconfiguration"
+  },
+  "commands": [
+    {
+      "name": "Get-AzAppConfigurationStore",
+      "description": "Get or list app configuration stores.",
+      "path": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AppConfiguration/configurationStores/{configStoreName}",
+      "help": {
+        "learnMore": {
+          "url": "https://learn.microsoft.com/powershell/module/az.appconfiguration/get-azappconfigurationstore"
+        },
+        "parameterSets": [
+          {
+            "parameters": [
+              "-Name <String>",
+              "-ResourceGroupName <String>",
+              "[-SubscriptionId <String[]>]"
+            ]
+          }
+        ]
+      },
+      "examples": [
         {
-            "name": "Get-AzAppConfigurationStore",
-            "description": "Get or list app configuration stores.",
-            "path": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AppConfiguration/configurationStores/{configStoreName}",
-            "help": {
-                "learnMore": {
-                    "url": "https://learn.microsoft.com/powershell/module/az.appconfiguration/get-azappconfigurationstore"
-                },
-                "parameterSets": [
-                    {
-                        "parameters": [
-                            "-Name <String>",
-                            "-ResourceGroupName <String>",
-                            "[-SubscriptionId <String[]>]"
-                        ]
-                    }
-                ]
+          "description": "Get or list app configuration stores.",
+          "parameters": [
+            {
+              "name": "-Name",
+              "value": "[Path.configStoreName]"
             },
-            "examples": [
+            {
+              "name": "-ResourceGroupName",
+              "value": "[Path.resourceGroupName]"
+            },
+            {
+              "name": "-SubscriptionId",
+              "value": "[Path.subscriptionId]"
+            }
+          ]
+        }
+      ]
+    },
+    {
+        "name": "Get-AzAppConfigurationStoreKey",
+        "description": "Lists the access key for the specified configuration store.",
+        "path": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AppConfiguration/configurationStores/{configStoreName}/ListKeys",
+        "help": {
+            "learnMore": {
+                "url": "https://learn.microsoft.com/powershell/module/az.appconfiguration/get-azappconfigurationstorekey"
+            },
+            "parameterSets": [
                 {
-                    "description": "Gets an App Configuration store.",
                     "parameters": [
-                        {
-                            "name": "-ResourceGroupName",
-                            "value": "[path.resourceGroupName]"
-                        },
-                        {
-                            "name": "-Name",
-                            "value": "[path.configStoreName]"
-                        },
-                        {
-                            "name": "-SubscriptionId",
-                            "value": "[path.subscriptionId]"
-                        }
+                        "-Name <String>",
+                        "-ResourceGroupName <String>",
+                        "[-SubscriptionId <String[]>]"
                     ]
                 }
             ]
         },
-        {
-            "name": "Get-AzAppConfigurationStoreKey",
-            "description": "Lists the access key for the specified configuration store.",
-            "path": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AppConfiguration/configurationStores/{configStoreName}/ListKeys",
-            "help": {
-                "learnMore": {
-                    "url": "https://learn.microsoft.com/powershell/module/az.appconfiguration/get-azappconfigurationstorekey"
-                },
-                "parameterSets": [
+        "examples": [
+            {
+                "description": "Lists all store keys of an app configuration store.",
+                "parameters": [
                     {
-                        "parameters": [
-                            "-Name <String>",
-                            "-ResourceGroupName <String>",
-                            "[-SubscriptionId <String[]>]"
-                        ]
+                        "name": "-ResourceGroupName",
+                        "value": "[path.resourceGroupName]"
+                    },
+                    {
+                        "name": "-Name",
+                        "value": "[path.configStoreName]"
+                    },
+                    {
+                        "name": "-SubscriptionId",
+                        "value": "[path.subscriptionId]"
                     }
                 ]
-            },
-            "examples": [
-                {
-                    "description": "Lists all store keys of an app configuration store.",
-                    "parameters": [
-                        {
-                            "name": "-ResourceGroupName",
-                            "value": "[path.resourceGroupName]"
-                        },
-                        {
-                            "name": "-Name",
-                            "value": "[path.configStoreName]"
-                        },
-                        {
-                            "name": "-SubscriptionId",
-                            "value": "[path.subscriptionId]"
-                        }
-                    ]
-                }
+            }
+        ]
+    },
+    {
+      "name": "Remove-AzAppConfigurationStore",
+      "description": "Deletes a configuration store.",
+      "path": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AppConfiguration/configurationStores/{configStoreName}",
+      "help": {
+        "learnMore": {
+          "url": "https://learn.microsoft.com/powershell/module/az.appconfiguration/remove-azappconfigurationstore"
+        },
+        "parameterSets": [
+          {
+            "parameters": [
+              "-Name <String>",
+              "-ResourceGroupName <String>",
+              "[-SubscriptionId <String>]"
             ]
+          }
+        ]
+      },
+      "examples": [
+        {
+          "description": "Deletes a configuration store.",
+          "parameters": [
+            {
+              "name": "-Name",
+              "value": "[Path.configStoreName]"
+            },
+            {
+              "name": "-ResourceGroupName",
+              "value": "[Path.resourceGroupName]"
+            },
+            {
+              "name": "-SubscriptionId",
+              "value": "[Path.subscriptionId]"
+            }
+          ]
         }
-    ]
+      ]
+    }
+  ]
 }

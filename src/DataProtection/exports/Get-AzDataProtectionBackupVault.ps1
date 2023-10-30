@@ -25,11 +25,14 @@ Get-AzDataProtectionBackupVault
 Get-AzDataProtectionBackupVault -SubscriptionId "xxxx-xxx-xxxx" -ResourceGroupName sarath-rg
 .Example
 Get-AzDataProtectionBackupVault -SubscriptionId "xxxx-xxx-xxxx" -ResourceGroupName sarath-rg -VaultName sarath-vault
+.Example
+$vault = Get-AzDataProtectionBackupVault -SubscriptionId "xxxx-xxx-xxxx" -ResourceGroupName hiaga-rg -VaultName hiaga-vault
+$vault.SecureScore
 
 .Inputs
 Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.IDataProtectionIdentity
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api202301.IBackupVaultResource
+Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20230501.IBackupVaultResource
 .Notes
 COMPLEX PARAMETER PROPERTIES
 
@@ -45,6 +48,7 @@ INPUTOBJECT <IDataProtectionIdentity>: Identity Parameter
   [RecoveryPointId <String>]: 
   [RequestName <String>]: 
   [ResourceGroupName <String>]: The name of the resource group. The name is case insensitive.
+  [ResourceGuardProxyName <String>]: name of the resource guard proxy
   [ResourceGuardsName <String>]: The name of ResourceGuard
   [SubscriptionId <String>]: The ID of the target subscription. The value must be an UUID.
   [VaultName <String>]: The name of the backup vault.
@@ -52,7 +56,7 @@ INPUTOBJECT <IDataProtectionIdentity>: Identity Parameter
 https://learn.microsoft.com/powershell/module/az.dataprotection/get-azdataprotectionbackupvault
 #>
 function Get-AzDataProtectionBackupVault {
-[OutputType([Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api202301.IBackupVaultResource])]
+[OutputType([Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20230501.IBackupVaultResource])]
 [CmdletBinding(DefaultParameterSetName='Get', PositionalBinding=$false)]
 param(
     [Parameter(ParameterSetName='Get')]

@@ -144,7 +144,8 @@ Accept wildcard characters: False
 ```
 
 ### -DefaultProfile
-The credentials, account, tenant, and subscription used for communication with Azure.
+The DefaultProfile parameter is not functional.
+Use the SubscriptionId parameter when available if executing the cmdlet against a different subscription.
 
 ```yaml
 Type: System.Management.Automation.PSObject
@@ -178,7 +179,7 @@ Describes a Machine Extension.
 To construct, see NOTES section for EXTENSIONPARAMETER properties and create a hash table.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.Api20220310.IMachineExtension
+Type: Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.Api20221227.IMachineExtension
 Parameter Sets: Create, CreateViaIdentity
 Aliases:
 
@@ -557,63 +558,15 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.Api20220310.IMachineExtension
+### Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.Api20221227.IMachineExtension
 
 ### Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.IConnectedMachineIdentity
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.Api20220310.IMachineExtension
+### Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.Api20221227.IMachineExtension
 
 ## NOTES
-
-ALIASES
-
-COMPLEX PARAMETER PROPERTIES
-
-To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
-
-
-`EXTENSIONPARAMETER <IMachineExtension>`: Describes a Machine Extension.
-  - `Location <String>`: The geo-location where the resource lives
-  - `[Tag <ITrackedResourceTags>]`: Resource tags.
-    - `[(Any) <String>]`: This indicates any property can be added to this object.
-  - `[AutoUpgradeMinorVersion <Boolean?>]`: Indicates whether the extension should use a newer minor version if one is available at deployment time. Once deployed, however, the extension will not upgrade minor versions unless redeployed, even with this property set to true.
-  - `[EnableAutomaticUpgrade <Boolean?>]`: Indicates whether the extension should be automatically upgraded by the platform if there is a newer version available.
-  - `[ForceUpdateTag <String>]`: How the extension handler should be forced to update even if the extension configuration has not changed.
-  - `[InstanceViewName <String>]`: The machine extension name.
-  - `[InstanceViewType <String>]`: Specifies the type of the extension; an example is "CustomScriptExtension".
-  - `[InstanceViewTypeHandlerVersion <String>]`: Specifies the version of the script handler.
-  - `[MachineExtensionType <String>]`: Specifies the type of the extension; an example is "CustomScriptExtension".
-  - `[ProtectedSetting <IMachineExtensionPropertiesProtectedSettings>]`: The extension can contain either protectedSettings or protectedSettingsFromKeyVault or no protected settings at all.
-    - `[(Any) <Object>]`: This indicates any property can be added to this object.
-  - `[Publisher <String>]`: The name of the extension handler publisher.
-  - `[Setting <IMachineExtensionPropertiesSettings>]`: Json formatted public settings for the extension.
-    - `[(Any) <Object>]`: This indicates any property can be added to this object.
-  - `[StatusCode <String>]`: The status code.
-  - `[StatusDisplayStatus <String>]`: The short localizable label for the status.
-  - `[StatusLevel <StatusLevelTypes?>]`: The level code.
-  - `[StatusMessage <String>]`: The detailed status message, including for alerts and error messages.
-  - `[StatusTime <DateTime?>]`: The time of the status.
-  - `[SystemDataCreatedAt <DateTime?>]`: The timestamp of resource creation (UTC).
-  - `[SystemDataCreatedBy <String>]`: The identity that created the resource.
-  - `[SystemDataCreatedByType <CreatedByType?>]`: The type of identity that created the resource.
-  - `[SystemDataLastModifiedAt <DateTime?>]`: The timestamp of resource last modification (UTC)
-  - `[SystemDataLastModifiedBy <String>]`: The identity that last modified the resource.
-  - `[SystemDataLastModifiedByType <CreatedByType?>]`: The type of identity that last modified the resource.
-  - `[TypeHandlerVersion <String>]`: Specifies the version of the script handler.
-
-`INPUTOBJECT <IConnectedMachineIdentity>`: Identity Parameter
-  - `[ExtensionName <String>]`: The name of the machine extension.
-  - `[GroupName <String>]`: The name of the private link resource.
-  - `[Id <String>]`: Resource identity path
-  - `[Location <String>]`: The location of the target resource.
-  - `[MachineName <String>]`: The name of the hybrid machine.
-  - `[PrivateEndpointConnectionName <String>]`: The name of the private endpoint connection.
-  - `[PrivateLinkScopeId <String>]`: The id (Guid) of the Azure Arc PrivateLinkScope resource.
-  - `[ResourceGroupName <String>]`: The name of the resource group. The name is case insensitive.
-  - `[ScopeName <String>]`: The name of the Azure Arc PrivateLinkScope resource.
-  - `[SubscriptionId <String>]`: The ID of the target subscription.
 
 ## RELATED LINKS
 

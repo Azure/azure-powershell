@@ -23,35 +23,35 @@ Create or update a ScalingPlanPooledSchedule.
 New-AzWvdScalingPlanPooledSchedule -ResourceGroupName rgName `
                                         -ScalingPlanName spName `
                                         -ScalingPlanScheduleName scheduleName `
-                                        -daysOfWeek @('Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday') `
-                                        -rampUpStartTimeHour 6 `
-                                        -rampUpStartTimeMinute 30 `
-                                        -rampUpLoadBalancingAlgorithm BreadthFirst `
-                                        -rampUpMinimumHostsPct 20 `
-                                        -rampUpCapacityThresholdPct 20 `
-                                        -peakStartTimeHour 8 `
-                                        -peakStartTimeMinute 30 `
-                                        -peakLoadBalancingAlgorithm DepthFirst `
+                                        -DaysOfWeek @('Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday') `
+                                        -RampUpStartTimeHour 6 `
+                                        -RampUpStartTimeMinute 30 `
+                                        -RampUpLoadBalancingAlgorithm BreadthFirst `
+                                        -RampUpMinimumHostsPct 20 `
+                                        -RampUpCapacityThresholdPct 20 `
+                                        -PeakStartTimeHour 8 `
+                                        -PeakStartTimeMinute 30 `
+                                        -PeakLoadBalancingAlgorithm DepthFirst `
                                         -RampDownStartTimeHour 16 `
                                         -RampDownStartTimeMinute 0 `
-                                        -rampDownLoadBalancingAlgorithm BreadthFirst `
-                                        -rampDownMinimumHostsPct 20 `
-                                        -rampDownCapacityThresholdPct 20 `
-                                        -rampDownForceLogoffUser:$true `
-                                        -rampDownWaitTimeMinute 30 `
-                                        -rampDownNotificationMessage "Log out now, please." `
-                                        -rampDownStopHostsWhen ZeroSessions `
-                                        -offPeakStartTimeHour 22 `
-                                        -offPeakStartTimeMinute 45 `
-                                        -offPeakLoadBalancingAlgorithm DepthFirst
+                                        -RampDownLoadBalancingAlgorithm BreadthFirst `
+                                        -RampDownMinimumHostsPct 20 `
+                                        -RampDownCapacityThresholdPct 20 `
+                                        -RampDownForceLogoffUser:$true `
+                                        -RampDownWaitTimeMinute 30 `
+                                        -RampDownNotificationMessage "Log out now, please." `
+                                        -RampDownStopHostsWhen ZeroSessions `
+                                        -OffPeakStartTimeHour 22 `
+                                        -OffPeakStartTimeMinute 45 `
+                                        -OffPeakLoadBalancingAlgorithm DepthFirst
 
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.Api202209.IScalingPlanPooledSchedule
+Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.Api20230905.IScalingPlanPooledSchedule
 .Link
 https://learn.microsoft.com/powershell/module/az.desktopvirtualization/new-azwvdscalingplanpooledschedule
 #>
 function New-AzWvdScalingPlanPooledSchedule {
-[OutputType([Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.Api202209.IScalingPlanPooledSchedule])]
+[OutputType([Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.Api20230905.IScalingPlanPooledSchedule])]
 [CmdletBinding(DefaultParameterSetName='CreateExpanded', PositionalBinding=$false, SupportsShouldProcess, ConfirmImpact='Medium')]
 param(
     [Parameter(Mandatory)]
@@ -295,6 +295,10 @@ begin {
         }
         $cmdInfo = Get-Command -Name $mapping[$parameterSet]
         [Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Runtime.MessageAttributeHelper]::ProcessCustomAttributesAtRuntime($cmdInfo, $MyInvocation, $parameterSet, $PSCmdlet)
+        if ($null -ne $MyInvocation.MyCommand -and [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PromptedPreviewMessageCmdlets -notcontains $MyInvocation.MyCommand.Name -and [Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Runtime.MessageAttributeHelper]::ContainsPreviewAttribute($cmdInfo, $MyInvocation)){
+            [Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Runtime.MessageAttributeHelper]::ProcessPreviewMessageAttributesAtRuntime($cmdInfo, $MyInvocation, $parameterSet, $PSCmdlet)
+            [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PromptedPreviewMessageCmdlets.Enqueue($MyInvocation.MyCommand.Name)
+        }
         $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Cmdlet)
         $scriptCmd = {& $wrappedCmd @PSBoundParameters}
         $steppablePipeline = $scriptCmd.GetSteppablePipeline($MyInvocation.CommandOrigin)

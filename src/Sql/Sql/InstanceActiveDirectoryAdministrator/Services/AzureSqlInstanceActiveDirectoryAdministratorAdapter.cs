@@ -102,7 +102,7 @@ namespace Microsoft.Azure.Commands.Sql.InstanceActiveDirectoryAdministrator.Serv
                     ResourceGroupName = resourceGroupName,
                     InstanceName = managedInstanceName,
                     DisplayName = administrator.Login,
-                    ObjectId = administrator.Sid
+                    ObjectId = administrator.Sid.Value
                 };
             }).ToList();
         }
@@ -144,7 +144,7 @@ namespace Microsoft.Azure.Commands.Sql.InstanceActiveDirectoryAdministrator.Serv
             model.ResourceGroupName = resourceGroup;
             model.InstanceName = managedInstanceName;
             model.DisplayName = admin.Login;
-            model.ObjectId = admin.Sid;
+            model.ObjectId = admin.Sid.Value;
 
             return model;
         }

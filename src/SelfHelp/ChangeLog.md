@@ -18,6 +18,11 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
+* Added support for discovery API as the first point of entry in Help RP.
+* Added support for new solution types (Diagnostics, Azure Solutions, Troubleshooters) in preview
+* Enabled customers to access Azure curated, relevant self-help solutions including diagnostics and Azure solutions at the resource and subscription scopes.
+* Implemented filter parameters such as solutionType, problemClassificationId/problemId, resourceId, and resourceType to enable customers to get more granular results through discovery API.
+* Enabled customers to trigger one or more applicable solutions such as diagnostics, components within Azure solutions, and Troubleshooters
 
 ## Version 0.1.0
 * First preview release for module Az.SelfHelp

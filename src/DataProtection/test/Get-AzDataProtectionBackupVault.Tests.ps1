@@ -15,5 +15,6 @@ Describe 'Get-AzDataProtectionBackupVault' {
     It 'Get' {
         $vault = Get-AzDataProtectionBackupVault -SubscriptionId $env.TestBackupVault.SubscriptionId -ResourceGroupName $env.TestBackupVault.ResourceGroupName -VaultName $env.TestBackupVault.VaultName
         $vault.Name | Should be $env.TestBackupVault.VaultName
+        $vault.SecureScore | Should be "None"
     }
 }

@@ -326,8 +326,8 @@ Test Cassandra migrate throughput cmdlets
 #>
 function Test-CassandraMigrateThroughputCmdlets
 {
-  $AccountName = "cassandra-db2745"
-  $rgName = "CosmosDBResourceGroup45"
+  $AccountName = "cassandra-db2747"
+  $rgName = "CosmosDBResourceGroup47"
   $KeyspaceName = "KeyspaceName3"
   $TableName = "tableName"
   $apiKind = "Cassandra"
