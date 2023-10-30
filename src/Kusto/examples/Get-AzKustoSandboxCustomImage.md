@@ -13,7 +13,7 @@ The above command returns all Kusto sandbox custom images in cluster "myCluster"
 
 ### Example 2: Get a sandbox custom image by name in cluster
 ```powershell
-Get-AzKustoSandboxCustomImage -ClusterName "myCluster" -Name "myImage" -ResourceGroupName "myResourceGroup".
+Get-AzKustoSandboxCustomImage -ClusterName "myCluster" -Name "myImage" -ResourceGroupName "myResourceGroup"
 ```
 
 ```output
