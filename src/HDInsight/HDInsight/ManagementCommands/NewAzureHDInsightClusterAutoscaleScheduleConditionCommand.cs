@@ -14,7 +14,6 @@
 
 using Microsoft.Azure.Commands.HDInsight.Commands;
 using Microsoft.Azure.Commands.HDInsight.Models;
-using Week = Microsoft.Azure.Commands.HDInsight.Models.AzureHDInsightDaysOfWeek;
 using System;
 using System.Collections.Generic;
 using System.Management.Automation;
