@@ -31,13 +31,13 @@ Describe 'Edit-AzRecoveryServicesBackupRetentionPolicyClientObject' {
  
         $pol1=Get-AzRecoveryServicesPolicyTemplate -DatasourceType AzureVM
         Edit-AzRecoveryServicesBackupRetentionPolicyClientObject -Policy $pol1 -DatasourceType AzureVM -EnableDailyRetention 1 -DailyRetentionDurationInDays 56 -EnableWeeklyRetention 1 -WeeklyRetentionDurationInWeeks 34 -WeeklyRetentionDaysOfTheWeek Sunday -EnableMonthlyRetention 1 -MonthlyRetentionScheduleType Daily -MonthlyRetentionDurationInMonths 54 -MonthlyRetentionDaysOfTheMonth 1,2,3 -EnableYearlyRetention 1 -YearlyRetentionScheduleType Daily -YearlyRetentionDurationInYears 47 -YearlyRetentionMonthsOfTheYear March, April -YearlyRetentionDaysOfTheMonth 2,4,5
-        New-AzRecoveryServicesBackupPolicy -ResourceGroupName $rgName -VaultName $vaultName -Policy $pol1 -PolicyName $newPolicyName
+        New-AzRecoveryServicesBackupProtectionPolicy -ResourceGroupName $rgName -VaultName $vaultName -Policy $pol1 -PolicyName $newPolicyName
         
         # this Policy should be there - then delete it and then this policy shouldn't be there
         $policy=Get-AzRecoveryServicesBackupProtectionPolicy -ResourceGroupName $rgName -VaultName $vaultName -Name $newPolicyName
         $policy.Name | Should be $newPolicyName
  
-        Remove-AzRecoveryServicesBackupPolicy -PolicyName $newPolicyName -ResourceGroupName $rgName -VaultName $vaultName
+        Remove-AzRecoveryServicesBackupProtectionPolicy -PolicyName $newPolicyName -ResourceGroupName $rgName -VaultName $vaultName
         #$pol = Get-AzRecoveryServicesBackupProtectionPolicy -VaultName $vaultName -ResourceGroupName $rgName -Name $newPolicyName
         #$pol | Should -Be "NotFound"
     }
@@ -64,7 +64,7 @@ Describe 'Edit-AzRecoveryServicesBackupRetentionPolicyClientObject' {
         Edit-AzRecoveryServicesBackupRetentionPolicyClientObject -Policy $pol1 -DatasourceType AzureVM -EnableYearlyRetention $true -YearlyRetentionScheduleType Weekly -YearlyRetentionDurationInYears 67 -YearlyRetentionMonthsOfTheYear May, June -YearlyRetentionDaysOfTheWeek Monday, Tuesday -YearlyRetentionWeeksOfTheMonth First, Third
         
         # create new policy with modified retention policy
-        New-AzRecoveryServicesBackupPolicy -ResourceGroupName $rgName -VaultName $vaultName -Policy $pol1 -PolicyName $newPolicyName
+        New-AzRecoveryServicesBackupProtectionPolicy -ResourceGroupName $rgName -VaultName $vaultName -Policy $pol1 -PolicyName $newPolicyName
  
         # this Policy should be there - then delete it and then this policy shouldn't be there
         $policy=Get-AzRecoveryServicesBackupProtectionPolicy -ResourceGroupName $rgName -VaultName $vaultName -Name $newPolicyName
@@ -85,7 +85,7 @@ Describe 'Edit-AzRecoveryServicesBackupRetentionPolicyClientObject' {
         $policy.Property.RetentionPolicy.YearlySchedule.MonthsOfYear | Should be "May","June"
  
         # remove policy
-        Remove-AzRecoveryServicesBackupPolicy -PolicyName $newPolicyName -ResourceGroupName $rgName -VaultName $vaultName
+        Remove-AzRecoveryServicesBackupProtectionPolicy -PolicyName $newPolicyName -ResourceGroupName $rgName -VaultName $vaultName
         #$pol = Get-AzRecoveryServicesBackupProtectionPolicy -VaultName $vaultName -ResourceGroupName $rgName -Name $newPolicyName
         #$pol | Should -Be "NotFound"
     }
@@ -118,7 +118,7 @@ Describe 'Edit-AzRecoveryServicesBackupRetentionPolicyClientObject' {
         Edit-AzRecoveryServicesBackupRetentionPolicyClientObject -Policy $pol1 -DatasourceType AzureVM -EnableYearlyRetention $true -YearlyRetentionScheduleType Daily -YearlyRetentionMonthsOfTheYear May,April -YearlyRetentionDaysOfTheMonth @("1","2","3") -YearlyRetentionDurationInYears 43        
         
         # create new policy with modified retention policy
-        New-AzRecoveryServicesBackupPolicy -ResourceGroupName $rgName -VaultName $vaultName -Policy $pol1 -PolicyName $newPolicyName
+        New-AzRecoveryServicesBackupProtectionPolicy -ResourceGroupName $rgName -VaultName $vaultName -Policy $pol1 -PolicyName $newPolicyName
  
         # this Policy should be there - then delete it and then this policy shouldn't be there
         $policy=Get-AzRecoveryServicesBackupProtectionPolicy -ResourceGroupName $rgName -VaultName $vaultName -Name $newPolicyName
@@ -136,7 +136,7 @@ Describe 'Edit-AzRecoveryServicesBackupRetentionPolicyClientObject' {
         $policy.Property.RetentionPolicy.YearlySchedule.RetentionScheduleDaily.DaysOfTheMonth[-1].Date | Should be 3
  
         # remove policy
-        Remove-AzRecoveryServicesBackupPolicy -PolicyName $newPolicyName -ResourceGroupName $rgName -VaultName $vaultName
+        Remove-AzRecoveryServicesBackupProtectionPolicy -PolicyName $newPolicyName -ResourceGroupName $rgName -VaultName $vaultName
         #$pol = Get-AzRecoveryServicesBackupProtectionPolicy -VaultName $vaultName -ResourceGroupName $rgName -Name $newPolicyName
         #$pol | Should -Be "NotFound"
     }
@@ -170,7 +170,7 @@ Describe 'Edit-AzRecoveryServicesBackupRetentionPolicyClientObject' {
         Edit-AzRecoveryServicesBackupRetentionPolicyClientObject -Policy $pol1 -DatasourceType SAPHANA -ModifyLogBackup -LogRetentionPeriodInDays 23 
  
         # create new policy with modified retention policy
-        New-AzRecoveryServicesBackupPolicy -ResourceGroupName $rgName -VaultName $vaultName -Policy $pol1 -PolicyName $newPolicyName
+        New-AzRecoveryServicesBackupProtectionPolicy -ResourceGroupName $rgName -VaultName $vaultName -Policy $pol1 -PolicyName $newPolicyName
  
         # this Policy should be there - then delete it and then this policy shouldn't be there
         $policy=Get-AzRecoveryServicesBackupProtectionPolicy -ResourceGroupName $rgName -VaultName $vaultName -Name $newPolicyName
@@ -198,7 +198,7 @@ Describe 'Edit-AzRecoveryServicesBackupRetentionPolicyClientObject' {
         $LogBackupPolicy.RetentionPolicy.RetentionDurationCount | Should be "23"
  
         # remove policy
-        Remove-AzRecoveryServicesBackupPolicy -PolicyName $newPolicyName -ResourceGroupName $rgName -VaultName $vaultName
+        Remove-AzRecoveryServicesBackupProtectionPolicy -PolicyName $newPolicyName -ResourceGroupName $rgName -VaultName $vaultName
         #$pol = Get-AzRecoveryServicesBackupProtectionPolicy -VaultName $vaultName -ResourceGroupName $rgName -Name $newPolicyName
         #$pol | Should -Be "NotFound"
     }
@@ -213,7 +213,7 @@ Describe 'Edit-AzRecoveryServicesBackupRetentionPolicyClientObject' {
         $pol1=Get-AzRecoveryServicesPolicyTemplate -DatasourceType SAPHANA
 
         #create a new policy with enable tiering
-        New-AzRecoveryServicesBackupPolicy -ResourceGroupName $rgName -VaultName $vaultName -Policy $pol1 -PolicyName $newPolicyName -MoveToArchiveTier $true -TierAfterDuration 54 -TieringMode TierAfter -TierAfterDurationType Days
+        New-AzRecoveryServicesBackupProtectionPolicy -ResourceGroupName $rgName -VaultName $vaultName -Policy $pol1 -PolicyName $newPolicyName -MoveToArchiveTier $true -TierAfterDuration 54 -TieringMode TierAfter -TierAfterDurationType Days
 
         $policy=Get-AzRecoveryServicesBackupProtectionPolicy -ResourceGroupName $rgName -VaultName $vaultName -Name $newPolicyName
 
@@ -224,7 +224,7 @@ Describe 'Edit-AzRecoveryServicesBackupRetentionPolicyClientObject' {
         $policy.Property.SubProtectionPolicy[0].TieringPolicy.AdditionalProperties.ArchivedRP.TieringMode | Should be "TierAfter"
 
         # remove policy
-        Remove-AzRecoveryServicesBackupPolicy -PolicyName $newPolicyName -ResourceGroupName $rgName -VaultName $vaultName
+        Remove-AzRecoveryServicesBackupProtectionPolicy -PolicyName $newPolicyName -ResourceGroupName $rgName -VaultName $vaultName
         #$pol = Get-AzRecoveryServicesBackupProtectionPolicy -VaultName $vaultName -ResourceGroupName $rgName -Name $newPolicyName
         #$pol | Should -Be "NotFound"
     }
@@ -239,7 +239,7 @@ Describe 'Edit-AzRecoveryServicesBackupRetentionPolicyClientObject' {
         $pol1=Get-AzRecoveryServicesPolicyTemplate -DatasourceType AzureVM
 
         #create a new policy with enable tiering
-        New-AzRecoveryServicesBackupPolicy -ResourceGroupName $rgName -VaultName $vaultName -Policy $pol1 -PolicyName $newPolicyName -MoveToArchiveTier $true -TieringMode TierRecommended
+        New-AzRecoveryServicesBackupProtectionPolicy -ResourceGroupName $rgName -VaultName $vaultName -Policy $pol1 -PolicyName $newPolicyName -MoveToArchiveTier $true -TieringMode TierRecommended
 
         $policy=Get-AzRecoveryServicesBackupProtectionPolicy -ResourceGroupName $rgName -VaultName $vaultName -Name $newPolicyName
 
@@ -250,7 +250,7 @@ Describe 'Edit-AzRecoveryServicesBackupRetentionPolicyClientObject' {
         $policy.Property.TieringPolicy.AdditionalProperties.ArchivedRP.TieringMode | Should be "TierRecommended"
 
         # remove policy
-        Remove-AzRecoveryServicesBackupPolicy -PolicyName $newPolicyName -ResourceGroupName $rgName -VaultName $vaultName
+        Remove-AzRecoveryServicesBackupProtectionPolicy -PolicyName $newPolicyName -ResourceGroupName $rgName -VaultName $vaultName
         #$pol = Get-AzRecoveryServicesBackupProtectionPolicy -VaultName $vaultName -ResourceGroupName $rgName -Name $newPolicyName
         #$pol | Should -Be "NotFound"
     }

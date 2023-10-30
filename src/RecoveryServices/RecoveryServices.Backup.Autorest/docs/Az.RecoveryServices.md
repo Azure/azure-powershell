@@ -34,13 +34,13 @@ Gets backup protection policies for a recovery services vault.
 ### [Get-AzRecoveryServicesPolicyTemplate](Get-AzRecoveryServicesPolicyTemplate.md)
 Gets default policy template for a selected datasource type.
 
-### [New-AzRecoveryServicesBackupPolicy](New-AzRecoveryServicesBackupPolicy.md)
+### [New-AzRecoveryServicesBackupProtectionPolicy](New-AzRecoveryServicesBackupProtectionPolicy.md)
 Creates a new backup policy in a given recovery services vault
 
 ### [Register-AzRecoveryServicesBackupContainer](Register-AzRecoveryServicesBackupContainer.md)
 The Register-AzRecoveryServicesBackupContainer cmdlet registers an Azure VM for AzureWorkloads with specific DatasourceType.
 
-### [Remove-AzRecoveryServicesBackupPolicy](Remove-AzRecoveryServicesBackupPolicy.md)
+### [Remove-AzRecoveryServicesBackupProtectionPolicy](Remove-AzRecoveryServicesBackupProtectionPolicy.md)
 Deletes specified backup policy from your Recovery Services Vault.
 This is an asynchronous operation.
 Status of the\r\noperation can be fetched using GetProtectionPolicyOperationResult API.

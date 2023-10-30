@@ -89,8 +89,8 @@
       "Headers": {
         "x-ms-unique-id": [ "3" ],
         "x-ms-client-request-id": [ "ab4d513c-af32-4e2a-9d88-e8d9ebd6829e" ],
-        "CommandName": [ "Remove-AzRecoveryServicesBackupPolicy" ],
-        "FullCommandName": [ "Remove-AzRecoveryServicesBackupPolicy_Delete" ],
+        "CommandName": [ "Remove-AzRecoveryServicesBackupProtectionPolicy" ],
+        "FullCommandName": [ "Remove-AzRecoveryServicesBackupProtectionPolicy_Delete" ],
         "ParameterSetName": [ "__AllParameterSets" ],
         "User-Agent": [ "AzurePowershell/v0.0.0", "PSVersion/v7.3.8", "Az.RecoveryServices/0.1.0" ],
         "Authorization": [ "[Filtered]" ]
@@ -212,8 +212,8 @@
       "Headers": {
         "x-ms-unique-id": [ "6" ],
         "x-ms-client-request-id": [ "e5e4ea25-f9b9-4b35-958c-05279ce97fa7" ],
-        "CommandName": [ "Remove-AzRecoveryServicesBackupPolicy" ],
-        "FullCommandName": [ "Remove-AzRecoveryServicesBackupPolicy_Delete" ],
+        "CommandName": [ "Remove-AzRecoveryServicesBackupProtectionPolicy" ],
+        "FullCommandName": [ "Remove-AzRecoveryServicesBackupProtectionPolicy_Delete" ],
         "ParameterSetName": [ "__AllParameterSets" ],
         "User-Agent": [ "AzurePowershell/v0.0.0", "PSVersion/v7.3.8", "Az.RecoveryServices/0.1.0" ],
         "Authorization": [ "[Filtered]" ]
@@ -335,8 +335,8 @@
       "Headers": {
         "x-ms-unique-id": [ "9" ],
         "x-ms-client-request-id": [ "b29df603-0e05-454b-b6f1-e13191c9a301" ],
-        "CommandName": [ "Remove-AzRecoveryServicesBackupPolicy" ],
-        "FullCommandName": [ "Remove-AzRecoveryServicesBackupPolicy_Delete" ],
+        "CommandName": [ "Remove-AzRecoveryServicesBackupProtectionPolicy" ],
+        "FullCommandName": [ "Remove-AzRecoveryServicesBackupProtectionPolicy_Delete" ],
         "ParameterSetName": [ "__AllParameterSets" ],
         "User-Agent": [ "AzurePowershell/v0.0.0", "PSVersion/v7.3.8", "Az.RecoveryServices/0.1.0" ],
         "Authorization": [ "[Filtered]" ]
@@ -458,8 +458,8 @@
       "Headers": {
         "x-ms-unique-id": [ "12" ],
         "x-ms-client-request-id": [ "591acee0-4c27-4619-9916-ac31228c6d47" ],
-        "CommandName": [ "Remove-AzRecoveryServicesBackupPolicy" ],
-        "FullCommandName": [ "Remove-AzRecoveryServicesBackupPolicy_Delete" ],
+        "CommandName": [ "Remove-AzRecoveryServicesBackupProtectionPolicy" ],
+        "FullCommandName": [ "Remove-AzRecoveryServicesBackupProtectionPolicy_Delete" ],
         "ParameterSetName": [ "__AllParameterSets" ],
         "User-Agent": [ "AzurePowershell/v0.0.0", "PSVersion/v7.3.8", "Az.RecoveryServices/0.1.0" ],
         "Authorization": [ "[Filtered]" ]
@@ -581,8 +581,8 @@
       "Headers": {
         "x-ms-unique-id": [ "15" ],
         "x-ms-client-request-id": [ "f54d24c1-882e-4270-8258-ec0066801349" ],
-        "CommandName": [ "Remove-AzRecoveryServicesBackupPolicy" ],
-        "FullCommandName": [ "Remove-AzRecoveryServicesBackupPolicy_Delete" ],
+        "CommandName": [ "Remove-AzRecoveryServicesBackupProtectionPolicy" ],
+        "FullCommandName": [ "Remove-AzRecoveryServicesBackupProtectionPolicy_Delete" ],
         "ParameterSetName": [ "__AllParameterSets" ],
         "User-Agent": [ "AzurePowershell/v0.0.0", "PSVersion/v7.3.8", "Az.RecoveryServices/0.1.0" ],
         "Authorization": [ "[Filtered]" ]
@@ -704,8 +704,8 @@
       "Headers": {
         "x-ms-unique-id": [ "18" ],
         "x-ms-client-request-id": [ "f8e0ba07-1aca-4741-9cf3-434763720c9e" ],
-        "CommandName": [ "Remove-AzRecoveryServicesBackupPolicy" ],
-        "FullCommandName": [ "Remove-AzRecoveryServicesBackupPolicy_Delete" ],
+        "CommandName": [ "Remove-AzRecoveryServicesBackupProtectionPolicy" ],
+        "FullCommandName": [ "Remove-AzRecoveryServicesBackupProtectionPolicy_Delete" ],
         "ParameterSetName": [ "__AllParameterSets" ],
         "User-Agent": [ "AzurePowershell/v0.0.0", "PSVersion/v7.3.8", "Az.RecoveryServices/0.1.0" ],
         "Authorization": [ "[Filtered]" ]

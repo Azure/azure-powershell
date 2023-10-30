@@ -97,6 +97,11 @@ directive:
       subject: BackupPolicy
     hide: true
   - where:
+      verb: Remove
+      subject: BackupPolicy
+    set:
+      subject: BackupProtectionPolicy
+  - where:
       subject: BackupProtectableItem
     hide: true
   - where:

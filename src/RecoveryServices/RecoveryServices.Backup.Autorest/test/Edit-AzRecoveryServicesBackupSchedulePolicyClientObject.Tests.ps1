@@ -41,13 +41,13 @@ Describe 'Edit-AzRecoveryServicesBackupSchedulePolicyClientObject' {
         $testPolicy.SchedulePolicy.ScheduleRunTime[0].ToString("HH:mm:ss") | Should be "13:30:00"
         $testPolicy.TimeZone | Should be "Tokyo Standard Time"
 
-        New-AzRecoveryServicesBackupPolicy -ResourceGroupName $rgName -VaultName $vaultName -Policy $testPolicy -PolicyName $newPolicyName
+        New-AzRecoveryServicesBackupProtectionPolicy -ResourceGroupName $rgName -VaultName $vaultName -Policy $testPolicy -PolicyName $newPolicyName
 
         # this Policy should be there - then delete it and then this policy shouldn't be there
         $policy = Get-AzRecoveryServicesBackupProtectionPolicy -ResourceGroupName $rgName -VaultName $vaultName -Name $newPolicyName
         $policy.Name | Should be $newPolicyName
 
-        Remove-AzRecoveryServicesBackupPolicy -PolicyName $newPolicyName -ResourceGroupName $rgName -VaultName $vaultName
+        Remove-AzRecoveryServicesBackupProtectionPolicy -PolicyName $newPolicyName -ResourceGroupName $rgName -VaultName $vaultName
     }
 
     It 'AzureVMEnhancedWeekly' {
@@ -76,13 +76,13 @@ Describe 'Edit-AzRecoveryServicesBackupSchedulePolicyClientObject' {
         $testPolicy.SchedulePolicy.Type | Should be "SimpleSchedulePolicyV2"
         $testPolicy.TimeZone | Should be "Tokyo Standard Time"
         
-        New-AzRecoveryServicesBackupPolicy -ResourceGroupName $rgName -VaultName $vaultName -Policy $testPolicy -PolicyName $newPolicyName
+        New-AzRecoveryServicesBackupProtectionPolicy -ResourceGroupName $rgName -VaultName $vaultName -Policy $testPolicy -PolicyName $newPolicyName
 
         # this Policy should be there - then delete it and then this policy shouldn't be there
         $policy = Get-AzRecoveryServicesBackupProtectionPolicy -ResourceGroupName $rgName -VaultName $vaultName -Name $newPolicyName
         $policy.Name | Should be $newPolicyName
 
-        Remove-AzRecoveryServicesBackupPolicy -PolicyName $newPolicyName -ResourceGroupName $rgName -VaultName $vaultName
+        Remove-AzRecoveryServicesBackupProtectionPolicy -PolicyName $newPolicyName -ResourceGroupName $rgName -VaultName $vaultName
     }
 
     It 'AzureVMEnhancedHourly' {
@@ -114,13 +114,13 @@ Describe 'Edit-AzRecoveryServicesBackupSchedulePolicyClientObject' {
         $testPolicy.SchedulePolicy.Type | Should be "SimpleSchedulePolicyV2"
         $testPolicy.TimeZone | Should be "Tokyo Standard Time"
         
-        New-AzRecoveryServicesBackupPolicy -ResourceGroupName $rgName -VaultName $vaultName -Policy $testPolicy -PolicyName $newPolicyName
+        New-AzRecoveryServicesBackupProtectionPolicy -ResourceGroupName $rgName -VaultName $vaultName -Policy $testPolicy -PolicyName $newPolicyName
 
         # this Policy should be there - then delete it and then this policy shouldn't be there
         $policy = Get-AzRecoveryServicesBackupProtectionPolicy -ResourceGroupName $rgName -VaultName $vaultName -Name $newPolicyName
         $policy.Name | Should be $newPolicyName
 
-        Remove-AzRecoveryServicesBackupPolicy -PolicyName $newPolicyName -ResourceGroupName $rgName -VaultName $vaultName
+        Remove-AzRecoveryServicesBackupProtectionPolicy -PolicyName $newPolicyName -ResourceGroupName $rgName -VaultName $vaultName
     }
 
     It 'SAPHANADailyFull' {
@@ -144,13 +144,13 @@ Describe 'Edit-AzRecoveryServicesBackupSchedulePolicyClientObject' {
         $FullBackupPolicy.SchedulePolicy.ScheduleRunTime[0].ToString("HH:mm:ss") | Should be "13:30:00"
         $testPolicy.Setting.TimeZone | Should be "Tokyo Standard Time"
 
-        New-AzRecoveryServicesBackupPolicy -ResourceGroupName $rgName -VaultName $vaultName -Policy $testPolicy -PolicyName $newPolicyName
+        New-AzRecoveryServicesBackupProtectionPolicy -ResourceGroupName $rgName -VaultName $vaultName -Policy $testPolicy -PolicyName $newPolicyName
 
         # this Policy should be there - then delete it and then this policy shouldn't be there
         $policy = Get-AzRecoveryServicesBackupProtectionPolicy -ResourceGroupName $rgName -VaultName $vaultName -Name $newPolicyName
         $policy.Name | Should be $newPolicyName
 
-        Remove-AzRecoveryServicesBackupPolicy -PolicyName $newPolicyName -ResourceGroupName $rgName -VaultName $vaultName
+        Remove-AzRecoveryServicesBackupProtectionPolicy -PolicyName $newPolicyName -ResourceGroupName $rgName -VaultName $vaultName
     }
 
     It 'SAPHANAWeeklyDifferential' {
@@ -198,13 +198,13 @@ Describe 'Edit-AzRecoveryServicesBackupSchedulePolicyClientObject' {
         $DifferentialPolicy.SchedulePolicy.ScheduleRunTime[0].ToString("HH:mm:ss") | Should be "02:00:00"
         $DifferentialPolicy.SchedulePolicy.ScheduleWeeklyFrequency | Should be 0
 
-        New-AzRecoveryServicesBackupPolicy -ResourceGroupName $rgName -VaultName $vaultName -Policy $testPolicy -PolicyName $newPolicyName
+        New-AzRecoveryServicesBackupProtectionPolicy -ResourceGroupName $rgName -VaultName $vaultName -Policy $testPolicy -PolicyName $newPolicyName
     
         # this Policy should be there - then delete it and then this policy shouldn't be there
         $policy = Get-AzRecoveryServicesBackupProtectionPolicy -ResourceGroupName $rgName -VaultName $vaultName -Name $newPolicyName
         $policy.Name | Should be $newPolicyName
 
-        Remove-AzRecoveryServicesBackupPolicy -PolicyName $newPolicyName -ResourceGroupName $rgName -VaultName $vaultName
+        Remove-AzRecoveryServicesBackupProtectionPolicy -PolicyName $newPolicyName -ResourceGroupName $rgName -VaultName $vaultName
     }
      
     It 'SAPHANWeeklyIncremental' {
@@ -252,13 +252,13 @@ Describe 'Edit-AzRecoveryServicesBackupSchedulePolicyClientObject' {
         $IncrementalPolicy.SchedulePolicy.ScheduleRunTime[0].ToString("HH:mm:ss") | Should be "02:00:00"
         $IncrementalPolicy.SchedulePolicy.ScheduleWeeklyFrequency | Should be 0
         
-        New-AzRecoveryServicesBackupPolicy -ResourceGroupName $rgName -VaultName $vaultName -Policy $testPolicy -PolicyName $newPolicyName
+        New-AzRecoveryServicesBackupProtectionPolicy -ResourceGroupName $rgName -VaultName $vaultName -Policy $testPolicy -PolicyName $newPolicyName
 
         # this Policy should be there - then delete it and then this policy shouldn't be there
         $policy = Get-AzRecoveryServicesBackupProtectionPolicy -ResourceGroupName $rgName -VaultName $vaultName -Name $newPolicyName
         $policy.Name | Should be $newPolicyName
 
-        Remove-AzRecoveryServicesBackupPolicy -PolicyName $newPolicyName -ResourceGroupName $rgName -VaultName $vaultName
+        Remove-AzRecoveryServicesBackupProtectionPolicy -PolicyName $newPolicyName -ResourceGroupName $rgName -VaultName $vaultName
     }
 
     It 'SAPHANALog' {
@@ -281,13 +281,13 @@ Describe 'Edit-AzRecoveryServicesBackupSchedulePolicyClientObject' {
         $LogBackupPolicy.PolicyType | Should be "Log"
         $LogBackupPolicy.SchedulePolicy.ScheduleFrequencyInMin | Should be 120
 
-        New-AzRecoveryServicesBackupPolicy -ResourceGroupName $rgName -VaultName $vaultName -Policy $testPolicy -PolicyName $newPolicyName
+        New-AzRecoveryServicesBackupProtectionPolicy -ResourceGroupName $rgName -VaultName $vaultName -Policy $testPolicy -PolicyName $newPolicyName
 
         # this Policy should be there - then delete it and then this policy shouldn't be there
         $policy = Get-AzRecoveryServicesBackupProtectionPolicy -ResourceGroupName $rgName -VaultName $vaultName -Name $newPolicyName
         $policy.Name | Should be $newPolicyName
 
-        Remove-AzRecoveryServicesBackupPolicy -PolicyName $newPolicyName -ResourceGroupName $rgName -VaultName $vaultName
+        Remove-AzRecoveryServicesBackupProtectionPolicy -PolicyName $newPolicyName -ResourceGroupName $rgName -VaultName $vaultName
     }
 
 }

@@ -1,7 +1,7 @@
 ### Example 1: Enable TierRecommended for AzureVM
 ```powershell
 $pol1=Get-AzRecoveryServicesPolicyTemplate -DatasourceType AzureVM
-New-AzRecoveryServicesBackupPolicy -ResourceGroupName arohijain-rg -VaultName arohijain-vault -Policy $pol1 -PolicyName tiertest4 -MoveToArchiveTier $true -TieringMode TierRecommended
+New-AzRecoveryServicesBackupProtectionPolicy -ResourceGroupName arohijain-rg -VaultName arohijain-vault -Policy $pol1 -PolicyName tiertest4 -MoveToArchiveTier $true -TieringMode TierRecommended
 $pol1.TieringPolicy.AdditionalProperties.ArchivedRP | fl
 ```
 
@@ -17,7 +17,7 @@ The first command gets the default policy template for a given DatasourceType. T
 ### Example 2: Enable TierAfter for AzureVM
 ```powershell
 $pol1=Get-AzRecoveryServicesPolicyTemplate -DatasourceType AzureVM
-New-AzRecoveryServicesBackupPolicy -ResourceGroupName arohijain-rg -VaultName arohijain-vault -Policy $pol1 -PolicyName tiertest5 -MoveToArchiveTier $true -TierAfterDuration 54 -TieringMode TierAfter -TierAfterDurationType Months
+New-AzRecoveryServicesBackupProtectionPolicy -ResourceGroupName arohijain-rg -VaultName arohijain-vault -Policy $pol1 -PolicyName tiertest5 -MoveToArchiveTier $true -TierAfterDuration 54 -TieringMode TierAfter -TierAfterDurationType Months
 $pol1.TieringPolicy.AdditionalProperties.ArchivedRP | fl
 ```
 
@@ -33,7 +33,7 @@ The first command gets the default policy template for a given DatasourceType. T
 ### Example 3: Enable TierAfter for SAPHANA
 ```powershell
 $pol1=Get-AzRecoveryServicesPolicyTemplate -DatasourceType SAPHANA
-New-AzRecoveryServicesBackupPolicy -ResourceGroupName arohijain-rg -VaultName arohijain-vault -Policy $pol1 -PolicyName tiertest6 -MoveToArchiveTier $true -TierAfterDuration 64 -TieringMode TierAfter -TierAfterDurationType Days
+New-AzRecoveryServicesBackupProtectionPolicy -ResourceGroupName arohijain-rg -VaultName arohijain-vault -Policy $pol1 -PolicyName tiertest6 -MoveToArchiveTier $true -TierAfterDuration 64 -TieringMode TierAfter -TierAfterDurationType Days
 $pol1.SubProtectionPolicy[0].TieringPolicy.AdditionalProperties.ArchivedRP | fl
 ```
 
@@ -48,7 +48,7 @@ The first command gets the default policy template for a given DatasourceType. T
 
 ### Example 4: Disable Tiering Policy
 ```powershell
-New-AzRecoveryServicesBackupPolicy -ResourceGroupName arohijain-rg -VaultName arohijain-vault -Policy $pol1 -PolicyName tiertest5 -MoveToArchiveTier $false
+New-AzRecoveryServicesBackupProtectionPolicy -ResourceGroupName arohijain-rg -VaultName arohijain-vault -Policy $pol1 -PolicyName tiertest5 -MoveToArchiveTier $false
 $pol1.TieringPolicy.AdditionalProperties.ArchivedRP | fl
 ```
 

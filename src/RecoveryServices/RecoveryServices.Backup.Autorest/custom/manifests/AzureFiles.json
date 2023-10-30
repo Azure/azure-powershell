@@ -13,6 +13,8 @@
   "containerInquiryType": null,
   "protectedItemType": "AzureVMWorkloadSapHanaDatabaseProtectedItem",
   "policySettings": {
+    "defaultPolicy": {
 
+    }
   }
 }

@@ -1,11 +1,11 @@
-if(($null -eq $TestName) -or ($TestName -contains 'Remove-AzRecoveryServicesBackupPolicy'))
+if(($null -eq $TestName) -or ($TestName -contains 'Remove-AzRecoveryServicesBackupProtectionPolicy'))
 {
   $loadEnvPath = Join-Path $PSScriptRoot 'loadEnv.ps1'
   if (-Not (Test-Path -Path $loadEnvPath)) {
       $loadEnvPath = Join-Path $PSScriptRoot '..\loadEnv.ps1'
   }
   . ($loadEnvPath)
-  $TestRecordingFile = Join-Path $PSScriptRoot 'Remove-AzRecoveryServicesBackupPolicy.Recording.json'
+  $TestRecordingFile = Join-Path $PSScriptRoot 'Remove-AzRecoveryServicesBackupProtectionPolicy.Recording.json'
   $currentPath = $PSScriptRoot
   while(-not $mockingPath) {
       $mockingPath = Get-ChildItem -Path $currentPath -Recurse -Include 'HttpPipelineMocking.ps1' -File
@@ -14,7 +14,7 @@ if(($null -eq $TestName) -or ($TestName -contains 'Remove-AzRecoveryServicesBack
   . ($mockingPath | Select-Object -First 1).FullName
 }
 
-Describe 'Remove-AzRecoveryServicesBackupPolicy' {
+Describe 'Remove-AzRecoveryServicesBackupProtectionPolicy' {
     It 'Delete' -skip {
         { throw [System.NotImplementedException] } | Should -Not -Throw
     }

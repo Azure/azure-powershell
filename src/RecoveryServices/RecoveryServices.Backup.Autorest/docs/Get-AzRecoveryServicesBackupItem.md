@@ -323,33 +323,5 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## NOTES
 
-ALIASES
-
-COMPLEX PARAMETER PROPERTIES
-
-To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
-
-
-`CONTAINER <IProtectionContainerResource>`: Specifies a container object from which this cmdlet gets backup items. To obtain an ProtectionContainerResource, use the Get-AzRecoveryServicesBackupContainer cmdlet.
-  - `[ETag <String>]`: Optional ETag.
-  - `[Location <String>]`: Resource location.
-  - `[Tag <IResourceTags>]`: Resource tags.
-    - `[(Any) <String>]`: This indicates any property can be added to this object.
-  - `[BackupManagementType <BackupManagementType?>]`: Type of backup management for the container.
-  - `[ContainerType <ProtectableContainerType?>]`: Type of the container. The value of this property for: 1. Compute Azure VM is Microsoft.Compute/virtualMachines 2.         Classic Compute Azure VM is Microsoft.ClassicCompute/virtualMachines 3. Windows machines (like MAB, DPM etc) is         Windows 4. Azure SQL instance is AzureSqlContainer. 5. Storage containers is StorageContainer. 6. Azure workload         Backup is VMAppContainer
-  - `[FriendlyName <String>]`: Friendly name of the container.
-  - `[HealthStatus <String>]`: Status of health of the container.
-  - `[ProtectableObjectType <String>]`: Type of the protectable object associated with this container
-  - `[RegistrationStatus <String>]`: Status of registration of the container with the Recovery Services Vault.
-
-`POLICY <IProtectionPolicyResource>`: Protection policy object
-  - `[ETag <String>]`: Optional ETag.
-  - `[Location <String>]`: Resource location.
-  - `[Tag <IResourceTags>]`: Resource tags.
-    - `[(Any) <String>]`: This indicates any property can be added to this object.
-  - `[BackupManagementType <String>]`: This property will be used as the discriminator for deciding the specific types in the polymorphic chain of types.
-  - `[ProtectedItemsCount <Int32?>]`: Number of items associated with this policy.
-  - `[ResourceGuardOperationRequest <String[]>]`: ResourceGuard Operation Requests
-
 ## RELATED LINKS
 

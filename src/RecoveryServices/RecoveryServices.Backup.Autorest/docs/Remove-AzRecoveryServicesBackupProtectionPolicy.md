@@ -1,11 +1,11 @@
 ---
 external help file:
 Module Name: Az.RecoveryServices
-online version: https://learn.microsoft.com/powershell/module/az.recoveryservices/remove-azrecoveryservicesbackuppolicy
+online version: https://learn.microsoft.com/powershell/module/az.recoveryservices/remove-azrecoveryservicesbackupprotectionpolicy
 schema: 2.0.0
 ---
 
-# Remove-AzRecoveryServicesBackupPolicy
+# Remove-AzRecoveryServicesBackupProtectionPolicy
 
 ## SYNOPSIS
 Deletes specified backup policy from your Recovery Services Vault.
@@ -15,9 +15,9 @@ Status of the\r\noperation can be fetched using GetProtectionPolicyOperationResu
 ## SYNTAX
 
 ```
-Remove-AzRecoveryServicesBackupPolicy -PolicyName <String> -ResourceGroupName <String> -VaultName <String>
- [-SubscriptionId <String>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-PassThru] [-Confirm] [-WhatIf]
- [<CommonParameters>]
+Remove-AzRecoveryServicesBackupProtectionPolicy -PolicyName <String> -ResourceGroupName <String>
+ -VaultName <String> [-SubscriptionId <String>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-PassThru]
+ [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -29,7 +29,7 @@ Status of the\r\noperation can be fetched using GetProtectionPolicyOperationResu
 
 ### Example 1: Remove a policy with its name
 ```powershell
- Remove-AzRecoveryServicesBackupPolicy -PolicyName "policyName" -ResourceGroupName "resourceGroupName" -VaultName "vaultName"
+ Remove-AzRecoveryServicesBackupProtectionPolicy -PolicyName "policyName" -ResourceGroupName "resourceGroupName" -VaultName "vaultName"
 ```
 
 This command deletes the specified backup policy.
@@ -198,8 +198,6 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ### System.Boolean
 
 ## NOTES
-
-ALIASES
 
 ## RELATED LINKS
 

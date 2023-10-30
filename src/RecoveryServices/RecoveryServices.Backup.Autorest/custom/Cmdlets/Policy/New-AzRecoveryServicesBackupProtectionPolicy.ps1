@@ -1,4 +1,4 @@
-﻿function New-AzRecoveryServicesBackupPolicy
+﻿function New-AzRecoveryServicesBackupProtectionPolicy
 {
     [OutputType('Microsoft.Azure.PowerShell.Cmdlets.RecoveryServices.Models.Api20230201.IProtectionPolicyResource')]
     [CmdletBinding(PositionalBinding=$false, SupportsShouldProcess)]

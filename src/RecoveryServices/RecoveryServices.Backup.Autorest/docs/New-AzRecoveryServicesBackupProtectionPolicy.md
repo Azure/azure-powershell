@@ -1,11 +1,11 @@
 ---
 external help file:
 Module Name: Az.RecoveryServices
-online version: https://learn.microsoft.com/powershell/module/az.recoveryservices/new-azrecoveryservicesbackuppolicy
+online version: https://learn.microsoft.com/powershell/module/az.recoveryservices/new-azrecoveryservicesbackupprotectionpolicy
 schema: 2.0.0
 ---
 
-# New-AzRecoveryServicesBackupPolicy
+# New-AzRecoveryServicesBackupProtectionPolicy
 
 ## SYNOPSIS
 Creates a new backup policy in a given recovery services vault
@@ -13,7 +13,7 @@ Creates a new backup policy in a given recovery services vault
 ## SYNTAX
 
 ```
-New-AzRecoveryServicesBackupPolicy -Policy <IProtectionPolicy> -PolicyName <String>
+New-AzRecoveryServicesBackupProtectionPolicy -Policy <IProtectionPolicy> -PolicyName <String>
  -ResourceGroupName <String> -VaultName <String> [-DefaultProfile <PSObject>] [-MoveToArchiveTier <Boolean?>]
  [-SnapshotRetentionDurationInDays <Int32?>] [-SubscriptionId <String>] [-TierAfterDuration <Int32?>]
  [-TierAfterDurationType <String>] [-TieringMode <String>] [-Confirm] [-WhatIf] [<CommonParameters>]
@@ -27,7 +27,7 @@ Creates a new backup policy in a given recovery services vault
 ### Example 1: Enable TierRecommended for AzureVM
 ```powershell
 $pol1=Get-AzRecoveryServicesPolicyTemplate -DatasourceType AzureVM
-New-AzRecoveryServicesBackupPolicy -ResourceGroupName arohijain-rg -VaultName arohijain-vault -Policy $pol1 -PolicyName tiertest4 -MoveToArchiveTier $true -TieringMode TierRecommended
+New-AzRecoveryServicesBackupProtectionPolicy -ResourceGroupName arohijain-rg -VaultName arohijain-vault -Policy $pol1 -PolicyName tiertest4 -MoveToArchiveTier $true -TieringMode TierRecommended
 $pol1.TieringPolicy.AdditionalProperties.ArchivedRP | fl
 ```
 
@@ -45,7 +45,7 @@ The third command is to display modified tiering policy.
 ### Example 2: Enable TierAfter for AzureVM
 ```powershell
 $pol1=Get-AzRecoveryServicesPolicyTemplate -DatasourceType AzureVM
-New-AzRecoveryServicesBackupPolicy -ResourceGroupName arohijain-rg -VaultName arohijain-vault -Policy $pol1 -PolicyName tiertest5 -MoveToArchiveTier $true -TierAfterDuration 54 -TieringMode TierAfter -TierAfterDurationType Months
+New-AzRecoveryServicesBackupProtectionPolicy -ResourceGroupName arohijain-rg -VaultName arohijain-vault -Policy $pol1 -PolicyName tiertest5 -MoveToArchiveTier $true -TierAfterDuration 54 -TieringMode TierAfter -TierAfterDurationType Months
 $pol1.TieringPolicy.AdditionalProperties.ArchivedRP | fl
 ```
 
@@ -63,7 +63,7 @@ The third command is to display modified tiering policy.
 ### Example 3: Enable TierAfter for SAPHANA
 ```powershell
 $pol1=Get-AzRecoveryServicesPolicyTemplate -DatasourceType SAPHANA
-New-AzRecoveryServicesBackupPolicy -ResourceGroupName arohijain-rg -VaultName arohijain-vault -Policy $pol1 -PolicyName tiertest6 -MoveToArchiveTier $true -TierAfterDuration 64 -TieringMode TierAfter -TierAfterDurationType Days
+New-AzRecoveryServicesBackupProtectionPolicy -ResourceGroupName arohijain-rg -VaultName arohijain-vault -Policy $pol1 -PolicyName tiertest6 -MoveToArchiveTier $true -TierAfterDuration 64 -TieringMode TierAfter -TierAfterDurationType Days
 $pol1.SubProtectionPolicy[0].TieringPolicy.AdditionalProperties.ArchivedRP | fl
 ```
 
@@ -80,7 +80,7 @@ The third command is to display modified tiering policy.
 
 ### Example 4: Disable Tiering Policy
 ```powershell
-New-AzRecoveryServicesBackupPolicy -ResourceGroupName arohijain-rg -VaultName arohijain-vault -Policy $pol1 -PolicyName tiertest5 -MoveToArchiveTier $false
+New-AzRecoveryServicesBackupProtectionPolicy -ResourceGroupName arohijain-rg -VaultName arohijain-vault -Policy $pol1 -PolicyName tiertest5 -MoveToArchiveTier $false
 $pol1.TieringPolicy.AdditionalProperties.ArchivedRP | fl
 ```
 
@@ -303,18 +303,6 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ### Microsoft.Azure.PowerShell.Cmdlets.RecoveryServices.Models.Api20230201.IProtectionPolicyResource
 
 ## NOTES
-
-ALIASES
-
-COMPLEX PARAMETER PROPERTIES
-
-To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
-
-
-`POLICY <IProtectionPolicy>`: Workload specific Backup policy object.
-  - `BackupManagementType <String>`: This property will be used as the discriminator for deciding the specific types in the polymorphic chain of types.
-  - `[ProtectedItemsCount <Int32?>]`: Number of items associated with this policy.
-  - `[ResourceGuardOperationRequest <String[]>]`: ResourceGuard Operation Requests
 
 ## RELATED LINKS
 
