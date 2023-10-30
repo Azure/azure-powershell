@@ -1,0 +1,1056 @@
+﻿<?xml version="1.0" encoding="utf-8" standalone="no"?>
+<test-results xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="nunit_schema_2.5.xsd" name="Pester" total="26" errors="0" failures="26" not-run="0" inconclusive="0" ignored="125" skipped="0" invalid="0" date="2023-10-27" time="15:57:28">
+  <environment cwd="E:\azstackhci-util\azstackhci-powershell" nunit-version="2.5.8.0" clr-version="Unknown" platform="Microsoft Windows 11 Enterprise|C:\WINDOWS|\Device\Harddisk1\Partition3" os-version="10.0.22621" machine-name="HAVEDATI-DEV" user="havedati" user-domain="REDMOND" />
+  <culture-info current-culture="en-US" current-uiculture="en-US" />
+  <test-suite type="TestFixture" name="Pester" executed="True" result="Failure" success="False" time="24.3118" asserts="0" description="Pester">
+    <results>
+      <test-suite type="TestFixture" name="E:\azstackhci-util\azstackhci-powershell\test\Add-AzStackHCIVMVirtualMachineDataDisk.Tests.ps1" executed="True" result="Ignored" success="True" time="1.1475" asserts="0" description="E:\azstackhci-util\azstackhci-powershell\test\Add-AzStackHCIVMVirtualMachineDataDisk.Tests.ps1">
+        <results>
+          <test-suite type="TestFixture" name="Add-AzStackHCIVMVirtualMachineDataDisk" executed="True" result="Ignored" success="True" time="0.7755" asserts="0" description="Add-AzStackHCIVMVirtualMachineDataDisk">
+            <results>
+              <test-case description="ByResourceId" name="Add-AzStackHCIVMVirtualMachineDataDisk.ByResourceId" time="0" asserts="0" success="True" result="Ignored" executed="False" />
+              <test-case description="ByName" name="Add-AzStackHCIVMVirtualMachineDataDisk.ByName" time="0" asserts="0" success="True" result="Ignored" executed="False" />
+            </results>
+          </test-suite>
+        </results>
+      </test-suite>
+      <test-suite type="TestFixture" name="E:\azstackhci-util\azstackhci-powershell\test\Add-AzStackHciVMVirtualMachineNic.Tests.ps1" executed="True" result="Ignored" success="True" time="0.2522" asserts="0" description="E:\azstackhci-util\azstackhci-powershell\test\Add-AzStackHciVMVirtualMachineNic.Tests.ps1">
+        <results>
+          <test-suite type="TestFixture" name="Add-AzStackHciVMVirtualMachineNic" executed="True" result="Ignored" success="True" time="0.0601" asserts="0" description="Add-AzStackHciVMVirtualMachineNic">
+            <results>
+              <test-case description="ByResourceId" name="Add-AzStackHciVMVirtualMachineNic.ByResourceId" time="0" asserts="0" success="True" result="Ignored" executed="False" />
+              <test-case description="ByName" name="Add-AzStackHciVMVirtualMachineNic.ByName" time="0" asserts="0" success="True" result="Ignored" executed="False" />
+            </results>
+          </test-suite>
+        </results>
+      </test-suite>
+      <test-suite type="TestFixture" name="E:\azstackhci-util\azstackhci-powershell\test\Confirm-IpConfigrations.Tests.ps1" executed="True" result="Ignored" success="True" time="0.255" asserts="0" description="E:\azstackhci-util\azstackhci-powershell\test\Confirm-IpConfigrations.Tests.ps1">
+        <results>
+          <test-suite type="TestFixture" name="Confirm-IpConfigrations" executed="True" result="Ignored" success="True" time="0.0971" asserts="0" description="Confirm-IpConfigrations">
+            <results>
+              <test-case description="__AllParameterSets" name="Confirm-IpConfigrations.__AllParameterSets" time="0" asserts="0" success="True" result="Ignored" executed="False" />
+            </results>
+          </test-suite>
+        </results>
+      </test-suite>
+      <test-suite type="TestFixture" name="E:\azstackhci-util\azstackhci-powershell\test\Confirm-IpPools.Tests.ps1" executed="True" result="Ignored" success="True" time="0.2525" asserts="0" description="E:\azstackhci-util\azstackhci-powershell\test\Confirm-IpPools.Tests.ps1">
+        <results>
+          <test-suite type="TestFixture" name="Confirm-IpPools" executed="True" result="Ignored" success="True" time="0.0691" asserts="0" description="Confirm-IpPools">
+            <results>
+              <test-case description="__AllParameterSets" name="Confirm-IpPools.__AllParameterSets" time="0" asserts="0" success="True" result="Ignored" executed="False" />
+            </results>
+          </test-suite>
+        </results>
+      </test-suite>
+      <test-suite type="TestFixture" name="E:\azstackhci-util\azstackhci-powershell\test\Confirm-Routes.Tests.ps1" executed="True" result="Ignored" success="True" time="0.3289" asserts="0" description="E:\azstackhci-util\azstackhci-powershell\test\Confirm-Routes.Tests.ps1">
+        <results>
+          <test-suite type="TestFixture" name="Confirm-Routes" executed="True" result="Ignored" success="True" time="0.0778" asserts="0" description="Confirm-Routes">
+            <results>
+              <test-case description="__AllParameterSets" name="Confirm-Routes.__AllParameterSets" time="0" asserts="0" success="True" result="Ignored" executed="False" />
+            </results>
+          </test-suite>
+        </results>
+      </test-suite>
+      <test-suite type="TestFixture" name="E:\azstackhci-util\azstackhci-powershell\test\Confirm-Subnets.Tests.ps1" executed="True" result="Ignored" success="True" time="0.2036" asserts="0" description="E:\azstackhci-util\azstackhci-powershell\test\Confirm-Subnets.Tests.ps1">
+        <results>
+          <test-suite type="TestFixture" name="Confirm-Subnets" executed="True" result="Ignored" success="True" time="0.0636" asserts="0" description="Confirm-Subnets">
+            <results>
+              <test-case description="__AllParameterSets" name="Confirm-Subnets.__AllParameterSets" time="0" asserts="0" success="True" result="Ignored" executed="False" />
+            </results>
+          </test-suite>
+        </results>
+      </test-suite>
+      <test-suite type="TestFixture" name="E:\azstackhci-util\azstackhci-powershell\test\Get-AzStackHciVMAgentVersion.Tests.ps1" executed="True" result="Ignored" success="True" time="0.269" asserts="0" description="E:\azstackhci-util\azstackhci-powershell\test\Get-AzStackHciVMAgentVersion.Tests.ps1">
+        <results>
+          <test-suite type="TestFixture" name="Get-AzStackHciVMAgentVersion" executed="True" result="Ignored" success="True" time="0.0983" asserts="0" description="Get-AzStackHciVMAgentVersion">
+            <results>
+              <test-case description="List" name="Get-AzStackHciVMAgentVersion.List" time="0" asserts="0" success="True" result="Ignored" executed="False" />
+              <test-case description="Get" name="Get-AzStackHciVMAgentVersion.Get" time="0" asserts="0" success="True" result="Ignored" executed="False" />
+              <test-case description="GetViaIdentity" name="Get-AzStackHciVMAgentVersion.GetViaIdentity" time="0" asserts="0" success="True" result="Ignored" executed="False" />
+            </results>
+          </test-suite>
+        </results>
+      </test-suite>
+      <test-suite type="TestFixture" name="E:\azstackhci-util\azstackhci-powershell\test\Get-AzStackHciVMExtensionMetadata.Tests.ps1" executed="True" result="Ignored" success="True" time="0.2852" asserts="0" description="E:\azstackhci-util\azstackhci-powershell\test\Get-AzStackHciVMExtensionMetadata.Tests.ps1">
+        <results>
+          <test-suite type="TestFixture" name="Get-AzStackHciVMExtensionMetadata" executed="True" result="Ignored" success="True" time="0.0873" asserts="0" description="Get-AzStackHciVMExtensionMetadata">
+            <results>
+              <test-case description="List" name="Get-AzStackHciVMExtensionMetadata.List" time="0" asserts="0" success="True" result="Ignored" executed="False" />
+              <test-case description="Get" name="Get-AzStackHciVMExtensionMetadata.Get" time="0" asserts="0" success="True" result="Ignored" executed="False" />
+              <test-case description="GetViaIdentity" name="Get-AzStackHciVMExtensionMetadata.GetViaIdentity" time="0" asserts="0" success="True" result="Ignored" executed="False" />
+            </results>
+          </test-suite>
+        </results>
+      </test-suite>
+      <test-suite type="TestFixture" name="E:\azstackhci-util\azstackhci-powershell\test\Get-AzStackHciVMGalleryImage.Tests.ps1" executed="True" result="Ignored" success="True" time="0.2371" asserts="0" description="E:\azstackhci-util\azstackhci-powershell\test\Get-AzStackHciVMGalleryImage.Tests.ps1">
+        <results>
+          <test-suite type="TestFixture" name="Get-AzStackHciVMGalleryImage" executed="True" result="Ignored" success="True" time="0.0785" asserts="0" description="Get-AzStackHciVMGalleryImage">
+            <results>
+              <test-case description="List1" name="Get-AzStackHciVMGalleryImage.List1" time="0" asserts="0" success="True" result="Ignored" executed="False" />
+              <test-case description="Get" name="Get-AzStackHciVMGalleryImage.Get" time="0" asserts="0" success="True" result="Ignored" executed="False" />
+              <test-case description="List" name="Get-AzStackHciVMGalleryImage.List" time="0" asserts="0" success="True" result="Ignored" executed="False" />
+              <test-case description="GetViaIdentity" name="Get-AzStackHciVMGalleryImage.GetViaIdentity" time="0" asserts="0" success="True" result="Ignored" executed="False" />
+            </results>
+          </test-suite>
+        </results>
+      </test-suite>
+      <test-suite type="TestFixture" name="E:\azstackhci-util\azstackhci-powershell\test\Get-AzStackHciVMGuestAgent.Tests.ps1" executed="True" result="Ignored" success="True" time="0.2163" asserts="0" description="E:\azstackhci-util\azstackhci-powershell\test\Get-AzStackHciVMGuestAgent.Tests.ps1">
+        <results>
+          <test-suite type="TestFixture" name="Get-AzStackHciVMGuestAgent" executed="True" result="Ignored" success="True" time="0.0683" asserts="0" description="Get-AzStackHciVMGuestAgent">
+            <results>
+              <test-case description="List" name="Get-AzStackHciVMGuestAgent.List" time="0" asserts="0" success="True" result="Ignored" executed="False" />
+              <test-case description="Get" name="Get-AzStackHciVMGuestAgent.Get" time="0" asserts="0" success="True" result="Ignored" executed="False" />
+              <test-case description="GetViaIdentity" name="Get-AzStackHciVMGuestAgent.GetViaIdentity" time="0" asserts="0" success="True" result="Ignored" executed="False" />
+            </results>
+          </test-suite>
+        </results>
+      </test-suite>
+      <test-suite type="TestFixture" name="E:\azstackhci-util\azstackhci-powershell\test\Get-AzStackHciVMHybridIdentityMetadata.Tests.ps1" executed="True" result="Ignored" success="True" time="0.2251" asserts="0" description="E:\azstackhci-util\azstackhci-powershell\test\Get-AzStackHciVMHybridIdentityMetadata.Tests.ps1">
+        <results>
+          <test-suite type="TestFixture" name="Get-AzStackHciVMHybridIdentityMetadata" executed="True" result="Ignored" success="True" time="0.0684" asserts="0" description="Get-AzStackHciVMHybridIdentityMetadata">
+            <results>
+              <test-case description="List" name="Get-AzStackHciVMHybridIdentityMetadata.List" time="0" asserts="0" success="True" result="Ignored" executed="False" />
+              <test-case description="Get" name="Get-AzStackHciVMHybridIdentityMetadata.Get" time="0" asserts="0" success="True" result="Ignored" executed="False" />
+              <test-case description="GetViaIdentity" name="Get-AzStackHciVMHybridIdentityMetadata.GetViaIdentity" time="0" asserts="0" success="True" result="Ignored" executed="False" />
+            </results>
+          </test-suite>
+        </results>
+      </test-suite>
+      <test-suite type="TestFixture" name="E:\azstackhci-util\azstackhci-powershell\test\Get-AzStackHCIVMImage.Tests.ps1" executed="True" result="Failure" success="False" time="1.8277" asserts="0" description="E:\azstackhci-util\azstackhci-powershell\test\Get-AzStackHCIVMImage.Tests.ps1">
+        <results>
+          <test-suite type="TestFixture" name="Get-AzStackHCIVMImage" executed="True" result="Failure" success="False" time="1.6894" asserts="0" description="Get-AzStackHCIVMImage">
+            <results>
+              <test-case description="BySubscription" name="Get-AzStackHCIVMImage.BySubscription" time="1.3539" asserts="0" success="False" result="Failure" executed="True">
+                <failure>
+                  <message>Expected a value, but got $null or empty.</message>
+                  <stack-trace>at &lt;ScriptBlock&gt;, E:\azstackhci-util\azstackhci-powershell\test\Get-AzStackHCIVMImage.Tests.ps1: line 19
+19:         Get-AzStackHCIVMImage -SubscriptionId $env.subscriptionId | Should -Not -BeNullOrEmpty</stack-trace>
+                </failure>
+              </test-case>
+              <test-case description="ByName" name="Get-AzStackHCIVMImage.ByName" time="0.0188" asserts="0" success="False" result="Failure" executed="True">
+                <failure>
+                  <message>Cannot bind argument to parameter 'Name' because it is an empty string.</message>
+                  <stack-trace>at &lt;ScriptBlock&gt;, E:\azstackhci-util\azstackhci-powershell\test\Get-AzStackHCIVMImage.Tests.ps1: line 23
+23:        Get-AzStackHCIVMImage -Name $env.imageName -ResourceGroupName $env.resourceGroupName -SubscriptionId $env.subscriptionId | Should -Not -BeNullOrEmpty
+</stack-trace>
+                </failure>
+              </test-case>
+              <test-case description="ByResourceGroup" name="Get-AzStackHCIVMImage.ByResourceGroup" time="0.0214" asserts="0" success="False" result="Failure" executed="True">
+                <failure>
+                  <message>Cannot bind argument to parameter 'ResourceGroupName' because it is an empty string.</message>
+                  <stack-trace>at &lt;ScriptBlock&gt;, E:\azstackhci-util\azstackhci-powershell\test\Get-AzStackHCIVMImage.Tests.ps1: line 27
+27:         Get-AzStackHCIVMImage -ResourceGroupName $env.resourceGroupName -SubscriptionId $env.subscriptionId | Should -Not -BeNullOrEmpty
+</stack-trace>
+                </failure>
+              </test-case>
+              <test-case description="ByResourceId" name="Get-AzStackHCIVMImage.ByResourceId" time="0.0156" asserts="0" success="False" result="Failure" executed="True">
+                <failure>
+                  <message>Cannot bind argument to parameter 'ResourceId' because it is an empty string.</message>
+                  <stack-trace>at &lt;ScriptBlock&gt;, E:\azstackhci-util\azstackhci-powershell\test\Get-AzStackHCIVMImage.Tests.ps1: line 31
+31:         Get-AzStackHCIVMImage -ResourceId $env.vmImageId  | Should -Not -BeNullOrEmpty
+</stack-trace>
+                </failure>
+              </test-case>
+            </results>
+          </test-suite>
+        </results>
+      </test-suite>
+      <test-suite type="TestFixture" name="E:\azstackhci-util\azstackhci-powershell\test\Get-AzStackHciVMLogicalNetwork.Tests.ps1" executed="True" result="Ignored" success="True" time="0.2765" asserts="0" description="E:\azstackhci-util\azstackhci-powershell\test\Get-AzStackHciVMLogicalNetwork.Tests.ps1">
+        <results>
+          <test-suite type="TestFixture" name="Get-AzStackHciVMLogicalNetwork" executed="True" result="Ignored" success="True" time="0.0883" asserts="0" description="Get-AzStackHciVMLogicalNetwork">
+            <results>
+              <test-case description="List1" name="Get-AzStackHciVMLogicalNetwork.List1" time="0" asserts="0" success="True" result="Ignored" executed="False" />
+              <test-case description="Get" name="Get-AzStackHciVMLogicalNetwork.Get" time="0" asserts="0" success="True" result="Ignored" executed="False" />
+              <test-case description="List" name="Get-AzStackHciVMLogicalNetwork.List" time="0" asserts="0" success="True" result="Ignored" executed="False" />
+              <test-case description="GetViaIdentity" name="Get-AzStackHciVMLogicalNetwork.GetViaIdentity" time="0" asserts="0" success="True" result="Ignored" executed="False" />
+            </results>
+          </test-suite>
+        </results>
+      </test-suite>
+      <test-suite type="TestFixture" name="E:\azstackhci-util\azstackhci-powershell\test\Get-AzStackHciVMMachine.Tests.ps1" executed="True" result="Ignored" success="True" time="0.2218" asserts="0" description="E:\azstackhci-util\azstackhci-powershell\test\Get-AzStackHciVMMachine.Tests.ps1">
+        <results>
+          <test-suite type="TestFixture" name="Get-AzStackHciVMMachine" executed="True" result="Ignored" success="True" time="0.0732" asserts="0" description="Get-AzStackHciVMMachine">
+            <results>
+              <test-case description="List1" name="Get-AzStackHciVMMachine.List1" time="0" asserts="0" success="True" result="Ignored" executed="False" />
+              <test-case description="Get" name="Get-AzStackHciVMMachine.Get" time="0" asserts="0" success="True" result="Ignored" executed="False" />
+              <test-case description="List" name="Get-AzStackHciVMMachine.List" time="0" asserts="0" success="True" result="Ignored" executed="False" />
+              <test-case description="GetViaIdentity" name="Get-AzStackHciVMMachine.GetViaIdentity" time="0" asserts="0" success="True" result="Ignored" executed="False" />
+            </results>
+          </test-suite>
+        </results>
+      </test-suite>
+      <test-suite type="TestFixture" name="E:\azstackhci-util\azstackhci-powershell\test\Get-AzStackHciVMMachineExtension.Tests.ps1" executed="True" result="Ignored" success="True" time="0.1836" asserts="0" description="E:\azstackhci-util\azstackhci-powershell\test\Get-AzStackHciVMMachineExtension.Tests.ps1">
+        <results>
+          <test-suite type="TestFixture" name="Get-AzStackHciVMMachineExtension" executed="True" result="Ignored" success="True" time="0.0513" asserts="0" description="Get-AzStackHciVMMachineExtension">
+            <results>
+              <test-case description="List" name="Get-AzStackHciVMMachineExtension.List" time="0" asserts="0" success="True" result="Ignored" executed="False" />
+              <test-case description="Get" name="Get-AzStackHciVMMachineExtension.Get" time="0" asserts="0" success="True" result="Ignored" executed="False" />
+              <test-case description="GetViaIdentity" name="Get-AzStackHciVMMachineExtension.GetViaIdentity" time="0" asserts="0" success="True" result="Ignored" executed="False" />
+            </results>
+          </test-suite>
+        </results>
+      </test-suite>
+      <test-suite type="TestFixture" name="E:\azstackhci-util\azstackhci-powershell\test\Get-AzStackHciVMMarketplaceGalleryImage.Tests.ps1" executed="True" result="Ignored" success="True" time="0.2002" asserts="0" description="E:\azstackhci-util\azstackhci-powershell\test\Get-AzStackHciVMMarketplaceGalleryImage.Tests.ps1">
+        <results>
+          <test-suite type="TestFixture" name="Get-AzStackHciVMMarketplaceGalleryImage" executed="True" result="Ignored" success="True" time="0.0687" asserts="0" description="Get-AzStackHciVMMarketplaceGalleryImage">
+            <results>
+              <test-case description="List1" name="Get-AzStackHciVMMarketplaceGalleryImage.List1" time="0" asserts="0" success="True" result="Ignored" executed="False" />
+              <test-case description="Get" name="Get-AzStackHciVMMarketplaceGalleryImage.Get" time="0" asserts="0" success="True" result="Ignored" executed="False" />
+              <test-case description="List" name="Get-AzStackHciVMMarketplaceGalleryImage.List" time="0" asserts="0" success="True" result="Ignored" executed="False" />
+              <test-case description="GetViaIdentity" name="Get-AzStackHciVMMarketplaceGalleryImage.GetViaIdentity" time="0" asserts="0" success="True" result="Ignored" executed="False" />
+            </results>
+          </test-suite>
+        </results>
+      </test-suite>
+      <test-suite type="TestFixture" name="E:\azstackhci-util\azstackhci-powershell\test\Get-AzStackHCIVMNetworkInterface.Tests.ps1" executed="True" result="Failure" success="False" time="0.2683" asserts="0" description="E:\azstackhci-util\azstackhci-powershell\test\Get-AzStackHCIVMNetworkInterface.Tests.ps1">
+        <results>
+          <test-suite type="TestFixture" name="Get-AzStackHCIVMNetworkInterface" executed="True" result="Failure" success="False" time="0.1302" asserts="0" description="Get-AzStackHCIVMNetworkInterface">
+            <results>
+              <test-case description="ByResourceId" name="Get-AzStackHCIVMNetworkInterface.ByResourceId" time="0.041" asserts="0" success="False" result="Failure" executed="True">
+                <failure>
+                  <message>Resource ID is invalid: </message>
+                  <stack-trace>at &lt;ScriptBlock&gt;, E:\azstackhci-util\azstackhci-powershell\test\Get-AzStackHCIVMNetworkInterface.Tests.ps1: line 19
+19:         Get-AzStackHCIVMNetworkInterface -ResourceId $env.nicResourceId | Should -Not -BeNullOrEmpty
+</stack-trace>
+                </failure>
+              </test-case>
+            </results>
+          </test-suite>
+        </results>
+      </test-suite>
+      <test-suite type="TestFixture" name="E:\azstackhci-util\azstackhci-powershell\test\Get-AzStackHciVMNetworkProfile.Tests.ps1" executed="True" result="Ignored" success="True" time="0.2301" asserts="0" description="E:\azstackhci-util\azstackhci-powershell\test\Get-AzStackHciVMNetworkProfile.Tests.ps1">
+        <results>
+          <test-suite type="TestFixture" name="Get-AzStackHciVMNetworkProfile" executed="True" result="Ignored" success="True" time="0.0716" asserts="0" description="Get-AzStackHciVMNetworkProfile">
+            <results>
+              <test-case description="Get" name="Get-AzStackHciVMNetworkProfile.Get" time="0" asserts="0" success="True" result="Ignored" executed="False" />
+              <test-case description="GetViaIdentity" name="Get-AzStackHciVMNetworkProfile.GetViaIdentity" time="0" asserts="0" success="True" result="Ignored" executed="False" />
+            </results>
+          </test-suite>
+        </results>
+      </test-suite>
+      <test-suite type="TestFixture" name="E:\azstackhci-util\azstackhci-powershell\test\Get-AzStackHCIVMStoragePath.Tests.ps1" executed="True" result="Failure" success="False" time="0.2315" asserts="0" description="E:\azstackhci-util\azstackhci-powershell\test\Get-AzStackHCIVMStoragePath.Tests.ps1">
+        <results>
+          <test-suite type="TestFixture" name="Get-AzStackHCIVMStoragePath" executed="True" result="Failure" success="False" time="0.1058" asserts="0" description="Get-AzStackHCIVMStoragePath">
+            <results>
+              <test-case description="ByResourceId" name="Get-AzStackHCIVMStoragePath.ByResourceId" time="0.0356" asserts="0" success="False" result="Failure" executed="True">
+                <failure>
+                  <message>Resource ID is invalid: </message>
+                  <stack-trace>at &lt;ScriptBlock&gt;, E:\azstackhci-util\azstackhci-powershell\test\Get-AzStackHCIVMStoragePath.Tests.ps1: line 19
+19:         Get-AzStackHCIVMStoragePath -ResourceId $env.storagePathResourceId | Should -Not -BeNullOrEmpty
+</stack-trace>
+                </failure>
+              </test-case>
+            </results>
+          </test-suite>
+        </results>
+      </test-suite>
+      <test-suite type="TestFixture" name="E:\azstackhci-util\azstackhci-powershell\test\Get-AzStackHCIVMVirtualHardDisk.Tests.ps1" executed="True" result="Failure" success="False" time="0.2837" asserts="0" description="E:\azstackhci-util\azstackhci-powershell\test\Get-AzStackHCIVMVirtualHardDisk.Tests.ps1">
+        <results>
+          <test-suite type="TestFixture" name="Get-AzStackHCIVMVirtualHardDisk" executed="True" result="Failure" success="False" time="0.1133" asserts="0" description="Get-AzStackHCIVMVirtualHardDisk">
+            <results>
+              <test-case description="ByResourceId" name="Get-AzStackHCIVMVirtualHardDisk.ByResourceId" time="0.0319" asserts="0" success="False" result="Failure" executed="True">
+                <failure>
+                  <message>Resource ID is invalid: </message>
+                  <stack-trace>at &lt;ScriptBlock&gt;, E:\azstackhci-util\azstackhci-powershell\test\Get-AzStackHCIVMVirtualHardDisk.Tests.ps1: line 19
+19:         Get-AzStackHCIVMVirtualHardDisk -ResourceId $env.vhdResourceId | Should -Not -BeNullOrEmpty
+</stack-trace>
+                </failure>
+              </test-case>
+            </results>
+          </test-suite>
+        </results>
+      </test-suite>
+      <test-suite type="TestFixture" name="E:\azstackhci-util\azstackhci-powershell\test\Get-AzStackHCIVMVirtualMachine.Tests.ps1" executed="True" result="Failure" success="False" time="0.2423" asserts="0" description="E:\azstackhci-util\azstackhci-powershell\test\Get-AzStackHCIVMVirtualMachine.Tests.ps1">
+        <results>
+          <test-suite type="TestFixture" name="Get-AzStackHCIVMVirtualMachine" executed="True" result="Failure" success="False" time="0.1005" asserts="0" description="Get-AzStackHCIVMVirtualMachine">
+            <results>
+              <test-case description="ByResourceId" name="Get-AzStackHCIVMVirtualMachine.ByResourceId" time="0.0294" asserts="0" success="False" result="Failure" executed="True">
+                <failure>
+                  <message>Cannot bind argument to parameter 'ResourceId' because it is an empty string.</message>
+                  <stack-trace>at &lt;ScriptBlock&gt;, E:\azstackhci-util\azstackhci-powershell\test\Get-AzStackHCIVMVirtualMachine.Tests.ps1: line 19
+19:         Get-AzStackHCIVMVirtualMachine -ResourceId $env.vmResourceId | Should -Not -BeNullOrEmpty
+</stack-trace>
+                </failure>
+              </test-case>
+            </results>
+          </test-suite>
+        </results>
+      </test-suite>
+      <test-suite type="TestFixture" name="E:\azstackhci-util\azstackhci-powershell\test\Get-AzStackHciVMVirtualMachineInstance.Tests.ps1" executed="True" result="Ignored" success="True" time="0.2407" asserts="0" description="E:\azstackhci-util\azstackhci-powershell\test\Get-AzStackHciVMVirtualMachineInstance.Tests.ps1">
+        <results>
+          <test-suite type="TestFixture" name="Get-AzStackHciVMVirtualMachineInstance" executed="True" result="Ignored" success="True" time="0.106" asserts="0" description="Get-AzStackHciVMVirtualMachineInstance">
+            <results>
+              <test-case description="Get" name="Get-AzStackHciVMVirtualMachineInstance.Get" time="0" asserts="0" success="True" result="Ignored" executed="False" />
+              <test-case description="List" name="Get-AzStackHciVMVirtualMachineInstance.List" time="0" asserts="0" success="True" result="Ignored" executed="False" />
+              <test-case description="GetViaIdentity" name="Get-AzStackHciVMVirtualMachineInstance.GetViaIdentity" time="0" asserts="0" success="True" result="Ignored" executed="False" />
+            </results>
+          </test-suite>
+        </results>
+      </test-suite>
+      <test-suite type="TestFixture" name="E:\azstackhci-util\azstackhci-powershell\test\Get-AzStackHCIVMVirtualNetwork.Tests.ps1" executed="True" result="Failure" success="False" time="0.2981" asserts="0" description="E:\azstackhci-util\azstackhci-powershell\test\Get-AzStackHCIVMVirtualNetwork.Tests.ps1">
+        <results>
+          <test-suite type="TestFixture" name="Get-AzStackHCIVMVirtualNetwork" executed="True" result="Failure" success="False" time="0.1253" asserts="0" description="Get-AzStackHCIVMVirtualNetwork">
+            <results>
+              <test-case description="ByResourceId" name="Get-AzStackHCIVMVirtualNetwork.ByResourceId" time="0.0544" asserts="0" success="False" result="Failure" executed="True">
+                <failure>
+                  <message>The term 'Get-AzStackHCIVMVirtualNetwork' is not recognized as a name of a cmdlet, function, script file, or executable program.
+Check the spelling of the name, or if a path was included, verify that the path is correct and try again.</message>
+                  <stack-trace>at &lt;ScriptBlock&gt;, E:\azstackhci-util\azstackhci-powershell\test\Get-AzStackHCIVMVirtualNetwork.Tests.ps1: line 19
+19:         Get-AzStackHCIVMVirtualNetwork -ResourceId $env.vnetResourceId | Should -Not -BeNullOrEmpty
+</stack-trace>
+                </failure>
+              </test-case>
+            </results>
+          </test-suite>
+        </results>
+      </test-suite>
+      <test-suite type="TestFixture" name="E:\azstackhci-util\azstackhci-powershell\test\Invoke-AzAzureStackHciUpdate.Tests.ps1" executed="True" result="Ignored" success="True" time="0.1975" asserts="0" description="E:\azstackhci-util\azstackhci-powershell\test\Invoke-AzAzureStackHciUpdate.Tests.ps1">
+        <results>
+          <test-suite type="TestFixture" name="Invoke-AzAzureStackHciUpdate" executed="True" result="Ignored" success="True" time="0.0645" asserts="0" description="Invoke-AzAzureStackHciUpdate">
+            <results>
+              <test-case description="Post" name="Invoke-AzAzureStackHciUpdate.Post" time="0" asserts="0" success="True" result="Ignored" executed="False" />
+              <test-case description="PostViaIdentity" name="Invoke-AzAzureStackHciUpdate.PostViaIdentity" time="0" asserts="0" success="True" result="Ignored" executed="False" />
+            </results>
+          </test-suite>
+        </results>
+      </test-suite>
+      <test-suite type="TestFixture" name="E:\azstackhci-util\azstackhci-powershell\test\New-AzStackHciVMGalleryImage.Tests.ps1" executed="True" result="Ignored" success="True" time="0.2563" asserts="0" description="E:\azstackhci-util\azstackhci-powershell\test\New-AzStackHciVMGalleryImage.Tests.ps1">
+        <results>
+          <test-suite type="TestFixture" name="New-AzStackHciVMGalleryImage" executed="True" result="Ignored" success="True" time="0.0734" asserts="0" description="New-AzStackHciVMGalleryImage">
+            <results>
+              <test-case description="CreateExpanded" name="New-AzStackHciVMGalleryImage.CreateExpanded" time="0" asserts="0" success="True" result="Ignored" executed="False" />
+            </results>
+          </test-suite>
+        </results>
+      </test-suite>
+      <test-suite type="TestFixture" name="E:\azstackhci-util\azstackhci-powershell\test\New-AzStackHciVMGuestAgent.Tests.ps1" executed="True" result="Ignored" success="True" time="0.2379" asserts="0" description="E:\azstackhci-util\azstackhci-powershell\test\New-AzStackHciVMGuestAgent.Tests.ps1">
+        <results>
+          <test-suite type="TestFixture" name="New-AzStackHciVMGuestAgent" executed="True" result="Ignored" success="True" time="0.0664" asserts="0" description="New-AzStackHciVMGuestAgent">
+            <results>
+              <test-case description="CreateExpanded" name="New-AzStackHciVMGuestAgent.CreateExpanded" time="0" asserts="0" success="True" result="Ignored" executed="False" />
+            </results>
+          </test-suite>
+        </results>
+      </test-suite>
+      <test-suite type="TestFixture" name="E:\azstackhci-util\azstackhci-powershell\test\New-AzStackHciVMHybridIdentityMetadata.Tests.ps1" executed="True" result="Ignored" success="True" time="0.246" asserts="0" description="E:\azstackhci-util\azstackhci-powershell\test\New-AzStackHciVMHybridIdentityMetadata.Tests.ps1">
+        <results>
+          <test-suite type="TestFixture" name="New-AzStackHciVMHybridIdentityMetadata" executed="True" result="Ignored" success="True" time="0.0773" asserts="0" description="New-AzStackHciVMHybridIdentityMetadata">
+            <results>
+              <test-case description="CreateExpanded" name="New-AzStackHciVMHybridIdentityMetadata.CreateExpanded" time="0" asserts="0" success="True" result="Ignored" executed="False" />
+            </results>
+          </test-suite>
+        </results>
+      </test-suite>
+      <test-suite type="TestFixture" name="E:\azstackhci-util\azstackhci-powershell\test\New-AzStackHCIVMImage.Tests.ps1" executed="True" result="Failure" success="False" time="0.3739" asserts="0" description="E:\azstackhci-util\azstackhci-powershell\test\New-AzStackHCIVMImage.Tests.ps1">
+        <results>
+          <test-suite type="TestFixture" name="New-AzStackHCIVMImage" executed="True" result="Failure" success="False" time="0.1968" asserts="0" description="New-AzStackHCIVMImage">
+            <results>
+              <test-case description="MarketplaceURN" name="New-AzStackHCIVMImage.MarketplaceURN" time="0.0299" asserts="0" success="False" result="Failure" executed="True">
+                <failure>
+                  <message>Cannot bind argument to parameter 'Name' because it is an empty string.</message>
+                  <stack-trace>at &lt;ScriptBlock&gt;, E:\azstackhci-util\azstackhci-powershell\test\New-AzStackHCIVMImage.Tests.ps1: line 19
+19:         New-AzStackHCIVMImage -Name $env.mkpImageName -SubscriptionId $env.subscriptionId -ResourceGroupName $env.resourceGroupName -CustomLocationId $env.customLocationId -Location $env.location -URN $env.urn | Select-Object -Property ProvisioningState | Should -BeExactly "@{ProvisioningState=Succeeded}"
+</stack-trace>
+                </failure>
+              </test-case>
+              <test-case description="GalleryImage" name="New-AzStackHCIVMImage.GalleryImage" time="0.019" asserts="0" success="False" result="Failure" executed="True">
+                <failure>
+                  <message>Cannot bind argument to parameter 'Name' because it is an empty string.</message>
+                  <stack-trace>at &lt;ScriptBlock&gt;, E:\azstackhci-util\azstackhci-powershell\test\New-AzStackHCIVMImage.Tests.ps1: line 23
+23:          New-AzStackHCIVMImage -Name $env.imageName -ImagePath $env.imagePath  -SubscriptionId $env.subscriptionId -ResourceGroupName $env.resourceGroupName -CustomLocationId $env.customLocationId -Location $env.location | Select-Object -Property ProvisioningState | Should -BeExactly "@{ProvisioningState=Succeeded}"
+</stack-trace>
+                </failure>
+              </test-case>
+              <test-case description="Marketplace" name="New-AzStackHCIVMImage.Marketplace" time="0.0285" asserts="0" success="False" result="Failure" executed="True">
+                <failure>
+                  <message>Cannot bind argument to parameter 'Name' because it is an empty string.</message>
+                  <stack-trace>at &lt;ScriptBlock&gt;, E:\azstackhci-util\azstackhci-powershell\test\New-AzStackHCIVMImage.Tests.ps1: line 27
+27:         New-AzStackHCIVMImage -Name $env.mkpImageName2 -SubscriptionId $env.subscriptionId -ResourceGroupName $env.resourceGroupName -CustomLocationId $env.customLocationId -Location $env.location -Offer $env.offer -Publisher $env.publisher -Sku $env.sku -Version $env.version | Select-Object -Property ProvisioningState | Should -BeExactly "@{ProvisioningState=Succeeded}"
+</stack-trace>
+                </failure>
+              </test-case>
+            </results>
+          </test-suite>
+        </results>
+      </test-suite>
+      <test-suite type="TestFixture" name="E:\azstackhci-util\azstackhci-powershell\test\New-AzStackHciVMLogicalNetwork.Tests.ps1" executed="True" result="Ignored" success="True" time="0.1989" asserts="0" description="E:\azstackhci-util\azstackhci-powershell\test\New-AzStackHciVMLogicalNetwork.Tests.ps1">
+        <results>
+          <test-suite type="TestFixture" name="New-AzStackHciVMLogicalNetwork" executed="True" result="Ignored" success="True" time="0.0592" asserts="0" description="New-AzStackHciVMLogicalNetwork">
+            <results>
+              <test-case description="CreateExpanded" name="New-AzStackHciVMLogicalNetwork.CreateExpanded" time="0" asserts="0" success="True" result="Ignored" executed="False" />
+            </results>
+          </test-suite>
+        </results>
+      </test-suite>
+      <test-suite type="TestFixture" name="E:\azstackhci-util\azstackhci-powershell\test\New-AzStackHciVMMachine.Tests.ps1" executed="True" result="Ignored" success="True" time="0.1973" asserts="0" description="E:\azstackhci-util\azstackhci-powershell\test\New-AzStackHciVMMachine.Tests.ps1">
+        <results>
+          <test-suite type="TestFixture" name="New-AzStackHciVMMachine" executed="True" result="Ignored" success="True" time="0.0616" asserts="0" description="New-AzStackHciVMMachine">
+            <results>
+              <test-case description="CreateExpanded" name="New-AzStackHciVMMachine.CreateExpanded" time="0" asserts="0" success="True" result="Ignored" executed="False" />
+            </results>
+          </test-suite>
+        </results>
+      </test-suite>
+      <test-suite type="TestFixture" name="E:\azstackhci-util\azstackhci-powershell\test\New-AzStackHciVMMachineExtension.Tests.ps1" executed="True" result="Ignored" success="True" time="0.2242" asserts="0" description="E:\azstackhci-util\azstackhci-powershell\test\New-AzStackHciVMMachineExtension.Tests.ps1">
+        <results>
+          <test-suite type="TestFixture" name="New-AzStackHciVMMachineExtension" executed="True" result="Ignored" success="True" time="0.0608" asserts="0" description="New-AzStackHciVMMachineExtension">
+            <results>
+              <test-case description="CreateExpanded" name="New-AzStackHciVMMachineExtension.CreateExpanded" time="0" asserts="0" success="True" result="Ignored" executed="False" />
+            </results>
+          </test-suite>
+        </results>
+      </test-suite>
+      <test-suite type="TestFixture" name="E:\azstackhci-util\azstackhci-powershell\test\New-AzStackHciVMMarketplaceGalleryImage.Tests.ps1" executed="True" result="Ignored" success="True" time="0.2133" asserts="0" description="E:\azstackhci-util\azstackhci-powershell\test\New-AzStackHciVMMarketplaceGalleryImage.Tests.ps1">
+        <results>
+          <test-suite type="TestFixture" name="New-AzStackHciVMMarketplaceGalleryImage" executed="True" result="Ignored" success="True" time="0.0582" asserts="0" description="New-AzStackHciVMMarketplaceGalleryImage">
+            <results>
+              <test-case description="CreateExpanded" name="New-AzStackHciVMMarketplaceGalleryImage.CreateExpanded" time="0" asserts="0" success="True" result="Ignored" executed="False" />
+            </results>
+          </test-suite>
+        </results>
+      </test-suite>
+      <test-suite type="TestFixture" name="E:\azstackhci-util\azstackhci-powershell\test\New-AzStackHCIVMNetworkInterface.Tests.ps1" executed="True" result="Failure" success="False" time="0.2582" asserts="0" description="E:\azstackhci-util\azstackhci-powershell\test\New-AzStackHCIVMNetworkInterface.Tests.ps1">
+        <results>
+          <test-suite type="TestFixture" name="New-AzStackHCIVMNetworkInterface" executed="True" result="Failure" success="False" time="0.1053" asserts="0" description="New-AzStackHCIVMNetworkInterface">
+            <results>
+              <test-case description="CreateExpanded" name="New-AzStackHCIVMNetworkInterface.CreateExpanded" time="0.0298" asserts="0" success="False" result="Failure" executed="True">
+                <failure>
+                  <message>The term 'New-AzStackHCIVMVirtualNetwork' is not recognized as a name of a cmdlet, function, script file, or executable program.
+Check the spelling of the name, or if a path was included, verify that the path is correct and try again.</message>
+                  <stack-trace>at &lt;ScriptBlock&gt;, E:\azstackhci-util\azstackhci-powershell\test\New-AzStackHCIVMNetworkInterface.Tests.ps1: line 19
+19:         New-AzStackHCIVMVirtualNetwork -Name $env.vnetName -SubscriptionId $env.subscriptionId -ResourceGroupName $env.resourceGroupName -CustomLocationId $env.customLocationId -Location $env.location  | Select-Object -Property ProvisioningState | Should -BeExactly "@{ProvisioningState=Succeeded}"
+</stack-trace>
+                </failure>
+              </test-case>
+            </results>
+          </test-suite>
+        </results>
+      </test-suite>
+      <test-suite type="TestFixture" name="E:\azstackhci-util\azstackhci-powershell\test\New-AzStackHCIVMNetworkInterfaceIpConfig.Tests.ps1" executed="True" result="Ignored" success="True" time="0.2111" asserts="0" description="E:\azstackhci-util\azstackhci-powershell\test\New-AzStackHCIVMNetworkInterfaceIpConfig.Tests.ps1">
+        <results>
+          <test-suite type="TestFixture" name="New-AzStackHCIVMNetworkInterfaceIpConfig" executed="True" result="Ignored" success="True" time="0.0607" asserts="0" description="New-AzStackHCIVMNetworkInterfaceIpConfig">
+            <results>
+              <test-case description="__AllParameterSets" name="New-AzStackHCIVMNetworkInterfaceIpConfig.__AllParameterSets" time="0" asserts="0" success="True" result="Ignored" executed="False" />
+            </results>
+          </test-suite>
+        </results>
+      </test-suite>
+      <test-suite type="TestFixture" name="E:\azstackhci-util\azstackhci-powershell\test\New-AzStackHCIVMStoragePath.Tests.ps1" executed="True" result="Failure" success="False" time="0.259" asserts="0" description="E:\azstackhci-util\azstackhci-powershell\test\New-AzStackHCIVMStoragePath.Tests.ps1">
+        <results>
+          <test-suite type="TestFixture" name="New-AzStackHCIVMStoragePath" executed="True" result="Failure" success="False" time="0.0936" asserts="0" description="New-AzStackHCIVMStoragePath">
+            <results>
+              <test-case description="CreateExpanded" name="New-AzStackHCIVMStoragePath.CreateExpanded" time="0.0181" asserts="0" success="False" result="Failure" executed="True">
+                <failure>
+                  <message>Cannot bind argument to parameter 'Name' because it is an empty string.</message>
+                  <stack-trace>at &lt;ScriptBlock&gt;, E:\azstackhci-util\azstackhci-powershell\test\New-AzStackHCIVMStoragePath.Tests.ps1: line 19
+19:         New-AzStackHCIVMStoragePath  -Name $env.storagePathName -SubscriptionId $env.subscriptionId -ResourceGroupName $env.resourceGroupName -CustomLocationId $env.customLocationId -Location $env.location -Path $env.storageContainerPath | Select-Object -Property ProvisioningState | Should -BeExactly "@{ProvisioningState=Succeeded}"
+</stack-trace>
+                </failure>
+              </test-case>
+            </results>
+          </test-suite>
+        </results>
+      </test-suite>
+      <test-suite type="TestFixture" name="E:\azstackhci-util\azstackhci-powershell\test\New-AzStackHCIVMVirtualHardDisk.Tests.ps1" executed="True" result="Failure" success="False" time="0.3118" asserts="0" description="E:\azstackhci-util\azstackhci-powershell\test\New-AzStackHCIVMVirtualHardDisk.Tests.ps1">
+        <results>
+          <test-suite type="TestFixture" name="New-AzStackHCIVMVirtualHardDisk" executed="True" result="Failure" success="False" time="0.1366" asserts="0" description="New-AzStackHCIVMVirtualHardDisk">
+            <results>
+              <test-case description="Create" name="New-AzStackHCIVMVirtualHardDisk.Create" time="0.0263" asserts="0" success="False" result="Failure" executed="True">
+                <failure>
+                  <message>Cannot bind argument to parameter 'Name' because it is an empty string.</message>
+                  <stack-trace>at &lt;ScriptBlock&gt;, E:\azstackhci-util\azstackhci-powershell\test\New-AzStackHCIVMVirtualHardDisk.Tests.ps1: line 19
+19:         New-AzStackHCIVMVirtualHardDisk -Name $env.vhdName -SubscriptionId $env.subscriptionId -ResourceGroupName $env.resourceGroupName -CustomLocationId $env.customLocationId -Location $env.location -SizeGb $env.sizeGb | Select-Object -Property ProvisioningState  | Should -BeExactly "@{ProvisioningState=Succeeded}"
+</stack-trace>
+                </failure>
+              </test-case>
+            </results>
+          </test-suite>
+        </results>
+      </test-suite>
+      <test-suite type="TestFixture" name="E:\azstackhci-util\azstackhci-powershell\test\New-AzStackHCIVMVirtualMachine.Tests.ps1" executed="True" result="Failure" success="False" time="0.3979" asserts="0" description="E:\azstackhci-util\azstackhci-powershell\test\New-AzStackHCIVMVirtualMachine.Tests.ps1">
+        <results>
+          <test-suite type="TestFixture" name="New-AzStackHCIVMVirtualMachine" executed="True" result="Failure" success="False" time="0.2057" asserts="0" description="New-AzStackHCIVMVirtualMachine">
+            <results>
+              <test-case description="ByImageId" name="New-AzStackHCIVMVirtualMachine.ByImageId" time="0.0339" asserts="0" success="False" result="Failure" executed="True">
+                <failure>
+                  <message>Cannot bind argument to parameter 'ResourceGroupName' because it is an empty string.</message>
+                  <stack-trace>at &lt;ScriptBlock&gt;, E:\azstackhci-util\azstackhci-powershell\test\New-AzStackHCIVMVirtualMachine.Tests.ps1: line 19
+19:         New-AzStackHCIVMVirtualMachine -Name "testVm" -VmSize "Custom" -VmProcessors 4  -VmMemory 8   -SubscriptionId $env.subscriptionId -ResourceGroupName $env.resourceGroupName -CustomLocationId $env.customLocationId -Location $env.location -ImageId $env.vmImageId -OsType "Linux" 
+</stack-trace>
+                </failure>
+              </test-case>
+              <test-case description="ByImageName" name="New-AzStackHCIVMVirtualMachine.ByImageName" time="0.0146" asserts="0" success="False" result="Failure" executed="True">
+                <failure>
+                  <message>Cannot bind argument to parameter 'ResourceGroupName' because it is an empty string.</message>
+                  <stack-trace>at &lt;ScriptBlock&gt;, E:\azstackhci-util\azstackhci-powershell\test\New-AzStackHCIVMVirtualMachine.Tests.ps1: line 24
+24:        New-AzStackHCIVMVirtualMachine -Name "testVm2" -VmSize "Custom" -VmProcessors 4  -VmMemory 8   -SubscriptionId $env.subscriptionId -ResourceGroupName $env.resourceGroupName -CustomLocationId $env.customLocationId -Location $env.location -ImageName $env.vmImageName -OsType "Linux" 
+</stack-trace>
+                </failure>
+              </test-case>
+              <test-case description="ByOsDiskId" name="New-AzStackHCIVMVirtualMachine.ByOsDiskId" time="0.0186" asserts="0" success="False" result="Failure" executed="True">
+                <failure>
+                  <message>Cannot bind argument to parameter 'ResourceGroupName' because it is an empty string.</message>
+                  <stack-trace>at &lt;ScriptBlock&gt;, E:\azstackhci-util\azstackhci-powershell\test\New-AzStackHCIVMVirtualMachine.Tests.ps1: line 29
+29:        New-AzStackHCIVMVirtualMachine -Name "testVm3" -VmSize "Custom" -VmProcessors 4  -VmMemory 8   -SubscriptionId $env.subscriptionId -ResourceGroupName $env.resourceGroupName -CustomLocationId $env.customLocationId -Location $env.location -OsDiskId $env.vmVhdId -OsType "Linux" 
+</stack-trace>
+                </failure>
+              </test-case>
+              <test-case description="ByOsDiskName" name="New-AzStackHCIVMVirtualMachine.ByOsDiskName" time="0.0278" asserts="0" success="False" result="Failure" executed="True">
+                <failure>
+                  <message>Cannot bind argument to parameter 'ResourceGroupName' because it is an empty string.</message>
+                  <stack-trace>at &lt;ScriptBlock&gt;, E:\azstackhci-util\azstackhci-powershell\test\New-AzStackHCIVMVirtualMachine.Tests.ps1: line 34
+34:          New-AzStackHCIVMVirtualMachine -Name "testVm3" -VmSize "Custom" -VmProcessors 4  -VmMemory 8   -SubscriptionId $env.subscriptionId -ResourceGroupName $env.resourceGroupName -CustomLocationId $env.customLocationId -Location $env.location -OsDiskName $env.vmVhdName -OsType "Linux" 
+</stack-trace>
+                </failure>
+              </test-case>
+            </results>
+          </test-suite>
+        </results>
+      </test-suite>
+      <test-suite type="TestFixture" name="E:\azstackhci-util\azstackhci-powershell\test\New-AzStackHciVMVirtualMachineInstance.Tests.ps1" executed="True" result="Ignored" success="True" time="0.2324" asserts="0" description="E:\azstackhci-util\azstackhci-powershell\test\New-AzStackHciVMVirtualMachineInstance.Tests.ps1">
+        <results>
+          <test-suite type="TestFixture" name="New-AzStackHciVMVirtualMachineInstance" executed="True" result="Ignored" success="True" time="0.073" asserts="0" description="New-AzStackHciVMVirtualMachineInstance">
+            <results>
+              <test-case description="CreateExpanded" name="New-AzStackHciVMVirtualMachineInstance.CreateExpanded" time="0" asserts="0" success="True" result="Ignored" executed="False" />
+            </results>
+          </test-suite>
+        </results>
+      </test-suite>
+      <test-suite type="TestFixture" name="E:\azstackhci-util\azstackhci-powershell\test\New-AzStackHCIVMVirtualNetwork.Tests.ps1" executed="True" result="Failure" success="False" time="0.2567" asserts="0" description="E:\azstackhci-util\azstackhci-powershell\test\New-AzStackHCIVMVirtualNetwork.Tests.ps1">
+        <results>
+          <test-suite type="TestFixture" name="New-AzStackHCIVMVirtualNetwork" executed="True" result="Failure" success="False" time="0.1165" asserts="0" description="New-AzStackHCIVMVirtualNetwork">
+            <results>
+              <test-case description="Create" name="New-AzStackHCIVMVirtualNetwork.Create" time="0.0467" asserts="0" success="False" result="Failure" executed="True">
+                <failure>
+                  <message>The term 'New-AzStackHCIVMVirtualNetwork' is not recognized as a name of a cmdlet, function, script file, or executable program.
+Check the spelling of the name, or if a path was included, verify that the path is correct and try again.</message>
+                  <stack-trace>at &lt;ScriptBlock&gt;, E:\azstackhci-util\azstackhci-powershell\test\New-AzStackHCIVMVirtualNetwork.Tests.ps1: line 19
+19:         New-AzStackHCIVMVirtualNetwork -Name $env.vnetName -SubscriptionId $env.subscriptionId -ResourceGroupName $env.resourceGroupName -CustomLocationId $env.customLocationId -Location $env.location -VmSwitchName $env.vmSwitchName | Select-Object -Property ProvisioningState | Should -BeExactly "@{ProvisioningState=Succeeded}"
+</stack-trace>
+                </failure>
+              </test-case>
+            </results>
+          </test-suite>
+        </results>
+      </test-suite>
+      <test-suite type="TestFixture" name="E:\azstackhci-util\azstackhci-powershell\test\New-AzStackHciVMVirtualNetworkSubnetConfig.Tests.ps1" executed="True" result="Ignored" success="True" time="0.2274" asserts="0" description="E:\azstackhci-util\azstackhci-powershell\test\New-AzStackHciVMVirtualNetworkSubnetConfig.Tests.ps1">
+        <results>
+          <test-suite type="TestFixture" name="New-AzStackHciVMVirtualNetworkSubnetConfig" executed="True" result="Ignored" success="True" time="0.0665" asserts="0" description="New-AzStackHciVMVirtualNetworkSubnetConfig">
+            <results>
+              <test-case description="__AllParameterSets" name="New-AzStackHciVMVirtualNetworkSubnetConfig.__AllParameterSets" time="0" asserts="0" success="True" result="Ignored" executed="False" />
+            </results>
+          </test-suite>
+        </results>
+      </test-suite>
+      <test-suite type="TestFixture" name="E:\azstackhci-util\azstackhci-powershell\test\Remove-AzStackHciVMGalleryImage.Tests.ps1" executed="True" result="Ignored" success="True" time="0.3258" asserts="0" description="E:\azstackhci-util\azstackhci-powershell\test\Remove-AzStackHciVMGalleryImage.Tests.ps1">
+        <results>
+          <test-suite type="TestFixture" name="Remove-AzStackHciVMGalleryImage" executed="True" result="Ignored" success="True" time="0.0895" asserts="0" description="Remove-AzStackHciVMGalleryImage">
+            <results>
+              <test-case description="Delete" name="Remove-AzStackHciVMGalleryImage.Delete" time="0" asserts="0" success="True" result="Ignored" executed="False" />
+              <test-case description="DeleteViaIdentity" name="Remove-AzStackHciVMGalleryImage.DeleteViaIdentity" time="0" asserts="0" success="True" result="Ignored" executed="False" />
+            </results>
+          </test-suite>
+        </results>
+      </test-suite>
+      <test-suite type="TestFixture" name="E:\azstackhci-util\azstackhci-powershell\test\Remove-AzStackHciVMGuestAgent.Tests.ps1" executed="True" result="Ignored" success="True" time="0.2644" asserts="0" description="E:\azstackhci-util\azstackhci-powershell\test\Remove-AzStackHciVMGuestAgent.Tests.ps1">
+        <results>
+          <test-suite type="TestFixture" name="Remove-AzStackHciVMGuestAgent" executed="True" result="Ignored" success="True" time="0.0846" asserts="0" description="Remove-AzStackHciVMGuestAgent">
+            <results>
+              <test-case description="Delete" name="Remove-AzStackHciVMGuestAgent.Delete" time="0" asserts="0" success="True" result="Ignored" executed="False" />
+              <test-case description="DeleteViaIdentity" name="Remove-AzStackHciVMGuestAgent.DeleteViaIdentity" time="0" asserts="0" success="True" result="Ignored" executed="False" />
+            </results>
+          </test-suite>
+        </results>
+      </test-suite>
+      <test-suite type="TestFixture" name="E:\azstackhci-util\azstackhci-powershell\test\Remove-AzStackHciVMHybridIdentityMetadata.Tests.ps1" executed="True" result="Ignored" success="True" time="0.2123" asserts="0" description="E:\azstackhci-util\azstackhci-powershell\test\Remove-AzStackHciVMHybridIdentityMetadata.Tests.ps1">
+        <results>
+          <test-suite type="TestFixture" name="Remove-AzStackHciVMHybridIdentityMetadata" executed="True" result="Ignored" success="True" time="0.0444" asserts="0" description="Remove-AzStackHciVMHybridIdentityMetadata">
+            <results>
+              <test-case description="Delete" name="Remove-AzStackHciVMHybridIdentityMetadata.Delete" time="0" asserts="0" success="True" result="Ignored" executed="False" />
+              <test-case description="DeleteViaIdentity" name="Remove-AzStackHciVMHybridIdentityMetadata.DeleteViaIdentity" time="0" asserts="0" success="True" result="Ignored" executed="False" />
+            </results>
+          </test-suite>
+        </results>
+      </test-suite>
+      <test-suite type="TestFixture" name="E:\azstackhci-util\azstackhci-powershell\test\Remove-AzStackHCIVMImage.Tests.ps1" executed="True" result="Failure" success="False" time="0.2973" asserts="0" description="E:\azstackhci-util\azstackhci-powershell\test\Remove-AzStackHCIVMImage.Tests.ps1">
+        <results>
+          <test-suite type="TestFixture" name="Remove-AzStackHCIVMImage" executed="True" result="Failure" success="False" time="0.1583" asserts="0" description="Remove-AzStackHCIVMImage">
+            <results>
+              <test-case description="ByResourceId" name="Remove-AzStackHCIVMImage.ByResourceId" time="0.0197" asserts="0" success="False" result="Failure" executed="True">
+                <failure>
+                  <message>Cannot bind argument to parameter 'ResourceId' because it is an empty string.</message>
+                  <stack-trace>at &lt;ScriptBlock&gt;, E:\azstackhci-util\azstackhci-powershell\test\Remove-AzStackHCIVMImage.Tests.ps1: line 19
+19:         Remove-AzStackHCIVMImage -ResourceId $env.imageResourceId | Should -Not -Throw
+</stack-trace>
+                </failure>
+              </test-case>
+              <test-case description="ByName" name="Remove-AzStackHCIVMImage.ByName" time="0.0177" asserts="0" success="False" result="Failure" executed="True">
+                <failure>
+                  <message>Cannot bind argument to parameter 'Name' because it is an empty string.</message>
+                  <stack-trace>at &lt;ScriptBlock&gt;, E:\azstackhci-util\azstackhci-powershell\test\Remove-AzStackHCIVMImage.Tests.ps1: line 23
+23:         Remove-AzStackHCIVMImage -Name $env.ImageName -ResourceGroupName $env.ResourceGroupName | Should -Not -Throw
+</stack-trace>
+                </failure>
+              </test-case>
+            </results>
+          </test-suite>
+        </results>
+      </test-suite>
+      <test-suite type="TestFixture" name="E:\azstackhci-util\azstackhci-powershell\test\Remove-AzStackHciVMLogicalNetwork.Tests.ps1" executed="True" result="Ignored" success="True" time="0.2239" asserts="0" description="E:\azstackhci-util\azstackhci-powershell\test\Remove-AzStackHciVMLogicalNetwork.Tests.ps1">
+        <results>
+          <test-suite type="TestFixture" name="Remove-AzStackHciVMLogicalNetwork" executed="True" result="Ignored" success="True" time="0.0605" asserts="0" description="Remove-AzStackHciVMLogicalNetwork">
+            <results>
+              <test-case description="Delete" name="Remove-AzStackHciVMLogicalNetwork.Delete" time="0" asserts="0" success="True" result="Ignored" executed="False" />
+              <test-case description="DeleteViaIdentity" name="Remove-AzStackHciVMLogicalNetwork.DeleteViaIdentity" time="0" asserts="0" success="True" result="Ignored" executed="False" />
+            </results>
+          </test-suite>
+        </results>
+      </test-suite>
+      <test-suite type="TestFixture" name="E:\azstackhci-util\azstackhci-powershell\test\Remove-AzStackHciVMMachine.Tests.ps1" executed="True" result="Ignored" success="True" time="0.22" asserts="0" description="E:\azstackhci-util\azstackhci-powershell\test\Remove-AzStackHciVMMachine.Tests.ps1">
+        <results>
+          <test-suite type="TestFixture" name="Remove-AzStackHciVMMachine" executed="True" result="Ignored" success="True" time="0.0829" asserts="0" description="Remove-AzStackHciVMMachine">
+            <results>
+              <test-case description="Delete" name="Remove-AzStackHciVMMachine.Delete" time="0" asserts="0" success="True" result="Ignored" executed="False" />
+              <test-case description="DeleteViaIdentity" name="Remove-AzStackHciVMMachine.DeleteViaIdentity" time="0" asserts="0" success="True" result="Ignored" executed="False" />
+            </results>
+          </test-suite>
+        </results>
+      </test-suite>
+      <test-suite type="TestFixture" name="E:\azstackhci-util\azstackhci-powershell\test\Remove-AzStackHciVMMachineExtension.Tests.ps1" executed="True" result="Ignored" success="True" time="0.2002" asserts="0" description="E:\azstackhci-util\azstackhci-powershell\test\Remove-AzStackHciVMMachineExtension.Tests.ps1">
+        <results>
+          <test-suite type="TestFixture" name="Remove-AzStackHciVMMachineExtension" executed="True" result="Ignored" success="True" time="0.0571" asserts="0" description="Remove-AzStackHciVMMachineExtension">
+            <results>
+              <test-case description="Delete" name="Remove-AzStackHciVMMachineExtension.Delete" time="0" asserts="0" success="True" result="Ignored" executed="False" />
+              <test-case description="DeleteViaIdentity" name="Remove-AzStackHciVMMachineExtension.DeleteViaIdentity" time="0" asserts="0" success="True" result="Ignored" executed="False" />
+            </results>
+          </test-suite>
+        </results>
+      </test-suite>
+      <test-suite type="TestFixture" name="E:\azstackhci-util\azstackhci-powershell\test\Remove-AzStackHciVMMarketplaceGalleryImage.Tests.ps1" executed="True" result="Ignored" success="True" time="0.2491" asserts="0" description="E:\azstackhci-util\azstackhci-powershell\test\Remove-AzStackHciVMMarketplaceGalleryImage.Tests.ps1">
+        <results>
+          <test-suite type="TestFixture" name="Remove-AzStackHciVMMarketplaceGalleryImage" executed="True" result="Ignored" success="True" time="0.087" asserts="0" description="Remove-AzStackHciVMMarketplaceGalleryImage">
+            <results>
+              <test-case description="Delete" name="Remove-AzStackHciVMMarketplaceGalleryImage.Delete" time="0" asserts="0" success="True" result="Ignored" executed="False" />
+              <test-case description="DeleteViaIdentity" name="Remove-AzStackHciVMMarketplaceGalleryImage.DeleteViaIdentity" time="0" asserts="0" success="True" result="Ignored" executed="False" />
+            </results>
+          </test-suite>
+        </results>
+      </test-suite>
+      <test-suite type="TestFixture" name="E:\azstackhci-util\azstackhci-powershell\test\Remove-AzStackHciVMNetworkInterface.Tests.ps1" executed="True" result="Failure" success="False" time="0.273" asserts="0" description="E:\azstackhci-util\azstackhci-powershell\test\Remove-AzStackHciVMNetworkInterface.Tests.ps1">
+        <results>
+          <test-suite type="TestFixture" name="Remove-AzStackHciVMNetworkInterface" executed="True" result="Failure" success="False" time="0.1071" asserts="0" description="Remove-AzStackHciVMNetworkInterface">
+            <results>
+              <test-case description="ByResourceId" name="Remove-AzStackHciVMNetworkInterface.ByResourceId" time="0.032" asserts="0" success="False" result="Failure" executed="True">
+                <failure>
+                  <message>Cannot bind argument to parameter 'ResourceId' because it is an empty string.</message>
+                  <stack-trace>at &lt;ScriptBlock&gt;, E:\azstackhci-util\azstackhci-powershell\test\Remove-AzStackHciVMNetworkInterface.Tests.ps1: line 19
+19:         Remove-AzStackHCIVMNetworkInterface -ResourceId $env.nicResourceId | Should -Not -Throw
+</stack-trace>
+                </failure>
+              </test-case>
+            </results>
+          </test-suite>
+        </results>
+      </test-suite>
+      <test-suite type="TestFixture" name="E:\azstackhci-util\azstackhci-powershell\test\Remove-AzStackHciVMStoragePath.Tests.ps1" executed="True" result="Failure" success="False" time="0.3164" asserts="0" description="E:\azstackhci-util\azstackhci-powershell\test\Remove-AzStackHciVMStoragePath.Tests.ps1">
+        <results>
+          <test-suite type="TestFixture" name="Remove-AzStackHciVMStoragePath" executed="True" result="Failure" success="False" time="0.119" asserts="0" description="Remove-AzStackHciVMStoragePath">
+            <results>
+              <test-case description="ByResourceId" name="Remove-AzStackHciVMStoragePath.ByResourceId" time="0.0263" asserts="0" success="False" result="Failure" executed="True">
+                <failure>
+                  <message>Cannot bind argument to parameter 'ResourceId' because it is an empty string.</message>
+                  <stack-trace>at &lt;ScriptBlock&gt;, E:\azstackhci-util\azstackhci-powershell\test\Remove-AzStackHciVMStoragePath.Tests.ps1: line 19
+19:         Remove-AzStackHCIVMStoragePath -ResourceId $env.storagePathResourceId | Should -Not -Throw
+</stack-trace>
+                </failure>
+              </test-case>
+            </results>
+          </test-suite>
+        </results>
+      </test-suite>
+      <test-suite type="TestFixture" name="E:\azstackhci-util\azstackhci-powershell\test\Remove-AzStackHciVMVirtualHardDisk.Tests.ps1" executed="True" result="Failure" success="False" time="0.2882" asserts="0" description="E:\azstackhci-util\azstackhci-powershell\test\Remove-AzStackHciVMVirtualHardDisk.Tests.ps1">
+        <results>
+          <test-suite type="TestFixture" name="Remove-AzStackHciVMVirtualHardDisk" executed="True" result="Failure" success="False" time="0.1069" asserts="0" description="Remove-AzStackHciVMVirtualHardDisk">
+            <results>
+              <test-case description="ByResourceId" name="Remove-AzStackHciVMVirtualHardDisk.ByResourceId" time="0.0129" asserts="0" success="False" result="Failure" executed="True">
+                <failure>
+                  <message>Cannot bind argument to parameter 'ResourceId' because it is an empty string.</message>
+                  <stack-trace>at &lt;ScriptBlock&gt;, E:\azstackhci-util\azstackhci-powershell\test\Remove-AzStackHciVMVirtualHardDisk.Tests.ps1: line 19
+19:         Remove-AzStackHCIVMVirtualHardDisk -ResourceId $env.vhdResourceId | Should -Not -Throw
+</stack-trace>
+                </failure>
+              </test-case>
+            </results>
+          </test-suite>
+        </results>
+      </test-suite>
+      <test-suite type="TestFixture" name="E:\azstackhci-util\azstackhci-powershell\test\Remove-AzStackHciVMVirtualMachine.Tests.ps1" executed="True" result="Failure" success="False" time="0.3171" asserts="0" description="E:\azstackhci-util\azstackhci-powershell\test\Remove-AzStackHciVMVirtualMachine.Tests.ps1">
+        <results>
+          <test-suite type="TestFixture" name="Remove-AzStackHciVMVirtualMachine" executed="True" result="Failure" success="False" time="0.1229" asserts="0" description="Remove-AzStackHciVMVirtualMachine">
+            <results>
+              <test-case description="ByResourceId" name="Remove-AzStackHciVMVirtualMachine.ByResourceId" time="0.0168" asserts="0" success="False" result="Failure" executed="True">
+                <failure>
+                  <message>Cannot bind argument to parameter 'ResourceId' because it is an empty string.</message>
+                  <stack-trace>at &lt;ScriptBlock&gt;, E:\azstackhci-util\azstackhci-powershell\test\Remove-AzStackHciVMVirtualMachine.Tests.ps1: line 19
+19:         Remove-AzStackHCIVMVirtualMachine -ResourceId $env.vmResourceId | Should -Not -Throw
+</stack-trace>
+                </failure>
+              </test-case>
+            </results>
+          </test-suite>
+        </results>
+      </test-suite>
+      <test-suite type="TestFixture" name="E:\azstackhci-util\azstackhci-powershell\test\Remove-AzStackHCIVMVirtualMachineDataDisk.Tests.ps1" executed="True" result="Ignored" success="True" time="0.2195" asserts="0" description="E:\azstackhci-util\azstackhci-powershell\test\Remove-AzStackHCIVMVirtualMachineDataDisk.Tests.ps1">
+        <results>
+          <test-suite type="TestFixture" name="Remove-AzStackHCIVMVirtualMachineDataDisk" executed="True" result="Ignored" success="True" time="0.0768" asserts="0" description="Remove-AzStackHCIVMVirtualMachineDataDisk">
+            <results>
+              <test-case description="ByResourceId" name="Remove-AzStackHCIVMVirtualMachineDataDisk.ByResourceId" time="0" asserts="0" success="True" result="Ignored" executed="False" />
+              <test-case description="ByName" name="Remove-AzStackHCIVMVirtualMachineDataDisk.ByName" time="0" asserts="0" success="True" result="Ignored" executed="False" />
+            </results>
+          </test-suite>
+        </results>
+      </test-suite>
+      <test-suite type="TestFixture" name="E:\azstackhci-util\azstackhci-powershell\test\Remove-AzStackHciVMVirtualMachineInstance.Tests.ps1" executed="True" result="Ignored" success="True" time="0.2449" asserts="0" description="E:\azstackhci-util\azstackhci-powershell\test\Remove-AzStackHciVMVirtualMachineInstance.Tests.ps1">
+        <results>
+          <test-suite type="TestFixture" name="Remove-AzStackHciVMVirtualMachineInstance" executed="True" result="Ignored" success="True" time="0.0679" asserts="0" description="Remove-AzStackHciVMVirtualMachineInstance">
+            <results>
+              <test-case description="Delete" name="Remove-AzStackHciVMVirtualMachineInstance.Delete" time="0" asserts="0" success="True" result="Ignored" executed="False" />
+              <test-case description="DeleteViaIdentity" name="Remove-AzStackHciVMVirtualMachineInstance.DeleteViaIdentity" time="0" asserts="0" success="True" result="Ignored" executed="False" />
+            </results>
+          </test-suite>
+        </results>
+      </test-suite>
+      <test-suite type="TestFixture" name="E:\azstackhci-util\azstackhci-powershell\test\Remove-AzStackHciVMVirtualMachineNic.Tests.ps1" executed="True" result="Ignored" success="True" time="0.2459" asserts="0" description="E:\azstackhci-util\azstackhci-powershell\test\Remove-AzStackHciVMVirtualMachineNic.Tests.ps1">
+        <results>
+          <test-suite type="TestFixture" name="Remove-AzStackHciVMVirtualMachineNic" executed="True" result="Ignored" success="True" time="0.0754" asserts="0" description="Remove-AzStackHciVMVirtualMachineNic">
+            <results>
+              <test-case description="ByResourceId" name="Remove-AzStackHciVMVirtualMachineNic.ByResourceId" time="0" asserts="0" success="True" result="Ignored" executed="False" />
+              <test-case description="ByName" name="Remove-AzStackHciVMVirtualMachineNic.ByName" time="0" asserts="0" success="True" result="Ignored" executed="False" />
+            </results>
+          </test-suite>
+        </results>
+      </test-suite>
+      <test-suite type="TestFixture" name="E:\azstackhci-util\azstackhci-powershell\test\Remove-AzStackHciVMVirtualNetwork.Tests.ps1" executed="True" result="Ignored" success="True" time="0.2325" asserts="0" description="E:\azstackhci-util\azstackhci-powershell\test\Remove-AzStackHciVMVirtualNetwork.Tests.ps1">
+        <results>
+          <test-suite type="TestFixture" name="Remove-AzStackHciVMVirtualNetwork" executed="True" result="Ignored" success="True" time="0.0808" asserts="0" description="Remove-AzStackHciVMVirtualNetwork">
+            <results>
+              <test-case description="ByResourceId" name="Remove-AzStackHciVMVirtualNetwork.ByResourceId" time="0" asserts="0" success="True" result="Ignored" executed="False" />
+            </results>
+          </test-suite>
+        </results>
+      </test-suite>
+      <test-suite type="TestFixture" name="E:\azstackhci-util\azstackhci-powershell\test\Restart-AzStackHciVMVirtualMachine.Tests.ps1" executed="True" result="Ignored" success="True" time="0.2014" asserts="0" description="E:\azstackhci-util\azstackhci-powershell\test\Restart-AzStackHciVMVirtualMachine.Tests.ps1">
+        <results>
+          <test-suite type="TestFixture" name="Restart-AzStackHciVMVirtualMachine" executed="True" result="Ignored" success="True" time="0.0787" asserts="0" description="Restart-AzStackHciVMVirtualMachine">
+            <results>
+              <test-case description="ByResourceId" name="Restart-AzStackHciVMVirtualMachine.ByResourceId" time="0" asserts="0" success="True" result="Ignored" executed="False" />
+            </results>
+          </test-suite>
+        </results>
+      </test-suite>
+      <test-suite type="TestFixture" name="E:\azstackhci-util\azstackhci-powershell\test\Restart-AzStackHciVMVirtualMachineInstance.Tests.ps1" executed="True" result="Ignored" success="True" time="0.2114" asserts="0" description="E:\azstackhci-util\azstackhci-powershell\test\Restart-AzStackHciVMVirtualMachineInstance.Tests.ps1">
+        <results>
+          <test-suite type="TestFixture" name="Restart-AzStackHciVMVirtualMachineInstance" executed="True" result="Ignored" success="True" time="0.0716" asserts="0" description="Restart-AzStackHciVMVirtualMachineInstance">
+            <results>
+              <test-case description="Restart" name="Restart-AzStackHciVMVirtualMachineInstance.Restart" time="0" asserts="0" success="True" result="Ignored" executed="False" />
+              <test-case description="RestartViaIdentity" name="Restart-AzStackHciVMVirtualMachineInstance.RestartViaIdentity" time="0" asserts="0" success="True" result="Ignored" executed="False" />
+            </results>
+          </test-suite>
+        </results>
+      </test-suite>
+      <test-suite type="TestFixture" name="E:\azstackhci-util\azstackhci-powershell\test\Set-AzStackHciVMGalleryImage.Tests.ps1" executed="True" result="Ignored" success="True" time="0.2457" asserts="0" description="E:\azstackhci-util\azstackhci-powershell\test\Set-AzStackHciVMGalleryImage.Tests.ps1">
+        <results>
+          <test-suite type="TestFixture" name="Set-AzStackHciVMGalleryImage" executed="True" result="Ignored" success="True" time="0.0854" asserts="0" description="Set-AzStackHciVMGalleryImage">
+            <results>
+              <test-case description="UpdateExpanded" name="Set-AzStackHciVMGalleryImage.UpdateExpanded" time="0" asserts="0" success="True" result="Ignored" executed="False" />
+            </results>
+          </test-suite>
+        </results>
+      </test-suite>
+      <test-suite type="TestFixture" name="E:\azstackhci-util\azstackhci-powershell\test\Set-AzStackHciVMLogicalNetwork.Tests.ps1" executed="True" result="Ignored" success="True" time="0.2313" asserts="0" description="E:\azstackhci-util\azstackhci-powershell\test\Set-AzStackHciVMLogicalNetwork.Tests.ps1">
+        <results>
+          <test-suite type="TestFixture" name="Set-AzStackHciVMLogicalNetwork" executed="True" result="Ignored" success="True" time="0.0603" asserts="0" description="Set-AzStackHciVMLogicalNetwork">
+            <results>
+              <test-case description="UpdateExpanded" name="Set-AzStackHciVMLogicalNetwork.UpdateExpanded" time="0" asserts="0" success="True" result="Ignored" executed="False" />
+            </results>
+          </test-suite>
+        </results>
+      </test-suite>
+      <test-suite type="TestFixture" name="E:\azstackhci-util\azstackhci-powershell\test\Set-AzStackHciVMMachine.Tests.ps1" executed="True" result="Ignored" success="True" time="0.1964" asserts="0" description="E:\azstackhci-util\azstackhci-powershell\test\Set-AzStackHciVMMachine.Tests.ps1">
+        <results>
+          <test-suite type="TestFixture" name="Set-AzStackHciVMMachine" executed="True" result="Ignored" success="True" time="0.0589" asserts="0" description="Set-AzStackHciVMMachine">
+            <results>
+              <test-case description="UpdateExpanded" name="Set-AzStackHciVMMachine.UpdateExpanded" time="0" asserts="0" success="True" result="Ignored" executed="False" />
+            </results>
+          </test-suite>
+        </results>
+      </test-suite>
+      <test-suite type="TestFixture" name="E:\azstackhci-util\azstackhci-powershell\test\Set-AzStackHciVMMachineExtension.Tests.ps1" executed="True" result="Ignored" success="True" time="0.2227" asserts="0" description="E:\azstackhci-util\azstackhci-powershell\test\Set-AzStackHciVMMachineExtension.Tests.ps1">
+        <results>
+          <test-suite type="TestFixture" name="Set-AzStackHciVMMachineExtension" executed="True" result="Ignored" success="True" time="0.0607" asserts="0" description="Set-AzStackHciVMMachineExtension">
+            <results>
+              <test-case description="UpdateExpanded" name="Set-AzStackHciVMMachineExtension.UpdateExpanded" time="0" asserts="0" success="True" result="Ignored" executed="False" />
+            </results>
+          </test-suite>
+        </results>
+      </test-suite>
+      <test-suite type="TestFixture" name="E:\azstackhci-util\azstackhci-powershell\test\Set-AzStackHciVMMarketplaceGalleryImage.Tests.ps1" executed="True" result="Ignored" success="True" time="0.2152" asserts="0" description="E:\azstackhci-util\azstackhci-powershell\test\Set-AzStackHciVMMarketplaceGalleryImage.Tests.ps1">
+        <results>
+          <test-suite type="TestFixture" name="Set-AzStackHciVMMarketplaceGalleryImage" executed="True" result="Ignored" success="True" time="0.0604" asserts="0" description="Set-AzStackHciVMMarketplaceGalleryImage">
+            <results>
+              <test-case description="UpdateExpanded" name="Set-AzStackHciVMMarketplaceGalleryImage.UpdateExpanded" time="0" asserts="0" success="True" result="Ignored" executed="False" />
+            </results>
+          </test-suite>
+        </results>
+      </test-suite>
+      <test-suite type="TestFixture" name="E:\azstackhci-util\azstackhci-powershell\test\Set-AzStackHciVMNetworkInterface.Tests.ps1" executed="True" result="Ignored" success="True" time="0.2287" asserts="0" description="E:\azstackhci-util\azstackhci-powershell\test\Set-AzStackHciVMNetworkInterface.Tests.ps1">
+        <results>
+          <test-suite type="TestFixture" name="Set-AzStackHciVMNetworkInterface" executed="True" result="Ignored" success="True" time="0.0535" asserts="0" description="Set-AzStackHciVMNetworkInterface">
+            <results>
+              <test-case description="UpdateExpanded" name="Set-AzStackHciVMNetworkInterface.UpdateExpanded" time="0" asserts="0" success="True" result="Ignored" executed="False" />
+            </results>
+          </test-suite>
+        </results>
+      </test-suite>
+      <test-suite type="TestFixture" name="E:\azstackhci-util\azstackhci-powershell\test\Set-AzStackHciVMStorageContainer.Tests.ps1" executed="True" result="Ignored" success="True" time="0.2179" asserts="0" description="E:\azstackhci-util\azstackhci-powershell\test\Set-AzStackHciVMStorageContainer.Tests.ps1">
+        <results>
+          <test-suite type="TestFixture" name="Set-AzStackHciVMStorageContainer" executed="True" result="Ignored" success="True" time="0.0625" asserts="0" description="Set-AzStackHciVMStorageContainer">
+            <results>
+              <test-case description="UpdateExpanded" name="Set-AzStackHciVMStorageContainer.UpdateExpanded" time="0" asserts="0" success="True" result="Ignored" executed="False" />
+            </results>
+          </test-suite>
+        </results>
+      </test-suite>
+      <test-suite type="TestFixture" name="E:\azstackhci-util\azstackhci-powershell\test\Set-AzStackHciVMVirtualHardDisk.Tests.ps1" executed="True" result="Ignored" success="True" time="0.2445" asserts="0" description="E:\azstackhci-util\azstackhci-powershell\test\Set-AzStackHciVMVirtualHardDisk.Tests.ps1">
+        <results>
+          <test-suite type="TestFixture" name="Set-AzStackHciVMVirtualHardDisk" executed="True" result="Ignored" success="True" time="0.0677" asserts="0" description="Set-AzStackHciVMVirtualHardDisk">
+            <results>
+              <test-case description="UpdateExpanded" name="Set-AzStackHciVMVirtualHardDisk.UpdateExpanded" time="0" asserts="0" success="True" result="Ignored" executed="False" />
+            </results>
+          </test-suite>
+        </results>
+      </test-suite>
+      <test-suite type="TestFixture" name="E:\azstackhci-util\azstackhci-powershell\test\Set-AzStackHciVMVirtualMachine.Tests.ps1" executed="True" result="Ignored" success="True" time="0.2305" asserts="0" description="E:\azstackhci-util\azstackhci-powershell\test\Set-AzStackHciVMVirtualMachine.Tests.ps1">
+        <results>
+          <test-suite type="TestFixture" name="Set-AzStackHciVMVirtualMachine" executed="True" result="Ignored" success="True" time="0.0903" asserts="0" description="Set-AzStackHciVMVirtualMachine">
+            <results>
+              <test-case description="UpdateExpanded" name="Set-AzStackHciVMVirtualMachine.UpdateExpanded" time="0" asserts="0" success="True" result="Ignored" executed="False" />
+            </results>
+          </test-suite>
+        </results>
+      </test-suite>
+      <test-suite type="TestFixture" name="E:\azstackhci-util\azstackhci-powershell\test\Set-AzStackHciVMVirtualMachineInstance.Tests.ps1" executed="True" result="Ignored" success="True" time="0.2399" asserts="0" description="E:\azstackhci-util\azstackhci-powershell\test\Set-AzStackHciVMVirtualMachineInstance.Tests.ps1">
+        <results>
+          <test-suite type="TestFixture" name="Set-AzStackHciVMVirtualMachineInstance" executed="True" result="Ignored" success="True" time="0.0566" asserts="0" description="Set-AzStackHciVMVirtualMachineInstance">
+            <results>
+              <test-case description="UpdateExpanded" name="Set-AzStackHciVMVirtualMachineInstance.UpdateExpanded" time="0" asserts="0" success="True" result="Ignored" executed="False" />
+            </results>
+          </test-suite>
+        </results>
+      </test-suite>
+      <test-suite type="TestFixture" name="E:\azstackhci-util\azstackhci-powershell\test\Set-AzStackHciVMVirtualNetwork.Tests.ps1" executed="True" result="Ignored" success="True" time="0.2144" asserts="0" description="E:\azstackhci-util\azstackhci-powershell\test\Set-AzStackHciVMVirtualNetwork.Tests.ps1">
+        <results>
+          <test-suite type="TestFixture" name="Set-AzStackHciVMVirtualNetwork" executed="True" result="Ignored" success="True" time="0.067" asserts="0" description="Set-AzStackHciVMVirtualNetwork">
+            <results>
+              <test-case description="UpdateExpanded" name="Set-AzStackHciVMVirtualNetwork.UpdateExpanded" time="0" asserts="0" success="True" result="Ignored" executed="False" />
+            </results>
+          </test-suite>
+        </results>
+      </test-suite>
+      <test-suite type="TestFixture" name="E:\azstackhci-util\azstackhci-powershell\test\Start-AzStackHciVMVirtualMachine.Tests.ps1" executed="True" result="Ignored" success="True" time="0.2305" asserts="0" description="E:\azstackhci-util\azstackhci-powershell\test\Start-AzStackHciVMVirtualMachine.Tests.ps1">
+        <results>
+          <test-suite type="TestFixture" name="Start-AzStackHciVMVirtualMachine" executed="True" result="Ignored" success="True" time="0.0858" asserts="0" description="Start-AzStackHciVMVirtualMachine">
+            <results>
+              <test-case description="ByResourceId" name="Start-AzStackHciVMVirtualMachine.ByResourceId" time="0" asserts="0" success="True" result="Ignored" executed="False" />
+            </results>
+          </test-suite>
+        </results>
+      </test-suite>
+      <test-suite type="TestFixture" name="E:\azstackhci-util\azstackhci-powershell\test\Start-AzStackHciVMVirtualMachineInstance.Tests.ps1" executed="True" result="Ignored" success="True" time="0.2113" asserts="0" description="E:\azstackhci-util\azstackhci-powershell\test\Start-AzStackHciVMVirtualMachineInstance.Tests.ps1">
+        <results>
+          <test-suite type="TestFixture" name="Start-AzStackHciVMVirtualMachineInstance" executed="True" result="Ignored" success="True" time="0.0541" asserts="0" description="Start-AzStackHciVMVirtualMachineInstance">
+            <results>
+              <test-case description="Start" name="Start-AzStackHciVMVirtualMachineInstance.Start" time="0" asserts="0" success="True" result="Ignored" executed="False" />
+              <test-case description="StartViaIdentity" name="Start-AzStackHciVMVirtualMachineInstance.StartViaIdentity" time="0" asserts="0" success="True" result="Ignored" executed="False" />
+            </results>
+          </test-suite>
+        </results>
+      </test-suite>
+      <test-suite type="TestFixture" name="E:\azstackhci-util\azstackhci-powershell\test\Stop-AzStackHciVMVirtualMachine.Tests.ps1" executed="True" result="Ignored" success="True" time="0.2499" asserts="0" description="E:\azstackhci-util\azstackhci-powershell\test\Stop-AzStackHciVMVirtualMachine.Tests.ps1">
+        <results>
+          <test-suite type="TestFixture" name="Stop-AzStackHciVMVirtualMachine" executed="True" result="Ignored" success="True" time="0.0808" asserts="0" description="Stop-AzStackHciVMVirtualMachine">
+            <results>
+              <test-case description="ByResourceId" name="Stop-AzStackHciVMVirtualMachine.ByResourceId" time="0" asserts="0" success="True" result="Ignored" executed="False" />
+            </results>
+          </test-suite>
+        </results>
+      </test-suite>
+      <test-suite type="TestFixture" name="E:\azstackhci-util\azstackhci-powershell\test\Stop-AzStackHciVMVirtualMachineInstance.Tests.ps1" executed="True" result="Ignored" success="True" time="0.241" asserts="0" description="E:\azstackhci-util\azstackhci-powershell\test\Stop-AzStackHciVMVirtualMachineInstance.Tests.ps1">
+        <results>
+          <test-suite type="TestFixture" name="Stop-AzStackHciVMVirtualMachineInstance" executed="True" result="Ignored" success="True" time="0.0749" asserts="0" description="Stop-AzStackHciVMVirtualMachineInstance">
+            <results>
+              <test-case description="Stop" name="Stop-AzStackHciVMVirtualMachineInstance.Stop" time="0" asserts="0" success="True" result="Ignored" executed="False" />
+              <test-case description="StopViaIdentity" name="Stop-AzStackHciVMVirtualMachineInstance.StopViaIdentity" time="0" asserts="0" success="True" result="Ignored" executed="False" />
+            </results>
+          </test-suite>
+        </results>
+      </test-suite>
+      <test-suite type="TestFixture" name="E:\azstackhci-util\azstackhci-powershell\test\Update-AzStackHciVMExtension.Tests.ps1" executed="True" result="Ignored" success="True" time="0.2889" asserts="0" description="E:\azstackhci-util\azstackhci-powershell\test\Update-AzStackHciVMExtension.Tests.ps1">
+        <results>
+          <test-suite type="TestFixture" name="Update-AzStackHciVMExtension" executed="True" result="Ignored" success="True" time="0.0961" asserts="0" description="Update-AzStackHciVMExtension">
+            <results>
+              <test-case description="UpgradeExpanded" name="Update-AzStackHciVMExtension.UpgradeExpanded" time="0" asserts="0" success="True" result="Ignored" executed="False" />
+              <test-case description="Upgrade" name="Update-AzStackHciVMExtension.Upgrade" time="0" asserts="0" success="True" result="Ignored" executed="False" />
+              <test-case description="UpgradeViaIdentityExpanded" name="Update-AzStackHciVMExtension.UpgradeViaIdentityExpanded" time="0" asserts="0" success="True" result="Ignored" executed="False" />
+              <test-case description="UpgradeViaIdentity" name="Update-AzStackHciVMExtension.UpgradeViaIdentity" time="0" asserts="0" success="True" result="Ignored" executed="False" />
+            </results>
+          </test-suite>
+        </results>
+      </test-suite>
+      <test-suite type="TestFixture" name="E:\azstackhci-util\azstackhci-powershell\test\Update-AzStackHciVMGalleryImage.Tests.ps1" executed="True" result="Ignored" success="True" time="0.2718" asserts="0" description="E:\azstackhci-util\azstackhci-powershell\test\Update-AzStackHciVMGalleryImage.Tests.ps1">
+        <results>
+          <test-suite type="TestFixture" name="Update-AzStackHciVMGalleryImage" executed="True" result="Ignored" success="True" time="0.1047" asserts="0" description="Update-AzStackHciVMGalleryImage">
+            <results>
+              <test-case description="UpdateExpanded" name="Update-AzStackHciVMGalleryImage.UpdateExpanded" time="0" asserts="0" success="True" result="Ignored" executed="False" />
+              <test-case description="UpdateViaIdentityExpanded" name="Update-AzStackHciVMGalleryImage.UpdateViaIdentityExpanded" time="0" asserts="0" success="True" result="Ignored" executed="False" />
+            </results>
+          </test-suite>
+        </results>
+      </test-suite>
+      <test-suite type="TestFixture" name="E:\azstackhci-util\azstackhci-powershell\test\Update-AzStackHCIVMImage.Tests.ps1" executed="True" result="Ignored" success="True" time="0.2528" asserts="0" description="E:\azstackhci-util\azstackhci-powershell\test\Update-AzStackHCIVMImage.Tests.ps1">
+        <results>
+          <test-suite type="TestFixture" name="Update-AzStackHCIVMImage" executed="True" result="Ignored" success="True" time="0.0866" asserts="0" description="Update-AzStackHCIVMImage">
+            <results>
+              <test-case description="ByResourceId" name="Update-AzStackHCIVMImage.ByResourceId" time="0" asserts="0" success="True" result="Ignored" executed="False" />
+              <test-case description="ByName" name="Update-AzStackHCIVMImage.ByName" time="0" asserts="0" success="True" result="Ignored" executed="False" />
+            </results>
+          </test-suite>
+        </results>
+      </test-suite>
+      <test-suite type="TestFixture" name="E:\azstackhci-util\azstackhci-powershell\test\Update-AzStackHciVMLogicalNetwork.Tests.ps1" executed="True" result="Ignored" success="True" time="0.2179" asserts="0" description="E:\azstackhci-util\azstackhci-powershell\test\Update-AzStackHciVMLogicalNetwork.Tests.ps1">
+        <results>
+          <test-suite type="TestFixture" name="Update-AzStackHciVMLogicalNetwork" executed="True" result="Ignored" success="True" time="0.0581" asserts="0" description="Update-AzStackHciVMLogicalNetwork">
+            <results>
+              <test-case description="UpdateExpanded" name="Update-AzStackHciVMLogicalNetwork.UpdateExpanded" time="0" asserts="0" success="True" result="Ignored" executed="False" />
+              <test-case description="UpdateViaIdentityExpanded" name="Update-AzStackHciVMLogicalNetwork.UpdateViaIdentityExpanded" time="0" asserts="0" success="True" result="Ignored" executed="False" />
+            </results>
+          </test-suite>
+        </results>
+      </test-suite>
+      <test-suite type="TestFixture" name="E:\azstackhci-util\azstackhci-powershell\test\Update-AzStackHciVMMachine.Tests.ps1" executed="True" result="Ignored" success="True" time="0.2364" asserts="0" description="E:\azstackhci-util\azstackhci-powershell\test\Update-AzStackHciVMMachine.Tests.ps1">
+        <results>
+          <test-suite type="TestFixture" name="Update-AzStackHciVMMachine" executed="True" result="Ignored" success="True" time="0.0715" asserts="0" description="Update-AzStackHciVMMachine">
+            <results>
+              <test-case description="UpdateExpanded" name="Update-AzStackHciVMMachine.UpdateExpanded" time="0" asserts="0" success="True" result="Ignored" executed="False" />
+              <test-case description="UpdateViaIdentityExpanded" name="Update-AzStackHciVMMachine.UpdateViaIdentityExpanded" time="0" asserts="0" success="True" result="Ignored" executed="False" />
+            </results>
+          </test-suite>
+        </results>
+      </test-suite>
+      <test-suite type="TestFixture" name="E:\azstackhci-util\azstackhci-powershell\test\Update-AzStackHciVMMachineExtension.Tests.ps1" executed="True" result="Ignored" success="True" time="0.2452" asserts="0" description="E:\azstackhci-util\azstackhci-powershell\test\Update-AzStackHciVMMachineExtension.Tests.ps1">
+        <results>
+          <test-suite type="TestFixture" name="Update-AzStackHciVMMachineExtension" executed="True" result="Ignored" success="True" time="0.09" asserts="0" description="Update-AzStackHciVMMachineExtension">
+            <results>
+              <test-case description="UpdateExpanded" name="Update-AzStackHciVMMachineExtension.UpdateExpanded" time="0" asserts="0" success="True" result="Ignored" executed="False" />
+              <test-case description="UpdateViaIdentityExpanded" name="Update-AzStackHciVMMachineExtension.UpdateViaIdentityExpanded" time="0" asserts="0" success="True" result="Ignored" executed="False" />
+            </results>
+          </test-suite>
+        </results>
+      </test-suite>
+      <test-suite type="TestFixture" name="E:\azstackhci-util\azstackhci-powershell\test\Update-AzStackHciVMMarketplaceGalleryImage.Tests.ps1" executed="True" result="Ignored" success="True" time="0.2658" asserts="0" description="E:\azstackhci-util\azstackhci-powershell\test\Update-AzStackHciVMMarketplaceGalleryImage.Tests.ps1">
+        <results>
+          <test-suite type="TestFixture" name="Update-AzStackHciVMMarketplaceGalleryImage" executed="True" result="Ignored" success="True" time="0.1094" asserts="0" description="Update-AzStackHciVMMarketplaceGalleryImage">
+            <results>
+              <test-case description="UpdateExpanded" name="Update-AzStackHciVMMarketplaceGalleryImage.UpdateExpanded" time="0" asserts="0" success="True" result="Ignored" executed="False" />
+              <test-case description="UpdateViaIdentityExpanded" name="Update-AzStackHciVMMarketplaceGalleryImage.UpdateViaIdentityExpanded" time="0" asserts="0" success="True" result="Ignored" executed="False" />
+            </results>
+          </test-suite>
+        </results>
+      </test-suite>
+      <test-suite type="TestFixture" name="E:\azstackhci-util\azstackhci-powershell\test\Update-AzStackHciVMNetworkInterface.Tests.ps1" executed="True" result="Ignored" success="True" time="0.2298" asserts="0" description="E:\azstackhci-util\azstackhci-powershell\test\Update-AzStackHciVMNetworkInterface.Tests.ps1">
+        <results>
+          <test-suite type="TestFixture" name="Update-AzStackHciVMNetworkInterface" executed="True" result="Ignored" success="True" time="0.069" asserts="0" description="Update-AzStackHciVMNetworkInterface">
+            <results>
+              <test-case description="ByResourceId" name="Update-AzStackHciVMNetworkInterface.ByResourceId" time="0" asserts="0" success="True" result="Ignored" executed="False" />
+            </results>
+          </test-suite>
+        </results>
+      </test-suite>
+      <test-suite type="TestFixture" name="E:\azstackhci-util\azstackhci-powershell\test\Update-AzStackHciVMStoragePath.Tests.ps1" executed="True" result="Ignored" success="True" time="0.2555" asserts="0" description="E:\azstackhci-util\azstackhci-powershell\test\Update-AzStackHciVMStoragePath.Tests.ps1">
+        <results>
+          <test-suite type="TestFixture" name="Update-AzStackHciVMStoragePath" executed="True" result="Ignored" success="True" time="0.0805" asserts="0" description="Update-AzStackHciVMStoragePath">
+            <results>
+              <test-case description="UpdateExpanded" name="Update-AzStackHciVMStoragePath.UpdateExpanded" time="0" asserts="0" success="True" result="Ignored" executed="False" />
+              <test-case description="UpdateViaIdentityExpanded" name="Update-AzStackHciVMStoragePath.UpdateViaIdentityExpanded" time="0" asserts="0" success="True" result="Ignored" executed="False" />
+            </results>
+          </test-suite>
+        </results>
+      </test-suite>
+      <test-suite type="TestFixture" name="E:\azstackhci-util\azstackhci-powershell\test\Update-AzStackHciVMVirtualHardDisk.Tests.ps1" executed="True" result="Ignored" success="True" time="0.2314" asserts="0" description="E:\azstackhci-util\azstackhci-powershell\test\Update-AzStackHciVMVirtualHardDisk.Tests.ps1">
+        <results>
+          <test-suite type="TestFixture" name="Update-AzStackHciVMVirtualHardDisk" executed="True" result="Ignored" success="True" time="0.0596" asserts="0" description="Update-AzStackHciVMVirtualHardDisk">
+            <results>
+              <test-case description="ByResourceId" name="Update-AzStackHciVMVirtualHardDisk.ByResourceId" time="0" asserts="0" success="True" result="Ignored" executed="False" />
+            </results>
+          </test-suite>
+        </results>
+      </test-suite>
+      <test-suite type="TestFixture" name="E:\azstackhci-util\azstackhci-powershell\test\Update-AzStackHciVMVirtualMachine.Tests.ps1" executed="True" result="Ignored" success="True" time="0.2677" asserts="0" description="E:\azstackhci-util\azstackhci-powershell\test\Update-AzStackHciVMVirtualMachine.Tests.ps1">
+        <results>
+          <test-suite type="TestFixture" name="Update-AzStackHciVMVirtualMachine" executed="True" result="Ignored" success="True" time="0.0736" asserts="0" description="Update-AzStackHciVMVirtualMachine">
+            <results>
+              <test-case description="UpdateExpanded" name="Update-AzStackHciVMVirtualMachine.UpdateExpanded" time="0" asserts="0" success="True" result="Ignored" executed="False" />
+              <test-case description="UpdateViaIdentityExpanded" name="Update-AzStackHciVMVirtualMachine.UpdateViaIdentityExpanded" time="0" asserts="0" success="True" result="Ignored" executed="False" />
+            </results>
+          </test-suite>
+        </results>
+      </test-suite>
+      <test-suite type="TestFixture" name="E:\azstackhci-util\azstackhci-powershell\test\Update-AzStackHciVMVirtualMachineInstance.Tests.ps1" executed="True" result="Ignored" success="True" time="0.1973" asserts="0" description="E:\azstackhci-util\azstackhci-powershell\test\Update-AzStackHciVMVirtualMachineInstance.Tests.ps1">
+        <results>
+          <test-suite type="TestFixture" name="Update-AzStackHciVMVirtualMachineInstance" executed="True" result="Ignored" success="True" time="0.0519" asserts="0" description="Update-AzStackHciVMVirtualMachineInstance">
+            <results>
+              <test-case description="UpdateExpanded" name="Update-AzStackHciVMVirtualMachineInstance.UpdateExpanded" time="0" asserts="0" success="True" result="Ignored" executed="False" />
+              <test-case description="UpdateViaIdentityExpanded" name="Update-AzStackHciVMVirtualMachineInstance.UpdateViaIdentityExpanded" time="0" asserts="0" success="True" result="Ignored" executed="False" />
+            </results>
+          </test-suite>
+        </results>
+      </test-suite>
+      <test-suite type="TestFixture" name="E:\azstackhci-util\azstackhci-powershell\test\Update-AzStackHciVMVirtualNetwork.Tests.ps1" executed="True" result="Ignored" success="True" time="0.2324" asserts="0" description="E:\azstackhci-util\azstackhci-powershell\test\Update-AzStackHciVMVirtualNetwork.Tests.ps1">
+        <results>
+          <test-suite type="TestFixture" name="Update-AzStackHciVMVirtualNetwork" executed="True" result="Ignored" success="True" time="0.0505" asserts="0" description="Update-AzStackHciVMVirtualNetwork">
+            <results>
+              <test-case description="ByResourceId" name="Update-AzStackHciVMVirtualNetwork.ByResourceId" time="0" asserts="0" success="True" result="Ignored" executed="False" />
+            </results>
+          </test-suite>
+        </results>
+      </test-suite>
+      <test-suite type="TestFixture" name="E:\azstackhci-util\azstackhci-powershell\test\Validate-IpPools.Tests.ps1" executed="True" result="Ignored" success="True" time="0.2494" asserts="0" description="E:\azstackhci-util\azstackhci-powershell\test\Validate-IpPools.Tests.ps1">
+        <results>
+          <test-suite type="TestFixture" name="Validate-IpPools" executed="True" result="Ignored" success="True" time="0.0691" asserts="0" description="Validate-IpPools">
+            <results>
+              <test-case description="__AllParameterSets" name="Validate-IpPools.__AllParameterSets" time="0" asserts="0" success="True" result="Ignored" executed="False" />
+            </results>
+          </test-suite>
+        </results>
+      </test-suite>
+      <test-suite type="TestFixture" name="E:\azstackhci-util\azstackhci-powershell\test\Validate-Routes.Tests.ps1" executed="True" result="Ignored" success="True" time="0.2521" asserts="0" description="E:\azstackhci-util\azstackhci-powershell\test\Validate-Routes.Tests.ps1">
+        <results>
+          <test-suite type="TestFixture" name="Validate-Routes" executed="True" result="Ignored" success="True" time="0.0692" asserts="0" description="Validate-Routes">
+            <results>
+              <test-case description="__AllParameterSets" name="Validate-Routes.__AllParameterSets" time="0" asserts="0" success="True" result="Ignored" executed="False" />
+            </results>
+          </test-suite>
+        </results>
+      </test-suite>
+      <test-suite type="TestFixture" name="E:\azstackhci-util\azstackhci-powershell\test\Validate-Subnets.Tests.ps1" executed="True" result="Ignored" success="True" time="0.1777" asserts="0" description="E:\azstackhci-util\azstackhci-powershell\test\Validate-Subnets.Tests.ps1">
+        <results>
+          <test-suite type="TestFixture" name="Validate-Subnets" executed="True" result="Ignored" success="True" time="0.0451" asserts="0" description="Validate-Subnets">
+            <results>
+              <test-case description="__AllParameterSets" name="Validate-Subnets.__AllParameterSets" time="0" asserts="0" success="True" result="Ignored" executed="False" />
+            </results>
+          </test-suite>
+        </results>
+      </test-suite>
+    </results>
+  </test-suite>
+</test-results>
