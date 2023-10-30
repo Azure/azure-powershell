@@ -23,8 +23,9 @@ New-AzWvdHostPool -HostPoolType <HostPoolType> -LoadBalancerType <LoadBalancerTy
  [-ManagedBy <String>] [-MaxSessionLimit <Int32>]
  [-PersonalDesktopAssignmentType <PersonalDesktopAssignmentType>] [-PlanName <String>] [-PlanProduct <String>]
  [-PlanPromotionCode <String>] [-PlanPublisher <String>] [-PlanVersion <String>]
- [-RegistrationInfoToken <String>] [-RegistrationTokenOperation <RegistrationTokenOperation>] [-Ring <Int32>]
- [-SkuCapacity <Int32>] [-SkuFamily <String>] [-SkuName <String>] [-SkuSize <String>] [-SkuTier <SkuTier>]
+ [-PublicNetworkAccess <HostpoolPublicNetworkAccess>] [-RegistrationInfoToken <String>]
+ [-RegistrationTokenOperation <RegistrationTokenOperation>] [-Ring <Int32>] [-SkuCapacity <Int32>]
+ [-SkuFamily <String>] [-SkuName <String>] [-SkuSize <String>] [-SkuTier <SkuTier>]
  [-SsoadfsAuthority <String>] [-SsoClientId <String>] [-SsoClientSecretKeyVaultPath <String>]
  [-SsoSecretType <SsoSecretType>] [-StartVMOnConnect] [-Tag <Hashtable>] [-ValidationEnvironment]
  [-VMTemplate <String>] [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
@@ -111,7 +112,7 @@ Maintenance windows are 2 hours long.
 To construct, see NOTES section for AGENTUPDATEMAINTENANCEWINDOW properties and create a hash table.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.Api202209.IMaintenanceWindowProperties[]
+Type: Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.Api20230905.IMaintenanceWindowProperties[]
 Parameter Sets: CreateExpanded
 Aliases:
 
@@ -493,6 +494,21 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### -PublicNetworkAccess
+Enabled allows this resource to be accessed from both public and private networks, Disabled allows this resource to only be accessed via private endpoints
+
+```yaml
+Type: Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Support.HostpoolPublicNetworkAccess
+Parameter Sets: CreateExpanded
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
 ### -RegistrationInfoToken
 The registration token base64 encoded string.
 
@@ -821,7 +837,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.Api202209.IHostPool
+### Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.Api20230905.IHostPool
 
 ## NOTES
 
