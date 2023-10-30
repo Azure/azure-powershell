@@ -1,5 +1,5 @@
 ---
-external help file: Microsoft.Azure.PowerShell.Cmdlets.Monitor.dll-Help.xml
+external help file: Az.DataCollectionRule.psm1-help.xml
 Module Name: Az.Monitor
 online version: https://learn.microsoft.com/powershell/module/az.monitor/remove-azdatacollectionrule
 schema: 2.0.0
@@ -8,76 +8,44 @@ schema: 2.0.0
 # Remove-AzDataCollectionRule
 
 ## SYNOPSIS
-Delete a data collection rule.
+Deletes a data collection rule.
 
 ## SYNTAX
 
-### ByName (Default)
+### Delete (Default)
 ```
-Remove-AzDataCollectionRule -ResourceGroupName <String> -RuleName <String> [-PassThru]
- [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
-```
-
-### ByInputObject
-```
-Remove-AzDataCollectionRule -InputObject <PSDataCollectionRuleResource> [-PassThru]
- [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
+Remove-AzDataCollectionRule -Name <String> -ResourceGroupName <String> [-SubscriptionId <String>]
+ [-DefaultProfile <PSObject>] [-PassThru] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
-### ByResourceId
+### DeleteViaIdentity
 ```
-Remove-AzDataCollectionRule -RuleId <String> [-PassThru] [-DefaultProfile <IAzureContextContainer>] [-WhatIf]
- [-Confirm] [<CommonParameters>]
+Remove-AzDataCollectionRule -InputObject <IDataCollectionRuleIdentity> [-DefaultProfile <PSObject>] [-PassThru]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-The **Remove-AzDataCollectionRule** cmdlet delete a data collection rule.
-
-Data Collection Rules (DCR) define data coming into Azure Monitor and specify where that data should be sent or stored. Here is the complete [DCR overview article](https://learn.microsoft.com/azure/azure-monitor/essentials/data-collection-rule-overview).
+Deletes a data collection rule.
 
 ## EXAMPLES
 
-### Example 1: Delete data collection rule with name and resource group parameters
+### Example 1: Delete no association data collection rule
 ```powershell
-Remove-AzDataCollectionRule -ResourceGroupName "testgroup" -RuleName "testDcr"
+Remove-AzDataCollectionRule -Name myCollectionRule1 -ResourceGroupName AMCS-Test
 ```
 
-Delete data collection rule with name and resource group parameters
-
-### Example 2: Delete data collection rule with name and resource group return bool
-```powershell
-Remove-AzDataCollectionRule -ResourceGroupName "testgroup" -RuleName "testDcr" -PassThru
-```
-
-```output
-True
-```
-
-Delete data collection rule with name and resource group return bool
-
-### Example 3: Delete data collection rule from InputObject
-```powershell
-Get-AzDataCollectionRule -ResourceGroupName "testdcr" -RuleName "dcrFromPipe95" | Remove-AzDataCollectionRule
-```
-
-Delete data collection rule from InputObject
-
-### Example 4: Delete data collection rule from resource id
-```powershell
-Remove-AzDataCollectionRule -RuleId "/subscriptions/{subId}/resourceGroups/testdcr/providers/Microsoft.Insights/dataCollectionRules/{dcrName}"
-```
-
-Delete data collection rule from resource id
+This command deletes data collection rule with no existing association.
 
 ## PARAMETERS
 
 ### -DefaultProfile
-The credentials, account, tenant, and subscription used for communication with azure
+The DefaultProfile parameter is not functional.
+Use the SubscriptionId parameter when available if executing the cmdlet against a different subscription.
 
 ```yaml
-Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer
+Type: System.Management.Automation.PSObject
 Parameter Sets: (All)
-Aliases: AzContext, AzureRmContext, AzureCredential
+Aliases: AzureRMContext, AzureCredential
 
 Required: False
 Position: Named
@@ -87,11 +55,12 @@ Accept wildcard characters: False
 ```
 
 ### -InputObject
-The data collection rule resource from the pipe
+Identity Parameter
+To construct, see NOTES section for INPUTOBJECT properties and create a hash table.
 
 ```yaml
-Type: Microsoft.Azure.Commands.Insights.OutputClasses.PSDataCollectionRuleResource
-Parameter Sets: ByInputObject
+Type: Microsoft.Azure.PowerShell.Cmdlets.Monitor.DataCollection.Models.IDataCollectionRuleIdentity
+Parameter Sets: DeleteViaIdentity
 Aliases:
 
 Required: True
@@ -101,8 +70,24 @@ Accept pipeline input: True (ByValue)
 Accept wildcard characters: False
 ```
 
+### -Name
+The name of the data collection rule.
+The name is case insensitive.
+
+```yaml
+Type: System.String
+Parameter Sets: Delete
+Aliases: DataCollectionRuleName, RuleName
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
 ### -PassThru
-Return true upon successful removal.
+Returns true when the command succeeds
 
 ```yaml
 Type: System.Management.Automation.SwitchParameter
@@ -117,47 +102,33 @@ Accept wildcard characters: False
 ```
 
 ### -ResourceGroupName
-The resource group name
+The name of the resource group.
+The name is case insensitive.
 
 ```yaml
 Type: System.String
-Parameter Sets: ByName
+Parameter Sets: Delete
 Aliases:
 
 Required: True
 Position: Named
 Default value: None
-Accept pipeline input: True (ByPropertyName)
+Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -RuleId
-The resource identifier.
+### -SubscriptionId
+The ID of the target subscription.
 
 ```yaml
 Type: System.String
-Parameter Sets: ByResourceId
-Aliases: ResourceId
+Parameter Sets: Delete
+Aliases:
 
-Required: True
+Required: False
 Position: Named
-Default value: None
-Accept pipeline input: True (ByPropertyName)
-Accept wildcard characters: False
-```
-
-### -RuleName
-The resource name.
-
-```yaml
-Type: System.String
-Parameter Sets: ByName
-Aliases: Name
-
-Required: True
-Position: Named
-Default value: None
-Accept pipeline input: True (ByPropertyName)
+Default value: (Get-AzContext).Subscription.Id
+Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
@@ -171,13 +142,14 @@ Aliases: cf
 
 Required: False
 Position: Named
-Default value: False
+Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
 ### -WhatIf
-Shows what would happen if the cmdlet runs. The cmdlet is not run.
+Shows what would happen if the cmdlet runs.
+The cmdlet is not run.
 
 ```yaml
 Type: System.Management.Automation.SwitchParameter
@@ -186,7 +158,7 @@ Aliases: wi
 
 Required: False
 Position: Named
-Default value: False
+Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
 ```
@@ -196,17 +168,12 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
-### System.String
+### Microsoft.Azure.PowerShell.Cmdlets.Monitor.DataCollection.Models.IDataCollectionRuleIdentity
 
 ## OUTPUTS
 
-### Microsoft.Azure.Commands.Insights.OutputClasses.PSDataCollectionRuleResource
+### System.Boolean
 
 ## NOTES
 
 ## RELATED LINKS
-
-[Set-AzDataCollectionRule](./Set-AzDataCollectionRule.md)
-[Get-AzDataCollectionRule](./Get-AzDataCollectionRule.md)
-[New-AzDataCollectionRule](./New-AzDataCollectionRule.md)
-[Update-AzDataCollectionRule](./Update-AzDataCollectionRule.md)

@@ -20,7 +20,7 @@ Create a new Activity Log Alert rule or update an existing one.
 .Description
 Create a new Activity Log Alert rule or update an existing one.
 .Example
-$scope = "subscriptions/"+(Get-AzContext).Subscription.ID
+$scope = "/subscriptions/"+(Get-AzContext).Subscription.ID
 $actiongroup=New-AzActivityLogAlertActionGroupObject -Id $ActionGroupResourceId -WebhookProperty @{"sampleWebhookProperty"="SamplePropertyValue"}
 $condition1=New-AzActivityLogAlertAlertRuleAnyOfOrLeafConditionObject -Equal Administrative -Field category
 $condition2=New-AzActivityLogAlertAlertRuleAnyOfOrLeafConditionObject -Equal Error -Field level
