@@ -12,7 +12,7 @@
 # RootModule = ''
 
 # Version number of this module.
-ModuleVersion = '1.2.1'
+ModuleVersion = '2.0.0'
 
 # Supported PSEditions
 CompatiblePSEditions = 'Core', 'Desktop'
@@ -76,12 +76,7 @@ NestedModules = @('Microsoft.Azure.PowerShell.Cmdlets.PowerBIEmbedded.dll',
 FunctionsToExport = @()
 
 # Cmdlets to export from this module, for best performance, do not use wildcards and do not delete the entry, use an empty array if there are no cmdlets to export.
-CmdletsToExport = 'Remove-AzPowerBIWorkspaceCollection', 
-               'Get-AzPowerBIWorkspaceCollection', 
-               'Get-AzPowerBIWorkspaceCollectionAccessKey', 
-               'Get-AzPowerBIWorkspace', 'New-AzPowerBIWorkspaceCollection', 
-               'Reset-AzPowerBIWorkspaceCollectionAccessKey', 
-               'Resume-AzPowerBIEmbeddedCapacity', 
+CmdletsToExport = 'Resume-AzPowerBIEmbeddedCapacity', 
                'Suspend-AzPowerBIEmbeddedCapacity', 
                'Get-AzPowerBIEmbeddedCapacity', 'Remove-AzPowerBIEmbeddedCapacity', 
                'Update-AzPowerBIEmbeddedCapacity', 
@@ -91,8 +86,7 @@ CmdletsToExport = 'Remove-AzPowerBIWorkspaceCollection',
 # VariablesToExport = @()
 
 # Aliases to export from this module, for best performance, do not use wildcards and do not delete the entry, use an empty array if there are no aliases to export.
-AliasesToExport = 'Get-AzPowerBIWorkspaceCollectionAccessKeys', 
-               'Reset-AzPowerBIWorkspaceCollectionAccessKeys'
+# AliasesToExport = @()
 
 # DSC resources to export from this module
 # DscResourcesToExport = @()
