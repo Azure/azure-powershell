@@ -14,24 +14,18 @@
 
 using Microsoft.Azure.Commands.Common.Authentication;
 using Microsoft.Azure.Commands.Common.Authentication.Abstractions;
+using Microsoft.Azure.Commands.Common.MSGraph.Version1_0;
+using Microsoft.Azure.Commands.Common.MSGraph.Version1_0.Applications.Models;
 using Microsoft.Azure.Commands.StorageSync.Interfaces;
 using Microsoft.Azure.Commands.StorageSync.Properties;
-using Microsoft.Azure.Commands.Common.MSGraph.Version1_0;
-using Microsoft.Azure.Commands.Common.MSGraph.Version1_0.Applications;
-using Microsoft.Azure.Commands.Common.MSGraph.Version1_0.Applications.Models;
-using Microsoft.Azure.Commands.Common.MSGraph.Version1_0.Users.Models;
-using Microsoft.Azure.Management.Authorization.Version2015_07_01;
-using Microsoft.Azure.Management.Authorization.Version2015_07_01.Models;
+using Microsoft.Azure.Management.Authorization;
+using Microsoft.Azure.Management.Authorization.Models;
 using Microsoft.Azure.Management.Internal.Resources;
 using Microsoft.Azure.Management.Internal.Resources.Utilities.Models;
 using Microsoft.Azure.Management.StorageSync;
 using Microsoft.Rest.Azure.OData;
-using Microsoft.Win32;
-using Microsoft.WindowsAzure.Commands.Common;
 using System;
-using System.Collections.Generic;
 using System.Linq;
-using System.Management.Automation;
 using System.Net.Http;
 
 namespace Microsoft.Azure.Commands.StorageSync.Common
@@ -267,14 +261,14 @@ namespace Microsoft.Azure.Commands.StorageSync.Common
                 RoleDefinition roleDefinition = AuthorizationManagementClient.RoleDefinitions.Get(roleDefinitionScope, BuiltInRoleDefinitionId);
 
                 var serverPrincipalId = serverPrincipal.Id.ToString();
-                var roleAssignments = AuthorizationManagementClient.RoleAssignments
-                    .ListForResource(
+                var roleAssignments = AuthorizationManagementClient.RoleAssignments.ListForResource(
                     resourceIdentifier.ResourceGroupName,
                     ResourceIdentifier.GetProviderFromResourceType(resourceIdentifier.ResourceType),
-                    resourceIdentifier.ParentResource ?? "/",
                     ResourceIdentifier.GetTypeFromResourceType(resourceIdentifier.ResourceType),
                     resourceIdentifier.ResourceName,
-                    odataQuery: new ODataQuery<RoleAssignmentFilter>(f => f.AssignedTo(serverPrincipalId)));
+                    odataQuery: new ODataQuery<RoleAssignmentFilter>(f => f.AssignedTo(serverPrincipalId))
+                    );
+
                 var roleAssignmentScope = storageAccountResourceId;
                 Guid roleAssignmentId = StorageSyncResourceManager.GetGuid();
 
@@ -284,11 +278,8 @@ namespace Microsoft.Azure.Commands.StorageSync.Common
                     VerboseLogger.Invoke(StorageSyncResources.CreateRoleAssignmentMessage);
                     var createParameters = new RoleAssignmentCreateParameters
                     {
-                        Properties = new RoleAssignmentProperties
-                        {
-                            PrincipalId = serverPrincipalId,
-                            RoleDefinitionId = AuthorizationHelper.ConstructFullyQualifiedRoleDefinitionIdFromSubscriptionAndIdAsGuid(resourceIdentifier.Subscription, BuiltInRoleDefinitionId)
-                        }
+                        PrincipalId = serverPrincipalId,
+                        RoleDefinitionId=AuthorizationHelper.ConstructFullyQualifiedRoleDefinitionIdFromSubscriptionAndIdAsGuid(resourceIdentifier.Subscription, BuiltInRoleDefinitionId)
                     };
 
                     roleAssignment = AuthorizationManagementClient.RoleAssignments.Create(roleAssignmentScope, roleAssignmentId.ToString(), createParameters);
@@ -359,12 +350,13 @@ namespace Microsoft.Azure.Commands.StorageSync.Common
                 var serverPrincipalId = principalId.ToString();
                 var roleAssignments = AuthorizationManagementClient.RoleAssignments
                     .ListForResource(
-                    resourceIdentifier.ResourceGroupName,
-                    ResourceIdentifier.GetProviderFromResourceType(resourceIdentifier.ResourceType),
-                    resourceIdentifier.ParentResource ?? "/",
-                    ResourceIdentifier.GetTypeFromResourceType(resourceIdentifier.ResourceType),
-                    resourceIdentifier.ResourceName,
-                    odataQuery: new ODataQuery<RoleAssignmentFilter>(f => f.AssignedTo(serverPrincipalId)));
+                        resourceIdentifier.ResourceGroupName,
+                        ResourceIdentifier.GetProviderFromResourceType(resourceIdentifier.ResourceType),
+                        ResourceIdentifier.GetTypeFromResourceType(resourceIdentifier.ResourceType),
+                        resourceIdentifier.ResourceName,
+                        odataQuery: new ODataQuery<RoleAssignmentFilter>(f => f.AssignedTo(serverPrincipalId))
+                    );
+
                 var roleAssignmentScope = scope;
 
                 RoleAssignment roleAssignment = roleAssignments.FirstOrDefault();
@@ -413,16 +405,27 @@ namespace Microsoft.Azure.Commands.StorageSync.Common
                 var resourceIdentifier = new ResourceIdentifier(scope);
                 string roleDefinitionScope = "/";
                 RoleDefinition roleDefinition = AuthorizationManagementClient.RoleDefinitions.Get(roleDefinitionScope, roleDefinitionId);
+                VerboseLogger.Invoke($"Creating role assignment for Identity {principalId} RoleDef:{roleDefinition.Name} ({roleDefinition.RoleName}) and Scope: {scope}"); 
 
                 var serverPrincipalId = principalId.ToString();
+                
+
+                var resourceType = string.Empty;
+                if(!string.IsNullOrEmpty(resourceIdentifier.ParentResource))
+                {
+                    resourceType = $"{resourceIdentifier.ParentResource}/";
+                }
+
+                resourceType += ResourceIdentifier.GetTypeFromResourceType(resourceIdentifier.ResourceType);
                 var roleAssignments = AuthorizationManagementClient.RoleAssignments
                     .ListForResource(
-                    resourceIdentifier.ResourceGroupName,
-                    ResourceIdentifier.GetProviderFromResourceType(resourceIdentifier.ResourceType),
-                    resourceIdentifier.ParentResource ?? "/",
-                    ResourceIdentifier.GetTypeFromResourceType(resourceIdentifier.ResourceType),
-                    resourceIdentifier.ResourceName,
-                    odataQuery: new ODataQuery<RoleAssignmentFilter>(f => f.AssignedTo(serverPrincipalId)));
+                        resourceIdentifier.ResourceGroupName,
+                        ResourceIdentifier.GetProviderFromResourceType(resourceIdentifier.ResourceType),
+                        resourceType,
+                        resourceIdentifier.ResourceName,
+                        odataQuery: new ODataQuery<RoleAssignmentFilter>(f => f.AssignedTo(serverPrincipalId))
+                    );
+
                 var roleAssignmentScope = scope;
                 Guid roleAssignmentId = StorageSyncResourceManager.GetGuid();
 
@@ -432,16 +435,16 @@ namespace Microsoft.Azure.Commands.StorageSync.Common
                     VerboseLogger.Invoke(StorageSyncResources.CreateRoleAssignmentMessage);
                     var createParameters = new RoleAssignmentCreateParameters
                     {
-                        Properties = new RoleAssignmentProperties
-                        {
-                            PrincipalId = serverPrincipalId,
-                            RoleDefinitionId = AuthorizationHelper.ConstructFullyQualifiedRoleDefinitionIdFromSubscriptionAndIdAsGuid(resourceIdentifier.Subscription, roleDefinitionId)
-                        }
+                        PrincipalId = serverPrincipalId,
+                        RoleDefinitionId = AuthorizationHelper.ConstructFullyQualifiedRoleDefinitionIdFromSubscriptionAndIdAsGuid(resourceIdentifier.Subscription, roleDefinitionId)
                     };
-
                     roleAssignment = AuthorizationManagementClient.RoleAssignments.Create(roleAssignmentScope, roleAssignmentId.ToString(), createParameters);
                     StorageSyncResourceManager.Wait();
                     VerboseLogger.Invoke($"Successfully created role assignment {roleAssignment.Id}");
+                }
+                else
+                {
+                    VerboseLogger.Invoke($"Role assignment already exists {roleAssignment.Id}");
                 }
 
                 return roleAssignment;
@@ -449,6 +452,7 @@ namespace Microsoft.Azure.Commands.StorageSync.Common
             catch(Exception ex)
             {
                 VerboseLogger.Invoke($"Failed to create role assignment with exception {ex.Message}. Please create role assignment using troubleshooting documents.");
+                throw;
             }
             finally
             {
@@ -457,7 +461,6 @@ namespace Microsoft.Azure.Commands.StorageSync.Common
                     AuthorizationManagementClient.SubscriptionId = currentSubscriptionId;
                 }
             }
-            return null;
         }
     }
 }

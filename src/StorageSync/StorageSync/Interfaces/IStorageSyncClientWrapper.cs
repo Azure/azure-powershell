@@ -12,17 +12,13 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-using Microsoft.Azure.Commands.Common.Authentication.Abstractions;
 using Microsoft.Azure.Commands.Common.MSGraph.Version1_0;
-using Microsoft.Azure.Commands.Common.MSGraph.Version1_0.Applications;
 using Microsoft.Azure.Commands.Common.MSGraph.Version1_0.Applications.Models;
-using Microsoft.Azure.Commands.Common.MSGraph.Version1_0.Users.Models;
-using Microsoft.Azure.Management.Authorization.Version2015_07_01;
-using Microsoft.Azure.Management.Authorization.Version2015_07_01.Models;
+using Microsoft.Azure.Management.Authorization;
+using Microsoft.Azure.Management.Authorization.Models;
 using Microsoft.Azure.Management.Internal.Resources;
 using Microsoft.Azure.Management.StorageSync;
 using System;
-using System.Collections.Generic;
 
 namespace Microsoft.Azure.Commands.StorageSync.Interfaces
 {
