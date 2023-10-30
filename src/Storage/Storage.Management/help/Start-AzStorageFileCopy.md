@@ -16,8 +16,8 @@ Starts to copy a source file.
 ### ContainerName
 ```
 Start-AzStorageFileCopy -SrcBlobName <String> -SrcContainerName <String> -DestShareName <String>
- -DestFilePath <String> [-Context <IStorageContext>] [-DestContext <IStorageContext>] [-Force]
- [-ServerTimeoutPerRequest <Int32>] [-ClientTimeoutPerRequest <Int32>]
+ -DestFilePath <String> [-Context <IStorageContext>] [-DestContext <IStorageContext>]
+ [-DisAllowDestTrailingDot] [-Force] [-ServerTimeoutPerRequest <Int32>] [-ClientTimeoutPerRequest <Int32>]
  [-DefaultProfile <IAzureContextContainer>] [-ConcurrentTaskCount <Int32>] [-WhatIf] [-Confirm]
  [<CommonParameters>]
 ```
@@ -49,10 +49,10 @@ Start-AzStorageFileCopy -SrcBlob <CloudBlob> [-DestFile <CloudFile>] [-DestShare
 ### ShareName
 ```
 Start-AzStorageFileCopy -SrcFilePath <String> -SrcShareName <String> -DestShareName <String>
- -DestFilePath <String> [-Context <IStorageContext>] [-DestContext <IStorageContext>] [-Force]
- [-ServerTimeoutPerRequest <Int32>] [-ClientTimeoutPerRequest <Int32>]
- [-DefaultProfile <IAzureContextContainer>] [-ConcurrentTaskCount <Int32>] [-WhatIf] [-Confirm]
- [<CommonParameters>]
+ -DestFilePath <String> [-Context <IStorageContext>] [-DestContext <IStorageContext>]
+ [-DisAllowSourceTrailingDot] [-DisAllowDestTrailingDot] [-Force] [-ServerTimeoutPerRequest <Int32>]
+ [-ClientTimeoutPerRequest <Int32>] [-DefaultProfile <IAzureContextContainer>] [-ConcurrentTaskCount <Int32>]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### ShareInstance
@@ -273,6 +273,36 @@ Parameter Sets: ContainerName, ContainerInstance, BlobInstanceFilePath, ShareNam
 Aliases:
 
 Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -DisAllowDestTrailingDot
+Disallow trailing dot (.) to suffix destination directory and destination file names.
+
+```yaml
+Type: System.Management.Automation.SwitchParameter
+Parameter Sets: ContainerName, ShareName
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -DisAllowSourceTrailingDot
+Disallow trailing dot (.) to suffix source directory and source file names.
+
+```yaml
+Type: System.Management.Automation.SwitchParameter
+Parameter Sets: ShareName
+Aliases:
+
+Required: False
 Position: Named
 Default value: None
 Accept pipeline input: False

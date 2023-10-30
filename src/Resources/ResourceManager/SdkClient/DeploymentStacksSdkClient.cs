@@ -395,6 +395,7 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.SdkClient
             string resourceGroupName,
             string templateUri,
             string templateSpec,
+            string templateJson,
             string parameterUri,
             Hashtable parameters,
             string description,
@@ -444,7 +445,7 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.SdkClient
             }
             else
             {
-                deploymentStackModel.Template = JObject.Parse(FileUtilities.DataStore.ReadFileAsText(templateUri));
+                deploymentStackModel.Template = JObject.Parse(templateJson ?? FileUtilities.DataStore.ReadFileAsText(templateUri));
             }
 
             if (Uri.IsWellFormedUriString(parameterUri, UriKind.Absolute))
@@ -519,6 +520,7 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.SdkClient
             string location,
             string templateUri,
             string templateSpec,
+            string templateJson,
             string parameterUri,
             Hashtable parameters,
             string description,
@@ -571,7 +573,7 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.SdkClient
             }
             else
             {
-                deploymentStackModel.Template = JObject.Parse(FileUtilities.DataStore.ReadFileAsText(templateUri));
+                deploymentStackModel.Template = JObject.Parse(templateJson ?? FileUtilities.DataStore.ReadFileAsText(templateUri));
             }
 
             if (Uri.IsWellFormedUriString(parameterUri, UriKind.Absolute))
@@ -630,6 +632,7 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.SdkClient
             string location,
             string templateUri,
             string templateSpec,
+            string templateJson,
             string parameterUri,
             Hashtable parameters,
             string description,
@@ -681,7 +684,7 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.SdkClient
             }
             else
             {
-                deploymentStackModel.Template = JObject.Parse(FileUtilities.DataStore.ReadFileAsText(templateUri));
+                deploymentStackModel.Template = JObject.Parse(templateJson ?? FileUtilities.DataStore.ReadFileAsText(templateUri));
             }
 
             if (Uri.IsWellFormedUriString(parameterUri, UriKind.Absolute))
@@ -835,6 +838,7 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.SdkClient
             string resourceGroupName,
             string templateUri,
             string templateSpec,
+            string templateJson,
             string parameterUri,
             Hashtable parameters,
             string description
@@ -858,7 +862,7 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.SdkClient
             }
             else
             {
-                deploymentStackModel.Template = JObject.Parse(FileUtilities.DataStore.ReadFileAsText(templateUri));
+                deploymentStackModel.Template = JObject.Parse(templateJson ?? FileUtilities.DataStore.ReadFileAsText(templateUri));
             }
 
             if (Uri.IsWellFormedUriString(parameterUri, UriKind.Absolute))

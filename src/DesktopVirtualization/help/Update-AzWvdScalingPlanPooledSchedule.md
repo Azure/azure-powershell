@@ -52,27 +52,27 @@ Update a ScalingPlanPooledSchedule.
 Update-AzWvdScalingPlanPooledSchedule -ResourceGroupName rgName `
                                         -ScalingPlanName spName `
                                         -ScalingPlanScheduleName scheduleName `
-                                        -daysOfWeek @('Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday') `
-                                        -rampUpStartTimeHour 6 `
-                                        -rampUpStartTimeMinute 30 `
-                                        -rampUpLoadBalancingAlgorithm BreadthFirst `
-                                        -rampUpMinimumHostsPct 20 `
-                                        -rampUpCapacityThresholdPct 20 `
-                                        -peakStartTimeHour 8 `
-                                        -peakStartTimeMinute 30 `
-                                        -peakLoadBalancingAlgorithm DepthFirst `
+                                        -DaysOfWeek @('Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday') `
+                                        -RampUpStartTimeHour 6 `
+                                        -RampUpStartTimeMinute 30 `
+                                        -RampUpLoadBalancingAlgorithm BreadthFirst `
+                                        -RampUpMinimumHostsPct 20 `
+                                        -RampUpCapacityThresholdPct 20 `
+                                        -PeakStartTimeHour 8 `
+                                        -PeakStartTimeMinute 30 `
+                                        -PeakLoadBalancingAlgorithm DepthFirst `
                                         -RampDownStartTimeHour 16 `
                                         -RampDownStartTimeMinute 0 `
-                                        -rampDownLoadBalancingAlgorithm BreadthFirst `
-                                        -rampDownMinimumHostsPct 20 `
-                                        -rampDownCapacityThresholdPct 20 `
-                                        -rampDownForceLogoffUser:$true `
-                                        -rampDownWaitTimeMinute 30 `
-                                        -rampDownNotificationMessage "Log out now, please." `
-                                        -rampDownStopHostsWhen ZeroSessions `
-                                        -offPeakStartTimeHour 22 `
-                                        -offPeakStartTimeMinute 45 `
-                                        -offPeakLoadBalancingAlgorithm DepthFirst
+                                        -RampDownLoadBalancingAlgorithm BreadthFirst `
+                                        -RampDownMinimumHostsPct 20 `
+                                        -RampDownCapacityThresholdPct 20 `
+                                        -RampDownForceLogoffUser:$true `
+                                        -RampDownWaitTimeMinute 30 `
+                                        -RampDownNotificationMessage "Log out now, please." `
+                                        -RampDownStopHostsWhen ZeroSessions `
+                                        -OffPeakStartTimeHour 22 `
+                                        -OffPeakStartTimeMinute 45 `
+                                        -OffPeakLoadBalancingAlgorithm DepthFirst
 ```
 
 ```output
@@ -533,31 +533,9 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.Api202209.IScalingPlanPooledSchedule
+### Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.Api20230905.IScalingPlanPooledSchedule
 
 ## NOTES
-
-ALIASES
-
-COMPLEX PARAMETER PROPERTIES
-
-To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
-
-
-`INPUTOBJECT <IDesktopVirtualizationIdentity>`: Identity Parameter
-  - `[ApplicationGroupName <String>]`: The name of the application group
-  - `[ApplicationName <String>]`: The name of the application within the specified application group
-  - `[DesktopName <String>]`: The name of the desktop within the specified desktop group
-  - `[HostPoolName <String>]`: The name of the host pool within the specified resource group
-  - `[Id <String>]`: Resource identity path
-  - `[MsixPackageFullName <String>]`: The version specific package full name of the MSIX package within specified hostpool
-  - `[ResourceGroupName <String>]`: The name of the resource group. The name is case insensitive.
-  - `[ScalingPlanName <String>]`: The name of the scaling plan.
-  - `[ScalingPlanScheduleName <String>]`: The name of the ScalingPlanSchedule
-  - `[SessionHostName <String>]`: The name of the session host within the specified host pool
-  - `[SubscriptionId <String>]`: The ID of the target subscription.
-  - `[UserSessionId <String>]`: The name of the user session within the specified session host
-  - `[WorkspaceName <String>]`: The name of the workspace
 
 ## RELATED LINKS
 

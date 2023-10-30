@@ -52,9 +52,9 @@ namespace Microsoft.Azure.Commands.Management.CognitiveServices.Models
 
 
             var ipRules = new List<PSIpRule>();
-            if (networkRuleSet.IpRules != null)
+            if (networkRuleSet.IPRules != null)
             {
-                foreach (var ipRule in networkRuleSet.IpRules)
+                foreach (var ipRule in networkRuleSet.IPRules)
                 {
                     ipRules.Add(PSIpRule.Create(ipRule));
                 }
@@ -79,12 +79,12 @@ namespace Microsoft.Azure.Commands.Management.CognitiveServices.Models
             var result = new CognitiveServicesModels.NetworkRuleSet();
             result.DefaultAction = this.DefaultAction.ToString();
 
-            result.IpRules = new List<CognitiveServicesModels.IpRule>();
+            result.IPRules = new List<CognitiveServicesModels.IpRule>();
             if (this.IpRules != null)
             {
                 foreach (var ipRule in this.IpRules)
                 {
-                    result.IpRules.Add(ipRule.ToIpRule());
+                    result.IPRules.Add(ipRule.ToIpRule());
                 }
             }
 

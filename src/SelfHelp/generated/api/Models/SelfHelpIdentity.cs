@@ -35,6 +35,20 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.SelfHelp.Models
         [Microsoft.Azure.PowerShell.Cmdlets.SelfHelp.Origin(Microsoft.Azure.PowerShell.Cmdlets.SelfHelp.PropertyOrigin.Owned)]
         public string Scope { get => this._scope; set => this._scope = value; }
 
+        /// <summary>Backing field for <see cref="SolutionResourceName" /> property.</summary>
+        private string _solutionResourceName;
+
+        /// <summary>Solution resource Name.</summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.SelfHelp.Origin(Microsoft.Azure.PowerShell.Cmdlets.SelfHelp.PropertyOrigin.Owned)]
+        public string SolutionResourceName { get => this._solutionResourceName; set => this._solutionResourceName = value; }
+
+        /// <summary>Backing field for <see cref="TroubleshooterName" /> property.</summary>
+        private string _troubleshooterName;
+
+        /// <summary>Troubleshooter resource Name.</summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.SelfHelp.Origin(Microsoft.Azure.PowerShell.Cmdlets.SelfHelp.PropertyOrigin.Owned)]
+        public string TroubleshooterName { get => this._troubleshooterName; set => this._troubleshooterName = value; }
+
         /// <summary>Creates an new <see cref="SelfHelpIdentity" /> instance.</summary>
         public SelfHelpIdentity()
         {
@@ -70,6 +84,22 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.SelfHelp.Models
         SerializedName = @"scope",
         PossibleTypes = new [] { typeof(string) })]
         string Scope { get; set; }
+        /// <summary>Solution resource Name.</summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.SelfHelp.Runtime.Info(
+        Required = false,
+        ReadOnly = false,
+        Description = @"Solution resource Name.",
+        SerializedName = @"solutionResourceName",
+        PossibleTypes = new [] { typeof(string) })]
+        string SolutionResourceName { get; set; }
+        /// <summary>Troubleshooter resource Name.</summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.SelfHelp.Runtime.Info(
+        Required = false,
+        ReadOnly = false,
+        Description = @"Troubleshooter resource Name.",
+        SerializedName = @"troubleshooterName",
+        PossibleTypes = new [] { typeof(string) })]
+        string TroubleshooterName { get; set; }
 
     }
     internal partial interface ISelfHelpIdentityInternal
@@ -83,6 +113,10 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.SelfHelp.Models
         /// This is an extension resource provider and only resource level extension is supported at the moment.
         /// </summary>
         string Scope { get; set; }
+        /// <summary>Solution resource Name.</summary>
+        string SolutionResourceName { get; set; }
+        /// <summary>Troubleshooter resource Name.</summary>
+        string TroubleshooterName { get; set; }
 
     }
 }

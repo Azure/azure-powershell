@@ -15,6 +15,7 @@ The operation to update a hybrid machine.
 ### UpdateExpanded (Default)
 ```
 Update-AzConnectedMachine -Name <String> -ResourceGroupName <String> [-SubscriptionId <String>]
+ [-AgentUpgradeCorrelationId <String>] [-AgentUpgradeDesiredVersion <String>] [-AgentUpgradeEnableAutomatic]
  [-IdentityType <ResourceIdentityType>] [-LinuxConfigurationPatchSettingsAssessmentMode <AssessmentModeTypes>]
  [-LinuxConfigurationPatchSettingsPatchMode <PatchModeTypes>] [-LocationDataCity <String>]
  [-LocationDataCountryOrRegion <String>] [-LocationDataDistrict <String>] [-LocationDataName <String>]
@@ -38,7 +39,8 @@ Update-AzConnectedMachine -InputObject <IConnectedMachineIdentity> -Parameter <I
 
 ### UpdateViaIdentityExpanded
 ```
-Update-AzConnectedMachine -InputObject <IConnectedMachineIdentity> [-IdentityType <ResourceIdentityType>]
+Update-AzConnectedMachine -InputObject <IConnectedMachineIdentity> [-AgentUpgradeCorrelationId <String>]
+ [-AgentUpgradeDesiredVersion <String>] [-AgentUpgradeEnableAutomatic] [-IdentityType <ResourceIdentityType>]
  [-LinuxConfigurationPatchSettingsAssessmentMode <AssessmentModeTypes>]
  [-LinuxConfigurationPatchSettingsPatchMode <PatchModeTypes>] [-LocationDataCity <String>]
  [-LocationDataCountryOrRegion <String>] [-LocationDataDistrict <String>] [-LocationDataName <String>]
@@ -81,8 +83,54 @@ Update a machine to clean a field
 
 ## PARAMETERS
 
+### -AgentUpgradeCorrelationId
+The correlation ID passed in from RSM per upgrade.
+
+```yaml
+Type: System.String
+Parameter Sets: UpdateExpanded, UpdateViaIdentityExpanded
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -AgentUpgradeDesiredVersion
+Specifies the version info w.r.t AgentUpgrade for the machine.
+
+```yaml
+Type: System.String
+Parameter Sets: UpdateExpanded, UpdateViaIdentityExpanded
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -AgentUpgradeEnableAutomatic
+Specifies if RSM should try to upgrade this machine
+
+```yaml
+Type: System.Management.Automation.SwitchParameter
+Parameter Sets: UpdateExpanded, UpdateViaIdentityExpanded
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
 ### -DefaultProfile
-The credentials, account, tenant, and subscription used for communication with Azure.
+The DefaultProfile parameter is not functional.
+Use the SubscriptionId parameter when available if executing the cmdlet against a different subscription.
 
 ```yaml
 Type: System.Management.Automation.PSObject
@@ -237,7 +285,7 @@ Describes a hybrid machine Update.
 To construct, see NOTES section for PARAMETER properties and create a hash table.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.Api20220310.IMachineUpdate
+Type: Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.Api20221227.IMachineUpdate
 Parameter Sets: Update, UpdateViaIdentity
 Aliases:
 
@@ -390,49 +438,15 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.Api20220310.IMachineUpdate
+### Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.Api20221227.IMachineUpdate
 
 ### Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.IConnectedMachineIdentity
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.Api20220310.IMachine
+### Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.Api20221227.IMachine
 
 ## NOTES
-
-ALIASES
-
-COMPLEX PARAMETER PROPERTIES
-
-To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
-
-
-`INPUTOBJECT <IConnectedMachineIdentity>`: Identity Parameter
-  - `[ExtensionName <String>]`: The name of the machine extension.
-  - `[GroupName <String>]`: The name of the private link resource.
-  - `[Id <String>]`: Resource identity path
-  - `[Location <String>]`: The location of the target resource.
-  - `[MachineName <String>]`: The name of the hybrid machine.
-  - `[PrivateEndpointConnectionName <String>]`: The name of the private endpoint connection.
-  - `[PrivateLinkScopeId <String>]`: The id (Guid) of the Azure Arc PrivateLinkScope resource.
-  - `[ResourceGroupName <String>]`: The name of the resource group. The name is case insensitive.
-  - `[ScopeName <String>]`: The name of the Azure Arc PrivateLinkScope resource.
-  - `[SubscriptionId <String>]`: The ID of the target subscription.
-
-`PARAMETER <IMachineUpdate>`: Describes a hybrid machine Update.
-  - `[Tag <IResourceUpdateTags>]`: Resource tags
-    - `[(Any) <String>]`: This indicates any property can be added to this object.
-  - `[IdentityType <ResourceIdentityType?>]`: The identity type.
-  - `[LinuxConfigurationPatchSettingsAssessmentMode <AssessmentModeTypes?>]`: Specifies the assessment mode.
-  - `[LinuxConfigurationPatchSettingsPatchMode <PatchModeTypes?>]`: Specifies the patch mode.
-  - `[LocationDataCity <String>]`: The city or locality where the resource is located.
-  - `[LocationDataCountryOrRegion <String>]`: The country or region where the resource is located
-  - `[LocationDataDistrict <String>]`: The district, state, or province where the resource is located.
-  - `[LocationDataName <String>]`: A canonical name for the geographic or physical location.
-  - `[ParentClusterResourceId <String>]`: The resource id of the parent cluster (Azure HCI) this machine is assigned to, if any.
-  - `[PrivateLinkScopeResourceId <String>]`: The resource id of the private link scope this machine is assigned to, if any.
-  - `[WindowsConfigurationPatchSettingsAssessmentMode <AssessmentModeTypes?>]`: Specifies the assessment mode.
-  - `[WindowsConfigurationPatchSettingsPatchMode <PatchModeTypes?>]`: Specifies the patch mode.
 
 ## RELATED LINKS
 

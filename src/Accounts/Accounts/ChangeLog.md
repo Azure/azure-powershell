@@ -19,6 +19,15 @@
 -->
 
 ## Upcoming Release
+* Upgraded Azure.Core to 1.35.0.
+
+## Version 2.13.1
+* Added the module name in breaking change messages 
+* Upgraded Microsoft.ApplicationInsights version from 2.13.1 to 2.18.0 
+
+## Version 2.13.0
+* Supported in-tool notification for version upgrade.
+* Added an alias `Set-AzConfig` to `Update-AzConfig`
 * Refilled credentials from `AzKeyStore` when run `Save-AzContext` [#22355]
 * Added config `DisableErrorRecordsPersistence` to disable writing error records to file system [#21732]
 * Updated Azure.Core to 1.34.0.

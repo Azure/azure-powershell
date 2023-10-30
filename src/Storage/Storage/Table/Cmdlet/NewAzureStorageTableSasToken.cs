@@ -22,8 +22,8 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Table.Cmdlet
     using System.Management.Automation;
     using System.Security.Permissions;
     using Microsoft.WindowsAzure.Commands.Common.CustomAttributes;
+    using global::Azure.Storage.Queues;
 
-    [GenericBreakingChangeWithVersion("The leading question mark '?' of the created SAS token will be removed in a future release.", "11.0.0", "6.0.0")]
     [Cmdlet("New", Azure.Commands.ResourceManager.Common.AzureRMConstants.AzurePrefix + "StorageTableSASToken"), OutputType(typeof(String))]
     public class NewAzureStorageTableSasTokenCommand : StorageCloudTableCmdletBase
     {
@@ -143,9 +143,12 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Table.Cmdlet
             string sasToken = table.GetSharedAccessSignature(policy, accessPolicyIdentifier, StartPartitionKey,
                                 StartRowKey, EndPartitionKey, EndRowKey, Protocol, Util.SetupTableIPAddressOrRangeForSAS(IPAddressOrRange));
 
+            // remove prefix "?" of SAS if any
+            sasToken = Util.GetSASStringWithoutQuestionMark(sasToken);
+
             if (FullUri)
             {
-                string fullUri = table.Uri.ToString() + sasToken;
+                string fullUri = SasTokenHelper.GetFullUriWithSASToken(table.Uri.ToString(), sasToken);
                 WriteObject(fullUri);
             }
             else

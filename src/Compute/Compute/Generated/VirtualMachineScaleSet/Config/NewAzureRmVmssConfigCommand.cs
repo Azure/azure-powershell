@@ -587,7 +587,7 @@ namespace Microsoft.Azure.Commands.Compute.Automation
                 vVirtualMachineProfile.NetworkProfile.NetworkInterfaceConfigurations = this.NetworkInterfaceConfiguration;
             }
             
-            if (this.IsParameterBound(c => c.SecurityType))
+            if (this.IsParameterBound(c => c.SecurityType) && this.SecurityType?.ToLower() != ConstantValues.StandardSecurityType)
             {
                 if (vVirtualMachineProfile == null)
                 {

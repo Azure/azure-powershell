@@ -1,7 +1,7 @@
 using System;
 using Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Runtime.Json;
 
-namespace Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.Api20220310
+namespace Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.Api20221227
 {
     public partial class MachineExtensionProperties
     {
@@ -20,7 +20,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.Api20220310
             {
                 var version = Version.Parse((string) node.ToValue());
                 container.Remove(typeHandlerVersionPropertyName);
-                container.Add(typeHandlerVersionPropertyName, version.Build == -1 ? $"{version.Major}.{version.Minor}" : $"{version.Major}.{version.Minor}.{version.Build}");
+                container.Add(typeHandlerVersionPropertyName, version.Build == -1 ? $"{version.Major}.{version.Minor}" : $"{version.Major}.{version.Minor}.{version.Build}.{version.Revision}");
             }
         }
     }

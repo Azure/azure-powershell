@@ -21,9 +21,9 @@ Clear-AzConfig [-Force] [-PassThru] [-AppliesTo <String>] [-Scope <ConfigScope>]
 ### ClearByKey
 ```
 Clear-AzConfig [-PassThru] [-AppliesTo <String>] [-Scope <ConfigScope>]
- [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [-DefaultSubscriptionForLogin]
- [-DisableErrorRecordsPersistence] [-DisplayBreakingChangeWarning] [-DisplayRegionIdentified]
- [-DisplaySurveyMessage] [-EnableDataCollection] [-EnableLoginByWam]
+ [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [-CheckForUpgrade]
+ [-DefaultSubscriptionForLogin] [-DisableErrorRecordsPersistence] [-DisplayBreakingChangeWarning]
+ [-DisplayRegionIdentified] [-DisplaySurveyMessage] [-EnableDataCollection] [-EnableLoginByWam]
  [<CommonParameters>]
 ```
 
@@ -61,6 +61,21 @@ If not specified, when getting or clearing configs, it defaults to all the above
 ```yaml
 Type: System.String
 Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -CheckForUpgrade
+When enabled, Azure PowerShell will check for updates automatically and display a hint message when an update is available. The default value will be changed from false to true in Az version 11.0.0.
+
+```yaml
+Type: System.Management.Automation.SwitchParameter
+Parameter Sets: ClearByKey
 Aliases:
 
 Required: False

@@ -28,12 +28,14 @@ Describe 'New-AzImageBuilderTemplate' {
         # Create a virtual machine image template
         New-AzImageBuilderTemplate -Name $env.newTemplateName1 -ResourceGroupName $env.rg -Location $env.location -UserAssignedIdentityId $userAssignedIdentity -Source $source -Customize $customizer -Distribute $distributor  
         $template = Get-AzImageBuilderTemplate -Name $env.newTemplateName1 -ResourceGroupName $env.rg
+        $template.Name | Should -Be $env.newTemplateName1
     }
 
     # Source: PlatformImage Distributor: SharedImage
     It 'FromJsonFile' {
         New-AzImageBuilderTemplate -Name $env.newTemplateName2 -ResourceGroupName $env.rg -JsonTemplatePath $PSScriptRoot/JsonTemplateFile.json
         $template = Get-AzImageBuilderTemplate -Name $env.newTemplateName2 -ResourceGroupName $env.rg
+        $template.Name | Should -Be $env.newTemplateName2
     }
 
     # Source: PlatformImage Distributor: SharedImage
@@ -42,6 +44,7 @@ Describe 'New-AzImageBuilderTemplate' {
         $jsonString = Get-Content $jsonFile -Raw
         New-AzImageBuilderTemplate -Name $env.newTemplateName3 -ResourceGroupName $env.rg -JsonString $jsonString
         $template = Get-AzImageBuilderTemplate -Name $env.newTemplateName3 -ResourceGroupName $env.rg
+        $template.Name | Should -Be $env.newTemplateName3
     }
     
     It 'platformimg-managedimg' -Skip {
@@ -56,6 +59,8 @@ Describe 'New-AzImageBuilderTemplate' {
         
         New-AzImageBuilderTemplate -Name $env.Resources.Template.templateName11 -ResourceGroupName $env.ResourceGroup -Source $srcPlatform -Distribute $disManagedImg -Customize $customizer -Location $env.Location -UserAssignedIdentityId $env.userAssignedIdentity
         $template = Get-AzImageBuilderTemplate -Name $env.Resources.Template.templateName11 -ResourceGroupName $env.ResourceGroup
+        $template.ProvisioningState | Should -Be 'Succeeded'
+        $template.Name | Should -Be $env.Resources.Template.templateName11
         #endregion OS:Linux
 
         #region OS:Windows
@@ -68,10 +73,9 @@ Describe 'New-AzImageBuilderTemplate' {
         $customizer = New-AzImageBuilderCustomizerObject -FileCustomizer -CustomizerName $customizerName -Sha256Checksum  $sha256Checksum -Destination $destination -SourceUri $sourceUri
         New-AzImageBuilderTemplate -ImageTemplateName $env.Resources.Template.templateName101 -ResourceGroupName $env.ResourceGroup -Source $srcPlatformWind -Distribute $disManagedImgWind -Customize $customizer -Location $env.Location -UserAssignedIdentityId $env.userAssignedIdentity
         $templateWind = Get-AzImageBuilderTemplate -ImageTemplateName $env.Resources.Template.templateName101 -ResourceGroupName $env.ResourceGroup
-        #endregion OS:Windows
-
-        $template.ProvisioningState | Should -Be 'Succeeded'
+        $templateWind.ProvisioningState | Should -Be 'Succeeded'
         $templateWind.Name | Should -Be $env.Resources.Template.templateName101
+        #endregion OS:Windows
     }
     #2 Source: PlatformImage Distributor: VHD
     It 'platformimg-vhd' -Skip {
@@ -102,7 +106,8 @@ Describe 'New-AzImageBuilderTemplate' {
 
         New-AzImageBuilderTemplate -ImageTemplateName $env.Resources.Template.templateName13 -ResourceGroupName $env.ResourceGroup -Source $srcPlatform -Distribute $disSharedImg -Customize $customizer -Location $env.Location -UserAssignedIdentityId $env.userAssignedIdentity
         $template = Get-AzImageBuilderTemplate -ImageTemplateName $env.Resources.Template.templateName13 -ResourceGroupName $env.ResourceGroup
-        #$template.ProvisioningState | Should -Be 'Succeeded'
+        $template.ProvisioningState | Should -Be 'Succeeded'
+        $template.Name | Should -Be $env.Resources.Template.templateName13
         #endregion OS:Linux
         
         #region OS:Windows
@@ -115,10 +120,9 @@ Describe 'New-AzImageBuilderTemplate' {
         $customizer = New-AzImageBuilderCustomizerObject -FileCustomizer -CustomizerName $customizerName -Sha256Checksum  $sha256Checksum -Destination $destination -SourceUri $sourceUri
         New-AzImageBuilderTemplate -ImageTemplateName $env.Resources.Template.templateName103 -ResourceGroupName $env.ResourceGroup -Source $srcPlatformWind -Distribute $disSharedImgWind -Customize $customizer -Location $env.Location -UserAssignedIdentityId $env.userAssignedIdentity
         $templateWind = Get-AzImageBuilderTemplate -ImageTemplateName $env.Resources.Template.templateName103 -ResourceGroupName $env.ResourceGroup
-        #endregion OS:Windows
-
-        $template.Name | Should -Be $env.Resources.Template.templateName13
+        $templateWind.ProvisioningState | Should -Be 'Succeeded'
         $templateWind.Name | Should -Be $env.Resources.Template.templateName103
+        #endregion OS:Windows
         
     }
     #4 Source: ManagedImage Distributor: ManagedImage
@@ -134,7 +138,7 @@ Describe 'New-AzImageBuilderTemplate' {
 
         New-AzImageBuilderTemplate -ImageTemplateName $env.Resources.Template.templateName14 -ResourceGroupName $env.ResourceGroup -Source $srcManagedImg -Distribute $disManagedImg -Customize $customizer -Location $env.Location -UserAssignedIdentityId $env.userAssignedIdentity
         $template = Get-AzImageBuilderTemplate -ImageTemplateName $env.Resources.Template.templateName14 -ResourceGroupName $env.ResourceGroup
-        #$template.ProvisioningState | Should -Be 'Succeeded'
+        $template.ProvisioningState | Should -Be 'Succeeded'
         $template.Name | Should -Be $env.Resources.Template.templateName14
         #endregion OS:Linux
     }
@@ -151,7 +155,7 @@ Describe 'New-AzImageBuilderTemplate' {
 
         New-AzImageBuilderTemplate -ImageTemplateName $env.Resources.Template.templateName15 -ResourceGroupName $env.ResourceGroup -Source $srcManagedImg -Distribute $disVhd -Customize $customizer -Location $env.Location -UserAssignedIdentityId $env.userAssignedIdentity
         $template = Get-AzImageBuilderTemplate -ImageTemplateName $env.Resources.Template.templateName15 -ResourceGroupName $env.ResourceGroup
-        #$template.ProvisioningState | Should -Be 'Succeeded'
+        $template.ProvisioningState | Should -Be 'Succeeded'
         $template.Name | Should -Be $env.Resources.Template.templateName15
         #endregion OS:Linux
     }
@@ -168,7 +172,7 @@ Describe 'New-AzImageBuilderTemplate' {
        
         New-AzImageBuilderTemplate -ImageTemplateName $env.Resources.Template.templateName16 -ResourceGroupName $env.ResourceGroup -Source $srcManagedImg -Distribute $disSharedImg -Customize $customizer -Location $env.Location -UserAssignedIdentityId $env.userAssignedIdentity
         $template = Get-AzImageBuilderTemplate -ImageTemplateName $env.Resources.Template.templateName16 -ResourceGroupName $env.ResourceGroup
-        #$template.ProvisioningState | Should -Be 'Succeeded'
+        $template.ProvisioningState | Should -Be 'Succeeded'
         $template.Name | Should -Be $env.Resources.Template.templateName16
         #endregion OS:Linux
     }
@@ -185,7 +189,7 @@ Describe 'New-AzImageBuilderTemplate' {
         
         New-AzImageBuilderTemplate -ImageTemplateName $env.Resources.Template.templateName17 -ResourceGroupName $env.ResourceGroup -Source $srcSharedImg -Distribute $disManagedImg -Customize $customizer -Location $env.Location -UserAssignedIdentityId $env.userAssignedIdentity
         $template = Get-AzImageBuilderTemplate -ImageTemplateName $env.Resources.Template.templateName17 -ResourceGroupName $env.ResourceGroup
-        #$template.ProvisioningState | Should -Be 'Succeeded'
+        $template.ProvisioningState | Should -Be 'Succeeded'
         $template.Name | Should -Be $env.Resources.Template.templateName17
         #endregion OS:Linux
     }
@@ -202,7 +206,7 @@ Describe 'New-AzImageBuilderTemplate' {
         
         New-AzImageBuilderTemplate -ImageTemplateName $env.Resources.Template.templateName18 -ResourceGroupName $env.ResourceGroup -Source $srcSharedImg -Distribute $disVhd -Customize $customizer -Location $env.Location -UserAssignedIdentityId $env.userAssignedIdentity
         $template = Get-AzImageBuilderTemplate -ImageTemplateName $env.Resources.Template.templateName18 -ResourceGroupName $env.ResourceGroup
-        #$template.ProvisioningState | Should -Be 'Succeeded'
+        $template.ProvisioningState | Should -Be 'Succeeded'
         $template.Name | Should -Be $env.Resources.Template.templateName18
         #endregion OS:Linux
     }
@@ -220,7 +224,7 @@ Describe 'New-AzImageBuilderTemplate' {
         
         New-AzImageBuilderTemplate -ImageTemplateName $env.Resources.Template.templateName19 -ResourceGroupName $env.ResourceGroup -Source $srcSharedImg -Distribute $disSharedImg -Customize $customizer -Location $env.Location -UserAssignedIdentityId $env.userAssignedIdentity
         $template = Get-AzImageBuilderTemplate -ImageTemplateName $env.Resources.Template.templateName19 -ResourceGroupName $env.ResourceGroup
-        #$template.ProvisioningState | Should -Be 'Succeeded'
+        $template.ProvisioningState | Should -Be 'Succeeded'
         $template.Name | Should -Be $env.Resources.Template.templateName19
         #endregion OS:Linux
     }

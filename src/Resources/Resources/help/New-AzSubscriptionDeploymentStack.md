@@ -136,6 +136,16 @@ New-AzSubscriptionDeploymentStack [-Name] <String> [-Description <String>] -Loca
  [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
+### ByParameterFileWithNoTemplate
+```
+New-AzSubscriptionDeploymentStack [-Name] <String> [-Description <String>] -Location <String> [-DeleteAll]
+ [-DeleteResources] [-DeleteResourceGroups] -DenySettingsMode <PSDenySettingsMode>
+ [-DenySettingsExcludedPrincipal <String[]>] [-DenySettingsExcludedAction <String[]>]
+ [-DenySettingsApplyToChildScopes] [-DeploymentResourceGroupName <String>] [-Tag <Hashtable>] [-Force] [-AsJob]
+ -TemplateParameterFile <String> [-SkipTemplateParameterPrompt] [-QueryString <String>] [-Pre]
+ [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
+```
+
 ## DESCRIPTION
 Create a subscription scoped deployment stack.
 
@@ -147,6 +157,13 @@ New-AzSubscriptionDeploymentStack -Name MySubStack -TemplateFile myTemplate.json
 ```
 
 Create a new subscription scoped deployment stack named 'MySubStack' in the default subscription, with deny settings being DenyDelete. 
+
+### Example 2: Use a .bicepparam file to create a stack
+```powershell
+New-AzSubscriptionDeploymentStack -Name MySubStack -Location westus -DenySettingsMode DenyDelete -TemplateParameterFile "./parameters.bicepparam"
+```
+
+This command creates a new stack at the subscription scope by using a .bicepparam file on disk.
 
 ## PARAMETERS
 
@@ -442,7 +459,7 @@ Parameter file to use for the template.
 
 ```yaml
 Type: System.String
-Parameter Sets: ByTemplateFileWithParameterFile, ByTemplateUriWithParameterFile, ByTemplateSpecWithParameterFile
+Parameter Sets: ByTemplateFileWithParameterFile, ByTemplateUriWithParameterFile, ByTemplateSpecWithParameterFile, ByParameterFileWithNoTemplate
 Aliases:
 
 Required: True

@@ -20,10 +20,18 @@
 
 -->
 ## Upcoming Release
+* Added update functionality in `Update-AzVmss` for parameters `SecurityType`, `EnableSecureBoot`, and `EnableVtpm` for the parameter set with the Put operation.
+* Upgraded Azure.Core to 1.35.0.
+* [Breaking change] Removed unversioned and outdated linux image aliases of `CentOS`, `RHEL`, `UbuntuLTS` and `Debian`.
+
+## Version 6.3.0
 * Added `-Hibernate` switch parameter to `Stop-AzVmss` default parameter set. 
 * For `Get-AzVmRunCommand`, a bug is fixed to work when returning a list of RunCommands [#22403]
 * Updated Azure.Core to 1.34.0.
+* Added new cmdlets `Get-AzHostSize` and `Update-AzHost`.
 * Added the `Standard` value to the `SecurityType` parameter to the cmdlets `Set-AzDiskSecurityType`, `New-AzvmssConfig`, `Set-AzVmssSecurityProfile`, `Update-AzVmss`, `New-AzVmss`, `New-AzVMConfig`, `Set-AzVMsecurityProfile`, and `New-AzVM`.
+* Fixed `Update-AzVMSS` to update ImageReferenceSKU [#22195]
+* Updated the above change to include `New-AzVMConfig` as 1 scenario was initially missed when only using this cmdlet.
 
 ## Version 6.2.0
 * Fixed the `Update-AzVmss` cmdlet so the `AutomaticRepairGracePeriod`, `AutomaticRepairAction`, and `EnableAutomaticRepair` parameters function correctly.

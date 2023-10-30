@@ -50,6 +50,13 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ImageBuilder.Models
         [Microsoft.Azure.PowerShell.Cmdlets.ImageBuilder.Origin(Microsoft.Azure.PowerShell.Cmdlets.ImageBuilder.PropertyOrigin.Owned)]
         public string SubscriptionId { get => this._subscriptionId; set => this._subscriptionId = value; }
 
+        /// <summary>Backing field for <see cref="TriggerName" /> property.</summary>
+        private string _triggerName;
+
+        /// <summary>The name of the trigger</summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.ImageBuilder.Origin(Microsoft.Azure.PowerShell.Cmdlets.ImageBuilder.PropertyOrigin.Owned)]
+        public string TriggerName { get => this._triggerName; set => this._triggerName = value; }
+
         /// <summary>Creates an new <see cref="ImageBuilderIdentity" /> instance.</summary>
         public ImageBuilderIdentity()
         {
@@ -102,6 +109,14 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ImageBuilder.Models
         SerializedName = @"subscriptionId",
         PossibleTypes = new [] { typeof(string) })]
         string SubscriptionId { get; set; }
+        /// <summary>The name of the trigger</summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.ImageBuilder.Runtime.Info(
+        Required = false,
+        ReadOnly = false,
+        Description = @"The name of the trigger",
+        SerializedName = @"triggerName",
+        PossibleTypes = new [] { typeof(string) })]
+        string TriggerName { get; set; }
 
     }
     internal partial interface IImageBuilderIdentityInternal
@@ -120,6 +135,8 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ImageBuilder.Models
         /// for every service call.
         /// </summary>
         string SubscriptionId { get; set; }
+        /// <summary>The name of the trigger</summary>
+        string TriggerName { get; set; }
 
     }
 }

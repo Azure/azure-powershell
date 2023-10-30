@@ -18,6 +18,7 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
+* Added support for semantic search option
 
 ## Version 0.9.0
 * Added support for RBAC authentication

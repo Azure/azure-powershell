@@ -8,7 +8,7 @@ schema: 2.0.0
 # Enable-AzSqlServerActiveDirectoryOnlyAuthentication
 
 ## SYNOPSIS
-Enables Azure AD only authentication for a specific SQL Server.
+Enables Microsoft Entra-only authentication for a specific SQL Server.
 
 ## SYNTAX
 
@@ -31,7 +31,7 @@ Enable-AzSqlServerActiveDirectoryOnlyAuthentication [-ResourceId] <String>
 ```
 
 ## DESCRIPTION
-The **Enable-AzSqlServerActiveDirectoryOnlyAuthentication** cmdlet enables Azure Active Directory (Azure AD) only authentication requirement for an AzureSQL Server in the current subscription.
+The **Enable-AzSqlServerActiveDirectoryOnlyAuthentication** cmdlet enables Microsoft Entra-only authentication requirement for an AzureSQL Server in the current subscription.
 
 ## EXAMPLES
 
@@ -46,7 +46,7 @@ ResourceGroupName ServerName AzureADOnlyAuthentication
 ResourceGroup01   Server01   True
 ```
 
-This command enables Azure Active Directory (Azure AD) only authentication requirement for an AzureSQL server named Server01 that is associated with a resource group named ResourceGroup01.
+This command enables Microsoft Entra-only authentication requirement for an AzureSQL server named Server01 that is associated with a resource group named ResourceGroup01.
 
 ## PARAMETERS
 
@@ -111,7 +111,7 @@ Accept wildcard characters: False
 ```
 
 ### -ServerName
-The name of the Azure SQL Server the Azure Active Directory only authentication is in.
+The name of the Azure SQL Server the Microsoft Entra-only authentication is in.
 
 ```yaml
 Type: System.String

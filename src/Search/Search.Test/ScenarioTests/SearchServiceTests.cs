@@ -40,6 +40,27 @@ namespace Microsoft.Azure.Commands.Management.Search.Test.ScenarioTests
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void TestNewSearchServiceSemanticFree()
+        {
+            TestRunner.RunTestScript("Test-NewAzSearchServiceSemanticFree");
+        }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void TestNewSearchServiceSemanticStandard()
+        {
+            TestRunner.RunTestScript("Test-NewAzSearchServiceSemanticStandard");
+        }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void TestNewSearchServiceSemanticDisabled()
+        {
+            TestRunner.RunTestScript("Test-NewAzSearchServiceSemanticDisabled");
+        }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestNewSearchServiceDisableLocalAuth()
         {
             TestRunner.RunTestScript("Test-NewAzSearchServiceDisableLocalAuth");

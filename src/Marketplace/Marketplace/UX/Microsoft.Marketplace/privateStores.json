@@ -1,0 +1,121 @@
+{
+  "resourceType": "privateStores",
+  "apiVersion": "2021-06-01",
+  "learnMore": {
+    "url": "https://learn.microsoft.com/powershell/module/az.marketplace"
+  },
+  "commands": [
+    {
+      "name": "Get-AzMarketplaceBillingPrivateStoreAccount",
+      "description": "Tenant billing accounts names",
+      "path": "/providers/Microsoft.Marketplace/privateStores/{privateStoreId}/billingAccounts",
+      "help": {
+        "learnMore": {
+          "url": "https://learn.microsoft.com/powershell/module/az.marketplace/get-azmarketplacebillingprivatestoreaccount"
+        },
+        "parameterSets": [
+          {
+            "parameters": [
+              "-PrivateStoreId <String>"
+            ]
+          }
+        ]
+      },
+      "examples": [
+        {
+          "description": "Tenant billing accounts names",
+          "parameters": [
+            {
+              "name": "-PrivateStoreId",
+              "value": "[Path.privateStoreId]"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Get-AzMarketplaceCollectionToSubscriptionMapping",
+      "description": "For a given subscriptions list, the API will return a map of collections and the related subscriptions from the supplied list.",
+      "path": "/providers/Microsoft.Marketplace/privateStores/{privateStoreId}/collectionsToSubscriptionsMapping",
+      "help": {
+        "learnMore": {
+          "url": "https://learn.microsoft.com/powershell/module/az.marketplace/get-azmarketplacecollectiontosubscriptionmapping"
+        },
+        "parameterSets": [
+          {
+            "parameters": [
+              "-PrivateStoreId <String>"
+            ]
+          }
+        ]
+      },
+      "examples": [
+        {
+          "description": "For a given subscriptions list, the API will return a map of collections and the related subscriptions from the supplied list.",
+          "parameters": [
+            {
+              "name": "-PrivateStoreId",
+              "value": "[Path.privateStoreId]"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Get-AzMarketplacePrivateStoreV1",
+      "description": "Get information about the private store",
+      "path": "/providers/Microsoft.Marketplace/privateStores/{privateStoreId}",
+      "help": {
+        "learnMore": {
+          "url": "https://learn.microsoft.com/powershell/module/az.marketplace/get-azmarketplaceprivatestorev1"
+        },
+        "parameterSets": [
+          {
+            "parameters": [
+              "-Id <String>"
+            ]
+          }
+        ]
+      },
+      "examples": [
+        {
+          "description": "Get information about the private store",
+          "parameters": [
+            {
+              "name": "-Id",
+              "value": "[Path.privateStoreId]"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Get-AzMarketplaceQueryPrivateStoreOffer",
+      "description": "List of offers, regardless the collections",
+      "path": "/providers/Microsoft.Marketplace/privateStores/{privateStoreId}/queryOffers",
+      "help": {
+        "learnMore": {
+          "url": "https://learn.microsoft.com/powershell/module/az.marketplace/get-azmarketplacequeryprivatestoreoffer"
+        },
+        "parameterSets": [
+          {
+            "parameters": [
+              "-PrivateStoreId <String>"
+            ]
+          }
+        ]
+      },
+      "examples": [
+        {
+          "description": "List of offers, regardless the collections",
+          "parameters": [
+            {
+              "name": "-PrivateStoreId",
+              "value": "[Path.privateStoreId]"
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

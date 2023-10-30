@@ -502,7 +502,7 @@ To create the parameters described below, construct a hash table containing the 
 
 
 ACCESSPOLICYOBJECTID <IServiceAccessPolicyEntry[]>: The access policies of the service instance.
-  - `ObjectId <String>`: An Azure AD object ID (User or Apps) that is allowed access to the FHIR service.
+  - `ObjectId <String>`: a Microsoft Entra object ID (User or Apps) that is allowed access to the FHIR service.
 
 ACRCONFIGURATIONOCIARTIFACT <IServiceOciArtifactEntry[]>: The list of Open Container Initiative (OCI) artifacts.
   - `[Digest <String>]`: The artifact digest.
@@ -515,4 +515,3 @@ PRIVATEENDPOINTCONNECTION <IPrivateEndpointConnection[]>: The list of private en
   - `[PrivateLinkServiceConnectionStateStatus <PrivateEndpointServiceConnectionStatus?>]`: Indicates whether the connection has been Approved/Rejected/Removed by the owner of the service.
 
 ## RELATED LINKS
-

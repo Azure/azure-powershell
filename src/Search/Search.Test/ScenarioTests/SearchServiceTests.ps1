@@ -20,7 +20,7 @@ function Test-NewAzSearchService
 {
 	# Arrange
 	$rgname = getAssetName
-	$loc = Get-Location -providerNamespace "Microsoft.Search" -resourceType "searchServices" -preferredLocation "West US"
+	$loc = Get-Location -providerNamespace "Microsoft.Search" -resourceType "searchServices" -preferredLocation "East US 2 EUAP"
 	$svcName = $rgname + "-service"
 	$sku = "Standard"
 	$partitionCount = 1
@@ -59,7 +59,7 @@ function Test-NewAzSearchServiceBasic
 	# Arrange
 	$rgname = getAssetName
 	$rgname = $rgname
-	$loc = Get-Location -providerNamespace "Microsoft.Search" -resourceType "searchServices" -preferredLocation "West US"
+	$loc = Get-Location -providerNamespace "Microsoft.Search" -resourceType "searchServices" -preferredLocation "East US 2 EUAP"
 	$svcName = $rgname + "-service"
 	$sku = "Basic"
 	$partitionCount = 1
@@ -98,7 +98,7 @@ function Test-NewAzSearchServiceDisableLocalAuth
 	# Arrange
 	$rgname = getAssetName
 	$rgname = $rgname
-	$loc = Get-Location -providerNamespace "Microsoft.Search" -resourceType "searchServices" -preferredLocation "West US"
+	$loc = Get-Location -providerNamespace "Microsoft.Search" -resourceType "searchServices" -preferredLocation "East US 2 EUAP"
 	$svcName = $rgname + "-service"
 	$sku = "Basic"
 	$partitionCount = 1
@@ -132,6 +132,120 @@ function Test-NewAzSearchServiceDisableLocalAuth
 
 <#
 .SYNOPSIS
+Test New-AzSearchServiceSemanticDisabled
+#>
+function Test-NewAzSearchServiceSemanticDisabled
+{
+	# Arrange
+	$rgname = getAssetName
+	$loc = Get-Location -providerNamespace "Microsoft.Search" -resourceType "searchServices" -preferredLocation "East US 2 EUAP"
+	$svcName = $rgname + "-service"
+	$sku = "Standard"
+	$partitionCount = 1
+	$replicaCount = 1
+	$semanticSearchMode = "disabled"
+
+	try
+    {
+		New-AzResourceGroup -Name $rgname -Location $loc
+		
+		# Act
+		$newSearchService = New-AzSearchService -ResourceGroupName $rgname -Name $svcName -Sku $sku -Location $loc -PartitionCount $partitionCount -ReplicaCount $replicaCount -SemanticSearchMode $semanticSearchMode
+		
+		# Assert
+		Assert-NotNull $newSearchService
+		Assert-AreEqual $svcName $newSearchService.Name 
+		Assert-AreEqual $sku $newSearchService.Sku
+		Assert-AreEqual $loc $newSearchService.Location
+		Assert-AreEqual $partitionCount $newSearchService.PartitionCount
+		Assert-AreEqual $replicaCount $newSearchService.ReplicaCount
+		Assert-AreEqual $semanticSearchMode $newSearchService.SemanticSearchMode
+	}
+	finally
+    {
+        # Cleanup
+        Clean-ResourceGroup $rgname
+    }
+}
+
+<#
+.SYNOPSIS
+Test New-AzSearchServiceSemanticStandard
+#>
+function Test-NewAzSearchServiceSemanticStandard
+{
+	# Arrange
+	$rgname = getAssetName
+	$loc = Get-Location -providerNamespace "Microsoft.Search" -resourceType "searchServices" -preferredLocation "East US 2 EUAP"
+	$svcName = $rgname + "-service"
+	$sku = "Standard"
+	$partitionCount = 1
+	$replicaCount = 1
+	$semanticSearchMode = "standard"
+
+	try
+    {
+		New-AzResourceGroup -Name $rgname -Location $loc
+		
+		# Act
+		$newSearchService = New-AzSearchService -ResourceGroupName $rgname -Name $svcName -Sku $sku -Location $loc -PartitionCount $partitionCount -ReplicaCount $replicaCount -SemanticSearchMode $semanticSearchMode
+		
+		# Assert
+		Assert-NotNull $newSearchService
+		Assert-AreEqual $svcName $newSearchService.Name 
+		Assert-AreEqual $sku $newSearchService.Sku
+		Assert-AreEqual $loc $newSearchService.Location
+		Assert-AreEqual $partitionCount $newSearchService.PartitionCount
+		Assert-AreEqual $replicaCount $newSearchService.ReplicaCount
+		Assert-AreEqual $semanticSearchMode $newSearchService.SemanticSearchMode
+	}
+	finally
+    {
+        # Cleanup
+        Clean-ResourceGroup $rgname
+    }
+}
+
+<#
+.SYNOPSIS
+Test New-AzSearchServiceSemanticFree
+#>
+function Test-NewAzSearchServiceSemanticFree
+{
+	# Arrange
+	$rgname = getAssetName
+	$loc = Get-Location -providerNamespace "Microsoft.Search" -resourceType "searchServices" -preferredLocation "East US 2 EUAP"
+	$svcName = $rgname + "-service"
+	$sku = "Standard"
+	$partitionCount = 1
+	$replicaCount = 1
+	$semanticSearchMode = "free"
+
+	try
+    {
+		New-AzResourceGroup -Name $rgname -Location $loc
+		
+		# Act
+		$newSearchService = New-AzSearchService -ResourceGroupName $rgname -Name $svcName -Sku $sku -Location $loc -PartitionCount $partitionCount -ReplicaCount $replicaCount -SemanticSearchMode $semanticSearchMode
+		
+		# Assert
+		Assert-NotNull $newSearchService
+		Assert-AreEqual $svcName $newSearchService.Name 
+		Assert-AreEqual $sku $newSearchService.Sku
+		Assert-AreEqual $loc $newSearchService.Location
+		Assert-AreEqual $partitionCount $newSearchService.PartitionCount
+		Assert-AreEqual $replicaCount $newSearchService.ReplicaCount
+		Assert-AreEqual $semanticSearchMode $newSearchService.SemanticSearchMode
+	}
+	finally
+    {
+        # Cleanup
+        Clean-ResourceGroup $rgname
+    }
+}
+
+<#
+.SYNOPSIS
 Test NewAzSearchServiceApiKeyOnlyAuth
 #>
 function Test-NewAzSearchServiceApiKeyOnlyAuth
@@ -139,7 +253,7 @@ function Test-NewAzSearchServiceApiKeyOnlyAuth
 	# Arrange
 	$rgname = getAssetName
 	$rgname = $rgname
-	$loc = Get-Location -providerNamespace "Microsoft.Search" -resourceType "searchServices" -preferredLocation "West US"
+	$loc = Get-Location -providerNamespace "Microsoft.Search" -resourceType "searchServices" -preferredLocation "East US 2 EUAP"
 	$svcName = $rgname + "-service"
 	$sku = "Basic"
 	$partitionCount = 1
@@ -181,7 +295,7 @@ function Test-NewAzSearchServiceAadOrApiKeyAuth
 	# Arrange
 	$rgname = getAssetName
 	$rgname = $rgname
-	$loc = Get-Location -providerNamespace "Microsoft.Search" -resourceType "searchServices" -preferredLocation "West US"
+	$loc = Get-Location -providerNamespace "Microsoft.Search" -resourceType "searchServices" -preferredLocation "East US 2 EUAP"
 	$svcName = $rgname + "-service"
 	$sku = "Basic"
 	$partitionCount = 1
@@ -223,7 +337,7 @@ function Test-NewAzSearchServiceL1
 	# Arrange
 	$rgname = getAssetName
 	$rgname = $rgname
-	$loc = Get-Location -providerNamespace "Microsoft.Search" -resourceType "searchServices" -preferredLocation "East US 2"
+	$loc = Get-Location -providerNamespace "Microsoft.Search" -resourceType "searchServices" -preferredLocation "East US"
 	$svcName = $rgname + "-service"
 	$sku = "Storage_Optimized_L1"
 	$partitionCount = 1
@@ -262,7 +376,7 @@ function Test-NewAzSearchServiceIdentity
 	# Arrange
 	$rgname = getAssetName
 	$rgname = $rgname
-	$loc = Get-Location -providerNamespace "Microsoft.Search" -resourceType "searchServices" -preferredLocation "West US"
+	$loc = Get-Location -providerNamespace "Microsoft.Search" -resourceType "searchServices" -preferredLocation "East US 2 EUAP"
 	$svcName = $rgname + "-service"
 	$sku = "Basic"
 	$partitionCount = 1
@@ -303,7 +417,7 @@ function Test-NewAzSearchServicePublicNetworkAccessDisabled
 	# Arrange
 	$rgname = getAssetName
 	$rgname = $rgname
-	$loc = Get-Location -providerNamespace "Microsoft.Search" -resourceType "searchServices" -preferredLocation "West US"
+	$loc = Get-Location -providerNamespace "Microsoft.Search" -resourceType "searchServices" -preferredLocation "East US 2 EUAP"
 	$svcName = $rgname + "-service"
 	$sku = "Basic"
 	$partitionCount = 1
@@ -344,7 +458,7 @@ function Test-NewAzSearchServiceIpRules
 	# Arrange
 	$rgname = getAssetName
 	$rgname = $rgname
-	$loc = Get-Location -providerNamespace "Microsoft.Search" -resourceType "searchServices" -preferredLocation "West US"
+	$loc = Get-Location -providerNamespace "Microsoft.Search" -resourceType "searchServices" -preferredLocation "East US 2 EUAP"
 	$svcName = $rgname + "-service"
 	$sku = "Basic"
 	$partitionCount = 1
@@ -387,7 +501,7 @@ function Test-GetAzSearchService
 {
     # Arrange
 	$rgname = getAssetName
-	$loc = Get-Location -providerNamespace "Microsoft.Search" -resourceType "searchServices" -preferredLocation "West US"
+	$loc = Get-Location -providerNamespace "Microsoft.Search" -resourceType "searchServices" -preferredLocation "East US 2 EUAP"
 	$svcName = $rgname + "-service"
 	$sku = "Standard"
 
@@ -442,7 +556,7 @@ function Test-RemoveAzSearchService
 {
     # Arrange
 	$rgname = getAssetName
-	$loc = Get-Location -providerNamespace "Microsoft.Search" -resourceType "searchServices" -preferredLocation "West US"
+	$loc = Get-Location -providerNamespace "Microsoft.Search" -resourceType "searchServices" -preferredLocation "East US 2 EUAP"
 	$sku = "Standard"
 
 	try
@@ -509,7 +623,7 @@ function Test-SetAzSearchService
 {
     # Arrange
 	$rgname = getAssetName
-	$loc = Get-Location -providerNamespace "Microsoft.Search" -resourceType "searchServices" -preferredLocation "West US"
+	$loc = Get-Location -providerNamespace "Microsoft.Search" -resourceType "searchServices" -preferredLocation "East US 2 EUAP"
 	$sku = "Standard"
 	$partitionCount = 1
 	$replicaCount = 1
@@ -567,7 +681,7 @@ function Test-SetAzSearchServiceAuthOptions
 {
     # Arrange
 	$rgname = getAssetName
-	$loc = Get-Location -providerNamespace "Microsoft.Search" -resourceType "searchServices" -preferredLocation "West US"
+	$loc = Get-Location -providerNamespace "Microsoft.Search" -resourceType "searchServices" -preferredLocation "East US 2 EUAP"
 	$sku = "Basic"
 	$partitionCount = 1
 	$replicaCount = 1
@@ -627,7 +741,7 @@ function Test-ManageAzSearchServiceAdminKey
     # Arrange
 	$rgname = getAssetName
 	$svcName = $rgname + "-service"
-	$loc = Get-Location -providerNamespace "Microsoft.Search" -resourceType "searchServices" -preferredLocation "West US"
+	$loc = Get-Location -providerNamespace "Microsoft.Search" -resourceType "searchServices" -preferredLocation "East US 2 EUAP"
 	$sku = "Standard"
 	$partitionCount = 1
 	$replicaCount = 1
@@ -688,7 +802,7 @@ function Test-ManageAzSearchServiceQueryKey
     # Arrange
 	$rgname = getAssetName
 	$svcName = $rgname + "-service"
-	$loc = Get-Location -providerNamespace "Microsoft.Search" -resourceType "searchServices" -preferredLocation "West US"
+	$loc = Get-Location -providerNamespace "Microsoft.Search" -resourceType "searchServices" -preferredLocation "East US 2 EUAP"
 	$sku = "Standard"
 	$partitionCount = 1
 	$replicaCount = 1
@@ -756,7 +870,7 @@ function Test-GetAzSearchPrivateLinkResource
 	# Arrange
 	$rgname = getAssetName
 	$rgname = $rgname
-	$loc = Get-Location -providerNamespace "Microsoft.Search" -resourceType "searchServices" -preferredLocation "Central US EUAP"
+	$loc = Get-Location -providerNamespace "Microsoft.Search" -resourceType "searchServices" -preferredLocation "East US 2 EUAP"
 	$svcName = $rgname + "-service"
 	$sku = "Basic"
 	$partitionCount = 1
@@ -795,7 +909,7 @@ function Test-GetAzSearchPrivateLinkResourcePipeline
 	# Arrange
 	$rgname = getAssetName
 	$rgname = $rgname
-	$loc = Get-Location -providerNamespace "Microsoft.Search" -resourceType "searchServices" -preferredLocation "Central US EUAP"
+	$loc = Get-Location -providerNamespace "Microsoft.Search" -resourceType "searchServices" -preferredLocation "East US 2 EUAP"
 	$svcName = $rgname + "-service"
 	$sku = "Basic"
 	$partitionCount = 1
@@ -837,7 +951,7 @@ function Test-ManageAzSearchSharedPrivateLinkResources
 	# Arrange
 	$rgname = getAssetName
 	$rgname = $rgname
-	$loc = Get-Location -providerNamespace "Microsoft.Search" -resourceType "searchServices" -preferredLocation "Central US EUAP"
+	$loc = Get-Location -providerNamespace "Microsoft.Search" -resourceType "searchServices" -preferredLocation "West Central US"
 	$svcName = $rgname + "-service"
 	$sku = "Basic"
 	$partitionCount = 1
@@ -953,7 +1067,7 @@ function Test-ManageAzSearchSharedPrivateLinkResourcePipeline
 # Arrange
 	$rgname = getAssetName
 	$rgname = $rgname
-	$loc = Get-Location -providerNamespace "Microsoft.Search" -resourceType "searchServices" -preferredLocation "Central US EUAP"
+	$loc = Get-Location -providerNamespace "Microsoft.Search" -resourceType "searchServices" -preferredLocation "West Central US"
 	$svcName = $rgname + "-service"
 	$sku = "Basic"
 	$partitionCount = 1
@@ -1054,7 +1168,7 @@ function Test-ManageAzSearchSharedPrivateLinkResourceJob
 # Arrange
 	$rgname = getAssetName
 	$rgname = $rgname
-	$loc = Get-Location -providerNamespace "Microsoft.Search" -resourceType "searchServices" -preferredLocation "Central US EUAP"
+	$loc = Get-Location -providerNamespace "Microsoft.Search" -resourceType "searchServices" -preferredLocation "West Central US"
 	$svcName = $rgname + "-service"
 	$sku = "Basic"
 	$partitionCount = 1

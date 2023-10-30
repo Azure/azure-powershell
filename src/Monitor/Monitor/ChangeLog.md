@@ -19,9 +19,21 @@
 -->
 
 ## Upcoming Release
+  * [Breaking Change] Data collection Rule upgraded API version to stable 2022-06-01
+  * [Breaking Change] AMCS removed `Set-AzDataCollectionRule` cmdlet
+  * Added cmdlets for data collection endpoint:
+    * `Get-AzDataCollectionEndpoint`
+    * `New-AzDataCollectionEndpoint`
+    * `Remove-AzDataCollectionEndpoint`
+    * `Update-AzDataCollectionEndpoint`
+
+## Version 4.6.0
+* Fixed `Get-AzInsightsPrivateLinkScope` to support `ResourceId` parameter [#22568]
 * Fixed `New-AzMetricAlertRuleV2DimensionSelection` to have "exclude" or "include" values only [#22256]
 * Fixed `Add-AzMetriAlertRuleV2` and `Get-AzMetricAlertRuleV2` to support web tests criteria [#22350]
 * Added parameter `Dimension` for `Get-AzMetric` to easily filter metrics by dimensions [#22320]
+* Added breaking change for Data Collection Rule
+* Added breaking change for Action Group
 
 ## Version 4.5.0
 * Added cmdlets for monitor workspace: 

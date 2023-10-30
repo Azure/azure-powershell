@@ -17,8 +17,8 @@ Register-AzStackHCI [-SubscriptionId] <String> [-Region] <String> [[-ResourceNam
  [[-Tag] <Hashtable>] [[-TenantId] <String>] [[-ResourceGroupName] <String>] [[-ArmAccessToken] <String>]
  [[-AccountId] <String>] [[-EnvironmentName] <String>] [[-ComputerName] <String>]
  [[-CertificateThumbprint] <String>] [[-Credential] <PSCredential>] [[-ArcServerResourceGroupName] <String>]
- [[-ArcSpnCredential] <PSCredential>] [-IsWAC] [-RepairRegistration] [-UseDeviceAuthentication] [-Confirm]
- [-WhatIf] [<CommonParameters>]
+ [[-ArcSpnCredential] <PSCredential>] [[-LogsDirectory] <String>] [-IsWAC] [-RepairRegistration]
+ [-UseDeviceAuthentication] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -227,6 +227,23 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### -LogsDirectory
+Specifies the Path where the log files are to be saved.
+Has to be an absolute Path.
+Default value would be: C:\ProgramData\AzureStackHCI
+
+```yaml
+Type: System.String
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: 14
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
 ### -Region
 Specifies the Region to create the resource.
 Region is a Mandatory parameter.
@@ -245,7 +262,7 @@ Accept wildcard characters: False
 
 ### -RepairRegistration
 Repair the current Azure Stack HCI registration with the cloud.
-This cmdlet deletes the local certificates on the clustered nodes and the remote certificates in the Azure AD application in the cloud and generates new replacement certificates for both.
+This cmdlet deletes the local certificates on the clustered nodes and the remote certificates in the Microsoft Entra application in the cloud and generates new replacement certificates for both.
 The resource group, resource name, and other registration choices are preserved.
 
 ```yaml
@@ -402,4 +419,3 @@ PortalResourceURL: Azure Portal Resource URL.
 ALIASES
 
 ## RELATED LINKS
-

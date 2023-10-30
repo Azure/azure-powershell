@@ -271,33 +271,5 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## NOTES
 
-ALIASES
-
-COMPLEX PARAMETER PROPERTIES
-
-To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
-
-
-`RULE <IScaleRule[]>`: the collection of rules that provide the triggers and parameters for the scaling action. A maximum of 10 rules can be specified.
-  - `MetricTriggerMetricName <String>`: the name of the metric that defines what the rule monitors.
-  - `MetricTriggerMetricResourceUri <String>`: the resource identifier of the resource the rule monitors.
-  - `MetricTriggerOperator <ComparisonOperationType>`: the operator that is used to compare the metric data and the threshold.
-  - `MetricTriggerStatistic <MetricStatisticType>`: the metric statistic type. How the metrics from multiple instances are combined.
-  - `MetricTriggerThreshold <Double>`: the threshold of the metric that triggers the scale action.
-  - `MetricTriggerTimeAggregation <TimeAggregationType>`: time aggregation type. How the data that is collected should be combined over time. The default value is Average.
-  - `MetricTriggerTimeGrain <TimeSpan>`: the granularity of metrics the rule monitors. Must be one of the predefined values returned from metric definitions for the metric. Must be between 12 hours and 1 minute.
-  - `MetricTriggerTimeWindow <TimeSpan>`: the range of time in which instance data is collected. This value must be greater than the delay in metric collection, which can vary from resource-to-resource. Must be between 12 hours and 5 minutes.
-  - `ScaleActionCooldown <TimeSpan>`: the amount of time to wait since the last scaling action before this action occurs. It must be between 1 week and 1 minute in ISO 8601 format.
-  - `ScaleActionDirection <ScaleDirection>`: the scale direction. Whether the scaling action increases or decreases the number of instances.
-  - `ScaleActionType <ScaleType>`: the type of action that should occur when the scale rule fires.
-  - `[MetricTriggerDimension <IScaleRuleMetricDimension[]>]`: List of dimension conditions. For example: [{"DimensionName":"AppName","Operator":"Equals","Values":["App1"]},{"DimensionName":"Deployment","Operator":"Equals","Values":["default"]}].
-    - `DimensionName <String>`: Name of the dimension.
-    - `Operator <ScaleRuleMetricDimensionOperationType>`: the dimension operator. Only 'Equals' and 'NotEquals' are supported. 'Equals' being equal to any of the values. 'NotEquals' being not equal to all of the values
-    - `Value <String[]>`: list of dimension values. For example: ["App1","App2"].
-  - `[MetricTriggerDividePerInstance <Boolean?>]`: a value indicating whether metric should divide per instance.
-  - `[MetricTriggerMetricNamespace <String>]`: the namespace of the metric that defines what the rule monitors.
-  - `[MetricTriggerMetricResourceLocation <String>]`: the location of the resource the rule monitors.
-  - `[ScaleActionValue <String>]`: the number of instances that are involved in the scaling action. This value must be 1 or greater. The default value is 1.
-
 ## RELATED LINKS
 

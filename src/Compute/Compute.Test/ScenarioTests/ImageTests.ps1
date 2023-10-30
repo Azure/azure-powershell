@@ -338,14 +338,7 @@ function Test-DefaultImagesExistManual
         
         # Linux
         # UbuntuLTS test
-        $publisher = $images.Linux.UbuntuLTS.publisher;
-        $offer = $images.Linux.UbuntuLTS.offer;
-        $sku = $images.Linux.UbuntuLTS.sku;
-        $version = $images.Linux.UbuntuLTS.version;
-        $img = Get-AzVMImage -Location $loc -Publisher $publisher -Offer $offer -Sku $sku -Version $version;
-        Assert-NotNull $img;
-        New-AzVM -ResourceGroupName MyResourceGroup -Name mytestvm -Location $loc -Credential $cred -DomainNameLabel $domainNameLabel -Image UbuntuLTS;
-
+        
         # Ubuntu2204 test
         $publisher = $images.Linux.Ubuntu2204.publisher;
         $offer = $images.Linux.Ubuntu2204.offer;
@@ -355,15 +348,6 @@ function Test-DefaultImagesExistManual
         Assert-NotNull $img;
         New-AzVM -ResourceGroupName MyResourceGroup -Name mytestvm -Location $loc -Credential $cred -DomainNameLabel $domainNameLabel -Image Ubuntu2204;
         
-        # CentOS test
-        $publisher = $images.Linux.CentOS.publisher;
-        $offer = $images.Linux.CentOS.offer;
-        $sku = $images.Linux.CentOS.sku;
-        $version = $images.Linux.CentOS.version;
-        $img = Get-AzVMImage -Location $loc -Publisher $publisher -Offer $offer -Sku $sku -Version $version;
-        Assert-NotNull $img;
-        New-AzVM -ResourceGroupName MyResourceGroup -Name mytestvm -Location $loc -Credential $cred -DomainNameLabel $domainNameLabel -Image CentOS;
-
         # CentOS versioned test
         $publisher = $images.Linux.CentOS85Gen2.publisher;
         $offer = $images.Linux.CentOS85Gen2.offer;
@@ -372,15 +356,6 @@ function Test-DefaultImagesExistManual
         $img = Get-AzVMImage -Location $loc -Publisher $publisher -Offer $offer -Sku $sku -Version $version;
         Assert-NotNull $img;
         New-AzVM -ResourceGroupName MyResourceGroup -Name mytestvm -Location $loc -Credential $cred -DomainNameLabel $domainNameLabel -Image CentOS85Gen2;
-        
-        # Debian test
-        $publisher = $images.Linux.Debian.publisher;
-        $offer = $images.Linux.Debian.offer;
-        $sku = $images.Linux.Debian.sku;
-        $version = $images.Linux.Debian.version;
-        $img = Get-AzVMImage -Location $loc -Publisher $publisher -Offer $offer -Sku $sku -Version $version;
-        Assert-NotNull $img;
-        New-AzVM -ResourceGroupName MyResourceGroup -Name mytestvm -Location $loc -Credential $cred -DomainNameLabel $domainNameLabel -Image Debian;
         
         # Debian versioned test
         $publisher = $images.Linux.Debian11.publisher;
@@ -399,16 +374,7 @@ function Test-DefaultImagesExistManual
         $img = Get-AzVMImage -Location $loc -Publisher $publisher -Offer $offer -Sku $sku -Version $version;
         Assert-NotNull $img;
         New-AzVM -ResourceGroupName MyResourceGroup -Name mytestvm -Location $loc -Credential $cred -DomainNameLabel $domainNameLabel -Image OpenSuseLeap154Gen2;
-
-        # RHEL test
-        $publisher = $images.Linux.RHEL.publisher;
-        $offer = $images.Linux.RHEL.offer;
-        $sku = $images.Linux.RHEL.sku;
-        $version = $images.Linux.RHEL.version;
-        $img = Get-AzVMImage -Location $loc -Publisher $publisher -Offer $offer -Sku $sku -Version $version;
-        Assert-NotNull $img;
-        New-AzVM -ResourceGroupName MyResourceGroup -Name mytestvm -Location $loc -Credential $cred -DomainNameLabel $domainNameLabel -Image RHEL;
-
+        
         # RHELRaw8LVMGen2 test
         $publisher = $images.Linux.RHELRaw8LVMGen2.publisher;
         $offer = $images.Linux.RHELRaw8LVMGen2.offer;

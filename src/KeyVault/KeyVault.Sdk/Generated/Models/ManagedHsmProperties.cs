@@ -66,6 +66,9 @@ namespace Microsoft.Azure.Management.KeyVault.Models
         /// locations.
         /// </param>
 
+        /// <param name="regions">List of all regions associated with the managed hsm pool.
+        /// </param>
+
         /// <param name="privateEndpointConnections">List of private endpoint connections associated with the managed hsm pool.
         /// </param>
 
@@ -77,7 +80,7 @@ namespace Microsoft.Azure.Management.KeyVault.Models
 
         /// <param name="securityDomainProperties">Managed HSM security domain properties.
         /// </param>
-        public ManagedHsmProperties(System.Guid? tenantId = default(System.Guid?), System.Collections.Generic.IList<string> initialAdminObjectIds = default(System.Collections.Generic.IList<string>), string hsmUri = default(string), bool? enableSoftDelete = default(bool?), int? softDeleteRetentionInDays = default(int?), bool? enablePurgeProtection = default(bool?), CreateMode? createMode = default(CreateMode?), string statusMessage = default(string), string provisioningState = default(string), MhsmNetworkRuleSet networkAcls = default(MhsmNetworkRuleSet), System.Collections.Generic.IList<MhsmPrivateEndpointConnectionItem> privateEndpointConnections = default(System.Collections.Generic.IList<MhsmPrivateEndpointConnectionItem>), string publicNetworkAccess = default(string), System.DateTime? scheduledPurgeDate = default(System.DateTime?), ManagedHSMSecurityDomainProperties securityDomainProperties = default(ManagedHSMSecurityDomainProperties))
+        public ManagedHsmProperties(System.Guid? tenantId = default(System.Guid?), System.Collections.Generic.IList<string> initialAdminObjectIds = default(System.Collections.Generic.IList<string>), string hsmUri = default(string), bool? enableSoftDelete = default(bool?), int? softDeleteRetentionInDays = default(int?), bool? enablePurgeProtection = default(bool?), CreateMode? createMode = default(CreateMode?), string statusMessage = default(string), string provisioningState = default(string), MhsmNetworkRuleSet networkAcls = default(MhsmNetworkRuleSet), System.Collections.Generic.IList<MhsmGeoReplicatedRegion> regions = default(System.Collections.Generic.IList<MhsmGeoReplicatedRegion>), System.Collections.Generic.IList<MhsmPrivateEndpointConnectionItem> privateEndpointConnections = default(System.Collections.Generic.IList<MhsmPrivateEndpointConnectionItem>), string publicNetworkAccess = default(string), System.DateTime? scheduledPurgeDate = default(System.DateTime?), ManagedHSMSecurityDomainProperties securityDomainProperties = default(ManagedHSMSecurityDomainProperties))
 
         {
             this.TenantId = tenantId;
@@ -90,6 +93,7 @@ namespace Microsoft.Azure.Management.KeyVault.Models
             this.StatusMessage = statusMessage;
             this.ProvisioningState = provisioningState;
             this.NetworkAcls = networkAcls;
+            this.Regions = regions;
             this.PrivateEndpointConnections = privateEndpointConnections;
             this.PublicNetworkAccess = publicNetworkAccess;
             this.ScheduledPurgeDate = scheduledPurgeDate;
@@ -174,6 +178,12 @@ namespace Microsoft.Azure.Management.KeyVault.Models
         /// </summary>
         [Newtonsoft.Json.JsonProperty(PropertyName = "networkAcls")]
         public MhsmNetworkRuleSet NetworkAcls {get; set; }
+
+        /// <summary>
+        /// Gets or sets list of all regions associated with the managed hsm pool.
+        /// </summary>
+        [Newtonsoft.Json.JsonProperty(PropertyName = "regions")]
+        public System.Collections.Generic.IList<MhsmGeoReplicatedRegion> Regions {get; set; }
 
         /// <summary>
         /// Gets list of private endpoint connections associated with the managed hsm

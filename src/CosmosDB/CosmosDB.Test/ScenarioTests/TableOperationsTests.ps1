@@ -18,8 +18,8 @@ Test Table CRUD operations
 #>
 function Test-TableOperationsCmdlets
 {
-  $AccountName = "table-db2528"
-  $rgName = "CosmosDBResourceGroup38"
+  $AccountName = "table-db2501"
+  $rgName = "CosmosDBResourceGroup01"
   $TableName = "table1"
   $TableName2 = "table2"
   $apiKind = "Table"
@@ -88,8 +88,8 @@ Test Table CRUD operations using InputObject and ParentObject parameter set
 #>
 function Test-TableOperationsCmdletsUsingInputObject
 {
-  $AccountName = "table-db2527"
-  $rgName = "CosmosDBResourceGroup34"
+  $AccountName = "table-db2502"
+  $rgName = "CosmosDBResourceGroup02"
   $apiKind = "Table"
   $consistencyLevel = "Session"
   $location = "East US 2"
@@ -150,8 +150,8 @@ Test Table throughput cmdlets using all parameter sets
 #>
 function Test-TableThroughputCmdlets
 {
-  $AccountName = "table-db2527"
-  $rgName = "CosmosDBResourceGroup35"
+  $AccountName = "table-db2503"
+  $rgName = "CosmosDBResourceGroup03"
   $TableName = "tableName3"
   $apiKind = "Table"
   $consistencyLevel = "Session"
@@ -194,8 +194,8 @@ Test Cassandra migrate throughput cmdlets
 #>
 function Test-TableMigrateThroughputCmdlets
 {
-  $AccountName = "table-db2529"
-  $rgName = "CosmosDBResourceGroup34"
+  $AccountName = "table-db2504"
+  $rgName = "CosmosDBResourceGroup04"
   $TableName = "tableName4"
   $apiKind = "Table"
   $consistencyLevel = "Session"
