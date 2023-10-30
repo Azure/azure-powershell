@@ -23,6 +23,7 @@
 * Added update functionality in `Update-AzVmss` for parameters `SecurityType`, `EnableSecureBoot`, and `EnableVtpm` for the parameter set with the Put operation.
 * Upgraded Azure.Core to 1.35.0.
 * [Breaking change] Removed unversioned and outdated linux image aliases of `CentOS`, `RHEL`, `UbuntuLTS` and `Debian`.
+* Removed unversioned and outdated images from New-AzVmss `-ImageName` argument completers.
 * Added new parameters `-ElasticSanResourceId` and `-OptimizedForFrequentAttach` to `New-AzDiskConfig` cmdlet.
 * Added new parameter `-ElasticSanResourceId` to `New-AzSnapshotConfig` cmdlet.
 
