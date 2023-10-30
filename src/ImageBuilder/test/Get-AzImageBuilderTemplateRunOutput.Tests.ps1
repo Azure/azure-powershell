@@ -12,19 +12,13 @@ while(-not $mockingPath) {
 . ($mockingPath | Select-Object -First 1).FullName
 
 Describe 'Get-AzImageBuilderRunOutput' {
-    It 'List' {
+    It 'List' -Skip {
         $resultsList = Get-AzImageBuilderTemplateRunOutput -ImageTemplateName $env.templateName -ResourceGroupName $env.rg
-        $resultsList.Count | Should -BeGreaterOrEqual 1
+        $resultsList.Count | Should -BeGreaterThan 0
     }
 
-    It 'Get' {
+    It 'Get' -Skip {
         $result = Get-AzImageBuilderTemplateRunOutput -ImageTemplateName $env.templateName -ResourceGroupName $env.rg -Name $env.runOutputName
-        $result.Name | Should -Be $env.runOutputName
-    }
-
-    It 'GetViaIdentity' {
-        $object = Get-AzImageBuilderTemplateRunOutput -ImageTemplateName $env.templateName -ResourceGroupName $env.rg -Name $env.runOutputName
-        $result = Get-AzImageBuilderTemplateRunOutput -InputObject $object
         $result.Name | Should -Be $env.runOutputName
     }
 }

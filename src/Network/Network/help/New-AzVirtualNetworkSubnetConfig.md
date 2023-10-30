@@ -20,7 +20,7 @@ New-AzVirtualNetworkSubnetConfig -Name <String> -AddressPrefix <String[]>
  [-ServiceEndpoint <String[]>] [-ServiceEndpointPolicy <PSServiceEndpointPolicy[]>]
  [-Delegation <PSDelegation[]>] [-PrivateEndpointNetworkPoliciesFlag <String>]
  [-PrivateLinkServiceNetworkPoliciesFlag <String>] [-IpAllocation <PSIpAllocation[]>]
- [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
+ [-DefaultOutboundAccess <Boolean>] [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
 ### SetByResourceId
@@ -29,7 +29,8 @@ New-AzVirtualNetworkSubnetConfig -Name <String> -AddressPrefix <String[]> [-Netw
  [-RouteTableId <String>] [-ResourceId <String>] [-ServiceEndpoint <String[]>]
  [-ServiceEndpointPolicy <PSServiceEndpointPolicy[]>] [-Delegation <PSDelegation[]>]
  [-PrivateEndpointNetworkPoliciesFlag <String>] [-PrivateLinkServiceNetworkPoliciesFlag <String>]
- [-IpAllocation <PSIpAllocation[]>] [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
+ [-IpAllocation <PSIpAllocation[]>] [-DefaultOutboundAccess <Boolean>]
+ [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -89,6 +90,21 @@ Required: True
 Position: Named
 Default value: None
 Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -DefaultOutboundAccess
+Default outbound connectivity for all VMs in the subnet
+
+```yaml
+Type: System.Nullable`1[System.Boolean]
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
 ```
 

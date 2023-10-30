@@ -248,6 +248,11 @@ namespace Microsoft.Azure.Commands.Sql.Database.Model
         public Guid? FederatedClientId { get; set; }
 
         /// <summary>
+        /// Gets or sets the value of AKV key auto rotation flag.
+        /// </summary>
+        public bool? EncryptionProtectorAutoRotation { get; set; }
+
+        /// <summary>
         /// Construct AzureSqlDatabaseModel
         /// </summary>
         public AzureSqlDatabaseModel()
@@ -372,6 +377,7 @@ namespace Microsoft.Azure.Commands.Sql.Database.Model
             EncryptionProtector = database.EncryptionProtector;
             Identity = database.Identity;
             FederatedClientId = database.FederatedClientId;
+            EncryptionProtectorAutoRotation = database.EncryptionProtectorAutoRotation;
         }
 
         /// <summary>

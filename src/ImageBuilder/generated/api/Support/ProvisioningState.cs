@@ -10,6 +10,8 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ImageBuilder.Support
     public partial struct ProvisioningState :
         System.IEquatable<ProvisioningState>
     {
+        public static Microsoft.Azure.PowerShell.Cmdlets.ImageBuilder.Support.ProvisioningState Canceled = @"Canceled";
+
         public static Microsoft.Azure.PowerShell.Cmdlets.ImageBuilder.Support.ProvisioningState Creating = @"Creating";
 
         public static Microsoft.Azure.PowerShell.Cmdlets.ImageBuilder.Support.ProvisioningState Deleting = @"Deleting";

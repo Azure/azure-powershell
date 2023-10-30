@@ -134,7 +134,7 @@ namespace Microsoft.Azure.Commands.NetAppFiles.Snapshot
 
             if (ShouldProcess(Name, string.Format(PowerShell.Cmdlets.NetAppFiles.Properties.Resources.CreateResourceMessage, ResourceGroupName)))
             {
-                var anfSnapshot = AzureNetAppFilesManagementClient.Snapshots.Create(snapshotBody, ResourceGroupName, AccountName, PoolName, VolumeName, Name);
+                var anfSnapshot = AzureNetAppFilesManagementClient.Snapshots.Create(ResourceGroupName, AccountName, PoolName, VolumeName, Name, snapshotBody);
                 WriteObject(anfSnapshot.ToPsNetAppFilesSnapshot());
             }
         }

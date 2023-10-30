@@ -1,0 +1,172 @@
+{
+  "Remove-AzNetworkCloudAgentPool+[NoContext]+Delete+$DELETE+https://management.azure.com/subscriptions/fca2e8ee-1179-48b8-9532-428ed0873a2e/resourceGroups/nc-resource-testing-dev03-8e526e/providers/Microsoft.NetworkCloud/kubernetesClusters/res-test-standard-naks-6bcad/agentPools/agentpool10?api-version=2023-07-01+1": {
+    "Request": {
+      "Method": "DELETE",
+      "RequestUri": "https://management.azure.com/subscriptions/fca2e8ee-1179-48b8-9532-428ed0873a2e/resourceGroups/nc-resource-testing-dev03-8e526e/providers/Microsoft.NetworkCloud/kubernetesClusters/res-test-standard-naks-6bcad/agentPools/agentpool10?api-version=2023-07-01",
+      "Content": null,
+      "isContentBase64": false,
+      "Headers": {
+        "x-ms-unique-id": [ "16" ],
+        "x-ms-client-request-id": [ "f599c0ba-b2e5-4f3f-9d62-df08a9726402" ],
+        "CommandName": [ "Remove-AzNetworkCloudAgentPool" ],
+        "FullCommandName": [ "Remove-AzNetworkCloudAgentPool_Delete" ],
+        "ParameterSetName": [ "__AllParameterSets" ],
+        "User-Agent": [ "AzurePowershell/v0.0.0", "PSVersion/v7.3.4", "Az.NetworkCloud/0.1.0" ],
+        "Authorization": [ "[Filtered]" ]
+      },
+      "ContentHeaders": {
+      }
+    },
+    "Response": {
+      "StatusCode": 202,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "ETag": [ "\"1301302e-0000-4d00-0000-64b6da3f0000\"" ],
+        "Location": [ "https://management.azure.com/subscriptions/fca2e8ee-1179-48b8-9532-428ed0873a2e/providers/Microsoft.NetworkCloud/locations/WESTUS3/operationStatuses/bc68897f-a4e0-4a4d-8670-81c35d1c8eb4*80CFE3FCE6162B69D99924A5CA768B7EB0AE129D524F37DF12E0563D2DB1F846?api-version=2023-07-01" ],
+        "x-ms-ratelimit-remaining-subscription-deletes": [ "14999" ],
+        "x-ms-providerhub-traffic": [ "True" ],
+        "mise-correlation-id": [ "9302ca88-9468-445b-8041-228b7783e85c" ],
+        "x-ms-request-id": [ "00000000-0000-0000-0000-000000000000" ],
+        "Azure-AsyncOperation": [ "https://management.azure.com/subscriptions/fca2e8ee-1179-48b8-9532-428ed0873a2e/providers/Microsoft.NetworkCloud/locations/WESTUS3/operationStatuses/bc68897f-a4e0-4a4d-8670-81c35d1c8eb4*80CFE3FCE6162B69D99924A5CA768B7EB0AE129D524F37DF12E0563D2DB1F846?api-version=2023-07-01" ],
+        "x-ms-correlation-request-id": [ "33ceaf1d-2054-4729-994e-33389c5aa42c" ],
+        "x-ms-routing-request-id": [ "EASTUS:20230718T183023Z:33ceaf1d-2054-4729-994e-33389c5aa42c" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "Date": [ "Tue, 18 Jul 2023 18:30:23 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "4" ],
+        "Content-Type": [ "application/json; charset=utf-8" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "bnVsbA==",
+      "isContentBase64": false
+    }
+  },
+  "Remove-AzNetworkCloudAgentPool+[NoContext]+Delete+$GET+https://management.azure.com/subscriptions/fca2e8ee-1179-48b8-9532-428ed0873a2e/providers/Microsoft.NetworkCloud/locations/WESTUS3/operationStatuses/bc68897f-a4e0-4a4d-8670-81c35d1c8eb4*80CFE3FCE6162B69D99924A5CA768B7EB0AE129D524F37DF12E0563D2DB1F846?api-version=2023-07-01+2": {
+    "Request": {
+      "Method": "GET",
+      "RequestUri": "https://management.azure.com/subscriptions/fca2e8ee-1179-48b8-9532-428ed0873a2e/providers/Microsoft.NetworkCloud/locations/WESTUS3/operationStatuses/bc68897f-a4e0-4a4d-8670-81c35d1c8eb4*80CFE3FCE6162B69D99924A5CA768B7EB0AE129D524F37DF12E0563D2DB1F846?api-version=2023-07-01",
+      "Content": null,
+      "isContentBase64": false,
+      "Headers": {
+        "Authorization": [ "[Filtered]" ],
+        "x-ms-unique-id": [ "17" ],
+        "x-ms-client-request-id": [ "f599c0ba-b2e5-4f3f-9d62-df08a9726402" ],
+        "CommandName": [ "Remove-AzNetworkCloudAgentPool" ],
+        "FullCommandName": [ "Remove-AzNetworkCloudAgentPool_Delete" ],
+        "ParameterSetName": [ "__AllParameterSets" ],
+        "User-Agent": [ "AzurePowershell/v0.0.0", "PSVersion/v7.3.4", "Az.NetworkCloud/0.1.0" ]
+      },
+      "ContentHeaders": {
+      }
+    },
+    "Response": {
+      "StatusCode": 202,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "ETag": [ "\"2e002cf0-0000-4d00-0000-64b6da560000\"" ],
+        "Location": [ "https://management.azure.com/subscriptions/fca2e8ee-1179-48b8-9532-428ed0873a2e/providers/Microsoft.NetworkCloud/locations/westus3/operationStatuses/bc68897f-a4e0-4a4d-8670-81c35d1c8eb4*80CFE3FCE6162B69D99924A5CA768B7EB0AE129D524F37DF12E0563D2DB1F846?api-version=2023-07-01" ],
+        "x-ms-ratelimit-remaining-subscription-reads": [ "11986" ],
+        "Azure-AsyncOperation": [ "https://management.azure.com/subscriptions/fca2e8ee-1179-48b8-9532-428ed0873a2e/providers/Microsoft.NetworkCloud/locations/westus3/operationStatuses/bc68897f-a4e0-4a4d-8670-81c35d1c8eb4*80CFE3FCE6162B69D99924A5CA768B7EB0AE129D524F37DF12E0563D2DB1F846?api-version=2023-07-01" ],
+        "x-ms-request-id": [ "c191a10c-32ca-41d9-8cd8-eaeeab44c399" ],
+        "x-ms-correlation-request-id": [ "0f772a1f-b2ef-4e77-b681-b64712c2235b" ],
+        "x-ms-routing-request-id": [ "EASTUS:20230718T183053Z:0f772a1f-b2ef-4e77-b681-b64712c2235b" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "Date": [ "Tue, 18 Jul 2023 18:30:53 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "624" ],
+        "Content-Type": [ "application/json; charset=utf-8" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\"id\":\"/subscriptions/fca2e8ee-1179-48b8-9532-428ed0873a2e/providers/Microsoft.NetworkCloud/locations/WESTUS3/operationStatuses/bc68897f-a4e0-4a4d-8670-81c35d1c8eb4*80CFE3FCE6162B69D99924A5CA768B7EB0AE129D524F37DF12E0563D2DB1F846\",\"name\":\"bc68897f-a4e0-4a4d-8670-81c35d1c8eb4*80CFE3FCE6162B69D99924A5CA768B7EB0AE129D524F37DF12E0563D2DB1F846\",\"resourceId\":\"/subscriptions/fca2e8ee-1179-48b8-9532-428ed0873a2e/resourceGroups/nc-resource-testing-dev03-8e526e/providers/Microsoft.NetworkCloud/kubernetesClusters/res-test-standard-naks-6bcad/agentPools/agentpool10\",\"status\":\"Deleting\",\"startTime\":\"2023-07-18T18:30:22.7931864Z\"}",
+      "isContentBase64": false
+    }
+  },
+  "Remove-AzNetworkCloudAgentPool+[NoContext]+Delete+$GET+https://management.azure.com/subscriptions/fca2e8ee-1179-48b8-9532-428ed0873a2e/providers/Microsoft.NetworkCloud/locations/westus3/operationStatuses/bc68897f-a4e0-4a4d-8670-81c35d1c8eb4*80CFE3FCE6162B69D99924A5CA768B7EB0AE129D524F37DF12E0563D2DB1F846?api-version=2023-07-01+3": {
+    "Request": {
+      "Method": "GET",
+      "RequestUri": "https://management.azure.com/subscriptions/fca2e8ee-1179-48b8-9532-428ed0873a2e/providers/Microsoft.NetworkCloud/locations/westus3/operationStatuses/bc68897f-a4e0-4a4d-8670-81c35d1c8eb4*80CFE3FCE6162B69D99924A5CA768B7EB0AE129D524F37DF12E0563D2DB1F846?api-version=2023-07-01",
+      "Content": null,
+      "isContentBase64": false,
+      "Headers": {
+        "Authorization": [ "[Filtered]" ],
+        "x-ms-unique-id": [ "18" ],
+        "x-ms-client-request-id": [ "f599c0ba-b2e5-4f3f-9d62-df08a9726402" ],
+        "CommandName": [ "Remove-AzNetworkCloudAgentPool" ],
+        "FullCommandName": [ "Remove-AzNetworkCloudAgentPool_Delete" ],
+        "ParameterSetName": [ "__AllParameterSets" ],
+        "User-Agent": [ "AzurePowershell/v0.0.0", "PSVersion/v7.3.4", "Az.NetworkCloud/0.1.0" ]
+      },
+      "ContentHeaders": {
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "ETag": [ "\"2e005df0-0000-4d00-0000-64b6da6f0000\"" ],
+        "x-ms-ratelimit-remaining-subscription-reads": [ "11985" ],
+        "x-ms-request-id": [ "d63177e2-db7b-41dc-8639-64a7a28c018e" ],
+        "x-ms-correlation-request-id": [ "8096e72c-fba5-4170-9674-85a949e3cce9" ],
+        "x-ms-routing-request-id": [ "EASTUS:20230718T183124Z:8096e72c-fba5-4170-9674-85a949e3cce9" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "Date": [ "Tue, 18 Jul 2023 18:31:23 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "684" ],
+        "Content-Type": [ "application/json; charset=utf-8" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\"id\":\"/subscriptions/fca2e8ee-1179-48b8-9532-428ed0873a2e/providers/Microsoft.NetworkCloud/locations/westus3/operationStatuses/bc68897f-a4e0-4a4d-8670-81c35d1c8eb4*80CFE3FCE6162B69D99924A5CA768B7EB0AE129D524F37DF12E0563D2DB1F846\",\"name\":\"bc68897f-a4e0-4a4d-8670-81c35d1c8eb4*80CFE3FCE6162B69D99924A5CA768B7EB0AE129D524F37DF12E0563D2DB1F846\",\"resourceId\":\"/subscriptions/fca2e8ee-1179-48b8-9532-428ed0873a2e/resourceGroups/nc-resource-testing-dev03-8e526e/providers/Microsoft.NetworkCloud/kubernetesClusters/res-test-standard-naks-6bcad/agentPools/agentpool10\",\"status\":\"Succeeded\",\"startTime\":\"2023-07-18T18:30:22.7931864Z\",\"endTime\":\"2023-07-18T18:31:11.7526167Z\",\"properties\":null}",
+      "isContentBase64": false
+    }
+  },
+  "Remove-AzNetworkCloudAgentPool+[NoContext]+Delete+$GET+https://management.azure.com/subscriptions/fca2e8ee-1179-48b8-9532-428ed0873a2e/providers/Microsoft.NetworkCloud/locations/WESTUS3/operationStatuses/bc68897f-a4e0-4a4d-8670-81c35d1c8eb4*80CFE3FCE6162B69D99924A5CA768B7EB0AE129D524F37DF12E0563D2DB1F846?api-version=2023-07-01+4": {
+    "Request": {
+      "Method": "GET",
+      "RequestUri": "https://management.azure.com/subscriptions/fca2e8ee-1179-48b8-9532-428ed0873a2e/providers/Microsoft.NetworkCloud/locations/WESTUS3/operationStatuses/bc68897f-a4e0-4a4d-8670-81c35d1c8eb4*80CFE3FCE6162B69D99924A5CA768B7EB0AE129D524F37DF12E0563D2DB1F846?api-version=2023-07-01",
+      "Content": null,
+      "isContentBase64": false,
+      "Headers": {
+        "Authorization": [ "[Filtered]" ],
+        "x-ms-unique-id": [ "19" ],
+        "x-ms-client-request-id": [ "f599c0ba-b2e5-4f3f-9d62-df08a9726402" ],
+        "CommandName": [ "Remove-AzNetworkCloudAgentPool" ],
+        "FullCommandName": [ "Remove-AzNetworkCloudAgentPool_Delete" ],
+        "ParameterSetName": [ "__AllParameterSets" ],
+        "User-Agent": [ "AzurePowershell/v0.0.0", "PSVersion/v7.3.4", "Az.NetworkCloud/0.1.0" ]
+      },
+      "ContentHeaders": {
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "ETag": [ "\"2e005df0-0000-4d00-0000-64b6da6f0000\"" ],
+        "x-ms-ratelimit-remaining-subscription-reads": [ "11984" ],
+        "x-ms-request-id": [ "0866a634-4b12-429f-b951-2b8e6b635148" ],
+        "x-ms-correlation-request-id": [ "e20ee50c-5fab-432b-88d0-bd5daf932678" ],
+        "x-ms-routing-request-id": [ "EASTUS:20230718T183124Z:e20ee50c-5fab-432b-88d0-bd5daf932678" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "Date": [ "Tue, 18 Jul 2023 18:31:23 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "684" ],
+        "Content-Type": [ "application/json; charset=utf-8" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\"id\":\"/subscriptions/fca2e8ee-1179-48b8-9532-428ed0873a2e/providers/Microsoft.NetworkCloud/locations/WESTUS3/operationStatuses/bc68897f-a4e0-4a4d-8670-81c35d1c8eb4*80CFE3FCE6162B69D99924A5CA768B7EB0AE129D524F37DF12E0563D2DB1F846\",\"name\":\"bc68897f-a4e0-4a4d-8670-81c35d1c8eb4*80CFE3FCE6162B69D99924A5CA768B7EB0AE129D524F37DF12E0563D2DB1F846\",\"resourceId\":\"/subscriptions/fca2e8ee-1179-48b8-9532-428ed0873a2e/resourceGroups/nc-resource-testing-dev03-8e526e/providers/Microsoft.NetworkCloud/kubernetesClusters/res-test-standard-naks-6bcad/agentPools/agentpool10\",\"status\":\"Succeeded\",\"startTime\":\"2023-07-18T18:30:22.7931864Z\",\"endTime\":\"2023-07-18T18:31:11.7526167Z\",\"properties\":null}",
+      "isContentBase64": false
+    }
+  }
+}

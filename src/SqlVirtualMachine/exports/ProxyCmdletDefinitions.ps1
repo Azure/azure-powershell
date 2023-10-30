@@ -2677,6 +2677,23 @@ Creates or updates a SQL virtual machine.
 New-AzSqlVM -ResourceGroupName 'ResourceGroup01' -Name 'sqlvm1' -Location 'eastus'
 .Example
 New-AzSqlVM -ResourceGroupName 'ResourceGroup01' -Name 'sqlvm1' -Location 'eastus' -Sku 'Developer' -LicenseType 'PAYG'
+.Example
+New-AzSqlVM -ResourceGroupName 'ResourceGroup01' -Name 'sqlvm1' -Location 'eastus' -LicenseType 'AHUB'
+.Example
+New-AzSqlVM -ResourceGroupName 'ResourceGroup01' -Name 'sqlvm1' -Location 'eastus' -LicenseType 'DR'
+.Example
+New-AzSqlVM -ResourceGroupName 'ResourceGroup01' -Name 'sqlvm1' -Location 'eastus' -AutoBackupSettingEnable `
+-AutoBackupSettingBackupScheduleType manual -AutoBackupSettingFullBackupFrequency Weekly -AutoBackupSettingFullBackupStartTime 5 `
+-AutoBackupSettingFullBackupWindowHour 2 -AutoBackupSettingStorageAccessKey 'keyvalue' -AutoBackupSettingStorageAccountUrl `
+'https://storagename.blob.core.windows.net/' -AutoBackupSettingRetentionPeriod 10 -AutoBackupSettingLogBackupFrequency 60 `
+-AutoBackupSettingStorageContainerName 'storagecontainername'
+.Example
+New-AzSqlVM -ResourceGroupName 'ResourceGroup01' -Name 'sqlvm1' -Location 'eastus' -AutoPatchingSettingDayOfWeek Thursday `
+-AutoPatchingSettingMaintenanceWindowDuration 120 -AutoPatchingSettingMaintenanceWindowStartingHour 3 -AutoPatchingSettingEnable
+.Example
+New-AzSqlVM -ResourceGroupName 'ResourceGroup01' -Name 'sqlvm1' -Location 'eastus' -AssessmentSettingEnable
+.Example
+New-AzSqlVM -ResourceGroupName 'ResourceGroup01' -Name 'sqlvm1' -Location 'eastus' -AsJob
 
 .Outputs
 Microsoft.Azure.PowerShell.Cmdlets.SqlVirtualMachine.Models.Api20220801Preview.ISqlVirtualMachine
@@ -3352,10 +3369,38 @@ Updates a SQL virtual machine.
 .Description
 Updates a SQL virtual machine.
 .Example
-Update-AzSqlVM -ResourceGroupName 'ResourceGroup01' -Name 'sqlvm1' -SqlManagementType 'Full' -Sku 'Standard' -LicenseType 'AHUB' -Tag @{'newkey'='newvalue'}
+Update-AzSqlVM -ResourceGroupName 'ResourceGroup01' -Name 'sqlvm1' -LicenseType 'AHUB' -Tag @{'newkey'='newvalue'}
 .Example
 $sqlVM = Get-AzSqlVM -ResourceGroupName 'ResourceGroup01' -Name 'sqlvm1'
-$sqlVM | Update-AzSqlVM -SqlManagementType 'Full' -Sku 'Standard' -LicenseType 'AHUB' -Tag @{'newkey'='newvalue'}
+$sqlVM | Update-AzSqlVM -Sku 'Standard' -LicenseType 'AHUB'
+.Example
+Update-AzSqlVM -ResourceGroupName 'ResourceGroup01' -Name 'sqlvm1' -AutoBackupSettingEnable `
+-AutoBackupSettingBackupScheduleType manual -AutoBackupSettingFullBackupFrequency Weekly -AutoBackupSettingFullBackupStartTime 5 `
+-AutoBackupSettingFullBackupWindowHour 2 -AutoBackupSettingStorageAccessKey 'keyvalue' -AutoBackupSettingStorageAccountUrl `
+'https://storagename.blob.core.windows.net/' -AutoBackupSettingRetentionPeriod 10 -AutoBackupSettingLogBackupFrequency 60 `
+-AutoBackupSettingStorageContainerName 'storagecontainername'
+.Example
+Update-AzSqlVM -ResourceGroupName 'ResourceGroup01' -Name 'sqlvm1' -AutoBackupSettingEnable:$false
+.Example
+Update-AzSqlVM -ResourceGroupName 'ResourceGroup01' -Name 'sqlvm1' `
+-AutoPatchingSettingDayOfWeek Thursday `
+-AutoPatchingSettingMaintenanceWindowDuration 120 -AutoPatchingSettingMaintenanceWindowStartingHour 3 -AutoPatchingSettingEnable
+.Example
+Update-AzSqlVM -ResourceGroupName 'ResourceGroup01' -Name 'sqlvm1' -AutoPatchingSettingEnable:$false
+.Example
+Update-AzSqlVM -ResourceGroupName 'ResourceGroup01' -Name 'sqlvm1' -AssessmentSettingEnable
+.Example
+# $pwd is the password for cluster accounts
+$securepwd = ConvertTo-SecureString -String $pwd -AsPlainText -Force
+Update-AzSqlVM -ResourceGroupName 'ResourceGroup01' -Name 'sqlvm1' `
+-SqlVirtualMachineGroupResourceId '<group resource id>' `
+-WsfcDomainCredentialsClusterBootstrapAccountPassword $securepwd `
+-WsfcDomainCredentialsClusterOperatorAccountPassword $securepwd `
+-WsfcDomainCredentialsSqlServiceAccountPassword $securepwd 
+.Example
+Update-AzSqlVM -ResourceGroupName 'ResourceGroup01' -Name 'sqlvm1' -SqlVirtualMachineGroupResourceId ''
+.Example
+Update-AzSqlVM -ResourceGroupName 'ResourceGroup01' -Name 'sqlvm1'  -Tag @{'newkey'='newvalue'} -AsJob
 
 .Inputs
 Microsoft.Azure.PowerShell.Cmdlets.SqlVirtualMachine.Models.ISqlVirtualMachineIdentity
@@ -3442,6 +3487,214 @@ param(
     [System.Collections.Hashtable]
     # Resource tags.
     ${Tag},
+
+    [Parameter()]
+    [ArgumentCompleter([Microsoft.Azure.PowerShell.Cmdlets.SqlVirtualMachine.Support.BackupScheduleType])]
+    [Microsoft.Azure.PowerShell.Cmdlets.SqlVirtualMachine.Category('Body')]
+    [Microsoft.Azure.PowerShell.Cmdlets.SqlVirtualMachine.Support.BackupScheduleType]
+    # Backup schedule type.
+    ${AutoBackupSettingBackupScheduleType},
+
+    [Parameter()]
+    [Microsoft.Azure.PowerShell.Cmdlets.SqlVirtualMachine.Category('Body')]
+    [System.Management.Automation.SwitchParameter]
+    # Include or exclude system databases from auto backup.
+    ${AutoBackupSettingBackupSystemDb},
+
+    [Parameter()]
+    [AllowEmptyCollection()]
+    [ArgumentCompleter([Microsoft.Azure.PowerShell.Cmdlets.SqlVirtualMachine.Support.AutoBackupDaysOfWeek])]
+    [Microsoft.Azure.PowerShell.Cmdlets.SqlVirtualMachine.Category('Body')]
+    [Microsoft.Azure.PowerShell.Cmdlets.SqlVirtualMachine.Support.AutoBackupDaysOfWeek[]]
+    # Days of the week for the backups when FullBackupFrequency is set to Weekly.
+    ${AutoBackupSettingDaysOfWeek},
+
+    [Parameter()]
+    [Microsoft.Azure.PowerShell.Cmdlets.SqlVirtualMachine.Category('Body')]
+    [System.Management.Automation.SwitchParameter]
+    # Enable or disable autobackup on SQL virtual machine.
+    ${AutoBackupSettingEnable},
+
+    [Parameter()]
+    [Microsoft.Azure.PowerShell.Cmdlets.SqlVirtualMachine.Category('Body')]
+    [System.Management.Automation.SwitchParameter]
+    # Enable or disable encryption for backup on SQL virtual machine.
+    ${AutoBackupSettingEnableEncryption},
+
+    [Parameter()]
+    [ArgumentCompleter([Microsoft.Azure.PowerShell.Cmdlets.SqlVirtualMachine.Support.FullBackupFrequencyType])]
+    [Microsoft.Azure.PowerShell.Cmdlets.SqlVirtualMachine.Category('Body')]
+    [Microsoft.Azure.PowerShell.Cmdlets.SqlVirtualMachine.Support.FullBackupFrequencyType]
+    # Frequency of full backups.
+    # In both cases, full backups begin during the next scheduled time window.
+    ${AutoBackupSettingFullBackupFrequency},
+
+    [Parameter()]
+    [Microsoft.Azure.PowerShell.Cmdlets.SqlVirtualMachine.Category('Body')]
+    [System.Int32]
+    # Start time of a given day during which full backups can take place.
+    # 0-23 hours.
+    ${AutoBackupSettingFullBackupStartTime},
+
+    [Parameter()]
+    [Microsoft.Azure.PowerShell.Cmdlets.SqlVirtualMachine.Category('Body')]
+    [System.Int32]
+    # Duration of the time window of a given day during which full backups can take place.
+    # 1-23 hours.
+    ${AutoBackupSettingFullBackupWindowHour},
+
+    [Parameter()]
+    [Microsoft.Azure.PowerShell.Cmdlets.SqlVirtualMachine.Category('Body')]
+    [System.Int32]
+    # Frequency of log backups.
+    # 5-60 minutes.
+    ${AutoBackupSettingLogBackupFrequency},
+
+    [Parameter()]
+    [Microsoft.Azure.PowerShell.Cmdlets.SqlVirtualMachine.Category('Body')]
+    [System.Security.SecureString]
+    # Password for encryption on backup.
+    ${AutoBackupSettingPassword},
+
+    [Parameter()]
+    [Microsoft.Azure.PowerShell.Cmdlets.SqlVirtualMachine.Category('Body')]
+    [System.Int32]
+    # Retention period of backup: 1-90 days.
+    ${AutoBackupSettingRetentionPeriod},
+
+    [Parameter()]
+    [Microsoft.Azure.PowerShell.Cmdlets.SqlVirtualMachine.Category('Body')]
+    [System.String]
+    # Storage account key where backup will be taken to.
+    ${AutoBackupSettingStorageAccessKey},
+
+    [Parameter()]
+    [Microsoft.Azure.PowerShell.Cmdlets.SqlVirtualMachine.Category('Body')]
+    [System.String]
+    # Storage account url where backup will be taken to.
+    ${AutoBackupSettingStorageAccountUrl},
+
+    [Parameter()]
+    [Microsoft.Azure.PowerShell.Cmdlets.SqlVirtualMachine.Category('Body')]
+    [System.String]
+    # Storage container name where backup will be taken to.
+    ${AutoBackupSettingStorageContainerName},
+
+    [Parameter()]
+    [ArgumentCompleter([Microsoft.Azure.PowerShell.Cmdlets.SqlVirtualMachine.Support.DayOfWeek])]
+    [Microsoft.Azure.PowerShell.Cmdlets.SqlVirtualMachine.Category('Body')]
+    [Microsoft.Azure.PowerShell.Cmdlets.SqlVirtualMachine.Support.DayOfWeek]
+    # Day of week to apply the patch on.
+    ${AutoPatchingSettingDayOfWeek},
+
+    [Parameter()]
+    [Microsoft.Azure.PowerShell.Cmdlets.SqlVirtualMachine.Category('Body')]
+    [System.Management.Automation.SwitchParameter]
+    # Enable or disable autopatching on SQL virtual machine.
+    ${AutoPatchingSettingEnable},
+
+    [Parameter()]
+    [Microsoft.Azure.PowerShell.Cmdlets.SqlVirtualMachine.Category('Body')]
+    [System.Int32]
+    # Duration of patching.
+    ${AutoPatchingSettingMaintenanceWindowDuration},
+
+    [Parameter()]
+    [Microsoft.Azure.PowerShell.Cmdlets.SqlVirtualMachine.Category('Body')]
+    [System.Int32]
+    # Hour of the day when patching is initiated.
+    # Local VM time.
+    ${AutoPatchingSettingMaintenanceWindowStartingHour},
+
+    [Parameter()]
+    [Microsoft.Azure.PowerShell.Cmdlets.SqlVirtualMachine.Category('Body')]
+    [System.Management.Automation.SwitchParameter]
+    # Enable or disable SQL best practices Assessment feature on SQL virtual machine.
+    ${AssessmentSettingEnable},
+
+    [Parameter()]
+    [Microsoft.Azure.PowerShell.Cmdlets.SqlVirtualMachine.Category('Body')]
+    [System.Management.Automation.SwitchParameter]
+    # Run SQL best practices Assessment immediately on SQL virtual machine.
+    ${AssessmentSettingRunImmediately},
+
+    [Parameter()]
+    [ArgumentCompleter([Microsoft.Azure.PowerShell.Cmdlets.SqlVirtualMachine.Support.AssessmentDayOfWeek])]
+    [Microsoft.Azure.PowerShell.Cmdlets.SqlVirtualMachine.Category('Body')]
+    [Microsoft.Azure.PowerShell.Cmdlets.SqlVirtualMachine.Support.AssessmentDayOfWeek]
+    # Day of the week to run assessment.
+    ${ScheduleDayOfWeek},
+
+    [Parameter()]
+    [Microsoft.Azure.PowerShell.Cmdlets.SqlVirtualMachine.Category('Body')]
+    [System.Management.Automation.SwitchParameter]
+    # Enable or disable assessment schedule on SQL virtual machine.
+    ${ScheduleEnable},
+
+    [Parameter()]
+    [Microsoft.Azure.PowerShell.Cmdlets.SqlVirtualMachine.Category('Body')]
+    [System.Int32]
+    # Occurrence of the DayOfWeek day within a month to schedule assessment.
+    # Takes values: 1,2,3,4 and -1.
+    # Use -1 for last DayOfWeek day of the month
+    ${ScheduleMonthlyOccurrence},
+
+    [Parameter()]
+    [Microsoft.Azure.PowerShell.Cmdlets.SqlVirtualMachine.Category('Body')]
+    [System.String]
+    # Time of the day in HH:mm format.
+    # Eg.
+    # 17:30
+    ${ScheduleStartTime},
+
+    [Parameter()]
+    [Microsoft.Azure.PowerShell.Cmdlets.SqlVirtualMachine.Category('Body')]
+    [System.Int32]
+    # Number of weeks to schedule between 2 assessment runs.
+    # Takes value from 1-6
+    ${ScheduleWeeklyInterval},
+
+    [Parameter()]
+    [Microsoft.Azure.PowerShell.Cmdlets.SqlVirtualMachine.Category('Body')]
+    [System.String]
+    # ARM resource id of the SQL virtual machine group this SQL virtual machine is or will be part of.
+    ${SqlVirtualMachineGroupResourceId},
+
+    [Parameter()]
+    [Microsoft.Azure.PowerShell.Cmdlets.SqlVirtualMachine.Category('Body')]
+    [System.String]
+    # ARM Resource id of underlying virtual machine created from SQL marketplace image.
+    ${VirtualMachineResourceId},
+
+    [Parameter()]
+    [Microsoft.Azure.PowerShell.Cmdlets.SqlVirtualMachine.Category('Body')]
+    [System.Security.SecureString]
+    # Cluster bootstrap account password.
+    ${WsfcDomainCredentialsClusterBootstrapAccountPassword},
+
+    [Parameter()]
+    [Microsoft.Azure.PowerShell.Cmdlets.SqlVirtualMachine.Category('Body')]
+    [System.Security.SecureString]
+    # Cluster operator account password.
+    ${WsfcDomainCredentialsClusterOperatorAccountPassword},
+
+    [Parameter()]
+    [Microsoft.Azure.PowerShell.Cmdlets.SqlVirtualMachine.Category('Body')]
+    [System.Security.SecureString]
+    # SQL service account password.
+    ${WsfcDomainCredentialsSqlServiceAccountPassword},
+
+    [Parameter()]
+    [Microsoft.Azure.PowerShell.Cmdlets.SqlVirtualMachine.Category('Body')]
+    [System.String]
+    # Domain credentials for setting up Windows Server Failover Cluster for SQL availability group.
+    ${WsfcStaticIP},
+
+    [Parameter()]
+    [Microsoft.Azure.PowerShell.Cmdlets.SqlVirtualMachine.Category('Body')]
+    [System.Management.Automation.SwitchParameter]
+    # Enable automatic upgrade of Sql IaaS extension Agent.
+    ${EnableAutomaticUpgrade},
 
     [Parameter()]
     [Alias('AzureRMContext', 'AzureCredential')]

@@ -23,6 +23,7 @@ Updates the entity query.
 https://learn.microsoft.com/powershell/module/az.securityinsights/update-azsentinelentityquery
 #>
 function Update-AzSentinelEntityQuery {
+    [Microsoft.Azure.PowerShell.Cmdlets.SecurityInsights.Runtime.CmdletBreakingChange("11.0.0", "4.0.0", "2023/11/15")]
     [OutputType([Microsoft.Azure.PowerShell.Cmdlets.SecurityInsights.Models.Api20210901Preview.CustomEntityQuery])]
     [CmdletBinding(DefaultParameterSetName = 'UpdateActivity', PositionalBinding = $false, SupportsShouldProcess, ConfirmImpact = 'Medium')]
     param(

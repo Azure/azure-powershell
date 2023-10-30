@@ -13,6 +13,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.SecurityInsights.Cmdlets
     /// [OpenAPI] List=>POST:"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.OperationalInsights/workspaces/{workspaceName}/providers/Microsoft.SecurityInsights/entities/{entityId}/getTimeline"
     /// </remarks>
     [global::System.Management.Automation.Cmdlet(global::System.Management.Automation.VerbsCommon.Get, @"AzSentinelEntityTimeline_ListExpanded", SupportsShouldProcess = true)]
+    [Microsoft.Azure.PowerShell.Cmdlets.SecurityInsights.Runtime.CmdletBreakingChange("11.0.0", "4.0.0", "2023/11/15")]
     [global::System.Management.Automation.OutputType(typeof(Microsoft.Azure.PowerShell.Cmdlets.SecurityInsights.Models.Api20210901Preview.IEntityTimelineResponse))]
     [global::Microsoft.Azure.PowerShell.Cmdlets.SecurityInsights.Description(@"Timeline for an entity.")]
     [global::Microsoft.Azure.PowerShell.Cmdlets.SecurityInsights.Generated]

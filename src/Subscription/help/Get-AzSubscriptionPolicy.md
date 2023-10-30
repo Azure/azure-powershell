@@ -12,12 +12,6 @@ Get the subscription tenant policy for the user's tenant.
 
 ## SYNTAX
 
-### Get (Default)
-```
-Get-AzSubscriptionPolicy [-DefaultProfile <PSObject>] [<CommonParameters>]
-```
-
-### List
 ```
 Get-AzSubscriptionPolicy [-DefaultProfile <PSObject>] [<CommonParameters>]
 ```
