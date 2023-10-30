@@ -15,18 +15,12 @@ if(($null -eq $TestName) -or ($TestName -contains 'Get-AzDnsDnssecConfig'))
 }
 
 Describe 'Get-AzDnsDnssecConfig' {
-    It 'Get' {
-        try {            
-            # SETUP
-            New-AzDnsZone -ResourceGroupName $env.ResourceGroup -Name $env.ZoneName1 -Location $env.Location
-            New-AzDnsDnssecConfig -ResourceGroupName $env.ResourceGroup -ZoneName $env.ZoneName1
+    It 'Get' {          
+        # SETUP
+        New-AzDnsDnssecConfig -ResourceGroupName $env.ResourceGroup -ZoneName $env.ZoneName1
 
-            # TEST
-            $config = Get-AzDnsDnssecConfig -ResourceGroupName $env.ResourceGroup -ZoneName $env.ZoneName1
-            $config.SigningKey.Count | Should -Be 2    
-        }
-        finally {
-            Remove-AzDnsZone -ResourceGroupName $env.ResourceGroup -Name $env.ZoneName1
-        }
+        # TEST
+        $config = Get-AzDnsDnssecConfig -ResourceGroupName $env.ResourceGroup -ZoneName $env.ZoneName1
+        $config.SigningKey.Count | Should -Be 2
     }
 }

@@ -22,9 +22,14 @@ function setupEnv() {
     # Setup zone, location, resource group
     $env.ResourceGroup = 'dnssecrg'
     $env.Location = 'global'
-    $env.ZoneName1 = 'dnstest' + (RandomString -allChars $false -len 6) + '.com'
-    $env.ZoneName2 = 'dnstest' + (RandomString -allChars $false -len 6) + '.com'
-    $env.ZoneName3 = 'dnstest' + (RandomString -allChars $false -len 6) + '.com'
+    $env.ZoneName1 = 'dnstestpowershellsdk1.com'
+    $env.ZoneName2 = 'dnstestpowershellsdk2.com'
+    $env.ZoneName3 = 'dnstestpowershellsdk3.com'
+
+    Import-Module Az.Dns
+    New-AzDnsZone -ResourceGroupName $env.ResourceGroup -Name $env.ZoneName1
+    New-AzDnsZone -ResourceGroupName $env.ResourceGroup -Name $env.ZoneName2
+    New-AzDnsZone -ResourceGroupName $env.ResourceGroup -Name $env.ZoneName3
 
     # For any resources you created for test, you should add it to $env here.
     $envFile = 'env.json'
@@ -35,5 +40,9 @@ function setupEnv() {
 }
 function cleanupEnv() {
     # Clean resources you create for testing
+    Import-Module Az.Dns
+    Remove-AzDnsZone -ResourceGroupName $env.ResourceGroup -Name $env.ZoneName1 -Confirm:$false
+    Remove-AzDnsZone -ResourceGroupName $env.ResourceGroup -Name $env.ZoneName2 -Confirm:$false
+    Remove-AzDnsZone -ResourceGroupName $env.ResourceGroup -Name $env.ZoneName3 -Confirm:$false
 }
 

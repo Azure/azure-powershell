@@ -57,15 +57,15 @@ directive:
       subject: ^(?!.*DnssecConfig).*$
     remove: true
   # Remove the set-* cmdlet
+
   - where:
       verb: Set
     remove: true
 
-  # The parameter is not friendly and needs to be renamed.
+  # Remove zone and record set cmdlets
   - where:
-      parameter-name: ^RecordSetNameSuffix$|^recordsetnamesuffix$
-    set:
-      parameter-name: RecordSetNameSuffix
+      subject: ^(?!.*DnssecConfig).*$
+    remove: true
 
   - where:
       subject: (^DnssecConfig)

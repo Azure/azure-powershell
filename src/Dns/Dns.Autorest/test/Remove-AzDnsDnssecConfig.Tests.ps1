@@ -15,20 +15,14 @@ if(($null -eq $TestName) -or ($TestName -contains 'Remove-AzDnsDnssecConfig'))
 }
 
 Describe 'Remove-AzDnsDnssecConfig' {
-    It 'Delete' {
-        try {            
-            # SETUP
-            New-AzDnsZone -ResourceGroupName $env.ResourceGroup -Name $env.ZoneName3 -Location $env.Location
-            New-AzDnsDnssecConfig -ResourceGroupName $env.ResourceGroup -ZoneName $env.ZoneName3
+    It 'Delete' {          
+        # SETUP
+        New-AzDnsDnssecConfig -ResourceGroupName $env.ResourceGroup -ZoneName $env.ZoneName3
 
-            # TEST
-            { Remove-AzDnsDnssecConfig -ResourceGroupName $env.ResourceGroup -ZoneName $env.ZoneName3 } | Should -Not -Throw
+        # TEST
+        { Remove-AzDnsDnssecConfig -ResourceGroupName $env.ResourceGroup -ZoneName $env.ZoneName3 } | Should -Not -Throw
 
-            # VERIFY
-            { Get-AzDnsDnssecConfig -ResourceGroupName $env.ResourceGroup -ZoneName $env.ZoneName3 } | Should -Throw
-        }
-        finally {
-            Remove-AzDnsZone -ResourceGroupName $env.ResourceGroup -Name $env.ZoneName3
-        }
+        # VERIFY
+        { Get-AzDnsDnssecConfig -ResourceGroupName $env.ResourceGroup -ZoneName $env.ZoneName3 } | Should -Throw
     }
 }

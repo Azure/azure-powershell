@@ -11,7 +11,7 @@
   DotNetFrameworkVersion = '4.7.2'
   RequiredAssemblies = './bin/Az.Dns.private.dll'
   FormatsToProcess = './Az.Dns.format.ps1xml'
-  FunctionsToExport = 'Get-AzDnsDnssecConfig', 'Get-AzDnsRecordSet', 'Get-AzDnsResourceReference', 'Get-AzDnsZone', 'New-AzDnsDnssecConfig', 'New-AzDnsRecordSet', 'New-AzDnsZone', 'Remove-AzDnsDnssecConfig', 'Remove-AzDnsRecordSet', 'Remove-AzDnsZone', 'Update-AzDnsRecordSet', 'Update-AzDnsZone', '*'
+  FunctionsToExport = 'Get-AzDnsDnssecConfig', 'New-AzDnsDnssecConfig', 'Remove-AzDnsDnssecConfig', '*'
   AliasesToExport = '*'
   PrivateData = @{
     PSData = @{
