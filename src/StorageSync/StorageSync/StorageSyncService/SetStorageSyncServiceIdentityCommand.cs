@@ -214,7 +214,6 @@ namespace Microsoft.Azure.Commands.StorageSync.StorageSyncService
                            Common.StorageSyncClientWrapper.StorageFileDataPrivilegedContributorRoleDefinitionId,
                            scope);
 
-
                         IEnumerable<StorageSyncModels.ServerEndpoint> serverEndpoints = StorageSyncClientWrapper.StorageSyncManagementClient.ServerEndpoints.ListBySyncGroup(resourceGroupName, resourceName, syncGroup.Name);
                         foreach (var serverEndpoint in serverEndpoints)
                         {
