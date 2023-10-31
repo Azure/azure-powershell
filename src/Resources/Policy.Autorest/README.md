@@ -37,10 +37,10 @@ require:
   - $(this-folder)/../../readme.azure.noprofile.md
 input-file:
 # You need to specify your swagger files here.
-  - $(Repo)/specification/resources/resource-manager/Microsoft.Authorization/stable/2021-06-01/policyDefinitions.json
-  - $(Repo)/specification/resources/resource-manager/Microsoft.Authorization/stable/2021-06-01/policySetDefinitions.json
-  - $(Repo)/specification/resources/resource-manager/Microsoft.Authorization/stable/2022-06-01/policyAssignments.json
-  - $(Repo)/specification/resources/resource-manager/Microsoft.Authorization/preview/2022-07-01-preview/policyExemptions.json
+  - $(repo)/specification/resources/resource-manager/Microsoft.Authorization/stable/2021-06-01/policyDefinitions.json
+  - $(repo)/specification/resources/resource-manager/Microsoft.Authorization/stable/2021-06-01/policySetDefinitions.json
+  - $(repo)/specification/resources/resource-manager/Microsoft.Authorization/stable/2022-06-01/policyAssignments.json
+  - $(repo)/specification/resources/resource-manager/Microsoft.Authorization/preview/2022-07-01-preview/policyExemptions.json
 # If the swagger has not been put in the repo, you may uncomment the following line and refer to it locally
 # - (this-folder)/relative-path-to-your-swagger 
 
