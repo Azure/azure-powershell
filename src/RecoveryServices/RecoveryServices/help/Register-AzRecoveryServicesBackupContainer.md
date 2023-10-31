@@ -1,5 +1,5 @@
 ---
-external help file: Microsoft.Azure.PowerShell.Cmdlets.RecoveryServices.Backup.dll-Help.xml
+external help file: Az.RecoveryServices-help.xml
 Module Name: Az.RecoveryServices
 online version: https://learn.microsoft.com/powershell/module/az.recoveryservices/register-azrecoveryservicesbackupcontainer
 schema: 2.0.0
@@ -8,146 +8,99 @@ schema: 2.0.0
 # Register-AzRecoveryServicesBackupContainer
 
 ## SYNOPSIS
-The **Register-AzRecoveryServicesBackupContainer** cmdlet registers an Azure VM for AzureWorkloads with specific workloadType.
+The Register-AzRecoveryServicesBackupContainer cmdlet registers an Azure VM for AzureWorkloads with specific DatasourceType.
 
 ## SYNTAX
 
 ### Register (Default)
 ```
-Register-AzRecoveryServicesBackupContainer [-ResourceId] <String>
- [-BackupManagementType] <BackupManagementType> [-WorkloadType] <WorkloadType> [-Force] [-VaultId <String>]
- [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
+Register-AzRecoveryServicesBackupContainer -ResourceGroupName <String> -VaultName <String>
+ [-DatasourceType] <DatasourceTypes> [-SubscriptionId <String>] [-DefaultProfile <PSObject>]
+ [-ResourceId] <String> [<CommonParameters>]
 ```
 
 ### ReRegister
 ```
-Register-AzRecoveryServicesBackupContainer [-Container] <ContainerBase>
- [-BackupManagementType] <BackupManagementType> [-WorkloadType] <WorkloadType> [-Force] [-VaultId <String>]
- [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
+Register-AzRecoveryServicesBackupContainer -ResourceGroupName <String> -VaultName <String>
+ [-DatasourceType] <DatasourceTypes> [-Container] <IProtectionContainerResource> [-SubscriptionId <String>]
+ [-DefaultProfile <PSObject>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-This command allows Azure Backup to convert the Resource to a Backup Container which is then registered to the given Recovery services vault. The Azure Backup service can then discover workloads of the given workload type within this container to be protected later.
+The Register-AzRecoveryServicesBackupContainer cmdlet registers an Azure VM for AzureWorkloads with specific DatasourceType.
 
 ## EXAMPLES
 
-### Example 1 Register a backup container
+### Example 1: Register a backup container for DatasourceType MSSQL
 ```powershell
-Register-AzRecoveryServicesBackupContainer -ResourceId <AzureVMID> -VaultId <vaultID> -WorkloadType MSSQL -BackupManagementType AzureWorkload
+$resourceId = "/subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx/resourceGroups/hiagarg/providers/Microsoft.Compute/virtualMachines/sql-vm2"
+$registeredContainer = Register-AzRecoveryServicesBackupContainer -ResourceGroupName $resourceGroupName -VaultName $vaultName -DatasourceType MSSQL -ResourceId $resourceId
+$registeredContainer
 ```
 
-The cmdlet registers an azure VM as a container for the workload MSSQL.
-
-### Example 2 Re-register a backup container
-```powershell
-$vault = Get-AzRecoveryServicesVault -ResourceGroupName "rgName"  -Name "vaultName"
-$container = Get-AzRecoveryServicesBackupContainer -ContainerType AzureVMAppContainer -VaultId $vault.ID 
-Register-AzRecoveryServicesBackupContainer -Container $container[-1] -BackupManagementType AzureWorkload -WorkloadType MSSQL -VaultId $vault.ID
+```output
+ETag Location Name
+---- -------- ----
+              VMAppContainer;Compute;hiagarg;sql-vm2
 ```
 
-The first command fetches the recovery services vault. The second command fetches all the backup containers registered with the recovery services vault. The third command triggers a re-register operation for the container $container[-1], to re-register an already registered container we pass -Container parameter.
+First we set the SQL virtual machine ArmId for VM which needs to be registered.
+Next command is used to register the backup container.
+
+### Example 2: Re-registering a backup container
+```powershell
+$container = Get-AzRecoveryServicesBackupContainer -ResourceGroupName $resourceGroupName -VaultName $vaultName -SubscriptionId $subscriptionId -ContainerType AzureVMAppContainer -DatasourceType MSSQL | Where-Object { $_.Name -match $containerFriendlyName }
+$reRegisteredContainer = Register-AzRecoveryServicesBackupContainer -ResourceGroupName $resourceGroupName -VaultName $vaultName -DatasourceType MSSQL -Container $container
+$reRegisteredContainer | fl
+```
+
+```output
+BackupManagementType  : AzureWorkload
+ContainerType         : VMAppContainer
+ETag                  :
+FriendlyName          : sql-vm2
+HealthStatus          : Healthy
+Id                    : /subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx/resourceGroups/hiagarg/providers/Microsoft.RecoveryServices/vaults/hiagaVault/backupFabrics/Azure/protectionContainers/VMAppContainer;Compute;hiagarg;sql-vm2
+Location              :
+Name                  : VMAppContainer;Compute;hiagarg;sql-vm2
+Property              : Microsoft.Azure.PowerShell.Cmdlets.RecoveryServices.Models.Api20230201.AzureVMAppContainerProtectionContainer
+ProtectableObjectType : VMAppContainer
+RegistrationStatus    : Registered
+Tag                   : Microsoft.Azure.PowerShell.Cmdlets.RecoveryServices.Models.Api20230201.ResourceTags
+Type                  : Microsoft.RecoveryServices/vaults/backupFabrics/protectionContainers
+```
+
+The first command fetches the backup container for re-registeration.
+The next command triggers the re-registeration for the backup container.
+This command can be used for Datasourcetype MSSQL, SAPHANA.
 
 ## PARAMETERS
 
-### -BackupManagementType
-The class of resources being protected. Currently the value supported for this cmdlet is AzureWorkload
-
-```yaml
-Type: Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.Models.BackupManagementType
-Parameter Sets: (All)
-Aliases:
-Accepted values: AzureWorkload
-
-Required: True
-Position: 1
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
 ### -Container
-Container where the item resides
+Specifies a container object for which this cmdlet triggers the re-registration.
+To obtain an ProtectionContainerResource, use the Get-AzRecoveryServicesBackupContainer cmdlet
+To construct, see NOTES section for CONTAINER properties and create a hash table.
 
 ```yaml
-Type: Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.Models.ContainerBase
+Type: Microsoft.Azure.PowerShell.Cmdlets.RecoveryServices.Models.Api20230201.IProtectionContainerResource
 Parameter Sets: ReRegister
 Aliases:
 
 Required: True
-Position: 0
+Position: 1
 Default value: None
 Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
 ```
 
-### -DefaultProfile
-The credentials, account, tenant, and subscription used for communication with Azure.
+### -DatasourceType
+Specifies the DatasourceType
 
 ```yaml
-Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer
-Parameter Sets: (All)
-Aliases: AzContext, AzureRmContext, AzureCredential
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -Force
-Force registers container (prevents confirmation dialog). This parameter is optional.
-
-```yaml
-Type: System.Management.Automation.SwitchParameter
+Type: Microsoft.Azure.PowerShell.Cmdlets.RecoveryServices.Support.DatasourceTypes
 Parameter Sets: (All)
 Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -ResourceId
-ID of the Azure Resource whose representative item needs to be checked if it is already protected by some RecoveryServices Vault in the subscription.
-
-```yaml
-Type: System.String
-Parameter Sets: Register
-Aliases:
-
-Required: True
-Position: 0
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -VaultId
-ARM ID of the Recovery Services Vault.
-
-```yaml
-Type: System.String
-Parameter Sets: (All)
-Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: True (ByValue)
-Accept wildcard characters: False
-```
-
-### -WorkloadType
-Workload type of the resource. The current supported value is AzureVM, WindowsServer, AzureFiles, MSSQL
-
-```yaml
-Type: Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.Models.WorkloadType
-Parameter Sets: (All)
-Aliases:
-Accepted values: AzureVM, AzureSQLDatabase, AzureFiles, MSSQL
+Accepted values: AzureVM, MSSQL, SAPHANA, AzureFiles
 
 Required: True
 Position: 2
@@ -156,13 +109,12 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -Confirm
-Prompts you for confirmation before running the cmdlet.
+### -DefaultProfile
 
 ```yaml
-Type: System.Management.Automation.SwitchParameter
+Type: System.Management.Automation.PSObject
 Parameter Sets: (All)
-Aliases: cf
+Aliases: AzureRMContext, AzureCredential
 
 Required: False
 Position: Named
@@ -171,15 +123,60 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -WhatIf
-Shows what would happen if the cmdlet runs.
+### -ResourceGroupName
+The name of the resource group where the recovery services vault is present
 
 ```yaml
-Type: System.Management.Automation.SwitchParameter
+Type: System.String
 Parameter Sets: (All)
-Aliases: wi
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -ResourceId
+Specifies the ARM ID of an Instance or Availability Group
+
+```yaml
+Type: System.String
+Parameter Sets: Register
+Aliases:
+
+Required: True
+Position: 1
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -SubscriptionId
+Subscription Id
+
+```yaml
+Type: System.String
+Parameter Sets: (All)
+Aliases:
 
 Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -VaultName
+The name of the recovery services vault
+
+```yaml
+Type: System.String
+Parameter Sets: (All)
+Aliases:
+
+Required: True
 Position: Named
 Default value: None
 Accept pipeline input: False
@@ -191,11 +188,11 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
-### System.String
+### Microsoft.Azure.PowerShell.Cmdlets.RecoveryServices.Models.Api20230201.IProtectionContainerResource
 
 ## OUTPUTS
 
-### Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.Models.ContainerBase
+### Microsoft.Azure.PowerShell.Cmdlets.RecoveryServices.Models.Api20230201.IProtectionContainerResource
 
 ## NOTES
 

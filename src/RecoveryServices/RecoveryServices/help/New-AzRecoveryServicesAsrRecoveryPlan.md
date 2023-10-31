@@ -28,8 +28,8 @@ New-AzRecoveryServicesAsrRecoveryPlan -Name <String> -PrimaryFabric <ASRFabric> 
 
 ### AzureZoneToZone
 ```
-New-AzRecoveryServicesAsrRecoveryPlan -Name <String> -PrimaryFabric <ASRFabric> [-PrimaryZone <String>]
- [-RecoveryZone <String>] [-PrimaryEdgeZone <String>] [-RecoveryEdgeZone <String>] [-AzureZoneToZone]
+New-AzRecoveryServicesAsrRecoveryPlan -Name <String> -PrimaryFabric <ASRFabric> -PrimaryZone <String>
+ -RecoveryZone <String> [-PrimaryEdgeZone <String>] [-RecoveryEdgeZone <String>] [-AzureZoneToZone]
  -ReplicationProtectedItem <ASRReplicationProtectedItem[]> [-DefaultProfile <IAzureContextContainer>] [-WhatIf]
  [-Confirm] [<CommonParameters>]
 ```
@@ -278,7 +278,7 @@ Type: System.String
 Parameter Sets: AzureZoneToZone
 Aliases:
 
-Required: False
+Required: True
 Position: Named
 Default value: None
 Accept pipeline input: False
@@ -335,7 +335,7 @@ Type: System.String
 Parameter Sets: AzureZoneToZone
 Aliases:
 
-Required: False
+Required: True
 Position: Named
 Default value: None
 Accept pipeline input: False

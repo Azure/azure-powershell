@@ -24,24 +24,22 @@ New-AzRecoveryServicesAsrPolicy [-HyperVToAzure] -Name <String> -ReplicationProv
 ### VMwareToAzure
 ```
 New-AzRecoveryServicesAsrPolicy [-VMwareToAzure] -Name <String> -RecoveryPointRetentionInHours <Int32>
- [-ApplicationConsistentSnapshotFrequencyInHours <Int32>] [-MultiVmSyncStatus <String>]
- -RPOWarningThresholdInMinutes <Int32> [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
- [<CommonParameters>]
+ [-ApplicationConsistentSnapshotFrequencyInHours <Int32>] -RPOWarningThresholdInMinutes <Int32>
+ [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### AzureToVMware
 ```
 New-AzRecoveryServicesAsrPolicy [-AzureToVMware] -Name <String> -RecoveryPointRetentionInHours <Int32>
- [-ApplicationConsistentSnapshotFrequencyInHours <Int32>] [-MultiVmSyncStatus <String>]
- -RPOWarningThresholdInMinutes <Int32> [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
- [<CommonParameters>]
+ [-ApplicationConsistentSnapshotFrequencyInHours <Int32>] -RPOWarningThresholdInMinutes <Int32>
+ [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### AzureToAzure
 ```
 New-AzRecoveryServicesAsrPolicy [-AzureToAzure] -Name <String> -RecoveryPointRetentionInHours <Int32>
- [-ApplicationConsistentSnapshotFrequencyInHours <Int32>] [-MultiVmSyncStatus <String>]
- [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-ApplicationConsistentSnapshotFrequencyInHours <Int32>] [-DefaultProfile <IAzureContextContainer>] [-WhatIf]
+ [-Confirm] [<CommonParameters>]
 ```
 
 ### EnterpriseToEnterprise
@@ -57,8 +55,8 @@ New-AzRecoveryServicesAsrPolicy [-VmmToVmm] -Name <String> -ReplicationProvider 
 ### ReplicateVMwareToAzure
 ```
 New-AzRecoveryServicesAsrPolicy [-ReplicateVMwareToAzure] -Name <String> -RecoveryPointRetentionInHours <Int32>
- [-ApplicationConsistentSnapshotFrequencyInHours <Int32>] [-MultiVmSyncStatus <String>]
- [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-ApplicationConsistentSnapshotFrequencyInHours <Int32>] [-DefaultProfile <IAzureContextContainer>] [-WhatIf]
+ [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -217,22 +215,6 @@ Aliases:
 
 Required: False
 Position: 0
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -MultiVmSyncStatus
-Specifies multiVm sync status for the policy.
-
-```yaml
-Type: System.String
-Parameter Sets: VMwareToAzure, AzureToVMware, AzureToAzure, ReplicateVMwareToAzure
-Aliases:
-Accepted values: Enable, Disable
-
-Required: False
-Position: Named
 Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False

@@ -1,4 +1,4 @@
-Microsoft Visual Studio Solution File, Format Version 12.00
+﻿Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.4.33110.190
 MinimumVisualStudioVersion = 10.0.40219.1
@@ -55,6 +55,8 @@ EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "RecoveryServices.Backup.CrossRegionRestore.Management.Sdk", "RecoveryServices.Backup.CrossRegionRestore.Management.Sdk\RecoveryServices.Backup.CrossRegionRestore.Management.Sdk.csproj", "{5976479A-21D1-49E2-BAB8-4AC2F1AA2462}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "RecoveryServices.SiteRecovery.Management.Sdk", "RecoveryServices.SiteRecovery.Management.Sdk\RecoveryServices.SiteRecovery.Management.Sdk.csproj", "{87F6AF90-9E0E-4EE7-BAD1-D38E7A04257B}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Az.RecoveryServices", "RecoveryServices.Backup.Autorest\Az.RecoveryServices.csproj", "{CE69CB0C-0757-4470-90DD-289784DD53F7}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -166,6 +168,10 @@ Global
 		{87F6AF90-9E0E-4EE7-BAD1-D38E7A04257B}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{87F6AF90-9E0E-4EE7-BAD1-D38E7A04257B}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{87F6AF90-9E0E-4EE7-BAD1-D38E7A04257B}.Release|Any CPU.Build.0 = Release|Any CPU
+		{CE69CB0C-0757-4470-90DD-289784DD53F7}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{CE69CB0C-0757-4470-90DD-289784DD53F7}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{CE69CB0C-0757-4470-90DD-289784DD53F7}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{CE69CB0C-0757-4470-90DD-289784DD53F7}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
