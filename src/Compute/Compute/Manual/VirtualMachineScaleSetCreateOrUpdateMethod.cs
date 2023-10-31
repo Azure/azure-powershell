@@ -473,7 +473,6 @@ namespace Microsoft.Azure.Commands.Compute.Automation
             private async Task<ResourceConfig<VirtualMachineScaleSet>> SimpleParameterSetOrchestrationModeFlexible()
             {
                 int platformFaultDomainCountFlexibleDefault = 1;
-                SwitchParameter singlePlacementGroupFlexibleDefault = false;
 
                 ImageAndOsType = await _client.UpdateImageAndOsTypeAsync(
                         ImageAndOsType, _cmdlet.ResourceGroupName, _cmdlet.ImageName, Location);
@@ -573,7 +572,7 @@ namespace Microsoft.Azure.Commands.Compute.Automation
                     zones: _cmdlet.Zone,
                     ultraSSDEnabled: _cmdlet.EnableUltraSSD.IsPresent,
                     identity: _cmdlet.GetVmssIdentityFromArgs(),
-                    singlePlacementGroup: singlePlacementGroupFlexibleDefault,
+                    singlePlacementGroup: _cmdlet.SinglePlacementGroup.IsPresent,
                     proximityPlacementGroup: proximityPlacementGroup,
                     hostGroup: hostGroup,
                     priority: _cmdlet.Priority,

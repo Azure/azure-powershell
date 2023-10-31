@@ -83,19 +83,6 @@ namespace Microsoft.Azure.Commands.Compute.Automation
 
                             if (parameters?.OrchestrationMode == flexibleOrchestrationMode)
                             {
-                                if (parameters?.VirtualMachineProfile?.NetworkProfile?.NetworkInterfaceConfigurations != null)
-                                {
-                                    foreach (var nicConfig in parameters.VirtualMachineProfile.NetworkProfile.NetworkInterfaceConfigurations)
-                                    {
-                                        if (nicConfig.IpConfigurations != null)
-                                        {
-                                            foreach (var ipConfig in nicConfig.IpConfigurations)
-                                            {
-                                                ipConfig.LoadBalancerInboundNatPools = null;
-                                            }
-                                        }
-                                    }
-                                }
 
                                 flexibleOrchestrationModeDefaultParameters(parameters);
                                 checkFlexibleOrchestrationModeParamsDefaultParamSet(parameters);
