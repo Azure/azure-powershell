@@ -1,20 +1,43 @@
 {
   "filterPolicyBasedonWorkloadType": false,
-  "allowedSubProtectionPolicyTypes": [ "Full", "Differential", "Incremental", "Log" ],
-  "allowedBackupFrequencies": [ "Daily", "Weekly" ],
+  "allowedSubProtectionPolicyTypes": [ "Full" ],
+  "allowedBackupFrequencies": [ "Daily", "Hourly" ],
   "supportsEnhanced": false,
-  "allowedDifferentialParams": [ "DifferentialRetentionPeriodInDays" ],
-  "allowedIncrementalParams": [ "IncrementalRetentionPeriodInDays" ],
-  "allowedLogParams": [ "LogRetentionPeriodInDays" ],
+  "allowedDifferentialParams": [],
+  "allowedIncrementalParams": [],
+  "allowedLogParams": [],
   "allowedDaysOfTheWeek": [ "Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday" ],
   "allowedMonthsOfTheYear": [ "January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December" ],
   "allowedWeeksOfTheMonth": [ "First", "Second", "Third", "Fourth", "Last" ],
-  "IsSmartTieringSupported": true,
+  "IsSmartTieringSupported": false,
   "containerInquiryType": null,
-  "protectedItemType": "AzureVMWorkloadSapHanaDatabaseProtectedItem",
+  "protectedItemType": "AzureFileShareProtectedItem",
   "policySettings": {
     "defaultPolicy": {
-
+      "backupManagementType": "AzureStorage",
+      "workLoadType": "AzureFileShare",
+      "schedulePolicy": {
+        "schedulePolicyType": "SimpleSchedulePolicy",
+        "scheduleRunFrequency": "Daily",
+        "scheduleRunTimes": [
+          "2023-10-30T13:00:00Z"
+        ],
+        "scheduleWeeklyFrequency": 0
+      },
+      "retentionPolicy": {
+        "retentionPolicyType": "LongTermRetentionPolicy",
+        "dailySchedule": {
+          "retentionTimes": [
+            "2023-10-30T13:00:00Z"
+          ],
+          "retentionDuration": {
+            "count": 30,
+            "durationType": "Days"
+          }
+        }
+      },
+      "timeZone": "UTC",
+      "protectedItemsCount": 0
     }
   }
 }

@@ -12,7 +12,7 @@
   RequiredAssemblies = './bin/Az.RecoveryServices.private.dll'
   FormatsToProcess = './Az.RecoveryServices.format.ps1xml'
   FunctionsToExport = 'Edit-AzRecoveryServicesBackupRetentionPolicyClientObject', 'Edit-AzRecoveryServicesBackupSchedulePolicyClientObject', 'Get-AzRecoveryServicesBackupContainer', 'Get-AzRecoveryServicesBackupItem', 'Get-AzRecoveryServicesBackupProtectableItem', 'Get-AzRecoveryServicesBackupProtectionPolicy', 'Get-AzRecoveryServicesPolicyTemplate', 'New-AzRecoveryServicesBackupProtectionPolicy', 'Register-AzRecoveryServicesBackupContainer', 'Remove-AzRecoveryServicesBackupProtectionPolicy', '*'
-  AliasesToExport = '*'
+  AliasesToExport = 'Set-AzRecoveryServicesBackupprotectionPolicy', '*'
   PrivateData = @{
     PSData = @{
       Tags = 'Azure', 'ResourceManager', 'ARM', 'PSModule', 'RecoveryServices'
