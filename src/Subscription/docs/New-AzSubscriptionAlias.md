@@ -12,11 +12,19 @@ Create Alias Subscription.
 
 ## SYNTAX
 
+### CreateExpanded (Default)
 ```
-New-AzSubscriptionAlias -AliasName <String> [-BillingScope <String>] [-DisplayName <String>]
- [-ManagementGroupId <String>] [-ResellerId <String>] [-SubscriptionId <String>]
- [-SubscriptionOwnerId <String>] [-SubscriptionTenantId <String>] [-Tag <Hashtable>] [-Workload <Workload>]
+New-AzSubscriptionAlias -AliasName <String> -SubscriptionId <String> [-ManagementGroupId <String>]
+ [-ResellerId <String>] [-SubscriptionOwnerId <String>] [-SubscriptionTenantId <String>] [-Tag <Hashtable>]
  [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
+```
+
+### WorkloadCreateExpanded
+```
+New-AzSubscriptionAlias -AliasName <String> -BillingScope <String> -SubscriptionName <String>
+ -Workload <Workload> [-ManagementGroupId <String>] [-ResellerId <String>] [-SubscriptionOwnerId <String>]
+ [-SubscriptionTenantId <String>] [-Tag <Hashtable>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
+ [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -30,22 +38,22 @@ New-AzSubscriptionAlias -AliasName test-subscription -SubscriptionId XXXXXXXX-XX
 ```
 
 ```output
-AliasName         DisplayName SubscriptionId                       ProvisioningState
----------         ----------- --------------                       -----------------
-test-subscription createSub   XXXXXXXX-XXXX-XXXX-XXXX-XXXXXXXXXXXX Succeeded
+AliasName         SubscriptionId                       ProvisioningState
+---------         --------------                       -----------------
+test-subscription XXXXXXXX-XXXX-XXXX-XXXX-XXXXXXXXXXXX Succeeded
 ```
 
 Create Alias Subscription.
 
 ### Example 2: Create Alias Subscription.
 ```powershell
-New-AzSubscriptionAlias -AliasName test-subscription -DisplayName "createSub" -BillingScope "/billingAccounts/{billingAccountName}/billingProfiles/{billingProfileName}/invoiceSections/{invoiceSectionName}" -Workload 'Production' 
+New-AzSubscriptionAlias -AliasName test-subscription -SubscriptionName "createSub" -BillingScope "/billingAccounts/{billingAccountName}/billingProfiles/{billingProfileName}/invoiceSections/{invoiceSectionName}" -Workload 'Production' 
 ```
 
 ```output
-AliasName         DisplayName SubscriptionId                       ProvisioningState
----------         ----------- --------------                       -----------------
-test-subscription createSub   XXXXXXXX-XXXX-XXXX-XXXX-XXXXXXXXXXXX Succeeded
+AliasName         SubscriptionId                       ProvisioningState
+---------         --------------                       -----------------
+test-subscription XXXXXXXX-XXXX-XXXX-XXXX-XXXXXXXXXXXX Succeeded
 ```
 
 Create Alias Subscription.
@@ -88,10 +96,10 @@ Billing scope of the subscription.For CustomerLed and FieldLed - /billingAccount
 
 ```yaml
 Type: System.String
-Parameter Sets: (All)
+Parameter Sets: WorkloadCreateExpanded
 Aliases:
 
-Required: False
+Required: True
 Position: Named
 Default value: None
 Accept pipeline input: False
@@ -106,21 +114,6 @@ Use the SubscriptionId parameter when available if executing the cmdlet against 
 Type: System.Management.Automation.PSObject
 Parameter Sets: (All)
 Aliases: AzureRMContext, AzureCredential
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -DisplayName
-The friendly name of the subscription.
-
-```yaml
-Type: System.String
-Parameter Sets: (All)
-Aliases:
 
 Required: False
 Position: Named
@@ -179,10 +172,25 @@ This parameter can be used to create alias for existing subscription Id
 
 ```yaml
 Type: System.String
-Parameter Sets: (All)
+Parameter Sets: CreateExpanded
 Aliases:
 
-Required: False
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -SubscriptionName
+The friendly name of the subscription.
+
+```yaml
+Type: System.String
+Parameter Sets: WorkloadCreateExpanded
+Aliases: DisplayName
+
+Required: True
 Position: Named
 Default value: None
 Accept pipeline input: False
@@ -240,10 +248,10 @@ It can be either Production or DevTest.
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.Subscription.Support.Workload
-Parameter Sets: (All)
+Parameter Sets: WorkloadCreateExpanded
 Aliases:
 
-Required: False
+Required: True
 Position: Named
 Default value: None
 Accept pipeline input: False

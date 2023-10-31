@@ -38,6 +38,3 @@ Delete Alias.
 ### [Rename-AzSubscription](Rename-AzSubscription.md)
 The operation to rename a subscription
 
-### [Update-AzSubscriptionPolicy](Update-AzSubscriptionPolicy.md)
-Create or Update Subscription tenant policy for user's tenant.
-

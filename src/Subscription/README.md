@@ -35,7 +35,7 @@ In this directory, run AutoRest:
 > see https://aka.ms/autorest
 
 ``` yaml
-branch: be90a71f6a482c5b01155b3c9990887529cc6893
+branch: 0f39a2d56070d2bc4251494525cb8af88583a938
 require:
   - $(this-folder)/../readme.azure.noprofile.md
 input-file: 
@@ -126,6 +126,16 @@ directive:
       variant: ^Get$
     remove: true
 
+  # operation cmdlet must be removed
+  - where:
+      subject: SubscriptionOperation
+    hide: true
+  # Service feedback: As only global admins to run this, we don't want to have cmdlets for these as 1st class experience
+  - where:
+      verb: Update
+      subject: SubscriptionPolicy
+    hide: true
+
   - where:
       subject: AcceptSubscriptionOwnership
     set:
@@ -162,6 +172,11 @@ directive:
     set:
       parameter-name: Tag
   - where:
+      parameter-name: DisplayName
+    set:
+      parameter-name: SubscriptionName 
+      alias: DisplayName
+  - where:
       subject: Alias
       parameter-name: Name
     set:
@@ -172,6 +187,17 @@ directive:
       property-name: Name
     set:
       property-name: AliasName
+
+  # Need to divided the command into two different ones based on the mutual exclusion parameter:
+  - where:
+      verb: New
+      subject: Alias
+    hide: true
+  # SubscriptionName must be required
+  - where:
+      verb: Rename
+      subject: Subscription
+    hide: true
 
   - from: NewAzSubscriptionAlias_CreateExpanded.cs
     where: $
@@ -228,7 +254,6 @@ directive:
       format-table:
         properties:
           - AliasName
-          - DisplayName
           - SubscriptionId
           - ProvisioningState
   - where:
@@ -240,4 +265,14 @@ directive:
           - PolicyId
           - BlockSubscriptionsIntoTenant
           - BlockSubscriptionsLeavingTenant
+  - where:
+      model-name: AcceptOwnershipStatusResponse
+    set:
+      format-table:
+        properties:
+          - AcceptOwnershipState
+          - BillingOwner
+          - ProvisioningState
+          - SubscriptionId
+          - SubscriptionTenantId
 ```
