@@ -171,6 +171,7 @@ directive:
       parameter-name: AdditionalPropertyTag
     set:
       parameter-name: Tag
+  # All cmdlets parameter SubscriptionName has the alias DisplayName. ReName-AzSubscription needs to be customized to add an alias.
   - where:
       parameter-name: DisplayName
     set:

@@ -59,6 +59,7 @@ param(
     ${InputObject},
 
     [Parameter(Mandatory)]
+    [Alias('DisplayName')]
     [Microsoft.Azure.PowerShell.Cmdlets.Subscription.Category('Body')]
     [System.String]
     # New subscription name

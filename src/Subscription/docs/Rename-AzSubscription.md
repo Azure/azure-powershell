@@ -95,7 +95,7 @@ New subscription name
 ```yaml
 Type: System.String
 Parameter Sets: (All)
-Aliases:
+Aliases: DisplayName
 
 Required: True
 Position: Named
