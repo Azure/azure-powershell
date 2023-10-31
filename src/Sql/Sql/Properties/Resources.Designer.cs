@@ -1305,6 +1305,15 @@ namespace Microsoft.Azure.Commands.Sql.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Are you sure you want to remove the private endpoint &apos;{0}&apos; from agent &apos;{1}&apos;?.
+        /// </summary>
+        internal static string RemoveElasticJobPrivateEndpointWarning {
+            get {
+                return ResourceManager.GetString("RemoveElasticJobPrivateEndpointWarning", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Are you sure you want to remove the target group &apos;{0}&apos; from agent &apos;{1}&apos;.
         /// </summary>
         internal static string RemoveElasticJobTargetGroupWarning {

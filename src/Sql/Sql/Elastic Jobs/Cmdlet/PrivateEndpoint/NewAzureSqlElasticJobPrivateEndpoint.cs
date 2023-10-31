@@ -22,12 +22,12 @@ using Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters;
 namespace Microsoft.Azure.Commands.Sql.ElasticJobs.Cmdlet.PrivateEndpoint
 {
     /// <summary>
-    /// Defines the New-AzureRmSqlElasticJobPrivateEndpoint Cmdlet
+    /// Defines the New-AzSqlElasticJobPrivateEndpoint Cmdlet
     /// </summary>
     [Cmdlet(VerbsCommon.New, ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "SqlElasticJobPrivateEndpoint",
         SupportsShouldProcess = true,
         DefaultParameterSetName = DefaultParameterSet)]
-    [OutputType(typeof(AzureSqlElasticJobCredentialModel))]
+    [OutputType(typeof(AzureSqlElasticJobPrivateEndpointModel))]
     public class NewAzureSqlElasticJobPrivateEndpoint : AzureSqlElasticJobPrivateEndpointCmdletBase<AzureSqlElasticJobAgentModel>
     {
         /// <summary>
@@ -118,6 +118,12 @@ namespace Microsoft.Azure.Commands.Sql.ElasticJobs.Cmdlet.PrivateEndpoint
         //// TODO-JP : do I need more parameter sets on this? 
         [Parameter(Mandatory = true, HelpMessage = "The resource ID for the server the private endpoint will target.")]
         public string TargetServerAzureResourceId { get; set; }
+
+        /// <summary>
+        /// Gets or sets whether or not to run this cmdlet in the background as a job
+        /// </summary>
+        [Parameter(Mandatory = false, HelpMessage = "Run cmdlet in the background")]
+        public SwitchParameter AsJob { get; set; }
 
         /// <summary>
         /// Execution starts here
