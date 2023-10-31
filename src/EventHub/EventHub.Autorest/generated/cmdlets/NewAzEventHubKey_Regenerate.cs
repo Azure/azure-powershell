@@ -17,6 +17,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.EventHub.Cmdlets
     [global::System.Management.Automation.OutputType(typeof(Microsoft.Azure.PowerShell.Cmdlets.EventHub.Models.Api202301Preview.IAccessKeys))]
     [global::Microsoft.Azure.PowerShell.Cmdlets.EventHub.Description(@"Regenerates the ACS and SAS connection strings for the Event Hub.")]
     [global::Microsoft.Azure.PowerShell.Cmdlets.EventHub.Generated]
+    [global::Microsoft.Azure.PowerShell.Cmdlets.EventHub.HttpPath(Path = "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.EventHub/namespaces/{namespaceName}/eventhubs/{eventHubName}/authorizationRules/{authorizationRuleName}/regenerateKeys", ApiVersion = "2023-01-01-preview")]
     public partial class NewAzEventHubKey_Regenerate : global::System.Management.Automation.PSCmdlet,
         Microsoft.Azure.PowerShell.Cmdlets.EventHub.Runtime.IEventListener
     {

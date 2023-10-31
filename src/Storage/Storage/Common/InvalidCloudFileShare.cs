@@ -33,7 +33,7 @@ namespace Microsoft.WindowsAzure.Commands.Common.Storage.ResourceModel
     public class InvalidCloudFileShare : CloudFileShare
     {
         public InvalidCloudFileShare(Uri objectAbsoluteUri, StorageCredentials credentials)
-            : base(objectAbsoluteUri, credentials)
+            : base(objectAbsoluteUri, credentials.IsSAS ? null : credentials)
         {
             string objectUri = objectAbsoluteUri.ToString();
             if (credentials != null && credentials.IsSAS)

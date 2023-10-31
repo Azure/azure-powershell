@@ -26,10 +26,14 @@ namespace Microsoft.Azure.Management.Sql.Models
 
         /// <param name="failoverPolicy">Failover policy of the read-only endpoint for the failover group.
         /// Possible values include: 'Disabled', 'Enabled'</param>
-        public FailoverGroupReadOnlyEndpoint(string failoverPolicy = default(string))
+
+        /// <param name="targetServer">The target partner server where the read-only endpoint points to.
+        /// </param>
+        public FailoverGroupReadOnlyEndpoint(string failoverPolicy = default(string), string targetServer = default(string))
 
         {
             this.FailoverPolicy = failoverPolicy;
+            this.TargetServer = targetServer;
             CustomInit();
         }
 
@@ -45,5 +49,12 @@ namespace Microsoft.Azure.Management.Sql.Models
         /// </summary>
         [Newtonsoft.Json.JsonProperty(PropertyName = "failoverPolicy")]
         public string FailoverPolicy {get; set; }
+
+        /// <summary>
+        /// Gets or sets the target partner server where the read-only endpoint points
+        /// to.
+        /// </summary>
+        [Newtonsoft.Json.JsonProperty(PropertyName = "targetServer")]
+        public string TargetServer {get; set; }
     }
 }

@@ -13,6 +13,7 @@
 // ----------------------------------------------------------------------------------
 
 using Microsoft.Azure.Management.Sql.LegacySdk.Models;
+using Microsoft.Azure.Management.Sql.Models;
 using System.Collections.Generic;
 using System;
 
@@ -46,9 +47,21 @@ namespace Microsoft.Azure.Commands.Sql.FailoverGroup.Model
         public ReadWriteEndpoint FailoverGroupReadWriteEndpoint { get; set; }
 
         /// <summary>
-        /// Gets or sets the read-only endpoint
+        /// Gets or sets the read-only endpoint (legacy field)
         /// </summary>
         public ReadOnlyEndpoint FailoverGroupReadOnlyEndpoint { get; set; }
+
+        /// <summary>
+        /// Gets or sets the read-only endpoint.
+        /// This field is used in the newest client and has support for multiple-partner FG's.
+        /// </summary>
+        public FailoverGroupReadOnlyEndpoint FailoverGroupReadOnlyEndpointV2 { get; set; }
+
+        /// <summary>
+        /// Gets or sets the read-write endpoint.
+        /// This field is used in the newest client and has support for multiple-partner FG's.
+        /// </summary>
+        public FailoverGroupReadWriteEndpoint FailoverGroupReadWriteEndpointV2 { get; set; }
 
         /// <summary>
         /// Gets or sets the partner servers
