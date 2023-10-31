@@ -1,0 +1,315 @@
+{
+  "PolicyExemptionCRUDOnPolicySet+[NoContext]+[NoScenario]+$GET+https://management.azure.com/providers/Microsoft.Authorization/policyDefinitions/0a914e76-4921-4c19-b460-a2d36003525a?api-version=2021-06-01+1": {
+    "Request": {
+      "Method": "GET",
+      "RequestUri": "https://management.azure.com/providers/Microsoft.Authorization/policyDefinitions/0a914e76-4921-4c19-b460-a2d36003525a?api-version=2021-06-01",
+      "Content": null,
+      "isContentBase64": false,
+      "Headers": {
+        "x-ms-unique-id": [ "765" ],
+        "x-ms-client-request-id": [ "61d419d5-b34f-4bd6-a0a6-5b06a51e711f" ],
+        "CommandName": [ "\u0026" ],
+        "FullCommandName": [ "Get-AzPolicyDefinitionBuilt_GetViaIdentity" ],
+        "ParameterSetName": [ "__AllParameterSets" ],
+        "User-Agent": [ "AzurePowershell/v9.4.0", "PSVersion/v7.3.8", "Az.Policy/0.1.0" ],
+        "Authorization": [ "[Filtered]" ]
+      },
+      "ContentHeaders": {
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "Server": [ "Kestrel" ],
+        "x-ms-ratelimit-remaining-tenant-reads": [ "11980" ],
+        "x-ms-request-id": [ "a164d3bb-f070-4f30-abfe-0eb523e26d73" ],
+        "x-ms-correlation-request-id": [ "a164d3bb-f070-4f30-abfe-0eb523e26d73" ],
+        "x-ms-routing-request-id": [ "WESTUS:20231025T163543Z:a164d3bb-f070-4f30-abfe-0eb523e26d73" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "Date": [ "Wed, 25 Oct 2023 16:35:42 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "621" ],
+        "Content-Type": [ "application/json; charset=utf-8" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\"properties\":{\"displayName\":\"Audit resource location matches resource group location\",\"policyType\":\"BuiltIn\",\"mode\":\"Indexed\",\"description\":\"Audit that the resource location matches its resource group location\",\"metadata\":{\"version\":\"2.0.0\",\"category\":\"General\"},\"policyRule\":{\"if\":{\"allOf\":[{\"field\":\"location\",\"notEquals\":\"[resourcegroup().location]\"},{\"field\":\"location\",\"notEquals\":\"global\"}]},\"then\":{\"effect\":\"audit\"}}},\"id\":\"/providers/Microsoft.Authorization/policyDefinitions/0a914e76-4921-4c19-b460-a2d36003525a\",\"type\":\"Microsoft.Authorization/policyDefinitions\",\"name\":\"0a914e76-4921-4c19-b460-a2d36003525a\"}",
+      "isContentBase64": false
+    }
+  },
+  "PolicyExemptionCRUDOnPolicySet+[NoContext]+[NoScenario]+$PUT+https://management.azure.com/subscriptions/edb2c18a-04d6-49e9-bc72-e23852f507ad/providers/Microsoft.Authorization/policySetDefinitions/testPSD?api-version=2021-06-01+2": {
+    "Request": {
+      "Method": "PUT",
+      "RequestUri": "https://management.azure.com/subscriptions/edb2c18a-04d6-49e9-bc72-e23852f507ad/providers/Microsoft.Authorization/policySetDefinitions/testPSD?api-version=2021-06-01",
+      "Content": "{\r\n  \"properties\": {\r\n    \"displayName\": \"Unit test junk: sorry for littering. Please delete me!\",\r\n    \"policyDefinitions\": [\r\n      {\r\n        \"policyDefinitionId\": \"/providers/Microsoft.Authorization/policyDefinitions/0a914e76-4921-4c19-b460-a2d36003525a\"\r\n      }\r\n    ]\r\n  }\r\n}",
+      "isContentBase64": false,
+      "Headers": {
+      },
+      "ContentHeaders": {
+        "Content-Type": [ "application/json" ],
+        "Content-Length": [ "282" ]
+      }
+    },
+    "Response": {
+      "StatusCode": 201,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "Server": [ "Kestrel" ],
+        "x-ms-ratelimit-remaining-subscription-writes": [ "1162" ],
+        "x-ms-request-id": [ "d0e8bab3-5e76-4e4e-837d-7aba01c0ccb2" ],
+        "x-ms-correlation-request-id": [ "d0e8bab3-5e76-4e4e-837d-7aba01c0ccb2" ],
+        "x-ms-routing-request-id": [ "WESTUS:20231025T163544Z:d0e8bab3-5e76-4e4e-837d-7aba01c0ccb2" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "Date": [ "Wed, 25 Oct 2023 16:35:44 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "876" ],
+        "Content-Type": [ "application/json; charset=utf-8" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\"properties\":{\"displayName\":\"Unit test junk: sorry for littering. Please delete me!\",\"policyType\":\"Custom\",\"metadata\":{\"createdBy\":\"3d826307-2481-45a0-a271-bcf9333f914a\",\"createdOn\":\"2023-10-25T16:35:44.0295905Z\",\"updatedBy\":null,\"updatedOn\":null},\"policyDefinitions\":[{\"policyDefinitionReferenceId\":\"2719031940633985590\",\"policyDefinitionId\":\"/providers/Microsoft.Authorization/policyDefinitions/0a914e76-4921-4c19-b460-a2d36003525a\"}]},\"id\":\"/subscriptions/edb2c18a-04d6-49e9-bc72-e23852f507ad/providers/Microsoft.Authorization/policySetDefinitions/testPSD\",\"type\":\"Microsoft.Authorization/policySetDefinitions\",\"name\":\"testPSD\",\"systemData\":{\"createdBy\":\"cstack@ntdev.microsoft.com\",\"createdByType\":\"User\",\"createdAt\":\"2023-10-25T16:35:43.1942403Z\",\"lastModifiedBy\":\"cstack@ntdev.microsoft.com\",\"lastModifiedByType\":\"User\",\"lastModifiedAt\":\"2023-10-25T16:35:43.1942403Z\"}}",
+      "isContentBase64": false
+    }
+  },
+  "PolicyExemptionCRUDOnPolicySet+[NoContext]+[NoScenario]+$PUT+https://management.azure.com//subscriptions/edb2c18a-04d6-49e9-bc72-e23852f507ad/providers/Microsoft.Authorization/policyAssignments/testPA?api-version=2021-06-01+3": {
+    "Request": {
+      "Method": "PUT",
+      "RequestUri": "https://management.azure.com//subscriptions/edb2c18a-04d6-49e9-bc72-e23852f507ad/providers/Microsoft.Authorization/policyAssignments/testPA?api-version=2021-06-01",
+      "Content": "{\r\n  \"properties\": {\r\n    \"displayName\": \"Unit test junk: sorry for littering. Please delete me!\",\r\n    \"policyDefinitionId\": \"/subscriptions/edb2c18a-04d6-49e9-bc72-e23852f507ad/providers/Microsoft.Authorization/policySetDefinitions/testPSD\"\r\n  }\r\n}",
+      "isContentBase64": false,
+      "Headers": {
+      },
+      "ContentHeaders": {
+        "Content-Type": [ "application/json" ],
+        "Content-Length": [ "250" ]
+      }
+    },
+    "Response": {
+      "StatusCode": 201,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "Server": [ "Kestrel" ],
+        "x-ms-ratelimit-remaining-subscription-writes": [ "1161" ],
+        "x-ms-request-id": [ "b8ec115c-1baf-4472-882c-39edaed90043" ],
+        "x-ms-correlation-request-id": [ "b8ec115c-1baf-4472-882c-39edaed90043" ],
+        "x-ms-routing-request-id": [ "WESTUS:20231025T163544Z:b8ec115c-1baf-4472-882c-39edaed90043" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "Date": [ "Wed, 25 Oct 2023 16:35:44 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "884" ],
+        "Content-Type": [ "application/json; charset=utf-8" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\"properties\":{\"displayName\":\"Unit test junk: sorry for littering. Please delete me!\",\"policyDefinitionId\":\"/subscriptions/edb2c18a-04d6-49e9-bc72-e23852f507ad/providers/Microsoft.Authorization/policySetDefinitions/testPSD\",\"scope\":\"/subscriptions/edb2c18a-04d6-49e9-bc72-e23852f507ad\",\"metadata\":{\"createdBy\":\"3d826307-2481-45a0-a271-bcf9333f914a\",\"createdOn\":\"2023-10-25T16:35:44.448555Z\",\"updatedBy\":null,\"updatedOn\":null},\"enforcementMode\":\"Default\"},\"id\":\"/subscriptions/edb2c18a-04d6-49e9-bc72-e23852f507ad/providers/Microsoft.Authorization/policyAssignments/testPA\",\"type\":\"Microsoft.Authorization/policyAssignments\",\"name\":\"testPA\",\"systemData\":{\"createdBy\":\"cstack@ntdev.microsoft.com\",\"createdByType\":\"User\",\"createdAt\":\"2023-10-25T16:35:44.4286119Z\",\"lastModifiedBy\":\"cstack@ntdev.microsoft.com\",\"lastModifiedByType\":\"User\",\"lastModifiedAt\":\"2023-10-25T16:35:44.4286119Z\"}}",
+      "isContentBase64": false
+    }
+  },
+  "PolicyExemptionCRUDOnPolicySet+[NoContext]+[NoScenario]+$PUT+https://management.azure.com//subscriptions/edb2c18a-04d6-49e9-bc72-e23852f507ad/providers/Microsoft.Authorization/policyExemptions/testExemption?api-version=2022-07-01-preview+4": {
+    "Request": {
+      "Method": "PUT",
+      "RequestUri": "https://management.azure.com//subscriptions/edb2c18a-04d6-49e9-bc72-e23852f507ad/providers/Microsoft.Authorization/policyExemptions/testExemption?api-version=2022-07-01-preview",
+      "Content": "{\r\n  \"properties\": {\r\n    \"policyAssignmentId\": \"/subscriptions/edb2c18a-04d6-49e9-bc72-e23852f507ad/providers/Microsoft.Authorization/policyAssignments/testPA\",\r\n    \"exemptionCategory\": \"Waiver\",\r\n    \"expiresOn\": \"3021-03-09T07:30:10.0000000Z\",\r\n    \"displayName\": \"Unit test junk: sorry for littering. Please delete me!\"\r\n  }\r\n}",
+      "isContentBase64": false,
+      "Headers": {
+      },
+      "ContentHeaders": {
+        "Content-Type": [ "application/json" ],
+        "Content-Length": [ "332" ]
+      }
+    },
+    "Response": {
+      "StatusCode": 201,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "Server": [ "Kestrel" ],
+        "x-ms-ratelimit-remaining-subscription-writes": [ "1160" ],
+        "x-ms-request-id": [ "1d9b18f5-302a-4218-a9e1-7d37c581f331" ],
+        "x-ms-correlation-request-id": [ "1d9b18f5-302a-4218-a9e1-7d37c581f331" ],
+        "x-ms-routing-request-id": [ "WESTUS:20231025T163545Z:1d9b18f5-302a-4218-a9e1-7d37c581f331" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "Date": [ "Wed, 25 Oct 2023 16:35:44 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "726" ],
+        "Content-Type": [ "application/json; charset=utf-8" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\"properties\":{\"policyAssignmentId\":\"/subscriptions/edb2c18a-04d6-49e9-bc72-e23852f507ad/providers/Microsoft.Authorization/policyAssignments/testPA\",\"exemptionCategory\":\"Waiver\",\"displayName\":\"Unit test junk: sorry for littering. Please delete me!\",\"expiresOn\":\"3021-03-09T07:30:10Z\"},\"id\":\"/subscriptions/edb2c18a-04d6-49e9-bc72-e23852f507ad/providers/Microsoft.Authorization/policyExemptions/testExemption\",\"type\":\"Microsoft.Authorization/policyExemptions\",\"name\":\"testExemption\",\"systemData\":{\"createdBy\":\"cstack@ntdev.microsoft.com\",\"createdByType\":\"User\",\"createdAt\":\"2023-10-25T16:35:44.8192714Z\",\"lastModifiedBy\":\"cstack@ntdev.microsoft.com\",\"lastModifiedByType\":\"User\",\"lastModifiedAt\":\"2023-10-25T16:35:44.8192714Z\"}}",
+      "isContentBase64": false
+    }
+  },
+  "PolicyExemptionCRUDOnPolicySet+[NoContext]+[NoScenario]+$GET+https://management.azure.com/subscriptions/edb2c18a-04d6-49e9-bc72-e23852f507ad/providers/Microsoft.Authorization/policyExemptions?api-version=2022-07-01-preview+1": {
+    "Request": {
+      "Method": "GET",
+      "RequestUri": "https://management.azure.com/subscriptions/edb2c18a-04d6-49e9-bc72-e23852f507ad/providers/Microsoft.Authorization/policyExemptions?api-version=2022-07-01-preview",
+      "Content": null,
+      "isContentBase64": false,
+      "Headers": {
+        "x-ms-unique-id": [ "769" ],
+        "x-ms-client-request-id": [ "9827ee93-dd35-4378-8e1e-e7259aff0551" ],
+        "CommandName": [ "\u0026" ],
+        "FullCommandName": [ "Get-AzPolicyExemption_List" ],
+        "ParameterSetName": [ "__AllParameterSets" ],
+        "User-Agent": [ "AzurePowershell/v9.4.0", "PSVersion/v7.3.8", "Az.Policy/0.1.0" ],
+        "Authorization": [ "[Filtered]" ]
+      },
+      "ContentHeaders": {
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "Server": [ "Kestrel" ],
+        "x-ms-ratelimit-remaining-subscription-reads": [ "11923" ],
+        "x-ms-request-id": [ "7b42b3dd-7fb6-4f8e-aaf7-f8e5e6285af4" ],
+        "x-ms-correlation-request-id": [ "7b42b3dd-7fb6-4f8e-aaf7-f8e5e6285af4" ],
+        "x-ms-routing-request-id": [ "WESTUS:20231025T163545Z:7b42b3dd-7fb6-4f8e-aaf7-f8e5e6285af4" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "Date": [ "Wed, 25 Oct 2023 16:35:45 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "1566" ],
+        "Content-Type": [ "application/json; charset=utf-8" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\"value\":[{\"properties\":{\"policyAssignmentId\":\"/subscriptions/edb2c18a-04d6-49e9-bc72-e23852f507ad/providers/Microsoft.Authorization/policyAssignments/testPA\",\"exemptionCategory\":\"Waiver\",\"displayName\":\"Unit test junk: sorry for littering. Please delete me!\",\"expiresOn\":\"3021-03-09T07:30:10Z\"},\"id\":\"/subscriptions/edb2c18a-04d6-49e9-bc72-e23852f507ad/providers/Microsoft.Authorization/policyExemptions/testExemption\",\"type\":\"Microsoft.Authorization/policyExemptions\",\"name\":\"testExemption\",\"systemData\":{\"createdBy\":\"cstack@ntdev.microsoft.com\",\"createdByType\":\"User\",\"createdAt\":\"2023-10-25T16:35:44.8192714Z\",\"lastModifiedBy\":\"cstack@ntdev.microsoft.com\",\"lastModifiedByType\":\"User\",\"lastModifiedAt\":\"2023-10-25T16:35:44.8192714Z\"}},{\"properties\":{\"policyAssignmentId\":\"/providers/Microsoft.Management/managementGroups/AzGovPerfTest/providers/Microsoft.Authorization/policyAssignments/c691bb62817b40fda56c1b77\",\"policyDefinitionReferenceIds\":[],\"exemptionCategory\":\"Waiver\",\"displayName\":\"Azure Governance Performance Test - qingye-test-exemptionOnMG\",\"resourceSelectors\":[],\"metadata\":{}},\"id\":\"/providers/Microsoft.Management/managementGroups/AzGovPerfTest/providers/Microsoft.Authorization/policyExemptions/dcfaaf0f40374736afbffed9\",\"type\":\"Microsoft.Authorization/policyExemptions\",\"name\":\"dcfaaf0f40374736afbffed9\",\"systemData\":{\"createdBy\":\"qingyechen@microsoft.com\",\"createdByType\":\"User\",\"createdAt\":\"2023-06-27T17:08:45.1562625Z\",\"lastModifiedBy\":\"qingyechen@microsoft.com\",\"lastModifiedByType\":\"User\",\"lastModifiedAt\":\"2023-06-27T17:08:45.1562625Z\"}}]}",
+      "isContentBase64": false
+    }
+  },
+  "PolicyExemptionCRUDOnPolicySet+[NoContext]+[NoScenario]+$DELETE+https://management.azure.com//subscriptions/edb2c18a-04d6-49e9-bc72-e23852f507ad/providers/Microsoft.Authorization/policyExemptions/testExemption?api-version=2022-07-01-preview+2": {
+    "Request": {
+      "Method": "DELETE",
+      "RequestUri": "https://management.azure.com//subscriptions/edb2c18a-04d6-49e9-bc72-e23852f507ad/providers/Microsoft.Authorization/policyExemptions/testExemption?api-version=2022-07-01-preview",
+      "Content": null,
+      "isContentBase64": false,
+      "Headers": {
+        "x-ms-unique-id": [ "770" ],
+        "x-ms-client-request-id": [ "29b50fad-f753-4d8c-b993-3ebb0615d2cc" ],
+        "CommandName": [ "\u0026" ],
+        "FullCommandName": [ "Remove-AzPolicyExemption_Delete" ],
+        "ParameterSetName": [ "__AllParameterSets" ],
+        "User-Agent": [ "AzurePowershell/v9.4.0", "PSVersion/v7.3.8", "Az.Policy/0.1.0" ],
+        "Authorization": [ "[Filtered]" ]
+      },
+      "ContentHeaders": {
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "Server": [ "Kestrel" ],
+        "x-ms-ratelimit-remaining-subscription-deletes": [ "14978" ],
+        "x-ms-request-id": [ "11ba1ab8-5927-4d79-8c2d-6a6ff346ecdc" ],
+        "x-ms-correlation-request-id": [ "11ba1ab8-5927-4d79-8c2d-6a6ff346ecdc" ],
+        "x-ms-routing-request-id": [ "WESTUS:20231025T163545Z:11ba1ab8-5927-4d79-8c2d-6a6ff346ecdc" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "Date": [ "Wed, 25 Oct 2023 16:35:45 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "726" ],
+        "Content-Type": [ "application/json; charset=utf-8" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\"properties\":{\"policyAssignmentId\":\"/subscriptions/edb2c18a-04d6-49e9-bc72-e23852f507ad/providers/Microsoft.Authorization/policyAssignments/testPA\",\"exemptionCategory\":\"Waiver\",\"displayName\":\"Unit test junk: sorry for littering. Please delete me!\",\"expiresOn\":\"3021-03-09T07:30:10Z\"},\"id\":\"/subscriptions/edb2c18a-04d6-49e9-bc72-e23852f507ad/providers/Microsoft.Authorization/policyExemptions/testExemption\",\"type\":\"Microsoft.Authorization/policyExemptions\",\"name\":\"testExemption\",\"systemData\":{\"createdBy\":\"cstack@ntdev.microsoft.com\",\"createdByType\":\"User\",\"createdAt\":\"2023-10-25T16:35:44.8192714Z\",\"lastModifiedBy\":\"cstack@ntdev.microsoft.com\",\"lastModifiedByType\":\"User\",\"lastModifiedAt\":\"2023-10-25T16:35:44.8192714Z\"}}",
+      "isContentBase64": false
+    }
+  },
+  "PolicyExemptionCRUDOnPolicySet+[NoContext]+[NoScenario]+$DELETE+https://management.azure.com//subscriptions/edb2c18a-04d6-49e9-bc72-e23852f507ad/providers/Microsoft.Authorization/policyAssignments/testPA?api-version=2021-06-01+3": {
+    "Request": {
+      "Method": "DELETE",
+      "RequestUri": "https://management.azure.com//subscriptions/edb2c18a-04d6-49e9-bc72-e23852f507ad/providers/Microsoft.Authorization/policyAssignments/testPA?api-version=2021-06-01",
+      "Content": null,
+      "isContentBase64": false,
+      "Headers": {
+        "x-ms-unique-id": [ "771" ],
+        "x-ms-client-request-id": [ "e886a665-b307-49c3-b79c-2debd22fe9af" ],
+        "CommandName": [ "\u0026" ],
+        "FullCommandName": [ "Remove-AzPolicyAssignment_Delete" ],
+        "ParameterSetName": [ "__AllParameterSets" ],
+        "User-Agent": [ "AzurePowershell/v9.4.0", "PSVersion/v7.3.8", "Az.Policy/0.1.0" ],
+        "Authorization": [ "[Filtered]" ]
+      },
+      "ContentHeaders": {
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "x-ms-ratelimit-remaining-subscription-deletes": [ "14977" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "Server": [ "Kestrel" ],
+        "x-ms-request-id": [ "434fa9c8-897b-4e4c-bd42-94204a268d27" ],
+        "x-ms-correlation-request-id": [ "434fa9c8-897b-4e4c-bd42-94204a268d27" ],
+        "x-ms-routing-request-id": [ "WESTUS:20231025T163546Z:434fa9c8-897b-4e4c-bd42-94204a268d27" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "Date": [ "Wed, 25 Oct 2023 16:35:45 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "884" ],
+        "Content-Type": [ "application/json; charset=utf-8" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\"properties\":{\"displayName\":\"Unit test junk: sorry for littering. Please delete me!\",\"policyDefinitionId\":\"/subscriptions/edb2c18a-04d6-49e9-bc72-e23852f507ad/providers/Microsoft.Authorization/policySetDefinitions/testPSD\",\"scope\":\"/subscriptions/edb2c18a-04d6-49e9-bc72-e23852f507ad\",\"metadata\":{\"createdBy\":\"3d826307-2481-45a0-a271-bcf9333f914a\",\"createdOn\":\"2023-10-25T16:35:44.448555Z\",\"updatedBy\":null,\"updatedOn\":null},\"enforcementMode\":\"Default\"},\"id\":\"/subscriptions/edb2c18a-04d6-49e9-bc72-e23852f507ad/providers/Microsoft.Authorization/policyAssignments/testPA\",\"type\":\"Microsoft.Authorization/policyAssignments\",\"name\":\"testPA\",\"systemData\":{\"createdBy\":\"cstack@ntdev.microsoft.com\",\"createdByType\":\"User\",\"createdAt\":\"2023-10-25T16:35:44.4286119Z\",\"lastModifiedBy\":\"cstack@ntdev.microsoft.com\",\"lastModifiedByType\":\"User\",\"lastModifiedAt\":\"2023-10-25T16:35:44.4286119Z\"}}",
+      "isContentBase64": false
+    }
+  },
+  "PolicyExemptionCRUDOnPolicySet+[NoContext]+[NoScenario]+$DELETE+https://management.azure.com/subscriptions/edb2c18a-04d6-49e9-bc72-e23852f507ad/providers/Microsoft.Authorization/policySetDefinitions/testPSD?api-version=2021-06-01+4": {
+    "Request": {
+      "Method": "DELETE",
+      "RequestUri": "https://management.azure.com/subscriptions/edb2c18a-04d6-49e9-bc72-e23852f507ad/providers/Microsoft.Authorization/policySetDefinitions/testPSD?api-version=2021-06-01",
+      "Content": null,
+      "isContentBase64": false,
+      "Headers": {
+        "x-ms-unique-id": [ "772" ],
+        "x-ms-client-request-id": [ "cbed5291-a7f9-4faa-9a5c-557b72d86ed4" ],
+        "CommandName": [ "\u0026" ],
+        "FullCommandName": [ "Remove-AzPolicySetDefinition_Delete" ],
+        "ParameterSetName": [ "__AllParameterSets" ],
+        "User-Agent": [ "AzurePowershell/v9.4.0", "PSVersion/v7.3.8", "Az.Policy/0.1.0" ],
+        "Authorization": [ "[Filtered]" ]
+      },
+      "ContentHeaders": {
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "Server": [ "Kestrel" ],
+        "x-ms-ratelimit-remaining-subscription-deletes": [ "14976" ],
+        "x-ms-request-id": [ "b6a0a8af-8fae-404e-a8a2-996d246923b5" ],
+        "x-ms-correlation-request-id": [ "b6a0a8af-8fae-404e-a8a2-996d246923b5" ],
+        "x-ms-routing-request-id": [ "WESTUS:20231025T163547Z:b6a0a8af-8fae-404e-a8a2-996d246923b5" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "Date": [ "Wed, 25 Oct 2023 16:35:46 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "876" ],
+        "Content-Type": [ "application/json; charset=utf-8" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\"properties\":{\"displayName\":\"Unit test junk: sorry for littering. Please delete me!\",\"policyType\":\"Custom\",\"metadata\":{\"createdBy\":\"3d826307-2481-45a0-a271-bcf9333f914a\",\"createdOn\":\"2023-10-25T16:35:44.0295905Z\",\"updatedBy\":null,\"updatedOn\":null},\"policyDefinitions\":[{\"policyDefinitionReferenceId\":\"2719031940633985590\",\"policyDefinitionId\":\"/providers/Microsoft.Authorization/policyDefinitions/0a914e76-4921-4c19-b460-a2d36003525a\"}]},\"id\":\"/subscriptions/edb2c18a-04d6-49e9-bc72-e23852f507ad/providers/Microsoft.Authorization/policySetDefinitions/testPSD\",\"type\":\"Microsoft.Authorization/policySetDefinitions\",\"name\":\"testPSD\",\"systemData\":{\"createdBy\":\"cstack@ntdev.microsoft.com\",\"createdByType\":\"User\",\"createdAt\":\"2023-10-25T16:35:43.1942403Z\",\"lastModifiedBy\":\"cstack@ntdev.microsoft.com\",\"lastModifiedByType\":\"User\",\"lastModifiedAt\":\"2023-10-25T16:35:43.1942403Z\"}}",
+      "isContentBase64": false
+    }
+  }
+}
