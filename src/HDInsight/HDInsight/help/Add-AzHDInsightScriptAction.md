@@ -33,7 +33,7 @@ You can provide each cluster with a list of script actions to run in a specified
 $storageAccountResourceGroupName = "Group"
 $storageAccountResourceId = "yourstorageaccountresourceid"
 $storageAccountName = "yourstorageacct001"
-$storageAccountKey = (Get-AzStorageAccountKey -ResourceGroupName $storageAccountResourceGroupName -Name $storageAccountName)[0].value
+$storageAccountKey = "yourstorageaccountkey"
 
 
 $storageContainer = "container001"

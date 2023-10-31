@@ -36,7 +36,7 @@ The **New-AzHDInsightClusterConfig** cmdlet creates a non-persisted object that 
 $storageAccountResourceGroupName = "Group"
 $storageAccountResourceId = "yourstorageaccountresourceid"
 $storageAccountName = "yourstorageaccountname"
-$storageAccountKey = (Get-AzStorageAccountKey -ResourceGroupName $storageAccountResourceGroupName -Name $storageAccountName)[0].value
+$storageAccountKey = "yourstorageaccountkey"
 
 
 $storageContainer = "container002"
