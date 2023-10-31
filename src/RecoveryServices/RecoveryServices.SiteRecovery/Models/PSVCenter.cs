@@ -44,7 +44,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery
             this.ID = vCenterServer.Id;
             this.Name = vCenterServer.Name;
             this.FriendlyName = vCenterServer.Properties.FriendlyName;
-            this.IpOrHostName = vCenterServer.Properties.IpAddress;
+            this.IpOrHostName = vCenterServer.Properties.IPAddress;
             this.Port = vCenterServer.Properties.Port;
             this.FabricArmResourceName = vCenterServer.Properties.FabricArmResourceName;
             this.ProcessServerId = vCenterServer.Properties.ProcessServerId;
