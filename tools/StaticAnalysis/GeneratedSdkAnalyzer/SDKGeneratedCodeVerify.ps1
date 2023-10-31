@@ -76,7 +76,7 @@ try {
         }
 
         # Skip check for modules without README.md and .Sdk folder.
-        if (-not(Test-Path -Path "README.md" -PathType Leaf) -and -not(Test-Path -Path $PSScriptRoot/../../../$_))
+        if (-not(Test-Path -Path "$PSScriptRoot/../../../$_/README.md" -PathType Leaf) -and -not(Test-Path -Path $PSScriptRoot/../../../$_))
         {
             Write-Host "$PSScriptRoot/../../../$_" "Does not exist, and no README file detected. The module is no longer SDK based. Skip it."
             continue
