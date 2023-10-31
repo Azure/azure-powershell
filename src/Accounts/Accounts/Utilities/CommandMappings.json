@@ -6427,6 +6427,7 @@
       "Get-AzSqlElasticJobExecution": {},
       "Get-AzSqlElasticJobStepExecution": {},
       "Get-AzSqlElasticJobTargetExecution": {},
+      "New-AzSqlElasticJobPrivateEndpoint": {},
       "Enable-AzSqlDatabaseSensitivityRecommendation": {},
       "Disable-AzSqlDatabaseSensitivityRecommendation": {},
       "Enable-AzSqlInstanceDatabaseSensitivityRecommendation": {},
