@@ -79,7 +79,7 @@ param(
     [Parameter(Mandatory, ValueFromPipeline, ValueFromPipelineByPropertyName)]
     [ValidateNotNullOrEmpty()]
     [Microsoft.Azure.PowerShell.Cmdlets.Policy.Category('Path')]
-    [Microsoft.Azure.PowerShell.Cmdlets.Policy.Runtime.Info(PossibleTypes=([Microsoft.Azure.PowerShell.Cmdlets.Policy.Models.Api20210601.IPolicyAssignment]))]
+    [Microsoft.Azure.PowerShell.Cmdlets.Policy.Runtime.Info(PossibleTypes=([Microsoft.Azure.PowerShell.Cmdlets.Policy.Models.Api20220601.IPolicyAssignment]))]
     [PSCustomObject]
     # The policy assignment id filter.
     ${PolicyAssignment},
@@ -104,7 +104,7 @@ param(
     ${Metadata},
 
     [Parameter()]
-    [switch]
+    [System.Management.Automation.SwitchParameter]
     # Causes cmdlet to return artifacts using legacy format placing policy-specific properties in a property bag object.
     ${BackwardCompatible} = $false,
 

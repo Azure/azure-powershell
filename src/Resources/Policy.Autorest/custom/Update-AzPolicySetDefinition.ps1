@@ -114,7 +114,7 @@ param(
     ${PolicyDefinitionGroup},
 
     [Parameter()]
-    [switch]
+    [System.Management.Automation.SwitchParameter]
     # Causes cmdlet to return artifacts using legacy format placing policy-specific properties in a property bag object.
     ${BackwardCompatible} = $false,
 

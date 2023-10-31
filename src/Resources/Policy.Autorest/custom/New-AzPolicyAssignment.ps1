@@ -31,7 +31,7 @@ For example, when you assign a policy at resource group scope, that policy appli
 https://learn.microsoft.com/powershell/module/az.resources/new-azpolicyassignment
 #>
 function New-AzPolicyAssignment {
-[OutputType([Microsoft.Azure.PowerShell.Cmdlets.Policy.Models.Api20210601.IPolicyAssignment])]
+[OutputType([Microsoft.Azure.PowerShell.Cmdlets.Policy.Models.Api20220601.IPolicyAssignment])]
 [CmdletBinding(DefaultParameterSetName='Default', SupportsShouldProcess=$false, ConfirmImpact='None')]
 param(
     [Parameter(Mandatory, ValueFromPipelineByPropertyName)]
@@ -109,7 +109,7 @@ param(
 
     [Parameter(ValueFromPipelineByPropertyName)]
     [Microsoft.Azure.PowerShell.Cmdlets.Policy.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.Policy.Runtime.Info(PossibleTypes=([Microsoft.Azure.PowerShell.Cmdlets.Policy.Models.Api20210601.IPolicyAssignmentPropertiesMetadata]))]
+    [Microsoft.Azure.PowerShell.Cmdlets.Policy.Runtime.Info(PossibleTypes=([Microsoft.Azure.PowerShell.Cmdlets.Policy.Models.Api20220601.IPolicyAssignmentPropertiesMetadata]))]
     [System.String]
     # The policy assignment metadata.
     # Metadata is an open ended object and is typically a collection of key value pairs.
@@ -149,14 +149,14 @@ param(
     [Parameter(ValueFromPipelineByPropertyName)]
     [AllowEmptyCollection()]
     [Microsoft.Azure.PowerShell.Cmdlets.Policy.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.Policy.Runtime.Info(PossibleTypes=([Microsoft.Azure.PowerShell.Cmdlets.Policy.Models.Api20210601.INonComplianceMessage[]]))]
+    [Microsoft.Azure.PowerShell.Cmdlets.Policy.Runtime.Info(PossibleTypes=([Microsoft.Azure.PowerShell.Cmdlets.Policy.Models.Api20220601.INonComplianceMessage[]]))]
     [PSCustomObject[]]
     # The messages that describe why a resource is non-compliant with the policy.
     # To construct, see NOTES section for NONCOMPLIANCEMESSAGE properties and create a hash table.
     ${NonComplianceMessage},
 
     [Parameter()]
-    [switch]
+    [System.Management.Automation.SwitchParameter]
     # Causes cmdlet to return artifacts using legacy format placing policy-specific properties in a property bag object.
     ${BackwardCompatible} = $false,
 

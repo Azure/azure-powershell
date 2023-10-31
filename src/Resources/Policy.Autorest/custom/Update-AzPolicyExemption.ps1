@@ -91,7 +91,7 @@ param(
     ${ExpiresOn},
 
     [Parameter(ValueFromPipelineByPropertyName)]
-    [switch]
+    [System.Management.Automation.SwitchParameter]
     # Indicates whether to clear the expiration date and time of the policy exemption.
     ${ClearExpiration},
 
@@ -104,7 +104,7 @@ param(
     ${Metadata},
 
     [Parameter()]
-    [switch]
+    [System.Management.Automation.SwitchParameter]
     # Causes cmdlet to return artifacts using legacy format placing policy-specific properties in a property bag object.
     ${BackwardCompatible} = $false,
 

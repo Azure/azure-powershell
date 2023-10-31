@@ -62,7 +62,7 @@ param(
     ${Id},
 
     [Parameter()]
-    [switch]
+    [System.Management.Automation.SwitchParameter]
     # When $true, skip confirmation prompts
     ${Force},
 
@@ -74,7 +74,7 @@ param(
     ${InputObject},
 
     [Parameter()]
-    [switch]
+    [System.Management.Automation.SwitchParameter]
     # Causes cmdlet to return artifacts using legacy format placing policy-specific properties in a property bag object.
     ${BackwardCompatible} = $false,
 

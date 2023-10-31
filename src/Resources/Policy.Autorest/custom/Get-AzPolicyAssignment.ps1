@@ -30,7 +30,7 @@ Identify a policy assignment to get by name and scope or by ID.
 https://learn.microsoft.com/powershell/module/az.resources/get-azpolicyassignment
 #>
 function Get-AzPolicyAssignment {
-[OutputType([Microsoft.Azure.PowerShell.Cmdlets.Policy.Models.Api20210601.IPolicyAssignment])]
+[OutputType([Microsoft.Azure.PowerShell.Cmdlets.Policy.Models.Api20220601.IPolicyAssignment])]
 [CmdletBinding(DefaultParameterSetName='Default')]
 param(
     [Parameter(ParameterSetName='Name', Mandatory, ValueFromPipelineByPropertyName)]
@@ -71,7 +71,7 @@ param(
 
     [Parameter(ParameterSetName='IncludeDescendent', Mandatory, ValueFromPipelineByPropertyName)]
     [Microsoft.Azure.PowerShell.Cmdlets.Policy.Category('Path')]
-    [switch]
+    [System.Management.Automation.SwitchParameter]
     # Get all policy assignments that target the given policy definition [fully qualified] ID.
     ${IncludeDescendent},
 
@@ -91,7 +91,7 @@ param(
     ${Top},
 
     [Parameter()]
-    [switch]
+    [System.Management.Automation.SwitchParameter]
     # Causes cmdlet to return artifacts using legacy format placing policy-specific properties in a property bag object.
     ${BackwardCompatible} = $false,
 

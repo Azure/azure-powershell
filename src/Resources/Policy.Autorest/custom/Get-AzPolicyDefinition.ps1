@@ -72,19 +72,19 @@ param(
 
     [Parameter(ParameterSetName='BuiltIn', Mandatory, ValueFromPipelineByPropertyName)]
     [Microsoft.Azure.PowerShell.Cmdlets.Policy.Category('Query')]
-    [switch]
+    [System.Management.Automation.SwitchParameter]
     # Causes cmdlet to return only built-in policy definitions.
     ${BuiltIn},
 
     [Parameter(ParameterSetName='Custom', Mandatory, ValueFromPipelineByPropertyName)]
     [Microsoft.Azure.PowerShell.Cmdlets.Policy.Category('Query')]
-    [switch]
+    [System.Management.Automation.SwitchParameter]
     # Causes cmdlet to return only custom policy definitions.
     ${Custom},
 
     [Parameter(ParameterSetName='Static', Mandatory, ValueFromPipelineByPropertyName)]
     [Microsoft.Azure.PowerShell.Cmdlets.Policy.Category('Query')]
-    [switch]
+    [System.Management.Automation.SwitchParameter]
     # Causes cmdlet to return only static policy definitions.
     ${Static},
 
@@ -105,7 +105,7 @@ param(
     ${Top},
 
     [Parameter()]
-    [switch]
+    [System.Management.Automation.SwitchParameter]
     # Causes cmdlet to return artifacts using legacy format placing policy-specific properties in a property bag object.
     ${BackwardCompatible} = $false,
 
