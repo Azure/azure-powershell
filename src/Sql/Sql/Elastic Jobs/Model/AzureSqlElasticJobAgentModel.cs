@@ -37,6 +37,11 @@ namespace Microsoft.Azure.Commands.Sql.ElasticJobs.Model
         public int? WorkerCount { get; set; }
 
         /// <summary>
+        /// Gets or sets the agent's SKU name
+        /// </summary>
+        public string SkuName { get; set; }
+
+        /// <summary>
         /// Gets or sets the agent's state.
         /// </summary>
         public string State { get; set; }

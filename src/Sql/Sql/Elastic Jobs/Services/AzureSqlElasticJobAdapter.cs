@@ -69,7 +69,8 @@ namespace Microsoft.Azure.Commands.Sql.ElasticJobs.Services
             {
                 Location = model.Location,
                 Tags = model.Tags,
-                DatabaseId = databaseId
+                DatabaseId = databaseId,
+                Sku = !String.IsNullOrWhiteSpace(model.SkuName) ? new Sku(name: model.SkuName, capacity: model.WorkerCount) : null,
             };
 
             // Send response
@@ -88,7 +89,8 @@ namespace Microsoft.Azure.Commands.Sql.ElasticJobs.Services
         {
             var param = new JobAgentUpdate
             {
-                Tags = model.Tags
+                Tags = model.Tags,
+                Sku = !String.IsNullOrWhiteSpace(model.SkuName) ? new Sku(name: model.SkuName, capacity: model.WorkerCount) : null,
             };
 
             var resp = Communicator.UpdateAgent(model.ResourceGroupName, model.ServerName, model.AgentName, param);
@@ -142,6 +144,7 @@ namespace Microsoft.Azure.Commands.Sql.ElasticJobs.Services
         {
             string databaseName = new ResourceIdentifier(resp.DatabaseId).ResourceName;
             int? workerCount = resp.Sku.Capacity;
+            string skuName = resp.Sku.Name;
 
             AzureSqlElasticJobAgentModel agent = new AzureSqlElasticJobAgentModel
             {
@@ -151,6 +154,7 @@ namespace Microsoft.Azure.Commands.Sql.ElasticJobs.Services
                 Location = resp.Location,
                 DatabaseName = databaseName,
                 WorkerCount = workerCount,
+                SkuName = skuName,
                 ResourceId = resp.Id,
                 Tags = TagsConversionHelper.CreateTagDictionary(TagsConversionHelper.CreateTagHashtable(resp.Tags), false),
                 DatabaseId = resp.DatabaseId,

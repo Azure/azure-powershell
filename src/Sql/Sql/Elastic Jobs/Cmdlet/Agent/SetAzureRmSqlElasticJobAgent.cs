@@ -103,6 +103,39 @@ namespace Microsoft.Azure.Commands.Sql.ElasticJobs.Cmdlet
         public Hashtable Tag { get; set; }
 
         /// <summary>
+        /// List of user assigned identities.
+        /// </summary>
+        [Parameter(Mandatory = false,
+            HelpMessage = "List of user assigned identities")]
+        public string[] UserAssignedIdentityId { get; set; }
+
+        /// <summary>
+        /// Type of identity to be assigned to the server..
+        /// </summary>
+        [Parameter(Mandatory = false,
+            HelpMessage = "Type of Identity to be used. Possible values are UserAssigned and None.")]
+        [PSArgumentCompleter("UserAssigned", "None")]
+        public string IdentityType { get; set; }
+
+        /// <summary>
+        /// Gets or sets the skuCapacity
+        /// </summary>
+        [Parameter(Mandatory = false,
+            HelpMessage = "WorkerCount is the capacity of the Azure SQL Job Agent which controls the number of concurrent targets that can be executed.")]
+        [Alias("Capacity")]
+        public int? WorkerCount { get; set; }
+
+        /// <summary>
+        /// Gets or sets the name of the service objective to assign to the Azure SQL Job Agent. 
+        /// </summary>
+        [Parameter(Mandatory = false,
+            HelpMessage = "The name of the service objective to assign to the Azure SQL Job Agent.")]
+        [ValidateNotNullOrEmpty]
+        [PSArgumentCompleter("JA100", "JA200", "JA400", "JA800")]
+        [Alias("RequestedServiceObjectiveName")]
+        public string SkuName { get; set; }
+
+        /// <summary>
         /// Entry point for the cmdlet
         /// </summary>
         public override void ExecuteCmdlet()
@@ -155,7 +188,8 @@ namespace Microsoft.Azure.Commands.Sql.ElasticJobs.Cmdlet
                 DatabaseName = model.FirstOrDefault().DatabaseName, // Note: control database cannot be updated
                 Location = model.FirstOrDefault().Location,
                 Tags = TagsConversionHelper.ReadOrFetchTags(this, model.First().Tags),
-                WorkerCount = model.FirstOrDefault().WorkerCount    // TODO: In the future, we will expose this. (the time has come..)
+                WorkerCount = this.WorkerCount,
+                SkuName = this.SkuName
             };
 
             return new List<AzureSqlElasticJobAgentModel> { newEntity };

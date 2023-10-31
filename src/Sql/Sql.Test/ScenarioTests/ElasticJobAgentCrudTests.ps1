@@ -77,6 +77,50 @@ function Test-CreateAgent
 
 <#
     .SYNOPSIS
+    Tests creating an agent using default parameters
+#>
+function Test-CreateAgentWithSku
+{
+    # Setup
+    $location = Get-Location "Microsoft.Sql" "operations" "West US 2"
+    $rg1 = Create-ResourceGroupForTest
+    $s1 = Create-ServerForTest $rg1 $location
+    $db1 = Create-DatabaseForTest $s1
+    $db2 = Create-DatabaseForTest $s1
+    
+
+    try
+    {
+        # Test with only sku name
+        $agentName = Get-AgentName
+        $resp = New-AzSqlElasticJobAgent -ResourceGroupName $rg1.ResourceGroupName -ServerName $s1.ServerName -DatabaseName $db1.DatabaseName -AgentName $agentName -SkuName 'JA200'
+        Assert-AreEqual $resp.AgentName $agentName
+        Assert-AreEqual $resp.ServerName $s1.ServerName
+        Assert-AreEqual $resp.DatabaseName $db1.DatabaseName
+        Assert-AreEqual $resp.ResourceGroupName $rg1.ResourceGroupName
+        Assert-AreEqual $resp.Location $s1.Location
+        Assert-AreEqual $resp.SkuName "JA200"
+        Assert-AreEqual $resp.WorkerCount 200
+
+        # Test using sku name and capacity
+        $agentName = Get-AgentName
+        $resp = New-AzSqlElasticJobAgent -DatabaseObject $db2 -Name $agentName -SkuName 'JA200' -WorkerCount 200
+        Assert-AreEqual $resp.AgentName $agentName
+        Assert-AreEqual $resp.ServerName $s1.ServerName
+        Assert-AreEqual $resp.DatabaseName $db2.DatabaseName
+        Assert-AreEqual $resp.ResourceGroupName $rg1.ResourceGroupName
+        Assert-AreEqual $resp.Location $s1.Location
+        Assert-AreEqual $resp.SkuName "JA200"
+        Assert-AreEqual $resp.WorkerCount 200
+    }
+    finally
+    {
+        Remove-ResourceGroupForTest $rg1
+    }
+}
+
+<#
+    .SYNOPSIS
     Tests updating an agent
 #>
 function Test-UpdateAgent
