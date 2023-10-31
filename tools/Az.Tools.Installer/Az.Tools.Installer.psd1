@@ -12,7 +12,7 @@
     RootModule = 'Az.Tools.Installer.psm1'
     
     # Version number of this module.
-    ModuleVersion = '0.2.1'
+    ModuleVersion = '0.2.3'
     
     # Supported PSEditions
     CompatiblePSEditions = 'Core', 'Desktop'
@@ -109,9 +109,7 @@
             # IconUri = ''
     
             # ReleaseNotes of this module
-            ReleaseNotes = '* Fixed the issue of installation and updating when Repository is not provided (#20209)
-            * Updated telemetry assembly to 2.13.1
-            * Fixed typo in Az.Tools.Installer (#20055)'
+            ReleaseNotes = '* Fix Update-Module errors when Az modules are installed using Az.Tools.Installer [#21262]'
     
             # Prerelease string of this module
             # Prerelease = ''

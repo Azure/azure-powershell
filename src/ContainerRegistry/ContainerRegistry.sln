@@ -1,12 +1,11 @@
-﻿Microsoft Visual Studio Solution File, Format Version 12.00
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.3.32901.215
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ContainerRegistry", "ContainerRegistry\ContainerRegistry.csproj", "{FE330703-623A-4C08-9DA7-1C63B4058034}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Tests", "Tests", "{95C16AED-FD57-42A0-86C3-2CF4300A4817}"
-EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ContainerRegistry.Test", "ContainerRegistry.Test\ContainerRegistry.Test.csproj", "{094709D1-0301-44F4-8BB2-203162006A3D}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Accounts", "..\Accounts\Accounts\Accounts.csproj", "{142D7B0B-388A-4CEB-A228-7F6D423C5C2E}"
 EndProject
@@ -22,9 +21,7 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ScenarioTest.ResourceManage
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "TestFx", "..\..\tools\TestFx\TestFx.csproj", "{BC80A1D0-FFA4-43D9-AA74-799F5CB54B58}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ContainerRegistry.Sdk", "ContainerRegistry.Sdk\ContainerRegistry.Sdk.csproj", "{20C09324-A651-41C7-B0E3-C8972C990642}"
-EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Az.ContainerRegistry", "ContainerRegistry.Autorest\Az.ContainerRegistry.csproj", "{72E5C46D-1176-429E-B3D0-F47C2CB8EF3F}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Az.ContainerRegistry", "ContainerRegistry.Autorest\Az.ContainerRegistry.csproj", "{72E5C46D-1176-429E-B3D0-F47C2CB8EF3F}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -36,10 +33,6 @@ Global
 		{FE330703-623A-4C08-9DA7-1C63B4058034}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{FE330703-623A-4C08-9DA7-1C63B4058034}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{FE330703-623A-4C08-9DA7-1C63B4058034}.Release|Any CPU.Build.0 = Release|Any CPU
-		{094709D1-0301-44F4-8BB2-203162006A3D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{094709D1-0301-44F4-8BB2-203162006A3D}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{094709D1-0301-44F4-8BB2-203162006A3D}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{094709D1-0301-44F4-8BB2-203162006A3D}.Release|Any CPU.Build.0 = Release|Any CPU
 		{142D7B0B-388A-4CEB-A228-7F6D423C5C2E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{142D7B0B-388A-4CEB-A228-7F6D423C5C2E}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{142D7B0B-388A-4CEB-A228-7F6D423C5C2E}.Release|Any CPU.ActiveCfg = Release|Any CPU
@@ -68,10 +61,6 @@ Global
 		{BC80A1D0-FFA4-43D9-AA74-799F5CB54B58}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{BC80A1D0-FFA4-43D9-AA74-799F5CB54B58}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{BC80A1D0-FFA4-43D9-AA74-799F5CB54B58}.Release|Any CPU.Build.0 = Release|Any CPU
-		{20C09324-A651-41C7-B0E3-C8972C990642}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{20C09324-A651-41C7-B0E3-C8972C990642}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{20C09324-A651-41C7-B0E3-C8972C990642}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{20C09324-A651-41C7-B0E3-C8972C990642}.Release|Any CPU.Build.0 = Release|Any CPU
 		{72E5C46D-1176-429E-B3D0-F47C2CB8EF3F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{72E5C46D-1176-429E-B3D0-F47C2CB8EF3F}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{72E5C46D-1176-429E-B3D0-F47C2CB8EF3F}.Release|Any CPU.ActiveCfg = Release|Any CPU
@@ -79,9 +68,6 @@ Global
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
-	EndGlobalSection
-	GlobalSection(NestedProjects) = preSolution
-		{094709D1-0301-44F4-8BB2-203162006A3D} = {95C16AED-FD57-42A0-86C3-2CF4300A4817}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {68B57E81-1DE1-4FE4-97B6-B0D41A841A68}

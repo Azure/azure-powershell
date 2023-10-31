@@ -50,7 +50,7 @@ namespace Microsoft.Azure.Commands.DataFactoryV2
                 resourceGroupName,
                 dataFactoryName,
                 datasetName,
-                dataset);
+                dataset?.Properties);
         }
 
         public virtual PSDataset GetDataset(string resourceGroupName, string dataFactoryName, string datasetName)

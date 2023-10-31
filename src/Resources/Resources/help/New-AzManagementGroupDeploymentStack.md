@@ -14,145 +14,145 @@ Creates a new Management Group scoped Deployment Stack.
 
 ### ByTemplateFileWithNoParameters (Default)
 ```
-New-AzManagementGroupDeploymentStack -Name <String> -ManagementGroupId <String> [-Description <String>]
- -Location <String> [-DeleteAll] [-DeleteResources] [-DeleteResourceGroups]
- -DenySettingsMode <PSDenySettingsMode> [-DenySettingsExcludedPrincipal <String[]>]
- [-DenySettingsExcludedAction <String[]>] [-DenySettingsApplyToChildScopes] -DeploymentSubscriptionId <String>
- [-Tag <Hashtable>] [-Force] [-AsJob] -TemplateFile <String> [-SkipTemplateParameterPrompt]
- [-QueryString <String>] [-Pre] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
- [<CommonParameters>]
+New-AzManagementGroupDeploymentStack -Name <String> -ManagementGroupId <String>
+ [-DeploymentSubscriptionId <String>] [-Description <String>] -Location <String> [-DeleteAll]
+ [-DeleteResources] [-DeleteResourceGroups] -DenySettingsMode <PSDenySettingsMode>
+ [-DenySettingsExcludedPrincipal <String[]>] [-DenySettingsExcludedAction <String[]>]
+ [-DenySettingsApplyToChildScopes] [-Tag <Hashtable>] [-Force] [-AsJob] -TemplateFile <String>
+ [-SkipTemplateParameterPrompt] [-QueryString <String>] [-Pre] [-DefaultProfile <IAzureContextContainer>]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### ByTemplateFileWithParameterFile
 ```
-New-AzManagementGroupDeploymentStack -Name <String> -ManagementGroupId <String> [-Description <String>]
- -Location <String> [-DeleteAll] [-DeleteResources] [-DeleteResourceGroups]
- -DenySettingsMode <PSDenySettingsMode> [-DenySettingsExcludedPrincipal <String[]>]
- [-DenySettingsExcludedAction <String[]>] [-DenySettingsApplyToChildScopes] -DeploymentSubscriptionId <String>
- [-Tag <Hashtable>] [-Force] [-AsJob] -TemplateFile <String> -TemplateParameterFile <String>
- [-SkipTemplateParameterPrompt] [-QueryString <String>] [-Pre] [-DefaultProfile <IAzureContextContainer>]
- [-WhatIf] [-Confirm] [<CommonParameters>]
+New-AzManagementGroupDeploymentStack -Name <String> -ManagementGroupId <String>
+ [-DeploymentSubscriptionId <String>] [-Description <String>] -Location <String> [-DeleteAll]
+ [-DeleteResources] [-DeleteResourceGroups] -DenySettingsMode <PSDenySettingsMode>
+ [-DenySettingsExcludedPrincipal <String[]>] [-DenySettingsExcludedAction <String[]>]
+ [-DenySettingsApplyToChildScopes] [-Tag <Hashtable>] [-Force] [-AsJob] -TemplateFile <String>
+ -TemplateParameterFile <String> [-SkipTemplateParameterPrompt] [-QueryString <String>] [-Pre]
+ [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### ByTemplateFileWithParameterUri
 ```
-New-AzManagementGroupDeploymentStack -Name <String> -ManagementGroupId <String> [-Description <String>]
- -Location <String> [-DeleteAll] [-DeleteResources] [-DeleteResourceGroups]
- -DenySettingsMode <PSDenySettingsMode> [-DenySettingsExcludedPrincipal <String[]>]
- [-DenySettingsExcludedAction <String[]>] [-DenySettingsApplyToChildScopes] -DeploymentSubscriptionId <String>
- [-Tag <Hashtable>] [-Force] [-AsJob] -TemplateFile <String> -TemplateParameterUri <String>
- [-SkipTemplateParameterPrompt] [-QueryString <String>] [-Pre] [-DefaultProfile <IAzureContextContainer>]
- [-WhatIf] [-Confirm] [<CommonParameters>]
+New-AzManagementGroupDeploymentStack -Name <String> -ManagementGroupId <String>
+ [-DeploymentSubscriptionId <String>] [-Description <String>] -Location <String> [-DeleteAll]
+ [-DeleteResources] [-DeleteResourceGroups] -DenySettingsMode <PSDenySettingsMode>
+ [-DenySettingsExcludedPrincipal <String[]>] [-DenySettingsExcludedAction <String[]>]
+ [-DenySettingsApplyToChildScopes] [-Tag <Hashtable>] [-Force] [-AsJob] -TemplateFile <String>
+ -TemplateParameterUri <String> [-SkipTemplateParameterPrompt] [-QueryString <String>] [-Pre]
+ [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### ByTemplateFileWithParameterObject
 ```
-New-AzManagementGroupDeploymentStack -Name <String> -ManagementGroupId <String> [-Description <String>]
- -Location <String> [-DeleteAll] [-DeleteResources] [-DeleteResourceGroups]
- -DenySettingsMode <PSDenySettingsMode> [-DenySettingsExcludedPrincipal <String[]>]
- [-DenySettingsExcludedAction <String[]>] [-DenySettingsApplyToChildScopes] -DeploymentSubscriptionId <String>
- [-Tag <Hashtable>] [-Force] [-AsJob] -TemplateFile <String> -TemplateParameterObject <Hashtable>
- [-SkipTemplateParameterPrompt] [-QueryString <String>] [-Pre] [-DefaultProfile <IAzureContextContainer>]
- [-WhatIf] [-Confirm] [<CommonParameters>]
+New-AzManagementGroupDeploymentStack -Name <String> -ManagementGroupId <String>
+ [-DeploymentSubscriptionId <String>] [-Description <String>] -Location <String> [-DeleteAll]
+ [-DeleteResources] [-DeleteResourceGroups] -DenySettingsMode <PSDenySettingsMode>
+ [-DenySettingsExcludedPrincipal <String[]>] [-DenySettingsExcludedAction <String[]>]
+ [-DenySettingsApplyToChildScopes] [-Tag <Hashtable>] [-Force] [-AsJob] -TemplateFile <String>
+ -TemplateParameterObject <Hashtable> [-SkipTemplateParameterPrompt] [-QueryString <String>] [-Pre]
+ [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### ByTemplateUriWithParameterFile
 ```
-New-AzManagementGroupDeploymentStack -Name <String> -ManagementGroupId <String> [-Description <String>]
- -Location <String> [-DeleteAll] [-DeleteResources] [-DeleteResourceGroups]
- -DenySettingsMode <PSDenySettingsMode> [-DenySettingsExcludedPrincipal <String[]>]
- [-DenySettingsExcludedAction <String[]>] [-DenySettingsApplyToChildScopes] -DeploymentSubscriptionId <String>
- [-Tag <Hashtable>] [-Force] [-AsJob] -TemplateUri <String> -TemplateParameterFile <String>
- [-SkipTemplateParameterPrompt] [-QueryString <String>] [-Pre] [-DefaultProfile <IAzureContextContainer>]
- [-WhatIf] [-Confirm] [<CommonParameters>]
+New-AzManagementGroupDeploymentStack -Name <String> -ManagementGroupId <String>
+ [-DeploymentSubscriptionId <String>] [-Description <String>] -Location <String> [-DeleteAll]
+ [-DeleteResources] [-DeleteResourceGroups] -DenySettingsMode <PSDenySettingsMode>
+ [-DenySettingsExcludedPrincipal <String[]>] [-DenySettingsExcludedAction <String[]>]
+ [-DenySettingsApplyToChildScopes] [-Tag <Hashtable>] [-Force] [-AsJob] -TemplateUri <String>
+ -TemplateParameterFile <String> [-SkipTemplateParameterPrompt] [-QueryString <String>] [-Pre]
+ [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### ByTemplateUriWithParameterUri
 ```
-New-AzManagementGroupDeploymentStack -Name <String> -ManagementGroupId <String> [-Description <String>]
- -Location <String> [-DeleteAll] [-DeleteResources] [-DeleteResourceGroups]
- -DenySettingsMode <PSDenySettingsMode> [-DenySettingsExcludedPrincipal <String[]>]
- [-DenySettingsExcludedAction <String[]>] [-DenySettingsApplyToChildScopes] -DeploymentSubscriptionId <String>
- [-Tag <Hashtable>] [-Force] [-AsJob] -TemplateUri <String> -TemplateParameterUri <String>
- [-SkipTemplateParameterPrompt] [-QueryString <String>] [-Pre] [-DefaultProfile <IAzureContextContainer>]
- [-WhatIf] [-Confirm] [<CommonParameters>]
+New-AzManagementGroupDeploymentStack -Name <String> -ManagementGroupId <String>
+ [-DeploymentSubscriptionId <String>] [-Description <String>] -Location <String> [-DeleteAll]
+ [-DeleteResources] [-DeleteResourceGroups] -DenySettingsMode <PSDenySettingsMode>
+ [-DenySettingsExcludedPrincipal <String[]>] [-DenySettingsExcludedAction <String[]>]
+ [-DenySettingsApplyToChildScopes] [-Tag <Hashtable>] [-Force] [-AsJob] -TemplateUri <String>
+ -TemplateParameterUri <String> [-SkipTemplateParameterPrompt] [-QueryString <String>] [-Pre]
+ [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### ByTemplateUriWithParameterObject
 ```
-New-AzManagementGroupDeploymentStack -Name <String> -ManagementGroupId <String> [-Description <String>]
- -Location <String> [-DeleteAll] [-DeleteResources] [-DeleteResourceGroups]
- -DenySettingsMode <PSDenySettingsMode> [-DenySettingsExcludedPrincipal <String[]>]
- [-DenySettingsExcludedAction <String[]>] [-DenySettingsApplyToChildScopes] -DeploymentSubscriptionId <String>
- [-Tag <Hashtable>] [-Force] [-AsJob] -TemplateUri <String> -TemplateParameterObject <Hashtable>
- [-SkipTemplateParameterPrompt] [-QueryString <String>] [-Pre] [-DefaultProfile <IAzureContextContainer>]
- [-WhatIf] [-Confirm] [<CommonParameters>]
+New-AzManagementGroupDeploymentStack -Name <String> -ManagementGroupId <String>
+ [-DeploymentSubscriptionId <String>] [-Description <String>] -Location <String> [-DeleteAll]
+ [-DeleteResources] [-DeleteResourceGroups] -DenySettingsMode <PSDenySettingsMode>
+ [-DenySettingsExcludedPrincipal <String[]>] [-DenySettingsExcludedAction <String[]>]
+ [-DenySettingsApplyToChildScopes] [-Tag <Hashtable>] [-Force] [-AsJob] -TemplateUri <String>
+ -TemplateParameterObject <Hashtable> [-SkipTemplateParameterPrompt] [-QueryString <String>] [-Pre]
+ [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### ByTemplateUriWithNoParameters
 ```
-New-AzManagementGroupDeploymentStack -Name <String> -ManagementGroupId <String> [-Description <String>]
- -Location <String> [-DeleteAll] [-DeleteResources] [-DeleteResourceGroups]
- -DenySettingsMode <PSDenySettingsMode> [-DenySettingsExcludedPrincipal <String[]>]
- [-DenySettingsExcludedAction <String[]>] [-DenySettingsApplyToChildScopes] -DeploymentSubscriptionId <String>
- [-Tag <Hashtable>] [-Force] [-AsJob] -TemplateUri <String> [-SkipTemplateParameterPrompt]
- [-QueryString <String>] [-Pre] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
- [<CommonParameters>]
+New-AzManagementGroupDeploymentStack -Name <String> -ManagementGroupId <String>
+ [-DeploymentSubscriptionId <String>] [-Description <String>] -Location <String> [-DeleteAll]
+ [-DeleteResources] [-DeleteResourceGroups] -DenySettingsMode <PSDenySettingsMode>
+ [-DenySettingsExcludedPrincipal <String[]>] [-DenySettingsExcludedAction <String[]>]
+ [-DenySettingsApplyToChildScopes] [-Tag <Hashtable>] [-Force] [-AsJob] -TemplateUri <String>
+ [-SkipTemplateParameterPrompt] [-QueryString <String>] [-Pre] [-DefaultProfile <IAzureContextContainer>]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### ByTemplateSpecWithParameterFile
 ```
-New-AzManagementGroupDeploymentStack -Name <String> -ManagementGroupId <String> [-Description <String>]
- -Location <String> [-DeleteAll] [-DeleteResources] [-DeleteResourceGroups]
- -DenySettingsMode <PSDenySettingsMode> [-DenySettingsExcludedPrincipal <String[]>]
- [-DenySettingsExcludedAction <String[]>] [-DenySettingsApplyToChildScopes] -DeploymentSubscriptionId <String>
- [-Tag <Hashtable>] [-Force] [-AsJob] -TemplateSpecId <String> -TemplateParameterFile <String>
- [-SkipTemplateParameterPrompt] [-QueryString <String>] [-Pre] [-DefaultProfile <IAzureContextContainer>]
- [-WhatIf] [-Confirm] [<CommonParameters>]
+New-AzManagementGroupDeploymentStack -Name <String> -ManagementGroupId <String>
+ [-DeploymentSubscriptionId <String>] [-Description <String>] -Location <String> [-DeleteAll]
+ [-DeleteResources] [-DeleteResourceGroups] -DenySettingsMode <PSDenySettingsMode>
+ [-DenySettingsExcludedPrincipal <String[]>] [-DenySettingsExcludedAction <String[]>]
+ [-DenySettingsApplyToChildScopes] [-Tag <Hashtable>] [-Force] [-AsJob] -TemplateSpecId <String>
+ -TemplateParameterFile <String> [-SkipTemplateParameterPrompt] [-QueryString <String>] [-Pre]
+ [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### ByTemplateSpecWithParameterUri
 ```
-New-AzManagementGroupDeploymentStack -Name <String> -ManagementGroupId <String> [-Description <String>]
- -Location <String> [-DeleteAll] [-DeleteResources] [-DeleteResourceGroups]
- -DenySettingsMode <PSDenySettingsMode> [-DenySettingsExcludedPrincipal <String[]>]
- [-DenySettingsExcludedAction <String[]>] [-DenySettingsApplyToChildScopes] -DeploymentSubscriptionId <String>
- [-Tag <Hashtable>] [-Force] [-AsJob] -TemplateSpecId <String> -TemplateParameterUri <String>
- [-SkipTemplateParameterPrompt] [-QueryString <String>] [-Pre] [-DefaultProfile <IAzureContextContainer>]
- [-WhatIf] [-Confirm] [<CommonParameters>]
+New-AzManagementGroupDeploymentStack -Name <String> -ManagementGroupId <String>
+ [-DeploymentSubscriptionId <String>] [-Description <String>] -Location <String> [-DeleteAll]
+ [-DeleteResources] [-DeleteResourceGroups] -DenySettingsMode <PSDenySettingsMode>
+ [-DenySettingsExcludedPrincipal <String[]>] [-DenySettingsExcludedAction <String[]>]
+ [-DenySettingsApplyToChildScopes] [-Tag <Hashtable>] [-Force] [-AsJob] -TemplateSpecId <String>
+ -TemplateParameterUri <String> [-SkipTemplateParameterPrompt] [-QueryString <String>] [-Pre]
+ [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### ByTemplateSpecWithParameterObject
 ```
-New-AzManagementGroupDeploymentStack -Name <String> -ManagementGroupId <String> [-Description <String>]
- -Location <String> [-DeleteAll] [-DeleteResources] [-DeleteResourceGroups]
- -DenySettingsMode <PSDenySettingsMode> [-DenySettingsExcludedPrincipal <String[]>]
- [-DenySettingsExcludedAction <String[]>] [-DenySettingsApplyToChildScopes] -DeploymentSubscriptionId <String>
- [-Tag <Hashtable>] [-Force] [-AsJob] -TemplateSpecId <String> -TemplateParameterObject <Hashtable>
- [-SkipTemplateParameterPrompt] [-QueryString <String>] [-Pre] [-DefaultProfile <IAzureContextContainer>]
- [-WhatIf] [-Confirm] [<CommonParameters>]
+New-AzManagementGroupDeploymentStack -Name <String> -ManagementGroupId <String>
+ [-DeploymentSubscriptionId <String>] [-Description <String>] -Location <String> [-DeleteAll]
+ [-DeleteResources] [-DeleteResourceGroups] -DenySettingsMode <PSDenySettingsMode>
+ [-DenySettingsExcludedPrincipal <String[]>] [-DenySettingsExcludedAction <String[]>]
+ [-DenySettingsApplyToChildScopes] [-Tag <Hashtable>] [-Force] [-AsJob] -TemplateSpecId <String>
+ -TemplateParameterObject <Hashtable> [-SkipTemplateParameterPrompt] [-QueryString <String>] [-Pre]
+ [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### ByTemplateSpecWithNoParameters
 ```
-New-AzManagementGroupDeploymentStack -Name <String> -ManagementGroupId <String> [-Description <String>]
- -Location <String> [-DeleteAll] [-DeleteResources] [-DeleteResourceGroups]
- -DenySettingsMode <PSDenySettingsMode> [-DenySettingsExcludedPrincipal <String[]>]
- [-DenySettingsExcludedAction <String[]>] [-DenySettingsApplyToChildScopes] -DeploymentSubscriptionId <String>
- [-Tag <Hashtable>] [-Force] [-AsJob] -TemplateSpecId <String> [-SkipTemplateParameterPrompt]
- [-QueryString <String>] [-Pre] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
- [<CommonParameters>]
+New-AzManagementGroupDeploymentStack -Name <String> -ManagementGroupId <String>
+ [-DeploymentSubscriptionId <String>] [-Description <String>] -Location <String> [-DeleteAll]
+ [-DeleteResources] [-DeleteResourceGroups] -DenySettingsMode <PSDenySettingsMode>
+ [-DenySettingsExcludedPrincipal <String[]>] [-DenySettingsExcludedAction <String[]>]
+ [-DenySettingsApplyToChildScopes] [-Tag <Hashtable>] [-Force] [-AsJob] -TemplateSpecId <String>
+ [-SkipTemplateParameterPrompt] [-QueryString <String>] [-Pre] [-DefaultProfile <IAzureContextContainer>]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### ByParameterFileWithNoTemplate
 ```
-New-AzManagementGroupDeploymentStack -Name <String> -ManagementGroupId <String> [-Description <String>]
- -Location <String> [-DeleteAll] [-DeleteResources] [-DeleteResourceGroups]
- -DenySettingsMode <PSDenySettingsMode> [-DenySettingsExcludedPrincipal <String[]>]
- [-DenySettingsExcludedAction <String[]>] [-DenySettingsApplyToChildScopes] -DeploymentSubscriptionId <String>
- [-Tag <Hashtable>] [-Force] [-AsJob] -TemplateParameterFile <String> [-SkipTemplateParameterPrompt]
- [-QueryString <String>] [-Pre] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
- [<CommonParameters>]
+New-AzManagementGroupDeploymentStack -Name <String> -ManagementGroupId <String>
+ [-DeploymentSubscriptionId <String>] [-Description <String>] -Location <String> [-DeleteAll]
+ [-DeleteResources] [-DeleteResourceGroups] -DenySettingsMode <PSDenySettingsMode>
+ [-DenySettingsExcludedPrincipal <String[]>] [-DenySettingsExcludedAction <String[]>]
+ [-DenySettingsApplyToChildScopes] [-Tag <Hashtable>] [-Force] [-AsJob] -TemplateParameterFile <String>
+ [-SkipTemplateParameterPrompt] [-QueryString <String>] [-Pre] [-DefaultProfile <IAzureContextContainer>]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -321,7 +321,7 @@ Type: System.String
 Parameter Sets: (All)
 Aliases:
 
-Required: True
+Required: False
 Position: Named
 Default value: None
 Accept pipeline input: True (ByPropertyName)

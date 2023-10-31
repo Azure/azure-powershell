@@ -154,7 +154,7 @@ namespace Microsoft.Azure.Commands.NetAppFiles.Snapshot
                     DestinationPath = DestinationPath
                 };
 
-                AzureNetAppFilesManagementClient.Snapshots.RestoreFiles(snapshotRestoreFilesBody, ResourceGroupName, AccountName, PoolName, VolumeName, Name);
+                AzureNetAppFilesManagementClient.Snapshots.RestoreFiles(ResourceGroupName, AccountName, PoolName, VolumeName, Name, snapshotRestoreFilesBody);
                 success = true;
             }
             if (PassThru.IsPresent)

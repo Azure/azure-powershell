@@ -20,7 +20,7 @@ Unregister the Windows virtual desktop application group.
 Unregister the Windows virtual desktop application group.
 #>
 function Unregister-AzWvdApplicationGroup {
-    [OutputType('Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.Api202209.IWorkspace')]
+    [OutputType('Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.Api20230905.IWorkspace')]
     [CmdletBinding(PositionalBinding=$false, SupportsShouldProcess, ConfirmImpact='Medium')]
     param(
         [Parameter()]

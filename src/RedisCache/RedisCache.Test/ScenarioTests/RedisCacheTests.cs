@@ -66,11 +66,7 @@ namespace Microsoft.Azure.Commands.RedisCache.Test.ScenarioTests
             TestRunner.RunTestScript("Test-ImportExportReboot");
         }
 
-#if NETSTANDARD
-        [Fact(Skip = "Needs investigation: Storage Id cannot be null")]
-#else
         [Fact]
-#endif
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestDiagnosticOperations()
         {
@@ -99,7 +95,7 @@ namespace Microsoft.Azure.Commands.RedisCache.Test.ScenarioTests
         }
 
         [Fact]
-        [Trait(Category.AcceptanceType, Category.LiveOnly)]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestManagedIdentity()
         {
             TestRunner.RunTestScript("Test-ManagedIdentity");

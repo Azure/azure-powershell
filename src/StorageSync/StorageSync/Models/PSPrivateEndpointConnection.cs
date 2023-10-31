@@ -54,5 +54,11 @@ namespace Microsoft.Azure.Commands.StorageSync.Models
         /// </summary>
         /// <value></value>
         public string Type { get; internal set; }
+
+        /// <summary>
+        /// Gets or sets the SystemData.
+        /// </summary>
+        /// <value>The SystemData.</value>
+        public PSSystemData SystemData { get; set; }
     }
 }

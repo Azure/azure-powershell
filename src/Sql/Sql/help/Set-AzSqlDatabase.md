@@ -22,8 +22,9 @@ Set-AzSqlDatabase [-DatabaseName] <String> [-MaxSizeBytes <Int64>] [-Edition <St
  [-BackupStorageRedundancy <String>] [-SecondaryType <String>] [-MaintenanceConfigurationId <String>]
  [-AssignIdentity] [-EncryptionProtector <String>] [-UserAssignedIdentityId <String[]>] [-KeyList <String[]>]
  [-KeysToRemove <String[]>] [-FederatedClientId <Guid>] [-PreferredEnclaveType <String>]
- [-EncryptionProtectorAutoRotation] [-ServerName] <String> [-ResourceGroupName] <String>
- [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-EncryptionProtectorAutoRotation] [-UseFreeLimit] [-FreeLimitExhaustionBehavior <String>]
+ [-ServerName] <String> [-ResourceGroupName] <String> [-DefaultProfile <IAzureContextContainer>] [-WhatIf]
+ [-Confirm] [<CommonParameters>]
 ```
 
 ### VcoreBasedDatabase
@@ -35,8 +36,9 @@ Set-AzSqlDatabase [-DatabaseName] <String> [-MaxSizeBytes <Int64>] [-Edition <St
  [-BackupStorageRedundancy <String>] [-SecondaryType <String>] [-MaintenanceConfigurationId <String>]
  [-AssignIdentity] [-EncryptionProtector <String>] [-UserAssignedIdentityId <String[]>] [-KeyList <String[]>]
  [-KeysToRemove <String[]>] [-FederatedClientId <Guid>] [-PreferredEnclaveType <String>]
- [-EncryptionProtectorAutoRotation] [-ServerName] <String> [-ResourceGroupName] <String>
- [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-EncryptionProtectorAutoRotation] [-UseFreeLimit] [-FreeLimitExhaustionBehavior <String>]
+ [-ServerName] <String> [-ResourceGroupName] <String> [-DefaultProfile <IAzureContextContainer>] [-WhatIf]
+ [-Confirm] [<CommonParameters>]
 ```
 
 ### Rename
@@ -45,8 +47,9 @@ Set-AzSqlDatabase [-DatabaseName] <String> -NewName <String> [-AsJob] [-BackupSt
  [-SecondaryType <String>] [-MaintenanceConfigurationId <String>] [-AssignIdentity]
  [-EncryptionProtector <String>] [-UserAssignedIdentityId <String[]>] [-KeyList <String[]>]
  [-KeysToRemove <String[]>] [-FederatedClientId <Guid>] [-PreferredEnclaveType <String>]
- [-EncryptionProtectorAutoRotation] [-ServerName] <String> [-ResourceGroupName] <String>
- [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-EncryptionProtectorAutoRotation] [-UseFreeLimit] [-FreeLimitExhaustionBehavior <String>]
+ [-ServerName] <String> [-ResourceGroupName] <String> [-DefaultProfile <IAzureContextContainer>] [-WhatIf]
+ [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -226,7 +229,7 @@ Accept wildcard characters: False
 ```
 
 ### -AssignIdentity
-Generate and assign an Azure Active Directory Identity for this database for use with key management services like Azure KeyVault.
+Generate and assign a Microsoft Entra identity for this database for use with key management services like Azure KeyVault.
 
 ```yaml
 Type: System.Management.Automation.SwitchParameter
@@ -407,6 +410,21 @@ The federated client id for the SQL Database. It is used for cross tenant CMK sc
 
 ```yaml
 Type: System.Nullable`1[System.Guid]
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -FreeLimitExhaustionBehavior
+Exhaustion behavior of free limit database.
+
+```yaml
+Type: System.String
 Parameter Sets: (All)
 Aliases:
 
@@ -642,6 +660,21 @@ Key-value pairs in the form of a hash table. For example:
 Type: System.Collections.Hashtable
 Parameter Sets: Update, VcoreBasedDatabase
 Aliases: Tag
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -UseFreeLimit
+Use free limit on this database.
+
+```yaml
+Type: System.Management.Automation.SwitchParameter
+Parameter Sets: (All)
+Aliases:
 
 Required: False
 Position: Named

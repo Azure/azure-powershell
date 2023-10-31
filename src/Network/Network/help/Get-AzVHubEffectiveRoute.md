@@ -42,7 +42,7 @@ New-AzVirtualWan -ResourceGroupName "testRg" -Name "testWan" -Location "westcent
 $virtualWan = Get-AzVirtualWan -ResourceGroupName "testRg" -Name "testWan"
 New-AzVirtualHub -ResourceGroupName "testRg" -Name "testHub" -Location "westcentralus" -AddressPrefix "10.0.0.0/16" -VirtualWan $virtualWan
 $virtualHub = Get-AzVirtualHub -ResourceGroupName "testRg" -Name "testHub"
-$hubRouteTableId = "/subscriptions/testSub/resourceGroups/testRg/providers/Microsoft.Network/virtualHubs/testHub/hubRouteTables/defaultRouteTable"
+$hubRouteTableId = "/subscriptions/eb40168c-f355-4a18-b13c-5d9751d314c6/resourceGroups/testRg/providers/Microsoft.Network/virtualHubs/testHub/hubRouteTables/defaultRouteTable"
 Get-AzVHubEffectiveRoute -VirtualHubObject $virtualHub -ResourceId $hubRouteTableId -VirtualWanResourceType "RouteTable"
 ```
 
@@ -53,11 +53,11 @@ Value : [
               "10.2.0.0/16"
             ],
             "NextHops": [
-              "/subscriptions/testSub/resourceGroups/testRg/providers/Microsoft.Network/virtu
+              "/subscriptions/eb40168c-f355-4a18-b13c-5d9751d314c6/resourceGroups/testRg/providers/Microsoft.Network/virtu
         alHubs/testHub/hubVirtualNetworkConnections/testConnection"
             ],
             "NextHopType": "Virtual Network Connection",
-            "RouteOrigin": "/subscriptions/testSub/resourceGroups/testRg/providers/Microsoft.
+            "RouteOrigin": "/subscriptions/eb40168c-f355-4a18-b13c-5d9751d314c6/resourceGroups/testRg/providers/Microsoft.
         Network/virtualHubs/testHub/hubVirtualNetworkConnections/testConnection"
           }
         ]

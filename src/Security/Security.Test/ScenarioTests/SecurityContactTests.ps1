@@ -14,18 +14,6 @@
 
 <#
 .SYNOPSIS
-Get security contacts on a subscription
-#>
-function Get-AzureRmSecurityContact-SubscriptionScope
-{
-	Set-AzSecurityContact -Name "default" -Email "ascasc@microsoft.com" -Phone "123123123" -AlertAdmin -NotifyOnAlert
-
-    $contacts = Get-AzSecurityContact
-	Validate-Contacts $contacts
-}
-
-<#
-.SYNOPSIS
 Get a security contact
 #>
 function Get-AzureRmSecurityContact-SubscriptionLevelResource

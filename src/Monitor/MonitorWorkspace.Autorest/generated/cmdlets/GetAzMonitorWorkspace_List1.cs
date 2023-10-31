@@ -16,6 +16,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Monitor.MonitorWorkspace.Cmdlets
     [global::System.Management.Automation.OutputType(typeof(Microsoft.Azure.PowerShell.Cmdlets.Monitor.MonitorWorkspace.Models.Api20230403.IAzureMonitorWorkspaceResource))]
     [global::Microsoft.Azure.PowerShell.Cmdlets.Monitor.MonitorWorkspace.Description(@"Lists all workspaces in the specified subscription")]
     [global::Microsoft.Azure.PowerShell.Cmdlets.Monitor.MonitorWorkspace.Generated]
+    [global::Microsoft.Azure.PowerShell.Cmdlets.Monitor.MonitorWorkspace.HttpPath(Path = "/subscriptions/{subscriptionId}/providers/Microsoft.Monitor/accounts", ApiVersion = "2023-04-03")]
     public partial class GetAzMonitorWorkspace_List1 : global::System.Management.Automation.PSCmdlet,
         Microsoft.Azure.PowerShell.Cmdlets.Monitor.MonitorWorkspace.Runtime.IEventListener
     {

@@ -17,6 +17,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Migrate.Cmdlets
     [global::System.Management.Automation.OutputType(typeof(Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api202001.IVMwareSite))]
     [global::Microsoft.Azure.PowerShell.Cmdlets.Migrate.Description(@"Method to create or update a site.")]
     [global::Microsoft.Azure.PowerShell.Cmdlets.Migrate.Generated]
+    [global::Microsoft.Azure.PowerShell.Cmdlets.Migrate.HttpPath(Path = "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.OffAzure/VMwareSites/{siteName}", ApiVersion = "2020-01-01")]
     public partial class SetAzMigrateSite_UpdateExpanded : global::System.Management.Automation.PSCmdlet,
         Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.IEventListener
     {

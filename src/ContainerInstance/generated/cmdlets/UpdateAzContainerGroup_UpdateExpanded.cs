@@ -13,7 +13,6 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ContainerInstance.Cmdlets
     /// [OpenAPI] Update=>PATCH:"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ContainerInstance/containerGroups/{containerGroupName}"
     /// </remarks>
     [global::System.Management.Automation.Cmdlet(global::System.Management.Automation.VerbsData.Update, @"AzContainerGroup_UpdateExpanded", SupportsShouldProcess = true)]
-    [Microsoft.Azure.PowerShell.Cmdlets.ContainerInstance.Runtime.OutputBreakingChange("Microsoft.Azure.PowerShell.Cmdlets.ContainerInstance.Models.Api20221001Preview.IContainerGroup", "11.0.0", "4.0.0", "2023/11/15", DeprecatedOutputProperties=new string[] {"PreviouState","PreviouStateDetailStatus","PreviouStateExitCode","PreviouStateFinishTime","PreviouStateStartTime"}, NewOutputProperties=new string[] {"PreviousState","PreviousStateDetailStatus","PreviousStateExitCode","PreviousStateFinishTime","PreviousStateStartTime"}, ChangeDescription="The parameters starts with PreviouState will be corrected as PreviousState.")]
     [global::System.Management.Automation.OutputType(typeof(Microsoft.Azure.PowerShell.Cmdlets.ContainerInstance.Models.Api20221001Preview.IContainerGroup))]
     [global::Microsoft.Azure.PowerShell.Cmdlets.ContainerInstance.Description(@"Updates container group tags with specified values.")]
     [global::Microsoft.Azure.PowerShell.Cmdlets.ContainerInstance.Generated]
