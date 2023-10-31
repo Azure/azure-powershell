@@ -31,24 +31,16 @@ For information on how to develop for `Az.Policy`, see [how-to.md](how-to.md).
 
 ``` yaml
 # Please specify the commit id that includes your features to make sure generated codes stable.
-#branch: 314f28163917b9cfc527f7776b5e4a1dea69d295
+branch: 1cb05f075f2d061686fa8a9e45c72d1fafff9e3f
 require:
 # readme.azure.noprofile.md is the common configuration file
   - $(this-folder)/../../readme.azure.noprofile.md
 input-file:
 # You need to specify your swagger files here.
-#  - https://github.com/Azure/azure-rest-api-specs/tree/main/specification/resources/resource-manager/Microsoft.Authorization/stable/2021-06-01/policyDefinitions.json
-#  - D:\source\git\repos\azure-rest-api-specs\specification\resources\resource-manager\Microsoft.Authorization\stable\2021-06-01\policyDefinitions.json
-  - (this-folder)/../../../../../azure-rest-api-specs/specification/resources/resource-manager/Microsoft.Authorization/stable/2021-06-01/policyDefinitions.json
-#  - https://github.com/Azure/azure-rest-api-specs/tree/main/specification/resources/resource-manager/Microsoft.Authorization/stable/2021-06-01/policySetDefinitions.json
-#  - D:\source\git\repos\azure-rest-api-specs\specification\resources\resource-manager\Microsoft.Authorization\stable\2021-06-01\policySetDefinitions.json
-  - (this-folder)/../../../../../azure-rest-api-specs/specification/resources/resource-manager/Microsoft.Authorization/stable/2021-06-01/policySetDefinitions.json
-#  - https://github.com/Azure/azure-rest-api-specs/tree/main/specification/resources/resource-manager/Microsoft.Authorization/stable/2022-06-01/policyAssignments.json
-#  - D:\source\git\repos\azure-rest-api-specs\specification\resources\resource-manager\Microsoft.Authorization\stable\2021-06-01\policyAssignments.json
-  - (this-folder)/../../../../../azure-rest-api-specs/specification/resources/resource-manager/Microsoft.Authorization/stable/2021-06-01/policyAssignments.json
-#  - https://github.com/Azure/azure-rest-api-specs/tree/main/specification/resources/resource-manager/Microsoft.Authorization/preview/2022-07-01-preview/policyExemptions.json
-#  - D:\source\git\repos\azure-rest-api-specs\specification\resources\resource-manager\Microsoft.Authorization\preview\2022-07-01-preview\policyExemptions.json
-  - (this-folder)/../../../../../azure-rest-api-specs/specification/resources/resource-manager/Microsoft.Authorization/preview/2022-07-01-preview/policyExemptions.json
+  - $(Repo)/specification/resources/resource-manager/Microsoft.Authorization/stable/2021-06-01/policyDefinitions.json
+  - $(Repo)/specification/resources/resource-manager/Microsoft.Authorization/stable/2021-06-01/policySetDefinitions.json
+  - $(Repo)/specification/resources/resource-manager/Microsoft.Authorization/stable/2022-06-01/policyAssignments.json
+  - $(Repo)/specification/resources/resource-manager/Microsoft.Authorization/preview/2022-07-01-preview/policyExemptions.json
 # If the swagger has not been put in the repo, you may uncomment the following line and refer to it locally
 # - (this-folder)/relative-path-to-your-swagger 
 
