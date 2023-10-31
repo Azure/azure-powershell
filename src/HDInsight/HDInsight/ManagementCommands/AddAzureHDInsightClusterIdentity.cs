@@ -19,6 +19,7 @@ using System.Management.Automation;
 
 namespace Microsoft.Azure.Commands.HDInsight.ManagementCommands
 {
+    [Cmdlet("Add", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "HDInsightClusterIdentity",DefaultParameterSetName = CertificateFilePathSet),OutputType(typeof(AzureHDInsightConfig))]
     public class AddAzureHDInsightClusterIdentity : HDInsightCmdletBase
     {
         private const string CertificateFilePathSet = "CertificateFilePath";
