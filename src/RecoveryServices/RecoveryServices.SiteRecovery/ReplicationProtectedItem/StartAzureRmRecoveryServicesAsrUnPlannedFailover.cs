@@ -551,7 +551,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery
                             new RecoveryPlanInMageRcmFailoverInput
                             {
                                 RecoveryPointType = recoveryPointType,
-                                UseMultiVmSyncPoint =
+                                UseMultiVMSyncPoint =
                                     this.MultiVmSyncPoint == Constants.Enable ?
                                         Constants.True :
                                         Constants.False

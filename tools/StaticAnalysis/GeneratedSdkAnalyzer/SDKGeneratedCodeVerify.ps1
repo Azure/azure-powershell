@@ -36,6 +36,7 @@ $skipModules = @(
     'Az.CosmosDB',
     'Az.KeyVault',
     'Az.NetAppFiles',
+    'Az.RecoveryServices',
     'Az.RedisCache',
     'Az.Storage',
     'Az.Search',
