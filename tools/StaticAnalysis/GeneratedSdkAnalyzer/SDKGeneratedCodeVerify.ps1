@@ -39,6 +39,7 @@ $skipModules = @(
     'Az.RedisCache',
     'Az.Storage',
     'Az.Search',
+    'Az.Security',
     'Az.Sql',
     'Az.TrafficManager'
 )

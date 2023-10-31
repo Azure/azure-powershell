@@ -14,7 +14,9 @@ Creates or updates a database.
 
 ```
 New-AzKustoDatabase -ClusterName <String> -Name <String> -ResourceGroupName <String> -Kind <Kind>
- [-SubscriptionId <String>] [-CallerRole <CallerRole>] [-HotCachePeriod <TimeSpan>] [-Location <String>]
+ [-SubscriptionId <String>] [-CallerRole <CallerRole>] [-HotCachePeriod <TimeSpan>]
+ [-KeyVaultPropertyKeyName <String>] [-KeyVaultPropertyKeyVaultUri <String>]
+ [-KeyVaultPropertyKeyVersion <String>] [-KeyVaultPropertyUserIdentity <String>] [-Location <String>]
  [-SoftDeletePeriod <TimeSpan>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf]
  [<CommonParameters>]
 ```
@@ -35,7 +37,20 @@ Kind      Location Name                                Type
 ReadWrite East US  testnewkustocluster/mykustodatabase Microsoft.Kusto/Clusters/Databases
 ```
 
-The above command creates a new datebase named "mykustodatabase" in the resource group "testrg".
+The above command creates a new database named "mykustodatabase" in the resource group "testrg".
+
+### Example 2: Create a new CMK database
+```powershell
+New-AzKustoDatabase -ResourceGroupName "myResourceGroup" -ClusterName "myCluster" -Name "myCMKDatabase" -Location "East US" -Kind ReadWrite -KeyVaultPropertyKeyName "myKeyName" -KeyVaultPropertyKeyVaultUri "https://myKeyValutName.vault.azure.net/" -KeyVaultPropertyKeyVersion "50e4aacba25d4d1fa03e7c4c18fc2459" -KeyVaultPropertyUserIdentity "/subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx/resourceGroups/xxxx/providers/Microsoft.ManagedIdentity/userAssignedIdentities/myManagedIdentityName"
+```
+
+```output
+Kind      Location Name
+----      -------- ----
+ReadWrite East US  myCluster/myCMKDatabase
+```
+
+The above command creates a new CMK database named "myCMKDatabase" in cluster "myCluster" in the resource group "myResourceGroup".
 
 ## PARAMETERS
 
@@ -105,6 +120,66 @@ The time the data should be kept in cache for fast queries in TimeSpan.
 
 ```yaml
 Type: System.TimeSpan
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -KeyVaultPropertyKeyName
+The name of the key vault key.
+
+```yaml
+Type: System.String
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -KeyVaultPropertyKeyVaultUri
+The Uri of the key vault.
+
+```yaml
+Type: System.String
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -KeyVaultPropertyKeyVersion
+The version of the key vault key.
+
+```yaml
+Type: System.String
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -KeyVaultPropertyUserIdentity
+The user assigned identity (ARM resource id) that has access to the key.
+
+```yaml
+Type: System.String
 Parameter Sets: (All)
 Aliases:
 
@@ -259,11 +334,9 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api20221229.IDatabase
+### Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api20230815.IDatabase
 
 ## NOTES
-
-ALIASES
 
 ## RELATED LINKS
 

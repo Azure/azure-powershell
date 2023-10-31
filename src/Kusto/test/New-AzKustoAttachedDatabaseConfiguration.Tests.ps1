@@ -26,7 +26,7 @@ Describe 'New-AzKustoAttachedDatabaseConfiguration' {
         $followerClusterName = $env.kustoFollowerClusterName
         $DefaultPrincipalsModificationKind = "Union"
         $clusterResourceId = $env.kustoClusterResourceId
-        $followerClusterResourceId = $env.kustoFolowerClusterResourceId
+        $followerClusterResourceId = $env.kustoFollowerClusterResourceId
         $attachedDatabaseConfigurationFullName = $followerClusterName + "/" + $attachedDatabaseConfigurationName
 
         New-AzKustoDatabase -ResourceGroupName $resourceGroupName -ClusterName $clusterName -Name $databaseName -Kind ReadWrite -Location $location
