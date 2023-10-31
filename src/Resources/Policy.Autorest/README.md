@@ -265,6 +265,9 @@ directive:
   # Transform empty object definitions (e.g. policyRule, metadata) so they are generated as 
   # hashtable, otherwise their values are discarded
   - from: swagger-document
+    where: $.definitions.PolicyAssignmentProperties.properties.metadata
+    transform: $['additionalProperties'] = true
+  - from: swagger-document
     where: $.definitions.PolicyDefinitionProperties.properties.policyRule
     transform: $['additionalProperties'] = true
   - from: swagger-document
@@ -295,6 +298,12 @@ directive:
     transform: $['additionalProperties'] = true;
   - from: swagger-document
     where: $.definitions.ParameterDefinitionsValue.properties.defaultValue
+    transform: $['additionalProperties'] = true;
+  - from: swagger-document
+    where: $.definitions.ParameterValues
+    transform: $['additionalProperties'] = true;
+  - from: swagger-document
+    where: $.definitions.ParameterDefinitions
     transform: $['additionalProperties'] = true;
 
   # Rename generated hashtable parameters to avoid type mismatch, since generated code
