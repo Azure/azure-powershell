@@ -28,7 +28,7 @@ pac26,[ps=true;customSource=https://azpspackage.blob.core.windows.net/docs-relea
 pac27,[ps=true;customSource=https://azpspackage.blob.core.windows.net/docs-release/Az.ConfidentialLedger.1.0.0.nupkg;sourceType=sa]Az.ConfidentialLedger,1.0.0
 pac28,[ps=true;customSource=https://azpspackage.blob.core.windows.net/docs-release/Az.Confluent.0.2.0.nupkg;sourceType=sa]Az.Confluent,0.2.0
 pac29,[ps=true;customSource=https://azpspackage.blob.core.windows.net/docs-release/Az.ConnectedKubernetes.0.9.0.nupkg;sourceType=sa]Az.ConnectedKubernetes,0.9.0
-pac30,[ps=true;customSource=https://azpspackage.blob.core.windows.net/docs-release/Az.ConnectedMachine.0.5.0.nupkg;sourceType=sa]Az.ConnectedMachine,0.5.0
+pac30,[ps=true;customSource=https://azpspackage.blob.core.windows.net/docs-release/Az.ConnectedMachine.0.5.1.nupkg;sourceType=sa]Az.ConnectedMachine,0.5.1
 pac31,[ps=true;customSource=https://azpspackage.blob.core.windows.net/docs-release/Az.ConnectedNetwork.0.1.0.nupkg;sourceType=sa]Az.ConnectedNetwork,0.1.0
 pac32,[ps=true;customSource=https://azpspackage.blob.core.windows.net/docs-release/Az.ContainerInstance.3.2.2.nupkg;sourceType=sa]Az.ContainerInstance,3.2.2
 pac33,[ps=true;customSource=https://azpspackage.blob.core.windows.net/docs-release/Az.ContainerRegistry.4.1.1.nupkg;sourceType=sa]Az.ContainerRegistry,4.1.1
@@ -148,7 +148,7 @@ pac146,[ps=true;customSource=https://azpspackage.blob.core.windows.net/docs-rele
 pac147,[ps=true;customSource=https://azpspackage.blob.core.windows.net/docs-release/Az.StackHCI.2.2.2.nupkg;sourceType=sa]Az.StackHCI,2.2.2
 pac148,[ps=true;customSource=https://azpspackage.blob.core.windows.net/docs-release/Az.Storage.5.10.1.nupkg;sourceType=sa]Az.Storage,5.10.1
 pac149,[ps=true;customSource=https://azpspackage.blob.core.windows.net/docs-release/Az.StorageCache.0.1.0.nupkg;sourceType=sa]Az.StorageCache,0.1.0
-pac150,[ps=true;customSource=https://azpspackage.blob.core.windows.net/docs-release/Az.StorageMover.1.0.1.nupkg;sourceType=sa]Az.StorageMover,1.0.1
+pac150,[ps=true;customSource=https://azpspackage.blob.core.windows.net/docs-release/Az.StorageMover.1.2.0.nupkg;sourceType=sa]Az.StorageMover,1.2.0
 pac151,[ps=true;customSource=https://azpspackage.blob.core.windows.net/docs-release/Az.StorageSync.2.0.0.nupkg;sourceType=sa]Az.StorageSync,2.0.0
 pac152,[ps=true;customSource=https://azpspackage.blob.core.windows.net/docs-release/Az.StreamAnalytics.2.0.0.nupkg;sourceType=sa]Az.StreamAnalytics,2.0.0
 pac153,[ps=true;customSource=https://azpspackage.blob.core.windows.net/docs-release/Az.Subscription.0.10.1.nupkg;sourceType=sa]Az.Subscription,0.10.1

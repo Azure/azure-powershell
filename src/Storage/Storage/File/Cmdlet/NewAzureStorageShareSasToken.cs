@@ -95,6 +95,7 @@ namespace Microsoft.WindowsAzure.Commands.Storage.File.Cmdlet
         public override int? ServerTimeoutPerRequest { get; set; }
         public override int? ClientTimeoutPerRequest { get; set; }
         public override int? ConcurrentTaskCount { get; set; }
+        public override SwitchParameter DisAllowTrailingDot { get; set; }
 
         /// <summary>
         /// Execute command

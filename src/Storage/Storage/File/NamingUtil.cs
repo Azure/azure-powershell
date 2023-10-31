@@ -35,7 +35,7 @@ namespace Microsoft.WindowsAzure.Commands.Storage.File
 
         private const int MaxPathLength = 2048;
 
-        private static readonly char[] PathSeparators = new char[] { '/', '\\' };
+        public static readonly char[] PathSeparators = new char[] { '/', '\\' };
 
         private static readonly string[] DirectoryIndicators = new string[] { ".", ".." };
 
