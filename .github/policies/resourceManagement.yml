@@ -282,6 +282,18 @@ configuration:
         - hasLabel:
             label: Service Attention
         - hasLabel:
+            label: ARM - Management Group
+        then:
+        - mentionUsers:
+            mentionees:
+            - rthorn17
+            - daxfohl
+            replyTemplate: Thanks for the feedback! We are routing this to the appropriate team for follow-up. cc ${mentionees}.
+            assignMentionees: False
+      - if:
+        - hasLabel:
+            label: Service Attention
+        - hasLabel:
             label: ARM - RBAC
         then:
         - mentionUsers:
@@ -713,6 +725,17 @@ configuration:
         - hasLabel:
             label: Service Attention
         - hasLabel:
+            label: Communication
+        then:
+        - mentionUsers:
+            mentionees:
+            - acsdevx-msft
+            replyTemplate: Thanks for the feedback! We are routing this to the appropriate team for follow-up. cc ${mentionees}.
+            assignMentionees: False
+      - if:
+        - hasLabel:
+            label: Service Attention
+        - hasLabel:
             label: Compute
         then:
         - mentionUsers:
@@ -956,7 +979,7 @@ configuration:
         - hasLabel:
             label: Service Attention
         - hasLabel:
-            label: Cosmos
+            label: CosmosDB
         then:
         - mentionUsers:
             mentionees:
@@ -2381,6 +2404,7 @@ configuration:
         then:
         - mentionUsers:
             mentionees:
+            - mwesigwaguma
             - a-Santamaria
             - LukeSlev
             - jkochhar

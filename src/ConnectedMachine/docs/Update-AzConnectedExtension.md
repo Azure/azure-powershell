@@ -258,6 +258,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## NOTES
 
+
 ALIASES
 
 COMPLEX PARAMETER PROPERTIES
@@ -284,6 +285,7 @@ To create the parameters described below, construct a hash table containing the 
   - `[ScopeName <String>]`: The name of the Azure Arc PrivateLinkScope resource.
   - `[SubscriptionId <String>]`: The ID of the target subscription.
   - `[Version <String>]`: The version of the Extension being received.
+
 
 ## RELATED LINKS
 

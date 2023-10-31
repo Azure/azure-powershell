@@ -152,25 +152,16 @@ directive:
   # - model-cmdlet:
   #   - Volume # Hide to customize AzureFileStorageAccountKey from string to securestring
 
-  # Breaking change warning message
+  # Fix Typo: Parameters starting with PreviouState will be corrected as PreviousState.
   - where:
-      subject: ^ContainerGroup$|^ContainerInstanceInitDefinitionObject$|^ContainerInstanceObject$
+      model-name: ContainerPropertiesInstanceView|InitContainerPropertiesDefinitionInstanceView|Container|ContainerProperties|InitContainerDefinition|InitContainerPropertiesDefinition
+      property-name: PreviousState
     set:
-      breaking-change:
-        deprecated-output-properties:
-          - PreviouState
-          - PreviouStateDetailStatus
-          - PreviouStateExitCode
-          - PreviouStateFinishTime
-          - PreviouStateStartTime
-        new-output-properties:
-          - PreviousState
-          - PreviousStateDetailStatus
-          - PreviousStateExitCode
-          - PreviousStateFinishTime
-          - PreviousStateStartTime
-        change-description: The parameters starts with PreviouState will be corrected as PreviousState.
-        deprecated-by-version: 4.0.0
-        deprecated-by-azversion: 11.0.0
-        change-effective-date: 2023/11/15
+      property-name: PreviousStateInternal
+
+  - where:
+      model-name: ContainerPropertiesInstanceView|InitContainerPropertiesDefinitionInstanceView|Container|ContainerProperties|InitContainerDefinition|InitContainerPropertiesDefinition
+      property-name: ^PreviouState
+    set:
+      property-name: PreviousState
 ```
