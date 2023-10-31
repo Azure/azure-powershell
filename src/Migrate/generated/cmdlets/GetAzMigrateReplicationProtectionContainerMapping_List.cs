@@ -16,6 +16,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Migrate.Cmdlets
     [global::System.Management.Automation.OutputType(typeof(Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api202301.IProtectionContainerMapping))]
     [global::Microsoft.Azure.PowerShell.Cmdlets.Migrate.Description(@"Lists the protection container mappings for a protection container.")]
     [global::Microsoft.Azure.PowerShell.Cmdlets.Migrate.Generated]
+    [global::Microsoft.Azure.PowerShell.Cmdlets.Migrate.HttpPath(Path = "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.RecoveryServices/vaults/{resourceName}/replicationFabrics/{fabricName}/replicationProtectionContainers/{protectionContainerName}/replicationProtectionContainerMappings", ApiVersion = "2023-01-01")]
     public partial class GetAzMigrateReplicationProtectionContainerMapping_List : global::System.Management.Automation.PSCmdlet,
         Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.IEventListener
     {
