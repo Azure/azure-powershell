@@ -1,0 +1,35 @@
+{
+  "New-AzStackHCIVMVirtualHardDisk+[NoContext]+Create+$PUT+https://management.azure.com/subscriptions/0709bd7a-8383-4e1d-98c8-f81d1b3443fc/resourceGroups/mkclus0824-rg/providers/Microsoft.AzureStackHCI/virtualHardDisks/testVhd?api-version=2023-09-01-preview+1": {
+    "Request": {
+      "Method": "PUT",
+      "RequestUri": "https://management.azure.com/subscriptions/0709bd7a-8383-4e1d-98c8-f81d1b3443fc/resourceGroups/mkclus0824-rg/providers/Microsoft.AzureStackHCI/virtualHardDisks/testVhd?api-version=2023-09-01-preview",
+      "Content": "{\r\n  \"location\": \"eastus\",\r\n  \"properties\": {\r\n    \"diskSizeGB\": 2\r\n  },\r\n  \"extendedLocation\": {\r\n    \"name\": \"/subscriptions/0709bd7a-8383-4e1d-98c8-f81d1b3443fc/resourcegroups/mkclus0824-rg/providers/microsoft.extendedlocation/customlocations/myresourcebridge-cl\",\r\n    \"type\": \"CustomLocation\"\r\n  }\r\n}",
+      "Headers": {
+      },
+      "ContentHeaders": {
+        "Content-Type": [ "application/json" ],
+        "Content-Length": [ "305" ]
+      }
+    },
+    "Response": {
+      "StatusCode": 409,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "x-ms-failure-cause": [ "gateway" ],
+        "x-ms-request-id": [ "ef020354-360d-4ed4-a995-fcda13c24b2f" ],
+        "x-ms-correlation-request-id": [ "ef020354-360d-4ed4-a995-fcda13c24b2f" ],
+        "x-ms-routing-request-id": [ "WESTCENTRALUS:20231030T190825Z:ef020354-360d-4ed4-a995-fcda13c24b2f" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "Date": [ "Mon, 30 Oct 2023 19:08:24 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Type": [ "application/json; charset=utf-8" ],
+        "Expires": [ "-1" ],
+        "Content-Length": [ "260" ]
+      },
+      "Content": "{\"error\":{\"code\":\"InvalidResourceLocation\",\"message\":\"The resource \u0027testVhd\u0027 already exists in location \u0027eastus2euap\u0027 in resource group \u0027mkclus0824-rg\u0027. A resource with the same name cannot be created in location \u0027eastus\u0027. Please select a new resource name.\"}}"
+    }
+  }
+}
