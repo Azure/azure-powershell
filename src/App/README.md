@@ -66,8 +66,7 @@ resourcegroup-append: true
 nested-object-to-string: true
 auto-switch-view: false
 
-use-extension: 
-  "@autorest/powershell": "4.x"
+
 
 directive:
   - from: swagger-document 

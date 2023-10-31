@@ -43,8 +43,6 @@ title: ElasticSan
 module-version: 0.3.0
 subject-prefix: $(service-name)
 
-use-extension: 
-  "@autorest/powershell": "4.x"
 enable-parent-pipeline-input: true
 
 # If there are post APIs for some kinds of actions in the RP, you may need to 

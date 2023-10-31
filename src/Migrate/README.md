@@ -60,6 +60,10 @@ module-version: 1.0.1
 title: Migrate 
 subject-prefix: 'Migrate'
 
+# For new modules, please avoid setting 3.x using the use-extension method and instead, use 4.x as the default option
+use-extension:
+  "@autorest/powershell": "3.x"
+
 directive:
   # Correct some swagger operationIds
   - from: Microsoft.OffAzure/stable/2020-01-01/migrate.json

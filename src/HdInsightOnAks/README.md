@@ -75,8 +75,6 @@ default-exclude-tableview-properties: true
 > Directives
 ``` yaml
 identity-correction-for-post: true
-use-extension:
-  "@autorest/powershell": "4.0.644"
 directive:
   - from: swagger-document
     where: $.paths..responses.202
