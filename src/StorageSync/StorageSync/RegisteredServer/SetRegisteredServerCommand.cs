@@ -96,7 +96,7 @@ namespace Microsoft.Azure.Commands.StorageSync.Cmdlets
           Mandatory = false,
           ValueFromPipelineByPropertyName = false,
           HelpMessage = HelpMessages.ServerIdentityParameter)]
-        public bool Identity { get; set; }
+        public SwitchParameter Identity { get; set; }
 
         /// <summary>
         /// Gets or sets as job.

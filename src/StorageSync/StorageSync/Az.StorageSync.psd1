@@ -79,10 +79,10 @@ CmdletsToExport = 'Invoke-AzStorageSyncCompatibilityCheck',
                'New-AzStorageSyncGroup', 'Get-AzStorageSyncGroup', 
                'Remove-AzStorageSyncGroup', 'New-AzStorageSyncCloudEndpoint', 
                'Get-AzStorageSyncCloudEndpoint', 'Set-AzStorageSyncCloudEndpointPermission', 'Remove-AzStorageSyncCloudEndpoint', 
-               'Remove-AzStorageSyncCloudEndpointPermission',
+               'Remove-AzStorageSyncServerEndpointPermission',
                'New-AzStorageSyncServerEndpoint', 'Get-AzStorageSyncServerEndpoint','Remove-AzStorageSyncServerEndpoint', 
                'Set-AzStorageSyncServerEndpoint','Set-AzStorageSyncServerEndpointPermission',
-               'Register-AzStorageSyncServer', 'Unregister-AzStorageSyncServer','Patch-AzStorageSyncServer', 'Get-AzStorageSyncServer', 
+               'Register-AzStorageSyncServer', 'Unregister-AzStorageSyncServer','Set-AzStorageSyncServer', 'Get-AzStorageSyncServer', 
                'Reset-AzStorageSyncServerCertificate', 
                'Invoke-AzStorageSyncChangeDetection'
 
