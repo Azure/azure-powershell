@@ -8,9 +8,9 @@ parameters:
   type: string
   default: 'none'
 - name: BuildInstaller
-  displayName: Generate installer for this build
-  type: string
-  default: 'none'
+  displayName: Build Installer
+  type: boolean
+  default: true
 pool:
     name: $(AgentPool)
     demands: npm
@@ -365,6 +365,7 @@ jobs:
 - job: BuildInstaller
   displayName: Build installer and sign
   dependsOn: Build
+  condition: eq(${{ parameters.buildInstaller }}, true)
   timeoutInMinutes: 180
   variables:
     LocalRepoName: 'LocalRepo'
