@@ -642,7 +642,7 @@ namespace Microsoft.Azure.Commands.Compute.Automation
                 }
                 vVirtualMachineProfile.SecurityProfile.UefiSettings.SecureBootEnabled = this.EnableSecureBoot;
             }
-
+            /*
             // Trusted Launch defaulting. 
             if (!this.IsParameterBound(c => c.SecurityType))
             {
@@ -673,7 +673,7 @@ namespace Microsoft.Azure.Commands.Compute.Automation
                     vVirtualMachineProfile.SecurityProfile.UefiSettings.VTpmEnabled = true;
                 }
             }
-
+            */
             if (this.IsParameterBound(c => c.BootDiagnostic))
             {
                 if (vVirtualMachineProfile == null)

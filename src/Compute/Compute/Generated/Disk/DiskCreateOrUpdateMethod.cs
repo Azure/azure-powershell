@@ -84,7 +84,7 @@ namespace Microsoft.Azure.Commands.Compute.Automation
                     && disk.CreationData?.ImageReference != null)
                     {
                         
-                        var imageRef = disk.CreationData?.ImageReference;
+                        ImageDiskReference imageRef = disk.CreationData?.ImageReference;
                         // Must an ImageReference have a publisher and offer and sku and version? I think so.
                         var resourceClient = AzureSession.Instance.ClientFactory.CreateArmClient<ResourceManagementClient>(
                             DefaultProfile.DefaultContext,

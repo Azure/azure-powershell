@@ -6874,6 +6874,7 @@ function Test-VirtualMachineSecurityTypeStandardWithConfig
 .SYNOPSIS
 Test Virtual Machines default to SecurityType = TrustedLaunch.
 Other necessary defaults also occur for TL support.
+Feature request 1240
 #>
 function Test-VMDefaultsToTrustedLaunch
 {
@@ -6894,22 +6895,33 @@ function Test-VMDefaultsToTrustedLaunch
         # Add one VM from creation 
         $vmname = 'vm' + $rgname;
         $domainNameLabel = "d1" + $rgname;
+        $securityType_TL = "TrustedLaunch";
+        $PublisherName = "MicrosoftWindowsServer";
+        $Offer = "WindowsServer";
+        $SKU = "2022-datacenter-azure-edition";
+        $version = "latest";
+        $disable = $false;
+        $enable = $true;
+
         $vm = New-AzVM -ResourceGroupName $rgname -Name $vmname -Credential $cred -DomainNameLabel $domainNameLabel; 
 
         $vm = Get-AzVm -ResourceGroupName $rgname -Name $vmname;
 
         # Validate
-        Assert-AreEqual $vm.SecurityProfile.SecurityType "TrustedLaunch";
-        Assert-AreEqual $vm.SecurityProfile.UefiSettings.SecureBootEnabled $true;
-        Assert-AreEqual $vm.SecurityProfile.UefiSettings.VTpmEnabled $true;
+        Assert-AreEqual $vm.SecurityProfile.SecurityType $securityType_TL;
+        Assert-AreEqual $vm.SecurityProfile.UefiSettings.SecureBootEnabled $enable;
+        Assert-AreEqual $vm.SecurityProfile.UefiSettings.VTpmEnabled $enable;
+        Assert-AreEqual $vm.StorageProfile.ImageReference.Publisher $PublisherName;
+        Assert-AreEqual $vm.StorageProfile.ImageReference.Offer $Offer;
+        Assert-AreEqual $vm.StorageProfile.ImageReference.Sku $SKU;
+        Assert-AreEqual $vm.StorageProfile.ImageReference.Version $version;
 
         
         # DefaultParameterSet with VMConfig scenario
         $domainNameLabel = "d2" + $rgname;
         $vmsize = 'Standard_D4s_v3';
         $vmname = 'v2' + $rgname;
-        $securityType_TL = "TrustedLaunch";
-        $vnetname = "myVnet2";
+        $vnetname = "vn" + $rgname;
         $vnetAddress = "10.0.0.0/16";
         $subnetname = "slb2" + $rgname;
         $subnetAddress = "10.0.2.0/24";
@@ -6917,11 +6929,7 @@ function Test-VMDefaultsToTrustedLaunch
         $NICName = $vmname+ "n2";
         $NSGName = $vmname + "nsg";
         $OSDiskSizeinGB = 128;
-        $PublisherName = "MicrosoftWindowsServer";
-        $Offer = "WindowsServer";
-        $SKU = "2022-datacenter-azure-edition-core";
-        $disable = $false;
-        $enable = $true;
+        
         
         # Creating a VM using Default parameterset
         $password = Get-PasswordForVM;
@@ -6939,9 +6947,9 @@ function Test-VMDefaultsToTrustedLaunch
 
         # VM
         $vmConfig = New-AzVMConfig -VMName $vmname -VMSize $vmsize;
-        Set-AzVMOperatingSystem -VM $vmConfig -Windows -ComputerName $vmname -Credential $cred;
-        Set-AzVMSourceImage -VM $vmConfig -PublisherName $PublisherName -Offer $Offer -Skus $SKU -Version latest ;
-        Add-AzVMNetworkInterface -VM $vmConfig -Id $nic.Id;
+        $vmConfig = Set-AzVMOperatingSystem -VM $vmConfig -Windows -ComputerName $vmname -Credential $cred;
+        # $vmConfig = Set-AzVMSourceImage -VM $vmConfig -PublisherName $PublisherName -Offer $Offer -Skus $SKU -Version latest ;
+        $vmConfig = Add-AzVMNetworkInterface -VM $vmConfig -Id $nic.Id;
         
         New-AzVM -ResourceGroupName $rgname -Location $loc -VM $vmConfig;
         $vm = Get-AzVM -ResourceGroupName $rgname -Name $vmname;
@@ -6950,6 +6958,10 @@ function Test-VMDefaultsToTrustedLaunch
         Assert-AreEqual $vm.SecurityProfile.SecurityType $securityType_TL;
         Assert-AreEqual $vm.SecurityProfile.UefiSettings.SecureBootEnabled $enable;
         Assert-AreEqual $vm.SecurityProfile.UefiSettings.VTpmEnabled $enable;
+        Assert-AreEqual $vm.StorageProfile.ImageReference.Publisher $PublisherName;
+        Assert-AreEqual $vm.StorageProfile.ImageReference.Offer $Offer;
+        Assert-AreEqual $vm.StorageProfile.ImageReference.Sku $SKU;
+        Assert-AreEqual $vm.StorageProfile.ImageReference.Version $version;
     }
     finally 
     {
@@ -6962,12 +6974,14 @@ function Test-VMDefaultsToTrustedLaunch
 .SYNOPSIS
 Test Virtual Machines default to SecurityType = TrustedLaunch.
 Other necessary defaults also occur for TL support.
+Trying to create a VM with a managedDisk of TL support. 
+Feature request 1243
 #>
 function Test-VMDefaultsToTrustedLaunchWithManagedDisk
 {
-    # TODO: complete this test
+    # TODO: complete this test. currently vm creation times out. 
     # Setup
-    $rgname = "adsandvmd16";#Get-ComputeTestResourceName;
+    $rgname = "adsandvmd19";#Get-ComputeTestResourceName;
     $loc = "eastus";#Get-ComputeVMLocation;
 
     try
@@ -6987,7 +7001,7 @@ function Test-VMDefaultsToTrustedLaunchWithManagedDisk
         $OSDiskSizeinGB = 128;
         $PublisherName = "MicrosoftWindowsServer";
         $Offer = "WindowsServer";
-        $SKU = "2022-datacenter-azure-edition-core";
+        $SKU = "2022-datacenter-azure-edition";
         $disable = $false;
         $enable = $true;
         
@@ -6999,7 +7013,7 @@ function Test-VMDefaultsToTrustedLaunchWithManagedDisk
 
         # Create disk to use later
         $securityTypeTL = "TrustedLaunch";
-        $image = Get-AzVMImage -Skus 2022-datacenter-azure-edition -Offer WindowsServer -PublisherName MicrosoftWindowsServer -Location $loc -Version latest;
+        $image = Get-AzVMImage -Skus $SKU -Offer $Offer -PublisherName $PublisherName -Location $loc -Version latest;
         $diskconfig = New-AzDiskConfig -DiskSizeGB 127 -AccountType Premium_LRS -OsType Windows -CreateOption FromImage -Location $loc;
         $diskconfig = Set-AzDiskImageReference -Disk $diskconfig -Id $image.Id;
         $disk = New-AzDisk -ResourceGroupName $rgname -DiskName $diskname -Disk $diskconfig;
@@ -7013,10 +7027,10 @@ function Test-VMDefaultsToTrustedLaunchWithManagedDisk
 
         # VM
         $vmConfig = New-AzVMConfig -VMName $vmName -VMSize $VMSize;
-        Add-AzVMNetworkInterface -VM $vmConfig -Id $nic.Id;
-        Set-AzVMOSDisk -Windows -ManagedDiskId $disk.Id -CreateOption Attach -VM $vmConfig;
+        $vmConfig = Add-AzVMNetworkInterface -VM $vmConfig -Id $nic.Id;
+        $vmConfig = Set-AzVMOSDisk -Windows -ManagedDiskId $disk.Id -CreateOption Attach -VM $vmConfig;
         
-        New-AzVM -ResourceGroupName $rgname -Location $loc -VM $vmConfig;
+        New-AzVM -ResourceGroupName $rgname -Location $loc -VM $vmConfig -Verbose -Debug;
         
         # Initialize status to creating  
         $status = "Creating"  
@@ -7051,6 +7065,170 @@ function Test-VMDefaultsToTrustedLaunchWithManagedDisk
         Assert-AreEqual $vm.SecurityProfile.SecurityType $securityTypeTL;
         Assert-AreEqual $vm.SecurityProfile.UefiSettings.SecureBootEnabled $enable;
         Assert-AreEqual $vm.SecurityProfile.UefiSettings.VTpmEnabled $enable;
+    }
+    finally 
+    {
+        # Cleanup
+        Clean-ResourceGroup $rgname;
+    }
+}
+
+<#
+.SYNOPSIS
+Test Virtual Machines default to SecurityType = TrustedLaunch.
+From ManagedDisk that has TL enabled.
+Trying to create a VM with a managedDisk of TL support. 
+Feature request 1243
+#>
+function Test-VMDefaultsToTrustedLaunchWithManagedDisk2
+{
+    # TODO: complete this test. currently vm creation times out. 
+    # Setup
+    $rgname = "adsandvmd20";#Get-ComputeTestResourceName;
+    $loc = "eastus";#Get-ComputeVMLocation;
+
+    try
+    {
+        New-AzResourceGroup -Name $rgname -Location $loc -Force;
+        # VM Profile & Hardware
+        $vmname = 'vm' + $rgname;
+        $domainNameLabel = "d1" + $rgname;
+
+        $vnetname = "vn" + $rgname;
+        $vnetAddress = "10.0.0.0/16";
+        $subnetname = "slb" + $rgname;
+        $subnetAddress = "10.0.2.0/24";
+        $diskName = $vmname + "-osdisk";
+        $NICName = $vmname+ "-nic";
+        $NSGName = $vmname + "-NSG";
+        $OSDiskSizeinGB = 128;
+        $VMSize = "Standard_DS2_v2";
+        $PublisherName = "MicrosoftWindowsServer";
+        $Offer = "WindowsServer";
+        $SKU = "2022-datacenter-azure-edition";#"2022-datacenter-smalldisk-g2";
+        $version = "latest";
+        $securityTypeTL = "TrustedLaunch";
+        $secureboot = $true;
+        $vtpm = $true;
+        $extDefaultName = "GuestAttestation";
+        $vmGADefaultIDentity = "SystemAssigned";
+
+        # Creating a VM using Simple parameterset
+        $password = "Testing1234567";#Get-PasswordForVM;
+        $securePassword = $password | ConvertTo-SecureString -AsPlainText -Force;  
+        $user = "admin01";
+        $cred = New-Object System.Management.Automation.PSCredential ($user, $securePassword);
+
+        # Network Setup
+        $frontendSubnet = New-AzVirtualNetworkSubnetConfig -Name $subnetname -AddressPrefix $subnetAddress;
+        $vnet = New-AzVirtualNetwork -Name $vnetname -ResourceGroupName $rgname -Location $loc -AddressPrefix $vnetAddress -Subnet $frontendSubnet;
+        $nsgRuleRDP = New-AzNetworkSecurityRuleConfig -Name RDP  -Protocol Tcp  -Direction Inbound -Priority 1001 -SourceAddressPrefix * -SourcePortRange * -DestinationAddressPrefix * -DestinationPortRange 3389 -Access Allow;
+        $nsg = New-AzNetworkSecurityGroup -ResourceGroupName $RGName -Location $loc -Name $NSGName  -SecurityRules $nsgRuleRDP;
+        $nic = New-AzNetworkInterface -Name $NICName -ResourceGroupName $RGName -Location $loc -SubnetId $vnet.Subnets[0].Id -NetworkSecurityGroupId $nsg.Id -EnableAcceleratedNetworking;
+
+        # Create managed disk to use later
+        $image = Get-AzVMImage -Skus $SKU -Offer $Offer -PublisherName $PublisherName -Location $loc -Version latest;
+        $diskconfig = New-AzDiskConfig -DiskSizeGB 127 -AccountType Premium_LRS -OsType Windows -CreateOption FromImage -Location $loc;
+        $diskconfig = Set-AzDiskImageReference -Disk $diskconfig -Id $image.Id;
+        $disk = New-AzDisk -ResourceGroupName $rgname -DiskName $diskname -Disk $diskconfig;
+        
+        
+        # VM
+        $vmConfig = New-AzVMConfig -VMName $vmName -VMSize $VMSize;
+        $vmConfig = Add-AzVMNetworkInterface -VM $vmConfig -Id $nic.Id;
+        $vmConfig = Set-AzVMOSDisk -Windows -ManagedDiskId $disk.Id -CreateOption Attach -VM $vmConfig;
+        
+        New-AzVM -ResourceGroupName $rgname -Location $loc -VM $vmConfig;# -Verbose -Debug;
+        
+        $vm = Get-AzVM -ResourceGroupName $rgname -Name $vmname;
+        
+        # Validate VMConfig scenario
+        # this.VM.StorageProfile.OsDisk.ManagedDisk
+        Assert-AreEqual $vm.SecurityProfile.SecurityType $securityTypeTL;
+        Assert-AreEqual $vm.SecurityProfile.UefiSettings.SecureBootEnabled $enable;
+        Assert-AreEqual $vm.SecurityProfile.UefiSettings.VTpmEnabled $enable;
+    }
+    finally 
+    {
+        # Cleanup
+        Clean-ResourceGroup $rgname;
+    }
+}
+
+<#
+.SYNOPSIS
+Test Virtual Machines default to SecurityType = TrustedLaunch.
+Other necessary defaults also occur for TL support.
+For when securitytype is null but ImageReference is provided that is Gen2. 
+Only works with VMConfig DefaultParameterSet. 
+TEST WORKS
+Feature request 1241
+#>
+function Test-VMDefaultsToTrustedLaunchWithGen2Image
+{
+    # Setup
+    $rgname = "adsandvmd22";#Get-ComputeTestResourceName;
+    $loc = "eastus";#Get-ComputeVMLocation;
+
+    try
+    {
+        New-AzResourceGroup -Name $rgname -Location $loc -Force;
+        # VM Profile & Hardware
+        $vmname = 'vm' + $rgname;
+        $domainNameLabel = "d1" + $rgname;
+
+        $vnetname = "vn" + $rgname;
+        $vnetAddress = "10.0.0.0/16";
+        $subnetname = "slb" + $rgname;
+        $subnetAddress = "10.0.2.0/24";
+        $OSDiskName = $vmname + "-osdisk";
+        $NICName = $vmname+ "-nic";
+        $NSGName = $vmname + "-NSG";
+        $OSDiskSizeinGB = 128;
+        $VMSize = "Standard_DS2_v2";
+        $PublisherName = "MicrosoftWindowsServer";
+        $Offer = "WindowsServer";
+        $SKU = "2022-datacenter-azure-edition";#"2022-datacenter-smalldisk-g2";
+        $version = "latest";
+        $securityType = "TrustedLaunch";
+        $secureboot = $true;
+        $vtpm = $true;
+        $extDefaultName = "GuestAttestation";
+        $vmGADefaultIDentity = "SystemAssigned";
+
+        # Creating a VM using Simple parameterset
+        $password = "Testing1234567";#Get-PasswordForVM;
+        $securePassword = $password | ConvertTo-SecureString -AsPlainText -Force;  
+        $user = "admin01";
+        $cred = New-Object System.Management.Automation.PSCredential ($user, $securePassword);
+
+        $frontendSubnet = New-AzVirtualNetworkSubnetConfig -Name $subnetname -AddressPrefix $subnetAddress;
+
+        $vnet = New-AzVirtualNetwork -Name $vnetname -ResourceGroupName $rgname -Location $loc -AddressPrefix $vnetAddress -Subnet $frontendSubnet;
+         
+        $nsgRuleRDP = New-AzNetworkSecurityRuleConfig -Name RDP  -Protocol Tcp  -Direction Inbound -Priority 1001 -SourceAddressPrefix * -SourcePortRange * -DestinationAddressPrefix * -DestinationPortRange 3389 -Access Allow;
+        $nsg = New-AzNetworkSecurityGroup -ResourceGroupName $RGName -Location $loc -Name $NSGName  -SecurityRules $nsgRuleRDP;
+        $nic = New-AzNetworkInterface -Name $NICName -ResourceGroupName $RGName -Location $loc -SubnetId $vnet.Subnets[0].Id -NetworkSecurityGroupId $nsg.Id -EnableAcceleratedNetworking;
+
+        # VM
+        $vmConfig = New-AzVMConfig -VMName $vmName -VMSize $VMSize;
+        Set-AzVMOperatingSystem -VM $vmConfig -Windows -ComputerName $vmName -Credential $cred;
+        Set-AzVMSourceImage -VM $vmConfig -PublisherName $PublisherName -Offer $Offer -Skus $SKU -Version $version ;
+        Add-AzVMNetworkInterface -VM $vmConfig -Id $nic.Id;
+        #$vmConfig = Set-AzVMSourceImage -VM $vmConfig -PublisherName 'MicrosoftWindowsServer' -Offer 'WindowsServer' -Skus '2022-datacenter-azure-edition' -Version latest;
+        
+        New-AzVM -ResourceGroupName $rgname -Location $loc -VM $vmConfig -Verbose;# -Debug;
+        
+        $vm = Get-AzVM -ResourceGroupName $rgname -Name $vmname;
+        
+        # Validate VMConfig scenario
+        # this.VM.StorageProfile.OsDisk.ManagedDisk
+        Assert-AreEqual $vm.SecurityProfile.SecurityType $securityTypeTL;
+        Assert-AreEqual $vm.SecurityProfile.UefiSettings.SecureBootEnabled $enable;
+        Assert-AreEqual $vm.SecurityProfile.UefiSettings.VTpmEnabled $enable;
+
+
+        
     }
     finally 
     {

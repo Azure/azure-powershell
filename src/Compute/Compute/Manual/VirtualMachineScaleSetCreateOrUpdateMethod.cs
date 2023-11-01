@@ -621,7 +621,6 @@ namespace Microsoft.Azure.Commands.Compute.Automation
                 }
             }
         }
-
         
         async Task SimpleParameterSetExecuteCmdlet(IAsyncCmdlet asyncCmdlet)
         {
@@ -651,7 +650,10 @@ namespace Microsoft.Azure.Commands.Compute.Automation
             }
 
             // TL default for Simple Param Set, no config object
-            if (!this.IsParameterBound(c => c.SecurityType))
+            if (!this.IsParameterBound(c => c.SecurityType)
+                && !this.IsParameterBound(c => c.ImageName)
+                && !this.IsParameterBound(c => c.ImageReferenceId)
+                && !this.IsParameterBound(c => c.SharedGalleryImageId))
             {
                 this.SecurityType = ConstantValues.TrustedLaunchSecurityType;
                 if (!this.IsParameterBound(c => c.ImageName) && !this.IsParameterBound(c => c.ImageReferenceId) && !this.IsParameterBound(c => c.SharedGalleryImageId))
@@ -724,7 +726,7 @@ namespace Microsoft.Azure.Commands.Compute.Automation
                     range);
                 asyncCmdlet.WriteObject(psObject);
             }
-            
+            /*
             if (shouldGuestAttestationExtBeInstalledSimple())
             {
                 string extensionNameGA = "GuestAttestation";
@@ -804,6 +806,7 @@ namespace Microsoft.Azure.Commands.Compute.Automation
 
                 }
             }
+            */
             
         }
 

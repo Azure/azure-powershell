@@ -1704,9 +1704,8 @@ function Test-DiskAcceleratedNetworkAndPublicNetworkAccess
 
 <#
 .SYNOPSIS
-Test AcceleratedNetwork and PublicNetworkAccess parameters for 
-Disk and Snapshot objects. 
-Also tested the CopyStart and CompletionPercent features for snapshots. 
+Disk creation defaults to TL when being created from an Image that is HyperVGeneration V2.
+Feature request 1248
 #>
 function Test-NewDiskSecurityTypeDefaulting
 {
