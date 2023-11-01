@@ -77,7 +77,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Monitor.DataCollection.Models
             {
                 return;
             }
-            {_column = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Monitor.DataCollection.Runtime.Json.JsonArray>("columns"), out var __jsonColumns) ? If( __jsonColumns as Microsoft.Azure.PowerShell.Cmdlets.Monitor.DataCollection.Runtime.Json.JsonArray, out var __v) ? new global::System.Func<System.Collections.Generic.List<Microsoft.Azure.PowerShell.Cmdlets.Monitor.DataCollection.Models.IColumnDefinition>>(()=> global::System.Linq.Enumerable.ToList(global::System.Linq.Enumerable.Select(__v, (__u)=>(Microsoft.Azure.PowerShell.Cmdlets.Monitor.DataCollection.Models.IColumnDefinition) (Microsoft.Azure.PowerShell.Cmdlets.Monitor.DataCollection.Models.ColumnDefinition.FromJson(__u) )) ))() : null : Column;}
+            {_column = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Monitor.DataCollection.Runtime.Json.JsonArray>("columns"), out var __jsonColumns) ? If( __jsonColumns as Microsoft.Azure.PowerShell.Cmdlets.Monitor.DataCollection.Runtime.Json.JsonArray, out var __v) ? new global::System.Func<System.Collections.Generic.List<Microsoft.Azure.PowerShell.Cmdlets.Monitor.DataCollection.Models.IColumnDefinition>>(()=> global::System.Linq.Enumerable.ToList(global::System.Linq.Enumerable.Select(__v, (__u)=>(Microsoft.Azure.PowerShell.Cmdlets.Monitor.DataCollection.Models.IColumnDefinition) (Microsoft.Azure.PowerShell.Cmdlets.Monitor.DataCollection.Models.ColumnDefinition.FromJson(__u) )) ))() : null : _column;}
             AfterFromJson(json);
         }
 

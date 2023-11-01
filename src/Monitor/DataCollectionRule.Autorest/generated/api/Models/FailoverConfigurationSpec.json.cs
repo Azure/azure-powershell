@@ -64,8 +64,8 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Monitor.DataCollection.Models
             {
                 return;
             }
-            {_activeLocation = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Monitor.DataCollection.Runtime.Json.JsonString>("activeLocation"), out var __jsonActiveLocation) ? (string)__jsonActiveLocation : (string)ActiveLocation;}
-            {_location = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Monitor.DataCollection.Runtime.Json.JsonArray>("locations"), out var __jsonLocations) ? If( __jsonLocations as Microsoft.Azure.PowerShell.Cmdlets.Monitor.DataCollection.Runtime.Json.JsonArray, out var __v) ? new global::System.Func<System.Collections.Generic.List<Microsoft.Azure.PowerShell.Cmdlets.Monitor.DataCollection.Models.ILocationSpec>>(()=> global::System.Linq.Enumerable.ToList(global::System.Linq.Enumerable.Select(__v, (__u)=>(Microsoft.Azure.PowerShell.Cmdlets.Monitor.DataCollection.Models.ILocationSpec) (Microsoft.Azure.PowerShell.Cmdlets.Monitor.DataCollection.Models.LocationSpec.FromJson(__u) )) ))() : null : Location;}
+            {_activeLocation = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Monitor.DataCollection.Runtime.Json.JsonString>("activeLocation"), out var __jsonActiveLocation) ? (string)__jsonActiveLocation : (string)_activeLocation;}
+            {_location = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Monitor.DataCollection.Runtime.Json.JsonArray>("locations"), out var __jsonLocations) ? If( __jsonLocations as Microsoft.Azure.PowerShell.Cmdlets.Monitor.DataCollection.Runtime.Json.JsonArray, out var __v) ? new global::System.Func<System.Collections.Generic.List<Microsoft.Azure.PowerShell.Cmdlets.Monitor.DataCollection.Models.ILocationSpec>>(()=> global::System.Linq.Enumerable.ToList(global::System.Linq.Enumerable.Select(__v, (__u)=>(Microsoft.Azure.PowerShell.Cmdlets.Monitor.DataCollection.Models.ILocationSpec) (Microsoft.Azure.PowerShell.Cmdlets.Monitor.DataCollection.Models.LocationSpec.FromJson(__u) )) ))() : null : _location;}
             AfterFromJson(json);
         }
 

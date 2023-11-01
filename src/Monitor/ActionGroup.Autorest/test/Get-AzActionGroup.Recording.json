@@ -1,0 +1,217 @@
+{
+  "Get-AzActionGroup+[NoContext]+GetViaIdentity+$PUT+https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/Monitor-ActionGroup/providers/Microsoft.Insights/actionGroups/actiongroup3?api-version=2023-01-01+1": {
+    "Request": {
+      "Method": "PUT",
+      "RequestUri": "https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/Monitor-ActionGroup/providers/Microsoft.Insights/actionGroups/actiongroup3?api-version=2023-01-01",
+      "Content": "{\r\n  \"location\": \"northcentralus\",\r\n  \"properties\": {\r\n    \"groupShortName\": \"ag3\",\r\n    \"enabled\": false\r\n  }\r\n}",
+      "isContentBase64": false,
+      "Headers": {
+      },
+      "ContentHeaders": {
+        "Content-Type": [ "application/json" ],
+        "Content-Length": [ "113" ]
+      }
+    },
+    "Response": {
+      "StatusCode": 201,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "X-ActivityId": [ "1a43c23c-bf7b-4816-a475-f788021919f4" ],
+        "Access-Control-Expose-Headers": [ "x-activityid" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "X-Frame-Options": [ "SAMEORIGIN" ],
+        "X-ServedBy": [ "CH1AZNS000001" ],
+        "api-supported-versions": [ "2016-09-01-preview, 2017-03-01-preview, 2017-04-01, 2018-03-01, 2018-09-01, 2019-03-01, 2019-06-01, 2021-09-01, 2022-04-01, 2022-06-01, 2023-01-01, 2023-03-01-preview, 2023-05-01-preview, 2023-05-01, 2023-08-01-preview, 2023-09-01-preview" ],
+        "Server": [ "Microsoft-HTTPAPI/2.0" ],
+        "x-ms-ratelimit-remaining-subscription-resource-requests": [ "23" ],
+        "x-ms-request-id": [ "16281f99-f255-4e80-9028-831abf4d0eff" ],
+        "x-ms-correlation-request-id": [ "16281f99-f255-4e80-9028-831abf4d0eff" ],
+        "x-ms-routing-request-id": [ "JAPANEAST:20231025T095508Z:16281f99-f255-4e80-9028-831abf4d0eff" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "Date": [ "Wed, 25 Oct 2023 09:55:08 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "573" ],
+        "Content-Type": [ "application/json; charset=utf-8" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\"id\":\"/subscriptions/9E223DBE-3399-4E19-88EB-0975F02AC87F/resourceGroups/Monitor-ActionGroup/providers/microsoft.insights/actionGroups/actiongroup3\",\"type\":\"Microsoft.Insights/ActionGroups\",\"name\":\"actiongroup3\",\"location\":\"northcentralus\",\"kind\":null,\"tags\":null,\"properties\":{\"groupShortName\":\"ag3\",\"enabled\":false,\"emailReceivers\":[],\"smsReceivers\":[],\"webhookReceivers\":[],\"eventHubReceivers\":[],\"itsmReceivers\":[],\"azureAppPushReceivers\":[],\"automationRunbookReceivers\":[],\"voiceReceivers\":[],\"logicAppReceivers\":[],\"azureFunctionReceivers\":[],\"armRoleReceivers\":[]}}",
+      "isContentBase64": false
+    }
+  },
+  "Get-AzActionGroup+[NoContext]+GetViaIdentity+$GET+https://management.azure.com/subscriptions/9E223DBE-3399-4E19-88EB-0975F02AC87F/resourceGroups/Monitor-ActionGroup/providers/Microsoft.Insights/actionGroups/actiongroup3?api-version=2023-01-01+2": {
+    "Request": {
+      "Method": "GET",
+      "RequestUri": "https://management.azure.com/subscriptions/9E223DBE-3399-4E19-88EB-0975F02AC87F/resourceGroups/Monitor-ActionGroup/providers/Microsoft.Insights/actionGroups/actiongroup3?api-version=2023-01-01",
+      "Content": null,
+      "isContentBase64": false,
+      "Headers": {
+        "x-ms-unique-id": [ "8" ],
+        "x-ms-client-request-id": [ "a129cfa7-1e26-4c6d-a843-1ce680160857" ],
+        "CommandName": [ "Get-AzActionGroup" ],
+        "FullCommandName": [ "Get-AzActionGroup_GetViaIdentity" ],
+        "ParameterSetName": [ "__AllParameterSets" ],
+        "User-Agent": [ "AzurePowershell/v10.1.0", "PSVersion/v7.3.8", "Az.ActionGroup/0.1.0" ],
+        "Authorization": [ "[Filtered]" ]
+      },
+      "ContentHeaders": {
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "X-ActivityId": [ "a129cfa7-1e26-4c6d-a843-1ce680160857" ],
+        "Access-Control-Expose-Headers": [ "x-activityid" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "X-Frame-Options": [ "SAMEORIGIN" ],
+        "X-ServedBy": [ "CH1AZNS000001" ],
+        "api-supported-versions": [ "2016-09-01-preview, 2017-03-01-preview, 2017-04-01, 2018-03-01, 2018-09-01, 2019-03-01, 2019-06-01, 2021-09-01, 2022-04-01, 2022-06-01, 2023-01-01, 2023-03-01-preview, 2023-05-01-preview, 2023-05-01, 2023-08-01-preview, 2023-09-01-preview" ],
+        "Server": [ "Microsoft-HTTPAPI/2.0" ],
+        "x-ms-ratelimit-remaining-subscription-resource-requests": [ "248" ],
+        "x-ms-request-id": [ "4257a924-c249-49fa-91d9-67e8747215cd" ],
+        "x-ms-correlation-request-id": [ "4257a924-c249-49fa-91d9-67e8747215cd" ],
+        "x-ms-routing-request-id": [ "JAPANEAST:20231025T095509Z:4257a924-c249-49fa-91d9-67e8747215cd" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "Date": [ "Wed, 25 Oct 2023 09:55:09 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "573" ],
+        "Content-Type": [ "application/json; charset=utf-8" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\"id\":\"/subscriptions/9E223DBE-3399-4E19-88EB-0975F02AC87F/resourceGroups/Monitor-ActionGroup/providers/microsoft.insights/actionGroups/actiongroup3\",\"type\":\"Microsoft.Insights/ActionGroups\",\"name\":\"actiongroup3\",\"location\":\"northcentralus\",\"kind\":null,\"tags\":null,\"properties\":{\"groupShortName\":\"ag3\",\"enabled\":false,\"emailReceivers\":[],\"smsReceivers\":[],\"webhookReceivers\":[],\"eventHubReceivers\":[],\"itsmReceivers\":[],\"azureAppPushReceivers\":[],\"automationRunbookReceivers\":[],\"voiceReceivers\":[],\"logicAppReceivers\":[],\"azureFunctionReceivers\":[],\"armRoleReceivers\":[]}}",
+      "isContentBase64": false
+    }
+  },
+  "Get-AzActionGroup+[NoContext]+List+$GET+https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/providers/Microsoft.Insights/actionGroups?api-version=2023-01-01+1": {
+    "Request": {
+      "Method": "GET",
+      "RequestUri": "https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/providers/Microsoft.Insights/actionGroups?api-version=2023-01-01",
+      "Content": null,
+      "isContentBase64": false,
+      "Headers": {
+        "x-ms-unique-id": [ "9" ],
+        "x-ms-client-request-id": [ "c1522d50-dd72-49fd-a055-68e5b3d3ea7b" ],
+        "CommandName": [ "Get-AzActionGroup" ],
+        "FullCommandName": [ "Get-AzActionGroup_List" ],
+        "ParameterSetName": [ "__AllParameterSets" ],
+        "User-Agent": [ "AzurePowershell/v10.1.0", "PSVersion/v7.3.8", "Az.ActionGroup/0.1.0" ],
+        "Authorization": [ "[Filtered]" ]
+      },
+      "ContentHeaders": {
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "x-ms-original-request-ids": [ "", "", "" ],
+        "x-ms-ratelimit-remaining-subscription-resource-requests": [ "247" ],
+        "x-ms-request-id": [ "22a80e18-d55a-45fe-b981-f6400894b7f6" ],
+        "x-ms-correlation-request-id": [ "22a80e18-d55a-45fe-b981-f6400894b7f6" ],
+        "x-ms-routing-request-id": [ "JAPANEAST:20231025T095510Z:22a80e18-d55a-45fe-b981-f6400894b7f6" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "Date": [ "Wed, 25 Oct 2023 09:55:10 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Type": [ "application/json; charset=utf-8" ],
+        "Expires": [ "-1" ],
+        "Content-Length": [ "2215" ]
+      },
+      "Content": "{\"value\":[{\"id\":\"/subscriptions/9E223DBE-3399-4E19-88EB-0975F02AC87F/resourceGroups/wyunchi-copilot-application-insights/providers/microsoft.insights/actionGroups/Application Insights Smart Detection\",\"type\":\"Microsoft.Insights/ActionGroups\",\"name\":\"Application Insights Smart Detection\",\"location\":\"Global\",\"kind\":null,\"tags\":null,\"properties\":{\"groupShortName\":\"SmartDetect\",\"enabled\":true,\"emailReceivers\":[],\"smsReceivers\":[],\"webhookReceivers\":[],\"eventHubReceivers\":[],\"itsmReceivers\":[],\"azureAppPushReceivers\":[],\"automationRunbookReceivers\":[],\"voiceReceivers\":[],\"logicAppReceivers\":[],\"azureFunctionReceivers\":[],\"armRoleReceivers\":[{\"name\":\"Monitoring Contributor\",\"roleId\":\"749f88d5-cbae-40b8-bcfc-e573ddc772fa\",\"useCommonAlertSchema\":true},{\"name\":\"Monitoring Reader\",\"roleId\":\"43d0d8ad-25c7-4714-9337-8ba259a9fe05\",\"useCommonAlertSchema\":true}]}},{\"id\":\"/subscriptions/9E223DBE-3399-4E19-88EB-0975F02AC87F/resourceGroups/Monitor-ActionGroup/providers/microsoft.insights/actionGroups/actiongroup3\",\"type\":\"Microsoft.Insights/ActionGroups\",\"name\":\"actiongroup3\",\"location\":\"northcentralus\",\"kind\":null,\"tags\":null,\"properties\":{\"groupShortName\":\"ag3\",\"enabled\":false,\"emailReceivers\":[],\"smsReceivers\":[],\"webhookReceivers\":[],\"eventHubReceivers\":[],\"itsmReceivers\":[],\"azureAppPushReceivers\":[],\"automationRunbookReceivers\":[],\"voiceReceivers\":[],\"logicAppReceivers\":[],\"azureFunctionReceivers\":[],\"armRoleReceivers\":[]}},{\"id\":\"/subscriptions/9E223DBE-3399-4E19-88EB-0975F02AC87F/resourceGroups/Monitor-ActionGroup/providers/microsoft.insights/actionGroups/actiongroupGet\",\"type\":\"Microsoft.Insights/ActionGroups\",\"name\":\"actiongroupGet\",\"location\":\"southcentralus\",\"kind\":null,\"tags\":null,\"properties\":{\"groupShortName\":\"ag1\",\"enabled\":false,\"emailReceivers\":[{\"name\":\"emailreceiver1\",\"emailAddress\":\"v-jiaji@microsoft.com\",\"useCommonAlertSchema\":false,\"status\":\"Enabled\"}],\"smsReceivers\":[{\"name\":\"smsreceiver\",\"countryCode\":\"86\",\"phoneNumber\":\"18964587446\",\"status\":\"Enabled\"}],\"webhookReceivers\":[],\"eventHubReceivers\":[],\"itsmReceivers\":[],\"azureAppPushReceivers\":[],\"automationRunbookReceivers\":[],\"voiceReceivers\":[],\"logicAppReceivers\":[],\"azureFunctionReceivers\":[],\"armRoleReceivers\":[]}}]}",
+      "isContentBase64": false
+    }
+  },
+  "Get-AzActionGroup+[NoContext]+Get+$GET+https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/Monitor-ActionGroup/providers/Microsoft.Insights/actionGroups/actiongroupGet?api-version=2023-01-01+1": {
+    "Request": {
+      "Method": "GET",
+      "RequestUri": "https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/Monitor-ActionGroup/providers/Microsoft.Insights/actionGroups/actiongroupGet?api-version=2023-01-01",
+      "Content": null,
+      "isContentBase64": false,
+      "Headers": {
+        "x-ms-unique-id": [ "10" ],
+        "x-ms-client-request-id": [ "3a9944e5-5492-4d09-b2ca-af80cf3f92bc" ],
+        "CommandName": [ "Get-AzActionGroup" ],
+        "FullCommandName": [ "Get-AzActionGroup_Get" ],
+        "ParameterSetName": [ "__AllParameterSets" ],
+        "User-Agent": [ "AzurePowershell/v10.1.0", "PSVersion/v7.3.8", "Az.ActionGroup/0.1.0" ],
+        "Authorization": [ "[Filtered]" ]
+      },
+      "ContentHeaders": {
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "X-ActivityId": [ "3a9944e5-5492-4d09-b2ca-af80cf3f92bc" ],
+        "Access-Control-Expose-Headers": [ "x-activityid" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "X-Frame-Options": [ "SAMEORIGIN" ],
+        "X-ServedBy": [ "SN2AZNS000008" ],
+        "api-supported-versions": [ "2016-09-01-preview, 2017-03-01-preview, 2017-04-01, 2018-03-01, 2018-09-01, 2019-03-01, 2019-06-01, 2021-09-01, 2022-04-01, 2022-06-01, 2023-01-01, 2023-03-01-preview, 2023-05-01-preview, 2023-05-01, 2023-08-01-preview, 2023-09-01-preview" ],
+        "Server": [ "Microsoft-HTTPAPI/2.0" ],
+        "x-ms-ratelimit-remaining-subscription-resource-requests": [ "246" ],
+        "x-ms-request-id": [ "da19bbff-11d3-47a7-b29e-52b26f69df52" ],
+        "x-ms-correlation-request-id": [ "da19bbff-11d3-47a7-b29e-52b26f69df52" ],
+        "x-ms-routing-request-id": [ "JAPANEAST:20231025T095510Z:da19bbff-11d3-47a7-b29e-52b26f69df52" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "Date": [ "Wed, 25 Oct 2023 09:55:10 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "777" ],
+        "Content-Type": [ "application/json; charset=utf-8" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\"id\":\"/subscriptions/9E223DBE-3399-4E19-88EB-0975F02AC87F/resourceGroups/Monitor-ActionGroup/providers/microsoft.insights/actionGroups/actiongroupGet\",\"type\":\"Microsoft.Insights/ActionGroups\",\"name\":\"actiongroupGet\",\"location\":\"southcentralus\",\"kind\":null,\"tags\":null,\"properties\":{\"groupShortName\":\"ag1\",\"enabled\":false,\"emailReceivers\":[{\"name\":\"emailreceiver1\",\"emailAddress\":\"v-jiaji@microsoft.com\",\"useCommonAlertSchema\":false,\"status\":\"Enabled\"}],\"smsReceivers\":[{\"name\":\"smsreceiver\",\"countryCode\":\"86\",\"phoneNumber\":\"18964587446\",\"status\":\"Enabled\"}],\"webhookReceivers\":[],\"eventHubReceivers\":[],\"itsmReceivers\":[],\"azureAppPushReceivers\":[],\"automationRunbookReceivers\":[],\"voiceReceivers\":[],\"logicAppReceivers\":[],\"azureFunctionReceivers\":[],\"armRoleReceivers\":[]}}",
+      "isContentBase64": false
+    }
+  },
+  "Get-AzActionGroup+[NoContext]+List1+$GET+https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/Monitor-ActionGroup/providers/Microsoft.Insights/actionGroups?api-version=2023-01-01+1": {
+    "Request": {
+      "Method": "GET",
+      "RequestUri": "https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/Monitor-ActionGroup/providers/Microsoft.Insights/actionGroups?api-version=2023-01-01",
+      "Content": null,
+      "isContentBase64": false,
+      "Headers": {
+        "x-ms-unique-id": [ "11" ],
+        "x-ms-client-request-id": [ "fcb74718-ef12-4d84-b3e6-cb99f8331e81" ],
+        "CommandName": [ "Get-AzActionGroup" ],
+        "FullCommandName": [ "Get-AzActionGroup_List1" ],
+        "ParameterSetName": [ "__AllParameterSets" ],
+        "User-Agent": [ "AzurePowershell/v10.1.0", "PSVersion/v7.3.8", "Az.ActionGroup/0.1.0" ],
+        "Authorization": [ "[Filtered]" ]
+      },
+      "ContentHeaders": {
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "x-ms-original-request-ids": [ "", "" ],
+        "x-ms-ratelimit-remaining-subscription-resource-requests": [ "245" ],
+        "x-ms-request-id": [ "ea6f743a-71f9-48b5-b9b1-a51929ac699c" ],
+        "x-ms-correlation-request-id": [ "ea6f743a-71f9-48b5-b9b1-a51929ac699c" ],
+        "x-ms-routing-request-id": [ "JAPANEAST:20231025T095511Z:ea6f743a-71f9-48b5-b9b1-a51929ac699c" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "Date": [ "Wed, 25 Oct 2023 09:55:11 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Type": [ "application/json; charset=utf-8" ],
+        "Expires": [ "-1" ],
+        "Content-Length": [ "1363" ]
+      },
+      "Content": "{\"value\":[{\"id\":\"/subscriptions/9E223DBE-3399-4E19-88EB-0975F02AC87F/resourceGroups/Monitor-ActionGroup/providers/microsoft.insights/actionGroups/actiongroup3\",\"type\":\"Microsoft.Insights/ActionGroups\",\"name\":\"actiongroup3\",\"location\":\"northcentralus\",\"kind\":null,\"tags\":null,\"properties\":{\"groupShortName\":\"ag3\",\"enabled\":false,\"emailReceivers\":[],\"smsReceivers\":[],\"webhookReceivers\":[],\"eventHubReceivers\":[],\"itsmReceivers\":[],\"azureAppPushReceivers\":[],\"automationRunbookReceivers\":[],\"voiceReceivers\":[],\"logicAppReceivers\":[],\"azureFunctionReceivers\":[],\"armRoleReceivers\":[]}},{\"id\":\"/subscriptions/9E223DBE-3399-4E19-88EB-0975F02AC87F/resourceGroups/Monitor-ActionGroup/providers/microsoft.insights/actionGroups/actiongroupGet\",\"type\":\"Microsoft.Insights/ActionGroups\",\"name\":\"actiongroupGet\",\"location\":\"southcentralus\",\"kind\":null,\"tags\":null,\"properties\":{\"groupShortName\":\"ag1\",\"enabled\":false,\"emailReceivers\":[{\"name\":\"emailreceiver1\",\"emailAddress\":\"v-jiaji@microsoft.com\",\"useCommonAlertSchema\":false,\"status\":\"Enabled\"}],\"smsReceivers\":[{\"name\":\"smsreceiver\",\"countryCode\":\"86\",\"phoneNumber\":\"18964587446\",\"status\":\"Enabled\"}],\"webhookReceivers\":[],\"eventHubReceivers\":[],\"itsmReceivers\":[],\"azureAppPushReceivers\":[],\"automationRunbookReceivers\":[],\"voiceReceivers\":[],\"logicAppReceivers\":[],\"azureFunctionReceivers\":[],\"armRoleReceivers\":[]}}]}",
+      "isContentBase64": false
+    }
+  }
+}

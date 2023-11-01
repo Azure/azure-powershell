@@ -77,8 +77,8 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Monitor.DataCollection.Models
             {
                 return;
             }
-            {_identity = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Monitor.DataCollection.Runtime.Json.JsonObject>("identity"), out var __jsonIdentity) ? Microsoft.Azure.PowerShell.Cmdlets.Monitor.DataCollection.Models.ResourceForUpdateIdentity.FromJson(__jsonIdentity) : Identity;}
-            {_tag = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Monitor.DataCollection.Runtime.Json.JsonObject>("tags"), out var __jsonTags) ? Microsoft.Azure.PowerShell.Cmdlets.Monitor.DataCollection.Models.ResourceForUpdateTags.FromJson(__jsonTags) : Tag;}
+            {_identity = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Monitor.DataCollection.Runtime.Json.JsonObject>("identity"), out var __jsonIdentity) ? Microsoft.Azure.PowerShell.Cmdlets.Monitor.DataCollection.Models.ResourceForUpdateIdentity.FromJson(__jsonIdentity) : _identity;}
+            {_tag = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Monitor.DataCollection.Runtime.Json.JsonObject>("tags"), out var __jsonTags) ? Microsoft.Azure.PowerShell.Cmdlets.Monitor.DataCollection.Models.ResourceForUpdateTags.FromJson(__jsonTags) : _tag;}
             AfterFromJson(json);
         }
 

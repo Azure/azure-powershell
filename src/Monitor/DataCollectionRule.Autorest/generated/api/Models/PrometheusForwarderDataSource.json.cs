@@ -77,9 +77,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Monitor.DataCollection.Models
             {
                 return;
             }
-            {_stream = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Monitor.DataCollection.Runtime.Json.JsonArray>("streams"), out var __jsonStreams) ? If( __jsonStreams as Microsoft.Azure.PowerShell.Cmdlets.Monitor.DataCollection.Runtime.Json.JsonArray, out var __v) ? new global::System.Func<System.Collections.Generic.List<string>>(()=> global::System.Linq.Enumerable.ToList(global::System.Linq.Enumerable.Select(__v, (__u)=>(string) (__u is Microsoft.Azure.PowerShell.Cmdlets.Monitor.DataCollection.Runtime.Json.JsonString __t ? (string)(__t.ToString()) : null)) ))() : null : Stream;}
-            {_labelIncludeFilter = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Monitor.DataCollection.Runtime.Json.JsonObject>("labelIncludeFilter"), out var __jsonLabelIncludeFilter) ? Microsoft.Azure.PowerShell.Cmdlets.Monitor.DataCollection.Models.PrometheusForwarderDataSourceLabelIncludeFilter.FromJson(__jsonLabelIncludeFilter) : LabelIncludeFilter;}
-            {_name = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Monitor.DataCollection.Runtime.Json.JsonString>("name"), out var __jsonName) ? (string)__jsonName : (string)Name;}
+            {_stream = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Monitor.DataCollection.Runtime.Json.JsonArray>("streams"), out var __jsonStreams) ? If( __jsonStreams as Microsoft.Azure.PowerShell.Cmdlets.Monitor.DataCollection.Runtime.Json.JsonArray, out var __v) ? new global::System.Func<System.Collections.Generic.List<string>>(()=> global::System.Linq.Enumerable.ToList(global::System.Linq.Enumerable.Select(__v, (__u)=>(string) (__u is Microsoft.Azure.PowerShell.Cmdlets.Monitor.DataCollection.Runtime.Json.JsonString __t ? (string)(__t.ToString()) : null)) ))() : null : _stream;}
+            {_labelIncludeFilter = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Monitor.DataCollection.Runtime.Json.JsonObject>("labelIncludeFilter"), out var __jsonLabelIncludeFilter) ? Microsoft.Azure.PowerShell.Cmdlets.Monitor.DataCollection.Models.PrometheusForwarderDataSourceLabelIncludeFilter.FromJson(__jsonLabelIncludeFilter) : _labelIncludeFilter;}
+            {_name = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Monitor.DataCollection.Runtime.Json.JsonString>("name"), out var __jsonName) ? (string)__jsonName : (string)_name;}
             AfterFromJson(json);
         }
 

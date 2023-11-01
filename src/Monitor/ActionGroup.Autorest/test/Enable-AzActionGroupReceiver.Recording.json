@@ -1,0 +1,130 @@
+{
+  "Enable-AzActionGroupReceiver+[NoContext]+EnableExpanded+$POST+https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/Monitor-ActionGroup/providers/Microsoft.Insights/actionGroups/actiongroupGet/subscribe?api-version=2023-01-01+1": {
+    "Request": {
+      "Method": "POST",
+      "RequestUri": "https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/Monitor-ActionGroup/providers/Microsoft.Insights/actionGroups/actiongroupGet/subscribe?api-version=2023-01-01",
+      "Content": "{\r\n  \"receiverName\": \"smsreceiver\"\r\n}",
+      "isContentBase64": false,
+      "Headers": {
+      },
+      "ContentHeaders": {
+        "Content-Type": [ "application/json" ],
+        "Content-Length": [ "37" ]
+      }
+    },
+    "Response": {
+      "StatusCode": 409,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "X-ActivityId": [ "642d2377-3d16-4ad4-b57b-17b76897753f" ],
+        "Access-Control-Expose-Headers": [ "x-activityid" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "X-Frame-Options": [ "SAMEORIGIN" ],
+        "X-ServedBy": [ "SN2AZNS000008" ],
+        "api-supported-versions": [ "2016-09-01-preview, 2017-03-01-preview, 2017-04-01, 2018-03-01, 2018-09-01, 2019-03-01, 2019-06-01, 2021-09-01, 2022-04-01, 2022-06-01, 2023-01-01, 2023-03-01-preview, 2023-05-01-preview, 2023-05-01, 2023-08-01-preview, 2023-09-01-preview" ],
+        "Server": [ "Microsoft-HTTPAPI/2.0" ],
+        "x-ms-ratelimit-remaining-subscription-writes": [ "1199" ],
+        "x-ms-request-id": [ "95dd9ace-7596-4e82-a14f-15091a8b71ff" ],
+        "x-ms-correlation-request-id": [ "95dd9ace-7596-4e82-a14f-15091a8b71ff" ],
+        "x-ms-routing-request-id": [ "JAPANEAST:20231025T095504Z:95dd9ace-7596-4e82-a14f-15091a8b71ff" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "Date": [ "Wed, 25 Oct 2023 09:55:04 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "156" ],
+        "Content-Type": [ "application/json; charset=utf-8" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\"code\":\"ReceiverAlreadyEnabled\",\"message\":\"Receiver with name smsreceiver in action group with Id MONITOR:2DACTIONGROUP-ACTIONGROUPGET is already enabled\"}",
+      "isContentBase64": false
+    }
+  },
+  "Enable-AzActionGroupReceiver+[NoContext]+EnableViaIdentityExpanded+$GET+https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/Monitor-ActionGroup/providers/Microsoft.Insights/actionGroups/actiongroupGet?api-version=2023-01-01+1": {
+    "Request": {
+      "Method": "GET",
+      "RequestUri": "https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/Monitor-ActionGroup/providers/Microsoft.Insights/actionGroups/actiongroupGet?api-version=2023-01-01",
+      "Content": null,
+      "isContentBase64": false,
+      "Headers": {
+        "x-ms-unique-id": [ "5" ],
+        "x-ms-client-request-id": [ "b2e53654-618e-4f15-9d41-5667f3817418" ],
+        "CommandName": [ "Get-AzActionGroup" ],
+        "FullCommandName": [ "Get-AzActionGroup_Get" ],
+        "ParameterSetName": [ "__AllParameterSets" ],
+        "User-Agent": [ "AzurePowershell/v10.1.0", "PSVersion/v7.3.8", "Az.ActionGroup/0.1.0" ],
+        "Authorization": [ "[Filtered]" ]
+      },
+      "ContentHeaders": {
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "X-ActivityId": [ "b2e53654-618e-4f15-9d41-5667f3817418" ],
+        "Access-Control-Expose-Headers": [ "x-activityid" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "X-Frame-Options": [ "SAMEORIGIN" ],
+        "X-ServedBy": [ "SN2AZNS000008" ],
+        "api-supported-versions": [ "2016-09-01-preview, 2017-03-01-preview, 2017-04-01, 2018-03-01, 2018-09-01, 2019-03-01, 2019-06-01, 2021-09-01, 2022-04-01, 2022-06-01, 2023-01-01, 2023-03-01-preview, 2023-05-01-preview, 2023-05-01, 2023-08-01-preview, 2023-09-01-preview" ],
+        "Server": [ "Microsoft-HTTPAPI/2.0" ],
+        "x-ms-ratelimit-remaining-subscription-resource-requests": [ "249" ],
+        "x-ms-request-id": [ "27a2bc8d-47ff-46d4-ae0d-68fa81b43bda" ],
+        "x-ms-correlation-request-id": [ "27a2bc8d-47ff-46d4-ae0d-68fa81b43bda" ],
+        "x-ms-routing-request-id": [ "JAPANEAST:20231025T095505Z:27a2bc8d-47ff-46d4-ae0d-68fa81b43bda" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "Date": [ "Wed, 25 Oct 2023 09:55:05 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "777" ],
+        "Content-Type": [ "application/json; charset=utf-8" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\"id\":\"/subscriptions/9E223DBE-3399-4E19-88EB-0975F02AC87F/resourceGroups/Monitor-ActionGroup/providers/microsoft.insights/actionGroups/actiongroupGet\",\"type\":\"Microsoft.Insights/ActionGroups\",\"name\":\"actiongroupGet\",\"location\":\"southcentralus\",\"kind\":null,\"tags\":null,\"properties\":{\"groupShortName\":\"ag1\",\"enabled\":false,\"emailReceivers\":[{\"name\":\"emailreceiver1\",\"emailAddress\":\"v-jiaji@microsoft.com\",\"useCommonAlertSchema\":false,\"status\":\"Enabled\"}],\"smsReceivers\":[{\"name\":\"smsreceiver\",\"countryCode\":\"86\",\"phoneNumber\":\"18964587446\",\"status\":\"Enabled\"}],\"webhookReceivers\":[],\"eventHubReceivers\":[],\"itsmReceivers\":[],\"azureAppPushReceivers\":[],\"automationRunbookReceivers\":[],\"voiceReceivers\":[],\"logicAppReceivers\":[],\"azureFunctionReceivers\":[],\"armRoleReceivers\":[]}}",
+      "isContentBase64": false
+    }
+  },
+  "Enable-AzActionGroupReceiver+[NoContext]+EnableViaIdentityExpanded+$POST+https://management.azure.com/subscriptions/9E223DBE-3399-4E19-88EB-0975F02AC87F/resourceGroups/Monitor-ActionGroup/providers/Microsoft.Insights/actionGroups/actiongroupGet/subscribe?api-version=2023-01-01+2": {
+    "Request": {
+      "Method": "POST",
+      "RequestUri": "https://management.azure.com/subscriptions/9E223DBE-3399-4E19-88EB-0975F02AC87F/resourceGroups/Monitor-ActionGroup/providers/Microsoft.Insights/actionGroups/actiongroupGet/subscribe?api-version=2023-01-01",
+      "Content": "{\r\n  \"receiverName\": \"emailreceiver1\"\r\n}",
+      "isContentBase64": false,
+      "Headers": {
+      },
+      "ContentHeaders": {
+        "Content-Type": [ "application/json" ],
+        "Content-Length": [ "40" ]
+      }
+    },
+    "Response": {
+      "StatusCode": 409,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "X-ActivityId": [ "b63ceb7d-eca7-4fa5-9dc1-9093ebbbbd01" ],
+        "Access-Control-Expose-Headers": [ "x-activityid" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "X-Frame-Options": [ "SAMEORIGIN" ],
+        "X-ServedBy": [ "SN2AZNS000008" ],
+        "api-supported-versions": [ "2016-09-01-preview, 2017-03-01-preview, 2017-04-01, 2018-03-01, 2018-09-01, 2019-03-01, 2019-06-01, 2021-09-01, 2022-04-01, 2022-06-01, 2023-01-01, 2023-03-01-preview, 2023-05-01-preview, 2023-05-01, 2023-08-01-preview, 2023-09-01-preview" ],
+        "Server": [ "Microsoft-HTTPAPI/2.0" ],
+        "x-ms-ratelimit-remaining-subscription-writes": [ "1198" ],
+        "x-ms-request-id": [ "84dbc386-f9b7-450b-8883-43f832938f2d" ],
+        "x-ms-correlation-request-id": [ "84dbc386-f9b7-450b-8883-43f832938f2d" ],
+        "x-ms-routing-request-id": [ "JAPANEAST:20231025T095505Z:84dbc386-f9b7-450b-8883-43f832938f2d" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "Date": [ "Wed, 25 Oct 2023 09:55:05 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "159" ],
+        "Content-Type": [ "application/json; charset=utf-8" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\"code\":\"ReceiverAlreadyEnabled\",\"message\":\"Receiver with name emailreceiver1 in action group with Id MONITOR:2DACTIONGROUP-ACTIONGROUPGET is already enabled\"}",
+      "isContentBase64": false
+    }
+  }
+}

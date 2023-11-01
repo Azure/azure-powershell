@@ -77,7 +77,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Monitor.DataCollection.Models
             {
                 return;
             }
-            {_text = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Monitor.DataCollection.Runtime.Json.JsonObject>("text"), out var __jsonText) ? Microsoft.Azure.PowerShell.Cmdlets.Monitor.DataCollection.Models.LogFileSettingsText.FromJson(__jsonText) : Text;}
+            {_text = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Monitor.DataCollection.Runtime.Json.JsonObject>("text"), out var __jsonText) ? Microsoft.Azure.PowerShell.Cmdlets.Monitor.DataCollection.Models.LogFileSettingsText.FromJson(__jsonText) : _text;}
             AfterFromJson(json);
         }
 

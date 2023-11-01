@@ -76,9 +76,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Monitor.DataCollection.Models
             {
                 return;
             }
-            {_tableName = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Monitor.DataCollection.Runtime.Json.JsonString>("tableName"), out var __jsonTableName) ? (string)__jsonTableName : (string)TableName;}
-            {_storageAccountResourceId = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Monitor.DataCollection.Runtime.Json.JsonString>("storageAccountResourceId"), out var __jsonStorageAccountResourceId) ? (string)__jsonStorageAccountResourceId : (string)StorageAccountResourceId;}
-            {_name = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Monitor.DataCollection.Runtime.Json.JsonString>("name"), out var __jsonName) ? (string)__jsonName : (string)Name;}
+            {_tableName = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Monitor.DataCollection.Runtime.Json.JsonString>("tableName"), out var __jsonTableName) ? (string)__jsonTableName : (string)_tableName;}
+            {_storageAccountResourceId = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Monitor.DataCollection.Runtime.Json.JsonString>("storageAccountResourceId"), out var __jsonStorageAccountResourceId) ? (string)__jsonStorageAccountResourceId : (string)_storageAccountResourceId;}
+            {_name = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Monitor.DataCollection.Runtime.Json.JsonString>("name"), out var __jsonName) ? (string)__jsonName : (string)_name;}
             AfterFromJson(json);
         }
 
