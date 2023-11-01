@@ -12,30 +12,31 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-using System;
-using System.Diagnostics;
-using System.IO;
-using System.Linq;
-
 using Hyak.Common;
 
 using Microsoft.Azure.Commands.Common.Authentication.Abstractions;
 using Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core;
 using Microsoft.Azure.Commands.Common.Authentication.Authentication.TokenCache;
-using Microsoft.Azure.Commands.Common.Authentication.Factories;
-using Microsoft.Azure.Commands.Common.Authentication.Properties;
 using Microsoft.Azure.Commands.Common.Authentication.Config;
-using Newtonsoft.Json;
+using Microsoft.Azure.Commands.Common.Authentication.Factories;
 using Microsoft.Azure.Commands.Common.Authentication.Models;
+using Microsoft.Azure.Commands.Common.Authentication.Properties;
+using Microsoft.Azure.Commands.Common.Authentication.Utilities;
+using Microsoft.Identity.Client.Extensions.Msal;
+using Microsoft.WindowsAzure.Commands.Common;
+using Microsoft.WindowsAzure.Commands.Common.Utilities;
+using Microsoft.WindowsAzure.Commands.Utilities.Common;
 
+using Newtonsoft.Json;
+
+using System;
+using System.Collections.Generic;
+using System.Diagnostics;
+using System.IO;
+using System.Linq;
+using System.Threading;
 
 using TraceLevel = System.Diagnostics.TraceLevel;
-using System.Collections.Generic;
-using System.Threading;
-using Microsoft.WindowsAzure.Commands.Utilities.Common;
-using Microsoft.Azure.Commands.Common.Authentication.Utilities;
-using Microsoft.WindowsAzure.Commands.Common.Utilities;
-using Microsoft.WindowsAzure.Commands.Common;
 
 namespace Microsoft.Azure.Commands.Common.Authentication
 {
@@ -162,10 +163,13 @@ namespace Microsoft.Azure.Commands.Common.Authentication
                     var store = session.DataStore;
                     if (store.FileExists(oldMsalCachePath) && !store.FileExists(newMsalCachePath))
                     {
-                        var data = File.ReadAllBytes(oldMsalCachePath);
+                        MsalCacheHelper oldCacheHelper = MsalCacheHelperProvider.GetCacheHelper(MsalCacheHelperProvider.LegacyTokenCacheName);
+                        var data = oldCacheHelper.LoadUnencryptedTokenCache();
                         if (data != null && data.Length > 0)
                         {
-                            File.WriteAllBytes(newMsalCachePath, data);
+                            MsalCacheHelperProvider.Reset();
+                            MsalCacheHelper newCacheHelper = MsalCacheHelperProvider.GetCacheHelper(session.TokenCacheFile);
+                            newCacheHelper.SaveUnencryptedTokenCache(data);
                         }
                     }
                 }
@@ -278,7 +282,7 @@ namespace Microsoft.Azure.Commands.Common.Authentication
 
 
             string oldCachePath = Path.Combine(profilePath, "TokenCache.dat");
-            string cachePath = Path.Combine(SharedUtilities.GetUserRootDirectory(), ".IdentityService");
+            string cachePath = MsalCacheHelperProvider.MsalTokenCachePath;
             var session = new AdalSession
             {
                 ClientFactory = new ClientFactory(),
