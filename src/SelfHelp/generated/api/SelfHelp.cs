@@ -15,7 +15,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.SelfHelp
     {
 
         /// <summary>
-        /// This API is used to check the uniqueness of a resource name used for a diagnostic check.
+        /// This API is used to check the uniqueness of a resource name used for a diagnostic, troubleshooter or solutions
         /// </summary>
         /// <param name="scope">This is an extension resource provider and only resource level extension is supported at the moment.</param>
         /// <param name="body">The required parameters for availability check.</param>
@@ -27,9 +27,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.SelfHelp
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        public async global::System.Threading.Tasks.Task DiagnosticsCheckNameAvailability(string scope, Microsoft.Azure.PowerShell.Cmdlets.SelfHelp.Models.Api30.ICheckNameAvailabilityRequest body, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.SelfHelp.Models.Api20230601.ICheckNameAvailabilityResponse>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.SelfHelp.Models.Api30.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.SelfHelp.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.SelfHelp.Runtime.ISendAsync sender)
+        public async global::System.Threading.Tasks.Task CheckNameAvailabilityPost(string scope, Microsoft.Azure.PowerShell.Cmdlets.SelfHelp.Models.Api40.ICheckNameAvailabilityRequest body, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.SelfHelp.Models.Api20230901Preview.ICheckNameAvailabilityResponse>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.SelfHelp.Models.Api40.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.SelfHelp.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.SelfHelp.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2023-06-01";
+            var apiVersion = @"2023-09-01-preview";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -55,12 +55,12 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.SelfHelp
                 request.Content.Headers.ContentType = global::System.Net.Http.Headers.MediaTypeHeaderValue.Parse("application/json");
                 await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.SelfHelp.Runtime.Events.BodyContentSet); if( eventListener.Token.IsCancellationRequested ) { return; }
                 // make the call
-                await this.DiagnosticsCheckNameAvailability_Call(request,onOk,onDefault,eventListener,sender);
+                await this.CheckNameAvailabilityPost_Call(request,onOk,onDefault,eventListener,sender);
             }
         }
 
         /// <summary>
-        /// This API is used to check the uniqueness of a resource name used for a diagnostic check.
+        /// This API is used to check the uniqueness of a resource name used for a diagnostic, troubleshooter or solutions
         /// </summary>
         /// <param name="viaIdentity"></param>
         /// <param name="body">The required parameters for availability check.</param>
@@ -72,9 +72,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.SelfHelp
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        public async global::System.Threading.Tasks.Task DiagnosticsCheckNameAvailabilityViaIdentity(global::System.String viaIdentity, Microsoft.Azure.PowerShell.Cmdlets.SelfHelp.Models.Api30.ICheckNameAvailabilityRequest body, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.SelfHelp.Models.Api20230601.ICheckNameAvailabilityResponse>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.SelfHelp.Models.Api30.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.SelfHelp.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.SelfHelp.Runtime.ISendAsync sender)
+        public async global::System.Threading.Tasks.Task CheckNameAvailabilityPostViaIdentity(global::System.String viaIdentity, Microsoft.Azure.PowerShell.Cmdlets.SelfHelp.Models.Api40.ICheckNameAvailabilityRequest body, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.SelfHelp.Models.Api20230901Preview.ICheckNameAvailabilityResponse>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.SelfHelp.Models.Api40.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.SelfHelp.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.SelfHelp.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2023-06-01";
+            var apiVersion = @"2023-09-01-preview";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -110,11 +110,11 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.SelfHelp
                 request.Content.Headers.ContentType = global::System.Net.Http.Headers.MediaTypeHeaderValue.Parse("application/json");
                 await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.SelfHelp.Runtime.Events.BodyContentSet); if( eventListener.Token.IsCancellationRequested ) { return; }
                 // make the call
-                await this.DiagnosticsCheckNameAvailability_Call(request,onOk,onDefault,eventListener,sender);
+                await this.CheckNameAvailabilityPost_Call(request,onOk,onDefault,eventListener,sender);
             }
         }
 
-        /// <summary>Actual wire call for <see cref="DiagnosticsCheckNameAvailability" /> method.</summary>
+        /// <summary>Actual wire call for <see cref="CheckNameAvailabilityPost" /> method.</summary>
         /// <param name="request">the prepared HttpRequestMessage to send.</param>
         /// <param name="onOk">a delegate that is called when the remote service returns 200 (OK).</param>
         /// <param name="onDefault">a delegate that is called when the remote service returns default (any response code not handled
@@ -124,7 +124,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.SelfHelp
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        internal async global::System.Threading.Tasks.Task DiagnosticsCheckNameAvailability_Call(global::System.Net.Http.HttpRequestMessage request, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.SelfHelp.Models.Api20230601.ICheckNameAvailabilityResponse>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.SelfHelp.Models.Api30.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.SelfHelp.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.SelfHelp.Runtime.ISendAsync sender)
+        internal async global::System.Threading.Tasks.Task CheckNameAvailabilityPost_Call(global::System.Net.Http.HttpRequestMessage request, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.SelfHelp.Models.Api20230901Preview.ICheckNameAvailabilityResponse>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.SelfHelp.Models.Api40.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.SelfHelp.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.SelfHelp.Runtime.ISendAsync sender)
         {
             using( NoSynchronizationContext )
             {
@@ -142,13 +142,13 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.SelfHelp
                         case global::System.Net.HttpStatusCode.OK:
                         {
                             await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.SelfHelp.Runtime.Events.BeforeResponseDispatch, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
-                            await onOk(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.SelfHelp.Models.Api20230601.CheckNameAvailabilityResponse.FromJson(Microsoft.Azure.PowerShell.Cmdlets.SelfHelp.Runtime.Json.JsonNode.Parse(body.Result)) ));
+                            await onOk(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.SelfHelp.Models.Api20230901Preview.CheckNameAvailabilityResponse.FromJson(Microsoft.Azure.PowerShell.Cmdlets.SelfHelp.Runtime.Json.JsonNode.Parse(body.Result)) ));
                             break;
                         }
                         default:
                         {
                             await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.SelfHelp.Runtime.Events.BeforeResponseDispatch, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
-                            await onDefault(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.SelfHelp.Models.Api30.ErrorResponse.FromJson(Microsoft.Azure.PowerShell.Cmdlets.SelfHelp.Runtime.Json.JsonNode.Parse(body.Result)) ));
+                            await onDefault(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.SelfHelp.Models.Api40.ErrorResponse.FromJson(Microsoft.Azure.PowerShell.Cmdlets.SelfHelp.Runtime.Json.JsonNode.Parse(body.Result)) ));
                             break;
                         }
                     }
@@ -164,8 +164,8 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.SelfHelp
         }
 
         /// <summary>
-        /// Validation method for <see cref="DiagnosticsCheckNameAvailability" /> method. Call this like the actual call, but you
-        /// will get validation events back.
+        /// Validation method for <see cref="CheckNameAvailabilityPost" /> method. Call this like the actual call, but you will get
+        /// validation events back.
         /// </summary>
         /// <param name="scope">This is an extension resource provider and only resource level extension is supported at the moment.</param>
         /// <param name="body">The required parameters for availability check.</param>
@@ -173,7 +173,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.SelfHelp
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        internal async global::System.Threading.Tasks.Task DiagnosticsCheckNameAvailability_Validate(string scope, Microsoft.Azure.PowerShell.Cmdlets.SelfHelp.Models.Api30.ICheckNameAvailabilityRequest body, Microsoft.Azure.PowerShell.Cmdlets.SelfHelp.Runtime.IEventListener eventListener)
+        internal async global::System.Threading.Tasks.Task CheckNameAvailabilityPost_Validate(string scope, Microsoft.Azure.PowerShell.Cmdlets.SelfHelp.Models.Api40.ICheckNameAvailabilityRequest body, Microsoft.Azure.PowerShell.Cmdlets.SelfHelp.Runtime.IEventListener eventListener)
         {
             using( NoSynchronizationContext )
             {
@@ -184,10 +184,10 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.SelfHelp
         }
 
         /// <summary>
-        /// Diagnostics tells you precisely the root cause of the issue and how to address it. You can get diagnostics once you discover
-        /// and identify the relevant solution for your Azure issue.<br/><br/> You can create diagnostics using the ‘solutionId’ from
-        /// Solution Discovery API response and ‘additionalParameters’ <br/><br/> <b>Note: </b>‘requiredParameterSets’ from Solutions
-        /// Discovery API response must be passed via ‘additionalParameters’ as an input to Diagnostics API
+        /// Creates a diagnostic for the specific resource using solutionId and requiredInputs* from discovery solutions. <br/>Diagnostics
+        /// tells you precisely the root cause of the issue and the steps to address it. You can get diagnostics once you discover
+        /// the relevant solution for your Azure issue. <br/><br/> <b>Note: </b> requiredInputs’ from Discovery solutions response
+        /// must be passed via ‘additionalParameters’ as an input to Diagnostics API.
         /// </summary>
         /// <param name="scope">This is an extension resource provider and only resource level extension is supported at the moment.</param>
         /// <param name="diagnosticsResourceName">Unique resource name for insight resources</param>
@@ -200,9 +200,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.SelfHelp
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        public async global::System.Threading.Tasks.Task DiagnosticsCreate(string scope, string diagnosticsResourceName, Microsoft.Azure.PowerShell.Cmdlets.SelfHelp.Models.Api20230601.IDiagnosticResource body, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.SelfHelp.Models.Api20230601.IDiagnosticResource>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.SelfHelp.Models.Api30.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.SelfHelp.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.SelfHelp.Runtime.ISendAsync sender)
+        public async global::System.Threading.Tasks.Task DiagnosticsCreate(string scope, string diagnosticsResourceName, Microsoft.Azure.PowerShell.Cmdlets.SelfHelp.Models.Api20230901Preview.IDiagnosticResource body, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.SelfHelp.Models.Api20230901Preview.IDiagnosticResource>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.SelfHelp.Models.Api40.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.SelfHelp.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.SelfHelp.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2023-06-01";
+            var apiVersion = @"2023-09-01-preview";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -234,10 +234,10 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.SelfHelp
         }
 
         /// <summary>
-        /// Diagnostics tells you precisely the root cause of the issue and how to address it. You can get diagnostics once you discover
-        /// and identify the relevant solution for your Azure issue.<br/><br/> You can create diagnostics using the ‘solutionId’ from
-        /// Solution Discovery API response and ‘additionalParameters’ <br/><br/> <b>Note: </b>‘requiredParameterSets’ from Solutions
-        /// Discovery API response must be passed via ‘additionalParameters’ as an input to Diagnostics API
+        /// Creates a diagnostic for the specific resource using solutionId and requiredInputs* from discovery solutions. <br/>Diagnostics
+        /// tells you precisely the root cause of the issue and the steps to address it. You can get diagnostics once you discover
+        /// the relevant solution for your Azure issue. <br/><br/> <b>Note: </b> requiredInputs’ from Discovery solutions response
+        /// must be passed via ‘additionalParameters’ as an input to Diagnostics API.
         /// </summary>
         /// <param name="viaIdentity"></param>
         /// <param name="body">The required request body for this insightResource invocation.</param>
@@ -249,9 +249,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.SelfHelp
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        public async global::System.Threading.Tasks.Task DiagnosticsCreateViaIdentity(global::System.String viaIdentity, Microsoft.Azure.PowerShell.Cmdlets.SelfHelp.Models.Api20230601.IDiagnosticResource body, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.SelfHelp.Models.Api20230601.IDiagnosticResource>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.SelfHelp.Models.Api30.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.SelfHelp.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.SelfHelp.Runtime.ISendAsync sender)
+        public async global::System.Threading.Tasks.Task DiagnosticsCreateViaIdentity(global::System.String viaIdentity, Microsoft.Azure.PowerShell.Cmdlets.SelfHelp.Models.Api20230901Preview.IDiagnosticResource body, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.SelfHelp.Models.Api20230901Preview.IDiagnosticResource>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.SelfHelp.Models.Api40.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.SelfHelp.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.SelfHelp.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2023-06-01";
+            var apiVersion = @"2023-09-01-preview";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -303,7 +303,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.SelfHelp
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        internal async global::System.Threading.Tasks.Task DiagnosticsCreate_Call(global::System.Net.Http.HttpRequestMessage request, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.SelfHelp.Models.Api20230601.IDiagnosticResource>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.SelfHelp.Models.Api30.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.SelfHelp.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.SelfHelp.Runtime.ISendAsync sender)
+        internal async global::System.Threading.Tasks.Task DiagnosticsCreate_Call(global::System.Net.Http.HttpRequestMessage request, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.SelfHelp.Models.Api20230901Preview.IDiagnosticResource>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.SelfHelp.Models.Api40.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.SelfHelp.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.SelfHelp.Runtime.ISendAsync sender)
         {
             using( NoSynchronizationContext )
             {
@@ -417,13 +417,13 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.SelfHelp
                         case global::System.Net.HttpStatusCode.OK:
                         {
                             await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.SelfHelp.Runtime.Events.BeforeResponseDispatch, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
-                            await onOk(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.SelfHelp.Models.Api20230601.DiagnosticResource.FromJson(Microsoft.Azure.PowerShell.Cmdlets.SelfHelp.Runtime.Json.JsonNode.Parse(body.Result)) ));
+                            await onOk(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.SelfHelp.Models.Api20230901Preview.DiagnosticResource.FromJson(Microsoft.Azure.PowerShell.Cmdlets.SelfHelp.Runtime.Json.JsonNode.Parse(body.Result)) ));
                             break;
                         }
                         default:
                         {
                             await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.SelfHelp.Runtime.Events.BeforeResponseDispatch, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
-                            await onDefault(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.SelfHelp.Models.Api30.ErrorResponse.FromJson(Microsoft.Azure.PowerShell.Cmdlets.SelfHelp.Runtime.Json.JsonNode.Parse(body.Result)) ));
+                            await onDefault(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.SelfHelp.Models.Api40.ErrorResponse.FromJson(Microsoft.Azure.PowerShell.Cmdlets.SelfHelp.Runtime.Json.JsonNode.Parse(body.Result)) ));
                             break;
                         }
                     }
@@ -449,7 +449,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.SelfHelp
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        internal async global::System.Threading.Tasks.Task DiagnosticsCreate_Validate(string scope, string diagnosticsResourceName, Microsoft.Azure.PowerShell.Cmdlets.SelfHelp.Models.Api20230601.IDiagnosticResource body, Microsoft.Azure.PowerShell.Cmdlets.SelfHelp.Runtime.IEventListener eventListener)
+        internal async global::System.Threading.Tasks.Task DiagnosticsCreate_Validate(string scope, string diagnosticsResourceName, Microsoft.Azure.PowerShell.Cmdlets.SelfHelp.Models.Api20230901Preview.IDiagnosticResource body, Microsoft.Azure.PowerShell.Cmdlets.SelfHelp.Runtime.IEventListener eventListener)
         {
             using( NoSynchronizationContext )
             {
@@ -476,9 +476,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.SelfHelp
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        public async global::System.Threading.Tasks.Task DiagnosticsGet(string scope, string diagnosticsResourceName, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.SelfHelp.Models.Api20230601.IDiagnosticResource>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.SelfHelp.Models.Api30.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.SelfHelp.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.SelfHelp.Runtime.ISendAsync sender)
+        public async global::System.Threading.Tasks.Task DiagnosticsGet(string scope, string diagnosticsResourceName, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.SelfHelp.Models.Api20230901Preview.IDiagnosticResource>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.SelfHelp.Models.Api40.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.SelfHelp.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.SelfHelp.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2023-06-01";
+            var apiVersion = @"2023-09-01-preview";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -517,9 +517,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.SelfHelp
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        public async global::System.Threading.Tasks.Task DiagnosticsGetViaIdentity(global::System.String viaIdentity, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.SelfHelp.Models.Api20230601.IDiagnosticResource>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.SelfHelp.Models.Api30.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.SelfHelp.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.SelfHelp.Runtime.ISendAsync sender)
+        public async global::System.Threading.Tasks.Task DiagnosticsGetViaIdentity(global::System.String viaIdentity, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.SelfHelp.Models.Api20230901Preview.IDiagnosticResource>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.SelfHelp.Models.Api40.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.SelfHelp.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.SelfHelp.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2023-06-01";
+            var apiVersion = @"2023-09-01-preview";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -567,7 +567,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.SelfHelp
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        internal async global::System.Threading.Tasks.Task DiagnosticsGet_Call(global::System.Net.Http.HttpRequestMessage request, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.SelfHelp.Models.Api20230601.IDiagnosticResource>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.SelfHelp.Models.Api30.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.SelfHelp.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.SelfHelp.Runtime.ISendAsync sender)
+        internal async global::System.Threading.Tasks.Task DiagnosticsGet_Call(global::System.Net.Http.HttpRequestMessage request, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.SelfHelp.Models.Api20230901Preview.IDiagnosticResource>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.SelfHelp.Models.Api40.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.SelfHelp.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.SelfHelp.Runtime.ISendAsync sender)
         {
             using( NoSynchronizationContext )
             {
@@ -585,13 +585,13 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.SelfHelp
                         case global::System.Net.HttpStatusCode.OK:
                         {
                             await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.SelfHelp.Runtime.Events.BeforeResponseDispatch, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
-                            await onOk(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.SelfHelp.Models.Api20230601.DiagnosticResource.FromJson(Microsoft.Azure.PowerShell.Cmdlets.SelfHelp.Runtime.Json.JsonNode.Parse(body.Result)) ));
+                            await onOk(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.SelfHelp.Models.Api20230901Preview.DiagnosticResource.FromJson(Microsoft.Azure.PowerShell.Cmdlets.SelfHelp.Runtime.Json.JsonNode.Parse(body.Result)) ));
                             break;
                         }
                         default:
                         {
                             await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.SelfHelp.Runtime.Events.BeforeResponseDispatch, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
-                            await onDefault(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.SelfHelp.Models.Api30.ErrorResponse.FromJson(Microsoft.Azure.PowerShell.Cmdlets.SelfHelp.Runtime.Json.JsonNode.Parse(body.Result)) ));
+                            await onDefault(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.SelfHelp.Models.Api40.ErrorResponse.FromJson(Microsoft.Azure.PowerShell.Cmdlets.SelfHelp.Runtime.Json.JsonNode.Parse(body.Result)) ));
                             break;
                         }
                     }
@@ -629,20 +629,18 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.SelfHelp
         }
 
         /// <summary>
-        /// Solutions Discovery is the initial point of entry within Help API, which helps you identify the relevant solutions for
-        /// your Azure issue.<br/><br/> You can discover solutions using resourceUri OR resourceUri + problemClassificationId.<br/><br/>We
-        /// will do our best in returning relevant diagnostics for your Azure issue.<br/><br/> Get the problemClassificationId(s)
-        /// using this [reference](https://learn.microsoft.com/rest/api/support/problem-classifications/list?tabs=HTTP).<br/><br/>
-        /// <b>Note: </b> ‘requiredParameterSets’ from Solutions Discovery API response must be passed via ‘additionalParameters’
-        /// as an input to Diagnostics API.
+        /// Lists the relevant Azure diagnostics and solutions using [problemClassification API](https://learn.microsoft.com/rest/api/support/problem-classifications/list?tabs=HTTP))
+        /// AND resourceUri or resourceType.<br/> Discovery Solutions is the initial entry point within Help API, which identifies
+        /// relevant Azure diagnostics and solutions. We will do our best to return the most effective solutions based on the type
+        /// of inputs, in the request URL <br/><br/> Mandatory input : problemClassificationId (Use the [problemClassification API](https://learn.microsoft.com/rest/api/support/problem-classifications/list?tabs=HTTP))
+        /// <br/>Optional input: resourceUri OR resource Type <br/><br/> <b>Note: </b> ‘requiredInputs’ from Discovery solutions response
+        /// must be passed via ‘additionalParameters’ as an input to Diagnostics and Solutions API.
         /// </summary>
         /// <param name="scope">This is an extension resource provider and only resource level extension is supported at the moment.</param>
-        /// <param name="Filter">Can be used to filter solutionIds by 'ProblemClassificationId'. The filter supports only 'and' and
-        /// 'eq' operators. Example: $filter=ProblemClassificationId eq '1ddda5b4-cf6c-4d4f-91ad-bc38ab0e811e' and ProblemClassificationId
-        /// eq '0a9673c2-7af6-4e19-90d3-4ee2461076d9'.</param>
-        /// <param name="Skiptoken">Skiptoken is only used if a previous operation returned a partial result. If a previous response
-        /// contains a nextLink element, the value of the nextLink element will include a skiptoken parameter that specifies a starting
-        /// point to use for subsequent calls.</param>
+        /// <param name="Filter">'ProblemClassificationId' or 'Id' is a mandatory filter to get solutions ids. It also supports optional
+        /// 'ResourceType' and 'SolutionType' filters. The filter supports only 'and', 'or' and 'eq' operators. Example: $filter=ProblemClassificationId
+        /// eq '1ddda5b4-cf6c-4d4f-91ad-bc38ab0e811e'</param>
+        /// <param name="Skiptoken">Skiptoken is only used if a previous operation returned a partial result.</param>
         /// <param name="onOk">a delegate that is called when the remote service returns 200 (OK).</param>
         /// <param name="onDefault">a delegate that is called when the remote service returns default (any response code not handled
         /// elsewhere).</param>
@@ -651,9 +649,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.SelfHelp
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        public async global::System.Threading.Tasks.Task DiscoverySolutionList(string scope, string Filter, string Skiptoken, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.SelfHelp.Models.Api20230601.IDiscoveryResponse>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.SelfHelp.Models.Api30.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.SelfHelp.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.SelfHelp.Runtime.ISendAsync sender)
+        public async global::System.Threading.Tasks.Task DiscoverySolutionList(string scope, string Filter, string Skiptoken, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.SelfHelp.Models.Api20230901Preview.IDiscoveryResponse>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.SelfHelp.Models.Api40.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.SelfHelp.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.SelfHelp.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2023-06-01";
+            var apiVersion = @"2023-09-01-preview";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -684,20 +682,18 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.SelfHelp
         }
 
         /// <summary>
-        /// Solutions Discovery is the initial point of entry within Help API, which helps you identify the relevant solutions for
-        /// your Azure issue.<br/><br/> You can discover solutions using resourceUri OR resourceUri + problemClassificationId.<br/><br/>We
-        /// will do our best in returning relevant diagnostics for your Azure issue.<br/><br/> Get the problemClassificationId(s)
-        /// using this [reference](https://learn.microsoft.com/rest/api/support/problem-classifications/list?tabs=HTTP).<br/><br/>
-        /// <b>Note: </b> ‘requiredParameterSets’ from Solutions Discovery API response must be passed via ‘additionalParameters’
-        /// as an input to Diagnostics API.
+        /// Lists the relevant Azure diagnostics and solutions using [problemClassification API](https://learn.microsoft.com/rest/api/support/problem-classifications/list?tabs=HTTP))
+        /// AND resourceUri or resourceType.<br/> Discovery Solutions is the initial entry point within Help API, which identifies
+        /// relevant Azure diagnostics and solutions. We will do our best to return the most effective solutions based on the type
+        /// of inputs, in the request URL <br/><br/> Mandatory input : problemClassificationId (Use the [problemClassification API](https://learn.microsoft.com/rest/api/support/problem-classifications/list?tabs=HTTP))
+        /// <br/>Optional input: resourceUri OR resource Type <br/><br/> <b>Note: </b> ‘requiredInputs’ from Discovery solutions response
+        /// must be passed via ‘additionalParameters’ as an input to Diagnostics and Solutions API.
         /// </summary>
         /// <param name="viaIdentity"></param>
-        /// <param name="Filter">Can be used to filter solutionIds by 'ProblemClassificationId'. The filter supports only 'and' and
-        /// 'eq' operators. Example: $filter=ProblemClassificationId eq '1ddda5b4-cf6c-4d4f-91ad-bc38ab0e811e' and ProblemClassificationId
-        /// eq '0a9673c2-7af6-4e19-90d3-4ee2461076d9'.</param>
-        /// <param name="Skiptoken">Skiptoken is only used if a previous operation returned a partial result. If a previous response
-        /// contains a nextLink element, the value of the nextLink element will include a skiptoken parameter that specifies a starting
-        /// point to use for subsequent calls.</param>
+        /// <param name="Filter">'ProblemClassificationId' or 'Id' is a mandatory filter to get solutions ids. It also supports optional
+        /// 'ResourceType' and 'SolutionType' filters. The filter supports only 'and', 'or' and 'eq' operators. Example: $filter=ProblemClassificationId
+        /// eq '1ddda5b4-cf6c-4d4f-91ad-bc38ab0e811e'</param>
+        /// <param name="Skiptoken">Skiptoken is only used if a previous operation returned a partial result.</param>
         /// <param name="onOk">a delegate that is called when the remote service returns 200 (OK).</param>
         /// <param name="onDefault">a delegate that is called when the remote service returns default (any response code not handled
         /// elsewhere).</param>
@@ -706,9 +702,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.SelfHelp
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        public async global::System.Threading.Tasks.Task DiscoverySolutionListViaIdentity(global::System.String viaIdentity, string Filter, string Skiptoken, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.SelfHelp.Models.Api20230601.IDiscoveryResponse>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.SelfHelp.Models.Api30.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.SelfHelp.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.SelfHelp.Runtime.ISendAsync sender)
+        public async global::System.Threading.Tasks.Task DiscoverySolutionListViaIdentity(global::System.String viaIdentity, string Filter, string Skiptoken, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.SelfHelp.Models.Api20230901Preview.IDiscoveryResponse>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.SelfHelp.Models.Api40.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.SelfHelp.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.SelfHelp.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2023-06-01";
+            var apiVersion = @"2023-09-01-preview";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -758,7 +754,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.SelfHelp
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        internal async global::System.Threading.Tasks.Task DiscoverySolutionList_Call(global::System.Net.Http.HttpRequestMessage request, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.SelfHelp.Models.Api20230601.IDiscoveryResponse>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.SelfHelp.Models.Api30.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.SelfHelp.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.SelfHelp.Runtime.ISendAsync sender)
+        internal async global::System.Threading.Tasks.Task DiscoverySolutionList_Call(global::System.Net.Http.HttpRequestMessage request, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.SelfHelp.Models.Api20230901Preview.IDiscoveryResponse>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.SelfHelp.Models.Api40.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.SelfHelp.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.SelfHelp.Runtime.ISendAsync sender)
         {
             using( NoSynchronizationContext )
             {
@@ -776,13 +772,13 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.SelfHelp
                         case global::System.Net.HttpStatusCode.OK:
                         {
                             await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.SelfHelp.Runtime.Events.BeforeResponseDispatch, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
-                            await onOk(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.SelfHelp.Models.Api20230601.DiscoveryResponse.FromJson(Microsoft.Azure.PowerShell.Cmdlets.SelfHelp.Runtime.Json.JsonNode.Parse(body.Result)) ));
+                            await onOk(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.SelfHelp.Models.Api20230901Preview.DiscoveryResponse.FromJson(Microsoft.Azure.PowerShell.Cmdlets.SelfHelp.Runtime.Json.JsonNode.Parse(body.Result)) ));
                             break;
                         }
                         default:
                         {
                             await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.SelfHelp.Runtime.Events.BeforeResponseDispatch, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
-                            await onDefault(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.SelfHelp.Models.Api30.ErrorResponse.FromJson(Microsoft.Azure.PowerShell.Cmdlets.SelfHelp.Runtime.Json.JsonNode.Parse(body.Result)) ));
+                            await onDefault(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.SelfHelp.Models.Api40.ErrorResponse.FromJson(Microsoft.Azure.PowerShell.Cmdlets.SelfHelp.Runtime.Json.JsonNode.Parse(body.Result)) ));
                             break;
                         }
                     }
@@ -802,12 +798,10 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.SelfHelp
         /// events back.
         /// </summary>
         /// <param name="scope">This is an extension resource provider and only resource level extension is supported at the moment.</param>
-        /// <param name="Filter">Can be used to filter solutionIds by 'ProblemClassificationId'. The filter supports only 'and' and
-        /// 'eq' operators. Example: $filter=ProblemClassificationId eq '1ddda5b4-cf6c-4d4f-91ad-bc38ab0e811e' and ProblemClassificationId
-        /// eq '0a9673c2-7af6-4e19-90d3-4ee2461076d9'.</param>
-        /// <param name="Skiptoken">Skiptoken is only used if a previous operation returned a partial result. If a previous response
-        /// contains a nextLink element, the value of the nextLink element will include a skiptoken parameter that specifies a starting
-        /// point to use for subsequent calls.</param>
+        /// <param name="Filter">'ProblemClassificationId' or 'Id' is a mandatory filter to get solutions ids. It also supports optional
+        /// 'ResourceType' and 'SolutionType' filters. The filter supports only 'and', 'or' and 'eq' operators. Example: $filter=ProblemClassificationId
+        /// eq '1ddda5b4-cf6c-4d4f-91ad-bc38ab0e811e'</param>
+        /// <param name="Skiptoken">Skiptoken is only used if a previous operation returned a partial result.</param>
         /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.SelfHelp.Runtime.IEventListener" /> instance that will receive events.</param>
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
@@ -831,9 +825,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.SelfHelp
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        public async global::System.Threading.Tasks.Task OperationsList(global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.SelfHelp.Models.Api30.IOperationListResult>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.SelfHelp.Models.Api30.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.SelfHelp.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.SelfHelp.Runtime.ISendAsync sender)
+        public async global::System.Threading.Tasks.Task OperationsList(global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.SelfHelp.Models.Api40.IOperationListResult>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.SelfHelp.Models.Api40.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.SelfHelp.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.SelfHelp.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2023-06-01";
+            var apiVersion = @"2023-09-01-preview";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -867,9 +861,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.SelfHelp
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        public async global::System.Threading.Tasks.Task OperationsListViaIdentity(global::System.String viaIdentity, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.SelfHelp.Models.Api30.IOperationListResult>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.SelfHelp.Models.Api30.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.SelfHelp.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.SelfHelp.Runtime.ISendAsync sender)
+        public async global::System.Threading.Tasks.Task OperationsListViaIdentity(global::System.String viaIdentity, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.SelfHelp.Models.Api40.IOperationListResult>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.SelfHelp.Models.Api40.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.SelfHelp.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.SelfHelp.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2023-06-01";
+            var apiVersion = @"2023-09-01-preview";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -912,7 +906,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.SelfHelp
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        internal async global::System.Threading.Tasks.Task OperationsList_Call(global::System.Net.Http.HttpRequestMessage request, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.SelfHelp.Models.Api30.IOperationListResult>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.SelfHelp.Models.Api30.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.SelfHelp.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.SelfHelp.Runtime.ISendAsync sender)
+        internal async global::System.Threading.Tasks.Task OperationsList_Call(global::System.Net.Http.HttpRequestMessage request, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.SelfHelp.Models.Api40.IOperationListResult>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.SelfHelp.Models.Api40.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.SelfHelp.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.SelfHelp.Runtime.ISendAsync sender)
         {
             using( NoSynchronizationContext )
             {
@@ -930,13 +924,13 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.SelfHelp
                         case global::System.Net.HttpStatusCode.OK:
                         {
                             await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.SelfHelp.Runtime.Events.BeforeResponseDispatch, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
-                            await onOk(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.SelfHelp.Models.Api30.OperationListResult.FromJson(Microsoft.Azure.PowerShell.Cmdlets.SelfHelp.Runtime.Json.JsonNode.Parse(body.Result)) ));
+                            await onOk(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.SelfHelp.Models.Api40.OperationListResult.FromJson(Microsoft.Azure.PowerShell.Cmdlets.SelfHelp.Runtime.Json.JsonNode.Parse(body.Result)) ));
                             break;
                         }
                         default:
                         {
                             await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.SelfHelp.Runtime.Events.BeforeResponseDispatch, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
-                            await onDefault(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.SelfHelp.Models.Api30.ErrorResponse.FromJson(Microsoft.Azure.PowerShell.Cmdlets.SelfHelp.Runtime.Json.JsonNode.Parse(body.Result)) ));
+                            await onDefault(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.SelfHelp.Models.Api40.ErrorResponse.FromJson(Microsoft.Azure.PowerShell.Cmdlets.SelfHelp.Runtime.Json.JsonNode.Parse(body.Result)) ));
                             break;
                         }
                     }
@@ -964,6 +958,1625 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.SelfHelp
             using( NoSynchronizationContext )
             {
 
+            }
+        }
+
+        /// <summary>
+        /// Creates a solution for the specific Azure resource or subscription using the triggering criteria ‘solutionId and requiredInputs’
+        /// from discovery solutions.<br/> Solutions are a rich, insightful and a centralized self help experience that brings all
+        /// the relevant content to troubleshoot an Azure issue into a unified experience. Solutions include the following components
+        /// : Text, Diagnostics , Troubleshooters, Images , Video tutorials, Tables , custom charts, images , AzureKB, etc, with capabilities
+        /// to support new solutions types in the future. Each solution type may require one or more ‘requiredParameters’ that are
+        /// required to execute the individual solution component. In the absence of the ‘requiredParameters’ it is likely that some
+        /// of the solutions might fail execution, and you might see an empty response. <br/><br/> <b>Note:</b> <br/>1. ‘requiredInputs’
+        /// from Discovery solutions response must be passed via ‘parameters’ in the request body of Solutions API. <br/>2. ‘requiredParameters’
+        /// from the Solutions response is the same as ‘ additionalParameters’ in the request for diagnostics <br/>3. ‘requiredParameters’
+        /// from the Solutions response is the same as ‘properties.parameters’ in the request for Troubleshooters
+        /// </summary>
+        /// <param name="scope">This is an extension resource provider and only resource level extension is supported at the moment.</param>
+        /// <param name="solutionResourceName">Solution resource Name.</param>
+        /// <param name="body">The required request body for this solution resource creation.</param>
+        /// <param name="onOk">a delegate that is called when the remote service returns 200 (OK).</param>
+        /// <param name="onDefault">a delegate that is called when the remote service returns default (any response code not handled
+        /// elsewhere).</param>
+        /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.SelfHelp.Runtime.IEventListener" /> instance that will receive events.</param>
+        /// <param name="sender">an instance of an Microsoft.Azure.PowerShell.Cmdlets.SelfHelp.Runtime.ISendAsync pipeline to use to make the request.</param>
+        /// <returns>
+        /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
+        /// </returns>
+        public async global::System.Threading.Tasks.Task SolutionCreate(string scope, string solutionResourceName, Microsoft.Azure.PowerShell.Cmdlets.SelfHelp.Models.Api20230901Preview.ISolutionResource body, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.SelfHelp.Models.Api20230901Preview.ISolutionResource>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.SelfHelp.Models.Api40.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.SelfHelp.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.SelfHelp.Runtime.ISendAsync sender)
+        {
+            var apiVersion = @"2023-09-01-preview";
+            // Constant Parameters
+            using( NoSynchronizationContext )
+            {
+                // construct URL
+                var pathAndQuery = global::System.Text.RegularExpressions.Regex.Replace(
+                        "/"
+                        + (scope)
+                        + "/providers/Microsoft.Help/solutions/"
+                        + global::System.Uri.EscapeDataString(solutionResourceName)
+                        + "?"
+                        + "api-version=" + global::System.Uri.EscapeDataString(apiVersion)
+                        ,"\\?&*$|&*$|(\\?)&+|(&)&+","$1$2");
+
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.SelfHelp.Runtime.Events.URLCreated, pathAndQuery); if( eventListener.Token.IsCancellationRequested ) { return; }
+
+                // generate request object
+                var _url = new global::System.Uri($"https://management.azure.com{pathAndQuery}");
+                var request =  new global::System.Net.Http.HttpRequestMessage(Microsoft.Azure.PowerShell.Cmdlets.SelfHelp.Runtime.Method.Put, _url);
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.SelfHelp.Runtime.Events.RequestCreated, request.RequestUri.PathAndQuery); if( eventListener.Token.IsCancellationRequested ) { return; }
+
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.SelfHelp.Runtime.Events.HeaderParametersAdded); if( eventListener.Token.IsCancellationRequested ) { return; }
+                // set body content
+                request.Content = new global::System.Net.Http.StringContent(null != body ? body.ToJson(null).ToString() : @"{}", global::System.Text.Encoding.UTF8);
+                request.Content.Headers.ContentType = global::System.Net.Http.Headers.MediaTypeHeaderValue.Parse("application/json");
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.SelfHelp.Runtime.Events.BodyContentSet); if( eventListener.Token.IsCancellationRequested ) { return; }
+                // make the call
+                await this.SolutionCreate_Call(request,onOk,onDefault,eventListener,sender);
+            }
+        }
+
+        /// <summary>
+        /// Creates a solution for the specific Azure resource or subscription using the triggering criteria ‘solutionId and requiredInputs’
+        /// from discovery solutions.<br/> Solutions are a rich, insightful and a centralized self help experience that brings all
+        /// the relevant content to troubleshoot an Azure issue into a unified experience. Solutions include the following components
+        /// : Text, Diagnostics , Troubleshooters, Images , Video tutorials, Tables , custom charts, images , AzureKB, etc, with capabilities
+        /// to support new solutions types in the future. Each solution type may require one or more ‘requiredParameters’ that are
+        /// required to execute the individual solution component. In the absence of the ‘requiredParameters’ it is likely that some
+        /// of the solutions might fail execution, and you might see an empty response. <br/><br/> <b>Note:</b> <br/>1. ‘requiredInputs’
+        /// from Discovery solutions response must be passed via ‘parameters’ in the request body of Solutions API. <br/>2. ‘requiredParameters’
+        /// from the Solutions response is the same as ‘ additionalParameters’ in the request for diagnostics <br/>3. ‘requiredParameters’
+        /// from the Solutions response is the same as ‘properties.parameters’ in the request for Troubleshooters
+        /// </summary>
+        /// <param name="viaIdentity"></param>
+        /// <param name="body">The required request body for this solution resource creation.</param>
+        /// <param name="onOk">a delegate that is called when the remote service returns 200 (OK).</param>
+        /// <param name="onDefault">a delegate that is called when the remote service returns default (any response code not handled
+        /// elsewhere).</param>
+        /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.SelfHelp.Runtime.IEventListener" /> instance that will receive events.</param>
+        /// <param name="sender">an instance of an Microsoft.Azure.PowerShell.Cmdlets.SelfHelp.Runtime.ISendAsync pipeline to use to make the request.</param>
+        /// <returns>
+        /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
+        /// </returns>
+        public async global::System.Threading.Tasks.Task SolutionCreateViaIdentity(global::System.String viaIdentity, Microsoft.Azure.PowerShell.Cmdlets.SelfHelp.Models.Api20230901Preview.ISolutionResource body, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.SelfHelp.Models.Api20230901Preview.ISolutionResource>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.SelfHelp.Models.Api40.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.SelfHelp.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.SelfHelp.Runtime.ISendAsync sender)
+        {
+            var apiVersion = @"2023-09-01-preview";
+            // Constant Parameters
+            using( NoSynchronizationContext )
+            {
+                // verify that Identity format is an exact match for uri
+
+                var _match = new global::System.Text.RegularExpressions.Regex("^/(?<scope>[^/]+)/providers/Microsoft.Help/solutions/(?<solutionResourceName>[^/]+)$", global::System.Text.RegularExpressions.RegexOptions.IgnoreCase).Match(viaIdentity);
+                if (!_match.Success)
+                {
+                    throw new global::System.Exception("Invalid identity for URI '/{scope}/providers/Microsoft.Help/solutions/{solutionResourceName}'");
+                }
+
+                // replace URI parameters with values from identity
+                var scope = _match.Groups["scope"].Value;
+                var solutionResourceName = _match.Groups["solutionResourceName"].Value;
+                // construct URL
+                var pathAndQuery = global::System.Text.RegularExpressions.Regex.Replace(
+                        "/"
+                        + scope
+                        + "/providers/Microsoft.Help/solutions/"
+                        + solutionResourceName
+                        + "?"
+                        + "api-version=" + global::System.Uri.EscapeDataString(apiVersion)
+                        ,"\\?&*$|&*$|(\\?)&+|(&)&+","$1$2");
+
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.SelfHelp.Runtime.Events.URLCreated, pathAndQuery); if( eventListener.Token.IsCancellationRequested ) { return; }
+
+                // generate request object
+                var _url = new global::System.Uri($"https://management.azure.com{pathAndQuery}");
+                var request =  new global::System.Net.Http.HttpRequestMessage(Microsoft.Azure.PowerShell.Cmdlets.SelfHelp.Runtime.Method.Put, _url);
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.SelfHelp.Runtime.Events.RequestCreated, request.RequestUri.PathAndQuery); if( eventListener.Token.IsCancellationRequested ) { return; }
+
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.SelfHelp.Runtime.Events.HeaderParametersAdded); if( eventListener.Token.IsCancellationRequested ) { return; }
+                // set body content
+                request.Content = new global::System.Net.Http.StringContent(null != body ? body.ToJson(null).ToString() : @"{}", global::System.Text.Encoding.UTF8);
+                request.Content.Headers.ContentType = global::System.Net.Http.Headers.MediaTypeHeaderValue.Parse("application/json");
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.SelfHelp.Runtime.Events.BodyContentSet); if( eventListener.Token.IsCancellationRequested ) { return; }
+                // make the call
+                await this.SolutionCreate_Call(request,onOk,onDefault,eventListener,sender);
+            }
+        }
+
+        /// <summary>Actual wire call for <see cref="SolutionCreate" /> method.</summary>
+        /// <param name="request">the prepared HttpRequestMessage to send.</param>
+        /// <param name="onOk">a delegate that is called when the remote service returns 200 (OK).</param>
+        /// <param name="onDefault">a delegate that is called when the remote service returns default (any response code not handled
+        /// elsewhere).</param>
+        /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.SelfHelp.Runtime.IEventListener" /> instance that will receive events.</param>
+        /// <param name="sender">an instance of an Microsoft.Azure.PowerShell.Cmdlets.SelfHelp.Runtime.ISendAsync pipeline to use to make the request.</param>
+        /// <returns>
+        /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
+        /// </returns>
+        internal async global::System.Threading.Tasks.Task SolutionCreate_Call(global::System.Net.Http.HttpRequestMessage request, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.SelfHelp.Models.Api20230901Preview.ISolutionResource>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.SelfHelp.Models.Api40.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.SelfHelp.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.SelfHelp.Runtime.ISendAsync sender)
+        {
+            using( NoSynchronizationContext )
+            {
+                global::System.Net.Http.HttpResponseMessage _response = null;
+                try
+                {
+                    var sendTask = sender.SendAsync(request, eventListener);
+                    await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.SelfHelp.Runtime.Events.BeforeCall, request); if( eventListener.Token.IsCancellationRequested ) { return; }
+                    _response = await sendTask;
+                    await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.SelfHelp.Runtime.Events.ResponseCreated, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
+                    // this operation supports x-ms-long-running-operation
+                    var _originalUri = request.RequestUri.AbsoluteUri;
+                    // declared final-state-via: azure-async-operation
+                    var asyncOperation = _response.GetFirstHeader(@"Azure-AsyncOperation");
+                    var location = _response.GetFirstHeader(@"Location");
+                    while (request.Method == System.Net.Http.HttpMethod.Put && _response.StatusCode == global::System.Net.HttpStatusCode.OK || _response.StatusCode == global::System.Net.HttpStatusCode.Created || _response.StatusCode == global::System.Net.HttpStatusCode.Accepted )
+                    {
+
+                        // get the delay before polling. (default to 30 seconds if not present)
+                        int delay = (int)(_response.Headers.RetryAfter?.Delta?.TotalSeconds ?? 30);
+                        await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.SelfHelp.Runtime.Events.DelayBeforePolling, $"Delaying {delay} seconds before polling.", _response); if( eventListener.Token.IsCancellationRequested ) { return; }
+
+                        // start the delay timer (we'll await later...)
+                        var waiting = global::System.Threading.Tasks.Task.Delay(delay * 1000, eventListener.Token );
+
+                        // while we wait, let's grab the headers and get ready to poll.
+                        if (!System.String.IsNullOrEmpty(_response.GetFirstHeader(@"Azure-AsyncOperation"))) {
+                            asyncOperation = _response.GetFirstHeader(@"Azure-AsyncOperation");
+                        }
+                        if (!global::System.String.IsNullOrEmpty(_response.GetFirstHeader(@"Location"))) {
+                            location = _response.GetFirstHeader(@"Location");
+                        }
+                        var _uri = global::System.String.IsNullOrEmpty(asyncOperation) ? global::System.String.IsNullOrEmpty(location) ? _originalUri : location : asyncOperation;
+                        request = request.CloneAndDispose(new global::System.Uri(_uri), Microsoft.Azure.PowerShell.Cmdlets.SelfHelp.Runtime.Method.Get);
+
+                        // and let's look at the current response body and see if we have some information we can give back to the listener
+                        var content = await _response.Content.ReadAsStringAsync();
+                        await waiting;
+
+                        // check for cancellation
+                        if( eventListener.Token.IsCancellationRequested ) { return; }
+
+                        // drop the old response
+                        _response?.Dispose();
+
+                        // make the polling call
+                        _response = await sender.SendAsync(request, eventListener);
+                        await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.SelfHelp.Runtime.Events.Polling, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
+
+                        // if we got back an OK, take a peek inside and see if it's done
+                        if( _response.StatusCode == global::System.Net.HttpStatusCode.OK)
+                        {
+                            var error = false;
+                            try {
+                                if( Microsoft.Azure.PowerShell.Cmdlets.SelfHelp.Runtime.Json.JsonNode.Parse(await _response.Content.ReadAsStringAsync()) is Microsoft.Azure.PowerShell.Cmdlets.SelfHelp.Runtime.Json.JsonObject json)
+                                {
+                                    var state = json.Property("properties")?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.SelfHelp.Runtime.Json.JsonString>("provisioningState") ?? json.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.SelfHelp.Runtime.Json.JsonString>("status");
+                                    if( state is null )
+                                    {
+                                        // the body doesn't contain any information that has the state of the LRO
+                                        // we're going to just get out, and let the consumer have the result
+                                        break;
+                                    }
+
+                                    switch( state?.ToString()?.ToLower() )
+                                    {
+                                      case "failed":
+                                          error = true;
+                                          break;
+                                      case "succeeded":
+                                      case "canceled":
+                                        // we're done polling.
+                                        break;
+
+                                      default:
+                                        // need to keep polling!
+                                        _response.StatusCode = global::System.Net.HttpStatusCode.Created;
+                                        continue;
+                                    }
+                                }
+                            } catch {
+                                // if we run into a problem peeking into the result,
+                                // we really don't want to do anything special.
+                            }
+                            if (error) {
+                                throw new Microsoft.Azure.PowerShell.Cmdlets.SelfHelp.Runtime.UndeclaredResponseException(_response);
+                            }
+                        }
+
+                        // check for terminal status code
+                        if (_response.StatusCode == global::System.Net.HttpStatusCode.Created || _response.StatusCode == global::System.Net.HttpStatusCode.Accepted )
+                        {
+                            continue;
+                        }
+                        // we are done polling, do a request on final target?
+                        // create a new request with the final uri
+                        request = request.CloneAndDispose(new global::System.Uri(_originalUri), Microsoft.Azure.PowerShell.Cmdlets.SelfHelp.Runtime.Method.Get);
+
+                        // drop the old response
+                        _response?.Dispose();
+
+                        // make the final call
+                        _response = await sender.SendAsync(request,  eventListener);
+                        await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.SelfHelp.Runtime.Events.Polling, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
+                        break;
+                    }
+                    var _contentType = _response.Content.Headers.ContentType?.MediaType;
+
+                    switch ( _response.StatusCode )
+                    {
+                        case global::System.Net.HttpStatusCode.OK:
+                        {
+                            await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.SelfHelp.Runtime.Events.BeforeResponseDispatch, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
+                            await onOk(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.SelfHelp.Models.Api20230901Preview.SolutionResource.FromJson(Microsoft.Azure.PowerShell.Cmdlets.SelfHelp.Runtime.Json.JsonNode.Parse(body.Result)) .ReadHeaders(_response.Headers)));
+                            break;
+                        }
+                        default:
+                        {
+                            await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.SelfHelp.Runtime.Events.BeforeResponseDispatch, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
+                            await onDefault(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.SelfHelp.Models.Api40.ErrorResponse.FromJson(Microsoft.Azure.PowerShell.Cmdlets.SelfHelp.Runtime.Json.JsonNode.Parse(body.Result)) ));
+                            break;
+                        }
+                    }
+                }
+                finally
+                {
+                    // finally statements
+                    await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.SelfHelp.Runtime.Events.Finally, request, _response);
+                    _response?.Dispose();
+                    request?.Dispose();
+                }
+            }
+        }
+
+        /// <summary>
+        /// Validation method for <see cref="SolutionCreate" /> method. Call this like the actual call, but you will get validation
+        /// events back.
+        /// </summary>
+        /// <param name="scope">This is an extension resource provider and only resource level extension is supported at the moment.</param>
+        /// <param name="solutionResourceName">Solution resource Name.</param>
+        /// <param name="body">The required request body for this solution resource creation.</param>
+        /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.SelfHelp.Runtime.IEventListener" /> instance that will receive events.</param>
+        /// <returns>
+        /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
+        /// </returns>
+        internal async global::System.Threading.Tasks.Task SolutionCreate_Validate(string scope, string solutionResourceName, Microsoft.Azure.PowerShell.Cmdlets.SelfHelp.Models.Api20230901Preview.ISolutionResource body, Microsoft.Azure.PowerShell.Cmdlets.SelfHelp.Runtime.IEventListener eventListener)
+        {
+            using( NoSynchronizationContext )
+            {
+                await eventListener.AssertNotNull(nameof(scope),scope);
+                await eventListener.AssertNotNull(nameof(solutionResourceName),solutionResourceName);
+                await eventListener.AssertMinimumLength(nameof(solutionResourceName),solutionResourceName,1);
+                await eventListener.AssertMaximumLength(nameof(solutionResourceName),solutionResourceName,100);
+                await eventListener.AssertRegEx(nameof(solutionResourceName),solutionResourceName,@"^[A-Za-z0-9-+@()_]+$");
+                await eventListener.AssertNotNull(nameof(body), body);
+                await eventListener.AssertObjectIsValid(nameof(body), body);
+            }
+        }
+
+        /// <summary>
+        /// Get the solution using the applicable solutionResourceName while creating the solution.
+        /// </summary>
+        /// <param name="scope">This is an extension resource provider and only resource level extension is supported at the moment.</param>
+        /// <param name="solutionResourceName">Solution resource Name.</param>
+        /// <param name="onOk">a delegate that is called when the remote service returns 200 (OK).</param>
+        /// <param name="onDefault">a delegate that is called when the remote service returns default (any response code not handled
+        /// elsewhere).</param>
+        /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.SelfHelp.Runtime.IEventListener" /> instance that will receive events.</param>
+        /// <param name="sender">an instance of an Microsoft.Azure.PowerShell.Cmdlets.SelfHelp.Runtime.ISendAsync pipeline to use to make the request.</param>
+        /// <returns>
+        /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
+        /// </returns>
+        public async global::System.Threading.Tasks.Task SolutionGet(string scope, string solutionResourceName, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.SelfHelp.Models.Api20230901Preview.ISolutionResource>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.SelfHelp.Models.Api40.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.SelfHelp.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.SelfHelp.Runtime.ISendAsync sender)
+        {
+            var apiVersion = @"2023-09-01-preview";
+            // Constant Parameters
+            using( NoSynchronizationContext )
+            {
+                // construct URL
+                var pathAndQuery = global::System.Text.RegularExpressions.Regex.Replace(
+                        "/"
+                        + (scope)
+                        + "/providers/Microsoft.Help/solutions/"
+                        + global::System.Uri.EscapeDataString(solutionResourceName)
+                        + "?"
+                        + "api-version=" + global::System.Uri.EscapeDataString(apiVersion)
+                        ,"\\?&*$|&*$|(\\?)&+|(&)&+","$1$2");
+
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.SelfHelp.Runtime.Events.URLCreated, pathAndQuery); if( eventListener.Token.IsCancellationRequested ) { return; }
+
+                // generate request object
+                var _url = new global::System.Uri($"https://management.azure.com{pathAndQuery}");
+                var request =  new global::System.Net.Http.HttpRequestMessage(Microsoft.Azure.PowerShell.Cmdlets.SelfHelp.Runtime.Method.Get, _url);
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.SelfHelp.Runtime.Events.RequestCreated, request.RequestUri.PathAndQuery); if( eventListener.Token.IsCancellationRequested ) { return; }
+
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.SelfHelp.Runtime.Events.HeaderParametersAdded); if( eventListener.Token.IsCancellationRequested ) { return; }
+                // make the call
+                await this.SolutionGet_Call(request,onOk,onDefault,eventListener,sender);
+            }
+        }
+
+        /// <summary>
+        /// Get the solution using the applicable solutionResourceName while creating the solution.
+        /// </summary>
+        /// <param name="viaIdentity"></param>
+        /// <param name="onOk">a delegate that is called when the remote service returns 200 (OK).</param>
+        /// <param name="onDefault">a delegate that is called when the remote service returns default (any response code not handled
+        /// elsewhere).</param>
+        /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.SelfHelp.Runtime.IEventListener" /> instance that will receive events.</param>
+        /// <param name="sender">an instance of an Microsoft.Azure.PowerShell.Cmdlets.SelfHelp.Runtime.ISendAsync pipeline to use to make the request.</param>
+        /// <returns>
+        /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
+        /// </returns>
+        public async global::System.Threading.Tasks.Task SolutionGetViaIdentity(global::System.String viaIdentity, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.SelfHelp.Models.Api20230901Preview.ISolutionResource>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.SelfHelp.Models.Api40.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.SelfHelp.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.SelfHelp.Runtime.ISendAsync sender)
+        {
+            var apiVersion = @"2023-09-01-preview";
+            // Constant Parameters
+            using( NoSynchronizationContext )
+            {
+                // verify that Identity format is an exact match for uri
+
+                var _match = new global::System.Text.RegularExpressions.Regex("^/(?<scope>[^/]+)/providers/Microsoft.Help/solutions/(?<solutionResourceName>[^/]+)$", global::System.Text.RegularExpressions.RegexOptions.IgnoreCase).Match(viaIdentity);
+                if (!_match.Success)
+                {
+                    throw new global::System.Exception("Invalid identity for URI '/{scope}/providers/Microsoft.Help/solutions/{solutionResourceName}'");
+                }
+
+                // replace URI parameters with values from identity
+                var scope = _match.Groups["scope"].Value;
+                var solutionResourceName = _match.Groups["solutionResourceName"].Value;
+                // construct URL
+                var pathAndQuery = global::System.Text.RegularExpressions.Regex.Replace(
+                        "/"
+                        + scope
+                        + "/providers/Microsoft.Help/solutions/"
+                        + solutionResourceName
+                        + "?"
+                        + "api-version=" + global::System.Uri.EscapeDataString(apiVersion)
+                        ,"\\?&*$|&*$|(\\?)&+|(&)&+","$1$2");
+
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.SelfHelp.Runtime.Events.URLCreated, pathAndQuery); if( eventListener.Token.IsCancellationRequested ) { return; }
+
+                // generate request object
+                var _url = new global::System.Uri($"https://management.azure.com{pathAndQuery}");
+                var request =  new global::System.Net.Http.HttpRequestMessage(Microsoft.Azure.PowerShell.Cmdlets.SelfHelp.Runtime.Method.Get, _url);
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.SelfHelp.Runtime.Events.RequestCreated, request.RequestUri.PathAndQuery); if( eventListener.Token.IsCancellationRequested ) { return; }
+
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.SelfHelp.Runtime.Events.HeaderParametersAdded); if( eventListener.Token.IsCancellationRequested ) { return; }
+                // make the call
+                await this.SolutionGet_Call(request,onOk,onDefault,eventListener,sender);
+            }
+        }
+
+        /// <summary>Actual wire call for <see cref="SolutionGet" /> method.</summary>
+        /// <param name="request">the prepared HttpRequestMessage to send.</param>
+        /// <param name="onOk">a delegate that is called when the remote service returns 200 (OK).</param>
+        /// <param name="onDefault">a delegate that is called when the remote service returns default (any response code not handled
+        /// elsewhere).</param>
+        /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.SelfHelp.Runtime.IEventListener" /> instance that will receive events.</param>
+        /// <param name="sender">an instance of an Microsoft.Azure.PowerShell.Cmdlets.SelfHelp.Runtime.ISendAsync pipeline to use to make the request.</param>
+        /// <returns>
+        /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
+        /// </returns>
+        internal async global::System.Threading.Tasks.Task SolutionGet_Call(global::System.Net.Http.HttpRequestMessage request, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.SelfHelp.Models.Api20230901Preview.ISolutionResource>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.SelfHelp.Models.Api40.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.SelfHelp.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.SelfHelp.Runtime.ISendAsync sender)
+        {
+            using( NoSynchronizationContext )
+            {
+                global::System.Net.Http.HttpResponseMessage _response = null;
+                try
+                {
+                    var sendTask = sender.SendAsync(request, eventListener);
+                    await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.SelfHelp.Runtime.Events.BeforeCall, request); if( eventListener.Token.IsCancellationRequested ) { return; }
+                    _response = await sendTask;
+                    await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.SelfHelp.Runtime.Events.ResponseCreated, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
+                    var _contentType = _response.Content.Headers.ContentType?.MediaType;
+
+                    switch ( _response.StatusCode )
+                    {
+                        case global::System.Net.HttpStatusCode.OK:
+                        {
+                            await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.SelfHelp.Runtime.Events.BeforeResponseDispatch, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
+                            await onOk(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.SelfHelp.Models.Api20230901Preview.SolutionResource.FromJson(Microsoft.Azure.PowerShell.Cmdlets.SelfHelp.Runtime.Json.JsonNode.Parse(body.Result)) .ReadHeaders(_response.Headers)));
+                            break;
+                        }
+                        default:
+                        {
+                            await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.SelfHelp.Runtime.Events.BeforeResponseDispatch, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
+                            await onDefault(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.SelfHelp.Models.Api40.ErrorResponse.FromJson(Microsoft.Azure.PowerShell.Cmdlets.SelfHelp.Runtime.Json.JsonNode.Parse(body.Result)) ));
+                            break;
+                        }
+                    }
+                }
+                finally
+                {
+                    // finally statements
+                    await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.SelfHelp.Runtime.Events.Finally, request, _response);
+                    _response?.Dispose();
+                    request?.Dispose();
+                }
+            }
+        }
+
+        /// <summary>
+        /// Validation method for <see cref="SolutionGet" /> method. Call this like the actual call, but you will get validation events
+        /// back.
+        /// </summary>
+        /// <param name="scope">This is an extension resource provider and only resource level extension is supported at the moment.</param>
+        /// <param name="solutionResourceName">Solution resource Name.</param>
+        /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.SelfHelp.Runtime.IEventListener" /> instance that will receive events.</param>
+        /// <returns>
+        /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
+        /// </returns>
+        internal async global::System.Threading.Tasks.Task SolutionGet_Validate(string scope, string solutionResourceName, Microsoft.Azure.PowerShell.Cmdlets.SelfHelp.Runtime.IEventListener eventListener)
+        {
+            using( NoSynchronizationContext )
+            {
+                await eventListener.AssertNotNull(nameof(scope),scope);
+                await eventListener.AssertNotNull(nameof(solutionResourceName),solutionResourceName);
+                await eventListener.AssertMinimumLength(nameof(solutionResourceName),solutionResourceName,1);
+                await eventListener.AssertMaximumLength(nameof(solutionResourceName),solutionResourceName,100);
+                await eventListener.AssertRegEx(nameof(solutionResourceName),solutionResourceName,@"^[A-Za-z0-9-+@()_]+$");
+            }
+        }
+
+        /// <summary>
+        /// Update the requiredInputs or additional information needed to execute the solution
+        /// </summary>
+        /// <param name="scope">This is an extension resource provider and only resource level extension is supported at the moment.</param>
+        /// <param name="solutionResourceName">Solution resource Name.</param>
+        /// <param name="body">The required request body for updating a solution resource.</param>
+        /// <param name="onOk">a delegate that is called when the remote service returns 200 (OK).</param>
+        /// <param name="onDefault">a delegate that is called when the remote service returns default (any response code not handled
+        /// elsewhere).</param>
+        /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.SelfHelp.Runtime.IEventListener" /> instance that will receive events.</param>
+        /// <param name="sender">an instance of an Microsoft.Azure.PowerShell.Cmdlets.SelfHelp.Runtime.ISendAsync pipeline to use to make the request.</param>
+        /// <returns>
+        /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
+        /// </returns>
+        public async global::System.Threading.Tasks.Task SolutionUpdate(string scope, string solutionResourceName, Microsoft.Azure.PowerShell.Cmdlets.SelfHelp.Models.Api20230901Preview.ISolutionPatchRequestBody body, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.SelfHelp.Models.Api20230901Preview.ISolutionResource>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.SelfHelp.Models.Api40.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.SelfHelp.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.SelfHelp.Runtime.ISendAsync sender)
+        {
+            var apiVersion = @"2023-09-01-preview";
+            // Constant Parameters
+            using( NoSynchronizationContext )
+            {
+                // construct URL
+                var pathAndQuery = global::System.Text.RegularExpressions.Regex.Replace(
+                        "/"
+                        + (scope)
+                        + "/providers/Microsoft.Help/solutions/"
+                        + global::System.Uri.EscapeDataString(solutionResourceName)
+                        + "?"
+                        + "api-version=" + global::System.Uri.EscapeDataString(apiVersion)
+                        ,"\\?&*$|&*$|(\\?)&+|(&)&+","$1$2");
+
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.SelfHelp.Runtime.Events.URLCreated, pathAndQuery); if( eventListener.Token.IsCancellationRequested ) { return; }
+
+                // generate request object
+                var _url = new global::System.Uri($"https://management.azure.com{pathAndQuery}");
+                var request =  new global::System.Net.Http.HttpRequestMessage(Microsoft.Azure.PowerShell.Cmdlets.SelfHelp.Runtime.Method.Patch, _url);
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.SelfHelp.Runtime.Events.RequestCreated, request.RequestUri.PathAndQuery); if( eventListener.Token.IsCancellationRequested ) { return; }
+
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.SelfHelp.Runtime.Events.HeaderParametersAdded); if( eventListener.Token.IsCancellationRequested ) { return; }
+                // set body content
+                request.Content = new global::System.Net.Http.StringContent(null != body ? body.ToJson(null).ToString() : @"{}", global::System.Text.Encoding.UTF8);
+                request.Content.Headers.ContentType = global::System.Net.Http.Headers.MediaTypeHeaderValue.Parse("application/json");
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.SelfHelp.Runtime.Events.BodyContentSet); if( eventListener.Token.IsCancellationRequested ) { return; }
+                // make the call
+                await this.SolutionUpdate_Call(request,onOk,onDefault,eventListener,sender);
+            }
+        }
+
+        /// <summary>
+        /// Update the requiredInputs or additional information needed to execute the solution
+        /// </summary>
+        /// <param name="viaIdentity"></param>
+        /// <param name="body">The required request body for updating a solution resource.</param>
+        /// <param name="onOk">a delegate that is called when the remote service returns 200 (OK).</param>
+        /// <param name="onDefault">a delegate that is called when the remote service returns default (any response code not handled
+        /// elsewhere).</param>
+        /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.SelfHelp.Runtime.IEventListener" /> instance that will receive events.</param>
+        /// <param name="sender">an instance of an Microsoft.Azure.PowerShell.Cmdlets.SelfHelp.Runtime.ISendAsync pipeline to use to make the request.</param>
+        /// <returns>
+        /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
+        /// </returns>
+        public async global::System.Threading.Tasks.Task SolutionUpdateViaIdentity(global::System.String viaIdentity, Microsoft.Azure.PowerShell.Cmdlets.SelfHelp.Models.Api20230901Preview.ISolutionPatchRequestBody body, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.SelfHelp.Models.Api20230901Preview.ISolutionResource>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.SelfHelp.Models.Api40.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.SelfHelp.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.SelfHelp.Runtime.ISendAsync sender)
+        {
+            var apiVersion = @"2023-09-01-preview";
+            // Constant Parameters
+            using( NoSynchronizationContext )
+            {
+                // verify that Identity format is an exact match for uri
+
+                var _match = new global::System.Text.RegularExpressions.Regex("^/(?<scope>[^/]+)/providers/Microsoft.Help/solutions/(?<solutionResourceName>[^/]+)$", global::System.Text.RegularExpressions.RegexOptions.IgnoreCase).Match(viaIdentity);
+                if (!_match.Success)
+                {
+                    throw new global::System.Exception("Invalid identity for URI '/{scope}/providers/Microsoft.Help/solutions/{solutionResourceName}'");
+                }
+
+                // replace URI parameters with values from identity
+                var scope = _match.Groups["scope"].Value;
+                var solutionResourceName = _match.Groups["solutionResourceName"].Value;
+                // construct URL
+                var pathAndQuery = global::System.Text.RegularExpressions.Regex.Replace(
+                        "/"
+                        + scope
+                        + "/providers/Microsoft.Help/solutions/"
+                        + solutionResourceName
+                        + "?"
+                        + "api-version=" + global::System.Uri.EscapeDataString(apiVersion)
+                        ,"\\?&*$|&*$|(\\?)&+|(&)&+","$1$2");
+
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.SelfHelp.Runtime.Events.URLCreated, pathAndQuery); if( eventListener.Token.IsCancellationRequested ) { return; }
+
+                // generate request object
+                var _url = new global::System.Uri($"https://management.azure.com{pathAndQuery}");
+                var request =  new global::System.Net.Http.HttpRequestMessage(Microsoft.Azure.PowerShell.Cmdlets.SelfHelp.Runtime.Method.Patch, _url);
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.SelfHelp.Runtime.Events.RequestCreated, request.RequestUri.PathAndQuery); if( eventListener.Token.IsCancellationRequested ) { return; }
+
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.SelfHelp.Runtime.Events.HeaderParametersAdded); if( eventListener.Token.IsCancellationRequested ) { return; }
+                // set body content
+                request.Content = new global::System.Net.Http.StringContent(null != body ? body.ToJson(null).ToString() : @"{}", global::System.Text.Encoding.UTF8);
+                request.Content.Headers.ContentType = global::System.Net.Http.Headers.MediaTypeHeaderValue.Parse("application/json");
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.SelfHelp.Runtime.Events.BodyContentSet); if( eventListener.Token.IsCancellationRequested ) { return; }
+                // make the call
+                await this.SolutionUpdate_Call(request,onOk,onDefault,eventListener,sender);
+            }
+        }
+
+        /// <summary>Actual wire call for <see cref="SolutionUpdate" /> method.</summary>
+        /// <param name="request">the prepared HttpRequestMessage to send.</param>
+        /// <param name="onOk">a delegate that is called when the remote service returns 200 (OK).</param>
+        /// <param name="onDefault">a delegate that is called when the remote service returns default (any response code not handled
+        /// elsewhere).</param>
+        /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.SelfHelp.Runtime.IEventListener" /> instance that will receive events.</param>
+        /// <param name="sender">an instance of an Microsoft.Azure.PowerShell.Cmdlets.SelfHelp.Runtime.ISendAsync pipeline to use to make the request.</param>
+        /// <returns>
+        /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
+        /// </returns>
+        internal async global::System.Threading.Tasks.Task SolutionUpdate_Call(global::System.Net.Http.HttpRequestMessage request, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.SelfHelp.Models.Api20230901Preview.ISolutionResource>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.SelfHelp.Models.Api40.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.SelfHelp.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.SelfHelp.Runtime.ISendAsync sender)
+        {
+            using( NoSynchronizationContext )
+            {
+                global::System.Net.Http.HttpResponseMessage _response = null;
+                try
+                {
+                    var sendTask = sender.SendAsync(request, eventListener);
+                    await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.SelfHelp.Runtime.Events.BeforeCall, request); if( eventListener.Token.IsCancellationRequested ) { return; }
+                    _response = await sendTask;
+                    await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.SelfHelp.Runtime.Events.ResponseCreated, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
+                    // this operation supports x-ms-long-running-operation
+                    var _originalUri = request.RequestUri.AbsoluteUri;
+                    // declared final-state-via: azure-async-operation
+                    var asyncOperation = _response.GetFirstHeader(@"Azure-AsyncOperation");
+                    var location = _response.GetFirstHeader(@"Location");
+                    while (request.Method == System.Net.Http.HttpMethod.Put && _response.StatusCode == global::System.Net.HttpStatusCode.OK || _response.StatusCode == global::System.Net.HttpStatusCode.Created || _response.StatusCode == global::System.Net.HttpStatusCode.Accepted )
+                    {
+
+                        // get the delay before polling. (default to 30 seconds if not present)
+                        int delay = (int)(_response.Headers.RetryAfter?.Delta?.TotalSeconds ?? 30);
+                        await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.SelfHelp.Runtime.Events.DelayBeforePolling, $"Delaying {delay} seconds before polling.", _response); if( eventListener.Token.IsCancellationRequested ) { return; }
+
+                        // start the delay timer (we'll await later...)
+                        var waiting = global::System.Threading.Tasks.Task.Delay(delay * 1000, eventListener.Token );
+
+                        // while we wait, let's grab the headers and get ready to poll.
+                        if (!System.String.IsNullOrEmpty(_response.GetFirstHeader(@"Azure-AsyncOperation"))) {
+                            asyncOperation = _response.GetFirstHeader(@"Azure-AsyncOperation");
+                        }
+                        if (!global::System.String.IsNullOrEmpty(_response.GetFirstHeader(@"Location"))) {
+                            location = _response.GetFirstHeader(@"Location");
+                        }
+                        var _uri = global::System.String.IsNullOrEmpty(asyncOperation) ? global::System.String.IsNullOrEmpty(location) ? _originalUri : location : asyncOperation;
+                        request = request.CloneAndDispose(new global::System.Uri(_uri), Microsoft.Azure.PowerShell.Cmdlets.SelfHelp.Runtime.Method.Get);
+
+                        // and let's look at the current response body and see if we have some information we can give back to the listener
+                        var content = await _response.Content.ReadAsStringAsync();
+                        await waiting;
+
+                        // check for cancellation
+                        if( eventListener.Token.IsCancellationRequested ) { return; }
+
+                        // drop the old response
+                        _response?.Dispose();
+
+                        // make the polling call
+                        _response = await sender.SendAsync(request, eventListener);
+                        await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.SelfHelp.Runtime.Events.Polling, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
+
+                        // if we got back an OK, take a peek inside and see if it's done
+                        if( _response.StatusCode == global::System.Net.HttpStatusCode.OK)
+                        {
+                            var error = false;
+                            try {
+                                if( Microsoft.Azure.PowerShell.Cmdlets.SelfHelp.Runtime.Json.JsonNode.Parse(await _response.Content.ReadAsStringAsync()) is Microsoft.Azure.PowerShell.Cmdlets.SelfHelp.Runtime.Json.JsonObject json)
+                                {
+                                    var state = json.Property("properties")?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.SelfHelp.Runtime.Json.JsonString>("provisioningState") ?? json.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.SelfHelp.Runtime.Json.JsonString>("status");
+                                    if( state is null )
+                                    {
+                                        // the body doesn't contain any information that has the state of the LRO
+                                        // we're going to just get out, and let the consumer have the result
+                                        break;
+                                    }
+
+                                    switch( state?.ToString()?.ToLower() )
+                                    {
+                                      case "failed":
+                                          error = true;
+                                          break;
+                                      case "succeeded":
+                                      case "canceled":
+                                        // we're done polling.
+                                        break;
+
+                                      default:
+                                        // need to keep polling!
+                                        _response.StatusCode = global::System.Net.HttpStatusCode.Created;
+                                        continue;
+                                    }
+                                }
+                            } catch {
+                                // if we run into a problem peeking into the result,
+                                // we really don't want to do anything special.
+                            }
+                            if (error) {
+                                throw new Microsoft.Azure.PowerShell.Cmdlets.SelfHelp.Runtime.UndeclaredResponseException(_response);
+                            }
+                        }
+
+                        // check for terminal status code
+                        if (_response.StatusCode == global::System.Net.HttpStatusCode.Created || _response.StatusCode == global::System.Net.HttpStatusCode.Accepted )
+                        {
+                            continue;
+                        }
+                        // we are done polling, do a request on final target?
+                        // create a new request with the final uri
+                        request = request.CloneAndDispose(new global::System.Uri(_originalUri), Microsoft.Azure.PowerShell.Cmdlets.SelfHelp.Runtime.Method.Get);
+
+                        // drop the old response
+                        _response?.Dispose();
+
+                        // make the final call
+                        _response = await sender.SendAsync(request,  eventListener);
+                        await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.SelfHelp.Runtime.Events.Polling, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
+                        break;
+                    }
+                    var _contentType = _response.Content.Headers.ContentType?.MediaType;
+
+                    switch ( _response.StatusCode )
+                    {
+                        case global::System.Net.HttpStatusCode.OK:
+                        {
+                            await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.SelfHelp.Runtime.Events.BeforeResponseDispatch, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
+                            await onOk(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.SelfHelp.Models.Api20230901Preview.SolutionResource.FromJson(Microsoft.Azure.PowerShell.Cmdlets.SelfHelp.Runtime.Json.JsonNode.Parse(body.Result)) .ReadHeaders(_response.Headers)));
+                            break;
+                        }
+                        default:
+                        {
+                            await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.SelfHelp.Runtime.Events.BeforeResponseDispatch, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
+                            await onDefault(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.SelfHelp.Models.Api40.ErrorResponse.FromJson(Microsoft.Azure.PowerShell.Cmdlets.SelfHelp.Runtime.Json.JsonNode.Parse(body.Result)) ));
+                            break;
+                        }
+                    }
+                }
+                finally
+                {
+                    // finally statements
+                    await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.SelfHelp.Runtime.Events.Finally, request, _response);
+                    _response?.Dispose();
+                    request?.Dispose();
+                }
+            }
+        }
+
+        /// <summary>
+        /// Validation method for <see cref="SolutionUpdate" /> method. Call this like the actual call, but you will get validation
+        /// events back.
+        /// </summary>
+        /// <param name="scope">This is an extension resource provider and only resource level extension is supported at the moment.</param>
+        /// <param name="solutionResourceName">Solution resource Name.</param>
+        /// <param name="body">The required request body for updating a solution resource.</param>
+        /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.SelfHelp.Runtime.IEventListener" /> instance that will receive events.</param>
+        /// <returns>
+        /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
+        /// </returns>
+        internal async global::System.Threading.Tasks.Task SolutionUpdate_Validate(string scope, string solutionResourceName, Microsoft.Azure.PowerShell.Cmdlets.SelfHelp.Models.Api20230901Preview.ISolutionPatchRequestBody body, Microsoft.Azure.PowerShell.Cmdlets.SelfHelp.Runtime.IEventListener eventListener)
+        {
+            using( NoSynchronizationContext )
+            {
+                await eventListener.AssertNotNull(nameof(scope),scope);
+                await eventListener.AssertNotNull(nameof(solutionResourceName),solutionResourceName);
+                await eventListener.AssertMinimumLength(nameof(solutionResourceName),solutionResourceName,1);
+                await eventListener.AssertMaximumLength(nameof(solutionResourceName),solutionResourceName,100);
+                await eventListener.AssertRegEx(nameof(solutionResourceName),solutionResourceName,@"^[A-Za-z0-9-+@()_]+$");
+                await eventListener.AssertNotNull(nameof(body), body);
+                await eventListener.AssertObjectIsValid(nameof(body), body);
+            }
+        }
+
+        /// <summary>
+        /// Uses ‘stepId’ and ‘responses’ as the trigger to continue the troubleshooting steps for the respective troubleshooter resource
+        /// name. <br/>Continue API is used to provide inputs that are required for the specific troubleshooter to progress into the
+        /// next step in the process. This API is used after the Troubleshooter has been created using the Create API.
+        /// </summary>
+        /// <param name="scope">This is an extension resource provider and only resource level extension is supported at the moment.</param>
+        /// <param name="troubleshooterName">Troubleshooter resource Name.</param>
+        /// <param name="body">The required request body for going to next step in Troubleshooter resource.</param>
+        /// <param name="onNoContent">a delegate that is called when the remote service returns 204 (NoContent).</param>
+        /// <param name="onDefault">a delegate that is called when the remote service returns default (any response code not handled
+        /// elsewhere).</param>
+        /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.SelfHelp.Runtime.IEventListener" /> instance that will receive events.</param>
+        /// <param name="sender">an instance of an Microsoft.Azure.PowerShell.Cmdlets.SelfHelp.Runtime.ISendAsync pipeline to use to make the request.</param>
+        /// <returns>
+        /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
+        /// </returns>
+        public async global::System.Threading.Tasks.Task TroubleshootersContinue(string scope, string troubleshooterName, Microsoft.Azure.PowerShell.Cmdlets.SelfHelp.Models.Api20230901Preview.IContinueRequestBody body, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.SelfHelp.Models.ITroubleshootersContinueNoContentResponseHeaders>, global::System.Threading.Tasks.Task> onNoContent, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.SelfHelp.Models.Api40.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.SelfHelp.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.SelfHelp.Runtime.ISendAsync sender)
+        {
+            var apiVersion = @"2023-09-01-preview";
+            // Constant Parameters
+            using( NoSynchronizationContext )
+            {
+                // construct URL
+                var pathAndQuery = global::System.Text.RegularExpressions.Regex.Replace(
+                        "/"
+                        + (scope)
+                        + "/providers/Microsoft.Help/troubleshooters/"
+                        + global::System.Uri.EscapeDataString(troubleshooterName)
+                        + "/continue"
+                        + "?"
+                        + "api-version=" + global::System.Uri.EscapeDataString(apiVersion)
+                        ,"\\?&*$|&*$|(\\?)&+|(&)&+","$1$2");
+
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.SelfHelp.Runtime.Events.URLCreated, pathAndQuery); if( eventListener.Token.IsCancellationRequested ) { return; }
+
+                // generate request object
+                var _url = new global::System.Uri($"https://management.azure.com{pathAndQuery}");
+                var request =  new global::System.Net.Http.HttpRequestMessage(Microsoft.Azure.PowerShell.Cmdlets.SelfHelp.Runtime.Method.Post, _url);
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.SelfHelp.Runtime.Events.RequestCreated, request.RequestUri.PathAndQuery); if( eventListener.Token.IsCancellationRequested ) { return; }
+
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.SelfHelp.Runtime.Events.HeaderParametersAdded); if( eventListener.Token.IsCancellationRequested ) { return; }
+                // set body content
+                request.Content = new global::System.Net.Http.StringContent(null != body ? body.ToJson(null).ToString() : @"{}", global::System.Text.Encoding.UTF8);
+                request.Content.Headers.ContentType = global::System.Net.Http.Headers.MediaTypeHeaderValue.Parse("application/json");
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.SelfHelp.Runtime.Events.BodyContentSet); if( eventListener.Token.IsCancellationRequested ) { return; }
+                // make the call
+                await this.TroubleshootersContinue_Call(request,onNoContent,onDefault,eventListener,sender);
+            }
+        }
+
+        /// <summary>
+        /// Uses ‘stepId’ and ‘responses’ as the trigger to continue the troubleshooting steps for the respective troubleshooter resource
+        /// name. <br/>Continue API is used to provide inputs that are required for the specific troubleshooter to progress into the
+        /// next step in the process. This API is used after the Troubleshooter has been created using the Create API.
+        /// </summary>
+        /// <param name="viaIdentity"></param>
+        /// <param name="body">The required request body for going to next step in Troubleshooter resource.</param>
+        /// <param name="onNoContent">a delegate that is called when the remote service returns 204 (NoContent).</param>
+        /// <param name="onDefault">a delegate that is called when the remote service returns default (any response code not handled
+        /// elsewhere).</param>
+        /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.SelfHelp.Runtime.IEventListener" /> instance that will receive events.</param>
+        /// <param name="sender">an instance of an Microsoft.Azure.PowerShell.Cmdlets.SelfHelp.Runtime.ISendAsync pipeline to use to make the request.</param>
+        /// <returns>
+        /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
+        /// </returns>
+        public async global::System.Threading.Tasks.Task TroubleshootersContinueViaIdentity(global::System.String viaIdentity, Microsoft.Azure.PowerShell.Cmdlets.SelfHelp.Models.Api20230901Preview.IContinueRequestBody body, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.SelfHelp.Models.ITroubleshootersContinueNoContentResponseHeaders>, global::System.Threading.Tasks.Task> onNoContent, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.SelfHelp.Models.Api40.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.SelfHelp.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.SelfHelp.Runtime.ISendAsync sender)
+        {
+            var apiVersion = @"2023-09-01-preview";
+            // Constant Parameters
+            using( NoSynchronizationContext )
+            {
+                // verify that Identity format is an exact match for uri
+
+                var _match = new global::System.Text.RegularExpressions.Regex("^/(?<scope>[^/]+)/providers/Microsoft.Help/troubleshooters/(?<troubleshooterName>[^/]+)/continue$", global::System.Text.RegularExpressions.RegexOptions.IgnoreCase).Match(viaIdentity);
+                if (!_match.Success)
+                {
+                    throw new global::System.Exception("Invalid identity for URI '/{scope}/providers/Microsoft.Help/troubleshooters/{troubleshooterName}/continue'");
+                }
+
+                // replace URI parameters with values from identity
+                var scope = _match.Groups["scope"].Value;
+                var troubleshooterName = _match.Groups["troubleshooterName"].Value;
+                // construct URL
+                var pathAndQuery = global::System.Text.RegularExpressions.Regex.Replace(
+                        "/"
+                        + scope
+                        + "/providers/Microsoft.Help/troubleshooters/"
+                        + troubleshooterName
+                        + "/continue"
+                        + "?"
+                        + "api-version=" + global::System.Uri.EscapeDataString(apiVersion)
+                        ,"\\?&*$|&*$|(\\?)&+|(&)&+","$1$2");
+
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.SelfHelp.Runtime.Events.URLCreated, pathAndQuery); if( eventListener.Token.IsCancellationRequested ) { return; }
+
+                // generate request object
+                var _url = new global::System.Uri($"https://management.azure.com{pathAndQuery}");
+                var request =  new global::System.Net.Http.HttpRequestMessage(Microsoft.Azure.PowerShell.Cmdlets.SelfHelp.Runtime.Method.Post, _url);
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.SelfHelp.Runtime.Events.RequestCreated, request.RequestUri.PathAndQuery); if( eventListener.Token.IsCancellationRequested ) { return; }
+
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.SelfHelp.Runtime.Events.HeaderParametersAdded); if( eventListener.Token.IsCancellationRequested ) { return; }
+                // set body content
+                request.Content = new global::System.Net.Http.StringContent(null != body ? body.ToJson(null).ToString() : @"{}", global::System.Text.Encoding.UTF8);
+                request.Content.Headers.ContentType = global::System.Net.Http.Headers.MediaTypeHeaderValue.Parse("application/json");
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.SelfHelp.Runtime.Events.BodyContentSet); if( eventListener.Token.IsCancellationRequested ) { return; }
+                // make the call
+                await this.TroubleshootersContinue_Call(request,onNoContent,onDefault,eventListener,sender);
+            }
+        }
+
+        /// <summary>Actual wire call for <see cref="TroubleshootersContinue" /> method.</summary>
+        /// <param name="request">the prepared HttpRequestMessage to send.</param>
+        /// <param name="onNoContent">a delegate that is called when the remote service returns 204 (NoContent).</param>
+        /// <param name="onDefault">a delegate that is called when the remote service returns default (any response code not handled
+        /// elsewhere).</param>
+        /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.SelfHelp.Runtime.IEventListener" /> instance that will receive events.</param>
+        /// <param name="sender">an instance of an Microsoft.Azure.PowerShell.Cmdlets.SelfHelp.Runtime.ISendAsync pipeline to use to make the request.</param>
+        /// <returns>
+        /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
+        /// </returns>
+        internal async global::System.Threading.Tasks.Task TroubleshootersContinue_Call(global::System.Net.Http.HttpRequestMessage request, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.SelfHelp.Models.ITroubleshootersContinueNoContentResponseHeaders>, global::System.Threading.Tasks.Task> onNoContent, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.SelfHelp.Models.Api40.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.SelfHelp.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.SelfHelp.Runtime.ISendAsync sender)
+        {
+            using( NoSynchronizationContext )
+            {
+                global::System.Net.Http.HttpResponseMessage _response = null;
+                try
+                {
+                    var sendTask = sender.SendAsync(request, eventListener);
+                    await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.SelfHelp.Runtime.Events.BeforeCall, request); if( eventListener.Token.IsCancellationRequested ) { return; }
+                    _response = await sendTask;
+                    await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.SelfHelp.Runtime.Events.ResponseCreated, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
+                    var _contentType = _response.Content.Headers.ContentType?.MediaType;
+
+                    switch ( _response.StatusCode )
+                    {
+                        case global::System.Net.HttpStatusCode.NoContent:
+                        {
+                            await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.SelfHelp.Runtime.Events.BeforeResponseDispatch, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
+                            await onNoContent(_response,null /* deserializeFromResponse doesn't support '-header-' C:\Users\cloudtest\.autorest\@autorest_powershell@3.0.512\node_modules\@autorest\powershell\dist\llcsharp\schema\object.js*/);
+                            break;
+                        }
+                        default:
+                        {
+                            await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.SelfHelp.Runtime.Events.BeforeResponseDispatch, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
+                            await onDefault(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.SelfHelp.Models.Api40.ErrorResponse.FromJson(Microsoft.Azure.PowerShell.Cmdlets.SelfHelp.Runtime.Json.JsonNode.Parse(body.Result)) ));
+                            break;
+                        }
+                    }
+                }
+                finally
+                {
+                    // finally statements
+                    await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.SelfHelp.Runtime.Events.Finally, request, _response);
+                    _response?.Dispose();
+                    request?.Dispose();
+                }
+            }
+        }
+
+        /// <summary>
+        /// Validation method for <see cref="TroubleshootersContinue" /> method. Call this like the actual call, but you will get
+        /// validation events back.
+        /// </summary>
+        /// <param name="scope">This is an extension resource provider and only resource level extension is supported at the moment.</param>
+        /// <param name="troubleshooterName">Troubleshooter resource Name.</param>
+        /// <param name="body">The required request body for going to next step in Troubleshooter resource.</param>
+        /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.SelfHelp.Runtime.IEventListener" /> instance that will receive events.</param>
+        /// <returns>
+        /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
+        /// </returns>
+        internal async global::System.Threading.Tasks.Task TroubleshootersContinue_Validate(string scope, string troubleshooterName, Microsoft.Azure.PowerShell.Cmdlets.SelfHelp.Models.Api20230901Preview.IContinueRequestBody body, Microsoft.Azure.PowerShell.Cmdlets.SelfHelp.Runtime.IEventListener eventListener)
+        {
+            using( NoSynchronizationContext )
+            {
+                await eventListener.AssertNotNull(nameof(scope),scope);
+                await eventListener.AssertNotNull(nameof(troubleshooterName),troubleshooterName);
+                await eventListener.AssertMinimumLength(nameof(troubleshooterName),troubleshooterName,1);
+                await eventListener.AssertMaximumLength(nameof(troubleshooterName),troubleshooterName,100);
+                await eventListener.AssertRegEx(nameof(troubleshooterName),troubleshooterName,@"([A-Za-z0-9]+(-[A-Za-z0-9]+)+)");
+                await eventListener.AssertNotNull(nameof(body), body);
+                await eventListener.AssertObjectIsValid(nameof(body), body);
+            }
+        }
+
+        /// <summary>
+        /// Creates the specific troubleshooter action under a resource or subscription using the ‘solutionId’ and ‘properties.parameters’
+        /// as the trigger. <br/> Troubleshooters are step-by-step interactive guidance that scope the problem by collecting additional
+        /// inputs from you in each stage while troubleshooting an Azure issue. You will be guided down decision tree style workflow
+        /// and the best possible solution will be presented at the end of the workflow. <br/> Create API creates the Troubleshooter
+        /// API using ‘parameters’ and ‘solutionId’ <br/> After creating the Troubleshooter instance, the following APIs can be used:<br/>
+        /// CONTINUE API: to move to the next step in the flow <br/>GET API: to identify the next step after executing the CONTINUE
+        /// API. <br/><br/> <b>Note:</b> ‘requiredParameters’ from solutions response must be passed via ‘properties. parameters’
+        /// in the request body of Troubleshooters API.
+        /// </summary>
+        /// <param name="scope">This is an extension resource provider and only resource level extension is supported at the moment.</param>
+        /// <param name="troubleshooterName">Troubleshooter resource Name.</param>
+        /// <param name="body">The required request body for this Troubleshooter resource creation.</param>
+        /// <param name="onOk">a delegate that is called when the remote service returns 200 (OK).</param>
+        /// <param name="onCreated">a delegate that is called when the remote service returns 201 (Created).</param>
+        /// <param name="onDefault">a delegate that is called when the remote service returns default (any response code not handled
+        /// elsewhere).</param>
+        /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.SelfHelp.Runtime.IEventListener" /> instance that will receive events.</param>
+        /// <param name="sender">an instance of an Microsoft.Azure.PowerShell.Cmdlets.SelfHelp.Runtime.ISendAsync pipeline to use to make the request.</param>
+        /// <returns>
+        /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
+        /// </returns>
+        public async global::System.Threading.Tasks.Task TroubleshootersCreate(string scope, string troubleshooterName, Microsoft.Azure.PowerShell.Cmdlets.SelfHelp.Models.Api20230901Preview.ITroubleshooterResource body, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.SelfHelp.Models.Api20230901Preview.ITroubleshooterResource>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.SelfHelp.Models.Api20230901Preview.ITroubleshooterResource>, global::System.Threading.Tasks.Task> onCreated, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.SelfHelp.Models.Api40.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.SelfHelp.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.SelfHelp.Runtime.ISendAsync sender)
+        {
+            var apiVersion = @"2023-09-01-preview";
+            // Constant Parameters
+            using( NoSynchronizationContext )
+            {
+                // construct URL
+                var pathAndQuery = global::System.Text.RegularExpressions.Regex.Replace(
+                        "/"
+                        + (scope)
+                        + "/providers/Microsoft.Help/troubleshooters/"
+                        + global::System.Uri.EscapeDataString(troubleshooterName)
+                        + "?"
+                        + "api-version=" + global::System.Uri.EscapeDataString(apiVersion)
+                        ,"\\?&*$|&*$|(\\?)&+|(&)&+","$1$2");
+
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.SelfHelp.Runtime.Events.URLCreated, pathAndQuery); if( eventListener.Token.IsCancellationRequested ) { return; }
+
+                // generate request object
+                var _url = new global::System.Uri($"https://management.azure.com{pathAndQuery}");
+                var request =  new global::System.Net.Http.HttpRequestMessage(Microsoft.Azure.PowerShell.Cmdlets.SelfHelp.Runtime.Method.Put, _url);
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.SelfHelp.Runtime.Events.RequestCreated, request.RequestUri.PathAndQuery); if( eventListener.Token.IsCancellationRequested ) { return; }
+
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.SelfHelp.Runtime.Events.HeaderParametersAdded); if( eventListener.Token.IsCancellationRequested ) { return; }
+                // set body content
+                request.Content = new global::System.Net.Http.StringContent(null != body ? body.ToJson(null).ToString() : @"{}", global::System.Text.Encoding.UTF8);
+                request.Content.Headers.ContentType = global::System.Net.Http.Headers.MediaTypeHeaderValue.Parse("application/json");
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.SelfHelp.Runtime.Events.BodyContentSet); if( eventListener.Token.IsCancellationRequested ) { return; }
+                // make the call
+                await this.TroubleshootersCreate_Call(request,onOk,onCreated,onDefault,eventListener,sender);
+            }
+        }
+
+        /// <summary>
+        /// Creates the specific troubleshooter action under a resource or subscription using the ‘solutionId’ and ‘properties.parameters’
+        /// as the trigger. <br/> Troubleshooters are step-by-step interactive guidance that scope the problem by collecting additional
+        /// inputs from you in each stage while troubleshooting an Azure issue. You will be guided down decision tree style workflow
+        /// and the best possible solution will be presented at the end of the workflow. <br/> Create API creates the Troubleshooter
+        /// API using ‘parameters’ and ‘solutionId’ <br/> After creating the Troubleshooter instance, the following APIs can be used:<br/>
+        /// CONTINUE API: to move to the next step in the flow <br/>GET API: to identify the next step after executing the CONTINUE
+        /// API. <br/><br/> <b>Note:</b> ‘requiredParameters’ from solutions response must be passed via ‘properties. parameters’
+        /// in the request body of Troubleshooters API.
+        /// </summary>
+        /// <param name="viaIdentity"></param>
+        /// <param name="body">The required request body for this Troubleshooter resource creation.</param>
+        /// <param name="onOk">a delegate that is called when the remote service returns 200 (OK).</param>
+        /// <param name="onCreated">a delegate that is called when the remote service returns 201 (Created).</param>
+        /// <param name="onDefault">a delegate that is called when the remote service returns default (any response code not handled
+        /// elsewhere).</param>
+        /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.SelfHelp.Runtime.IEventListener" /> instance that will receive events.</param>
+        /// <param name="sender">an instance of an Microsoft.Azure.PowerShell.Cmdlets.SelfHelp.Runtime.ISendAsync pipeline to use to make the request.</param>
+        /// <returns>
+        /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
+        /// </returns>
+        public async global::System.Threading.Tasks.Task TroubleshootersCreateViaIdentity(global::System.String viaIdentity, Microsoft.Azure.PowerShell.Cmdlets.SelfHelp.Models.Api20230901Preview.ITroubleshooterResource body, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.SelfHelp.Models.Api20230901Preview.ITroubleshooterResource>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.SelfHelp.Models.Api20230901Preview.ITroubleshooterResource>, global::System.Threading.Tasks.Task> onCreated, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.SelfHelp.Models.Api40.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.SelfHelp.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.SelfHelp.Runtime.ISendAsync sender)
+        {
+            var apiVersion = @"2023-09-01-preview";
+            // Constant Parameters
+            using( NoSynchronizationContext )
+            {
+                // verify that Identity format is an exact match for uri
+
+                var _match = new global::System.Text.RegularExpressions.Regex("^/(?<scope>[^/]+)/providers/Microsoft.Help/troubleshooters/(?<troubleshooterName>[^/]+)$", global::System.Text.RegularExpressions.RegexOptions.IgnoreCase).Match(viaIdentity);
+                if (!_match.Success)
+                {
+                    throw new global::System.Exception("Invalid identity for URI '/{scope}/providers/Microsoft.Help/troubleshooters/{troubleshooterName}'");
+                }
+
+                // replace URI parameters with values from identity
+                var scope = _match.Groups["scope"].Value;
+                var troubleshooterName = _match.Groups["troubleshooterName"].Value;
+                // construct URL
+                var pathAndQuery = global::System.Text.RegularExpressions.Regex.Replace(
+                        "/"
+                        + scope
+                        + "/providers/Microsoft.Help/troubleshooters/"
+                        + troubleshooterName
+                        + "?"
+                        + "api-version=" + global::System.Uri.EscapeDataString(apiVersion)
+                        ,"\\?&*$|&*$|(\\?)&+|(&)&+","$1$2");
+
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.SelfHelp.Runtime.Events.URLCreated, pathAndQuery); if( eventListener.Token.IsCancellationRequested ) { return; }
+
+                // generate request object
+                var _url = new global::System.Uri($"https://management.azure.com{pathAndQuery}");
+                var request =  new global::System.Net.Http.HttpRequestMessage(Microsoft.Azure.PowerShell.Cmdlets.SelfHelp.Runtime.Method.Put, _url);
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.SelfHelp.Runtime.Events.RequestCreated, request.RequestUri.PathAndQuery); if( eventListener.Token.IsCancellationRequested ) { return; }
+
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.SelfHelp.Runtime.Events.HeaderParametersAdded); if( eventListener.Token.IsCancellationRequested ) { return; }
+                // set body content
+                request.Content = new global::System.Net.Http.StringContent(null != body ? body.ToJson(null).ToString() : @"{}", global::System.Text.Encoding.UTF8);
+                request.Content.Headers.ContentType = global::System.Net.Http.Headers.MediaTypeHeaderValue.Parse("application/json");
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.SelfHelp.Runtime.Events.BodyContentSet); if( eventListener.Token.IsCancellationRequested ) { return; }
+                // make the call
+                await this.TroubleshootersCreate_Call(request,onOk,onCreated,onDefault,eventListener,sender);
+            }
+        }
+
+        /// <summary>Actual wire call for <see cref="TroubleshootersCreate" /> method.</summary>
+        /// <param name="request">the prepared HttpRequestMessage to send.</param>
+        /// <param name="onOk">a delegate that is called when the remote service returns 200 (OK).</param>
+        /// <param name="onCreated">a delegate that is called when the remote service returns 201 (Created).</param>
+        /// <param name="onDefault">a delegate that is called when the remote service returns default (any response code not handled
+        /// elsewhere).</param>
+        /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.SelfHelp.Runtime.IEventListener" /> instance that will receive events.</param>
+        /// <param name="sender">an instance of an Microsoft.Azure.PowerShell.Cmdlets.SelfHelp.Runtime.ISendAsync pipeline to use to make the request.</param>
+        /// <returns>
+        /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
+        /// </returns>
+        internal async global::System.Threading.Tasks.Task TroubleshootersCreate_Call(global::System.Net.Http.HttpRequestMessage request, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.SelfHelp.Models.Api20230901Preview.ITroubleshooterResource>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.SelfHelp.Models.Api20230901Preview.ITroubleshooterResource>, global::System.Threading.Tasks.Task> onCreated, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.SelfHelp.Models.Api40.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.SelfHelp.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.SelfHelp.Runtime.ISendAsync sender)
+        {
+            using( NoSynchronizationContext )
+            {
+                global::System.Net.Http.HttpResponseMessage _response = null;
+                try
+                {
+                    var sendTask = sender.SendAsync(request, eventListener);
+                    await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.SelfHelp.Runtime.Events.BeforeCall, request); if( eventListener.Token.IsCancellationRequested ) { return; }
+                    _response = await sendTask;
+                    await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.SelfHelp.Runtime.Events.ResponseCreated, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
+                    var _contentType = _response.Content.Headers.ContentType?.MediaType;
+
+                    switch ( _response.StatusCode )
+                    {
+                        case global::System.Net.HttpStatusCode.OK:
+                        {
+                            await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.SelfHelp.Runtime.Events.BeforeResponseDispatch, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
+                            await onOk(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.SelfHelp.Models.Api20230901Preview.TroubleshooterResource.FromJson(Microsoft.Azure.PowerShell.Cmdlets.SelfHelp.Runtime.Json.JsonNode.Parse(body.Result)) ));
+                            break;
+                        }
+                        case global::System.Net.HttpStatusCode.Created:
+                        {
+                            await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.SelfHelp.Runtime.Events.BeforeResponseDispatch, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
+                            await onCreated(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.SelfHelp.Models.Api20230901Preview.TroubleshooterResource.FromJson(Microsoft.Azure.PowerShell.Cmdlets.SelfHelp.Runtime.Json.JsonNode.Parse(body.Result)) ));
+                            break;
+                        }
+                        default:
+                        {
+                            await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.SelfHelp.Runtime.Events.BeforeResponseDispatch, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
+                            await onDefault(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.SelfHelp.Models.Api40.ErrorResponse.FromJson(Microsoft.Azure.PowerShell.Cmdlets.SelfHelp.Runtime.Json.JsonNode.Parse(body.Result)) ));
+                            break;
+                        }
+                    }
+                }
+                finally
+                {
+                    // finally statements
+                    await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.SelfHelp.Runtime.Events.Finally, request, _response);
+                    _response?.Dispose();
+                    request?.Dispose();
+                }
+            }
+        }
+
+        /// <summary>
+        /// Validation method for <see cref="TroubleshootersCreate" /> method. Call this like the actual call, but you will get validation
+        /// events back.
+        /// </summary>
+        /// <param name="scope">This is an extension resource provider and only resource level extension is supported at the moment.</param>
+        /// <param name="troubleshooterName">Troubleshooter resource Name.</param>
+        /// <param name="body">The required request body for this Troubleshooter resource creation.</param>
+        /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.SelfHelp.Runtime.IEventListener" /> instance that will receive events.</param>
+        /// <returns>
+        /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
+        /// </returns>
+        internal async global::System.Threading.Tasks.Task TroubleshootersCreate_Validate(string scope, string troubleshooterName, Microsoft.Azure.PowerShell.Cmdlets.SelfHelp.Models.Api20230901Preview.ITroubleshooterResource body, Microsoft.Azure.PowerShell.Cmdlets.SelfHelp.Runtime.IEventListener eventListener)
+        {
+            using( NoSynchronizationContext )
+            {
+                await eventListener.AssertNotNull(nameof(scope),scope);
+                await eventListener.AssertNotNull(nameof(troubleshooterName),troubleshooterName);
+                await eventListener.AssertMinimumLength(nameof(troubleshooterName),troubleshooterName,1);
+                await eventListener.AssertMaximumLength(nameof(troubleshooterName),troubleshooterName,100);
+                await eventListener.AssertRegEx(nameof(troubleshooterName),troubleshooterName,@"([A-Za-z0-9]+(-[A-Za-z0-9]+)+)");
+                await eventListener.AssertNotNull(nameof(body), body);
+                await eventListener.AssertObjectIsValid(nameof(body), body);
+            }
+        }
+
+        /// <summary>Ends the troubleshooter action</summary>
+        /// <param name="scope">This is an extension resource provider and only resource level extension is supported at the moment.</param>
+        /// <param name="troubleshooterName">Troubleshooter resource Name.</param>
+        /// <param name="onNoContent">a delegate that is called when the remote service returns 204 (NoContent).</param>
+        /// <param name="onDefault">a delegate that is called when the remote service returns default (any response code not handled
+        /// elsewhere).</param>
+        /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.SelfHelp.Runtime.IEventListener" /> instance that will receive events.</param>
+        /// <param name="sender">an instance of an Microsoft.Azure.PowerShell.Cmdlets.SelfHelp.Runtime.ISendAsync pipeline to use to make the request.</param>
+        /// <returns>
+        /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
+        /// </returns>
+        public async global::System.Threading.Tasks.Task TroubleshootersEnd(string scope, string troubleshooterName, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.SelfHelp.Models.ITroubleshootersEndNoContentResponseHeaders>, global::System.Threading.Tasks.Task> onNoContent, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.SelfHelp.Models.Api40.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.SelfHelp.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.SelfHelp.Runtime.ISendAsync sender)
+        {
+            var apiVersion = @"2023-09-01-preview";
+            // Constant Parameters
+            using( NoSynchronizationContext )
+            {
+                // construct URL
+                var pathAndQuery = global::System.Text.RegularExpressions.Regex.Replace(
+                        "/"
+                        + (scope)
+                        + "/providers/Microsoft.Help/troubleshooters/"
+                        + global::System.Uri.EscapeDataString(troubleshooterName)
+                        + "/end"
+                        + "?"
+                        + "api-version=" + global::System.Uri.EscapeDataString(apiVersion)
+                        ,"\\?&*$|&*$|(\\?)&+|(&)&+","$1$2");
+
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.SelfHelp.Runtime.Events.URLCreated, pathAndQuery); if( eventListener.Token.IsCancellationRequested ) { return; }
+
+                // generate request object
+                var _url = new global::System.Uri($"https://management.azure.com{pathAndQuery}");
+                var request =  new global::System.Net.Http.HttpRequestMessage(Microsoft.Azure.PowerShell.Cmdlets.SelfHelp.Runtime.Method.Post, _url);
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.SelfHelp.Runtime.Events.RequestCreated, request.RequestUri.PathAndQuery); if( eventListener.Token.IsCancellationRequested ) { return; }
+
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.SelfHelp.Runtime.Events.HeaderParametersAdded); if( eventListener.Token.IsCancellationRequested ) { return; }
+                // make the call
+                await this.TroubleshootersEnd_Call(request,onNoContent,onDefault,eventListener,sender);
+            }
+        }
+
+        /// <summary>Ends the troubleshooter action</summary>
+        /// <param name="viaIdentity"></param>
+        /// <param name="onNoContent">a delegate that is called when the remote service returns 204 (NoContent).</param>
+        /// <param name="onDefault">a delegate that is called when the remote service returns default (any response code not handled
+        /// elsewhere).</param>
+        /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.SelfHelp.Runtime.IEventListener" /> instance that will receive events.</param>
+        /// <param name="sender">an instance of an Microsoft.Azure.PowerShell.Cmdlets.SelfHelp.Runtime.ISendAsync pipeline to use to make the request.</param>
+        /// <returns>
+        /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
+        /// </returns>
+        public async global::System.Threading.Tasks.Task TroubleshootersEndViaIdentity(global::System.String viaIdentity, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.SelfHelp.Models.ITroubleshootersEndNoContentResponseHeaders>, global::System.Threading.Tasks.Task> onNoContent, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.SelfHelp.Models.Api40.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.SelfHelp.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.SelfHelp.Runtime.ISendAsync sender)
+        {
+            var apiVersion = @"2023-09-01-preview";
+            // Constant Parameters
+            using( NoSynchronizationContext )
+            {
+                // verify that Identity format is an exact match for uri
+
+                var _match = new global::System.Text.RegularExpressions.Regex("^/(?<scope>[^/]+)/providers/Microsoft.Help/troubleshooters/(?<troubleshooterName>[^/]+)/end$", global::System.Text.RegularExpressions.RegexOptions.IgnoreCase).Match(viaIdentity);
+                if (!_match.Success)
+                {
+                    throw new global::System.Exception("Invalid identity for URI '/{scope}/providers/Microsoft.Help/troubleshooters/{troubleshooterName}/end'");
+                }
+
+                // replace URI parameters with values from identity
+                var scope = _match.Groups["scope"].Value;
+                var troubleshooterName = _match.Groups["troubleshooterName"].Value;
+                // construct URL
+                var pathAndQuery = global::System.Text.RegularExpressions.Regex.Replace(
+                        "/"
+                        + scope
+                        + "/providers/Microsoft.Help/troubleshooters/"
+                        + troubleshooterName
+                        + "/end"
+                        + "?"
+                        + "api-version=" + global::System.Uri.EscapeDataString(apiVersion)
+                        ,"\\?&*$|&*$|(\\?)&+|(&)&+","$1$2");
+
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.SelfHelp.Runtime.Events.URLCreated, pathAndQuery); if( eventListener.Token.IsCancellationRequested ) { return; }
+
+                // generate request object
+                var _url = new global::System.Uri($"https://management.azure.com{pathAndQuery}");
+                var request =  new global::System.Net.Http.HttpRequestMessage(Microsoft.Azure.PowerShell.Cmdlets.SelfHelp.Runtime.Method.Post, _url);
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.SelfHelp.Runtime.Events.RequestCreated, request.RequestUri.PathAndQuery); if( eventListener.Token.IsCancellationRequested ) { return; }
+
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.SelfHelp.Runtime.Events.HeaderParametersAdded); if( eventListener.Token.IsCancellationRequested ) { return; }
+                // make the call
+                await this.TroubleshootersEnd_Call(request,onNoContent,onDefault,eventListener,sender);
+            }
+        }
+
+        /// <summary>Actual wire call for <see cref="TroubleshootersEnd" /> method.</summary>
+        /// <param name="request">the prepared HttpRequestMessage to send.</param>
+        /// <param name="onNoContent">a delegate that is called when the remote service returns 204 (NoContent).</param>
+        /// <param name="onDefault">a delegate that is called when the remote service returns default (any response code not handled
+        /// elsewhere).</param>
+        /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.SelfHelp.Runtime.IEventListener" /> instance that will receive events.</param>
+        /// <param name="sender">an instance of an Microsoft.Azure.PowerShell.Cmdlets.SelfHelp.Runtime.ISendAsync pipeline to use to make the request.</param>
+        /// <returns>
+        /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
+        /// </returns>
+        internal async global::System.Threading.Tasks.Task TroubleshootersEnd_Call(global::System.Net.Http.HttpRequestMessage request, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.SelfHelp.Models.ITroubleshootersEndNoContentResponseHeaders>, global::System.Threading.Tasks.Task> onNoContent, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.SelfHelp.Models.Api40.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.SelfHelp.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.SelfHelp.Runtime.ISendAsync sender)
+        {
+            using( NoSynchronizationContext )
+            {
+                global::System.Net.Http.HttpResponseMessage _response = null;
+                try
+                {
+                    var sendTask = sender.SendAsync(request, eventListener);
+                    await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.SelfHelp.Runtime.Events.BeforeCall, request); if( eventListener.Token.IsCancellationRequested ) { return; }
+                    _response = await sendTask;
+                    await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.SelfHelp.Runtime.Events.ResponseCreated, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
+                    var _contentType = _response.Content.Headers.ContentType?.MediaType;
+
+                    switch ( _response.StatusCode )
+                    {
+                        case global::System.Net.HttpStatusCode.NoContent:
+                        {
+                            await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.SelfHelp.Runtime.Events.BeforeResponseDispatch, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
+                            await onNoContent(_response,null /* deserializeFromResponse doesn't support '-header-' C:\Users\cloudtest\.autorest\@autorest_powershell@3.0.512\node_modules\@autorest\powershell\dist\llcsharp\schema\object.js*/);
+                            break;
+                        }
+                        default:
+                        {
+                            await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.SelfHelp.Runtime.Events.BeforeResponseDispatch, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
+                            await onDefault(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.SelfHelp.Models.Api40.ErrorResponse.FromJson(Microsoft.Azure.PowerShell.Cmdlets.SelfHelp.Runtime.Json.JsonNode.Parse(body.Result)) ));
+                            break;
+                        }
+                    }
+                }
+                finally
+                {
+                    // finally statements
+                    await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.SelfHelp.Runtime.Events.Finally, request, _response);
+                    _response?.Dispose();
+                    request?.Dispose();
+                }
+            }
+        }
+
+        /// <summary>
+        /// Validation method for <see cref="TroubleshootersEnd" /> method. Call this like the actual call, but you will get validation
+        /// events back.
+        /// </summary>
+        /// <param name="scope">This is an extension resource provider and only resource level extension is supported at the moment.</param>
+        /// <param name="troubleshooterName">Troubleshooter resource Name.</param>
+        /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.SelfHelp.Runtime.IEventListener" /> instance that will receive events.</param>
+        /// <returns>
+        /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
+        /// </returns>
+        internal async global::System.Threading.Tasks.Task TroubleshootersEnd_Validate(string scope, string troubleshooterName, Microsoft.Azure.PowerShell.Cmdlets.SelfHelp.Runtime.IEventListener eventListener)
+        {
+            using( NoSynchronizationContext )
+            {
+                await eventListener.AssertNotNull(nameof(scope),scope);
+                await eventListener.AssertNotNull(nameof(troubleshooterName),troubleshooterName);
+                await eventListener.AssertMinimumLength(nameof(troubleshooterName),troubleshooterName,1);
+                await eventListener.AssertMaximumLength(nameof(troubleshooterName),troubleshooterName,100);
+                await eventListener.AssertRegEx(nameof(troubleshooterName),troubleshooterName,@"([A-Za-z0-9]+(-[A-Za-z0-9]+)+)");
+            }
+        }
+
+        /// <summary>
+        /// Gets troubleshooter instance result which includes the step status/result of the troubleshooter resource name that is
+        /// being executed.<br/> Get API is used to retrieve the result of a Troubleshooter instance, which includes the status and
+        /// result of each step in the Troubleshooter workflow. This API requires the Troubleshooter resource name that was created
+        /// using the Create API.
+        /// </summary>
+        /// <param name="scope">This is an extension resource provider and only resource level extension is supported at the moment.</param>
+        /// <param name="troubleshooterName">Troubleshooter resource Name.</param>
+        /// <param name="onOk">a delegate that is called when the remote service returns 200 (OK).</param>
+        /// <param name="onDefault">a delegate that is called when the remote service returns default (any response code not handled
+        /// elsewhere).</param>
+        /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.SelfHelp.Runtime.IEventListener" /> instance that will receive events.</param>
+        /// <param name="sender">an instance of an Microsoft.Azure.PowerShell.Cmdlets.SelfHelp.Runtime.ISendAsync pipeline to use to make the request.</param>
+        /// <returns>
+        /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
+        /// </returns>
+        public async global::System.Threading.Tasks.Task TroubleshootersGet(string scope, string troubleshooterName, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.SelfHelp.Models.Api20230901Preview.ITroubleshooterResource>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.SelfHelp.Models.Api40.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.SelfHelp.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.SelfHelp.Runtime.ISendAsync sender)
+        {
+            var apiVersion = @"2023-09-01-preview";
+            // Constant Parameters
+            using( NoSynchronizationContext )
+            {
+                // construct URL
+                var pathAndQuery = global::System.Text.RegularExpressions.Regex.Replace(
+                        "/"
+                        + (scope)
+                        + "/providers/Microsoft.Help/troubleshooters/"
+                        + global::System.Uri.EscapeDataString(troubleshooterName)
+                        + "?"
+                        + "api-version=" + global::System.Uri.EscapeDataString(apiVersion)
+                        ,"\\?&*$|&*$|(\\?)&+|(&)&+","$1$2");
+
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.SelfHelp.Runtime.Events.URLCreated, pathAndQuery); if( eventListener.Token.IsCancellationRequested ) { return; }
+
+                // generate request object
+                var _url = new global::System.Uri($"https://management.azure.com{pathAndQuery}");
+                var request =  new global::System.Net.Http.HttpRequestMessage(Microsoft.Azure.PowerShell.Cmdlets.SelfHelp.Runtime.Method.Get, _url);
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.SelfHelp.Runtime.Events.RequestCreated, request.RequestUri.PathAndQuery); if( eventListener.Token.IsCancellationRequested ) { return; }
+
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.SelfHelp.Runtime.Events.HeaderParametersAdded); if( eventListener.Token.IsCancellationRequested ) { return; }
+                // make the call
+                await this.TroubleshootersGet_Call(request,onOk,onDefault,eventListener,sender);
+            }
+        }
+
+        /// <summary>
+        /// Gets troubleshooter instance result which includes the step status/result of the troubleshooter resource name that is
+        /// being executed.<br/> Get API is used to retrieve the result of a Troubleshooter instance, which includes the status and
+        /// result of each step in the Troubleshooter workflow. This API requires the Troubleshooter resource name that was created
+        /// using the Create API.
+        /// </summary>
+        /// <param name="viaIdentity"></param>
+        /// <param name="onOk">a delegate that is called when the remote service returns 200 (OK).</param>
+        /// <param name="onDefault">a delegate that is called when the remote service returns default (any response code not handled
+        /// elsewhere).</param>
+        /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.SelfHelp.Runtime.IEventListener" /> instance that will receive events.</param>
+        /// <param name="sender">an instance of an Microsoft.Azure.PowerShell.Cmdlets.SelfHelp.Runtime.ISendAsync pipeline to use to make the request.</param>
+        /// <returns>
+        /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
+        /// </returns>
+        public async global::System.Threading.Tasks.Task TroubleshootersGetViaIdentity(global::System.String viaIdentity, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.SelfHelp.Models.Api20230901Preview.ITroubleshooterResource>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.SelfHelp.Models.Api40.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.SelfHelp.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.SelfHelp.Runtime.ISendAsync sender)
+        {
+            var apiVersion = @"2023-09-01-preview";
+            // Constant Parameters
+            using( NoSynchronizationContext )
+            {
+                // verify that Identity format is an exact match for uri
+
+                var _match = new global::System.Text.RegularExpressions.Regex("^/(?<scope>[^/]+)/providers/Microsoft.Help/troubleshooters/(?<troubleshooterName>[^/]+)$", global::System.Text.RegularExpressions.RegexOptions.IgnoreCase).Match(viaIdentity);
+                if (!_match.Success)
+                {
+                    throw new global::System.Exception("Invalid identity for URI '/{scope}/providers/Microsoft.Help/troubleshooters/{troubleshooterName}'");
+                }
+
+                // replace URI parameters with values from identity
+                var scope = _match.Groups["scope"].Value;
+                var troubleshooterName = _match.Groups["troubleshooterName"].Value;
+                // construct URL
+                var pathAndQuery = global::System.Text.RegularExpressions.Regex.Replace(
+                        "/"
+                        + scope
+                        + "/providers/Microsoft.Help/troubleshooters/"
+                        + troubleshooterName
+                        + "?"
+                        + "api-version=" + global::System.Uri.EscapeDataString(apiVersion)
+                        ,"\\?&*$|&*$|(\\?)&+|(&)&+","$1$2");
+
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.SelfHelp.Runtime.Events.URLCreated, pathAndQuery); if( eventListener.Token.IsCancellationRequested ) { return; }
+
+                // generate request object
+                var _url = new global::System.Uri($"https://management.azure.com{pathAndQuery}");
+                var request =  new global::System.Net.Http.HttpRequestMessage(Microsoft.Azure.PowerShell.Cmdlets.SelfHelp.Runtime.Method.Get, _url);
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.SelfHelp.Runtime.Events.RequestCreated, request.RequestUri.PathAndQuery); if( eventListener.Token.IsCancellationRequested ) { return; }
+
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.SelfHelp.Runtime.Events.HeaderParametersAdded); if( eventListener.Token.IsCancellationRequested ) { return; }
+                // make the call
+                await this.TroubleshootersGet_Call(request,onOk,onDefault,eventListener,sender);
+            }
+        }
+
+        /// <summary>Actual wire call for <see cref="TroubleshootersGet" /> method.</summary>
+        /// <param name="request">the prepared HttpRequestMessage to send.</param>
+        /// <param name="onOk">a delegate that is called when the remote service returns 200 (OK).</param>
+        /// <param name="onDefault">a delegate that is called when the remote service returns default (any response code not handled
+        /// elsewhere).</param>
+        /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.SelfHelp.Runtime.IEventListener" /> instance that will receive events.</param>
+        /// <param name="sender">an instance of an Microsoft.Azure.PowerShell.Cmdlets.SelfHelp.Runtime.ISendAsync pipeline to use to make the request.</param>
+        /// <returns>
+        /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
+        /// </returns>
+        internal async global::System.Threading.Tasks.Task TroubleshootersGet_Call(global::System.Net.Http.HttpRequestMessage request, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.SelfHelp.Models.Api20230901Preview.ITroubleshooterResource>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.SelfHelp.Models.Api40.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.SelfHelp.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.SelfHelp.Runtime.ISendAsync sender)
+        {
+            using( NoSynchronizationContext )
+            {
+                global::System.Net.Http.HttpResponseMessage _response = null;
+                try
+                {
+                    var sendTask = sender.SendAsync(request, eventListener);
+                    await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.SelfHelp.Runtime.Events.BeforeCall, request); if( eventListener.Token.IsCancellationRequested ) { return; }
+                    _response = await sendTask;
+                    await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.SelfHelp.Runtime.Events.ResponseCreated, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
+                    var _contentType = _response.Content.Headers.ContentType?.MediaType;
+
+                    switch ( _response.StatusCode )
+                    {
+                        case global::System.Net.HttpStatusCode.OK:
+                        {
+                            await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.SelfHelp.Runtime.Events.BeforeResponseDispatch, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
+                            await onOk(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.SelfHelp.Models.Api20230901Preview.TroubleshooterResource.FromJson(Microsoft.Azure.PowerShell.Cmdlets.SelfHelp.Runtime.Json.JsonNode.Parse(body.Result)) ));
+                            break;
+                        }
+                        default:
+                        {
+                            await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.SelfHelp.Runtime.Events.BeforeResponseDispatch, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
+                            await onDefault(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.SelfHelp.Models.Api40.ErrorResponse.FromJson(Microsoft.Azure.PowerShell.Cmdlets.SelfHelp.Runtime.Json.JsonNode.Parse(body.Result)) ));
+                            break;
+                        }
+                    }
+                }
+                finally
+                {
+                    // finally statements
+                    await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.SelfHelp.Runtime.Events.Finally, request, _response);
+                    _response?.Dispose();
+                    request?.Dispose();
+                }
+            }
+        }
+
+        /// <summary>
+        /// Validation method for <see cref="TroubleshootersGet" /> method. Call this like the actual call, but you will get validation
+        /// events back.
+        /// </summary>
+        /// <param name="scope">This is an extension resource provider and only resource level extension is supported at the moment.</param>
+        /// <param name="troubleshooterName">Troubleshooter resource Name.</param>
+        /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.SelfHelp.Runtime.IEventListener" /> instance that will receive events.</param>
+        /// <returns>
+        /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
+        /// </returns>
+        internal async global::System.Threading.Tasks.Task TroubleshootersGet_Validate(string scope, string troubleshooterName, Microsoft.Azure.PowerShell.Cmdlets.SelfHelp.Runtime.IEventListener eventListener)
+        {
+            using( NoSynchronizationContext )
+            {
+                await eventListener.AssertNotNull(nameof(scope),scope);
+                await eventListener.AssertNotNull(nameof(troubleshooterName),troubleshooterName);
+                await eventListener.AssertMinimumLength(nameof(troubleshooterName),troubleshooterName,1);
+                await eventListener.AssertMaximumLength(nameof(troubleshooterName),troubleshooterName,100);
+                await eventListener.AssertRegEx(nameof(troubleshooterName),troubleshooterName,@"([A-Za-z0-9]+(-[A-Za-z0-9]+)+)");
+            }
+        }
+
+        /// <summary>
+        /// Restarts the troubleshooter API using applicable troubleshooter resource name as the input.<br/> It returns new resource
+        /// name which should be used in subsequent request. The old resource name is obsolete after this API is invoked.
+        /// </summary>
+        /// <param name="scope">This is an extension resource provider and only resource level extension is supported at the moment.</param>
+        /// <param name="troubleshooterName">Troubleshooter resource Name.</param>
+        /// <param name="onOk">a delegate that is called when the remote service returns 200 (OK).</param>
+        /// <param name="onDefault">a delegate that is called when the remote service returns default (any response code not handled
+        /// elsewhere).</param>
+        /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.SelfHelp.Runtime.IEventListener" /> instance that will receive events.</param>
+        /// <param name="sender">an instance of an Microsoft.Azure.PowerShell.Cmdlets.SelfHelp.Runtime.ISendAsync pipeline to use to make the request.</param>
+        /// <returns>
+        /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
+        /// </returns>
+        public async global::System.Threading.Tasks.Task TroubleshootersRestart(string scope, string troubleshooterName, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.SelfHelp.Models.Api20230901Preview.IRestartTroubleshooterResponse>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.SelfHelp.Models.Api40.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.SelfHelp.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.SelfHelp.Runtime.ISendAsync sender)
+        {
+            var apiVersion = @"2023-09-01-preview";
+            // Constant Parameters
+            using( NoSynchronizationContext )
+            {
+                // construct URL
+                var pathAndQuery = global::System.Text.RegularExpressions.Regex.Replace(
+                        "/"
+                        + (scope)
+                        + "/providers/Microsoft.Help/troubleshooters/"
+                        + global::System.Uri.EscapeDataString(troubleshooterName)
+                        + "/restart"
+                        + "?"
+                        + "api-version=" + global::System.Uri.EscapeDataString(apiVersion)
+                        ,"\\?&*$|&*$|(\\?)&+|(&)&+","$1$2");
+
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.SelfHelp.Runtime.Events.URLCreated, pathAndQuery); if( eventListener.Token.IsCancellationRequested ) { return; }
+
+                // generate request object
+                var _url = new global::System.Uri($"https://management.azure.com{pathAndQuery}");
+                var request =  new global::System.Net.Http.HttpRequestMessage(Microsoft.Azure.PowerShell.Cmdlets.SelfHelp.Runtime.Method.Post, _url);
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.SelfHelp.Runtime.Events.RequestCreated, request.RequestUri.PathAndQuery); if( eventListener.Token.IsCancellationRequested ) { return; }
+
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.SelfHelp.Runtime.Events.HeaderParametersAdded); if( eventListener.Token.IsCancellationRequested ) { return; }
+                // make the call
+                await this.TroubleshootersRestart_Call(request,onOk,onDefault,eventListener,sender);
+            }
+        }
+
+        /// <summary>
+        /// Restarts the troubleshooter API using applicable troubleshooter resource name as the input.<br/> It returns new resource
+        /// name which should be used in subsequent request. The old resource name is obsolete after this API is invoked.
+        /// </summary>
+        /// <param name="viaIdentity"></param>
+        /// <param name="onOk">a delegate that is called when the remote service returns 200 (OK).</param>
+        /// <param name="onDefault">a delegate that is called when the remote service returns default (any response code not handled
+        /// elsewhere).</param>
+        /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.SelfHelp.Runtime.IEventListener" /> instance that will receive events.</param>
+        /// <param name="sender">an instance of an Microsoft.Azure.PowerShell.Cmdlets.SelfHelp.Runtime.ISendAsync pipeline to use to make the request.</param>
+        /// <returns>
+        /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
+        /// </returns>
+        public async global::System.Threading.Tasks.Task TroubleshootersRestartViaIdentity(global::System.String viaIdentity, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.SelfHelp.Models.Api20230901Preview.IRestartTroubleshooterResponse>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.SelfHelp.Models.Api40.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.SelfHelp.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.SelfHelp.Runtime.ISendAsync sender)
+        {
+            var apiVersion = @"2023-09-01-preview";
+            // Constant Parameters
+            using( NoSynchronizationContext )
+            {
+                // verify that Identity format is an exact match for uri
+
+                var _match = new global::System.Text.RegularExpressions.Regex("^/(?<scope>[^/]+)/providers/Microsoft.Help/troubleshooters/(?<troubleshooterName>[^/]+)/restart$", global::System.Text.RegularExpressions.RegexOptions.IgnoreCase).Match(viaIdentity);
+                if (!_match.Success)
+                {
+                    throw new global::System.Exception("Invalid identity for URI '/{scope}/providers/Microsoft.Help/troubleshooters/{troubleshooterName}/restart'");
+                }
+
+                // replace URI parameters with values from identity
+                var scope = _match.Groups["scope"].Value;
+                var troubleshooterName = _match.Groups["troubleshooterName"].Value;
+                // construct URL
+                var pathAndQuery = global::System.Text.RegularExpressions.Regex.Replace(
+                        "/"
+                        + scope
+                        + "/providers/Microsoft.Help/troubleshooters/"
+                        + troubleshooterName
+                        + "/restart"
+                        + "?"
+                        + "api-version=" + global::System.Uri.EscapeDataString(apiVersion)
+                        ,"\\?&*$|&*$|(\\?)&+|(&)&+","$1$2");
+
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.SelfHelp.Runtime.Events.URLCreated, pathAndQuery); if( eventListener.Token.IsCancellationRequested ) { return; }
+
+                // generate request object
+                var _url = new global::System.Uri($"https://management.azure.com{pathAndQuery}");
+                var request =  new global::System.Net.Http.HttpRequestMessage(Microsoft.Azure.PowerShell.Cmdlets.SelfHelp.Runtime.Method.Post, _url);
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.SelfHelp.Runtime.Events.RequestCreated, request.RequestUri.PathAndQuery); if( eventListener.Token.IsCancellationRequested ) { return; }
+
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.SelfHelp.Runtime.Events.HeaderParametersAdded); if( eventListener.Token.IsCancellationRequested ) { return; }
+                // make the call
+                await this.TroubleshootersRestart_Call(request,onOk,onDefault,eventListener,sender);
+            }
+        }
+
+        /// <summary>Actual wire call for <see cref="TroubleshootersRestart" /> method.</summary>
+        /// <param name="request">the prepared HttpRequestMessage to send.</param>
+        /// <param name="onOk">a delegate that is called when the remote service returns 200 (OK).</param>
+        /// <param name="onDefault">a delegate that is called when the remote service returns default (any response code not handled
+        /// elsewhere).</param>
+        /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.SelfHelp.Runtime.IEventListener" /> instance that will receive events.</param>
+        /// <param name="sender">an instance of an Microsoft.Azure.PowerShell.Cmdlets.SelfHelp.Runtime.ISendAsync pipeline to use to make the request.</param>
+        /// <returns>
+        /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
+        /// </returns>
+        internal async global::System.Threading.Tasks.Task TroubleshootersRestart_Call(global::System.Net.Http.HttpRequestMessage request, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.SelfHelp.Models.Api20230901Preview.IRestartTroubleshooterResponse>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.SelfHelp.Models.Api40.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.SelfHelp.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.SelfHelp.Runtime.ISendAsync sender)
+        {
+            using( NoSynchronizationContext )
+            {
+                global::System.Net.Http.HttpResponseMessage _response = null;
+                try
+                {
+                    var sendTask = sender.SendAsync(request, eventListener);
+                    await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.SelfHelp.Runtime.Events.BeforeCall, request); if( eventListener.Token.IsCancellationRequested ) { return; }
+                    _response = await sendTask;
+                    await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.SelfHelp.Runtime.Events.ResponseCreated, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
+                    var _contentType = _response.Content.Headers.ContentType?.MediaType;
+
+                    switch ( _response.StatusCode )
+                    {
+                        case global::System.Net.HttpStatusCode.OK:
+                        {
+                            await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.SelfHelp.Runtime.Events.BeforeResponseDispatch, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
+                            await onOk(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.SelfHelp.Models.Api20230901Preview.RestartTroubleshooterResponse.FromJson(Microsoft.Azure.PowerShell.Cmdlets.SelfHelp.Runtime.Json.JsonNode.Parse(body.Result)) .ReadHeaders(_response.Headers)));
+                            break;
+                        }
+                        default:
+                        {
+                            await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.SelfHelp.Runtime.Events.BeforeResponseDispatch, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
+                            await onDefault(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.SelfHelp.Models.Api40.ErrorResponse.FromJson(Microsoft.Azure.PowerShell.Cmdlets.SelfHelp.Runtime.Json.JsonNode.Parse(body.Result)) ));
+                            break;
+                        }
+                    }
+                }
+                finally
+                {
+                    // finally statements
+                    await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.SelfHelp.Runtime.Events.Finally, request, _response);
+                    _response?.Dispose();
+                    request?.Dispose();
+                }
+            }
+        }
+
+        /// <summary>
+        /// Validation method for <see cref="TroubleshootersRestart" /> method. Call this like the actual call, but you will get validation
+        /// events back.
+        /// </summary>
+        /// <param name="scope">This is an extension resource provider and only resource level extension is supported at the moment.</param>
+        /// <param name="troubleshooterName">Troubleshooter resource Name.</param>
+        /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.SelfHelp.Runtime.IEventListener" /> instance that will receive events.</param>
+        /// <returns>
+        /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
+        /// </returns>
+        internal async global::System.Threading.Tasks.Task TroubleshootersRestart_Validate(string scope, string troubleshooterName, Microsoft.Azure.PowerShell.Cmdlets.SelfHelp.Runtime.IEventListener eventListener)
+        {
+            using( NoSynchronizationContext )
+            {
+                await eventListener.AssertNotNull(nameof(scope),scope);
+                await eventListener.AssertNotNull(nameof(troubleshooterName),troubleshooterName);
+                await eventListener.AssertMinimumLength(nameof(troubleshooterName),troubleshooterName,1);
+                await eventListener.AssertMaximumLength(nameof(troubleshooterName),troubleshooterName,100);
+                await eventListener.AssertRegEx(nameof(troubleshooterName),troubleshooterName,@"([A-Za-z0-9]+(-[A-Za-z0-9]+)+)");
             }
         }
     }

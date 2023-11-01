@@ -189,12 +189,30 @@ namespace Microsoft.Azure.Commands.Management.Storage
             HelpMessage = "Includes deleted blob in blob inventory. When include delete blob, for ContainerSchemaFields, must include 'Deleted, Version, DeletedTime and RemainingRetentionDays'. For BlobSchemaFields, on HNS enabled storage accounts, must include 'DeletionId, Deleted, DeletedTime and RemainingRetentionDays', and on Hns disabled accounts must include 'Deleted and RemainingRetentionDays', else they must be excluded.")]
         public SwitchParameter IncludeDeleted { get; set; }
 
+
+        [Parameter(Mandatory = false,
+            ParameterSetName = BlobRuleParameterSet,
+            HelpMessage = "Filter the objects which has creation time in last N days. The valid value is between 1 to 36500. Inventory schema 'Creation-Time' is mandatory with this filter.")]
+        public int CreationTimeLastNDay
+        {
+            get
+            {
+                return creationTimeLastNDay is null ? 0 : creationTimeLastNDay.Value;
+            }
+            set
+            {
+                creationTimeLastNDay = value;
+            }
+        }
+
+        private int? creationTimeLastNDay;
+
         public override void ExecuteCmdlet()
         {
             base.ExecuteCmdlet();
 
             PSBlobInventoryPolicyDefinition definition = new PSBlobInventoryPolicyDefinition();
-            if (this.BlobType != null || this.PrefixMatch != null || this.ExcludePrefix != null || this.IncludeSnapshot.IsPresent || this.IncludeBlobVersion.IsPresent || this.IncludeDeleted.IsPresent)
+            if (this.BlobType != null || this.PrefixMatch != null || this.ExcludePrefix != null || this.IncludeSnapshot.IsPresent || this.IncludeBlobVersion.IsPresent || this.IncludeDeleted.IsPresent || this.creationTimeLastNDay != null)
             {
                 definition.Filters = new PSBlobInventoryPolicyFilter()
                 {
@@ -213,6 +231,13 @@ namespace Microsoft.Azure.Commands.Management.Storage
                 if (this.IncludeDeleted.IsPresent)
                 {
                     definition.Filters.IncludeDeleted = true;
+                }
+                if (this.creationTimeLastNDay != null)
+                {
+                    definition.Filters.CreationTime = new PSBlobInventoryCreationTime()
+                    {
+                        LastNDays = this.creationTimeLastNDay,
+                    };
                 }
             }
             definition.Format = NormalizeString<BlobInventoryPolicyRuleFormat>(this.Format);

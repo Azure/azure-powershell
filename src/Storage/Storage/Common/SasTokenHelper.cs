@@ -237,17 +237,18 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Common
         }
 
         public static string GetFullUriWithSASToken(string absoluteUri, string sasToken)
-        {
+        {            
+            // make sure sas token not contains prefix "?"
+            sasToken = Util.GetSASStringWithoutQuestionMark(sasToken);
 
             if (absoluteUri.Contains("?"))
             {
-                // There is already a query string in the URI,
-                // remove "?" from sas token.
-                return absoluteUri + "&" + sasToken.Substring(1);
+                // There is already a query string in the URI, so just append sas
+                return absoluteUri + "&" + sasToken;
             }
             else
             {
-                return absoluteUri + sasToken;
+                return absoluteUri + "?" + sasToken;
             }
         }
 

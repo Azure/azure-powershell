@@ -54,6 +54,14 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Models
         partial void BeforeDeserializePSObject(global::System.Management.Automation.PSObject content, ref bool returnNow);
 
         /// <summary>
+        /// <c>OverrideToString</c> will be called if it is implemented. Implement this method in a partial class to enable this behavior
+        /// </summary>
+        /// <param name="stringResult">/// instance serialized to a string, normally it is a Json</param>
+        /// <param name="returnNow">/// set returnNow to true if you provide a customized OverrideToString function</param>
+
+        partial void OverrideToString(ref string stringResult, ref bool returnNow);
+
+        /// <summary>
         /// Deserializes a <see cref="global::System.Collections.IDictionary" /> into an instance of <see cref="Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Models.ElasticSanIdentity"
         /// />.
         /// </summary>
@@ -117,6 +125,10 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Models
             {
                 ((Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Models.IElasticSanIdentityInternal)this).PrivateEndpointConnectionName = (string) content.GetValueForProperty("PrivateEndpointConnectionName",((Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Models.IElasticSanIdentityInternal)this).PrivateEndpointConnectionName, global::System.Convert.ToString);
             }
+            if (content.Contains("SnapshotName"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Models.IElasticSanIdentityInternal)this).SnapshotName = (string) content.GetValueForProperty("SnapshotName",((Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Models.IElasticSanIdentityInternal)this).SnapshotName, global::System.Convert.ToString);
+            }
             if (content.Contains("Id"))
             {
                 ((Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Models.IElasticSanIdentityInternal)this).Id = (string) content.GetValueForProperty("Id",((Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Models.IElasticSanIdentityInternal)this).Id, global::System.Convert.ToString);
@@ -162,6 +174,10 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Models
             {
                 ((Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Models.IElasticSanIdentityInternal)this).PrivateEndpointConnectionName = (string) content.GetValueForProperty("PrivateEndpointConnectionName",((Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Models.IElasticSanIdentityInternal)this).PrivateEndpointConnectionName, global::System.Convert.ToString);
             }
+            if (content.Contains("SnapshotName"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Models.IElasticSanIdentityInternal)this).SnapshotName = (string) content.GetValueForProperty("SnapshotName",((Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Models.IElasticSanIdentityInternal)this).SnapshotName, global::System.Convert.ToString);
+            }
             if (content.Contains("Id"))
             {
                 ((Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Models.IElasticSanIdentityInternal)this).Id = (string) content.GetValueForProperty("Id",((Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Models.IElasticSanIdentityInternal)this).Id, global::System.Convert.ToString);
@@ -180,6 +196,18 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Models
 
         /// <returns>a <see cref="System.String" /> containing this model serialized to JSON text.</returns>
         public string ToJsonString() => ToJson(null, Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Runtime.SerializationMode.IncludeAll)?.ToString();
+
+        public override string ToString()
+        {
+            var returnNow = false;
+            var result = global::System.String.Empty;
+            OverrideToString(ref result, ref returnNow);
+            if (returnNow)
+            {
+                return result;
+            }
+            return ToJsonString();
+        }
     }
     [System.ComponentModel.TypeConverter(typeof(ElasticSanIdentityTypeConverter))]
     public partial interface IElasticSanIdentity

@@ -150,10 +150,10 @@ namespace Microsoft.Azure.Commands.NetAppFiles.Volume
             }
             if (Name != null)
             {
-                GetGroupIdListForLDAPUserRequest body = new GetGroupIdListForLDAPUserRequest(username: Username);
+                GetGroupIdListForLdapUserRequest body = new GetGroupIdListForLdapUserRequest(username: Username);
                 try
                 {
-                    GetGroupIdListForLDAPUserResponse anfGroupIdList = AzureNetAppFilesManagementClient.Volumes.ListGetGroupIdListForLdapUser(ResourceGroupName, AccountName, PoolName, Name, body);
+                    GetGroupIdListForLdapUserResponse anfGroupIdList = AzureNetAppFilesManagementClient.Volumes.ListGetGroupIdListForLdapUser(ResourceGroupName, AccountName, PoolName, Name, body);
                     WriteObject(anfGroupIdList.ConvertToPs());
                 }
                 catch (ErrorResponseException erx)

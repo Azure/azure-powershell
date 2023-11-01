@@ -83,6 +83,7 @@
 | Guest Configuration            | `Az.GuestConfiguration`         | [![GuestConfiguration]][GuestConfigurationGallery]                 | [Changelog][GuestConfigurationChangeLog]         |
 | SAP HANA on Azure              | `Az.HanaOnAzure`                | [![HanaOnAzure]][HanaOnAzureGallery]                               | [Changelog][HanaOnAzureChangeLog]                |
 | HDInsight                      | `Az.HDInsight`                  | [![HDInsight]][HDInsightGallery]                                   | [Changelog][HDInsightChangeLog]                  |
+| HdInsightOnAks                 | `Az.HdInsightOnAks`             | [![HdInsightOnAks]][HdInsightOnAksGallery]                         | [Changelog][HdInsightOnAksChangeLog]             |
 | HealthBot                      | `Az.HealthBot`                  | [![HealthBot]][HealthBotGallery]                                   | [Changelog][HealthBotChangeLog]                  |
 | API for FHIR                   | `Az.HealthcareApis`             | [![HealthcareApis]][HealthcareApisGallery]                         | [Changelog][HealthcareApisChangeLog]             |
 | HPC Cache                      | `Az.HPCCache`                   | [![HPCCache]][HPCCacheGallery]                                     | [Changelog][HPCCacheChangeLog]                   |
@@ -116,6 +117,7 @@
 | Database for MySQL             | `Az.MySql`                      | [![MySql]][MySqlGallery]                                           | [Changelog][MySqlChangeLog]                      |
 | NetApp Files                   | `Az.NetAppFiles`                | [![NetAppFiles]][NetAppFilesGallery]                               | [Changelog][NetAppFilesChangeLog]                |
 | Network                        | `Az.Network`                    | [![Network]][NetworkGallery]                                       | [Changelog][NetworkChangeLog]                    |
+| NetworkCloud                   | `Az.NetworkCloud`               | [![NetworkCloud]][NetworkCloudGallery]                             | [Changelog][NetworkCloudChangeLog]               |
 | NetworkFunction                | `Az.NetworkFunction`            | [![NetworkFunction]][NetworkFunctionGallery]                       | [Changelog][NetworkFunctionChangeLog]            |
 | Nginx                          | `Az.Nginx`                      | [![Nginx]][NginxGallery]                                           | [Changelog][NginxChangeLog]                      |
 | Notification Hubs              | `Az.NotificationHubs`           | [![NotificationHubs]][NotificationHubsGallery]                     | [Changelog][NotificationHubsChangeLog]           |
@@ -247,6 +249,7 @@
 [HanaOnAzure]:                https://img.shields.io/powershellgallery/v/Az.HanaOnAzure.svg?style=flat-square&label=Az.HanaOnAzure
 [HealthBot]:                  https://img.shields.io/powershellgallery/v/Az.HealthBot.svg?style=flat-square&label=Az.HealthBot
 [HDInsight]:                  https://img.shields.io/powershellgallery/v/Az.HDInsight.svg?style=flat-square&label=Az.HDInsight
+[HdInsightOnAks]:             https://img.shields.io/powershellgallery/v/Az.HdInsightOnAks.svg?style=flat-square&label=Az.HdInsightOnAks
 [HealthcareApis]:             https://img.shields.io/powershellgallery/v/Az.HealthcareApis.svg?style=flat-square&label=Az.HealthcareApis
 [HPCCache]:                   https://img.shields.io/powershellgallery/v/Az.HPCCache.svg?style=flat-square&label=Az.HPCCache
 [ImportExport]:               https://img.shields.io/powershellgallery/v/Az.ImportExport.svg?style=flat-square&label=Az.ImportExport
@@ -279,6 +282,7 @@
 [MySql]:                      https://img.shields.io/powershellgallery/v/Az.MySql.svg?style=flat-square&label=Az.MySql
 [NetAppFiles]:                https://img.shields.io/powershellgallery/v/Az.NetAppFiles.svg?style=flat-square&label=Az.NetAppFiles
 [Network]:                    https://img.shields.io/powershellgallery/v/Az.Network.svg?style=flat-square&label=Az.Network
+[NetworkCloud]:               https://img.shields.io/powershellgallery/v/Az.NetworkCloud.svg?style=flat-square&label=Az.NetworkCloud
 [NetworkFunction]:            https://img.shields.io/powershellgallery/v/Az.NetworkFunction.svg?style=flat-square&label=Az.NetworkFunction
 [Nginx]:                      https://img.shields.io/powershellgallery/v/Az.Nginx.svg?style=flat-square&label=Az.Nginx
 [NotificationHubs]:           https://img.shields.io/powershellgallery/v/Az.NotificationHubs.svg?style=flat-square&label=Az.NotificationHubs
@@ -406,6 +410,7 @@
 [HanaOnAzureGallery]:                https://www.powershellgallery.com/packages/Az.HanaOnAzure/
 [HealthBotGallery]:                  https://www.powershellgallery.com/packages/Az.HealthBot/
 [HDInsightGallery]:                  https://www.powershellgallery.com/packages/Az.HDInsight/
+[HdInsightOnAksGallery]:             https://www.powershellgallery.com/packages/Az.HdInsightOnAks/
 [HealthcareApisGallery]:             https://www.powershellgallery.com/packages/Az.HealthcareApis/
 [HPCCacheGallery]:                   https://www.powershellgallery.com/packages/Az.HPCCache/
 [ImportExportGallery]:               https://www.powershellgallery.com/packages/Az.ImportExport/
@@ -438,6 +443,7 @@
 [MySqlGallery]:                      https://www.powershellgallery.com/packages/Az.MySql/
 [NetAppFilesGallery]:                https://www.powershellgallery.com/packages/Az.NetAppFiles/
 [NetworkGallery]:                    https://www.powershellgallery.com/packages/Az.Network/
+[NetworkCloudGallery]:               https://www.powershellgallery.com/packages/Az.NetworkCloud/
 [NetworkFunctionGallery]:            https://www.powershellgallery.com/packages/Az.NetworkFunction/
 [NginxGallery]:                      https://www.powershellgallery.com/packages/Az.Nginx/
 [NotificationHubsGallery]:           https://www.powershellgallery.com/packages/Az.NotificationHubs/
@@ -562,6 +568,7 @@
 [GuestConfigurationChangeLog]:         ../src/GuestConfiguration/ChangeLog.md
 [HanaOnAzureChangeLog]:                ../src/HanaOnAzure/ChangeLog.md
 [HDInsightChangeLog]:                  ../src/HDInsight/HDInsight/ChangeLog.md
+[HdInsightOnAksChangeLog]:             ../src/HdInsightOnAks/HdInsightOnAks/ChangeLog.md
 [HealthBotChangeLog]:                  ../src/HealthBot/ChangeLog.md
 [HealthcareApisChangeLog]:             ../src/HealthcareApis/ChangeLog.md
 [HPCCacheChangeLog]:                   ../src/HPCCache/HPCCache/ChangeLog.md
@@ -595,6 +602,7 @@
 [MySqlChangeLog]:                      ../src/MySql/ChangeLog.md
 [NetAppFilesChangeLog]:                ../src/NetAppFiles/NetAppFiles/ChangeLog.md
 [NetworkChangeLog]:                    ../src/Network/Network/ChangeLog.md
+[NetworkCloudChangeLog]:               ../src/NetworkCloud/NetworkCloud/ChangeLog.md
 [NetworkFunctionChangeLog]:            ../src/NetworkFunction/ChangeLog.md
 [NginxChangeLog]:                      ../src/Nginx/ChangeLog.md
 [NotificationHubsChangeLog]:           ../src/NotificationHubs/NotificationHubs/ChangeLog.md

@@ -12,6 +12,8 @@ Initiates prepare for the set of resources included in the request body.
 The prepare operation is on the moveResources that are in the moveState 'PreparePending' or 'PrepareFailed', on a successful completion the moveResource moveState do a transition to MovePending.
 To aid the user to prerequisite the operation the client can call operation with validateOnly property set to true.
 
+**The 'Invoke-AzResourceMoverPrepare' command is not applicable on move collections with moveType 'RegionToZone' since prepare is not a valid operation for region to zone move scenario.**
+
 ## SYNTAX
 
 ```
@@ -25,13 +27,16 @@ Initiates prepare for the set of resources included in the request body.
 The prepare operation is on the moveResources that are in the moveState 'PreparePending' or 'PrepareFailed', on a successful completion the moveResource moveState do a transition to MovePending.
 To aid the user to prerequisite the operation the client can call operation with validateOnly property set to true.
 
+**The 'Invoke-AzResourceMoverPrepare' command is not applicable on move collections with moveType 'RegionToZone' since prepare is not a valid operation for region to zone move scenario.**
+
 ## EXAMPLES
 
 ### Example 1: Validate the dependecies before prepare of the resources. Get the required dependent resources that also need to be prepared.
-<!-- Skip: Output cannot be splitted from code -->
 ```powershell
 $resp = Invoke-AzResourceMoverPrepare -ResourceGroupName "RG-MoveCollection-demoRMS" -MoveCollectionName "PS-centralus-westcentralus-demoRMS"  -MoveResource $('psdemovm') -ValidateOnly
+```
 
+```output
 AdditionalInfo : {Microsoft.Azure.PowerShell.Cmdlets.ResourceMover.Models.Api20191001Preview.OperationErrorAdditionalInfo}
 Code           : MoveCollectionMissingRequiredDependentResources
 Detail         : {}
@@ -52,12 +57,11 @@ MoveCollectionMissingRequiredDependentResources
 
 $resp.AdditionalInfo[0].InfoMoveResource
 
-SourceId                                                                                                                                  
---------                                                                                                                                  
+SourceId
+--------
 /subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx/resourcegroups/psdemorm/providers/microsoft.network/networkinterfaces/psdemovm111     
 /subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx/resourceGroups/psdemorm/providers/Microsoft.Network/virtualNetworks/psdemorm-vnet     
 /subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx/resourcegroups/psdemorm/providers/microsoft.network/networksecuritygroups/psdemovm-nsg
-
 ```
 
 Validate the dependecies before prepare of the resources.
@@ -124,7 +128,8 @@ Accept wildcard characters: False
 ```
 
 ### -DefaultProfile
-The credentials, account, tenant, and subscription used for communication with Azure.
+The DefaultProfile parameter is not functional.
+Use the SubscriptionId parameter when available if executing the cmdlet against a different subscription.
 
 ```yaml
 Type: System.Management.Automation.PSObject
@@ -281,7 +286,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.ResourceMover.Models.Api20210801.IOperationStatus
+### Microsoft.Azure.PowerShell.Cmdlets.ResourceMover.Models.Api20230801.IOperationStatus
 
 ## NOTES
 

@@ -65,7 +65,7 @@ namespace Microsoft.Azure.Commands.Resources.Test.Models
             string[] parameters = { "Name", "Location", "Mode" };
             string[] parameterSetNames = { "__AllParameterSets" };
             string key = "computeMode";
-            TemplateFileParameterV1 value = new TemplateFileParameterV1()
+            TemplateFileParameter value = new TemplateFileParameter()
             {
                 AllowedValues = new List<object>() { "Mode1", "Mode2", "Mode3" },
                 DefaultValue = "Mode1",
@@ -73,9 +73,9 @@ namespace Microsoft.Azure.Commands.Resources.Test.Models
                 MinLength = "1",
                 Type = "string"
             };
-            KeyValuePair<string, TemplateFileParameterV1> parameter = new KeyValuePair<string, TemplateFileParameterV1>(key, value);
+            KeyValuePair<string, TemplateFileParameter> parameter = new KeyValuePair<string, TemplateFileParameter>(key, value);
 
-            RuntimeDefinedParameter dynamicParameter = TemplateUtility.ConstructDynamicParameter(parameters, parameter);
+            RuntimeDefinedParameter dynamicParameter = TemplateUtility.ConstructDynamicParameter(parameters, parameter, null);
 
             Assert.Equal("computeMode", dynamicParameter.Name);
             Assert.Equal(value.DefaultValue, dynamicParameter.Value);
@@ -99,16 +99,16 @@ namespace Microsoft.Azure.Commands.Resources.Test.Models
             string[] parameters = { "Name", "Location", "Mode" };
             string[] parameterSetNames = { "__AllParameterSets" };
             string key = "Name";
-            TemplateFileParameterV1 value = new TemplateFileParameterV1()
+            TemplateFileParameter value = new TemplateFileParameter()
             {
                 AllowedValues = new List<object>() { "Mode1", "Mode2", "Mode3" },
                 MaxLength = "5",
                 MinLength = "1",
                 Type = "bool"
             };
-            KeyValuePair<string, TemplateFileParameterV1> parameter = new KeyValuePair<string, TemplateFileParameterV1>(key, value);
+            KeyValuePair<string, TemplateFileParameter> parameter = new KeyValuePair<string, TemplateFileParameter>(key, value);
 
-            RuntimeDefinedParameter dynamicParameter = TemplateUtility.ConstructDynamicParameter(parameters, parameter);
+            RuntimeDefinedParameter dynamicParameter = TemplateUtility.ConstructDynamicParameter(parameters, parameter, null);
 
             Assert.Equal(key + "FromTemplate", dynamicParameter.Name);
             Assert.Equal(value.DefaultValue, dynamicParameter.Value);
@@ -132,16 +132,16 @@ namespace Microsoft.Azure.Commands.Resources.Test.Models
             string[] parameters = { "Name", "Location", "Mode" };
             string[] parameterSetNames = { "__AllParameterSets" };
             string key = "name";
-            TemplateFileParameterV1 value = new TemplateFileParameterV1()
+            TemplateFileParameter value = new TemplateFileParameter()
             {
                 AllowedValues = new List<object>() { "Mode1", "Mode2", "Mode3" },
                 MaxLength = "5",
                 MinLength = "1",
                 Type = "bool"
             };
-            KeyValuePair<string, TemplateFileParameterV1> parameter = new KeyValuePair<string, TemplateFileParameterV1>(key, value);
+            KeyValuePair<string, TemplateFileParameter> parameter = new KeyValuePair<string, TemplateFileParameter>(key, value);
 
-            RuntimeDefinedParameter dynamicParameter = TemplateUtility.ConstructDynamicParameter(parameters, parameter);
+            RuntimeDefinedParameter dynamicParameter = TemplateUtility.ConstructDynamicParameter(parameters, parameter, null);
 
             Assert.Equal(key + "FromTemplate", dynamicParameter.Name);
             Assert.Equal(value.DefaultValue, dynamicParameter.Value);
@@ -165,15 +165,15 @@ namespace Microsoft.Azure.Commands.Resources.Test.Models
             string[] parameters = { "Name", "Location", "Mode" };
             string[] parameterSetNames = { "__AllParameterSets" };
             string key = "computeMode";
-            TemplateFileParameterV1 value = new TemplateFileParameterV1()
+            TemplateFileParameter value = new TemplateFileParameter()
             {
                 AllowedValues = new List<object>(),
                 DefaultValue = "Mode1",
                 Type = "securestring"
             };
-            KeyValuePair<string, TemplateFileParameterV1> parameter = new KeyValuePair<string, TemplateFileParameterV1>(key, value);
+            KeyValuePair<string, TemplateFileParameter> parameter = new KeyValuePair<string, TemplateFileParameter>(key, value);
 
-            RuntimeDefinedParameter dynamicParameter = TemplateUtility.ConstructDynamicParameter(parameters, parameter);
+            RuntimeDefinedParameter dynamicParameter = TemplateUtility.ConstructDynamicParameter(parameters, parameter, null);
 
             Assert.Equal("computeMode", dynamicParameter.Name);
             Assert.Equal(value.DefaultValue, dynamicParameter.Value);
@@ -193,15 +193,15 @@ namespace Microsoft.Azure.Commands.Resources.Test.Models
             string[] parameters = { "Name", "Location", "Mode" };
             string[] parameterSetNames = { "__AllParameterSets" };
             string key = "computeMode";
-            TemplateFileParameterV1 value = new TemplateFileParameterV1()
+            TemplateFileParameter value = new TemplateFileParameter()
             {
                 AllowedValues = null,
                 DefaultValue = "Mode1",
                 Type = "securestring"
             };
-            KeyValuePair<string, TemplateFileParameterV1> parameter = new KeyValuePair<string, TemplateFileParameterV1>(key, value);
+            KeyValuePair<string, TemplateFileParameter> parameter = new KeyValuePair<string, TemplateFileParameter>(key, value);
 
-            RuntimeDefinedParameter dynamicParameter = TemplateUtility.ConstructDynamicParameter(parameters, parameter);
+            RuntimeDefinedParameter dynamicParameter = TemplateUtility.ConstructDynamicParameter(parameters, parameter, null);
 
             Assert.Equal("computeMode", dynamicParameter.Name);
             Assert.Equal(value.DefaultValue, dynamicParameter.Value);
@@ -221,7 +221,7 @@ namespace Microsoft.Azure.Commands.Resources.Test.Models
             string[] parameters = { "Name", "Location", "Mode" };
             string[] parameterSetNames = { "__AllParameterSets" };
             string key = "appSku";
-            TemplateFileParameterV1 value = new TemplateFileParameterV1()
+            TemplateFileParameter value = new TemplateFileParameter()
             {
                 AllowedValues = new List<object>()
                 {
@@ -231,9 +231,9 @@ namespace Microsoft.Azure.Commands.Resources.Test.Models
                 DefaultValue = JObject.Parse("{\"code\" : \"F1\", \"name\" : \"Free\"}"),
                 Type = "object"
             };
-            KeyValuePair<string, TemplateFileParameterV1> parameter = new KeyValuePair<string, TemplateFileParameterV1>(key, value);
+            KeyValuePair<string, TemplateFileParameter> parameter = new KeyValuePair<string, TemplateFileParameter>(key, value);
 
-            RuntimeDefinedParameter dynamicParameter = TemplateUtility.ConstructDynamicParameter(parameters, parameter);
+            RuntimeDefinedParameter dynamicParameter = TemplateUtility.ConstructDynamicParameter(parameters, parameter, null);
 
             Assert.Equal("appSku", dynamicParameter.Name);
             Assert.Equal(value.DefaultValue, dynamicParameter.Value);
@@ -253,7 +253,7 @@ namespace Microsoft.Azure.Commands.Resources.Test.Models
             string[] parameters = { "Name", "Location", "Mode" };
             string[] parameterSetNames = { "__AllParameterSets" };
             string key = "ranks";
-            TemplateFileParameterV1 value = new TemplateFileParameterV1()
+            TemplateFileParameter value = new TemplateFileParameter()
             {
                 AllowedValues = new List<object>()
                 {
@@ -263,9 +263,9 @@ namespace Microsoft.Azure.Commands.Resources.Test.Models
                 DefaultValue = JArray.Parse("[\"A\", \"D\", \"F\"]"),
                 Type = "array"
             };
-            KeyValuePair<string, TemplateFileParameterV1> parameter = new KeyValuePair<string, TemplateFileParameterV1>(key, value);
+            KeyValuePair<string, TemplateFileParameter> parameter = new KeyValuePair<string, TemplateFileParameter>(key, value);
 
-            RuntimeDefinedParameter dynamicParameter = TemplateUtility.ConstructDynamicParameter(parameters, parameter);
+            RuntimeDefinedParameter dynamicParameter = TemplateUtility.ConstructDynamicParameter(parameters, parameter, null);
 
             Assert.Equal("ranks", dynamicParameter.Name);
             Assert.Equal(value.DefaultValue, dynamicParameter.Value);
@@ -506,8 +506,7 @@ namespace Microsoft.Azure.Commands.Resources.Test.Models
             // Add up to 3 retries for flaky test
             TestExecutionHelpers.RetryAction(() =>
             {
-                Dictionary<string, TemplateFileParameterV1> result =
-                    TemplateUtility.ParseTemplateParameterFileContents(@"Resources/WebSite.param.dev.json".AsAbsoluteLocation());
+                var result = TemplateUtility.ParseTemplateParameterFileContents(@"Resources/WebSite.param.dev.json".AsAbsoluteLocation());
                 Assert.True(result["isWorker"].Value as bool?);
                 Assert.Equal((System.Int64) 1, result["numberOfWorker"].Value);
             });

@@ -8,7 +8,7 @@ schema: 2.0.0
 # Remove-AzSqlInstanceActiveDirectoryAdministrator
 
 ## SYNOPSIS
-Removes an Azure AD administrator for SQL Managed Instance.
+Removes a Microsoft Entra administrator for SQL Managed Instance.
 
 ## SYNTAX
 
@@ -32,7 +32,7 @@ Remove-AzSqlInstanceActiveDirectoryAdministrator [-Force] [-PassThru] [-Resource
 ```
 
 ## DESCRIPTION
-The **Remove-AzSqlInstanceActiveDirectoryAdministrator** cmdlet removes an Azure Active Directory (Azure AD) administrator for AzureSQL Managed Instance in the current subscription.
+The **Remove-AzSqlInstanceActiveDirectoryAdministrator** cmdlet removes a Microsoft Entra administrator for AzureSQL Managed Instance in the current subscription.
 
 ## EXAMPLES
 
@@ -50,7 +50,7 @@ ResourceGroupName InstanceName          DisplayName ObjectId
 ResourceGroup01   ManagedInstanceName01 DBAs        40b79501-b343-44ed-9ce7-da4c8cc7353b
 ```
 
-This command removes the Azure AD administrator for the managed instance named ManagedInstanceName01 associated with the resource group ResourceGroup01.
+This command removes the Microsoft Entra administrator for the managed instance named ManagedInstanceName01 associated with the resource group ResourceGroup01.
 
 ### Example 2
 ```powershell
@@ -66,7 +66,7 @@ ResourceGroupName InstanceName          DisplayName ObjectId
 ResourceGroup01   ManagedInstanceName01 DBAs        40b79501-b343-44ed-9ce7-da4c8cc7353b
 ```
 
-This command removes the Azure AD administrator from the managed instance object.
+This command removes the Microsoft Entra administrator from the managed instance object.
 
 ### Example 3
 ```powershell
@@ -82,7 +82,7 @@ ResourceGroupName InstanceName          DisplayName ObjectId
 ResourceGroup01   ManagedInstanceName01 DBAs        40b79501-b343-44ed-9ce7-da4c8cc7353b
 ```
 
-This command removes the Azure AD administrator using managed instance resource identifier.
+This command removes the Microsoft Entra administrator using managed instance resource identifier.
 
 ## PARAMETERS
 

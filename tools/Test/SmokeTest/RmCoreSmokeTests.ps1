@@ -108,7 +108,8 @@ $resourceTestCommands = @(
     @{Name = "Az.ContainerRegistry [DataPlane]"; Command = {Get-Command Get-AzContainerRegistryManifest}},
     @{Name = "Az.DataBoxEdge";                Command = {Get-AzDataBoxEdgeDevice -ResourceGroupName $resourceGroupName}},
     @{Name = "Az.Databricks";                 Command = {Get-AzDatabricksWorkspace -ResourceGroupName $resourceGroupName}},
-    @{Name = "Az.DataFactory [V1]";           Command = {Get-AzDataFactory -ResourceGroupName $resourceGroupName}},
+    # The resource type could not be found in the namespace 'Microsoft.DataFactory' for api version '2015-10-01'.
+    # @{Name = "Az.DataFactory [V1]";           Command = {Get-AzDataFactory -ResourceGroupName $resourceGroupName}},
     @{Name = "Az.DataFactoryV2 [V2]";         Command = {Get-AzDataFactoryV2}},
     @{Name = "Az.DataLakeAnalytics";          Command = {Get-AzDataLakeAnalyticsAccount}},
     @{Name = "Az.DataLakeStore [MngmPlane]";  Command = {Get-AzDataLakeStoreAccount}},

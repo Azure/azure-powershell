@@ -29,7 +29,7 @@ Get-AzElasticSan -ResourceGroupName myresourcegroup -Name myelasticsan
 .Inputs
 Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Models.IElasticSanIdentity
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Models.Api20221201Preview.IElasticSan
+Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Models.IElasticSan
 .Notes
 COMPLEX PARAMETER PROPERTIES
 
@@ -40,6 +40,7 @@ INPUTOBJECT <IElasticSanIdentity>: Identity Parameter
   [Id <String>]: Resource identity path
   [PrivateEndpointConnectionName <String>]: The name of the Private Endpoint connection.
   [ResourceGroupName <String>]: The name of the resource group. The name is case insensitive.
+  [SnapshotName <String>]: The name of the volume snapshot within the given volume group.
   [SubscriptionId <String>]: The ID of the target subscription.
   [VolumeGroupName <String>]: The name of the VolumeGroup.
   [VolumeName <String>]: The name of the Volume.
@@ -47,7 +48,7 @@ INPUTOBJECT <IElasticSanIdentity>: Identity Parameter
 https://learn.microsoft.com/powershell/module/az.elasticsan/get-azelasticsan
 #>
 function Get-AzElasticSan {
-[OutputType([Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Models.Api20221201Preview.IElasticSan])]
+[OutputType([Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Models.IElasticSan])]
 [CmdletBinding(DefaultParameterSetName='List', PositionalBinding=$false)]
 param(
     [Parameter(ParameterSetName='Get', Mandatory)]
@@ -161,11 +162,15 @@ begin {
             List = 'Az.ElasticSan.private\Get-AzElasticSan_List';
             List1 = 'Az.ElasticSan.private\Get-AzElasticSan_List1';
         }
-        if (('Get', 'List', 'List1') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId')) {
+        if (('Get', 'List', 'List1') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId') ) {
             $PSBoundParameters['SubscriptionId'] = (Get-AzContext).Subscription.Id
         }
         $cmdInfo = Get-Command -Name $mapping[$parameterSet]
         [Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Runtime.MessageAttributeHelper]::ProcessCustomAttributesAtRuntime($cmdInfo, $MyInvocation, $parameterSet, $PSCmdlet)
+        if ($null -ne $MyInvocation.MyCommand -and [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PromptedPreviewMessageCmdlets -notcontains $MyInvocation.MyCommand.Name -and [Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Runtime.MessageAttributeHelper]::ContainsPreviewAttribute($cmdInfo, $MyInvocation)){
+            [Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Runtime.MessageAttributeHelper]::ProcessPreviewMessageAttributesAtRuntime($cmdInfo, $MyInvocation, $parameterSet, $PSCmdlet)
+            [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PromptedPreviewMessageCmdlets.Enqueue($MyInvocation.MyCommand.Name)
+        }
         $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Cmdlet)
         $scriptCmd = {& $wrappedCmd @PSBoundParameters}
         $steppablePipeline = $scriptCmd.GetSteppablePipeline($MyInvocation.CommandOrigin)

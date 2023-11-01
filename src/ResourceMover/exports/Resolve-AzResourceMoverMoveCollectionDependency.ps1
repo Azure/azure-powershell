@@ -17,33 +17,28 @@
 <#
 .Synopsis
 Computes, resolves and validate the dependencies of the moveResources in the move collection.
+
+**Please note that for 'RegionToRegion' type move collections the 'Resolve-AzResourceMoverMoveCollectionDependency' command just resolves the move collection, the user is required to identify the list of unresolved dependencies using 'Get-AzResourceMoverUnresolvedDependency' and then manually add them to the move collection using 'Add-AzResourceMoverMoveResource' command.**
+
+**However, for moveType 'RegionToZone' this command finds the required dependencies and automatically adds them to the move collection in a single step.**
 .Description
 Computes, resolves and validate the dependencies of the moveResources in the move collection.
-.Example
-PS C:\> Resolve-AzResourceMoverMoveCollectionDependency -ResourceGroupName "RG-MoveCollection-demoRMS" -MoveCollectionName "PS-centralus-westcentralus-demoRMS" 
 
-AdditionalInfo : 
-Code           : MoveCollectionResolveDependenciesOperationFailed
-Detail         : {}
-EndTime        : 2/9/2021 2:05:04 AM
-Id             : /subscriptions/e80eb9fa-c996-4435-aa32-5af6f3d3077c/resourceGroups/RG-MoveCollection-demoRMS/providers/Microsoft.Migrate/moveCollections/PS-centralus-westcentralus-demoRMS/operations/c2ad006
-                 6-6a69-45fe-aa70-193c240a9bc0
-Message        : The resolve dependencies operation of one or more resources has failed. Check the move status of the resource for more details.
-                     Possible Causes: The resolve dependencies operation of one ore more resources has failed.
-                     Recommended Action: Retry the operation after resolving errors if any. If issue persists, contact support.
-                     
-Name           : c2ad0066-6a69-45fe-aa70-193c240a9bc0
-Property       : Microsoft.Azure.PowerShell.Cmdlets.ResourceMover.Models.Any
-StartTime      : 2/9/2021 2:05:00 AM
-Status         : Succeeded
+**Please note that for 'RegionToRegion' type move collections the 'Resolve-AzResourceMoverMoveCollectionDependency' command just resolves the move collection, the user is required to identify the list of unresolved dependencies using 'Get-AzResourceMoverUnresolvedDependency' and then manually add them to the move collection using 'Add-AzResourceMoverMoveResource' command.**
+
+**However, for moveType 'RegionToZone' this command finds the required dependencies and automatically adds them to the move collection in a single step.**
+.Example
+Resolve-AzResourceMoverMoveCollectionDependency -ResourceGroupName "RG-MoveCollection-demoRMS" -MoveCollectionName "PS-centralus-westcentralus-demoRMS" 
+.Example
+Resolve-AzResourceMoverMoveCollectionDependency -MoveCollectionName "PS-demo-RegionToZone"  -ResourceGroupName "RG-MoveCollection-demoRMS"
 
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.ResourceMover.Models.Api20210801.IOperationStatus
+Microsoft.Azure.PowerShell.Cmdlets.ResourceMover.Models.Api20230801.IOperationStatus
 .Link
 https://learn.microsoft.com/powershell/module/az.resourcemover/resolve-azresourcemovermovecollectiondependency
 #>
 function Resolve-AzResourceMoverMoveCollectionDependency {
-[OutputType([Microsoft.Azure.PowerShell.Cmdlets.ResourceMover.Models.Api20210801.IOperationStatus])]
+[OutputType([Microsoft.Azure.PowerShell.Cmdlets.ResourceMover.Models.Api20230801.IOperationStatus])]
 [CmdletBinding(DefaultParameterSetName='Resolve', PositionalBinding=$false, SupportsShouldProcess, ConfirmImpact='Medium')]
 param(
     [Parameter(Mandatory)]
@@ -70,7 +65,8 @@ param(
     [ValidateNotNull()]
     [Microsoft.Azure.PowerShell.Cmdlets.ResourceMover.Category('Azure')]
     [System.Management.Automation.PSObject]
-    # The credentials, account, tenant, and subscription used for communication with Azure.
+    # The DefaultProfile parameter is not functional.
+    # Use the SubscriptionId parameter when available if executing the cmdlet against a different subscription.
     ${DefaultProfile},
 
     [Parameter()]
@@ -132,6 +128,24 @@ begin {
             $PSBoundParameters['OutBuffer'] = 1
         }
         $parameterSet = $PSCmdlet.ParameterSetName
+
+        if ($null -eq [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion) {
+            [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion = $PSVersionTable.PSVersion.ToString()
+        }         
+        $preTelemetryId = [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::TelemetryId
+        if ($preTelemetryId -eq '') {
+            [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::TelemetryId =(New-Guid).ToString()
+            [Microsoft.Azure.PowerShell.Cmdlets.ResourceMover.module]::Instance.Telemetry.Invoke('Create', $MyInvocation, $parameterSet, $PSCmdlet)
+        } else {
+            $internalCalledCmdlets = [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::InternalCalledCmdlets
+            if ($internalCalledCmdlets -eq '') {
+                [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::InternalCalledCmdlets = $MyInvocation.MyCommand.Name
+            } else {
+                [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::InternalCalledCmdlets += ',' + $MyInvocation.MyCommand.Name
+            }
+            [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::TelemetryId = 'internal'
+        }
+
         $mapping = @{
             Resolve = 'Az.ResourceMover.private\Resolve-AzResourceMoverMoveCollectionDependency_Resolve';
         }
@@ -145,6 +159,7 @@ begin {
         $steppablePipeline = $scriptCmd.GetSteppablePipeline($MyInvocation.CommandOrigin)
         $steppablePipeline.Begin($PSCmdlet)
     } catch {
+        [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::ClearTelemetryContext()
         throw
     }
 }
@@ -153,15 +168,32 @@ process {
     try {
         $steppablePipeline.Process($_)
     } catch {
+        [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::ClearTelemetryContext()
         throw
     }
-}
 
+    finally {
+        $backupTelemetryId = [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::TelemetryId
+        $backupInternalCalledCmdlets = [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::InternalCalledCmdlets
+        [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::ClearTelemetryContext()
+    }
+
+}
 end {
     try {
         $steppablePipeline.End()
+
+        [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::TelemetryId = $backupTelemetryId
+        [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::InternalCalledCmdlets = $backupInternalCalledCmdlets
+        if ($preTelemetryId -eq '') {
+            [Microsoft.Azure.PowerShell.Cmdlets.ResourceMover.module]::Instance.Telemetry.Invoke('Send', $MyInvocation, $parameterSet, $PSCmdlet)
+            [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::ClearTelemetryContext()
+        }
+        [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::TelemetryId = $preTelemetryId
+
     } catch {
+        [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::ClearTelemetryContext()
         throw
     }
-}
+} 
 }
