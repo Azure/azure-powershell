@@ -70,8 +70,8 @@ if ($TargetTestName -and (!$TestName -or ($TestName -eq $TargetTestName))) {
         . ($mockingPath | Select-Object -First 1).FullName
 
         # load the comment test framework functions
-        . (Join-Path $PSScriptRoot '..\..\..\..\..\tools\TestFx\Common.ps1')
-        . (Join-Path $PSScriptRoot '..\..\..\..\..\tools\TestFx\Assert.ps1')
+        . (Join-Path $PSScriptRoot 'TestFxCommon.ps1')
+        . (Join-Path $PSScriptRoot 'TestFxAssert.ps1')
 
         # ----------------------------------------------------+
         # set up common variables used in policy legacy tests |
