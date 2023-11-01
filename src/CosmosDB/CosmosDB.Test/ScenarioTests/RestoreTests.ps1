@@ -859,7 +859,7 @@ function Test-CrossRegionRestoreSingleRegionAccountCmdlets {
   $PartitionKeyKindValue = "Hash"
   $locations = @()
   $locations += New-AzCosmosDBLocationObject -Location "West Central US" -FailoverPriority 0 -IsZoneRedundant 0
-  $targetLocation = "North Central US"
+  $targetLocation = "East US 2"
   $sourceBackupLocation = "West Central US"
 
   $resourceGroup = New-AzResourceGroup -ResourceGroupName $rgName  -Location   $location

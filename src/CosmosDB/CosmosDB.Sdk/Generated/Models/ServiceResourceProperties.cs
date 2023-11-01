@@ -10,6 +10,7 @@ namespace Microsoft.Azure.Management.CosmosDB.Models
     /// <summary>
     /// Services response resource.
     /// </summary>
+    [Newtonsoft.Json.JsonObject("ServiceResourceProperties")]
     public partial class ServiceResourceProperties
     {
         /// <summary>

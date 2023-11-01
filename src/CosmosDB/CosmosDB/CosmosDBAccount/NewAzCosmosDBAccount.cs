@@ -174,6 +174,8 @@ namespace Microsoft.Azure.Commands.CosmosDB
             databaseAccountCreateUpdateParameters.NetworkAclBypassResourceIds = networkAclBypassResourceId;
             databaseAccountCreateUpdateParameters.EnableBurstCapacity = EnableBurstCapacity;
             databaseAccountCreateUpdateParameters.MinimalTlsVersion = MinimalTlsVersion;
+            databaseAccountCreateUpdateParameters.EnablePriorityBasedExecution = EnablePriorityBasedExecution;
+            databaseAccountCreateUpdateParameters.DefaultPriorityLevel = DefaultPriorityLevel;
 
             if (IpRule != null && IpRule.Length > 0)
             {

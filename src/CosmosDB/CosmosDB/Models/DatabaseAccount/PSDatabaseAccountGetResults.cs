@@ -70,6 +70,8 @@ namespace Microsoft.Azure.Commands.CosmosDB.Models
             EnablePartitionMerge = databaseAccountGetResults.EnablePartitionMerge;
             MinimalTlsVersion = databaseAccountGetResults.MinimalTlsVersion;
             EnableMaterializedViews = databaseAccountGetResults.EnableMaterializedViews;
+            EnablePriorityBasedExecution = databaseAccountGetResults.EnablePriorityBasedExecution;
+            DefaultPriorityLevel = databaseAccountGetResults.DefaultPriorityLevel;
         }
 
         //
@@ -178,6 +180,12 @@ namespace Microsoft.Azure.Commands.CosmosDB.Models
         // Summary:
         //     Gets or sets the URI of the key vault
         public string KeyVaultKeyUri { get; set; }
+        //
+        // Summary:
+        //     Gets or sets the URI of the key vault
+        public string CustomerManagedKeyStatus { get; set; }
+        //
+        // Summary:
         //     Gets or sets list of Private Endpoint Connections configured for the Cosmos DB account.
         public IList<PrivateEndpointConnection> PrivateEndpointConnections { get; set; }
         //
@@ -244,5 +252,13 @@ namespace Microsoft.Azure.Commands.CosmosDB.Models
         // Summary:
         //     Gets or sets flag to indicate whether materialized views is enabled.
         public bool? EnableMaterializedViews { get; set; }
+        //
+        // Summary:
+        //     Gets or sets flag to indicate whether Priority Based Execution is enabled.
+        public bool? EnablePriorityBasedExecution { get; set; }
+        //
+        // Summary:
+        //     Gets or sets the DefaultPriorityLevel of the CosmosDB Account.
+        public string DefaultPriorityLevel { get; set; }
     }
 }

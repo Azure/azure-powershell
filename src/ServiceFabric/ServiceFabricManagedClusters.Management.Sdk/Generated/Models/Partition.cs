@@ -5,6 +5,7 @@
 
 namespace Microsoft.Azure.Management.ServiceFabricManagedClusters.Models
 {
+    using Newtonsoft.Json;
     using System.Linq;
 
     /// <summary>

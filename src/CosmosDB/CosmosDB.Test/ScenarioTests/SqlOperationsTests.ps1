@@ -1120,8 +1120,8 @@ Test SQL migrate throughput cmdlets
 #>
 function Test-SqlMigrateThroughputCmdlets
 {
-  $AccountName = "dbaccount62-1"
-  $rgName = "CosmosDBResourceGroup62"
+  $AccountName = "dbaccount62-2"
+  $rgName = "CosmosDBResourceGroup66"
   $DatabaseName = "dbName4"
   $ContainerName = "containerName"
   $location = "East US"

@@ -107,7 +107,7 @@ namespace Microsoft.Azure.Management.CosmosDB.Models
 
         /// <param name="provisionError">Error related to resource provisioning.
         /// </param>
-        public ClusterResourceProperties(string provisioningState = default(string), string restoreFromBackupId = default(string), string delegatedManagementSubnetId = default(string), string cassandraVersion = default(string), string clusterNameOverride = default(string), string authenticationMethod = default(string), string initialCassandraAdminPassword = default(string), SeedNode prometheusEndpoint = default(SeedNode), bool? repairEnabled = default(bool?), System.Collections.Generic.IList<Certificate> clientCertificates = default(System.Collections.Generic.IList<Certificate>), System.Collections.Generic.IList<Certificate> externalGossipCertificates = default(System.Collections.Generic.IList<Certificate>), System.Collections.Generic.IList<Certificate> gossipCertificates = default(System.Collections.Generic.IList<Certificate>), System.Collections.Generic.IList<SeedNode> externalSeedNodes = default(System.Collections.Generic.IList<SeedNode>), System.Collections.Generic.IList<SeedNode> seedNodes = default(System.Collections.Generic.IList<SeedNode>), int? hoursBetweenBackups = default(int?), bool? deallocated = default(bool?), bool? cassandraAuditLoggingEnabled = default(bool?), CassandraError provisionError = default(CassandraError))
+        public ClusterResourceProperties(string provisioningState = default(string), string restoreFromBackupId = default(string), string delegatedManagementSubnetId = default(string), string cassandraVersion = default(string), string clusterNameOverride = default(string), string authenticationMethod = default(string), string initialCassandraAdminPassword = default(string), SeedNode prometheusEndpoint = default(SeedNode), bool? repairEnabled = default(bool?), System.Collections.Generic.IList<Certificate> clientCertificates = default(System.Collections.Generic.IList<Certificate>), System.Collections.Generic.IList<Certificate> externalGossipCertificates = default(System.Collections.Generic.IList<Certificate>), System.Collections.Generic.IList<Certificate> gossipCertificates = default(System.Collections.Generic.IList<Certificate>), System.Collections.Generic.IList<SeedNode> externalSeedNodes = default(System.Collections.Generic.IList<SeedNode>), System.Collections.Generic.IList<SeedNode> seedNodes = default(System.Collections.Generic.IList<SeedNode>), int? hoursBetweenBackups = default(int?), bool? deallocated = default(bool?), bool? cassandraAuditLoggingEnabled = default(bool?), CassandraError provisionError = default(CassandraError), IList<string> extensions = default(IList<string>), IList<BackupSchedule> backupSchedules = default(IList<BackupSchedule>))
 
         {
             this.ProvisioningState = provisioningState;
@@ -128,6 +128,8 @@ namespace Microsoft.Azure.Management.CosmosDB.Models
             this.Deallocated = deallocated;
             this.CassandraAuditLoggingEnabled = cassandraAuditLoggingEnabled;
             this.ProvisionError = provisionError;
+            this.Extensions = extensions;
+            this.BackupSchedules = backupSchedules;
             CustomInit();
         }
 
@@ -275,9 +277,31 @@ namespace Microsoft.Azure.Management.CosmosDB.Models
         public bool? CassandraAuditLoggingEnabled {get; set; }
 
         /// <summary>
+        /// Gets or sets type of the cluster. If set to Production, some
+        /// operations might not be permitted on cluster. Possible values
+        /// include: 'Production', 'NonProduction'
+        /// </summary>
+        [JsonProperty(PropertyName = "clusterType")]
+        public string ClusterType { get; set; }
+
+        /// <summary>
         /// Gets or sets error related to resource provisioning.
         /// </summary>
-        [Newtonsoft.Json.JsonProperty(PropertyName = "provisionError")]
-        public CassandraError ProvisionError {get; set; }
+        [JsonProperty(PropertyName = "provisionError")]
+        public CassandraError ProvisionError { get; set; }
+
+        /// <summary>
+        /// Gets or sets extensions to be added or updated on cluster.
+        /// </summary>
+        [JsonProperty(PropertyName = "extensions")]
+        public IList<string> Extensions { get; set; }
+
+        /// <summary>
+        /// Gets or sets list of backup schedules that define when you want to
+        /// back up your data.
+        /// </summary>
+        [JsonProperty(PropertyName = "backupSchedules")]
+        public IList<BackupSchedule> BackupSchedules { get; set; }
+
     }
 }
