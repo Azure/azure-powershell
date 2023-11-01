@@ -140,6 +140,7 @@ To create the parameters described below, construct a hash table containing the 
   - `[AliasName <String>]`: AliasName is the name for the subscription creation request. Note that this is not the same as subscription name and this doesn’t have any other lifecycle need beyond the request for subscription creation.
   - `[BillingAccountId <String>]`: Billing Account Id.
   - `[Id <String>]`: Resource identity path
+  - `[OperationId <String>]`: The operation ID, which can be found from the Location field in the generate recommendation response header.
   - `[SubscriptionId <String>]`: Subscription Id.
 
 ## RELATED LINKS
