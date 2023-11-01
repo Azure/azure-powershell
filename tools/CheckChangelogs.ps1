@@ -43,5 +43,11 @@ if (-not [string]::IsNullOrEmpty($ModifiedModuleList) -and $ModifiedModuleList -
     $modules = $ModifiedModuleList -split ':'
 }
 
+# Check if $modules contains "Accounts", if not, add it at the beginning
+if (-not $modules.Contains("Accounts")) {
+    $modules = @("Accounts") + $modules
+}
+
+
 # Write the module names to modifiedmodule.txt
 $modules | Out-File -Path $outputFile
