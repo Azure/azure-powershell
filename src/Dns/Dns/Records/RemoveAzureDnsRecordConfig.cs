@@ -12,14 +12,13 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-using Microsoft.Azure.Commands.Dns.Models;
-using Microsoft.Azure.Management.Dns.Models;
-using System;
-using System.Management.Automation;
-using ProjectResources = Microsoft.Azure.Commands.Dns.Properties.Resources;
-
 namespace Microsoft.Azure.Commands.Dns
 {
+    using System;
+    using System.Management.Automation;
+    using Microsoft.Azure.Management.Dns.Models;
+    using ProjectResources = Microsoft.Azure.Commands.Dns.Properties.Resources;
+
     /// <summary>
     /// Removes a record from a record set object.
     /// </summary>
@@ -148,7 +147,7 @@ namespace Microsoft.Azure.Commands.Dns
                             break;
                         }
 
-                    case RecordType.AAAA:
+                    case RecordType.Aaaa:
                         {
                             removedCount = result.Records.RemoveAll(record =>
                                 record is AaaaRecord
@@ -196,7 +195,7 @@ namespace Microsoft.Azure.Commands.Dns
                                 && ((PtrRecord)record).Ptrdname == this.Ptrdname);
                             break;
                         }
-                    case RecordType.CNAME:
+                    case RecordType.Cname:
                         {
                             removedCount = result.Records.RemoveAll(record =>
                                 record is CnameRecord
@@ -223,7 +222,7 @@ namespace Microsoft.Azure.Commands.Dns
                                 && string.Equals(((DsRecord)record).Digest, this.Digest, StringComparison.OrdinalIgnoreCase));
                             break;
                         }
-                    case RecordType.TLSA:
+                    case RecordType.Tlsa:
                         {
                             removedCount = result.Records.RemoveAll(record =>
                             record is TlsaRecord

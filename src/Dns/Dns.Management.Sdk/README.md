@@ -5,13 +5,14 @@ This directory contains management plane service clients of Az.Dns module.
 In this directory, run AutoRest:
 ```
 autorest --reset
-autorest --legacy
+autorest --use:@autorest/powershell@4.x
 ```
 
 ### AutoRest Configuration
 > see https://aka.ms/autorest
 ``` yaml
-csharp: true
+isSdkGenerator: true
+powershell: true
 clear-output-folder: true
 reflect-api-versions: true
 openapi-type: arm

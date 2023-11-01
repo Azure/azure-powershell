@@ -12,18 +12,13 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-using System;
-using System.Collections;
-using System.Collections.Generic;
-using System.Management.Automation;
-using Microsoft.Azure.Commands.Dns.Models;
-using Microsoft.Azure.Management.Dns.Models;
-
-using ProjectResources = Microsoft.Azure.Commands.Dns.Properties.Resources;
-
 namespace Microsoft.Azure.Commands.Dns
 
 {
+    using System.Management.Automation;
+
+    using ProjectResources = Microsoft.Azure.Commands.Dns.Properties.Resources;
+
     /// <summary>
     /// Constructs an in-memory dns record object
     /// </summary>
@@ -35,7 +30,7 @@ namespace Microsoft.Azure.Commands.Dns
         private const string ParameterSetCName = "CName";
         private const string ParameterSetTxt = "Txt";
         private const string ParameterSetSrv = "Srv";
-        private const string ParameterSetPtr = "Ptr" ;
+        private const string ParameterSetPtr = "Ptr";
         private const string ParameterSetNs = "Ns";
         private const string ParameterSetMx = "Mx";
         private const string ParameterSetCaa = "Caa";
@@ -181,12 +176,12 @@ namespace Microsoft.Azure.Commands.Dns
                     }
                 case ParameterSetPtr:
                     {
-                        result = new PtrRecord {Ptrdname = this.Ptrdname};
+                        result = new PtrRecord { Ptrdname = this.Ptrdname };
                         break;
                     }
                 case ParameterSetCaa:
                     {
-                        result = new CaaRecord { Flags = this.CaaFlags, Tag = this.CaaTag, Value = this.CaaValue};
+                        result = new CaaRecord { Flags = this.CaaFlags, Tag = this.CaaTag, Value = this.CaaValue };
                         break;
                     }
                 case ParameterSetDs:

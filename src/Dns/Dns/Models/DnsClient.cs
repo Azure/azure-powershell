@@ -12,22 +12,22 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-using System;
-using System.Collections;
-using System.Collections.Generic;
-using System.Linq;
-using Microsoft.Azure.Commands.Common.Authentication;
-using Microsoft.Azure.Commands.Common.Authentication.Abstractions;
-using Microsoft.Azure.Commands.Dns.Extensions;
-using Microsoft.Azure.Commands.ResourceManager.Common.Tags;
-using Microsoft.Azure.Management.Dns;
-using Microsoft.Azure.Management.Dns.Models;
-using Microsoft.Rest.Azure;
-using ProjectResources = Microsoft.Azure.Commands.Dns.Properties.Resources;
-using Sdk = Microsoft.Azure.Management.Dns.Models;
-
-namespace Microsoft.Azure.Commands.Dns.Models
+namespace Microsoft.Azure.Commands.Dns
 {
+    using System;
+    using System.Collections;
+    using System.Collections.Generic;
+    using System.Linq;
+    using Microsoft.Azure.Commands.Common.Authentication;
+    using Microsoft.Azure.Commands.Common.Authentication.Abstractions;
+    using Microsoft.Azure.Commands.Dns.Extensions;
+    using Microsoft.Azure.Commands.ResourceManager.Common.Tags;
+    using Microsoft.Azure.Management.Dns;
+    using Microsoft.Azure.Management.Dns.Models;
+    using Microsoft.Rest.Azure;
+    using ProjectResources = Microsoft.Azure.Commands.Dns.Properties.Resources;
+    using Sdk = Microsoft.Azure.Management.Dns.Models;
+
     public class DnsClient
     {
         public const string DnsResourceLocation = "global";
@@ -35,8 +35,8 @@ namespace Microsoft.Azure.Commands.Dns.Models
         private Dictionary<RecordType, Type> recordTypeValidationEntries = new Dictionary<RecordType, Type>()
         {
             {RecordType.A, typeof (ARecord)},
-            {RecordType.AAAA, typeof (AaaaRecord)},
-            {RecordType.CNAME, typeof (CnameRecord)},
+            {RecordType.Aaaa, typeof (AaaaRecord)},
+            {RecordType.Cname, typeof (CnameRecord)},
             {RecordType.MX, typeof (MxRecord)},
             {RecordType.NS, typeof (NsRecord)},
             {RecordType.SOA, typeof (SoaRecord)},
@@ -45,7 +45,7 @@ namespace Microsoft.Azure.Commands.Dns.Models
             {RecordType.TXT, typeof (TxtRecord)},
             {RecordType.CAA, typeof (CaaRecord)},
             {RecordType.DS, typeof (DsRecord)},
-            {RecordType.TLSA, typeof (TlsaRecord)},
+            {RecordType.Tlsa, typeof (TlsaRecord)},
         };
 
         public DnsClient(IAzureContext context)
@@ -198,7 +198,7 @@ namespace Microsoft.Azure.Commands.Dns.Models
             var properties = new RecordSet
             {
                 Metadata = TagsConversionHelper.CreateTagDictionary(tags, validate: true),
-                TTL = ttl
+                Ttl = ttl
             };
 
             if (resourceRecords != null && resourceRecords.Length != 0)
@@ -232,10 +232,10 @@ namespace Microsoft.Azure.Commands.Dns.Models
                 case RecordType.A:
                     properties.ARecords = resourceRecords.Select(x => (Sdk.ARecord)(x as ARecord).ToMamlRecord()).ToList();
                     break;
-                case RecordType.AAAA:
+                case RecordType.Aaaa:
                     properties.AaaaRecords = resourceRecords.Select(x => (Sdk.AaaaRecord)(x as AaaaRecord).ToMamlRecord()).ToList();
                     break;
-                case RecordType.CNAME:
+                case RecordType.Cname:
                     if (resourceRecords.Length > 1)
                     {
                         throw new ArgumentException(ProjectResources.Error_AddRecordMultipleCnames);
@@ -267,7 +267,7 @@ namespace Microsoft.Azure.Commands.Dns.Models
                 case RecordType.DS:
                     properties.DsRecords = resourceRecords.Select(x => (Sdk.DsRecord)(x as DsRecord).ToMamlRecord()).ToList();
                     break;
-                case RecordType.TLSA:
+                case RecordType.Tlsa:
                     properties.TlsaRecords = resourceRecords.Select(x => (Sdk.TlsaRecord)(x as TlsaRecord).ToMamlRecord()).ToList();
                     break;
             }
@@ -275,9 +275,9 @@ namespace Microsoft.Azure.Commands.Dns.Models
 
         private void FillEmptyRecordsForType(RecordSet properties, RecordType recordType)
         {
-            properties.AaaaRecords = recordType == RecordType.AAAA ? new List<Management.Dns.Models.AaaaRecord>() : null;
+            properties.AaaaRecords = recordType == RecordType.Aaaa ? new List<Management.Dns.Models.AaaaRecord>() : null;
             properties.ARecords = recordType == RecordType.A ? new List<Management.Dns.Models.ARecord>() : null;
-            properties.CnameRecord = recordType == RecordType.CNAME ? new Management.Dns.Models.CnameRecord(String.Empty) : null;
+            properties.CnameRecord = recordType == RecordType.Cname ? new Management.Dns.Models.CnameRecord(String.Empty) : null;
             properties.MxRecords = recordType == RecordType.MX ? new List<Management.Dns.Models.MxRecord>() : null;
             properties.NsRecords = recordType == RecordType.NS ? new List<Management.Dns.Models.NsRecord>() : null;
             properties.PtrRecords = recordType == RecordType.PTR ? new List<Management.Dns.Models.PtrRecord>() : null;
@@ -286,7 +286,7 @@ namespace Microsoft.Azure.Commands.Dns.Models
             properties.TxtRecords = recordType == RecordType.TXT ? new List<Management.Dns.Models.TxtRecord>() : null;
             properties.CaaRecords = recordType == RecordType.CAA ? new List<Management.Dns.Models.CaaRecord>() : null;
             properties.DsRecords = recordType == RecordType.DS ? new List<Management.Dns.Models.DsRecord>() : null;
-            properties.TlsaRecords = recordType == RecordType.TLSA ? new List<Management.Dns.Models.TlsaRecord>() : null;
+            properties.TlsaRecords = recordType == RecordType.Tlsa ? new List<Management.Dns.Models.TlsaRecord>() : null;
         }
 
         public DnsRecordSet UpdateDnsRecordSet(DnsRecordSet recordSet, bool overwrite)
@@ -298,11 +298,11 @@ namespace Microsoft.Azure.Commands.Dns.Models
                 recordSet.RecordType,
                 new RecordSet
                 {
-                    TTL = recordSet.Ttl,
+                    Ttl = recordSet.Ttl,
                     TargetResource = string.IsNullOrWhiteSpace(recordSet.TargetResourceId) ? null : new Sdk.SubResource(recordSet.TargetResourceId),
                     Metadata = TagsConversionHelper.CreateTagDictionary(recordSet.Metadata, validate: true),
                     AaaaRecords =
-                        recordSet.RecordType == RecordType.AAAA
+                        recordSet.RecordType == RecordType.Aaaa
                             ? GetMamlRecords<AaaaRecord, Management.Dns.Models.AaaaRecord>(recordSet.Records)
                             : null,
                     ARecords =
@@ -334,7 +334,7 @@ namespace Microsoft.Azure.Commands.Dns.Models
                             ? GetMamlRecords<SoaRecord, Management.Dns.Models.SoaRecord>(recordSet.Records).SingleOrDefault()
                             : null,
                     CnameRecord =
-                        recordSet.RecordType == RecordType.CNAME
+                        recordSet.RecordType == RecordType.Cname
                             ? GetMamlRecords<CnameRecord, Management.Dns.Models.CnameRecord>(recordSet.Records).SingleOrDefault()
                             : null,
                     CaaRecords =
@@ -346,7 +346,7 @@ namespace Microsoft.Azure.Commands.Dns.Models
                             ? GetMamlRecords<DsRecord, Management.Dns.Models.DsRecord>(recordSet.Records)
                             : null,
                     TlsaRecords =
-                        recordSet.RecordType == RecordType.TLSA
+                        recordSet.RecordType == RecordType.Tlsa
                             ? GetMamlRecords<TlsaRecord, Management.Dns.Models.TlsaRecord>(recordSet.Records)
                             : null
                 },
@@ -457,7 +457,7 @@ namespace Microsoft.Azure.Commands.Dns.Models
                 Records = GetPowerShellRecords(mamlRecordSet),
                 Metadata = TagsConversionHelper.CreateTagHashtable(mamlRecordSet.Metadata),
                 ResourceGroupName = resourceGroupName,
-                Ttl = (uint)mamlRecordSet.TTL.GetValueOrDefault(),
+                Ttl = (uint)mamlRecordSet.Ttl.GetValueOrDefault(),
                 ZoneName = zoneName,
                 TargetResourceId = mamlRecordSet.TargetResource != null ? mamlRecordSet.TargetResource.Id : string.Empty,
                 ProvisioningState = mamlRecordSet.ProvisioningState,

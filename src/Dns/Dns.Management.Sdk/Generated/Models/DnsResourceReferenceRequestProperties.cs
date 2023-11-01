@@ -10,25 +10,24 @@ namespace Microsoft.Azure.Management.Dns.Models
     /// <summary>
     /// Represents the properties of the Dns Resource Reference Request.
     /// </summary>
-    [Microsoft.Rest.Serialization.JsonTransformation]
-    public partial class DnsResourceReferenceRequest
+    public partial class DnsResourceReferenceRequestProperties
     {
         /// <summary>
-        /// Initializes a new instance of the DnsResourceReferenceRequest class.
+        /// Initializes a new instance of the DnsResourceReferenceRequestProperties class.
         /// </summary>
-        public DnsResourceReferenceRequest()
+        public DnsResourceReferenceRequestProperties()
         {
             CustomInit();
         }
 
         /// <summary>
-        /// Initializes a new instance of the DnsResourceReferenceRequest class.
+        /// Initializes a new instance of the DnsResourceReferenceRequestProperties class.
         /// </summary>
 
         /// <param name="targetResources">A list of references to azure resources for which referencing dns records
         /// need to be queried.
         /// </param>
-        public DnsResourceReferenceRequest(System.Collections.Generic.IList<SubResource> targetResources = default(System.Collections.Generic.IList<SubResource>))
+        public DnsResourceReferenceRequestProperties(System.Collections.Generic.IList<SubResource> targetResources = default(System.Collections.Generic.IList<SubResource>))
 
         {
             this.TargetResources = targetResources;
@@ -45,7 +44,7 @@ namespace Microsoft.Azure.Management.Dns.Models
         /// Gets or sets a list of references to azure resources for which referencing
         /// dns records need to be queried.
         /// </summary>
-        [Newtonsoft.Json.JsonProperty(PropertyName = "properties.targetResources")]
+        [Newtonsoft.Json.JsonProperty(PropertyName = "targetResources")]
         public System.Collections.Generic.IList<SubResource> TargetResources {get; set; }
     }
 }

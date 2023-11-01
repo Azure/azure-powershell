@@ -12,12 +12,12 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-using System.Collections.Generic;
-using System.Linq;
-using Microsoft.Azure.Management.Dns.Models;
-
 namespace Microsoft.Azure.Commands.Dns.Extensions
 {
+    using System.Collections.Generic;
+    using System.Linq;
+    using Microsoft.Azure.Management.Dns.Models;
+
     public static class ListExtensions
     {
         public static IList<SubResource> ToVirtualNetworkResources(this IList<string> virtualNetworkIds)

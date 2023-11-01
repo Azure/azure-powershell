@@ -12,12 +12,11 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-using Microsoft.Azure.Commands.Dns.Models;
-using System.Management.Automation;
-using ProjectResources = Microsoft.Azure.Commands.Dns.Properties.Resources;
-
 namespace Microsoft.Azure.Commands.Dns
 {
+    using System.Management.Automation;
+    using ProjectResources = Microsoft.Azure.Commands.Dns.Properties.Resources;
+
     /// <summary>
     /// Updates an existing record set.
     /// </summary>
@@ -39,11 +38,11 @@ namespace Microsoft.Azure.Commands.Dns
             }
 
             DnsRecordSet recordSetToUpdate = (DnsRecordSet)this.RecordSet.Clone();
-                    if (recordSetToUpdate.ZoneName != null && recordSetToUpdate.ZoneName.EndsWith("."))
-                    {
-                        recordSetToUpdate.ZoneName = recordSetToUpdate.ZoneName.TrimEnd('.');
-                        this.WriteWarning(string.Format("Modifying zone name to remove terminating '.'.  Zone name used is \"{0}\".", recordSetToUpdate.ZoneName));
-                    }
+            if (recordSetToUpdate.ZoneName != null && recordSetToUpdate.ZoneName.EndsWith("."))
+            {
+                recordSetToUpdate.ZoneName = recordSetToUpdate.ZoneName.TrimEnd('.');
+                this.WriteWarning(string.Format("Modifying zone name to remove terminating '.'.  Zone name used is \"{0}\".", recordSetToUpdate.ZoneName));
+            }
 
             ConfirmAction(
                 ProjectResources.Progress_Modifying,
@@ -56,6 +55,6 @@ namespace Microsoft.Azure.Commands.Dns
 
                 WriteObject(result);
             });
-            }
+        }
     }
-    }
+}

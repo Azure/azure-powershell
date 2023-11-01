@@ -12,12 +12,12 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-using System.Collections;
-using System.Collections.Generic;
-using Microsoft.Azure.Management.Dns.Models;
-
 namespace Microsoft.Azure.Commands.Dns
 {
+    using System.Collections;
+    using System.Collections.Generic;
+    using Microsoft.Azure.Management.Dns.Models;
+
     /// <summary>
     /// A DNS zone
     /// </summary>

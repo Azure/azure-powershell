@@ -8,27 +8,27 @@ namespace Microsoft.Azure.Management.Dns.Models
     using System.Linq;
 
     /// <summary>
-    /// Represents the properties of the Dns Resource Reference Result.
+    /// The result of dns resource reference request. Returns a list of dns
+    /// resource references for each of the azure resource in the request.
     /// </summary>
-    [Microsoft.Rest.Serialization.JsonTransformation]
-    public partial class DnsResourceReferenceResult
+    public partial class DnsResourceReferenceResultProperties
     {
         /// <summary>
-        /// Initializes a new instance of the DnsResourceReferenceResult class.
+        /// Initializes a new instance of the DnsResourceReferenceResultProperties class.
         /// </summary>
-        public DnsResourceReferenceResult()
+        public DnsResourceReferenceResultProperties()
         {
             CustomInit();
         }
 
         /// <summary>
-        /// Initializes a new instance of the DnsResourceReferenceResult class.
+        /// Initializes a new instance of the DnsResourceReferenceResultProperties class.
         /// </summary>
 
         /// <param name="dnsResourceReferences">The result of dns resource reference request. A list of dns resource
         /// references for each of the azure resource in the request
         /// </param>
-        public DnsResourceReferenceResult(System.Collections.Generic.IList<DnsResourceReference> dnsResourceReferences = default(System.Collections.Generic.IList<DnsResourceReference>))
+        public DnsResourceReferenceResultProperties(System.Collections.Generic.IList<DnsResourceReference> dnsResourceReferences = default(System.Collections.Generic.IList<DnsResourceReference>))
 
         {
             this.DnsResourceReferences = dnsResourceReferences;
@@ -45,7 +45,7 @@ namespace Microsoft.Azure.Management.Dns.Models
         /// Gets or sets the result of dns resource reference request. A list of dns
         /// resource references for each of the azure resource in the request
         /// </summary>
-        [Newtonsoft.Json.JsonProperty(PropertyName = "properties.dnsResourceReferences")]
+        [Newtonsoft.Json.JsonProperty(PropertyName = "dnsResourceReferences")]
         public System.Collections.Generic.IList<DnsResourceReference> DnsResourceReferences {get; set; }
     }
 }

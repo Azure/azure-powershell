@@ -8,46 +8,21 @@ namespace Microsoft.Azure.Management.Dns.Models
     using System.Linq;
 
     /// <summary>
-    /// Describes a DNS zone.
+    /// Represents the properties of the zone.
     /// </summary>
-    [Microsoft.Rest.Serialization.JsonTransformation]
-    public partial class Zone : Resource
+    public partial class ZoneProperties
     {
         /// <summary>
-        /// Initializes a new instance of the Zone class.
+        /// Initializes a new instance of the ZoneProperties class.
         /// </summary>
-        public Zone()
+        public ZoneProperties()
         {
             CustomInit();
         }
 
         /// <summary>
-        /// Initializes a new instance of the Zone class.
+        /// Initializes a new instance of the ZoneProperties class.
         /// </summary>
-
-        /// <param name="id">Resource ID.
-        /// </param>
-
-        /// <param name="name">Resource name.
-        /// </param>
-
-        /// <param name="type">Resource type.
-        /// </param>
-
-        /// <param name="location">Resource location.
-        /// </param>
-
-        /// <param name="tags">Resource tags.
-        /// </param>
-
-        /// <param name="etag">The etag of the zone.
-        /// </param>
-
-        /// <param name="systemData">Metadata pertaining to creation and last modification of the resource.
-        /// </param>
-
-        /// <param name="zoneType">The type of this DNS zone (Public or Private).
-        /// Possible values include: 'Public', 'Private'</param>
 
         /// <param name="maxNumberOfRecordSets">The maximum number of record sets that can be created in this DNS zone. 
         /// This is a read-only property and any attempt to set this value will be
@@ -67,6 +42,9 @@ namespace Microsoft.Azure.Management.Dns.Models
         /// attempt to set this value will be ignored.
         /// </param>
 
+        /// <param name="zoneType">The type of this DNS zone (Public or Private).
+        /// Possible values include: 'Public', 'Private'</param>
+
         /// <param name="registrationVirtualNetworks">A list of references to virtual networks that register hostnames in this
         /// DNS zone. This is a only when ZoneType is Private.
         /// </param>
@@ -77,17 +55,14 @@ namespace Microsoft.Azure.Management.Dns.Models
 
         /// <param name="signingKeys">The list of signing keys.
         /// </param>
-        public Zone(string location, string id = default(string), string name = default(string), string type = default(string), System.Collections.Generic.IDictionary<string, string> tags = default(System.Collections.Generic.IDictionary<string, string>), string etag = default(string), SystemData systemData = default(SystemData), ZoneType? zoneType = default(ZoneType?), long? maxNumberOfRecordSets = default(long?), long? maxNumberOfRecordsPerRecordSet = default(long?), long? numberOfRecordSets = default(long?), System.Collections.Generic.IList<string> nameServers = default(System.Collections.Generic.IList<string>), System.Collections.Generic.IList<SubResource> registrationVirtualNetworks = default(System.Collections.Generic.IList<SubResource>), System.Collections.Generic.IList<SubResource> resolutionVirtualNetworks = default(System.Collections.Generic.IList<SubResource>), System.Collections.Generic.IList<SigningKey> signingKeys = default(System.Collections.Generic.IList<SigningKey>))
+        public ZoneProperties(long? maxNumberOfRecordSets = default(long?), long? maxNumberOfRecordsPerRecordSet = default(long?), long? numberOfRecordSets = default(long?), System.Collections.Generic.IList<string> nameServers = default(System.Collections.Generic.IList<string>), ZoneType? zoneType = default(ZoneType?), System.Collections.Generic.IList<SubResource> registrationVirtualNetworks = default(System.Collections.Generic.IList<SubResource>), System.Collections.Generic.IList<SubResource> resolutionVirtualNetworks = default(System.Collections.Generic.IList<SubResource>), System.Collections.Generic.IList<SigningKey> signingKeys = default(System.Collections.Generic.IList<SigningKey>))
 
-        : base(location, id, name, type, tags)
         {
-            this.Etag = etag;
-            this.SystemData = systemData;
-            this.ZoneType = zoneType;
             this.MaxNumberOfRecordSets = maxNumberOfRecordSets;
             this.MaxNumberOfRecordsPerRecordSet = maxNumberOfRecordsPerRecordSet;
             this.NumberOfRecordSets = numberOfRecordSets;
             this.NameServers = nameServers;
+            this.ZoneType = zoneType;
             this.RegistrationVirtualNetworks = registrationVirtualNetworks;
             this.ResolutionVirtualNetworks = resolutionVirtualNetworks;
             this.SigningKeys = signingKeys;
@@ -101,29 +76,11 @@ namespace Microsoft.Azure.Management.Dns.Models
 
 
         /// <summary>
-        /// Gets or sets the etag of the zone.
-        /// </summary>
-        [Newtonsoft.Json.JsonProperty(PropertyName = "etag")]
-        public string Etag {get; set; }
-
-        /// <summary>
-        /// Gets metadata pertaining to creation and last modification of the resource.
-        /// </summary>
-        [Newtonsoft.Json.JsonProperty(PropertyName = "systemData")]
-        public SystemData SystemData {get; private set; }
-
-        /// <summary>
-        /// Gets or sets the type of this DNS zone (Public or Private). Possible values include: &#39;Public&#39;, &#39;Private&#39;
-        /// </summary>
-        [Newtonsoft.Json.JsonProperty(PropertyName = "properties.zoneType")]
-        public ZoneType? ZoneType {get; set; }
-
-        /// <summary>
         /// Gets the maximum number of record sets that can be created in this DNS
         /// zone.  This is a read-only property and any attempt to set this value will
         /// be ignored.
         /// </summary>
-        [Newtonsoft.Json.JsonProperty(PropertyName = "properties.maxNumberOfRecordSets")]
+        [Newtonsoft.Json.JsonProperty(PropertyName = "maxNumberOfRecordSets")]
         public long? MaxNumberOfRecordSets {get; private set; }
 
         /// <summary>
@@ -131,58 +88,47 @@ namespace Microsoft.Azure.Management.Dns.Models
         /// this DNS zone.  This is a read-only property and any attempt to set this
         /// value will be ignored.
         /// </summary>
-        [Newtonsoft.Json.JsonProperty(PropertyName = "properties.maxNumberOfRecordsPerRecordSet")]
+        [Newtonsoft.Json.JsonProperty(PropertyName = "maxNumberOfRecordsPerRecordSet")]
         public long? MaxNumberOfRecordsPerRecordSet {get; private set; }
 
         /// <summary>
         /// Gets the current number of record sets in this DNS zone.  This is a
         /// read-only property and any attempt to set this value will be ignored.
         /// </summary>
-        [Newtonsoft.Json.JsonProperty(PropertyName = "properties.numberOfRecordSets")]
+        [Newtonsoft.Json.JsonProperty(PropertyName = "numberOfRecordSets")]
         public long? NumberOfRecordSets {get; private set; }
 
         /// <summary>
         /// Gets the name servers for this DNS zone. This is a read-only property and
         /// any attempt to set this value will be ignored.
         /// </summary>
-        [Newtonsoft.Json.JsonProperty(PropertyName = "properties.nameServers")]
+        [Newtonsoft.Json.JsonProperty(PropertyName = "nameServers")]
         public System.Collections.Generic.IList<string> NameServers {get; private set; }
+
+        /// <summary>
+        /// Gets or sets the type of this DNS zone (Public or Private). Possible values include: &#39;Public&#39;, &#39;Private&#39;
+        /// </summary>
+        [Newtonsoft.Json.JsonProperty(PropertyName = "zoneType")]
+        public ZoneType? ZoneType {get; set; }
 
         /// <summary>
         /// Gets or sets a list of references to virtual networks that register
         /// hostnames in this DNS zone. This is a only when ZoneType is Private.
         /// </summary>
-        [Newtonsoft.Json.JsonProperty(PropertyName = "properties.registrationVirtualNetworks")]
+        [Newtonsoft.Json.JsonProperty(PropertyName = "registrationVirtualNetworks")]
         public System.Collections.Generic.IList<SubResource> RegistrationVirtualNetworks {get; set; }
 
         /// <summary>
         /// Gets or sets a list of references to virtual networks that resolve records
         /// in this DNS zone. This is a only when ZoneType is Private.
         /// </summary>
-        [Newtonsoft.Json.JsonProperty(PropertyName = "properties.resolutionVirtualNetworks")]
+        [Newtonsoft.Json.JsonProperty(PropertyName = "resolutionVirtualNetworks")]
         public System.Collections.Generic.IList<SubResource> ResolutionVirtualNetworks {get; set; }
 
         /// <summary>
         /// Gets the list of signing keys.
         /// </summary>
-        [Newtonsoft.Json.JsonProperty(PropertyName = "properties.signingKeys")]
+        [Newtonsoft.Json.JsonProperty(PropertyName = "signingKeys")]
         public System.Collections.Generic.IList<SigningKey> SigningKeys {get; private set; }
-        /// <summary>
-        /// Validate the object.
-        /// </summary>
-        /// <exception cref="Microsoft.Rest.ValidationException">
-        /// Thrown if validation fails
-        /// </exception>
-        public override void Validate()
-        {
-            base.Validate();
-
-
-
-
-
-
-
-        }
     }
 }

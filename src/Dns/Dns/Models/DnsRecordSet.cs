@@ -12,15 +12,15 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-using System;
-using System.Collections;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using Microsoft.Azure.Management.Dns.Models;
-
 namespace Microsoft.Azure.Commands.Dns
 {
+    using System;
+    using System.Collections;
+    using System.Collections.Generic;
+    using System.Linq;
+    using System.Text;
+    using Microsoft.Azure.Management.Dns.Models;
+
     /// <summary>
     /// Represents a set of records with the same name, with the same type and in the same zone.
     /// </summary>

@@ -12,15 +12,14 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-using Microsoft.Azure.Commands.Dns.Models;
-using Microsoft.Azure.Management.Dns.Models;
-using System;
-using System.Collections.Generic;
-using System.Management.Automation;
-using ProjectResources = Microsoft.Azure.Commands.Dns.Properties.Resources;
-
 namespace Microsoft.Azure.Commands.Dns
 {
+    using System;
+    using System.Collections.Generic;
+    using System.Management.Automation;
+    using Microsoft.Azure.Management.Dns.Models;
+    using ProjectResources = Microsoft.Azure.Commands.Dns.Properties.Resources;
+
     /// <summary>
     /// Adds a record to a record set object.
     /// </summary>
@@ -148,7 +147,7 @@ namespace Microsoft.Azure.Commands.Dns
                         break;
                     }
 
-                case RecordType.AAAA:
+                case RecordType.Aaaa:
                     {
                         result.Records.Add(new AaaaRecord { Ipv6Address = this.Ipv6Address });
                         break;
@@ -180,7 +179,7 @@ namespace Microsoft.Azure.Commands.Dns
                         result.Records.Add(new PtrRecord { Ptrdname = this.Ptrdname });
                         break;
                     }
-                case RecordType.CNAME:
+                case RecordType.Cname:
                     {
                         if (result.Records.Count != 0)
                         {
@@ -203,7 +202,7 @@ namespace Microsoft.Azure.Commands.Dns
                     }
                 case RecordType.CAA:
                     {
-                        result.Records.Add(new CaaRecord { Flags = this.CaaFlags, Tag = this.CaaTag, Value = this.CaaValue});
+                        result.Records.Add(new CaaRecord { Flags = this.CaaFlags, Tag = this.CaaTag, Value = this.CaaValue });
                         break;
                     }
                 case RecordType.DS:
@@ -211,7 +210,7 @@ namespace Microsoft.Azure.Commands.Dns
                         result.Records.Add(new DsRecord { KeyTag = this.KeyTag, Algorithm = this.Algorithm, DigestType = this.DigestType, Digest = this.Digest });
                         break;
                     }
-                case RecordType.TLSA:
+                case RecordType.Tlsa:
                     {
                         result.Records.Add(new TlsaRecord { Usage = this.Usage, Selector = this.Selector, MatchingType = this.MatchingType, CertificateAssociationData = this.CertificateAssociationData });
                         break;
