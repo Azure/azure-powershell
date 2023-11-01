@@ -118,7 +118,7 @@ namespace Microsoft.Azure.Commands.Compute.Strategies.ComputeRp
                             StorageProfile = new VirtualMachineScaleSetStorageProfile
                             {
                                 ImageReference = (imageReferenceId == null && sharedImageGalleryId == null) ? imageAndOsType?.Image 
-                                : (imageReferenceId == null ? new ImageReference
+                                : (sharedImageGalleryId != null ? new ImageReference
                                 {
                                     SharedGalleryImageId = sharedImageGalleryId
                                 }

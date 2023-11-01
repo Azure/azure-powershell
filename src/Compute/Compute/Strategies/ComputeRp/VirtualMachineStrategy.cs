@@ -117,7 +117,7 @@ namespace Microsoft.Azure.Commands.Compute.Strategies.ComputeRp
                         StorageProfile = new StorageProfile
                         {
                             ImageReference = (imageReferenceId == null && sharedGalleryImageId == null) ? imageAndOsType?.Image
-                                : (imageReferenceId == null ? new ImageReference
+                                : (sharedGalleryImageId != null ? new ImageReference
                                 {
                                     SharedGalleryImageId = sharedGalleryImageId
                                 }
