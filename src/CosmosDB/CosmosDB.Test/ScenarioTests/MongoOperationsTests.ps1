@@ -571,7 +571,7 @@ Test MongoDB Throughput cmdlets using all paramter sets
 #>
 function Test-MongoThroughputCmdlets
 {
-  $AccountName = "mongo-db0045"
+  $AccountName = "mongo-db0046"
   $rgName = "CosmosDBResourceGroup45"
   $DatabaseName = "dbName3"
   $CollectionName = "collectionName"

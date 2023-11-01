@@ -111,6 +111,14 @@ namespace Microsoft.Azure.Commands.CosmosDB
                 databaseAccountUpdateParameters.NetworkAclBypass =
                     NetworkAclBypass == "AzureServices" ? SDKModel.NetworkAclBypass.AzureServices : SDKModel.NetworkAclBypass.None;
             }
+            if (EnablePriorityBasedExecution != null)
+            {
+                databaseAccountUpdateParameters.EnablePriorityBasedExecution = EnablePriorityBasedExecution;
+            }
+            if (DefaultPriorityLevel != null)
+            {
+                databaseAccountUpdateParameters.DefaultPriorityLevel = DefaultPriorityLevel;
+            }
 
             if (!string.IsNullOrEmpty(DefaultConsistencyLevel))
             {

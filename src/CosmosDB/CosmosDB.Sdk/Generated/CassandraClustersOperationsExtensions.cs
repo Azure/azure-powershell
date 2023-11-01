@@ -407,9 +407,13 @@ namespace Microsoft.Azure.Management.CosmosDB
             /// <param name='clusterName'>
             /// Managed Cassandra cluster name.
             /// </param>
-            public static void Deallocate(this ICassandraClustersOperations operations, string resourceGroupName, string clusterName)
+            /// <param name='xMsForceDeallocate'>
+            /// Force to deallocate a cluster of Cluster Type Production. Force to
+            /// deallocate a cluster of Cluster Type Production might cause data loss
+            /// </param>
+            public static void Deallocate(this ICassandraClustersOperations operations, string resourceGroupName, string clusterName, bool? xMsForceDeallocate = default(bool?))
             {
-                operations.DeallocateAsync(resourceGroupName, clusterName).GetAwaiter().GetResult();
+                operations.DeallocateAsync(resourceGroupName, clusterName, xMsForceDeallocate).GetAwaiter().GetResult();
             }
 
             /// <summary>
@@ -427,12 +431,16 @@ namespace Microsoft.Azure.Management.CosmosDB
             /// <param name='clusterName'>
             /// Managed Cassandra cluster name.
             /// </param>
+            /// <param name='xMsForceDeallocate'>
+            /// Force to deallocate a cluster of Cluster Type Production. Force to
+            /// deallocate a cluster of Cluster Type Production might cause data loss
+            /// </param>
             /// <param name='cancellationToken'>
             /// The cancellation token.
             /// </param>
-            public static async Task DeallocateAsync(this ICassandraClustersOperations operations, string resourceGroupName, string clusterName, CancellationToken cancellationToken = default(CancellationToken))
+            public static async Task DeallocateAsync(this ICassandraClustersOperations operations, string resourceGroupName, string clusterName, bool? xMsForceDeallocate = default(bool?), CancellationToken cancellationToken = default(CancellationToken))
             {
-                (await operations.DeallocateWithHttpMessagesAsync(resourceGroupName, clusterName, null, cancellationToken).ConfigureAwait(false)).Dispose();
+                (await operations.DeallocateWithHttpMessagesAsync(resourceGroupName, clusterName, xMsForceDeallocate, null, cancellationToken).ConfigureAwait(false)).Dispose();
             }
 
             /// <summary>
@@ -714,9 +722,13 @@ namespace Microsoft.Azure.Management.CosmosDB
             /// <param name='clusterName'>
             /// Managed Cassandra cluster name.
             /// </param>
-            public static void BeginDeallocate(this ICassandraClustersOperations operations, string resourceGroupName, string clusterName)
+            /// <param name='xMsForceDeallocate'>
+            /// Force to deallocate a cluster of Cluster Type Production. Force to
+            /// deallocate a cluster of Cluster Type Production might cause data loss
+            /// </param>
+            public static void BeginDeallocate(this ICassandraClustersOperations operations, string resourceGroupName, string clusterName, bool? xMsForceDeallocate = default(bool?))
             {
-                operations.BeginDeallocateAsync(resourceGroupName, clusterName).GetAwaiter().GetResult();
+                operations.BeginDeallocateAsync(resourceGroupName, clusterName, xMsForceDeallocate).GetAwaiter().GetResult();
             }
 
             /// <summary>
@@ -734,12 +746,16 @@ namespace Microsoft.Azure.Management.CosmosDB
             /// <param name='clusterName'>
             /// Managed Cassandra cluster name.
             /// </param>
+            /// <param name='xMsForceDeallocate'>
+            /// Force to deallocate a cluster of Cluster Type Production. Force to
+            /// deallocate a cluster of Cluster Type Production might cause data loss
+            /// </param>
             /// <param name='cancellationToken'>
             /// The cancellation token.
             /// </param>
-            public static async Task BeginDeallocateAsync(this ICassandraClustersOperations operations, string resourceGroupName, string clusterName, CancellationToken cancellationToken = default(CancellationToken))
+            public static async Task BeginDeallocateAsync(this ICassandraClustersOperations operations, string resourceGroupName, string clusterName, bool? xMsForceDeallocate = default(bool?), CancellationToken cancellationToken = default(CancellationToken))
             {
-                (await operations.BeginDeallocateWithHttpMessagesAsync(resourceGroupName, clusterName, null, cancellationToken).ConfigureAwait(false)).Dispose();
+                (await operations.BeginDeallocateWithHttpMessagesAsync(resourceGroupName, clusterName, xMsForceDeallocate, null, cancellationToken).ConfigureAwait(false)).Dispose();
             }
 
             /// <summary>

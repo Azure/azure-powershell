@@ -17,13 +17,10 @@
     * Overview of change #1
         - Additional information about change #1
 -->
-## Upcoming Preview Release
-* Introduced Restore-AzCosmosDBGremlinDatabase, Restore-AzCosmosDBGremlinGraph to restore deleted database and graph in the same account for Gremlin.
-* Introduced Restore-AzCosmosDBTable to restore deleted table in the same account.
-* New-AzCosmosDBAccount cmdlet was updated with new paramter: EnableBurstCapacity.
-* Update-AzCosmosDBAccount cmdlet was updated with: EnableBurstCapacity.
-
 ## Upcoming Release
+* Added capability to provide Min/Max Throughput RU Consumption
+* Added SecuredByPerimeter value to PublicNetworkAccess enum
+* Added Default Priority Level and Priority Based Execution enablement features
 
 ## Version 2.0.5
 * Added PublicNetworkAccess parameter to `Restore-AzCosmosDBAccount`.

@@ -1,12 +1,12 @@
 {
   "Entries": [
     {
-      "RequestUri": "/subscriptions/12053b8f-cab5-4f5c-9c1a-870580142abd/resourcegroups/CosmosDBResourceGroup9?api-version=2016-09-01",
-      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvMTIwNTNiOGYtY2FiNS00ZjVjLTljMWEtODcwNTgwMTQyYWJkL3Jlc291cmNlZ3JvdXBzL0Nvc21vc0RCUmVzb3VyY2VHcm91cDk/YXBpLXZlcnNpb249MjAxNi0wOS0wMQ==",
+      "RequestUri": "/subscriptions/2c1d0b69-225a-43b5-8220-6a139ef92e23/resourcegroups/CosmosDBResourceGroup9?api-version=2016-09-01",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvMmMxZDBiNjktMjI1YS00M2I1LTgyMjAtNmExMzllZjkyZTIzL3Jlc291cmNlZ3JvdXBzL0Nvc21vc0RCUmVzb3VyY2VHcm91cDk/YXBpLXZlcnNpb249MjAxNi0wOS0wMQ==",
       "RequestMethod": "PUT",
       "RequestHeaders": {
         "x-ms-client-request-id": [
-          "6cca2a35-b7eb-40b3-b394-f9a67d6bdbcc"
+          "74afa4ce-a156-42ca-9407-24252dd743c9"
         ],
         "Accept-Language": [
           "en-US"
@@ -33,16 +33,16 @@
           "no-cache"
         ],
         "x-ms-ratelimit-remaining-subscription-writes": [
-          "1196"
+          "1198"
         ],
         "x-ms-request-id": [
-          "13f5faf3-6c5f-43c7-9c8a-2cdf424e3d18"
+          "1538a2a7-0e2b-4a17-918b-f36a80274581"
         ],
         "x-ms-correlation-request-id": [
-          "13f5faf3-6c5f-43c7-9c8a-2cdf424e3d18"
+          "1538a2a7-0e2b-4a17-918b-f36a80274581"
         ],
         "x-ms-routing-request-id": [
-          "EASTUS:20230720T122738Z:13f5faf3-6c5f-43c7-9c8a-2cdf424e3d18"
+          "CENTRALINDIA:20231004T045252Z:1538a2a7-0e2b-4a17-918b-f36a80274581"
         ],
         "Strict-Transport-Security": [
           "max-age=31536000; includeSubDomains"
@@ -51,7 +51,7 @@
           "nosniff"
         ],
         "Date": [
-          "Thu, 20 Jul 2023 12:27:38 GMT"
+          "Wed, 04 Oct 2023 04:52:51 GMT"
         ],
         "Content-Length": [
           "197"
@@ -63,16 +63,16 @@
           "-1"
         ]
       },
-      "ResponseBody": "{\r\n  \"id\": \"/subscriptions/12053b8f-cab5-4f5c-9c1a-870580142abd/resourceGroups/CosmosDBResourceGroup9\",\r\n  \"name\": \"CosmosDBResourceGroup9\",\r\n  \"location\": \"eastus\",\r\n  \"properties\": {\r\n    \"provisioningState\": \"Succeeded\"\r\n  }\r\n}",
+      "ResponseBody": "{\r\n  \"id\": \"/subscriptions/2c1d0b69-225a-43b5-8220-6a139ef92e23/resourceGroups/CosmosDBResourceGroup9\",\r\n  \"name\": \"CosmosDBResourceGroup9\",\r\n  \"location\": \"eastus\",\r\n  \"properties\": {\r\n    \"provisioningState\": \"Succeeded\"\r\n  }\r\n}",
       "StatusCode": 201
     },
     {
-      "RequestUri": "/subscriptions/12053b8f-cab5-4f5c-9c1a-870580142abd/resourceGroups/CosmosDBResourceGroup9/providers/Microsoft.DocumentDB/databaseAccounts/testupdateregionpowershell11?api-version=2023-03-15-preview",
-      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvMTIwNTNiOGYtY2FiNS00ZjVjLTljMWEtODcwNTgwMTQyYWJkL3Jlc291cmNlR3JvdXBzL0Nvc21vc0RCUmVzb3VyY2VHcm91cDkvcHJvdmlkZXJzL01pY3Jvc29mdC5Eb2N1bWVudERCL2RhdGFiYXNlQWNjb3VudHMvdGVzdHVwZGF0ZXJlZ2lvbnBvd2Vyc2hlbGwxMT9hcGktdmVyc2lvbj0yMDIzLTAzLTE1LXByZXZpZXc=",
+      "RequestUri": "/subscriptions/2c1d0b69-225a-43b5-8220-6a139ef92e23/resourceGroups/CosmosDBResourceGroup9/providers/Microsoft.DocumentDB/databaseAccounts/testupdateregionpowershell11?api-version=2023-09-15-preview",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvMmMxZDBiNjktMjI1YS00M2I1LTgyMjAtNmExMzllZjkyZTIzL3Jlc291cmNlR3JvdXBzL0Nvc21vc0RCUmVzb3VyY2VHcm91cDkvcHJvdmlkZXJzL01pY3Jvc29mdC5Eb2N1bWVudERCL2RhdGFiYXNlQWNjb3VudHMvdGVzdHVwZGF0ZXJlZ2lvbnBvd2Vyc2hlbGwxMT9hcGktdmVyc2lvbj0yMDIzLTA5LTE1LXByZXZpZXc=",
       "RequestMethod": "GET",
       "RequestHeaders": {
         "x-ms-client-request-id": [
-          "c517458f-1758-4212-be65-5d54fcfc0672"
+          "eb838f56-874d-4630-9b2e-14c1e1563c63"
         ],
         "Accept-Language": [
           "en-US"
@@ -96,13 +96,13 @@
           "gateway"
         ],
         "x-ms-request-id": [
-          "3a97e365-9b36-486b-a832-a02f671faf32"
+          "f841560b-57d2-4ab6-b5f2-254337ea33dc"
         ],
         "x-ms-correlation-request-id": [
-          "3a97e365-9b36-486b-a832-a02f671faf32"
+          "f841560b-57d2-4ab6-b5f2-254337ea33dc"
         ],
         "x-ms-routing-request-id": [
-          "EASTUS:20230720T122739Z:3a97e365-9b36-486b-a832-a02f671faf32"
+          "CENTRALINDIA:20231004T045252Z:f841560b-57d2-4ab6-b5f2-254337ea33dc"
         ],
         "Strict-Transport-Security": [
           "max-age=31536000; includeSubDomains"
@@ -111,7 +111,7 @@
           "nosniff"
         ],
         "Date": [
-          "Thu, 20 Jul 2023 12:27:38 GMT"
+          "Wed, 04 Oct 2023 04:52:51 GMT"
         ],
         "Content-Type": [
           "application/json; charset=utf-8"
@@ -127,12 +127,12 @@
       "StatusCode": 404
     },
     {
-      "RequestUri": "/subscriptions/12053b8f-cab5-4f5c-9c1a-870580142abd/resourceGroups/CosmosDBResourceGroup9/providers/Microsoft.DocumentDB/databaseAccounts/testupdateregionpowershell11?api-version=2023-03-15-preview",
-      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvMTIwNTNiOGYtY2FiNS00ZjVjLTljMWEtODcwNTgwMTQyYWJkL3Jlc291cmNlR3JvdXBzL0Nvc21vc0RCUmVzb3VyY2VHcm91cDkvcHJvdmlkZXJzL01pY3Jvc29mdC5Eb2N1bWVudERCL2RhdGFiYXNlQWNjb3VudHMvdGVzdHVwZGF0ZXJlZ2lvbnBvd2Vyc2hlbGwxMT9hcGktdmVyc2lvbj0yMDIzLTAzLTE1LXByZXZpZXc=",
+      "RequestUri": "/subscriptions/2c1d0b69-225a-43b5-8220-6a139ef92e23/resourceGroups/CosmosDBResourceGroup9/providers/Microsoft.DocumentDB/databaseAccounts/testupdateregionpowershell11?api-version=2023-09-15-preview",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvMmMxZDBiNjktMjI1YS00M2I1LTgyMjAtNmExMzllZjkyZTIzL3Jlc291cmNlR3JvdXBzL0Nvc21vc0RCUmVzb3VyY2VHcm91cDkvcHJvdmlkZXJzL01pY3Jvc29mdC5Eb2N1bWVudERCL2RhdGFiYXNlQWNjb3VudHMvdGVzdHVwZGF0ZXJlZ2lvbnBvd2Vyc2hlbGwxMT9hcGktdmVyc2lvbj0yMDIzLTA5LTE1LXByZXZpZXc=",
       "RequestMethod": "GET",
       "RequestHeaders": {
         "x-ms-client-request-id": [
-          "c517458f-1758-4212-be65-5d54fcfc0672"
+          "eb838f56-874d-4630-9b2e-14c1e1563c63"
         ],
         "User-Agent": [
           "FxVersion/4.700.22.55902",
@@ -159,40 +159,40 @@
           "Microsoft-HTTPAPI/2.0"
         ],
         "x-ms-ratelimit-remaining-subscription-reads": [
-          "11962"
+          "11976"
         ],
         "x-ms-request-id": [
-          "a69c8613-e950-489e-92fc-3985b05625c8"
+          "50e91c92-375d-4027-b4fb-a02c085819cc"
         ],
         "x-ms-correlation-request-id": [
-          "a69c8613-e950-489e-92fc-3985b05625c8"
+          "50e91c92-375d-4027-b4fb-a02c085819cc"
         ],
         "x-ms-routing-request-id": [
-          "EASTUS:20230720T122942Z:a69c8613-e950-489e-92fc-3985b05625c8"
+          "CENTRALINDIA:20231004T045529Z:50e91c92-375d-4027-b4fb-a02c085819cc"
         ],
         "X-Content-Type-Options": [
           "nosniff"
         ],
         "Date": [
-          "Thu, 20 Jul 2023 12:29:41 GMT"
+          "Wed, 04 Oct 2023 04:55:29 GMT"
         ],
         "Content-Length": [
-          "2949"
+          "3002"
         ],
         "Content-Type": [
           "application/json"
         ]
       },
-      "ResponseBody": "{\r\n  \"id\": \"/subscriptions/12053b8f-cab5-4f5c-9c1a-870580142abd/resourceGroups/CosmosDBResourceGroup9/providers/Microsoft.DocumentDB/databaseAccounts/testupdateregionpowershell11\",\r\n  \"name\": \"testupdateregionpowershell11\",\r\n  \"location\": \"East US\",\r\n  \"type\": \"Microsoft.DocumentDB/databaseAccounts\",\r\n  \"kind\": \"GlobalDocumentDB\",\r\n  \"tags\": {},\r\n  \"systemData\": {\r\n    \"createdAt\": \"2023-07-20T12:28:55.6692679Z\"\r\n  },\r\n  \"properties\": {\r\n    \"provisioningState\": \"Succeeded\",\r\n    \"documentEndpoint\": \"https://testupdateregionpowershell11.documents.azure.com:443/\",\r\n    \"sqlEndpoint\": \"https://testupdateregionpowershell11.documents.azure.com:443/\",\r\n    \"publicNetworkAccess\": \"Enabled\",\r\n    \"enableAutomaticFailover\": true,\r\n    \"enableMultipleWriteLocations\": true,\r\n    \"enablePartitionKeyMonitor\": false,\r\n    \"isVirtualNetworkFilterEnabled\": false,\r\n    \"virtualNetworkRules\": [],\r\n    \"EnabledApiTypes\": \"Sql\",\r\n    \"disableKeyBasedMetadataWriteAccess\": false,\r\n    \"enableFreeTier\": false,\r\n    \"enableAnalyticalStorage\": false,\r\n    \"analyticalStorageConfiguration\": {\r\n      \"schemaType\": \"WellDefined\"\r\n    },\r\n    \"instanceId\": \"7a49397b-9fba-44a8-961f-1f34a77c3d27\",\r\n    \"databaseAccountOfferType\": \"Standard\",\r\n    \"enableCassandraConnector\": false,\r\n    \"connectorOffer\": \"\",\r\n    \"enableMaterializedViews\": false,\r\n    \"defaultIdentity\": \"FirstPartyIdentity\",\r\n    \"networkAclBypass\": \"None\",\r\n    \"disableLocalAuth\": false,\r\n    \"enablePartitionMerge\": false,\r\n    \"enableBurstCapacity\": false,\r\n    \"minimalTlsVersion\": \"Tls\",\r\n    \"consistencyPolicy\": {\r\n      \"defaultConsistencyLevel\": \"Session\",\r\n      \"maxIntervalInSeconds\": 5,\r\n      \"maxStalenessPrefix\": 100\r\n    },\r\n    \"configurationOverrides\": {},\r\n    \"writeLocations\": [\r\n      {\r\n        \"id\": \"testupdateregionpowershell11-eastus\",\r\n        \"locationName\": \"East US\",\r\n        \"documentEndpoint\": \"https://testupdateregionpowershell11-eastus.documents.azure.com:443/\",\r\n        \"provisioningState\": \"Succeeded\",\r\n        \"failoverPriority\": 0,\r\n        \"isZoneRedundant\": false\r\n      }\r\n    ],\r\n    \"readLocations\": [\r\n      {\r\n        \"id\": \"testupdateregionpowershell11-eastus\",\r\n        \"locationName\": \"East US\",\r\n        \"documentEndpoint\": \"https://testupdateregionpowershell11-eastus.documents.azure.com:443/\",\r\n        \"provisioningState\": \"Succeeded\",\r\n        \"failoverPriority\": 0,\r\n        \"isZoneRedundant\": false\r\n      }\r\n    ],\r\n    \"locations\": [\r\n      {\r\n        \"id\": \"testupdateregionpowershell11-eastus\",\r\n        \"locationName\": \"East US\",\r\n        \"documentEndpoint\": \"https://testupdateregionpowershell11-eastus.documents.azure.com:443/\",\r\n        \"provisioningState\": \"Succeeded\",\r\n        \"failoverPriority\": 0,\r\n        \"isZoneRedundant\": false\r\n      }\r\n    ],\r\n    \"failoverPolicies\": [\r\n      {\r\n        \"id\": \"testupdateregionpowershell11-eastus\",\r\n        \"locationName\": \"East US\",\r\n        \"failoverPriority\": 0\r\n      }\r\n    ],\r\n    \"cors\": [],\r\n    \"capabilities\": [],\r\n    \"ipRules\": [],\r\n    \"backupPolicy\": {\r\n      \"type\": \"Periodic\",\r\n      \"periodicModeProperties\": {\r\n        \"backupIntervalInMinutes\": 240,\r\n        \"backupRetentionIntervalInHours\": 8,\r\n        \"backupStorageRedundancy\": \"Geo\"\r\n      }\r\n    },\r\n    \"networkAclBypassResourceIds\": [],\r\n    \"diagnosticLogSettings\": {\r\n      \"enableFullTextQuery\": \"None\"\r\n    },\r\n    \"keysMetadata\": {\r\n      \"primaryMasterKey\": {\r\n        \"generationTime\": \"2023-07-20T12:28:55.6692679Z\"\r\n      },\r\n      \"secondaryMasterKey\": {\r\n        \"generationTime\": \"2023-07-20T12:28:55.6692679Z\"\r\n      },\r\n      \"primaryReadonlyMasterKey\": {\r\n        \"generationTime\": \"2023-07-20T12:28:55.6692679Z\"\r\n      },\r\n      \"secondaryReadonlyMasterKey\": {\r\n        \"generationTime\": \"2023-07-20T12:28:55.6692679Z\"\r\n      }\r\n    }\r\n  },\r\n  \"identity\": {\r\n    \"type\": \"None\"\r\n  }\r\n}",
+      "ResponseBody": "{\r\n  \"id\": \"/subscriptions/2c1d0b69-225a-43b5-8220-6a139ef92e23/resourceGroups/CosmosDBResourceGroup9/providers/Microsoft.DocumentDB/databaseAccounts/testupdateregionpowershell11\",\r\n  \"name\": \"testupdateregionpowershell11\",\r\n  \"location\": \"East US\",\r\n  \"type\": \"Microsoft.DocumentDB/databaseAccounts\",\r\n  \"kind\": \"GlobalDocumentDB\",\r\n  \"tags\": {},\r\n  \"systemData\": {\r\n    \"createdAt\": \"2023-10-04T04:54:33.4433296Z\"\r\n  },\r\n  \"properties\": {\r\n    \"provisioningState\": \"Succeeded\",\r\n    \"documentEndpoint\": \"https://testupdateregionpowershell11.documents.azure.com:443/\",\r\n    \"sqlEndpoint\": \"https://testupdateregionpowershell11.documents.azure.com:443/\",\r\n    \"publicNetworkAccess\": \"Enabled\",\r\n    \"enableAutomaticFailover\": true,\r\n    \"enableMultipleWriteLocations\": true,\r\n    \"enablePartitionKeyMonitor\": false,\r\n    \"isVirtualNetworkFilterEnabled\": false,\r\n    \"virtualNetworkRules\": [],\r\n    \"EnabledApiTypes\": \"Sql\",\r\n    \"disableKeyBasedMetadataWriteAccess\": false,\r\n    \"enableFreeTier\": false,\r\n    \"enableAnalyticalStorage\": false,\r\n    \"analyticalStorageConfiguration\": {\r\n      \"schemaType\": \"WellDefined\"\r\n    },\r\n    \"instanceId\": \"a919971b-e4a1-414b-bdce-3a60db308568\",\r\n    \"databaseAccountOfferType\": \"Standard\",\r\n    \"enableMaterializedViews\": false,\r\n    \"enableFullFidelityChangeFeed\": false,\r\n    \"defaultIdentity\": \"FirstPartyIdentity\",\r\n    \"networkAclBypass\": \"None\",\r\n    \"disableLocalAuth\": false,\r\n    \"enablePartitionMerge\": false,\r\n    \"enableBurstCapacity\": false,\r\n    \"enablePriorityBasedExecution\": false,\r\n    \"defaultPriorityLevel\": \"High\",\r\n    \"minimalTlsVersion\": \"Tls12\",\r\n    \"consistencyPolicy\": {\r\n      \"defaultConsistencyLevel\": \"Session\",\r\n      \"maxIntervalInSeconds\": 5,\r\n      \"maxStalenessPrefix\": 100\r\n    },\r\n    \"configurationOverrides\": {},\r\n    \"writeLocations\": [\r\n      {\r\n        \"id\": \"testupdateregionpowershell11-eastus\",\r\n        \"locationName\": \"East US\",\r\n        \"documentEndpoint\": \"https://testupdateregionpowershell11-eastus.documents.azure.com:443/\",\r\n        \"provisioningState\": \"Succeeded\",\r\n        \"failoverPriority\": 0,\r\n        \"isZoneRedundant\": false\r\n      }\r\n    ],\r\n    \"readLocations\": [\r\n      {\r\n        \"id\": \"testupdateregionpowershell11-eastus\",\r\n        \"locationName\": \"East US\",\r\n        \"documentEndpoint\": \"https://testupdateregionpowershell11-eastus.documents.azure.com:443/\",\r\n        \"provisioningState\": \"Succeeded\",\r\n        \"failoverPriority\": 0,\r\n        \"isZoneRedundant\": false\r\n      }\r\n    ],\r\n    \"locations\": [\r\n      {\r\n        \"id\": \"testupdateregionpowershell11-eastus\",\r\n        \"locationName\": \"East US\",\r\n        \"documentEndpoint\": \"https://testupdateregionpowershell11-eastus.documents.azure.com:443/\",\r\n        \"provisioningState\": \"Succeeded\",\r\n        \"failoverPriority\": 0,\r\n        \"isZoneRedundant\": false\r\n      }\r\n    ],\r\n    \"failoverPolicies\": [\r\n      {\r\n        \"id\": \"testupdateregionpowershell11-eastus\",\r\n        \"locationName\": \"East US\",\r\n        \"failoverPriority\": 0\r\n      }\r\n    ],\r\n    \"cors\": [],\r\n    \"capabilities\": [],\r\n    \"ipRules\": [],\r\n    \"backupPolicy\": {\r\n      \"type\": \"Periodic\",\r\n      \"periodicModeProperties\": {\r\n        \"backupIntervalInMinutes\": 240,\r\n        \"backupRetentionIntervalInHours\": 8,\r\n        \"backupStorageRedundancy\": \"Geo\"\r\n      }\r\n    },\r\n    \"networkAclBypassResourceIds\": [],\r\n    \"diagnosticLogSettings\": {\r\n      \"enableFullTextQuery\": \"None\"\r\n    },\r\n    \"keysMetadata\": {\r\n      \"primaryMasterKey\": {\r\n        \"generationTime\": \"2023-10-04T04:54:33.4433296Z\"\r\n      },\r\n      \"secondaryMasterKey\": {\r\n        \"generationTime\": \"2023-10-04T04:54:33.4433296Z\"\r\n      },\r\n      \"primaryReadonlyMasterKey\": {\r\n        \"generationTime\": \"2023-10-04T04:54:33.4433296Z\"\r\n      },\r\n      \"secondaryReadonlyMasterKey\": {\r\n        \"generationTime\": \"2023-10-04T04:54:33.4433296Z\"\r\n      }\r\n    }\r\n  },\r\n  \"identity\": {\r\n    \"type\": \"None\"\r\n  }\r\n}",
       "StatusCode": 200
     },
     {
-      "RequestUri": "/subscriptions/12053b8f-cab5-4f5c-9c1a-870580142abd/resourceGroups/CosmosDBResourceGroup9/providers/Microsoft.DocumentDB/databaseAccounts/testupdateregionpowershell11?api-version=2023-03-15-preview",
-      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvMTIwNTNiOGYtY2FiNS00ZjVjLTljMWEtODcwNTgwMTQyYWJkL3Jlc291cmNlR3JvdXBzL0Nvc21vc0RCUmVzb3VyY2VHcm91cDkvcHJvdmlkZXJzL01pY3Jvc29mdC5Eb2N1bWVudERCL2RhdGFiYXNlQWNjb3VudHMvdGVzdHVwZGF0ZXJlZ2lvbnBvd2Vyc2hlbGwxMT9hcGktdmVyc2lvbj0yMDIzLTAzLTE1LXByZXZpZXc=",
+      "RequestUri": "/subscriptions/2c1d0b69-225a-43b5-8220-6a139ef92e23/resourceGroups/CosmosDBResourceGroup9/providers/Microsoft.DocumentDB/databaseAccounts/testupdateregionpowershell11?api-version=2023-09-15-preview",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvMmMxZDBiNjktMjI1YS00M2I1LTgyMjAtNmExMzllZjkyZTIzL3Jlc291cmNlR3JvdXBzL0Nvc21vc0RCUmVzb3VyY2VHcm91cDkvcHJvdmlkZXJzL01pY3Jvc29mdC5Eb2N1bWVudERCL2RhdGFiYXNlQWNjb3VudHMvdGVzdHVwZGF0ZXJlZ2lvbnBvd2Vyc2hlbGwxMT9hcGktdmVyc2lvbj0yMDIzLTA5LTE1LXByZXZpZXc=",
       "RequestMethod": "GET",
       "RequestHeaders": {
         "x-ms-client-request-id": [
-          "14bb40bf-d58d-442b-a3a6-973d464f5e58"
+          "5888b544-0baa-4fa4-8f11-725fc8bcd7d4"
         ],
         "Accept-Language": [
           "en-US"
@@ -222,40 +222,40 @@
           "Microsoft-HTTPAPI/2.0"
         ],
         "x-ms-ratelimit-remaining-subscription-reads": [
-          "11973"
+          "11983"
         ],
         "x-ms-request-id": [
-          "6fca2ba3-3601-4ddf-9161-082deaaa1791"
+          "cd8d45bd-38dc-44d1-b4a9-d3f8332e37f0"
         ],
         "x-ms-correlation-request-id": [
-          "6fca2ba3-3601-4ddf-9161-082deaaa1791"
+          "cd8d45bd-38dc-44d1-b4a9-d3f8332e37f0"
         ],
         "x-ms-routing-request-id": [
-          "EASTUS:20230720T122942Z:6fca2ba3-3601-4ddf-9161-082deaaa1791"
+          "CENTRALINDIA:20231004T045530Z:cd8d45bd-38dc-44d1-b4a9-d3f8332e37f0"
         ],
         "X-Content-Type-Options": [
           "nosniff"
         ],
         "Date": [
-          "Thu, 20 Jul 2023 12:29:41 GMT"
+          "Wed, 04 Oct 2023 04:55:29 GMT"
         ],
         "Content-Length": [
-          "2949"
+          "3002"
         ],
         "Content-Type": [
           "application/json"
         ]
       },
-      "ResponseBody": "{\r\n  \"id\": \"/subscriptions/12053b8f-cab5-4f5c-9c1a-870580142abd/resourceGroups/CosmosDBResourceGroup9/providers/Microsoft.DocumentDB/databaseAccounts/testupdateregionpowershell11\",\r\n  \"name\": \"testupdateregionpowershell11\",\r\n  \"location\": \"East US\",\r\n  \"type\": \"Microsoft.DocumentDB/databaseAccounts\",\r\n  \"kind\": \"GlobalDocumentDB\",\r\n  \"tags\": {},\r\n  \"systemData\": {\r\n    \"createdAt\": \"2023-07-20T12:28:55.6692679Z\"\r\n  },\r\n  \"properties\": {\r\n    \"provisioningState\": \"Succeeded\",\r\n    \"documentEndpoint\": \"https://testupdateregionpowershell11.documents.azure.com:443/\",\r\n    \"sqlEndpoint\": \"https://testupdateregionpowershell11.documents.azure.com:443/\",\r\n    \"publicNetworkAccess\": \"Enabled\",\r\n    \"enableAutomaticFailover\": true,\r\n    \"enableMultipleWriteLocations\": true,\r\n    \"enablePartitionKeyMonitor\": false,\r\n    \"isVirtualNetworkFilterEnabled\": false,\r\n    \"virtualNetworkRules\": [],\r\n    \"EnabledApiTypes\": \"Sql\",\r\n    \"disableKeyBasedMetadataWriteAccess\": false,\r\n    \"enableFreeTier\": false,\r\n    \"enableAnalyticalStorage\": false,\r\n    \"analyticalStorageConfiguration\": {\r\n      \"schemaType\": \"WellDefined\"\r\n    },\r\n    \"instanceId\": \"7a49397b-9fba-44a8-961f-1f34a77c3d27\",\r\n    \"databaseAccountOfferType\": \"Standard\",\r\n    \"enableCassandraConnector\": false,\r\n    \"connectorOffer\": \"\",\r\n    \"enableMaterializedViews\": false,\r\n    \"defaultIdentity\": \"FirstPartyIdentity\",\r\n    \"networkAclBypass\": \"None\",\r\n    \"disableLocalAuth\": false,\r\n    \"enablePartitionMerge\": false,\r\n    \"enableBurstCapacity\": false,\r\n    \"minimalTlsVersion\": \"Tls\",\r\n    \"consistencyPolicy\": {\r\n      \"defaultConsistencyLevel\": \"Session\",\r\n      \"maxIntervalInSeconds\": 5,\r\n      \"maxStalenessPrefix\": 100\r\n    },\r\n    \"configurationOverrides\": {},\r\n    \"writeLocations\": [\r\n      {\r\n        \"id\": \"testupdateregionpowershell11-eastus\",\r\n        \"locationName\": \"East US\",\r\n        \"documentEndpoint\": \"https://testupdateregionpowershell11-eastus.documents.azure.com:443/\",\r\n        \"provisioningState\": \"Succeeded\",\r\n        \"failoverPriority\": 0,\r\n        \"isZoneRedundant\": false\r\n      }\r\n    ],\r\n    \"readLocations\": [\r\n      {\r\n        \"id\": \"testupdateregionpowershell11-eastus\",\r\n        \"locationName\": \"East US\",\r\n        \"documentEndpoint\": \"https://testupdateregionpowershell11-eastus.documents.azure.com:443/\",\r\n        \"provisioningState\": \"Succeeded\",\r\n        \"failoverPriority\": 0,\r\n        \"isZoneRedundant\": false\r\n      }\r\n    ],\r\n    \"locations\": [\r\n      {\r\n        \"id\": \"testupdateregionpowershell11-eastus\",\r\n        \"locationName\": \"East US\",\r\n        \"documentEndpoint\": \"https://testupdateregionpowershell11-eastus.documents.azure.com:443/\",\r\n        \"provisioningState\": \"Succeeded\",\r\n        \"failoverPriority\": 0,\r\n        \"isZoneRedundant\": false\r\n      }\r\n    ],\r\n    \"failoverPolicies\": [\r\n      {\r\n        \"id\": \"testupdateregionpowershell11-eastus\",\r\n        \"locationName\": \"East US\",\r\n        \"failoverPriority\": 0\r\n      }\r\n    ],\r\n    \"cors\": [],\r\n    \"capabilities\": [],\r\n    \"ipRules\": [],\r\n    \"backupPolicy\": {\r\n      \"type\": \"Periodic\",\r\n      \"periodicModeProperties\": {\r\n        \"backupIntervalInMinutes\": 240,\r\n        \"backupRetentionIntervalInHours\": 8,\r\n        \"backupStorageRedundancy\": \"Geo\"\r\n      }\r\n    },\r\n    \"networkAclBypassResourceIds\": [],\r\n    \"diagnosticLogSettings\": {\r\n      \"enableFullTextQuery\": \"None\"\r\n    },\r\n    \"keysMetadata\": {\r\n      \"primaryMasterKey\": {\r\n        \"generationTime\": \"2023-07-20T12:28:55.6692679Z\"\r\n      },\r\n      \"secondaryMasterKey\": {\r\n        \"generationTime\": \"2023-07-20T12:28:55.6692679Z\"\r\n      },\r\n      \"primaryReadonlyMasterKey\": {\r\n        \"generationTime\": \"2023-07-20T12:28:55.6692679Z\"\r\n      },\r\n      \"secondaryReadonlyMasterKey\": {\r\n        \"generationTime\": \"2023-07-20T12:28:55.6692679Z\"\r\n      }\r\n    }\r\n  },\r\n  \"identity\": {\r\n    \"type\": \"None\"\r\n  }\r\n}",
+      "ResponseBody": "{\r\n  \"id\": \"/subscriptions/2c1d0b69-225a-43b5-8220-6a139ef92e23/resourceGroups/CosmosDBResourceGroup9/providers/Microsoft.DocumentDB/databaseAccounts/testupdateregionpowershell11\",\r\n  \"name\": \"testupdateregionpowershell11\",\r\n  \"location\": \"East US\",\r\n  \"type\": \"Microsoft.DocumentDB/databaseAccounts\",\r\n  \"kind\": \"GlobalDocumentDB\",\r\n  \"tags\": {},\r\n  \"systemData\": {\r\n    \"createdAt\": \"2023-10-04T04:54:33.4433296Z\"\r\n  },\r\n  \"properties\": {\r\n    \"provisioningState\": \"Succeeded\",\r\n    \"documentEndpoint\": \"https://testupdateregionpowershell11.documents.azure.com:443/\",\r\n    \"sqlEndpoint\": \"https://testupdateregionpowershell11.documents.azure.com:443/\",\r\n    \"publicNetworkAccess\": \"Enabled\",\r\n    \"enableAutomaticFailover\": true,\r\n    \"enableMultipleWriteLocations\": true,\r\n    \"enablePartitionKeyMonitor\": false,\r\n    \"isVirtualNetworkFilterEnabled\": false,\r\n    \"virtualNetworkRules\": [],\r\n    \"EnabledApiTypes\": \"Sql\",\r\n    \"disableKeyBasedMetadataWriteAccess\": false,\r\n    \"enableFreeTier\": false,\r\n    \"enableAnalyticalStorage\": false,\r\n    \"analyticalStorageConfiguration\": {\r\n      \"schemaType\": \"WellDefined\"\r\n    },\r\n    \"instanceId\": \"a919971b-e4a1-414b-bdce-3a60db308568\",\r\n    \"databaseAccountOfferType\": \"Standard\",\r\n    \"enableMaterializedViews\": false,\r\n    \"enableFullFidelityChangeFeed\": false,\r\n    \"defaultIdentity\": \"FirstPartyIdentity\",\r\n    \"networkAclBypass\": \"None\",\r\n    \"disableLocalAuth\": false,\r\n    \"enablePartitionMerge\": false,\r\n    \"enableBurstCapacity\": false,\r\n    \"enablePriorityBasedExecution\": false,\r\n    \"defaultPriorityLevel\": \"High\",\r\n    \"minimalTlsVersion\": \"Tls12\",\r\n    \"consistencyPolicy\": {\r\n      \"defaultConsistencyLevel\": \"Session\",\r\n      \"maxIntervalInSeconds\": 5,\r\n      \"maxStalenessPrefix\": 100\r\n    },\r\n    \"configurationOverrides\": {},\r\n    \"writeLocations\": [\r\n      {\r\n        \"id\": \"testupdateregionpowershell11-eastus\",\r\n        \"locationName\": \"East US\",\r\n        \"documentEndpoint\": \"https://testupdateregionpowershell11-eastus.documents.azure.com:443/\",\r\n        \"provisioningState\": \"Succeeded\",\r\n        \"failoverPriority\": 0,\r\n        \"isZoneRedundant\": false\r\n      }\r\n    ],\r\n    \"readLocations\": [\r\n      {\r\n        \"id\": \"testupdateregionpowershell11-eastus\",\r\n        \"locationName\": \"East US\",\r\n        \"documentEndpoint\": \"https://testupdateregionpowershell11-eastus.documents.azure.com:443/\",\r\n        \"provisioningState\": \"Succeeded\",\r\n        \"failoverPriority\": 0,\r\n        \"isZoneRedundant\": false\r\n      }\r\n    ],\r\n    \"locations\": [\r\n      {\r\n        \"id\": \"testupdateregionpowershell11-eastus\",\r\n        \"locationName\": \"East US\",\r\n        \"documentEndpoint\": \"https://testupdateregionpowershell11-eastus.documents.azure.com:443/\",\r\n        \"provisioningState\": \"Succeeded\",\r\n        \"failoverPriority\": 0,\r\n        \"isZoneRedundant\": false\r\n      }\r\n    ],\r\n    \"failoverPolicies\": [\r\n      {\r\n        \"id\": \"testupdateregionpowershell11-eastus\",\r\n        \"locationName\": \"East US\",\r\n        \"failoverPriority\": 0\r\n      }\r\n    ],\r\n    \"cors\": [],\r\n    \"capabilities\": [],\r\n    \"ipRules\": [],\r\n    \"backupPolicy\": {\r\n      \"type\": \"Periodic\",\r\n      \"periodicModeProperties\": {\r\n        \"backupIntervalInMinutes\": 240,\r\n        \"backupRetentionIntervalInHours\": 8,\r\n        \"backupStorageRedundancy\": \"Geo\"\r\n      }\r\n    },\r\n    \"networkAclBypassResourceIds\": [],\r\n    \"diagnosticLogSettings\": {\r\n      \"enableFullTextQuery\": \"None\"\r\n    },\r\n    \"keysMetadata\": {\r\n      \"primaryMasterKey\": {\r\n        \"generationTime\": \"2023-10-04T04:54:33.4433296Z\"\r\n      },\r\n      \"secondaryMasterKey\": {\r\n        \"generationTime\": \"2023-10-04T04:54:33.4433296Z\"\r\n      },\r\n      \"primaryReadonlyMasterKey\": {\r\n        \"generationTime\": \"2023-10-04T04:54:33.4433296Z\"\r\n      },\r\n      \"secondaryReadonlyMasterKey\": {\r\n        \"generationTime\": \"2023-10-04T04:54:33.4433296Z\"\r\n      }\r\n    }\r\n  },\r\n  \"identity\": {\r\n    \"type\": \"None\"\r\n  }\r\n}",
       "StatusCode": 200
     },
     {
-      "RequestUri": "/subscriptions/12053b8f-cab5-4f5c-9c1a-870580142abd/resourceGroups/CosmosDBResourceGroup9/providers/Microsoft.DocumentDB/databaseAccounts/testupdateregionpowershell11?api-version=2023-03-15-preview",
-      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvMTIwNTNiOGYtY2FiNS00ZjVjLTljMWEtODcwNTgwMTQyYWJkL3Jlc291cmNlR3JvdXBzL0Nvc21vc0RCUmVzb3VyY2VHcm91cDkvcHJvdmlkZXJzL01pY3Jvc29mdC5Eb2N1bWVudERCL2RhdGFiYXNlQWNjb3VudHMvdGVzdHVwZGF0ZXJlZ2lvbnBvd2Vyc2hlbGwxMT9hcGktdmVyc2lvbj0yMDIzLTAzLTE1LXByZXZpZXc=",
+      "RequestUri": "/subscriptions/2c1d0b69-225a-43b5-8220-6a139ef92e23/resourceGroups/CosmosDBResourceGroup9/providers/Microsoft.DocumentDB/databaseAccounts/testupdateregionpowershell11?api-version=2023-09-15-preview",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvMmMxZDBiNjktMjI1YS00M2I1LTgyMjAtNmExMzllZjkyZTIzL3Jlc291cmNlR3JvdXBzL0Nvc21vc0RCUmVzb3VyY2VHcm91cDkvcHJvdmlkZXJzL01pY3Jvc29mdC5Eb2N1bWVudERCL2RhdGFiYXNlQWNjb3VudHMvdGVzdHVwZGF0ZXJlZ2lvbnBvd2Vyc2hlbGwxMT9hcGktdmVyc2lvbj0yMDIzLTA5LTE1LXByZXZpZXc=",
       "RequestMethod": "GET",
       "RequestHeaders": {
         "x-ms-client-request-id": [
-          "ab7efc04-2b99-4693-a411-6f5223c95602"
+          "b83dc03a-3618-450d-abc8-bba82eec79b3"
         ],
         "User-Agent": [
           "FxVersion/4.700.22.55902",
@@ -282,40 +282,40 @@
           "Microsoft-HTTPAPI/2.0"
         ],
         "x-ms-ratelimit-remaining-subscription-reads": [
-          "11957"
+          "11979"
         ],
         "x-ms-request-id": [
-          "a0a9bea1-6c8f-4788-bec6-c8f9bde25fd6"
+          "d003db24-6b7e-4a94-bacb-d1e38cc111e1"
         ],
         "x-ms-correlation-request-id": [
-          "a0a9bea1-6c8f-4788-bec6-c8f9bde25fd6"
+          "d003db24-6b7e-4a94-bacb-d1e38cc111e1"
         ],
         "x-ms-routing-request-id": [
-          "EASTUS:20230720T123215Z:a0a9bea1-6c8f-4788-bec6-c8f9bde25fd6"
+          "CENTRALINDIA:20231004T045810Z:d003db24-6b7e-4a94-bacb-d1e38cc111e1"
         ],
         "X-Content-Type-Options": [
           "nosniff"
         ],
         "Date": [
-          "Thu, 20 Jul 2023 12:32:14 GMT"
+          "Wed, 04 Oct 2023 04:58:09 GMT"
         ],
         "Content-Length": [
-          "3751"
+          "3829"
         ],
         "Content-Type": [
           "application/json"
         ]
       },
-      "ResponseBody": "{\r\n  \"id\": \"/subscriptions/12053b8f-cab5-4f5c-9c1a-870580142abd/resourceGroups/CosmosDBResourceGroup9/providers/Microsoft.DocumentDB/databaseAccounts/testupdateregionpowershell11\",\r\n  \"name\": \"testupdateregionpowershell11\",\r\n  \"location\": \"East US\",\r\n  \"type\": \"Microsoft.DocumentDB/databaseAccounts\",\r\n  \"kind\": \"GlobalDocumentDB\",\r\n  \"tags\": {},\r\n  \"systemData\": {\r\n    \"createdAt\": \"2023-07-20T12:28:55.6692679Z\"\r\n  },\r\n  \"properties\": {\r\n    \"provisioningState\": \"Succeeded\",\r\n    \"documentEndpoint\": \"https://testupdateregionpowershell11.documents.azure.com:443/\",\r\n    \"sqlEndpoint\": \"https://testupdateregionpowershell11.documents.azure.com:443/\",\r\n    \"publicNetworkAccess\": \"Enabled\",\r\n    \"enableAutomaticFailover\": true,\r\n    \"enableMultipleWriteLocations\": true,\r\n    \"enablePartitionKeyMonitor\": false,\r\n    \"isVirtualNetworkFilterEnabled\": false,\r\n    \"virtualNetworkRules\": [],\r\n    \"EnabledApiTypes\": \"Sql\",\r\n    \"disableKeyBasedMetadataWriteAccess\": false,\r\n    \"enableFreeTier\": false,\r\n    \"enableAnalyticalStorage\": false,\r\n    \"analyticalStorageConfiguration\": {\r\n      \"schemaType\": \"WellDefined\"\r\n    },\r\n    \"instanceId\": \"7a49397b-9fba-44a8-961f-1f34a77c3d27\",\r\n    \"databaseAccountOfferType\": \"Standard\",\r\n    \"enableCassandraConnector\": false,\r\n    \"connectorOffer\": \"\",\r\n    \"enableMaterializedViews\": false,\r\n    \"defaultIdentity\": \"FirstPartyIdentity\",\r\n    \"networkAclBypass\": \"None\",\r\n    \"disableLocalAuth\": false,\r\n    \"enablePartitionMerge\": false,\r\n    \"enableBurstCapacity\": false,\r\n    \"minimalTlsVersion\": \"Tls\",\r\n    \"consistencyPolicy\": {\r\n      \"defaultConsistencyLevel\": \"Session\",\r\n      \"maxIntervalInSeconds\": 5,\r\n      \"maxStalenessPrefix\": 100\r\n    },\r\n    \"configurationOverrides\": {},\r\n    \"writeLocations\": [\r\n      {\r\n        \"id\": \"testupdateregionpowershell11-eastus\",\r\n        \"locationName\": \"East US\",\r\n        \"documentEndpoint\": \"https://testupdateregionpowershell11-eastus.documents.azure.com:443/\",\r\n        \"provisioningState\": \"Succeeded\",\r\n        \"failoverPriority\": 0,\r\n        \"isZoneRedundant\": false\r\n      },\r\n      {\r\n        \"id\": \"testupdateregionpowershell11-westus\",\r\n        \"locationName\": \"West US\",\r\n        \"documentEndpoint\": \"https://testupdateregionpowershell11-westus.documents.azure.com:443/\",\r\n        \"provisioningState\": \"Succeeded\",\r\n        \"failoverPriority\": 1,\r\n        \"isZoneRedundant\": false\r\n      }\r\n    ],\r\n    \"readLocations\": [\r\n      {\r\n        \"id\": \"testupdateregionpowershell11-eastus\",\r\n        \"locationName\": \"East US\",\r\n        \"documentEndpoint\": \"https://testupdateregionpowershell11-eastus.documents.azure.com:443/\",\r\n        \"provisioningState\": \"Succeeded\",\r\n        \"failoverPriority\": 0,\r\n        \"isZoneRedundant\": false\r\n      },\r\n      {\r\n        \"id\": \"testupdateregionpowershell11-westus\",\r\n        \"locationName\": \"West US\",\r\n        \"documentEndpoint\": \"https://testupdateregionpowershell11-westus.documents.azure.com:443/\",\r\n        \"provisioningState\": \"Succeeded\",\r\n        \"failoverPriority\": 1,\r\n        \"isZoneRedundant\": false\r\n      }\r\n    ],\r\n    \"locations\": [\r\n      {\r\n        \"id\": \"testupdateregionpowershell11-eastus\",\r\n        \"locationName\": \"East US\",\r\n        \"documentEndpoint\": \"https://testupdateregionpowershell11-eastus.documents.azure.com:443/\",\r\n        \"provisioningState\": \"Succeeded\",\r\n        \"failoverPriority\": 0,\r\n        \"isZoneRedundant\": false\r\n      },\r\n      {\r\n        \"id\": \"testupdateregionpowershell11-westus\",\r\n        \"locationName\": \"West US\",\r\n        \"documentEndpoint\": \"https://testupdateregionpowershell11-westus.documents.azure.com:443/\",\r\n        \"provisioningState\": \"Succeeded\",\r\n        \"failoverPriority\": 1,\r\n        \"isZoneRedundant\": false\r\n      }\r\n    ],\r\n    \"failoverPolicies\": [\r\n      {\r\n        \"id\": \"testupdateregionpowershell11-eastus\",\r\n        \"locationName\": \"East US\",\r\n        \"failoverPriority\": 0\r\n      },\r\n      {\r\n        \"id\": \"testupdateregionpowershell11-westus\",\r\n        \"locationName\": \"West US\",\r\n        \"failoverPriority\": 1\r\n      }\r\n    ],\r\n    \"cors\": [],\r\n    \"capabilities\": [],\r\n    \"ipRules\": [],\r\n    \"backupPolicy\": {\r\n      \"type\": \"Periodic\",\r\n      \"periodicModeProperties\": {\r\n        \"backupIntervalInMinutes\": 240,\r\n        \"backupRetentionIntervalInHours\": 8,\r\n        \"backupStorageRedundancy\": \"Geo\"\r\n      }\r\n    },\r\n    \"networkAclBypassResourceIds\": [],\r\n    \"diagnosticLogSettings\": {\r\n      \"enableFullTextQuery\": \"None\"\r\n    },\r\n    \"keysMetadata\": {\r\n      \"primaryMasterKey\": {\r\n        \"generationTime\": \"2023-07-20T12:28:55.6692679Z\"\r\n      },\r\n      \"secondaryMasterKey\": {\r\n        \"generationTime\": \"2023-07-20T12:28:55.6692679Z\"\r\n      },\r\n      \"primaryReadonlyMasterKey\": {\r\n        \"generationTime\": \"2023-07-20T12:28:55.6692679Z\"\r\n      },\r\n      \"secondaryReadonlyMasterKey\": {\r\n        \"generationTime\": \"2023-07-20T12:28:55.6692679Z\"\r\n      }\r\n    }\r\n  },\r\n  \"identity\": {\r\n    \"type\": \"None\"\r\n  }\r\n}",
+      "ResponseBody": "{\r\n  \"id\": \"/subscriptions/2c1d0b69-225a-43b5-8220-6a139ef92e23/resourceGroups/CosmosDBResourceGroup9/providers/Microsoft.DocumentDB/databaseAccounts/testupdateregionpowershell11\",\r\n  \"name\": \"testupdateregionpowershell11\",\r\n  \"location\": \"East US\",\r\n  \"type\": \"Microsoft.DocumentDB/databaseAccounts\",\r\n  \"kind\": \"GlobalDocumentDB\",\r\n  \"tags\": {},\r\n  \"systemData\": {\r\n    \"createdAt\": \"2023-10-04T10:24:33.4433296+05:30\"\r\n  },\r\n  \"properties\": {\r\n    \"provisioningState\": \"Succeeded\",\r\n    \"documentEndpoint\": \"https://testupdateregionpowershell11.documents.azure.com:443/\",\r\n    \"sqlEndpoint\": \"https://testupdateregionpowershell11.documents.azure.com:443/\",\r\n    \"publicNetworkAccess\": \"Enabled\",\r\n    \"enableAutomaticFailover\": true,\r\n    \"enableMultipleWriteLocations\": true,\r\n    \"enablePartitionKeyMonitor\": false,\r\n    \"isVirtualNetworkFilterEnabled\": false,\r\n    \"virtualNetworkRules\": [],\r\n    \"EnabledApiTypes\": \"Sql\",\r\n    \"disableKeyBasedMetadataWriteAccess\": false,\r\n    \"enableFreeTier\": false,\r\n    \"enableAnalyticalStorage\": false,\r\n    \"analyticalStorageConfiguration\": {\r\n      \"schemaType\": \"WellDefined\"\r\n    },\r\n    \"instanceId\": \"a919971b-e4a1-414b-bdce-3a60db308568\",\r\n    \"databaseAccountOfferType\": \"Standard\",\r\n    \"enableMaterializedViews\": false,\r\n    \"enableFullFidelityChangeFeed\": false,\r\n    \"defaultIdentity\": \"FirstPartyIdentity\",\r\n    \"networkAclBypass\": \"None\",\r\n    \"disableLocalAuth\": false,\r\n    \"enablePartitionMerge\": false,\r\n    \"enableBurstCapacity\": false,\r\n    \"enablePriorityBasedExecution\": false,\r\n    \"defaultPriorityLevel\": \"High\",\r\n    \"minimalTlsVersion\": \"Tls12\",\r\n    \"consistencyPolicy\": {\r\n      \"defaultConsistencyLevel\": \"Session\",\r\n      \"maxIntervalInSeconds\": 5,\r\n      \"maxStalenessPrefix\": 100\r\n    },\r\n    \"configurationOverrides\": {},\r\n    \"writeLocations\": [\r\n      {\r\n        \"id\": \"testupdateregionpowershell11-eastus\",\r\n        \"locationName\": \"East US\",\r\n        \"documentEndpoint\": \"https://testupdateregionpowershell11-eastus.documents.azure.com:443/\",\r\n        \"provisioningState\": \"Succeeded\",\r\n        \"failoverPriority\": 0,\r\n        \"isZoneRedundant\": false\r\n      },\r\n      {\r\n        \"id\": \"testupdateregionpowershell11-westus\",\r\n        \"locationName\": \"West US\",\r\n        \"documentEndpoint\": \"https://testupdateregionpowershell11-westus.documents.azure.com:443/\",\r\n        \"provisioningState\": \"Succeeded\",\r\n        \"failoverPriority\": 1,\r\n        \"isZoneRedundant\": false\r\n      }\r\n    ],\r\n    \"readLocations\": [\r\n      {\r\n        \"id\": \"testupdateregionpowershell11-eastus\",\r\n        \"locationName\": \"East US\",\r\n        \"documentEndpoint\": \"https://testupdateregionpowershell11-eastus.documents.azure.com:443/\",\r\n        \"provisioningState\": \"Succeeded\",\r\n        \"failoverPriority\": 0,\r\n        \"isZoneRedundant\": false\r\n      },\r\n      {\r\n        \"id\": \"testupdateregionpowershell11-westus\",\r\n        \"locationName\": \"West US\",\r\n        \"documentEndpoint\": \"https://testupdateregionpowershell11-westus.documents.azure.com:443/\",\r\n        \"provisioningState\": \"Succeeded\",\r\n        \"failoverPriority\": 1,\r\n        \"isZoneRedundant\": false\r\n      }\r\n    ],\r\n    \"locations\": [\r\n      {\r\n        \"id\": \"testupdateregionpowershell11-eastus\",\r\n        \"locationName\": \"East US\",\r\n        \"documentEndpoint\": \"https://testupdateregionpowershell11-eastus.documents.azure.com:443/\",\r\n        \"provisioningState\": \"Succeeded\",\r\n        \"failoverPriority\": 0,\r\n        \"isZoneRedundant\": false\r\n      },\r\n      {\r\n        \"id\": \"testupdateregionpowershell11-westus\",\r\n        \"locationName\": \"West US\",\r\n        \"documentEndpoint\": \"https://testupdateregionpowershell11-westus.documents.azure.com:443/\",\r\n        \"provisioningState\": \"Succeeded\",\r\n        \"failoverPriority\": 1,\r\n        \"isZoneRedundant\": false\r\n      }\r\n    ],\r\n    \"failoverPolicies\": [\r\n      {\r\n        \"id\": \"testupdateregionpowershell11-eastus\",\r\n        \"locationName\": \"East US\",\r\n        \"failoverPriority\": 0\r\n      },\r\n      {\r\n        \"id\": \"testupdateregionpowershell11-westus\",\r\n        \"locationName\": \"West US\",\r\n        \"failoverPriority\": 1\r\n      }\r\n    ],\r\n    \"cors\": [],\r\n    \"capabilities\": [],\r\n    \"ipRules\": [],\r\n    \"backupPolicy\": {\r\n      \"type\": \"Periodic\",\r\n      \"periodicModeProperties\": {\r\n        \"backupIntervalInMinutes\": 240,\r\n        \"backupRetentionIntervalInHours\": 8,\r\n        \"backupStorageRedundancy\": \"Geo\"\r\n      }\r\n    },\r\n    \"networkAclBypassResourceIds\": [],\r\n    \"diagnosticLogSettings\": {\r\n      \"enableFullTextQuery\": \"None\"\r\n    },\r\n    \"keysMetadata\": {\r\n      \"primaryMasterKey\": {\r\n        \"generationTime\": \"2023-10-04T10:24:33.4433296+05:30\"\r\n      },\r\n      \"secondaryMasterKey\": {\r\n        \"generationTime\": \"2023-10-04T10:24:33.4433296+05:30\"\r\n      },\r\n      \"primaryReadonlyMasterKey\": {\r\n        \"generationTime\": \"2023-10-04T10:24:33.4433296+05:30\"\r\n      },\r\n      \"secondaryReadonlyMasterKey\": {\r\n        \"generationTime\": \"2023-10-04T10:24:33.4433296+05:30\"\r\n      }\r\n    }\r\n  },\r\n  \"identity\": {\r\n    \"type\": \"None\"\r\n  }\r\n}",
       "StatusCode": 200
     },
     {
-      "RequestUri": "/subscriptions/12053b8f-cab5-4f5c-9c1a-870580142abd/resourceGroups/CosmosDBResourceGroup9/providers/Microsoft.DocumentDB/databaseAccounts/testupdateregionpowershell11?api-version=2023-03-15-preview",
-      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvMTIwNTNiOGYtY2FiNS00ZjVjLTljMWEtODcwNTgwMTQyYWJkL3Jlc291cmNlR3JvdXBzL0Nvc21vc0RCUmVzb3VyY2VHcm91cDkvcHJvdmlkZXJzL01pY3Jvc29mdC5Eb2N1bWVudERCL2RhdGFiYXNlQWNjb3VudHMvdGVzdHVwZGF0ZXJlZ2lvbnBvd2Vyc2hlbGwxMT9hcGktdmVyc2lvbj0yMDIzLTAzLTE1LXByZXZpZXc=",
+      "RequestUri": "/subscriptions/2c1d0b69-225a-43b5-8220-6a139ef92e23/resourceGroups/CosmosDBResourceGroup9/providers/Microsoft.DocumentDB/databaseAccounts/testupdateregionpowershell11?api-version=2023-09-15-preview",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvMmMxZDBiNjktMjI1YS00M2I1LTgyMjAtNmExMzllZjkyZTIzL3Jlc291cmNlR3JvdXBzL0Nvc21vc0RCUmVzb3VyY2VHcm91cDkvcHJvdmlkZXJzL01pY3Jvc29mdC5Eb2N1bWVudERCL2RhdGFiYXNlQWNjb3VudHMvdGVzdHVwZGF0ZXJlZ2lvbnBvd2Vyc2hlbGwxMT9hcGktdmVyc2lvbj0yMDIzLTA5LTE1LXByZXZpZXc=",
       "RequestMethod": "GET",
       "RequestHeaders": {
         "x-ms-client-request-id": [
-          "ab7efc04-2b99-4693-a411-6f5223c95602"
+          "b83dc03a-3618-450d-abc8-bba82eec79b3"
         ],
         "Accept-Language": [
           "en-US"
@@ -345,40 +345,40 @@
           "Microsoft-HTTPAPI/2.0"
         ],
         "x-ms-ratelimit-remaining-subscription-reads": [
-          "11956"
+          "11978"
         ],
         "x-ms-request-id": [
-          "405db03e-83f6-443a-b358-e4d924a0ec94"
+          "87a4bf5b-1650-4511-aa4b-66c2db6a94ef"
         ],
         "x-ms-correlation-request-id": [
-          "405db03e-83f6-443a-b358-e4d924a0ec94"
+          "87a4bf5b-1650-4511-aa4b-66c2db6a94ef"
         ],
         "x-ms-routing-request-id": [
-          "EASTUS:20230720T123215Z:405db03e-83f6-443a-b358-e4d924a0ec94"
+          "CENTRALINDIA:20231004T045810Z:87a4bf5b-1650-4511-aa4b-66c2db6a94ef"
         ],
         "X-Content-Type-Options": [
           "nosniff"
         ],
         "Date": [
-          "Thu, 20 Jul 2023 12:32:15 GMT"
+          "Wed, 04 Oct 2023 04:58:10 GMT"
         ],
         "Content-Length": [
-          "3751"
+          "3829"
         ],
         "Content-Type": [
           "application/json"
         ]
       },
-      "ResponseBody": "{\r\n  \"id\": \"/subscriptions/12053b8f-cab5-4f5c-9c1a-870580142abd/resourceGroups/CosmosDBResourceGroup9/providers/Microsoft.DocumentDB/databaseAccounts/testupdateregionpowershell11\",\r\n  \"name\": \"testupdateregionpowershell11\",\r\n  \"location\": \"East US\",\r\n  \"type\": \"Microsoft.DocumentDB/databaseAccounts\",\r\n  \"kind\": \"GlobalDocumentDB\",\r\n  \"tags\": {},\r\n  \"systemData\": {\r\n    \"createdAt\": \"2023-07-20T12:28:55.6692679Z\"\r\n  },\r\n  \"properties\": {\r\n    \"provisioningState\": \"Succeeded\",\r\n    \"documentEndpoint\": \"https://testupdateregionpowershell11.documents.azure.com:443/\",\r\n    \"sqlEndpoint\": \"https://testupdateregionpowershell11.documents.azure.com:443/\",\r\n    \"publicNetworkAccess\": \"Enabled\",\r\n    \"enableAutomaticFailover\": true,\r\n    \"enableMultipleWriteLocations\": true,\r\n    \"enablePartitionKeyMonitor\": false,\r\n    \"isVirtualNetworkFilterEnabled\": false,\r\n    \"virtualNetworkRules\": [],\r\n    \"EnabledApiTypes\": \"Sql\",\r\n    \"disableKeyBasedMetadataWriteAccess\": false,\r\n    \"enableFreeTier\": false,\r\n    \"enableAnalyticalStorage\": false,\r\n    \"analyticalStorageConfiguration\": {\r\n      \"schemaType\": \"WellDefined\"\r\n    },\r\n    \"instanceId\": \"7a49397b-9fba-44a8-961f-1f34a77c3d27\",\r\n    \"databaseAccountOfferType\": \"Standard\",\r\n    \"enableCassandraConnector\": false,\r\n    \"connectorOffer\": \"\",\r\n    \"enableMaterializedViews\": false,\r\n    \"defaultIdentity\": \"FirstPartyIdentity\",\r\n    \"networkAclBypass\": \"None\",\r\n    \"disableLocalAuth\": false,\r\n    \"enablePartitionMerge\": false,\r\n    \"enableBurstCapacity\": false,\r\n    \"minimalTlsVersion\": \"Tls\",\r\n    \"consistencyPolicy\": {\r\n      \"defaultConsistencyLevel\": \"Session\",\r\n      \"maxIntervalInSeconds\": 5,\r\n      \"maxStalenessPrefix\": 100\r\n    },\r\n    \"configurationOverrides\": {},\r\n    \"writeLocations\": [\r\n      {\r\n        \"id\": \"testupdateregionpowershell11-eastus\",\r\n        \"locationName\": \"East US\",\r\n        \"documentEndpoint\": \"https://testupdateregionpowershell11-eastus.documents.azure.com:443/\",\r\n        \"provisioningState\": \"Succeeded\",\r\n        \"failoverPriority\": 0,\r\n        \"isZoneRedundant\": false\r\n      },\r\n      {\r\n        \"id\": \"testupdateregionpowershell11-westus\",\r\n        \"locationName\": \"West US\",\r\n        \"documentEndpoint\": \"https://testupdateregionpowershell11-westus.documents.azure.com:443/\",\r\n        \"provisioningState\": \"Succeeded\",\r\n        \"failoverPriority\": 1,\r\n        \"isZoneRedundant\": false\r\n      }\r\n    ],\r\n    \"readLocations\": [\r\n      {\r\n        \"id\": \"testupdateregionpowershell11-eastus\",\r\n        \"locationName\": \"East US\",\r\n        \"documentEndpoint\": \"https://testupdateregionpowershell11-eastus.documents.azure.com:443/\",\r\n        \"provisioningState\": \"Succeeded\",\r\n        \"failoverPriority\": 0,\r\n        \"isZoneRedundant\": false\r\n      },\r\n      {\r\n        \"id\": \"testupdateregionpowershell11-westus\",\r\n        \"locationName\": \"West US\",\r\n        \"documentEndpoint\": \"https://testupdateregionpowershell11-westus.documents.azure.com:443/\",\r\n        \"provisioningState\": \"Succeeded\",\r\n        \"failoverPriority\": 1,\r\n        \"isZoneRedundant\": false\r\n      }\r\n    ],\r\n    \"locations\": [\r\n      {\r\n        \"id\": \"testupdateregionpowershell11-eastus\",\r\n        \"locationName\": \"East US\",\r\n        \"documentEndpoint\": \"https://testupdateregionpowershell11-eastus.documents.azure.com:443/\",\r\n        \"provisioningState\": \"Succeeded\",\r\n        \"failoverPriority\": 0,\r\n        \"isZoneRedundant\": false\r\n      },\r\n      {\r\n        \"id\": \"testupdateregionpowershell11-westus\",\r\n        \"locationName\": \"West US\",\r\n        \"documentEndpoint\": \"https://testupdateregionpowershell11-westus.documents.azure.com:443/\",\r\n        \"provisioningState\": \"Succeeded\",\r\n        \"failoverPriority\": 1,\r\n        \"isZoneRedundant\": false\r\n      }\r\n    ],\r\n    \"failoverPolicies\": [\r\n      {\r\n        \"id\": \"testupdateregionpowershell11-eastus\",\r\n        \"locationName\": \"East US\",\r\n        \"failoverPriority\": 0\r\n      },\r\n      {\r\n        \"id\": \"testupdateregionpowershell11-westus\",\r\n        \"locationName\": \"West US\",\r\n        \"failoverPriority\": 1\r\n      }\r\n    ],\r\n    \"cors\": [],\r\n    \"capabilities\": [],\r\n    \"ipRules\": [],\r\n    \"backupPolicy\": {\r\n      \"type\": \"Periodic\",\r\n      \"periodicModeProperties\": {\r\n        \"backupIntervalInMinutes\": 240,\r\n        \"backupRetentionIntervalInHours\": 8,\r\n        \"backupStorageRedundancy\": \"Geo\"\r\n      }\r\n    },\r\n    \"networkAclBypassResourceIds\": [],\r\n    \"diagnosticLogSettings\": {\r\n      \"enableFullTextQuery\": \"None\"\r\n    },\r\n    \"keysMetadata\": {\r\n      \"primaryMasterKey\": {\r\n        \"generationTime\": \"2023-07-20T12:28:55.6692679Z\"\r\n      },\r\n      \"secondaryMasterKey\": {\r\n        \"generationTime\": \"2023-07-20T12:28:55.6692679Z\"\r\n      },\r\n      \"primaryReadonlyMasterKey\": {\r\n        \"generationTime\": \"2023-07-20T12:28:55.6692679Z\"\r\n      },\r\n      \"secondaryReadonlyMasterKey\": {\r\n        \"generationTime\": \"2023-07-20T12:28:55.6692679Z\"\r\n      }\r\n    }\r\n  },\r\n  \"identity\": {\r\n    \"type\": \"None\"\r\n  }\r\n}",
+      "ResponseBody": "{\r\n  \"id\": \"/subscriptions/2c1d0b69-225a-43b5-8220-6a139ef92e23/resourceGroups/CosmosDBResourceGroup9/providers/Microsoft.DocumentDB/databaseAccounts/testupdateregionpowershell11\",\r\n  \"name\": \"testupdateregionpowershell11\",\r\n  \"location\": \"East US\",\r\n  \"type\": \"Microsoft.DocumentDB/databaseAccounts\",\r\n  \"kind\": \"GlobalDocumentDB\",\r\n  \"tags\": {},\r\n  \"systemData\": {\r\n    \"createdAt\": \"2023-10-04T10:24:33.4433296+05:30\"\r\n  },\r\n  \"properties\": {\r\n    \"provisioningState\": \"Succeeded\",\r\n    \"documentEndpoint\": \"https://testupdateregionpowershell11.documents.azure.com:443/\",\r\n    \"sqlEndpoint\": \"https://testupdateregionpowershell11.documents.azure.com:443/\",\r\n    \"publicNetworkAccess\": \"Enabled\",\r\n    \"enableAutomaticFailover\": true,\r\n    \"enableMultipleWriteLocations\": true,\r\n    \"enablePartitionKeyMonitor\": false,\r\n    \"isVirtualNetworkFilterEnabled\": false,\r\n    \"virtualNetworkRules\": [],\r\n    \"EnabledApiTypes\": \"Sql\",\r\n    \"disableKeyBasedMetadataWriteAccess\": false,\r\n    \"enableFreeTier\": false,\r\n    \"enableAnalyticalStorage\": false,\r\n    \"analyticalStorageConfiguration\": {\r\n      \"schemaType\": \"WellDefined\"\r\n    },\r\n    \"instanceId\": \"a919971b-e4a1-414b-bdce-3a60db308568\",\r\n    \"databaseAccountOfferType\": \"Standard\",\r\n    \"enableMaterializedViews\": false,\r\n    \"enableFullFidelityChangeFeed\": false,\r\n    \"defaultIdentity\": \"FirstPartyIdentity\",\r\n    \"networkAclBypass\": \"None\",\r\n    \"disableLocalAuth\": false,\r\n    \"enablePartitionMerge\": false,\r\n    \"enableBurstCapacity\": false,\r\n    \"enablePriorityBasedExecution\": false,\r\n    \"defaultPriorityLevel\": \"High\",\r\n    \"minimalTlsVersion\": \"Tls12\",\r\n    \"consistencyPolicy\": {\r\n      \"defaultConsistencyLevel\": \"Session\",\r\n      \"maxIntervalInSeconds\": 5,\r\n      \"maxStalenessPrefix\": 100\r\n    },\r\n    \"configurationOverrides\": {},\r\n    \"writeLocations\": [\r\n      {\r\n        \"id\": \"testupdateregionpowershell11-eastus\",\r\n        \"locationName\": \"East US\",\r\n        \"documentEndpoint\": \"https://testupdateregionpowershell11-eastus.documents.azure.com:443/\",\r\n        \"provisioningState\": \"Succeeded\",\r\n        \"failoverPriority\": 0,\r\n        \"isZoneRedundant\": false\r\n      },\r\n      {\r\n        \"id\": \"testupdateregionpowershell11-westus\",\r\n        \"locationName\": \"West US\",\r\n        \"documentEndpoint\": \"https://testupdateregionpowershell11-westus.documents.azure.com:443/\",\r\n        \"provisioningState\": \"Succeeded\",\r\n        \"failoverPriority\": 1,\r\n        \"isZoneRedundant\": false\r\n      }\r\n    ],\r\n    \"readLocations\": [\r\n      {\r\n        \"id\": \"testupdateregionpowershell11-eastus\",\r\n        \"locationName\": \"East US\",\r\n        \"documentEndpoint\": \"https://testupdateregionpowershell11-eastus.documents.azure.com:443/\",\r\n        \"provisioningState\": \"Succeeded\",\r\n        \"failoverPriority\": 0,\r\n        \"isZoneRedundant\": false\r\n      },\r\n      {\r\n        \"id\": \"testupdateregionpowershell11-westus\",\r\n        \"locationName\": \"West US\",\r\n        \"documentEndpoint\": \"https://testupdateregionpowershell11-westus.documents.azure.com:443/\",\r\n        \"provisioningState\": \"Succeeded\",\r\n        \"failoverPriority\": 1,\r\n        \"isZoneRedundant\": false\r\n      }\r\n    ],\r\n    \"locations\": [\r\n      {\r\n        \"id\": \"testupdateregionpowershell11-eastus\",\r\n        \"locationName\": \"East US\",\r\n        \"documentEndpoint\": \"https://testupdateregionpowershell11-eastus.documents.azure.com:443/\",\r\n        \"provisioningState\": \"Succeeded\",\r\n        \"failoverPriority\": 0,\r\n        \"isZoneRedundant\": false\r\n      },\r\n      {\r\n        \"id\": \"testupdateregionpowershell11-westus\",\r\n        \"locationName\": \"West US\",\r\n        \"documentEndpoint\": \"https://testupdateregionpowershell11-westus.documents.azure.com:443/\",\r\n        \"provisioningState\": \"Succeeded\",\r\n        \"failoverPriority\": 1,\r\n        \"isZoneRedundant\": false\r\n      }\r\n    ],\r\n    \"failoverPolicies\": [\r\n      {\r\n        \"id\": \"testupdateregionpowershell11-eastus\",\r\n        \"locationName\": \"East US\",\r\n        \"failoverPriority\": 0\r\n      },\r\n      {\r\n        \"id\": \"testupdateregionpowershell11-westus\",\r\n        \"locationName\": \"West US\",\r\n        \"failoverPriority\": 1\r\n      }\r\n    ],\r\n    \"cors\": [],\r\n    \"capabilities\": [],\r\n    \"ipRules\": [],\r\n    \"backupPolicy\": {\r\n      \"type\": \"Periodic\",\r\n      \"periodicModeProperties\": {\r\n        \"backupIntervalInMinutes\": 240,\r\n        \"backupRetentionIntervalInHours\": 8,\r\n        \"backupStorageRedundancy\": \"Geo\"\r\n      }\r\n    },\r\n    \"networkAclBypassResourceIds\": [],\r\n    \"diagnosticLogSettings\": {\r\n      \"enableFullTextQuery\": \"None\"\r\n    },\r\n    \"keysMetadata\": {\r\n      \"primaryMasterKey\": {\r\n        \"generationTime\": \"2023-10-04T10:24:33.4433296+05:30\"\r\n      },\r\n      \"secondaryMasterKey\": {\r\n        \"generationTime\": \"2023-10-04T10:24:33.4433296+05:30\"\r\n      },\r\n      \"primaryReadonlyMasterKey\": {\r\n        \"generationTime\": \"2023-10-04T10:24:33.4433296+05:30\"\r\n      },\r\n      \"secondaryReadonlyMasterKey\": {\r\n        \"generationTime\": \"2023-10-04T10:24:33.4433296+05:30\"\r\n      }\r\n    }\r\n  },\r\n  \"identity\": {\r\n    \"type\": \"None\"\r\n  }\r\n}",
       "StatusCode": 200
     },
     {
-      "RequestUri": "/subscriptions/12053b8f-cab5-4f5c-9c1a-870580142abd/resourceGroups/CosmosDBResourceGroup9/providers/Microsoft.DocumentDB/databaseAccounts/testupdateregionpowershell11?api-version=2023-03-15-preview",
-      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvMTIwNTNiOGYtY2FiNS00ZjVjLTljMWEtODcwNTgwMTQyYWJkL3Jlc291cmNlR3JvdXBzL0Nvc21vc0RCUmVzb3VyY2VHcm91cDkvcHJvdmlkZXJzL01pY3Jvc29mdC5Eb2N1bWVudERCL2RhdGFiYXNlQWNjb3VudHMvdGVzdHVwZGF0ZXJlZ2lvbnBvd2Vyc2hlbGwxMT9hcGktdmVyc2lvbj0yMDIzLTAzLTE1LXByZXZpZXc=",
+      "RequestUri": "/subscriptions/2c1d0b69-225a-43b5-8220-6a139ef92e23/resourceGroups/CosmosDBResourceGroup9/providers/Microsoft.DocumentDB/databaseAccounts/testupdateregionpowershell11?api-version=2023-09-15-preview",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvMmMxZDBiNjktMjI1YS00M2I1LTgyMjAtNmExMzllZjkyZTIzL3Jlc291cmNlR3JvdXBzL0Nvc21vc0RCUmVzb3VyY2VHcm91cDkvcHJvdmlkZXJzL01pY3Jvc29mdC5Eb2N1bWVudERCL2RhdGFiYXNlQWNjb3VudHMvdGVzdHVwZGF0ZXJlZ2lvbnBvd2Vyc2hlbGwxMT9hcGktdmVyc2lvbj0yMDIzLTA5LTE1LXByZXZpZXc=",
       "RequestMethod": "GET",
       "RequestHeaders": {
         "x-ms-client-request-id": [
-          "c60b0f50-1e1a-4bf3-ada6-e2c8cbf76fcc"
+          "3dbc6872-028a-43be-b0ec-660889abfb0e"
         ],
         "Accept-Language": [
           "en-US"
@@ -408,40 +408,40 @@
           "Microsoft-HTTPAPI/2.0"
         ],
         "x-ms-ratelimit-remaining-subscription-reads": [
-          "11973"
+          "11994"
         ],
         "x-ms-request-id": [
-          "0007b01a-d70e-4758-9024-e7768e964fc8"
+          "56f57c74-61b6-4ee3-bc85-ffc24cb994c6"
         ],
         "x-ms-correlation-request-id": [
-          "0007b01a-d70e-4758-9024-e7768e964fc8"
+          "56f57c74-61b6-4ee3-bc85-ffc24cb994c6"
         ],
         "x-ms-routing-request-id": [
-          "EASTUS:20230720T123315Z:0007b01a-d70e-4758-9024-e7768e964fc8"
+          "JIOINDIACENTRAL:20231004T045912Z:56f57c74-61b6-4ee3-bc85-ffc24cb994c6"
         ],
         "X-Content-Type-Options": [
           "nosniff"
         ],
         "Date": [
-          "Thu, 20 Jul 2023 12:33:15 GMT"
+          "Wed, 04 Oct 2023 04:59:12 GMT"
         ],
         "Content-Length": [
-          "3751"
+          "3829"
         ],
         "Content-Type": [
           "application/json"
         ]
       },
-      "ResponseBody": "{\r\n  \"id\": \"/subscriptions/12053b8f-cab5-4f5c-9c1a-870580142abd/resourceGroups/CosmosDBResourceGroup9/providers/Microsoft.DocumentDB/databaseAccounts/testupdateregionpowershell11\",\r\n  \"name\": \"testupdateregionpowershell11\",\r\n  \"location\": \"East US\",\r\n  \"type\": \"Microsoft.DocumentDB/databaseAccounts\",\r\n  \"kind\": \"GlobalDocumentDB\",\r\n  \"tags\": {},\r\n  \"systemData\": {\r\n    \"createdAt\": \"2023-07-20T12:28:55.6692679Z\"\r\n  },\r\n  \"properties\": {\r\n    \"provisioningState\": \"Succeeded\",\r\n    \"documentEndpoint\": \"https://testupdateregionpowershell11.documents.azure.com:443/\",\r\n    \"sqlEndpoint\": \"https://testupdateregionpowershell11.documents.azure.com:443/\",\r\n    \"publicNetworkAccess\": \"Enabled\",\r\n    \"enableAutomaticFailover\": true,\r\n    \"enableMultipleWriteLocations\": true,\r\n    \"enablePartitionKeyMonitor\": false,\r\n    \"isVirtualNetworkFilterEnabled\": false,\r\n    \"virtualNetworkRules\": [],\r\n    \"EnabledApiTypes\": \"Sql\",\r\n    \"disableKeyBasedMetadataWriteAccess\": false,\r\n    \"enableFreeTier\": false,\r\n    \"enableAnalyticalStorage\": false,\r\n    \"analyticalStorageConfiguration\": {\r\n      \"schemaType\": \"WellDefined\"\r\n    },\r\n    \"instanceId\": \"7a49397b-9fba-44a8-961f-1f34a77c3d27\",\r\n    \"databaseAccountOfferType\": \"Standard\",\r\n    \"enableCassandraConnector\": false,\r\n    \"connectorOffer\": \"\",\r\n    \"enableMaterializedViews\": false,\r\n    \"defaultIdentity\": \"FirstPartyIdentity\",\r\n    \"networkAclBypass\": \"None\",\r\n    \"disableLocalAuth\": false,\r\n    \"enablePartitionMerge\": false,\r\n    \"enableBurstCapacity\": false,\r\n    \"minimalTlsVersion\": \"Tls\",\r\n    \"consistencyPolicy\": {\r\n      \"defaultConsistencyLevel\": \"Session\",\r\n      \"maxIntervalInSeconds\": 5,\r\n      \"maxStalenessPrefix\": 100\r\n    },\r\n    \"configurationOverrides\": {},\r\n    \"writeLocations\": [\r\n      {\r\n        \"id\": \"testupdateregionpowershell11-eastus\",\r\n        \"locationName\": \"East US\",\r\n        \"documentEndpoint\": \"https://testupdateregionpowershell11-eastus.documents.azure.com:443/\",\r\n        \"provisioningState\": \"Succeeded\",\r\n        \"failoverPriority\": 0,\r\n        \"isZoneRedundant\": false\r\n      },\r\n      {\r\n        \"id\": \"testupdateregionpowershell11-westus\",\r\n        \"locationName\": \"West US\",\r\n        \"documentEndpoint\": \"https://testupdateregionpowershell11-westus.documents.azure.com:443/\",\r\n        \"provisioningState\": \"Succeeded\",\r\n        \"failoverPriority\": 1,\r\n        \"isZoneRedundant\": false\r\n      }\r\n    ],\r\n    \"readLocations\": [\r\n      {\r\n        \"id\": \"testupdateregionpowershell11-eastus\",\r\n        \"locationName\": \"East US\",\r\n        \"documentEndpoint\": \"https://testupdateregionpowershell11-eastus.documents.azure.com:443/\",\r\n        \"provisioningState\": \"Succeeded\",\r\n        \"failoverPriority\": 0,\r\n        \"isZoneRedundant\": false\r\n      },\r\n      {\r\n        \"id\": \"testupdateregionpowershell11-westus\",\r\n        \"locationName\": \"West US\",\r\n        \"documentEndpoint\": \"https://testupdateregionpowershell11-westus.documents.azure.com:443/\",\r\n        \"provisioningState\": \"Succeeded\",\r\n        \"failoverPriority\": 1,\r\n        \"isZoneRedundant\": false\r\n      }\r\n    ],\r\n    \"locations\": [\r\n      {\r\n        \"id\": \"testupdateregionpowershell11-eastus\",\r\n        \"locationName\": \"East US\",\r\n        \"documentEndpoint\": \"https://testupdateregionpowershell11-eastus.documents.azure.com:443/\",\r\n        \"provisioningState\": \"Succeeded\",\r\n        \"failoverPriority\": 0,\r\n        \"isZoneRedundant\": false\r\n      },\r\n      {\r\n        \"id\": \"testupdateregionpowershell11-westus\",\r\n        \"locationName\": \"West US\",\r\n        \"documentEndpoint\": \"https://testupdateregionpowershell11-westus.documents.azure.com:443/\",\r\n        \"provisioningState\": \"Succeeded\",\r\n        \"failoverPriority\": 1,\r\n        \"isZoneRedundant\": false\r\n      }\r\n    ],\r\n    \"failoverPolicies\": [\r\n      {\r\n        \"id\": \"testupdateregionpowershell11-eastus\",\r\n        \"locationName\": \"East US\",\r\n        \"failoverPriority\": 0\r\n      },\r\n      {\r\n        \"id\": \"testupdateregionpowershell11-westus\",\r\n        \"locationName\": \"West US\",\r\n        \"failoverPriority\": 1\r\n      }\r\n    ],\r\n    \"cors\": [],\r\n    \"capabilities\": [],\r\n    \"ipRules\": [],\r\n    \"backupPolicy\": {\r\n      \"type\": \"Periodic\",\r\n      \"periodicModeProperties\": {\r\n        \"backupIntervalInMinutes\": 240,\r\n        \"backupRetentionIntervalInHours\": 8,\r\n        \"backupStorageRedundancy\": \"Geo\"\r\n      }\r\n    },\r\n    \"networkAclBypassResourceIds\": [],\r\n    \"diagnosticLogSettings\": {\r\n      \"enableFullTextQuery\": \"None\"\r\n    },\r\n    \"keysMetadata\": {\r\n      \"primaryMasterKey\": {\r\n        \"generationTime\": \"2023-07-20T12:28:55.6692679Z\"\r\n      },\r\n      \"secondaryMasterKey\": {\r\n        \"generationTime\": \"2023-07-20T12:28:55.6692679Z\"\r\n      },\r\n      \"primaryReadonlyMasterKey\": {\r\n        \"generationTime\": \"2023-07-20T12:28:55.6692679Z\"\r\n      },\r\n      \"secondaryReadonlyMasterKey\": {\r\n        \"generationTime\": \"2023-07-20T12:28:55.6692679Z\"\r\n      }\r\n    }\r\n  },\r\n  \"identity\": {\r\n    \"type\": \"None\"\r\n  }\r\n}",
+      "ResponseBody": "{\r\n  \"id\": \"/subscriptions/2c1d0b69-225a-43b5-8220-6a139ef92e23/resourceGroups/CosmosDBResourceGroup9/providers/Microsoft.DocumentDB/databaseAccounts/testupdateregionpowershell11\",\r\n  \"name\": \"testupdateregionpowershell11\",\r\n  \"location\": \"East US\",\r\n  \"type\": \"Microsoft.DocumentDB/databaseAccounts\",\r\n  \"kind\": \"GlobalDocumentDB\",\r\n  \"tags\": {},\r\n  \"systemData\": {\r\n    \"createdAt\": \"2023-10-04T10:24:33.4433296+05:30\"\r\n  },\r\n  \"properties\": {\r\n    \"provisioningState\": \"Succeeded\",\r\n    \"documentEndpoint\": \"https://testupdateregionpowershell11.documents.azure.com:443/\",\r\n    \"sqlEndpoint\": \"https://testupdateregionpowershell11.documents.azure.com:443/\",\r\n    \"publicNetworkAccess\": \"Enabled\",\r\n    \"enableAutomaticFailover\": true,\r\n    \"enableMultipleWriteLocations\": true,\r\n    \"enablePartitionKeyMonitor\": false,\r\n    \"isVirtualNetworkFilterEnabled\": false,\r\n    \"virtualNetworkRules\": [],\r\n    \"EnabledApiTypes\": \"Sql\",\r\n    \"disableKeyBasedMetadataWriteAccess\": false,\r\n    \"enableFreeTier\": false,\r\n    \"enableAnalyticalStorage\": false,\r\n    \"analyticalStorageConfiguration\": {\r\n      \"schemaType\": \"WellDefined\"\r\n    },\r\n    \"instanceId\": \"a919971b-e4a1-414b-bdce-3a60db308568\",\r\n    \"databaseAccountOfferType\": \"Standard\",\r\n    \"enableMaterializedViews\": false,\r\n    \"enableFullFidelityChangeFeed\": false,\r\n    \"defaultIdentity\": \"FirstPartyIdentity\",\r\n    \"networkAclBypass\": \"None\",\r\n    \"disableLocalAuth\": false,\r\n    \"enablePartitionMerge\": false,\r\n    \"enableBurstCapacity\": false,\r\n    \"enablePriorityBasedExecution\": false,\r\n    \"defaultPriorityLevel\": \"High\",\r\n    \"minimalTlsVersion\": \"Tls12\",\r\n    \"consistencyPolicy\": {\r\n      \"defaultConsistencyLevel\": \"Session\",\r\n      \"maxIntervalInSeconds\": 5,\r\n      \"maxStalenessPrefix\": 100\r\n    },\r\n    \"configurationOverrides\": {},\r\n    \"writeLocations\": [\r\n      {\r\n        \"id\": \"testupdateregionpowershell11-eastus\",\r\n        \"locationName\": \"East US\",\r\n        \"documentEndpoint\": \"https://testupdateregionpowershell11-eastus.documents.azure.com:443/\",\r\n        \"provisioningState\": \"Succeeded\",\r\n        \"failoverPriority\": 0,\r\n        \"isZoneRedundant\": false\r\n      },\r\n      {\r\n        \"id\": \"testupdateregionpowershell11-westus\",\r\n        \"locationName\": \"West US\",\r\n        \"documentEndpoint\": \"https://testupdateregionpowershell11-westus.documents.azure.com:443/\",\r\n        \"provisioningState\": \"Succeeded\",\r\n        \"failoverPriority\": 1,\r\n        \"isZoneRedundant\": false\r\n      }\r\n    ],\r\n    \"readLocations\": [\r\n      {\r\n        \"id\": \"testupdateregionpowershell11-eastus\",\r\n        \"locationName\": \"East US\",\r\n        \"documentEndpoint\": \"https://testupdateregionpowershell11-eastus.documents.azure.com:443/\",\r\n        \"provisioningState\": \"Succeeded\",\r\n        \"failoverPriority\": 0,\r\n        \"isZoneRedundant\": false\r\n      },\r\n      {\r\n        \"id\": \"testupdateregionpowershell11-westus\",\r\n        \"locationName\": \"West US\",\r\n        \"documentEndpoint\": \"https://testupdateregionpowershell11-westus.documents.azure.com:443/\",\r\n        \"provisioningState\": \"Succeeded\",\r\n        \"failoverPriority\": 1,\r\n        \"isZoneRedundant\": false\r\n      }\r\n    ],\r\n    \"locations\": [\r\n      {\r\n        \"id\": \"testupdateregionpowershell11-eastus\",\r\n        \"locationName\": \"East US\",\r\n        \"documentEndpoint\": \"https://testupdateregionpowershell11-eastus.documents.azure.com:443/\",\r\n        \"provisioningState\": \"Succeeded\",\r\n        \"failoverPriority\": 0,\r\n        \"isZoneRedundant\": false\r\n      },\r\n      {\r\n        \"id\": \"testupdateregionpowershell11-westus\",\r\n        \"locationName\": \"West US\",\r\n        \"documentEndpoint\": \"https://testupdateregionpowershell11-westus.documents.azure.com:443/\",\r\n        \"provisioningState\": \"Succeeded\",\r\n        \"failoverPriority\": 1,\r\n        \"isZoneRedundant\": false\r\n      }\r\n    ],\r\n    \"failoverPolicies\": [\r\n      {\r\n        \"id\": \"testupdateregionpowershell11-eastus\",\r\n        \"locationName\": \"East US\",\r\n        \"failoverPriority\": 0\r\n      },\r\n      {\r\n        \"id\": \"testupdateregionpowershell11-westus\",\r\n        \"locationName\": \"West US\",\r\n        \"failoverPriority\": 1\r\n      }\r\n    ],\r\n    \"cors\": [],\r\n    \"capabilities\": [],\r\n    \"ipRules\": [],\r\n    \"backupPolicy\": {\r\n      \"type\": \"Periodic\",\r\n      \"periodicModeProperties\": {\r\n        \"backupIntervalInMinutes\": 240,\r\n        \"backupRetentionIntervalInHours\": 8,\r\n        \"backupStorageRedundancy\": \"Geo\"\r\n      }\r\n    },\r\n    \"networkAclBypassResourceIds\": [],\r\n    \"diagnosticLogSettings\": {\r\n      \"enableFullTextQuery\": \"None\"\r\n    },\r\n    \"keysMetadata\": {\r\n      \"primaryMasterKey\": {\r\n        \"generationTime\": \"2023-10-04T10:24:33.4433296+05:30\"\r\n      },\r\n      \"secondaryMasterKey\": {\r\n        \"generationTime\": \"2023-10-04T10:24:33.4433296+05:30\"\r\n      },\r\n      \"primaryReadonlyMasterKey\": {\r\n        \"generationTime\": \"2023-10-04T10:24:33.4433296+05:30\"\r\n      },\r\n      \"secondaryReadonlyMasterKey\": {\r\n        \"generationTime\": \"2023-10-04T10:24:33.4433296+05:30\"\r\n      }\r\n    }\r\n  },\r\n  \"identity\": {\r\n    \"type\": \"None\"\r\n  }\r\n}",
       "StatusCode": 200
     },
     {
-      "RequestUri": "/subscriptions/12053b8f-cab5-4f5c-9c1a-870580142abd/resourceGroups/CosmosDBResourceGroup9/providers/Microsoft.DocumentDB/databaseAccounts/testupdateregionpowershell11?api-version=2023-03-15-preview",
-      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvMTIwNTNiOGYtY2FiNS00ZjVjLTljMWEtODcwNTgwMTQyYWJkL3Jlc291cmNlR3JvdXBzL0Nvc21vc0RCUmVzb3VyY2VHcm91cDkvcHJvdmlkZXJzL01pY3Jvc29mdC5Eb2N1bWVudERCL2RhdGFiYXNlQWNjb3VudHMvdGVzdHVwZGF0ZXJlZ2lvbnBvd2Vyc2hlbGwxMT9hcGktdmVyc2lvbj0yMDIzLTAzLTE1LXByZXZpZXc=",
+      "RequestUri": "/subscriptions/2c1d0b69-225a-43b5-8220-6a139ef92e23/resourceGroups/CosmosDBResourceGroup9/providers/Microsoft.DocumentDB/databaseAccounts/testupdateregionpowershell11?api-version=2023-09-15-preview",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvMmMxZDBiNjktMjI1YS00M2I1LTgyMjAtNmExMzllZjkyZTIzL3Jlc291cmNlR3JvdXBzL0Nvc21vc0RCUmVzb3VyY2VHcm91cDkvcHJvdmlkZXJzL01pY3Jvc29mdC5Eb2N1bWVudERCL2RhdGFiYXNlQWNjb3VudHMvdGVzdHVwZGF0ZXJlZ2lvbnBvd2Vyc2hlbGwxMT9hcGktdmVyc2lvbj0yMDIzLTA5LTE1LXByZXZpZXc=",
       "RequestMethod": "PUT",
       "RequestHeaders": {
         "x-ms-client-request-id": [
-          "c517458f-1758-4212-be65-5d54fcfc0672"
+          "eb838f56-874d-4630-9b2e-14c1e1563c63"
         ],
         "Accept-Language": [
           "en-US"
@@ -468,13 +468,13 @@
           "no-cache"
         ],
         "Location": [
-          "https://management.azure.com/subscriptions/12053b8f-cab5-4f5c-9c1a-870580142abd/resourceGroups/CosmosDBResourceGroup9/providers/Microsoft.DocumentDB/databaseAccounts/testupdateregionpowershell11/operationResults/a6eb0bcb-a986-4c0c-bd71-a4be61aebe86?api-version=2023-03-15-preview"
+          "https://management.azure.com/subscriptions/2c1d0b69-225a-43b5-8220-6a139ef92e23/resourceGroups/CosmosDBResourceGroup9/providers/Microsoft.DocumentDB/databaseAccounts/testupdateregionpowershell11/operationResults/a0af221c-f757-415c-81fa-2fb6db677df6?api-version=2023-09-15-preview"
         ],
         "x-ms-request-id": [
-          "a6eb0bcb-a986-4c0c-bd71-a4be61aebe86"
+          "a0af221c-f757-415c-81fa-2fb6db677df6"
         ],
         "Azure-AsyncOperation": [
-          "https://management.azure.com/subscriptions/12053b8f-cab5-4f5c-9c1a-870580142abd/providers/Microsoft.DocumentDB/locations/eastus/operationsStatus/a6eb0bcb-a986-4c0c-bd71-a4be61aebe86?api-version=2023-03-15-preview"
+          "https://management.azure.com/subscriptions/2c1d0b69-225a-43b5-8220-6a139ef92e23/providers/Microsoft.DocumentDB/locations/eastus/operationsStatus/a0af221c-f757-415c-81fa-2fb6db677df6?api-version=2023-09-15-preview&t=638319919775785412&c=MIIHHjCCBgagAwIBAgITfwHPoKWFUi8BZhm71wAEAc-gpTANBgkqhkiG9w0BAQsFADBEMRMwEQYKCZImiZPyLGQBGRYDR0JMMRMwEQYKCZImiZPyLGQBGRYDQU1FMRgwFgYDVQQDEw9BTUUgSW5mcmEgQ0EgMDIwHhcNMjMwODAyMTUxMzA3WhcNMjQwNzI3MTUxMzA3WjBAMT4wPAYDVQQDEzVhc3luY29wZXJhdGlvbnNpZ25pbmdjZXJ0aWZpY2F0ZS5tYW5hZ2VtZW50LmF6dXJlLmNvbTCCASIwDQYJKoZIhvcNAQEBBQADggEPADCCAQoCggEBALu1fZZT_nfKRrxL6aw2JLIgOZKXeKPga0MQ0EbBuAZQktSy3j54LDkbkSRqksOE2AYyp19GWQAGL0ljJwxFBRp_nFo8jljIy22jy-satVS7oJtnzH1TqtYFaysEFAiYHuq_qe0VMyxNBrIkwf60yCr2BRBOKXVFqfzVx3Wup-Qr_kDwppasDbBgYXwE4iH9CCcqg5IsgBz2IfvUSiRtlHB622wo90PGPXuz-djAwdjmUNKOer05VoHXvjSx3V2_f9VnXc4T1OrSY3WdWSvzCJh7Hgfg8SdAYlvJgzVWM64uB9VKloorGXz3XWGPJtpQxgNwpuHLCrABPO4fwOAuITUCAwEAAaOCBAswggQHMCcGCSsGAQQBgjcVCgQaMBgwCgYIKwYBBQUHAwEwCgYIKwYBBQUHAwIwPQYJKwYBBAGCNxUHBDAwLgYmKwYBBAGCNxUIhpDjDYTVtHiE8Ys-hZvdFs6dEoFggvX2K4Py0SACAWQCAQowggHaBggrBgEFBQcBAQSCAcwwggHIMGYGCCsGAQUFBzAChlpodHRwOi8vY3JsLm1pY3Jvc29mdC5jb20vcGtpaW5mcmEvQ2VydHMvQkwyUEtJSU5UQ0EwMS5BTUUuR0JMX0FNRSUyMEluZnJhJTIwQ0ElMjAwMig0KS5jcnQwVgYIKwYBBQUHMAKGSmh0dHA6Ly9jcmwxLmFtZS5nYmwvYWlhL0JMMlBLSUlOVENBMDEuQU1FLkdCTF9BTUUlMjBJbmZyYSUyMENBJTIwMDIoNCkuY3J0MFYGCCsGAQUFBzAChkpodHRwOi8vY3JsMi5hbWUuZ2JsL2FpYS9CTDJQS0lJTlRDQTAxLkFNRS5HQkxfQU1FJTIwSW5mcmElMjBDQSUyMDAyKDQpLmNydDBWBggrBgEFBQcwAoZKaHR0cDovL2NybDMuYW1lLmdibC9haWEvQkwyUEtJSU5UQ0EwMS5BTUUuR0JMX0FNRSUyMEluZnJhJTIwQ0ElMjAwMig0KS5jcnQwVgYIKwYBBQUHMAKGSmh0dHA6Ly9jcmw0LmFtZS5nYmwvYWlhL0JMMlBLSUlOVENBMDEuQU1FLkdCTF9BTUUlMjBJbmZyYSUyMENBJTIwMDIoNCkuY3J0MB0GA1UdDgQWBBQyEYGXwRYcvZp0qXgj4FWJs6TRIzAOBgNVHQ8BAf8EBAMCBaAwggE1BgNVHR8EggEsMIIBKDCCASSgggEgoIIBHIZCaHR0cDovL2NybC5taWNyb3NvZnQuY29tL3BraWluZnJhL0NSTC9BTUUlMjBJbmZyYSUyMENBJTIwMDIoNCkuY3JshjRodHRwOi8vY3JsMS5hbWUuZ2JsL2NybC9BTUUlMjBJbmZyYSUyMENBJTIwMDIoNCkuY3JshjRodHRwOi8vY3JsMi5hbWUuZ2JsL2NybC9BTUUlMjBJbmZyYSUyMENBJTIwMDIoNCkuY3JshjRodHRwOi8vY3JsMy5hbWUuZ2JsL2NybC9BTUUlMjBJbmZyYSUyMENBJTIwMDIoNCkuY3JshjRodHRwOi8vY3JsNC5hbWUuZ2JsL2NybC9BTUUlMjBJbmZyYSUyMENBJTIwMDIoNCkuY3JsMBcGA1UdIAQQMA4wDAYKKwYBBAGCN3sBATAfBgNVHSMEGDAWgBSuecJrXSWIEwb2BwnDl3x7l48dVTAdBgNVHSUEFjAUBggrBgEFBQcDAQYIKwYBBQUHAwIwDQYJKoZIhvcNAQELBQADggEBAFKdLTs8xn97Nm7zx6Qcs2CViRTL6Inal6SA1QCw_qL9yDAnDW-WQCPR-rEUTPy7BL2WqCvCUnQkW_aew8zFfiUEdwQNkmAssARGSpeufWbypj45aNJYk1I1GzFS3kOB4pyen0gOv-2dStVtGvfRPYoS_iHCM_Fe2CJaWivf5Du0yELc3KdGovaR0VRbRjzPYLr1UYVX5CvvjoDBkvoOESc1fIis9zPCGzvs7chJ36MqU8kckMcIUtcsuCaTZS1tRuzfHL7p7FHLiTln4CPXCX8mRQp7fCUJGRyd4-CTs0DFmTPBKp2AG54KKsahYLGRvMREEmXAcaO5J3-troScyFc&s=cI86c6ztbKnr63JOAKAMMlGilL8pmMAslLtQweMCThp_d9ia5tjJl1hggk9JA-ttd4nWjIU_kXTdW0At5ooN9tnPPLG6Z347iufgf7N3THVqr64T5Rt1CNyDHzXdxBlUhcp9q2JtIY5KhDn7JCq5ZOZ-Ulq96q1LYycHSwChH-MFnSFIkirviYeDTPxFoj0l0iGX0aBPnm8iPAJ-QgNLAalNbYxhe3SvOo6sX0ZLF7ZzV7tKhT_-CiY57HWSwhpj07OMJjCiNxigx-cLITybsiSeUk00f_zofjz9QZdTDAPQp-s1FVIFNaX7pCfPBOlTlqj8gT6x5vum-I5cR69euQ&h=gLw8ph6Uh8SguGL3fMPbtG3Es2COmxjoq1sJ2sFKlNk"
         ],
         "Strict-Transport-Security": [
           "max-age=31536000; includeSubDomains"
@@ -486,37 +486,37 @@
           "Microsoft-HTTPAPI/2.0"
         ],
         "x-ms-ratelimit-remaining-subscription-writes": [
-          "1197"
+          "1198"
         ],
         "x-ms-correlation-request-id": [
-          "b74eeaa5-07b9-40d3-b07d-a66b3e8858fd"
+          "40003cf8-3e36-4503-990b-c90279e57ab3"
         ],
         "x-ms-routing-request-id": [
-          "EASTUS:20230720T122741Z:b74eeaa5-07b9-40d3-b07d-a66b3e8858fd"
+          "CENTRALINDIA:20231004T045257Z:40003cf8-3e36-4503-990b-c90279e57ab3"
         ],
         "X-Content-Type-Options": [
           "nosniff"
         ],
         "Date": [
-          "Thu, 20 Jul 2023 12:27:41 GMT"
+          "Wed, 04 Oct 2023 04:52:56 GMT"
         ],
         "Content-Length": [
-          "2500"
+          "2553"
         ],
         "Content-Type": [
           "application/json"
         ]
       },
-      "ResponseBody": "{\r\n  \"id\": \"/subscriptions/12053b8f-cab5-4f5c-9c1a-870580142abd/resourceGroups/CosmosDBResourceGroup9/providers/Microsoft.DocumentDB/databaseAccounts/testupdateregionpowershell11\",\r\n  \"name\": \"testupdateregionpowershell11\",\r\n  \"location\": \"East US\",\r\n  \"type\": \"Microsoft.DocumentDB/databaseAccounts\",\r\n  \"kind\": \"GlobalDocumentDB\",\r\n  \"tags\": {},\r\n  \"systemData\": {\r\n    \"createdAt\": \"2023-07-20T12:27:40.7484182Z\"\r\n  },\r\n  \"properties\": {\r\n    \"provisioningState\": \"Creating\",\r\n    \"publicNetworkAccess\": \"Enabled\",\r\n    \"enableAutomaticFailover\": true,\r\n    \"enableMultipleWriteLocations\": true,\r\n    \"enablePartitionKeyMonitor\": false,\r\n    \"isVirtualNetworkFilterEnabled\": false,\r\n    \"virtualNetworkRules\": [],\r\n    \"EnabledApiTypes\": \"Sql\",\r\n    \"disableKeyBasedMetadataWriteAccess\": false,\r\n    \"enableFreeTier\": false,\r\n    \"enableAnalyticalStorage\": false,\r\n    \"analyticalStorageConfiguration\": {\r\n      \"schemaType\": \"WellDefined\"\r\n    },\r\n    \"instanceId\": \"7a49397b-9fba-44a8-961f-1f34a77c3d27\",\r\n    \"databaseAccountOfferType\": \"Standard\",\r\n    \"enableCassandraConnector\": false,\r\n    \"connectorOffer\": \"\",\r\n    \"enableMaterializedViews\": false,\r\n    \"defaultIdentity\": \"\",\r\n    \"networkAclBypass\": \"None\",\r\n    \"disableLocalAuth\": false,\r\n    \"enablePartitionMerge\": false,\r\n    \"enableBurstCapacity\": false,\r\n    \"minimalTlsVersion\": \"Tls\",\r\n    \"consistencyPolicy\": {\r\n      \"defaultConsistencyLevel\": \"Session\",\r\n      \"maxIntervalInSeconds\": 5,\r\n      \"maxStalenessPrefix\": 100\r\n    },\r\n    \"configurationOverrides\": {},\r\n    \"writeLocations\": [\r\n      {\r\n        \"id\": \"testupdateregionpowershell11-eastus\",\r\n        \"locationName\": \"East US\",\r\n        \"provisioningState\": \"Creating\",\r\n        \"failoverPriority\": 0,\r\n        \"isZoneRedundant\": false\r\n      }\r\n    ],\r\n    \"readLocations\": [\r\n      {\r\n        \"id\": \"testupdateregionpowershell11-eastus\",\r\n        \"locationName\": \"East US\",\r\n        \"provisioningState\": \"Creating\",\r\n        \"failoverPriority\": 0,\r\n        \"isZoneRedundant\": false\r\n      }\r\n    ],\r\n    \"locations\": [\r\n      {\r\n        \"id\": \"testupdateregionpowershell11-eastus\",\r\n        \"locationName\": \"East US\",\r\n        \"provisioningState\": \"Creating\",\r\n        \"failoverPriority\": 0,\r\n        \"isZoneRedundant\": false\r\n      }\r\n    ],\r\n    \"failoverPolicies\": [\r\n      {\r\n        \"id\": \"testupdateregionpowershell11-eastus\",\r\n        \"locationName\": \"East US\",\r\n        \"failoverPriority\": 0\r\n      }\r\n    ],\r\n    \"cors\": [],\r\n    \"capabilities\": [],\r\n    \"ipRules\": [],\r\n    \"backupPolicy\": {\r\n      \"type\": \"Periodic\",\r\n      \"periodicModeProperties\": {\r\n        \"backupIntervalInMinutes\": 240,\r\n        \"backupRetentionIntervalInHours\": 8,\r\n        \"backupStorageRedundancy\": \"Invalid\"\r\n      }\r\n    },\r\n    \"networkAclBypassResourceIds\": [],\r\n    \"diagnosticLogSettings\": {\r\n      \"enableFullTextQuery\": \"None\"\r\n    },\r\n    \"keysMetadata\": {\r\n      \"primaryMasterKey\": {\r\n        \"generationTime\": \"2023-07-20T12:27:40.7484182Z\"\r\n      },\r\n      \"secondaryMasterKey\": {\r\n        \"generationTime\": \"2023-07-20T12:27:40.7484182Z\"\r\n      },\r\n      \"primaryReadonlyMasterKey\": {\r\n        \"generationTime\": \"2023-07-20T12:27:40.7484182Z\"\r\n      },\r\n      \"secondaryReadonlyMasterKey\": {\r\n        \"generationTime\": \"2023-07-20T12:27:40.7484182Z\"\r\n      }\r\n    }\r\n  },\r\n  \"identity\": {\r\n    \"type\": \"None\"\r\n  }\r\n}",
+      "ResponseBody": "{\r\n  \"id\": \"/subscriptions/2c1d0b69-225a-43b5-8220-6a139ef92e23/resourceGroups/CosmosDBResourceGroup9/providers/Microsoft.DocumentDB/databaseAccounts/testupdateregionpowershell11\",\r\n  \"name\": \"testupdateregionpowershell11\",\r\n  \"location\": \"East US\",\r\n  \"type\": \"Microsoft.DocumentDB/databaseAccounts\",\r\n  \"kind\": \"GlobalDocumentDB\",\r\n  \"tags\": {},\r\n  \"systemData\": {\r\n    \"createdAt\": \"2023-10-04T04:52:56.0871147Z\"\r\n  },\r\n  \"properties\": {\r\n    \"provisioningState\": \"Creating\",\r\n    \"publicNetworkAccess\": \"Enabled\",\r\n    \"enableAutomaticFailover\": true,\r\n    \"enableMultipleWriteLocations\": true,\r\n    \"enablePartitionKeyMonitor\": false,\r\n    \"isVirtualNetworkFilterEnabled\": false,\r\n    \"virtualNetworkRules\": [],\r\n    \"EnabledApiTypes\": \"Sql\",\r\n    \"disableKeyBasedMetadataWriteAccess\": false,\r\n    \"enableFreeTier\": false,\r\n    \"enableAnalyticalStorage\": false,\r\n    \"analyticalStorageConfiguration\": {\r\n      \"schemaType\": \"WellDefined\"\r\n    },\r\n    \"instanceId\": \"a919971b-e4a1-414b-bdce-3a60db308568\",\r\n    \"databaseAccountOfferType\": \"Standard\",\r\n    \"enableMaterializedViews\": false,\r\n    \"enableFullFidelityChangeFeed\": false,\r\n    \"defaultIdentity\": \"\",\r\n    \"networkAclBypass\": \"None\",\r\n    \"disableLocalAuth\": false,\r\n    \"enablePartitionMerge\": false,\r\n    \"enableBurstCapacity\": false,\r\n    \"enablePriorityBasedExecution\": false,\r\n    \"defaultPriorityLevel\": \"High\",\r\n    \"minimalTlsVersion\": \"Tls12\",\r\n    \"consistencyPolicy\": {\r\n      \"defaultConsistencyLevel\": \"Session\",\r\n      \"maxIntervalInSeconds\": 5,\r\n      \"maxStalenessPrefix\": 100\r\n    },\r\n    \"configurationOverrides\": {},\r\n    \"writeLocations\": [\r\n      {\r\n        \"id\": \"testupdateregionpowershell11-eastus\",\r\n        \"locationName\": \"East US\",\r\n        \"provisioningState\": \"Creating\",\r\n        \"failoverPriority\": 0,\r\n        \"isZoneRedundant\": false\r\n      }\r\n    ],\r\n    \"readLocations\": [\r\n      {\r\n        \"id\": \"testupdateregionpowershell11-eastus\",\r\n        \"locationName\": \"East US\",\r\n        \"provisioningState\": \"Creating\",\r\n        \"failoverPriority\": 0,\r\n        \"isZoneRedundant\": false\r\n      }\r\n    ],\r\n    \"locations\": [\r\n      {\r\n        \"id\": \"testupdateregionpowershell11-eastus\",\r\n        \"locationName\": \"East US\",\r\n        \"provisioningState\": \"Creating\",\r\n        \"failoverPriority\": 0,\r\n        \"isZoneRedundant\": false\r\n      }\r\n    ],\r\n    \"failoverPolicies\": [\r\n      {\r\n        \"id\": \"testupdateregionpowershell11-eastus\",\r\n        \"locationName\": \"East US\",\r\n        \"failoverPriority\": 0\r\n      }\r\n    ],\r\n    \"cors\": [],\r\n    \"capabilities\": [],\r\n    \"ipRules\": [],\r\n    \"backupPolicy\": {\r\n      \"type\": \"Periodic\",\r\n      \"periodicModeProperties\": {\r\n        \"backupIntervalInMinutes\": 240,\r\n        \"backupRetentionIntervalInHours\": 8,\r\n        \"backupStorageRedundancy\": \"Invalid\"\r\n      }\r\n    },\r\n    \"networkAclBypassResourceIds\": [],\r\n    \"diagnosticLogSettings\": {\r\n      \"enableFullTextQuery\": \"None\"\r\n    },\r\n    \"keysMetadata\": {\r\n      \"primaryMasterKey\": {\r\n        \"generationTime\": \"2023-10-04T04:52:56.0871147Z\"\r\n      },\r\n      \"secondaryMasterKey\": {\r\n        \"generationTime\": \"2023-10-04T04:52:56.0871147Z\"\r\n      },\r\n      \"primaryReadonlyMasterKey\": {\r\n        \"generationTime\": \"2023-10-04T04:52:56.0871147Z\"\r\n      },\r\n      \"secondaryReadonlyMasterKey\": {\r\n        \"generationTime\": \"2023-10-04T04:52:56.0871147Z\"\r\n      }\r\n    }\r\n  },\r\n  \"identity\": {\r\n    \"type\": \"None\"\r\n  }\r\n}",
       "StatusCode": 200
     },
     {
-      "RequestUri": "/subscriptions/12053b8f-cab5-4f5c-9c1a-870580142abd/providers/Microsoft.DocumentDB/locations/eastus/operationsStatus/a6eb0bcb-a986-4c0c-bd71-a4be61aebe86?api-version=2023-03-15-preview",
-      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvMTIwNTNiOGYtY2FiNS00ZjVjLTljMWEtODcwNTgwMTQyYWJkL3Byb3ZpZGVycy9NaWNyb3NvZnQuRG9jdW1lbnREQi9sb2NhdGlvbnMvZWFzdHVzL29wZXJhdGlvbnNTdGF0dXMvYTZlYjBiY2ItYTk4Ni00YzBjLWJkNzEtYTRiZTYxYWViZTg2P2FwaS12ZXJzaW9uPTIwMjMtMDMtMTUtcHJldmlldw==",
+      "RequestUri": "/subscriptions/2c1d0b69-225a-43b5-8220-6a139ef92e23/providers/Microsoft.DocumentDB/locations/eastus/operationsStatus/a0af221c-f757-415c-81fa-2fb6db677df6?api-version=2023-09-15-preview&t=638319919775785412&c=MIIHHjCCBgagAwIBAgITfwHPoKWFUi8BZhm71wAEAc-gpTANBgkqhkiG9w0BAQsFADBEMRMwEQYKCZImiZPyLGQBGRYDR0JMMRMwEQYKCZImiZPyLGQBGRYDQU1FMRgwFgYDVQQDEw9BTUUgSW5mcmEgQ0EgMDIwHhcNMjMwODAyMTUxMzA3WhcNMjQwNzI3MTUxMzA3WjBAMT4wPAYDVQQDEzVhc3luY29wZXJhdGlvbnNpZ25pbmdjZXJ0aWZpY2F0ZS5tYW5hZ2VtZW50LmF6dXJlLmNvbTCCASIwDQYJKoZIhvcNAQEBBQADggEPADCCAQoCggEBALu1fZZT_nfKRrxL6aw2JLIgOZKXeKPga0MQ0EbBuAZQktSy3j54LDkbkSRqksOE2AYyp19GWQAGL0ljJwxFBRp_nFo8jljIy22jy-satVS7oJtnzH1TqtYFaysEFAiYHuq_qe0VMyxNBrIkwf60yCr2BRBOKXVFqfzVx3Wup-Qr_kDwppasDbBgYXwE4iH9CCcqg5IsgBz2IfvUSiRtlHB622wo90PGPXuz-djAwdjmUNKOer05VoHXvjSx3V2_f9VnXc4T1OrSY3WdWSvzCJh7Hgfg8SdAYlvJgzVWM64uB9VKloorGXz3XWGPJtpQxgNwpuHLCrABPO4fwOAuITUCAwEAAaOCBAswggQHMCcGCSsGAQQBgjcVCgQaMBgwCgYIKwYBBQUHAwEwCgYIKwYBBQUHAwIwPQYJKwYBBAGCNxUHBDAwLgYmKwYBBAGCNxUIhpDjDYTVtHiE8Ys-hZvdFs6dEoFggvX2K4Py0SACAWQCAQowggHaBggrBgEFBQcBAQSCAcwwggHIMGYGCCsGAQUFBzAChlpodHRwOi8vY3JsLm1pY3Jvc29mdC5jb20vcGtpaW5mcmEvQ2VydHMvQkwyUEtJSU5UQ0EwMS5BTUUuR0JMX0FNRSUyMEluZnJhJTIwQ0ElMjAwMig0KS5jcnQwVgYIKwYBBQUHMAKGSmh0dHA6Ly9jcmwxLmFtZS5nYmwvYWlhL0JMMlBLSUlOVENBMDEuQU1FLkdCTF9BTUUlMjBJbmZyYSUyMENBJTIwMDIoNCkuY3J0MFYGCCsGAQUFBzAChkpodHRwOi8vY3JsMi5hbWUuZ2JsL2FpYS9CTDJQS0lJTlRDQTAxLkFNRS5HQkxfQU1FJTIwSW5mcmElMjBDQSUyMDAyKDQpLmNydDBWBggrBgEFBQcwAoZKaHR0cDovL2NybDMuYW1lLmdibC9haWEvQkwyUEtJSU5UQ0EwMS5BTUUuR0JMX0FNRSUyMEluZnJhJTIwQ0ElMjAwMig0KS5jcnQwVgYIKwYBBQUHMAKGSmh0dHA6Ly9jcmw0LmFtZS5nYmwvYWlhL0JMMlBLSUlOVENBMDEuQU1FLkdCTF9BTUUlMjBJbmZyYSUyMENBJTIwMDIoNCkuY3J0MB0GA1UdDgQWBBQyEYGXwRYcvZp0qXgj4FWJs6TRIzAOBgNVHQ8BAf8EBAMCBaAwggE1BgNVHR8EggEsMIIBKDCCASSgggEgoIIBHIZCaHR0cDovL2NybC5taWNyb3NvZnQuY29tL3BraWluZnJhL0NSTC9BTUUlMjBJbmZyYSUyMENBJTIwMDIoNCkuY3JshjRodHRwOi8vY3JsMS5hbWUuZ2JsL2NybC9BTUUlMjBJbmZyYSUyMENBJTIwMDIoNCkuY3JshjRodHRwOi8vY3JsMi5hbWUuZ2JsL2NybC9BTUUlMjBJbmZyYSUyMENBJTIwMDIoNCkuY3JshjRodHRwOi8vY3JsMy5hbWUuZ2JsL2NybC9BTUUlMjBJbmZyYSUyMENBJTIwMDIoNCkuY3JshjRodHRwOi8vY3JsNC5hbWUuZ2JsL2NybC9BTUUlMjBJbmZyYSUyMENBJTIwMDIoNCkuY3JsMBcGA1UdIAQQMA4wDAYKKwYBBAGCN3sBATAfBgNVHSMEGDAWgBSuecJrXSWIEwb2BwnDl3x7l48dVTAdBgNVHSUEFjAUBggrBgEFBQcDAQYIKwYBBQUHAwIwDQYJKoZIhvcNAQELBQADggEBAFKdLTs8xn97Nm7zx6Qcs2CViRTL6Inal6SA1QCw_qL9yDAnDW-WQCPR-rEUTPy7BL2WqCvCUnQkW_aew8zFfiUEdwQNkmAssARGSpeufWbypj45aNJYk1I1GzFS3kOB4pyen0gOv-2dStVtGvfRPYoS_iHCM_Fe2CJaWivf5Du0yELc3KdGovaR0VRbRjzPYLr1UYVX5CvvjoDBkvoOESc1fIis9zPCGzvs7chJ36MqU8kckMcIUtcsuCaTZS1tRuzfHL7p7FHLiTln4CPXCX8mRQp7fCUJGRyd4-CTs0DFmTPBKp2AG54KKsahYLGRvMREEmXAcaO5J3-troScyFc&s=cI86c6ztbKnr63JOAKAMMlGilL8pmMAslLtQweMCThp_d9ia5tjJl1hggk9JA-ttd4nWjIU_kXTdW0At5ooN9tnPPLG6Z347iufgf7N3THVqr64T5Rt1CNyDHzXdxBlUhcp9q2JtIY5KhDn7JCq5ZOZ-Ulq96q1LYycHSwChH-MFnSFIkirviYeDTPxFoj0l0iGX0aBPnm8iPAJ-QgNLAalNbYxhe3SvOo6sX0ZLF7ZzV7tKhT_-CiY57HWSwhpj07OMJjCiNxigx-cLITybsiSeUk00f_zofjz9QZdTDAPQp-s1FVIFNaX7pCfPBOlTlqj8gT6x5vum-I5cR69euQ&h=gLw8ph6Uh8SguGL3fMPbtG3Es2COmxjoq1sJ2sFKlNk",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvMmMxZDBiNjktMjI1YS00M2I1LTgyMjAtNmExMzllZjkyZTIzL3Byb3ZpZGVycy9NaWNyb3NvZnQuRG9jdW1lbnREQi9sb2NhdGlvbnMvZWFzdHVzL29wZXJhdGlvbnNTdGF0dXMvYTBhZjIyMWMtZjc1Ny00MTVjLTgxZmEtMmZiNmRiNjc3ZGY2P2FwaS12ZXJzaW9uPTIwMjMtMDktMTUtcHJldmlldyZ0PTYzODMxOTkxOTc3NTc4NTQxMiZjPU1JSUhIakNDQmdhZ0F3SUJBZ0lUZndIUG9LV0ZVaThCWmhtNzF3QUVBYy1ncFRBTkJna3Foa2lHOXcwQkFRc0ZBREJFTVJNd0VRWUtDWkltaVpQeUxHUUJHUllEUjBKTU1STXdFUVlLQ1pJbWlaUHlMR1FCR1JZRFFVMUZNUmd3RmdZRFZRUURFdzlCVFVVZ1NXNW1jbUVnUTBFZ01ESXdIaGNOTWpNd09EQXlNVFV4TXpBM1doY05NalF3TnpJM01UVXhNekEzV2pCQU1UNHdQQVlEVlFRREV6VmhjM2x1WTI5d1pYSmhkR2x2Ym5OcFoyNXBibWRqWlhKMGFXWnBZMkYwWlM1dFlXNWhaMlZ0Wlc1MExtRjZkWEpsTG1OdmJUQ0NBU0l3RFFZSktvWklodmNOQVFFQkJRQURnZ0VQQURDQ0FRb0NnZ0VCQUx1MWZaWlRfbmZLUnJ4TDZhdzJKTElnT1pLWGVLUGdhME1RMEViQnVBWlFrdFN5M2o1NExEa2JrU1Jxa3NPRTJBWXlwMTlHV1FBR0wwbGpKd3hGQlJwX25GbzhqbGpJeTIyanktc2F0VlM3b0p0bnpIMVRxdFlGYXlzRUZBaVlIdXFfcWUwVk15eE5Ccklrd2Y2MHlDcjJCUkJPS1hWRnFmelZ4M1d1cC1Rcl9rRHdwcGFzRGJCZ1lYd0U0aUg5Q0NjcWc1SXNnQnoySWZ2VVNpUnRsSEI2MjJ3bzkwUEdQWHV6LWRqQXdkam1VTktPZXIwNVZvSFh2alN4M1YyX2Y5Vm5YYzRUMU9yU1kzV2RXU3Z6Q0poN0hnZmc4U2RBWWx2Smd6VldNNjR1QjlWS2xvb3JHWHozWFdHUEp0cFF4Z053cHVITENyQUJQTzRmd09BdUlUVUNBd0VBQWFPQ0JBc3dnZ1FITUNjR0NTc0dBUVFCZ2pjVkNnUWFNQmd3Q2dZSUt3WUJCUVVIQXdFd0NnWUlLd1lCQlFVSEF3SXdQUVlKS3dZQkJBR0NOeFVIQkRBd0xnWW1Ld1lCQkFHQ054VUlocERqRFlUVnRIaUU4WXMtaFp2ZEZzNmRFb0ZnZ3ZYMks0UHkwU0FDQVdRQ0FRb3dnZ0hhQmdnckJnRUZCUWNCQVFTQ0Fjd3dnZ0hJTUdZR0NDc0dBUVVGQnpBQ2hscG9kSFJ3T2k4dlkzSnNMbTFwWTNKdmMyOW1kQzVqYjIwdmNHdHBhVzVtY21FdlEyVnlkSE12UWt3eVVFdEpTVTVVUTBFd01TNUJUVVV1UjBKTVgwRk5SU1V5TUVsdVpuSmhKVEl3UTBFbE1qQXdNaWcwS1M1amNuUXdWZ1lJS3dZQkJRVUhNQUtHU21oMGRIQTZMeTlqY213eExtRnRaUzVuWW13dllXbGhMMEpNTWxCTFNVbE9WRU5CTURFdVFVMUZMa2RDVEY5QlRVVWxNakJKYm1aeVlTVXlNRU5CSlRJd01ESW9OQ2t1WTNKME1GWUdDQ3NHQVFVRkJ6QUNoa3BvZEhSd09pOHZZM0pzTWk1aGJXVXVaMkpzTDJGcFlTOUNUREpRUzBsSlRsUkRRVEF4TGtGTlJTNUhRa3hmUVUxRkpUSXdTVzVtY21FbE1qQkRRU1V5TURBeUtEUXBMbU55ZERCV0JnZ3JCZ0VGQlFjd0FvWkthSFIwY0RvdkwyTnliRE11WVcxbExtZGliQzloYVdFdlFrd3lVRXRKU1U1VVEwRXdNUzVCVFVVdVIwSk1YMEZOUlNVeU1FbHVabkpoSlRJd1EwRWxNakF3TWlnMEtTNWpjblF3VmdZSUt3WUJCUVVITUFLR1NtaDBkSEE2THk5amNtdzBMbUZ0WlM1blltd3ZZV2xoTDBKTU1sQkxTVWxPVkVOQk1ERXVRVTFGTGtkQ1RGOUJUVVVsTWpCSmJtWnlZU1V5TUVOQkpUSXdNRElvTkNrdVkzSjBNQjBHQTFVZERnUVdCQlF5RVlHWHdSWWN2WnAwcVhnajRGV0pzNlRSSXpBT0JnTlZIUThCQWY4RUJBTUNCYUF3Z2dFMUJnTlZIUjhFZ2dFc01JSUJLRENDQVNTZ2dnRWdvSUlCSElaQ2FIUjBjRG92TDJOeWJDNXRhV055YjNOdlpuUXVZMjl0TDNCcmFXbHVabkpoTDBOU1RDOUJUVVVsTWpCSmJtWnlZU1V5TUVOQkpUSXdNRElvTkNrdVkzSnNoalJvZEhSd09pOHZZM0pzTVM1aGJXVXVaMkpzTDJOeWJDOUJUVVVsTWpCSmJtWnlZU1V5TUVOQkpUSXdNRElvTkNrdVkzSnNoalJvZEhSd09pOHZZM0pzTWk1aGJXVXVaMkpzTDJOeWJDOUJUVVVsTWpCSmJtWnlZU1V5TUVOQkpUSXdNRElvTkNrdVkzSnNoalJvZEhSd09pOHZZM0pzTXk1aGJXVXVaMkpzTDJOeWJDOUJUVVVsTWpCSmJtWnlZU1V5TUVOQkpUSXdNRElvTkNrdVkzSnNoalJvZEhSd09pOHZZM0pzTkM1aGJXVXVaMkpzTDJOeWJDOUJUVVVsTWpCSmJtWnlZU1V5TUVOQkpUSXdNRElvTkNrdVkzSnNNQmNHQTFVZElBUVFNQTR3REFZS0t3WUJCQUdDTjNzQkFUQWZCZ05WSFNNRUdEQVdnQlN1ZWNKclhTV0lFd2IyQnduRGwzeDdsNDhkVlRBZEJnTlZIU1VFRmpBVUJnZ3JCZ0VGQlFjREFRWUlLd1lCQlFVSEF3SXdEUVlKS29aSWh2Y05BUUVMQlFBRGdnRUJBRktkTFRzOHhuOTdObTd6eDZRY3MyQ1ZpUlRMNkluYWw2U0ExUUN3X3FMOXlEQW5EVy1XUUNQUi1yRVVUUHk3QkwyV3FDdkNVblFrV19hZXc4ekZmaVVFZHdRTmttQXNzQVJHU3BldWZXYnlwajQ1YU5KWWsxSTFHekZTM2tPQjRweWVuMGdPdi0yZFN0VnRHdmZSUFlvU19pSENNX0ZlMkNKYVdpdmY1RHUweUVMYzNLZEdvdmFSMFZSYlJqelBZTHIxVVlWWDVDdnZqb0RCa3ZvT0VTYzFmSWlzOXpQQ0d6dnM3Y2hKMzZNcVU4a2NrTWNJVXRjc3VDYVRaUzF0UnV6ZkhMN3A3RkhMaVRsbjRDUFhDWDhtUlFwN2ZDVUpHUnlkNC1DVHMwREZtVFBCS3AyQUc1NEtLc2FoWUxHUnZNUkVFbVhBY2FPNUozLXRyb1NjeUZjJnM9Y0k4NmM2enRiS25yNjNKT0FLQU1NbEdpbEw4cG1NQXNsTHRRd2VNQ1RocF9kOWlhNXRqSmwxaGdnazlKQS10dGQ0bldqSVVfa1hUZFcwQXQ1b29OOXRuUFBMRzZaMzQ3aXVmZ2Y3TjNUSFZxcjY0VDVSdDFDTnlESHpYZHhCbFVoY3A5cTJKdElZNUtoRG43SkNxNVpPWi1VbHE5NnExTFl5Y0hTd0NoSC1NRm5TRklraXJ2aVllRFRQeEZvajBsMGlHWDBhQlBubThpUEFKLVFnTkxBYWxOYll4aGUzU3ZPbzZzWDBaTEY3WnpWN3RLaFRfLUNpWTU3SFdTd2hwajA3T01KakNpTnhpZ3gtY0xJVHlic2lTZVVrMDBmX3pvZmp6OVFaZFREQVBRcC1zMUZWSUZOYVg3cENmUEJPbFRscWo4Z1Q2eDV2dW0tSTVjUjY5ZXVRJmg9Z0x3OHBoNlVoOFNndUdMM2ZNUGJ0RzNFczJDT214am9xMXNKMnNGS2xOaw==",
       "RequestMethod": "GET",
       "RequestHeaders": {
         "x-ms-client-request-id": [
-          "c517458f-1758-4212-be65-5d54fcfc0672"
+          "eb838f56-874d-4630-9b2e-14c1e1563c63"
         ],
         "User-Agent": [
           "FxVersion/4.700.22.55902",
@@ -543,82 +543,22 @@
           "Microsoft-HTTPAPI/2.0"
         ],
         "x-ms-ratelimit-remaining-subscription-reads": [
-          "11966"
+          "11981"
         ],
         "x-ms-request-id": [
-          "3a990742-0294-4803-ba9d-f30435a407aa"
+          "0a26763d-ee43-4c4c-b64a-da7aee3f9c1a"
         ],
         "x-ms-correlation-request-id": [
-          "3a990742-0294-4803-ba9d-f30435a407aa"
+          "0a26763d-ee43-4c4c-b64a-da7aee3f9c1a"
         ],
         "x-ms-routing-request-id": [
-          "EASTUS:20230720T122812Z:3a990742-0294-4803-ba9d-f30435a407aa"
+          "CENTRALINDIA:20231004T045327Z:0a26763d-ee43-4c4c-b64a-da7aee3f9c1a"
         ],
         "X-Content-Type-Options": [
           "nosniff"
         ],
         "Date": [
-          "Thu, 20 Jul 2023 12:28:11 GMT"
-        ],
-        "Content-Length": [
-          "21"
-        ],
-        "Content-Type": [
-          "application/json"
-        ]
-      },
-      "ResponseBody": "{\r\n  \"status\": \"Dequeued\"\r\n}",
-      "StatusCode": 200
-    },
-    {
-      "RequestUri": "/subscriptions/12053b8f-cab5-4f5c-9c1a-870580142abd/providers/Microsoft.DocumentDB/locations/eastus/operationsStatus/a6eb0bcb-a986-4c0c-bd71-a4be61aebe86?api-version=2023-03-15-preview",
-      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvMTIwNTNiOGYtY2FiNS00ZjVjLTljMWEtODcwNTgwMTQyYWJkL3Byb3ZpZGVycy9NaWNyb3NvZnQuRG9jdW1lbnREQi9sb2NhdGlvbnMvZWFzdHVzL29wZXJhdGlvbnNTdGF0dXMvYTZlYjBiY2ItYTk4Ni00YzBjLWJkNzEtYTRiZTYxYWViZTg2P2FwaS12ZXJzaW9uPTIwMjMtMDMtMTUtcHJldmlldw==",
-      "RequestMethod": "GET",
-      "RequestHeaders": {
-        "x-ms-client-request-id": [
-          "c517458f-1758-4212-be65-5d54fcfc0672"
-        ],
-        "User-Agent": [
-          "FxVersion/4.700.22.55902",
-          "OSName/Windows",
-          "OSVersion/Microsoft.Windows.10.0.22621",
-          "Microsoft.Azure.Management.CosmosDB.CosmosDBManagementClient/2.0.5"
-        ]
-      },
-      "RequestBody": "",
-      "ResponseHeaders": {
-        "Cache-Control": [
-          "no-store, no-cache"
-        ],
-        "Pragma": [
-          "no-cache"
-        ],
-        "Strict-Transport-Security": [
-          "max-age=31536000; includeSubDomains"
-        ],
-        "x-ms-gatewayversion": [
-          "version=2.14.0"
-        ],
-        "Server": [
-          "Microsoft-HTTPAPI/2.0"
-        ],
-        "x-ms-ratelimit-remaining-subscription-reads": [
-          "11965"
-        ],
-        "x-ms-request-id": [
-          "46f882f7-edc4-445a-bc17-fb8e90afbe65"
-        ],
-        "x-ms-correlation-request-id": [
-          "46f882f7-edc4-445a-bc17-fb8e90afbe65"
-        ],
-        "x-ms-routing-request-id": [
-          "EASTUS:20230720T122842Z:46f882f7-edc4-445a-bc17-fb8e90afbe65"
-        ],
-        "X-Content-Type-Options": [
-          "nosniff"
-        ],
-        "Date": [
-          "Thu, 20 Jul 2023 12:28:42 GMT"
+          "Wed, 04 Oct 2023 04:53:27 GMT"
         ],
         "Content-Length": [
           "21"
@@ -631,12 +571,12 @@
       "StatusCode": 200
     },
     {
-      "RequestUri": "/subscriptions/12053b8f-cab5-4f5c-9c1a-870580142abd/providers/Microsoft.DocumentDB/locations/eastus/operationsStatus/a6eb0bcb-a986-4c0c-bd71-a4be61aebe86?api-version=2023-03-15-preview",
-      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvMTIwNTNiOGYtY2FiNS00ZjVjLTljMWEtODcwNTgwMTQyYWJkL3Byb3ZpZGVycy9NaWNyb3NvZnQuRG9jdW1lbnREQi9sb2NhdGlvbnMvZWFzdHVzL29wZXJhdGlvbnNTdGF0dXMvYTZlYjBiY2ItYTk4Ni00YzBjLWJkNzEtYTRiZTYxYWViZTg2P2FwaS12ZXJzaW9uPTIwMjMtMDMtMTUtcHJldmlldw==",
+      "RequestUri": "/subscriptions/2c1d0b69-225a-43b5-8220-6a139ef92e23/providers/Microsoft.DocumentDB/locations/eastus/operationsStatus/a0af221c-f757-415c-81fa-2fb6db677df6?api-version=2023-09-15-preview&t=638319919775785412&c=MIIHHjCCBgagAwIBAgITfwHPoKWFUi8BZhm71wAEAc-gpTANBgkqhkiG9w0BAQsFADBEMRMwEQYKCZImiZPyLGQBGRYDR0JMMRMwEQYKCZImiZPyLGQBGRYDQU1FMRgwFgYDVQQDEw9BTUUgSW5mcmEgQ0EgMDIwHhcNMjMwODAyMTUxMzA3WhcNMjQwNzI3MTUxMzA3WjBAMT4wPAYDVQQDEzVhc3luY29wZXJhdGlvbnNpZ25pbmdjZXJ0aWZpY2F0ZS5tYW5hZ2VtZW50LmF6dXJlLmNvbTCCASIwDQYJKoZIhvcNAQEBBQADggEPADCCAQoCggEBALu1fZZT_nfKRrxL6aw2JLIgOZKXeKPga0MQ0EbBuAZQktSy3j54LDkbkSRqksOE2AYyp19GWQAGL0ljJwxFBRp_nFo8jljIy22jy-satVS7oJtnzH1TqtYFaysEFAiYHuq_qe0VMyxNBrIkwf60yCr2BRBOKXVFqfzVx3Wup-Qr_kDwppasDbBgYXwE4iH9CCcqg5IsgBz2IfvUSiRtlHB622wo90PGPXuz-djAwdjmUNKOer05VoHXvjSx3V2_f9VnXc4T1OrSY3WdWSvzCJh7Hgfg8SdAYlvJgzVWM64uB9VKloorGXz3XWGPJtpQxgNwpuHLCrABPO4fwOAuITUCAwEAAaOCBAswggQHMCcGCSsGAQQBgjcVCgQaMBgwCgYIKwYBBQUHAwEwCgYIKwYBBQUHAwIwPQYJKwYBBAGCNxUHBDAwLgYmKwYBBAGCNxUIhpDjDYTVtHiE8Ys-hZvdFs6dEoFggvX2K4Py0SACAWQCAQowggHaBggrBgEFBQcBAQSCAcwwggHIMGYGCCsGAQUFBzAChlpodHRwOi8vY3JsLm1pY3Jvc29mdC5jb20vcGtpaW5mcmEvQ2VydHMvQkwyUEtJSU5UQ0EwMS5BTUUuR0JMX0FNRSUyMEluZnJhJTIwQ0ElMjAwMig0KS5jcnQwVgYIKwYBBQUHMAKGSmh0dHA6Ly9jcmwxLmFtZS5nYmwvYWlhL0JMMlBLSUlOVENBMDEuQU1FLkdCTF9BTUUlMjBJbmZyYSUyMENBJTIwMDIoNCkuY3J0MFYGCCsGAQUFBzAChkpodHRwOi8vY3JsMi5hbWUuZ2JsL2FpYS9CTDJQS0lJTlRDQTAxLkFNRS5HQkxfQU1FJTIwSW5mcmElMjBDQSUyMDAyKDQpLmNydDBWBggrBgEFBQcwAoZKaHR0cDovL2NybDMuYW1lLmdibC9haWEvQkwyUEtJSU5UQ0EwMS5BTUUuR0JMX0FNRSUyMEluZnJhJTIwQ0ElMjAwMig0KS5jcnQwVgYIKwYBBQUHMAKGSmh0dHA6Ly9jcmw0LmFtZS5nYmwvYWlhL0JMMlBLSUlOVENBMDEuQU1FLkdCTF9BTUUlMjBJbmZyYSUyMENBJTIwMDIoNCkuY3J0MB0GA1UdDgQWBBQyEYGXwRYcvZp0qXgj4FWJs6TRIzAOBgNVHQ8BAf8EBAMCBaAwggE1BgNVHR8EggEsMIIBKDCCASSgggEgoIIBHIZCaHR0cDovL2NybC5taWNyb3NvZnQuY29tL3BraWluZnJhL0NSTC9BTUUlMjBJbmZyYSUyMENBJTIwMDIoNCkuY3JshjRodHRwOi8vY3JsMS5hbWUuZ2JsL2NybC9BTUUlMjBJbmZyYSUyMENBJTIwMDIoNCkuY3JshjRodHRwOi8vY3JsMi5hbWUuZ2JsL2NybC9BTUUlMjBJbmZyYSUyMENBJTIwMDIoNCkuY3JshjRodHRwOi8vY3JsMy5hbWUuZ2JsL2NybC9BTUUlMjBJbmZyYSUyMENBJTIwMDIoNCkuY3JshjRodHRwOi8vY3JsNC5hbWUuZ2JsL2NybC9BTUUlMjBJbmZyYSUyMENBJTIwMDIoNCkuY3JsMBcGA1UdIAQQMA4wDAYKKwYBBAGCN3sBATAfBgNVHSMEGDAWgBSuecJrXSWIEwb2BwnDl3x7l48dVTAdBgNVHSUEFjAUBggrBgEFBQcDAQYIKwYBBQUHAwIwDQYJKoZIhvcNAQELBQADggEBAFKdLTs8xn97Nm7zx6Qcs2CViRTL6Inal6SA1QCw_qL9yDAnDW-WQCPR-rEUTPy7BL2WqCvCUnQkW_aew8zFfiUEdwQNkmAssARGSpeufWbypj45aNJYk1I1GzFS3kOB4pyen0gOv-2dStVtGvfRPYoS_iHCM_Fe2CJaWivf5Du0yELc3KdGovaR0VRbRjzPYLr1UYVX5CvvjoDBkvoOESc1fIis9zPCGzvs7chJ36MqU8kckMcIUtcsuCaTZS1tRuzfHL7p7FHLiTln4CPXCX8mRQp7fCUJGRyd4-CTs0DFmTPBKp2AG54KKsahYLGRvMREEmXAcaO5J3-troScyFc&s=cI86c6ztbKnr63JOAKAMMlGilL8pmMAslLtQweMCThp_d9ia5tjJl1hggk9JA-ttd4nWjIU_kXTdW0At5ooN9tnPPLG6Z347iufgf7N3THVqr64T5Rt1CNyDHzXdxBlUhcp9q2JtIY5KhDn7JCq5ZOZ-Ulq96q1LYycHSwChH-MFnSFIkirviYeDTPxFoj0l0iGX0aBPnm8iPAJ-QgNLAalNbYxhe3SvOo6sX0ZLF7ZzV7tKhT_-CiY57HWSwhpj07OMJjCiNxigx-cLITybsiSeUk00f_zofjz9QZdTDAPQp-s1FVIFNaX7pCfPBOlTlqj8gT6x5vum-I5cR69euQ&h=gLw8ph6Uh8SguGL3fMPbtG3Es2COmxjoq1sJ2sFKlNk",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvMmMxZDBiNjktMjI1YS00M2I1LTgyMjAtNmExMzllZjkyZTIzL3Byb3ZpZGVycy9NaWNyb3NvZnQuRG9jdW1lbnREQi9sb2NhdGlvbnMvZWFzdHVzL29wZXJhdGlvbnNTdGF0dXMvYTBhZjIyMWMtZjc1Ny00MTVjLTgxZmEtMmZiNmRiNjc3ZGY2P2FwaS12ZXJzaW9uPTIwMjMtMDktMTUtcHJldmlldyZ0PTYzODMxOTkxOTc3NTc4NTQxMiZjPU1JSUhIakNDQmdhZ0F3SUJBZ0lUZndIUG9LV0ZVaThCWmhtNzF3QUVBYy1ncFRBTkJna3Foa2lHOXcwQkFRc0ZBREJFTVJNd0VRWUtDWkltaVpQeUxHUUJHUllEUjBKTU1STXdFUVlLQ1pJbWlaUHlMR1FCR1JZRFFVMUZNUmd3RmdZRFZRUURFdzlCVFVVZ1NXNW1jbUVnUTBFZ01ESXdIaGNOTWpNd09EQXlNVFV4TXpBM1doY05NalF3TnpJM01UVXhNekEzV2pCQU1UNHdQQVlEVlFRREV6VmhjM2x1WTI5d1pYSmhkR2x2Ym5OcFoyNXBibWRqWlhKMGFXWnBZMkYwWlM1dFlXNWhaMlZ0Wlc1MExtRjZkWEpsTG1OdmJUQ0NBU0l3RFFZSktvWklodmNOQVFFQkJRQURnZ0VQQURDQ0FRb0NnZ0VCQUx1MWZaWlRfbmZLUnJ4TDZhdzJKTElnT1pLWGVLUGdhME1RMEViQnVBWlFrdFN5M2o1NExEa2JrU1Jxa3NPRTJBWXlwMTlHV1FBR0wwbGpKd3hGQlJwX25GbzhqbGpJeTIyanktc2F0VlM3b0p0bnpIMVRxdFlGYXlzRUZBaVlIdXFfcWUwVk15eE5Ccklrd2Y2MHlDcjJCUkJPS1hWRnFmelZ4M1d1cC1Rcl9rRHdwcGFzRGJCZ1lYd0U0aUg5Q0NjcWc1SXNnQnoySWZ2VVNpUnRsSEI2MjJ3bzkwUEdQWHV6LWRqQXdkam1VTktPZXIwNVZvSFh2alN4M1YyX2Y5Vm5YYzRUMU9yU1kzV2RXU3Z6Q0poN0hnZmc4U2RBWWx2Smd6VldNNjR1QjlWS2xvb3JHWHozWFdHUEp0cFF4Z053cHVITENyQUJQTzRmd09BdUlUVUNBd0VBQWFPQ0JBc3dnZ1FITUNjR0NTc0dBUVFCZ2pjVkNnUWFNQmd3Q2dZSUt3WUJCUVVIQXdFd0NnWUlLd1lCQlFVSEF3SXdQUVlKS3dZQkJBR0NOeFVIQkRBd0xnWW1Ld1lCQkFHQ054VUlocERqRFlUVnRIaUU4WXMtaFp2ZEZzNmRFb0ZnZ3ZYMks0UHkwU0FDQVdRQ0FRb3dnZ0hhQmdnckJnRUZCUWNCQVFTQ0Fjd3dnZ0hJTUdZR0NDc0dBUVVGQnpBQ2hscG9kSFJ3T2k4dlkzSnNMbTFwWTNKdmMyOW1kQzVqYjIwdmNHdHBhVzVtY21FdlEyVnlkSE12UWt3eVVFdEpTVTVVUTBFd01TNUJUVVV1UjBKTVgwRk5SU1V5TUVsdVpuSmhKVEl3UTBFbE1qQXdNaWcwS1M1amNuUXdWZ1lJS3dZQkJRVUhNQUtHU21oMGRIQTZMeTlqY213eExtRnRaUzVuWW13dllXbGhMMEpNTWxCTFNVbE9WRU5CTURFdVFVMUZMa2RDVEY5QlRVVWxNakJKYm1aeVlTVXlNRU5CSlRJd01ESW9OQ2t1WTNKME1GWUdDQ3NHQVFVRkJ6QUNoa3BvZEhSd09pOHZZM0pzTWk1aGJXVXVaMkpzTDJGcFlTOUNUREpRUzBsSlRsUkRRVEF4TGtGTlJTNUhRa3hmUVUxRkpUSXdTVzVtY21FbE1qQkRRU1V5TURBeUtEUXBMbU55ZERCV0JnZ3JCZ0VGQlFjd0FvWkthSFIwY0RvdkwyTnliRE11WVcxbExtZGliQzloYVdFdlFrd3lVRXRKU1U1VVEwRXdNUzVCVFVVdVIwSk1YMEZOUlNVeU1FbHVabkpoSlRJd1EwRWxNakF3TWlnMEtTNWpjblF3VmdZSUt3WUJCUVVITUFLR1NtaDBkSEE2THk5amNtdzBMbUZ0WlM1blltd3ZZV2xoTDBKTU1sQkxTVWxPVkVOQk1ERXVRVTFGTGtkQ1RGOUJUVVVsTWpCSmJtWnlZU1V5TUVOQkpUSXdNRElvTkNrdVkzSjBNQjBHQTFVZERnUVdCQlF5RVlHWHdSWWN2WnAwcVhnajRGV0pzNlRSSXpBT0JnTlZIUThCQWY4RUJBTUNCYUF3Z2dFMUJnTlZIUjhFZ2dFc01JSUJLRENDQVNTZ2dnRWdvSUlCSElaQ2FIUjBjRG92TDJOeWJDNXRhV055YjNOdlpuUXVZMjl0TDNCcmFXbHVabkpoTDBOU1RDOUJUVVVsTWpCSmJtWnlZU1V5TUVOQkpUSXdNRElvTkNrdVkzSnNoalJvZEhSd09pOHZZM0pzTVM1aGJXVXVaMkpzTDJOeWJDOUJUVVVsTWpCSmJtWnlZU1V5TUVOQkpUSXdNRElvTkNrdVkzSnNoalJvZEhSd09pOHZZM0pzTWk1aGJXVXVaMkpzTDJOeWJDOUJUVVVsTWpCSmJtWnlZU1V5TUVOQkpUSXdNRElvTkNrdVkzSnNoalJvZEhSd09pOHZZM0pzTXk1aGJXVXVaMkpzTDJOeWJDOUJUVVVsTWpCSmJtWnlZU1V5TUVOQkpUSXdNRElvTkNrdVkzSnNoalJvZEhSd09pOHZZM0pzTkM1aGJXVXVaMkpzTDJOeWJDOUJUVVVsTWpCSmJtWnlZU1V5TUVOQkpUSXdNRElvTkNrdVkzSnNNQmNHQTFVZElBUVFNQTR3REFZS0t3WUJCQUdDTjNzQkFUQWZCZ05WSFNNRUdEQVdnQlN1ZWNKclhTV0lFd2IyQnduRGwzeDdsNDhkVlRBZEJnTlZIU1VFRmpBVUJnZ3JCZ0VGQlFjREFRWUlLd1lCQlFVSEF3SXdEUVlKS29aSWh2Y05BUUVMQlFBRGdnRUJBRktkTFRzOHhuOTdObTd6eDZRY3MyQ1ZpUlRMNkluYWw2U0ExUUN3X3FMOXlEQW5EVy1XUUNQUi1yRVVUUHk3QkwyV3FDdkNVblFrV19hZXc4ekZmaVVFZHdRTmttQXNzQVJHU3BldWZXYnlwajQ1YU5KWWsxSTFHekZTM2tPQjRweWVuMGdPdi0yZFN0VnRHdmZSUFlvU19pSENNX0ZlMkNKYVdpdmY1RHUweUVMYzNLZEdvdmFSMFZSYlJqelBZTHIxVVlWWDVDdnZqb0RCa3ZvT0VTYzFmSWlzOXpQQ0d6dnM3Y2hKMzZNcVU4a2NrTWNJVXRjc3VDYVRaUzF0UnV6ZkhMN3A3RkhMaVRsbjRDUFhDWDhtUlFwN2ZDVUpHUnlkNC1DVHMwREZtVFBCS3AyQUc1NEtLc2FoWUxHUnZNUkVFbVhBY2FPNUozLXRyb1NjeUZjJnM9Y0k4NmM2enRiS25yNjNKT0FLQU1NbEdpbEw4cG1NQXNsTHRRd2VNQ1RocF9kOWlhNXRqSmwxaGdnazlKQS10dGQ0bldqSVVfa1hUZFcwQXQ1b29OOXRuUFBMRzZaMzQ3aXVmZ2Y3TjNUSFZxcjY0VDVSdDFDTnlESHpYZHhCbFVoY3A5cTJKdElZNUtoRG43SkNxNVpPWi1VbHE5NnExTFl5Y0hTd0NoSC1NRm5TRklraXJ2aVllRFRQeEZvajBsMGlHWDBhQlBubThpUEFKLVFnTkxBYWxOYll4aGUzU3ZPbzZzWDBaTEY3WnpWN3RLaFRfLUNpWTU3SFdTd2hwajA3T01KakNpTnhpZ3gtY0xJVHlic2lTZVVrMDBmX3pvZmp6OVFaZFREQVBRcC1zMUZWSUZOYVg3cENmUEJPbFRscWo4Z1Q2eDV2dW0tSTVjUjY5ZXVRJmg9Z0x3OHBoNlVoOFNndUdMM2ZNUGJ0RzNFczJDT214am9xMXNKMnNGS2xOaw==",
       "RequestMethod": "GET",
       "RequestHeaders": {
         "x-ms-client-request-id": [
-          "c517458f-1758-4212-be65-5d54fcfc0672"
+          "eb838f56-874d-4630-9b2e-14c1e1563c63"
         ],
         "User-Agent": [
           "FxVersion/4.700.22.55902",
@@ -663,22 +603,22 @@
           "Microsoft-HTTPAPI/2.0"
         ],
         "x-ms-ratelimit-remaining-subscription-reads": [
-          "11964"
+          "11980"
         ],
         "x-ms-request-id": [
-          "2ad8e519-5ccc-49bf-93ee-f819291a3d37"
+          "2512dcf5-a082-4905-b2c1-934339983e28"
         ],
         "x-ms-correlation-request-id": [
-          "2ad8e519-5ccc-49bf-93ee-f819291a3d37"
+          "2512dcf5-a082-4905-b2c1-934339983e28"
         ],
         "x-ms-routing-request-id": [
-          "EASTUS:20230720T122912Z:2ad8e519-5ccc-49bf-93ee-f819291a3d37"
+          "CENTRALINDIA:20231004T045358Z:2512dcf5-a082-4905-b2c1-934339983e28"
         ],
         "X-Content-Type-Options": [
           "nosniff"
         ],
         "Date": [
-          "Thu, 20 Jul 2023 12:29:11 GMT"
+          "Wed, 04 Oct 2023 04:53:57 GMT"
         ],
         "Content-Length": [
           "21"
@@ -691,12 +631,12 @@
       "StatusCode": 200
     },
     {
-      "RequestUri": "/subscriptions/12053b8f-cab5-4f5c-9c1a-870580142abd/providers/Microsoft.DocumentDB/locations/eastus/operationsStatus/a6eb0bcb-a986-4c0c-bd71-a4be61aebe86?api-version=2023-03-15-preview",
-      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvMTIwNTNiOGYtY2FiNS00ZjVjLTljMWEtODcwNTgwMTQyYWJkL3Byb3ZpZGVycy9NaWNyb3NvZnQuRG9jdW1lbnREQi9sb2NhdGlvbnMvZWFzdHVzL29wZXJhdGlvbnNTdGF0dXMvYTZlYjBiY2ItYTk4Ni00YzBjLWJkNzEtYTRiZTYxYWViZTg2P2FwaS12ZXJzaW9uPTIwMjMtMDMtMTUtcHJldmlldw==",
+      "RequestUri": "/subscriptions/2c1d0b69-225a-43b5-8220-6a139ef92e23/providers/Microsoft.DocumentDB/locations/eastus/operationsStatus/a0af221c-f757-415c-81fa-2fb6db677df6?api-version=2023-09-15-preview&t=638319919775785412&c=MIIHHjCCBgagAwIBAgITfwHPoKWFUi8BZhm71wAEAc-gpTANBgkqhkiG9w0BAQsFADBEMRMwEQYKCZImiZPyLGQBGRYDR0JMMRMwEQYKCZImiZPyLGQBGRYDQU1FMRgwFgYDVQQDEw9BTUUgSW5mcmEgQ0EgMDIwHhcNMjMwODAyMTUxMzA3WhcNMjQwNzI3MTUxMzA3WjBAMT4wPAYDVQQDEzVhc3luY29wZXJhdGlvbnNpZ25pbmdjZXJ0aWZpY2F0ZS5tYW5hZ2VtZW50LmF6dXJlLmNvbTCCASIwDQYJKoZIhvcNAQEBBQADggEPADCCAQoCggEBALu1fZZT_nfKRrxL6aw2JLIgOZKXeKPga0MQ0EbBuAZQktSy3j54LDkbkSRqksOE2AYyp19GWQAGL0ljJwxFBRp_nFo8jljIy22jy-satVS7oJtnzH1TqtYFaysEFAiYHuq_qe0VMyxNBrIkwf60yCr2BRBOKXVFqfzVx3Wup-Qr_kDwppasDbBgYXwE4iH9CCcqg5IsgBz2IfvUSiRtlHB622wo90PGPXuz-djAwdjmUNKOer05VoHXvjSx3V2_f9VnXc4T1OrSY3WdWSvzCJh7Hgfg8SdAYlvJgzVWM64uB9VKloorGXz3XWGPJtpQxgNwpuHLCrABPO4fwOAuITUCAwEAAaOCBAswggQHMCcGCSsGAQQBgjcVCgQaMBgwCgYIKwYBBQUHAwEwCgYIKwYBBQUHAwIwPQYJKwYBBAGCNxUHBDAwLgYmKwYBBAGCNxUIhpDjDYTVtHiE8Ys-hZvdFs6dEoFggvX2K4Py0SACAWQCAQowggHaBggrBgEFBQcBAQSCAcwwggHIMGYGCCsGAQUFBzAChlpodHRwOi8vY3JsLm1pY3Jvc29mdC5jb20vcGtpaW5mcmEvQ2VydHMvQkwyUEtJSU5UQ0EwMS5BTUUuR0JMX0FNRSUyMEluZnJhJTIwQ0ElMjAwMig0KS5jcnQwVgYIKwYBBQUHMAKGSmh0dHA6Ly9jcmwxLmFtZS5nYmwvYWlhL0JMMlBLSUlOVENBMDEuQU1FLkdCTF9BTUUlMjBJbmZyYSUyMENBJTIwMDIoNCkuY3J0MFYGCCsGAQUFBzAChkpodHRwOi8vY3JsMi5hbWUuZ2JsL2FpYS9CTDJQS0lJTlRDQTAxLkFNRS5HQkxfQU1FJTIwSW5mcmElMjBDQSUyMDAyKDQpLmNydDBWBggrBgEFBQcwAoZKaHR0cDovL2NybDMuYW1lLmdibC9haWEvQkwyUEtJSU5UQ0EwMS5BTUUuR0JMX0FNRSUyMEluZnJhJTIwQ0ElMjAwMig0KS5jcnQwVgYIKwYBBQUHMAKGSmh0dHA6Ly9jcmw0LmFtZS5nYmwvYWlhL0JMMlBLSUlOVENBMDEuQU1FLkdCTF9BTUUlMjBJbmZyYSUyMENBJTIwMDIoNCkuY3J0MB0GA1UdDgQWBBQyEYGXwRYcvZp0qXgj4FWJs6TRIzAOBgNVHQ8BAf8EBAMCBaAwggE1BgNVHR8EggEsMIIBKDCCASSgggEgoIIBHIZCaHR0cDovL2NybC5taWNyb3NvZnQuY29tL3BraWluZnJhL0NSTC9BTUUlMjBJbmZyYSUyMENBJTIwMDIoNCkuY3JshjRodHRwOi8vY3JsMS5hbWUuZ2JsL2NybC9BTUUlMjBJbmZyYSUyMENBJTIwMDIoNCkuY3JshjRodHRwOi8vY3JsMi5hbWUuZ2JsL2NybC9BTUUlMjBJbmZyYSUyMENBJTIwMDIoNCkuY3JshjRodHRwOi8vY3JsMy5hbWUuZ2JsL2NybC9BTUUlMjBJbmZyYSUyMENBJTIwMDIoNCkuY3JshjRodHRwOi8vY3JsNC5hbWUuZ2JsL2NybC9BTUUlMjBJbmZyYSUyMENBJTIwMDIoNCkuY3JsMBcGA1UdIAQQMA4wDAYKKwYBBAGCN3sBATAfBgNVHSMEGDAWgBSuecJrXSWIEwb2BwnDl3x7l48dVTAdBgNVHSUEFjAUBggrBgEFBQcDAQYIKwYBBQUHAwIwDQYJKoZIhvcNAQELBQADggEBAFKdLTs8xn97Nm7zx6Qcs2CViRTL6Inal6SA1QCw_qL9yDAnDW-WQCPR-rEUTPy7BL2WqCvCUnQkW_aew8zFfiUEdwQNkmAssARGSpeufWbypj45aNJYk1I1GzFS3kOB4pyen0gOv-2dStVtGvfRPYoS_iHCM_Fe2CJaWivf5Du0yELc3KdGovaR0VRbRjzPYLr1UYVX5CvvjoDBkvoOESc1fIis9zPCGzvs7chJ36MqU8kckMcIUtcsuCaTZS1tRuzfHL7p7FHLiTln4CPXCX8mRQp7fCUJGRyd4-CTs0DFmTPBKp2AG54KKsahYLGRvMREEmXAcaO5J3-troScyFc&s=cI86c6ztbKnr63JOAKAMMlGilL8pmMAslLtQweMCThp_d9ia5tjJl1hggk9JA-ttd4nWjIU_kXTdW0At5ooN9tnPPLG6Z347iufgf7N3THVqr64T5Rt1CNyDHzXdxBlUhcp9q2JtIY5KhDn7JCq5ZOZ-Ulq96q1LYycHSwChH-MFnSFIkirviYeDTPxFoj0l0iGX0aBPnm8iPAJ-QgNLAalNbYxhe3SvOo6sX0ZLF7ZzV7tKhT_-CiY57HWSwhpj07OMJjCiNxigx-cLITybsiSeUk00f_zofjz9QZdTDAPQp-s1FVIFNaX7pCfPBOlTlqj8gT6x5vum-I5cR69euQ&h=gLw8ph6Uh8SguGL3fMPbtG3Es2COmxjoq1sJ2sFKlNk",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvMmMxZDBiNjktMjI1YS00M2I1LTgyMjAtNmExMzllZjkyZTIzL3Byb3ZpZGVycy9NaWNyb3NvZnQuRG9jdW1lbnREQi9sb2NhdGlvbnMvZWFzdHVzL29wZXJhdGlvbnNTdGF0dXMvYTBhZjIyMWMtZjc1Ny00MTVjLTgxZmEtMmZiNmRiNjc3ZGY2P2FwaS12ZXJzaW9uPTIwMjMtMDktMTUtcHJldmlldyZ0PTYzODMxOTkxOTc3NTc4NTQxMiZjPU1JSUhIakNDQmdhZ0F3SUJBZ0lUZndIUG9LV0ZVaThCWmhtNzF3QUVBYy1ncFRBTkJna3Foa2lHOXcwQkFRc0ZBREJFTVJNd0VRWUtDWkltaVpQeUxHUUJHUllEUjBKTU1STXdFUVlLQ1pJbWlaUHlMR1FCR1JZRFFVMUZNUmd3RmdZRFZRUURFdzlCVFVVZ1NXNW1jbUVnUTBFZ01ESXdIaGNOTWpNd09EQXlNVFV4TXpBM1doY05NalF3TnpJM01UVXhNekEzV2pCQU1UNHdQQVlEVlFRREV6VmhjM2x1WTI5d1pYSmhkR2x2Ym5OcFoyNXBibWRqWlhKMGFXWnBZMkYwWlM1dFlXNWhaMlZ0Wlc1MExtRjZkWEpsTG1OdmJUQ0NBU0l3RFFZSktvWklodmNOQVFFQkJRQURnZ0VQQURDQ0FRb0NnZ0VCQUx1MWZaWlRfbmZLUnJ4TDZhdzJKTElnT1pLWGVLUGdhME1RMEViQnVBWlFrdFN5M2o1NExEa2JrU1Jxa3NPRTJBWXlwMTlHV1FBR0wwbGpKd3hGQlJwX25GbzhqbGpJeTIyanktc2F0VlM3b0p0bnpIMVRxdFlGYXlzRUZBaVlIdXFfcWUwVk15eE5Ccklrd2Y2MHlDcjJCUkJPS1hWRnFmelZ4M1d1cC1Rcl9rRHdwcGFzRGJCZ1lYd0U0aUg5Q0NjcWc1SXNnQnoySWZ2VVNpUnRsSEI2MjJ3bzkwUEdQWHV6LWRqQXdkam1VTktPZXIwNVZvSFh2alN4M1YyX2Y5Vm5YYzRUMU9yU1kzV2RXU3Z6Q0poN0hnZmc4U2RBWWx2Smd6VldNNjR1QjlWS2xvb3JHWHozWFdHUEp0cFF4Z053cHVITENyQUJQTzRmd09BdUlUVUNBd0VBQWFPQ0JBc3dnZ1FITUNjR0NTc0dBUVFCZ2pjVkNnUWFNQmd3Q2dZSUt3WUJCUVVIQXdFd0NnWUlLd1lCQlFVSEF3SXdQUVlKS3dZQkJBR0NOeFVIQkRBd0xnWW1Ld1lCQkFHQ054VUlocERqRFlUVnRIaUU4WXMtaFp2ZEZzNmRFb0ZnZ3ZYMks0UHkwU0FDQVdRQ0FRb3dnZ0hhQmdnckJnRUZCUWNCQVFTQ0Fjd3dnZ0hJTUdZR0NDc0dBUVVGQnpBQ2hscG9kSFJ3T2k4dlkzSnNMbTFwWTNKdmMyOW1kQzVqYjIwdmNHdHBhVzVtY21FdlEyVnlkSE12UWt3eVVFdEpTVTVVUTBFd01TNUJUVVV1UjBKTVgwRk5SU1V5TUVsdVpuSmhKVEl3UTBFbE1qQXdNaWcwS1M1amNuUXdWZ1lJS3dZQkJRVUhNQUtHU21oMGRIQTZMeTlqY213eExtRnRaUzVuWW13dllXbGhMMEpNTWxCTFNVbE9WRU5CTURFdVFVMUZMa2RDVEY5QlRVVWxNakJKYm1aeVlTVXlNRU5CSlRJd01ESW9OQ2t1WTNKME1GWUdDQ3NHQVFVRkJ6QUNoa3BvZEhSd09pOHZZM0pzTWk1aGJXVXVaMkpzTDJGcFlTOUNUREpRUzBsSlRsUkRRVEF4TGtGTlJTNUhRa3hmUVUxRkpUSXdTVzVtY21FbE1qQkRRU1V5TURBeUtEUXBMbU55ZERCV0JnZ3JCZ0VGQlFjd0FvWkthSFIwY0RvdkwyTnliRE11WVcxbExtZGliQzloYVdFdlFrd3lVRXRKU1U1VVEwRXdNUzVCVFVVdVIwSk1YMEZOUlNVeU1FbHVabkpoSlRJd1EwRWxNakF3TWlnMEtTNWpjblF3VmdZSUt3WUJCUVVITUFLR1NtaDBkSEE2THk5amNtdzBMbUZ0WlM1blltd3ZZV2xoTDBKTU1sQkxTVWxPVkVOQk1ERXVRVTFGTGtkQ1RGOUJUVVVsTWpCSmJtWnlZU1V5TUVOQkpUSXdNRElvTkNrdVkzSjBNQjBHQTFVZERnUVdCQlF5RVlHWHdSWWN2WnAwcVhnajRGV0pzNlRSSXpBT0JnTlZIUThCQWY4RUJBTUNCYUF3Z2dFMUJnTlZIUjhFZ2dFc01JSUJLRENDQVNTZ2dnRWdvSUlCSElaQ2FIUjBjRG92TDJOeWJDNXRhV055YjNOdlpuUXVZMjl0TDNCcmFXbHVabkpoTDBOU1RDOUJUVVVsTWpCSmJtWnlZU1V5TUVOQkpUSXdNRElvTkNrdVkzSnNoalJvZEhSd09pOHZZM0pzTVM1aGJXVXVaMkpzTDJOeWJDOUJUVVVsTWpCSmJtWnlZU1V5TUVOQkpUSXdNRElvTkNrdVkzSnNoalJvZEhSd09pOHZZM0pzTWk1aGJXVXVaMkpzTDJOeWJDOUJUVVVsTWpCSmJtWnlZU1V5TUVOQkpUSXdNRElvTkNrdVkzSnNoalJvZEhSd09pOHZZM0pzTXk1aGJXVXVaMkpzTDJOeWJDOUJUVVVsTWpCSmJtWnlZU1V5TUVOQkpUSXdNRElvTkNrdVkzSnNoalJvZEhSd09pOHZZM0pzTkM1aGJXVXVaMkpzTDJOeWJDOUJUVVVsTWpCSmJtWnlZU1V5TUVOQkpUSXdNRElvTkNrdVkzSnNNQmNHQTFVZElBUVFNQTR3REFZS0t3WUJCQUdDTjNzQkFUQWZCZ05WSFNNRUdEQVdnQlN1ZWNKclhTV0lFd2IyQnduRGwzeDdsNDhkVlRBZEJnTlZIU1VFRmpBVUJnZ3JCZ0VGQlFjREFRWUlLd1lCQlFVSEF3SXdEUVlKS29aSWh2Y05BUUVMQlFBRGdnRUJBRktkTFRzOHhuOTdObTd6eDZRY3MyQ1ZpUlRMNkluYWw2U0ExUUN3X3FMOXlEQW5EVy1XUUNQUi1yRVVUUHk3QkwyV3FDdkNVblFrV19hZXc4ekZmaVVFZHdRTmttQXNzQVJHU3BldWZXYnlwajQ1YU5KWWsxSTFHekZTM2tPQjRweWVuMGdPdi0yZFN0VnRHdmZSUFlvU19pSENNX0ZlMkNKYVdpdmY1RHUweUVMYzNLZEdvdmFSMFZSYlJqelBZTHIxVVlWWDVDdnZqb0RCa3ZvT0VTYzFmSWlzOXpQQ0d6dnM3Y2hKMzZNcVU4a2NrTWNJVXRjc3VDYVRaUzF0UnV6ZkhMN3A3RkhMaVRsbjRDUFhDWDhtUlFwN2ZDVUpHUnlkNC1DVHMwREZtVFBCS3AyQUc1NEtLc2FoWUxHUnZNUkVFbVhBY2FPNUozLXRyb1NjeUZjJnM9Y0k4NmM2enRiS25yNjNKT0FLQU1NbEdpbEw4cG1NQXNsTHRRd2VNQ1RocF9kOWlhNXRqSmwxaGdnazlKQS10dGQ0bldqSVVfa1hUZFcwQXQ1b29OOXRuUFBMRzZaMzQ3aXVmZ2Y3TjNUSFZxcjY0VDVSdDFDTnlESHpYZHhCbFVoY3A5cTJKdElZNUtoRG43SkNxNVpPWi1VbHE5NnExTFl5Y0hTd0NoSC1NRm5TRklraXJ2aVllRFRQeEZvajBsMGlHWDBhQlBubThpUEFKLVFnTkxBYWxOYll4aGUzU3ZPbzZzWDBaTEY3WnpWN3RLaFRfLUNpWTU3SFdTd2hwajA3T01KakNpTnhpZ3gtY0xJVHlic2lTZVVrMDBmX3pvZmp6OVFaZFREQVBRcC1zMUZWSUZOYVg3cENmUEJPbFRscWo4Z1Q2eDV2dW0tSTVjUjY5ZXVRJmg9Z0x3OHBoNlVoOFNndUdMM2ZNUGJ0RzNFczJDT214am9xMXNKMnNGS2xOaw==",
       "RequestMethod": "GET",
       "RequestHeaders": {
         "x-ms-client-request-id": [
-          "c517458f-1758-4212-be65-5d54fcfc0672"
+          "eb838f56-874d-4630-9b2e-14c1e1563c63"
         ],
         "User-Agent": [
           "FxVersion/4.700.22.55902",
@@ -723,22 +663,142 @@
           "Microsoft-HTTPAPI/2.0"
         ],
         "x-ms-ratelimit-remaining-subscription-reads": [
-          "11963"
+          "11979"
         ],
         "x-ms-request-id": [
-          "f2904dba-1d65-4e21-8473-d3f7923e309d"
+          "0db87c46-082f-42b4-bea7-36361c99b68f"
         ],
         "x-ms-correlation-request-id": [
-          "f2904dba-1d65-4e21-8473-d3f7923e309d"
+          "0db87c46-082f-42b4-bea7-36361c99b68f"
         ],
         "x-ms-routing-request-id": [
-          "EASTUS:20230720T122942Z:f2904dba-1d65-4e21-8473-d3f7923e309d"
+          "CENTRALINDIA:20231004T045428Z:0db87c46-082f-42b4-bea7-36361c99b68f"
         ],
         "X-Content-Type-Options": [
           "nosniff"
         ],
         "Date": [
-          "Thu, 20 Jul 2023 12:29:41 GMT"
+          "Wed, 04 Oct 2023 04:54:27 GMT"
+        ],
+        "Content-Length": [
+          "21"
+        ],
+        "Content-Type": [
+          "application/json"
+        ]
+      },
+      "ResponseBody": "{\r\n  \"status\": \"Dequeued\"\r\n}",
+      "StatusCode": 200
+    },
+    {
+      "RequestUri": "/subscriptions/2c1d0b69-225a-43b5-8220-6a139ef92e23/providers/Microsoft.DocumentDB/locations/eastus/operationsStatus/a0af221c-f757-415c-81fa-2fb6db677df6?api-version=2023-09-15-preview&t=638319919775785412&c=MIIHHjCCBgagAwIBAgITfwHPoKWFUi8BZhm71wAEAc-gpTANBgkqhkiG9w0BAQsFADBEMRMwEQYKCZImiZPyLGQBGRYDR0JMMRMwEQYKCZImiZPyLGQBGRYDQU1FMRgwFgYDVQQDEw9BTUUgSW5mcmEgQ0EgMDIwHhcNMjMwODAyMTUxMzA3WhcNMjQwNzI3MTUxMzA3WjBAMT4wPAYDVQQDEzVhc3luY29wZXJhdGlvbnNpZ25pbmdjZXJ0aWZpY2F0ZS5tYW5hZ2VtZW50LmF6dXJlLmNvbTCCASIwDQYJKoZIhvcNAQEBBQADggEPADCCAQoCggEBALu1fZZT_nfKRrxL6aw2JLIgOZKXeKPga0MQ0EbBuAZQktSy3j54LDkbkSRqksOE2AYyp19GWQAGL0ljJwxFBRp_nFo8jljIy22jy-satVS7oJtnzH1TqtYFaysEFAiYHuq_qe0VMyxNBrIkwf60yCr2BRBOKXVFqfzVx3Wup-Qr_kDwppasDbBgYXwE4iH9CCcqg5IsgBz2IfvUSiRtlHB622wo90PGPXuz-djAwdjmUNKOer05VoHXvjSx3V2_f9VnXc4T1OrSY3WdWSvzCJh7Hgfg8SdAYlvJgzVWM64uB9VKloorGXz3XWGPJtpQxgNwpuHLCrABPO4fwOAuITUCAwEAAaOCBAswggQHMCcGCSsGAQQBgjcVCgQaMBgwCgYIKwYBBQUHAwEwCgYIKwYBBQUHAwIwPQYJKwYBBAGCNxUHBDAwLgYmKwYBBAGCNxUIhpDjDYTVtHiE8Ys-hZvdFs6dEoFggvX2K4Py0SACAWQCAQowggHaBggrBgEFBQcBAQSCAcwwggHIMGYGCCsGAQUFBzAChlpodHRwOi8vY3JsLm1pY3Jvc29mdC5jb20vcGtpaW5mcmEvQ2VydHMvQkwyUEtJSU5UQ0EwMS5BTUUuR0JMX0FNRSUyMEluZnJhJTIwQ0ElMjAwMig0KS5jcnQwVgYIKwYBBQUHMAKGSmh0dHA6Ly9jcmwxLmFtZS5nYmwvYWlhL0JMMlBLSUlOVENBMDEuQU1FLkdCTF9BTUUlMjBJbmZyYSUyMENBJTIwMDIoNCkuY3J0MFYGCCsGAQUFBzAChkpodHRwOi8vY3JsMi5hbWUuZ2JsL2FpYS9CTDJQS0lJTlRDQTAxLkFNRS5HQkxfQU1FJTIwSW5mcmElMjBDQSUyMDAyKDQpLmNydDBWBggrBgEFBQcwAoZKaHR0cDovL2NybDMuYW1lLmdibC9haWEvQkwyUEtJSU5UQ0EwMS5BTUUuR0JMX0FNRSUyMEluZnJhJTIwQ0ElMjAwMig0KS5jcnQwVgYIKwYBBQUHMAKGSmh0dHA6Ly9jcmw0LmFtZS5nYmwvYWlhL0JMMlBLSUlOVENBMDEuQU1FLkdCTF9BTUUlMjBJbmZyYSUyMENBJTIwMDIoNCkuY3J0MB0GA1UdDgQWBBQyEYGXwRYcvZp0qXgj4FWJs6TRIzAOBgNVHQ8BAf8EBAMCBaAwggE1BgNVHR8EggEsMIIBKDCCASSgggEgoIIBHIZCaHR0cDovL2NybC5taWNyb3NvZnQuY29tL3BraWluZnJhL0NSTC9BTUUlMjBJbmZyYSUyMENBJTIwMDIoNCkuY3JshjRodHRwOi8vY3JsMS5hbWUuZ2JsL2NybC9BTUUlMjBJbmZyYSUyMENBJTIwMDIoNCkuY3JshjRodHRwOi8vY3JsMi5hbWUuZ2JsL2NybC9BTUUlMjBJbmZyYSUyMENBJTIwMDIoNCkuY3JshjRodHRwOi8vY3JsMy5hbWUuZ2JsL2NybC9BTUUlMjBJbmZyYSUyMENBJTIwMDIoNCkuY3JshjRodHRwOi8vY3JsNC5hbWUuZ2JsL2NybC9BTUUlMjBJbmZyYSUyMENBJTIwMDIoNCkuY3JsMBcGA1UdIAQQMA4wDAYKKwYBBAGCN3sBATAfBgNVHSMEGDAWgBSuecJrXSWIEwb2BwnDl3x7l48dVTAdBgNVHSUEFjAUBggrBgEFBQcDAQYIKwYBBQUHAwIwDQYJKoZIhvcNAQELBQADggEBAFKdLTs8xn97Nm7zx6Qcs2CViRTL6Inal6SA1QCw_qL9yDAnDW-WQCPR-rEUTPy7BL2WqCvCUnQkW_aew8zFfiUEdwQNkmAssARGSpeufWbypj45aNJYk1I1GzFS3kOB4pyen0gOv-2dStVtGvfRPYoS_iHCM_Fe2CJaWivf5Du0yELc3KdGovaR0VRbRjzPYLr1UYVX5CvvjoDBkvoOESc1fIis9zPCGzvs7chJ36MqU8kckMcIUtcsuCaTZS1tRuzfHL7p7FHLiTln4CPXCX8mRQp7fCUJGRyd4-CTs0DFmTPBKp2AG54KKsahYLGRvMREEmXAcaO5J3-troScyFc&s=cI86c6ztbKnr63JOAKAMMlGilL8pmMAslLtQweMCThp_d9ia5tjJl1hggk9JA-ttd4nWjIU_kXTdW0At5ooN9tnPPLG6Z347iufgf7N3THVqr64T5Rt1CNyDHzXdxBlUhcp9q2JtIY5KhDn7JCq5ZOZ-Ulq96q1LYycHSwChH-MFnSFIkirviYeDTPxFoj0l0iGX0aBPnm8iPAJ-QgNLAalNbYxhe3SvOo6sX0ZLF7ZzV7tKhT_-CiY57HWSwhpj07OMJjCiNxigx-cLITybsiSeUk00f_zofjz9QZdTDAPQp-s1FVIFNaX7pCfPBOlTlqj8gT6x5vum-I5cR69euQ&h=gLw8ph6Uh8SguGL3fMPbtG3Es2COmxjoq1sJ2sFKlNk",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvMmMxZDBiNjktMjI1YS00M2I1LTgyMjAtNmExMzllZjkyZTIzL3Byb3ZpZGVycy9NaWNyb3NvZnQuRG9jdW1lbnREQi9sb2NhdGlvbnMvZWFzdHVzL29wZXJhdGlvbnNTdGF0dXMvYTBhZjIyMWMtZjc1Ny00MTVjLTgxZmEtMmZiNmRiNjc3ZGY2P2FwaS12ZXJzaW9uPTIwMjMtMDktMTUtcHJldmlldyZ0PTYzODMxOTkxOTc3NTc4NTQxMiZjPU1JSUhIakNDQmdhZ0F3SUJBZ0lUZndIUG9LV0ZVaThCWmhtNzF3QUVBYy1ncFRBTkJna3Foa2lHOXcwQkFRc0ZBREJFTVJNd0VRWUtDWkltaVpQeUxHUUJHUllEUjBKTU1STXdFUVlLQ1pJbWlaUHlMR1FCR1JZRFFVMUZNUmd3RmdZRFZRUURFdzlCVFVVZ1NXNW1jbUVnUTBFZ01ESXdIaGNOTWpNd09EQXlNVFV4TXpBM1doY05NalF3TnpJM01UVXhNekEzV2pCQU1UNHdQQVlEVlFRREV6VmhjM2x1WTI5d1pYSmhkR2x2Ym5OcFoyNXBibWRqWlhKMGFXWnBZMkYwWlM1dFlXNWhaMlZ0Wlc1MExtRjZkWEpsTG1OdmJUQ0NBU0l3RFFZSktvWklodmNOQVFFQkJRQURnZ0VQQURDQ0FRb0NnZ0VCQUx1MWZaWlRfbmZLUnJ4TDZhdzJKTElnT1pLWGVLUGdhME1RMEViQnVBWlFrdFN5M2o1NExEa2JrU1Jxa3NPRTJBWXlwMTlHV1FBR0wwbGpKd3hGQlJwX25GbzhqbGpJeTIyanktc2F0VlM3b0p0bnpIMVRxdFlGYXlzRUZBaVlIdXFfcWUwVk15eE5Ccklrd2Y2MHlDcjJCUkJPS1hWRnFmelZ4M1d1cC1Rcl9rRHdwcGFzRGJCZ1lYd0U0aUg5Q0NjcWc1SXNnQnoySWZ2VVNpUnRsSEI2MjJ3bzkwUEdQWHV6LWRqQXdkam1VTktPZXIwNVZvSFh2alN4M1YyX2Y5Vm5YYzRUMU9yU1kzV2RXU3Z6Q0poN0hnZmc4U2RBWWx2Smd6VldNNjR1QjlWS2xvb3JHWHozWFdHUEp0cFF4Z053cHVITENyQUJQTzRmd09BdUlUVUNBd0VBQWFPQ0JBc3dnZ1FITUNjR0NTc0dBUVFCZ2pjVkNnUWFNQmd3Q2dZSUt3WUJCUVVIQXdFd0NnWUlLd1lCQlFVSEF3SXdQUVlKS3dZQkJBR0NOeFVIQkRBd0xnWW1Ld1lCQkFHQ054VUlocERqRFlUVnRIaUU4WXMtaFp2ZEZzNmRFb0ZnZ3ZYMks0UHkwU0FDQVdRQ0FRb3dnZ0hhQmdnckJnRUZCUWNCQVFTQ0Fjd3dnZ0hJTUdZR0NDc0dBUVVGQnpBQ2hscG9kSFJ3T2k4dlkzSnNMbTFwWTNKdmMyOW1kQzVqYjIwdmNHdHBhVzVtY21FdlEyVnlkSE12UWt3eVVFdEpTVTVVUTBFd01TNUJUVVV1UjBKTVgwRk5SU1V5TUVsdVpuSmhKVEl3UTBFbE1qQXdNaWcwS1M1amNuUXdWZ1lJS3dZQkJRVUhNQUtHU21oMGRIQTZMeTlqY213eExtRnRaUzVuWW13dllXbGhMMEpNTWxCTFNVbE9WRU5CTURFdVFVMUZMa2RDVEY5QlRVVWxNakJKYm1aeVlTVXlNRU5CSlRJd01ESW9OQ2t1WTNKME1GWUdDQ3NHQVFVRkJ6QUNoa3BvZEhSd09pOHZZM0pzTWk1aGJXVXVaMkpzTDJGcFlTOUNUREpRUzBsSlRsUkRRVEF4TGtGTlJTNUhRa3hmUVUxRkpUSXdTVzVtY21FbE1qQkRRU1V5TURBeUtEUXBMbU55ZERCV0JnZ3JCZ0VGQlFjd0FvWkthSFIwY0RvdkwyTnliRE11WVcxbExtZGliQzloYVdFdlFrd3lVRXRKU1U1VVEwRXdNUzVCVFVVdVIwSk1YMEZOUlNVeU1FbHVabkpoSlRJd1EwRWxNakF3TWlnMEtTNWpjblF3VmdZSUt3WUJCUVVITUFLR1NtaDBkSEE2THk5amNtdzBMbUZ0WlM1blltd3ZZV2xoTDBKTU1sQkxTVWxPVkVOQk1ERXVRVTFGTGtkQ1RGOUJUVVVsTWpCSmJtWnlZU1V5TUVOQkpUSXdNRElvTkNrdVkzSjBNQjBHQTFVZERnUVdCQlF5RVlHWHdSWWN2WnAwcVhnajRGV0pzNlRSSXpBT0JnTlZIUThCQWY4RUJBTUNCYUF3Z2dFMUJnTlZIUjhFZ2dFc01JSUJLRENDQVNTZ2dnRWdvSUlCSElaQ2FIUjBjRG92TDJOeWJDNXRhV055YjNOdlpuUXVZMjl0TDNCcmFXbHVabkpoTDBOU1RDOUJUVVVsTWpCSmJtWnlZU1V5TUVOQkpUSXdNRElvTkNrdVkzSnNoalJvZEhSd09pOHZZM0pzTVM1aGJXVXVaMkpzTDJOeWJDOUJUVVVsTWpCSmJtWnlZU1V5TUVOQkpUSXdNRElvTkNrdVkzSnNoalJvZEhSd09pOHZZM0pzTWk1aGJXVXVaMkpzTDJOeWJDOUJUVVVsTWpCSmJtWnlZU1V5TUVOQkpUSXdNRElvTkNrdVkzSnNoalJvZEhSd09pOHZZM0pzTXk1aGJXVXVaMkpzTDJOeWJDOUJUVVVsTWpCSmJtWnlZU1V5TUVOQkpUSXdNRElvTkNrdVkzSnNoalJvZEhSd09pOHZZM0pzTkM1aGJXVXVaMkpzTDJOeWJDOUJUVVVsTWpCSmJtWnlZU1V5TUVOQkpUSXdNRElvTkNrdVkzSnNNQmNHQTFVZElBUVFNQTR3REFZS0t3WUJCQUdDTjNzQkFUQWZCZ05WSFNNRUdEQVdnQlN1ZWNKclhTV0lFd2IyQnduRGwzeDdsNDhkVlRBZEJnTlZIU1VFRmpBVUJnZ3JCZ0VGQlFjREFRWUlLd1lCQlFVSEF3SXdEUVlKS29aSWh2Y05BUUVMQlFBRGdnRUJBRktkTFRzOHhuOTdObTd6eDZRY3MyQ1ZpUlRMNkluYWw2U0ExUUN3X3FMOXlEQW5EVy1XUUNQUi1yRVVUUHk3QkwyV3FDdkNVblFrV19hZXc4ekZmaVVFZHdRTmttQXNzQVJHU3BldWZXYnlwajQ1YU5KWWsxSTFHekZTM2tPQjRweWVuMGdPdi0yZFN0VnRHdmZSUFlvU19pSENNX0ZlMkNKYVdpdmY1RHUweUVMYzNLZEdvdmFSMFZSYlJqelBZTHIxVVlWWDVDdnZqb0RCa3ZvT0VTYzFmSWlzOXpQQ0d6dnM3Y2hKMzZNcVU4a2NrTWNJVXRjc3VDYVRaUzF0UnV6ZkhMN3A3RkhMaVRsbjRDUFhDWDhtUlFwN2ZDVUpHUnlkNC1DVHMwREZtVFBCS3AyQUc1NEtLc2FoWUxHUnZNUkVFbVhBY2FPNUozLXRyb1NjeUZjJnM9Y0k4NmM2enRiS25yNjNKT0FLQU1NbEdpbEw4cG1NQXNsTHRRd2VNQ1RocF9kOWlhNXRqSmwxaGdnazlKQS10dGQ0bldqSVVfa1hUZFcwQXQ1b29OOXRuUFBMRzZaMzQ3aXVmZ2Y3TjNUSFZxcjY0VDVSdDFDTnlESHpYZHhCbFVoY3A5cTJKdElZNUtoRG43SkNxNVpPWi1VbHE5NnExTFl5Y0hTd0NoSC1NRm5TRklraXJ2aVllRFRQeEZvajBsMGlHWDBhQlBubThpUEFKLVFnTkxBYWxOYll4aGUzU3ZPbzZzWDBaTEY3WnpWN3RLaFRfLUNpWTU3SFdTd2hwajA3T01KakNpTnhpZ3gtY0xJVHlic2lTZVVrMDBmX3pvZmp6OVFaZFREQVBRcC1zMUZWSUZOYVg3cENmUEJPbFRscWo4Z1Q2eDV2dW0tSTVjUjY5ZXVRJmg9Z0x3OHBoNlVoOFNndUdMM2ZNUGJ0RzNFczJDT214am9xMXNKMnNGS2xOaw==",
+      "RequestMethod": "GET",
+      "RequestHeaders": {
+        "x-ms-client-request-id": [
+          "eb838f56-874d-4630-9b2e-14c1e1563c63"
+        ],
+        "User-Agent": [
+          "FxVersion/4.700.22.55902",
+          "OSName/Windows",
+          "OSVersion/Microsoft.Windows.10.0.22621",
+          "Microsoft.Azure.Management.CosmosDB.CosmosDBManagementClient/2.0.5"
+        ]
+      },
+      "RequestBody": "",
+      "ResponseHeaders": {
+        "Cache-Control": [
+          "no-store, no-cache"
+        ],
+        "Pragma": [
+          "no-cache"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
+        ],
+        "x-ms-gatewayversion": [
+          "version=2.14.0"
+        ],
+        "Server": [
+          "Microsoft-HTTPAPI/2.0"
+        ],
+        "x-ms-ratelimit-remaining-subscription-reads": [
+          "11978"
+        ],
+        "x-ms-request-id": [
+          "1b280016-0d38-40e1-affb-5420f9c896b2"
+        ],
+        "x-ms-correlation-request-id": [
+          "1b280016-0d38-40e1-affb-5420f9c896b2"
+        ],
+        "x-ms-routing-request-id": [
+          "CENTRALINDIA:20231004T045458Z:1b280016-0d38-40e1-affb-5420f9c896b2"
+        ],
+        "X-Content-Type-Options": [
+          "nosniff"
+        ],
+        "Date": [
+          "Wed, 04 Oct 2023 04:54:58 GMT"
+        ],
+        "Content-Length": [
+          "21"
+        ],
+        "Content-Type": [
+          "application/json"
+        ]
+      },
+      "ResponseBody": "{\r\n  \"status\": \"Dequeued\"\r\n}",
+      "StatusCode": 200
+    },
+    {
+      "RequestUri": "/subscriptions/2c1d0b69-225a-43b5-8220-6a139ef92e23/providers/Microsoft.DocumentDB/locations/eastus/operationsStatus/a0af221c-f757-415c-81fa-2fb6db677df6?api-version=2023-09-15-preview&t=638319919775785412&c=MIIHHjCCBgagAwIBAgITfwHPoKWFUi8BZhm71wAEAc-gpTANBgkqhkiG9w0BAQsFADBEMRMwEQYKCZImiZPyLGQBGRYDR0JMMRMwEQYKCZImiZPyLGQBGRYDQU1FMRgwFgYDVQQDEw9BTUUgSW5mcmEgQ0EgMDIwHhcNMjMwODAyMTUxMzA3WhcNMjQwNzI3MTUxMzA3WjBAMT4wPAYDVQQDEzVhc3luY29wZXJhdGlvbnNpZ25pbmdjZXJ0aWZpY2F0ZS5tYW5hZ2VtZW50LmF6dXJlLmNvbTCCASIwDQYJKoZIhvcNAQEBBQADggEPADCCAQoCggEBALu1fZZT_nfKRrxL6aw2JLIgOZKXeKPga0MQ0EbBuAZQktSy3j54LDkbkSRqksOE2AYyp19GWQAGL0ljJwxFBRp_nFo8jljIy22jy-satVS7oJtnzH1TqtYFaysEFAiYHuq_qe0VMyxNBrIkwf60yCr2BRBOKXVFqfzVx3Wup-Qr_kDwppasDbBgYXwE4iH9CCcqg5IsgBz2IfvUSiRtlHB622wo90PGPXuz-djAwdjmUNKOer05VoHXvjSx3V2_f9VnXc4T1OrSY3WdWSvzCJh7Hgfg8SdAYlvJgzVWM64uB9VKloorGXz3XWGPJtpQxgNwpuHLCrABPO4fwOAuITUCAwEAAaOCBAswggQHMCcGCSsGAQQBgjcVCgQaMBgwCgYIKwYBBQUHAwEwCgYIKwYBBQUHAwIwPQYJKwYBBAGCNxUHBDAwLgYmKwYBBAGCNxUIhpDjDYTVtHiE8Ys-hZvdFs6dEoFggvX2K4Py0SACAWQCAQowggHaBggrBgEFBQcBAQSCAcwwggHIMGYGCCsGAQUFBzAChlpodHRwOi8vY3JsLm1pY3Jvc29mdC5jb20vcGtpaW5mcmEvQ2VydHMvQkwyUEtJSU5UQ0EwMS5BTUUuR0JMX0FNRSUyMEluZnJhJTIwQ0ElMjAwMig0KS5jcnQwVgYIKwYBBQUHMAKGSmh0dHA6Ly9jcmwxLmFtZS5nYmwvYWlhL0JMMlBLSUlOVENBMDEuQU1FLkdCTF9BTUUlMjBJbmZyYSUyMENBJTIwMDIoNCkuY3J0MFYGCCsGAQUFBzAChkpodHRwOi8vY3JsMi5hbWUuZ2JsL2FpYS9CTDJQS0lJTlRDQTAxLkFNRS5HQkxfQU1FJTIwSW5mcmElMjBDQSUyMDAyKDQpLmNydDBWBggrBgEFBQcwAoZKaHR0cDovL2NybDMuYW1lLmdibC9haWEvQkwyUEtJSU5UQ0EwMS5BTUUuR0JMX0FNRSUyMEluZnJhJTIwQ0ElMjAwMig0KS5jcnQwVgYIKwYBBQUHMAKGSmh0dHA6Ly9jcmw0LmFtZS5nYmwvYWlhL0JMMlBLSUlOVENBMDEuQU1FLkdCTF9BTUUlMjBJbmZyYSUyMENBJTIwMDIoNCkuY3J0MB0GA1UdDgQWBBQyEYGXwRYcvZp0qXgj4FWJs6TRIzAOBgNVHQ8BAf8EBAMCBaAwggE1BgNVHR8EggEsMIIBKDCCASSgggEgoIIBHIZCaHR0cDovL2NybC5taWNyb3NvZnQuY29tL3BraWluZnJhL0NSTC9BTUUlMjBJbmZyYSUyMENBJTIwMDIoNCkuY3JshjRodHRwOi8vY3JsMS5hbWUuZ2JsL2NybC9BTUUlMjBJbmZyYSUyMENBJTIwMDIoNCkuY3JshjRodHRwOi8vY3JsMi5hbWUuZ2JsL2NybC9BTUUlMjBJbmZyYSUyMENBJTIwMDIoNCkuY3JshjRodHRwOi8vY3JsMy5hbWUuZ2JsL2NybC9BTUUlMjBJbmZyYSUyMENBJTIwMDIoNCkuY3JshjRodHRwOi8vY3JsNC5hbWUuZ2JsL2NybC9BTUUlMjBJbmZyYSUyMENBJTIwMDIoNCkuY3JsMBcGA1UdIAQQMA4wDAYKKwYBBAGCN3sBATAfBgNVHSMEGDAWgBSuecJrXSWIEwb2BwnDl3x7l48dVTAdBgNVHSUEFjAUBggrBgEFBQcDAQYIKwYBBQUHAwIwDQYJKoZIhvcNAQELBQADggEBAFKdLTs8xn97Nm7zx6Qcs2CViRTL6Inal6SA1QCw_qL9yDAnDW-WQCPR-rEUTPy7BL2WqCvCUnQkW_aew8zFfiUEdwQNkmAssARGSpeufWbypj45aNJYk1I1GzFS3kOB4pyen0gOv-2dStVtGvfRPYoS_iHCM_Fe2CJaWivf5Du0yELc3KdGovaR0VRbRjzPYLr1UYVX5CvvjoDBkvoOESc1fIis9zPCGzvs7chJ36MqU8kckMcIUtcsuCaTZS1tRuzfHL7p7FHLiTln4CPXCX8mRQp7fCUJGRyd4-CTs0DFmTPBKp2AG54KKsahYLGRvMREEmXAcaO5J3-troScyFc&s=cI86c6ztbKnr63JOAKAMMlGilL8pmMAslLtQweMCThp_d9ia5tjJl1hggk9JA-ttd4nWjIU_kXTdW0At5ooN9tnPPLG6Z347iufgf7N3THVqr64T5Rt1CNyDHzXdxBlUhcp9q2JtIY5KhDn7JCq5ZOZ-Ulq96q1LYycHSwChH-MFnSFIkirviYeDTPxFoj0l0iGX0aBPnm8iPAJ-QgNLAalNbYxhe3SvOo6sX0ZLF7ZzV7tKhT_-CiY57HWSwhpj07OMJjCiNxigx-cLITybsiSeUk00f_zofjz9QZdTDAPQp-s1FVIFNaX7pCfPBOlTlqj8gT6x5vum-I5cR69euQ&h=gLw8ph6Uh8SguGL3fMPbtG3Es2COmxjoq1sJ2sFKlNk",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvMmMxZDBiNjktMjI1YS00M2I1LTgyMjAtNmExMzllZjkyZTIzL3Byb3ZpZGVycy9NaWNyb3NvZnQuRG9jdW1lbnREQi9sb2NhdGlvbnMvZWFzdHVzL29wZXJhdGlvbnNTdGF0dXMvYTBhZjIyMWMtZjc1Ny00MTVjLTgxZmEtMmZiNmRiNjc3ZGY2P2FwaS12ZXJzaW9uPTIwMjMtMDktMTUtcHJldmlldyZ0PTYzODMxOTkxOTc3NTc4NTQxMiZjPU1JSUhIakNDQmdhZ0F3SUJBZ0lUZndIUG9LV0ZVaThCWmhtNzF3QUVBYy1ncFRBTkJna3Foa2lHOXcwQkFRc0ZBREJFTVJNd0VRWUtDWkltaVpQeUxHUUJHUllEUjBKTU1STXdFUVlLQ1pJbWlaUHlMR1FCR1JZRFFVMUZNUmd3RmdZRFZRUURFdzlCVFVVZ1NXNW1jbUVnUTBFZ01ESXdIaGNOTWpNd09EQXlNVFV4TXpBM1doY05NalF3TnpJM01UVXhNekEzV2pCQU1UNHdQQVlEVlFRREV6VmhjM2x1WTI5d1pYSmhkR2x2Ym5OcFoyNXBibWRqWlhKMGFXWnBZMkYwWlM1dFlXNWhaMlZ0Wlc1MExtRjZkWEpsTG1OdmJUQ0NBU0l3RFFZSktvWklodmNOQVFFQkJRQURnZ0VQQURDQ0FRb0NnZ0VCQUx1MWZaWlRfbmZLUnJ4TDZhdzJKTElnT1pLWGVLUGdhME1RMEViQnVBWlFrdFN5M2o1NExEa2JrU1Jxa3NPRTJBWXlwMTlHV1FBR0wwbGpKd3hGQlJwX25GbzhqbGpJeTIyanktc2F0VlM3b0p0bnpIMVRxdFlGYXlzRUZBaVlIdXFfcWUwVk15eE5Ccklrd2Y2MHlDcjJCUkJPS1hWRnFmelZ4M1d1cC1Rcl9rRHdwcGFzRGJCZ1lYd0U0aUg5Q0NjcWc1SXNnQnoySWZ2VVNpUnRsSEI2MjJ3bzkwUEdQWHV6LWRqQXdkam1VTktPZXIwNVZvSFh2alN4M1YyX2Y5Vm5YYzRUMU9yU1kzV2RXU3Z6Q0poN0hnZmc4U2RBWWx2Smd6VldNNjR1QjlWS2xvb3JHWHozWFdHUEp0cFF4Z053cHVITENyQUJQTzRmd09BdUlUVUNBd0VBQWFPQ0JBc3dnZ1FITUNjR0NTc0dBUVFCZ2pjVkNnUWFNQmd3Q2dZSUt3WUJCUVVIQXdFd0NnWUlLd1lCQlFVSEF3SXdQUVlKS3dZQkJBR0NOeFVIQkRBd0xnWW1Ld1lCQkFHQ054VUlocERqRFlUVnRIaUU4WXMtaFp2ZEZzNmRFb0ZnZ3ZYMks0UHkwU0FDQVdRQ0FRb3dnZ0hhQmdnckJnRUZCUWNCQVFTQ0Fjd3dnZ0hJTUdZR0NDc0dBUVVGQnpBQ2hscG9kSFJ3T2k4dlkzSnNMbTFwWTNKdmMyOW1kQzVqYjIwdmNHdHBhVzVtY21FdlEyVnlkSE12UWt3eVVFdEpTVTVVUTBFd01TNUJUVVV1UjBKTVgwRk5SU1V5TUVsdVpuSmhKVEl3UTBFbE1qQXdNaWcwS1M1amNuUXdWZ1lJS3dZQkJRVUhNQUtHU21oMGRIQTZMeTlqY213eExtRnRaUzVuWW13dllXbGhMMEpNTWxCTFNVbE9WRU5CTURFdVFVMUZMa2RDVEY5QlRVVWxNakJKYm1aeVlTVXlNRU5CSlRJd01ESW9OQ2t1WTNKME1GWUdDQ3NHQVFVRkJ6QUNoa3BvZEhSd09pOHZZM0pzTWk1aGJXVXVaMkpzTDJGcFlTOUNUREpRUzBsSlRsUkRRVEF4TGtGTlJTNUhRa3hmUVUxRkpUSXdTVzVtY21FbE1qQkRRU1V5TURBeUtEUXBMbU55ZERCV0JnZ3JCZ0VGQlFjd0FvWkthSFIwY0RvdkwyTnliRE11WVcxbExtZGliQzloYVdFdlFrd3lVRXRKU1U1VVEwRXdNUzVCVFVVdVIwSk1YMEZOUlNVeU1FbHVabkpoSlRJd1EwRWxNakF3TWlnMEtTNWpjblF3VmdZSUt3WUJCUVVITUFLR1NtaDBkSEE2THk5amNtdzBMbUZ0WlM1blltd3ZZV2xoTDBKTU1sQkxTVWxPVkVOQk1ERXVRVTFGTGtkQ1RGOUJUVVVsTWpCSmJtWnlZU1V5TUVOQkpUSXdNRElvTkNrdVkzSjBNQjBHQTFVZERnUVdCQlF5RVlHWHdSWWN2WnAwcVhnajRGV0pzNlRSSXpBT0JnTlZIUThCQWY4RUJBTUNCYUF3Z2dFMUJnTlZIUjhFZ2dFc01JSUJLRENDQVNTZ2dnRWdvSUlCSElaQ2FIUjBjRG92TDJOeWJDNXRhV055YjNOdlpuUXVZMjl0TDNCcmFXbHVabkpoTDBOU1RDOUJUVVVsTWpCSmJtWnlZU1V5TUVOQkpUSXdNRElvTkNrdVkzSnNoalJvZEhSd09pOHZZM0pzTVM1aGJXVXVaMkpzTDJOeWJDOUJUVVVsTWpCSmJtWnlZU1V5TUVOQkpUSXdNRElvTkNrdVkzSnNoalJvZEhSd09pOHZZM0pzTWk1aGJXVXVaMkpzTDJOeWJDOUJUVVVsTWpCSmJtWnlZU1V5TUVOQkpUSXdNRElvTkNrdVkzSnNoalJvZEhSd09pOHZZM0pzTXk1aGJXVXVaMkpzTDJOeWJDOUJUVVVsTWpCSmJtWnlZU1V5TUVOQkpUSXdNRElvTkNrdVkzSnNoalJvZEhSd09pOHZZM0pzTkM1aGJXVXVaMkpzTDJOeWJDOUJUVVVsTWpCSmJtWnlZU1V5TUVOQkpUSXdNRElvTkNrdVkzSnNNQmNHQTFVZElBUVFNQTR3REFZS0t3WUJCQUdDTjNzQkFUQWZCZ05WSFNNRUdEQVdnQlN1ZWNKclhTV0lFd2IyQnduRGwzeDdsNDhkVlRBZEJnTlZIU1VFRmpBVUJnZ3JCZ0VGQlFjREFRWUlLd1lCQlFVSEF3SXdEUVlKS29aSWh2Y05BUUVMQlFBRGdnRUJBRktkTFRzOHhuOTdObTd6eDZRY3MyQ1ZpUlRMNkluYWw2U0ExUUN3X3FMOXlEQW5EVy1XUUNQUi1yRVVUUHk3QkwyV3FDdkNVblFrV19hZXc4ekZmaVVFZHdRTmttQXNzQVJHU3BldWZXYnlwajQ1YU5KWWsxSTFHekZTM2tPQjRweWVuMGdPdi0yZFN0VnRHdmZSUFlvU19pSENNX0ZlMkNKYVdpdmY1RHUweUVMYzNLZEdvdmFSMFZSYlJqelBZTHIxVVlWWDVDdnZqb0RCa3ZvT0VTYzFmSWlzOXpQQ0d6dnM3Y2hKMzZNcVU4a2NrTWNJVXRjc3VDYVRaUzF0UnV6ZkhMN3A3RkhMaVRsbjRDUFhDWDhtUlFwN2ZDVUpHUnlkNC1DVHMwREZtVFBCS3AyQUc1NEtLc2FoWUxHUnZNUkVFbVhBY2FPNUozLXRyb1NjeUZjJnM9Y0k4NmM2enRiS25yNjNKT0FLQU1NbEdpbEw4cG1NQXNsTHRRd2VNQ1RocF9kOWlhNXRqSmwxaGdnazlKQS10dGQ0bldqSVVfa1hUZFcwQXQ1b29OOXRuUFBMRzZaMzQ3aXVmZ2Y3TjNUSFZxcjY0VDVSdDFDTnlESHpYZHhCbFVoY3A5cTJKdElZNUtoRG43SkNxNVpPWi1VbHE5NnExTFl5Y0hTd0NoSC1NRm5TRklraXJ2aVllRFRQeEZvajBsMGlHWDBhQlBubThpUEFKLVFnTkxBYWxOYll4aGUzU3ZPbzZzWDBaTEY3WnpWN3RLaFRfLUNpWTU3SFdTd2hwajA3T01KakNpTnhpZ3gtY0xJVHlic2lTZVVrMDBmX3pvZmp6OVFaZFREQVBRcC1zMUZWSUZOYVg3cENmUEJPbFRscWo4Z1Q2eDV2dW0tSTVjUjY5ZXVRJmg9Z0x3OHBoNlVoOFNndUdMM2ZNUGJ0RzNFczJDT214am9xMXNKMnNGS2xOaw==",
+      "RequestMethod": "GET",
+      "RequestHeaders": {
+        "x-ms-client-request-id": [
+          "eb838f56-874d-4630-9b2e-14c1e1563c63"
+        ],
+        "User-Agent": [
+          "FxVersion/4.700.22.55902",
+          "OSName/Windows",
+          "OSVersion/Microsoft.Windows.10.0.22621",
+          "Microsoft.Azure.Management.CosmosDB.CosmosDBManagementClient/2.0.5"
+        ]
+      },
+      "RequestBody": "",
+      "ResponseHeaders": {
+        "Cache-Control": [
+          "no-store, no-cache"
+        ],
+        "Pragma": [
+          "no-cache"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
+        ],
+        "x-ms-gatewayversion": [
+          "version=2.14.0"
+        ],
+        "Server": [
+          "Microsoft-HTTPAPI/2.0"
+        ],
+        "x-ms-ratelimit-remaining-subscription-reads": [
+          "11977"
+        ],
+        "x-ms-request-id": [
+          "085019dd-2447-4fbf-be92-dea00c9ea4cf"
+        ],
+        "x-ms-correlation-request-id": [
+          "085019dd-2447-4fbf-be92-dea00c9ea4cf"
+        ],
+        "x-ms-routing-request-id": [
+          "CENTRALINDIA:20231004T045528Z:085019dd-2447-4fbf-be92-dea00c9ea4cf"
+        ],
+        "X-Content-Type-Options": [
+          "nosniff"
+        ],
+        "Date": [
+          "Wed, 04 Oct 2023 04:55:28 GMT"
         ],
         "Content-Length": [
           "22"
@@ -751,12 +811,12 @@
       "StatusCode": 200
     },
     {
-      "RequestUri": "/subscriptions/12053b8f-cab5-4f5c-9c1a-870580142abd/resourceGroups/CosmosDBResourceGroup9/providers/Microsoft.DocumentDB/databaseAccounts/testupdateregionpowershell11?api-version=2023-03-15-preview",
-      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvMTIwNTNiOGYtY2FiNS00ZjVjLTljMWEtODcwNTgwMTQyYWJkL3Jlc291cmNlR3JvdXBzL0Nvc21vc0RCUmVzb3VyY2VHcm91cDkvcHJvdmlkZXJzL01pY3Jvc29mdC5Eb2N1bWVudERCL2RhdGFiYXNlQWNjb3VudHMvdGVzdHVwZGF0ZXJlZ2lvbnBvd2Vyc2hlbGwxMT9hcGktdmVyc2lvbj0yMDIzLTAzLTE1LXByZXZpZXc=",
+      "RequestUri": "/subscriptions/2c1d0b69-225a-43b5-8220-6a139ef92e23/resourceGroups/CosmosDBResourceGroup9/providers/Microsoft.DocumentDB/databaseAccounts/testupdateregionpowershell11?api-version=2023-09-15-preview",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvMmMxZDBiNjktMjI1YS00M2I1LTgyMjAtNmExMzllZjkyZTIzL3Jlc291cmNlR3JvdXBzL0Nvc21vc0RCUmVzb3VyY2VHcm91cDkvcHJvdmlkZXJzL01pY3Jvc29mdC5Eb2N1bWVudERCL2RhdGFiYXNlQWNjb3VudHMvdGVzdHVwZGF0ZXJlZ2lvbnBvd2Vyc2hlbGwxMT9hcGktdmVyc2lvbj0yMDIzLTA5LTE1LXByZXZpZXc=",
       "RequestMethod": "PATCH",
       "RequestHeaders": {
         "x-ms-client-request-id": [
-          "ab7efc04-2b99-4693-a411-6f5223c95602"
+          "b83dc03a-3618-450d-abc8-bba82eec79b3"
         ],
         "Accept-Language": [
           "en-US"
@@ -783,13 +843,13 @@
           "no-cache"
         ],
         "Location": [
-          "https://management.azure.com/subscriptions/12053b8f-cab5-4f5c-9c1a-870580142abd/resourceGroups/CosmosDBResourceGroup9/providers/Microsoft.DocumentDB/databaseAccounts/testupdateregionpowershell11/operationResults/805187dd-195e-4f02-b94f-1358c35976c4?api-version=2023-03-15-preview"
+          "https://management.azure.com/subscriptions/2c1d0b69-225a-43b5-8220-6a139ef92e23/resourceGroups/CosmosDBResourceGroup9/providers/Microsoft.DocumentDB/databaseAccounts/testupdateregionpowershell11/operationResults/edf437e8-0af3-42ec-8ca8-4e7ba69c9dbe?api-version=2023-09-15-preview"
         ],
         "x-ms-request-id": [
-          "805187dd-195e-4f02-b94f-1358c35976c4"
+          "edf437e8-0af3-42ec-8ca8-4e7ba69c9dbe"
         ],
         "Azure-AsyncOperation": [
-          "https://management.azure.com/subscriptions/12053b8f-cab5-4f5c-9c1a-870580142abd/providers/Microsoft.DocumentDB/locations/eastus/operationsStatus/805187dd-195e-4f02-b94f-1358c35976c4?api-version=2023-03-15-preview"
+          "https://management.azure.com/subscriptions/2c1d0b69-225a-43b5-8220-6a139ef92e23/providers/Microsoft.DocumentDB/locations/eastus/operationsStatus/edf437e8-0af3-42ec-8ca8-4e7ba69c9dbe?api-version=2023-09-15-preview&t=638319921373308152&c=MIIHHjCCBgagAwIBAgITfwHPoKWFUi8BZhm71wAEAc-gpTANBgkqhkiG9w0BAQsFADBEMRMwEQYKCZImiZPyLGQBGRYDR0JMMRMwEQYKCZImiZPyLGQBGRYDQU1FMRgwFgYDVQQDEw9BTUUgSW5mcmEgQ0EgMDIwHhcNMjMwODAyMTUxMzA3WhcNMjQwNzI3MTUxMzA3WjBAMT4wPAYDVQQDEzVhc3luY29wZXJhdGlvbnNpZ25pbmdjZXJ0aWZpY2F0ZS5tYW5hZ2VtZW50LmF6dXJlLmNvbTCCASIwDQYJKoZIhvcNAQEBBQADggEPADCCAQoCggEBALu1fZZT_nfKRrxL6aw2JLIgOZKXeKPga0MQ0EbBuAZQktSy3j54LDkbkSRqksOE2AYyp19GWQAGL0ljJwxFBRp_nFo8jljIy22jy-satVS7oJtnzH1TqtYFaysEFAiYHuq_qe0VMyxNBrIkwf60yCr2BRBOKXVFqfzVx3Wup-Qr_kDwppasDbBgYXwE4iH9CCcqg5IsgBz2IfvUSiRtlHB622wo90PGPXuz-djAwdjmUNKOer05VoHXvjSx3V2_f9VnXc4T1OrSY3WdWSvzCJh7Hgfg8SdAYlvJgzVWM64uB9VKloorGXz3XWGPJtpQxgNwpuHLCrABPO4fwOAuITUCAwEAAaOCBAswggQHMCcGCSsGAQQBgjcVCgQaMBgwCgYIKwYBBQUHAwEwCgYIKwYBBQUHAwIwPQYJKwYBBAGCNxUHBDAwLgYmKwYBBAGCNxUIhpDjDYTVtHiE8Ys-hZvdFs6dEoFggvX2K4Py0SACAWQCAQowggHaBggrBgEFBQcBAQSCAcwwggHIMGYGCCsGAQUFBzAChlpodHRwOi8vY3JsLm1pY3Jvc29mdC5jb20vcGtpaW5mcmEvQ2VydHMvQkwyUEtJSU5UQ0EwMS5BTUUuR0JMX0FNRSUyMEluZnJhJTIwQ0ElMjAwMig0KS5jcnQwVgYIKwYBBQUHMAKGSmh0dHA6Ly9jcmwxLmFtZS5nYmwvYWlhL0JMMlBLSUlOVENBMDEuQU1FLkdCTF9BTUUlMjBJbmZyYSUyMENBJTIwMDIoNCkuY3J0MFYGCCsGAQUFBzAChkpodHRwOi8vY3JsMi5hbWUuZ2JsL2FpYS9CTDJQS0lJTlRDQTAxLkFNRS5HQkxfQU1FJTIwSW5mcmElMjBDQSUyMDAyKDQpLmNydDBWBggrBgEFBQcwAoZKaHR0cDovL2NybDMuYW1lLmdibC9haWEvQkwyUEtJSU5UQ0EwMS5BTUUuR0JMX0FNRSUyMEluZnJhJTIwQ0ElMjAwMig0KS5jcnQwVgYIKwYBBQUHMAKGSmh0dHA6Ly9jcmw0LmFtZS5nYmwvYWlhL0JMMlBLSUlOVENBMDEuQU1FLkdCTF9BTUUlMjBJbmZyYSUyMENBJTIwMDIoNCkuY3J0MB0GA1UdDgQWBBQyEYGXwRYcvZp0qXgj4FWJs6TRIzAOBgNVHQ8BAf8EBAMCBaAwggE1BgNVHR8EggEsMIIBKDCCASSgggEgoIIBHIZCaHR0cDovL2NybC5taWNyb3NvZnQuY29tL3BraWluZnJhL0NSTC9BTUUlMjBJbmZyYSUyMENBJTIwMDIoNCkuY3JshjRodHRwOi8vY3JsMS5hbWUuZ2JsL2NybC9BTUUlMjBJbmZyYSUyMENBJTIwMDIoNCkuY3JshjRodHRwOi8vY3JsMi5hbWUuZ2JsL2NybC9BTUUlMjBJbmZyYSUyMENBJTIwMDIoNCkuY3JshjRodHRwOi8vY3JsMy5hbWUuZ2JsL2NybC9BTUUlMjBJbmZyYSUyMENBJTIwMDIoNCkuY3JshjRodHRwOi8vY3JsNC5hbWUuZ2JsL2NybC9BTUUlMjBJbmZyYSUyMENBJTIwMDIoNCkuY3JsMBcGA1UdIAQQMA4wDAYKKwYBBAGCN3sBATAfBgNVHSMEGDAWgBSuecJrXSWIEwb2BwnDl3x7l48dVTAdBgNVHSUEFjAUBggrBgEFBQcDAQYIKwYBBQUHAwIwDQYJKoZIhvcNAQELBQADggEBAFKdLTs8xn97Nm7zx6Qcs2CViRTL6Inal6SA1QCw_qL9yDAnDW-WQCPR-rEUTPy7BL2WqCvCUnQkW_aew8zFfiUEdwQNkmAssARGSpeufWbypj45aNJYk1I1GzFS3kOB4pyen0gOv-2dStVtGvfRPYoS_iHCM_Fe2CJaWivf5Du0yELc3KdGovaR0VRbRjzPYLr1UYVX5CvvjoDBkvoOESc1fIis9zPCGzvs7chJ36MqU8kckMcIUtcsuCaTZS1tRuzfHL7p7FHLiTln4CPXCX8mRQp7fCUJGRyd4-CTs0DFmTPBKp2AG54KKsahYLGRvMREEmXAcaO5J3-troScyFc&s=kka76oM9oSmaI5aRPgFUBySSJx3Hcyu6qv5ia6bYnlpZzHMEOF_K7Ba-BKNNtoanmVnTqNtFMKcIsFwcDLKA_mbRYawLILnplYng8j6ASYTD0JaiDybxql_6k4pYwFKYclWvLD4EYI_U5l3hD-0BKody6rV-8p9wg9RQGb1oGqViPiRXmJ4QwTuMwdq-KHgf6SJHJYB9Oc2rMpA_tzakyxr5tGoF4xl78JR5dkp2ucNvUQDw3YFpTLiPEjCr_TKUN45onBEKtDjsex6KhjCg7t6sUnuxGZb_akB65ueU3G7lEMNvps9lNMdGLWpMAJJgniWwSd6tMhYeBTsxUFPh_A&h=nUoo9czcGVVxplpnKnL4uww0-6f-OoThh71G9P1YEuA"
         ],
         "Strict-Transport-Security": [
           "max-age=31536000; includeSubDomains"
@@ -804,34 +864,34 @@
           "1199"
         ],
         "x-ms-correlation-request-id": [
-          "36563ae5-06b0-4d05-94ee-bcf61a9c68ba"
+          "da0e6ad3-feef-4da7-a886-7f1d4b91e1fd"
         ],
         "x-ms-routing-request-id": [
-          "EASTUS:20230720T122945Z:36563ae5-06b0-4d05-94ee-bcf61a9c68ba"
+          "CENTRALINDIA:20231004T045537Z:da0e6ad3-feef-4da7-a886-7f1d4b91e1fd"
         ],
         "X-Content-Type-Options": [
           "nosniff"
         ],
         "Date": [
-          "Thu, 20 Jul 2023 12:29:44 GMT"
+          "Wed, 04 Oct 2023 04:55:37 GMT"
         ],
         "Content-Length": [
-          "2948"
+          "3001"
         ],
         "Content-Type": [
           "application/json"
         ]
       },
-      "ResponseBody": "{\r\n  \"id\": \"/subscriptions/12053b8f-cab5-4f5c-9c1a-870580142abd/resourceGroups/CosmosDBResourceGroup9/providers/Microsoft.DocumentDB/databaseAccounts/testupdateregionpowershell11\",\r\n  \"name\": \"testupdateregionpowershell11\",\r\n  \"location\": \"East US\",\r\n  \"type\": \"Microsoft.DocumentDB/databaseAccounts\",\r\n  \"kind\": \"GlobalDocumentDB\",\r\n  \"tags\": {},\r\n  \"systemData\": {\r\n    \"createdAt\": \"2023-07-20T12:28:55.6692679Z\"\r\n  },\r\n  \"properties\": {\r\n    \"provisioningState\": \"Updating\",\r\n    \"documentEndpoint\": \"https://testupdateregionpowershell11.documents.azure.com:443/\",\r\n    \"sqlEndpoint\": \"https://testupdateregionpowershell11.documents.azure.com:443/\",\r\n    \"publicNetworkAccess\": \"Enabled\",\r\n    \"enableAutomaticFailover\": true,\r\n    \"enableMultipleWriteLocations\": true,\r\n    \"enablePartitionKeyMonitor\": false,\r\n    \"isVirtualNetworkFilterEnabled\": false,\r\n    \"virtualNetworkRules\": [],\r\n    \"EnabledApiTypes\": \"Sql\",\r\n    \"disableKeyBasedMetadataWriteAccess\": false,\r\n    \"enableFreeTier\": false,\r\n    \"enableAnalyticalStorage\": false,\r\n    \"analyticalStorageConfiguration\": {\r\n      \"schemaType\": \"WellDefined\"\r\n    },\r\n    \"instanceId\": \"7a49397b-9fba-44a8-961f-1f34a77c3d27\",\r\n    \"databaseAccountOfferType\": \"Standard\",\r\n    \"enableCassandraConnector\": false,\r\n    \"connectorOffer\": \"\",\r\n    \"enableMaterializedViews\": false,\r\n    \"defaultIdentity\": \"FirstPartyIdentity\",\r\n    \"networkAclBypass\": \"None\",\r\n    \"disableLocalAuth\": false,\r\n    \"enablePartitionMerge\": false,\r\n    \"enableBurstCapacity\": false,\r\n    \"minimalTlsVersion\": \"Tls\",\r\n    \"consistencyPolicy\": {\r\n      \"defaultConsistencyLevel\": \"Session\",\r\n      \"maxIntervalInSeconds\": 5,\r\n      \"maxStalenessPrefix\": 100\r\n    },\r\n    \"configurationOverrides\": {},\r\n    \"writeLocations\": [\r\n      {\r\n        \"id\": \"testupdateregionpowershell11-eastus\",\r\n        \"locationName\": \"East US\",\r\n        \"documentEndpoint\": \"https://testupdateregionpowershell11-eastus.documents.azure.com:443/\",\r\n        \"provisioningState\": \"Succeeded\",\r\n        \"failoverPriority\": 0,\r\n        \"isZoneRedundant\": false\r\n      }\r\n    ],\r\n    \"readLocations\": [\r\n      {\r\n        \"id\": \"testupdateregionpowershell11-eastus\",\r\n        \"locationName\": \"East US\",\r\n        \"documentEndpoint\": \"https://testupdateregionpowershell11-eastus.documents.azure.com:443/\",\r\n        \"provisioningState\": \"Succeeded\",\r\n        \"failoverPriority\": 0,\r\n        \"isZoneRedundant\": false\r\n      }\r\n    ],\r\n    \"locations\": [\r\n      {\r\n        \"id\": \"testupdateregionpowershell11-eastus\",\r\n        \"locationName\": \"East US\",\r\n        \"documentEndpoint\": \"https://testupdateregionpowershell11-eastus.documents.azure.com:443/\",\r\n        \"provisioningState\": \"Succeeded\",\r\n        \"failoverPriority\": 0,\r\n        \"isZoneRedundant\": false\r\n      }\r\n    ],\r\n    \"failoverPolicies\": [\r\n      {\r\n        \"id\": \"testupdateregionpowershell11-eastus\",\r\n        \"locationName\": \"East US\",\r\n        \"failoverPriority\": 0\r\n      }\r\n    ],\r\n    \"cors\": [],\r\n    \"capabilities\": [],\r\n    \"ipRules\": [],\r\n    \"backupPolicy\": {\r\n      \"type\": \"Periodic\",\r\n      \"periodicModeProperties\": {\r\n        \"backupIntervalInMinutes\": 240,\r\n        \"backupRetentionIntervalInHours\": 8,\r\n        \"backupStorageRedundancy\": \"Geo\"\r\n      }\r\n    },\r\n    \"networkAclBypassResourceIds\": [],\r\n    \"diagnosticLogSettings\": {\r\n      \"enableFullTextQuery\": \"None\"\r\n    },\r\n    \"keysMetadata\": {\r\n      \"primaryMasterKey\": {\r\n        \"generationTime\": \"2023-07-20T12:28:55.6692679Z\"\r\n      },\r\n      \"secondaryMasterKey\": {\r\n        \"generationTime\": \"2023-07-20T12:28:55.6692679Z\"\r\n      },\r\n      \"primaryReadonlyMasterKey\": {\r\n        \"generationTime\": \"2023-07-20T12:28:55.6692679Z\"\r\n      },\r\n      \"secondaryReadonlyMasterKey\": {\r\n        \"generationTime\": \"2023-07-20T12:28:55.6692679Z\"\r\n      }\r\n    }\r\n  },\r\n  \"identity\": {\r\n    \"type\": \"None\"\r\n  }\r\n}",
+      "ResponseBody": "{\r\n  \"id\": \"/subscriptions/2c1d0b69-225a-43b5-8220-6a139ef92e23/resourceGroups/CosmosDBResourceGroup9/providers/Microsoft.DocumentDB/databaseAccounts/testupdateregionpowershell11\",\r\n  \"name\": \"testupdateregionpowershell11\",\r\n  \"location\": \"East US\",\r\n  \"type\": \"Microsoft.DocumentDB/databaseAccounts\",\r\n  \"kind\": \"GlobalDocumentDB\",\r\n  \"tags\": {},\r\n  \"systemData\": {\r\n    \"createdAt\": \"2023-10-04T04:54:33.4433296Z\"\r\n  },\r\n  \"properties\": {\r\n    \"provisioningState\": \"Updating\",\r\n    \"documentEndpoint\": \"https://testupdateregionpowershell11.documents.azure.com:443/\",\r\n    \"sqlEndpoint\": \"https://testupdateregionpowershell11.documents.azure.com:443/\",\r\n    \"publicNetworkAccess\": \"Enabled\",\r\n    \"enableAutomaticFailover\": true,\r\n    \"enableMultipleWriteLocations\": true,\r\n    \"enablePartitionKeyMonitor\": false,\r\n    \"isVirtualNetworkFilterEnabled\": false,\r\n    \"virtualNetworkRules\": [],\r\n    \"EnabledApiTypes\": \"Sql\",\r\n    \"disableKeyBasedMetadataWriteAccess\": false,\r\n    \"enableFreeTier\": false,\r\n    \"enableAnalyticalStorage\": false,\r\n    \"analyticalStorageConfiguration\": {\r\n      \"schemaType\": \"WellDefined\"\r\n    },\r\n    \"instanceId\": \"a919971b-e4a1-414b-bdce-3a60db308568\",\r\n    \"databaseAccountOfferType\": \"Standard\",\r\n    \"enableMaterializedViews\": false,\r\n    \"enableFullFidelityChangeFeed\": false,\r\n    \"defaultIdentity\": \"FirstPartyIdentity\",\r\n    \"networkAclBypass\": \"None\",\r\n    \"disableLocalAuth\": false,\r\n    \"enablePartitionMerge\": false,\r\n    \"enableBurstCapacity\": false,\r\n    \"enablePriorityBasedExecution\": false,\r\n    \"defaultPriorityLevel\": \"High\",\r\n    \"minimalTlsVersion\": \"Tls12\",\r\n    \"consistencyPolicy\": {\r\n      \"defaultConsistencyLevel\": \"Session\",\r\n      \"maxIntervalInSeconds\": 5,\r\n      \"maxStalenessPrefix\": 100\r\n    },\r\n    \"configurationOverrides\": {},\r\n    \"writeLocations\": [\r\n      {\r\n        \"id\": \"testupdateregionpowershell11-eastus\",\r\n        \"locationName\": \"East US\",\r\n        \"documentEndpoint\": \"https://testupdateregionpowershell11-eastus.documents.azure.com:443/\",\r\n        \"provisioningState\": \"Succeeded\",\r\n        \"failoverPriority\": 0,\r\n        \"isZoneRedundant\": false\r\n      }\r\n    ],\r\n    \"readLocations\": [\r\n      {\r\n        \"id\": \"testupdateregionpowershell11-eastus\",\r\n        \"locationName\": \"East US\",\r\n        \"documentEndpoint\": \"https://testupdateregionpowershell11-eastus.documents.azure.com:443/\",\r\n        \"provisioningState\": \"Succeeded\",\r\n        \"failoverPriority\": 0,\r\n        \"isZoneRedundant\": false\r\n      }\r\n    ],\r\n    \"locations\": [\r\n      {\r\n        \"id\": \"testupdateregionpowershell11-eastus\",\r\n        \"locationName\": \"East US\",\r\n        \"documentEndpoint\": \"https://testupdateregionpowershell11-eastus.documents.azure.com:443/\",\r\n        \"provisioningState\": \"Succeeded\",\r\n        \"failoverPriority\": 0,\r\n        \"isZoneRedundant\": false\r\n      }\r\n    ],\r\n    \"failoverPolicies\": [\r\n      {\r\n        \"id\": \"testupdateregionpowershell11-eastus\",\r\n        \"locationName\": \"East US\",\r\n        \"failoverPriority\": 0\r\n      }\r\n    ],\r\n    \"cors\": [],\r\n    \"capabilities\": [],\r\n    \"ipRules\": [],\r\n    \"backupPolicy\": {\r\n      \"type\": \"Periodic\",\r\n      \"periodicModeProperties\": {\r\n        \"backupIntervalInMinutes\": 240,\r\n        \"backupRetentionIntervalInHours\": 8,\r\n        \"backupStorageRedundancy\": \"Geo\"\r\n      }\r\n    },\r\n    \"networkAclBypassResourceIds\": [],\r\n    \"diagnosticLogSettings\": {\r\n      \"enableFullTextQuery\": \"None\"\r\n    },\r\n    \"keysMetadata\": {\r\n      \"primaryMasterKey\": {\r\n        \"generationTime\": \"2023-10-04T04:54:33.4433296Z\"\r\n      },\r\n      \"secondaryMasterKey\": {\r\n        \"generationTime\": \"2023-10-04T04:54:33.4433296Z\"\r\n      },\r\n      \"primaryReadonlyMasterKey\": {\r\n        \"generationTime\": \"2023-10-04T04:54:33.4433296Z\"\r\n      },\r\n      \"secondaryReadonlyMasterKey\": {\r\n        \"generationTime\": \"2023-10-04T04:54:33.4433296Z\"\r\n      }\r\n    }\r\n  },\r\n  \"identity\": {\r\n    \"type\": \"None\"\r\n  }\r\n}",
       "StatusCode": 200
     },
     {
-      "RequestUri": "/subscriptions/12053b8f-cab5-4f5c-9c1a-870580142abd/providers/Microsoft.DocumentDB/locations/eastus/operationsStatus/805187dd-195e-4f02-b94f-1358c35976c4?api-version=2023-03-15-preview",
-      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvMTIwNTNiOGYtY2FiNS00ZjVjLTljMWEtODcwNTgwMTQyYWJkL3Byb3ZpZGVycy9NaWNyb3NvZnQuRG9jdW1lbnREQi9sb2NhdGlvbnMvZWFzdHVzL29wZXJhdGlvbnNTdGF0dXMvODA1MTg3ZGQtMTk1ZS00ZjAyLWI5NGYtMTM1OGMzNTk3NmM0P2FwaS12ZXJzaW9uPTIwMjMtMDMtMTUtcHJldmlldw==",
+      "RequestUri": "/subscriptions/2c1d0b69-225a-43b5-8220-6a139ef92e23/providers/Microsoft.DocumentDB/locations/eastus/operationsStatus/edf437e8-0af3-42ec-8ca8-4e7ba69c9dbe?api-version=2023-09-15-preview&t=638319921373308152&c=MIIHHjCCBgagAwIBAgITfwHPoKWFUi8BZhm71wAEAc-gpTANBgkqhkiG9w0BAQsFADBEMRMwEQYKCZImiZPyLGQBGRYDR0JMMRMwEQYKCZImiZPyLGQBGRYDQU1FMRgwFgYDVQQDEw9BTUUgSW5mcmEgQ0EgMDIwHhcNMjMwODAyMTUxMzA3WhcNMjQwNzI3MTUxMzA3WjBAMT4wPAYDVQQDEzVhc3luY29wZXJhdGlvbnNpZ25pbmdjZXJ0aWZpY2F0ZS5tYW5hZ2VtZW50LmF6dXJlLmNvbTCCASIwDQYJKoZIhvcNAQEBBQADggEPADCCAQoCggEBALu1fZZT_nfKRrxL6aw2JLIgOZKXeKPga0MQ0EbBuAZQktSy3j54LDkbkSRqksOE2AYyp19GWQAGL0ljJwxFBRp_nFo8jljIy22jy-satVS7oJtnzH1TqtYFaysEFAiYHuq_qe0VMyxNBrIkwf60yCr2BRBOKXVFqfzVx3Wup-Qr_kDwppasDbBgYXwE4iH9CCcqg5IsgBz2IfvUSiRtlHB622wo90PGPXuz-djAwdjmUNKOer05VoHXvjSx3V2_f9VnXc4T1OrSY3WdWSvzCJh7Hgfg8SdAYlvJgzVWM64uB9VKloorGXz3XWGPJtpQxgNwpuHLCrABPO4fwOAuITUCAwEAAaOCBAswggQHMCcGCSsGAQQBgjcVCgQaMBgwCgYIKwYBBQUHAwEwCgYIKwYBBQUHAwIwPQYJKwYBBAGCNxUHBDAwLgYmKwYBBAGCNxUIhpDjDYTVtHiE8Ys-hZvdFs6dEoFggvX2K4Py0SACAWQCAQowggHaBggrBgEFBQcBAQSCAcwwggHIMGYGCCsGAQUFBzAChlpodHRwOi8vY3JsLm1pY3Jvc29mdC5jb20vcGtpaW5mcmEvQ2VydHMvQkwyUEtJSU5UQ0EwMS5BTUUuR0JMX0FNRSUyMEluZnJhJTIwQ0ElMjAwMig0KS5jcnQwVgYIKwYBBQUHMAKGSmh0dHA6Ly9jcmwxLmFtZS5nYmwvYWlhL0JMMlBLSUlOVENBMDEuQU1FLkdCTF9BTUUlMjBJbmZyYSUyMENBJTIwMDIoNCkuY3J0MFYGCCsGAQUFBzAChkpodHRwOi8vY3JsMi5hbWUuZ2JsL2FpYS9CTDJQS0lJTlRDQTAxLkFNRS5HQkxfQU1FJTIwSW5mcmElMjBDQSUyMDAyKDQpLmNydDBWBggrBgEFBQcwAoZKaHR0cDovL2NybDMuYW1lLmdibC9haWEvQkwyUEtJSU5UQ0EwMS5BTUUuR0JMX0FNRSUyMEluZnJhJTIwQ0ElMjAwMig0KS5jcnQwVgYIKwYBBQUHMAKGSmh0dHA6Ly9jcmw0LmFtZS5nYmwvYWlhL0JMMlBLSUlOVENBMDEuQU1FLkdCTF9BTUUlMjBJbmZyYSUyMENBJTIwMDIoNCkuY3J0MB0GA1UdDgQWBBQyEYGXwRYcvZp0qXgj4FWJs6TRIzAOBgNVHQ8BAf8EBAMCBaAwggE1BgNVHR8EggEsMIIBKDCCASSgggEgoIIBHIZCaHR0cDovL2NybC5taWNyb3NvZnQuY29tL3BraWluZnJhL0NSTC9BTUUlMjBJbmZyYSUyMENBJTIwMDIoNCkuY3JshjRodHRwOi8vY3JsMS5hbWUuZ2JsL2NybC9BTUUlMjBJbmZyYSUyMENBJTIwMDIoNCkuY3JshjRodHRwOi8vY3JsMi5hbWUuZ2JsL2NybC9BTUUlMjBJbmZyYSUyMENBJTIwMDIoNCkuY3JshjRodHRwOi8vY3JsMy5hbWUuZ2JsL2NybC9BTUUlMjBJbmZyYSUyMENBJTIwMDIoNCkuY3JshjRodHRwOi8vY3JsNC5hbWUuZ2JsL2NybC9BTUUlMjBJbmZyYSUyMENBJTIwMDIoNCkuY3JsMBcGA1UdIAQQMA4wDAYKKwYBBAGCN3sBATAfBgNVHSMEGDAWgBSuecJrXSWIEwb2BwnDl3x7l48dVTAdBgNVHSUEFjAUBggrBgEFBQcDAQYIKwYBBQUHAwIwDQYJKoZIhvcNAQELBQADggEBAFKdLTs8xn97Nm7zx6Qcs2CViRTL6Inal6SA1QCw_qL9yDAnDW-WQCPR-rEUTPy7BL2WqCvCUnQkW_aew8zFfiUEdwQNkmAssARGSpeufWbypj45aNJYk1I1GzFS3kOB4pyen0gOv-2dStVtGvfRPYoS_iHCM_Fe2CJaWivf5Du0yELc3KdGovaR0VRbRjzPYLr1UYVX5CvvjoDBkvoOESc1fIis9zPCGzvs7chJ36MqU8kckMcIUtcsuCaTZS1tRuzfHL7p7FHLiTln4CPXCX8mRQp7fCUJGRyd4-CTs0DFmTPBKp2AG54KKsahYLGRvMREEmXAcaO5J3-troScyFc&s=kka76oM9oSmaI5aRPgFUBySSJx3Hcyu6qv5ia6bYnlpZzHMEOF_K7Ba-BKNNtoanmVnTqNtFMKcIsFwcDLKA_mbRYawLILnplYng8j6ASYTD0JaiDybxql_6k4pYwFKYclWvLD4EYI_U5l3hD-0BKody6rV-8p9wg9RQGb1oGqViPiRXmJ4QwTuMwdq-KHgf6SJHJYB9Oc2rMpA_tzakyxr5tGoF4xl78JR5dkp2ucNvUQDw3YFpTLiPEjCr_TKUN45onBEKtDjsex6KhjCg7t6sUnuxGZb_akB65ueU3G7lEMNvps9lNMdGLWpMAJJgniWwSd6tMhYeBTsxUFPh_A&h=nUoo9czcGVVxplpnKnL4uww0-6f-OoThh71G9P1YEuA",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvMmMxZDBiNjktMjI1YS00M2I1LTgyMjAtNmExMzllZjkyZTIzL3Byb3ZpZGVycy9NaWNyb3NvZnQuRG9jdW1lbnREQi9sb2NhdGlvbnMvZWFzdHVzL29wZXJhdGlvbnNTdGF0dXMvZWRmNDM3ZTgtMGFmMy00MmVjLThjYTgtNGU3YmE2OWM5ZGJlP2FwaS12ZXJzaW9uPTIwMjMtMDktMTUtcHJldmlldyZ0PTYzODMxOTkyMTM3MzMwODE1MiZjPU1JSUhIakNDQmdhZ0F3SUJBZ0lUZndIUG9LV0ZVaThCWmhtNzF3QUVBYy1ncFRBTkJna3Foa2lHOXcwQkFRc0ZBREJFTVJNd0VRWUtDWkltaVpQeUxHUUJHUllEUjBKTU1STXdFUVlLQ1pJbWlaUHlMR1FCR1JZRFFVMUZNUmd3RmdZRFZRUURFdzlCVFVVZ1NXNW1jbUVnUTBFZ01ESXdIaGNOTWpNd09EQXlNVFV4TXpBM1doY05NalF3TnpJM01UVXhNekEzV2pCQU1UNHdQQVlEVlFRREV6VmhjM2x1WTI5d1pYSmhkR2x2Ym5OcFoyNXBibWRqWlhKMGFXWnBZMkYwWlM1dFlXNWhaMlZ0Wlc1MExtRjZkWEpsTG1OdmJUQ0NBU0l3RFFZSktvWklodmNOQVFFQkJRQURnZ0VQQURDQ0FRb0NnZ0VCQUx1MWZaWlRfbmZLUnJ4TDZhdzJKTElnT1pLWGVLUGdhME1RMEViQnVBWlFrdFN5M2o1NExEa2JrU1Jxa3NPRTJBWXlwMTlHV1FBR0wwbGpKd3hGQlJwX25GbzhqbGpJeTIyanktc2F0VlM3b0p0bnpIMVRxdFlGYXlzRUZBaVlIdXFfcWUwVk15eE5Ccklrd2Y2MHlDcjJCUkJPS1hWRnFmelZ4M1d1cC1Rcl9rRHdwcGFzRGJCZ1lYd0U0aUg5Q0NjcWc1SXNnQnoySWZ2VVNpUnRsSEI2MjJ3bzkwUEdQWHV6LWRqQXdkam1VTktPZXIwNVZvSFh2alN4M1YyX2Y5Vm5YYzRUMU9yU1kzV2RXU3Z6Q0poN0hnZmc4U2RBWWx2Smd6VldNNjR1QjlWS2xvb3JHWHozWFdHUEp0cFF4Z053cHVITENyQUJQTzRmd09BdUlUVUNBd0VBQWFPQ0JBc3dnZ1FITUNjR0NTc0dBUVFCZ2pjVkNnUWFNQmd3Q2dZSUt3WUJCUVVIQXdFd0NnWUlLd1lCQlFVSEF3SXdQUVlKS3dZQkJBR0NOeFVIQkRBd0xnWW1Ld1lCQkFHQ054VUlocERqRFlUVnRIaUU4WXMtaFp2ZEZzNmRFb0ZnZ3ZYMks0UHkwU0FDQVdRQ0FRb3dnZ0hhQmdnckJnRUZCUWNCQVFTQ0Fjd3dnZ0hJTUdZR0NDc0dBUVVGQnpBQ2hscG9kSFJ3T2k4dlkzSnNMbTFwWTNKdmMyOW1kQzVqYjIwdmNHdHBhVzVtY21FdlEyVnlkSE12UWt3eVVFdEpTVTVVUTBFd01TNUJUVVV1UjBKTVgwRk5SU1V5TUVsdVpuSmhKVEl3UTBFbE1qQXdNaWcwS1M1amNuUXdWZ1lJS3dZQkJRVUhNQUtHU21oMGRIQTZMeTlqY213eExtRnRaUzVuWW13dllXbGhMMEpNTWxCTFNVbE9WRU5CTURFdVFVMUZMa2RDVEY5QlRVVWxNakJKYm1aeVlTVXlNRU5CSlRJd01ESW9OQ2t1WTNKME1GWUdDQ3NHQVFVRkJ6QUNoa3BvZEhSd09pOHZZM0pzTWk1aGJXVXVaMkpzTDJGcFlTOUNUREpRUzBsSlRsUkRRVEF4TGtGTlJTNUhRa3hmUVUxRkpUSXdTVzVtY21FbE1qQkRRU1V5TURBeUtEUXBMbU55ZERCV0JnZ3JCZ0VGQlFjd0FvWkthSFIwY0RvdkwyTnliRE11WVcxbExtZGliQzloYVdFdlFrd3lVRXRKU1U1VVEwRXdNUzVCVFVVdVIwSk1YMEZOUlNVeU1FbHVabkpoSlRJd1EwRWxNakF3TWlnMEtTNWpjblF3VmdZSUt3WUJCUVVITUFLR1NtaDBkSEE2THk5amNtdzBMbUZ0WlM1blltd3ZZV2xoTDBKTU1sQkxTVWxPVkVOQk1ERXVRVTFGTGtkQ1RGOUJUVVVsTWpCSmJtWnlZU1V5TUVOQkpUSXdNRElvTkNrdVkzSjBNQjBHQTFVZERnUVdCQlF5RVlHWHdSWWN2WnAwcVhnajRGV0pzNlRSSXpBT0JnTlZIUThCQWY4RUJBTUNCYUF3Z2dFMUJnTlZIUjhFZ2dFc01JSUJLRENDQVNTZ2dnRWdvSUlCSElaQ2FIUjBjRG92TDJOeWJDNXRhV055YjNOdlpuUXVZMjl0TDNCcmFXbHVabkpoTDBOU1RDOUJUVVVsTWpCSmJtWnlZU1V5TUVOQkpUSXdNRElvTkNrdVkzSnNoalJvZEhSd09pOHZZM0pzTVM1aGJXVXVaMkpzTDJOeWJDOUJUVVVsTWpCSmJtWnlZU1V5TUVOQkpUSXdNRElvTkNrdVkzSnNoalJvZEhSd09pOHZZM0pzTWk1aGJXVXVaMkpzTDJOeWJDOUJUVVVsTWpCSmJtWnlZU1V5TUVOQkpUSXdNRElvTkNrdVkzSnNoalJvZEhSd09pOHZZM0pzTXk1aGJXVXVaMkpzTDJOeWJDOUJUVVVsTWpCSmJtWnlZU1V5TUVOQkpUSXdNRElvTkNrdVkzSnNoalJvZEhSd09pOHZZM0pzTkM1aGJXVXVaMkpzTDJOeWJDOUJUVVVsTWpCSmJtWnlZU1V5TUVOQkpUSXdNRElvTkNrdVkzSnNNQmNHQTFVZElBUVFNQTR3REFZS0t3WUJCQUdDTjNzQkFUQWZCZ05WSFNNRUdEQVdnQlN1ZWNKclhTV0lFd2IyQnduRGwzeDdsNDhkVlRBZEJnTlZIU1VFRmpBVUJnZ3JCZ0VGQlFjREFRWUlLd1lCQlFVSEF3SXdEUVlKS29aSWh2Y05BUUVMQlFBRGdnRUJBRktkTFRzOHhuOTdObTd6eDZRY3MyQ1ZpUlRMNkluYWw2U0ExUUN3X3FMOXlEQW5EVy1XUUNQUi1yRVVUUHk3QkwyV3FDdkNVblFrV19hZXc4ekZmaVVFZHdRTmttQXNzQVJHU3BldWZXYnlwajQ1YU5KWWsxSTFHekZTM2tPQjRweWVuMGdPdi0yZFN0VnRHdmZSUFlvU19pSENNX0ZlMkNKYVdpdmY1RHUweUVMYzNLZEdvdmFSMFZSYlJqelBZTHIxVVlWWDVDdnZqb0RCa3ZvT0VTYzFmSWlzOXpQQ0d6dnM3Y2hKMzZNcVU4a2NrTWNJVXRjc3VDYVRaUzF0UnV6ZkhMN3A3RkhMaVRsbjRDUFhDWDhtUlFwN2ZDVUpHUnlkNC1DVHMwREZtVFBCS3AyQUc1NEtLc2FoWUxHUnZNUkVFbVhBY2FPNUozLXRyb1NjeUZjJnM9a2thNzZvTTlvU21hSTVhUlBnRlVCeVNTSngzSGN5dTZxdjVpYTZiWW5scFp6SE1FT0ZfSzdCYS1CS05OdG9hbm1WblRxTnRGTUtjSXNGd2NETEtBX21iUllhd0xJTG5wbFluZzhqNkFTWVREMEphaUR5YnhxbF82azRwWXdGS1ljbFd2TEQ0RVlJX1U1bDNoRC0wQktvZHk2clYtOHA5d2c5UlFHYjFvR3FWaVBpUlhtSjRRd1R1TXdkcS1LSGdmNlNKSEpZQjlPYzJyTXBBX3R6YWt5eHI1dEdvRjR4bDc4SlI1ZGtwMnVjTnZVUUR3M1lGcFRMaVBFakNyX1RLVU40NW9uQkVLdERqc2V4NktoakNnN3Q2c1VudXhHWmJfYWtCNjV1ZVUzRzdsRU1OdnBzOWxOTWRHTFdwTUFKSmduaVd3U2Q2dE1oWWVCVHN4VUZQaF9BJmg9blVvbzljemNHVlZ4cGxwbktuTDR1d3cwLTZmLU9vVGhoNzFHOVAxWUV1QQ==",
       "RequestMethod": "GET",
       "RequestHeaders": {
         "x-ms-client-request-id": [
-          "ab7efc04-2b99-4693-a411-6f5223c95602"
+          "b83dc03a-3618-450d-abc8-bba82eec79b3"
         ],
         "User-Agent": [
           "FxVersion/4.700.22.55902",
@@ -858,82 +918,22 @@
           "Microsoft-HTTPAPI/2.0"
         ],
         "x-ms-ratelimit-remaining-subscription-reads": [
-          "11962"
+          "11984"
         ],
         "x-ms-request-id": [
-          "ffc549a8-3031-42ab-8ae4-f84451c5f232"
+          "903fa478-7fd8-4f28-a27c-a0ea86b57ec7"
         ],
         "x-ms-correlation-request-id": [
-          "ffc549a8-3031-42ab-8ae4-f84451c5f232"
+          "903fa478-7fd8-4f28-a27c-a0ea86b57ec7"
         ],
         "x-ms-routing-request-id": [
-          "EASTUS:20230720T123015Z:ffc549a8-3031-42ab-8ae4-f84451c5f232"
+          "CENTRALINDIA:20231004T045607Z:903fa478-7fd8-4f28-a27c-a0ea86b57ec7"
         ],
         "X-Content-Type-Options": [
           "nosniff"
         ],
         "Date": [
-          "Thu, 20 Jul 2023 12:30:15 GMT"
-        ],
-        "Content-Length": [
-          "21"
-        ],
-        "Content-Type": [
-          "application/json"
-        ]
-      },
-      "ResponseBody": "{\r\n  \"status\": \"Dequeued\"\r\n}",
-      "StatusCode": 200
-    },
-    {
-      "RequestUri": "/subscriptions/12053b8f-cab5-4f5c-9c1a-870580142abd/providers/Microsoft.DocumentDB/locations/eastus/operationsStatus/805187dd-195e-4f02-b94f-1358c35976c4?api-version=2023-03-15-preview",
-      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvMTIwNTNiOGYtY2FiNS00ZjVjLTljMWEtODcwNTgwMTQyYWJkL3Byb3ZpZGVycy9NaWNyb3NvZnQuRG9jdW1lbnREQi9sb2NhdGlvbnMvZWFzdHVzL29wZXJhdGlvbnNTdGF0dXMvODA1MTg3ZGQtMTk1ZS00ZjAyLWI5NGYtMTM1OGMzNTk3NmM0P2FwaS12ZXJzaW9uPTIwMjMtMDMtMTUtcHJldmlldw==",
-      "RequestMethod": "GET",
-      "RequestHeaders": {
-        "x-ms-client-request-id": [
-          "ab7efc04-2b99-4693-a411-6f5223c95602"
-        ],
-        "User-Agent": [
-          "FxVersion/4.700.22.55902",
-          "OSName/Windows",
-          "OSVersion/Microsoft.Windows.10.0.22621",
-          "Microsoft.Azure.Management.CosmosDB.CosmosDBManagementClient/2.0.5"
-        ]
-      },
-      "RequestBody": "",
-      "ResponseHeaders": {
-        "Cache-Control": [
-          "no-store, no-cache"
-        ],
-        "Pragma": [
-          "no-cache"
-        ],
-        "Strict-Transport-Security": [
-          "max-age=31536000; includeSubDomains"
-        ],
-        "x-ms-gatewayversion": [
-          "version=2.14.0"
-        ],
-        "Server": [
-          "Microsoft-HTTPAPI/2.0"
-        ],
-        "x-ms-ratelimit-remaining-subscription-reads": [
-          "11961"
-        ],
-        "x-ms-request-id": [
-          "8f9da467-849f-40fd-9c30-937d69d195c4"
-        ],
-        "x-ms-correlation-request-id": [
-          "8f9da467-849f-40fd-9c30-937d69d195c4"
-        ],
-        "x-ms-routing-request-id": [
-          "EASTUS:20230720T123045Z:8f9da467-849f-40fd-9c30-937d69d195c4"
-        ],
-        "X-Content-Type-Options": [
-          "nosniff"
-        ],
-        "Date": [
-          "Thu, 20 Jul 2023 12:30:45 GMT"
+          "Wed, 04 Oct 2023 04:56:07 GMT"
         ],
         "Content-Length": [
           "21"
@@ -946,12 +946,12 @@
       "StatusCode": 200
     },
     {
-      "RequestUri": "/subscriptions/12053b8f-cab5-4f5c-9c1a-870580142abd/providers/Microsoft.DocumentDB/locations/eastus/operationsStatus/805187dd-195e-4f02-b94f-1358c35976c4?api-version=2023-03-15-preview",
-      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvMTIwNTNiOGYtY2FiNS00ZjVjLTljMWEtODcwNTgwMTQyYWJkL3Byb3ZpZGVycy9NaWNyb3NvZnQuRG9jdW1lbnREQi9sb2NhdGlvbnMvZWFzdHVzL29wZXJhdGlvbnNTdGF0dXMvODA1MTg3ZGQtMTk1ZS00ZjAyLWI5NGYtMTM1OGMzNTk3NmM0P2FwaS12ZXJzaW9uPTIwMjMtMDMtMTUtcHJldmlldw==",
+      "RequestUri": "/subscriptions/2c1d0b69-225a-43b5-8220-6a139ef92e23/providers/Microsoft.DocumentDB/locations/eastus/operationsStatus/edf437e8-0af3-42ec-8ca8-4e7ba69c9dbe?api-version=2023-09-15-preview&t=638319921373308152&c=MIIHHjCCBgagAwIBAgITfwHPoKWFUi8BZhm71wAEAc-gpTANBgkqhkiG9w0BAQsFADBEMRMwEQYKCZImiZPyLGQBGRYDR0JMMRMwEQYKCZImiZPyLGQBGRYDQU1FMRgwFgYDVQQDEw9BTUUgSW5mcmEgQ0EgMDIwHhcNMjMwODAyMTUxMzA3WhcNMjQwNzI3MTUxMzA3WjBAMT4wPAYDVQQDEzVhc3luY29wZXJhdGlvbnNpZ25pbmdjZXJ0aWZpY2F0ZS5tYW5hZ2VtZW50LmF6dXJlLmNvbTCCASIwDQYJKoZIhvcNAQEBBQADggEPADCCAQoCggEBALu1fZZT_nfKRrxL6aw2JLIgOZKXeKPga0MQ0EbBuAZQktSy3j54LDkbkSRqksOE2AYyp19GWQAGL0ljJwxFBRp_nFo8jljIy22jy-satVS7oJtnzH1TqtYFaysEFAiYHuq_qe0VMyxNBrIkwf60yCr2BRBOKXVFqfzVx3Wup-Qr_kDwppasDbBgYXwE4iH9CCcqg5IsgBz2IfvUSiRtlHB622wo90PGPXuz-djAwdjmUNKOer05VoHXvjSx3V2_f9VnXc4T1OrSY3WdWSvzCJh7Hgfg8SdAYlvJgzVWM64uB9VKloorGXz3XWGPJtpQxgNwpuHLCrABPO4fwOAuITUCAwEAAaOCBAswggQHMCcGCSsGAQQBgjcVCgQaMBgwCgYIKwYBBQUHAwEwCgYIKwYBBQUHAwIwPQYJKwYBBAGCNxUHBDAwLgYmKwYBBAGCNxUIhpDjDYTVtHiE8Ys-hZvdFs6dEoFggvX2K4Py0SACAWQCAQowggHaBggrBgEFBQcBAQSCAcwwggHIMGYGCCsGAQUFBzAChlpodHRwOi8vY3JsLm1pY3Jvc29mdC5jb20vcGtpaW5mcmEvQ2VydHMvQkwyUEtJSU5UQ0EwMS5BTUUuR0JMX0FNRSUyMEluZnJhJTIwQ0ElMjAwMig0KS5jcnQwVgYIKwYBBQUHMAKGSmh0dHA6Ly9jcmwxLmFtZS5nYmwvYWlhL0JMMlBLSUlOVENBMDEuQU1FLkdCTF9BTUUlMjBJbmZyYSUyMENBJTIwMDIoNCkuY3J0MFYGCCsGAQUFBzAChkpodHRwOi8vY3JsMi5hbWUuZ2JsL2FpYS9CTDJQS0lJTlRDQTAxLkFNRS5HQkxfQU1FJTIwSW5mcmElMjBDQSUyMDAyKDQpLmNydDBWBggrBgEFBQcwAoZKaHR0cDovL2NybDMuYW1lLmdibC9haWEvQkwyUEtJSU5UQ0EwMS5BTUUuR0JMX0FNRSUyMEluZnJhJTIwQ0ElMjAwMig0KS5jcnQwVgYIKwYBBQUHMAKGSmh0dHA6Ly9jcmw0LmFtZS5nYmwvYWlhL0JMMlBLSUlOVENBMDEuQU1FLkdCTF9BTUUlMjBJbmZyYSUyMENBJTIwMDIoNCkuY3J0MB0GA1UdDgQWBBQyEYGXwRYcvZp0qXgj4FWJs6TRIzAOBgNVHQ8BAf8EBAMCBaAwggE1BgNVHR8EggEsMIIBKDCCASSgggEgoIIBHIZCaHR0cDovL2NybC5taWNyb3NvZnQuY29tL3BraWluZnJhL0NSTC9BTUUlMjBJbmZyYSUyMENBJTIwMDIoNCkuY3JshjRodHRwOi8vY3JsMS5hbWUuZ2JsL2NybC9BTUUlMjBJbmZyYSUyMENBJTIwMDIoNCkuY3JshjRodHRwOi8vY3JsMi5hbWUuZ2JsL2NybC9BTUUlMjBJbmZyYSUyMENBJTIwMDIoNCkuY3JshjRodHRwOi8vY3JsMy5hbWUuZ2JsL2NybC9BTUUlMjBJbmZyYSUyMENBJTIwMDIoNCkuY3JshjRodHRwOi8vY3JsNC5hbWUuZ2JsL2NybC9BTUUlMjBJbmZyYSUyMENBJTIwMDIoNCkuY3JsMBcGA1UdIAQQMA4wDAYKKwYBBAGCN3sBATAfBgNVHSMEGDAWgBSuecJrXSWIEwb2BwnDl3x7l48dVTAdBgNVHSUEFjAUBggrBgEFBQcDAQYIKwYBBQUHAwIwDQYJKoZIhvcNAQELBQADggEBAFKdLTs8xn97Nm7zx6Qcs2CViRTL6Inal6SA1QCw_qL9yDAnDW-WQCPR-rEUTPy7BL2WqCvCUnQkW_aew8zFfiUEdwQNkmAssARGSpeufWbypj45aNJYk1I1GzFS3kOB4pyen0gOv-2dStVtGvfRPYoS_iHCM_Fe2CJaWivf5Du0yELc3KdGovaR0VRbRjzPYLr1UYVX5CvvjoDBkvoOESc1fIis9zPCGzvs7chJ36MqU8kckMcIUtcsuCaTZS1tRuzfHL7p7FHLiTln4CPXCX8mRQp7fCUJGRyd4-CTs0DFmTPBKp2AG54KKsahYLGRvMREEmXAcaO5J3-troScyFc&s=kka76oM9oSmaI5aRPgFUBySSJx3Hcyu6qv5ia6bYnlpZzHMEOF_K7Ba-BKNNtoanmVnTqNtFMKcIsFwcDLKA_mbRYawLILnplYng8j6ASYTD0JaiDybxql_6k4pYwFKYclWvLD4EYI_U5l3hD-0BKody6rV-8p9wg9RQGb1oGqViPiRXmJ4QwTuMwdq-KHgf6SJHJYB9Oc2rMpA_tzakyxr5tGoF4xl78JR5dkp2ucNvUQDw3YFpTLiPEjCr_TKUN45onBEKtDjsex6KhjCg7t6sUnuxGZb_akB65ueU3G7lEMNvps9lNMdGLWpMAJJgniWwSd6tMhYeBTsxUFPh_A&h=nUoo9czcGVVxplpnKnL4uww0-6f-OoThh71G9P1YEuA",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvMmMxZDBiNjktMjI1YS00M2I1LTgyMjAtNmExMzllZjkyZTIzL3Byb3ZpZGVycy9NaWNyb3NvZnQuRG9jdW1lbnREQi9sb2NhdGlvbnMvZWFzdHVzL29wZXJhdGlvbnNTdGF0dXMvZWRmNDM3ZTgtMGFmMy00MmVjLThjYTgtNGU3YmE2OWM5ZGJlP2FwaS12ZXJzaW9uPTIwMjMtMDktMTUtcHJldmlldyZ0PTYzODMxOTkyMTM3MzMwODE1MiZjPU1JSUhIakNDQmdhZ0F3SUJBZ0lUZndIUG9LV0ZVaThCWmhtNzF3QUVBYy1ncFRBTkJna3Foa2lHOXcwQkFRc0ZBREJFTVJNd0VRWUtDWkltaVpQeUxHUUJHUllEUjBKTU1STXdFUVlLQ1pJbWlaUHlMR1FCR1JZRFFVMUZNUmd3RmdZRFZRUURFdzlCVFVVZ1NXNW1jbUVnUTBFZ01ESXdIaGNOTWpNd09EQXlNVFV4TXpBM1doY05NalF3TnpJM01UVXhNekEzV2pCQU1UNHdQQVlEVlFRREV6VmhjM2x1WTI5d1pYSmhkR2x2Ym5OcFoyNXBibWRqWlhKMGFXWnBZMkYwWlM1dFlXNWhaMlZ0Wlc1MExtRjZkWEpsTG1OdmJUQ0NBU0l3RFFZSktvWklodmNOQVFFQkJRQURnZ0VQQURDQ0FRb0NnZ0VCQUx1MWZaWlRfbmZLUnJ4TDZhdzJKTElnT1pLWGVLUGdhME1RMEViQnVBWlFrdFN5M2o1NExEa2JrU1Jxa3NPRTJBWXlwMTlHV1FBR0wwbGpKd3hGQlJwX25GbzhqbGpJeTIyanktc2F0VlM3b0p0bnpIMVRxdFlGYXlzRUZBaVlIdXFfcWUwVk15eE5Ccklrd2Y2MHlDcjJCUkJPS1hWRnFmelZ4M1d1cC1Rcl9rRHdwcGFzRGJCZ1lYd0U0aUg5Q0NjcWc1SXNnQnoySWZ2VVNpUnRsSEI2MjJ3bzkwUEdQWHV6LWRqQXdkam1VTktPZXIwNVZvSFh2alN4M1YyX2Y5Vm5YYzRUMU9yU1kzV2RXU3Z6Q0poN0hnZmc4U2RBWWx2Smd6VldNNjR1QjlWS2xvb3JHWHozWFdHUEp0cFF4Z053cHVITENyQUJQTzRmd09BdUlUVUNBd0VBQWFPQ0JBc3dnZ1FITUNjR0NTc0dBUVFCZ2pjVkNnUWFNQmd3Q2dZSUt3WUJCUVVIQXdFd0NnWUlLd1lCQlFVSEF3SXdQUVlKS3dZQkJBR0NOeFVIQkRBd0xnWW1Ld1lCQkFHQ054VUlocERqRFlUVnRIaUU4WXMtaFp2ZEZzNmRFb0ZnZ3ZYMks0UHkwU0FDQVdRQ0FRb3dnZ0hhQmdnckJnRUZCUWNCQVFTQ0Fjd3dnZ0hJTUdZR0NDc0dBUVVGQnpBQ2hscG9kSFJ3T2k4dlkzSnNMbTFwWTNKdmMyOW1kQzVqYjIwdmNHdHBhVzVtY21FdlEyVnlkSE12UWt3eVVFdEpTVTVVUTBFd01TNUJUVVV1UjBKTVgwRk5SU1V5TUVsdVpuSmhKVEl3UTBFbE1qQXdNaWcwS1M1amNuUXdWZ1lJS3dZQkJRVUhNQUtHU21oMGRIQTZMeTlqY213eExtRnRaUzVuWW13dllXbGhMMEpNTWxCTFNVbE9WRU5CTURFdVFVMUZMa2RDVEY5QlRVVWxNakJKYm1aeVlTVXlNRU5CSlRJd01ESW9OQ2t1WTNKME1GWUdDQ3NHQVFVRkJ6QUNoa3BvZEhSd09pOHZZM0pzTWk1aGJXVXVaMkpzTDJGcFlTOUNUREpRUzBsSlRsUkRRVEF4TGtGTlJTNUhRa3hmUVUxRkpUSXdTVzVtY21FbE1qQkRRU1V5TURBeUtEUXBMbU55ZERCV0JnZ3JCZ0VGQlFjd0FvWkthSFIwY0RvdkwyTnliRE11WVcxbExtZGliQzloYVdFdlFrd3lVRXRKU1U1VVEwRXdNUzVCVFVVdVIwSk1YMEZOUlNVeU1FbHVabkpoSlRJd1EwRWxNakF3TWlnMEtTNWpjblF3VmdZSUt3WUJCUVVITUFLR1NtaDBkSEE2THk5amNtdzBMbUZ0WlM1blltd3ZZV2xoTDBKTU1sQkxTVWxPVkVOQk1ERXVRVTFGTGtkQ1RGOUJUVVVsTWpCSmJtWnlZU1V5TUVOQkpUSXdNRElvTkNrdVkzSjBNQjBHQTFVZERnUVdCQlF5RVlHWHdSWWN2WnAwcVhnajRGV0pzNlRSSXpBT0JnTlZIUThCQWY4RUJBTUNCYUF3Z2dFMUJnTlZIUjhFZ2dFc01JSUJLRENDQVNTZ2dnRWdvSUlCSElaQ2FIUjBjRG92TDJOeWJDNXRhV055YjNOdlpuUXVZMjl0TDNCcmFXbHVabkpoTDBOU1RDOUJUVVVsTWpCSmJtWnlZU1V5TUVOQkpUSXdNRElvTkNrdVkzSnNoalJvZEhSd09pOHZZM0pzTVM1aGJXVXVaMkpzTDJOeWJDOUJUVVVsTWpCSmJtWnlZU1V5TUVOQkpUSXdNRElvTkNrdVkzSnNoalJvZEhSd09pOHZZM0pzTWk1aGJXVXVaMkpzTDJOeWJDOUJUVVVsTWpCSmJtWnlZU1V5TUVOQkpUSXdNRElvTkNrdVkzSnNoalJvZEhSd09pOHZZM0pzTXk1aGJXVXVaMkpzTDJOeWJDOUJUVVVsTWpCSmJtWnlZU1V5TUVOQkpUSXdNRElvTkNrdVkzSnNoalJvZEhSd09pOHZZM0pzTkM1aGJXVXVaMkpzTDJOeWJDOUJUVVVsTWpCSmJtWnlZU1V5TUVOQkpUSXdNRElvTkNrdVkzSnNNQmNHQTFVZElBUVFNQTR3REFZS0t3WUJCQUdDTjNzQkFUQWZCZ05WSFNNRUdEQVdnQlN1ZWNKclhTV0lFd2IyQnduRGwzeDdsNDhkVlRBZEJnTlZIU1VFRmpBVUJnZ3JCZ0VGQlFjREFRWUlLd1lCQlFVSEF3SXdEUVlKS29aSWh2Y05BUUVMQlFBRGdnRUJBRktkTFRzOHhuOTdObTd6eDZRY3MyQ1ZpUlRMNkluYWw2U0ExUUN3X3FMOXlEQW5EVy1XUUNQUi1yRVVUUHk3QkwyV3FDdkNVblFrV19hZXc4ekZmaVVFZHdRTmttQXNzQVJHU3BldWZXYnlwajQ1YU5KWWsxSTFHekZTM2tPQjRweWVuMGdPdi0yZFN0VnRHdmZSUFlvU19pSENNX0ZlMkNKYVdpdmY1RHUweUVMYzNLZEdvdmFSMFZSYlJqelBZTHIxVVlWWDVDdnZqb0RCa3ZvT0VTYzFmSWlzOXpQQ0d6dnM3Y2hKMzZNcVU4a2NrTWNJVXRjc3VDYVRaUzF0UnV6ZkhMN3A3RkhMaVRsbjRDUFhDWDhtUlFwN2ZDVUpHUnlkNC1DVHMwREZtVFBCS3AyQUc1NEtLc2FoWUxHUnZNUkVFbVhBY2FPNUozLXRyb1NjeUZjJnM9a2thNzZvTTlvU21hSTVhUlBnRlVCeVNTSngzSGN5dTZxdjVpYTZiWW5scFp6SE1FT0ZfSzdCYS1CS05OdG9hbm1WblRxTnRGTUtjSXNGd2NETEtBX21iUllhd0xJTG5wbFluZzhqNkFTWVREMEphaUR5YnhxbF82azRwWXdGS1ljbFd2TEQ0RVlJX1U1bDNoRC0wQktvZHk2clYtOHA5d2c5UlFHYjFvR3FWaVBpUlhtSjRRd1R1TXdkcS1LSGdmNlNKSEpZQjlPYzJyTXBBX3R6YWt5eHI1dEdvRjR4bDc4SlI1ZGtwMnVjTnZVUUR3M1lGcFRMaVBFakNyX1RLVU40NW9uQkVLdERqc2V4NktoakNnN3Q2c1VudXhHWmJfYWtCNjV1ZVUzRzdsRU1OdnBzOWxOTWRHTFdwTUFKSmduaVd3U2Q2dE1oWWVCVHN4VUZQaF9BJmg9blVvbzljemNHVlZ4cGxwbktuTDR1d3cwLTZmLU9vVGhoNzFHOVAxWUV1QQ==",
       "RequestMethod": "GET",
       "RequestHeaders": {
         "x-ms-client-request-id": [
-          "ab7efc04-2b99-4693-a411-6f5223c95602"
+          "b83dc03a-3618-450d-abc8-bba82eec79b3"
         ],
         "User-Agent": [
           "FxVersion/4.700.22.55902",
@@ -978,22 +978,22 @@
           "Microsoft-HTTPAPI/2.0"
         ],
         "x-ms-ratelimit-remaining-subscription-reads": [
-          "11960"
+          "11983"
         ],
         "x-ms-request-id": [
-          "cb630a02-8b43-4d9b-b447-29cd56878b63"
+          "d5fe32ea-f550-41a1-8cba-29928756899c"
         ],
         "x-ms-correlation-request-id": [
-          "cb630a02-8b43-4d9b-b447-29cd56878b63"
+          "d5fe32ea-f550-41a1-8cba-29928756899c"
         ],
         "x-ms-routing-request-id": [
-          "EASTUS:20230720T123115Z:cb630a02-8b43-4d9b-b447-29cd56878b63"
+          "CENTRALINDIA:20231004T045638Z:d5fe32ea-f550-41a1-8cba-29928756899c"
         ],
         "X-Content-Type-Options": [
           "nosniff"
         ],
         "Date": [
-          "Thu, 20 Jul 2023 12:31:15 GMT"
+          "Wed, 04 Oct 2023 04:56:38 GMT"
         ],
         "Content-Length": [
           "21"
@@ -1006,12 +1006,12 @@
       "StatusCode": 200
     },
     {
-      "RequestUri": "/subscriptions/12053b8f-cab5-4f5c-9c1a-870580142abd/providers/Microsoft.DocumentDB/locations/eastus/operationsStatus/805187dd-195e-4f02-b94f-1358c35976c4?api-version=2023-03-15-preview",
-      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvMTIwNTNiOGYtY2FiNS00ZjVjLTljMWEtODcwNTgwMTQyYWJkL3Byb3ZpZGVycy9NaWNyb3NvZnQuRG9jdW1lbnREQi9sb2NhdGlvbnMvZWFzdHVzL29wZXJhdGlvbnNTdGF0dXMvODA1MTg3ZGQtMTk1ZS00ZjAyLWI5NGYtMTM1OGMzNTk3NmM0P2FwaS12ZXJzaW9uPTIwMjMtMDMtMTUtcHJldmlldw==",
+      "RequestUri": "/subscriptions/2c1d0b69-225a-43b5-8220-6a139ef92e23/providers/Microsoft.DocumentDB/locations/eastus/operationsStatus/edf437e8-0af3-42ec-8ca8-4e7ba69c9dbe?api-version=2023-09-15-preview&t=638319921373308152&c=MIIHHjCCBgagAwIBAgITfwHPoKWFUi8BZhm71wAEAc-gpTANBgkqhkiG9w0BAQsFADBEMRMwEQYKCZImiZPyLGQBGRYDR0JMMRMwEQYKCZImiZPyLGQBGRYDQU1FMRgwFgYDVQQDEw9BTUUgSW5mcmEgQ0EgMDIwHhcNMjMwODAyMTUxMzA3WhcNMjQwNzI3MTUxMzA3WjBAMT4wPAYDVQQDEzVhc3luY29wZXJhdGlvbnNpZ25pbmdjZXJ0aWZpY2F0ZS5tYW5hZ2VtZW50LmF6dXJlLmNvbTCCASIwDQYJKoZIhvcNAQEBBQADggEPADCCAQoCggEBALu1fZZT_nfKRrxL6aw2JLIgOZKXeKPga0MQ0EbBuAZQktSy3j54LDkbkSRqksOE2AYyp19GWQAGL0ljJwxFBRp_nFo8jljIy22jy-satVS7oJtnzH1TqtYFaysEFAiYHuq_qe0VMyxNBrIkwf60yCr2BRBOKXVFqfzVx3Wup-Qr_kDwppasDbBgYXwE4iH9CCcqg5IsgBz2IfvUSiRtlHB622wo90PGPXuz-djAwdjmUNKOer05VoHXvjSx3V2_f9VnXc4T1OrSY3WdWSvzCJh7Hgfg8SdAYlvJgzVWM64uB9VKloorGXz3XWGPJtpQxgNwpuHLCrABPO4fwOAuITUCAwEAAaOCBAswggQHMCcGCSsGAQQBgjcVCgQaMBgwCgYIKwYBBQUHAwEwCgYIKwYBBQUHAwIwPQYJKwYBBAGCNxUHBDAwLgYmKwYBBAGCNxUIhpDjDYTVtHiE8Ys-hZvdFs6dEoFggvX2K4Py0SACAWQCAQowggHaBggrBgEFBQcBAQSCAcwwggHIMGYGCCsGAQUFBzAChlpodHRwOi8vY3JsLm1pY3Jvc29mdC5jb20vcGtpaW5mcmEvQ2VydHMvQkwyUEtJSU5UQ0EwMS5BTUUuR0JMX0FNRSUyMEluZnJhJTIwQ0ElMjAwMig0KS5jcnQwVgYIKwYBBQUHMAKGSmh0dHA6Ly9jcmwxLmFtZS5nYmwvYWlhL0JMMlBLSUlOVENBMDEuQU1FLkdCTF9BTUUlMjBJbmZyYSUyMENBJTIwMDIoNCkuY3J0MFYGCCsGAQUFBzAChkpodHRwOi8vY3JsMi5hbWUuZ2JsL2FpYS9CTDJQS0lJTlRDQTAxLkFNRS5HQkxfQU1FJTIwSW5mcmElMjBDQSUyMDAyKDQpLmNydDBWBggrBgEFBQcwAoZKaHR0cDovL2NybDMuYW1lLmdibC9haWEvQkwyUEtJSU5UQ0EwMS5BTUUuR0JMX0FNRSUyMEluZnJhJTIwQ0ElMjAwMig0KS5jcnQwVgYIKwYBBQUHMAKGSmh0dHA6Ly9jcmw0LmFtZS5nYmwvYWlhL0JMMlBLSUlOVENBMDEuQU1FLkdCTF9BTUUlMjBJbmZyYSUyMENBJTIwMDIoNCkuY3J0MB0GA1UdDgQWBBQyEYGXwRYcvZp0qXgj4FWJs6TRIzAOBgNVHQ8BAf8EBAMCBaAwggE1BgNVHR8EggEsMIIBKDCCASSgggEgoIIBHIZCaHR0cDovL2NybC5taWNyb3NvZnQuY29tL3BraWluZnJhL0NSTC9BTUUlMjBJbmZyYSUyMENBJTIwMDIoNCkuY3JshjRodHRwOi8vY3JsMS5hbWUuZ2JsL2NybC9BTUUlMjBJbmZyYSUyMENBJTIwMDIoNCkuY3JshjRodHRwOi8vY3JsMi5hbWUuZ2JsL2NybC9BTUUlMjBJbmZyYSUyMENBJTIwMDIoNCkuY3JshjRodHRwOi8vY3JsMy5hbWUuZ2JsL2NybC9BTUUlMjBJbmZyYSUyMENBJTIwMDIoNCkuY3JshjRodHRwOi8vY3JsNC5hbWUuZ2JsL2NybC9BTUUlMjBJbmZyYSUyMENBJTIwMDIoNCkuY3JsMBcGA1UdIAQQMA4wDAYKKwYBBAGCN3sBATAfBgNVHSMEGDAWgBSuecJrXSWIEwb2BwnDl3x7l48dVTAdBgNVHSUEFjAUBggrBgEFBQcDAQYIKwYBBQUHAwIwDQYJKoZIhvcNAQELBQADggEBAFKdLTs8xn97Nm7zx6Qcs2CViRTL6Inal6SA1QCw_qL9yDAnDW-WQCPR-rEUTPy7BL2WqCvCUnQkW_aew8zFfiUEdwQNkmAssARGSpeufWbypj45aNJYk1I1GzFS3kOB4pyen0gOv-2dStVtGvfRPYoS_iHCM_Fe2CJaWivf5Du0yELc3KdGovaR0VRbRjzPYLr1UYVX5CvvjoDBkvoOESc1fIis9zPCGzvs7chJ36MqU8kckMcIUtcsuCaTZS1tRuzfHL7p7FHLiTln4CPXCX8mRQp7fCUJGRyd4-CTs0DFmTPBKp2AG54KKsahYLGRvMREEmXAcaO5J3-troScyFc&s=kka76oM9oSmaI5aRPgFUBySSJx3Hcyu6qv5ia6bYnlpZzHMEOF_K7Ba-BKNNtoanmVnTqNtFMKcIsFwcDLKA_mbRYawLILnplYng8j6ASYTD0JaiDybxql_6k4pYwFKYclWvLD4EYI_U5l3hD-0BKody6rV-8p9wg9RQGb1oGqViPiRXmJ4QwTuMwdq-KHgf6SJHJYB9Oc2rMpA_tzakyxr5tGoF4xl78JR5dkp2ucNvUQDw3YFpTLiPEjCr_TKUN45onBEKtDjsex6KhjCg7t6sUnuxGZb_akB65ueU3G7lEMNvps9lNMdGLWpMAJJgniWwSd6tMhYeBTsxUFPh_A&h=nUoo9czcGVVxplpnKnL4uww0-6f-OoThh71G9P1YEuA",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvMmMxZDBiNjktMjI1YS00M2I1LTgyMjAtNmExMzllZjkyZTIzL3Byb3ZpZGVycy9NaWNyb3NvZnQuRG9jdW1lbnREQi9sb2NhdGlvbnMvZWFzdHVzL29wZXJhdGlvbnNTdGF0dXMvZWRmNDM3ZTgtMGFmMy00MmVjLThjYTgtNGU3YmE2OWM5ZGJlP2FwaS12ZXJzaW9uPTIwMjMtMDktMTUtcHJldmlldyZ0PTYzODMxOTkyMTM3MzMwODE1MiZjPU1JSUhIakNDQmdhZ0F3SUJBZ0lUZndIUG9LV0ZVaThCWmhtNzF3QUVBYy1ncFRBTkJna3Foa2lHOXcwQkFRc0ZBREJFTVJNd0VRWUtDWkltaVpQeUxHUUJHUllEUjBKTU1STXdFUVlLQ1pJbWlaUHlMR1FCR1JZRFFVMUZNUmd3RmdZRFZRUURFdzlCVFVVZ1NXNW1jbUVnUTBFZ01ESXdIaGNOTWpNd09EQXlNVFV4TXpBM1doY05NalF3TnpJM01UVXhNekEzV2pCQU1UNHdQQVlEVlFRREV6VmhjM2x1WTI5d1pYSmhkR2x2Ym5OcFoyNXBibWRqWlhKMGFXWnBZMkYwWlM1dFlXNWhaMlZ0Wlc1MExtRjZkWEpsTG1OdmJUQ0NBU0l3RFFZSktvWklodmNOQVFFQkJRQURnZ0VQQURDQ0FRb0NnZ0VCQUx1MWZaWlRfbmZLUnJ4TDZhdzJKTElnT1pLWGVLUGdhME1RMEViQnVBWlFrdFN5M2o1NExEa2JrU1Jxa3NPRTJBWXlwMTlHV1FBR0wwbGpKd3hGQlJwX25GbzhqbGpJeTIyanktc2F0VlM3b0p0bnpIMVRxdFlGYXlzRUZBaVlIdXFfcWUwVk15eE5Ccklrd2Y2MHlDcjJCUkJPS1hWRnFmelZ4M1d1cC1Rcl9rRHdwcGFzRGJCZ1lYd0U0aUg5Q0NjcWc1SXNnQnoySWZ2VVNpUnRsSEI2MjJ3bzkwUEdQWHV6LWRqQXdkam1VTktPZXIwNVZvSFh2alN4M1YyX2Y5Vm5YYzRUMU9yU1kzV2RXU3Z6Q0poN0hnZmc4U2RBWWx2Smd6VldNNjR1QjlWS2xvb3JHWHozWFdHUEp0cFF4Z053cHVITENyQUJQTzRmd09BdUlUVUNBd0VBQWFPQ0JBc3dnZ1FITUNjR0NTc0dBUVFCZ2pjVkNnUWFNQmd3Q2dZSUt3WUJCUVVIQXdFd0NnWUlLd1lCQlFVSEF3SXdQUVlKS3dZQkJBR0NOeFVIQkRBd0xnWW1Ld1lCQkFHQ054VUlocERqRFlUVnRIaUU4WXMtaFp2ZEZzNmRFb0ZnZ3ZYMks0UHkwU0FDQVdRQ0FRb3dnZ0hhQmdnckJnRUZCUWNCQVFTQ0Fjd3dnZ0hJTUdZR0NDc0dBUVVGQnpBQ2hscG9kSFJ3T2k4dlkzSnNMbTFwWTNKdmMyOW1kQzVqYjIwdmNHdHBhVzVtY21FdlEyVnlkSE12UWt3eVVFdEpTVTVVUTBFd01TNUJUVVV1UjBKTVgwRk5SU1V5TUVsdVpuSmhKVEl3UTBFbE1qQXdNaWcwS1M1amNuUXdWZ1lJS3dZQkJRVUhNQUtHU21oMGRIQTZMeTlqY213eExtRnRaUzVuWW13dllXbGhMMEpNTWxCTFNVbE9WRU5CTURFdVFVMUZMa2RDVEY5QlRVVWxNakJKYm1aeVlTVXlNRU5CSlRJd01ESW9OQ2t1WTNKME1GWUdDQ3NHQVFVRkJ6QUNoa3BvZEhSd09pOHZZM0pzTWk1aGJXVXVaMkpzTDJGcFlTOUNUREpRUzBsSlRsUkRRVEF4TGtGTlJTNUhRa3hmUVUxRkpUSXdTVzVtY21FbE1qQkRRU1V5TURBeUtEUXBMbU55ZERCV0JnZ3JCZ0VGQlFjd0FvWkthSFIwY0RvdkwyTnliRE11WVcxbExtZGliQzloYVdFdlFrd3lVRXRKU1U1VVEwRXdNUzVCVFVVdVIwSk1YMEZOUlNVeU1FbHVabkpoSlRJd1EwRWxNakF3TWlnMEtTNWpjblF3VmdZSUt3WUJCUVVITUFLR1NtaDBkSEE2THk5amNtdzBMbUZ0WlM1blltd3ZZV2xoTDBKTU1sQkxTVWxPVkVOQk1ERXVRVTFGTGtkQ1RGOUJUVVVsTWpCSmJtWnlZU1V5TUVOQkpUSXdNRElvTkNrdVkzSjBNQjBHQTFVZERnUVdCQlF5RVlHWHdSWWN2WnAwcVhnajRGV0pzNlRSSXpBT0JnTlZIUThCQWY4RUJBTUNCYUF3Z2dFMUJnTlZIUjhFZ2dFc01JSUJLRENDQVNTZ2dnRWdvSUlCSElaQ2FIUjBjRG92TDJOeWJDNXRhV055YjNOdlpuUXVZMjl0TDNCcmFXbHVabkpoTDBOU1RDOUJUVVVsTWpCSmJtWnlZU1V5TUVOQkpUSXdNRElvTkNrdVkzSnNoalJvZEhSd09pOHZZM0pzTVM1aGJXVXVaMkpzTDJOeWJDOUJUVVVsTWpCSmJtWnlZU1V5TUVOQkpUSXdNRElvTkNrdVkzSnNoalJvZEhSd09pOHZZM0pzTWk1aGJXVXVaMkpzTDJOeWJDOUJUVVVsTWpCSmJtWnlZU1V5TUVOQkpUSXdNRElvTkNrdVkzSnNoalJvZEhSd09pOHZZM0pzTXk1aGJXVXVaMkpzTDJOeWJDOUJUVVVsTWpCSmJtWnlZU1V5TUVOQkpUSXdNRElvTkNrdVkzSnNoalJvZEhSd09pOHZZM0pzTkM1aGJXVXVaMkpzTDJOeWJDOUJUVVVsTWpCSmJtWnlZU1V5TUVOQkpUSXdNRElvTkNrdVkzSnNNQmNHQTFVZElBUVFNQTR3REFZS0t3WUJCQUdDTjNzQkFUQWZCZ05WSFNNRUdEQVdnQlN1ZWNKclhTV0lFd2IyQnduRGwzeDdsNDhkVlRBZEJnTlZIU1VFRmpBVUJnZ3JCZ0VGQlFjREFRWUlLd1lCQlFVSEF3SXdEUVlKS29aSWh2Y05BUUVMQlFBRGdnRUJBRktkTFRzOHhuOTdObTd6eDZRY3MyQ1ZpUlRMNkluYWw2U0ExUUN3X3FMOXlEQW5EVy1XUUNQUi1yRVVUUHk3QkwyV3FDdkNVblFrV19hZXc4ekZmaVVFZHdRTmttQXNzQVJHU3BldWZXYnlwajQ1YU5KWWsxSTFHekZTM2tPQjRweWVuMGdPdi0yZFN0VnRHdmZSUFlvU19pSENNX0ZlMkNKYVdpdmY1RHUweUVMYzNLZEdvdmFSMFZSYlJqelBZTHIxVVlWWDVDdnZqb0RCa3ZvT0VTYzFmSWlzOXpQQ0d6dnM3Y2hKMzZNcVU4a2NrTWNJVXRjc3VDYVRaUzF0UnV6ZkhMN3A3RkhMaVRsbjRDUFhDWDhtUlFwN2ZDVUpHUnlkNC1DVHMwREZtVFBCS3AyQUc1NEtLc2FoWUxHUnZNUkVFbVhBY2FPNUozLXRyb1NjeUZjJnM9a2thNzZvTTlvU21hSTVhUlBnRlVCeVNTSngzSGN5dTZxdjVpYTZiWW5scFp6SE1FT0ZfSzdCYS1CS05OdG9hbm1WblRxTnRGTUtjSXNGd2NETEtBX21iUllhd0xJTG5wbFluZzhqNkFTWVREMEphaUR5YnhxbF82azRwWXdGS1ljbFd2TEQ0RVlJX1U1bDNoRC0wQktvZHk2clYtOHA5d2c5UlFHYjFvR3FWaVBpUlhtSjRRd1R1TXdkcS1LSGdmNlNKSEpZQjlPYzJyTXBBX3R6YWt5eHI1dEdvRjR4bDc4SlI1ZGtwMnVjTnZVUUR3M1lGcFRMaVBFakNyX1RLVU40NW9uQkVLdERqc2V4NktoakNnN3Q2c1VudXhHWmJfYWtCNjV1ZVUzRzdsRU1OdnBzOWxOTWRHTFdwTUFKSmduaVd3U2Q2dE1oWWVCVHN4VUZQaF9BJmg9blVvbzljemNHVlZ4cGxwbktuTDR1d3cwLTZmLU9vVGhoNzFHOVAxWUV1QQ==",
       "RequestMethod": "GET",
       "RequestHeaders": {
         "x-ms-client-request-id": [
-          "ab7efc04-2b99-4693-a411-6f5223c95602"
+          "b83dc03a-3618-450d-abc8-bba82eec79b3"
         ],
         "User-Agent": [
           "FxVersion/4.700.22.55902",
@@ -1038,22 +1038,22 @@
           "Microsoft-HTTPAPI/2.0"
         ],
         "x-ms-ratelimit-remaining-subscription-reads": [
-          "11959"
+          "11982"
         ],
         "x-ms-request-id": [
-          "590f37d5-e332-47f0-9fbd-c4111dc08813"
+          "98fc9dae-0df3-4573-9db7-87183a258319"
         ],
         "x-ms-correlation-request-id": [
-          "590f37d5-e332-47f0-9fbd-c4111dc08813"
+          "98fc9dae-0df3-4573-9db7-87183a258319"
         ],
         "x-ms-routing-request-id": [
-          "EASTUS:20230720T123145Z:590f37d5-e332-47f0-9fbd-c4111dc08813"
+          "CENTRALINDIA:20231004T045708Z:98fc9dae-0df3-4573-9db7-87183a258319"
         ],
         "X-Content-Type-Options": [
           "nosniff"
         ],
         "Date": [
-          "Thu, 20 Jul 2023 12:31:45 GMT"
+          "Wed, 04 Oct 2023 04:57:08 GMT"
         ],
         "Content-Length": [
           "21"
@@ -1066,12 +1066,12 @@
       "StatusCode": 200
     },
     {
-      "RequestUri": "/subscriptions/12053b8f-cab5-4f5c-9c1a-870580142abd/providers/Microsoft.DocumentDB/locations/eastus/operationsStatus/805187dd-195e-4f02-b94f-1358c35976c4?api-version=2023-03-15-preview",
-      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvMTIwNTNiOGYtY2FiNS00ZjVjLTljMWEtODcwNTgwMTQyYWJkL3Byb3ZpZGVycy9NaWNyb3NvZnQuRG9jdW1lbnREQi9sb2NhdGlvbnMvZWFzdHVzL29wZXJhdGlvbnNTdGF0dXMvODA1MTg3ZGQtMTk1ZS00ZjAyLWI5NGYtMTM1OGMzNTk3NmM0P2FwaS12ZXJzaW9uPTIwMjMtMDMtMTUtcHJldmlldw==",
+      "RequestUri": "/subscriptions/2c1d0b69-225a-43b5-8220-6a139ef92e23/providers/Microsoft.DocumentDB/locations/eastus/operationsStatus/edf437e8-0af3-42ec-8ca8-4e7ba69c9dbe?api-version=2023-09-15-preview&t=638319921373308152&c=MIIHHjCCBgagAwIBAgITfwHPoKWFUi8BZhm71wAEAc-gpTANBgkqhkiG9w0BAQsFADBEMRMwEQYKCZImiZPyLGQBGRYDR0JMMRMwEQYKCZImiZPyLGQBGRYDQU1FMRgwFgYDVQQDEw9BTUUgSW5mcmEgQ0EgMDIwHhcNMjMwODAyMTUxMzA3WhcNMjQwNzI3MTUxMzA3WjBAMT4wPAYDVQQDEzVhc3luY29wZXJhdGlvbnNpZ25pbmdjZXJ0aWZpY2F0ZS5tYW5hZ2VtZW50LmF6dXJlLmNvbTCCASIwDQYJKoZIhvcNAQEBBQADggEPADCCAQoCggEBALu1fZZT_nfKRrxL6aw2JLIgOZKXeKPga0MQ0EbBuAZQktSy3j54LDkbkSRqksOE2AYyp19GWQAGL0ljJwxFBRp_nFo8jljIy22jy-satVS7oJtnzH1TqtYFaysEFAiYHuq_qe0VMyxNBrIkwf60yCr2BRBOKXVFqfzVx3Wup-Qr_kDwppasDbBgYXwE4iH9CCcqg5IsgBz2IfvUSiRtlHB622wo90PGPXuz-djAwdjmUNKOer05VoHXvjSx3V2_f9VnXc4T1OrSY3WdWSvzCJh7Hgfg8SdAYlvJgzVWM64uB9VKloorGXz3XWGPJtpQxgNwpuHLCrABPO4fwOAuITUCAwEAAaOCBAswggQHMCcGCSsGAQQBgjcVCgQaMBgwCgYIKwYBBQUHAwEwCgYIKwYBBQUHAwIwPQYJKwYBBAGCNxUHBDAwLgYmKwYBBAGCNxUIhpDjDYTVtHiE8Ys-hZvdFs6dEoFggvX2K4Py0SACAWQCAQowggHaBggrBgEFBQcBAQSCAcwwggHIMGYGCCsGAQUFBzAChlpodHRwOi8vY3JsLm1pY3Jvc29mdC5jb20vcGtpaW5mcmEvQ2VydHMvQkwyUEtJSU5UQ0EwMS5BTUUuR0JMX0FNRSUyMEluZnJhJTIwQ0ElMjAwMig0KS5jcnQwVgYIKwYBBQUHMAKGSmh0dHA6Ly9jcmwxLmFtZS5nYmwvYWlhL0JMMlBLSUlOVENBMDEuQU1FLkdCTF9BTUUlMjBJbmZyYSUyMENBJTIwMDIoNCkuY3J0MFYGCCsGAQUFBzAChkpodHRwOi8vY3JsMi5hbWUuZ2JsL2FpYS9CTDJQS0lJTlRDQTAxLkFNRS5HQkxfQU1FJTIwSW5mcmElMjBDQSUyMDAyKDQpLmNydDBWBggrBgEFBQcwAoZKaHR0cDovL2NybDMuYW1lLmdibC9haWEvQkwyUEtJSU5UQ0EwMS5BTUUuR0JMX0FNRSUyMEluZnJhJTIwQ0ElMjAwMig0KS5jcnQwVgYIKwYBBQUHMAKGSmh0dHA6Ly9jcmw0LmFtZS5nYmwvYWlhL0JMMlBLSUlOVENBMDEuQU1FLkdCTF9BTUUlMjBJbmZyYSUyMENBJTIwMDIoNCkuY3J0MB0GA1UdDgQWBBQyEYGXwRYcvZp0qXgj4FWJs6TRIzAOBgNVHQ8BAf8EBAMCBaAwggE1BgNVHR8EggEsMIIBKDCCASSgggEgoIIBHIZCaHR0cDovL2NybC5taWNyb3NvZnQuY29tL3BraWluZnJhL0NSTC9BTUUlMjBJbmZyYSUyMENBJTIwMDIoNCkuY3JshjRodHRwOi8vY3JsMS5hbWUuZ2JsL2NybC9BTUUlMjBJbmZyYSUyMENBJTIwMDIoNCkuY3JshjRodHRwOi8vY3JsMi5hbWUuZ2JsL2NybC9BTUUlMjBJbmZyYSUyMENBJTIwMDIoNCkuY3JshjRodHRwOi8vY3JsMy5hbWUuZ2JsL2NybC9BTUUlMjBJbmZyYSUyMENBJTIwMDIoNCkuY3JshjRodHRwOi8vY3JsNC5hbWUuZ2JsL2NybC9BTUUlMjBJbmZyYSUyMENBJTIwMDIoNCkuY3JsMBcGA1UdIAQQMA4wDAYKKwYBBAGCN3sBATAfBgNVHSMEGDAWgBSuecJrXSWIEwb2BwnDl3x7l48dVTAdBgNVHSUEFjAUBggrBgEFBQcDAQYIKwYBBQUHAwIwDQYJKoZIhvcNAQELBQADggEBAFKdLTs8xn97Nm7zx6Qcs2CViRTL6Inal6SA1QCw_qL9yDAnDW-WQCPR-rEUTPy7BL2WqCvCUnQkW_aew8zFfiUEdwQNkmAssARGSpeufWbypj45aNJYk1I1GzFS3kOB4pyen0gOv-2dStVtGvfRPYoS_iHCM_Fe2CJaWivf5Du0yELc3KdGovaR0VRbRjzPYLr1UYVX5CvvjoDBkvoOESc1fIis9zPCGzvs7chJ36MqU8kckMcIUtcsuCaTZS1tRuzfHL7p7FHLiTln4CPXCX8mRQp7fCUJGRyd4-CTs0DFmTPBKp2AG54KKsahYLGRvMREEmXAcaO5J3-troScyFc&s=kka76oM9oSmaI5aRPgFUBySSJx3Hcyu6qv5ia6bYnlpZzHMEOF_K7Ba-BKNNtoanmVnTqNtFMKcIsFwcDLKA_mbRYawLILnplYng8j6ASYTD0JaiDybxql_6k4pYwFKYclWvLD4EYI_U5l3hD-0BKody6rV-8p9wg9RQGb1oGqViPiRXmJ4QwTuMwdq-KHgf6SJHJYB9Oc2rMpA_tzakyxr5tGoF4xl78JR5dkp2ucNvUQDw3YFpTLiPEjCr_TKUN45onBEKtDjsex6KhjCg7t6sUnuxGZb_akB65ueU3G7lEMNvps9lNMdGLWpMAJJgniWwSd6tMhYeBTsxUFPh_A&h=nUoo9czcGVVxplpnKnL4uww0-6f-OoThh71G9P1YEuA",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvMmMxZDBiNjktMjI1YS00M2I1LTgyMjAtNmExMzllZjkyZTIzL3Byb3ZpZGVycy9NaWNyb3NvZnQuRG9jdW1lbnREQi9sb2NhdGlvbnMvZWFzdHVzL29wZXJhdGlvbnNTdGF0dXMvZWRmNDM3ZTgtMGFmMy00MmVjLThjYTgtNGU3YmE2OWM5ZGJlP2FwaS12ZXJzaW9uPTIwMjMtMDktMTUtcHJldmlldyZ0PTYzODMxOTkyMTM3MzMwODE1MiZjPU1JSUhIakNDQmdhZ0F3SUJBZ0lUZndIUG9LV0ZVaThCWmhtNzF3QUVBYy1ncFRBTkJna3Foa2lHOXcwQkFRc0ZBREJFTVJNd0VRWUtDWkltaVpQeUxHUUJHUllEUjBKTU1STXdFUVlLQ1pJbWlaUHlMR1FCR1JZRFFVMUZNUmd3RmdZRFZRUURFdzlCVFVVZ1NXNW1jbUVnUTBFZ01ESXdIaGNOTWpNd09EQXlNVFV4TXpBM1doY05NalF3TnpJM01UVXhNekEzV2pCQU1UNHdQQVlEVlFRREV6VmhjM2x1WTI5d1pYSmhkR2x2Ym5OcFoyNXBibWRqWlhKMGFXWnBZMkYwWlM1dFlXNWhaMlZ0Wlc1MExtRjZkWEpsTG1OdmJUQ0NBU0l3RFFZSktvWklodmNOQVFFQkJRQURnZ0VQQURDQ0FRb0NnZ0VCQUx1MWZaWlRfbmZLUnJ4TDZhdzJKTElnT1pLWGVLUGdhME1RMEViQnVBWlFrdFN5M2o1NExEa2JrU1Jxa3NPRTJBWXlwMTlHV1FBR0wwbGpKd3hGQlJwX25GbzhqbGpJeTIyanktc2F0VlM3b0p0bnpIMVRxdFlGYXlzRUZBaVlIdXFfcWUwVk15eE5Ccklrd2Y2MHlDcjJCUkJPS1hWRnFmelZ4M1d1cC1Rcl9rRHdwcGFzRGJCZ1lYd0U0aUg5Q0NjcWc1SXNnQnoySWZ2VVNpUnRsSEI2MjJ3bzkwUEdQWHV6LWRqQXdkam1VTktPZXIwNVZvSFh2alN4M1YyX2Y5Vm5YYzRUMU9yU1kzV2RXU3Z6Q0poN0hnZmc4U2RBWWx2Smd6VldNNjR1QjlWS2xvb3JHWHozWFdHUEp0cFF4Z053cHVITENyQUJQTzRmd09BdUlUVUNBd0VBQWFPQ0JBc3dnZ1FITUNjR0NTc0dBUVFCZ2pjVkNnUWFNQmd3Q2dZSUt3WUJCUVVIQXdFd0NnWUlLd1lCQlFVSEF3SXdQUVlKS3dZQkJBR0NOeFVIQkRBd0xnWW1Ld1lCQkFHQ054VUlocERqRFlUVnRIaUU4WXMtaFp2ZEZzNmRFb0ZnZ3ZYMks0UHkwU0FDQVdRQ0FRb3dnZ0hhQmdnckJnRUZCUWNCQVFTQ0Fjd3dnZ0hJTUdZR0NDc0dBUVVGQnpBQ2hscG9kSFJ3T2k4dlkzSnNMbTFwWTNKdmMyOW1kQzVqYjIwdmNHdHBhVzVtY21FdlEyVnlkSE12UWt3eVVFdEpTVTVVUTBFd01TNUJUVVV1UjBKTVgwRk5SU1V5TUVsdVpuSmhKVEl3UTBFbE1qQXdNaWcwS1M1amNuUXdWZ1lJS3dZQkJRVUhNQUtHU21oMGRIQTZMeTlqY213eExtRnRaUzVuWW13dllXbGhMMEpNTWxCTFNVbE9WRU5CTURFdVFVMUZMa2RDVEY5QlRVVWxNakJKYm1aeVlTVXlNRU5CSlRJd01ESW9OQ2t1WTNKME1GWUdDQ3NHQVFVRkJ6QUNoa3BvZEhSd09pOHZZM0pzTWk1aGJXVXVaMkpzTDJGcFlTOUNUREpRUzBsSlRsUkRRVEF4TGtGTlJTNUhRa3hmUVUxRkpUSXdTVzVtY21FbE1qQkRRU1V5TURBeUtEUXBMbU55ZERCV0JnZ3JCZ0VGQlFjd0FvWkthSFIwY0RvdkwyTnliRE11WVcxbExtZGliQzloYVdFdlFrd3lVRXRKU1U1VVEwRXdNUzVCVFVVdVIwSk1YMEZOUlNVeU1FbHVabkpoSlRJd1EwRWxNakF3TWlnMEtTNWpjblF3VmdZSUt3WUJCUVVITUFLR1NtaDBkSEE2THk5amNtdzBMbUZ0WlM1blltd3ZZV2xoTDBKTU1sQkxTVWxPVkVOQk1ERXVRVTFGTGtkQ1RGOUJUVVVsTWpCSmJtWnlZU1V5TUVOQkpUSXdNRElvTkNrdVkzSjBNQjBHQTFVZERnUVdCQlF5RVlHWHdSWWN2WnAwcVhnajRGV0pzNlRSSXpBT0JnTlZIUThCQWY4RUJBTUNCYUF3Z2dFMUJnTlZIUjhFZ2dFc01JSUJLRENDQVNTZ2dnRWdvSUlCSElaQ2FIUjBjRG92TDJOeWJDNXRhV055YjNOdlpuUXVZMjl0TDNCcmFXbHVabkpoTDBOU1RDOUJUVVVsTWpCSmJtWnlZU1V5TUVOQkpUSXdNRElvTkNrdVkzSnNoalJvZEhSd09pOHZZM0pzTVM1aGJXVXVaMkpzTDJOeWJDOUJUVVVsTWpCSmJtWnlZU1V5TUVOQkpUSXdNRElvTkNrdVkzSnNoalJvZEhSd09pOHZZM0pzTWk1aGJXVXVaMkpzTDJOeWJDOUJUVVVsTWpCSmJtWnlZU1V5TUVOQkpUSXdNRElvTkNrdVkzSnNoalJvZEhSd09pOHZZM0pzTXk1aGJXVXVaMkpzTDJOeWJDOUJUVVVsTWpCSmJtWnlZU1V5TUVOQkpUSXdNRElvTkNrdVkzSnNoalJvZEhSd09pOHZZM0pzTkM1aGJXVXVaMkpzTDJOeWJDOUJUVVVsTWpCSmJtWnlZU1V5TUVOQkpUSXdNRElvTkNrdVkzSnNNQmNHQTFVZElBUVFNQTR3REFZS0t3WUJCQUdDTjNzQkFUQWZCZ05WSFNNRUdEQVdnQlN1ZWNKclhTV0lFd2IyQnduRGwzeDdsNDhkVlRBZEJnTlZIU1VFRmpBVUJnZ3JCZ0VGQlFjREFRWUlLd1lCQlFVSEF3SXdEUVlKS29aSWh2Y05BUUVMQlFBRGdnRUJBRktkTFRzOHhuOTdObTd6eDZRY3MyQ1ZpUlRMNkluYWw2U0ExUUN3X3FMOXlEQW5EVy1XUUNQUi1yRVVUUHk3QkwyV3FDdkNVblFrV19hZXc4ekZmaVVFZHdRTmttQXNzQVJHU3BldWZXYnlwajQ1YU5KWWsxSTFHekZTM2tPQjRweWVuMGdPdi0yZFN0VnRHdmZSUFlvU19pSENNX0ZlMkNKYVdpdmY1RHUweUVMYzNLZEdvdmFSMFZSYlJqelBZTHIxVVlWWDVDdnZqb0RCa3ZvT0VTYzFmSWlzOXpQQ0d6dnM3Y2hKMzZNcVU4a2NrTWNJVXRjc3VDYVRaUzF0UnV6ZkhMN3A3RkhMaVRsbjRDUFhDWDhtUlFwN2ZDVUpHUnlkNC1DVHMwREZtVFBCS3AyQUc1NEtLc2FoWUxHUnZNUkVFbVhBY2FPNUozLXRyb1NjeUZjJnM9a2thNzZvTTlvU21hSTVhUlBnRlVCeVNTSngzSGN5dTZxdjVpYTZiWW5scFp6SE1FT0ZfSzdCYS1CS05OdG9hbm1WblRxTnRGTUtjSXNGd2NETEtBX21iUllhd0xJTG5wbFluZzhqNkFTWVREMEphaUR5YnhxbF82azRwWXdGS1ljbFd2TEQ0RVlJX1U1bDNoRC0wQktvZHk2clYtOHA5d2c5UlFHYjFvR3FWaVBpUlhtSjRRd1R1TXdkcS1LSGdmNlNKSEpZQjlPYzJyTXBBX3R6YWt5eHI1dEdvRjR4bDc4SlI1ZGtwMnVjTnZVUUR3M1lGcFRMaVBFakNyX1RLVU40NW9uQkVLdERqc2V4NktoakNnN3Q2c1VudXhHWmJfYWtCNjV1ZVUzRzdsRU1OdnBzOWxOTWRHTFdwTUFKSmduaVd3U2Q2dE1oWWVCVHN4VUZQaF9BJmg9blVvbzljemNHVlZ4cGxwbktuTDR1d3cwLTZmLU9vVGhoNzFHOVAxWUV1QQ==",
       "RequestMethod": "GET",
       "RequestHeaders": {
         "x-ms-client-request-id": [
-          "ab7efc04-2b99-4693-a411-6f5223c95602"
+          "b83dc03a-3618-450d-abc8-bba82eec79b3"
         ],
         "User-Agent": [
           "FxVersion/4.700.22.55902",
@@ -1098,22 +1098,82 @@
           "Microsoft-HTTPAPI/2.0"
         ],
         "x-ms-ratelimit-remaining-subscription-reads": [
-          "11958"
+          "11981"
         ],
         "x-ms-request-id": [
-          "c7002341-77f0-4ce3-b11f-4e1a58e42efb"
+          "91c60ba9-176d-463e-8bea-fb98766698ba"
         ],
         "x-ms-correlation-request-id": [
-          "c7002341-77f0-4ce3-b11f-4e1a58e42efb"
+          "91c60ba9-176d-463e-8bea-fb98766698ba"
         ],
         "x-ms-routing-request-id": [
-          "EASTUS:20230720T123215Z:c7002341-77f0-4ce3-b11f-4e1a58e42efb"
+          "CENTRALINDIA:20231004T045739Z:91c60ba9-176d-463e-8bea-fb98766698ba"
         ],
         "X-Content-Type-Options": [
           "nosniff"
         ],
         "Date": [
-          "Thu, 20 Jul 2023 12:32:14 GMT"
+          "Wed, 04 Oct 2023 04:57:39 GMT"
+        ],
+        "Content-Length": [
+          "21"
+        ],
+        "Content-Type": [
+          "application/json"
+        ]
+      },
+      "ResponseBody": "{\r\n  \"status\": \"Dequeued\"\r\n}",
+      "StatusCode": 200
+    },
+    {
+      "RequestUri": "/subscriptions/2c1d0b69-225a-43b5-8220-6a139ef92e23/providers/Microsoft.DocumentDB/locations/eastus/operationsStatus/edf437e8-0af3-42ec-8ca8-4e7ba69c9dbe?api-version=2023-09-15-preview&t=638319921373308152&c=MIIHHjCCBgagAwIBAgITfwHPoKWFUi8BZhm71wAEAc-gpTANBgkqhkiG9w0BAQsFADBEMRMwEQYKCZImiZPyLGQBGRYDR0JMMRMwEQYKCZImiZPyLGQBGRYDQU1FMRgwFgYDVQQDEw9BTUUgSW5mcmEgQ0EgMDIwHhcNMjMwODAyMTUxMzA3WhcNMjQwNzI3MTUxMzA3WjBAMT4wPAYDVQQDEzVhc3luY29wZXJhdGlvbnNpZ25pbmdjZXJ0aWZpY2F0ZS5tYW5hZ2VtZW50LmF6dXJlLmNvbTCCASIwDQYJKoZIhvcNAQEBBQADggEPADCCAQoCggEBALu1fZZT_nfKRrxL6aw2JLIgOZKXeKPga0MQ0EbBuAZQktSy3j54LDkbkSRqksOE2AYyp19GWQAGL0ljJwxFBRp_nFo8jljIy22jy-satVS7oJtnzH1TqtYFaysEFAiYHuq_qe0VMyxNBrIkwf60yCr2BRBOKXVFqfzVx3Wup-Qr_kDwppasDbBgYXwE4iH9CCcqg5IsgBz2IfvUSiRtlHB622wo90PGPXuz-djAwdjmUNKOer05VoHXvjSx3V2_f9VnXc4T1OrSY3WdWSvzCJh7Hgfg8SdAYlvJgzVWM64uB9VKloorGXz3XWGPJtpQxgNwpuHLCrABPO4fwOAuITUCAwEAAaOCBAswggQHMCcGCSsGAQQBgjcVCgQaMBgwCgYIKwYBBQUHAwEwCgYIKwYBBQUHAwIwPQYJKwYBBAGCNxUHBDAwLgYmKwYBBAGCNxUIhpDjDYTVtHiE8Ys-hZvdFs6dEoFggvX2K4Py0SACAWQCAQowggHaBggrBgEFBQcBAQSCAcwwggHIMGYGCCsGAQUFBzAChlpodHRwOi8vY3JsLm1pY3Jvc29mdC5jb20vcGtpaW5mcmEvQ2VydHMvQkwyUEtJSU5UQ0EwMS5BTUUuR0JMX0FNRSUyMEluZnJhJTIwQ0ElMjAwMig0KS5jcnQwVgYIKwYBBQUHMAKGSmh0dHA6Ly9jcmwxLmFtZS5nYmwvYWlhL0JMMlBLSUlOVENBMDEuQU1FLkdCTF9BTUUlMjBJbmZyYSUyMENBJTIwMDIoNCkuY3J0MFYGCCsGAQUFBzAChkpodHRwOi8vY3JsMi5hbWUuZ2JsL2FpYS9CTDJQS0lJTlRDQTAxLkFNRS5HQkxfQU1FJTIwSW5mcmElMjBDQSUyMDAyKDQpLmNydDBWBggrBgEFBQcwAoZKaHR0cDovL2NybDMuYW1lLmdibC9haWEvQkwyUEtJSU5UQ0EwMS5BTUUuR0JMX0FNRSUyMEluZnJhJTIwQ0ElMjAwMig0KS5jcnQwVgYIKwYBBQUHMAKGSmh0dHA6Ly9jcmw0LmFtZS5nYmwvYWlhL0JMMlBLSUlOVENBMDEuQU1FLkdCTF9BTUUlMjBJbmZyYSUyMENBJTIwMDIoNCkuY3J0MB0GA1UdDgQWBBQyEYGXwRYcvZp0qXgj4FWJs6TRIzAOBgNVHQ8BAf8EBAMCBaAwggE1BgNVHR8EggEsMIIBKDCCASSgggEgoIIBHIZCaHR0cDovL2NybC5taWNyb3NvZnQuY29tL3BraWluZnJhL0NSTC9BTUUlMjBJbmZyYSUyMENBJTIwMDIoNCkuY3JshjRodHRwOi8vY3JsMS5hbWUuZ2JsL2NybC9BTUUlMjBJbmZyYSUyMENBJTIwMDIoNCkuY3JshjRodHRwOi8vY3JsMi5hbWUuZ2JsL2NybC9BTUUlMjBJbmZyYSUyMENBJTIwMDIoNCkuY3JshjRodHRwOi8vY3JsMy5hbWUuZ2JsL2NybC9BTUUlMjBJbmZyYSUyMENBJTIwMDIoNCkuY3JshjRodHRwOi8vY3JsNC5hbWUuZ2JsL2NybC9BTUUlMjBJbmZyYSUyMENBJTIwMDIoNCkuY3JsMBcGA1UdIAQQMA4wDAYKKwYBBAGCN3sBATAfBgNVHSMEGDAWgBSuecJrXSWIEwb2BwnDl3x7l48dVTAdBgNVHSUEFjAUBggrBgEFBQcDAQYIKwYBBQUHAwIwDQYJKoZIhvcNAQELBQADggEBAFKdLTs8xn97Nm7zx6Qcs2CViRTL6Inal6SA1QCw_qL9yDAnDW-WQCPR-rEUTPy7BL2WqCvCUnQkW_aew8zFfiUEdwQNkmAssARGSpeufWbypj45aNJYk1I1GzFS3kOB4pyen0gOv-2dStVtGvfRPYoS_iHCM_Fe2CJaWivf5Du0yELc3KdGovaR0VRbRjzPYLr1UYVX5CvvjoDBkvoOESc1fIis9zPCGzvs7chJ36MqU8kckMcIUtcsuCaTZS1tRuzfHL7p7FHLiTln4CPXCX8mRQp7fCUJGRyd4-CTs0DFmTPBKp2AG54KKsahYLGRvMREEmXAcaO5J3-troScyFc&s=kka76oM9oSmaI5aRPgFUBySSJx3Hcyu6qv5ia6bYnlpZzHMEOF_K7Ba-BKNNtoanmVnTqNtFMKcIsFwcDLKA_mbRYawLILnplYng8j6ASYTD0JaiDybxql_6k4pYwFKYclWvLD4EYI_U5l3hD-0BKody6rV-8p9wg9RQGb1oGqViPiRXmJ4QwTuMwdq-KHgf6SJHJYB9Oc2rMpA_tzakyxr5tGoF4xl78JR5dkp2ucNvUQDw3YFpTLiPEjCr_TKUN45onBEKtDjsex6KhjCg7t6sUnuxGZb_akB65ueU3G7lEMNvps9lNMdGLWpMAJJgniWwSd6tMhYeBTsxUFPh_A&h=nUoo9czcGVVxplpnKnL4uww0-6f-OoThh71G9P1YEuA",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvMmMxZDBiNjktMjI1YS00M2I1LTgyMjAtNmExMzllZjkyZTIzL3Byb3ZpZGVycy9NaWNyb3NvZnQuRG9jdW1lbnREQi9sb2NhdGlvbnMvZWFzdHVzL29wZXJhdGlvbnNTdGF0dXMvZWRmNDM3ZTgtMGFmMy00MmVjLThjYTgtNGU3YmE2OWM5ZGJlP2FwaS12ZXJzaW9uPTIwMjMtMDktMTUtcHJldmlldyZ0PTYzODMxOTkyMTM3MzMwODE1MiZjPU1JSUhIakNDQmdhZ0F3SUJBZ0lUZndIUG9LV0ZVaThCWmhtNzF3QUVBYy1ncFRBTkJna3Foa2lHOXcwQkFRc0ZBREJFTVJNd0VRWUtDWkltaVpQeUxHUUJHUllEUjBKTU1STXdFUVlLQ1pJbWlaUHlMR1FCR1JZRFFVMUZNUmd3RmdZRFZRUURFdzlCVFVVZ1NXNW1jbUVnUTBFZ01ESXdIaGNOTWpNd09EQXlNVFV4TXpBM1doY05NalF3TnpJM01UVXhNekEzV2pCQU1UNHdQQVlEVlFRREV6VmhjM2x1WTI5d1pYSmhkR2x2Ym5OcFoyNXBibWRqWlhKMGFXWnBZMkYwWlM1dFlXNWhaMlZ0Wlc1MExtRjZkWEpsTG1OdmJUQ0NBU0l3RFFZSktvWklodmNOQVFFQkJRQURnZ0VQQURDQ0FRb0NnZ0VCQUx1MWZaWlRfbmZLUnJ4TDZhdzJKTElnT1pLWGVLUGdhME1RMEViQnVBWlFrdFN5M2o1NExEa2JrU1Jxa3NPRTJBWXlwMTlHV1FBR0wwbGpKd3hGQlJwX25GbzhqbGpJeTIyanktc2F0VlM3b0p0bnpIMVRxdFlGYXlzRUZBaVlIdXFfcWUwVk15eE5Ccklrd2Y2MHlDcjJCUkJPS1hWRnFmelZ4M1d1cC1Rcl9rRHdwcGFzRGJCZ1lYd0U0aUg5Q0NjcWc1SXNnQnoySWZ2VVNpUnRsSEI2MjJ3bzkwUEdQWHV6LWRqQXdkam1VTktPZXIwNVZvSFh2alN4M1YyX2Y5Vm5YYzRUMU9yU1kzV2RXU3Z6Q0poN0hnZmc4U2RBWWx2Smd6VldNNjR1QjlWS2xvb3JHWHozWFdHUEp0cFF4Z053cHVITENyQUJQTzRmd09BdUlUVUNBd0VBQWFPQ0JBc3dnZ1FITUNjR0NTc0dBUVFCZ2pjVkNnUWFNQmd3Q2dZSUt3WUJCUVVIQXdFd0NnWUlLd1lCQlFVSEF3SXdQUVlKS3dZQkJBR0NOeFVIQkRBd0xnWW1Ld1lCQkFHQ054VUlocERqRFlUVnRIaUU4WXMtaFp2ZEZzNmRFb0ZnZ3ZYMks0UHkwU0FDQVdRQ0FRb3dnZ0hhQmdnckJnRUZCUWNCQVFTQ0Fjd3dnZ0hJTUdZR0NDc0dBUVVGQnpBQ2hscG9kSFJ3T2k4dlkzSnNMbTFwWTNKdmMyOW1kQzVqYjIwdmNHdHBhVzVtY21FdlEyVnlkSE12UWt3eVVFdEpTVTVVUTBFd01TNUJUVVV1UjBKTVgwRk5SU1V5TUVsdVpuSmhKVEl3UTBFbE1qQXdNaWcwS1M1amNuUXdWZ1lJS3dZQkJRVUhNQUtHU21oMGRIQTZMeTlqY213eExtRnRaUzVuWW13dllXbGhMMEpNTWxCTFNVbE9WRU5CTURFdVFVMUZMa2RDVEY5QlRVVWxNakJKYm1aeVlTVXlNRU5CSlRJd01ESW9OQ2t1WTNKME1GWUdDQ3NHQVFVRkJ6QUNoa3BvZEhSd09pOHZZM0pzTWk1aGJXVXVaMkpzTDJGcFlTOUNUREpRUzBsSlRsUkRRVEF4TGtGTlJTNUhRa3hmUVUxRkpUSXdTVzVtY21FbE1qQkRRU1V5TURBeUtEUXBMbU55ZERCV0JnZ3JCZ0VGQlFjd0FvWkthSFIwY0RvdkwyTnliRE11WVcxbExtZGliQzloYVdFdlFrd3lVRXRKU1U1VVEwRXdNUzVCVFVVdVIwSk1YMEZOUlNVeU1FbHVabkpoSlRJd1EwRWxNakF3TWlnMEtTNWpjblF3VmdZSUt3WUJCUVVITUFLR1NtaDBkSEE2THk5amNtdzBMbUZ0WlM1blltd3ZZV2xoTDBKTU1sQkxTVWxPVkVOQk1ERXVRVTFGTGtkQ1RGOUJUVVVsTWpCSmJtWnlZU1V5TUVOQkpUSXdNRElvTkNrdVkzSjBNQjBHQTFVZERnUVdCQlF5RVlHWHdSWWN2WnAwcVhnajRGV0pzNlRSSXpBT0JnTlZIUThCQWY4RUJBTUNCYUF3Z2dFMUJnTlZIUjhFZ2dFc01JSUJLRENDQVNTZ2dnRWdvSUlCSElaQ2FIUjBjRG92TDJOeWJDNXRhV055YjNOdlpuUXVZMjl0TDNCcmFXbHVabkpoTDBOU1RDOUJUVVVsTWpCSmJtWnlZU1V5TUVOQkpUSXdNRElvTkNrdVkzSnNoalJvZEhSd09pOHZZM0pzTVM1aGJXVXVaMkpzTDJOeWJDOUJUVVVsTWpCSmJtWnlZU1V5TUVOQkpUSXdNRElvTkNrdVkzSnNoalJvZEhSd09pOHZZM0pzTWk1aGJXVXVaMkpzTDJOeWJDOUJUVVVsTWpCSmJtWnlZU1V5TUVOQkpUSXdNRElvTkNrdVkzSnNoalJvZEhSd09pOHZZM0pzTXk1aGJXVXVaMkpzTDJOeWJDOUJUVVVsTWpCSmJtWnlZU1V5TUVOQkpUSXdNRElvTkNrdVkzSnNoalJvZEhSd09pOHZZM0pzTkM1aGJXVXVaMkpzTDJOeWJDOUJUVVVsTWpCSmJtWnlZU1V5TUVOQkpUSXdNRElvTkNrdVkzSnNNQmNHQTFVZElBUVFNQTR3REFZS0t3WUJCQUdDTjNzQkFUQWZCZ05WSFNNRUdEQVdnQlN1ZWNKclhTV0lFd2IyQnduRGwzeDdsNDhkVlRBZEJnTlZIU1VFRmpBVUJnZ3JCZ0VGQlFjREFRWUlLd1lCQlFVSEF3SXdEUVlKS29aSWh2Y05BUUVMQlFBRGdnRUJBRktkTFRzOHhuOTdObTd6eDZRY3MyQ1ZpUlRMNkluYWw2U0ExUUN3X3FMOXlEQW5EVy1XUUNQUi1yRVVUUHk3QkwyV3FDdkNVblFrV19hZXc4ekZmaVVFZHdRTmttQXNzQVJHU3BldWZXYnlwajQ1YU5KWWsxSTFHekZTM2tPQjRweWVuMGdPdi0yZFN0VnRHdmZSUFlvU19pSENNX0ZlMkNKYVdpdmY1RHUweUVMYzNLZEdvdmFSMFZSYlJqelBZTHIxVVlWWDVDdnZqb0RCa3ZvT0VTYzFmSWlzOXpQQ0d6dnM3Y2hKMzZNcVU4a2NrTWNJVXRjc3VDYVRaUzF0UnV6ZkhMN3A3RkhMaVRsbjRDUFhDWDhtUlFwN2ZDVUpHUnlkNC1DVHMwREZtVFBCS3AyQUc1NEtLc2FoWUxHUnZNUkVFbVhBY2FPNUozLXRyb1NjeUZjJnM9a2thNzZvTTlvU21hSTVhUlBnRlVCeVNTSngzSGN5dTZxdjVpYTZiWW5scFp6SE1FT0ZfSzdCYS1CS05OdG9hbm1WblRxTnRGTUtjSXNGd2NETEtBX21iUllhd0xJTG5wbFluZzhqNkFTWVREMEphaUR5YnhxbF82azRwWXdGS1ljbFd2TEQ0RVlJX1U1bDNoRC0wQktvZHk2clYtOHA5d2c5UlFHYjFvR3FWaVBpUlhtSjRRd1R1TXdkcS1LSGdmNlNKSEpZQjlPYzJyTXBBX3R6YWt5eHI1dEdvRjR4bDc4SlI1ZGtwMnVjTnZVUUR3M1lGcFRMaVBFakNyX1RLVU40NW9uQkVLdERqc2V4NktoakNnN3Q2c1VudXhHWmJfYWtCNjV1ZVUzRzdsRU1OdnBzOWxOTWRHTFdwTUFKSmduaVd3U2Q2dE1oWWVCVHN4VUZQaF9BJmg9blVvbzljemNHVlZ4cGxwbktuTDR1d3cwLTZmLU9vVGhoNzFHOVAxWUV1QQ==",
+      "RequestMethod": "GET",
+      "RequestHeaders": {
+        "x-ms-client-request-id": [
+          "b83dc03a-3618-450d-abc8-bba82eec79b3"
+        ],
+        "User-Agent": [
+          "FxVersion/4.700.22.55902",
+          "OSName/Windows",
+          "OSVersion/Microsoft.Windows.10.0.22621",
+          "Microsoft.Azure.Management.CosmosDB.CosmosDBManagementClient/2.0.5"
+        ]
+      },
+      "RequestBody": "",
+      "ResponseHeaders": {
+        "Cache-Control": [
+          "no-store, no-cache"
+        ],
+        "Pragma": [
+          "no-cache"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
+        ],
+        "x-ms-gatewayversion": [
+          "version=2.14.0"
+        ],
+        "Server": [
+          "Microsoft-HTTPAPI/2.0"
+        ],
+        "x-ms-ratelimit-remaining-subscription-reads": [
+          "11980"
+        ],
+        "x-ms-request-id": [
+          "57bc8339-cf7b-4b96-ad6d-5acfe26927eb"
+        ],
+        "x-ms-correlation-request-id": [
+          "57bc8339-cf7b-4b96-ad6d-5acfe26927eb"
+        ],
+        "x-ms-routing-request-id": [
+          "CENTRALINDIA:20231004T045809Z:57bc8339-cf7b-4b96-ad6d-5acfe26927eb"
+        ],
+        "X-Content-Type-Options": [
+          "nosniff"
+        ],
+        "Date": [
+          "Wed, 04 Oct 2023 04:58:09 GMT"
         ],
         "Content-Length": [
           "22"
@@ -1128,6 +1188,6 @@
   ],
   "Names": {},
   "Variables": {
-    "SubscriptionId": "12053b8f-cab5-4f5c-9c1a-870580142abd"
+    "SubscriptionId": "2c1d0b69-225a-43b5-8220-6a139ef92e23"
   }
 }

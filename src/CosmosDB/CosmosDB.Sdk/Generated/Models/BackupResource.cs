@@ -16,7 +16,7 @@ namespace Microsoft.Azure.Management.CosmosDB.Models
     /// <summary>
     /// A restorable backup of a Cassandra cluster.
     /// </summary>
-    public partial class BackupResource : ARMProxyResource
+    public partial class BackupResource
     {
         /// <summary>
         /// Initializes a new instance of the BackupResource class.
@@ -29,14 +29,23 @@ namespace Microsoft.Azure.Management.CosmosDB.Models
         /// <summary>
         /// Initializes a new instance of the BackupResource class.
         /// </summary>
-        /// <param name="id">The unique resource identifier of the database
-        /// account.</param>
-        /// <param name="name">The name of the database account.</param>
-        /// <param name="type">The type of Azure resource.</param>
-        public BackupResource(string id = default(string), string name = default(string), string type = default(string), BackupResourceProperties properties = default(BackupResourceProperties))
-            : base(id, name, type)
+        /// <param name="backupId">The unique identifier of backup.</param>
+        /// <param name="backupState">The current state of the backup. Possible
+        /// values include: 'Initiated', 'InProgress', 'Succeeded',
+        /// 'Failed'</param>
+        /// <param name="backupStartTimestamp">The time at which the backup
+        /// process begins.</param>
+        /// <param name="backupStopTimestamp">The time at which the backup
+        /// process ends.</param>
+        /// <param name="backupExpiryTimestamp">The time at which the backup
+        /// will expire.</param>
+        public BackupResource(string backupId = default(string), string backupState = default(string), System.DateTime? backupStartTimestamp = default(System.DateTime?), System.DateTime? backupStopTimestamp = default(System.DateTime?), System.DateTime? backupExpiryTimestamp = default(System.DateTime?))
         {
-            Properties = properties;
+            BackupId = backupId;
+            BackupState = backupState;
+            BackupStartTimestamp = backupStartTimestamp;
+            BackupStopTimestamp = backupStopTimestamp;
+            BackupExpiryTimestamp = backupExpiryTimestamp;
             CustomInit();
         }
 
@@ -46,9 +55,35 @@ namespace Microsoft.Azure.Management.CosmosDB.Models
         partial void CustomInit();
 
         /// <summary>
+        /// Gets or sets the unique identifier of backup.
         /// </summary>
-        [JsonProperty(PropertyName = "properties")]
-        public BackupResourceProperties Properties { get; set; }
+        [JsonProperty(PropertyName = "backupId")]
+        public string BackupId { get; set; }
+
+        /// <summary>
+        /// Gets or sets the current state of the backup. Possible values
+        /// include: 'Initiated', 'InProgress', 'Succeeded', 'Failed'
+        /// </summary>
+        [JsonProperty(PropertyName = "backupState")]
+        public string BackupState { get; set; }
+
+        /// <summary>
+        /// Gets or sets the time at which the backup process begins.
+        /// </summary>
+        [JsonProperty(PropertyName = "backupStartTimestamp")]
+        public System.DateTime? BackupStartTimestamp { get; set; }
+
+        /// <summary>
+        /// Gets or sets the time at which the backup process ends.
+        /// </summary>
+        [JsonProperty(PropertyName = "backupStopTimestamp")]
+        public System.DateTime? BackupStopTimestamp { get; set; }
+
+        /// <summary>
+        /// Gets or sets the time at which the backup will expire.
+        /// </summary>
+        [JsonProperty(PropertyName = "backupExpiryTimestamp")]
+        public System.DateTime? BackupExpiryTimestamp { get; set; }
 
     }
 }

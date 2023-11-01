@@ -458,8 +458,8 @@ function Test-SqlInAccountRestoreOperationsCmdlets
 
 function Test-SqlInAccountRestoreOperationsSharedResourcesCmdlets
 {
-  $AccountName = "dbaccount60-3"
-  $rgName = "CosmosDBResourceGroup62"
+  $AccountName = "dbaccount60-4"
+  $rgName = "CosmosDBResourceGroup63"
   $DatabaseName = "sqldbName"
   $ContainerName = "container1"
   $location = "West US"
@@ -962,8 +962,8 @@ Test SQL migrate throughput cmdlets
 #>
 function Test-SqlMigrateThroughputCmdlets
 {
-  $AccountName = "dbaccount62-1"
-  $rgName = "CosmosDBResourceGroup62"
+  $AccountName = "dbaccount62-2"
+  $rgName = "CosmosDBResourceGroup66"
   $DatabaseName = "dbName4"
   $ContainerName = "containerName"
   $location = "East US"
