@@ -14,8 +14,4 @@
     <PackageReference Include="Microsoft.Azure.Management.PowerBIEmbedded" Version="1.1.1-preview" />
   </ItemGroup>
 
-  <ItemGroup>
-    <Folder Include="SessionRecords\" />
-  </ItemGroup>
-
 </Project>
