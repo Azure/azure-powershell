@@ -1,5 +1,5 @@
 ---
-external help file: Microsoft.Azure.PowerShell.Cmdlets.Monitor.dll-Help.xml
+external help file: Az.DataCollectionRule.psm1-help.xml
 Module Name: Az.Monitor
 online version: https://learn.microsoft.com/powershell/module/az.monitor/get-azdatacollectionruleassociation
 schema: 2.0.0
@@ -8,143 +8,186 @@ schema: 2.0.0
 # Get-AzDataCollectionRuleAssociation
 
 ## SYNOPSIS
-Gets data collection rule association(s).
+Returns the specified association.
 
 ## SYNTAX
 
-### ByAssociatedResource (Default)
+### List (Default)
 ```
-Get-AzDataCollectionRuleAssociation -TargetResourceId <String> [-DefaultProfile <IAzureContextContainer>]
+Get-AzDataCollectionRuleAssociation -ResourceUri <String> [-DefaultProfile <PSObject>] [<CommonParameters>]
+```
+
+### Get
+```
+Get-AzDataCollectionRuleAssociation -AssociationName <String> -ResourceUri <String>
+ [-DefaultProfile <PSObject>] [<CommonParameters>]
+```
+
+### GetViaIdentity
+```
+Get-AzDataCollectionRuleAssociation -InputObject <IDataCollectionRuleIdentity> [-DefaultProfile <PSObject>]
  [<CommonParameters>]
 ```
 
-### ByName
+### List1
 ```
-Get-AzDataCollectionRuleAssociation -TargetResourceId <String> -AssociationName <String>
- [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
-```
-
-### ByRule
-```
-Get-AzDataCollectionRuleAssociation -ResourceGroupName <String> -RuleName <String>
- [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
+Get-AzDataCollectionRuleAssociation -DataCollectionRuleName <String> -ResourceGroupName <String>
+ [-SubscriptionId <String[]>] [-DefaultProfile <PSObject>] [<CommonParameters>]
 ```
 
-### ByInputObject
+### List2
 ```
-Get-AzDataCollectionRuleAssociation -InputObject <PSDataCollectionRuleResource>
- [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
+Get-AzDataCollectionRuleAssociation -ResourceGroupName <String> [-SubscriptionId <String[]>]
+ -DataCollectionEndpointName <String> [-DefaultProfile <PSObject>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-The **Get-AzDataCollectionRuleAssociation** cmdlet gets one or more data collection rules associations (DCRA).
-
-To apply a DCR to a virtual machine, you create an association for the virtual machine. A virtual machine may have an association to multiple DCRs, and a DCR may have multiple virtual machines associated to it. This allows you to define a set of DCRs, each matching a particular requirement, and apply them to only the virtual machines where they apply. Here is the ["Configure data collection for the Azure Monitor agent"](https://learn.microsoft.com/azure/azure-monitor/platform/data-collection-rule-azure-monitor-agent) using DCRA article.
+Returns the specified association.
 
 ## EXAMPLES
 
-### Example 1: Get data collection rules associations by target resource ID (associated virtual machine)
+### Example 1: List data collection rule associations with specified resource URI
 ```powershell
-$vm = Get-AzVM -ResourceGroupName $rg -Name $vmName
-Get-AzDataCollectionRuleAssociation -TargetResourceId $vm.Id
+Get-AzDataCollectionRuleAssociation -ResourceUri /subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourcegroups/amcs-test/providers/microsoft.compute/virtualmachines/monitortestvm01
 ```
 
 ```output
-Description          :
-DataCollectionRuleId : /subscriptions/{subId}/resourceGroups/{rg}/providers/Microsoft.I
-                       nsights/dataCollectionRules/{dcrName}
-ProvisioningState    :
-Etag                 : "{etag}"
-Id                   : /subscriptions/{subId}/resourceGroups/{rg}/providers/Microsoft.C
-                       ompute/virtualMachines/{vmName}/providers/Microsoft.Insights/dataCollectionRuleAssociations/{assocName}
-Name                 : {assocName}
-Type                 : Microsoft.Insights/dataCollectionRuleAssociations
+Etag                                   Name                           ResourceGroupName
+----                                   ----                           -----------------
+"d500d29e-0000-0100-0000-650d68490000" myCollectionRule1-association  amcs-test
+"20017ecf-0000-0100-0000-651147350000" myCollectionRule2-association1 amcs-test
 ```
 
-This command lists all the data collection rules for the given target resource ID (virtual machine).
+This command gets list of specific data collection rule associations with specified resource URI.
 
-### Example 2: Get data collection rules associations by rule (DCR)
+### Example 2: Get specific data collection rule association with specified resource URI and association name
 ```powershell
-Get-AzDataCollectionRuleAssociation -ResourceGroupName $rg -RuleName $dcrName
+Get-AzDataCollectionRuleAssociation -ResourceUri /subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourcegroups/amcs-test/providers/microsoft.compute/virtualmachines/monitortestvm01 -AssociationName myCollectionRule2-association1
 ```
 
 ```output
-Description          :
-DataCollectionRuleId : /subscriptions/{subId}/resourceGroups/{rg}/providers/Microsoft.I
-                       nsights/dataCollectionRules/{dcrName}
-ProvisioningState    :
-Etag                 : "{etag}"
-Id                   : /subscriptions/{subId}/resourceGroups/{rg}/providers/Microsoft.C
-                       ompute/virtualMachines/{vmName}/providers/Microsoft.Insights/dataCollectionRuleAssociations/{assocName}
-Name                 : {assocName}
-Type                 : Microsoft.Insights/dataCollectionRuleAssociations
+DataCollectionEndpointId        : 
+DataCollectionRuleId            : /subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/AMCS-TEST/providers/Microsoft.Insights/dataCollectionRules/myCollectionRule2
+Description                     : 
+Etag                            : "20017ecf-0000-0100-0000-651147350000"
+Id                              : /subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/amcs-test/providers/microsoft.compute/virtualmachines/monitortestvm01/providers/Microsof 
+                                  t.Insights/dataCollectionRuleAssociations/myCollectionRule2-association1
+MetadataProvisionedBy           : 
+MetadataProvisionedByResourceId : 
+Name                            : myCollectionRule2-association1
+ProvisioningState               : 
+ResourceGroupName               : amcs-test
+SystemDataCreatedAt             : 9/25/2023 8:39:15 AM
+SystemDataCreatedBy             : v-jiaji@microsoft.com
+SystemDataCreatedByType         : User
+SystemDataLastModifiedAt        : 9/25/2023 8:39:15 AM
+SystemDataLastModifiedBy        : v-jiaji@microsoft.com
+SystemDataLastModifiedByType    : User
+Type                            : Microsoft.Insights/dataCollectionRuleAssociations
 ```
 
-This command lists data collection rules associations for the given resource group and rule (DCR).
+This command gets specific data collection rule association with specified resource URI.
 
-### Example 3: Get data collection rule associations by input object (PSDataCollectionRuleResource)
+### Example 3: Get specific data collection rule association with specified resource group
 ```powershell
-$dcr = Get-AzDataCollectionRule -ResourceGroupName $rg -RuleName $dcrName
-$dcr | Get-AzDataCollectionRuleAssociation
+Get-AzDataCollectionRuleAssociation -DataCollectionRuleName myCollectionRule1 -ResourceGroupName AMCS-Test
 ```
 
 ```output
-Description          :
-DataCollectionRuleId : /subscriptions/{subId}/resourceGroups/{rg}/providers/Microsoft.I
-                       nsights/dataCollectionRules/{dcrName}
-ProvisioningState    :
-Etag                 : "{etag}"
-Id                   : /subscriptions/{subId}/resourceGroups/{rg}/providers/Microsoft.C
-                       ompute/virtualMachines/{vmName}/providers/Microsoft.Insights/dataCollectionRuleAssociations/{assocName}
-Name                 : {assocName}
-Type                 : Microsoft.Insights/dataCollectionRuleAssociations
+DataCollectionEndpointId        : 
+DataCollectionRuleId            : /subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourcegroups/amcs-test/providers/microsoft.insights/datacollectionrules/mycollectionrule1
+Description                     : 
+Etag                            : 
+Id                              : /subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourcegroups/amcs-test/providers/microsoft.compute/virtualmachines/monitortestvm01/providers/microsof 
+                                  t.insights/datacollectionruleassociations/mycollectionrule1-association
+MetadataProvisionedBy           : 
+MetadataProvisionedByResourceId : 
+Name                            : mycollectionrule1-association
+ProvisioningState               : 
+ResourceGroupName               : amcs-test
+SystemDataCreatedAt             : 
+SystemDataCreatedBy             : 
+SystemDataCreatedByType         : 
+SystemDataLastModifiedAt        : 
+SystemDataLastModifiedBy        : 
+SystemDataLastModifiedByType    : 
+Type                            : Microsoft.Insights/dataCollectionRuleAssociations
 ```
 
-This command lists data collection rules associations for the given input object.
+This command gets list of data collection rule association with specified data collection rule.
 
-### Example 4: Get a data collection rule association by target resource ID (associated virtual machine) and association name
+### Example 4: List data collection endpoint associations with specified data collection endpoint
 ```powershell
-Get-AzDataCollectionRuleAssociation -TargetResourceId $vm.Id -AssociationName $assocName
+Get-AzDataCollectionRuleAssociation -DataCollectionEndpointName myCollectionEndpoint -ResourceGroupName AMCS-Test
 ```
 
 ```output
-Description          :
-DataCollectionRuleId : /subscriptions/{subId}/resourceGroups/{rg}/providers/Microsoft.I
-                       nsights/dataCollectionRules/{dcrName}
-ProvisioningState    :
-Etag                 : "{etag}"
-Id                   : /subscriptions/{subId}/resourceGroups/{rg}/providers/Microsoft.C
-                       ompute/virtualMachines/{vmName}/providers/Microsoft.Insights/dataCollectionRuleAssociations/{assocName}
-Name                 : {assocName}
-Type                 : Microsoft.Insights/dataCollectionRuleAssociations
+Etag                                   Name                        ResourceGroupName
+----                                   ----                        -----------------
+"21017484-0000-0100-0000-6511505c0000" configurationAccessEndpoint amcs-test
+"210182a5-0000-0100-0000-6511520c0000" configurationAccessEndpoint azsecpack-rg
 ```
 
-This command lists one (a list with a single element) data collection rule association.
+This command gets list of specific data collection rule associations with specified data collection endpoint.
 
 ## PARAMETERS
 
 ### -AssociationName
 The name of the association.
+The name is case insensitive.
 
 ```yaml
 Type: System.String
-Parameter Sets: ByName
+Parameter Sets: Get
 Aliases: Name
 
 Required: True
 Position: Named
 Default value: None
-Accept pipeline input: True (ByPropertyName)
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -DataCollectionEndpointName
+The name of the data collection endpoint.
+The name is case insensitive.
+
+```yaml
+Type: System.String
+Parameter Sets: List2
+Aliases: EndpointName
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -DataCollectionRuleName
+The name of the data collection rule.
+The name is case insensitive.
+
+```yaml
+Type: System.String
+Parameter Sets: List1
+Aliases: RuleName
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
 ### -DefaultProfile
-The credentials, account, tenant, and subscription used for communication with azure
+The DefaultProfile parameter is not functional.
+Use the SubscriptionId parameter when available if executing the cmdlet against a different subscription.
 
 ```yaml
-Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer
+Type: System.Management.Automation.PSObject
 Parameter Sets: (All)
-Aliases: AzContext, AzureRmContext, AzureCredential
+Aliases: AzureRMContext, AzureCredential
 
 Required: False
 Position: Named
@@ -154,11 +197,12 @@ Accept wildcard characters: False
 ```
 
 ### -InputObject
-PSDataCollectionRuleResource Object
+Identity Parameter
+To construct, see NOTES section for INPUTOBJECT properties and create a hash table.
 
 ```yaml
-Type: Microsoft.Azure.Commands.Insights.OutputClasses.PSDataCollectionRuleResource
-Parameter Sets: ByInputObject
+Type: Microsoft.Azure.PowerShell.Cmdlets.Monitor.DataCollection.Models.IDataCollectionRuleIdentity
+Parameter Sets: GetViaIdentity
 Aliases:
 
 Required: True
@@ -169,27 +213,13 @@ Accept wildcard characters: False
 ```
 
 ### -ResourceGroupName
-The resource group name
+The name of the resource group.
+The name is case insensitive.
 
 ```yaml
 Type: System.String
-Parameter Sets: ByRule
+Parameter Sets: List1, List2
 Aliases:
-
-Required: True
-Position: Named
-Default value: None
-Accept pipeline input: True (ByPropertyName)
-Accept wildcard characters: False
-```
-
-### -RuleName
-The data collection rule name
-
-```yaml
-Type: System.String
-Parameter Sets: ByRule
-Aliases: DataCollectionRuleName
 
 Required: True
 Position: Named
@@ -198,17 +228,32 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -TargetResourceId
-The associated resource ID
+### -ResourceUri
+The identifier of the resource.
 
 ```yaml
 Type: System.String
-Parameter Sets: ByAssociatedResource, ByName
-Aliases: ResourceUri
+Parameter Sets: List, Get
+Aliases: TargetResourceId
 
 Required: True
 Position: Named
 Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -SubscriptionId
+The ID of the target subscription.
+
+```yaml
+Type: System.String[]
+Parameter Sets: List1, List2
+Aliases:
+
+Required: False
+Position: Named
+Default value: (Get-AzContext).Subscription.Id
 Accept pipeline input: False
 Accept wildcard characters: False
 ```
@@ -218,16 +263,12 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
-### System.String
-### Microsoft.Azure.Commands.Insights.OutputClasses.PSDataCollectionRuleResource
+### Microsoft.Azure.PowerShell.Cmdlets.Monitor.DataCollection.Models.IDataCollectionRuleIdentity
 
 ## OUTPUTS
 
-### Microsoft.Azure.Commands.Insights.OutputClasses.PSDataCollectionRuleAssociationProxyOnlyResource
+### Microsoft.Azure.PowerShell.Cmdlets.Monitor.DataCollection.Models.IDataCollectionRuleAssociationProxyOnlyResource
 
 ## NOTES
 
 ## RELATED LINKS
-
-[Remove-AzDataCollectionRuleAssociation](./Remove-AzDataCollectionRuleAssociation.md)
-[New-AzDataCollectionRuleAssociation](./New-AzDataCollectionRuleAssociation.md)

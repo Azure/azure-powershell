@@ -520,7 +520,7 @@ To create the parameters described below, construct a hash table containing the 
 
 
 ACCESSPOLICYOBJECTID <IFhirServiceAccessPolicyEntry[]>: Fhir Service access policies.
-  - `ObjectId <String>`: An Azure AD object ID (User or Apps) that is allowed access to the FHIR service.
+  - `ObjectId <String>`: a Microsoft Entra object ID (User or Apps) that is allowed access to the FHIR service.
 
 ACRCONFIGURATIONOCIARTIFACT <IServiceOciArtifactEntry[]>: The list of Open Container Initiative (OCI) artifacts.
   - `[Digest <String>]`: The artifact digest.
@@ -528,4 +528,3 @@ ACRCONFIGURATIONOCIARTIFACT <IServiceOciArtifactEntry[]>: The list of Open Conta
   - `[LoginServer <String>]`: The Azure Container Registry login server.
 
 ## RELATED LINKS
-

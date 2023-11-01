@@ -452,16 +452,16 @@ To create the parameters described below, construct a hash table containing the 
   - `[AppleLoginScope <String[]>]`: A list of the scopes that should be requested while authenticating.
   - `[AppleRegistrationClientId <String>]`: The Client ID of the app used for login.
   - `[AppleRegistrationClientSecretSettingName <String>]`: The app setting name that contains the client secret.
-  - `[AzureActiveDirectoryEnabled <Boolean?>]`: <code>false</code> if the Azure Active Directory provider should not be enabled despite the set registration; otherwise, <code>true</code>.
-  - `[AzureActiveDirectoryIsAutoProvisioned <Boolean?>]`: Gets a value indicating whether the Azure AD configuration was auto-provisioned using 1st party tooling.         This is an internal flag primarily intended to support the Azure Management Portal. Users should not         read or write to this property.
-  - `[AzureActiveDirectoryRegistrationClientId <String>]`: The Client ID of this relying party application, known as the client_id.         This setting is required for enabling OpenID Connection authentication with Azure Active Directory or         other 3rd party OpenID Connect providers.         More information on OpenID Connect: http://openid.net/specs/openid-connect-core-1_0.html
+  - `[AzureActiveDirectoryEnabled <Boolean?>]`: <code>false</code> if the Microsoft Entra provider should not be enabled despite the set registration; otherwise, <code>true</code>.
+  - `[AzureActiveDirectoryIsAutoProvisioned <Boolean?>]`: Gets a value indicating whether the Microsoft Entra configuration was auto-provisioned using 1st party tooling.         This is an internal flag primarily intended to support the Azure Management Portal. Users should not         read or write to this property.
+  - `[AzureActiveDirectoryRegistrationClientId <String>]`: The Client ID of this relying party application, known as the client_id.         This setting is required for enabling OpenID Connect authentication with Microsoft Entra ID or         other 3rd party OpenID Connect providers.         More information on OpenID Connect: http://openid.net/specs/openid-connect-core-1_0.html
   - `[AzureActiveDirectoryRegistrationClientSecretSettingName <String>]`: The app setting name that contains the client secret of the relying party application.
   - `[AzureActiveDirectoryValidationAllowedAudience <String[]>]`: The list of audiences that can make successful authentication/authorization requests.
   - `[AzureStaticWebAppEnabled <Boolean?>]`: <code>false</code> if the Azure Static Web Apps provider should not be enabled despite the set registration; otherwise, <code>true</code>.
   - `[AzureStaticWebAppsRegistrationClientId <String>]`: The Client ID of the app used for login.
-  - `[CustomOpenIdConnectProvider <IIdentityProvidersCustomOpenIdConnectProviders>]`: The map of the name of the alias of each custom Open ID Connect provider to the         configuration settings of the custom Open ID Connect provider.
+  - `[CustomOpenIdConnectProvider <IIdentityProvidersCustomOpenIdConnectProviders>]`: The map of the name of the alias of each custom OpenID Connect provider to the         configuration settings of the custom OpenID Connect provider.
     - `[(Any) <ICustomOpenIdConnectProvider>]`: This indicates any property can be added to this object.
-  - `[DefaultAuthorizationPolicyAllowedApplication <String[]>]`: The configuration settings of the Azure Active Directory allowed applications.
+  - `[DefaultAuthorizationPolicyAllowedApplication <String[]>]`: The configuration settings of the Microsoft Entra ID allowed applications.
   - `[FacebookEnabled <Boolean?>]`: <code>false</code> if the Facebook provider should not be enabled despite the set registration; otherwise, <code>true</code>.
   - `[FacebookGraphApiVersion <String>]`: The version of the Facebook api to be used while logging in.
   - `[FacebookLoginScope <String[]>]`: A list of the scopes that should be requested while authenticating.
@@ -485,8 +485,7 @@ To create the parameters described below, construct a hash table containing the 
   - `[RegistrationClientSecretCertificateThumbprint <String>]`: An alternative to the client secret, that is the thumbprint of a certificate used for signing purposes. This property acts as         a replacement for the Client Secret. It is also optional.
   - `[RegistrationConsumerKey <String>]`: The OAuth 1.0a consumer key of the Twitter application used for sign-in.         This setting is required for enabling Twitter Sign-In.         Twitter Sign-In documentation: https://dev.twitter.com/web/sign-in
   - `[RegistrationConsumerSecretSettingName <String>]`: The app setting name that contains the OAuth 1.0a consumer secret of the Twitter         application used for sign-in.
-  - `[RegistrationOpenIdIssuer <String>]`: The OpenID Connect Issuer URI that represents the entity which issues access tokens for this application.         When using Azure Active Directory, this value is the URI of the directory tenant, e.g. `https://login.microsoftonline.com/v2.0/{tenant-guid}/`.         This URI is a case-sensitive identifier for the token issuer.         More information on OpenID Connect Discovery: http://openid.net/specs/openid-connect-discovery-1_0.html
+  - `[RegistrationOpenIdIssuer <String>]`: The OpenID Connect Issuer URI that represents the entity which issues access tokens for this application.         When using Microsoft Entra ID, this value is the URI of the directory tenant, e.g. `https://login.microsoftonline.com/v2.0/{tenant-guid}/`.         This URI is a case-sensitive identifier for the token issuer.         More information on OpenID Connect Discovery: http://openid.net/specs/openid-connect-discovery-1_0.html
   - `[TwitterEnabled <Boolean?>]`: <code>false</code> if the Twitter provider should not be enabled despite the set registration; otherwise, <code>true</code>.
 
 ## RELATED LINKS
-

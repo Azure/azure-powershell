@@ -8,7 +8,7 @@ schema: 2.0.0
 # Set-AzSynapseSqlActiveDirectoryAdministrator
 
 ## SYNOPSIS
-Provisions an Azure AD administrator for Synapse Analytics SQL pool.
+Provisions a Microsoft Entra administrator for Synapse Analytics SQL pool.
 
 ## SYNTAX
 
@@ -50,16 +50,16 @@ Set-AzSynapseSqlActiveDirectoryAdministrator -ResourceId <String> -ObjectId <Gui
 ```
 
 ## DESCRIPTION
-The **Set-AzSynapseSqlActiveDirectoryAdministrator** cmdlet provisions an Azure Active Directory (Azure AD) administrator for Azure Synapse Analytics Workspace in the current subscription.
+The **Set-AzSynapseSqlActiveDirectoryAdministrator** cmdlet provisions a Microsoft Entra administrator for Azure Synapse Analytics Workspace in the current subscription.
 You can provision only one administrator at a time.
-The following members of Azure AD can be provisioned as a Synapse Analytics Workspace administrator:
-- Native members of Azure AD 
-- Federated members of Azure AD 
+The following members of Microsoft Entra ID can be provisioned as a Synapse Analytics Workspace administrator:
+- Native members of Microsoft Entra ID 
+- Federated members of Microsoft Entra ID 
 - Imported members from other Azure ADs who are native or federated members 
-- Azure AD groups created as security groups
+- Microsoft Entra groups created as security groups
 Microsoft accounts, such as those in the Outlook.com, Hotmail.com, or Live.com domains, are not supported as administrators.
 Other guest accounts, such as those in the Gmail.com or Yahoo.com domains, are not supported as administrators.
-We recommend that you provision a dedicated Azure AD group as an administrator.
+We recommend that you provision a dedicated Microsoft Entra group as an administrator.
 
 The cmdlet may call below Microsoft Graph API according to input parameters:
 
@@ -74,14 +74,14 @@ The cmdlet may call below Microsoft Graph API according to input parameters:
 Set-AzSynapseSqlActiveDirectoryAdministrator -WorkspaceName ContosoWorkspace -DisplayName "DBAs"
 ```
 
-This command provisions an Azure AD administrator group named DBAs for the workspace named ContosoWorkspace.
+This command provisions a Microsoft Entra administrator group named DBAs for the workspace named ContosoWorkspace.
 
 ### Example 2
 ```powershell
 Set-AzSynapseSqlActiveDirectoryAdministrator -WorkspaceName ContosoWorkspace -ObjectId "40b79501-b343-44ed-9ce7-da4c8cc7353b"
 ```
 
-This command provisions an Azure AD administrator by objectId for the workspace named ContosoWorkspace.
+This command provisions a Microsoft Entra administrator by objectId for the workspace named ContosoWorkspace.
 
 ## PARAMETERS
 
@@ -147,7 +147,7 @@ Accept wildcard characters: False
 ```
 
 ### -ObjectId
-Specifies the object ID of the user or group in Azure Active Directory for which to grant permissions.
+Specifies the object ID of the user or group in Microsoft Entra ID for which to grant permissions.
 
 ```yaml
 Type: System.Guid

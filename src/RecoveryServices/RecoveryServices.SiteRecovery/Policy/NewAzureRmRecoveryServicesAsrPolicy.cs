@@ -512,7 +512,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery
                     RecoveryPointHistory =
                         this.RecoveryPointRetentionInHours * 60, // Convert from hours to minutes.
                     RecoveryPointThresholdInMinutes = this.RPOWarningThresholdInMinutes,
-                    MultiVmSyncStatus = this.MultiVmSyncStatus,
+                    MultiVMSyncStatus = this.MultiVmSyncStatus,
                     CrashConsistentFrequencyInMinutes = crashConsistentFrequencyInMinutes
                 };
             }
@@ -526,7 +526,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery
                     RecoveryPointHistory =
                         this.RecoveryPointRetentionInHours * 60, // Convert from hours to minutes.
                     RecoveryPointThresholdInMinutes = this.RPOWarningThresholdInMinutes,
-                    MultiVmSyncStatus = this.MultiVmSyncStatus
+                    MultiVMSyncStatus = this.MultiVmSyncStatus
                 };
             }
 
@@ -554,7 +554,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery
             {
                 AppConsistentFrequencyInMinutes = this.ApplicationConsistentSnapshotFrequencyInHours * 60,
                 CrashConsistentFrequencyInMinutes = crashConsistentFrequencyInMinutes,
-                MultiVmSyncStatus = this.MultiVmSyncStatus,
+                MultiVMSyncStatus = this.MultiVmSyncStatus,
                 RecoveryPointHistory = this.RecoveryPointRetentionInHours * 60
             };
 
@@ -614,7 +614,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery
                         CrashConsistentFrequencyInMinutes = crashConsistentFrequencyInMinutes,
                         AppConsistentFrequencyInMinutes =
                             this.ApplicationConsistentSnapshotFrequencyInHours * 60,
-                        EnableMultiVmSync = this.MultiVmSyncStatus.Equals(Constants.Enable) ?
+                        EnableMultiVMSync = this.MultiVmSyncStatus.Equals(Constants.Enable) ?
                             Constants.True :
                             Constants.False
                     }

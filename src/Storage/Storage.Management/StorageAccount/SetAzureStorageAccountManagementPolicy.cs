@@ -178,7 +178,7 @@ namespace Microsoft.Azure.Commands.Management.Storage
                         managementPolicy = this.StorageClient.ManagementPolicies.CreateOrUpdate(
                             this.ResourceGroupName,
                             this.StorageAccountName,
-                            new ManagementPolicySchema(
+                            policy: new ManagementPolicySchema(
                                 //this.version,
                                 PSManagementPolicyRule.ParseManagementPolicyRules(this.Rule)));
                         break;
@@ -188,7 +188,7 @@ namespace Microsoft.Azure.Commands.Management.Storage
                         managementPolicy = this.StorageClient.ManagementPolicies.CreateOrUpdate(
                             this.ResourceGroupName,
                             this.StorageAccountName,
-                            new ManagementPolicySchema(
+                            policy: new ManagementPolicySchema(
                                 //this.Policy.Version,
                                 PSManagementPolicyRule.ParseManagementPolicyRules(this.Policy.Rules)));
                         break;

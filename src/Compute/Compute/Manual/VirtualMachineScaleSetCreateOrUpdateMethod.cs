@@ -34,7 +34,6 @@ using Microsoft.Azure.Management.Compute;
 
 namespace Microsoft.Azure.Commands.Compute.Automation
 {
-    [GenericBreakingChangeWithVersion("Consider using the image alias including the version of the distribution you want to use in the \"-ImageName\" parameter of the \"New-AzVmss\" cmdlet. On April 30, 2023, the image deployed using `UbuntuLTS` will reach its end of life. In November 2023, the aliases `UbuntuLTS`, `CentOS`, `Debian`, and `RHEL` will be removed.", "11.0.0", "7.0.0")]
     public partial class NewAzureRmVmss : ComputeAutomationBaseCmdlet
     {
         private const string flexibleOrchestrationMode = "Flexible", uniformOrchestrationMode = "Uniform";
@@ -44,24 +43,20 @@ namespace Microsoft.Azure.Commands.Compute.Automation
             Mandatory = false,
             HelpMessage = "The name of the image for VMs in this Scale Set. If no value is provided, the 'Windows Server 2016 DataCenter' image will be used.")]
         [PSArgumentCompleter(
-            "CentOS",
-            "CentOS85Gen2",
-            "Debian",
-            "Debian11",
-            "OpenSuseLeap154Gen2",
-            "RHEL",
-            "RHELRaw8LVMGen2",
-            "SuseSles15SP3",
-            "UbuntuLTS",
-            "Ubuntu2204",
-            "FlatcarLinuxFreeGen2",
-            "Win2022AzureEditionCore",
-            "Win2019Datacenter",
-            "Win2016Datacenter",
-            "Win2012R2Datacenter",
-            "Win2012Datacenter",
-            "Win10",
-            "Win2016DataCenterGenSecond")]
+            "CentOS85Gen2", 
+            "Debian11", 
+            "OpenSuseLeap154Gen2", 
+            "RHELRaw8LVMGen2", 
+            "SuseSles15SP3", 
+            "Ubuntu2204", 
+            "FlatcarLinuxFreeGen2", 
+            "Win2022Datacenter", 
+            "Win2022AzureEditionCore", 
+            "Win2019Datacenter", 
+            "Win2016Datacenter", 
+            "Win2012R2Datacenter", 
+            "Win2012Datacenter", 
+            "Win2008R2SP1")]
         [Alias("Image")]
         public string ImageName { get; set; } = "Win2016Datacenter";
 
@@ -299,14 +294,6 @@ namespace Microsoft.Azure.Commands.Compute.Automation
 
             private async Task<ResourceConfig<VirtualMachineScaleSet>> SimpleParameterSetNormalMode()
             {
-                // Temporary message until after the Ignite 2023 release that should remove these outdated image aliases. 
-                if ((_cmdlet.ImageName == "CentOS" || _cmdlet.ImageName == "Debian" || _cmdlet.ImageName == "RHEL"
-                     || _cmdlet.ImageName == "UbuntuLTS"))
-                {
-                    string ImageOutdatedMessage = "You are using the image " + _cmdlet.ImageName + ", which is outdated and this image name will be removed in October 2023. Please update to a newer versioned image alias as seen here, [Find and use Azure Marketplace VM images with Azure PowerShell](https://learn.microsoft.com/en-us/azure/virtual-machines/windows/cli-ps-findimage#default-images).";
-                    _cmdlet.WriteInformation(ImageOutdatedMessage, new string[] { "PSHOST" });
-                }
-
                 ImageAndOsType = await _client.UpdateImageAndOsTypeAsync(
                         ImageAndOsType, _cmdlet.ResourceGroupName, _cmdlet.ImageName, Location);
                

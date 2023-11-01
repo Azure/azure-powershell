@@ -48,11 +48,14 @@ get predictive autoscale metric future data
 ### [Get-AzAutoscaleSetting](Get-AzAutoscaleSetting.md)
 Gets an autoscale setting
 
+### [Get-AzDataCollectionEndpoint](Get-AzDataCollectionEndpoint.md)
+Returns the specified data collection endpoint.
+
 ### [Get-AzDataCollectionRule](Get-AzDataCollectionRule.md)
-Gets data collection rule(s).
+Returns the specified data collection rule.
 
 ### [Get-AzDataCollectionRuleAssociation](Get-AzDataCollectionRuleAssociation.md)
-Gets data collection rule association(s).
+Returns the specified association.
 
 ### [Get-AzDiagnosticSetting](Get-AzDiagnosticSetting.md)
 Gets the active diagnostic settings for the specified resource.
@@ -130,11 +133,17 @@ Creates or updates an autoscale setting.
 ### [New-AzAutoscaleWebhookNotificationObject](New-AzAutoscaleWebhookNotificationObject.md)
 Create an in-memory object for WebhookNotification.
 
+### [New-AzDataCollectionEndpoint](New-AzDataCollectionEndpoint.md)
+Create a data collection endpoint.
+
 ### [New-AzDataCollectionRule](New-AzDataCollectionRule.md)
 Create a data collection rule.
 
 ### [New-AzDataCollectionRuleAssociation](New-AzDataCollectionRuleAssociation.md)
-Create data collection rule association.
+Create an association.
+
+### [New-AzDataFlowObject](New-AzDataFlowObject.md)
+Create an in-memory object for DataFlow.
 
 ### [New-AzDiagnosticSetting](New-AzDiagnosticSetting.md)
 Creates or updates diagnostic settings for the specified resource.
@@ -148,11 +157,29 @@ Create an in-memory object for MetricSettings.
 ### [New-AzDiagnosticSettingSubscriptionLogSettingsObject](New-AzDiagnosticSettingSubscriptionLogSettingsObject.md)
 Create an in-memory object for SubscriptionLogSettings.
 
+### [New-AzEventHubDestinationObject](New-AzEventHubDestinationObject.md)
+Create an in-memory object for EventHubDestination.
+
+### [New-AzEventHubDirectDestinationObject](New-AzEventHubDirectDestinationObject.md)
+Create an in-memory object for EventHubDirectDestination.
+
+### [New-AzExtensionDataSourceObject](New-AzExtensionDataSourceObject.md)
+Create an in-memory object for ExtensionDataSource.
+
+### [New-AzIisLogsDataSourceObject](New-AzIisLogsDataSourceObject.md)
+Create an in-memory object for IisLogsDataSource.
+
 ### [New-AzInsightsPrivateLinkScope](New-AzInsightsPrivateLinkScope.md)
 create private link scope
 
 ### [New-AzInsightsPrivateLinkScopedResource](New-AzInsightsPrivateLinkScopedResource.md)
 create for private link scoped resource
+
+### [New-AzLogAnalyticsDestinationObject](New-AzLogAnalyticsDestinationObject.md)
+Create an in-memory object for LogAnalyticsDestination.
+
+### [New-AzLogFilesDataSourceObject](New-AzLogFilesDataSourceObject.md)
+Create an in-memory object for LogFilesDataSource.
 
 ### [New-AzMetricAlertRuleV2Criteria](New-AzMetricAlertRuleV2Criteria.md)
 Creates a local criteria object that can be used to create a new metric alert
@@ -163,8 +190,20 @@ Creates a local dimension selection object that can be used to construct a metri
 ### [New-AzMetricFilter](New-AzMetricFilter.md)
 Creates a metric dimension filter that can be used to query metrics.
 
+### [New-AzMonitoringAccountDestinationObject](New-AzMonitoringAccountDestinationObject.md)
+Create an in-memory object for MonitoringAccountDestination.
+
 ### [New-AzMonitorWorkspace](New-AzMonitorWorkspace.md)
 Create or update a workspace
+
+### [New-AzPerfCounterDataSourceObject](New-AzPerfCounterDataSourceObject.md)
+Create an in-memory object for PerfCounterDataSource.
+
+### [New-AzPlatformTelemetryDataSourceObject](New-AzPlatformTelemetryDataSourceObject.md)
+Create an in-memory object for PlatformTelemetryDataSource.
+
+### [New-AzPrometheusForwarderDataSourceObject](New-AzPrometheusForwarderDataSourceObject.md)
+Create an in-memory object for PrometheusForwarderDataSource.
 
 ### [New-AzScheduledQueryRule](New-AzScheduledQueryRule.md)
 Creates or updates a scheduled query rule.
@@ -175,8 +214,23 @@ Create an in-memory object for Condition.
 ### [New-AzScheduledQueryRuleDimensionObject](New-AzScheduledQueryRuleDimensionObject.md)
 Create an in-memory object for Dimension.
 
+### [New-AzStorageBlobDestinationObject](New-AzStorageBlobDestinationObject.md)
+Create an in-memory object for StorageBlobDestination.
+
+### [New-AzStorageTableDestinationObject](New-AzStorageTableDestinationObject.md)
+Create an in-memory object for StorageTableDestination.
+
 ### [New-AzSubscriptionDiagnosticSetting](New-AzSubscriptionDiagnosticSetting.md)
 Creates or updates subscription diagnostic settings for the specified resource.
+
+### [New-AzSyslogDataSourceObject](New-AzSyslogDataSourceObject.md)
+Create an in-memory object for SyslogDataSource.
+
+### [New-AzWindowsEventLogDataSourceObject](New-AzWindowsEventLogDataSourceObject.md)
+Create an in-memory object for WindowsEventLogDataSource.
+
+### [New-AzWindowsFirewallLogsDataSourceObject](New-AzWindowsFirewallLogsDataSourceObject.md)
+Create an in-memory object for WindowsFirewallLogsDataSource.
 
 ### [Remove-AzActionGroup](Remove-AzActionGroup.md)
 Removes an action group.
@@ -190,11 +244,14 @@ Removes an alert rule.
 ### [Remove-AzAutoscaleSetting](Remove-AzAutoscaleSetting.md)
 Deletes and autoscale setting
 
+### [Remove-AzDataCollectionEndpoint](Remove-AzDataCollectionEndpoint.md)
+Deletes a data collection endpoint.
+
 ### [Remove-AzDataCollectionRule](Remove-AzDataCollectionRule.md)
-Delete a data collection rule.
+Deletes a data collection rule.
 
 ### [Remove-AzDataCollectionRuleAssociation](Remove-AzDataCollectionRuleAssociation.md)
-Delete a data collection rule association.
+Deletes an association.
 
 ### [Remove-AzDiagnosticSetting](Remove-AzDiagnosticSetting.md)
 Deletes existing diagnostic settings for the specified resource.
@@ -223,9 +280,6 @@ Deletes existing subscription diagnostic settings for the specified resource.
 ### [Set-AzActionGroup](Set-AzActionGroup.md)
 Creates a new or updates an existing action group.
 
-### [Set-AzDataCollectionRule](Set-AzDataCollectionRule.md)
-Updates (full replacement) a data collection rule.
-
 ### [Test-AzActionGroup](Test-AzActionGroup.md)
 Sends test notifications
 
@@ -238,8 +292,14 @@ To update other fields use CreateOrUpdate operation.
 Updates an existing AutoscaleSettingsResource.
 To update other fields use the CreateOrUpdate method.
 
+### [Update-AzDataCollectionEndpoint](Update-AzDataCollectionEndpoint.md)
+Updates part of a data collection endpoint.
+
 ### [Update-AzDataCollectionRule](Update-AzDataCollectionRule.md)
-Updates a data collection rule tags property.
+Updates part of a data collection rule.
+
+### [Update-AzDataCollectionRuleAssociation](Update-AzDataCollectionRuleAssociation.md)
+Create an association.
 
 ### [Update-AzInsightsPrivateLinkScope](Update-AzInsightsPrivateLinkScope.md)
 Update for private link scope

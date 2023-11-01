@@ -1,4 +1,4 @@
-# Variable 'BotAccessToken', 'KeyVaultName' and 'ADOTokenName' was defined in the Variables tab
+# Variable 'KeyVaultName' and 'ADOTokenName' was defined in the Variables tab
 schedules:
 - cron: "50 15 * * *"
   displayName: 11:50 PM (UTC + 8:00) China Daily Run

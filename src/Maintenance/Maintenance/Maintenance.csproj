@@ -12,11 +12,14 @@
 
   <ItemGroup>
     <PackageReference Include="Microsoft.Azure.PowerShell.AutoMapper" Version="6.2.2" />
-    <PackageReference Include="Microsoft.Azure.Management.Maintenance" Version="1.6.0-preview" />
   </ItemGroup>
 
   <ItemGroup>
     <Folder Include="help\" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\Maintenance.Management.Sdk\Maintenance.Management.Sdk.csproj" />
   </ItemGroup>
 
   <Import Project="$([MSBuild]::GetDirectoryNameOfFileAbove($(MSBuildThisFileDirectory).., build.proj))\src\Az.Post.props" />

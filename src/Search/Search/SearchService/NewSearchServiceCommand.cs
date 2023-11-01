@@ -100,6 +100,11 @@ namespace Microsoft.Azure.Commands.Management.Search.SearchService
             HelpMessage = AadAuthFailureModeMessage)]
         public PSAadAuthFailureMode? AadAuthFailureMode { get; set; }
 
+        [Parameter(
+            Mandatory = false,
+            HelpMessage = SemanticSearchModeMessage)]
+        public PSSemanticSearchMode? SemanticSearchMode { get; set; }
+
         public override void ExecuteCmdlet()
         {
             var networkRuleSet = IPRuleList?.Any() == true ? new PSNetworkRuleSet
@@ -126,6 +131,12 @@ namespace Microsoft.Azure.Commands.Management.Search.SearchService
                 }
             }
 
+            string semanticSearchMode = null;
+            if (SemanticSearchMode.HasValue)
+            {
+                semanticSearchMode = SemanticSearchMode.ToString().ToLower();
+            }
+
             Azure.Management.Search.Models.SearchService searchService =
                 new Azure.Management.Search.Models.SearchService(
                     name: Name,
@@ -138,7 +149,8 @@ namespace Microsoft.Azure.Commands.Management.Search.SearchService
                     identity: (Identity)identity,
                     networkRuleSet: (NetworkRuleSet)networkRuleSet,
                     disableLocalAuth: DisableLocalAuth,
-                    authOptions: (DataPlaneAuthOptions)authOptions);
+                    authOptions: (DataPlaneAuthOptions)authOptions,
+                    semanticSearch: semanticSearchMode);
 
             if (ShouldProcess(Name, Resources.CreateSearchService))
             {
