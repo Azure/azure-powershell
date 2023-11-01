@@ -11,13 +11,13 @@ parameters:
   displayName: Build Installer
   type: boolean
   default: true
-pool:
-    name: $(AgentPool)
-    demands: npm
 jobs:
 - job: Build
   displayName: Build project
   timeoutInMinutes: 180
+  pool:
+    name: $(AgentPool)
+    demands: npm
   variables:
     LocalRepoName: 'LocalRepo'
   steps:
