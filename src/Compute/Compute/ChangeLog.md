@@ -23,6 +23,8 @@
 * Added update functionality in `Update-AzVmss` for parameters `SecurityType`, `EnableSecureBoot`, and `EnableVtpm` for the parameter set with the Put operation.
 * Upgraded Azure.Core to 1.35.0.
 * [Breaking change] Removed unversioned and outdated linux image aliases of `CentOS`, `RHEL`, `UbuntuLTS` and `Debian`.
+* [Breaking change] `New-AzVmss` will default to `OrchestrationMode` set as  `Flexible` if it is not set as `Uniform` explicitly.
+* `New-AzVmss` can now create VMSS with `OrchestrationMode` set to `Flexible` using `-SinglePlacementGroup` and `-UpgradePolicy`.
 
 ## Version 6.3.0
 * Added `-Hibernate` switch parameter to `Stop-AzVmss` default parameter set. 
