@@ -4,15 +4,20 @@ parameters:
   type: string
   default: 'none'
 - name: ChangedModule
-  displayName: Build Module List
+  displayName: Build Module List(Split by ':')
   type: string
   default: 'none'
-jobs:
-- job: Release
-  timeoutInMinutes: 180
-  pool:
+- name: BuildInstaller
+  displayName: Generate installer for this build
+  type: string
+  default: 'none'
+pool:
     name: $(AgentPool)
     demands: npm
+jobs:
+- job: Build
+  displayName: Build, publish project and sign
+  timeoutInMinutes: 180
   variables:
     LocalRepoName: 'LocalRepo'
   steps:
@@ -357,6 +362,13 @@ jobs:
       ArtifactName: artifacts
     condition: succeededOrFailed()
 
+- job: BuildInstaller
+  displayName: Build installer and sign
+  dependsOn: Build
+  timeoutInMinutes: 180
+  variables:
+    LocalRepoName: 'LocalRepo'
+  steps:
   - pwsh: |
       $Env:Path += ";$Env:WIX"+"bin"
       Register-PSRepository -Name MSIcreationrepository -SourceLocation $Env:RepoArtifacts -InstallationPolicy Trusted
