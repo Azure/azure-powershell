@@ -42,9 +42,6 @@ namespace Microsoft.Azure.Management.DataFactory.Models
         /// <param name="parameters">Parameters for linked service.</param>
         /// <param name="annotations">List of tags that can be used for
         /// describing the linked service.</param>
-        /// <param name="connectionProperties">Properties used to connect to
-        /// GoogleAds. It is mutually exclusive with any other properties in
-        /// the linked service. Type: object.</param>
         /// <param name="clientCustomerID">The Client customer ID of the
         /// AdWords account that you want to fetch report data for. Type:
         /// string (or Expression with resultType string).</param>
@@ -65,27 +62,28 @@ namespace Microsoft.Azure.Management.DataFactory.Models
         /// <param name="email">The service account email ID that is used for
         /// ServiceAuthentication and can only be used on self-hosted IR. Type:
         /// string (or Expression with resultType string).</param>
-        /// <param name="keyFilePath">The full path to the .p12 key file that
-        /// is used to authenticate the service account email address and can
-        /// only be used on self-hosted IR. Type: string (or Expression with
-        /// resultType string).</param>
-        /// <param name="trustedCertPath">The full path of the .pem file
-        /// containing trusted CA certificates for verifying the server when
-        /// connecting over SSL. This property can only be set when using SSL
-        /// on self-hosted IR. The default value is the cacerts.pem file
-        /// installed with the IR. Type: string (or Expression with resultType
+        /// <param name="privateKey">The private key that is used to
+        /// authenticate the service account email address and can only be used
+        /// on self-hosted IR.</param>
+        /// <param name="loginCustomerID">The customer ID of the Google Ads
+        /// Manager account through which you want to fetch report data of
+        /// specific Customer. Type: string (or Expression with resultType
         /// string).</param>
-        /// <param name="useSystemTrustStore">Specifies whether to use a CA
-        /// certificate from the system trust store or from a specified PEM
-        /// file. The default value is false. Type: boolean (or Expression with
-        /// resultType boolean).</param>
+        /// <param name="googleAdsApiVersion">The Google Ads API major version
+        /// such as v14. The supported major versions could be found on
+        /// https://developers.google.com/google-ads/api/docs/sunset-dates#timetable.
+        /// Type: string (or Expression with resultType string).</param>
+        /// <param name="supportLegacyDataTypes">Specifies whether to use the
+        /// legacy data type mappings, which maps float, int32 and int64 from
+        /// Google to string. Do not set this to true unless you want to keep
+        /// backward compatibility with legacy driver's data type mappings.
+        /// Type: boolean (or Expression with resultType boolean).</param>
         /// <param name="encryptedCredential">The encrypted credential used for
         /// authentication. Credentials are encrypted using the integration
         /// runtime credential manager. Type: string.</param>
-        public GoogleAdWordsLinkedService(IDictionary<string, object> additionalProperties = default(IDictionary<string, object>), IntegrationRuntimeReference connectVia = default(IntegrationRuntimeReference), string description = default(string), IDictionary<string, ParameterSpecification> parameters = default(IDictionary<string, ParameterSpecification>), IList<object> annotations = default(IList<object>), object connectionProperties = default(object), object clientCustomerID = default(object), SecretBase developerToken = default(SecretBase), string authenticationType = default(string), SecretBase refreshToken = default(SecretBase), object clientId = default(object), SecretBase clientSecret = default(SecretBase), object email = default(object), object keyFilePath = default(object), object trustedCertPath = default(object), object useSystemTrustStore = default(object), string encryptedCredential = default(string))
+        public GoogleAdWordsLinkedService(IDictionary<string, object> additionalProperties = default(IDictionary<string, object>), IntegrationRuntimeReference connectVia = default(IntegrationRuntimeReference), string description = default(string), IDictionary<string, ParameterSpecification> parameters = default(IDictionary<string, ParameterSpecification>), IList<object> annotations = default(IList<object>), object clientCustomerID = default(object), SecretBase developerToken = default(SecretBase), string authenticationType = default(string), SecretBase refreshToken = default(SecretBase), object clientId = default(object), SecretBase clientSecret = default(SecretBase), object email = default(object), SecretBase privateKey = default(SecretBase), object loginCustomerID = default(object), object googleAdsApiVersion = default(object), object supportLegacyDataTypes = default(object), string encryptedCredential = default(string))
             : base(additionalProperties, connectVia, description, parameters, annotations)
         {
-            ConnectionProperties = connectionProperties;
             ClientCustomerID = clientCustomerID;
             DeveloperToken = developerToken;
             AuthenticationType = authenticationType;
@@ -93,9 +91,10 @@ namespace Microsoft.Azure.Management.DataFactory.Models
             ClientId = clientId;
             ClientSecret = clientSecret;
             Email = email;
-            KeyFilePath = keyFilePath;
-            TrustedCertPath = trustedCertPath;
-            UseSystemTrustStore = useSystemTrustStore;
+            PrivateKey = privateKey;
+            LoginCustomerID = loginCustomerID;
+            GoogleAdsApiVersion = googleAdsApiVersion;
+            SupportLegacyDataTypes = supportLegacyDataTypes;
             EncryptedCredential = encryptedCredential;
             CustomInit();
         }
@@ -104,14 +103,6 @@ namespace Microsoft.Azure.Management.DataFactory.Models
         /// An initialization method that performs custom operations like setting defaults
         /// </summary>
         partial void CustomInit();
-
-        /// <summary>
-        /// Gets or sets properties used to connect to GoogleAds. It is
-        /// mutually exclusive with any other properties in the linked service.
-        /// Type: object.
-        /// </summary>
-        [JsonProperty(PropertyName = "typeProperties.connectionProperties")]
-        public object ConnectionProperties { get; set; }
 
         /// <summary>
         /// Gets or sets the Client customer ID of the AdWords account that you
@@ -168,31 +159,39 @@ namespace Microsoft.Azure.Management.DataFactory.Models
         public object Email { get; set; }
 
         /// <summary>
-        /// Gets or sets the full path to the .p12 key file that is used to
-        /// authenticate the service account email address and can only be used
-        /// on self-hosted IR. Type: string (or Expression with resultType
-        /// string).
+        /// Gets or sets the private key that is used to authenticate the
+        /// service account email address and can only be used on self-hosted
+        /// IR.
         /// </summary>
-        [JsonProperty(PropertyName = "typeProperties.keyFilePath")]
-        public object KeyFilePath { get; set; }
+        [JsonProperty(PropertyName = "typeProperties.privateKey")]
+        public SecretBase PrivateKey { get; set; }
 
         /// <summary>
-        /// Gets or sets the full path of the .pem file containing trusted CA
-        /// certificates for verifying the server when connecting over SSL.
-        /// This property can only be set when using SSL on self-hosted IR. The
-        /// default value is the cacerts.pem file installed with the IR. Type:
-        /// string (or Expression with resultType string).
+        /// Gets or sets the customer ID of the Google Ads Manager account
+        /// through which you want to fetch report data of specific Customer.
+        /// Type: string (or Expression with resultType string).
         /// </summary>
-        [JsonProperty(PropertyName = "typeProperties.trustedCertPath")]
-        public object TrustedCertPath { get; set; }
+        [JsonProperty(PropertyName = "typeProperties.loginCustomerID")]
+        public object LoginCustomerID { get; set; }
 
         /// <summary>
-        /// Gets or sets specifies whether to use a CA certificate from the
-        /// system trust store or from a specified PEM file. The default value
-        /// is false. Type: boolean (or Expression with resultType boolean).
+        /// Gets or sets the Google Ads API major version such as v14. The
+        /// supported major versions could be found on
+        /// https://developers.google.com/google-ads/api/docs/sunset-dates#timetable.
+        /// Type: string (or Expression with resultType string).
         /// </summary>
-        [JsonProperty(PropertyName = "typeProperties.useSystemTrustStore")]
-        public object UseSystemTrustStore { get; set; }
+        [JsonProperty(PropertyName = "typeProperties.googleAdsApiVersion")]
+        public object GoogleAdsApiVersion { get; set; }
+
+        /// <summary>
+        /// Gets or sets specifies whether to use the legacy data type
+        /// mappings, which maps float, int32 and int64 from Google to string.
+        /// Do not set this to true unless you want to keep backward
+        /// compatibility with legacy driver's data type mappings. Type:
+        /// boolean (or Expression with resultType boolean).
+        /// </summary>
+        [JsonProperty(PropertyName = "typeProperties.supportLegacyDataTypes")]
+        public object SupportLegacyDataTypes { get; set; }
 
         /// <summary>
         /// Gets or sets the encrypted credential used for authentication.

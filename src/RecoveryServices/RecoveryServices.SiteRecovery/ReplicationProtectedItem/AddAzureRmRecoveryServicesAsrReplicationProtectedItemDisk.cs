@@ -94,15 +94,15 @@ namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery
         {
             var providerSettings = new A2AAddDisksInput()
             {
-                VmDisks = new List<A2AVmDiskInputDetails>(),
-                VmManagedDisks = new List<A2AVmManagedDiskInputDetails>()
+                VMDisks = new List<A2AVmDiskInputDetails>(),
+                VMManagedDisks = new List<A2AVmManagedDiskInputDetails>()
             };
 
             foreach (ASRAzuretoAzureDiskReplicationConfig disk in this.AzureToAzureDiskReplicationConfiguration)
             {
                 if (disk.IsManagedDisk)
                 {
-                    providerSettings.VmManagedDisks.Add(new A2AVmManagedDiskInputDetails
+                    providerSettings.VMManagedDisks.Add(new A2AVmManagedDiskInputDetails
                     {
                         DiskId = disk.DiskId,
                         RecoveryResourceGroupId = disk.RecoveryResourceGroupId,
@@ -114,7 +114,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery
                 }
                 else
                 {
-                    providerSettings.VmDisks.Add(new A2AVmDiskInputDetails
+                    providerSettings.VMDisks.Add(new A2AVmDiskInputDetails
                     {
                         DiskUri = disk.VhdUri,
                         RecoveryAzureStorageAccountId = disk.RecoveryAzureStorageAccountId,
