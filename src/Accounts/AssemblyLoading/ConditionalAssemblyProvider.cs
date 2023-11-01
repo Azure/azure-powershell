@@ -43,7 +43,6 @@ namespace Microsoft.Azure.PowerShell.AssemblyLoading
                 // todo: consider moving the list to a standalone config file
                 #region AssemblyList
                 CreateAssembly("netcoreapp2.1", "Azure.Core", "1.35.0.0").WithPowerShellCore(),
-                //CreateAssembly("netcoreapp2.1", "Microsoft.Identity.Client", "4.56.0.0").WithPowerShellCore(),
 
                 CreateAssembly("netstandard2.0", "Azure.Identity", "1.10.3.0"),
                 CreateAssembly("netstandard2.0", "Azure.Identity.Broker", "1.0.0.0"),
@@ -51,7 +50,7 @@ namespace Microsoft.Azure.PowerShell.AssemblyLoading
                 CreateAssembly("netstandard2.0", "Microsoft.Identity.Client", "4.56.0.0"),
                 CreateAssembly("netstandard2.0", "Microsoft.Identity.Client.Extensions.Msal", "4.56.0.0"),
                 CreateAssembly("netstandard2.0", "Microsoft.Identity.Client.Broker", "4.56.0.0"),
-                CreateAssembly("netstandard2.0", "Microsoft.Identity.Client.NativeInterop", "0.13.3.0"),
+                CreateAssembly("netstandard2.0", "Microsoft.Identity.Client.NativeInterop", "0.13.8.0"),
                 CreateAssembly("netstandard2.0", "Microsoft.IdentityModel.Abstractions", "6.22.1.0"),
                 CreateAssembly("netstandard2.0", "System.Memory.Data", "1.0.2.0"),
                 CreateAssembly("netstandard2.0", "System.Text.Json", "4.0.1.2"),
@@ -66,14 +65,13 @@ namespace Microsoft.Azure.PowerShell.AssemblyLoading
                 CreateAssembly("netstandard2.0", "System.Threading.Tasks.Extensions", "4.2.0.1").WithWindowsPowerShell(),
 
                 CreateAssembly("netfx", "Azure.Core", "1.35.0.0").WithWindowsPowerShell(),
-                //CreateAssembly("netfx", "Microsoft.Identity.Client", "4.56.0.0").WithWindowsPowerShell(),
-                //CreateAssembly("netfx", "Microsoft.Identity.Client.Broker", "4.56.0.0").WithWindowsPowerShell(),
                 CreateAssembly("netfx", "Newtonsoft.Json", "13.0.0.0").WithWindowsPowerShell(),
                 CreateAssembly("netfx", "System.Diagnostics.DiagnosticSource", "6.0.0.1").WithWindowsPowerShell(),
                 CreateAssembly("netfx", "System.Numerics.Vectors", "4.1.4.0").WithWindowsPowerShell(),
                 CreateAssembly("netfx", "System.Reflection.DispatchProxy", "4.0.4.0").WithWindowsPowerShell(),
                 CreateAssembly("netfx", "System.Runtime.CompilerServices.Unsafe", "6.0.0.0").WithWindowsPowerShell(),
                 CreateAssembly("netfx", "System.Security.Cryptography.Cng", "4.3.0.0").WithWindowsPowerShell(),
+                CreateAssembly("netfx", "System.Security.Cryptography.ProtectedData", "4.5.0.0").WithWindowsPowerShell(),
                 CreateAssembly("netfx", "System.Text.Encodings.Web", "4.0.5.1").WithWindowsPowerShell(),
                 CreateAssembly("netfx", "System.Xml.ReaderWriter", "4.1.0.0").WithWindowsPowerShell(),
                 #endregion
