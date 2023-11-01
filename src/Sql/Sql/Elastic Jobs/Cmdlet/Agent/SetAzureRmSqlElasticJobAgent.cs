@@ -21,6 +21,7 @@ using Microsoft.Azure.Management.Internal.Resources.Utilities.Models;
 using System.Collections.Generic;
 using System.Linq;
 using Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters;
+using Microsoft.Azure.Commands.Sql.Common;
 
 namespace Microsoft.Azure.Commands.Sql.ElasticJobs.Cmdlet
 {
@@ -187,9 +188,10 @@ namespace Microsoft.Azure.Commands.Sql.ElasticJobs.Cmdlet
                 AgentName = model.FirstOrDefault().AgentName,
                 DatabaseName = model.FirstOrDefault().DatabaseName, // Note: control database cannot be updated
                 Location = model.FirstOrDefault().Location,
-                Tags = TagsConversionHelper.ReadOrFetchTags(this, model.First().Tags),
+                Tags = this.Tag != null ? TagsConversionHelper.CreateTagDictionary(this.Tag, validate: true) : model.First().Tags,
                 WorkerCount = this.WorkerCount,
-                SkuName = this.SkuName
+                SkuName = this.SkuName,
+                Identity = JobAgentIdentityHelper.GetJobAgentIdentity(this.IdentityType, this.UserAssignedIdentityId),
             };
 
             return new List<AzureSqlElasticJobAgentModel> { newEntity };
@@ -202,9 +204,7 @@ namespace Microsoft.Azure.Commands.Sql.ElasticJobs.Cmdlet
         /// <returns>The created agent</returns>
         protected override IEnumerable<AzureSqlElasticJobAgentModel> PersistChanges(IEnumerable<AzureSqlElasticJobAgentModel> entity)
         {
-            // Note: We are currently using Update / PATCH.
-            // We will need to update this to UpsertAgent when we expose worker count when we GA. (TODO-JP: why?)
-            return new List<AzureSqlElasticJobAgentModel> { ModelAdapter.UpdateAgent(entity.First()) };
+            return new List<AzureSqlElasticJobAgentModel> { ModelAdapter.UpsertAgent(entity.First()) };
         }
     }
 }

@@ -13,6 +13,7 @@
 // ----------------------------------------------------------------------------------
 
 using System.Collections.Generic;
+using Microsoft.Azure.Management.Sql.Models;
 
 namespace Microsoft.Azure.Commands.Sql.ElasticJobs.Model
 {
@@ -55,5 +56,10 @@ namespace Microsoft.Azure.Commands.Sql.ElasticJobs.Model
         /// Gets or sets the tags associated with the server.
         /// </summary>
         public Dictionary<string, string> Tags { get; set; }
+
+        /// <summary>
+        /// Gets or sets the identities of the Job Agent
+        /// </summary>
+        public JobAgentIdentity Identity { get; set; }
     }
 }

@@ -89,16 +89,10 @@ namespace Microsoft.Azure.Commands.Sql.ElasticJobs.Cmdlet.PrivateEndpoint
         /// </summary>
         [Parameter(
             ParameterSetName = DefaultParameterSet,
-            Mandatory = true,
-            Position = 3,
             HelpMessage = "The private endpoint name")]
         [Parameter(ParameterSetName = InputObjectParameterSet,
-            Mandatory = true,
-            Position = 1,
             HelpMessage = "The private endpoint name")]
         [Parameter(ParameterSetName = ResourceIdParameterSet,
-            Mandatory = true,
-            Position = 1,
             HelpMessage = "The private endpoint name")]
         [ValidateNotNullOrEmpty]
         [Alias("PrivateEndpointName")]

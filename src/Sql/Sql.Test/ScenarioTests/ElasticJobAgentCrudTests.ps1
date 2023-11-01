@@ -77,7 +77,7 @@ function Test-CreateAgent
 
 <#
     .SYNOPSIS
-    Tests creating an agent using default parameters
+    Tests creating an agent with SKU 
 #>
 function Test-CreateAgentWithSku
 {
@@ -88,7 +88,6 @@ function Test-CreateAgentWithSku
     $db1 = Create-DatabaseForTest $s1
     $db2 = Create-DatabaseForTest $s1
     
-
     try
     {
         # Test with only sku name
@@ -112,6 +111,44 @@ function Test-CreateAgentWithSku
         Assert-AreEqual $resp.Location $s1.Location
         Assert-AreEqual $resp.SkuName "JA200"
         Assert-AreEqual $resp.WorkerCount 200
+    }
+    finally
+    {
+        Remove-ResourceGroupForTest $rg1
+    }
+}
+
+
+<#
+    .SYNOPSIS
+    Tests creating an agent with Identity
+#>
+function Test-CreateAgentWithIdentity
+{
+    # Setup
+    $location = Get-Location "Microsoft.Sql" "operations" "West US 2"
+    $rg1 = Create-ResourceGroupForTest
+    $s1 = Create-ServerForTest $rg1 $location
+    $db1 = Create-DatabaseForTest $s1
+    $db2 = Create-DatabaseForTest $s1
+    
+    try
+    {
+        # create a test UMI
+        $umiName = getAssetName 
+        $umi = New-AzUserAssignedIdentity -Name $umiName -ResourceGroupName $rg1.ResourceGroupName -Location $location
+
+        # Test 
+        $agentName = Get-AgentName
+        $resp = New-AzSqlElasticJobAgent -ResourceGroupName $rg1.ResourceGroupName -ServerName $s1.ServerName -DatabaseName $db1.DatabaseName -AgentName $agentName -IdentityType "UserAssigned" -UserAssignedIdentityId $umi.Id
+        Assert-AreEqual $resp.AgentName $agentName
+        Assert-AreEqual $resp.ServerName $s1.ServerName
+        Assert-AreEqual $resp.DatabaseName $db1.DatabaseName
+        Assert-AreEqual $resp.ResourceGroupName $rg1.ResourceGroupName
+        Assert-AreEqual $resp.Location $s1.Location
+        Assert-AreEqual $resp.Identity.Type "UserAssigned"
+        Assert-NotNull $resp.Identity.UserAssignedIdentities
+        Assert-True { $resp.Identity.UserAssignedIdentities.ContainsKey($umi.Id) } "UMI did not get assigned to job agent."
     }
     finally
     {
@@ -144,7 +181,7 @@ function Test-UpdateAgent
         Assert-AreEqual $resp.ResourceGroupName $a1.ResourceGroupName
         Assert-AreEqual $resp.Location $a1.Location
         Assert-AreEqual $resp.WorkerCount 100
-        # Assert-AreEqual $resp.Tags.Octopus "Agent"
+        Assert-AreEqual $resp.Tags.Octopus "Agent"
 
         # Test using input object
         $resp = Set-AzSqlElasticJobAgent -InputObject $a1 -Tag $tags
@@ -154,7 +191,7 @@ function Test-UpdateAgent
         Assert-AreEqual $resp.ResourceGroupName $a1.ResourceGroupName
         Assert-AreEqual $resp.Location $a1.Location
         Assert-AreEqual $resp.WorkerCount 100
-        # Assert-AreEqual $resp.Tags.Octopus "Agent"
+        Assert-AreEqual $resp.Tags.Octopus "Agent"
 
         # Test using resource id
         $resp = Set-AzSqlElasticJobAgent -ResourceId $a1.ResourceId -Tag $tags
@@ -164,7 +201,7 @@ function Test-UpdateAgent
         Assert-AreEqual $resp.ResourceGroupName $a1.ResourceGroupName
         Assert-AreEqual $resp.Location $a1.Location
         Assert-AreEqual $resp.WorkerCount 100
-        # Assert-AreEqual $resp.Tags.Octopus "Agent"
+        Assert-AreEqual $resp.Tags.Octopus "Agent"
 
         # Test using piping
         $resp = $a1 | Set-AzSqlElasticJobAgent -Tag $tags
@@ -174,7 +211,7 @@ function Test-UpdateAgent
         Assert-AreEqual $resp.ResourceGroupName $a1.ResourceGroupName
         Assert-AreEqual $resp.Location $a1.Location
         Assert-AreEqual $resp.WorkerCount 100
-        # Assert-AreEqual $resp.Tags.Octopus "Agent"
+        Assert-AreEqual $resp.Tags.Octopus "Agent"
     }
     finally
     {

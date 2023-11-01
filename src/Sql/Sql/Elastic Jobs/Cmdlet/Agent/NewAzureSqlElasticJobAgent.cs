@@ -21,6 +21,7 @@ using Microsoft.Azure.Commands.Sql.Database.Model;
 using System.Collections.Generic;
 using System.Linq;
 using Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters;
+using Microsoft.Azure.Commands.Sql.Common;
 
 namespace Microsoft.Azure.Commands.Sql.ElasticJobs.Cmdlet
 {
@@ -215,6 +216,7 @@ namespace Microsoft.Azure.Commands.Sql.ElasticJobs.Cmdlet
                 Tags = TagsConversionHelper.CreateTagDictionary(Tag, validate: true),
                 SkuName = this.SkuName,
                 WorkerCount = this.WorkerCount,
+                Identity = JobAgentIdentityHelper.GetJobAgentIdentity(this.IdentityType, this.UserAssignedIdentityId),
             };
 
             return new List<AzureSqlElasticJobAgentModel> { newEntity };

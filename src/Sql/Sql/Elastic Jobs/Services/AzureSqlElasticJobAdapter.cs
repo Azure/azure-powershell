@@ -71,6 +71,7 @@ namespace Microsoft.Azure.Commands.Sql.ElasticJobs.Services
                 Tags = model.Tags,
                 DatabaseId = databaseId,
                 Sku = !String.IsNullOrWhiteSpace(model.SkuName) ? new Sku(name: model.SkuName, capacity: model.WorkerCount) : null,
+                Identity = model.Identity
             };
 
             // Send response
@@ -90,7 +91,6 @@ namespace Microsoft.Azure.Commands.Sql.ElasticJobs.Services
             var param = new JobAgentUpdate
             {
                 Tags = model.Tags,
-                Sku = !String.IsNullOrWhiteSpace(model.SkuName) ? new Sku(name: model.SkuName, capacity: model.WorkerCount) : null,
             };
 
             var resp = Communicator.UpdateAgent(model.ResourceGroupName, model.ServerName, model.AgentName, param);
@@ -159,7 +159,8 @@ namespace Microsoft.Azure.Commands.Sql.ElasticJobs.Services
                 Tags = TagsConversionHelper.CreateTagDictionary(TagsConversionHelper.CreateTagHashtable(resp.Tags), false),
                 DatabaseId = resp.DatabaseId,
                 State = resp.State,
-                Type = resp.Type
+                Type = resp.Type,
+                Identity = resp.Identity,
             };
 
             return agent;
