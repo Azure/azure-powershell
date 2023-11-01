@@ -16,9 +16,11 @@ using Microsoft.Azure.Commands.KeyVault.Models;
 using Microsoft.Azure.Commands.KeyVault.Properties;
 using Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters;
 using Microsoft.Azure.Management.Internal.Resources.Utilities.Models;
+using Microsoft.Azure.Management.KeyVault.Models;
 using Microsoft.WindowsAzure.Commands.Utilities.Common;
 using System;
 using System.Collections;
+using System.Collections.Generic;
 using System.Management.Automation;
 
 namespace Microsoft.Azure.Commands.KeyVault.Commands
@@ -59,6 +61,10 @@ namespace Microsoft.Azure.Commands.KeyVault.Commands
         public string PublicNetworkAccess { get; set; }
 
         [Parameter(Mandatory = false,
+            HelpMessage = "The set of user assigned identities associated with the managed HSM. Its single value will be ARM resource ids in the form: '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedIdentity/userAssignedIdentities/{identityName}.")]
+        public string[] UserAssignedIdentity { get; set; }
+
+        [Parameter(Mandatory = false,
             ValueFromPipelineByPropertyName = true,
             HelpMessage = "A hash table which represents resource tags.")]
         [Alias(Constants.TagsAlias)]
@@ -91,12 +97,24 @@ namespace Microsoft.Azure.Commands.KeyVault.Commands
 
             if (this.ShouldProcess(this.Name, string.Format(Resources.UpdateHsmShouldProcessMessage, this.Name, this.ResourceGroupName)))
             {
+
+                var managedServiceIdentity = new ManagedServiceIdentity(ManagedServiceIdentityType.UserAssigned)
+                {
+                    UserAssignedIdentities = new Dictionary<string, UserAssignedIdentity>()
+                };
+
+                if (this.IsParameterBound(c => c.UserAssignedIdentity))
+                {
+                    UserAssignedIdentity?.ForEach(id => managedServiceIdentity.UserAssignedIdentities.Add(id, new UserAssignedIdentity()));
+                };
+
                 var result = KeyVaultManagementClient.UpdateManagedHsm(existingResource, 
                     new VaultCreationOrUpdateParameters 
                     {
                         // false is not accepted
                         EnablePurgeProtection = this.EnablePurgeProtection.IsPresent ? (true as bool?) : null,
                         PublicNetworkAccess = this.PublicNetworkAccess,
+                        ManagedServiceIdentity = this.IsParameterBound(c => c.UserAssignedIdentity) ? managedServiceIdentity : null,
                         Tags = this.Tag
                     }, null);
                 WriteObject(result);

@@ -21,6 +21,7 @@ using Microsoft.WindowsAzure.Commands.Utilities.Common;
 
 using System;
 using System.Collections;
+using System.Collections.Generic;
 using System.Management.Automation;
 
 namespace Microsoft.Azure.Commands.KeyVault.Commands
@@ -97,6 +98,10 @@ namespace Microsoft.Azure.Commands.KeyVault.Commands
         public SwitchParameter EnablePurgeProtection { get; set; }
 
         [Parameter(Mandatory = false,
+            HelpMessage = "The set of user assigned identities associated with the managed HSM. Its single value will be ARM resource ids in the form: '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedIdentity/userAssignedIdentities/{identityName}.")]
+        public string[] UserAssignedIdentity { get; set; }
+
+        [Parameter(Mandatory = false,
             ValueFromPipelineByPropertyName = true,
             HelpMessage = "A hash table which represents resource tags.")]
         [Alias(Constants.TagsAlias)]
@@ -116,6 +121,16 @@ namespace Microsoft.Azure.Commands.KeyVault.Commands
                     throw new ArgumentException(Resources.HsmAlreadyExists);
                 }
 
+                var managedServiceIdentity = new ManagedServiceIdentity(ManagedServiceIdentityType.UserAssigned)
+                {
+                    UserAssignedIdentities = new Dictionary<string, UserAssignedIdentity>()
+                };
+
+                if (this.IsParameterBound(c => c.UserAssignedIdentity))
+                {
+                    UserAssignedIdentity?.ForEach(id => managedServiceIdentity.UserAssignedIdentities.Add(id, new UserAssignedIdentity()));
+                };
+
                 var vaultCreationParameter = new VaultCreationOrUpdateParameters()
                 {
                     Name = this.Name,
@@ -132,7 +147,8 @@ namespace Microsoft.Azure.Commands.KeyVault.Commands
                     EnablePurgeProtection = this.EnablePurgeProtection.IsPresent ? true : (bool?)null,
                     // use default network rule set
                     MhsmNetworkAcls = new MhsmNetworkRuleSet(),
-                    PublicNetworkAccess = this.PublicNetworkAccess
+                    PublicNetworkAccess = this.PublicNetworkAccess,
+                    ManagedServiceIdentity = this.IsParameterBound(c => c.UserAssignedIdentity) ? managedServiceIdentity : null
                 };
 
                 this.WriteObject(KeyVaultManagementClient.CreateOrRecoverManagedHsm(vaultCreationParameter, GraphClient));

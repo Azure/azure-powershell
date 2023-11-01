@@ -15,22 +15,24 @@ Update the state of an Azure managed HSM.
 ### UpdateByNameParameterSet (Default)
 ```
 Update-AzKeyVaultManagedHsm -Name <String> -ResourceGroupName <String> [-EnablePurgeProtection]
- [-PublicNetworkAccess <String>] [-Tag <Hashtable>] [-DefaultProfile <IAzureContextContainer>] [-WhatIf]
- [-Confirm] [-SubscriptionId <String>] [<CommonParameters>]
+ [-PublicNetworkAccess <String>] [-UserAssignedIdentity <String[]>] [-Tag <Hashtable>]
+ [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [-SubscriptionId <String>]
+ [<CommonParameters>]
 ```
 
 ### UpdateByInputObjectParameterSet
 ```
 Update-AzKeyVaultManagedHsm -InputObject <PSManagedHsm> [-EnablePurgeProtection]
- [-PublicNetworkAccess <String>] [-Tag <Hashtable>] [-DefaultProfile <IAzureContextContainer>] [-WhatIf]
- [-Confirm] [-SubscriptionId <String>] [<CommonParameters>]
+ [-PublicNetworkAccess <String>] [-UserAssignedIdentity <String[]>] [-Tag <Hashtable>]
+ [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [-SubscriptionId <String>]
+ [<CommonParameters>]
 ```
 
 ### UpdateByResourceIdParameterSet
 ```
 Update-AzKeyVaultManagedHsm -ResourceId <String> [-EnablePurgeProtection] [-PublicNetworkAccess <String>]
- [-Tag <Hashtable>] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [-SubscriptionId <String>]
- [<CommonParameters>]
+ [-UserAssignedIdentity <String[]>] [-Tag <Hashtable>] [-DefaultProfile <IAzureContextContainer>] [-WhatIf]
+ [-Confirm] [-SubscriptionId <String>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -234,6 +236,21 @@ Required: False
 Position: Named
 Default value: None
 Accept pipeline input: True (ByPropertyName)
+Accept wildcard characters: False
+```
+
+### -UserAssignedIdentity
+The set of user assigned identities associated with the managed HSM. Its single value will be ARM resource ids in the form: '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedIdentity/userAssignedIdentities/{identityName}.
+
+```yaml
+Type: System.String[]
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
