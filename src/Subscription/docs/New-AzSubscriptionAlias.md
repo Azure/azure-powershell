@@ -14,8 +14,7 @@ Create Alias Subscription.
 
 ### CreateExpanded (Default)
 ```
-New-AzSubscriptionAlias -AliasName <String> -SubscriptionId <String> [-ManagementGroupId <String>]
- [-ResellerId <String>] [-SubscriptionOwnerId <String>] [-SubscriptionTenantId <String>] [-Tag <Hashtable>]
+New-AzSubscriptionAlias -AliasName <String> -SubscriptionId <String> [-Tag <Hashtable>]
  [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
@@ -127,7 +126,7 @@ Management group Id for the subscription.
 
 ```yaml
 Type: System.String
-Parameter Sets: (All)
+Parameter Sets: WorkloadCreateExpanded
 Aliases:
 
 Required: False
@@ -157,7 +156,7 @@ Reseller Id
 
 ```yaml
 Type: System.String
-Parameter Sets: (All)
+Parameter Sets: WorkloadCreateExpanded
 Aliases:
 
 Required: False
@@ -202,7 +201,7 @@ Owner Id of the subscription
 
 ```yaml
 Type: System.String
-Parameter Sets: (All)
+Parameter Sets: WorkloadCreateExpanded
 Aliases:
 
 Required: False
@@ -217,7 +216,7 @@ Tenant Id of the subscription
 
 ```yaml
 Type: System.String
-Parameter Sets: (All)
+Parameter Sets: WorkloadCreateExpanded
 Aliases:
 
 Required: False

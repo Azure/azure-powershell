@@ -46,13 +46,13 @@ param(
     # Billing scope of the subscription.For CustomerLed and FieldLed - /billingAccounts/{billingAccountName}/billingProfiles/{billingProfileName}/invoiceSections/{invoiceSectionName}For PartnerLed - /billingAccounts/{billingAccountName}/customers/{customerName}For Legacy EA - /billingAccounts/{billingAccountName}/enrollmentAccounts/{enrollmentAccountName}
     ${BillingScope},
 
-    [Parameter()]
+    [Parameter(ParameterSetName='WorkloadCreateExpanded')]
     [Microsoft.Azure.PowerShell.Cmdlets.Subscription.Category('Body')]
     [System.String]
     # Management group Id for the subscription.
     ${ManagementGroupId},
 
-    [Parameter()]
+    [Parameter(ParameterSetName='WorkloadCreateExpanded')]
     [Microsoft.Azure.PowerShell.Cmdlets.Subscription.Category('Body')]
     [System.String]
     # Reseller Id
@@ -71,13 +71,13 @@ param(
     # The friendly name of the subscription.
     ${SubscriptionName},
 
-    [Parameter()]
+    [Parameter(ParameterSetName='WorkloadCreateExpanded')]
     [Microsoft.Azure.PowerShell.Cmdlets.Subscription.Category('Body')]
     [System.String]
     # Owner Id of the subscription
     ${SubscriptionOwnerId},
 
-    [Parameter()]
+    [Parameter(ParameterSetName='WorkloadCreateExpanded')]
     [Microsoft.Azure.PowerShell.Cmdlets.Subscription.Category('Body')]
     [System.String]
     # Tenant Id of the subscription
