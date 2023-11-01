@@ -42,7 +42,7 @@ Create a new action group or update an existing one.
 
 ### Example 1: Add receiver to specified action group
 ```powershell
-$enventhub = New-AzActionGroupEventHubReceiverObject -EventHubName "testEventHub" -EventHubNameSpace "actiongrouptest" -Name "sample eventhub" -SubscriptionId {subid}
+$enventhub = New-AzActionGroupEventHubReceiverObject -EventHubName "testEventHub" -EventHubNameSpace "actiongrouptest" -Name "sample eventhub" -SubscriptionId '{subid}'
 Update-AzActionGroup -Name actiongroup1 -ResourceGroupName monitor-action -EventHubReceiver $enventhub
 ```
 

@@ -1,6 +1,6 @@
 ### Example 1: Get action groups by subscription ID
 ```powershell
-Get-AzActionGroup -SubscriptionId {subid}
+Get-AzActionGroup -SubscriptionId '{subid}'
 ```
 
 ```output

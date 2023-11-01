@@ -1,7 +1,7 @@
 ### Example 1: Create an action group
 ```powershell
 $email1 = New-AzActionGroupEmailReceiverObject -EmailAddress user@example.com -Name user1
-$sms1 = New-AzActionGroupSmsReceiverObject -CountryCode {countrycode} -Name user2 -PhoneNumber '{phonenumber}'
+$sms1 = New-AzActionGroupSmsReceiverObject -CountryCode '{countrycode}' -Name user2 -PhoneNumber '{phonenumber}'
 New-AzActionGroup -Name 'actiongroup1' -ResourceGroupName 'Monitor-Action' -Location northcentralus -GroupShortName ag1 -EmailReceiver $email1 -SmsReceiver $sms1
 ```
 
