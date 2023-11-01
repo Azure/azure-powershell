@@ -228,7 +228,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.Api20230905.IDesktop
+### Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.Api20231004Preview.IDesktop
 
 ## NOTES
 
@@ -240,6 +240,7 @@ To create the parameters described below, construct a hash table containing the 
 
 
 `INPUTOBJECT <IDesktopVirtualizationIdentity>`: Identity Parameter
+  - `[AppAttachPackageName <String>]`: The name of the App Attach package arm object
   - `[ApplicationGroupName <String>]`: The name of the application group
   - `[ApplicationName <String>]`: The name of the application within the specified application group
   - `[DesktopName <String>]`: The name of the desktop within the specified desktop group

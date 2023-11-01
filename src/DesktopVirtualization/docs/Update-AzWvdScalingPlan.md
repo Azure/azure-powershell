@@ -167,7 +167,7 @@ List of ScalingHostPoolReference definitions.
 To construct, see NOTES section for HOSTPOOLREFERENCE properties and create a hash table.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.Api20230905.IScalingHostPoolReference[]
+Type: Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.Api20231004Preview.IScalingHostPoolReference[]
 Parameter Sets: (All)
 Aliases:
 
@@ -230,7 +230,7 @@ List of ScalingSchedule definitions.
 To construct, see NOTES section for SCHEDULE properties and create a hash table.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.Api20230905.IScalingSchedule[]
+Type: Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.Api20231004Preview.IScalingSchedule[]
 Parameter Sets: (All)
 Aliases:
 
@@ -326,7 +326,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.Api20230905.IScalingPlan
+### Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.Api20231004Preview.IScalingPlan
 
 ## NOTES
 
@@ -342,6 +342,7 @@ To create the parameters described below, construct a hash table containing the 
   - `[ScalingPlanEnabled <Boolean?>]`: Is the scaling plan enabled for this hostpool.
 
 `INPUTOBJECT <IDesktopVirtualizationIdentity>`: Identity Parameter
+  - `[AppAttachPackageName <String>]`: The name of the App Attach package arm object
   - `[ApplicationGroupName <String>]`: The name of the application group
   - `[ApplicationName <String>]`: The name of the application within the specified application group
   - `[DesktopName <String>]`: The name of the desktop within the specified desktop group

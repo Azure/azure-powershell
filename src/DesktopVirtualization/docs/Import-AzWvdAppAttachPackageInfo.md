@@ -1,55 +1,71 @@
 ---
 external help file:
 Module Name: Az.DesktopVirtualization
-online version: https://learn.microsoft.com/powershell/module/az.desktopvirtualization/get-azwvdscalingplanpersonalschedule
+online version: https://learn.microsoft.com/powershell/module/az.desktopvirtualization/import-azwvdappattachpackageinfo
 schema: 2.0.0
 ---
 
-# Get-AzWvdScalingPlanPersonalSchedule
+# Import-AzWvdAppAttachPackageInfo
 
 ## SYNOPSIS
-Get a ScalingPlanPersonalSchedule.
+Gets information from a package given the path to the package.
 
 ## SYNTAX
 
-### List (Default)
+### ImportExpanded (Default)
 ```
-Get-AzWvdScalingPlanPersonalSchedule -ResourceGroupName <String> -ScalingPlanName <String>
- [-SubscriptionId <String[]>] [-InitialSkip <Int32>] [-IsDescending] [-PageSize <Int32>]
- [-DefaultProfile <PSObject>] [<CommonParameters>]
+Import-AzWvdAppAttachPackageInfo -HostPoolName <String> -ResourceGroupName <String> [-SubscriptionId <String>]
+ [-PackageArchitecture <AppAttachPackageArchitectures>] [-Path <String>] [-DefaultProfile <PSObject>]
+ [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
-### Get
+### Import
 ```
-Get-AzWvdScalingPlanPersonalSchedule -ResourceGroupName <String> -ScalingPlanName <String>
- -ScalingPlanScheduleName <String> [-SubscriptionId <String[]>] [-DefaultProfile <PSObject>]
+Import-AzWvdAppAttachPackageInfo -HostPoolName <String> -ResourceGroupName <String>
+ -ImportPackageInfoRequest <IImportPackageInfoRequest> [-SubscriptionId <String>] [-DefaultProfile <PSObject>]
+ [-Confirm] [-WhatIf] [<CommonParameters>]
+```
+
+### ImportViaIdentity
+```
+Import-AzWvdAppAttachPackageInfo -InputObject <IDesktopVirtualizationIdentity>
+ -ImportPackageInfoRequest <IImportPackageInfoRequest> [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf]
  [<CommonParameters>]
 ```
 
-### GetViaIdentity
+### ImportViaIdentityExpanded
 ```
-Get-AzWvdScalingPlanPersonalSchedule -InputObject <IDesktopVirtualizationIdentity>
- [-DefaultProfile <PSObject>] [<CommonParameters>]
+Import-AzWvdAppAttachPackageInfo -InputObject <IDesktopVirtualizationIdentity>
+ [-PackageArchitecture <AppAttachPackageArchitectures>] [-Path <String>] [-DefaultProfile <PSObject>]
+ [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-Get a ScalingPlanPersonalSchedule.
+Gets information from a package given the path to the package.
 
 ## EXAMPLES
 
-### Example 1: Get a Scaling Plan Personal Schedule
+### Example 1: {{ Add title here }}
 ```powershell
-Get-AzWvdScalingPlanPooledSchedule -ResourceGroupName rgName -ScalingPlanName scalingPlan1
+{{ Add code here }}
 ```
 
 ```output
-Name
-----
-scalingPlan1/weekdays_schedule
-scalingPlan1/PersonalSchedule1
+{{ Add output here }}
 ```
 
-Gets an existing Scaling Plan Personal Schedule.
+{{ Add description here }}
+
+### Example 2: {{ Add title here }}
+```powershell
+{{ Add code here }}
+```
+
+```output
+{{ Add output here }}
+```
+
+{{ Add description here }}
 
 ## PARAMETERS
 
@@ -69,28 +85,28 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -InitialSkip
-Initial number of items to skip.
+### -HostPoolName
+The name of the host pool within the specified resource group
 
 ```yaml
-Type: System.Int32
-Parameter Sets: List
+Type: System.String
+Parameter Sets: Import, ImportExpanded
 Aliases:
 
-Required: False
+Required: True
 Position: Named
 Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -InputObject
-Identity Parameter
-To construct, see NOTES section for INPUTOBJECT properties and create a hash table.
+### -ImportPackageInfoRequest
+Information to import app attach package
+To construct, see NOTES section for IMPORTPACKAGEINFOREQUEST properties and create a hash table.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.IDesktopVirtualizationIdentity
-Parameter Sets: GetViaIdentity
+Type: Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.Api20231004Preview.IImportPackageInfoRequest
+Parameter Sets: Import, ImportViaIdentity
 Aliases:
 
 Required: True
@@ -100,12 +116,28 @@ Accept pipeline input: True (ByValue)
 Accept wildcard characters: False
 ```
 
-### -IsDescending
-Indicates whether the collection is descending.
+### -InputObject
+Identity Parameter
+To construct, see NOTES section for INPUTOBJECT properties and create a hash table.
 
 ```yaml
-Type: System.Management.Automation.SwitchParameter
-Parameter Sets: List
+Type: Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.IDesktopVirtualizationIdentity
+Parameter Sets: ImportViaIdentity, ImportViaIdentityExpanded
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: True (ByValue)
+Accept wildcard characters: False
+```
+
+### -PackageArchitecture
+Possible device architectures that an app attach package can be configured for
+
+```yaml
+Type: Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Support.AppAttachPackageArchitectures
+Parameter Sets: ImportExpanded, ImportViaIdentityExpanded
 Aliases:
 
 Required: False
@@ -115,12 +147,12 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -PageSize
-Number of items per page.
+### -Path
+URI to Image
 
 ```yaml
-Type: System.Int32
-Parameter Sets: List
+Type: System.String
+Parameter Sets: ImportExpanded, ImportViaIdentityExpanded
 Aliases:
 
 Required: False
@@ -136,37 +168,7 @@ The name is case insensitive.
 
 ```yaml
 Type: System.String
-Parameter Sets: Get, List
-Aliases:
-
-Required: True
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -ScalingPlanName
-The name of the scaling plan.
-
-```yaml
-Type: System.String
-Parameter Sets: Get, List
-Aliases:
-
-Required: True
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -ScalingPlanScheduleName
-The name of the ScalingPlanSchedule
-
-```yaml
-Type: System.String
-Parameter Sets: Get
+Parameter Sets: Import, ImportExpanded
 Aliases:
 
 Required: True
@@ -180,8 +182,8 @@ Accept wildcard characters: False
 The ID of the target subscription.
 
 ```yaml
-Type: System.String[]
-Parameter Sets: Get, List
+Type: System.String
+Parameter Sets: Import, ImportExpanded
 Aliases:
 
 Required: False
@@ -191,16 +193,49 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### -Confirm
+Prompts you for confirmation before running the cmdlet.
+
+```yaml
+Type: System.Management.Automation.SwitchParameter
+Parameter Sets: (All)
+Aliases: cf
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -WhatIf
+Shows what would happen if the cmdlet runs.
+The cmdlet is not run.
+
+```yaml
+Type: System.Management.Automation.SwitchParameter
+Parameter Sets: (All)
+Aliases: wi
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
 ### CommonParameters
 This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable. For more information, see [about_CommonParameters](http://go.microsoft.com/fwlink/?LinkID=113216).
 
 ## INPUTS
 
+### Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.Api20231004Preview.IImportPackageInfoRequest
+
 ### Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.IDesktopVirtualizationIdentity
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.Api20231004Preview.IScalingPlanPersonalSchedule
+### Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.Api20231004Preview.IAppAttachPackage
 
 ## NOTES
 
@@ -210,6 +245,10 @@ COMPLEX PARAMETER PROPERTIES
 
 To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
 
+
+`IMPORTPACKAGEINFOREQUEST <IImportPackageInfoRequest>`: Information to import app attach package
+  - `[PackageArchitecture <AppAttachPackageArchitectures?>]`: Possible device architectures that an app attach package can be configured for
+  - `[Path <String>]`: URI to Image
 
 `INPUTOBJECT <IDesktopVirtualizationIdentity>`: Identity Parameter
   - `[AppAttachPackageName <String>]`: The name of the App Attach package arm object

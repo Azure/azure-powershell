@@ -1,55 +1,55 @@
 ---
 external help file:
 Module Name: Az.DesktopVirtualization
-online version: https://learn.microsoft.com/powershell/module/az.desktopvirtualization/get-azwvdscalingplanpersonalschedule
+online version: https://learn.microsoft.com/powershell/module/az.desktopvirtualization/remove-azwvdappattachpackage
 schema: 2.0.0
 ---
 
-# Get-AzWvdScalingPlanPersonalSchedule
+# Remove-AzWvdAppAttachPackage
 
 ## SYNOPSIS
-Get a ScalingPlanPersonalSchedule.
+Remove an App Attach Package.
 
 ## SYNTAX
 
-### List (Default)
+### Delete (Default)
 ```
-Get-AzWvdScalingPlanPersonalSchedule -ResourceGroupName <String> -ScalingPlanName <String>
- [-SubscriptionId <String[]>] [-InitialSkip <Int32>] [-IsDescending] [-PageSize <Int32>]
- [-DefaultProfile <PSObject>] [<CommonParameters>]
-```
-
-### Get
-```
-Get-AzWvdScalingPlanPersonalSchedule -ResourceGroupName <String> -ScalingPlanName <String>
- -ScalingPlanScheduleName <String> [-SubscriptionId <String[]>] [-DefaultProfile <PSObject>]
- [<CommonParameters>]
+Remove-AzWvdAppAttachPackage -Name <String> -ResourceGroupName <String> [-SubscriptionId <String>] [-Force]
+ [-DefaultProfile <PSObject>] [-PassThru] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
-### GetViaIdentity
+### DeleteViaIdentity
 ```
-Get-AzWvdScalingPlanPersonalSchedule -InputObject <IDesktopVirtualizationIdentity>
- [-DefaultProfile <PSObject>] [<CommonParameters>]
+Remove-AzWvdAppAttachPackage -InputObject <IDesktopVirtualizationIdentity> [-Force]
+ [-DefaultProfile <PSObject>] [-PassThru] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-Get a ScalingPlanPersonalSchedule.
+Remove an App Attach Package.
 
 ## EXAMPLES
 
-### Example 1: Get a Scaling Plan Personal Schedule
+### Example 1: {{ Add title here }}
 ```powershell
-Get-AzWvdScalingPlanPooledSchedule -ResourceGroupName rgName -ScalingPlanName scalingPlan1
+{{ Add code here }}
 ```
 
 ```output
-Name
-----
-scalingPlan1/weekdays_schedule
-scalingPlan1/PersonalSchedule1
+{{ Add output here }}
 ```
 
-Gets an existing Scaling Plan Personal Schedule.
+{{ Add description here }}
+
+### Example 2: {{ Add title here }}
+```powershell
+{{ Add code here }}
+```
+
+```output
+{{ Add output here }}
+```
+
+{{ Add description here }}
 
 ## PARAMETERS
 
@@ -69,12 +69,12 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -InitialSkip
-Initial number of items to skip.
+### -Force
+Force flag to delete App Attach package.
 
 ```yaml
-Type: System.Int32
-Parameter Sets: List
+Type: System.Management.Automation.SwitchParameter
+Parameter Sets: (All)
 Aliases:
 
 Required: False
@@ -90,7 +90,7 @@ To construct, see NOTES section for INPUTOBJECT properties and create a hash tab
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.IDesktopVirtualizationIdentity
-Parameter Sets: GetViaIdentity
+Parameter Sets: DeleteViaIdentity
 Aliases:
 
 Required: True
@@ -100,27 +100,27 @@ Accept pipeline input: True (ByValue)
 Accept wildcard characters: False
 ```
 
-### -IsDescending
-Indicates whether the collection is descending.
+### -Name
+The name of the App Attach package arm object
 
 ```yaml
-Type: System.Management.Automation.SwitchParameter
-Parameter Sets: List
-Aliases:
+Type: System.String
+Parameter Sets: Delete
+Aliases: AppAttachPackageName
 
-Required: False
+Required: True
 Position: Named
 Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -PageSize
-Number of items per page.
+### -PassThru
+Returns true when the command succeeds
 
 ```yaml
-Type: System.Int32
-Parameter Sets: List
+Type: System.Management.Automation.SwitchParameter
+Parameter Sets: (All)
 Aliases:
 
 Required: False
@@ -136,37 +136,7 @@ The name is case insensitive.
 
 ```yaml
 Type: System.String
-Parameter Sets: Get, List
-Aliases:
-
-Required: True
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -ScalingPlanName
-The name of the scaling plan.
-
-```yaml
-Type: System.String
-Parameter Sets: Get, List
-Aliases:
-
-Required: True
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -ScalingPlanScheduleName
-The name of the ScalingPlanSchedule
-
-```yaml
-Type: System.String
-Parameter Sets: Get
+Parameter Sets: Delete
 Aliases:
 
 Required: True
@@ -180,13 +150,44 @@ Accept wildcard characters: False
 The ID of the target subscription.
 
 ```yaml
-Type: System.String[]
-Parameter Sets: Get, List
+Type: System.String
+Parameter Sets: Delete
 Aliases:
 
 Required: False
 Position: Named
 Default value: (Get-AzContext).Subscription.Id
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -Confirm
+Prompts you for confirmation before running the cmdlet.
+
+```yaml
+Type: System.Management.Automation.SwitchParameter
+Parameter Sets: (All)
+Aliases: cf
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -WhatIf
+Shows what would happen if the cmdlet runs.
+The cmdlet is not run.
+
+```yaml
+Type: System.Management.Automation.SwitchParameter
+Parameter Sets: (All)
+Aliases: wi
+
+Required: False
+Position: Named
+Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
 ```
@@ -200,7 +201,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.Api20231004Preview.IScalingPlanPersonalSchedule
+### System.Boolean
 
 ## NOTES
 
