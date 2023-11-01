@@ -61,7 +61,7 @@ namespace Microsoft.Azure.Commands.KeyVault.Commands
         public string PublicNetworkAccess { get; set; }
 
         [Parameter(Mandatory = false,
-            HelpMessage = "The set of user assigned identities associated with the managed HSM. Its single value will be ARM resource ids in the form: '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedIdentity/userAssignedIdentities/{identityName}.")]
+            HelpMessage = "The set of user assigned identities associated with the managed HSM. Its value will be ARM resource ids in the form: '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedIdentity/userAssignedIdentities/{identityName}'.")]
         public string[] UserAssignedIdentity { get; set; }
 
         [Parameter(Mandatory = false,

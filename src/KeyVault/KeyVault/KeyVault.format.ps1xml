@@ -1090,6 +1090,24 @@
                 <PropertyName>PublicNetworkAccess</PropertyName>
               </ListItem>
               <ListItem>
+                <Label>IdentityType</Label>
+                <ScriptBlock>
+                  if ($_.Identity -ne $null)
+                  {
+                  $_.Identity.Type;
+                  }
+                </ScriptBlock>
+              </ListItem>
+              <ListItem>
+                <Label>UserAssignedIdentities</Label>
+                <ScriptBlock>
+                  if ($_.Identity -ne $null)
+                  {
+                  $_.Identity.UserAssignedIdentities;
+                  }
+                </ScriptBlock>
+              </ListItem>
+              <ListItem>
                 <Label>Provisioning State</Label>
                 <PropertyName>ProvisioningState</PropertyName>
               </ListItem>

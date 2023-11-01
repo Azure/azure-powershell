@@ -43,6 +43,5 @@ namespace Microsoft.Azure.Commands.KeyVault.Models
         /// resource. 
         /// </summary>
         public string[] UserAssignedIdentities { get; set; }
-
     }
 }

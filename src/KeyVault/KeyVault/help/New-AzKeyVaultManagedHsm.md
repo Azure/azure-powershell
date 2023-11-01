@@ -59,6 +59,36 @@ myhsm myrg1               eastus2euap CustomB32
 This command creates a managed HSM, just like the previous example. However, it specifies a value of
 CustomB32 for the *SKU* parameter to create a CustomB32 managed HSM.
 
+### Example 3: Create a managed HSM with an user assigned identity
+```powershell
+New-AzKeyVaultManagedHsm -Name 'myhsm' -ResourceGroupName 'myrg1' -Location 'eastus2euap' -Administrator "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx"-SoftDeleteRetentionInDays 70 -UserAssignedIdentity /subscriptions/xxxx/resourceGroups/xxxx/providers/Microsoft.ManagedIdentity/userAssignedIdentities/identityName | Format-List
+
+```output
+Managed HSM Name                        : myhsm
+Resource Group Name                     : myrg1
+Location                                : eastus2euap
+Resource ID                             : /subscriptions/0b1f6471-1bf0-4dda-aec3-cb9272f09590/resourceGroups/bez-rg/pro
+                                          viders/Microsoft.KeyVault/managedHSMs/bezmhsm
+HSM Pool URI                            :
+Tenant ID                               : 54826b22-38d6-4fb2-bad9-b7b93a3e9c5a
+Initial Admin Object Ids                : {xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx}
+SKU                                     : StandardB1
+Soft Delete Enabled?                    : True
+Enabled Purge Protection?               : False
+Soft Delete Retention Period (days)     : 70
+Public Network Access                   : Enabled
+IdentityType                            : UserAssigned
+UserAssignedIdentities                  : /subscriptions/xxxx/resourceGroups/xxxx/providers/Microsoft.ManagedIdentity/userAssignedIdentities/identityName
+Provisioning State                      : Succeeded
+Status Message                          : The Managed HSM is provisioned and ready to use.
+Security Domain ActivationStatus        : Active
+Security Domain ActivationStatusMessage : Your HSM has been activated and can be used for cryptographic operations.
+Regions                                 : 
+Tags
+```
+
+This command creates a managed HSM with an user assigned identity.
+
 ## PARAMETERS
 
 ### -Administrator
@@ -248,7 +278,7 @@ Accept wildcard characters: False
 ```
 
 ### -UserAssignedIdentity
-The set of user assigned identities associated with the managed HSM. Its single value will be ARM resource ids in the form: '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedIdentity/userAssignedIdentities/{identityName}.
+The set of user assigned identities associated with the managed HSM. Its value will be ARM resource ids in the form: '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedIdentity/userAssignedIdentities/{identityName}'.
 
 ```yaml
 Type: System.String[]
