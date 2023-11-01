@@ -55,8 +55,8 @@ if ($TargetTestName -and (!$TestName -or ($TestName -eq $TargetTestName))) {
         if (-Not (Test-Path -Path $loadEnvPath)) {
             $loadEnvPath = Join-Path $currentDir.Parent 'loadEnv.ps1'
         }
-# this breaks the test environment, had to remove it
-#        . ($loadEnvPath)
+
+        . ($loadEnvPath)
 
         # set up the recording file path
         $TestRecordingFile = Join-Path $currentDir "$($TargetTestName).Recording.json"
