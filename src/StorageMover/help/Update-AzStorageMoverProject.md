@@ -135,7 +135,7 @@ The Project resource.
 To construct, see NOTES section for PROJECT properties and create a hash table.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Models.Api20230301.IProjectUpdateParameters
+Type: Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Models.Api20231001.IProjectUpdateParameters
 Parameter Sets: Update, UpdateViaIdentity
 Aliases:
 
@@ -228,36 +228,15 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Models.Api20230301.IProjectUpdateParameters
+### Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Models.Api20231001.IProjectUpdateParameters
 
 ### Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Models.IStorageMoverIdentity
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Models.Api20230301.IProject
+### Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Models.Api20231001.IProject
 
 ## NOTES
-
-ALIASES
-
-COMPLEX PARAMETER PROPERTIES
-
-To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
-
-
-`INPUTOBJECT <IStorageMoverIdentity>`: Identity Parameter
-  - `[AgentName <String>]`: The name of the Agent resource.
-  - `[EndpointName <String>]`: The name of the Endpoint resource.
-  - `[Id <String>]`: Resource identity path
-  - `[JobDefinitionName <String>]`: The name of the Job Definition resource.
-  - `[JobRunName <String>]`: The name of the Job Run resource.
-  - `[ProjectName <String>]`: The name of the Project resource.
-  - `[ResourceGroupName <String>]`: The name of the resource group. The name is case insensitive.
-  - `[StorageMoverName <String>]`: The name of the Storage Mover resource.
-  - `[SubscriptionId <String>]`: The ID of the target subscription.
-
-`PROJECT <IProjectUpdateParameters>`: The Project resource.
-  - `[Description <String>]`: A description for the Project.
 
 ## RELATED LINKS
 

@@ -39,7 +39,7 @@ namespace Microsoft.Azure.Commands.Security.Models.IotSecuritySolutions
                 UserDefinedResources = value.UserDefinedResources?.ConvertToPSType(),
                 AutoDiscoveredResources = value.AutoDiscoveredResources,
                 RecommendationsConfiguration = value.RecommendationsConfiguration?.ConvertToPSType(),
-                UnmaskedIpLoggingStatus = value.UnmaskedIpLoggingStatus
+                UnmaskedIpLoggingStatus = value.UnmaskedIPLoggingStatus
             };
         }
 
@@ -88,7 +88,7 @@ namespace Microsoft.Azure.Commands.Security.Models.IotSecuritySolutions
                 IotHubs = value.IotHubs,
                 UserDefinedResources = value.UserDefinedResources?.CreatePSType(),
                 RecommendationsConfiguration = value.RecommendationsConfiguration?.CreatePSType(),
-                UnmaskedIpLoggingStatus = value.UnmaskedIpLoggingStatus
+                UnmaskedIPLoggingStatus = value.UnmaskedIpLoggingStatus
             };
         }
 

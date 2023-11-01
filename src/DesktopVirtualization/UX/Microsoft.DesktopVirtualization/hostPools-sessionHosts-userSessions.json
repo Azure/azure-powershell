@@ -1,6 +1,6 @@
 {
   "resourceType": "hostPools/sessionHosts/userSessions",
-  "apiVersion": "2022-09-09",
+  "apiVersion": "2023-09-05",
   "learnMore": {
     "url": "https://learn.microsoft.com/powershell/module/az.desktopvirtualization"
   },

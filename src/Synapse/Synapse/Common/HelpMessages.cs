@@ -248,7 +248,7 @@ Add means to add user assigned managed identities for workspace, Remove means to
 
         public const string DisplayName = "Specifies the display name of the user or group for whom to grant permissions. This display name must exist in the active directory associated with the current subscription.";
 
-        public const string ObjectId = "Specifies the object ID of the user or group in Azure Active Directory for which to grant permissions.";
+        public const string ObjectId = "Specifies the object ID of the user or group in Microsoft Entra ID for which to grant permissions.";
 
         public const string LinkConnectionName = "Name of link connection.";
 
@@ -353,7 +353,7 @@ For more information, see https://learn.microsoft.com/en-us/sql/relational-datab
 
          public const string RoleDefinitionName = "Name of the Role that is assigned to the principal.";
 
-        public const string PrincipalId = "The Azure AD ObjectId of the User, Group or Service Principal.";
+        public const string PrincipalId = "The Microsoft Entra ObjectId of the User, Group or Service Principal.";
 
         public const string SignInName = "The email address or the user principal name of the user.";
 

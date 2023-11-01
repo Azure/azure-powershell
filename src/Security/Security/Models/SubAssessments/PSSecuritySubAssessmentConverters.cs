@@ -31,7 +31,7 @@ namespace Microsoft.Azure.Commands.Security.Models.SubAssessments
                 Remediation = value.Remediation,
                 ResourceDetails = value.ResourceDetails.ConvertToPSType(),
                 Status = value.Status.ConvertToPSType(),
-                SecuritySubAssessmentId = value.SecuritySubAssessmentId,
+                SecuritySubAssessmentId = value.Id,
                 TimeGenerated = value.TimeGenerated
             };
         }

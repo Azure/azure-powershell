@@ -28,13 +28,13 @@ function Remove-AzMigrateServerReplication {
         [Parameter(ParameterSetName = 'ByIDVMwareCbt', Mandatory)]
         [Microsoft.Azure.PowerShell.Cmdlets.Migrate.Category('Path')]
         [System.String]
-        # Specifies the replcating server for which the replicatio needs to be disabled. The ID should be retrieved using the Get-AzMigrateServerReplication cmdlet.
+        # Specifies the replcating server for which the replication needs to be disabled. The ID should be retrieved using the Get-AzMigrateServerReplication cmdlet.
         ${TargetObjectID},
 
         [Parameter(ParameterSetName = 'ByInputObjectVMwareCbt', Mandatory)]
         [Microsoft.Azure.PowerShell.Cmdlets.Migrate.Category('Path')]
         [Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api202301.IMigrationItem]
-        # Specifies the machine object of the replicating server.
+        # Specifies the replcating server for which the replication needs to be disabled. The server object should be retrieved using the Get-AzMigrateServerReplication cmdlet.
         ${InputObject},
 
         [Parameter()]

@@ -8,7 +8,7 @@ schema: 2.0.0
 # Get-AzSqlInstanceActiveDirectoryOnlyAuthentication
 
 ## SYNOPSIS
-Gets Azure AD only authentication for a specific SQL Managed Instance.
+Gets Microsoft Entra-only authentication for a specific SQL Managed Instance.
 
 ## SYNTAX
 
@@ -31,7 +31,7 @@ Get-AzSqlInstanceActiveDirectoryOnlyAuthentication [-ResourceId] <String>
 ```
 
 ## DESCRIPTION
-The **Get-AzSqlInstanceActiveDirectoryOnlyAuthentication** cmdlet gets Azure Active Directory (Azure AD) only authentication requirement for an AzureSQL Managed Instance in the current subscription.
+The **Get-AzSqlInstanceActiveDirectoryOnlyAuthentication** cmdlet gets Microsoft Entra-only authentication requirement for an AzureSQL Managed Instance in the current subscription.
 
 ## EXAMPLES
 
@@ -40,7 +40,7 @@ The **Get-AzSqlInstanceActiveDirectoryOnlyAuthentication** cmdlet gets Azure Act
 Get-AzSqlInstanceActiveDirectoryOnlyAuthentication -ResourceGroupName "ResourceGroup01" -InstanceName "ManagedInstance01"
 ```
 
-This command gets Azure Active Directory (Azure AD) only authentication requirement for an AzureSQL Managed Instance named ManagedInstance01 that is associated with a resource group named ResourceGroup01.
+This command gets Microsoft Entra-only authentication requirement for an AzureSQL Managed Instance named ManagedInstance01 that is associated with a resource group named ResourceGroup01.
 
 ## PARAMETERS
 
@@ -75,7 +75,7 @@ Accept wildcard characters: False
 ```
 
 ### -InstanceName
-The name of the Azure SQL Managed Instance the Azure Active Directory only authentication is in.
+The name of the Azure SQL Managed Instance the Microsoft Entra-only authentication is in.
 
 ```yaml
 Type: System.String
@@ -172,4 +172,3 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 [Set-AzSqlInstanceActiveDirectoryAdministrator](./Set-AzSqlInstanceActiveDirectoryAdministrator.md)
 
 [Get-AzSqlInstanceActiveDirectoryAdministrator](./Get-AzSqlInstanceActiveDirectoryAdministrator.md)
-

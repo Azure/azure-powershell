@@ -145,6 +145,11 @@ namespace Microsoft.Azure.Commands.ServiceFabric.Commands
                     (ParameterSetName == ClientCertByCnByObj || ParameterSetName == ClientCertByTpByObj) ? this.Thumbprint : this.CommonName));
             }
 
+            if (string.IsNullOrEmpty(currentCluster.PublicIPPrefixId))
+            {
+                currentCluster.PublicIPPrefixId = null;
+            }
+
             return currentCluster;
         }
 

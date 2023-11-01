@@ -36,15 +36,18 @@ $skipModules = @(
     'Az.CosmosDB',
     'Az.KeyVault',
     'Az.NetAppFiles',
+    'Az.RecoveryServices',
     'Az.RedisCache',
     'Az.Storage',
     'Az.Search',
-    'Az.Sql'
+    'Az.Security',
+    'Az.Sql',
+    'Az.TrafficManager'
 )
 
 $MissReadMe = 9000
 $GenSdkChanged = 9090
-try{
+try {
     if ((Test-Path $FilesChangedPaths -PathType Leaf) -and $FilesChangedPaths.EndsWith(".txt")) {
         # Read Changedfiles and check if generted sdk code is updated.
         $FilesChanged = Get-Content $FilesChangedPaths | Where-Object { ($_ -match "^src\/.*\.Sdk\/.*Generated.*")}
@@ -61,13 +64,21 @@ try{
         return
     }
     Write-Host "Preparing Autorest..."
-    autorest --reset
+    npx autorest --reset
     foreach ($_ in $ChangedSdks) {
         # Extract Module Name
         $ModuleName = "Az." + ($_ -split "\/|\\")[1]
+
         # Skip check for modules listed in $skipModules
         if ($skipModules.Contains($ModuleName)) {
             Write-Host "Skip checking $ModuleName"
+            continue
+        }
+
+        # Skip check for modules without README.md and .Sdk folder.
+        if (-not(Test-Path -Path "$PSScriptRoot/../../../$_/README.md" -PathType Leaf) -and -not(Test-Path -Path $PSScriptRoot/../../../$_))
+        {
+            Write-Host "$PSScriptRoot/../../../$_" "Does not exist, and no README file detected. The module is no longer SDK based. Skip it."
             continue
         }
 
@@ -78,8 +89,30 @@ try{
         # Regenerate the Sdk under Generated folder
         if( Test-Path -Path "README.md" -PathType Leaf){
             Write-Host "Re-generating SDK under Generated folder for $ModuleName..."
-            autorest --use:@microsoft.azure/autorest.csharp@2.3.90
-            autorest README.md --version=v2
+            npx autorest --use:@microsoft.azure/autorest.csharp@2.3.90
+            If (($LASTEXITCODE -ne 0) -and ($LASTEXITCODE -ne $null))
+            {
+                $ExceptionList += [GeneratedSdkIssue]@{
+                    Module = $ModuleName;
+                    Sdk = $_;
+                    Severity = 1;
+                    ProblemId = $GenSdkChanged
+                    Description = "Failed to set autorest.csharp@2.3.90 for $ModuleName."
+                    Remediation = ""
+                }
+            }
+            npx autorest README.md --version=v2
+            If (($LASTEXITCODE -ne 0) -and ($LASTEXITCODE -ne $null))
+            {
+                $ExceptionList += [GeneratedSdkIssue]@{
+                    Module = $ModuleName;
+                    Sdk = $_;
+                    Severity = 1;
+                    ProblemId = $GenSdkChanged
+                    Description = "Failed to generate Sdk for $ModuleName."
+                    Remediation = ""
+                }
+            }
         }
         else {
             $ExceptionList += [GeneratedSdkIssue]@{
@@ -115,8 +148,8 @@ try{
         Set-Location $SavePath
     }
 }
-catch{
-    Write-Host "Caught an error."
+catch {
+    Write-Host "An error occurred: $_"
 }
 finally {
     Write-Host ""
