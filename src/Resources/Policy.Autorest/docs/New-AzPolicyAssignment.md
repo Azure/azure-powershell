@@ -20,21 +20,23 @@ New-AzPolicyAssignment -Name <String> [-Scope <String>] [-BackwardCompatible] [-
  [-DisplayName <String>] [-EnforcementMode <EnforcementMode>] [-IdentityId <String>]
  [-IdentityType <ResourceIdentityType>] [-Location <String>] [-Metadata <String>]
  [-NonComplianceMessage <PSObject[]>] [-NotScope <String[]>] [-PolicyDefinition <PSObject>]
- [-PolicySetDefinition <PSObject>] [-DefaultProfile <PSObject>] [<CommonParameters>]
+ [-PolicySetDefinition <PSObject>] [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ### CreateExpanded
 ```
 New-AzPolicyAssignment [-Description <String>] [-DisplayName <String>] [-EnforcementMode <EnforcementMode>]
  [-IdentityType <ResourceIdentityType>] [-IdentityUserAssignedIdentity <Hashtable>] [-Location <String>]
- [-NotScope <String[]>] [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
+ [-NotScope <String[]>] [-Override <IOverride[]>] [-ResourceSelector <IResourceSelector[]>]
+ [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ### CreateExpanded1
 ```
 New-AzPolicyAssignment [-Description <String>] [-DisplayName <String>] [-EnforcementMode <EnforcementMode>]
  [-IdentityType <ResourceIdentityType>] [-IdentityUserAssignedIdentity <Hashtable>] [-Location <String>]
- [-NotScope <String[]>] [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
+ [-NotScope <String[]>] [-Override <IOverride[]>] [-ResourceSelector <IResourceSelector[]>]
+ [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ### CreateViaIdentityExpanded1
@@ -42,7 +44,8 @@ New-AzPolicyAssignment [-Description <String>] [-DisplayName <String>] [-Enforce
 New-AzPolicyAssignment -InputObject <IPolicyIdentity> [-Description <String>] [-DisplayName <String>]
  [-EnforcementMode <EnforcementMode>] [-IdentityType <ResourceIdentityType>]
  [-IdentityUserAssignedIdentity <Hashtable>] [-Location <String>] [-NotScope <String[]>]
- [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
+ [-Override <IOverride[]>] [-ResourceSelector <IResourceSelector[]>] [-DefaultProfile <PSObject>] [-Confirm]
+ [-WhatIf] [<CommonParameters>]
 ```
 
 ### ParameterObject
@@ -51,7 +54,7 @@ New-AzPolicyAssignment -Name <String> -PolicyDefinition <PSObject> -PolicyParame
  [-Scope <String>] [-BackwardCompatible] [-Description <String>] [-DisplayName <String>]
  [-EnforcementMode <EnforcementMode>] [-IdentityId <String>] [-IdentityType <ResourceIdentityType>]
  [-Location <String>] [-Metadata <String>] [-NonComplianceMessage <PSObject[]>] [-NotScope <String[]>]
- [-PolicySetDefinition <PSObject>] [-DefaultProfile <PSObject>] [<CommonParameters>]
+ [-PolicySetDefinition <PSObject>] [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ### ParameterString
@@ -60,7 +63,7 @@ New-AzPolicyAssignment -Name <String> -PolicyDefinition <PSObject> -PolicyParame
  [-BackwardCompatible] [-Description <String>] [-DisplayName <String>] [-EnforcementMode <EnforcementMode>]
  [-IdentityId <String>] [-IdentityType <ResourceIdentityType>] [-Location <String>] [-Metadata <String>]
  [-NonComplianceMessage <PSObject[]>] [-NotScope <String[]>] [-PolicySetDefinition <PSObject>]
- [-DefaultProfile <PSObject>] [<CommonParameters>]
+ [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ### SetParameterObject
@@ -69,7 +72,7 @@ New-AzPolicyAssignment -Name <String> -PolicyParameterObject <Hashtable> -Policy
  [-Scope <String>] [-BackwardCompatible] [-Description <String>] [-DisplayName <String>]
  [-EnforcementMode <EnforcementMode>] [-IdentityId <String>] [-IdentityType <ResourceIdentityType>]
  [-Location <String>] [-Metadata <String>] [-NonComplianceMessage <PSObject[]>] [-NotScope <String[]>]
- [-PolicyDefinition <PSObject>] [-DefaultProfile <PSObject>] [<CommonParameters>]
+ [-PolicyDefinition <PSObject>] [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ### SetParameterString
@@ -78,7 +81,7 @@ New-AzPolicyAssignment -Name <String> -PolicyParameter <String> -PolicySetDefini
  [-Scope <String>] [-BackwardCompatible] [-Description <String>] [-DisplayName <String>]
  [-EnforcementMode <EnforcementMode>] [-IdentityId <String>] [-IdentityType <ResourceIdentityType>]
  [-Location <String>] [-Metadata <String>] [-NonComplianceMessage <PSObject[]>] [-NotScope <String[]>]
- [-PolicyDefinition <PSObject>] [-DefaultProfile <PSObject>] [<CommonParameters>]
+ [-PolicyDefinition <PSObject>] [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -460,6 +463,22 @@ Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
 ```
 
+### -Override
+The policy property value override.
+To construct, see NOTES section for OVERRIDE properties and create a hash table.
+
+```yaml
+Type: Microsoft.Azure.PowerShell.Cmdlets.Policy.Models.ApiV1.IOverride[]
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
 ### -PolicyDefinition
 The ID of the policy definition or policy set definition being assigned.
 To construct, see NOTES section for POLICYDEFINITION properties and create a hash table.
@@ -521,6 +540,22 @@ Required: True
 Position: Named
 Default value: None
 Accept pipeline input: True (ByValue, ByPropertyName)
+Accept wildcard characters: False
+```
+
+### -ResourceSelector
+The resource selector list to filter policies by resource properties.
+To construct, see NOTES section for RESOURCESELECTOR properties and create a hash table.
+
+```yaml
+Type: Microsoft.Azure.PowerShell.Cmdlets.Policy.Models.ApiV1.IResourceSelector[]
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
@@ -590,7 +625,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.Policy.Models.Api20210601.IPolicyAssignment
+### Microsoft.Azure.PowerShell.Cmdlets.Policy.Models.Api20220601.IPolicyAssignment
 
 ## NOTES
 
@@ -620,6 +655,14 @@ To create the parameters described below, construct a hash table containing the 
 `NONCOMPLIANCEMESSAGETABLE <INonComplianceMessage[]>`: The messages that describe why a resource is non-compliant with the policy.
   - `Message <String>`: A message that describes why a resource is non-compliant with the policy. This is shown in 'deny' error messages and on resource's non-compliant compliance results.
   - `[PolicyDefinitionReferenceId <String>]`: The policy definition reference ID within a policy set definition the message is intended for. This is only applicable if the policy assignment assigns a policy set definition. If this is not provided the message applies to all policies assigned by this policy assignment.
+
+`OVERRIDE <IOverride[]>`: The policy property value override.
+  - `[Kind <OverrideKind?>]`: The override kind.
+  - `[Selector <ISelector[]>]`: The list of the selector expressions.
+    - `[In <String[]>]`: The list of values to filter in.
+    - `[Kind <SelectorKind?>]`: The selector kind.
+    - `[NotIn <String[]>]`: The list of values to filter out.
+  - `[Value <String>]`: The value to override the policy property.
 
 `POLICYDEFINITION <PSObject>`: The ID of the policy definition or policy set definition being assigned.
   - `[Description <String>]`: The policy definition description.
@@ -665,6 +708,13 @@ To create the parameters described below, construct a hash table containing the 
   - `[SystemDataLastModifiedAt <DateTime?>]`: The timestamp of resource last modification (UTC)
   - `[SystemDataLastModifiedBy <String>]`: The identity that last modified the resource.
   - `[SystemDataLastModifiedByType <CreatedByType?>]`: The type of identity that last modified the resource.
+
+`RESOURCESELECTOR <IResourceSelector[]>`: The resource selector list to filter policies by resource properties.
+  - `[Name <String>]`: The name of the resource selector.
+  - `[Selector <ISelector[]>]`: The list of the selector expressions.
+    - `[In <String[]>]`: The list of values to filter in.
+    - `[Kind <SelectorKind?>]`: The selector kind.
+    - `[NotIn <String[]>]`: The list of values to filter out.
 
 ## RELATED LINKS
 

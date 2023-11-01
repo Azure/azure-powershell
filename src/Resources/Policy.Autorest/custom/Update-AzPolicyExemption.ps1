@@ -33,7 +33,7 @@ https://learn.microsoft.com/powershell/module/az.resources/update-azpolicyexempt
 function Update-AzPolicyExemption {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.Policy.Models.Api20220701Preview.IPolicyExemption])]
 [Alias('Set-AzPolicyExemption')]
-[CmdletBinding(DefaultParameterSetName='Name', SupportsShouldProcess=$false, ConfirmImpact='Low')]
+[CmdletBinding(DefaultParameterSetName='Name', SupportsShouldProcess=$true, ConfirmImpact='Low')]
 param(
     [Parameter(ParameterSetName='Name', Mandatory, ValueFromPipelineByPropertyName)]
     [ValidateNotNullOrEmpty()]

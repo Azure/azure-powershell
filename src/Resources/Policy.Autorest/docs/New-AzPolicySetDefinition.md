@@ -16,21 +16,23 @@ Creates or updates a policy set definition.
 ```
 New-AzPolicySetDefinition -Name <String> -PolicyDefinition <String> [-BackwardCompatible]
  [-Description <String>] [-DisplayName <String>] [-Metadata <String>] [-Parameter <String>]
- [-PolicyDefinitionGroup <String>] [-DefaultProfile <PSObject>] [<CommonParameters>]
+ [-PolicyDefinitionGroup <String>] [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ### ManagementGroupName
 ```
 New-AzPolicySetDefinition -ManagementGroupName <String> -Name <String> -PolicyDefinition <String>
  [-BackwardCompatible] [-Description <String>] [-DisplayName <String>] [-Metadata <String>]
- [-Parameter <String>] [-PolicyDefinitionGroup <String>] [-DefaultProfile <PSObject>] [<CommonParameters>]
+ [-Parameter <String>] [-PolicyDefinitionGroup <String>] [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf]
+ [<CommonParameters>]
 ```
 
 ### SubscriptionId
 ```
 New-AzPolicySetDefinition -Name <String> -SubscriptionId <String> -PolicyDefinition <String>
  [-BackwardCompatible] [-Description <String>] [-DisplayName <String>] [-Metadata <String>]
- [-Parameter <String>] [-PolicyDefinitionGroup <String>] [-DefaultProfile <PSObject>] [<CommonParameters>]
+ [-Parameter <String>] [-PolicyDefinitionGroup <String>] [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf]
+ [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -277,6 +279,37 @@ Required: True
 Position: Named
 Default value: None
 Accept pipeline input: True (ByPropertyName)
+Accept wildcard characters: False
+```
+
+### -Confirm
+Prompts you for confirmation before running the cmdlet.
+
+```yaml
+Type: System.Management.Automation.SwitchParameter
+Parameter Sets: (All)
+Aliases: cf
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -WhatIf
+Shows what would happen if the cmdlet runs.
+The cmdlet is not run.
+
+```yaml
+Type: System.Management.Automation.SwitchParameter
+Parameter Sets: (All)
+Aliases: wi
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
 Accept wildcard characters: False
 ```
 

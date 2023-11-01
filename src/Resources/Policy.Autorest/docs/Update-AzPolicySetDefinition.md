@@ -16,30 +16,30 @@ This operation updates an existing policy set definition in the given subscripti
 ```
 Update-AzPolicySetDefinition -Name <String> [-BackwardCompatible] [-Description <String>]
  [-DisplayName <String>] [-Metadata <String>] [-Parameter <String>] [-PolicyDefinition <String>]
- [-PolicyDefinitionGroup <String>] [-DefaultProfile <PSObject>] [<CommonParameters>]
+ [-PolicyDefinitionGroup <String>] [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ### Id
 ```
 Update-AzPolicySetDefinition -Id <String> [-BackwardCompatible] [-Description <String>]
  [-DisplayName <String>] [-Metadata <String>] [-Parameter <String>] [-PolicyDefinition <String>]
- [-PolicyDefinitionGroup <String>] [-DefaultProfile <PSObject>] [<CommonParameters>]
+ [-PolicyDefinitionGroup <String>] [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ### ManagementGroupName
 ```
 Update-AzPolicySetDefinition -ManagementGroupName <String> -Name <String> [-BackwardCompatible]
  [-Description <String>] [-DisplayName <String>] [-Metadata <String>] [-Parameter <String>]
- [-PolicyDefinition <String>] [-PolicyDefinitionGroup <String>] [-DefaultProfile <PSObject>]
- [<CommonParameters>]
+ [-PolicyDefinition <String>] [-PolicyDefinitionGroup <String>] [-DefaultProfile <PSObject>] [-Confirm]
+ [-WhatIf] [<CommonParameters>]
 ```
 
 ### SubscriptionId
 ```
 Update-AzPolicySetDefinition -Name <String> -SubscriptionId <String> [-BackwardCompatible]
  [-Description <String>] [-DisplayName <String>] [-Metadata <String>] [-Parameter <String>]
- [-PolicyDefinition <String>] [-PolicyDefinitionGroup <String>] [-DefaultProfile <PSObject>]
- [<CommonParameters>]
+ [-PolicyDefinition <String>] [-PolicyDefinitionGroup <String>] [-DefaultProfile <PSObject>] [-Confirm]
+ [-WhatIf] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -269,6 +269,37 @@ Required: True
 Position: Named
 Default value: None
 Accept pipeline input: True (ByPropertyName)
+Accept wildcard characters: False
+```
+
+### -Confirm
+Prompts you for confirmation before running the cmdlet.
+
+```yaml
+Type: System.Management.Automation.SwitchParameter
+Parameter Sets: (All)
+Aliases: cf
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -WhatIf
+Shows what would happen if the cmdlet runs.
+The cmdlet is not run.
+
+```yaml
+Type: System.Management.Automation.SwitchParameter
+Parameter Sets: (All)
+Aliases: wi
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
 Accept wildcard characters: False
 ```
 

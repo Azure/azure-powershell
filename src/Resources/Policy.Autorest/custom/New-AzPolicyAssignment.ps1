@@ -32,7 +32,7 @@ https://learn.microsoft.com/powershell/module/az.resources/new-azpolicyassignmen
 #>
 function New-AzPolicyAssignment {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.Policy.Models.Api20220601.IPolicyAssignment])]
-[CmdletBinding(DefaultParameterSetName='Default', SupportsShouldProcess=$false, ConfirmImpact='None')]
+[CmdletBinding(DefaultParameterSetName='Default', SupportsShouldProcess=$true, ConfirmImpact='Low')]
 param(
     [Parameter(Mandatory, ValueFromPipelineByPropertyName)]
     [ValidateNotNullOrEmpty()]

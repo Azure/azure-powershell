@@ -30,7 +30,7 @@ https://learn.microsoft.com/powershell/module/az.resources/new-azpolicydefinitio
 #>
 function New-AzPolicyDefinition {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.Policy.Models.Api20210601.IPolicyDefinition])]
-[CmdletBinding(DefaultParameterSetName='Name', SupportsShouldProcess=$false, ConfirmImpact='None')]
+[CmdletBinding(DefaultParameterSetName='Name', SupportsShouldProcess=$true, ConfirmImpact='Low')]
 param(
     [Parameter(Mandatory, ValueFromPipelineByPropertyName)]
     [ValidateNotNullOrEmpty()]
