@@ -21,6 +21,7 @@ namespace Microsoft.Azure.Commands.DeploymentManager.Commands
     using Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters;
     using Microsoft.Azure.Management.Internal.Resources.Utilities.Models;
 
+    [CmdletDeprecation()]
     [Cmdlet(
         VerbsCommon.
         New, ResourceManager.Common.AzureRMConstants.AzurePrefix + "DeploymentManagerService",

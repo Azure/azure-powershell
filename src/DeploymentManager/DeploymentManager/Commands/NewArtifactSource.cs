@@ -20,6 +20,7 @@ namespace Microsoft.Azure.Commands.DeploymentManager.Commands
     using Microsoft.Azure.Commands.DeploymentManager.Models;
     using Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters;
 
+    [CmdletDeprecation()]
     [Cmdlet(
         VerbsCommon.New, 
         ResourceManager.Common.AzureRMConstants.AzurePrefix + "DeploymentManagerArtifactSource",
