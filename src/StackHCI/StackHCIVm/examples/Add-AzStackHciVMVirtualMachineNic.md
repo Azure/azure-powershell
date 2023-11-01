@@ -1,18 +1,12 @@
-### Example 1: {{ Add title here }}
+### Example 1: Add a Network Interface to a Virtual Machine
 ```powershell
-PS C:\> {{ Add code here }}
+Add-AzStackHCIVMVirtualMachineNic  -Name "testVm" -ResourceGroupName "test-rg"  -DataDiskNames "testNic"
 
-{{ Add output here }}
 ```
-
-{{ Add description here }}
-
-### Example 2: {{ Add title here }}
-```powershell
-PS C:\> {{ Add code here }}
-
-{{ Add output here }}
+```output
+Name            ResourceGroupName
+----            -----------------
+testVm          test-rg
 ```
-
-{{ Add description here }}
+This command attaches a network interface to the virtual machine in the specified resource group. 
 

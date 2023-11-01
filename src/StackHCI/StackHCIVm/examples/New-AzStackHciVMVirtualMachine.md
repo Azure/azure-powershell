@@ -1,18 +1,25 @@
-### Example 1: {{ Add title here }}
+### Example 1: Create a Virtual Machine with an Image. 
 ```powershell
-PS C:\> {{ Add code here }}
-
-{{ Add output here }}
+New-AzStackHciVMVirtualMachine -Name "testVm" -OsType "Linux"  -ImageName "testImage" -VmSize "Standard_K8S_v1"  -AdminUsername "localadmin" -ComputerName "testVm"  -ResourceGroupName "test-rg" -CustomLocationId "/subscriptions/{subscriptionID}/resourcegroups/{resourceGroupName}/providers/microsoft.extendedlocation/customlocations/{customLocationName}"  -Location "eastus"
+```
+```output
+Name            ResourceGroupName
+----            -----------------
+testVm          test-rg
 ```
 
-{{ Add description here }}
+This command creates a virtual machine from a gallery image. 
 
-### Example 2: {{ Add title here }}
+### Example 2: Create a Virtual Machine with a Disk. 
 ```powershell
-PS C:\> {{ Add code here }}
-
-{{ Add output here }}
+New-AzStackHciVMVirtualMachine -Name "testVm" -OsType "Linux" -OsDiskName "testOsDisk" -VmSize "Standard_K8S_v1"  -AdminUsername "localadmin" -ComputerName "testVm" -ResourceGroupName "test-rg" -CustomLocationId "/subscriptions/{subscriptionID}/resourcegroups/{resourceGroupName}/providers/microsoft.extendedlocation/customlocations/{customLocationName}" -Location "eastus"
+```
+```output
+Name            ResourceGroupName
+----            -----------------
+testVm          test-rg
 ```
 
-{{ Add description here }}
+This command creates a virtual machine from a disk. 
+
 

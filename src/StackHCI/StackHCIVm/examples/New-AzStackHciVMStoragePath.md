@@ -1,18 +1,12 @@
-### Example 1: {{ Add title here }}
+### Example 1: Create a Storage Path 
 ```powershell
-PS C:\> {{ Add code here }}
-
-{{ Add output here }}
+ New-AzStackHCIVMStoragePath  -Name "testStoragePath" -ResourceGroupName "test-rg" -CustomLocationId "/subscriptions/{subscriptionID}/resourcegroups/{resourceGroupName}/providers/microsoft.extendedlocation/customlocations/{customLocationName}"-Location "eastus" -Path "C:\ClusterStorage\Volume1\testpath"
 ```
-
-{{ Add description here }}
-
-### Example 2: {{ Add title here }}
-```powershell
-PS C:\> {{ Add code here }}
-
-{{ Add output here }}
+```output
+Name            ResourceGroupName
+----            -----------------
+testStoragePath       test-rg
 ```
+This command creates a storage path in the specified resource group. 
 
-{{ Add description here }}
 

@@ -1,18 +1,11 @@
-### Example 1: {{ Add title here }}
+### Example 1: Create a Network Interface
 ```powershell
-PS C:\> {{ Add code here }}
-
-{{ Add output here }}
+ New-AzStackHciVMNetworkInterface  -Name "testNic" -ResourceGroupName "test-rg" -CustomLocationId "/subscriptions/{subscriptionID}/resourcegroups/{resourceGroupName}/providers/microsoft.extendedlocation/customlocations/{customLocationName}" -Location "eastus" -SubnetName "testLnet" 
 ```
-
-{{ Add description here }}
-
-### Example 2: {{ Add title here }}
-```powershell
-PS C:\> {{ Add code here }}
-
-{{ Add output here }}
+```output
+Name            ResourceGroupName
+----            -----------------
+testNic      test-rg
 ```
-
-{{ Add description here }}
+This command creates a network interface in the specified resource group. 
 

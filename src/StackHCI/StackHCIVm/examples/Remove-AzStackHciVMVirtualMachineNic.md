@@ -1,18 +1,11 @@
-### Example 1: {{ Add title here }}
+### Example 1: Removes a Network Interface from a  Virtual Machine
 ```powershell
-PS C:\> {{ Add code here }}
+Remove-AzStackHCIVMVirtualMachineNic  -Name "testVm" -ResourceGroupName "test-rg"  -NicNames "testNic"
 
-{{ Add output here }}
 ```
-
-{{ Add description here }}
-
-### Example 2: {{ Add title here }}
-```powershell
-PS C:\> {{ Add code here }}
-
-{{ Add output here }}
+```output
+Name            ResourceGroupName
+----            -----------------
+testVm          test-rg
 ```
-
-{{ Add description here }}
-
+This command removes a network interface from the virtual machine in the specified resource group. 

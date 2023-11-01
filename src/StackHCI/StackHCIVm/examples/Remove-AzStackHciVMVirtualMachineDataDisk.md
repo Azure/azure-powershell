@@ -1,18 +1,12 @@
-### Example 1: {{ Add title here }}
+### Example 1: Removes a Data Disk from a Virtual Machine
 ```powershell
-PS C:\> {{ Add code here }}
+Remove-AzStackHCIVMVirtualMachineDataDisk  -Name "testVm" -ResourceGroupName "test-rg"  -DataDiskNames "testVhd"
 
-{{ Add output here }}
 ```
-
-{{ Add description here }}
-
-### Example 2: {{ Add title here }}
-```powershell
-PS C:\> {{ Add code here }}
-
-{{ Add output here }}
+```output
+Name            ResourceGroupName
+----            -----------------
+testVm          test-rg
 ```
-
-{{ Add description here }}
+This command removes a data disk from the virtual machine in the specified resource group. 
 

@@ -1,18 +1,13 @@
-### Example 1: {{ Add title here }}
+### Example 1: Update an Image.
 ```powershell
-PS C:\> {{ Add code here }}
-
-{{ Add output here }}
+Update-AzStackHCIVMVImage  -Name "testImage" -ResourceGroupName "test-rg" -Tags @{TagName = TagValue }
 ```
 
-{{ Add description here }}
-
-### Example 2: {{ Add title here }}
-```powershell
-PS C:\> {{ Add code here }}
-
-{{ Add output here }}
+```output
+Name            ResourceGroupName
+----            -----------------
+testImage      test-rg
 ```
 
-{{ Add description here }}
+This command updates an exisiting image in the specified resource group.
 

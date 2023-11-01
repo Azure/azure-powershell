@@ -1,18 +1,9 @@
-### Example 1: {{ Add title here }}
+### Example 1: Remove a Storage Path
 ```powershell
-PS C:\> {{ Add code here }}
+Remove-AzStackHCIVMStoragePath  -Name "testStoragePath" -ResourceGroupName "test-rg"
 
-{{ Add output here }}
 ```
+This command removes the storage path from the specified resource group. 
 
-{{ Add description here }}
 
-### Example 2: {{ Add title here }}
-```powershell
-PS C:\> {{ Add code here }}
-
-{{ Add output here }}
-```
-
-{{ Add description here }}
 

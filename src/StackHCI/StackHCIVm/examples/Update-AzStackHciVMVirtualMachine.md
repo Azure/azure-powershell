@@ -1,18 +1,12 @@
-### Example 1: {{ Add title here }}
+### Example 1: Update the Size of the Virtual Machine. 
 ```powershell
-PS C:\> {{ Add code here }}
-
-{{ Add output here }}
+Update-AzStackHCIVMVirtualMachine  -Name "testVm" -ResourceGroupName "test-rg" -VmSize "4"
+```
+```output
+Name            ResourceGroupName
+----            -----------------
+testVm          test-rg
 ```
 
-{{ Add description here }}
-
-### Example 2: {{ Add title here }}
-```powershell
-PS C:\> {{ Add code here }}
-
-{{ Add output here }}
-```
-
-{{ Add description here }}
+This command updates an existing virtual machine in the specified resource group. 
 

@@ -1,22 +1,12 @@
-### Example 1: {{ Add title here }}
+### Example 1: Update a Network Interface.
 ```powershell
-{{ Add code here }}
+Update-AzStackHCIVMVNetworkInterface  -Name "testNic" -ResourceGroupName "test-rg" -Tags @{TagName = TagValue }
 ```
 
 ```output
-{{ Add output here }}
+Name            ResourceGroupName
+----            -----------------
+testNic       test-rg
 ```
 
-{{ Add description here }}
-
-### Example 2: {{ Add title here }}
-```powershell
-{{ Add code here }}
-```
-
-```output
-{{ Add output here }}
-```
-
-{{ Add description here }}
-
+This command updates an exisiting network interface in the specified resource group.

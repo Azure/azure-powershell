@@ -1,18 +1,9 @@
-### Example 1: {{ Add title here }}
+### Example 1: Remove a Virtual Machine 
 ```powershell
-PS C:\> {{ Add code here }}
+Remove-AzStackHCIVMVirtualMachine  -Name "testVm" -ResourceGroupName "test-rg"
 
-{{ Add output here }}
 ```
+This command removes the virtual machine from the specified resource group. 
 
-{{ Add description here }}
 
-### Example 2: {{ Add title here }}
-```powershell
-PS C:\> {{ Add code here }}
-
-{{ Add output here }}
-```
-
-{{ Add description here }}
 

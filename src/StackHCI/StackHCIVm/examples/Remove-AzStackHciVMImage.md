@@ -1,18 +1,8 @@
-### Example 1: {{ Add title here }}
+### Example 1:  Remove an image.
 ```powershell
-PS C:\> {{ Add code here }}
-
-{{ Add output here }}
+Remove-AzStackHCIVMImage -Name  "testImage" -ResourceGroupName "test-rg"
 ```
+This command removes the image from the specified resource group. 
 
-{{ Add description here }}
 
-### Example 2: {{ Add title here }}
-```powershell
-PS C:\> {{ Add code here }}
-
-{{ Add output here }}
-```
-
-{{ Add description here }}
 

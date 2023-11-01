@@ -1,18 +1,6 @@
-### Example 1: {{ Add title here }}
+### Example 1: Remove a network interface.
 ```powershell
-PS C:\> {{ Add code here }}
-
-{{ Add output here }}
+Remove-AzStackHCIVMLogicalNetwork -Name  "testNic" -ResourceGroupName "test-rg"
 ```
-
-{{ Add description here }}
-
-### Example 2: {{ Add title here }}
-```powershell
-PS C:\> {{ Add code here }}
-
-{{ Add output here }}
-```
-
-{{ Add description here }}
+This command removes the network interface from the specified resource group. 
 

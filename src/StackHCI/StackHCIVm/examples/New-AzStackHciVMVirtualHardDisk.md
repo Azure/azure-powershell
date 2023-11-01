@@ -1,18 +1,12 @@
-### Example 1: {{ Add title here }}
+### Example 1: Create a Virtual Hard Disk
 ```powershell
-PS C:\> {{ Add code here }}
-
-{{ Add output here }}
+ New-AzStackHCIVMVirtualHardDisk -Name "testVhd" -ResourceGroupName "test-rg" -CustomLocationId "/subscriptions/{subscriptionID}/resourcegroups/{resourceGroupName}/providers/microsoft.extendedlocation/customlocations/{customLocationName}" -Location "eastus" -SizeGb 2
 ```
-
-{{ Add description here }}
-
-### Example 2: {{ Add title here }}
-```powershell
-PS C:\> {{ Add code here }}
-
-{{ Add output here }}
+```output
+Name            ResourceGroupName
+----            -----------------
+testVhd       test-rg
 ```
+This command creates a virtual hard disk in the specified resource group. 
 
-{{ Add description here }}
 

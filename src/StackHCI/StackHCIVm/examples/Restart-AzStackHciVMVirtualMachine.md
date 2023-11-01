@@ -1,22 +1,6 @@
-### Example 1: {{ Add title here }}
+### Example 1: Restart Virtual Machine 
 ```powershell
-{{ Add code here }}
+Restart-AzStackHCIVMVirtualMachine  -Name "testVm" -ResourceGroupName "test-rg"
+
 ```
-
-```output
-{{ Add output here }}
-```
-
-{{ Add description here }}
-
-### Example 2: {{ Add title here }}
-```powershell
-{{ Add code here }}
-```
-
-```output
-{{ Add output here }}
-```
-
-{{ Add description here }}
-
+This command restarts the virtual machine in the specified resource group. 
