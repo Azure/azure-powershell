@@ -19,7 +19,7 @@
 --->
 
 ## Upcoming Release
-* Updated breaking change for parameter `VariableName` in `NewAzureApplicationGatewayFirewallCustomRuleGroupByVariable` to remove "Geo" as a valid input.
+* [Breaking Change] Removed `Geo` as a valid input for parameter `VariableName` in `NewAzureApplicationGatewayFirewallCustomRuleGroupByVariable`.
 
 ## Version 6.2.0
 * Added support for new Application Gateway SKU type, Basic SKU
