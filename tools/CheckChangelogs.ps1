@@ -12,43 +12,36 @@
 # ----------------------------------------------------------------------------------
 
 param(
-    [Parameter(Mandatory)]
-    [string] $rootPath = "src",
+    [Parameter(Mandatory=$false)]
+    [string] $rootPath = ".",
     [Parameter(Mandatory=$True)]
-    [string] $outputFile = "artifacts/ChangedModule.txt"
+    [string] $outputFile = "artifacts/ChangedModule.txt",
+    [Parameter(Mandatory=$false)]
+    [string] $ModifiedModuleList = ""
 )
-$changelogFiles = Get-ChildItem -Path $rootPath -Filter changelog.md -Recurse -File
 
-$modifiedDirectories = New-Object System.Collections.Generic.List[System.String]
+# Read the content of changelog.md into a variable
+$content = Get-Content -Path "$rootPath/changelog.md" 
 
-foreach ($file in $changelogFiles) {
-    $lines = Get-Content $file.FullName
-    $isUpcomingSection = $false
-    $hasChanges = $false
-
-    foreach ($line in $lines) {
-        if ($line -eq "## Upcoming Release") {
-            $isUpcomingSection = $true 
-        }
-        elseif ($isUpcomingSection -and $line.StartsWith("## ")) {
-            $isUpcomingSection = $false 
-        }
-        elseif ($isUpcomingSection -and -not [string]::IsNullOrWhiteSpace($line)) {
-            $hasChanges = $true 
+$continueReading = $false
+$modules = @()
+foreach ($line in $content) {
+    if ($line -match "^##\s\d+\.\d+\.\d+") {
+        if ($continueReading) {
             break
+        } else {
+            $continueReading = $true
         }
     }
-
-    if ($hasChanges) {
-        $fullPath = $file.DirectoryName
-        $relativePath = $fullPath.Substring($rootPath.Length).TrimStart('\', '/')
-        $firstSubDirectory = ($relativePath -split '[\\/]', 2)[0]
-        $modifiedDirectories.Add($firstSubDirectory)
+    elseif ($continueReading -and $line -match "^####\sAz\.(\w+)") {
+        $modules += $matches[1]
     }
 }
 
-if ($modifiedDirectories.Count -gt 0) {
-    [System.IO.File]::WriteAllText($outputFile, ($modifiedDirectories -join [Environment]::NewLine))
-} else {
-    [System.IO.File]::WriteAllText($outputFile, "No changes found.")
+# If ModifiedModuleList is not empty, overwrite the $modules array with it
+if (-not [string]::IsNullOrEmpty($ModifiedModuleList) -and $ModifiedModuleList -ne "none") {
+    $modules = $ModifiedModuleList -split ':'
 }
+
+# Write the module names to modifiedmodule.txt
+$modules | Out-File -Path $outputFile

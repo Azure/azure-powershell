@@ -24,6 +24,10 @@
     Just focus on one module and its dependency such as Az.Account. Module name doesn't need to lead with Az.
   /p:SkipHelp=True
     Skips help generation, mainly for local builds to save time.
+  /p:ModifiedModuleBuild=True
+    Only build changed module according to the changelog in root folder or according to another property "ModifiedModules"
+  /p:ModifiedModules="Accounts,Databricks,..."
+    Only valid when ModifiedModuleBuild=True. Modules were split by ':'.
 -->
 <Project DefaultTargets="Build" ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
 
@@ -37,6 +41,7 @@
     <IsGenerateBased Condition="'$(IsGenerateBased)' != 'true'">false</IsGenerateBased>
     <IsSecurityCheck Condition="'$(IsSecurityCheck)' != 'true'">false</IsSecurityCheck>
     <ModifiedModuleBuild Condition="'$(ModifiedModuleBuild)' != 'true'">false</ModifiedModuleBuild>
+    <ModifiedModules Condition="'$(ModifiedModules)' != ''">none</ModifiedModules>
 
     <!-- Flags -->
     <CodeSign Condition ="'$(CodeSign)' == ''">false</CodeSign>
@@ -179,7 +184,7 @@
       <CsprojFiles Include="@(TestCsprojList)" Condition="'$(Configuration)' != 'Release'" />
     </ItemGroup>
 
-    <Exec Command="$(PowerShellCoreCommandPrefix) &quot;.\tools\CheckChangeLogs.ps1 -outputFile $(RepoArtifacts)/ModifiedModule.txt -rootPath $(RepoRoot)src/ &quot;" Condition="'$(ModifiedModuleBuild)' == 'true'"/>
+    <Exec Command="$(PowerShellCoreCommandPrefix) &quot;.\tools\CheckChangeLogs.ps1 -outputFile $(RepoArtifacts)/ModifiedModule.txt -rootPath $(RepoRoot) -ModifiedModuleList $(ModifiedModules) &quot;" Condition="'$(ModifiedModuleBuild)' == 'true'"/>
     <ReadLinesFromFile File="$(RepoArtifacts)/ModifiedModule.txt" Condition="'$(ModifiedModuleBuild)' == 'true'">
         <Output TaskParameter="Lines" ItemName="ModifiedModuleList" />
     </ReadLinesFromFile>
