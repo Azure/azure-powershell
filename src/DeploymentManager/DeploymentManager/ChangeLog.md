@@ -18,7 +18,6 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
-## Version 1.2.0
 * All operations for resources have been flagged as deprecated. Deployment manager module will be retired soon.
 
 ## Version 1.1.0

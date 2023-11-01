@@ -17,8 +17,9 @@ namespace Microsoft.Azure.Commands.DeploymentManager.Commands
     using System.Management.Automation;
 
     using Microsoft.Azure.Commands.DeploymentManager.Models;
+    using Microsoft.WindowsAzure.Commands.Common.CustomAttributes;
 
-    [CmdletDeprecation()]
+    [CmdletDeprecationWithVersion("11.0.0", "1.1.1")]
     [Cmdlet(
         VerbsCommon.Set, 
         ResourceManager.Common.AzureRMConstants.AzurePrefix + "DeploymentManagerServiceTopology",
