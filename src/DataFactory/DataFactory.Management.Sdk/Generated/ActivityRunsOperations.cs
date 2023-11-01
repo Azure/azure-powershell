@@ -8,6 +8,7 @@
 // regenerated.
 // </auto-generated>
 
+// unexpected change
 namespace Microsoft.Azure.Management.DataFactory
 {
     using Microsoft.Rest;
