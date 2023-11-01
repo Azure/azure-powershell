@@ -65,7 +65,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Models
             {
                 return;
             }
-            {_error = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Runtime.Json.JsonObject>("error"), out var __jsonError) ? Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Models.CloudErrorBody.FromJson(__jsonError) : Error;}
+            {_error = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Runtime.Json.JsonObject>("error"), out var __jsonError) ? Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Models.CloudErrorBody.FromJson(__jsonError) : _error;}
             AfterFromJson(json);
         }
 

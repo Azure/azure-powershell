@@ -77,12 +77,12 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Models
             {
                 return;
             }
-            {_createdBy = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Runtime.Json.JsonString>("createdBy"), out var __jsonCreatedBy) ? (string)__jsonCreatedBy : (string)CreatedBy;}
-            {_createdByType = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Runtime.Json.JsonString>("createdByType"), out var __jsonCreatedByType) ? (string)__jsonCreatedByType : (string)CreatedByType;}
-            {_createdAt = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Runtime.Json.JsonString>("createdAt"), out var __jsonCreatedAt) ? global::System.DateTime.TryParse((string)__jsonCreatedAt, global::System.Globalization.CultureInfo.InvariantCulture, global::System.Globalization.DateTimeStyles.AdjustToUniversal, out var __jsonCreatedAtValue) ? __jsonCreatedAtValue : CreatedAt : CreatedAt;}
-            {_lastModifiedBy = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Runtime.Json.JsonString>("lastModifiedBy"), out var __jsonLastModifiedBy) ? (string)__jsonLastModifiedBy : (string)LastModifiedBy;}
-            {_lastModifiedByType = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Runtime.Json.JsonString>("lastModifiedByType"), out var __jsonLastModifiedByType) ? (string)__jsonLastModifiedByType : (string)LastModifiedByType;}
-            {_lastModifiedAt = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Runtime.Json.JsonString>("lastModifiedAt"), out var __jsonLastModifiedAt) ? global::System.DateTime.TryParse((string)__jsonLastModifiedAt, global::System.Globalization.CultureInfo.InvariantCulture, global::System.Globalization.DateTimeStyles.AdjustToUniversal, out var __jsonLastModifiedAtValue) ? __jsonLastModifiedAtValue : LastModifiedAt : LastModifiedAt;}
+            {_createdBy = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Runtime.Json.JsonString>("createdBy"), out var __jsonCreatedBy) ? (string)__jsonCreatedBy : (string)_createdBy;}
+            {_createdByType = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Runtime.Json.JsonString>("createdByType"), out var __jsonCreatedByType) ? (string)__jsonCreatedByType : (string)_createdByType;}
+            {_createdAt = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Runtime.Json.JsonString>("createdAt"), out var __jsonCreatedAt) ? global::System.DateTime.TryParse((string)__jsonCreatedAt, global::System.Globalization.CultureInfo.InvariantCulture, global::System.Globalization.DateTimeStyles.AdjustToUniversal, out var __jsonCreatedAtValue) ? __jsonCreatedAtValue : _createdAt : _createdAt;}
+            {_lastModifiedBy = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Runtime.Json.JsonString>("lastModifiedBy"), out var __jsonLastModifiedBy) ? (string)__jsonLastModifiedBy : (string)_lastModifiedBy;}
+            {_lastModifiedByType = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Runtime.Json.JsonString>("lastModifiedByType"), out var __jsonLastModifiedByType) ? (string)__jsonLastModifiedByType : (string)_lastModifiedByType;}
+            {_lastModifiedAt = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Runtime.Json.JsonString>("lastModifiedAt"), out var __jsonLastModifiedAt) ? global::System.DateTime.TryParse((string)__jsonLastModifiedAt, global::System.Globalization.CultureInfo.InvariantCulture, global::System.Globalization.DateTimeStyles.AdjustToUniversal, out var __jsonLastModifiedAtValue) ? __jsonLastModifiedAtValue : _lastModifiedAt : _lastModifiedAt;}
             AfterFromJson(json);
         }
 

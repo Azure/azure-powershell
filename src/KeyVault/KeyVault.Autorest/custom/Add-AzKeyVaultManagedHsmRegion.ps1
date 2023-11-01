@@ -120,9 +120,7 @@ function Add-AzKeyVaultManagedHsmRegion {
             $null = $PSBoundParameters.Add('Name', $HsmName)
             $null = $PSBoundParameters.Remove('Region')
             $Parameter = Az.KeyVault.internal\Get-AzKeyVaultManagedHsm @PSBoundParameters
-            for ($i = 0; $i -lt $Region.Count; $i++) {
-                $Parameter.Region +=  New-Object Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Models.MhsmGeoReplicatedRegion -Property @{Name = $Region[$i]}
-            }
+            $Parameter = Az.KeyVault.private\Get-ParameterForRegion -Parameter $Parameter -Region $Region
             $null = $PSBoundParameters.Add('Parameter', $Parameter)            
             $null = Az.KeyVault.internal\Update-AzKeyVaultManagedHsm @PSBoundParameters
             $null = $PSBoundParameters.Remove('Parameter')

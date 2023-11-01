@@ -102,8 +102,8 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Models
             {
                 return;
             }
-            {_id = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Runtime.Json.JsonString>("id"), out var __jsonId) ? (string)__jsonId : (string)Id;}
-            {_ignoreMissingVnetServiceEndpoint = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Runtime.Json.JsonBoolean>("ignoreMissingVnetServiceEndpoint"), out var __jsonIgnoreMissingVnetServiceEndpoint) ? (bool?)__jsonIgnoreMissingVnetServiceEndpoint : IgnoreMissingVnetServiceEndpoint;}
+            {_id = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Runtime.Json.JsonString>("id"), out var __jsonId) ? (string)__jsonId : (string)_id;}
+            {_ignoreMissingVnetServiceEndpoint = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Runtime.Json.JsonBoolean>("ignoreMissingVnetServiceEndpoint"), out var __jsonIgnoreMissingVnetServiceEndpoint) ? (bool?)__jsonIgnoreMissingVnetServiceEndpoint : _ignoreMissingVnetServiceEndpoint;}
             AfterFromJson(json);
         }
     }

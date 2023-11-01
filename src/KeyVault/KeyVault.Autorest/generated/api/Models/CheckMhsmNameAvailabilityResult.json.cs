@@ -65,9 +65,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Models
             {
                 return;
             }
-            {_nameAvailable = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Runtime.Json.JsonBoolean>("nameAvailable"), out var __jsonNameAvailable) ? (bool?)__jsonNameAvailable : NameAvailable;}
-            {_reason = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Runtime.Json.JsonString>("reason"), out var __jsonReason) ? (string)__jsonReason : (string)Reason;}
-            {_message = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Runtime.Json.JsonString>("message"), out var __jsonMessage) ? (string)__jsonMessage : (string)Message;}
+            {_nameAvailable = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Runtime.Json.JsonBoolean>("nameAvailable"), out var __jsonNameAvailable) ? (bool?)__jsonNameAvailable : _nameAvailable;}
+            {_reason = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Runtime.Json.JsonString>("reason"), out var __jsonReason) ? (string)__jsonReason : (string)_reason;}
+            {_message = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Runtime.Json.JsonString>("message"), out var __jsonMessage) ? (string)__jsonMessage : (string)_message;}
             AfterFromJson(json);
         }
 

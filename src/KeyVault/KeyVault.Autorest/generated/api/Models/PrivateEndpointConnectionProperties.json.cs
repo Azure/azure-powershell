@@ -77,9 +77,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Models
             {
                 return;
             }
-            {_privateEndpoint = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Runtime.Json.JsonObject>("privateEndpoint"), out var __jsonPrivateEndpoint) ? Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Models.PrivateEndpoint.FromJson(__jsonPrivateEndpoint) : PrivateEndpoint;}
-            {_privateLinkServiceConnectionState = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Runtime.Json.JsonObject>("privateLinkServiceConnectionState"), out var __jsonPrivateLinkServiceConnectionState) ? Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Models.PrivateLinkServiceConnectionState.FromJson(__jsonPrivateLinkServiceConnectionState) : PrivateLinkServiceConnectionState;}
-            {_provisioningState = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Runtime.Json.JsonString>("provisioningState"), out var __jsonProvisioningState) ? (string)__jsonProvisioningState : (string)ProvisioningState;}
+            {_privateEndpoint = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Runtime.Json.JsonObject>("privateEndpoint"), out var __jsonPrivateEndpoint) ? Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Models.PrivateEndpoint.FromJson(__jsonPrivateEndpoint) : _privateEndpoint;}
+            {_privateLinkServiceConnectionState = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Runtime.Json.JsonObject>("privateLinkServiceConnectionState"), out var __jsonPrivateLinkServiceConnectionState) ? Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Models.PrivateLinkServiceConnectionState.FromJson(__jsonPrivateLinkServiceConnectionState) : _privateLinkServiceConnectionState;}
+            {_provisioningState = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Runtime.Json.JsonString>("provisioningState"), out var __jsonProvisioningState) ? (string)__jsonProvisioningState : (string)_provisioningState;}
             AfterFromJson(json);
         }
 

@@ -109,7 +109,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Models
             {
                 return;
             }
-            {_accessPolicy = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Runtime.Json.JsonArray>("accessPolicies"), out var __jsonAccessPolicies) ? If( __jsonAccessPolicies as Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Runtime.Json.JsonArray, out var __v) ? new global::System.Func<System.Collections.Generic.List<Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Models.IAccessPolicyEntry>>(()=> global::System.Linq.Enumerable.ToList(global::System.Linq.Enumerable.Select(__v, (__u)=>(Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Models.IAccessPolicyEntry) (Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Models.AccessPolicyEntry.FromJson(__u) )) ))() : null : AccessPolicy;}
+            {_accessPolicy = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Runtime.Json.JsonArray>("accessPolicies"), out var __jsonAccessPolicies) ? If( __jsonAccessPolicies as Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Runtime.Json.JsonArray, out var __v) ? new global::System.Func<System.Collections.Generic.List<Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Models.IAccessPolicyEntry>>(()=> global::System.Linq.Enumerable.ToList(global::System.Linq.Enumerable.Select(__v, (__u)=>(Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Models.IAccessPolicyEntry) (Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Models.AccessPolicyEntry.FromJson(__u) )) ))() : null : _accessPolicy;}
             AfterFromJson(json);
         }
     }

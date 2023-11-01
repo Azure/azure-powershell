@@ -171,4 +171,10 @@ Export-TestStub -ModuleName $moduleName -ExportsFolder $exportsFolder -OutputFol
 Write-Host -ForegroundColor Green 'Creating example stubs...'
 Export-ExampleStub -ExportsFolder $exportsFolder -OutputFolder $examplesFolder
 
+if (Test-Path (Join-Path $PSScriptRoot 'generate-portal-ux.ps1'))
+{
+  Write-Host -ForegroundColor Green 'Creating ux metadata...'
+  . (Join-Path $PSScriptRoot 'generate-portal-ux.ps1')
+}
+
 Write-Host -ForegroundColor Green '-------------Done-------------'

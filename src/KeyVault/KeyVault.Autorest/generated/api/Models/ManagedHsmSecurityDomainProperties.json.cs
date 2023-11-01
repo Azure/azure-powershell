@@ -77,8 +77,8 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Models
             {
                 return;
             }
-            {_activationStatus = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Runtime.Json.JsonString>("activationStatus"), out var __jsonActivationStatus) ? (string)__jsonActivationStatus : (string)ActivationStatus;}
-            {_activationStatusMessage = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Runtime.Json.JsonString>("activationStatusMessage"), out var __jsonActivationStatusMessage) ? (string)__jsonActivationStatusMessage : (string)ActivationStatusMessage;}
+            {_activationStatus = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Runtime.Json.JsonString>("activationStatus"), out var __jsonActivationStatus) ? (string)__jsonActivationStatus : (string)_activationStatus;}
+            {_activationStatusMessage = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Runtime.Json.JsonString>("activationStatusMessage"), out var __jsonActivationStatusMessage) ? (string)__jsonActivationStatusMessage : (string)_activationStatusMessage;}
             AfterFromJson(json);
         }
 

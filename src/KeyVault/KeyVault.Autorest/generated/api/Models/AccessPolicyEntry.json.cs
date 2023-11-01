@@ -68,10 +68,10 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Models
             {
                 return;
             }
-            {_permission = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Runtime.Json.JsonObject>("permissions"), out var __jsonPermissions) ? Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Models.Permissions.FromJson(__jsonPermissions) : Permission;}
-            {_tenantId = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Runtime.Json.JsonString>("tenantId"), out var __jsonTenantId) ? (string)__jsonTenantId : (string)TenantId;}
-            {_objectId = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Runtime.Json.JsonString>("objectId"), out var __jsonObjectId) ? (string)__jsonObjectId : (string)ObjectId;}
-            {_applicationId = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Runtime.Json.JsonString>("applicationId"), out var __jsonApplicationId) ? (string)__jsonApplicationId : (string)ApplicationId;}
+            {_permission = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Runtime.Json.JsonObject>("permissions"), out var __jsonPermissions) ? Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Models.Permissions.FromJson(__jsonPermissions) : _permission;}
+            {_tenantId = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Runtime.Json.JsonString>("tenantId"), out var __jsonTenantId) ? (string)__jsonTenantId : (string)_tenantId;}
+            {_objectId = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Runtime.Json.JsonString>("objectId"), out var __jsonObjectId) ? (string)__jsonObjectId : (string)_objectId;}
+            {_applicationId = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Runtime.Json.JsonString>("applicationId"), out var __jsonApplicationId) ? (string)__jsonApplicationId : (string)_applicationId;}
             AfterFromJson(json);
         }
 

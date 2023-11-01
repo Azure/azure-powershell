@@ -121,7 +121,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Runtime.PowerShell
             : String.Empty;
     }
 
-    internal class PSArgumentCompleterOutput: ArgumentCompleterOutput
+    internal class PSArgumentCompleterOutput : ArgumentCompleterOutput
     {
         public PSArgumentCompleterInfo PSArgumentCompleterInfo { get; }
 
@@ -206,8 +206,15 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Runtime.PowerShell
 
         public string GetProcessCustomAttributesAtRuntime()
         {
-            return VariantGroup.IsInternal ? "" : $@"{Indent}{Indent}$cmdInfo = Get-Command -Name $mapping[$parameterSet]{Environment.NewLine}{Indent}{Indent}[Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Runtime.MessageAttributeHelper]::ProcessCustomAttributesAtRuntime($cmdInfo, $MyInvocation, $parameterSet, $PSCmdlet)";
+            return VariantGroup.IsInternal ? "" : IsAzure ? $@"{Indent}{Indent}$cmdInfo = Get-Command -Name $mapping[$parameterSet]
+{Indent}{Indent}[Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Runtime.MessageAttributeHelper]::ProcessCustomAttributesAtRuntime($cmdInfo, $MyInvocation, $parameterSet, $PSCmdlet)
+{Indent}{Indent}if ($null -ne $MyInvocation.MyCommand -and [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PromptedPreviewMessageCmdlets -notcontains $MyInvocation.MyCommand.Name -and [Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Runtime.MessageAttributeHelper]::ContainsPreviewAttribute($cmdInfo, $MyInvocation)){{
+{Indent}{Indent}{Indent}[Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Runtime.MessageAttributeHelper]::ProcessPreviewMessageAttributesAtRuntime($cmdInfo, $MyInvocation, $parameterSet, $PSCmdlet)
+{Indent}{Indent}{Indent}[Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PromptedPreviewMessageCmdlets.Enqueue($MyInvocation.MyCommand.Name)
+{Indent}{Indent}}}" : $@"{Indent}{Indent}$cmdInfo = Get-Command -Name $mapping[$parameterSet]{Environment.NewLine}{Indent}{Indent}[Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Runtime.MessageAttributeHelper]::ProcessCustomAttributesAtRuntime($cmdInfo, $MyInvocation, $parameterSet, $PSCmdlet)
+{Indent}{Indent}[Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Runtime.MessageAttributeHelper]::ProcessPreviewMessageAttributesAtRuntime($cmdInfo, $MyInvocation, $parameterSet, $PSCmdlet)";
         }
+
         private string GetTelemetry()
         {
             if (!VariantGroup.IsInternal && IsAzure)
@@ -278,7 +285,8 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Runtime.PowerShell
                 var parameterName = defaultInfo.ParameterGroup.ParameterName;
                 sb.AppendLine();
                 var setCondition = " ";
-                if (!String.IsNullOrEmpty(defaultInfo.SetCondition)) {
+                if (!String.IsNullOrEmpty(defaultInfo.SetCondition))
+                {
                     setCondition = $" -and {defaultInfo.SetCondition}";
                 }
                 sb.AppendLine($"{Indent}{Indent}if (({variantListString}) -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('{parameterName}'){setCondition}) {{");
