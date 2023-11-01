@@ -1,0 +1,52 @@
+{
+  "resourceType": "actionGroups/notificationStatus",
+  "apiVersion": "2023-01-01",
+  "learnMore": {
+    "url": "https://learn.microsoft.com/powershell/module/az.monitor"
+  },
+  "commands": [
+    {
+      "name": "Get-AzActionGroupTestNotification",
+      "description": "Get the test notifications by the notification id",
+      "path": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Insights/actionGroups/{actionGroupName}/notificationStatus/{notificationId}",
+      "help": {
+        "learnMore": {
+          "url": "https://learn.microsoft.com/powershell/module/az.monitor/get-azactiongrouptestnotification"
+        },
+        "parameterSets": [
+          {
+            "parameters": [
+              "-ActionGroupName <String>",
+              "-NotificationId <String>",
+              "-ResourceGroupName <String>",
+              "[-SubscriptionId <String[]>]"
+            ]
+          }
+        ]
+      },
+      "examples": [
+        {
+          "description": "Get the test notifications by the notification id",
+          "parameters": [
+            {
+              "name": "-ActionGroupName",
+              "value": "[Path.actionGroupName]"
+            },
+            {
+              "name": "-NotificationId",
+              "value": "[Path.notificationId]"
+            },
+            {
+              "name": "-ResourceGroupName",
+              "value": "[Path.resourceGroupName]"
+            },
+            {
+              "name": "-SubscriptionId",
+              "value": "[Path.subscriptionId]"
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}
