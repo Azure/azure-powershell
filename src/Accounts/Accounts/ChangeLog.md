@@ -19,6 +19,8 @@
 -->
 
 ## Upcoming Release
+* Upgraded Azure.Identity to 1.10.3 [#23018].
+  - Renamed token cache from `msal.cache` to `msal.cache.cae` or `masl.cache.nocae`.
 * Adjusted output format to be more user-friendly for `Get-AzContext/Tenant/Subscription` and `Invoke-AzRestMethod`
 * Added upcoming breaking change warning for deprecation of config parameter `DisableErrorRecordsPersistence`.
 
