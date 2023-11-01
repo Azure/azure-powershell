@@ -36,7 +36,7 @@ https://learn.microsoft.com/powershell/module/az.resources/update-azpolicyassign
 function Update-AzPolicyAssignment {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.Policy.Models.Api20220601.IPolicyAssignment])]
 [Alias('Set-AzPolicyAssignment')]
-[CmdletBinding(DefaultParameterSetName='Name', SupportsShouldProcess=$false, ConfirmImpact='Low')]
+[CmdletBinding(DefaultParameterSetName='Name', SupportsShouldProcess=$true, ConfirmImpact='Low')]
 param(
     [Parameter(ParameterSetName='Name', Mandatory, ValueFromPipelineByPropertyName)]
     [Parameter(ParameterSetName='NameParameterObject', Mandatory, ValueFromPipelineByPropertyName)]

@@ -19,7 +19,8 @@ For example, when you assign a policy at resource group scope, that policy appli
 Update-AzPolicyAssignment -Name <String> [-Scope <String>] [-BackwardCompatible] [-Description <String>]
  [-DisplayName <String>] [-EnforcementMode <EnforcementMode>] [-IdentityId <String>]
  [-IdentityType <ResourceIdentityType>] [-Location <String>] [-Metadata <String>]
- [-NonComplianceMessage <PSObject[]>] [-NotScope <String[]>] [-DefaultProfile <PSObject>] [<CommonParameters>]
+ [-NonComplianceMessage <PSObject[]>] [-NotScope <String[]>] [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf]
+ [<CommonParameters>]
 ```
 
 ### Id
@@ -27,7 +28,7 @@ Update-AzPolicyAssignment -Name <String> [-Scope <String>] [-BackwardCompatible]
 Update-AzPolicyAssignment -Id <String> [-BackwardCompatible] [-Description <String>] [-DisplayName <String>]
  [-EnforcementMode <EnforcementMode>] [-IdentityId <String>] [-IdentityType <ResourceIdentityType>]
  [-Location <String>] [-Metadata <String>] [-NonComplianceMessage <PSObject[]>] [-NotScope <String[]>]
- [-DefaultProfile <PSObject>] [<CommonParameters>]
+ [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ### IdParameterObject
@@ -35,7 +36,8 @@ Update-AzPolicyAssignment -Id <String> [-BackwardCompatible] [-Description <Stri
 Update-AzPolicyAssignment -Id <String> -PolicyParameterObject <PSObject> [-BackwardCompatible]
  [-Description <String>] [-DisplayName <String>] [-EnforcementMode <EnforcementMode>] [-IdentityId <String>]
  [-IdentityType <ResourceIdentityType>] [-Location <String>] [-Metadata <String>]
- [-NonComplianceMessage <PSObject[]>] [-NotScope <String[]>] [-DefaultProfile <PSObject>] [<CommonParameters>]
+ [-NonComplianceMessage <PSObject[]>] [-NotScope <String[]>] [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf]
+ [<CommonParameters>]
 ```
 
 ### IdParameterString
@@ -43,7 +45,8 @@ Update-AzPolicyAssignment -Id <String> -PolicyParameterObject <PSObject> [-Backw
 Update-AzPolicyAssignment -Id <String> -PolicyParameter <String> [-BackwardCompatible] [-Description <String>]
  [-DisplayName <String>] [-EnforcementMode <EnforcementMode>] [-IdentityId <String>]
  [-IdentityType <ResourceIdentityType>] [-Location <String>] [-Metadata <String>]
- [-NonComplianceMessage <PSObject[]>] [-NotScope <String[]>] [-DefaultProfile <PSObject>] [<CommonParameters>]
+ [-NonComplianceMessage <PSObject[]>] [-NotScope <String[]>] [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf]
+ [<CommonParameters>]
 ```
 
 ### NameParameterObject
@@ -51,7 +54,8 @@ Update-AzPolicyAssignment -Id <String> -PolicyParameter <String> [-BackwardCompa
 Update-AzPolicyAssignment -Name <String> -PolicyParameterObject <PSObject> [-Scope <String>]
  [-BackwardCompatible] [-Description <String>] [-DisplayName <String>] [-EnforcementMode <EnforcementMode>]
  [-IdentityId <String>] [-IdentityType <ResourceIdentityType>] [-Location <String>] [-Metadata <String>]
- [-NonComplianceMessage <PSObject[]>] [-NotScope <String[]>] [-DefaultProfile <PSObject>] [<CommonParameters>]
+ [-NonComplianceMessage <PSObject[]>] [-NotScope <String[]>] [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf]
+ [<CommonParameters>]
 ```
 
 ### NameParameterString
@@ -59,7 +63,8 @@ Update-AzPolicyAssignment -Name <String> -PolicyParameterObject <PSObject> [-Sco
 Update-AzPolicyAssignment -Name <String> -PolicyParameter <String> [-Scope <String>] [-BackwardCompatible]
  [-Description <String>] [-DisplayName <String>] [-EnforcementMode <EnforcementMode>] [-IdentityId <String>]
  [-IdentityType <ResourceIdentityType>] [-Location <String>] [-Metadata <String>]
- [-NonComplianceMessage <PSObject[]>] [-NotScope <String[]>] [-DefaultProfile <PSObject>] [<CommonParameters>]
+ [-NonComplianceMessage <PSObject[]>] [-NotScope <String[]>] [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf]
+ [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -423,6 +428,37 @@ Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
 ```
 
+### -Confirm
+Prompts you for confirmation before running the cmdlet.
+
+```yaml
+Type: System.Management.Automation.SwitchParameter
+Parameter Sets: (All)
+Aliases: cf
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -WhatIf
+Shows what would happen if the cmdlet runs.
+The cmdlet is not run.
+
+```yaml
+Type: System.Management.Automation.SwitchParameter
+Parameter Sets: (All)
+Aliases: wi
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
 ### CommonParameters
 This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable. For more information, see [about_CommonParameters](http://go.microsoft.com/fwlink/?LinkID=113216).
 
@@ -438,7 +474,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.Policy.Models.Api20210601.IPolicyAssignment
+### Microsoft.Azure.PowerShell.Cmdlets.Policy.Models.Api20220601.IPolicyAssignment
 
 ## NOTES
 

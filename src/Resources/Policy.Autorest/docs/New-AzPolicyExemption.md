@@ -16,7 +16,8 @@ Creates or updates a policy exemption.
 New-AzPolicyExemption [-Name] <String> [-ExemptionCategory] <ExemptionCategory> [-PolicyAssignment] <PSObject>
  [[-Scope] <String>] [[-AssignmentScopeValidation] <AssignmentScopeValidation>] [[-DisplayName] <String>]
  [[-Description] <String>] [[-PolicyDefinitionReferenceId] <String[]>] [[-ExpiresOn] <DateTime?>]
- [[-Metadata] <String>] [[-DefaultProfile] <PSObject>] [-BackwardCompatible] [<CommonParameters>]
+ [[-Metadata] <String>] [[-DefaultProfile] <PSObject>] [-BackwardCompatible] [-Confirm] [-WhatIf]
+ [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -232,6 +233,37 @@ Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
 ```
 
+### -Confirm
+Prompts you for confirmation before running the cmdlet.
+
+```yaml
+Type: System.Management.Automation.SwitchParameter
+Parameter Sets: (All)
+Aliases: cf
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -WhatIf
+Shows what would happen if the cmdlet runs.
+The cmdlet is not run.
+
+```yaml
+Type: System.Management.Automation.SwitchParameter
+Parameter Sets: (All)
+Aliases: wi
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
 ### CommonParameters
 This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable. For more information, see [about_CommonParameters](http://go.microsoft.com/fwlink/?LinkID=113216).
 
@@ -276,9 +308,19 @@ To create the parameters described below, construct a hash table containing the 
     - `Message <String>`: A message that describes why a resource is non-compliant with the policy. This is shown in 'deny' error messages and on resource's non-compliant compliance results.
     - `[PolicyDefinitionReferenceId <String>]`: The policy definition reference ID within a policy set definition the message is intended for. This is only applicable if the policy assignment assigns a policy set definition. If this is not provided the message applies to all policies assigned by this policy assignment.
   - `[NotScope <String[]>]`: The policy's excluded scopes.
+  - `[Override <IOverride[]>]`: The policy property value override.
+    - `[Kind <OverrideKind?>]`: The override kind.
+    - `[Selector <ISelector[]>]`: The list of the selector expressions.
+      - `[In <String[]>]`: The list of values to filter in.
+      - `[Kind <SelectorKind?>]`: The selector kind.
+      - `[NotIn <String[]>]`: The list of values to filter out.
+    - `[Value <String>]`: The value to override the policy property.
   - `[Parameter <IParameterValues>]`: The parameter values for the assigned policy rule. The keys are the parameter names.
     - `[(Any) <Object>]`: This indicates any property can be added to this object.
   - `[PolicyDefinitionId <String>]`: The ID of the policy definition or policy set definition being assigned.
+  - `[ResourceSelector <IResourceSelector[]>]`: The resource selector list to filter policies by resource properties.
+    - `[Name <String>]`: The name of the resource selector.
+    - `[Selector <ISelector[]>]`: The list of the selector expressions.
   - `[SystemDataCreatedAt <DateTime?>]`: The timestamp of resource creation (UTC).
   - `[SystemDataCreatedBy <String>]`: The identity that created the resource.
   - `[SystemDataCreatedByType <CreatedByType?>]`: The type of identity that created the resource.

@@ -32,7 +32,7 @@ https://learn.microsoft.com/powershell/module/az.resources/new-azpolicyexemption
 #>
 function New-AzPolicyExemption {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.Policy.Models.Api20220701Preview.IPolicyExemption])]
-[CmdletBinding(DefaultParameterSetName='Default', SupportsShouldProcess=$false, ConfirmImpact='None')]
+[CmdletBinding(DefaultParameterSetName='Default', SupportsShouldProcess=$true, ConfirmImpact='Low')]
 param(
     [Parameter(Mandatory, ValueFromPipelineByPropertyName)]
     [ValidateNotNullOrEmpty()]
