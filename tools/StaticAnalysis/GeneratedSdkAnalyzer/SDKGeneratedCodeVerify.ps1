@@ -90,7 +90,7 @@ try {
                     Remediation = ""
                 }
             }
-            npx autorest README.md --version=v2
+
             If (($LASTEXITCODE -ne 0) -and ($LASTEXITCODE -ne $null))
             {
                 $ExceptionList += [GeneratedSdkIssue]@{
