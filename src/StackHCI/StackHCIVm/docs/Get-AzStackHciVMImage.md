@@ -1,0 +1,161 @@
+---
+external help file:
+Module Name: Az.StackHCIVm
+online version: https://learn.microsoft.com/powershell/module/az.stackhcivm/get-azstackhcivmgalleryimage
+schema: 2.0.0
+---
+
+# Get-AzStackHciVMImage
+
+## SYNOPSIS
+Gets a gallery image
+
+## SYNTAX
+
+### BySubscription (Default)
+```
+Get-AzStackHciVMImage [-SubscriptionId <String[]>] [<CommonParameters>]
+```
+
+### ByName
+```
+Get-AzStackHciVMImage -Name <String> -ResourceGroupName <String> [-SubscriptionId <String[]>]
+ [-DefaultProfile <PSObject>] [<CommonParameters>]
+```
+
+### ByResourceGroup
+```
+Get-AzStackHciVMImage -ResourceGroupName <String> [-SubscriptionId <String[]>] [-DefaultProfile <PSObject>]
+ [<CommonParameters>]
+```
+
+### ByResourceId
+```
+Get-AzStackHciVMImage -ResourceId <String> [-SubscriptionId <String[]>] [-DefaultProfile <PSObject>]
+ [<CommonParameters>]
+```
+
+## DESCRIPTION
+Gets a gallery image
+
+## EXAMPLES
+
+### Example 1:  Get an Image 
+```powershell
+Get-AzStackHCIVMImage -Name "testimage" -ResourceGroupName "test-rg" 
+```
+
+```output
+Name            ResourceGroupName
+----            -----------------
+testImage       test-rg
+```
+
+This command gets a specific image in the specified resource group.
+
+### Example 2: List all Images in a Resource Group  
+```powershell
+Get-AzStackHCIVMImage -ResourceGroupName 'test-rg'
+```
+
+```output
+Name            ResourceGroupName
+----            -----------------
+testImage       test-rg
+```
+This command lists all images in the specified resource group.
+
+## PARAMETERS
+
+### -DefaultProfile
+The credentials, account, tenant, and subscription used for communication with Azure.
+
+```yaml
+Type: System.Management.Automation.PSObject
+Parameter Sets: ByName, ByResourceGroup, ByResourceId
+Aliases: AzureRMContext, AzureCredential
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -Name
+Name of the image
+
+```yaml
+Type: System.String
+Parameter Sets: ByName
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -ResourceGroupName
+The name of the resource group.
+The name is case insensitive.
+
+```yaml
+Type: System.String
+Parameter Sets: ByName, ByResourceGroup
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -ResourceId
+The ARM Resource Id of the Image
+
+```yaml
+Type: System.String
+Parameter Sets: ByResourceId
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -SubscriptionId
+The ID of the target subscription.
+
+```yaml
+Type: System.String[]
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: (Get-AzContext).Subscription.Id
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### CommonParameters
+This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable. For more information, see [about_CommonParameters](http://go.microsoft.com/fwlink/?LinkID=113216).
+
+## INPUTS
+
+## OUTPUTS
+
+### Microsoft.Azure.PowerShell.Cmdlets.StackHCIVm.Models.Api20230901Preview.IGalleryImages
+Microsoft.Azure.PowerShell.Cmdlets.StackHCIVm.Models.Api20230901Preview.IMarketplaceGalleryImages
+
+## NOTES
+
+ALIASES
+
+## RELATED LINKS
+
