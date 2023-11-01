@@ -25,7 +25,24 @@ try {
     $modulePath = Join-Path $RepositoryLocation $ModuleName -Resolve
 
     Save-PackagesFromPsGallery -TempRepo $tempRepoName -TempRepoPath $RepositoryLocation -ModulePaths $modulePath
+    //delete low version Az.accounts
+    $packages = Get-ChildItem -Path $TempRepoPath -Filter "*.nupkg"
+    $azAccountsPackages = $packages | Where-Object { $_.Name -like "Az.Accounts.*" }
+    $latestVersion = [version]0
+    $latestPackage = $null
+    foreach ($package in $azAccountsPackages) {
+        $moduleVersion = [version]$package.Version
 
+        if ($moduleVersion -gt $latestVersion) {
+            $latestVersion = $moduleVersion
+            $latestPackage = $package
+        }
+    }
+    foreach ($package in $azAccountsPackages) {
+        if ($package -ne $latestPackage) {
+            Remove-Item $package.FullName -Force
+        }
+    }
     Publish-Module -Path $modulePath -Repository $tempRepoName -Force
 } catch {
     $Errors = $_

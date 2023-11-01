@@ -3,6 +3,10 @@ parameters:
   displayName: Branch for OOB pipeline
   type: string
   default: 'none'
+- name: ChangedModule
+  displayName: Build Module List
+  type: string
+  default: 'none'
 jobs:
 - job: Release
   timeoutInMinutes: 180
@@ -34,7 +38,7 @@ jobs:
     inputs:
       command: custom
       custom: msbuild
-      arguments: 'build.proj /t:"Build;CopyAboutTopics;GenerateHelp" /p:"Configuration=Release;GenerateDocumentationFile=true;ModifiedModuleBuild=true"'
+      arguments: 'build.proj /t:"Build;CopyAboutTopics;GenerateHelp" /p:"Configuration=Release;GenerateDocumentationFile=true;ModifiedModuleBuild=true;ModifiedModules=${{ parameters.ChangedModule }}"'
 
   - task: AzureArtifacts.manifest-generator-task.manifest-generator-task.ManifestGeneratorTask@0
     displayName: 'Manifest Generator '
