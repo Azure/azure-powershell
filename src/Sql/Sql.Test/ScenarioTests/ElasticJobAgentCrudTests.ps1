@@ -130,17 +130,15 @@ function Test-CreateAgentWithIdentity
     $rg1 = Create-ResourceGroupForTest
     $s1 = Create-ServerForTest $rg1 $location
     $db1 = Create-DatabaseForTest $s1
-    $db2 = Create-DatabaseForTest $s1
     
     try
     {
-        # create a test UMI
-        $umiName = getAssetName 
-        $umi = New-AzUserAssignedIdentity -Name $umiName -ResourceGroupName $rg1.ResourceGroupName -Location $location
+        # use a test UMI
+        $umi = "/subscriptions/2e7fe4bd-90c7-454e-8bb6-dc44649f27b2/resourcegroups/pstest/providers/Microsoft.ManagedIdentity/userAssignedIdentities/pstestumi"
 
         # Test 
         $agentName = Get-AgentName
-        $resp = New-AzSqlElasticJobAgent -ResourceGroupName $rg1.ResourceGroupName -ServerName $s1.ServerName -DatabaseName $db1.DatabaseName -AgentName $agentName -IdentityType "UserAssigned" -UserAssignedIdentityId $umi.Id
+        $resp = New-AzSqlElasticJobAgent -ResourceGroupName $rg1.ResourceGroupName -ServerName $s1.ServerName -DatabaseName $db1.DatabaseName -AgentName $agentName -IdentityType "UserAssigned" -UserAssignedIdentityId $umi
         Assert-AreEqual $resp.AgentName $agentName
         Assert-AreEqual $resp.ServerName $s1.ServerName
         Assert-AreEqual $resp.DatabaseName $db1.DatabaseName
@@ -148,7 +146,7 @@ function Test-CreateAgentWithIdentity
         Assert-AreEqual $resp.Location $s1.Location
         Assert-AreEqual $resp.Identity.Type "UserAssigned"
         Assert-NotNull $resp.Identity.UserAssignedIdentities
-        Assert-True { $resp.Identity.UserAssignedIdentities.ContainsKey($umi.Id) } "UMI did not get assigned to job agent."
+        Assert-True { $resp.Identity.UserAssignedIdentities.ContainsKey($umi) } "UMI did not get assigned to job agent."
     }
     finally
     {
