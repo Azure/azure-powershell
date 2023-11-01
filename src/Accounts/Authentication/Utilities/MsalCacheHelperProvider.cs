@@ -30,9 +30,9 @@ namespace Microsoft.Azure.Commands.Common.Authentication
 
         public static string LegacyTokenCacheName { get; } = "msal.cache";
 
-        public static string GetTokenCacheName(bool caeEnabled, string name = null)
+        public static string GetTokenCacheName(string name, bool caeEnabled)
         {
-            return name ?? LegacyTokenCacheName + (caeEnabled ? AzureIdentityTokenCacheNameSuffixCae : AzureIdentityTokenCacheNameSuffixNoCae);
+            return name + (caeEnabled ? AzureIdentityTokenCacheNameSuffixCae : AzureIdentityTokenCacheNameSuffixNoCae);
         }
 
         public static string GetTokenCacheNameWithoutSuffix(string name)

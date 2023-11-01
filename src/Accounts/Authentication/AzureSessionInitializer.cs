@@ -297,7 +297,7 @@ namespace Microsoft.Azure.Commands.Common.Authentication
             session.ARMProfileDirectory = autoSave.ContextDirectory;
             session.ARMProfileFile = autoSave.ContextFile;
             session.TokenCacheDirectory = autoSave.CacheDirectory;
-            session.TokenCacheFile = MsalCacheHelperProvider.GetTokenCacheName(true, autoSave.CacheFile);
+            session.TokenCacheFile = MsalCacheHelperProvider.GetTokenCacheName(autoSave.CacheFile, true);
             session.KeyStoreFile = autoSave.CacheFile ?? "keystore.cache";
             autoSave.Settings.TryGetValue("InstallationId", out string installationId);
             session.ExtendedProperties.Add("InstallationId", installationId);
