@@ -73,6 +73,7 @@ module-version: 1.1.0
 title: StackHCIVm
 service-name: StackHCIVm
 subject-prefix: $(service-name)
+root-module-name: $(prefix).StackHCI
 
 inlining-threshold: 50
 resourcegroup-append: true
