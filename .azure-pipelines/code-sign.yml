@@ -16,7 +16,7 @@ pool:
     demands: npm
 jobs:
 - job: Build
-  displayName: Build, publish project and sign
+  displayName: Build project
   timeoutInMinutes: 180
   variables:
     LocalRepoName: 'LocalRepo'
@@ -363,7 +363,7 @@ jobs:
     condition: succeededOrFailed()
 
 - job: BuildInstaller
-  displayName: Build installer and sign
+  displayName: Build installer
   dependsOn: Build
   condition: eq(${{ parameters.buildInstaller }}, true)
   timeoutInMinutes: 180
