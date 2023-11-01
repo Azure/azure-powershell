@@ -12,12 +12,13 @@ namespace Microsoft.Azure.Management.CosmosDB.Models
 {
 
     /// <summary>
-    /// Defines values for PublicNetworkAccess.
+    /// Defines values for BackupState.
     /// </summary>
-    public static class PublicNetworkAccess
+    public static class BackupState
     {
-        public const string Enabled = "Enabled";
-        public const string Disabled = "Disabled";
-        public const string SecuredByPerimeter = "SecuredByPerimeter";
+        public const string Initiated = "Initiated";
+        public const string InProgress = "InProgress";
+        public const string Succeeded = "Succeeded";
+        public const string Failed = "Failed";
     }
 }

@@ -13,24 +13,27 @@ namespace Microsoft.Azure.Management.CosmosDB.Models
     using Newtonsoft.Json;
     using System.Linq;
 
-    public partial class BackupResourceProperties
+    /// <summary>
+    /// A base CosmosDB data source/sink
+    /// </summary>
+    public partial class BaseCosmosDataTransferDataSourceSink
     {
         /// <summary>
-        /// Initializes a new instance of the BackupResourceProperties class.
+        /// Initializes a new instance of the
+        /// BaseCosmosDataTransferDataSourceSink class.
         /// </summary>
-        public BackupResourceProperties()
+        public BaseCosmosDataTransferDataSourceSink()
         {
             CustomInit();
         }
 
         /// <summary>
-        /// Initializes a new instance of the BackupResourceProperties class.
+        /// Initializes a new instance of the
+        /// BaseCosmosDataTransferDataSourceSink class.
         /// </summary>
-        /// <param name="timestamp">The time this backup was taken, formatted
-        /// like 2021-01-21T17:35:21</param>
-        public BackupResourceProperties(System.DateTime? timestamp = default(System.DateTime?))
+        public BaseCosmosDataTransferDataSourceSink(string remoteAccountName = default(string))
         {
-            Timestamp = timestamp;
+            RemoteAccountName = remoteAccountName;
             CustomInit();
         }
 
@@ -40,11 +43,9 @@ namespace Microsoft.Azure.Management.CosmosDB.Models
         partial void CustomInit();
 
         /// <summary>
-        /// Gets or sets the time this backup was taken, formatted like
-        /// 2021-01-21T17:35:21
         /// </summary>
-        [JsonProperty(PropertyName = "timestamp")]
-        public System.DateTime? Timestamp { get; set; }
+        [JsonProperty(PropertyName = "remoteAccountName")]
+        public string RemoteAccountName { get; set; }
 
     }
 }

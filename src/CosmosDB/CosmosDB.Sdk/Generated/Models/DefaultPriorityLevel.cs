@@ -12,12 +12,11 @@ namespace Microsoft.Azure.Management.CosmosDB.Models
 {
 
     /// <summary>
-    /// Defines values for PublicNetworkAccess.
+    /// Defines values for DefaultPriorityLevel.
     /// </summary>
-    public static class PublicNetworkAccess
+    public static class DefaultPriorityLevel
     {
-        public const string Enabled = "Enabled";
-        public const string Disabled = "Disabled";
-        public const string SecuredByPerimeter = "SecuredByPerimeter";
+        public const string High = "High";
+        public const string Low = "Low";
     }
 }

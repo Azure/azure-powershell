@@ -15,10 +15,9 @@ namespace Microsoft.Azure.Management.CosmosDB.Models
     using System.Linq;
 
     /// <summary>
-    /// A CosmosDB Cassandra API data source/sink
+    /// A CosmosDB Mongo API data source/sink
     /// </summary>
-    [Newtonsoft.Json.JsonObject("CosmosDBMongo")]
-    public partial class CosmosMongoDataTransferDataSourceSink : DataTransferDataSourceSink
+    public partial class CosmosMongoDataTransferDataSourceSink
     {
         /// <summary>
         /// Initializes a new instance of the
@@ -33,8 +32,13 @@ namespace Microsoft.Azure.Management.CosmosDB.Models
         /// Initializes a new instance of the
         /// CosmosMongoDataTransferDataSourceSink class.
         /// </summary>
-        public CosmosMongoDataTransferDataSourceSink(string databaseName, string collectionName)
+        /// <param name="component">Possible values include:
+        /// 'CosmosDBCassandra', 'CosmosDBMongo', 'CosmosDBSql',
+        /// 'AzureBlobStorage'</param>
+        public CosmosMongoDataTransferDataSourceSink(string component, string databaseName, string collectionName, string remoteAccountName = default(string))
         {
+            Component = component;
+            RemoteAccountName = remoteAccountName;
             DatabaseName = databaseName;
             CollectionName = collectionName;
             CustomInit();
@@ -44,6 +48,18 @@ namespace Microsoft.Azure.Management.CosmosDB.Models
         /// An initialization method that performs custom operations like setting defaults
         /// </summary>
         partial void CustomInit();
+
+        /// <summary>
+        /// Gets or sets possible values include: 'CosmosDBCassandra',
+        /// 'CosmosDBMongo', 'CosmosDBSql', 'AzureBlobStorage'
+        /// </summary>
+        [JsonProperty(PropertyName = "component")]
+        public string Component { get; set; }
+
+        /// <summary>
+        /// </summary>
+        [JsonProperty(PropertyName = "remoteAccountName")]
+        public string RemoteAccountName { get; set; }
 
         /// <summary>
         /// </summary>
@@ -63,6 +79,10 @@ namespace Microsoft.Azure.Management.CosmosDB.Models
         /// </exception>
         public virtual void Validate()
         {
+            if (Component == null)
+            {
+                throw new ValidationException(ValidationRules.CannotBeNull, "Component");
+            }
             if (DatabaseName == null)
             {
                 throw new ValidationException(ValidationRules.CannotBeNull, "DatabaseName");

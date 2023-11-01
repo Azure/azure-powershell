@@ -60,7 +60,9 @@ namespace Microsoft.Azure.Management.CosmosDB.Models
         /// SwapTotal in /proc/meminfo), in kB.</param>
         /// <param name="cpuUsage">A float representing the current system-wide
         /// CPU utilization as a percentage.</param>
-        public CassandraClusterPublicStatusDataCentersItemNodesItem(string address = default(string), string state = default(string), string status = default(string), string cassandraProcessStatus = default(string), string load = default(string), IList<string> tokens = default(IList<string>), int? size = default(int?), string hostID = default(string), string rack = default(string), string timestamp = default(string), long? diskUsedKB = default(long?), long? diskFreeKB = default(long?), long? memoryUsedKB = default(long?), long? memoryBuffersAndCachedKB = default(long?), long? memoryFreeKB = default(long?), long? memoryTotalKB = default(long?), double? cpuUsage = default(double?))
+        /// <param name="isLatestModel">If node has been updated to latest
+        /// model</param>
+        public CassandraClusterPublicStatusDataCentersItemNodesItem(string address = default(string), string state = default(string), string status = default(string), string cassandraProcessStatus = default(string), string load = default(string), IList<string> tokens = default(IList<string>), int? size = default(int?), string hostID = default(string), string rack = default(string), string timestamp = default(string), long? diskUsedKB = default(long?), long? diskFreeKB = default(long?), long? memoryUsedKB = default(long?), long? memoryBuffersAndCachedKB = default(long?), long? memoryFreeKB = default(long?), long? memoryTotalKB = default(long?), double? cpuUsage = default(double?), bool? isLatestModel = default(bool?))
         {
             Address = address;
             State = state;
@@ -79,6 +81,7 @@ namespace Microsoft.Azure.Management.CosmosDB.Models
             MemoryFreeKB = memoryFreeKB;
             MemoryTotalKB = memoryTotalKB;
             CpuUsage = cpuUsage;
+            IsLatestModel = isLatestModel;
             CustomInit();
         }
 
@@ -199,6 +202,12 @@ namespace Microsoft.Azure.Management.CosmosDB.Models
         /// </summary>
         [JsonProperty(PropertyName = "cpuUsage")]
         public double? CpuUsage { get; set; }
+
+        /// <summary>
+        /// Gets or sets if node has been updated to latest model
+        /// </summary>
+        [JsonProperty(PropertyName = "isLatestModel")]
+        public bool? IsLatestModel { get; set; }
 
     }
 }

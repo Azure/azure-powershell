@@ -12,12 +12,13 @@ namespace Microsoft.Azure.Management.CosmosDB.Models
 {
 
     /// <summary>
-    /// Defines values for PublicNetworkAccess.
+    /// Defines values for DataTransferComponent.
     /// </summary>
-    public static class PublicNetworkAccess
+    public static class DataTransferComponent
     {
-        public const string Enabled = "Enabled";
-        public const string Disabled = "Disabled";
-        public const string SecuredByPerimeter = "SecuredByPerimeter";
+        public const string CosmosDBCassandra = "CosmosDBCassandra";
+        public const string CosmosDBMongo = "CosmosDBMongo";
+        public const string CosmosDBSql = "CosmosDBSql";
+        public const string AzureBlobStorage = "AzureBlobStorage";
     }
 }

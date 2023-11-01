@@ -60,6 +60,8 @@ namespace Microsoft.Azure.Commands.CosmosDB.Helpers
         public const string NetworkAclBypassResourceIdHelpMessage = "List of Resource Ids to allow Network Acl Bypass for Synapse Link.";
         public const string DatabaseResourceIdHelpMessage = "ResourceId of the database.";
         public const string AnalyticalStorageSchemaTypeHelpMessage = "The schema type for analytical storage. Valid values include: 'WellDefined' and 'FullFidelity'.";
+        public const string EnablePriorityBasedExecutionHelpMessage = "Bool to indicate if Priority Based Execution is enabled on the account.";
+        public const string DefaultPriorityLevelHelpMessage = "The Default Priority Level of requests for the CosmosDB database account. Accepted values: High, Low. Default is High.";
 
         //Restore specific help messages
         public const string IsRestoreRequestHelpMessage = "Indicates that the new Cosmos DB account request is a restore request.";

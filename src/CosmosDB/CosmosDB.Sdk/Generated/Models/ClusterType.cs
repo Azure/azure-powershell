@@ -12,12 +12,11 @@ namespace Microsoft.Azure.Management.CosmosDB.Models
 {
 
     /// <summary>
-    /// Defines values for PublicNetworkAccess.
+    /// Defines values for ClusterType.
     /// </summary>
-    public static class PublicNetworkAccess
+    public static class ClusterType
     {
-        public const string Enabled = "Enabled";
-        public const string Disabled = "Disabled";
-        public const string SecuredByPerimeter = "SecuredByPerimeter";
+        public const string Production = "Production";
+        public const string NonProduction = "NonProduction";
     }
 }
