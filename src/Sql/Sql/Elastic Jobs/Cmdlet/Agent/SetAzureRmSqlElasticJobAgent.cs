@@ -123,6 +123,7 @@ namespace Microsoft.Azure.Commands.Sql.ElasticJobs.Cmdlet
         /// </summary>
         [Parameter(Mandatory = false,
             HelpMessage = "WorkerCount is the capacity of the Azure SQL Job Agent which controls the number of concurrent targets that can be executed.")]
+        [PSArgumentCompleter("100", "200", "400", "800")]
         [Alias("Capacity")]
         public int? WorkerCount { get; set; }
 

@@ -70,7 +70,7 @@ namespace Microsoft.Azure.Commands.Sql.ElasticJobs.Services
                 Location = model.Location,
                 Tags = model.Tags,
                 DatabaseId = databaseId,
-                Sku = !String.IsNullOrWhiteSpace(model.SkuName) ? new Sku(name: model.SkuName, capacity: model.WorkerCount) : null,
+                Sku = GetJobAgentSkuFromModel(model),
                 Identity = model.Identity
             };
 
@@ -79,6 +79,26 @@ namespace Microsoft.Azure.Commands.Sql.ElasticJobs.Services
 
             // Return formatted response
             return CreateAgentModelFromResponse(model.ResourceGroupName, model.ServerName, resp);
+        }
+
+        public Sku GetJobAgentSkuFromModel(AzureSqlElasticJobAgentModel model)
+        {
+            if (model.SkuName == null && model.WorkerCount == null)
+            {
+                return null;
+            }
+
+            if (!String.IsNullOrWhiteSpace(model.SkuName))
+            {
+                return new Sku(name: model.SkuName, capacity: model.WorkerCount);
+            }
+
+            if (model.WorkerCount.HasValue)
+            {
+                return new Sku(name: $"JA{model.WorkerCount.Value}", capacity: model.WorkerCount);
+            }
+
+            throw new ArgumentException("Invalid WorkerCount. Must be an int");
         }
 
         /// <summary>
