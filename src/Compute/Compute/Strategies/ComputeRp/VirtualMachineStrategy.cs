@@ -116,16 +116,23 @@ namespace Microsoft.Azure.Commands.Compute.Strategies.ComputeRp
                         },
                         StorageProfile = new StorageProfile
                         {
-                            //ImageReference = (imageReferenceId.Contains("CommunityGalleries")) ? new ImageReference { CommunityGalleryImageId = imageReferenceId}
-                            ImageReference = (imageReferenceId == null) ? imageAndOsType?.Image : (imageReferenceId.ToLower().StartsWith("/communitygalleries/") ? new ImageReference
-                            {
-                                CommunityGalleryImageId = imageReferenceId,
-                                SharedGalleryImageId = sharedGalleryImageId
-                            }: new ImageReference
-                            {
-                                Id = imageReferenceId,
-                                SharedGalleryImageId = sharedGalleryImageId
-                            }),
+                            ImageReference = (imageReferenceId == null && sharedGalleryImageId == null) ? imageAndOsType?.Image
+                                : (imageReferenceId == null ? new ImageReference
+                                {
+                                    SharedGalleryImageId = sharedGalleryImageId
+                                }
+                                : (imageReferenceId.ToLower().StartsWith("/communitygalleries/") ? new ImageReference
+                                {
+                                    CommunityGalleryImageId = imageReferenceId,
+                                }
+                                : (imageReferenceId.ToLower().StartsWith("/sharedgalleries/") ? new ImageReference
+                                {
+                                    SharedGalleryImageId = imageReferenceId
+                                }
+                                : new ImageReference
+                                {
+                                    Id = imageReferenceId
+                                }))),
                             OsDisk = new OSDisk(
                                 createOption: DiskCreateOptionTypes.FromImage,
                                 deleteOption: osDiskDeleteOption),
