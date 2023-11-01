@@ -29,22 +29,6 @@ Class GeneratedSdkIssue {
 $ExceptionList = @()
 $SavePath = $PWD
 
-$skipModules = @(
-    'Az.AlertsManagement',
-    'Az.Automation',
-    'Az.CognitiveServices',
-    'Az.CosmosDB',
-    'Az.KeyVault',
-    'Az.NetAppFiles',
-    'Az.RecoveryServices',
-    'Az.RedisCache',
-    'Az.Storage',
-    'Az.Search',
-    'Az.Security',
-    'Az.Sql',
-    'Az.TrafficManager'
-)
-
 $MissReadMe = 9000
 $GenSdkChanged = 9090
 try {
@@ -69,12 +53,6 @@ try {
         # Extract Module Name
         $ModuleName = "Az." + ($_ -split "\/|\\")[1]
 
-        # Skip check for modules listed in $skipModules
-        if ($skipModules.Contains($ModuleName)) {
-            Write-Host "Skip checking $ModuleName"
-            continue
-        }
-
         # Skip check for modules without README.md and .Sdk folder.
         if (-not(Test-Path -Path "$PSScriptRoot/../../../$_/README.md" -PathType Leaf) -and -not(Test-Path -Path $PSScriptRoot/../../../$_))
         {
@@ -88,8 +66,19 @@ try {
 
         # Regenerate the Sdk under Generated folder
         if( Test-Path -Path "README.md" -PathType Leaf){
-            Write-Host "Re-generating SDK under Generated folder for $ModuleName..."
-            npx autorest --use:@microsoft.azure/autorest.csharp@2.3.90
+            # Decide to use autorest powershell v4/ autorest csharp v3.
+            $readMeContent = Get-Content README.md
+            if ([regex]::Matches($readMeContent, '\s*powershell\s*:\s*true\s*') -and [regex]::Matches($readMeContent, '\s*isSdkGenerator\s*:\s*true\s*'))
+            {
+                Write-Host "Using autorest powershell v4:`nRe-generating SDK under Generated folder for $ModuleName..."
+                npx autorest --use:@autorest/powershell@4.x
+            }
+            else
+            {
+                Write-Host "Using autorest csharp v3:`nRe-generating SDK under Generated folder for $ModuleName..."
+                npx autorest --use:@microsoft.azure/autorest.csharp@2.3.90
+            }
+            
             If (($LASTEXITCODE -ne 0) -and ($LASTEXITCODE -ne $null))
             {
                 $ExceptionList += [GeneratedSdkIssue]@{
