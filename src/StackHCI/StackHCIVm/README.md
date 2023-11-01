@@ -55,19 +55,19 @@ In this directory, run AutoRest:
 
 ```yaml
 require:
-  - E:/testing/readme.azure.noprofile.md
+  - $(this-folder)/../../readme.azure.noprofile.md
 repo: azure-rest-api-specs-pr
 # lock the commit
 input-file:
-  - E:/azure-rest-api-specs-pr/specification/azurestackhci/resource-manager/Microsoft.AzureStackHCI/preview/2023-09-01-preview/common.json
-  - E:/azure-rest-api-specs-pr/specification/azurestackhci/resource-manager/Microsoft.AzureStackHCI/preview/2023-09-01-preview/galleryImages.json 
-  - E:/azure-rest-api-specs-pr/specification/azurestackhci/resource-manager/Microsoft.AzureStackHCI/preview/2023-09-01-preview/marketplaceGalleryImages.json
-  - E:/azure-rest-api-specs-pr/specification/azurestackhci/resource-manager/Microsoft.AzureStackHCI/preview/2023-09-01-preview/networkInterfaces.json
-  - E:/azure-rest-api-specs-pr/specification/azurestackhci/resource-manager/Microsoft.AzureStackHCI/preview/2023-09-01-preview/storageContainers.json
-  - E:/azure-rest-api-specs-pr/specification/azurestackhci/resource-manager/Microsoft.AzureStackHCI/preview/2023-09-01-preview/virtualHardDisks.json
-  - E:/azure-rest-api-specs-pr/specification/azurestackhci/resource-manager/Microsoft.AzureStackHCI/preview/2023-09-01-preview/virtualMachineInstances.json
-  - E:/azure-rest-api-specs-pr/specification/azurestackhci/resource-manager/Microsoft.AzureStackHCI/preview/2023-09-01-preview/logicalNetworks.json
-  - E:/azure-rest-api-specs-pr/specification/hybridcompute/resource-manager/Microsoft.HybridCompute/preview/2023-03-15-preview/HybridCompute.json
+  - $(repo)/specification/azurestackhci/resource-manager/Microsoft.AzureStackHCI/preview/2023-09-01-preview/common.json
+  - $(repo)/specification/azurestackhci/resource-manager/Microsoft.AzureStackHCI/preview/2023-09-01-preview/galleryImages.json 
+  - $(repo)/specification/azurestackhci/resource-manager/Microsoft.AzureStackHCI/preview/2023-09-01-preview/marketplaceGalleryImages.json
+  - $(repo)/specification/azurestackhci/resource-manager/Microsoft.AzureStackHCI/preview/2023-09-01-preview/networkInterfaces.json
+  - $(repo)/specification/azurestackhci/resource-manager/Microsoft.AzureStackHCI/preview/2023-09-01-preview/storageContainers.json
+  - $(repo)/specification/azurestackhci/resource-manager/Microsoft.AzureStackHCI/preview/2023-09-01-preview/virtualHardDisks.json
+  - $(repo)/specification/azurestackhci/resource-manager/Microsoft.AzureStackHCI/preview/2023-09-01-preview/virtualMachineInstances.json
+  - $(repo)/specification/azurestackhci/resource-manager/Microsoft.AzureStackHCI/preview/2023-09-01-preview/logicalNetworks.json
+  - $(repo)/specification/hybridcompute/resource-manager/Microsoft.HybridCompute/preview/2023-03-15-preview/HybridCompute.json
 
 module-version: 1.1.0
 title: StackHCIVm
