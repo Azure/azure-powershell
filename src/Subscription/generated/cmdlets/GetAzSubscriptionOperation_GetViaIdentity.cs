@@ -8,16 +8,17 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Subscription.Cmdlets
     using static Microsoft.Azure.PowerShell.Cmdlets.Subscription.Runtime.Extensions;
     using System;
 
-    /// <summary>Accept subscription ownership status.</summary>
+    /// <summary>Get the status of the pending Microsoft.Subscription API operations.</summary>
     /// <remarks>
-    /// [OpenAPI] AcceptOwnershipStatus=>GET:"/providers/Microsoft.Subscription/subscriptions/{subscriptionId}/acceptOwnershipStatus"
+    /// [OpenAPI] Get=>GET:"/providers/Microsoft.Subscription/subscriptionOperations/{operationId}"
     /// </remarks>
-    [global::System.Management.Automation.Cmdlet(global::System.Management.Automation.VerbsCommon.Get, @"AzSubscriptionAcceptOwnershipStatus_AcceptViaIdentityExpanded")]
-    [global::System.Management.Automation.OutputType(typeof(Microsoft.Azure.PowerShell.Cmdlets.Subscription.Models.Api20211001.IAcceptOwnershipStatusResponse))]
-    [global::Microsoft.Azure.PowerShell.Cmdlets.Subscription.Description(@"Accept subscription ownership status.")]
+    [global::Microsoft.Azure.PowerShell.Cmdlets.Subscription.InternalExport]
+    [global::System.Management.Automation.Cmdlet(global::System.Management.Automation.VerbsCommon.Get, @"AzSubscriptionOperation_GetViaIdentity")]
+    [global::System.Management.Automation.OutputType(typeof(string))]
+    [global::Microsoft.Azure.PowerShell.Cmdlets.Subscription.Description(@"Get the status of the pending Microsoft.Subscription API operations.")]
     [global::Microsoft.Azure.PowerShell.Cmdlets.Subscription.Generated]
-    [global::Microsoft.Azure.PowerShell.Cmdlets.Subscription.HttpPath(Path = "/providers/Microsoft.Subscription/subscriptions/{subscriptionId}/acceptOwnershipStatus", ApiVersion = "2021-10-01")]
-    public partial class GetAzSubscriptionAcceptOwnershipStatus_AcceptViaIdentityExpanded : global::System.Management.Automation.PSCmdlet,
+    [global::Microsoft.Azure.PowerShell.Cmdlets.Subscription.HttpPath(Path = "/providers/Microsoft.Subscription/subscriptionOperations/{operationId}", ApiVersion = "2021-10-01")]
+    public partial class GetAzSubscriptionOperation_GetViaIdentity : global::System.Management.Automation.PSCmdlet,
         Microsoft.Azure.PowerShell.Cmdlets.Subscription.Runtime.IEventListener
     {
         /// <summary>A unique id generatd for the this cmdlet when it is instantiated.</summary>
@@ -84,6 +85,13 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Subscription.Cmdlets
         global::System.Threading.CancellationToken Microsoft.Azure.PowerShell.Cmdlets.Subscription.Runtime.IEventListener.Token => _cancellationTokenSource.Token;
 
         /// <summary>
+        /// When specified, forces the cmdlet return a 'bool' given that there isn't a return type by default.
+        /// </summary>
+        [global::System.Management.Automation.Parameter(Mandatory = false, HelpMessage = "Returns true when the command succeeds")]
+        [global::Microsoft.Azure.PowerShell.Cmdlets.Subscription.Category(global::Microsoft.Azure.PowerShell.Cmdlets.Subscription.ParameterCategory.Runtime)]
+        public global::System.Management.Automation.SwitchParameter PassThru { get; set; }
+
+        /// <summary>
         /// The instance of the <see cref="Microsoft.Azure.PowerShell.Cmdlets.Subscription.Runtime.HttpPipeline" /> that the remote call will use.
         /// </summary>
         private Microsoft.Azure.PowerShell.Cmdlets.Subscription.Runtime.HttpPipeline Pipeline { get; set; }
@@ -105,6 +113,16 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Subscription.Cmdlets
         public global::System.Management.Automation.SwitchParameter ProxyUseDefaultCredentials { get; set; }
 
         /// <summary>
+        /// <c>overrideOnAccepted</c> will be called before the regular onAccepted has been processed, allowing customization of what
+        /// happens on that response. Implement this method in a partial class to enable this behavior
+        /// </summary>
+        /// <param name="responseMessage">the raw response message as an global::System.Net.Http.HttpResponseMessage.</param>
+        /// <param name="returnNow">/// Determines if the rest of the onAccepted method should be processed, or if the method should
+        /// return immediately (set to true to skip further processing )</param>
+
+        partial void overrideOnAccepted(global::System.Net.Http.HttpResponseMessage responseMessage, ref global::System.Threading.Tasks.Task<bool> returnNow);
+
+        /// <summary>
         /// <c>overrideOnDefault</c> will be called before the regular onDefault has been processed, allowing customization of what
         /// happens on that response. Implement this method in a partial class to enable this behavior
         /// </summary>
@@ -121,12 +139,12 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Subscription.Cmdlets
         /// on that response. Implement this method in a partial class to enable this behavior
         /// </summary>
         /// <param name="responseMessage">the raw response message as an global::System.Net.Http.HttpResponseMessage.</param>
-        /// <param name="response">the body result as a <see cref="Microsoft.Azure.PowerShell.Cmdlets.Subscription.Models.Api20211001.IAcceptOwnershipStatusResponse">Microsoft.Azure.PowerShell.Cmdlets.Subscription.Models.Api20211001.IAcceptOwnershipStatusResponse</see>
+        /// <param name="response">the body result as a <see cref="Microsoft.Azure.PowerShell.Cmdlets.Subscription.Models.Api20211001.ISubscriptionCreationResult">Microsoft.Azure.PowerShell.Cmdlets.Subscription.Models.Api20211001.ISubscriptionCreationResult</see>
         /// from the remote call</param>
         /// <param name="returnNow">/// Determines if the rest of the onOk method should be processed, or if the method should return
         /// immediately (set to true to skip further processing )</param>
 
-        partial void overrideOnOk(global::System.Net.Http.HttpResponseMessage responseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Subscription.Models.Api20211001.IAcceptOwnershipStatusResponse> response, ref global::System.Threading.Tasks.Task<bool> returnNow);
+        partial void overrideOnOk(global::System.Net.Http.HttpResponseMessage responseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Subscription.Models.Api20211001.ISubscriptionCreationResult> response, ref global::System.Threading.Tasks.Task<bool> returnNow);
 
         /// <summary>
         /// (overrides the default BeginProcessing method in global::System.Management.Automation.PSCmdlet)
@@ -153,10 +171,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Subscription.Cmdlets
         }
 
         /// <summary>
-        /// Intializes a new instance of the <see cref="GetAzSubscriptionAcceptOwnershipStatus_AcceptViaIdentityExpanded" /> cmdlet
-        /// class.
+        /// Intializes a new instance of the <see cref="GetAzSubscriptionOperation_GetViaIdentity" /> cmdlet class.
         /// </summary>
-        public GetAzSubscriptionAcceptOwnershipStatus_AcceptViaIdentityExpanded()
+        public GetAzSubscriptionOperation_GetViaIdentity()
         {
 
         }
@@ -274,16 +291,16 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Subscription.Cmdlets
                     await ((Microsoft.Azure.PowerShell.Cmdlets.Subscription.Runtime.IEventListener)this).Signal(Microsoft.Azure.PowerShell.Cmdlets.Subscription.Runtime.Events.CmdletBeforeAPICall); if( ((Microsoft.Azure.PowerShell.Cmdlets.Subscription.Runtime.IEventListener)this).Token.IsCancellationRequested ) { return; }
                     if (InputObject?.Id != null)
                     {
-                        await this.Client.SubscriptionAcceptOwnershipStatusViaIdentity(InputObject.Id, onOk, onDefault, this, Pipeline);
+                        await this.Client.SubscriptionOperationGetViaIdentity(InputObject.Id, onOk, onAccepted, onDefault, this, Pipeline);
                     }
                     else
                     {
                         // try to call with PATH parameters from Input Object
-                        if (null == InputObject.SubscriptionId)
+                        if (null == InputObject.OperationId)
                         {
-                            ThrowTerminatingError( new global::System.Management.Automation.ErrorRecord(new global::System.Exception("InputObject has null value for InputObject.SubscriptionId"),string.Empty, global::System.Management.Automation.ErrorCategory.InvalidArgument, InputObject) );
+                            ThrowTerminatingError( new global::System.Management.Automation.ErrorRecord(new global::System.Exception("InputObject has null value for InputObject.OperationId"),string.Empty, global::System.Management.Automation.ErrorCategory.InvalidArgument, InputObject) );
                         }
-                        await this.Client.SubscriptionAcceptOwnershipStatus(InputObject.SubscriptionId ?? null, onOk, onDefault, this, Pipeline);
+                        await this.Client.SubscriptionOperationGet(InputObject.OperationId ?? null, onOk, onAccepted, onDefault, this, Pipeline);
                     }
                     await ((Microsoft.Azure.PowerShell.Cmdlets.Subscription.Runtime.IEventListener)this).Signal(Microsoft.Azure.PowerShell.Cmdlets.Subscription.Runtime.Events.CmdletAfterAPICall); if( ((Microsoft.Azure.PowerShell.Cmdlets.Subscription.Runtime.IEventListener)this).Token.IsCancellationRequested ) { return; }
                 }
@@ -306,6 +323,30 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Subscription.Cmdlets
         {
             ((Microsoft.Azure.PowerShell.Cmdlets.Subscription.Runtime.IEventListener)this).Cancel();
             base.StopProcessing();
+        }
+
+        /// <summary>a delegate that is called when the remote service returns 202 (Accepted).</summary>
+        /// <param name="responseMessage">the raw response message as an global::System.Net.Http.HttpResponseMessage.</param>
+        /// <returns>
+        /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the method is completed.
+        /// </returns>
+        private async global::System.Threading.Tasks.Task onAccepted(global::System.Net.Http.HttpResponseMessage responseMessage)
+        {
+            using( NoSynchronizationContext )
+            {
+                var _returnNow = global::System.Threading.Tasks.Task<bool>.FromResult(false);
+                overrideOnAccepted(responseMessage, ref _returnNow);
+                // if overrideOnAccepted has returned true, then return right away.
+                if ((null != _returnNow && await _returnNow))
+                {
+                    return ;
+                }
+                // onAccepted - response for 202 /
+                if (true == MyInvocation?.BoundParameters?.ContainsKey("PassThru"))
+                {
+                    WriteObject(true);
+                }
+            }
         }
 
         /// <summary>
@@ -352,12 +393,12 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Subscription.Cmdlets
 
         /// <summary>a delegate that is called when the remote service returns 200 (OK).</summary>
         /// <param name="responseMessage">the raw response message as an global::System.Net.Http.HttpResponseMessage.</param>
-        /// <param name="response">the body result as a <see cref="Microsoft.Azure.PowerShell.Cmdlets.Subscription.Models.Api20211001.IAcceptOwnershipStatusResponse">Microsoft.Azure.PowerShell.Cmdlets.Subscription.Models.Api20211001.IAcceptOwnershipStatusResponse</see>
+        /// <param name="response">the body result as a <see cref="Microsoft.Azure.PowerShell.Cmdlets.Subscription.Models.Api20211001.ISubscriptionCreationResult">Microsoft.Azure.PowerShell.Cmdlets.Subscription.Models.Api20211001.ISubscriptionCreationResult</see>
         /// from the remote call</param>
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the method is completed.
         /// </returns>
-        private async global::System.Threading.Tasks.Task onOk(global::System.Net.Http.HttpResponseMessage responseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Subscription.Models.Api20211001.IAcceptOwnershipStatusResponse> response)
+        private async global::System.Threading.Tasks.Task onOk(global::System.Net.Http.HttpResponseMessage responseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Subscription.Models.Api20211001.ISubscriptionCreationResult> response)
         {
             using( NoSynchronizationContext )
             {
@@ -369,8 +410,8 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Subscription.Cmdlets
                     return ;
                 }
                 // onOk - response for 200 / application/json
-                // (await response) // should be Microsoft.Azure.PowerShell.Cmdlets.Subscription.Models.Api20211001.IAcceptOwnershipStatusResponse
-                WriteObject((await response));
+                // (await response) // should be Microsoft.Azure.PowerShell.Cmdlets.Subscription.Models.Api20211001.ISubscriptionCreationResult
+                WriteObject((await response).SubscriptionLink);
             }
         }
     }

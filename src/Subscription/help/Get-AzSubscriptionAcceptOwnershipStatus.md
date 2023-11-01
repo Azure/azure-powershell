@@ -35,9 +35,24 @@ Get-AzSubscriptionAcceptOwnershipStatus -SubscriptionId XXXXXXXX-XXXX-XXXX-XXXX-
 ```
 
 ```output
-AcceptOwnershipState BillingOwner      DisplayName ProvisioningState SubscriptionId                       SubscriptionTenantId
--------------------- ------------      ----------- ----------------- --------------                       --------------------
-Completed            xxxxxxxx@xxxx.com create18    Pending           XXXXXXXX-XXXX-XXXX-XXXX-XXXXXXXXXXXX XXXXXXXX-XXXX-XXXX-XXXX-XXXXXXXXXXXX
+AcceptOwnershipState BillingOwner      ProvisioningState SubscriptionId                       SubscriptionTenantId
+-------------------- ------------      ----------------- --------------                       --------------------
+Completed            xxxxxxxx@xxxx.com Pending           XXXXXXXX-XXXX-XXXX-XXXX-XXXXXXXXXXXX XXXXXXXX-XXXX-XXXX-XXXX-XXXXXXXXXXXX
+```
+
+Accept subscription ownership status.
+
+### Example 1: Accept subscription ownership status.
+```powershell
+$subIdArray = @("XXXXXXXX-XXXX-XXXX-XXXX-XXXXXXXXXXXX","YYYYYYYY-YYYY-YYYY-YYYY-YYYYYYYYYYYY")
+Get-AzSubscriptionAcceptOwnershipStatus -SubscriptionId $subIdArray
+```
+
+```output
+AcceptOwnershipState BillingOwner      ProvisioningState SubscriptionId                       SubscriptionTenantId
+-------------------- ------------      ----------------- --------------                       --------------------
+Completed            xxxxxxxx@xxxx.com Pending           XXXXXXXX-XXXX-XXXX-XXXX-XXXXXXXXXXXX XXXXXXXX-XXXX-XXXX-XXXX-XXXXXXXXXXXX
+Completed            yyyyyyyy@yyyy.com Pending           YYYYYYYY-YYYY-YYYY-YYYY-YYYYYYYYYYYY YYYYYYYY-YYYY-YYYY-YYYY-YYYYYYYYYYYY
 ```
 
 Accept subscription ownership status.
@@ -103,19 +118,6 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ### Microsoft.Azure.PowerShell.Cmdlets.Subscription.Models.Api20211001.IAcceptOwnershipStatusResponse
 
 ## NOTES
-
-ALIASES
-
-COMPLEX PARAMETER PROPERTIES
-
-To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
-
-
-`INPUTOBJECT <ISubscriptionIdentity>`: Identity Parameter
-  - `[AliasName <String>]`: AliasName is the name for the subscription creation request. Note that this is not the same as subscription name and this doesn’t have any other lifecycle need beyond the request for subscription creation.
-  - `[BillingAccountId <String>]`: Billing Account Id.
-  - `[Id <String>]`: Resource identity path
-  - `[SubscriptionId <String>]`: Subscription Id.
 
 ## RELATED LINKS
 
