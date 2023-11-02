@@ -24,12 +24,122 @@ function Test-CreateJobPrivateEndpoint
 	{
 		$peName = Get-JobPrivateEndpointName 
 		$s1 = Get-AzSqlServer -ResourceGroupName $a1.ResourceGroupName -ServerName $a1.ServerName
-		$pe1AsJob = New-AzSqlElasticJobPrivateEndpoint -ParentObject $a1 -Name $peName -TargetServerAzureResourceId $s1.ResourceId -AsJob
+		$pe1AsJob = New-AzSqlElasticJobPrivateEndpoint -ElasticJobAgentObject $a1 -Name $peName -TargetServerAzureResourceId $s1.ResourceId -AsJob
+
+		# Give the backend a chance to persist the private endpoint before running Get
+		Start-TestSleep -Seconds 120
+
+		$pe1 = Get-AzSqlElasticJobPrivateEndpoint -ElasticJobAgentObject $a1 -Name $peName
+
+		# valide agent level properties
+		Assert-AreEqual $pe1.ResourceGroupName $a1.ResourceGroupName
+		Assert-AreEqual $pe1.ServerName $a1.ServerName
+		Assert-AreEqual $pe1.AgentName $a1.AgentName
+
+		# validate private endpoint properties
+		Assert-AreEqual $pe1.PrivateEndpointName $peName
+		Assert-AreEqual $pe1.TargetServerAzureResourceId $s1.ResourceId
+		
+		Assert-NotNullOrEmpty $pe1.PrivateEndpointId
+		Assert-True {$pe1.PrivateEndpointId.Contains("EJ")} "PrivateEndpointId is missing substring 'EJ'"
+		Assert-True {$pe1.PrivateEndpointId.Contains($peName)} "PrivateEndpointId is missing private endpoint name: $peName"
+	}
+	finally
+	{
+		Remove-ResourceGroupForTest $a1
+	}
+}
+
+<#
+	.SYNOPSIS
+	Tests retrieving a job private endpoint
+#>
+function Test-GetJobPrivateEndpoint
+{
+	$a1 = Create-ElasticJobAgentTestEnvironment
+
+	try
+	{
+		$peName = Get-JobPrivateEndpointName 
+		$s1 = Get-AzSqlServer -ResourceGroupName $a1.ResourceGroupName -ServerName $a1.ServerName
+		$pe1AsJob = New-AzSqlElasticJobPrivateEndpoint -ElasticJobAgentObject $a1 -Name $peName -TargetServerAzureResourceId $s1.ResourceId -AsJob
 
 		# Give the backend a chance to persist the private endpoint before running Get
 		Start-TestSleep -Seconds 30
 
-		$pe1 = Get-AzSqlElasticJobPrivateEndpoint -ParentObject $a1 -Name $peName
+		# Validate with Default set
+		$pe1 = Get-AzSqlElasticJobPrivateEndpoint -ResourceGroupName $a1.ResourceGroupName -ServerName $a1.ServerName -AgentName $a1.AgentName -Name $peName
+
+		## valide agent level properties
+		Assert-AreEqual $pe1.ResourceGroupName $a1.ResourceGroupName
+		Assert-AreEqual $pe1.ServerName $a1.ServerName
+		Assert-AreEqual $pe1.AgentName $a1.AgentName
+
+		## validate private endpoint properties
+		Assert-AreEqual $pe1.PrivateEndpointName $peName
+		Assert-AreEqual $pe1.TargetServerAzureResourceId $s1.ResourceId
+		
+		Assert-NotNullOrEmpty $pe1.PrivateEndpointId
+		Assert-True {$pe1.PrivateEndpointId.Contains("EJ")} "PrivateEndpointId is missing substring 'EJ'"
+		Assert-True {$pe1.PrivateEndpointId.Contains($peName)} "PrivateEndpointId is missing private endpoint name: $peName"
+
+		# Validate with Parent object
+		$pe1 = Get-AzSqlElasticJobPrivateEndpoint -ElasticJobAgentObject $a1 -Name $peName
+
+		## valide agent level properties
+		Assert-AreEqual $pe1.ResourceGroupName $a1.ResourceGroupName
+		Assert-AreEqual $pe1.ServerName $a1.ServerName
+		Assert-AreEqual $pe1.AgentName $a1.AgentName
+
+		## validate private endpoint properties
+		Assert-AreEqual $pe1.PrivateEndpointName $peName
+		Assert-AreEqual $pe1.TargetServerAzureResourceId $s1.ResourceId
+		
+		Assert-NotNullOrEmpty $pe1.PrivateEndpointId
+		Assert-True {$pe1.PrivateEndpointId.Contains("EJ")} "PrivateEndpointId is missing substring 'EJ'"
+		Assert-True {$pe1.PrivateEndpointId.Contains($peName)} "PrivateEndpointId is missing private endpoint name: $peName"
+
+		# Validate with Piping 
+		$pe1 = $a1 | Get-AzSqlElasticJobPrivateEndpoint -Name $peName
+
+		## valide agent level properties
+		Assert-AreEqual $pe1.ResourceGroupName $a1.ResourceGroupName
+		Assert-AreEqual $pe1.ServerName $a1.ServerName
+		Assert-AreEqual $pe1.AgentName $a1.AgentName
+
+		## validate private endpoint properties
+		Assert-AreEqual $pe1.PrivateEndpointName $peName
+		Assert-AreEqual $pe1.TargetServerAzureResourceId $s1.ResourceId
+		
+		Assert-NotNullOrEmpty $pe1.PrivateEndpointId
+		Assert-True {$pe1.PrivateEndpointId.Contains("EJ")} "PrivateEndpointId is missing substring 'EJ'"
+		Assert-True {$pe1.PrivateEndpointId.Contains($peName)} "PrivateEndpointId is missing private endpoint name: $peName"
+
+	}
+	finally
+	{
+		Remove-ResourceGroupForTest $a1
+	}
+}
+
+<#
+	.SYNOPSIS
+	Tests removing a job private endpoint
+#>
+function Test-RemoveJobPrivateEndpoint
+{
+	$a1 = Create-ElasticJobAgentTestEnvironment
+
+	try
+	{
+		$peName = Get-JobPrivateEndpointName 
+		$s1 = Get-AzSqlServer -ResourceGroupName $a1.ResourceGroupName -ServerName $a1.ServerName
+		$pe1AsJob = New-AzSqlElasticJobPrivateEndpoint -ElasticJobAgentObject $a1 -Name $peName -TargetServerAzureResourceId $s1.ResourceId -AsJob
+
+		# Give the backend a chance to persist the private endpoint before running Get
+		Start-TestSleep -Seconds 30
+
+		$pe1 = Get-AzSqlElasticJobPrivateEndpoint -ElasticJobAgentObject $a1 -Name $peName
 
 		# valide agent level properties
 		Assert-AreEqual $pe1.ResourceGroupName $a1.ResourceGroupName
@@ -44,8 +154,9 @@ function Test-CreateJobPrivateEndpoint
 		Assert-True {$pe1.PrivateEndpointId.Contains("EJ")} "PrivateEndpointId is missing substring 'EJ'"
 		Assert-True {$pe1.PrivateEndpointId.Contains($peName)} "PrivateEndpointId is missing private endpoint name: $peName"
 
-		# will need three total scenarios for the diff parameter sets: default param, parentobject, and resourceid 
-		# you will have to drop and re-create and use the -AsJob + Get resource to confirm
+		Remove-AzSqlElasticJobPrivateEndpoint -ElasticJobAgentObject $a1 -Name $peName -Force
+
+		Assert-Throws { $a1 | Get-AzSqlElasticJobPrivateEndpoint -Name $peName }
 	}
 	finally
 	{

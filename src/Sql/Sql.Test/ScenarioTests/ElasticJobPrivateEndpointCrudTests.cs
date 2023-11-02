@@ -18,5 +18,19 @@ namespace Microsoft.Azure.Commands.Sql.Test.ScenarioTests
         {
             TestRunner.RunTestScript("Test-CreateJobPrivateEndpoint");
         }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void TestPrivateEndpointGet()
+        {
+            TestRunner.RunTestScript("Test-GetJobPrivateEndpoint");
+        }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void TestPrivateEndpointRemove()
+        {
+            TestRunner.RunTestScript("Test-RemoveJobPrivateEndpoint");
+        }
     }
 }
