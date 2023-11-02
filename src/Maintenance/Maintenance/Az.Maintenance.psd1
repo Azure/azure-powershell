@@ -57,7 +57,7 @@ RequiredModules = @(@{ModuleName = 'Az.Accounts'; ModuleVersion = '2.13.0'; })
 
 # Assemblies that must be loaded prior to importing this module
 RequiredAssemblies = 'Microsoft.Azure.PowerShell.AutoMapper.dll', 
-               'Microsoft.Azure.Management.Maintenance.dll'
+               'Microsoft.Azure.PowerShell.Maintenance.Management.Sdk.dll'
 
 # Script files (.ps1) that are run in the caller's environment prior to importing this module.
 # ScriptsToProcess = @()

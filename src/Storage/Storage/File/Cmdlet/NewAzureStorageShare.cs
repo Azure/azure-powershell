@@ -34,6 +34,9 @@ namespace Microsoft.WindowsAzure.Commands.Storage.File.Cmdlet
         [ValidateNotNullOrEmpty]
         public string Name { get; set; }
 
+        // Overwrite the useless parameter
+        public override SwitchParameter DisAllowTrailingDot { get; set; }
+
         public override void ExecuteCmdlet()
         {
             NamingUtil.ValidateShareName(this.Name, false);

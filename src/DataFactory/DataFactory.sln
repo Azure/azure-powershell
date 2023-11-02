@@ -1,6 +1,6 @@
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio Version 16
-VisualStudioVersion = 16.0.31129.286
+# Visual Studio Version 17
+VisualStudioVersion = 17.7.34202.233
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "DataFactoryV2", "DataFactoryV2\DataFactoryV2.csproj", "{26B676D3-E448-4FA5-A23C-C79E7753D280}"
 EndProject
@@ -23,6 +23,10 @@ EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ScenarioTest.ResourceManager", "..\..\tools\ScenarioTest.ResourceManager\ScenarioTest.ResourceManager.csproj", "{F83FBA8D-732D-437C-A0E2-02E45B01E123}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "TestFx", "..\..\tools\TestFx\TestFx.csproj", "{BC80A1D0-FFA4-43D9-AA74-799F5CB54B58}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "AssemblyLoading", "..\Accounts\AssemblyLoading\AssemblyLoading.csproj", "{02615977-4499-48E6-9824-8B9F431E30EA}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "DataFactory.Management.Sdk", "DataFactory.Management.Sdk\DataFactory.Management.Sdk.csproj", "{F0FA0885-A662-4E33-8495-2A7DC03A0855}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -70,6 +74,14 @@ Global
 		{BC80A1D0-FFA4-43D9-AA74-799F5CB54B58}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{BC80A1D0-FFA4-43D9-AA74-799F5CB54B58}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{BC80A1D0-FFA4-43D9-AA74-799F5CB54B58}.Release|Any CPU.Build.0 = Release|Any CPU
+		{02615977-4499-48E6-9824-8B9F431E30EA}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{02615977-4499-48E6-9824-8B9F431E30EA}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{02615977-4499-48E6-9824-8B9F431E30EA}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{02615977-4499-48E6-9824-8B9F431E30EA}.Release|Any CPU.Build.0 = Release|Any CPU
+		{F0FA0885-A662-4E33-8495-2A7DC03A0855}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{F0FA0885-A662-4E33-8495-2A7DC03A0855}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{F0FA0885-A662-4E33-8495-2A7DC03A0855}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{F0FA0885-A662-4E33-8495-2A7DC03A0855}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

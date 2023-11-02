@@ -18,6 +18,7 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
+* Fixed some minor issues
 
 ## Version 1.2.1
 Added a new API `CheckTrafficManagerNameAvailabilityV2`.

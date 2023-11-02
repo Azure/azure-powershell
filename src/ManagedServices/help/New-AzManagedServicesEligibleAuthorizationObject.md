@@ -107,7 +107,7 @@ Accept wildcard characters: False
 ```
 
 ### -PrincipalId
-The identifier of the Azure Active Directory principal.
+The identifier of the Microsoft Entra principal.
 
 ```yaml
 Type: System.String
@@ -122,7 +122,7 @@ Accept wildcard characters: False
 ```
 
 ### -PrincipalIdDisplayName
-The display name of the Azure Active Directory principal.
+The display name of the Microsoft Entra principal.
 
 ```yaml
 Type: System.String
@@ -137,7 +137,7 @@ Accept wildcard characters: False
 ```
 
 ### -RoleDefinitionId
-The identifier of the Azure built-in role that defines the permissions that the Azure Active Directory principal will have on the projected scope.
+The identifier of the Azure built-in role that defines the permissions that the Microsoft Entra principal will have on the projected scope.
 
 ```yaml
 Type: System.String
@@ -170,8 +170,7 @@ To create the parameters described below, construct a hash table containing the 
 
 
 JUSTINTIMEACCESSPOLICYMANAGEDBYTENANTAPPROVER <IEligibleApprover[]>: The list of managedByTenant approvers for the eligible authorization.
-  - `PrincipalId <String>`: The identifier of the Azure Active Directory principal.
-  - `[PrincipalIdDisplayName <String>]`: The display name of the Azure Active Directory principal.
+  - `PrincipalId <String>`: The identifier of the Microsoft Entra principal.
+  - `[PrincipalIdDisplayName <String>]`: The display name of the Microsoft Entra principal.
 
 ## RELATED LINKS
-

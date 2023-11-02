@@ -1,0 +1,45 @@
+{
+  "Remove-AzDataCollectionRuleAssociation+[NoContext]+Delete+$DELETE+https://management.azure.com//subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/AMCS-TEST/providers/Microsoft.Compute/virtualMachines/testAMCSvm/providers/Microsoft.Insights/dataCollectionRuleAssociations/testCollectionRule-association1?api-version=2022-06-01+1": {
+    "Request": {
+      "Method": "DELETE",
+      "RequestUri": "https://management.azure.com//subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/AMCS-TEST/providers/Microsoft.Compute/virtualMachines/testAMCSvm/providers/Microsoft.Insights/dataCollectionRuleAssociations/testCollectionRule-association1?api-version=2022-06-01",
+      "Content": null,
+      "isContentBase64": false,
+      "Headers": {
+        "x-ms-unique-id": [ "30" ],
+        "x-ms-client-request-id": [ "a34970cb-c0c9-4887-be89-c3b278836590" ],
+        "CommandName": [ "Remove-AzDataCollectionRuleAssociation" ],
+        "FullCommandName": [ "Remove-AzDataCollectionRuleAssociation_Delete" ],
+        "ParameterSetName": [ "__AllParameterSets" ],
+        "User-Agent": [ "AzurePowershell/v10.1.0", "PSVersion/v7.3.7", "Az.DataCollectionRule/0.1.0" ],
+        "Authorization": [ "[Filtered]" ]
+      },
+      "ContentHeaders": {
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "Request-Context": [ "appId=cid-v1:2bbfbac8-e1b0-44af-b9c6-3a40669d37e3" ],
+        "x-ms-correlation-request-id": [ "d65c87ba-2b38-4f70-9e4c-ec049d99b9ae" ],
+        "x-ms-client-request-id": [ "a34970cb-c0c9-4887-be89-c3b278836590" ],
+        "x-ms-routing-request-id": [ "KOREASOUTH:20231010T065320Z:d65c87ba-2b38-4f70-9e4c-ec049d99b9ae" ],
+        "x-ms-request-id": [ "0be3e38a-f642-42ad-937b-be5e7ce7601a" ],
+        "api-supported-versions": [ "2019-11-01-preview, 2021-04-01, 2021-09-01-preview, 2022-06-01, 2023-03-11" ],
+        "Server": [ "Microsoft-HTTPAPI/2.0" ],
+        "x-ms-ratelimit-remaining-subscription-deletes": [ "14995" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "Date": [ "Tue, 10 Oct 2023 06:53:19 GMT" ]
+      },
+      "ContentHeaders": {
+        "Expires": [ "-1" ],
+        "Content-Length": [ "0" ]
+      },
+      "Content": null,
+      "isContentBase64": false
+    }
+  }
+}

@@ -23,8 +23,10 @@ https://learn.microsoft.com/powershell/module/az.migrate/get-azmigratediscovered
 #>
 
 function Get-AzMigrateDiscoveredServer {
-    [OutputType([Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api202001.IVMwareMachine])]
-    [CmdletBinding(DefaultParameterSetName='List', PositionalBinding=$false, SupportsShouldProcess, ConfirmImpact='Medium')]
+    [OutputType(
+        [Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api202001.IVMwareMachine],
+        [Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api202001.IHyperVMachine])]
+    [CmdletBinding(DefaultParameterSetName = 'List', PositionalBinding = $false, SupportsShouldProcess, ConfirmImpact = 'Medium')]
     param (
         [Parameter(Mandatory)]
         [Microsoft.Azure.PowerShell.Cmdlets.Migrate.Category('Path')]
@@ -38,30 +40,38 @@ function Get-AzMigrateDiscoveredServer {
         # Specifies the resource group name.
         ${ResourceGroupName},
 
-        [Parameter(ParameterSetName='Get', Mandatory)]
-        [Parameter(ParameterSetName='GetInSite', Mandatory)]
+        [Parameter(ParameterSetName = 'Get', Mandatory)]
+        [Parameter(ParameterSetName = 'GetInSite', Mandatory)]
         [Microsoft.Azure.PowerShell.Cmdlets.Migrate.Category('Path')]
         [System.String]
-        # Specifies the VMware machine name. This is an internal Name. For users, use display name.
+        # Specifies the source machine name. This is an internal Name. For users, use display name.
         ${Name},
 
-        [Parameter(ParameterSetName='List')]
-        [Parameter(ParameterSetName='ListInSite')]
+        [Parameter(ParameterSetName = 'List')]
+        [Parameter(ParameterSetName = 'ListInSite')]
         [Microsoft.Azure.PowerShell.Cmdlets.Migrate.Category('Path')]
         [System.String]
-        # Specifies the VMware machine display name.
+        # Specifies the source machine display name.
         ${DisplayName},
 
-        [Parameter(ParameterSetName='GetInSite', Mandatory)]
-        [Parameter(ParameterSetName='ListInSite', Mandatory)]
+        [Parameter(ParameterSetName = 'GetInSite', Mandatory)]
+        [Parameter(ParameterSetName = 'ListInSite', Mandatory)]
         [Microsoft.Azure.PowerShell.Cmdlets.Migrate.Category('Path')]
         [System.String]
         # Specifies the appliance name. This internally maps to a site.
         ${ApplianceName},
 
         [Parameter()]
+        [ValidateSet("VMware", "HyperV")]
+        [ArgumentCompleter( { "VMware", "HyperV" })]
         [Microsoft.Azure.PowerShell.Cmdlets.Migrate.Category('Path')]
-        [Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.DefaultInfo(Script='(Get-AzContext).Subscription.Id')]
+        [System.String]
+        # Specifies the source machine type. Currently, only HyperV and VMware are supported.
+        ${SourceMachineType} = "VMware",
+
+        [Parameter()]
+        [Microsoft.Azure.PowerShell.Cmdlets.Migrate.Category('Path')]
+        [Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.DefaultInfo(Script = '(Get-AzContext).Subscription.Id')]
         [System.String[]]
         # Specifies the subscription id.
         ${SubscriptionId}
@@ -69,117 +79,159 @@ function Get-AzMigrateDiscoveredServer {
     
     process {
         $parameterSet = $PSCmdlet.ParameterSetName
+        $hasApplianceName = $PSBoundParameters.ContainsKey("ApplianceName")
         
         $discoverySolutionName = "Servers-Discovery-ServerDiscovery"
-        $discoverySolution = Get-AzMigrateSolution -SubscriptionId $SubscriptionId -ResourceGroupName $ResourceGroupName -MigrateProjectName $ProjectName -Name $discoverySolutionName
-        if ($discoverySolution.Name -ne $discoverySolutionName) {
+        $discoverySolution = Az.Migrate\Get-AzMigrateSolution -SubscriptionId $SubscriptionId -ResourceGroupName $ResourceGroupName -MigrateProjectName $ProjectName -Name $discoverySolutionName
+        if ($discoverySolution.Name -ne $discoverySolutionName)
+        {
             throw "Server Discovery Solution not found."
         }
 
         $appMap = @{}
 
-        if ($null -ne $discoverySolution.DetailExtendedDetail["applianceNameToSiteIdMapV2"]) {
+        if ($null -ne $discoverySolution.DetailExtendedDetail["applianceNameToSiteIdMapV2"])
+        {
             $appMapV2 = $discoverySolution.DetailExtendedDetail["applianceNameToSiteIdMapV2"] | ConvertFrom-Json
             # Fetch all appliance from V2 map first. Then these can be updated if found again in V3 map.
-            foreach ($item in $appMapV2) {
+            foreach ($item in $appMapV2)
+            {
                 $appMap[$item.ApplianceName] = $item.SiteId
             }
         }
         
-        if ($null -ne $discoverySolution.DetailExtendedDetail["applianceNameToSiteIdMapV3"]) {
+        if ($null -ne $discoverySolution.DetailExtendedDetail["applianceNameToSiteIdMapV3"])
+        {
             $appMapV3 = $discoverySolution.DetailExtendedDetail["applianceNameToSiteIdMapV3"] | ConvertFrom-Json
-            foreach ($item in $appMapV3) {
+            foreach ($item in $appMapV3)
+            {
                 $t = $item.psobject.properties
                 $appMap[$t.Name] = $t.Value.SiteId
             }    
         }
 
         if ($null -eq $discoverySolution.DetailExtendedDetail["applianceNameToSiteIdMapV2"] -And
-             $null -eq $discoverySolution.DetailExtendedDetail["applianceNameToSiteIdMapV3"] ) {
+            $null -eq $discoverySolution.DetailExtendedDetail["applianceNameToSiteIdMapV3"] )
+        {
             throw "Server Discovery Solution missing Appliance Details. Invalid Solution."           
         }
 
         # Regex to match site name.
-        $r = '(?<=/Microsoft.OffAzure/VMwareSites/).*$'
-        $siteNameTmp = ""
-        if ($parameterSet -match "Site") {
-            #Fetch by site scenario. This is when site name filter is provided.
-            $siteFound = 0
-            foreach ($kvp in $appMap.GetEnumerator()) {
-                if ($kvp.Key -eq $ApplianceName) {
-                    $siteArmId = $kvp.Value
-                    if ($siteArmId -match $r) {
-                        $siteNameTmp = $Matches[0]
-                        $siteFound = 1
-                        if ($parameterSet -eq 'GetInSite') {
-                            return Get-AzMigrateMachine -Name $Name -ResourceGroupName $ResourceGroupName -SiteName $siteNameTmp -SubscriptionId $SubscriptionId
-                        }
-                        elseif ($parameterSet -eq 'ListInSite') {
-                            $siteMachines = Get-AzMigrateMachine -ResourceGroupName $ResourceGroupName -SiteName $siteNameTmp -SubscriptionId $SubscriptionId
-                            
-                            if ($DisplayName) {
-                                $filteredMachines = $siteMachines | Where-Object {$_.DisplayName -match $DisplayName}
-                                return $filteredMachines
-                            }
-                            else {
-                                return $siteMachines
-                            }
-                        }        
-                    }                    
-                }
-            }
-
-            if ($siteFound -eq 0) {
-                throw "Appiance: $ApplianceName not found in project $ProjectName."
-            }
+        if ($SourceMachineType -eq "VMware")
+        {
+            $siteRegex = "(?<=/Microsoft.OffAzure/VMwareSites/).*$"
         }
         else {
-            # Fetch across project. All machines or by name.
-            $projectSdsMachines = [System.Collections.ArrayList]::new()
+            $siteRegex = "(?<=/Microsoft.OffAzure/HyperVSites/).*$"
+        }
 
-            if ($parameterSet -eq 'List') {
-                foreach ($kvp in $appMap.GetEnumerator()) {
-                    $siteArmId = $kvp.Value
-        
-                    if ($siteArmId -match $r) {
-                        $siteNameTmp = $Matches[0]
-                        $siteMachines = Get-AzMigrateMachine -ResourceGroupName $ResourceGroupName -SiteName $siteNameTmp -SubscriptionId $SubscriptionId
-                        if ($null -ne $siteMachines) {
-                            $projectSdsMachines.AddRange($siteMachines)
-                        }    
+        if ($parameterSet -match 'Get')
+        {
+            # Get or GetInSite
+            foreach ($kvp in $appMap.GetEnumerator())
+            {
+                if (($kvp.Value -match $siteRegex) -and
+                    (-not (($parameterSet -eq 'GetInSite') -and ($kvp.Key -ne $ApplianceName))))
+                {
+                    $siteNameTmp = $Matches[0]
+                    if ($SourceMachineType -eq "VMware")
+                    {
+                        $machine = Az.Migrate.Internal\Get-AzMigrateMachine `
+                            -Name $Name `
+                            -ResourceGroupName $ResourceGroupName `
+                            -SiteName $siteNameTmp `
+                            -SubscriptionId $SubscriptionId `
+                            -ErrorVariable notPresent `
+                            -ErrorAction SilentlyContinue
+                    }
+                    else {
+                        # HyperV
+                        $machine = Az.Migrate.Internal\Get-AzMigrateHyperVMachine `
+                            -MachineName $Name `
+                            -ResourceGroupName $ResourceGroupName `
+                            -SiteName $siteNameTmp `
+                            -SubscriptionId $SubscriptionId `
+                            -ErrorVariable notPresent `
+                            -ErrorAction SilentlyContinue
+                    }
+
+                    # Remove server marked as Deleted.
+                    if ($null -ne $machine -and $machine.IsDeleted)
+                    {
+                        $machine = $null
+                    }
+    
+                    if ($null -ne $machine)
+                    {
+                        return $machine
                     }
                 }
+            }
 
-                if ($DisplayName) {
-                    $filteredMachines = $projectSdsMachines | Where-Object {$_.DisplayName -match $DisplayName}
-                    return $filteredMachines
-                }
-                else {
-                    return $projectSdsMachines                
+            $errorMsg = "No machine with machine Name '$Name' of Type '$SourceMachineType' found in Project '$ProjectName'"
+            if ($hasApplianceName)
+            {
+                $errorMsg += " with Appliance '$ApplianceName'"
+            }
+
+            throw $errorMsg
+        }
+        else {
+            # List or ListInSite
+            $allMachines = [System.Collections.ArrayList]::new()
+            foreach ($kvp in $appMap.GetEnumerator())
+            {
+                if (($kvp.Value -match $siteRegex) -and
+                    (-not (($parameterSet -eq 'ListInSite') -and ($kvp.Key -ne $ApplianceName))))
+                {
+                    $siteNameTmp = $Matches[0]
+                    if ($SourceMachineType -eq "VMware")
+                    {
+                        $machines = Az.Migrate.Internal\Get-AzMigrateMachine `
+                            -ResourceGroupName $ResourceGroupName `
+                            -SiteName $siteNameTmp `
+                            -SubscriptionId $SubscriptionId
+                    }
+                    else {
+                        # HyperV
+                        $machines = Az.Migrate.Internal\Get-AzMigrateHyperVMachine `
+                            -ResourceGroupName $ResourceGroupName `
+                            -SiteName $siteNameTmp `
+                            -SubscriptionId $SubscriptionId
+                    }
+
+                    if ($null -ne $machines)
+                    {
+                        $allMachines.AddRange($machines)
+                    }
                 }
             }
-            elseif ($parameterSet -eq 'Get') {
-                foreach ($kvp in $appMap.GetEnumerator()) {
-                    $siteArmId = $kvp.Value
-        
-                    if ($siteArmId -match $r) {
-                        $siteNameTmp = $Matches[0]
 
-                        try {
-                            $siteMachine = Get-AzMigrateMachine -Name $Name -ResourceGroupName $ResourceGroupName -SiteName $siteNameTmp -SubscriptionId $SubscriptionId
-                            if ($null -ne $siteMachine) {
-                                return $siteMachine
-                            }
-                        }
-                        catch {
-                            $theError = $_
-                            Write-Host $theError
-                        }
-                    }      
+            # Remove servers marked as Deleted.
+            $allMachines = $allMachines | Where-Object { !$_.IsDeleted }
+
+            if ($allMachines.Count -gt 0 -and $DisplayName)
+            {
+                $allMachines = $allMachines | Where-Object { $_.DisplayName -match $DisplayName }
+            }
+
+            if ($allMachines.Count -eq 0)
+            {
+                $errorMsg = "No machine of Type '$SourceMachineType' found in Project '$ProjectName'"
+                if ($hasApplianceName)
+                {
+                    $errorMsg += " with Appliance '$ApplianceName'"
                 }
 
-                throw "Machine with Id $Name not found in project $ProjectName."
+                if ($DisplayName)
+                {
+                    $errorMsg += " with matching machine DisplayName '$DisplayName'"
+                }
+
+                throw $errorMsg
             }
+            
+            return $allMachines
         }
     }
 }

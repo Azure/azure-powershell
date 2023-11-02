@@ -40,7 +40,7 @@ This command create a dynatrace SingleSignOn resource.
 ## PARAMETERS
 
 ### -AadDomain
-array of Aad(azure active directory) domains
+array of Microsoft Entra domains
 
 ```yaml
 Type: System.String[]
@@ -236,4 +236,3 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ALIASES
 
 ## RELATED LINKS
-

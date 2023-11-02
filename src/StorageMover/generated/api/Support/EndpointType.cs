@@ -12,7 +12,11 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Support
     {
         public static Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Support.EndpointType AzureStorageBlobContainer = @"AzureStorageBlobContainer";
 
+        public static Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Support.EndpointType AzureStorageSmbFileShare = @"AzureStorageSmbFileShare";
+
         public static Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Support.EndpointType NfsMount = @"NfsMount";
+
+        public static Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Support.EndpointType SmbMount = @"SmbMount";
 
         /// <summary>the value for an instance of the <see cref="EndpointType" /> Enum.</summary>
         private string _value { get; set; }
