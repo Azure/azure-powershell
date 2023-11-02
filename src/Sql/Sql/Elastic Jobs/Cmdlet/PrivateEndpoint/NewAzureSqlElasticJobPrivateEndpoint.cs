@@ -115,7 +115,6 @@ namespace Microsoft.Azure.Commands.Sql.ElasticJobs.Cmdlet.PrivateEndpoint
         /// <remarks>
         /// This needs to be a target server sql azure resource id (i.e. full arm uri) so that we can validate calling user's R/W access to this server via RBAC.
         /// </remarks>
-        //// TODO-JP : do I need more parameter sets on this? 
         [Parameter(Mandatory = true, HelpMessage = "The resource ID for the server the private endpoint will target.")]
         public string TargetServerAzureResourceId { get; set; }
 
@@ -152,7 +151,7 @@ namespace Microsoft.Azure.Commands.Sql.ElasticJobs.Cmdlet.PrivateEndpoint
             {
                 if (ex.Response.StatusCode == System.Net.HttpStatusCode.NotFound)
                 {
-                    // This is what we want.  We looked and there is no credential with this name.
+                    // This is what we want.  We looked and there is no job private endpoint with this name.
                     return null;
                 }
 
@@ -160,7 +159,7 @@ namespace Microsoft.Azure.Commands.Sql.ElasticJobs.Cmdlet.PrivateEndpoint
                 throw;
             }
 
-            // The credential already exists
+            // The private endpoint already exists
             throw new PSArgumentException(
                 string.Format(Properties.Resources.AzureElasticJobPrivateEndpointExists, this.Name, this.AgentName),
                 "PrivateEndpointName");
