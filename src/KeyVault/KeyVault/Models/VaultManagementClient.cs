@@ -643,13 +643,6 @@ namespace Microsoft.Azure.Commands.KeyVault.Models
                 properties.NetworkAcls.DefaultAction = PublicNetworkAccess.Enabled.ToString().Equals(parameters.PublicNetworkAccess) ? 
                     NetworkRuleAction.Allow.ToString() : NetworkRuleAction.Deny.ToString();
             }
-
-            if(null != parameters.ManagedServiceIdentity) 
-            {
-                existingManagedHsm.OriginalManagedHsm.Identity?.UserAssignedIdentities?.Keys?
-                    .ToList()?.ForEach(id => parameters.ManagedServiceIdentity.UserAssignedIdentities.Add(id, default(UserAssignedIdentity))); 
-                existingManagedHsm.OriginalManagedHsm.Identity = parameters.ManagedServiceIdentity;
-            }
             var response = KeyVaultManagementClient.ManagedHsms.Update(
                 resourceGroupName: existingManagedHsm.ResourceGroupName,
                 name: existingManagedHsm.Name,
@@ -662,7 +655,7 @@ namespace Microsoft.Azure.Commands.KeyVault.Models
                     },
                     Tags = TagsConversionHelper.CreateTagDictionary(parameters.Tags, validate: true),
                     Properties = properties,
-                    Identity = existingManagedHsm.OriginalManagedHsm.Identity
+                    Identity = parameters.ManagedServiceIdentity
                 });
 
             return new PSManagedHsm(response, graphClient);

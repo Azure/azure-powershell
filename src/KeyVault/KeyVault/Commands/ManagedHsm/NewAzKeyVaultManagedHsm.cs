@@ -22,6 +22,7 @@ using Microsoft.WindowsAzure.Commands.Utilities.Common;
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 using System.Management.Automation;
 
 namespace Microsoft.Azure.Commands.KeyVault.Commands
@@ -121,39 +122,42 @@ namespace Microsoft.Azure.Commands.KeyVault.Commands
                     throw new ArgumentException(Resources.HsmAlreadyExists);
                 }
 
-                var managedServiceIdentity = new ManagedServiceIdentity(ManagedServiceIdentityType.UserAssigned)
-                {
-                    UserAssignedIdentities = new Dictionary<string, UserAssignedIdentity>()
-                };
-
-                if (this.IsParameterBound(c => c.UserAssignedIdentity))
-                {
-                    UserAssignedIdentity?.ForEach(id => managedServiceIdentity.UserAssignedIdentities.Add(id, new UserAssignedIdentity()));
-                };
-
-                var vaultCreationParameter = new VaultCreationOrUpdateParameters()
-                {
-                    Name = this.Name,
-                    ResourceGroupName = this.ResourceGroupName,
-                    Location = this.Location,
-                    SkuName = this.Sku,
-                    TenantId = GetTenantId(),
-                    Tags = this.Tag,
-                    Administrator = this.Administrator,
-                    SkuFamilyName = DefaultManagedHsmSkuFamily,
-                    // If retention days is not specified, use the default value
-                    SoftDeleteRetentionInDays = this.SoftDeleteRetentionInDays,
-                    // false is not accepted
-                    EnablePurgeProtection = this.EnablePurgeProtection.IsPresent ? true : (bool?)null,
-                    // use default network rule set
-                    MhsmNetworkAcls = new MhsmNetworkRuleSet(),
-                    PublicNetworkAccess = this.PublicNetworkAccess,
-                    ManagedServiceIdentity = this.IsParameterBound(c => c.UserAssignedIdentity) ? managedServiceIdentity : null
-                };
-
-                this.WriteObject(KeyVaultManagementClient.CreateOrRecoverManagedHsm(vaultCreationParameter, GraphClient));
+                this.WriteObject(KeyVaultManagementClient.CreateOrRecoverManagedHsm(PrepareParameters(), GraphClient));
             }
         }
 
+        private VaultCreationOrUpdateParameters PrepareParameters()
+        {
+            ManagedServiceIdentity managedServiceIdentity = null;
+
+            if (this.IsParameterBound(c => c.UserAssignedIdentity) && this.UserAssignedIdentity.Length > 0)
+            {
+                managedServiceIdentity = new ManagedServiceIdentity(ManagedServiceIdentityType.UserAssigned)
+                {
+                    UserAssignedIdentities = new Dictionary<string, UserAssignedIdentity>()
+                };
+                UserAssignedIdentity?.ForEach(id => managedServiceIdentity.UserAssignedIdentities.Add(id, new UserAssignedIdentity()));
+            };
+
+            return new VaultCreationOrUpdateParameters()
+            {
+                Name = this.Name,
+                ResourceGroupName = this.ResourceGroupName,
+                Location = this.Location,
+                SkuName = this.Sku,
+                TenantId = GetTenantId(),
+                Tags = this.Tag,
+                Administrator = this.Administrator,
+                SkuFamilyName = DefaultManagedHsmSkuFamily,
+                // If retention days is not specified, use the default value
+                SoftDeleteRetentionInDays = this.SoftDeleteRetentionInDays,
+                // false is not accepted
+                EnablePurgeProtection = this.EnablePurgeProtection.IsPresent ? true : (bool?)null,
+                // use default network rule set
+                MhsmNetworkAcls = new MhsmNetworkRuleSet(),
+                PublicNetworkAccess = this.PublicNetworkAccess,
+                ManagedServiceIdentity = managedServiceIdentity
+            };
+        }
     }
 }
