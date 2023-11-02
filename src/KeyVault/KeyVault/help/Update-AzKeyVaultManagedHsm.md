@@ -104,6 +104,7 @@ Enables purge protection for the managed Hsm named `$hsmName` in resource group 
 ```powershell
 Update-AzKeyVaultManagedHsm -Name testmhsm -ResourceGroupName test-rg -UserAssignedIdentity /subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx/resourceGroups/bez-rg/providers/Microsoft.ManagedIdentity/userAssignedIdentities/bez-id02 | Format-List
 ```
+
 ```output
 Managed HSM Name                        : testmshm
 Resource Group Name                     : test-rg

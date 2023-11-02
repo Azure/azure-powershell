@@ -84,7 +84,7 @@ function Test-ManagedHsmWithManagedServiceIdentity{
         $hsm = New-AzKeyVaultManagedHsm -Name $hsmName -ResourceGroupName $rgName -Location $hsmLocation -Administrator $administrator -SoftDeleteRetentionInDays 7 -UserAssignedIdentity $userAssignedIdentity
         
         # Test creating a default managed HSM
-        $hsm2 = New-AzKeyVaultManagedHsm -Name $hsmName3 -ResourceGroupName $rgName -Location $hsmLocation2 -Administrator $administrator -SoftDeleteRetentionInDays 7
+        $hsm2 = New-AzKeyVaultManagedHsm -Name $hsmName2 -ResourceGroupName $rgName -Location $hsmLocation2 -Administrator $administrator -SoftDeleteRetentionInDays 7
         $hsm3 = $hsm2 | Update-AzKeyVaultManagedHsm -UserAssignedIdentity $userAssignedIdentity
         Assert-AreEqual $userAssignedIdentity $hsm3.Identity.UserAssignedIdentities[0] "update managed HSM with userAssignedIdentity"
 
