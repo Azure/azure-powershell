@@ -51,6 +51,20 @@ rg                elasticjobserver jobdb        agent     Ready {[Octopus, Agent
 
 Updates an Elastic Job agent
 
+### Example 2
+```powershell
+$umi = Get-AzUserAssignedIdentity -ResourceGroupName rg -Name pstestumi
+New-AzSqlElasticJobAgent -ResourceGroupName rg -ServerName elasticjobserver -DatabaseName jobdb -Name agent -IdentityType "UserAssigned" -UserAssignedIdentityId $umi.Id -SkuName JA200 -WorkerCount 200
+```
+
+```output
+ResourceGroupName ServerName       DatabaseName AgentName State Tags
+----------------- ----------       ------------ --------- ----- ----
+rg                elasticjobserver jobdb        agent     Ready
+```
+
+Updates an Elastic Job agent with specific Sku and Identity 
+
 ## PARAMETERS
 
 ### -DefaultProfile
