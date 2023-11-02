@@ -8,7 +8,7 @@ schema: 2.0.0
 # Remove-AzSqlElasticJobPrivateEndpoint
 
 ## SYNOPSIS
-{{ Fill in the Synopsis }}
+Removes the elastic job private endpoint
 
 ## SYNTAX
 
@@ -32,16 +32,28 @@ Remove-AzSqlElasticJobPrivateEndpoint [-ParentResourceId] <String> [-Name] <Stri
 ```
 
 ## DESCRIPTION
-{{ Fill in the Description }}
+The Remove-AzSqlElasticJobPrivateEndpoint cmdlet removes a job private endpoint
 
 ## EXAMPLES
 
 ### Example 1
 ```powershell
-PS C:\> {{ Add example code here }}
+$agent = Get-AzSqlElasticJobAgent -ResourceGroupName rg -ServerName elasticjobserver -Name agent
+$agent | Remove-AzSqlElasticJobPrivateEndpoint -Name endpoint1
 ```
 
-{{ Add example description here }}
+```output
+PrivateEndpointName         : endpoint1
+TargetServerAzureResourceId : /subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx/resourceGroups/rg1/providers/Microsoft.Sql/servers/server1
+PrivateEndpointId           : EJ_xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx_endpoint1
+ResourceGroupName           : rg
+ServerName                  : elasticjobserver
+AgentName                   : agent
+ResourceId                  : /subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx/resourceGroups/rg/providers/Microsoft.Sql/servers/elasticjobserver/jobAgents/agent/privateEndpoints/endpoint1
+Type                        : Microsoft.Sql/servers/jobAgents/privateEndpoints
+```
+
+Removes a job private endpoint
 
 ## PARAMETERS
 

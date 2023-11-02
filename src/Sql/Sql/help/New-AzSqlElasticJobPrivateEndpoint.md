@@ -8,7 +8,7 @@ schema: 2.0.0
 # New-AzSqlElasticJobPrivateEndpoint
 
 ## SYNOPSIS
-{{ Fill in the Synopsis }}
+Creates a new job private endpoint
 
 ## SYNTAX
 
@@ -34,16 +34,28 @@ New-AzSqlElasticJobPrivateEndpoint [-ParentResourceId] <String> [-Name] <String>
 ```
 
 ## DESCRIPTION
-{{ Fill in the Description }}
+The New-AzSqlElasticJobPrivateEndpoint cmdlet creates a new job private endpoint
 
 ## EXAMPLES
 
 ### Example 1
 ```powershell
-PS C:\> {{ Add example code here }}
+$agent = Get-AzSqlElasticJobAgent -ResourceGroupName rg -ServerName elasticjobserver -Name agent
+$agent | New-AzSqlElasticJobPrivateEndpoint -Name endpoint1 -TargetServerAzureResourceId "/subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx/resourceGroups/rg1/providers/Microsoft.Sql/servers/server1"
 ```
 
-{{ Add example description here }}
+```output
+PrivateEndpointName         : endpoint1
+TargetServerAzureResourceId : /subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx/resourceGroups/rg1/providers/Microsoft.Sql/servers/server1
+PrivateEndpointId           : EJ_xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx_endpoint1
+ResourceGroupName           : rg
+ServerName                  : elasticjobserver
+AgentName                   : agent
+ResourceId                  : /subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx/resourceGroups/rg/providers/Microsoft.Sql/servers/elasticjobserver/jobAgents/agent/privateEndpoints/endpoint1
+Type                        : Microsoft.Sql/servers/jobAgents/privateEndpoints
+```
+
+Creates a new job private endpoint
 
 ## PARAMETERS
 

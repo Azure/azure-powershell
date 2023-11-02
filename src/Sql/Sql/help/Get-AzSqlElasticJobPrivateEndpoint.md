@@ -8,7 +8,7 @@ schema: 2.0.0
 # Get-AzSqlElasticJobPrivateEndpoint
 
 ## SYNOPSIS
-{{ Fill in the Synopsis }}
+Gets one or more job private endpoints
 
 ## SYNTAX
 
@@ -31,16 +31,48 @@ Get-AzSqlElasticJobPrivateEndpoint [-ParentResourceId] <String> [-Name <String>]
 ```
 
 ## DESCRIPTION
-{{ Fill in the Description }}
+The Get-AzSqlElasticJobPrivateEndpoint cmdlet gets one or more job private endpoints
 
 ## EXAMPLES
 
 ### Example 1
 ```powershell
-PS C:\> {{ Add example code here }}
+
+$agent = Get-AzSqlElasticJobAgent -ResourceGroupName rg -ServerName elasticjobserver -Name agent
+$agent | Get-AzSqlElasticJobPrivateEndpoint 
 ```
 
-{{ Add example description here }}
+```output
+PrivateEndpointName         : endpoint1
+TargetServerAzureResourceId : /subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx/resourceGroups/rg1/providers/Microsoft.Sql/servers/server1
+PrivateEndpointId           : EJ_xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx_endpoint1
+ResourceGroupName           : rg
+ServerName                  : elasticjobserver
+AgentName                   : agent
+ResourceId                  : /subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx/resourceGroups/rg/providers/Microsoft.Sql/servers/elasticjobserver/jobAgents/agent/privateEndpoints/endpoint1
+Type                        : Microsoft.Sql/servers/jobAgents/privateEndpoints
+```
+
+Gets one or more job private endpoints by job agent
+
+### Example 2
+```powershell
+$agent = Get-AzSqlElasticJobAgent -ResourceGroupName rg -ServerName elasticjobserver -Name agent
+$agent | Get-AzSqlElasticJobPrivateEndpoint -Name endpoint1
+```
+
+```output
+PrivateEndpointName         : endpoint1
+TargetServerAzureResourceId : /subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx/resourceGroups/rg1/providers/Microsoft.Sql/servers/server1
+PrivateEndpointId           : EJ_xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx_endpoint1
+ResourceGroupName           : rg
+ServerName                  : elasticjobserver
+AgentName                   : agent
+ResourceId                  : /subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx/resourceGroups/rg/providers/Microsoft.Sql/servers/elasticjobserver/jobAgents/agent/privateEndpoints/endpoint1
+Type                        : Microsoft.Sql/servers/jobAgents/privateEndpoints
+```
+
+Gets one or more job private endpoints by name
 
 ## PARAMETERS
 
