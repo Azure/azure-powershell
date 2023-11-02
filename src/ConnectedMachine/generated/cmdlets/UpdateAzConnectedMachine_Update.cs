@@ -16,7 +16,6 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Cmdlets
     [global::System.Management.Automation.OutputType(typeof(Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.Api20221227.IMachine))]
     [global::Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Description(@"The operation to update a hybrid machine.")]
     [global::Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Generated]
-    [global::Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.HttpPath(Path = "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.HybridCompute/machines/{machineName}", ApiVersion = "2022-12-27")]
     public partial class UpdateAzConnectedMachine_Update : global::System.Management.Automation.PSCmdlet,
         Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Runtime.IEventListener
     {

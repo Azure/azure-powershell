@@ -450,5 +450,42 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## NOTES
 
+ALIASES
+
+COMPLEX PARAMETER PROPERTIES
+
+To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
+
+
+`EXTENSIONPARAMETER <IMachineExtensionUpdate>`: Describes a Machine Extension Update.
+  - `[Tag <IResourceUpdateTags>]`: Resource tags
+    - `[(Any) <String>]`: This indicates any property can be added to this object.
+  - `[AutoUpgradeMinorVersion <Boolean?>]`: Indicates whether the extension should use a newer minor version if one is available at deployment time. Once deployed, however, the extension will not upgrade minor versions unless redeployed, even with this property set to true.
+  - `[EnableAutomaticUpgrade <Boolean?>]`: Indicates whether the extension should be automatically upgraded by the platform if there is a newer version available.
+  - `[ForceUpdateTag <String>]`: How the extension handler should be forced to update even if the extension configuration has not changed.
+  - `[ProtectedSetting <IMachineExtensionUpdatePropertiesProtectedSettings>]`: The extension can contain either protectedSettings or protectedSettingsFromKeyVault or no protected settings at all.
+    - `[(Any) <Object>]`: This indicates any property can be added to this object.
+  - `[Publisher <String>]`: The name of the extension handler publisher.
+  - `[Setting <IMachineExtensionUpdatePropertiesSettings>]`: Json formatted public settings for the extension.
+    - `[(Any) <Object>]`: This indicates any property can be added to this object.
+  - `[Type <String>]`: Specifies the type of the extension; an example is "CustomScriptExtension".
+  - `[TypeHandlerVersion <String>]`: Specifies the version of the script handler.
+
+`INPUTOBJECT <IConnectedMachineIdentity>`: Identity Parameter
+  - `[ExtensionName <String>]`: The name of the machine extension.
+  - `[ExtensionType <String>]`: The extensionType of the Extension being received.
+  - `[GroupName <String>]`: The name of the private link resource.
+  - `[Id <String>]`: Resource identity path
+  - `[Location <String>]`: The location of the Extension being received.
+  - `[MachineName <String>]`: The name of the hybrid machine.
+  - `[Name <String>]`: The name of the hybrid machine.
+  - `[PrivateEndpointConnectionName <String>]`: The name of the private endpoint connection.
+  - `[PrivateLinkScopeId <String>]`: The id (Guid) of the Azure Arc PrivateLinkScope resource.
+  - `[Publisher <String>]`: The publisher of the Extension being received.
+  - `[ResourceGroupName <String>]`: The name of the resource group. The name is case insensitive.
+  - `[ScopeName <String>]`: The name of the Azure Arc PrivateLinkScope resource.
+  - `[SubscriptionId <String>]`: The ID of the target subscription.
+  - `[Version <String>]`: The version of the Extension being received.
+
 ## RELATED LINKS
 
