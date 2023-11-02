@@ -125,17 +125,17 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets
                             string containerUri = HelperUtils.GetContainerUri(uriDict, Item.Id);
                             string protectedItemName = HelperUtils.GetProtectedItemUri(uriDict, Item.Id);
 
-                            ODataQuery<ServiceClientModel.BMSRPQueryObject> queryFilter = null;
+                            ODataQuery<ServiceClientModel.BmsrpQueryObject> queryFilter = null;
                             if (string.Compare(Item.BackupManagementType.ToString(), BackupManagementType.AzureWorkload.ToString()) == 0)
                             {
                                 var restorePointQueryType = "FullAndDifferential";
 
-                                string queryFilterString = QueryBuilder.Instance.GetQueryString(new ServiceClientModel.BMSRPQueryObject()
+                                string queryFilterString = QueryBuilder.Instance.GetQueryString(new ServiceClientModel.BmsrpQueryObject()
                                 {      
                                     RestorePointQueryType = restorePointQueryType,
                                     ExtendedInfo = true
                                 });
-                                queryFilter = new ODataQuery<ServiceClientModel.BMSRPQueryObject>();
+                                queryFilter = new ODataQuery<ServiceClientModel.BmsrpQueryObject>();
                                 queryFilter.Filter = queryFilterString;
                             }                            
 

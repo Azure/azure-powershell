@@ -448,5 +448,46 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## NOTES
 
+ALIASES
+
+COMPLEX PARAMETER PROPERTIES
+
+To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
+
+
+`INPUTOBJECT <IConnectedMachineIdentity>`: Identity Parameter
+  - `[ExtensionName <String>]`: The name of the machine extension.
+  - `[ExtensionType <String>]`: The extensionType of the Extension being received.
+  - `[GroupName <String>]`: The name of the private link resource.
+  - `[Id <String>]`: Resource identity path
+  - `[Location <String>]`: The location of the Extension being received.
+  - `[MachineName <String>]`: The name of the hybrid machine.
+  - `[Name <String>]`: The name of the hybrid machine.
+  - `[PrivateEndpointConnectionName <String>]`: The name of the private endpoint connection.
+  - `[PrivateLinkScopeId <String>]`: The id (Guid) of the Azure Arc PrivateLinkScope resource.
+  - `[Publisher <String>]`: The publisher of the Extension being received.
+  - `[ResourceGroupName <String>]`: The name of the resource group. The name is case insensitive.
+  - `[ScopeName <String>]`: The name of the Azure Arc PrivateLinkScope resource.
+  - `[SubscriptionId <String>]`: The ID of the target subscription.
+  - `[Version <String>]`: The version of the Extension being received.
+
+`PARAMETER <IMachineUpdate>`: Describes a hybrid machine Update.
+  - `[Tag <IResourceUpdateTags>]`: Resource tags
+    - `[(Any) <String>]`: This indicates any property can be added to this object.
+  - `[AgentUpgradeCorrelationId <String>]`: The correlation ID passed in from RSM per upgrade.
+  - `[AgentUpgradeDesiredVersion <String>]`: Specifies the version info w.r.t AgentUpgrade for the machine.
+  - `[AgentUpgradeEnableAutomaticUpgrade <Boolean?>]`: Specifies if RSM should try to upgrade this machine
+  - `[IdentityType <ResourceIdentityType?>]`: The identity type.
+  - `[LinuxConfigurationPatchSettingsAssessmentMode <AssessmentModeTypes?>]`: Specifies the assessment mode.
+  - `[LinuxConfigurationPatchSettingsPatchMode <PatchModeTypes?>]`: Specifies the patch mode.
+  - `[LocationDataCity <String>]`: The city or locality where the resource is located.
+  - `[LocationDataCountryOrRegion <String>]`: The country or region where the resource is located
+  - `[LocationDataDistrict <String>]`: The district, state, or province where the resource is located.
+  - `[LocationDataName <String>]`: A canonical name for the geographic or physical location.
+  - `[ParentClusterResourceId <String>]`: The resource id of the parent cluster (Azure HCI) this machine is assigned to, if any.
+  - `[PrivateLinkScopeResourceId <String>]`: The resource id of the private link scope this machine is assigned to, if any.
+  - `[WindowsConfigurationPatchSettingsAssessmentMode <AssessmentModeTypes?>]`: Specifies the assessment mode.
+  - `[WindowsConfigurationPatchSettingsPatchMode <PatchModeTypes?>]`: Specifies the patch mode.
+
 ## RELATED LINKS
 

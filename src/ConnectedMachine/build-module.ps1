@@ -143,8 +143,7 @@ if($NoDocs) {
     $null = Get-ChildItem -Path $docsFolder -Recurse -Exclude 'README.md' | Remove-Item -Recurse -ErrorAction SilentlyContinue
   }
   $null = New-Item -ItemType Directory -Force -Path $docsFolder
-  $addComplexInterfaceInfo = ![System.Convert]::ToBoolean('true')
-  Export-ProxyCmdlet -ModuleName $moduleName -ModulePath $modulePaths -ExportsFolder $exportsFolder -InternalFolder $internalFolder -ModuleDescription $moduleDescription -DocsFolder $docsFolder -ExamplesFolder $examplesFolder -ModuleGuid $guid -AddComplexInterfaceInfo:$addComplexInterfaceInfo
+  Export-ProxyCmdlet -ModuleName $moduleName -ModulePath $modulePaths -ExportsFolder $exportsFolder -InternalFolder $internalFolder -ModuleDescription $moduleDescription -DocsFolder $docsFolder -ExamplesFolder $examplesFolder -ModuleGuid $guid
 }
 
 Write-Host -ForegroundColor Green 'Creating format.ps1xml...'
@@ -162,11 +161,5 @@ Export-TestStub -ModuleName $moduleName -ExportsFolder $exportsFolder -OutputFol
 
 Write-Host -ForegroundColor Green 'Creating example stubs...'
 Export-ExampleStub -ExportsFolder $exportsFolder -OutputFolder $examplesFolder
-
-if (Test-Path (Join-Path $PSScriptRoot 'generate-portal-ux.ps1'))
-{
-  Write-Host -ForegroundColor Green 'Creating ux metadata...'
-  . (Join-Path $PSScriptRoot 'generate-portal-ux.ps1')
-}
 
 Write-Host -ForegroundColor Green '-------------Done-------------'
