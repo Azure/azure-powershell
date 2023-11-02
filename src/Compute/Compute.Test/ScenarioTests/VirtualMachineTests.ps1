@@ -7084,7 +7084,7 @@ function Test-VMDefaultsToTrustedLaunchWithManagedDisk2
 {
     # TODO: complete this test. currently vm creation times out. 
     # Setup
-    $rgname = "adsandvmd20";#Get-ComputeTestResourceName;
+    $rgname = "adsandvmd23";#Get-ComputeTestResourceName;
     $loc = "eastus";#Get-ComputeVMLocation;
 
     try
