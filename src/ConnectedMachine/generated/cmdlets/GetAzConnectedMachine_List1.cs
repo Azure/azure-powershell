@@ -19,7 +19,6 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Cmdlets
     [global::System.Management.Automation.OutputType(typeof(Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.Api20221227.IMachine))]
     [global::Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Description(@"Lists all the hybrid machines in the specified subscription. Use the nextLink property in the response to get the next page of hybrid machines.")]
     [global::Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Generated]
-    [global::Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.HttpPath(Path = "/subscriptions/{subscriptionId}/providers/Microsoft.HybridCompute/machines", ApiVersion = "2022-12-27")]
     public partial class GetAzConnectedMachine_List1 : global::System.Management.Automation.PSCmdlet,
         Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Runtime.IEventListener
     {
