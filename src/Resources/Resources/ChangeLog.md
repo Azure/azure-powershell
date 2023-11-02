@@ -19,8 +19,22 @@
 -->
 
 ## Upcoming Release
+* [Breaking Change] Redesigned CRUD cmdlets for `PolicyAssignment`, `PolicyDefinition`, `PolicyExemption`, `PolicySetDefinition`. Please see Az 11 migration guide https://learn.microsoft.com/en-us/powershell/azure/migrate-az-10.0.0 for more detail.
+* Supported $ref statements for user-defined types in Bicep files.
+* Fixed reporting duplicate warnings when compiling Bicep files.
+* Updated New and Set Management Group cmdlets to allow DeploymentSubscription to be optional.
+* Fixed inexplicable error message when subscription and scope are neither provided in RoleAssignment/RoleDefinition related commands. [#22716]
+
+## Version 6.11.2
+* Fixed bug where `.bicepparam` values were not being correctly serialized in the correct format.
+* Allowed supplemental parameters for Deployments cmdlets when used with `.bicepparam` file.
+
+## Version 6.11.1
+* Reverted commits that caused regression in `Get-AzRoleAssignment`. [#22863]
+
+## Version 6.11.0
 * Supported `TemplateParameterFile` to accept a `.bicepparam` file.
-* Fixed unexplicable error message when subscription and scope are neither provided in `Get-AzRoleDefinition`. [#22716]
+* Fixed inexplicable error message when subscription and scope are neither provided in `Get-AzRoleDefinition`. [#22716]
 
 ## Version 6.10.0
 * Added breaking change warnings for Azure Policy cmdlets.

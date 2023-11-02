@@ -34,6 +34,7 @@ using RestAzureNS = Microsoft.Rest.Azure;
 using ServiceClientModel = Microsoft.Azure.Management.RecoveryServices.Backup.Models;
 using CrrModel = Microsoft.Azure.Management.RecoveryServices.Backup.CrossRegionRestore.Models;
 using SystemNet = System.Net;
+using Microsoft.Azure.Commands.Common.Exceptions;
 
 namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.ProviderModel
 {
@@ -86,6 +87,8 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.ProviderModel
 
             string auxiliaryAccessToken = ProviderData.ContainsKey(ResourceGuardParams.Token) ? (string)ProviderData[ResourceGuardParams.Token] : null;
             bool isMUAOperation = ProviderData.ContainsKey(ResourceGuardParams.IsMUAOperation) ? (bool)ProviderData[ResourceGuardParams.IsMUAOperation] : false;
+
+            Logger.Instance.WriteWarning("Ignite (November) 2023 onwards Virtual Machine deployments using PS and CLI will default to Trusted Launch configuration. You need to ensure Policy Name used with this command is of type Enhanced Policy for Trusted Launch VMs. Non-Trusted Launch Virtual Machines will not be impacted by this change. To know more about default change and Trusted Launch, please visit https://aka.ms/TLaD.");
 
             ProtectionPolicyResource oldPolicy = null;
             ProtectionPolicyResource newPolicy = null;
@@ -388,7 +391,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.ProviderModel
             AzureVmItem iaasVmItem = item as AzureVmItem;
             BackupRequestResource triggerBackupRequest = new BackupRequestResource();
             IaasVMBackupRequest iaasVmBackupRequest = new IaasVMBackupRequest();
-            iaasVmBackupRequest.RecoveryPointExpiryTimeInUTC = expiryDateTime;
+            iaasVmBackupRequest.RecoveryPointExpiryTimeInUtc = expiryDateTime;
             triggerBackupRequest.Properties = iaasVmBackupRequest;
 
             return ServiceClientAdapter.TriggerBackup(
@@ -702,8 +705,8 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.ProviderModel
             string containerUri = HelperUtils.GetContainerUri(uriDict, rp.Id);
             string protectedItemName = HelperUtils.GetProtectedItemUri(uriDict, rp.Id);
 
-            IaasVMILRRegistrationRequest registrationRequest =
-                new IaasVMILRRegistrationRequest();
+            IaasVmilrRegistrationRequest registrationRequest =
+                new IaasVmilrRegistrationRequest();
             registrationRequest.RecoveryPointId = rp.RecoveryPointId;
             registrationRequest.VirtualMachineId = rp.SourceResourceId;
             registrationRequest.RenewExistingRegistration = (rp.IlrSessionActive == false) ? false : true;
@@ -843,9 +846,11 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.ProviderModel
                 ProviderData.ContainsKey(PolicyParams.SchedulePolicy) ?
                 (SchedulePolicyBase)ProviderData[PolicyParams.SchedulePolicy] :
                 null;
-
             CmdletModel.TieringPolicy tieringDetails = ProviderData.ContainsKey(PolicyParams.TieringPolicy) ? (CmdletModel.TieringPolicy)ProviderData[PolicyParams.TieringPolicy] : null;
             bool isSmartTieringEnabled = ProviderData.ContainsKey(PolicyParams.IsSmartTieringEnabled) ? (bool)ProviderData[PolicyParams.IsSmartTieringEnabled] : false;
+
+            string snapshotRGName = (string)ProviderData[PolicyParams.BackupSnapshotResourceGroup];
+            string snapshotRGNameSuffix = (string)ProviderData[PolicyParams.BackupSnapshotResourceGroupSuffix];
 
             // do validations
             ValidateAzureVMWorkloadType(workloadType);                       
@@ -913,7 +918,21 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.ProviderModel
                     timeZone = timeZoneInput;
                 }
             }
-            
+
+            InstantRPAdditionalDetails instantRPAdditionalDetails = null;
+            if (snapshotRGName != null)
+            {
+                instantRPAdditionalDetails = new InstantRPAdditionalDetails();
+
+                instantRPAdditionalDetails.AzureBackupRgNamePrefix = snapshotRGName;
+                if (snapshotRGNameSuffix != null) instantRPAdditionalDetails.AzureBackupRgNameSuffix = snapshotRGNameSuffix;
+            }
+            else if(snapshotRGNameSuffix != null)
+            {
+                // resx
+                throw new ArgumentException("The parameter BackupSnapshotResourceGroupSuffix cannot be used without the BackupSnapshotResourceGroup parameter. Please provide the BackupSnapshotResourceGroup parameter or remove the BackupSnapshotResourceGroupSuffix parameter.");
+            }
+
             // construct Service Client policy request            
             ProtectionPolicyResource serviceClientRequest = new ProtectionPolicyResource()
             {
@@ -925,7 +944,8 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.ProviderModel
                     TieringPolicy = PolicyHelpers.GetServiceClientTieringPolicy(tieringDetails, isSmartTieringEnabled),
                     PolicyType = (schedulePolicy.GetType() == typeof(CmdletModel.SimpleSchedulePolicyV2)) ? "V2" : null,
                     TimeZone = timeZone,
-                    InstantRpRetentionRangeInDays = snapshotRetentionInDays
+                    InstantRpRetentionRangeInDays = snapshotRetentionInDays,
+                    InstantRpDetails = instantRPAdditionalDetails
                 }
             };
 
@@ -955,6 +975,9 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.ProviderModel
 
             CmdletModel.TieringPolicy tieringDetails = ProviderData.ContainsKey(PolicyParams.TieringPolicy) ? (CmdletModel.TieringPolicy)ProviderData[PolicyParams.TieringPolicy] : null;
             bool isSmartTieringEnabled = ProviderData.ContainsKey(PolicyParams.IsSmartTieringEnabled) ? (bool)ProviderData[PolicyParams.IsSmartTieringEnabled] : false;
+
+            string snapshotRGName = (string)ProviderData[PolicyParams.BackupSnapshotResourceGroup];
+            string snapshotRGNameSuffix = (string)ProviderData[PolicyParams.BackupSnapshotResourceGroupSuffix];
 
             // do validations
             ValidateAzureVMProtectionPolicy(policy);
@@ -1032,7 +1055,21 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.ProviderModel
                     timeZone = timeZoneInput;
                 }
             }
-            
+
+            InstantRPAdditionalDetails instantRPAdditionalDetails = null;
+            if (snapshotRGName != null)
+            {
+                instantRPAdditionalDetails = new InstantRPAdditionalDetails();
+
+                instantRPAdditionalDetails.AzureBackupRgNamePrefix = snapshotRGName;
+                if (snapshotRGNameSuffix != null) instantRPAdditionalDetails.AzureBackupRgNameSuffix = snapshotRGNameSuffix;
+            }
+            else if (snapshotRGNameSuffix != null)
+            {
+                // resx
+                throw new ArgumentException("The parameter BackupSnapshotResourceGroupSuffix cannot be used without the BackupSnapshotResourceGroup parameter. Please provide the BackupSnapshotResourceGroup parameter or remove the BackupSnapshotResourceGroupSuffix parameter.");
+            }
+
             // construct Service Client policy request            
             ProtectionPolicyResource serviceClientRequest = new ProtectionPolicyResource()
             {
@@ -1045,7 +1082,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.ProviderModel
                     TimeZone = timeZone,
                     PolicyType = (((AzureVmPolicy)policy).SchedulePolicy.GetType() == typeof(CmdletModel.SimpleSchedulePolicyV2)) ? "V2" : null,
                     InstantRpRetentionRangeInDays = ((AzureVmPolicy)policy).SnapshotRetentionInDays,
-                    InstantRPDetails = new InstantRPAdditionalDetails(
+                    InstantRpDetails = (instantRPAdditionalDetails != null)? instantRPAdditionalDetails : new InstantRPAdditionalDetails(
                         ((AzureVmPolicy)policy).AzureBackupRGName,
                         ((AzureVmPolicy)policy).AzureBackupRGNameSuffix)
                 }
@@ -1662,7 +1699,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.ProviderModel
             vmVersion = (isComputeAzureVM) == true ? computeAzureVMVersion : classicComputeAzureVMVersion;
             string virtualMachineId = GetAzureIaasVirtualMachineId(rgName, vmVersion, vmName);
 
-            ODataQuery<BMSPOQueryObject> queryParam = new ODataQuery<BMSPOQueryObject>(
+            ODataQuery<BmspoQueryObject> queryParam = new ODataQuery<BmspoQueryObject>(
                 q => q.BackupManagementType
                      == ServiceClientModel.BackupManagementType.AzureIaasVM);
 
@@ -1746,7 +1783,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.ProviderModel
                             suffix, clientScriptForConnection.ScriptExtension);
 
                         return new AzureVmRPMountScriptDetails(
-                            clientScriptForConnection.OsType, fileName, password);
+                            clientScriptForConnection.OSType, fileName, password);
                     }
                 }
                 throw new Exception(
@@ -1785,7 +1822,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.ProviderModel
                 }
                 else
                 {
-                    string operatingSystemName = clientScriptForConnection.OsType;
+                    string operatingSystemName = clientScriptForConnection.OSType;
                     string vmName = protectedItemName.Split(';')[3];
                     fileName = string.Format(
                             CultureInfo.InvariantCulture,
@@ -1797,7 +1834,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.ProviderModel
                 password = this.ReplacePasswordInScriptContentAndReturn(ref content);
 
                 return new AzureVmRPMountScriptDetails(
-                    clientScriptForConnection.OsType, fileName, password);
+                    clientScriptForConnection.OSType, fileName, password);
             }
             catch (Exception e)
             {

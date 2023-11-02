@@ -25,12 +25,12 @@ Returns list of operations.
 {{ Add code here }}
 
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.SelfHelp.Models.Api30.IOperation
+Microsoft.Azure.PowerShell.Cmdlets.SelfHelp.Models.Api40.IOperation
 .Link
 https://learn.microsoft.com/powershell/module/az.selfhelp/get-azselfhelpoperation
 #>
 function Get-AzSelfHelpOperation {
-[OutputType([Microsoft.Azure.PowerShell.Cmdlets.SelfHelp.Models.Api30.IOperation])]
+[OutputType([Microsoft.Azure.PowerShell.Cmdlets.SelfHelp.Models.Api40.IOperation])]
 [CmdletBinding(DefaultParameterSetName='List', PositionalBinding=$false)]
 param(
     [Parameter()]

@@ -73,7 +73,7 @@ $threatIntelWhitelist = New-AzFirewallPolicyThreatIntelWhitelist -IpAddress 23.4
 Set-AzFirewallPolicy -Name firewallPolicy1 -ResourceGroupName TestRg -Location westcentralus -ThreatIntelWhitelist $threatIntelWhitelist
 ```
 
-This example sets the firewall policy with the new threat intel whitelist
+This example sets the firewall policy with the new threat intel allowlist
 
 ### Example 4
 ```powershell
@@ -430,7 +430,7 @@ Accept wildcard characters: False
 ```
 
 ### -ThreatIntelWhitelist
-The whitelist for Threat Intelligence
+The allowlist for Threat Intelligence
 
 ```yaml
 Type: Microsoft.Azure.Commands.Network.Models.PSAzureFirewallPolicyThreatIntelWhitelist

@@ -53,7 +53,7 @@ Name                                 Type
 ApplicationGroupName/ApplicationName Microsoft.DesktopVirtualization/applicationgroups/applications
 ```
 
-This command creates a Windows Virtual Desktop Application in an applicaton Group.
+This command creates a Windows Virtual Desktop Application in an application Group.
 
 ## PARAMETERS
 
@@ -352,11 +352,9 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.Api202209.IApplication
+### Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.Api20230905.IApplication
 
 ## NOTES
-
-ALIASES
 
 ## RELATED LINKS
 

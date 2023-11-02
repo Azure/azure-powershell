@@ -13,11 +13,11 @@ while (-not $mockingPath) {
 
 Describe 'Add-AzResourceMoverMoveResource' {
     It 'AddExpanded' {
-        Remove-AzResourceMoverMoveResource -SubscriptionId $env.SubscriptionId -ResourceGroupName $env.moveCollectionMetadataRG -MoveCollectionName $env.moveCollectionName -Name "rms-sRg"
-        $trs = New-Object Microsoft.Azure.PowerShell.Cmdlets.ResourceMover.Models.Api20210801.ResourceGroupResourceSettings
-        $trs.ResourceType = "ResourceGroups"
-        $trs.TargetResourceName = "rms-sRg-westeurope"
-        $moveResource = Add-AzResourceMoverMoveResource -SubscriptionId $env.SubscriptionId -ResourceGroupName $env.moveCollectionMetadataRG -MoveCollectionName $env.moveCollectionName -SourceId "/subscriptions/e80eb9fa-c996-4435-aa32-5af6f3d3077c/resourceGroups/rms-sRg" -Name "rms-sRg" -ResourceSetting $trs
-        $moveResource.Name | Should -Be "rms-sRg"
+        Remove-AzResourceMoverMoveResource -SubscriptionId $env.SubscriptionId -ResourceGroupName $env.moveCollectionMetadataRG -MoveCollectionName $env.moveCollectionName -Name "mr-nsg"
+        $trs = New-Object Microsoft.Azure.PowerShell.Cmdlets.ResourceMover.Models.Api20230801.NetworkSecurityGroupResourceSettings
+        $trs.ResourceType = "Microsoft.Network/networkSecurityGroups"
+        $trs.TargetResourceName = "demo-NSG-rms-centralus"
+        $moveResource = Add-AzResourceMoverMoveResource -SubscriptionId $env.SubscriptionId -ResourceGroupName $env.moveCollectionMetadataRG -MoveCollectionName $env.moveCollectionName -SourceId "/subscriptions/e80eb9fa-c996-4435-aa32-5af6f3d3077c/resourcegroups/demo-RG-rms/providers/Microsoft.Network/networkSecurityGroups/demo-NSG-rms" -Name "mr-nsg" -ResourceSetting $trs
+        $moveResource.Name | Should -Be "mr-nsg"
     }
 }

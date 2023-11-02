@@ -1,10 +1,7 @@
 ﻿using Microsoft.Azure.Commands.Common.Authentication;
-using Microsoft.Azure.Commands.KeyVault.Models;
 using Microsoft.Azure.Commands.KeyVault.SecurityDomain.Models;
 using Microsoft.Azure.Commands.ResourceManager.Common;
 using Microsoft.WindowsAzure.Commands.Common.Attributes;
-using Microsoft.WindowsAzure.Commands.Utilities.Common;
-using System.Management.Automation;
 using System.Threading;
 
 namespace Microsoft.Azure.Commands.KeyVault.SecurityDomain.Cmdlets
@@ -12,22 +9,8 @@ namespace Microsoft.Azure.Commands.KeyVault.SecurityDomain.Cmdlets
     [SupportsSubscriptionId]
     public abstract class SecurityDomainCmdlet : AzureRMCmdlet
     {
-        protected const string ByName = "ByName";
-        protected const string ByInputObject = "ByInputObject";
-        protected const string ByResourceId = "ByResourceID";
-
         private readonly CancellationTokenSource CancellationTokenSource = new CancellationTokenSource();
         protected CancellationToken CancellationToken => CancellationTokenSource.Token;
-
-        [Parameter(HelpMessage = "Name of the managed HSM.", Mandatory = true, ParameterSetName = ByName)]
-        [Alias("HsmName")]
-        [ValidateNotNullOrEmpty]
-        public string Name { get; set; }
-
-        [Parameter(HelpMessage = "Object representing a managed HSM.", Mandatory = true, ParameterSetName = ByInputObject, ValueFromPipeline = true)]
-        [ValidateNotNull]
-        public PSKeyVaultIdentityItem InputObject { get; set; }
-
         internal ISecurityDomainClient Client
         {
             get
@@ -50,19 +33,7 @@ namespace Microsoft.Azure.Commands.KeyVault.SecurityDomain.Cmdlets
         /// </summary>
         public override void ExecuteCmdlet()
         {
-            PreprocessParameterSets();
             DoExecuteCmdlet();
-        }
-
-        /// <summary>
-        /// Unifies different parameter sets. Sub-classes need only to care about Name.
-        /// </summary>
-        private void PreprocessParameterSets()
-        {
-            if (this.IsParameterBound(c => c.InputObject))
-            {
-                Name = InputObject.VaultName;
-            }
         }
 
         public abstract void DoExecuteCmdlet();

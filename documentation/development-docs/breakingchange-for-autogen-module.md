@@ -44,7 +44,7 @@ Breaking changes and preview messages for auto gen cmdlets are added through dir
     breaking-change:
       replacement-cmdlet: $.replace("VNetPeering", "VNewNetPeering")
       deprecated-by-version: 5.0.0
-      deprecated-by-version: 20.0.0
+      deprecated-by-azversion: 20.0.0
       change-effective-date: 2022/05/30
 ```
 
@@ -66,7 +66,7 @@ Breaking changes and preview messages for auto gen cmdlets are added through dir
         - PropertyD
       change-description: This is a custom message for the change.
       deprecated-by-version: 5.0.0
-      deprecated-by-version: 20.0.0
+      deprecated-by-azversion: 20.0.0
       change-effective-date: 2022/05/11
 ```
 
@@ -80,7 +80,7 @@ Breaking changes and preview messages for auto gen cmdlets are added through dir
   set:
     breaking-change:
       deprecated-by-version: 5.0.0
-      deprecated-by-azversion: 5.0.0
+      deprecated-by-azversion: 20.0.0
       change-effective-date: 2022/05/30
 ```
 
@@ -96,7 +96,7 @@ Breaking changes and preview messages for auto gen cmdlets are added through dir
       become-mandatory: true
       change-description: This is a custom message for the change.
       deprecated-by-version: 5.0.0
-      deprecated-by-version: 20.0.0
+      deprecated-by-azversion: 20.0.0
       change-effective-date: 2022/05/30
 ```
 

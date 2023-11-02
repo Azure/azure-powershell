@@ -38,7 +38,7 @@ Creates Azure Lighthouse eligible authorization approver object.
 ## PARAMETERS
 
 ### -PrincipalId
-The identifier of the Azure Active Directory principal.
+The identifier of the Microsoft Entra principal.
 
 ```yaml
 Type: System.String
@@ -53,7 +53,7 @@ Accept wildcard characters: False
 ```
 
 ### -PrincipalIdDisplayName
-The display name of the Azure Active Directory principal.
+The display name of the Microsoft Entra principal.
 
 ```yaml
 Type: System.String
@@ -81,4 +81,3 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ALIASES
 
 ## RELATED LINKS
-

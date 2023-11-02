@@ -62,7 +62,7 @@ namespace Microsoft.Azure.PowerShell.Tools.AzPredictor.Test
                 + 1 // For the one digit of source
                 + SuggestionSessionTests._AdditionalSizeForTwoElementArray // for [,]
                 + SuggestionSessionTests._AdditionalSizeForArrayBracket // for [] in Found
-                + GetSuggestionTelemetryData.PropertyNameUserInput.Length + SuggestionSessionTests._AdditionalSizeForKey
+                + GetSuggestionTelemetryData.PropertyNameInnerUserInput.Length + SuggestionSessionTests._AdditionalSizeForKey
                 + userInput.Length + SuggestionSessionTests._AdditionalSizeForString
                 + GetSuggestionTelemetryData.PropertyNameIsCancelled.Length + SuggestionSessionTests._AdditionalSizeForKey
                 + isCancelled.ToString(CultureInfo.InvariantCulture).Length;
@@ -99,7 +99,7 @@ namespace Microsoft.Azure.PowerShell.Tools.AzPredictor.Test
                 + 1 // for the one digit of source2
                 + SuggestionSessionTests._AdditionalSizeForTwoElementArray // for [,]
                 + SuggestionSessionTests._AdditionalSizeForTwoElementArray // for [,] in Found
-                + GetSuggestionTelemetryData.PropertyNameUserInput.Length + SuggestionSessionTests._AdditionalSizeForKey
+                + GetSuggestionTelemetryData.PropertyNameInnerUserInput.Length + SuggestionSessionTests._AdditionalSizeForKey
                 + userInput.Length + SuggestionSessionTests._AdditionalSizeForString
                 + GetSuggestionTelemetryData.PropertyNameIsCancelled.Length + SuggestionSessionTests._AdditionalSizeForKey
                 + isCancelled.ToString(CultureInfo.InvariantCulture).Length;
@@ -135,7 +135,7 @@ namespace Microsoft.Azure.PowerShell.Tools.AzPredictor.Test
                 + 1 // For the one digit of source
                 + SuggestionSessionTests._AdditionalSizeForTwoElementArray // for [,]
                 + SuggestionSessionTests._AdditionalSizeForArrayBracket // for [] in Found
-                + GetSuggestionTelemetryData.PropertyNameUserInput.Length + SuggestionSessionTests._AdditionalSizeForKey
+                + GetSuggestionTelemetryData.PropertyNameInnerUserInput.Length + SuggestionSessionTests._AdditionalSizeForKey
                 + userInput.Length + SuggestionSessionTests._AdditionalSizeForString
                 + GetSuggestionTelemetryData.PropertyNameIsCancelled.Length + SuggestionSessionTests._AdditionalSizeForKey
                 + isCancelled.ToString(CultureInfo.InvariantCulture).Length
@@ -172,7 +172,7 @@ namespace Microsoft.Azure.PowerShell.Tools.AzPredictor.Test
                 + 1 // For the one digit of source
                 + SuggestionSessionTests._AdditionalSizeForTwoElementArray // for [,]
                 + SuggestionSessionTests._AdditionalSizeForArrayBracket // for [] in Found
-                + GetSuggestionTelemetryData.PropertyNameUserInput.Length + SuggestionSessionTests._AdditionalSizeForKey
+                + GetSuggestionTelemetryData.PropertyNameInnerUserInput.Length + SuggestionSessionTests._AdditionalSizeForKey
                 + userInput.Length + SuggestionSessionTests._AdditionalSizeForString
                 + GetSuggestionTelemetryData.PropertyNameIsCancelled.Length + SuggestionSessionTests._AdditionalSizeForKey
                 + isCancelled.ToString(CultureInfo.InvariantCulture).Length

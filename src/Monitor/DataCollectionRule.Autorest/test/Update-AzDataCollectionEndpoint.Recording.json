@@ -1,0 +1,42 @@
+{
+  "Update-AzDataCollectionEndpoint+[NoContext]+UpdateExpanded+$PATCH+https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/AMCS-TEST/providers/Microsoft.Insights/dataCollectionEndpoints/testCollectionEndpoint?api-version=2022-06-01+1": {
+    "Request": {
+      "Method": "PATCH",
+      "RequestUri": "https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/AMCS-TEST/providers/Microsoft.Insights/dataCollectionEndpoints/testCollectionEndpoint?api-version=2022-06-01",
+      "Content": "{\r\n  \"tags\": {\r\n    \"123\": \"abc\"\r\n  }\r\n}",
+      "isContentBase64": false,
+      "Headers": {
+      },
+      "ContentHeaders": {
+        "Content-Type": [ "application/json" ],
+        "Content-Length": [ "40" ]
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "Vary": [ "Accept-Encoding" ],
+        "x-ms-ratelimit-remaining-subscription-resource-requests": [ "56" ],
+        "Request-Context": [ "appId=cid-v1:2bbfbac8-e1b0-44af-b9c6-3a40669d37e3" ],
+        "x-ms-correlation-request-id": [ "26aef5ac-bb5a-4675-99e4-8a0a848f561b" ],
+        "x-ms-client-request-id": [ "a3dbd2ee-e636-4786-ab1c-15f1b332b42c" ],
+        "x-ms-routing-request-id": [ "KOREASOUTH:20231010T065320Z:26aef5ac-bb5a-4675-99e4-8a0a848f561b" ],
+        "x-ms-request-id": [ "dd48083a-ae94-44bd-b9b2-a4bf0732ca9c" ],
+        "api-supported-versions": [ "2021-04-01, 2021-09-01-preview, 2022-06-01, 2023-03-11" ],
+        "Server": [ "Microsoft-HTTPAPI/2.0" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "Date": [ "Tue, 10 Oct 2023 06:53:21 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "1047" ],
+        "Content-Type": [ "application/json; charset=utf-8" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\"properties\":{\"immutableId\":\"dce-1ca01461b47e40f8848ed3ccc49e2d32\",\"configurationAccess\":{\"endpoint\":\"https://testcollectionendpoint-m8tu.eastus-1.handler.control.monitor.azure.com\"},\"logsIngestion\":{\"endpoint\":\"https://testcollectionendpoint-m8tu.eastus-1.ingest.monitor.azure.com\"},\"metricsIngestion\":{\"endpoint\":\"https://testcollectionendpoint-m8tu.eastus-1.metrics.ingest.monitor.azure.com\"},\"networkAcls\":{\"publicNetworkAccess\":\"Enabled\"},\"provisioningState\":\"Succeeded\"},\"location\":\"eastus\",\"tags\":{\"123\":\"abc\"},\"id\":\"/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/AMCS-TEST/providers/Microsoft.Insights/dataCollectionEndpoints/testCollectionEndpoint\",\"name\":\"testCollectionEndpoint\",\"type\":\"Microsoft.Insights/dataCollectionEndpoints\",\"etag\":\"\\\"7501c9f1-0000-0100-0000-6524f4e10000\\\"\",\"systemData\":{\"createdBy\":\"v-jiaji@microsoft.com\",\"createdByType\":\"User\",\"createdAt\":\"2023-10-10T06:52:40.5454314Z\",\"lastModifiedBy\":\"v-jiaji@microsoft.com\",\"lastModifiedByType\":\"User\",\"lastModifiedAt\":\"2023-10-10T06:53:20.9805002Z\"}}",
+      "isContentBase64": false
+    }
+  }
+}

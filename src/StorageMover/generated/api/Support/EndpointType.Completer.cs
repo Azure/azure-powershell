@@ -34,6 +34,14 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Support
             {
                 yield return new global::System.Management.Automation.CompletionResult("'NfsMount'", "NfsMount", global::System.Management.Automation.CompletionResultType.ParameterValue, "NfsMount");
             }
+            if (global::System.String.IsNullOrEmpty(wordToComplete) || "AzureStorageSmbFileShare".StartsWith(wordToComplete, global::System.StringComparison.InvariantCultureIgnoreCase))
+            {
+                yield return new global::System.Management.Automation.CompletionResult("'AzureStorageSmbFileShare'", "AzureStorageSmbFileShare", global::System.Management.Automation.CompletionResultType.ParameterValue, "AzureStorageSmbFileShare");
+            }
+            if (global::System.String.IsNullOrEmpty(wordToComplete) || "SmbMount".StartsWith(wordToComplete, global::System.StringComparison.InvariantCultureIgnoreCase))
+            {
+                yield return new global::System.Management.Automation.CompletionResult("'SmbMount'", "SmbMount", global::System.Management.Automation.CompletionResultType.ParameterValue, "SmbMount");
+            }
         }
     }
 }

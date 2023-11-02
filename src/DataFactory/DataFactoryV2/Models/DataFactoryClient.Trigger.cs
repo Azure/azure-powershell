@@ -154,7 +154,7 @@ namespace Microsoft.Azure.Commands.DataFactoryV2
                     resourceGroupName,
                     dataFactoryName,
                     triggerName,
-                    triggerResource);
+                    triggerResource?.Properties);
         }
 
         private PSTrigger GetTrigger(string resourceGroupName, string dataFactoryName,

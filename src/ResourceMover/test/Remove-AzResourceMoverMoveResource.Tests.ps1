@@ -13,7 +13,7 @@ while(-not $mockingPath) {
 
 Describe 'Remove-AzResourceMoverMoveResource' {
     It 'Delete' {
-       $response = Remove-AzResourceMoverMoveResource -SubscriptionId $env.SubscriptionId -ResourceGroupName $env.moveCollectionMetadataRG -MoveCollectionName $env.moveCollectionName -Name "rms-sRg"
+       $response = Remove-AzResourceMoverMoveResource -SubscriptionId $env.SubscriptionId -ResourceGroupName $env.moveCollectionMetadataRG -MoveCollectionName $env.moveCollectionName -Name "mr-nsg"
        $response.Status | Should -Be "Succeeded"
     }
 }

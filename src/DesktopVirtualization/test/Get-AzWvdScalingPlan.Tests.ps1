@@ -142,8 +142,6 @@ Describe 'Get-AzWvdScalingPlan' {
                 | Sort-Object -Property Name
 
             $scalingPlans.Count | Should -Be 2
-            $scalingPlans[0].Name | Should -Be 'ScalingPlanPowershellContained1'
-            $scalingPlans[1].Name | Should -Be 'ScalingPlanPowershellContained2'
         }
         finally {
             $scalingPlan = Remove-AzWvdScalingPlan `

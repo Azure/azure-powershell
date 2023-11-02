@@ -155,8 +155,16 @@ namespace Microsoft.WindowsAzure.Commands.Storage.File.Cmdlet
         [Parameter(HelpMessage = "Destination Storage context object", ParameterSetName = UriFileParameterSet)]
         public IStorageContext DestContext { get; set; }
 
+        [Parameter(Mandatory = false, HelpMessage = "Disallow trailing dot (.) to suffix source directory and source file names.", ParameterSetName = ShareNameParameterSet)]
+        public virtual SwitchParameter DisAllowSourceTrailingDot { get; set; }
+
+        [Parameter(Mandatory = false, HelpMessage = "Disallow trailing dot (.) to suffix destination directory and destination file names.", ParameterSetName = ContainerNameParameterSet)]
+        [Parameter(Mandatory = false, HelpMessage = "Disallow trailing dot (.) to suffix destination directory and destination file names.", ParameterSetName = ShareNameParameterSet)]
+        public virtual SwitchParameter DisAllowDestTrailingDot { get; set; }
+
         // Overwrite the useless parameter
         public override SwitchParameter AsJob { get; set; }
+        public override SwitchParameter DisAllowTrailingDot { get; set; }
 
         private IStorageBlobManagement blobChannel = null;
 
@@ -267,6 +275,15 @@ namespace Microsoft.WindowsAzure.Commands.Storage.File.Cmdlet
                 {
                     this.DestContext = GetStorageContextFromTrack1FileServiceClient(this.DestFile.ServiceClient, DefaultContext);
                 }
+            }
+
+            if (this.DisAllowSourceTrailingDot)
+            {
+                this.ClientOptions.AllowSourceTrailingDot = false;
+            }
+            if (this.DisAllowDestTrailingDot)
+            {
+                this.ClientOptions.AllowTrailingDot = false;
             }
 
             blobChannel = this.GetBlobChannel();
@@ -387,7 +404,7 @@ namespace Microsoft.WindowsAzure.Commands.Storage.File.Cmdlet
                 taskId,
                 destFile,
                 () => this.ConfirmOverwrite(sourceFile.SnapshotQualifiedUri.ToString(), Util.GetSnapshotQualifiedUri(destFile.Uri)),
-                () => destFile.StartCopyAsync(sourceFile.GenerateUriWithCredentials(), cancellationToken: this.CmdletCancellationToken));
+                () => destFile.StartCopyAsync(sourceFile.GenerateUriWithCredentials(this.DisAllowSourceTrailingDot), cancellationToken: this.CmdletCancellationToken));
 
             this.RunTask(taskGenerator);
         }

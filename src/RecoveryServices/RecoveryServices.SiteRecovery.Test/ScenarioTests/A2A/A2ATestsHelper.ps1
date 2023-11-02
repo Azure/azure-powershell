@@ -200,7 +200,7 @@ function createAzureVm{
 		$domain = "domain"+ $seed
         $password=$VMLocalAdminSecurePassword|ConvertTo-SecureString -AsPlainText -Force
         $Credential = New-Object System.Management.Automation.PSCredential ($VMLocalAdminUser, $password);
-        $vm = New-AzVM -Name $VMName -Credential $Credential -location $VMLocation -Image RHEL -DomainNameLabel $domain
+        $vm = New-AzVM -Name $VMName -Credential $Credential -location $VMLocation -Image RHELRaw8LVMGen2 -DomainNameLabel $domain
         return $vm.Id
 }
 
@@ -217,7 +217,7 @@ function createAzureVmInProximityPlacementgroup{
         $password=$VMLocalAdminSecurePassword|ConvertTo-SecureString -AsPlainText -Force
         $Credential = New-Object System.Management.Automation.PSCredential ($VMLocalAdminUser, $password);
 		$ppg =  New-AzProximityPlacementGroup -ResourceGroupName $vmName -Name $VMName -Location $VMLocation
-        $vm = New-AzVM -Name $VMName -Credential $Credential -location $VMLocation -Image RHEL -DomainNameLabel $domain -ProximityPlacementGroupId $ppg.Id
+        $vm = New-AzVM -Name $VMName -Credential $Credential -location $VMLocation -Image RHELRaw8LVMGen2 -DomainNameLabel $domain -ProximityPlacementGroupId $ppg.Id
 		return $vm.Id
 }
 
@@ -233,7 +233,7 @@ function createAzureVmForCRG{
 		$domain = "domain"+ $seed
         $password=$VMLocalAdminSecurePassword|ConvertTo-SecureString -AsPlainText -Force
         $Credential = New-Object System.Management.Automation.PSCredential ($VMLocalAdminUser, $password);
-        $vm = New-AzVM -Name $VMName -Credential $Credential -location $VMLocation -Image RHEL -DomainNameLabel $domain -Size "Standard_Ds1_v2"
+        $vm = New-AzVM -Name $VMName -Credential $Credential -location $VMLocation -Image RHELRaw8LVMGen2 -DomainNameLabel $domain -Size "Standard_Ds1_v2"
 		return $vm.Id
 }
 
@@ -251,7 +251,7 @@ function createAzureVmInAvailabilityZone{
 		$domain = "domain"+ $seed
         $password=$VMLocalAdminSecurePassword|ConvertTo-SecureString -AsPlainText -Force
     $Credential = New-Object System.Management.Automation.PSCredential ($VMLocalAdminUser, $password);
-        $vm = New-AzVM -Name $VMName -Credential $Credential -location $VMLocation -Image RHEL -DomainNameLabel $domain -Zone $VMZone
+        $vm = New-AzVM -Name $VMName -Credential $Credential -location $VMLocation -Image RHELRaw8LVMGen2 -DomainNameLabel $domain -Zone $VMZone
     return $vm.Id
 }
 

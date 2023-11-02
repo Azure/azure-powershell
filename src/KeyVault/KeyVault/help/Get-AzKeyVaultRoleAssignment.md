@@ -30,9 +30,9 @@ Use the `Get-AzKeyVaultRoleAssignment` command to list all role assignments that
 Without any parameters, this command returns all the role assignments made under the managed HSM.
 This list can be filtered using filtering parameters for principal, role and scope.
 The subject of the assignment must be specified.
-To specify a user, use SignInName or Azure AD ObjectId parameters.
-To specify a security group, use Azure AD ObjectId parameter.
-And to specify an Azure AD application, use ApplicationId or ObjectId parameters.
+To specify a user, use SignInName or Microsoft Entra ObjectId parameters.
+To specify a security group, use Microsoft Entra ObjectId parameter.
+And to specify a Microsoft Entra application, use ApplicationId or ObjectId parameters.
 The role that is being assigned must be specified using the RoleDefinitionName or RoleDefinitionId parameter.
 The scope at which access is being granted may be specified. It defaults to "/".
 

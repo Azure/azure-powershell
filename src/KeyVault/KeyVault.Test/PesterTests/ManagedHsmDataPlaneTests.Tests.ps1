@@ -278,6 +278,37 @@ Describe 'Export Import Security domain' {
     #   Import-AzKeyVaultSecurityDomain -Name $hsmName -Keys $certsKeys -SecurityDomainPath $sd.FullName
 }
 
+Describe 'Export Import Security Domain by Restored Blob' {
+    $sd = New-TemporaryFile
+
+    It 'Can export security domain' {
+        Get-Content $sd | Should -BeNullOrEmpty
+        Export-AzKeyVaultSecurityDomain -HsmName $hsmName -Certificates $certs -OutputPath $sd.FullName -Quorum 3 -Force
+        Get-Content $sd | Should -Not -BeNullOrEmpty
+    }
+
+    # Cannot test initializing because it needs a newly created HSM
+    It 'Can Download Security Domain ExchangeKey' {
+        $exchangeKeyOutputPath = "$PSScriptRoot/ExchangeKey.cer"
+        Import-AzKeyVaultSecurityDomain -Name $hsmName -OutFile $exchangeKeyOutputPath -DownloadExchangeKey 
+    }
+    
+    # This command can be executed offline
+    It 'Can decrypt and encrypt Security Domain Data locally' {
+        $exchangeKeyPath = "$PSScriptRoot/ExchangeKey.cer"
+        $SecurityDomainRestoredBlob = "$PSScriptRoot/HsmRestoredBlob.json"
+        Import-AzKeyVaultSecurityDomain -Keys $certsKeys -ExchangeKeyPath  $exchangeKeyPath -SecurityDomainPath $sd.FullName -OutFile $SecurityDomainRestoredBlob -RestoreBlob 
+    }
+
+    It 'Can Import Security Domain by Restore Blob' {
+        $SecurityDomainRestoredBlob = "$PSScriptRoot/HsmRestoredBlob.json"
+        Import-AzKeyVaultSecurityDomain -Name $hsmName -SecurityDomainPath $SecurityDomainRestoredBlob -ImportRestoredBlob
+    }
+
+    # Cannot test importing because it needs another HSM
+    #   Import-AzKeyVaultSecurityDomain -Name $hsmName -Keys $certsKeys -SecurityDomainPath $sd.FullName
+}
+
 Describe 'Custom Role Definition' {
     $roleName = "my custom role"
     $roleDesc = "description for my role"

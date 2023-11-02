@@ -69,7 +69,7 @@ namespace Microsoft.Azure.Commands.Sql.ServerActiveDirectoryAdministrator.Servic
         /// </summary>
         public Management.Sql.Models.ServerAzureADAdministrator Get(string resourceGroupName, string serverName)
         {
-            return GetCurrentSqlClient().ServerAzureADAdministrators.GetAsync(resourceGroupName, serverName).Result;
+            return GetCurrentSqlClient().ServerAzureAdAdministrators.GetAsync(resourceGroupName, serverName).Result;
         }
 
         /// <summary>
@@ -77,7 +77,7 @@ namespace Microsoft.Azure.Commands.Sql.ServerActiveDirectoryAdministrator.Servic
         /// </summary>
         public IEnumerable<Management.Sql.Models.ServerAzureADAdministrator> List(string resourceGroupName, string serverName)
         {
-            return GetCurrentSqlClient().ServerAzureADAdministrators.ListByServer(resourceGroupName, serverName);
+            return GetCurrentSqlClient().ServerAzureAdAdministrators.ListByServer(resourceGroupName, serverName);
         }
 
         /// <summary>
@@ -85,7 +85,7 @@ namespace Microsoft.Azure.Commands.Sql.ServerActiveDirectoryAdministrator.Servic
         /// </summary>
         public Management.Sql.Models.ServerAzureADAdministrator CreateOrUpdate(string resourceGroupName, string serverName, ServerAzureADAdministrator parameters)
         {
-           return GetCurrentSqlClient().ServerAzureADAdministrators.CreateOrUpdate(resourceGroupName, serverName, parameters);
+           return GetCurrentSqlClient().ServerAzureAdAdministrators.CreateOrUpdate(resourceGroupName, serverName, parameters);
         }
 
         /// <summary>
@@ -93,7 +93,7 @@ namespace Microsoft.Azure.Commands.Sql.ServerActiveDirectoryAdministrator.Servic
         /// </summary>
         public void Remove(string resourceGroupName, string serverName)
         {
-            GetCurrentSqlClient().ServerAzureADAdministrators.DeleteWithHttpMessagesAsync(resourceGroupName, serverName);
+            GetCurrentSqlClient().ServerAzureAdAdministrators.DeleteWithHttpMessagesAsync(resourceGroupName, serverName);
         }
 
         /// <summary>

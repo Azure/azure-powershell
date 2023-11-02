@@ -3,7 +3,7 @@
     "Request": {
       "Method": "PUT",
       "RequestUri": "https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/staticweb-rg-3kt91e/providers/Microsoft.Web/staticSites/staticweb-jcrp6t?api-version=2020-12-01",
-      "Content": "{\r\n  \"location\": \"Central US\",\r\n  \"properties\": {\r\n    \"buildProperties\": {\r\n      \"appLocation\": \"Client\",\r\n      \"apiLocation\": \"Api\",\r\n      \"outputLocation\": \"wwwroot\"\r\n    },\r\n    \"repositoryUrl\": \"https://github.com/LucasYao93/blazor-starter\",\r\n    \"branch\": \"lucas/dev02\",\r\n    \"repositoryToken\": \"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\"\r\n  },\r\n  \"sku\": {\r\n    \"name\": \"Standard\"\r\n  }\r\n}",
+      "Content": "{\r\n  \"location\": \"Central US\",\r\n  \"properties\": {\r\n    \"buildProperties\": {\r\n      \"appLocation\": \"Client\",\r\n      \"apiLocation\": \"Api\",\r\n      \"outputLocation\": \"wwwroot\"\r\n    },\r\n    \"repositoryUrl\": \"https://github.com/LucasYao93/blazor-starter\",\r\n    \"branch\": \"lucas/dev02\",\r\n    \"repositoryToken\": \"Sanitized\"\r\n  },\r\n  \"sku\": {\r\n    \"name\": \"Standard\"\r\n  }\r\n}",
       "isContentBase64": false,
       "Headers": {
       },
@@ -126,7 +126,7 @@
     "Request": {
       "Method": "PUT",
       "RequestUri": "https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/staticweb-rg-3kt91e/providers/Microsoft.Web/staticSites/staticweb-jf9ysk?api-version=2020-12-01",
-      "Content": "{\r\n  \"location\": \"Central US\",\r\n  \"properties\": {\r\n    \"buildProperties\": {\r\n      \"appLocation\": \"Client\",\r\n      \"apiLocation\": \"Api\",\r\n      \"outputLocation\": \"wwwroot\"\r\n    },\r\n    \"repositoryUrl\": \"https://github.com/LucasYao93/blazor-starter\",\r\n    \"branch\": \"lucas/dev02\",\r\n    \"repositoryToken\": \"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\"\r\n  },\r\n  \"sku\": {\r\n    \"name\": \"Standard\"\r\n  }\r\n}",
+      "Content": "{\r\n  \"location\": \"Central US\",\r\n  \"properties\": {\r\n    \"buildProperties\": {\r\n      \"appLocation\": \"Client\",\r\n      \"apiLocation\": \"Api\",\r\n      \"outputLocation\": \"wwwroot\"\r\n    },\r\n    \"repositoryUrl\": \"https://github.com/LucasYao93/blazor-starter\",\r\n    \"branch\": \"lucas/dev02\",\r\n    \"repositoryToken\": \"Sanitized\"\r\n  },\r\n  \"sku\": {\r\n    \"name\": \"Standard\"\r\n  }\r\n}",
       "isContentBase64": false,
       "Headers": {
       },
