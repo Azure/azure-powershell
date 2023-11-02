@@ -8,34 +8,43 @@ namespace Microsoft.Azure.Management.Sql.Models
     using System.Linq;
 
     /// <summary>
-    /// The storage account type capability.
+    /// The maximum limit range capability.
     /// </summary>
-    public partial class StorageCapability
+    public partial class MaxLimitRangeCapability
     {
         /// <summary>
-        /// Initializes a new instance of the StorageCapability class.
+        /// Initializes a new instance of the MaxLimitRangeCapability class.
         /// </summary>
-        public StorageCapability()
+        public MaxLimitRangeCapability()
         {
             CustomInit();
         }
 
         /// <summary>
-        /// Initializes a new instance of the StorageCapability class.
+        /// Initializes a new instance of the MaxLimitRangeCapability class.
         /// </summary>
 
-        /// <param name="storageAccountType">The storage account type for the database&#39;s backups.
-        /// Possible values include: 'GRS', 'LRS', 'ZRS', 'GZRS'</param>
+        /// <param name="minValue">Minimum value.
+        /// </param>
+
+        /// <param name="maxValue">Maximum value.
+        /// </param>
+
+        /// <param name="scaleSize">Scale/step size for discrete values between the minimum value and the
+        /// maximum value.
+        /// </param>
 
         /// <param name="status">The status of the capability.
         /// Possible values include: 'Visible', 'Available', 'Default', 'Disabled'</param>
 
         /// <param name="reason">The reason for the capability not being available.
         /// </param>
-        public StorageCapability(string storageAccountType = default(string), CapabilityStatus? status = default(CapabilityStatus?), string reason = default(string))
+        public MaxLimitRangeCapability(long? minValue = default(long?), long? maxValue = default(long?), long? scaleSize = default(long?), CapabilityStatus? status = default(CapabilityStatus?), string reason = default(string))
 
         {
-            this.StorageAccountType = storageAccountType;
+            this.MinValue = minValue;
+            this.MaxValue = maxValue;
+            this.ScaleSize = scaleSize;
             this.Status = status;
             this.Reason = reason;
             CustomInit();
@@ -48,10 +57,23 @@ namespace Microsoft.Azure.Management.Sql.Models
 
 
         /// <summary>
-        /// Gets the storage account type for the database&#39;s backups. Possible values include: &#39;GRS&#39;, &#39;LRS&#39;, &#39;ZRS&#39;, &#39;GZRS&#39;
+        /// Gets minimum value.
         /// </summary>
-        [Newtonsoft.Json.JsonProperty(PropertyName = "storageAccountType")]
-        public string StorageAccountType {get; private set; }
+        [Newtonsoft.Json.JsonProperty(PropertyName = "minValue")]
+        public long? MinValue {get; private set; }
+
+        /// <summary>
+        /// Gets maximum value.
+        /// </summary>
+        [Newtonsoft.Json.JsonProperty(PropertyName = "maxValue")]
+        public long? MaxValue {get; private set; }
+
+        /// <summary>
+        /// Gets scale/step size for discrete values between the minimum value and the
+        /// maximum value.
+        /// </summary>
+        [Newtonsoft.Json.JsonProperty(PropertyName = "scaleSize")]
+        public long? ScaleSize {get; private set; }
 
         /// <summary>
         /// Gets the status of the capability. Possible values include: &#39;Visible&#39;, &#39;Available&#39;, &#39;Default&#39;, &#39;Disabled&#39;
