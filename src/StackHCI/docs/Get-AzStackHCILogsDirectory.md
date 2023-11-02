@@ -22,7 +22,7 @@ Returns Logs directory path on the current node.
 
 ## EXAMPLES
 
-### Example 1:
+### Example 1: The example below returns the logs directory path on the current node.
 ```powershell
 Get-AzStackHCILogsDirectory
 ```
@@ -31,7 +31,7 @@ Get-AzStackHCILogsDirectory
 HCI Registration Logs directory path: C:\ProgramData\AzureStackHCI
 ```
 
- Return the logs directory path on the current node.
+The output shows the logs directory of the HCI registration logs
 
 ## PARAMETERS
 
@@ -107,8 +107,6 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ### System.String
 
 ## NOTES
-
-ALIASES
 
 ## RELATED LINKS
 

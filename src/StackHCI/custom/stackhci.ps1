@@ -805,6 +805,7 @@ function Show-LatestModuleVersion{
 }
 
 function Get-ManagementUrl {
+    [Microsoft.Azure.PowerShell.Cmdlets.StackHCI.DoNotExportAttribute()]
     param (
         [parameter(Mandatory=$true)]
         [string] $EnvironmentName
