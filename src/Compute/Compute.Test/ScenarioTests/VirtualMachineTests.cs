@@ -619,5 +619,12 @@ namespace Microsoft.Azure.Commands.Compute.Test.ScenarioTests
         {
             TestRunner.RunTestScript("Test-VMDefaultsToTrustedLaunchWithManagedDisk");
         }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void TestVMDefaultsToTrustedLaunchWithGen2Image()
+        {
+            TestRunner.RunTestScript("Test-VMDefaultsToTrustedLaunchWithGen2Image");
+        }
     }
 }

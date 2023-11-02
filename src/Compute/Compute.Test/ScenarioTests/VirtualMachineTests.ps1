@@ -7167,8 +7167,8 @@ Feature request 1241
 function Test-VMDefaultsToTrustedLaunchWithGen2Image
 {
     # Setup
-    $rgname = "adsandvmd22";#Get-ComputeTestResourceName;
-    $loc = "eastus";#Get-ComputeVMLocation;
+    $rgname = Get-ComputeTestResourceName;
+    $loc = Get-ComputeVMLocation;
 
     try
     {
@@ -7190,16 +7190,16 @@ function Test-VMDefaultsToTrustedLaunchWithGen2Image
         $Offer = "WindowsServer";
         $SKU = "2022-datacenter-azure-edition";#"2022-datacenter-smalldisk-g2";
         $version = "latest";
-        $securityType = "TrustedLaunch";
+        $securityTypeTL = "TrustedLaunch";
         $secureboot = $true;
         $vtpm = $true;
         $extDefaultName = "GuestAttestation";
         $vmGADefaultIDentity = "SystemAssigned";
 
         # Creating a VM using Simple parameterset
-        $password = "Testing1234567";#Get-PasswordForVM;
+        $password = Get-PasswordForVM;
         $securePassword = $password | ConvertTo-SecureString -AsPlainText -Force;  
-        $user = "admin01";
+        $user = Get-ComputeTestResourceName;
         $cred = New-Object System.Management.Automation.PSCredential ($user, $securePassword);
 
         $frontendSubnet = New-AzVirtualNetworkSubnetConfig -Name $subnetname -AddressPrefix $subnetAddress;
@@ -7217,18 +7217,15 @@ function Test-VMDefaultsToTrustedLaunchWithGen2Image
         Add-AzVMNetworkInterface -VM $vmConfig -Id $nic.Id;
         #$vmConfig = Set-AzVMSourceImage -VM $vmConfig -PublisherName 'MicrosoftWindowsServer' -Offer 'WindowsServer' -Skus '2022-datacenter-azure-edition' -Version latest;
         
-        New-AzVM -ResourceGroupName $rgname -Location $loc -VM $vmConfig -Verbose;# -Debug;
+        New-AzVM -ResourceGroupName $rgname -Location $loc -VM $vmConfig;# -Verbose;# -Debug;
         
         $vm = Get-AzVM -ResourceGroupName $rgname -Name $vmname;
         
         # Validate VMConfig scenario
         # this.VM.StorageProfile.OsDisk.ManagedDisk
         Assert-AreEqual $vm.SecurityProfile.SecurityType $securityTypeTL;
-        Assert-AreEqual $vm.SecurityProfile.UefiSettings.SecureBootEnabled $enable;
-        Assert-AreEqual $vm.SecurityProfile.UefiSettings.VTpmEnabled $enable;
-
-
-        
+        Assert-AreEqual $vm.SecurityProfile.UefiSettings.SecureBootEnabled $secureboot;
+        Assert-AreEqual $vm.SecurityProfile.UefiSettings.VTpmEnabled $vtpm;
     }
     finally 
     {

@@ -5033,8 +5033,8 @@ Defaults in the New-AzVmssConfig cmdlet and New-AzVmss.
 function Test-VirtualMachineScaleSetSecurityTypeDefaultingFromImage
 {
     # Setup
-    $rgname = "adsands6";#Get-ComputeTestResourceName;
-    $loc = "eastus";#Get-ComputeVMLocation;
+    $rgname = Get-ComputeTestResourceName;
+    $loc = Get-ComputeVMLocation;
 
     try
     {
@@ -5050,8 +5050,8 @@ function Test-VirtualMachineScaleSetSecurityTypeDefaultingFromImage
         $disable = $false;
         $enable = $true;
         $securityType = "TrustedLaunch";
-        $adminUsername = "admin01";#Get-ComputeTestResourceName;
-        $password = "Testing1234567";#Get-PasswordForVM;
+        $adminUsername = Get-ComputeTestResourceName;
+        $password = Get-PasswordForVM;
         $adminPassword = $password | ConvertTo-SecureString -AsPlainText -Force;
         $vmCred = New-Object System.Management.Automation.PSCredential ($adminUsername, $adminPassword);
         
