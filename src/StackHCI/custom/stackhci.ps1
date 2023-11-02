@@ -672,6 +672,19 @@ $registerArcScript = {
     }
     finally
     {
+        $customImdsScript = { try{ $customImdsRegKey = Get-Item 'HKLM:\Software\Microsoft\Windows Azure\CurrentVersion\IMDS' -ErrorAction Stop } catch{ $customImdsRegKey = New-Item 'HKLM:\Software\Microsoft\Windows Azure\CurrentVersion\IMDS' -Force -ErrorAction Stop } $customImdsRegKey | New-ItemProperty -Name 'CustomIMDSHostAddress' -Value 'http://127.0.0.1:42542' -Force -ErrorAction Stop | Out-Null }
+        try 
+        {
+            Write-Verbose ('Configuring CustomIMDSHostAddress')
+            Invoke-Command -ScriptBlock $customImdsScript 
+        } 
+        catch 
+        {
+            Write-Verbose ('Exception occurred while setting custom IMDS host. ErrorMessage : ' + $_.Exception.Message)
+            Write-Verbose ($_ | Out-String)
+            Write-Warning ('Could not configure CustomIMDSHostAddress for node.')
+        }
+
         try{ Stop-Transcript } catch {}
     }
 }
