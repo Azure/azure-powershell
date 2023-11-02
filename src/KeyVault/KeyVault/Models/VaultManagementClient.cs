@@ -646,6 +646,8 @@ namespace Microsoft.Azure.Commands.KeyVault.Models
 
             if(null != parameters.ManagedServiceIdentity) 
             {
+                existingManagedHsm.OriginalManagedHsm.Identity?.UserAssignedIdentities?.Keys?
+                    .ToList()?.ForEach(id => parameters.ManagedServiceIdentity.UserAssignedIdentities.Add(id, default(UserAssignedIdentity))); 
                 existingManagedHsm.OriginalManagedHsm.Identity = parameters.ManagedServiceIdentity;
             }
             var response = KeyVaultManagementClient.ManagedHsms.Update(
