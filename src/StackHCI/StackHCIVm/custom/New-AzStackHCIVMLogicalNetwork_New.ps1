@@ -122,6 +122,7 @@ function New-AzStackHciVMLogicalNetwork {
       $AddressPrefixes,
   
       [Parameter()]
+      [ArgumentCompleter([Microsoft.Azure.PowerShell.Cmdlets.StackHCIVm.Support.IPAllocationMethodEnum])]
       [Microsoft.Azure.PowerShell.Cmdlets.StackHciVM.Category('Body')]
       [System.String]
       # The IP address allocation method. Possible values include: 'Static', 'Dynamic'

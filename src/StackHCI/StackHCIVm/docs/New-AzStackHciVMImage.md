@@ -44,7 +44,7 @@ Please note some properties can be set only during image creation.
 
 ## EXAMPLES
 
-### Example 1: Createa  Gallery Image 
+### Example 1: Create a  Gallery Image 
 ```powershell
 New-AzStackHciVMImage -Name "testImage" -ResourceGroupName "test-rg" -CustomLocationId "/subscriptions/{subscriptionID}/resourcegroups/{resourceGroupName}/providers/microsoft.extendedlocation/customlocations/{customLocationName}" -ImagePath "C:\ClusterStorage\Volume1\Ubunut.vhdx" -OSType "Linux" -Location "eastus" 
 
