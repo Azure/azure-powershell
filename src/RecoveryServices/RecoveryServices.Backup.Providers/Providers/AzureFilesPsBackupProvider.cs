@@ -186,7 +186,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.ProviderModel
             AzureFileShareItem azureFileShareItem = item as AzureFileShareItem;
             BackupRequestResource triggerBackupRequest = new BackupRequestResource();
             AzureFileShareBackupRequest azureFileShareBackupRequest = new AzureFileShareBackupRequest();
-            azureFileShareBackupRequest.RecoveryPointExpiryTimeInUTC = expiryDateTime;
+            azureFileShareBackupRequest.RecoveryPointExpiryTimeInUtc = expiryDateTime;
             triggerBackupRequest.Properties = azureFileShareBackupRequest;
 
             return ServiceClientAdapter.TriggerBackup(
@@ -665,7 +665,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.ProviderModel
             string azureFileShareName, string storageAccountName)
         {
             WorkloadProtectableItemResource protectableObjectResource = null;
-            ODataQuery<BMSPOQueryObject> queryParam = new ODataQuery<BMSPOQueryObject>(
+            ODataQuery<BmspoQueryObject> queryParam = new ODataQuery<BmspoQueryObject>(
                 q => q.BackupManagementType
                      == ServiceClientModel.BackupManagementType.AzureStorage);
 
