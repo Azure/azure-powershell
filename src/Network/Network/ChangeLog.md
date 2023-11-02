@@ -28,6 +28,7 @@
 	- `Set-AzApplicationGatewayListener`
 	- `Add-AzApplicationGatewayListener`
 	- `New-AzApplicationGatewayListener`
+* Added cmdlet 'Remove-AzApplicationGatewayFirewallCustomRule' to support removing custom rule in Firewall Policy.
 
 ## Version 6.2.0
 * Added support for new Application Gateway SKU type, Basic SKU
