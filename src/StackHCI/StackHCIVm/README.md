@@ -78,7 +78,180 @@ root-module-name: $(prefix).StackHCI
 inlining-threshold: 50
 resourcegroup-append: true
 directive:  
-  # Remove the unexpanded parameter set
+ -  from: swagger-document 
+    where: $.paths["/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AzureStackHCI/virtualHardDisks/{virtualHardDiskName}"].delete.responses
+    transform: >-
+      return {
+          "default": {
+            "description": "Error response describing why the operation failed.",
+            "schema": {
+              "$ref": "../../../../../common-types/resource-management/v3/types.json#/definitions/ErrorResponse"
+            }
+          },
+          "200": {
+            "description": "OK"
+          },
+          "202": {
+            "description": "Accepted"
+          },
+          "204": {
+            "description": "No content"
+          }
+      }
+ -  from: swagger-document 
+    where: $.paths["/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AzureStackHCI/virtualHardDisks/{virtualHardDiskName}"].delete
+    transform: >- 
+      $["x-ms-long-running-operation"] = true
+
+ -  from: swagger-document 
+    where: $.paths["/{resourceUri}/providers/Microsoft.AzureStackHCI/virtualMachineInstances/default"].delete.responses
+    transform: >-
+      return {
+          "default": {
+            "description": "Error response describing why the operation failed.",
+            "schema": {
+              "$ref": "../../../../../common-types/resource-management/v3/types.json#/definitions/ErrorResponse"
+            }
+          },
+          "200": {
+            "description": "OK"
+          },
+          "202": {
+            "description": "Accepted"
+          },
+          "204": {
+            "description": "No content"
+          }
+      }
+ -  from: swagger-document 
+    where: $.paths["/{resourceUri}/providers/Microsoft.AzureStackHCI/virtualMachineInstances/default"].delete
+    transform: >- 
+      $["x-ms-long-running-operation"] = true
+
+ -  from: swagger-document 
+    where: $.paths["/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AzureStackHCI/logicalNetworks/{logicalNetworkName}"].delete.responses
+    transform: >-
+      return {
+          "default": {
+            "description": "Error response describing why the operation failed.",
+            "schema": {
+              "$ref": "../../../../../common-types/resource-management/v3/types.json#/definitions/ErrorResponse"
+            }
+          },
+          "200": {
+            "description": "OK"
+          },
+          "202": {
+            "description": "Accepted"
+          },
+          "204": {
+            "description": "No content"
+          }
+      }
+ -  from: swagger-document 
+    where: $.paths["/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AzureStackHCI/logicalNetworks/{logicalNetworkName}"].delete
+    transform: >- 
+      $["x-ms-long-running-operation"] = true
+
+ -  from: swagger-document 
+    where: $.paths["/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AzureStackHCI/storageContainers/{storageContainerName}"].delete.responses
+    transform: >-
+      return {
+          "default": {
+            "description": "Error response describing why the operation failed.",
+            "schema": {
+              "$ref": "../../../../../common-types/resource-management/v3/types.json#/definitions/ErrorResponse"
+            }
+          },
+          "200": {
+            "description": "OK"
+          },
+          "202": {
+            "description": "Accepted"
+          },
+          "204": {
+            "description": "No content"
+          }
+      }
+ -  from: swagger-document 
+    where: $.paths["/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AzureStackHCI/storageContainers/{storageContainerName}"].delete
+    transform: >- 
+      $["x-ms-long-running-operation"] = true
+
+ -  from: swagger-document 
+    where: $.paths["/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AzureStackHCI/networkInterfaces/{networkInterfaceName}"].delete.responses
+    transform: >-
+      return {
+          "default": {
+            "description": "Error response describing why the operation failed.",
+            "schema": {
+              "$ref": "../../../../../common-types/resource-management/v3/types.json#/definitions/ErrorResponse"
+            }
+          },
+          "200": {
+            "description": "OK"
+          },
+          "202": {
+            "description": "Accepted"
+          },
+          "204": {
+            "description": "No content"
+          }
+      }
+ -  from: swagger-document 
+    where: $.paths["/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AzureStackHCI/networkInterfaces/{networkInterfaceName}"].delete
+    transform: >- 
+      $["x-ms-long-running-operation"] = true
+
+ -  from: swagger-document 
+    where: $.paths["/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AzureStackHCI/marketplaceGalleryImages/{marketplaceGalleryImageName}"].delete.responses
+    transform: >-
+      return {
+          "default": {
+            "description": "Error response describing why the operation failed.",
+            "schema": {
+              "$ref": "../../../../../common-types/resource-management/v3/types.json#/definitions/ErrorResponse"
+            }
+          },
+          "200": {
+            "description": "OK"
+          },
+          "202": {
+            "description": "Accepted"
+          },
+          "204": {
+            "description": "No content"
+          }
+      }
+ -  from: swagger-document 
+    where: $.paths["/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AzureStackHCI/marketplaceGalleryImages/{marketplaceGalleryImageName}"].delete
+    transform: >- 
+      $["x-ms-long-running-operation"] = true
+
+ -  from: swagger-document 
+    where: $.paths["/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AzureStackHCI/galleryImages/{galleryImageName}"].delete.responses
+    transform: >-
+      return {
+          "default": {
+            "description": "Error response describing why the operation failed.",
+            "schema": {
+              "$ref": "../../../../../common-types/resource-management/v3/types.json#/definitions/ErrorResponse"
+            }
+          },
+          "200": {
+            "description": "OK"
+          },
+          "202": {
+            "description": "Accepted"
+          },
+          "204": {
+            "description": "No content"
+          }
+      }
+ -  from: swagger-document 
+    where: $.paths["/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AzureStackHCI/galleryImages/{galleryImageName}"].delete
+    transform: >- 
+      $["x-ms-long-running-operation"] = true
  -  where:
       variant: ^Create$|^CreateViaIdentity$|^CreateViaIdentityExpanded$|^Update$|^UpdateViaIdentity$
     remove: true
@@ -129,6 +302,8 @@ directive:
  -  where:
       verb: Update
       parameter-name: Tag
+    set:
+      parameter-name: Tags
  -  where:
       verb: New
       subject: GalleryImage
@@ -205,6 +380,18 @@ directive:
       parameter-name: StoragePathId
  -  where:
       verb: New
+      subject: GalleryImage
+      parameter-name: ContainerId
+    set:
+      parameter-name: StoragePathId
+ -  where:
+      verb: New
+      subject: MarketplaceGalleryImage
+      parameter-name: ContainerId
+    set:
+      parameter-name: StoragePathId
+ -  where:
+      verb: New
       subject: LogicalNetwork
       parameter-name: DhcpOptionDnsServer
     set:
@@ -231,17 +418,15 @@ directive:
     set:
       property-name: IPAllocationMethod
  -  where:
-      verb: New
       subject: VirtualMachineInstance
       parameter-name: DynamicMemoryConfigMaximumMemoryMb
     set:
-      parameter-name: DynamicMemoryMaximumMemory
+      parameter-name: DynamicMemoryMaximumMemoryInMb
  -  where:
-      verb: New
       subject: VirtualMachineInstance
       parameter-name: DynamicMemoryConfigMinimumMemoryMb
     set:
-      parameter-name: DynamicMemoryMinimumMemory
+      parameter-name: DynamicMemoryMinimumMemoryInMb
  -  where:
       verb: New
       subject: VirtualMachineInstance
@@ -290,12 +475,6 @@ directive:
       parameter-name: OSProfileComputerName
     set:
       parameter-name: ComputerName
- -  where:
-      verb: New
-      subject: VirtualMachineInstance
-      parameter-name: OSProfileOsType
-    set:
-      parameter-name: OsType
  -  where:
       verb: New
       subject: VirtualMachineInstance
@@ -449,6 +628,15 @@ directive:
     hide: true
  -  where:
       subject: NetworkProfile
+    hide: true
+ -  where:
+      verb: Set
+    hide: true
+ -  where:
+      subject: Machine
+    hide: true
+ -  where:
+      subject: Extension
     hide: true
 
 ```

@@ -5,7 +5,7 @@ online version: https://learn.microsoft.com/powershell/module/az.stackhcivm/add-
 schema: 2.0.0
 ---
 
-# Add-AzStackHciVMVirtualMachineNic
+# Add-AzStackHciVMVirtualMachineNetworkInterface
 
 ## SYNOPSIS
 The operation to add a network interface to a virtual machine.
@@ -14,15 +14,15 @@ The operation to add a network interface to a virtual machine.
 
 ### ByResourceId (Default)
 ```
-Add-AzStackHciVMVirtualMachineNic -ResourceId <String> [-NicIds <String[]>] [-NicNames <String[]>]
- [-NicResourceGroup <String>] [-Confirm] [-WhatIf] [<CommonParameters>]
+Add-AzStackHciVMVirtualMachineNetworkInterface -ResourceId <String> [-NicIds <String[]>]
+ [-NicNames <String[]>] [-NicResourceGroup <String>] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ### ByName
 ```
-Add-AzStackHciVMVirtualMachineNic -Name <String> -ResourceGroupName <String> [-SubscriptionId <String>]
- [-NicIds <String[]>] [-NicNames <String[]>] [-NicResourceGroup <String>] [-Confirm] [-WhatIf]
- [<CommonParameters>]
+Add-AzStackHciVMVirtualMachineNetworkInterface -Name <String> -ResourceGroupName <String>
+ [-SubscriptionId <String>] [-NicIds <String[]>] [-NicNames <String[]>] [-NicResourceGroup <String>]
+ [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ## DESCRIPTION

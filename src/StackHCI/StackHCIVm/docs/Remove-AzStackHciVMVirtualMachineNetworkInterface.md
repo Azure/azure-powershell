@@ -1,11 +1,11 @@
 ---
 external help file:
 Module Name: Az.StackHCIVm
-online version: https://learn.microsoft.com/powershell/module/az.stackhcivm/remove-azstackhcivmvirtualmachinenic
+online version: https://learn.microsoft.com/powershell/module/az.stackhcivm/remove-azstackhcivmvirtualmachinenetworkinterface
 schema: 2.0.0
 ---
 
-# Remove-AzStackHciVMVirtualMachineNic
+# Remove-AzStackHciVMVirtualMachineNetworkInterface
 
 ## SYNOPSIS
 
@@ -14,15 +14,15 @@ schema: 2.0.0
 
 ### ByResourceId (Default)
 ```
-Remove-AzStackHciVMVirtualMachineNic -ResourceId <String> [-NicIds <String[]>] [-NicNames <String[]>]
- [-NicResourceGroup <String>] [-Confirm] [-WhatIf] [<CommonParameters>]
+Remove-AzStackHciVMVirtualMachineNetworkInterface -ResourceId <String> [-NicIds <String[]>]
+ [-NicNames <String[]>] [-NicResourceGroup <String>] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ### ByName
 ```
-Remove-AzStackHciVMVirtualMachineNic -Name <String> -ResourceGroupName <String> [-SubscriptionId <String>]
- [-NicIds <String[]>] [-NicNames <String[]>] [-NicResourceGroup <String>] [-Confirm] [-WhatIf]
- [<CommonParameters>]
+Remove-AzStackHciVMVirtualMachineNetworkInterface -Name <String> -ResourceGroupName <String>
+ [-SubscriptionId <String>] [-NicIds <String[]>] [-NicNames <String[]>] [-NicResourceGroup <String>]
+ [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ## DESCRIPTION

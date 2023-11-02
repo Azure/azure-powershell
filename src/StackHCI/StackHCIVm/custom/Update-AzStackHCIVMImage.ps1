@@ -17,7 +17,7 @@ https://learn.microsoft.com/powershell/module/az.stackhcivm/new-azstackhcivmimag
 #>
 
 function Update-AzStackHciVMImage{
-    [OutputType([Microsoft.Azure.PowerShell.Cmdlets.StackHciVM.Models.Api20221215Preview.IMarketplaceGalleryImages],ParameterSetName='Marketplace' )]
+    [OutputType([Microsoft.Azure.PowerShell.Cmdlets.StackHciVM.Models.Api20230901Preview.IMarketplaceGalleryImages],ParameterSetName='Marketplace' )]
     [OutputType([Microsoft.Azure.PowerShell.Cmdlets.StackHciVM.Models.Api20230901Preview.IGalleryImages],ParameterSetName='GalleryImage' )]
     [CmdletBinding(PositionalBinding=$false)]
    
@@ -39,7 +39,7 @@ function Update-AzStackHciVMImage{
     [Parameter(ParameterSetName='ByResourceId')] 
     [Microsoft.Azure.PowerShell.Cmdlets.StackHciVM.Category('Path')]
     [Microsoft.Azure.PowerShell.Cmdlets.StackHciVM.Runtime.DefaultInfo(Script='(Get-AzContext).Subscription.Id')]
-    [System.String[]]
+    [System.String]
     # The ID of the target subscription.
     ${SubscriptionId},
 
@@ -55,16 +55,8 @@ function Update-AzStackHciVMImage{
     [Microsoft.Azure.PowerShell.Cmdlets.StackHciVM.Runtime.Info(PossibleTypes=([Microsoft.Azure.PowerShell.Cmdlets.StackHciVM.Models.Api20230901Preview.IGalleryImagesUpdateRequestTags]))]
     [System.Collections.Hashtable]
     # Resource tags
-    ${Tags},
+    ${Tags}
 
-    [Parameter(ParameterSetName='ByName')]
-    [Parameter(ParameterSetName='ByResourceId')]
-    [Alias('AzureRMContext', 'AzureCredential')]
-    [ValidateNotNull()]
-    [Microsoft.Azure.PowerShell.Cmdlets.StackHciVM.Category('Azure')]
-    [System.Management.Automation.PSObject]
-    # The credentials, account, tenant, and subscription used for communication with Azure.
-    ${DefaultProfile}
 )
 
     process {

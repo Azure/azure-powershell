@@ -18,14 +18,13 @@ Please note some properties can be set only during virtual machine creation.
 New-AzStackHciVMVirtualMachine -Name <String> -ResourceGroupName <String> -CustomLocationId <String>
  -ImageId <String> -Location <String> -OsType <String> [-SubscriptionId <String>] [-AdminPassword <String>]
  [-AdminUsername <String>] [-ComputerName <String>] [-DataDiskIds <String[]>] [-DataDiskNames <String[]>]
- [-DataDiskResourceGroup <String>] [-DisablePasswordAuthentication] [-DynamicMemoryMaximumMemory <Int64>]
- [-DynamicMemoryMinimumMemory <Int64>] [-DynamicMemoryTargetBuffer <Int32>] [-EnableAutomaticUpdate]
+ [-DataDiskResourceGroup <String>] [-DisablePasswordAuthentication] [-DynamicMemoryMaximumMemoryInMb <Int64>]
+ [-DynamicMemoryMinimumMemoryInMb <Int64>] [-DynamicMemoryTargetBuffer <Int32>] [-EnableAutomaticUpdate]
  [-EnableTpm] [-IdentityType <ResourceIdentityType>] [-NicIds <String[]>] [-NicNames <String[]>]
  [-NicResourceGroup <String>] [-ProvisionVMAgent] [-ProvisionVMConfigAgent] [-SecureBootEnabled]
  [-SshPublicKeys <String[]>] [-StoragePathId <String>] [-StoragePathName <String>]
- [-StoragePathResourceGroup <String>] [-Tags <Hashtable>] [-TimeZone <String>] [-VmMemory <Int64>]
- [-VmProcessors <Int32>] [-VmSize <VMSizeEnum>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm]
- [-WhatIf] [<CommonParameters>]
+ [-StoragePathResourceGroup <String>] [-Tags <Hashtable>] [-TimeZone <String>] [-VmMemoryInMB <Int64>]
+ [-VmProcessors <Int32>] [-VmSize <VMSizeEnum>] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ### ByImageName
@@ -33,14 +32,13 @@ New-AzStackHciVMVirtualMachine -Name <String> -ResourceGroupName <String> -Custo
 New-AzStackHciVMVirtualMachine -Name <String> -ResourceGroupName <String> -CustomLocationId <String>
  -ImageName <String> -Location <String> -OsType <String> [-SubscriptionId <String>] [-AdminPassword <String>]
  [-AdminUsername <String>] [-ComputerName <String>] [-DataDiskIds <String[]>] [-DataDiskNames <String[]>]
- [-DataDiskResourceGroup <String>] [-DisablePasswordAuthentication] [-DynamicMemoryMaximumMemory <Int64>]
- [-DynamicMemoryMinimumMemory <Int64>] [-DynamicMemoryTargetBuffer <Int32>] [-EnableAutomaticUpdate]
+ [-DataDiskResourceGroup <String>] [-DisablePasswordAuthentication] [-DynamicMemoryMaximumMemoryInMb <Int64>]
+ [-DynamicMemoryMinimumMemoryInMb <Int64>] [-DynamicMemoryTargetBuffer <Int32>] [-EnableAutomaticUpdate]
  [-EnableTpm] [-IdentityType <ResourceIdentityType>] [-ImageResourceGroup <String>] [-NicIds <String[]>]
  [-NicNames <String[]>] [-NicResourceGroup <String>] [-ProvisionVMAgent] [-ProvisionVMConfigAgent]
  [-SecureBootEnabled] [-SshPublicKeys <String[]>] [-StoragePathId <String>] [-StoragePathName <String>]
- [-StoragePathResourceGroup <String>] [-Tags <Hashtable>] [-TimeZone <String>] [-VmMemory <Int64>]
- [-VmProcessors <Int32>] [-VmSize <VMSizeEnum>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm]
- [-WhatIf] [<CommonParameters>]
+ [-StoragePathResourceGroup <String>] [-Tags <Hashtable>] [-TimeZone <String>] [-VmMemoryInMB <Int64>]
+ [-VmProcessors <Int32>] [-VmSize <VMSizeEnum>] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ### ByOsDiskId
@@ -48,14 +46,13 @@ New-AzStackHciVMVirtualMachine -Name <String> -ResourceGroupName <String> -Custo
 New-AzStackHciVMVirtualMachine -Name <String> -ResourceGroupName <String> -CustomLocationId <String>
  -Location <String> -OSDiskId <String> -OsType <String> [-SubscriptionId <String>] [-AdminPassword <String>]
  [-AdminUsername <String>] [-ComputerName <String>] [-DataDiskIds <String[]>] [-DataDiskNames <String[]>]
- [-DataDiskResourceGroup <String>] [-DisablePasswordAuthentication] [-DynamicMemoryMaximumMemory <Int64>]
- [-DynamicMemoryMinimumMemory <Int64>] [-DynamicMemoryTargetBuffer <Int32>] [-EnableAutomaticUpdate]
+ [-DataDiskResourceGroup <String>] [-DisablePasswordAuthentication] [-DynamicMemoryMaximumMemoryInMb <Int64>]
+ [-DynamicMemoryMinimumMemoryInMb <Int64>] [-DynamicMemoryTargetBuffer <Int32>] [-EnableAutomaticUpdate]
  [-EnableTpm] [-IdentityType <ResourceIdentityType>] [-NicIds <String[]>] [-NicNames <String[]>]
  [-NicResourceGroup <String>] [-ProvisionVMAgent] [-ProvisionVMConfigAgent] [-SecureBootEnabled]
  [-SshPublicKeys <String[]>] [-StoragePathId <String>] [-StoragePathName <String>]
- [-StoragePathResourceGroup <String>] [-Tags <Hashtable>] [-TimeZone <String>] [-VmMemory <Int64>]
- [-VmProcessors <Int32>] [-VmSize <VMSizeEnum>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm]
- [-WhatIf] [<CommonParameters>]
+ [-StoragePathResourceGroup <String>] [-Tags <Hashtable>] [-TimeZone <String>] [-VmMemoryInMB <Int64>]
+ [-VmProcessors <Int32>] [-VmSize <VMSizeEnum>] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ### ByOsDiskName
@@ -63,14 +60,13 @@ New-AzStackHciVMVirtualMachine -Name <String> -ResourceGroupName <String> -Custo
 New-AzStackHciVMVirtualMachine -Name <String> -ResourceGroupName <String> -CustomLocationId <String>
  -Location <String> -OSDiskName <String> -OsType <String> [-SubscriptionId <String>] [-AdminPassword <String>]
  [-AdminUsername <String>] [-ComputerName <String>] [-DataDiskIds <String[]>] [-DataDiskNames <String[]>]
- [-DataDiskResourceGroup <String>] [-DisablePasswordAuthentication] [-DynamicMemoryMaximumMemory <Int64>]
- [-DynamicMemoryMinimumMemory <Int64>] [-DynamicMemoryTargetBuffer <Int32>] [-EnableAutomaticUpdate]
+ [-DataDiskResourceGroup <String>] [-DisablePasswordAuthentication] [-DynamicMemoryMaximumMemoryInMb <Int64>]
+ [-DynamicMemoryMinimumMemoryInMb <Int64>] [-DynamicMemoryTargetBuffer <Int32>] [-EnableAutomaticUpdate]
  [-EnableTpm] [-IdentityType <ResourceIdentityType>] [-NicIds <String[]>] [-NicNames <String[]>]
  [-NicResourceGroup <String>] [-OSDiskResourceGroup <String>] [-ProvisionVMAgent] [-ProvisionVMConfigAgent]
  [-SecureBootEnabled] [-SshPublicKeys <String[]>] [-StoragePathId <String>] [-StoragePathName <String>]
- [-StoragePathResourceGroup <String>] [-Tags <Hashtable>] [-TimeZone <String>] [-VmMemory <Int64>]
- [-VmProcessors <Int32>] [-VmSize <VMSizeEnum>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm]
- [-WhatIf] [<CommonParameters>]
+ [-StoragePathResourceGroup <String>] [-Tags <Hashtable>] [-TimeZone <String>] [-VmMemoryInMB <Int64>]
+ [-VmProcessors <Int32>] [-VmSize <VMSizeEnum>] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -127,21 +123,6 @@ AdminUsername - admin username
 
 ```yaml
 Type: System.String
-Parameter Sets: (All)
-Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -AsJob
-Run the command as a job
-
-```yaml
-Type: System.Management.Automation.SwitchParameter
 Parameter Sets: (All)
 Aliases:
 
@@ -227,21 +208,6 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -DefaultProfile
-The credentials, account, tenant, and subscription used for communication with Azure.
-
-```yaml
-Type: System.Management.Automation.PSObject
-Parameter Sets: (All)
-Aliases: AzureRMContext, AzureCredential
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
 ### -DisablePasswordAuthentication
 DisablePasswordAuthentication - whether password authentication should be disabled
 
@@ -257,7 +223,7 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -DynamicMemoryMaximumMemory
+### -DynamicMemoryMaximumMemoryInMb
 Maximum Dynamic Memory
 
 ```yaml
@@ -272,7 +238,7 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -DynamicMemoryMinimumMemory
+### -DynamicMemoryMinimumMemoryInMb
 Minimum Dynamic Memory
 
 ```yaml
@@ -469,21 +435,6 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -NoWait
-Run the command asynchronously
-
-```yaml
-Type: System.Management.Automation.SwitchParameter
-Parameter Sets: (All)
-Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
 ### -OSDiskId
 Resource ID of the OS disk
 
@@ -546,6 +497,8 @@ Accept wildcard characters: False
 
 ### -ProvisionVMAgent
 Used to indicate whether Arc for Servers agent onboarding should be triggered during the virtual machine creation process.
+VM Agent is provsioned by default.
+Please pass -ProvisionVMAgent:$false to disable.
 
 ```yaml
 Type: System.Management.Automation.SwitchParameter
@@ -561,7 +514,9 @@ Accept wildcard characters: False
 
 ### -ProvisionVMConfigAgent
 Indicates whether virtual machine configuration agent should be provisioned on the virtual machine.
-When this property is not specified, default behavior is to set it to false.
+When this property is not specified, default behavior is to set it to true.
+VM Config Agent is provisioned by default.
+Please pass -ProvisionVMConfigAgent:$false to disable.
 
 ```yaml
 Type: System.Management.Automation.SwitchParameter
@@ -712,7 +667,7 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -VmMemory
+### -VmMemoryInMB
 RAM in MB for the virtual machine
 
 ```yaml

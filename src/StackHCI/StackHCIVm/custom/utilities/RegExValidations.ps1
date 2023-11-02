@@ -3,7 +3,7 @@ $galImageRegex = "(?i)^/?subscriptions/(?<subscriptionId>[0-9a-f]{8}-([0-9a-f]{4
 $marketplaceGalImageRegex = "(?i)^/?subscriptions/(?<subscriptionId>[0-9a-f]{8}-([0-9a-f]{4}-){3}[0-9a-f]{12})/resourceGroups/(?<resourceGroupName>[-\w\._\(\)]{1,90})/providers/Microsoft.AzureStackHCI/marketplacegalleryimages/(?<imageName>[a-zA-Z0-9][-._a-zA-Z0-9]{0,78}[a-zA-Z0-9])$"
 $vhdRegex = "(?i)^/?subscriptions/(?<subscriptionId>[0-9a-f]{8}-([0-9a-f]{4}-){3}[0-9a-f]{12})/resourceGroups/(?<resourceGroupName>[-\w\._\(\)]{1,90})/providers/Microsoft.AzureStackHCI/virtualharddisks/(?<vhdName>[-_a-zA-Z0-9]{1,80})$"
 $nicRegex = "(?i)^/?subscriptions/(?<subscriptionId>[0-9a-f]{8}-([0-9a-f]{4}-){3}[0-9a-f]{12})/resourceGroups/(?<resourceGroupName>[-\w\._\(\)]{1,90})/providers/Microsoft.AzureStackHCI/networkinterfaces/(?<nicName>[a-zA-Z0-9][-._a-zA-Z0-9]{0,78}[_a-zA-Z0-9])$"
-$vmRegex =  "(?i)^/?subscriptions/(?<subscriptionId>[0-9a-f]{8}-([0-9a-f]{4}-){3}[0-9a-f]{12})/resourceGroups/(?<resourceGroupName>[-\w\._\(\)]{1,90})/providers/Microsoft.AzureStackHCI/virtualmachines/(?<vmName>[a-zA-Z0-9][-._a-zA-Z0-9]{0,62}[a-zA-Z0-9])$"
+$vmRegex =  "(?i)^/?subscriptions/(?<subscriptionId>[0-9a-f]{8}-([0-9a-f]{4}-){3}[0-9a-f]{12})/resourceGroups/(?<resourceGroupName>[-\w\._\(\)]{1,90})/providers/Microsoft.HybridCompute/machines/(?<machineName>[a-zA-Z0-9][-._a-zA-Z0-9]{0,62}[a-zA-Z0-9])/providers/Microsoft.AzureStackHCI/VirtualMachineInstances/default$"
 $storagePathRegex = "(?i)^/?subscriptions/(?<subscriptionId>[0-9a-f]{8}-([0-9a-f]{4}-){3}[0-9a-f]{12})/resourceGroups/(?<resourceGroupName>[-\w\._\(\)]{1,90})/providers/Microsoft.AzureStackHCI/storagecontainers/(?<storagePathName>[a-zA-Z0-9][-._a-zA-Z0-9]{0,78}[_a-zA-Z0-9])$"
 $customLocationRegex =  "(?i)^/?subscriptions/(?<subscriptionId>[0-9a-f]{8}-([0-9a-f]{4}-){3}[0-9a-f]{12})/resourceGroups/(?<resourceGroupName>[-\w\._\(\)]{1,90})/providers/Microsoft.ExtendedLocation/customLocations/(?<customLocation>[a-zA-Z0-9][-_a-zA-Z0-9]{0,61}[a-zA-Z0-9])$"
 
@@ -11,7 +11,7 @@ $imageNameRegex = "^[a-zA-Z0-9]$|^[a-zA-Z0-9][-._a-zA-Z0-9]{0,78}[a-zA-Z0-9]$"
 $nicNameRegex = "^[a-zA-Z0-9]$|^[a-zA-Z0-9][-._a-zA-Z0-9]{0,78}[_a-zA-Z0-9]$"
 $storagePathNameRegex = "^[a-zA-Z0-9]$|^[a-zA-Z0-9][-._a-zA-Z0-9]{0,78}[_a-zA-Z0-9]$"
 $vhdNameRegex = "^[-_a-zA-Z0-9]{1,80}$"
-$vmNameRegex =  "^[a-zA-Z0-9]$|^[a-zA-Z0-9][-._a-zA-Z0-9]{0,62}[a-zA-Z0-9]$"
+$machineNameRegex =  "^[a-zA-Z0-9]$|^[a-zA-Z0-9][-._a-zA-Z0-9]{0,62}[a-zA-Z0-9]$"
 $vnetNameRegex = "^[a-zA-Z0-9]$|^[a-zA-Z0-9][-._a-zA-Z0-9]{0,62}[_a-zA-Z0-9]$"
 $subnetNameRegex = "^[a-zA-Z0-9]$|^[a-zA-Z0-9][-._a-zA-Z0-9]{0,78}[_a-zA-Z0-9]$"
 

@@ -14,14 +14,14 @@ The operation to delete an image.
 
 ### ByResourceId (Default)
 ```
-Remove-AzStackHciVMImage -ResourceId <String> [-SubscriptionId <String>] [-Force] [-DefaultProfile <PSObject>]
- [-Confirm] [-WhatIf] [<CommonParameters>]
+Remove-AzStackHciVMImage -ResourceId <String> [-SubscriptionId <String>] [-Force] [-Confirm] [-WhatIf]
+ [<CommonParameters>]
 ```
 
 ### ByName
 ```
 Remove-AzStackHciVMImage -Name <String> -ResourceGroupName <String> [-SubscriptionId <String>] [-Force]
- [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
+ [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -37,21 +37,6 @@ Remove-AzStackHCIVMImage -Name  "testImage" -ResourceGroupName "test-rg"
 This command removes the image from the specified resource group.
 
 ## PARAMETERS
-
-### -DefaultProfile
-The credentials, account, tenant, and subscription used for communication with Azure.
-
-```yaml
-Type: System.Management.Automation.PSObject
-Parameter Sets: (All)
-Aliases: AzureRMContext, AzureCredential
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
 
 ### -Force
 Forces the cmdlet to remove the network interface without prompting for confirmation.

@@ -8,38 +8,39 @@ schema: 2.0.0
 # New-AzStackHciVMImage
 
 ## SYNOPSIS
-
+The operation to create an image.
+Please note some properties can be set only during  image creation.
 
 ## SYNTAX
 
 ### MarketplaceURN (Default)
 ```
 New-AzStackHciVMImage -Name <String> -ResourceGroupName <String> -CustomLocationId <String> -Location <String>
- -URN <String> [-SubscriptionId <String>] [-CloudInitDataSource <CloudInitDataSource>]
- [-OSType <OperatingSystemTypes>] [-StoragePathId <String>] [-StoragePathName <String>]
- [-StoragePathResourceGroup <String>] [-Tag <Hashtable>] [-DefaultProfile <PSObject>] [<CommonParameters>]
+ -OSType <OperatingSystemTypes> -URN <String> [-SubscriptionId <String>]
+ [-CloudInitDataSource <CloudInitDataSource>] [-StoragePathId <String>] [-StoragePathName <String>]
+ [-StoragePathResourceGroup <String>] [-Tag <Hashtable>] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ### GalleryImage
 ```
 New-AzStackHciVMImage -Name <String> -ResourceGroupName <String> -CustomLocationId <String>
- -ImagePath <String> -Location <String> [-SubscriptionId <String>]
- [-CloudInitDataSource <CloudInitDataSource>] [-OSType <OperatingSystemTypes>] [-StoragePathId <String>]
- [-StoragePathName <String>] [-StoragePathResourceGroup <String>] [-Tag <Hashtable>]
- [-DefaultProfile <PSObject>] [<CommonParameters>]
+ -ImagePath <String> -Location <String> -OSType <OperatingSystemTypes> [-SubscriptionId <String>]
+ [-CloudInitDataSource <CloudInitDataSource>] [-StoragePathId <String>] [-StoragePathName <String>]
+ [-StoragePathResourceGroup <String>] [-Tag <Hashtable>] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ### Marketplace
 ```
 New-AzStackHciVMImage -Name <String> -ResourceGroupName <String> -CustomLocationId <String> -Location <String>
- -Offer <String> -Publisher <String> -Sku <String> -Version <String> [-SubscriptionId <String>]
- [-CloudInitDataSource <CloudInitDataSource>] [-OSType <OperatingSystemTypes>] [-StoragePathId <String>]
- [-StoragePathName <String>] [-StoragePathResourceGroup <String>] [-Tag <Hashtable>]
- [-DefaultProfile <PSObject>] [<CommonParameters>]
+ -Offer <String> -OSType <OperatingSystemTypes> -Publisher <String> -Sku <String> -Version <String>
+ [-SubscriptionId <String>] [-CloudInitDataSource <CloudInitDataSource>] [-StoragePathId <String>]
+ [-StoragePathName <String>] [-StoragePathResourceGroup <String>] [-Tag <Hashtable>] [-Confirm] [-WhatIf]
+ [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-
+The operation to create an image.
+Please note some properties can be set only during image creation.
 
 ## EXAMPLES
 
@@ -82,7 +83,7 @@ This command creates a marketplace gallery image using the specified urn.
 ## PARAMETERS
 
 ### -CloudInitDataSource
-
+Datasource for the gallery image when provisioning with cloud-init [NoCloud, Azure]
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.StackHCIVm.Support.CloudInitDataSource
@@ -97,7 +98,7 @@ Accept wildcard characters: False
 ```
 
 ### -CustomLocationId
-
+The ARM Id of the extended location to create image resource in.
 
 ```yaml
 Type: System.String
@@ -111,23 +112,10 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -DefaultProfile
-
-
-```yaml
-Type: System.Management.Automation.PSObject
-Parameter Sets: (All)
-Aliases: AzureRMContext, AzureCredential
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
 ### -ImagePath
+Local path of image that the image should be created from.
 
+This parameter is required for non marketplace images.
 
 ```yaml
 Type: System.String
@@ -142,7 +130,7 @@ Accept wildcard characters: False
 ```
 
 ### -Location
-
+The geo-location where the resource lives
 
 ```yaml
 Type: System.String
@@ -157,7 +145,9 @@ Accept wildcard characters: False
 ```
 
 ### -Name
-
+Name of the Image
+The name must start and end with an alphanumeric character and must contain all alphanumeric characters or ‘-‘, ‘.’, or ‘_’.
+The max length can be 80 characters and the minimum length is 1 character.
 
 ```yaml
 Type: System.String
@@ -172,7 +162,7 @@ Accept wildcard characters: False
 ```
 
 ### -Offer
-
+The name of the marketplae gallery image definition offer.
 
 ```yaml
 Type: System.String
@@ -187,14 +177,14 @@ Accept wildcard characters: False
 ```
 
 ### -OSType
-
+Operating system type that the gallery image uses [Windows, Linux]
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.StackHCIVm.Support.OperatingSystemTypes
 Parameter Sets: (All)
 Aliases:
 
-Required: False
+Required: True
 Position: Named
 Default value: None
 Accept pipeline input: False
@@ -202,7 +192,7 @@ Accept wildcard characters: False
 ```
 
 ### -Publisher
-
+The name of the marketplace gallery image definition publisher.
 
 ```yaml
 Type: System.String
@@ -217,7 +207,8 @@ Accept wildcard characters: False
 ```
 
 ### -ResourceGroupName
-
+The name of the resource group.
+The name is case insensitive.
 
 ```yaml
 Type: System.String
@@ -232,7 +223,7 @@ Accept wildcard characters: False
 ```
 
 ### -Sku
-
+The name of the marketplace gallery image definition SKU.
 
 ```yaml
 Type: System.String
@@ -247,7 +238,7 @@ Accept wildcard characters: False
 ```
 
 ### -StoragePathId
-
+Storage ContainerID of the storage container to be used for gallery image
 
 ```yaml
 Type: System.String
@@ -262,7 +253,7 @@ Accept wildcard characters: False
 ```
 
 ### -StoragePathName
-
+Storage Container Name of the storage container to be used for gallery image
 
 ```yaml
 Type: System.String
@@ -277,7 +268,8 @@ Accept wildcard characters: False
 ```
 
 ### -StoragePathResourceGroup
-
+Resource Group of the Storage Path.
+The Default value is the Resource Group of the Image.
 
 ```yaml
 Type: System.String
@@ -292,7 +284,7 @@ Accept wildcard characters: False
 ```
 
 ### -SubscriptionId
-
+The ID of the target subscription.
 
 ```yaml
 Type: System.String
@@ -307,7 +299,7 @@ Accept wildcard characters: False
 ```
 
 ### -Tag
-
+Resource tags.
 
 ```yaml
 Type: System.Collections.Hashtable
@@ -322,7 +314,7 @@ Accept wildcard characters: False
 ```
 
 ### -URN
-
+The URN of the marketplace gallery image.
 
 ```yaml
 Type: System.String
@@ -337,7 +329,7 @@ Accept wildcard characters: False
 ```
 
 ### -Version
-
+The version of the marketplace gallery image.
 
 ```yaml
 Type: System.String
@@ -351,6 +343,37 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### -Confirm
+Prompts you for confirmation before running the cmdlet.
+
+```yaml
+Type: System.Management.Automation.SwitchParameter
+Parameter Sets: (All)
+Aliases: cf
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -WhatIf
+Shows what would happen if the cmdlet runs.
+The cmdlet is not run.
+
+```yaml
+Type: System.Management.Automation.SwitchParameter
+Parameter Sets: (All)
+Aliases: wi
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
 ### CommonParameters
 This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable. For more information, see [about_CommonParameters](http://go.microsoft.com/fwlink/?LinkID=113216).
 
@@ -358,9 +381,9 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.StackHCIVm.Models.Api20221215Preview.IMarketplaceGalleryImages
-
 ### Microsoft.Azure.PowerShell.Cmdlets.StackHCIVm.Models.Api20230901Preview.IGalleryImages
+
+### Microsoft.Azure.PowerShell.Cmdlets.StackHCIVm.Models.Api20230901Preview.IMarketplaceGalleryImages
 
 ## NOTES
 

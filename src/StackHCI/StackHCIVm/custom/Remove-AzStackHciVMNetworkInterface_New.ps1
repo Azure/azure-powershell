@@ -75,14 +75,6 @@ function Remove-AzStackHciVMNetworkInterface {
         # The ID of the target subscription.
         ${SubscriptionId},
     
-        [Parameter(ParameterSetName='ByName')]
-        [Parameter(ParameterSetName='ByResourceId')]
-        [Microsoft.Azure.PowerShell.Cmdlets.StackHCIVm.Category('Path')]
-        [Microsoft.Azure.PowerShell.Cmdlets.StackHCIVm.Models.IStackHciVMIdentity]
-        # Identity Parameter
-        # To construct, see NOTES section for INPUTOBJECT properties and create a hash table.
-        ${InputObject},
-    
         [Parameter(ParameterSetName='ByResourceId',Mandatory)]
         [Microsoft.Azure.PowerShell.Cmdlets.StackHCIVm.Category('Path')]
         [System.String]
@@ -91,86 +83,7 @@ function Remove-AzStackHciVMNetworkInterface {
 
         [Parameter(HelpMessage='Forces the cmdlet to remove the network interface without prompting for confirmation.')]
         [System.Management.Automation.SwitchParameter]
-        ${Force},
-    
-        [Parameter(ParameterSetName='ByName')]
-        [Parameter(ParameterSetName='ByResourceId')]
-        [Alias('AzureRMContext', 'AzureCredential')]
-        [ValidateNotNull()]
-        [Microsoft.Azure.PowerShell.Cmdlets.StackHCIVm.Category('Azure')]
-        [System.Management.Automation.PSObject]
-        # The credentials, account, tenant, and subscription used for communication with Azure.
-        ${DefaultProfile},
-    
-        [Parameter(ParameterSetName='ByName')]
-        [Parameter(ParameterSetName='ByResourceId')]
-        [Microsoft.Azure.PowerShell.Cmdlets.StackHCIVm.Category('Runtime')]
-        [System.Management.Automation.SwitchParameter]
-        # Run the command as a job
-        ${AsJob},
-    
-        [Parameter(DontShow)]
-        [Microsoft.Azure.PowerShell.Cmdlets.StackHCIVm.Category('Runtime')]
-        [System.Management.Automation.SwitchParameter]
-        # Wait for .NET debugger to attach
-        ${Break},
-    
-        [Parameter(ParameterSetName='ByName')]
-        [Parameter(ParameterSetName='ByResourceId')]
-        [Parameter(DontShow)]
-        [ValidateNotNull()]
-        [Microsoft.Azure.PowerShell.Cmdlets.StackHCIVm.Category('Runtime')]
-        [Microsoft.Azure.PowerShell.Cmdlets.StackHCIVm.Runtime.SendAsyncStep[]]
-        # SendAsync Pipeline Steps to be appended to the front of the pipeline
-        ${HttpPipelineAppend},
-    
-        [Parameter(ParameterSetName='ByName')]
-        [Parameter(ParameterSetName='ByResourceId')]
-        [Parameter(DontShow)]
-        [ValidateNotNull()]
-        [Microsoft.Azure.PowerShell.Cmdlets.StackHCIVm.Category('Runtime')]
-        [Microsoft.Azure.PowerShell.Cmdlets.StackHCIVm.Runtime.SendAsyncStep[]]
-        # SendAsync Pipeline Steps to be prepended to the front of the pipeline
-        ${HttpPipelinePrepend},
-    
-        [Parameter(ParameterSetName='ByName')]
-        [Parameter(ParameterSetName='ByResourceId')]
-        [Microsoft.Azure.PowerShell.Cmdlets.StackHCIVm.Category('Runtime')]
-        [System.Management.Automation.SwitchParameter]
-        # Run the command asynchronously
-        ${NoWait},
-    
-        [Parameter(ParameterSetName='ByName')]
-        [Parameter(ParameterSetName='ByResourceId')]
-        [Microsoft.Azure.PowerShell.Cmdlets.StackHCIVm.Category('Runtime')]
-        [System.Management.Automation.SwitchParameter]
-        # Returns true when the command succeeds
-        ${PassThru},
-    
-        [Parameter(ParameterSetName='ByName')]
-        [Parameter(ParameterSetName='ByResourceId')]
-        [Parameter(DontShow)]
-        [Microsoft.Azure.PowerShell.Cmdlets.StackHCIVm.Category('Runtime')]
-        [System.Uri]
-        # The URI for the proxy server to use
-        ${Proxy},
-    
-        [Parameter(ParameterSetName='ByName')]
-        [Parameter(ParameterSetName='ByResourceId')]
-        [Parameter(DontShow)]
-        [ValidateNotNull()]
-        [Microsoft.Azure.PowerShell.Cmdlets.StackHCIVm.Category('Runtime')]
-        [System.Management.Automation.PSCredential]
-        # Credentials for a proxy server to use for the remote call
-        ${ProxyCredential},
-    
-        [Parameter(ParameterSetName='ByName')]
-        [Parameter(ParameterSetName='ByResourceId')]
-        [Parameter(DontShow)]
-        [Microsoft.Azure.PowerShell.Cmdlets.StackHCIVm.Category('Runtime')]
-        [System.Management.Automation.SwitchParameter]
-        # Use the default credentials for the proxy
-        ${ProxyUseDefaultCredentials}
+        ${Force}
     )
 
     Write-Warning("Running this command will delete the network interface.")

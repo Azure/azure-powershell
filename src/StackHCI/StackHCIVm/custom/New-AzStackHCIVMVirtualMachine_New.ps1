@@ -90,13 +90,13 @@ function New-AzStackHciVMVirtualMachine {
       [Microsoft.Azure.PowerShell.Cmdlets.StackHciVM.Category('Body')]
       [System.Int64]
       # Maximum Dynamic Memory
-      ${DynamicMemoryMaximumMemory},
+      ${DynamicMemoryMaximumMemoryInMb},
 
       [Parameter()]
       [Microsoft.Azure.PowerShell.Cmdlets.StackHciVM.Category('Body')]
       [System.Int64]
       # Minimum Dynamic Memory
-      ${DynamicMemoryMinimumMemory},
+      ${DynamicMemoryMinimumMemoryInMb},
 
       [Parameter()]
       [Microsoft.Azure.PowerShell.Cmdlets.StackHciVM.Category('Body')]
@@ -110,7 +110,7 @@ function New-AzStackHciVMVirtualMachine {
       [Microsoft.Azure.PowerShell.Cmdlets.StackHciVM.Category('Body')]
       [System.Int64]
       # RAM in MB for the virtual machine
-      ${VmMemory},
+      ${VmMemoryInMB},
 
       [Parameter()]
       [Microsoft.Azure.PowerShell.Cmdlets.StackHciVM.Category('Body')]
@@ -159,13 +159,13 @@ function New-AzStackHciVMVirtualMachine {
       [Parameter()]
       [Microsoft.Azure.PowerShell.Cmdlets.StackHciVM.Category('Body')]
       [System.Management.Automation.SwitchParameter]
-      # Used to indicate whether Arc for Servers agent onboarding should be triggered during the virtual machine creation process.
+      # Used to indicate whether Arc for Servers agent onboarding should be triggered during the virtual machine creation process. VM Agent is provsioned by default. Please pass -ProvisionVMAgent:$false to disable. 
       ${ProvisionVMAgent},
 
       [Parameter()]
       [Microsoft.Azure.PowerShell.Cmdlets.StackHciVM.Category('Body')]
       [System.Management.Automation.SwitchParameter]
-      # Indicates whether virtual machine configuration agent should be provisioned on the virtual machine. When this property is not specified, default behavior is to set it to false.
+      # Indicates whether virtual machine configuration agent should be provisioned on the virtual machine. When this property is not specified, default behavior is to set it to true. VM Config Agent is provisioned by default. Please pass -ProvisionVMConfigAgent:$false to disable.
       ${ProvisionVMConfigAgent},
 
       [Parameter()]
@@ -305,66 +305,7 @@ function New-AzStackHciVMVirtualMachine {
       [Microsoft.Azure.PowerShell.Cmdlets.StackHciVM.Category('Body')]
       [System.String]
       # TimeZone for the virtual machine
-      ${TimeZone},
-
-      [Parameter()]
-      [Alias('AzureRMContext', 'AzureCredential')]
-      [ValidateNotNull()]
-      [Microsoft.Azure.PowerShell.Cmdlets.StackHciVM.Category('Azure')]
-      [System.Management.Automation.PSObject]
-      # The credentials, account, tenant, and subscription used for communication with Azure.
-      ${DefaultProfile},
-
-      [Parameter()]
-      [Microsoft.Azure.PowerShell.Cmdlets.StackHciVM.Category('Runtime')]
-      [System.Management.Automation.SwitchParameter]
-      # Run the command as a job
-      ${AsJob},
-
-      [Parameter(DontShow)]
-      [Microsoft.Azure.PowerShell.Cmdlets.StackHciVM.Category('Runtime')]
-      [System.Management.Automation.SwitchParameter]
-      # Wait for .NET debugger to attach
-      ${Break},
-
-      [Parameter(DontShow)]
-      [ValidateNotNull()]
-      [Microsoft.Azure.PowerShell.Cmdlets.StackHciVM.Category('Runtime')]
-      [Microsoft.Azure.PowerShell.Cmdlets.StackHciVM.Runtime.SendAsyncStep[]]
-      # SendAsync Pipeline Steps to be appended to the front of the pipeline
-      ${HttpPipelineAppend},
-
-      [Parameter(DontShow)]
-      [ValidateNotNull()]
-      [Microsoft.Azure.PowerShell.Cmdlets.StackHciVM.Category('Runtime')]
-      [Microsoft.Azure.PowerShell.Cmdlets.StackHciVM.Runtime.SendAsyncStep[]]
-      # SendAsync Pipeline Steps to be prepended to the front of the pipeline
-      ${HttpPipelinePrepend},
-
-      [Parameter()]
-      [Microsoft.Azure.PowerShell.Cmdlets.StackHciVM.Category('Runtime')]
-      [System.Management.Automation.SwitchParameter]
-      # Run the command asynchronously
-      ${NoWait},
-
-      [Parameter(DontShow)]
-      [Microsoft.Azure.PowerShell.Cmdlets.StackHciVM.Category('Runtime')]
-      [System.Uri]
-      # The URI for the proxy server to use
-      ${Proxy},
-
-      [Parameter(DontShow)]
-      [ValidateNotNull()]
-      [Microsoft.Azure.PowerShell.Cmdlets.StackHciVM.Category('Runtime')]
-      [System.Management.Automation.PSCredential]
-      # Credentials for a proxy server to use for the remote call
-      ${ProxyCredential},
-
-      [Parameter(DontShow)]
-      [Microsoft.Azure.PowerShell.Cmdlets.StackHciVM.Category('Runtime')]
-      [System.Management.Automation.SwitchParameter]
-      # Use the default credentials for the proxy
-      ${ProxyUseDefaultCredentials}
+      ${TimeZone}
   )
 
     #name 
@@ -377,10 +318,11 @@ function New-AzStackHciVMVirtualMachine {
     }
     
     $PSBoundParameters.Add("Kind", "HCI")
+    $PSBoundParameters.Add("IdentityType", "SystemAssigned")
     $null = $PSBoundParameters.Remove("DynamicMemoryMaximumMemory") 
     $null = $PSBoundParameters.Remove("DynamicMemoryMinimumMemory") 
     $null = $PSBoundParameters.Remove("DynamicMemoryTargetBuffer") 
-    $null = $PSBoundParameters.Remove("VmMemory")
+    $null = $PSBoundParameters.Remove("VmMemoryInMB")
     $null = $PSBoundParameters.Remove("VmProcessors")
     $null = $PSBoundParameters.Remove("VmSize") 
     $null = $PSBoundParameters.Remove("NicIds") 
@@ -392,6 +334,7 @@ function New-AzStackHciVMVirtualMachine {
     $null = $PSBoundParameters.Remove("ImageResourceGroup") 
     $null = $PSBoundParameters.Remove("DisablePasswordAuthentication") 
     $null = $PSBoundParameters.Remove("ProvisionVMAgent")
+    $null = $PSBoundParameters.Remove("ProvisionVMConfigAgent")
     $null = $PSBoundParameters.Remove("DataDiskIds") 
     $null = $PSBoundParameters.Remove("DataDiskNames") 
     $null = $PSBoundParameters.Remove("DataDiskResourceGroup") 
@@ -412,7 +355,18 @@ function New-AzStackHciVMVirtualMachine {
     $null = $PSBoundParameters.Remove("NoWait")
     $null = $PSBoundParameters.Remove("AsJob")
 
-    Az.StackHciVM\New-AzStackHciVMMachine @PSBoundParameters  | Out-Null
+    if ($OsType.ToString().ToLower() -eq "windows"){
+      $null = $PSBoundParameters.Remove("OsType")
+      $PSBoundParameters.Add('OSType', "Windows")
+    } elseif ($OsType.ToString().ToLower() -eq "linux"){
+      $null = $PSBoundParameters.Remove("OsType")
+      $PSBoundParameters.Add('OSType', "Linux")
+    } else {
+      Write-Error "Invalid OSType provided: $OsType. Accepted Values are 'Windows' and 'Linux'" -ErrorAction Stop
+   }
+
+
+    Az.StackHciVM.internal\New-AzStackHciVMMachine @PSBoundParameters  | Out-Null
 
     if ($PSCmdlet.ParameterSetName -eq "ByImageId"){
       if($ImageId -notmatch $marketplaceGalImageRegex -and $ImageId -notmatch $galImageRegex){
@@ -473,16 +427,16 @@ function New-AzStackHciVMVirtualMachine {
       Write-Error "Invalid VM Size provided. 'Default' is not a supported VmSize." -ErrorAction Stop
     }
     if($VmSize.ToString().ToLower() -eq "custom"){
-      if (-Not ($VmProcessors -and $VmMemory)){
+      if (-Not ($VmProcessors -and $VmMemoryInMB)){
         Write-Error "VmMemory and VmProcessors required for Custom VmSize" -ErrorAction Stop
       }
-      $PSBoundParameters.Add("VmMemory", $VmMemory)
+      $PSBoundParameters.Add("VmMemory", $VmMemoryInMB)
       $PSBoundParameters.Add("VmProcessors", $VmProcessors)
     } else {
-        if ($VmProcessors -or $VmMemory){
+        if ($VmProcessors -or $VmMemoryInMB){
           Write-Error "VmMemory and VmProcessors will be ignored. Please specify Custom for VMSize." -ErrorAction Continue
           $null = $PSBoundParameters.Remove("VmProcessors")
-          $null = $PSBoundParameters.Remove("VmMemory")
+          $null = $PSBoundParameters.Remove("VmMemoryInMB")
         }
     }
   }
@@ -528,7 +482,7 @@ function New-AzStackHciVMVirtualMachine {
       $PSBoundParameters.Add('NetworkProfileNetworkInterface', $NetworkProfileNetworkInterface)
   }
   if ($OsType.ToString().ToLower() -eq "windows"){
-    $PSBoundParameters['OsType'] = "Windows"
+    $OsType = "Windows"
     if($ComputerName){
       if ($ComputerName.length -gt 15 -or $ComputerName -match $allDigitsRegex -or $ComputerName -match $invalidCharactersComputerName){
         Write-Error "Invalid Computer Name : $ComputerName."
@@ -537,9 +491,17 @@ function New-AzStackHciVMVirtualMachine {
     if ($DisablePasswordAuthentication.IsPresent){
       $null = $PSBoundParameters.Remove('DisablePasswordAuthentication')
     }
-    $PSBoundParameters.Add("WindowConfigurationProvisionVMAgent", $ProvisionVMAgent.IsPresent)
-    $PSBoundParameters.Add("WindowConfigurationProvisionVMConfigAgent", $ProvisionVMConfigAgent.IsPresent)
+  
+    $PSBoundParameters.Add("WindowConfigurationProvisionVMAgent", $true)
+    $PSBoundParameters.Add("WindowConfigurationProvisionVMConfigAgent", $true)
+    if(-not $ProvisionVMAgent){
+      $null = $PSBoundParameters.Remove("WindowConfigurationProvisionVMAgent")
+    }
+    if (-not $ProvisionVMConfigAgent){
+      $null = $PSBoundParameters.Remove("WindowConfigurationProvisionVMConfigAgent")
+    }
     $null = $PSBoundParameters.Remove("ProvisionVMAgent")
+    $null = $PSBoundParameters.Remove("ProvisionVMConfigAgent")
 
 
     if ($SshPublicKeys){
@@ -553,7 +515,7 @@ function New-AzStackHciVMVirtualMachine {
       $PSBoundParameters.Add("WindowsConfigurationSshPublicKey", $WindowsConfigurationSshPublicKey)
     }
   } elseif ($OsType.ToString().ToLower() -eq "linux"){
-      $PSBoundParameters['OsType'] = "Linux"
+      $OsType = "Linux"
       if ($ComputerName.length -gt 64 -or $ComputerName -match $allDigitsRegex -or $ComputerName -match $invalidCharactersComputerName){
         Write-Error "Invalid Computer Name : $ComputerName."
       }
@@ -563,9 +525,17 @@ function New-AzStackHciVMVirtualMachine {
       if ($TimeZone){
         $null = $PSBoundParameters.Remove('TimeZone')
       }
-      $PSBoundParameters.Add("LinuxConfigurationProvisionVMAgent", $ProvisionVMAgent.IsPresent)
-      $PSBoundParameters.Add("LinuxConfigurationProvisionVMConfigAgent", $ProvisionVMConfigAgent.IsPresent)
+      $PSBoundParameters.Add("LinuxConfigurationProvisionVMAgent", $true)
+      $PSBoundParameters.Add("LinuxConfigurationProvisionVMConfigAgent", $true)
+      if(-not $ProvisionVMAgent){
+        $null = $PSBoundParameters.Remove("LinuxConfigurationProvisionVMAgent")
+      }
+      if (-not $ProvisionVMConfigAgent){
+        $null = $PSBoundParameters.Remove("LinuxConfigurationProvisionVMConfigAgent")
+      }
       $null = $PSBoundParameters.Remove("ProvisionVMAgent")
+      $null = $PSBoundParameters.Remove("ProvisionVMConfigAgent")
+
       
       if ($SshPublicKeys){
         $LinuxConfigurationSshPublicKey = [System.Collections.ArrayList]::new()
@@ -627,7 +597,7 @@ function New-AzStackHciVMVirtualMachine {
   $resourceUri = "/subscriptions/" + $subscriptionId + "/resourceGroups/" + $resourceGroupName + "/providers/Microsoft.HybridCompute/machines/" + $Name
   $PSBoundParameters.Add("ResourceUri", $resourceUri)
   $PSBoundParameters.Add("CustomLocationId", $CustomLocationId)
-  $PSBoundParameters.Add("OSDiskOstype", $OSType)
+  $PSBoundParameters.Add("OSDiskOstype", $OsType)
   $PSBoundParameters.Add('VmSize', $VmSize)
   if ($ComputerName){
     $PSBoundParameters.Add('ComputerName', $ComputerName)

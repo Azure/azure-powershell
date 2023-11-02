@@ -19,7 +19,7 @@ Get-AzStackHciVMLogicalNetwork [-SubscriptionId <String[]>] [-DefaultProfile <PS
 
 ### ByResourceId
 ```
-Get-AzStackHciVMLogicalNetwork [-ResourceId <String>] [-DefaultProfile <PSObject>] [<CommonParameters>]
+Get-AzStackHciVMLogicalNetwork [-ResourceId <String>] [<CommonParameters>]
 ```
 
 ### Get
@@ -77,7 +77,7 @@ The credentials, account, tenant, and subscription used for communication with A
 
 ```yaml
 Type: System.Management.Automation.PSObject
-Parameter Sets: (All)
+Parameter Sets: Get, GetViaIdentity, List, List1
 Aliases: AzureRMContext, AzureCredential
 
 Required: False

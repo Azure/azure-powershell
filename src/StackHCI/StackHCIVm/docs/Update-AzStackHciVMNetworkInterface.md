@@ -14,19 +14,18 @@ The operation to update a network interface.
 
 ### ByResourceId (Default)
 ```
-Update-AzStackHciVMNetworkInterface [-ResourceId <String>] [-Tags <Hashtable>] [-DefaultProfile <PSObject>]
- [<CommonParameters>]
+Update-AzStackHciVMNetworkInterface [-ResourceId <String>] [-Tags <Hashtable>] [<CommonParameters>]
 ```
 
 ### UpdateExpanded
 ```
 Update-AzStackHciVMNetworkInterface -Name <String> -ResourceGroupName <String> [-SubscriptionId <String>]
- [-Tag <Hashtable>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
+ [-Tags <Hashtable>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ### UpdateViaIdentityExpanded
 ```
-Update-AzStackHciVMNetworkInterface -InputObject <IStackHciVMIdentity> [-Tag <Hashtable>]
+Update-AzStackHciVMNetworkInterface -InputObject <IStackHciVMIdentity> [-Tags <Hashtable>]
  [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
@@ -70,7 +69,7 @@ The credentials, account, tenant, and subscription used for communication with A
 
 ```yaml
 Type: System.Management.Automation.PSObject
-Parameter Sets: (All)
+Parameter Sets: UpdateExpanded, UpdateViaIdentityExpanded
 Aliases: AzureRMContext, AzureCredential
 
 Required: False
@@ -172,27 +171,12 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -Tag
-Resource tags
-
-```yaml
-Type: System.Collections.Hashtable
-Parameter Sets: UpdateExpanded, UpdateViaIdentityExpanded
-Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
 ### -Tags
 Resource tags
 
 ```yaml
 Type: System.Collections.Hashtable
-Parameter Sets: ByResourceId
+Parameter Sets: (All)
 Aliases:
 
 Required: False

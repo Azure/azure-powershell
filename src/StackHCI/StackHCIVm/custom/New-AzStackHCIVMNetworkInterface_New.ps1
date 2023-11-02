@@ -90,34 +90,14 @@ param(
     [Parameter()]
     [Microsoft.Azure.PowerShell.Cmdlets.StackHciVM.Category('Body')]
     [System.String]
-    # Gateway for network interface
-    ${Gateway},
-
-    [Parameter()]
-    [Microsoft.Azure.PowerShell.Cmdlets.StackHciVM.Category('Body')]
-    [System.String]
     # PrivateIPAddress - Private IP address of the IP configuration.
     ${IpAddress},
 
     [Parameter()]
     [Microsoft.Azure.PowerShell.Cmdlets.StackHciVM.Category('Body')]
     [System.String]
-    # The private IP address allocation method. Possible values include: 'Static', 'Dynamic'
-    ${IpAllocationMethod},
-
-    [Parameter()]
-    [Microsoft.Azure.PowerShell.Cmdlets.StackHciVM.Category('Body')]
-    [System.String]
     # MacAddress - The MAC address of the network interface.
     ${MacAddress},
-
-       
-    [Parameter()]
-    [Microsoft.Azure.PowerShell.Cmdlets.StackHciVM.Category('Body')]
-    [System.Int32]
-    # Prefix Length for network interface
-    ${PrefixLength},
-
     
     [Parameter()]
     [Microsoft.Azure.PowerShell.Cmdlets.StackHciVM.Category('Body')]
@@ -148,66 +128,8 @@ param(
     [Microsoft.Azure.PowerShell.Cmdlets.StackHciVM.Runtime.Info(PossibleTypes=([Microsoft.Azure.PowerShell.Cmdlets.StackHciVM.Models.Api30.ITrackedResourceTags]))]
     [System.Collections.Hashtable]
     # Resource tags.
-    ${Tags},
+    ${Tags}
 
-    [Parameter()]
-    [Alias('AzureRMContext', 'AzureCredential')]
-    [ValidateNotNull()]
-    [Microsoft.Azure.PowerShell.Cmdlets.StackHciVM.Category('Azure')]
-    [System.Management.Automation.PSObject]
-    # The credentials, account, tenant, and subscription used for communication with Azure.
-    ${DefaultProfile},
-
-    [Parameter()]
-    [Microsoft.Azure.PowerShell.Cmdlets.StackHciVM.Category('Runtime')]
-    [System.Management.Automation.SwitchParameter]
-    # Run the command as a job
-    ${AsJob},
-
-    [Parameter(DontShow)]
-    [Microsoft.Azure.PowerShell.Cmdlets.StackHciVM.Category('Runtime')]
-    [System.Management.Automation.SwitchParameter]
-    # Wait for .NET debugger to attach
-    ${Break},
-
-    [Parameter(DontShow)]
-    [ValidateNotNull()]
-    [Microsoft.Azure.PowerShell.Cmdlets.StackHciVM.Category('Runtime')]
-    [Microsoft.Azure.PowerShell.Cmdlets.StackHciVM.Runtime.SendAsyncStep[]]
-    # SendAsync Pipeline Steps to be appended to the front of the pipeline
-    ${HttpPipelineAppend},
-
-    [Parameter(DontShow)]
-    [ValidateNotNull()]
-    [Microsoft.Azure.PowerShell.Cmdlets.StackHciVM.Category('Runtime')]
-    [Microsoft.Azure.PowerShell.Cmdlets.StackHciVM.Runtime.SendAsyncStep[]]
-    # SendAsync Pipeline Steps to be prepended to the front of the pipeline
-    ${HttpPipelinePrepend},
-
-    [Parameter()]
-    [Microsoft.Azure.PowerShell.Cmdlets.StackHciVM.Category('Runtime')]
-    [System.Management.Automation.SwitchParameter]
-    # Run the command asynchronously
-    ${NoWait},
-
-    [Parameter(DontShow)]
-    [Microsoft.Azure.PowerShell.Cmdlets.StackHciVM.Category('Runtime')]
-    [System.Uri]
-    # The URI for the proxy server to use
-    ${Proxy},
-
-    [Parameter(DontShow)]
-    [ValidateNotNull()]
-    [Microsoft.Azure.PowerShell.Cmdlets.StackHciVM.Category('Runtime')]
-    [System.Management.Automation.PSCredential]
-    # Credentials for a proxy server to use for the remote call
-    ${ProxyCredential},
-
-    [Parameter(DontShow)]
-    [Microsoft.Azure.PowerShell.Cmdlets.StackHciVM.Category('Runtime')]
-    [System.Management.Automation.SwitchParameter]
-    # Use the default credentials for the proxy
-    ${ProxyUseDefaultCredentials}
 )
 
   if ($Name -notmatch $nicNameRegex){
@@ -242,6 +164,7 @@ param(
       }
       $SubnetId = "/subscriptions/$SubscriptionId/resourceGroups/$rg/providers/Microsoft.AzureStackHCI/logicalNetworks/$SubnetName"
       $null = $PSBoundParameters.Remove("SubnetName")
+      $null = $PSBoundParameters.Remove("SubnetResourceGroup")
     }
 
     if (-Not $SubnetId){
@@ -260,52 +183,17 @@ param(
       $IpConfig["SubnetId"] = $SubnetId
     }
 
-    if ($IpAllocationMethod){
-          if ($IpAllocationMethod.ToLower() -ne "dynamic" -and $IpAllocationMethod.ToLower() -ne "static"){
-            Write-Error "Invalid Ip Allocation method provided: $IpAllocationMethod. Accepted values are 'Dynamic' or 'Static'" -ErrorAction Stop
-          }
-          $IpAllocationMethod = $IpAllocationMethod.ToLower()
-          
-          if ($IpAllocationMethod -eq "static"){
-            $IpConfig["PrivateIPAllocationMethod"] = 'Static'
-
-            if (-Not $IpAddress){
-              Write-Error "IpAddress is required for Static confguration." -ErrorAction Stop
-            } else {
-                if ($IpAddress -notmatch $ipv4Regex){
-                  Write-Error "Invalid Ip Address provided : $IpAddress" -ErrorAction Stop
-                } 
-                $IpConfig["IPAddress"] = $IpAddress      
-            }
-
-            if (-Not $Gateway){
-              Write-Error "Gateway is required for Static confguration." -ErrorAction Stop
-            } else {
-                if ($Gateway-notmatch $ipv4Regex){
-                  Write-Error "Invalid Gateway Address : $Gateway" -ErrorAction Stop
-                }
-                $IpConfig["Gateway"] = $Gateway
-            }  
-
-            if ($PrefixLength){
-              if ($PrefixLength -gt 32 -and $PrefixLength -lt 0){
-                Write-Error "Invalid Prefix Length : $PrefixLength" -ErrorAction Stop
-              }
-              $IpConfig["PrefixLength"] = [System.String]$PrefixLength
-            }
-
-
-          }else {
-            $IpConfig["IPAllocationMethod"] = 'Dynamic'
-          }
-
+   
+    if ($IpAddress){
+      if ($IpAddress -notmatch $ipv4Regex){
+          Write-Error "Invalid Ip Address provided : $IpAddress" -ErrorAction Stop
+      } 
+      $IpConfig["IPAddress"] = $IpAddress   
     }
+    
 
     $null = $PSBoundParameters.Remove("SubnetId")
-    $null = $PSBoundParameters.Remove("IpAllocationMethod")
     $null = $PSBoundParameters.Remove("IpAddress")
-    $null = $PSBoundParameters.Remove("Gateway")
-    $null = $PSBoundParameters.Remove("PrefixLength")
 
     $PSBoundParameters.Add("IPConfiguration", $IpConfig)
 

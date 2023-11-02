@@ -68,18 +68,7 @@ function Get-AzStackHciVMImage{
     [Microsoft.Azure.PowerShell.Cmdlets.StackHciVM.Category('Path')]
     [System.String]
     # The ARM Resource Id of the Image 
-    ${ResourceId},
-
-    
-    [Parameter(ParameterSetName='ByName')]
-    [Parameter(ParameterSetName='ByResourceGroup')]
-    [Parameter(ParameterSetName='ByResourceId')]
-    [Alias('AzureRMContext', 'AzureCredential')]
-    [ValidateNotNull()]
-    [Microsoft.Azure.PowerShell.Cmdlets.StackHciVM.Category('Azure')]
-    [System.Management.Automation.PSObject]
-    # The credentials, account, tenant, and subscription used for communication with Azure.
-    ${DefaultProfile}
+    ${ResourceId}
 )
 
     process {

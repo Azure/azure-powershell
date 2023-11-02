@@ -15,10 +15,9 @@ Please note some properties can be set only during network interface creation.
 
 ```
 New-AzStackHciVMNetworkInterface -Name <String> -ResourceGroupName <String> -CustomLocationId <String>
- -Location <String> [-SubscriptionId <String>] [-DnsServers <String[]>] [-Gateway <String>]
- [-IpAddress <String>] [-IpAllocationMethod <String>] [-IpConfigurations <Hashtable[]>] [-MacAddress <String>]
- [-PrefixLength <Int32>] [-SubnetId <String>] [-SubnetName <String>] [-SubnetResourceGroup <String>]
- [-Tags <Hashtable>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
+ -Location <String> [-SubscriptionId <String>] [-DnsServers <String[]>] [-IpAddress <String>]
+ [-IpConfigurations <Hashtable[]>] [-MacAddress <String>] [-SubnetId <String>] [-SubnetName <String>]
+ [-SubnetResourceGroup <String>] [-Tags <Hashtable>] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -41,21 +40,6 @@ This command creates a network interface in the specified resource group.
 
 ## PARAMETERS
 
-### -AsJob
-Run the command as a job
-
-```yaml
-Type: System.Management.Automation.SwitchParameter
-Parameter Sets: (All)
-Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
 ### -CustomLocationId
 The name of the extended location.
 
@@ -65,21 +49,6 @@ Parameter Sets: (All)
 Aliases:
 
 Required: True
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -DefaultProfile
-The credentials, account, tenant, and subscription used for communication with Azure.
-
-```yaml
-Type: System.Management.Automation.PSObject
-Parameter Sets: (All)
-Aliases: AzureRMContext, AzureCredential
-
-Required: False
 Position: Named
 Default value: None
 Accept pipeline input: False
@@ -101,39 +70,8 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -Gateway
-Gateway for network interface
-
-```yaml
-Type: System.String
-Parameter Sets: (All)
-Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
 ### -IpAddress
 PrivateIPAddress - Private IP address of the IP configuration.
-
-```yaml
-Type: System.String
-Parameter Sets: (All)
-Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -IpAllocationMethod
-The private IP address allocation method.
-Possible values include: 'Static', 'Dynamic'
 
 ```yaml
 Type: System.String
@@ -201,36 +139,6 @@ Parameter Sets: (All)
 Aliases: NetworkInterfaceName
 
 Required: True
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -NoWait
-Run the command asynchronously
-
-```yaml
-Type: System.Management.Automation.SwitchParameter
-Parameter Sets: (All)
-Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -PrefixLength
-Prefix Length for network interface
-
-```yaml
-Type: System.Int32
-Parameter Sets: (All)
-Aliases:
-
-Required: False
 Position: Named
 Default value: None
 Accept pipeline input: False

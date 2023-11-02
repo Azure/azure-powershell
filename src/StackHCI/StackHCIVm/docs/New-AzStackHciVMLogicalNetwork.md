@@ -18,8 +18,7 @@ New-AzStackHciVMLogicalNetwork -Name <String> -ResourceGroupName <String> -Custo
  -Location <String> [-SubscriptionId <String>] [-AddressPrefixes <String[]>] [-DnsServers <String[]>]
  [-IpAllocationMethod <String>] [-IpPoolEnd <String>] [-IpPools <Hashtable[]>] [-IpPoolStart <String>]
  [-IpPoolType <String>] [-Routes <Hashtable[]>] [-SubnetName <String>] [-Subnets <Hashtable[]>]
- [-Tags <Hashtable>] [-Vlan <Int32>] [-VMSwitchName <String>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
- [-Confirm] [-WhatIf] [<CommonParameters>]
+ [-Tags <Hashtable>] [-Vlan <Int32>] [-VMSwitchName <String>] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -57,21 +56,6 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -AsJob
-Run the command as a job
-
-```yaml
-Type: System.Management.Automation.SwitchParameter
-Parameter Sets: (All)
-Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
 ### -CustomLocationId
 The name of the extended location.
 
@@ -81,21 +65,6 @@ Parameter Sets: (All)
 Aliases:
 
 Required: True
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -DefaultProfile
-The credentials, account, tenant, and subscription used for communication with Azure.
-
-```yaml
-Type: System.Management.Automation.PSObject
-Parameter Sets: (All)
-Aliases: AzureRMContext, AzureCredential
-
-Required: False
 Position: Named
 Default value: None
 Accept pipeline input: False
@@ -223,21 +192,6 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -NoWait
-Run the command asynchronously
-
-```yaml
-Type: System.Management.Automation.SwitchParameter
-Parameter Sets: (All)
-Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
 ### -ResourceGroupName
 The name of the resource group.
 The name is case insensitive.
@@ -331,7 +285,6 @@ Accept wildcard characters: False
 
 ### -Vlan
 Vlan to use for the subnet
-\>
 
 ```yaml
 Type: System.Int32

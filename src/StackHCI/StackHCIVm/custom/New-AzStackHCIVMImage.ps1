@@ -1,3 +1,18 @@
+
+# ----------------------------------------------------------------------------------
+#
+# Copyright Microsoft Corporation
+# Licensed under the Apache License, Version 2.0 (the "License");
+# you may not use this file except in compliance with the License.
+# You may obtain a copy of the License at
+# http://www.apache.org/licenses/LICENSE-2.0
+# Unless required by applicable law or agreed to in writing, software
+# distributed under the License is distributed on an "AS IS" BASIS,
+# WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+# See the License for the specific language governing permissions and
+# limitations under the License.
+# ----------------------------------------------------------------------------------
+
 <#
 .Synopsis
 The operation to create an image.
@@ -6,26 +21,29 @@ Please note some properties can be set only during  image creation.
 The operation to create an image.
 Please note some properties can be set only during image creation.
 .Example
-PS C:\> {{ New-AzStackHciVMImage -Name "test"  -ResourceGroupName "test-rg" -CustomLocationId "/subscriptions/{subscriptionID}/resourceGroups/{resourceGroupName}/providers/Microsoft.ExtendedLocation/customLocations/{customLocationName}" -Location "eastus" -ImagePath "C:\testfolder\testimage.vhdx" }}
+PS C:\> {{ Add code here }}
 
+{{ Add output here }}
 .Example
-PS C:\> {{ New-AzStackHciVMImage -Name "testMarketplaceImage" -ResourceGroupName "test-rg" -CustomLocationId "/subscriptions/{subscriptionID}/resourcegroups/{resourceGroupName}/providers/microsoft.extendedlocation/customlocations/{customLocationName}" -Offer "windowsserver" -Publisher "MicrosoftWindowsServer" -Sku "2022-Datacenter" -Version "latest" -Location "eastus" }}
+PS C:\> {{ Add code here }}
+
+{{ Add output here }}
 
 
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.StackHCIVm.Models.Api20221215Preview.IGalleryImages
-Microsoft.Azure.PowerShell.Cmdlets.StackHCIVm.Models.Api20221215Preview.IMarketplaceGalleryImages
+Microsoft.Azure.PowerShell.Cmdlets.StackHCIVm.Models.Api20230901Preview.IGalleryImages
+Microsoft.Azure.PowerShell.Cmdlets.StackHCIVm.Models.Api20230901Preview.IMarketplaceGalleryImages
+.Notes
+COMPLEX PARAMETER PROPERTIES
+
 .Link
 https://learn.microsoft.com/powershell/module/az.stackhcivm/new-azstackhcivmimage
 #>
-
-
 function New-AzStackHciVMImage{
-    [OutputType([Microsoft.Azure.PowerShell.Cmdlets.StackHciVM.Models.Api20221215Preview.IMarketplaceGalleryImages],ParameterSetName='Marketplace' )]
-    [OutputType([Microsoft.Azure.PowerShell.Cmdlets.StackHciVM.Models.Api20221215Preview.IMarketplaceGalleryImages],ParameterSetName='MarketplaceURN' )]
+    [OutputType([Microsoft.Azure.PowerShell.Cmdlets.StackHciVM.Models.Api20230901Preview.IMarketplaceGalleryImages],ParameterSetName='Marketplace' )]
+    [OutputType([Microsoft.Azure.PowerShell.Cmdlets.StackHciVM.Models.Api20230901Preview.IMarketplaceGalleryImages],ParameterSetName='MarketplaceURN' )]
     [OutputType([Microsoft.Azure.PowerShell.Cmdlets.StackHciVM.Models.Api20230901Preview.IGalleryImages],ParameterSetName='GalleryImage' )]
-    [CmdletBinding(PositionalBinding=$false)]
-   
+    [CmdletBinding(PositionalBinding=$false, SupportsShouldProcess, ConfirmImpact='Medium')]
     param(
 
     [Parameter(ParameterSetName='Marketplace', Mandatory)]
@@ -43,7 +61,7 @@ function New-AzStackHciVMImage{
     [Parameter(ParameterSetName='MarketplaceURN', Mandatory)]
     [Microsoft.Azure.PowerShell.Cmdlets.StackHciVM.Category('Path')]
     [System.String]
-    # The name of the Resource Group.
+    # The name of the resource group.
     # The name is case insensitive.
     ${ResourceGroupName},
 
@@ -89,9 +107,9 @@ function New-AzStackHciVMImage{
     # This parameter is required for non marketplace images. 
     ${ImagePath},
 
-    [Parameter(ParameterSetName='GalleryImage')]
-    [Parameter(ParameterSetName='Marketplace')]
-    [Parameter(ParameterSetName='MarketplaceURN')]
+    [Parameter(ParameterSetName='GalleryImage', Mandatory)]
+    [Parameter(ParameterSetName='Marketplace', Mandatory)]
+    [Parameter(ParameterSetName='MarketplaceURN', Mandatory)]
     [ArgumentCompleter([Microsoft.Azure.PowerShell.Cmdlets.StackHciVM.Support.OperatingSystemTypes])]
     [Microsoft.Azure.PowerShell.Cmdlets.StackHciVM.Category('Body')]
     [Microsoft.Azure.PowerShell.Cmdlets.StackHciVM.Support.OperatingSystemTypes]
@@ -159,17 +177,7 @@ function New-AzStackHciVMImage{
     [Microsoft.Azure.PowerShell.Cmdlets.StackHciVM.Category('Body')]
     [System.String]
     # The version of the marketplace gallery image.
-    ${Version},
-
-    [Parameter(ParameterSetName='GalleryImage')]
-    [Parameter(ParameterSetName='Marketplace')]
-    [Parameter(ParameterSetName='MarketplaceURN')]
-    [Alias('AzureRMContext', 'AzureCredential')]
-    [ValidateNotNull()]
-    [Microsoft.Azure.PowerShell.Cmdlets.StackHciVM.Category('Azure')]
-    [System.Management.Automation.PSObject]
-    # The credentials, account, tenant, and subscription used for communication with Azure.
-    ${DefaultProfile}
+    ${Version}
 
     )
 
@@ -261,9 +269,7 @@ function New-AzStackHciVMImage{
 
         if ($PSCmdlet.ParameterSetName -eq "GalleryImage")
         {
-            if (-not (Test-Path $ImagePath -IsValid)){
-                Write-Error "Invalid ImagePath provided: $ImagePath. Please specify a valid path." -ErrorAction Stop
-            } 
+           
             return Az.StackHciVM.internal\New-AzStackHciVMGalleryImage @PSBoundParameters
         }
 

@@ -62,15 +62,6 @@ function Remove-AzStackHciVMImage{
     # The ARM Resource ID of the image.
     ${ResourceId},
 
-    [Parameter(ParameterSetName='ByName')]
-    [Parameter(ParameterSetName='ByResourceId')]
-    [Alias('AzureRMContext', 'AzureCredential')]
-    [ValidateNotNull()]
-    [Microsoft.Azure.PowerShell.Cmdlets.StackHciVM.Category('Azure')]
-    [System.Management.Automation.PSObject]
-    # The credentials, account, tenant, and subscription used for communication with Azure.
-    ${DefaultProfile},
-
     [Parameter(HelpMessage='Forces the cmdlet to remove the network interface without prompting for confirmation.')]
     [System.Management.Automation.SwitchParameter]
     ${Force}

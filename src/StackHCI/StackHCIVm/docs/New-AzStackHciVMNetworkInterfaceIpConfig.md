@@ -13,8 +13,7 @@ schema: 2.0.0
 ## SYNTAX
 
 ```
-New-AzStackHciVMNetworkInterfaceIpConfig [-SubnetId] <String> [[-Gateway] <String>] [[-IpAddress] <String>]
- [[-IpAllocationMethod] <String>] [[-PrefixLength] <Int32>] [<CommonParameters>]
+New-AzStackHciVMNetworkInterfaceIpConfig [-SubnetId] <String> [[-IpAddress] <String>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -42,7 +41,7 @@ PS C:\> {{ Add code here }}
 
 ## PARAMETERS
 
-### -Gateway
+### -IpAddress
 
 
 ```yaml
@@ -57,51 +56,6 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -IpAddress
-
-
-```yaml
-Type: System.String
-Parameter Sets: (All)
-Aliases:
-
-Required: False
-Position: 1
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -IpAllocationMethod
-
-
-```yaml
-Type: System.String
-Parameter Sets: (All)
-Aliases:
-
-Required: False
-Position: 2
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -PrefixLength
-
-
-```yaml
-Type: System.Int32
-Parameter Sets: (All)
-Aliases:
-
-Required: False
-Position: 3
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
 ### -SubnetId
 
 
@@ -111,7 +65,7 @@ Parameter Sets: (All)
 Aliases:
 
 Required: True
-Position: 4
+Position: 1
 Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False

@@ -14,14 +14,14 @@ The operation to update an image.
 
 ### ByResourceId (Default)
 ```
-Update-AzStackHciVMImage -ResourceId <String> [-SubscriptionId <String[]>] [-Tags <Hashtable>]
- [-DefaultProfile <PSObject>] [<CommonParameters>]
+Update-AzStackHciVMImage -ResourceId <String> [-SubscriptionId <String>] [-Tags <Hashtable>]
+ [<CommonParameters>]
 ```
 
 ### ByName
 ```
-Update-AzStackHciVMImage -Name <String> -ResourceGroupName <String> [-SubscriptionId <String[]>]
- [-Tags <Hashtable>] [-DefaultProfile <PSObject>] [<CommonParameters>]
+Update-AzStackHciVMImage -Name <String> -ResourceGroupName <String> [-SubscriptionId <String>]
+ [-Tags <Hashtable>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -44,21 +44,6 @@ testImage      test-rg
 This command updates an exisiting image in the specified resource group.
 
 ## PARAMETERS
-
-### -DefaultProfile
-The credentials, account, tenant, and subscription used for communication with Azure.
-
-```yaml
-Type: System.Management.Automation.PSObject
-Parameter Sets: (All)
-Aliases: AzureRMContext, AzureCredential
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
 
 ### -Name
 Name of the gallery image
@@ -110,7 +95,7 @@ Accept wildcard characters: False
 The ID of the target subscription.
 
 ```yaml
-Type: System.String[]
+Type: System.String
 Parameter Sets: (All)
 Aliases:
 
@@ -143,9 +128,9 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.StackHCIVm.Models.Api20221215Preview.IMarketplaceGalleryImages
-
 ### Microsoft.Azure.PowerShell.Cmdlets.StackHCIVm.Models.Api20230901Preview.IGalleryImages
+
+### Microsoft.Azure.PowerShell.Cmdlets.StackHCIVm.Models.Api20230901Preview.IMarketplaceGalleryImages
 
 ## NOTES
 

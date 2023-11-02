@@ -20,19 +20,17 @@ Get-AzStackHciVMImage [-SubscriptionId <String[]>] [<CommonParameters>]
 ### ByName
 ```
 Get-AzStackHciVMImage -Name <String> -ResourceGroupName <String> [-SubscriptionId <String[]>]
- [-DefaultProfile <PSObject>] [<CommonParameters>]
+ [<CommonParameters>]
 ```
 
 ### ByResourceGroup
 ```
-Get-AzStackHciVMImage -ResourceGroupName <String> [-SubscriptionId <String[]>] [-DefaultProfile <PSObject>]
- [<CommonParameters>]
+Get-AzStackHciVMImage -ResourceGroupName <String> [-SubscriptionId <String[]>] [<CommonParameters>]
 ```
 
 ### ByResourceId
 ```
-Get-AzStackHciVMImage -ResourceId <String> [-SubscriptionId <String[]>] [-DefaultProfile <PSObject>]
- [<CommonParameters>]
+Get-AzStackHciVMImage -ResourceId <String> [-SubscriptionId <String[]>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -66,21 +64,6 @@ testImage       test-rg
 This command lists all images in the specified resource group.
 
 ## PARAMETERS
-
-### -DefaultProfile
-The credentials, account, tenant, and subscription used for communication with Azure.
-
-```yaml
-Type: System.Management.Automation.PSObject
-Parameter Sets: ByName, ByResourceGroup, ByResourceId
-Aliases: AzureRMContext, AzureCredential
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
 
 ### -Name
 Name of the image

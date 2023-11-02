@@ -27,8 +27,6 @@ PS C:\> {{ Add code here }}
 
 {{ Add output here }}
 
-.Inputs
-Microsoft.Azure.PowerShell.Cmdlets.StackHCIVm.Models.IStackHciVMIdentity
 .Outputs
 Microsoft.Azure.PowerShell.Cmdlets.StackHCIVm.Models.Api20230901Preview.ILogicalNetworks
 
@@ -52,23 +50,18 @@ param(
     [Microsoft.Azure.PowerShell.Cmdlets.StackHciVM.Runtime.Info(PossibleTypes=([Microsoft.Azure.PowerShell.Cmdlets.StackHciVM.Models.Api20230901Preview.ILogicalNetworksUpdateRequestTags]))]
     [System.Collections.Hashtable]
     # Resource tags
-    ${Tags},
+    ${Tags}
 
-    [Alias('AzureRMContext', 'AzureCredential')]
-    [ValidateNotNull()]
-    [Microsoft.Azure.PowerShell.Cmdlets.StackHciVM.Category('Azure')]
-    [System.Management.Automation.PSObject]
-    # The credentials, account, tenant, and subscription used for communication with Azure.
-    ${DefaultProfile}
+
 
 )
   process {
     
-       if ($ResourceId -match $vnetRegex){
+       if ($ResourceId -match $lnetRegex){
 
         $subscriptionId = $($Matches['subscriptionId'])
         $resourceGroupName = $($Matches['resourceGroupName'])
-        $resourceName = $($Matches['virtualNetworkName'])
+        $resourceName = $($Matches['logicalNetworkName'])
         $null = $PSBoundParameters.Remove("ResourceId")
         $PSBoundParameters.Add("Name", $resourceName)
         $PSBoundParameters.Add("ResourceGroupName", $resourceGroupName)
