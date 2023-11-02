@@ -21,7 +21,7 @@ Describe 'Get-AzWvdAppAttachPackage' {
             $apps = @( [Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.Api20231004preview.IMsixPackageApplications]@{appId = 'MsixTest_Application_Id'; description = 'testing from ps'; appUserModelID = 'MsixTest_Application_ModelID'; friendlyName = 'some name'; iconImageName = 'Apptile'; rawIcon = $data1; rawPng = $data1 })
             $deps = @( [Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.Api20231004preview.IMsixPackageDependencies]@{dependencyName = 'MsixTest_Dependency_Name'; publisher = 'MsixTest_Dependency_Publisher'; minVersion = '0.0.0.42' })   
 
-            $package_created_1 = New-AzWvdAppAttachPackage -Name "TestPackage" `
+            $package_created_1 = New-AzWvdAppAttachPackage -Name "TestPackageRG" `
                 -ImagePackageFullName 'AATest_FullName_UnitTest' `
                 -ResourceGroupName $env.ResourceGroup `
                 -SubscriptionId $env.SubscriptionId `
@@ -38,7 +38,7 @@ Describe 'Get-AzWvdAppAttachPackage' {
                 -ImagePackageRelativePath 'MsixUnitTest_RelativePackageRoot' `
                 -ImageVersion '0.0.18838.722'
 
-            $package_created_2 = New-AzWvdAppAttachPackage -Name "TestPackage2" `
+            $package_created_2 = New-AzWvdAppAttachPackage -Name "TestPackageRG2" `
                 -ImagePackageFullName 'AATest_FullName_UnitTest' `
                 -ResourceGroupName $env.ResourceGroup `
                 -SubscriptionId $env.SubscriptionId `
@@ -59,7 +59,7 @@ Describe 'Get-AzWvdAppAttachPackage' {
                 -ResourceGroupName $env.ResourceGroup `
                 -SubscriptionId $env.SubscriptionId  
 
-            $package = $packages | Where-Object { $_.Name -eq 'TestPackage' }    
+            $package = $packages | Where-Object { $_.Name -eq 'TestPackageRG' }    
             $package.ImagePackageFamilyName | Should -Be  'MsixUnitTest_FamilyName'
             $package.ImagePath | Should -Be 'C:\\msix\SingleMsix.vhd'
             ($package.ImagePackageApplication | ConvertTo-Json) | Should -Be ($apps | ConvertTo-Json)
@@ -67,7 +67,7 @@ Describe 'Get-AzWvdAppAttachPackage' {
             $package.ImagePackageName | Should -Be 'MsixUnitTest_Name'
             $package.ImagePackageRelativePath | Should -Be 'MsixUnitTest_RelativePackageRoot'
     
-            $package = $packages | Where-Object { $_.Name -eq 'TestPackage2' }   
+            $package = $packages | Where-Object { $_.Name -eq 'TestPackageRG2' }   
             $package.ImagePackageFamilyName | Should -Be  'MsixUnitTest_FamilyName2'
             $package.ImagePath | Should -Be 'C:\\msix\SingleMsix.vhd'
             ($package.ImagePackageApplication | ConvertTo-Json) | Should -Be ($apps | ConvertTo-Json)
@@ -77,11 +77,11 @@ Describe 'Get-AzWvdAppAttachPackage' {
 
         }
         finally {
-            $package = Remove-AzWvdAppAttachPackage -Name 'TestPackage' `
+            $package = Remove-AzWvdAppAttachPackage -Name 'TestPackageRG' `
                 -ResourceGroupName $env.ResourceGroup `
                 -SubscriptionId $env.SubscriptionId 
 
-            $package = Remove-AzWvdAppAttachPackage -Name 'TestPackage2' `
+            $package = Remove-AzWvdAppAttachPackage -Name 'TestPackageRG2' `
                 -ResourceGroupName $env.ResourceGroup `
                 -SubscriptionId $env.SubscriptionId 
         }
@@ -96,7 +96,7 @@ Describe 'Get-AzWvdAppAttachPackage' {
             $apps = @( [Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.Api20231004preview.IMsixPackageApplications]@{appId = 'MsixTest_Application_Id'; description = 'testing from ps'; appUserModelID = 'MsixTest_Application_ModelID'; friendlyName = 'some name'; iconImageName = 'Apptile'; rawIcon = $data1; rawPng = $data1 })
             $deps = @( [Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.Api20231004preview.IMsixPackageDependencies]@{dependencyName = 'MsixTest_Dependency_Name'; publisher = 'MsixTest_Dependency_Publisher'; minVersion = '0.0.0.42' })   
 
-            $package_created_1 = New-AzWvdAppAttachPackage -Name "TestPackage" `
+            $package_created_1 = New-AzWvdAppAttachPackage -Name "TestPackageSub" `
                 -ImagePackageFullName 'AATest_FullName_UnitTest' `
                 -ResourceGroupName $env.ResourceGroup `
                 -SubscriptionId $env.SubscriptionId `
@@ -113,7 +113,7 @@ Describe 'Get-AzWvdAppAttachPackage' {
                 -ImagePackageRelativePath 'MsixUnitTest_RelativePackageRoot' `
                 -ImageVersion '0.0.18838.722'
 
-            $package_created_2 = New-AzWvdAppAttachPackage -Name "TestPackage2" `
+            $package_created_2 = New-AzWvdAppAttachPackage -Name "TestPackageSub2" `
                 -ImagePackageFullName 'AATest_FullName_UnitTest' `
                 -ResourceGroupName $env.ResourceGroup `
                 -SubscriptionId $env.SubscriptionId `
@@ -133,7 +133,7 @@ Describe 'Get-AzWvdAppAttachPackage' {
             $packages = Get-AzWvdAppAttachPackage `
                 -SubscriptionId $env.SubscriptionId  
             
-            $package = $packages | Where-Object { $_.Name -eq 'TestPackage' }    
+            $package = $packages | Where-Object { $_.Name -eq 'TestPackageSub' }    
             $package.ImagePackageFamilyName | Should -Be  'MsixUnitTest_FamilyName'
             $package.ImagePath | Should -Be 'C:\\msix\SingleMsix.vhd'
             ($package.ImagePackageApplication | ConvertTo-Json) | Should -Be ($apps | ConvertTo-Json)
@@ -141,7 +141,7 @@ Describe 'Get-AzWvdAppAttachPackage' {
             $package.ImagePackageName | Should -Be 'MsixUnitTest_Name'
             $package.ImagePackageRelativePath | Should -Be 'MsixUnitTest_RelativePackageRoot'
 
-            $package = $packages | Where-Object { $_.Name -eq 'TestPackage2' }   
+            $package = $packages | Where-Object { $_.Name -eq 'TestPackageSub2' }   
             $package.ImagePackageFamilyName | Should -Be  'MsixUnitTest_FamilyName2'
             $package.ImagePath | Should -Be 'C:\\msix\SingleMsix.vhd'
             ($package.ImagePackageApplication | ConvertTo-Json) | Should -Be ($apps | ConvertTo-Json)
@@ -151,11 +151,11 @@ Describe 'Get-AzWvdAppAttachPackage' {
 
         }
         finally {
-            $package = Remove-AzWvdAppAttachPackage -Name 'TestPackage' `
+            $package = Remove-AzWvdAppAttachPackage -Name 'TestPackageSub' `
                 -ResourceGroupName $env.ResourceGroup `
                 -SubscriptionId $env.SubscriptionId 
 
-            $package = Remove-AzWvdAppAttachPackage -Name 'TestPackage2' `
+            $package = Remove-AzWvdAppAttachPackage -Name 'TestPackageSub2' `
                 -ResourceGroupName $env.ResourceGroup `
                 -SubscriptionId $env.SubscriptionId 
         }

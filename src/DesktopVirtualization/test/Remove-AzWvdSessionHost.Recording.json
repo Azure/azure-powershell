@@ -6,8 +6,8 @@
       "Content": null,
       "isContentBase64": false,
       "Headers": {
-        "x-ms-unique-id": [ "328" ],
-        "x-ms-client-request-id": [ "55ce93c5-d638-43a2-b433-7ebcd09378e2" ],
+        "x-ms-unique-id": [ "330" ],
+        "x-ms-client-request-id": [ "a63c2cc0-b175-4029-bbc7-7c2232996383" ],
         "CommandName": [ "Get-AzWvdSessionHost" ],
         "FullCommandName": [ "Get-AzWvdSessionHost_Get" ],
         "ParameterSetName": [ "__AllParameterSets" ],
@@ -26,25 +26,25 @@
         "X-Rate-Limit-Remaining": [ "9223372036854775807" ],
         "X-Rate-Limit-Reset": [ "0" ],
         "x-ms-opsarmpath64": [ "L3N1YnNjcmlwdGlvbnMvZGJlZGVmMjUtMTg0Yy00MzBmLWIzODMtMGVlYjg3YzMyMDVkL3Jlc291cmNlR3JvdXBzL2FsZWNiVXNlclNlc3Npb25UZXN0cy9wcm92aWRlcnMvTWljcm9zb2Z0LkRlc2t0b3BWaXJ0dWFsaXphdGlvbi9ob3N0UG9vbHMvYWxlY2JVc2VyU2Vzc2lvbkhQL3Nlc3Npb25Ib3N0cy9wd3NoRGVsZXRlLTE=" ],
-        "x-ms-lamport-ts": [ "134338607" ],
-        "x-ms-correlation-id": [ "ce51a36f-d8eb-4c98-bc48-1893cd13d167" ],
-        "x-ms-request-id": [ "55ce93c5-d638-43a2-b433-7ebcd09378e2" ],
+        "x-ms-lamport-ts": [ "134340776" ],
+        "x-ms-correlation-id": [ "74f68f05-50ef-4cc4-a62e-ca0848832708" ],
+        "x-ms-request-id": [ "a63c2cc0-b175-4029-bbc7-7c2232996383" ],
         "X-Content-Type-Options": [ "nosniff" ],
-        "Set-Cookie": [ "ARRAffinity=a31eb62e8fa5fccc488f1b764e015b7c6918a5a68c6d31b38f885e3c06338b76;Path=/;HttpOnly;Secure;Domain=rdarmprovider-g-us-r0.wvdselfhost.microsoft.com", "ARRAffinitySameSite=a31eb62e8fa5fccc488f1b764e015b7c6918a5a68c6d31b38f885e3c06338b76;Path=/;HttpOnly;SameSite=None;Secure;Domain=rdarmprovider-g-us-r0.wvdselfhost.microsoft.com" ],
+        "Set-Cookie": [ "ARRAffinity=7bf5a65c9ab6652b7e960fdced88dd5501d933c0715fe792714d5d958b2e56fd;Path=/;HttpOnly;Secure;Domain=rdarmprovider-g-us-r0.wvdselfhost.microsoft.com", "ARRAffinitySameSite=7bf5a65c9ab6652b7e960fdced88dd5501d933c0715fe792714d5d958b2e56fd;Path=/;HttpOnly;SameSite=None;Secure;Domain=rdarmprovider-g-us-r0.wvdselfhost.microsoft.com" ],
         "Server": [ "Microsoft-IIS/10.0" ],
         "X-Powered-By": [ "ASP.NET" ],
-        "x-ms-ratelimit-remaining-subscription-reads": [ "11921" ],
-        "x-ms-correlation-request-id": [ "23442a10-12af-4054-8ff6-77e992e92254" ],
-        "x-ms-routing-request-id": [ "WESTCENTRALUS:20231102T215357Z:23442a10-12af-4054-8ff6-77e992e92254" ],
+        "x-ms-ratelimit-remaining-subscription-reads": [ "11919" ],
+        "x-ms-correlation-request-id": [ "4c5937cc-9a27-475e-bd54-e32af21e22dd" ],
+        "x-ms-routing-request-id": [ "WESTCENTRALUS:20231102T222443Z:4c5937cc-9a27-475e-bd54-e32af21e22dd" ],
         "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
-        "Date": [ "Thu, 02 Nov 2023 21:53:57 GMT" ]
+        "Date": [ "Thu, 02 Nov 2023 22:24:42 GMT" ]
       },
       "ContentHeaders": {
         "Content-Length": [ "119" ],
         "Content-Type": [ "application/json; charset=utf-8" ],
         "Expires": [ "-1" ]
       },
-      "Content": "{\"error\":{\"code\":\"404\",\"message\":\"ActivityId: ce51a36f-d8eb-4c98-bc48-1893cd13d167 Error: SessionHost does not exist\"}}",
+      "Content": "{\"error\":{\"code\":\"404\",\"message\":\"ActivityId: 74f68f05-50ef-4cc4-a62e-ca0848832708 Error: SessionHost does not exist\"}}",
       "isContentBase64": false
     }
   }
