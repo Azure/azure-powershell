@@ -95,8 +95,8 @@ The acceptable values for this parameter are:
 SQL authentication.
 Set the *AdministratorLogin* and *AdministratorLoginPassword* to the SQL administrator username and password. 
 - ADPassword.
-Azure Active Directory authentication.
-Set *AdministratorLogin* and *AdministratorLoginPassword* to the Azure AD administrator username and password.
+Microsoft Entra authentication.
+Set *AdministratorLogin* and *AdministratorLoginPassword* to the Microsoft Entra administrator username and password.
 This parameter is only available on SQL Database V12 servers.
 
 ```yaml

@@ -73,7 +73,7 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Implementation
 
         protected string protectedTemplateUri;
 
-        protected IReadOnlyDictionary<string, TemplateFileParameterV1> bicepparamFileParameters;
+        protected IReadOnlyDictionary<string, TemplateParameterFileParameter> bicepparamFileParameters;
 
         private ITemplateSpecsClient templateSpecsClient;
 
@@ -195,6 +195,21 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Implementation
             base.OnBeginProcessing();
         }
 
+        private string GetParameterJsonFilePath()
+        {
+            if (BicepUtility.IsBicepparamFile(TemplateParameterFile))
+            {
+                return null;
+            }
+            
+            if (!string.IsNullOrEmpty(TemplateParameterUri))
+            {
+                return TemplateParameterUri;
+            }
+
+            return this.ResolvePath(TemplateParameterFile);
+        }
+
         public new virtual object GetDynamicParameters()
         {
             if (BicepUtility.IsBicepFile(TemplateUri))
@@ -220,7 +235,7 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Implementation
 
             if (BicepUtility.IsBicepparamFile(TemplateParameterFile))
             {
-                BuildAndUseBicepParameters();
+                BuildAndUseBicepParameters(emitWarnings: false);
             }
 
             if (BicepUtility.IsBicepFile(TemplateFile))
@@ -233,47 +248,26 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Implementation
                 // Resolve the static parameter names for this cmdlet:
                 string[] staticParameterNames = this.GetStaticParameterNames();
                 var combinedParameterObject = GetCombinedTemplateParameterObject();
+                var jsonParamFilePath = BicepUtility.IsBicepparamFile(TemplateParameterFile) ? null : this.ResolvePath(TemplateParameterFile);
 
                 if (TemplateObject != null && TemplateObject != templateObject)
                 {
                     templateObject = TemplateObject;
-                    if (string.IsNullOrEmpty(TemplateParameterUri))
-                    {
-                        dynamicParameters = TemplateUtility.GetTemplateParametersFromFile(
-                            TemplateObject,
-                            combinedParameterObject,
-                            this.ResolvePath(TemplateParameterFile),
-                            staticParameterNames);
-                    }
-                    else
-                    {
-                        dynamicParameters = TemplateUtility.GetTemplateParametersFromFile(
-                            TemplateObject,
-                            combinedParameterObject,
-                            TemplateParameterUri,
-                            staticParameterNames);
-                    }
+                    dynamicParameters = TemplateUtility.GetTemplateParametersFromFile(
+                        TemplateObject,
+                        combinedParameterObject,
+                        GetParameterJsonFilePath(),
+                        staticParameterNames);
                 }
                 else if (!string.IsNullOrEmpty(TemplateFile) &&
                     !TemplateFile.Equals(templateFile, StringComparison.OrdinalIgnoreCase))
                 {
                     templateFile = TemplateFile;
-                    if (string.IsNullOrEmpty(TemplateParameterUri))
-                    {
-                        dynamicParameters = TemplateUtility.GetTemplateParametersFromFile(
-                            this.ResolvePath(TemplateFile),
-                            combinedParameterObject,
-                            this.ResolvePath(TemplateParameterFile),
-                            staticParameterNames);
-                    }
-                    else
-                    {
-                        dynamicParameters = TemplateUtility.GetTemplateParametersFromFile(
-                            this.ResolvePath(TemplateFile),
-                            combinedParameterObject,
-                            TemplateParameterUri,
-                            staticParameterNames);
-                    }
+                    dynamicParameters = TemplateUtility.GetTemplateParametersFromFile(
+                        this.ResolvePath(TemplateFile),
+                        combinedParameterObject,
+                        GetParameterJsonFilePath(),
+                        staticParameterNames);
                 }
                 else if (!string.IsNullOrEmpty(TemplateUri) &&
                     !TemplateUri.Equals(templateUri, StringComparison.OrdinalIgnoreCase))
@@ -286,22 +280,12 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Implementation
                     {
                         templateUri = protectedTemplateUri;
                     }
-                    if (string.IsNullOrEmpty(TemplateParameterUri))
-                    {
-                        dynamicParameters = TemplateUtility.GetTemplateParametersFromFile(
-                            templateUri,
-                            combinedParameterObject,
-                            this.ResolvePath(TemplateParameterFile),
-                            staticParameterNames);
-                    }
-                    else
-                    {
-                        dynamicParameters = TemplateUtility.GetTemplateParametersFromFile(
-                            templateUri,
-                            combinedParameterObject,
-                            TemplateParameterUri,
-                            staticParameterNames);
-                    }
+
+                    dynamicParameters = TemplateUtility.GetTemplateParametersFromFile(
+                        templateUri,
+                        combinedParameterObject,
+                        GetParameterJsonFilePath(),
+                        staticParameterNames);
                 }
                 else if (!string.IsNullOrEmpty(TemplateSpecId) &&
                     !TemplateSpecId.Equals(templateSpecId, StringComparison.OrdinalIgnoreCase))
@@ -346,22 +330,11 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Implementation
                         throw;
                     }
 
-                    if (string.IsNullOrEmpty(TemplateParameterUri))
-                    {
-                        dynamicParameters = TemplateUtility.GetTemplateParametersFromFile(
-                            templateObj,
-                            combinedParameterObject,
-                            this.ResolvePath(TemplateParameterFile),
-                            staticParameterNames);
-                    }
-                    else
-                    {
-                        dynamicParameters = TemplateUtility.GetTemplateParametersFromFile(
-                            templateObj,
-                            combinedParameterObject,
-                            TemplateParameterUri,
-                            staticParameterNames);
-                    }
+                    dynamicParameters = TemplateUtility.GetTemplateParametersFromFile(
+                        templateObj,
+                        combinedParameterObject,
+                        GetParameterJsonFilePath(),
+                        staticParameterNames);
                 }
             }
 
@@ -370,7 +343,7 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Implementation
             return dynamicParameters;
         }
 
-        private static void AddToParametersHashtable(IReadOnlyDictionary<string, TemplateFileParameterV1> parameters, Hashtable parameterObject)
+        private static void AddToParametersHashtable(IReadOnlyDictionary<string, TemplateParameterFileParameter> parameters, Hashtable parameterObject)
         {
             parameters.ForEach(dp =>
             {
@@ -393,9 +366,12 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Implementation
             var parameterObject = new Hashtable();
             if (bicepparamFileParameters != null)
             {
+                BuildAndUseBicepParameters(emitWarnings: true);
                 AddToParametersHashtable(bicepparamFileParameters, parameterObject);
+                return parameterObject;
             }
-            else if (TemplateParameterObject != null)
+
+            if (TemplateParameterObject != null)
             {
                 foreach (var parameterKey in TemplateParameterObject.Keys)
                 {
@@ -428,12 +404,11 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Implementation
                     WriteWarning("${templateParameterFilePath} does not exist");
                 }
             }
-            
-            // Load dynamic parameters
-            IEnumerable<RuntimeDefinedParameter> parameters = PowerShellUtilities.GetUsedDynamicParameters(this.AsJobDynamicParameters, MyInvocation);
-            if (parameters.Any())
+
+            var dynamicParams = GetDynamicParametersDictionary();
+            foreach (var param in dynamicParams)
             {
-                parameters.ForEach(dp => parameterObject[((ParameterAttribute)dp.Attributes[0]).HelpMessage] = new Hashtable { { "value", dp.Value } });
+                parameterObject[param.Key] = new Hashtable { { "value", param.Value } };
             }
 
             return parameterObject;
@@ -503,12 +478,19 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Implementation
             TemplateFile = BicepUtility.BuildFile(this.ResolvePath(TemplateFile), this.WriteVerbose, this.WriteWarning);
         }
 
-        protected void BuildAndUseBicepParameters()
+        private IReadOnlyDictionary<string, object> GetDynamicParametersDictionary()
         {
-            var output = BicepUtility.BuildParams(this.ResolvePath(TemplateParameterFile), this.WriteVerbose, this.WriteWarning);
+            var dynamicParams = PowerShellUtilities.GetUsedDynamicParameters(this.AsJobDynamicParameters, MyInvocation);
 
-            TemplateParameterFile = null;
-            TemplateParameterObject = null;
+            return dynamicParams.ToDictionary(
+                x => ((ParameterAttribute)x.Attributes[0]).HelpMessage,
+                x => x.Value);
+        }
+
+        protected void BuildAndUseBicepParameters(bool emitWarnings)
+        {
+            BicepUtility.OutputCallback nullCallback = null;
+            var output = BicepUtility.BuildParams(this.ResolvePath(TemplateParameterFile), GetDynamicParametersDictionary(), this.WriteVerbose, emitWarnings ? this.WriteWarning : nullCallback);
             bicepparamFileParameters = GetParametersFromJson(output.parametersJson);
 
             if (TemplateObject == null && 
@@ -564,7 +546,7 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Implementation
             return TemplateParameterObject;
         }
 
-        private IReadOnlyDictionary<string, TemplateFileParameterV1> GetParametersFromJson(string parametersJson)
+        private IReadOnlyDictionary<string, TemplateParameterFileParameter> GetParametersFromJson(string parametersJson)
         {
             using (var reader = new StringReader(parametersJson))
             {

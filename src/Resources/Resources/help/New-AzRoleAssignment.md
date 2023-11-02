@@ -107,9 +107,9 @@ Access is granted by assigning the appropriate RBAC role to them at the right sc
 To grant access to the entire subscription, assign a role at the subscription scope.
 To grant access to a specific resource group within a subscription, assign a role at the resource group scope.
 The subject of the assignment must be specified.
-To specify a user, use SignInName or Azure AD ObjectId parameters.
-To specify a security group, use Azure AD ObjectId parameter.
-And to specify an Azure AD application, use ApplicationId or ObjectId parameters.
+To specify a user, use SignInName or Microsoft Entra ObjectId parameters.
+To specify a security group, use Microsoft Entra ObjectId parameter.
+And to specify a Microsoft Entra application, use ApplicationId or ObjectId parameters.
 The role that is being assigned must be specified using the RoleDefinitionName parameter.
 The scope at which access is being granted may be specified.
 It defaults to the selected subscription. 
@@ -276,7 +276,7 @@ Accept wildcard characters: False
 ```
 
 ### -ObjectId
-Azure AD Objectid of the user, group or service principal.
+Microsoft Entra Objectid of the user, group or service principal.
 
 ```yaml
 Type: System.String

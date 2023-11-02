@@ -62,7 +62,7 @@ namespace Microsoft.Azure.Management.Search.Models
         /// Dedicated services in these states are still chargeable based on the number
         /// of search units provisioned.
         /// Possible values include: 'running', 'provisioning', 'deleting', 'degraded',
-        /// 'disabled', 'error', 'stopped'</param>
+        /// 'disabled', 'error'</param>
 
         /// <param name="statusDetails">The details of the search service status.
         /// </param>
@@ -100,10 +100,15 @@ namespace Microsoft.Azure.Management.Search.Models
         /// service.
         /// </param>
 
+        /// <param name="semanticSearch">Sets options that control the availability of semantic search. This
+        /// configuration is only possible for certain Azure Cognitive Search SKUs in
+        /// certain locations.
+        /// Possible values include: 'disabled', 'free', 'standard'</param>
+
         /// <param name="sharedPrivateLinkResources">The list of shared private link resources managed by the Azure Cognitive
         /// Search service.
         /// </param>
-        public SearchServiceProperties(int? replicaCount = default(int?), int? partitionCount = default(int?), HostingMode? hostingMode = default(HostingMode?), PublicNetworkAccess? publicNetworkAccess = default(PublicNetworkAccess?), SearchServiceStatus? status = default(SearchServiceStatus?), string statusDetails = default(string), ProvisioningState? provisioningState = default(ProvisioningState?), NetworkRuleSet networkRuleSet = default(NetworkRuleSet), EncryptionWithCmk encryptionWithCmk = default(EncryptionWithCmk), bool? disableLocalAuth = default(bool?), DataPlaneAuthOptions authOptions = default(DataPlaneAuthOptions), System.Collections.Generic.IList<PrivateEndpointConnection> privateEndpointConnections = default(System.Collections.Generic.IList<PrivateEndpointConnection>), System.Collections.Generic.IList<SharedPrivateLinkResource> sharedPrivateLinkResources = default(System.Collections.Generic.IList<SharedPrivateLinkResource>))
+        public SearchServiceProperties(int? replicaCount = default(int?), int? partitionCount = default(int?), HostingMode? hostingMode = default(HostingMode?), PublicNetworkAccess? publicNetworkAccess = default(PublicNetworkAccess?), SearchServiceStatus? status = default(SearchServiceStatus?), string statusDetails = default(string), ProvisioningState? provisioningState = default(ProvisioningState?), NetworkRuleSet networkRuleSet = default(NetworkRuleSet), EncryptionWithCmk encryptionWithCmk = default(EncryptionWithCmk), bool? disableLocalAuth = default(bool?), DataPlaneAuthOptions authOptions = default(DataPlaneAuthOptions), System.Collections.Generic.IList<PrivateEndpointConnection> privateEndpointConnections = default(System.Collections.Generic.IList<PrivateEndpointConnection>), string semanticSearch = default(string), System.Collections.Generic.IList<SharedPrivateLinkResource> sharedPrivateLinkResources = default(System.Collections.Generic.IList<SharedPrivateLinkResource>))
 
         {
             this.ReplicaCount = replicaCount;
@@ -118,6 +123,7 @@ namespace Microsoft.Azure.Management.Search.Models
             this.DisableLocalAuth = disableLocalAuth;
             this.AuthOptions = authOptions;
             this.PrivateEndpointConnections = privateEndpointConnections;
+            this.SemanticSearch = semanticSearch;
             this.SharedPrivateLinkResources = sharedPrivateLinkResources;
             CustomInit();
         }
@@ -177,7 +183,7 @@ namespace Microsoft.Azure.Management.Search.Models
         /// service is in the degraded, disabled, or error states, it means the Azure
         /// Cognitive Search team is actively investigating the underlying issue.
         /// Dedicated services in these states are still chargeable based on the number
-        /// of search units provisioned. Possible values include: &#39;running&#39;, &#39;provisioning&#39;, &#39;deleting&#39;, &#39;degraded&#39;, &#39;disabled&#39;, &#39;error&#39;, &#39;stopped&#39;
+        /// of search units provisioned. Possible values include: &#39;running&#39;, &#39;provisioning&#39;, &#39;deleting&#39;, &#39;degraded&#39;, &#39;disabled&#39;, &#39;error&#39;
         /// </summary>
         [Newtonsoft.Json.JsonProperty(PropertyName = "status")]
         public SearchServiceStatus? Status {get; private set; }
@@ -240,6 +246,14 @@ namespace Microsoft.Azure.Management.Search.Models
         public System.Collections.Generic.IList<PrivateEndpointConnection> PrivateEndpointConnections {get; private set; }
 
         /// <summary>
+        /// Gets or sets sets options that control the availability of semantic search.
+        /// This configuration is only possible for certain Azure Cognitive Search SKUs
+        /// in certain locations. Possible values include: &#39;disabled&#39;, &#39;free&#39;, &#39;standard&#39;
+        /// </summary>
+        [Newtonsoft.Json.JsonProperty(PropertyName = "semanticSearch")]
+        public string SemanticSearch {get; set; }
+
+        /// <summary>
         /// Gets the list of shared private link resources managed by the Azure
         /// Cognitive Search service.
         /// </summary>
@@ -275,6 +289,7 @@ namespace Microsoft.Azure.Management.Search.Models
                     throw new Microsoft.Rest.ValidationException(Microsoft.Rest.ValidationRules.InclusiveMinimum, "PartitionCount", 1);
                 }
             }
+
 
 
 

@@ -1,6 +1,5 @@
 # Variable 'IsGenerateBased' was defined in the Variables tab
 # Variable 'NugetSecurityAnalysisWarningLevel' was defined in the Variables tab
-# Variable 'OCTOKITPAT' was defined in the Variables tab
 # Cron Schedules have been converted using UTC Time Zone and may need to be updated for your location
 schedules:
 - cron: 0 4 * * 1,2,3,4,5
@@ -20,6 +19,7 @@ jobs:
   steps:
   - checkout: self
     fetchTags: false
+  - template: util/get-github-pat-steps.yml
   - task: PowerShell@2
     displayName: Install platyPS
     inputs:
@@ -38,16 +38,6 @@ jobs:
     inputs:
       targetType: inline
       script: npm install autorest@latest;$env:NODE_OPTIONS="--max-old-space-size=65536"
-
-  - task: AzurePowerShell@5
-    inputs:
-      azureSubscription: '$(AzureSubscription)'
-      ScriptType: 'InlineScript'
-      Inline: |
-        $GithubToken = Get-AzKeyVaultSecret -VaultName $(KeyVaultName) -Name $(KeyVaultAccount) -AsPlainText
-        Write-Host "##vso[task.setvariable variable=GithubToken;issecret=true]$GithubToken"
-      azurePowerShellVersion: 'LatestVersion'
-    displayName: Get Github PAT from Key Vault
   - task: PowerShell@2
     displayName: Build
     inputs:

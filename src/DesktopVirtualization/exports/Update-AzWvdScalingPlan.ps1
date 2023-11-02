@@ -22,40 +22,55 @@ Update a scaling plan.
 .Example
 Update-AzWvdScalingPlan `
             -ResourceGroupName ResourceGroupName `
-            -Name 'scalingPlan1' `
+            -Name 'ScalingPlan1' `
             -Description 'Description' `
             -FriendlyName 'Friendly Name' `
-            -TimeZone '(UTC-08:00) Pacific Time (US & Canada)' `
+            -TimeZone 'Pacific Standard Time' `
             -Schedule @(
                 @{
-                    'name'                           = 'Work Week';
-                    'daysOfWeek'                     = @('Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday');
-                    'rampUpStartTime'                = '1900-01-01T06:00:00Z';
-                    'rampUpLoadBalancingAlgorithm'   = 'BreadthFirst';
-                    'rampUpMinimumHostsPct'          = 20;
-                    'rampUpCapacityThresholdPct'     = 20;
-                    'peakStartTime'                  = '1900-01-01T08:00:00Z';
-                    'peakLoadBalancingAlgorithm'     = 'DepthFirst';
-                    'RampDownStartTime'              = '1900-01-01T18:00:00Z';
-                    'rampDownLoadBalancingAlgorithm' = 'BreadthFirst';
-                    'rampDownMinimumHostsPct'        = 20;
-                    'rampDownCapacityThresholdPct'   = 20;
-                    'rampDownForceLogoffUser'        = $true;
-                    'rampDownWaitTimeMinute'         = 30;
-                    'rampDownNotificationMessage'    = 'Log out now, please.';
-                    'rampDownStopHostsWhen'          = 'ZeroSessions';
-                    'offPeakStartTime'               = '1900-01-01T20:00:00Z';
-                    'offPeakLoadBalancingAlgorithm'  = 'DepthFirst';
+                    'Name'                           = 'Work Week';
+                    'DaysOfWeek'                     = @('Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday');
+                    'RampUpStartTime'                = @{
+                                                            'Hour' = 7
+                                                            'Minute' = 0
+                                                        };
+                    'RampUpLoadBalancingAlgorithm'   = 'BreadthFirst';
+                    'RampUpMinimumHostsPct'          = 20;
+                    'RampUpCapacityThresholdPct'     = 20;
+
+                    'PeakStartTime'                  = @{
+                                                            'Hour' = 9
+                                                            'Minute' = 30
+                                                        };
+                    'PeakLoadBalancingAlgorithm'     = 'DepthFirst';
+
+                    'RampDownStartTime'              = @{
+                                                            'Hour' = 16
+                                                            'Minute' = 15
+                                                        };
+                    'RampDownLoadBalancingAlgorithm' = 'BreadthFirst';
+                    'RampDownMinimumHostsPct'        = 20;
+                    'RampDownCapacityThresholdPct'   = 20;
+                    'RampDownForceLogoffUser'       = $true;
+                    'RampDownWaitTimeMinute'        = 30;
+                    'RampDownNotificationMessage'    = 'Log out now, please.';
+                    'RampDownStopHostsWhen'          = 'ZeroSessions';
+
+                    'OffPeakStartTime'               = @{
+                                                            'Hour' = 18
+                                                            'Minute' = 0
+                                                        };
+                    'OffPeakLoadBalancingAlgorithm'  = 'DepthFirst';
                 }
             ) `
             -HostPoolReference @(
                 @{
-                    'hostPoolArmPath' = '/subscriptions/SubscriptionId/resourceGroups/ResourceGroupName/providers/Microsoft.DesktopVirtualization/hostPools/HostPoolName1';
-                    'scalingPlanEnabled' = $false;
+                    'HostPoolArmPath' = '/subscriptions/SubscriptionId/resourceGroups/ResourceGroupName/providers/Microsoft.DesktopVirtualization/hostPools/HostPoolName1';
+                    'ScalingPlanEnabled' = $false;
                 },
                 @{
-                    'hostPoolArmPath' = '/subscriptions/SubscriptionId/resourceGroups/ResourceGroupName/providers/Microsoft.DesktopVirtualization/hostPools/HostPoolName2';
-                    'scalingPlanEnabled' = $false;
+                    'HostPoolArmPath' = '/subscriptions/SubscriptionId/resourceGroups/ResourceGroupName/providers/Microsoft.DesktopVirtualization/hostPools/HostPoolName2';
+                    'ScalingPlanEnabled' = $false;
                 }
 
             )
@@ -63,7 +78,7 @@ Update-AzWvdScalingPlan `
 .Inputs
 Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.IDesktopVirtualizationIdentity
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.Api202209.IScalingPlan
+Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.Api20230905.IScalingPlan
 .Notes
 COMPLEX PARAMETER PROPERTIES
 
@@ -80,6 +95,7 @@ INPUTOBJECT <IDesktopVirtualizationIdentity>: Identity Parameter
   [HostPoolName <String>]: The name of the host pool within the specified resource group
   [Id <String>]: Resource identity path
   [MsixPackageFullName <String>]: The version specific package full name of the MSIX package within specified hostpool
+  [PrivateEndpointConnectionName <String>]: The name of the private endpoint connection associated with the Azure resource
   [ResourceGroupName <String>]: The name of the resource group. The name is case insensitive.
   [ScalingPlanName <String>]: The name of the scaling plan.
   [ScalingPlanScheduleName <String>]: The name of the ScalingPlanSchedule
@@ -115,7 +131,7 @@ SCHEDULE <IScalingSchedule[]>: List of ScalingSchedule definitions.
 https://learn.microsoft.com/powershell/module/az.desktopvirtualization/update-azwvdscalingplan
 #>
 function Update-AzWvdScalingPlan {
-[OutputType([Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.Api202209.IScalingPlan])]
+[OutputType([Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.Api20230905.IScalingPlan])]
 [CmdletBinding(DefaultParameterSetName='UpdateExpanded', PositionalBinding=$false, SupportsShouldProcess, ConfirmImpact='Medium')]
 param(
     [Parameter(ParameterSetName='UpdateExpanded', Mandatory)]
@@ -167,7 +183,7 @@ param(
     [Parameter()]
     [AllowEmptyCollection()]
     [Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.Api202209.IScalingHostPoolReference[]]
+    [Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.Api20230905.IScalingHostPoolReference[]]
     # List of ScalingHostPoolReference definitions.
     # To construct, see NOTES section for HOSTPOOLREFERENCE properties and create a hash table.
     ${HostPoolReference},
@@ -175,14 +191,14 @@ param(
     [Parameter()]
     [AllowEmptyCollection()]
     [Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.Api202209.IScalingSchedule[]]
+    [Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.Api20230905.IScalingSchedule[]]
     # List of ScalingSchedule definitions.
     # To construct, see NOTES section for SCHEDULE properties and create a hash table.
     ${Schedule},
 
     [Parameter()]
     [Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Runtime.Info(PossibleTypes=([Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.Api202209.IScalingPlanPatchTags]))]
+    [Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Runtime.Info(PossibleTypes=([Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.Api20230905.IScalingPlanPatchTags]))]
     [System.Collections.Hashtable]
     # tags to be updated
     ${Tag},
@@ -276,6 +292,10 @@ begin {
         }
         $cmdInfo = Get-Command -Name $mapping[$parameterSet]
         [Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Runtime.MessageAttributeHelper]::ProcessCustomAttributesAtRuntime($cmdInfo, $MyInvocation, $parameterSet, $PSCmdlet)
+        if ($null -ne $MyInvocation.MyCommand -and [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PromptedPreviewMessageCmdlets -notcontains $MyInvocation.MyCommand.Name -and [Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Runtime.MessageAttributeHelper]::ContainsPreviewAttribute($cmdInfo, $MyInvocation)){
+            [Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Runtime.MessageAttributeHelper]::ProcessPreviewMessageAttributesAtRuntime($cmdInfo, $MyInvocation, $parameterSet, $PSCmdlet)
+            [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PromptedPreviewMessageCmdlets.Enqueue($MyInvocation.MyCommand.Name)
+        }
         $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Cmdlet)
         $scriptCmd = {& $wrappedCmd @PSBoundParameters}
         $steppablePipeline = $scriptCmd.GetSteppablePipeline($MyInvocation.CommandOrigin)

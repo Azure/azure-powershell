@@ -5262,7 +5262,7 @@ function Test-VMwithSSHKey
         $vmname = '1' + $rgname;
         $domainNameLabel = "d1" + $rgname;
         $sshKeyName = "s" + $rgname
-        $vm = New-AzVM -ResourceGroupName $rgname -Name $vmname -Credential $cred -Image CentOS -DomainNameLabel $domainNameLabel -SshKeyname $sshKeyName -generateSshkey 
+        $vm = New-AzVM -ResourceGroupName $rgname -Name $vmname -Credential $cred -Image CentOS85Gen2 -DomainNameLabel $domainNameLabel -SshKeyname $sshKeyName -generateSshkey 
 
         $vm = Get-AzVm -ResourceGroupName $rgname -Name $vmname
         $sshKey = Get-AzSshKey -ResourceGroupName $rgname -Name $sshKeyName

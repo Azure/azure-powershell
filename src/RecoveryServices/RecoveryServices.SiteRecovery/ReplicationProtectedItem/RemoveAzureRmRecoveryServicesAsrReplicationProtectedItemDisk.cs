@@ -92,17 +92,17 @@ namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery
         {
             var providerSettings = new A2ARemoveDisksInput()
             {
-                VmDisksUris = new List<string>(),
-                VmManagedDisksIds = new List<string>()
+                VMDisksUris = new List<string>(),
+                VMManagedDisksIds = new List<string>()
             };
 
             switch (this.ParameterSetName)
             {
                 case ASRParameterSets.AzureToAzure:
-                    providerSettings.VmDisksUris = this.VhdUri;
+                    providerSettings.VMDisksUris = this.VhdUri;
                     break;
                 case ASRParameterSets.AzureToAzureManagedDisk:
-                    providerSettings.VmManagedDisksIds = this.DiskId;
+                    providerSettings.VMManagedDisksIds = this.DiskId;
                     break;
             }
 

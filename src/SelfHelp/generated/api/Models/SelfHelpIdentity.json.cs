@@ -78,6 +78,8 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.SelfHelp.Models
             }
             {_scope = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.SelfHelp.Runtime.Json.JsonString>("scope"), out var __jsonScope) ? (string)__jsonScope : (string)Scope;}
             {_diagnosticsResourceName = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.SelfHelp.Runtime.Json.JsonString>("diagnosticsResourceName"), out var __jsonDiagnosticsResourceName) ? (string)__jsonDiagnosticsResourceName : (string)DiagnosticsResourceName;}
+            {_solutionResourceName = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.SelfHelp.Runtime.Json.JsonString>("solutionResourceName"), out var __jsonSolutionResourceName) ? (string)__jsonSolutionResourceName : (string)SolutionResourceName;}
+            {_troubleshooterName = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.SelfHelp.Runtime.Json.JsonString>("troubleshooterName"), out var __jsonTroubleshooterName) ? (string)__jsonTroubleshooterName : (string)TroubleshooterName;}
             {_id = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.SelfHelp.Runtime.Json.JsonString>("id"), out var __jsonId) ? (string)__jsonId : (string)Id;}
             AfterFromJson(json);
         }
@@ -103,6 +105,8 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.SelfHelp.Models
             }
             AddIf( null != (((object)this._scope)?.ToString()) ? (Microsoft.Azure.PowerShell.Cmdlets.SelfHelp.Runtime.Json.JsonNode) new Microsoft.Azure.PowerShell.Cmdlets.SelfHelp.Runtime.Json.JsonString(this._scope.ToString()) : null, "scope" ,container.Add );
             AddIf( null != (((object)this._diagnosticsResourceName)?.ToString()) ? (Microsoft.Azure.PowerShell.Cmdlets.SelfHelp.Runtime.Json.JsonNode) new Microsoft.Azure.PowerShell.Cmdlets.SelfHelp.Runtime.Json.JsonString(this._diagnosticsResourceName.ToString()) : null, "diagnosticsResourceName" ,container.Add );
+            AddIf( null != (((object)this._solutionResourceName)?.ToString()) ? (Microsoft.Azure.PowerShell.Cmdlets.SelfHelp.Runtime.Json.JsonNode) new Microsoft.Azure.PowerShell.Cmdlets.SelfHelp.Runtime.Json.JsonString(this._solutionResourceName.ToString()) : null, "solutionResourceName" ,container.Add );
+            AddIf( null != (((object)this._troubleshooterName)?.ToString()) ? (Microsoft.Azure.PowerShell.Cmdlets.SelfHelp.Runtime.Json.JsonNode) new Microsoft.Azure.PowerShell.Cmdlets.SelfHelp.Runtime.Json.JsonString(this._troubleshooterName.ToString()) : null, "troubleshooterName" ,container.Add );
             AddIf( null != (((object)this._id)?.ToString()) ? (Microsoft.Azure.PowerShell.Cmdlets.SelfHelp.Runtime.Json.JsonNode) new Microsoft.Azure.PowerShell.Cmdlets.SelfHelp.Runtime.Json.JsonString(this._id.ToString()) : null, "id" ,container.Add );
             AfterToJson(ref container);
             return container;

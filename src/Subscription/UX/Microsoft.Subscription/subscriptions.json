@@ -1,0 +1,37 @@
+{
+  "resourceType": "subscriptions",
+  "apiVersion": "2021-10-01",
+  "learnMore": {
+    "url": "https://learn.microsoft.com/powershell/module/az.subscription"
+  },
+  "commands": [
+    {
+      "name": "Get-AzSubscriptionAcceptOwnershipStatus",
+      "description": "Accept subscription ownership status.",
+      "path": "/providers/Microsoft.Subscription/subscriptions/{subscriptionId}/acceptOwnershipStatus",
+      "help": {
+        "learnMore": {
+          "url": "https://learn.microsoft.com/powershell/module/az.subscription/get-azsubscriptionacceptownershipstatus"
+        },
+        "parameterSets": [
+          {
+            "parameters": [
+              "[-SubscriptionId <String[]>]"
+            ]
+          }
+        ]
+      },
+      "examples": [
+        {
+          "description": "Accept subscription ownership status.",
+          "parameters": [
+            {
+              "name": "-SubscriptionId",
+              "value": "[Path.subscriptionId]"
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

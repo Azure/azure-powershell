@@ -88,7 +88,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery
                         input.Properties.ReplicationProviderInput =
                             new InMageDisableProtectionProviderSpecificInput()
                             {
-                                ReplicaVmDeletionStatus = Constants.NotRequired
+                                ReplicaVMDeletionStatus = Constants.NotRequired
                             };
                     }
 
