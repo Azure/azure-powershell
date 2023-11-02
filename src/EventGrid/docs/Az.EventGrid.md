@@ -176,6 +176,9 @@ Get properties of a verified partner.
 ### [New-AzEventGridAdvancedFilterObject](New-AzEventGridAdvancedFilterObject.md)
 Create an in-memory object for AdvancedFilter.
 
+### [New-AzEventGridAzureFunctionEventSubscriptionDestinationObject](New-AzEventGridAzureFunctionEventSubscriptionDestinationObject.md)
+Create an in-memory object for AzureFunctionEventSubscriptionDestination.
+
 ### [New-AzEventGridCaCertificate](New-AzEventGridCaCertificate.md)
 Create a CA certificate with the specified parameters.
 
@@ -206,11 +209,17 @@ Asynchronously creates a new event subscription or updates an existing event sub
 ### [New-AzEventGridDynamicRoutingEnrichmentObject](New-AzEventGridDynamicRoutingEnrichmentObject.md)
 Create an in-memory object for DynamicRoutingEnrichment.
 
+### [New-AzEventGridEventHubEventSubscriptionDestinationObject](New-AzEventGridEventHubEventSubscriptionDestinationObject.md)
+Create an in-memory object for EventHubEventSubscriptionDestination.
+
 ### [New-AzEventGridEventSubscription](New-AzEventGridEventSubscription.md)
 Asynchronously creates a new event subscription or updates an existing event subscription based on the specified scope.
 
 ### [New-AzEventGridFilterObject](New-AzEventGridFilterObject.md)
 Create an in-memory object for Filter.
+
+### [New-AzEventGridHybridConnectionEventSubscriptionDestinationObject](New-AzEventGridHybridConnectionEventSubscriptionDestinationObject.md)
+Create an in-memory object for HybridConnectionEventSubscriptionDestination.
 
 ### [New-AzEventGridInboundIPRuleObject](New-AzEventGridInboundIPRuleObject.md)
 Create an in-memory object for InboundIPRule.
@@ -236,6 +245,9 @@ Synchronously Create a partner configuration with the specified parameters.
 
 ### [New-AzEventGridPartnerDestination](New-AzEventGridPartnerDestination.md)
 Asynchronously creates a new partner destination with the specified parameters.
+
+### [New-AzEventGridPartnerEventSubscriptionDestinationObject](New-AzEventGridPartnerEventSubscriptionDestinationObject.md)
+Create an in-memory object for PartnerEventSubscriptionDestination.
 
 ### [New-AzEventGridPartnerNamespace](New-AzEventGridPartnerNamespace.md)
 Asynchronously creates a new partner namespace with the specified parameters.
@@ -265,8 +277,17 @@ Create an in-memory object for PrivateEndpointConnection.
 ### [New-AzEventGridResourceMoveChangeHistoryObject](New-AzEventGridResourceMoveChangeHistoryObject.md)
 Create an in-memory object for ResourceMoveChangeHistory.
 
+### [New-AzEventGridServiceBusQueueEventSubscriptionDestinationObject](New-AzEventGridServiceBusQueueEventSubscriptionDestinationObject.md)
+Create an in-memory object for ServiceBusQueueEventSubscriptionDestination.
+
+### [New-AzEventGridServiceBusTopicEventSubscriptionDestinationObject](New-AzEventGridServiceBusTopicEventSubscriptionDestinationObject.md)
+Create an in-memory object for ServiceBusTopicEventSubscriptionDestination.
+
 ### [New-AzEventGridStaticRoutingEnrichmentObject](New-AzEventGridStaticRoutingEnrichmentObject.md)
 Create an in-memory object for StaticRoutingEnrichment.
+
+### [New-AzEventGridStorageQueueEventSubscriptionDestinationObject](New-AzEventGridStorageQueueEventSubscriptionDestinationObject.md)
+Create an in-memory object for StorageQueueEventSubscriptionDestination.
 
 ### [New-AzEventGridSystemTopic](New-AzEventGridSystemTopic.md)
 Asynchronously creates a new system topic with the specified parameters.
@@ -286,6 +307,9 @@ Regenerate a shared access key for a topic.
 
 ### [New-AzEventGridTopicSpace](New-AzEventGridTopicSpace.md)
 Create a topic space with the specified parameters.
+
+### [New-AzEventGridWebHookEventSubscriptionDestinationObject](New-AzEventGridWebHookEventSubscriptionDestinationObject.md)
+Create an in-memory object for WebHookEventSubscriptionDestination.
 
 ### [Remove-AzEventGridCaCertificate](Remove-AzEventGridCaCertificate.md)
 Delete an existing CA certificate.

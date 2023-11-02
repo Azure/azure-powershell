@@ -18,9 +18,10 @@ Existing event subscriptions will be updated with this API.
 New-AzEventGridSystemTopicEventSubscription -EventSubscriptionName <String> -ResourceGroupName <String>
  -SystemTopicName <String> [-SubscriptionId <String>] [-DeadLetterWithResourceIdentityType <String>]
  [-DeadLetterWithResourceIdentityUserAssignedIdentity <String>]
- [-DeliveryWithResourceIdentityDestinationEndpointType <String>] [-DeliveryWithResourceIdentityType <String>]
- [-DeliveryWithResourceIdentityUserAssignedIdentity <String>] [-EndpointType <String>]
- [-EventDeliverySchema <String>] [-ExpirationTimeUtc <DateTime>] [-FilterAdvancedFilter <IAdvancedFilter[]>]
+ [-DeliveryWithResourceIdentityDestination <IEventSubscriptionDestination>]
+ [-DeliveryWithResourceIdentityType <String>] [-DeliveryWithResourceIdentityUserAssignedIdentity <String>]
+ [-Destination <IEventSubscriptionDestination>] [-EventDeliverySchema <String>]
+ [-ExpirationTimeUtc <DateTime>] [-FilterAdvancedFilter <IAdvancedFilter[]>]
  [-FilterEnableAdvancedFilteringOnArray] [-FilterIncludedEventType <String[]>] [-FilterIsSubjectCaseSensitive]
  [-FilterSubjectBeginsWith <String>] [-FilterSubjectEndsWith <String>] [-Label <String[]>]
  [-RetryPolicyEventTimeToLiveInMinute <Int32>] [-RetryPolicyMaxDeliveryAttempt <Int32>]
@@ -31,9 +32,10 @@ New-AzEventGridSystemTopicEventSubscription -EventSubscriptionName <String> -Res
 ```
 New-AzEventGridSystemTopicEventSubscription -InputObject <IEventGridIdentity>
  [-DeadLetterWithResourceIdentityType <String>] [-DeadLetterWithResourceIdentityUserAssignedIdentity <String>]
- [-DeliveryWithResourceIdentityDestinationEndpointType <String>] [-DeliveryWithResourceIdentityType <String>]
- [-DeliveryWithResourceIdentityUserAssignedIdentity <String>] [-EndpointType <String>]
- [-EventDeliverySchema <String>] [-ExpirationTimeUtc <DateTime>] [-FilterAdvancedFilter <IAdvancedFilter[]>]
+ [-DeliveryWithResourceIdentityDestination <IEventSubscriptionDestination>]
+ [-DeliveryWithResourceIdentityType <String>] [-DeliveryWithResourceIdentityUserAssignedIdentity <String>]
+ [-Destination <IEventSubscriptionDestination>] [-EventDeliverySchema <String>]
+ [-ExpirationTimeUtc <DateTime>] [-FilterAdvancedFilter <IAdvancedFilter[]>]
  [-FilterEnableAdvancedFilteringOnArray] [-FilterIncludedEventType <String[]>] [-FilterIsSubjectCaseSensitive]
  [-FilterSubjectBeginsWith <String>] [-FilterSubjectEndsWith <String>] [-Label <String[]>]
  [-RetryPolicyEventTimeToLiveInMinute <Int32>] [-RetryPolicyMaxDeliveryAttempt <Int32>]
@@ -45,9 +47,10 @@ New-AzEventGridSystemTopicEventSubscription -InputObject <IEventGridIdentity>
 New-AzEventGridSystemTopicEventSubscription -EventSubscriptionName <String>
  -SystemTopicInputObject <IEventGridIdentity> [-DeadLetterWithResourceIdentityType <String>]
  [-DeadLetterWithResourceIdentityUserAssignedIdentity <String>]
- [-DeliveryWithResourceIdentityDestinationEndpointType <String>] [-DeliveryWithResourceIdentityType <String>]
- [-DeliveryWithResourceIdentityUserAssignedIdentity <String>] [-EndpointType <String>]
- [-EventDeliverySchema <String>] [-ExpirationTimeUtc <DateTime>] [-FilterAdvancedFilter <IAdvancedFilter[]>]
+ [-DeliveryWithResourceIdentityDestination <IEventSubscriptionDestination>]
+ [-DeliveryWithResourceIdentityType <String>] [-DeliveryWithResourceIdentityUserAssignedIdentity <String>]
+ [-Destination <IEventSubscriptionDestination>] [-EventDeliverySchema <String>]
+ [-ExpirationTimeUtc <DateTime>] [-FilterAdvancedFilter <IAdvancedFilter[]>]
  [-FilterEnableAdvancedFilteringOnArray] [-FilterIncludedEventType <String[]>] [-FilterIsSubjectCaseSensitive]
  [-FilterSubjectBeginsWith <String>] [-FilterSubjectEndsWith <String>] [-Label <String[]>]
  [-RetryPolicyEventTimeToLiveInMinute <Int32>] [-RetryPolicyMaxDeliveryAttempt <Int32>]
@@ -161,11 +164,12 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -DeliveryWithResourceIdentityDestinationEndpointType
-Type of the endpoint for the event subscription destination.
+### -DeliveryWithResourceIdentityDestination
+Information about the destination where events have to be delivered for the event subscription.Uses Azure Event Grid's identity to acquire the authentication tokens being used during delivery / dead-lettering.
+To construct, see NOTES section for DELIVERYWITHRESOURCEIDENTITYDESTINATION properties and create a hash table.
 
 ```yaml
-Type: System.String
+Type: Microsoft.Azure.PowerShell.Cmdlets.EventGrid.Models.IEventSubscriptionDestination
 Parameter Sets: CreateExpanded, CreateViaIdentityExpanded, CreateViaIdentitySystemTopicExpanded
 Aliases:
 
@@ -208,11 +212,12 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -EndpointType
-Type of the endpoint for the event subscription destination.
+### -Destination
+Information about the destination where events have to be delivered for the event subscription.Uses Azure Event Grid's identity to acquire the authentication tokens being used during delivery / dead-lettering.
+To construct, see NOTES section for DESTINATION properties and create a hash table.
 
 ```yaml
-Type: System.String
+Type: Microsoft.Azure.PowerShell.Cmdlets.EventGrid.Models.IEventSubscriptionDestination
 Parameter Sets: CreateExpanded, CreateViaIdentityExpanded, CreateViaIdentitySystemTopicExpanded
 Aliases:
 

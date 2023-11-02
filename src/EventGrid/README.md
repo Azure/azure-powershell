@@ -403,6 +403,9 @@ directive:
       verb: Disable
       subject: PartnerConfiguration
 
+  - no-inline:
+    - EventSubscriptionDestination
+
   - model-cmdlet:
     - model-name: ResourceMoveChangeHistory
     - model-name: PrivateEndpointConnection
@@ -412,4 +415,12 @@ directive:
     - model-name: AdvancedFilter
     - model-name: Partner
     - model-name: Filter
+    - model-name: WebHookEventSubscriptionDestination
+    - model-name: EventHubEventSubscriptionDestination
+    - model-name: StorageQueueEventSubscriptionDestination
+    - model-name: HybridConnectionEventSubscriptionDestination
+    - model-name: ServiceBusQueueEventSubscriptionDestination
+    - model-name: ServiceBusTopicEventSubscriptionDestination
+    - model-name: AzureFunctionEventSubscriptionDestination
+    - model-name: PartnerEventSubscriptionDestination
 ```
