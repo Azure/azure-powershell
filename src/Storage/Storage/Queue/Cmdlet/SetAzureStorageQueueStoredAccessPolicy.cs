@@ -25,8 +25,6 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Queue.Cmdlet
     using System.Management.Automation;
     using System.Security.Permissions;
 
-    [GenericBreakingChangeWithVersion("Permissions in the ouput access policy will be changed to a string like \"raup\" in a future release.",
-        "11.0.0", "6.0.0")]
     [Cmdlet("Set", Azure.Commands.ResourceManager.Common.AzureRMConstants.AzurePrefix + "StorageQueueStoredAccessPolicy", SupportsShouldProcess = true), OutputType(typeof(String))]
     public class SetAzureStorageQueueStoredAccessPolicyCommand : StorageQueueBaseCmdlet
     {

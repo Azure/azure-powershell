@@ -56,7 +56,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.Models
             DeleteState = EnumUtils.GetEnum<ItemDeleteState>("NotDeleted");
             if (protectedItem.IsScheduledForDeferredDelete.HasValue)
             {
-                DateOfPurge = protectedItem.DeferredDeleteTimeInUTC.Value.AddDays(14);
+                DateOfPurge = protectedItem.DeferredDeleteTimeInUtc.Value.AddDays(14);
                 DeleteState = EnumUtils.GetEnum<ItemDeleteState>("ToBeDeleted");
             }
 
@@ -93,7 +93,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.Models
             DeleteState = EnumUtils.GetEnum<ItemDeleteState>("NotDeleted");
             if (protectedItem.IsScheduledForDeferredDelete.HasValue)
             {
-                DateOfPurge = protectedItem.DeferredDeleteTimeInUTC.Value.AddDays(14);
+                DateOfPurge = protectedItem.DeferredDeleteTimeInUtc.Value.AddDays(14);
                 DeleteState = EnumUtils.GetEnum<ItemDeleteState>("ToBeDeleted");
             }
 
