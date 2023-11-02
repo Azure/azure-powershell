@@ -43,24 +43,20 @@ namespace Microsoft.Azure.Commands.Compute.Automation
             Mandatory = false,
             HelpMessage = "The name of the image for VMs in this Scale Set. If no value is provided, the 'Windows Server 2016 DataCenter' image will be used.")]
         [PSArgumentCompleter(
-            "CentOS",
-            "CentOS85Gen2",
-            "Debian",
-            "Debian11",
-            "OpenSuseLeap154Gen2",
-            "RHEL",
-            "RHELRaw8LVMGen2",
-            "SuseSles15SP3",
-            "UbuntuLTS",
-            "Ubuntu2204",
-            "FlatcarLinuxFreeGen2",
-            "Win2022AzureEditionCore",
-            "Win2019Datacenter",
-            "Win2016Datacenter",
-            "Win2012R2Datacenter",
-            "Win2012Datacenter",
-            "Win10",
-            "Win2016DataCenterGenSecond")]
+            "CentOS85Gen2", 
+            "Debian11", 
+            "OpenSuseLeap154Gen2", 
+            "RHELRaw8LVMGen2", 
+            "SuseSles15SP3", 
+            "Ubuntu2204", 
+            "FlatcarLinuxFreeGen2", 
+            "Win2022Datacenter", 
+            "Win2022AzureEditionCore", 
+            "Win2019Datacenter", 
+            "Win2016Datacenter", 
+            "Win2012R2Datacenter", 
+            "Win2012Datacenter", 
+            "Win2008R2SP1")]
         [Alias("Image")]
         public string ImageName { get; set; } = "Win2016Datacenter";
 

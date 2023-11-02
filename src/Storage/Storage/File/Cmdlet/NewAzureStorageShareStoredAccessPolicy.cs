@@ -53,7 +53,10 @@ namespace Microsoft.WindowsAzure.Commands.Storage.File.Cmdlet
         public DateTime? StartTime { get; set; }
 
         [Parameter(HelpMessage = "Expiry Time")]
-        public DateTime? ExpiryTime { get; set; }
+        public DateTime? ExpiryTime { get; set; }        
+        
+        // Overwrite the useless parameter
+        public override SwitchParameter DisAllowTrailingDot { get; set; }
 
         /// <summary>
         /// execute command
