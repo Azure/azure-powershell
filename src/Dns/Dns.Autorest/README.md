@@ -37,7 +37,7 @@ input-file:
   - $(repo)/specification/dns/resource-manager/Microsoft.Network/preview/2023-07-01-preview/dns.json
 
 # For new RP, the version is 0.1.0
-module-version: 2.1.0
+module-version: 0.1.0
 # Normally, title is the service name
 title: Dns
 subject-prefix: $(service-name)
