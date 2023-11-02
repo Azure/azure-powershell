@@ -27,7 +27,7 @@ function Test-CreateJobPrivateEndpoint
 		$pe1AsJob = New-AzSqlElasticJobPrivateEndpoint -ElasticJobAgentObject $a1 -Name $peName -TargetServerAzureResourceId $s1.ResourceId -AsJob
 
 		# Give the backend a chance to persist the private endpoint before running Get
-		Wait-Seconds 120
+		Start-Sleep 10
 
 		$pe1 = Get-AzSqlElasticJobPrivateEndpoint -ElasticJobAgentObject $a1 -Name $peName
 
@@ -65,7 +65,7 @@ function Test-GetJobPrivateEndpoint
 		$pe1AsJob = New-AzSqlElasticJobPrivateEndpoint -ElasticJobAgentObject $a1 -Name $peName -TargetServerAzureResourceId $s1.ResourceId -AsJob
 
 		# Give the backend a chance to persist the private endpoint before running Get
-		Wait-Seconds 120
+		Start-Sleep 10
 
 		# Validate with Default set
 		$pe1 = Get-AzSqlElasticJobPrivateEndpoint -ResourceGroupName $a1.ResourceGroupName -ServerName $a1.ServerName -AgentName $a1.AgentName -Name $peName
@@ -137,7 +137,7 @@ function Test-RemoveJobPrivateEndpoint
 		$pe1AsJob = New-AzSqlElasticJobPrivateEndpoint -ElasticJobAgentObject $a1 -Name $peName -TargetServerAzureResourceId $s1.ResourceId -AsJob
 
 		# Give the backend a chance to persist the private endpoint before running Get
-		Wait-Seconds 120
+		Start-Sleep 10
 
 		$pe1 = Get-AzSqlElasticJobPrivateEndpoint -ElasticJobAgentObject $a1 -Name $peName
 
