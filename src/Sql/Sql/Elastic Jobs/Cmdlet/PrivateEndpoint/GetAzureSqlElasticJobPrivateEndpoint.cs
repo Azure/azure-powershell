@@ -110,7 +110,7 @@ namespace Microsoft.Azure.Commands.Sql.ElasticJobs.Cmdlet.PrivateEndpoint
         }
 
         /// <summary>
-        /// Check to see if the credential already exists for the agent.
+        /// Gets the elastic job private endpoint for the agent.
         /// </summary>
         /// <returns>Throws exception if the credential doesn't exist.</returns>
         protected override IEnumerable<AzureSqlElasticJobPrivateEndpointModel> GetEntity()
