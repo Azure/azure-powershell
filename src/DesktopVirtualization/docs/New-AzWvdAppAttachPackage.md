@@ -12,6 +12,7 @@ Create or update an App Attach package.
 
 ## SYNTAX
 
+### CreateExpanded (Default)
 ```
 New-AzWvdAppAttachPackage -Name <String> -ResourceGroupName <String> [-SubscriptionId <String>]
  [-FailHealthCheckOnStagingFailure <FailHealthCheckOnStagingFailure>] [-HostPoolReference <String[]>]
@@ -26,6 +27,15 @@ New-AzWvdAppAttachPackage -Name <String> -ResourceGroupName <String> [-Subscript
  [-PlanPublisher <String>] [-PlanVersion <String>] [-SkuCapacity <Int32>] [-SkuFamily <String>]
  [-SkuName <String>] [-SkuSize <String>] [-SkuTier <SkuTier>] [-Tag <Hashtable>] [-DefaultProfile <PSObject>]
  [-Confirm] [-WhatIf] [<CommonParameters>]
+```
+
+### ImageObject
+```
+New-AzWvdAppAttachPackage [-AppAttachPackage] <AppAttachPackage> -Name <String> -ResourceGroupName <String>
+ -Location <String> [-SubscriptionId <String>]
+ [-FailHealthCheckOnStagingFailure <FailHealthCheckOnStagingFailure>] [-HostPoolReference <String[]>]
+ [-ImageDisplayName <String>] [-ImageIsActive] [-ImageIsRegularRegistration] [-PassThru]
+ [-DefaultProfile <PSObject>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -56,6 +66,21 @@ Create or update an App Attach package.
 {{ Add description here }}
 
 ## PARAMETERS
+
+### -AppAttachPackage
+To construct, see NOTES section for APPATTACHPACKAGE properties and create a hash table.
+
+```yaml
+Type: Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.Api20231004Preview.AppAttachPackage
+Parameter Sets: ImageObject
+Aliases:
+
+Required: True
+Position: 0
+Default value: None
+Accept pipeline input: True (ByValue)
+Accept wildcard characters: False
+```
 
 ### -DefaultProfile
 The DefaultProfile parameter is not functional.
@@ -108,7 +133,7 @@ The identity type.
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Support.ResourceIdentityType
-Parameter Sets: (All)
+Parameter Sets: CreateExpanded
 Aliases:
 
 Required: False
@@ -123,7 +148,7 @@ Date certificate expires, found in the appxmanifest.xml.
 
 ```yaml
 Type: System.DateTime
-Parameter Sets: (All)
+Parameter Sets: CreateExpanded
 Aliases:
 
 Required: False
@@ -138,7 +163,7 @@ Certificate name found in the appxmanifest.xml.
 
 ```yaml
 Type: System.String
-Parameter Sets: (All)
+Parameter Sets: CreateExpanded
 Aliases:
 
 Required: False
@@ -154,7 +179,7 @@ User friendly Name to be displayed in the portal.
 ```yaml
 Type: System.String
 Parameter Sets: (All)
-Aliases:
+Aliases: DisplayName
 
 Required: False
 Position: Named
@@ -169,7 +194,7 @@ Make this version of the package the active one across the hostpool.
 ```yaml
 Type: System.Management.Automation.SwitchParameter
 Parameter Sets: (All)
-Aliases:
+Aliases: IsActive
 
 Required: False
 Position: Named
@@ -183,7 +208,7 @@ Is package timestamped so it can ignore the certificate expiry date
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Support.PackageTimestamped
-Parameter Sets: (All)
+Parameter Sets: CreateExpanded
 Aliases:
 
 Required: False
@@ -199,7 +224,7 @@ Specifies how to register Package in feed.
 ```yaml
 Type: System.Management.Automation.SwitchParameter
 Parameter Sets: (All)
-Aliases:
+Aliases: IsRegularRegistration, IsLogonBlocking
 
 Required: False
 Position: Named
@@ -213,7 +238,7 @@ Date Package was last updated, found in the appxmanifest.xml.
 
 ```yaml
 Type: System.DateTime
-Parameter Sets: (All)
+Parameter Sets: CreateExpanded
 Aliases:
 
 Required: False
@@ -229,7 +254,7 @@ Assigned at import time
 
 ```yaml
 Type: System.String
-Parameter Sets: (All)
+Parameter Sets: CreateExpanded
 Aliases:
 
 Required: False
@@ -246,7 +271,7 @@ To construct, see NOTES section for IMAGEPACKAGEAPPLICATION properties and creat
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.Api20231004Preview.IMsixPackageApplications[]
-Parameter Sets: (All)
+Parameter Sets: CreateExpanded
 Aliases:
 
 Required: False
@@ -263,7 +288,7 @@ To construct, see NOTES section for IMAGEPACKAGEDEPENDENCY properties and create
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.Api20231004Preview.IMsixPackageDependencies[]
-Parameter Sets: (All)
+Parameter Sets: CreateExpanded
 Aliases:
 
 Required: False
@@ -279,7 +304,7 @@ Contains Package Name and Publisher name.
 
 ```yaml
 Type: System.String
-Parameter Sets: (All)
+Parameter Sets: CreateExpanded
 Aliases:
 
 Required: False
@@ -294,7 +319,7 @@ Package Full Name from appxmanifest.xml.
 
 ```yaml
 Type: System.String
-Parameter Sets: (All)
+Parameter Sets: CreateExpanded
 Aliases:
 
 Required: False
@@ -309,7 +334,7 @@ Package Name from appxmanifest.xml.
 
 ```yaml
 Type: System.String
-Parameter Sets: (All)
+Parameter Sets: CreateExpanded
 Aliases:
 
 Required: False
@@ -324,7 +349,7 @@ Relative Path to the package inside the image.
 
 ```yaml
 Type: System.String
-Parameter Sets: (All)
+Parameter Sets: CreateExpanded
 Aliases:
 
 Required: False
@@ -339,7 +364,7 @@ VHD/CIM image path on Network Share.
 
 ```yaml
 Type: System.String
-Parameter Sets: (All)
+Parameter Sets: CreateExpanded
 Aliases:
 
 Required: False
@@ -354,7 +379,7 @@ Package Version found in the appxmanifest.xml.
 
 ```yaml
 Type: System.String
-Parameter Sets: (All)
+Parameter Sets: CreateExpanded
 Aliases:
 
 Required: False
@@ -386,7 +411,7 @@ If supported, the resource provider must validate and persist this value.
 
 ```yaml
 Type: System.String
-Parameter Sets: (All)
+Parameter Sets: CreateExpanded
 Aliases:
 
 Required: False
@@ -404,7 +429,7 @@ Type: System.String
 Parameter Sets: (All)
 Aliases:
 
-Required: False
+Required: True
 Position: Named
 Default value: None
 Accept pipeline input: False
@@ -418,7 +443,7 @@ If this is present, complete mode deployment will not delete the resource if it 
 
 ```yaml
 Type: System.String
-Parameter Sets: (All)
+Parameter Sets: CreateExpanded
 Aliases:
 
 Required: False
@@ -443,12 +468,27 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### -PassThru
+
+
+```yaml
+Type: System.Management.Automation.SwitchParameter
+Parameter Sets: ImageObject
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
 ### -PlanName
 A user defined name of the 3rd Party Artifact that is being procured.
 
 ```yaml
 Type: System.String
-Parameter Sets: (All)
+Parameter Sets: CreateExpanded
 Aliases:
 
 Required: False
@@ -466,7 +506,7 @@ Product maps to the OfferID specified for the artifact at the time of Data Marke
 
 ```yaml
 Type: System.String
-Parameter Sets: (All)
+Parameter Sets: CreateExpanded
 Aliases:
 
 Required: False
@@ -481,7 +521,7 @@ A publisher provided promotion code as provisioned in Data Market for the said p
 
 ```yaml
 Type: System.String
-Parameter Sets: (All)
+Parameter Sets: CreateExpanded
 Aliases:
 
 Required: False
@@ -498,7 +538,7 @@ NewRelic
 
 ```yaml
 Type: System.String
-Parameter Sets: (All)
+Parameter Sets: CreateExpanded
 Aliases:
 
 Required: False
@@ -513,7 +553,7 @@ The version of the desired product/artifact.
 
 ```yaml
 Type: System.String
-Parameter Sets: (All)
+Parameter Sets: CreateExpanded
 Aliases:
 
 Required: False
@@ -545,7 +585,7 @@ If scale out/in is not possible for the resource this may be omitted.
 
 ```yaml
 Type: System.Int32
-Parameter Sets: (All)
+Parameter Sets: CreateExpanded
 Aliases:
 
 Required: False
@@ -560,7 +600,7 @@ If the service has different generations of hardware, for the same SKU, then tha
 
 ```yaml
 Type: System.String
-Parameter Sets: (All)
+Parameter Sets: CreateExpanded
 Aliases:
 
 Required: False
@@ -577,7 +617,7 @@ It is typically a letter+number code
 
 ```yaml
 Type: System.String
-Parameter Sets: (All)
+Parameter Sets: CreateExpanded
 Aliases:
 
 Required: False
@@ -593,7 +633,7 @@ When the name field is the combination of tier and some other value, this would 
 
 ```yaml
 Type: System.String
-Parameter Sets: (All)
+Parameter Sets: CreateExpanded
 Aliases:
 
 Required: False
@@ -608,7 +648,7 @@ This field is required to be implemented by the Resource Provider if the service
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Support.SkuTier
-Parameter Sets: (All)
+Parameter Sets: CreateExpanded
 Aliases:
 
 Required: False
@@ -638,7 +678,7 @@ Resource tags.
 
 ```yaml
 Type: System.Collections.Hashtable
-Parameter Sets: (All)
+Parameter Sets: CreateExpanded
 Aliases:
 
 Required: False
@@ -684,6 +724,8 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
+### Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.Api20231004Preview.AppAttachPackage
+
 ## OUTPUTS
 
 ### Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.Api20231004Preview.IAppAttachPackage
@@ -696,6 +738,59 @@ COMPLEX PARAMETER PROPERTIES
 
 To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
 
+
+`APPATTACHPACKAGE <AppAttachPackage>`: 
+  - `[FailHealthCheckOnStagingFailure <FailHealthCheckOnStagingFailure?>]`: Parameter indicating how the health check should behave if this package fails staging
+  - `[HostPoolReference <String[]>]`: List of Hostpool resource Ids.
+  - `[ImageCertificateExpiry <DateTime?>]`: Date certificate expires, found in the appxmanifest.xml. 
+  - `[ImageCertificateName <String>]`: Certificate name found in the appxmanifest.xml. 
+  - `[ImageDisplayName <String>]`: User friendly Name to be displayed in the portal. 
+  - `[ImageIsActive <Boolean?>]`: Make this version of the package the active one across the hostpool. 
+  - `[ImageIsPackageTimestamped <PackageTimestamped?>]`: Is package timestamped so it can ignore the certificate expiry date
+  - `[ImageIsRegularRegistration <Boolean?>]`: Specifies how to register Package in feed.
+  - `[ImageLastUpdated <DateTime?>]`: Date Package was last updated, found in the appxmanifest.xml. 
+  - `[ImagePackageAlias <String>]`: Alias of App Attach Package. Assigned at import time
+  - `[ImagePackageApplication <IMsixPackageApplications[]>]`: List of package applications. 
+    - `[AppId <String>]`: Package Application Id, found in appxmanifest.xml.
+    - `[AppUserModelId <String>]`: Used to activate Package Application. Consists of Package Name and ApplicationID. Found in appxmanifest.xml.
+    - `[Description <String>]`: Description of Package Application.
+    - `[FriendlyName <String>]`: User friendly name.
+    - `[IconImageName <String>]`: User friendly name.
+    - `[RawIcon <Byte[]>]`: the icon a 64 bit string as a byte array.
+    - `[RawPng <Byte[]>]`: the icon a 64 bit string as a byte array.
+  - `[ImagePackageDependency <IMsixPackageDependencies[]>]`: List of package dependencies. 
+    - `[DependencyName <String>]`: Name of package dependency.
+    - `[MinVersion <String>]`: Dependency version required.
+    - `[Publisher <String>]`: Name of dependency publisher.
+  - `[ImagePackageFamilyName <String>]`: Package Family Name from appxmanifest.xml. Contains Package Name and Publisher name. 
+  - `[ImagePackageFullName <String>]`: Package Full Name from appxmanifest.xml. 
+  - `[ImagePackageName <String>]`: Package Name from appxmanifest.xml. 
+  - `[ImagePackageRelativePath <String>]`: Relative Path to the package inside the image. 
+  - `[ImagePath <String>]`: VHD/CIM image path on Network Share.
+  - `[ImageVersion <String>]`: Package Version found in the appxmanifest.xml. 
+  - `[KeyVaultUrl <String>]`: URL of keyvault location to store certificate
+  - `[SystemDataCreatedAt <DateTime?>]`: The timestamp of resource creation (UTC).
+  - `[SystemDataCreatedBy <String>]`: The identity that created the resource.
+  - `[SystemDataCreatedByType <CreatedByType?>]`: The type of identity that created the resource.
+  - `[SystemDataLastModifiedAt <DateTime?>]`: The timestamp of resource last modification (UTC)
+  - `[SystemDataLastModifiedBy <String>]`: The identity that last modified the resource.
+  - `[SystemDataLastModifiedByType <CreatedByType?>]`: The type of identity that last modified the resource.
+  - `[IdentityType <ResourceIdentityType?>]`: The identity type.
+  - `[Kind <String>]`: Metadata used by portal/tooling/etc to render different UX experiences for resources of the same type; e.g. ApiApps are a kind of Microsoft.Web/sites type.  If supported, the resource provider must validate and persist this value.
+  - `[Location <String>]`: The geo-location where the resource lives
+  - `[ManagedBy <String>]`: The fully qualified resource ID of the resource that manages this resource. Indicates if this resource is managed by another Azure resource. If this is present, complete mode deployment will not delete the resource if it is removed from the template since it is managed by another resource.
+  - `[PlanName <String>]`: A user defined name of the 3rd Party Artifact that is being procured.
+  - `[PlanProduct <String>]`: The 3rd Party artifact that is being procured. E.g. NewRelic. Product maps to the OfferID specified for the artifact at the time of Data Market onboarding. 
+  - `[PlanPromotionCode <String>]`: A publisher provided promotion code as provisioned in Data Market for the said product/artifact.
+  - `[PlanPublisher <String>]`: The publisher of the 3rd Party Artifact that is being bought. E.g. NewRelic
+  - `[PlanVersion <String>]`: The version of the desired product/artifact.
+  - `[SkuCapacity <Int32?>]`: If the SKU supports scale out/in then the capacity integer should be included. If scale out/in is not possible for the resource this may be omitted.
+  - `[SkuFamily <String>]`: If the service has different generations of hardware, for the same SKU, then that can be captured here.
+  - `[SkuName <String>]`: The name of the SKU. Ex - P3. It is typically a letter+number code
+  - `[SkuSize <String>]`: The SKU size. When the name field is the combination of tier and some other value, this would be the standalone code. 
+  - `[SkuTier <SkuTier?>]`: This field is required to be implemented by the Resource Provider if the service has more than one tier, but is not required on a PUT.
+  - `[Tag <IResourceModelWithAllowedPropertySetTags>]`: Resource tags.
+    - `[(Any) <String>]`: This indicates any property can be added to this object.
 
 `IMAGEPACKAGEAPPLICATION <IMsixPackageApplications[]>`: List of package applications. 
   - `[AppId <String>]`: Package Application Id, found in appxmanifest.xml.
