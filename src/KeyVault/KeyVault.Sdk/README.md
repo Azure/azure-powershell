@@ -5,7 +5,7 @@ This directory contains management plane service clients of Az.KeyVault module.
 In this directory, run AutoRest:
 ```
 autorest --reset
-autorest --use:@autorest/powershell@4.x
+autorest --use:@autorest/powershell@4.0.631
 ```
 
 ### AutoRest Configuration
