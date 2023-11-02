@@ -52,7 +52,7 @@ namespace Microsoft.Azure.Commands.Sql.ElasticJobs.Cmdlet.PrivateEndpoint
             Position = 0,
             HelpMessage = "The agent object")]
         [ValidateNotNullOrEmpty]
-        public AzureSqlElasticJobAgentModel ParentObject { get; set; }
+        public AzureSqlElasticJobAgentModel ElasticJobAgentObject { get; set; }
 
         /// <summary>
         /// Gets or sets the agent resource id
@@ -63,7 +63,7 @@ namespace Microsoft.Azure.Commands.Sql.ElasticJobs.Cmdlet.PrivateEndpoint
             Position = 0,
             HelpMessage = "The agent resource id")]
         [ValidateNotNullOrEmpty]
-        public string ParentResourceId { get; set; }
+        public string ElasticJobAgentResourceId { get; set; }
 
         /// <summary>
         /// Gets or sets the server name
@@ -118,8 +118,8 @@ namespace Microsoft.Azure.Commands.Sql.ElasticJobs.Cmdlet.PrivateEndpoint
         /// </summary>
         public override void ExecuteCmdlet()
         {
-            InitializeInputObjectProperties(this.ParentObject);
-            InitializeResourceIdProperties(this.ParentResourceId);
+            InitializeInputObjectProperties(this.ElasticJobAgentObject);
+            InitializeResourceIdProperties(this.ElasticJobAgentResourceId);
             this.Name = this.Name ?? this.PrivateEndpointName;
 
             // Warning confirmation when deleting job private endpoint 
