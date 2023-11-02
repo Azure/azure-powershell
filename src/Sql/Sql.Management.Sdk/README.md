@@ -24,7 +24,7 @@ title: SqlManagementClient
 
 ###
 ``` yaml
-commit: 4af52aaac2c3b4af4a0e61378d33c5bc050e65e2
+commit: b7b77b11ba1f6defc86d309d4ca0d51b2a2646a7
 input-file:
   - https://github.com/Azure/azure-rest-api-specs/blob/$(commit)/specification/sql/resource-manager/Microsoft.Sql/stable/2014-04-01/metrics.json
   - https://github.com/Azure/azure-rest-api-specs/blob/$(commit)/specification/sql/resource-manager/Microsoft.Sql/stable/2014-04-01-legacy/sql.core_legacy.json
