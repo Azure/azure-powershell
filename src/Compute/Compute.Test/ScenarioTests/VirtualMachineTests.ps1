@@ -6991,7 +6991,7 @@ function Test-VMDefaultsToTrustedLaunchWithManagedDisk
         $domainNameLabel = "d1" + $rgname;
         $vmsize = 'Standard_D4s_v3';
         $vmname = 'v2' + $rgname;
-        $vnetname = "myVnet2";
+        $vnetname = "vn" + $rgname;
         $vnetAddress = "10.0.0.0/16";
         $subnetname = "slb2" + $rgname;
         $subnetAddress = "10.0.2.0/24";
