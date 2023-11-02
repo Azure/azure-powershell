@@ -505,7 +505,6 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## NOTES
 
-
 ALIASES
 
 COMPLEX PARAMETER PROPERTIES
@@ -541,7 +540,6 @@ To create the parameters described below, construct a hash table containing the 
   - `[StatusMessage <String>]`: The detailed status message, including for alerts and error messages.
   - `[StatusTime <DateTime?>]`: The time of the status.
   - `[TypeHandlerVersion <String>]`: Specifies the version of the script handler.
-
 
 ## RELATED LINKS
 

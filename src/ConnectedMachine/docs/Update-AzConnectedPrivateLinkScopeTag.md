@@ -216,7 +216,6 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## NOTES
 
-
 ALIASES
 
 COMPLEX PARAMETER PROPERTIES
@@ -243,7 +242,6 @@ To create the parameters described below, construct a hash table containing the 
 `PRIVATELINKSCOPETAG <ITagsResource>`: A container holding only the Tags for a resource, allowing the user to update the tags on a PrivateLinkScope instance.
   - `[Tag <ITagsResourceTags>]`: Resource tags
     - `[(Any) <String>]`: This indicates any property can be added to this object.
-
 
 ## RELATED LINKS
 

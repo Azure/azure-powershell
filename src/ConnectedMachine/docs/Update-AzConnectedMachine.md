@@ -448,7 +448,6 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## NOTES
 
-
 ALIASES
 
 COMPLEX PARAMETER PROPERTIES
@@ -489,7 +488,6 @@ To create the parameters described below, construct a hash table containing the 
   - `[PrivateLinkScopeResourceId <String>]`: The resource id of the private link scope this machine is assigned to, if any.
   - `[WindowsConfigurationPatchSettingsAssessmentMode <AssessmentModeTypes?>]`: Specifies the assessment mode.
   - `[WindowsConfigurationPatchSettingsPatchMode <PatchModeTypes?>]`: Specifies the patch mode.
-
 
 ## RELATED LINKS
 

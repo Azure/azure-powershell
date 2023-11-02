@@ -248,7 +248,6 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## NOTES
 
-
 ALIASES
 
 COMPLEX PARAMETER PROPERTIES
@@ -283,7 +282,6 @@ To create the parameters described below, construct a hash table containing the 
   - `[SystemDataLastModifiedAt <DateTime?>]`: The timestamp of resource last modification (UTC)
   - `[SystemDataLastModifiedBy <String>]`: The identity that last modified the resource.
   - `[SystemDataLastModifiedByType <CreatedByType?>]`: The type of identity that last modified the resource.
-
 
 ## RELATED LINKS
 
