@@ -100,7 +100,7 @@ Tags                                :
 
 Enables purge protection for the managed Hsm named `$hsmName` in resource group `$resourceGroupName`.
 
-### Example 4: Enable purge protection for a managed Hsm
+### Example 4: Update user assigned identity for a managed Hsm
 ```powershell
 Update-AzKeyVaultManagedHsm -Name testmhsm -ResourceGroupName test-rg -UserAssignedIdentity /subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx/resourceGroups/bez-rg/providers/Microsoft.ManagedIdentity/userAssignedIdentities/bez-id02 | Format-List
 ```
