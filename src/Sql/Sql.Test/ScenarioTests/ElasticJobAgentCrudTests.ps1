@@ -210,6 +210,28 @@ function Test-UpdateAgent
         Assert-AreEqual $resp.Location $a1.Location
         Assert-AreEqual $resp.WorkerCount 100
         Assert-AreEqual $resp.Tags.Octopus "Agent"
+
+        # Test updating with SkuName only
+        $resp = Set-AzSqlElasticJobAgent -ResourceGroupName $a1.ResourceGroupName -ServerName $a1.ServerName -AgentName $a1.AgentName -SkuName "JA200"
+        Assert-AreEqual $resp.SkuName "JA200"
+        Assert-AreEqual $resp.WorkerCount 200
+
+        # Test updating with WorkerCount only
+        $resp = Set-AzSqlElasticJobAgent -ResourceGroupName $a1.ResourceGroupName -ServerName $a1.ServerName -AgentName $a1.AgentName -WorkerCount 100
+        Assert-AreEqual $resp.SkuName "JA100"
+        Assert-AreEqual $resp.WorkerCount 100
+
+        # Test updating with Identity 
+        $umi = "/subscriptions/2e7fe4bd-90c7-454e-8bb6-dc44649f27b2/resourcegroups/pstest/providers/Microsoft.ManagedIdentity/userAssignedIdentities/pstestumi"
+        $resp = Set-AzSqlElasticJobAgent -ResourceGroupName $a1.ResourceGroupName -ServerName $a1.ServerName -AgentName $a1.AgentName -IdentityType "UserAssigned" -UserAssignedIdentityId $umi
+        Assert-AreEqual $resp.Identity.Type "UserAssigned"
+        Assert-NotNull $resp.Identity.UserAssignedIdentities
+        Assert-True { $resp.Identity.UserAssignedIdentities.ContainsKey($umi) } "UMI did not get assigned to job agent."
+
+        # Test removing Identity 
+        $resp = Set-AzSqlElasticJobAgent -ResourceGroupName $a1.ResourceGroupName -ServerName $a1.ServerName -AgentName $a1.AgentName -IdentityType "None"
+        Assert-AreEqual $resp.Identity.Type "None"
+        Assert-Null $resp.Identity.UserAssignedIdentities
     }
     finally
     {
