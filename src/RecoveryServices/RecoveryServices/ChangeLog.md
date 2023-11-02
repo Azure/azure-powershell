@@ -18,6 +18,7 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
+* Fixed minor issues
 
 ## Version 6.6.0
 * Added support for custom RG with suffix while creating or modifying policy for workload type AzureVM.
