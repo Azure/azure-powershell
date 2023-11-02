@@ -1,0 +1,217 @@
+{
+  "ClusterJob+[NoContext]+[NoScenario]+$GET+https://management.azure.com/subscriptions/00000000-0000-0000-0000-000000000000/providers/Microsoft.HDInsight/locations/West US 3/availableClusterVersions?api-version=2023-06-01-preview+1": {
+    "Request": {
+      "Method": "GET",
+      "RequestUri": "https://management.azure.com/subscriptions/00000000-0000-0000-0000-000000000000/providers/Microsoft.HDInsight/locations/West%20US%203/availableClusterVersions?api-version=2023-06-01-preview",
+      "Content": null,
+      "isContentBase64": false,
+      "Headers": {
+        "x-ms-unique-id": [ "1" ],
+        "x-ms-client-request-id": [ "0f6aa3df-6e5c-42f0-bd4e-5a1ab1d64d45" ],
+        "CommandName": [ "Get-AzHdInsightOnAksAvailableClusterVersion" ],
+        "FullCommandName": [ "Get-AzHdInsightOnAksAvailableClusterVersion_List" ],
+        "ParameterSetName": [ "__AllParameterSets" ],
+        "User-Agent": [ "AzurePowershell/v0.0.0", "PSVersion/v7.3.6", "Az.HdInsightOnAks/0.1.0" ],
+        "Authorization": [ "[Filtered]" ]
+      },
+      "ContentHeaders": {
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "x-ms-ratelimit-remaining-subscription-reads": [ "11999" ],
+        "x-ms-providerhub-traffic": [ "True" ],
+        "mise-correlation-id": [ "72e7e7a6-ebd5-468a-a15f-41547820f1f3" ],
+        "x-ms-request-id": [ "8b779da9-ae0c-4f81-9b6c-7f4c2ff9ab90" ],
+        "x-ms-correlation-request-id": [ "4f83a5f4-2513-46b1-899d-ecb2de5011c4" ],
+        "x-ms-routing-request-id": [ "JAPANEAST:20230915T041846Z:4f83a5f4-2513-46b1-899d-ecb2de5011c4" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "X-Cache": [ "CONFIG_NOCACHE" ],
+        "X-MSEdge-Ref": [ "Ref A: F3FC199D3CF44964B775401180CAC20D Ref B: TYO201100114025 Ref C: 2023-09-15T04:18:45Z" ],
+        "Date": [ "Fri, 15 Sep 2023 04:18:45 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "2762" ],
+        "Content-Type": [ "application/json; charset=utf-8" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\"value\":[{\"id\":\"/subscriptions/00000000-0000-0000-0000-000000000000/providers/Microsoft.HDInsight/locations/West US 3/availableclusterversions/flink_1.16.0-1.0.6\",\"name\":\"flink_1.16.0-1.0.6\",\"properties\":{\"clusterVersion\":\"1.0.6\",\"ossVersion\":\"1.16.0\",\"clusterType\":\"Flink\",\"clusterPoolVersion\":\"1.0\",\"isPreview\":false,\"components\":[{\"name\":\"Flink\",\"version\":\"1.16.0\"},{\"name\":\"Hive Metastore\",\"version\":\"3.1.2\"}]}},{\"id\":\"/subscriptions/00000000-0000-0000-0000-000000000000/providers/Microsoft.HDInsight/locations/West US 3/availableclusterversions/spark_3.3.1-1.0.6\",\"name\":\"spark_3.3.1-1.0.6\",\"properties\":{\"clusterVersion\":\"1.0.6\",\"ossVersion\":\"3.3.1\",\"clusterType\":\"Spark\",\"clusterPoolVersion\":\"1.0\",\"isPreview\":false,\"components\":[{\"name\":\"Yarn\",\"version\":\"3.3.1\"},{\"name\":\"Spark\",\"version\":\"3.3.1\"},{\"name\":\"Hive Metastore\",\"version\":\"3.1.2\"},{\"name\":\"Zookeeper\",\"version\":\"3.6.2\"}]}},{\"id\":\"/subscriptions/00000000-0000-0000-0000-000000000000/providers/Microsoft.HDInsight/locations/West US 3/availableclusterversions/stub_2.4.1-1.0.0\",\"name\":\"stub_2.4.1-1.0.0\",\"properties\":{\"clusterVersion\":\"1.0.0\",\"ossVersion\":\"2.4.1\",\"clusterType\":\"Stub\",\"clusterPoolVersion\":\"1.0\",\"isPreview\":false,\"components\":[{\"name\":\"ResourceManager\",\"version\":\"2.4.1\"}]}},{\"id\":\"/subscriptions/00000000-0000-0000-0000-000000000000/providers/Microsoft.HDInsight/locations/West US 3/availableclusterversions/stub_2.4.1-1.0.1\",\"name\":\"stub_2.4.1-1.0.1\",\"properties\":{\"clusterVersion\":\"1.0.1\",\"ossVersion\":\"2.4.1\",\"clusterType\":\"Stub\",\"clusterPoolVersion\":\"1.0\",\"isPreview\":false,\"components\":[{\"name\":\"ResourceManager\",\"version\":\"2.4.1\"}]}},{\"id\":\"/subscriptions/00000000-0000-0000-0000-000000000000/providers/Microsoft.HDInsight/locations/West US 3/availableclusterversions/stub_2.4.2-1.0.0\",\"name\":\"stub_2.4.2-1.0.0\",\"properties\":{\"clusterVersion\":\"1.0.0\",\"ossVersion\":\"2.4.2\",\"clusterType\":\"Stub\",\"clusterPoolVersion\":\"1.0\",\"isPreview\":false,\"components\":[{\"name\":\"ResourceManager\",\"version\":\"2.4.2\"}]}},{\"id\":\"/subscriptions/00000000-0000-0000-0000-000000000000/providers/Microsoft.HDInsight/locations/West US 3/availableclusterversions/stub_2.4.3-1.1.0\",\"name\":\"stub_2.4.3-1.1.0\",\"properties\":{\"clusterVersion\":\"1.1.0\",\"ossVersion\":\"2.4.3\",\"clusterType\":\"Stub\",\"clusterPoolVersion\":\"\",\"isPreview\":false,\"components\":[{\"name\":\"ResourceManager\",\"version\":\"2.4.3\"}]}},{\"id\":\"/subscriptions/00000000-0000-0000-0000-000000000000/providers/Microsoft.HDInsight/locations/West US 3/availableclusterversions/trino_0.410.0-1.0.6\",\"name\":\"trino_0.410.0-1.0.6\",\"properties\":{\"clusterVersion\":\"1.0.6\",\"ossVersion\":\"0.410.0\",\"clusterType\":\"Trino\",\"clusterPoolVersion\":\"1.0\",\"isPreview\":false,\"components\":[{\"name\":\"Trino\",\"version\":\"410\"},{\"name\":\"Hive metastore\",\"version\":\"3.1.2\"}]}}]}",
+      "isContentBase64": false
+    }
+  },
+  "ClusterJob+[NoContext]+Start-AzHdInsightOnAksClusterJob+$POST+https://management.azure.com/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/Group/providers/Microsoft.HDInsight/clusterpools/ps-test-pool/clusters/flinkcluster/runJob?api-version=2023-06-01-preview+1": {
+    "Request": {
+      "Method": "POST",
+      "RequestUri": "https://management.azure.com/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/Group/providers/Microsoft.HDInsight/clusterpools/ps-test-pool/clusters/flinkcluster/runJob?api-version=2023-06-01-preview",
+      "Content": "{\r\n  \"properties\": {\r\n    \"jobType\": \"FlinkJob\",\r\n    \"jobName\": \"job1\",\r\n    \"jobJarDirectory\": \"abfs://flinkjob@hilosa.dfs.core.windows.net/jars\",\r\n    \"jarName\": \"JarName\",\r\n    \"entryClass\": \"com.microsoft.hilo.flink.job.streaming.SleepJob\",\r\n    \"args\": \"\",\r\n    \"action\": \"NEW\",\r\n    \"flinkConfiguration\": {\r\n      \"parallelism\": \"1\"\r\n    }\r\n  }\r\n}",
+      "isContentBase64": false,
+      "Headers": {
+      },
+      "ContentHeaders": {
+        "Content-Type": [ "application/json" ],
+        "Content-Length": [ "354" ]
+      }
+    },
+    "Response": {
+      "StatusCode": 202,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "Location": [ "https://management.azure.com/providers/Microsoft.HDInsight/locations/WESTUS3/operationStatuses/28527709-43cb-4b9d-84b9-d6d221bb1e18*93BE3F5F38E851939A0189D16172AE096513F606F83B4B31C7549306E4C696F3?api-version=2023-06-01-preview" ],
+        "x-ms-ratelimit-remaining-subscription-writes": [ "1199" ],
+        "x-ms-providerhub-traffic": [ "True" ],
+        "mise-correlation-id": [ "73e7085f-2460-4e55-95af-14c7bd8a6e19" ],
+        "Azure-AsyncOperation": [ "https://management.azure.com/providers/Microsoft.HDInsight/locations/WESTUS3/operationStatuses/28527709-43cb-4b9d-84b9-d6d221bb1e18*93BE3F5F38E851939A0189D16172AE096513F606F83B4B31C7549306E4C696F3?api-version=2023-06-01-preview" ],
+        "x-ms-request-id": [ "28527709-43cb-4b9d-84b9-d6d221bb1e18" ],
+        "x-ms-correlation-request-id": [ "95c980b9-ddd0-407c-8c5c-333e755a9c3f" ],
+        "x-ms-routing-request-id": [ "JAPANWEST:20230915T041849Z:95c980b9-ddd0-407c-8c5c-333e755a9c3f" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "X-Cache": [ "CONFIG_NOCACHE" ],
+        "X-MSEdge-Ref": [ "Ref A: 1C3A9C5F80204B2FBAE5037E75A13F29 Ref B: TYO201100114025 Ref C: 2023-09-15T04:18:46Z" ],
+        "Date": [ "Fri, 15 Sep 2023 04:18:49 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "4" ],
+        "Content-Type": [ "application/json; charset=utf-8" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "bnVsbA==",
+      "isContentBase64": false
+    }
+  },
+  "ClusterJob+[NoContext]+Start-AzHdInsightOnAksClusterJob+$GET+https://management.azure.com/providers/Microsoft.HDInsight/locations/WESTUS3/operationStatuses/28527709-43cb-4b9d-84b9-d6d221bb1e18*93BE3F5F38E851939A0189D16172AE096513F606F83B4B31C7549306E4C696F3?api-version=2023-06-01-preview+2": {
+    "Request": {
+      "Method": "GET",
+      "RequestUri": "https://management.azure.com/providers/Microsoft.HDInsight/locations/WESTUS3/operationStatuses/28527709-43cb-4b9d-84b9-d6d221bb1e18*93BE3F5F38E851939A0189D16172AE096513F606F83B4B31C7549306E4C696F3?api-version=2023-06-01-preview",
+      "Content": null,
+      "isContentBase64": false,
+      "Headers": {
+        "Authorization": [ "[Filtered]" ],
+        "x-ms-unique-id": [ "3" ],
+        "x-ms-client-request-id": [ "391fe896-3a8d-4782-bde3-da97e31b5dce" ],
+        "CommandName": [ "Start-AzHdInsightOnAksClusterJob" ],
+        "FullCommandName": [ "Start-AzHdInsightOnAksClusterJob_Run" ],
+        "ParameterSetName": [ "__AllParameterSets" ],
+        "User-Agent": [ "AzurePowershell/v0.0.0", "PSVersion/v7.3.6", "Az.HdInsightOnAks/0.1.0" ]
+      },
+      "ContentHeaders": {
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "ETag": [ "\"24009d32-0000-4d00-0000-6503db320000\"" ],
+        "x-ms-ratelimit-remaining-tenant-reads": [ "11999" ],
+        "x-ms-request-id": [ "9dbfb659-3927-4a21-8adb-54df8650d4d5" ],
+        "x-ms-correlation-request-id": [ "8588a8e9-be99-4fca-8584-56ae65e4fc3b" ],
+        "x-ms-routing-request-id": [ "JAPANWEST:20230915T041920Z:8588a8e9-be99-4fca-8584-56ae65e4fc3b" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "X-Cache": [ "CONFIG_NOCACHE" ],
+        "X-MSEdge-Ref": [ "Ref A: B1BA3A862BD94D9CBD1D688677DC22EE Ref B: TYO201100114025 Ref C: 2023-09-15T04:19:19Z" ],
+        "Date": [ "Fri, 15 Sep 2023 04:19:19 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "584" ],
+        "Content-Type": [ "application/json; charset=utf-8" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\"id\":\"/providers/Microsoft.HDInsight/locations/WESTUS3/operationStatuses/28527709-43cb-4b9d-84b9-d6d221bb1e18*93BE3F5F38E851939A0189D16172AE096513F606F83B4B31C7549306E4C696F3\",\"name\":\"28527709-43cb-4b9d-84b9-d6d221bb1e18*93BE3F5F38E851939A0189D16172AE096513F606F83B4B31C7549306E4C696F3\",\"resourceId\":\"/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/Group/providers/Microsoft.HDInsight/clusterpools/ps-test-pool/clusters/flinkcluster\",\"status\":\"Succeeded\",\"startTime\":\"2023-09-15T04:18:47.1160518Z\",\"endTime\":\"2023-09-15T04:18:58.9750179Z\",\"properties\":null}",
+      "isContentBase64": false
+    }
+  },
+  "ClusterJob+[NoContext]+Start-AzHdInsightOnAksClusterJob+$GET+https://management.azure.com/providers/Microsoft.HDInsight/locations/WESTUS3/operationStatuses/28527709-43cb-4b9d-84b9-d6d221bb1e18*93BE3F5F38E851939A0189D16172AE096513F606F83B4B31C7549306E4C696F3?api-version=2023-06-01-preview+3": {
+    "Request": {
+      "Method": "GET",
+      "RequestUri": "https://management.azure.com/providers/Microsoft.HDInsight/locations/WESTUS3/operationStatuses/28527709-43cb-4b9d-84b9-d6d221bb1e18*93BE3F5F38E851939A0189D16172AE096513F606F83B4B31C7549306E4C696F3?api-version=2023-06-01-preview",
+      "Content": null,
+      "isContentBase64": false,
+      "Headers": {
+        "Authorization": [ "[Filtered]" ],
+        "x-ms-unique-id": [ "4" ],
+        "x-ms-client-request-id": [ "391fe896-3a8d-4782-bde3-da97e31b5dce" ],
+        "CommandName": [ "Start-AzHdInsightOnAksClusterJob" ],
+        "FullCommandName": [ "Start-AzHdInsightOnAksClusterJob_Run" ],
+        "ParameterSetName": [ "__AllParameterSets" ],
+        "User-Agent": [ "AzurePowershell/v0.0.0", "PSVersion/v7.3.6", "Az.HdInsightOnAks/0.1.0" ]
+      },
+      "ContentHeaders": {
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "ETag": [ "\"24009d32-0000-4d00-0000-6503db320000\"" ],
+        "x-ms-ratelimit-remaining-tenant-reads": [ "11998" ],
+        "x-ms-request-id": [ "f996d7d9-228f-4acf-908d-ee4c503f38df" ],
+        "x-ms-correlation-request-id": [ "2f205aba-6ba3-4b20-b392-aca89878324c" ],
+        "x-ms-routing-request-id": [ "JAPANWEST:20230915T041920Z:2f205aba-6ba3-4b20-b392-aca89878324c" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "X-Cache": [ "CONFIG_NOCACHE" ],
+        "X-MSEdge-Ref": [ "Ref A: 00900EB2CA23467FB5FF5817C342614B Ref B: TYO201100114025 Ref C: 2023-09-15T04:19:20Z" ],
+        "Date": [ "Fri, 15 Sep 2023 04:19:20 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "584" ],
+        "Content-Type": [ "application/json; charset=utf-8" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\"id\":\"/providers/Microsoft.HDInsight/locations/WESTUS3/operationStatuses/28527709-43cb-4b9d-84b9-d6d221bb1e18*93BE3F5F38E851939A0189D16172AE096513F606F83B4B31C7549306E4C696F3\",\"name\":\"28527709-43cb-4b9d-84b9-d6d221bb1e18*93BE3F5F38E851939A0189D16172AE096513F606F83B4B31C7549306E4C696F3\",\"resourceId\":\"/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/Group/providers/Microsoft.HDInsight/clusterpools/ps-test-pool/clusters/flinkcluster\",\"status\":\"Succeeded\",\"startTime\":\"2023-09-15T04:18:47.1160518Z\",\"endTime\":\"2023-09-15T04:18:58.9750179Z\",\"properties\":null}",
+      "isContentBase64": false
+    }
+  },
+  "ClusterJob+[NoContext]+Start-AzHdInsightOnAksClusterJob+$GET+https://management.azure.com/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/Group/providers/Microsoft.HDInsight/clusterpools/ps-test-pool/clusters/flinkcluster/jobs?api-version=2023-06-01-preview+1": {
+    "Request": {
+      "Method": "GET",
+      "RequestUri": "https://management.azure.com/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/Group/providers/Microsoft.HDInsight/clusterpools/ps-test-pool/clusters/flinkcluster/jobs?api-version=2023-06-01-preview",
+      "Content": null,
+      "isContentBase64": false,
+      "Headers": {
+        "x-ms-unique-id": [ "5" ],
+        "x-ms-client-request-id": [ "10e65fe6-38da-4357-87fa-db7975d7d612" ],
+        "CommandName": [ "Get-AzHdInsightOnAksClusterJob" ],
+        "FullCommandName": [ "Get-AzHdInsightOnAksClusterJob_List" ],
+        "ParameterSetName": [ "__AllParameterSets" ],
+        "User-Agent": [ "AzurePowershell/v0.0.0", "PSVersion/v7.3.6", "Az.HdInsightOnAks/0.1.0" ],
+        "Authorization": [ "[Filtered]" ]
+      },
+      "ContentHeaders": {
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "x-ms-ratelimit-remaining-subscription-reads": [ "11999" ],
+        "x-ms-providerhub-traffic": [ "True" ],
+        "mise-correlation-id": [ "af30926f-6c2f-479f-b56c-530d155e5937" ],
+        "x-ms-request-id": [ "0db4485b-db4d-430f-9450-6cdb0f311c04" ],
+        "x-ms-correlation-request-id": [ "140eea69-3f7e-4a21-9a08-d6cbddfb2d59" ],
+        "x-ms-routing-request-id": [ "JAPANWEST:20230915T041922Z:140eea69-3f7e-4a21-9a08-d6cbddfb2d59" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "X-Cache": [ "CONFIG_NOCACHE" ],
+        "X-MSEdge-Ref": [ "Ref A: 252E1E0DAB8D438A96FF0BD22CF85BBC Ref B: TYO201100114025 Ref C: 2023-09-15T04:19:20Z" ],
+        "Date": [ "Fri, 15 Sep 2023 04:19:22 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "573" ],
+        "Content-Type": [ "application/json; charset=utf-8" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\"value\":[{\"id\":\"/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/Group/providers/Microsoft.HDInsight/clusterpools/ps-test-pool/clusters/flinkcluster/jobs/job1\",\"properties\":{\"jobType\":\"FlinkJob\",\"jobName\":\"job1\",\"jobJarDirectory\":\"abfs://flinkjob@hilosa.dfs.core.windows.net/jars\",\"jarName\":\"JarName\",\"action\":\"NEW\",\"entryClass\":\"com.microsoft.hilo.flink.job.streaming.SleepJob\",\"args\":\"\",\"flinkConfiguration\":{\"parallelism\":\"1\"},\"status\":\"JOB_LAUNCH_FAILED\",\"jobOutput\":\"Job execution failed. \\nFailed to download jar\",\"actionResult\":\"FAILED\"}}]}",
+      "isContentBase64": false
+    }
+  }
+}

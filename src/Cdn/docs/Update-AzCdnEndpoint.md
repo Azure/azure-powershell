@@ -82,6 +82,19 @@ WestUs   endptest001 testps-rg-da16jm
 
 Update an AzureCDN Endpoint under the AzureCDN profile via identity
 
+### Example 3: Update an AzureCDN Endpoint under the AzureCDN profile, enabled content compression
+```powershell
+Update-AzCdnEndpoint -Name cdntestcert -ProfileName classicCDNtest -ResourceGroupName yaoshitest -IsCompressionEnabled:$true
+```
+
+```output
+Location Name        ResourceGroupName
+-------- ----        -----------------
+WestUs   endptest001 testps-rg-da16jm
+```
+
+Update an AzureCDN Endpoint under the AzureCDN profile, enabled content compression
+
 ## PARAMETERS
 
 ### -AsJob

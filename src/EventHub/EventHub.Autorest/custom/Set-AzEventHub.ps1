@@ -21,7 +21,7 @@ Updates an EventHub Entity
 
 function Set-AzEventHub{
 
-    [OutputType([Microsoft.Azure.PowerShell.Cmdlets.EventHub.Models.Api20221001Preview.IEventHub])]
+    [OutputType([Microsoft.Azure.PowerShell.Cmdlets.EventHub.Models.Api202301Preview.IEventHub])]
     [CmdletBinding(DefaultParameterSetName = 'SetExpanded', PositionalBinding = $false, SupportsShouldProcess, ConfirmImpact = 'Medium')]
 	param(
         [Parameter(ParameterSetName = 'SetExpanded', Mandatory, HelpMessage = "The name of EventHub Entity.")]
@@ -108,8 +108,23 @@ function Set-AzEventHub{
         [Parameter(HelpMessage = "Name for capture destination")]
         [Microsoft.Azure.PowerShell.Cmdlets.EventHub.Category('Body')]
         [System.String]
-        # Name for capture destination
         ${DestinationName},
+
+        [Parameter(HelpMessage = "Type of managed service identity.")]
+        [Microsoft.Azure.PowerShell.Cmdlets.EventHub.Category('Body')]
+        [Microsoft.Azure.PowerShell.Cmdlets.EventHub.Support.ManagedServiceIdentityType]
+        ${IdentityType},
+
+        [Parameter(HelpMessage = "Properties for User Assigned Identities")]
+        [Microsoft.Azure.PowerShell.Cmdlets.EventHub.Category('Body')]
+        [System.String]
+        # Name for capture destination
+        ${UserAssignedIdentityId},
+
+        [Parameter(HelpMessage = "Number of partitions created for the Event Hub. allowed values are from 1 to 32 partitions.")]
+        [Microsoft.Azure.PowerShell.Cmdlets.EventHub.Category('Body')]
+        [System.Int64]
+        ${PartitionCount},
 
         [Parameter(HelpMessage = "Resource id of the storage account to be used to create the blobs")]
         [Microsoft.Azure.PowerShell.Cmdlets.EventHub.Category('Body')]
@@ -195,6 +210,8 @@ function Set-AzEventHub{
             $hasIntervalInSeconds = $PSBoundParameters.Remove('IntervalInSeconds')
             $hasSizeLimitInBytes = $PSBoundParameters.Remove('SizeLimitInBytes')
             $hasSkipEmptyArchive = $PSBoundParameters.Remove('SkipEmptyArchive')
+            $hasUserAssignedIdentityId = $PSBoundParameters.Remove('UserAssignedIdentityId')
+            $hasIdentityType = $PSBoundParameters.Remove('IdentityType')
             $hasRetentionTimeInHour = $PSBoundParameters.Remove('RetentionTimeInHour')
             $hasTombstoneRetentionTimeInHour = $PSBoundParameters.Remove('TombstoneRetentionTimeInHour')
             $hasStatus = $PSBoundParameters.Remove('Status')
@@ -203,6 +220,7 @@ function Set-AzEventHub{
             $hasArchiveNameFormat = $PSBoundParameters.Remove('ArchiveNameFormat')
             $hasBlobContainer = $PSBoundParameters.Remove('BlobContainer')
             $hasAsJob = $PSBoundParameters.Remove('AsJob')
+            $hasPartitionCount = $PSBoundParameters.Remove('PartitionCount')
             $null = $PSBoundParameters.Remove('WhatIf')
             $null = $PSBoundParameters.Remove('Confirm')
 
@@ -229,6 +247,11 @@ function Set-AzEventHub{
 
             if ($hasIntervalInSeconds) {
                 $eventHub.IntervalInSeconds = $IntervalInSeconds
+                $hasProperty = $true
+            }
+
+            if($hasPartitionCount) {
+                $eventHub.PartitionCount = $PartitionCount
                 $hasProperty = $true
             }
 
@@ -260,6 +283,14 @@ function Set-AzEventHub{
             if ($hasDestinationName) {
                 $eventHub.DestinationName = $DestinationName
                 $hasProperty = $true
+            }
+
+            if ($hasIdentityType) {
+                $eventHub.IdentityType = $IdentityType
+            }
+
+            if ($hasUserAssignedIdentityId) {
+                $eventHub.UserAssignedIdentityId = $UserAssignedIdentityId
             }
 
             if ($hasStorageAccountResourceId) {

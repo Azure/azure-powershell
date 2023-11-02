@@ -54,7 +54,7 @@ namespace Microsoft.Azure.PowerShell.Tools.AzPredictor.Telemetry
             get { return _userInput; }
             set
             {
-                int keySize = SuggestionSession.GetKeySize(GetSuggestionTelemetryData.PropertyNameUserInput.Length);
+                int keySize = SuggestionSession.GetKeySize(GetSuggestionTelemetryData.PropertyNameInnerUserInput.Length);
 
                 if (_userInput is not null)
                 {

@@ -1,0 +1,125 @@
+{
+  "Update-AzNetworkCloudCluster+[NoContext]+Update+$PATCH+https://management.azure.com/subscriptions/a3eeb848-665a-4dbf-80a4-eb460930fb23/resourceGroups/mbashtovaya-sim5-rg/providers/Microsoft.NetworkCloud/clusters/psversion-test?api-version=2023-07-01+1": {
+    "Request": {
+      "Method": "PATCH",
+      "RequestUri": "https://management.azure.com/subscriptions/a3eeb848-665a-4dbf-80a4-eb460930fb23/resourceGroups/mbashtovaya-sim5-rg/providers/Microsoft.NetworkCloud/clusters/psversion-test?api-version=2023-07-01",
+      "Content": "{\n  \"properties\": {\n    \"aggregatorOrSingleRackDefinition\": {\n      \"availabilityZone\": \"A\",\n      \"bareMetalMachineConfigurationData\": [ ],\n      \"networkRackId\": \"/subscriptions/a3eeb848-665a-4dbf-80a4-eb460930fb23/resourceGroups/mbashtovaya-sim5-rg/providers/Microsoft.Network/virtualNetworks/vNet/subnets/Subnet\",\n      \"rackLocation\": \"Foo Datacenter, Floor 3, Aisle 9, Rack 2\",\n      \"rackSerialNumber\": \"aa1234\",\n      \"rackSkuId\": \"/subscriptions/a3eeb848-665a-4dbf-80a4-eb460930fb23/providers/Microsoft.NetworkCloud/rackSkus/VLab1_4_Aggregator_sim\",\n      \"storageApplianceConfigurationData\": [ ]\n    },\n    \"clusterServicePrincipal\": {\n      \"applicationId\": \"12345678-1234-1234-1234-123456789012\",\n      \"password\": \"password\",\n      \"principalId\": \"00000008-0004-0004-0004-000000000012\",\n      \"tenantId\": \"80000000-4000-4000-4000-120000000000\"\n    },\n    \"computeRackDefinitions\": [\n      {\n        \"availabilityZone\": \"1\",\n        \"bareMetalMachineConfigurationData\": [\n          {\n            \"bmcCredentials\": {\n              \"password\": \"bmcPassword\",\n              \"username\": \"root\"\n            },\n            \"bmcMacAddress\": \"AA:BB:CC:DD:E7:08\",\n            \"bootMacAddress\": \"AA:BB:CC:F8:71:2E\",\n            \"machineName\": \"lab00r750wkr1\",\n            \"rackSlot\": 1,\n            \"serialNumber\": \"5HS7PK3\"\n          },\n          {\n            \"bmcCredentials\": {\n              \"password\": \"bmcPassword\",\n              \"username\": \"root\"\n            },\n            \"bmcMacAddress\": \"B0:7B:25:EF:5E:B8\",\n            \"bootMacAddress\": \"B0:7B:25:DE:7F:F4\",\n            \"machineName\": \"lab00r750mgr1\",\n            \"rackSlot\": 2,\n            \"serialNumber\": \"6P56PK3\"\n          },\n          {\n            \"bmcCredentials\": {\n              \"password\": \"bmcPassword\",\n              \"username\": \"root\"\n            },\n            \"bmcMacAddress\": \"B0:7B:25:EF:60:20\",\n            \"bootMacAddress\": \"B0:7B:25:DE:79:FC\",\n            \"machineName\": \"lab00r750mgr2\",\n            \"rackSlot\": 3,\n            \"serialNumber\": \"7P56PK3\"\n          }\n        ],\n        \"networkRackId\": \"/subscriptions/a3eeb848-665a-4dbf-80a4-eb460930fb23/resourceGroups/cli-ps-test-automation/providers/Microsoft.Network/virtualNetworks/vNet/subnets/Subnet\",\n        \"rackLocation\": \"Foo Datacenter, Floor 3, Aisle 9, Rack 2\",\n        \"rackSerialNumber\": \"aa5678\",\n        \"rackSkuId\": \"/subscriptions/a3eeb848-665a-4dbf-80a4-eb460930fb23/providers/Microsoft.NetworkCloud/rackSkus/VLab1_4_Compute_DellR750_1C2M_sim\"\n      }\n    ]\n  },\n  \"tags\": {\n    \"tag1\": \"tag1\",\n    \"tagsUpdate\": \"tagUpdate\"\n  }\n}",
+      "isContentBase64": false,
+      "Headers": {
+      },
+      "ContentHeaders": {
+        "Content-Type": [ "application/json" ],
+        "Content-Length": [ "2587" ]
+      }
+    },
+    "Response": {
+      "StatusCode": 202,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "ETag": [ "\"f402005c-0000-0100-0000-64dbffe50000\"" ],
+        "Location": [ "https://management.azure.com/subscriptions/a3eeb848-665a-4dbf-80a4-eb460930fb23/providers/Microsoft.NetworkCloud/locations/EASTUS/operationStatuses/ba26ed79-a33e-496e-91dd-4a5cba2a1ab1*D20EB1B2CCB367152535B8DFE7D8F514B7601E86B38165BF43405CEC25CD7D2B?api-version=2023-07-01" ],
+        "x-ms-ratelimit-remaining-subscription-writes": [ "1198" ],
+        "x-ms-providerhub-traffic": [ "True" ],
+        "mise-correlation-id": [ "aaf22ff8-0001-4d3e-9e9a-d73816a88814" ],
+        "x-ms-request-id": [ "83c02d79-de30-4db3-87e3-86c4918edf53" ],
+        "x-ms-correlation-request-id": [ "aa9cd9ab-03d3-4fb9-ab21-d05e81875334" ],
+        "Azure-AsyncOperation": [ "https://management.azure.com/subscriptions/a3eeb848-665a-4dbf-80a4-eb460930fb23/providers/Microsoft.NetworkCloud/locations/EASTUS/operationStatuses/ba26ed79-a33e-496e-91dd-4a5cba2a1ab1*D20EB1B2CCB367152535B8DFE7D8F514B7601E86B38165BF43405CEC25CD7D2B?api-version=2023-07-01" ],
+        "x-ms-routing-request-id": [ "CANADACENTRAL:20230815T224453Z:aa9cd9ab-03d3-4fb9-ab21-d05e81875334" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "Date": [ "Tue, 15 Aug 2023 22:44:52 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "4" ],
+        "Content-Type": [ "application/json; charset=utf-8" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "bnVsbA==",
+      "isContentBase64": false
+    }
+  },
+  "Update-AzNetworkCloudCluster+[NoContext]+Update+$GET+https://management.azure.com/subscriptions/a3eeb848-665a-4dbf-80a4-eb460930fb23/providers/Microsoft.NetworkCloud/locations/EASTUS/operationStatuses/ba26ed79-a33e-496e-91dd-4a5cba2a1ab1*D20EB1B2CCB367152535B8DFE7D8F514B7601E86B38165BF43405CEC25CD7D2B?api-version=2023-07-01+2": {
+    "Request": {
+      "Method": "GET",
+      "RequestUri": "https://management.azure.com/subscriptions/a3eeb848-665a-4dbf-80a4-eb460930fb23/providers/Microsoft.NetworkCloud/locations/EASTUS/operationStatuses/ba26ed79-a33e-496e-91dd-4a5cba2a1ab1*D20EB1B2CCB367152535B8DFE7D8F514B7601E86B38165BF43405CEC25CD7D2B?api-version=2023-07-01",
+      "Content": null,
+      "isContentBase64": false,
+      "Headers": {
+        "Authorization": [ "[Filtered]" ],
+        "x-ms-unique-id": [ "13" ],
+        "x-ms-client-request-id": [ "9a552be4-c142-4ba8-ad9f-96383b6d49bf" ],
+        "CommandName": [ "Update-AzNetworkCloudCluster" ],
+        "FullCommandName": [ "Update-AzNetworkCloudCluster_Update" ],
+        "ParameterSetName": [ "__AllParameterSets" ],
+        "User-Agent": [ "AzurePowershell/v0.0.0", "PSVersion/v7.3.4", "Az.NetworkCloud/0.1.0" ]
+      },
+      "ContentHeaders": {
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "ETag": [ "\"0f006c68-0000-0100-0000-64dbffe80000\"" ],
+        "x-ms-ratelimit-remaining-subscription-reads": [ "11990" ],
+        "x-ms-request-id": [ "bb936b99-a3b3-49c6-98f2-071adfe31d30" ],
+        "x-ms-correlation-request-id": [ "81d02411-2ade-447e-b169-999e94ba0192" ],
+        "x-ms-routing-request-id": [ "CANADACENTRAL:20230815T224524Z:81d02411-2ade-447e-b169-999e94ba0192" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "Date": [ "Tue, 15 Aug 2023 22:45:23 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "633" ],
+        "Content-Type": [ "application/json; charset=utf-8" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\"id\":\"/subscriptions/a3eeb848-665a-4dbf-80a4-eb460930fb23/providers/Microsoft.NetworkCloud/locations/EASTUS/operationStatuses/ba26ed79-a33e-496e-91dd-4a5cba2a1ab1*D20EB1B2CCB367152535B8DFE7D8F514B7601E86B38165BF43405CEC25CD7D2B\",\"name\":\"ba26ed79-a33e-496e-91dd-4a5cba2a1ab1*D20EB1B2CCB367152535B8DFE7D8F514B7601E86B38165BF43405CEC25CD7D2B\",\"resourceId\":\"/subscriptions/a3eeb848-665a-4dbf-80a4-eb460930fb23/resourceGroups/mbashtovaya-sim5-rg/providers/Microsoft.NetworkCloud/clusters/psversion-test\",\"status\":\"Succeeded\",\"startTime\":\"2023-08-15T22:44:52.9262729Z\",\"endTime\":\"2023-08-15T22:44:57.016981Z\",\"error\":{},\"properties\":null}",
+      "isContentBase64": false
+    }
+  },
+  "Update-AzNetworkCloudCluster+[NoContext]+Update+$GET+https://management.azure.com/subscriptions/a3eeb848-665a-4dbf-80a4-eb460930fb23/resourceGroups/mbashtovaya-sim5-rg/providers/Microsoft.NetworkCloud/clusters/psversion-test?api-version=2023-07-01+3": {
+    "Request": {
+      "Method": "GET",
+      "RequestUri": "https://management.azure.com/subscriptions/a3eeb848-665a-4dbf-80a4-eb460930fb23/resourceGroups/mbashtovaya-sim5-rg/providers/Microsoft.NetworkCloud/clusters/psversion-test?api-version=2023-07-01",
+      "Content": null,
+      "isContentBase64": false,
+      "Headers": {
+        "Authorization": [ "[Filtered]" ],
+        "x-ms-unique-id": [ "14" ],
+        "x-ms-client-request-id": [ "9a552be4-c142-4ba8-ad9f-96383b6d49bf" ],
+        "CommandName": [ "Update-AzNetworkCloudCluster" ],
+        "FullCommandName": [ "Update-AzNetworkCloudCluster_Update" ],
+        "ParameterSetName": [ "__AllParameterSets" ],
+        "User-Agent": [ "AzurePowershell/v0.0.0", "PSVersion/v7.3.4", "Az.NetworkCloud/0.1.0" ]
+      },
+      "ContentHeaders": {
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "ETag": [ "\"f402d35c-0000-0100-0000-64dbffe90000\"" ],
+        "x-ms-ratelimit-remaining-subscription-reads": [ "11989" ],
+        "x-ms-providerhub-traffic": [ "True" ],
+        "x-ms-request-id": [ "932e6444-bc63-4ae3-9d66-7361aaa2488c" ],
+        "x-ms-correlation-request-id": [ "b10bff7a-96c9-4153-8fd1-05944ed9b91c" ],
+        "x-ms-routing-request-id": [ "CANADACENTRAL:20230815T224524Z:b10bff7a-96c9-4153-8fd1-05944ed9b91c" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "Date": [ "Tue, 15 Aug 2023 22:45:23 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "3459" ],
+        "Content-Type": [ "application/json; charset=utf-8" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\"id\":\"/subscriptions/a3eeb848-665a-4dbf-80a4-eb460930fb23/resourceGroups/mbashtovaya-sim5-rg/providers/Microsoft.NetworkCloud/clusters/psversion-test\",\"name\":\"psversion-test\",\"type\":\"microsoft.networkcloud/clusters\",\"location\":\"eastus\",\"extendedLocation\":{\"name\":\"/subscriptions/a3eeb848-665a-4dbf-80a4-eb460930fb23/resourcegroups/sim-clustermgr-mrg-tgmbi6wvfumhc/providers/microsoft.extendedlocation/customlocations/sim-cluster-mgr-tgmbi6wvfumhc-cl\",\"type\":\"CustomLocation\"},\"tags\":{\"tag1\":\"tag1\",\"tagsUpdate\":\"tagUpdate\"},\"systemData\":{\"createdBy\":\"REDACTED\",\"createdByType\":\"User\",\"createdAt\":\"2023-08-15T22:42:17.4117296Z\",\"lastModifiedBy\":\"319f651f-7ddb-4fc6-9857-7aef9250bd05\",\"lastModifiedByType\":\"Application\",\"lastModifiedAt\":\"2023-08-15T22:44:57.7729026Z\"},\"properties\":{\"aggregatorOrSingleRackDefinition\":{\"availabilityZone\":\"A\",\"bareMetalMachineConfigurationData\":[],\"networkRackId\":\"/subscriptions/a3eeb848-665a-4dbf-80a4-eb460930fb23/resourceGroups/mbashtovaya-sim5-rg/providers/Microsoft.Network/virtualNetworks/vNet/subnets/Subnet\",\"rackLocation\":\"Foo Datacenter, Floor 3, Aisle 9, Rack 2\",\"rackSerialNumber\":\"aa1234\",\"rackSkuId\":\"/subscriptions/a3eeb848-665a-4dbf-80a4-eb460930fb23/providers/Microsoft.NetworkCloud/rackSkus/VLab1_4_Aggregator_sim\",\"storageApplianceConfigurationData\":[]},\"clusterServicePrincipal\":{\"applicationId\":\"12345678-1234-1234-1234-123456789012\",\"principalId\":\"00000008-0004-0004-0004-000000000012\",\"tenantId\":\"80000000-4000-4000-4000-120000000000\"},\"analyticsWorkspaceId\":\"/subscriptions/a3eeb848-665a-4dbf-80a4-eb460930fb23/resourceGroups/mbashtovaya-sim5-rg/providers/Microsoft.OperationalInsights/workspaces/simulator-law\",\"clusterType\":\"MultiRack\",\"clusterVersion\":\"3.3.0\",\"computeRackDefinitions\":[{\"networkRackId\":\"/subscriptions/a3eeb848-665a-4dbf-80a4-eb460930fb23/resourceGroups/cli-ps-test-automation/providers/Microsoft.Network/virtualNetworks/vNet/subnets/Subnet\",\"rackSkuId\":\"/subscriptions/a3eeb848-665a-4dbf-80a4-eb460930fb23/providers/Microsoft.NetworkCloud/rackSkus/VLab1_4_Compute_DellR750_1C2M_sim\",\"rackSerialNumber\":\"aa5678\",\"rackLocation\":\"Foo Datacenter, Floor 3, Aisle 9, Rack 2\",\"availabilityZone\":\"1\",\"storageApplianceConfigurationData\":[],\"bareMetalMachineConfigurationData\":[{\"rackSlot\":1,\"bootMacAddress\":\"AA:BB:CC:F8:71:2E\",\"bmcCredentials\":{\"username\":\"root\"},\"machineName\":\"lab00r750wkr1\",\"bmcMacAddress\":\"AA:BB:CC:DD:E7:08\",\"serialNumber\":\"5HS7PK3\"},{\"rackSlot\":2,\"bootMacAddress\":\"B0:7B:25:DE:7F:F4\",\"bmcCredentials\":{\"username\":\"root\"},\"machineName\":\"lab00r750mgr1\",\"bmcMacAddress\":\"B0:7B:25:EF:5E:B8\",\"serialNumber\":\"6P56PK3\"},{\"rackSlot\":3,\"bootMacAddress\":\"B0:7B:25:DE:79:FC\",\"bmcCredentials\":{\"username\":\"root\"},\"machineName\":\"lab00r750mgr2\",\"bmcMacAddress\":\"B0:7B:25:EF:60:20\",\"serialNumber\":\"7P56PK3\"}]}],\"networkFabricId\":\"/subscriptions/a3eeb848-665a-4dbf-80a4-eb460930fb23/resourceGroups/mbashtovaya-sim5-rg/providers/Microsoft.Network/virtualNetworks/CM_vNet/subnets/CM_Subnet\",\"managedResourceGroupConfiguration\":{\"location\":\"eastus\",\"name\":\"psversion-test-HostedResources-40356DAE\"},\"availableUpgradeVersions\":[],\"workloadResourceIds\":[],\"clusterManagerId\":\"/subscriptions/a3eeb848-665a-4dbf-80a4-eb460930fb23/resourceGroups/mbashtovaya-sim5-rg/providers/Microsoft.NetworkCloud/clusterManagers/sim-cluster-mgr-tgmbi6wvfumhc\",\"detailedStatus\":\"PendingDeployment\",\"detailedStatusMessage\":\"Cluster is pending deployment.\",\"provisioningState\":\"Succeeded\"}}",
+      "isContentBase64": false
+    }
+  }
+}
