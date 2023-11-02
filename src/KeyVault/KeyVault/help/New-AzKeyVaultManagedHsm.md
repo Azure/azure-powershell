@@ -62,6 +62,7 @@ CustomB32 for the *SKU* parameter to create a CustomB32 managed HSM.
 ### Example 3: Create a managed HSM with an user assigned identity
 ```powershell
 New-AzKeyVaultManagedHsm -Name 'myhsm' -ResourceGroupName 'myrg1' -Location 'eastus2euap' -Administrator "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx"-SoftDeleteRetentionInDays 70 -UserAssignedIdentity /subscriptions/xxxx/resourceGroups/xxxx/providers/Microsoft.ManagedIdentity/userAssignedIdentities/identityName | Format-List
+```
 
 ```output
 Managed HSM Name                        : myhsm
