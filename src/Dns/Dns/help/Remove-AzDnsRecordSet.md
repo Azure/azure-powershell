@@ -167,7 +167,7 @@ You cannot manually delete SOA records.
 Type: Microsoft.Azure.Management.Dns.Models.RecordType
 Parameter Sets: Fields, Mixed
 Aliases:
-Accepted values: A, AAAA, CAA, CNAME, MX, NS, PTR, SOA, SRV, TXT, TLSA, DS, NAPTR
+Accepted values: A, Aaaa, CAA, Cname, MX, NS, PTR, SOA, SRV, TXT, Tlsa, DS, Naptr
 
 Required: True
 Position: Named
