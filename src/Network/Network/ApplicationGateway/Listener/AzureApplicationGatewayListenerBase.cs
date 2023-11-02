@@ -81,6 +81,11 @@ namespace Microsoft.Azure.Commands.Network
         [ValidateNotNullOrEmpty]
         public string Protocol { get; set; }
 
+        [Parameter(
+            HelpMessage = "Host names")]
+        [ValidateNotNullOrEmpty]
+        public string[] HostNames { get; set; }
+
         public override void ExecuteCmdlet()
         {
             base.ExecuteCmdlet();
@@ -137,7 +142,12 @@ namespace Microsoft.Azure.Commands.Network
             {
                 listener.SslProfile = new PSResourceId();
                 listener.SslProfile.Id = this.SslProfileId;
-            }            
+            }
+
+            if (this.HostNames != null)
+            {
+                listener.HostNames = this.HostNames?.ToList();
+            }
 
             listener.Id = ApplicationGatewayChildResourceHelper.GetResourceNotSetId(
                                 this.NetworkClient.NetworkManagementClient.SubscriptionId,
