@@ -60,6 +60,9 @@ namespace Microsoft.WindowsAzure.Commands.Storage.File.Cmdlet
         [Parameter(HelpMessage = "Set ExpiryTime as null for the policy")]
         public SwitchParameter NoExpiryTime { get; set; }
 
+        // Overwrite the useless parameter
+        public override SwitchParameter DisAllowTrailingDot { get; set; }
+
         internal string SetAzureShareStoredAccessPolicy(IStorageFileManagement localChannel, string shareName, string policyName, DateTime? startTime, DateTime? expiryTime, string permission, bool noStartTime, bool noExpiryTime)
         {          
             NamingUtil.ValidateShareName(this.ShareName, false);
