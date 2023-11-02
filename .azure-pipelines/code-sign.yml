@@ -4,11 +4,16 @@ parameters:
   type: string
   default: 'none'
 - name: ChangedModule
-  displayName: Build Module List
+  displayName: Build Module List(Split by ':')
   type: string
   default: 'none'
+- name: BuildInstaller
+  displayName: Build Installer
+  type: boolean
+  default: true
 jobs:
-- job: Release
+- job: Build
+  displayName: Build project
   timeoutInMinutes: 180
   pool:
     name: $(AgentPool)
@@ -357,6 +362,14 @@ jobs:
       ArtifactName: artifacts
     condition: succeededOrFailed()
 
+- job: BuildInstaller
+  displayName: Build installer
+  dependsOn: Build
+  condition: eq(${{ parameters.buildInstaller }}, true)
+  timeoutInMinutes: 180
+  variables:
+    LocalRepoName: 'LocalRepo'
+  steps:
   - pwsh: |
       $Env:Path += ";$Env:WIX"+"bin"
       Register-PSRepository -Name MSIcreationrepository -SourceLocation $Env:RepoArtifacts -InstallationPolicy Trusted

@@ -140,8 +140,10 @@ stages:
   - template: ./code-sign.yml
     parameters:
       OOBBranch: $(BumpUpBranch)
+      ChangedModule: ${{ parameters.ServiceName }}
+      BuildInstaller: false
   - job: PulishForTest
-    dependsOn: Release
+    dependsOn: Build
     steps:
     - task: DownloadBuildArtifacts@1
       inputs:
