@@ -20,13 +20,13 @@ Get-AzSqlElasticJobPrivateEndpoint [-ResourceGroupName] <String> [-ServerName] <
 
 ### ObjectSet
 ```
-Get-AzSqlElasticJobPrivateEndpoint [-ParentObject] <AzureSqlElasticJobAgentModel> [-Name <String>]
+Get-AzSqlElasticJobPrivateEndpoint [-ElasticJobAgentObject] <AzureSqlElasticJobAgentModel> [-Name <String>]
  [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
 ### ResourceIdSet
 ```
-Get-AzSqlElasticJobPrivateEndpoint [-ParentResourceId] <String> [-Name <String>]
+Get-AzSqlElasticJobPrivateEndpoint [-ElasticJobAgentResourceId] <String> [-Name <String>]
  [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
@@ -37,9 +37,8 @@ The Get-AzSqlElasticJobPrivateEndpoint cmdlet gets one or more job private endpo
 
 ### Example 1
 ```powershell
-
 $agent = Get-AzSqlElasticJobAgent -ResourceGroupName rg -ServerName elasticjobserver -Name agent
-$agent | Get-AzSqlElasticJobPrivateEndpoint 
+$agent | Get-AzSqlElasticJobPrivateEndpoint
 ```
 
 ```output
@@ -106,22 +105,7 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -Name
-The private endpoint name
-
-```yaml
-Type: System.String
-Parameter Sets: (All)
-Aliases: PrivateEndpointName
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -ParentObject
+### -ElasticJobAgentObject
 The agent object
 
 ```yaml
@@ -136,7 +120,7 @@ Accept pipeline input: True (ByValue)
 Accept wildcard characters: False
 ```
 
-### -ParentResourceId
+### -ElasticJobAgentResourceId
 The agent resource id
 
 ```yaml
@@ -148,6 +132,21 @@ Required: True
 Position: 0
 Default value: None
 Accept pipeline input: True (ByPropertyName)
+Accept wildcard characters: False
+```
+
+### -Name
+The private endpoint name
+
+```yaml
+Type: System.String
+Parameter Sets: (All)
+Aliases: PrivateEndpointName
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
 Accept wildcard characters: False
 ```
 

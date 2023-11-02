@@ -21,13 +21,13 @@ Remove-AzSqlElasticJobPrivateEndpoint [-ResourceGroupName] <String> [-ServerName
 
 ### ObjectSet
 ```
-Remove-AzSqlElasticJobPrivateEndpoint [-ParentObject] <AzureSqlElasticJobAgentModel> [-Name] <String> [-Force]
- [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
+Remove-AzSqlElasticJobPrivateEndpoint [-ElasticJobAgentObject] <AzureSqlElasticJobAgentModel> [-Name] <String>
+ [-Force] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### ResourceIdSet
 ```
-Remove-AzSqlElasticJobPrivateEndpoint [-ParentResourceId] <String> [-Name] <String> [-Force]
+Remove-AzSqlElasticJobPrivateEndpoint [-ElasticJobAgentResourceId] <String> [-Name] <String> [-Force]
  [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
@@ -87,6 +87,36 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### -ElasticJobAgentObject
+The agent object
+
+```yaml
+Type: Microsoft.Azure.Commands.Sql.ElasticJobs.Model.AzureSqlElasticJobAgentModel
+Parameter Sets: ObjectSet
+Aliases:
+
+Required: True
+Position: 0
+Default value: None
+Accept pipeline input: True (ByValue)
+Accept wildcard characters: False
+```
+
+### -ElasticJobAgentResourceId
+The agent resource id
+
+```yaml
+Type: System.String
+Parameter Sets: ResourceIdSet
+Aliases:
+
+Required: True
+Position: 0
+Default value: None
+Accept pipeline input: True (ByPropertyName)
+Accept wildcard characters: False
+```
+
 ### -Force
 Skip confirmation message for performing the action
 
@@ -114,36 +144,6 @@ Required: True
 Position: 3
 Default value: None
 Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -ParentObject
-The agent object
-
-```yaml
-Type: Microsoft.Azure.Commands.Sql.ElasticJobs.Model.AzureSqlElasticJobAgentModel
-Parameter Sets: ObjectSet
-Aliases:
-
-Required: True
-Position: 0
-Default value: None
-Accept pipeline input: True (ByValue)
-Accept wildcard characters: False
-```
-
-### -ParentResourceId
-The agent resource id
-
-```yaml
-Type: System.String
-Parameter Sets: ResourceIdSet
-Aliases:
-
-Required: True
-Position: 0
-Default value: None
-Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
 ```
 

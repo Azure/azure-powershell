@@ -21,14 +21,14 @@ New-AzSqlElasticJobPrivateEndpoint [-ResourceGroupName] <String> [-ServerName] <
 
 ### ObjectSet
 ```
-New-AzSqlElasticJobPrivateEndpoint [-ParentObject] <AzureSqlElasticJobAgentModel> [-Name] <String>
+New-AzSqlElasticJobPrivateEndpoint [-ElasticJobAgentObject] <AzureSqlElasticJobAgentModel> [-Name] <String>
  -TargetServerAzureResourceId <String> [-AsJob] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
  [<CommonParameters>]
 ```
 
 ### ResourceIdSet
 ```
-New-AzSqlElasticJobPrivateEndpoint [-ParentResourceId] <String> [-Name] <String>
+New-AzSqlElasticJobPrivateEndpoint [-ElasticJobAgentResourceId] <String> [-Name] <String>
  -TargetServerAzureResourceId <String> [-AsJob] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
  [<CommonParameters>]
 ```
@@ -104,22 +104,7 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -Name
-The private endpoint name
-
-```yaml
-Type: System.String
-Parameter Sets: (All)
-Aliases: PrivateEndpointName
-
-Required: True
-Position: 3
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -ParentObject
+### -ElasticJobAgentObject
 The agent object
 
 ```yaml
@@ -134,7 +119,7 @@ Accept pipeline input: True (ByValue)
 Accept wildcard characters: False
 ```
 
-### -ParentResourceId
+### -ElasticJobAgentResourceId
 The agent resource id
 
 ```yaml
@@ -146,6 +131,21 @@ Required: True
 Position: 0
 Default value: None
 Accept pipeline input: True (ByPropertyName)
+Accept wildcard characters: False
+```
+
+### -Name
+The private endpoint name
+
+```yaml
+Type: System.String
+Parameter Sets: (All)
+Aliases: PrivateEndpointName
+
+Required: True
+Position: 3
+Default value: None
+Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
