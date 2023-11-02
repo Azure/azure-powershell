@@ -154,9 +154,16 @@ function Test-RemoveJobPrivateEndpoint
 		Assert-True {$pe1.PrivateEndpointId.Contains("EJ")} "PrivateEndpointId is missing substring 'EJ'"
 		Assert-True {$pe1.PrivateEndpointId.Contains($peName)} "PrivateEndpointId is missing private endpoint name: $peName"
 
-		Remove-AzSqlElasticJobPrivateEndpoint -ElasticJobAgentObject $a1 -Name $peName -Force
+		$pe1 = Remove-AzSqlElasticJobPrivateEndpoint -ElasticJobAgentObject $a1 -Name $peName -Force
 
-		Assert-Throws { $a1 | Get-AzSqlElasticJobPrivateEndpoint -Name $peName }
+		# valide agent level properties
+		Assert-AreEqual $pe1.ResourceGroupName $a1.ResourceGroupName
+		Assert-AreEqual $pe1.ServerName $a1.ServerName
+		Assert-AreEqual $pe1.AgentName $a1.AgentName
+
+		# validate private endpoint properties
+		Assert-AreEqual $pe1.PrivateEndpointName $peName
+		Assert-AreEqual $pe1.TargetServerAzureResourceId $s1.ResourceId
 	}
 	finally
 	{
