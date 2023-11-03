@@ -34,7 +34,7 @@ For information on how to develop for `Az.GraphServices`, see [how-to.md](how-to
 branch: 7b9aa4cc7456fd7ef2bc3166dba1a77bec6bd52e
 require:
 # readme.azure.noprofile.md is the common configuration file
-  - $(this-folder)/../readme.azure.noprofile.md
+  - $(this-folder)/../../readme.azure.noprofile.md
   - $(repo)/specification/graphservicesprod/resource-manager/readme.md
 # If the swagger has not been put in the repo, you may uncomment the following line and refer to it locally
 # - (this-folder)/relative-path-to-your-local-readme.md

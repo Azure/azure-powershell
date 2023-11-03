@@ -47,7 +47,7 @@ In this directory, run AutoRest:
 ``` yaml
 branch: a59006e985447b922b68210244e5fd024a30f1b4
 require:
-  - $(this-folder)/../readme.azure.noprofile.md
+  - $(this-folder)/../../readme.azure.noprofile.md
   - $(repo)/specification/storageimportexport/resource-manager/readme.md
 
 title: ImportExport

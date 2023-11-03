@@ -51,7 +51,7 @@ In this directory, run AutoRest:
 ``` yaml
 branch: f09aacf4c6b63be416212cb182f6b31e8bc6d545
 require:
-  - $(this-folder)/../readme.azure.noprofile.md
+  - $(this-folder)/../../readme.azure.noprofile.md
   - $(repo)/specification/hdinsight/resource-manager/Microsoft.HDInsight/HDInsightOnAks/readme.md
 
 # input-file:

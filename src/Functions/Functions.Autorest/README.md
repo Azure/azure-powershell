@@ -67,7 +67,7 @@ directive:
 ``` yaml
 branch: main
 require:
-  - $(this-folder)/../readme.azure.noprofile.md
+  - $(this-folder)/../../readme.azure.noprofile.md
 input-file:
   - $(repo)/specification/web/resource-manager/Microsoft.CertificateRegistration/stable/2019-08-01/AppServiceCertificateOrders.json
   - $(repo)/specification/web/resource-manager/Microsoft.CertificateRegistration/stable/2019-08-01/CertificateRegistrationProvider.json

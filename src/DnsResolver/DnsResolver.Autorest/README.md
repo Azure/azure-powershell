@@ -72,7 +72,7 @@ In this directory, run AutoRest:
 ``` yaml
 branch: 37072829f795ce840b8085035e8adf4721602f34
 require:
-  - $(this-folder)/../readme.azure.noprofile.md
+  - $(this-folder)/../../readme.azure.noprofile.md
 input-file:
   - $(repo)/specification/dnsresolver/resource-manager/Microsoft.Network/stable/2022-07-01/dnsresolver.json
 

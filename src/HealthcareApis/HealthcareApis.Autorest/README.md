@@ -32,7 +32,7 @@ For information on how to develop for `Az.HealthcareApis`, see [how-to.md](how-t
 ``` yaml
 branch: 672281444dd67605420fc9b3bcbd170040708380
 require:
-  - $(this-folder)/../readme.azure.noprofile.md 
+  - $(this-folder)/../../readme.azure.noprofile.md 
 input-file:
   - $(repo)/specification/healthcareapis/resource-manager/Microsoft.HealthcareApis/stable/2021-11-01/healthcare-apis.json
 

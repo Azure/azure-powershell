@@ -49,7 +49,7 @@ In this directory, run AutoRest:
 ``` yaml
 branch: 4b4bb1021353692578499f43f1aa912964a2b7e2
 require:
-  - $(this-folder)/../readme.azure.noprofile.md
+  - $(this-folder)/../../readme.azure.noprofile.md
 input-file:
   - $(repo)/specification/imagebuilder/resource-manager/Microsoft.VirtualMachineImages/stable/2022-07-01/imagebuilder.json
 

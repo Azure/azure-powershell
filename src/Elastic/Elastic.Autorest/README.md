@@ -33,7 +33,7 @@ For information on how to develop for `Az.Elastic`, see [how-to.md](how-to.md).
 # lock the commit
 branch: eee9cbba738edde2ea48ea0c826f84619e2561df
 require:
-  - $(this-folder)/../readme.azure.noprofile.md
+  - $(this-folder)/../../readme.azure.noprofile.md
 input-file:
   - $(repo)/specification/elastic/resource-manager/Microsoft.Elastic/stable/2020-07-01/elastic.json
 

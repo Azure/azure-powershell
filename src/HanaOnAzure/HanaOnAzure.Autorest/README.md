@@ -49,7 +49,7 @@ In this directory, run AutoRest:
 ``` yaml
 branch: 5df8962f094d431b8f8e7cbe143e742d316e9141
 require:
-  - $(this-folder)/../readme.azure.noprofile.md
+  - $(this-folder)/../../readme.azure.noprofile.md
 input-file:
   - $(repo)/specification/hanaonazure/resource-manager/Microsoft.HanaOnAzure/preview/2020-02-07-preview/hanaonazure.json
 

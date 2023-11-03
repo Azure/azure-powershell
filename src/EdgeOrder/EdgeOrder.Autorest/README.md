@@ -32,7 +32,7 @@ For information on how to develop for `Az.EdgeOrder`, see [how-to.md](how-to.md)
 ``` yaml
 require:
 # readme.azure.noprofile.md is the common configuration file
-  - $(this-folder)/../readme.azure.noprofile.md
+  - $(this-folder)/../../readme.azure.noprofile.md
 input-file:
 # You need to specify your swagger files here.
   - $(repo)/specification/edgeorder/resource-manager/Microsoft.EdgeOrder/stable/2021-12-01/edgeorder.json

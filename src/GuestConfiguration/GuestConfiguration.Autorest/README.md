@@ -31,7 +31,7 @@ For information on how to develop for `Az.GuestConfiguration`, see [how-to.md](h
 ``` yaml
 branch: d5c524d7228920ac75e27efe2e4616d5e43f71b1
 require:
-  - $(this-folder)/../readme.azure.noprofile.md
+  - $(this-folder)/../../readme.azure.noprofile.md
 # lock the commit
 input-file:
   - $(repo)/specification/guestconfiguration/resource-manager/Microsoft.GuestConfiguration/stable/2022-01-25/guestconfiguration.json

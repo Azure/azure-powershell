@@ -32,7 +32,7 @@ For information on how to develop for `Az.DiskPool`, see [how-to.md](how-to.md).
 ``` yaml
 branch: 68acb8952caa568dc5c02d7ae4ca53d8356c9c0a
 require:
-  - $(this-folder)/../readme.azure.noprofile.md
+  - $(this-folder)/../../readme.azure.noprofile.md
 # lock the commit
 input-file:
   - $(repo)/specification/storagepool/resource-manager/Microsoft.StoragePool/stable/2021-08-01/storagepool.json

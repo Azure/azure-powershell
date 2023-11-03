@@ -32,7 +32,7 @@ For information on how to develop for `Az.DynatraceObservability`, see [how-to.m
 ``` yaml
 branch: 8820fa48b53c2c5c6cada3d44046b879932893cd
 require:
-  - $(this-folder)/../readme.azure.noprofile.md
+  - $(this-folder)/../../readme.azure.noprofile.md
 input-file:
   - $(repo)/specification/dynatrace/resource-manager/Dynatrace.Observability/stable/2021-09-01/dynatrace.json
 title: DynatraceObservability

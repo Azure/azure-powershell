@@ -32,7 +32,7 @@ For information on how to develop for `Az.HealthBot`, see [how-to.md](how-to.md)
 ``` yaml
 Branch: 1aceb59fc10a1f9cf8b8da8d2a17dc5ce693604a
 require:
-  - $(this-folder)/../readme.azure.noprofile.md
+  - $(this-folder)/../../readme.azure.noprofile.md
 input-file:
   - $(repo)/specification/healthbot/resource-manager/Microsoft.HealthBot/stable/2020-12-08/healthbot.json
 
