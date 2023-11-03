@@ -48,7 +48,7 @@ In this directory, run AutoRest:
 
 ``` yaml
 require:
-  - $(this-folder)/../readme.azure.noprofile.md
+  - $(this-folder)/../../readme.azure.noprofile.md
 # lock the commit
 branch: 59eb5a7f1d09d0be2b80b8497785ffa2d784b5b6
 

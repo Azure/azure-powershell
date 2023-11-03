@@ -49,7 +49,7 @@ In this directory, run AutoRest:
 ``` yaml
 branch: 49b2b960e028825de1e3b95568c93ed235354e06
 require:
-  - $(this-folder)/../readme.azure.noprofile.md
+  - $(this-folder)/../../readme.azure.noprofile.md
 input-file:
   - $(repo)/specification/reservations/resource-manager/Microsoft.Capacity/stable/2022-11-01/reservations.json
 module-version: 0.1.0

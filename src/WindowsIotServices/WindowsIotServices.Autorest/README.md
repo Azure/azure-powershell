@@ -32,7 +32,7 @@ For information on how to develop for `Az.WindowsIotServices`, see [how-to.md](h
 ``` yaml
 branch: cae75058ed79deb758e08021315ce5a7fc27d403
 require:
-  - $(this-folder)/../readme.azure.noprofile.md
+  - $(this-folder)/../../readme.azure.noprofile.md
 input-file:
   # - D:\azure-rest-api\azure-rest-api-specs\specification\windowsiot\resource-manager\Microsoft.WindowsIoT\stable\2019-06-01\WindowsIotServices.json
   - $(repo)/specification/windowsiot/resource-manager/Microsoft.WindowsIoT/stable/2019-06-01/WindowsIotServices.json

@@ -49,7 +49,7 @@ In this directory, run AutoRest:
 ``` yaml
 branch: 0ae34dbf19d039effd9d366e6c12df38ca4c1c2a
 require:
-  - $(this-folder)/../readme.azure.noprofile.md
+  - $(this-folder)/../../readme.azure.noprofile.md
 input-file:
   - $(repo)/specification/appplatform/resource-manager/Microsoft.AppPlatform/stable/2022-04-01/appplatform.json
     

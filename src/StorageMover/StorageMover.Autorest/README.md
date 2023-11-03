@@ -34,7 +34,7 @@ For information on how to develop for `Az.StorageMover`, see [how-to.md](how-to.
 branch: 74948e5fb9b1e1f8b9d58fb65fc81d5cba6b6ced
 require:
 # readme.azure.noprofile.md is the common configuration file
-  - $(this-folder)/../readme.azure.noprofile.md
+  - $(this-folder)/../../readme.azure.noprofile.md
 input-file:
   - $(repo)/specification/storagemover/resource-manager/Microsoft.StorageMover/stable/2023-10-01/storagemover.json
 

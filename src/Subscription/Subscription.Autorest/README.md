@@ -37,7 +37,7 @@ In this directory, run AutoRest:
 ``` yaml
 branch: 0f39a2d56070d2bc4251494525cb8af88583a938
 require:
-  - $(this-folder)/../readme.azure.noprofile.md
+  - $(this-folder)/../../readme.azure.noprofile.md
 input-file: 
   - $(repo)/specification/subscription/resource-manager/Microsoft.Subscription/stable/2021-10-01/subscriptions.json
 

@@ -32,7 +32,7 @@ For information on how to develop for `Az.Workloads`, see [how-to.md](how-to.md)
 ```yaml
 branch: c7c06e7e311df89b6851aa7e12142c8f0d129cd8 
 require:
-  - $(this-folder)/../readme.azure.noprofile.md
+  - $(this-folder)/../../readme.azure.noprofile.md
   - $(repo)/specification/workloads/resource-manager/readme.md
 
 try-require: 

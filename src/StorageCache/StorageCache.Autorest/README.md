@@ -32,7 +32,7 @@ For information on how to develop for `Az.StorageCache`, see [how-to.md](how-to.
 ``` yaml
 branch: 7a65f22cf67826187f75981e914c7e679039257b
 require:
-  - $(this-folder)/../readme.azure.noprofile.md
+  - $(this-folder)/../../readme.azure.noprofile.md
 input-file:
   - $(repo)/specification/storagecache/resource-manager/Microsoft.StorageCache/stable/2023-05-01/storagecache.json
   - $(repo)/specification/storagecache/resource-manager/Microsoft.StorageCache/stable/2023-05-01/amlfilesystem.json

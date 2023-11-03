@@ -33,7 +33,7 @@ For information on how to develop for `Az.ServiceLinker`, see [how-to.md](how-to
 branch: e7bf3adfa2d5e5cdbb804eec35279501794f461c
 require:
 # readme.azure.noprofile.md is the common configuration file
-  - $(this-folder)/../readme.azure.noprofile.md
+  - $(this-folder)/../../readme.azure.noprofile.md
 input-file:
 # You need to specify your swagger files here.
   - $(repo)/specification/servicelinker/resource-manager/Microsoft.ServiceLinker/preview/2022-11-01-preview/servicelinker.json

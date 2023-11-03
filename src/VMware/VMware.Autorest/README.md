@@ -49,7 +49,7 @@ In this directory, run AutoRest:
 ``` yaml
 branch: 2e665b044670074d91e8a9e6d04f23fbe3c8a06e
 require:
-  - $(this-folder)/../readme.azure.noprofile.md
+  - $(this-folder)/../../readme.azure.noprofile.md
 input-file: 
   - $(repo)/specification/vmware/resource-manager/Microsoft.AVS/stable/2021-12-01/vmware.json
 
