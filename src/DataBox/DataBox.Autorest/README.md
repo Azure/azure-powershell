@@ -32,7 +32,7 @@ For information on how to develop for `Az.DataBox`, see [how-to.md](how-to.md).
 ``` yaml
 require:
 # readme.azure.noprofile.md is the common configuration file
-  - $(this-folder)/../readme.azure.noprofile.md
+  - $(this-folder)/../../readme.azure.noprofile.md
 input-file:
 # You need to specify your swagger files here.
   - $(repo)/specification/databox/resource-manager/Microsoft.DataBox/stable/2022-12-01/databox.json

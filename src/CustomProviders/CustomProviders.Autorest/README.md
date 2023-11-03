@@ -36,7 +36,7 @@ In this directory, run AutoRest:
 
 ``` yaml
 require:
-  - $(this-folder)/../readme.azure.noprofile.md
+  - $(this-folder)/../../readme.azure.noprofile.md
 input-file:
   - $(repo)/specification/customproviders/resource-manager/Microsoft.CustomProviders/preview/2018-09-01-preview/customproviders.json
 

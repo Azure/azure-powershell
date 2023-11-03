@@ -32,7 +32,7 @@ For information on how to develop for `Az.ConnectedNetwork`, see [how-to.md](how
 ``` yaml
 branch: 5f32b50e18ed0a91eefe39287078bf66c4d6c3a8
 require:
-  - $(this-folder)/../readme.azure.noprofile.md
+  - $(this-folder)/../../readme.azure.noprofile.md
 input-file:
   - $(repo)/specification/hybridnetwork/resource-manager/Microsoft.HybridNetwork/stable/2021-05-01/common.json
   - $(repo)/specification/hybridnetwork/resource-manager/Microsoft.HybridNetwork/stable/2021-05-01/networkFunction.json

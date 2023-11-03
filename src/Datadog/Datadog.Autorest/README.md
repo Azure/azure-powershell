@@ -32,7 +32,7 @@ For information on how to develop for `Az.Datadog`, see [how-to.md](how-to.md).
 ``` yaml
 branch: 2e3f1e0c67ee7da1d681a26b6b23b888ce856695
 require:
-  - $(this-folder)/../readme.azure.noprofile.md
+  - $(this-folder)/../../readme.azure.noprofile.md
 input-file: 
   - $(repo)/specification/datadog/resource-manager/Microsoft.Datadog/stable/2021-03-01/datadog.json
   

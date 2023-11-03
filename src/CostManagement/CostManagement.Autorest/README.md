@@ -46,7 +46,7 @@ In this directory, run AutoRest:
 
 ``` yaml
 require:
-  - $(this-folder)/../readme.azure.noprofile.md
+  - $(this-folder)/../../readme.azure.noprofile.md
 input-file:
   - https://github.com/Azure/azure-rest-api-specs/blob/6080bb1fc0e219b72ed3c85966b54334e22e9980/specification/cost-management/resource-manager/Microsoft.CostManagement/stable/2021-10-01/costmanagement.json
   - https://github.com/Azure/azure-rest-api-specs/blob/14f29e62df4563d9bf4b9d98ae0688420df12053/specification/cost-management/resource-manager/Microsoft.CostManagement/stable/2021-10-01/costmanagement.exports.json

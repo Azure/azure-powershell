@@ -32,7 +32,7 @@ For information on how to develop for `Az.DeviceUpdate`, see [how-to.md](how-to.
 ``` yaml
 branch: a7480c1f8b16b7b2be41de94726dca359e93178b
 require:
-  - $(this-folder)/../readme.azure.noprofile.md
+  - $(this-folder)/../../readme.azure.noprofile.md
 input-file:
   - $(repo)/specification/deviceupdate/resource-manager/Microsoft.DeviceUpdate/stable/2022-10-01/privatelinks.json
   - $(repo)/specification/deviceupdate/resource-manager/Microsoft.DeviceUpdate/stable/2022-10-01/deviceupdate.json

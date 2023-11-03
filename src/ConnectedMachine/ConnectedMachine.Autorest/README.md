@@ -42,7 +42,7 @@ In this directory, run AutoRest:
 ``` yaml
 branch: 2ef47d44ce28c909893ead9b6485e8253ee5eed7
 require:
-  - $(this-folder)/../readme.azure.noprofile.md
+  - $(this-folder)/../../readme.azure.noprofile.md
 input-file:
   - $(repo)/specification/hybridcompute/resource-manager/Microsoft.HybridCompute/stable/2022-12-27/HybridCompute.json
   - $(repo)/specification/hybridcompute/resource-manager/Microsoft.HybridCompute/stable/2022-12-27/privateLinkScopes.json

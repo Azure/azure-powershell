@@ -32,7 +32,7 @@ For information on how to develop for `Az.DigitalTwins`, see [how-to.md](how-to.
 ``` yaml
 branch: 9a312bb730561b8e8e3c0ea7c224de38a9d05238
 require:
-  - $(this-folder)/../readme.azure.noprofile.md
+  - $(this-folder)/../../readme.azure.noprofile.md
 input-file:
   - $(repo)/specification/digitaltwins/resource-manager/Microsoft.DigitalTwins/stable/2022-05-31/digitaltwins.json
 

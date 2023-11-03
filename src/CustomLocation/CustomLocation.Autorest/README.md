@@ -32,7 +32,7 @@ For information on how to develop for `Az.CustomLocation`, see [how-to.md](how-t
 ``` yaml
 branch: c6c9e02ae4de78cd7357bc4a5a7be38e6f1909d0
 require:
-  - $(this-folder)/../readme.azure.noprofile.md
+  - $(this-folder)/../../readme.azure.noprofile.md
 input-file: 
   - $(repo)/specification/extendedlocation/resource-manager/Microsoft.ExtendedLocation/stable/2021-08-15/customlocations.json
 

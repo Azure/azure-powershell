@@ -49,7 +49,7 @@ In this directory, run AutoRest:
 ``` yaml
 branch: ac6324d13863e8157f4b392ef0ceef1e86eea935
 require:
-  - $(this-folder)/../readme.azure.noprofile.md
+  - $(this-folder)/../../readme.azure.noprofile.md
 input-file:
   - $(repo)/specification/hybridkubernetes/resource-manager/Microsoft.Kubernetes/preview/2022-10-01-preview/connectedClusters.json
 

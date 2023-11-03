@@ -32,7 +32,7 @@ For information on how to develop for `Az.Dashboard`, see [how-to.md](how-to.md)
 ``` yaml
 branch: 02ed6d4aac29881364f8698b4fdac9c76cd0f538
 require:
-  - $(this-folder)/../readme.azure.noprofile.md
+  - $(this-folder)/../../readme.azure.noprofile.md
 input-file:
   - $(repo)/specification/dashboard/resource-manager/Microsoft.Dashboard/stable/2022-08-01/grafana.json
 

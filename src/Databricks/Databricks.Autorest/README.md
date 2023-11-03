@@ -33,7 +33,7 @@ For information on how to develop for `Az.Databricks`, see [how-to.md](how-to.md
 ``` yaml
 branch: a078cebc3964c8968d141906c613794ca0453861
 require:
-  - $(this-folder)/../readme.azure.noprofile.md
+  - $(this-folder)/../../readme.azure.noprofile.md
   - $(repo)/specification/databricks/resource-manager/readme.md
 try-require:
   - $(repo)/specification/databricks/resource-manager/readme.powershell.md
