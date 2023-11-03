@@ -54,6 +54,7 @@ namespace Microsoft.Azure.Commands.Sql.Common
         public virtual string ElasticPoolName { get; set; }
         public virtual string DatabaseName { get; set; }
         public virtual string Name { get; set; }
+        public virtual string PrivateEndpointName { get; set; }
 
         /// <summary>
         /// Elastic Jobs Resource Id Templates
@@ -84,6 +85,7 @@ namespace Microsoft.Azure.Commands.Sql.Common
             this.TargetGroupName = this.TargetGroupName ?? GetPropertyValue(model, "TargetGroupName");
             this.CredentialName = this.CredentialName ?? GetPropertyValue(model, "CredentialName");
             this.JobExecutionId = this.JobExecutionId ?? GetPropertyValue(model, "JobExecutionId");
+            this.PrivateEndpointName = this.PrivateEndpointName ?? GetPropertyValue(model, "PrivateEndpointName");
         }
 
         /// <summary>
@@ -108,6 +110,7 @@ namespace Microsoft.Azure.Commands.Sql.Common
             this.JobName = this.JobName ?? GetPropertyValue(tokens, "jobs", 10);
             this.CredentialName = this.CredentialName ?? GetPropertyValue(tokens, "credentials", 10);
             this.TargetGroupName = this.TargetGroupName ?? GetPropertyValue(tokens, "targetGroups", 10);
+            this.PrivateEndpointName = this.PrivateEndpointName ?? GetPropertyValue(tokens, "privateEndpoints", 10);
             this.StepName = this.StepName ?? GetPropertyValue(tokens, "steps", 12);
             this.JobExecutionId = this.JobExecutionId ?? GetPropertyValue(tokens, "executions", 12);
         }

@@ -77,6 +77,85 @@ function Test-CreateAgent
 
 <#
     .SYNOPSIS
+    Tests creating an agent with SKU 
+#>
+function Test-CreateAgentWithSku
+{
+    # Setup
+    $location = Get-Location "Microsoft.Sql" "operations" "West US 2"
+    $rg1 = Create-ResourceGroupForTest
+    $s1 = Create-ServerForTest $rg1 $location
+    $db1 = Create-DatabaseForTest $s1
+    $db2 = Create-DatabaseForTest $s1
+    
+    try
+    {
+        # Test with only sku name
+        $agentName = Get-AgentName
+        $resp = New-AzSqlElasticJobAgent -ResourceGroupName $rg1.ResourceGroupName -ServerName $s1.ServerName -DatabaseName $db1.DatabaseName -AgentName $agentName -SkuName 'JA200'
+        Assert-AreEqual $resp.AgentName $agentName
+        Assert-AreEqual $resp.ServerName $s1.ServerName
+        Assert-AreEqual $resp.DatabaseName $db1.DatabaseName
+        Assert-AreEqual $resp.ResourceGroupName $rg1.ResourceGroupName
+        Assert-AreEqual $resp.Location $s1.Location
+        Assert-AreEqual $resp.SkuName "JA200"
+        Assert-AreEqual $resp.WorkerCount 200
+
+        # Test using sku name and capacity
+        $agentName = Get-AgentName
+        $resp = New-AzSqlElasticJobAgent -DatabaseObject $db2 -Name $agentName -SkuName 'JA200' -WorkerCount 200
+        Assert-AreEqual $resp.AgentName $agentName
+        Assert-AreEqual $resp.ServerName $s1.ServerName
+        Assert-AreEqual $resp.DatabaseName $db2.DatabaseName
+        Assert-AreEqual $resp.ResourceGroupName $rg1.ResourceGroupName
+        Assert-AreEqual $resp.Location $s1.Location
+        Assert-AreEqual $resp.SkuName "JA200"
+        Assert-AreEqual $resp.WorkerCount 200
+    }
+    finally
+    {
+        Remove-ResourceGroupForTest $rg1
+    }
+}
+
+
+<#
+    .SYNOPSIS
+    Tests creating an agent with Identity
+#>
+function Test-CreateAgentWithIdentity
+{
+    # Setup
+    $location = Get-Location "Microsoft.Sql" "operations" "West US 2"
+    $rg1 = Create-ResourceGroupForTest
+    $s1 = Create-ServerForTest $rg1 $location
+    $db1 = Create-DatabaseForTest $s1
+    
+    try
+    {
+        # use a test UMI
+        $umi = "/subscriptions/2e7fe4bd-90c7-454e-8bb6-dc44649f27b2/resourcegroups/pstest/providers/Microsoft.ManagedIdentity/userAssignedIdentities/pstestumi"
+
+        # Test 
+        $agentName = Get-AgentName
+        $resp = New-AzSqlElasticJobAgent -ResourceGroupName $rg1.ResourceGroupName -ServerName $s1.ServerName -DatabaseName $db1.DatabaseName -AgentName $agentName -IdentityType "UserAssigned" -UserAssignedIdentityId $umi
+        Assert-AreEqual $resp.AgentName $agentName
+        Assert-AreEqual $resp.ServerName $s1.ServerName
+        Assert-AreEqual $resp.DatabaseName $db1.DatabaseName
+        Assert-AreEqual $resp.ResourceGroupName $rg1.ResourceGroupName
+        Assert-AreEqual $resp.Location $s1.Location
+        Assert-AreEqual $resp.Identity.Type "UserAssigned"
+        Assert-NotNull $resp.Identity.UserAssignedIdentities
+        Assert-True { $resp.Identity.UserAssignedIdentities.ContainsKey($umi) } "UMI did not get assigned to job agent."
+    }
+    finally
+    {
+        Remove-ResourceGroupForTest $rg1
+    }
+}
+
+<#
+    .SYNOPSIS
     Tests updating an agent
 #>
 function Test-UpdateAgent
@@ -100,7 +179,7 @@ function Test-UpdateAgent
         Assert-AreEqual $resp.ResourceGroupName $a1.ResourceGroupName
         Assert-AreEqual $resp.Location $a1.Location
         Assert-AreEqual $resp.WorkerCount 100
-        # Assert-AreEqual $resp.Tags.Octopus "Agent"
+        Assert-AreEqual $resp.Tags.Octopus "Agent"
 
         # Test using input object
         $resp = Set-AzSqlElasticJobAgent -InputObject $a1 -Tag $tags
@@ -110,7 +189,7 @@ function Test-UpdateAgent
         Assert-AreEqual $resp.ResourceGroupName $a1.ResourceGroupName
         Assert-AreEqual $resp.Location $a1.Location
         Assert-AreEqual $resp.WorkerCount 100
-        # Assert-AreEqual $resp.Tags.Octopus "Agent"
+        Assert-AreEqual $resp.Tags.Octopus "Agent"
 
         # Test using resource id
         $resp = Set-AzSqlElasticJobAgent -ResourceId $a1.ResourceId -Tag $tags
@@ -120,7 +199,7 @@ function Test-UpdateAgent
         Assert-AreEqual $resp.ResourceGroupName $a1.ResourceGroupName
         Assert-AreEqual $resp.Location $a1.Location
         Assert-AreEqual $resp.WorkerCount 100
-        # Assert-AreEqual $resp.Tags.Octopus "Agent"
+        Assert-AreEqual $resp.Tags.Octopus "Agent"
 
         # Test using piping
         $resp = $a1 | Set-AzSqlElasticJobAgent -Tag $tags
@@ -130,7 +209,29 @@ function Test-UpdateAgent
         Assert-AreEqual $resp.ResourceGroupName $a1.ResourceGroupName
         Assert-AreEqual $resp.Location $a1.Location
         Assert-AreEqual $resp.WorkerCount 100
-        # Assert-AreEqual $resp.Tags.Octopus "Agent"
+        Assert-AreEqual $resp.Tags.Octopus "Agent"
+
+        # Test updating with SkuName only
+        $resp = Set-AzSqlElasticJobAgent -ResourceGroupName $a1.ResourceGroupName -ServerName $a1.ServerName -AgentName $a1.AgentName -SkuName "JA200"
+        Assert-AreEqual $resp.SkuName "JA200"
+        Assert-AreEqual $resp.WorkerCount 200
+
+        # Test updating with WorkerCount only
+        $resp = Set-AzSqlElasticJobAgent -ResourceGroupName $a1.ResourceGroupName -ServerName $a1.ServerName -AgentName $a1.AgentName -WorkerCount 100
+        Assert-AreEqual $resp.SkuName "JA100"
+        Assert-AreEqual $resp.WorkerCount 100
+
+        # Test updating with Identity 
+        $umi = "/subscriptions/2e7fe4bd-90c7-454e-8bb6-dc44649f27b2/resourcegroups/pstest/providers/Microsoft.ManagedIdentity/userAssignedIdentities/pstestumi"
+        $resp = Set-AzSqlElasticJobAgent -ResourceGroupName $a1.ResourceGroupName -ServerName $a1.ServerName -AgentName $a1.AgentName -IdentityType "UserAssigned" -UserAssignedIdentityId $umi
+        Assert-AreEqual $resp.Identity.Type "UserAssigned"
+        Assert-NotNull $resp.Identity.UserAssignedIdentities
+        Assert-True { $resp.Identity.UserAssignedIdentities.ContainsKey($umi) } "UMI did not get assigned to job agent."
+
+        # Test removing Identity 
+        $resp = Set-AzSqlElasticJobAgent -ResourceGroupName $a1.ResourceGroupName -ServerName $a1.ServerName -AgentName $a1.AgentName -IdentityType "None"
+        Assert-AreEqual $resp.Identity.Type "None"
+        Assert-Null $resp.Identity.UserAssignedIdentities
     }
     finally
     {
