@@ -34,7 +34,7 @@ For information on how to develop for `Az.NetworkAnalytics`, see [how-to.md](how
 branch: c364b64a6b412ffd7507dea71ae53251d35748c1
 require:
 # readme.azure.noprofile.md is the common configuration file
-  - $(this-folder)/../readme.azure.noprofile.md
+  - $(this-folder)/../../readme.azure.noprofile.md
   - $(repo)/specification/networkanalytics/resource-manager/readme.md
 # If the swagger has not been put in the repo, you may uncomment the following line and refer to it locally
 # - (this-folder)/relative-path-to-your-local-readme.md

@@ -31,7 +31,7 @@ For information on how to develop for `Az.Nginx`, see [how-to.md](how-to.md).
 ``` yaml
 require:
 # readme.azure.noprofile.md is the common configuration file
-  - $(this-folder)/../readme.azure.noprofile.md
+  - $(this-folder)/../../readme.azure.noprofile.md
 input-file:
 # You need to specify your swagger files here.
   - https://github.com/Azure/azure-rest-api-specs/blob/5dd50f3a923888cae5b77a4d4a48cb57430ba9de/specification/nginx/resource-manager/NGINX.NGINXPLUS/stable/2022-08-01/swagger.json

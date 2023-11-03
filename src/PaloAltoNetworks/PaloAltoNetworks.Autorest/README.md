@@ -32,7 +32,7 @@ For information on how to develop for `Az.PaloAltoNetworks`, see [how-to.md](how
 ``` yaml
 branch: 53f6cced1504a476ba001c9d7250ab195e9c299b
 require:
-  - $(this-folder)/../readme.azure.noprofile.md
+  - $(this-folder)/../../readme.azure.noprofile.md
 input-file:
   - $(repo)/specification/paloaltonetworks/resource-manager/PaloAltoNetworks.Cloudngfw/stable/2022-08-29/PaloAltoNetworks.Cloudngfw.json
 

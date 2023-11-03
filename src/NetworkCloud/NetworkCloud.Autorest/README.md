@@ -36,7 +36,7 @@ For information on how to develop for `Az.NetworkCloud`, see [how-to.md](how-to.
 branch: f7ab2a992ff6a3a51a8f0bc82f2d7beebf61d90b
 require:
 # readme.azure.noprofile.md is the common configuration file
-  - $(this-folder)/../readme.azure.noprofile.md
+  - $(this-folder)/../../readme.azure.noprofile.md
   - $(repo)/specification/networkcloud/resource-manager/readme.md
 input-file:
 # You need to specify your swagger files here.

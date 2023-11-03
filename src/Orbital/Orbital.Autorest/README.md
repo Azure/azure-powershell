@@ -32,7 +32,7 @@ For information on how to develop for `Az.Orbital`, see [how-to.md](how-to.md).
 ``` yaml
 branch: 8725e0700974d2c8cba436b5696728ebc5a80f1b
 require:
-  - $(this-folder)/../readme.azure.noprofile.md 
+  - $(this-folder)/../../readme.azure.noprofile.md 
 input-file:
   - $(repo)/specification/orbital/resource-manager/Microsoft.Orbital/stable/2022-11-01/orbital.json
 

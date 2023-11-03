@@ -32,7 +32,7 @@ For information on how to develop for `Az.NetworkFunction`, see [how-to.md](how-
 ``` yaml
 branch: 5ef93469c04983e472e57ca227fc5159d13a172a
 require:
-  - $(this-folder)/../readme.azure.noprofile.md
+  - $(this-folder)/../../readme.azure.noprofile.md
 input-file:
   - $(repo)/specification/networkfunction/resource-manager/Microsoft.NetworkFunction/stable/2022-11-01/AzureTrafficCollector.json
 module-version: 0.1.0

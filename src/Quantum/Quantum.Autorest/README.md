@@ -32,7 +32,7 @@ For information on how to develop for `Az.Quantum`, see [how-to.md](how-to.md).
 ``` yaml
 branch: b9b3dc975efbc8d25b5c7d84febb710cc889b6bf
 require:
-  - $(this-folder)/../readme.azure.noprofile.md
+  - $(this-folder)/../../readme.azure.noprofile.md
 input-file:
   - $(repo)/specification/quantum/resource-manager/Microsoft.Quantum/preview/2022-01-10-preview/quantum.json
 

@@ -32,7 +32,7 @@ For information on how to develop for `Az.Relay`, see [how-to.md](how-to.md).
 ``` yaml
 branch: 591b17c5a50e7fc0ef09211197279e6d9f7ebc22
 require:
-  - $(this-folder)/../readme.azure.noprofile.md
+  - $(this-folder)/../../readme.azure.noprofile.md
   - $(repo)/specification/relay/resource-manager/readme.md
 
 title: Relay

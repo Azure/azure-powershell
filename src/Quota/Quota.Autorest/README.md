@@ -33,7 +33,7 @@ For information on how to develop for `Az.Quota`, see [how-to.md](how-to.md).
 # lock the commit
 branch: 679887ace44697c726aba8d2814ee415a5d25e6f
 require:
-  - $(this-folder)/../readme.azure.noprofile.md
+  - $(this-folder)/../../readme.azure.noprofile.md
 input-file:
   - $(repo)/specification/quota/resource-manager/Microsoft.Quota/preview/2021-03-15-preview/quota.json
 
