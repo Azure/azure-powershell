@@ -60,7 +60,7 @@ namespace Microsoft.Azure.Commands.WebApps.Cmdlets.BackupRestore
             SnapshotRestoreRequest recoveryReq = new SnapshotRestoreRequest()
             {
                 Overwrite = true,
-                SnapshotTime = this.InputObject.SnapshotTime.ToString("o"),
+                SnapshotTime = this.InputObject.SnapshotTime,
                 RecoverConfiguration = this.RecoverConfiguration,
                 IgnoreConflictingHostNames = true,
                 RecoverySource = source,
