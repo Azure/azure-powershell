@@ -1,5 +1,5 @@
 ---
-external help file:
+external help file: Az.StackHCI-help.xml
 Module Name: Az.StackHCI
 online version: https://learn.microsoft.com/powershell/module/az.stackhci/invoke-azstackhciextendclustersoftwareassurancebenefit
 schema: 2.0.0
@@ -16,28 +16,28 @@ Extends Software Assurance Benefit to a cluster
 ```
 Invoke-AzStackHciExtendClusterSoftwareAssuranceBenefit -ClusterName <String> -ResourceGroupName <String>
  [-SubscriptionId <String>] [-SoftwareAssuranceIntent <SoftwareAssuranceIntent>] [-DefaultProfile <PSObject>]
- [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
+ [-AsJob] [-NoWait] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### Extend
 ```
 Invoke-AzStackHciExtendClusterSoftwareAssuranceBenefit -ClusterName <String> -ResourceGroupName <String>
- -SoftwareAssuranceChangeRequest <ISoftwareAssuranceChangeRequest> [-SubscriptionId <String>]
- [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
+ [-SubscriptionId <String>] -SoftwareAssuranceChangeRequest <ISoftwareAssuranceChangeRequest>
+ [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-WhatIf] [-Confirm] [<CommonParameters>]
+```
+
+### ExtendViaIdentityExpanded
+```
+Invoke-AzStackHciExtendClusterSoftwareAssuranceBenefit -InputObject <IStackHciIdentity>
+ [-SoftwareAssuranceIntent <SoftwareAssuranceIntent>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-WhatIf]
+ [-Confirm] [<CommonParameters>]
 ```
 
 ### ExtendViaIdentity
 ```
 Invoke-AzStackHciExtendClusterSoftwareAssuranceBenefit -InputObject <IStackHciIdentity>
  -SoftwareAssuranceChangeRequest <ISoftwareAssuranceChangeRequest> [-DefaultProfile <PSObject>] [-AsJob]
- [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
-```
-
-### ExtendViaIdentityExpanded
-```
-Invoke-AzStackHciExtendClusterSoftwareAssuranceBenefit -InputObject <IStackHciIdentity>
- [-SoftwareAssuranceIntent <SoftwareAssuranceIntent>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
- [-Confirm] [-WhatIf] [<CommonParameters>]
+ [-NoWait] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -45,14 +45,14 @@ Extends Software Assurance Benefit to a cluster
 
 ## EXAMPLES
 
-### Example 1: 
+### Example 1:
 ```powershell
 Invoke-AzStackHciExtendClusterSoftwareAssuranceBenefit -ClusterName "test-clus" -ResourceGroupName "test-rg"
 ```
 
 Enable Software Assurance on a cluster, by default the intent is "enable".
 
-### Example 2: 
+### Example 2:
 ```powershell
 Invoke-AzStackHciExtendClusterSoftwareAssuranceBenefit -ClusterName "test-clus" -ResourceGroupName "test-rg" -SoftwareAssuranceIntent "Disable"
 ```
@@ -81,7 +81,7 @@ The name of the cluster.
 
 ```yaml
 Type: System.String
-Parameter Sets: Extend, ExtendExpanded
+Parameter Sets: ExtendExpanded, Extend
 Aliases:
 
 Required: True
@@ -113,7 +113,7 @@ To construct, see NOTES section for INPUTOBJECT properties and create a hash tab
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Models.IStackHciIdentity
-Parameter Sets: ExtendViaIdentity, ExtendViaIdentityExpanded
+Parameter Sets: ExtendViaIdentityExpanded, ExtendViaIdentity
 Aliases:
 
 Required: True
@@ -144,7 +144,7 @@ The name is case insensitive.
 
 ```yaml
 Type: System.String
-Parameter Sets: Extend, ExtendExpanded
+Parameter Sets: ExtendExpanded, Extend
 Aliases:
 
 Required: True
@@ -190,7 +190,7 @@ The ID of the target subscription.
 
 ```yaml
 Type: System.String
-Parameter Sets: Extend, ExtendExpanded
+Parameter Sets: ExtendExpanded, Extend
 Aliases:
 
 Required: False
@@ -246,23 +246,4 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## NOTES
 
-ALIASES
-
-COMPLEX PARAMETER PROPERTIES
-
-To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
-
-
-`INPUTOBJECT <IStackHciIdentity>`: Identity Parameter
-  - `[ArcSettingName <String>]`: The name of the proxy resource holding details of HCI ArcSetting information.
-  - `[ClusterName <String>]`: The name of the cluster.
-  - `[ExtensionName <String>]`: The name of the machine extension.
-  - `[Id <String>]`: Resource identity path
-  - `[ResourceGroupName <String>]`: The name of the resource group. The name is case insensitive.
-  - `[SubscriptionId <String>]`: The ID of the target subscription.
-
-`SOFTWAREASSURANCECHANGEREQUEST <ISoftwareAssuranceChangeRequest>`: .
-  - `[SoftwareAssuranceIntent <SoftwareAssuranceIntent?>]`: Customer Intent for Software Assurance Benefit.
-
 ## RELATED LINKS
-

@@ -1,5 +1,5 @@
 ---
-external help file:
+external help file: Az.StackHCI-help.xml
 Module Name: Az.StackHCI
 online version: https://learn.microsoft.com/powershell/module/az.stackhci/enable-azstackhciattestation
 schema: 2.0.0
@@ -13,8 +13,8 @@ Enable-AzStackHCIAttestation configures the host and enables specified guests fo
 ## SYNTAX
 
 ```
-Enable-AzStackHCIAttestation [[-ComputerName] <String>] [-AddVM] [-Credential <PSCredential>] [-Force]
- [-Confirm] [-WhatIf] [<CommonParameters>]
+Enable-AzStackHCIAttestation [[-ComputerName] <String>] [-Credential <PSCredential>] [-AddVM] [-Force]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -22,7 +22,7 @@ Enable-AzStackHCIAttestation configures the host and enables specified guests fo
 
 ## EXAMPLES
 
-### Example 1: 
+### Example 1:
 ```powershell
 Enable-AzStackHCIAttestation -AddVM
 ```
@@ -62,7 +62,7 @@ Parameter Sets: (All)
 Aliases:
 
 Required: False
-Position: 0
+Position: 1
 Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
@@ -141,7 +141,4 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## NOTES
 
-ALIASES
-
 ## RELATED LINKS
-
