@@ -166,11 +166,13 @@ namespace Microsoft.Azure.Commands.Compute.Automation
                             }
                             // END: For Cross-tenant RBAC sharing
                             // GuestAttestation install scenario
+                            /* removing as part of guest attestation defaulting removal
                             if (shouldGuestAttestationExtBeInstalled(parameters) &&
                                parameters.Identity == null)
                             {
                                 parameters.Identity = new VirtualMachineScaleSetIdentity(null, null, Microsoft.Azure.Management.Compute.Models.ResourceIdentityType.SystemAssigned, null);
                             }
+                            */
 
                             VirtualMachineScaleSet result;
                             if (auxAuthHeader != null)

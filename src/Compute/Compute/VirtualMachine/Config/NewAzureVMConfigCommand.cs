@@ -400,6 +400,15 @@ namespace Microsoft.Azure.Commands.Compute
                 }
             }
 
+            if (this.IsParameterBound(c => c.SecurityType) && this.SecurityType?.ToLower() == ConstantValues.StandardSecurityType)
+            {
+                if (vm.SecurityProfile == null)
+                {
+                    vm.SecurityProfile = new SecurityProfile();
+                }
+                vm.SecurityProfile.SecurityType = this.SecurityType;
+            }
+
             if (this.IsParameterBound(c => c.EnableVtpm))
             {
                 if (vm.SecurityProfile == null)

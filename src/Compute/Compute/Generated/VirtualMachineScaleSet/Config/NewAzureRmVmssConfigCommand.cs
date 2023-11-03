@@ -609,6 +609,19 @@ namespace Microsoft.Azure.Commands.Compute.Automation
                 }
             }
 
+            if (this.IsParameterBound(c => c.SecurityType) && this.SecurityType?.ToLower() == ConstantValues.StandardSecurityType)
+            {
+                if (vVirtualMachineProfile == null)
+                {
+                    vVirtualMachineProfile = new PSVirtualMachineScaleSetVMProfile();
+                }
+                if (vVirtualMachineProfile.SecurityProfile == null)
+                {
+                    vVirtualMachineProfile.SecurityProfile = new SecurityProfile();
+                }
+                vVirtualMachineProfile.SecurityProfile.SecurityType = this.SecurityType;
+            }
+
             if (this.IsParameterBound(c => c.EnableVtpm))
             {
                 if (vVirtualMachineProfile == null)

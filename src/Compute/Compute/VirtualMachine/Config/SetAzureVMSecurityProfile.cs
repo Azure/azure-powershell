@@ -55,9 +55,14 @@ namespace Microsoft.Azure.Commands.Compute
                 }
                 this.VM.SecurityProfile.SecurityType = SecurityType;
             }
-            else if (SecurityType?.ToLower() == ConstantValues.StandardSecurityType)
+            else if (SecurityType?.ToLower() == ConstantValues.StandardSecurityType)//I think I need this now
             {
-                WriteInformation("You have set the SecurityType to Standard. This value makes this cmdlet perform no actions at this time.", new string[] { "PSHOST" });
+                if (this.VM.SecurityProfile == null)
+                {
+                    this.VM.SecurityProfile = new SecurityProfile();
+                }
+                this.VM.SecurityProfile.SecurityType = SecurityType;
+                //WriteInformation("You have set the SecurityType to Standard. This value makes this cmdlet perform no actions at this time.", new string[] { "PSHOST" });
             }
 
             WriteObject(this.VM);

@@ -764,6 +764,10 @@ namespace Microsoft.Azure.Commands.Compute
                     this.EnableVtpm = this.EnableVtpm ?? true;
                     this.EnableSecureBoot = this.EnableSecureBoot ?? true;
                 }
+                else if (this.SecurityType?.ToLower() == ConstantValues.StandardSecurityType)
+                {
+                    this.SecurityType = this.SecurityType;
+                }
                 
             }
             // Default TrustedLaunch values for SimpleParameterSet (no config)
@@ -985,6 +989,12 @@ namespace Microsoft.Azure.Commands.Compute
                 setTrustedLaunchImage();
             }
 
+            // Standard security type scenario added
+            if (this.VM.SecurityProfile?.SecurityType?.ToString().ToLower() == ConstantValues.StandardSecurityType)
+            {
+
+            }
+
             // Disk attached scenario for TL defaulting
             if (this.VM.SecurityProfile?.SecurityType == null
                 && this.VM.StorageProfile?.OsDisk?.ManagedDisk?.Id != null)
@@ -1021,13 +1031,7 @@ namespace Microsoft.Azure.Commands.Compute
                     this.VM.SecurityProfile.UefiSettings = new UefiSettings(true, true);
                 }
             }
-            // Check if Identity can be defaulted in. 
-            if (shouldGuestAttestationExtBeInstalled() &&
-                this.VM != null &&
-                this.VM.Identity == null)
-            {
-                this.VM.Identity = new VirtualMachineIdentity(null, null, Microsoft.Azure.Management.Compute.Models.ResourceIdentityType.SystemAssigned);
-            }
+            
 
             // ImageReference provided, TL defaulting occurs if image is Gen2. 
             if (this.VM.SecurityProfile?.SecurityType == null
@@ -1110,8 +1114,18 @@ namespace Microsoft.Azure.Commands.Compute
 
                 setTrustedLaunchImage();
             }
-            
-            
+
+            // Check if Identity can be defaulted in. 
+            /* removing as part of guest attestation default removal
+            if (shouldGuestAttestationExtBeInstalled() &&
+                this.VM != null &&
+                this.VM.Identity == null)
+            {
+                this.VM.Identity = new VirtualMachineIdentity(null, null, Microsoft.Azure.Management.Compute.Models.ResourceIdentityType.SystemAssigned);
+            }
+            */
+
+
             if (ShouldProcess(this.VM.Name, VerbsCommon.New))
             {
                 ExecuteClientAction(() =>
@@ -1260,6 +1274,11 @@ namespace Microsoft.Azure.Commands.Compute
                 });
             }
         }
+
+        private void setTrustedLaunchHyperVGeneration()
+        {
+            //this.VM
+        }
         
         private void setTrustedLaunchImage()
         {
@@ -1313,11 +1332,16 @@ namespace Microsoft.Azure.Commands.Compute
             }
             else if (specificImageRespone.Body.HyperVGeneration.ToUpper() == "V1")
             {
-                if (this.VM.SecurityProfile == null)
+                if (this.VM.VirtualMachineScaleSet == null && !this.IsParameterBound(c => c.VmssId)) // for now, does not support adding vm to vmss directly, not worth the extra api call to see if the vmss is flex.
                 {
-                    this.VM.SecurityProfile = new SecurityProfile();
+                    if (this.VM.SecurityProfile == null)
+                    {
+                        this.VM.SecurityProfile = new SecurityProfile();
+                    }
+                    this.VM.SecurityProfile.SecurityType = ConstantValues.StandardSecurityType;
+                    
                 }
-                this.VM.SecurityProfile.SecurityType = ConstantValues.StandardSecurityType;
+
                 if (this.AsJobPresent() == false) // to avoid a failure when it is a job. Seems to fail when it is a job.
                 {
                     WriteInformation(HelpMessages.TrustedLaunchUpgradeMessage, new string[] { "PSHOST" });

@@ -567,6 +567,10 @@ namespace Microsoft.Azure.Commands.Compute.Automation
                         _cmdlet.EnableVtpm = _cmdlet.EnableVtpm ?? true;
                         _cmdlet.EnableSecureBoot = _cmdlet.EnableSecureBoot ?? true;
                     }
+                    else if (_cmdlet.SecurityType?.ToLower() == ConstantValues.StandardSecurityType)
+                    {
+                        _cmdlet.SecurityType = _cmdlet.SecurityType;
+                    }
                 }
                 _cmdlet.NatBackendPort = ImageAndOsType.UpdatePorts(_cmdlet.NatBackendPort);
 
