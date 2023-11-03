@@ -672,7 +672,6 @@ $registerArcScript = {
     }
     finally
     {
-
         try{ Stop-Transcript } catch {}
     }
 }
