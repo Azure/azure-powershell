@@ -32,7 +32,7 @@ For information on how to develop for `Az.Maps`, see [how-to.md](how-to.md).
 ``` yaml
 branch: 34f09c2b143dc50acc8905a415b8d6c959c9e142
 require:
-  - $(this-folder)/../readme.azure.noprofile.md
+  - $(this-folder)/../../readme.azure.noprofile.md
 input-file:
   - $(repo)/specification/maps/resource-manager/Microsoft.Maps/stable/2021-02-01/maps-management.json
 

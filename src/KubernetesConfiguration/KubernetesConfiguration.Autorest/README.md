@@ -49,7 +49,7 @@ In this directory, run AutoRest:
 ``` yaml
 branch: d11245bcaa06b6d87db179c903ba4b049adf1bf2
 require:
-  - $(this-folder)/../readme.azure.noprofile.md
+  - $(this-folder)/../../readme.azure.noprofile.md
 input-file:
   - $(repo)/specification/kubernetesconfiguration/resource-manager/Microsoft.KubernetesConfiguration/stable/2022-11-01/extensions.json
   - $(repo)/specification/kubernetesconfiguration/resource-manager/Microsoft.KubernetesConfiguration/stable/2022-11-01/fluxconfiguration.json

@@ -49,7 +49,7 @@ In this directory, run AutoRest:
 ``` yaml
 branch: ae862b1c090b4c2c951ea46bf97ddbafd6f76d82
 require:
-  - $(this-folder)/../readme.azure.noprofile.md
+  - $(this-folder)/../../readme.azure.noprofile.md
 input-file:
   - $(repo)/specification/mariadb/resource-manager/Microsoft.DBforMariaDB/preview/2018-06-01-preview/mariadb.json
 

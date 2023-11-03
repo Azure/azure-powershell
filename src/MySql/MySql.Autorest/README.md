@@ -49,7 +49,7 @@ In this directory, run AutoRest:
 ``` yaml
 branch: 7af6056c5682b12ccfc2bb358b290158e9fce917
 require:
-  - $(this-folder)/../readme.azure.noprofile.md
+  - $(this-folder)/../../readme.azure.noprofile.md
 input-file:
   - $(repo)/specification/mysql/resource-manager/Microsoft.DBforMySQL/stable/2017-12-01/mysql.json
   - $(repo)/specification/mysql/resource-manager/Microsoft.DBforMySQL/stable/2017-12-01/ServerSecurityAlertPolicies.json

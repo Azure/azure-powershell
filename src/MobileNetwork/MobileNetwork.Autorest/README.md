@@ -32,7 +32,7 @@ For information on how to develop for `Az.MobileNetwork`, see [how-to.md](how-to
 ``` yaml
 branch: 933dbc070dda85e2d115dc42893f07b2ed5b74f6
 require:
-  - $(this-folder)/../readme.azure.noprofile.md
+  - $(this-folder)/../../readme.azure.noprofile.md
 input-file:
   - $(repo)/specification/mobilenetwork/resource-manager/Microsoft.MobileNetwork/stable/2022-11-01/attachedDataNetwork.json
   - $(repo)/specification/mobilenetwork/resource-manager/Microsoft.MobileNetwork/stable/2022-11-01/common.json

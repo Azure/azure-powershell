@@ -50,7 +50,7 @@ In this directory, run AutoRest:
 > Values
 ``` yaml
 require:
-  - $(this-folder)/../readme.azure.noprofile.md
+  - $(this-folder)/../../readme.azure.noprofile.md
 # lock the commit
 input-file:
   - $(repo)/specification/azure-kusto/resource-manager/Microsoft.Kusto/stable/2023-08-15/kusto.json

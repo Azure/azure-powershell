@@ -32,7 +32,7 @@ For information on how to develop for `Az.LoadTesting`, see [how-to.md](how-to.m
 ``` yaml
 branch: 7d98899a9e242ef529368c9ba6d1686725a8b23b
 require:
-  - $(this-folder)/../readme.azure.noprofile.md 
+  - $(this-folder)/../../readme.azure.noprofile.md 
 input-file:
   - $(repo)/specification/loadtestservice/resource-manager/Microsoft.LoadTestService/stable/2022-12-01/loadtestservice.json
 

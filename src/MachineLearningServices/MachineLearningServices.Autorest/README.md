@@ -32,7 +32,7 @@ For information on how to develop for `Az.MachineLearningServices`, see [how-to.
 ``` yaml
 # branch: 476564a1aa6ddb38ec681c9f89d42f00c1becd25
 require:
-  - $(this-folder)/../readme.azure.noprofile.md
+  - $(this-folder)/../../readme.azure.noprofile.md
 input-file:
   - https://github.com/erjms/azure-rest-api-specs/blob/dev-machinelearning-Microsoft.MachineLearning-2022-05-01/specification/machinelearningservices/resource-manager/Microsoft.MachineLearningServices/stable/2022-05-01/machineLearningServices.json
   - https://github.com/erjms/azure-rest-api-specs/blob/dev-machinelearning-Microsoft.MachineLearning-2022-05-01/specification/machinelearningservices/resource-manager/Microsoft.MachineLearningServices/stable/2022-05-01/mfe.json

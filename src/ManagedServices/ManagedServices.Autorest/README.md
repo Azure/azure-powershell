@@ -33,7 +33,7 @@ For information on how to develop for `Az.ManagedServices`, see [how-to.md](how-
 # lock the commit
 branch: 2d57dfad630d8a6d7e651a3df3168f7fbcb7728e
 require:
-  - $(this-folder)/../readme.azure.noprofile.md
+  - $(this-folder)/../../readme.azure.noprofile.md
 input-file:
   - $(repo)/specification/managedservices/resource-manager/Microsoft.ManagedServices/preview/2020-02-01-preview/managedservices.json
 

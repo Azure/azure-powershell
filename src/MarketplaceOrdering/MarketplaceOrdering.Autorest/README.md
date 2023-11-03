@@ -32,7 +32,7 @@ For information on how to develop for `Az.MarketplaceOrdering`, see [how-to.md](
 ``` yaml
 branch: ee9fe9888e8d4e5a583e275c4c35deff6c6f96e0
 require:
-  - $(this-folder)/../readme.azure.noprofile.md
+  - $(this-folder)/../../readme.azure.noprofile.md
 input-file:
   - $(repo)/specification/marketplaceordering/resource-manager/Microsoft.MarketplaceOrdering/stable/2021-01-01/Agreements.json
 
