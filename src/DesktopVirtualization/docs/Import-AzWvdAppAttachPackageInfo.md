@@ -45,13 +45,15 @@ Gets information from a package given the path to the package.
 
 ## EXAMPLES
 
-### Example 1: Creates an App Attach Package object from Package metadata found in AppxManifest.xml
+### Example 1: Creates an AppAttachPackage object from Package metadata found in AppxManifest.xml
 ```powershell
-Import-AppAttachPackageInfo -HostPoolName HostPoolName `
+Import-AzWvdAppAttachPackageInfo -HostPoolName HostPoolName `
           -ResourceGroupName resourceGroupName `
           -SubscriptionId SubscriptionId `
           -Path ImagePathURI
+```
 
+```output
 Name                       Type
 ----                       ----
 importappattachpackageinfo Microsoft.DesktopVirtualization/appattachpackages

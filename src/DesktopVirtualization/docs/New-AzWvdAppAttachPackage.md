@@ -43,14 +43,14 @@ Create or update an App Attach package.
 
 ## EXAMPLES
 
-### Example 1: Create or update an Azure Virtual Desktop App Attach Package by name
+### Example 1: Create or update an Azure Virtual Desktop app attach package by name
 ```powershell
 $apps = "<PackagedApplication>"
 $deps = "<PackageDependencies>"
 New-AzWvdAppAttachPackage -Name PackageArmObjectName `
                          -ResourceGroupName ResourceGroupName `
                          -SubscriptionId SubscriptionId `
-                         -Location location
+                         -Location location `
                          -ImageDisplayName displayname `
                          -ImagePath imageURI `
                          -ImageIsActive:$false `
@@ -67,7 +67,9 @@ New-AzWvdAppAttachPackage -Name PackageArmObjectName `
                          -ImageCertificateName certificateName `
                          -KeyVaultUrl keyvaultUrl `
                          -FailHealthCheckOnStagingFailure 'Unhealthy'
+```
 
+```output
 Location   Name                 Type
 --------   ----                 ----
 eastus     PackageArmObjectName Microsoft.DesktopVirtualization/appattachpackages
@@ -75,7 +77,7 @@ eastus     PackageArmObjectName Microsoft.DesktopVirtualization/appattachpackage
 
 This command creates or updates an Azure Virtual Desktop App attach package in a resource group
 
-### Example 2: Create or update an Azure Virtual Desktop App Attach Package from an App Attach Package object
+### Example 2: Create or update an Azure Virtual Desktop app attach package from an appAttachPackage object
 ```powershell
 New-AzWvdAppAttachPackage -Name PackageArmObjectName `
                          -ResourceGroupName ResourceGroupName `
@@ -87,15 +89,17 @@ New-AzWvdAppAttachPackage -Name PackageArmObjectName `
                          -IsLogonBlocking:$false `
                          -KeyVaultUrl keyvaultUrl `
                          -FailHealthCheckOnStagingFailure 'Unhealthy' `
-                         -HostpoolReference hostpoolReference 
+                         -HostpoolReference hostpoolReference `
                          -PassThru
+```
 
+```output
 Location   Name                 Type
 --------   ----                 ----
 eastus     PackageArmObjectName Microsoft.DesktopVirtualization/appattachpackages
 ```
 
-This command creates or updates an Azure Virtual Desktop App Attach Package in a resource group using the output of the Import-AzWvdAppAttachPackageInfo command.
+This command creates or updates an Azure Virtual Desktop App Attach Package in a resource group using the output of the Import-AzWvdAppAttachPackageInfo command
 
 ## PARAMETERS
 
