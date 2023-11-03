@@ -1,22 +1,14 @@
-### Example 1: {{ Add title here }}
+### Example 1: Creates an App Attach Package object from Package metadata found in AppxManifest.xml
+
 ```powershell
-{{ Add code here }}
+Import-AppAttachPackageInfo -HostPoolName HostPoolName `
+          -ResourceGroupName resourceGroupName `
+          -SubscriptionId SubscriptionId `
+          -Path ImagePathURI
+
+Name                       Type
+----                       ----
+importappattachpackageinfo Microsoft.DesktopVirtualization/appattachpackages
 ```
 
-```output
-{{ Add output here }}
-```
-
-{{ Add description here }}
-
-### Example 2: {{ Add title here }}
-```powershell
-{{ Add code here }}
-```
-
-```output
-{{ Add output here }}
-```
-
-{{ Add description here }}
-
+This command returns Metadata of MSIX Package found in the given Image Path.
