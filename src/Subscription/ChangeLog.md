@@ -18,13 +18,15 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
-* All cmdlets parameter SubscriptionName has the alias DisplayName.
+* Invoke-AzSubscriptionAcceptOwnership:
+    1. Parameter ['-SubscriptionName'] is given an alias [-DisplayName].
 * New-AzSubscriptionAlias:
-    1. Since the arguments [`-SubscriptionId`] and [`-BillingScope`],[`-SubscriptionName`],[`-Workload`] are mutually exclusive, they are split into two different syntaxes
-* Update-AzSubscriptionPolicy
-    1. Commands are hidden due to the security level of Global admin permissions.
-* Rename-AzSubscription
+    1. Since the arguments [`-SubscriptionId`] and [`-BillingScope`],[`-SubscriptionName`],[`-Workload`] are mutually exclusive, they are split into two different syntaxes.
+    2. Parameter ['-SubscriptionName'] is given an alias [-DisplayName].
+* Rename-AzSubscription:
     1. Parameter [`-SubscriptionName`] was required.
+    2. Parameter ['-SubscriptionName'] is given an alias [-DisplayName].
+* Removed cmdlet `Update-AzSubscriptionPolicy`
 
 ## Version 0.10.1
 * Removed the default value for the `New-AzSubscriptionAlias` cmdlet parameter `SubscriptionId`.
