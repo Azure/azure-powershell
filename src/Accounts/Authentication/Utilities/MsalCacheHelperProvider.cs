@@ -70,8 +70,8 @@ namespace Microsoft.Azure.Commands.Common.Authentication
                         try
                         {
                             StorageCreationProperties storageProperties = new StorageCreationPropertiesBuilder(tokenCacheName, MsalTokenCachePath)
-                                .WithMacKeyChain("Microsoft.Developer.IdentityService", "MSALCache")
-                                .WithLinuxKeyring(keyRingSchema, "default", "MSALCache",
+                                .WithMacKeyChain("Microsoft.Developer.IdentityService", tokenCacheName)
+                                .WithLinuxKeyring(keyRingSchema, "default", tokenCacheName,
                                 new KeyValuePair<string, string>("MsalClientID", "Microsoft.Developer.IdentityService"),
                                 new KeyValuePair<string, string>("Microsoft.Developer.IdentityService", "1.0.0.0"))
                                 .Build();
