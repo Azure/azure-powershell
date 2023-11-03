@@ -72,7 +72,7 @@ This command creates a resource lock on a website.
 New-AzResourceLock -LockLevel CanNotDelete -LockNotes "Lock note" -LockName "db-lock" -ResourceName "server1/ContosoDB"  -ResourceGroupName "RG1" -ResourceType "Microsoft.Sql/servers/databases"
 ```
 
-This command creates a resource lock on a Azure database.
+This command creates a resource lock on an Azure database.
 
 ## PARAMETERS
 
