@@ -18,6 +18,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ADDomainServices.Cmdlets
     [global::System.Management.Automation.OutputType(typeof(Microsoft.Azure.PowerShell.Cmdlets.ADDomainServices.Models.Api202001.IDomainService))]
     [global::Microsoft.Azure.PowerShell.Cmdlets.ADDomainServices.Description(@"The Get Domain Service operation retrieves a json representation of the Domain Service.")]
     [global::Microsoft.Azure.PowerShell.Cmdlets.ADDomainServices.Generated]
+    [global::Microsoft.Azure.PowerShell.Cmdlets.ADDomainServices.HttpPath(Path = "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AAD/domainServices/{domainServiceName}", ApiVersion = "2020-01-01")]
     public partial class GetAzADDomainService_GetViaIdentity : global::System.Management.Automation.PSCmdlet,
         Microsoft.Azure.PowerShell.Cmdlets.ADDomainServices.Runtime.IEventListener
     {
@@ -44,9 +45,10 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ADDomainServices.Cmdlets
         public Microsoft.Azure.PowerShell.Cmdlets.ADDomainServices.AdDomainServices Client => Microsoft.Azure.PowerShell.Cmdlets.ADDomainServices.Module.Instance.ClientAPI;
 
         /// <summary>
-        /// The credentials, account, tenant, and subscription used for communication with Azure
+        /// The DefaultProfile parameter is not functional. Use the SubscriptionId parameter when available if executing the cmdlet
+        /// against a different subscription
         /// </summary>
-        [global::System.Management.Automation.Parameter(Mandatory = false, HelpMessage = "The credentials, account, tenant, and subscription used for communication with Azure.")]
+        [global::System.Management.Automation.Parameter(Mandatory = false, HelpMessage = "The DefaultProfile parameter is not functional. Use the SubscriptionId parameter when available if executing the cmdlet against a different subscription.")]
         [global::System.Management.Automation.ValidateNotNull]
         [global::System.Management.Automation.Alias("AzureRMContext", "AzureCredential")]
         [global::Microsoft.Azure.PowerShell.Cmdlets.ADDomainServices.Category(global::Microsoft.Azure.PowerShell.Cmdlets.ADDomainServices.ParameterCategory.Azure)]

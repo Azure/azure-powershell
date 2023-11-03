@@ -16,6 +16,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ADDomainServices.Cmdlets
     [global::System.Management.Automation.OutputType(typeof(bool))]
     [global::Microsoft.Azure.PowerShell.Cmdlets.ADDomainServices.Description(@"The Delete Domain Service operation deletes an existing Domain Service.")]
     [global::Microsoft.Azure.PowerShell.Cmdlets.ADDomainServices.Generated]
+    [global::Microsoft.Azure.PowerShell.Cmdlets.ADDomainServices.HttpPath(Path = "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AAD/domainServices/{domainServiceName}", ApiVersion = "2020-01-01")]
     public partial class RemoveAzADDomainService_DeleteViaIdentity : global::System.Management.Automation.PSCmdlet,
         Microsoft.Azure.PowerShell.Cmdlets.ADDomainServices.Runtime.IEventListener
     {
@@ -47,9 +48,10 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ADDomainServices.Cmdlets
         public Microsoft.Azure.PowerShell.Cmdlets.ADDomainServices.AdDomainServices Client => Microsoft.Azure.PowerShell.Cmdlets.ADDomainServices.Module.Instance.ClientAPI;
 
         /// <summary>
-        /// The credentials, account, tenant, and subscription used for communication with Azure
+        /// The DefaultProfile parameter is not functional. Use the SubscriptionId parameter when available if executing the cmdlet
+        /// against a different subscription
         /// </summary>
-        [global::System.Management.Automation.Parameter(Mandatory = false, HelpMessage = "The credentials, account, tenant, and subscription used for communication with Azure.")]
+        [global::System.Management.Automation.Parameter(Mandatory = false, HelpMessage = "The DefaultProfile parameter is not functional. Use the SubscriptionId parameter when available if executing the cmdlet against a different subscription.")]
         [global::System.Management.Automation.ValidateNotNull]
         [global::System.Management.Automation.Alias("AzureRMContext", "AzureCredential")]
         [global::Microsoft.Azure.PowerShell.Cmdlets.ADDomainServices.Category(global::Microsoft.Azure.PowerShell.Cmdlets.ADDomainServices.ParameterCategory.Azure)]

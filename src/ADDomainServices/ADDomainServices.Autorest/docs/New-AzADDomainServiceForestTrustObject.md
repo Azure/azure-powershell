@@ -1,5 +1,5 @@
 ---
-external help file: Az.ADDomainServices-help.xml
+external help file:
 Module Name: Az.ADDomainServices
 online version: https://learn.microsoft.com/powershell/module/Az.ADDomainServices/new-AzADDomainServiceForestTrustObject
 schema: 2.0.0
@@ -14,7 +14,7 @@ Create an in-memory object for ForestTrust.
 
 ```
 New-AzADDomainServiceForestTrustObject [-FriendlyName <String>] [-RemoteDnsIP <String>]
- [-TrustDirection <String>] [-TrustPassword <SecureString>] [-TrustedDomainFqdn <String>] [<CommonParameters>]
+ [-TrustDirection <String>] [-TrustedDomainFqdn <String>] [-TrustPassword <SecureString>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -125,3 +125,4 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ## NOTES
 
 ## RELATED LINKS
+

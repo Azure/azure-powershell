@@ -54,7 +54,8 @@ DotNetFrameworkVersion = '4.7.2'
 RequiredModules = @(@{ModuleName = 'Az.Accounts'; ModuleVersion = '2.9.0'; })
 
 # Assemblies that must be loaded prior to importing this module
-RequiredAssemblies = 'ADDomainServices.Autorest/bin/Az.ADDomainServices.private.dll'
+RequiredAssemblies = 'ADDomainServices.Autorest/bin/Az.ADDomainServices.private.dll', 
+               'ADDomainServices.Autorest\bin\Az.ADDomainServices.private.dll'
 
 # Script files (.ps1) that are run in the caller's environment prior to importing this module.
 # ScriptsToProcess = @()
@@ -63,10 +64,12 @@ RequiredAssemblies = 'ADDomainServices.Autorest/bin/Az.ADDomainServices.private.
 # TypesToProcess = @()
 
 # Format files (.ps1xml) to be loaded when importing this module
-FormatsToProcess = 'ADDomainServices.Autorest/Az.ADDomainServices.format.ps1xml'
+FormatsToProcess = 'ADDomainServices.Autorest/Az.ADDomainServices.format.ps1xml', 
+               'ADDomainServices.Autorest\Az.ADDomainServices.format.ps1xml'
 
 # Modules to import as nested modules of the module specified in RootModule/ModuleToProcess
-NestedModules = @('ADDomainServices.Autorest/Az.ADDomainServices.psm1')
+NestedModules = @('ADDomainServices.Autorest/Az.ADDomainServices.psm1', 
+               'ADDomainServices.Autorest\Az.ADDomainServices.psm1')
 
 # Functions to export from this module, for best performance, do not use wildcards and do not delete the entry, use an empty array if there are no functions to export.
 FunctionsToExport = 'Get-AzADDomainService', 'New-AzADDomainService', 

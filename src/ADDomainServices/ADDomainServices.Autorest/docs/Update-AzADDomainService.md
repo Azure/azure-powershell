@@ -1,22 +1,23 @@
 ---
-external help file: Az.ADDomainServices-help.xml
+external help file:
 Module Name: Az.ADDomainServices
-online version: https://learn.microsoft.com/powershell/module/az.addomainservices/new-azaddomainservice
+online version: https://learn.microsoft.com/powershell/module/az.addomainservices/update-azaddomainservice
 schema: 2.0.0
 ---
 
-# New-AzADDomainService
+# Update-AzADDomainService
 
 ## SYNOPSIS
-The Create Domain Service operation creates a new domain service with the specified parameters.
-If the specific service already exists, then any patchable properties will be updated and any immutable properties will remain unchanged.
+The Update Domain Service operation can be used to update the existing deployment.
+The update call only supports the properties listed in the PATCH body.
 
 ## SYNTAX
 
+### UpdateExpanded (Default)
 ```
-New-AzADDomainService -Name <String> -ResourceGroupName <String> [-SubscriptionId <String>]
- -DomainName <String> -ReplicaSet <IReplicaSet[]> [-DomainConfigurationType <String>]
- [-DomainSecuritySettingNtlmV1 <NtlmV1>] [-DomainSecuritySettingSyncKerberosPassword <SyncKerberosPasswords>]
+Update-AzADDomainService -Name <String> -ResourceGroupName <String> [-SubscriptionId <String>]
+ [-DomainConfigurationType <String>] [-DomainName <String>] [-DomainSecuritySettingNtlmV1 <NtlmV1>]
+ [-DomainSecuritySettingSyncKerberosPassword <SyncKerberosPasswords>]
  [-DomainSecuritySettingSyncNtlmPassword <SyncNtlmPasswords>]
  [-DomainSecuritySettingSyncOnPremPassword <SyncOnPremPasswords>] [-DomainSecuritySettingTlsV1 <TlsV1>]
  [-Etag <String>] [-FilteredSync <FilteredSync>] [-ForestTrust <IForestTrust[]>]
@@ -24,20 +25,37 @@ New-AzADDomainService -Name <String> -ResourceGroupName <String> [-SubscriptionI
  [-LdapSettingPfxCertificateInputFile <String>] [-LdapSettingPfxCertificatePassword <SecureString>]
  [-Location <String>] [-NotificationSettingAdditionalRecipient <String[]>]
  [-NotificationSettingNotifyDcAdmin <NotifyDcAdmins>]
- [-NotificationSettingNotifyGlobalAdmin <NotifyGlobalAdmins>] [-ResourceForest <String>] [-Sku <String>]
- [-Tag <Hashtable>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-NotificationSettingNotifyGlobalAdmin <NotifyGlobalAdmins>] [-ReplicaSet <IReplicaSet[]>]
+ [-ResourceForest <String>] [-Sku <String>] [-Tag <Hashtable>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
+ [-Confirm] [-WhatIf] [<CommonParameters>]
+```
+
+### UpdateViaIdentityExpanded
+```
+Update-AzADDomainService -InputObject <IAdDomainServicesIdentity> [-DomainConfigurationType <String>]
+ [-DomainName <String>] [-DomainSecuritySettingNtlmV1 <NtlmV1>]
+ [-DomainSecuritySettingSyncKerberosPassword <SyncKerberosPasswords>]
+ [-DomainSecuritySettingSyncNtlmPassword <SyncNtlmPasswords>]
+ [-DomainSecuritySettingSyncOnPremPassword <SyncOnPremPasswords>] [-DomainSecuritySettingTlsV1 <TlsV1>]
+ [-Etag <String>] [-FilteredSync <FilteredSync>] [-ForestTrust <IForestTrust[]>]
+ [-LdapSettingExternalAccess <ExternalAccess>] [-LdapSettingLdaps <Ldaps>]
+ [-LdapSettingPfxCertificateInputFile <String>] [-LdapSettingPfxCertificatePassword <SecureString>]
+ [-Location <String>] [-NotificationSettingAdditionalRecipient <String[]>]
+ [-NotificationSettingNotifyDcAdmin <NotifyDcAdmins>]
+ [-NotificationSettingNotifyGlobalAdmin <NotifyGlobalAdmins>] [-ReplicaSet <IReplicaSet[]>]
+ [-ResourceForest <String>] [-Sku <String>] [-Tag <Hashtable>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
+ [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-The Create Domain Service operation creates a new domain service with the specified parameters.
-If the specific service already exists, then any patchable properties will be updated and any immutable properties will remain unchanged.
+The Update Domain Service operation can be used to update the existing deployment.
+The update call only supports the properties listed in the PATCH body.
 
 ## EXAMPLES
 
-### Example 1: Create a new ADDomainService
+### Example 1: Update AzADDomainService By ResourceGroupName and Name
 ```powershell
-$replicaSet = New-AzADDomainServiceReplicaSetObject -Location westus -SubnetId /subscriptions/********-****-****-****-**********/resourceGroups/test-rg/providers/Microsoft.Network/virtualNetworks/test-vnet/subnets/default
-New-AzADDomainService -Name youriADdomain -ResourceGroupName youriAddomain -DomainName youriAddomain.com -ReplicaSet $replicaSet
+Update-AzADDomainService -Name youriADdomain -ResourceGroupName youriADdomain -DomainSecuritySettingTlsV1 Disabled
 ```
 
 ```output
@@ -46,17 +64,12 @@ Name          Domain Name       Location Sku
 youriADdomain youriAddomain.com westus   Enterprise
 ```
 
-Create a new ADDomainService
+Update AzADDomainService By ResourceGroupName and Name
 
-### Example 2: Create new ADDomainService with certificate
+### Example 2: Update AzADDomainService By InputObject
 ```powershell
-# Variables
-$replicaSet = New-AzADDomainServiceReplicaSet -Location westus -SubnetId /subscriptions/********-****-****-****-**********/resourceGroups/yishitest/providers/Microsoft.Network/virtualNetworks/aadds-vnet/subnets/default\
-$certificateBytes = Get-Content "certificate.pfx" -AsByteStream
-$base64String = [System.Convert]::ToBase64String($certificateBytes) 
-$ldaps_pfx_pass = "MyStrongPassword"
-
-New-AzADDomainService -Name youriADdomain -ResourceGroupName youriAddomain -DomainName youriAddomain.com -ReplicaSet $replicaSet -LdapSettingLdaps Enabled -LdapSettingPfxCertificate $base64String -LdapSettingPfxCertificatePassword $($ldaps_pfx_pass | ConvertTo-SecureString -Force -AsPlainText)
+$getAzAddomain = Get-AzADDomainService -Name youriADdomain -ResourceGroupName youriADdomain
+Update-AzADDomainService -InputObject $getAzAddomain -DomainSecuritySettingTlsV1 Disabled
 ```
 
 ```output
@@ -65,7 +78,7 @@ Name          Domain Name       Location Sku
 youriADdomain youriAddomain.com westus   Enterprise
 ```
 
-Create new ADDomainService with certificate
+Update AzADDomainService By InputObject
 
 ## PARAMETERS
 
@@ -85,7 +98,8 @@ Accept wildcard characters: False
 ```
 
 ### -DefaultProfile
-The credentials, account, tenant, and subscription used for communication with Azure.
+The DefaultProfile parameter is not functional.
+Use the SubscriptionId parameter when available if executing the cmdlet against a different subscription.
 
 ```yaml
 Type: System.Management.Automation.PSObject
@@ -122,7 +136,7 @@ Type: System.String
 Parameter Sets: (All)
 Aliases:
 
-Required: True
+Required: False
 Position: Named
 Default value: None
 Accept pipeline input: False
@@ -250,6 +264,22 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### -InputObject
+Identity Parameter
+To construct, see NOTES section for INPUTOBJECT properties and create a hash table.
+
+```yaml
+Type: Microsoft.Azure.PowerShell.Cmdlets.ADDomainServices.Models.IAdDomainServicesIdentity
+Parameter Sets: UpdateViaIdentityExpanded
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: True (ByValue)
+Accept wildcard characters: False
+```
+
 ### -LdapSettingExternalAccess
 A flag to determine whether or not Secure LDAP access over the internet is enabled or disabled.
 
@@ -321,7 +351,7 @@ Aliases:
 
 Required: False
 Position: Named
-Default value: $ReplicaSet[0].Location
+Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
 ```
@@ -331,7 +361,7 @@ The name of the domain service.
 
 ```yaml
 Type: System.String
-Parameter Sets: (All)
+Parameter Sets: UpdateExpanded
 Aliases: DomainServiceName
 
 Required: True
@@ -410,7 +440,7 @@ Type: Microsoft.Azure.PowerShell.Cmdlets.ADDomainServices.Models.Api202001.IRepl
 Parameter Sets: (All)
 Aliases:
 
-Required: True
+Required: False
 Position: Named
 Default value: None
 Accept pipeline input: False
@@ -438,7 +468,7 @@ The name is case insensitive.
 
 ```yaml
 Type: System.String
-Parameter Sets: (All)
+Parameter Sets: UpdateExpanded
 Aliases:
 
 Required: True
@@ -469,7 +499,7 @@ The subscription ID forms part of the URI for every service call.
 
 ```yaml
 Type: System.String
-Parameter Sets: (All)
+Parameter Sets: UpdateExpanded
 Aliases:
 
 Required: False
@@ -530,6 +560,8 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
+### Microsoft.Azure.PowerShell.Cmdlets.ADDomainServices.Models.IAdDomainServicesIdentity
+
 ## OUTPUTS
 
 ### Microsoft.Azure.PowerShell.Cmdlets.ADDomainServices.Models.Api202001.IDomainService
@@ -537,3 +569,4 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ## NOTES
 
 ## RELATED LINKS
+

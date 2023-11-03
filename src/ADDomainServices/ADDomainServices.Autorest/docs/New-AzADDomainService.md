@@ -1,5 +1,5 @@
 ---
-external help file: Az.ADDomainServices-help.xml
+external help file:
 Module Name: Az.ADDomainServices
 online version: https://learn.microsoft.com/powershell/module/az.addomainservices/new-azaddomainservice
 schema: 2.0.0
@@ -14,8 +14,8 @@ If the specific service already exists, then any patchable properties will be up
 ## SYNTAX
 
 ```
-New-AzADDomainService -Name <String> -ResourceGroupName <String> [-SubscriptionId <String>]
- -DomainName <String> -ReplicaSet <IReplicaSet[]> [-DomainConfigurationType <String>]
+New-AzADDomainService -Name <String> -ResourceGroupName <String> -DomainName <String>
+ -ReplicaSet <IReplicaSet[]> [-SubscriptionId <String>] [-DomainConfigurationType <String>]
  [-DomainSecuritySettingNtlmV1 <NtlmV1>] [-DomainSecuritySettingSyncKerberosPassword <SyncKerberosPasswords>]
  [-DomainSecuritySettingSyncNtlmPassword <SyncNtlmPasswords>]
  [-DomainSecuritySettingSyncOnPremPassword <SyncOnPremPasswords>] [-DomainSecuritySettingTlsV1 <TlsV1>]
@@ -25,7 +25,7 @@ New-AzADDomainService -Name <String> -ResourceGroupName <String> [-SubscriptionI
  [-Location <String>] [-NotificationSettingAdditionalRecipient <String[]>]
  [-NotificationSettingNotifyDcAdmin <NotifyDcAdmins>]
  [-NotificationSettingNotifyGlobalAdmin <NotifyGlobalAdmins>] [-ResourceForest <String>] [-Sku <String>]
- [-Tag <Hashtable>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-Tag <Hashtable>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -48,7 +48,7 @@ youriADdomain youriAddomain.com westus   Enterprise
 
 Create a new ADDomainService
 
-### Example 2: Create new ADDomainService with certificate
+### Example 2: Create new ADDomainService with certificate 
 ```powershell
 # Variables
 $replicaSet = New-AzADDomainServiceReplicaSet -Location westus -SubnetId /subscriptions/********-****-****-****-**********/resourceGroups/yishitest/providers/Microsoft.Network/virtualNetworks/aadds-vnet/subnets/default\
@@ -537,3 +537,4 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ## NOTES
 
 ## RELATED LINKS
+

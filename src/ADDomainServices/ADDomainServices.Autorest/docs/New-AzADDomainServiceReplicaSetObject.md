@@ -1,5 +1,5 @@
 ---
-external help file: Az.ADDomainServices-help.xml
+external help file:
 Module Name: Az.ADDomainServices
 online version: https://learn.microsoft.com/powershell/module/Az.ADDomainServices/new-AzADDomainServiceReplicaSetObject
 schema: 2.0.0
@@ -29,7 +29,7 @@ New-AzADDomainServiceReplicaSetObject -Location westus -SubnetId /subscriptions/
 ```output
 DomainControllerIPAddress ExternalAccessIPAddress HealthLastEvaluated Location ServiceStatus SubnetId
 ------------------------- ----------------------- ------------------- -------- ------------- --------
-                                                                      westus                 /subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx/resource…
+                                                                      westus                 /subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx/resource… 
 ```
 
 Create an in-memory object for ReplicaSet.
@@ -81,3 +81,4 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ## NOTES
 
 ## RELATED LINKS
+

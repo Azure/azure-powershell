@@ -1,5 +1,5 @@
 ---
-external help file: Az.ADDomainServices-help.xml
+external help file:
 Module Name: Az.ADDomainServices
 online version: https://learn.microsoft.com/powershell/module/az.addomainservices/remove-azaddomainservice
 schema: 2.0.0
@@ -15,13 +15,13 @@ The Delete Domain Service operation deletes an existing Domain Service.
 ### Delete (Default)
 ```
 Remove-AzADDomainService -Name <String> -ResourceGroupName <String> [-SubscriptionId <String>]
- [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-PassThru] [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-PassThru] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ### DeleteViaIdentity
 ```
 Remove-AzADDomainService -InputObject <IAdDomainServicesIdentity> [-DefaultProfile <PSObject>] [-AsJob]
- [-NoWait] [-PassThru] [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-NoWait] [-PassThru] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -215,3 +215,4 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ## NOTES
 
 ## RELATED LINKS
+

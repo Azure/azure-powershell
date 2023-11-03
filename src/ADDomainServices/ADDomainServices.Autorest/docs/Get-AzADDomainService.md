@@ -1,5 +1,5 @@
 ---
-external help file: Az.ADDomainServices-help.xml
+external help file:
 Module Name: Az.ADDomainServices
 online version: https://learn.microsoft.com/powershell/module/az.addomainservices/get-azaddomainservice
 schema: 2.0.0
@@ -23,15 +23,15 @@ Get-AzADDomainService -Name <String> -ResourceGroupName <String> [-SubscriptionI
  [-DefaultProfile <PSObject>] [<CommonParameters>]
 ```
 
-### List1
-```
-Get-AzADDomainService -ResourceGroupName <String> [-SubscriptionId <String[]>] [-DefaultProfile <PSObject>]
- [<CommonParameters>]
-```
-
 ### GetViaIdentity
 ```
 Get-AzADDomainService -InputObject <IAdDomainServicesIdentity> [-DefaultProfile <PSObject>]
+ [<CommonParameters>]
+```
+
+### List1
+```
+Get-AzADDomainService -ResourceGroupName <String> [-SubscriptionId <String[]>] [-DefaultProfile <PSObject>]
  [<CommonParameters>]
 ```
 
@@ -164,7 +164,7 @@ The subscription ID forms part of the URI for every service call.
 
 ```yaml
 Type: System.String[]
-Parameter Sets: List, Get, List1
+Parameter Sets: Get, List, List1
 Aliases:
 
 Required: False
@@ -188,3 +188,4 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ## NOTES
 
 ## RELATED LINKS
+

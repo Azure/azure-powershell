@@ -23,7 +23,7 @@ Create an in-memory object for ForestTrust.
 .Outputs
 Microsoft.Azure.PowerShell.Cmdlets.ADDomainServices.Models.Api202001.ForestTrust
 .Link
-https://learn.microsoft.com/powershell/module/az.ADDomainService/new-AzADDomainServiceForestTrustObject
+https://learn.microsoft.com/powershell/module/Az.ADDomainServices/new-AzADDomainServiceForestTrustObject
 #>
 function New-AzADDomainServiceForestTrustObject {
     [OutputType('Microsoft.Azure.PowerShell.Cmdlets.ADDomainServices.Models.Api202001.ForestTrust')]
