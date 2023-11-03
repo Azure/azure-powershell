@@ -33,7 +33,7 @@ For information on how to develop for `Az.ApplicationInsights`, see [how-to.md](
 # lock the commit
 branch: 60be34ab72f1483aef8feede852bc9f2f1921897
 require:
-  - $(this-folder)/../readme.azure.noprofile.md
+  - $(this-folder)/../../readme.azure.noprofile.md
 input-file:
   - $(repo)/specification/applicationinsights/resource-manager/Microsoft.Insights/stable/2022-06-15/webTests_API.json
   - $(repo)/specification/applicationinsights/resource-manager/Microsoft.Insights/stable/2020-02-02/components_API.json

@@ -49,7 +49,7 @@ In this directory, run AutoRest:
 ``` yaml
 branch: a71245db9eb5b27e3d95f266422c65be4df8789e
 require:
-  - $(this-folder)/../readme.azure.noprofile.md
+  - $(this-folder)/../../readme.azure.noprofile.md
 # lock the commit
 input-file:
   - $(repo)/specification/confluent/resource-manager/Microsoft.Confluent/stable/2020-03-01/confluent.json

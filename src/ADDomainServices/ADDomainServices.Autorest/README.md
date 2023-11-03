@@ -33,7 +33,7 @@ For information on how to develop for `Az.ADDomainServices`, see [how-to.md](how
 branch: 394ab556cb4aed1196918856a24be9b02609cc93
 require:
 # readme.azure.noprofile.md is the common configuration file
-  - $(this-folder)/../readme.azure.noprofile.md
+  - $(this-folder)/../../readme.azure.noprofile.md
 input-file:
 # You need to specify your swagger files here.
   - $(repo)/specification/domainservices/resource-manager/Microsoft.AAD/stable/2020-01-01/domainservices.json

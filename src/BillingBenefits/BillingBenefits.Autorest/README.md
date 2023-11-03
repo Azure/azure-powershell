@@ -49,7 +49,7 @@ In this directory, run AutoRest:
 ``` yaml
 branch: bab95d5636c7d47cc5584ea8dadb21199d229ca7
 require:
-  - $(this-folder)/../readme.azure.noprofile.md
+  - $(this-folder)/../../readme.azure.noprofile.md
 input-file:
   - $(repo)/specification/billingbenefits/resource-manager/Microsoft.BillingBenefits/stable/2022-11-01/billingbenefits.json
 module-version: 0.1.0

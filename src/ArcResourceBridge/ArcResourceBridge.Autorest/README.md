@@ -32,7 +32,7 @@ For information on how to develop for `Az.ArcResourceBridge`, see [how-to.md](ho
 ``` yaml
 branch: 7d6c14d986a67dca3451d7d92d8f6b9416d61fbf
 require:
-  - $(this-folder)/../readme.azure.noprofile.md
+  - $(this-folder)/../../readme.azure.noprofile.md
 input-file:
   - $(repo)/specification/resourceconnector/resource-manager/Microsoft.ResourceConnector/stable/2022-10-27/appliances.json
 

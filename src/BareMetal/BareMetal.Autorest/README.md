@@ -33,7 +33,7 @@ For information on how to develop for `Az.BareMetal`, see [how-to.md](how-to.md)
 ``` yaml
 branch: 1e42e81660d1bc0be000477a4659b29a7ce7d67b
 require:
-  - $(this-folder)/../readme.azure.noprofile.md
+  - $(this-folder)/../../readme.azure.noprofile.md
 input-file: 
   - $(repo)/specification/baremetalinfrastructure/resource-manager/Microsoft.BareMetalInfrastructure/stable/2021-08-09/baremetalinfrastructure.json
 

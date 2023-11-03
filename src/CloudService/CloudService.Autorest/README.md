@@ -48,7 +48,7 @@ In this directory, run AutoRest:
 
 ``` yaml
 require:
-  - $(this-folder)/../readme.azure.noprofile.md
+  - $(this-folder)/../../readme.azure.noprofile.md
 input-file:
   - https://github.com/Azure/azure-rest-api-specs/blob/afc91d411dc6f5b8f6c6e6d5abbc46da096729e0/specification/compute/resource-manager/Microsoft.Compute/CloudserviceRP/stable/2022-09-04/cloudService.json
   - https://github.com/Azure/azure-rest-api-specs/blob/0c90b40551dfbfe6efea2e15494cbf2ef52150b4/specification/network/resource-manager/Microsoft.Network/stable/2021-03-01/cloudServiceNetworkInterface.json

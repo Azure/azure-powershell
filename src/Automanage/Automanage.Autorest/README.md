@@ -33,7 +33,7 @@ For information on how to develop for `Az.Automanage`, see [how-to.md](how-to.md
 ``` yaml
 branch: 54ad712dbb6f83113574e2c81558cb146740912a
 require:
-  - $(this-folder)/../readme.azure.noprofile.md
+  - $(this-folder)/../../readme.azure.noprofile.md
 input-file:
   - $(repo)/specification/automanage/resource-manager/Microsoft.Automanage/stable/2022-05-04/automanage.json
 

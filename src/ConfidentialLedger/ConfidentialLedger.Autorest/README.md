@@ -33,7 +33,7 @@ For information on how to develop for `Az.ConfidentialLedger`, see [how-to.md](h
 branch: c2d2b523575031790b8672640ea762bdf9ad4964
 require:
 # readme.azure.noprofile.md is the common configuration file
-  - $(this-folder)/../readme.azure.noprofile.md
+  - $(this-folder)/../../readme.azure.noprofile.md
 input-file:
 # You need to specify your swagger files here.
   - $(repo)/specification/confidentialledger/resource-manager/Microsoft.ConfidentialLedger/stable/2022-05-13/confidentialledger.json

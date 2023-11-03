@@ -37,7 +37,7 @@ In this directory, run AutoRest:
 ``` yaml
 branch: eb2b882ef0a4aa5956ca38cfa566fc4d7cfb3fb0
 require:
-  - $(this-folder)/../readme.azure.noprofile.md
+  - $(this-folder)/../../readme.azure.noprofile.md
 input-file:
   - $(repo)/specification/app/resource-manager/Microsoft.App/stable/2022-03-01/AuthConfigs.json
   - $(repo)/specification/app/resource-manager/Microsoft.App/stable/2022-03-01/CommonDefinitions.json

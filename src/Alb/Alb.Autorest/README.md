@@ -42,7 +42,7 @@ nested-object-to-string: true
 commit: f7c77a57cf879e3938f5084c3d0cf0611b5834e7
 require:
 # readme.azure.noprofile.md is the common configuration file
-  - $(this-folder)/../readme.azure.noprofile.md
+  - $(this-folder)/../../readme.azure.noprofile.md
   - $(repo)/specification/servicenetworking/resource-manager/readme.md
 
 try-require: 

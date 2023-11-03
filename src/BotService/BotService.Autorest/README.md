@@ -74,7 +74,7 @@ In this directory, run AutoRest:
 ``` yaml
 branch: 827a487dc10fb666baa2d2b261c9264ea710f1b4 
 require:
-  - $(this-folder)/../readme.azure.noprofile.md
+  - $(this-folder)/../../readme.azure.noprofile.md
 input-file:
   - $(repo)/specification/botservice/resource-manager/Microsoft.BotService/preview/2022-06-15-preview/botservice.json
 title: BotService

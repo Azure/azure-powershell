@@ -32,7 +32,7 @@ For information on how to develop for `Az.Communication`, see [how-to.md](how-to
 ``` yaml
 require:
 # readme.azure.noprofile.md is the common configuration file
-  - $(this-folder)/../readme.azure.noprofile.md
+  - $(this-folder)/../../readme.azure.noprofile.md
 input-file:
 # You need to specify your swagger files here.
   - https://github.com/Azure/azure-rest-api-specs/blob/23ff943dbe3b5ccdc63a6195daa0f30b17ed9d88/specification/communication/resource-manager/Microsoft.Communication/stable/2020-08-20/CommunicationService.json

@@ -38,7 +38,7 @@ In this directory, run AutoRest:
 # lock the commit
 branch: 4b131739f528aea3da3ee4f6874da20602629432
 require:
-  - $(this-folder)/../readme.azure.noprofile.md
+  - $(this-folder)/../../readme.azure.noprofile.md
 input-file:
   - $(repo)/specification/changeanalysis/resource-manager/Microsoft.ChangeAnalysis/stable/2021-04-01/changeanalysis.json
 

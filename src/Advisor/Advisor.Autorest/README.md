@@ -34,7 +34,7 @@ For information on how to develop for `Az.Advisor`, see [how-to.md](how-to.md).
 branch: 2a07629a9919989375ab04490fb24051f78d1a7c
 require:
 # readme.azure.noprofile.md is the common configuration file
-  - $(this-folder)/../readme.azure.noprofile.md
+  - $(this-folder)/../../readme.azure.noprofile.md
 input-file:
 # You need to specify your swagger files here.
   - $(repo)/specification/advisor/resource-manager/Microsoft.Advisor/stable/2020-01-01/advisor.json
