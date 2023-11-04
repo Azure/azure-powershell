@@ -81,7 +81,7 @@ namespace Microsoft.Azure.Management.RecoveryServices.Backup.Models
         /// <param name="policyName">Name of the policy used for protection
         /// </param>
 
-        /// <param name="softDeleteRetentionPeriod">Soft delete retention period in days
+        /// <param name="softDeleteRetentionPeriodInDays">Soft delete retention period in days
         /// </param>
 
         /// <param name="friendlyName">Friendly name of the DB represented by this backup item.
@@ -127,9 +127,12 @@ namespace Microsoft.Azure.Management.RecoveryServices.Backup.Models
 
         /// <param name="kpisHealths">Health details of different KPIs
         /// </param>
-        public AzureVmWorkloadProtectedItem(string backupManagementType = default(string), string workloadType = default(string), string containerName = default(string), string sourceResourceId = default(string), string policyId = default(string), System.DateTime? lastRecoveryPoint = default(System.DateTime?), string backupSetName = default(string), string createMode = default(string), System.DateTime? deferredDeleteTimeInUtc = default(System.DateTime?), bool? isScheduledForDeferredDelete = default(bool?), string deferredDeleteTimeRemaining = default(string), bool? isDeferredDeleteScheduleUpcoming = default(bool?), bool? isRehydrate = default(bool?), System.Collections.Generic.IList<string> resourceGuardOperationRequests = default(System.Collections.Generic.IList<string>), bool? isArchiveEnabled = default(bool?), string policyName = default(string), int? softDeleteRetentionPeriod = default(int?), string friendlyName = default(string), string serverName = default(string), string parentName = default(string), string parentType = default(string), string protectionStatus = default(string), string protectionState = default(string), string lastBackupStatus = default(string), System.DateTime? lastBackupTime = default(System.DateTime?), ErrorDetail lastBackupErrorDetail = default(ErrorDetail), string protectedItemDataSourceId = default(string), string protectedItemHealthStatus = default(string), AzureVmWorkloadProtectedItemExtendedInfo extendedInfo = default(AzureVmWorkloadProtectedItemExtendedInfo), System.Collections.Generic.IDictionary<string, KPIResourceHealthDetails> kpisHealths = default(System.Collections.Generic.IDictionary<string, KPIResourceHealthDetails>))
 
-        : base(backupManagementType, workloadType, containerName, sourceResourceId, policyId, lastRecoveryPoint, backupSetName, createMode, deferredDeleteTimeInUtc, isScheduledForDeferredDelete, deferredDeleteTimeRemaining, isDeferredDeleteScheduleUpcoming, isRehydrate, resourceGuardOperationRequests, isArchiveEnabled, policyName, softDeleteRetentionPeriod)
+        /// <param name="nodesList">List of the nodes in case of distributed container.
+        /// </param>
+        public AzureVmWorkloadProtectedItem(string backupManagementType = default(string), string workloadType = default(string), string containerName = default(string), string sourceResourceId = default(string), string policyId = default(string), System.DateTime? lastRecoveryPoint = default(System.DateTime?), string backupSetName = default(string), string createMode = default(string), System.DateTime? deferredDeleteTimeInUtc = default(System.DateTime?), bool? isScheduledForDeferredDelete = default(bool?), string deferredDeleteTimeRemaining = default(string), bool? isDeferredDeleteScheduleUpcoming = default(bool?), bool? isRehydrate = default(bool?), System.Collections.Generic.IList<string> resourceGuardOperationRequests = default(System.Collections.Generic.IList<string>), bool? isArchiveEnabled = default(bool?), string policyName = default(string), int? softDeleteRetentionPeriodInDays = default(int?), string friendlyName = default(string), string serverName = default(string), string parentName = default(string), string parentType = default(string), string protectionStatus = default(string), string protectionState = default(string), string lastBackupStatus = default(string), System.DateTime? lastBackupTime = default(System.DateTime?), ErrorDetail lastBackupErrorDetail = default(ErrorDetail), string protectedItemDataSourceId = default(string), string protectedItemHealthStatus = default(string), AzureVmWorkloadProtectedItemExtendedInfo extendedInfo = default(AzureVmWorkloadProtectedItemExtendedInfo), System.Collections.Generic.IDictionary<string, KPIResourceHealthDetails> kpisHealths = default(System.Collections.Generic.IDictionary<string, KPIResourceHealthDetails>), System.Collections.Generic.IList<DistributedNodesInfo> nodesList = default(System.Collections.Generic.IList<DistributedNodesInfo>))
+
+        : base(backupManagementType, workloadType, containerName, sourceResourceId, policyId, lastRecoveryPoint, backupSetName, createMode, deferredDeleteTimeInUtc, isScheduledForDeferredDelete, deferredDeleteTimeRemaining, isDeferredDeleteScheduleUpcoming, isRehydrate, resourceGuardOperationRequests, isArchiveEnabled, policyName, softDeleteRetentionPeriodInDays)
         {
             this.FriendlyName = friendlyName;
             this.ServerName = serverName;
@@ -144,6 +147,7 @@ namespace Microsoft.Azure.Management.RecoveryServices.Backup.Models
             this.ProtectedItemHealthStatus = protectedItemHealthStatus;
             this.ExtendedInfo = extendedInfo;
             this.KpisHealths = kpisHealths;
+            this.NodesList = nodesList;
             CustomInit();
         }
 
@@ -233,5 +237,11 @@ namespace Microsoft.Azure.Management.RecoveryServices.Backup.Models
         /// </summary>
         [Newtonsoft.Json.JsonProperty(PropertyName = "kpisHealths")]
         public System.Collections.Generic.IDictionary<string, KPIResourceHealthDetails> KpisHealths {get; set; }
+
+        /// <summary>
+        /// Gets or sets list of the nodes in case of distributed container.
+        /// </summary>
+        [Newtonsoft.Json.JsonProperty(PropertyName = "nodesList")]
+        public System.Collections.Generic.IList<DistributedNodesInfo> NodesList {get; set; }
     }
 }
