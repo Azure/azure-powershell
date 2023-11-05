@@ -207,27 +207,9 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Models.Api20230301.IEndpoint
+### Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Models.Api20231001.IEndpoint
 
 ## NOTES
-
-ALIASES
-
-COMPLEX PARAMETER PROPERTIES
-
-To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
-
-
-`INPUTOBJECT <IStorageMoverIdentity>`: Identity Parameter
-  - `[AgentName <String>]`: The name of the Agent resource.
-  - `[EndpointName <String>]`: The name of the Endpoint resource.
-  - `[Id <String>]`: Resource identity path
-  - `[JobDefinitionName <String>]`: The name of the Job Definition resource.
-  - `[JobRunName <String>]`: The name of the Job Run resource.
-  - `[ProjectName <String>]`: The name of the Project resource.
-  - `[ResourceGroupName <String>]`: The name of the resource group. The name is case insensitive.
-  - `[StorageMoverName <String>]`: The name of the Storage Mover resource.
-  - `[SubscriptionId <String>]`: The ID of the target subscription.
 
 ## RELATED LINKS
 

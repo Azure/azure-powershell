@@ -116,6 +116,14 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.SelfHelp.Models
             {
                 ((Microsoft.Azure.PowerShell.Cmdlets.SelfHelp.Models.ISelfHelpIdentityInternal)this).DiagnosticsResourceName = (string) content.GetValueForProperty("DiagnosticsResourceName",((Microsoft.Azure.PowerShell.Cmdlets.SelfHelp.Models.ISelfHelpIdentityInternal)this).DiagnosticsResourceName, global::System.Convert.ToString);
             }
+            if (content.Contains("SolutionResourceName"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.SelfHelp.Models.ISelfHelpIdentityInternal)this).SolutionResourceName = (string) content.GetValueForProperty("SolutionResourceName",((Microsoft.Azure.PowerShell.Cmdlets.SelfHelp.Models.ISelfHelpIdentityInternal)this).SolutionResourceName, global::System.Convert.ToString);
+            }
+            if (content.Contains("TroubleshooterName"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.SelfHelp.Models.ISelfHelpIdentityInternal)this).TroubleshooterName = (string) content.GetValueForProperty("TroubleshooterName",((Microsoft.Azure.PowerShell.Cmdlets.SelfHelp.Models.ISelfHelpIdentityInternal)this).TroubleshooterName, global::System.Convert.ToString);
+            }
             if (content.Contains("Id"))
             {
                 ((Microsoft.Azure.PowerShell.Cmdlets.SelfHelp.Models.ISelfHelpIdentityInternal)this).Id = (string) content.GetValueForProperty("Id",((Microsoft.Azure.PowerShell.Cmdlets.SelfHelp.Models.ISelfHelpIdentityInternal)this).Id, global::System.Convert.ToString);
@@ -144,6 +152,14 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.SelfHelp.Models
             if (content.Contains("DiagnosticsResourceName"))
             {
                 ((Microsoft.Azure.PowerShell.Cmdlets.SelfHelp.Models.ISelfHelpIdentityInternal)this).DiagnosticsResourceName = (string) content.GetValueForProperty("DiagnosticsResourceName",((Microsoft.Azure.PowerShell.Cmdlets.SelfHelp.Models.ISelfHelpIdentityInternal)this).DiagnosticsResourceName, global::System.Convert.ToString);
+            }
+            if (content.Contains("SolutionResourceName"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.SelfHelp.Models.ISelfHelpIdentityInternal)this).SolutionResourceName = (string) content.GetValueForProperty("SolutionResourceName",((Microsoft.Azure.PowerShell.Cmdlets.SelfHelp.Models.ISelfHelpIdentityInternal)this).SolutionResourceName, global::System.Convert.ToString);
+            }
+            if (content.Contains("TroubleshooterName"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.SelfHelp.Models.ISelfHelpIdentityInternal)this).TroubleshooterName = (string) content.GetValueForProperty("TroubleshooterName",((Microsoft.Azure.PowerShell.Cmdlets.SelfHelp.Models.ISelfHelpIdentityInternal)this).TroubleshooterName, global::System.Convert.ToString);
             }
             if (content.Contains("Id"))
             {

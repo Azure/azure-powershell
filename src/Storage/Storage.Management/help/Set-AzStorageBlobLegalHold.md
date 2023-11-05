@@ -52,6 +52,8 @@ The cmdlet only works when the blob container has already enabled immutable Stor
 
 ### Example 1: Enable legal hold on a Storage blob.
 <!-- Skip: Output cannot be splitted from code -->
+
+
 ```
 PS C:\> $blob = Set-AzStorageBlobLegalHold -Container $containerName -Blob $blobname  -EnableLegalHold
 
@@ -72,6 +74,8 @@ The command only works when the blob container has already enabled immutable Sto
 
 ### Example 2: Disable legal hold on a Storage blob with pipeline.
 <!-- Skip: Output cannot be splitted from code -->
+
+
 ```
 PS C:\> $blob = Get-AzStorageBlob -Container $containerName -Blob $blobname | Set-AzStorageBlobLegalHold -DisableLegalHold
 

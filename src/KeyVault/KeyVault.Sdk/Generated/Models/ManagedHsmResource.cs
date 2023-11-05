@@ -45,7 +45,10 @@ namespace Microsoft.Azure.Management.KeyVault.Models
         /// <param name="systemData">Metadata pertaining to creation and last modification of the key vault
         /// resource.
         /// </param>
-        public ManagedHsmResource(string id = default(string), string name = default(string), string type = default(string), string location = default(string), ManagedHsmSku sku = default(ManagedHsmSku), System.Collections.Generic.IDictionary<string, string> tags = default(System.Collections.Generic.IDictionary<string, string>), SystemData systemData = default(SystemData))
+
+        /// <param name="identity">Managed service identity (system assigned and/or user assigned identities)
+        /// </param>
+        public ManagedHsmResource(string id = default(string), string name = default(string), string type = default(string), string location = default(string), ManagedHsmSku sku = default(ManagedHsmSku), System.Collections.Generic.IDictionary<string, string> tags = default(System.Collections.Generic.IDictionary<string, string>), SystemData systemData = default(SystemData), ManagedServiceIdentity identity = default(ManagedServiceIdentity))
 
         {
             this.Id = id;
@@ -55,6 +58,7 @@ namespace Microsoft.Azure.Management.KeyVault.Models
             this.Sku = sku;
             this.Tags = tags;
             this.SystemData = systemData;
+            this.Identity = identity;
             CustomInit();
         }
 
@@ -107,6 +111,13 @@ namespace Microsoft.Azure.Management.KeyVault.Models
         /// </summary>
         [Newtonsoft.Json.JsonProperty(PropertyName = "systemData")]
         public SystemData SystemData {get; private set; }
+
+        /// <summary>
+        /// Gets or sets managed service identity (system assigned and/or user assigned
+        /// identities)
+        /// </summary>
+        [Newtonsoft.Json.JsonProperty(PropertyName = "identity")]
+        public ManagedServiceIdentity Identity {get; set; }
         /// <summary>
         /// Validate the object.
         /// </summary>
@@ -125,6 +136,10 @@ namespace Microsoft.Azure.Management.KeyVault.Models
             }
 
 
+            if (this.Identity != null)
+            {
+                this.Identity.Validate();
+            }
         }
     }
 }

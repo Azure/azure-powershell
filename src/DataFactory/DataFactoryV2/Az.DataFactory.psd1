@@ -56,7 +56,7 @@ DotNetFrameworkVersion = '4.7.2'
 RequiredModules = @(@{ModuleName = 'Az.Accounts'; ModuleVersion = '2.12.5'; })
 
 # Assemblies that must be loaded prior to importing this module
-RequiredAssemblies = 'Microsoft.Azure.Management.DataFactory.dll', 
+RequiredAssemblies = 'Microsoft.Azure.PowerShell.DataFactory.Management.Sdk.dll', 
                'Microsoft.DataTransfer.Gateway.Encryption.dll', 
                'System.IO.FileSystem.AccessControl.dll', 
                'Microsoft.Azure.Management.DataFactories.dll', 

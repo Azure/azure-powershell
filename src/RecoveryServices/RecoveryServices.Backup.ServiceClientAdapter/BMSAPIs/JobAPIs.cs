@@ -79,7 +79,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.ServiceClient
             CrrModel.CrrJobRequest crrJobRequest = new CrrModel.CrrJobRequest();
             crrJobRequest.ResourceId = vaultId;
             Func<RestAzureNS.IPage<CrrModel.JobResource>> listAsync =
-                () => CrrAdapter.Client.BackupCrrJobs.ListWithHttpMessagesAsync(azureRegion, queryFilter, resourceId: crrJobRequest.ResourceId, jobName: crrJobRequest.JobName, cancellationToken: BmsAdapter.CmdletCancellationToken).Result.Body; 
+                () => CrrAdapter.Client.BackupCrrJobs.ListWithHttpMessagesAsync(azureRegion, crrJobRequest.ResourceId, crrJobRequest.JobName, queryFilter, cancellationToken: BmsAdapter.CmdletCancellationToken).Result.Body; 
 
             Func<string, RestAzureNS.IPage<CrrModel.JobResource>> listNextAsync =
                 nextLink => CrrAdapter.Client.BackupCrrJobs.ListNextWithHttpMessagesAsync(

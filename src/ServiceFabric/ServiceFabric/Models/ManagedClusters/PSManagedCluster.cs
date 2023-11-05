@@ -49,7 +49,8 @@ namespace Microsoft.Azure.Commands.ServiceFabric.Models
                    sku: cluster.Sku,
                    zonalResiliency: cluster.ZonalResiliency,
                    allowRdpAccess: cluster.AllowRdpAccess,
-                   enableAutoOSUpgrade: cluster.EnableAutoOSUpgrade)
+                   enableAutoOSUpgrade: cluster.EnableAutoOSUpgrade,
+                   publicIPPrefixId: cluster.PublicIPPrefixId)
         {
         }
     }

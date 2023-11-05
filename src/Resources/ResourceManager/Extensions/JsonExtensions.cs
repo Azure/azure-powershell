@@ -45,6 +45,7 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Extensions
             TypeNameHandling = TypeNameHandling.None,
             DateParseHandling = DateParseHandling.None,
             DateTimeZoneHandling = DateTimeZoneHandling.Utc,
+            MetadataPropertyHandling = MetadataPropertyHandling.Ignore,
             NullValueHandling = NullValueHandling.Ignore,
             MissingMemberHandling = MissingMemberHandling.Ignore,
             ContractResolver = new CamelCasePropertyNamesWithOverridesContractResolver(),
@@ -64,6 +65,7 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Extensions
             TypeNameHandling = TypeNameHandling.None,
             DateParseHandling = DateParseHandling.None,
             DateTimeZoneHandling = DateTimeZoneHandling.Utc,
+            MetadataPropertyHandling = MetadataPropertyHandling.Ignore,
             NullValueHandling = NullValueHandling.Ignore,
             ContractResolver = new CamelCasePropertyNamesWithOverridesContractResolver(),
             Converters = new List<JsonConverter>

@@ -12,27 +12,43 @@ while(-not $mockingPath) {
 . ($mockingPath | Select-Object -First 1).FullName
 
 Describe 'Get-AzWvdPrivateEndpointConnection' {
-    It 'List' -skip {
-        { throw [System.NotImplementedException] } | Should -Not -Throw
+
+    It 'GetWorkspace' {
+        $privateEndpointConnection = Get-AzWvdPrivateEndpointConnection -ResourceGroupName $env.ResourceGroup `
+                                                                        -workspaceName $env.PvtLinkWS 
+
+        $privateEndpointConnection.Name | Should -Match $env.PrivateEndpointConnectionName
     }
 
-    It 'Get' -skip {
-        { throw [System.NotImplementedException] } | Should -Not -Throw
+    It 'ListWorkspace' {
+        $privateEndpointConnections = Get-AzWvdPrivateEndpointConnection -ResourceGroupName $env.ResourceGroup `
+                                                                            -workspaceName $env.PvtLinkWS 
+
+        #Index of name is random, so we need to check both each time
+        $name0 = $env.PrivateEndpointConnectionName0
+        $name1 = $env.PrivateEndpointConnectionName1
+        $privateEndpointConnections[0].Name | Should -Match "$name0|$name1"
+        $privateEndpointConnections[1].Name | Should -Match "$name0|$name1"
+
     }
 
-    It 'Get1' -skip {
-        { throw [System.NotImplementedException] } | Should -Not -Throw
+    It 'GetHostPool' {
+
+        $privateEndpointConnection = Get-AzWvdPrivateEndpointConnection -ResourceGroupName $env.ResourceGroup `
+                                                                        -HostPoolName $env.PvtLinkHP
+
+        $privateEndpointConnection.Name | Should -Match $env.PrivateEndpointConnectionName
     }
 
-    It 'List1' -skip {
-        { throw [System.NotImplementedException] } | Should -Not -Throw
-    }
+    It 'ListHostPool' {
 
-    It 'GetViaIdentity1' -skip {
-        { throw [System.NotImplementedException] } | Should -Not -Throw
-    }
+        $privateEndpointConnections = Get-AzWvdPrivateEndpointConnection -ResourceGroupName $env.ResourceGroup `
+                                                                            -HostPoolName $env.PvtLinkHP
 
-    It 'GetViaIdentity' -skip {
-        { throw [System.NotImplementedException] } | Should -Not -Throw
+        #Index of name is random, so we need to check both each time
+        $name0 = $env.PrivateEndpointConnectionName0
+        $name1 = $env.PrivateEndpointConnectionName1
+        $privateEndpointConnections[0].Name | Should -Match "$name0|$name1"
+        $privateEndpointConnections[1].Name | Should -Match "$name0|$name1"
     }
 }

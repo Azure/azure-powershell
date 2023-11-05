@@ -503,6 +503,60 @@ function Test-AzMaintenanceUpdate
     }
 }
 
+<#
+.SYNOPSIS
+Test New-AzMaintenanceConfiguration, Get-AzApplyUpdate, Remove-AzMaintenanceConfiguration
+#>
+function Test-AzApplyUpdateCancelConfiguration
+{
+    $actualStartTime = (Get-Date -AsUTC).AddMinutes(12)
+
+    $resourceGroupName = Get-RandomResourceGroupName
+    $maintenanceConfigurationName = Get-RandomMaintenanceConfigurationName
+    $location = "eastus2euap"
+    $maintenanceScope = "InGuestPatch"
+    $duration = "02:00"
+    $actualStartDateTime = $actualStartTime.ToString("yyyy-MM-dd HH:mm")
+    $startDateTime = [Microsoft.Azure.Test.HttpRecorder.HttpMockServer]::GetVariable("startDateTime", $actualStartDateTime)
+    $expirationDateTime = "9999-12-31 00:00"
+    $recurEvery = "Day"
+    $timezone = "UTC"
+    $visibility = "Custom"
+    $extensionProperties = @{InGuestPatchMode="User"}
+    $linuxParameterClassificationToInclude = @("Security", "Critical")
+    $installPatchRebootSetting = "Always"
+
+    $providerName = "Microsoft.Maintenance"
+    $resourceType = "maintenanceConfigurations"
+    $actualApplyUpdateName = $actualStartTime.ToString("yyyyMMddHHmm00")
+    $applyUpdateName = [Microsoft.Azure.Test.HttpRecorder.HttpMockServer]::GetVariable("applyUpdateName", $actualApplyUpdateName)
+    $status = "Cancel"
+
+    try 
+    {
+        New-AzResourceGroup -Name $resourceGroupName -Location $location
+
+        ### InGuestPatch maintenance config
+        $maintenanceConfigurationCreated = New-AzMaintenanceConfiguration -ResourceGroupName $resourceGroupName -Name $maintenanceConfigurationName -MaintenanceScope $maintenanceScope -Location $location -Timezone $timezone -StartDateTime $startDateTime -ExpirationDateTime $expirationDateTime -Duration $duration -RecurEvery $recurEvery -ExtensionProperty $extensionProperties -Visibility $visibility -LinuxParameterClassificationToInclude $linuxParameterClassificationToInclude -InstallPatchRebootSetting $installPatchRebootSetting
+
+        Assert-AreEqual $maintenanceConfigurationCreated.Name $maintenanceConfigurationName
+
+        ### Wait for configuration cancellation window to start
+        Start-TestSleep -Seconds (4 * 60)
+
+        ### Cancel the config
+        $cancelResponse =  New-AzApplyUpdate -ResourceGroupName $resourceGroupName -ProviderName $providerName -ResourceType $resourceType -ResourceName $maintenanceConfigurationName -ApplyUpdateName $applyUpdateName -Status $status
+
+        Assert-AreEqual $cancelResponse.Status "Cancelled"
+
+        Remove-AzMaintenanceConfiguration -ResourceGroupName $resourceGroupName -Name $maintenanceConfigurationName -Force
+    }
+    finally
+    {
+        # Cleanup
+        Clean-ResourceGroup $resourceGroupName
+    }
+ }
 
 <#
 .SYNOPSIS

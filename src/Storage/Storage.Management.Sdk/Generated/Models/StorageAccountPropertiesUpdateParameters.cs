@@ -70,7 +70,7 @@ namespace Microsoft.Azure.Management.Storage.Models
         /// </param>
 
         /// <param name="allowBlobPublicAccess">Allow or disallow public access to all blobs or containers in the storage
-        /// account. The default interpretation is true for this property.
+        /// account. The default interpretation is false for this property.
         /// </param>
 
         /// <param name="minimumTlsVersion">Set the minimum TLS version to be permitted on requests to storage. The
@@ -84,8 +84,11 @@ namespace Microsoft.Azure.Management.Storage.Models
         /// true.
         /// </param>
 
-        /// <param name="allowCrossTenantReplication">Allow or disallow cross AAD tenant object replication. The default
-        /// interpretation is true for this property.
+        /// <param name="allowCrossTenantReplication">Allow or disallow cross AAD tenant object replication. Set this property to
+        /// true for new or existing accounts only if object replication policies will
+        /// involve storage accounts in different AAD tenants. The default
+        /// interpretation is false for new accounts to follow best security practices
+        /// by default.
         /// </param>
 
         /// <param name="defaultToOAuthAuthentication">A boolean flag which indicates whether the default authentication is OAuth
@@ -227,7 +230,7 @@ namespace Microsoft.Azure.Management.Storage.Models
 
         /// <summary>
         /// Gets or sets allow or disallow public access to all blobs or containers in
-        /// the storage account. The default interpretation is true for this property.
+        /// the storage account. The default interpretation is false for this property.
         /// </summary>
         [Newtonsoft.Json.JsonProperty(PropertyName = "allowBlobPublicAccess")]
         public bool? AllowBlobPublicAccess {get; set; }
@@ -250,8 +253,11 @@ namespace Microsoft.Azure.Management.Storage.Models
         public bool? AllowSharedKeyAccess {get; set; }
 
         /// <summary>
-        /// Gets or sets allow or disallow cross AAD tenant object replication. The
-        /// default interpretation is true for this property.
+        /// Gets or sets allow or disallow cross AAD tenant object replication. Set
+        /// this property to true for new or existing accounts only if object
+        /// replication policies will involve storage accounts in different AAD
+        /// tenants. The default interpretation is false for new accounts to follow
+        /// best security practices by default.
         /// </summary>
         [Newtonsoft.Json.JsonProperty(PropertyName = "allowCrossTenantReplication")]
         public bool? AllowCrossTenantReplication {get; set; }

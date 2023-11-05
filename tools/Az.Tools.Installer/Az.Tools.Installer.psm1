@@ -423,6 +423,45 @@ function Get-RepositoryUrl {
     }
 }
 
+function Update-ModuleInstallationRepository {
+    param (
+        [Parameter()]
+        [ValidateNotNullOrEmpty()]
+        [string]
+        ${ModuleName},
+
+        [Parameter()]
+        [ValidateNotNullOrEmpty()]
+        [Version]
+        ${InstalledVersion},
+
+        [Parameter()]
+        [ValidateNotNullOrEmpty()]
+        [string]
+        ${Repository}
+    )
+
+    process {
+        try {
+            $moduleBase = (Microsoft.PowerShell.Core\Get-Module -ListAvailable -Name $ModuleName | Where-Object {$_.Version -eq $InstalledVersion}).ModuleBase
+            $moduleInfoFile = Join-Path -Path $moduleBase -ChildPath 'PSGetModuleInfo.xml'
+            Write-Debug "Checking file: $moduleInfoFile"
+            $xmlText = Get-Content $moduleInfoFile
+            $xmlText = $xmlText -Replace $script:AzTempRepoName, $Repository
+            $repositoryUrl = Get-RepositoryUrl $Repository
+            $destString = '"RepositorySourceLocation">' + $repositoryUrl + '<'
+            $xmlText = $xmlText -Replace
+    '"RepositorySourceLocation">.*<', $destString
+            Write-Debug "Write new xml to $moduleInfoFile"
+            Microsoft.PowerShell.Management\Set-Content -Path $moduleInfoFile -Value $xmlText -Force
+        }
+        catch {
+            Write-Error $PSItem.ToString() -ErrorVariable +errorRecords
+            throw $PSItem
+        }
+    }
+}
+
 $exportedFunctions = @( Get-ChildItem -Path $PSScriptRoot/exports/*.ps1 -Recurse -ErrorAction 'SilentlyContinue' )
 $internalFunctions = @( Get-ChildItem -Path $PSScriptRoot/internal/*.ps1 -ErrorAction 'SilentlyContinue' )
 

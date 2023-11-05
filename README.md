@@ -159,13 +159,15 @@ have issues with Azure PowerShell or Azure services.
 If there is a feature you would like to see in Azure PowerShell, use the
 [`Send-Feedback`][SendFeedback] cmdlet, or file an issue in our [GitHub repo][GitHubRepo].
 
-## Contribute Code
+## Contributing
+For details on contributing to this repository, see the [contributing guide][Contributing] and the [_Azure PowerShell Developer Guide_][DeveloperGuide].
 
-If you would like to become a contributor to this project, see the instructions provided in
-[Microsoft Azure Projects Contribution Guidelines][ContributionGuidelines].
+This project welcomes contributions and suggestions. Most contributions require you to agree to a Contributor License Agreement (CLA) declaring that you have the right to, and actually do, grant us the rights to use your contribution. For details, visit
+https://cla.microsoft.com.
 
-Additional information about contributing to this repository can be found in
-[`CONTRIBUTING.md`][Contributing] and the [_Azure PowerShell Developer Guide_][DeveloperGuide].
+When you submit a pull request, a CLA-bot will automatically determine whether you need to provide a CLA and decorate the PR appropriately (e.g., label, comment). Simply follow the instructions provided by the bot. You will only need to do this once across all repositories using our CLA.
+
+This project has adopted the [Microsoft Open Source Code of Conduct](https://opensource.microsoft.com/codeofconduct/). For more information see the [Code of Conduct FAQ](https://opensource.microsoft.com/codeofconduct/faq/) or contact [opencode@microsoft.com](mailto:opencode@microsoft.com) with any additional questions or comments.
 
 ## Telemetry
 
