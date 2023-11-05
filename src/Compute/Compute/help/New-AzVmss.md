@@ -16,14 +16,14 @@ Creates a VMSS.
 ### DefaultParameter (Default)
 ```
 New-AzVmss [-ResourceGroupName] <String> [-VMScaleSetName] <String>
- [-VirtualMachineScaleSet] <PSVirtualMachineScaleSet> [-AsJob] [-DisableIntegrityMonitoring]
+ [-VirtualMachineScaleSet] <PSVirtualMachineScaleSet> [-AsJob]
  [-EdgeZone <String>] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### SimpleParameterSet
 ```
 New-AzVmss [[-ResourceGroupName] <String>] [-VMScaleSetName] <String> [-AsJob] [-UserData <String>]
- [-DisableIntegrityMonitoring] [-ImageName <String>] -Credential <PSCredential> [-InstanceCount <Int32>]
+ [-ImageName <String>] -Credential <PSCredential> [-InstanceCount <Int32>]
  [-VirtualNetworkName <String>] [-SubnetName <String>] [-PublicIpAddressName <String>]
  [-DomainNameLabel <String>] [-SecurityGroupName <String>] [-LoadBalancerName <String>]
  [-BackendPort <Int32[]>] [-Location <String>] [-EdgeZone <String>] [-VmSize <String>]
@@ -247,7 +247,7 @@ $vmss = New-AzVmssConfig -Location $loc -SkuCapacity 2 -SkuName $vmssSize -Upgra
     -ImageReferencePublisher $imgRef.PublisherName ;
 
 # Requirements for the Guest Attestation defaulting behavior.
-# SecurityType is TrustedLaunch, EnableVtpm is true, EnableSecureBoot is true, DisableIntegrityMonitoring is not true.
+# SecurityType is TrustedLaunch, EnableVtpm is true, EnableSecureBoot is true.
 $vmss = Set-AzVmssSecurityProfile -VirtualMachineScaleSet $vmss -SecurityType $securityType;
 $vmss = Set-AzVmssUefi -VirtualMachineScaleSet $VMSS -EnableVtpm $vtpm -EnableSecureBoot $secureboot;
 
@@ -411,21 +411,6 @@ Required: False
 Position: Named
 Default value: None
 Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -DisableIntegrityMonitoring
-This flag disables the default behavior to install the Guest Attestation extension to the virtual machine scale set and its vm instances if: 1) SecurityType is TrustedLaunch, 2) SecureBootEnabled on the SecurityProfile is true, 3) VTpmEnabled on the SecurityProfile is true.
-
-```yaml
-Type: System.Management.Automation.SwitchParameter
-Parameter Sets: (All)
-Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
 ```
 
