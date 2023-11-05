@@ -4768,7 +4768,6 @@ function Test-VirtualMachineScaleSetSecurityTypeStandardWithConfig
 
         # Verify security value
         Assert-Null $vmssGet2.VirtualMachineProfile.SecurityProfile;
-
     }
     finally
     {
@@ -4936,8 +4935,8 @@ function Test-VirtualMachineScaleSetSecurityTypeUpdate
 
         # Create TL Vmss
         $result = New-AzVmss -ResourceGroupName $rgname -VMScaleSetName $vmssName1 -VirtualMachineScaleSet $vmss;
-        $vmssGet = Get-AzVmss -ResourceGroupName $rgname -VMScaleSetName $vmssName1;
-        Assert-Null $vmssGet.VirtualMachineProfile.SecurityProfile.SecurityType;
+        $vmssGet = Get-AzVmss -ResourceGroupName $rgname -VMScaleSetName $vmssName1; 
+        Assert-AreEqual $vmssGet.VirtualMachineProfile.SecurityProfile.SecurityType $securityType;
 
         # Test update functionality
         Update-AzVmss -ResourceGroupName $rgname -VMScaleSetName $vmssName1 -VirtualMachineScaleSet $vmssGet -SecurityType $securityType -EnableSecureBoot $disable -EnableVtpm $disable;
@@ -4952,23 +4951,6 @@ function Test-VirtualMachineScaleSetSecurityTypeUpdate
         $vmssUp2 = Update-AzVmss -ResourceGroupName $rgname -VMScaleSetName $vmssName1 -VirtualMachineScaleSet $vmssGet1 -EnableSecureBoot $true;
         $vmssGet2 = Get-AzVmss -ResourcegroupName $rgname -VMScaleSetName $vmssName1;
         Assert-AreEqual $vmssGet2.VirtualMachineProfile.SecurityProfile.UefiSettings.SecureBootEnabled $true;
-
-        # Guest Attestation extension defaulting test
-        # Validate
-        $vmGADefaultIdentity = "SystemAssigned"; # New defaulting behavior that was unexpected but feature team says go with it.
-        $extDefaultName = "GuestAttestation";
-        $vmssGet = Get-AzVmss -ResourceGroupName $rgname -Name $vmssName1;
-        # Assert-AreEqual $vmGADefaultIDentity $vmssGet.Identity.Type;
-
-        # $output = $vmssGet | Out-String;
-        # Write-Verbose ($output);
-        # Assert-True { $output.Contains($vmGADefaultIdentity) };
-
-        #$vmssvms = Get-AzVmssvm -ResourceGroupName $rgname -VMScaleSetName $vmssName1;
-        #Assert-NotNull $vmssvms;
-        #$vmssvm = Get-AzVmssvm -ResourceGroupName $rgname -VMScaleSetName $vmssName1 -InstanceId $vmssvms[0].InstanceId;
-        # Assert-AreEqual $extDefaultName $vmssvm.Resources[2].Name;
-        # Assert-True {$vmssvm.Resources[2].EnableAutomaticUpgrade};
     }
     finally
     {

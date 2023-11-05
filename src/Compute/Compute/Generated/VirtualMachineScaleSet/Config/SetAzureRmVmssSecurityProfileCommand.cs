@@ -72,6 +72,19 @@ namespace Microsoft.Azure.Commands.Compute.Automation
                 }
                 this.VirtualMachineScaleSet.VirtualMachineProfile.SecurityProfile.SecurityType = this.SecurityType;
             }
+            else if (this.IsParameterBound(c => c.SecurityType) && this.SecurityType?.ToLower() == ConstantValues.StandardSecurityType)
+            {
+                // Security Profile
+                if (this.VirtualMachineScaleSet.VirtualMachineProfile == null)
+                {
+                    this.VirtualMachineScaleSet.VirtualMachineProfile = new PSVirtualMachineScaleSetVMProfile();
+                }
+                if (this.VirtualMachineScaleSet.VirtualMachineProfile.SecurityProfile == null)
+                {
+                    this.VirtualMachineScaleSet.VirtualMachineProfile.SecurityProfile = new SecurityProfile();
+                }
+                this.VirtualMachineScaleSet.VirtualMachineProfile.SecurityProfile.SecurityType = this.SecurityType;
+            }
             WriteObject(this.VirtualMachineScaleSet);
         }
 

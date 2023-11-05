@@ -2439,7 +2439,8 @@ function Test-VirtualMachineWithPremiumStorageAccount
         # VM Profile & Hardware
         $vmsize = 'Standard_DS1';
         $vmname = 'vm' + $rgname;
-        $p = New-AzVMConfig -VMName $vmname -VMSize $vmsize;
+        $stnd = "Standard";
+        $p = New-AzVMConfig -VMName $vmname -VMSize $vmsize -SecurityType $stnd;
         Assert-AreEqual $p.HardwareProfile.VmSize $vmsize;
 
         # NRP
@@ -6006,10 +6007,10 @@ function Test-VirtualMachinePlatformFaultDomain
         $PublisherName = "MicrosoftWindowsServer";
         $Offer = "WindowsServer";
         $SKU = "2019-Datacenter";
-
+        $stnd = "Standard";
 
         # Creating a VM using Simple parameterset
-        $password = "Testing1234567";#Get-PasswordForVM;
+        $password = Get-PasswordForVM;
         $securePassword = $password | ConvertTo-SecureString -AsPlainText -Force;  
         $user = "admin01";
         $cred = New-Object System.Management.Automation.PSCredential ($user, $securePassword);
@@ -6018,7 +6019,7 @@ function Test-VirtualMachinePlatformFaultDomain
 
         $vnet = New-AzVirtualNetwork -Name $vnetname -ResourceGroupName $rgname -Location $loc -AddressPrefix $vnetAddress -Subnet $frontendSubnet;
 
-        $vmssConfig = New-AzVmssConfig -Location $loc -PlatformFaultDomainCount $vmssFaultDomain -SkuName $vmsize -SecurityType "Standard";
+        $vmssConfig = New-AzVmssConfig -Location $loc -PlatformFaultDomainCount $vmssFaultDomain -SkuName $vmsize -SecurityType $stnd;
         $VMSS = New-AzVmss -ResourceGroupName $RGName -Name $VMSSName -VirtualMachineScaleSet $vmssConfig -Verbose;
 
         $nsgRuleRDP = New-AzNetworkSecurityRuleConfig -Name RDP  -Protocol Tcp  -Direction Inbound -Priority 1001 -SourceAddressPrefix * -SourcePortRange * -DestinationAddressPrefix * -DestinationPortRange 3389 -Access Allow;
@@ -6026,7 +6027,7 @@ function Test-VirtualMachinePlatformFaultDomain
         $nic = New-AzNetworkInterface -Name $NICName -ResourceGroupName $RGName -Location $loc -SubnetId $vnet.Subnets[0].Id -NetworkSecurityGroupId $nsg.Id -EnableAcceleratedNetworking;
 
         # VM
-        $vmConfig = New-AzVMConfig -VMName $vmName -VMSize $VMSize  -VmssId $VMSS.Id -PlatformFaultDomain $FaultDomainNumber  ;
+        $vmConfig = New-AzVMConfig -VMName $vmName -VMSize $VMSize  -VmssId $VMSS.Id -PlatformFaultDomain $FaultDomainNumber -SecurityType $stnd ;
         Set-AzVMOperatingSystem -VM $vmConfig -Windows -ComputerName $vmName -Credential $cred ;
         Set-AzVMOSDisk -VM $vmConfig -StorageAccountType "Premium_LRS" -Caching ReadWrite -Name $OSDiskName -DiskSizeInGB $OSDiskSizeinGB -CreateOption FromImage ;
         Set-AzVMSourceImage -VM $vmConfig -PublisherName $PublisherName -Offer $Offer -Skus $SKU -Version latest ;
@@ -6978,7 +6979,7 @@ function Test-VirtualMachineSecurityTypeStandardWithConfig
         $vmsize = 'Standard_D4s_v3';
         $vmname = $rgname + 'Vm';
         $securityTypeStnd = "Standard";
-        $vnetname = "myVnet";
+        $vnetname = "vn" + $rgname;
         $vnetAddress = "10.0.0.0/16";
         $subnetname = "slb" + $rgname;
         $subnetAddress = "10.0.2.0/24";
@@ -7017,7 +7018,8 @@ function Test-VirtualMachineSecurityTypeStandardWithConfig
         New-AzVM -ResourceGroupName $rgname -Location $loc -VM $vmConfig;
         # Verify security value
         $vm = Get-AzVM -ResourceGroupName $rgname -Name $vmname;
-        Assert-NotNull $vm.SecurityProfile;# used for defaulting in value Standard now.
+        # used for defaulting in value Standard now.
+        Assert-Null $vm.SecurityProfile;
     }
     finally
     {

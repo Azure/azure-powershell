@@ -673,6 +673,12 @@ namespace Microsoft.Azure.Commands.Compute.Automation
                     this.EnableVtpm = true;
                 }
             }
+            //ADAM set stnd to null here!!!
+            if (this.IsParameterBound(c => c.SecurityType)
+                && this.SecurityType.ToString().ToLower() == ConstantValues.StandardSecurityType)
+            {
+                this.SecurityType = null;
+            }
 
             //Guest Attestation Identity stuff
             if (this.IsParameterBound(c => c.SecurityType))
@@ -684,7 +690,7 @@ namespace Microsoft.Azure.Commands.Compute.Automation
                     this.EnableSecureBoot = this.EnableSecureBoot ?? true;
                 }          
             }
-            if (shouldGuestAttestationExtBeInstalledSimple()
+            if (shouldGuestAttestationExtBeInstalledSimple()//remove this from ga defaulting stuff
                 && !this.IsParameterBound(c => c.SystemAssignedIdentity)
                 && !this.IsParameterBound(c => c.UserAssignedIdentity)
                     )

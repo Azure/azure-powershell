@@ -174,6 +174,22 @@ namespace Microsoft.Azure.Commands.Compute.Automation
                             }
                             */
 
+                            // Standard securityType is currently not supported in API, jsut used on client side for now,
+                            // so removing it here before API call is made. 
+                            if (parameters.VirtualMachineProfile?.SecurityProfile?.SecurityType?.ToLower() == ConstantValues.StandardSecurityType)
+                            {
+                                if (parameters.VirtualMachineProfile.SecurityProfile.UefiSettings?.SecureBootEnabled == null
+                                    && parameters.VirtualMachineProfile.SecurityProfile.UefiSettings?.VTpmEnabled == null
+                                    && parameters.VirtualMachineProfile.SecurityProfile.EncryptionAtHost == null)
+                                {
+                                    parameters.VirtualMachineProfile.SecurityProfile = null;
+                                }
+                                else
+                                {
+                                    parameters.VirtualMachineProfile.SecurityProfile.SecurityType = null;
+                                }
+                            }
+
                             VirtualMachineScaleSet result;
                             if (auxAuthHeader != null)
                             {

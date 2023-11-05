@@ -587,6 +587,14 @@ namespace Microsoft.Azure.Commands.Compute
                     }
                 }
 
+                // Standard security type removing value since API does not support it.
+                if (_cmdlet.IsParameterBound(c => c.SecurityType)  
+                    && _cmdlet.SecurityType != null
+                    && _cmdlet.SecurityType.ToString().ToLower() == ConstantValues.StandardSecurityType)
+                {
+                    _cmdlet.SecurityType = null;
+                }
+
                 var resourceGroup = ResourceGroupStrategy.CreateResourceGroupConfig(_cmdlet.ResourceGroupName);
                 var virtualNetwork = resourceGroup.CreateVirtualNetworkConfig(
                     name: _cmdlet.VirtualNetworkName, edgeZone: _cmdlet.EdgeZone, addressPrefix: _cmdlet.AddressPrefix);
@@ -764,7 +772,8 @@ namespace Microsoft.Azure.Commands.Compute
                     this.EnableVtpm = this.EnableVtpm ?? true;
                     this.EnableSecureBoot = this.EnableSecureBoot ?? true;
                 }
-                else if (this.SecurityType?.ToLower() == ConstantValues.StandardSecurityType)
+                else if (this.SecurityType != null
+                        && this.SecurityType?.ToLower() == ConstantValues.StandardSecurityType)
                 {
                     this.SecurityType = this.SecurityType;
                 }
@@ -989,12 +998,6 @@ namespace Microsoft.Azure.Commands.Compute
                 setTrustedLaunchImage();
             }
 
-            // Standard security type scenario added
-            if (this.VM.SecurityProfile?.SecurityType?.ToString().ToLower() == ConstantValues.StandardSecurityType)
-            {
-
-            }
-
             // Disk attached scenario for TL defaulting
             if (this.VM.SecurityProfile?.SecurityType == null
                 && this.VM.StorageProfile?.OsDisk?.ManagedDisk?.Id != null)
@@ -1113,6 +1116,22 @@ namespace Microsoft.Azure.Commands.Compute
                 defaultTrustedLaunchAndUefi();
 
                 setTrustedLaunchImage();
+            }
+
+            // Standard security type removign value since API does not support it.
+            if (this.VM.SecurityProfile?.SecurityType != null
+                && this.VM.SecurityProfile?.SecurityType?.ToString().ToLower() == ConstantValues.StandardSecurityType)
+            {
+                if (this.VM.SecurityProfile.UefiSettings?.SecureBootEnabled == null
+                    && this.VM.SecurityProfile.UefiSettings?.VTpmEnabled == null
+                    && this.VM.SecurityProfile.EncryptionAtHost == null)
+                {
+                    this.VM.SecurityProfile = null;
+                }
+                else
+                {
+                    this.VM.SecurityProfile.SecurityType = null;
+                }
             }
 
             // Check if Identity can be defaulted in. 
@@ -1273,11 +1292,6 @@ namespace Microsoft.Azure.Commands.Compute
                     WriteObject(psResult);
                 });
             }
-        }
-
-        private void setTrustedLaunchHyperVGeneration()
-        {
-            //this.VM
         }
         
         private void setTrustedLaunchImage()
