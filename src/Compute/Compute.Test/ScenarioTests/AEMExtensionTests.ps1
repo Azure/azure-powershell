@@ -1279,7 +1279,7 @@ function Create-AdvancedVM($rgname, $vmname, $loc, $vmsize, $stotype, $nicCount,
         $zoneparams.Add("Zone", $zone)  
     }
     $stnd = "Standard";
-    $p = New-AzVMConfig -VMName $vmname -VMSize $vmsize -SecurityType $stnd @zoneparams;
+    $p = New-AzVMConfig -SecurityType $stnd -VMName $vmname -VMSize $vmsize @zoneparams;
     $nul = Assert-AreEqual $p.HardwareProfile.VmSize $vmsize;
 
     Write-Verbose "Start Create-AdvancedVM - Config done"
