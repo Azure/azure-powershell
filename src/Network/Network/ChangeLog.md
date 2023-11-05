@@ -20,6 +20,11 @@
 
 ## Upcoming Release
 * [Breaking Change] Removed `Geo` as a valid input for parameter `VariableName` in `NewAzureApplicationGatewayFirewallCustomRuleGroupByVariable`.
+* Added AllowBranchToBranchTraffic property to New-AzRouteServer
+* Added AllowBranchToBranchTraffic property to Get-AzRouteServer
+* Changed Update-AzRouteServer functionality to fix bugs
+    - AllowBranchToBranchTraffic is now a bool
+    - Updating HubRoutingPreference property will not effect AllowBranchToBranchTraffic
 
 ## Version 6.2.0
 * Added support for new Application Gateway SKU type, Basic SKU
