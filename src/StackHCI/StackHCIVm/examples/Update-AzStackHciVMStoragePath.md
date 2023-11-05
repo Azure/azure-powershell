@@ -1,6 +1,6 @@
 ### Example 1: Update a Storage Path.
 ```powershell
-Update-AzStackHCIVmStoragePath  -Name "testVhd" -ResourceGroupName "test-rg" -Tags @{TagName = TagValue }
+PS C:\> Update-AzStackHCIVmStoragePath  -Name "testVhd" -ResourceGroupName "test-rg" -Tags @{TagName = TagValue }
 ```
 
 ```output

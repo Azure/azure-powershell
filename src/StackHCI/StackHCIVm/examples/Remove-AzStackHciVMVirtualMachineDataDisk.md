@@ -1,6 +1,6 @@
 ### Example 1: Removes a Data Disk from a Virtual Machine
 ```powershell
-Remove-AzStackHCIVmVirtualMachineDataDisk  -Name "testVm" -ResourceGroupName "test-rg"  -DataDiskNames "testVhd"
+PS C:\> Remove-AzStackHCIVmVirtualMachineDataDisk  -Name "testVm" -ResourceGroupName "test-rg"  -DataDiskNames "testVhd"
 
 ```
 ```output

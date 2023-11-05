@@ -1,6 +1,6 @@
 ### Example 1:  Get an Image 
 ```powershell
-Get-AzStackHCIVmImage -Name "testimage" -ResourceGroupName "test-rg" 
+PS C:\> Get-AzStackHCIVmImage -Name "testimage" -ResourceGroupName "test-rg" 
 ```
 ```output
 Name            ResourceGroupName
@@ -12,7 +12,7 @@ This command gets a specific image in the specified resource group.
 
 ### Example 2: List all Images in a Resource Group  
 ```powershell
-Get-AzStackHCIVmImage -ResourceGroupName 'test-rg'
+PS C:\> Get-AzStackHCIVmImage -ResourceGroupName 'test-rg'
 ```
 ```output
 Name            ResourceGroupName

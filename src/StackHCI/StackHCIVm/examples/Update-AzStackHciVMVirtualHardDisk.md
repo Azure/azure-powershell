@@ -1,6 +1,6 @@
 ### Example 1: Update a Virtual Hard Disk.
 ```powershell
-Update-AzStackHCIVmVirtualHardDisk  -Name "testVhd" -ResourceGroupName "test-rg" -Tags @{TagName = TagValue }
+PS C:\> Update-AzStackHCIVmVirtualHardDisk  -Name "testVhd" -ResourceGroupName "test-rg" -Tags @{TagName = TagValue }
 ```
 
 ```output
