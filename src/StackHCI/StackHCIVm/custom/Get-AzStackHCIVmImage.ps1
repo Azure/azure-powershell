@@ -35,7 +35,7 @@ Microsoft.Azure.PowerShell.Cmdlets.StackHCIVm.Models.Api20230901Preview.IMarketp
 https://learn.microsoft.com/powershell/module/az.stackhcivm/get-azstackhcivmgalleryimage
 #>
 
-function Get-AzStackHciVMImage{    
+function Get-AzStackHCIVmImage{    
     [CmdletBinding(DefaultParameterSetName='BySubscription', PositionalBinding=$false)]
 
     param(
@@ -82,7 +82,7 @@ function Get-AzStackHciVMImage{
             if ($galImage -ne $null){
                 $isGalleryImage = $true 
             } else {
-                $marketplaceGalImage = Az.StackHciVM.internal\Get-AzStackHciVMMarketplaceGalleryImage @PSBoundParameters
+                $marketplaceGalImage = Az.StackHciVM.internal\Get-AzStackHciVMMarketplaceGalleryImage @PSBoundParameters -ErrorAction SilentlyContinue
                 if ($marketplaceGalImage -ne $null){
                     $isMarketplaceGalleryImage = $true 
                 }

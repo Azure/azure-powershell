@@ -39,7 +39,7 @@ COMPLEX PARAMETER PROPERTIES
 .Link
 https://learn.microsoft.com/powershell/module/az.stackhcivm/new-azstackhcivmimage
 #>
-function New-AzStackHciVMImage{
+function New-AzStackHCIVmImage{
     [OutputType([Microsoft.Azure.PowerShell.Cmdlets.StackHciVM.Models.Api20230901Preview.IMarketplaceGalleryImages],ParameterSetName='Marketplace' )]
     [OutputType([Microsoft.Azure.PowerShell.Cmdlets.StackHciVM.Models.Api20230901Preview.IMarketplaceGalleryImages],ParameterSetName='MarketplaceURN' )]
     [OutputType([Microsoft.Azure.PowerShell.Cmdlets.StackHciVM.Models.Api20230901Preview.IGalleryImages],ParameterSetName='GalleryImage' )]

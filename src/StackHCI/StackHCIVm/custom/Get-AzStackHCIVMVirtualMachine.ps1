@@ -32,8 +32,9 @@ Microsoft.Azure.PowerShell.Cmdlets.StackHciVM.Models.Api20230901Preview.IVirtual
 .Link
 https://learn.microsoft.com/powershell/module/az.stackhcivm/get-azstackhcivmvirtualmachine
 #>
-function Get-AzStackHciVMVirtualMachine {
-    [OutputType([Microsoft.Azure.PowerShell.Cmdlets.StackHciVM.Models.Api20230901Preview.IVirtualMachineInstance])]
+function Get-AzStackHCIVmVirtualMachine {
+    [OutputType([Microsoft.Azure.PowerShell.Cmdlets.StackHciVM.Models.Api20230315Preview.Machine],ParameterSetName='ByResourceGroup' )]
+    [OutputType([Microsoft.Azure.PowerShell.Cmdlets.StackHciVM.Models.Api20230901Preview.IVirtualMachineInstance],ParameterSetName='ByName' )]
     [CmdletBinding( PositionalBinding=$false, SupportsShouldProcess, ConfirmImpact='Medium')]
     param(
 
@@ -45,13 +46,16 @@ function Get-AzStackHciVMVirtualMachine {
         ${Name},
         
         [Parameter(ParameterSetName='ByName', Mandatory)]
+        [Parameter(ParameterSetName='ByResourceGroup', Mandatory)]
         [Microsoft.Azure.PowerShell.Cmdlets.StackHciVM.Category('Path')]
         [System.String]
         # The name of the resource group.
         # The name is case insensitive.
         ${ResourceGroupName},
 
-        [Parameter(ParameterSetName='ByName', Mandatory)]
+        [Parameter(ParameterSetName='ByName')]
+        [Parameter(ParameterSetName='ByResourceGroup')]
+        [Parameter(ParameterSetName='BySubscription')]
         [Microsoft.Azure.PowerShell.Cmdlets.StackHciVM.Category('Path')]
         [Microsoft.Azure.PowerShell.Cmdlets.StackHciVM.Runtime.DefaultInfo(Script='(Get-AzContext).Subscription.Id')]
         [System.String]
@@ -66,21 +70,43 @@ function Get-AzStackHciVMVirtualMachine {
  
     )
       process {
-        if (($ResourceId -match $vmRegex) -or ($Name -and $ResourceGroupName -and $SubscriptionId)){
-            if ($ResourceId -match $vmRegex){
-                $SubscriptionId = $($Matches['subscriptionId'])
-                $ResourceGroupName = $($Matches['resourceGroupName'])
-                $Name = $($Matches['machineName'])
+        if ($PSCmdlet.ParameterSetName -eq "ByName" -or $PSCmdlet.ParameterSetName -eq "ByResourceId"){
+            if (($ResourceId -match $vmRegex) -or ($Name -and $ResourceGroupName -and $SubscriptionId)){
+                if ($ResourceId -match $vmRegex){
+                    $SubscriptionId = $($Matches['subscriptionId'])
+                    $ResourceGroupName = $($Matches['resourceGroupName'])
+                    $Name = $($Matches['machineName'])
+                }
+                $resourceUri = "/subscriptions/" + $subscriptionId + "/resourceGroups/" + $ResourceGroupName + "/providers/Microsoft.HybridCompute/machines/" + $Name
+                $PSBoundParameters.Add("ResourceUri", $resourceUri)
+                $null = $PSBoundParameters.Remove("SubscriptionId")
+                $null = $PSBoundParameters.Remove("ResourceGroupName")
+                $null = $PSBoundParameters.Remove("ResourceId")
+                $null = $PSBoundParameters.Remove("Name")
+                return  Az.StackHciVM.internal\Get-AzStackHciVMVirtualMachine @PSBoundParameters
+            } else {             
+                Write-Error "One or more input parameters are invalid. Resource ID is: $ResourceId, name is $name, resource group name is $resourcegroupname, subscription id is $subscriptionid"
+            }   
+        } elseif ($PSCmdlet.ParameterSetName -eq "ByResourceGroup") {
+            $allHCIMachines = [System.Collections.ArrayList]::new()
+            $machines = Az.StackHciVM.internal\Get-AzStackHciVMMachine -ResourceGroupName $ResourceGroupName
+            foreach ($machine in $machines){
+                if ($machine.Kind.ToString() -eq "HCI"){
+                    [void]$allHCIMachines.Add($machine) 
+                }
             }
-            $resourceUri = "/subscriptions/" + $subscriptionId + "/resourceGroups/" + $ResourceGroupName + "/providers/Microsoft.HybridCompute/machines/" + $Name
-            $PSBoundParameters.Add("ResourceUri", $resourceUri)
-            $null = $PSBoundParameters.Remove("SubscriptionId")
-            $null = $PSBoundParameters.Remove("ResourceGroupName")
-            $null = $PSBoundParameters.Remove("ResourceId")
-            $null = $PSBoundParameters.Remove("Name")
-            return  Az.StackHciVM.internal\Get-AzStackHciVMVirtualMachine @PSBoundParameters
-        } else {             
-            Write-Error "One or more input parameters are invalid. Resource ID is: $ResourceId, name is $name, resource group name is $resourcegroupname, subscription id is $subscriptionid"
-        }   
+            return $allHCIMachines 
+
+        } else {
+            $allHCIMachines = [System.Collections.ArrayList]::new()
+            $machines = Az.StackHciVM.internal\Get-AzStackHciVMMachine -SubscriptionId $SubscriptionId
+            foreach ($machine in $machines){
+                if ($machine.Kind.ToString() -eq "HCI"){
+                    [void]$allHCIMachines.Add($machine) 
+                }
+            }
+            return $allHCIMachines 
+
+        }
     }
 }

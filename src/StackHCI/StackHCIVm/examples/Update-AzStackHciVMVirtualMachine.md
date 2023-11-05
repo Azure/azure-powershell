@@ -1,6 +1,6 @@
 ### Example 1: Update the Size of the Virtual Machine. 
 ```powershell
-Update-AzStackHCIVMVirtualMachine  -Name "testVm" -ResourceGroupName "test-rg" -VmSize "4"
+Update-AzStackHCIVmVirtualMachine  -Name "testVm" -ResourceGroupName "test-rg" -VmMemoryInMB "4"
 ```
 ```output
 Name            ResourceGroupName

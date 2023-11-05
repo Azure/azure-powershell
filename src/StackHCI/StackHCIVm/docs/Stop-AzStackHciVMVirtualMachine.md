@@ -5,7 +5,7 @@ online version: https://learn.microsoft.com/powershell/module/az.stackhcivm/stop
 schema: 2.0.0
 ---
 
-# Stop-AzStackHciVMVirtualMachine
+# Stop-AzStackHCIVmVirtualMachine
 
 ## SYNOPSIS
 The operation to stop a virtual machine instance.
@@ -14,12 +14,12 @@ The operation to stop a virtual machine instance.
 
 ### ByResourceId (Default)
 ```
-Stop-AzStackHciVMVirtualMachine -ResourceId <String> [-Confirm] [-WhatIf] [<CommonParameters>]
+Stop-AzStackHCIVmVirtualMachine -ResourceId <String> [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ### ByName
 ```
-Stop-AzStackHciVMVirtualMachine -Name <String> -ResourceGroupName <String> [-SubscriptionId <String>]
+Stop-AzStackHCIVmVirtualMachine -Name <String> -ResourceGroupName <String> [-SubscriptionId <String>]
  [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
@@ -30,7 +30,7 @@ The operation to stop a virtual machine instance.
 
 ### Example 1: Stop Virtual Machine 
 ```powershell
-Stop-AzStackHCIVMVirtualMachine  -Name "testVm" -ResourceGroupName "test-rg"
+Stop-AzStackHCIVmVirtualMachine  -Name "testVm" -ResourceGroupName "test-rg"
 
 ```
 
@@ -139,7 +139,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### System.Boolean
+### Microsoft.Azure.PowerShell.Cmdlets.StackHCIVm.Models.Api20230901Preview.IVirtualMachineInstance
 
 ## NOTES
 

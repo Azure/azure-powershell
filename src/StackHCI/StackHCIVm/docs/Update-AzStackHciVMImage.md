@@ -5,7 +5,7 @@ online version: https://learn.microsoft.com/powershell/module/az.stackhcivm/new-
 schema: 2.0.0
 ---
 
-# Update-AzStackHciVMImage
+# Update-AzStackHCIVmImage
 
 ## SYNOPSIS
 The operation to update an image.
@@ -14,13 +14,13 @@ The operation to update an image.
 
 ### ByResourceId (Default)
 ```
-Update-AzStackHciVMImage -ResourceId <String> [-SubscriptionId <String>] [-Tags <Hashtable>]
+Update-AzStackHCIVmImage -ResourceId <String> [-SubscriptionId <String>] [-Tags <Hashtable>]
  [<CommonParameters>]
 ```
 
 ### ByName
 ```
-Update-AzStackHciVMImage -Name <String> -ResourceGroupName <String> [-SubscriptionId <String>]
+Update-AzStackHCIVmImage -Name <String> -ResourceGroupName <String> [-SubscriptionId <String>]
  [-Tags <Hashtable>] [<CommonParameters>]
 ```
 
@@ -32,7 +32,7 @@ Please note some properties can be set only during image creation.
 
 ### Example 1: Update an Image.
 ```powershell
-Update-AzStackHCIVMVImage  -Name "testImage" -ResourceGroupName "test-rg" -Tags @{TagName = TagValue }
+Update-AzStackHCIVmVImage  -Name "testImage" -ResourceGroupName "test-rg" -Tags @{TagName = TagValue }
 ```
 
 ```output

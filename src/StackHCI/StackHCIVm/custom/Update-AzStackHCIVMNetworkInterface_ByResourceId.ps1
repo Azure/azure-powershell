@@ -34,7 +34,7 @@ Microsoft.Azure.PowerShell.Cmdlets.StackHCIVm.Models.Api20230901Preview.INetwork
 .Link
 https://learn.microsoft.com/powershell/module/az.stackhcivm/update-azstackhcivmnetworkinterface
 #>
-function Update-AzStackHciVMNetworkInterface_ByResourceId {
+function Update-AzStackHCIVmNetworkInterface_ByResourceId {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.StackHciVM.Models.Api20230901Preview.INetworkInterfaces])]
 [CmdletBinding(PositionalBinding=$false)]
 

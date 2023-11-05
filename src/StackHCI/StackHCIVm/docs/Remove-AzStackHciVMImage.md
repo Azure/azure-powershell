@@ -5,7 +5,7 @@ online version: https://learn.microsoft.com/powershell/module/az.stackhcivm/remo
 schema: 2.0.0
 ---
 
-# Remove-AzStackHciVMImage
+# Remove-AzStackHCIVmImage
 
 ## SYNOPSIS
 The operation to delete an image.
@@ -14,13 +14,13 @@ The operation to delete an image.
 
 ### ByResourceId (Default)
 ```
-Remove-AzStackHciVMImage -ResourceId <String> [-SubscriptionId <String>] [-Force] [-Confirm] [-WhatIf]
+Remove-AzStackHCIVmImage -ResourceId <String> [-SubscriptionId <String>] [-Force] [-Confirm] [-WhatIf]
  [<CommonParameters>]
 ```
 
 ### ByName
 ```
-Remove-AzStackHciVMImage -Name <String> -ResourceGroupName <String> [-SubscriptionId <String>] [-Force]
+Remove-AzStackHCIVmImage -Name <String> -ResourceGroupName <String> [-SubscriptionId <String>] [-Force]
  [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
@@ -31,7 +31,7 @@ The operation to delete an image.
 
 ### Example 1:  Remove an image.
 ```powershell
-Remove-AzStackHCIVMImage -Name  "testImage" -ResourceGroupName "test-rg"
+Remove-AzStackHCIVmImage -Name  "testImage" -ResourceGroupName "test-rg"
 ```
 
 This command removes the image from the specified resource group.

@@ -5,7 +5,7 @@ online version: https://learn.microsoft.com/powershell/module/az.stackhcivm/new-
 schema: 2.0.0
 ---
 
-# New-AzStackHciVMNetworkInterfaceIpConfig
+# New-AzStackHCIVmNetworkInterfaceIpConfig
 
 ## SYNOPSIS
 
@@ -13,7 +13,7 @@ schema: 2.0.0
 ## SYNTAX
 
 ```
-New-AzStackHciVMNetworkInterfaceIpConfig [-SubnetId] <String> [[-IpAddress] <String>] [<CommonParameters>]
+New-AzStackHCIVmNetworkInterfaceIpConfig [-SubnetId] <String> [[-IpAddress] <String>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION

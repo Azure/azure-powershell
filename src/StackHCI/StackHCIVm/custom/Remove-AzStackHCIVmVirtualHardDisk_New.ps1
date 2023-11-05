@@ -31,7 +31,7 @@ COMPLEX PARAMETER PROPERTIES
 .Link
 https://learn.microsoft.com/powershell/module/az.stackhcivm/remove-azstackhcivmvirtualharddisk
 #>
-function Remove-AzStackHciVMVirtualHardDisk {
+function Remove-AzStackHCIVmVirtualHardDisk {
     [OutputType([System.Boolean])]
     [CmdletBinding(PositionalBinding=$false, SupportsShouldProcess=$true, ConfirmImpact='Medium')]
     param(

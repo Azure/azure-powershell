@@ -5,7 +5,7 @@ online version: https://learn.microsoft.com/powershell/module/az.stackhcivm/rest
 schema: 2.0.0
 ---
 
-# Restart-AzStackHciVMVirtualMachine
+# Restart-AzStackHCIVmVirtualMachine
 
 ## SYNOPSIS
 The operation to restart a virtual machine instance.
@@ -14,12 +14,12 @@ The operation to restart a virtual machine instance.
 
 ### ByResourceId (Default)
 ```
-Restart-AzStackHciVMVirtualMachine -ResourceId <String> [-Confirm] [-WhatIf] [<CommonParameters>]
+Restart-AzStackHCIVmVirtualMachine -ResourceId <String> [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ### ByName
 ```
-Restart-AzStackHciVMVirtualMachine -Name <String> -ResourceGroupName <String> [-SubscriptionId <String>]
+Restart-AzStackHCIVmVirtualMachine -Name <String> -ResourceGroupName <String> [-SubscriptionId <String>]
  [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
@@ -30,7 +30,7 @@ The operation to restart a virtual machine instance.
 
 ### Example 1: Restart Virtual Machine 
 ```powershell
-Restart-AzStackHCIVMVirtualMachine  -Name "testVm" -ResourceGroupName "test-rg"
+Restart-AzStackHCIVmVirtualMachine  -Name "testVm" -ResourceGroupName "test-rg"
 
 ```
 
@@ -137,7 +137,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### System.Boolean
+### Microsoft.Azure.PowerShell.Cmdlets.StackHCIVm.Models.Api20230901Preview.IVirtualMachineInstance
 
 ## NOTES
 

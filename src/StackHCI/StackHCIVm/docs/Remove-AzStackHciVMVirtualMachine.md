@@ -5,7 +5,7 @@ online version: https://learn.microsoft.com/powershell/module/az.stackhcivm/remo
 schema: 2.0.0
 ---
 
-# Remove-AzStackHciVMVirtualMachine
+# Remove-AzStackHCIVmVirtualMachine
 
 ## SYNOPSIS
 The operation to delete a virtual machine.
@@ -14,13 +14,13 @@ The operation to delete a virtual machine.
 
 ### ByResourceId (Default)
 ```
-Remove-AzStackHciVMVirtualMachine -ResourceId <String> [-InputObject <IStackHciVMIdentity>]
+Remove-AzStackHCIVmVirtualMachine -ResourceId <String> [-InputObject <IStackHciVMIdentity>]
  [-SubscriptionId <String>] [-Force] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ### ByName
 ```
-Remove-AzStackHciVMVirtualMachine -Name <String> -ResourceGroupName <String>
+Remove-AzStackHCIVmVirtualMachine -Name <String> -ResourceGroupName <String>
  [-InputObject <IStackHciVMIdentity>] [-SubscriptionId <String>] [-Force] [-Confirm] [-WhatIf]
  [<CommonParameters>]
 ```
@@ -32,7 +32,7 @@ The operation to delete a virtual machine.
 
 ### Example 1: Remove a Virtual Machine 
 ```powershell
-Remove-AzStackHCIVMVirtualMachine  -Name "testVm" -ResourceGroupName "test-rg"
+Remove-AzStackHCIVmVirtualMachine  -Name "testVm" -ResourceGroupName "test-rg"
 
 ```
 

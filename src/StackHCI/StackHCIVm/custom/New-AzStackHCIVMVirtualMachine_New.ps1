@@ -49,7 +49,7 @@ WINDOWSCONFIGURATIONSSHPUBLICKEY <IVirtualMachinePropertiesOSProfileWindowsConfi
 .Link
 https://learn.microsoft.com/powershell/module/az.StackHciVM/new-azStackHciVMvirtualmachine
 #>
-function New-AzStackHciVMVirtualMachine {
+function New-AzStackHCIVmVirtualMachine {
   [OutputType([Microsoft.Azure.PowerShell.Cmdlets.StackHciVM.Models.Api20230901Preview.IVirtualMachineInstance])]
   [CmdletBinding(PositionalBinding=$false, SupportsShouldProcess, ConfirmImpact='Medium')]
   param(
@@ -119,7 +119,6 @@ function New-AzStackHciVMVirtualMachine {
       ${VmProcessors},
 
       [Parameter()]
-      [ArgumentCompleter([Microsoft.Azure.PowerShell.Cmdlets.StackHciVM.Support.VMSizeEnum])]
       [Microsoft.Azure.PowerShell.Cmdlets.StackHciVM.Category('Body')]
       [Microsoft.Azure.PowerShell.Cmdlets.StackHciVM.Support.VMSizeEnum]
       # Size of the VM. Can be predefined size or Custom. 
@@ -247,6 +246,7 @@ function New-AzStackHciVMVirtualMachine {
       ${ComputerName},
 
       [Parameter(Mandatory)]
+      [ArgumentCompleter([Microsoft.Azure.PowerShell.Cmdlets.StackHCIVm.Support.OperatingSystemTypes])]
       [Microsoft.Azure.PowerShell.Cmdlets.StackHciVM.Category('Body')]
       [System.String]
       # OsType - string specifying whether the OS is Linux or Windows
@@ -381,9 +381,9 @@ function New-AzStackHciVMVirtualMachine {
         $isGalleryImage = $false
         $isMarketplaceGalleryImage = $false
       
-      $galImage = Az.StackHciVM.internal\Get-AzStackHciVMGalleryImage -Name $ImageName -ResourceGroupName $rg -SubscriptionId $subscriptionId
+      $galImage = Az.StackHciVM.internal\Get-AzStackHciVMGalleryImage -Name $ImageName -ResourceGroupName $rg -SubscriptionId $SubscriptionId -ErrorAction SilentlyContinue
       if($galImage -eq $null){
-        $marketplaceGalImage = Az.StackHciVM.internal\Get-AzStackHciVMMarketplaceGalleryImage -Name $ImageName -ResourceGroupName $rg -SubscriptionId $subscriptionId
+        $marketplaceGalImage = Az.StackHciVM.internal\Get-AzStackHciVMMarketplaceGalleryImage -Name $ImageName -ResourceGroupName $rg -SubscriptionId $SubscriptionId -ErrorAction SilentlyContinue
         if ($marketplacegalImage -eq $null){
           Write-Error "An Image with name: $ImageName does not exist in Resource Group: $rg" -ErrorAction Stop
         } else {
@@ -485,7 +485,7 @@ function New-AzStackHciVMVirtualMachine {
     $OsType = "Windows"
     if($ComputerName){
       if ($ComputerName.length -gt 15 -or $ComputerName -match $allDigitsRegex -or $ComputerName -match $invalidCharactersComputerName){
-        Write-Error "Invalid Computer Name : $ComputerName."
+        Write-Error "Invalid Computer Name : $ComputerName." -ErrorAction Stop
       }
     }
     if ($DisablePasswordAuthentication.IsPresent){
@@ -517,7 +517,7 @@ function New-AzStackHciVMVirtualMachine {
   } elseif ($OsType.ToString().ToLower() -eq "linux"){
       $OsType = "Linux"
       if ($ComputerName.length -gt 64 -or $ComputerName -match $allDigitsRegex -or $ComputerName -match $invalidCharactersComputerName){
-        Write-Error "Invalid Computer Name : $ComputerName."
+        Write-Error "Invalid Computer Name : $ComputerName." -ErrorAction Stop
       }
       if ($EnableAutomaticUpdates.IsPresent){
         $null = $PSBoundParameters.Remove('EnableAutomaticUpdates')

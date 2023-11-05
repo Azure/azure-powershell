@@ -5,7 +5,7 @@ online version: https://learn.microsoft.com/powershell/module/az.stackhcivm/get-
 schema: 2.0.0
 ---
 
-# Get-AzStackHciVMImage
+# Get-AzStackHCIVmImage
 
 ## SYNOPSIS
 Gets a gallery image
@@ -14,23 +14,23 @@ Gets a gallery image
 
 ### BySubscription (Default)
 ```
-Get-AzStackHciVMImage [-SubscriptionId <String[]>] [<CommonParameters>]
+Get-AzStackHCIVmImage [-SubscriptionId <String[]>] [<CommonParameters>]
 ```
 
 ### ByName
 ```
-Get-AzStackHciVMImage -Name <String> -ResourceGroupName <String> [-SubscriptionId <String[]>]
+Get-AzStackHCIVmImage -Name <String> -ResourceGroupName <String> [-SubscriptionId <String[]>]
  [<CommonParameters>]
 ```
 
 ### ByResourceGroup
 ```
-Get-AzStackHciVMImage -ResourceGroupName <String> [-SubscriptionId <String[]>] [<CommonParameters>]
+Get-AzStackHCIVmImage -ResourceGroupName <String> [-SubscriptionId <String[]>] [<CommonParameters>]
 ```
 
 ### ByResourceId
 ```
-Get-AzStackHciVMImage -ResourceId <String> [-SubscriptionId <String[]>] [<CommonParameters>]
+Get-AzStackHCIVmImage -ResourceId <String> [-SubscriptionId <String[]>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -40,7 +40,7 @@ Gets a gallery image
 
 ### Example 1:  Get an Image 
 ```powershell
-Get-AzStackHCIVMImage -Name "testimage" -ResourceGroupName "test-rg" 
+Get-AzStackHCIVmImage -Name "testimage" -ResourceGroupName "test-rg" 
 ```
 
 ```output
@@ -53,7 +53,7 @@ This command gets a specific image in the specified resource group.
 
 ### Example 2: List all Images in a Resource Group  
 ```powershell
-Get-AzStackHCIVMImage -ResourceGroupName 'test-rg'
+Get-AzStackHCIVmImage -ResourceGroupName 'test-rg'
 ```
 
 ```output

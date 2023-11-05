@@ -57,7 +57,7 @@ SUBNET <ISubnet[]>: Subnet - list of subnets under the logical network
 https://learn.microsoft.com/powershell/module/az.stackhcivm/new-azstackhcivmlogicalnetwork
 #>
 
-function New-AzStackHciVMLogicalNetwork {
+function New-AzStackHCIVmLogicalNetwork {
   [OutputType([Microsoft.Azure.PowerShell.Cmdlets.StackHciVM.Models.Api20230901Preview.ILogicalNetworks])]
   [CmdletBinding( PositionalBinding=$false, SupportsShouldProcess, ConfirmImpact='Medium')]
   param(
@@ -141,6 +141,7 @@ function New-AzStackHciVMLogicalNetwork {
       $IpPoolStart, 
   
       [Parameter()]
+      [ArgumentCompleter([Microsoft.Azure.PowerShell.Cmdlets.StackHCIVm.Support.IPPoolTypeEnum])]
       [Microsoft.Azure.PowerShell.Cmdlets.StackHciVM.Category('Body')]
       [System.String]
       # Ip pool type

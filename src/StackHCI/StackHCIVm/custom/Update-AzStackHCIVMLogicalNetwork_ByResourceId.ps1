@@ -33,7 +33,7 @@ Microsoft.Azure.PowerShell.Cmdlets.StackHCIVm.Models.Api20230901Preview.ILogical
 .Link
 https://learn.microsoft.com/powershell/module/az.stackhcivm/update-azstackhcivmlogicalnetwork
 #>
-function Update-AzStackHciVMLogicalNetwork_ByResourceId {
+function Update-AzStackHCIVmLogicalNetwork_ByResourceId {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.StackHciVM.Models.Api20230901Preview.ILogicalNetworks])]
 [CmdletBinding(PositionalBinding=$false)]
 

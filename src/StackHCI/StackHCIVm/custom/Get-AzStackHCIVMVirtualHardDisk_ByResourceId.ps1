@@ -33,7 +33,7 @@ Microsoft.Azure.PowerShell.Cmdlets.StackHCIVm.Models.Api20230901Preview.IVirtual
 .Link
 https://learn.microsoft.com/powershell/module/az.stackhcivm/get-azstackhcivmvirtualharddisk
 #>
-function Get-AzStackHciVMVirtualHardDisk_ByResourceId {
+function Get-AzStackHCIVmVirtualHardDisk_ByResourceId {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.StackHciVM.Models.Api20230901Preview.IVirtualHardDisks])]
 [CmdletBinding( PositionalBinding=$false)]
 

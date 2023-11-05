@@ -5,7 +5,7 @@ online version: https://learn.microsoft.com/powershell/module/az.stackhcivm/add-
 schema: 2.0.0
 ---
 
-# Add-AzStackHciVMVirtualMachineNetworkInterface
+# Add-AzStackHCIVmVirtualMachineNetworkInterface
 
 ## SYNOPSIS
 The operation to add a network interface to a virtual machine.
@@ -14,13 +14,13 @@ The operation to add a network interface to a virtual machine.
 
 ### ByResourceId (Default)
 ```
-Add-AzStackHciVMVirtualMachineNetworkInterface -ResourceId <String> [-NicIds <String[]>]
+Add-AzStackHCIVmVirtualMachineNetworkInterface -ResourceId <String> [-NicIds <String[]>]
  [-NicNames <String[]>] [-NicResourceGroup <String>] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ### ByName
 ```
-Add-AzStackHciVMVirtualMachineNetworkInterface -Name <String> -ResourceGroupName <String>
+Add-AzStackHCIVmVirtualMachineNetworkInterface -Name <String> -ResourceGroupName <String>
  [-SubscriptionId <String>] [-NicIds <String[]>] [-NicNames <String[]>] [-NicResourceGroup <String>]
  [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
@@ -32,7 +32,7 @@ The operation to add a network interface to a virtual machine.
 
 ### Example 1: Add a Network Interface to a Virtual Machine
 ```powershell
-Add-AzStackHCIVMVirtualMachineNic  -Name "testVm" -ResourceGroupName "test-rg"  -DataDiskNames "testNic"
+Add-AzStackHCIVmVirtualMachineNetworkInterface  -Name "testVm" -ResourceGroupName "test-rg"  -DataDiskNames "testNic"
 
 ```
 

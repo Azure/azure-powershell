@@ -30,7 +30,7 @@ System.Boolean
 https://learn.microsoft.com/powershell/module/az.stackhcivm/remove-azstackhcivmimage
 #>
 
-function Remove-AzStackHciVMImage{
+function Remove-AzStackHCIVmImage{
     [OutputType([System.Boolean])]
     [CmdletBinding(PositionalBinding=$false, SupportsShouldProcess, ConfirmImpact='Medium')]
     param(

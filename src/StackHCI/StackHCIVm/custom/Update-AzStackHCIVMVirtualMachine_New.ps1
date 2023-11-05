@@ -43,7 +43,7 @@ STORAGEPROFILEDATADISK <IStorageProfileUpdateDataDisksItem[]>: adds data disks t
 .Link
 https://learn.microsoft.com/powershell/module/az.stackhcivm/update-azstackhcivmvirtualmachine
 #>
-function Update-AzStackHciVMVirtualMachine {
+function Update-AzStackHCIVmVirtualMachine {
     [OutputType([Microsoft.Azure.PowerShell.Cmdlets.StackHciVM.Models.Api20230901Preview.IVirtualMachineInstance])]
     [CmdletBinding(PositionalBinding=$false)]    
 
@@ -76,6 +76,18 @@ function Update-AzStackHciVMVirtualMachine {
         ${SubscriptionId},
 
         [Parameter()]
+        [Microsoft.Azure.PowerShell.Cmdlets.StackHciVM.Category('Body')]
+        [System.Management.Automation.SwitchParameter]
+        # Indicates whether virtual machine agent should be provisioned on the virtual machine.
+        ${ProvisionVMAgent},
+  
+        [Parameter()]
+        [Microsoft.Azure.PowerShell.Cmdlets.StackHciVM.Category('Body')]
+        [System.Management.Automation.SwitchParameter]
+        # Indicates whether virtual machine configuration agent should be provisioned on the virtual machine.
+        ${ProvisionVMConfigAgent},
+
+        [Parameter()]
         [Microsoft.Azure.PowerShell.Cmdlets.StackHCIVm.Category('Body')]
         [System.Int64]
         # RAM in MB for the virtual machine instance
@@ -106,10 +118,10 @@ function Update-AzStackHciVMVirtualMachine {
             }
             $resourceUri = "/subscriptions/" + $subscriptionId + "/resourceGroups/" + $ResourceGroupName + "/providers/Microsoft.HybridCompute/machines/" + $Name
             $PSBoundParameters.Add("ResourceUri", $resourceUri)
-            if ($VmMemory)
+            if ($VmMemoryInMB)
             {
                 $PSBoundParameters.Add("HardwareProfileMemoryMb", $VmMemoryInMB)
-                $null = $PSBoundParameters.Remove("VmMemoryInMb")
+                $null = $PSBoundParameters.Remove("VmMemoryInMB")
             }
             if ($VmProcessors)
             {
@@ -121,6 +133,20 @@ function Update-AzStackHciVMVirtualMachine {
                 $PSBoundParameters.Add("HardwareProfileVMSize", $VmSize)    
                 $null = $PSBoundParameters.Remove("VmSize")
             }
+
+            if ($ProvisionVMAgent){
+                $PSBoundParameters.Add("LinuxConfigurationProvisionVMAgent", $true)
+                $PSBoundParameters.Add("WindowConfigurationProvisionVMAgent", $true)
+            }
+            if ($ProvisionVMConfigAgent){
+                $PSBoundParameters.Add("LinuxConfigurationProvisionVMConfigAgent", $true)
+                $PSBoundParameters.Add("WindowConfigurationProvisionVMConfigAgent", $true)
+            }
+
+            $null = $PSBoundParameters.Remove("ProvisionVMAgent")
+            $null = $PSBoundParameters.Remove("ProvisionVMConfigAgent")
+            
+
             $null = $PSBoundParameters.Remove("SubscriptionId")
             $null = $PSBoundParameters.Remove("ResourceGroupName")
             $null = $PSBoundParameters.Remove("ResourceId")

@@ -32,8 +32,8 @@ COMPLEX PARAMETER PROPERTIES
 .Link
 https://learn.microsoft.com/powershell/module/az.stackhcivm/start-azstackhcivmvirtualmachine
 #>
-function Start-AzStackHciVMVirtualMachine {
-    [OutputType([System.Boolean])]
+function Start-AzStackHCIVmVirtualMachine {
+    [OutputType([Microsoft.Azure.PowerShell.Cmdlets.StackHCIVm.Models.Api20230901Preview.IVirtualMachineInstance])]
     [CmdletBinding( PositionalBinding=$false, SupportsShouldProcess, ConfirmImpact='Medium')]
     param(
 

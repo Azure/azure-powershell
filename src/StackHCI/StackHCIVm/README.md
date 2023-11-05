@@ -252,9 +252,33 @@ directive:
     where: $.paths["/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AzureStackHCI/galleryImages/{galleryImageName}"].delete
     transform: >- 
       $["x-ms-long-running-operation"] = true
+   
+   
+  # Remove the unexpanded parameter set
  -  where:
-      variant: ^Create$|^CreateViaIdentity$|^CreateViaIdentityExpanded$|^Update$|^UpdateViaIdentity$
+      variant: ^Create$|^CreateViaIdentity$|^CreateViaIdentityExpanded$|^Update$|^UpdateViaIdentity$|^GetViaIdentity$
     remove: true
+ -  where:
+      parameter-name: DefaultProfile
+    hide: true
+ -  where:
+      parameter-name: Break
+    hide: true
+ -  where:
+      parameter-name: HttpPipelineAppend
+    hide: true
+ -  where:
+      parameter-name: HttpPipelinePrepend
+    hide: true
+ -  where:
+      parameter-name: Proxy
+    hide: true
+ -  where:
+      parameter-name: ProxyCredential
+    hide: true
+ -  where:
+      parameter-name: ProxyUseDefaultCredentials
+    hide: true
  -  where:
       verb: New
       parameter-name: ExtendedLocationName
@@ -397,7 +421,7 @@ directive:
     set:
       parameter-name: DnsServers
  -  where:
-      model-name: LogicalNetworkPropertiesSubnetsItem
+      model-name: Subnet
       property-name: PropertiesAddressPrefixes  
     set:
       property-name: AddressPrefixes 

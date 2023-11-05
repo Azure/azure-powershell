@@ -43,7 +43,7 @@ IPCONFIGURATION <IIPConfiguration[]>: IPConfigurations - A list of IPConfigurati
 .Link
 https://learn.microsoft.com/powershell/module/az.stackhcivm/new-azstackhcivmnetworkinterface
 #>
-function New-AzStackHciVMNetworkInterface {
+function New-AzStackHCIVmNetworkInterface {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.StackHciVM.Models.Api20230901Preview.INetworkInterfaces])]
 [CmdletBinding(PositionalBinding=$false, SupportsShouldProcess, ConfirmImpact='Medium')]
 param(
@@ -153,6 +153,7 @@ param(
 
 
   if ($IpConfigurations){
+    $null = $PSBoundParameters.Remove("IPConfigurations")
     $PSBoundParameters.Add("IPConfiguration", $IpConfigurations)
 
   } else {

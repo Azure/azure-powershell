@@ -5,7 +5,7 @@ online version: https://learn.microsoft.com/powershell/module/az.stackhcivm/star
 schema: 2.0.0
 ---
 
-# Start-AzStackHciVMVirtualMachine
+# Start-AzStackHCIVmVirtualMachine
 
 ## SYNOPSIS
 The operation to start a virtual machine instance.
@@ -14,12 +14,12 @@ The operation to start a virtual machine instance.
 
 ### ByResourceId (Default)
 ```
-Start-AzStackHciVMVirtualMachine -ResourceId <String> [-Confirm] [-WhatIf] [<CommonParameters>]
+Start-AzStackHCIVmVirtualMachine -ResourceId <String> [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ### ByName
 ```
-Start-AzStackHciVMVirtualMachine -Name <String> -ResourceGroupName <String> [-SubscriptionId <String>]
+Start-AzStackHCIVmVirtualMachine -Name <String> -ResourceGroupName <String> [-SubscriptionId <String>]
  [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
@@ -30,7 +30,7 @@ The operation to start a virtual machine instance.
 
 ### Example 1: Start Virtual Machine 
 ```powershell
-Start-AzStackHCIVMVirtualMachine  -Name "testVm" -ResourceGroupName "test-rg"
+Start-AzStackHCIVmVirtualMachine  -Name "testVm" -ResourceGroupName "test-rg"
 
 ```
 
@@ -137,7 +137,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### System.Boolean
+### Microsoft.Azure.PowerShell.Cmdlets.StackHCIVm.Models.Api20230901Preview.IVirtualMachineInstance
 
 ## NOTES
 

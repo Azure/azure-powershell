@@ -26,11 +26,10 @@ The operation to delete a network interface from a  virtual machine.
 .Outputs
 Microsoft.Azure.PowerShell.Cmdlets.StackHCIVm.Models.Api20230901Preview.IVirtualMachineInstance
 .Link
-https://learn.microsoft.com/powershell/module/az.stackhcivm/remove-azstackhcivmvirtualmachinenetworkinterface
+https://learn.microsoft.com/powershell/module/az.stackhcivm/remove-azstackhcivmvirtualmachinedatadisk
 #>
 
-
-function Remove-AzStackHciVMVirtualMachineNetworkInterface {
+function Remove-AzStackHCIVmVirtualMachineNetworkInterface {
     [OutputType([Microsoft.Azure.PowerShell.Cmdlets.StackHciVM.Models.Api20230901Preview.IVirtualMachineInstance])]
     [CmdletBinding(PositionalBinding=$false, SupportsShouldProcess, ConfirmImpact='Medium')]
     param(

@@ -49,7 +49,7 @@ INPUTOBJECT <IStackHciVMIdentity>: Identity Parameter
 .Link
 https://learn.microsoft.com/powershell/module/az.stackhcivm/remove-azstackhcivmnetworkinterface
 #>
-function Remove-AzStackHciVMNetworkInterface {
+function Remove-AzStackHCIVmNetworkInterface {
     [OutputType([System.Boolean])]
     [CmdletBinding(DefaultParameterSetName='ByResourceId', PositionalBinding=$false, SupportsShouldProcess, ConfirmImpact='Medium')]
     param(

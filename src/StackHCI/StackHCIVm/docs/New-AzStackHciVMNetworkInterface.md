@@ -5,7 +5,7 @@ online version: https://learn.microsoft.com/powershell/module/az.stackhcivm/new-
 schema: 2.0.0
 ---
 
-# New-AzStackHciVMNetworkInterface
+# New-AzStackHCIVmNetworkInterface
 
 ## SYNOPSIS
 The operation to create or update a network interface.
@@ -14,7 +14,7 @@ Please note some properties can be set only during network interface creation.
 ## SYNTAX
 
 ```
-New-AzStackHciVMNetworkInterface -Name <String> -ResourceGroupName <String> -CustomLocationId <String>
+New-AzStackHCIVmNetworkInterface -Name <String> -ResourceGroupName <String> -CustomLocationId <String>
  -Location <String> [-SubscriptionId <String>] [-DnsServers <String[]>] [-IpAddress <String>]
  [-IpConfigurations <Hashtable[]>] [-MacAddress <String>] [-SubnetId <String>] [-SubnetName <String>]
  [-SubnetResourceGroup <String>] [-Tags <Hashtable>] [-Confirm] [-WhatIf] [<CommonParameters>]
@@ -28,7 +28,7 @@ Please note some properties can be set only during network interface creation.
 
 ### Example 1: Create a Network Interface
 ```powershell
- New-AzStackHciVMNetworkInterface  -Name "testNic" -ResourceGroupName "test-rg" -CustomLocationId "/subscriptions/{subscriptionID}/resourcegroups/{resourceGroupName}/providers/microsoft.extendedlocation/customlocations/{customLocationName}" -Location "eastus" -SubnetName "testLnet" 
+ New-AzStackHCIVmNetworkInterface  -Name "testNic" -ResourceGroupName "test-rg" -CustomLocationId "/subscriptions/{subscriptionID}/resourcegroups/{resourceGroupName}/providers/microsoft.extendedlocation/customlocations/{customLocationName}" -Location "eastus" -SubnetName "testLnet" 
 ```
 
 ```output

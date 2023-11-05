@@ -49,7 +49,7 @@ INPUTOBJECT <IStackHciVMIdentity>: Identity Parameter
 .Link
 https://learn.microsoft.com/powershell/module/az.stackhcivm/remove-azstackhcivmvirtualmachine
 #>
-function Remove-AzStackHciVMVirtualMachine {
+function Remove-AzStackHCIVmVirtualMachine {
     [OutputType([System.Boolean])]
     [CmdletBinding(PositionalBinding=$false, SupportsShouldProcess, ConfirmImpact='Medium')]
     param(

@@ -1,6 +1,6 @@
 ### Example 1: Add a Network Interface to a Virtual Machine
 ```powershell
-Add-AzStackHCIVMVirtualMachineNic  -Name "testVm" -ResourceGroupName "test-rg"  -DataDiskNames "testNic"
+Add-AzStackHCIVmVirtualMachineNetworkInterface  -Name "testVm" -ResourceGroupName "test-rg"  -DataDiskNames "testNic"
 
 ```
 ```output

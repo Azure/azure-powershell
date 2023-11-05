@@ -13,7 +13,7 @@ Microsoft.Azure.PowerShell.Cmdlets.StackHciVM.Models.Api20230901Preview.IVirtual
 https://learn.microsoft.com/powershell/module/az.stackhcivm/add-azstackhcivmvirtualmachinenic
 #>
 
-function Add-AzStackHciVMVirtualMachineNetworkInterface {
+function Add-AzStackHCIVmVirtualMachineNetworkInterface {
     [OutputType([Microsoft.Azure.PowerShell.Cmdlets.StackHciVM.Models.Api20230901Preview.IVirtualMachineInstance])]
     [CmdletBinding(PositionalBinding=$false, SupportsShouldProcess, ConfirmImpact='Medium')]
     param(

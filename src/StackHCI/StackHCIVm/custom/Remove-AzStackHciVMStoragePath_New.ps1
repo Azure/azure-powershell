@@ -49,7 +49,7 @@ INPUTOBJECT <IStackHciVMIdentity>: Identity Parameter
 .Link
 https://learn.microsoft.com/powershell/module/az.stackhcivm/remove-azstackhcivmstoragepath
 #>
-function Remove-AzStackHciVMStoragePath {
+function Remove-AzStackHCIVmStoragePath {
     [OutputType([System.Boolean])]
     [CmdletBinding(PositionalBinding=$false, SupportsShouldProcess, ConfirmImpact='Medium')]
     param(

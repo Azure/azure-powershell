@@ -1,20 +1,44 @@
+
+# ----------------------------------------------------------------------------------
+#
+# Copyright Microsoft Corporation
+# Licensed under the Apache License, Version 2.0 (the "License");
+# you may not use this file except in compliance with the License.
+# You may obtain a copy of the License at
+# http://www.apache.org/licenses/LICENSE-2.0
+# Unless required by applicable law or agreed to in writing, software
+# distributed under the License is distributed on an "AS IS" BASIS,
+# WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+# See the License for the specific language governing permissions and
+# limitations under the License.
+# ----------------------------------------------------------------------------------
+
 <#
 .Synopsis
-The operation to add a virtual hard disk to a virtual machine. 
-
+The operation to add a data disk to a virtual machine. 
 .Description
-The operation to add a virtual hard disk to a virtual machine. 
+The operation to add a data disk to a virtual machine. 
 .Example
-PS C:\> {{Add-AzStackHciVMVirtualMachineDataDisk  -Name "sampleVirtualMachine-1030" -ResourceGroupName mkclus0824-rg -SubscriptionId "0709bd7a-8383-4e1d-98c8-f81d1b3443fc" -DataDiskNames testDataDisk-1030 }}
+PS C:\> {{ Add code here }}
+
+{{ Add output here }}
+.Example
+PS C:\> {{ Add code here }}
+
+{{ Add output here }}
+
 
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.StackHciVM.Models.Api20230901Preview.IVirtualMachineInstance
+Microsoft.Azure.PowerShell.Cmdlets.StackHCIVm.Models.Api20230901Preview.IVirtualMachineInstances
+
+.Notes
+COMPLEX PARAMETER PROPERTIES
+
 .Link
-https://learn.microsoft.com/powershell/module/az.stackhcivm/add-azstackhcivmvirtualmachinedatadisk
+https://learn.microsoft.com/powershell/module/az.stackhcivm/new-azstackhcivmvirtualmachinedatadisk
 #>
 
-
-function Add-AzStackHciVMVirtualMachineDataDisk {
+function Add-AzStackHCIVmVirtualMachineDataDisk {
     [OutputType([Microsoft.Azure.PowerShell.Cmdlets.StackHciVM.Models.Api20230901Preview.IVirtualMachineInstance])]
     [CmdletBinding(PositionalBinding=$false, SupportsShouldProcess, ConfirmImpact='Medium')]
     param(

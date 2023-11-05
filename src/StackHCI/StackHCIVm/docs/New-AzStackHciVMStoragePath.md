@@ -5,7 +5,7 @@ online version: https://learn.microsoft.com/powershell/module/az.StackHciVM/new-
 schema: 2.0.0
 ---
 
-# New-AzStackHciVMStoragePath
+# New-AzStackHCIVmStoragePath
 
 ## SYNOPSIS
 The operation to create or update a storage container.
@@ -14,7 +14,7 @@ Please note some properties can be set only during storage container creation.
 ## SYNTAX
 
 ```
-New-AzStackHciVMStoragePath -Name <String> -ResourceGroupName <String> -Location <String>
+New-AzStackHCIVmStoragePath -Name <String> -ResourceGroupName <String> -Location <String>
  [-SubscriptionId <String>] [-CustomLocationId <String>] [-Path <String>] [-Tags <Hashtable>] [-Confirm]
  [-WhatIf] [<CommonParameters>]
 ```
@@ -27,7 +27,7 @@ Please note some properties can be set only during storage container creation.
 
 ### Example 1: Create a Storage Path 
 ```powershell
- New-AzStackHCIVMStoragePath  -Name "testStoragePath" -ResourceGroupName "test-rg" -CustomLocationId "/subscriptions/{subscriptionID}/resourcegroups/{resourceGroupName}/providers/microsoft.extendedlocation/customlocations/{customLocationName}"-Location "eastus" -Path "C:\ClusterStorage\Volume1\testpath"
+ New-AzStackHCIVmStoragePath  -Name "testStoragePath" -ResourceGroupName "test-rg" -CustomLocationId "/subscriptions/{subscriptionID}/resourcegroups/{resourceGroupName}/providers/microsoft.extendedlocation/customlocations/{customLocationName}"-Location "eastus" -Path "C:\ClusterStorage\Volume1\testpath"
 ```
 
 ```output

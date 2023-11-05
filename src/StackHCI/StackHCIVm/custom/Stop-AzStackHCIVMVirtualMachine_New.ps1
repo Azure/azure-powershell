@@ -34,8 +34,8 @@ To create the parameters described below, construct a hash table containing the 
 .Link
 https://learn.microsoft.com/powershell/module/az.stackhcivm/stop-azstackhcivmvirtualmachine
 #>
-function Stop-AzStackHciVMVirtualMachine {
-    [OutputType([System.Boolean])]
+function Stop-AzStackHCIVmVirtualMachine {
+    [OutputType([Microsoft.Azure.PowerShell.Cmdlets.StackHCIVm.Models.Api20230901Preview.IVirtualMachineInstance])]
     [CmdletBinding( PositionalBinding=$false, SupportsShouldProcess, ConfirmImpact='Medium')]
     param(
 

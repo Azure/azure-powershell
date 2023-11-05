@@ -1,38 +1,38 @@
 ---
 external help file:
 Module Name: Az.StackHCIVm
-online version: https://learn.microsoft.com/powershell/module/az.stackhcivm/add-azstackhcivmvirtualmachinedatadisk
+online version: https://learn.microsoft.com/powershell/module/az.stackhcivm/new-azstackhcivmvirtualmachinedatadisk
 schema: 2.0.0
 ---
 
-# Add-AzStackHciVMVirtualMachineDataDisk
+# Add-AzStackHCIVmVirtualMachineDataDisk
 
 ## SYNOPSIS
-
+The operation to add a data disk to a virtual machine.
 
 ## SYNTAX
 
 ### ByResourceId (Default)
 ```
-Add-AzStackHciVMVirtualMachineDataDisk -ResourceId <String> [-DataDiskIds <String[]>]
+Add-AzStackHCIVmVirtualMachineDataDisk -ResourceId <String> [-DataDiskIds <String[]>]
  [-DataDiskNames <String[]>] [-DataDiskResourceGroup <String>] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ### ByName
 ```
-Add-AzStackHciVMVirtualMachineDataDisk -Name <String> -ResourceGroupName <String> [-SubscriptionId <String>]
+Add-AzStackHCIVmVirtualMachineDataDisk -Name <String> -ResourceGroupName <String> [-SubscriptionId <String>]
  [-DataDiskIds <String[]>] [-DataDiskNames <String[]>] [-DataDiskResourceGroup <String>] [-Confirm] [-WhatIf]
  [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-
+The operation to add a data disk to a virtual machine.
 
 ## EXAMPLES
 
 ### Example 1: Add a Data Disk to a Virtual Machine
 ```powershell
-Add-AzStackHCIVMVirtualMachineDataDisk  -Name "testVm" -ResourceGroupName "test-rg"  -DataDiskNames "testVhd"
+Add-AzStackHCIVmVirtualMachineDataDisk  -Name "testVm" -ResourceGroupName "test-rg"  -DataDiskNames "testVhd"
 
 ```
 
@@ -46,7 +46,7 @@ This command attaches a data disk to the virtual machine in the specified resour
 ## PARAMETERS
 
 ### -DataDiskIds
-
+List of data disks to be attached to the virtual machine passed in Id format
 
 ```yaml
 Type: System.String[]
@@ -61,7 +61,7 @@ Accept wildcard characters: False
 ```
 
 ### -DataDiskNames
-
+List of data disks to be attached to the virtual machine passed by Name
 
 ```yaml
 Type: System.String[]
@@ -76,7 +76,7 @@ Accept wildcard characters: False
 ```
 
 ### -DataDiskResourceGroup
-
+Resource Group of the Data Disks
 
 ```yaml
 Type: System.String
@@ -91,7 +91,7 @@ Accept wildcard characters: False
 ```
 
 ### -Name
-
+Name of the virtual machine
 
 ```yaml
 Type: System.String
@@ -106,7 +106,8 @@ Accept wildcard characters: False
 ```
 
 ### -ResourceGroupName
-
+The name of the resource group.
+The name is case insensitive.
 
 ```yaml
 Type: System.String
@@ -121,7 +122,7 @@ Accept wildcard characters: False
 ```
 
 ### -ResourceId
-
+The ARM Resource ID of the VM
 
 ```yaml
 Type: System.String
@@ -136,7 +137,7 @@ Accept wildcard characters: False
 ```
 
 ### -SubscriptionId
-
+The ID of the target subscription.
 
 ```yaml
 Type: System.String

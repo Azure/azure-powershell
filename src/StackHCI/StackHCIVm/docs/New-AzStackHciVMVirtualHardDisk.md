@@ -5,7 +5,7 @@ online version: https://learn.microsoft.com/powershell/module/az.StackHciVM/new-
 schema: 2.0.0
 ---
 
-# New-AzStackHciVMVirtualHardDisk
+# New-AzStackHCIVmVirtualHardDisk
 
 ## SYNOPSIS
 The operation to create or update a virtual hard disk.
@@ -14,7 +14,7 @@ Please note some properties can be set only during virtual hard disk creation.
 ## SYNTAX
 
 ```
-New-AzStackHciVMVirtualHardDisk -Name <String> -ResourceGroupName <String> -CustomLocationId <String>
+New-AzStackHCIVmVirtualHardDisk -Name <String> -ResourceGroupName <String> -CustomLocationId <String>
  -Location <String> [-SubscriptionId <String>] [-BlockSizeBytes <Int32>] [-DiskFileFormat <DiskFileFormat>]
  [-Dynamic] [-HyperVGeneration <HyperVGeneration>] [-LogicalSectorBytes <Int32>]
  [-PhysicalSectorBytes <Int32>] [-SizeGb <Int64>] [-StoragePathId <String>] [-StoragePathName <String>]
@@ -29,7 +29,7 @@ Please note some properties can be set only during virtual hard disk creation.
 
 ### Example 1: Create a Virtual Hard Disk
 ```powershell
- New-AzStackHCIVMVirtualHardDisk -Name "testVhd" -ResourceGroupName "test-rg" -CustomLocationId "/subscriptions/{subscriptionID}/resourcegroups/{resourceGroupName}/providers/microsoft.extendedlocation/customlocations/{customLocationName}" -Location "eastus" -SizeGb 2
+ New-AzStackHCIVmVirtualHardDisk -Name "testVhd" -ResourceGroupName "test-rg" -CustomLocationId "/subscriptions/{subscriptionID}/resourcegroups/{resourceGroupName}/providers/microsoft.extendedlocation/customlocations/{customLocationName}" -Location "eastus" -SizeGb 2
 ```
 
 ```output

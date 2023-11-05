@@ -5,7 +5,7 @@ online version: https://learn.microsoft.com/powershell/module/az.stackhcivm/remo
 schema: 2.0.0
 ---
 
-# Remove-AzStackHciVMLogicalNetwork
+# Remove-AzStackHCIVmLogicalNetwork
 
 ## SYNOPSIS
 The operation to delete a logical network.
@@ -14,12 +14,12 @@ The operation to delete a logical network.
 
 ### ByResourceId (Default)
 ```
-Remove-AzStackHciVMLogicalNetwork -ResourceId <String> [-Force] [-Confirm] [-WhatIf] [<CommonParameters>]
+Remove-AzStackHCIVmLogicalNetwork -ResourceId <String> [-Force] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ### Delete
 ```
-Remove-AzStackHciVMLogicalNetwork -Name <String> -ResourceGroupName <String> [-SubscriptionId <String>]
+Remove-AzStackHCIVmLogicalNetwork -Name <String> -ResourceGroupName <String> [-SubscriptionId <String>]
  [-Force] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
@@ -30,7 +30,7 @@ The operation to delete a logical network.
 
 ### Example 1: Remove a logical network.
 ```powershell
-Remove-AzStackHCIVMLogicalNetwork -Name  "testLnet" -ResourceGroupName "test-rg"
+Remove-AzStackHCIVmLogicalNetwork -Name  "testLnet" -ResourceGroupName "test-rg"
 ```
 
 This command removes the logical network from the specified resource group.
@@ -58,7 +58,7 @@ Name of the virtual network
 ```yaml
 Type: System.String
 Parameter Sets: Delete
-Aliases: VirtualNetworkName
+Aliases: LogicalNetworkName
 
 Required: True
 Position: Named

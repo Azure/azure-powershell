@@ -1,5 +1,5 @@
 
-function New-AzStackHciVMVirtualNetworkSubnetConfig{
+function New-AzStackHCIVmLogicalNetworkSubnetConfig{
 param(
     [Parameter()]
     [Microsoft.Azure.PowerShell.Cmdlets.StackHciVM.Category('Body')]

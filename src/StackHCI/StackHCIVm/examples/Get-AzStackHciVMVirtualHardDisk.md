@@ -1,6 +1,6 @@
 ### Example 1: Get a Virtual Hard Disk
 ```powershell
-Get-AzStackHCIVMVirtualHardDisk -Name  "testVhd" -ResourceGroupName "test-rg"
+Get-AzStackHCIVmVirtualHardDisk -Name  "testVhd" -ResourceGroupName "test-rg"
 ```
 ```output
 Name            ResourceGroupName
@@ -12,7 +12,7 @@ This command gets a specific virtual hard disk in the specified resource group.
 
 ### Example 2: List all Virtual Hard Disks in a Resource Group
 ```powershell
-Get-AzStackHCIVMVirtualHardDisk -ResourceGroupName "test-rg"
+Get-AzStackHCIVmVirtualHardDisk -ResourceGroupName "test-rg"
 ```
 ```output
 Name            ResourceGroupName

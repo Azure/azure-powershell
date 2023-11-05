@@ -1,6 +1,6 @@
 ### Example 1: Update a Network Interface.
 ```powershell
-Update-AzStackHCIVMVNetworkInterface  -Name "testNic" -ResourceGroupName "test-rg" -Tags @{TagName = TagValue }
+Update-AzStackHCIVmVNetworkInterface  -Name "testNic" -ResourceGroupName "test-rg" -Tags @{TagName = TagValue }
 ```
 
 ```output

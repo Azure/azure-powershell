@@ -5,7 +5,7 @@ online version: https://learn.microsoft.com/powershell/module/az.stackhcivm/remo
 schema: 2.0.0
 ---
 
-# Remove-AzStackHciVMStoragePath
+# Remove-AzStackHCIVmStoragePath
 
 ## SYNOPSIS
 The operation to delete a storage container.
@@ -14,14 +14,14 @@ The operation to delete a storage container.
 
 ### ByResourceId (Default)
 ```
-Remove-AzStackHciVMStoragePath -ResourceId <String> [-InputObject <IStackHciVMIdentity>]
+Remove-AzStackHCIVmStoragePath -ResourceId <String> [-InputObject <IStackHciVMIdentity>]
  [-SubscriptionId <String>] [-Force] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-PassThru] [-Confirm]
  [-WhatIf] [<CommonParameters>]
 ```
 
 ### ByName
 ```
-Remove-AzStackHciVMStoragePath -Name <String> -ResourceGroupName <String> [-InputObject <IStackHciVMIdentity>]
+Remove-AzStackHCIVmStoragePath -Name <String> -ResourceGroupName <String> [-InputObject <IStackHciVMIdentity>]
  [-SubscriptionId <String>] [-Force] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-PassThru] [-Confirm]
  [-WhatIf] [<CommonParameters>]
 ```
@@ -33,7 +33,7 @@ The operation to delete a storage container.
 
 ### Example 1: Remove a Storage Path
 ```powershell
-Remove-AzStackHCIVMStoragePath  -Name "testStoragePath" -ResourceGroupName "test-rg"
+Remove-AzStackHCIVmStoragePath  -Name "testStoragePath" -ResourceGroupName "test-rg"
 
 ```
 

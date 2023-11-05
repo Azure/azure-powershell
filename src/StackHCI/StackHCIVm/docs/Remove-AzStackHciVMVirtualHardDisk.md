@@ -5,7 +5,7 @@ online version: https://learn.microsoft.com/powershell/module/az.stackhcivm/remo
 schema: 2.0.0
 ---
 
-# Remove-AzStackHciVMVirtualHardDisk
+# Remove-AzStackHCIVmVirtualHardDisk
 
 ## SYNOPSIS
 The operation to delete a virtual hard disk.
@@ -14,13 +14,13 @@ The operation to delete a virtual hard disk.
 
 ### ByResourceId (Default)
 ```
-Remove-AzStackHciVMVirtualHardDisk -ResourceId <String> [-SubscriptionId <String>] [-Force] [-Confirm]
+Remove-AzStackHCIVmVirtualHardDisk -ResourceId <String> [-SubscriptionId <String>] [-Force] [-Confirm]
  [-WhatIf] [<CommonParameters>]
 ```
 
 ### ByName
 ```
-Remove-AzStackHciVMVirtualHardDisk -Name <String> -ResourceGroupName <String> [-SubscriptionId <String>]
+Remove-AzStackHCIVmVirtualHardDisk -Name <String> -ResourceGroupName <String> [-SubscriptionId <String>]
  [-Force] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
@@ -31,7 +31,7 @@ The operation to delete a virtual hard disk.
 
 ### Example 1: Remove a Virtual Hard Disk
 ```powershell
-Remove-AzStackHCIVMVirtualHardDisk  -Name "testVhd" -ResourceGroupName "test-rg"
+Remove-AzStackHCIVmVirtualHardDisk  -Name "testVhd" -ResourceGroupName "test-rg"
 
 ```
 

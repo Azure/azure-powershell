@@ -30,7 +30,7 @@ Microsoft.Azure.PowerShell.Cmdlets.StackHciVM.Models.Api20221215Preview.IVirtual
 .Link
 https://learn.microsoft.com/powershell/module/az.StackHciVM/new-azStackHciVMvirtualharddisk
 #>
-function New-AzStackHciVMVirtualHardDisk {
+function New-AzStackHCIVmVirtualHardDisk {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.StackHciVM.Models.Api20230901Preview.IVirtualHardDisks])]
 [CmdletBinding(PositionalBinding=$false,SupportsShouldProcess, ConfirmImpact='Medium')]
 param(
@@ -167,29 +167,27 @@ param(
         }
 
         if ($SizeGb){
-            if ($SizeGb > 4095){
+            if ($SizeGb -gt 4095){
                 Write-Error "Maximum value for $SizeGb is 4095."  -ErrorAction Stop
             }
         }
 
         if($StoragePathId){
             if (-Not ($StoragePathId -match $storagePathRegex)){
-                Write-Error "Invalid resource ID provided for storage path $StoragePathId "
+                Write-Error "Invalid resource ID provided for storage path $StoragePathId " -ErrorAction Stop
             }
-            $PSBoundParameters.Add('ContainerId', $StoragePathId)
-            $null = $PSBoundParameters.Remove("StoragePathId")
         } elseif ($StoragePathName){
             if ($StoragePathResourceGroup){
-                $ContainerId = "/subscriptions/$SubscriptionId/resourceGroups/$StoragePathResourceGroup/providers/Microsoft.AzureStackHCI/storagecontainers/$StoragePathName"
+                $StoragePathId = "/subscriptions/$SubscriptionId/resourceGroups/$StoragePathResourceGroup/providers/Microsoft.AzureStackHCI/storagecontainers/$StoragePathName"
             } else {
-                $ContainerId = "/subscriptions/$SubscriptionId/resourceGroups/$ResourceGroupName/providers/Microsoft.AzureStackHCI/storagecontainers/$StoragePathName"
+                $StoragePathId= "/subscriptions/$SubscriptionId/resourceGroups/$ResourceGroupName/providers/Microsoft.AzureStackHCI/storagecontainers/$StoragePathName"
             }
-            $PSBoundParameters.Add('ContainerId', $StoragePathId)
+            $PSBoundParameters.Add('StoragePathId', $StoragePathId)
             $null = $PSBoundParameters.Remove("StoragePathName")
-            $null = $PSBoundParameters.Remove("StoragePathReourceGroup")
+            $null = $PSBoundParameters.Remove("StoragePathResourceGroup")
         }
 
-        return Az.StackHciVM.internal\New-AzStackHciVMVirtualHardDisk @PSBoundParameters
+        return Az.StackHCIVm.internal\New-AzStackHciVMVirtualHardDisk @PSBoundParameters
     
 }
 

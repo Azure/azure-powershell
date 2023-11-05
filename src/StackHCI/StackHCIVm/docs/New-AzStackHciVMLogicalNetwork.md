@@ -5,7 +5,7 @@ online version: https://learn.microsoft.com/powershell/module/az.stackhcivm/new-
 schema: 2.0.0
 ---
 
-# New-AzStackHciVMLogicalNetwork
+# New-AzStackHCIVmLogicalNetwork
 
 ## SYNOPSIS
 The operation to create or update a logical network.
@@ -14,7 +14,7 @@ Please note some properties can be set only during logical network creation.
 ## SYNTAX
 
 ```
-New-AzStackHciVMLogicalNetwork -Name <String> -ResourceGroupName <String> -CustomLocationId <String>
+New-AzStackHCIVmLogicalNetwork -Name <String> -ResourceGroupName <String> -CustomLocationId <String>
  -Location <String> [-SubscriptionId <String>] [-AddressPrefixes <String[]>] [-DnsServers <String[]>]
  [-IpAllocationMethod <String>] [-IpPoolEnd <String>] [-IpPools <Hashtable[]>] [-IpPoolStart <String>]
  [-IpPoolType <String>] [-Routes <Hashtable[]>] [-SubnetName <String>] [-Subnets <Hashtable[]>]
@@ -29,7 +29,7 @@ Please note some properties can be set only during logical network creation.
 
 ### Example 1: Create a Logical Network 
 ```powershell
- New-AzStackHciVMLogicalNetwork  -Name "testLnet" -ResourceGroupName "test-rg" -CustomLocationId "/subscriptions/{subscriptionID}/resourcegroups/{resourceGroupName}/providers/microsoft.extendedlocation/customlocations/{customLocationName}"  -Location "eastus" -VmSwitchName "testswitch"
+ New-AzStackHCIVmLogicalNetwork  -Name "testLnet" -ResourceGroupName "test-rg" -CustomLocationId "/subscriptions/{subscriptionID}/resourcegroups/{resourceGroupName}/providers/microsoft.extendedlocation/customlocations/{customLocationName}"  -Location "eastus" -VmSwitchName "testswitch"
 ```
 
 ```output

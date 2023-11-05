@@ -5,7 +5,7 @@ online version: https://learn.microsoft.com/powershell/module/az.stackhcivm/upda
 schema: 2.0.0
 ---
 
-# Update-AzStackHciVMVirtualMachine
+# Update-AzStackHCIVmVirtualMachine
 
 ## SYNOPSIS
 The operation to update a virtual machine instance.
@@ -14,14 +14,15 @@ The operation to update a virtual machine instance.
 
 ### ByResourceId (Default)
 ```
-Update-AzStackHciVMVirtualMachine -ResourceId <String> [-VmMemoryInMB <Int64>] [-VmProcessors <Int32>]
- [-VmSize <VMSizeEnum>] [<CommonParameters>]
+Update-AzStackHCIVmVirtualMachine -ResourceId <String> [-ProvisionVMAgent] [-ProvisionVMConfigAgent]
+ [-VmMemoryInMB <Int64>] [-VmProcessors <Int32>] [-VmSize <VMSizeEnum>] [<CommonParameters>]
 ```
 
 ### ByName
 ```
-Update-AzStackHciVMVirtualMachine -Name <String> -ResourceGroupName <String> [-SubscriptionId <String>]
- [-VmMemoryInMB <Int64>] [-VmProcessors <Int32>] [-VmSize <VMSizeEnum>] [<CommonParameters>]
+Update-AzStackHCIVmVirtualMachine -Name <String> -ResourceGroupName <String> [-SubscriptionId <String>]
+ [-ProvisionVMAgent] [-ProvisionVMConfigAgent] [-VmMemoryInMB <Int64>] [-VmProcessors <Int32>]
+ [-VmSize <VMSizeEnum>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -31,7 +32,7 @@ The operation to update a virtual machine instance.
 
 ### Example 1: Update the Size of the Virtual Machine. 
 ```powershell
-Update-AzStackHCIVMVirtualMachine  -Name "testVm" -ResourceGroupName "test-rg" -VmSize "4"
+Update-AzStackHCIVmVirtualMachine  -Name "testVm" -ResourceGroupName "test-rg" -VmMemoryInMB "4"
 ```
 
 ```output
@@ -53,6 +54,36 @@ Parameter Sets: ByName
 Aliases: VirtualMachineName
 
 Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -ProvisionVMAgent
+Indicates whether virtual machine agent should be provisioned on the virtual machine.
+
+```yaml
+Type: System.Management.Automation.SwitchParameter
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -ProvisionVMConfigAgent
+Indicates whether virtual machine configuration agent should be provisioned on the virtual machine.
+
+```yaml
+Type: System.Management.Automation.SwitchParameter
+Parameter Sets: (All)
+Aliases:
+
+Required: False
 Position: Named
 Default value: None
 Accept pipeline input: False

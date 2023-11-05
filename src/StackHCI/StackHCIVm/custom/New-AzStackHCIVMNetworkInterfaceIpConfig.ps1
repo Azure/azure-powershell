@@ -44,7 +44,7 @@ https://learn.microsoft.com/powershell/module/az.stackhcivm/new-azstackhcivmnetw
 #>
 
 
-function New-AzStackHciVMNetworkInterfaceIpConfig{
+function New-AzStackHCIVmNetworkInterfaceIpConfig{
 param(
     [Parameter()]
     [Microsoft.Azure.PowerShell.Cmdlets.StackHciVM.Category('Body')]

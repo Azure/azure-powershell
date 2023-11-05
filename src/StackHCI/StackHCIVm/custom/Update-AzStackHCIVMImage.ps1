@@ -16,7 +16,7 @@ Microsoft.Azure.PowerShell.Cmdlets.StackHCIVm.Models.Api20221215Preview.IMarketp
 https://learn.microsoft.com/powershell/module/az.stackhcivm/new-azstackhcivmimage
 #>
 
-function Update-AzStackHciVMImage{
+function Update-AzStackHCIVmImage{
     [OutputType([Microsoft.Azure.PowerShell.Cmdlets.StackHciVM.Models.Api20230901Preview.IMarketplaceGalleryImages],ParameterSetName='Marketplace' )]
     [OutputType([Microsoft.Azure.PowerShell.Cmdlets.StackHciVM.Models.Api20230901Preview.IGalleryImages],ParameterSetName='GalleryImage' )]
     [CmdletBinding(PositionalBinding=$false)]
@@ -61,22 +61,23 @@ function Update-AzStackHciVMImage{
 
     process {
         if ($PSCmdlet.ParameterSetName -eq "ByName"){
+
             $isGalleryImage = $false
             $isMarketplaceGalleryImage = $false
 
-            try {
-                Az.StackHciVM.internal\Get-AzStackHciVMGalleryImage @PSBoundParameters
+            
+            $galImage = Az.StackHciVM.internal\Get-AzStackHciVMGalleryImage -Name $Name -ResourceGroupName $ResourceGroupName -SubscriptionId $SubscriptionId -ErrorAction SilentlyContinue
+            if ($galImage -ne $null){
                 $isGalleryImage = $true 
-            }
-            catch {
-                try {
-                Az.StackHciVM.internal\Get-AzStackHciVMMarketplaceGalleryImage @PSBoundParameters
-                $isMarketplaceGalleryImage = $true 
-                }
-                catch {
-                    Write-Error "An Image with name: $Name does not exist in Resource Group: $ResourceGroupName"
+            } else {
+                $marketplaceGalImage = Az.StackHciVM.internal\Get-AzStackHciVMMarketplaceGalleryImage -Name $Name -ResourceGroupName $ResourceGroupName -SubscriptionId $SubscriptionId -ErrorAction SilentlyContinue
+                if ($marketplaceGalImage -ne $null){
+                    $isMarketplaceGalleryImage = $true 
+                }else{
+                    Write-Error "An Image with name: $Name does not exist in Resource Group: $ResourceGroupName" -ErrorAction Stop
                 }
             }
+        
 
             if ($isGalleryImage){
                 return  Az.StackHciVM.internal\Update-AzStackHciVMGalleryImage @PSBoundParameters

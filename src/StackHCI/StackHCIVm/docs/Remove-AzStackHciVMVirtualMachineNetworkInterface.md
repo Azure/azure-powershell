@@ -1,38 +1,38 @@
 ---
 external help file:
 Module Name: Az.StackHCIVm
-online version: https://learn.microsoft.com/powershell/module/az.stackhcivm/remove-azstackhcivmvirtualmachinenetworkinterface
+online version: https://learn.microsoft.com/powershell/module/az.stackhcivm/remove-azstackhcivmvirtualmachinedatadisk
 schema: 2.0.0
 ---
 
-# Remove-AzStackHciVMVirtualMachineNetworkInterface
+# Remove-AzStackHCIVmVirtualMachineNetworkInterface
 
 ## SYNOPSIS
-
+The operation to delete a network interface from a virtual machine.
 
 ## SYNTAX
 
 ### ByResourceId (Default)
 ```
-Remove-AzStackHciVMVirtualMachineNetworkInterface -ResourceId <String> [-NicIds <String[]>]
+Remove-AzStackHCIVmVirtualMachineNetworkInterface -ResourceId <String> [-NicIds <String[]>]
  [-NicNames <String[]>] [-NicResourceGroup <String>] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ### ByName
 ```
-Remove-AzStackHciVMVirtualMachineNetworkInterface -Name <String> -ResourceGroupName <String>
+Remove-AzStackHCIVmVirtualMachineNetworkInterface -Name <String> -ResourceGroupName <String>
  [-SubscriptionId <String>] [-NicIds <String[]>] [-NicNames <String[]>] [-NicResourceGroup <String>]
  [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-
+The operation to delete a network interface from a  virtual machine.
 
 ## EXAMPLES
 
 ### Example 1: Removes a Network Interface from a  Virtual Machine
 ```powershell
-Remove-AzStackHCIVMVirtualMachineNic  -Name "testVm" -ResourceGroupName "test-rg"  -NicNames "testNic"
+Remove-AzStackHCIVmVirtualMachineNetworkInterface  -Name "testVm" -ResourceGroupName "test-rg"  -NicNames "testNic"
 
 ```
 
@@ -46,7 +46,7 @@ This command removes a network interface from the virtual machine in the specifi
 ## PARAMETERS
 
 ### -Name
-
+Name of the virtual machine
 
 ```yaml
 Type: System.String
@@ -61,7 +61,7 @@ Accept wildcard characters: False
 ```
 
 ### -NicIds
-
+NetworkInterfaces - list of network interfaces to be attached from  the virtual machine in id format.
 
 ```yaml
 Type: System.String[]
@@ -76,7 +76,7 @@ Accept wildcard characters: False
 ```
 
 ### -NicNames
-
+NetworkInterfaces - list of network interfaces to be removed from the virtual machine in name format.
 
 ```yaml
 Type: System.String[]
@@ -91,7 +91,7 @@ Accept wildcard characters: False
 ```
 
 ### -NicResourceGroup
-
+NetworkInterfaces - resource group of the network interfaces
 
 ```yaml
 Type: System.String
@@ -106,7 +106,8 @@ Accept wildcard characters: False
 ```
 
 ### -ResourceGroupName
-
+The name of the resource group.
+The name is case insensitive.
 
 ```yaml
 Type: System.String
@@ -121,7 +122,7 @@ Accept wildcard characters: False
 ```
 
 ### -ResourceId
-
+The ARM Resource ID of the virtual machine.
 
 ```yaml
 Type: System.String
@@ -136,7 +137,7 @@ Accept wildcard characters: False
 ```
 
 ### -SubscriptionId
-
+The ID of the target subscription.
 
 ```yaml
 Type: System.String

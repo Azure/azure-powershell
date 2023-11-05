@@ -34,7 +34,7 @@ Microsoft.Azure.PowerShell.Cmdlets.StackHCIVm.Models.Api20230901Preview.IVStorag
 .Link
 https://learn.microsoft.com/powershell/module/az.stackhcivm/update-azstackhcivmstoragepath
 #>
-function Update-AzStackHciVMStoragePath_ByResourceId {
+function Update-AzStackHCIVmStoragePath_ByResourceId {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.StackHciVM.Models.Api20230901Preview.IStorageContainers])]
 [CmdletBinding(PositionalBinding=$false)]
 

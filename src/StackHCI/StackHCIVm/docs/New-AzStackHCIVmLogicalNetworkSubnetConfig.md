@@ -1,11 +1,11 @@
 ---
 external help file:
 Module Name: Az.StackHCIVm
-online version: https://learn.microsoft.com/powershell/module/az.stackhcivm/new-azstackhcivmvirtualnetworksubnetconfig
+online version: https://learn.microsoft.com/powershell/module/az.stackhcivm/new-azstackhcivmlogicalnetworksubnetconfig
 schema: 2.0.0
 ---
 
-# New-AzStackHciVMVirtualNetworkSubnetConfig
+# New-AzStackHCIVmLogicalNetworkSubnetConfig
 
 ## SYNOPSIS
 
@@ -13,7 +13,7 @@ schema: 2.0.0
 ## SYNTAX
 
 ```
-New-AzStackHciVMVirtualNetworkSubnetConfig [[-AddressPrefixes] <String[]>] [[-IpAllocationMethod] <String>]
+New-AzStackHCIVmLogicalNetworkSubnetConfig [[-AddressPrefixes] <String[]>] [[-IpAllocationMethod] <String>]
  [[-IpPoolEnd] <String>] [[-IpPoolStart] <String>] [[-IpPoolType] <String>] [[-IpPools] <Hashtable[]>]
  [[-Routes] <Hashtable[]>] [[-SubnetName] <String>] [[-Vlan] <Int32>] [<CommonParameters>]
 ```

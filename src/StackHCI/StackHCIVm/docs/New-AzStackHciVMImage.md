@@ -5,7 +5,7 @@ online version: https://learn.microsoft.com/powershell/module/az.stackhcivm/new-
 schema: 2.0.0
 ---
 
-# New-AzStackHciVMImage
+# New-AzStackHCIVmImage
 
 ## SYNOPSIS
 The operation to create an image.
@@ -15,7 +15,7 @@ Please note some properties can be set only during  image creation.
 
 ### MarketplaceURN (Default)
 ```
-New-AzStackHciVMImage -Name <String> -ResourceGroupName <String> -CustomLocationId <String> -Location <String>
+New-AzStackHCIVmImage -Name <String> -ResourceGroupName <String> -CustomLocationId <String> -Location <String>
  -OSType <OperatingSystemTypes> -URN <String> [-SubscriptionId <String>]
  [-CloudInitDataSource <CloudInitDataSource>] [-StoragePathId <String>] [-StoragePathName <String>]
  [-StoragePathResourceGroup <String>] [-Tag <Hashtable>] [-Confirm] [-WhatIf] [<CommonParameters>]
@@ -23,7 +23,7 @@ New-AzStackHciVMImage -Name <String> -ResourceGroupName <String> -CustomLocation
 
 ### GalleryImage
 ```
-New-AzStackHciVMImage -Name <String> -ResourceGroupName <String> -CustomLocationId <String>
+New-AzStackHCIVmImage -Name <String> -ResourceGroupName <String> -CustomLocationId <String>
  -ImagePath <String> -Location <String> -OSType <OperatingSystemTypes> [-SubscriptionId <String>]
  [-CloudInitDataSource <CloudInitDataSource>] [-StoragePathId <String>] [-StoragePathName <String>]
  [-StoragePathResourceGroup <String>] [-Tag <Hashtable>] [-Confirm] [-WhatIf] [<CommonParameters>]
@@ -31,7 +31,7 @@ New-AzStackHciVMImage -Name <String> -ResourceGroupName <String> -CustomLocation
 
 ### Marketplace
 ```
-New-AzStackHciVMImage -Name <String> -ResourceGroupName <String> -CustomLocationId <String> -Location <String>
+New-AzStackHCIVmImage -Name <String> -ResourceGroupName <String> -CustomLocationId <String> -Location <String>
  -Offer <String> -OSType <OperatingSystemTypes> -Publisher <String> -Sku <String> -Version <String>
  [-SubscriptionId <String>] [-CloudInitDataSource <CloudInitDataSource>] [-StoragePathId <String>]
  [-StoragePathName <String>] [-StoragePathResourceGroup <String>] [-Tag <Hashtable>] [-Confirm] [-WhatIf]
@@ -46,10 +46,10 @@ Please note some properties can be set only during image creation.
 
 ### Example 1: Create a  Gallery Image 
 ```powershell
-New-AzStackHciVMImage -Name "testImage" -ResourceGroupName "test-rg" -CustomLocationId "/subscriptions/{subscriptionID}/resourcegroups/{resourceGroupName}/providers/microsoft.extendedlocation/customlocations/{customLocationName}" -ImagePath "C:\ClusterStorage\Volume1\Ubunut.vhdx" -OSType "Linux" -Location "eastus" 
-
+New-AzStackHCIVmImage -Name "testImage" -ResourceGroupName "test-rg" -CustomLocationId "/subscriptions/{subscriptionID}/resourcegroups/{resourceGroupName}/providers/microsoft.extendedlocation/customlocations/{customLocationName}" -ImagePath "C:\ClusterStorage\Volume1\Ubunut.vhdx" -OSType "Linux" -Location "eastus" 
 ```
 
+```output
 Name            ResourceGroupName
 ----            -----------------
 testImage       test-rg
@@ -58,10 +58,10 @@ This command creates a gallery image from a local path.
 
 ### Example 2:  Create a Marketplace Gallery Image 
 ```powershell
-New-AzStackHCIVMImage -Name "testMarketplaceImage" -ResourceGroupName "test-rg" -CustomLocationId "/subscriptions/{subscriptionID}/resourcegroups/{resourceGroupName}/providers/microsoft.extendedlocation/customlocations/{customLocationName}"  -Location "eastus" -Offer "windowsserver" -Publisher "MicrosoftWindowsServer" -Sku "2022-Datacenter" -Version "latest" -OSType "Windows"
-
+New-AzStackHCIVmImage -Name "testMarketplaceImage" -ResourceGroupName "test-rg" -CustomLocationId "/subscriptions/{subscriptionID}/resourcegroups/{resourceGroupName}/providers/microsoft.extendedlocation/customlocations/{customLocationName}"  -Location "eastus" -Offer "windowsserver" -Publisher "MicrosoftWindowsServer" -Sku "2022-Datacenter" -Version "latest" -OSType "Windows"
 ```
 
+```output
 Name            ResourceGroupName
 ----            -----------------
 testMarketplaceImage       test-rg
@@ -70,10 +70,10 @@ This command creates a marketplace gallery image using the specified offer , pub
 
 ### Example 3: {Create a  Marketplace Gallery Image From URN 
 ```powershell
-New-AzStackHCIVMImage -Name "testMarketplaceImageURN" -ResourceGroupName "test-rg" -CustomLocationId "/subscriptions/{subscriptionID}/resourcegroups/{resourceGroupName}/providers/microsoft.extendedlocation/customlocations/{customLocationName}"  -Location "eastus" -URN  "microsoftwindowsserver:windowsserver:2022-datacenter:latest" -OSType "Windows"
-
+New-AzStackHCIVmImage -Name "testMarketplaceImageURN" -ResourceGroupName "test-rg" -CustomLocationId "/subscriptions/{subscriptionID}/resourcegroups/{resourceGroupName}/providers/microsoft.extendedlocation/customlocations/{customLocationName}"  -Location "eastus" -URN  "microsoftwindowsserver:windowsserver:2022-datacenter:latest" -OSType "Windows"
 ```
 
+```output
 Name            ResourceGroupName
 ----            -----------------
 testMarketplaceImageURN       test-rg

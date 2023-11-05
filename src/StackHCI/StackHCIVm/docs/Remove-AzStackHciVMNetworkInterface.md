@@ -5,7 +5,7 @@ online version: https://learn.microsoft.com/powershell/module/az.stackhcivm/remo
 schema: 2.0.0
 ---
 
-# Remove-AzStackHciVMNetworkInterface
+# Remove-AzStackHCIVmNetworkInterface
 
 ## SYNOPSIS
 The operation to delete a network interface.
@@ -14,13 +14,13 @@ The operation to delete a network interface.
 
 ### ByResourceId (Default)
 ```
-Remove-AzStackHciVMNetworkInterface -ResourceId <String> [-SubscriptionId <String>] [-Force] [-Confirm]
+Remove-AzStackHCIVmNetworkInterface -ResourceId <String> [-SubscriptionId <String>] [-Force] [-Confirm]
  [-WhatIf] [<CommonParameters>]
 ```
 
 ### ByName
 ```
-Remove-AzStackHciVMNetworkInterface -Name <String> -ResourceGroupName <String> [-SubscriptionId <String>]
+Remove-AzStackHCIVmNetworkInterface -Name <String> -ResourceGroupName <String> [-SubscriptionId <String>]
  [-Force] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
@@ -31,7 +31,7 @@ The operation to delete a network interface.
 
 ### Example 1: Remove a network interface.
 ```powershell
-Remove-AzStackHCIVMLogicalNetwork -Name  "testNic" -ResourceGroupName "test-rg"
+Remove-AzStackHCIVmLogicalNetwork -Name  "testNic" -ResourceGroupName "test-rg"
 ```
 
 This command removes the network interface from the specified resource group.

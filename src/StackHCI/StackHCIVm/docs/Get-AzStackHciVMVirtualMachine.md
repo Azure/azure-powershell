@@ -5,22 +5,33 @@ online version: https://learn.microsoft.com/powershell/module/az.stackhcivm/get-
 schema: 2.0.0
 ---
 
-# Get-AzStackHciVMVirtualMachine
+# Get-AzStackHCIVmVirtualMachine
 
 ## SYNOPSIS
 Gets a virtual machine
 
 ## SYNTAX
 
-### ByResourceId (Default)
+### BySubscription (Default)
 ```
-Get-AzStackHciVMVirtualMachine -ResourceId <String> [-Confirm] [-WhatIf] [<CommonParameters>]
+Get-AzStackHCIVmVirtualMachine [-SubscriptionId <String>] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ### ByName
 ```
-Get-AzStackHciVMVirtualMachine -Name <String> -ResourceGroupName <String> [-SubscriptionId <String>]
+Get-AzStackHCIVmVirtualMachine -Name <String> -ResourceGroupName <String> [-SubscriptionId <String>]
  [-Confirm] [-WhatIf] [<CommonParameters>]
+```
+
+### ByResourceGroup
+```
+Get-AzStackHCIVmVirtualMachine -ResourceGroupName <String> [-SubscriptionId <String>] [-Confirm] [-WhatIf]
+ [<CommonParameters>]
+```
+
+### ByResourceId
+```
+Get-AzStackHCIVmVirtualMachine -ResourceId <String> [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -30,7 +41,7 @@ Gets a virtual machine
 
 ### Example 2: Get a Virtual Machine. 
 ```powershell
-Get-AzStackHciVMVirtualMachine -Name "testVm" -ResourceGroupName "test-rg"
+Get-AzStackHCIVmVirtualMachine -Name "testVm" -ResourceGroupName "test-rg"
 ```
 
 ```output
@@ -43,7 +54,7 @@ This commnad gets a virtual machine in a specified resource group.
 
 ### Example 2: List Virtual Machines in a Resource Group
 ```powershell
-Get-AzStackHciVMVirtualMachine -ResourceGroupName "test-rg"
+Get-AzStackHCIVmVirtualMachine -ResourceGroupName "test-rg"
 ```
 
 ```output
@@ -77,7 +88,7 @@ The name is case insensitive.
 
 ```yaml
 Type: System.String
-Parameter Sets: ByName
+Parameter Sets: ByName, ByResourceGroup
 Aliases:
 
 Required: True
@@ -107,10 +118,10 @@ The ID of the target subscription.
 
 ```yaml
 Type: System.String
-Parameter Sets: ByName
+Parameter Sets: ByName, ByResourceGroup, BySubscription
 Aliases:
 
-Required: True
+Required: False
 Position: Named
 Default value: (Get-AzContext).Subscription.Id
 Accept pipeline input: False
@@ -154,6 +165,8 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ## INPUTS
 
 ## OUTPUTS
+
+### Microsoft.Azure.PowerShell.Cmdlets.StackHCIVm.Models.Api20230315Preview.Machine
 
 ### Microsoft.Azure.PowerShell.Cmdlets.StackHCIVm.Models.Api20230901Preview.IVirtualMachineInstance
 

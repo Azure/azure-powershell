@@ -5,7 +5,7 @@ online version: https://learn.microsoft.com/powershell/module/az.stackhcivm/remo
 schema: 2.0.0
 ---
 
-# Remove-AzStackHciVMVirtualMachineDataDisk
+# Remove-AzStackHCIVmVirtualMachineDataDisk
 
 ## SYNOPSIS
 The operation to delete a data disk from a virtual machine.
@@ -14,13 +14,13 @@ The operation to delete a data disk from a virtual machine.
 
 ### ByResourceId (Default)
 ```
-Remove-AzStackHciVMVirtualMachineDataDisk -ResourceId <String> [-DataDiskIds <String[]>]
+Remove-AzStackHCIVmVirtualMachineDataDisk -ResourceId <String> [-DataDiskIds <String[]>]
  [-DataDiskNames <String[]>] [-DataDiskResourceGroup <String>] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ### ByName
 ```
-Remove-AzStackHciVMVirtualMachineDataDisk -Name <String> -ResourceGroupName <String>
+Remove-AzStackHCIVmVirtualMachineDataDisk -Name <String> -ResourceGroupName <String>
  [-SubscriptionId <String>] [-DataDiskIds <String[]>] [-DataDiskNames <String[]>]
  [-DataDiskResourceGroup <String>] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
@@ -32,7 +32,7 @@ The operation to delete a data disk from a  virtual machine.
 
 ### Example 1: Removes a Data Disk from a Virtual Machine
 ```powershell
-Remove-AzStackHCIVMVirtualMachineDataDisk  -Name "testVm" -ResourceGroupName "test-rg"  -DataDiskNames "testVhd"
+Remove-AzStackHCIVmVirtualMachineDataDisk  -Name "testVm" -ResourceGroupName "test-rg"  -DataDiskNames "testVhd"
 
 ```
 

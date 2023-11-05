@@ -34,7 +34,7 @@ Microsoft.Azure.PowerShell.Cmdlets.StackHCIVm.Models.Api20230901Preview.IStorage
 .Link
 https://learn.microsoft.com/powershell/module/az.stackhcivm/get-azstackhcivmstoragepath
 #>
-function Get-AzStackHciVMStoragePath_ByResourceId {
+function Get-AzStackHCIVmStoragePath_ByResourceId {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.StackHciVM.Models.Api20230901Preview.IStorageContainers])]
 [CmdletBinding(PositionalBinding=$false)]
 

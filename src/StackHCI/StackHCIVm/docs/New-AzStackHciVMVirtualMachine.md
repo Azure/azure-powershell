@@ -5,7 +5,7 @@ online version: https://learn.microsoft.com/powershell/module/az.StackHciVM/new-
 schema: 2.0.0
 ---
 
-# New-AzStackHciVMVirtualMachine
+# New-AzStackHCIVmVirtualMachine
 
 ## SYNOPSIS
 The operation to create or update a virtual machine.
@@ -15,7 +15,7 @@ Please note some properties can be set only during virtual machine creation.
 
 ### ByImageId (Default)
 ```
-New-AzStackHciVMVirtualMachine -Name <String> -ResourceGroupName <String> -CustomLocationId <String>
+New-AzStackHCIVmVirtualMachine -Name <String> -ResourceGroupName <String> -CustomLocationId <String>
  -ImageId <String> -Location <String> -OsType <String> [-SubscriptionId <String>] [-AdminPassword <String>]
  [-AdminUsername <String>] [-ComputerName <String>] [-DataDiskIds <String[]>] [-DataDiskNames <String[]>]
  [-DataDiskResourceGroup <String>] [-DisablePasswordAuthentication] [-DynamicMemoryMaximumMemoryInMb <Int64>]
@@ -29,7 +29,7 @@ New-AzStackHciVMVirtualMachine -Name <String> -ResourceGroupName <String> -Custo
 
 ### ByImageName
 ```
-New-AzStackHciVMVirtualMachine -Name <String> -ResourceGroupName <String> -CustomLocationId <String>
+New-AzStackHCIVmVirtualMachine -Name <String> -ResourceGroupName <String> -CustomLocationId <String>
  -ImageName <String> -Location <String> -OsType <String> [-SubscriptionId <String>] [-AdminPassword <String>]
  [-AdminUsername <String>] [-ComputerName <String>] [-DataDiskIds <String[]>] [-DataDiskNames <String[]>]
  [-DataDiskResourceGroup <String>] [-DisablePasswordAuthentication] [-DynamicMemoryMaximumMemoryInMb <Int64>]
@@ -43,7 +43,7 @@ New-AzStackHciVMVirtualMachine -Name <String> -ResourceGroupName <String> -Custo
 
 ### ByOsDiskId
 ```
-New-AzStackHciVMVirtualMachine -Name <String> -ResourceGroupName <String> -CustomLocationId <String>
+New-AzStackHCIVmVirtualMachine -Name <String> -ResourceGroupName <String> -CustomLocationId <String>
  -Location <String> -OSDiskId <String> -OsType <String> [-SubscriptionId <String>] [-AdminPassword <String>]
  [-AdminUsername <String>] [-ComputerName <String>] [-DataDiskIds <String[]>] [-DataDiskNames <String[]>]
  [-DataDiskResourceGroup <String>] [-DisablePasswordAuthentication] [-DynamicMemoryMaximumMemoryInMb <Int64>]
@@ -57,7 +57,7 @@ New-AzStackHciVMVirtualMachine -Name <String> -ResourceGroupName <String> -Custo
 
 ### ByOsDiskName
 ```
-New-AzStackHciVMVirtualMachine -Name <String> -ResourceGroupName <String> -CustomLocationId <String>
+New-AzStackHCIVmVirtualMachine -Name <String> -ResourceGroupName <String> -CustomLocationId <String>
  -Location <String> -OSDiskName <String> -OsType <String> [-SubscriptionId <String>] [-AdminPassword <String>]
  [-AdminUsername <String>] [-ComputerName <String>] [-DataDiskIds <String[]>] [-DataDiskNames <String[]>]
  [-DataDiskResourceGroup <String>] [-DisablePasswordAuthentication] [-DynamicMemoryMaximumMemoryInMb <Int64>]
@@ -77,7 +77,7 @@ Please note some properties can be set only during virtual machine creation.
 
 ### Example 1: Create a Virtual Machine with an Image. 
 ```powershell
-New-AzStackHciVMVirtualMachine -Name "testVm" -OsType "Linux"  -ImageName "testImage" -VmSize "Standard_K8S_v1"  -AdminUsername "localadmin" -ComputerName "testVm"  -ResourceGroupName "test-rg" -CustomLocationId "/subscriptions/{subscriptionID}/resourcegroups/{resourceGroupName}/providers/microsoft.extendedlocation/customlocations/{customLocationName}"  -Location "eastus"
+New-AzStackHCIVmVirtualMachine -Name "testVm" -OsType "Linux"  -ImageName "testImage" -VmSize "Standard_K8S_v1"  -AdminUsername "localadmin" -ComputerName "testVm"  -ResourceGroupName "test-rg" -CustomLocationId "/subscriptions/{subscriptionID}/resourcegroups/{resourceGroupName}/providers/microsoft.extendedlocation/customlocations/{customLocationName}"  -Location "eastus"
 ```
 
 ```output
@@ -90,7 +90,7 @@ This command creates a virtual machine from a gallery image.
 
 ### Example 2: Create a Virtual Machine with a Disk. 
 ```powershell
-New-AzStackHciVMVirtualMachine -Name "testVm" -OsType "Linux" -OsDiskName "testOsDisk" -VmSize "Standard_K8S_v1"  -AdminUsername "localadmin" -ComputerName "testVm" -ResourceGroupName "test-rg" -CustomLocationId "/subscriptions/{subscriptionID}/resourcegroups/{resourceGroupName}/providers/microsoft.extendedlocation/customlocations/{customLocationName}" -Location "eastus"
+New-AzStackHCIVmVirtualMachine -Name "testVm" -OsType "Linux" -OsDiskName "testOsDisk" -VmSize "Standard_K8S_v1"  -AdminUsername "localadmin" -ComputerName "testVm" -ResourceGroupName "test-rg" -CustomLocationId "/subscriptions/{subscriptionID}/resourcegroups/{resourceGroupName}/providers/microsoft.extendedlocation/customlocations/{customLocationName}" -Location "eastus"
 ```
 
 ```output

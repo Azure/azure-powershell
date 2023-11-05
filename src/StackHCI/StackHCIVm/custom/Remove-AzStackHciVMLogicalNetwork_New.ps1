@@ -33,12 +33,12 @@ COMPLEX PARAMETER PROPERTIES
 .Link
 https://learn.microsoft.com/powershell/module/az.stackhcivm/remove-azstackhcivmlogicalnetwork
 #>
-function Remove-AzStackHciVMLogicalNetwork {
+function Remove-AzStackHCIVmLogicalNetwork {
     [OutputType([System.Boolean])]
     [CmdletBinding(PositionalBinding=$false, SupportsShouldProcess, ConfirmImpact='Medium')]
     param(
         [Parameter(ParameterSetName='Delete', Mandatory)]
-        [Alias('VirtualNetworkName')]
+        [Alias('LogicalNetworkName')]
         [Microsoft.Azure.PowerShell.Cmdlets.StackHCIVm.Category('Path')]
         [System.String]
         # Name of the virtual network
@@ -64,6 +64,8 @@ function Remove-AzStackHciVMLogicalNetwork {
         # The ARM Resource ID of the virtual network.
         ${ResourceId},
 
+        [Parameter(ParameterSetName='ByResourceId')]
+        [Parameter(ParameterSetName='Delete')]
         [Parameter(HelpMessage='Forces the cmdlet to remove the virtual network without prompting for confirmation.')]
         [System.Management.Automation.SwitchParameter]
         ${Force}
