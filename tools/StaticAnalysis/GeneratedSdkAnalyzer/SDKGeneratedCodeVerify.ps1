@@ -71,7 +71,7 @@ try {
             if ([regex]::Matches($readMeContent, '\s*powershell\s*:\s*true\s*') -and [regex]::Matches($readMeContent, '\s*isSdkGenerator\s*:\s*true\s*'))
             {
                 Write-Host "Using autorest powershell v4:`nRe-generating SDK under Generated folder for $ModuleName..."
-                npx autorest --use:@autorest/powershell@4.x
+                npx autorest
             }
             else
             {
