@@ -6062,6 +6062,9 @@ Test GuestAttestation defaulting behavior.
 4) DisableIntegrityMonitoring is not true.
 Then this test removes the VM and recreates it with -DisableIntegrityMonitoring set to true so the
 Guest Attestation extension is not installed.
+
+This test has been moved to LiveOnly. The GuestAttestation defaulting logic has been removed as per the feature team informing
+us that it was pulled back from other clients due to perf concerns but we were not informed of that at the time. 
 #>
 function Test-VirtualMachineGuestAttestation
 {
@@ -6735,7 +6738,6 @@ function Test-VirtualMachineEdgeZoneSimpleParameterSet
 <#
 .SYNOPSIS
 Test Flags VTpmEnabled and SecureBootEnabled for TrustedLaunch SecurityType.
-Verifies that the GuestAttestation extension is installed. 
 #>
 function Test-VirtualMachineSecurityType
 {
@@ -6796,6 +6798,9 @@ function Test-VirtualMachineSecurityType
         Assert-AreEqual $vm.SecurityProfile.UefiSettings.SecureBootEnabled $true;
 
         # validate GA extension
+        # This logic was actually removed from VM and VMSS creation. 
+        # This may be added back in the future, so keeping this here for future reference. 
+        <#
         $extDefaultName = "GuestAttestation";
         $vmGADefaultIDentity = "SystemAssigned";
         $vm = Get-AzVm -ResourceGroupName $rgname -Name $vmName;
@@ -6805,6 +6810,7 @@ function Test-VirtualMachineSecurityType
         #Assert-AreEqual $vmGADefaultIDentity $vm.Identity.Type;
         $output2 = $vm.Identity.Type| Out-String;
         Assert-True { $output2.Contains($vmGADefaultIDentity) };
+        #>
 
         #Case 2: -SecurityType = "TrustedLaunch" || "ConfidentialVM" -EnableVtpm $false -EnableSecureBoot $true
         $vmname2 = "v2" + $rgname;
@@ -6897,6 +6903,9 @@ function Test-VirtualMachineSecurityTypeWithoutConfig
         Assert-AreEqual $updated_vm.SecurityProfile.UefiSettings.VTpmEnabled $true;
 
         # validate GA extension
+        # We removed this logic as per request fro the feature team. 
+        # Keeping this code here as this may be added back in the future. 
+        <#
         $extDefaultName = "GuestAttestation";
         $vmGADefaultIDentity = "SystemAssignedUserAssigned";
         $vmname = $vmname1;
@@ -6905,6 +6914,7 @@ function Test-VirtualMachineSecurityTypeWithoutConfig
         Assert-AreEqual $extDefaultName $vmExt.Name;
         Assert-True {$vmExt.EnableAutomaticUpgrade};
         Assert-AreEqual $vmGADefaultIDentity $vm.Identity.Type;
+        #>
     }
     finally
     {
@@ -7268,7 +7278,6 @@ function Test-VMDefaultsToTrustedLaunchWithManagedDisk2
         $securityTypeTL = "TrustedLaunch";
         $secureboot = $true;
         $vtpm = $true;
-        $extDefaultName = "GuestAttestation";
         $vmGADefaultIDentity = "SystemAssigned";
 
         # Creating a VM using Simple parameterset
@@ -7351,8 +7360,6 @@ function Test-VMDefaultsToTrustedLaunchWithGen2Image
         $securityTypeTL = "TrustedLaunch";
         $secureboot = $true;
         $vtpm = $true;
-        $extDefaultName = "GuestAttestation";
-        $vmGADefaultIDentity = "SystemAssigned";
 
         # Creating a VM using Simple parameterset
         $password = Get-PasswordForVM;
@@ -7373,7 +7380,6 @@ function Test-VMDefaultsToTrustedLaunchWithGen2Image
         Set-AzVMOperatingSystem -VM $vmConfig -Windows -ComputerName $vmName -Credential $cred;
         Set-AzVMSourceImage -VM $vmConfig -PublisherName $PublisherName -Offer $Offer -Skus $SKU -Version $version ;
         Add-AzVMNetworkInterface -VM $vmConfig -Id $nic.Id;
-        #$vmConfig = Set-AzVMSourceImage -VM $vmConfig -PublisherName 'MicrosoftWindowsServer' -Offer 'WindowsServer' -Skus '2022-datacenter-azure-edition' -Version latest;
         
         New-AzVM -ResourceGroupName $rgname -Location $loc -VM $vmConfig;# -Verbose;# -Debug;
         

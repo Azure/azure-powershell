@@ -3418,6 +3418,8 @@ function Test-VirtualMachineScaleSetRepairsAction
 .SYNOPSIS
 Test Virtual Machine Scale Set Guest Attestation and Identity SystemAssigned
 for the certain Trusted Launch feature setup.
+This test has been moved to LiveOnly as this logic has been removed as per request of the feature team.
+This test will remain here as the logic may be asked to be reimplemented in the future.
 #>
 function Test-VirtualMachineScaleSetGuestAttestation
 {
@@ -4539,7 +4541,8 @@ function Test-VirtualMachineScaleSetSecurityType
         # Vmss Identity is now in fact only UserAssigned as expected.
 
         # Guest Attestation extension defaulting test
-        # Validate
+        # Removed this portion as this logic was removed as per feature team request. 
+        <#
         $vmGADefaultIdentity = "SystemAssigned"; # New defaulting behavior that was unexpected but feature team says go with it.
         $extDefaultName = "GuestAttestation";
         $vmssGet = Get-AzVmss -ResourceGroupName $rgname -Name $vmssName1;
@@ -4554,6 +4557,7 @@ function Test-VirtualMachineScaleSetSecurityType
         $vmssvm = Get-AzVmssvm -ResourceGroupName $rgname -VMScaleSetName $vmssName1 -InstanceId $vmssvms[0].InstanceId;
         Assert-AreEqual $extDefaultName $vmssvm.Resources[2].Name;
         Assert-True {$vmssvm.Resources[2].EnableAutomaticUpgrade};
+        #>
     }
     finally
     {
@@ -4617,7 +4621,8 @@ function Test-VirtualMachineScaleSetSecurityTypeWithoutConfig
         Assert-AreEqual $vmssGet2.VirtualMachineProfile.SecurityProfile.UefiSettings.VTpmEnabled $true;
 
         # Guest Attestation extension defaulting test
-        # Validate
+        # Removing this portion as this logic was removed as per feature team request (ajay.kundnani@microsoft.com)
+        <#
         $vmGADefaultIdentity = "SystemAssigned"; # New defaulting behavior that was unexpected but feature team says go with it.
         $extDefaultName = "GuestAttestation";
         $vmssGet = Get-AzVmss -ResourceGroupName $rgname -Name $vmssName1;
@@ -4632,6 +4637,7 @@ function Test-VirtualMachineScaleSetSecurityTypeWithoutConfig
         $vmssvm = Get-AzVmssvm -ResourceGroupName $rgname -VMScaleSetName $vmssName1 -InstanceId $vmssvms[0].InstanceId;
         Assert-AreEqual $extDefaultName $vmssvm.Resources[2].Name;
         Assert-True {$vmssvm.Resources[2].EnableAutomaticUpgrade};
+        #>
     }
     finally
     {
@@ -4826,7 +4832,6 @@ function Test-VirtualMachineScaleSetImageReferenceSkuUpdate
 .SYNOPSIS
 Test Virtual Machine Scale Set VtpmEabled and SecureBootEnabled
 for the Trusted Launch feature setup.
-Tests that GuestAttestation extension is also installed.
 #>
 function Test-VirtualMachineScaleSetSecurityTypeWithoutConfigUpdate
 {

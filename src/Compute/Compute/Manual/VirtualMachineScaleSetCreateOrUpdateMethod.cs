@@ -673,14 +673,15 @@ namespace Microsoft.Azure.Commands.Compute.Automation
                     this.EnableVtpm = true;
                 }
             }
-            //ADAM set stnd to null here!!!
+            
+            // API does not currently support Standard securityType value, so need to null it out here. 
             if (this.IsParameterBound(c => c.SecurityType)
                 && this.SecurityType.ToString().ToLower() == ConstantValues.StandardSecurityType)
             {
                 this.SecurityType = null;
             }
 
-            //Guest Attestation Identity stuff
+            //TrustedLaunch value defaulting for UEFI values.
             if (this.IsParameterBound(c => c.SecurityType))
             {
                 if (this.SecurityType?.ToLower() == ConstantValues.TrustedLaunchSecurityType || this.SecurityType?.ToLower() == ConstantValues.ConfidentialVMSecurityType)
@@ -689,13 +690,6 @@ namespace Microsoft.Azure.Commands.Compute.Automation
                     this.EnableVtpm = this.EnableVtpm ?? true;
                     this.EnableSecureBoot = this.EnableSecureBoot ?? true;
                 }          
-            }
-            if (shouldGuestAttestationExtBeInstalledSimple()//remove this from ga defaulting stuff
-                && !this.IsParameterBound(c => c.SystemAssignedIdentity)
-                && !this.IsParameterBound(c => c.UserAssignedIdentity)
-                    )
-            {
-                this.SystemAssignedIdentity = true;
             }
             
             var parameters = new Parameters(this, client);
@@ -736,88 +730,6 @@ namespace Microsoft.Azure.Commands.Compute.Automation
                     range);
                 asyncCmdlet.WriteObject(psObject);
             }
-            /*
-            if (shouldGuestAttestationExtBeInstalledSimple())
-            {
-                string extensionNameGA = "GuestAttestation";
-                var extensionDirect = new VirtualMachineScaleSetExtension();
-                
-                if (result.VirtualMachineProfile?.OsProfile != null)
-                {
-                    if (result.VirtualMachineProfile.OsProfile.LinuxConfiguration != null)
-                    {
-
-                        extensionDirect.Name = extensionNameGA;
-                        extensionDirect.Publisher = "Microsoft.Azure.Security.LinuxAttestation";
-                        extensionDirect.Type1 = extensionNameGA;
-                        extensionDirect.TypeHandlerVersion = "1.0";
-                        extensionDirect.EnableAutomaticUpgrade = true;
-                    }
-                    else
-                    {
-
-                        extensionDirect.Name = extensionNameGA;
-                        extensionDirect.Publisher = "Microsoft.Azure.Security.WindowsAttestation";
-                        extensionDirect.Type1 = extensionNameGA;
-                        extensionDirect.TypeHandlerVersion = "1.0";
-                        extensionDirect.EnableAutomaticUpgrade = true;
-                    }
-                }
-
-                VirtualMachineScaleSetUpdate parametersupdate = new VirtualMachineScaleSetUpdate();
-                parametersupdate.VirtualMachineProfile = new VirtualMachineScaleSetUpdateVMProfile();
-                parametersupdate.VirtualMachineProfile.ExtensionProfile = new VirtualMachineScaleSetExtensionProfile();
-                parametersupdate.VirtualMachineProfile.ExtensionProfile.Extensions = new List<VirtualMachineScaleSetExtension>();
-                parametersupdate.VirtualMachineProfile.ExtensionProfile.Extensions.Add(extensionDirect);
-                result = VirtualMachineScaleSetsClient.Update(this.ResourceGroupName, this.VMScaleSetName, parametersupdate);
-
-                var vmssVmExtParams = new VirtualMachineScaleSetVMExtension();
-                var resultVmssVm = VirtualMachineScaleSetVMsClient.List(this.ResourceGroupName, this.VMScaleSetName);
-                var resultList = resultVmssVm.ToList();
-                var nextPageLink = resultVmssVm.NextPageLink;
-                while (!string.IsNullOrEmpty(nextPageLink))
-                {
-                    var pageResult = VirtualMachineScaleSetVMsClient.ListNext(nextPageLink);
-                    foreach (var pageItem in pageResult)
-                    {
-                        resultList.Add(pageItem);
-                    }
-                    nextPageLink = pageResult.NextPageLink;
-                }
-
-                foreach (var currentVmssVm in resultList)
-                {
-                    if (currentVmssVm.StorageProfile != null &&
-                        currentVmssVm.StorageProfile.OsDisk != null)
-                    {
-                        if (currentVmssVm.StorageProfile.OsDisk.OsType == OperatingSystemTypes.Linux)
-                        {
-                            vmssVmExtParams = new VirtualMachineScaleSetVMExtension
-                            {
-                                Publisher = "Microsoft.Azure.Security.LinuxAttestation",
-                                Type1 = extensionNameGA,
-                                TypeHandlerVersion = "1.0",
-                                EnableAutomaticUpgrade = true
-                            };
-                        }
-                        else
-                        {
-
-                            vmssVmExtParams = new VirtualMachineScaleSetVMExtension
-                            {
-                                Publisher = "Microsoft.Azure.Security.WindowsAttestation",
-                                Type1 = extensionNameGA,
-                                TypeHandlerVersion = "1.0",
-                                EnableAutomaticUpgrade = true
-                            };
-                        }
-                        var opt = this.VirtualMachineScaleSetVMExtensionsClient.CreateOrUpdateWithHttpMessagesAsync(this.ResourceGroupName, this.VMScaleSetName, currentVmssVm.InstanceId, extensionNameGA, vmssVmExtParams);
-                    }
-
-                }
-            }
-            */
-            
         }
 
         /// <summary>
@@ -846,30 +758,6 @@ namespace Microsoft.Azure.Commands.Compute.Automation
                                              : null,
                 }
                 : null;
-        }
-        
-        /// <summary>
-        /// Check to see if the Guest Attestation extension should be installed and Identity set to SystemAssigned.
-        /// Requirements for this scenario to be true:
-        /// 1) DisableIntegrityMonitoring is not true.
-        /// 2) SecurityType is TrustedLaunch.
-        /// 3) SecureBootEnabled is true.
-        /// 4) VTpmEnabled is true.
-        /// </summary>
-        /// <returns></returns>
-        private bool shouldGuestAttestationExtBeInstalledSimple()
-        {
-            if (this.DisableIntegrityMonitoring != true &&
-                    this.SecurityType?.ToLower() == ConstantValues.TrustedLaunchSecurityType &&
-                    this.EnableSecureBoot == true &&
-                    this.EnableVtpm == true)
-            {
-                return true;
-            }
-            else
-            {
-                return false;
-            }
         }
     }
 }
