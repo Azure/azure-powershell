@@ -40,5 +40,6 @@ namespace Microsoft.Azure.Commands.KeyVault.Models
         public MhsmNetworkRuleSet MhsmNetworkAcls { get; set; }
         public CreateMode? CreateMode { get; set; }
         public string[] Administrator { get; set; }
+        internal ManagedServiceIdentity ManagedServiceIdentity { get; set; }
     }
 }
