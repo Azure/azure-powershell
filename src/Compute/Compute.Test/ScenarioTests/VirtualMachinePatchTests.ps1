@@ -32,8 +32,9 @@ function Test-InvokeAzVmPatchAssessment
         # VM Profile & Hardware
         $vmsize = Get-AvailableSku $loc "virtualMachine"
         $vmname = 'vm' + $rgname;
+        $stnd = "Standard";
 
-        $p = New-AzVMConfig -VMName $vmname -VMSize $vmsize -Priority 'Low' -MaxPrice 0.1538;
+        $p = New-AzVMConfig -VMName $vmname -VMSize $vmsize -Priority 'Low' -MaxPrice 0.1538 -SecurityType $stnd;
 
         # NRP
         $subnet = New-AzVirtualNetworkSubnetConfig -Name ('subnet' + $rgname) -AddressPrefix "10.0.0.0/24";
