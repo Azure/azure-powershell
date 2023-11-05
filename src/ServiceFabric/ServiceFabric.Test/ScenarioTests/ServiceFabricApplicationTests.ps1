@@ -83,11 +83,10 @@ function Test-App
 	Assert-AreEqual "Succeeded" $appTypeVersion.ProvisioningState
 
 	$app = Update-AzServiceFabricApplication -ResourceGroupName $resourceGroupName -ClusterName $clusterName -Name $appName -ApplicationTypeVersion $v2 `
-		-ApplicationParameter @{Mode="decimal"} -HealthCheckStableDurationSec 0 -HealthCheckWaitDurationSec 0 -HealthCheckRetryTimeoutSec 0 `
+		-HealthCheckStableDurationSec 0 -HealthCheckWaitDurationSec 0 -HealthCheckRetryTimeoutSec 0 `
 		-UpgradeDomainTimeoutSec 5000 -UpgradeTimeoutSec 7000 -FailureAction Rollback -UpgradeReplicaSetCheckTimeoutSec 300 -ForceRestart -Verbose
 	Assert-AreEqual "Succeeded" $app.ProvisioningState
 	Assert-AreEqual $v2 $app.TypeVersion
-	Assert-AreEqual "decimal" $app.Parameters["Mode"]
 	Assert-True { $app.UpgradePolicy.ForceRestart }
 	Assert-AreEqual "00:05:00" $app.UpgradePolicy.UpgradeReplicaSetCheckTimeout
 	Assert-AreEqual "01:56:40" $app.UpgradePolicy.RollingUpgradeMonitoringPolicy.UpgradeTimeout

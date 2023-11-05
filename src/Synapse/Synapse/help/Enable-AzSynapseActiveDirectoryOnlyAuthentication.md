@@ -8,7 +8,7 @@ schema: 2.0.0
 # Enable-AzSynapseActiveDirectoryOnlyAuthentication
 
 ## SYNOPSIS
-Enables Azure Active Directory (Azure AD) only authentication for a specific Synapse workspace.
+Enables Microsoft Entra-only authentication for a specific Synapse workspace.
 
 ## SYNTAX
 
@@ -31,7 +31,7 @@ Enable-AzSynapseActiveDirectoryOnlyAuthentication -ResourceId <String>
 ```
 
 ## DESCRIPTION
-The **Enable-AzSynapseActiveDirectoryOnlyAuthentication** cmdlet enables Azure Active Directory (Azure AD) only authentication for a specific Synapse workspace.
+The **Enable-AzSynapseActiveDirectoryOnlyAuthentication** cmdlet enables Microsoft Entra-only authentication for a specific Synapse workspace.
 
 ## EXAMPLES
 
@@ -44,7 +44,7 @@ WorkspaceName     AzureADOnlyAuthenticationProperty State      CreationDate
 -------------     --------------------------------- -----      ------------
 ContosoWorkspace                               True Consistent 3/23/2022 8:27:47 AM
 ```
-This command enables Azure AD only authentication for workspace ContosoWorkspace.
+This command enables Microsoft Entra-only authentication for workspace ContosoWorkspace.
 
 ### Example 2
 ```powershell
@@ -56,7 +56,7 @@ WorkspaceName     AzureADOnlyAuthenticationProperty State      CreationDate
 -------------     --------------------------------- -----      ------------
 ContosoWorkspace                               True Consistent 3/23/2022 8:27:47 AM
 ```
-This command enables Azure AD only authentication for workspace ContosoWorkspace through pipeline.
+This command enables Microsoft Entra-only authentication for workspace ContosoWorkspace through pipeline.
 
 ### Example 3
 ```powershell
@@ -67,7 +67,7 @@ WorkspaceName     AzureADOnlyAuthenticationProperty State      CreationDate
 -------------     --------------------------------- -----      ------------
 ContosoWorkspace                               True Consistent 3/23/2022 8:27:47 AM
 ```
-This command enables Azure AD only authentication for workspace ContosoWorkspace by ResourceId.
+This command enables Microsoft Entra-only authentication for workspace ContosoWorkspace by ResourceId.
 
 ## PARAMETERS
 

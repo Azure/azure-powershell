@@ -16,6 +16,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Websites.Cmdlets
     [global::System.Management.Automation.OutputType(typeof(Microsoft.Azure.PowerShell.Cmdlets.Websites.Models.Api20201201.IStaticSiteArmResource))]
     [global::Microsoft.Azure.PowerShell.Cmdlets.Websites.Description(@"Description for Gets the details of a static site.")]
     [global::Microsoft.Azure.PowerShell.Cmdlets.Websites.Generated]
+    [global::Microsoft.Azure.PowerShell.Cmdlets.Websites.HttpPath(Path = "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/staticSites/{name}", ApiVersion = "2020-12-01")]
     public partial class GetAzStaticWebApp_Get : global::System.Management.Automation.PSCmdlet,
         Microsoft.Azure.PowerShell.Cmdlets.Websites.Runtime.IEventListener
     {

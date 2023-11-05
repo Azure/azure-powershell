@@ -1,5 +1,5 @@
 ---
-external help file: Microsoft.Azure.PowerShell.Cmdlets.Monitor.dll-Help.xml
+external help file: Az.DataCollectionRule.psm1-help.xml
 Module Name: Az.Monitor
 online version: https://learn.microsoft.com/powershell/module/az.monitor/update-azdatacollectionrule
 schema: 2.0.0
@@ -8,111 +8,132 @@ schema: 2.0.0
 # Update-AzDataCollectionRule
 
 ## SYNOPSIS
-Updates a data collection rule tags property.
+Updates part of a data collection rule.
 
 ## SYNTAX
 
-### ByName (Default)
+### UpdateExpanded (Default)
 ```
-Update-AzDataCollectionRule -ResourceGroupName <String> -RuleName <String> [-Tag <Hashtable>]
- [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
-```
-
-### ByResourceId
-```
-Update-AzDataCollectionRule -RuleId <String> [-Tag <Hashtable>] [-DefaultProfile <IAzureContextContainer>]
+Update-AzDataCollectionRule -Name <String> -ResourceGroupName <String> [-SubscriptionId <String>]
+ [-IdentityType <String>] [-Tag <Hashtable>] [-UserAssignedIdentity <Hashtable>] [-DefaultProfile <PSObject>]
  [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
-### ByInputObject
+### UpdateViaIdentityExpanded
 ```
-Update-AzDataCollectionRule -InputObject <PSDataCollectionRuleResource> [-Tag <Hashtable>]
- [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
+Update-AzDataCollectionRule -InputObject <IDataCollectionRuleIdentity> [-IdentityType <String>]
+ [-Tag <Hashtable>] [-UserAssignedIdentity <Hashtable>] [-DefaultProfile <PSObject>] [-WhatIf] [-Confirm]
+ [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-The **Update-AzDataCollectionRule** cmdlet updates a data collection rule Tags property.
-
-Data Collection Rules (DCR) define data coming into Azure Monitor and specify where that data should be sent or stored. Here is the complete [DCR overview article](https://learn.microsoft.com/azure/azure-monitor/essentials/data-collection-rule-overview).
+Updates part of a data collection rule.
 
 ## EXAMPLES
 
-### Example 1: Update data collection rule tags
+### Example 1: Update tag for data collection rule
 ```powershell
-Update-AzDataCollectionRule -RuleName 'newDcr' `
-                                   -ResourceGroupName 'testdcr' `
-                                   -Tag @{"tag1"="value1"; "tag2"="value2"}
+Update-AzDataCollectionRule -Name myCollectionRule1 -ResourceGroupName AMCS-Test -Tag @{"123"="abc"}
 ```
 
 ```output
-Description       :
-DataSources       : Microsoft.Azure.Commands.Insights.OutputClasses.PSDataCollectionRuleDataSources
-Destinations      : Microsoft.Azure.Commands.Insights.OutputClasses.PSDataCollectionRuleDestinations
-DataFlows         : {Microsoft.Azure.Commands.Insights.OutputClasses.PSDataFlow}
-ProvisioningState : Succeeded
-Etag              : "{etag}"
-Id                : /subscriptions/{subId}/resourceGroups/testdcr/providers/Microsoft.Insights/dataCollectionRules/newDcr
-Name              : newDcr
-Type              : Microsoft.Insights/dataCollectionRules
-Location          : East US 2 EUAP
-Tags              : {[tag2, value2], [tag1, value1]}
+DataCollectionEndpointId                  : 
+DataFlow                                  : {{
+                                              "streams": [ "Microsoft-InsightsMetrics" ],
+                                              "destinations": [ "azureMonitorMetrics-default" ]
+                                            }}
+DataSourceDataImportEventHubConsumerGroup : 
+DataSourceDataImportEventHubName          : 
+DataSourceDataImportEventHubStream        : 
+DataSourceExtension                       : 
+DataSourceIisLog                          : 
+DataSourceLogFile                         : 
+DataSourcePerformanceCounter              : {{
+                                              "streams": [ "Microsoft-Perf" ],
+                                              "samplingFrequencyInSeconds": 15,
+                                              "counterSpecifiers": [ "\\\\Processor(_Total)\\\\% Processor Time", "\\\\Memory\\\\Committed Bytes", "\\\\LogicalDisk(_Total)\\\\Free
+                                            Megabytes", "\\\\PhysicalDisk(_Total)\\\\Avg. Disk Queue Length" ],
+                                              "name": "cloudTeamCoreCounters"
+                                            }, {
+                                              "streams": [ "Microsoft-Perf" ],
+                                              "samplingFrequencyInSeconds": 30,
+                                              "counterSpecifiers": [ "\\\\Process(_Total)\\\\Thread Count" ],
+                                              "name": "appTeamExtraCounters"
+                                            }}
+DataSourcePlatformTelemetry               : 
+DataSourcePrometheusForwarder             : 
+DataSourceSyslog                          : 
+DataSourceWindowsEventLog                 : {{
+                                              "streams": [ "Microsoft-WindowsEvent" ],
+                                              "xPathQueries": [ "System![System[(Level = 1 or Level = 2 or Level = 3)]]", "Application!*[System[(Level = 1 or Level = 2 or Level = 3)]]" ],   
+                                              "name": "appTeam1AppEvents"
+                                            }}
+DataSourceWindowsFirewallLog              : 
+Description                               : 
+DestinationAzureMonitorMetricName         : azureMonitorMetrics-default
+DestinationEventHub                       : 
+DestinationEventHubsDirect                : 
+DestinationLogAnalytic                    : 
+DestinationMonitoringAccount              : 
+DestinationStorageAccount                 : 
+DestinationStorageBlobsDirect             : 
+DestinationStorageTablesDirect            : 
+Etag                                      : "2201d32f-0000-0100-0000-651159230000"
+Id                                        : /subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/AMCS-TEST/providers/Microsoft.Insights/dataCollectionRules/myCollectionRule1   
+IdentityPrincipalId                       : 
+IdentityTenantId                          : 
+IdentityType                              : 
+IdentityUserAssignedIdentity              : {
+                                            }
+ImmutableId                               : dcr-9a6169afee634c13baa880dee8c5eb97
+Kind                                      : 
+Location                                  : eastus
+MetadataProvisionedBy                     : 
+MetadataProvisionedByResourceId           : 
+Name                                      : myCollectionRule1
+ProvisioningState                         : Succeeded
+ResourceGroupName                         : AMCS-TEST
+StreamDeclaration                         : {
+                                            }
+SystemDataCreatedAt                       : 9/22/2023 9:18:41 AM
+SystemDataCreatedBy                       : v-jiaji@microsoft.com
+SystemDataCreatedByType                   : User
+SystemDataLastModifiedAt                  : 9/25/2023 9:55:45 AM
+SystemDataLastModifiedBy                  : v-jiaji@microsoft.com
+SystemDataLastModifiedByType              : User
+Tag                                       : {
+                                              "123": "abc"
+                                            }
+Type                                      : Microsoft.Insights/dataCollectionRules
 ```
 
-This command updates the tags property for the given data collection rule.
-
-### Example 2: Update data collection rule tags
-```powershell
-Update-AzDataCollectionRule -RuleId '/subscriptions/{subId}/resourceGroups/testdcr/providers/Microsoft.Insights/dataCollectionRules/newDcr' `
-                                   -Tag @{"tag1"="value1"; "tag2"="value2"}
-```
-
-```output
-Description       :
-DataSources       : Microsoft.Azure.Commands.Insights.OutputClasses.PSDataCollectionRuleDataSources
-Destinations      : Microsoft.Azure.Commands.Insights.OutputClasses.PSDataCollectionRuleDestinations
-DataFlows         : {Microsoft.Azure.Commands.Insights.OutputClasses.PSDataFlow}
-ProvisioningState : Succeeded
-Etag              : "{etag}"
-Id                : /subscriptions/{subId}/resourceGroups/testdcr/providers/Microsoft.Insights/dataCollectionRules/newDcr
-Name              : newDcr
-Type              : Microsoft.Insights/dataCollectionRules
-Location          : East US 2 EUAP
-Tags              : {[tag2, value2], [tag1, value1]}
-```
-
-This command updates the tags property for the given data collection rule.
-
-### Example 3: Update data collection rule tags
-```powershell
-$dcr = Get-AzDataCollectionRule -ResourceGroupName "testdcr" -Name "newDcr"
-$dcr | Update-AzDataCollectionRule -Tag @{"tag1"="value1"; "tag2"="value2"}
-```
-
-```output
-Description       :
-DataSources       : Microsoft.Azure.Commands.Insights.OutputClasses.PSDataCollectionRuleDataSources
-Destinations      : Microsoft.Azure.Commands.Insights.OutputClasses.PSDataCollectionRuleDestinations
-DataFlows         : {Microsoft.Azure.Commands.Insights.OutputClasses.PSDataFlow}
-ProvisioningState : {provState}
-Etag              : "{etag}"
-Id                : /subscriptions/{subId}/resourceGroups/testdcr/providers/Microsoft.Insights/dataCollectionRules/newDcr
-Name              : newDcr
-Type              : Microsoft.Insights/dataCollectionRules
-Location          : East US 2 EUAP
-Tags              : {[tag2, value2], [tag1, value1]}
-```
-
-This command updates the tags property for the given data collection rule.
+This command updates data collection rule.
 
 ## PARAMETERS
 
 ### -DefaultProfile
-The credentials, account, tenant, and subscription used for communication with azure
+The DefaultProfile parameter is not functional.
+Use the SubscriptionId parameter when available if executing the cmdlet against a different subscription.
 
 ```yaml
-Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer
+Type: System.Management.Automation.PSObject
 Parameter Sets: (All)
-Aliases: AzContext, AzureRmContext, AzureCredential
+Aliases: AzureRMContext, AzureCredential
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -IdentityType
+Type of managed service identity (where both SystemAssigned and UserAssigned types are allowed).
+
+```yaml
+Type: System.String
+Parameter Sets: (All)
+Aliases:
 
 Required: False
 Position: Named
@@ -122,11 +143,12 @@ Accept wildcard characters: False
 ```
 
 ### -InputObject
-PSDataCollectionRuleResource Object
+Identity Parameter
+To construct, see NOTES section for INPUTOBJECT properties and create a hash table.
 
 ```yaml
-Type: Microsoft.Azure.Commands.Insights.OutputClasses.PSDataCollectionRuleResource
-Parameter Sets: ByInputObject
+Type: Microsoft.Azure.PowerShell.Cmdlets.Monitor.DataCollection.Models.IDataCollectionRuleIdentity
+Parameter Sets: UpdateViaIdentityExpanded
 Aliases:
 
 Required: True
@@ -136,12 +158,29 @@ Accept pipeline input: True (ByValue)
 Accept wildcard characters: False
 ```
 
-### -ResourceGroupName
-The resource group name
+### -Name
+The name of the data collection rule.
+The name is case insensitive.
 
 ```yaml
 Type: System.String
-Parameter Sets: ByName
+Parameter Sets: UpdateExpanded
+Aliases: DataCollectionRuleName, RuleName
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -ResourceGroupName
+The name of the resource group.
+The name is case insensitive.
+
+```yaml
+Type: System.String
+Parameter Sets: UpdateExpanded
 Aliases:
 
 Required: True
@@ -151,38 +190,40 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -RuleId
-The resource ID of the data collection rule
+### -SubscriptionId
+The ID of the target subscription.
 
 ```yaml
 Type: System.String
-Parameter Sets: ByResourceId
-Aliases: ResourceId
+Parameter Sets: UpdateExpanded
+Aliases:
 
-Required: True
+Required: False
 Position: Named
-Default value: None
-Accept pipeline input: True (ByPropertyName)
+Default value: (Get-AzContext).Subscription.Id
+Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -RuleName
-The resource name
+### -Tag
+Resource tags.
 
 ```yaml
-Type: System.String
-Parameter Sets: ByName
-Aliases: Name
+Type: System.Collections.Hashtable
+Parameter Sets: (All)
+Aliases:
 
-Required: True
+Required: False
 Position: Named
 Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -Tag
-The tags property of the data collection rule
+### -UserAssignedIdentity
+The set of user assigned identities associated with the resource.
+The userAssignedIdentities dictionary keys will be ARM resource ids in the form: '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedIdentity/userAssignedIdentities/{identityName}.
+The dictionary values can be empty objects ({}) in requests.
 
 ```yaml
 Type: System.Collections.Hashtable
@@ -206,13 +247,14 @@ Aliases: cf
 
 Required: False
 Position: Named
-Default value: False
+Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
 ### -WhatIf
-Shows what would happen if the cmdlet runs. The cmdlet is not run.
+Shows what would happen if the cmdlet runs.
+The cmdlet is not run.
 
 ```yaml
 Type: System.Management.Automation.SwitchParameter
@@ -221,7 +263,7 @@ Aliases: wi
 
 Required: False
 Position: Named
-Default value: False
+Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
 ```
@@ -231,17 +273,12 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
-### System.String
+### Microsoft.Azure.PowerShell.Cmdlets.Monitor.DataCollection.Models.IDataCollectionRuleIdentity
 
 ## OUTPUTS
 
-### Microsoft.Azure.Commands.Insights.OutputClasses.PSDataCollectionRuleResource
+### Microsoft.Azure.PowerShell.Cmdlets.Monitor.DataCollection.Models.IDataCollectionRuleResource
 
 ## NOTES
 
 ## RELATED LINKS
-
-[New-AzDataCollectionRule](./New-AzDataCollectionRule.md)
-[Remove-AzDataCollectionRule](./Remove-AzDataCollectionRule.md)
-[Get-AzDataCollectionRule](./Get-AzDataCollectionRule.md)
-[Set-AzDataCollectionRule](./Set-AzDataCollectionRule.md)

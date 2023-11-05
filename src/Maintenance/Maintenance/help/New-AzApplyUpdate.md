@@ -14,8 +14,9 @@ Apply maintenance updates to resource
 
 ```
 New-AzApplyUpdate [-ResourceGroupName] <String> [-ProviderName] <String> [-ResourceParentType <String>]
- [-ResourceParentName <String>] [-ResourceType] <String> [-ResourceName] <String> [-AsJob]
- [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-ResourceParentName <String>] [-ResourceType] <String> [-ApplyUpdateName <String>] [-Status <String>]
+ [-ResourceName] <String> [-AsJob] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
+ [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -41,6 +42,21 @@ Type           : Microsoft.Maintenance/applyUpdates
 Apply maintenance updates to resource
 
 ## PARAMETERS
+
+### -ApplyUpdateName
+The apply update name.
+
+```yaml
+Type: System.String
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: True (ByPropertyName)
+Accept wildcard characters: False
+```
 
 ### -AsJob
 Run cmdlet in the background
@@ -157,6 +173,21 @@ Aliases:
 
 Required: True
 Position: 2
+Default value: None
+Accept pipeline input: True (ByPropertyName)
+Accept wildcard characters: False
+```
+
+### -Status
+The apply update status.
+
+```yaml
+Type: System.String
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
 Default value: None
 Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False

@@ -49,7 +49,7 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Implementation
         [ValidateChangeTypes]
         public string[] ExcludeChangeType { get; set; }
 
-        protected override PSDeploymentWhatIfCmdletParameters WhatIfParameters => new PSDeploymentWhatIfCmdletParameters(
+        protected override PSDeploymentWhatIfCmdletParameters BuildWhatIfParameters() => new PSDeploymentWhatIfCmdletParameters(
             DeploymentScopeType.Tenant,
             deploymentName: this.Name,
             location: this.Location,

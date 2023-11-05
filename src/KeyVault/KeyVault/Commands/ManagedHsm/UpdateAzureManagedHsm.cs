@@ -16,9 +16,12 @@ using Microsoft.Azure.Commands.KeyVault.Models;
 using Microsoft.Azure.Commands.KeyVault.Properties;
 using Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters;
 using Microsoft.Azure.Management.Internal.Resources.Utilities.Models;
+using Microsoft.Azure.Management.KeyVault.Models;
 using Microsoft.WindowsAzure.Commands.Utilities.Common;
 using System;
 using System.Collections;
+using System.Collections.Generic;
+using System.Linq;
 using System.Management.Automation;
 
 namespace Microsoft.Azure.Commands.KeyVault.Commands
@@ -58,6 +61,12 @@ namespace Microsoft.Azure.Commands.KeyVault.Commands
         [PSArgumentCompleter("Enabled", "Disabled")]
         public string PublicNetworkAccess { get; set; }
 
+
+        [Parameter(Mandatory = false,
+            HelpMessage = "The set of user assigned identities associated with the managed HSM. Its value will be ARM resource ids in the form: '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedIdentity/userAssignedIdentities/{identityName}'.")]
+        [AllowEmptyCollection]
+        public string[] UserAssignedIdentity { get; set; }
+
         [Parameter(Mandatory = false,
             ValueFromPipelineByPropertyName = true,
             HelpMessage = "A hash table which represents resource tags.")]
@@ -66,18 +75,7 @@ namespace Microsoft.Azure.Commands.KeyVault.Commands
 
         public override void ExecuteCmdlet()
         {
-            if (this.IsParameterBound(c => c.InputObject))
-            {
-                this.ResourceGroupName = this.InputObject.ResourceGroupName;
-                this.Name = this.InputObject.Name;
-            }
-
-            if (this.IsParameterBound(c => c.ResourceId))
-            {
-                var resourceIdentifier = new ResourceIdentifier(this.ResourceId);
-                this.ResourceGroupName = resourceIdentifier.ResourceGroupName;
-                this.Name = resourceIdentifier.ResourceName;
-            }
+            NormalizeParameterSets();
 
             PSManagedHsm existingResource = null;
             try
@@ -91,16 +89,62 @@ namespace Microsoft.Azure.Commands.KeyVault.Commands
 
             if (this.ShouldProcess(this.Name, string.Format(Resources.UpdateHsmShouldProcessMessage, this.Name, this.ResourceGroupName)))
             {
-                var result = KeyVaultManagementClient.UpdateManagedHsm(existingResource, 
-                    new VaultCreationOrUpdateParameters 
-                    {
-                        // false is not accepted
-                        EnablePurgeProtection = this.EnablePurgeProtection.IsPresent ? (true as bool?) : null,
-                        PublicNetworkAccess = this.PublicNetworkAccess,
-                        Tags = this.Tag
-                    }, null);
+                var result = KeyVaultManagementClient.UpdateManagedHsm(existingResource, PrepareParameters(existingResource), null);
                 WriteObject(result);
             }
+        }
+
+        private void NormalizeParameterSets()
+        {
+
+            if (this.IsParameterBound(c => c.InputObject))
+            {
+                this.ResourceGroupName = this.InputObject.ResourceGroupName;
+                this.Name = this.InputObject.Name;
+            }
+
+            if (this.IsParameterBound(c => c.ResourceId))
+            {
+                var resourceIdentifier = new ResourceIdentifier(this.ResourceId);
+                this.ResourceGroupName = resourceIdentifier.ResourceGroupName;
+                this.Name = resourceIdentifier.ResourceName;
+            }
+        }
+
+        private VaultCreationOrUpdateParameters PrepareParameters(PSManagedHsm hsm)
+        {
+            ManagedServiceIdentity managedServiceIdentity = null;
+
+            if (this.IsParameterBound(c => c.UserAssignedIdentity))
+            {
+                if (this.UserAssignedIdentity.Length > 0)
+                {
+                    managedServiceIdentity = new ManagedServiceIdentity(ManagedServiceIdentityType.UserAssigned)
+                    {
+                        UserAssignedIdentities = new Dictionary<string, UserAssignedIdentity>()
+                    };
+                    UserAssignedIdentity?.ForEach(id => managedServiceIdentity.UserAssignedIdentities.Add(id, new UserAssignedIdentity()));
+                    hsm.OriginalManagedHsm.Identity?.UserAssignedIdentities?.Keys?.ToList()?.ForEach(id => {
+                        if (!UserAssignedIdentity.Contains(id))
+                        {
+                            managedServiceIdentity.UserAssignedIdentities.Add(id, default(UserAssignedIdentity));
+                        }
+                    });
+                }
+                else
+                {
+                    managedServiceIdentity = new ManagedServiceIdentity(ManagedServiceIdentityType.None);
+                }
+            };
+
+            return new VaultCreationOrUpdateParameters
+            {
+                // false is not accepted
+                EnablePurgeProtection = this.EnablePurgeProtection.IsPresent ? (true as bool?) : null,
+                PublicNetworkAccess = this.PublicNetworkAccess,
+                ManagedServiceIdentity = managedServiceIdentity,
+                Tags = this.Tag
+            };
         }
     }
 }

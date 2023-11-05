@@ -324,25 +324,25 @@ namespace Microsoft.Azure.Commands.Sql.ElasticJobs.Cmdlet
         /// Gets or sets the Refresh Credential Name
         /// </summary>
         [Parameter(
-            Mandatory = true,
+            Mandatory = false,
             HelpMessage = "The refresh credential name.",
             ParameterSetName = DefaultSqlServerOrElasticPoolSet)]
         [Parameter(
-            Mandatory = true,
+            Mandatory = false,
             HelpMessage = "The refresh credential name.",
             ParameterSetName = DefaultSqlShardMapSet)]
-        [Parameter(Mandatory = true,
+        [Parameter(Mandatory = false,
             Position = 2,
             HelpMessage = "The refresh credential name.",
             ParameterSetName = TargetGroupObjectSqlServerOrElasticPoolSet)]
-        [Parameter(Mandatory = true,
+        [Parameter(Mandatory = false,
             HelpMessage = "The refresh credential name.",
             ParameterSetName = TargetGroupObjectSqlShardMapSet)]
-        [Parameter(Mandatory = true,
+        [Parameter(Mandatory = false,
             Position = 2,
             HelpMessage = "The refresh credential name.",
             ParameterSetName = ParentResourceIdSqlServerOrElasticPoolSet)]
-        [Parameter(Mandatory = true,
+        [Parameter(Mandatory = false,
             HelpMessage = "The refresh credential name.",
             ParameterSetName = ParentResourceIdSqlShardMapSet)]
         public override string RefreshCredentialName { get; set; }

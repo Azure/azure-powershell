@@ -176,7 +176,8 @@ directive:
   - where:
       subject: ^applicationfederatedidentitycredential$|GroupGraphRefMember$|grouprefmember$|groupmember$
     set:
-      preview-message: This cmdlet is using API version beta which is under preview.
+      preview-announcement:
+        preview-message: This cmdlet is using API version beta which is under preview.
 
   - where:
       subject: ^applicationfederatedidentitycredentials$

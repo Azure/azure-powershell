@@ -364,35 +364,35 @@ namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery
                     typeof(HyperVReplicaAzureReplicationDetails))
                 {
                     VmId = ((HyperVReplicaAzureReplicationDetails)replicationProtectedItemResponse
-                        .Properties.ProviderSpecificDetails).VmId;
+                        .Properties.ProviderSpecificDetails).VMId;
                 }
                 else if (replicationProtectedItemResponse.Properties.ProviderSpecificDetails
                              .GetType() ==
                          typeof(HyperVReplicaReplicationDetails))
                 {
                     VmId = ((HyperVReplicaReplicationDetails)replicationProtectedItemResponse
-                        .Properties.ProviderSpecificDetails).VmId;
+                        .Properties.ProviderSpecificDetails).VMId;
                 }
                 else if (replicationProtectedItemResponse.Properties.ProviderSpecificDetails
                              .GetType() ==
                          typeof(HyperVReplicaBlueReplicationDetails))
                 {
                     VmId = ((HyperVReplicaBlueReplicationDetails)replicationProtectedItemResponse
-                        .Properties.ProviderSpecificDetails).VmId;
+                        .Properties.ProviderSpecificDetails).VMId;
                 }
                 else if (replicationProtectedItemResponse.Properties.ProviderSpecificDetails
                         .GetType() ==
                     typeof(InMageAzureV2ReplicationDetails))
                 {
                     VmId = ((InMageAzureV2ReplicationDetails)replicationProtectedItemResponse
-                        .Properties.ProviderSpecificDetails).VmId;
+                        .Properties.ProviderSpecificDetails).VMId;
                 }
                 else if (replicationProtectedItemResponse.Properties.ProviderSpecificDetails
                         .GetType() ==
                     typeof(InMageReplicationDetails))
                 {
                     VmId = ((InMageReplicationDetails)replicationProtectedItemResponse
-                        .Properties.ProviderSpecificDetails).VmId;
+                        .Properties.ProviderSpecificDetails).VMId;
                 }
                 else if (replicationProtectedItemResponse.Properties.ProviderSpecificDetails.GetType() == typeof(A2AReplicationDetails))
                 {

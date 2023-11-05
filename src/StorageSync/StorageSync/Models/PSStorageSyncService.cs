@@ -12,6 +12,7 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
+using Microsoft.Azure.Management.StorageSync.Models;
 using Microsoft.WindowsAzure.Commands.Common.Attributes;
 using System.Collections.Generic;
 
@@ -63,5 +64,12 @@ namespace Microsoft.Azure.Commands.StorageSync.Models
         /// </summary>
         /// <value>The tags.</value>
         public string ProvisioningState { get; set; }
+
+        /// <summary>
+        /// Gets or sets the SystemData.
+        /// </summary>
+        /// <value>The SystemData.</value>
+        public PSSystemData SystemData { get; set; }
+
     }
 }

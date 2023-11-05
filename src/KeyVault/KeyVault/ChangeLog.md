@@ -18,6 +18,7 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
+* Supported user assigned identity for Managed HSM in `New/Update-AzKeyVaultManagedHsm` 
 * [Breaking Change] Changed parameter `SoftDeleteRetentionInDays` in `New-AzKeyVaultManagedHsm` to mandatory.
 * Upgraded Azure.Core to 1.35.0.
 

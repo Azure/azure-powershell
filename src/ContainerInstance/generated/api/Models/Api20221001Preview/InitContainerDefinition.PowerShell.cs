@@ -175,25 +175,25 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ContainerInstance.Models.Api2022100
             {
                 ((Microsoft.Azure.PowerShell.Cmdlets.ContainerInstance.Models.Api20221001Preview.IInitContainerDefinitionInternal)this).CurrentStateDetailStatus = (string) content.GetValueForProperty("CurrentStateDetailStatus",((Microsoft.Azure.PowerShell.Cmdlets.ContainerInstance.Models.Api20221001Preview.IInitContainerDefinitionInternal)this).CurrentStateDetailStatus, global::System.Convert.ToString);
             }
-            if (content.Contains("PreviouState"))
+            if (content.Contains("PreviousState"))
             {
-                ((Microsoft.Azure.PowerShell.Cmdlets.ContainerInstance.Models.Api20221001Preview.IInitContainerDefinitionInternal)this).PreviouState = (string) content.GetValueForProperty("PreviouState",((Microsoft.Azure.PowerShell.Cmdlets.ContainerInstance.Models.Api20221001Preview.IInitContainerDefinitionInternal)this).PreviouState, global::System.Convert.ToString);
+                ((Microsoft.Azure.PowerShell.Cmdlets.ContainerInstance.Models.Api20221001Preview.IInitContainerDefinitionInternal)this).PreviousState = (string) content.GetValueForProperty("PreviousState",((Microsoft.Azure.PowerShell.Cmdlets.ContainerInstance.Models.Api20221001Preview.IInitContainerDefinitionInternal)this).PreviousState, global::System.Convert.ToString);
             }
-            if (content.Contains("PreviouStateStartTime"))
+            if (content.Contains("PreviousStateStartTime"))
             {
-                ((Microsoft.Azure.PowerShell.Cmdlets.ContainerInstance.Models.Api20221001Preview.IInitContainerDefinitionInternal)this).PreviouStateStartTime = (global::System.DateTime?) content.GetValueForProperty("PreviouStateStartTime",((Microsoft.Azure.PowerShell.Cmdlets.ContainerInstance.Models.Api20221001Preview.IInitContainerDefinitionInternal)this).PreviouStateStartTime, (v) => v is global::System.DateTime _v ? _v : global::System.Xml.XmlConvert.ToDateTime( v.ToString() , global::System.Xml.XmlDateTimeSerializationMode.Unspecified));
+                ((Microsoft.Azure.PowerShell.Cmdlets.ContainerInstance.Models.Api20221001Preview.IInitContainerDefinitionInternal)this).PreviousStateStartTime = (global::System.DateTime?) content.GetValueForProperty("PreviousStateStartTime",((Microsoft.Azure.PowerShell.Cmdlets.ContainerInstance.Models.Api20221001Preview.IInitContainerDefinitionInternal)this).PreviousStateStartTime, (v) => v is global::System.DateTime _v ? _v : global::System.Xml.XmlConvert.ToDateTime( v.ToString() , global::System.Xml.XmlDateTimeSerializationMode.Unspecified));
             }
-            if (content.Contains("PreviouStateExitCode"))
+            if (content.Contains("PreviousStateExitCode"))
             {
-                ((Microsoft.Azure.PowerShell.Cmdlets.ContainerInstance.Models.Api20221001Preview.IInitContainerDefinitionInternal)this).PreviouStateExitCode = (int?) content.GetValueForProperty("PreviouStateExitCode",((Microsoft.Azure.PowerShell.Cmdlets.ContainerInstance.Models.Api20221001Preview.IInitContainerDefinitionInternal)this).PreviouStateExitCode, (__y)=> (int) global::System.Convert.ChangeType(__y, typeof(int)));
+                ((Microsoft.Azure.PowerShell.Cmdlets.ContainerInstance.Models.Api20221001Preview.IInitContainerDefinitionInternal)this).PreviousStateExitCode = (int?) content.GetValueForProperty("PreviousStateExitCode",((Microsoft.Azure.PowerShell.Cmdlets.ContainerInstance.Models.Api20221001Preview.IInitContainerDefinitionInternal)this).PreviousStateExitCode, (__y)=> (int) global::System.Convert.ChangeType(__y, typeof(int)));
             }
-            if (content.Contains("PreviouStateFinishTime"))
+            if (content.Contains("PreviousStateFinishTime"))
             {
-                ((Microsoft.Azure.PowerShell.Cmdlets.ContainerInstance.Models.Api20221001Preview.IInitContainerDefinitionInternal)this).PreviouStateFinishTime = (global::System.DateTime?) content.GetValueForProperty("PreviouStateFinishTime",((Microsoft.Azure.PowerShell.Cmdlets.ContainerInstance.Models.Api20221001Preview.IInitContainerDefinitionInternal)this).PreviouStateFinishTime, (v) => v is global::System.DateTime _v ? _v : global::System.Xml.XmlConvert.ToDateTime( v.ToString() , global::System.Xml.XmlDateTimeSerializationMode.Unspecified));
+                ((Microsoft.Azure.PowerShell.Cmdlets.ContainerInstance.Models.Api20221001Preview.IInitContainerDefinitionInternal)this).PreviousStateFinishTime = (global::System.DateTime?) content.GetValueForProperty("PreviousStateFinishTime",((Microsoft.Azure.PowerShell.Cmdlets.ContainerInstance.Models.Api20221001Preview.IInitContainerDefinitionInternal)this).PreviousStateFinishTime, (v) => v is global::System.DateTime _v ? _v : global::System.Xml.XmlConvert.ToDateTime( v.ToString() , global::System.Xml.XmlDateTimeSerializationMode.Unspecified));
             }
-            if (content.Contains("PreviouStateDetailStatus"))
+            if (content.Contains("PreviousStateDetailStatus"))
             {
-                ((Microsoft.Azure.PowerShell.Cmdlets.ContainerInstance.Models.Api20221001Preview.IInitContainerDefinitionInternal)this).PreviouStateDetailStatus = (string) content.GetValueForProperty("PreviouStateDetailStatus",((Microsoft.Azure.PowerShell.Cmdlets.ContainerInstance.Models.Api20221001Preview.IInitContainerDefinitionInternal)this).PreviouStateDetailStatus, global::System.Convert.ToString);
+                ((Microsoft.Azure.PowerShell.Cmdlets.ContainerInstance.Models.Api20221001Preview.IInitContainerDefinitionInternal)this).PreviousStateDetailStatus = (string) content.GetValueForProperty("PreviousStateDetailStatus",((Microsoft.Azure.PowerShell.Cmdlets.ContainerInstance.Models.Api20221001Preview.IInitContainerDefinitionInternal)this).PreviousStateDetailStatus, global::System.Convert.ToString);
             }
             AfterDeserializeDictionary(content);
         }
@@ -276,25 +276,25 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ContainerInstance.Models.Api2022100
             {
                 ((Microsoft.Azure.PowerShell.Cmdlets.ContainerInstance.Models.Api20221001Preview.IInitContainerDefinitionInternal)this).CurrentStateDetailStatus = (string) content.GetValueForProperty("CurrentStateDetailStatus",((Microsoft.Azure.PowerShell.Cmdlets.ContainerInstance.Models.Api20221001Preview.IInitContainerDefinitionInternal)this).CurrentStateDetailStatus, global::System.Convert.ToString);
             }
-            if (content.Contains("PreviouState"))
+            if (content.Contains("PreviousState"))
             {
-                ((Microsoft.Azure.PowerShell.Cmdlets.ContainerInstance.Models.Api20221001Preview.IInitContainerDefinitionInternal)this).PreviouState = (string) content.GetValueForProperty("PreviouState",((Microsoft.Azure.PowerShell.Cmdlets.ContainerInstance.Models.Api20221001Preview.IInitContainerDefinitionInternal)this).PreviouState, global::System.Convert.ToString);
+                ((Microsoft.Azure.PowerShell.Cmdlets.ContainerInstance.Models.Api20221001Preview.IInitContainerDefinitionInternal)this).PreviousState = (string) content.GetValueForProperty("PreviousState",((Microsoft.Azure.PowerShell.Cmdlets.ContainerInstance.Models.Api20221001Preview.IInitContainerDefinitionInternal)this).PreviousState, global::System.Convert.ToString);
             }
-            if (content.Contains("PreviouStateStartTime"))
+            if (content.Contains("PreviousStateStartTime"))
             {
-                ((Microsoft.Azure.PowerShell.Cmdlets.ContainerInstance.Models.Api20221001Preview.IInitContainerDefinitionInternal)this).PreviouStateStartTime = (global::System.DateTime?) content.GetValueForProperty("PreviouStateStartTime",((Microsoft.Azure.PowerShell.Cmdlets.ContainerInstance.Models.Api20221001Preview.IInitContainerDefinitionInternal)this).PreviouStateStartTime, (v) => v is global::System.DateTime _v ? _v : global::System.Xml.XmlConvert.ToDateTime( v.ToString() , global::System.Xml.XmlDateTimeSerializationMode.Unspecified));
+                ((Microsoft.Azure.PowerShell.Cmdlets.ContainerInstance.Models.Api20221001Preview.IInitContainerDefinitionInternal)this).PreviousStateStartTime = (global::System.DateTime?) content.GetValueForProperty("PreviousStateStartTime",((Microsoft.Azure.PowerShell.Cmdlets.ContainerInstance.Models.Api20221001Preview.IInitContainerDefinitionInternal)this).PreviousStateStartTime, (v) => v is global::System.DateTime _v ? _v : global::System.Xml.XmlConvert.ToDateTime( v.ToString() , global::System.Xml.XmlDateTimeSerializationMode.Unspecified));
             }
-            if (content.Contains("PreviouStateExitCode"))
+            if (content.Contains("PreviousStateExitCode"))
             {
-                ((Microsoft.Azure.PowerShell.Cmdlets.ContainerInstance.Models.Api20221001Preview.IInitContainerDefinitionInternal)this).PreviouStateExitCode = (int?) content.GetValueForProperty("PreviouStateExitCode",((Microsoft.Azure.PowerShell.Cmdlets.ContainerInstance.Models.Api20221001Preview.IInitContainerDefinitionInternal)this).PreviouStateExitCode, (__y)=> (int) global::System.Convert.ChangeType(__y, typeof(int)));
+                ((Microsoft.Azure.PowerShell.Cmdlets.ContainerInstance.Models.Api20221001Preview.IInitContainerDefinitionInternal)this).PreviousStateExitCode = (int?) content.GetValueForProperty("PreviousStateExitCode",((Microsoft.Azure.PowerShell.Cmdlets.ContainerInstance.Models.Api20221001Preview.IInitContainerDefinitionInternal)this).PreviousStateExitCode, (__y)=> (int) global::System.Convert.ChangeType(__y, typeof(int)));
             }
-            if (content.Contains("PreviouStateFinishTime"))
+            if (content.Contains("PreviousStateFinishTime"))
             {
-                ((Microsoft.Azure.PowerShell.Cmdlets.ContainerInstance.Models.Api20221001Preview.IInitContainerDefinitionInternal)this).PreviouStateFinishTime = (global::System.DateTime?) content.GetValueForProperty("PreviouStateFinishTime",((Microsoft.Azure.PowerShell.Cmdlets.ContainerInstance.Models.Api20221001Preview.IInitContainerDefinitionInternal)this).PreviouStateFinishTime, (v) => v is global::System.DateTime _v ? _v : global::System.Xml.XmlConvert.ToDateTime( v.ToString() , global::System.Xml.XmlDateTimeSerializationMode.Unspecified));
+                ((Microsoft.Azure.PowerShell.Cmdlets.ContainerInstance.Models.Api20221001Preview.IInitContainerDefinitionInternal)this).PreviousStateFinishTime = (global::System.DateTime?) content.GetValueForProperty("PreviousStateFinishTime",((Microsoft.Azure.PowerShell.Cmdlets.ContainerInstance.Models.Api20221001Preview.IInitContainerDefinitionInternal)this).PreviousStateFinishTime, (v) => v is global::System.DateTime _v ? _v : global::System.Xml.XmlConvert.ToDateTime( v.ToString() , global::System.Xml.XmlDateTimeSerializationMode.Unspecified));
             }
-            if (content.Contains("PreviouStateDetailStatus"))
+            if (content.Contains("PreviousStateDetailStatus"))
             {
-                ((Microsoft.Azure.PowerShell.Cmdlets.ContainerInstance.Models.Api20221001Preview.IInitContainerDefinitionInternal)this).PreviouStateDetailStatus = (string) content.GetValueForProperty("PreviouStateDetailStatus",((Microsoft.Azure.PowerShell.Cmdlets.ContainerInstance.Models.Api20221001Preview.IInitContainerDefinitionInternal)this).PreviouStateDetailStatus, global::System.Convert.ToString);
+                ((Microsoft.Azure.PowerShell.Cmdlets.ContainerInstance.Models.Api20221001Preview.IInitContainerDefinitionInternal)this).PreviousStateDetailStatus = (string) content.GetValueForProperty("PreviousStateDetailStatus",((Microsoft.Azure.PowerShell.Cmdlets.ContainerInstance.Models.Api20221001Preview.IInitContainerDefinitionInternal)this).PreviousStateDetailStatus, global::System.Convert.ToString);
             }
             AfterDeserializePSObject(content);
         }

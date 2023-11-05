@@ -20,6 +20,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Monitor.ActivityLogAlert.Cmdlets
     [global::System.Management.Automation.OutputType(typeof(Microsoft.Azure.PowerShell.Cmdlets.Monitor.ActivityLogAlert.Models.Api20201001.IActivityLogAlertResource))]
     [global::Microsoft.Azure.PowerShell.Cmdlets.Monitor.ActivityLogAlert.Description(@"Updates 'tags' and 'enabled' fields in an existing Alert rule. This method is used to update the Alert rule tags, and to enable or disable the Alert rule. To update other fields use CreateOrUpdate operation.")]
     [global::Microsoft.Azure.PowerShell.Cmdlets.Monitor.ActivityLogAlert.Generated]
+    [global::Microsoft.Azure.PowerShell.Cmdlets.Monitor.ActivityLogAlert.HttpPath(Path = "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Insights/activityLogAlerts/{activityLogAlertName}", ApiVersion = "2020-10-01")]
     public partial class UpdateAzActivityLogAlert_UpdateViaIdentityExpanded : global::System.Management.Automation.PSCmdlet,
         Microsoft.Azure.PowerShell.Cmdlets.Monitor.ActivityLogAlert.Runtime.IEventListener
     {

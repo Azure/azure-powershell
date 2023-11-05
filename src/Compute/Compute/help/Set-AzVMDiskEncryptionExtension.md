@@ -110,7 +110,7 @@ $params | Set-AzVMDiskEncryptionExtension
 
 This example sends parameters using pipelined input to enable encryption on a VM, without specifying AD credentials.
 
-### Example 3: Enable encryption using Azure AD Client ID and Client Secret
+### Example 3: Enable encryption using Microsoft Entra Client ID and Client Secret
 ```powershell
 $RGName = "MyResourceGroup"
 $VMName = "MyTestVM"
@@ -124,9 +124,9 @@ $VolumeType = "All"
 Set-AzVMDiskEncryptionExtension -ResourceGroupName $RGName -VMName $VMName -AadClientID $AADClientID -AadClientSecret $AADClientSecret -DiskEncryptionKeyVaultUrl $DiskEncryptionKeyVaultUrl -DiskEncryptionKeyVaultId $KeyVaultResourceId -VolumeType $VolumeType
 ```
 
-This example uses Azure AD client ID and client secret to enable encryption on a VM.
+This example uses Microsoft Entra client ID and client secret to enable encryption on a VM.
 
-### Example 4: Enable encryption using Azure AD client ID and client certification thumbprint
+### Example 4: Enable encryption using Microsoft Entra client ID and client certification thumbprint
 ```powershell
 $RGName = "MyResourceGroup"
 $VMName = "MyTestVM"
@@ -177,9 +177,9 @@ Update-AzVM -VM $VM -ResourceGroupName $RGName
 Set-AzVMDiskEncryptionExtension -ResourceGroupName $RGName -VMName $VMName -AadClientID $AADClientID -AadClientCertThumbprint $AADClientCertThumbprint -DiskEncryptionKeyVaultUrl $DiskEncryptionKeyVaultUrl -DiskEncryptionKeyVaultId $KeyVaultResourceId -VolumeType $VolumeType
 ```
 
-This example uses Azure AD client ID and client certification thumbprints to enable encryption on a VM.
+This example uses Microsoft Entra client ID and client certification thumbprints to enable encryption on a VM.
 
-### Example 5: Enable encryption using Azure AD client ID, client secret, and wrap disk encryption key by using key encryption key
+### Example 5: Enable encryption using Microsoft Entra client ID, client secret, and wrap disk encryption key by using key encryption key
 ```powershell
 $RGName = "MyResourceGroup"
 $VMName = "MyTestVM"
@@ -200,9 +200,9 @@ $KeyEncryptionKeyUrl = $KEK.Key.kid
 Set-AzVMDiskEncryptionExtension -ResourceGroupName $RGName -VMName $VMName -AadClientID $AADClientID -AadClientSecret $AADClientSecret -DiskEncryptionKeyVaultUrl $DiskEncryptionKeyVaultUrl -DiskEncryptionKeyVaultId $KeyVaultResourceId -KeyEncryptionKeyUrl $KeyEncryptionKeyUrl -KeyEncryptionKeyVaultId $KeyVaultResourceId -VolumeType $VolumeType
 ```
 
-This example uses Azure AD client ID and client secret to enable encryption on a VM, and wraps the disk encryption key using a key encryption key.
+This example uses Microsoft Entra client ID and client secret to enable encryption on a VM, and wraps the disk encryption key using a key encryption key.
 
-### Example 6: Enable encryption using Azure AD client ID, client cert thumbprint, and wrap disk encryptionkey by using key encryption key
+### Example 6: Enable encryption using Microsoft Entra client ID, client cert thumbprint, and wrap disk encryptionkey by using key encryption key
 ```powershell
 $RGName = "MyResourceGroup"
 $VMName = "MyTestVM"
@@ -255,13 +255,13 @@ Update-AzVM -VM $VM -ResourceGroupName $RGName
 Set-AzVMDiskEncryptionExtension -ResourceGroupName $RGname -VMName $VMName -AadClientID $AADClientID -AadClientCertThumbprint $AADClientCertThumbprint -DiskEncryptionKeyVaultUrl $DiskEncryptionKeyVaultUrl -DiskEncryptionKeyVaultId $KeyVaultResourceId -KeyEncryptionKeyUrl $KeyEncryptionKeyUrl -KeyEncryptionKeyVaultId $KeyVaultResourceId -VolumeType $VolumeType
 ```
 
-This example uses Azure AD client ID and client cert thumbprint to enable encryption on a VM, and wraps the disk encryption key using a key encryption key.
+This example uses Microsoft Entra client ID and client cert thumbprint to enable encryption on a VM, and wraps the disk encryption key using a key encryption key.
 
 ## PARAMETERS
 
 ### -AadClientCertThumbprint
-Specifies the thumbprint of the AzureActive Directory (Azure AD) application client certificate that has permissions to write secrets to **KeyVault**.
-As a prerequisite, the Azure AD client certificate must be previously deployed to the virtual machine's local computer `my` certificate store.
+Specifies the thumbprint of the Microsoft Entra application client certificate that has permissions to write secrets to **KeyVault**.
+As a prerequisite, the Microsoft Entra client certificate must be previously deployed to the virtual machine's local computer `my` certificate store.
 The Add-AzVMSecret cmdlet can be used to deploy a certificate to a virtual machine in Azure.
 For more details, see the **Add-AzVMSecret** cmdlet help.
 The certificate must be previously deployed to the virtual machine local computer my certificate store.
@@ -279,7 +279,7 @@ Accept wildcard characters: False
 ```
 
 ### -AadClientID
-Specifies the client ID of the Azure AD application that has permissions to write secrets to **KeyVault**.
+Specifies the client ID of the Microsoft Entra application that has permissions to write secrets to **KeyVault**.
 
 ```yaml
 Type: System.String
@@ -294,7 +294,7 @@ Accept wildcard characters: False
 ```
 
 ### -AadClientSecret
-Specifies the client secret of the Azure AD application that has permissions to write secrets to **KeyVault**.
+Specifies the client secret of the Microsoft Entra application that has permissions to write secrets to **KeyVault**.
 
 ```yaml
 Type: System.String
@@ -478,7 +478,7 @@ Accept wildcard characters: False
 ```
 
 ### -Migrate
-Initiates migration of the VM to latest Azure Disk Encryption extension version (ADE without AAD credentials).
+Initiates migration of the VM to latest Azure Disk Encryption extension version (ADE without Microsoft Entra credentials).
 
 ```yaml
 Type: System.Management.Automation.SwitchParameter
@@ -493,7 +493,7 @@ Accept wildcard characters: False
 ```
 
 ### -MigrationRecovery
-Initiates migration recovery for failures during migration of ADE extension version with AAD to ADE extension version without AAD.
+Initiates migration recovery for failures during migration of ADE extension version with Microsoft Entra ID to ADE extension version without Microsoft Entra ID.
 
 ```yaml
 Type: System.Management.Automation.SwitchParameter
@@ -689,5 +689,3 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 [Get-AzVMDiskEncryptionStatus](./Get-AzVMDiskEncryptionStatus.md)
 
 [Remove-AzVMDiskEncryptionExtension](./Remove-AzVMDiskEncryptionExtension.md)
-
-

@@ -34,6 +34,20 @@ namespace Microsoft.Azure.Commands.Sql.Test.ScenarioTests
             TestRunner.RunTestScript("Test-CreateAgent");
         }
 
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void TestAgentCreateWithSku()
+        {
+            TestRunner.RunTestScript("Test-CreateAgentWithSku");
+        }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void TestAgentCreateWithIdentity()
+        {
+            TestRunner.RunTestScript("Test-CreateAgentWithIdentity");
+        }
+
         #endregion
 
         #region Update Tests

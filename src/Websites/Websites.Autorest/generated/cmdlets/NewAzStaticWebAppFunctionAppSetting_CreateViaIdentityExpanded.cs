@@ -16,6 +16,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Websites.Cmdlets
     [global::System.Management.Automation.OutputType(typeof(Microsoft.Azure.PowerShell.Cmdlets.Websites.Models.Api20201201.IStringDictionary))]
     [global::Microsoft.Azure.PowerShell.Cmdlets.Websites.Description(@"Description for Creates or updates the function app settings of a static site.")]
     [global::Microsoft.Azure.PowerShell.Cmdlets.Websites.Generated]
+    [global::Microsoft.Azure.PowerShell.Cmdlets.Websites.HttpPath(Path = "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/staticSites/{name}/config/functionappsettings", ApiVersion = "2020-12-01")]
     public partial class NewAzStaticWebAppFunctionAppSetting_CreateViaIdentityExpanded : global::System.Management.Automation.PSCmdlet,
         Microsoft.Azure.PowerShell.Cmdlets.Websites.Runtime.IEventListener
     {

@@ -26,6 +26,8 @@
 * [Breaking Change] Added defaulting logic for VM and VMSS creation to set SecurityType to TrustedLaunch and SecureBootEnabled and VTpmEnalbed to true when those are not set by the user.
 * [Breaking Change] Added defaulting logic for Disk creation to default to TrustedLaunch when able. Allows the user to turn this off by setting the SecurityType to Standard.
 * Removed the GuestAttestation extension installation by default for VM and VMSS resources. The feature team wants this rolled back.
+* Added new parameters `-ElasticSanResourceId` and `-OptimizedForFrequentAttach` to `New-AzDiskConfig` cmdlet.
+* Added new parameter `-ElasticSanResourceId` to `New-AzSnapshotConfig` cmdlet.
 
 ## Version 6.3.0
 * Added `-Hibernate` switch parameter to `Stop-AzVmss` default parameter set. 

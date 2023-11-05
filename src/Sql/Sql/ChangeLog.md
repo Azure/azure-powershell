@@ -18,7 +18,14 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
+* Added new parameters to `New-AzSqlDatabaseFailoverGroup`, `Set-AzSqlDatabaseFailoverGroup`
+    - PartnerServers
+    - ReadOnlyEndpointTargetServer
 * Added `UseFreeLimit` and `FreeLimitExhaustionBehavior` parameters to `New-AzSqlDatabase`, `Get-AzSqlDatabase`, `Set-AzSqlDatabase`
+* Added new cmdlets for Elastic Job Private Endpoints `Get-AzSqlElasticJobPrivateEndpoint`, `New-AzSqlElasticJobPrivateEndpoint`, `Remove-AzSqlElasticJobPrivateEndpoint`
+* Added new parameters `WorkerCount`, `SkuName`, `Identity` to `AzSqlElasticJobAgent` cmdlets
+* Added support for optional SQL auth for Elastic Job Agent cmdlets
+*   - The following parameters are now optional: `CredentialName`, `OutputCredentialName`, `RefreshCredentialName`
 
 ## Version 4.10.0
 * Fixed cmdlets to use 2018-06-01-preview api version

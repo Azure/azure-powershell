@@ -50,5 +50,12 @@ namespace Microsoft.Azure.Commands.Security.Test.ScenarioTests
         {
             TestRunner.RunTestScript("Set-AzureRmSecurityPricing-SubscriptionLevelResource");
         }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void SetSubscriptionLevelResourceWithSubplanAndExtensions()
+        {
+            TestRunner.RunTestScript("Set-AzureRmSecurityPricing-SubscriptionLevelResource-WithSubplanAndExtensions");
+        }
     }
 }
