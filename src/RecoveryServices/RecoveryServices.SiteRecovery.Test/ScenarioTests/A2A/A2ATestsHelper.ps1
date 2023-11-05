@@ -215,7 +215,7 @@ function createAzureVmInProximityPlacementgroup{
 		$VMLocation = getPrimaryLocation
 		$VMName = getAzureVmName
 		$domain = "domain"+ $seed
-        $stnd = "SecurityType"
+        $stnd = "Standard"
         $password=$VMLocalAdminSecurePassword|ConvertTo-SecureString -AsPlainText -Force
         $Credential = New-Object System.Management.Automation.PSCredential ($VMLocalAdminUser, $password);
 		$ppg =  New-AzProximityPlacementGroup -ResourceGroupName $vmName -Name $VMName -Location $VMLocation
