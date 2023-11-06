@@ -423,7 +423,6 @@ Accept wildcard characters: False
 
 ### -VirtualMachineScaleSetId
 Id for the Virtual Machine ScaleSet that the virtual machine should be updated to.
-```yaml
 
 ```yaml
 Type: System.String
