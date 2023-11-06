@@ -17,7 +17,7 @@ function setupEnv() {
     # Preload subscriptionId and tenant from context, which will be used in test
     # as default. You could change them if needed.
     # For any resources you created for test, you should add it to $env here.
-    $env = Get-Content "envVariables.json" | ConvertFrom-Json
+    $env = Get-Content -Path (Join-Path $PSScriptRoot "envVariables.json") | ConvertFrom-Json
 
     $envFile = 'env.json'
     if ($TestMode -eq 'live') {

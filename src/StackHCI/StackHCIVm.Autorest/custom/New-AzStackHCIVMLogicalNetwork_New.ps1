@@ -191,7 +191,7 @@ function New-AzStackHCIVmLogicalNetwork {
         Confirm-Subnets -Subnets $Subnet
   
       } else{
-          $Subnet = @{}
+          $SubnetNew = @{}
           if ($IpAllocationMethod){
             if ($IpAllocationMethod.ToLower() -ne "dynamic" -and $IpAllocationMethod.ToLower() -ne "static"){
               Write-Error "Invalid Ip Allocation method provided: $IpAllocationMethod. Accepted values are 'dynamic' or 'static'" -ErrorAction Stop
@@ -199,13 +199,13 @@ function New-AzStackHCIVmLogicalNetwork {
             $IpAllocationMethod = $IpAllocationMethod.ToLower()
             
             if ($IpAllocationMethod -eq "static"){
-              $Subnet["IPAllocationMethod"] = 'Static'
+              $SubnetNew["IPAllocationMethod"] = 'Static'
               if (-Not $AddressPrefix){
                 Write-Error "Invalid Configuration for Static IpAllocationMethod. AddressPrefix are required for Static IpAllocationMethod." -ErrorAction Stop
               }
             }
           } else {
-            $Subnet["IPAllocationMethod"] = 'Dynamic'
+            $SubnetNew["IPAllocationMethod"] = 'Dynamic'
           }
   
           if ($IpPoolStart -and $IpPoolEnd){
@@ -224,28 +224,28 @@ function New-AzStackHCIVmLogicalNetwork {
               }
               $IpPool['Type'] = $IpPoolType
             }
-            $Subnet["IPPool"] = @($IpPool)
+            $SubnetNew["IPPool"] = @($IpPool)
           } elseif ($IpPoolStart -or $IpPoolEnd){
               Write-Error "Both IpPoolStart and IpPoolEnd must be specified together." -ErrorAction Stop
           }
   
           if ($IpPool){
             Confirm-IpPools -IpPools $IpPool
-            $Subnet["IPPool"] = $IpPool
+            $SubnetNew["IPPool"] = $IpPool
           }
   
           if($Vlan){
             if ($Vlan -gt 4094 -or $Vlan -lt 1){
               Write-Error "Invalid value for Vlan : $Vlan. Valid range is 1-4094" -ErrorAction Stop
             }
-            $Subnet["Vlan"] = $Vlan
+            $SubnetNew["Vlan"] = $Vlan
           }
   
           if ($SubnetName){
             if ($SubnetName -notmatch $subnetNameRegex){
                Write-Error "Invalid SubnetName: $SubnetName. The name must start with an alphanumeric character, contain all alphanumeric characters or '-' or '_' or '.' and end with an alphanumeric character or '_'. The max length is 80 characters." -ErrorAction Stop
             }
-            $Subnet["Name"] = $SubnetName
+            $SubnetNew["Name"] = $SubnetName
           }
   
           if ($AddressPrefix){
@@ -256,16 +256,16 @@ function New-AzStackHCIVmLogicalNetwork {
             }
   
             if ($AddressPrefix.length -eq 1){
-              $Subnet["AddressPrefix"] = $AddressPrefix[0]
+              $SubnetNew["AddressPrefix"] = $AddressPrefix[0]
             } else {
-              $Subnet["AddressPrefixes"] = $AddressPrefix
+              $SubnetNew["AddressPrefixes"] = $AddressPrefix
             }
   
           }
   
           if ($Route){
             Confirm-Routes -Routes $Route
-            $Subnet["Route"] = $Route
+            $SubnetNew["Route"] = $Route
   
           }
         
@@ -278,7 +278,7 @@ function New-AzStackHCIVmLogicalNetwork {
           $null = $PSBoundParameters.Remove("SubnetName")
           $null = $PSBoundParameters.Remove("IpPool")
           $null = $PSBoundParameters.Remove("Route")
-          $PSBoundParameters.Add("Subnet", $Subnet)
+          $PSBoundParameters.Add("Subnet", $SubnetNew)
   
       } 
      
