@@ -121,7 +121,7 @@ param(
     [Microsoft.Azure.PowerShell.Cmdlets.StackHCIVm.Category('Body')]
     [System.Collections.Hashtable[]]
     # A list of IPConfigurations of the network interface.
-    ${IpConfigurations},
+    ${IpConfiguration},
 
     [Parameter()]
     [Microsoft.Azure.PowerShell.Cmdlets.StackHCIVm.Category('Body')]
@@ -152,9 +152,7 @@ param(
   }
 
 
-  if ($IpConfigurations){
-    $null = $PSBoundParameters.Remove("IPConfigurations")
-    $PSBoundParameters.Add("IPConfiguration", $IpConfigurations)
+  if ($IpConfiguration){
 
   } else {
     $IpConfig = @{}
