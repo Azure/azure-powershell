@@ -1,6 +1,6 @@
 ### Example 1: Update a Logical Network.
 ```powershell
-PS C:\> Update-AzStackHCIVmVLogicalNetwork  -Name "testLnet" -ResourceGroupName "test-rg" -Tags @{TagName = TagValue }
+PS C:\> Update-AzStackHCIVmLogicalNetwork  -Name "testLnet" -ResourceGroupName "test-rg" -Tag '@{TagName = TagValue }'
 ```
 
 ```output

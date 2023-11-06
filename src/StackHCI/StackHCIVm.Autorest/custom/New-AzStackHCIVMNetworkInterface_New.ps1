@@ -20,14 +20,6 @@ Please note some properties can be set only during network interface creation.
 .Description
 The operation to create or update a network interface.
 Please note some properties can be set only during network interface creation.
-.Example
-PS C:\> {{ Add code here }}
-
-{{ Add output here }}
-.Example
-PS C:\> {{ Add code here }}
-
-{{ Add output here }}
 
 .Outputs
 Microsoft.Azure.PowerShell.Cmdlets.StackHCIVm.Models.Api20230901Preview.INetworkInterfaces

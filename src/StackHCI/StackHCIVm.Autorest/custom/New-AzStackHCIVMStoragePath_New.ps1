@@ -21,10 +21,6 @@ Please note some properties can be set only during storage container creation.
 .Description
 The operation to create or update a storage container.
 Please note some properties can be set only during storage container creation.
-.Example
-{{ Add code here }}
-.Example
-{{ Add code here }}
 
 .Outputs
 Microsoft.Azure.PowerShell.Cmdlets.StackHCIVm.Models.Api20230901Preview.IStorageContainers

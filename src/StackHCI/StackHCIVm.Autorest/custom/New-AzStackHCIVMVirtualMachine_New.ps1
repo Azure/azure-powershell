@@ -21,10 +21,6 @@ Please note some properties can be set only during virtual machine creation.
 .Description
 The operation to create or update a virtual machine.
 Please note some properties can be set only during virtual machine creation.
-.Example
-{{ Add code here }}
-.Example
-{{ Add code here }}
 
 .Outputs
 Microsoft.Azure.PowerShell.Cmdlets.StackHCIVm.Models.Api20230901Preview.IVirtualMachineInstance

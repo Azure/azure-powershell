@@ -18,10 +18,6 @@
 The operation to delete a virtual hard disk.
 .Description
 The operation to delete a virtual hard disk.
-.Example
-{{ Add code here }}
-.Example
-{{ Add code here }}
 
 .Outputs
 System.Boolean

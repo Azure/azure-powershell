@@ -5,9 +5,6 @@ The operation to update an image.
 .Description
 The operation to update an image.
 Please note some properties can be set only during image creation.
-.Example
-
-
 
 .Outputs
 Microsoft.Azure.PowerShell.Cmdlets.StackHCIVm.Models.Api20221215Preview.IGalleryImages

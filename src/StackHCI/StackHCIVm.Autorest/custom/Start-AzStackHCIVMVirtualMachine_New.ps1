@@ -18,10 +18,6 @@
 The operation to start a virtual machine instance.
 .Description
 The operation to start a virtual machine instance.
-.Example
-{{ Add code here }}
-.Example
-{{ Add code here }}
 
 .Outputs
 Microsoft.Azure.PowerShell.Cmdlets.StackHCIVm.Models.Api20230901Preview.IVirtualMachineInstance

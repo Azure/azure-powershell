@@ -1,6 +1,6 @@
 ### Example 1:  Get a Logical Network
 ```powershell
-PS C:\> Get-AzStackHCIVmLogicalNetwork -Name "testLnet" -ResourceGroupName "test-rg" 
+PS C:\> Get-AzStackHCIVmLogicalNetwork -Name 'testLnet' -ResourceGroupName 'test-rg' 
 ```
 ```output
 Name            ResourceGroupName

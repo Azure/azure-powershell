@@ -32,7 +32,7 @@ The operation to delete a network interface from a  virtual machine.
 
 ### Example 1: Removes a Network Interface from a  Virtual Machine
 ```powershell
-PS C:\> Remove-AzStackHCIVmVirtualMachineNetworkInterface  -Name "testVm" -ResourceGroupName "test-rg"  -NicNames "testNic"
+PS C:\> Remove-AzStackHCIVmVirtualMachineNetworkInterface  -Name "testVm" -ResourceGroupName "test-rg"  -NicName 'testNic'
 
 ```
 

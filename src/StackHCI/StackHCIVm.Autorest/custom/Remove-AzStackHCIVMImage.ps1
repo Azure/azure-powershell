@@ -18,10 +18,6 @@
 The operation to delete an image.
 .Description
 The operation to delete an image.
-.Example
-{{ Add code here }}
-.Example
-{{ Add code here }}
 
 .Outputs
 System.Boolean

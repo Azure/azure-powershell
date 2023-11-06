@@ -18,10 +18,6 @@
 The operation to delete a storage container.
 .Description
 The operation to delete a storage container.
-.Example
-{{ Add code here }}
-.Example
-{{ Add code here }}
 
 .Inputs
 Microsoft.Azure.PowerShell.Cmdlets.StackHCIVm.Models.IStackHCIVmIdentity

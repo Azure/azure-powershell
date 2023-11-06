@@ -21,9 +21,6 @@ Please note some properties can be set only during virtual hard disk creation.
 .Description
 The operation to create or update a virtual hard disk.
 Please note some properties can be set only during virtual hard disk creation.
-.Example
-New-AzStackHCIVmVirtualHardDisk -Name "sampleVirtualHardDisk-1396" -Dynamic -SizeGb "2" -ResourceGroupName "test-rg" -CustomLocationId "/subscriptions/{subscriptionID}/resourceGroups/{resourceGroupName}/providers/Microsoft.ExtendedLocation/customLocations/{customLocationName}" -Location "eastus" 
-
 
 .Outputs
 Microsoft.Azure.PowerShell.Cmdlets.StackHCIVm.Models.Api20230901Preview.IVirtualHardDisks

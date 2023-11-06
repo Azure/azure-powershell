@@ -18,10 +18,6 @@
 The operation to delete a network interface.
 .Description
 The operation to delete a network interface.
-.Example
-{{ Add code here }}
-.Example
-{{ Add code here }}
 
 .Inputs
 Microsoft.Azure.PowerShell.Cmdlets.StackHCIVm.Models.IStackHCIVmIdentity

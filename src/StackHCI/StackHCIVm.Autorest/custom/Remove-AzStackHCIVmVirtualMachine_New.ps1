@@ -18,10 +18,6 @@
 The operation to delete a virtual machine.
 .Description
 The operation to delete a virtual machine.
-.Example
-{{ Add code here }}
-.Example
-{{ Add code here }}
 
 .Inputs
 Microsoft.Azure.PowerShell.Cmdlets.StackHCIVm.Models.IStackHCIVmIdentity

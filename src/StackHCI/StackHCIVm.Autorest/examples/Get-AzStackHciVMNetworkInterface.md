@@ -1,6 +1,6 @@
 ### Example 1:  Get a Network Interface
 ```powershell
-PS C:\> Get-AzStackHCIVmNetworkInterface -Name "testNic" -ResourceGroupName "test-rg" 
+PS C:\> Get-AzStackHCIVmNetworkInterface -Name 'testNic' -ResourceGroupName 'test-rg' 
 ```
 ```output
 Name            ResourceGroupName

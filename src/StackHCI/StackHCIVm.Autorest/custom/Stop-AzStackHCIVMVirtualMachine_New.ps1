@@ -18,10 +18,6 @@
 The operation to stop a virtual machine instance.
 .Description
 The operation to stop a virtual machine instance.
-.Example
-{{ Add code here }}
-.Example
-{{ Add code here }}
 
 .Inputs
 Microsoft.Azure.PowerShell.Cmdlets.StackHCIVm.Models.IStackHCIVmIdentity

@@ -18,11 +18,6 @@
 The operation to delete a logical network.
 .Description
 The operation to delete a logical network.
-.Example
-{{ Add code here }}
-.Example
-{{ Add code here }}
-
 
 .Outputs
 System.Boolean

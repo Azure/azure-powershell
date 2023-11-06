@@ -32,7 +32,7 @@ The operation to delete a data disk from a  virtual machine.
 
 ### Example 1: Removes a Data Disk from a Virtual Machine
 ```powershell
-PS C:\> Remove-AzStackHCIVmVirtualMachineDataDisk  -Name "testVm" -ResourceGroupName "test-rg"  -DataDiskNames "testVhd"
+PS C:\> Remove-AzStackHCIVmVirtualMachineDataDisk  -Name "testVm" -ResourceGroupName "test-rg"  -DataDiskName "testVhd"
 
 ```
 
