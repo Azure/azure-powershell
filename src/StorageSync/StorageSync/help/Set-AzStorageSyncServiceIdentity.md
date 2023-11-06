@@ -1,55 +1,54 @@
 ---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.StorageSync.dll-Help.xml
 Module Name: Az.StorageSync
-online version: https://learn.microsoft.com/powershell/module/Az.storagesync/register-Azstoragesyncserver
+online version:
 schema: 2.0.0
 ---
 
-# Register-AzStorageSyncServer
+# Set-AzStorageSyncServiceIdentity
 
 ## SYNOPSIS
-This command registers a server to a storage sync service which creates a trust relationship. PowerShell or the Azure portal can then be used to configure sync on this server.
+{{ Fill in the Synopsis }}
 
 ## SYNTAX
 
 ### StringParameterSet (Default)
 ```
-Register-AzStorageSyncServer [-ResourceGroupName] <String> [-StorageSyncServiceName] <String> [-AsJob]
+Set-AzStorageSyncServiceIdentity [-ResourceGroupName] <String> [-Name] <String> [-AsJob]
  [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
-### ObjectParameterSet
+### InputObjectParameterSet
 ```
-Register-AzStorageSyncServer [-ParentObject] <PSStorageSyncService> [-AsJob]
+Set-AzStorageSyncServiceIdentity [-InputObject] <PSStorageSyncService> [-AsJob]
  [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
-### ParentStringParameterSet
+### ResourceIdParameterSet
 ```
-Register-AzStorageSyncServer [-ParentResourceId] <String> [-AsJob] [-DefaultProfile <IAzureContextContainer>]
+Set-AzStorageSyncServiceIdentity [-ResourceId] <String> [-AsJob] [-DefaultProfile <IAzureContextContainer>]
  [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-This command registers a server to a storage sync service, the top-level resource for Azure File Sync. A trust relationship between server and storage sync service is created that ensures secure data transfer and management channels. PowerShell or the Azure portal can then be used to configure what syncs on this server. A server can only be registered to a single storage sync service. If servers ever need to participate in syncing the same set of files, register them to the same storage sync service.
-The command must be run locally on the server that is to be registered - either executed directly or via a remote PowerShell session. A remote computer object cannot be accepted.
+{{ Fill in the Description }}
 
 ## EXAMPLES
 
 ### Example 1
 ```powershell
-Register-AzStorageSyncServer -ResourceGroupName "myResourceGroup" -StorageSyncServiceName "myStorageSyncServiceName"
+PS C:\> {{ Add example code here }}
 ```
 
-This command will register the local server this command is run on.
+{{ Add example description here }}
 
 ## PARAMETERS
 
 ### -AsJob
-Run cmdlet in the background
+Run cmdlet in the background.
 
 ```yaml
-Type: System.Management.Automation.SwitchParameter
+Type: SwitchParameter
 Parameter Sets: (All)
 Aliases:
 
@@ -64,7 +63,7 @@ Accept wildcard characters: False
 The credentials, account, tenant, and subscription used for communication with Azure.
 
 ```yaml
-Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer
+Type: IAzureContextContainer
 Parameter Sets: (All)
 Aliases: AzContext, AzureRmContext, AzureCredential
 
@@ -75,13 +74,13 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -ParentObject
-StorageSyncService Object, normally passed through the parameter.
+### -InputObject
+StorageSyncService Input Object, normally passed through the pipeline.
 
 ```yaml
-Type: Microsoft.Azure.Commands.StorageSync.Models.PSStorageSyncService
-Parameter Sets: ObjectParameterSet
-Aliases: StorageSyncService
+Type: PSStorageSyncService
+Parameter Sets: InputObjectParameterSet
+Aliases:
 
 Required: True
 Position: 0
@@ -90,16 +89,16 @@ Accept pipeline input: True (ByValue)
 Accept wildcard characters: False
 ```
 
-### -ParentResourceId
-StorageSyncService Parent Resource Id
+### -Name
+Name of the StorageSyncService.
 
 ```yaml
-Type: System.String
-Parameter Sets: ParentStringParameterSet
-Aliases: StorageSyncServiceId
+Type: String
+Parameter Sets: StringParameterSet
+Aliases: StorageSyncServiceName
 
 Required: True
-Position: 0
+Position: 1
 Default value: None
 Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
@@ -109,7 +108,7 @@ Accept wildcard characters: False
 Resource Group Name.
 
 ```yaml
-Type: System.String
+Type: String
 Parameter Sets: StringParameterSet
 Aliases:
 
@@ -120,16 +119,16 @@ Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
 ```
 
-### -StorageSyncServiceName
-Name of the StorageSyncService.
+### -ResourceId
+StorageSyncService Resource Id.
 
 ```yaml
-Type: System.String
-Parameter Sets: StringParameterSet
-Aliases: ParentName
+Type: String
+Parameter Sets: ResourceIdParameterSet
+Aliases:
 
 Required: True
-Position: 1
+Position: 0
 Default value: None
 Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
@@ -139,7 +138,7 @@ Accept wildcard characters: False
 Prompts you for confirmation before running the cmdlet.
 
 ```yaml
-Type: System.Management.Automation.SwitchParameter
+Type: SwitchParameter
 Parameter Sets: (All)
 Aliases: cf
 
@@ -151,10 +150,11 @@ Accept wildcard characters: False
 ```
 
 ### -WhatIf
-Shows what would happen if the cmdlet runs. The cmdlet is not run.
+Shows what would happen if the cmdlet runs.
+The cmdlet is not run.
 
 ```yaml
-Type: System.Management.Automation.SwitchParameter
+Type: SwitchParameter
 Parameter Sets: (All)
 Aliases: wi
 
@@ -176,7 +176,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### Microsoft.Azure.Commands.StorageSync.Models.PSRegisteredServer
+### Microsoft.Azure.Commands.StorageSync.Models.PSStorageSyncService
 
 ## NOTES
 

@@ -1,55 +1,55 @@
 ---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.StorageSync.dll-Help.xml
 Module Name: Az.StorageSync
-online version: https://learn.microsoft.com/powershell/module/az.storagesync/remove-azstoragesyncgroup
+online version:
 schema: 2.0.0
 ---
 
-# Remove-AzStorageSyncGroup
+# Set-AzStorageSyncServerEndpointPermission
 
 ## SYNOPSIS
-This command will delete the specified sync group.
+{{ Fill in the Synopsis }}
 
 ## SYNTAX
 
 ### StringParameterSet (Default)
 ```
-Remove-AzStorageSyncGroup [-ResourceGroupName] <String> [-StorageSyncServiceName] <String> [-Name] <String>
- [-Force] [-PassThru] [-AsJob] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
- [<CommonParameters>]
-```
-
-### InputObjectParameterSet
-```
-Remove-AzStorageSyncGroup [-InputObject] <PSSyncGroup> [-Force] [-PassThru] [-AsJob]
- [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
+Set-AzStorageSyncServerEndpointPermission [-ResourceGroupName] <String> [-StorageSyncServiceName] <String>
+ [-SyncGroupName] <String> [-Name] <String> [-AsJob] [-DefaultProfile <IAzureContextContainer>] [-WhatIf]
+ [-Confirm] [<CommonParameters>]
 ```
 
 ### ResourceIdParameterSet
 ```
-Remove-AzStorageSyncGroup [-ResourceId] <String> [-Force] [-PassThru] [-AsJob]
+Set-AzStorageSyncServerEndpointPermission [-ResourceId] <String> [-AsJob]
+ [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
+```
+
+### ObjectParameterSet
+```
+Set-AzStorageSyncServerEndpointPermission [-InputObject] <PSServerEndpoint> [-AsJob]
  [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-This command will delete the specified sync group. A sync group can only be removed when all of the contained endpoints are deleted first.
+{{ Fill in the Description }}
 
 ## EXAMPLES
 
 ### Example 1
 ```powershell
-Remove-AzStorageSyncGroup -Force -ResourceGroupName "myResourceGroup" -StorageSyncServiceName "myStorageSyncServiceName" -Name "mySyncGroupName"
+PS C:\> {{ Add example code here }}
 ```
 
-This command will remove the sync group.
+{{ Add example description here }}
 
 ## PARAMETERS
 
 ### -AsJob
-Run cmdlet in the background
+Run cmdlet in the background.
 
 ```yaml
-Type: System.Management.Automation.SwitchParameter
+Type: SwitchParameter
 Parameter Sets: (All)
 Aliases:
 
@@ -64,7 +64,7 @@ Accept wildcard characters: False
 The credentials, account, tenant, and subscription used for communication with Azure.
 
 ```yaml
-Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer
+Type: IAzureContextContainer
 Parameter Sets: (All)
 Aliases: AzContext, AzureRmContext, AzureCredential
 
@@ -75,28 +75,13 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -Force
-Supply -Force to skip confirmation of this command.
-
-```yaml
-Type: System.Management.Automation.SwitchParameter
-Parameter Sets: (All)
-Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: True (ByPropertyName)
-Accept wildcard characters: False
-```
-
 ### -InputObject
-SyncGroup Input Object
+ServerEndpoint Object, normally passed through the parameter.
 
 ```yaml
-Type: Microsoft.Azure.Commands.StorageSync.Models.PSSyncGroup
-Parameter Sets: InputObjectParameterSet
-Aliases:
+Type: PSServerEndpoint
+Parameter Sets: ObjectParameterSet
+Aliases: ServerEndpoint
 
 Required: True
 Position: 0
@@ -106,30 +91,15 @@ Accept wildcard characters: False
 ```
 
 ### -Name
-Name of the SyncGroup.
+Name of the ServerEndpoint.
 
 ```yaml
-Type: System.String
+Type: String
 Parameter Sets: StringParameterSet
-Aliases: SyncGroupName
+Aliases: ServerEndpointName
 
 Required: True
-Position: 2
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -PassThru
-In normal execution, this cmdlet returns no value on success. If you provide the PassThru parameter, then the cmdlet will write a value to the pipeline after successful execution.
-
-```yaml
-Type: System.Management.Automation.SwitchParameter
-Parameter Sets: (All)
-Aliases:
-
-Required: False
-Position: Named
+Position: 3
 Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
@@ -139,7 +109,7 @@ Accept wildcard characters: False
 Resource Group Name.
 
 ```yaml
-Type: System.String
+Type: String
 Parameter Sets: StringParameterSet
 Aliases:
 
@@ -151,10 +121,10 @@ Accept wildcard characters: False
 ```
 
 ### -ResourceId
-SyncGroup Resource Id
+ServerEndpoint Resource Id.
 
 ```yaml
-Type: System.String
+Type: String
 Parameter Sets: ResourceIdParameterSet
 Aliases:
 
@@ -169,7 +139,7 @@ Accept wildcard characters: False
 Name of the StorageSyncService.
 
 ```yaml
-Type: System.String
+Type: String
 Parameter Sets: StringParameterSet
 Aliases: ParentName
 
@@ -180,11 +150,26 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -Confirm
-Prompts for confirmation before running the cmdlet.
+### -SyncGroupName
+Name of the SyncGroup.
 
 ```yaml
-Type: System.Management.Automation.SwitchParameter
+Type: String
+Parameter Sets: StringParameterSet
+Aliases:
+
+Required: True
+Position: 2
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -Confirm
+Prompts you for confirmation before running the cmdlet.
+
+```yaml
+Type: SwitchParameter
 Parameter Sets: (All)
 Aliases: cf
 
@@ -196,10 +181,11 @@ Accept wildcard characters: False
 ```
 
 ### -WhatIf
-Shows what would happen if the cmdlet runs. The cmdlet is not run.
+Shows what would happen if the cmdlet runs.
+The cmdlet is not run.
 
 ```yaml
-Type: System.Management.Automation.SwitchParameter
+Type: SwitchParameter
 Parameter Sets: (All)
 Aliases: wi
 
@@ -215,15 +201,14 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
-### Microsoft.Azure.Commands.StorageSync.Models.PSSyncGroup
-
 ### System.String
 
-### System.Management.Automation.SwitchParameter
+### Microsoft.Azure.Commands.StorageSync.Models.PSServerEndpoint
 
 ## OUTPUTS
 
-### System.Object
+### Microsoft.Azure.Commands.StorageSync.Models.PSServerEndpoint
+
 ## NOTES
 
 ## RELATED LINKS
