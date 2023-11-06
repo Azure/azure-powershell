@@ -1458,9 +1458,6 @@ namespace Microsoft.Azure.Commands.Compute
                     }
                     Console.WriteLine("Private key is saved to " + privateKeyFilePath);
 
-                    FileAttributes attributes = File.GetAttributes(privateKeyFilePath);
-                    File.SetAttributes(privateKeyFilePath, attributes | FileAttributes.ReadOnly);
-
                     FileSecurity fileSecurity = new FileSecurity(privateKeyFilePath, AccessControlSections.Access);
                     // Define the owner's identity
                     IdentityReference owner = new SecurityIdentifier(WellKnownSidType.BuiltinUsersSid, null);
@@ -1475,7 +1472,7 @@ namespace Microsoft.Azure.Commands.Compute
                     // Add the access rule to the file security
                     fileSecurity.AddAccessRule(rule);
 
-                    FileInfo fileinfo = new FileInfo(privateKeyFileName);
+                    FileInfo fileinfo = new FileInfo(privateKeyFilePath);
                     fileinfo.SetAccessControl(fileSecurity);
 
                     using (StreamWriter writer = new StreamWriter(publicKeyFilePath))
