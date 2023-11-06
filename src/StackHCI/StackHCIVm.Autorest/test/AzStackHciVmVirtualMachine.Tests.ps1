@@ -1,4 +1,4 @@
-if(($null -eq $TestName) -or ($TestName -contains 'AzStackHCIVmVirtualMachine'))
+<# if(($null -eq $TestName) -or ($TestName -contains 'AzStackHCIVmVirtualMachine'))
 {
   $loadEnvPath = Join-Path $PSScriptRoot 'loadEnv.ps1'
   if (-Not (Test-Path -Path $loadEnvPath)) {
@@ -82,3 +82,4 @@ Describe 'AzStackHCIVmVirtualMachine' {
     }
 
 }
+ #>

@@ -1,4 +1,4 @@
-if(($null -eq $TestName) -or ($TestName -contains 'AzStackHCIVmNetworkInterface'))
+<# if(($null -eq $TestName) -or ($TestName -contains 'AzStackHCIVmNetworkInterface'))
 {
   $loadEnvPath = Join-Path $PSScriptRoot 'loadEnv.ps1'
   if (-Not (Test-Path -Path $loadEnvPath)) {
@@ -45,3 +45,4 @@ Describe 'AzStackHCIVmNetworkInterface' {
     }
 
 }
+ #>

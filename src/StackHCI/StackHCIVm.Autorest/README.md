@@ -129,6 +129,11 @@ directive:
       $["x-ms-long-running-operation"] = true
 
  -  from: swagger-document 
+    where: $.paths["/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AzureStackHCI/logicalNetworks/{logicalNetworkName}"].get
+    transform: >-
+      $["description"] = "Gets a logical network"
+
+ -  from: swagger-document 
     where: $.paths["/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AzureStackHCI/logicalNetworks/{logicalNetworkName}"].delete.responses
     transform: >-
       return {

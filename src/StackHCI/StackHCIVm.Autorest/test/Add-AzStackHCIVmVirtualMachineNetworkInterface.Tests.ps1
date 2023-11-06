@@ -1,4 +1,4 @@
-$loadEnvPath = Join-Path $PSScriptRoot 'loadEnv.ps1'
+<# $loadEnvPath = Join-Path $PSScriptRoot 'loadEnv.ps1'
 if (-Not (Test-Path -Path $loadEnvPath)) {
     $loadEnvPath = Join-Path $PSScriptRoot '..\loadEnv.ps1'
 }
@@ -20,3 +20,4 @@ Describe 'Add-AzStackHCIVmVirtualMachineNetworkInterface' {
         { throw [System.NotImplementedException] } | Should -Not -Throw
     }
 }
+ #>

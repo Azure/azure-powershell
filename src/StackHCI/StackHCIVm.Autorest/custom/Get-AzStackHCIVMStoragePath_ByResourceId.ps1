@@ -15,9 +15,9 @@
 
 <#
 .Synopsis
-Gets a storage path 
+Gets a storage path blah
 .Description
-Gets a storage path 
+Gets a storage path blah
 .Example
 PS C:\> {{ Add code here }}
 

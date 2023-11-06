@@ -10,7 +10,7 @@ testNic       test-rg
 
 This command gets a specific network interface in the specified resource group. 
 
-### Example 2: List all Netowrk Interfaces in a Resource Group  
+### Example 2: List all Logical Networks in a Resource Group  
 ```powershell
 PS C:\> Get-AzStackHCIVmNetworkInterface -ResourceGroupName 'test-rg'
 ```
