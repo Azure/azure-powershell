@@ -111,12 +111,19 @@
         $filter = Get-ProtectedItemFilter -DatasourceType $DatasourceType -Container $Container -Policy $Policy
         
         $itemsList = $null
-        if($SubscriptionId -ne $null){
-            $itemsList = Az.RecoveryServices.Internal\Get-AzRecoveryServicesBackupProtectedItem -ResourceGroupName $ResourceGroupName -VaultName $VaultName -SubscriptionId $SubscriptionId -Filter $filter
-        }
-        else{
-            $itemsList = Az.RecoveryServices.Internal\Get-AzRecoveryServicesBackupProtectedItem -ResourceGroupName $ResourceGroupName -VaultName $VaultName -Filter $filter
-        }
+        
+        $null = $PSBoundParameters.Remove('DatasourceType')
+        $null = $PSBoundParameters.Remove('Container')
+        $null = $PSBoundParameters.Remove('Policy')
+        $null = $PSBoundParameters.Remove('FriendlyName')
+        $null = $PSBoundParameters.Remove('Name')
+        $null = $PSBoundParameters.Remove('ProtectionStatus')
+        $null = $PSBoundParameters.Remove('ProtectionState')
+        $null = $PSBoundParameters.Remove('DeleteState')
+        $PSBoundParameters.Add('Filter', $filter)
+        $itemsList = Az.RecoveryServices.Internal\Get-AzRecoveryServicesBackupProtectedItem @PSBoundParameters
+        
+        $null = $PSBoundParameters.Remove('Filter')
 
         # filter on policy or container
         if($parameterSetName -eq "GetItemsForpolicy"){
@@ -132,7 +139,7 @@
         }
 
         # FriendlyName filter for AzureFiles 
-        if($manisfest.allowFriendlyNameFilterForProtectedItems -eq $true -and $FriendlyName -ne ""){ 
+        if($manifest.allowFriendlyNameFilterForProtectedItems -eq $true -and $FriendlyName -ne ""){ 
             $itemsList = $itemsList | Where-Object { $_.ID.Split("/protectedItems/")[-1].ToLower() -match $FriendlyName.ToLower() }
         }
         elseif($FriendlyName -ne ""){
@@ -160,18 +167,20 @@
         }
 
         # Extended Info - only to be added when itemName or Friendly name given 
-        if($Name -ne "" -or ($manisfest.allowFriendlyNameFilterForProtectedItems -eq $true -and $FriendlyName -ne "")){
+        if($Name -ne "" -or ($manifest.allowFriendlyNameFilterForProtectedItems -eq $true -and $FriendlyName -ne "")){
             
+            $PSBoundParameters.Add('ContainerName', $containerName)
+            $PSBoundParameters.Add('FabricName', 'Azure')
+            $PSBoundParameters.Add('Name', $item.Name)
+            $PSBoundParameters.Add('Filter', "expand eq 'extendedinfo'")
+
             foreach($item in $itemsList){
                 $containerName = Get-ContainerNameFromArmId -Id $item.Id
 
                 $itemDetails = $null
-                if($SubscriptionId -ne $null){
-                    $itemDetails = Az.RecoveryServices.Internal\Get-AzRecoveryServicesProtectedItem -ContainerName $containerName -FabricName "Azure" -Name $item.Name -ResourceGroupName $ResourceGroupName -VaultName $VaultName -SubscriptionId $SubscriptionId -Filter "expand eq 'extendedinfo'"
-                }
-                else{
-                    $itemDetails = Az.RecoveryServices.Internal\Get-AzRecoveryServicesProtectedItem -ContainerName $containerName -FabricName "Azure" -Name $item.Name -ResourceGroupName $ResourceGroupName -VaultName $VaultName -Filter "expand eq 'extendedinfo'"
-                }
+                $PSBoundParameters.Add('Name', $item.Name)
+                $itemDetails = Az.RecoveryServices.Internal\Get-AzRecoveryServicesProtectedItem @PSBoundParameters
+                $null = $PSBoundParameters.Remove('Name')
 
                 $item.Property.ExtendedInfo = $itemDetails.Property.ExtendedInfo
             }

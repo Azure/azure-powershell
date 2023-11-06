@@ -106,13 +106,16 @@
         }
         
         $protectableItemsList = $null
-        if($SubscriptionId -ne $null){
-            $protectableItemsList = Az.RecoveryServices.Internal\Get-AzRecoveryServicesBackupProtectableItem -ResourceGroupName $ResourceGroupName -VaultName $VaultName -SubscriptionId $SubscriptionId -Filter $filter
-        }
-        else{
-            $protectableItemsList = Az.RecoveryServices.Internal\Get-AzRecoveryServicesBackupProtectableItem -ResourceGroupName $ResourceGroupName -VaultName $VaultName -Filter $filter
-        }
-        
+        $null = $PSBoundParameters.Remove('DatasourceType')
+        $null = $PSBoundParameters.Remove('Container')
+        $null = $PSBoundParameters.Remove('ParentID')
+        $null = $PSBoundParameters.Remove('ItemType')
+        $null = $PSBoundParameters.Remove('Name')
+        $null = $PSBoundParameters.Remove('ServerName')
+        $PSBoundParameters.Add('Filter', $filter)
+        $protectableItemsList = Az.RecoveryServices.Internal\Get-AzRecoveryServicesBackupProtectableItem @PSBoundParameters
+        $null = $PSBoundParameters.Remove('Filter')
+
         # Protectable item type filter
         # alternate - $protectableItemsList.Property.GetType().Name -match
         if($ItemType -ne ""){
@@ -145,22 +148,26 @@
                 $filter = Get-ProtectionIntentFilter -ItemType $proItemType -ItemName $itemName -ParentName $containerUri -BackupManagementType $backupManagementType
                 
                 # list protection intent
-                $intentList = Az.RecoveryServices.Internal\Get-AzRecoveryServicesBackupProtectionIntent -ResourceGroupName $ResourceGroupName -VaultName $VaultName -SubscriptionId $SubscriptionId -Filter $filter                    
+                $PSBoundParameters.Add('Filter', $filter)
+                $intentList = Az.RecoveryServices.Internal\Get-AzRecoveryServicesBackupProtectionIntent @PSBoundParameters
+                $null = $PSBoundParameters.Remove('Filter')
 
                 foreach($intent in $intentList){                    
-                    Write-Debug "AutoProtectionPolicy - $($intent.PolicyId)"
-                                        
+                    Write-Debug "AutoProtectionPolicy - $($intent.PolicyId)"                    
                     $proItem.AutoProtectionPolicy = $intent.PolicyId
                 }
             }
 
             if($proItem.ProtectableItemType -eq "SQLAvailabilityGroup"){
                 try{
-                    # get container 
-                    $container = Az.RecoveryServices.Internal\Get-AzRecoveryServicesProtectionContainer -ResourceGroupName $ResourceGroupName -VaultName $VaultName -SubscriptionId $SubscriptionId -FabricName "Azure" -ContainerName $containerUri
+                    # get container
+                    $PSBoundParameters.Add('FabricName', 'Azure')
+                    $PSBoundParameters.Add('ContainerName', $containerUri)
+                    $container = Az.RecoveryServices.Internal\Get-AzRecoveryServicesProtectionContainer @PSBoundParameters
+                    $null = $PSBoundParameters.Remove('FabricName')
+                    $null = $PSBoundParameters.Remove('ContainerName')
 
-                    if($container -ne $null -and $container.Property.ExtendedInfo -ne $null){
-                        
+                    if($container -ne $null -and $container.Property.ExtendedInfo -ne $null){                        
                         Write-Host "NodesList - $($container.Property.ExtendedInfo.NodesList)"
                         $proItem.NodesList = $container.Property.ExtendedInfo.NodesList
                     }

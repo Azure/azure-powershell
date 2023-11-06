@@ -92,12 +92,16 @@
         $filter = Get-BackupManagementTypeFilter -DatasourceType $DatasourceType
         
         $refreshOperationResponse = $null
-        if($SubscriptionId -ne "" -and $SubscriptionId -ne $null){
-            $refreshOperationResponse = Az.RecoveryServices.Internal\Update-AzRecoveryServicesProtectionContainer -FabricName "Azure" -ResourceGroupName $ResourceGroupName -SubscriptionId $SubscriptionId -VaultName $VaultName -Filter $filter -NoWait
-        }
-        else{
-            $refreshOperationResponse = Az.RecoveryServices.Internal\Update-AzRecoveryServicesProtectionContainer -FabricName "Azure" -ResourceGroupName $ResourceGroupName -VaultName $VaultName -Filter $filter -NoWait
-        }        
+        $null = $PSBoundParameters.Remove('DatasourceType')
+        $null = $PSBoundParameters.Remove('Container')
+        $null = $PSBoundParameters.Remove('ResourceId')
+        $PSBoundParameters.Add('FabricName', 'Azure')
+        $PSBoundParameters.Add('Filter', $filter)
+        $PSBoundParameters.Add('NoWait', $true)
+
+        $refreshOperationResponse = Az.RecoveryServices.Internal\Update-AzRecoveryServicesProtectionContainer @PSBoundParameters
+        
+        $null = $PSBoundParameters.Remove('NoWait')
 
         $operationStatus = GetOperationStatus -Target $refreshOperationResponse.Target
         if($operationStatus -ne "Succeeded"){
@@ -107,13 +111,10 @@
         
         # Get protectable containers  (register) / container (re-register)
 
-        $protectableContainers = $null
-        if($SubscriptionId -ne "" -and $SubscriptionId -ne $null){
-            $protectableContainers = Az.RecoveryServices.Internal\Get-AzRecoveryServicesProtectableContainer -FabricName "Azure" -ResourceGroupName $ResourceGroupName -SubscriptionId $SubscriptionId -VaultName $VaultName -Filter $filter | Where-Object { ($_.Name -split ";")[-1] -eq $containerName -or $_.Name -eq $containerName }
-        }
-        else{
-            $protectableContainers = Az.RecoveryServices.Internal\Get-AzRecoveryServicesProtectableContainer -FabricName "Azure" -ResourceGroupName $ResourceGroupName -VaultName $VaultName -Filter $filter | Where-Object { ($_.Name -split ";")[-1] -eq $containerName -or $_.Name -eq $containerName }
-        }               
+        $protectableContainers = $null                
+        $protectableContainers = Az.RecoveryServices.Internal\Get-AzRecoveryServicesProtectableContainer @PSBoundParameters | Where-Object { ($_.Name -split ";")[-1] -eq $containerName -or $_.Name -eq $containerName }
+        
+        $null = $PSBoundParameters.Remove('Filter')
 
         if($protectableContainers -ne $null -or $Container -ne $null){
             $protectionContainerResource = [Microsoft.Azure.PowerShell.Cmdlets.RecoveryServices.Models.Api20230201.ProtectionContainerResource]::new()
@@ -132,13 +133,17 @@
             $protectionContainerResource.Property = $property
 
             # register container
-            $registerOperationResponse = $null
-            if($SubscriptionId -ne "" -and $SubscriptionId -ne $null){
-                $registerOperationResponse = Az.RecoveryServices.Internal\Register-AzRecoveryServicesProtectionContainer -ContainerName $containerFullName -FabricName "Azure" -ResourceGroupName $ResourceGroupName -SubscriptionId $SubscriptionId -VaultName $VaultName -Parameter $protectionContainerResource -NoWait
-            }
-            else{
-                $registerOperationResponse = Az.RecoveryServices.Internal\Register-AzRecoveryServicesProtectionContainer -ContainerName $containerFullName -FabricName "Azure" -ResourceGroupName $ResourceGroupName -VaultName $VaultName -Parameter $protectionContainerResource -NoWait
-            }                  
+            $registerOperationResponse = $null            
+            $PSBoundParameters.Add('ContainerName', $containerFullName)
+            $PSBoundParameters.Add('Parameter', $protectionContainerResource)
+            $PSBoundParameters.Add('NoWait', $true)
+
+            $registerOperationResponse = Az.RecoveryServices.Internal\Register-AzRecoveryServicesProtectionContainer @PSBoundParameters
+
+            $null = $PSBoundParameters.Remove('ContainerName')
+            $null = $PSBoundParameters.Remove('FabricName')
+            $null = $PSBoundParameters.Remove('Parameter')
+            $null = $PSBoundParameters.Remove('NoWait')
 
             $operationStatus = GetOperationStatus -Target $registerOperationResponse.Target -RefreshAfter 30    
 
@@ -154,13 +159,11 @@
         }
 
         # List containers
-        $registeredContainer = $null
-        if($SubscriptionId -ne "" -and $SubscriptionId -ne $null){
-            $registeredContainer = Get-AzRecoveryServicesBackupContainer -ResourceGroupName $ResourceGroupName -VaultName $VaultName -SubscriptionId $SubscriptionId -ContainerType AzureVMAppContainer -DatasourceType $DatasourceType | Where-Object { $_.Name -eq $containerFullName }            
-        }
-        else{            
-            $registeredContainer = Get-AzRecoveryServicesBackupContainer -ResourceGroupName $ResourceGroupName -VaultName $VaultName -ContainerType AzureVMAppContainer -DatasourceType $DatasourceType | Where-Object { $_.Name -eq $containerFullName }
-        }
+        $registeredContainer = $null        
+        $PSBoundParameters.Add('ContainerType', 'AzureVMAppContainer')
+        $PSBoundParameters.Add('DatasourceType', $DatasourceType)
+
+        $registeredContainer = Get-AzRecoveryServicesBackupContainer @PSBoundParameters | Where-Object { $_.Name -eq $containerFullName }
 
         $registeredContainer
     }
