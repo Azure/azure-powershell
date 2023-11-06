@@ -66,7 +66,7 @@ function Remove-AzStackHCIVmVirtualMachineDataDisk {
         [Microsoft.Azure.PowerShell.Cmdlets.StackHCIVm.Category('Body')]
         [System.String[]]
         # Data Disks - list of data disks to be removed from  the virtual machine in id format.
-        ${DataDiskIds},
+        ${DataDiskId},
     
         [Parameter(ParameterSetName='ByResourceId')]
         [Parameter(ParameterSetName='ByName')]
@@ -74,7 +74,7 @@ function Remove-AzStackHCIVmVirtualMachineDataDisk {
         [Microsoft.Azure.PowerShell.Cmdlets.StackHCIVm.Category('Body')]
         [System.String[]]
         # Data Disks - list of data disks to be removed from  the virtual machine in name format.
-        ${DataDiskNames},
+        ${DataDiskName},
     
         [Parameter(ParameterSetName='ByResourceId')]
         [Parameter(ParameterSetName='ByName')]
@@ -111,9 +111,9 @@ function Remove-AzStackHCIVmVirtualMachineDataDisk {
             $diskList = [System.Collections.ArrayList]$VM.StorageProfileDataDisk.Id
         }
 
-        if ($DataDiskIds){
-            $DataDisks = $PSBoundParameters['DataDiskIds']
-            $null = $PSBoundParameters.Remove("DataDiskIds")          
+        if ($DataDiskId){
+            $DataDisks = $PSBoundParameters['DataDiskId']
+            $null = $PSBoundParameters.Remove("DataDiskId")          
             
             foreach ($DataDisk in $DataDisks){
                 $diskName = ($DataDisk -split "/")[8]
@@ -128,23 +128,23 @@ function Remove-AzStackHCIVmVirtualMachineDataDisk {
     
             $PSBoundParameters.Add('StorageProfileDataDisk',  $StorageProfileDataDisk)
     
-        } elseif ($DataDiskNames){
+        } elseif ($DataDiskName){
             $rg = $ResourceGroupName
             if($DataDiskResourceGroup){
               $rg = $DataDiskResourceGroup
             }
     
-            $null = $PSBoundParameters.Remove("DataDiskNames")
+            $null = $PSBoundParameters.Remove("DataDiskName")
             $null = $PSBoundParameters.Remove("DataDiskResourceGroup")
             
-            foreach ($DataDiskName in $DataDiskNames){
-                $DataDiskId = "/subscriptions/$SubscriptionId/resourceGroups/$rg/providers/Microsoft.AzureStackHCI/virtualHardDisks/$DataDiskName"
-                if ($DataDiskId -in  $diskList) {
-                    [void]$diskList.Remove($DataDiskId)
-                } elseif  ($DataDiskName -in  $diskList) {
-                    [void]$diskList.Remove($DataDiskName)
+            foreach ($DiskName in $DataDiskName){
+                $DiskId = "/subscriptions/$SubscriptionId/resourceGroups/$rg/providers/Microsoft.AzureStackHCI/virtualHardDisks/$DiskName"
+                if ($DiskId -in  $diskList) {
+                    [void]$diskList.Remove($DiskId)
+                } elseif  ($DiskName -in  $diskList) {
+                    [void]$diskList.Remove($DiskName)
                 } else {
-                    Write-Error "Data Disk is not currently attached: $DataDiskName"
+                    Write-Error "Data Disk is not currently attached: $DiskName"
                 }
             }
             
