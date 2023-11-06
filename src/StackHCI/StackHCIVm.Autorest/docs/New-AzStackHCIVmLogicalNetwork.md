@@ -15,9 +15,9 @@ Please note some properties can be set only during logical network creation.
 
 ```
 New-AzStackHCIVmLogicalNetwork -Name <String> -ResourceGroupName <String> -CustomLocationId <String>
- -Location <String> [-SubscriptionId <String>] [-AddressPrefixes <String[]>] [-DnsServers <String[]>]
- [-IpAllocationMethod <String>] [-IpPoolEnd <String>] [-IpPools <Hashtable[]>] [-IpPoolStart <String>]
- [-IpPoolType <String>] [-Routes <Hashtable[]>] [-SubnetName <String>] [-Subnets <Hashtable[]>]
+ -Location <String> [-SubscriptionId <String>] [-AddressPrefix <String[]>] [-DnsServer <String[]>]
+ [-IpAllocationMethod <String>] [-IpPool <Hashtable[]>] [-IpPoolEnd <String>] [-IpPoolStart <String>]
+ [-IpPoolType <String>] [-Route <Hashtable[]>] [-Subnet <Hashtable[]>] [-SubnetName <String>]
  [-Tag <Hashtable>] [-Vlan <Int32>] [-VMSwitchName <String>] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
@@ -41,7 +41,7 @@ This command creates a logical network in the specified resource group.
 
 ## PARAMETERS
 
-### -AddressPrefixes
+### -AddressPrefix
 List of address prefixes for the subnet.
 
 ```yaml
@@ -71,7 +71,7 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -DnsServers
+### -DnsServer
 The list of DNS servers IP addresses.
 
 ```yaml
@@ -102,11 +102,11 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -IpPoolEnd
-End of the ip address pool
+### -IpPool
+Network associated pool of IP Addresses
 
 ```yaml
-Type: System.String
+Type: System.Collections.Hashtable[]
 Parameter Sets: (All)
 Aliases:
 
@@ -117,11 +117,11 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -IpPools
-Network associated pool of IP Addresses
+### -IpPoolEnd
+End of the ip address pool
 
 ```yaml
-Type: System.Collections.Hashtable[]
+Type: System.String
 Parameter Sets: (All)
 Aliases:
 
@@ -208,8 +208,23 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -Routes
+### -Route
 Collection of routes contained within a route table.
+
+```yaml
+Type: System.Collections.Hashtable[]
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -Subnet
+List of subnets under the virtual network
 
 ```yaml
 Type: System.Collections.Hashtable[]
@@ -228,21 +243,6 @@ Name of the subnet
 
 ```yaml
 Type: System.String
-Parameter Sets: (All)
-Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -Subnets
-List of subnets under the virtual network
-
-```yaml
-Type: System.Collections.Hashtable[]
 Parameter Sets: (All)
 Aliases:
 
