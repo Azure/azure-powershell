@@ -434,43 +434,6 @@ namespace Microsoft.Azure.Commands.Compute
                 }
                 vm.SecurityProfile.UefiSettings.SecureBootEnabled = this.EnableSecureBoot;
             }
-            /*
-            // Trusted Launch as the default scenario. Might remove this? It interferes with other scenarios!
-            if (!this.IsParameterBound(c => c.SecurityType))
-            {
-                if (vm.SecurityProfile == null)
-                {
-                    vm.SecurityProfile = new SecurityProfile();
-                }
-                vm.SecurityProfile.SecurityType = ConstantValues.TrustedLaunchSecurityType;
-
-                if (!this.IsParameterBound(c => c.EnableVtpm))
-                {
-                    if (vm.SecurityProfile == null)
-                    {
-                        vm.SecurityProfile = new SecurityProfile();
-                    }
-                    if (vm.SecurityProfile.UefiSettings == null)
-                    {
-                        vm.SecurityProfile.UefiSettings = new UefiSettings();
-                    }
-                    vm.SecurityProfile.UefiSettings.VTpmEnabled = true;
-                }
-
-                if (!this.IsParameterBound(c => c.EnableSecureBoot))
-                {
-                    if (vm.SecurityProfile == null)
-                    {
-                        vm.SecurityProfile = new SecurityProfile();
-                    }
-                    if (vm.SecurityProfile.UefiSettings == null)
-                    {
-                        vm.SecurityProfile.UefiSettings = new UefiSettings();
-                    }
-                    vm.SecurityProfile.UefiSettings.SecureBootEnabled = true;
-                }
-            }
-            */
 
             WriteObject(vm);
         }

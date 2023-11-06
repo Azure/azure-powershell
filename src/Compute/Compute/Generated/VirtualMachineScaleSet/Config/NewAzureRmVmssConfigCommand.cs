@@ -655,38 +655,6 @@ namespace Microsoft.Azure.Commands.Compute.Automation
                 }
                 vVirtualMachineProfile.SecurityProfile.UefiSettings.SecureBootEnabled = this.EnableSecureBoot;
             }
-            /*
-            // Trusted Launch defaulting. 
-            if (!this.IsParameterBound(c => c.SecurityType))
-            {
-                if (vVirtualMachineProfile == null)
-                {
-                    vVirtualMachineProfile = new PSVirtualMachineScaleSetVMProfile();
-                }
-                if (vVirtualMachineProfile.SecurityProfile == null)
-                {
-                    vVirtualMachineProfile.SecurityProfile = new SecurityProfile();
-                }
-                vVirtualMachineProfile.SecurityProfile.SecurityType = ConstantValues.TrustedLaunchSecurityType;
-
-                if (vVirtualMachineProfile.SecurityProfile.UefiSettings?.SecureBootEnabled == null)
-                {
-                    if (vVirtualMachineProfile.SecurityProfile.UefiSettings == null)
-                    {
-                        vVirtualMachineProfile.SecurityProfile.UefiSettings = new UefiSettings();
-                    }
-                    vVirtualMachineProfile.SecurityProfile.UefiSettings.SecureBootEnabled = true;
-                }
-                if (vVirtualMachineProfile.SecurityProfile.UefiSettings?.VTpmEnabled == null)
-                {
-                    if (vVirtualMachineProfile.SecurityProfile.UefiSettings == null)
-                    {
-                        vVirtualMachineProfile.SecurityProfile.UefiSettings = new UefiSettings();
-                    }
-                    vVirtualMachineProfile.SecurityProfile.UefiSettings.VTpmEnabled = true;
-                }
-            }
-            */
             if (this.IsParameterBound(c => c.BootDiagnostic))
             {
                 if (vVirtualMachineProfile == null)
