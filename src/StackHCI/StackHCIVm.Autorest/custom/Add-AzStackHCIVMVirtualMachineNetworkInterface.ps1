@@ -5,12 +5,12 @@ The operation to add a network interface to a virtual machine.
 .Description
 The operation to add a network interface to a virtual machine. 
 .Example
-PS C:\> {{Add-AzStackHciVMVirtualMachineNic  -Name "sampleVirtualMachine-1030" -ResourceGroupName mkclus0824-rg -SubscriptionId "0709bd7a-8383-4e1d-98c8-f81d1b3443fc" -NicNames testNic }}
+PS C:\> {{Add-AzStackHCIVmVirtualMachineNic  -Name "sampleVirtualMachine-1030" -ResourceGroupName mkclus0824-rg -SubscriptionId "0709bd7a-8383-4e1d-98c8-f81d1b3443fc" -NicNames testNic }}
 
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.StackHciVM.Models.Api20230901Preview.IVirtualMachineInstance
+Microsoft.Azure.PowerShell.Cmdlets.StackHCIVm.Models.Api20230901Preview.IVirtualMachineInstance
 .Link
-https://learn.microsoft.com/powershell/module/az.stackhcivm/add-azstackhcivmvirtualmachinenic
+https://learn.microsoft.com/powershell/module/az.stackhci/add-azstackhcivmvirtualmachinenic
 #>
 
 function Add-AzStackHCIVmVirtualMachineNetworkInterface {
@@ -19,27 +19,27 @@ function Add-AzStackHCIVmVirtualMachineNetworkInterface {
     param(
         [Parameter(ParameterSetName='ByName', Mandatory)]
         [Alias('VirtualMachineName')]
-        [Microsoft.Azure.PowerShell.Cmdlets.StackHciVM.Category('Path')]
+        [Microsoft.Azure.PowerShell.Cmdlets.StackHCIVm.Category('Path')]
         [System.String]
         # Name of the virtual machine
         ${Name},
     
         [Parameter(ParameterSetName='ByName', Mandatory)]
-        [Microsoft.Azure.PowerShell.Cmdlets.StackHciVM.Category('Path')]
+        [Microsoft.Azure.PowerShell.Cmdlets.StackHCIVm.Category('Path')]
         [System.String]
         # The name of the resource group.
         # The name is case insensitive.
         ${ResourceGroupName},
     
         [Parameter(ParameterSetName='ByResourceId', Mandatory)]
-        [Microsoft.Azure.PowerShell.Cmdlets.StackHciVM.Category('Path')]
+        [Microsoft.Azure.PowerShell.Cmdlets.StackHCIVm.Category('Path')]
         [System.String]
         # The ARM Id of the Virtual Machine
         ${ResourceId},
     
         [Parameter(ParameterSetName='ByName')]
-        [Microsoft.Azure.PowerShell.Cmdlets.StackHciVM.Category('Path')]
-        [Microsoft.Azure.PowerShell.Cmdlets.StackHciVM.Runtime.DefaultInfo(Script='(Get-AzContext).Subscription.Id')]
+        [Microsoft.Azure.PowerShell.Cmdlets.StackHCIVm.Category('Path')]
+        [Microsoft.Azure.PowerShell.Cmdlets.StackHCIVm.Runtime.DefaultInfo(Script='(Get-AzContext).Subscription.Id')]
         [System.String]
         # The ID of the target subscription.
         ${SubscriptionId},
@@ -47,7 +47,7 @@ function Add-AzStackHCIVmVirtualMachineNetworkInterface {
         [Parameter(ParameterSetName='ByResourceId')]
         [Parameter(ParameterSetName='ByName')]
         [AllowEmptyCollection()]
-        [Microsoft.Azure.PowerShell.Cmdlets.StackHciVM.Category('Body')]
+        [Microsoft.Azure.PowerShell.Cmdlets.StackHCIVm.Category('Body')]
         [System.String[]]
         # NetworkInterfaces - list of network interfaces to be attached to the virtual machine in id format
         ${NicIds},
@@ -55,7 +55,7 @@ function Add-AzStackHCIVmVirtualMachineNetworkInterface {
         [Parameter(ParameterSetName='ByResourceId')]
         [Parameter(ParameterSetName='ByName')]
         [AllowEmptyCollection()]
-        [Microsoft.Azure.PowerShell.Cmdlets.StackHciVM.Category('Body')]
+        [Microsoft.Azure.PowerShell.Cmdlets.StackHCIVm.Category('Body')]
         [System.String[]]
         # NetworkInterfaces - list of network interfaces to be attached to the virtual machine in name format
         ${NicNames},
@@ -63,7 +63,7 @@ function Add-AzStackHCIVmVirtualMachineNetworkInterface {
         [Parameter(ParameterSetName='ByResourceId')]
         [Parameter(ParameterSetName='ByName')]
         [AllowEmptyCollection()]
-        [Microsoft.Azure.PowerShell.Cmdlets.StackHciVM.Category('Body')]
+        [Microsoft.Azure.PowerShell.Cmdlets.StackHCIVm.Category('Body')]
         [System.String]
         # Resource Group of the Network Interfaces
         ${NicResourceGroup}
@@ -114,7 +114,7 @@ function Add-AzStackHCIVmVirtualMachineNetworkInterface {
            
         }
     
-        $vm = Az.StackHciVM.internal\Get-AzStackHciVMVirtualMachine @PSBoundParameters
+        $vm = Az.StackHCIVm.internal\Get-AzStackHCIVmVirtualMachine @PSBoundParameters
         $nics = $vm.NetworkProfileNetworkInterface
     
         foreach ($nic in $nics){
@@ -123,5 +123,5 @@ function Add-AzStackHCIVmVirtualMachineNetworkInterface {
         }
     
         $PSBoundParameters.Add('NetworkProfileNetworkInterface',  $NetworkProfileNetworkInterface)
-        return Az.StackHciVM.internal\Update-AzStackHciVMVirtualMachine @PSBoundParameters
+        return Az.StackHCIVm.internal\Update-AzStackHCIVmVirtualMachine @PSBoundParameters
     }

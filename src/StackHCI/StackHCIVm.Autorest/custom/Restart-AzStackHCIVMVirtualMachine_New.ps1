@@ -29,7 +29,7 @@ Microsoft.Azure.PowerShell.Cmdlets.StackHCIVm.Models.Api20230901Preview.IVirtual
 COMPLEX PARAMETER PROPERTIES
 
 .Link
-https://learn.microsoft.com/powershell/module/az.stackhcivm/restart-azstackhcivmvirtualmachine
+https://learn.microsoft.com/powershell/module/az.stackhci/restart-azstackhcivmvirtualmachine
 #>
 function Restart-AzStackHCIVmVirtualMachine {
     [OutputType([Microsoft.Azure.PowerShell.Cmdlets.StackHCIVm.Models.Api20230901Preview.IVirtualMachineInstance])]
@@ -38,27 +38,27 @@ function Restart-AzStackHCIVmVirtualMachine {
 
         [Parameter(ParameterSetName='ByName', Mandatory)]
         [Alias('VirtualMachineName')]
-        [Microsoft.Azure.PowerShell.Cmdlets.StackHciVM.Category('Path')]
+        [Microsoft.Azure.PowerShell.Cmdlets.StackHCIVm.Category('Path')]
         [System.String]
         # Name of the virtual machine
         ${Name},
         
         [Parameter(ParameterSetName='ByName', Mandatory)]
-        [Microsoft.Azure.PowerShell.Cmdlets.StackHciVM.Category('Path')]
+        [Microsoft.Azure.PowerShell.Cmdlets.StackHCIVm.Category('Path')]
         [System.String]
         # The name of the resource group.
         # The name is case insensitive.
         ${ResourceGroupName},
 
         [Parameter(ParameterSetName='ByName', Mandatory)]
-        [Microsoft.Azure.PowerShell.Cmdlets.StackHciVM.Category('Path')]
-        [Microsoft.Azure.PowerShell.Cmdlets.StackHciVM.Runtime.DefaultInfo(Script='(Get-AzContext).Subscription.Id')]
+        [Microsoft.Azure.PowerShell.Cmdlets.StackHCIVm.Category('Path')]
+        [Microsoft.Azure.PowerShell.Cmdlets.StackHCIVm.Runtime.DefaultInfo(Script='(Get-AzContext).Subscription.Id')]
         [System.String]
         # The ID of the target subscription.
         ${SubscriptionId},
 
         [Parameter(ParameterSetName='ByResourceId', Mandatory)]
-        [Microsoft.Azure.PowerShell.Cmdlets.StackHciVM.Category('Path')]
+        [Microsoft.Azure.PowerShell.Cmdlets.StackHCIVm.Category('Path')]
         [System.String]
         # The ARM Resource ID of the virtual machine.
         ${ResourceId}
@@ -76,7 +76,7 @@ function Restart-AzStackHCIVmVirtualMachine {
         $null = $PSBoundParameters.Remove("ResourceGroupName")
         $null = $PSBoundParameters.Remove("ResourceId")
         $null = $PSBoundParameters.Remove("Name")
-        return  Az.StackHciVM.internal\Restart-AzStackHciVMVirtualMachine @PSBoundParameters   
+        return  Az.StackHCIVm.internal\Restart-AzStackHCIVmVirtualMachine @PSBoundParameters   
         } else {             
             Write-Error "One or more input parameters are invalid. Resource ID is: $ResourceId, name is $name, resource group name is $resourcegroupname, subscription id is $subscriptionid"
         }     

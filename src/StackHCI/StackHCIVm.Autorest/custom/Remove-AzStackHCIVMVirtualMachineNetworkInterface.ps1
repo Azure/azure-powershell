@@ -26,36 +26,36 @@ The operation to delete a network interface from a  virtual machine.
 .Outputs
 Microsoft.Azure.PowerShell.Cmdlets.StackHCIVm.Models.Api20230901Preview.IVirtualMachineInstance
 .Link
-https://learn.microsoft.com/powershell/module/az.stackhcivm/remove-azstackhcivmvirtualmachinedatadisk
+https://learn.microsoft.com/powershell/module/az.stackhci/remove-azstackhcivmvirtualmachinedatadisk
 #>
 
 function Remove-AzStackHCIVmVirtualMachineNetworkInterface {
-    [OutputType([Microsoft.Azure.PowerShell.Cmdlets.StackHciVM.Models.Api20230901Preview.IVirtualMachineInstance])]
+    [OutputType([Microsoft.Azure.PowerShell.Cmdlets.StackHCIVm.Models.Api20230901Preview.IVirtualMachineInstance])]
     [CmdletBinding(PositionalBinding=$false, SupportsShouldProcess, ConfirmImpact='Medium')]
     param(
         [Parameter(ParameterSetName='ByName', Mandatory)]
         [Alias('VirtualMachineName')]
-        [Microsoft.Azure.PowerShell.Cmdlets.StackHciVM.Category('Path')]
+        [Microsoft.Azure.PowerShell.Cmdlets.StackHCIVm.Category('Path')]
         [System.String]
         # Name of the virtual machine
         ${Name},
     
         [Parameter(ParameterSetName='ByName', Mandatory)]
-        [Microsoft.Azure.PowerShell.Cmdlets.StackHciVM.Category('Path')]
+        [Microsoft.Azure.PowerShell.Cmdlets.StackHCIVm.Category('Path')]
         [System.String]
         # The name of the resource group.
         # The name is case insensitive.
         ${ResourceGroupName},
     
         [Parameter(ParameterSetName='ByResourceId', Mandatory)]
-        [Microsoft.Azure.PowerShell.Cmdlets.StackHciVM.Category('Path')]
+        [Microsoft.Azure.PowerShell.Cmdlets.StackHCIVm.Category('Path')]
         [System.String]
         # The ARM Resource ID of the virtual machine.
         ${ResourceId},
     
         [Parameter(ParameterSetName='ByName')]
-        [Microsoft.Azure.PowerShell.Cmdlets.StackHciVM.Category('Path')]
-        [Microsoft.Azure.PowerShell.Cmdlets.StackHciVM.Runtime.DefaultInfo(Script='(Get-AzContext).Subscription.Id')]
+        [Microsoft.Azure.PowerShell.Cmdlets.StackHCIVm.Category('Path')]
+        [Microsoft.Azure.PowerShell.Cmdlets.StackHCIVm.Runtime.DefaultInfo(Script='(Get-AzContext).Subscription.Id')]
         [System.String]
         # The ID of the target subscription.
         ${SubscriptionId},
@@ -63,7 +63,7 @@ function Remove-AzStackHCIVmVirtualMachineNetworkInterface {
         [Parameter(ParameterSetName='ByResourceId')]
         [Parameter(ParameterSetName='ByName')]
         [AllowEmptyCollection()]
-        [Microsoft.Azure.PowerShell.Cmdlets.StackHciVM.Category('Body')]
+        [Microsoft.Azure.PowerShell.Cmdlets.StackHCIVm.Category('Body')]
         [System.String[]]
         # NetworkInterfaces - list of network interfaces to be attached from  the virtual machine in id format. 
         ${NicIds},
@@ -71,7 +71,7 @@ function Remove-AzStackHCIVmVirtualMachineNetworkInterface {
         [Parameter(ParameterSetName='ByResourceId')]
         [Parameter(ParameterSetName='ByName')]
         [AllowEmptyCollection()]
-        [Microsoft.Azure.PowerShell.Cmdlets.StackHciVM.Category('Body')]
+        [Microsoft.Azure.PowerShell.Cmdlets.StackHCIVm.Category('Body')]
         [System.String[]]
         # NetworkInterfaces - list of network interfaces to be removed from the virtual machine in name format.
         ${NicNames},
@@ -79,7 +79,7 @@ function Remove-AzStackHCIVmVirtualMachineNetworkInterface {
         [Parameter(ParameterSetName='ByResourceId')]
         [Parameter(ParameterSetName='ByName')]
         [AllowEmptyCollection()]
-        [Microsoft.Azure.PowerShell.Cmdlets.StackHciVM.Category('Body')]
+        [Microsoft.Azure.PowerShell.Cmdlets.StackHCIVm.Category('Body')]
         [System.String]
         # NetworkInterfaces - resource group of the network interfaces 
         ${NicResourceGroup}
@@ -103,7 +103,7 @@ function Remove-AzStackHCIVmVirtualMachineNetworkInterface {
         
         $NewNetworkProfileNetworkInterface =  [System.Collections.ArrayList]::new()
         $nicList =  [System.Collections.ArrayList]::new()
-        $VM = Az.StackHciVM.internal\Get-AzStackHciVMVirtualMachine -ResourceUri $resourceUri
+        $VM = Az.StackHCIVm.internal\Get-AzStackHCIVmVirtualMachine -ResourceUri $resourceUri
 
         if ($VM.NetworkProfileNetworkInterface.Id.GetType() -eq [System.String]){
             [void]$nicList.add($VM.NetworkProfileNetworkInterface.Id)
@@ -157,5 +157,5 @@ function Remove-AzStackHCIVmVirtualMachineNetworkInterface {
 
         $PSBoundParameters.Add('NetworkProfileNetworkInterface',  $NewNetworkProfileNetworkInterface)
         
-        return Az.StackHciVM.internal\Update-AzStackHciVMVirtualMachine @PSBoundParameters
+        return Az.StackHCIVm.internal\Update-AzStackHCIVmVirtualMachine @PSBoundParameters
     }

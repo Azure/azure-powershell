@@ -32,14 +32,14 @@ PS C:\> {{ Add code here }}
 Microsoft.Azure.PowerShell.Cmdlets.StackHCIVm.Models.Api20230901Preview.INetworkInterfaces
 
 .Link
-https://learn.microsoft.com/powershell/module/az.stackhcivm/get-azstackhcivmnetworkinterface
+https://learn.microsoft.com/powershell/module/az.stackhci/get-azstackhcivmnetworkinterface
 #>
-function Get-AzStackHciVMNetworkInterface_ByResourceId {
-[OutputType([Microsoft.Azure.PowerShell.Cmdlets.StackHciVM.Models.Api20230901Preview.INetworkInterfaces])]
+function Get-AzStackHCIVmNetworkInterface_ByResourceId {
+[OutputType([Microsoft.Azure.PowerShell.Cmdlets.StackHCIVm.Models.Api20230901Preview.INetworkInterfaces])]
 [CmdletBinding( PositionalBinding=$false)]
 param(
 
-    [Microsoft.Azure.PowerShell.Cmdlets.StackHciVM.Category('Path')]
+    [Microsoft.Azure.PowerShell.Cmdlets.StackHCIVm.Category('Path')]
     [System.String]
     # The ARM Id of the network interface.
     ${ResourceId}
@@ -58,7 +58,7 @@ param(
             $null = $PSBoundParameters.Remove("SubscriptionId")
             $PSBoundParameters.Add("SubscriptionId", $subscriptionId)
 
-            return  Az.StackHciVM\Get-AzStackHciVMNetworkInterface @PSBoundParameters
+            return  Az.StackHCIVm\Get-AzStackHCIVmNetworkInterface @PSBoundParameters
 
         } else {             
             Write-Error "Resource ID is invalid: $ResourceId"

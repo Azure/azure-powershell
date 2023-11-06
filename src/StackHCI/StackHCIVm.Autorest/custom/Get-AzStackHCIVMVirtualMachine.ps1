@@ -28,26 +28,26 @@ PS C:\> {{ Add code here }}
 {{ Add output here }}
 
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.StackHciVM.Models.Api20230901Preview.IVirtualMachineInstance
+Microsoft.Azure.PowerShell.Cmdlets.StackHCIVm.Models.Api20230901Preview.IVirtualMachineInstance
 .Link
-https://learn.microsoft.com/powershell/module/az.stackhcivm/get-azstackhcivmvirtualmachine
+https://learn.microsoft.com/powershell/module/az.stackhci/get-azstackhcivmvirtualmachine
 #>
 function Get-AzStackHCIVmVirtualMachine {
-    [OutputType([Microsoft.Azure.PowerShell.Cmdlets.StackHciVM.Models.Api20230315Preview.Machine],ParameterSetName='ByResourceGroup' )]
-    [OutputType([Microsoft.Azure.PowerShell.Cmdlets.StackHciVM.Models.Api20230901Preview.IVirtualMachineInstance],ParameterSetName='ByName' )]
+    [OutputType([Microsoft.Azure.PowerShell.Cmdlets.StackHCIVm.Models.Api20230315Preview.Machine],ParameterSetName='ByResourceGroup' )]
+    [OutputType([Microsoft.Azure.PowerShell.Cmdlets.StackHCIVm.Models.Api20230901Preview.IVirtualMachineInstance],ParameterSetName='ByName' )]
     [CmdletBinding( PositionalBinding=$false, SupportsShouldProcess, ConfirmImpact='Medium')]
     param(
 
         [Parameter(ParameterSetName='ByName', Mandatory)]
         [Alias('VirtualMachineName')]
-        [Microsoft.Azure.PowerShell.Cmdlets.StackHciVM.Category('Path')]
+        [Microsoft.Azure.PowerShell.Cmdlets.StackHCIVm.Category('Path')]
         [System.String]
         # Name of the virtual machine
         ${Name},
         
         [Parameter(ParameterSetName='ByName', Mandatory)]
         [Parameter(ParameterSetName='ByResourceGroup', Mandatory)]
-        [Microsoft.Azure.PowerShell.Cmdlets.StackHciVM.Category('Path')]
+        [Microsoft.Azure.PowerShell.Cmdlets.StackHCIVm.Category('Path')]
         [System.String]
         # The name of the resource group.
         # The name is case insensitive.
@@ -56,14 +56,14 @@ function Get-AzStackHCIVmVirtualMachine {
         [Parameter(ParameterSetName='ByName')]
         [Parameter(ParameterSetName='ByResourceGroup')]
         [Parameter(ParameterSetName='BySubscription')]
-        [Microsoft.Azure.PowerShell.Cmdlets.StackHciVM.Category('Path')]
-        [Microsoft.Azure.PowerShell.Cmdlets.StackHciVM.Runtime.DefaultInfo(Script='(Get-AzContext).Subscription.Id')]
+        [Microsoft.Azure.PowerShell.Cmdlets.StackHCIVm.Category('Path')]
+        [Microsoft.Azure.PowerShell.Cmdlets.StackHCIVm.Runtime.DefaultInfo(Script='(Get-AzContext).Subscription.Id')]
         [System.String]
         # The ID of the target subscription.
         ${SubscriptionId},
 
         [Parameter(ParameterSetName='ByResourceId', Mandatory)]
-        [Microsoft.Azure.PowerShell.Cmdlets.StackHciVM.Category('Path')]
+        [Microsoft.Azure.PowerShell.Cmdlets.StackHCIVm.Category('Path')]
         [System.String]
         # The ARM ID of the virtual machine.
         ${ResourceId}
@@ -83,13 +83,13 @@ function Get-AzStackHCIVmVirtualMachine {
                 $null = $PSBoundParameters.Remove("ResourceGroupName")
                 $null = $PSBoundParameters.Remove("ResourceId")
                 $null = $PSBoundParameters.Remove("Name")
-                return  Az.StackHciVM.internal\Get-AzStackHciVMVirtualMachine @PSBoundParameters
+                return  Az.StackHCIVm.internal\Get-AzStackHCIVmVirtualMachine @PSBoundParameters
             } else {             
                 Write-Error "One or more input parameters are invalid. Resource ID is: $ResourceId, name is $name, resource group name is $resourcegroupname, subscription id is $subscriptionid"
             }   
         } elseif ($PSCmdlet.ParameterSetName -eq "ByResourceGroup") {
             $allHCIMachines = [System.Collections.ArrayList]::new()
-            $machines = Az.StackHciVM.internal\Get-AzStackHciVMMachine -ResourceGroupName $ResourceGroupName
+            $machines = Az.StackHCIVm.internal\Get-AzStackHCIVmMachine -ResourceGroupName $ResourceGroupName
             foreach ($machine in $machines){
                 if ($machine.Kind.ToString() -eq "HCI"){
                     [void]$allHCIMachines.Add($machine) 
@@ -99,7 +99,7 @@ function Get-AzStackHCIVmVirtualMachine {
 
         } else {
             $allHCIMachines = [System.Collections.ArrayList]::new()
-            $machines = Az.StackHciVM.internal\Get-AzStackHciVMMachine -SubscriptionId $SubscriptionId
+            $machines = Az.StackHCIVm.internal\Get-AzStackHCIVmMachine -SubscriptionId $SubscriptionId
             foreach ($machine in $machines){
                 if ($machine.Kind.ToString() -eq "HCI"){
                     [void]$allHCIMachines.Add($machine) 

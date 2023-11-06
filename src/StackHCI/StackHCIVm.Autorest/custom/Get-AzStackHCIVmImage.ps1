@@ -32,7 +32,7 @@ Microsoft.Azure.PowerShell.Cmdlets.StackHCIVm.Models.Api20230901Preview.IGallery
 Microsoft.Azure.PowerShell.Cmdlets.StackHCIVm.Models.Api20230901Preview.IMarketplaceGalleryImages
 
 .Link
-https://learn.microsoft.com/powershell/module/az.stackhcivm/get-azstackhcivmgalleryimage
+https://learn.microsoft.com/powershell/module/az.stackhci/get-azstackhcivmgalleryimage
 #>
 
 function Get-AzStackHCIVmImage{    
@@ -40,14 +40,14 @@ function Get-AzStackHCIVmImage{
 
     param(
     [Parameter(ParameterSetName='ByName', Mandatory)]
-    [Microsoft.Azure.PowerShell.Cmdlets.StackHciVM.Category('Path')]
+    [Microsoft.Azure.PowerShell.Cmdlets.StackHCIVm.Category('Path')]
     [System.String]
     # Name of the image
     ${Name},
 
     [Parameter(ParameterSetName='ByName', Mandatory)]
     [Parameter(ParameterSetName='ByResourceGroup', Mandatory)]
-    [Microsoft.Azure.PowerShell.Cmdlets.StackHciVM.Category('Path')]
+    [Microsoft.Azure.PowerShell.Cmdlets.StackHCIVm.Category('Path')]
     [System.String]
     # The name of the resource group.
     # The name is case insensitive.
@@ -57,15 +57,15 @@ function Get-AzStackHCIVmImage{
     [Parameter(ParameterSetName='ByResourceGroup')]
     [Parameter(ParameterSetName='ByResourceId')]
     [Parameter(ParameterSetName='BySubscription')]
-    [Microsoft.Azure.PowerShell.Cmdlets.StackHciVM.Category('Path')]
-    [Microsoft.Azure.PowerShell.Cmdlets.StackHciVM.Runtime.DefaultInfo(Script='(Get-AzContext).Subscription.Id')]
+    [Microsoft.Azure.PowerShell.Cmdlets.StackHCIVm.Category('Path')]
+    [Microsoft.Azure.PowerShell.Cmdlets.StackHCIVm.Runtime.DefaultInfo(Script='(Get-AzContext).Subscription.Id')]
     [System.String[]]
     # The ID of the target subscription.
     ${SubscriptionId},
 
  
     [Parameter(ParameterSetName='ByResourceId', Mandatory)]
-    [Microsoft.Azure.PowerShell.Cmdlets.StackHciVM.Category('Path')]
+    [Microsoft.Azure.PowerShell.Cmdlets.StackHCIVm.Category('Path')]
     [System.String]
     # The ARM Resource Id of the Image 
     ${ResourceId}
@@ -78,11 +78,11 @@ function Get-AzStackHCIVmImage{
             $isMarketplaceGalleryImage = $false
 
             
-            $galImage = Az.StackHciVM.internal\Get-AzStackHciVMGalleryImage @PSBoundParameters -ErrorAction SilentlyContinue
+            $galImage = Az.StackHCIVm.internal\Get-AzStackHCIVmGalleryImage @PSBoundParameters -ErrorAction SilentlyContinue
             if ($galImage -ne $null){
                 $isGalleryImage = $true 
             } else {
-                $marketplaceGalImage = Az.StackHciVM.internal\Get-AzStackHciVMMarketplaceGalleryImage @PSBoundParameters -ErrorAction SilentlyContinue
+                $marketplaceGalImage = Az.StackHCIVm.internal\Get-AzStackHCIVmMarketplaceGalleryImage @PSBoundParameters -ErrorAction SilentlyContinue
                 if ($marketplaceGalImage -ne $null){
                     $isMarketplaceGalleryImage = $true 
                 }
@@ -111,7 +111,7 @@ function Get-AzStackHCIVmImage{
                     $null = $PSBoundParameters.Remove("SubscriptionId")
                     $PSBoundParameters.Add("SubscriptionId", $subscriptionId)
 
-                    return  Az.StackHciVM.internal\Get-AzStackHciVMGalleryImage @PSBoundParameters
+                    return  Az.StackHCIVm.internal\Get-AzStackHCIVmGalleryImage @PSBoundParameters
                 } elseif ($ResourceId -match $marketplaceGalImageRegex){
                     $subscriptionId = $($Matches['subscriptionId'])
                     $resourceGroupName = $($Matches['resourceGroupName'])
@@ -122,23 +122,23 @@ function Get-AzStackHCIVmImage{
                     $null = $PSBoundParameters.Remove("SubscriptionId")
                     $PSBoundParameters.Add("SubscriptionId", $subscriptionId)
 
-                    return  Az.StackHciVM.internal\Get-AzStackHciVMMarketplaceGalleryImage @PSBoundParameters
+                    return  Az.StackHCIVm.internal\Get-AzStackHCIVmMarketplaceGalleryImage @PSBoundParameters
                 } else {
                     Write-Error "Resource ID is invalid: $ResourceId"
                 }
 
         } elseif ($PSCmdlet.ParameterSetName -eq "ByResourceGroup"){
             $allImages = @()
-            $galImages = Az.StackHciVM.internal\Get-AzStackHciVMGalleryImage @PSBoundParameters
-            $marketplaceGalImages =  Az.StackHciVM.internal\Get-AzStackHciVMMarketplaceGalleryImage @PSBoundParameters
+            $galImages = Az.StackHCIVm.internal\Get-AzStackHCIVmGalleryImage @PSBoundParameters
+            $marketplaceGalImages =  Az.StackHCIVm.internal\Get-AzStackHCIVmMarketplaceGalleryImage @PSBoundParameters
             $allImages = $allImages + $galImages
             $allImages = $allImages + $marketplaceGalImages
             return $allImages
         }
 
         $allImages = @()
-        $galImages = Az.StackHciVM.internal\Get-AzStackHciVMGalleryImage @PSBoundParameters
-        $marketplaceGalImages =  Az.StackHciVM.internal\Get-AzStackHciVMMarketplaceGalleryImage @PSBoundParameters
+        $galImages = Az.StackHCIVm.internal\Get-AzStackHCIVmGalleryImage @PSBoundParameters
+        $marketplaceGalImages =  Az.StackHCIVm.internal\Get-AzStackHCIVmMarketplaceGalleryImage @PSBoundParameters
         $allImages = $allImages + $galImages
         $allImages = $allImages + $marketplaceGalImages
         return $allImages

@@ -31,14 +31,14 @@ PS C:\> {{ Add code here }}
 .Outputs
 Microsoft.Azure.PowerShell.Cmdlets.StackHCIVm.Models.Api20230901Preview.IVirtualHardDisks
 .Link
-https://learn.microsoft.com/powershell/module/az.stackhcivm/get-azstackhcivmvirtualharddisk
+https://learn.microsoft.com/powershell/module/az.stackhci/get-azstackhcivmvirtualharddisk
 #>
-function Get-AzStackHciVMVirtualHardDisk_ByResourceId {
-[OutputType([Microsoft.Azure.PowerShell.Cmdlets.StackHciVM.Models.Api20230901Preview.IVirtualHardDisks])]
+function Get-AzStackHCIVmVirtualHardDisk_ByResourceId {
+[OutputType([Microsoft.Azure.PowerShell.Cmdlets.StackHCIVm.Models.Api20230901Preview.IVirtualHardDisks])]
 [CmdletBinding( PositionalBinding=$false)]
 
 param(
-    [Microsoft.Azure.PowerShell.Cmdlets.StackHciVM.Category('Path')]
+    [Microsoft.Azure.PowerShell.Cmdlets.StackHCIVm.Category('Path')]
     [System.String]
     # The ARM ID of the virtual hard disk.
     ${ResourceId}

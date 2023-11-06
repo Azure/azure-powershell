@@ -13,23 +13,23 @@ Please note some properties can be set only during image creation.
 Microsoft.Azure.PowerShell.Cmdlets.StackHCIVm.Models.Api20221215Preview.IGalleryImages
 Microsoft.Azure.PowerShell.Cmdlets.StackHCIVm.Models.Api20221215Preview.IMarketplaceGalleryImages
 .Link
-https://learn.microsoft.com/powershell/module/az.stackhcivm/new-azstackhcivmimage
+https://learn.microsoft.com/powershell/module/az.stackhci/new-azstackhcivmimage
 #>
 
 function Update-AzStackHCIVmImage{
-    [OutputType([Microsoft.Azure.PowerShell.Cmdlets.StackHciVM.Models.Api20230901Preview.IMarketplaceGalleryImages],ParameterSetName='Marketplace' )]
-    [OutputType([Microsoft.Azure.PowerShell.Cmdlets.StackHciVM.Models.Api20230901Preview.IGalleryImages],ParameterSetName='GalleryImage' )]
+    [OutputType([Microsoft.Azure.PowerShell.Cmdlets.StackHCIVm.Models.Api20230901Preview.IMarketplaceGalleryImages],ParameterSetName='Marketplace' )]
+    [OutputType([Microsoft.Azure.PowerShell.Cmdlets.StackHCIVm.Models.Api20230901Preview.IGalleryImages],ParameterSetName='GalleryImage' )]
     [CmdletBinding(PositionalBinding=$false)]
    
   param(
     [Parameter(ParameterSetName='ByName', Mandatory)]
-    [Microsoft.Azure.PowerShell.Cmdlets.StackHciVM.Category('Path')]
+    [Microsoft.Azure.PowerShell.Cmdlets.StackHCIVm.Category('Path')]
     [System.String]
     # Name of the gallery image
     ${Name},
 
     [Parameter(ParameterSetName='ByName', Mandatory)]
-    [Microsoft.Azure.PowerShell.Cmdlets.StackHciVM.Category('Path')]
+    [Microsoft.Azure.PowerShell.Cmdlets.StackHCIVm.Category('Path')]
     [System.String]
     # The name of the resource group.
     # The name is case insensitive.
@@ -37,22 +37,22 @@ function Update-AzStackHCIVmImage{
 
     [Parameter(ParameterSetName='ByName')]
     [Parameter(ParameterSetName='ByResourceId')] 
-    [Microsoft.Azure.PowerShell.Cmdlets.StackHciVM.Category('Path')]
-    [Microsoft.Azure.PowerShell.Cmdlets.StackHciVM.Runtime.DefaultInfo(Script='(Get-AzContext).Subscription.Id')]
+    [Microsoft.Azure.PowerShell.Cmdlets.StackHCIVm.Category('Path')]
+    [Microsoft.Azure.PowerShell.Cmdlets.StackHCIVm.Runtime.DefaultInfo(Script='(Get-AzContext).Subscription.Id')]
     [System.String]
     # The ID of the target subscription.
     ${SubscriptionId},
 
     [Parameter(ParameterSetName='ByResourceId', Mandatory)]
-    [Microsoft.Azure.PowerShell.Cmdlets.StackHciVM.Category('Path')]
+    [Microsoft.Azure.PowerShell.Cmdlets.StackHCIVm.Category('Path')]
     [System.String]
     # The ARM Resource ID of the image.
     ${ResourceId},
 
     [Parameter(ParameterSetName='ByName')]
     [Parameter(ParameterSetName='ByResourceId')] 
-    [Microsoft.Azure.PowerShell.Cmdlets.StackHciVM.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.StackHciVM.Runtime.Info(PossibleTypes=([Microsoft.Azure.PowerShell.Cmdlets.StackHciVM.Models.Api20230901Preview.IGalleryImagesUpdateRequestTags]))]
+    [Microsoft.Azure.PowerShell.Cmdlets.StackHCIVm.Category('Body')]
+    [Microsoft.Azure.PowerShell.Cmdlets.StackHCIVm.Runtime.Info(PossibleTypes=([Microsoft.Azure.PowerShell.Cmdlets.StackHCIVm.Models.Api20230901Preview.IGalleryImagesUpdateRequestTags]))]
     [System.Collections.Hashtable]
     # Resource tags
     ${Tags}
@@ -66,11 +66,11 @@ function Update-AzStackHCIVmImage{
             $isMarketplaceGalleryImage = $false
 
             
-            $galImage = Az.StackHciVM.internal\Get-AzStackHciVMGalleryImage -Name $Name -ResourceGroupName $ResourceGroupName -SubscriptionId $SubscriptionId -ErrorAction SilentlyContinue
+            $galImage = Az.StackHCIVm.internal\Get-AzStackHCIVmGalleryImage -Name $Name -ResourceGroupName $ResourceGroupName -SubscriptionId $SubscriptionId -ErrorAction SilentlyContinue
             if ($galImage -ne $null){
                 $isGalleryImage = $true 
             } else {
-                $marketplaceGalImage = Az.StackHciVM.internal\Get-AzStackHciVMMarketplaceGalleryImage -Name $Name -ResourceGroupName $ResourceGroupName -SubscriptionId $SubscriptionId -ErrorAction SilentlyContinue
+                $marketplaceGalImage = Az.StackHCIVm.internal\Get-AzStackHCIVmMarketplaceGalleryImage -Name $Name -ResourceGroupName $ResourceGroupName -SubscriptionId $SubscriptionId -ErrorAction SilentlyContinue
                 if ($marketplaceGalImage -ne $null){
                     $isMarketplaceGalleryImage = $true 
                 }else{
@@ -80,11 +80,11 @@ function Update-AzStackHCIVmImage{
         
 
             if ($isGalleryImage){
-                return  Az.StackHciVM.internal\Update-AzStackHciVMGalleryImage @PSBoundParameters
+                return  Az.StackHCIVm.internal\Update-AzStackHCIVmGalleryImage @PSBoundParameters
             } 
 
             if ($isMarketplaceGalleryImage){
-                return  Az.StackHciVM.internal\Update-AzStackHciVMMarketplaceGalleryImage @PSBoundParameters
+                return  Az.StackHCIVm.internal\Update-AzStackHCIVmMarketplaceGalleryImage @PSBoundParameters
             }
 
         }  elseif ($PSCmdlet.ParameterSetName -eq "ByResourceId"){
@@ -100,7 +100,7 @@ function Update-AzStackHCIVmImage{
                     $null = $PSBoundParameters.Remove("SubscriptionId")
                     $PSBoundParameters.Add("SubscriptionId", $subscriptionId)
 
-                    return  Az.StackHciVM.internal\Update-AzStackHciVMGalleryImage @PSBoundParameters
+                    return  Az.StackHCIVm.internal\Update-AzStackHCIVmGalleryImage @PSBoundParameters
                     
                 } elseif ($ResourceId -match $marketplaceGalImageRegex){
                     $subscriptionId = $($Matches['subscriptionId'])
@@ -112,7 +112,7 @@ function Update-AzStackHCIVmImage{
                     $null = $PSBoundParameters.Remove("SubscriptionId")
                     $PSBoundParameters.Add("SubscriptionId", $subscriptionId)
 
-                    return  Az.StackHciVM.internal\Update-AzStackHciVMMarketplaceGalleryImage @PSBoundParameters
+                    return  Az.StackHCIVm.internal\Update-AzStackHCIVmMarketplaceGalleryImage @PSBoundParameters
 
                 } else {
                     Write-Error "Resource ID is invalid: $ResourceId"

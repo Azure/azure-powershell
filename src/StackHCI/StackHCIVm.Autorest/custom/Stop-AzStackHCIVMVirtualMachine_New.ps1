@@ -24,7 +24,7 @@ The operation to stop a virtual machine instance.
 {{ Add code here }}
 
 .Inputs
-Microsoft.Azure.PowerShell.Cmdlets.StackHCIVm.Models.IStackHciVMIdentity
+Microsoft.Azure.PowerShell.Cmdlets.StackHCIVm.Models.IStackHCIVmIdentity
 .Outputs
 Microsoft.Azure.PowerShell.Cmdlets.StackHCIVm.Models.Api20230901Preview.IVirtualMachineInstance
 .Notes
@@ -32,7 +32,7 @@ COMPLEX PARAMETER PROPERTIES
 
 To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
 .Link
-https://learn.microsoft.com/powershell/module/az.stackhcivm/stop-azstackhcivmvirtualmachine
+https://learn.microsoft.com/powershell/module/az.stackhci/stop-azstackhcivmvirtualmachine
 #>
 function Stop-AzStackHCIVmVirtualMachine {
     [OutputType([Microsoft.Azure.PowerShell.Cmdlets.StackHCIVm.Models.Api20230901Preview.IVirtualMachineInstance])]
@@ -41,27 +41,27 @@ function Stop-AzStackHCIVmVirtualMachine {
 
         [Parameter(ParameterSetName='ByName', Mandatory)]
         [Alias('VirtualMachineName')]
-        [Microsoft.Azure.PowerShell.Cmdlets.StackHciVM.Category('Path')]
+        [Microsoft.Azure.PowerShell.Cmdlets.StackHCIVm.Category('Path')]
         [System.String]
         # Name of the virtual machine
         ${Name},
         
         [Parameter(ParameterSetName='ByName', Mandatory)]
-        [Microsoft.Azure.PowerShell.Cmdlets.StackHciVM.Category('Path')]
+        [Microsoft.Azure.PowerShell.Cmdlets.StackHCIVm.Category('Path')]
         [System.String]
         # The name of the resource group.
         # The name is case insensitive.
         ${ResourceGroupName},
 
         [Parameter(ParameterSetName='ByName', Mandatory)]
-        [Microsoft.Azure.PowerShell.Cmdlets.StackHciVM.Category('Path')]
-        [Microsoft.Azure.PowerShell.Cmdlets.StackHciVM.Runtime.DefaultInfo(Script='(Get-AzContext).Subscription.Id')]
+        [Microsoft.Azure.PowerShell.Cmdlets.StackHCIVm.Category('Path')]
+        [Microsoft.Azure.PowerShell.Cmdlets.StackHCIVm.Runtime.DefaultInfo(Script='(Get-AzContext).Subscription.Id')]
         [System.String]
         # The ID of the target subscription.
         ${SubscriptionId},
 
         [Parameter(ParameterSetName='ByResourceId', Mandatory)]
-        [Microsoft.Azure.PowerShell.Cmdlets.StackHciVM.Category('Path')]
+        [Microsoft.Azure.PowerShell.Cmdlets.StackHCIVm.Category('Path')]
         [System.String]
         # The ARM Resource ID of the virtual machine.
         ${ResourceId}
@@ -79,7 +79,7 @@ function Stop-AzStackHCIVmVirtualMachine {
         $null = $PSBoundParameters.Remove("ResourceGroupName")
         $null = $PSBoundParameters.Remove("ResourceId")
         $null = $PSBoundParameters.Remove("Name")
-        return  Az.StackHciVM.internal\Stop-AzStackHciVMVirtualMachine @PSBoundParameters    
+        return  Az.StackHCIVm.internal\Stop-AzStackHCIVmVirtualMachine @PSBoundParameters    
         } else {             
             Write-Error "One or more input parameters are invalid. Resource ID is: $ResourceId, name is $name, resource group name is $resourcegroupname, subscription id is $subscriptionid"
         }    

@@ -32,15 +32,15 @@ PS C:\> {{ Add code here }}
 Microsoft.Azure.PowerShell.Cmdlets.StackHCIVm.Models.Api20230901Preview.IStorageContainers
 
 .Link
-https://learn.microsoft.com/powershell/module/az.stackhcivm/get-azstackhcivmstoragepath
+https://learn.microsoft.com/powershell/module/az.stackhci/get-azstackhcivmstoragepath
 #>
-function Get-AzStackHciVMStoragePath_ByResourceId {
-[OutputType([Microsoft.Azure.PowerShell.Cmdlets.StackHciVM.Models.Api20230901Preview.IStorageContainers])]
+function Get-AzStackHCIVmStoragePath_ByResourceId {
+[OutputType([Microsoft.Azure.PowerShell.Cmdlets.StackHCIVm.Models.Api20230901Preview.IStorageContainers])]
 [CmdletBinding(PositionalBinding=$false)]
 
 param(
 
-    [Microsoft.Azure.PowerShell.Cmdlets.StackHciVM.Category('Path')]
+    [Microsoft.Azure.PowerShell.Cmdlets.StackHCIVm.Category('Path')]
     [System.String]
     # The ARM  ID of the storage path.
     ${ResourceId}
@@ -59,7 +59,7 @@ param(
             $null = $PSBoundParameters.Remove("SubscriptionId")
             $PSBoundParameters.Add("SubscriptionId", $subscriptionId)
 
-            return  Az.StackHciVM\Get-AzStackHciVMStoragePath @PSBoundParameters
+            return  Az.StackHCIVm\Get-AzStackHCIVmStoragePath @PSBoundParameters
 
         } else {             
             Write-Error "Resource ID is invalid: $ResourceId"

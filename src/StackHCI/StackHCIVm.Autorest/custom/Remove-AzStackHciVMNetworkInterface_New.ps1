@@ -24,7 +24,7 @@ The operation to delete a network interface.
 {{ Add code here }}
 
 .Inputs
-Microsoft.Azure.PowerShell.Cmdlets.StackHCIVm.Models.IStackHciVMIdentity
+Microsoft.Azure.PowerShell.Cmdlets.StackHCIVm.Models.IStackHCIVmIdentity
 .Outputs
 System.Boolean
 .Notes
@@ -32,7 +32,7 @@ COMPLEX PARAMETER PROPERTIES
 
 To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
 
-INPUTOBJECT <IStackHciVMIdentity>: Identity Parameter
+INPUTOBJECT <IStackHCIVmIdentity>: Identity Parameter
   [ExtensionName <String>]: The name of the machine extension.
   [GalleryImageName <String>]: Name of the gallery image
   [Id <String>]: Resource identity path
@@ -47,7 +47,7 @@ INPUTOBJECT <IStackHciVMIdentity>: Identity Parameter
   [VirtualMachineName <String>]: Name of the virtual machine
   [VirtualNetworkName <String>]: Name of the virtual network
 .Link
-https://learn.microsoft.com/powershell/module/az.stackhcivm/remove-azstackhcivmnetworkinterface
+https://learn.microsoft.com/powershell/module/az.stackhci/remove-azstackhcivmnetworkinterface
 #>
 function Remove-AzStackHCIVmNetworkInterface {
     [OutputType([System.Boolean])]
@@ -109,7 +109,7 @@ function Remove-AzStackHCIVmNetworkInterface {
             $null = $PSBoundParameters.Remove("Force")
         }
 
-        Az.StackHciVM.internal\Remove-AzStackHciVMNetworkInterface @PSBoundParameters
+        Az.StackHCIVm.internal\Remove-AzStackHCIVmNetworkInterface @PSBoundParameters
     }
     
    

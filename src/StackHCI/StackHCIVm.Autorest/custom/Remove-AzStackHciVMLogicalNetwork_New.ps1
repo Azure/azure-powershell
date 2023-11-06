@@ -31,7 +31,7 @@ COMPLEX PARAMETER PROPERTIES
 
 
 .Link
-https://learn.microsoft.com/powershell/module/az.stackhcivm/remove-azstackhcivmlogicalnetwork
+https://learn.microsoft.com/powershell/module/az.stackhci/remove-azstackhcivmlogicalnetwork
 #>
 function Remove-AzStackHCIVmLogicalNetwork {
     [OutputType([System.Boolean])]
@@ -94,7 +94,7 @@ function Remove-AzStackHCIVmLogicalNetwork {
             $null = $PSBoundParameters.Remove("Force")
         }
 
-        Az.StackHciVM.internal\Remove-AzStackHciVMLogicalNetwork @PSBoundParameters
+        Az.StackHCIVm.internal\Remove-AzStackHCIVmLogicalNetwork @PSBoundParameters
     }
     
 }

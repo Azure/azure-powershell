@@ -32,23 +32,23 @@ PS C:\> {{ Add code here }}
 Microsoft.Azure.PowerShell.Cmdlets.StackHCIVm.Models.Api20230901Preview.IVStorageContainers
 
 .Link
-https://learn.microsoft.com/powershell/module/az.stackhcivm/update-azstackhcivmstoragepath
+https://learn.microsoft.com/powershell/module/az.stackhci/update-azstackhcivmstoragepath
 #>
-function Update-AzStackHciVMStoragePath_ByResourceId {
-[OutputType([Microsoft.Azure.PowerShell.Cmdlets.StackHciVM.Models.Api20230901Preview.IStorageContainers])]
+function Update-AzStackHCIVmStoragePath_ByResourceId {
+[OutputType([Microsoft.Azure.PowerShell.Cmdlets.StackHCIVm.Models.Api20230901Preview.IStorageContainers])]
 [CmdletBinding(PositionalBinding=$false)]
 
 param(
  
     
-    [Microsoft.Azure.PowerShell.Cmdlets.StackHciVM.Category('Path')]
+    [Microsoft.Azure.PowerShell.Cmdlets.StackHCIVm.Category('Path')]
     [System.String]
     # The ARM Resource ID of the storage path.
     ${ResourceId},
 
     
-    [Microsoft.Azure.PowerShell.Cmdlets.StackHciVM.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.StackHciVM.Runtime.Info(PossibleTypes=([Microsoft.Azure.PowerShell.Cmdlets.StackHciVM.Models.Api20230901Preview.IStorageContainersUpdateRequestTags]))]
+    [Microsoft.Azure.PowerShell.Cmdlets.StackHCIVm.Category('Body')]
+    [Microsoft.Azure.PowerShell.Cmdlets.StackHCIVm.Runtime.Info(PossibleTypes=([Microsoft.Azure.PowerShell.Cmdlets.StackHCIVm.Models.Api20230901Preview.IStorageContainersUpdateRequestTags]))]
     [System.Collections.Hashtable]
     # Resource tags
     ${Tags}
@@ -69,7 +69,7 @@ param(
             $null = $PSBoundParameters.Remove("SubscriptionId")
             $PSBoundParameters.Add("SubscriptionId", $subscriptionId)
 
-            return  Az.StackHciVM\Update-AzStackHciVMStoragePath @PSBoundParameters
+            return  Az.StackHCIVm\Update-AzStackHCIVmStoragePath @PSBoundParameters
 
         } else {             
             Write-Error "Resource ID is invalid: $ResourceId"

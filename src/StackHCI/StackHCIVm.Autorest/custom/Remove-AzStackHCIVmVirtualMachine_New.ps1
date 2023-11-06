@@ -24,7 +24,7 @@ The operation to delete a virtual machine.
 {{ Add code here }}
 
 .Inputs
-Microsoft.Azure.PowerShell.Cmdlets.StackHCIVm.Models.IStackHciVMIdentity
+Microsoft.Azure.PowerShell.Cmdlets.StackHCIVm.Models.IStackHCIVmIdentity
 .Outputs
 System.Boolean
 .Notes
@@ -32,7 +32,7 @@ COMPLEX PARAMETER PROPERTIES
 
 To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
 
-INPUTOBJECT <IStackHciVMIdentity>: Identity Parameter
+INPUTOBJECT <IStackHCIVmIdentity>: Identity Parameter
   [ExtensionName <String>]: The name of the machine extension.
   [GalleryImageName <String>]: Name of the gallery image
   [Id <String>]: Resource identity path
@@ -47,7 +47,7 @@ INPUTOBJECT <IStackHciVMIdentity>: Identity Parameter
   [VirtualMachineName <String>]: Name of the virtual machine
   [VirtualNetworkName <String>]: Name of the virtual network
 .Link
-https://learn.microsoft.com/powershell/module/az.stackhcivm/remove-azstackhcivmvirtualmachine
+https://learn.microsoft.com/powershell/module/az.stackhci/remove-azstackhcivmvirtualmachine
 #>
 function Remove-AzStackHCIVmVirtualMachine {
     [OutputType([System.Boolean])]
@@ -55,7 +55,7 @@ function Remove-AzStackHCIVmVirtualMachine {
     param(
         [Parameter(ParameterSetName='ByName',Mandatory)]
         [Alias('VirtualMachineName')]
-        [Microsoft.Azure.PowerShell.Cmdlets.StackHciVM.Category('Path')]
+        [Microsoft.Azure.PowerShell.Cmdlets.StackHCIVm.Category('Path')]
         [System.String]
         # Name of the virtual machine
         ${Name},
@@ -78,7 +78,7 @@ function Remove-AzStackHCIVmVirtualMachine {
         [Parameter(ParameterSetName='ByName')]
         [Parameter(ParameterSetName='ByResourceId')]
         [Microsoft.Azure.PowerShell.Cmdlets.StackHCIVm.Category('Path')]
-        [Microsoft.Azure.PowerShell.Cmdlets.StackHCIVm.Models.IStackHciVMIdentity]
+        [Microsoft.Azure.PowerShell.Cmdlets.StackHCIVm.Models.IStackHCIVmIdentity]
         # Identity Parameter
         # To construct, see NOTES section for INPUTOBJECT properties and create a hash table.
         ${InputObject},
@@ -123,13 +123,13 @@ function Remove-AzStackHCIVmVirtualMachine {
             $null = $PSBoundParameters.Remove("ResourceGroupName")
             $null = $PSBoundParameters.Remove("Force")
             $PSBoundParameters.Add("ResourceUri", $resourceUri)
-            Az.StackHciVM.internal\Remove-AzStackHciVMVirtualMachine @PSBoundParameters
+            Az.StackHCIVm.internal\Remove-AzStackHCIVmVirtualMachine @PSBoundParameters
 
             $PSBoundParameters.Add("SubscriptionId", $SubscriptionId)
             $PSBoundParameters.Add("ResourceGroupName", $ResourceGroupName)
             $PSBoundParameters.Add("Name", $Name)
             $null = $PSBoundParameters.Remove("ResourceUri")
-            Az.StackHciVM.internal\Remove-AzStackHciVMMachine @PSBoundParameters  
+            Az.StackHCIVm.internal\Remove-AzStackHCIVmMachine @PSBoundParameters  
         }
     }
 }

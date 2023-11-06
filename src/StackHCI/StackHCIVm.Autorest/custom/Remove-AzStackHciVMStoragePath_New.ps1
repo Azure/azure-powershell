@@ -24,7 +24,7 @@ The operation to delete a storage container.
 {{ Add code here }}
 
 .Inputs
-Microsoft.Azure.PowerShell.Cmdlets.StackHCIVm.Models.IStackHciVMIdentity
+Microsoft.Azure.PowerShell.Cmdlets.StackHCIVm.Models.IStackHCIVmIdentity
 .Outputs
 System.Boolean
 .Notes
@@ -32,7 +32,7 @@ COMPLEX PARAMETER PROPERTIES
 
 To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
 
-INPUTOBJECT <IStackHciVMIdentity>: Identity Parameter
+INPUTOBJECT <IStackHCIVmIdentity>: Identity Parameter
   [ExtensionName <String>]: The name of the machine extension.
   [GalleryImageName <String>]: Name of the gallery image
   [Id <String>]: Resource identity path
@@ -47,7 +47,7 @@ INPUTOBJECT <IStackHciVMIdentity>: Identity Parameter
   [VirtualMachineName <String>]: Name of the virtual machine
   [VirtualNetworkName <String>]: Name of the virtual network
 .Link
-https://learn.microsoft.com/powershell/module/az.stackhcivm/remove-azstackhcivmstoragepath
+https://learn.microsoft.com/powershell/module/az.stackhci/remove-azstackhcivmstoragepath
 #>
 function Remove-AzStackHCIVmStoragePath {
     [OutputType([System.Boolean])]
@@ -78,7 +78,7 @@ function Remove-AzStackHCIVmStoragePath {
         [Parameter(ParameterSetName='ByName')]
         [Parameter(ParameterSetName='ByResourceId')]
         [Microsoft.Azure.PowerShell.Cmdlets.StackHCIVm.Category('Path')]
-        [Microsoft.Azure.PowerShell.Cmdlets.StackHCIVm.Models.IStackHciVMIdentity]
+        [Microsoft.Azure.PowerShell.Cmdlets.StackHCIVm.Models.IStackHCIVmIdentity]
         # Identity Parameter
         # To construct, see NOTES section for INPUTOBJECT properties and create a hash table.
         ${InputObject},
@@ -198,7 +198,7 @@ function Remove-AzStackHCIVmStoragePath {
             $null = $PSBoundParameters.Remove("Force")
         }
 
-        Az.StackHciVM.internal\Remove-AzStackHciVMStoragePath @PSBoundParameters
+        Az.StackHCIVm.internal\Remove-AzStackHCIVmStoragePath @PSBoundParameters
     }
 }
     

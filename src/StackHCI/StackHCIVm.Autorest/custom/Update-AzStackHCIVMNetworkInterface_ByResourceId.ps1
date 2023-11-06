@@ -32,23 +32,23 @@ PS C:\> {{ Add code here }}
 Microsoft.Azure.PowerShell.Cmdlets.StackHCIVm.Models.Api20230901Preview.INetworkInterfaces
 
 .Link
-https://learn.microsoft.com/powershell/module/az.stackhcivm/update-azstackhcivmnetworkinterface
+https://learn.microsoft.com/powershell/module/az.stackhci/update-azstackhcivmnetworkinterface
 #>
-function Update-AzStackHciVMNetworkInterface_ByResourceId {
-[OutputType([Microsoft.Azure.PowerShell.Cmdlets.StackHciVM.Models.Api20230901Preview.INetworkInterfaces])]
+function Update-AzStackHCIVmNetworkInterface_ByResourceId {
+[OutputType([Microsoft.Azure.PowerShell.Cmdlets.StackHCIVm.Models.Api20230901Preview.INetworkInterfaces])]
 [CmdletBinding(PositionalBinding=$false)]
 
 param(
  
     
-    [Microsoft.Azure.PowerShell.Cmdlets.StackHciVM.Category('Path')]
+    [Microsoft.Azure.PowerShell.Cmdlets.StackHCIVm.Category('Path')]
     [System.String]
     # The ARM Resource ID of the network interface.
     ${ResourceId},
 
     
-    [Microsoft.Azure.PowerShell.Cmdlets.StackHciVM.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.StackHciVM.Runtime.Info(PossibleTypes=([Microsoft.Azure.PowerShell.Cmdlets.StackHciVM.Models.Api20230901Preview.INetworkInterfacesUpdateRequestTags]))]
+    [Microsoft.Azure.PowerShell.Cmdlets.StackHCIVm.Category('Body')]
+    [Microsoft.Azure.PowerShell.Cmdlets.StackHCIVm.Runtime.Info(PossibleTypes=([Microsoft.Azure.PowerShell.Cmdlets.StackHCIVm.Models.Api20230901Preview.INetworkInterfacesUpdateRequestTags]))]
     [System.Collections.Hashtable]
     # Resource tags
     ${Tags}
@@ -67,7 +67,7 @@ param(
             $null = $PSBoundParameters.Remove("SubscriptionId")
             $PSBoundParameters.Add("SubscriptionId", $subscriptionId)
 
-            return  Az.StackHciVM\Update-AzStackHciVMNetworkInterface @PSBoundParameters
+            return  Az.StackHCIVm\Update-AzStackHCIVmNetworkInterface @PSBoundParameters
 
         } else {             
             Write-Error "Resource ID is invalid: $ResourceId"

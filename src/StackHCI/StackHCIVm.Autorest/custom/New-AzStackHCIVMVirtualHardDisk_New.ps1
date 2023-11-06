@@ -22,117 +22,117 @@ Please note some properties can be set only during virtual hard disk creation.
 The operation to create or update a virtual hard disk.
 Please note some properties can be set only during virtual hard disk creation.
 .Example
-New-AzStackHciVMVirtualHardDisk -Name "sampleVirtualHardDisk-1396" -Dynamic -SizeGb "2" -ResourceGroupName "test-rg" -CustomLocationId "/subscriptions/{subscriptionID}/resourceGroups/{resourceGroupName}/providers/Microsoft.ExtendedLocation/customLocations/{customLocationName}" -Location "eastus" 
+New-AzStackHCIVmVirtualHardDisk -Name "sampleVirtualHardDisk-1396" -Dynamic -SizeGb "2" -ResourceGroupName "test-rg" -CustomLocationId "/subscriptions/{subscriptionID}/resourceGroups/{resourceGroupName}/providers/Microsoft.ExtendedLocation/customLocations/{customLocationName}" -Location "eastus" 
 
 
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.StackHciVM.Models.Api20221215Preview.IVirtualHardDisks
+Microsoft.Azure.PowerShell.Cmdlets.StackHCIVm.Models.Api20230901Preview.IVirtualHardDisks
 .Link
-https://learn.microsoft.com/powershell/module/az.StackHciVM/new-azStackHciVMvirtualharddisk
+https://learn.microsoft.com/powershell/module/az.stackhci/new-azstackhcivmvirtualharddisk
 #>
 function New-AzStackHCIVmVirtualHardDisk {
-[OutputType([Microsoft.Azure.PowerShell.Cmdlets.StackHciVM.Models.Api20230901Preview.IVirtualHardDisks])]
+[OutputType([Microsoft.Azure.PowerShell.Cmdlets.StackHCIVm.Models.Api20230901Preview.IVirtualHardDisks])]
 [CmdletBinding(PositionalBinding=$false,SupportsShouldProcess, ConfirmImpact='Medium')]
 param(
     [Parameter(Mandatory)]
     [Alias('VirtualHardDiskName')]
-    [Microsoft.Azure.PowerShell.Cmdlets.StackHciVM.Category('Path')]
+    [Microsoft.Azure.PowerShell.Cmdlets.StackHCIVm.Category('Path')]
     [System.String]
     # Name of the virtual hard disk. 
     # Must contain all alphanumeric characters or ‘-’ or ‘_’. Max length is 80 characters, and min length is 1 character.  
     ${Name},
 
     [Parameter(Mandatory)]
-    [Microsoft.Azure.PowerShell.Cmdlets.StackHciVM.Category('Path')]
+    [Microsoft.Azure.PowerShell.Cmdlets.StackHCIVm.Category('Path')]
     [System.String]
     # The name of the resource group.
     # The name is case insensitive.
     ${ResourceGroupName},
 
     [Parameter()]
-    [Microsoft.Azure.PowerShell.Cmdlets.StackHciVM.Category('Path')]
-    [Microsoft.Azure.PowerShell.Cmdlets.StackHciVM.Runtime.DefaultInfo(Script='(Get-AzContext).Subscription.Id')]
+    [Microsoft.Azure.PowerShell.Cmdlets.StackHCIVm.Category('Path')]
+    [Microsoft.Azure.PowerShell.Cmdlets.StackHCIVm.Runtime.DefaultInfo(Script='(Get-AzContext).Subscription.Id')]
     [System.String]
     # The ID of the target subscription.
     ${SubscriptionId},
 
     [Parameter(Mandatory)]
-    [Microsoft.Azure.PowerShell.Cmdlets.StackHciVM.Category('Body')]
+    [Microsoft.Azure.PowerShell.Cmdlets.StackHCIVm.Category('Body')]
     [System.String]
     # The geo-location where the resource lives
     ${Location},
 
     [Parameter()]
-    [Microsoft.Azure.PowerShell.Cmdlets.StackHciVM.Category('Body')]
+    [Microsoft.Azure.PowerShell.Cmdlets.StackHCIVm.Category('Body')]
     [System.Int32]
     # The block size, in bytes, of the virtual hard disk.  
     ${BlockSizeBytes},
 
     [Parameter()]
-    [Microsoft.Azure.PowerShell.Cmdlets.StackHciVM.Category('Body')]
+    [Microsoft.Azure.PowerShell.Cmdlets.StackHCIVm.Category('Body')]
     [System.String]
     # Storage ContainerID of the storage container to be used for VHD
     ${StoragePathId},
 
     [Parameter()]
-    [Microsoft.Azure.PowerShell.Cmdlets.StackHciVM.Category('Body')]
+    [Microsoft.Azure.PowerShell.Cmdlets.StackHCIVm.Category('Body')]
     [System.String]
     # Storage Container Name to be used for the VHD 
     ${StoragePathName},
 
     [Parameter()]
-    [Microsoft.Azure.PowerShell.Cmdlets.StackHciVM.Category('Body')]
+    [Microsoft.Azure.PowerShell.Cmdlets.StackHCIVm.Category('Body')]
     [System.String]
     # Storage Container resource group. The resource group of the virtual hard disk will be used if this value is not provided. 
     ${StoragePathResourceGroup},
 
     [Parameter(Mandatory)]
-    [Microsoft.Azure.PowerShell.Cmdlets.StackHciVM.Category('Body')]
+    [Microsoft.Azure.PowerShell.Cmdlets.StackHCIVm.Category('Body')]
     [System.String]
     # The ARM Id of the extended location to create virtual hard disk resource in.
     ${CustomLocationId},
 
     [Parameter()]
-    [ArgumentCompleter([Microsoft.Azure.PowerShell.Cmdlets.StackHciVM.Support.DiskFileFormat])]
-    [Microsoft.Azure.PowerShell.Cmdlets.StackHciVM.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.StackHciVM.Support.DiskFileFormat]
+    [ArgumentCompleter([Microsoft.Azure.PowerShell.Cmdlets.StackHCIVm.Support.DiskFileFormat])]
+    [Microsoft.Azure.PowerShell.Cmdlets.StackHCIVm.Category('Body')]
+    [Microsoft.Azure.PowerShell.Cmdlets.StackHCIVm.Support.DiskFileFormat]
     # The format of the actual VHD file [vhd, vhdx]
     ${DiskFileFormat},
 
     [Parameter()]
-    [Microsoft.Azure.PowerShell.Cmdlets.StackHciVM.Category('Body')]
+    [Microsoft.Azure.PowerShell.Cmdlets.StackHCIVm.Category('Body')]
     [System.Int64]
     # Size of the disk in GB
     ${SizeGb},
 
     [Parameter()]
-    [Microsoft.Azure.PowerShell.Cmdlets.StackHciVM.Category('Body')]
+    [Microsoft.Azure.PowerShell.Cmdlets.StackHCIVm.Category('Body')]
     [System.Management.Automation.SwitchParameter]
     # Boolean for enabling dynamic sizing on the virtual hard disk
     ${Dynamic},
 
     [Parameter()]
-    [ArgumentCompleter([Microsoft.Azure.PowerShell.Cmdlets.StackHciVM.Support.HyperVGeneration])]
-    [Microsoft.Azure.PowerShell.Cmdlets.StackHciVM.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.StackHciVM.Support.HyperVGeneration]
+    [ArgumentCompleter([Microsoft.Azure.PowerShell.Cmdlets.StackHCIVm.Support.HyperVGeneration])]
+    [Microsoft.Azure.PowerShell.Cmdlets.StackHCIVm.Category('Body')]
+    [Microsoft.Azure.PowerShell.Cmdlets.StackHCIVm.Support.HyperVGeneration]
     # The hypervisor generation of the Virtual Machine [V1, V2]
     ${HyperVGeneration},
 
     [Parameter()]
-    [Microsoft.Azure.PowerShell.Cmdlets.StackHciVM.Category('Body')]
+    [Microsoft.Azure.PowerShell.Cmdlets.StackHCIVm.Category('Body')]
     [System.Int32]
     # Logical Sector Bytes of the Disk
     ${LogicalSectorBytes},
 
     [Parameter()]
-    [Microsoft.Azure.PowerShell.Cmdlets.StackHciVM.Category('Body')]
+    [Microsoft.Azure.PowerShell.Cmdlets.StackHCIVm.Category('Body')]
     [System.Int32]
     # Physical Sector Bytes of the Disk
     ${PhysicalSectorBytes},
 
     [Parameter()]
-    [Microsoft.Azure.PowerShell.Cmdlets.StackHciVM.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.StackHciVM.Runtime.Info(PossibleTypes=([Microsoft.Azure.PowerShell.Cmdlets.StackHciVM.Models.Api30.ITrackedResourceTags]))]
+    [Microsoft.Azure.PowerShell.Cmdlets.StackHCIVm.Category('Body')]
+    [Microsoft.Azure.PowerShell.Cmdlets.StackHCIVm.Runtime.Info(PossibleTypes=([Microsoft.Azure.PowerShell.Cmdlets.StackHCIVm.Models.Api30.ITrackedResourceTags]))]
     [System.Collections.Hashtable]
     # Resource tags.
     ${Tags}
@@ -187,7 +187,7 @@ param(
             $null = $PSBoundParameters.Remove("StoragePathResourceGroup")
         }
 
-        return Az.StackHCIVm.internal\New-AzStackHciVMVirtualHardDisk @PSBoundParameters
+        return Az.StackHCIVm.internal\New-AzStackHCIVmVirtualHardDisk @PSBoundParameters
     
 }
 

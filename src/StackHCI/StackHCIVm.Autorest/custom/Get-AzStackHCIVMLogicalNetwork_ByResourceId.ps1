@@ -15,9 +15,9 @@
 
 <#
 .Synopsis
-Gets a logical network 
+Gets a logical network
 .Description
-Gets a logical network 
+Gets a logical network
 .Example
 PS C:\> {{ Add code here }}
 
@@ -32,14 +32,14 @@ PS C:\> {{ Add code here }}
 Microsoft.Azure.PowerShell.Cmdlets.StackHCIVm.Models.Api20230901Preview.ILogicalNetworks
 
 .Link
-https://learn.microsoft.com/powershell/module/az.stackhcivm/get-azstackhcivmlogicalnetwork
+https://learn.microsoft.com/powershell/module/az.stackhci/get-azstackhcivmlogicalnetwork
 #>
-function Get-AzStackHciVMLogicalNetwork_ByResourceId {
-[OutputType([Microsoft.Azure.PowerShell.Cmdlets.StackHciVM.Models.Api20230901Preview.ILogicalNetworks])]
+function Get-AzStackHCIVmLogicalNetwork_ByResourceId {
+[OutputType([Microsoft.Azure.PowerShell.Cmdlets.StackHCIVm.Models.Api20230901Preview.ILogicalNetworks])]
 [CmdletBinding(PositionalBinding=$false)]
 
 param(
-    [Microsoft.Azure.PowerShell.Cmdlets.StackHciVM.Category('Path')]
+    [Microsoft.Azure.PowerShell.Cmdlets.StackHCIVm.Category('Path')]
     [System.String]
     # The ARM ID of the logical network.
     ${ResourceId}
@@ -57,7 +57,7 @@ param(
             $null = $PSBoundParameters.Remove("SubscriptionId")
             $PSBoundParameters.Add("SubscriptionId", $subscriptionId)
             
-            return  Az.StackHciVM\Get-AzStackHciVMLogicalNetwork @PSBoundParameters
+            return  Az.StackHCIVm\Get-AzStackHCIVmLogicalNetwork @PSBoundParameters
 
         } else {             
             Write-Error "Resource ID is invalid: $ResourceId"

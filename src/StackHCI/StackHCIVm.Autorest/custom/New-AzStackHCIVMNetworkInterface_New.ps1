@@ -41,91 +41,91 @@ IPCONFIGURATION <IIPConfiguration[]>: IPConfigurations - A list of IPConfigurati
   [Name <String>]: Name - The name of the resource that is unique within a resource group. This name can be used to access the resource.
   [SubnetId <String>]: ID - The ARM resource id in the form of /subscriptions/{SubscriptionId}/resourceGroups/{ResourceGroupName}/...
 .Link
-https://learn.microsoft.com/powershell/module/az.stackhcivm/new-azstackhcivmnetworkinterface
+https://learn.microsoft.com/powershell/module/az.stackhci/new-azstackhcivmnetworkinterface
 #>
 function New-AzStackHCIVmNetworkInterface {
-[OutputType([Microsoft.Azure.PowerShell.Cmdlets.StackHciVM.Models.Api20230901Preview.INetworkInterfaces])]
+[OutputType([Microsoft.Azure.PowerShell.Cmdlets.StackHCIVm.Models.Api20230901Preview.INetworkInterfaces])]
 [CmdletBinding(PositionalBinding=$false, SupportsShouldProcess, ConfirmImpact='Medium')]
 param(
     [Parameter(Mandatory)]
     [Alias('NetworkInterfaceName')]
-    [Microsoft.Azure.PowerShell.Cmdlets.StackHciVM.Category('Path')]
+    [Microsoft.Azure.PowerShell.Cmdlets.StackHCIVm.Category('Path')]
     [System.String]
     # Name of the Network Interface
     ${Name},
 
     [Parameter(Mandatory)]
-    [Microsoft.Azure.PowerShell.Cmdlets.StackHciVM.Category('Path')]
+    [Microsoft.Azure.PowerShell.Cmdlets.StackHCIVm.Category('Path')]
     [System.String]
     # The name of the resource group.
     # The name is case insensitive.
     ${ResourceGroupName},
 
     [Parameter()]
-    [Microsoft.Azure.PowerShell.Cmdlets.StackHciVM.Category('Path')]
-    [Microsoft.Azure.PowerShell.Cmdlets.StackHciVM.Runtime.DefaultInfo(Script='(Get-AzContext).Subscription.Id')]
+    [Microsoft.Azure.PowerShell.Cmdlets.StackHCIVm.Category('Path')]
+    [Microsoft.Azure.PowerShell.Cmdlets.StackHCIVm.Runtime.DefaultInfo(Script='(Get-AzContext).Subscription.Id')]
     [System.String]
     # The ID of the target subscription.
     ${SubscriptionId},
 
     [Parameter(Mandatory)]
-    [Microsoft.Azure.PowerShell.Cmdlets.StackHciVM.Category('Body')]
+    [Microsoft.Azure.PowerShell.Cmdlets.StackHCIVm.Category('Body')]
     [System.String]
     # The geo-location where the resource lives
     ${Location},
 
     [Parameter(Mandatory)]
-    [Microsoft.Azure.PowerShell.Cmdlets.StackHciVM.Category('Body')]
+    [Microsoft.Azure.PowerShell.Cmdlets.StackHCIVm.Category('Body')]
     [System.String]
     # The name of the extended location.
     ${CustomLocationId},
 
     [Parameter()]
     [AllowEmptyCollection()]
-    [Microsoft.Azure.PowerShell.Cmdlets.StackHciVM.Category('Body')]
+    [Microsoft.Azure.PowerShell.Cmdlets.StackHCIVm.Category('Body')]
     [System.String[]]
     # List of DNS server IP Addresses for the interface
     ${DnsServers},
 
     [Parameter()]
-    [Microsoft.Azure.PowerShell.Cmdlets.StackHciVM.Category('Body')]
+    [Microsoft.Azure.PowerShell.Cmdlets.StackHCIVm.Category('Body')]
     [System.String]
     # PrivateIPAddress - Private IP address of the IP configuration.
     ${IpAddress},
 
     [Parameter()]
-    [Microsoft.Azure.PowerShell.Cmdlets.StackHciVM.Category('Body')]
+    [Microsoft.Azure.PowerShell.Cmdlets.StackHCIVm.Category('Body')]
     [System.String]
     # MacAddress - The MAC address of the network interface.
     ${MacAddress},
     
     [Parameter()]
-    [Microsoft.Azure.PowerShell.Cmdlets.StackHciVM.Category('Body')]
+    [Microsoft.Azure.PowerShell.Cmdlets.StackHCIVm.Category('Body')]
     [System.String]
     #  The ARM resource id of the Subnet.
     ${SubnetId},
 
     [Parameter()]
-    [Microsoft.Azure.PowerShell.Cmdlets.StackHciVM.Category('Body')]
+    [Microsoft.Azure.PowerShell.Cmdlets.StackHCIVm.Category('Body')]
     [System.String]
     #  The name of the Subnet.
     ${SubnetName},
 
     [Parameter()]
-    [Microsoft.Azure.PowerShell.Cmdlets.StackHciVM.Category('Body')]
+    [Microsoft.Azure.PowerShell.Cmdlets.StackHCIVm.Category('Body')]
     [System.String]
     # Resource Group of the Subnet.
     ${SubnetResourceGroup},
 
     [Parameter()]
-    [Microsoft.Azure.PowerShell.Cmdlets.StackHciVM.Category('Body')]
+    [Microsoft.Azure.PowerShell.Cmdlets.StackHCIVm.Category('Body')]
     [System.Collections.Hashtable[]]
     # A list of IPConfigurations of the network interface.
     ${IpConfigurations},
 
     [Parameter()]
-    [Microsoft.Azure.PowerShell.Cmdlets.StackHciVM.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.StackHciVM.Runtime.Info(PossibleTypes=([Microsoft.Azure.PowerShell.Cmdlets.StackHciVM.Models.Api30.ITrackedResourceTags]))]
+    [Microsoft.Azure.PowerShell.Cmdlets.StackHCIVm.Category('Body')]
+    [Microsoft.Azure.PowerShell.Cmdlets.StackHCIVm.Runtime.Info(PossibleTypes=([Microsoft.Azure.PowerShell.Cmdlets.StackHCIVm.Models.Api30.ITrackedResourceTags]))]
     [System.Collections.Hashtable]
     # Resource tags.
     ${Tags}
@@ -175,7 +175,7 @@ param(
         Write-Error "Invalid SubnetId: $SubnetId" -ErrorAction Stop
       }
       
-      $subnet = Az.StackHciVM\Get-AzStackHciVMLogicalNetwork -ResourceId $SubnetId  -ErrorAction SilentlyContinue
+      $subnet = Az.StackHCIVm\Get-AzStackHCIVmLogicalNetwork -ResourceId $SubnetId  -ErrorAction SilentlyContinue
 
       if ($subnet -eq $null){
         Write-Error "A Logical Network with id : $SubnetId does not exist." -ErrorAction Stop
@@ -200,6 +200,6 @@ param(
 
   }
 
-    return Az.StackHciVM.internal\New-AzStackHciVMNetworkInterface @PSBoundParameters
+    return Az.StackHCIVm.internal\New-AzStackHCIVmNetworkInterface @PSBoundParameters
 
 }

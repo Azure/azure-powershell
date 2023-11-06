@@ -29,7 +29,7 @@ System.Boolean
 COMPLEX PARAMETER PROPERTIES
 
 .Link
-https://learn.microsoft.com/powershell/module/az.stackhcivm/remove-azstackhcivmvirtualharddisk
+https://learn.microsoft.com/powershell/module/az.stackhci/remove-azstackhcivmvirtualharddisk
 #>
 function Remove-AzStackHCIVmVirtualHardDisk {
     [OutputType([System.Boolean])]
@@ -97,7 +97,7 @@ function Remove-AzStackHCIVmVirtualHardDisk {
                 $null = $PSBoundParameters.Remove("Force")
             }
 
-            Az.StackHciVM.internal\Remove-AzStackHciVMVirtualHardDisk @PSBoundParameters
+            Az.StackHCIVm.internal\Remove-AzStackHCIVmVirtualHardDisk @PSBoundParameters
         }
 
     }
