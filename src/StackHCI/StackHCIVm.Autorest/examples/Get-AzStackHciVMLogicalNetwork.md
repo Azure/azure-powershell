@@ -1,23 +1,18 @@
-### Example 1:  Get a Logical Network
+### Example 1: {{ Add title here }}
 ```powershell
-PS C:\> Get-AzStackHCIVmLogicalNetwork -Name "testLnet" -ResourceGroupName "test-rg" 
-```
-```output
-Name            ResourceGroupName
-----            -----------------
-testLnet       test-rg
+PS C:\> {{ Add code here }}
+
+{{ Add output here }}
 ```
 
-This command gets a specific logical network in the specified resource group. 
+{{ Add description here }}
 
-### Example 2: List all Logical Networks in a Resource Group  
+### Example 2: {{ Add title here }}
 ```powershell
-PS C:\> Get-AzStackHCIVmLogicalNetworks -ResourceGroupName 'test-rg'
+PS C:\> {{ Add code here }}
+
+{{ Add output here }}
 ```
-```output
-Name            ResourceGroupName
-----            -----------------
-testLnet       test-rg
-```
-This command lists all logical networks in the specified resource group. 
+
+{{ Add description here }}
 

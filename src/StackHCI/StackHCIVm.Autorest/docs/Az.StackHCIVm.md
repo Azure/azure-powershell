@@ -20,9 +20,6 @@ The operation to add a network interface to a virtual machine.
 ### [Get-AzStackHCIVmImage](Get-AzStackHCIVmImage.md)
 Gets a gallery image
 
-### [Get-AzStackHciVMLogicalNetwork](Get-AzStackHciVMLogicalNetwork.md)
-Gets a logical network
-
 ### [Get-AzStackHCIVmLogicalNetwork](Get-AzStackHCIVmLogicalNetwork.md)
 
 
