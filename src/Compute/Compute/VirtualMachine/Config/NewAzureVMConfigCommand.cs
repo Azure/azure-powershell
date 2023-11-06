@@ -400,7 +400,7 @@ namespace Microsoft.Azure.Commands.Compute
                 }
             }
 
-            if (this.IsParameterBound(c => c.SecurityType) && this.SecurityType?.ToLower() == ConstantValues.StandardSecurityType)
+            if (this.SecurityType != null && this.SecurityType?.ToLower() == ConstantValues.StandardSecurityType)
             {
                 if (vm.SecurityProfile == null)
                 {

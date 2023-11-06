@@ -139,8 +139,10 @@ namespace Microsoft.Azure.Commands.Compute.Automation
                     }
                     else
                     {
-                        //Consider upgrading security for your workloads using Azure Trusted Launch VMs. To know more about Trusted Launch, please visit https://aka.ms/TrustedLaunch
-                        WriteInformation("Consider upgrading security for your workloads using Azure Trusted Launch VMs. To know more about Trusted Launch, please visit https://aka.ms/TrustedLaunch", new string[] { "PSHOST" });
+                            if (this.AsJobPresent() == false) // to avoid a failure when it is a job. Seems to fail when it is a job.
+                            {
+                                WriteInformation(HelpMessages.TrustedLaunchUpgradeMessage, new string[] { "PSHOST" });
+                            }
                     }
                 }
                 // Reset Standard value to null.

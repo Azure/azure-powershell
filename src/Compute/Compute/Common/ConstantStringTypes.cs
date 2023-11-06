@@ -100,7 +100,7 @@ namespace Microsoft.Azure.Commands.Compute.Common
         public const string TrustedLaunchDefaultOffer = "WindowsServer";
         public const string TrustedLaunchDefaultSku = "2022-datacenter-azure-edition";
         public const string TrustedLaunchDefaultVersion = "latest";
-        public const string TRustedLaunchDefaultHyperVGen = "v2";
+        public const string TrustedLaunchDefaultHyperVGen = "v2";
     }
 
     public static class ProfileNouns

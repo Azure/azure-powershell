@@ -764,7 +764,8 @@ namespace Microsoft.Azure.Commands.Compute
             SecurityGroupName = SecurityGroupName ?? Name;
 
             // Check TrustedLaunch UEFI values defaulting
-            if (this.IsParameterBound(c => c.SecurityType))
+            if (this.IsParameterBound(c => c.SecurityType)
+                && this.SecurityType != null)
             {
                 if (this.SecurityType?.ToLower() == ConstantValues.TrustedLaunchSecurityType || this.SecurityType?.ToLower() == ConstantValues.ConfidentialVMSecurityType)
                 {
@@ -997,22 +998,17 @@ namespace Microsoft.Azure.Commands.Compute
             }
 
             // Disk attached scenario for TL defaulting
+            // Determines if the disk is HyperVGeneration V2 supported or not.
             if (this.VM.SecurityProfile?.SecurityType == null
                 && this.VM.StorageProfile?.OsDisk?.ManagedDisk?.Id != null)
             {
-                /*
-                var compClient = AzureSession.Instance.ClientFactory.CreateArmClient<ComputeManagementClient>(
-                            DefaultProfile.DefaultContext,
-                            AzureEnvironment.Endpoint.ResourceManager);
-                */
                 var mDiskId = this.VM.StorageProfile?.OsDisk?.ManagedDisk.Id.ToString();
-                // /subscriptions/e37510d7-33b6-4676-886f-ee75bcc01871/resourceGroups/adsandvmd3/providers/Microsoft.Compute/disks/v2adsandvmd3d1
                 var diskIdParts = mDiskId.Split(new char[] { '/' }, StringSplitOptions.RemoveEmptyEntries);
                 string rgName = diskIdParts[Array.IndexOf(diskIdParts, "resourceGroups") + 1];
                 string diskName = diskIdParts[Array.IndexOf(diskIdParts, "disks") + 1];
                 var getManagedDisk = ComputeClient.ComputeManagementClient.Disks.Get(rgName, diskName);
-                // getManagedDisk.SecurityProfile.SecurityType == TrustedLaunch
-                if (getManagedDisk.SecurityProfile?.SecurityType?.ToString().ToLower() == ConstantValues.TrustedLaunchSecurityType)
+                if (getManagedDisk.SecurityProfile?.SecurityType != null
+                    && getManagedDisk.SecurityProfile?.SecurityType?.ToString().ToLower() == ConstantValues.TrustedLaunchSecurityType)
                 {
                     defaultTrustedLaunchAndUefi();
                 }
@@ -1020,9 +1016,11 @@ namespace Microsoft.Azure.Commands.Compute
 
             // Guest Attestation extension defaulting scenario check.
             // And SecureBootEnabled and VtpmEnabled defaulting scenario.
-            if (this.VM.SecurityProfile?.SecurityType?.ToLower() == ConstantValues.TrustedLaunchSecurityType || this.VM.SecurityProfile?.SecurityType?.ToLower() == ConstantValues.ConfidentialVMSecurityType)
+            if (this.VM.SecurityProfile?.SecurityType != null
+                && this.VM.SecurityProfile?.SecurityType?.ToLower() == ConstantValues.TrustedLaunchSecurityType 
+                || this.VM.SecurityProfile?.SecurityType?.ToLower() == ConstantValues.ConfidentialVMSecurityType)
             {
-                if (this.VM.SecurityProfile?.UefiSettings != null)
+                if (this.VM?.SecurityProfile?.UefiSettings != null)
                 {
                     this.VM.SecurityProfile.UefiSettings.SecureBootEnabled = this.VM.SecurityProfile.UefiSettings.SecureBootEnabled ?? true;
                     this.VM.SecurityProfile.UefiSettings.VTpmEnabled = this.VM.SecurityProfile.UefiSettings.VTpmEnabled ?? true;
@@ -1061,11 +1059,7 @@ namespace Microsoft.Azure.Commands.Compute
                 else
                 {
                     // handle each field in image reference itself to then call it.
-                    //Microsoft.Rest.Azure.AzureOperationResponse<System.Collections.Generic.IList<Microsoft.Azure.Management.Compute.Models.VirtualMachineImageResource>> imgResponse;
-                    //Microsoft.Rest.Azure.AzureOperationResponse<Microsoft.Azure.Management.Compute.Models.VirtualMachineImage> imgResponse2;
-                    Microsoft.Rest.Azure.AzureOperationResponse<VirtualMachineImage> specificImageRespone;
-
-                    specificImageRespone = retrieveSpecificImageFromNotId();
+                    Microsoft.Rest.Azure.AzureOperationResponse<VirtualMachineImage> specificImageRespone = retrieveSpecificImageFromNotId();
                     setHyperVGenForImageCheckAndTLDefaulting(specificImageRespone);
                 }
             }
@@ -1080,7 +1074,7 @@ namespace Microsoft.Azure.Commands.Compute
                 setTrustedLaunchImage();
             }
 
-            // Standard security type removign value since API does not support it.
+            // Standard security type removing value since API does not support it yet.
             if (this.VM.SecurityProfile?.SecurityType != null
                 && this.VM.SecurityProfile?.SecurityType?.ToString().ToLower() == ConstantValues.StandardSecurityType)
             {
@@ -1204,7 +1198,7 @@ namespace Microsoft.Azure.Commands.Compute
                                 this.VM.Name,
                                 VirtualMachineBGInfoExtensionContext.ExtensionDefaultName,
                                 extensionParameters).GetAwaiter().GetResult();
-                             psResult = ComputeAutoMapperProfile.Mapper.Map<PSAzureOperationResponse>(op2);
+                            psResult = ComputeAutoMapperProfile.Mapper.Map<PSAzureOperationResponse>(op2);
                         }
                     }
 

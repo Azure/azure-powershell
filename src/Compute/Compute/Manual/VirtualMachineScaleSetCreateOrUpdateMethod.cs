@@ -672,6 +672,7 @@ namespace Microsoft.Azure.Commands.Compute.Automation
             
             // API does not currently support Standard securityType value, so need to null it out here. 
             if (this.IsParameterBound(c => c.SecurityType)
+                && this.SecurityType != null
                 && this.SecurityType.ToString().ToLower() == ConstantValues.StandardSecurityType)
             {
                 this.SecurityType = null;
@@ -688,8 +689,6 @@ namespace Microsoft.Azure.Commands.Compute.Automation
                 }          
             }
             
-            var parameters = new Parameters(this, client);
-
             if (shouldGuestAttestationExtBeInstalledSimple()
                 && !this.IsParameterBound(c => c.SystemAssignedIdentity)
                 && !this.IsParameterBound(c => c.UserAssignedIdentity)
@@ -697,6 +696,8 @@ namespace Microsoft.Azure.Commands.Compute.Automation
             {
                 this.SystemAssignedIdentity = true;
             }
+
+            var parameters = new Parameters(this, client);
 
             if (parameters?.ImageAndOsType?.Image?.Version?.ToLower() != "latest")
             {
