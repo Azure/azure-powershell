@@ -17,24 +17,21 @@ if(($null -eq $TestName) -or ($TestName -contains 'AzContainerApp'))
 Describe 'AzContainerApp' {
     It 'CreateExpanded' {
         {
-            $certificateId = (Get-AzContainerAppManagedEnvCert -EnvName $env.EnvName -ResourceGroupName $env.resourceGroup -Name $env.envCertName).Id
-            $customDomain2 = New-AzContainerAppCustomDomainObject -CertificateId $certificateId -Name "www.fabrikam2.com" -BindingType SniEnabled
-            $customDomain3 = New-AzContainerAppCustomDomainObject -CertificateId $certificateId -Name "www.fabrikam3.com" -BindingType SniEnabled
+            $EnvId = (Get-AzContainerAppManagedEnv -ResourceGroupName $env.resourceGroupManaged -Name $env.managedEnv1).Id
 
-            $trafficWeight = New-AzContainerAppTrafficWeightObject -Label production -LatestRevision:$True -Weight 100
-            $secretObject = New-AzContainerAppSecretObject -Name "facebook-secret" -Value "facebook-password"
-
-            $containerAppHttpHeader = New-AzContainerAppProbeHeaderObject -Name Custom-Header -Value Awesome
-            $probe = New-AzContainerAppProbeObject -HttpGetPath "/health" -HttpGetPort 8080 -InitialDelaySecond 3 -PeriodSecond 3 -Type Liveness -HttpGetHttpHeader $containerAppHttpHeader
-            $image = New-AzContainerAppTemplateObject -Name $env.containerAppName2 -Image "mcr.microsoft.com/azuredocs/containerapps-helloworld:latest" -Probe $probe -ResourceCpu 2.0 -ResourceMemory 4.0Gi
-
-            $envId = (Get-AzContainerAppManagedEnv -ResourceGroupName $env.resourceGroup -EnvName $env.envName).Id
-
-            $config = New-AzContainerApp -Name $env.containerAppName2 -ResourceGroupName $env.resourceGroup -Location $env.location -ConfigurationActiveRevisionsMode 'Single' -ManagedEnvironmentId $envId -IngressExternal -IngressTransport 'auto' -IngressTargetPort 80 -TemplateContainer $image -ConfigurationSecret $secretObject -IngressTraffic $trafficWeight -DaprEnabled -DaprAppProtocol 'http' -DaprAppId "container-app-2" -DaprAppPort 8080 -IngressCustomDomain $customDomain2
-            $config.Name | Should -Be $env.containerAppName2
-
-            $config = New-AzContainerApp -Name $env.containerAppName3 -ResourceGroupName $env.resourceGroup -Location $env.location -ConfigurationActiveRevisionsMode 'Single' -ManagedEnvironmentId $envId -IngressExternal -IngressTransport 'auto' -IngressTargetPort 80 -TemplateContainer $image -ConfigurationSecret $secretObject -IngressTraffic $trafficWeight -DaprEnabled -DaprAppProtocol 'http' -DaprAppId "container-app-3" -DaprAppPort 8080 -IngressCustomDomain $customDomain3
-            $config.Name | Should -Be $env.containerAppName3
+            $trafficWeight = New-AzContainerAppTrafficWeightObject -Label "production" -Weight 100 -LatestRevision:$True
+            $iPSecurityRestrictionRule = New-AzContainerAppIPSecurityRestrictionRuleObject -Action "Allow" -IPAddressRange "192.168.1.1/32" -Name "Allow work IP A subnet"
+            $secretObject = New-AzContainerAppSecretObject -Name "redis-config" -Value "redis-password"
+            $configuration = New-AzContainerAppConfigurationObject -IngressIPSecurityRestriction $iPSecurityRestrictionRule -IngressTraffic $trafficWeight -IngressExternal:$True -IngressTargetPort 80 -IngressClientCertificateMode "accept" -CorPolicyAllowedOrigin "https://a.test.com","https://b.test.com" -CorPolicyAllowedMethod "GET","POST" -CorPolicyAllowedHeader "HEADER1","HEADER2" -CorPolicyExposeHeader "HEADER3","HEADER4" -CorPolicyMaxAge 1234 -CorPolicyAllowCredentials:$True -DaprEnabled:$True -DaprAppPort 3000 -DaprAppProtocol "http" -DaprHttpReadBufferSize 30 -DaprHttpMaxRequestSize 10 -DaprLogLevel "debug" -DaprEnableApiLogging:$True -MaxInactiveRevision 10 -ServiceType "redis" -Secret $secretObject
+            $serviceBind = New-AzContainerAppServiceBindObject -Name "redisService" -ServiceId "/subscriptions/$($env.SubscriptionId)/resourceGroups/$($env.resourceGroupManaged)/providers/Microsoft.App/containerApps/$($env.containerApp1)"
+            
+            $probeHttpGetHttpHeader = New-AzContainerAppProbeHeaderObject -Name "Custom-Header" -Value "Awesome"
+            $probe = New-AzContainerAppProbeObject -Type "Liveness" -HttpGetPath "/health" -HttpGetPort 8080 -InitialDelaySecond 3 -PeriodSecond 3 -HttpGetHttpHeader $probeHttpGetHttpHeader
+            $temp = New-AzContainerAppTemplateObject -Image "mcr.microsoft.com/k8se/quickstart-jobs:latest" -Name "simple-hello-world-container" -Probe $probe -ResourceCpu 0.25 -ResourceMemory "0.5Gi"
+            $temp2 = New-AzContainerAppInitContainerTemplateObject -Image "mcr.microsoft.com/k8se/quickstart-jobs:latest" -Name "simple-hello-world-container2" -ResourceCpu 0.25 -ResourceMemory "0.5Gi" -Command "/bin/sh" -Arg "-c","echo hello; sleep 10;"
+            
+            $config = New-AzContainerApp -ResourceGroupName $env.resourceGroupManaged -Name $env.containerApp3 -Location $env.location -Configuration $configuration -TemplateContainer $temp -TemplateInitContainer $temp2 -TemplateServiceBind $serviceBind -EnvironmentId $EnvId
+            $config.Name | Should -Be $env.containerApp3
         } | Should -Not -Throw
     }
 
@@ -47,43 +44,42 @@ Describe 'AzContainerApp' {
 
     It 'Get' {
         {
-            $config = Get-AzContainerApp -ResourceGroupName $env.resourceGroup -Name $env.containerAppName2
-            $config.Name | Should -Be $env.containerAppName2
+            $config = Get-AzContainerApp -ResourceGroupName $env.resourceGroupManaged -Name $env.containerApp3
+            $config.Name | Should -Be $env.containerApp3
         } | Should -Not -Throw
     }
 
     It 'List1' {
         {
-            $config = Get-AzContainerApp -ResourceGroupName $env.resourceGroup
+            $config = Get-AzContainerApp -ResourceGroupName $env.resourceGroupManaged
             $config.Count | Should -BeGreaterThan 0
         } | Should -Not -Throw
     }
 
     It 'UpdateExpanded' {
         {
-            $config = Update-AzContainerApp -ResourceGroupName $env.resourceGroup -Name $env.containerAppName2 -Location $env.location -DaprEnabled -DaprAppProtocol 'http' -DaprAppId "container-app-2" -DaprAppPort 8080
-            $config.Name | Should -Be $env.containerAppName2
+            $newSecretObject = New-AzContainerAppSecretObject -Name "yourkey" -Value "yourvalue"
+            $configuration = New-AzContainerAppConfigurationObject -DaprEnabled:$True -DaprAppPort 3000 -DaprAppProtocol "http" -DaprHttpReadBufferSize 30 -DaprHttpMaxRequestSize 10 -DaprLogLevel "debug" -DaprEnableApiLogging:$True -MaxInactiveRevision 10 -ServiceType "redis" -Secret $newSecretObject
+
+            $config = Update-AzContainerApp -ResourceGroupName $env.resourceGroupManaged -Name $env.containerApp3 -Configuration $configuration -Tag @{"123"="abc"}
+            $config.Name | Should -Be $env.containerApp3
         } | Should -Not -Throw
     }
 
     It 'UpdateViaIdentityExpanded' {
         {
-            $config = Get-AzContainerApp -ResourceGroupName $env.resourceGroup -Name $env.containerAppName3
-            $config = Update-AzContainerApp -InputObject $config -Location $env.location -DaprEnabled -DaprAppProtocol 'http' -DaprAppId "container-app-3" -DaprAppPort 8080
-            $config.Name | Should -Be $env.containerAppName3
+            $secretObject = New-AzContainerAppSecretObject -Name "redis-config" -Value "redis-password"
+            $configuration = New-AzContainerAppConfigurationObject -IngressTraffic $trafficWeight -IngressExternal:$True -IngressTargetPort 80 -Secret $secretObject
+
+            $config = Get-AzContainerApp -ResourceGroupName $env.resourceGroupConnected -Name $env.containerApp2
+            $config = Update-AzContainerApp -InputObject $config -Configuration $configuration -Tag @{"123"="abc"}
+            $config.Name | Should -Be $env.containerApp2
         } | Should -Not -Throw
     }
 
     It 'Delete' {
         {
-            Remove-AzContainerApp -ResourceGroupName $env.resourceGroup -Name $env.containerAppName2
-        } | Should -Not -Throw
-    }
-
-    It 'DeleteViaIdentity' {
-        {
-            $config = Get-AzContainerApp -ResourceGroupName $env.resourceGroup -Name $env.containerAppName3
-            Remove-AzContainerApp -InputObject $config
+            Remove-AzContainerApp -ResourceGroupName $env.resourceGroupManaged -Name $env.containerApp3
         } | Should -Not -Throw
     }
 }

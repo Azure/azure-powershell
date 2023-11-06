@@ -29,34 +29,53 @@ Get-AzContainerAppManagedEnvCert -EnvName <String> -Name <String> -ResourceGroup
 Get-AzContainerAppManagedEnvCert -InputObject <IAppIdentity> [-DefaultProfile <PSObject>] [<CommonParameters>]
 ```
 
+### GetViaIdentityManagedEnvironment
+```
+Get-AzContainerAppManagedEnvCert -ManagedEnvironmentInputObject <IAppIdentity> -Name <String>
+ [-DefaultProfile <PSObject>] [<CommonParameters>]
+```
+
 ## DESCRIPTION
 Get the specified Certificate.
 
 ## EXAMPLES
 
-### Example 1: List the specified Certificate.
+### Example 1: List the specified Certificate by env name.
 ```powershell
-Get-AzContainerAppManagedEnvCert -EnvName azps-env -ResourceGroupName azpstest_gp
+Get-AzContainerAppManagedEnvCert -EnvName azps-env -ResourceGroupName azps_test_group_app
 ```
 
 ```output
-Name             Location      Issuer              ProvisioningState SubjectName         Thumbprint                               ResourceGroupName
-----             --------      ------              ----------------- -----------         ----------                               -----------------
-azps-env-cert    canadacentral CN=www.fabrikam.com Succeeded         CN=www.fabrikam.com 684DFA8457230B8A04675FBCB7251FA88AE10D80 azpstest_gp
-azps-env-cert-02 canadacentral CN=www.fabrikam.com Succeeded         CN=www.fabrikam.com 684DFA8457230B8A04675FBCB7251FA88AE10D80 azpstest_gp
+Name          Location Issuer              ProvisioningState SubjectName         Thumbprint                               ResourceGroupName
+----          -------- ------              ----------------- -----------         ----------                               -----------------
+azps-env-cert eastus   CN=www.fabrikam.com Succeeded         CN=www.fabrikam.com F61C9A8C53D0500F819463A66C5921AA09E1B787 azps_test_group_app
 ```
 
-List the specified Certificate.
+List the specified Certificate by env name.
 
-### Example 2: Get the specified Certificate.
+### Example 2: Get the specified Certificate by name.
 ```powershell
-Get-AzContainerAppManagedEnvCert -EnvName azps-env -ResourceGroupName azpstest_gp -Name azps-env-cert
+Get-AzContainerAppManagedEnvCert -EnvName azps-env -ResourceGroupName azps_test_group_app -Name azps-env-cert
 ```
 
 ```output
-Name          Location      Issuer              ProvisioningState SubjectName         Thumbprint                               ResourceGroupName
-----          --------      ------              ----------------- -----------         ----------                               -----------------
-azps-env-cert canadacentral CN=www.fabrikam.com Succeeded         CN=www.fabrikam.com 684DFA8457230B8A04675FBCB7251FA88AE10D80 azpstest_gp
+Name          Location Issuer              ProvisioningState SubjectName         Thumbprint                               ResourceGroupName
+----          -------- ------              ----------------- -----------         ----------                               -----------------
+azps-env-cert eastus   CN=www.fabrikam.com Succeeded         CN=www.fabrikam.com F61C9A8C53D0500F819463A66C5921AA09E1B787 azps_test_group_app
+```
+
+Get the specified Certificate by name.
+
+### Example 3: Get the specified Certificate.
+```powershell
+$managedenv = Get-AzContainerAppManagedEnv -Name azps-env -ResourceGroupName azps_test_group_app
+Get-AzContainerAppManagGet-AzContainerAppManagedEnvCert -ManagedEnvironmentInputObject $managedenv -Name azps-env-cert
+```
+
+```output
+Name          Location Issuer              ProvisioningState SubjectName         Thumbprint                               ResourceGroupName
+----          -------- ------              ----------------- -----------         ----------                               -----------------
+azps-env-cert eastus   CN=www.fabrikam.com Succeeded         CN=www.fabrikam.com F61C9A8C53D0500F819463A66C5921AA09E1B787 azps_test_group_app
 ```
 
 Get the specified Certificate.
@@ -64,7 +83,8 @@ Get the specified Certificate.
 ## PARAMETERS
 
 ### -DefaultProfile
-The credentials, account, tenant, and subscription used for communication with Azure.
+The DefaultProfile parameter is not functional.
+Use the SubscriptionId parameter when available if executing the cmdlet against a different subscription.
 
 ```yaml
 Type: System.Management.Automation.PSObject
@@ -109,12 +129,28 @@ Accept pipeline input: True (ByValue)
 Accept wildcard characters: False
 ```
 
+### -ManagedEnvironmentInputObject
+Identity Parameter
+To construct, see NOTES section for MANAGEDENVIRONMENTINPUTOBJECT properties and create a hash table.
+
+```yaml
+Type: Microsoft.Azure.PowerShell.Cmdlets.App.Models.IAppIdentity
+Parameter Sets: GetViaIdentityManagedEnvironment
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: True (ByValue)
+Accept wildcard characters: False
+```
+
 ### -Name
 Name of the Certificate.
 
 ```yaml
 Type: System.String
-Parameter Sets: Get
+Parameter Sets: Get, GetViaIdentityManagedEnvironment
 Aliases: CertificateName
 
 Required: True
@@ -164,30 +200,9 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.App.Models.Api20220301.ICertificate
+### Microsoft.Azure.PowerShell.Cmdlets.App.Models.ICertificate
 
 ## NOTES
-
-ALIASES
-
-COMPLEX PARAMETER PROPERTIES
-
-To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
-
-
-`INPUTOBJECT <IAppIdentity>`: Identity Parameter
-  - `[AuthConfigName <String>]`: Name of the Container App AuthConfig.
-  - `[CertificateName <String>]`: Name of the Certificate.
-  - `[ComponentName <String>]`: Name of the Dapr Component.
-  - `[ContainerAppName <String>]`: Name of the Container App.
-  - `[EnvironmentName <String>]`: Name of the Managed Environment.
-  - `[Id <String>]`: Resource identity path
-  - `[ReplicaName <String>]`: Name of the Container App Revision Replica.
-  - `[ResourceGroupName <String>]`: The name of the resource group. The name is case insensitive.
-  - `[RevisionName <String>]`: Name of the Container App Revision.
-  - `[SourceControlName <String>]`: Name of the Container App SourceControl.
-  - `[StorageName <String>]`: Name of the storage.
-  - `[SubscriptionId <String>]`: The ID of the target subscription.
 
 ## RELATED LINKS
 

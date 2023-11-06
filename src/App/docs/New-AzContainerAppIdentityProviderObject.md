@@ -1,7 +1,7 @@
 ---
 external help file:
 Module Name: Az.App
-online version: https://learn.microsoft.com/powershell/module/az.app/new-azcontainerappidentityproviderobject
+online version: https://learn.microsoft.com/powershell/module/Az.App/new-azcontainerappidentityproviderobject
 schema: 2.0.0
 ---
 
@@ -44,13 +44,13 @@ Create an in-memory object for IdentityProviders.
 
 ### Example 1: Create an IdentityProviders object for AuthConfig.
 ```powershell
-New-AzContainerAppIdentityProviderObject -RegistrationAppId xxxxxx@xxx.com -RegistrationAppSecretSettingName facebook-secret
+New-AzContainerAppIdentityProviderObject -RegistrationAppId xxxxxx@xxx.com -RegistrationAppSecretSettingName redis-secret
 ```
 
 ```output
 ...                              : ...
 RegistrationAppId                : xxxxxx@xxx.com
-RegistrationAppSecretSettingName : facebook-secret
+RegistrationAppSecretSettingName : redis-secret
 ...                              : ...
 ```
 
@@ -265,7 +265,7 @@ The map of the name of the alias of each custom Open ID Connect provider to the
 To construct, see NOTES section for CUSTOMOPENIDCONNECTPROVIDER properties and create a hash table.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.App.Models.Api20220301.IIdentityProvidersCustomOpenIdConnectProviders
+Type: Microsoft.Azure.PowerShell.Cmdlets.App.Models.IIdentityProvidersCustomOpenIdConnectProviders
 Parameter Sets: (All)
 Aliases:
 
@@ -691,19 +691,9 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.App.Models.Api20220301.IdentityProviders
+### Microsoft.Azure.PowerShell.Cmdlets.App.Models.IdentityProviders
 
 ## NOTES
-
-ALIASES
-
-COMPLEX PARAMETER PROPERTIES
-
-To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
-
-
-`CUSTOMOPENIDCONNECTPROVIDER <IIdentityProvidersCustomOpenIdConnectProviders>`: The map of the name of the alias of each custom Open ID Connect provider to the         configuration settings of the custom Open ID Connect provider.
-  - `[(Any) <ICustomOpenIdConnectProvider>]`: This indicates any property can be added to this object.
 
 ## RELATED LINKS
 

@@ -4,9 +4,9 @@ New-AzContainerAppVolumeObject -Name "volumeName" -StorageName "azpssa"
 ```
 
 ```output
-Name       StorageName StorageType
-----       ----------- -----------
-volumeName azpssa
+MountOption Name       StorageName StorageType
+----------- ----       ----------- -----------
+            volumeName azpssa
 ```
 
 Create a Volume object for ContainerApp.

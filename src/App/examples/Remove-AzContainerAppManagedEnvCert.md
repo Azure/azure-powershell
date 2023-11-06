@@ -1,13 +1,24 @@
-### Example 1: Deletes the specified Certificate.
+### Example 1: Delete a Container App ManagedEnvCert.
 ```powershell
-Remove-AzContainerAppManagedEnvCert -EnvName azps-env -ResourceGroupName azpstest_gp -Name azps-env-cert-02
+Remove-AzContainerAppManagedEnvCert -EnvName azps-env -ResourceGroupName azps_test_group_app -Name azps-env-cert
 ```
 
-Deletes the specified Certificate.
+Delete a Container App ManagedEnvCert.
 
-### Example 2: Deletes the specified Certificate.
+### Example 2: Delete a Container App ManagedEnvCert.
 ```powershell
-Get-AzContainerAppManagedEnvCert -EnvName azps-env -ResourceGroupName azpstest_gp -Name azps-env-cert-02 | Remove-AzContainerAppManagedEnvCert
+$managedenvcert = Get-AzContainerAppManagedEnvCert -EnvName azps-env -ResourceGroupName azps_test_group_app -Name azps-env-cert
+
+Remove-AzContainerAppManagedEnvCert -InputObject $managedenvcert
 ```
 
-Deletes the specified Certificate.
+Delete a Container App ManagedEnvCert.
+
+### Example 3: Delete a Container App ManagedEnvCert.
+```powershell
+$managedenv = Get-AzContainerAppManagedEnv -Name azps-env -ResourceGroupName azps_test_group_app
+
+Remove-AzContainerAppManagedEnvCert -ManagedEnvironmentInputObject $managedenv -Name azps-env-cert
+```
+
+Delete a Container App ManagedEnvCert.

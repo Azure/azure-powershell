@@ -65,11 +65,17 @@ Gets a private endpoint connection.
 ### [Get-AzKustoPrivateLinkResource](Get-AzKustoPrivateLinkResource.md)
 Gets a private link resource.
 
+### [Get-AzKustoSandboxCustomImage](Get-AzKustoSandboxCustomImage.md)
+Returns a sandbox custom image
+
 ### [Get-AzKustoScript](Get-AzKustoScript.md)
 Gets a Kusto cluster database script.
 
 ### [Get-AzKustoSku](Get-AzKustoSku.md)
 Lists eligible region SKUs for Kusto resource provider by Azure region.
+
+### [Invoke-AzKustoClusterMigration](Invoke-AzKustoClusterMigration.md)
+Migrate data from a Kusto cluster to another cluster.
 
 ### [Invoke-AzKustoDataConnectionValidation](Invoke-AzKustoDataConnectionValidation.md)
 Checks that the data connection parameters are valid.
@@ -79,6 +85,9 @@ Detaches all followers of a database owned by this cluster.
 
 ### [Invoke-AzKustoDiagnoseClusterVirtualNetwork](Invoke-AzKustoDiagnoseClusterVirtualNetwork.md)
 Diagnoses network connectivity status for external resources on which the service is dependent on.
+
+### [Invoke-AzKustoInviteDatabaseFollower](Invoke-AzKustoInviteDatabaseFollower.md)
+Generates an invitation token that allows attaching a follower database to this database.
 
 ### [New-AzKustoAttachedDatabaseConfiguration](New-AzKustoAttachedDatabaseConfiguration.md)
 Creates or updates an attached database configuration.
@@ -103,6 +112,9 @@ Creates a managed private endpoint.
 
 ### [New-AzKustoPrivateEndpointConnection](New-AzKustoPrivateEndpointConnection.md)
 Approve or reject a private endpoint connection with a given name.
+
+### [New-AzKustoSandboxCustomImage](New-AzKustoSandboxCustomImage.md)
+Creates or updates a sandbox custom image.
 
 ### [New-AzKustoScript](New-AzKustoScript.md)
 Creates a Kusto database script.
@@ -137,8 +149,11 @@ Deletes a managed private endpoint.
 ### [Remove-AzKustoPrivateEndpointConnection](Remove-AzKustoPrivateEndpointConnection.md)
 Deletes a private endpoint connection with a given name.
 
+### [Remove-AzKustoSandboxCustomImage](Remove-AzKustoSandboxCustomImage.md)
+Deletes a sandbox custom image.
+
 ### [Remove-AzKustoScript](Remove-AzKustoScript.md)
-Deletes a Kusto principalAssignment.
+Deletes a Kusto database script.
 
 ### [Start-AzKustoCluster](Start-AzKustoCluster.md)
 Starts a Kusto cluster.
@@ -167,6 +182,9 @@ Checks that the data connection name is valid and is not already in use.
 ### [Test-AzKustoManagedPrivateEndpointNameAvailability](Test-AzKustoManagedPrivateEndpointNameAvailability.md)
 Checks that the managed private endpoints resource name is valid and is not already in use.
 
+### [Test-AzKustoSandboxCustomImageNameAvailability](Test-AzKustoSandboxCustomImageNameAvailability.md)
+Checks that the sandbox custom image resource name is valid and is not already in use.
+
 ### [Test-AzKustoScriptNameAvailability](Test-AzKustoScriptNameAvailability.md)
 Checks that the script name is valid and is not already in use.
 
@@ -181,6 +199,9 @@ Updates a data connection.
 
 ### [Update-AzKustoManagedPrivateEndpoint](Update-AzKustoManagedPrivateEndpoint.md)
 Updates a managed private endpoint.
+
+### [Update-AzKustoSandboxCustomImage](Update-AzKustoSandboxCustomImage.md)
+Updates a sandbox custom image.
 
 ### [Update-AzKustoScript](Update-AzKustoScript.md)
 Updates a database script.

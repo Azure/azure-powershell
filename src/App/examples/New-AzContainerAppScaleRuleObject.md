@@ -1,15 +1,12 @@
-### Example 1: Create a ScaleRule object for ContainerApp.
+### Example 1: Create an in-memory object for ScaleRule.
 ```powershell
-$scaleRule = @()
-$scaleRule += New-AzContainerAppScaleRuleObject -Name scaleRuleName1 -AzureQueueLength 30 -AzureQueueName azps_containerapp -CustomType "azure-servicebus"
-$scaleRule += New-AzContainerAppScaleRuleObject -Name scaleRuleName2 -AzureQueueLength 30 -AzureQueueName azps_containerapp -CustomType "azure-servicebus"
+New-AzContainerAppScaleRuleObject -Name "httpscalingrule" -CustomType "http" -AzureQueueLength 30 -AzureQueueName azps-containerapp
 ```
 
 ```output
 Name
 ----
-scaleRuleName
+httpscalingrule
 ```
 
-Create a ScaleRule object for ContainerApp.
-The ScaleRule object as value of the `ScaleRule` parameter in the cmdlet `New-AzContainerApp`.
+Create an in-memory object for ScaleRule.

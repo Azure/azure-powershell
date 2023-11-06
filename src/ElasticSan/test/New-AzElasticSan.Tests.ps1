@@ -14,7 +14,7 @@ if(($null -eq $TestName) -or ($TestName -contains 'New-AzElasticSan'))
   . ($mockingPath | Select-Object -First 1).FullName
 }
 
-Describe 'New-AzElasticSan' {
+Describe 'New/Remove ElasticSan' {
     It 'CreateExpanded' {
         $elasticSanName = "testsan" + $env.RandomString
         $elasticSan = New-AzElasticSan -ResourceGroupName $env.ResourceGroupName -Name $elasticSanName -BaseSizeTib $env.BaseSizeTib -ExtendedCapacitySizeTib $env.ExtendedCapacitySizeTib -Location $env.ElasticSanLocation -SkuName "Premium_LRS" -Tag @{tag1="value1";tag2="value2"}
@@ -22,5 +22,9 @@ Describe 'New-AzElasticSan' {
         $elasticSan.BaseSizeTib | Should -Be $env.BaseSizeTib
         $elasticSan.ExtendedCapacitySizeTib | Should -Be $env.ExtendedCapacitySizeTib
         $elasticSan.Tag.Count | Should -BeGreaterOrEqual 2 
+
+        Remove-AzElasticSan -ResourceGroupName $env.ResourceGroupName -Name $elasticSanName
+        $elasticSanList = Get-AzElasticSan
+        $elasticSanList.Name | Should -Not -Contain $elasticSanName
     }
 }

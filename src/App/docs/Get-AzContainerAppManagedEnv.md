@@ -19,7 +19,7 @@ Get-AzContainerAppManagedEnv [-SubscriptionId <String[]>] [-DefaultProfile <PSOb
 
 ### Get
 ```
-Get-AzContainerAppManagedEnv -EnvName <String> -ResourceGroupName <String> [-SubscriptionId <String[]>]
+Get-AzContainerAppManagedEnv -Name <String> -ResourceGroupName <String> [-SubscriptionId <String[]>]
  [-DefaultProfile <PSObject>] [<CommonParameters>]
 ```
 
@@ -39,50 +39,50 @@ Get the properties of a Managed Environment used to host container apps.
 
 ## EXAMPLES
 
-### Example 1: List the properties of ManagedEnvironments.
+### Example 1: List the properties of Managed Environment used to host container apps by sub.
 ```powershell
 Get-AzContainerAppManagedEnv
 ```
 
 ```output
-Location      Name      ResourceGroupName
---------      ----      -----------------
-canadacentral azcli-env azcli_gp
-canadacentral azps-env  azpstest_gp
+Location Name     ResourceGroupName
+-------- ----     -----------------
+East US  azps-env azps_test_group_app
 ```
 
-List the properties of ManagedEnvironments.
+List the properties of Managed Environment used to host container apps by sub.
 
-### Example 2: Get the properties of ManagedEnvironments by Resource Group.
+### Example 2: List the properties of Managed Environment used to host container apps by resource group name.
 ```powershell
-Get-AzContainerAppManagedEnv -ResourceGroupName azpstest_gp
+Get-AzContainerAppManagedEnv -ResourceGroupName azps_test_group_app
 ```
 
 ```output
-Location      Name     ResourceGroupName
---------      ----     -----------------
-canadacentral azps-env azpstest_gp
+Location Name     ResourceGroupName
+-------- ----     -----------------
+East US  azps-env azps_test_group_app
 ```
 
-Get the properties of ManagedEnvironments by Resource Group.
+List the properties of Managed Environment used to host container apps by resource group name.
 
-### Example 3: Get the properties of a ManagedEnvironment by name.
+### Example 3: Get the properties of a Managed Environment used to host container apps by name.
 ```powershell
-Get-AzContainerAppManagedEnv -ResourceGroupName azpstest_gp -EnvName azps-env
+Get-AzContainerAppManagedEnv -ResourceGroupName azps_test_group_app -Name azps-env
 ```
 
 ```output
-Location      Name     ResourceGroupName
---------      ----     -----------------
-canadacentral azps-env azpstest_gp
+Location Name     ResourceGroupName
+-------- ----     -----------------
+East US  azps-env azps_test_group_app
 ```
 
-Get the properties of a ManagedEnvironment by name.
+Get the properties of a Managed Environment used to host container apps by name.
 
 ## PARAMETERS
 
 ### -DefaultProfile
-The credentials, account, tenant, and subscription used for communication with Azure.
+The DefaultProfile parameter is not functional.
+Use the SubscriptionId parameter when available if executing the cmdlet against a different subscription.
 
 ```yaml
 Type: System.Management.Automation.PSObject
@@ -90,21 +90,6 @@ Parameter Sets: (All)
 Aliases: AzureRMContext, AzureCredential
 
 Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -EnvName
-Name of the Environment.
-
-```yaml
-Type: System.String
-Parameter Sets: Get
-Aliases:
-
-Required: True
 Position: Named
 Default value: None
 Accept pipeline input: False
@@ -124,6 +109,21 @@ Required: True
 Position: Named
 Default value: None
 Accept pipeline input: True (ByValue)
+Accept wildcard characters: False
+```
+
+### -Name
+Name of the Environment.
+
+```yaml
+Type: System.String
+Parameter Sets: Get
+Aliases: EnvName
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
@@ -167,30 +167,9 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.App.Models.Api20220301.IManagedEnvironment
+### Microsoft.Azure.PowerShell.Cmdlets.App.Models.IManagedEnvironment
 
 ## NOTES
-
-ALIASES
-
-COMPLEX PARAMETER PROPERTIES
-
-To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
-
-
-`INPUTOBJECT <IAppIdentity>`: Identity Parameter
-  - `[AuthConfigName <String>]`: Name of the Container App AuthConfig.
-  - `[CertificateName <String>]`: Name of the Certificate.
-  - `[ComponentName <String>]`: Name of the Dapr Component.
-  - `[ContainerAppName <String>]`: Name of the Container App.
-  - `[EnvironmentName <String>]`: Name of the Managed Environment.
-  - `[Id <String>]`: Resource identity path
-  - `[ReplicaName <String>]`: Name of the Container App Revision Replica.
-  - `[ResourceGroupName <String>]`: The name of the resource group. The name is case insensitive.
-  - `[RevisionName <String>]`: Name of the Container App Revision.
-  - `[SourceControlName <String>]`: Name of the Container App SourceControl.
-  - `[StorageName <String>]`: Name of the storage.
-  - `[SubscriptionId <String>]`: The ID of the target subscription.
 
 ## RELATED LINKS
 

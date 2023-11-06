@@ -15,11 +15,46 @@ Describe 'Test-AzKustoScriptNameAvailability' {
         }
         . ($mockingPath | Select-Object -First 1).FullName
     }
-    It 'CheckExpanded' -skip {
-        { throw [System.NotImplementedException] } | Should -Not -Throw
+    It 'CheckExpanded' {
+        $clusterName = $env.kustoClusterName
+        $databaseName = "testdatabase" + $env.rstr4
+        $scriptName = "testScript" + $env.rstr4
+        $scriptContent = ".create table table3 (Level:string, Timestamp:datetime, UserId:string, TraceId:string, Message:string, ProcessId:int32)"
+
+        New-AzKustoDatabase -ResourceGroupName $env.resourceGroupName -ClusterName $clusterName -Name $databaseName -Kind ReadWrite -Location $env.location
+
+        $testNameResult = Test-AzKustoScriptNameAvailability -ClusterName $clusterName -DatabaseName $databaseName -ResourceGroupName $env.resourceGroupName -Name $scriptName
+        $testNameResult.NameAvailable | Should -Be $true
+
+        New-AzKustoScript -ClusterName $clusterName -DatabaseName $databaseName -Name $scriptName -ResourceGroupName $env.resourceGroupName -SubscriptionId $env.SubscriptionId -ScriptContent $scriptContent
+
+        $testNameResult = Test-AzKustoScriptNameAvailability -ClusterName $clusterName -DatabaseName $databaseName -ResourceGroupName $env.resourceGroupName -Name $scriptName
+        $testNameResult.NameAvailable | Should -Be $false
+
+        { Remove-AzKustoScript -ClusterName $clusterName -DatabaseName $databaseName -Name $scriptName -ResourceGroupName $env.resourceGroupName } | Should -Not -Throw
+
+        { Remove-AzKustoDatabase -ResourceGroupName $env.resourceGroupName -ClusterName $env.kustoClusterName -Name $name } | Should -Not -Throw
     }
 
-    It 'CheckViaIdentityExpanded' -skip {
-        { throw [System.NotImplementedException] } | Should -Not -Throw
+    It 'CheckViaIdentityExpanded' {
+        $clusterName = $env.kustoClusterName
+        $databaseName = "testdatabase" + $env.rstr5
+        $scriptName = "testScript" + $env.rstr5
+        $scriptContent = ".create table table3 (Level:string, Timestamp:datetime, UserId:string, TraceId:string, Message:string, ProcessId:int32)"
+
+        New-AzKustoDatabase -ResourceGroupName $env.resourceGroupName -ClusterName $clusterName -Name $databaseName -Kind ReadWrite -Location $env.location
+        $database = Get-AzKustoDatabase -ResourceGroupName $env.resourceGroupName -ClusterName $clusterName -Name $databaseName
+
+        $testNameResult = Test-AzKustoScriptNameAvailability -InputObject $database -Name $scriptName
+        $testNameResult.NameAvailable | Should -Be $true
+
+        New-AzKustoScript -ClusterName $clusterName -DatabaseName $databaseName -Name $scriptName -ResourceGroupName $env.resourceGroupName -SubscriptionId $env.SubscriptionId -ScriptContent $scriptContent
+
+        $testNameResult = Test-AzKustoScriptNameAvailability -InputObject $database -Name $scriptName
+        $testNameResult.NameAvailable | Should -Be $false
+
+        { Remove-AzKustoScript -ClusterName $clusterName -DatabaseName $databaseName -Name $scriptName -ResourceGroupName $env.resourceGroupName } | Should -Not -Throw
+        
+        { Remove-AzKustoDatabase -ResourceGroupName $env.resourceGroupName -ClusterName $env.kustoClusterName -Name $name } | Should -Not -Throw
     }
 }

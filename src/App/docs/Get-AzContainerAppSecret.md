@@ -22,18 +22,18 @@ List secrets for a container app
 
 ## EXAMPLES
 
-### Example 1: List secrets for a container app
+### Example 1: List secrets for a container app.
 ```powershell
-Get-AzContainerAppSecret -ContainerAppName azps-containerapp -ResourceGroupName azpstest_gp
+Get-AzContainerAppSecret -ContainerAppName azps-containerapp-1 -ResourceGroupName azps_test_group_app
 ```
 
 ```output
-Name Value
----- -----
-key1 value1
+Identity KeyVaultUrl Name         Value
+-------- ----------- ----         -----
+                     redis-config redis-password
 ```
 
-List secrets for a container app
+List secrets for a container app.
 
 ## PARAMETERS
 
@@ -53,7 +53,8 @@ Accept wildcard characters: False
 ```
 
 ### -DefaultProfile
-The credentials, account, tenant, and subscription used for communication with Azure.
+The DefaultProfile parameter is not functional.
+Use the SubscriptionId parameter when available if executing the cmdlet against a different subscription.
 
 ```yaml
 Type: System.Management.Automation.PSObject
@@ -136,11 +137,9 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.App.Models.Api20220301.IContainerAppSecret
+### Microsoft.Azure.PowerShell.Cmdlets.App.Models.ISecretsCollection
 
 ## NOTES
-
-ALIASES
 
 ## RELATED LINKS
 

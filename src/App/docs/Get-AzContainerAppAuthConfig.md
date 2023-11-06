@@ -12,9 +12,15 @@ Get a AuthConfig of a Container App.
 
 ## SYNTAX
 
-### Get (Default)
+### List (Default)
 ```
-Get-AzContainerAppAuthConfig -AuthConfigName <String> -ContainerAppName <String> -ResourceGroupName <String>
+Get-AzContainerAppAuthConfig -ContainerAppName <String> -ResourceGroupName <String>
+ [-SubscriptionId <String[]>] [-DefaultProfile <PSObject>] [<CommonParameters>]
+```
+
+### Get
+```
+Get-AzContainerAppAuthConfig -ContainerAppName <String> -Name <String> -ResourceGroupName <String>
  [-SubscriptionId <String[]>] [-DefaultProfile <PSObject>] [<CommonParameters>]
 ```
 
@@ -23,38 +29,72 @@ Get-AzContainerAppAuthConfig -AuthConfigName <String> -ContainerAppName <String>
 Get-AzContainerAppAuthConfig -InputObject <IAppIdentity> [-DefaultProfile <PSObject>] [<CommonParameters>]
 ```
 
+### GetViaIdentityContainerApp
+```
+Get-AzContainerAppAuthConfig -ContainerAppInputObject <IAppIdentity> -Name <String>
+ [-DefaultProfile <PSObject>] [<CommonParameters>]
+```
+
 ## DESCRIPTION
 Get a AuthConfig of a Container App.
 
 ## EXAMPLES
 
-### Example 1: Get the Container App AuthConfigs in a given resource group.
+### Example 1: List AuthConfig of a Container App.
 ```powershell
-Get-AzContainerAppAuthConfig -AuthConfigName current -ContainerAppName azps-containerapp -ResourceGroupName azpstest_gp
+Get-AzContainerAppAuthConfig -ContainerAppName azps-containerapp-2 -ResourceGroupName azps_test_group_app
 ```
 
 ```output
 Name    PlatformEnabled ResourceGroupName
 ----    --------------- -----------------
-current True            azpstest_gp
+current True            azps_test_group_app
 ```
 
-Get the Container App AuthConfigs in a given resource group.
+List AuthConfig of a Container App.
+
+### Example 2: Get a AuthConfig of a Container App.
+```powershell
+Get-AzContainerAppAuthConfig -ContainerAppName azps-containerapp-2 -ResourceGroupName azps_test_group_app -Name current
+```
+
+```output
+Name    PlatformEnabled ResourceGroupName
+----    --------------- -----------------
+current True            azps_test_group_app
+```
+
+Get a AuthConfig of a Container App.
+
+### Example 3: Get a AuthConfig of a Container App.
+```powershell
+$containerapp = Get-AzContainerApp -Name azps-containerapp-2 -ResourceGroupName azps_test_group_app
+Get-AzContainerAppAuthConfig -ContainerAppInputObject $containerapp -Name current
+```
+
+```output
+Name    PlatformEnabled ResourceGroupName
+----    --------------- -----------------
+current True            azps_test_group_app
+```
+
+Get a AuthConfig of a Container App.
 
 ## PARAMETERS
 
-### -AuthConfigName
-Name of the Container App AuthConfig.
+### -ContainerAppInputObject
+Identity Parameter
+To construct, see NOTES section for CONTAINERAPPINPUTOBJECT properties and create a hash table.
 
 ```yaml
-Type: System.String
-Parameter Sets: Get
+Type: Microsoft.Azure.PowerShell.Cmdlets.App.Models.IAppIdentity
+Parameter Sets: GetViaIdentityContainerApp
 Aliases:
 
 Required: True
 Position: Named
 Default value: None
-Accept pipeline input: False
+Accept pipeline input: True (ByValue)
 Accept wildcard characters: False
 ```
 
@@ -63,7 +103,7 @@ Name of the Container App.
 
 ```yaml
 Type: System.String
-Parameter Sets: Get
+Parameter Sets: Get, List
 Aliases:
 
 Required: True
@@ -74,7 +114,8 @@ Accept wildcard characters: False
 ```
 
 ### -DefaultProfile
-The credentials, account, tenant, and subscription used for communication with Azure.
+The DefaultProfile parameter is not functional.
+Use the SubscriptionId parameter when available if executing the cmdlet against a different subscription.
 
 ```yaml
 Type: System.Management.Automation.PSObject
@@ -104,13 +145,28 @@ Accept pipeline input: True (ByValue)
 Accept wildcard characters: False
 ```
 
+### -Name
+Name of the Container App AuthConfig.
+
+```yaml
+Type: System.String
+Parameter Sets: Get, GetViaIdentityContainerApp
+Aliases: AuthConfigName
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
 ### -ResourceGroupName
 The name of the resource group.
 The name is case insensitive.
 
 ```yaml
 Type: System.String
-Parameter Sets: Get
+Parameter Sets: Get, List
 Aliases:
 
 Required: True
@@ -125,7 +181,7 @@ The ID of the target subscription.
 
 ```yaml
 Type: System.String[]
-Parameter Sets: Get
+Parameter Sets: Get, List
 Aliases:
 
 Required: False
@@ -144,30 +200,9 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.App.Models.Api20220301.IAuthConfig
+### Microsoft.Azure.PowerShell.Cmdlets.App.Models.IAuthConfig
 
 ## NOTES
-
-ALIASES
-
-COMPLEX PARAMETER PROPERTIES
-
-To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
-
-
-`INPUTOBJECT <IAppIdentity>`: Identity Parameter
-  - `[AuthConfigName <String>]`: Name of the Container App AuthConfig.
-  - `[CertificateName <String>]`: Name of the Certificate.
-  - `[ComponentName <String>]`: Name of the Dapr Component.
-  - `[ContainerAppName <String>]`: Name of the Container App.
-  - `[EnvironmentName <String>]`: Name of the Managed Environment.
-  - `[Id <String>]`: Resource identity path
-  - `[ReplicaName <String>]`: Name of the Container App Revision Replica.
-  - `[ResourceGroupName <String>]`: The name of the resource group. The name is case insensitive.
-  - `[RevisionName <String>]`: Name of the Container App Revision.
-  - `[SourceControlName <String>]`: Name of the Container App SourceControl.
-  - `[StorageName <String>]`: Name of the storage.
-  - `[SubscriptionId <String>]`: The ID of the target subscription.
 
 ## RELATED LINKS
 
