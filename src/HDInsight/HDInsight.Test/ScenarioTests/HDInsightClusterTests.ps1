@@ -396,6 +396,38 @@ function Test-CreateClusterWithComputeIsolation{
 
 <#
 .SYNOPSIS
+Test Create Enable Secure Channel HDInsight Cluster
+#>
+
+function Test-ClusterEnableSecureChannelCommands{
+
+	# Create some resources that will be used throughout test
+	try
+	{
+		# prepare parameter for creating parameter
+		$params= Prepare-ClusterCreateParameter
+		$enableSecureChannel = $true
+
+		# test create cluster
+		$cluster = New-AzHDInsightCluster -Location $params.location -ResourceGroupName $params.resourceGroupName `
+		-ClusterName $params.clusterName -ClusterSizeInNodes $params.clusterSizeInNodes -ClusterType $params.clusterType `
+		-StorageAccountResourceId $params.storageAccountResourceId -StorageAccountKey $params.storageAccountKey `
+		-HttpCredential $params.httpCredential -SshCredential $params.sshCredential -Version $params.version `
+		-MinSupportedTlsVersion $params.minSupportedTlsVersion -EnableSecureChannel $enableSecureChannel
+
+		Assert-NotNull $cluster
+		Assert-AreEqual $cluster.EnableSecureChannel $enableSecureChannel
+	}
+	finally
+	{
+		# Delete cluster and resource group
+		Remove-AzHDInsightCluster -ClusterName $cluster.Name
+		Remove-AzResourceGroup -ResourceGroupName $cluster.ResourceGroup
+	}
+}
+
+<#
+.SYNOPSIS
 Test Create Azure HDInsight Cluster with availability zones
 #>
 

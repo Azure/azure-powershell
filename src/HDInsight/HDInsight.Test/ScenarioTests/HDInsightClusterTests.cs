@@ -32,6 +32,13 @@ namespace Commands.HDInsight.Test.ScenarioTests
             TestRunner.RunTestScript("Test-ClusterRelatedCommands");
         }
 
+        [Fact(Skip = "need to create resource manually")]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void TestClusterEnableSecureChannelCommands()
+        {
+            TestRunner.RunTestScript("Test-ClusterEnableSecureChannelCommands");
+        }
+
         [Fact(Skip = "Sikp this")]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestCmkClusterRelatedCommands()
