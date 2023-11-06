@@ -14,14 +14,14 @@ The operation to add a data disk to a virtual machine.
 
 ### ByResourceId (Default)
 ```
-Add-AzStackHCIVmVirtualMachineDataDisk -ResourceId <String> [-DataDiskIds <String[]>]
- [-DataDiskNames <String[]>] [-DataDiskResourceGroup <String>] [-Confirm] [-WhatIf] [<CommonParameters>]
+Add-AzStackHCIVmVirtualMachineDataDisk -ResourceId <String> [-DataDiskId <String[]>]
+ [-DataDiskName <String[]>] [-DataDiskResourceGroup <String>] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ### ByName
 ```
 Add-AzStackHCIVmVirtualMachineDataDisk -Name <String> -ResourceGroupName <String> [-SubscriptionId <String>]
- [-DataDiskIds <String[]>] [-DataDiskNames <String[]>] [-DataDiskResourceGroup <String>] [-Confirm] [-WhatIf]
+ [-DataDiskId <String[]>] [-DataDiskName <String[]>] [-DataDiskResourceGroup <String>] [-Confirm] [-WhatIf]
  [<CommonParameters>]
 ```
 
@@ -45,7 +45,7 @@ This command attaches a data disk to the virtual machine in the specified resour
 
 ## PARAMETERS
 
-### -DataDiskIds
+### -DataDiskId
 List of data disks to be attached to the virtual machine passed in Id format
 
 ```yaml
@@ -60,7 +60,7 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -DataDiskNames
+### -DataDiskName
 List of data disks to be attached to the virtual machine passed by Name
 
 ```yaml

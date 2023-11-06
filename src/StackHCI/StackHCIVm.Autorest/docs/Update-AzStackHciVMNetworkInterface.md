@@ -14,18 +14,18 @@ The operation to update a network interface.
 
 ### ByResourceId (Default)
 ```
-Update-AzStackHCIVmNetworkInterface [-ResourceId <String>] [-Tags <Hashtable>] [<CommonParameters>]
+Update-AzStackHCIVmNetworkInterface [-ResourceId <String>] [-Tag <Hashtable>] [<CommonParameters>]
 ```
 
 ### UpdateExpanded
 ```
 Update-AzStackHCIVmNetworkInterface -Name <String> -ResourceGroupName <String> [-SubscriptionId <String>]
- [-Tags <Hashtable>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
+ [-Tag <Hashtable>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ### UpdateViaIdentityExpanded
 ```
-Update-AzStackHCIVmNetworkInterface -InputObject <IStackHciVMIdentity> [-Tags <Hashtable>]
+Update-AzStackHCIVmNetworkInterface -InputObject <IStackHciVMIdentity> [-Tag <Hashtable>]
  [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
@@ -171,7 +171,7 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -Tags
+### -Tag
 Resource tags
 
 ```yaml

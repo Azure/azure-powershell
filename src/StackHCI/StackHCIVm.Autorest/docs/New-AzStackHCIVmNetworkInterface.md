@@ -17,7 +17,7 @@ Please note some properties can be set only during network interface creation.
 New-AzStackHCIVmNetworkInterface -Name <String> -ResourceGroupName <String> -CustomLocationId <String>
  -Location <String> [-SubscriptionId <String>] [-DnsServers <String[]>] [-IpAddress <String>]
  [-IpConfigurations <Hashtable[]>] [-MacAddress <String>] [-SubnetId <String>] [-SubnetName <String>]
- [-SubnetResourceGroup <String>] [-Tags <Hashtable>] [-Confirm] [-WhatIf] [<CommonParameters>]
+ [-SubnetResourceGroup <String>] [-Tag <Hashtable>] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -221,7 +221,7 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -Tags
+### -Tag
 Resource tags.
 
 ```yaml

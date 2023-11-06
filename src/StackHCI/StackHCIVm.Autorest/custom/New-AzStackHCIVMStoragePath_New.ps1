@@ -79,7 +79,7 @@ param(
     [Microsoft.Azure.PowerShell.Cmdlets.StackHCIVm.Runtime.Info(PossibleTypes=([Microsoft.Azure.PowerShell.Cmdlets.StackHCIVm.Models.Api30.ITrackedResourceTags]))]
     [System.Collections.Hashtable]
     # Resource tags.
-    ${Tags}
+    ${Tag}
 
 )
     if ($Name -notmatch $storagePathNameRegex){

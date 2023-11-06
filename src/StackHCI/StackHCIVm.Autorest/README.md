@@ -325,16 +325,6 @@ directive:
       parameter-name: Version
  -  where:
       verb: New
-      parameter-name: Tag
-    set:
-      parameter-name: Tags
- -  where:
-      verb: Update
-      parameter-name: Tag
-    set:
-      parameter-name: Tags
- -  where:
-      verb: New
       subject: GalleryImage
     hide: true
  -  where:

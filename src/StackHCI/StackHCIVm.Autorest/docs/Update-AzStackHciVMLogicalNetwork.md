@@ -14,18 +14,18 @@ The operation to update a logical network.
 
 ### ByResourceId (Default)
 ```
-Update-AzStackHCIVmLogicalNetwork [-ResourceId <String>] [-Tags <Hashtable>] [<CommonParameters>]
+Update-AzStackHCIVmLogicalNetwork [-ResourceId <String>] [-Tag <Hashtable>] [<CommonParameters>]
 ```
 
 ### UpdateExpanded
 ```
 Update-AzStackHCIVmLogicalNetwork -Name <String> -ResourceGroupName <String> [-SubscriptionId <String>]
- [-Tags <Hashtable>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
+ [-Tag <Hashtable>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ### UpdateViaIdentityExpanded
 ```
-Update-AzStackHCIVmLogicalNetwork -InputObject <IStackHciVMIdentity> [-Tags <Hashtable>]
+Update-AzStackHCIVmLogicalNetwork -InputObject <IStackHciVMIdentity> [-Tag <Hashtable>]
  [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
@@ -171,7 +171,7 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -Tags
+### -Tag
 Resource tags
 
 ```yaml

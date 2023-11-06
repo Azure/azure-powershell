@@ -51,7 +51,7 @@ param(
     [Microsoft.Azure.PowerShell.Cmdlets.StackHCIVm.Runtime.Info(PossibleTypes=([Microsoft.Azure.PowerShell.Cmdlets.StackHCIVm.Models.Api20230901Preview.IVirtualHardDisksUpdateRequestTags]))]
     [System.Collections.Hashtable]
     # Resource tags
-    ${Tags}
+    ${Tag}
 
 )
   process {

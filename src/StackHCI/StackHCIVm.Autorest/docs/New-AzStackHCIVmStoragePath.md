@@ -15,7 +15,7 @@ Please note some properties can be set only during storage container creation.
 
 ```
 New-AzStackHCIVmStoragePath -Name <String> -ResourceGroupName <String> -Location <String>
- [-SubscriptionId <String>] [-CustomLocationId <String>] [-Path <String>] [-Tags <Hashtable>] [-Confirm]
+ [-SubscriptionId <String>] [-CustomLocationId <String>] [-Path <String>] [-Tag <Hashtable>] [-Confirm]
  [-WhatIf] [<CommonParameters>]
 ```
 
@@ -130,7 +130,7 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -Tags
+### -Tag
 Resource tags.
 
 ```yaml

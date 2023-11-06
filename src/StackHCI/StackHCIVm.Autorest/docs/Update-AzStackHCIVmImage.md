@@ -14,14 +14,14 @@ The operation to update an image.
 
 ### ByResourceId (Default)
 ```
-Update-AzStackHCIVmImage -ResourceId <String> [-SubscriptionId <String>] [-Tags <Hashtable>]
+Update-AzStackHCIVmImage -ResourceId <String> [-SubscriptionId <String>] [-Tag <Hashtable>]
  [<CommonParameters>]
 ```
 
 ### ByName
 ```
 Update-AzStackHCIVmImage -Name <String> -ResourceGroupName <String> [-SubscriptionId <String>]
- [-Tags <Hashtable>] [<CommonParameters>]
+ [-Tag <Hashtable>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -106,7 +106,7 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -Tags
+### -Tag
 Resource tags
 
 ```yaml

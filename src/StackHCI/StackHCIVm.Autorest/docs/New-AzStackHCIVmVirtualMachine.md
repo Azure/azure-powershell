@@ -23,7 +23,7 @@ New-AzStackHCIVmVirtualMachine -Name <String> -ResourceGroupName <String> -Custo
  [-EnableTpm] [-IdentityType <ResourceIdentityType>] [-NicIds <String[]>] [-NicNames <String[]>]
  [-NicResourceGroup <String>] [-ProvisionVMAgent] [-ProvisionVMConfigAgent] [-SecureBootEnabled]
  [-SshPublicKeys <String[]>] [-StoragePathId <String>] [-StoragePathName <String>]
- [-StoragePathResourceGroup <String>] [-Tags <Hashtable>] [-TimeZone <String>] [-VmMemoryInMB <Int64>]
+ [-StoragePathResourceGroup <String>] [-Tag <Hashtable>] [-TimeZone <String>] [-VmMemoryInMB <Int64>]
  [-VmProcessors <Int32>] [-VmSize <VMSizeEnum>] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
@@ -37,7 +37,7 @@ New-AzStackHCIVmVirtualMachine -Name <String> -ResourceGroupName <String> -Custo
  [-EnableTpm] [-IdentityType <ResourceIdentityType>] [-ImageResourceGroup <String>] [-NicIds <String[]>]
  [-NicNames <String[]>] [-NicResourceGroup <String>] [-ProvisionVMAgent] [-ProvisionVMConfigAgent]
  [-SecureBootEnabled] [-SshPublicKeys <String[]>] [-StoragePathId <String>] [-StoragePathName <String>]
- [-StoragePathResourceGroup <String>] [-Tags <Hashtable>] [-TimeZone <String>] [-VmMemoryInMB <Int64>]
+ [-StoragePathResourceGroup <String>] [-Tag <Hashtable>] [-TimeZone <String>] [-VmMemoryInMB <Int64>]
  [-VmProcessors <Int32>] [-VmSize <VMSizeEnum>] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
@@ -51,7 +51,7 @@ New-AzStackHCIVmVirtualMachine -Name <String> -ResourceGroupName <String> -Custo
  [-EnableTpm] [-IdentityType <ResourceIdentityType>] [-NicIds <String[]>] [-NicNames <String[]>]
  [-NicResourceGroup <String>] [-ProvisionVMAgent] [-ProvisionVMConfigAgent] [-SecureBootEnabled]
  [-SshPublicKeys <String[]>] [-StoragePathId <String>] [-StoragePathName <String>]
- [-StoragePathResourceGroup <String>] [-Tags <Hashtable>] [-TimeZone <String>] [-VmMemoryInMB <Int64>]
+ [-StoragePathResourceGroup <String>] [-Tag <Hashtable>] [-TimeZone <String>] [-VmMemoryInMB <Int64>]
  [-VmProcessors <Int32>] [-VmSize <VMSizeEnum>] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
@@ -65,7 +65,7 @@ New-AzStackHCIVmVirtualMachine -Name <String> -ResourceGroupName <String> -Custo
  [-EnableTpm] [-IdentityType <ResourceIdentityType>] [-NicIds <String[]>] [-NicNames <String[]>]
  [-NicResourceGroup <String>] [-OSDiskResourceGroup <String>] [-ProvisionVMAgent] [-ProvisionVMConfigAgent]
  [-SecureBootEnabled] [-SshPublicKeys <String[]>] [-StoragePathId <String>] [-StoragePathName <String>]
- [-StoragePathResourceGroup <String>] [-Tags <Hashtable>] [-TimeZone <String>] [-VmMemoryInMB <Int64>]
+ [-StoragePathResourceGroup <String>] [-Tag <Hashtable>] [-TimeZone <String>] [-VmMemoryInMB <Int64>]
  [-VmProcessors <Int32>] [-VmSize <VMSizeEnum>] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
@@ -636,7 +636,7 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -Tags
+### -Tag
 Resource tags.
 
 ```yaml

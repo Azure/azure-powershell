@@ -14,18 +14,18 @@ The operation to update a storage container.
 
 ### ByResourceId (Default)
 ```
-Update-AzStackHCIVmStoragePath [-ResourceId <String>] [-Tags <Hashtable>] [<CommonParameters>]
+Update-AzStackHCIVmStoragePath [-ResourceId <String>] [-Tag <Hashtable>] [<CommonParameters>]
 ```
 
 ### UpdateExpanded
 ```
 Update-AzStackHCIVmStoragePath -Name <String> -ResourceGroupName <String> [-SubscriptionId <String>]
- [-Tags <Hashtable>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
+ [-Tag <Hashtable>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ### UpdateViaIdentityExpanded
 ```
-Update-AzStackHCIVmStoragePath -InputObject <IStackHciVMIdentity> [-Tags <Hashtable>]
+Update-AzStackHCIVmStoragePath -InputObject <IStackHciVMIdentity> [-Tag <Hashtable>]
  [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
@@ -171,7 +171,7 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -Tags
+### -Tag
 Resource tags
 
 ```yaml

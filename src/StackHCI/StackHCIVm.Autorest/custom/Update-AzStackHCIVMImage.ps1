@@ -55,7 +55,7 @@ function Update-AzStackHCIVmImage{
     [Microsoft.Azure.PowerShell.Cmdlets.StackHCIVm.Runtime.Info(PossibleTypes=([Microsoft.Azure.PowerShell.Cmdlets.StackHCIVm.Models.Api20230901Preview.IGalleryImagesUpdateRequestTags]))]
     [System.Collections.Hashtable]
     # Resource tags
-    ${Tags}
+    ${Tag}
 
 )
 

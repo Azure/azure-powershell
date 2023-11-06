@@ -18,7 +18,7 @@ New-AzStackHCIVmLogicalNetwork -Name <String> -ResourceGroupName <String> -Custo
  -Location <String> [-SubscriptionId <String>] [-AddressPrefixes <String[]>] [-DnsServers <String[]>]
  [-IpAllocationMethod <String>] [-IpPoolEnd <String>] [-IpPools <Hashtable[]>] [-IpPoolStart <String>]
  [-IpPoolType <String>] [-Routes <Hashtable[]>] [-SubnetName <String>] [-Subnets <Hashtable[]>]
- [-Tags <Hashtable>] [-Vlan <Int32>] [-VMSwitchName <String>] [-Confirm] [-WhatIf] [<CommonParameters>]
+ [-Tag <Hashtable>] [-Vlan <Int32>] [-VMSwitchName <String>] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -268,7 +268,7 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -Tags
+### -Tag
 Resource tags.
 
 ```yaml

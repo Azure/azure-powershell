@@ -14,18 +14,18 @@ The operation to update a virtual hard disk.
 
 ### ByResourceId (Default)
 ```
-Update-AzStackHCIVmVirtualHardDisk [-ResourceId <String>] [-Tags <Hashtable>] [<CommonParameters>]
+Update-AzStackHCIVmVirtualHardDisk [-ResourceId <String>] [-Tag <Hashtable>] [<CommonParameters>]
 ```
 
 ### UpdateExpanded
 ```
 Update-AzStackHCIVmVirtualHardDisk -Name <String> -ResourceGroupName <String> [-SubscriptionId <String>]
- [-Tags <Hashtable>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
+ [-Tag <Hashtable>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ### UpdateViaIdentityExpanded
 ```
-Update-AzStackHCIVmVirtualHardDisk -InputObject <IStackHciVMIdentity> [-Tags <Hashtable>]
+Update-AzStackHCIVmVirtualHardDisk -InputObject <IStackHciVMIdentity> [-Tag <Hashtable>]
  [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
@@ -171,7 +171,7 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -Tags
+### -Tag
 Resource tags
 
 ```yaml

@@ -14,15 +14,15 @@ The operation to add a network interface to a virtual machine.
 
 ### ByResourceId (Default)
 ```
-Add-AzStackHCIVmVirtualMachineNetworkInterface -ResourceId <String> [-NicIds <String[]>]
- [-NicNames <String[]>] [-NicResourceGroup <String>] [-Confirm] [-WhatIf] [<CommonParameters>]
+Add-AzStackHCIVmVirtualMachineNetworkInterface -ResourceId <String> [-NicId <String[]>] [-NicName <String[]>]
+ [-NicResourceGroup <String>] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ### ByName
 ```
 Add-AzStackHCIVmVirtualMachineNetworkInterface -Name <String> -ResourceGroupName <String>
- [-SubscriptionId <String>] [-NicIds <String[]>] [-NicNames <String[]>] [-NicResourceGroup <String>]
- [-Confirm] [-WhatIf] [<CommonParameters>]
+ [-SubscriptionId <String>] [-NicId <String[]>] [-NicName <String[]>] [-NicResourceGroup <String>] [-Confirm]
+ [-WhatIf] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -60,7 +60,7 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -NicIds
+### -NicId
 NetworkInterfaces - list of network interfaces to be attached to the virtual machine in id format
 
 ```yaml
@@ -75,7 +75,7 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -NicNames
+### -NicName
 NetworkInterfaces - list of network interfaces to be attached to the virtual machine in name format
 
 ```yaml

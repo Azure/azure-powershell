@@ -18,7 +18,7 @@ New-AzStackHCIVmVirtualHardDisk -Name <String> -ResourceGroupName <String> -Cust
  -Location <String> [-SubscriptionId <String>] [-BlockSizeBytes <Int32>] [-DiskFileFormat <DiskFileFormat>]
  [-Dynamic] [-HyperVGeneration <HyperVGeneration>] [-LogicalSectorBytes <Int32>]
  [-PhysicalSectorBytes <Int32>] [-SizeGb <Int64>] [-StoragePathId <String>] [-StoragePathName <String>]
- [-StoragePathResourceGroup <String>] [-Tags <Hashtable>] [-Confirm] [-WhatIf] [<CommonParameters>]
+ [-StoragePathResourceGroup <String>] [-Tag <Hashtable>] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -271,7 +271,7 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -Tags
+### -Tag
 Resource tags.
 
 ```yaml
