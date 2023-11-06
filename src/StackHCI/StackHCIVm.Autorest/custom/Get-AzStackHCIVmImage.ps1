@@ -37,7 +37,8 @@ https://learn.microsoft.com/powershell/module/az.stackhci/get-azstackhcivmimage
 
 function Get-AzStackHCIVmImage{    
     [CmdletBinding(DefaultParameterSetName='BySubscription', PositionalBinding=$false)]
-
+    [OutputType([Microsoft.Azure.PowerShell.Cmdlets.StackHCIVm.Models.Api20230901Preview.IMarketplaceGalleryImages])]
+    [OutputType([Microsoft.Azure.PowerShell.Cmdlets.StackHCIVm.Models.Api20230901Preview.IGalleryImages])]
     param(
     [Parameter(ParameterSetName='ByName', Mandatory)]
     [Microsoft.Azure.PowerShell.Cmdlets.StackHCIVm.Category('Path')]

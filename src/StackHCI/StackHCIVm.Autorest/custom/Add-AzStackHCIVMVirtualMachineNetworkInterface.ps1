@@ -50,7 +50,7 @@ function Add-AzStackHCIVmVirtualMachineNetworkInterface {
         [Microsoft.Azure.PowerShell.Cmdlets.StackHCIVm.Category('Body')]
         [System.String[]]
         # NetworkInterfaces - list of network interfaces to be attached to the virtual machine in id format
-        ${NicIds},
+        ${NicId},
       
         [Parameter(ParameterSetName='ByResourceId')]
         [Parameter(ParameterSetName='ByName')]
@@ -58,7 +58,7 @@ function Add-AzStackHCIVmVirtualMachineNetworkInterface {
         [Microsoft.Azure.PowerShell.Cmdlets.StackHCIVm.Category('Body')]
         [System.String[]]
         # NetworkInterfaces - list of network interfaces to be attached to the virtual machine in name format
-        ${NicNames},
+        ${NicName},
     
         [Parameter(ParameterSetName='ByResourceId')]
         [Parameter(ParameterSetName='ByName')]
@@ -86,30 +86,30 @@ function Add-AzStackHCIVmVirtualMachineNetworkInterface {
         }
     
         $NetworkProfileNetworkInterface =  [System.Collections.ArrayList]::new()
-        if ($NicIds){
-            foreach ($NicId in $NicIds){
-                if ($NicId -notmatch $nicRegex){
-                    Write-Error "Invalid Nic Id provided: $NicId." -ErrorAction Stop
+        if ($NicId){
+            foreach ($NId in $NicId){
+                if ($NId -notmatch $nicRegex){
+                    Write-Error "Invalid Nic Id provided: $NId." -ErrorAction Stop
                 }
-                $Nic = @{Id = $NicId}
+                $Nic = @{Id = $NId}
                 [void]$NetworkProfileNetworkInterface.Add($Nic)
             }
     
-            $null = $PSBoundParameters.Remove("NicIds")
+            $null = $PSBoundParameters.Remove("NicId")
            
-        } elseif ($NicNames){
+        } elseif ($NicName){
             $rg = $ResourceGroupName
             if($NicResourceGroup){
               $rg = $NicResourceGroup
             }
     
-            foreach ($NicName in $NicNames){
-                $NicId = "/subscriptions/$SubscriptionId/resourceGroups/$rg/providers/Microsoft.AzureStackHCI/networkinterfaces/$NicName"
+            foreach ($NName in $NicName){
+                $NicId = "/subscriptions/$SubscriptionId/resourceGroups/$rg/providers/Microsoft.AzureStackHCI/networkinterfaces/$NName"
                 $Nic = @{Id = $NicId}
                 [void]$NetworkProfileNetworkInterface.Add($Nic)
             }
     
-            $null = $PSBoundParameters.Remove("NicNames")
+            $null = $PSBoundParameters.Remove("NicName")
             $null = $PSBoundParameters.Remove("NicResourceGroup")
            
         }

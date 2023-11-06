@@ -75,7 +75,7 @@ function Add-AzStackHCIVmVirtualMachineDataDisk {
         [Microsoft.Azure.PowerShell.Cmdlets.StackHCIVm.Category('Body')]
         [System.String[]]
         # List of data disks to be attached to the virtual machine passed in Id format
-        ${DataDiskIds},
+        ${DataDiskId},
     
         [Parameter(ParameterSetName='ByResourceId')]
         [Parameter(ParameterSetName='ByName')]
@@ -83,7 +83,7 @@ function Add-AzStackHCIVmVirtualMachineDataDisk {
         [Microsoft.Azure.PowerShell.Cmdlets.StackHCIVm.Category('Body')]
         [System.String[]]
         # List of data disks to be attached to the virtual machine passed by Name 
-        ${DataDiskNames},
+        ${DataDiskName},
     
         [Parameter(ParameterSetName='ByResourceId')]
         [Parameter(ParameterSetName='ByName')]
@@ -111,30 +111,30 @@ function Add-AzStackHCIVmVirtualMachineDataDisk {
         }
         $StorageProfileDataDisk =  [System.Collections.ArrayList]::new()
     
-        if($DataDiskIds){
-            foreach ($DataDiskId in $DataDiskIds){
-                if ($DataDiskId -notmatch $vhdRegex){
-                    Write-Error "Invalid Data Disk Id provided: $DataDiskId." -ErrorAction Stop
+        if($DataDiskId){
+            foreach ($DiskId in $DataDiskId){
+                if ($DiskId -notmatch $vhdRegex){
+                    Write-Error "Invalid Data Disk Id provided: $DiskId." -ErrorAction Stop
                 }
-                $DataDisk = @{Id = $DataDiskId}
+                $DataDisk = @{Id = $DiskId}
                 [void]$StorageProfileDataDisk.Add($DataDisk)
             }
     
-            $null = $PSBoundParameters.Remove("DataDiskIds")
+            $null = $PSBoundParameters.Remove("DataDiskId")
           
-        } elseif ($DataDiskNames){
+        } elseif ($DataDiskName){
             $rg = $ResourceGroupName
             if($DataDiskResourceGroup){
               $rg = $DataDiskResourceGroup
             }
     
-            foreach ($DataDiskName in $DataDiskNames){
-                $DataDiskId = "/subscriptions/$SubscriptionId/resourceGroups/$rg/providers/Microsoft.AzureStackHCI/virtualharddisks/$DataDiskName"
+            foreach ($DiskName in $DataDiskName){
+                $DataDiskId = "/subscriptions/$SubscriptionId/resourceGroups/$rg/providers/Microsoft.AzureStackHCI/virtualharddisks/$DiskName"
                 $DataDisk = @{Id = $DataDiskId}
                 [void]$StorageProfileDataDisk.Add($DataDisk)
             }
     
-            $null = $PSBoundParameters.Remove("DataDiskNames")
+            $null = $PSBoundParameters.Remove("DataDiskName")
             $null = $PSBoundParameters.Remove("DataDiskResourceGroup")
         }
     
