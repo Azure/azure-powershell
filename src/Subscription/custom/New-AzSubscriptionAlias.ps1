@@ -30,139 +30,140 @@ Microsoft.Azure.PowerShell.Cmdlets.Subscription.Models.Api20211001.ISubscription
 https://learn.microsoft.com/powershell/module/az.subscription/new-azsubscriptionalias
 #>
 function New-AzSubscriptionAlias {
-[OutputType([Microsoft.Azure.PowerShell.Cmdlets.Subscription.Models.Api20211001.ISubscriptionAliasResponse])]
-[CmdletBinding(DefaultParameterSetName='CreateExpanded', PositionalBinding=$false, SupportsShouldProcess, ConfirmImpact='Medium')]
-param(
-    [Parameter(Mandatory)]
-    [Microsoft.Azure.PowerShell.Cmdlets.Subscription.Category('Path')]
-    [System.String]
-    # AliasName is the name for the subscription creation request.
-    # Note that this is not the same as subscription name and this doesn’t have any other lifecycle need beyond the request for subscription creation.
-    ${AliasName},
+    [OutputType([Microsoft.Azure.PowerShell.Cmdlets.Subscription.Models.Api20211001.ISubscriptionAliasResponse])]
+    [CmdletBinding(DefaultParameterSetName = 'CreateExpanded', PositionalBinding = $false, SupportsShouldProcess, ConfirmImpact = 'Medium')]
+    param(
+        [Parameter(Mandatory)]
+        [Microsoft.Azure.PowerShell.Cmdlets.Subscription.Category('Path')]
+        [System.String]
+        # AliasName is the name for the subscription creation request.
+        # Note that this is not the same as subscription name and this doesn’t have any other lifecycle need beyond the request for subscription creation.
+        ${AliasName},
 
-    [Parameter(ParameterSetName='WorkloadCreateExpanded',Mandatory)]
-    [Microsoft.Azure.PowerShell.Cmdlets.Subscription.Category('Body')]
-    [System.String]
-    # Billing scope of the subscription.For CustomerLed and FieldLed - /billingAccounts/{billingAccountName}/billingProfiles/{billingProfileName}/invoiceSections/{invoiceSectionName}For PartnerLed - /billingAccounts/{billingAccountName}/customers/{customerName}For Legacy EA - /billingAccounts/{billingAccountName}/enrollmentAccounts/{enrollmentAccountName}
-    ${BillingScope},
+        [Parameter(ParameterSetName = 'WorkloadCreateExpanded', Mandatory)]
+        [Microsoft.Azure.PowerShell.Cmdlets.Subscription.Category('Body')]
+        [System.String]
+        # Billing scope of the subscription.For CustomerLed and FieldLed - /billingAccounts/{billingAccountName}/billingProfiles/{billingProfileName}/invoiceSections/{invoiceSectionName}For PartnerLed - /billingAccounts/{billingAccountName}/customers/{customerName}For Legacy EA - /billingAccounts/{billingAccountName}/enrollmentAccounts/{enrollmentAccountName}
+        ${BillingScope},
 
-    [Parameter(ParameterSetName='WorkloadCreateExpanded')]
-    [Microsoft.Azure.PowerShell.Cmdlets.Subscription.Category('Body')]
-    [System.String]
-    # Management group Id for the subscription.
-    ${ManagementGroupId},
+        [Parameter(ParameterSetName = 'WorkloadCreateExpanded')]
+        [Microsoft.Azure.PowerShell.Cmdlets.Subscription.Category('Body')]
+        [System.String]
+        # Management group Id for the subscription.
+        ${ManagementGroupId},
 
-    [Parameter(ParameterSetName='WorkloadCreateExpanded')]
-    [Microsoft.Azure.PowerShell.Cmdlets.Subscription.Category('Body')]
-    [System.String]
-    # Reseller Id
-    ${ResellerId},
+        [Parameter(ParameterSetName = 'WorkloadCreateExpanded')]
+        [Microsoft.Azure.PowerShell.Cmdlets.Subscription.Category('Body')]
+        [System.String]
+        # Reseller Id
+        ${ResellerId},
 
-    [Parameter(ParameterSetName='CreateExpanded',Mandatory)]
-    [Microsoft.Azure.PowerShell.Cmdlets.Subscription.Category('Body')]
-    [System.String]
-    # This parameter can be used to create alias for existing subscription Id
-    ${SubscriptionId},
+        [Parameter(ParameterSetName = 'CreateExpanded', Mandatory)]
+        [Microsoft.Azure.PowerShell.Cmdlets.Subscription.Category('Body')]
+        [System.String]
+        # This parameter can be used to create alias for existing subscription Id
+        ${SubscriptionId},
 
-    [Parameter(ParameterSetName='WorkloadCreateExpanded',Mandatory)]
-    [Alias('DisplayName')]
-    [Microsoft.Azure.PowerShell.Cmdlets.Subscription.Category('Body')]
-    [System.String]
-    # The friendly name of the subscription.
-    ${SubscriptionName},
+        [Parameter(ParameterSetName = 'WorkloadCreateExpanded', Mandatory)]
+        [Alias('DisplayName')]
+        [Microsoft.Azure.PowerShell.Cmdlets.Subscription.Category('Body')]
+        [System.String]
+        # The friendly name of the subscription.
+        ${SubscriptionName},
 
-    [Parameter(ParameterSetName='WorkloadCreateExpanded')]
-    [Microsoft.Azure.PowerShell.Cmdlets.Subscription.Category('Body')]
-    [System.String]
-    # Owner Id of the subscription
-    ${SubscriptionOwnerId},
+        [Parameter(ParameterSetName = 'WorkloadCreateExpanded')]
+        [Microsoft.Azure.PowerShell.Cmdlets.Subscription.Category('Body')]
+        [System.String]
+        # Owner Id of the subscription
+        ${SubscriptionOwnerId},
 
-    [Parameter(ParameterSetName='WorkloadCreateExpanded')]
-    [Microsoft.Azure.PowerShell.Cmdlets.Subscription.Category('Body')]
-    [System.String]
-    # Tenant Id of the subscription
-    ${SubscriptionTenantId},
+        [Parameter(ParameterSetName = 'WorkloadCreateExpanded')]
+        [Microsoft.Azure.PowerShell.Cmdlets.Subscription.Category('Body')]
+        [System.String]
+        # Tenant Id of the subscription
+        ${SubscriptionTenantId},
 
-    [Parameter()]
-    [Microsoft.Azure.PowerShell.Cmdlets.Subscription.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.Subscription.Runtime.Info(PossibleTypes=([Microsoft.Azure.PowerShell.Cmdlets.Subscription.Models.Api20211001.IPutAliasRequestAdditionalPropertiesTags]))]
-    [System.Collections.Hashtable]
-    # Tags for the subscription
-    ${Tag},
+        [Parameter()]
+        [Microsoft.Azure.PowerShell.Cmdlets.Subscription.Category('Body')]
+        [Microsoft.Azure.PowerShell.Cmdlets.Subscription.Runtime.Info(PossibleTypes = ([Microsoft.Azure.PowerShell.Cmdlets.Subscription.Models.Api20211001.IPutAliasRequestAdditionalPropertiesTags]))]
+        [System.Collections.Hashtable]
+        # Tags for the subscription
+        ${Tag},
 
-    [Parameter(ParameterSetName='WorkloadCreateExpanded',Mandatory)]
-    [ArgumentCompleter([Microsoft.Azure.PowerShell.Cmdlets.Subscription.Support.Workload])]
-    [Microsoft.Azure.PowerShell.Cmdlets.Subscription.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.Subscription.Support.Workload]
-    # The workload type of the subscription.
-    # It can be either Production or DevTest.
-    ${Workload},
+        [Parameter(ParameterSetName = 'WorkloadCreateExpanded', Mandatory)]
+        [ArgumentCompleter([Microsoft.Azure.PowerShell.Cmdlets.Subscription.Support.Workload])]
+        [Microsoft.Azure.PowerShell.Cmdlets.Subscription.Category('Body')]
+        [Microsoft.Azure.PowerShell.Cmdlets.Subscription.Support.Workload]
+        # The workload type of the subscription.
+        # It can be either Production or DevTest.
+        ${Workload},
 
-    [Parameter()]
-    [Alias('AzureRMContext', 'AzureCredential')]
-    [ValidateNotNull()]
-    [Microsoft.Azure.PowerShell.Cmdlets.Subscription.Category('Azure')]
-    [System.Management.Automation.PSObject]
-    # The DefaultProfile parameter is not functional.
-    # Use the SubscriptionId parameter when available if executing the cmdlet against a different subscription.
-    ${DefaultProfile},
+        [Parameter()]
+        [Alias('AzureRMContext', 'AzureCredential')]
+        [ValidateNotNull()]
+        [Microsoft.Azure.PowerShell.Cmdlets.Subscription.Category('Azure')]
+        [System.Management.Automation.PSObject]
+        # The DefaultProfile parameter is not functional.
+        # Use the SubscriptionId parameter when available if executing the cmdlet against a different subscription.
+        ${DefaultProfile},
 
-    [Parameter()]
-    [Microsoft.Azure.PowerShell.Cmdlets.Subscription.Category('Runtime')]
-    [System.Management.Automation.SwitchParameter]
-    # Run the command as a job
-    ${AsJob},
+        [Parameter()]
+        [Microsoft.Azure.PowerShell.Cmdlets.Subscription.Category('Runtime')]
+        [System.Management.Automation.SwitchParameter]
+        # Run the command as a job
+        ${AsJob},
 
-    [Parameter(DontShow)]
-    [Microsoft.Azure.PowerShell.Cmdlets.Subscription.Category('Runtime')]
-    [System.Management.Automation.SwitchParameter]
-    # Wait for .NET debugger to attach
-    ${Break},
+        [Parameter(DontShow)]
+        [Microsoft.Azure.PowerShell.Cmdlets.Subscription.Category('Runtime')]
+        [System.Management.Automation.SwitchParameter]
+        # Wait for .NET debugger to attach
+        ${Break},
 
-    [Parameter(DontShow)]
-    [ValidateNotNull()]
-    [Microsoft.Azure.PowerShell.Cmdlets.Subscription.Category('Runtime')]
-    [Microsoft.Azure.PowerShell.Cmdlets.Subscription.Runtime.SendAsyncStep[]]
-    # SendAsync Pipeline Steps to be appended to the front of the pipeline
-    ${HttpPipelineAppend},
+        [Parameter(DontShow)]
+        [ValidateNotNull()]
+        [Microsoft.Azure.PowerShell.Cmdlets.Subscription.Category('Runtime')]
+        [Microsoft.Azure.PowerShell.Cmdlets.Subscription.Runtime.SendAsyncStep[]]
+        # SendAsync Pipeline Steps to be appended to the front of the pipeline
+        ${HttpPipelineAppend},
 
-    [Parameter(DontShow)]
-    [ValidateNotNull()]
-    [Microsoft.Azure.PowerShell.Cmdlets.Subscription.Category('Runtime')]
-    [Microsoft.Azure.PowerShell.Cmdlets.Subscription.Runtime.SendAsyncStep[]]
-    # SendAsync Pipeline Steps to be prepended to the front of the pipeline
-    ${HttpPipelinePrepend},
+        [Parameter(DontShow)]
+        [ValidateNotNull()]
+        [Microsoft.Azure.PowerShell.Cmdlets.Subscription.Category('Runtime')]
+        [Microsoft.Azure.PowerShell.Cmdlets.Subscription.Runtime.SendAsyncStep[]]
+        # SendAsync Pipeline Steps to be prepended to the front of the pipeline
+        ${HttpPipelinePrepend},
 
-    [Parameter()]
-    [Microsoft.Azure.PowerShell.Cmdlets.Subscription.Category('Runtime')]
-    [System.Management.Automation.SwitchParameter]
-    # Run the command asynchronously
-    ${NoWait},
+        [Parameter()]
+        [Microsoft.Azure.PowerShell.Cmdlets.Subscription.Category('Runtime')]
+        [System.Management.Automation.SwitchParameter]
+        # Run the command asynchronously
+        ${NoWait},
 
-    [Parameter(DontShow)]
-    [Microsoft.Azure.PowerShell.Cmdlets.Subscription.Category('Runtime')]
-    [System.Uri]
-    # The URI for the proxy server to use
-    ${Proxy},
+        [Parameter(DontShow)]
+        [Microsoft.Azure.PowerShell.Cmdlets.Subscription.Category('Runtime')]
+        [System.Uri]
+        # The URI for the proxy server to use
+        ${Proxy},
 
-    [Parameter(DontShow)]
-    [ValidateNotNull()]
-    [Microsoft.Azure.PowerShell.Cmdlets.Subscription.Category('Runtime')]
-    [System.Management.Automation.PSCredential]
-    # Credentials for a proxy server to use for the remote call
-    ${ProxyCredential},
+        [Parameter(DontShow)]
+        [ValidateNotNull()]
+        [Microsoft.Azure.PowerShell.Cmdlets.Subscription.Category('Runtime')]
+        [System.Management.Automation.PSCredential]
+        # Credentials for a proxy server to use for the remote call
+        ${ProxyCredential},
 
-    [Parameter(DontShow)]
-    [Microsoft.Azure.PowerShell.Cmdlets.Subscription.Category('Runtime')]
-    [System.Management.Automation.SwitchParameter]
-    # Use the default credentials for the proxy
-    ${ProxyUseDefaultCredentials}
-)
+        [Parameter(DontShow)]
+        [Microsoft.Azure.PowerShell.Cmdlets.Subscription.Category('Runtime')]
+        [System.Management.Automation.SwitchParameter]
+        # Use the default credentials for the proxy
+        ${ProxyUseDefaultCredentials}
+    )
 
     process {
         try {
             Az.Subscription.internal\New-AzSubscriptionAlias @PSBoundParameters
-        } catch {
+        }
+        catch {
             throw
         }
     }

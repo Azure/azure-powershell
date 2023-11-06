@@ -16,16 +16,19 @@
 
 <#
 .Synopsis
-The operation to rename a subscription
+Accept subscription ownership status.
 .Description
-The operation to rename a subscription
+Accept subscription ownership status.
 .Example
-Rename-AzSubscription -Id XXXXXXXX-XXXX-XXXX-XXXX-XXXXXXXXXXXX -SubscriptionName test-subscription
+Get-AzSubscriptionAcceptOwnershipStatus -SubscriptionId XXXXXXXX-XXXX-XXXX-XXXX-XXXXXXXXXXXX
+.Example
+$subIdArray = @("XXXXXXXX-XXXX-XXXX-XXXX-XXXXXXXXXXXX","YYYYYYYY-YYYY-YYYY-YYYY-YYYYYYYYYYYY")
+Get-AzSubscriptionAcceptOwnershipStatus -SubscriptionId $subIdArray
 
 .Inputs
 Microsoft.Azure.PowerShell.Cmdlets.Subscription.Models.ISubscriptionIdentity
 .Outputs
-System.String
+Microsoft.Azure.PowerShell.Cmdlets.Subscription.Models.Api20211001.IAcceptOwnershipStatusResponse
 .Notes
 COMPLEX PARAMETER PROPERTIES
 
@@ -38,32 +41,24 @@ INPUTOBJECT <ISubscriptionIdentity>: Identity Parameter
   [OperationId <String>]: The operation ID, which can be found from the Location field in the generate recommendation response header.
   [SubscriptionId <String>]: Subscription Id.
 .Link
-https://learn.microsoft.com/powershell/module/az.subscription/rename-azsubscription
+https://learn.microsoft.com/powershell/module/az.subscription/get-azsubscriptionacceptownershipstatus
 #>
-function Rename-AzSubscription {
-    [OutputType([System.String])]
-    [CmdletBinding(DefaultParameterSetName = 'RenameExpanded', PositionalBinding = $false, SupportsShouldProcess, ConfirmImpact = 'Medium')]
+function Get-AzSubscriptionAcceptOwnershipStatus {
+    [OutputType([Microsoft.Azure.PowerShell.Cmdlets.Subscription.Models.Api20211001.IAcceptOwnershipStatusResponse])]
+    [CmdletBinding(DefaultParameterSetName = 'AcceptExpanded', PositionalBinding = $false)]
     param(
-        [Parameter(ParameterSetName = 'RenameExpanded', Mandatory)]
-        [Alias('SubscriptionId')]
+        [Parameter(ParameterSetName = 'AcceptExpanded', Mandatory)]
         [Microsoft.Azure.PowerShell.Cmdlets.Subscription.Category('Path')]
         [System.String]
         # Subscription Id.
-        ${Id},
+        ${SubscriptionId},
 
-        [Parameter(ParameterSetName = 'RenameViaIdentityExpanded', Mandatory, ValueFromPipeline)]
+        [Parameter(ParameterSetName = 'AcceptViaIdentityExpanded', Mandatory, ValueFromPipeline)]
         [Microsoft.Azure.PowerShell.Cmdlets.Subscription.Category('Path')]
         [Microsoft.Azure.PowerShell.Cmdlets.Subscription.Models.ISubscriptionIdentity]
         # Identity Parameter
         # To construct, see NOTES section for INPUTOBJECT properties and create a hash table.
         ${InputObject},
-
-        [Parameter(Mandatory)]
-        [Alias('DisplayName')]
-        [Microsoft.Azure.PowerShell.Cmdlets.Subscription.Category('Body')]
-        [System.String]
-        # New subscription name
-        ${SubscriptionName},
 
         [Parameter()]
         [Alias('AzureRMContext', 'AzureCredential')]
@@ -116,7 +111,7 @@ function Rename-AzSubscription {
 
     process {
         try {
-            Az.Subscription.internal\Rename-AzSubscription @PSBoundParameters
+            Az.Subscription.internal\Get-AzSubscriptionAcceptOwnershipStatus @PSBoundParameters
         }
         catch {
             throw
