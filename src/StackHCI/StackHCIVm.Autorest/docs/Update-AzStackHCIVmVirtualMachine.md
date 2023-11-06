@@ -12,17 +12,18 @@ The operation to update a virtual machine instance.
 
 ## SYNTAX
 
-### ByResourceId (Default)
-```
-Update-AzStackHCIVmVirtualMachine -ResourceId <String> [-ProvisionVMAgent] [-ProvisionVMConfigAgent]
- [-VmMemoryInMB <Int64>] [-VmProcessor <Int32>] [-VmSize <VMSizeEnum>] [<CommonParameters>]
-```
-
-### ByName
+### ByName (Default)
 ```
 Update-AzStackHCIVmVirtualMachine -Name <String> -ResourceGroupName <String> [-SubscriptionId <String>]
  [-ProvisionVMAgent] [-ProvisionVMConfigAgent] [-VmMemoryInMB <Int64>] [-VmProcessor <Int32>]
- [-VmSize <VMSizeEnum>] [<CommonParameters>]
+ [-VmSize <VMSizeEnum>] [-Confirm] [-WhatIf] [<CommonParameters>]
+```
+
+### ByResourceId
+```
+Update-AzStackHCIVmVirtualMachine -ResourceId <String> [-ProvisionVMAgent] [-ProvisionVMConfigAgent]
+ [-VmMemoryInMB <Int64>] [-VmProcessor <Int32>] [-VmSize <VMSizeEnum>] [-Confirm] [-WhatIf]
+ [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -173,6 +174,37 @@ Accept wildcard characters: False
 Type: Microsoft.Azure.PowerShell.Cmdlets.StackHCIVm.Support.VMSizeEnum
 Parameter Sets: (All)
 Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -Confirm
+Prompts you for confirmation before running the cmdlet.
+
+```yaml
+Type: System.Management.Automation.SwitchParameter
+Parameter Sets: (All)
+Aliases: cf
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -WhatIf
+Shows what would happen if the cmdlet runs.
+The cmdlet is not run.
+
+```yaml
+Type: System.Management.Automation.SwitchParameter
+Parameter Sets: (All)
+Aliases: wi
 
 Required: False
 Position: Named

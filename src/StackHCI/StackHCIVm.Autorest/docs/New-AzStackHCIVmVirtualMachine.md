@@ -17,12 +17,12 @@ Please note some properties can be set only during virtual machine creation.
 ```
 New-AzStackHCIVmVirtualMachine -Name <String> -ResourceGroupName <String> -CustomLocationId <String>
  -ImageId <String> -Location <String> -OsType <String> [-SubscriptionId <String>] [-AdminPassword <String>]
- [-AdminUsername <String>] [-ComputerName <String>] [-DataDiskIds <String[]>] [-DataDiskNames <String[]>]
+ [-AdminUsername <String>] [-ComputerName <String>] [-DataDiskId <String[]>] [-DataDiskName <String[]>]
  [-DataDiskResourceGroup <String>] [-DisablePasswordAuthentication] [-DynamicMemoryMaximumMemoryInMb <Int64>]
  [-DynamicMemoryMinimumMemoryInMb <Int64>] [-DynamicMemoryTargetBuffer <Int32>] [-EnableAutomaticUpdate]
- [-EnableTpm] [-IdentityType <ResourceIdentityType>] [-NicIds <String[]>] [-NicNames <String[]>]
+ [-EnableTpm] [-IdentityType <ResourceIdentityType>] [-NicId <String[]>] [-NicName <String[]>]
  [-NicResourceGroup <String>] [-ProvisionVMAgent] [-ProvisionVMConfigAgent] [-SecureBootEnabled]
- [-SshPublicKeys <String[]>] [-StoragePathId <String>] [-StoragePathName <String>]
+ [-SshPublicKey <String[]>] [-StoragePathId <String>] [-StoragePathName <String>]
  [-StoragePathResourceGroup <String>] [-Tag <Hashtable>] [-TimeZone <String>] [-VmMemoryInMB <Int64>]
  [-VmProcessor <Int32>] [-VmSize <VMSizeEnum>] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
@@ -31,12 +31,12 @@ New-AzStackHCIVmVirtualMachine -Name <String> -ResourceGroupName <String> -Custo
 ```
 New-AzStackHCIVmVirtualMachine -Name <String> -ResourceGroupName <String> -CustomLocationId <String>
  -ImageName <String> -Location <String> -OsType <String> [-SubscriptionId <String>] [-AdminPassword <String>]
- [-AdminUsername <String>] [-ComputerName <String>] [-DataDiskIds <String[]>] [-DataDiskNames <String[]>]
+ [-AdminUsername <String>] [-ComputerName <String>] [-DataDiskId <String[]>] [-DataDiskName <String[]>]
  [-DataDiskResourceGroup <String>] [-DisablePasswordAuthentication] [-DynamicMemoryMaximumMemoryInMb <Int64>]
  [-DynamicMemoryMinimumMemoryInMb <Int64>] [-DynamicMemoryTargetBuffer <Int32>] [-EnableAutomaticUpdate]
- [-EnableTpm] [-IdentityType <ResourceIdentityType>] [-ImageResourceGroup <String>] [-NicIds <String[]>]
- [-NicNames <String[]>] [-NicResourceGroup <String>] [-ProvisionVMAgent] [-ProvisionVMConfigAgent]
- [-SecureBootEnabled] [-SshPublicKeys <String[]>] [-StoragePathId <String>] [-StoragePathName <String>]
+ [-EnableTpm] [-IdentityType <ResourceIdentityType>] [-ImageResourceGroup <String>] [-NicId <String[]>]
+ [-NicName <String[]>] [-NicResourceGroup <String>] [-ProvisionVMAgent] [-ProvisionVMConfigAgent]
+ [-SecureBootEnabled] [-SshPublicKey <String[]>] [-StoragePathId <String>] [-StoragePathName <String>]
  [-StoragePathResourceGroup <String>] [-Tag <Hashtable>] [-TimeZone <String>] [-VmMemoryInMB <Int64>]
  [-VmProcessor <Int32>] [-VmSize <VMSizeEnum>] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
@@ -45,12 +45,12 @@ New-AzStackHCIVmVirtualMachine -Name <String> -ResourceGroupName <String> -Custo
 ```
 New-AzStackHCIVmVirtualMachine -Name <String> -ResourceGroupName <String> -CustomLocationId <String>
  -Location <String> -OSDiskId <String> -OsType <String> [-SubscriptionId <String>] [-AdminPassword <String>]
- [-AdminUsername <String>] [-ComputerName <String>] [-DataDiskIds <String[]>] [-DataDiskNames <String[]>]
+ [-AdminUsername <String>] [-ComputerName <String>] [-DataDiskId <String[]>] [-DataDiskName <String[]>]
  [-DataDiskResourceGroup <String>] [-DisablePasswordAuthentication] [-DynamicMemoryMaximumMemoryInMb <Int64>]
  [-DynamicMemoryMinimumMemoryInMb <Int64>] [-DynamicMemoryTargetBuffer <Int32>] [-EnableAutomaticUpdate]
- [-EnableTpm] [-IdentityType <ResourceIdentityType>] [-NicIds <String[]>] [-NicNames <String[]>]
+ [-EnableTpm] [-IdentityType <ResourceIdentityType>] [-NicId <String[]>] [-NicName <String[]>]
  [-NicResourceGroup <String>] [-ProvisionVMAgent] [-ProvisionVMConfigAgent] [-SecureBootEnabled]
- [-SshPublicKeys <String[]>] [-StoragePathId <String>] [-StoragePathName <String>]
+ [-SshPublicKey <String[]>] [-StoragePathId <String>] [-StoragePathName <String>]
  [-StoragePathResourceGroup <String>] [-Tag <Hashtable>] [-TimeZone <String>] [-VmMemoryInMB <Int64>]
  [-VmProcessor <Int32>] [-VmSize <VMSizeEnum>] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
@@ -59,12 +59,12 @@ New-AzStackHCIVmVirtualMachine -Name <String> -ResourceGroupName <String> -Custo
 ```
 New-AzStackHCIVmVirtualMachine -Name <String> -ResourceGroupName <String> -CustomLocationId <String>
  -Location <String> -OSDiskName <String> -OsType <String> [-SubscriptionId <String>] [-AdminPassword <String>]
- [-AdminUsername <String>] [-ComputerName <String>] [-DataDiskIds <String[]>] [-DataDiskNames <String[]>]
+ [-AdminUsername <String>] [-ComputerName <String>] [-DataDiskId <String[]>] [-DataDiskName <String[]>]
  [-DataDiskResourceGroup <String>] [-DisablePasswordAuthentication] [-DynamicMemoryMaximumMemoryInMb <Int64>]
  [-DynamicMemoryMinimumMemoryInMb <Int64>] [-DynamicMemoryTargetBuffer <Int32>] [-EnableAutomaticUpdate]
- [-EnableTpm] [-IdentityType <ResourceIdentityType>] [-NicIds <String[]>] [-NicNames <String[]>]
+ [-EnableTpm] [-IdentityType <ResourceIdentityType>] [-NicId <String[]>] [-NicName <String[]>]
  [-NicResourceGroup <String>] [-OSDiskResourceGroup <String>] [-ProvisionVMAgent] [-ProvisionVMConfigAgent]
- [-SecureBootEnabled] [-SshPublicKeys <String[]>] [-StoragePathId <String>] [-StoragePathName <String>]
+ [-SecureBootEnabled] [-SshPublicKey <String[]>] [-StoragePathId <String>] [-StoragePathName <String>]
  [-StoragePathResourceGroup <String>] [-Tag <Hashtable>] [-TimeZone <String>] [-VmMemoryInMB <Int64>]
  [-VmProcessor <Int32>] [-VmSize <VMSizeEnum>] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
@@ -162,7 +162,7 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -DataDiskIds
+### -DataDiskId
 Data Disks - List of data disks to be attached to the virtual machine in id format.
 
 ```yaml
@@ -177,7 +177,7 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -DataDiskNames
+### -DataDiskName
 Data Disks - List of data disks to be attached to the virtual machine in name format .
 
 ```yaml
@@ -389,7 +389,7 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -NicIds
+### -NicId
 NetworkInterfaces - list of network interfaces to be attached to the virtual machine in ARM Id format.
 
 ```yaml
@@ -404,7 +404,7 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -NicNames
+### -NicName
 NetworkInterfaces - list of network interfaces to be attached to the virtual machine in name format.
 
 ```yaml
@@ -560,7 +560,7 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -SshPublicKeys
+### -SshPublicKey
 PublicKeys - The list of SSH public keys used to authenticate with VMs
 
 ```yaml

@@ -173,14 +173,14 @@ function New-AzStackHCIVmVirtualMachine {
       [Microsoft.Azure.PowerShell.Cmdlets.StackHCIVm.Category('Body')]
       [System.String[]]
       # NetworkInterfaces - list of network interfaces to be attached to the virtual machine in ARM Id format. 
-      ${NicIds},
+      ${NicId},
 
       [Parameter()]
       [AllowEmptyCollection()]
       [Microsoft.Azure.PowerShell.Cmdlets.StackHCIVm.Category('Body')]
       [System.String[]]
       # NetworkInterfaces - list of network interfaces to be attached to the virtual machine in name format. 
-      ${NicNames},
+      ${NicName},
 
       [Parameter()]
       [AllowEmptyCollection()]
@@ -194,14 +194,14 @@ function New-AzStackHCIVmVirtualMachine {
       [Microsoft.Azure.PowerShell.Cmdlets.StackHCIVm.Category('Body')]
       [System.String[]]
       # Data Disks - List of data disks to be attached to the virtual machine in id format. 
-      ${DataDiskIds},
+      ${DataDiskId},
 
       [Parameter()]
       [AllowEmptyCollection()]
       [Microsoft.Azure.PowerShell.Cmdlets.StackHCIVm.Category('Body')]
       [System.String[]]
       # Data Disks - List of data disks to be attached to the virtual machine in name format .
-      ${DataDiskNames},
+      ${DataDiskName},
 
       [Parameter()]
       [AllowEmptyCollection()]
@@ -263,7 +263,7 @@ function New-AzStackHCIVmVirtualMachine {
       [Microsoft.Azure.PowerShell.Cmdlets.StackHCIVm.Category('Body')]
       [System.String[]]
       # PublicKeys - The list of SSH public keys used to authenticate with VMs
-      ${SshPublicKeys},
+      ${SshPublicKey},
 
       [Parameter()]
       [Microsoft.Azure.PowerShell.Cmdlets.StackHCIVm.Category('Body')]
@@ -326,8 +326,8 @@ function New-AzStackHCIVmVirtualMachine {
     $null = $PSBoundParameters.Remove("VmMemoryInMB")
     $null = $PSBoundParameters.Remove("VmProcessor")
     $null = $PSBoundParameters.Remove("VmSize") 
-    $null = $PSBoundParameters.Remove("NicIds") 
-    $null = $PSBoundParameters.Remove("NicNames")
+    $null = $PSBoundParameters.Remove("NicId") 
+    $null = $PSBoundParameters.Remove("NicName")
     $null = $PSBoundParameters.Remove("NicResourceGroup")
     $null = $PSBoundParameters.Remove("CustomLocationId") 
     $null = $PSBoundParameters.Remove("ImageId") 
@@ -336,8 +336,8 @@ function New-AzStackHCIVmVirtualMachine {
     $null = $PSBoundParameters.Remove("DisablePasswordAuthentication") 
     $null = $PSBoundParameters.Remove("ProvisionVMAgent")
     $null = $PSBoundParameters.Remove("ProvisionVMConfigAgent")
-    $null = $PSBoundParameters.Remove("DataDiskIds") 
-    $null = $PSBoundParameters.Remove("DataDiskNames") 
+    $null = $PSBoundParameters.Remove("DataDiskId") 
+    $null = $PSBoundParameters.Remove("DataDiskName") 
     $null = $PSBoundParameters.Remove("DataDiskResourceGroup") 
     $null = $PSBoundParameters.Remove("OSDiskId") 
     $null = $PSBoundParameters.Remove("OSDiskName") 
@@ -346,7 +346,7 @@ function New-AzStackHCIVmVirtualMachine {
     $null = $PSBoundParameters.Remove("AdminUsername")
     $null = $PSBoundParameters.Remove("ComputerName") 
     $null = $PSBoundParameters.Remove("EnableTpm") 
-    $null = $PSBoundParameters.Remove("SshPublicKeys") 
+    $null = $PSBoundParameters.Remove("SshPublicKey") 
     $null = $PSBoundParameters.Remove("SecureBootEnabled") 
     $null = $PSBoundParameters.Remove("StoragePathResourceGroup")
     $null = $PSBoundParameters.Remove("StoragePathName")
@@ -442,32 +442,32 @@ function New-AzStackHCIVmVirtualMachine {
     }
   }
 
-  if ($NicIds){
+  if ($NicId){
     $NetworkProfileNetworkInterface =  [System.Collections.ArrayList]::new()
-    foreach ($NicId in $NicIds){
-      if ($NicId -notmatch $nicRegex){
-        Write-Error "Invalid Nic Id provided: $NicId." -ErrorAction Stop
+    foreach ($NId in $NicId){
+      if ($NId -notmatch $nicRegex){
+        Write-Error "Invalid Nic Id provided: $NId." -ErrorAction Stop
       }
       
-      $nic = Az.StackHCIVm\Get-AzStackHCIVmNetworkInterface  -ResourceId $NicId -ErrorAction SilentlyContinue  
+      $nic = Az.StackHCIVm\Get-AzStackHCIVmNetworkInterface  -ResourceId $NId -ErrorAction SilentlyContinue  
       if ($nic -eq $null){
-        Write-Error "A Network Interface with id: $NicId does not exist." -ErrorAction Stop
+        Write-Error "A Network Interface with id: $NId does not exist." -ErrorAction Stop
       }
       
-      $NetworkInterface = @{Id = $NicId}
+      $NetworkInterface = @{Id = $NId}
       [void]$NetworkProfileNetworkInterface.Add($NetworkInterface)
     }
-    $null = $PSBoundParameters.Remove("NicIds")
+    $null = $PSBoundParameters.Remove("NicId")
     $PSBoundParameters.Add('NetworkProfileNetworkInterface', $NetworkProfileNetworkInterface)
-  } elseif ($NicNames){
+  } elseif ($NicName){
       $rg = $ResourceGroupName
       if($NicResourceGroup){
         $rg = $NicResourceGroup
       }
 
       $NetworkProfileNetworkInterface =  [System.Collections.ArrayList]::new()
-      foreach ($NicName in $NicNames){
-        $NicId = "/subscriptions/$SubscriptionId/resourceGroups/$rg/providers/Microsoft.AzureStackHCI/networkinterfaces/$NicName"
+      foreach ($NName in $NicName){
+        $NicId = "/subscriptions/$SubscriptionId/resourceGroups/$rg/providers/Microsoft.AzureStackHCI/networkinterfaces/$NName"
         $nic = Az.StackHCIVm\Get-AzStackHCIVmNetworkInterface -ResourceId $NicId  -ErrorAction SilentlyContinue
    
         if ($nic -eq $null){
@@ -477,7 +477,7 @@ function New-AzStackHCIVmVirtualMachine {
         $NetworkInterface = @{Id = $NicId}
         [void]$NetworkProfileNetworkInterface.Add($NetworkInterface)
       }
-      $null = $PSBoundParameters.Remove("NicNames")
+      $null = $PSBoundParameters.Remove("NicName")
       $null = $PSBoundParameters.Remove("NicResourceGroup")
 
       $PSBoundParameters.Add('NetworkProfileNetworkInterface', $NetworkProfileNetworkInterface)
@@ -505,14 +505,14 @@ function New-AzStackHCIVmVirtualMachine {
     $null = $PSBoundParameters.Remove("ProvisionVMConfigAgent")
 
 
-    if ($SshPublicKeys){
+    if ($SshPublicKey){
       $WindowsConfigurationSshPublicKey = [System.Collections.ArrayList]::new()
-      foreach ($key in $SshPublicKeys){
+      foreach ($key in $SshPublicKey){
         $keyData = Get-Content -Path $key
         $WindowsKey = @{KeyData = $keyData}
         [void]$WindowsConfigurationSshPublicKey.Add($WindowsKey)
       }
-      $null = $PSBoundParameters.Remove('SshPublicKeys')
+      $null = $PSBoundParameters.Remove('SshPublicKey')
       $PSBoundParameters.Add("WindowsConfigurationSshPublicKey", $WindowsConfigurationSshPublicKey)
     }
   } elseif ($OsType.ToString().ToLower() -eq "linux"){
@@ -538,14 +538,14 @@ function New-AzStackHCIVmVirtualMachine {
       $null = $PSBoundParameters.Remove("ProvisionVMConfigAgent")
 
       
-      if ($SshPublicKeys){
+      if ($SshPublicKey){
         $LinuxConfigurationSshPublicKey = [System.Collections.ArrayList]::new()
-        foreach ($key in $SshPublicKeys){
+        foreach ($key in $SshPublicKey){
           $keyData = Get-Content -Path $key
           $LinuxKey = @{KeyData = $keyData}
           [void]$LinuxConfigurationSshPublicKey.Add($LinuxKey)
         }
-        $null = $PSBoundParameters.Remove('SshPublicKeys')
+        $null = $PSBoundParameters.Remove('SshPublicKey')
         $PSBoundParameters.Add("LinuxConfigurationSshPublicKey", $LinuxConfigurationSshPublicKey)
       }
   } else {
@@ -568,30 +568,30 @@ function New-AzStackHCIVmVirtualMachine {
   }
 
 
-  if ($DataDiskIds){
+  if ($DataDiskId){
     $StorageProfileDataDisk =  [System.Collections.ArrayList]::new()
-    foreach ($DataDiskId in $DataDiskIds){
-      if ($DataDiskId -notmatch $vhdRegex){
-        Write-Error "Invalid Data Disk Id provided: $DataDiskId." -ErrorAction Stop
+    foreach ($DiskId in $DataDiskId){
+      if ($DiskId -notmatch $vhdRegex){
+        Write-Error "Invalid Data Disk Id provided: $DiskId." -ErrorAction Stop
       }
-      $DataDisk = @{Id = $DataDiskId}
+      $DataDisk = @{Id = $DiskId}
       [void]$StorageProfileDataDisk.Add($DataDisk)
     }
-    $null = $PSBoundParameters.Remove("DataDiskIds")
+    $null = $PSBoundParameters.Remove("DataDiskId")
     $PSBoundParameters.Add('StorageProfileDataDisk',  $StorageProfileDataDisk)
-  } elseif ($DataDiskNames){
+  } elseif ($DataDiskName){
       $rg = $ResourceGroupName
       if($DataDiskResourceGroup){
         $rg = $DataDiskResourceGroup
       }
      
       $StorageProfileDataDisk =  [System.Collections.ArrayList]::new()
-      foreach ($DataDiskName in $DataDiskNames){
-        $DataDiskId = "/subscriptions/$SubscriptionId/resourceGroups/$rg/providers/Microsoft.AzureStackHCI/virtualharddisks/$DataDiskName"
+      foreach ($DiskName in $DataDiskName){
+        $DataDiskId = "/subscriptions/$SubscriptionId/resourceGroups/$rg/providers/Microsoft.AzureStackHCI/virtualharddisks/$DiskName"
         $DataDisk = @{Id = $DataDiskId}
         [void]$StorageProfileDataDisk.Add($DataDisk)
       }
-      $null = $PSBoundParameters.Remove("DataDiskNames")
+      $null = $PSBoundParameters.Remove("DataDiskName")
       $null = $PSBoundParameters.Remove("DataDiskResourceGroup")
       $PSBoundParameters.Add('StorageProfileDataDisk',  $StorageProfileDataDisk)
   }  
@@ -629,7 +629,7 @@ function New-AzStackHCIVmVirtualMachine {
   $null = $PSBoundParameters.Remove("SubscriptionId")
   $null = $PSBoundParameters.Remove("ResourceId")
   $null = $PSBoundParameters.Remove("NicResourceGroup")
-  $null = $PSBoundParameters.Remove("NicNames")
+  $null = $PSBoundParameters.Remove("NicName")
   $null = $PSBoundParameters.Remove("Kind") 
   $null = $PSBoundParameters.Remove("Location") 
   $null = $PSBoundParameters.Remove("OSType")

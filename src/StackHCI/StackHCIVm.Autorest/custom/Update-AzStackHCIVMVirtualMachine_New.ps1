@@ -45,7 +45,7 @@ https://learn.microsoft.com/powershell/module/az.stackhci/update-azstackhcivmvir
 #>
 function Update-AzStackHCIVmVirtualMachine {
     [OutputType([Microsoft.Azure.PowerShell.Cmdlets.StackHCIVm.Models.Api20230901Preview.IVirtualMachineInstance])]
-    [CmdletBinding(PositionalBinding=$false)]    
+    [CmdletBinding(DefaultParameterSetName='ByName', PositionalBinding=$false, SupportsShouldProcess, ConfirmImpact='Medium')]   
 
     param( 
         [Parameter(ParameterSetName='ByResourceId', Mandatory)]  

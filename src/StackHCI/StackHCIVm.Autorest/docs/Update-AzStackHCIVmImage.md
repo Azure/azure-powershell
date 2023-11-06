@@ -12,16 +12,21 @@ The operation to update an image.
 
 ## SYNTAX
 
-### ByResourceId (Default)
+### GalleryImage (Default)
 ```
-Update-AzStackHCIVmImage -ResourceId <String> [-SubscriptionId <String>] [-Tag <Hashtable>]
- [<CommonParameters>]
+Update-AzStackHCIVmImage [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ### ByName
 ```
 Update-AzStackHCIVmImage -Name <String> -ResourceGroupName <String> [-SubscriptionId <String>]
- [-Tag <Hashtable>] [<CommonParameters>]
+ [-Tag <Hashtable>] [-Confirm] [-WhatIf] [<CommonParameters>]
+```
+
+### ByResourceId
+```
+Update-AzStackHCIVmImage -ResourceId <String> [-SubscriptionId <String>] [-Tag <Hashtable>] [-Confirm]
+ [-WhatIf] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -96,7 +101,7 @@ The ID of the target subscription.
 
 ```yaml
 Type: System.String
-Parameter Sets: (All)
+Parameter Sets: ByName, ByResourceId
 Aliases:
 
 Required: False
@@ -111,8 +116,39 @@ Resource tags
 
 ```yaml
 Type: System.Collections.Hashtable
-Parameter Sets: (All)
+Parameter Sets: ByName, ByResourceId
 Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -Confirm
+Prompts you for confirmation before running the cmdlet.
+
+```yaml
+Type: System.Management.Automation.SwitchParameter
+Parameter Sets: (All)
+Aliases: cf
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -WhatIf
+Shows what would happen if the cmdlet runs.
+The cmdlet is not run.
+
+```yaml
+Type: System.Management.Automation.SwitchParameter
+Parameter Sets: (All)
+Aliases: wi
 
 Required: False
 Position: Named

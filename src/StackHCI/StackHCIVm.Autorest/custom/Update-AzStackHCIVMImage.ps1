@@ -19,7 +19,7 @@ https://learn.microsoft.com/powershell/module/az.stackhci/update-azstackhcivmima
 function Update-AzStackHCIVmImage{
     [OutputType([Microsoft.Azure.PowerShell.Cmdlets.StackHCIVm.Models.Api20230901Preview.IMarketplaceGalleryImages],ParameterSetName='Marketplace' )]
     [OutputType([Microsoft.Azure.PowerShell.Cmdlets.StackHCIVm.Models.Api20230901Preview.IGalleryImages],ParameterSetName='GalleryImage' )]
-    [CmdletBinding(PositionalBinding=$false)]
+    [CmdletBinding(DefaultParameterSetName='GalleryImage', PositionalBinding=$false, SupportsShouldProcess, ConfirmImpact='Medium')]
    
   param(
     [Parameter(ParameterSetName='ByName', Mandatory)]
