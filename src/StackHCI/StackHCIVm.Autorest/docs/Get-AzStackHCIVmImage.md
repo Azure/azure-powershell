@@ -1,7 +1,7 @@
 ---
 external help file:
-Module Name: Az.StackHCIVm
-online version: https://learn.microsoft.com/powershell/module/az.stackhcivm/get-azstackhcivmgalleryimage
+Module Name: Az.StackHciVM
+online version:   https://learn.microsoft.com/powershell/module/az.stackhci/get-azstackhcivmimage
 schema: 2.0.0
 ---
 
@@ -38,23 +38,30 @@ Gets a gallery image
 
 ## EXAMPLES
 
-### Example 1: {{ Add title here }}
+### Example 1:  Get an Image 
 ```powershell
-PS C:\> {{ Add code here }}
-
-{{ Add output here }}
+PS C:\> Get-AzStackHCIVmImage -Name "testimage" -ResourceGroupName "test-rg" 
 ```
 
-{{ Add description here }}
-
-### Example 2: {{ Add title here }}
-```powershell
-PS C:\> {{ Add code here }}
-
-{{ Add output here }}
+```output
+Name            ResourceGroupName
+----            -----------------
+testImage       test-rg
 ```
 
-{{ Add description here }}
+This command gets a specific image in the specified resource group.
+
+### Example 2: List all Images in a Resource Group  
+```powershell
+PS C:\> Get-AzStackHCIVmImage -ResourceGroupName 'test-rg'
+```
+
+```output
+Name            ResourceGroupName
+----            -----------------
+testImage       test-rg
+```
+This command lists all images in the specified resource group.
 
 ## PARAMETERS
 

@@ -1,6 +1,6 @@
 ---
 external help file:
-Module Name: Az.StackHCIVm
+Module Name: Az.StackHciVM
 online version: https://learn.microsoft.com/powershell/module/az.stackhcivm/update-azstackhcivmvirtualmachine
 schema: 2.0.0
 ---
@@ -30,23 +30,18 @@ The operation to update a virtual machine instance.
 
 ## EXAMPLES
 
-### Example 1: {{ Add title here }}
+### Example 1: Update the Size of the Virtual Machine. 
 ```powershell
-PS C:\> {{ Add code here }}
-
-{{ Add output here }}
+PS C:\> Update-AzStackHCIVmVirtualMachine  -Name "testVm" -ResourceGroupName "test-rg" -VmMemoryInMB "4"
 ```
 
-{{ Add description here }}
-
-### Example 2: {{ Add title here }}
-```powershell
-PS C:\> {{ Add code here }}
-
-{{ Add output here }}
+```output
+Name            ResourceGroupName
+----            -----------------
+testVm          test-rg
 ```
 
-{{ Add description here }}
+This command updates an existing virtual machine in the specified resource group.
 
 ## PARAMETERS
 
@@ -175,7 +170,7 @@ Accept wildcard characters: False
 .
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.StackHCIVm.Support.VMSizeEnum
+Type: Microsoft.Azure.PowerShell.Cmdlets.StackHciVM.Support.VMSizeEnum
 Parameter Sets: (All)
 Aliases:
 
@@ -193,7 +188,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.StackHCIVm.Models.Api20230901Preview.IVirtualMachineInstance
+### Microsoft.Azure.PowerShell.Cmdlets.StackHciVM.Models.Api20230901Preview.IVirtualMachineInstance
 
 ## NOTES
 

@@ -1,6 +1,6 @@
 ---
 external help file:
-Module Name: Az.StackHCIVm
+Module Name: Az.StackHciVM
 online version: https://learn.microsoft.com/powershell/module/az.stackhcivm/remove-azstackhcivmstoragepath
 schema: 2.0.0
 ---
@@ -31,23 +31,13 @@ The operation to delete a storage container.
 
 ## EXAMPLES
 
-### Example 1: {{ Add title here }}
+### Example 1: Remove a Storage Path
 ```powershell
-PS C:\> {{ Add code here }}
+PS C:\> Remove-AzStackHCIVmStoragePath  -Name "testStoragePath" -ResourceGroupName "test-rg"
 
-{{ Add output here }}
 ```
 
-{{ Add description here }}
-
-### Example 2: {{ Add title here }}
-```powershell
-PS C:\> {{ Add code here }}
-
-{{ Add output here }}
-```
-
-{{ Add description here }}
+This command removes the storage path from the specified resource group.
 
 ## PARAMETERS
 
@@ -101,7 +91,7 @@ Identity Parameter
 To construct, see NOTES section for INPUTOBJECT properties and create a hash table.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.StackHCIVm.Models.IStackHciVMIdentity
+Type: Microsoft.Azure.PowerShell.Cmdlets.StackHciVM.Models.IStackHciVMIdentity
 Parameter Sets: (All)
 Aliases:
 

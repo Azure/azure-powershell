@@ -1,41 +1,41 @@
 ---
 external help file:
-Module Name: Az.StackHCIVm
+Module Name: Az.StackHciVM
 online version: https://learn.microsoft.com/powershell/module/az.stackhcivm/get-azstackhcivmlogicalnetwork
 schema: 2.0.0
 ---
 
-# Get-AzStackHciVMLogicalNetwork
+# Get-AzStackHCIVmLogicalNetwork
 
 ## SYNOPSIS
-
+The operation to get a logical network. 
 
 ## SYNTAX
 
 ### List1 (Default)
 ```
-Get-AzStackHciVMLogicalNetwork [-SubscriptionId <String[]>] [-DefaultProfile <PSObject>] [<CommonParameters>]
+Get-AzStackHCIVmLogicalNetwork [-SubscriptionId <String[]>] [-DefaultProfile <PSObject>] [<CommonParameters>]
 ```
 
 ### ByResourceId
 ```
-Get-AzStackHciVMLogicalNetwork [-ResourceId <String>] [<CommonParameters>]
+Get-AzStackHCIVmLogicalNetwork [-ResourceId <String>] [<CommonParameters>]
 ```
 
 ### Get
 ```
-Get-AzStackHciVMLogicalNetwork -Name <String> -ResourceGroupName <String> [-SubscriptionId <String[]>]
+Get-AzStackHCIVmLogicalNetwork -Name <String> -ResourceGroupName <String> [-SubscriptionId <String[]>]
  [-DefaultProfile <PSObject>] [<CommonParameters>]
 ```
 
 ### List
 ```
-Get-AzStackHciVMLogicalNetwork -ResourceGroupName <String> [-SubscriptionId <String[]>]
+Get-AzStackHCIVmLogicalNetwork -ResourceGroupName <String> [-SubscriptionId <String[]>]
  [-DefaultProfile <PSObject>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-
+The operation to get a logical network. 
 
 ## EXAMPLES
 
@@ -142,7 +142,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.StackHCIVm.Models.Api20230901Preview.ILogicalNetworks
+### Microsoft.Azure.PowerShell.Cmdlets.StackHciVM.Models.Api20230901Preview.ILogicalNetworks
 
 ## NOTES
 

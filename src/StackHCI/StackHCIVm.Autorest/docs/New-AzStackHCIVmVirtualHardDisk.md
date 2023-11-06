@@ -1,6 +1,6 @@
 ---
 external help file:
-Module Name: Az.StackHCIVm
+Module Name: Az.StackHciVM
 online version: https://learn.microsoft.com/powershell/module/az.StackHciVM/new-azStackHciVMvirtualharddisk
 schema: 2.0.0
 ---
@@ -27,23 +27,17 @@ Please note some properties can be set only during virtual hard disk creation.
 
 ## EXAMPLES
 
-### Example 1: {{ Add title here }}
+### Example 1: Create a Virtual Hard Disk
 ```powershell
-PS C:\> {{ Add code here }}
-
-{{ Add output here }}
+PS C:\>  New-AzStackHCIVmVirtualHardDisk -Name "testVhd" -ResourceGroupName "test-rg" -CustomLocationId "/subscriptions/{subscriptionID}/resourcegroups/{resourceGroupName}/providers/microsoft.extendedlocation/customlocations/{customLocationName}" -Location "eastus" -SizeGb 2
 ```
 
-{{ Add description here }}
-
-### Example 2: {{ Add title here }}
-```powershell
-PS C:\> {{ Add code here }}
-
-{{ Add output here }}
+```output
+Name            ResourceGroupName
+----            -----------------
+testVhd       test-rg
 ```
-
-{{ Add description here }}
+This command creates a virtual hard disk in the specified resource group.
 
 ## PARAMETERS
 
@@ -81,7 +75,7 @@ Accept wildcard characters: False
 The format of the actual VHD file [vhd, vhdx]
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.StackHCIVm.Support.DiskFileFormat
+Type: Microsoft.Azure.PowerShell.Cmdlets.StackHciVM.Support.DiskFileFormat
 Parameter Sets: (All)
 Aliases:
 
@@ -111,7 +105,7 @@ Accept wildcard characters: False
 The hypervisor generation of the Virtual Machine [V1, V2]
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.StackHCIVm.Support.HyperVGeneration
+Type: Microsoft.Azure.PowerShell.Cmdlets.StackHciVM.Support.HyperVGeneration
 Parameter Sets: (All)
 Aliases:
 
@@ -330,7 +324,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.StackHCIVm.Models.Api20230901Preview.IVirtualHardDisks
+### Microsoft.Azure.PowerShell.Cmdlets.StackHciVM.Models.Api20230901Preview.IVirtualHardDisks
 
 ## NOTES
 

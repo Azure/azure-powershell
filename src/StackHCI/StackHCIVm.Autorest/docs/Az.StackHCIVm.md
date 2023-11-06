@@ -1,16 +1,16 @@
 ---
-Module Name: Az.StackHCIVm
+Module Name: Az.StackHciVM
 Module Guid: 7389f67c-ec9d-4c13-9c9a-308834413af6
 Download Help Link: https://learn.microsoft.com/powershell/module/az.stackhcivm
 Help Version: 1.0.0.0
 Locale: en-US
 ---
 
-# Az.StackHCIVm Module
+# Az.StackHciVM Module
 ## Description
 Microsoft Azure PowerShell: StackHciVM cmdlets
 
-## Az.StackHCIVm Cmdlets
+## Az.StackHciVM Cmdlets
 ### [Add-AzStackHCIVmVirtualMachineDataDisk](Add-AzStackHCIVmVirtualMachineDataDisk.md)
 The operation to add a data disk to a virtual machine.
 
@@ -20,16 +20,16 @@ The operation to add a network interface to a virtual machine.
 ### [Get-AzStackHCIVmImage](Get-AzStackHCIVmImage.md)
 Gets a gallery image
 
-### [Get-AzStackHciVMLogicalNetwork](Get-AzStackHciVMLogicalNetwork.md)
+### [Get-AzStackHCIVmLogicalNetwork](Get-AzStackHCIVmLogicalNetwork.md)
 
 
-### [Get-AzStackHciVMNetworkInterface](Get-AzStackHciVMNetworkInterface.md)
+### [Get-AzStackHCIVmNetworkInterface](Get-AzStackHCIVmNetworkInterface.md)
 Gets a network interface
 
-### [Get-AzStackHciVMStoragePath](Get-AzStackHciVMStoragePath.md)
+### [Get-AzStackHCIVmStoragePath](Get-AzStackHCIVmStoragePath.md)
 Gets a storage container
 
-### [Get-AzStackHciVMVirtualHardDisk](Get-AzStackHciVMVirtualHardDisk.md)
+### [Get-AzStackHCIVmVirtualHardDisk](Get-AzStackHCIVmVirtualHardDisk.md)
 Gets a virtual hard disk
 
 ### [Get-AzStackHCIVmVirtualMachine](Get-AzStackHCIVmVirtualMachine.md)
@@ -99,13 +99,25 @@ Please note some properties can be set only during image creation.
 ### [Update-AzStackHciVMLogicalNetwork](Update-AzStackHciVMLogicalNetwork.md)
 The operation to update a logical network.
 
+### [Update-AzStackHCIVmLogicalNetwork](Update-AzStackHCIVmLogicalNetwork.md)
+The operation to update a logical network.
+
 ### [Update-AzStackHciVMNetworkInterface](Update-AzStackHciVMNetworkInterface.md)
 The operation to update a network interface.
 
+### [Update-AzStackHCIVmNetworkInterface](Update-AzStackHCIVmNetworkInterface.md)
+The operation to update a network interface.
+
 ### [Update-AzStackHciVMStoragePath](Update-AzStackHciVMStoragePath.md)
+The operation to update a storage path.
+
+### [Update-AzStackHCIVmStoragePath](Update-AzStackHCIVmStoragePath.md)
 The operation to update a storage container.
 
 ### [Update-AzStackHciVMVirtualHardDisk](Update-AzStackHciVMVirtualHardDisk.md)
+The operation to update a virtual hard disk.
+
+### [Update-AzStackHCIVmVirtualHardDisk](Update-AzStackHCIVmVirtualHardDisk.md)
 The operation to update a virtual hard disk.
 
 ### [Update-AzStackHCIVmVirtualMachine](Update-AzStackHCIVmVirtualMachine.md)

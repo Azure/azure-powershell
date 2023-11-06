@@ -1,6 +1,6 @@
 ---
 external help file:
-Module Name: Az.StackHCIVm
+Module Name: Az.StackHciVM
 online version: https://learn.microsoft.com/powershell/module/az.stackhcivm/restart-azstackhcivmvirtualmachine
 schema: 2.0.0
 ---
@@ -28,23 +28,13 @@ The operation to restart a virtual machine instance.
 
 ## EXAMPLES
 
-### Example 1: {{ Add title here }}
+### Example 1: Restart Virtual Machine 
 ```powershell
-PS C:\> {{ Add code here }}
+PS C:\> Restart-AzStackHCIVmVirtualMachine  -Name "testVm" -ResourceGroupName "test-rg"
 
-{{ Add output here }}
 ```
 
-{{ Add description here }}
-
-### Example 2: {{ Add title here }}
-```powershell
-PS C:\> {{ Add code here }}
-
-{{ Add output here }}
-```
-
-{{ Add description here }}
+This command restarts the virtual machine in the specified resource group.
 
 ## PARAMETERS
 
@@ -147,7 +137,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.StackHCIVm.Models.Api20230901Preview.IVirtualMachineInstance
+### Microsoft.Azure.PowerShell.Cmdlets.StackHciVM.Models.Api20230901Preview.IVirtualMachineInstance
 
 ## NOTES
 

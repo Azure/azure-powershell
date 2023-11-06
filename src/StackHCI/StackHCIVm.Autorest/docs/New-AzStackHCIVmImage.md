@@ -1,6 +1,6 @@
 ---
 external help file:
-Module Name: Az.StackHCIVm
+Module Name: Az.StackHciVM
 online version: https://learn.microsoft.com/powershell/module/az.stackhcivm/new-azstackhcivmimage
 schema: 2.0.0
 ---
@@ -44,23 +44,41 @@ Please note some properties can be set only during image creation.
 
 ## EXAMPLES
 
-### Example 1: {{ Add title here }}
+### Example 1: Create a  Gallery Image 
 ```powershell
-PS C:\> {{ Add code here }}
-
-{{ Add output here }}
+PS C:\> New-AzStackHCIVmImage -Name "testImage" -ResourceGroupName "test-rg" -CustomLocationId "/subscriptions/{subscriptionID}/resourcegroups/{resourceGroupName}/providers/microsoft.extendedlocation/customlocations/{customLocationName}" -ImagePath "C:\ClusterStorage\Volume1\Ubunut.vhdx" -OSType "Linux" -Location "eastus" 
 ```
 
-{{ Add description here }}
+```output
+Name            ResourceGroupName
+----            -----------------
+testImage       test-rg
+```
+This command creates a gallery image from a local path.
 
-### Example 2: {{ Add title here }}
+### Example 2:  Create a Marketplace Gallery Image 
 ```powershell
-PS C:\> {{ Add code here }}
-
-{{ Add output here }}
+PS C:\> New-AzStackHCIVmImage -Name "testMarketplaceImage" -ResourceGroupName "test-rg" -CustomLocationId "/subscriptions/{subscriptionID}/resourcegroups/{resourceGroupName}/providers/microsoft.extendedlocation/customlocations/{customLocationName}"  -Location "eastus" -Offer "windowsserver" -Publisher "MicrosoftWindowsServer" -Sku "2022-Datacenter" -Version "latest" -OSType "Windows"
 ```
 
-{{ Add description here }}
+```output
+Name            ResourceGroupName
+----            -----------------
+testMarketplaceImage       test-rg
+```
+This command creates a marketplace gallery image using the specified offer , publisher, sku and version.
+
+### Example 3: {Create a  Marketplace Gallery Image From URN 
+```powershell
+PS C:\> New-AzStackHCIVmImage -Name "testMarketplaceImageURN" -ResourceGroupName "test-rg" -CustomLocationId "/subscriptions/{subscriptionID}/resourcegroups/{resourceGroupName}/providers/microsoft.extendedlocation/customlocations/{customLocationName}"  -Location "eastus" -URN  "microsoftwindowsserver:windowsserver:2022-datacenter:latest" -OSType "Windows"
+```
+
+```output
+Name            ResourceGroupName
+----            -----------------
+testMarketplaceImageURN       test-rg
+```
+This command creates a marketplace gallery image using the specified urn.
 
 ## PARAMETERS
 
@@ -68,7 +86,7 @@ PS C:\> {{ Add code here }}
 Datasource for the gallery image when provisioning with cloud-init [NoCloud, Azure]
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.StackHCIVm.Support.CloudInitDataSource
+Type: Microsoft.Azure.PowerShell.Cmdlets.StackHciVM.Support.CloudInitDataSource
 Parameter Sets: (All)
 Aliases:
 
@@ -162,7 +180,7 @@ Accept wildcard characters: False
 Operating system type that the gallery image uses [Windows, Linux]
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.StackHCIVm.Support.OperatingSystemTypes
+Type: Microsoft.Azure.PowerShell.Cmdlets.StackHciVM.Support.OperatingSystemTypes
 Parameter Sets: (All)
 Aliases:
 
@@ -363,9 +381,9 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.StackHCIVm.Models.Api20230901Preview.IGalleryImages
+### Microsoft.Azure.PowerShell.Cmdlets.StackHciVM.Models.Api20230901Preview.IGalleryImages
 
-### Microsoft.Azure.PowerShell.Cmdlets.StackHCIVm.Models.Api20230901Preview.IMarketplaceGalleryImages
+### Microsoft.Azure.PowerShell.Cmdlets.StackHciVM.Models.Api20230901Preview.IMarketplaceGalleryImages
 
 ## NOTES
 

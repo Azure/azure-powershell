@@ -1,31 +1,26 @@
 ---
 external help file:
-Module Name: Az.StackHCIVm
+Module Name: Az.StackHciVM
 online version: https://learn.microsoft.com/powershell/module/az.stackhcivm/update-azstackhcivmvirtualharddisk
 schema: 2.0.0
 ---
 
-# Update-AzStackHciVMVirtualHardDisk
+# Update-AzStackHCIVmVirtualHardDisk
 
 ## SYNOPSIS
 The operation to update a virtual hard disk.
 
 ## SYNTAX
 
-### ByResourceId (Default)
+### UpdateExpanded (Default)
 ```
-Update-AzStackHciVMVirtualHardDisk [-ResourceId <String>] [-Tags <Hashtable>] [<CommonParameters>]
-```
-
-### UpdateExpanded
-```
-Update-AzStackHciVMVirtualHardDisk -Name <String> -ResourceGroupName <String> [-SubscriptionId <String>]
+Update-AzStackHCIVmVirtualHardDisk -Name <String> -ResourceGroupName <String> [-SubscriptionId <String>]
  [-Tags <Hashtable>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ### UpdateViaIdentityExpanded
 ```
-Update-AzStackHciVMVirtualHardDisk -InputObject <IStackHciVMIdentity> [-Tags <Hashtable>]
+Update-AzStackHCIVmVirtualHardDisk -InputObject <IStackHciVMIdentity> [-Tags <Hashtable>]
  [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
@@ -54,7 +49,7 @@ Run the command as a job
 
 ```yaml
 Type: System.Management.Automation.SwitchParameter
-Parameter Sets: UpdateExpanded, UpdateViaIdentityExpanded
+Parameter Sets: (All)
 Aliases:
 
 Required: False
@@ -69,7 +64,7 @@ The credentials, account, tenant, and subscription used for communication with A
 
 ```yaml
 Type: System.Management.Automation.PSObject
-Parameter Sets: UpdateExpanded, UpdateViaIdentityExpanded
+Parameter Sets: (All)
 Aliases: AzureRMContext, AzureCredential
 
 Required: False
@@ -84,7 +79,7 @@ Identity Parameter
 To construct, see NOTES section for INPUTOBJECT properties and create a hash table.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.StackHCIVm.Models.IStackHciVMIdentity
+Type: Microsoft.Azure.PowerShell.Cmdlets.StackHciVM.Models.IStackHciVMIdentity
 Parameter Sets: UpdateViaIdentityExpanded
 Aliases:
 
@@ -115,7 +110,7 @@ Run the command asynchronously
 
 ```yaml
 Type: System.Management.Automation.SwitchParameter
-Parameter Sets: UpdateExpanded, UpdateViaIdentityExpanded
+Parameter Sets: (All)
 Aliases:
 
 Required: False
@@ -135,21 +130,6 @@ Parameter Sets: UpdateExpanded
 Aliases:
 
 Required: True
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -ResourceId
-The ARM Resource ID of the virtual hard disk .
-
-```yaml
-Type: System.String
-Parameter Sets: ByResourceId
-Aliases:
-
-Required: False
 Position: Named
 Default value: None
 Accept pipeline input: False
@@ -222,11 +202,11 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.StackHCIVm.Models.IStackHciVMIdentity
+### Microsoft.Azure.PowerShell.Cmdlets.StackHciVM.Models.IStackHciVMIdentity
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.StackHCIVm.Models.Api20230901Preview.IVirtualHardDisks
+### Microsoft.Azure.PowerShell.Cmdlets.StackHciVM.Models.Api20230901Preview.IVirtualHardDisks
 
 ## NOTES
 

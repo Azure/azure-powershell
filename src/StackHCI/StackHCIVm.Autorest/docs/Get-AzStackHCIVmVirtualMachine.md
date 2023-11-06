@@ -1,6 +1,6 @@
 ---
 external help file:
-Module Name: Az.StackHCIVm
+Module Name: Az.StackHciVM
 online version: https://learn.microsoft.com/powershell/module/az.stackhcivm/get-azstackhcivmvirtualmachine
 schema: 2.0.0
 ---
@@ -39,23 +39,31 @@ Gets a virtual machine
 
 ## EXAMPLES
 
-### Example 1: {{ Add title here }}
+### Example 2: Get a Virtual Machine. 
 ```powershell
-PS C:\> {{ Add code here }}
-
-{{ Add output here }}
+PS C:\> Get-AzStackHCIVmVirtualMachine -Name "testVm" -ResourceGroupName "test-rg"
 ```
 
-{{ Add description here }}
-
-### Example 2: {{ Add title here }}
-```powershell
-PS C:\> {{ Add code here }}
-
-{{ Add output here }}
+```output
+Name            ResourceGroupName
+----            -----------------
+testVm          test-rg
 ```
 
-{{ Add description here }}
+This commnad gets a virtual machine in a specified resource group.
+
+### Example 2: List Virtual Machines in a Resource Group
+```powershell
+PS C:\> Get-AzStackHCIVmVirtualMachine -ResourceGroupName "test-rg"
+```
+
+```output
+Name            ResourceGroupName
+----            -----------------
+testVm          test-rg
+```
+
+This command lists all virtual machines in a resource group.
 
 ## PARAMETERS
 
@@ -158,9 +166,9 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.StackHCIVm.Models.Api20230315Preview.Machine
+### Microsoft.Azure.PowerShell.Cmdlets.StackHciVM.Models.Api20230315Preview.Machine
 
-### Microsoft.Azure.PowerShell.Cmdlets.StackHCIVm.Models.Api20230901Preview.IVirtualMachineInstance
+### Microsoft.Azure.PowerShell.Cmdlets.StackHciVM.Models.Api20230901Preview.IVirtualMachineInstance
 
 ## NOTES
 

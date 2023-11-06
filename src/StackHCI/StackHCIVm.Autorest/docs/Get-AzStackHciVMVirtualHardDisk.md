@@ -1,11 +1,11 @@
 ---
 external help file:
-Module Name: Az.StackHCIVm
+Module Name: Az.StackHciVM
 online version: https://learn.microsoft.com/powershell/module/az.stackhcivm/get-azstackhcivmvirtualharddisk
 schema: 2.0.0
 ---
 
-# Get-AzStackHciVMVirtualHardDisk
+# Get-AzStackHCIVmVirtualHardDisk
 
 ## SYNOPSIS
 Gets a virtual hard disk
@@ -14,23 +14,23 @@ Gets a virtual hard disk
 
 ### List1 (Default)
 ```
-Get-AzStackHciVMVirtualHardDisk [-SubscriptionId <String[]>] [-DefaultProfile <PSObject>] [<CommonParameters>]
+Get-AzStackHCIVmVirtualHardDisk [-SubscriptionId <String[]>] [-DefaultProfile <PSObject>] [<CommonParameters>]
 ```
 
 ### ByResourceId
 ```
-Get-AzStackHciVMVirtualHardDisk [-ResourceId <String>] [<CommonParameters>]
+Get-AzStackHCIVmVirtualHardDisk [-ResourceId <String>] [<CommonParameters>]
 ```
 
 ### Get
 ```
-Get-AzStackHciVMVirtualHardDisk -Name <String> -ResourceGroupName <String> [-SubscriptionId <String[]>]
+Get-AzStackHCIVmVirtualHardDisk -Name <String> -ResourceGroupName <String> [-SubscriptionId <String[]>]
  [-DefaultProfile <PSObject>] [<CommonParameters>]
 ```
 
 ### List
 ```
-Get-AzStackHciVMVirtualHardDisk -ResourceGroupName <String> [-SubscriptionId <String[]>]
+Get-AzStackHCIVmVirtualHardDisk -ResourceGroupName <String> [-SubscriptionId <String[]>]
  [-DefaultProfile <PSObject>] [<CommonParameters>]
 ```
 
@@ -142,7 +142,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.StackHCIVm.Models.Api20230901Preview.IVirtualHardDisks
+### Microsoft.Azure.PowerShell.Cmdlets.StackHciVM.Models.Api20230901Preview.IVirtualHardDisks
 
 ## NOTES
 
