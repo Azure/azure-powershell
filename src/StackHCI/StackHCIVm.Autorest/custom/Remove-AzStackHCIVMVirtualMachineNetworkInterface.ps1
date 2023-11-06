@@ -66,7 +66,7 @@ function Remove-AzStackHCIVmVirtualMachineNetworkInterface {
         [Microsoft.Azure.PowerShell.Cmdlets.StackHCIVm.Category('Body')]
         [System.String[]]
         # NetworkInterfaces - list of network interfaces to be attached from  the virtual machine in id format. 
-        ${NicIds},
+        ${NicId},
     
         [Parameter(ParameterSetName='ByResourceId')]
         [Parameter(ParameterSetName='ByName')]
@@ -74,7 +74,7 @@ function Remove-AzStackHCIVmVirtualMachineNetworkInterface {
         [Microsoft.Azure.PowerShell.Cmdlets.StackHCIVm.Category('Body')]
         [System.String[]]
         # NetworkInterfaces - list of network interfaces to be removed from the virtual machine in name format.
-        ${NicNames},
+        ${NicName},
     
         [Parameter(ParameterSetName='ByResourceId')]
         [Parameter(ParameterSetName='ByName')]
@@ -111,39 +111,39 @@ function Remove-AzStackHCIVmVirtualMachineNetworkInterface {
             $nicList = [System.Collections.ArrayList]$VM.NetworkProfileNetworkInterface.Id
         }
 
-        if ($NicIds){
-            $NicIds = $PSBoundParameters['NicIds']
-            $null = $PSBoundParameters.Remove("NicIds")
+        if ($NicId){
+            $NicId = $PSBoundParameters['NicId']
+            $null = $PSBoundParameters.Remove("NicId")
             
-            foreach ($NicId in $NicIds){
-                $nicName = ($NicId -split "/")[8]
-                if ($NicId -in $nicList){
-                    $nicList.Remove($NicId)
+            foreach ($NId in $NicId){
+                $nicName = ($NId -split "/")[8]
+                if ($NId -in $nicList){
+                    $nicList.Remove($NId)
                 } elseif ($nicName -in $nicList){
                     $nicList.Remove($nicName)
                 } else {
-                    Write-Error "Network Interface not currently attached: $NicId"
+                    Write-Error "Network Interface not currently attached: $NId"
                 }
             }
     
-        } elseif ($NicNames){
+        } elseif ($NicName){
             $rg = $ResourceGroupName
             if($NicResourceGroup){
               $rg = $NicResourceGroup
             }
     
-            $null = $PSBoundParameters.Remove("NicNames")
+            $null = $PSBoundParameters.Remove("NicName")
             $null = $PSBoundParameters.Remove("NicResourceGroup")
 
             
-            foreach ($NicName in $NicNames){
-                $NicId = "/subscriptions/$SubscriptionId/resourceGroups/$rg/providers/Microsoft.AzureStackHCI/networkInterfaces/$NicName"
-                if ($NicId -in $nicList){
-                    [void]$nicList.Remove($NicId)
-                } elseif ($NicName -in $nicList) {
-                    $nicList.Remove($NicName)
+            foreach ($NName in $NicName){
+                $NId = "/subscriptions/$SubscriptionId/resourceGroups/$rg/providers/Microsoft.AzureStackHCI/networkInterfaces/$NName"
+                if ($NId -in $nicList){
+                    [void]$nicList.Remove($NId)
+                } elseif ($NName -in $nicList) {
+                    $nicList.Remove($NName)
                 } else {
-                    Write-Error "Network Interface not currently attached: $NicName"
+                    Write-Error "Network Interface not currently attached: $NName"
                 }
             }
     
