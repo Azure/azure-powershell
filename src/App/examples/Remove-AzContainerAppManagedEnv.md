@@ -1,13 +1,15 @@
-### Example 1: Delete a Managed Environment.
+### Example 1: Delete a Container App ManagedEnv.
 ```powershell
-Remove-AzContainerAppManagedEnv -EnvName azps-env -ResourceGroupName azpstest_gp
+Remove-AzContainerAppManagedEnv -Name azpsenv -ResourceGroupName azps_test_group_app
 ```
 
-Delete a Managed Environment.
+Delete a Container App ManagedEnv.
 
-### Example 2: Delete a Managed Environment.
+### Example 2: Delete a Container App ManagedEnv.
 ```powershell
-Get-AzContainerAppManagedEnv -EnvName azps-env -ResourceGroupName azpstest_gp | Remove-AzContainerAppManagedEnv
+$managedenv = Get-AzContainerAppManagedEnv -Name azpsenv -ResourceGroupName azps_test_group_app
+
+Remove-AzContainerAppManagedEnv -InputObject $managedenv
 ```
 
-Delete a Managed Environment.
+Delete a Container App ManagedEnv.

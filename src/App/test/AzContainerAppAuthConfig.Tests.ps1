@@ -17,22 +17,29 @@ if(($null -eq $TestName) -or ($TestName -contains 'AzContainerAppAuthConfig'))
 Describe 'AzContainerAppAuthConfig' {
     It 'CreateExpanded' {
         {
-            $identity = New-AzContainerAppIdentityProviderObject -RegistrationAppId "xxxx@xx.com" -RegistrationAppSecretSettingName "facebook-secret"
-            $config = New-AzContainerAppAuthConfig -AuthConfigName current -ContainerAppName $env.containerAppName -ResourceGroupName $env.resourceGroup -PlatformEnabled -GlobalValidationUnauthenticatedClientAction 'AllowAnonymous' -IdentityProvider $identity
+            $identity = New-AzContainerAppIdentityProviderObject -RegistrationAppId "xxxxxx@xxx.com" -RegistrationAppSecretSettingName redis-config
+            $config = New-AzContainerAppAuthConfig -Name current -ContainerAppName $env.containerApp2 -ResourceGroupName $env.resourceGroupConnected -PlatformEnabled -GlobalValidationUnauthenticatedClientAction 'AllowAnonymous' -IdentityProvider $identity
             $config.Name | Should -Be "current"
         } | Should -Not -Throw
     }
 
     It 'Get' {
         {
-            $config = Get-AzContainerAppAuthConfig -AuthConfigName current -ContainerAppName $env.containerAppName -ResourceGroupName $env.resourceGroup
+            $config = Get-AzContainerAppAuthConfig -Name current -ContainerAppName $env.containerApp2 -ResourceGroupName $env.resourceGroupConnected
             $config.Name | Should -Be "current"
+        } | Should -Not -Throw
+    }
+
+    It 'AuthTokenGet' {
+        {
+            $config = Get-AzContainerAppAuthToken -ContainerAppName $env.containerApp2 -ResourceGroupName $env.resourceGroupConnected
+            $config.Count | Should -BeGreaterThan 0
         } | Should -Not -Throw
     }
 
     It 'Delete' {
         {
-            Remove-AzContainerAppAuthConfig -AuthConfigName current -ContainerAppName $env.containerAppName -ResourceGroupName $env.resourceGroup
+            Remove-AzContainerAppAuthConfig -AuthConfigName current -ContainerAppName $env.containerApp2 -ResourceGroupName $env.resourceGroupConnected
         } | Should -Not -Throw
     }
 }

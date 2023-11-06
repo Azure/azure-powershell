@@ -16,54 +16,76 @@
 
 <#
 .Synopsis
-Create or update the AuthConfig for a Container App.
+Create the AuthConfig for a Container App.
 .Description
-Create or update the AuthConfig for a Container App.
+Create the AuthConfig for a Container App.
 .Example
-$identity = New-AzContainerAppIdentityProviderObject -RegistrationAppId xxxxxx@xxx.com -RegistrationAppSecretSettingName facebook-secret
+$identity = New-AzContainerAppIdentityProviderObject -RegistrationAppId xxxxxx@xxx.com -RegistrationAppSecretSettingName redis-config
 
-New-AzContainerAppAuthConfig -AuthConfigName current -ContainerAppName azps-containerapp -ResourceGroupName azpstest_gp -PlatformEnabled -GlobalValidationUnauthenticatedClientAction 'AllowAnonymous' -IdentityProvider $identity
+New-AzContainerAppAuthConfig -Name current -ContainerAppName azps-containerapp-2 -ResourceGroupName azps_test_group_app -PlatformEnabled -GlobalValidationUnauthenticatedClientAction 'AllowAnonymous' -IdentityProvider $identity
 
+.Inputs
+Microsoft.Azure.PowerShell.Cmdlets.App.Models.IAppIdentity
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.App.Models.Api20220301.IAuthConfig
+Microsoft.Azure.PowerShell.Cmdlets.App.Models.IAuthConfig
 .Notes
 COMPLEX PARAMETER PROPERTIES
 
 To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
 
+CONTAINERAPPINPUTOBJECT <IAppIdentity>: Identity Parameter
+  [AuthConfigName <String>]: Name of the Container App AuthConfig.
+  [CertificateName <String>]: Name of the Certificate.
+  [ComponentName <String>]: Name of the Dapr Component.
+  [ConnectedEnvironmentName <String>]: Name of the connectedEnvironment.
+  [ContainerAppName <String>]: Name of the Container App.
+  [DetectorName <String>]: Name of the Container App Detector.
+  [EnvironmentName <String>]: Name of the Environment.
+  [Id <String>]: Resource identity path
+  [JobExecutionName <String>]: Job execution name.
+  [JobName <String>]: Job Name
+  [Location <String>]: The name of Azure region.
+  [ManagedCertificateName <String>]: Name of the Managed Certificate.
+  [ReplicaName <String>]: Name of the Container App Revision Replica.
+  [ResourceGroupName <String>]: The name of the resource group. The name is case insensitive.
+  [RevisionName <String>]: Name of the Container App Revision.
+  [SourceControlName <String>]: Name of the Container App SourceControl.
+  [StorageName <String>]: Name of the storage.
+  [SubscriptionId <String>]: The ID of the target subscription.
+
 IDENTITYPROVIDER <IIdentityProviders>: The configuration settings of each of the identity providers used to configure ContainerApp Service Authentication/Authorization.
-  [AllowedPrincipalGroup <String[]>]: The list of the allowed groups.
-  [AllowedPrincipalIdentity <String[]>]: The list of the allowed identities.
+  [AllowedPrincipalGroup <List<String>>]: The list of the allowed groups.
+  [AllowedPrincipalIdentity <List<String>>]: The list of the allowed identities.
   [AppleEnabled <Boolean?>]: <code>false</code> if the Apple provider should not be enabled despite the set registration; otherwise, <code>true</code>.
-  [AppleLoginScope <String[]>]: A list of the scopes that should be requested while authenticating.
+  [AppleLoginScope <List<String>>]: A list of the scopes that should be requested while authenticating.
   [AppleRegistrationClientId <String>]: The Client ID of the app used for login.
   [AppleRegistrationClientSecretSettingName <String>]: The app setting name that contains the client secret.
   [AzureActiveDirectoryEnabled <Boolean?>]: <code>false</code> if the Azure Active Directory provider should not be enabled despite the set registration; otherwise, <code>true</code>.
   [AzureActiveDirectoryIsAutoProvisioned <Boolean?>]: Gets a value indicating whether the Azure AD configuration was auto-provisioned using 1st party tooling.         This is an internal flag primarily intended to support the Azure Management Portal. Users should not         read or write to this property.
   [AzureActiveDirectoryRegistrationClientId <String>]: The Client ID of this relying party application, known as the client_id.         This setting is required for enabling OpenID Connection authentication with Azure Active Directory or         other 3rd party OpenID Connect providers.         More information on OpenID Connect: http://openid.net/specs/openid-connect-core-1_0.html
   [AzureActiveDirectoryRegistrationClientSecretSettingName <String>]: The app setting name that contains the client secret of the relying party application.
-  [AzureActiveDirectoryValidationAllowedAudience <String[]>]: The list of audiences that can make successful authentication/authorization requests.
+  [AzureActiveDirectoryValidationAllowedAudience <List<String>>]: The list of audiences that can make successful authentication/authorization requests.
   [AzureStaticWebAppEnabled <Boolean?>]: <code>false</code> if the Azure Static Web Apps provider should not be enabled despite the set registration; otherwise, <code>true</code>.
   [AzureStaticWebAppsRegistrationClientId <String>]: The Client ID of the app used for login.
   [CustomOpenIdConnectProvider <IIdentityProvidersCustomOpenIdConnectProviders>]: The map of the name of the alias of each custom Open ID Connect provider to the         configuration settings of the custom Open ID Connect provider.
     [(Any) <ICustomOpenIdConnectProvider>]: This indicates any property can be added to this object.
-  [DefaultAuthorizationPolicyAllowedApplication <String[]>]: The configuration settings of the Azure Active Directory allowed applications.
+  [DefaultAuthorizationPolicyAllowedApplication <List<String>>]: The configuration settings of the Azure Active Directory allowed applications.
   [FacebookEnabled <Boolean?>]: <code>false</code> if the Facebook provider should not be enabled despite the set registration; otherwise, <code>true</code>.
   [FacebookGraphApiVersion <String>]: The version of the Facebook api to be used while logging in.
-  [FacebookLoginScope <String[]>]: A list of the scopes that should be requested while authenticating.
+  [FacebookLoginScope <List<String>>]: A list of the scopes that should be requested while authenticating.
   [GitHubEnabled <Boolean?>]: <code>false</code> if the GitHub provider should not be enabled despite the set registration; otherwise, <code>true</code>.
-  [GitHubLoginScope <String[]>]: A list of the scopes that should be requested while authenticating.
+  [GitHubLoginScope <List<String>>]: A list of the scopes that should be requested while authenticating.
   [GitHubRegistrationClientId <String>]: The Client ID of the app used for login.
   [GitHubRegistrationClientSecretSettingName <String>]: The app setting name that contains the client secret.
   [GoogleEnabled <Boolean?>]: <code>false</code> if the Google provider should not be enabled despite the set registration; otherwise, <code>true</code>.
-  [GoogleLoginScope <String[]>]: A list of the scopes that should be requested while authenticating.
+  [GoogleLoginScope <List<String>>]: A list of the scopes that should be requested while authenticating.
   [GoogleRegistrationClientId <String>]: The Client ID of the app used for login.
   [GoogleRegistrationClientSecretSettingName <String>]: The app setting name that contains the client secret.
-  [GoogleValidationAllowedAudience <String[]>]: The configuration settings of the allowed list of audiences from which to validate the JWT token.
-  [JwtClaimCheckAllowedClientApplication <String[]>]: The list of the allowed client applications.
-  [JwtClaimCheckAllowedGroup <String[]>]: The list of the allowed groups.
+  [GoogleValidationAllowedAudience <List<String>>]: The configuration settings of the allowed list of audiences from which to validate the JWT token.
+  [JwtClaimCheckAllowedClientApplication <List<String>>]: The list of the allowed client applications.
+  [JwtClaimCheckAllowedGroup <List<String>>]: The list of the allowed groups.
   [LoginDisableWwwAuthenticate <Boolean?>]: <code>true</code> if the www-authenticate provider should be omitted from the request; otherwise, <code>false</code>.
-  [LoginParameter <String[]>]: Login parameters to send to the OpenID Connect authorization endpoint when         a user logs in. Each parameter must be in the form "key=value".
+  [LoginParameter <List<String>>]: Login parameters to send to the OpenID Connect authorization endpoint when         a user logs in. Each parameter must be in the form "key=value".
   [RegistrationAppId <String>]: The App ID of the app used for login.
   [RegistrationAppSecretSettingName <String>]: The app setting name that contains the app secret.
   [RegistrationClientSecretCertificateIssuer <String>]: An alternative to the client secret thumbprint, that is the issuer of a certificate used for signing purposes. This property acts as         a replacement for the Client Secret Certificate Thumbprint. It is also optional.
@@ -73,105 +95,171 @@ IDENTITYPROVIDER <IIdentityProviders>: The configuration settings of each of the
   [RegistrationConsumerSecretSettingName <String>]: The app setting name that contains the OAuth 1.0a consumer secret of the Twitter         application used for sign-in.
   [RegistrationOpenIdIssuer <String>]: The OpenID Connect Issuer URI that represents the entity which issues access tokens for this application.         When using Azure Active Directory, this value is the URI of the directory tenant, e.g. https://login.microsoftonline.com/v2.0/{tenant-guid}/.         This URI is a case-sensitive identifier for the token issuer.         More information on OpenID Connect Discovery: http://openid.net/specs/openid-connect-discovery-1_0.html
   [TwitterEnabled <Boolean?>]: <code>false</code> if the Twitter provider should not be enabled despite the set registration; otherwise, <code>true</code>.
+
+INPUTOBJECT <IAppIdentity>: Identity Parameter
+  [AuthConfigName <String>]: Name of the Container App AuthConfig.
+  [CertificateName <String>]: Name of the Certificate.
+  [ComponentName <String>]: Name of the Dapr Component.
+  [ConnectedEnvironmentName <String>]: Name of the connectedEnvironment.
+  [ContainerAppName <String>]: Name of the Container App.
+  [DetectorName <String>]: Name of the Container App Detector.
+  [EnvironmentName <String>]: Name of the Environment.
+  [Id <String>]: Resource identity path
+  [JobExecutionName <String>]: Job execution name.
+  [JobName <String>]: Job Name
+  [Location <String>]: The name of Azure region.
+  [ManagedCertificateName <String>]: Name of the Managed Certificate.
+  [ReplicaName <String>]: Name of the Container App Revision Replica.
+  [ResourceGroupName <String>]: The name of the resource group. The name is case insensitive.
+  [RevisionName <String>]: Name of the Container App Revision.
+  [SourceControlName <String>]: Name of the Container App SourceControl.
+  [StorageName <String>]: Name of the storage.
+  [SubscriptionId <String>]: The ID of the target subscription.
 .Link
 https://learn.microsoft.com/powershell/module/az.app/new-azcontainerappauthconfig
 #>
 function New-AzContainerAppAuthConfig {
-[OutputType([Microsoft.Azure.PowerShell.Cmdlets.App.Models.Api20220301.IAuthConfig])]
+[OutputType([Microsoft.Azure.PowerShell.Cmdlets.App.Models.IAuthConfig])]
 [CmdletBinding(DefaultParameterSetName='CreateExpanded', PositionalBinding=$false, SupportsShouldProcess, ConfirmImpact='Medium')]
 param(
-    [Parameter(Mandatory)]
-    [Microsoft.Azure.PowerShell.Cmdlets.App.Category('Path')]
-    [System.String]
-    # Name of the Container App AuthConfig.
-    ${AuthConfigName},
-
-    [Parameter(Mandatory)]
+    [Parameter(ParameterSetName='CreateExpanded', Mandatory)]
+    [Parameter(ParameterSetName='CreateViaJsonFilePath', Mandatory)]
+    [Parameter(ParameterSetName='CreateViaJsonString', Mandatory)]
     [Microsoft.Azure.PowerShell.Cmdlets.App.Category('Path')]
     [System.String]
     # Name of the Container App.
     ${ContainerAppName},
 
-    [Parameter(Mandatory)]
+    [Parameter(ParameterSetName='CreateExpanded', Mandatory)]
+    [Parameter(ParameterSetName='CreateViaIdentityContainerAppExpanded', Mandatory)]
+    [Parameter(ParameterSetName='CreateViaJsonFilePath', Mandatory)]
+    [Parameter(ParameterSetName='CreateViaJsonString', Mandatory)]
+    [Alias('AuthConfigName')]
+    [Microsoft.Azure.PowerShell.Cmdlets.App.Category('Path')]
+    [System.String]
+    # Name of the Container App AuthConfig.
+    ${Name},
+
+    [Parameter(ParameterSetName='CreateExpanded', Mandatory)]
+    [Parameter(ParameterSetName='CreateViaJsonFilePath', Mandatory)]
+    [Parameter(ParameterSetName='CreateViaJsonString', Mandatory)]
     [Microsoft.Azure.PowerShell.Cmdlets.App.Category('Path')]
     [System.String]
     # The name of the resource group.
     # The name is case insensitive.
     ${ResourceGroupName},
 
-    [Parameter()]
+    [Parameter(ParameterSetName='CreateExpanded')]
+    [Parameter(ParameterSetName='CreateViaJsonFilePath')]
+    [Parameter(ParameterSetName='CreateViaJsonString')]
     [Microsoft.Azure.PowerShell.Cmdlets.App.Category('Path')]
     [Microsoft.Azure.PowerShell.Cmdlets.App.Runtime.DefaultInfo(Script='(Get-AzContext).Subscription.Id')]
     [System.String]
     # The ID of the target subscription.
     ${SubscriptionId},
 
-    [Parameter()]
-    [ArgumentCompleter([Microsoft.Azure.PowerShell.Cmdlets.App.Support.CookieExpirationConvention])]
+    [Parameter(ParameterSetName='CreateViaIdentityContainerAppExpanded', Mandatory, ValueFromPipeline)]
+    [Microsoft.Azure.PowerShell.Cmdlets.App.Category('Path')]
+    [Microsoft.Azure.PowerShell.Cmdlets.App.Models.IAppIdentity]
+    # Identity Parameter
+    # To construct, see NOTES section for CONTAINERAPPINPUTOBJECT properties and create a hash table.
+    ${ContainerAppInputObject},
+
+    [Parameter(ParameterSetName='CreateViaIdentityExpanded', Mandatory, ValueFromPipeline)]
+    [Microsoft.Azure.PowerShell.Cmdlets.App.Category('Path')]
+    [Microsoft.Azure.PowerShell.Cmdlets.App.Models.IAppIdentity]
+    # Identity Parameter
+    # To construct, see NOTES section for INPUTOBJECT properties and create a hash table.
+    ${InputObject},
+
+    [Parameter(ParameterSetName='CreateExpanded')]
+    [Parameter(ParameterSetName='CreateViaIdentityContainerAppExpanded')]
+    [Parameter(ParameterSetName='CreateViaIdentityExpanded')]
+    [Microsoft.Azure.PowerShell.Cmdlets.App.PSArgumentCompleterAttribute("FixedTime", "IdentityProviderDerived")]
     [Microsoft.Azure.PowerShell.Cmdlets.App.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.App.Support.CookieExpirationConvention]
+    [System.String]
     # The convention used when determining the session cookie's expiration.
     ${CookieExpirationConvention},
 
-    [Parameter()]
+    [Parameter(ParameterSetName='CreateExpanded')]
+    [Parameter(ParameterSetName='CreateViaIdentityContainerAppExpanded')]
+    [Parameter(ParameterSetName='CreateViaIdentityExpanded')]
     [Microsoft.Azure.PowerShell.Cmdlets.App.Category('Body')]
     [System.String]
     # The time after the request is made when the session cookie should expire.
     ${CookieExpirationTimeToExpiration},
 
-    [Parameter()]
-    [ArgumentCompleter([Microsoft.Azure.PowerShell.Cmdlets.App.Support.ForwardProxyConvention])]
+    [Parameter(ParameterSetName='CreateExpanded')]
+    [Parameter(ParameterSetName='CreateViaIdentityContainerAppExpanded')]
+    [Parameter(ParameterSetName='CreateViaIdentityExpanded')]
+    [Microsoft.Azure.PowerShell.Cmdlets.App.PSArgumentCompleterAttribute("NoProxy", "Standard", "Custom")]
     [Microsoft.Azure.PowerShell.Cmdlets.App.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.App.Support.ForwardProxyConvention]
+    [System.String]
     # The convention used to determine the url of the request made.
     ${ForwardProxyConvention},
 
-    [Parameter()]
+    [Parameter(ParameterSetName='CreateExpanded')]
+    [Parameter(ParameterSetName='CreateViaIdentityContainerAppExpanded')]
+    [Parameter(ParameterSetName='CreateViaIdentityExpanded')]
     [Microsoft.Azure.PowerShell.Cmdlets.App.Category('Body')]
     [System.String]
     # The name of the header containing the host of the request.
     ${ForwardProxyCustomHostHeaderName},
 
-    [Parameter()]
+    [Parameter(ParameterSetName='CreateExpanded')]
+    [Parameter(ParameterSetName='CreateViaIdentityContainerAppExpanded')]
+    [Parameter(ParameterSetName='CreateViaIdentityExpanded')]
     [Microsoft.Azure.PowerShell.Cmdlets.App.Category('Body')]
     [System.String]
     # The name of the header containing the scheme of the request.
     ${ForwardProxyCustomProtoHeaderName},
 
-    [Parameter()]
+    [Parameter(ParameterSetName='CreateExpanded')]
+    [Parameter(ParameterSetName='CreateViaIdentityContainerAppExpanded')]
+    [Parameter(ParameterSetName='CreateViaIdentityExpanded')]
     [AllowEmptyCollection()]
     [Microsoft.Azure.PowerShell.Cmdlets.App.Category('Body')]
     [System.String[]]
     # The paths for which unauthenticated flow would not be redirected to the login page.
     ${GlobalValidationExcludedPath},
 
-    [Parameter()]
+    [Parameter(ParameterSetName='CreateExpanded')]
+    [Parameter(ParameterSetName='CreateViaIdentityContainerAppExpanded')]
+    [Parameter(ParameterSetName='CreateViaIdentityExpanded')]
     [Microsoft.Azure.PowerShell.Cmdlets.App.Category('Body')]
     [System.String]
     # The default authentication provider to use when multiple providers are configured.This setting is only needed if multiple providers are configured and the unauthenticated clientaction is set to "RedirectToLoginPage".
     ${GlobalValidationRedirectToProvider},
 
-    [Parameter()]
-    [ArgumentCompleter([Microsoft.Azure.PowerShell.Cmdlets.App.Support.UnauthenticatedClientActionV2])]
+    [Parameter(ParameterSetName='CreateExpanded')]
+    [Parameter(ParameterSetName='CreateViaIdentityContainerAppExpanded')]
+    [Parameter(ParameterSetName='CreateViaIdentityExpanded')]
+    [Microsoft.Azure.PowerShell.Cmdlets.App.PSArgumentCompleterAttribute("RedirectToLoginPage", "AllowAnonymous", "Return401", "Return403")]
     [Microsoft.Azure.PowerShell.Cmdlets.App.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.App.Support.UnauthenticatedClientActionV2]
+    [System.String]
     # The action to take when an unauthenticated client attempts to access the app.
     ${GlobalValidationUnauthenticatedClientAction},
 
-    [Parameter()]
+    [Parameter(ParameterSetName='CreateExpanded')]
+    [Parameter(ParameterSetName='CreateViaIdentityContainerAppExpanded')]
+    [Parameter(ParameterSetName='CreateViaIdentityExpanded')]
     [Microsoft.Azure.PowerShell.Cmdlets.App.Category('Body')]
     [System.Management.Automation.SwitchParameter]
     # <code>false</code> if the authentication/authorization responses not having the HTTPS scheme are permissible; otherwise, <code>true</code>.
     ${HttpSettingRequireHttps},
 
-    [Parameter()]
+    [Parameter(ParameterSetName='CreateExpanded')]
+    [Parameter(ParameterSetName='CreateViaIdentityContainerAppExpanded')]
+    [Parameter(ParameterSetName='CreateViaIdentityExpanded')]
     [Microsoft.Azure.PowerShell.Cmdlets.App.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.App.Models.Api20220301.IIdentityProviders]
+    [Microsoft.Azure.PowerShell.Cmdlets.App.Models.IIdentityProviders]
     # The configuration settings of each of the identity providers used to configure ContainerApp Service Authentication/Authorization.
     # To construct, see NOTES section for IDENTITYPROVIDER properties and create a hash table.
     ${IdentityProvider},
 
-    [Parameter()]
+    [Parameter(ParameterSetName='CreateExpanded')]
+    [Parameter(ParameterSetName='CreateViaIdentityContainerAppExpanded')]
+    [Parameter(ParameterSetName='CreateViaIdentityExpanded')]
     [AllowEmptyCollection()]
     [Microsoft.Azure.PowerShell.Cmdlets.App.Category('Body')]
     [System.String[]]
@@ -179,47 +267,73 @@ param(
     # Note that the query string part of the URL is ignored.This is an advanced setting typically only needed by Windows Store application backends.Note that URLs within the current domain are always implicitly allowed.
     ${LoginAllowedExternalRedirectUrl},
 
-    [Parameter()]
+    [Parameter(ParameterSetName='CreateExpanded')]
+    [Parameter(ParameterSetName='CreateViaIdentityContainerAppExpanded')]
+    [Parameter(ParameterSetName='CreateViaIdentityExpanded')]
     [Microsoft.Azure.PowerShell.Cmdlets.App.Category('Body')]
     [System.Management.Automation.SwitchParameter]
     # <code>true</code> if the fragments from the request are preserved after the login request is made; otherwise, <code>false</code>.
     ${LoginPreserveUrlFragmentsForLogin},
 
-    [Parameter()]
+    [Parameter(ParameterSetName='CreateExpanded')]
+    [Parameter(ParameterSetName='CreateViaIdentityContainerAppExpanded')]
+    [Parameter(ParameterSetName='CreateViaIdentityExpanded')]
     [Microsoft.Azure.PowerShell.Cmdlets.App.Category('Body')]
     [System.String]
     # The time after the request is made when the nonce should expire.
     ${NonceExpirationInterval},
 
-    [Parameter()]
+    [Parameter(ParameterSetName='CreateExpanded')]
+    [Parameter(ParameterSetName='CreateViaIdentityContainerAppExpanded')]
+    [Parameter(ParameterSetName='CreateViaIdentityExpanded')]
     [Microsoft.Azure.PowerShell.Cmdlets.App.Category('Body')]
     [System.Management.Automation.SwitchParameter]
     # <code>false</code> if the nonce should not be validated while completing the login flow; otherwise, <code>true</code>.
     ${NonceValidateNonce},
 
-    [Parameter()]
+    [Parameter(ParameterSetName='CreateExpanded')]
+    [Parameter(ParameterSetName='CreateViaIdentityContainerAppExpanded')]
+    [Parameter(ParameterSetName='CreateViaIdentityExpanded')]
     [Microsoft.Azure.PowerShell.Cmdlets.App.Category('Body')]
     [System.Management.Automation.SwitchParameter]
     # <code>true</code> if the Authentication / Authorization feature is enabled for the current app; otherwise, <code>false</code>.
     ${PlatformEnabled},
 
-    [Parameter()]
+    [Parameter(ParameterSetName='CreateExpanded')]
+    [Parameter(ParameterSetName='CreateViaIdentityContainerAppExpanded')]
+    [Parameter(ParameterSetName='CreateViaIdentityExpanded')]
     [Microsoft.Azure.PowerShell.Cmdlets.App.Category('Body')]
     [System.String]
     # The RuntimeVersion of the Authentication / Authorization feature in use for the current app.The setting in this value can control the behavior of certain features in the Authentication / Authorization module.
     ${PlatformRuntimeVersion},
 
-    [Parameter()]
+    [Parameter(ParameterSetName='CreateExpanded')]
+    [Parameter(ParameterSetName='CreateViaIdentityContainerAppExpanded')]
+    [Parameter(ParameterSetName='CreateViaIdentityExpanded')]
     [Microsoft.Azure.PowerShell.Cmdlets.App.Category('Body')]
     [System.String]
     # The prefix that should precede all the authentication/authorization paths.
     ${RouteApiPrefix},
 
-    [Parameter()]
+    [Parameter(ParameterSetName='CreateExpanded')]
+    [Parameter(ParameterSetName='CreateViaIdentityContainerAppExpanded')]
+    [Parameter(ParameterSetName='CreateViaIdentityExpanded')]
     [Microsoft.Azure.PowerShell.Cmdlets.App.Category('Body')]
     [System.String]
     # The endpoint at which a logout request should be made.
     ${RouteLogoutEndpoint},
+
+    [Parameter(ParameterSetName='CreateViaJsonFilePath', Mandatory)]
+    [Microsoft.Azure.PowerShell.Cmdlets.App.Category('Body')]
+    [System.String]
+    # Path of Json file supplied to the Create operation
+    ${JsonFilePath},
+
+    [Parameter(ParameterSetName='CreateViaJsonString', Mandatory)]
+    [Microsoft.Azure.PowerShell.Cmdlets.App.Category('Body')]
+    [System.String]
+    # Json string supplied to the Create operation
+    ${JsonString},
 
     [Parameter()]
     [Alias('AzureRMContext', 'AzureCredential')]
@@ -297,12 +411,20 @@ begin {
 
         $mapping = @{
             CreateExpanded = 'Az.App.private\New-AzContainerAppAuthConfig_CreateExpanded';
+            CreateViaIdentityContainerAppExpanded = 'Az.App.private\New-AzContainerAppAuthConfig_CreateViaIdentityContainerAppExpanded';
+            CreateViaIdentityExpanded = 'Az.App.private\New-AzContainerAppAuthConfig_CreateViaIdentityExpanded';
+            CreateViaJsonFilePath = 'Az.App.private\New-AzContainerAppAuthConfig_CreateViaJsonFilePath';
+            CreateViaJsonString = 'Az.App.private\New-AzContainerAppAuthConfig_CreateViaJsonString';
         }
-        if (('CreateExpanded') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId')) {
+        if (('CreateExpanded', 'CreateViaJsonFilePath', 'CreateViaJsonString') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId') ) {
             $PSBoundParameters['SubscriptionId'] = (Get-AzContext).Subscription.Id
         }
         $cmdInfo = Get-Command -Name $mapping[$parameterSet]
         [Microsoft.Azure.PowerShell.Cmdlets.App.Runtime.MessageAttributeHelper]::ProcessCustomAttributesAtRuntime($cmdInfo, $MyInvocation, $parameterSet, $PSCmdlet)
+        if ($null -ne $MyInvocation.MyCommand -and [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PromptedPreviewMessageCmdlets -notcontains $MyInvocation.MyCommand.Name -and [Microsoft.Azure.PowerShell.Cmdlets.App.Runtime.MessageAttributeHelper]::ContainsPreviewAttribute($cmdInfo, $MyInvocation)){
+            [Microsoft.Azure.PowerShell.Cmdlets.App.Runtime.MessageAttributeHelper]::ProcessPreviewMessageAttributesAtRuntime($cmdInfo, $MyInvocation, $parameterSet, $PSCmdlet)
+            [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PromptedPreviewMessageCmdlets.Enqueue($MyInvocation.MyCommand.Name)
+        }
         $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Cmdlet)
         $scriptCmd = {& $wrappedCmd @PSBoundParameters}
         $steppablePipeline = $scriptCmd.GetSteppablePipeline($MyInvocation.CommandOrigin)
