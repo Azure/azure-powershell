@@ -28,8 +28,6 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Network.Management.Sdk", ".
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "AssemblyLoading", "..\Accounts\AssemblyLoading\AssemblyLoading.csproj", "{4D4EF0B2-51A6-4651-8261-396527231C15}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Az.Dns", "Dns.Autorest\Az.Dns.csproj", "{CA43F741-BD8C-482A-8761-6006825D00B6}"
-EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -84,10 +82,6 @@ Global
 		{4D4EF0B2-51A6-4651-8261-396527231C15}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{4D4EF0B2-51A6-4651-8261-396527231C15}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{4D4EF0B2-51A6-4651-8261-396527231C15}.Release|Any CPU.Build.0 = Release|Any CPU
-		{CA43F741-BD8C-482A-8761-6006825D00B6}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{CA43F741-BD8C-482A-8761-6006825D00B6}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{CA43F741-BD8C-482A-8761-6006825D00B6}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{CA43F741-BD8C-482A-8761-6006825D00B6}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

@@ -44,12 +44,3 @@ Updates a DNS record set.
 ### [Set-AzDnsZone](Set-AzDnsZone.md)
 Updates the properties of a DNS zone.
 
-### [Get-AzDnsDnssecConfig](Get-AzDnsDnssecConfig.md)
-Gets the DNSSEC configuration.
-
-### [New-AzDnsDnssecConfig](New-AzDnsDnssecConfig.md)
-Creates or updates the DNSSEC configuration on a DNS zone.
-
-### [Remove-AzDnsDnssecConfig](Remove-AzDnsDnssecConfig.md)
-Deletes the DNSSEC configuration on a DNS zone.
-This operation cannot be undone.
