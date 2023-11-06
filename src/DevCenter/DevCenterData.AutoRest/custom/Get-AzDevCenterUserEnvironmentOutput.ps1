@@ -61,6 +61,7 @@ param(
     [System.String]
     # The DevCenter-specific URI to operate on.
     ${Endpoint},
+    
     [Parameter(ParameterSetName = 'GetViaIdentityByDevCenter', Mandatory)]
     [Parameter(ParameterSetName = 'GetByDevCenter', Mandatory)]
     [Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Category('Uri')]
