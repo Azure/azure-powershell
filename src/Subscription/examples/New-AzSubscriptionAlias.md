@@ -4,22 +4,22 @@ New-AzSubscriptionAlias -AliasName test-subscription -SubscriptionId XXXXXXXX-XX
 ```
 
 ```output
-AliasName         DisplayName SubscriptionId                       ProvisioningState
----------         ----------- --------------                       -----------------
-test-subscription createSub   XXXXXXXX-XXXX-XXXX-XXXX-XXXXXXXXXXXX Succeeded
+AliasName         SubscriptionId                       ProvisioningState
+---------         --------------                       -----------------
+test-subscription XXXXXXXX-XXXX-XXXX-XXXX-XXXXXXXXXXXX Succeeded
 ```
 
 Create Alias Subscription.
 
 ### Example 2: Create Alias Subscription.
 ```powershell
-New-AzSubscriptionAlias -AliasName test-subscription -DisplayName "createSub" -BillingScope "/billingAccounts/{billingAccountName}/billingProfiles/{billingProfileName}/invoiceSections/{invoiceSectionName}" -Workload 'Production' 
+New-AzSubscriptionAlias -AliasName test-subscription -SubscriptionName "createSub" -BillingScope "/billingAccounts/{billingAccountName}/billingProfiles/{billingProfileName}/invoiceSections/{invoiceSectionName}" -Workload 'Production' 
 ```
 
 ```output
-AliasName         DisplayName SubscriptionId                       ProvisioningState
----------         ----------- --------------                       -----------------
-test-subscription createSub   XXXXXXXX-XXXX-XXXX-XXXX-XXXXXXXXXXXX Succeeded
+AliasName         SubscriptionId                       ProvisioningState
+---------         --------------                       -----------------
+test-subscription XXXXXXXX-XXXX-XXXX-XXXX-XXXXXXXXXXXX Succeeded
 ```
 
 Create Alias Subscription.

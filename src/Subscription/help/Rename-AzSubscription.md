@@ -14,13 +14,13 @@ The operation to rename a subscription
 
 ### RenameExpanded (Default)
 ```
-Rename-AzSubscription -Id <String> [-SubscriptionName <String>] [-DefaultProfile <PSObject>] [-Confirm]
+Rename-AzSubscription -Id <String> -SubscriptionName <String> [-DefaultProfile <PSObject>] [-Confirm]
  [-WhatIf] [<CommonParameters>]
 ```
 
 ### RenameViaIdentityExpanded
 ```
-Rename-AzSubscription -InputObject <ISubscriptionIdentity> [-SubscriptionName <String>]
+Rename-AzSubscription -InputObject <ISubscriptionIdentity> -SubscriptionName <String>
  [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
@@ -95,9 +95,9 @@ New subscription name
 ```yaml
 Type: System.String
 Parameter Sets: (All)
-Aliases:
+Aliases: DisplayName
 
-Required: False
+Required: True
 Position: Named
 Default value: None
 Accept pipeline input: False
@@ -147,19 +147,6 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ### System.String
 
 ## NOTES
-
-ALIASES
-
-COMPLEX PARAMETER PROPERTIES
-
-To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
-
-
-`INPUTOBJECT <ISubscriptionIdentity>`: Identity Parameter
-  - `[AliasName <String>]`: AliasName is the name for the subscription creation request. Note that this is not the same as subscription name and this doesn’t have any other lifecycle need beyond the request for subscription creation.
-  - `[BillingAccountId <String>]`: Billing Account Id.
-  - `[Id <String>]`: Resource identity path
-  - `[SubscriptionId <String>]`: Subscription Id.
 
 ## RELATED LINKS
 

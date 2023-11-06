@@ -16,6 +16,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Subscription.Cmdlets
     [global::System.Management.Automation.OutputType(typeof(string))]
     [global::Microsoft.Azure.PowerShell.Cmdlets.Subscription.Description(@"The operation to enable a subscription")]
     [global::Microsoft.Azure.PowerShell.Cmdlets.Subscription.Generated]
+    [global::Microsoft.Azure.PowerShell.Cmdlets.Subscription.HttpPath(Path = "/subscriptions/{subscriptionId}/providers/Microsoft.Subscription/enable", ApiVersion = "2021-10-01")]
     public partial class EnableAzSubscription_Enable : global::System.Management.Automation.PSCmdlet,
         Microsoft.Azure.PowerShell.Cmdlets.Subscription.Runtime.IEventListener
     {
