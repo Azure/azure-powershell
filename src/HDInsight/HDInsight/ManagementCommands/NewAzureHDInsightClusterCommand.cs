@@ -24,7 +24,6 @@ using Microsoft.Azure.Commands.HDInsight.Models.Management;
 using Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters;
 using Microsoft.Azure.Management.HDInsight.Models;
 using Microsoft.WindowsAzure.Commands.Common;
-using Microsoft.WindowsAzure.Commands.Common.CustomAttributes;
 using System;
 using System.Collections;
 using System.Collections.Generic;
@@ -35,7 +34,6 @@ using System.Management.Automation;
 
 namespace Microsoft.Azure.Commands.HDInsight
 {
-    [GenericBreakingChangeWithVersionAttribute(Constants.diskEncryptionChangeInfo + Constants.workerNodeDataDisksGroupsChangeInfo,Constants.deprecateByAzVersion,Constants.deprecateByVersion)]
     [Cmdlet("New", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "HDInsightCluster", DefaultParameterSetName = DefaultParameterSet), OutputType(typeof(AzureHDInsightCluster))]
     public class NewAzureHDInsightClusterCommand : HDInsightCmdletBase
     {
