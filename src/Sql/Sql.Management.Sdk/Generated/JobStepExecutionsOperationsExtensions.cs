@@ -54,7 +54,7 @@ namespace Microsoft.Azure.Management.Sql
         /// <param name='top'>
         /// The number of elements to return from the collection.
         /// </param>
-        public static Microsoft.Rest.Azure.IPage<JobExecution> ListByJobExecution(this IJobStepExecutionsOperations operations, string resourceGroupName, string serverName, string jobAgentName, string jobName, System.Guid jobExecutionId, System.DateTime? createTimeMin = default(System.DateTime?), System.DateTime? createTimeMax = default(System.DateTime?), System.DateTime? endTimeMin = default(System.DateTime?), System.DateTime? endTimeMax = default(System.DateTime?), bool? isActive = default(bool?), int? skip = default(int?), int? top = default(int?))
+        public static Microsoft.Rest.Azure.IPage<JobExecution> ListByJobExecution(this IJobStepExecutionsOperations operations, string resourceGroupName, string serverName, string jobAgentName, string jobName, System.Guid jobExecutionId, System.DateTime? createTimeMin = default(System.DateTime?), System.DateTime? createTimeMax = default(System.DateTime?), System.DateTime? endTimeMin = default(System.DateTime?), System.DateTime? endTimeMax = default(System.DateTime?), bool? isActive = default(bool?), long? skip = default(long?), long? top = default(long?))
         {
                 return ((IJobStepExecutionsOperations)operations).ListByJobExecutionAsync(resourceGroupName, serverName, jobAgentName, jobName, jobExecutionId, createTimeMin, createTimeMax, endTimeMin, endTimeMax, isActive, skip, top).GetAwaiter().GetResult();
         }
@@ -104,7 +104,7 @@ namespace Microsoft.Azure.Management.Sql
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        public static async System.Threading.Tasks.Task<Microsoft.Rest.Azure.IPage<JobExecution>> ListByJobExecutionAsync(this IJobStepExecutionsOperations operations, string resourceGroupName, string serverName, string jobAgentName, string jobName, System.Guid jobExecutionId, System.DateTime? createTimeMin = default(System.DateTime?), System.DateTime? createTimeMax = default(System.DateTime?), System.DateTime? endTimeMin = default(System.DateTime?), System.DateTime? endTimeMax = default(System.DateTime?), bool? isActive = default(bool?), int? skip = default(int?), int? top = default(int?), System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public static async System.Threading.Tasks.Task<Microsoft.Rest.Azure.IPage<JobExecution>> ListByJobExecutionAsync(this IJobStepExecutionsOperations operations, string resourceGroupName, string serverName, string jobAgentName, string jobName, System.Guid jobExecutionId, System.DateTime? createTimeMin = default(System.DateTime?), System.DateTime? createTimeMax = default(System.DateTime?), System.DateTime? endTimeMin = default(System.DateTime?), System.DateTime? endTimeMax = default(System.DateTime?), bool? isActive = default(bool?), long? skip = default(long?), long? top = default(long?), System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
             using (var _result = await operations.ListByJobExecutionWithHttpMessagesAsync(resourceGroupName, serverName, jobAgentName, jobName, jobExecutionId, createTimeMin, createTimeMax, endTimeMin, endTimeMax, isActive, skip, top, null, cancellationToken).ConfigureAwait(false))
             {

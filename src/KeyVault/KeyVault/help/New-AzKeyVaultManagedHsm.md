@@ -15,8 +15,9 @@ Creates a managed HSM.
 ```
 New-AzKeyVaultManagedHsm [-Name] <String> [-ResourceGroupName] <String> [-Location] <String>
  [-Administrator] <String[]> [-Sku <String>] -SoftDeleteRetentionInDays <Int32> [-PublicNetworkAccess <String>]
- [-EnablePurgeProtection] [-Tag <Hashtable>] [-AsJob] [-DefaultProfile <IAzureContextContainer>] [-WhatIf]
- [-Confirm] [-SubscriptionId <String>] [<CommonParameters>]
+ [-EnablePurgeProtection] [-UserAssignedIdentity <String[]>] [-Tag <Hashtable>] [-AsJob]
+ [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [-SubscriptionId <String>]
+ [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -58,13 +59,44 @@ myhsm myrg1               eastus2euap CustomB32
 This command creates a managed HSM, just like the previous example. However, it specifies a value of
 CustomB32 for the *SKU* parameter to create a CustomB32 managed HSM.
 
+### Example 3: Create a managed HSM with an user assigned identity
+```powershell
+New-AzKeyVaultManagedHsm -Name 'myhsm' -ResourceGroupName 'myrg1' -Location 'eastus2euap' -Administrator "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx"-SoftDeleteRetentionInDays 70 -UserAssignedIdentity /subscriptions/xxxx/resourceGroups/xxxx/providers/Microsoft.ManagedIdentity/userAssignedIdentities/identityName | Format-List
+```
+
+```output
+Managed HSM Name                        : myhsm
+Resource Group Name                     : myrg1
+Location                                : eastus2euap
+Resource ID                             : /subscriptions/0b1f6471-1bf0-4dda-aec3-cb9272f09590/resourceGroups/bez-rg/pro
+                                          viders/Microsoft.KeyVault/managedHSMs/bezmhsm
+HSM Pool URI                            :
+Tenant ID                               : 54826b22-38d6-4fb2-bad9-b7b93a3e9c5a
+Initial Admin Object Ids                : {xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx}
+SKU                                     : StandardB1
+Soft Delete Enabled?                    : True
+Enabled Purge Protection?               : False
+Soft Delete Retention Period (days)     : 70
+Public Network Access                   : Enabled
+IdentityType                            : UserAssigned
+UserAssignedIdentities                  : /subscriptions/xxxx/resourceGroups/xxxx/providers/Microsoft.ManagedIdentity/userAssignedIdentities/identityName
+Provisioning State                      : Succeeded
+Status Message                          : The Managed HSM is provisioned and ready to use.
+Security Domain ActivationStatus        : Active
+Security Domain ActivationStatusMessage : Your HSM has been activated and can be used for cryptographic operations.
+Regions                                 : 
+Tags
+```
+
+This command creates a managed HSM with an user assigned identity.
+
 ## PARAMETERS
 
 ### -Administrator
 Initial administrator object id for this managed HSM pool.
 
 ```yaml
-Type: String[]
+Type: System.String[]
 Parameter Sets: (All)
 Aliases:
 
@@ -79,24 +111,9 @@ Accept wildcard characters: False
 Run cmdlet in the background
 
 ```yaml
-Type: SwitchParameter
+Type: System.Management.Automation.SwitchParameter
 Parameter Sets: (All)
 Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -Confirm
-Prompts you for confirmation before running the cmdlet.
-
-```yaml
-Type: SwitchParameter
-Parameter Sets: (All)
-Aliases: cf
 
 Required: False
 Position: Named
@@ -109,7 +126,7 @@ Accept wildcard characters: False
 The credentials, account, tenant, and subscription used for communication with Azure.
 
 ```yaml
-Type: IAzureContextContainer
+Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer
 Parameter Sets: (All)
 Aliases: AzContext, AzureRmContext, AzureCredential
 
@@ -124,7 +141,7 @@ Accept wildcard characters: False
 specifying whether protection against purge is enabled for this managed HSM pool. The setting is effective only if soft delete is also enabled. Enabling this functionality is irreversible.
 
 ```yaml
-Type: SwitchParameter
+Type: System.Management.Automation.SwitchParameter
 Parameter Sets: (All)
 Aliases:
 
@@ -140,7 +157,7 @@ Specifies the Azure region in which to create the key vault.
 Use the command Get-AzResourceProvider with the ProviderNamespace parameter to see your choices.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: (All)
 Aliases:
 
@@ -158,7 +175,7 @@ The name must start and end with a letter or digit.
 The name must be universally unique.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: (All)
 Aliases: HsmName
 
@@ -173,7 +190,7 @@ Accept wildcard characters: False
 Controls permission for data plane traffic coming from public networks while private endpoint is enabled.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: (All)
 Aliases:
 
@@ -188,7 +205,7 @@ Accept wildcard characters: False
 Specifies the name of an existing resource group in which to create the key vault.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: (All)
 Aliases:
 
@@ -203,7 +220,7 @@ Accept wildcard characters: False
 Specifies the SKU of the managed HSM instance.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: (All)
 Aliases:
 
@@ -218,7 +235,7 @@ Accept wildcard characters: False
 Specifies how long the deleted managed hsm pool is retained, and how long until the managed hsm pool in the deleted state can be purged.
 
 ```yaml
-Type: Int32
+Type: System.Int32
 Parameter Sets: (All)
 Aliases:
 
@@ -235,7 +252,7 @@ By default, cmdlets are executed in the subscription that is set in the current 
 Overriding subscriptions only take effect during the lifecycle of the current cmdlet. It does not change the subscription in the context, and does not affect subsequent cmdlets.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: (All)
 Aliases:
 
@@ -250,7 +267,7 @@ Accept wildcard characters: False
 A hash table which represents resource tags.
 
 ```yaml
-Type: Hashtable
+Type: System.Collections.Hashtable
 Parameter Sets: (All)
 Aliases: Tags
 
@@ -261,12 +278,42 @@ Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
 ```
 
+### -UserAssignedIdentity
+The set of user assigned identities associated with the managed HSM. Its value will be ARM resource ids in the form: '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedIdentity/userAssignedIdentities/{identityName}'.
+
+```yaml
+Type: System.String[]
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -Confirm
+Prompts you for confirmation before running the cmdlet.
+
+```yaml
+Type: System.Management.Automation.SwitchParameter
+Parameter Sets: (All)
+Aliases: cf
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
 ### -WhatIf
 Shows what would happen if the cmdlet runs.
 The cmdlet is not run.
 
 ```yaml
-Type: SwitchParameter
+Type: System.Management.Automation.SwitchParameter
 Parameter Sets: (All)
 Aliases: wi
 
