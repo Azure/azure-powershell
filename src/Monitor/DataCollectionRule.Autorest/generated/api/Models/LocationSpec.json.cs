@@ -76,8 +76,8 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Monitor.DataCollection.Models
             {
                 return;
             }
-            {_location = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Monitor.DataCollection.Runtime.Json.JsonString>("location"), out var __jsonLocation) ? (string)__jsonLocation : (string)Location;}
-            {_provisioningStatus = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Monitor.DataCollection.Runtime.Json.JsonString>("provisioningStatus"), out var __jsonProvisioningStatus) ? (string)__jsonProvisioningStatus : (string)ProvisioningStatus;}
+            {_location = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Monitor.DataCollection.Runtime.Json.JsonString>("location"), out var __jsonLocation) ? (string)__jsonLocation : (string)_location;}
+            {_provisioningStatus = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Monitor.DataCollection.Runtime.Json.JsonString>("provisioningStatus"), out var __jsonProvisioningStatus) ? (string)__jsonProvisioningStatus : (string)_provisioningStatus;}
             AfterFromJson(json);
         }
 

@@ -77,7 +77,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Monitor.DataCollection.Models
             {
                 return;
             }
-            {_recordStartTimestampFormat = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Monitor.DataCollection.Runtime.Json.JsonString>("recordStartTimestampFormat"), out var __jsonRecordStartTimestampFormat) ? (string)__jsonRecordStartTimestampFormat : (string)RecordStartTimestampFormat;}
+            {_recordStartTimestampFormat = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Monitor.DataCollection.Runtime.Json.JsonString>("recordStartTimestampFormat"), out var __jsonRecordStartTimestampFormat) ? (string)__jsonRecordStartTimestampFormat : (string)_recordStartTimestampFormat;}
             AfterFromJson(json);
         }
 

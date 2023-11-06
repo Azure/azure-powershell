@@ -1,7 +1,6 @@
 ---
-external help file: Microsoft.Azure.PowerShell.Cmdlets.Monitor.dll-Help.xml
+external help file: Az.ActionGroup.psm1-help.xml
 Module Name: Az.Monitor
-ms.assetid: 1CA26790-C791-4BFD-B986-70F28E3B095B
 online version: https://learn.microsoft.com/powershell/module/az.monitor/get-azactiongroup
 schema: 2.0.0
 ---
@@ -9,56 +8,91 @@ schema: 2.0.0
 # Get-AzActionGroup
 
 ## SYNOPSIS
-Gets action group(s).
+Get an action group.
 
 ## SYNTAX
 
-### BySubscriptionOrResourceGroup (Default)
+### List (Default)
 ```
-Get-AzActionGroup [-ResourceGroupName <String>] [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
+Get-AzActionGroup [-SubscriptionId <String[]>] [-DefaultProfile <PSObject>] [<CommonParameters>]
 ```
 
-### ByName
+### Get
 ```
-Get-AzActionGroup -ResourceGroupName <String> -Name <String> [-DefaultProfile <IAzureContextContainer>]
+Get-AzActionGroup -Name <String> -ResourceGroupName <String> [-SubscriptionId <String[]>]
+ [-DefaultProfile <PSObject>] [<CommonParameters>]
+```
+
+### List1
+```
+Get-AzActionGroup -ResourceGroupName <String> [-SubscriptionId <String[]>] [-DefaultProfile <PSObject>]
  [<CommonParameters>]
 ```
 
+### GetViaIdentity
+```
+Get-AzActionGroup -InputObject <IActionGroupIdentity> [-DefaultProfile <PSObject>] [<CommonParameters>]
+```
+
 ## DESCRIPTION
-The **Get-AzActionGroup** cmdlet gets one or more action groups.
+Get an action group.
 
 ## EXAMPLES
 
-### Example 1: Get an action group by subscription ID
+### Example 1: Get action groups by subscription ID
 ```powershell
-Get-AzActionGroup
+Get-AzActionGroup -SubscriptionId '{subid}'
 ```
 
-This command lists all the action group for the current subscription.
-
-### Example 2: Get action groups for the given resource group
-```powershell
-Get-AzActionGroup -ResourceGroupName "Default-activityLogAlerts"
+```output
+Location       Name         ResourceGroupName
+--------       ----         -----------------
+northcentralus actiongroup1 Monitor-Action
+northcentralus actiongroup2 Monitor-Action
 ```
 
-This command lists action groups for the given resource group.
+This command gets list of action groups by specified subscription.
 
-### Example 3: Get an action group.
+### Example 2: Get specific action groups with specified resource group
 ```powershell
-Get-AzActionGroup -ResourceGroupName "Default-activityLogAlerts" -Name "actionGroup1"
+Get-AzActionGroup -Name actiongroup1 -ResourceGroupName monitor-action
 ```
 
-This command lists one (a list with a single element) action group.
+```output
+ArmRoleReceiver           : {}
+AutomationRunbookReceiver : {}
+AzureAppPushReceiver      : {}
+AzureFunctionReceiver     : {}
+EmailReceiver             : {}
+Enabled                   : False
+EventHubReceiver          : {}
+GroupShortName            : ag1
+Id                        : /subscriptions/{subid}/resourceGroups/Monitor-Action/providers/microsoft.insights/actionGroups/actiongroup1
+ItsmReceiver              : {}
+Location                  : northcentralus
+LogicAppReceiver          : {}
+Name                      : actiongroup1
+ResourceGroupName         : Monitor-Action
+SmsReceiver               : {}
+Tag                       : {
+                            }
+Type                      : Microsoft.Insights/ActionGroups
+VoiceReceiver             : {}
+WebhookReceiver           : {}
+```
+
+This command gets specific action group with specified resource group.
 
 ## PARAMETERS
 
 ### -DefaultProfile
-The credentials, account, tenant, and subscription used for communication with azure
+The DefaultProfile parameter is not functional.
+Use the SubscriptionId parameter when available if executing the cmdlet against a different subscription.
 
 ```yaml
-Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer
+Type: System.Management.Automation.PSObject
 Parameter Sets: (All)
-Aliases: AzContext, AzureRmContext, AzureCredential
+Aliases: AzureRMContext, AzureCredential
 
 Required: False
 Position: Named
@@ -67,45 +101,65 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### -InputObject
+Identity Parameter
+To construct, see NOTES section for INPUTOBJECT properties and create a hash table.
+
+```yaml
+Type: Microsoft.Azure.PowerShell.Cmdlets.Monitor.ActionGroup.Models.IActionGroupIdentity
+Parameter Sets: GetViaIdentity
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: True (ByValue)
+Accept wildcard characters: False
+```
+
 ### -Name
 The name of the action group.
 
 ```yaml
 Type: System.String
-Parameter Sets: ByName
-Aliases:
+Parameter Sets: Get
+Aliases: ActionGroupName
 
 Required: True
 Position: Named
 Default value: None
-Accept pipeline input: True (ByPropertyName)
+Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
 ### -ResourceGroupName
-The resource group name
+The name of the resource group.
+The name is case insensitive.
 
 ```yaml
 Type: System.String
-Parameter Sets: BySubscriptionOrResourceGroup
-Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: True (ByPropertyName)
-Accept wildcard characters: False
-```
-
-```yaml
-Type: System.String
-Parameter Sets: ByName
+Parameter Sets: Get, List1
 Aliases:
 
 Required: True
 Position: Named
 Default value: None
-Accept pipeline input: True (ByPropertyName)
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -SubscriptionId
+The ID of the target subscription.
+
+```yaml
+Type: System.String[]
+Parameter Sets: List, Get, List1
+Aliases:
+
+Required: False
+Position: Named
+Default value: (Get-AzContext).Subscription.Id
+Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
@@ -114,16 +168,12 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
-### System.String
+### Microsoft.Azure.PowerShell.Cmdlets.Monitor.ActionGroup.Models.IActionGroupIdentity
 
 ## OUTPUTS
 
-### Microsoft.Azure.Commands.Insights.OutputClasses.PSActionGroupResource
+### Microsoft.Azure.PowerShell.Cmdlets.Monitor.ActionGroup.Models.IActionGroupResource
 
 ## NOTES
 
 ## RELATED LINKS
-
-[Set-AzActionGroup](./Set-AzActionGroup.md)
-[Remove-AzActionGroup](./Remove-AzActionGroup.md)
-[New-AzActionGroupReceiver](./New-AzActionGroupReceiver.md)

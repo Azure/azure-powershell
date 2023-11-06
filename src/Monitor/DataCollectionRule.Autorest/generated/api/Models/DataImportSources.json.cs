@@ -64,7 +64,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Monitor.DataCollection.Models
             {
                 return;
             }
-            {_eventHub = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Monitor.DataCollection.Runtime.Json.JsonObject>("eventHub"), out var __jsonEventHub) ? Microsoft.Azure.PowerShell.Cmdlets.Monitor.DataCollection.Models.DataImportSourcesEventHub.FromJson(__jsonEventHub) : EventHub;}
+            {_eventHub = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Monitor.DataCollection.Runtime.Json.JsonObject>("eventHub"), out var __jsonEventHub) ? Microsoft.Azure.PowerShell.Cmdlets.Monitor.DataCollection.Models.DataImportSourcesEventHub.FromJson(__jsonEventHub) : _eventHub;}
             AfterFromJson(json);
         }
 
