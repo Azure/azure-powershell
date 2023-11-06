@@ -3361,6 +3361,7 @@ function Test-VirtualMachineGetStatusWithAssignedHost
         # Common
         [string]$loc = Get-Location "Microsoft.Resources" "resourceGroups" "East US 2 EUAP";
         $loc = $loc.Replace(' ', '');
+        $stnd = "Standard";
         
         # Creating the resource group
         New-AzResourceGroup -Name $rgname -Location $loc -Force;
@@ -3384,7 +3385,7 @@ function Test-VirtualMachineGetStatusWithAssignedHost
         $securePassword = ConvertTo-SecureString $password -AsPlainText -Force;
         $cred = New-Object System.Management.Automation.PSCredential ($user, $securePassword);
         
-        New-AzVM -ResourceGroupName $rgname -Location $loc -Name $vmname -Credential $cred -Zone "2" -Size $vmsize -DomainNameLabel "crptestps2532vm-1d1de" -HostGroupId $hostGroup.Id;
+        New-AzVM -ResourceGroupName $rgname -Location $loc -Name $vmname -Credential $cred -Zone "2" -Size $vmsize -DomainNameLabel "crptestps2532vm-1d1de" -HostGroupId $hostGroup.Id -SecurityType $stnd;
         $vm = Get-AzVM -ResourceGroupName $rgname -Name $vmname -Status
         $a = $vm | Out-String
 
@@ -4453,6 +4454,7 @@ function Test-EncryptionAtHostVMNull
         # VM Profile & Hardware
         $vmsize = 'Standard_DS2_v2';
         $vmname = 'vm' + $rgname;
+        $stnd = "Standard";
         [string]$domainNameLabel = "$vmname-$vmname".tolower();
 
         $user = "Foo2";
@@ -4461,7 +4463,7 @@ function Test-EncryptionAtHostVMNull
         $cred = New-Object System.Management.Automation.PSCredential ($user, $securePassword);
         $computerName = 'test';
 
-        $vm = New-AzVM -ResourceGroupName $rgname -Name $vmname -Credential $cred -DomainNameLabel $domainNameLabel;
+        $vm = New-AzVM -ResourceGroupName $rgname -Name $vmname -Credential $cred -DomainNameLabel $domainNameLabel -SecurityType $stnd;
         Assert-AreEqual $null $vm.SecurityProfile.encryptionathost
 
         # Get VM
@@ -4502,8 +4504,9 @@ function Test-EncryptionAtHostVM
         $securePassword = ConvertTo-SecureString $password -AsPlainText -Force;
         $cred = New-Object System.Management.Automation.PSCredential ($user, $securePassword);
         $computerName = 'test';
+        $stnd = "Standard";
 
-        New-AzVM -ResourceGroupName $rgname -Name $vmname -Credential $cred -DomainNameLabel $domainNameLabel -EncryptionAtHost;
+        New-AzVM -ResourceGroupName $rgname -Name $vmname -Credential $cred -DomainNameLabel $domainNameLabel -EncryptionAtHost -SecurityType $stnd;
 
         # Get VM
         $vm = Get-AzVM -ResourceGroupName $rgname -Name $vmname;
@@ -4827,6 +4830,7 @@ function Test-HostGroupPropertySetOnVirtualMachine
         # VM Profile & Hardware
         $vmsize = 'Standard_E2s_v3';
         $vmname0 = 'v' + $rgname;
+        $stnd = "Standard";
 
         # Creating a VM using simple parameter set
         $username = "admin01"
@@ -4834,7 +4838,7 @@ function Test-HostGroupPropertySetOnVirtualMachine
         $cred = new-object -typename System.Management.Automation.PSCredential -argumentlist $username, $password
         [string]$domainNameLabel = "vcrptestps7691-6f2166";
 
-        $vm0 = New-AzVM -ResourceGroupName $rgname -Location $loc -Name $vmname0 -Credential $cred -Zone "2" -Size $vmsize -HostGroupId $hostGroup.Id -DomainNameLabel $domainNameLabel;
+        $vm0 = New-AzVM -ResourceGroupName $rgname -Location $loc -Name $vmname0 -Credential $cred -Zone "2" -Size $vmsize -HostGroupId $hostGroup.Id -DomainNameLabel $domainNameLabel -SecurityType $stnd;
         
         Assert-AreEqual $hostGroup.Id $vm0.HostGroup.Id;
     }
@@ -5062,6 +5066,7 @@ function Test-VirtualMachinePatchAPI
         # VM Profile & Hardware
         $vmsize = 'Standard_E2s_v3';
         $vmname0 = 'v' + $rgname;
+        $stnd = "Standard";
 
         # Creating a VM using simple parameter set
         $username = "admin01";
@@ -5072,7 +5077,7 @@ function Test-VirtualMachinePatchAPI
         $patchMode = "AutomaticByPlatform";
 
         # EnableHotPatching for Windows machine. 
-        $vm0 = New-AzVM -ResourceGroupName $rgname -Location $loc -Name $vmname0 -Credential $cred -Zone "2" -Size $vmsize -DomainNameLabel $domainNameLabel;
+        $vm0 = New-AzVM -ResourceGroupName $rgname -Location $loc -Name $vmname0 -Credential $cred -Zone "2" -Size $vmsize -DomainNameLabel $domainNameLabel -SecurityType $stnd;
         $p = Set-AzVMOperatingSystem -VM $vm0 -Windows -ComputerName $computerName -Credential $cred -EnableHotpatching -PatchMode $patchMode;
         Assert-True {$vm0.OSProfile.WindowsConfiguration.PatchSettings.EnableHotpatching};
         Assert-AreEqual $vm0.OSProfile.WindowsConfiguration.PatchSettings.PatchMode $patchMode;
@@ -5357,12 +5362,13 @@ function Test-CapacityReservation
         # Add one VM from creation 
         $vmname1 = '1' + $rgname;
         $domainNameLabel1 = "d1" + $rgname;
-        $vm1 = New-AzVM -ResourceGroupName $rgname -Name $vmname1 -Credential $cred -DomainNameLabel $domainNameLabel1 -CapacityReservationGroupId $CRG.id -Size $Sku1 -Location $loc
+        $stnd = "Standard";
+        $vm1 = New-AzVM -ResourceGroupName $rgname -Name $vmname1 -Credential $cred -DomainNameLabel $domainNameLabel1 -CapacityReservationGroupId $CRG.id -Size $Sku1 -Location $loc -SecurityType $stnd
 
         # Create one VM then update to associate with CRG
         $vmname2 = '2' + $rgname;
         $domainNameLabel2 = "d2" + $rgname;
-        $vm2 = New-AzVM -ResourceGroupName $rgname -Name $vmname2 -Credential $cred -DomainNameLabel $domainNameLabel2 -Size $Sku2 -Location $loc
+        $vm2 = New-AzVM -ResourceGroupName $rgname -Name $vmname2 -Credential $cred -DomainNameLabel $domainNameLabel2 -Size $Sku2 -Location $loc -SecurityType $stnd
         Stop-AzVM -ResourceGroupName $rgname -Name $vmname2 -Force
         Update-AzVm -ResourceGroupName $rgname -vm $vm2 -CapacityReservationGroupId $CRG.id
 
@@ -5451,6 +5457,7 @@ function Test-VMUserData
         $vmname = 'v' + $rgname;
         $defaultSize = "Standard_D2s_v3";
         $domainNameLabel = "d1" + $rgname;
+        $stnd = "Standard";
 
         $text = "this isvm encoded";
         $bytes = [System.Text.Encoding]::Unicode.GetBytes($text);
@@ -5462,7 +5469,7 @@ function Test-VMUserData
         $user = "admin01";
         $cred = New-Object System.Management.Automation.PSCredential ($user, $securePassword);
 
-        $vm = New-AzVM -ResourceGroupName $rgname -Name $vmname -Credential $cred -DomainNameLabel $domainNameLabel -UserData $userData;
+        $vm = New-AzVM -ResourceGroupName $rgname -Name $vmname -Credential $cred -DomainNameLabel $domainNameLabel -UserData $userData -SecurityType $stnd;
 
         $vmGet = Get-AzVM -ResourceGroupName $rgname -Name $vmname -UserData;
         Assert-AreEqual $userData $vmGet.UserData;
@@ -5494,7 +5501,7 @@ function Test-VMUserData
         $encodedText3 = [Convert]::ToBase64String($bytes3);
 
         # Creating a VM 
-        $p = New-AzVmConfig -VMName $vmname2 -vmsize $vmsize2 -Userdata $encodedText3 -IdentityType $identityType;
+        $p = New-AzVmConfig -VMName $vmname2 -vmsize $vmsize2 -Userdata $encodedText3 -IdentityType $identityType -SecurityType $stnd;
         Assert-AreEqual $encodedText3 $p.UserData;
 
         $publisherName = "MicrosoftWindowsServer"
@@ -5870,13 +5877,14 @@ function Test-VMvCPUFeatures
         $vCPUsAvailable1 = 1;
         $vCPUsCoreInitial = 2;
         $vCPUsAvailableInitial = 4;
+        $stnd = "Standard";
 
         # Creating a VM using simple parameter set
         $securePassword = Get-PasswordForVM | ConvertTo-SecureString -AsPlainText -Force;  
         $user = "admin01";
         $cred = New-Object System.Management.Automation.PSCredential ($user, $securePassword);
 
-        $vm = New-AzVM -ResourceGroupName $rgname -Name $vmname -Credential $cred -DomainNameLabel $domainNameLabel -Size $vmSize -vCPUCountPerCore $vCPUsCoreInitial -vCPUCountAvailable $vCPUsAvailableInitial;
+        $vm = New-AzVM -ResourceGroupName $rgname -Name $vmname -Credential $cred -DomainNameLabel $domainNameLabel -Size $vmSize -vCPUCountPerCore $vCPUsCoreInitial -vCPUCountAvailable $vCPUsAvailableInitial -SecurityType $stnd;
         Assert-AreEqual $vCPUsAvailableInitial $vm.HardwareProfile.VmSizeProperties.VCPUsAvailable;
         Assert-AreEqual $vCPUsCoreInitial $vm.HardwareProfile.VmSizeProperties.VCPUsPerCore;
 
@@ -5895,7 +5903,7 @@ function Test-VMvCPUFeatures
         $identityType = "SystemAssigned";
 
         # Creating a VM 
-        $vmconfig = New-AzVmConfig -VMName $vmname -vmsize $vmsize -IdentityType $identityType -vCPUCountAvailable $vCPUsAvailable1 -vCPUCountPerCore $vCPUsCore1;
+        $vmconfig = New-AzVmConfig -VMName $vmname -vmsize $vmsize -IdentityType $identityType -vCPUCountAvailable $vCPUsAvailable1 -vCPUCountPerCore $vCPUsCore1 -SecurityType $stnd;
 
         $publisherName = "MicrosoftWindowsServer";
         $offer = "WindowsServer";

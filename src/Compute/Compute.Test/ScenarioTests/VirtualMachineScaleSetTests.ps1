@@ -381,6 +381,7 @@ function Test-VirtualMachineScaleSetInEdgeZone
     $Location = "westus";
     $EdgeZone = "microsoftlosangeles1";
     $ScaleSetName = "scalesetinedgezone";
+    $stnd = "Standard";
     try
     {
         $config = New-AzVmssConfig -Location $Location -EdgeZone $EdgeZone;
@@ -394,6 +395,7 @@ function Test-VirtualMachineScaleSetInEdgeZone
         $Credential = New-Object System.Management.Automation.PSCredential ($VMLocalAdminUser, $VMLocalAdminSecurePassword);
 
         New-AzVmss `
+          -SecurityType $stnd `
           -ResourceGroupName $ResourceGroupName `
           -Location $Location `
           -EdgeZone $EdgeZone `
@@ -2585,7 +2587,7 @@ function Test-VirtualMachineScaleSetEncryptionAtHost
         #creating vmss using new-azvmss default parameter set which uses New-VmssConfig with -EncryptionAtHost parameter
         $vmssResult1 = New-AzVmss -ResourceGroupName $rgname -Name $vmssName -VirtualMachineScaleSet $vmss
         #creating vmss using New-azvmss simple parameter set
-        $vmssResult2 = New-AzVmss -ResourceGroupName $rgname -VMScaleSetName "newvmss" -Credential $cred -EncryptionAtHost -DomainNameLabel "domainlabel"
+        $vmssResult2 = New-AzVmss -ResourceGroupName $rgname -VMScaleSetName "newvmss" -Credential $cred -EncryptionAtHost -DomainNameLabel "domainlabel" -SecurityType $stnd
 
         Assert-AreEqual $vmssResult1.VirtualMachineProfile.SecurityProfile.EncryptionAtHost True;
         Assert-AreEqual $vmssResult2.VirtualMachineProfile.SecurityProfile.EncryptionAtHost True;
@@ -2616,12 +2618,12 @@ function Test-VirtualMachineScaleSetOrchestrationVM
         # Common
         $loc = "eastus"
         New-AzResourceGroup -Name $rgname -Location $loc -Force;
-        $stnd = "Standard";
 
         # New VMSS Parameters
         $vmssName = 'vmssOrchestrationMode' + $rgname;
         $vmName = 'vm' + $rgname;
         $domainName = 'domain' + $rgname;
+        $stnd = "Standard";
 
         $adminUsername = 'Foo12';
         $adminPassword = $PLACEHOLDER;
@@ -2668,10 +2670,10 @@ function Test-VirtualMachineScaleSetOrchestrationVM
           -Name $vmssName `
           -VirtualMachineScaleSet $vmssConfig
 
-        $vm = new-azvm -resourcegroupname $rgname -location $loc -name $vmname -credential $cred -domainnamelabel $domainName -vmssid $VmssFlex.id
+        $vm = new-azvm -resourcegroupname $rgname -location $loc -name $vmname -credential $cred -domainnamelabel $domainName -vmssid $VmssFlex.id -SecurityType $stnd;
 
-        Assert-AreEqual $VmssFlex.id $vm.virtualmachinescaleset.id
-        Assert-AreEqual $VmssFlex.orchestrationMode "Flexible"
+        Assert-AreEqual $VmssFlex.id $vm.virtualmachinescaleset.id;
+        Assert-AreEqual $VmssFlex.orchestrationMode "Flexible";
 
         # Test PlatformFaultDomainCount parameter
         $vmssNameSimple = $vmssname + "Simple";
@@ -2683,7 +2685,7 @@ function Test-VirtualMachineScaleSetOrchestrationVM
         $VmSku = "Standard_D2s_v3";
 
 
-        $vmssConfigFaultDomain = New-AzVmssConfig -Location $loc -PlatformFaultDomainCount $platformFaultDomainCountConfig;
+        $vmssConfigFaultDomain = New-AzVmssConfig -Location $loc -PlatformFaultDomainCount $platformFaultDomainCountConfig -SecurityType $stnd;
         Assert-NotNull $vmssConfigFaultDomain;
         Assert-AreEqual $vmssConfigFaultDomain.PlatformFaultDomainCount $platformFaultDomainCountConfig;
 
@@ -2693,7 +2695,7 @@ function Test-VirtualMachineScaleSetOrchestrationVM
         Assert-AreEqual $vmssDefault.PlatformFaultDomainCount $platformFaultDomainCountConfig;
 
         # PlatformFaultDomainCount in New-AzVmss SimpleParameterSet
-        $vmssSimple = New-AzVmss -Name $vmssNameSimple -ResourceGroup $rgname -Credential $cred -Zone $zone -VmSize $VmSku -DomainNameLabel $domainNameLabel -PlatformFaultDomainCount $platformFaultDomainCount;
+        $vmssSimple = New-AzVmss -Name $vmssNameSimple -ResourceGroup $rgname -Credential $cred -Zone $zone -VmSize $VmSku -DomainNameLabel $domainNameLabel -PlatformFaultDomainCount $platformFaultDomainCount -SecurityType $stnd;
         Assert-NotNull $vmssSimple;
         Assert-AreEqual $vmssSimple.PlatformFaultDomainCount $platformFaultDomainCount;
 
@@ -2725,6 +2727,7 @@ function Test-VirtualMachineScaleSetAssignedHost
         $zone = "2"
         [string]$loc = Get-Location "Microsoft.Resources" "resourceGroups" "East US 2 EUAP";
         New-AzResourceGroup -Name $rgname -Location $loc -Force;
+        $stnd = "Standard";
 
         # Hostgroup and Host
         $hostGroupName = $rgname + "HostGroup"
@@ -2741,7 +2744,7 @@ function Test-VirtualMachineScaleSetAssignedHost
         $username = "admin01"
         $password = Get-PasswordForVM | ConvertTo-SecureString -AsPlainText -Force
         $cred = new-object -typename System.Management.Automation.PSCredential -argumentlist $username, $password
-        $vmss = New-AzVmss -Name $vmssname -ResourceGroup $rgname -Credential $cred -HostGroupId $hostGroup.Id -Zone $zone -VmSize $VmSku -DomainNameLabel $domainNameLabel
+        $vmss = New-AzVmss -Name $vmssname -ResourceGroup $rgname -Credential $cred -HostGroupId $hostGroup.Id -Zone $zone -VmSize $VmSku -DomainNameLabel $domainNameLabel -SecurityType $stnd
 
         $vmssResult = Get-AzVmssVM -InstanceView -ResourceGroupName $rgname -VMScaleSetName $vmssname;
 
@@ -2862,7 +2865,8 @@ function Test-VirtualMachineScaleSetFlexibleOModeDefaulting
     $networkAPIVersionFlexible = "2020-11-01";
     $flexiblePFDC = 1;
     $flexibleSinglePlacementGroup = $false;
-
+    $stnd = "Standard";
+    
     try
     {
         # Common
@@ -2881,7 +2885,7 @@ function Test-VirtualMachineScaleSetFlexibleOModeDefaulting
         $credential = New-Object System.Management.Automation.PSCredential ($username, $securePassword);
 
         # Create VMSS with minimal inputs to allow defaulting
-        $vmss = New-AzVmss -ResourceGroupName $rgname -VMScaleSetName $vmssname -Credential $credential -OrchestrationMode $omode -DomainNameLabel $domainNameLabel;
+        $vmss = New-AzVmss -ResourceGroupName $rgname -VMScaleSetName $vmssname -Credential $credential -OrchestrationMode $omode -DomainNameLabel $domainNameLabel -SecurityType $stnd;
         Assert-NotNull $vmss;
         Assert-AreEqual $vmss.OrchestrationMode $omode;
         Assert-AreEqual $vmss.SinglePlacementGroup $flexibleSinglePlacementGroup;
@@ -2915,9 +2919,10 @@ function Test-VirtualMachineScaleSetOrchestrationModeNullChecks
         New-AzResourceGroup -Name $rgname -Location $loc -Force;
         $VMSSName = "sap-flex";
         $omode = "Flexible";
+        $stnd = "Standard";
 
         # Create Vmss
-        $vmssConfig = New-AzVmssConfig -Location $loc -PlatformFaultDomainCount 3 -OrchestrationMode $omode;
+        $vmssConfig = New-AzVmssConfig -Location $loc -PlatformFaultDomainCount 3 -OrchestrationMode $omode -SecurityType $stnd;
         $vmss = New-AzVmss -ResourceGroupName $rgname -Name $VMSSName -VirtualMachineScaleSet $vmssConfig;
         Assert-AreEqual $omode $vmss.OrchestrationMode;
 
@@ -2990,6 +2995,7 @@ function Test-VirtualMachineScaleSetUserdata
 
         $vmssName = 'vmss' + $rgname;
         $domainNameLabel = "dnl" + $rgname;
+        $stnd = "Standard";
 
         $text = "new vmss";
         $bytes = [System.Text.Encoding]::Unicode.GetBytes($text);
@@ -3001,7 +3007,7 @@ function Test-VirtualMachineScaleSetUserdata
         $cred = New-Object System.Management.Automation.PSCredential ($user, $securePassword);
 
         # Create Vmss with UserData.
-        $vmss = New-AzVmss -ResourceGroupName $rgname -Name $vmssname -Credential $cred -DomainNameLabel $domainNameLabel -Userdata $userData;
+        $vmss = New-AzVmss -ResourceGroupName $rgname -Name $vmssname -Credential $cred -DomainNameLabel $domainNameLabel -Userdata $userData -SecurityType $stnd;
         $vmssGet = Get-AzVmss -ResourceGroupName $rgname -VMScaleSetName $vmssname -InstanceView:$false -Userdata;
         Assert-AreEqual $vmssGet.VirtualMachineProfile.UserData $userData;
 
