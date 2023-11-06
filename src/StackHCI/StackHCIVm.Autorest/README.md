@@ -662,5 +662,9 @@ directive:
  -  where:
       subject: Extension
     hide: true
+ -  where:
+      subject-prefix: StackHciVM
+    set:
+      subject-prefix: StackHCIVm
 
 ```
