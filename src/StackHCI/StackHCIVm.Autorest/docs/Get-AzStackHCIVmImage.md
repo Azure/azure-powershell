@@ -40,7 +40,7 @@ Gets a gallery image
 
 ### Example 1:  Get an Image 
 ```powershell
-PS C:\> Get-AzStackHCIVmImage -Name "testimage" -ResourceGroupName "test-rg" 
+Get-AzStackHCIVmImage -Name "testimage" -ResourceGroupName "test-rg" 
 ```
 
 ```output
@@ -53,7 +53,7 @@ This command gets a specific image in the specified resource group.
 
 ### Example 2: List all Images in a Resource Group  
 ```powershell
-PS C:\> Get-AzStackHCIVmImage -ResourceGroupName 'test-rg'
+Get-AzStackHCIVmImage -ResourceGroupName 'test-rg'
 ```
 
 ```output

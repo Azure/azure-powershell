@@ -17,9 +17,8 @@ function setupEnv() {
     # Preload subscriptionId and tenant from context, which will be used in test
     # as default. You could change them if needed.
     # For any resources you created for test, you should add it to $env here.
-    $env = Get-Content "E:\azstackhci-util\azstackhci-powershell\localEnv.json" | ConvertFrom-Json
-    $env.SubscriptionId = (Get-AzContext).Subscription.Id
-    $env.Tenant = (Get-AzContext).Tenant.Id
+    $env = Get-Content "envVariables.json" | ConvertFrom-Json
+
     $envFile = 'env.json'
     if ($TestMode -eq 'live') {
         $envFile = 'localEnv.json'

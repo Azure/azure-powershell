@@ -36,7 +36,7 @@ The operation to update a storage container.
 
 ### Example 1: Update a Storage Path.
 ```powershell
-PS C:\> Update-AzStackHCIVmStoragePath  -Name "testVhd" -ResourceGroupName "test-rg" -Tag "@{TagName = TagValue }"
+Update-AzStackHCIVmStoragePath  -Name "testVhd" -ResourceGroupName "test-rg" -Tag @{"tagname" = "tagvalue"}
 ```
 
 ```output

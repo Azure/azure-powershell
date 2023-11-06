@@ -36,7 +36,7 @@ The operation to update a network interface.
 
 ### Example 1: Update a Network Interface.
 ```powershell
-PS C:\> Update-AzStackHCIVmNetworkInterface  -Name "testNic" -ResourceGroupName "test-rg" -Tag "@{TagName = TagValue }"
+Update-AzStackHCIVmNetworkInterface  -Name "testNic" -ResourceGroupName "test-rg" -Tag @{"tagname" = "tagvalue"}
 ```
 
 ```output

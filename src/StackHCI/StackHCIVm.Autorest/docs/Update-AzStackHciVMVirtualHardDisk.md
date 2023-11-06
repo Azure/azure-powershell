@@ -36,7 +36,7 @@ The operation to update a virtual hard disk.
 
 ### Example 1: Update a Virtual Hard Disk.
 ```powershell
-PS C:\> Update-AzStackHCIVmVirtualHardDisk  -Name "testVhd" -ResourceGroupName "test-rg" -Tag "@{TagName = TagValue }"
+Update-AzStackHCIVmVirtualHardDisk  -Name "testVhd" -ResourceGroupName "test-rg" -Tag @{"tagname" = "tagvalue"}
 ```
 
 ```output

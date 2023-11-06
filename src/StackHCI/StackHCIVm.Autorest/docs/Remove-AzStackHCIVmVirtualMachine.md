@@ -32,7 +32,7 @@ The operation to delete a virtual machine.
 
 ### Example 1: Remove a Virtual Machine 
 ```powershell
-PS C:\> Remove-AzStackHCIVmVirtualMachine  -Name "testVm" -ResourceGroupName "test-rg"
+Remove-AzStackHCIVmVirtualMachine  -Name "testVm" -ResourceGroupName "test-rg"
 
 ```
 

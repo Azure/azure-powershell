@@ -1,6 +1,6 @@
 ### Example 1: Update an Image.
 ```powershell
-PS C:\> Update-AzStackHCIVmImage  -Name "testImage" -ResourceGroupName "test-rg" -Tag @{TagName = TagValue }
+Update-AzStackHCIVmImage  -Name "testImage" -ResourceGroupName "test-rg" -Tag @{"tagname" = "tagvalue"}
 ```
 
 ```output

@@ -30,7 +30,7 @@ The operation to start a virtual machine instance.
 
 ### Example 1: Start Virtual Machine 
 ```powershell
-PS C:\> Start-AzStackHCIVmVirtualMachine  -Name "testVm" -ResourceGroupName "test-rg"
+Start-AzStackHCIVmVirtualMachine  -Name "testVm" -ResourceGroupName "test-rg"
 
 ```
 

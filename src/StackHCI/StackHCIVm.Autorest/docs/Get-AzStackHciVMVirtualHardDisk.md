@@ -41,7 +41,7 @@ Gets a virtual hard disk
 
 ### Example 1: Get a Virtual Hard Disk
 ```powershell
-PS C:\> Get-AzStackHCIVmVirtualHardDisk -Name  "testVhd" -ResourceGroupName "test-rg"
+Get-AzStackHCIVmVirtualHardDisk -Name  "testVhd" -ResourceGroupName "test-rg"
 ```
 
 ```output
@@ -54,7 +54,7 @@ This command gets a specific virtual hard disk in the specified resource group.
 
 ### Example 2: List all Virtual Hard Disks in a Resource Group
 ```powershell
-PS C:\> Get-AzStackHCIVmVirtualHardDisk -ResourceGroupName "test-rg"
+Get-AzStackHCIVmVirtualHardDisk -ResourceGroupName "test-rg"
 ```
 
 ```output
