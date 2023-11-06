@@ -27,7 +27,7 @@ Gets the specified catalog within the project
 .Inputs
 Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Models.IDevCenterdataIdentity
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Models.Api20230701Preview.ICatalog
+Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Models.Api20231001Preview.ICatalog
 .Outputs
 System.String
 .Notes
@@ -50,7 +50,7 @@ INPUTOBJECT <IDevCenterdataIdentity>: Identity Parameter
 https://learn.microsoft.com/powershell/module/az.devcenter/get-azdevcenterusercatalog
 #>
 function Get-AzDevCenterUserCatalog {
-  [OutputType([System.String], [Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Models.Api20230701Preview.ICatalog])]
+  [OutputType([System.String], [Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Models.Api20231001Preview.ICatalog])]
   [CmdletBinding(DefaultParameterSetName = 'List', PositionalBinding = $false)]
   param(
     [Parameter(ParameterSetName = 'Get', Mandatory)]

@@ -31,14 +31,14 @@ For information on how to develop for `Az.DevCenterdata`, see [how-to.md](how-to
 
 ```yaml
 # pin the swagger version by using the commit id instead of branch name
-branch: e1faef4e920b3acb04f1a577f66cf3152ab09a74
+branch: bce3a8d1141c8c6df26d17c94b0f5437f214141f
 require:
 # readme.azure.noprofile.md is the common configuration file
   - $(this-folder)/../../readme.azure.noprofile.md
 input-file:
-  - $(repo)/specification/devcenter/data-plane/Microsoft.DevCenter/preview/2023-07-01-preview/devbox.json
-  - $(repo)/specification/devcenter/data-plane/Microsoft.DevCenter/preview/2023-07-01-preview/devcenter.json
-  - $(repo)/specification/devcenter/data-plane/Microsoft.DevCenter/preview/2023-07-01-preview/environments.json
+  - $(repo)/specification/devcenter/data-plane/Microsoft.DevCenter/preview/2023-10-01-preview/devbox.json
+  - $(repo)/specification/devcenter/data-plane/Microsoft.DevCenter/preview/2023-10-01-preview/devcenter.json
+  - $(repo)/specification/devcenter/data-plane/Microsoft.DevCenter/preview/2023-10-01-preview/environments.json
 title: DevCenterdata
 subject-prefix: DevCenter
 endpoint-resource-id-key-name: https://devcenter.azure.com
@@ -142,9 +142,9 @@ directive:
   - from: swagger-document
     where: $.definitions.EnvironmentUpdateProperties.properties.parameters
     transform: $["additionalProperties"] = true
-  - where:
-      subject: ^(.*)
-    hide: true
+  # - where:
+  #     subject: ^(.*)
+  #   hide: true
   - where:
       subject: ^(.*)
     set:
