@@ -142,9 +142,9 @@ directive:
   - from: swagger-document
     where: $.definitions.EnvironmentUpdateProperties.properties.parameters
     transform: $["additionalProperties"] = true
-  # - where:
-  #     subject: ^(.*)
-  #   hide: true
+  - where:
+      subject: ^(.*)
+    hide: true
   - where:
       subject: ^(.*)
     set:

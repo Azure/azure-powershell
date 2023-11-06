@@ -1,101 +1,79 @@
 ---
 external help file:
 Module Name: Az.DevCenterdata
-online version: https://learn.microsoft.com/powershell/module/az.devcenter/get-azdevcenteruserpool
+online version: https://learn.microsoft.com/powershell/module/az.devcenterdata/get-azdevcenteruserenvironmentoperation
 schema: 2.0.0
 ---
 
-# Get-AzDevCenterUserPool
+# Get-AzDevCenterUserEnvironmentOperation
 
 ## SYNOPSIS
-Gets a pool
+Gets an environment action result.
 
 ## SYNTAX
 
 ### List (Default)
 ```
-Get-AzDevCenterUserPool -Endpoint <String> -ProjectName <String> [-DefaultProfile <PSObject>]
- [<CommonParameters>]
+Get-AzDevCenterUserEnvironmentOperation -Endpoint <String> -EnvironmentName <String> -ProjectName <String>
+ [-UserId <String>] [-DefaultProfile <PSObject>] [<CommonParameters>]
 ```
 
 ### Get
 ```
-Get-AzDevCenterUserPool -Endpoint <String> -PoolName <String> -ProjectName <String>
- [-DefaultProfile <PSObject>] [<CommonParameters>]
+Get-AzDevCenterUserEnvironmentOperation -Endpoint <String> -EnvironmentName <String> -OperationId <String>
+ -ProjectName <String> [-UserId <String>] [-DefaultProfile <PSObject>] [<CommonParameters>]
 ```
 
 ### GetByDevCenter
 ```
-Get-AzDevCenterUserPool -DevCenter <String> -PoolName <String> -ProjectName <String>
- [-DefaultProfile <PSObject>] [<CommonParameters>]
+Get-AzDevCenterUserEnvironmentOperation -DevCenter <String> -EnvironmentName <String> -OperationId <String>
+ -ProjectName <String> [-UserId <String>] [-DefaultProfile <PSObject>] [<CommonParameters>]
 ```
 
 ### GetViaIdentity
 ```
-Get-AzDevCenterUserPool -Endpoint <String> -InputObject <IDevCenterdataIdentity> [-DefaultProfile <PSObject>]
- [<CommonParameters>]
+Get-AzDevCenterUserEnvironmentOperation -Endpoint <String> -InputObject <IDevCenterdataIdentity>
+ [-DefaultProfile <PSObject>] [<CommonParameters>]
 ```
 
 ### GetViaIdentityByDevCenter
 ```
-Get-AzDevCenterUserPool -DevCenter <String> -InputObject <IDevCenterdataIdentity> [-DefaultProfile <PSObject>]
- [<CommonParameters>]
+Get-AzDevCenterUserEnvironmentOperation -DevCenter <String> -InputObject <IDevCenterdataIdentity>
+ [-DefaultProfile <PSObject>] [<CommonParameters>]
 ```
 
 ### ListByDevCenter
 ```
-Get-AzDevCenterUserPool -DevCenter <String> -ProjectName <String> [-DefaultProfile <PSObject>]
- [<CommonParameters>]
+Get-AzDevCenterUserEnvironmentOperation -DevCenter <String> -EnvironmentName <String> -ProjectName <String>
+ [-UserId <String>] [-DefaultProfile <PSObject>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-Gets a pool
+Gets an environment action result.
 
 ## EXAMPLES
 
-### Example 1: List pools by endpoint
+### Example 1: {{ Add title here }}
 ```powershell
-Get-AzDevCenterUserPool -Endpoint "https://8a40af38-3b4c-4672-a6a4-5e964b1870ed-contosodevcenter.centralus.devcenter.azure.com/" -ProjectName DevProject
+{{ Add code here }}
 ```
 
-This command lists the pools in the project "DevProject".
-
-### Example 2: List pools by dev center
-```powershell
-Get-AzDevCenterUserPool -DevCenter Contoso -ProjectName DevProject
+```output
+{{ Add output here }}
 ```
 
-This command lists the pools in the project "DevProject".
+{{ Add description here }}
 
-### Example 3: Get pool by endpoint
+### Example 2: {{ Add title here }}
 ```powershell
-Get-AzDevCenterUserPool -Endpoint "https://8a40af38-3b4c-4672-a6a4-5e964b1870ed-contosodevcenter.centralus.devcenter.azure.com/" -ProjectName DevProject -PoolName DevPool
+{{ Add code here }}
 ```
 
-This command gets the pool "DevPool" in the project "DevProject".
-
-### Example 4: Get pool by dev center
-```powershell
-Get-AzDevCenterUserPool -DevCenter Contoso -ProjectName DevProject -PoolName DevPool
+```output
+{{ Add output here }}
 ```
 
-This command gets the pool "DevPool" in the project "DevProject".
-
-### Example 5: Get pool by endpoint and InputObject
-```powershell
-$devBoxInput = @{"ProjectName" = "DevProject"; "PoolName" = "DevPool" }
-Get-AzDevCenterUserPool -Endpoint "https://8a40af38-3b4c-4672-a6a4-5e964b1870ed-contosodevcenter.centralus.devcenter.azure.com/" -InputObject $devBoxInput
-```
-
-This command gets the pool "DevPool" in the project "DevProject".
-
-### Example 6: Get pool by dev center and InputObject
-```powershell
-$devBoxInput = @{"ProjectName" = "DevProject"; "PoolName" = "DevPool" }
-Get-AzDevCenterUserPool -DevCenter Contoso -InputObject $devBoxInput
-```
-
-This command gets the pool "DevPool" in the project "DevProject".
+{{ Add description here }}
 
 ## PARAMETERS
 
@@ -145,6 +123,21 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### -EnvironmentName
+The name of the environment.
+
+```yaml
+Type: System.String
+Parameter Sets: Get, GetByDevCenter, List, ListByDevCenter
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
 ### -InputObject
 Identity Parameter
 To construct, see NOTES section for INPUTOBJECT properties and create a hash table.
@@ -161,8 +154,8 @@ Accept pipeline input: True (ByValue)
 Accept wildcard characters: False
 ```
 
-### -PoolName
-The name of a pool of Dev Boxes.
+### -OperationId
+The id of the operation on an environment.
 
 ```yaml
 Type: System.String
@@ -191,6 +184,22 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### -UserId
+The AAD object id of the user.
+If value is 'me', the identity is taken from the authentication context.
+
+```yaml
+Type: System.String
+Parameter Sets: Get, GetByDevCenter, List, ListByDevCenter
+Aliases:
+
+Required: False
+Position: Named
+Default value: "me"
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
 ### CommonParameters
 This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable. For more information, see [about_CommonParameters](http://go.microsoft.com/fwlink/?LinkID=113216).
 
@@ -200,7 +209,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Models.Api20231001Preview.IPool
+### Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Models.Api20231001Preview.IEnvironmentOperation
 
 ## NOTES
 

@@ -1,43 +1,41 @@
 ---
 external help file:
 Module Name: Az.DevCenterdata
-online version: https://learn.microsoft.com/powershell/module/az.devcenter/invoke-azdevcenteruserdelaydevboxaction
+online version: https://learn.microsoft.com/powershell/module/az.devcenterdata/invoke-azdevcenteruserdelayenvironmentaction
 schema: 2.0.0
 ---
 
-# Invoke-AzDevCenterUserDelayDevBoxAction
+# Invoke-AzDevCenterUserDelayEnvironmentAction
 
 ## SYNOPSIS
 Delays the occurrence of an action.
 
 ## SYNTAX
 
-### Delay1 (Default)
+### Delay (Default)
 ```
-Invoke-AzDevCenterUserDelayDevBoxAction -Endpoint <String> -DevBoxName <String> -ProjectName <String>
- -DelayTime <TimeSpan> [-UserId <String>] [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf]
- [<CommonParameters>]
-```
-
-### Delay
-```
-Invoke-AzDevCenterUserDelayDevBoxAction -Endpoint <String> -ActionName <String> -DevBoxName <String>
+Invoke-AzDevCenterUserDelayEnvironmentAction -Endpoint <String> -ActionName <String> -EnvironmentName <String>
  -ProjectName <String> -DelayTime <TimeSpan> [-UserId <String>] [-DefaultProfile <PSObject>] [-Confirm]
  [-WhatIf] [<CommonParameters>]
-```
-
-### Delay1ByDevCenter
-```
-Invoke-AzDevCenterUserDelayDevBoxAction -DevCenter <String> -DevBoxName <String> -ProjectName <String>
- -DelayTime <TimeSpan> [-UserId <String>] [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf]
- [<CommonParameters>]
 ```
 
 ### DelayByDevCenter
 ```
-Invoke-AzDevCenterUserDelayDevBoxAction -DevCenter <String> -ActionName <String> -DevBoxName <String>
- -ProjectName <String> -DelayTime <TimeSpan> [-UserId <String>] [-DefaultProfile <PSObject>] [-Confirm]
- [-WhatIf] [<CommonParameters>]
+Invoke-AzDevCenterUserDelayEnvironmentAction -DevCenter <String> -ActionName <String>
+ -EnvironmentName <String> -ProjectName <String> -DelayTime <TimeSpan> [-UserId <String>]
+ [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
+```
+
+### DelayViaIdentity
+```
+Invoke-AzDevCenterUserDelayEnvironmentAction -Endpoint <String> -InputObject <IDevCenterdataIdentity>
+ -DelayTime <TimeSpan> [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
+```
+
+### DelayViaIdentityByDevCenter
+```
+Invoke-AzDevCenterUserDelayEnvironmentAction -DevCenter <String> -InputObject <IDevCenterdataIdentity>
+ -DelayTime <TimeSpan> [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -45,38 +43,24 @@ Delays the occurrence of an action.
 
 ## EXAMPLES
 
-### Example 1: Delay all actions on the dev box by endpoint
+### Example 1: Delay an action on the environment by endpoint
 ```powershell
-Invoke-AzDevCenterUserDelayDevBoxAction -Endpoint "https://8a40af38-3b4c-4672-a6a4-5e964b1870ed-contosodevcenter.centralus.devcenter.azure.com/" -DevBoxName myDevBox -UserId "me" -ProjectName DevProject -DelayTime "01:30"
+Invoke-AzDevCenterUserDelayEnvironmentAction -Endpoint "https://8a40af38-3b4c-4672-a6a4-5e964b1870ed-contosodevcenter.centralus.devcenter.azure.com/" -EnvironmentName myEnvironment -ProjectName DevProject -ActionName "myEnvironment-Delete" -DelayTime "00:30"
 ```
 
-This command delays all actions on the dev box "myDevBox" to the time 1 hour and 30 minutes from the earliest scheduled action.
+This command delays the action "schedule-default" for the environment "myEnvironment" for 30 minutes.
 
-### Example 2: Delay all actions on the dev box by dev center
+### Example 2: Delay an action on the environment by dev center
 ```powershell
-Invoke-AzDevCenterUserDelayDevBoxAction -DevCenter Contoso -DevBoxName myDevBox -ProjectName DevProject -DelayTime "02:00"
+Invoke-AzDevCenterUserDelayEnvironmentAction -DevCenter Contoso -EnvironmentName myEnvironment -UserId "me" -ProjectName DevProject -ActionName "myEnvironment-Delete" -DelayTime "05:15"
 ```
 
-This command delays all actions on the dev box "myDevBox" to the time 2 hours from the earliest scheduled action.
-
-### Example 3: Delay an action on the dev box by endpoint
-```powershell
-Invoke-AzDevCenterUserDelayDevBoxAction -Endpoint "https://8a40af38-3b4c-4672-a6a4-5e964b1870ed-contosodevcenter.centralus.devcenter.azure.com/" -DevBoxName myDevBox -ProjectName DevProject -ActionName "schedule-default" -DelayTime "00:30"
-```
-
-This command delays the action "schedule-default" for the dev box "myDevBox" for 30 minutes.
-
-### Example 4: Delay an action on the dev box by dev center
-```powershell
-Invoke-AzDevCenterUserDelayDevBoxAction -DevCenter Contoso -DevBoxName myDevBox -UserId "me" -ProjectName DevProject -ActionName "schedule-default" -DelayTime "05:15"
-```
-
-This command delays the action "schedule-default" for the dev box "myDevBox" for 5 hours and 15 minutes.
+This command delays the action "myEnvironment-Delete" for the environment "myEnvironment" for 5 hours and 15 minutes.
 
 ## PARAMETERS
 
 ### -ActionName
-The name of an action that will take place on a Dev Box.
+The name of an action that will take place on an Environment.
 
 ```yaml
 Type: System.String
@@ -122,27 +106,12 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -DevBoxName
-The name of a Dev Box.
-
-```yaml
-Type: System.String
-Parameter Sets: (All)
-Aliases:
-
-Required: True
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
 ### -DevCenter
 The DevCenter upon which to execute operations.
 
 ```yaml
 Type: System.String
-Parameter Sets: Delay1ByDevCenter, DelayByDevCenter
+Parameter Sets: DelayByDevCenter, DelayViaIdentityByDevCenter
 Aliases:
 
 Required: True
@@ -157,7 +126,7 @@ The DevCenter-specific URI to operate on.
 
 ```yaml
 Type: System.String
-Parameter Sets: Delay, Delay1
+Parameter Sets: Delay, DelayViaIdentity
 Aliases:
 
 Required: True
@@ -167,12 +136,43 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### -EnvironmentName
+The name of the environment.
+
+```yaml
+Type: System.String
+Parameter Sets: Delay, DelayByDevCenter
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -InputObject
+Identity Parameter
+To construct, see NOTES section for INPUTOBJECT properties and create a hash table.
+
+```yaml
+Type: Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Models.IDevCenterdataIdentity
+Parameter Sets: DelayViaIdentity, DelayViaIdentityByDevCenter
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: True (ByValue)
+Accept wildcard characters: False
+```
+
 ### -ProjectName
 The DevCenter Project upon which to execute operations.
 
 ```yaml
 Type: System.String
-Parameter Sets: (All)
+Parameter Sets: Delay, DelayByDevCenter
 Aliases:
 
 Required: True
@@ -188,7 +188,7 @@ If value is 'me', the identity is taken from the authentication context.
 
 ```yaml
 Type: System.String
-Parameter Sets: (All)
+Parameter Sets: Delay, DelayByDevCenter
 Aliases:
 
 Required: False
@@ -238,9 +238,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Models.Api20231001Preview.IDevBoxAction
-
-### Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Models.Api20231001Preview.IDevBoxActionDelayResult
+### Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Models.Api20231001Preview.IEnvironmentAction
 
 ## NOTES
 

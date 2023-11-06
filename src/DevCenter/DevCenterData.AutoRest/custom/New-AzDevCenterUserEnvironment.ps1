@@ -150,6 +150,12 @@ function New-AzDevCenterUserEnvironment {
     [System.Collections.Hashtable]
     # Parameters object for the environment.
     ${Parameter},
+
+    [Parameter()]
+    [Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Category('Body')]
+    [System.DateTime]
+    # The time the expiration date will be triggered (UTC), after which the environment and associated resources will be deleted.
+    ${ExpirationDate},
   
     [Parameter()]
     [Alias('AzureRMContext', 'AzureCredential')]

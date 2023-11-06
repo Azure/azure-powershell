@@ -1,87 +1,89 @@
 ---
 external help file:
 Module Name: Az.DevCenterdata
-online version: https://learn.microsoft.com/powershell/module/az.devcenter/stop-azdevcenteruserdevbox
+online version: https://learn.microsoft.com/powershell/module/az.devcenterdata/skip-azdevcenteruserenvironmentaction
 schema: 2.0.0
 ---
 
-# Stop-AzDevCenterUserDevBox
+# Skip-AzDevCenterUserEnvironmentAction
 
 ## SYNOPSIS
-Stops a Dev Box
+Skips an occurrence of an action.
 
 ## SYNTAX
 
-### Stop (Default)
+### Skip (Default)
 ```
-Stop-AzDevCenterUserDevBox -Endpoint <String> -Name <String> -ProjectName <String> [-UserId <String>]
- [-Hibernate] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
-```
-
-### StopByDevCenter
-```
-Stop-AzDevCenterUserDevBox -DevCenter <String> -Name <String> -ProjectName <String> [-UserId <String>]
- [-Hibernate] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
+Skip-AzDevCenterUserEnvironmentAction -Endpoint <String> -ActionName <String> -EnvironmentName <String>
+ -ProjectName <String> [-UserId <String>] [-DefaultProfile <PSObject>] [-PassThru] [-Confirm] [-WhatIf]
+ [<CommonParameters>]
 ```
 
-### StopViaIdentity
+### SkipByDevCenter
 ```
-Stop-AzDevCenterUserDevBox -Endpoint <String> -InputObject <IDevCenterdataIdentity> [-Hibernate]
- [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
+Skip-AzDevCenterUserEnvironmentAction -DevCenter <String> -ActionName <String> -EnvironmentName <String>
+ -ProjectName <String> [-UserId <String>] [-DefaultProfile <PSObject>] [-PassThru] [-Confirm] [-WhatIf]
+ [<CommonParameters>]
 ```
 
-### StopViaIdentityByDevCenter
+### SkipViaIdentity
 ```
-Stop-AzDevCenterUserDevBox -DevCenter <String> -InputObject <IDevCenterdataIdentity> [-Hibernate]
- [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
+Skip-AzDevCenterUserEnvironmentAction -Endpoint <String> -InputObject <IDevCenterdataIdentity>
+ [-DefaultProfile <PSObject>] [-PassThru] [-Confirm] [-WhatIf] [<CommonParameters>]
+```
+
+### SkipViaIdentityByDevCenter
+```
+Skip-AzDevCenterUserEnvironmentAction -DevCenter <String> -InputObject <IDevCenterdataIdentity>
+ [-DefaultProfile <PSObject>] [-PassThru] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-Stops a Dev Box
+Skips an occurrence of an action.
 
 ## EXAMPLES
 
-### Example 1: Stop a dev box by endpoint
+### Example 1: Skip an action on the environment by endpoint
 ```powershell
-Stop-AzDevCenterUserDevBox -Endpoint "https://8a40af38-3b4c-4672-a6a4-5e964b1870ed-contosodevcenter.centralus.devcenter.azure.com/" -ProjectName DevProject -UserId 786a823c-8037-48ab-89b8-8599901e67d0 -Name myDevBox
+Skip-AzDevCenterUserEnvironmentAction -Endpoint "https://8a40af38-3b4c-4672-a6a4-5e964b1870ed-contosodevcenter.centralus.devcenter.azure.com/" -EnvironmentName myEnvironment -ProjectName DevProject -ActionName "myEnvironment-Delete"
 ```
 
-This command stops the dev box "myDevBox" assigned to user "786a823c-8037-48ab-89b8-8599901e67d0".
+This command skips the action "myEnvironment-Delete" for the environment "myEnvironment".
 
-### Example 2: Stop a dev box by dev center
+### Example 2: Skip an action on the environment by dev center
 ```powershell
-Stop-AzDevCenterUserDevBox -DevCenter Contoso -ProjectName DevProject -UserId "me" -Name myDevBox
+Skip-AzDevCenterUserEnvironmentAction -DevCenter Contoso -EnvironmentName myEnvironment -ProjectName DevProject -ActionName "myEnvironment-Delete"
 ```
 
-This command stops the dev box "myDevBox" assigned to the currently signed-in user.
+This command skips the action "myEnvironment-Delete" for the environment "myEnvironment".
 
-### Example 3: Stop a dev box by endpoint and InputObject
+### Example 3: Skip an action on the environment by endpoint and InputObject
 ```powershell
-$devBoxInput = @{"DevBoxName" = "myDevBox"; "UserId" = "me"; "ProjectName" = "DevProject" }
-Stop-AzDevCenterUserDevBox -Endpoint "https://8a40af38-3b4c-4672-a6a4-5e964b1870ed-contosodevcenter.centralus.devcenter.azure.com/" -InputObject $devBoxInput
+$environmentInput = @{"EnvironmentName" = "myEnvironment"; "UserId" = "me"; "ProjectName" = "DevProject"; "ActionName" = "myEnvironment-Delete"}
+Skip-AzDevCenterUserEnvironmentAction -Endpoint "https://8a40af38-3b4c-4672-a6a4-5e964b1870ed-contosodevcenter.centralus.devcenter.azure.com/" -InputObject $environmentInput
 ```
 
-This command stops the dev box "myDevBox" assigned to the currently signed-in user.
+This command skips the action "myEnvironment-Delete" for the environment "myEnvironment".
 
-### Example 4: Stop a dev box by dev center and InputObject
+### Example 4: Skip an action on the environment by dev center and InputObject
 ```powershell
-$devBoxInput = @{"DevBoxName" = "myDevBox"; "UserId" = "786a823c-8037-48ab-89b8-8599901e67d0"; "ProjectName" = "DevProject" }
-Stop-AzDevCenterUserDevBox -DevCenter Contoso -InputObject $devBoxInput 
+$environmentInput = @{"EnvironmentName" = "myEnvironment"; "UserId" = "me"; "ProjectName" = "DevProject"; "ActionName" = "myEnvironment-Delete"}
+Skip-AzDevCenterUserEnvironmentAction -DevCenter Contoso -InputObject $environmentInput
 ```
 
-This command stops the dev box "myDevBox" assigned to user "786a823c-8037-48ab-89b8-8599901e67d0".
+This command skips the action "myEnvironment-Delete" for the environment "myEnvironment".
 
 ## PARAMETERS
 
-### -AsJob
-Run the command as a job
+### -ActionName
+The name of an action that will take place on an Environment.
 
 ```yaml
-Type: System.Management.Automation.SwitchParameter
-Parameter Sets: (All)
+Type: System.String
+Parameter Sets: Skip, SkipByDevCenter
 Aliases:
 
-Required: False
+Required: True
 Position: Named
 Default value: None
 Accept pipeline input: False
@@ -109,7 +111,7 @@ The DevCenter upon which to execute operations.
 
 ```yaml
 Type: System.String
-Parameter Sets: StopByDevCenter, StopViaIdentityByDevCenter
+Parameter Sets: SkipByDevCenter, SkipViaIdentityByDevCenter
 Aliases:
 
 Required: True
@@ -124,7 +126,7 @@ The DevCenter-specific URI to operate on.
 
 ```yaml
 Type: System.String
-Parameter Sets: Stop, StopViaIdentity
+Parameter Sets: Skip, SkipViaIdentity
 Aliases:
 
 Required: True
@@ -134,15 +136,15 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -Hibernate
-Optional parameter to hibernate the dev box.
+### -EnvironmentName
+The name of the environment.
 
 ```yaml
-Type: System.Management.Automation.SwitchParameter
-Parameter Sets: (All)
+Type: System.String
+Parameter Sets: Skip, SkipByDevCenter
 Aliases:
 
-Required: False
+Required: True
 Position: Named
 Default value: None
 Accept pipeline input: False
@@ -155,7 +157,7 @@ To construct, see NOTES section for INPUTOBJECT properties and create a hash tab
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Models.IDevCenterdataIdentity
-Parameter Sets: StopViaIdentity, StopViaIdentityByDevCenter
+Parameter Sets: SkipViaIdentity, SkipViaIdentityByDevCenter
 Aliases:
 
 Required: True
@@ -165,23 +167,8 @@ Accept pipeline input: True (ByValue)
 Accept wildcard characters: False
 ```
 
-### -Name
-The name of a Dev Box.
-
-```yaml
-Type: System.String
-Parameter Sets: Stop, StopByDevCenter
-Aliases: DevBoxName
-
-Required: True
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -NoWait
-Run the command asynchronously
+### -PassThru
+Returns true when the command succeeds
 
 ```yaml
 Type: System.Management.Automation.SwitchParameter
@@ -200,7 +187,7 @@ The DevCenter Project upon which to execute operations.
 
 ```yaml
 Type: System.String
-Parameter Sets: Stop, StopByDevCenter
+Parameter Sets: Skip, SkipByDevCenter
 Aliases:
 
 Required: True
@@ -216,7 +203,7 @@ If value is 'me', the identity is taken from the authentication context.
 
 ```yaml
 Type: System.String
-Parameter Sets: Stop, StopByDevCenter
+Parameter Sets: Skip, SkipByDevCenter
 Aliases:
 
 Required: False

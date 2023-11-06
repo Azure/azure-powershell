@@ -1,106 +1,106 @@
 ---
 external help file:
 Module Name: Az.DevCenterdata
-online version: https://learn.microsoft.com/powershell/module/az.devcenter/get-azdevcenteruserdevboxaction
+online version: https://learn.microsoft.com/powershell/module/az.devcenterdata/get-azdevcenteruserenvironmentaction
 schema: 2.0.0
 ---
 
-# Get-AzDevCenterUserDevBoxAction
+# Get-AzDevCenterUserEnvironmentAction
 
 ## SYNOPSIS
-Gets an action.
+Retrieve a specific environment action.
 
 ## SYNTAX
 
 ### List (Default)
 ```
-Get-AzDevCenterUserDevBoxAction -Endpoint <String> -DevBoxName <String> -ProjectName <String>
+Get-AzDevCenterUserEnvironmentAction -Endpoint <String> -EnvironmentName <String> -ProjectName <String>
  [-UserId <String>] [-DefaultProfile <PSObject>] [<CommonParameters>]
 ```
 
 ### Get
 ```
-Get-AzDevCenterUserDevBoxAction -Endpoint <String> -ActionName <String> -DevBoxName <String>
+Get-AzDevCenterUserEnvironmentAction -Endpoint <String> -ActionName <String> -EnvironmentName <String>
  -ProjectName <String> [-UserId <String>] [-DefaultProfile <PSObject>] [<CommonParameters>]
 ```
 
 ### GetByDevCenter
 ```
-Get-AzDevCenterUserDevBoxAction -DevCenter <String> -ActionName <String> -DevBoxName <String>
+Get-AzDevCenterUserEnvironmentAction -DevCenter <String> -ActionName <String> -EnvironmentName <String>
  -ProjectName <String> [-UserId <String>] [-DefaultProfile <PSObject>] [<CommonParameters>]
 ```
 
 ### GetViaIdentity
 ```
-Get-AzDevCenterUserDevBoxAction -Endpoint <String> -InputObject <IDevCenterdataIdentity>
+Get-AzDevCenterUserEnvironmentAction -Endpoint <String> -InputObject <IDevCenterdataIdentity>
  [-DefaultProfile <PSObject>] [<CommonParameters>]
 ```
 
 ### GetViaIdentityByDevCenter
 ```
-Get-AzDevCenterUserDevBoxAction -DevCenter <String> -InputObject <IDevCenterdataIdentity>
+Get-AzDevCenterUserEnvironmentAction -DevCenter <String> -InputObject <IDevCenterdataIdentity>
  [-DefaultProfile <PSObject>] [<CommonParameters>]
 ```
 
 ### ListByDevCenter
 ```
-Get-AzDevCenterUserDevBoxAction -DevCenter <String> -DevBoxName <String> -ProjectName <String>
+Get-AzDevCenterUserEnvironmentAction -DevCenter <String> -EnvironmentName <String> -ProjectName <String>
  [-UserId <String>] [-DefaultProfile <PSObject>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-Gets an action.
+Retrieve a specific environment action.
 
 ## EXAMPLES
 
-### Example 1: List actions on the dev box by endpoint
+### Example 1: List actions on the environment by endpoint
 ```powershell
-Get-AzDevCenterUserDevBoxAction -Endpoint "https://8a40af38-3b4c-4672-a6a4-5e964b1870ed-contosodevcenter.centralus.devcenter.azure.com/" -DevBoxName myDevBox -ProjectName DevProject
+Get-AzDevCenterUserEnvironmentAction -Endpoint "https://8a40af38-3b4c-4672-a6a4-5e964b1870ed-contosodevcenter.centralus.devcenter.azure.com/" -EnvironmentName myEnvironment -ProjectName DevProject
 ```
 
-This command lists the actions on the dev box "myDevBox".
+This command lists the actions on the environment "myEnvironment".
 
-### Example 2: List actions on the dev box by dev center
+### Example 2: List actions on the environment by dev center
 ```powershell
-Get-AzDevCenterUserDevBoxAction -DevCenter Contoso -DevBoxName myDevBox -ProjectName DevProject
+Get-AzDevCenterUserEnvironmentAction -DevCenter Contoso -EnvironmentName myEnvironment -ProjectName DevProject
 ```
 
-This command lists the actions on the dev box "myDevBox".
+This command lists the actions on the environment "myEnvironment".
 
-### Example 3: Get an action on the dev box by endpoint
+### Example 3: Get an action on the environment by endpoint
 ```powershell
-Get-AzDevCenterUserDevBoxAction -Endpoint "https://8a40af38-3b4c-4672-a6a4-5e964b1870ed-contosodevcenter.centralus.devcenter.azure.com/" -DevBoxName myDevBox -ProjectName DevProject -ActionName "schedule-default"
+Get-AzDevCenterUserEnvironmentAction -Endpoint "https://8a40af38-3b4c-4672-a6a4-5e964b1870ed-contosodevcenter.centralus.devcenter.azure.com/" -EnvironmentName myEnvironment -ProjectName DevProject -ActionName "schedule-default"
 ```
 
-This command gets the action "schedule-default" for the dev box "myDevBox".
+This command gets the action "schedule-default" for the environment "myEnvironment".
 
-### Example 4: Get an action on the dev box by dev center
+### Example 4: Get an action on the environment by dev center
 ```powershell
-Get-AzDevCenterUserDevBoxAction -DevCenter Contoso -DevBoxName myDevBox -ProjectName DevProject -ActionName "schedule-default"
+Get-AzDevCenterUserEnvironmentAction -DevCenter Contoso -EnvironmentName myEnvironment -ProjectName DevProject -ActionName "schedule-default"
 ```
 
-This command gets the action "schedule-default" for the dev box "myDevBox".
+This command gets the action "schedule-default" for the environment "myEnvironment".
 
-### Example 5: Get an action on the dev box by endpoint and InputObject
+### Example 5: Get an action on the environment by endpoint and InputObject
 ```powershell
-$devBoxInput = @{"DevBoxName" = "myDevBox"; "UserId" = "me"; "ProjectName" = "DevProject"; "ActionName" = "schedule-default"}
-Get-AzDevCenterUserDevBoxAction -Endpoint "https://8a40af38-3b4c-4672-a6a4-5e964b1870ed-contosodevcenter.centralus.devcenter.azure.com/" -InputObject $devBoxInput
+$environmentInput = @{"EnvironmentName" = "myEnvironment"; "UserId" = "me"; "ProjectName" = "DevProject"; "ActionName" = "schedule-default"}
+Get-AzDevCenterUserEnvironmentAction -Endpoint "https://8a40af38-3b4c-4672-a6a4-5e964b1870ed-contosodevcenter.centralus.devcenter.azure.com/" -InputObject $environmentInput
 ```
 
-This command gets the action "schedule-default" for the dev box "myDevBox".
+This command gets the action "schedule-default" for the environment "myEnvironment".
 
-### Example 6: Get an action on the dev box by dev center and InputObject
+### Example 6: Get an action on the environment by dev center and InputObject
 ```powershell
-$devBoxInput = @{"DevBoxName" = "myDevBox"; "UserId" = "me"; "ProjectName" = "DevProject"; "ActionName" = "schedule-default"}
-Get-AzDevCenterUserDevBoxAction -DevCenter Contoso -InputObject $devBoxInput
+$environmentInput = @{"EnvironmentName" = "myEnvironment"; "UserId" = "me"; "ProjectName" = "DevProject"; "ActionName" = "schedule-default"}
+Get-AzDevCenterUserEnvironmentAction -DevCenter Contoso -InputObject $environmentInput
 ```
 
-This command gets the action "schedule-default" for the dev box "myDevBox".
+This command gets the action "schedule-default" for the environment "myEnvironment".
 
 ## PARAMETERS
 
 ### -ActionName
-The name of an action that will take place on a Dev Box.
+The name of an action that will take place on an Environment.
 
 ```yaml
 Type: System.String
@@ -130,21 +130,6 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -DevBoxName
-The name of a Dev Box.
-
-```yaml
-Type: System.String
-Parameter Sets: Get, GetByDevCenter, List, ListByDevCenter
-Aliases:
-
-Required: True
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
 ### -DevCenter
 The DevCenter upon which to execute operations.
 
@@ -166,6 +151,21 @@ The DevCenter-specific URI to operate on.
 ```yaml
 Type: System.String
 Parameter Sets: Get, GetViaIdentity, List
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -EnvironmentName
+The name of the environment.
+
+```yaml
+Type: System.String
+Parameter Sets: Get, GetByDevCenter, List, ListByDevCenter
 Aliases:
 
 Required: True
@@ -231,7 +231,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Models.Api20231001Preview.IDevBoxAction
+### Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Models.Api20231001Preview.IEnvironmentAction
 
 ## NOTES
 
