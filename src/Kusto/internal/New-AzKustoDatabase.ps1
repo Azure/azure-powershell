@@ -23,9 +23,9 @@ Creates or updates a database.
 New-AzKustoDatabase -ResourceGroupName testrg -ClusterName testnewkustocluster -Name mykustodatabase -Kind ReadWrite -Location 'East US'
 
 .Inputs
-Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api20221229.IDatabase
+Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api20230815.IDatabase
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api20221229.IDatabase
+Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api20230815.IDatabase
 .Notes
 COMPLEX PARAMETER PROPERTIES
 
@@ -33,13 +33,12 @@ To create the parameters described below, construct a hash table containing the 
 
 PARAMETER <IDatabase>: Class representing a Kusto database.
   Kind <Kind>: Kind of the database
-  [AzureAsyncOperation <String>]: 
   [Location <String>]: Resource location.
 .Link
 https://learn.microsoft.com/powershell/module/az.kusto/new-azkustodatabase
 #>
 function New-AzKustoDatabase {
-[OutputType([Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api20221229.IDatabase])]
+[OutputType([Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api20230815.IDatabase])]
 [CmdletBinding(DefaultParameterSetName='CreateExpanded', PositionalBinding=$false, SupportsShouldProcess, ConfirmImpact='Medium')]
 param(
     [Parameter(Mandatory)]
@@ -58,15 +57,15 @@ param(
     [Parameter(Mandatory)]
     [Microsoft.Azure.PowerShell.Cmdlets.Kusto.Category('Path')]
     [System.String]
-    # The name of the resource group containing the Kusto cluster.
+    # The name of the resource group.
+    # The name is case insensitive.
     ${ResourceGroupName},
 
     [Parameter()]
     [Microsoft.Azure.PowerShell.Cmdlets.Kusto.Category('Path')]
     [Microsoft.Azure.PowerShell.Cmdlets.Kusto.Runtime.DefaultInfo(Script='(Get-AzContext).Subscription.Id')]
     [System.String]
-    # Gets subscription credentials which uniquely identify Microsoft Azure subscription.
-    # The subscription ID forms part of the URI for every service call.
+    # The ID of the target subscription.
     ${SubscriptionId},
 
     [Parameter()]
@@ -79,7 +78,7 @@ param(
 
     [Parameter(ParameterSetName='Create', Mandatory, ValueFromPipeline)]
     [Microsoft.Azure.PowerShell.Cmdlets.Kusto.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api20221229.IDatabase]
+    [Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api20230815.IDatabase]
     # Class representing a Kusto database.
     # To construct, see NOTES section for PARAMETER properties and create a hash table.
     ${Parameter},

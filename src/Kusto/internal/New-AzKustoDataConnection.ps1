@@ -27,9 +27,9 @@ New-AzKustoDataConnection -ResourceGroupName "testrg" -ClusterName "testnewkusto
 New-AzKustoDataConnection -ResourceGroupName "testrg" -ClusterName "testnewkustocluster" -DatabaseName "mykustodatabase" -DataConnectionName "myiothubdc" -Location "East US" -Kind "IotHub" -IotHubResourceId "/subscriptions/$subscriptionId/resourcegroups/testrg/providers/Microsoft.Devices/IotHubs/myiothub" -SharedAccessPolicyName "myiothubpolicy" -DataFormat "JSON" -ConsumerGroup '$Default' -TableName "Events" -MappingRuleName "EventsMapping"
 
 .Inputs
-Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api20221229.IDataConnection
+Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api20230815.IDataConnection
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api20221229.IDataConnection
+Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api20230815.IDataConnection
 .Notes
 COMPLEX PARAMETER PROPERTIES
 
@@ -37,13 +37,12 @@ To create the parameters described below, construct a hash table containing the 
 
 PARAMETER <IDataConnection>: Class representing an data connection.
   Kind <DataConnectionKind>: Kind of the endpoint for the data connection
-  [AzureAsyncOperation <String>]: 
   [Location <String>]: Resource location.
 .Link
 https://learn.microsoft.com/powershell/module/az.kusto/new-azkustodataconnection
 #>
 function New-AzKustoDataConnection {
-[OutputType([Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api20221229.IDataConnection])]
+[OutputType([Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api20230815.IDataConnection])]
 [CmdletBinding(DefaultParameterSetName='CreateExpanded', PositionalBinding=$false, SupportsShouldProcess, ConfirmImpact='Medium')]
 param(
     [Parameter(Mandatory)]
@@ -68,20 +67,20 @@ param(
     [Parameter(Mandatory)]
     [Microsoft.Azure.PowerShell.Cmdlets.Kusto.Category('Path')]
     [System.String]
-    # The name of the resource group containing the Kusto cluster.
+    # The name of the resource group.
+    # The name is case insensitive.
     ${ResourceGroupName},
 
     [Parameter()]
     [Microsoft.Azure.PowerShell.Cmdlets.Kusto.Category('Path')]
     [Microsoft.Azure.PowerShell.Cmdlets.Kusto.Runtime.DefaultInfo(Script='(Get-AzContext).Subscription.Id')]
     [System.String]
-    # Gets subscription credentials which uniquely identify Microsoft Azure subscription.
-    # The subscription ID forms part of the URI for every service call.
+    # The ID of the target subscription.
     ${SubscriptionId},
 
     [Parameter(ParameterSetName='Create', Mandatory, ValueFromPipeline)]
     [Microsoft.Azure.PowerShell.Cmdlets.Kusto.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api20221229.IDataConnection]
+    [Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api20230815.IDataConnection]
     # Class representing an data connection.
     # To construct, see NOTES section for PARAMETER properties and create a hash table.
     ${Parameter},
