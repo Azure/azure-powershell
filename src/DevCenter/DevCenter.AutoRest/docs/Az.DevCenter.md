@@ -20,20 +20,8 @@ Gets an attached NetworkConnection.
 ### [Get-AzDevCenterAdminCatalog](Get-AzDevCenterAdminCatalog.md)
 Gets a catalog
 
-### [Get-AzDevCenterAdminCatalogDevBoxDefinition](Get-AzDevCenterAdminCatalogDevBoxDefinition.md)
-Gets a Dev Box definition from the catalog
-
-### [Get-AzDevCenterAdminCatalogDevBoxDefinitionErrorDetail](Get-AzDevCenterAdminCatalogDevBoxDefinitionErrorDetail.md)
-Gets Catalog Devbox Definition error details
-
 ### [Get-AzDevCenterAdminCatalogSyncErrorDetail](Get-AzDevCenterAdminCatalogSyncErrorDetail.md)
 Gets catalog synchronization error details
-
-### [Get-AzDevCenterAdminCustomizationTask](Get-AzDevCenterAdminCustomizationTask.md)
-Gets a Task from the catalog
-
-### [Get-AzDevCenterAdminCustomizationTaskErrorDetail](Get-AzDevCenterAdminCustomizationTaskErrorDetail.md)
-Gets Customization Task error details
 
 ### [Get-AzDevCenterAdminDevBoxDefinition](Get-AzDevCenterAdminDevBoxDefinition.md)
 Gets a Dev Box definition

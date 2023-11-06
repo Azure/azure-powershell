@@ -102,42 +102,43 @@ param(
     # To construct, see NOTES section for INPUTOBJECT properties and create a hash table.
     ${InputObject},
 
-    [Parameter(ParameterSetName='CreateExpanded', Mandatory)]
-    [Parameter(ParameterSetName='CreateViaIdentityExpanded', Mandatory)]
+    [Parameter(Mandatory)]
     [Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Category('Body')]
     [System.String]
     # The geo-location where the resource lives
     ${Location},
 
-    [Parameter(ParameterSetName='CreateExpanded')]
-    [Parameter(ParameterSetName='CreateViaIdentityExpanded')]
+    [Parameter()]
     [Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Category('Body')]
     [System.String]
     # Description of the project.
     ${Description},
 
-    [Parameter(ParameterSetName='CreateExpanded', Mandatory)]
-    [Parameter(ParameterSetName='CreateViaIdentityExpanded', Mandatory)]
+    [Parameter(Mandatory)]
     [Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Category('Body')]
     [System.String]
     # Resource Id of an associated DevCenter
     ${DevCenterId},
 
-    [Parameter(ParameterSetName='CreateExpanded')]
-    [Parameter(ParameterSetName='CreateViaIdentityExpanded')]
+    [Parameter()]
     [Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Category('Body')]
     [System.Int32]
     # When specified, limits the maximum number of Dev Boxes a single user can create across all pools in the project.
     # This will have no effect on existing Dev Boxes when reduced.
     ${MaxDevBoxesPerUser},
 
-    [Parameter(ParameterSetName='CreateExpanded')]
-    [Parameter(ParameterSetName='CreateViaIdentityExpanded')]
+    [Parameter()]
     [Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Category('Body')]
     [Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Runtime.Info(PossibleTypes=([Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Models.Api30.ITrackedResourceTags]))]
     [System.Collections.Hashtable]
     # Resource tags.
     ${Tag},
+
+    [Parameter()]
+    [Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Category('Body')]
+    [System.String]
+    # The display name of the project.
+    ${DisplayName},
 
     [Parameter()]
     [Alias('AzureRMContext', 'AzureCredential')]

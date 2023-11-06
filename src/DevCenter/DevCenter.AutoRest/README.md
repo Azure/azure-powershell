@@ -113,6 +113,14 @@ directive:
       default:
         script: '"Windows_Client"'
   - where:
+      subject: Pool
+      parameter-name: StopOnDisconnectGracePeriodMinute
+    hide: true
+  - where:
+      subject: Pool
+      parameter-name: StopOnDisconnectStatus
+    hide: true
+  - where:
       subject: DevCenter
       parameter-name: CustomerManagedKeyEncryptionKeyUrl
     hide: true
@@ -184,6 +192,9 @@ directive:
   - where:
       verb: New
       subject: ^AttachedNetwork$|^Catalog$|^DevBoxDefinition$|^Gallery$|^NetworkConnection$|^Pool$|^Project$|^ProjectEnvironmentType$
+    hide: true
+  - where:
+      subject: ^CatalogDevBoxDefinition$|^CatalogDevBoxDefinitionErrorDetail$|^CustomizationTask|^CustomizationTaskErrorDetail$
     hide: true
   - where:
       subject: OperationStatuses

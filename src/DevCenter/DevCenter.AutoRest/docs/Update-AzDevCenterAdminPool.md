@@ -17,20 +17,18 @@ Partially updates a machine pool
 Update-AzDevCenterAdminPool -Name <String> -ProjectName <String> -ResourceGroupName <String>
  [-SubscriptionId <String>] [-DevBoxDefinitionName <String>] [-DisplayName <String>]
  [-LocalAdministrator <LocalAdminStatus>] [-ManagedVirtualNetworkRegion <String[]>]
- [-NetworkConnectionName <String>] [-SingleSignOnStatus <SingleSignOnStatus>]
- [-StopOnDisconnectGracePeriodMinute <Int32>] [-StopOnDisconnectStatus <StopOnDisconnectEnableStatus>]
- [-Tag <Hashtable>] [-VirtualNetworkType <VirtualNetworkType>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
- [-Confirm] [-WhatIf] [<CommonParameters>]
+ [-NetworkConnectionName <String>] [-SingleSignOnStatus <SingleSignOnStatus>] [-Tag <Hashtable>]
+ [-VirtualNetworkType <VirtualNetworkType>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm]
+ [-WhatIf] [<CommonParameters>]
 ```
 
 ### UpdateViaIdentityExpanded
 ```
 Update-AzDevCenterAdminPool -InputObject <IDevCenterIdentity> [-DevBoxDefinitionName <String>]
  [-DisplayName <String>] [-LocalAdministrator <LocalAdminStatus>] [-ManagedVirtualNetworkRegion <String[]>]
- [-NetworkConnectionName <String>] [-SingleSignOnStatus <SingleSignOnStatus>]
- [-StopOnDisconnectGracePeriodMinute <Int32>] [-StopOnDisconnectStatus <StopOnDisconnectEnableStatus>]
- [-Tag <Hashtable>] [-VirtualNetworkType <VirtualNetworkType>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
- [-Confirm] [-WhatIf] [<CommonParameters>]
+ [-NetworkConnectionName <String>] [-SingleSignOnStatus <SingleSignOnStatus>] [-Tag <Hashtable>]
+ [-VirtualNetworkType <VirtualNetworkType>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm]
+ [-WhatIf] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -255,36 +253,6 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -StopOnDisconnectGracePeriodMinute
-The specified time in minutes to wait before stopping a Dev Box once disconnect is detected.
-
-```yaml
-Type: System.Int32
-Parameter Sets: (All)
-Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -StopOnDisconnectStatus
-Whether the feature to stop the Dev Box on disconnect once the grace period has lapsed is enabled.
-
-```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Support.StopOnDisconnectEnableStatus
-Parameter Sets: (All)
-Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
 ### -SubscriptionId
 The ID of the target subscription.
 
@@ -373,34 +341,6 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ### Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Models.Api20231001Preview.IPool
 
 ## NOTES
-
-ALIASES
-
-COMPLEX PARAMETER PROPERTIES
-
-To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
-
-
-`INPUTOBJECT <IDevCenterIdentity>`: Identity Parameter
-  - `[AttachedNetworkConnectionName <String>]`: The name of the attached NetworkConnection.
-  - `[CatalogName <String>]`: The name of the Catalog.
-  - `[DevBoxDefinitionName <String>]`: The name of the Dev Box definition.
-  - `[DevCenterName <String>]`: The name of the devcenter.
-  - `[EnvironmentDefinitionName <String>]`: The name of the Environment Definition.
-  - `[EnvironmentTypeName <String>]`: The name of the environment type.
-  - `[GalleryName <String>]`: The name of the gallery.
-  - `[Id <String>]`: Resource identity path
-  - `[ImageName <String>]`: The name of the image.
-  - `[Location <String>]`: The Azure region
-  - `[NetworkConnectionName <String>]`: Name of the Network Connection that can be applied to a Pool.
-  - `[OperationId <String>]`: The ID of an ongoing async operation
-  - `[PoolName <String>]`: Name of the pool.
-  - `[ProjectName <String>]`: The name of the project.
-  - `[ResourceGroupName <String>]`: The name of the resource group. The name is case insensitive.
-  - `[ScheduleName <String>]`: The name of the schedule that uniquely identifies it.
-  - `[SubscriptionId <String>]`: The ID of the target subscription.
-  - `[TaskName <String>]`: The name of the Task.
-  - `[VersionName <String>]`: The version of the image.
 
 ## RELATED LINKS
 

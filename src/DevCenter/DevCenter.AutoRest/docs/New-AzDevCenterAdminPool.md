@@ -16,15 +16,19 @@ Creates or updates a machine pool
 ```
 New-AzDevCenterAdminPool -Name <String> -ProjectName <String> -ResourceGroupName <String>
  -DevBoxDefinitionName <String> -LocalAdministrator <LocalAdminStatus> -Location <String>
- -NetworkConnectionName <String> [-SubscriptionId <String>] [-Tag <Hashtable>] [-DefaultProfile <PSObject>]
- [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
+ -NetworkConnectionName <String> [-SubscriptionId <String>] [-DisplayName <String>]
+ [-ManagedVirtualNetworkRegion <String[]>] [-SingleSignOnStatus <SingleSignOnStatus>] [-Tag <Hashtable>]
+ [-VirtualNetworkType <VirtualNetworkType>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm]
+ [-WhatIf] [<CommonParameters>]
 ```
 
 ### CreateViaIdentityExpanded
 ```
 New-AzDevCenterAdminPool -InputObject <IDevCenterIdentity> -DevBoxDefinitionName <String>
- -LocalAdministrator <LocalAdminStatus> -Location <String> -NetworkConnectionName <String> [-Tag <Hashtable>]
- [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
+ -LocalAdministrator <LocalAdminStatus> -Location <String> -NetworkConnectionName <String>
+ [-DisplayName <String>] [-ManagedVirtualNetworkRegion <String[]>] [-SingleSignOnStatus <SingleSignOnStatus>]
+ [-Tag <Hashtable>] [-VirtualNetworkType <VirtualNetworkType>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
+ [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -95,6 +99,21 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### -DisplayName
+The display name of the pool.
+
+```yaml
+Type: System.String
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
 ### -InputObject
 Identity Parameter
 To construct, see NOTES section for INPUTOBJECT properties and create a hash table.
@@ -135,6 +154,21 @@ Parameter Sets: (All)
 Aliases:
 
 Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -ManagedVirtualNetworkRegion
+The regions of the managed virtual network (required when managedNetworkType is Managed).
+
+```yaml
+Type: System.String[]
+Parameter Sets: (All)
+Aliases:
+
+Required: False
 Position: Named
 Default value: None
 Accept pipeline input: False
@@ -217,6 +251,22 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### -SingleSignOnStatus
+Indicates whether Dev Boxes in this pool are created with single sign on enabled.
+The also requires that single sign on be enabled on the tenant.
+
+```yaml
+Type: Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Support.SingleSignOnStatus
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
 ### -SubscriptionId
 The ID of the target subscription.
 
@@ -237,6 +287,21 @@ Resource tags.
 
 ```yaml
 Type: System.Collections.Hashtable
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -VirtualNetworkType
+Indicates whether the pool uses a Virtual Network managed by Microsoft or a customer provided network.
+
+```yaml
+Type: Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Support.VirtualNetworkType
 Parameter Sets: (All)
 Aliases:
 
@@ -290,34 +355,6 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ### Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Models.Api20231001Preview.IPool
 
 ## NOTES
-
-ALIASES
-
-COMPLEX PARAMETER PROPERTIES
-
-To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
-
-
-`INPUTOBJECT <IDevCenterIdentity>`: Identity Parameter
-  - `[AttachedNetworkConnectionName <String>]`: The name of the attached NetworkConnection.
-  - `[CatalogName <String>]`: The name of the Catalog.
-  - `[DevBoxDefinitionName <String>]`: The name of the Dev Box definition.
-  - `[DevCenterName <String>]`: The name of the devcenter.
-  - `[EnvironmentDefinitionName <String>]`: The name of the Environment Definition.
-  - `[EnvironmentTypeName <String>]`: The name of the environment type.
-  - `[GalleryName <String>]`: The name of the gallery.
-  - `[Id <String>]`: Resource identity path
-  - `[ImageName <String>]`: The name of the image.
-  - `[Location <String>]`: The Azure region
-  - `[NetworkConnectionName <String>]`: Name of the Network Connection that can be applied to a Pool.
-  - `[OperationId <String>]`: The ID of an ongoing async operation
-  - `[PoolName <String>]`: Name of the pool.
-  - `[ProjectName <String>]`: The name of the project.
-  - `[ResourceGroupName <String>]`: The name of the resource group. The name is case insensitive.
-  - `[ScheduleName <String>]`: The name of the schedule that uniquely identifies it.
-  - `[SubscriptionId <String>]`: The ID of the target subscription.
-  - `[TaskName <String>]`: The name of the Task.
-  - `[VersionName <String>]`: The version of the image.
 
 ## RELATED LINKS
 
