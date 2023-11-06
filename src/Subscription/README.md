@@ -249,6 +249,12 @@ directive:
       parameter-name: SubscriptionId
     required: true
 
+  # Updated Parameter type of SubscriptionId from string[] to string.
+  - where:
+      verb: Get
+      subject: AcceptOwnershipStatus
+    hide: true
+
   - where:
       model-name: SubscriptionAliasResponse
     set:
