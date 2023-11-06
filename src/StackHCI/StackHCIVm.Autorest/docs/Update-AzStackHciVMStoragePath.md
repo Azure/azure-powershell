@@ -1,6 +1,6 @@
 ---
 external help file:
-Module Name: Az.StackHciVM
+Module Name: Az.StackHCIVm
 online version: https://learn.microsoft.com/powershell/module/az.stackhcivm/update-azstackhcivmstoragepath
 schema: 2.0.0
 ---
@@ -12,7 +12,12 @@ The operation to update a storage container.
 
 ## SYNTAX
 
-### UpdateExpanded (Default)
+### ByResourceId (Default)
+```
+Update-AzStackHCIVmStoragePath [-ResourceId <String>] [-Tags <Hashtable>] [<CommonParameters>]
+```
+
+### UpdateExpanded
 ```
 Update-AzStackHCIVmStoragePath -Name <String> -ResourceGroupName <String> [-SubscriptionId <String>]
  [-Tags <Hashtable>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
@@ -49,7 +54,7 @@ Run the command as a job
 
 ```yaml
 Type: System.Management.Automation.SwitchParameter
-Parameter Sets: (All)
+Parameter Sets: UpdateExpanded, UpdateViaIdentityExpanded
 Aliases:
 
 Required: False
@@ -64,7 +69,7 @@ The credentials, account, tenant, and subscription used for communication with A
 
 ```yaml
 Type: System.Management.Automation.PSObject
-Parameter Sets: (All)
+Parameter Sets: UpdateExpanded, UpdateViaIdentityExpanded
 Aliases: AzureRMContext, AzureCredential
 
 Required: False
@@ -79,7 +84,7 @@ Identity Parameter
 To construct, see NOTES section for INPUTOBJECT properties and create a hash table.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.StackHciVM.Models.IStackHciVMIdentity
+Type: Microsoft.Azure.PowerShell.Cmdlets.StackHCIVm.Models.IStackHciVMIdentity
 Parameter Sets: UpdateViaIdentityExpanded
 Aliases:
 
@@ -110,7 +115,7 @@ Run the command asynchronously
 
 ```yaml
 Type: System.Management.Automation.SwitchParameter
-Parameter Sets: (All)
+Parameter Sets: UpdateExpanded, UpdateViaIdentityExpanded
 Aliases:
 
 Required: False
@@ -130,6 +135,21 @@ Parameter Sets: UpdateExpanded
 Aliases:
 
 Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -ResourceId
+The ARM Resource ID of the storage path.
+
+```yaml
+Type: System.String
+Parameter Sets: ByResourceId
+Aliases:
+
+Required: False
 Position: Named
 Default value: None
 Accept pipeline input: False
@@ -202,11 +222,11 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.StackHciVM.Models.IStackHciVMIdentity
+### Microsoft.Azure.PowerShell.Cmdlets.StackHCIVm.Models.IStackHciVMIdentity
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.StackHciVM.Models.Api20230901Preview.IStorageContainers
+### Microsoft.Azure.PowerShell.Cmdlets.StackHCIVm.Models.Api20230901Preview.IStorageContainers
 
 ## NOTES
 

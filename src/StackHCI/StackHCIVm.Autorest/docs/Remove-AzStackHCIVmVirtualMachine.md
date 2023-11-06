@@ -1,7 +1,7 @@
 ---
 external help file:
-Module Name: Az.StackHciVM
-online version: https://learn.microsoft.com/powershell/module/az.stackhcivm/remove-azstackhcivmvirtualmachine
+Module Name: Az.StackHCIVm
+online version: https://learn.microsoft.com/powershell/module/az.stackhci/remove-azstackhcivmvirtualmachine
 schema: 2.0.0
 ---
 
@@ -60,7 +60,7 @@ Identity Parameter
 To construct, see NOTES section for INPUTOBJECT properties and create a hash table.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.StackHciVM.Models.IStackHciVMIdentity
+Type: Microsoft.Azure.PowerShell.Cmdlets.StackHCIVm.Models.IStackHciVMIdentity
 Parameter Sets: (All)
 Aliases:
 
@@ -168,7 +168,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.StackHCIVm.Models.IStackHciVMIdentity
+### Microsoft.Azure.PowerShell.Cmdlets.StackHCIVm.Models.IStackHCIVmIdentity
 
 ## OUTPUTS
 

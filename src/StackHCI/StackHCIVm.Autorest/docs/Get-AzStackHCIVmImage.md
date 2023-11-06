@@ -1,7 +1,7 @@
 ---
 external help file:
-Module Name: Az.StackHciVM
-online version:   https://learn.microsoft.com/powershell/module/az.stackhci/get-azstackhcivmimage
+Module Name: Az.StackHCIVm
+online version: https://learn.microsoft.com/powershell/module/az.stackhci/get-azstackhcivmimage
 schema: 2.0.0
 ---
 

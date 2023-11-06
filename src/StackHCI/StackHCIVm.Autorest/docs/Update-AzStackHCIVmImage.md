@@ -1,7 +1,7 @@
 ---
 external help file:
-Module Name: Az.StackHciVM
-online version: https://learn.microsoft.com/powershell/module/az.stackhcivm/new-azstackhcivmimage
+Module Name: Az.StackHCIVm
+online version: https://learn.microsoft.com/powershell/module/az.stackhci/update-azstackhcivmimage
 schema: 2.0.0
 ---
 
@@ -128,9 +128,9 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.StackHciVM.Models.Api20230901Preview.IGalleryImages
+### Microsoft.Azure.PowerShell.Cmdlets.StackHCIVm.Models.Api20230901Preview.IGalleryImages
 
-### Microsoft.Azure.PowerShell.Cmdlets.StackHciVM.Models.Api20230901Preview.IMarketplaceGalleryImages
+### Microsoft.Azure.PowerShell.Cmdlets.StackHCIVm.Models.Api20230901Preview.IMarketplaceGalleryImages
 
 ## NOTES
 

@@ -12,7 +12,7 @@ This command gets a specific logical network in the specified resource group.
 
 ### Example 2: List all Logical Networks in a Resource Group  
 ```powershell
-PS C:\> Get-AzStackHCIVmLogicalNetwork -ResourceGroupName 'test-rg'
+PS C:\> Get-AzStackHCIVmLogicalNetworks -ResourceGroupName 'test-rg'
 ```
 ```output
 Name            ResourceGroupName

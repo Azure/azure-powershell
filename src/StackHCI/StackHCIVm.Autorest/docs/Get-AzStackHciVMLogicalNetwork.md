@@ -1,6 +1,6 @@
 ---
 external help file:
-Module Name: Az.StackHciVM
+Module Name: Az.StackHCIVm
 online version: https://learn.microsoft.com/powershell/module/az.stackhcivm/get-azstackhcivmlogicalnetwork
 schema: 2.0.0
 ---
@@ -8,18 +8,13 @@ schema: 2.0.0
 # Get-AzStackHCIVmLogicalNetwork
 
 ## SYNOPSIS
-The operation to get a logical network. 
+Gets a logical network.
 
 ## SYNTAX
 
 ### List1 (Default)
 ```
 Get-AzStackHCIVmLogicalNetwork [-SubscriptionId <String[]>] [-DefaultProfile <PSObject>] [<CommonParameters>]
-```
-
-### ByResourceId
-```
-Get-AzStackHCIVmLogicalNetwork [-ResourceId <String>] [<CommonParameters>]
 ```
 
 ### Get
@@ -35,27 +30,35 @@ Get-AzStackHCIVmLogicalNetwork -ResourceGroupName <String> [-SubscriptionId <Str
 ```
 
 ## DESCRIPTION
-The operation to get a logical network. 
+Gets a logical network.
+
 
 ## EXAMPLES
 
-### Example 1: {{ Add title here }}
+### Example 1:  Get a Logical Network
 ```powershell
-PS C:\> {{ Add code here }}
-
-{{ Add output here }}
+PS C:\> Get-AzStackHCIVmLogicalNetwork -Name "testLnet" -ResourceGroupName "test-rg" 
 ```
 
-{{ Add description here }}
-
-### Example 2: {{ Add title here }}
-```powershell
-PS C:\> {{ Add code here }}
-
-{{ Add output here }}
+```output
+Name            ResourceGroupName
+----            -----------------
+testLnet       test-rg
 ```
 
-{{ Add description here }}
+This command gets a specific logical network in the specified resource group.
+
+### Example 2: List all Logical Networks in a Resource Group  
+```powershell
+PS C:\> Get-AzStackHCIVmLogicalNetworks -ResourceGroupName 'test-rg'
+```
+
+```output
+Name            ResourceGroupName
+----            -----------------
+testLnet       test-rg
+```
+This command lists all logical networks in the specified resource group.
 
 ## PARAMETERS
 
@@ -64,7 +67,7 @@ The credentials, account, tenant, and subscription used for communication with A
 
 ```yaml
 Type: System.Management.Automation.PSObject
-Parameter Sets: Get, List, List1
+Parameter Sets: (All)
 Aliases: AzureRMContext, AzureCredential
 
 Required: False
@@ -105,27 +108,12 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -ResourceId
-The ARM ID of the logical network.
-
-```yaml
-Type: System.String
-Parameter Sets: ByResourceId
-Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
 ### -SubscriptionId
 The ID of the target subscription.
 
 ```yaml
 Type: System.String[]
-Parameter Sets: Get, List, List1
+Parameter Sets: (All)
 Aliases:
 
 Required: False
@@ -142,7 +130,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.StackHciVM.Models.Api20230901Preview.ILogicalNetworks
+### Microsoft.Azure.PowerShell.Cmdlets.StackHCIVm.Models.Api20230901Preview.ILogicalNetworks
 
 ## NOTES
 

@@ -1,7 +1,7 @@
 ---
 external help file:
-Module Name: Az.StackHciVM
-online version: https://learn.microsoft.com/powershell/module/az.stackhcivm/remove-azstackhcivmnetworkinterface
+Module Name: Az.StackHCIVm
+online version: https://learn.microsoft.com/powershell/module/az.stackhci/remove-azstackhcivmnetworkinterface
 schema: 2.0.0
 ---
 
@@ -150,7 +150,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.StackHCIVm.Models.IStackHciVMIdentity
+### Microsoft.Azure.PowerShell.Cmdlets.StackHCIVm.Models.IStackHCIVmIdentity
 
 ## OUTPUTS
 

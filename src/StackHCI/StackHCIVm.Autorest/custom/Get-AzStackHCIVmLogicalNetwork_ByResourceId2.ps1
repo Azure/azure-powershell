@@ -18,12 +18,21 @@
 Gets a logical network
 .Description
 Gets a logical network
+.Example
+PS C:\> {{ Add code here }}
+
+{{ Add output here }}
+.Example
+PS C:\> {{ Add code here }}
+
+{{ Add output here }}
+
 
 .Outputs
 Microsoft.Azure.PowerShell.Cmdlets.StackHCIVm.Models.Api20230901Preview.ILogicalNetworks
 
 .Link
-https://learn.microsoft.com/powershell/module/az.stackhcivm/get-azstackhcivmlogicalnetwork
+https://learn.microsoft.com/powershell/module/az.stackhci/get-azstackhcivmlogicalnetwork
 #>
 function Get-AzStackHciVMLogicalNetwork_ByResourceId {
     [OutputType([Microsoft.Azure.PowerShell.Cmdlets.StackHciVM.Models.Api20230901Preview.ILogicalNetworks])]

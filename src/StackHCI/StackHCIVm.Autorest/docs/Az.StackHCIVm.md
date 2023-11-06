@@ -1,16 +1,16 @@
 ---
-Module Name: Az.StackHciVM
+Module Name: Az.StackHCIVm
 Module Guid: 7389f67c-ec9d-4c13-9c9a-308834413af6
 Download Help Link: https://learn.microsoft.com/powershell/module/az.stackhcivm
 Help Version: 1.0.0.0
 Locale: en-US
 ---
 
-# Az.StackHciVM Module
+# Az.StackHCIVm Module
 ## Description
 Microsoft Azure PowerShell: StackHciVM cmdlets
 
-## Az.StackHciVM Cmdlets
+## Az.StackHCIVm Cmdlets
 ### [Add-AzStackHCIVmVirtualMachineDataDisk](Add-AzStackHCIVmVirtualMachineDataDisk.md)
 The operation to add a data disk to a virtual machine.
 
@@ -19,6 +19,9 @@ The operation to add a network interface to a virtual machine.
 
 ### [Get-AzStackHCIVmImage](Get-AzStackHCIVmImage.md)
 Gets a gallery image
+
+### [Get-AzStackHciVMLogicalNetwork](Get-AzStackHciVMLogicalNetwork.md)
+Gets a logical network
 
 ### [Get-AzStackHCIVmLogicalNetwork](Get-AzStackHCIVmLogicalNetwork.md)
 
@@ -96,26 +99,14 @@ The operation to stop a virtual machine instance.
 The operation to update an image.
 Please note some properties can be set only during image creation.
 
-### [Update-AzStackHciVMLogicalNetwork](Update-AzStackHciVMLogicalNetwork.md)
-The operation to update a logical network.
-
 ### [Update-AzStackHCIVmLogicalNetwork](Update-AzStackHCIVmLogicalNetwork.md)
 The operation to update a logical network.
-
-### [Update-AzStackHciVMNetworkInterface](Update-AzStackHciVMNetworkInterface.md)
-The operation to update a network interface.
 
 ### [Update-AzStackHCIVmNetworkInterface](Update-AzStackHCIVmNetworkInterface.md)
 The operation to update a network interface.
 
-### [Update-AzStackHciVMStoragePath](Update-AzStackHciVMStoragePath.md)
-The operation to update a storage path.
-
 ### [Update-AzStackHCIVmStoragePath](Update-AzStackHCIVmStoragePath.md)
 The operation to update a storage container.
-
-### [Update-AzStackHciVMVirtualHardDisk](Update-AzStackHciVMVirtualHardDisk.md)
-The operation to update a virtual hard disk.
 
 ### [Update-AzStackHCIVmVirtualHardDisk](Update-AzStackHCIVmVirtualHardDisk.md)
 The operation to update a virtual hard disk.

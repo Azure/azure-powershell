@@ -1,7 +1,7 @@
 ---
 external help file:
-Module Name: Az.StackHciVM
-online version: https://learn.microsoft.com/powershell/module/az.StackHciVM/new-azStackHciVMvirtualharddisk
+Module Name: Az.StackHCIVm
+online version: https://learn.microsoft.com/powershell/module/az.stackhci/new-azstackhcivmvirtualharddisk
 schema: 2.0.0
 ---
 
@@ -75,7 +75,7 @@ Accept wildcard characters: False
 The format of the actual VHD file [vhd, vhdx]
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.StackHciVM.Support.DiskFileFormat
+Type: Microsoft.Azure.PowerShell.Cmdlets.StackHCIVm.Support.DiskFileFormat
 Parameter Sets: (All)
 Aliases:
 
@@ -105,7 +105,7 @@ Accept wildcard characters: False
 The hypervisor generation of the Virtual Machine [V1, V2]
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.StackHciVM.Support.HyperVGeneration
+Type: Microsoft.Azure.PowerShell.Cmdlets.StackHCIVm.Support.HyperVGeneration
 Parameter Sets: (All)
 Aliases:
 
@@ -324,7 +324,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.StackHciVM.Models.Api20230901Preview.IVirtualHardDisks
+### Microsoft.Azure.PowerShell.Cmdlets.StackHCIVm.Models.Api20230901Preview.IVirtualHardDisks
 
 ## NOTES
 

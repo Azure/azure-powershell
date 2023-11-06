@@ -1,6 +1,6 @@
 ---
 external help file:
-Module Name: Az.StackHciVM
+Module Name: Az.StackHCIVm
 online version: https://learn.microsoft.com/powershell/module/az.stackhcivm/get-azstackhcivmnetworkinterface
 schema: 2.0.0
 ---
@@ -40,23 +40,30 @@ Gets a network interface
 
 ## EXAMPLES
 
-### Example 1: {{ Add title here }}
+### Example 1:  Get a Network Interface
 ```powershell
-PS C:\> {{ Add code here }}
-
-{{ Add output here }}
+PS C:\> Get-AzStackHCIVmNetworkInterface -Name "testNic" -ResourceGroupName "test-rg" 
 ```
 
-{{ Add description here }}
-
-### Example 2: {{ Add title here }}
-```powershell
-PS C:\> {{ Add code here }}
-
-{{ Add output here }}
+```output
+Name            ResourceGroupName
+----            -----------------
+testNic       test-rg
 ```
 
-{{ Add description here }}
+This command gets a specific network interface in the specified resource group.
+
+### Example 2: List all Netowrk Interfaces in a Resource Group  
+```powershell
+PS C:\> Get-AzStackHCIVmNetworkInterface -ResourceGroupName 'test-rg'
+```
+
+```output
+Name            ResourceGroupName
+----            -----------------
+testNic       test-rg
+```
+This command lists all network interfaces in the specified resource group.
 
 ## PARAMETERS
 
@@ -143,7 +150,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.StackHciVM.Models.Api20230901Preview.INetworkInterfaces
+### Microsoft.Azure.PowerShell.Cmdlets.StackHCIVm.Models.Api20230901Preview.INetworkInterfaces
 
 ## NOTES
 

@@ -1,7 +1,7 @@
 ---
 external help file:
-Module Name: Az.StackHciVM
-online version: https://learn.microsoft.com/powershell/module/az.stackhcivm/new-azstackhcivmimage
+Module Name: Az.StackHCIVm
+online version: https://learn.microsoft.com/powershell/module/az.stackhci/new-azstackhcivmimage
 schema: 2.0.0
 ---
 
@@ -86,7 +86,7 @@ This command creates a marketplace gallery image using the specified urn.
 Datasource for the gallery image when provisioning with cloud-init [NoCloud, Azure]
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.StackHciVM.Support.CloudInitDataSource
+Type: Microsoft.Azure.PowerShell.Cmdlets.StackHCIVm.Support.CloudInitDataSource
 Parameter Sets: (All)
 Aliases:
 
@@ -180,7 +180,7 @@ Accept wildcard characters: False
 Operating system type that the gallery image uses [Windows, Linux]
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.StackHciVM.Support.OperatingSystemTypes
+Type: Microsoft.Azure.PowerShell.Cmdlets.StackHCIVm.Support.OperatingSystemTypes
 Parameter Sets: (All)
 Aliases:
 
@@ -381,9 +381,9 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.StackHciVM.Models.Api20230901Preview.IGalleryImages
+### Microsoft.Azure.PowerShell.Cmdlets.StackHCIVm.Models.Api20230901Preview.IGalleryImages
 
-### Microsoft.Azure.PowerShell.Cmdlets.StackHciVM.Models.Api20230901Preview.IMarketplaceGalleryImages
+### Microsoft.Azure.PowerShell.Cmdlets.StackHCIVm.Models.Api20230901Preview.IMarketplaceGalleryImages
 
 ## NOTES
 
