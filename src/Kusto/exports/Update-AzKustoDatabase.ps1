@@ -39,7 +39,7 @@ Update-AzKustoDatabase -InputObject $database -Kind ReadOnlyFollowing -HotCacheP
 .Inputs
 Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.IKustoIdentity
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api20221229.IDatabase
+Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api20230815.IDatabase
 .Notes
 COMPLEX PARAMETER PROPERTIES
 
@@ -51,20 +51,21 @@ INPUTOBJECT <IKustoIdentity>: Identity Parameter
   [DataConnectionName <String>]: The name of the data connection.
   [DatabaseName <String>]: The name of the database in the Kusto cluster.
   [Id <String>]: Resource identity path
-  [Location <String>]: Azure location (region) name.
+  [Location <String>]: The name of Azure region.
   [ManagedPrivateEndpointName <String>]: The name of the managed private endpoint.
-  [OperationId <String>]: The Guid of the operation ID
+  [OperationId <String>]: The ID of an ongoing async operation.
   [PrincipalAssignmentName <String>]: The name of the Kusto principalAssignment.
   [PrivateEndpointConnectionName <String>]: The name of the private endpoint connection.
   [PrivateLinkResourceName <String>]: The name of the private link resource.
-  [ResourceGroupName <String>]: The name of the resource group containing the Kusto cluster.
+  [ResourceGroupName <String>]: The name of the resource group. The name is case insensitive.
+  [SandboxCustomImageName <String>]: The name of the sandbox custom image.
   [ScriptName <String>]: The name of the Kusto database script.
-  [SubscriptionId <String>]: Gets subscription credentials which uniquely identify Microsoft Azure subscription. The subscription ID forms part of the URI for every service call.
+  [SubscriptionId <String>]: The ID of the target subscription.
 .Link
 https://learn.microsoft.com/powershell/module/az.kusto/update-azkustodatabase
 #>
 function Update-AzKustoDatabase {
-[OutputType([Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api20221229.IDatabase])]
+[OutputType([Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api20230815.IDatabase])]
 [CmdletBinding(DefaultParameterSetName='UpdateExpanded', PositionalBinding=$false, SupportsShouldProcess, ConfirmImpact='Medium')]
 param(
     [Parameter(ParameterSetName='UpdateExpanded', Mandatory)]
@@ -132,6 +133,30 @@ param(
     [System.TimeSpan]
     # The time the data should be kept before it stops being accessible to queries in TimeSpan.
     ${SoftDeletePeriod},
+
+    [Parameter()]
+    [Microsoft.Azure.PowerShell.Cmdlets.Kusto.Category('Body')]
+    [System.String]
+    # The name of the key vault key.
+    ${KeyVaultPropertyKeyName},
+
+    [Parameter()]
+    [Microsoft.Azure.PowerShell.Cmdlets.Kusto.Category('Body')]
+    [System.String]
+    # The Uri of the key vault.
+    ${KeyVaultPropertyKeyVaultUri},
+
+    [Parameter()]
+    [Microsoft.Azure.PowerShell.Cmdlets.Kusto.Category('Body')]
+    [System.String]
+    # The version of the key vault key.
+    ${KeyVaultPropertyKeyVersion},
+
+    [Parameter()]
+    [Microsoft.Azure.PowerShell.Cmdlets.Kusto.Category('Body')]
+    [System.String]
+    # The user assigned identity (ARM resource id) that has access to the key.
+    ${KeyVaultPropertyUserIdentity},
 
     [Parameter()]
     [Alias('AzureRMContext', 'AzureCredential')]
@@ -227,6 +252,10 @@ begin {
         }
         $cmdInfo = Get-Command -Name $mapping[$parameterSet]
         [Microsoft.Azure.PowerShell.Cmdlets.Kusto.Runtime.MessageAttributeHelper]::ProcessCustomAttributesAtRuntime($cmdInfo, $MyInvocation, $parameterSet, $PSCmdlet)
+        if ($null -ne $MyInvocation.MyCommand -and [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PromptedPreviewMessageCmdlets -notcontains $MyInvocation.MyCommand.Name -and [Microsoft.Azure.PowerShell.Cmdlets.Kusto.Runtime.MessageAttributeHelper]::ContainsPreviewAttribute($cmdInfo, $MyInvocation)){
+            [Microsoft.Azure.PowerShell.Cmdlets.Kusto.Runtime.MessageAttributeHelper]::ProcessPreviewMessageAttributesAtRuntime($cmdInfo, $MyInvocation, $parameterSet, $PSCmdlet)
+            [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PromptedPreviewMessageCmdlets.Enqueue($MyInvocation.MyCommand.Name)
+        }
         $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Cmdlet)
         $scriptCmd = {& $wrappedCmd @PSBoundParameters}
         $steppablePipeline = $scriptCmd.GetSteppablePipeline($MyInvocation.CommandOrigin)

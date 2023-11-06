@@ -136,6 +136,10 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models
             {
                 ((Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.IKustoIdentityInternal)this).ScriptName = (string) content.GetValueForProperty("ScriptName",((Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.IKustoIdentityInternal)this).ScriptName, global::System.Convert.ToString);
             }
+            if (content.Contains("SandboxCustomImageName"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.IKustoIdentityInternal)this).SandboxCustomImageName = (string) content.GetValueForProperty("SandboxCustomImageName",((Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.IKustoIdentityInternal)this).SandboxCustomImageName, global::System.Convert.ToString);
+            }
             if (content.Contains("PrivateEndpointConnectionName"))
             {
                 ((Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.IKustoIdentityInternal)this).PrivateEndpointConnectionName = (string) content.GetValueForProperty("PrivateEndpointConnectionName",((Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.IKustoIdentityInternal)this).PrivateEndpointConnectionName, global::System.Convert.ToString);
@@ -208,6 +212,10 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models
             if (content.Contains("ScriptName"))
             {
                 ((Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.IKustoIdentityInternal)this).ScriptName = (string) content.GetValueForProperty("ScriptName",((Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.IKustoIdentityInternal)this).ScriptName, global::System.Convert.ToString);
+            }
+            if (content.Contains("SandboxCustomImageName"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.IKustoIdentityInternal)this).SandboxCustomImageName = (string) content.GetValueForProperty("SandboxCustomImageName",((Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.IKustoIdentityInternal)this).SandboxCustomImageName, global::System.Convert.ToString);
             }
             if (content.Contains("PrivateEndpointConnectionName"))
             {

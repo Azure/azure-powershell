@@ -162,7 +162,8 @@ Accept wildcard characters: False
 ```
 
 ### -ResourceGroupName
-The name of the resource group containing the Kusto cluster.
+The name of the resource group.
+The name is case insensitive.
 
 ```yaml
 Type: System.String
@@ -192,8 +193,7 @@ Accept wildcard characters: False
 ```
 
 ### -SubscriptionId
-Gets subscription credentials which uniquely identify Microsoft Azure subscription.
-The subscription ID forms part of the URI for every service call.
+The ID of the target subscription.
 
 ```yaml
 Type: System.String
@@ -260,11 +260,9 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api20221229.IDatabasePrincipalAssignment
+### Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api20230815.IDatabasePrincipalAssignment
 
 ## NOTES
-
-ALIASES
 
 ## RELATED LINKS
 

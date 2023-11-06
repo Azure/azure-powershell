@@ -1,17 +1,17 @@
 {
-  "[NoDescription]+[NoContext]+List+$POST+https://management.azure.com/subscriptions/e8257c73-24c5-4791-94dc-8b7901c90dbf/resourceGroups/PS-SDK-4cv18e/providers/Microsoft.Kusto/Clusters/pssdk4cv18e/Databases/TestDb/listPrincipals?api-version=2022-12-29+1": {
+  "[NoDescription]+[NoContext]+List+$POST+https://management.azure.com/subscriptions/e8257c73-24c5-4791-94dc-8b7901c90dbf/resourceGroups/PWSH-SDK-3w8cj7/providers/Microsoft.Kusto/Clusters/pssdk3w8cj7/Databases/TestDb/listPrincipals?api-version=2023-08-15+1": {
     "Request": {
       "Method": "POST",
-      "RequestUri": "https://management.azure.com/subscriptions/e8257c73-24c5-4791-94dc-8b7901c90dbf/resourceGroups/PS-SDK-4cv18e/providers/Microsoft.Kusto/Clusters/pssdk4cv18e/Databases/TestDb/listPrincipals?api-version=2022-12-29",
+      "RequestUri": "https://management.azure.com/subscriptions/e8257c73-24c5-4791-94dc-8b7901c90dbf/resourceGroups/PWSH-SDK-3w8cj7/providers/Microsoft.Kusto/Clusters/pssdk3w8cj7/Databases/TestDb/listPrincipals?api-version=2023-08-15",
       "Content": null,
       "isContentBase64": false,
       "Headers": {
-        "x-ms-unique-id": [ "110" ],
-        "x-ms-client-request-id": [ "dcd3e5f1-e80f-41fe-a2bc-3afdea97b490" ],
+        "x-ms-unique-id": [ "100" ],
+        "x-ms-client-request-id": [ "43335954-e6d0-4bfe-a267-7f76a944b778" ],
         "CommandName": [ "Get-AzKustoDatabasePrincipal" ],
         "FullCommandName": [ "Get-AzKustoDatabasePrincipal_List" ],
         "ParameterSetName": [ "__AllParameterSets" ],
-        "User-Agent": [ "AzurePowershell/v0.0.0", "PSVersion/v7.3.2", "Az.Kusto/0.1.4" ],
+        "User-Agent": [ "AzurePowershell/v0.0.0", "PSVersion/v7.3.8", "Az.Kusto/0.1.4" ],
         "Authorization": [ "[Filtered]" ]
       },
       "ContentHeaders": {
@@ -22,14 +22,14 @@
       "Headers": {
         "Cache-Control": [ "no-cache" ],
         "Pragma": [ "no-cache" ],
-        "x-ms-request-id": [ "0ba9224e-2608-447f-aca5-411a5ec14a0a" ],
+        "x-ms-request-id": [ "f095f7eb-948d-418e-a7d5-1967da6f2bdd" ],
         "Server": [ "Microsoft-HTTPAPI/2.0" ],
         "x-ms-ratelimit-remaining-subscription-writes": [ "1195" ],
-        "x-ms-correlation-request-id": [ "dcec94da-b838-47a0-b72e-59a668b413e2" ],
-        "x-ms-routing-request-id": [ "FRANCESOUTH:20230315T181340Z:dcec94da-b838-47a0-b72e-59a668b413e2" ],
+        "x-ms-correlation-request-id": [ "7179f3bd-a653-404a-9ecb-24e51ae2afab" ],
+        "x-ms-routing-request-id": [ "QATARCENTRAL:20231024T194355Z:7179f3bd-a653-404a-9ecb-24e51ae2afab" ],
         "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
         "X-Content-Type-Options": [ "nosniff" ],
-        "Date": [ "Wed, 15 Mar 2023 18:13:39 GMT" ]
+        "Date": [ "Tue, 24 Oct 2023 19:43:55 GMT" ]
       },
       "ContentHeaders": {
         "Content-Length": [ "493" ],
