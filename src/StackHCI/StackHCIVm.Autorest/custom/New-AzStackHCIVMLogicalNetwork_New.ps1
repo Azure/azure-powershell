@@ -169,7 +169,7 @@ function New-AzStackHCIVmLogicalNetwork {
       [Microsoft.Azure.PowerShell.Cmdlets.StackHCIVm.Category('Body')]
       [System.Collections.Hashtable[]]
       # List of subnets under the virtual network
-      $Subnets, 
+      $Subnet, 
   
       [Parameter()]
       [Microsoft.Azure.PowerShell.Cmdlets.StackHCIVm.Category('Body')]
@@ -195,10 +195,8 @@ function New-AzStackHCIVmLogicalNetwork {
         }
       }
   
-      if ($Subnets){
-        Confirm-Subnets -Subnets $Subnets
-        $null = $PSBoundParameters.Remove("Subnets")
-        $PSBoundParameters.Add("Subnet", $Subnets)
+      if ($Subnet){
+        Confirm-Subnets -Subnets $Subnet
   
       } else{
           $Subnet = @{}
