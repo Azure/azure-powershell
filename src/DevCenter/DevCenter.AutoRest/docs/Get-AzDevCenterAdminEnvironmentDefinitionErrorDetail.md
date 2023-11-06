@@ -30,27 +30,20 @@ Gets Environment Definition error details
 
 ## EXAMPLES
 
-### Example 1: {{ Add title here }}
+### Example 1: Get environment definition error details
 ```powershell
-{{ Add code here }}
+Get-AzDevCenterAdminEnvironmentDefinitionErrorDetail -DevCenterName Contoso -CatalogName CentralCatalog -ResourceGroupName testRg -EnvironmentDefinitionName envDefName
 ```
 
-```output
-{{ Add output here }}
-```
+This command gets the environment definition "envDefName" error details
 
-{{ Add description here }}
-
-### Example 2: {{ Add title here }}
+### Example 3: Get environment definition error details using InputObject
 ```powershell
-{{ Add code here }}
+$environmentDefinition = @{"ResourceGroupName" = "testRg"; "DevCenterName" = "Contoso"; "CatalogName" = "CentralCatalog"; "SubscriptionId" = "0ac520ee-14c0-480f-b6c9-0a90c58ffff"; "EnvironmentDefinitionName"="envDefName"}
+$environmentDefinitionErrorDetail = Get-AzDevCenterAdminEnvironmentDefinitionErrorDetail -InputObject $environmentDefinition
 ```
 
-```output
-{{ Add output here }}
-```
-
-{{ Add description here }}
+This command gets the environment definition "envDefName" error details using InputObject
 
 ## PARAMETERS
 

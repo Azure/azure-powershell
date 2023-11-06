@@ -30,27 +30,20 @@ Triggers a refresh of the pool status.
 
 ## EXAMPLES
 
-### Example 1: {{ Add title here }}
+### Example 1: Start a pool health check
 ```powershell
-{{ Add code here }}
+Start-AzDevCenterAdminPoolHealthCheck -ResourceGroupName testRg -Name DevPool -ProjectName DevProject
 ```
 
-```output
-{{ Add output here }}
-```
+This command starts the health check for the pool named "DevPool" in the project "DevProject".
 
-{{ Add description here }}
-
-### Example 2: {{ Add title here }}
+### Example 2: Start a pool health check using InputObject
 ```powershell
-{{ Add code here }}
+$pool = @{"ResourceGroupName" = "testRg"; "ProjectName" = "DevProject"; "PoolName" = "DevPool"; "SubscriptionId" = "0ac520ee-14c0-480f-b6c9-0a90c58ffff"}
+Start-AzDevCenterAdminPoolHealthCheck -InputObject $pool
 ```
 
-```output
-{{ Add output here }}
-```
-
-{{ Add description here }}
+This command start the health check of the pool named "DevPool" in the project "DevProject".
 
 ## PARAMETERS
 

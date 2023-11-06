@@ -1,22 +1,18 @@
-### Example 1: {{ Add title here }}
+### Example 1: List environment definitions in a catalog
 ```powershell
-{{ Add code here }}
+Get-AzDevCenterAdminEnvironmentDefinition -DevCenterName Contoso -CatalogName CentralCatalog -ResourceGroupName testRg
 ```
+This command lists the environment definitions in a catalog
 
-```output
-{{ Add output here }}
-```
-
-{{ Add description here }}
-
-### Example 2: {{ Add title here }}
+### Example 2: Get environment definition 
 ```powershell
-{{ Add code here }}
+Get-AzDevCenterAdminEnvironmentDefinition -DevCenterName Contoso -CatalogName CentralCatalog -ResourceGroupName testRg -Name envDefName
 ```
+This command gets the environment definition "envDefName". 
 
-```output
-{{ Add output here }}
+### Example 3: Get environment definition using InputObject
+```powershell
+$environmentDefinition = @{"ResourceGroupName" = "testRg"; "DevCenterName" = "Contoso"; "CatalogName" = "CentralCatalog"; "SubscriptionId" = "0ac520ee-14c0-480f-b6c9-0a90c58ffff"; "EnvironmentDefinitionName"="envDefName"}
+$environmentDefinition = Get-AzDevCenterAdminEnvironmentDefinition -InputObject $environmentDefinition
 ```
-
-{{ Add description here }}
-
+This command gets the environment definition "envDefName" using InputObject

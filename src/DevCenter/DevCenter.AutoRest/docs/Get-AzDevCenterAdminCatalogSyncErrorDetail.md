@@ -30,27 +30,20 @@ Gets catalog synchronization error details
 
 ## EXAMPLES
 
-### Example 1: {{ Add title here }}
+### Example 1: Get the catalog sync error dteail
 ```powershell
-{{ Add code here }}
+Get-AzDevCenterAdminCatalogSyncErrorDetail -DevCenterName Contoso -Name CentralCatalog -ResourceGroupName testRg
 ```
 
-```output
-{{ Add output here }}
-```
+This command gets the sync error detail of the catalog named "CentralCatalog" in the dev center "Contoso" under the resource group "testRg".
 
-{{ Add description here }}
-
-### Example 2: {{ Add title here }}
+### Example 2: Get the catalog sync error detail using InputObject
 ```powershell
-{{ Add code here }}
+$catalog = @{"ResourceGroupName" = "testRg"; "DevCenterName" = "Contoso"; "CatalogName" = "CentralCatalog"; "SubscriptionId" = "0ac520ee-14c0-480f-b6c9-0a90c58ffff"}
+$catalogErrorDetail = Get-AzDevCenterAdminCatalogSyncErrorDetail -InputObject $catalog
 ```
 
-```output
-{{ Add output here }}
-```
-
-{{ Add description here }}
+This command gets the sync error detail of the catalog named "CentralCatalog" in the dev center "Contoso" under the resource group "testRg".
 
 ## PARAMETERS
 
