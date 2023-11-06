@@ -119,7 +119,7 @@ function New-AzStackHCIVmLogicalNetwork {
       [Microsoft.Azure.PowerShell.Cmdlets.StackHCIVm.Category('Body')]
       [System.String[]]
       # List of address prefixes for the subnet.
-      $AddressPrefixes,
+      $AddressPrefix,
   
       [Parameter()]
       [ArgumentCompleter([Microsoft.Azure.PowerShell.Cmdlets.StackHCIVm.Support.IPAllocationMethodEnum])]
@@ -210,8 +210,8 @@ function New-AzStackHCIVmLogicalNetwork {
             
             if ($IpAllocationMethod -eq "static"){
               $Subnet["IPAllocationMethod"] = 'Static'
-              if (-Not $AddressPrefixes){
-                Write-Error "Invalid Configuration for Static IpAllocationMethod. AddressPrefixes are required for Static IpAllocationMethod." -ErrorAction Stop
+              if (-Not $AddressPrefix){
+                Write-Error "Invalid Configuration for Static IpAllocationMethod. AddressPrefix are required for Static IpAllocationMethod." -ErrorAction Stop
               }
             }
           } else {
@@ -258,17 +258,17 @@ function New-AzStackHCIVmLogicalNetwork {
             $Subnet["Name"] = $SubnetName
           }
   
-          if ($AddressPrefixes){
-            foreach ($addressPrefix in $AddressPrefixes){
-              if ($addressPrefix -notmatch $cidrRegex){
-                Write-Error "Invalid AddressPrefix: $addressPrefix. Please use valid CIDR format." -ErrorAction Stop
+          if ($AddressPrefix){
+            foreach ($addPrefix in $AddressPrefix){
+              if ($addPrefix -notmatch $cidrRegex){
+                Write-Error "Invalid AddressPrefix: $addPrefix. Please use valid CIDR format." -ErrorAction Stop
               }
             }
   
-            if ($AddressPrefixes.length -eq 1){
-              $Subnet["AddressPrefix"] = $AddressPrefixes[0]
+            if ($AddressPrefix.length -eq 1){
+              $Subnet["AddressPrefix"] = $AddressPrefix[0]
             } else {
-              $Subnet["AddressPrefixes"] = $AddressPrefixes
+              $Subnet["AddressPrefixes"] = $AddressPrefix
             }
   
           }
@@ -283,7 +283,7 @@ function New-AzStackHCIVmLogicalNetwork {
           $null = $PSBoundParameters.Remove("IpPoolStart")
           $null = $PSBoundParameters.Remove("IpPoolEnd")
           $null = $PSBoundParameters.Remove("IpPoolType")
-          $null = $PSBoundParameters.Remove("AddressPrefixes")
+          $null = $PSBoundParameters.Remove("AddressPrefix")
           $null = $PSBoundParameters.Remove("Vlan")
           $null = $PSBoundParameters.Remove("SubnetName")
           $null = $PSBoundParameters.Remove("IpPools")
