@@ -15,6 +15,7 @@
   <ItemGroup>
     <PackageReference Include="Microsoft.Azure.PowerShell.AutoMapper" Version="6.2.2" />
     <PackageReference Include="Microsoft.Azure.Management.ResourceGraph" Version="2.1.0" />
+    <PackageReference Include="System.IO.FileSystem.AccessControl" Version="5.0.0" />
     <PackageReference Include="System.Security.Permissions" Version="4.7.0" />
     <PackageReference Include="System.ServiceModel.Primitives" Version="4.7.0" />
     <PackageReference Include="WindowsAzure.Storage" Version="9.3.0" />

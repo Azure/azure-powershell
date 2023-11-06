@@ -51,6 +51,8 @@ using SM = Microsoft.Azure.PowerShell.Cmdlets.Compute.Helpers.Storage.Models;
 using Microsoft.Azure.Commands.Compute;
 using Microsoft.Azure.PowerShell.Cmdlets.Compute.Helpers.Network.Models;
 using Microsoft.WindowsAzure.Commands.Common.CustomAttributes;
+using System.Security.AccessControl;
+using System.Security.Principal;
 
 namespace Microsoft.Azure.Commands.Compute
 {
@@ -1455,6 +1457,26 @@ namespace Microsoft.Azure.Commands.Compute
                         writer.WriteLine(keypair.PrivateKey);
                     }
                     Console.WriteLine("Private key is saved to " + privateKeyFilePath);
+
+                    FileAttributes attributes = File.GetAttributes(privateKeyFilePath);
+                    File.SetAttributes(privateKeyFilePath, attributes | FileAttributes.ReadOnly);
+
+                    FileSecurity fileSecurity = new FileSecurity(privateKeyFilePath, AccessControlSections.Access);
+                    // Define the owner's identity
+                    IdentityReference owner = new SecurityIdentifier(WellKnownSidType.BuiltinUsersSid, null);
+
+                    // Create an access rule for the owner with read and write permissions (0600)
+                    FileSystemAccessRule rule = new FileSystemAccessRule(
+                        owner,
+                        FileSystemRights.Read | FileSystemRights.Write,
+                        AccessControlType.Allow
+                    );
+
+                    // Add the access rule to the file security
+                    fileSecurity.AddAccessRule(rule);
+
+                    FileInfo fileinfo = new FileInfo(privateKeyFileName);
+                    fileinfo.SetAccessControl(fileSecurity);
 
                     using (StreamWriter writer = new StreamWriter(publicKeyFilePath))
                     {
