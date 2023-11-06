@@ -151,7 +151,7 @@ function New-AzStackHCIVmLogicalNetwork {
       [Microsoft.Azure.PowerShell.Cmdlets.StackHCIVm.Category('Body')]
       [System.Collections.Hashtable[]]
       # Network associated pool of IP Addresses
-      $IpPools,
+      $IpPool,
   
       [Parameter()]
       [Microsoft.Azure.PowerShell.Cmdlets.StackHCIVm.Category('Body')]
@@ -239,9 +239,9 @@ function New-AzStackHCIVmLogicalNetwork {
               Write-Error "Both IpPoolStart and IpPoolEnd must be specified together." -ErrorAction Stop
           }
   
-          if ($IpPools){
-            Confirm-IpPools -IpPools $IpPools
-            $Subnet["IPPool"] = $IpPools
+          if ($IpPool){
+            Confirm-IpPools -IpPools $IpPool
+            $Subnet["IPPool"] = $IpPool
           }
   
           if($Vlan){
@@ -286,7 +286,7 @@ function New-AzStackHCIVmLogicalNetwork {
           $null = $PSBoundParameters.Remove("AddressPrefix")
           $null = $PSBoundParameters.Remove("Vlan")
           $null = $PSBoundParameters.Remove("SubnetName")
-          $null = $PSBoundParameters.Remove("IpPools")
+          $null = $PSBoundParameters.Remove("IpPool")
           $null = $PSBoundParameters.Remove("Routes")
           $PSBoundParameters.Add("Subnet", $Subnet)
   
