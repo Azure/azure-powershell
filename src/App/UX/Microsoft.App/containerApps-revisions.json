@@ -1,6 +1,6 @@
 {
   "resourceType": "containerApps/revisions",
-  "apiVersion": "2022-03-01",
+  "apiVersion": "2023-05-01",
   "learnMore": {
     "url": "https://learn.microsoft.com/powershell/module/az.app"
   },
@@ -17,8 +17,8 @@
           {
             "parameters": [
               "-ContainerAppName <String>",
+              "-Name <String>",
               "-ResourceGroupName <String>",
-              "-RevisionName <String>",
               "[-SubscriptionId <String>]"
             ]
           }
@@ -33,12 +33,12 @@
               "value": "[Path.containerAppName]"
             },
             {
-              "name": "-ResourceGroupName",
-              "value": "[Path.resourceGroupName]"
+              "name": "-Name",
+              "value": "[Path.revisionName]"
             },
             {
-              "name": "-RevisionName",
-              "value": "[Path.revisionName]"
+              "name": "-ResourceGroupName",
+              "value": "[Path.resourceGroupName]"
             },
             {
               "name": "-SubscriptionId",
@@ -60,8 +60,8 @@
           {
             "parameters": [
               "-ContainerAppName <String>",
+              "-Name <String>",
               "-ResourceGroupName <String>",
-              "-RevisionName <String>",
               "[-SubscriptionId <String>]"
             ]
           }
@@ -76,12 +76,12 @@
               "value": "[Path.containerAppName]"
             },
             {
-              "name": "-ResourceGroupName",
-              "value": "[Path.resourceGroupName]"
+              "name": "-Name",
+              "value": "[Path.revisionName]"
             },
             {
-              "name": "-RevisionName",
-              "value": "[Path.revisionName]"
+              "name": "-ResourceGroupName",
+              "value": "[Path.resourceGroupName]"
             },
             {
               "name": "-SubscriptionId",
@@ -92,12 +92,12 @@
       ]
     },
     {
-      "name": "Get-AzContainerAppRevision",
+      "name": "Get-AzContainerAppDiagnosticRevision",
       "description": "Get a revision of a Container App.",
-      "path": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.App/containerApps/{containerAppName}/revisions/{revisionName}",
+      "path": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.App/containerApps/{containerAppName}/detectorProperties/revisionsApi/revisions/{revisionName}",
       "help": {
         "learnMore": {
-          "url": "https://learn.microsoft.com/powershell/module/az.app/get-azcontainerapprevision"
+          "url": "https://learn.microsoft.com/powershell/module/az.app/get-azcontainerappdiagnosticrevision"
         },
         "parameterSets": [
           {
@@ -135,6 +135,49 @@
       ]
     },
     {
+      "name": "Get-AzContainerAppRevision",
+      "description": "Get a revision of a Container App.",
+      "path": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.App/containerApps/{containerAppName}/revisions/{revisionName}",
+      "help": {
+        "learnMore": {
+          "url": "https://learn.microsoft.com/powershell/module/az.app/get-azcontainerapprevision"
+        },
+        "parameterSets": [
+          {
+            "parameters": [
+              "-ContainerAppName <String>",
+              "-Name <String>",
+              "-ResourceGroupName <String>",
+              "[-SubscriptionId <String[]>]"
+            ]
+          }
+        ]
+      },
+      "examples": [
+        {
+          "description": "Get a revision of a Container App.",
+          "parameters": [
+            {
+              "name": "-ContainerAppName",
+              "value": "[Path.containerAppName]"
+            },
+            {
+              "name": "-Name",
+              "value": "[Path.revisionName]"
+            },
+            {
+              "name": "-ResourceGroupName",
+              "value": "[Path.resourceGroupName]"
+            },
+            {
+              "name": "-SubscriptionId",
+              "value": "[Path.subscriptionId]"
+            }
+          ]
+        }
+      ]
+    },
+    {
       "name": "Restart-AzContainerAppRevision",
       "description": "Restarts a revision for a Container App",
       "path": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.App/containerApps/{containerAppName}/revisions/{revisionName}/restart",
@@ -146,8 +189,8 @@
           {
             "parameters": [
               "-ContainerAppName <String>",
+              "-Name <String>",
               "-ResourceGroupName <String>",
-              "-RevisionName <String>",
               "[-SubscriptionId <String>]"
             ]
           }
@@ -162,12 +205,12 @@
               "value": "[Path.containerAppName]"
             },
             {
-              "name": "-ResourceGroupName",
-              "value": "[Path.resourceGroupName]"
+              "name": "-Name",
+              "value": "[Path.revisionName]"
             },
             {
-              "name": "-RevisionName",
-              "value": "[Path.revisionName]"
+              "name": "-ResourceGroupName",
+              "value": "[Path.resourceGroupName]"
             },
             {
               "name": "-SubscriptionId",

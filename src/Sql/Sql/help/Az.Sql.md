@@ -224,6 +224,9 @@ Gets one or more credentials
 ### [Get-AzSqlElasticJobExecution](Get-AzSqlElasticJobExecution.md)
 Gets one or more job executions
 
+### [Get-AzSqlElasticJobPrivateEndpoint](Get-AzSqlElasticJobPrivateEndpoint.md)
+Gets one or more job private endpoints
+
 ### [Get-AzSqlElasticJobStep](Get-AzSqlElasticJobStep.md)
 Gets one or more job steps
 
@@ -503,6 +506,9 @@ Creates a new elastic job agent
 ### [New-AzSqlElasticJobCredential](New-AzSqlElasticJobCredential.md)
 Creates a new job credential
 
+### [New-AzSqlElasticJobPrivateEndpoint](New-AzSqlElasticJobPrivateEndpoint.md)
+Creates a new job private endpoint
+
 ### [New-AzSqlElasticJobTargetGroup](New-AzSqlElasticJobTargetGroup.md)
 Creates a new target group
 
@@ -607,6 +613,9 @@ Removes the elastic job agent
 
 ### [Remove-AzSqlElasticJobCredential](Remove-AzSqlElasticJobCredential.md)
 Removes the elastic job credential
+
+### [Remove-AzSqlElasticJobPrivateEndpoint](Remove-AzSqlElasticJobPrivateEndpoint.md)
+Removes the elastic job private endpoint
 
 ### [Remove-AzSqlElasticJobStep](Remove-AzSqlElasticJobStep.md)
 Removes the job step

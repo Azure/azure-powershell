@@ -1,6 +1,6 @@
-### Example 1: Create a TrafficWeight object for ContainerApp.
+### Example 1: Create an in-memory object for TrafficWeight.
 ```powershell
-New-AzContainerAppTrafficWeightObject -Label production -LatestRevision $True -Weight 100
+New-AzContainerAppTrafficWeightObject -Label "production" -Weight 100 -LatestRevision:$True
 ```
 
 ```output
@@ -9,4 +9,4 @@ Label      LatestRevision RevisionName Weight
 production True                        100
 ```
 
-Create a TrafficWeight object for ContainerApp.
+Create an in-memory object for TrafficWeight.

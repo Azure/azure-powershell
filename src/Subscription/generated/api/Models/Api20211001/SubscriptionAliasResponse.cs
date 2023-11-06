@@ -48,7 +48,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Subscription.Models.Api20211001
 
         /// <summary>The display name of the subscription.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.Subscription.Origin(Microsoft.Azure.PowerShell.Cmdlets.Subscription.PropertyOrigin.Inlined)]
-        [Microsoft.Azure.PowerShell.Cmdlets.Subscription.FormatTable(Index = 1)]
+        [Microsoft.Azure.PowerShell.Cmdlets.Subscription.DoNotFormat]
         public string DisplayName { get => ((Microsoft.Azure.PowerShell.Cmdlets.Subscription.Models.Api20211001.ISubscriptionAliasResponsePropertiesInternal)Property).DisplayName; set => ((Microsoft.Azure.PowerShell.Cmdlets.Subscription.Models.Api20211001.ISubscriptionAliasResponsePropertiesInternal)Property).DisplayName = value ?? null; }
 
         /// <summary>Backing field for <see cref="Id" /> property.</summary>
@@ -98,7 +98,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Subscription.Models.Api20211001
 
         /// <summary>The provisioning state of the resource.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.Subscription.Origin(Microsoft.Azure.PowerShell.Cmdlets.Subscription.PropertyOrigin.Inlined)]
-        [Microsoft.Azure.PowerShell.Cmdlets.Subscription.FormatTable(Index = 3)]
+        [Microsoft.Azure.PowerShell.Cmdlets.Subscription.FormatTable(Index = 2)]
         public Microsoft.Azure.PowerShell.Cmdlets.Subscription.Support.ProvisioningState? ProvisioningState { get => ((Microsoft.Azure.PowerShell.Cmdlets.Subscription.Models.Api20211001.ISubscriptionAliasResponsePropertiesInternal)Property).ProvisioningState; set => ((Microsoft.Azure.PowerShell.Cmdlets.Subscription.Models.Api20211001.ISubscriptionAliasResponsePropertiesInternal)Property).ProvisioningState = value ?? ((Microsoft.Azure.PowerShell.Cmdlets.Subscription.Support.ProvisioningState)""); }
 
         /// <summary>Reseller Id</summary>
@@ -108,7 +108,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Subscription.Models.Api20211001
 
         /// <summary>Newly created subscription Id.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.Subscription.Origin(Microsoft.Azure.PowerShell.Cmdlets.Subscription.PropertyOrigin.Inlined)]
-        [Microsoft.Azure.PowerShell.Cmdlets.Subscription.FormatTable(Index = 2)]
+        [Microsoft.Azure.PowerShell.Cmdlets.Subscription.FormatTable(Index = 1)]
         public string SubscriptionId { get => ((Microsoft.Azure.PowerShell.Cmdlets.Subscription.Models.Api20211001.ISubscriptionAliasResponsePropertiesInternal)Property).SubscriptionId; }
 
         /// <summary>Owner Id of the subscription</summary>

@@ -14,7 +14,7 @@ Delete a Managed Environment if it does not have any container apps.
 
 ### Delete (Default)
 ```
-Remove-AzContainerAppManagedEnv -EnvName <String> -ResourceGroupName <String> [-SubscriptionId <String>]
+Remove-AzContainerAppManagedEnv -Name <String> -ResourceGroupName <String> [-SubscriptionId <String>]
  [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-PassThru] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
@@ -29,19 +29,21 @@ Delete a Managed Environment if it does not have any container apps.
 
 ## EXAMPLES
 
-### Example 1: Delete a Managed Environment.
+### Example 1: Delete a Container App ManagedEnv.
 ```powershell
-Remove-AzContainerAppManagedEnv -EnvName azps-env -ResourceGroupName azpstest_gp
+Remove-AzContainerAppManagedEnv -Name azpsenv -ResourceGroupName azps_test_group_app
 ```
 
-Delete a Managed Environment.
+Delete a Container App ManagedEnv.
 
-### Example 2: Delete a Managed Environment.
+### Example 2: Delete a Container App ManagedEnv.
 ```powershell
-Get-AzContainerAppManagedEnv -EnvName azps-env -ResourceGroupName azpstest_gp | Remove-AzContainerAppManagedEnv
+$managedenv = Get-AzContainerAppManagedEnv -Name azpsenv -ResourceGroupName azps_test_group_app
+
+Remove-AzContainerAppManagedEnv -InputObject $managedenv
 ```
 
-Delete a Managed Environment.
+Delete a Container App ManagedEnv.
 
 ## PARAMETERS
 
@@ -76,21 +78,6 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -EnvName
-Name of the Environment.
-
-```yaml
-Type: System.String
-Parameter Sets: Delete
-Aliases:
-
-Required: True
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
 ### -InputObject
 Identity Parameter
 To construct, see NOTES section for INPUTOBJECT properties and create a hash table.
@@ -104,6 +91,21 @@ Required: True
 Position: Named
 Default value: None
 Accept pipeline input: True (ByValue)
+Accept wildcard characters: False
+```
+
+### -Name
+Name of the Environment.
+
+```yaml
+Type: System.String
+Parameter Sets: Delete
+Aliases: EnvName
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
@@ -211,27 +213,6 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ### System.Boolean
 
 ## NOTES
-
-ALIASES
-
-COMPLEX PARAMETER PROPERTIES
-
-To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
-
-
-`INPUTOBJECT <IAppIdentity>`: Identity Parameter
-  - `[AuthConfigName <String>]`: Name of the Container App AuthConfig.
-  - `[CertificateName <String>]`: Name of the Certificate.
-  - `[ComponentName <String>]`: Name of the Dapr Component.
-  - `[ContainerAppName <String>]`: Name of the Container App.
-  - `[EnvironmentName <String>]`: Name of the Managed Environment.
-  - `[Id <String>]`: Resource identity path
-  - `[ReplicaName <String>]`: Name of the Container App Revision Replica.
-  - `[ResourceGroupName <String>]`: The name of the resource group. The name is case insensitive.
-  - `[RevisionName <String>]`: Name of the Container App Revision.
-  - `[SourceControlName <String>]`: Name of the Container App SourceControl.
-  - `[StorageName <String>]`: Name of the storage.
-  - `[SubscriptionId <String>]`: The ID of the target subscription.
 
 ## RELATED LINKS
 

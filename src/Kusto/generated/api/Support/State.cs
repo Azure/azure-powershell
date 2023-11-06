@@ -16,6 +16,8 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Kusto.Support
 
         public static Microsoft.Azure.PowerShell.Cmdlets.Kusto.Support.State Deleting = @"Deleting";
 
+        public static Microsoft.Azure.PowerShell.Cmdlets.Kusto.Support.State Migrated = @"Migrated";
+
         public static Microsoft.Azure.PowerShell.Cmdlets.Kusto.Support.State Running = @"Running";
 
         public static Microsoft.Azure.PowerShell.Cmdlets.Kusto.Support.State Starting = @"Starting";

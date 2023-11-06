@@ -1,15 +1,15 @@
 {
-  "AzContainerAppManagedEnvDapr+[NoContext]+CreateExpanded+$PUT+https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/testgroup6950/providers/Microsoft.App/managedEnvironments/env6950/daprComponents/envdapr6950?api-version=2022-03-01+1": {
+  "AzContainerAppManagedEnvDapr+[NoContext]+CreateExpanded+$PUT+https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/a5hfaey/providers/Microsoft.App/managedEnvironments/a360na/daprComponents/a60wcg?api-version=2023-05-01+1": {
     "Request": {
       "Method": "PUT",
-      "RequestUri": "https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/testgroup6950/providers/Microsoft.App/managedEnvironments/env6950/daprComponents/envdapr6950?api-version=2022-03-01",
-      "Content": "{\r\n  \"properties\": {\r\n    \"componentType\": \"state.azure.cosmosdb\",\r\n    \"version\": \"v1\",\r\n    \"ignoreErrors\": false,\r\n    \"initTimeout\": \"50s\",\r\n    \"secrets\": [\r\n      {\r\n        \"name\": \"masterkey\",\r\n        \"value\": \"keyvalue\"\r\n      }\r\n    ],\r\n    \"metadata\": [\r\n      {\r\n        \"name\": \"masterkey\",\r\n        \"value\": \"masterkey\"\r\n      }\r\n    ],\r\n    \"scopes\": [ \"container-app-1\", \"container-app-2\", \"container-app-3\" ]\r\n  }\r\n}",
+      "RequestUri": "https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/a5hfaey/providers/Microsoft.App/managedEnvironments/a360na/daprComponents/a60wcg?api-version=2023-05-01",
+      "Content": "{\r\n  \"properties\": {\r\n    \"componentType\": \"state.azure.cosmosdb\",\r\n    \"version\": \"v1\",\r\n    \"ignoreErrors\": false,\r\n    \"initTimeout\": \"50s\",\r\n    \"secrets\": [\r\n      {\r\n        \"name\": \"masterkey\",\r\n        \"value\": \"keyvalue\"\r\n      }\r\n    ],\r\n    \"metadata\": [\r\n      {\r\n        \"name\": \"masterkey\",\r\n        \"value\": \"masterkey\"\r\n      }\r\n    ],\r\n    \"scopes\": [ \"container-app-1\", \"container-app-2\" ]\r\n  }\r\n}",
       "isContentBase64": false,
       "Headers": {
       },
       "ContentHeaders": {
         "Content-Type": [ "application/json" ],
-        "Content-Length": [ "434" ]
+        "Content-Length": [ "415" ]
       }
     },
     "Response": {
@@ -18,78 +18,39 @@
         "Cache-Control": [ "no-cache" ],
         "Pragma": [ "no-cache" ],
         "Vary": [ "Accept-Encoding" ],
-        "x-ms-ratelimit-remaining-subscription-writes": [ "1198" ],
-        "api-supported-versions": [ "2022-01-01-preview, 2022-03-01, 2022-05-01" ],
+        "x-ms-ratelimit-remaining-subscription-writes": [ "1194" ],
+        "api-supported-versions": [ "2022-01-01-preview, 2022-03-01, 2022-06-01-preview, 2022-10-01, 2022-11-01-preview, 2023-04-01-preview, 2023-05-01, 2023-05-02-preview, 2023-08-01-preview" ],
         "Server": [ "Microsoft-IIS/10.0" ],
         "X-Powered-By": [ "ASP.NET" ],
-        "x-ms-request-id": [ "c6f41267-1248-4d0a-adea-809662e2183d" ],
-        "x-ms-correlation-request-id": [ "c6f41267-1248-4d0a-adea-809662e2183d" ],
-        "x-ms-routing-request-id": [ "SOUTHEASTASIA:20220530T110213Z:c6f41267-1248-4d0a-adea-809662e2183d" ],
+        "x-ms-request-id": [ "8460213c-8f4a-4542-a556-0ba8f79cfaaa" ],
+        "x-ms-correlation-request-id": [ "8460213c-8f4a-4542-a556-0ba8f79cfaaa" ],
+        "x-ms-routing-request-id": [ "JAPANEAST:20231030T103102Z:8460213c-8f4a-4542-a556-0ba8f79cfaaa" ],
         "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
         "X-Content-Type-Options": [ "nosniff" ],
-        "Date": [ "Mon, 30 May 2022 11:02:12 GMT" ]
+        "Date": [ "Mon, 30 Oct 2023 10:31:01 GMT" ]
       },
       "ContentHeaders": {
-        "Content-Length": [ "745" ],
+        "Content-Length": [ "710" ],
         "Content-Type": [ "application/json; charset=utf-8" ],
         "Expires": [ "-1" ]
       },
-      "Content": "{\"id\":\"/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/testgroup6950/providers/Microsoft.App/managedEnvironments/env6950/daprComponents/envdapr6950\",\"name\":\"envdapr6950\",\"type\":\"Microsoft.App/managedEnvironments/daprComponents\",\"systemData\":{\"createdBy\":\"v-jinpel@microsoft.com\",\"createdByType\":\"User\",\"createdAt\":\"2022-05-30T11:02:12.2399392Z\",\"lastModifiedBy\":\"v-jinpel@microsoft.com\",\"lastModifiedByType\":\"User\",\"lastModifiedAt\":\"2022-05-30T11:02:12.2399392Z\"},\"properties\":{\"componentType\":\"state.azure.cosmosdb\",\"version\":\"v1\",\"ignoreErrors\":false,\"initTimeout\":\"50s\",\"secrets\":[{\"name\":\"masterkey\"}],\"metadata\":[{\"name\":\"masterkey\",\"value\":\"masterkey\"}],\"scopes\":[\"container-app-1\",\"container-app-2\",\"container-app-3\"]}}",
+      "Content": "{\"id\":\"/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/a5hfaey/providers/Microsoft.App/managedEnvironments/a360na/daprComponents/a60wcg\",\"name\":\"a60wcg\",\"type\":\"Microsoft.App/managedEnvironments/daprComponents\",\"systemData\":{\"createdBy\":\"v-jinpel@microsoft.com\",\"createdByType\":\"User\",\"createdAt\":\"2023-10-30T10:31:01.4175044Z\",\"lastModifiedBy\":\"v-jinpel@microsoft.com\",\"lastModifiedByType\":\"User\",\"lastModifiedAt\":\"2023-10-30T10:31:01.4175044Z\"},\"properties\":{\"componentType\":\"state.azure.cosmosdb\",\"version\":\"v1\",\"ignoreErrors\":false,\"initTimeout\":\"50s\",\"secrets\":[{\"name\":\"masterkey\"}],\"metadata\":[{\"name\":\"masterkey\",\"value\":\"masterkey\"}],\"scopes\":[\"container-app-1\",\"container-app-2\"]}}",
       "isContentBase64": false
     }
   },
-  "AzContainerAppManagedEnvDapr+[NoContext]+CreateExpanded+$PUT+https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/testgroup6950/providers/Microsoft.App/managedEnvironments/env6950/daprComponents/envdapr82l3?api-version=2022-03-01+2": {
-    "Request": {
-      "Method": "PUT",
-      "RequestUri": "https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/testgroup6950/providers/Microsoft.App/managedEnvironments/env6950/daprComponents/envdapr82l3?api-version=2022-03-01",
-      "Content": "{\r\n  \"properties\": {\r\n    \"componentType\": \"state.azure.cosmosdb\",\r\n    \"version\": \"v1\",\r\n    \"ignoreErrors\": false,\r\n    \"initTimeout\": \"50s\"\r\n  }\r\n}",
-      "isContentBase64": false,
-      "Headers": {
-      },
-      "ContentHeaders": {
-        "Content-Type": [ "application/json" ],
-        "Content-Length": [ "150" ]
-      }
-    },
-    "Response": {
-      "StatusCode": 200,
-      "Headers": {
-        "Cache-Control": [ "no-cache" ],
-        "Pragma": [ "no-cache" ],
-        "Vary": [ "Accept-Encoding" ],
-        "x-ms-ratelimit-remaining-subscription-writes": [ "1197" ],
-        "api-supported-versions": [ "2022-01-01-preview, 2022-03-01, 2022-05-01" ],
-        "Server": [ "Microsoft-IIS/10.0" ],
-        "X-Powered-By": [ "ASP.NET" ],
-        "x-ms-request-id": [ "472532f0-f0b7-4e32-8958-e243aa891ad6" ],
-        "x-ms-correlation-request-id": [ "472532f0-f0b7-4e32-8958-e243aa891ad6" ],
-        "x-ms-routing-request-id": [ "SOUTHEASTASIA:20220530T110214Z:472532f0-f0b7-4e32-8958-e243aa891ad6" ],
-        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
-        "X-Content-Type-Options": [ "nosniff" ],
-        "Date": [ "Mon, 30 May 2022 11:02:13 GMT" ]
-      },
-      "ContentHeaders": {
-        "Content-Length": [ "593" ],
-        "Content-Type": [ "application/json; charset=utf-8" ],
-        "Expires": [ "-1" ]
-      },
-      "Content": "{\"id\":\"/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/testgroup6950/providers/Microsoft.App/managedEnvironments/env6950/daprComponents/envdapr82l3\",\"name\":\"envdapr82l3\",\"type\":\"Microsoft.App/managedEnvironments/daprComponents\",\"systemData\":{\"createdBy\":\"v-jinpel@microsoft.com\",\"createdByType\":\"User\",\"createdAt\":\"2022-05-30T11:02:14.0524253Z\",\"lastModifiedBy\":\"v-jinpel@microsoft.com\",\"lastModifiedByType\":\"User\",\"lastModifiedAt\":\"2022-05-30T11:02:14.0524253Z\"},\"properties\":{\"componentType\":\"state.azure.cosmosdb\",\"version\":\"v1\",\"ignoreErrors\":false,\"initTimeout\":\"50s\"}}",
-      "isContentBase64": false
-    }
-  },
-  "AzContainerAppManagedEnvDapr+[NoContext]+List+$GET+https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/testgroup6950/providers/Microsoft.App/managedEnvironments/env6950/daprComponents?api-version=2022-03-01+1": {
+  "AzContainerAppManagedEnvDapr+[NoContext]+List+$GET+https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/a5hfaey/providers/Microsoft.App/managedEnvironments/a360na/daprComponents?api-version=2023-05-01+1": {
     "Request": {
       "Method": "GET",
-      "RequestUri": "https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/testgroup6950/providers/Microsoft.App/managedEnvironments/env6950/daprComponents?api-version=2022-03-01",
+      "RequestUri": "https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/a5hfaey/providers/Microsoft.App/managedEnvironments/a360na/daprComponents?api-version=2023-05-01",
       "Content": null,
       "isContentBase64": false,
       "Headers": {
-        "x-ms-unique-id": [ "52" ],
-        "x-ms-client-request-id": [ "05ea96f3-aa82-4e9c-a377-94652b23c8fd" ],
+        "x-ms-unique-id": [ "97" ],
+        "x-ms-client-request-id": [ "17742625-7fb1-4a21-b148-ee56c9e4a67d" ],
         "CommandName": [ "Get-AzContainerAppManagedEnvDapr" ],
         "FullCommandName": [ "Get-AzContainerAppManagedEnvDapr_List" ],
         "ParameterSetName": [ "__AllParameterSets" ],
-        "User-Agent": [ "AzurePowershell/v0.0.0", "PSVersion/v7.1.2", "Az.App/0.1.0" ],
+        "User-Agent": [ "AzurePowershell/v0.0.0", "PSVersion/v7.3.8", "Az.App/0.2.0" ],
         "Authorization": [ "[Filtered]" ]
       },
       "ContentHeaders": {
@@ -101,39 +62,39 @@
         "Cache-Control": [ "no-cache" ],
         "Pragma": [ "no-cache" ],
         "Vary": [ "Accept-Encoding" ],
-        "x-ms-ratelimit-remaining-subscription-reads": [ "11962" ],
-        "api-supported-versions": [ "2022-01-01-preview, 2022-03-01, 2022-05-01" ],
+        "x-ms-ratelimit-remaining-subscription-reads": [ "11928" ],
+        "api-supported-versions": [ "2022-01-01-preview, 2022-03-01, 2022-06-01-preview, 2022-10-01, 2022-11-01-preview, 2023-04-01-preview, 2023-05-01, 2023-05-02-preview, 2023-08-01-preview" ],
         "Server": [ "Microsoft-IIS/10.0" ],
         "X-Powered-By": [ "ASP.NET" ],
-        "x-ms-request-id": [ "9b0ecc93-3685-4d84-91e3-62dec14804cf" ],
-        "x-ms-correlation-request-id": [ "9b0ecc93-3685-4d84-91e3-62dec14804cf" ],
-        "x-ms-routing-request-id": [ "SOUTHEASTASIA:20220530T110216Z:9b0ecc93-3685-4d84-91e3-62dec14804cf" ],
+        "x-ms-request-id": [ "00f2f94f-a840-4012-a656-05d53332cc75" ],
+        "x-ms-correlation-request-id": [ "00f2f94f-a840-4012-a656-05d53332cc75" ],
+        "x-ms-routing-request-id": [ "JAPANEAST:20231030T103102Z:00f2f94f-a840-4012-a656-05d53332cc75" ],
         "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
         "X-Content-Type-Options": [ "nosniff" ],
-        "Date": [ "Mon, 30 May 2022 11:02:15 GMT" ]
+        "Date": [ "Mon, 30 Oct 2023 10:31:02 GMT" ]
       },
       "ContentHeaders": {
-        "Content-Length": [ "1347" ],
+        "Content-Length": [ "720" ],
         "Content-Type": [ "application/json; charset=utf-8" ],
         "Expires": [ "-1" ]
       },
-      "Content": "{\"value\":[{\"id\":\"/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/testgroup6950/providers/Microsoft.App/managedEnvironments/env6950/daprComponents/envdapr6950\",\"name\":\"envdapr6950\",\"type\":\"Microsoft.App/managedEnvironments/daprComponents\",\"systemData\":{\"createdBy\":\"v-jinpel@microsoft.com\",\"createdByType\":\"User\",\"createdAt\":\"2022-05-30T11:02:12.2399392\",\"lastModifiedBy\":\"v-jinpel@microsoft.com\",\"lastModifiedByType\":\"User\",\"lastModifiedAt\":\"2022-05-30T11:02:12.2399392\"},\"properties\":{\"componentType\":\"state.azure.cosmosdb\",\"version\":\"v1\",\"ignoreErrors\":false,\"initTimeout\":\"50s\",\"secrets\":[{\"name\":\"masterkey\"}],\"metadata\":[{\"name\":\"masterkey\",\"value\":\"masterkey\"}],\"scopes\":[\"container-app-1\",\"container-app-2\",\"container-app-3\"]}},{\"id\":\"/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/testgroup6950/providers/Microsoft.App/managedEnvironments/env6950/daprComponents/envdapr82l3\",\"name\":\"envdapr82l3\",\"type\":\"Microsoft.App/managedEnvironments/daprComponents\",\"systemData\":{\"createdBy\":\"v-jinpel@microsoft.com\",\"createdByType\":\"User\",\"createdAt\":\"2022-05-30T11:02:14.0524253\",\"lastModifiedBy\":\"v-jinpel@microsoft.com\",\"lastModifiedByType\":\"User\",\"lastModifiedAt\":\"2022-05-30T11:02:14.0524253\"},\"properties\":{\"componentType\":\"state.azure.cosmosdb\",\"version\":\"v1\",\"ignoreErrors\":false,\"initTimeout\":\"50s\"}}]}",
+      "Content": "{\"value\":[{\"id\":\"/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/a5hfaey/providers/Microsoft.App/managedEnvironments/a360na/daprComponents/a60wcg\",\"name\":\"a60wcg\",\"type\":\"Microsoft.App/managedEnvironments/daprComponents\",\"systemData\":{\"createdBy\":\"v-jinpel@microsoft.com\",\"createdByType\":\"User\",\"createdAt\":\"2023-10-30T10:31:01.4175044\",\"lastModifiedBy\":\"v-jinpel@microsoft.com\",\"lastModifiedByType\":\"User\",\"lastModifiedAt\":\"2023-10-30T10:31:01.4175044\"},\"properties\":{\"componentType\":\"state.azure.cosmosdb\",\"version\":\"v1\",\"ignoreErrors\":false,\"initTimeout\":\"50s\",\"secrets\":[{\"name\":\"masterkey\"}],\"metadata\":[{\"name\":\"masterkey\",\"value\":\"masterkey\"}],\"scopes\":[\"container-app-1\",\"container-app-2\"]}}]}",
       "isContentBase64": false
     }
   },
-  "AzContainerAppManagedEnvDapr+[NoContext]+Get+$GET+https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/testgroup6950/providers/Microsoft.App/managedEnvironments/env6950/daprComponents/envdapr6950?api-version=2022-03-01+1": {
+  "AzContainerAppManagedEnvDapr+[NoContext]+Get+$GET+https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/a5hfaey/providers/Microsoft.App/managedEnvironments/a360na/daprComponents/a60wcg?api-version=2023-05-01+1": {
     "Request": {
       "Method": "GET",
-      "RequestUri": "https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/testgroup6950/providers/Microsoft.App/managedEnvironments/env6950/daprComponents/envdapr6950?api-version=2022-03-01",
+      "RequestUri": "https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/a5hfaey/providers/Microsoft.App/managedEnvironments/a360na/daprComponents/a60wcg?api-version=2023-05-01",
       "Content": null,
       "isContentBase64": false,
       "Headers": {
-        "x-ms-unique-id": [ "53" ],
-        "x-ms-client-request-id": [ "8026d688-a0b9-4223-ac73-99792c0c0067" ],
+        "x-ms-unique-id": [ "98" ],
+        "x-ms-client-request-id": [ "37aa65ec-6a34-4ed5-8933-6f99d0947eed" ],
         "CommandName": [ "Get-AzContainerAppManagedEnvDapr" ],
         "FullCommandName": [ "Get-AzContainerAppManagedEnvDapr_Get" ],
         "ParameterSetName": [ "__AllParameterSets" ],
-        "User-Agent": [ "AzurePowershell/v0.0.0", "PSVersion/v7.1.2", "Az.App/0.1.0" ],
+        "User-Agent": [ "AzurePowershell/v0.0.0", "PSVersion/v7.3.8", "Az.App/0.2.0" ],
         "Authorization": [ "[Filtered]" ]
       },
       "ContentHeaders": {
@@ -145,39 +106,39 @@
         "Cache-Control": [ "no-cache" ],
         "Pragma": [ "no-cache" ],
         "Vary": [ "Accept-Encoding" ],
-        "x-ms-ratelimit-remaining-subscription-reads": [ "11961" ],
-        "api-supported-versions": [ "2022-01-01-preview, 2022-03-01, 2022-05-01" ],
+        "x-ms-ratelimit-remaining-subscription-reads": [ "11927" ],
+        "api-supported-versions": [ "2022-01-01-preview, 2022-03-01, 2022-06-01-preview, 2022-10-01, 2022-11-01-preview, 2023-04-01-preview, 2023-05-01, 2023-05-02-preview, 2023-08-01-preview" ],
         "Server": [ "Microsoft-IIS/10.0" ],
         "X-Powered-By": [ "ASP.NET" ],
-        "x-ms-request-id": [ "c99e376d-a382-431f-9709-e15459cf8d2e" ],
-        "x-ms-correlation-request-id": [ "c99e376d-a382-431f-9709-e15459cf8d2e" ],
-        "x-ms-routing-request-id": [ "SOUTHEASTASIA:20220530T110217Z:c99e376d-a382-431f-9709-e15459cf8d2e" ],
+        "x-ms-request-id": [ "982346f3-d643-4c51-8be2-c20242203863" ],
+        "x-ms-correlation-request-id": [ "982346f3-d643-4c51-8be2-c20242203863" ],
+        "x-ms-routing-request-id": [ "JAPANEAST:20231030T103103Z:982346f3-d643-4c51-8be2-c20242203863" ],
         "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
         "X-Content-Type-Options": [ "nosniff" ],
-        "Date": [ "Mon, 30 May 2022 11:02:16 GMT" ]
+        "Date": [ "Mon, 30 Oct 2023 10:31:02 GMT" ]
       },
       "ContentHeaders": {
-        "Content-Length": [ "743" ],
+        "Content-Length": [ "708" ],
         "Content-Type": [ "application/json; charset=utf-8" ],
         "Expires": [ "-1" ]
       },
-      "Content": "{\"id\":\"/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/testgroup6950/providers/Microsoft.App/managedEnvironments/env6950/daprComponents/envdapr6950\",\"name\":\"envdapr6950\",\"type\":\"Microsoft.App/managedEnvironments/daprComponents\",\"systemData\":{\"createdBy\":\"v-jinpel@microsoft.com\",\"createdByType\":\"User\",\"createdAt\":\"2022-05-30T11:02:12.2399392\",\"lastModifiedBy\":\"v-jinpel@microsoft.com\",\"lastModifiedByType\":\"User\",\"lastModifiedAt\":\"2022-05-30T11:02:12.2399392\"},\"properties\":{\"componentType\":\"state.azure.cosmosdb\",\"version\":\"v1\",\"ignoreErrors\":false,\"initTimeout\":\"50s\",\"secrets\":[{\"name\":\"masterkey\"}],\"metadata\":[{\"name\":\"masterkey\",\"value\":\"masterkey\"}],\"scopes\":[\"container-app-1\",\"container-app-2\",\"container-app-3\"]}}",
+      "Content": "{\"id\":\"/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/a5hfaey/providers/Microsoft.App/managedEnvironments/a360na/daprComponents/a60wcg\",\"name\":\"a60wcg\",\"type\":\"Microsoft.App/managedEnvironments/daprComponents\",\"systemData\":{\"createdBy\":\"v-jinpel@microsoft.com\",\"createdByType\":\"User\",\"createdAt\":\"2023-10-30T10:31:01.4175044\",\"lastModifiedBy\":\"v-jinpel@microsoft.com\",\"lastModifiedByType\":\"User\",\"lastModifiedAt\":\"2023-10-30T10:31:01.4175044\"},\"properties\":{\"componentType\":\"state.azure.cosmosdb\",\"version\":\"v1\",\"ignoreErrors\":false,\"initTimeout\":\"50s\",\"secrets\":[{\"name\":\"masterkey\"}],\"metadata\":[{\"name\":\"masterkey\",\"value\":\"masterkey\"}],\"scopes\":[\"container-app-1\",\"container-app-2\"]}}",
       "isContentBase64": false
     }
   },
-  "AzContainerAppManagedEnvDapr+[NoContext]+DaprSecret-List+$POST+https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/testgroup6950/providers/Microsoft.App/managedEnvironments/env6950/daprComponents/envdapr6950/listSecrets?api-version=2022-03-01+1": {
+  "AzContainerAppManagedEnvDapr+[NoContext]+DaprSecret-List+$POST+https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/a5hfaey/providers/Microsoft.App/managedEnvironments/a360na/daprComponents/a60wcg/listSecrets?api-version=2023-05-01+1": {
     "Request": {
       "Method": "POST",
-      "RequestUri": "https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/testgroup6950/providers/Microsoft.App/managedEnvironments/env6950/daprComponents/envdapr6950/listSecrets?api-version=2022-03-01",
+      "RequestUri": "https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/a5hfaey/providers/Microsoft.App/managedEnvironments/a360na/daprComponents/a60wcg/listSecrets?api-version=2023-05-01",
       "Content": null,
       "isContentBase64": false,
       "Headers": {
-        "x-ms-unique-id": [ "54" ],
-        "x-ms-client-request-id": [ "6ee660c2-e18a-4661-8e54-7b8338252a91" ],
+        "x-ms-unique-id": [ "99" ],
+        "x-ms-client-request-id": [ "0b4328ab-fb72-4005-8855-ae54933afa10" ],
         "CommandName": [ "Get-AzContainerAppManagedEnvDaprSecret" ],
         "FullCommandName": [ "Get-AzContainerAppManagedEnvDaprSecret_List" ],
         "ParameterSetName": [ "__AllParameterSets" ],
-        "User-Agent": [ "AzurePowershell/v0.0.0", "PSVersion/v7.1.2", "Az.App/0.1.0" ],
+        "User-Agent": [ "AzurePowershell/v0.0.0", "PSVersion/v7.3.8", "Az.App/0.2.0" ],
         "Authorization": [ "[Filtered]" ]
       },
       "ContentHeaders": {
@@ -189,16 +150,16 @@
         "Cache-Control": [ "no-cache" ],
         "Pragma": [ "no-cache" ],
         "Vary": [ "Accept-Encoding" ],
-        "x-ms-ratelimit-remaining-subscription-writes": [ "1199" ],
-        "api-supported-versions": [ "2022-01-01-preview, 2022-03-01, 2022-05-01" ],
+        "x-ms-ratelimit-remaining-subscription-writes": [ "1194" ],
+        "api-supported-versions": [ "2022-01-01-preview, 2022-03-01, 2022-06-01-preview, 2022-10-01, 2022-11-01-preview, 2023-04-01-preview, 2023-05-01, 2023-05-02-preview, 2023-08-01-preview" ],
         "Server": [ "Microsoft-IIS/10.0" ],
         "X-Powered-By": [ "ASP.NET" ],
-        "x-ms-request-id": [ "881a1604-9fa1-48cf-9a87-c59170dc8cf0" ],
-        "x-ms-correlation-request-id": [ "881a1604-9fa1-48cf-9a87-c59170dc8cf0" ],
-        "x-ms-routing-request-id": [ "SOUTHEASTASIA:20220530T110219Z:881a1604-9fa1-48cf-9a87-c59170dc8cf0" ],
+        "x-ms-request-id": [ "cadbb24d-23fa-4510-8c5a-5ec2da429471" ],
+        "x-ms-correlation-request-id": [ "cadbb24d-23fa-4510-8c5a-5ec2da429471" ],
+        "x-ms-routing-request-id": [ "JAPANEAST:20231030T103104Z:cadbb24d-23fa-4510-8c5a-5ec2da429471" ],
         "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
         "X-Content-Type-Options": [ "nosniff" ],
-        "Date": [ "Mon, 30 May 2022 11:02:18 GMT" ]
+        "Date": [ "Mon, 30 Oct 2023 10:31:03 GMT" ]
       },
       "ContentHeaders": {
         "Content-Length": [ "51" ],
@@ -209,60 +170,19 @@
       "isContentBase64": false
     }
   },
-  "AzContainerAppManagedEnvDapr+[NoContext]+Delete+$DELETE+https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/testgroup6950/providers/Microsoft.App/managedEnvironments/env6950/daprComponents/envdapr6950?api-version=2022-03-01+1": {
-    "Request": {
-      "Method": "DELETE",
-      "RequestUri": "https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/testgroup6950/providers/Microsoft.App/managedEnvironments/env6950/daprComponents/envdapr6950?api-version=2022-03-01",
-      "Content": null,
-      "isContentBase64": false,
-      "Headers": {
-        "x-ms-unique-id": [ "55" ],
-        "x-ms-client-request-id": [ "aef9b4c4-a745-4a43-9e99-32d3ac64c3a5" ],
-        "CommandName": [ "Remove-AzContainerAppManagedEnvDapr" ],
-        "FullCommandName": [ "Remove-AzContainerAppManagedEnvDapr_Delete" ],
-        "ParameterSetName": [ "__AllParameterSets" ],
-        "User-Agent": [ "AzurePowershell/v0.0.0", "PSVersion/v7.1.2", "Az.App/0.1.0" ],
-        "Authorization": [ "[Filtered]" ]
-      },
-      "ContentHeaders": {
-      }
-    },
-    "Response": {
-      "StatusCode": 204,
-      "Headers": {
-        "Cache-Control": [ "no-cache" ],
-        "Pragma": [ "no-cache" ],
-        "api-supported-versions": [ "2022-01-01-preview, 2022-03-01, 2022-05-01" ],
-        "Server": [ "Microsoft-IIS/10.0" ],
-        "X-Powered-By": [ "ASP.NET" ],
-        "x-ms-ratelimit-remaining-subscription-deletes": [ "14996" ],
-        "x-ms-request-id": [ "fe888110-f0fc-4203-a112-02858b061702" ],
-        "x-ms-correlation-request-id": [ "fe888110-f0fc-4203-a112-02858b061702" ],
-        "x-ms-routing-request-id": [ "SOUTHEASTASIA:20220530T110220Z:fe888110-f0fc-4203-a112-02858b061702" ],
-        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
-        "X-Content-Type-Options": [ "nosniff" ],
-        "Date": [ "Mon, 30 May 2022 11:02:19 GMT" ]
-      },
-      "ContentHeaders": {
-        "Expires": [ "-1" ]
-      },
-      "Content": null,
-      "isContentBase64": false
-    }
-  },
-  "AzContainerAppManagedEnvDapr+[NoContext]+DeleteViaIdentity+$GET+https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/testgroup6950/providers/Microsoft.App/managedEnvironments/env6950/daprComponents/envdapr82l3?api-version=2022-03-01+1": {
+  "AzContainerAppManagedEnvDapr+[NoContext]+UpdateExpanded+$GET+https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/a5hfaey/providers/Microsoft.App/managedEnvironments/a360na/daprComponents/a60wcg?api-version=2023-05-01+1": {
     "Request": {
       "Method": "GET",
-      "RequestUri": "https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/testgroup6950/providers/Microsoft.App/managedEnvironments/env6950/daprComponents/envdapr82l3?api-version=2022-03-01",
+      "RequestUri": "https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/a5hfaey/providers/Microsoft.App/managedEnvironments/a360na/daprComponents/a60wcg?api-version=2023-05-01",
       "Content": null,
       "isContentBase64": false,
       "Headers": {
-        "x-ms-unique-id": [ "56" ],
-        "x-ms-client-request-id": [ "debf5a53-c0af-4857-a33d-33afb8f4e555" ],
-        "CommandName": [ "Get-AzContainerAppManagedEnvDapr" ],
-        "FullCommandName": [ "Get-AzContainerAppManagedEnvDapr_Get" ],
+        "x-ms-unique-id": [ "100" ],
+        "x-ms-client-request-id": [ "f6422952-1b54-4678-971e-a5b8eea6cc14" ],
+        "CommandName": [ "Update-AzContainerAppManagedEnvDapr" ],
+        "FullCommandName": [ "Update-AzContainerAppManagedEnvDapr_UpdateExpanded" ],
         "ParameterSetName": [ "__AllParameterSets" ],
-        "User-Agent": [ "AzurePowershell/v0.0.0", "PSVersion/v7.1.2", "Az.App/0.1.0" ],
+        "User-Agent": [ "AzurePowershell/v0.0.0", "PSVersion/v7.3.8", "Az.App/0.2.0" ],
         "Authorization": [ "[Filtered]" ]
       },
       "ContentHeaders": {
@@ -274,39 +194,205 @@
         "Cache-Control": [ "no-cache" ],
         "Pragma": [ "no-cache" ],
         "Vary": [ "Accept-Encoding" ],
-        "x-ms-ratelimit-remaining-subscription-reads": [ "11960" ],
-        "api-supported-versions": [ "2022-01-01-preview, 2022-03-01, 2022-05-01" ],
+        "x-ms-ratelimit-remaining-subscription-reads": [ "11926" ],
+        "api-supported-versions": [ "2022-01-01-preview, 2022-03-01, 2022-06-01-preview, 2022-10-01, 2022-11-01-preview, 2023-04-01-preview, 2023-05-01, 2023-05-02-preview, 2023-08-01-preview" ],
         "Server": [ "Microsoft-IIS/10.0" ],
         "X-Powered-By": [ "ASP.NET" ],
-        "x-ms-request-id": [ "24657713-652d-4577-9705-5af827fb40ff" ],
-        "x-ms-correlation-request-id": [ "24657713-652d-4577-9705-5af827fb40ff" ],
-        "x-ms-routing-request-id": [ "SOUTHEASTASIA:20220530T110221Z:24657713-652d-4577-9705-5af827fb40ff" ],
+        "x-ms-request-id": [ "8fdff667-dec5-435b-8e6b-c1238f3711d1" ],
+        "x-ms-correlation-request-id": [ "8fdff667-dec5-435b-8e6b-c1238f3711d1" ],
+        "x-ms-routing-request-id": [ "JAPANEAST:20231030T103104Z:8fdff667-dec5-435b-8e6b-c1238f3711d1" ],
         "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
         "X-Content-Type-Options": [ "nosniff" ],
-        "Date": [ "Mon, 30 May 2022 11:02:20 GMT" ]
+        "Date": [ "Mon, 30 Oct 2023 10:31:03 GMT" ]
       },
       "ContentHeaders": {
-        "Content-Length": [ "591" ],
+        "Content-Length": [ "708" ],
         "Content-Type": [ "application/json; charset=utf-8" ],
         "Expires": [ "-1" ]
       },
-      "Content": "{\"id\":\"/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/testgroup6950/providers/Microsoft.App/managedEnvironments/env6950/daprComponents/envdapr82l3\",\"name\":\"envdapr82l3\",\"type\":\"Microsoft.App/managedEnvironments/daprComponents\",\"systemData\":{\"createdBy\":\"v-jinpel@microsoft.com\",\"createdByType\":\"User\",\"createdAt\":\"2022-05-30T11:02:14.0524253\",\"lastModifiedBy\":\"v-jinpel@microsoft.com\",\"lastModifiedByType\":\"User\",\"lastModifiedAt\":\"2022-05-30T11:02:14.0524253\"},\"properties\":{\"componentType\":\"state.azure.cosmosdb\",\"version\":\"v1\",\"ignoreErrors\":false,\"initTimeout\":\"50s\"}}",
+      "Content": "{\"id\":\"/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/a5hfaey/providers/Microsoft.App/managedEnvironments/a360na/daprComponents/a60wcg\",\"name\":\"a60wcg\",\"type\":\"Microsoft.App/managedEnvironments/daprComponents\",\"systemData\":{\"createdBy\":\"v-jinpel@microsoft.com\",\"createdByType\":\"User\",\"createdAt\":\"2023-10-30T10:31:01.4175044\",\"lastModifiedBy\":\"v-jinpel@microsoft.com\",\"lastModifiedByType\":\"User\",\"lastModifiedAt\":\"2023-10-30T10:31:01.4175044\"},\"properties\":{\"componentType\":\"state.azure.cosmosdb\",\"version\":\"v1\",\"ignoreErrors\":false,\"initTimeout\":\"50s\",\"secrets\":[{\"name\":\"masterkey\"}],\"metadata\":[{\"name\":\"masterkey\",\"value\":\"masterkey\"}],\"scopes\":[\"container-app-1\",\"container-app-2\"]}}",
       "isContentBase64": false
     }
   },
-  "AzContainerAppManagedEnvDapr+[NoContext]+DeleteViaIdentity+$DELETE+https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/testgroup6950/providers/Microsoft.App/managedEnvironments/env6950/daprComponents/envdapr82l3?api-version=2022-03-01+2": {
+  "AzContainerAppManagedEnvDapr+[NoContext]+UpdateExpanded+$PUT+https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/a5hfaey/providers/Microsoft.App/managedEnvironments/a360na/daprComponents/a60wcg?api-version=2023-05-01+2": {
     "Request": {
-      "Method": "DELETE",
-      "RequestUri": "https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/testgroup6950/providers/Microsoft.App/managedEnvironments/env6950/daprComponents/envdapr82l3?api-version=2022-03-01",
+      "Method": "PUT",
+      "RequestUri": "https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/a5hfaey/providers/Microsoft.App/managedEnvironments/a360na/daprComponents/a60wcg?api-version=2023-05-01",
+      "Content": "{\r\n  \"properties\": {\r\n    \"componentType\": \"state.azure.cosmosdb\",\r\n    \"version\": \"v2\",\r\n    \"ignoreErrors\": false,\r\n    \"initTimeout\": \"60s\",\r\n    \"secrets\": [\r\n      {\r\n        \"name\": \"masterkey\",\r\n        \"value\": \"keyvalue\"\r\n      }\r\n    ],\r\n    \"metadata\": [\r\n      {\r\n        \"name\": \"masterkey\",\r\n        \"value\": \"masterkey\"\r\n      }\r\n    ],\r\n    \"scopes\": [ \"container-app-1\", \"container-app-2\" ]\r\n  }\r\n}",
+      "isContentBase64": false,
+      "Headers": {
+      },
+      "ContentHeaders": {
+        "Content-Type": [ "application/json" ],
+        "Content-Length": [ "415" ]
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "Vary": [ "Accept-Encoding" ],
+        "x-ms-ratelimit-remaining-subscription-writes": [ "1193" ],
+        "api-supported-versions": [ "2022-01-01-preview, 2022-03-01, 2022-06-01-preview, 2022-10-01, 2022-11-01-preview, 2023-04-01-preview, 2023-05-01, 2023-05-02-preview, 2023-08-01-preview" ],
+        "Server": [ "Microsoft-IIS/10.0" ],
+        "X-Powered-By": [ "ASP.NET" ],
+        "x-ms-request-id": [ "a48ccbac-9b1f-4770-8351-2c7e6e6dd5aa" ],
+        "x-ms-correlation-request-id": [ "a48ccbac-9b1f-4770-8351-2c7e6e6dd5aa" ],
+        "x-ms-routing-request-id": [ "JAPANEAST:20231030T103105Z:a48ccbac-9b1f-4770-8351-2c7e6e6dd5aa" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "Date": [ "Mon, 30 Oct 2023 10:31:04 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "709" ],
+        "Content-Type": [ "application/json; charset=utf-8" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\"id\":\"/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/a5hfaey/providers/Microsoft.App/managedEnvironments/a360na/daprComponents/a60wcg\",\"name\":\"a60wcg\",\"type\":\"Microsoft.App/managedEnvironments/daprComponents\",\"systemData\":{\"createdBy\":\"v-jinpel@microsoft.com\",\"createdByType\":\"User\",\"createdAt\":\"2023-10-30T10:31:01.4175044\",\"lastModifiedBy\":\"v-jinpel@microsoft.com\",\"lastModifiedByType\":\"User\",\"lastModifiedAt\":\"2023-10-30T10:31:04.8237276Z\"},\"properties\":{\"componentType\":\"state.azure.cosmosdb\",\"version\":\"v2\",\"ignoreErrors\":false,\"initTimeout\":\"60s\",\"secrets\":[{\"name\":\"masterkey\"}],\"metadata\":[{\"name\":\"masterkey\",\"value\":\"masterkey\"}],\"scopes\":[\"container-app-1\",\"container-app-2\"]}}",
+      "isContentBase64": false
+    }
+  },
+  "AzContainerAppManagedEnvDapr+[NoContext]+UpdateViaIdentityExpanded+$GET+https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/a5hfaey/providers/Microsoft.App/managedEnvironments/a360na/daprComponents/a60wcg?api-version=2023-05-01+1": {
+    "Request": {
+      "Method": "GET",
+      "RequestUri": "https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/a5hfaey/providers/Microsoft.App/managedEnvironments/a360na/daprComponents/a60wcg?api-version=2023-05-01",
       "Content": null,
       "isContentBase64": false,
       "Headers": {
-        "x-ms-unique-id": [ "57" ],
-        "x-ms-client-request-id": [ "2dfe6a90-9d3b-407d-88c1-8edf82f8fdd2" ],
-        "CommandName": [ "Remove-AzContainerAppManagedEnvDapr" ],
-        "FullCommandName": [ "Remove-AzContainerAppManagedEnvDapr_DeleteViaIdentity" ],
+        "x-ms-unique-id": [ "102" ],
+        "x-ms-client-request-id": [ "2125c9a8-9017-4118-a66b-0a82b75ac98e" ],
+        "CommandName": [ "Get-AzContainerAppManagedEnvDapr" ],
+        "FullCommandName": [ "Get-AzContainerAppManagedEnvDapr_Get" ],
         "ParameterSetName": [ "__AllParameterSets" ],
-        "User-Agent": [ "AzurePowershell/v0.0.0", "PSVersion/v7.1.2", "Az.App/0.1.0" ],
+        "User-Agent": [ "AzurePowershell/v0.0.0", "PSVersion/v7.3.8", "Az.App/0.2.0" ],
+        "Authorization": [ "[Filtered]" ]
+      },
+      "ContentHeaders": {
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "Vary": [ "Accept-Encoding" ],
+        "x-ms-ratelimit-remaining-subscription-reads": [ "11925" ],
+        "api-supported-versions": [ "2022-01-01-preview, 2022-03-01, 2022-06-01-preview, 2022-10-01, 2022-11-01-preview, 2023-04-01-preview, 2023-05-01, 2023-05-02-preview, 2023-08-01-preview" ],
+        "Server": [ "Microsoft-IIS/10.0" ],
+        "X-Powered-By": [ "ASP.NET" ],
+        "x-ms-request-id": [ "14522f58-0af0-4fae-a250-ad5817556f55" ],
+        "x-ms-correlation-request-id": [ "14522f58-0af0-4fae-a250-ad5817556f55" ],
+        "x-ms-routing-request-id": [ "JAPANEAST:20231030T103105Z:14522f58-0af0-4fae-a250-ad5817556f55" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "Date": [ "Mon, 30 Oct 2023 10:31:04 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "708" ],
+        "Content-Type": [ "application/json; charset=utf-8" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\"id\":\"/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/a5hfaey/providers/Microsoft.App/managedEnvironments/a360na/daprComponents/a60wcg\",\"name\":\"a60wcg\",\"type\":\"Microsoft.App/managedEnvironments/daprComponents\",\"systemData\":{\"createdBy\":\"v-jinpel@microsoft.com\",\"createdByType\":\"User\",\"createdAt\":\"2023-10-30T10:31:01.4175044\",\"lastModifiedBy\":\"v-jinpel@microsoft.com\",\"lastModifiedByType\":\"User\",\"lastModifiedAt\":\"2023-10-30T10:31:04.8237276\"},\"properties\":{\"componentType\":\"state.azure.cosmosdb\",\"version\":\"v2\",\"ignoreErrors\":false,\"initTimeout\":\"60s\",\"secrets\":[{\"name\":\"masterkey\"}],\"metadata\":[{\"name\":\"masterkey\",\"value\":\"masterkey\"}],\"scopes\":[\"container-app-1\",\"container-app-2\"]}}",
+      "isContentBase64": false
+    }
+  },
+  "AzContainerAppManagedEnvDapr+[NoContext]+UpdateViaIdentityExpanded+$GET+https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/a5hfaey/providers/Microsoft.App/managedEnvironments/a360na/daprComponents/a60wcg?api-version=2023-05-01+2": {
+    "Request": {
+      "Method": "GET",
+      "RequestUri": "https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/a5hfaey/providers/Microsoft.App/managedEnvironments/a360na/daprComponents/a60wcg?api-version=2023-05-01",
+      "Content": null,
+      "isContentBase64": false,
+      "Headers": {
+        "x-ms-unique-id": [ "103" ],
+        "x-ms-client-request-id": [ "d1b42e60-f3cd-43c0-9409-6a782e2c7c18" ],
+        "CommandName": [ "Update-AzContainerAppManagedEnvDapr" ],
+        "FullCommandName": [ "Update-AzContainerAppManagedEnvDapr_UpdateViaIdentityExpanded" ],
+        "ParameterSetName": [ "__AllParameterSets" ],
+        "User-Agent": [ "AzurePowershell/v0.0.0", "PSVersion/v7.3.8", "Az.App/0.2.0" ],
+        "Authorization": [ "[Filtered]" ]
+      },
+      "ContentHeaders": {
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "Vary": [ "Accept-Encoding" ],
+        "x-ms-ratelimit-remaining-subscription-reads": [ "11924" ],
+        "api-supported-versions": [ "2022-01-01-preview, 2022-03-01, 2022-06-01-preview, 2022-10-01, 2022-11-01-preview, 2023-04-01-preview, 2023-05-01, 2023-05-02-preview, 2023-08-01-preview" ],
+        "Server": [ "Microsoft-IIS/10.0" ],
+        "X-Powered-By": [ "ASP.NET" ],
+        "x-ms-request-id": [ "29990010-4237-4750-8b94-82170af4bc89" ],
+        "x-ms-correlation-request-id": [ "29990010-4237-4750-8b94-82170af4bc89" ],
+        "x-ms-routing-request-id": [ "JAPANEAST:20231030T103106Z:29990010-4237-4750-8b94-82170af4bc89" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "Date": [ "Mon, 30 Oct 2023 10:31:05 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "708" ],
+        "Content-Type": [ "application/json; charset=utf-8" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\"id\":\"/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/a5hfaey/providers/Microsoft.App/managedEnvironments/a360na/daprComponents/a60wcg\",\"name\":\"a60wcg\",\"type\":\"Microsoft.App/managedEnvironments/daprComponents\",\"systemData\":{\"createdBy\":\"v-jinpel@microsoft.com\",\"createdByType\":\"User\",\"createdAt\":\"2023-10-30T10:31:01.4175044\",\"lastModifiedBy\":\"v-jinpel@microsoft.com\",\"lastModifiedByType\":\"User\",\"lastModifiedAt\":\"2023-10-30T10:31:04.8237276\"},\"properties\":{\"componentType\":\"state.azure.cosmosdb\",\"version\":\"v2\",\"ignoreErrors\":false,\"initTimeout\":\"60s\",\"secrets\":[{\"name\":\"masterkey\"}],\"metadata\":[{\"name\":\"masterkey\",\"value\":\"masterkey\"}],\"scopes\":[\"container-app-1\",\"container-app-2\"]}}",
+      "isContentBase64": false
+    }
+  },
+  "AzContainerAppManagedEnvDapr+[NoContext]+UpdateViaIdentityExpanded+$PUT+https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/a5hfaey/providers/Microsoft.App/managedEnvironments/a360na/daprComponents/a60wcg?api-version=2023-05-01+3": {
+    "Request": {
+      "Method": "PUT",
+      "RequestUri": "https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/a5hfaey/providers/Microsoft.App/managedEnvironments/a360na/daprComponents/a60wcg?api-version=2023-05-01",
+      "Content": "{\r\n  \"properties\": {\r\n    \"componentType\": \"state.azure.cosmosdb\",\r\n    \"version\": \"v2\",\r\n    \"ignoreErrors\": false,\r\n    \"initTimeout\": \"60s\",\r\n    \"secrets\": [\r\n      {\r\n        \"name\": \"masterkey\",\r\n        \"value\": \"keyvalue\"\r\n      }\r\n    ],\r\n    \"metadata\": [\r\n      {\r\n        \"name\": \"masterkey\",\r\n        \"value\": \"masterkey\"\r\n      }\r\n    ],\r\n    \"scopes\": [ \"container-app-1\", \"container-app-2\" ]\r\n  }\r\n}",
+      "isContentBase64": false,
+      "Headers": {
+      },
+      "ContentHeaders": {
+        "Content-Type": [ "application/json" ],
+        "Content-Length": [ "415" ]
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "Vary": [ "Accept-Encoding" ],
+        "x-ms-ratelimit-remaining-subscription-writes": [ "1192" ],
+        "api-supported-versions": [ "2022-01-01-preview, 2022-03-01, 2022-06-01-preview, 2022-10-01, 2022-11-01-preview, 2023-04-01-preview, 2023-05-01, 2023-05-02-preview, 2023-08-01-preview" ],
+        "Server": [ "Microsoft-IIS/10.0" ],
+        "X-Powered-By": [ "ASP.NET" ],
+        "x-ms-request-id": [ "b9e2a010-abf6-43cc-8598-584e7da202b2" ],
+        "x-ms-correlation-request-id": [ "b9e2a010-abf6-43cc-8598-584e7da202b2" ],
+        "x-ms-routing-request-id": [ "JAPANEAST:20231030T103106Z:b9e2a010-abf6-43cc-8598-584e7da202b2" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "Date": [ "Mon, 30 Oct 2023 10:31:05 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "709" ],
+        "Content-Type": [ "application/json; charset=utf-8" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\"id\":\"/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/a5hfaey/providers/Microsoft.App/managedEnvironments/a360na/daprComponents/a60wcg\",\"name\":\"a60wcg\",\"type\":\"Microsoft.App/managedEnvironments/daprComponents\",\"systemData\":{\"createdBy\":\"v-jinpel@microsoft.com\",\"createdByType\":\"User\",\"createdAt\":\"2023-10-30T10:31:01.4175044\",\"lastModifiedBy\":\"v-jinpel@microsoft.com\",\"lastModifiedByType\":\"User\",\"lastModifiedAt\":\"2023-10-30T10:31:06.3549763Z\"},\"properties\":{\"componentType\":\"state.azure.cosmosdb\",\"version\":\"v2\",\"ignoreErrors\":false,\"initTimeout\":\"60s\",\"secrets\":[{\"name\":\"masterkey\"}],\"metadata\":[{\"name\":\"masterkey\",\"value\":\"masterkey\"}],\"scopes\":[\"container-app-1\",\"container-app-2\"]}}",
+      "isContentBase64": false
+    }
+  },
+  "AzContainerAppManagedEnvDapr+[NoContext]+Delete+$DELETE+https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/a5hfaey/providers/Microsoft.App/managedEnvironments/a360na/daprComponents/a60wcg?api-version=2023-05-01+1": {
+    "Request": {
+      "Method": "DELETE",
+      "RequestUri": "https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/a5hfaey/providers/Microsoft.App/managedEnvironments/a360na/daprComponents/a60wcg?api-version=2023-05-01",
+      "Content": null,
+      "isContentBase64": false,
+      "Headers": {
+        "x-ms-unique-id": [ "105" ],
+        "x-ms-client-request-id": [ "57bb616e-ec99-4add-8f1e-f9eb42e4dc3b" ],
+        "CommandName": [ "Remove-AzContainerAppManagedEnvDapr" ],
+        "FullCommandName": [ "Remove-AzContainerAppManagedEnvDapr_Delete" ],
+        "ParameterSetName": [ "__AllParameterSets" ],
+        "User-Agent": [ "AzurePowershell/v0.0.0", "PSVersion/v7.3.8", "Az.App/0.2.0" ],
         "Authorization": [ "[Filtered]" ]
       },
       "ContentHeaders": {
@@ -317,16 +403,16 @@
       "Headers": {
         "Cache-Control": [ "no-cache" ],
         "Pragma": [ "no-cache" ],
-        "api-supported-versions": [ "2022-01-01-preview, 2022-03-01, 2022-05-01" ],
+        "api-supported-versions": [ "2022-01-01-preview, 2022-03-01, 2022-06-01-preview, 2022-10-01, 2022-11-01-preview, 2023-04-01-preview, 2023-05-01, 2023-05-02-preview, 2023-08-01-preview" ],
         "Server": [ "Microsoft-IIS/10.0" ],
         "X-Powered-By": [ "ASP.NET" ],
         "x-ms-ratelimit-remaining-subscription-deletes": [ "14995" ],
-        "x-ms-request-id": [ "1e448b5d-bda3-464e-b320-415a7093091d" ],
-        "x-ms-correlation-request-id": [ "1e448b5d-bda3-464e-b320-415a7093091d" ],
-        "x-ms-routing-request-id": [ "SOUTHEASTASIA:20220530T110222Z:1e448b5d-bda3-464e-b320-415a7093091d" ],
+        "x-ms-request-id": [ "c0d15cd6-9e44-4d35-9754-da951cfeab62" ],
+        "x-ms-correlation-request-id": [ "c0d15cd6-9e44-4d35-9754-da951cfeab62" ],
+        "x-ms-routing-request-id": [ "JAPANEAST:20231030T103107Z:c0d15cd6-9e44-4d35-9754-da951cfeab62" ],
         "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
         "X-Content-Type-Options": [ "nosniff" ],
-        "Date": [ "Mon, 30 May 2022 11:02:21 GMT" ]
+        "Date": [ "Mon, 30 Oct 2023 10:31:06 GMT" ]
       },
       "ContentHeaders": {
         "Expires": [ "-1" ]

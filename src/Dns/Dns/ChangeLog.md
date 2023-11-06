@@ -18,7 +18,10 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
-* Added new cmdlets `Get-AzDnsDnssecConfig`, `New-AzDnsDnssecConfig` and `Remove-AzDnsDnssecConfig`.
+* Added cmdlets:
+    - `Get-AzDnsDnssecConfig`
+    - `New-AzDnsDnssecConfig`
+    - `Remove-AzDnsDnssecConfig`
 * Added three new record types, `DS`, `TLSA` and `NAPTR`.
 
 ## Version 1.1.3

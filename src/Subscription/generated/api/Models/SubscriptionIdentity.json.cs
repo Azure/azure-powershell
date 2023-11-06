@@ -77,6 +77,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Subscription.Models
                 return;
             }
             {_subscriptionId = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Subscription.Runtime.Json.JsonString>("subscriptionId"), out var __jsonSubscriptionId) ? (string)__jsonSubscriptionId : (string)SubscriptionId;}
+            {_operationId = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Subscription.Runtime.Json.JsonString>("operationId"), out var __jsonOperationId) ? (string)__jsonOperationId : (string)OperationId;}
             {_aliasName = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Subscription.Runtime.Json.JsonString>("aliasName"), out var __jsonAliasName) ? (string)__jsonAliasName : (string)AliasName;}
             {_billingAccountId = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Subscription.Runtime.Json.JsonString>("billingAccountId"), out var __jsonBillingAccountId) ? (string)__jsonBillingAccountId : (string)BillingAccountId;}
             {_id = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Subscription.Runtime.Json.JsonString>("id"), out var __jsonId) ? (string)__jsonId : (string)Id;}
@@ -103,6 +104,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Subscription.Models
                 return container;
             }
             AddIf( null != (((object)this._subscriptionId)?.ToString()) ? (Microsoft.Azure.PowerShell.Cmdlets.Subscription.Runtime.Json.JsonNode) new Microsoft.Azure.PowerShell.Cmdlets.Subscription.Runtime.Json.JsonString(this._subscriptionId.ToString()) : null, "subscriptionId" ,container.Add );
+            AddIf( null != (((object)this._operationId)?.ToString()) ? (Microsoft.Azure.PowerShell.Cmdlets.Subscription.Runtime.Json.JsonNode) new Microsoft.Azure.PowerShell.Cmdlets.Subscription.Runtime.Json.JsonString(this._operationId.ToString()) : null, "operationId" ,container.Add );
             AddIf( null != (((object)this._aliasName)?.ToString()) ? (Microsoft.Azure.PowerShell.Cmdlets.Subscription.Runtime.Json.JsonNode) new Microsoft.Azure.PowerShell.Cmdlets.Subscription.Runtime.Json.JsonString(this._aliasName.ToString()) : null, "aliasName" ,container.Add );
             AddIf( null != (((object)this._billingAccountId)?.ToString()) ? (Microsoft.Azure.PowerShell.Cmdlets.Subscription.Runtime.Json.JsonNode) new Microsoft.Azure.PowerShell.Cmdlets.Subscription.Runtime.Json.JsonString(this._billingAccountId.ToString()) : null, "billingAccountId" ,container.Add );
             AddIf( null != (((object)this._id)?.ToString()) ? (Microsoft.Azure.PowerShell.Cmdlets.Subscription.Runtime.Json.JsonNode) new Microsoft.Azure.PowerShell.Cmdlets.Subscription.Runtime.Json.JsonString(this._id.ToString()) : null, "id" ,container.Add );

@@ -23,14 +23,29 @@ Create an in-memory object for Volume.
 New-AzContainerAppVolumeObject -Name "volumeName" -StorageName "azpssa"
 
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.App.Models.Api20220301.Volume
+Microsoft.Azure.PowerShell.Cmdlets.App.Models.Volume
+.Notes
+COMPLEX PARAMETER PROPERTIES
+
+To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
+
+SECRET <ISecretVolumeItem[]>: List of secrets to be added in volume. If no secrets are provided, all secrets in collection will be added to volume.
+  [Path <String>]: Path to project secret to. If no path is provided, path defaults to name of secret listed in secretRef.
+  [SecretRef <String>]: Name of the Container App secret from which to pull the secret value.
 .Link
-https://learn.microsoft.com/powershell/module/az.app/new-azcontainerappvolumeobject
+https://learn.microsoft.com/powershell/module/Az.App/new-azcontainerappvolumeobject
 #>
 function New-AzContainerAppVolumeObject {
-[OutputType([Microsoft.Azure.PowerShell.Cmdlets.App.Models.Api20220301.Volume])]
+[OutputType([Microsoft.Azure.PowerShell.Cmdlets.App.Models.Volume])]
 [CmdletBinding(PositionalBinding=$false)]
 param(
+    [Parameter()]
+    [Microsoft.Azure.PowerShell.Cmdlets.App.Category('Body')]
+    [System.String]
+    # Mount options used while mounting the AzureFile.
+    # Must be a comma-separated string.
+    ${MountOption},
+
     [Parameter()]
     [Microsoft.Azure.PowerShell.Cmdlets.App.Category('Body')]
     [System.String]
@@ -39,15 +54,23 @@ param(
 
     [Parameter()]
     [Microsoft.Azure.PowerShell.Cmdlets.App.Category('Body')]
+    [Microsoft.Azure.PowerShell.Cmdlets.App.Models.ISecretVolumeItem[]]
+    # List of secrets to be added in volume.
+    # If no secrets are provided, all secrets in collection will be added to volume.
+    # To construct, see NOTES section for SECRET properties and create a hash table.
+    ${Secret},
+
+    [Parameter()]
+    [Microsoft.Azure.PowerShell.Cmdlets.App.Category('Body')]
     [System.String]
     # Name of storage resource.
-    # No need to provide for EmptyDir.
+    # No need to provide for EmptyDir and Secret.
     ${StorageName},
 
     [Parameter()]
-    [ArgumentCompleter([Microsoft.Azure.PowerShell.Cmdlets.App.Support.StorageType])]
+    [Microsoft.Azure.PowerShell.Cmdlets.App.PSArgumentCompleterAttribute("AzureFile", "EmptyDir", "Secret")]
     [Microsoft.Azure.PowerShell.Cmdlets.App.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.App.Support.StorageType]
+    [System.String]
     # Storage type for the volume.
     # If not provided, use EmptyDir.
     ${StorageType}
@@ -83,6 +106,10 @@ begin {
         }
         $cmdInfo = Get-Command -Name $mapping[$parameterSet]
         [Microsoft.Azure.PowerShell.Cmdlets.App.Runtime.MessageAttributeHelper]::ProcessCustomAttributesAtRuntime($cmdInfo, $MyInvocation, $parameterSet, $PSCmdlet)
+        if ($null -ne $MyInvocation.MyCommand -and [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PromptedPreviewMessageCmdlets -notcontains $MyInvocation.MyCommand.Name -and [Microsoft.Azure.PowerShell.Cmdlets.App.Runtime.MessageAttributeHelper]::ContainsPreviewAttribute($cmdInfo, $MyInvocation)){
+            [Microsoft.Azure.PowerShell.Cmdlets.App.Runtime.MessageAttributeHelper]::ProcessPreviewMessageAttributesAtRuntime($cmdInfo, $MyInvocation, $parameterSet, $PSCmdlet)
+            [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PromptedPreviewMessageCmdlets.Enqueue($MyInvocation.MyCommand.Name)
+        }
         $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Cmdlet)
         $scriptCmd = {& $wrappedCmd @PSBoundParameters}
         $steppablePipeline = $scriptCmd.GetSteppablePipeline($MyInvocation.CommandOrigin)

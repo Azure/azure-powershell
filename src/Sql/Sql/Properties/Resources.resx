@@ -751,4 +751,16 @@
   <data name="SetAzureSqlInstanceDtcWarning" xml:space="preserve">
     <value>Are you sure you want to update DTC on managed instance '{1}' located in resource group '{0}'?</value>
   </data>
+  <data name="AzureElasticJobPrivateEndpointExists" xml:space="preserve">
+    <value>Job Private Endpoint with name '{0}' already exists in agent '{1}'</value>
+    <comment>Elastic Jobs</comment>
+  </data>
+  <data name="AzureElasticJobPrivateEndpointNotExists" xml:space="preserve">
+    <value>Job Private Endpoint with name '{0}' does not exist in agent '{1}'</value>
+    <comment>Elastic Jobs</comment>
+  </data>
+  <data name="RemoveElasticJobPrivateEndpointWarning" xml:space="preserve">
+    <value>Are you sure you want to remove the private endpoint '{0}' from agent '{1}'?</value>
+    <comment>Elastic Jobs</comment>
+  </data>
 </root>

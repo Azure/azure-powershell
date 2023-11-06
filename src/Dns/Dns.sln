@@ -1,4 +1,4 @@
-Microsoft Visual Studio Solution File, Format Version 12.00
+﻿Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.7.34221.43
 MinimumVisualStudioVersion = 10.0.40219.1
@@ -27,6 +27,8 @@ EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Network.Management.Sdk", "..\Network\Network.Management.Sdk\Network.Management.Sdk.csproj", "{FC8E60B1-3B84-4453-97E1-8D478D08302A}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "AssemblyLoading", "..\Accounts\AssemblyLoading\AssemblyLoading.csproj", "{4D4EF0B2-51A6-4651-8261-396527231C15}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Az.Dns", "Dns.Autorest\Az.Dns.csproj", "{50F68616-7E52-4267-9D98-57E8ACE76517}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -82,6 +84,10 @@ Global
 		{4D4EF0B2-51A6-4651-8261-396527231C15}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{4D4EF0B2-51A6-4651-8261-396527231C15}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{4D4EF0B2-51A6-4651-8261-396527231C15}.Release|Any CPU.Build.0 = Release|Any CPU
+		{50F68616-7E52-4267-9D98-57E8ACE76517}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{50F68616-7E52-4267-9D98-57E8ACE76517}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{50F68616-7E52-4267-9D98-57E8ACE76517}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{50F68616-7E52-4267-9D98-57E8ACE76517}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
