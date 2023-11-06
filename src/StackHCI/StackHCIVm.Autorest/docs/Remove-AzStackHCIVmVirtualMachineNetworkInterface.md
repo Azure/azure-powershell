@@ -14,15 +14,15 @@ The operation to delete a network interface from a virtual machine.
 
 ### ByResourceId (Default)
 ```
-Remove-AzStackHCIVmVirtualMachineNetworkInterface -ResourceId <String> [-NicIds <String[]>]
- [-NicNames <String[]>] [-NicResourceGroup <String>] [-Confirm] [-WhatIf] [<CommonParameters>]
+Remove-AzStackHCIVmVirtualMachineNetworkInterface -ResourceId <String> [-NicId <String[]>]
+ [-NicName <String[]>] [-NicResourceGroup <String>] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ### ByName
 ```
 Remove-AzStackHCIVmVirtualMachineNetworkInterface -Name <String> -ResourceGroupName <String>
- [-SubscriptionId <String>] [-NicIds <String[]>] [-NicNames <String[]>] [-NicResourceGroup <String>]
- [-Confirm] [-WhatIf] [<CommonParameters>]
+ [-SubscriptionId <String>] [-NicId <String[]>] [-NicName <String[]>] [-NicResourceGroup <String>] [-Confirm]
+ [-WhatIf] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -60,7 +60,7 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -NicIds
+### -NicId
 NetworkInterfaces - list of network interfaces to be attached from  the virtual machine in id format.
 
 ```yaml
@@ -75,7 +75,7 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -NicNames
+### -NicName
 NetworkInterfaces - list of network interfaces to be removed from the virtual machine in name format.
 
 ```yaml

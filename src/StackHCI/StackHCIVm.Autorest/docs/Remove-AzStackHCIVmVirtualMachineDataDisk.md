@@ -14,14 +14,14 @@ The operation to delete a data disk from a virtual machine.
 
 ### ByResourceId (Default)
 ```
-Remove-AzStackHCIVmVirtualMachineDataDisk -ResourceId <String> [-DataDiskIds <String[]>]
- [-DataDiskNames <String[]>] [-DataDiskResourceGroup <String>] [-Confirm] [-WhatIf] [<CommonParameters>]
+Remove-AzStackHCIVmVirtualMachineDataDisk -ResourceId <String> [-DataDiskId <String[]>]
+ [-DataDiskName <String[]>] [-DataDiskResourceGroup <String>] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ### ByName
 ```
 Remove-AzStackHCIVmVirtualMachineDataDisk -Name <String> -ResourceGroupName <String>
- [-SubscriptionId <String>] [-DataDiskIds <String[]>] [-DataDiskNames <String[]>]
+ [-SubscriptionId <String>] [-DataDiskId <String[]>] [-DataDiskName <String[]>]
  [-DataDiskResourceGroup <String>] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
@@ -45,7 +45,7 @@ This command removes a data disk from the virtual machine in the specified resou
 
 ## PARAMETERS
 
-### -DataDiskIds
+### -DataDiskId
 Data Disks - list of data disks to be removed from  the virtual machine in id format.
 
 ```yaml
@@ -60,7 +60,7 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -DataDiskNames
+### -DataDiskName
 Data Disks - list of data disks to be removed from  the virtual machine in name format.
 
 ```yaml

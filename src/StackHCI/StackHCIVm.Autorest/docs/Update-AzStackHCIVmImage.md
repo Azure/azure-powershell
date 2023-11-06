@@ -32,7 +32,7 @@ Please note some properties can be set only during image creation.
 
 ### Example 1: Update an Image.
 ```powershell
-PS C:\> Update-AzStackHCIVmVImage  -Name "testImage" -ResourceGroupName "test-rg" -Tags @{TagName = TagValue }
+PS C:\> Update-AzStackHCIVmImage  -Name "testImage" -ResourceGroupName "test-rg" -Tags @{TagName = TagValue }
 ```
 
 ```output

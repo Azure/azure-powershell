@@ -15,13 +15,13 @@ The operation to update a virtual machine instance.
 ### ByResourceId (Default)
 ```
 Update-AzStackHCIVmVirtualMachine -ResourceId <String> [-ProvisionVMAgent] [-ProvisionVMConfigAgent]
- [-VmMemoryInMB <Int64>] [-VmProcessors <Int32>] [-VmSize <VMSizeEnum>] [<CommonParameters>]
+ [-VmMemoryInMB <Int64>] [-VmProcessor <Int32>] [-VmSize <VMSizeEnum>] [<CommonParameters>]
 ```
 
 ### ByName
 ```
 Update-AzStackHCIVmVirtualMachine -Name <String> -ResourceGroupName <String> [-SubscriptionId <String>]
- [-ProvisionVMAgent] [-ProvisionVMConfigAgent] [-VmMemoryInMB <Int64>] [-VmProcessors <Int32>]
+ [-ProvisionVMAgent] [-ProvisionVMConfigAgent] [-VmMemoryInMB <Int64>] [-VmProcessor <Int32>]
  [-VmSize <VMSizeEnum>] [<CommonParameters>]
 ```
 
@@ -151,7 +151,7 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -VmProcessors
+### -VmProcessor
 number of processors for the virtual machine instance
 
 ```yaml

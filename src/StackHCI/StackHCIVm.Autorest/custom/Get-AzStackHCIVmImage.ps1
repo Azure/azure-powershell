@@ -18,14 +18,7 @@
 Gets a gallery image
 .Description
 Gets a gallery image
-.Example
-PS C:\> {{ Add code here }}
 
-{{ Add output here }}
-.Example
-PS C:\> {{ Add code here }}
-
-{{ Add output here }}
 
 .Outputs
 Microsoft.Azure.PowerShell.Cmdlets.StackHCIVm.Models.Api20230901Preview.IGalleryImages

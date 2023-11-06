@@ -24,7 +24,7 @@ New-AzStackHCIVmVirtualMachine -Name <String> -ResourceGroupName <String> -Custo
  [-NicResourceGroup <String>] [-ProvisionVMAgent] [-ProvisionVMConfigAgent] [-SecureBootEnabled]
  [-SshPublicKeys <String[]>] [-StoragePathId <String>] [-StoragePathName <String>]
  [-StoragePathResourceGroup <String>] [-Tag <Hashtable>] [-TimeZone <String>] [-VmMemoryInMB <Int64>]
- [-VmProcessors <Int32>] [-VmSize <VMSizeEnum>] [-Confirm] [-WhatIf] [<CommonParameters>]
+ [-VmProcessor <Int32>] [-VmSize <VMSizeEnum>] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ### ByImageName
@@ -38,7 +38,7 @@ New-AzStackHCIVmVirtualMachine -Name <String> -ResourceGroupName <String> -Custo
  [-NicNames <String[]>] [-NicResourceGroup <String>] [-ProvisionVMAgent] [-ProvisionVMConfigAgent]
  [-SecureBootEnabled] [-SshPublicKeys <String[]>] [-StoragePathId <String>] [-StoragePathName <String>]
  [-StoragePathResourceGroup <String>] [-Tag <Hashtable>] [-TimeZone <String>] [-VmMemoryInMB <Int64>]
- [-VmProcessors <Int32>] [-VmSize <VMSizeEnum>] [-Confirm] [-WhatIf] [<CommonParameters>]
+ [-VmProcessor <Int32>] [-VmSize <VMSizeEnum>] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ### ByOsDiskId
@@ -52,7 +52,7 @@ New-AzStackHCIVmVirtualMachine -Name <String> -ResourceGroupName <String> -Custo
  [-NicResourceGroup <String>] [-ProvisionVMAgent] [-ProvisionVMConfigAgent] [-SecureBootEnabled]
  [-SshPublicKeys <String[]>] [-StoragePathId <String>] [-StoragePathName <String>]
  [-StoragePathResourceGroup <String>] [-Tag <Hashtable>] [-TimeZone <String>] [-VmMemoryInMB <Int64>]
- [-VmProcessors <Int32>] [-VmSize <VMSizeEnum>] [-Confirm] [-WhatIf] [<CommonParameters>]
+ [-VmProcessor <Int32>] [-VmSize <VMSizeEnum>] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ### ByOsDiskName
@@ -66,7 +66,7 @@ New-AzStackHCIVmVirtualMachine -Name <String> -ResourceGroupName <String> -Custo
  [-NicResourceGroup <String>] [-OSDiskResourceGroup <String>] [-ProvisionVMAgent] [-ProvisionVMConfigAgent]
  [-SecureBootEnabled] [-SshPublicKeys <String[]>] [-StoragePathId <String>] [-StoragePathName <String>]
  [-StoragePathResourceGroup <String>] [-Tag <Hashtable>] [-TimeZone <String>] [-VmMemoryInMB <Int64>]
- [-VmProcessors <Int32>] [-VmSize <VMSizeEnum>] [-Confirm] [-WhatIf] [<CommonParameters>]
+ [-VmProcessor <Int32>] [-VmSize <VMSizeEnum>] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -681,7 +681,7 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -VmProcessors
+### -VmProcessor
 Number of processors for the virtual machine
 
 ```yaml

@@ -4,8 +4,7 @@ The operation to add a network interface to a virtual machine.
 
 .Description
 The operation to add a network interface to a virtual machine. 
-.Example
-PS C:\> {{Add-AzStackHCIVmVirtualMachineNic  -Name "sampleVirtualMachine-1030" -ResourceGroupName mkclus0824-rg -SubscriptionId "0709bd7a-8383-4e1d-98c8-f81d1b3443fc" -NicNames testNic }}
+
 
 .Outputs
 Microsoft.Azure.PowerShell.Cmdlets.StackHCIVm.Models.Api20230901Preview.IVirtualMachineInstance
