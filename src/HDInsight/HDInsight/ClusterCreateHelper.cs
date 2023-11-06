@@ -372,11 +372,7 @@ namespace Microsoft.Azure.Commands.HDInsight.Models
 
         public static string GetNodeSize(string clusterType, string nodeRoleType, Dictionary<string, Dictionary<string, string>> defaultVmSizeConfigurations)
         {
-            string vmSize=GetDefaultVmSizeFromDictionary(clusterType.ToUpper(), nodeRoleType, defaultVmSizeConfigurations);
-            if (vmSize == null)
-            {
-                vmSize = GetNodeSize(clusterType, nodeRoleType);
-            }
+            string vmSize=GetDefaultVmSizeFromDictionary(clusterType.ToUpper(), nodeRoleType, defaultVmSizeConfigurations) ?? GetNodeSize(clusterType, nodeRoleType);
             return vmSize;
         }
 

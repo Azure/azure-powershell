@@ -56,7 +56,7 @@ DotNetFrameworkVersion = '4.7.2'
 RequiredModules = @(@{ModuleName = 'Az.Accounts'; ModuleVersion = '2.13.0'; })
 
 # Assemblies that must be loaded prior to importing this module
-RequiredAssemblies = 'Microsoft.Azure.Management.HDInsight.dll', 
+RequiredAssemblies = 'Microsoft.Azure.PowerShell.HDInsight.Management.Sdk.dll', 
                'Microsoft.Azure.Management.HDInsight.Job.dll', 
                'Microsoft.WindowsAzure.Storage.dll'
 
