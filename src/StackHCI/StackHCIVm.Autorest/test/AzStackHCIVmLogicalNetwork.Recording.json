@@ -5,8 +5,8 @@
       "RequestUri": "https://management.azure.com/subscriptions/0709bd7a-8383-4e1d-98c8-f81d1b3443fc/resourceGroups/AltaylSnClus-rg/providers/Microsoft.AzureStackHCI/logicalNetworks?api-version=2023-09-01-preview",
       "Content": null,
       "Headers": {
-        "x-ms-unique-id": [ "1" ],
-        "x-ms-client-request-id": [ "dd982eb6-3c11-4e69-8650-f933975ec036" ],
+        "x-ms-unique-id": [ "8" ],
+        "x-ms-client-request-id": [ "42f8bad0-fcd5-4e86-9f9f-e75527866e23" ],
         "CommandName": [ "Get-AzStackHCIVMLogicalNetwork" ],
         "FullCommandName": [ "Get-AzStackHCIVmLogicalNetwork_List" ],
         "ParameterSetName": [ "__AllParameterSets" ],
@@ -21,23 +21,23 @@
       "Headers": {
         "Cache-Control": [ "no-cache" ],
         "Pragma": [ "no-cache" ],
-        "x-ms-original-request-ids": [ "255e2767-c591-4308-918e-5107ebf54c04", "87087850-4432-49e4-9d2e-4cfb2fbbb856", "1893ec4c-6086-4d4e-8c6f-ac717fdd1af3", "8f3621a6-ed4c-4919-abbc-0be6a6631531", "6c02c32c-4df5-4e90-9495-6cd2f73651e3", "fa2cbddb-0333-472e-9d55-bf3dd00958e6" ],
+        "x-ms-original-request-ids": [ "54e3a528-2d7d-4010-88bf-e3ad947fd4dd", "edda1ee4-d907-4045-a351-5eade2875cfc", "a5f13910-cc67-45de-a3d2-45c425a23b98", "b308bbea-2d78-451e-af07-d52b766f8c99", "f6f1e41f-f0d0-47b1-b5b4-c79c7156d579", "658c2b80-8ba1-4b8f-957a-8372759cd271" ],
         "x-ms-ratelimit-remaining-subscription-reads": [ "11999" ],
-        "x-ms-request-id": [ "9e7f6ce2-904b-4745-9395-f1562857f234" ],
-        "x-ms-correlation-request-id": [ "9e7f6ce2-904b-4745-9395-f1562857f234" ],
-        "x-ms-routing-request-id": [ "WESTUS2:20231106T232926Z:9e7f6ce2-904b-4745-9395-f1562857f234" ],
+        "x-ms-request-id": [ "f50143f2-a77c-456d-9250-7024ed732d9e" ],
+        "x-ms-correlation-request-id": [ "f50143f2-a77c-456d-9250-7024ed732d9e" ],
+        "x-ms-routing-request-id": [ "WESTUS2:20231106T234804Z:f50143f2-a77c-456d-9250-7024ed732d9e" ],
         "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
         "X-Content-Type-Options": [ "nosniff" ],
         "X-Cache": [ "CONFIG_NOCACHE" ],
-        "X-MSEdge-Ref": [ "Ref A: 4988C27C78F74CA78AEE606502EAE6C0 Ref B: CO6AA3150218031 Ref C: 2023-11-06T23:29:26Z" ],
-        "Date": [ "Mon, 06 Nov 2023 23:29:26 GMT" ]
+        "X-MSEdge-Ref": [ "Ref A: 7DC465ADBD184C38B9E71C4EE5CDD87A Ref B: CO6AA3150220031 Ref C: 2023-11-06T23:48:03Z" ],
+        "Date": [ "Mon, 06 Nov 2023 23:48:03 GMT" ]
       },
       "ContentHeaders": {
-        "Content-Length": [ "1728" ],
+        "Content-Length": [ "2660" ],
         "Content-Type": [ "application/json; charset=utf-8" ],
         "Expires": [ "-1" ]
       },
-      "Content": "{\"value\":[{\"id\":\"/subscriptions/0709bd7a-8383-4e1d-98c8-f81d1b3443fc/resourceGroups/AltaylSnClus-rg/providers/Microsoft.AzureStackHCI/logicalnetworks/altaylvnet2\",\"name\":\"altaylvnet2\",\"type\":\"microsoft.azurestackhci/logicalnetworks\",\"location\":\"eastus2euap\",\"extendedLocation\":{\"name\":\"/subscriptions/0709bd7a-8383-4e1d-98c8-f81d1b3443fc/resourceGroups/AltaylSnClus-rg/providers/Microsoft.ExtendedLocation/customLocations/myResourceBridge-cl\",\"type\":\"CustomLocation\"},\"systemData\":{\"createdBy\":\"altayl@microsoft.com\",\"createdByType\":\"User\",\"createdAt\":\"2023-10-18T20:57:59.7337776Z\",\"lastModifiedBy\":\"319f651f-7ddb-4fc6-9857-7aef9250bd05\",\"lastModifiedByType\":\"Application\",\"lastModifiedAt\":\"2023-10-20T14:52:58.7058407Z\"},\"properties\":{\"provisioningState\":\"Succeeded\",\"subnets\":[],\"vmSwitchName\":\"ExternalSwitch\",\"status\":{},\"dhcpOptions\":{}}},{\"id\":\"/subscriptions/0709bd7a-8383-4e1d-98c8-f81d1b3443fc/resourceGroups/AltaylSnClus-rg/providers/Microsoft.AzureStackHCI/logicalNetworks/bugbashlnet\",\"name\":\"bugbashlnet\",\"type\":\"microsoft.azurestackhci/logicalnetworks\",\"location\":\"eastus2euap\",\"extendedLocation\":{\"name\":\"/subscriptions/0709bd7a-8383-4e1d-98c8-f81d1b3443fc/resourceGroups/AltaylSnClus-rg/providers/Microsoft.ExtendedLocation/customLocations/myResourceBridge-cl\",\"type\":\"CustomLocation\"},\"systemData\":{\"createdBy\":\"altayl@microsoft.com\",\"createdByType\":\"User\",\"createdAt\":\"2023-11-01T18:29:16.6925646Z\",\"lastModifiedBy\":\"319f651f-7ddb-4fc6-9857-7aef9250bd05\",\"lastModifiedByType\":\"Application\",\"lastModifiedAt\":\"2023-11-01T18:31:25.0533724Z\"},\"properties\":{\"provisioningState\":\"Succeeded\",\"subnets\":[{\"properties\":{\"routeTable\":{\"properties\":{}}}}],\"vmSwitchName\":\"ExternalSwitch\",\"status\":{},\"dhcpOptions\":{}}}]}"
+      "Content": "{\"value\":[{\"id\":\"/subscriptions/0709bd7a-8383-4e1d-98c8-f81d1b3443fc/resourceGroups/AltaylSnClus-rg/providers/Microsoft.AzureStackHCI/logicalNetworks/testLnetPowershell1106\",\"name\":\"testLnetPowershell1106\",\"type\":\"microsoft.azurestackhci/logicalnetworks\",\"location\":\"eastus\",\"extendedLocation\":{\"name\":\"/subscriptions/0709bd7a-8383-4e1d-98c8-f81d1b3443fc/resourceGroups/AltaylSnClus-rg/providers/Microsoft.ExtendedLocation/customLocations/myResourceBridge-cl\",\"type\":\"CustomLocation\"},\"systemData\":{\"createdBy\":\"havedati@microsoft.com\",\"createdByType\":\"User\",\"createdAt\":\"2023-11-06T23:45:31.7494457Z\",\"lastModifiedBy\":\"319f651f-7ddb-4fc6-9857-7aef9250bd05\",\"lastModifiedByType\":\"Application\",\"lastModifiedAt\":\"2023-11-06T23:47:40.1564678Z\"},\"properties\":{\"provisioningState\":\"Succeeded\",\"subnets\":[{\"properties\":{\"ipAllocationMethod\":\"Dynamic\",\"routeTable\":{\"properties\":{}}}}],\"vmSwitchName\":\"ExternalSwitch\",\"status\":{},\"dhcpOptions\":{}}},{\"id\":\"/subscriptions/0709bd7a-8383-4e1d-98c8-f81d1b3443fc/resourceGroups/AltaylSnClus-rg/providers/Microsoft.AzureStackHCI/logicalnetworks/altaylvnet2\",\"name\":\"altaylvnet2\",\"type\":\"microsoft.azurestackhci/logicalnetworks\",\"location\":\"eastus2euap\",\"extendedLocation\":{\"name\":\"/subscriptions/0709bd7a-8383-4e1d-98c8-f81d1b3443fc/resourceGroups/AltaylSnClus-rg/providers/Microsoft.ExtendedLocation/customLocations/myResourceBridge-cl\",\"type\":\"CustomLocation\"},\"systemData\":{\"createdBy\":\"altayl@microsoft.com\",\"createdByType\":\"User\",\"createdAt\":\"2023-10-18T20:57:59.7337776Z\",\"lastModifiedBy\":\"319f651f-7ddb-4fc6-9857-7aef9250bd05\",\"lastModifiedByType\":\"Application\",\"lastModifiedAt\":\"2023-10-20T14:52:58.7058407Z\"},\"properties\":{\"provisioningState\":\"Succeeded\",\"subnets\":[],\"vmSwitchName\":\"ExternalSwitch\",\"status\":{},\"dhcpOptions\":{}}},{\"id\":\"/subscriptions/0709bd7a-8383-4e1d-98c8-f81d1b3443fc/resourceGroups/AltaylSnClus-rg/providers/Microsoft.AzureStackHCI/logicalNetworks/bugbashlnet\",\"name\":\"bugbashlnet\",\"type\":\"microsoft.azurestackhci/logicalnetworks\",\"location\":\"eastus2euap\",\"extendedLocation\":{\"name\":\"/subscriptions/0709bd7a-8383-4e1d-98c8-f81d1b3443fc/resourceGroups/AltaylSnClus-rg/providers/Microsoft.ExtendedLocation/customLocations/myResourceBridge-cl\",\"type\":\"CustomLocation\"},\"systemData\":{\"createdBy\":\"altayl@microsoft.com\",\"createdByType\":\"User\",\"createdAt\":\"2023-11-01T18:29:16.6925646Z\",\"lastModifiedBy\":\"319f651f-7ddb-4fc6-9857-7aef9250bd05\",\"lastModifiedByType\":\"Application\",\"lastModifiedAt\":\"2023-11-01T18:31:25.0533724Z\"},\"properties\":{\"provisioningState\":\"Succeeded\",\"subnets\":[{\"properties\":{\"routeTable\":{\"properties\":{}}}}],\"vmSwitchName\":\"ExternalSwitch\",\"status\":{},\"dhcpOptions\":{}}}]}"
     }
   },
   "AzStackHCIVmLogicalNetwork+[NoContext]+Get+$GET+https://management.azure.com/subscriptions/0709bd7a-8383-4e1d-98c8-f81d1b3443fc/resourceGroups/AltaylSnClus-rg/providers/Microsoft.AzureStackHCI/logicalNetworks/testLnetPowershell1106?api-version=2023-09-01-preview+1": {
@@ -46,8 +46,8 @@
       "RequestUri": "https://management.azure.com/subscriptions/0709bd7a-8383-4e1d-98c8-f81d1b3443fc/resourceGroups/AltaylSnClus-rg/providers/Microsoft.AzureStackHCI/logicalNetworks/testLnetPowershell1106?api-version=2023-09-01-preview",
       "Content": null,
       "Headers": {
-        "x-ms-unique-id": [ "2" ],
-        "x-ms-client-request-id": [ "2f7537b8-52b2-4738-be07-4ce753602c95" ],
+        "x-ms-unique-id": [ "9" ],
+        "x-ms-client-request-id": [ "9fb7c6c8-202b-4cf3-aa9c-2c1b566b3527" ],
         "CommandName": [ "Get-AzStackHCIVMLogicalNetwork" ],
         "FullCommandName": [ "Get-AzStackHCIVmLogicalNetwork_Get" ],
         "ParameterSetName": [ "__AllParameterSets" ],
@@ -58,26 +58,28 @@
       }
     },
     "Response": {
-      "StatusCode": 404,
+      "StatusCode": 200,
       "Headers": {
         "Cache-Control": [ "no-cache" ],
         "Pragma": [ "no-cache" ],
-        "x-ms-failure-cause": [ "gateway" ],
-        "x-ms-request-id": [ "32a5767c-106b-492a-8697-c63f456b13fd" ],
-        "x-ms-correlation-request-id": [ "32a5767c-106b-492a-8697-c63f456b13fd" ],
-        "x-ms-routing-request-id": [ "WESTUS2:20231106T232927Z:32a5767c-106b-492a-8697-c63f456b13fd" ],
+        "ETag": [ "\"1c026f71-0000-0100-0000-65497b1c0000\"" ],
+        "x-ms-ratelimit-remaining-subscription-reads": [ "11999" ],
+        "x-ms-providerhub-traffic": [ "True" ],
+        "x-ms-request-id": [ "4ccb4b3f-083e-4197-8d7b-7f7d5030e76a" ],
+        "x-ms-correlation-request-id": [ "56d0955c-ad11-45df-bda7-e58d516a0037" ],
+        "x-ms-routing-request-id": [ "WESTUS2:20231106T234804Z:56d0955c-ad11-45df-bda7-e58d516a0037" ],
         "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
         "X-Content-Type-Options": [ "nosniff" ],
         "X-Cache": [ "CONFIG_NOCACHE" ],
-        "X-MSEdge-Ref": [ "Ref A: 7E66856CDE7B4EB4BE74D17D4630AFDB Ref B: CO6AA3150218031 Ref C: 2023-11-06T23:29:27Z" ],
-        "Date": [ "Mon, 06 Nov 2023 23:29:27 GMT" ]
+        "X-MSEdge-Ref": [ "Ref A: 2D57683E8E184810B3FD0DC86CED0E13 Ref B: CO6AA3150220031 Ref C: 2023-11-06T23:48:04Z" ],
+        "Date": [ "Mon, 06 Nov 2023 23:48:03 GMT" ]
       },
       "ContentHeaders": {
-        "Content-Length": [ "249" ],
+        "Content-Length": [ "931" ],
         "Content-Type": [ "application/json; charset=utf-8" ],
         "Expires": [ "-1" ]
       },
-      "Content": "{\"error\":{\"code\":\"ResourceNotFound\",\"message\":\"The Resource \u0027Microsoft.AzureStackHCI/logicalNetworks/testLnetPowershell1106\u0027 under resource group \u0027AltaylSnClus-rg\u0027 was not found. For more details please go to https://aka.ms/ARMResourceNotFoundFix\"}}"
+      "Content": "{\"id\":\"/subscriptions/0709bd7a-8383-4e1d-98c8-f81d1b3443fc/resourceGroups/AltaylSnClus-rg/providers/Microsoft.AzureStackHCI/logicalNetworks/testLnetPowershell1106\",\"name\":\"testLnetPowershell1106\",\"type\":\"microsoft.azurestackhci/logicalnetworks\",\"location\":\"eastus\",\"extendedLocation\":{\"name\":\"/subscriptions/0709bd7a-8383-4e1d-98c8-f81d1b3443fc/resourceGroups/AltaylSnClus-rg/providers/Microsoft.ExtendedLocation/customLocations/myResourceBridge-cl\",\"type\":\"CustomLocation\"},\"systemData\":{\"createdBy\":\"havedati@microsoft.com\",\"createdByType\":\"User\",\"createdAt\":\"2023-11-06T23:45:31.7494457Z\",\"lastModifiedBy\":\"319f651f-7ddb-4fc6-9857-7aef9250bd05\",\"lastModifiedByType\":\"Application\",\"lastModifiedAt\":\"2023-11-06T23:47:40.1564678Z\"},\"properties\":{\"provisioningState\":\"Succeeded\",\"subnets\":[{\"properties\":{\"ipAllocationMethod\":\"Dynamic\",\"routeTable\":{\"properties\":{}}}}],\"vmSwitchName\":\"ExternalSwitch\",\"status\":{},\"dhcpOptions\":{}}}"
     }
   },
   "AzStackHCIVmLogicalNetwork+[NoContext]+Delete+$GET+https://management.azure.com/subscriptions/0709bd7a-8383-4e1d-98c8-f81d1b3443fc/resourceGroups/AltaylSnClus-rg/providers/Microsoft.AzureStackHCI/logicalNetworks/testLnetPowershell1106?api-version=2023-09-01-preview+1": {
@@ -86,8 +88,8 @@
       "RequestUri": "https://management.azure.com/subscriptions/0709bd7a-8383-4e1d-98c8-f81d1b3443fc/resourceGroups/AltaylSnClus-rg/providers/Microsoft.AzureStackHCI/logicalNetworks/testLnetPowershell1106?api-version=2023-09-01-preview",
       "Content": null,
       "Headers": {
-        "x-ms-unique-id": [ "4" ],
-        "x-ms-client-request-id": [ "198b007e-b3df-4b73-85f5-c9e904a75e13" ],
+        "x-ms-unique-id": [ "13" ],
+        "x-ms-client-request-id": [ "d0cd99a2-db25-4d39-8724-6e290044bcc9" ],
         "CommandName": [ "Get-AzStackHCIVMLogicalNetwork" ],
         "FullCommandName": [ "Get-AzStackHCIVmLogicalNetwork_Get" ],
         "ParameterSetName": [ "__AllParameterSets" ],
@@ -102,22 +104,24 @@
       "Headers": {
         "Cache-Control": [ "no-cache" ],
         "Pragma": [ "no-cache" ],
+        "x-ms-ratelimit-remaining-subscription-reads": [ "11997" ],
+        "x-ms-providerhub-traffic": [ "True" ],
         "x-ms-failure-cause": [ "gateway" ],
-        "x-ms-request-id": [ "b8943c5c-5428-4f65-925c-47a39654d6c5" ],
-        "x-ms-correlation-request-id": [ "b8943c5c-5428-4f65-925c-47a39654d6c5" ],
-        "x-ms-routing-request-id": [ "WESTUS2:20231106T232927Z:b8943c5c-5428-4f65-925c-47a39654d6c5" ],
+        "x-ms-request-id": [ "324a3fc8-af98-4990-ab39-95fe02435fef" ],
+        "x-ms-correlation-request-id": [ "729f7e72-d872-4c81-995e-79143c345a7f" ],
+        "x-ms-routing-request-id": [ "WESTUS2:20231106T234835Z:729f7e72-d872-4c81-995e-79143c345a7f" ],
         "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
         "X-Content-Type-Options": [ "nosniff" ],
         "X-Cache": [ "CONFIG_NOCACHE" ],
-        "X-MSEdge-Ref": [ "Ref A: 377ED546195D4BBBA3259C92C501A825 Ref B: CO6AA3150218031 Ref C: 2023-11-06T23:29:27Z" ],
-        "Date": [ "Mon, 06 Nov 2023 23:29:27 GMT" ]
+        "X-MSEdge-Ref": [ "Ref A: 91C3D415C8CE40C48FC679E9AA4D3053 Ref B: CO6AA3150220031 Ref C: 2023-11-06T23:48:35Z" ],
+        "Date": [ "Mon, 06 Nov 2023 23:48:35 GMT" ]
       },
       "ContentHeaders": {
-        "Content-Length": [ "249" ],
-        "Content-Type": [ "application/json; charset=utf-8" ],
+        "Content-Length": [ "147" ],
+        "Content-Type": [ "application/json" ],
         "Expires": [ "-1" ]
       },
-      "Content": "{\"error\":{\"code\":\"ResourceNotFound\",\"message\":\"The Resource \u0027Microsoft.AzureStackHCI/logicalNetworks/testLnetPowershell1106\u0027 under resource group \u0027AltaylSnClus-rg\u0027 was not found. For more details please go to https://aka.ms/ARMResourceNotFoundFix\"}}"
+      "Content": "{\"error\":{\"code\":\"ResourceNotFound\",\"message\":\"The resource \u0027Microsoft.AzureStackHCI/logicalNetworks/testLnetPowershell1106\u0027 could not be found.\"}}"
     }
   }
 }
