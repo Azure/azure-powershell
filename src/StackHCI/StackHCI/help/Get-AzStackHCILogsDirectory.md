@@ -1,5 +1,5 @@
 ---
-external help file:
+external help file: Az.StackHCI-help.xml
 Module Name: Az.StackHCI
 online version: https://learn.microsoft.com/powershell/module/az.stackhci/get-azstackhcilogsdirectory
 schema: 2.0.0
@@ -13,7 +13,7 @@ Returns Logs directory path on the current node.
 ## SYNTAX
 
 ```
-Get-AzStackHCILogsDirectory [[-Credential] <PSCredential>] [[-ComputerName] <String>] [-Confirm] [-WhatIf]
+Get-AzStackHCILogsDirectory [[-Credential] <PSCredential>] [[-ComputerName] <String>] [-WhatIf] [-Confirm]
  [<CommonParameters>]
 ```
 
@@ -44,7 +44,7 @@ Parameter Sets: (All)
 Aliases:
 
 Required: False
-Position: 1
+Position: 2
 Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
@@ -60,7 +60,7 @@ Parameter Sets: (All)
 Aliases:
 
 Required: False
-Position: 0
+Position: 1
 Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
@@ -108,7 +108,4 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## NOTES
 
-ALIASES
-
 ## RELATED LINKS
-
