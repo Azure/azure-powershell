@@ -7124,7 +7124,6 @@ function Test-VMDefaultsToTrustedLaunch
         # VM
         $vmConfig = New-AzVMConfig -VMName $vmname -VMSize $vmsize;
         $vmConfig = Set-AzVMOperatingSystem -VM $vmConfig -Windows -ComputerName $vmname -Credential $cred;
-        # $vmConfig = Set-AzVMSourceImage -VM $vmConfig -PublisherName $PublisherName -Offer $Offer -Skus $SKU -Version latest ;
         $vmConfig = Add-AzVMNetworkInterface -VM $vmConfig -Id $nic.Id;
         
         New-AzVM -ResourceGroupName $rgname -Location $loc -VM $vmConfig;
