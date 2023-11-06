@@ -157,7 +157,7 @@ function New-AzStackHCIVmLogicalNetwork {
       [Microsoft.Azure.PowerShell.Cmdlets.StackHCIVm.Category('Body')]
       [System.Collections.Hashtable[]]
       # Collection of routes contained within a route table.
-      $Routes, 
+      $Route, 
   
       [Parameter()]
       [Microsoft.Azure.PowerShell.Cmdlets.StackHCIVm.Category('Body')]
@@ -273,9 +273,9 @@ function New-AzStackHCIVmLogicalNetwork {
   
           }
   
-          if ($Routes){
-            Confirm-Routes -Routes $Routes
-            $Subnet["Route"] = $Routes
+          if ($Route){
+            Confirm-Routes -Routes $Route
+            $Subnet["Route"] = $Route
   
           }
         
@@ -287,7 +287,7 @@ function New-AzStackHCIVmLogicalNetwork {
           $null = $PSBoundParameters.Remove("Vlan")
           $null = $PSBoundParameters.Remove("SubnetName")
           $null = $PSBoundParameters.Remove("IpPool")
-          $null = $PSBoundParameters.Remove("Routes")
+          $null = $PSBoundParameters.Remove("Route")
           $PSBoundParameters.Add("Subnet", $Subnet)
   
       } 
