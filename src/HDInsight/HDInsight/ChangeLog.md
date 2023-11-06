@@ -20,10 +20,7 @@
 ## Upcoming Release
 
 ## Version 6.0.1
-* This change adds some warning messages to the incoming break changes for the next version, with detailed information as follows:
-  * Added warning message for planning to replace the type of property `DiskEncryption` of type `Microsoft.Azure.Commands.HDInsight.Models.AzureHDInsightCluster` from `Microsoft.Azure.Management.HDInsight.Models.DiskEncryptionProperties` to `Azure.ResourceManager.HDInsight.Models.HDInsightDiskEncryptionProperties`.
-  * Added warning message for planning to replace the type of property `WorkerNodeDataDisksGroups` of type `Microsoft.Azure.Commands.HDInsight.Models.AzureHDInsightCluster`  from `List<Microsoft.Azure.Management.HDInsight.Models.DataDisksGroups>` to `List<Azure.ResourceManager.HDInsight.Models.HDInsightClusterDataDiskGroup>`.
-  * Added warning message for planning to replace the parameter `NodeType` type from `Microsoft.Azure.Management.HDInsight.Models.ClusterNodeType` to `Microsoft.Azure.Commands.HDInsight.Models.Management.RuntimeScriptActionClusterNodeType`.
+* Fixed an bug where the get cluster command does not display abfss storage information.
 
 ## Version 6.0.0
 * Breaking Change:
