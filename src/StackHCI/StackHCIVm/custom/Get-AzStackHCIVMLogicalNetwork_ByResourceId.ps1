@@ -15,9 +15,9 @@
 
 <#
 .Synopsis
-Gets a logical network
+Gets a logical network 
 .Description
-Gets a logical network
+Gets a logical network 
 .Example
 PS C:\> {{ Add code here }}
 
@@ -26,6 +26,7 @@ PS C:\> {{ Add code here }}
 PS C:\> {{ Add code here }}
 
 {{ Add output here }}
+
 
 .Outputs
 Microsoft.Azure.PowerShell.Cmdlets.StackHCIVm.Models.Api20230901Preview.ILogicalNetworks
@@ -33,7 +34,7 @@ Microsoft.Azure.PowerShell.Cmdlets.StackHCIVm.Models.Api20230901Preview.ILogical
 .Link
 https://learn.microsoft.com/powershell/module/az.stackhcivm/get-azstackhcivmlogicalnetwork
 #>
-function Get-AzStackHCIVmLogicalNetwork_ByResourceId {
+function Get-AzStackHciVMLogicalNetwork_ByResourceId {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.StackHciVM.Models.Api20230901Preview.ILogicalNetworks])]
 [CmdletBinding(PositionalBinding=$false)]
 

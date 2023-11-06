@@ -32,7 +32,7 @@ The operation to update a virtual machine instance.
 
 ### Example 1: Update the Size of the Virtual Machine. 
 ```powershell
-Update-AzStackHCIVmVirtualMachine  -Name "testVm" -ResourceGroupName "test-rg" -VmMemoryInMB "4"
+PS C:\> Update-AzStackHCIVmVirtualMachine  -Name "testVm" -ResourceGroupName "test-rg" -VmMemoryInMB "4"
 ```
 
 ```output

@@ -32,7 +32,7 @@ The operation to add a network interface to a virtual machine.
 
 ### Example 1: Add a Network Interface to a Virtual Machine
 ```powershell
-Add-AzStackHCIVmVirtualMachineNetworkInterface  -Name "testVm" -ResourceGroupName "test-rg"  -DataDiskNames "testNic"
+PS C:\> Add-AzStackHCIVmVirtualMachineNetworkInterface  -Name "testVm" -ResourceGroupName "test-rg"  -DataDiskNames "testNic"
 
 ```
 

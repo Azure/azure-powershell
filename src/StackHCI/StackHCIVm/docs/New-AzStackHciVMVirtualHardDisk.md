@@ -29,7 +29,7 @@ Please note some properties can be set only during virtual hard disk creation.
 
 ### Example 1: Create a Virtual Hard Disk
 ```powershell
- New-AzStackHCIVmVirtualHardDisk -Name "testVhd" -ResourceGroupName "test-rg" -CustomLocationId "/subscriptions/{subscriptionID}/resourcegroups/{resourceGroupName}/providers/microsoft.extendedlocation/customlocations/{customLocationName}" -Location "eastus" -SizeGb 2
+PS C:\>  New-AzStackHCIVmVirtualHardDisk -Name "testVhd" -ResourceGroupName "test-rg" -CustomLocationId "/subscriptions/{subscriptionID}/resourcegroups/{resourceGroupName}/providers/microsoft.extendedlocation/customlocations/{customLocationName}" -Location "eastus" -SizeGb 2
 ```
 
 ```output

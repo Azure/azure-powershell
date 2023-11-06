@@ -23,25 +23,13 @@ Gets a gallery image
 ### [Get-AzStackHciVMLogicalNetwork](Get-AzStackHciVMLogicalNetwork.md)
 
 
-### [Get-AzStackHCIVmLogicalNetwork](Get-AzStackHCIVmLogicalNetwork.md)
-Gets a logical network
-
 ### [Get-AzStackHciVMNetworkInterface](Get-AzStackHciVMNetworkInterface.md)
-Gets a network interface
-
-### [Get-AzStackHCIVmNetworkInterface](Get-AzStackHCIVmNetworkInterface.md)
 Gets a network interface
 
 ### [Get-AzStackHciVMStoragePath](Get-AzStackHciVMStoragePath.md)
 Gets a storage container
 
-### [Get-AzStackHCIVmStoragePath](Get-AzStackHCIVmStoragePath.md)
-Gets a storage path
-
 ### [Get-AzStackHciVMVirtualHardDisk](Get-AzStackHciVMVirtualHardDisk.md)
-Gets a virtual hard disk
-
-### [Get-AzStackHCIVmVirtualHardDisk](Get-AzStackHCIVmVirtualHardDisk.md)
 Gets a virtual hard disk
 
 ### [Get-AzStackHCIVmVirtualMachine](Get-AzStackHCIVmVirtualMachine.md)
@@ -55,15 +43,9 @@ Please note some properties can be set only during image creation.
 The operation to create or update a logical network.
 Please note some properties can be set only during logical network creation.
 
-### [New-AzStackHCIVmLogicalNetworkSubnetConfig](New-AzStackHCIVmLogicalNetworkSubnetConfig.md)
-
-
 ### [New-AzStackHCIVmNetworkInterface](New-AzStackHCIVmNetworkInterface.md)
 The operation to create or update a network interface.
 Please note some properties can be set only during network interface creation.
-
-### [New-AzStackHCIVmNetworkInterfaceIpConfig](New-AzStackHCIVmNetworkInterfaceIpConfig.md)
-
 
 ### [New-AzStackHCIVmStoragePath](New-AzStackHCIVmStoragePath.md)
 The operation to create or update a storage container.
@@ -117,25 +99,13 @@ Please note some properties can be set only during image creation.
 ### [Update-AzStackHciVMLogicalNetwork](Update-AzStackHciVMLogicalNetwork.md)
 The operation to update a logical network.
 
-### [Update-AzStackHCIVmLogicalNetwork](Update-AzStackHCIVmLogicalNetwork.md)
-The operation to update a logical network.
-
 ### [Update-AzStackHciVMNetworkInterface](Update-AzStackHciVMNetworkInterface.md)
-The operation to update a network interface.
-
-### [Update-AzStackHCIVmNetworkInterface](Update-AzStackHCIVmNetworkInterface.md)
 The operation to update a network interface.
 
 ### [Update-AzStackHciVMStoragePath](Update-AzStackHciVMStoragePath.md)
 The operation to update a storage container.
 
-### [Update-AzStackHCIVmStoragePath](Update-AzStackHCIVmStoragePath.md)
-The operation to update a storage path.
-
 ### [Update-AzStackHciVMVirtualHardDisk](Update-AzStackHciVMVirtualHardDisk.md)
-The operation to update a virtual hard disk.
-
-### [Update-AzStackHCIVmVirtualHardDisk](Update-AzStackHCIVmVirtualHardDisk.md)
 The operation to update a virtual hard disk.
 
 ### [Update-AzStackHCIVmVirtualMachine](Update-AzStackHCIVmVirtualMachine.md)

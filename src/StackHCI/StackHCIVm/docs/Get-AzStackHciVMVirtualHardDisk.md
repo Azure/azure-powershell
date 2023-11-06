@@ -5,15 +5,33 @@ online version: https://learn.microsoft.com/powershell/module/az.stackhcivm/get-
 schema: 2.0.0
 ---
 
-# Get-AzStackHCIVmVirtualHardDisk
+# Get-AzStackHciVMVirtualHardDisk
 
 ## SYNOPSIS
 Gets a virtual hard disk
 
 ## SYNTAX
 
+### List1 (Default)
 ```
-Get-AzStackHCIVmVirtualHardDisk [-ResourceId <String>] [<CommonParameters>]
+Get-AzStackHciVMVirtualHardDisk [-SubscriptionId <String[]>] [-DefaultProfile <PSObject>] [<CommonParameters>]
+```
+
+### ByResourceId
+```
+Get-AzStackHciVMVirtualHardDisk [-ResourceId <String>] [<CommonParameters>]
+```
+
+### Get
+```
+Get-AzStackHciVMVirtualHardDisk -Name <String> -ResourceGroupName <String> [-SubscriptionId <String[]>]
+ [-DefaultProfile <PSObject>] [<CommonParameters>]
+```
+
+### List
+```
+Get-AzStackHciVMVirtualHardDisk -ResourceGroupName <String> [-SubscriptionId <String[]>]
+ [-DefaultProfile <PSObject>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -23,7 +41,7 @@ Gets a virtual hard disk
 
 ### Example 1: Get a Virtual Hard Disk
 ```powershell
-Get-AzStackHCIVmVirtualHardDisk -Name  "testVhd" -ResourceGroupName "test-rg"
+PS C:\> Get-AzStackHCIVmVirtualHardDisk -Name  "testVhd" -ResourceGroupName "test-rg"
 ```
 
 ```output
@@ -36,7 +54,7 @@ This command gets a specific virtual hard disk in the specified resource group.
 
 ### Example 2: List all Virtual Hard Disks in a Resource Group
 ```powershell
-Get-AzStackHCIVmVirtualHardDisk -ResourceGroupName "test-rg"
+PS C:\> Get-AzStackHCIVmVirtualHardDisk -ResourceGroupName "test-rg"
 ```
 
 ```output
@@ -49,17 +67,78 @@ This command lists all virtual hard disks in the specified resource group.
 
 ## PARAMETERS
 
+### -DefaultProfile
+The credentials, account, tenant, and subscription used for communication with Azure.
+
+```yaml
+Type: System.Management.Automation.PSObject
+Parameter Sets: Get, List, List1
+Aliases: AzureRMContext, AzureCredential
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -Name
+Name of the virtual hard disk
+
+```yaml
+Type: System.String
+Parameter Sets: Get
+Aliases: VirtualHardDiskName
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -ResourceGroupName
+The name of the resource group.
+The name is case insensitive.
+
+```yaml
+Type: System.String
+Parameter Sets: Get, List
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
 ### -ResourceId
 The ARM ID of the virtual hard disk.
 
 ```yaml
 Type: System.String
-Parameter Sets: (All)
+Parameter Sets: ByResourceId
 Aliases:
 
 Required: False
 Position: Named
 Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -SubscriptionId
+The ID of the target subscription.
+
+```yaml
+Type: System.String[]
+Parameter Sets: Get, List, List1
+Aliases:
+
+Required: False
+Position: Named
+Default value: (Get-AzContext).Subscription.Id
 Accept pipeline input: False
 Accept wildcard characters: False
 ```

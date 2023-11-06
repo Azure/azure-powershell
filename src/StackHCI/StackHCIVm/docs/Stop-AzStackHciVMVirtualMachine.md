@@ -30,7 +30,7 @@ The operation to stop a virtual machine instance.
 
 ### Example 1: Stop Virtual Machine 
 ```powershell
-Stop-AzStackHCIVmVirtualMachine  -Name "testVm" -ResourceGroupName "test-rg"
+PS C:\> Stop-AzStackHCIVmVirtualMachine  -Name "testVm" -ResourceGroupName "test-rg"
 
 ```
 

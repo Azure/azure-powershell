@@ -33,7 +33,7 @@ The operation to delete a storage container.
 
 ### Example 1: Remove a Storage Path
 ```powershell
-Remove-AzStackHCIVmStoragePath  -Name "testStoragePath" -ResourceGroupName "test-rg"
+PS C:\> Remove-AzStackHCIVmStoragePath  -Name "testStoragePath" -ResourceGroupName "test-rg"
 
 ```
 

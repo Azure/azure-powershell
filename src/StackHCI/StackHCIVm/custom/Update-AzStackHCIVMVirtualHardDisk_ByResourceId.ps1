@@ -34,7 +34,7 @@ Microsoft.Azure.PowerShell.Cmdlets.StackHCIVm.Models.Api20230901Preview.IVirtual
 .Link
 https://learn.microsoft.com/powershell/module/az.stackhcivm/update-azstackhcivmvirtualharddisks
 #>
-function Update-AzStackHCIVmVirtualHardDisk_ByResourceId {
+function Update-AzStackHciVMVirtualHardDisk_ByResourceId {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.StackHciVM.Models.Api20230901Preview.IVirtualHardDisks])]
 [CmdletBinding(PositionalBinding=$false)]
 

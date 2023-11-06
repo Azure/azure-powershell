@@ -30,7 +30,7 @@ The operation to restart a virtual machine instance.
 
 ### Example 1: Restart Virtual Machine 
 ```powershell
-Restart-AzStackHCIVmVirtualMachine  -Name "testVm" -ResourceGroupName "test-rg"
+PS C:\> Restart-AzStackHCIVmVirtualMachine  -Name "testVm" -ResourceGroupName "test-rg"
 
 ```
 
