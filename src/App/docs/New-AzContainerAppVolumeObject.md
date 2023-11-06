@@ -1,7 +1,7 @@
 ---
 external help file:
 Module Name: Az.App
-online version: https://learn.microsoft.com/powershell/module/az.app/new-azcontainerappvolumeobject
+online version: https://learn.microsoft.com/powershell/module/Az.App/new-azcontainerappvolumeobject
 schema: 2.0.0
 ---
 
@@ -13,8 +13,8 @@ Create an in-memory object for Volume.
 ## SYNTAX
 
 ```
-New-AzContainerAppVolumeObject [-Name <String>] [-StorageName <String>] [-StorageType <StorageType>]
- [<CommonParameters>]
+New-AzContainerAppVolumeObject [-MountOption <String>] [-Name <String>] [-Secret <ISecretVolumeItem[]>]
+ [-StorageName <String>] [-StorageType <String>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -28,14 +28,30 @@ New-AzContainerAppVolumeObject -Name "volumeName" -StorageName "azpssa"
 ```
 
 ```output
-Name       StorageName StorageType
-----       ----------- -----------
-volumeName azpssa
+MountOption Name       StorageName StorageType
+----------- ----       ----------- -----------
+            volumeName azpssa
 ```
 
 Create a Volume object for ContainerApp.
 
 ## PARAMETERS
+
+### -MountOption
+Mount options used while mounting the AzureFile.
+Must be a comma-separated string.
+
+```yaml
+Type: System.String
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
 
 ### -Name
 Volume name.
@@ -52,9 +68,26 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### -Secret
+List of secrets to be added in volume.
+If no secrets are provided, all secrets in collection will be added to volume.
+To construct, see NOTES section for SECRET properties and create a hash table.
+
+```yaml
+Type: Microsoft.Azure.PowerShell.Cmdlets.App.Models.ISecretVolumeItem[]
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
 ### -StorageName
 Name of storage resource.
-No need to provide for EmptyDir.
+No need to provide for EmptyDir and Secret.
 
 ```yaml
 Type: System.String
@@ -73,7 +106,7 @@ Storage type for the volume.
 If not provided, use EmptyDir.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.App.Support.StorageType
+Type: System.String
 Parameter Sets: (All)
 Aliases:
 
@@ -91,11 +124,9 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.App.Models.Api20220301.Volume
+### Microsoft.Azure.PowerShell.Cmdlets.App.Models.Volume
 
 ## NOTES
-
-ALIASES
 
 ## RELATED LINKS
 

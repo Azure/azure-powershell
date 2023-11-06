@@ -1,7 +1,7 @@
 ---
 external help file:
 Module Name: Az.App
-online version: https://learn.microsoft.com/powershell/module/az.app/new-azcontainerappprobeobject
+online version: https://learn.microsoft.com/powershell/module/Az.App/new-azcontainerappprobeobject
 schema: 2.0.0
 ---
 
@@ -15,9 +15,9 @@ Create an in-memory object for ContainerAppProbe.
 ```
 New-AzContainerAppProbeObject [-FailureThreshold <Int32>] [-HttpGetHost <String>]
  [-HttpGetHttpHeader <IContainerAppProbeHttpGetHttpHeadersItem[]>] [-HttpGetPath <String>]
- [-HttpGetPort <Int32>] [-HttpGetScheme <Scheme>] [-InitialDelaySecond <Int32>] [-PeriodSecond <Int32>]
+ [-HttpGetPort <Int32>] [-HttpGetScheme <String>] [-InitialDelaySecond <Int32>] [-PeriodSecond <Int32>]
  [-SuccessThreshold <Int32>] [-TcpSocketHost <String>] [-TcpSocketPort <Int32>]
- [-TerminationGracePeriodSecond <Int64>] [-TimeoutSecond <Int32>] [-Type <Type>] [<CommonParameters>]
+ [-TerminationGracePeriodSecond <Int64>] [-TimeoutSecond <Int32>] [-Type <String>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -25,9 +25,11 @@ Create an in-memory object for ContainerAppProbe.
 
 ## EXAMPLES
 
-### Example 1: Create a ContainerAppProb object for ContainerApp.
+### Example 1: Create an in-memory object for ContainerAppProbe.
 ```powershell
-New-AzContainerAppProbeObject -HttpGetPath "/health" -HttpGetPort 8080 -InitialDelaySecond 3 -PeriodSecond 3 -Type Liveness
+$probeHttpGetHttpHeader = New-AzContainerAppProbeHeaderObject -Name "Custom-Header" -Value "Awesome"
+
+New-AzContainerAppProbeObject -Type "Liveness" -HttpGetPath "/health" -HttpGetPort 8080 -InitialDelaySecond 3 -PeriodSecond 3 -HttpGetHttpHeader $probeHttpGetHttpHeader
 ```
 
 ```output
@@ -36,7 +38,7 @@ FailureThreshold InitialDelaySecond PeriodSecond SuccessThreshold TerminationGra
                  3                  3
 ```
 
-Create a ContainerAppProb object for ContainerApp.
+Create an in-memory object for ContainerAppProbe.
 
 ## PARAMETERS
 
@@ -80,7 +82,7 @@ HTTP allows repeated headers.
 To construct, see NOTES section for HTTPGETHTTPHEADER properties and create a hash table.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.App.Models.Api20220301.IContainerAppProbeHttpGetHttpHeadersItem[]
+Type: Microsoft.Azure.PowerShell.Cmdlets.App.Models.IContainerAppProbeHttpGetHttpHeadersItem[]
 Parameter Sets: (All)
 Aliases:
 
@@ -128,7 +130,7 @@ Scheme to use for connecting to the host.
 Defaults to HTTP.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.App.Support.Scheme
+Type: System.String
 Parameter Sets: (All)
 Aliases:
 
@@ -270,7 +272,7 @@ Accept wildcard characters: False
 The type of probe.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.App.Support.Type
+Type: System.String
 Parameter Sets: (All)
 Aliases:
 
@@ -288,20 +290,9 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.App.Models.Api20220301.ContainerAppProbe
+### Microsoft.Azure.PowerShell.Cmdlets.App.Models.ContainerAppProbe
 
 ## NOTES
-
-ALIASES
-
-COMPLEX PARAMETER PROPERTIES
-
-To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
-
-
-`HTTPGETHTTPHEADER <IContainerAppProbeHttpGetHttpHeadersItem[]>`: Custom headers to set in the request. HTTP allows repeated headers.
-  - `Name <String>`: The header field name
-  - `Value <String>`: The header field value
 
 ## RELATED LINKS
 

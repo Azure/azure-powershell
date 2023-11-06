@@ -1,7 +1,7 @@
 ---
 external help file:
 Module Name: Az.App
-online version: https://learn.microsoft.com/powershell/module/az.app/new-azcontainerappregistrycredentialobject
+online version: https://learn.microsoft.com/powershell/module/Az.App/new-azcontainerappregistrycredentialobject
 schema: 2.0.0
 ---
 
@@ -24,13 +24,13 @@ Create an in-memory object for RegistryCredentials.
 
 ### Example 1: Create a RegistryCredentials object for ContainerApp.
 ```powershell
-New-AzContainerAppRegistryCredentialObject -Identity system -PasswordSecretRef "myloginpassword" -Server azps-containerapp -Username azps-container-user
+New-AzContainerAppRegistryCredentialObject -Identity system -PasswordSecretRef "myloginpassword" -Server azps-containerapp-1 -Username azps-container-user
 ```
 
 ```output
-Identity PasswordSecretRef Server            Username
--------- ----------------- ------            --------
-system   myloginpassword   azps-containerapp azps-container-user
+Identity PasswordSecretRef Server              Username
+-------- ----------------- ------              --------
+system   myloginpassword   azps-containerapp-1 azps-container-user
 ```
 
 Create a RegistryCredentials object for ContainerApp.
@@ -106,11 +106,9 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.App.Models.Api20220301.RegistryCredentials
+### Microsoft.Azure.PowerShell.Cmdlets.App.Models.RegistryCredentials
 
 ## NOTES
-
-ALIASES
 
 ## RELATED LINKS
 

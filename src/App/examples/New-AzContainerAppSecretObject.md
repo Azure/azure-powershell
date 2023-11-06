@@ -1,12 +1,12 @@
-### Example 1: Create a Secret object for ManagedEnvDaprSecret.
+### Example 1: Create an in-memory object for Secret.
 ```powershell
-New-AzContainerAppSecretObject -Name "masterkey" -Value "keyvalue"
+New-AzContainerAppSecretObject -Name "redis-secret" -Value "redis-password"
 ```
 
 ```output
-Name      Value
-----      -----
-masterkey keyvalue
+Identity KeyVaultUrl Name         Value
+-------- ----------- ----         -----
+                     redis-secret redis-password
 ```
 
-Create a Secret object for ManagedEnvDaprSecret.
+Create an in-memory object for Secret.

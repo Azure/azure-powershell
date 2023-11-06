@@ -4,9 +4,9 @@ New-AzContainerAppVolumeMountObject -MountPath "/mountPath" -VolumeName "VolumeN
 ```
 
 ```output
-MountPath  VolumeName
----------  ----------
-/mountPath VolumeName
+MountPath  SubPath VolumeName
+---------  ------- ----------
+/mountPath         VolumeName
 ```
 
 Create a VolumeMount object for ContainerApp.
