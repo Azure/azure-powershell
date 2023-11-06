@@ -22,8 +22,8 @@ New-AzVmss [-ResourceGroupName] <String> [-VMScaleSetName] <String>
 
 ### SimpleParameterSet
 ```
-New-AzVmss [[-ResourceGroupName] <String>] [-VMScaleSetName] <String> [-AsJob] [-UserData <String>] [-DisableIntegrityMonitoring]
- [-ImageName <String>] -Credential <PSCredential> [-InstanceCount <Int32>]
+New-AzVmss [[-ResourceGroupName] <String>] [-VMScaleSetName] <String> [-AsJob] [-UserData <String>]
+ [-DisableIntegrityMonitoring] [-ImageName <String>] -Credential <PSCredential> [-InstanceCount <Int32>]
  [-VirtualNetworkName <String>] [-SubnetName <String>] [-PublicIpAddressName <String>]
  [-DomainNameLabel <String>] [-SecurityGroupName <String>] [-LoadBalancerName <String>]
  [-BackendPort <Int32[]>] [-Location <String>] [-EdgeZone <String>] [-VmSize <String>]
