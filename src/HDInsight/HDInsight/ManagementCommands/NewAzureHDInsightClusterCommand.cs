@@ -233,7 +233,6 @@ namespace Microsoft.Azure.Commands.HDInsight
         [Parameter(HelpMessage = "Gets the configurations of this HDInsight cluster.")]
         public Dictionary<string, Dictionary<string, string>> Configurations { get; private set; }
 
-        [CmdletParameterBreakingChangeWithVersion("NodeType",Constants.deprecateByAzVersion, Constants.deprecateByVersion, OldParamaterType = typeof(ClusterNodeType), NewParameterTypeName = "RuntimeScriptActionClusterNodeType")]
         [Parameter(HelpMessage = "Gets config actions for the cluster.")]
         public Dictionary<ClusterNodeType, List<AzureHDInsightScriptAction>> ScriptActions { get; private set; }
 
