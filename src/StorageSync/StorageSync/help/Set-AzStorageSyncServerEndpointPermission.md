@@ -1,7 +1,7 @@
 ---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.StorageSync.dll-Help.xml
 Module Name: Az.StorageSync
-online version:
+online version: https://learn.microsoft.com/powershell/module/az.storagesync/set-azstoragesyncserverendpointpermission
 schema: 2.0.0
 ---
 
