@@ -32,7 +32,7 @@ Microsoft.Azure.PowerShell.Cmdlets.StackHCIVm.Models.Api20230901Preview.IGallery
 Microsoft.Azure.PowerShell.Cmdlets.StackHCIVm.Models.Api20230901Preview.IMarketplaceGalleryImages
 
 .Link
-https://learn.microsoft.com/powershell/module/az.stackhci/get-azstackhcivmgalleryimage
+https://learn.microsoft.com/powershell/module/az.stackhci/get-azstackhcivmimage
 #>
 
 function Get-AzStackHCIVmImage{    

@@ -29,7 +29,7 @@ Please note some properties can be set only during storage container creation.
 .Outputs
 Microsoft.Azure.PowerShell.Cmdlets.StackHCIVm.Models.Api20230901Preview.IStorageContainers
 .Link
-https://learn.microsoft.com/powershell/module/az.stackhci/new-azstackhcivmstoragecontainer
+https://learn.microsoft.com/powershell/module/az.stackhci/new-azstackhcivmstoragepath
 #>
 function New-AzStackHCIVmStoragePath{
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.StackHCIVm.Models.Api20230901Preview.IStorageContainers])]

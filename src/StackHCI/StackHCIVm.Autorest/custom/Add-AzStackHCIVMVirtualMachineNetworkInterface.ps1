@@ -10,7 +10,7 @@ PS C:\> {{Add-AzStackHCIVmVirtualMachineNic  -Name "sampleVirtualMachine-1030" -
 .Outputs
 Microsoft.Azure.PowerShell.Cmdlets.StackHCIVm.Models.Api20230901Preview.IVirtualMachineInstance
 .Link
-https://learn.microsoft.com/powershell/module/az.stackhci/add-azstackhcivmvirtualmachinenic
+https://learn.microsoft.com/powershell/module/az.stackhci/add-azstackhcivmvirtualmachinenetworkinterface
 #>
 
 function Add-AzStackHCIVmVirtualMachineNetworkInterface {

@@ -13,7 +13,7 @@ Please note some properties can be set only during image creation.
 Microsoft.Azure.PowerShell.Cmdlets.StackHCIVm.Models.Api20221215Preview.IGalleryImages
 Microsoft.Azure.PowerShell.Cmdlets.StackHCIVm.Models.Api20221215Preview.IMarketplaceGalleryImages
 .Link
-https://learn.microsoft.com/powershell/module/az.stackhci/new-azstackhcivmimage
+https://learn.microsoft.com/powershell/module/az.stackhci/update-azstackhcivmimage
 #>
 
 function Update-AzStackHCIVmImage{

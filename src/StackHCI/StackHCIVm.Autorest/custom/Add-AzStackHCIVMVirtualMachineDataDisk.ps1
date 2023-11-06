@@ -35,7 +35,7 @@ Microsoft.Azure.PowerShell.Cmdlets.StackHCIVm.Models.Api20230901Preview.IVirtual
 COMPLEX PARAMETER PROPERTIES
 
 .Link
-https://learn.microsoft.com/powershell/module/az.stackhci/new-azstackhcivmvirtualmachinedatadisk
+https://learn.microsoft.com/powershell/module/az.stackhci/add-azstackhcivmvirtualmachinedatadisk
 #>
 
 function Add-AzStackHCIVmVirtualMachineDataDisk {

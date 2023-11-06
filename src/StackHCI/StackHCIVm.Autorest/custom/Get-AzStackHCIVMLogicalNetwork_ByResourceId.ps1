@@ -17,7 +17,7 @@
 .Synopsis
 Gets a logical network
 .Description
-Gets a logical network
+Gets a logical network 
 .Example
 PS C:\> {{ Add code here }}
 
