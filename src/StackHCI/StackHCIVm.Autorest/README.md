@@ -376,24 +376,6 @@ directive:
  -  where:
       verb: New
       subject: VirtualHardDisk
-      parameter-name: BlockSizeByte
-    set:
-      parameter-name: BlockSizeBytes
- -  where:
-      verb: New
-      subject: VirtualHardDisk
-      parameter-name: LogicalSectorByte
-    set:
-      parameter-name: LogicalSectorBytes
- -  where:
-      verb: New
-      subject: VirtualHardDisk
-      parameter-name: PhysicalSectorByte
-    set:
-      parameter-name: PhysicalSectorBytes
- -  where:
-      verb: New
-      subject: VirtualHardDisk
       parameter-name: ContainerId
     set:
       parameter-name: StoragePathId

@@ -66,7 +66,7 @@ param(
     [Microsoft.Azure.PowerShell.Cmdlets.StackHCIVm.Category('Body')]
     [System.Int32]
     # The block size, in bytes, of the virtual hard disk.  
-    ${BlockSizeBytes},
+    ${BlockSizeByte},
 
     [Parameter()]
     [Microsoft.Azure.PowerShell.Cmdlets.StackHCIVm.Category('Body')]
@@ -122,13 +122,13 @@ param(
     [Microsoft.Azure.PowerShell.Cmdlets.StackHCIVm.Category('Body')]
     [System.Int32]
     # Logical Sector Bytes of the Disk
-    ${LogicalSectorBytes},
+    ${LogicalSectorByte},
 
     [Parameter()]
     [Microsoft.Azure.PowerShell.Cmdlets.StackHCIVm.Category('Body')]
     [System.Int32]
     # Physical Sector Bytes of the Disk
-    ${PhysicalSectorBytes},
+    ${PhysicalSectorByte},
 
     [Parameter()]
     [Microsoft.Azure.PowerShell.Cmdlets.StackHCIVm.Category('Body')]
@@ -153,15 +153,15 @@ param(
         }
 
         
-        if ($LogicalSectorBytes){
-            if ($LogicalSectorBytes -ne 512 -and $LogicalSectorBytes -ne 4096){
+        if ($LogicalSectorByte){
+            if ($LogicalSectorByte -ne 512 -and $LogicalSectorByte -ne 4096){
                 Write-Error "Invalid value for logical sector bytes provided. Allowed values are 512 and 4096. " -ErrorAction Stop
             }
         }
 
               
-        if ($PhysicalSectorBytes){
-            if ($PhysicalSectorBytes -ne 512 -and $PhysicalSectorBytes -ne 4096){
+        if ($PhysicalSectorByte){
+            if ($PhysicalSectorByte -ne 512 -and $PhysicalSectorByte -ne 4096){
                 Write-Error "Invalid value for physical sector bytes provided. Allowed values are 512 and 4096'. "  -ErrorAction Stop
             }
         }

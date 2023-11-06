@@ -15,10 +15,10 @@ Please note some properties can be set only during virtual hard disk creation.
 
 ```
 New-AzStackHCIVmVirtualHardDisk -Name <String> -ResourceGroupName <String> -CustomLocationId <String>
- -Location <String> [-SubscriptionId <String>] [-BlockSizeBytes <Int32>] [-DiskFileFormat <DiskFileFormat>]
- [-Dynamic] [-HyperVGeneration <HyperVGeneration>] [-LogicalSectorBytes <Int32>]
- [-PhysicalSectorBytes <Int32>] [-SizeGb <Int64>] [-StoragePathId <String>] [-StoragePathName <String>]
- [-StoragePathResourceGroup <String>] [-Tag <Hashtable>] [-Confirm] [-WhatIf] [<CommonParameters>]
+ -Location <String> [-SubscriptionId <String>] [-BlockSizeByte <Int32>] [-DiskFileFormat <DiskFileFormat>]
+ [-Dynamic] [-HyperVGeneration <HyperVGeneration>] [-LogicalSectorByte <Int32>] [-PhysicalSectorByte <Int32>]
+ [-SizeGb <Int64>] [-StoragePathId <String>] [-StoragePathName <String>] [-StoragePathResourceGroup <String>]
+ [-Tag <Hashtable>] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -41,7 +41,7 @@ This command creates a virtual hard disk in the specified resource group.
 
 ## PARAMETERS
 
-### -BlockSizeBytes
+### -BlockSizeByte
 The block size, in bytes, of the virtual hard disk.
 
 ```yaml
@@ -131,7 +131,7 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -LogicalSectorBytes
+### -LogicalSectorByte
 Logical Sector Bytes of the Disk
 
 ```yaml
@@ -164,7 +164,7 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -PhysicalSectorBytes
+### -PhysicalSectorByte
 Physical Sector Bytes of the Disk
 
 ```yaml
