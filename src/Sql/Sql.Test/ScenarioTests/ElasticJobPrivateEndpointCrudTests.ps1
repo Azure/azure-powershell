@@ -24,6 +24,7 @@ function Test-CreateJobPrivateEndpoint
 	{
 		$peName = Get-JobPrivateEndpointName 
 		$s1 = Get-AzSqlServer -ResourceGroupName $a1.ResourceGroupName -ServerName $a1.ServerName
+		# Be aware, to successfully re-record this test you will have to go approve the private endpoint in the server's Networking blade. Otherwise, it will not complete or will timeout.
 		$pe1AsJob = New-AzSqlElasticJobPrivateEndpoint -ElasticJobAgentObject $a1 -Name $peName -TargetServerAzureResourceId $s1.ResourceId -AsJob
 		$pe1AsJob | Wait-Job
 
@@ -63,6 +64,7 @@ function Test-GetJobPrivateEndpoint
 	{
 		$peName = Get-JobPrivateEndpointName 
 		$s1 = Get-AzSqlServer -ResourceGroupName $a1.ResourceGroupName -ServerName $a1.ServerName
+		# Be aware, to successfully re-record this test you will have to go approve the private endpoint in the server's Networking blade. Otherwise, it will not complete or will timeout.
 		$pe1AsJob = New-AzSqlElasticJobPrivateEndpoint -ElasticJobAgentObject $a1 -Name $peName -TargetServerAzureResourceId $s1.ResourceId -AsJob
 		$pe1AsJob | Wait-Job
 
@@ -136,6 +138,7 @@ function Test-RemoveJobPrivateEndpoint
 	{
 		$peName = Get-JobPrivateEndpointName 
 		$s1 = Get-AzSqlServer -ResourceGroupName $a1.ResourceGroupName -ServerName $a1.ServerName
+		# Be aware, to successfully re-record this test you will have to go approve the private endpoint in the server's Networking blade. Otherwise, it will not complete or will timeout.
 		$pe1AsJob = New-AzSqlElasticJobPrivateEndpoint -ElasticJobAgentObject $a1 -Name $peName -TargetServerAzureResourceId $s1.ResourceId -AsJob
 		$pe1AsJob | Wait-Job
 
