@@ -25,7 +25,7 @@ namespace Microsoft.Azure.Management.Sql.Models
         /// </summary>
 
         /// <param name="storageAccountType">The storage account type for the database&#39;s backups.
-        /// Possible values include: 'GRS', 'LRS', 'ZRS'</param>
+        /// Possible values include: 'GRS', 'LRS', 'ZRS', 'GZRS'</param>
 
         /// <param name="status">The status of the capability.
         /// Possible values include: 'Visible', 'Available', 'Default', 'Disabled'</param>
@@ -48,7 +48,7 @@ namespace Microsoft.Azure.Management.Sql.Models
 
 
         /// <summary>
-        /// Gets the storage account type for the database&#39;s backups. Possible values include: &#39;GRS&#39;, &#39;LRS&#39;, &#39;ZRS&#39;
+        /// Gets the storage account type for the database&#39;s backups. Possible values include: &#39;GRS&#39;, &#39;LRS&#39;, &#39;ZRS&#39;, &#39;GZRS&#39;
         /// </summary>
         [Newtonsoft.Json.JsonProperty(PropertyName = "storageAccountType")]
         public string StorageAccountType {get; private set; }

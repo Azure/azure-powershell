@@ -13,7 +13,6 @@
 // ----------------------------------------------------------------------------------
 
 using Microsoft.Azure.Commands.Network.Models;
-using Microsoft.WindowsAzure.Commands.Common.CustomAttributes;
 using System.Linq;
 using System.Management.Automation;
 
@@ -22,12 +21,11 @@ namespace Microsoft.Azure.Commands.Network
     [Cmdlet("New", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "ApplicationGatewayFirewallCustomRuleGroupByVariable"), OutputType(typeof(PSApplicationGatewayFirewallCustomRuleGroupByVariable))]
     public class NewAzureApplicationGatewayFirewallCustomRuleGroupByVariableCommand : NetworkBaseCmdlet
     {
-        [CmdletParameterBreakingChangeWithVersionAttribute("VariableName", "11.0.0", "7.0.0", ChangeDescription = "Geo would be invalid for parameter VariableName")]
         [Parameter(
             Mandatory = true,
             HelpMessage = "User Session clause variable.")]
         [ValidateNotNullOrEmpty]
-        [ValidateSet("ClientAddr", "Geo", "GeoLocation", "None", IgnoreCase = true)]
+        [ValidateSet("ClientAddr", "GeoLocation", "None", IgnoreCase = true)]
         public string VariableName { get; set; }
 
         public override void ExecuteCmdlet()

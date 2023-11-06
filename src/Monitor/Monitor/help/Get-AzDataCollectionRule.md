@@ -1,5 +1,5 @@
 ---
-external help file: Microsoft.Azure.PowerShell.Cmdlets.Monitor.dll-Help.xml
+external help file: Az.DataCollectionRule.psm1-help.xml
 Module Name: Az.Monitor
 online version: https://learn.microsoft.com/powershell/module/az.monitor/get-azdatacollectionrule
 schema: 2.0.0
@@ -8,36 +8,35 @@ schema: 2.0.0
 # Get-AzDataCollectionRule
 
 ## SYNOPSIS
-Gets data collection rule(s).
+Returns the specified data collection rule.
 
 ## SYNTAX
 
-### BySubscription (Default)
+### List1 (Default)
 ```
-Get-AzDataCollectionRule [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
+Get-AzDataCollectionRule [-SubscriptionId <String[]>] [-DefaultProfile <PSObject>] [<CommonParameters>]
 ```
 
-### ByResourceGroup
+### Get
 ```
-Get-AzDataCollectionRule -ResourceGroupName <String> [-DefaultProfile <IAzureContextContainer>]
+Get-AzDataCollectionRule -Name <String> -ResourceGroupName <String> [-SubscriptionId <String[]>]
+ [-DefaultProfile <PSObject>] [<CommonParameters>]
+```
+
+### List
+```
+Get-AzDataCollectionRule -ResourceGroupName <String> [-SubscriptionId <String[]>] [-DefaultProfile <PSObject>]
  [<CommonParameters>]
 ```
 
-### ByName
+### GetViaIdentity
 ```
-Get-AzDataCollectionRule -ResourceGroupName <String> -RuleName <String>
- [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
-```
-
-### ByResourceId
-```
-Get-AzDataCollectionRule -RuleId <String> [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
+Get-AzDataCollectionRule -InputObject <IDataCollectionRuleIdentity> [-DefaultProfile <PSObject>]
+ [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-The **Get-AzDataCollectionRule** cmdlet gets one or more data collection rules.
-
-Data Collection Rules (DCR) define data coming into Azure Monitor and specify where that data should be sent or stored. Here is the complete [DCR overview article](https://learn.microsoft.com/azure/azure-monitor/essentials/data-collection-rule-overview).
+Returns the specified data collection rule.
 
 ## EXAMPLES
 
@@ -47,93 +46,115 @@ Get-AzDataCollectionRule
 ```
 
 ```output
-Description       : DCR description
-DataSources       : Microsoft.Azure.Commands.Insights.OutputClasses.PSDataCollectionRuleDataSources
-Destinations      : Microsoft.Azure.Commands.Insights.OutputClasses.PSDataCollectionRuleDestinations
-DataFlows         : {Microsoft.Azure.Commands.Insights.OutputClasses.PSDataFlow}
-ProvisioningState : Succeeded
-Etag              : "{etag}"
-Id                : /subscriptions/{subId}/resourceGroups/testgroup/providers/Microsoft.Insights/dataCollectionRules/testDcr
-Name              : testDcr
-Type              : Microsoft.Insights/dataCollectionRules
-Location          : East US 2 EUAP
-Tags              : {[tag2, value2], [tag1, value1]}
+Etag                                   Kind Location Name              ResourceGroupName
+----                                   ---- -------- ----              -----------------
+"d500e99c-0000-0100-0000-650d68320000"      eastus   myCollectionRule1 AMCS-TEST
+"d50031d9-0000-0100-0000-650d6b1f0000"      eastus   myCollectionRule2 AMCS-TEST
 ```
 
-This command lists all the data collection rules for the current subscription.
+This command gets list of data collection rules by specified subscription.
 
-### Example 2: Get data collection rules for the given resource group
+### Example 2: List by resource group
 ```powershell
-Get-AzDataCollectionRule -ResourceGroupName "testgroup"
+Get-AzDataCollectionRule -ResourceGroupName AMCS-TEST
 ```
 
 ```output
-Description       : DCR description
-DataSources       : Microsoft.Azure.Commands.Insights.OutputClasses.PSDataCollectionRuleDataSources
-Destinations      : Microsoft.Azure.Commands.Insights.OutputClasses.PSDataCollectionRuleDestinations
-DataFlows         : {Microsoft.Azure.Commands.Insights.OutputClasses.PSDataFlow}
-ProvisioningState : Succeeded
-Etag              : "{etag}"
-Id                : /subscriptions/{subId}/resourceGroups/testgroup/providers/Microsoft.Insights/dataCollectionRules/testDcr
-Name              : testDcr
-Type              : Microsoft.Insights/dataCollectionRules
-Location          : East US 2 EUAP
-Tags              : {[tag2, value2], [tag1, value1]}
+Etag                                   Kind Location Name              ResourceGroupName
+----                                   ---- -------- ----              -----------------
+"d500e99c-0000-0100-0000-650d68320000"      eastus   myCollectionRule1 AMCS-TEST
+"d50031d9-0000-0100-0000-650d6b1f0000"      eastus   myCollectionRule2 AMCS-TEST
 ```
 
-This command lists data collection rules for the given resource group.
+This command gets list of data collection rules by specified resource group.
 
-### Example 3: Get a data collection rule
+### Example 3: Get specific rule with specified resource group
 ```powershell
-Get-AzDataCollectionRule -ResourceGroupName "testgroup" -RuleName "testDcr"
+Get-AzDataCollectionRule -ResourceGroupName AMCS-TEST -Name myCollectionRule1
 ```
 
 ```output
-Description       : DCR description
-DataSources       : Microsoft.Azure.Commands.Insights.OutputClasses.PSDataCollectionRuleDataSources
-Destinations      : Microsoft.Azure.Commands.Insights.OutputClasses.PSDataCollectionRuleDestinations
-DataFlows         : {Microsoft.Azure.Commands.Insights.OutputClasses.PSDataFlow}
-ProvisioningState : Succeeded
-Etag              : "{etag}"
-Id                : /subscriptions/{subId}/resourceGroups/testgroup/providers/Microsoft.Insights/dataCollectionRules/testDcr
-Name              : testDcr
-Type              : Microsoft.Insights/dataCollectionRules
-Location          : East US 2 EUAP
-Tags              : {[tag2, value2], [tag1, value1]}
+DataCollectionEndpointId                  : 
+DataFlow                                  : {{
+                                              "streams": [ "Microsoft-InsightsMetrics" ],
+                                              "destinations": [ "azureMonitorMetrics-default" ]
+                                            }}
+DataSourceDataImportEventHubConsumerGroup : 
+DataSourceDataImportEventHubName          : 
+DataSourceDataImportEventHubStream        : 
+DataSourceExtension                       : 
+DataSourceIisLog                          : 
+DataSourceLogFile                         : 
+DataSourcePerformanceCounter              : {{
+                                              "streams": [ "Microsoft-Perf" ],
+                                              "samplingFrequencyInSeconds": 15,
+                                              "counterSpecifiers": [ "\\\\Processor(_Total)\\\\% Processor Time", "\\\\Memory\\\\Committed Bytes", "\\\\LogicalDisk(_Total)\\\\Free
+                                            Megabytes", "\\\\PhysicalDisk(_Total)\\\\Avg. Disk Queue Length" ],
+                                              "name": "cloudTeamCoreCounters"
+                                            }, {
+                                              "streams": [ "Microsoft-Perf" ],
+                                              "samplingFrequencyInSeconds": 30,
+                                              "counterSpecifiers": [ "\\\\Process(_Total)\\\\Thread Count" ],
+                                              "name": "appTeamExtraCounters"
+                                            }}
+DataSourcePlatformTelemetry               : 
+DataSourcePrometheusForwarder             : 
+DataSourceSyslog                          : 
+DataSourceWindowsEventLog                 : {{
+                                              "streams": [ "Microsoft-WindowsEvent" ],
+                                              "xPathQueries": [ "System![System[(Level = 1 or Level = 2 or Level = 3)]]", "Application!*[System[(Level = 1 or Level = 2 or Level = 3)]]" ],   
+                                              "name": "appTeam1AppEvents"
+                                            }}
+DataSourceWindowsFirewallLog              : 
+Description                               : 
+DestinationAzureMonitorMetricName         : azureMonitorMetrics-default
+DestinationEventHub                       : 
+DestinationEventHubsDirect                : 
+DestinationLogAnalytic                    : 
+DestinationMonitoringAccount              : 
+DestinationStorageAccount                 : 
+DestinationStorageBlobsDirect             : 
+DestinationStorageTablesDirect            : 
+Etag                                      : "d500e99c-0000-0100-0000-650d68320000"
+Id                                        : /subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/AMCS-TEST/providers/Microsoft.Insights/dataCollectionRules/myCollectionRule1   
+IdentityPrincipalId                       : 
+IdentityTenantId                          : 
+IdentityType                              : 
+IdentityUserAssignedIdentity              : {
+                                            }
+ImmutableId                               : dcr-9a6169afee634c13baa880dee8c5eb97
+Kind                                      : 
+Location                                  : eastus
+MetadataProvisionedBy                     : 
+MetadataProvisionedByResourceId           : 
+Name                                      : myCollectionRule1
+ProvisioningState                         : Succeeded
+ResourceGroupName                         : AMCS-TEST
+StreamDeclaration                         : {
+                                            }
+SystemDataCreatedAt                       : 9/22/2023 9:18:41 AM
+SystemDataCreatedBy                       : v-jiaji@microsoft.com
+SystemDataCreatedByType                   : User
+SystemDataLastModifiedAt                  : 9/22/2023 10:10:57 AM
+SystemDataLastModifiedBy                  : v-jiaji@microsoft.com
+SystemDataLastModifiedByType              : User
+Tag                                       : {
+                                            }
+Type                                      : Microsoft.Insights/dataCollectionRules
 ```
 
-This command lists one (a list with a single element) data collection rule.
-
-### Example 4: Get a data collection rule by Rule ID
-```powershell
-Get-AzDataCollectionRule -RuleId "/subscriptions/{subId}/resourceGroups/testgroup/providers/Microsoft.Insights/dataCollectionRules/testDcr"
-```
-
-```output
-Description       : DCR description
-DataSources       : Microsoft.Azure.Commands.Insights.OutputClasses.PSDataCollectionRuleDataSources
-Destinations      : Microsoft.Azure.Commands.Insights.OutputClasses.PSDataCollectionRuleDestinations
-DataFlows         : {Microsoft.Azure.Commands.Insights.OutputClasses.PSDataFlow}
-ProvisioningState : Succeeded
-Etag              : "{etag}"
-Id                : /subscriptions/{subId}/resourceGroups/testgroup/providers/Microsoft.Insights/dataCollectionRules/testDcr
-Name              : testDcr
-Type              : Microsoft.Insights/dataCollectionRules
-Location          : East US 2 EUAP
-Tags              : {[tag2, value2], [tag1, value1]}
-```
-
-This command lists one (a list with a single element) data collection rule.
+This command gets specific data collection rule with specified resource group.
 
 ## PARAMETERS
 
 ### -DefaultProfile
-The credentials, account, tenant, and subscription used for communication with azure
+The DefaultProfile parameter is not functional.
+Use the SubscriptionId parameter when available if executing the cmdlet against a different subscription.
 
 ```yaml
-Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer
+Type: System.Management.Automation.PSObject
 Parameter Sets: (All)
-Aliases: AzContext, AzureRmContext, AzureCredential
+Aliases: AzureRMContext, AzureCredential
 
 Required: False
 Position: Named
@@ -142,48 +163,66 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -ResourceGroupName
-The resource group name
+### -InputObject
+Identity Parameter
+To construct, see NOTES section for INPUTOBJECT properties and create a hash table.
 
 ```yaml
-Type: System.String
-Parameter Sets: ByResourceGroup, ByName
+Type: Microsoft.Azure.PowerShell.Cmdlets.Monitor.DataCollection.Models.IDataCollectionRuleIdentity
+Parameter Sets: GetViaIdentity
 Aliases:
 
 Required: True
 Position: Named
 Default value: None
-Accept pipeline input: True (ByPropertyName)
+Accept pipeline input: True (ByValue)
 Accept wildcard characters: False
 ```
 
-### -RuleId
-The ID of the resource.
+### -Name
+The name of the data collection rule.
+The name is case insensitive.
 
 ```yaml
 Type: System.String
-Parameter Sets: ByResourceId
-Aliases: ResourceId
+Parameter Sets: Get
+Aliases: DataCollectionRuleName, RuleName
 
 Required: True
 Position: Named
 Default value: None
-Accept pipeline input: True (ByPropertyName)
+Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -RuleName
-The name of the resource.
+### -ResourceGroupName
+The name of the resource group.
+The name is case insensitive.
 
 ```yaml
 Type: System.String
-Parameter Sets: ByName
-Aliases: Name
+Parameter Sets: Get, List
+Aliases:
 
 Required: True
 Position: Named
 Default value: None
-Accept pipeline input: True (ByPropertyName)
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -SubscriptionId
+The ID of the target subscription.
+
+```yaml
+Type: System.String[]
+Parameter Sets: List1, Get, List
+Aliases:
+
+Required: False
+Position: Named
+Default value: (Get-AzContext).Subscription.Id
+Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
@@ -192,17 +231,12 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
-### System.String
+### Microsoft.Azure.PowerShell.Cmdlets.Monitor.DataCollection.Models.IDataCollectionRuleIdentity
 
 ## OUTPUTS
 
-### Microsoft.Azure.Commands.Insights.OutputClasses.PSDataCollectionRuleResource
+### Microsoft.Azure.PowerShell.Cmdlets.Monitor.DataCollection.Models.IDataCollectionRuleResource
 
 ## NOTES
 
 ## RELATED LINKS
-
-[Set-AzDataCollectionRule](./Set-AzDataCollectionRule.md)
-[Remove-AzDataCollectionRule](./Remove-AzDataCollectionRule.md)
-[New-AzDataCollectionRule](./New-AzDataCollectionRule.md)
-[Update-AzDataCollectionRule](./Update-AzDataCollectionRule.md)

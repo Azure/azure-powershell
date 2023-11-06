@@ -57,7 +57,7 @@ function Get-NodeTypeName
 
 function Get-KeyVaultName
 {
-    return "azurermsfkvtest";
+    return "pstestkv2";
 }
 
 function Get-NewCertName
@@ -68,7 +68,7 @@ function Get-NewCertName
 function Get-SecretUrl
 {
     # Thumbprint for this cert should be specified in TestServiceFabric.cs in ServiceFabricCmdletBase.TestThumbprint
-    return "https://azurermsfkvtest.vault.azure.net:443/secrets/AzureRMSFTestCert2/b4bfdec635514591bc1ee087b9b61772"
+    return "https://gumakv1.vault.azure.net/secrets/gumacert/bc05af76fa894a38a0f9f47804bacc42"
 }
 
 function Get-InitialThumbprint
@@ -79,13 +79,13 @@ function Get-InitialThumbprint
 function Get-Thumbprint
 {
     # Change the thumbprint in the TestServiceFabric.cs file as well in ServiceFabricCmdletBase.TestThumbprint
-    return "D1DC34B88497F50FB0C0F019DA74E4DA5FADD56D"
+    return "3027AB10104C94545CB23406FF31ADEFE896A9BB"
 }
 
 function Get-CertAppSecretUrl
 {
     # Thumbprint for this cert should be specified in TestServiceFabric.cs in ServiceFabricCmdletBase.TestThumbprintAppCert
-    return "https://azurermsfkvtest.vault.azure.net:443/secrets/AzureRMSFTestCertApp/f052a9de0e9249cc8e84f9951a96afe4"
+    return "https://gumakv1.vault.azure.net/secrets/pstestcert2/9f35b712392c4a9cacd50b76582ee017"
 }
 
 function Get-CertAppThumbprint
@@ -96,17 +96,17 @@ function Get-CertAppThumbprint
 
 function Get-CACertCommonName
 {
-	return "azurermsfcntest.southcentralus.cloudapp.azure.com"
+	return "pstestcert"
 }
 
 function Get-CACertIssuerThumbprint
 {
-	return "417e225037fbfaa4f95761d5ae729e1aea7e3a42,d4de20d05e66fc53fe1a50882c78db2852cae474"
+	return "23EACB87421FB794AA9B68A31DB194BCDFEB34CF"
 }
 
 function Get-CACertSecretUrl
 {
-	return "https://azurermsfkvtest.vault.azure.net:443/secrets/azurermsfcntest/c0770e09071f41b38cbb49204dd2f820"
+	return "https://gumakv1.vault.azure.net/secrets/pstestcert2/9f35b712392c4a9cacd50b76582ee017"
 }
 
 function Get-CertWUSecretUrl
@@ -335,32 +335,32 @@ function Assert-AreEqualObjectPropertiesExcept
 
 function Get-AppTypeName
 {
-    return "CalcServiceApp"
+    return "VotingType"
 }
 
 function Get-AppTypeV1Name
 {
-    return "1.0"
+    return "1.0.0"
 }
 
 function Get-AppTypeV2Name
 {
-    return "1.1"
+    return "2.0.0"
 }
 
 function Get-AppPackageV1
 {
-    return "https://sfmcsttest.blob.core.windows.net/sfmc-ps/Voting.sfpkg?sp=r&st=2023-09-21T03:04:25Z&se=2023-11-01T11:04:25Z&spr=https&sv=2022-11-02&sr=b&sig=BTFecBFf5%2Bzm5eLH0XjqBt1r%2FknbbaAniftETWddh8A%3D"
+    return "https://azsfapptest.blob.core.windows.net/azsfapptest/CalcApp_1.0.sfpkg"
 }
 
 function Get-AppPackageV2
 {
-    return "https://sfmcsttest.blob.core.windows.net/sfmc-ps/Voting.2.0.0.sfpkg?sp=r&st=2023-09-21T03:05:25Z&se=2023-09-21T11:05:25Z&spr=https&sv=2022-11-02&sr=b&sig=EDTkZPO8T0yMtB2gKJR2I%2FkbLUuQFFKHE0w2eyT%2Bn2E%3D"
+    return "https://azsfapptest.blob.core.windows.net/azsfapptest/CalcApp_1.1.sfpkg"
 }
 
 function Get-ServiceTypeName
 {
-    return "CalcServiceType"
+    return "VotingWebType"
 }
 
 # Managed Application functions

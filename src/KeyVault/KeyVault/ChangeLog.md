@@ -19,6 +19,7 @@
 -->
 ## Upcoming Release
 * Reduced number of MSGraph API calls for access policy.
+* Supported user assigned identity for Managed HSM in `New/Update-AzKeyVaultManagedHsm` 
 * [Breaking Change] Changed parameter `SoftDeleteRetentionInDays` in `New-AzKeyVaultManagedHsm` to mandatory.
 * Upgraded Azure.Core to 1.35.0.
 

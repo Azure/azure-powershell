@@ -58,6 +58,7 @@ function Test-ManagedInstanceLink
         Assert-Null $listLinksZero
 
         $upsertJ = New-AzSqlInstanceLink -ResourceGroupName $rgName -InstanceName $miName -LinkName $linkName -PrimaryAvailabilityGroupName $primaryAGName -SecondaryAvailabilityGroupName $secondaryAGName -TargetDatabase $targetDatabase -SourceEndpoint $sourceEndpoint -AsJob
+        $upsertJ | Wait-Job
 
         # wait a little bit for the link resource to be created
         Wait-Seconds 60
@@ -218,6 +219,7 @@ function Test-ManagedInstanceLinkErrHandling
 
         # upsert via CreateByParentObjectParameterSet
         $upsertJ = New-AzSqlInstanceLink -InstanceObject $instance -LinkName $linkName -PrimaryAvailabilityGroupName $primaryAGName -SecondaryAvailabilityGroupName $secondaryAGName -TargetDatabase $targetDatabase -SourceEndpoint $sourceEndpoint -AsJob
+        $upsertJ | Wait-Job
 
         # wait a little bit for the link resource to be created
         Wait-Seconds 60
@@ -300,7 +302,8 @@ function Test-ManagedInstanceLinkPiping
         
         # Upsert and get with parent instance Piping
         $upsertJ = $instance | New-AzSqlInstanceLink -LinkName $linkNamePipe -PrimaryAvailabilityGroupName $primaryAGNamePipe -SecondaryAvailabilityGroupName $secondaryAGNamePipe -TargetDatabase $targetDatabasePipe -SourceEndpoint $sourceEndpointPipe -AsJob
-        
+        $upsertJ | Wait-Job
+
         # wait a little bit for the link resource to be created
         Wait-Seconds 60
         $listResp = $instance | Get-AzSqlInstanceLink

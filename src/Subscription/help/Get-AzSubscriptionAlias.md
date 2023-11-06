@@ -38,10 +38,10 @@ Get-AzSubscriptionAlias
 ```
 
 ```output
-AliasName          DisplayName SubscriptionId                       ProvisioningState
----------          ----------- --------------                       -----------------
-test-subscription  createSub   XXXXXXXX-XXXX-XXXX-XXXX-XXXXXXXXXXXX Succeeded
-test-subscription2 createSub   XXXXXXXX-XXXX-XXXX-XXXX-XXXXXXXXXXXX Succeeded
+AliasName          SubscriptionId                       ProvisioningState
+---------          --------------                       -----------------
+test-subscription  XXXXXXXX-XXXX-XXXX-XXXX-XXXXXXXXXXXX Succeeded
+test-subscription2 XXXXXXXX-XXXX-XXXX-XXXX-XXXXXXXXXXXX Succeeded
 ```
 
 List Alias Subscription.
@@ -52,9 +52,9 @@ Get-AzSubscriptionAlias -AliasName test-subscription
 ```
 
 ```output
-AliasName         DisplayName SubscriptionId                       ProvisioningState
----------         ----------- --------------                       -----------------
-test-subscription createSub   XXXXXXXX-XXXX-XXXX-XXXX-XXXXXXXXXXXX Succeeded
+AliasName         SubscriptionId                       ProvisioningState
+---------         --------------                       -----------------
+test-subscription XXXXXXXX-XXXX-XXXX-XXXX-XXXXXXXXXXXX Succeeded
 ```
 
 Get Alias Subscription.
@@ -123,19 +123,6 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ### Microsoft.Azure.PowerShell.Cmdlets.Subscription.Models.Api20211001.ISubscriptionAliasResponse
 
 ## NOTES
-
-ALIASES
-
-COMPLEX PARAMETER PROPERTIES
-
-To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
-
-
-`INPUTOBJECT <ISubscriptionIdentity>`: Identity Parameter
-  - `[AliasName <String>]`: AliasName is the name for the subscription creation request. Note that this is not the same as subscription name and this doesn’t have any other lifecycle need beyond the request for subscription creation.
-  - `[BillingAccountId <String>]`: Billing Account Id.
-  - `[Id <String>]`: Resource identity path
-  - `[SubscriptionId <String>]`: Subscription Id.
 
 ## RELATED LINKS
 

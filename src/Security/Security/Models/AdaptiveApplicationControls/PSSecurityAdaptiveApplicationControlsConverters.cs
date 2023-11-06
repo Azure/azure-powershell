@@ -32,7 +32,7 @@ namespace Microsoft.Azure.Commands.SecurityCenter.Models.AdaptiveApplicationCont
                     RecommendationStatus = value.RecommendationStatus,
                     EnforcementMode = value.EnforcementMode,
                     ProtectionMode = value.ProtectionMode.ConvertToPSType(),
-                    VmRecommendations = value.VmRecommendations.ConvertToPSType(),
+                    VmRecommendations = value.VMRecommendations.ConvertToPSType(),
                     PathRecommendations = value.PathRecommendations.ConvertToPSType(),
                     ConfigurationStatus = value.ConfigurationStatus,
                     Issues = value.Issues.ConvertToPSType(),
