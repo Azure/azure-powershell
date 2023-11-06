@@ -85,7 +85,7 @@ param(
     [Microsoft.Azure.PowerShell.Cmdlets.StackHCIVm.Category('Body')]
     [System.String[]]
     # List of DNS server IP Addresses for the interface
-    ${DnsServers},
+    ${DnsServer},
 
     [Parameter()]
     [Microsoft.Azure.PowerShell.Cmdlets.StackHCIVm.Category('Body')]
@@ -143,10 +143,10 @@ param(
       Write-Error "Invalid MacAddress: $MacAddress." -ErrorAction Stop
     }
   }
-  if ($DnsServers){
-      foreach ($DnsServer in $DnsServers){
-        if ($DnsServer -notmatch $ipv4Regex){
-            Write-Error "Invalid ipaddress provided for Dns Servers : $DnsServer." -ErrorAction Stop
+  if ($DnsServer){
+      foreach ($DnsServ in $DnsServer){
+        if ($DnsServ -notmatch $ipv4Regex){
+            Write-Error "Invalid ipaddress provided for Dns Servers : $DnsServ." -ErrorAction Stop
         }
       }
   }

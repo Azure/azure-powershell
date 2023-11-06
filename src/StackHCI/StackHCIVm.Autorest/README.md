@@ -414,7 +414,7 @@ directive:
       subject: LogicalNetwork
       parameter-name: DhcpOptionDnsServer
     set:
-      parameter-name: DnsServers
+      parameter-name: DnsServer
  -  where:
       model-name: Subnet
       property-name: PropertiesAddressPrefixes  
@@ -425,7 +425,7 @@ directive:
       subject: NetworkInterface
       parameter-name: DnsSettingDnsServer
     set:
-      parameter-name: DnsServers
+      parameter-name: DnsServer
  -  where:
       model-name: IPConfiguration
       property-name: PrivateIPAddress

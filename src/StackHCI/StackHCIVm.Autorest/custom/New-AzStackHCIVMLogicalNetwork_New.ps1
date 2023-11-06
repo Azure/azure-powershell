@@ -99,7 +99,7 @@ function New-AzStackHCIVmLogicalNetwork {
       [Microsoft.Azure.PowerShell.Cmdlets.StackHCIVm.Category('Body')]
       [System.String[]]
       # The list of DNS servers IP addresses.
-      ${DnsServers},
+      ${DnsServer},
   
       [Parameter()]
       [Microsoft.Azure.PowerShell.Cmdlets.StackHCIVm.Category('Body')]
@@ -187,10 +187,10 @@ function New-AzStackHCIVmLogicalNetwork {
         Write-Error "Invalid CustomLocationId: $CustomLocationId" -ErrorAction Stop
       } 
   
-      if ($DnsServers){
-        foreach ($DnsServer in $DnsServers){
-          if ($DnsServer -notmatch $ipv4Regex){
-              Write-Error "Invalid ipaddress provided for Dns Servers : $DnsServer." -ErrorAction Stop
+      if ($DnsServer){
+        foreach ($DnsServ in $DnsServer){
+          if ($DnsServ -notmatch $ipv4Regex){
+              Write-Error "Invalid ipaddress provided for Dns Servers : $DnsServ." -ErrorAction Stop
           }
         }
       }
