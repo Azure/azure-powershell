@@ -16,50 +16,87 @@
 
 <#
 .Synopsis
-Get the status of the pending Microsoft.Subscription API operations.
+Create Alias Subscription.
 .Description
-Get the status of the pending Microsoft.Subscription API operations.
+Create Alias Subscription.
 .Example
-{{ Add code here }}
+New-AzSubscriptionAlias -AliasName test-subscription -SubscriptionId XXXXXXXX-XXXX-XXXX-XXXX-XXXXXXXXXXXX
 .Example
-{{ Add code here }}
+New-AzSubscriptionAlias -AliasName test-subscription -SubscriptionName "createSub" -BillingScope "/billingAccounts/{billingAccountName}/billingProfiles/{billingProfileName}/invoiceSections/{invoiceSectionName}" -Workload 'Production' 
 
-.Inputs
-Microsoft.Azure.PowerShell.Cmdlets.Subscription.Models.ISubscriptionIdentity
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.Subscription.Models.Api20211001.IOperation
-.Outputs
-System.String
-.Notes
-COMPLEX PARAMETER PROPERTIES
-
-To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
-
-INPUTOBJECT <ISubscriptionIdentity>: Identity Parameter
-  [AliasName <String>]: AliasName is the name for the subscription creation request. Note that this is not the same as subscription name and this doesn’t have any other lifecycle need beyond the request for subscription creation.
-  [BillingAccountId <String>]: Billing Account Id.
-  [Id <String>]: Resource identity path
-  [OperationId <String>]: The operation ID, which can be found from the Location field in the generate recommendation response header.
-  [SubscriptionId <String>]: Subscription Id.
+Microsoft.Azure.PowerShell.Cmdlets.Subscription.Models.Api20211001.ISubscriptionAliasResponse
 .Link
-https://learn.microsoft.com/powershell/module/az.subscription/get-azsubscriptionoperation
+https://learn.microsoft.com/powershell/module/az.subscription/new-azsubscriptionalias
 #>
-function Get-AzSubscriptionOperation {
-[OutputType([System.String], [Microsoft.Azure.PowerShell.Cmdlets.Subscription.Models.Api20211001.IOperation])]
-[CmdletBinding(DefaultParameterSetName='List', PositionalBinding=$false)]
+function New-AzSubscriptionAlias {
+[OutputType([Microsoft.Azure.PowerShell.Cmdlets.Subscription.Models.Api20211001.ISubscriptionAliasResponse])]
+[CmdletBinding(DefaultParameterSetName='CreateExpanded', PositionalBinding=$false, SupportsShouldProcess, ConfirmImpact='Medium')]
 param(
-    [Parameter(ParameterSetName='Get', Mandatory)]
+    [Parameter(Mandatory)]
     [Microsoft.Azure.PowerShell.Cmdlets.Subscription.Category('Path')]
     [System.String]
-    # The operation ID, which can be found from the Location field in the generate recommendation response header.
-    ${OperationId},
+    # AliasName is the name for the subscription creation request.
+    # Note that this is not the same as subscription name and this doesn’t have any other lifecycle need beyond the request for subscription creation.
+    ${AliasName},
 
-    [Parameter(ParameterSetName='GetViaIdentity', Mandatory, ValueFromPipeline)]
-    [Microsoft.Azure.PowerShell.Cmdlets.Subscription.Category('Path')]
-    [Microsoft.Azure.PowerShell.Cmdlets.Subscription.Models.ISubscriptionIdentity]
-    # Identity Parameter
-    # To construct, see NOTES section for INPUTOBJECT properties and create a hash table.
-    ${InputObject},
+    [Parameter()]
+    [Microsoft.Azure.PowerShell.Cmdlets.Subscription.Category('Body')]
+    [System.String]
+    # Billing scope of the subscription.For CustomerLed and FieldLed - /billingAccounts/{billingAccountName}/billingProfiles/{billingProfileName}/invoiceSections/{invoiceSectionName}For PartnerLed - /billingAccounts/{billingAccountName}/customers/{customerName}For Legacy EA - /billingAccounts/{billingAccountName}/enrollmentAccounts/{enrollmentAccountName}
+    ${BillingScope},
+
+    [Parameter()]
+    [Microsoft.Azure.PowerShell.Cmdlets.Subscription.Category('Body')]
+    [System.String]
+    # Management group Id for the subscription.
+    ${ManagementGroupId},
+
+    [Parameter()]
+    [Microsoft.Azure.PowerShell.Cmdlets.Subscription.Category('Body')]
+    [System.String]
+    # Reseller Id
+    ${ResellerId},
+
+    [Parameter()]
+    [Microsoft.Azure.PowerShell.Cmdlets.Subscription.Category('Body')]
+    [System.String]
+    # This parameter can be used to create alias for existing subscription Id
+    ${SubscriptionId},
+
+    [Parameter()]
+    [Alias('DisplayName')]
+    [Microsoft.Azure.PowerShell.Cmdlets.Subscription.Category('Body')]
+    [System.String]
+    # The friendly name of the subscription.
+    ${SubscriptionName},
+
+    [Parameter()]
+    [Microsoft.Azure.PowerShell.Cmdlets.Subscription.Category('Body')]
+    [System.String]
+    # Owner Id of the subscription
+    ${SubscriptionOwnerId},
+
+    [Parameter()]
+    [Microsoft.Azure.PowerShell.Cmdlets.Subscription.Category('Body')]
+    [System.String]
+    # Tenant Id of the subscription
+    ${SubscriptionTenantId},
+
+    [Parameter()]
+    [Microsoft.Azure.PowerShell.Cmdlets.Subscription.Category('Body')]
+    [Microsoft.Azure.PowerShell.Cmdlets.Subscription.Runtime.Info(PossibleTypes=([Microsoft.Azure.PowerShell.Cmdlets.Subscription.Models.Api20211001.IPutAliasRequestAdditionalPropertiesTags]))]
+    [System.Collections.Hashtable]
+    # Tags for the subscription
+    ${Tag},
+
+    [Parameter()]
+    [ArgumentCompleter([Microsoft.Azure.PowerShell.Cmdlets.Subscription.Support.Workload])]
+    [Microsoft.Azure.PowerShell.Cmdlets.Subscription.Category('Body')]
+    [Microsoft.Azure.PowerShell.Cmdlets.Subscription.Support.Workload]
+    # The workload type of the subscription.
+    # It can be either Production or DevTest.
+    ${Workload},
 
     [Parameter()]
     [Alias('AzureRMContext', 'AzureCredential')]
@@ -69,6 +106,12 @@ param(
     # The DefaultProfile parameter is not functional.
     # Use the SubscriptionId parameter when available if executing the cmdlet against a different subscription.
     ${DefaultProfile},
+
+    [Parameter()]
+    [Microsoft.Azure.PowerShell.Cmdlets.Subscription.Category('Runtime')]
+    [System.Management.Automation.SwitchParameter]
+    # Run the command as a job
+    ${AsJob},
 
     [Parameter(DontShow)]
     [Microsoft.Azure.PowerShell.Cmdlets.Subscription.Category('Runtime')]
@@ -90,12 +133,11 @@ param(
     # SendAsync Pipeline Steps to be prepended to the front of the pipeline
     ${HttpPipelinePrepend},
 
-    [Parameter(ParameterSetName='Get')]
-    [Parameter(ParameterSetName='GetViaIdentity')]
+    [Parameter()]
     [Microsoft.Azure.PowerShell.Cmdlets.Subscription.Category('Runtime')]
     [System.Management.Automation.SwitchParameter]
-    # Returns true when the command succeeds
-    ${PassThru},
+    # Run the command asynchronously
+    ${NoWait},
 
     [Parameter(DontShow)]
     [Microsoft.Azure.PowerShell.Cmdlets.Subscription.Category('Runtime')]
@@ -126,9 +168,7 @@ begin {
         $parameterSet = $PSCmdlet.ParameterSetName
 
         $mapping = @{
-            Get = 'Az.Subscription.private\Get-AzSubscriptionOperation_Get';
-            GetViaIdentity = 'Az.Subscription.private\Get-AzSubscriptionOperation_GetViaIdentity';
-            List = 'Az.Subscription.private\Get-AzSubscriptionOperation_List';
+            CreateExpanded = 'Az.Subscription.private\New-AzSubscriptionAlias_CreateExpanded';
         }
 
         $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Cmdlet)
