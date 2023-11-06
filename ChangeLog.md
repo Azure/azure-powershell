@@ -1,4 +1,7 @@
 ## 10.4.1 - September 2023
+#### Az.Websites 3.2.1
+* Bug Fix : Remove snapshot time parsing to avoid trimming the timestamp.
+
 #### Az.Resources 6.11.1
 * Reverted commits that caused regression in 'Get-AzRoleAssignment'. [#22863]
 
