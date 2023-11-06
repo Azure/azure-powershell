@@ -56,7 +56,7 @@ In this directory, run AutoRest:
 ```yaml
 require:
   - $(this-folder)/../../readme.azure.noprofile.md
-repo: azure-rest-api-specs-pr
+repo: azure-rest-api-specs
 # lock the commit
 input-file:
   - $(repo)/specification/azurestackhci/resource-manager/Microsoft.AzureStackHCI/preview/2023-09-01-preview/common.json
