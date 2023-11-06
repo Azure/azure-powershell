@@ -104,7 +104,8 @@ namespace Microsoft.Azure.Commands.Compute
         public string ProximityPlacementGroupId { get; set; }
 
         [Parameter(
-            Mandatory = false)]
+            Mandatory = false,
+            HelpMessage = "Attached Virtual Machine Scale Set Id.")]
         [AllowEmptyString]
         public string VirtualMachineScaleSetId { get; set; }
 
@@ -251,6 +252,7 @@ namespace Microsoft.Azure.Commands.Compute
                         parameters.ProximityPlacementGroup.Id = null;
                     }
 
+                    // when vm.virtualMachineScaleSet.Id is set to null, powershell interprets it as empty so converting it back to null
                     if (parameters.VirtualMachineScaleSet != null && string.IsNullOrWhiteSpace(parameters.VirtualMachineScaleSet.Id))
                     {
                         parameters.VirtualMachineScaleSet.Id = null;

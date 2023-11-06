@@ -4949,7 +4949,9 @@ function Test-VirtualMachineScaleSetSecurityTypeUpdate
 
 <#
 .SYNOPSIS
-    create a VMSS in orchestration mode then add a vm to it
+    create a VMSS in flexible mode 
+    Test Attach scenario of adding a vmss
+    Test Detach scenario of removing the VMSS
 #>
 function Test-VirtualMachineScaleSetAttachAndDetach
 {
@@ -4959,7 +4961,7 @@ function Test-VirtualMachineScaleSetAttachAndDetach
     try
     {
         # Common
-        $loc = "eastus"
+        $loc = Get-ComputeVMLocation;
         New-AzResourceGroup -Name $rgname -Location $loc -Force;
 
         # New VMSS Parameters
