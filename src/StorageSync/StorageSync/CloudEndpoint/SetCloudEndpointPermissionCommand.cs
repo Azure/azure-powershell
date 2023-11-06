@@ -32,7 +32,7 @@ namespace Microsoft.Azure.Commands.StorageSync.CloudEndpoint
     /// </summary>
     /// <seealso cref="Microsoft.Azure.Commands.StorageSync.Common.StorageSyncClientCmdletBase" />
     [Cmdlet(VerbsCommon.Set, StorageSyncNouns.NounAzureRmStorageSyncCloudEndpointPermission,
-        DefaultParameterSetName = StorageSyncParameterSets.StringParameterSet), OutputType(typeof(PSCloudEndpoint))]
+        DefaultParameterSetName = StorageSyncParameterSets.StringParameterSet, SupportsShouldProcess = true), OutputType(typeof(PSCloudEndpoint))]
     public class SetCloudEndpointPermissionCommand : StorageSyncClientCmdletBase
     {
         /// <summary>
