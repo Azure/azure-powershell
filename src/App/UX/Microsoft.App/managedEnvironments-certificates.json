@@ -1,6 +1,6 @@
 {
   "resourceType": "managedEnvironments/certificates",
-  "apiVersion": "2022-03-01",
+  "apiVersion": "2023-05-01",
   "learnMore": {
     "url": "https://learn.microsoft.com/powershell/module/az.app"
   },

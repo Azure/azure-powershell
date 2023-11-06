@@ -6,6 +6,8 @@
 namespace Microsoft.Azure.PowerShell.Cmdlets.App.Cmdlets
 {
     using static Microsoft.Azure.PowerShell.Cmdlets.App.Runtime.Extensions;
+    using Microsoft.Azure.PowerShell.Cmdlets.App.Runtime.PowerShell;
+    using Microsoft.Azure.PowerShell.Cmdlets.App.Runtime.Cmdlets;
     using System;
 
     /// <summary>Patches a Container App using JSON Merge Patch</summary>
@@ -13,11 +15,13 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.App.Cmdlets
     /// [OpenAPI] Update=>PATCH:"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.App/containerApps/{containerAppName}"
     /// </remarks>
     [global::System.Management.Automation.Cmdlet(global::System.Management.Automation.VerbsData.Update, @"AzContainerApp_UpdateViaIdentityExpanded", SupportsShouldProcess = true)]
-    [global::System.Management.Automation.OutputType(typeof(Microsoft.Azure.PowerShell.Cmdlets.App.Models.Api20220301.IContainerApp))]
+    [global::System.Management.Automation.OutputType(typeof(Microsoft.Azure.PowerShell.Cmdlets.App.Models.IContainerApp))]
     [global::Microsoft.Azure.PowerShell.Cmdlets.App.Description(@"Patches a Container App using JSON Merge Patch")]
     [global::Microsoft.Azure.PowerShell.Cmdlets.App.Generated]
+    [global::Microsoft.Azure.PowerShell.Cmdlets.App.HttpPath(Path = "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.App/containerApps/{containerAppName}", ApiVersion = "2023-05-01")]
     public partial class UpdateAzContainerApp_UpdateViaIdentityExpanded : global::System.Management.Automation.PSCmdlet,
-        Microsoft.Azure.PowerShell.Cmdlets.App.Runtime.IEventListener
+        Microsoft.Azure.PowerShell.Cmdlets.App.Runtime.IEventListener,
+        Microsoft.Azure.PowerShell.Cmdlets.App.Runtime.IContext
     {
         /// <summary>A unique id generatd for the this cmdlet when it is instantiated.</summary>
         private string __correlationId = System.Guid.NewGuid().ToString();
@@ -34,7 +38,10 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.App.Cmdlets
         private global::System.Threading.CancellationTokenSource _cancellationTokenSource = new global::System.Threading.CancellationTokenSource();
 
         /// <summary>Container App.</summary>
-        private Microsoft.Azure.PowerShell.Cmdlets.App.Models.Api20220301.IContainerApp _containerAppEnvelopeBody = new Microsoft.Azure.PowerShell.Cmdlets.App.Models.Api20220301.ContainerApp();
+        private Microsoft.Azure.PowerShell.Cmdlets.App.Models.IContainerApp _containerAppEnvelopeBody = new Microsoft.Azure.PowerShell.Cmdlets.App.Models.ContainerApp();
+
+        /// <summary>A dictionary to carry over additional data for pipeline.</summary>
+        private global::System.Collections.Generic.Dictionary<global::System.String,global::System.Object> _extensibleParameters = new System.Collections.Generic.Dictionary<string, object>();
 
         /// <summary>when specified, runs this cmdlet as a PowerShell job</summary>
         [global::System.Management.Automation.Parameter(Mandatory = false, HelpMessage = "Run the command as a job")]
@@ -46,97 +53,22 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.App.Cmdlets
         [global::Microsoft.Azure.PowerShell.Cmdlets.App.Category(global::Microsoft.Azure.PowerShell.Cmdlets.App.ParameterCategory.Runtime)]
         public global::System.Management.Automation.SwitchParameter Break { get; set; }
 
+        /// <summary>Accessor for cancellationTokenSource.</summary>
+        public global::System.Threading.CancellationTokenSource CancellationTokenSource { get => _cancellationTokenSource ; set { _cancellationTokenSource = value; } }
+
         /// <summary>The reference to the client API class.</summary>
         public Microsoft.Azure.PowerShell.Cmdlets.App.App Client => Microsoft.Azure.PowerShell.Cmdlets.App.Module.Instance.ClientAPI;
 
-        /// <summary>
-        /// ActiveRevisionsMode controls how active revisions are handled for the Container app:<list><item>Multiple: multiple revisions
-        /// can be active.</item><item>Single: Only one revision can be active at a time. Revision weights can not be used in this
-        /// mode. If no value if provided, this is the default.</item></list>
-        /// </summary>
-        [global::System.Management.Automation.Parameter(Mandatory = false, HelpMessage = "ActiveRevisionsMode controls how active revisions are handled for the Container app:<list><item>Multiple: multiple revisions can be active.</item><item>Single: Only one revision can be active at a time. Revision weights can not be used in this mode. If no value if provided, this is the default.</item></list>")]
+        /// <summary>Non versioned Container App configuration properties.</summary>
+        [global::System.Management.Automation.Parameter(Mandatory = false, HelpMessage = "Non versioned Container App configuration properties.")]
         [global::Microsoft.Azure.PowerShell.Cmdlets.App.Category(global::Microsoft.Azure.PowerShell.Cmdlets.App.ParameterCategory.Body)]
         [Microsoft.Azure.PowerShell.Cmdlets.App.Runtime.Info(
         Required = false,
         ReadOnly = false,
-        Description = @"ActiveRevisionsMode controls how active revisions are handled for the Container app:<list><item>Multiple: multiple revisions can be active.</item><item>Single: Only one revision can be active at a time. Revision weights can not be used in this mode. If no value if provided, this is the default.</item></list>",
-        SerializedName = @"activeRevisionsMode",
-        PossibleTypes = new [] { typeof(Microsoft.Azure.PowerShell.Cmdlets.App.Support.ActiveRevisionsMode) })]
-        [global::System.Management.Automation.ArgumentCompleter(typeof(Microsoft.Azure.PowerShell.Cmdlets.App.Support.ActiveRevisionsMode))]
-        public Microsoft.Azure.PowerShell.Cmdlets.App.Support.ActiveRevisionsMode ConfigurationActiveRevisionsMode { get => _containerAppEnvelopeBody.ConfigurationActiveRevisionsMode ?? ((Microsoft.Azure.PowerShell.Cmdlets.App.Support.ActiveRevisionsMode)""); set => _containerAppEnvelopeBody.ConfigurationActiveRevisionsMode = value; }
-
-        /// <summary>
-        /// Collection of private container registry credentials for containers used by the Container app
-        /// </summary>
-        [global::System.Management.Automation.AllowEmptyCollection]
-        [global::System.Management.Automation.Parameter(Mandatory = false, HelpMessage = "Collection of private container registry credentials for containers used by the Container app")]
-        [global::Microsoft.Azure.PowerShell.Cmdlets.App.Category(global::Microsoft.Azure.PowerShell.Cmdlets.App.ParameterCategory.Body)]
-        [Microsoft.Azure.PowerShell.Cmdlets.App.Runtime.Info(
-        Required = false,
-        ReadOnly = false,
-        Description = @"Collection of private container registry credentials for containers used by the Container app",
-        SerializedName = @"registries",
-        PossibleTypes = new [] { typeof(Microsoft.Azure.PowerShell.Cmdlets.App.Models.Api20220301.IRegistryCredentials) })]
-        public Microsoft.Azure.PowerShell.Cmdlets.App.Models.Api20220301.IRegistryCredentials[] ConfigurationRegistry { get => _containerAppEnvelopeBody.ConfigurationRegistry ?? null /* arrayOf */; set => _containerAppEnvelopeBody.ConfigurationRegistry = value; }
-
-        /// <summary>Collection of secrets used by a Container app</summary>
-        [global::System.Management.Automation.AllowEmptyCollection]
-        [global::System.Management.Automation.Parameter(Mandatory = false, HelpMessage = "Collection of secrets used by a Container app")]
-        [global::Microsoft.Azure.PowerShell.Cmdlets.App.Category(global::Microsoft.Azure.PowerShell.Cmdlets.App.ParameterCategory.Body)]
-        [Microsoft.Azure.PowerShell.Cmdlets.App.Runtime.Info(
-        Required = false,
-        ReadOnly = false,
-        Description = @"Collection of secrets used by a Container app",
-        SerializedName = @"secrets",
-        PossibleTypes = new [] { typeof(Microsoft.Azure.PowerShell.Cmdlets.App.Models.Api20220301.ISecret) })]
-        public Microsoft.Azure.PowerShell.Cmdlets.App.Models.Api20220301.ISecret[] ConfigurationSecret { get => _containerAppEnvelopeBody.ConfigurationSecret ?? null /* arrayOf */; set => _containerAppEnvelopeBody.ConfigurationSecret = value; }
-
-        /// <summary>Dapr application identifier</summary>
-        [global::System.Management.Automation.Parameter(Mandatory = false, HelpMessage = "Dapr application identifier")]
-        [global::Microsoft.Azure.PowerShell.Cmdlets.App.Category(global::Microsoft.Azure.PowerShell.Cmdlets.App.ParameterCategory.Body)]
-        [Microsoft.Azure.PowerShell.Cmdlets.App.Runtime.Info(
-        Required = false,
-        ReadOnly = false,
-        Description = @"Dapr application identifier",
-        SerializedName = @"appId",
-        PossibleTypes = new [] { typeof(string) })]
-        public string DaprAppId { get => _containerAppEnvelopeBody.DaprAppId ?? null; set => _containerAppEnvelopeBody.DaprAppId = value; }
-
-        /// <summary>Tells Dapr which port your application is listening on</summary>
-        [global::System.Management.Automation.Parameter(Mandatory = false, HelpMessage = "Tells Dapr which port your application is listening on")]
-        [global::Microsoft.Azure.PowerShell.Cmdlets.App.Category(global::Microsoft.Azure.PowerShell.Cmdlets.App.ParameterCategory.Body)]
-        [Microsoft.Azure.PowerShell.Cmdlets.App.Runtime.Info(
-        Required = false,
-        ReadOnly = false,
-        Description = @"Tells Dapr which port your application is listening on",
-        SerializedName = @"appPort",
-        PossibleTypes = new [] { typeof(int) })]
-        public int DaprAppPort { get => _containerAppEnvelopeBody.DaprAppPort ?? default(int); set => _containerAppEnvelopeBody.DaprAppPort = value; }
-
-        /// <summary>
-        /// Tells Dapr which protocol your application is using. Valid options are http and grpc. Default is http
-        /// </summary>
-        [global::System.Management.Automation.Parameter(Mandatory = false, HelpMessage = "Tells Dapr which protocol your application is using. Valid options are http and grpc. Default is http")]
-        [global::Microsoft.Azure.PowerShell.Cmdlets.App.Category(global::Microsoft.Azure.PowerShell.Cmdlets.App.ParameterCategory.Body)]
-        [Microsoft.Azure.PowerShell.Cmdlets.App.Runtime.Info(
-        Required = false,
-        ReadOnly = false,
-        Description = @"Tells Dapr which protocol your application is using. Valid options are http and grpc. Default is http",
-        SerializedName = @"appProtocol",
-        PossibleTypes = new [] { typeof(Microsoft.Azure.PowerShell.Cmdlets.App.Support.AppProtocol) })]
-        [global::System.Management.Automation.ArgumentCompleter(typeof(Microsoft.Azure.PowerShell.Cmdlets.App.Support.AppProtocol))]
-        public Microsoft.Azure.PowerShell.Cmdlets.App.Support.AppProtocol DaprAppProtocol { get => _containerAppEnvelopeBody.DaprAppProtocol ?? ((Microsoft.Azure.PowerShell.Cmdlets.App.Support.AppProtocol)""); set => _containerAppEnvelopeBody.DaprAppProtocol = value; }
-
-        /// <summary>Boolean indicating if the Dapr side car is enabled</summary>
-        [global::System.Management.Automation.Parameter(Mandatory = false, HelpMessage = "Boolean indicating if the Dapr side car is enabled")]
-        [global::Microsoft.Azure.PowerShell.Cmdlets.App.Category(global::Microsoft.Azure.PowerShell.Cmdlets.App.ParameterCategory.Body)]
-        [Microsoft.Azure.PowerShell.Cmdlets.App.Runtime.Info(
-        Required = false,
-        ReadOnly = false,
-        Description = @"Boolean indicating if the Dapr side car is enabled",
-        SerializedName = @"enabled",
-        PossibleTypes = new [] { typeof(global::System.Management.Automation.SwitchParameter) })]
-        public global::System.Management.Automation.SwitchParameter DaprEnabled { get => _containerAppEnvelopeBody.DaprEnabled ?? default(global::System.Management.Automation.SwitchParameter); set => _containerAppEnvelopeBody.DaprEnabled = value; }
+        Description = @"Non versioned Container App configuration properties.",
+        SerializedName = @"configuration",
+        PossibleTypes = new [] { typeof(Microsoft.Azure.PowerShell.Cmdlets.App.Models.IConfiguration) })]
+        public Microsoft.Azure.PowerShell.Cmdlets.App.Models.IConfiguration Configuration { get => _containerAppEnvelopeBody.Configuration ?? null /* object */; set => _containerAppEnvelopeBody.Configuration = value; }
 
         /// <summary>
         /// The DefaultProfile parameter is not functional. Use the SubscriptionId parameter when available if executing the cmdlet
@@ -147,6 +79,32 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.App.Cmdlets
         [global::System.Management.Automation.Alias("AzureRMContext", "AzureCredential")]
         [global::Microsoft.Azure.PowerShell.Cmdlets.App.Category(global::Microsoft.Azure.PowerShell.Cmdlets.App.ParameterCategory.Azure)]
         public global::System.Management.Automation.PSObject DefaultProfile { get; set; }
+
+        /// <summary>The name of the extended location.</summary>
+        [global::System.Management.Automation.Parameter(Mandatory = false, HelpMessage = "The name of the extended location.")]
+        [global::Microsoft.Azure.PowerShell.Cmdlets.App.Category(global::Microsoft.Azure.PowerShell.Cmdlets.App.ParameterCategory.Body)]
+        [Microsoft.Azure.PowerShell.Cmdlets.App.Runtime.Info(
+        Required = false,
+        ReadOnly = false,
+        Description = @"The name of the extended location.",
+        SerializedName = @"name",
+        PossibleTypes = new [] { typeof(string) })]
+        public string ExtendedLocationName { get => _containerAppEnvelopeBody.ExtendedLocationName ?? null; set => _containerAppEnvelopeBody.ExtendedLocationName = value; }
+
+        /// <summary>The type of the extended location.</summary>
+        [global::System.Management.Automation.Parameter(Mandatory = false, HelpMessage = "The type of the extended location.")]
+        [global::Microsoft.Azure.PowerShell.Cmdlets.App.Category(global::Microsoft.Azure.PowerShell.Cmdlets.App.ParameterCategory.Body)]
+        [Microsoft.Azure.PowerShell.Cmdlets.App.Runtime.Info(
+        Required = false,
+        ReadOnly = false,
+        Description = @"The type of the extended location.",
+        SerializedName = @"type",
+        PossibleTypes = new [] { typeof(string) })]
+        [global::Microsoft.Azure.PowerShell.Cmdlets.App.PSArgumentCompleterAttribute("CustomLocation")]
+        public string ExtendedLocationType { get => _containerAppEnvelopeBody.ExtendedLocationType ?? null; set => _containerAppEnvelopeBody.ExtendedLocationType = value; }
+
+        /// <summary>Accessor for extensibleParameters.</summary>
+        public global::System.Collections.Generic.IDictionary<global::System.String,global::System.Object> ExtensibleParameters { get => _extensibleParameters ; }
 
         /// <summary>SendAsync Pipeline Steps to be appended to the front of the pipeline</summary>
         [global::System.Management.Automation.Parameter(Mandatory = false, DontShow = true, HelpMessage = "SendAsync Pipeline Steps to be appended to the front of the pipeline")]
@@ -170,9 +128,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.App.Cmdlets
         ReadOnly = false,
         Description = @"Type of managed service identity (where both SystemAssigned and UserAssigned types are allowed).",
         SerializedName = @"type",
-        PossibleTypes = new [] { typeof(Microsoft.Azure.PowerShell.Cmdlets.App.Support.ManagedServiceIdentityType) })]
-        [global::System.Management.Automation.ArgumentCompleter(typeof(Microsoft.Azure.PowerShell.Cmdlets.App.Support.ManagedServiceIdentityType))]
-        public Microsoft.Azure.PowerShell.Cmdlets.App.Support.ManagedServiceIdentityType IdentityType { get => _containerAppEnvelopeBody.IdentityType ?? ((Microsoft.Azure.PowerShell.Cmdlets.App.Support.ManagedServiceIdentityType)""); set => _containerAppEnvelopeBody.IdentityType = value; }
+        PossibleTypes = new [] { typeof(string) })]
+        [global::Microsoft.Azure.PowerShell.Cmdlets.App.PSArgumentCompleterAttribute("None", "SystemAssigned", "UserAssigned", "SystemAssigned,UserAssigned")]
+        public string IdentityType { get => _containerAppEnvelopeBody.IdentityType ?? null; set => _containerAppEnvelopeBody.IdentityType = value; }
 
         /// <summary>
         /// The set of user assigned identities associated with the resource. The userAssignedIdentities dictionary keys will be ARM
@@ -187,80 +145,8 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.App.Cmdlets
         ReadOnly = false,
         Description = @"The set of user assigned identities associated with the resource. The userAssignedIdentities dictionary keys will be ARM resource ids in the form: '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedIdentity/userAssignedIdentities/{identityName}. The dictionary values can be empty objects ({}) in requests.",
         SerializedName = @"userAssignedIdentities",
-        PossibleTypes = new [] { typeof(Microsoft.Azure.PowerShell.Cmdlets.App.Models.Api30.IUserAssignedIdentities) })]
-        public Microsoft.Azure.PowerShell.Cmdlets.App.Models.Api30.IUserAssignedIdentities IdentityUserAssignedIdentity { get => _containerAppEnvelopeBody.IdentityUserAssignedIdentity ?? null /* object */; set => _containerAppEnvelopeBody.IdentityUserAssignedIdentity = value; }
-
-        /// <summary>
-        /// Bool indicating if HTTP connections to is allowed. If set to false HTTP connections are automatically redirected to HTTPS
-        /// connections
-        /// </summary>
-        [global::System.Management.Automation.Parameter(Mandatory = false, HelpMessage = "Bool indicating if HTTP connections to is allowed. If set to false HTTP connections are automatically redirected to HTTPS connections")]
-        [global::Microsoft.Azure.PowerShell.Cmdlets.App.Category(global::Microsoft.Azure.PowerShell.Cmdlets.App.ParameterCategory.Body)]
-        [Microsoft.Azure.PowerShell.Cmdlets.App.Runtime.Info(
-        Required = false,
-        ReadOnly = false,
-        Description = @"Bool indicating if HTTP connections to is allowed. If set to false HTTP connections are automatically redirected to HTTPS connections",
-        SerializedName = @"allowInsecure",
-        PossibleTypes = new [] { typeof(global::System.Management.Automation.SwitchParameter) })]
-        public global::System.Management.Automation.SwitchParameter IngressAllowInsecure { get => _containerAppEnvelopeBody.IngressAllowInsecure ?? default(global::System.Management.Automation.SwitchParameter); set => _containerAppEnvelopeBody.IngressAllowInsecure = value; }
-
-        /// <summary>custom domain bindings for Container Apps' hostnames.</summary>
-        [global::System.Management.Automation.AllowEmptyCollection]
-        [global::System.Management.Automation.Parameter(Mandatory = false, HelpMessage = "custom domain bindings for Container Apps' hostnames.")]
-        [global::Microsoft.Azure.PowerShell.Cmdlets.App.Category(global::Microsoft.Azure.PowerShell.Cmdlets.App.ParameterCategory.Body)]
-        [Microsoft.Azure.PowerShell.Cmdlets.App.Runtime.Info(
-        Required = false,
-        ReadOnly = false,
-        Description = @"custom domain bindings for Container Apps' hostnames.",
-        SerializedName = @"customDomains",
-        PossibleTypes = new [] { typeof(Microsoft.Azure.PowerShell.Cmdlets.App.Models.Api20220301.ICustomDomain) })]
-        public Microsoft.Azure.PowerShell.Cmdlets.App.Models.Api20220301.ICustomDomain[] IngressCustomDomain { get => _containerAppEnvelopeBody.IngressCustomDomain ?? null /* arrayOf */; set => _containerAppEnvelopeBody.IngressCustomDomain = value; }
-
-        /// <summary>Bool indicating if app exposes an external http endpoint</summary>
-        [global::System.Management.Automation.Parameter(Mandatory = false, HelpMessage = "Bool indicating if app exposes an external http endpoint")]
-        [global::Microsoft.Azure.PowerShell.Cmdlets.App.Category(global::Microsoft.Azure.PowerShell.Cmdlets.App.ParameterCategory.Body)]
-        [Microsoft.Azure.PowerShell.Cmdlets.App.Runtime.Info(
-        Required = false,
-        ReadOnly = false,
-        Description = @"Bool indicating if app exposes an external http endpoint",
-        SerializedName = @"external",
-        PossibleTypes = new [] { typeof(global::System.Management.Automation.SwitchParameter) })]
-        public global::System.Management.Automation.SwitchParameter IngressExternal { get => _containerAppEnvelopeBody.IngressExternal ?? default(global::System.Management.Automation.SwitchParameter); set => _containerAppEnvelopeBody.IngressExternal = value; }
-
-        /// <summary>Target Port in containers for traffic from ingress</summary>
-        [global::System.Management.Automation.Parameter(Mandatory = false, HelpMessage = "Target Port in containers for traffic from ingress")]
-        [global::Microsoft.Azure.PowerShell.Cmdlets.App.Category(global::Microsoft.Azure.PowerShell.Cmdlets.App.ParameterCategory.Body)]
-        [Microsoft.Azure.PowerShell.Cmdlets.App.Runtime.Info(
-        Required = false,
-        ReadOnly = false,
-        Description = @"Target Port in containers for traffic from ingress",
-        SerializedName = @"targetPort",
-        PossibleTypes = new [] { typeof(int) })]
-        public int IngressTargetPort { get => _containerAppEnvelopeBody.IngressTargetPort ?? default(int); set => _containerAppEnvelopeBody.IngressTargetPort = value; }
-
-        /// <summary>Traffic weights for app's revisions</summary>
-        [global::System.Management.Automation.AllowEmptyCollection]
-        [global::System.Management.Automation.Parameter(Mandatory = false, HelpMessage = "Traffic weights for app's revisions")]
-        [global::Microsoft.Azure.PowerShell.Cmdlets.App.Category(global::Microsoft.Azure.PowerShell.Cmdlets.App.ParameterCategory.Body)]
-        [Microsoft.Azure.PowerShell.Cmdlets.App.Runtime.Info(
-        Required = false,
-        ReadOnly = false,
-        Description = @"Traffic weights for app's revisions",
-        SerializedName = @"traffic",
-        PossibleTypes = new [] { typeof(Microsoft.Azure.PowerShell.Cmdlets.App.Models.Api20220301.ITrafficWeight) })]
-        public Microsoft.Azure.PowerShell.Cmdlets.App.Models.Api20220301.ITrafficWeight[] IngressTraffic { get => _containerAppEnvelopeBody.IngressTraffic ?? null /* arrayOf */; set => _containerAppEnvelopeBody.IngressTraffic = value; }
-
-        /// <summary>Ingress transport protocol</summary>
-        [global::System.Management.Automation.Parameter(Mandatory = false, HelpMessage = "Ingress transport protocol")]
-        [global::Microsoft.Azure.PowerShell.Cmdlets.App.Category(global::Microsoft.Azure.PowerShell.Cmdlets.App.ParameterCategory.Body)]
-        [Microsoft.Azure.PowerShell.Cmdlets.App.Runtime.Info(
-        Required = false,
-        ReadOnly = false,
-        Description = @"Ingress transport protocol",
-        SerializedName = @"transport",
-        PossibleTypes = new [] { typeof(Microsoft.Azure.PowerShell.Cmdlets.App.Support.IngressTransportMethod) })]
-        [global::System.Management.Automation.ArgumentCompleter(typeof(Microsoft.Azure.PowerShell.Cmdlets.App.Support.IngressTransportMethod))]
-        public Microsoft.Azure.PowerShell.Cmdlets.App.Support.IngressTransportMethod IngressTransport { get => _containerAppEnvelopeBody.IngressTransport ?? ((Microsoft.Azure.PowerShell.Cmdlets.App.Support.IngressTransportMethod)""); set => _containerAppEnvelopeBody.IngressTransport = value; }
+        PossibleTypes = new [] { typeof(Microsoft.Azure.PowerShell.Cmdlets.App.Models.IUserAssignedIdentities) })]
+        public Microsoft.Azure.PowerShell.Cmdlets.App.Models.IUserAssignedIdentities IdentityUserAssignedIdentity { get => _containerAppEnvelopeBody.IdentityUserAssignedIdentity ?? null /* object */; set => _containerAppEnvelopeBody.IdentityUserAssignedIdentity = value; }
 
         /// <summary>Backing field for <see cref="InputObject" /> property.</summary>
         private Microsoft.Azure.PowerShell.Cmdlets.App.Models.IAppIdentity _inputObject;
@@ -273,27 +159,20 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.App.Cmdlets
         /// <summary>Accessor for our copy of the InvocationInfo.</summary>
         public global::System.Management.Automation.InvocationInfo InvocationInformation { get => __invocationInfo = __invocationInfo ?? this.MyInvocation ; set { __invocationInfo = value; } }
 
-        /// <summary>The geo-location where the resource lives</summary>
-        [global::System.Management.Automation.Parameter(Mandatory = true, HelpMessage = "The geo-location where the resource lives")]
-        [global::Microsoft.Azure.PowerShell.Cmdlets.App.Category(global::Microsoft.Azure.PowerShell.Cmdlets.App.ParameterCategory.Body)]
-        [Microsoft.Azure.PowerShell.Cmdlets.App.Runtime.Info(
-        Required = true,
-        ReadOnly = false,
-        Description = @"The geo-location where the resource lives",
-        SerializedName = @"location",
-        PossibleTypes = new [] { typeof(string) })]
-        public string Location { get => _containerAppEnvelopeBody.Location ?? null; set => _containerAppEnvelopeBody.Location = value; }
-
-        /// <summary>Resource ID of the Container App's environment.</summary>
-        [global::System.Management.Automation.Parameter(Mandatory = false, HelpMessage = "Resource ID of the Container App's environment.")]
+        /// <summary>
+        /// The fully qualified resource ID of the resource that manages this resource. Indicates if this resource is managed by another
+        /// Azure resource. If this is present, complete mode deployment will not delete the resource if it is removed from the template
+        /// since it is managed by another resource.
+        /// </summary>
+        [global::System.Management.Automation.Parameter(Mandatory = false, HelpMessage = "The fully qualified resource ID of the resource that manages this resource. Indicates if this resource is managed by another Azure resource. If this is present, complete mode deployment will not delete the resource if it is removed from the template since it is managed by another resource.")]
         [global::Microsoft.Azure.PowerShell.Cmdlets.App.Category(global::Microsoft.Azure.PowerShell.Cmdlets.App.ParameterCategory.Body)]
         [Microsoft.Azure.PowerShell.Cmdlets.App.Runtime.Info(
         Required = false,
         ReadOnly = false,
-        Description = @"Resource ID of the Container App's environment.",
-        SerializedName = @"managedEnvironmentId",
+        Description = @"The fully qualified resource ID of the resource that manages this resource. Indicates if this resource is managed by another Azure resource. If this is present, complete mode deployment will not delete the resource if it is removed from the template since it is managed by another resource.",
+        SerializedName = @"managedBy",
         PossibleTypes = new [] { typeof(string) })]
-        public string ManagedEnvironmentId { get => _containerAppEnvelopeBody.ManagedEnvironmentId ?? null; set => _containerAppEnvelopeBody.ManagedEnvironmentId = value; }
+        public string ManagedBy { get => _containerAppEnvelopeBody.ManagedBy ?? null; set => _containerAppEnvelopeBody.ManagedBy = value; }
 
         /// <summary>
         /// <see cref="Microsoft.Azure.PowerShell.Cmdlets.App.Runtime.IEventListener" /> cancellation delegate. Stops the cmdlet when called.
@@ -314,7 +193,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.App.Cmdlets
         /// <summary>
         /// The instance of the <see cref="Microsoft.Azure.PowerShell.Cmdlets.App.Runtime.HttpPipeline" /> that the remote call will use.
         /// </summary>
-        private Microsoft.Azure.PowerShell.Cmdlets.App.Runtime.HttpPipeline Pipeline { get; set; }
+        public Microsoft.Azure.PowerShell.Cmdlets.App.Runtime.HttpPipeline Pipeline { get; set; }
 
         /// <summary>The URI for the proxy server to use</summary>
         [global::System.Management.Automation.Parameter(Mandatory = false, DontShow = true, HelpMessage = "The URI for the proxy server to use")]
@@ -363,8 +242,8 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.App.Cmdlets
         ReadOnly = false,
         Description = @"Scaling rules.",
         SerializedName = @"rules",
-        PossibleTypes = new [] { typeof(Microsoft.Azure.PowerShell.Cmdlets.App.Models.Api20220301.IScaleRule) })]
-        public Microsoft.Azure.PowerShell.Cmdlets.App.Models.Api20220301.IScaleRule[] ScaleRule { get => _containerAppEnvelopeBody.ScaleRule ?? null /* arrayOf */; set => _containerAppEnvelopeBody.ScaleRule = value; }
+        PossibleTypes = new [] { typeof(Microsoft.Azure.PowerShell.Cmdlets.App.Models.IScaleRule) })]
+        public Microsoft.Azure.PowerShell.Cmdlets.App.Models.IScaleRule[] ScaleRule { get => _containerAppEnvelopeBody.ScaleRule?.ToArray() ?? null /* fixedArrayOf */; set => _containerAppEnvelopeBody.ScaleRule = (value != null ? new System.Collections.Generic.List<Microsoft.Azure.PowerShell.Cmdlets.App.Models.IScaleRule>(value) : null); }
 
         /// <summary>Resource tags.</summary>
         [global::Microsoft.Azure.PowerShell.Cmdlets.App.ExportAs(typeof(global::System.Collections.Hashtable))]
@@ -375,8 +254,8 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.App.Cmdlets
         ReadOnly = false,
         Description = @"Resource tags.",
         SerializedName = @"tags",
-        PossibleTypes = new [] { typeof(Microsoft.Azure.PowerShell.Cmdlets.App.Models.Api30.ITrackedResourceTags) })]
-        public Microsoft.Azure.PowerShell.Cmdlets.App.Models.Api30.ITrackedResourceTags Tag { get => _containerAppEnvelopeBody.Tag ?? null /* object */; set => _containerAppEnvelopeBody.Tag = value; }
+        PossibleTypes = new [] { typeof(Microsoft.Azure.PowerShell.Cmdlets.App.Models.ITrackedResourceTags) })]
+        public Microsoft.Azure.PowerShell.Cmdlets.App.Models.ITrackedResourceTags Tag { get => _containerAppEnvelopeBody.Tag ?? null /* object */; set => _containerAppEnvelopeBody.Tag = value; }
 
         /// <summary>List of container definitions for the Container App.</summary>
         [global::System.Management.Automation.AllowEmptyCollection]
@@ -387,8 +266,20 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.App.Cmdlets
         ReadOnly = false,
         Description = @"List of container definitions for the Container App.",
         SerializedName = @"containers",
-        PossibleTypes = new [] { typeof(Microsoft.Azure.PowerShell.Cmdlets.App.Models.Api20220301.IContainer) })]
-        public Microsoft.Azure.PowerShell.Cmdlets.App.Models.Api20220301.IContainer[] TemplateContainer { get => _containerAppEnvelopeBody.TemplateContainer ?? null /* arrayOf */; set => _containerAppEnvelopeBody.TemplateContainer = value; }
+        PossibleTypes = new [] { typeof(Microsoft.Azure.PowerShell.Cmdlets.App.Models.IContainer) })]
+        public Microsoft.Azure.PowerShell.Cmdlets.App.Models.IContainer[] TemplateContainer { get => _containerAppEnvelopeBody.TemplateContainer?.ToArray() ?? null /* fixedArrayOf */; set => _containerAppEnvelopeBody.TemplateContainer = (value != null ? new System.Collections.Generic.List<Microsoft.Azure.PowerShell.Cmdlets.App.Models.IContainer>(value) : null); }
+
+        /// <summary>List of specialized containers that run before app containers.</summary>
+        [global::System.Management.Automation.AllowEmptyCollection]
+        [global::System.Management.Automation.Parameter(Mandatory = false, HelpMessage = "List of specialized containers that run before app containers.")]
+        [global::Microsoft.Azure.PowerShell.Cmdlets.App.Category(global::Microsoft.Azure.PowerShell.Cmdlets.App.ParameterCategory.Body)]
+        [Microsoft.Azure.PowerShell.Cmdlets.App.Runtime.Info(
+        Required = false,
+        ReadOnly = false,
+        Description = @"List of specialized containers that run before app containers.",
+        SerializedName = @"initContainers",
+        PossibleTypes = new [] { typeof(Microsoft.Azure.PowerShell.Cmdlets.App.Models.IInitContainer) })]
+        public Microsoft.Azure.PowerShell.Cmdlets.App.Models.IInitContainer[] TemplateInitContainer { get => _containerAppEnvelopeBody.TemplateInitContainer?.ToArray() ?? null /* fixedArrayOf */; set => _containerAppEnvelopeBody.TemplateInitContainer = (value != null ? new System.Collections.Generic.List<Microsoft.Azure.PowerShell.Cmdlets.App.Models.IInitContainer>(value) : null); }
 
         /// <summary>User friendly suffix that is appended to the revision name</summary>
         [global::System.Management.Automation.Parameter(Mandatory = false, HelpMessage = "User friendly suffix that is appended to the revision name")]
@@ -401,6 +292,34 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.App.Cmdlets
         PossibleTypes = new [] { typeof(string) })]
         public string TemplateRevisionSuffix { get => _containerAppEnvelopeBody.TemplateRevisionSuffix ?? null; set => _containerAppEnvelopeBody.TemplateRevisionSuffix = value; }
 
+        /// <summary>List of container app services bound to the app</summary>
+        [global::System.Management.Automation.AllowEmptyCollection]
+        [global::System.Management.Automation.Parameter(Mandatory = false, HelpMessage = "List of container app services bound to the app")]
+        [global::Microsoft.Azure.PowerShell.Cmdlets.App.Category(global::Microsoft.Azure.PowerShell.Cmdlets.App.ParameterCategory.Body)]
+        [Microsoft.Azure.PowerShell.Cmdlets.App.Runtime.Info(
+        Required = false,
+        ReadOnly = false,
+        Description = @"List of container app services bound to the app",
+        SerializedName = @"serviceBinds",
+        PossibleTypes = new [] { typeof(Microsoft.Azure.PowerShell.Cmdlets.App.Models.IServiceBind) })]
+        public Microsoft.Azure.PowerShell.Cmdlets.App.Models.IServiceBind[] TemplateServiceBind { get => _containerAppEnvelopeBody.TemplateServiceBind?.ToArray() ?? null /* fixedArrayOf */; set => _containerAppEnvelopeBody.TemplateServiceBind = (value != null ? new System.Collections.Generic.List<Microsoft.Azure.PowerShell.Cmdlets.App.Models.IServiceBind>(value) : null); }
+
+        /// <summary>
+        /// Optional duration in seconds the Container App Instance needs to terminate gracefully. Value must be non-negative integer.
+        /// The value zero indicates stop immediately via the kill signal (no opportunity to shut down). If this value is nil, the
+        /// default grace period will be used instead. Set this value longer than the expected cleanup time for your process. Defaults
+        /// to 30 seconds.
+        /// </summary>
+        [global::System.Management.Automation.Parameter(Mandatory = false, HelpMessage = "Optional duration in seconds the Container App Instance needs to terminate gracefully. Value must be non-negative integer. The value zero indicates stop immediately via the kill signal (no opportunity to shut down). If this value is nil, the default grace period will be used instead. Set this value longer than the expected cleanup time for your process. Defaults to 30 seconds.")]
+        [global::Microsoft.Azure.PowerShell.Cmdlets.App.Category(global::Microsoft.Azure.PowerShell.Cmdlets.App.ParameterCategory.Body)]
+        [Microsoft.Azure.PowerShell.Cmdlets.App.Runtime.Info(
+        Required = false,
+        ReadOnly = false,
+        Description = @"Optional duration in seconds the Container App Instance needs to terminate gracefully. Value must be non-negative integer. The value zero indicates stop immediately via the kill signal (no opportunity to shut down). If this value is nil, the default grace period will be used instead. Set this value longer than the expected cleanup time for your process. Defaults to 30 seconds.",
+        SerializedName = @"terminationGracePeriodSeconds",
+        PossibleTypes = new [] { typeof(long) })]
+        public long TemplateTerminationGracePeriodSecond { get => _containerAppEnvelopeBody.TemplateTerminationGracePeriodSecond ?? default(long); set => _containerAppEnvelopeBody.TemplateTerminationGracePeriodSecond = value; }
+
         /// <summary>List of volume definitions for the Container App.</summary>
         [global::System.Management.Automation.AllowEmptyCollection]
         [global::System.Management.Automation.Parameter(Mandatory = false, HelpMessage = "List of volume definitions for the Container App.")]
@@ -410,32 +329,43 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.App.Cmdlets
         ReadOnly = false,
         Description = @"List of volume definitions for the Container App.",
         SerializedName = @"volumes",
-        PossibleTypes = new [] { typeof(Microsoft.Azure.PowerShell.Cmdlets.App.Models.Api20220301.IVolume) })]
-        public Microsoft.Azure.PowerShell.Cmdlets.App.Models.Api20220301.IVolume[] TemplateVolume { get => _containerAppEnvelopeBody.TemplateVolume ?? null /* arrayOf */; set => _containerAppEnvelopeBody.TemplateVolume = value; }
+        PossibleTypes = new [] { typeof(Microsoft.Azure.PowerShell.Cmdlets.App.Models.IVolume) })]
+        public Microsoft.Azure.PowerShell.Cmdlets.App.Models.IVolume[] TemplateVolume { get => _containerAppEnvelopeBody.TemplateVolume?.ToArray() ?? null /* fixedArrayOf */; set => _containerAppEnvelopeBody.TemplateVolume = (value != null ? new System.Collections.Generic.List<Microsoft.Azure.PowerShell.Cmdlets.App.Models.IVolume>(value) : null); }
+
+        /// <summary>Workload profile name to pin for container app execution.</summary>
+        [global::System.Management.Automation.Parameter(Mandatory = false, HelpMessage = "Workload profile name to pin for container app execution.")]
+        [global::Microsoft.Azure.PowerShell.Cmdlets.App.Category(global::Microsoft.Azure.PowerShell.Cmdlets.App.ParameterCategory.Body)]
+        [Microsoft.Azure.PowerShell.Cmdlets.App.Runtime.Info(
+        Required = false,
+        ReadOnly = false,
+        Description = @"Workload profile name to pin for container app execution.",
+        SerializedName = @"workloadProfileName",
+        PossibleTypes = new [] { typeof(string) })]
+        public string WorkloadProfileName { get => _containerAppEnvelopeBody.WorkloadProfileName ?? null; set => _containerAppEnvelopeBody.WorkloadProfileName = value; }
 
         /// <summary>
         /// <c>overrideOnDefault</c> will be called before the regular onDefault has been processed, allowing customization of what
         /// happens on that response. Implement this method in a partial class to enable this behavior
         /// </summary>
         /// <param name="responseMessage">the raw response message as an global::System.Net.Http.HttpResponseMessage.</param>
-        /// <param name="response">the body result as a <see cref="Microsoft.Azure.PowerShell.Cmdlets.App.Models.Api20220301.IDefaultErrorResponse">Microsoft.Azure.PowerShell.Cmdlets.App.Models.Api20220301.IDefaultErrorResponse</see>
+        /// <param name="response">the body result as a <see cref="Microsoft.Azure.PowerShell.Cmdlets.App.Models.IDefaultErrorResponse">Microsoft.Azure.PowerShell.Cmdlets.App.Models.IDefaultErrorResponse</see>
         /// from the remote call</param>
         /// <param name="returnNow">/// Determines if the rest of the onDefault method should be processed, or if the method should
         /// return immediately (set to true to skip further processing )</param>
 
-        partial void overrideOnDefault(global::System.Net.Http.HttpResponseMessage responseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.App.Models.Api20220301.IDefaultErrorResponse> response, ref global::System.Threading.Tasks.Task<bool> returnNow);
+        partial void overrideOnDefault(global::System.Net.Http.HttpResponseMessage responseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.App.Models.IDefaultErrorResponse> response, ref global::System.Threading.Tasks.Task<bool> returnNow);
 
         /// <summary>
         /// <c>overrideOnOk</c> will be called before the regular onOk has been processed, allowing customization of what happens
         /// on that response. Implement this method in a partial class to enable this behavior
         /// </summary>
         /// <param name="responseMessage">the raw response message as an global::System.Net.Http.HttpResponseMessage.</param>
-        /// <param name="response">the body result as a <see cref="Microsoft.Azure.PowerShell.Cmdlets.App.Models.Api20220301.IContainerApp">Microsoft.Azure.PowerShell.Cmdlets.App.Models.Api20220301.IContainerApp</see>
+        /// <param name="response">the body result as a <see cref="Microsoft.Azure.PowerShell.Cmdlets.App.Models.IContainerApp">Microsoft.Azure.PowerShell.Cmdlets.App.Models.IContainerApp</see>
         /// from the remote call</param>
         /// <param name="returnNow">/// Determines if the rest of the onOk method should be processed, or if the method should return
         /// immediately (set to true to skip further processing )</param>
 
-        partial void overrideOnOk(global::System.Net.Http.HttpResponseMessage responseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.App.Models.Api20220301.IContainerApp> response, ref global::System.Threading.Tasks.Task<bool> returnNow);
+        partial void overrideOnOk(global::System.Net.Http.HttpResponseMessage responseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.App.Models.IContainerApp> response, ref global::System.Threading.Tasks.Task<bool> returnNow);
 
         /// <summary>
         /// (overrides the default BeginProcessing method in global::System.Management.Automation.PSCmdlet)
@@ -526,11 +456,36 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.App.Cmdlets
                         WriteError(new global::System.Management.Automation.ErrorRecord( new global::System.Exception(messageData().Message), string.Empty, global::System.Management.Automation.ErrorCategory.NotSpecified, null ) );
                         return ;
                     }
+                    case Microsoft.Azure.PowerShell.Cmdlets.App.Runtime.Events.Progress:
+                    {
+                        var data = messageData();
+                        int progress = (int)data.Value;
+                        string activityMessage, statusDescription;
+                        global::System.Management.Automation.ProgressRecordType recordType;
+                        if (progress < 100)
+                        {
+                            activityMessage = "In progress";
+                            statusDescription = "Checking operation status";
+                            recordType = System.Management.Automation.ProgressRecordType.Processing;
+                        }
+                        else
+                        {
+                            activityMessage = "Completed";
+                            statusDescription = "Completed";
+                            recordType = System.Management.Automation.ProgressRecordType.Completed;
+                        }
+                        WriteProgress(new global::System.Management.Automation.ProgressRecord(1, activityMessage, statusDescription)
+                        {
+                            PercentComplete = progress,
+                        RecordType = recordType
+                        });
+                        return ;
+                    }
                     case Microsoft.Azure.PowerShell.Cmdlets.App.Runtime.Events.DelayBeforePolling:
                     {
+                        var data = messageData();
                         if (true == MyInvocation?.BoundParameters?.ContainsKey("NoWait"))
                         {
-                            var data = messageData();
                             if (data.ResponseMessage is System.Net.Http.HttpResponseMessage response)
                             {
                                 var asyncOperation = response.GetFirstHeader(@"Azure-AsyncOperation");
@@ -542,10 +497,26 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.App.Cmdlets
                                 return;
                             }
                         }
+                        else
+                        {
+                            if (data.ResponseMessage is System.Net.Http.HttpResponseMessage response)
+                            {
+                                int delay = (int)(response.Headers.RetryAfter?.Delta?.TotalSeconds ?? 30);
+                                WriteDebug($"Delaying {delay} seconds before polling.");
+                                for (var now = 0; now < delay; ++now)
+                                {
+                                    WriteProgress(new global::System.Management.Automation.ProgressRecord(1, "In progress", "Checking operation status")
+                                    {
+                                        PercentComplete = now * 100 / delay
+                                    });
+                                    await global::System.Threading.Tasks.Task.Delay(1000, token);
+                                }
+                            }
+                        }
                         break;
                     }
                 }
-                await Microsoft.Azure.PowerShell.Cmdlets.App.Module.Instance.Signal(id, token, messageData, (i,t,m) => ((Microsoft.Azure.PowerShell.Cmdlets.App.Runtime.IEventListener)this).Signal(i,t,()=> Microsoft.Azure.PowerShell.Cmdlets.App.Runtime.EventDataConverter.ConvertFrom( m() ) as Microsoft.Azure.PowerShell.Cmdlets.App.Runtime.EventData ), InvocationInformation, this.ParameterSetName, __correlationId, __processRecordId, null );
+                await Microsoft.Azure.PowerShell.Cmdlets.App.Module.Instance.Signal(id, token, messageData, (i, t, m) => ((Microsoft.Azure.PowerShell.Cmdlets.App.Runtime.IEventListener)this).Signal(i, t, () => Microsoft.Azure.PowerShell.Cmdlets.App.Runtime.EventDataConverter.ConvertFrom(m()) as Microsoft.Azure.PowerShell.Cmdlets.App.Runtime.EventData), InvocationInformation, this.ParameterSetName, __correlationId, __processRecordId, null );
                 if (token.IsCancellationRequested)
                 {
                     return ;
@@ -613,7 +584,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.App.Cmdlets
             using( NoSynchronizationContext )
             {
                 await ((Microsoft.Azure.PowerShell.Cmdlets.App.Runtime.IEventListener)this).Signal(Microsoft.Azure.PowerShell.Cmdlets.App.Runtime.Events.CmdletGetPipeline); if( ((Microsoft.Azure.PowerShell.Cmdlets.App.Runtime.IEventListener)this).Token.IsCancellationRequested ) { return; }
-                Pipeline = Microsoft.Azure.PowerShell.Cmdlets.App.Module.Instance.CreatePipeline(InvocationInformation, __correlationId, __processRecordId, this.ParameterSetName);
+                Pipeline = Microsoft.Azure.PowerShell.Cmdlets.App.Module.Instance.CreatePipeline(InvocationInformation, __correlationId, __processRecordId, this.ParameterSetName, this.ExtensibleParameters);
                 if (null != HttpPipelinePrepend)
                 {
                     Pipeline.Prepend((this.CommandRuntime as Microsoft.Azure.PowerShell.Cmdlets.App.Runtime.PowerShell.IAsyncCommandRuntimeExtensions)?.Wrap(HttpPipelinePrepend) ?? HttpPipelinePrepend);
@@ -628,7 +599,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.App.Cmdlets
                     await ((Microsoft.Azure.PowerShell.Cmdlets.App.Runtime.IEventListener)this).Signal(Microsoft.Azure.PowerShell.Cmdlets.App.Runtime.Events.CmdletBeforeAPICall); if( ((Microsoft.Azure.PowerShell.Cmdlets.App.Runtime.IEventListener)this).Token.IsCancellationRequested ) { return; }
                     if (InputObject?.Id != null)
                     {
-                        await this.Client.ContainerAppsUpdateViaIdentity(InputObject.Id, _containerAppEnvelopeBody, onOk, onDefault, this, Pipeline);
+                        await this.Client.ContainerAppsUpdateViaIdentity(InputObject.Id, _containerAppEnvelopeBody, onOk, onDefault, this, Pipeline, Microsoft.Azure.PowerShell.Cmdlets.App.Runtime.SerializationMode.IncludeUpdate);
                     }
                     else
                     {
@@ -645,13 +616,13 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.App.Cmdlets
                         {
                             ThrowTerminatingError( new global::System.Management.Automation.ErrorRecord(new global::System.Exception("InputObject has null value for InputObject.ContainerAppName"),string.Empty, global::System.Management.Automation.ErrorCategory.InvalidArgument, InputObject) );
                         }
-                        await this.Client.ContainerAppsUpdate(InputObject.SubscriptionId ?? null, InputObject.ResourceGroupName ?? null, InputObject.ContainerAppName ?? null, _containerAppEnvelopeBody, onOk, onDefault, this, Pipeline);
+                        await this.Client.ContainerAppsUpdate(InputObject.SubscriptionId ?? null, InputObject.ResourceGroupName ?? null, InputObject.ContainerAppName ?? null, _containerAppEnvelopeBody, onOk, onDefault, this, Pipeline, Microsoft.Azure.PowerShell.Cmdlets.App.Runtime.SerializationMode.IncludeUpdate);
                     }
                     await ((Microsoft.Azure.PowerShell.Cmdlets.App.Runtime.IEventListener)this).Signal(Microsoft.Azure.PowerShell.Cmdlets.App.Runtime.Events.CmdletAfterAPICall); if( ((Microsoft.Azure.PowerShell.Cmdlets.App.Runtime.IEventListener)this).Token.IsCancellationRequested ) { return; }
                 }
                 catch (Microsoft.Azure.PowerShell.Cmdlets.App.Runtime.UndeclaredResponseException urexception)
                 {
-                    WriteError(new global::System.Management.Automation.ErrorRecord(urexception, urexception.StatusCode.ToString(), global::System.Management.Automation.ErrorCategory.InvalidOperation, new {  body=_containerAppEnvelopeBody})
+                    WriteError(new global::System.Management.Automation.ErrorRecord(urexception, urexception.StatusCode.ToString(), global::System.Management.Automation.ErrorCategory.InvalidOperation, new { })
                     {
                       ErrorDetails = new global::System.Management.Automation.ErrorDetails(urexception.Message) { RecommendedAction = urexception.Action }
                     });
@@ -671,7 +642,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.App.Cmdlets
         }
 
         /// <summary>
-        /// Intializes a new instance of the <see cref="UpdateAzContainerApp_UpdateViaIdentityExpanded" /> cmdlet class.
+        /// Initializes a new instance of the <see cref="UpdateAzContainerApp_UpdateViaIdentityExpanded" /> cmdlet class.
         /// </summary>
         public UpdateAzContainerApp_UpdateViaIdentityExpanded()
         {
@@ -682,12 +653,12 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.App.Cmdlets
         /// a delegate that is called when the remote service returns default (any response code not handled elsewhere).
         /// </summary>
         /// <param name="responseMessage">the raw response message as an global::System.Net.Http.HttpResponseMessage.</param>
-        /// <param name="response">the body result as a <see cref="Microsoft.Azure.PowerShell.Cmdlets.App.Models.Api20220301.IDefaultErrorResponse">Microsoft.Azure.PowerShell.Cmdlets.App.Models.Api20220301.IDefaultErrorResponse</see>
+        /// <param name="response">the body result as a <see cref="Microsoft.Azure.PowerShell.Cmdlets.App.Models.IDefaultErrorResponse">Microsoft.Azure.PowerShell.Cmdlets.App.Models.IDefaultErrorResponse</see>
         /// from the remote call</param>
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the method is completed.
         /// </returns>
-        private async global::System.Threading.Tasks.Task onDefault(global::System.Net.Http.HttpResponseMessage responseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.App.Models.Api20220301.IDefaultErrorResponse> response)
+        private async global::System.Threading.Tasks.Task onDefault(global::System.Net.Http.HttpResponseMessage responseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.App.Models.IDefaultErrorResponse> response)
         {
             using( NoSynchronizationContext )
             {
@@ -704,15 +675,15 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.App.Cmdlets
                 if ((null == code || null == message))
                 {
                     // Unrecognized Response. Create an error record based on what we have.
-                    var ex = new Microsoft.Azure.PowerShell.Cmdlets.App.Runtime.RestException<Microsoft.Azure.PowerShell.Cmdlets.App.Models.Api20220301.IDefaultErrorResponse>(responseMessage, await response);
-                    WriteError( new global::System.Management.Automation.ErrorRecord(ex, ex.Code, global::System.Management.Automation.ErrorCategory.InvalidOperation, new { body=_containerAppEnvelopeBody })
+                    var ex = new Microsoft.Azure.PowerShell.Cmdlets.App.Runtime.RestException<Microsoft.Azure.PowerShell.Cmdlets.App.Models.IDefaultErrorResponse>(responseMessage, await response);
+                    WriteError( new global::System.Management.Automation.ErrorRecord(ex, ex.Code, global::System.Management.Automation.ErrorCategory.InvalidOperation, new {  })
                     {
                       ErrorDetails = new global::System.Management.Automation.ErrorDetails(ex.Message) { RecommendedAction = ex.Action }
                     });
                 }
                 else
                 {
-                    WriteError( new global::System.Management.Automation.ErrorRecord(new global::System.Exception($"[{code}] : {message}"), code?.ToString(), global::System.Management.Automation.ErrorCategory.InvalidOperation, new { body=_containerAppEnvelopeBody })
+                    WriteError( new global::System.Management.Automation.ErrorRecord(new global::System.Exception($"[{code}] : {message}"), code?.ToString(), global::System.Management.Automation.ErrorCategory.InvalidOperation, new {  })
                     {
                       ErrorDetails = new global::System.Management.Automation.ErrorDetails(message) { RecommendedAction = global::System.String.Empty }
                     });
@@ -722,12 +693,12 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.App.Cmdlets
 
         /// <summary>a delegate that is called when the remote service returns 200 (OK).</summary>
         /// <param name="responseMessage">the raw response message as an global::System.Net.Http.HttpResponseMessage.</param>
-        /// <param name="response">the body result as a <see cref="Microsoft.Azure.PowerShell.Cmdlets.App.Models.Api20220301.IContainerApp">Microsoft.Azure.PowerShell.Cmdlets.App.Models.Api20220301.IContainerApp</see>
+        /// <param name="response">the body result as a <see cref="Microsoft.Azure.PowerShell.Cmdlets.App.Models.IContainerApp">Microsoft.Azure.PowerShell.Cmdlets.App.Models.IContainerApp</see>
         /// from the remote call</param>
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the method is completed.
         /// </returns>
-        private async global::System.Threading.Tasks.Task onOk(global::System.Net.Http.HttpResponseMessage responseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.App.Models.Api20220301.IContainerApp> response)
+        private async global::System.Threading.Tasks.Task onOk(global::System.Net.Http.HttpResponseMessage responseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.App.Models.IContainerApp> response)
         {
             using( NoSynchronizationContext )
             {
@@ -739,8 +710,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.App.Cmdlets
                     return ;
                 }
                 // onOk - response for 200 / application/json
-                // (await response) // should be Microsoft.Azure.PowerShell.Cmdlets.App.Models.Api20220301.IContainerApp
-                WriteObject((await response));
+                // (await response) // should be Microsoft.Azure.PowerShell.Cmdlets.App.Models.IContainerApp
+                var result = (await response);
+                WriteObject(result, false);
             }
         }
     }

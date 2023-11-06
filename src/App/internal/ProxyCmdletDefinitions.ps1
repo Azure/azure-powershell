@@ -25,12 +25,12 @@ Lists all of the available RP operations.
 {{ Add code here }}
 
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.App.Models.Api20220301.IOperationDetail
+Microsoft.Azure.PowerShell.Cmdlets.App.Models.IOperationDetail
 .Link
 https://learn.microsoft.com/powershell/module/az.app/get-azoperation
 #>
 function Get-AzOperation {
-[OutputType([Microsoft.Azure.PowerShell.Cmdlets.App.Models.Api20220301.IOperationDetail])]
+[OutputType([Microsoft.Azure.PowerShell.Cmdlets.App.Models.IOperationDetail])]
 [CmdletBinding(DefaultParameterSetName='List', PositionalBinding=$false)]
 param(
     [Parameter()]

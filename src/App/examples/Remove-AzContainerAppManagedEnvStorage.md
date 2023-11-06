@@ -1,13 +1,24 @@
-### Example 1: Delete storage for a managedEnvironment.
+### Example 1: Delete a Container App ManagedEnvStorage.
 ```powershell
-Remove-AzContainerAppManagedEnvStorage -EnvName azps-env -ResourceGroupName azpstest_gp -StorageName azpstestsa
+Remove-AzContainerAppManagedEnvStorage -EnvName azps-env -ResourceGroupName azps_test_group_app -Name azpstestsa
 ```
 
-Delete storage for a managedEnvironment.
+Delete a Container App ManagedEnvStorage.
 
-### Example 2: Delete storage for a managedEnvironment.
+### Example 2: Delete a Container App ManagedEnvStorage.
 ```powershell
-Get-AzContainerAppManagedEnvStorage -EnvName azps-env -ResourceGroupName azpstest_gp -StorageName azpstestsa | Remove-AzContainerAppManagedEnvStorage
+$managedenvstorage = Get-AzContainerAppManagedEnvStorage -EnvName azps-env -ResourceGroupName azps_test_group_app -Name azpstestsa
+
+Remove-AzContainerAppManagedEnvStorage -InputObject $managedenvstorage
 ```
 
-Delete storage for a managedEnvironment.
+Delete a Container App ManagedEnvStorage.
+
+### Example 3: Delete a Container App ManagedEnvStorage.
+```powershell
+$managedenv = Get-AzContainerAppManagedEnv -Name azps-env -ResourceGroupName azps_test_group_app
+
+Remove-AzContainerAppManagedEnvStorage -ManagedEnvironmentInputObject $managedenv -Name azpstestsa
+```
+
+Delete a Container App ManagedEnvStorage.
