@@ -816,31 +816,7 @@ namespace Microsoft.Azure.Commands.Compute.Automation
             }
 
         }
-
-        /// <summary>
-        /// Check to see if the Guest Attestation extension should be installed and Identity set to SystemAssigned.
-        /// Requirements for this scenario to be true:
-        /// 1) DisableIntegrityMonitoring is not true.
-        /// 2) SecurityType is TrustedLaunch.
-        /// 3) SecureBootEnabled is true.
-        /// 4) VTpmEnabled is true.
-        /// </summary>
-        /// <returns></returns>
-        private bool shouldGuestAttestationExtBeInstalledSimple()
-        {
-            if (this.DisableIntegrityMonitoring != true &&
-                    this.SecurityType?.ToLower() == ConstantValues.TrustedLaunchSecurityType &&
-                    this.EnableSecureBoot == true &&
-                    this.EnableVtpm == true)
-            {
-                return true;
-            }
-            else
-            {
-                return false;
-            }
-        }
-
+        
         /// <summary>
         /// Heres whats happening here :
         /// If "SystemAssignedIdentity" and "UserAssignedIdentity" are both present we set the type of identity to be SystemAssignedUsrAssigned and set the user 
@@ -867,6 +843,30 @@ namespace Microsoft.Azure.Commands.Compute.Automation
                                              : null,
                 }
                 : null;
+        }
+
+        /// <summary>
+        /// Check to see if the Guest Attestation extension should be installed and Identity set to SystemAssigned.
+        /// Requirements for this scenario to be true:
+        /// 1) DisableIntegrityMonitoring is not true.
+        /// 2) SecurityType is TrustedLaunch.
+        /// 3) SecureBootEnabled is true.
+        /// 4) VTpmEnabled is true.
+        /// </summary>
+        /// <returns></returns>
+        private bool shouldGuestAttestationExtBeInstalledSimple()
+        {
+            if (this.DisableIntegrityMonitoring != true &&
+                    this.SecurityType?.ToLower() == ConstantValues.TrustedLaunchSecurityType &&
+                    this.EnableSecureBoot == true &&
+                    this.EnableVtpm == true)
+            {
+                return true;
+            }
+            else
+            {
+                return false;
+            }
         }
     }
 }
