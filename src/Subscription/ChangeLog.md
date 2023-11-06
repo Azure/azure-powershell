@@ -19,12 +19,12 @@
 -->
 ## Upcoming Release
 * Invoke-AzSubscriptionAcceptOwnership:
-    1. Add alias `-DisplayName` to parameter `-SubscriptionName`.
+    1. Added alias `-DisplayName` to parameter `-SubscriptionName`.
 * New-AzSubscriptionAlias:
-    1. Add alias `-DisplayName` to parameter `-SubscriptionName`.
+    1. Added alias `-DisplayName` to parameter `-SubscriptionName`.
 * Rename-AzSubscription:
     1. Parameter `-SubscriptionName` was required.
-    2. Add alias `-DisplayName` to parameter `-SubscriptionName`.
+    2. Added alias `-DisplayName` to parameter `-SubscriptionName`.
 * Removed cmdlet `Update-AzSubscriptionPolicy`
 
 ## Version 0.10.1
