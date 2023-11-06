@@ -7148,119 +7148,17 @@ function Test-VMDefaultsToTrustedLaunch
 <#
 .SYNOPSIS
 Test Virtual Machines default to SecurityType = TrustedLaunch.
-Other necessary defaults also occur for TL support.
+From ManagedDisk that has TL enabled.
 Trying to create a VM with a managedDisk of TL support. 
 Feature request 1243
+Seems like this test works, and has the same behavior as creating a vm from a managed disk without TL.
 #>
 function Test-VMDefaultsToTrustedLaunchWithManagedDisk
 {
     # TODO: complete this test. currently vm creation times out. 
     # Setup
-    $rgname = "adsandvmd19";#Get-ComputeTestResourceName;
-    $loc = "eastus";#Get-ComputeVMLocation;
-
-    try
-    {
-        New-AzResourceGroup -Name $rgname -Location $loc -Force;
-        # DefaultParameterSet with VMConfig scenario
-        $domainNameLabel = "d1" + $rgname;
-        $vmsize = 'Standard_D4s_v3';
-        $vmname = 'v2' + $rgname;
-        $vnetname = "vn" + $rgname;
-        $vnetAddress = "10.0.0.0/16";
-        $subnetname = "slb2" + $rgname;
-        $subnetAddress = "10.0.2.0/24";
-        $diskname = $vmname + "d1";
-        $NICName = $vmname+ "n1";
-        $NSGName = $vmname + "nsg";
-        $OSDiskSizeinGB = 128;
-        $PublisherName = "MicrosoftWindowsServer";
-        $Offer = "WindowsServer";
-        $SKU = "2022-datacenter-azure-edition";
-        $disable = $false;
-        $enable = $true;
-        
-        # Creating a VM using Default parameterset
-        $password = "Testing1234567";#Get-PasswordForVM;
-        $securePassword = $password | ConvertTo-SecureString -AsPlainText -Force;  
-        $user = "usertest";#Get-ComputeTestResourceName;
-        $cred = New-Object System.Management.Automation.PSCredential ($user, $securePassword);
-
-        # Create disk to use later
-        $securityTypeTL = "TrustedLaunch";
-        $image = Get-AzVMImage -Skus $SKU -Offer $Offer -PublisherName $PublisherName -Location $loc -Version latest;
-        $diskconfig = New-AzDiskConfig -DiskSizeGB 127 -AccountType Premium_LRS -OsType Windows -CreateOption FromImage -Location $loc;
-        $diskconfig = Set-AzDiskImageReference -Disk $diskconfig -Id $image.Id;
-        $disk = New-AzDisk -ResourceGroupName $rgname -DiskName $diskname -Disk $diskconfig;
-        
-        # Network setup
-        $frontendSubnet = New-AzVirtualNetworkSubnetConfig -Name $subnetname -AddressPrefix $subnetAddress;
-        $vnet = New-AzVirtualNetwork -Name $vnetname -ResourceGroupName $rgname -Location $loc -AddressPrefix $vnetAddress -Subnet $frontendSubnet;
-        $nsgRuleRDP = New-AzNetworkSecurityRuleConfig -Name RDP  -Protocol Tcp  -Direction Inbound -Priority 1001 -SourceAddressPrefix * -SourcePortRange * -DestinationAddressPrefix * -DestinationPortRange 3389 -Access Allow;
-        $nsg = New-AzNetworkSecurityGroup -ResourceGroupName $RGName -Location $loc -Name $NSGName  -SecurityRules $nsgRuleRDP;
-        $nic = New-AzNetworkInterface -Name $NICName -ResourceGroupName $RGName -Location $loc -SubnetId $vnet.Subnets[0].Id -NetworkSecurityGroupId $nsg.Id -EnableAcceleratedNetworking;
-
-        # VM
-        $vmConfig = New-AzVMConfig -VMName $vmName -VMSize $VMSize;
-        $vmConfig = Add-AzVMNetworkInterface -VM $vmConfig -Id $nic.Id;
-        $vmConfig = Set-AzVMOSDisk -Windows -ManagedDiskId $disk.Id -CreateOption Attach -VM $vmConfig;
-        
-        New-AzVM -ResourceGroupName $rgname -Location $loc -VM $vmConfig -Verbose -Debug;
-        
-        # Initialize status to creating  
-        $status = "Creating"  
-  
-        # While loop to check status  
-        while ($status -eq "Creating") {  
-            # Get VM status  
-            $vmStatus = Get-AzVM -ResourceGroupName $rgname -Name $vmname -Status  
-      
-            # Update status  
-            $status = $vmStatus.Statuses[1].Code.Split("/")[1]  
-  
-            # Check status  
-            if ($status -eq "Creating") {  
-            # If status is still creating, wait for 5 minutes before checking again  
-                Start-Sleep -Seconds 300  
-            } elseif ($status -eq "Succeeded" -or $status -eq "Running") {  
-                # If status is succeeded or running, print success message and break loop  
-                # Write-Output "VM successfully created or running"  
-                break  
-            } else {  
-                # If status is anything else, print error message and break loop  
-                # Write-Output "Error creating VM, status: $status"  
-                break  
-            }  
-        }  
-        
-        $vm = Get-AzVM -ResourceGroupName $rgname -Name $vmname;
-        
-        # Validate VMConfig scenario
-        # this.VM.StorageProfile.OsDisk.ManagedDisk
-        Assert-AreEqual $vm.SecurityProfile.SecurityType $securityTypeTL;
-        Assert-AreEqual $vm.SecurityProfile.UefiSettings.SecureBootEnabled $enable;
-        Assert-AreEqual $vm.SecurityProfile.UefiSettings.VTpmEnabled $enable;
-    }
-    finally 
-    {
-        # Cleanup
-        Clean-ResourceGroup $rgname;
-    }
-}
-
-<#
-.SYNOPSIS
-Test Virtual Machines default to SecurityType = TrustedLaunch.
-From ManagedDisk that has TL enabled.
-Trying to create a VM with a managedDisk of TL support. 
-Feature request 1243
-#>
-function Test-VMDefaultsToTrustedLaunchWithManagedDisk2
-{
-    # TODO: complete this test. currently vm creation times out. 
-    # Setup
-    $rgname = "adsandvmd32";#Get-ComputeTestResourceName;
-    $loc = "eastus2";#Get-ComputeVMLocation;
+    $rgname = Get-ComputeTestResourceName;
+    $loc = Get-ComputeVMLocation;
 
     try
     {
@@ -7280,7 +7178,7 @@ function Test-VMDefaultsToTrustedLaunchWithManagedDisk2
         $VMSize = "Standard_D4s_v4";
         $PublisherName = "MicrosoftWindowsServer";
         $Offer = "WindowsServer";
-        $SKU = "2022-datacenter-azure-edition-smalldisk";#"2022-datacenter-smalldisk-g2";#"2022-datacenter-azure-edition";#"2022-datacenter-smalldisk-g2";
+        $SKU = "2022-datacenter-azure-edition-smalldisk";
         $version = "latest";
         $securityTypeTL = "TrustedLaunch";
         $secureboot = $true;
@@ -7288,9 +7186,9 @@ function Test-VMDefaultsToTrustedLaunchWithManagedDisk2
         $vmGADefaultIDentity = "SystemAssigned";
 
         # Creating a VM using Simple parameterset
-        $password = "Testing1234567";#Get-PasswordForVM;
+        $password = Get-PasswordForVM;
+        $user = Get-ComputeTestResourceName;
         $securePassword = $password | ConvertTo-SecureString -AsPlainText -Force;  
-        $user = "admin01";
         $cred = New-Object System.Management.Automation.PSCredential ($user, $securePassword);
 
         # Network Setup
@@ -7362,7 +7260,7 @@ function Test-VMDefaultsToTrustedLaunchWithGen2Image
         $VMSize = "Standard_DS2_v2";
         $PublisherName = "MicrosoftWindowsServer";
         $Offer = "WindowsServer";
-        $SKU = "2022-datacenter-azure-edition";#"2022-datacenter-smalldisk-g2";
+        $SKU = "2022-datacenter-azure-edition";
         $version = "latest";
         $securityTypeTL = "TrustedLaunch";
         $secureboot = $true;
