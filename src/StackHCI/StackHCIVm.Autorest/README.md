@@ -439,7 +439,7 @@ directive:
       subject: VirtualMachineInstance
       parameter-name: HardwareProfileProcessor
     set:
-      parameter-name: VmProcessors
+      parameter-name: VmProcessor
  -  where:
       verb: New
       subject: VirtualMachineInstance

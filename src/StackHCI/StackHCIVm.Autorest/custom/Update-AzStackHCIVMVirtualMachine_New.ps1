@@ -97,7 +97,7 @@ function Update-AzStackHCIVmVirtualMachine {
         [Microsoft.Azure.PowerShell.Cmdlets.StackHCIVm.Category('Body')]
         [System.Int32]
         # number of processors for the virtual machine instance
-        ${VmProcessors},
+        ${VmProcessor},
     
         [Parameter()]
         [ArgumentCompleter([Microsoft.Azure.PowerShell.Cmdlets.StackHCIVm.Support.VMSizeEnum])]
@@ -123,10 +123,10 @@ function Update-AzStackHCIVmVirtualMachine {
                 $PSBoundParameters.Add("HardwareProfileMemoryMb", $VmMemoryInMB)
                 $null = $PSBoundParameters.Remove("VmMemoryInMB")
             }
-            if ($VmProcessors)
+            if ($VmProcessor)
             {
-                $PSBoundParameters.Add("HardwareProfileProcessor", $VmProcessors)
-                $null = $PSBoundParameters.Remove("VmProcessors")
+                $PSBoundParameters.Add("HardwareProfileProcessor", $VmProcessor)
+                $null = $PSBoundParameters.Remove("VmProcessor")
             }
             if ($VmSize)
             {

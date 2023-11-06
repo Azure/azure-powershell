@@ -116,7 +116,7 @@ function New-AzStackHCIVmVirtualMachine {
       [Microsoft.Azure.PowerShell.Cmdlets.StackHCIVm.Category('Body')]
       [System.Int32]
       # Number of processors for the virtual machine
-      ${VmProcessors},
+      ${VmProcessor},
 
       [Parameter()]
       [Microsoft.Azure.PowerShell.Cmdlets.StackHCIVm.Category('Body')]
@@ -324,7 +324,7 @@ function New-AzStackHCIVmVirtualMachine {
     $null = $PSBoundParameters.Remove("DynamicMemoryMinimumMemory") 
     $null = $PSBoundParameters.Remove("DynamicMemoryTargetBuffer") 
     $null = $PSBoundParameters.Remove("VmMemoryInMB")
-    $null = $PSBoundParameters.Remove("VmProcessors")
+    $null = $PSBoundParameters.Remove("VmProcessor")
     $null = $PSBoundParameters.Remove("VmSize") 
     $null = $PSBoundParameters.Remove("NicIds") 
     $null = $PSBoundParameters.Remove("NicNames")
@@ -428,15 +428,15 @@ function New-AzStackHCIVmVirtualMachine {
       Write-Error "Invalid VM Size provided. 'Default' is not a supported VmSize." -ErrorAction Stop
     }
     if($VmSize.ToString().ToLower() -eq "custom"){
-      if (-Not ($VmProcessors -and $VmMemoryInMB)){
-        Write-Error "VmMemory and VmProcessors required for Custom VmSize" -ErrorAction Stop
+      if (-Not ($VmProcessor -and $VmMemoryInMB)){
+        Write-Error "VmMemory and VmProcessor required for Custom VmSize" -ErrorAction Stop
       }
       $PSBoundParameters.Add("VmMemory", $VmMemoryInMB)
-      $PSBoundParameters.Add("VmProcessors", $VmProcessors)
+      $PSBoundParameters.Add("VmProcessor", $VmProcessor)
     } else {
-        if ($VmProcessors -or $VmMemoryInMB){
-          Write-Error "VmMemory and VmProcessors will be ignored. Please specify Custom for VMSize." -ErrorAction Continue
-          $null = $PSBoundParameters.Remove("VmProcessors")
+        if ($VmProcessor -or $VmMemoryInMB){
+          Write-Error "VmMemory and VmProcessor will be ignored. Please specify Custom for VMSize." -ErrorAction Continue
+          $null = $PSBoundParameters.Remove("VmProcessor")
           $null = $PSBoundParameters.Remove("VmMemoryInMB")
         }
     }
