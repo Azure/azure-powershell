@@ -59,10 +59,10 @@ RequiredModules = @(@{ModuleName = 'Az.Accounts'; ModuleVersion = '2.10.3'; })
 RequiredAssemblies = 'Functions.Autorest/bin/Az.Functions.private.dll'
 
 # Script files (.ps1) that are run in the caller's environment prior to importing this module.
-ScriptsToProcess = 'custom\HelperFunctions.ps1'
+ScriptsToProcess = 'Functions.Autorest/custom/HelperFunctions.ps1'
 
 # Type files (.ps1xml) to be loaded when importing this module
-TypesToProcess = 'custom\Functions.types.ps1xml'
+TypesToProcess = 'Functions.Autorest/custom/Functions.types.ps1xml'
 
 # Format files (.ps1xml) to be loaded when importing this module
 FormatsToProcess = 'Functions.Autorest/Az.Functions.format.ps1xml'
