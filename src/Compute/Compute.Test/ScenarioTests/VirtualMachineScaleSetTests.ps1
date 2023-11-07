@@ -5139,7 +5139,7 @@ function Test-VirtualMachineScaleSetDefaultToFlexibleOrchestrationMode
         # New VMSS Parameters
         $vmssName1 = 'vmss1' + $rgname;
 
-        $vmssConfig = New-AzVmssConfig -Location $loc -UpgradePolicyMode 'Manual' -SinglePlacementGroup $true
+        $vmssConfig = New-AzVmssConfig -Location $loc -UpgradePolicyMode 'Manual' -SinglePlacementGroup $true -securitytype standard
         $vmss = New-AzVmss -ResourceGroupName $rgname -VMScaleSetName $vmssName1 -VirtualMachineScaleSet $vmssConfig
 
         # Asserts 
