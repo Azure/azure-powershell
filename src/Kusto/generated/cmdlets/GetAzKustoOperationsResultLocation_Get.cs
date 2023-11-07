@@ -16,6 +16,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Kusto.Cmdlets
     [global::System.Management.Automation.OutputType(typeof(bool))]
     [global::Microsoft.Azure.PowerShell.Cmdlets.Kusto.Description(@"Returns operation results.")]
     [global::Microsoft.Azure.PowerShell.Cmdlets.Kusto.Generated]
+    [global::Microsoft.Azure.PowerShell.Cmdlets.Kusto.HttpPath(Path = "/subscriptions/{subscriptionId}/providers/Microsoft.Kusto/locations/{location}/operationResults/{operationId}", ApiVersion = "2023-08-15")]
     public partial class GetAzKustoOperationsResultLocation_Get : global::System.Management.Automation.PSCmdlet,
         Microsoft.Azure.PowerShell.Cmdlets.Kusto.Runtime.IEventListener
     {
@@ -69,12 +70,12 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Kusto.Cmdlets
         /// <summary>Backing field for <see cref="Location" /> property.</summary>
         private string _location;
 
-        /// <summary>Azure location (region) name.</summary>
-        [global::System.Management.Automation.Parameter(Mandatory = true, HelpMessage = "Azure location (region) name.")]
+        /// <summary>The name of Azure region.</summary>
+        [global::System.Management.Automation.Parameter(Mandatory = true, HelpMessage = "The name of Azure region.")]
         [Microsoft.Azure.PowerShell.Cmdlets.Kusto.Runtime.Info(
         Required = true,
         ReadOnly = false,
-        Description = @"Azure location (region) name.",
+        Description = @"The name of Azure region.",
         SerializedName = @"location",
         PossibleTypes = new [] { typeof(string) })]
         [global::Microsoft.Azure.PowerShell.Cmdlets.Kusto.Category(global::Microsoft.Azure.PowerShell.Cmdlets.Kusto.ParameterCategory.Path)]
@@ -91,12 +92,12 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Kusto.Cmdlets
         /// <summary>Backing field for <see cref="OperationId" /> property.</summary>
         private string _operationId;
 
-        /// <summary>The Guid of the operation ID</summary>
-        [global::System.Management.Automation.Parameter(Mandatory = true, HelpMessage = "The Guid of the operation ID")]
+        /// <summary>The ID of an ongoing async operation.</summary>
+        [global::System.Management.Automation.Parameter(Mandatory = true, HelpMessage = "The ID of an ongoing async operation.")]
         [Microsoft.Azure.PowerShell.Cmdlets.Kusto.Runtime.Info(
         Required = true,
         ReadOnly = false,
-        Description = @"The Guid of the operation ID",
+        Description = @"The ID of an ongoing async operation.",
         SerializedName = @"operationId",
         PossibleTypes = new [] { typeof(string) })]
         [global::Microsoft.Azure.PowerShell.Cmdlets.Kusto.Category(global::Microsoft.Azure.PowerShell.Cmdlets.Kusto.ParameterCategory.Path)]
@@ -133,15 +134,12 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Kusto.Cmdlets
         /// <summary>Backing field for <see cref="SubscriptionId" /> property.</summary>
         private string[] _subscriptionId;
 
-        /// <summary>
-        /// Gets subscription credentials which uniquely identify Microsoft Azure subscription. The subscription ID forms part of
-        /// the URI for every service call.
-        /// </summary>
-        [global::System.Management.Automation.Parameter(Mandatory = true, HelpMessage = "Gets subscription credentials which uniquely identify Microsoft Azure subscription. The subscription ID forms part of the URI for every service call.")]
+        /// <summary>The ID of the target subscription.</summary>
+        [global::System.Management.Automation.Parameter(Mandatory = true, HelpMessage = "The ID of the target subscription.")]
         [Microsoft.Azure.PowerShell.Cmdlets.Kusto.Runtime.Info(
         Required = true,
         ReadOnly = false,
-        Description = @"Gets subscription credentials which uniquely identify Microsoft Azure subscription. The subscription ID forms part of the URI for every service call.",
+        Description = @"The ID of the target subscription.",
         SerializedName = @"subscriptionId",
         PossibleTypes = new [] { typeof(string) })]
         [Microsoft.Azure.PowerShell.Cmdlets.Kusto.Runtime.DefaultInfo(
@@ -156,10 +154,12 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Kusto.Cmdlets
         /// happens on that response. Implement this method in a partial class to enable this behavior
         /// </summary>
         /// <param name="responseMessage">the raw response message as an global::System.Net.Http.HttpResponseMessage.</param>
+        /// <param name="headers">the header result as a <see cref="Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.IOperationsResultsLocationGetAcceptedResponseHeaders"
+        /// /> from the remote call</param>
         /// <param name="returnNow">/// Determines if the rest of the onAccepted method should be processed, or if the method should
         /// return immediately (set to true to skip further processing )</param>
 
-        partial void overrideOnAccepted(global::System.Net.Http.HttpResponseMessage responseMessage, ref global::System.Threading.Tasks.Task<bool> returnNow);
+        partial void overrideOnAccepted(global::System.Net.Http.HttpResponseMessage responseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.IOperationsResultsLocationGetAcceptedResponseHeaders> headers, ref global::System.Threading.Tasks.Task<bool> returnNow);
 
         /// <summary>
         /// <c>overrideOnDefault</c> will be called before the regular onDefault has been processed, allowing customization of what
@@ -353,15 +353,17 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Kusto.Cmdlets
 
         /// <summary>a delegate that is called when the remote service returns 202 (Accepted).</summary>
         /// <param name="responseMessage">the raw response message as an global::System.Net.Http.HttpResponseMessage.</param>
+        /// <param name="headers">the header result as a <see cref="Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.IOperationsResultsLocationGetAcceptedResponseHeaders"
+        /// /> from the remote call</param>
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the method is completed.
         /// </returns>
-        private async global::System.Threading.Tasks.Task onAccepted(global::System.Net.Http.HttpResponseMessage responseMessage)
+        private async global::System.Threading.Tasks.Task onAccepted(global::System.Net.Http.HttpResponseMessage responseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.IOperationsResultsLocationGetAcceptedResponseHeaders> headers)
         {
             using( NoSynchronizationContext )
             {
                 var _returnNow = global::System.Threading.Tasks.Task<bool>.FromResult(false);
-                overrideOnAccepted(responseMessage, ref _returnNow);
+                overrideOnAccepted(responseMessage, headers, ref _returnNow);
                 // if overrideOnAccepted has returned true, then return right away.
                 if ((null != _returnNow && await _returnNow))
                 {

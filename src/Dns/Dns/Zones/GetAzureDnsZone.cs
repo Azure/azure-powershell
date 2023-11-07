@@ -12,13 +12,11 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-using Microsoft.Azure.Commands.Dns.Models;
-using Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters;
-using System.Management.Automation;
-using ProjectResources = Microsoft.Azure.Commands.Dns.Properties.Resources;
-
 namespace Microsoft.Azure.Commands.Dns
 {
+    using System.Management.Automation;
+    using Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters;
+
     /// <summary>
     /// Gets one or more existing zones.
     /// </summary>

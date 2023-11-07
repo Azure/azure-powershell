@@ -1,6 +1,6 @@
 {
   "resourceType": "Clusters",
-  "apiVersion": "2022-12-29",
+  "apiVersion": "2023-08-15",
   "learnMore": {
     "url": "https://learn.microsoft.com/powershell/module/az.kusto"
   },
@@ -26,6 +26,44 @@
       "examples": [
         {
           "description": "Gets a Kusto cluster.",
+          "parameters": [
+            {
+              "name": "-Name",
+              "value": "[Path.clusterName]"
+            },
+            {
+              "name": "-ResourceGroupName",
+              "value": "[Path.resourceGroupName]"
+            },
+            {
+              "name": "-SubscriptionId",
+              "value": "[Path.subscriptionId]"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Invoke-AzKustoClusterMigration",
+      "description": "Migrate data from a Kusto cluster to another cluster.",
+      "path": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Kusto/Clusters/{clusterName}/migrate",
+      "help": {
+        "learnMore": {
+          "url": "https://learn.microsoft.com/powershell/module/az.kusto/invoke-azkustoclustermigration"
+        },
+        "parameterSets": [
+          {
+            "parameters": [
+              "-Name <String>",
+              "-ResourceGroupName <String>",
+              "[-SubscriptionId <String>]"
+            ]
+          }
+        ]
+      },
+      "examples": [
+        {
+          "description": "Migrate data from a Kusto cluster to another cluster.",
           "parameters": [
             {
               "name": "-Name",

@@ -20,7 +20,8 @@ function Test-GetAzureRmVMDscExtension
     # VM Profile & Hardware
     $vmsize = 'Standard_A2';
     $vmname = 'vm' + $rgname;
-    $p = New-AzVMConfig -VMName $vmname -VMSize $vmsize;
+    $stnd = "Standard";
+    $p = New-AzVMConfig -VMName $vmname -VMSize $vmsize -SecurityType $stnd;
     Assert-AreEqual $p.HardwareProfile.VmSize $vmsize;
 
     # NRP
@@ -116,6 +117,7 @@ function Test-DSCExtensionVMPiping
         $vmsize = 'Standard_E2s_v3';
         $vmname = 'v' + $rgname;
         $domainNameLabel1 = "domain1" + $rgname;
+        $stnd = "Standard";
 
         # Common
         New-AzResourceGroup -Name $rgname -Location $loc -Force;
@@ -124,7 +126,7 @@ function Test-DSCExtensionVMPiping
         $password = Get-PasswordForVM | ConvertTo-SecureString -AsPlainText -Force;
         $cred = new-object -typename System.Management.Automation.PSCredential -argumentlist $username, $password;
 
-        $p = New-AzVMConfig -VMName $vmname -VMSize $vmsize;
+        $p = New-AzVMConfig -VMName $vmname -VMSize $vmsize -SecurityType $stnd;
 
         # NRP
         $subnet = New-AzVirtualNetworkSubnetConfig -Name ('subnet' + $rgname) -AddressPrefix "10.0.0.0/24";

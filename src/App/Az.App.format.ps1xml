@@ -18,10 +18,28 @@
             <Label>ComponentName</Label>
           </TableColumnHeader>
           <TableColumnHeader>
+            <Label>ConnectedEnvironmentName</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
             <Label>ContainerAppName</Label>
           </TableColumnHeader>
           <TableColumnHeader>
+            <Label>DetectorName</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
             <Label>EnvironmentName</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>JobExecutionName</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>JobName</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>Location</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>ManagedCertificateName</Label>
           </TableColumnHeader>
           <TableColumnHeader>
             <Label>ReplicaName</Label>
@@ -55,10 +73,28 @@
                 <PropertyName>ComponentName</PropertyName>
               </TableColumnItem>
               <TableColumnItem>
+                <PropertyName>ConnectedEnvironmentName</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
                 <PropertyName>ContainerAppName</PropertyName>
               </TableColumnItem>
               <TableColumnItem>
+                <PropertyName>DetectorName</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
                 <PropertyName>EnvironmentName</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>JobExecutionName</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>JobName</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>Location</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>ManagedCertificateName</PropertyName>
               </TableColumnItem>
               <TableColumnItem>
                 <PropertyName>ReplicaName</PropertyName>
@@ -84,14 +120,120 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.App.Models.Api30.CheckNameAvailabilityRequest</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.App.Models.Apple</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.App.Models.Api30.CheckNameAvailabilityRequest</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.App.Models.Apple</TypeName>
+      </ViewSelectedBy>
+      <TableControl>
+        <TableHeaders>
+          <TableColumnHeader>
+            <Label>Enabled</Label>
+          </TableColumnHeader>
+        </TableHeaders>
+        <TableRowEntries>
+          <TableRowEntry>
+            <TableColumnItems>
+              <TableColumnItem>
+                <PropertyName>Enabled</PropertyName>
+              </TableColumnItem>
+            </TableColumnItems>
+          </TableRowEntry>
+        </TableRowEntries>
+      </TableControl>
+    </View>
+    <View>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.App.Models.AppleRegistration</Name>
+      <ViewSelectedBy>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.App.Models.AppleRegistration</TypeName>
+      </ViewSelectedBy>
+      <TableControl>
+        <TableHeaders>
+          <TableColumnHeader>
+            <Label>ClientId</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>ClientSecretSettingName</Label>
+          </TableColumnHeader>
+        </TableHeaders>
+        <TableRowEntries>
+          <TableRowEntry>
+            <TableColumnItems>
+              <TableColumnItem>
+                <PropertyName>ClientId</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>ClientSecretSettingName</PropertyName>
+              </TableColumnItem>
+            </TableColumnItems>
+          </TableRowEntry>
+        </TableRowEntries>
+      </TableControl>
+    </View>
+    <View>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.App.Models.AppLogsConfiguration</Name>
+      <ViewSelectedBy>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.App.Models.AppLogsConfiguration</TypeName>
+      </ViewSelectedBy>
+      <TableControl>
+        <TableHeaders>
+          <TableColumnHeader>
+            <Label>Destination</Label>
+          </TableColumnHeader>
+        </TableHeaders>
+        <TableRowEntries>
+          <TableRowEntry>
+            <TableColumnItems>
+              <TableColumnItem>
+                <PropertyName>Destination</PropertyName>
+              </TableColumnItem>
+            </TableColumnItems>
+          </TableRowEntry>
+        </TableRowEntries>
+      </TableControl>
+    </View>
+    <View>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.App.Models.AppRegistration</Name>
+      <ViewSelectedBy>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.App.Models.AppRegistration</TypeName>
+      </ViewSelectedBy>
+      <TableControl>
+        <TableHeaders>
+          <TableColumnHeader>
+            <Label>AppId</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>AppSecretSettingName</Label>
+          </TableColumnHeader>
+        </TableHeaders>
+        <TableRowEntries>
+          <TableRowEntry>
+            <TableColumnItems>
+              <TableColumnItem>
+                <PropertyName>AppId</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>AppSecretSettingName</PropertyName>
+              </TableColumnItem>
+            </TableColumnItems>
+          </TableRowEntry>
+        </TableRowEntries>
+      </TableControl>
+    </View>
+    <View>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.App.Models.AuthConfig</Name>
+      <ViewSelectedBy>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.App.Models.AuthConfig</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
           <TableColumnHeader>
             <Label>Name</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>PlatformEnabled</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>ResourceGroupName</Label>
           </TableColumnHeader>
         </TableHeaders>
         <TableRowEntries>
@@ -100,39 +242,33 @@
               <TableColumnItem>
                 <PropertyName>Name</PropertyName>
               </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>PlatformEnabled</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>ResourceGroupName</PropertyName>
+              </TableColumnItem>
             </TableColumnItems>
           </TableRowEntry>
         </TableRowEntries>
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.App.Models.Api30.CheckNameAvailabilityResponse</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.App.Models.AuthConfigCollection</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.App.Models.Api30.CheckNameAvailabilityResponse</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.App.Models.AuthConfigCollection</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
           <TableColumnHeader>
-            <Label>Message</Label>
-          </TableColumnHeader>
-          <TableColumnHeader>
-            <Label>NameAvailable</Label>
-          </TableColumnHeader>
-          <TableColumnHeader>
-            <Label>Reason</Label>
+            <Label>NextLink</Label>
           </TableColumnHeader>
         </TableHeaders>
         <TableRowEntries>
           <TableRowEntry>
             <TableColumnItems>
               <TableColumnItem>
-                <PropertyName>Message</PropertyName>
-              </TableColumnItem>
-              <TableColumnItem>
-                <PropertyName>NameAvailable</PropertyName>
-              </TableColumnItem>
-              <TableColumnItem>
-                <PropertyName>Reason</PropertyName>
+                <PropertyName>NextLink</PropertyName>
               </TableColumnItem>
             </TableColumnItems>
           </TableRowEntry>
@@ -140,14 +276,268 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.App.Models.Api30.ManagedServiceIdentity</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.App.Models.AuthPlatform</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.App.Models.Api30.ManagedServiceIdentity</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.App.Models.AuthPlatform</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
           <TableColumnHeader>
-            <Label>PrincipalId</Label>
+            <Label>Enabled</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>RuntimeVersion</Label>
+          </TableColumnHeader>
+        </TableHeaders>
+        <TableRowEntries>
+          <TableRowEntry>
+            <TableColumnItems>
+              <TableColumnItem>
+                <PropertyName>Enabled</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>RuntimeVersion</PropertyName>
+              </TableColumnItem>
+            </TableColumnItems>
+          </TableRowEntry>
+        </TableRowEntries>
+      </TableControl>
+    </View>
+    <View>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.App.Models.AvailableOperations</Name>
+      <ViewSelectedBy>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.App.Models.AvailableOperations</TypeName>
+      </ViewSelectedBy>
+      <TableControl>
+        <TableHeaders>
+          <TableColumnHeader>
+            <Label>NextLink</Label>
+          </TableColumnHeader>
+        </TableHeaders>
+        <TableRowEntries>
+          <TableRowEntry>
+            <TableColumnItems>
+              <TableColumnItem>
+                <PropertyName>NextLink</PropertyName>
+              </TableColumnItem>
+            </TableColumnItems>
+          </TableRowEntry>
+        </TableRowEntries>
+      </TableControl>
+    </View>
+    <View>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.App.Models.AvailableWorkloadProfile</Name>
+      <ViewSelectedBy>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.App.Models.AvailableWorkloadProfile</TypeName>
+      </ViewSelectedBy>
+      <TableControl>
+        <TableHeaders>
+          <TableColumnHeader>
+            <Label>Name</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>Location</Label>
+          </TableColumnHeader>
+        </TableHeaders>
+        <TableRowEntries>
+          <TableRowEntry>
+            <TableColumnItems>
+              <TableColumnItem>
+                <PropertyName>Name</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>Location</PropertyName>
+              </TableColumnItem>
+            </TableColumnItems>
+          </TableRowEntry>
+        </TableRowEntries>
+      </TableControl>
+    </View>
+    <View>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.App.Models.AvailableWorkloadProfileProperties</Name>
+      <ViewSelectedBy>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.App.Models.AvailableWorkloadProfileProperties</TypeName>
+      </ViewSelectedBy>
+      <TableControl>
+        <TableHeaders>
+          <TableColumnHeader>
+            <Label>Applicability</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>Category</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>Core</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>DisplayName</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>MemoryGiB</Label>
+          </TableColumnHeader>
+        </TableHeaders>
+        <TableRowEntries>
+          <TableRowEntry>
+            <TableColumnItems>
+              <TableColumnItem>
+                <PropertyName>Applicability</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>Category</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>Core</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>DisplayName</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>MemoryGiB</PropertyName>
+              </TableColumnItem>
+            </TableColumnItems>
+          </TableRowEntry>
+        </TableRowEntries>
+      </TableControl>
+    </View>
+    <View>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.App.Models.AvailableWorkloadProfilesCollection</Name>
+      <ViewSelectedBy>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.App.Models.AvailableWorkloadProfilesCollection</TypeName>
+      </ViewSelectedBy>
+      <TableControl>
+        <TableHeaders>
+          <TableColumnHeader>
+            <Label>NextLink</Label>
+          </TableColumnHeader>
+        </TableHeaders>
+        <TableRowEntries>
+          <TableRowEntry>
+            <TableColumnItems>
+              <TableColumnItem>
+                <PropertyName>NextLink</PropertyName>
+              </TableColumnItem>
+            </TableColumnItems>
+          </TableRowEntry>
+        </TableRowEntries>
+      </TableControl>
+    </View>
+    <View>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.App.Models.AzureActiveDirectory</Name>
+      <ViewSelectedBy>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.App.Models.AzureActiveDirectory</TypeName>
+      </ViewSelectedBy>
+      <TableControl>
+        <TableHeaders>
+          <TableColumnHeader>
+            <Label>Enabled</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>IsAutoProvisioned</Label>
+          </TableColumnHeader>
+        </TableHeaders>
+        <TableRowEntries>
+          <TableRowEntry>
+            <TableColumnItems>
+              <TableColumnItem>
+                <PropertyName>Enabled</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>IsAutoProvisioned</PropertyName>
+              </TableColumnItem>
+            </TableColumnItems>
+          </TableRowEntry>
+        </TableRowEntries>
+      </TableControl>
+    </View>
+    <View>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.App.Models.AzureActiveDirectoryLogin</Name>
+      <ViewSelectedBy>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.App.Models.AzureActiveDirectoryLogin</TypeName>
+      </ViewSelectedBy>
+      <TableControl>
+        <TableHeaders>
+          <TableColumnHeader>
+            <Label>DisableWwwAuthenticate</Label>
+          </TableColumnHeader>
+        </TableHeaders>
+        <TableRowEntries>
+          <TableRowEntry>
+            <TableColumnItems>
+              <TableColumnItem>
+                <PropertyName>DisableWwwAuthenticate</PropertyName>
+              </TableColumnItem>
+            </TableColumnItems>
+          </TableRowEntry>
+        </TableRowEntries>
+      </TableControl>
+    </View>
+    <View>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.App.Models.AzureActiveDirectoryRegistration</Name>
+      <ViewSelectedBy>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.App.Models.AzureActiveDirectoryRegistration</TypeName>
+      </ViewSelectedBy>
+      <TableControl>
+        <TableHeaders>
+          <TableColumnHeader>
+            <Label>ClientId</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>ClientSecretCertificateIssuer</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>ClientSecretCertificateSubjectAlternativeName</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>ClientSecretCertificateThumbprint</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>ClientSecretSettingName</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>OpenIdIssuer</Label>
+          </TableColumnHeader>
+        </TableHeaders>
+        <TableRowEntries>
+          <TableRowEntry>
+            <TableColumnItems>
+              <TableColumnItem>
+                <PropertyName>ClientId</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>ClientSecretCertificateIssuer</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>ClientSecretCertificateSubjectAlternativeName</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>ClientSecretCertificateThumbprint</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>ClientSecretSettingName</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>OpenIdIssuer</PropertyName>
+              </TableColumnItem>
+            </TableColumnItems>
+          </TableRowEntry>
+        </TableRowEntries>
+      </TableControl>
+    </View>
+    <View>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.App.Models.AzureCredentials</Name>
+      <ViewSelectedBy>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.App.Models.AzureCredentials</TypeName>
+      </ViewSelectedBy>
+      <TableControl>
+        <TableHeaders>
+          <TableColumnHeader>
+            <Label>ClientId</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>Kind</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>SubscriptionId</Label>
           </TableColumnHeader>
           <TableColumnHeader>
             <Label>TenantId</Label>
@@ -157,7 +547,13 @@
           <TableRowEntry>
             <TableColumnItems>
               <TableColumnItem>
-                <PropertyName>PrincipalId</PropertyName>
+                <PropertyName>ClientId</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>Kind</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>SubscriptionId</PropertyName>
               </TableColumnItem>
               <TableColumnItem>
                 <PropertyName>TenantId</PropertyName>
@@ -168,77 +564,109 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.App.Models.Api30.ProxyResource</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.App.Models.AzureFileProperties</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.App.Models.Api30.ProxyResource</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.App.Models.AzureFileProperties</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
+          <TableColumnHeader>
+            <Label>AccessMode</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>AccountKey</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>AccountName</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>ShareName</Label>
+          </TableColumnHeader>
+        </TableHeaders>
+        <TableRowEntries>
+          <TableRowEntry>
+            <TableColumnItems>
+              <TableColumnItem>
+                <PropertyName>AccessMode</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>AccountKey</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>AccountName</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>ShareName</PropertyName>
+              </TableColumnItem>
+            </TableColumnItems>
+          </TableRowEntry>
+        </TableRowEntries>
+      </TableControl>
+    </View>
+    <View>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.App.Models.AzureStaticWebApps</Name>
+      <ViewSelectedBy>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.App.Models.AzureStaticWebApps</TypeName>
+      </ViewSelectedBy>
+      <TableControl>
+        <TableHeaders>
+          <TableColumnHeader>
+            <Label>Enabled</Label>
+          </TableColumnHeader>
+        </TableHeaders>
+        <TableRowEntries>
+          <TableRowEntry>
+            <TableColumnItems>
+              <TableColumnItem>
+                <PropertyName>Enabled</PropertyName>
+              </TableColumnItem>
+            </TableColumnItems>
+          </TableRowEntry>
+        </TableRowEntries>
+      </TableControl>
+    </View>
+    <View>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.App.Models.AzureStaticWebAppsRegistration</Name>
+      <ViewSelectedBy>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.App.Models.AzureStaticWebAppsRegistration</TypeName>
+      </ViewSelectedBy>
+      <TableControl>
+        <TableHeaders>
+          <TableColumnHeader>
+            <Label>ClientId</Label>
+          </TableColumnHeader>
+        </TableHeaders>
+        <TableRowEntries>
+          <TableRowEntry>
+            <TableColumnItems>
+              <TableColumnItem>
+                <PropertyName>ClientId</PropertyName>
+              </TableColumnItem>
+            </TableColumnItems>
+          </TableRowEntry>
+        </TableRowEntries>
+      </TableControl>
+    </View>
+    <View>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.App.Models.BaseContainer</Name>
+      <ViewSelectedBy>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.App.Models.BaseContainer</TypeName>
+      </ViewSelectedBy>
+      <TableControl>
+        <TableHeaders>
+          <TableColumnHeader>
+            <Label>Image</Label>
+          </TableColumnHeader>
           <TableColumnHeader>
             <Label>Name</Label>
           </TableColumnHeader>
-          <TableColumnHeader>
-            <Label>SystemDataCreatedAt</Label>
-          </TableColumnHeader>
-          <TableColumnHeader>
-            <Label>SystemDataCreatedBy</Label>
-          </TableColumnHeader>
-          <TableColumnHeader>
-            <Label>SystemDataCreatedByType</Label>
-          </TableColumnHeader>
-          <TableColumnHeader>
-            <Label>SystemDataLastModifiedAt</Label>
-          </TableColumnHeader>
-          <TableColumnHeader>
-            <Label>SystemDataLastModifiedBy</Label>
-          </TableColumnHeader>
-          <TableColumnHeader>
-            <Label>SystemDataLastModifiedByType</Label>
-          </TableColumnHeader>
         </TableHeaders>
         <TableRowEntries>
           <TableRowEntry>
             <TableColumnItems>
               <TableColumnItem>
-                <PropertyName>Name</PropertyName>
+                <PropertyName>Image</PropertyName>
               </TableColumnItem>
-              <TableColumnItem>
-                <PropertyName>SystemDataCreatedAt</PropertyName>
-              </TableColumnItem>
-              <TableColumnItem>
-                <PropertyName>SystemDataCreatedBy</PropertyName>
-              </TableColumnItem>
-              <TableColumnItem>
-                <PropertyName>SystemDataCreatedByType</PropertyName>
-              </TableColumnItem>
-              <TableColumnItem>
-                <PropertyName>SystemDataLastModifiedAt</PropertyName>
-              </TableColumnItem>
-              <TableColumnItem>
-                <PropertyName>SystemDataLastModifiedBy</PropertyName>
-              </TableColumnItem>
-              <TableColumnItem>
-                <PropertyName>SystemDataLastModifiedByType</PropertyName>
-              </TableColumnItem>
-            </TableColumnItems>
-          </TableRowEntry>
-        </TableRowEntries>
-      </TableControl>
-    </View>
-    <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.App.Models.Api30.Resource</Name>
-      <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.App.Models.Api30.Resource</TypeName>
-      </ViewSelectedBy>
-      <TableControl>
-        <TableHeaders>
-          <TableColumnHeader>
-            <Label>Name</Label>
-          </TableColumnHeader>
-        </TableHeaders>
-        <TableRowEntries>
-          <TableRowEntry>
-            <TableColumnItems>
               <TableColumnItem>
                 <PropertyName>Name</PropertyName>
               </TableColumnItem>
@@ -248,61 +676,9 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.App.Models.Api30.SystemData</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.App.Models.BillingMeter</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.App.Models.Api30.SystemData</TypeName>
-      </ViewSelectedBy>
-      <TableControl>
-        <TableHeaders>
-          <TableColumnHeader>
-            <Label>CreatedAt</Label>
-          </TableColumnHeader>
-          <TableColumnHeader>
-            <Label>CreatedBy</Label>
-          </TableColumnHeader>
-          <TableColumnHeader>
-            <Label>CreatedByType</Label>
-          </TableColumnHeader>
-          <TableColumnHeader>
-            <Label>LastModifiedAt</Label>
-          </TableColumnHeader>
-          <TableColumnHeader>
-            <Label>LastModifiedBy</Label>
-          </TableColumnHeader>
-          <TableColumnHeader>
-            <Label>LastModifiedByType</Label>
-          </TableColumnHeader>
-        </TableHeaders>
-        <TableRowEntries>
-          <TableRowEntry>
-            <TableColumnItems>
-              <TableColumnItem>
-                <PropertyName>CreatedAt</PropertyName>
-              </TableColumnItem>
-              <TableColumnItem>
-                <PropertyName>CreatedBy</PropertyName>
-              </TableColumnItem>
-              <TableColumnItem>
-                <PropertyName>CreatedByType</PropertyName>
-              </TableColumnItem>
-              <TableColumnItem>
-                <PropertyName>LastModifiedAt</PropertyName>
-              </TableColumnItem>
-              <TableColumnItem>
-                <PropertyName>LastModifiedBy</PropertyName>
-              </TableColumnItem>
-              <TableColumnItem>
-                <PropertyName>LastModifiedByType</PropertyName>
-              </TableColumnItem>
-            </TableColumnItems>
-          </TableRowEntry>
-        </TableRowEntries>
-      </TableControl>
-    </View>
-    <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.App.Models.Api30.TrackedResource</Name>
-      <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.App.Models.Api30.TrackedResource</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.App.Models.BillingMeter</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -364,21 +740,33 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.App.Models.Api30.TrackedResourceTags</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.App.Models.BillingMeterProperties</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.App.Models.Api30.TrackedResourceTags</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.App.Models.BillingMeterProperties</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
           <TableColumnHeader>
-            <Label>Item</Label>
+            <Label>Category</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>DisplayName</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>MeterType</Label>
           </TableColumnHeader>
         </TableHeaders>
         <TableRowEntries>
           <TableRowEntry>
             <TableColumnItems>
               <TableColumnItem>
-                <PropertyName>Item</PropertyName>
+                <PropertyName>Category</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>DisplayName</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>MeterType</PropertyName>
               </TableColumnItem>
             </TableColumnItems>
           </TableRowEntry>
@@ -386,547 +774,9 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.App.Models.Api30.UserAssignedIdentity</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.App.Models.Certificate</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.App.Models.Api30.UserAssignedIdentity</TypeName>
-      </ViewSelectedBy>
-      <TableControl>
-        <TableHeaders>
-          <TableColumnHeader>
-            <Label>ClientId</Label>
-          </TableColumnHeader>
-          <TableColumnHeader>
-            <Label>PrincipalId</Label>
-          </TableColumnHeader>
-        </TableHeaders>
-        <TableRowEntries>
-          <TableRowEntry>
-            <TableColumnItems>
-              <TableColumnItem>
-                <PropertyName>ClientId</PropertyName>
-              </TableColumnItem>
-              <TableColumnItem>
-                <PropertyName>PrincipalId</PropertyName>
-              </TableColumnItem>
-            </TableColumnItems>
-          </TableRowEntry>
-        </TableRowEntries>
-      </TableControl>
-    </View>
-    <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.App.Models.Api20220301.AllowedAudiencesValidation</Name>
-      <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.App.Models.Api20220301.AllowedAudiencesValidation</TypeName>
-      </ViewSelectedBy>
-      <TableControl>
-        <TableHeaders>
-          <TableColumnHeader>
-            <Label>AllowedAudience</Label>
-          </TableColumnHeader>
-        </TableHeaders>
-        <TableRowEntries>
-          <TableRowEntry>
-            <TableColumnItems>
-              <TableColumnItem>
-                <PropertyName>AllowedAudience</PropertyName>
-              </TableColumnItem>
-            </TableColumnItems>
-          </TableRowEntry>
-        </TableRowEntries>
-      </TableControl>
-    </View>
-    <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.App.Models.Api20220301.AllowedPrincipals</Name>
-      <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.App.Models.Api20220301.AllowedPrincipals</TypeName>
-      </ViewSelectedBy>
-      <TableControl>
-        <TableHeaders>
-          <TableColumnHeader>
-            <Label>Group</Label>
-          </TableColumnHeader>
-          <TableColumnHeader>
-            <Label>Identity</Label>
-          </TableColumnHeader>
-        </TableHeaders>
-        <TableRowEntries>
-          <TableRowEntry>
-            <TableColumnItems>
-              <TableColumnItem>
-                <PropertyName>Group</PropertyName>
-              </TableColumnItem>
-              <TableColumnItem>
-                <PropertyName>Identity</PropertyName>
-              </TableColumnItem>
-            </TableColumnItems>
-          </TableRowEntry>
-        </TableRowEntries>
-      </TableControl>
-    </View>
-    <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.App.Models.Api20220301.Apple</Name>
-      <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.App.Models.Api20220301.Apple</TypeName>
-      </ViewSelectedBy>
-      <TableControl>
-        <TableHeaders>
-          <TableColumnHeader>
-            <Label>Enabled</Label>
-          </TableColumnHeader>
-        </TableHeaders>
-        <TableRowEntries>
-          <TableRowEntry>
-            <TableColumnItems>
-              <TableColumnItem>
-                <PropertyName>Enabled</PropertyName>
-              </TableColumnItem>
-            </TableColumnItems>
-          </TableRowEntry>
-        </TableRowEntries>
-      </TableControl>
-    </View>
-    <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.App.Models.Api20220301.AppleRegistration</Name>
-      <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.App.Models.Api20220301.AppleRegistration</TypeName>
-      </ViewSelectedBy>
-      <TableControl>
-        <TableHeaders>
-          <TableColumnHeader>
-            <Label>ClientId</Label>
-          </TableColumnHeader>
-          <TableColumnHeader>
-            <Label>ClientSecretSettingName</Label>
-          </TableColumnHeader>
-        </TableHeaders>
-        <TableRowEntries>
-          <TableRowEntry>
-            <TableColumnItems>
-              <TableColumnItem>
-                <PropertyName>ClientId</PropertyName>
-              </TableColumnItem>
-              <TableColumnItem>
-                <PropertyName>ClientSecretSettingName</PropertyName>
-              </TableColumnItem>
-            </TableColumnItems>
-          </TableRowEntry>
-        </TableRowEntries>
-      </TableControl>
-    </View>
-    <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.App.Models.Api20220301.AppLogsConfiguration</Name>
-      <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.App.Models.Api20220301.AppLogsConfiguration</TypeName>
-      </ViewSelectedBy>
-      <TableControl>
-        <TableHeaders>
-          <TableColumnHeader>
-            <Label>Destination</Label>
-          </TableColumnHeader>
-        </TableHeaders>
-        <TableRowEntries>
-          <TableRowEntry>
-            <TableColumnItems>
-              <TableColumnItem>
-                <PropertyName>Destination</PropertyName>
-              </TableColumnItem>
-            </TableColumnItems>
-          </TableRowEntry>
-        </TableRowEntries>
-      </TableControl>
-    </View>
-    <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.App.Models.Api20220301.AppRegistration</Name>
-      <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.App.Models.Api20220301.AppRegistration</TypeName>
-      </ViewSelectedBy>
-      <TableControl>
-        <TableHeaders>
-          <TableColumnHeader>
-            <Label>AppId</Label>
-          </TableColumnHeader>
-          <TableColumnHeader>
-            <Label>AppSecretSettingName</Label>
-          </TableColumnHeader>
-        </TableHeaders>
-        <TableRowEntries>
-          <TableRowEntry>
-            <TableColumnItems>
-              <TableColumnItem>
-                <PropertyName>AppId</PropertyName>
-              </TableColumnItem>
-              <TableColumnItem>
-                <PropertyName>AppSecretSettingName</PropertyName>
-              </TableColumnItem>
-            </TableColumnItems>
-          </TableRowEntry>
-        </TableRowEntries>
-      </TableControl>
-    </View>
-    <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.App.Models.Api20220301.AuthConfig</Name>
-      <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.App.Models.Api20220301.AuthConfig</TypeName>
-      </ViewSelectedBy>
-      <TableControl>
-        <TableHeaders>
-          <TableColumnHeader>
-            <Label>Name</Label>
-          </TableColumnHeader>
-          <TableColumnHeader>
-            <Label>PlatformEnabled</Label>
-          </TableColumnHeader>
-          <TableColumnHeader>
-            <Label>ResourceGroupName</Label>
-          </TableColumnHeader>
-        </TableHeaders>
-        <TableRowEntries>
-          <TableRowEntry>
-            <TableColumnItems>
-              <TableColumnItem>
-                <PropertyName>Name</PropertyName>
-              </TableColumnItem>
-              <TableColumnItem>
-                <PropertyName>PlatformEnabled</PropertyName>
-              </TableColumnItem>
-              <TableColumnItem>
-                <PropertyName>ResourceGroupName</PropertyName>
-              </TableColumnItem>
-            </TableColumnItems>
-          </TableRowEntry>
-        </TableRowEntries>
-      </TableControl>
-    </View>
-    <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.App.Models.Api20220301.AuthConfigCollection</Name>
-      <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.App.Models.Api20220301.AuthConfigCollection</TypeName>
-      </ViewSelectedBy>
-      <TableControl>
-        <TableHeaders>
-          <TableColumnHeader>
-            <Label>NextLink</Label>
-          </TableColumnHeader>
-        </TableHeaders>
-        <TableRowEntries>
-          <TableRowEntry>
-            <TableColumnItems>
-              <TableColumnItem>
-                <PropertyName>NextLink</PropertyName>
-              </TableColumnItem>
-            </TableColumnItems>
-          </TableRowEntry>
-        </TableRowEntries>
-      </TableControl>
-    </View>
-    <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.App.Models.Api20220301.AuthPlatform</Name>
-      <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.App.Models.Api20220301.AuthPlatform</TypeName>
-      </ViewSelectedBy>
-      <TableControl>
-        <TableHeaders>
-          <TableColumnHeader>
-            <Label>Enabled</Label>
-          </TableColumnHeader>
-          <TableColumnHeader>
-            <Label>RuntimeVersion</Label>
-          </TableColumnHeader>
-        </TableHeaders>
-        <TableRowEntries>
-          <TableRowEntry>
-            <TableColumnItems>
-              <TableColumnItem>
-                <PropertyName>Enabled</PropertyName>
-              </TableColumnItem>
-              <TableColumnItem>
-                <PropertyName>RuntimeVersion</PropertyName>
-              </TableColumnItem>
-            </TableColumnItems>
-          </TableRowEntry>
-        </TableRowEntries>
-      </TableControl>
-    </View>
-    <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.App.Models.Api20220301.AvailableOperations</Name>
-      <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.App.Models.Api20220301.AvailableOperations</TypeName>
-      </ViewSelectedBy>
-      <TableControl>
-        <TableHeaders>
-          <TableColumnHeader>
-            <Label>NextLink</Label>
-          </TableColumnHeader>
-        </TableHeaders>
-        <TableRowEntries>
-          <TableRowEntry>
-            <TableColumnItems>
-              <TableColumnItem>
-                <PropertyName>NextLink</PropertyName>
-              </TableColumnItem>
-            </TableColumnItems>
-          </TableRowEntry>
-        </TableRowEntries>
-      </TableControl>
-    </View>
-    <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.App.Models.Api20220301.AzureActiveDirectory</Name>
-      <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.App.Models.Api20220301.AzureActiveDirectory</TypeName>
-      </ViewSelectedBy>
-      <TableControl>
-        <TableHeaders>
-          <TableColumnHeader>
-            <Label>Enabled</Label>
-          </TableColumnHeader>
-          <TableColumnHeader>
-            <Label>IsAutoProvisioned</Label>
-          </TableColumnHeader>
-        </TableHeaders>
-        <TableRowEntries>
-          <TableRowEntry>
-            <TableColumnItems>
-              <TableColumnItem>
-                <PropertyName>Enabled</PropertyName>
-              </TableColumnItem>
-              <TableColumnItem>
-                <PropertyName>IsAutoProvisioned</PropertyName>
-              </TableColumnItem>
-            </TableColumnItems>
-          </TableRowEntry>
-        </TableRowEntries>
-      </TableControl>
-    </View>
-    <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.App.Models.Api20220301.AzureActiveDirectoryLogin</Name>
-      <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.App.Models.Api20220301.AzureActiveDirectoryLogin</TypeName>
-      </ViewSelectedBy>
-      <TableControl>
-        <TableHeaders>
-          <TableColumnHeader>
-            <Label>DisableWwwAuthenticate</Label>
-          </TableColumnHeader>
-          <TableColumnHeader>
-            <Label>LoginParameter</Label>
-          </TableColumnHeader>
-        </TableHeaders>
-        <TableRowEntries>
-          <TableRowEntry>
-            <TableColumnItems>
-              <TableColumnItem>
-                <PropertyName>DisableWwwAuthenticate</PropertyName>
-              </TableColumnItem>
-              <TableColumnItem>
-                <PropertyName>LoginParameter</PropertyName>
-              </TableColumnItem>
-            </TableColumnItems>
-          </TableRowEntry>
-        </TableRowEntries>
-      </TableControl>
-    </View>
-    <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.App.Models.Api20220301.AzureActiveDirectoryRegistration</Name>
-      <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.App.Models.Api20220301.AzureActiveDirectoryRegistration</TypeName>
-      </ViewSelectedBy>
-      <TableControl>
-        <TableHeaders>
-          <TableColumnHeader>
-            <Label>ClientId</Label>
-          </TableColumnHeader>
-          <TableColumnHeader>
-            <Label>ClientSecretCertificateIssuer</Label>
-          </TableColumnHeader>
-          <TableColumnHeader>
-            <Label>ClientSecretCertificateSubjectAlternativeName</Label>
-          </TableColumnHeader>
-          <TableColumnHeader>
-            <Label>ClientSecretCertificateThumbprint</Label>
-          </TableColumnHeader>
-          <TableColumnHeader>
-            <Label>ClientSecretSettingName</Label>
-          </TableColumnHeader>
-          <TableColumnHeader>
-            <Label>OpenIdIssuer</Label>
-          </TableColumnHeader>
-        </TableHeaders>
-        <TableRowEntries>
-          <TableRowEntry>
-            <TableColumnItems>
-              <TableColumnItem>
-                <PropertyName>ClientId</PropertyName>
-              </TableColumnItem>
-              <TableColumnItem>
-                <PropertyName>ClientSecretCertificateIssuer</PropertyName>
-              </TableColumnItem>
-              <TableColumnItem>
-                <PropertyName>ClientSecretCertificateSubjectAlternativeName</PropertyName>
-              </TableColumnItem>
-              <TableColumnItem>
-                <PropertyName>ClientSecretCertificateThumbprint</PropertyName>
-              </TableColumnItem>
-              <TableColumnItem>
-                <PropertyName>ClientSecretSettingName</PropertyName>
-              </TableColumnItem>
-              <TableColumnItem>
-                <PropertyName>OpenIdIssuer</PropertyName>
-              </TableColumnItem>
-            </TableColumnItems>
-          </TableRowEntry>
-        </TableRowEntries>
-      </TableControl>
-    </View>
-    <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.App.Models.Api20220301.AzureActiveDirectoryValidation</Name>
-      <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.App.Models.Api20220301.AzureActiveDirectoryValidation</TypeName>
-      </ViewSelectedBy>
-      <TableControl>
-        <TableHeaders>
-          <TableColumnHeader>
-            <Label>AllowedAudience</Label>
-          </TableColumnHeader>
-        </TableHeaders>
-        <TableRowEntries>
-          <TableRowEntry>
-            <TableColumnItems>
-              <TableColumnItem>
-                <PropertyName>AllowedAudience</PropertyName>
-              </TableColumnItem>
-            </TableColumnItems>
-          </TableRowEntry>
-        </TableRowEntries>
-      </TableControl>
-    </View>
-    <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.App.Models.Api20220301.AzureCredentials</Name>
-      <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.App.Models.Api20220301.AzureCredentials</TypeName>
-      </ViewSelectedBy>
-      <TableControl>
-        <TableHeaders>
-          <TableColumnHeader>
-            <Label>ClientId</Label>
-          </TableColumnHeader>
-          <TableColumnHeader>
-            <Label>ClientSecret</Label>
-          </TableColumnHeader>
-          <TableColumnHeader>
-            <Label>SubscriptionId</Label>
-          </TableColumnHeader>
-          <TableColumnHeader>
-            <Label>TenantId</Label>
-          </TableColumnHeader>
-        </TableHeaders>
-        <TableRowEntries>
-          <TableRowEntry>
-            <TableColumnItems>
-              <TableColumnItem>
-                <PropertyName>ClientId</PropertyName>
-              </TableColumnItem>
-              <TableColumnItem>
-                <PropertyName>ClientSecret</PropertyName>
-              </TableColumnItem>
-              <TableColumnItem>
-                <PropertyName>SubscriptionId</PropertyName>
-              </TableColumnItem>
-              <TableColumnItem>
-                <PropertyName>TenantId</PropertyName>
-              </TableColumnItem>
-            </TableColumnItems>
-          </TableRowEntry>
-        </TableRowEntries>
-      </TableControl>
-    </View>
-    <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.App.Models.Api20220301.AzureFileProperties</Name>
-      <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.App.Models.Api20220301.AzureFileProperties</TypeName>
-      </ViewSelectedBy>
-      <TableControl>
-        <TableHeaders>
-          <TableColumnHeader>
-            <Label>AccessMode</Label>
-          </TableColumnHeader>
-          <TableColumnHeader>
-            <Label>AccountKey</Label>
-          </TableColumnHeader>
-          <TableColumnHeader>
-            <Label>AccountName</Label>
-          </TableColumnHeader>
-          <TableColumnHeader>
-            <Label>ShareName</Label>
-          </TableColumnHeader>
-        </TableHeaders>
-        <TableRowEntries>
-          <TableRowEntry>
-            <TableColumnItems>
-              <TableColumnItem>
-                <PropertyName>AccessMode</PropertyName>
-              </TableColumnItem>
-              <TableColumnItem>
-                <PropertyName>AccountKey</PropertyName>
-              </TableColumnItem>
-              <TableColumnItem>
-                <PropertyName>AccountName</PropertyName>
-              </TableColumnItem>
-              <TableColumnItem>
-                <PropertyName>ShareName</PropertyName>
-              </TableColumnItem>
-            </TableColumnItems>
-          </TableRowEntry>
-        </TableRowEntries>
-      </TableControl>
-    </View>
-    <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.App.Models.Api20220301.AzureStaticWebApps</Name>
-      <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.App.Models.Api20220301.AzureStaticWebApps</TypeName>
-      </ViewSelectedBy>
-      <TableControl>
-        <TableHeaders>
-          <TableColumnHeader>
-            <Label>Enabled</Label>
-          </TableColumnHeader>
-        </TableHeaders>
-        <TableRowEntries>
-          <TableRowEntry>
-            <TableColumnItems>
-              <TableColumnItem>
-                <PropertyName>Enabled</PropertyName>
-              </TableColumnItem>
-            </TableColumnItems>
-          </TableRowEntry>
-        </TableRowEntries>
-      </TableControl>
-    </View>
-    <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.App.Models.Api20220301.AzureStaticWebAppsRegistration</Name>
-      <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.App.Models.Api20220301.AzureStaticWebAppsRegistration</TypeName>
-      </ViewSelectedBy>
-      <TableControl>
-        <TableHeaders>
-          <TableColumnHeader>
-            <Label>ClientId</Label>
-          </TableColumnHeader>
-        </TableHeaders>
-        <TableRowEntries>
-          <TableRowEntry>
-            <TableColumnItems>
-              <TableColumnItem>
-                <PropertyName>ClientId</PropertyName>
-              </TableColumnItem>
-            </TableColumnItems>
-          </TableRowEntry>
-        </TableRowEntries>
-      </TableControl>
-    </View>
-    <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.App.Models.Api20220301.Certificate</Name>
-      <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.App.Models.Api20220301.Certificate</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.App.Models.Certificate</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -982,9 +832,9 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.App.Models.Api20220301.CertificateCollection</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.App.Models.CertificateCollection</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.App.Models.Api20220301.CertificateCollection</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.App.Models.CertificateCollection</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -1004,9 +854,9 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.App.Models.Api20220301.CertificatePatchTags</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.App.Models.CertificatePatchTags</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.App.Models.Api20220301.CertificatePatchTags</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.App.Models.CertificatePatchTags</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -1026,9 +876,9 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.App.Models.Api20220301.CertificateProperties</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.App.Models.CertificateProperties</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.App.Models.Api20220301.CertificateProperties</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.App.Models.CertificateProperties</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -1096,9 +946,65 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.App.Models.Api20220301.ClientRegistration</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.App.Models.CheckNameAvailabilityRequest</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.App.Models.Api20220301.ClientRegistration</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.App.Models.CheckNameAvailabilityRequest</TypeName>
+      </ViewSelectedBy>
+      <TableControl>
+        <TableHeaders>
+          <TableColumnHeader>
+            <Label>Name</Label>
+          </TableColumnHeader>
+        </TableHeaders>
+        <TableRowEntries>
+          <TableRowEntry>
+            <TableColumnItems>
+              <TableColumnItem>
+                <PropertyName>Name</PropertyName>
+              </TableColumnItem>
+            </TableColumnItems>
+          </TableRowEntry>
+        </TableRowEntries>
+      </TableControl>
+    </View>
+    <View>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.App.Models.CheckNameAvailabilityResponse</Name>
+      <ViewSelectedBy>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.App.Models.CheckNameAvailabilityResponse</TypeName>
+      </ViewSelectedBy>
+      <TableControl>
+        <TableHeaders>
+          <TableColumnHeader>
+            <Label>Message</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>NameAvailable</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>Reason</Label>
+          </TableColumnHeader>
+        </TableHeaders>
+        <TableRowEntries>
+          <TableRowEntry>
+            <TableColumnItems>
+              <TableColumnItem>
+                <PropertyName>Message</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>NameAvailable</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>Reason</PropertyName>
+              </TableColumnItem>
+            </TableColumnItems>
+          </TableRowEntry>
+        </TableRowEntries>
+      </TableControl>
+    </View>
+    <View>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.App.Models.ClientRegistration</Name>
+      <ViewSelectedBy>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.App.Models.ClientRegistration</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -1124,14 +1030,17 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.App.Models.Api20220301.Configuration</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.App.Models.Configuration</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.App.Models.Api20220301.Configuration</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.App.Models.Configuration</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
           <TableColumnHeader>
             <Label>ActiveRevisionsMode</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>MaxInactiveRevision</Label>
           </TableColumnHeader>
         </TableHeaders>
         <TableRowEntries>
@@ -1140,45 +1049,8 @@
               <TableColumnItem>
                 <PropertyName>ActiveRevisionsMode</PropertyName>
               </TableColumnItem>
-            </TableColumnItems>
-          </TableRowEntry>
-        </TableRowEntries>
-      </TableControl>
-    </View>
-    <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.App.Models.Api20220301.Container</Name>
-      <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.App.Models.Api20220301.Container</TypeName>
-      </ViewSelectedBy>
-      <TableControl>
-        <TableHeaders>
-          <TableColumnHeader>
-            <Label>Arg</Label>
-          </TableColumnHeader>
-          <TableColumnHeader>
-            <Label>Command</Label>
-          </TableColumnHeader>
-          <TableColumnHeader>
-            <Label>Image</Label>
-          </TableColumnHeader>
-          <TableColumnHeader>
-            <Label>Name</Label>
-          </TableColumnHeader>
-        </TableHeaders>
-        <TableRowEntries>
-          <TableRowEntry>
-            <TableColumnItems>
               <TableColumnItem>
-                <PropertyName>Arg</PropertyName>
-              </TableColumnItem>
-              <TableColumnItem>
-                <PropertyName>Command</PropertyName>
-              </TableColumnItem>
-              <TableColumnItem>
-                <PropertyName>Image</PropertyName>
-              </TableColumnItem>
-              <TableColumnItem>
-                <PropertyName>Name</PropertyName>
+                <PropertyName>MaxInactiveRevision</PropertyName>
               </TableColumnItem>
             </TableColumnItems>
           </TableRowEntry>
@@ -1186,9 +1058,9 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.App.Models.Api20220301.ContainerApp</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.App.Models.ConnectedEnvironment</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.App.Models.Api20220301.ContainerApp</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.App.Models.ConnectedEnvironment</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -1220,9 +1092,9 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.App.Models.Api20220301.ContainerAppCollection</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.App.Models.ConnectedEnvironmentCollection</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.App.Models.Api20220301.ContainerAppCollection</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.App.Models.ConnectedEnvironmentCollection</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -1242,9 +1114,287 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.App.Models.Api20220301.ContainerAppProbe</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.App.Models.ConnectedEnvironmentProperties</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.App.Models.Api20220301.ContainerAppProbe</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.App.Models.ConnectedEnvironmentProperties</TypeName>
+      </ViewSelectedBy>
+      <TableControl>
+        <TableHeaders>
+          <TableColumnHeader>
+            <Label>DaprAiConnectionString</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>DefaultDomain</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>DeploymentError</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>ProvisioningState</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>StaticIP</Label>
+          </TableColumnHeader>
+        </TableHeaders>
+        <TableRowEntries>
+          <TableRowEntry>
+            <TableColumnItems>
+              <TableColumnItem>
+                <PropertyName>DaprAiConnectionString</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>DefaultDomain</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>DeploymentError</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>ProvisioningState</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>StaticIP</PropertyName>
+              </TableColumnItem>
+            </TableColumnItems>
+          </TableRowEntry>
+        </TableRowEntries>
+      </TableControl>
+    </View>
+    <View>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.App.Models.ConnectedEnvironmentStorage</Name>
+      <ViewSelectedBy>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.App.Models.ConnectedEnvironmentStorage</TypeName>
+      </ViewSelectedBy>
+      <TableControl>
+        <TableHeaders>
+          <TableColumnHeader>
+            <Label>Name</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>AzureFileAccessMode</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>AzureFileAccountName</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>AzureFileShareName</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>ResourceGroupName</Label>
+          </TableColumnHeader>
+        </TableHeaders>
+        <TableRowEntries>
+          <TableRowEntry>
+            <TableColumnItems>
+              <TableColumnItem>
+                <PropertyName>Name</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>AzureFileAccessMode</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>AzureFileAccountName</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>AzureFileShareName</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>ResourceGroupName</PropertyName>
+              </TableColumnItem>
+            </TableColumnItems>
+          </TableRowEntry>
+        </TableRowEntries>
+      </TableControl>
+    </View>
+    <View>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.App.Models.Container</Name>
+      <ViewSelectedBy>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.App.Models.Container</TypeName>
+      </ViewSelectedBy>
+      <TableControl>
+        <TableHeaders>
+          <TableColumnHeader>
+            <Label>Image</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>Name</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>ResourceCpu</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>ResourceEphemeralStorage</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>ResourceMemory</Label>
+          </TableColumnHeader>
+        </TableHeaders>
+        <TableRowEntries>
+          <TableRowEntry>
+            <TableColumnItems>
+              <TableColumnItem>
+                <PropertyName>Image</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>Name</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>ResourceCpu</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>ResourceEphemeralStorage</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>ResourceMemory</PropertyName>
+              </TableColumnItem>
+            </TableColumnItems>
+          </TableRowEntry>
+        </TableRowEntries>
+      </TableControl>
+    </View>
+    <View>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.App.Models.ContainerApp</Name>
+      <ViewSelectedBy>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.App.Models.ContainerApp</TypeName>
+      </ViewSelectedBy>
+      <TableControl>
+        <TableHeaders>
+          <TableColumnHeader>
+            <Label>Location</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>Name</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>ResourceGroupName</Label>
+          </TableColumnHeader>
+        </TableHeaders>
+        <TableRowEntries>
+          <TableRowEntry>
+            <TableColumnItems>
+              <TableColumnItem>
+                <PropertyName>Location</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>Name</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>ResourceGroupName</PropertyName>
+              </TableColumnItem>
+            </TableColumnItems>
+          </TableRowEntry>
+        </TableRowEntries>
+      </TableControl>
+    </View>
+    <View>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.App.Models.ContainerAppAuthToken</Name>
+      <ViewSelectedBy>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.App.Models.ContainerAppAuthToken</TypeName>
+      </ViewSelectedBy>
+      <TableControl>
+        <TableHeaders>
+          <TableColumnHeader>
+            <Label>Location</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>Name</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>ResourceGroupName</Label>
+          </TableColumnHeader>
+        </TableHeaders>
+        <TableRowEntries>
+          <TableRowEntry>
+            <TableColumnItems>
+              <TableColumnItem>
+                <PropertyName>Location</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>Name</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>ResourceGroupName</PropertyName>
+              </TableColumnItem>
+            </TableColumnItems>
+          </TableRowEntry>
+        </TableRowEntries>
+      </TableControl>
+    </View>
+    <View>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.App.Models.ContainerAppAuthTokenProperties</Name>
+      <ViewSelectedBy>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.App.Models.ContainerAppAuthTokenProperties</TypeName>
+      </ViewSelectedBy>
+      <TableControl>
+        <TableHeaders>
+          <TableColumnHeader>
+            <Label>Expire</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>Token</Label>
+          </TableColumnHeader>
+        </TableHeaders>
+        <TableRowEntries>
+          <TableRowEntry>
+            <TableColumnItems>
+              <TableColumnItem>
+                <PropertyName>Expire</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>Token</PropertyName>
+              </TableColumnItem>
+            </TableColumnItems>
+          </TableRowEntry>
+        </TableRowEntries>
+      </TableControl>
+    </View>
+    <View>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.App.Models.ContainerAppCollection</Name>
+      <ViewSelectedBy>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.App.Models.ContainerAppCollection</TypeName>
+      </ViewSelectedBy>
+      <TableControl>
+        <TableHeaders>
+          <TableColumnHeader>
+            <Label>NextLink</Label>
+          </TableColumnHeader>
+        </TableHeaders>
+        <TableRowEntries>
+          <TableRowEntry>
+            <TableColumnItems>
+              <TableColumnItem>
+                <PropertyName>NextLink</PropertyName>
+              </TableColumnItem>
+            </TableColumnItems>
+          </TableRowEntry>
+        </TableRowEntries>
+      </TableControl>
+    </View>
+    <View>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.App.Models.ContainerAppJobExecutions</Name>
+      <ViewSelectedBy>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.App.Models.ContainerAppJobExecutions</TypeName>
+      </ViewSelectedBy>
+      <TableControl>
+        <TableHeaders>
+          <TableColumnHeader>
+            <Label>NextLink</Label>
+          </TableColumnHeader>
+        </TableHeaders>
+        <TableRowEntries>
+          <TableRowEntry>
+            <TableColumnItems>
+              <TableColumnItem>
+                <PropertyName>NextLink</PropertyName>
+              </TableColumnItem>
+            </TableColumnItems>
+          </TableRowEntry>
+        </TableRowEntries>
+      </TableControl>
+    </View>
+    <View>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.App.Models.ContainerAppProbe</Name>
+      <ViewSelectedBy>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.App.Models.ContainerAppProbe</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -1294,9 +1444,9 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.App.Models.Api20220301.ContainerAppProbeHttpGet</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.App.Models.ContainerAppProbeHttpGet</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.App.Models.Api20220301.ContainerAppProbeHttpGet</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.App.Models.ContainerAppProbeHttpGet</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -1334,9 +1484,9 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.App.Models.Api20220301.ContainerAppProbeHttpGetHttpHeadersItem</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.App.Models.ContainerAppProbeHttpGetHttpHeadersItem</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.App.Models.Api20220301.ContainerAppProbeHttpGetHttpHeadersItem</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.App.Models.ContainerAppProbeHttpGetHttpHeadersItem</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -1362,9 +1512,9 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.App.Models.Api20220301.ContainerAppProbeTcpSocket</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.App.Models.ContainerAppProbeTcpSocket</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.App.Models.Api20220301.ContainerAppProbeTcpSocket</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.App.Models.ContainerAppProbeTcpSocket</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -1390,14 +1540,23 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.App.Models.Api20220301.ContainerAppProperties</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.App.Models.ContainerAppProperties</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.App.Models.Api20220301.ContainerAppProperties</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.App.Models.ContainerAppProperties</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
           <TableColumnHeader>
             <Label>CustomDomainVerificationId</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>EnvironmentId</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>EventStreamEndpoint</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>LatestReadyRevisionName</Label>
           </TableColumnHeader>
           <TableColumnHeader>
             <Label>LatestRevisionFqdn</Label>
@@ -1409,10 +1568,10 @@
             <Label>ManagedEnvironmentId</Label>
           </TableColumnHeader>
           <TableColumnHeader>
-            <Label>OutboundIPAddress</Label>
+            <Label>ProvisioningState</Label>
           </TableColumnHeader>
           <TableColumnHeader>
-            <Label>ProvisioningState</Label>
+            <Label>WorkloadProfileName</Label>
           </TableColumnHeader>
         </TableHeaders>
         <TableRowEntries>
@@ -1420,6 +1579,15 @@
             <TableColumnItems>
               <TableColumnItem>
                 <PropertyName>CustomDomainVerificationId</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>EnvironmentId</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>EventStreamEndpoint</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>LatestReadyRevisionName</PropertyName>
               </TableColumnItem>
               <TableColumnItem>
                 <PropertyName>LatestRevisionFqdn</PropertyName>
@@ -1431,10 +1599,10 @@
                 <PropertyName>ManagedEnvironmentId</PropertyName>
               </TableColumnItem>
               <TableColumnItem>
-                <PropertyName>OutboundIPAddress</PropertyName>
+                <PropertyName>ProvisioningState</PropertyName>
               </TableColumnItem>
               <TableColumnItem>
-                <PropertyName>ProvisioningState</PropertyName>
+                <PropertyName>WorkloadProfileName</PropertyName>
               </TableColumnItem>
             </TableColumnItems>
           </TableRowEntry>
@@ -1442,12 +1610,18 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.App.Models.Api20220301.ContainerAppSecret</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.App.Models.ContainerAppSecret</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.App.Models.Api20220301.ContainerAppSecret</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.App.Models.ContainerAppSecret</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
+          <TableColumnHeader>
+            <Label>Identity</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>KeyVaultUrl</Label>
+          </TableColumnHeader>
           <TableColumnHeader>
             <Label>Name</Label>
           </TableColumnHeader>
@@ -1458,6 +1632,12 @@
         <TableRowEntries>
           <TableRowEntry>
             <TableColumnItems>
+              <TableColumnItem>
+                <PropertyName>Identity</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>KeyVaultUrl</PropertyName>
+              </TableColumnItem>
               <TableColumnItem>
                 <PropertyName>Name</PropertyName>
               </TableColumnItem>
@@ -1470,9 +1650,9 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.App.Models.Api20220301.ContainerResources</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.App.Models.ContainerResources</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.App.Models.Api20220301.ContainerResources</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.App.Models.ContainerResources</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -1504,9 +1684,9 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.App.Models.Api20220301.CookieExpiration</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.App.Models.CookieExpiration</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.App.Models.Api20220301.CookieExpiration</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.App.Models.CookieExpiration</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -1532,9 +1712,37 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.App.Models.Api20220301.CustomDomain</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.App.Models.CorsPolicy</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.App.Models.Api20220301.CustomDomain</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.App.Models.CorsPolicy</TypeName>
+      </ViewSelectedBy>
+      <TableControl>
+        <TableHeaders>
+          <TableColumnHeader>
+            <Label>AllowCredentials</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>MaxAge</Label>
+          </TableColumnHeader>
+        </TableHeaders>
+        <TableRowEntries>
+          <TableRowEntry>
+            <TableColumnItems>
+              <TableColumnItem>
+                <PropertyName>AllowCredentials</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>MaxAge</PropertyName>
+              </TableColumnItem>
+            </TableColumnItems>
+          </TableRowEntry>
+        </TableRowEntries>
+      </TableControl>
+    </View>
+    <View>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.App.Models.CustomDomain</Name>
+      <ViewSelectedBy>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.App.Models.CustomDomain</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -1566,63 +1774,51 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.App.Models.Api20220301.CustomHostnameAnalysisResult</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.App.Models.CustomDomainConfiguration</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.App.Models.Api20220301.CustomHostnameAnalysisResult</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.App.Models.CustomDomainConfiguration</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
           <TableColumnHeader>
-            <Label>Name</Label>
+            <Label>CertificateValue</Label>
           </TableColumnHeader>
           <TableColumnHeader>
-            <Label>SystemDataCreatedAt</Label>
+            <Label>CustomDomainVerificationId</Label>
           </TableColumnHeader>
           <TableColumnHeader>
-            <Label>SystemDataCreatedBy</Label>
+            <Label>DnsSuffix</Label>
           </TableColumnHeader>
           <TableColumnHeader>
-            <Label>SystemDataCreatedByType</Label>
+            <Label>ExpirationDate</Label>
           </TableColumnHeader>
           <TableColumnHeader>
-            <Label>SystemDataLastModifiedAt</Label>
+            <Label>SubjectName</Label>
           </TableColumnHeader>
           <TableColumnHeader>
-            <Label>SystemDataLastModifiedBy</Label>
-          </TableColumnHeader>
-          <TableColumnHeader>
-            <Label>SystemDataLastModifiedByType</Label>
-          </TableColumnHeader>
-          <TableColumnHeader>
-            <Label>ResourceGroupName</Label>
+            <Label>Thumbprint</Label>
           </TableColumnHeader>
         </TableHeaders>
         <TableRowEntries>
           <TableRowEntry>
             <TableColumnItems>
               <TableColumnItem>
-                <PropertyName>Name</PropertyName>
+                <PropertyName>CertificateValue</PropertyName>
               </TableColumnItem>
               <TableColumnItem>
-                <PropertyName>SystemDataCreatedAt</PropertyName>
+                <PropertyName>CustomDomainVerificationId</PropertyName>
               </TableColumnItem>
               <TableColumnItem>
-                <PropertyName>SystemDataCreatedBy</PropertyName>
+                <PropertyName>DnsSuffix</PropertyName>
               </TableColumnItem>
               <TableColumnItem>
-                <PropertyName>SystemDataCreatedByType</PropertyName>
+                <PropertyName>ExpirationDate</PropertyName>
               </TableColumnItem>
               <TableColumnItem>
-                <PropertyName>SystemDataLastModifiedAt</PropertyName>
+                <PropertyName>SubjectName</PropertyName>
               </TableColumnItem>
               <TableColumnItem>
-                <PropertyName>SystemDataLastModifiedBy</PropertyName>
-              </TableColumnItem>
-              <TableColumnItem>
-                <PropertyName>SystemDataLastModifiedByType</PropertyName>
-              </TableColumnItem>
-              <TableColumnItem>
-                <PropertyName>ResourceGroupName</PropertyName>
+                <PropertyName>Thumbprint</PropertyName>
               </TableColumnItem>
             </TableColumnItems>
           </TableRowEntry>
@@ -1630,23 +1826,14 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.App.Models.Api20220301.CustomHostnameAnalysisResultProperties</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.App.Models.CustomHostnameAnalysisResult</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.App.Models.Api20220301.CustomHostnameAnalysisResultProperties</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.App.Models.CustomHostnameAnalysisResult</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
           <TableColumnHeader>
-            <Label>ARecord</Label>
-          </TableColumnHeader>
-          <TableColumnHeader>
-            <Label>AlternateCNameRecord</Label>
-          </TableColumnHeader>
-          <TableColumnHeader>
-            <Label>AlternateTxtRecord</Label>
-          </TableColumnHeader>
-          <TableColumnHeader>
-            <Label>CNameRecord</Label>
+            <Label>ConflictWithEnvironmentCustomDomain</Label>
           </TableColumnHeader>
           <TableColumnHeader>
             <Label>ConflictingContainerAppResourceId</Label>
@@ -1663,24 +1850,12 @@
           <TableColumnHeader>
             <Label>IsHostnameAlreadyVerified</Label>
           </TableColumnHeader>
-          <TableColumnHeader>
-            <Label>TxtRecord</Label>
-          </TableColumnHeader>
         </TableHeaders>
         <TableRowEntries>
           <TableRowEntry>
             <TableColumnItems>
               <TableColumnItem>
-                <PropertyName>ARecord</PropertyName>
-              </TableColumnItem>
-              <TableColumnItem>
-                <PropertyName>AlternateCNameRecord</PropertyName>
-              </TableColumnItem>
-              <TableColumnItem>
-                <PropertyName>AlternateTxtRecord</PropertyName>
-              </TableColumnItem>
-              <TableColumnItem>
-                <PropertyName>CNameRecord</PropertyName>
+                <PropertyName>ConflictWithEnvironmentCustomDomain</PropertyName>
               </TableColumnItem>
               <TableColumnItem>
                 <PropertyName>ConflictingContainerAppResourceId</PropertyName>
@@ -1697,8 +1872,39 @@
               <TableColumnItem>
                 <PropertyName>IsHostnameAlreadyVerified</PropertyName>
               </TableColumnItem>
+            </TableColumnItems>
+          </TableRowEntry>
+        </TableRowEntries>
+      </TableControl>
+    </View>
+    <View>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.App.Models.CustomHostnameAnalysisResultCustomDomainVerificationFailureInfo</Name>
+      <ViewSelectedBy>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.App.Models.CustomHostnameAnalysisResultCustomDomainVerificationFailureInfo</TypeName>
+      </ViewSelectedBy>
+      <TableControl>
+        <TableHeaders>
+          <TableColumnHeader>
+            <Label>Code</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>Message</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>Target</Label>
+          </TableColumnHeader>
+        </TableHeaders>
+        <TableRowEntries>
+          <TableRowEntry>
+            <TableColumnItems>
               <TableColumnItem>
-                <PropertyName>TxtRecord</PropertyName>
+                <PropertyName>Code</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>Message</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>Target</PropertyName>
               </TableColumnItem>
             </TableColumnItems>
           </TableRowEntry>
@@ -1706,9 +1912,43 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.App.Models.Api20220301.CustomOpenIdConnectProvider</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.App.Models.CustomHostnameAnalysisResultCustomDomainVerificationFailureInfoDetailsItem</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.App.Models.Api20220301.CustomOpenIdConnectProvider</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.App.Models.CustomHostnameAnalysisResultCustomDomainVerificationFailureInfoDetailsItem</TypeName>
+      </ViewSelectedBy>
+      <TableControl>
+        <TableHeaders>
+          <TableColumnHeader>
+            <Label>Code</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>Message</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>Target</Label>
+          </TableColumnHeader>
+        </TableHeaders>
+        <TableRowEntries>
+          <TableRowEntry>
+            <TableColumnItems>
+              <TableColumnItem>
+                <PropertyName>Code</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>Message</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>Target</PropertyName>
+              </TableColumnItem>
+            </TableColumnItems>
+          </TableRowEntry>
+        </TableRowEntries>
+      </TableControl>
+    </View>
+    <View>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.App.Models.CustomOpenIdConnectProvider</Name>
+      <ViewSelectedBy>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.App.Models.CustomOpenIdConnectProvider</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -1728,9 +1968,9 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.App.Models.Api20220301.CustomScaleRuleMetadata</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.App.Models.CustomScaleRuleMetadata</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.App.Models.Api20220301.CustomScaleRuleMetadata</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.App.Models.CustomScaleRuleMetadata</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -1750,9 +1990,9 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.App.Models.Api20220301.Dapr</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.App.Models.Dapr</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.App.Models.Api20220301.Dapr</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.App.Models.Dapr</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -1766,7 +2006,19 @@
             <Label>AppProtocol</Label>
           </TableColumnHeader>
           <TableColumnHeader>
+            <Label>EnableApiLogging</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
             <Label>Enabled</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>HttpMaxRequestSize</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>HttpReadBufferSize</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>LogLevel</Label>
           </TableColumnHeader>
         </TableHeaders>
         <TableRowEntries>
@@ -1782,7 +2034,19 @@
                 <PropertyName>AppProtocol</PropertyName>
               </TableColumnItem>
               <TableColumnItem>
+                <PropertyName>EnableApiLogging</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
                 <PropertyName>Enabled</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>HttpMaxRequestSize</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>HttpReadBufferSize</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>LogLevel</PropertyName>
               </TableColumnItem>
             </TableColumnItems>
           </TableRowEntry>
@@ -1790,9 +2054,9 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.App.Models.Api20220301.DaprComponent</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.App.Models.DaprComponent</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.App.Models.Api20220301.DaprComponent</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.App.Models.DaprComponent</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -1842,9 +2106,9 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.App.Models.Api20220301.DaprComponentProperties</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.App.Models.DaprComponentProperties</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.App.Models.Api20220301.DaprComponentProperties</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.App.Models.DaprComponentProperties</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -1858,7 +2122,7 @@
             <Label>InitTimeout</Label>
           </TableColumnHeader>
           <TableColumnHeader>
-            <Label>Scope</Label>
+            <Label>SecretStoreComponent</Label>
           </TableColumnHeader>
           <TableColumnHeader>
             <Label>Version</Label>
@@ -1877,7 +2141,7 @@
                 <PropertyName>InitTimeout</PropertyName>
               </TableColumnItem>
               <TableColumnItem>
-                <PropertyName>Scope</PropertyName>
+                <PropertyName>SecretStoreComponent</PropertyName>
               </TableColumnItem>
               <TableColumnItem>
                 <PropertyName>Version</PropertyName>
@@ -1888,9 +2152,9 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.App.Models.Api20220301.DaprComponentsCollection</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.App.Models.DaprComponentsCollection</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.App.Models.Api20220301.DaprComponentsCollection</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.App.Models.DaprComponentsCollection</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -1910,9 +2174,31 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.App.Models.Api20220301.DaprMetadata</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.App.Models.DaprConfiguration</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.App.Models.Api20220301.DaprMetadata</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.App.Models.DaprConfiguration</TypeName>
+      </ViewSelectedBy>
+      <TableControl>
+        <TableHeaders>
+          <TableColumnHeader>
+            <Label>Version</Label>
+          </TableColumnHeader>
+        </TableHeaders>
+        <TableRowEntries>
+          <TableRowEntry>
+            <TableColumnItems>
+              <TableColumnItem>
+                <PropertyName>Version</PropertyName>
+              </TableColumnItem>
+            </TableColumnItems>
+          </TableRowEntry>
+        </TableRowEntries>
+      </TableControl>
+    </View>
+    <View>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.App.Models.DaprMetadata</Name>
+      <ViewSelectedBy>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.App.Models.DaprMetadata</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -1944,21 +2230,27 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.App.Models.Api20220301.DefaultAuthorizationPolicy</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.App.Models.DaprSecret</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.App.Models.Api20220301.DefaultAuthorizationPolicy</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.App.Models.DaprSecret</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
           <TableColumnHeader>
-            <Label>AllowedApplication</Label>
+            <Label>Name</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>Value</Label>
           </TableColumnHeader>
         </TableHeaders>
         <TableRowEntries>
           <TableRowEntry>
             <TableColumnItems>
               <TableColumnItem>
-                <PropertyName>AllowedApplication</PropertyName>
+                <PropertyName>Name</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>Value</PropertyName>
               </TableColumnItem>
             </TableColumnItems>
           </TableRowEntry>
@@ -1966,9 +2258,9 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.App.Models.Api20220301.DefaultErrorResponseError</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.App.Models.DefaultErrorResponseError</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.App.Models.Api20220301.DefaultErrorResponseError</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.App.Models.DefaultErrorResponseError</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -2006,9 +2298,9 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.App.Models.Api20220301.DefaultErrorResponseErrorDetailsItem</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.App.Models.DefaultErrorResponseErrorDetailsItem</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.App.Models.Api20220301.DefaultErrorResponseErrorDetailsItem</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.App.Models.DefaultErrorResponseErrorDetailsItem</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -2040,9 +2332,357 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.App.Models.Api20220301.EnvironmentVar</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.App.Models.DiagnosticDataProviderMetadata</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.App.Models.Api20220301.EnvironmentVar</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.App.Models.DiagnosticDataProviderMetadata</TypeName>
+      </ViewSelectedBy>
+      <TableControl>
+        <TableHeaders>
+          <TableColumnHeader>
+            <Label>ProviderName</Label>
+          </TableColumnHeader>
+        </TableHeaders>
+        <TableRowEntries>
+          <TableRowEntry>
+            <TableColumnItems>
+              <TableColumnItem>
+                <PropertyName>ProviderName</PropertyName>
+              </TableColumnItem>
+            </TableColumnItems>
+          </TableRowEntry>
+        </TableRowEntries>
+      </TableControl>
+    </View>
+    <View>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.App.Models.DiagnosticDataProviderMetadataPropertyBagItem</Name>
+      <ViewSelectedBy>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.App.Models.DiagnosticDataProviderMetadataPropertyBagItem</TypeName>
+      </ViewSelectedBy>
+      <TableControl>
+        <TableHeaders>
+          <TableColumnHeader>
+            <Label>Name</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>Value</Label>
+          </TableColumnHeader>
+        </TableHeaders>
+        <TableRowEntries>
+          <TableRowEntry>
+            <TableColumnItems>
+              <TableColumnItem>
+                <PropertyName>Name</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>Value</PropertyName>
+              </TableColumnItem>
+            </TableColumnItems>
+          </TableRowEntry>
+        </TableRowEntries>
+      </TableControl>
+    </View>
+    <View>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.App.Models.DiagnosticDataTableResponseColumn</Name>
+      <ViewSelectedBy>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.App.Models.DiagnosticDataTableResponseColumn</TypeName>
+      </ViewSelectedBy>
+      <TableControl>
+        <TableHeaders>
+          <TableColumnHeader>
+            <Label>ColumnName</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>ColumnType</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>DataType</Label>
+          </TableColumnHeader>
+        </TableHeaders>
+        <TableRowEntries>
+          <TableRowEntry>
+            <TableColumnItems>
+              <TableColumnItem>
+                <PropertyName>ColumnName</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>ColumnType</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>DataType</PropertyName>
+              </TableColumnItem>
+            </TableColumnItems>
+          </TableRowEntry>
+        </TableRowEntries>
+      </TableControl>
+    </View>
+    <View>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.App.Models.DiagnosticDataTableResponseObject</Name>
+      <ViewSelectedBy>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.App.Models.DiagnosticDataTableResponseObject</TypeName>
+      </ViewSelectedBy>
+      <TableControl>
+        <TableHeaders>
+          <TableColumnHeader>
+            <Label>TableName</Label>
+          </TableColumnHeader>
+        </TableHeaders>
+        <TableRowEntries>
+          <TableRowEntry>
+            <TableColumnItems>
+              <TableColumnItem>
+                <PropertyName>TableName</PropertyName>
+              </TableColumnItem>
+            </TableColumnItems>
+          </TableRowEntry>
+        </TableRowEntries>
+      </TableControl>
+    </View>
+    <View>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.App.Models.DiagnosticRendering</Name>
+      <ViewSelectedBy>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.App.Models.DiagnosticRendering</TypeName>
+      </ViewSelectedBy>
+      <TableControl>
+        <TableHeaders>
+          <TableColumnHeader>
+            <Label>Description</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>IsVisible</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>Title</Label>
+          </TableColumnHeader>
+        </TableHeaders>
+        <TableRowEntries>
+          <TableRowEntry>
+            <TableColumnItems>
+              <TableColumnItem>
+                <PropertyName>Description</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>IsVisible</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>Title</PropertyName>
+              </TableColumnItem>
+            </TableColumnItems>
+          </TableRowEntry>
+        </TableRowEntries>
+      </TableControl>
+    </View>
+    <View>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.App.Models.Diagnostics</Name>
+      <ViewSelectedBy>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.App.Models.Diagnostics</TypeName>
+      </ViewSelectedBy>
+      <TableControl>
+        <TableHeaders>
+          <TableColumnHeader>
+            <Label>Name</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>ResourceGroupName</Label>
+          </TableColumnHeader>
+        </TableHeaders>
+        <TableRowEntries>
+          <TableRowEntry>
+            <TableColumnItems>
+              <TableColumnItem>
+                <PropertyName>Name</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>ResourceGroupName</PropertyName>
+              </TableColumnItem>
+            </TableColumnItems>
+          </TableRowEntry>
+        </TableRowEntries>
+      </TableControl>
+    </View>
+    <View>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.App.Models.DiagnosticsCollection</Name>
+      <ViewSelectedBy>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.App.Models.DiagnosticsCollection</TypeName>
+      </ViewSelectedBy>
+      <TableControl>
+        <TableHeaders>
+          <TableColumnHeader>
+            <Label>NextLink</Label>
+          </TableColumnHeader>
+        </TableHeaders>
+        <TableRowEntries>
+          <TableRowEntry>
+            <TableColumnItems>
+              <TableColumnItem>
+                <PropertyName>NextLink</PropertyName>
+              </TableColumnItem>
+            </TableColumnItems>
+          </TableRowEntry>
+        </TableRowEntries>
+      </TableControl>
+    </View>
+    <View>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.App.Models.DiagnosticsDefinition</Name>
+      <ViewSelectedBy>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.App.Models.DiagnosticsDefinition</TypeName>
+      </ViewSelectedBy>
+      <TableControl>
+        <TableHeaders>
+          <TableColumnHeader>
+            <Label>Author</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>Category</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>Description</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>Name</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>Score</Label>
+          </TableColumnHeader>
+        </TableHeaders>
+        <TableRowEntries>
+          <TableRowEntry>
+            <TableColumnItems>
+              <TableColumnItem>
+                <PropertyName>Author</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>Category</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>Description</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>Name</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>Score</PropertyName>
+              </TableColumnItem>
+            </TableColumnItems>
+          </TableRowEntry>
+        </TableRowEntries>
+      </TableControl>
+    </View>
+    <View>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.App.Models.DiagnosticsStatus</Name>
+      <ViewSelectedBy>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.App.Models.DiagnosticsStatus</TypeName>
+      </ViewSelectedBy>
+      <TableControl>
+        <TableHeaders>
+          <TableColumnHeader>
+            <Label>Message</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>StatusId</Label>
+          </TableColumnHeader>
+        </TableHeaders>
+        <TableRowEntries>
+          <TableRowEntry>
+            <TableColumnItems>
+              <TableColumnItem>
+                <PropertyName>Message</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>StatusId</PropertyName>
+              </TableColumnItem>
+            </TableColumnItems>
+          </TableRowEntry>
+        </TableRowEntries>
+      </TableControl>
+    </View>
+    <View>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.App.Models.DiagnosticSupportTopic</Name>
+      <ViewSelectedBy>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.App.Models.DiagnosticSupportTopic</TypeName>
+      </ViewSelectedBy>
+      <TableControl>
+        <TableHeaders>
+          <TableColumnHeader>
+            <Label>PesId</Label>
+          </TableColumnHeader>
+        </TableHeaders>
+        <TableRowEntries>
+          <TableRowEntry>
+            <TableColumnItems>
+              <TableColumnItem>
+                <PropertyName>PesId</PropertyName>
+              </TableColumnItem>
+            </TableColumnItems>
+          </TableRowEntry>
+        </TableRowEntries>
+      </TableControl>
+    </View>
+    <View>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.App.Models.EnvironmentAuthToken</Name>
+      <ViewSelectedBy>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.App.Models.EnvironmentAuthToken</TypeName>
+      </ViewSelectedBy>
+      <TableControl>
+        <TableHeaders>
+          <TableColumnHeader>
+            <Label>Location</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>Name</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>ResourceGroupName</Label>
+          </TableColumnHeader>
+        </TableHeaders>
+        <TableRowEntries>
+          <TableRowEntry>
+            <TableColumnItems>
+              <TableColumnItem>
+                <PropertyName>Location</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>Name</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>ResourceGroupName</PropertyName>
+              </TableColumnItem>
+            </TableColumnItems>
+          </TableRowEntry>
+        </TableRowEntries>
+      </TableControl>
+    </View>
+    <View>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.App.Models.EnvironmentAuthTokenProperties</Name>
+      <ViewSelectedBy>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.App.Models.EnvironmentAuthTokenProperties</TypeName>
+      </ViewSelectedBy>
+      <TableControl>
+        <TableHeaders>
+          <TableColumnHeader>
+            <Label>Expire</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>Token</Label>
+          </TableColumnHeader>
+        </TableHeaders>
+        <TableRowEntries>
+          <TableRowEntry>
+            <TableColumnItems>
+              <TableColumnItem>
+                <PropertyName>Expire</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>Token</PropertyName>
+              </TableColumnItem>
+            </TableColumnItems>
+          </TableRowEntry>
+        </TableRowEntries>
+      </TableControl>
+    </View>
+    <View>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.App.Models.EnvironmentVar</Name>
+      <ViewSelectedBy>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.App.Models.EnvironmentVar</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -2074,9 +2714,65 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.App.Models.Api20220301.Facebook</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.App.Models.ErrorDetail</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.App.Models.Api20220301.Facebook</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.App.Models.ErrorDetail</TypeName>
+      </ViewSelectedBy>
+      <TableControl>
+        <TableHeaders>
+          <TableColumnHeader>
+            <Label>Code</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>Message</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>Target</Label>
+          </TableColumnHeader>
+        </TableHeaders>
+        <TableRowEntries>
+          <TableRowEntry>
+            <TableColumnItems>
+              <TableColumnItem>
+                <PropertyName>Code</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>Message</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>Target</PropertyName>
+              </TableColumnItem>
+            </TableColumnItems>
+          </TableRowEntry>
+        </TableRowEntries>
+      </TableControl>
+    </View>
+    <View>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.App.Models.ExtendedLocation</Name>
+      <ViewSelectedBy>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.App.Models.ExtendedLocation</TypeName>
+      </ViewSelectedBy>
+      <TableControl>
+        <TableHeaders>
+          <TableColumnHeader>
+            <Label>Name</Label>
+          </TableColumnHeader>
+        </TableHeaders>
+        <TableRowEntries>
+          <TableRowEntry>
+            <TableColumnItems>
+              <TableColumnItem>
+                <PropertyName>Name</PropertyName>
+              </TableColumnItem>
+            </TableColumnItems>
+          </TableRowEntry>
+        </TableRowEntries>
+      </TableControl>
+    </View>
+    <View>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.App.Models.Facebook</Name>
+      <ViewSelectedBy>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.App.Models.Facebook</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -2102,9 +2798,9 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.App.Models.Api20220301.ForwardProxy</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.App.Models.ForwardProxy</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.App.Models.Api20220301.ForwardProxy</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.App.Models.ForwardProxy</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -2136,9 +2832,9 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.App.Models.Api20220301.GitHub</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.App.Models.GitHub</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.App.Models.Api20220301.GitHub</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.App.Models.GitHub</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -2158,9 +2854,9 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.App.Models.Api20220301.GithubActionConfiguration</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.App.Models.GithubActionConfiguration</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.App.Models.Api20220301.GithubActionConfiguration</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.App.Models.GithubActionConfiguration</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -2210,15 +2906,12 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.App.Models.Api20220301.GlobalValidation</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.App.Models.GlobalValidation</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.App.Models.Api20220301.GlobalValidation</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.App.Models.GlobalValidation</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
-          <TableColumnHeader>
-            <Label>ExcludedPath</Label>
-          </TableColumnHeader>
           <TableColumnHeader>
             <Label>RedirectToProvider</Label>
           </TableColumnHeader>
@@ -2229,9 +2922,6 @@
         <TableRowEntries>
           <TableRowEntry>
             <TableColumnItems>
-              <TableColumnItem>
-                <PropertyName>ExcludedPath</PropertyName>
-              </TableColumnItem>
               <TableColumnItem>
                 <PropertyName>RedirectToProvider</PropertyName>
               </TableColumnItem>
@@ -2244,9 +2934,9 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.App.Models.Api20220301.Google</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.App.Models.Google</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.App.Models.Api20220301.Google</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.App.Models.Google</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -2266,9 +2956,9 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.App.Models.Api20220301.HttpScaleRuleMetadata</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.App.Models.HttpScaleRuleMetadata</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.App.Models.Api20220301.HttpScaleRuleMetadata</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.App.Models.HttpScaleRuleMetadata</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -2288,9 +2978,9 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.App.Models.Api20220301.HttpSettings</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.App.Models.HttpSettings</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.App.Models.Api20220301.HttpSettings</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.App.Models.HttpSettings</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -2310,9 +3000,9 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.App.Models.Api20220301.HttpSettingsRoutes</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.App.Models.HttpSettingsRoutes</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.App.Models.Api20220301.HttpSettingsRoutes</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.App.Models.HttpSettingsRoutes</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -2332,14 +3022,20 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.App.Models.Api20220301.Ingress</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.App.Models.Ingress</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.App.Models.Api20220301.Ingress</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.App.Models.Ingress</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
           <TableColumnHeader>
             <Label>AllowInsecure</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>ClientCertificateMode</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>ExposedPort</Label>
           </TableColumnHeader>
           <TableColumnHeader>
             <Label>External</Label>
@@ -2361,6 +3057,12 @@
                 <PropertyName>AllowInsecure</PropertyName>
               </TableColumnItem>
               <TableColumnItem>
+                <PropertyName>ClientCertificateMode</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>ExposedPort</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
                 <PropertyName>External</PropertyName>
               </TableColumnItem>
               <TableColumnItem>
@@ -2378,27 +3080,21 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.App.Models.Api20220301.JwtClaimChecks</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.App.Models.IngressStickySessions</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.App.Models.Api20220301.JwtClaimChecks</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.App.Models.IngressStickySessions</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
           <TableColumnHeader>
-            <Label>AllowedClientApplication</Label>
-          </TableColumnHeader>
-          <TableColumnHeader>
-            <Label>AllowedGroup</Label>
+            <Label>Affinity</Label>
           </TableColumnHeader>
         </TableHeaders>
         <TableRowEntries>
           <TableRowEntry>
             <TableColumnItems>
               <TableColumnItem>
-                <PropertyName>AllowedClientApplication</PropertyName>
-              </TableColumnItem>
-              <TableColumnItem>
-                <PropertyName>AllowedGroup</PropertyName>
+                <PropertyName>Affinity</PropertyName>
               </TableColumnItem>
             </TableColumnItems>
           </TableRowEntry>
@@ -2406,9 +3102,551 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.App.Models.Api20220301.LogAnalyticsConfiguration</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.App.Models.InitContainer</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.App.Models.Api20220301.LogAnalyticsConfiguration</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.App.Models.InitContainer</TypeName>
+      </ViewSelectedBy>
+      <TableControl>
+        <TableHeaders>
+          <TableColumnHeader>
+            <Label>Image</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>Name</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>ResourceCpu</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>ResourceEphemeralStorage</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>ResourceMemory</Label>
+          </TableColumnHeader>
+        </TableHeaders>
+        <TableRowEntries>
+          <TableRowEntry>
+            <TableColumnItems>
+              <TableColumnItem>
+                <PropertyName>Image</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>Name</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>ResourceCpu</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>ResourceEphemeralStorage</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>ResourceMemory</PropertyName>
+              </TableColumnItem>
+            </TableColumnItems>
+          </TableRowEntry>
+        </TableRowEntries>
+      </TableControl>
+    </View>
+    <View>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.App.Models.IPSecurityRestrictionRule</Name>
+      <ViewSelectedBy>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.App.Models.IPSecurityRestrictionRule</TypeName>
+      </ViewSelectedBy>
+      <TableControl>
+        <TableHeaders>
+          <TableColumnHeader>
+            <Label>Action</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>Description</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>IPAddressRange</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>Name</Label>
+          </TableColumnHeader>
+        </TableHeaders>
+        <TableRowEntries>
+          <TableRowEntry>
+            <TableColumnItems>
+              <TableColumnItem>
+                <PropertyName>Action</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>Description</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>IPAddressRange</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>Name</PropertyName>
+              </TableColumnItem>
+            </TableColumnItems>
+          </TableRowEntry>
+        </TableRowEntries>
+      </TableControl>
+    </View>
+    <View>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.App.Models.Job</Name>
+      <ViewSelectedBy>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.App.Models.Job</TypeName>
+      </ViewSelectedBy>
+      <TableControl>
+        <TableHeaders>
+          <TableColumnHeader>
+            <Label>Location</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>Name</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>ProvisioningState</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>ResourceGroupName</Label>
+          </TableColumnHeader>
+        </TableHeaders>
+        <TableRowEntries>
+          <TableRowEntry>
+            <TableColumnItems>
+              <TableColumnItem>
+                <PropertyName>Location</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>Name</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>ProvisioningState</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>ResourceGroupName</PropertyName>
+              </TableColumnItem>
+            </TableColumnItems>
+          </TableRowEntry>
+        </TableRowEntries>
+      </TableControl>
+    </View>
+    <View>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.App.Models.JobConfiguration</Name>
+      <ViewSelectedBy>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.App.Models.JobConfiguration</TypeName>
+      </ViewSelectedBy>
+      <TableControl>
+        <TableHeaders>
+          <TableColumnHeader>
+            <Label>ReplicaRetryLimit</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>ReplicaTimeout</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>TriggerType</Label>
+          </TableColumnHeader>
+        </TableHeaders>
+        <TableRowEntries>
+          <TableRowEntry>
+            <TableColumnItems>
+              <TableColumnItem>
+                <PropertyName>ReplicaRetryLimit</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>ReplicaTimeout</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>TriggerType</PropertyName>
+              </TableColumnItem>
+            </TableColumnItems>
+          </TableRowEntry>
+        </TableRowEntries>
+      </TableControl>
+    </View>
+    <View>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.App.Models.JobConfigurationEventTriggerConfig</Name>
+      <ViewSelectedBy>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.App.Models.JobConfigurationEventTriggerConfig</TypeName>
+      </ViewSelectedBy>
+      <TableControl>
+        <TableHeaders>
+          <TableColumnHeader>
+            <Label>Parallelism</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>ReplicaCompletionCount</Label>
+          </TableColumnHeader>
+        </TableHeaders>
+        <TableRowEntries>
+          <TableRowEntry>
+            <TableColumnItems>
+              <TableColumnItem>
+                <PropertyName>Parallelism</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>ReplicaCompletionCount</PropertyName>
+              </TableColumnItem>
+            </TableColumnItems>
+          </TableRowEntry>
+        </TableRowEntries>
+      </TableControl>
+    </View>
+    <View>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.App.Models.JobConfigurationManualTriggerConfig</Name>
+      <ViewSelectedBy>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.App.Models.JobConfigurationManualTriggerConfig</TypeName>
+      </ViewSelectedBy>
+      <TableControl>
+        <TableHeaders>
+          <TableColumnHeader>
+            <Label>Parallelism</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>ReplicaCompletionCount</Label>
+          </TableColumnHeader>
+        </TableHeaders>
+        <TableRowEntries>
+          <TableRowEntry>
+            <TableColumnItems>
+              <TableColumnItem>
+                <PropertyName>Parallelism</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>ReplicaCompletionCount</PropertyName>
+              </TableColumnItem>
+            </TableColumnItems>
+          </TableRowEntry>
+        </TableRowEntries>
+      </TableControl>
+    </View>
+    <View>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.App.Models.JobConfigurationScheduleTriggerConfig</Name>
+      <ViewSelectedBy>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.App.Models.JobConfigurationScheduleTriggerConfig</TypeName>
+      </ViewSelectedBy>
+      <TableControl>
+        <TableHeaders>
+          <TableColumnHeader>
+            <Label>CronExpression</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>Parallelism</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>ReplicaCompletionCount</Label>
+          </TableColumnHeader>
+        </TableHeaders>
+        <TableRowEntries>
+          <TableRowEntry>
+            <TableColumnItems>
+              <TableColumnItem>
+                <PropertyName>CronExpression</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>Parallelism</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>ReplicaCompletionCount</PropertyName>
+              </TableColumnItem>
+            </TableColumnItems>
+          </TableRowEntry>
+        </TableRowEntries>
+      </TableControl>
+    </View>
+    <View>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.App.Models.JobExecution</Name>
+      <ViewSelectedBy>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.App.Models.JobExecution</TypeName>
+      </ViewSelectedBy>
+      <TableControl>
+        <TableHeaders>
+          <TableColumnHeader>
+            <Label>EndTime</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>Name</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>ResourceGroupName</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>StartTime</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>Status</Label>
+          </TableColumnHeader>
+        </TableHeaders>
+        <TableRowEntries>
+          <TableRowEntry>
+            <TableColumnItems>
+              <TableColumnItem>
+                <PropertyName>EndTime</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>Name</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>ResourceGroupName</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>StartTime</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>Status</PropertyName>
+              </TableColumnItem>
+            </TableColumnItems>
+          </TableRowEntry>
+        </TableRowEntries>
+      </TableControl>
+    </View>
+    <View>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.App.Models.JobExecutionBase</Name>
+      <ViewSelectedBy>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.App.Models.JobExecutionBase</TypeName>
+      </ViewSelectedBy>
+      <TableControl>
+        <TableHeaders>
+          <TableColumnHeader>
+            <Label>Name</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>ResourceGroupName</Label>
+          </TableColumnHeader>
+        </TableHeaders>
+        <TableRowEntries>
+          <TableRowEntry>
+            <TableColumnItems>
+              <TableColumnItem>
+                <PropertyName>Name</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>ResourceGroupName</PropertyName>
+              </TableColumnItem>
+            </TableColumnItems>
+          </TableRowEntry>
+        </TableRowEntries>
+      </TableControl>
+    </View>
+    <View>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.App.Models.JobExecutionContainer</Name>
+      <ViewSelectedBy>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.App.Models.JobExecutionContainer</TypeName>
+      </ViewSelectedBy>
+      <TableControl>
+        <TableHeaders>
+          <TableColumnHeader>
+            <Label>Image</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>Name</Label>
+          </TableColumnHeader>
+        </TableHeaders>
+        <TableRowEntries>
+          <TableRowEntry>
+            <TableColumnItems>
+              <TableColumnItem>
+                <PropertyName>Image</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>Name</PropertyName>
+              </TableColumnItem>
+            </TableColumnItems>
+          </TableRowEntry>
+        </TableRowEntries>
+      </TableControl>
+    </View>
+    <View>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.App.Models.JobPatchProperties1</Name>
+      <ViewSelectedBy>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.App.Models.JobPatchProperties1</TypeName>
+      </ViewSelectedBy>
+      <TableControl>
+        <TableHeaders>
+          <TableColumnHeader>
+            <Label>EnvironmentId</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>EventStreamEndpoint</Label>
+          </TableColumnHeader>
+        </TableHeaders>
+        <TableRowEntries>
+          <TableRowEntry>
+            <TableColumnItems>
+              <TableColumnItem>
+                <PropertyName>EnvironmentId</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>EventStreamEndpoint</PropertyName>
+              </TableColumnItem>
+            </TableColumnItems>
+          </TableRowEntry>
+        </TableRowEntries>
+      </TableControl>
+    </View>
+    <View>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.App.Models.JobPatchPropertiesTags</Name>
+      <ViewSelectedBy>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.App.Models.JobPatchPropertiesTags</TypeName>
+      </ViewSelectedBy>
+      <TableControl>
+        <TableHeaders>
+          <TableColumnHeader>
+            <Label>Item</Label>
+          </TableColumnHeader>
+        </TableHeaders>
+        <TableRowEntries>
+          <TableRowEntry>
+            <TableColumnItems>
+              <TableColumnItem>
+                <PropertyName>Item</PropertyName>
+              </TableColumnItem>
+            </TableColumnItems>
+          </TableRowEntry>
+        </TableRowEntries>
+      </TableControl>
+    </View>
+    <View>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.App.Models.JobProperties</Name>
+      <ViewSelectedBy>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.App.Models.JobProperties</TypeName>
+      </ViewSelectedBy>
+      <TableControl>
+        <TableHeaders>
+          <TableColumnHeader>
+            <Label>EnvironmentId</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>EventStreamEndpoint</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>ProvisioningState</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>WorkloadProfileName</Label>
+          </TableColumnHeader>
+        </TableHeaders>
+        <TableRowEntries>
+          <TableRowEntry>
+            <TableColumnItems>
+              <TableColumnItem>
+                <PropertyName>EnvironmentId</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>EventStreamEndpoint</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>ProvisioningState</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>WorkloadProfileName</PropertyName>
+              </TableColumnItem>
+            </TableColumnItems>
+          </TableRowEntry>
+        </TableRowEntries>
+      </TableControl>
+    </View>
+    <View>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.App.Models.JobScale</Name>
+      <ViewSelectedBy>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.App.Models.JobScale</TypeName>
+      </ViewSelectedBy>
+      <TableControl>
+        <TableHeaders>
+          <TableColumnHeader>
+            <Label>MaxExecution</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>MinExecution</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>PollingInterval</Label>
+          </TableColumnHeader>
+        </TableHeaders>
+        <TableRowEntries>
+          <TableRowEntry>
+            <TableColumnItems>
+              <TableColumnItem>
+                <PropertyName>MaxExecution</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>MinExecution</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>PollingInterval</PropertyName>
+              </TableColumnItem>
+            </TableColumnItems>
+          </TableRowEntry>
+        </TableRowEntries>
+      </TableControl>
+    </View>
+    <View>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.App.Models.JobScaleRule</Name>
+      <ViewSelectedBy>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.App.Models.JobScaleRule</TypeName>
+      </ViewSelectedBy>
+      <TableControl>
+        <TableHeaders>
+          <TableColumnHeader>
+            <Label>Name</Label>
+          </TableColumnHeader>
+        </TableHeaders>
+        <TableRowEntries>
+          <TableRowEntry>
+            <TableColumnItems>
+              <TableColumnItem>
+                <PropertyName>Name</PropertyName>
+              </TableColumnItem>
+            </TableColumnItems>
+          </TableRowEntry>
+        </TableRowEntries>
+      </TableControl>
+    </View>
+    <View>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.App.Models.JobsCollection</Name>
+      <ViewSelectedBy>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.App.Models.JobsCollection</TypeName>
+      </ViewSelectedBy>
+      <TableControl>
+        <TableHeaders>
+          <TableColumnHeader>
+            <Label>NextLink</Label>
+          </TableColumnHeader>
+        </TableHeaders>
+        <TableRowEntries>
+          <TableRowEntry>
+            <TableColumnItems>
+              <TableColumnItem>
+                <PropertyName>NextLink</PropertyName>
+              </TableColumnItem>
+            </TableColumnItems>
+          </TableRowEntry>
+        </TableRowEntries>
+      </TableControl>
+    </View>
+    <View>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.App.Models.KedaConfiguration</Name>
+      <ViewSelectedBy>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.App.Models.KedaConfiguration</TypeName>
+      </ViewSelectedBy>
+      <TableControl>
+        <TableHeaders>
+          <TableColumnHeader>
+            <Label>Version</Label>
+          </TableColumnHeader>
+        </TableHeaders>
+        <TableRowEntries>
+          <TableRowEntry>
+            <TableColumnItems>
+              <TableColumnItem>
+                <PropertyName>Version</PropertyName>
+              </TableColumnItem>
+            </TableColumnItems>
+          </TableRowEntry>
+        </TableRowEntries>
+      </TableControl>
+    </View>
+    <View>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.App.Models.LogAnalyticsConfiguration</Name>
+      <ViewSelectedBy>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.App.Models.LogAnalyticsConfiguration</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -2434,15 +3672,12 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.App.Models.Api20220301.Login</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.App.Models.Login</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.App.Models.Api20220301.Login</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.App.Models.Login</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
-          <TableColumnHeader>
-            <Label>AllowedExternalRedirectUrl</Label>
-          </TableColumnHeader>
           <TableColumnHeader>
             <Label>PreserveUrlFragmentsForLogin</Label>
           </TableColumnHeader>
@@ -2450,9 +3685,6 @@
         <TableRowEntries>
           <TableRowEntry>
             <TableColumnItems>
-              <TableColumnItem>
-                <PropertyName>AllowedExternalRedirectUrl</PropertyName>
-              </TableColumnItem>
               <TableColumnItem>
                 <PropertyName>PreserveUrlFragmentsForLogin</PropertyName>
               </TableColumnItem>
@@ -2462,9 +3694,9 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.App.Models.Api20220301.LoginRoutes</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.App.Models.LoginRoutes</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.App.Models.Api20220301.LoginRoutes</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.App.Models.LoginRoutes</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -2484,21 +3716,45 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.App.Models.Api20220301.LoginScopes</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.App.Models.ManagedCertificate</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.App.Models.Api20220301.LoginScopes</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.App.Models.ManagedCertificate</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
           <TableColumnHeader>
-            <Label>Scope</Label>
+            <Label>Name</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>SubjectName</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>Location</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>ResourceGroupName</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>DomainControlValidation</Label>
           </TableColumnHeader>
         </TableHeaders>
         <TableRowEntries>
           <TableRowEntry>
             <TableColumnItems>
               <TableColumnItem>
-                <PropertyName>Scope</PropertyName>
+                <PropertyName>Name</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>SubjectName</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>Location</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>ResourceGroupName</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>DomainControlValidation</PropertyName>
               </TableColumnItem>
             </TableColumnItems>
           </TableRowEntry>
@@ -2506,9 +3762,99 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.App.Models.Api20220301.ManagedEnvironment</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.App.Models.ManagedCertificateCollection</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.App.Models.Api20220301.ManagedEnvironment</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.App.Models.ManagedCertificateCollection</TypeName>
+      </ViewSelectedBy>
+      <TableControl>
+        <TableHeaders>
+          <TableColumnHeader>
+            <Label>NextLink</Label>
+          </TableColumnHeader>
+        </TableHeaders>
+        <TableRowEntries>
+          <TableRowEntry>
+            <TableColumnItems>
+              <TableColumnItem>
+                <PropertyName>NextLink</PropertyName>
+              </TableColumnItem>
+            </TableColumnItems>
+          </TableRowEntry>
+        </TableRowEntries>
+      </TableControl>
+    </View>
+    <View>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.App.Models.ManagedCertificatePatchTags</Name>
+      <ViewSelectedBy>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.App.Models.ManagedCertificatePatchTags</TypeName>
+      </ViewSelectedBy>
+      <TableControl>
+        <TableHeaders>
+          <TableColumnHeader>
+            <Label>Item</Label>
+          </TableColumnHeader>
+        </TableHeaders>
+        <TableRowEntries>
+          <TableRowEntry>
+            <TableColumnItems>
+              <TableColumnItem>
+                <PropertyName>Item</PropertyName>
+              </TableColumnItem>
+            </TableColumnItems>
+          </TableRowEntry>
+        </TableRowEntries>
+      </TableControl>
+    </View>
+    <View>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.App.Models.ManagedCertificateProperties</Name>
+      <ViewSelectedBy>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.App.Models.ManagedCertificateProperties</TypeName>
+      </ViewSelectedBy>
+      <TableControl>
+        <TableHeaders>
+          <TableColumnHeader>
+            <Label>DomainControlValidation</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>Error</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>ProvisioningState</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>SubjectName</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>ValidationToken</Label>
+          </TableColumnHeader>
+        </TableHeaders>
+        <TableRowEntries>
+          <TableRowEntry>
+            <TableColumnItems>
+              <TableColumnItem>
+                <PropertyName>DomainControlValidation</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>Error</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>ProvisioningState</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>SubjectName</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>ValidationToken</PropertyName>
+              </TableColumnItem>
+            </TableColumnItems>
+          </TableRowEntry>
+        </TableRowEntries>
+      </TableControl>
+    </View>
+    <View>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.App.Models.ManagedEnvironment</Name>
+      <ViewSelectedBy>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.App.Models.ManagedEnvironment</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -2540,9 +3886,9 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.App.Models.Api20220301.ManagedEnvironmentProperties</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.App.Models.ManagedEnvironmentProperties</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.App.Models.Api20220301.ManagedEnvironmentProperties</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.App.Models.ManagedEnvironmentProperties</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -2557,6 +3903,12 @@
           </TableColumnHeader>
           <TableColumnHeader>
             <Label>DeploymentError</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>EventStreamEndpoint</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>InfrastructureResourceGroup</Label>
           </TableColumnHeader>
           <TableColumnHeader>
             <Label>ProvisioningState</Label>
@@ -2584,6 +3936,12 @@
                 <PropertyName>DeploymentError</PropertyName>
               </TableColumnItem>
               <TableColumnItem>
+                <PropertyName>EventStreamEndpoint</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>InfrastructureResourceGroup</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
                 <PropertyName>ProvisioningState</PropertyName>
               </TableColumnItem>
               <TableColumnItem>
@@ -2598,9 +3956,9 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.App.Models.Api20220301.ManagedEnvironmentsCollection</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.App.Models.ManagedEnvironmentsCollection</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.App.Models.Api20220301.ManagedEnvironmentsCollection</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.App.Models.ManagedEnvironmentsCollection</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -2620,9 +3978,9 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.App.Models.Api20220301.ManagedEnvironmentStorage</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.App.Models.ManagedEnvironmentStorage</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.App.Models.Api20220301.ManagedEnvironmentStorage</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.App.Models.ManagedEnvironmentStorage</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -2666,9 +4024,59 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.App.Models.Api20220301.Nonce</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.App.Models.ManagedServiceIdentity</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.App.Models.Api20220301.Nonce</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.App.Models.ManagedServiceIdentity</TypeName>
+      </ViewSelectedBy>
+      <TableControl>
+        <TableHeaders>
+          <TableColumnHeader>
+            <Label>PrincipalId</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>TenantId</Label>
+          </TableColumnHeader>
+        </TableHeaders>
+        <TableRowEntries>
+          <TableRowEntry>
+            <TableColumnItems>
+              <TableColumnItem>
+                <PropertyName>PrincipalId</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>TenantId</PropertyName>
+              </TableColumnItem>
+            </TableColumnItems>
+          </TableRowEntry>
+        </TableRowEntries>
+      </TableControl>
+    </View>
+    <View>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.App.Models.Mtls</Name>
+      <ViewSelectedBy>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.App.Models.Mtls</TypeName>
+      </ViewSelectedBy>
+      <TableControl>
+        <TableHeaders>
+          <TableColumnHeader>
+            <Label>Enabled</Label>
+          </TableColumnHeader>
+        </TableHeaders>
+        <TableRowEntries>
+          <TableRowEntry>
+            <TableColumnItems>
+              <TableColumnItem>
+                <PropertyName>Enabled</PropertyName>
+              </TableColumnItem>
+            </TableColumnItems>
+          </TableRowEntry>
+        </TableRowEntries>
+      </TableControl>
+    </View>
+    <View>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.App.Models.Nonce</Name>
+      <ViewSelectedBy>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.App.Models.Nonce</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -2694,9 +4102,9 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.App.Models.Api20220301.OpenIdConnectClientCredential</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.App.Models.OpenIdConnectClientCredential</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.App.Models.Api20220301.OpenIdConnectClientCredential</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.App.Models.OpenIdConnectClientCredential</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -2722,9 +4130,9 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.App.Models.Api20220301.OpenIdConnectConfig</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.App.Models.OpenIdConnectConfig</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.App.Models.Api20220301.OpenIdConnectConfig</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.App.Models.OpenIdConnectConfig</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -2768,17 +4176,14 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.App.Models.Api20220301.OpenIdConnectLogin</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.App.Models.OpenIdConnectLogin</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.App.Models.Api20220301.OpenIdConnectLogin</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.App.Models.OpenIdConnectLogin</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
           <TableColumnHeader>
             <Label>NameClaimType</Label>
-          </TableColumnHeader>
-          <TableColumnHeader>
-            <Label>Scope</Label>
           </TableColumnHeader>
         </TableHeaders>
         <TableRowEntries>
@@ -2787,18 +4192,15 @@
               <TableColumnItem>
                 <PropertyName>NameClaimType</PropertyName>
               </TableColumnItem>
-              <TableColumnItem>
-                <PropertyName>Scope</PropertyName>
-              </TableColumnItem>
             </TableColumnItems>
           </TableRowEntry>
         </TableRowEntries>
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.App.Models.Api20220301.OpenIdConnectRegistration</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.App.Models.OpenIdConnectRegistration</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.App.Models.Api20220301.OpenIdConnectRegistration</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.App.Models.OpenIdConnectRegistration</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -2818,9 +4220,9 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.App.Models.Api20220301.OperationDetail</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.App.Models.OperationDetail</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.App.Models.Api20220301.OperationDetail</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.App.Models.OperationDetail</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -2852,9 +4254,9 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.App.Models.Api20220301.OperationDisplay</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.App.Models.OperationDisplay</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.App.Models.Api20220301.OperationDisplay</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.App.Models.OperationDisplay</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -2892,9 +4294,67 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.App.Models.Api20220301.QueueScaleRule</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.App.Models.ProxyResource</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.App.Models.Api20220301.QueueScaleRule</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.App.Models.ProxyResource</TypeName>
+      </ViewSelectedBy>
+      <TableControl>
+        <TableHeaders>
+          <TableColumnHeader>
+            <Label>Name</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>SystemDataCreatedAt</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>SystemDataCreatedBy</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>SystemDataCreatedByType</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>SystemDataLastModifiedAt</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>SystemDataLastModifiedBy</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>SystemDataLastModifiedByType</Label>
+          </TableColumnHeader>
+        </TableHeaders>
+        <TableRowEntries>
+          <TableRowEntry>
+            <TableColumnItems>
+              <TableColumnItem>
+                <PropertyName>Name</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>SystemDataCreatedAt</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>SystemDataCreatedBy</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>SystemDataCreatedByType</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>SystemDataLastModifiedAt</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>SystemDataLastModifiedBy</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>SystemDataLastModifiedByType</PropertyName>
+              </TableColumnItem>
+            </TableColumnItems>
+          </TableRowEntry>
+        </TableRowEntries>
+      </TableControl>
+    </View>
+    <View>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.App.Models.QueueScaleRule</Name>
+      <ViewSelectedBy>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.App.Models.QueueScaleRule</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -2920,9 +4380,9 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.App.Models.Api20220301.RegistryCredentials</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.App.Models.RegistryCredentials</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.App.Models.Api20220301.RegistryCredentials</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.App.Models.RegistryCredentials</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -2960,15 +4420,12 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.App.Models.Api20220301.RegistryInfo</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.App.Models.RegistryInfo</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.App.Models.Api20220301.RegistryInfo</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.App.Models.RegistryInfo</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
-          <TableColumnHeader>
-            <Label>RegistryPassword</Label>
-          </TableColumnHeader>
           <TableColumnHeader>
             <Label>RegistryUrl</Label>
           </TableColumnHeader>
@@ -2979,9 +4436,6 @@
         <TableRowEntries>
           <TableRowEntry>
             <TableColumnItems>
-              <TableColumnItem>
-                <PropertyName>RegistryPassword</PropertyName>
-              </TableColumnItem>
               <TableColumnItem>
                 <PropertyName>RegistryUrl</PropertyName>
               </TableColumnItem>
@@ -2994,32 +4448,14 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.App.Models.Api20220301.Replica</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.App.Models.Replica</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.App.Models.Api20220301.Replica</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.App.Models.Replica</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
           <TableColumnHeader>
             <Label>Name</Label>
-          </TableColumnHeader>
-          <TableColumnHeader>
-            <Label>SystemDataCreatedAt</Label>
-          </TableColumnHeader>
-          <TableColumnHeader>
-            <Label>SystemDataCreatedBy</Label>
-          </TableColumnHeader>
-          <TableColumnHeader>
-            <Label>SystemDataCreatedByType</Label>
-          </TableColumnHeader>
-          <TableColumnHeader>
-            <Label>SystemDataLastModifiedAt</Label>
-          </TableColumnHeader>
-          <TableColumnHeader>
-            <Label>SystemDataLastModifiedBy</Label>
-          </TableColumnHeader>
-          <TableColumnHeader>
-            <Label>SystemDataLastModifiedByType</Label>
           </TableColumnHeader>
           <TableColumnHeader>
             <Label>ResourceGroupName</Label>
@@ -3032,24 +4468,6 @@
                 <PropertyName>Name</PropertyName>
               </TableColumnItem>
               <TableColumnItem>
-                <PropertyName>SystemDataCreatedAt</PropertyName>
-              </TableColumnItem>
-              <TableColumnItem>
-                <PropertyName>SystemDataCreatedBy</PropertyName>
-              </TableColumnItem>
-              <TableColumnItem>
-                <PropertyName>SystemDataCreatedByType</PropertyName>
-              </TableColumnItem>
-              <TableColumnItem>
-                <PropertyName>SystemDataLastModifiedAt</PropertyName>
-              </TableColumnItem>
-              <TableColumnItem>
-                <PropertyName>SystemDataLastModifiedBy</PropertyName>
-              </TableColumnItem>
-              <TableColumnItem>
-                <PropertyName>SystemDataLastModifiedByType</PropertyName>
-              </TableColumnItem>
-              <TableColumnItem>
                 <PropertyName>ResourceGroupName</PropertyName>
               </TableColumnItem>
             </TableColumnItems>
@@ -3058,14 +4476,20 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.App.Models.Api20220301.ReplicaContainer</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.App.Models.ReplicaContainer</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.App.Models.Api20220301.ReplicaContainer</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.App.Models.ReplicaContainer</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
           <TableColumnHeader>
             <Label>ContainerId</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>ExecEndpoint</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>LogStreamEndpoint</Label>
           </TableColumnHeader>
           <TableColumnHeader>
             <Label>Name</Label>
@@ -3075,6 +4499,12 @@
           </TableColumnHeader>
           <TableColumnHeader>
             <Label>RestartCount</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>RunningState</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>RunningStateDetail</Label>
           </TableColumnHeader>
           <TableColumnHeader>
             <Label>Started</Label>
@@ -3087,6 +4517,12 @@
                 <PropertyName>ContainerId</PropertyName>
               </TableColumnItem>
               <TableColumnItem>
+                <PropertyName>ExecEndpoint</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>LogStreamEndpoint</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
                 <PropertyName>Name</PropertyName>
               </TableColumnItem>
               <TableColumnItem>
@@ -3094,6 +4530,12 @@
               </TableColumnItem>
               <TableColumnItem>
                 <PropertyName>RestartCount</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>RunningState</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>RunningStateDetail</PropertyName>
               </TableColumnItem>
               <TableColumnItem>
                 <PropertyName>Started</PropertyName>
@@ -3104,14 +4546,20 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.App.Models.Api20220301.ReplicaProperties</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.App.Models.ReplicaProperties</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.App.Models.Api20220301.ReplicaProperties</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.App.Models.ReplicaProperties</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
           <TableColumnHeader>
             <Label>CreatedTime</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>RunningState</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>RunningStateDetail</Label>
           </TableColumnHeader>
         </TableHeaders>
         <TableRowEntries>
@@ -3120,15 +4568,43 @@
               <TableColumnItem>
                 <PropertyName>CreatedTime</PropertyName>
               </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>RunningState</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>RunningStateDetail</PropertyName>
+              </TableColumnItem>
             </TableColumnItems>
           </TableRowEntry>
         </TableRowEntries>
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.App.Models.Api20220301.Revision</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.App.Models.Resource</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.App.Models.Api20220301.Revision</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.App.Models.Resource</TypeName>
+      </ViewSelectedBy>
+      <TableControl>
+        <TableHeaders>
+          <TableColumnHeader>
+            <Label>Name</Label>
+          </TableColumnHeader>
+        </TableHeaders>
+        <TableRowEntries>
+          <TableRowEntry>
+            <TableColumnItems>
+              <TableColumnItem>
+                <PropertyName>Name</PropertyName>
+              </TableColumnItem>
+            </TableColumnItems>
+          </TableRowEntry>
+        </TableRowEntries>
+      </TableControl>
+    </View>
+    <View>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.App.Models.Revision</Name>
+      <ViewSelectedBy>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.App.Models.Revision</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -3172,9 +4648,9 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.App.Models.Api20220301.RevisionCollection</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.App.Models.RevisionCollection</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.App.Models.Api20220301.RevisionCollection</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.App.Models.RevisionCollection</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -3194,9 +4670,9 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.App.Models.Api20220301.RevisionProperties</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.App.Models.RevisionProperties</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.App.Models.Api20220301.RevisionProperties</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.App.Models.RevisionProperties</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -3213,6 +4689,9 @@
             <Label>HealthState</Label>
           </TableColumnHeader>
           <TableColumnHeader>
+            <Label>LastActiveTime</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
             <Label>ProvisioningError</Label>
           </TableColumnHeader>
           <TableColumnHeader>
@@ -3220,6 +4699,9 @@
           </TableColumnHeader>
           <TableColumnHeader>
             <Label>Replica</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>RunningState</Label>
           </TableColumnHeader>
           <TableColumnHeader>
             <Label>TrafficWeight</Label>
@@ -3241,6 +4723,9 @@
                 <PropertyName>HealthState</PropertyName>
               </TableColumnItem>
               <TableColumnItem>
+                <PropertyName>LastActiveTime</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
                 <PropertyName>ProvisioningError</PropertyName>
               </TableColumnItem>
               <TableColumnItem>
@@ -3248,6 +4733,9 @@
               </TableColumnItem>
               <TableColumnItem>
                 <PropertyName>Replica</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>RunningState</PropertyName>
               </TableColumnItem>
               <TableColumnItem>
                 <PropertyName>TrafficWeight</PropertyName>
@@ -3258,9 +4746,9 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.App.Models.Api20220301.Scale</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.App.Models.Scale</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.App.Models.Api20220301.Scale</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.App.Models.Scale</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -3286,9 +4774,9 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.App.Models.Api20220301.ScaleRule</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.App.Models.ScaleRule</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.App.Models.Api20220301.ScaleRule</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.App.Models.ScaleRule</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -3308,9 +4796,9 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.App.Models.Api20220301.ScaleRuleAuth</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.App.Models.ScaleRuleAuth</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.App.Models.Api20220301.ScaleRuleAuth</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.App.Models.ScaleRuleAuth</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -3336,12 +4824,18 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.App.Models.Api20220301.Secret</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.App.Models.Secret</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.App.Models.Api20220301.Secret</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.App.Models.Secret</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
+          <TableColumnHeader>
+            <Label>Identity</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>KeyVaultUrl</Label>
+          </TableColumnHeader>
           <TableColumnHeader>
             <Label>Name</Label>
           </TableColumnHeader>
@@ -3352,6 +4846,12 @@
         <TableRowEntries>
           <TableRowEntry>
             <TableColumnItems>
+              <TableColumnItem>
+                <PropertyName>Identity</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>KeyVaultUrl</PropertyName>
+              </TableColumnItem>
               <TableColumnItem>
                 <PropertyName>Name</PropertyName>
               </TableColumnItem>
@@ -3364,9 +4864,37 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.App.Models.Api20220301.SourceControl</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.App.Models.SecretVolumeItem</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.App.Models.Api20220301.SourceControl</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.App.Models.SecretVolumeItem</TypeName>
+      </ViewSelectedBy>
+      <TableControl>
+        <TableHeaders>
+          <TableColumnHeader>
+            <Label>Path</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>SecretRef</Label>
+          </TableColumnHeader>
+        </TableHeaders>
+        <TableRowEntries>
+          <TableRowEntry>
+            <TableColumnItems>
+              <TableColumnItem>
+                <PropertyName>Path</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>SecretRef</PropertyName>
+              </TableColumnItem>
+            </TableColumnItems>
+          </TableRowEntry>
+        </TableRowEntries>
+      </TableControl>
+    </View>
+    <View>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.App.Models.ServiceBind</Name>
+      <ViewSelectedBy>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.App.Models.ServiceBind</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -3374,25 +4902,7 @@
             <Label>Name</Label>
           </TableColumnHeader>
           <TableColumnHeader>
-            <Label>SystemDataCreatedAt</Label>
-          </TableColumnHeader>
-          <TableColumnHeader>
-            <Label>SystemDataCreatedBy</Label>
-          </TableColumnHeader>
-          <TableColumnHeader>
-            <Label>SystemDataCreatedByType</Label>
-          </TableColumnHeader>
-          <TableColumnHeader>
-            <Label>SystemDataLastModifiedAt</Label>
-          </TableColumnHeader>
-          <TableColumnHeader>
-            <Label>SystemDataLastModifiedBy</Label>
-          </TableColumnHeader>
-          <TableColumnHeader>
-            <Label>SystemDataLastModifiedByType</Label>
-          </TableColumnHeader>
-          <TableColumnHeader>
-            <Label>ResourceGroupName</Label>
+            <Label>ServiceId</Label>
           </TableColumnHeader>
         </TableHeaders>
         <TableRowEntries>
@@ -3402,22 +4912,50 @@
                 <PropertyName>Name</PropertyName>
               </TableColumnItem>
               <TableColumnItem>
-                <PropertyName>SystemDataCreatedAt</PropertyName>
+                <PropertyName>ServiceId</PropertyName>
+              </TableColumnItem>
+            </TableColumnItems>
+          </TableRowEntry>
+        </TableRowEntries>
+      </TableControl>
+    </View>
+    <View>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.App.Models.SourceControl</Name>
+      <ViewSelectedBy>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.App.Models.SourceControl</TypeName>
+      </ViewSelectedBy>
+      <TableControl>
+        <TableHeaders>
+          <TableColumnHeader>
+            <Label>Branch</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>Name</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>RepoUrl</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>RegistryInfoRegistryUserName</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>ResourceGroupName</Label>
+          </TableColumnHeader>
+        </TableHeaders>
+        <TableRowEntries>
+          <TableRowEntry>
+            <TableColumnItems>
+              <TableColumnItem>
+                <PropertyName>Branch</PropertyName>
               </TableColumnItem>
               <TableColumnItem>
-                <PropertyName>SystemDataCreatedBy</PropertyName>
+                <PropertyName>Name</PropertyName>
               </TableColumnItem>
               <TableColumnItem>
-                <PropertyName>SystemDataCreatedByType</PropertyName>
+                <PropertyName>RepoUrl</PropertyName>
               </TableColumnItem>
               <TableColumnItem>
-                <PropertyName>SystemDataLastModifiedAt</PropertyName>
-              </TableColumnItem>
-              <TableColumnItem>
-                <PropertyName>SystemDataLastModifiedBy</PropertyName>
-              </TableColumnItem>
-              <TableColumnItem>
-                <PropertyName>SystemDataLastModifiedByType</PropertyName>
+                <PropertyName>RegistryInfoRegistryUserName</PropertyName>
               </TableColumnItem>
               <TableColumnItem>
                 <PropertyName>ResourceGroupName</PropertyName>
@@ -3428,9 +4966,9 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.App.Models.Api20220301.SourceControlCollection</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.App.Models.SourceControlCollection</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.App.Models.Api20220301.SourceControlCollection</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.App.Models.SourceControlCollection</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -3450,9 +4988,9 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.App.Models.Api20220301.SourceControlProperties</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.App.Models.SourceControlProperties</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.App.Models.Api20220301.SourceControlProperties</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.App.Models.SourceControlProperties</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -3484,14 +5022,91 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.App.Models.Api20220301.Template</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.App.Models.SystemData</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.App.Models.Api20220301.Template</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.App.Models.SystemData</TypeName>
+      </ViewSelectedBy>
+      <TableControl>
+        <TableHeaders>
+          <TableColumnHeader>
+            <Label>CreatedAt</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>CreatedBy</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>CreatedByType</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>LastModifiedAt</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>LastModifiedBy</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>LastModifiedByType</Label>
+          </TableColumnHeader>
+        </TableHeaders>
+        <TableRowEntries>
+          <TableRowEntry>
+            <TableColumnItems>
+              <TableColumnItem>
+                <PropertyName>CreatedAt</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>CreatedBy</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>CreatedByType</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>LastModifiedAt</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>LastModifiedBy</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>LastModifiedByType</PropertyName>
+              </TableColumnItem>
+            </TableColumnItems>
+          </TableRowEntry>
+        </TableRowEntries>
+      </TableControl>
+    </View>
+    <View>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.App.Models.TcpScaleRuleMetadata</Name>
+      <ViewSelectedBy>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.App.Models.TcpScaleRuleMetadata</TypeName>
+      </ViewSelectedBy>
+      <TableControl>
+        <TableHeaders>
+          <TableColumnHeader>
+            <Label>Item</Label>
+          </TableColumnHeader>
+        </TableHeaders>
+        <TableRowEntries>
+          <TableRowEntry>
+            <TableColumnItems>
+              <TableColumnItem>
+                <PropertyName>Item</PropertyName>
+              </TableColumnItem>
+            </TableColumnItems>
+          </TableRowEntry>
+        </TableRowEntries>
+      </TableControl>
+    </View>
+    <View>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.App.Models.Template</Name>
+      <ViewSelectedBy>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.App.Models.Template</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
           <TableColumnHeader>
             <Label>RevisionSuffix</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>TerminationGracePeriodSecond</Label>
           </TableColumnHeader>
         </TableHeaders>
         <TableRowEntries>
@@ -3500,15 +5115,104 @@
               <TableColumnItem>
                 <PropertyName>RevisionSuffix</PropertyName>
               </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>TerminationGracePeriodSecond</PropertyName>
+              </TableColumnItem>
             </TableColumnItems>
           </TableRowEntry>
         </TableRowEntries>
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.App.Models.Api20220301.TrafficWeight</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.App.Models.TrackedResource</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.App.Models.Api20220301.TrafficWeight</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.App.Models.TrackedResource</TypeName>
+      </ViewSelectedBy>
+      <TableControl>
+        <TableHeaders>
+          <TableColumnHeader>
+            <Label>Name</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>SystemDataCreatedAt</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>SystemDataCreatedBy</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>SystemDataCreatedByType</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>SystemDataLastModifiedAt</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>SystemDataLastModifiedBy</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>SystemDataLastModifiedByType</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>Location</Label>
+          </TableColumnHeader>
+        </TableHeaders>
+        <TableRowEntries>
+          <TableRowEntry>
+            <TableColumnItems>
+              <TableColumnItem>
+                <PropertyName>Name</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>SystemDataCreatedAt</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>SystemDataCreatedBy</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>SystemDataCreatedByType</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>SystemDataLastModifiedAt</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>SystemDataLastModifiedBy</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>SystemDataLastModifiedByType</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>Location</PropertyName>
+              </TableColumnItem>
+            </TableColumnItems>
+          </TableRowEntry>
+        </TableRowEntries>
+      </TableControl>
+    </View>
+    <View>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.App.Models.TrackedResourceTags</Name>
+      <ViewSelectedBy>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.App.Models.TrackedResourceTags</TypeName>
+      </ViewSelectedBy>
+      <TableControl>
+        <TableHeaders>
+          <TableColumnHeader>
+            <Label>Item</Label>
+          </TableColumnHeader>
+        </TableHeaders>
+        <TableRowEntries>
+          <TableRowEntry>
+            <TableColumnItems>
+              <TableColumnItem>
+                <PropertyName>Item</PropertyName>
+              </TableColumnItem>
+            </TableColumnItems>
+          </TableRowEntry>
+        </TableRowEntries>
+      </TableControl>
+    </View>
+    <View>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.App.Models.TrafficWeight</Name>
+      <ViewSelectedBy>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.App.Models.TrafficWeight</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -3546,9 +5250,9 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.App.Models.Api20220301.Twitter</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.App.Models.Twitter</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.App.Models.Api20220301.Twitter</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.App.Models.Twitter</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -3568,9 +5272,9 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.App.Models.Api20220301.TwitterRegistration</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.App.Models.TwitterRegistration</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.App.Models.Api20220301.TwitterRegistration</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.App.Models.TwitterRegistration</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -3596,9 +5300,37 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.App.Models.Api20220301.VnetConfiguration</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.App.Models.UserAssignedIdentity</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.App.Models.Api20220301.VnetConfiguration</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.App.Models.UserAssignedIdentity</TypeName>
+      </ViewSelectedBy>
+      <TableControl>
+        <TableHeaders>
+          <TableColumnHeader>
+            <Label>ClientId</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>PrincipalId</Label>
+          </TableColumnHeader>
+        </TableHeaders>
+        <TableRowEntries>
+          <TableRowEntry>
+            <TableColumnItems>
+              <TableColumnItem>
+                <PropertyName>ClientId</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>PrincipalId</PropertyName>
+              </TableColumnItem>
+            </TableColumnItems>
+          </TableRowEntry>
+        </TableRowEntries>
+      </TableControl>
+    </View>
+    <View>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.App.Models.VnetConfiguration</Name>
+      <ViewSelectedBy>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.App.Models.VnetConfiguration</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -3616,9 +5348,6 @@
           </TableColumnHeader>
           <TableColumnHeader>
             <Label>PlatformReservedDnsIP</Label>
-          </TableColumnHeader>
-          <TableColumnHeader>
-            <Label>RuntimeSubnetId</Label>
           </TableColumnHeader>
         </TableHeaders>
         <TableRowEntries>
@@ -3639,21 +5368,21 @@
               <TableColumnItem>
                 <PropertyName>PlatformReservedDnsIP</PropertyName>
               </TableColumnItem>
-              <TableColumnItem>
-                <PropertyName>RuntimeSubnetId</PropertyName>
-              </TableColumnItem>
             </TableColumnItems>
           </TableRowEntry>
         </TableRowEntries>
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.App.Models.Api20220301.Volume</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.App.Models.Volume</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.App.Models.Api20220301.Volume</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.App.Models.Volume</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
+          <TableColumnHeader>
+            <Label>MountOption</Label>
+          </TableColumnHeader>
           <TableColumnHeader>
             <Label>Name</Label>
           </TableColumnHeader>
@@ -3667,6 +5396,9 @@
         <TableRowEntries>
           <TableRowEntry>
             <TableColumnItems>
+              <TableColumnItem>
+                <PropertyName>MountOption</PropertyName>
+              </TableColumnItem>
               <TableColumnItem>
                 <PropertyName>Name</PropertyName>
               </TableColumnItem>
@@ -3682,14 +5414,17 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.App.Models.Api20220301.VolumeMount</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.App.Models.VolumeMount</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.App.Models.Api20220301.VolumeMount</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.App.Models.VolumeMount</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
           <TableColumnHeader>
             <Label>MountPath</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>SubPath</Label>
           </TableColumnHeader>
           <TableColumnHeader>
             <Label>VolumeName</Label>
@@ -3702,7 +5437,122 @@
                 <PropertyName>MountPath</PropertyName>
               </TableColumnItem>
               <TableColumnItem>
+                <PropertyName>SubPath</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
                 <PropertyName>VolumeName</PropertyName>
+              </TableColumnItem>
+            </TableColumnItems>
+          </TableRowEntry>
+        </TableRowEntries>
+      </TableControl>
+    </View>
+    <View>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.App.Models.WorkloadProfile</Name>
+      <ViewSelectedBy>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.App.Models.WorkloadProfile</TypeName>
+      </ViewSelectedBy>
+      <TableControl>
+        <TableHeaders>
+          <TableColumnHeader>
+            <Label>MaximumCount</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>MinimumCount</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>Name</Label>
+          </TableColumnHeader>
+        </TableHeaders>
+        <TableRowEntries>
+          <TableRowEntry>
+            <TableColumnItems>
+              <TableColumnItem>
+                <PropertyName>MaximumCount</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>MinimumCount</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>Name</PropertyName>
+              </TableColumnItem>
+            </TableColumnItems>
+          </TableRowEntry>
+        </TableRowEntries>
+      </TableControl>
+    </View>
+    <View>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.App.Models.WorkloadProfileStates</Name>
+      <ViewSelectedBy>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.App.Models.WorkloadProfileStates</TypeName>
+      </ViewSelectedBy>
+      <TableControl>
+        <TableHeaders>
+          <TableColumnHeader>
+            <Label>Name</Label>
+          </TableColumnHeader>
+        </TableHeaders>
+        <TableRowEntries>
+          <TableRowEntry>
+            <TableColumnItems>
+              <TableColumnItem>
+                <PropertyName>Name</PropertyName>
+              </TableColumnItem>
+            </TableColumnItems>
+          </TableRowEntry>
+        </TableRowEntries>
+      </TableControl>
+    </View>
+    <View>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.App.Models.WorkloadProfileStatesCollection</Name>
+      <ViewSelectedBy>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.App.Models.WorkloadProfileStatesCollection</TypeName>
+      </ViewSelectedBy>
+      <TableControl>
+        <TableHeaders>
+          <TableColumnHeader>
+            <Label>NextLink</Label>
+          </TableColumnHeader>
+        </TableHeaders>
+        <TableRowEntries>
+          <TableRowEntry>
+            <TableColumnItems>
+              <TableColumnItem>
+                <PropertyName>NextLink</PropertyName>
+              </TableColumnItem>
+            </TableColumnItems>
+          </TableRowEntry>
+        </TableRowEntries>
+      </TableControl>
+    </View>
+    <View>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.App.Models.WorkloadProfileStatesProperties</Name>
+      <ViewSelectedBy>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.App.Models.WorkloadProfileStatesProperties</TypeName>
+      </ViewSelectedBy>
+      <TableControl>
+        <TableHeaders>
+          <TableColumnHeader>
+            <Label>CurrentCount</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>MaximumCount</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>MinimumCount</Label>
+          </TableColumnHeader>
+        </TableHeaders>
+        <TableRowEntries>
+          <TableRowEntry>
+            <TableColumnItems>
+              <TableColumnItem>
+                <PropertyName>CurrentCount</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>MaximumCount</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>MinimumCount</PropertyName>
               </TableColumnItem>
             </TableColumnItems>
           </TableRowEntry>

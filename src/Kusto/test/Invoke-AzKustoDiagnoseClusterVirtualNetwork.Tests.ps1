@@ -15,14 +15,16 @@ Describe 'Invoke-AzKustoDiagnoseClusterVirtualNetwork' {
         }
         . ($mockingPath | Select-Object -First 1).FullName
     }
-    It 'Diagnose' {
+    It 'Diagnose' -skip {
+        # Skiping this tests since this Operation is only supported for VNet injected clusters 
         $resourceGroupName = $env.resourceGroupName
         $clusterName = $env.kustoClusterName
 
         { Invoke-AzKustoDiagnoseClusterVirtualNetwork -ResourceGroupName $resourceGroupName -ClusterName $clusterName } | Should -Not -Throw
     }
 
-    It 'DiagnoseViaIdentity' {
+    It 'DiagnoseViaIdentity' -skip {
+        # Skiping this tests since this Operation is only supported for VNet injected clusters 
         $resourceGroupName = $env.resourceGroupName
         $clusterName = $env.kustoClusterName
 

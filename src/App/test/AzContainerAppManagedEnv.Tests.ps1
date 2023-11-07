@@ -20,8 +20,12 @@ Describe 'AzContainerAppManagedEnv' {
 
     It 'CreateExpanded' -skip {
         {
-            $config = New-AzContainerAppManagedEnv -EnvName $env.envName2 -ResourceGroupName $env.resourceGroup -Location $env.location -AppLogConfigurationDestination "log-analytics" -LogAnalyticConfigurationCustomerId $env.customId -LogAnalyticConfigurationSharedKey $env.sharedKey -VnetConfigurationInternal:$false
-            $config.Name | Should -Be $env.envName2
+            $CustomId = (Get-AzOperationalInsightsWorkspace -ResourceGroupName $env.resourceGroupManaged -Name $env.managedWorkSpace).CustomerId
+            $SharedKey = (Get-AzOperationalInsightsWorkspaceSharedKey -ResourceGroupName $env.resourceGroupManaged -Name $env.managedWorkSpace).PrimarySharedKey
+            $workloadProfile = New-AzContainerAppWorkloadProfileObject -Name "Consumption" -Type "Consumption"
+
+            $config = New-AzContainerAppManagedEnv -ResourceGroupName $env.resourceGroupManaged -Name $env.managedEnv2 -Location $env.location -AppLogConfigurationDestination "log-analytics" -LogAnalyticConfigurationCustomerId $CustomId -LogAnalyticConfigurationSharedKey $SharedKey -VnetConfigurationInternal:$false -WorkloadProfile $workloadProfile
+            $config.Name | Should -Be $env.managedEnv2
         } | Should -Not -Throw
     }
 
@@ -34,27 +38,27 @@ Describe 'AzContainerAppManagedEnv' {
 
     It 'Get' -skip {
         {
-            $config = Get-AzContainerAppManagedEnv -ResourceGroupName $env.resourceGroup -EnvName $env.envName2
-            $config.Name | Should -Be $env.envName2
+            $config = Get-AzContainerAppManagedEnv -ResourceGroupName $env.resourceGroupManaged -Name $env.managedEnv2
+            $config.Name | Should -Be $env.managedEnv2
         } | Should -Not -Throw
     }
 
     It 'List1' -skip {
         {
-            $config = Get-AzContainerAppManagedEnv -ResourceGroupName $env.resourceGroup
+            $config = Get-AzContainerAppManagedEnv -ResourceGroupName $env.resourceGroupManaged
             $config.Count | Should -BeGreaterThan 0
         } | Should -Not -Throw
     }
 
     It 'UpdateExpanded' -skip {
         {
-            Update-AzContainerAppManagedEnv -ResourceGroupName $env.resourceGroup -EnvName $env.envName2 -Tag @{"123"="abc"}
+            Update-AzContainerAppManagedEnv -ResourceGroupName $env.resourceGroupManaged -Name $env.managedEnv2 -Tag @{"123"="abc"}
         } | Should -Not -Throw
     }
 
     It 'Delete' -skip {
         {
-            Remove-AzContainerAppManagedEnv -ResourceGroupName $env.resourceGroup -EnvName $env.envName2
+            Remove-AzContainerAppManagedEnv -ResourceGroupName $env.resourceGroupManaged -Name $env.managedEnv2
         } | Should -Not -Throw
     }
 }

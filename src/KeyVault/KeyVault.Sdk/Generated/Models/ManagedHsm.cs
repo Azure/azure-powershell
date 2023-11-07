@@ -46,11 +46,14 @@ namespace Microsoft.Azure.Management.KeyVault.Models
         /// resource.
         /// </param>
 
+        /// <param name="identity">Managed service identity (system assigned and/or user assigned identities)
+        /// </param>
+
         /// <param name="properties">Properties of the managed HSM
         /// </param>
-        public ManagedHsm(string id = default(string), string name = default(string), string type = default(string), string location = default(string), ManagedHsmSku sku = default(ManagedHsmSku), System.Collections.Generic.IDictionary<string, string> tags = default(System.Collections.Generic.IDictionary<string, string>), SystemData systemData = default(SystemData), ManagedHsmProperties properties = default(ManagedHsmProperties))
+        public ManagedHsm(string id = default(string), string name = default(string), string type = default(string), string location = default(string), ManagedHsmSku sku = default(ManagedHsmSku), System.Collections.Generic.IDictionary<string, string> tags = default(System.Collections.Generic.IDictionary<string, string>), SystemData systemData = default(SystemData), ManagedServiceIdentity identity = default(ManagedServiceIdentity), ManagedHsmProperties properties = default(ManagedHsmProperties))
 
-        : base(id, name, type, location, sku, tags, systemData)
+        : base(id, name, type, location, sku, tags, systemData, identity)
         {
             this.Properties = properties;
             CustomInit();

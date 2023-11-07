@@ -12,10 +12,12 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Subscription.Cmdlets
     /// <remarks>
     /// [OpenAPI] Create=>PUT:"/providers/Microsoft.Subscription/aliases/{aliasName}"
     /// </remarks>
+    [global::Microsoft.Azure.PowerShell.Cmdlets.Subscription.InternalExport]
     [global::System.Management.Automation.Cmdlet(global::System.Management.Automation.VerbsCommon.New, @"AzSubscriptionAlias_CreateExpanded", SupportsShouldProcess = true)]
     [global::System.Management.Automation.OutputType(typeof(Microsoft.Azure.PowerShell.Cmdlets.Subscription.Models.Api20211001.ISubscriptionAliasResponse))]
     [global::Microsoft.Azure.PowerShell.Cmdlets.Subscription.Description(@"Create Alias Subscription.")]
     [global::Microsoft.Azure.PowerShell.Cmdlets.Subscription.Generated]
+    [global::Microsoft.Azure.PowerShell.Cmdlets.Subscription.HttpPath(Path = "/providers/Microsoft.Subscription/aliases/{aliasName}", ApiVersion = "2021-10-01")]
     public partial class NewAzSubscriptionAlias_CreateExpanded : global::System.Management.Automation.PSCmdlet,
         Microsoft.Azure.PowerShell.Cmdlets.Subscription.Runtime.IEventListener
     {
@@ -89,17 +91,6 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Subscription.Cmdlets
         [global::System.Management.Automation.Alias("AzureRMContext", "AzureCredential")]
         [global::Microsoft.Azure.PowerShell.Cmdlets.Subscription.Category(global::Microsoft.Azure.PowerShell.Cmdlets.Subscription.ParameterCategory.Azure)]
         public global::System.Management.Automation.PSObject DefaultProfile { get; set; }
-
-        /// <summary>The friendly name of the subscription.</summary>
-        [global::System.Management.Automation.Parameter(Mandatory = false, HelpMessage = "The friendly name of the subscription.")]
-        [global::Microsoft.Azure.PowerShell.Cmdlets.Subscription.Category(global::Microsoft.Azure.PowerShell.Cmdlets.Subscription.ParameterCategory.Body)]
-        [Microsoft.Azure.PowerShell.Cmdlets.Subscription.Runtime.Info(
-        Required = false,
-        ReadOnly = false,
-        Description = @"The friendly name of the subscription.",
-        SerializedName = @"displayName",
-        PossibleTypes = new [] { typeof(string) })]
-        public string DisplayName { get => _body.DisplayName ?? null; set => _body.DisplayName = value; }
 
         /// <summary>SendAsync Pipeline Steps to be appended to the front of the pipeline</summary>
         [global::System.Management.Automation.Parameter(Mandatory = false, DontShow = true, HelpMessage = "SendAsync Pipeline Steps to be appended to the front of the pipeline")]
@@ -189,6 +180,18 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Subscription.Cmdlets
         
         
         public string SubscriptionId { get => _body.SubscriptionId ?? null; set => _body.SubscriptionId = value; }
+
+        /// <summary>The friendly name of the subscription.</summary>
+        [global::System.Management.Automation.Parameter(Mandatory = false, HelpMessage = "The friendly name of the subscription.")]
+        [global::Microsoft.Azure.PowerShell.Cmdlets.Subscription.Category(global::Microsoft.Azure.PowerShell.Cmdlets.Subscription.ParameterCategory.Body)]
+        [Microsoft.Azure.PowerShell.Cmdlets.Subscription.Runtime.Info(
+        Required = false,
+        ReadOnly = false,
+        Description = @"The friendly name of the subscription.",
+        SerializedName = @"displayName",
+        PossibleTypes = new [] { typeof(string) })]
+        [global::System.Management.Automation.Alias("DisplayName")]
+        public string SubscriptionName { get => _body.DisplayName ?? null; set => _body.DisplayName = value; }
 
         /// <summary>Owner Id of the subscription</summary>
         [global::System.Management.Automation.Parameter(Mandatory = false, HelpMessage = "Owner Id of the subscription")]

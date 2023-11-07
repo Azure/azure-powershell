@@ -22,9 +22,9 @@ List secrets for a dapr component
 
 ## EXAMPLES
 
-### Example 1: Get secrets for a dapr component.
+### Example 1: List secrets for a dapr component.
 ```powershell
-Get-AzContainerAppManagedEnvDaprSecret -EnvName azps-env -ResourceGroupName azpstest_gp -DaprName azps-dapr
+Get-AzContainerAppManagedEnvDaprSecret -DaprName azps-dapr -EnvName azps-env -ResourceGroupName azps_test_group_app
 ```
 
 ```output
@@ -33,7 +33,7 @@ Name      Value
 masterkey keyvalue
 ```
 
-Get secrets for a dapr component.
+List secrets for a dapr component.
 
 ## PARAMETERS
 
@@ -152,11 +152,9 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.App.Models.Api20220301.ISecret
+### Microsoft.Azure.PowerShell.Cmdlets.App.Models.IDaprSecretsCollection
 
 ## NOTES
-
-ALIASES
 
 ## RELATED LINKS
 

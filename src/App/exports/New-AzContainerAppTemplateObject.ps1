@@ -20,14 +20,13 @@ Create an in-memory object for Container.
 .Description
 Create an in-memory object for Container.
 .Example
-$containerAppHttpHeader = New-AzContainerAppProbeHeaderObject -Name Custom-Header -Value Awesome
-$probeArray = @()
-$probeArray += New-AzContainerAppProbeObject -HttpGetPath "/health01" -HttpGetPort 8080 -InitialDelaySecond 3 -PeriodSecond 3 -Type Liveness -HttpGetHttpHeader $containerAppHttpHeader
-$probeArray += New-AzContainerAppProbeObject -HttpGetPath "/health02" -HttpGetPort 8080 -InitialDelaySecond 3 -PeriodSecond 3 -Type Liveness -HttpGetHttpHeader $containerAppHttpHeader
-New-AzContainerAppTemplateObject -Name azps-containerapp -Image mcr.microsoft.com/azuredocs/containerapps-helloworld:latest -Probe $probeArray -ResourceCpu 2.0 -ResourceMemory 4.0Gi
+$probeHttpGetHttpHeader = New-AzContainerAppProbeHeaderObject -Name "Custom-Header" -Value "Awesome"
+$probe = New-AzContainerAppProbeObject -Type "Liveness" -HttpGetPath "/health" -HttpGetPort 8080 -InitialDelaySecond 3 -PeriodSecond 3 -HttpGetHttpHeader $probeHttpGetHttpHeader
+
+New-AzContainerAppTemplateObject -Image "repo/testcontainerApp0:v1" -Name "testcontainerApp0" -Probe $probe
 
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.App.Models.Api20220301.Container
+Microsoft.Azure.PowerShell.Cmdlets.App.Models.Container
 .Notes
 COMPLEX PARAMETER PROPERTIES
 
@@ -41,12 +40,12 @@ ENV <IEnvironmentVar[]>: Container environment variables.
 PROBE <IContainerAppProbe[]>: List of probes for the container.
   [FailureThreshold <Int32?>]: Minimum consecutive failures for the probe to be considered failed after having succeeded. Defaults to 3. Minimum value is 1. Maximum value is 10.
   [HttpGetHost <String>]: Host name to connect to, defaults to the pod IP. You probably want to set "Host" in httpHeaders instead.
-  [HttpGetHttpHeader <IContainerAppProbeHttpGetHttpHeadersItem[]>]: Custom headers to set in the request. HTTP allows repeated headers.
+  [HttpGetHttpHeader <List<IContainerAppProbeHttpGetHttpHeadersItem>>]: Custom headers to set in the request. HTTP allows repeated headers.
     Name <String>: The header field name
     Value <String>: The header field value
   [HttpGetPath <String>]: Path to access on the HTTP server.
   [HttpGetPort <Int32?>]: Name or number of the port to access on the container. Number must be in the range 1 to 65535. Name must be an IANA_SVC_NAME.
-  [HttpGetScheme <Scheme?>]: Scheme to use for connecting to the host. Defaults to HTTP.
+  [HttpGetScheme <String>]: Scheme to use for connecting to the host. Defaults to HTTP.
   [InitialDelaySecond <Int32?>]: Number of seconds after the container has started before liveness probes are initiated. Minimum value is 1. Maximum value is 60.
   [PeriodSecond <Int32?>]: How often (in seconds) to perform the probe. Default to 10 seconds. Minimum value is 1. Maximum value is 240.
   [SuccessThreshold <Int32?>]: Minimum consecutive successes for the probe to be considered successful after having failed. Defaults to 1. Must be 1 for liveness and startup. Minimum value is 1. Maximum value is 10.
@@ -54,18 +53,26 @@ PROBE <IContainerAppProbe[]>: List of probes for the container.
   [TcpSocketPort <Int32?>]: Number or name of the port to access on the container. Number must be in the range 1 to 65535. Name must be an IANA_SVC_NAME.
   [TerminationGracePeriodSecond <Int64?>]: Optional duration in seconds the pod needs to terminate gracefully upon probe failure. The grace period is the duration in seconds after the processes running in the pod are sent a termination signal and the time when the processes are forcibly halted with a kill signal. Set this value longer than the expected cleanup time for your process. If this value is nil, the pod's terminationGracePeriodSeconds will be used. Otherwise, this value overrides the value provided by the pod spec. Value must be non-negative integer. The value zero indicates stop immediately via the kill signal (no opportunity to shut down). This is an alpha field and requires enabling ProbeTerminationGracePeriod feature gate. Maximum value is 3600 seconds (1 hour)
   [TimeoutSecond <Int32?>]: Number of seconds after which the probe times out. Defaults to 1 second. Minimum value is 1. Maximum value is 240.
-  [Type <Type?>]: The type of probe.
+  [Type <String>]: The type of probe.
 
 VOLUMEMOUNT <IVolumeMount[]>: Container volume mounts.
   [MountPath <String>]: Path within the container at which the volume should be mounted.Must not contain ':'.
+  [SubPath <String>]: Path within the volume from which the container's volume should be mounted. Defaults to "" (volume's root).
   [VolumeName <String>]: This must match the Name of a Volume.
 .Link
-https://learn.microsoft.com/powershell/module/az.app/new-azcontainerapptemplateobject
+https://learn.microsoft.com/powershell/module/Az.App/new-azcontainerapptemplateobject
 #>
 function New-AzContainerAppTemplateObject {
-[OutputType([Microsoft.Azure.PowerShell.Cmdlets.App.Models.Api20220301.Container])]
+[OutputType([Microsoft.Azure.PowerShell.Cmdlets.App.Models.Container])]
 [CmdletBinding(PositionalBinding=$false)]
 param(
+    [Parameter()]
+    [Microsoft.Azure.PowerShell.Cmdlets.App.Category('Body')]
+    [Microsoft.Azure.PowerShell.Cmdlets.App.Models.IContainerAppProbe[]]
+    # List of probes for the container.
+    # To construct, see NOTES section for PROBE properties and create a hash table.
+    ${Probe},
+
     [Parameter()]
     [Microsoft.Azure.PowerShell.Cmdlets.App.Category('Body')]
     [System.String[]]
@@ -80,7 +87,7 @@ param(
 
     [Parameter()]
     [Microsoft.Azure.PowerShell.Cmdlets.App.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.App.Models.Api20220301.IEnvironmentVar[]]
+    [Microsoft.Azure.PowerShell.Cmdlets.App.Models.IEnvironmentVar[]]
     # Container environment variables.
     # To construct, see NOTES section for ENV properties and create a hash table.
     ${Env},
@@ -99,13 +106,6 @@ param(
 
     [Parameter()]
     [Microsoft.Azure.PowerShell.Cmdlets.App.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.App.Models.Api20220301.IContainerAppProbe[]]
-    # List of probes for the container.
-    # To construct, see NOTES section for PROBE properties and create a hash table.
-    ${Probe},
-
-    [Parameter()]
-    [Microsoft.Azure.PowerShell.Cmdlets.App.Category('Body')]
     [System.Double]
     # Required CPU in cores, e.g.
     # 0.5.
@@ -120,7 +120,7 @@ param(
 
     [Parameter()]
     [Microsoft.Azure.PowerShell.Cmdlets.App.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.App.Models.Api20220301.IVolumeMount[]]
+    [Microsoft.Azure.PowerShell.Cmdlets.App.Models.IVolumeMount[]]
     # Container volume mounts.
     # To construct, see NOTES section for VOLUMEMOUNT properties and create a hash table.
     ${VolumeMount}
@@ -156,6 +156,10 @@ begin {
         }
         $cmdInfo = Get-Command -Name $mapping[$parameterSet]
         [Microsoft.Azure.PowerShell.Cmdlets.App.Runtime.MessageAttributeHelper]::ProcessCustomAttributesAtRuntime($cmdInfo, $MyInvocation, $parameterSet, $PSCmdlet)
+        if ($null -ne $MyInvocation.MyCommand -and [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PromptedPreviewMessageCmdlets -notcontains $MyInvocation.MyCommand.Name -and [Microsoft.Azure.PowerShell.Cmdlets.App.Runtime.MessageAttributeHelper]::ContainsPreviewAttribute($cmdInfo, $MyInvocation)){
+            [Microsoft.Azure.PowerShell.Cmdlets.App.Runtime.MessageAttributeHelper]::ProcessPreviewMessageAttributesAtRuntime($cmdInfo, $MyInvocation, $parameterSet, $PSCmdlet)
+            [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PromptedPreviewMessageCmdlets.Enqueue($MyInvocation.MyCommand.Name)
+        }
         $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Cmdlet)
         $scriptCmd = {& $wrappedCmd @PSBoundParameters}
         $steppablePipeline = $scriptCmd.GetSteppablePipeline($MyInvocation.CommandOrigin)

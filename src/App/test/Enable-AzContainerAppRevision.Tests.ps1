@@ -19,6 +19,10 @@ Describe 'Enable-AzContainerAppRevision' {
         { throw [System.NotImplementedException] } | Should -Not -Throw
     }
 
+    It 'ActivateViaIdentityContainerApp' -skip {
+        { throw [System.NotImplementedException] } | Should -Not -Throw
+    }
+
     It 'ActivateViaIdentity' -skip {
         { throw [System.NotImplementedException] } | Should -Not -Throw
     }

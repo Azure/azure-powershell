@@ -271,7 +271,7 @@ namespace Microsoft.Azure.Commands.Compute.Test.ScenarioTests
         }
 
         [Fact]
-        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        [Trait(Category.AcceptanceType, Category.LiveOnly)]
         public void TestVirtualMachineScaleSetGuestAttestation()
         {
             TestRunner.RunTestScript("Test-VirtualMachineScaleSetGuestAttestation");
@@ -380,6 +380,20 @@ namespace Microsoft.Azure.Commands.Compute.Test.ScenarioTests
         public void TestVirtualMachineScaleSetDefaultToFlexibleOrchestrationMode()
         {
             TestRunner.RunTestScript("Test-VirtualMachineScaleSetDefaultToFlexibleOrchestrationMode");
+        }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void TestVirtualMachineScaleSetSecurityTypeDefaulting()
+        {
+            TestRunner.RunTestScript("Test-VirtualMachineScaleSetSecurityTypeDefaulting");
+        }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void TestVirtualMachineScaleSetSecurityTypeDefaultingFromImage()
+        {
+            TestRunner.RunTestScript("Test-VirtualMachineScaleSetSecurityTypeDefaultingFromImage");
         }
     }
 }

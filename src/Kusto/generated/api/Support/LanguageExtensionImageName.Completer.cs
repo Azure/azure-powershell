@@ -34,17 +34,17 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Kusto.Support
             {
                 yield return new global::System.Management.Automation.CompletionResult("'Python3_6_5'", "Python3_6_5", global::System.Management.Automation.CompletionResultType.ParameterValue, "Python3_6_5");
             }
-            if (global::System.String.IsNullOrEmpty(wordToComplete) || "Python3_9_12".StartsWith(wordToComplete, global::System.StringComparison.InvariantCultureIgnoreCase))
-            {
-                yield return new global::System.Management.Automation.CompletionResult("'Python3_9_12'", "Python3_9_12", global::System.Management.Automation.CompletionResultType.ParameterValue, "Python3_9_12");
-            }
-            if (global::System.String.IsNullOrEmpty(wordToComplete) || "Python3_9_12IncludeDeepLearning".StartsWith(wordToComplete, global::System.StringComparison.InvariantCultureIgnoreCase))
-            {
-                yield return new global::System.Management.Automation.CompletionResult("'Python3_9_12IncludeDeepLearning'", "Python3_9_12IncludeDeepLearning", global::System.Management.Automation.CompletionResultType.ParameterValue, "Python3_9_12IncludeDeepLearning");
-            }
             if (global::System.String.IsNullOrEmpty(wordToComplete) || "Python3_10_8".StartsWith(wordToComplete, global::System.StringComparison.InvariantCultureIgnoreCase))
             {
                 yield return new global::System.Management.Automation.CompletionResult("'Python3_10_8'", "Python3_10_8", global::System.Management.Automation.CompletionResultType.ParameterValue, "Python3_10_8");
+            }
+            if (global::System.String.IsNullOrEmpty(wordToComplete) || "Python3_10_8_DL".StartsWith(wordToComplete, global::System.StringComparison.InvariantCultureIgnoreCase))
+            {
+                yield return new global::System.Management.Automation.CompletionResult("'Python3_10_8_DL'", "Python3_10_8_DL", global::System.Management.Automation.CompletionResultType.ParameterValue, "Python3_10_8_DL");
+            }
+            if (global::System.String.IsNullOrEmpty(wordToComplete) || "PythonCustomImage".StartsWith(wordToComplete, global::System.StringComparison.InvariantCultureIgnoreCase))
+            {
+                yield return new global::System.Management.Automation.CompletionResult("'PythonCustomImage'", "PythonCustomImage", global::System.Management.Automation.CompletionResultType.ParameterValue, "PythonCustomImage");
             }
         }
     }

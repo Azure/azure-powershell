@@ -18,6 +18,8 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
+
+## Version 0.10.0
 * Added support for custom locations id and correlation Id.
 ## Version 0.9.0
 * Used Env:HELM_CLIENT_PATH if user defined in cmdlet New-AzConnectedKubernetes and Remove-AzConnectedKubernetes.
