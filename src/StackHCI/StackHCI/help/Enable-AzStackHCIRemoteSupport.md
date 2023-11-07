@@ -1,5 +1,5 @@
 ---
-external help file:
+external help file: Az.StackHCI-help.xml
 Module Name: Az.StackHCI
 online version: https://learn.microsoft.com/powershell/module/az.stackhci/enable-azstackhciremotesupport
 schema: 2.0.0
@@ -13,8 +13,8 @@ Enables Remote Support.
 ## SYNTAX
 
 ```
-Enable-AzStackHCIRemoteSupport [-AccessLevel] <String> [[-ExpireInMinutes] <Int32>]
- [[-SasCredential] <String>] [-AgreeToRemoteSupportConsent] [-Confirm] [-WhatIf] [<CommonParameters>]
+Enable-AzStackHCIRemoteSupport [-AccessLevel] <String> [[-ExpireInMinutes] <Int32>] [[-SasCredential] <String>]
+ [-AgreeToRemoteSupportConsent] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -22,7 +22,7 @@ Enables Remote Support allows authorized Microsoft Support users to remotely acc
 
 ## EXAMPLES
 
-### Example 1: 
+### Example 1:
 ```powershell
 Enable-AzStackHCIRemoteSupport -AccessLevel Diagnostics -ExpireInMinutes 1440 -SasCredential "Sample SAS"
 ```
@@ -82,7 +82,7 @@ Parameter Sets: (All)
 Aliases:
 
 Required: True
-Position: 0
+Position: 1
 Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
@@ -106,14 +106,13 @@ Accept wildcard characters: False
 
 ### -ExpireInMinutes
 
-
 ```yaml
 Type: System.Int32
 Parameter Sets: (All)
 Aliases:
 
 Required: False
-Position: 1
+Position: 2
 Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
@@ -128,7 +127,7 @@ Parameter Sets: (All)
 Aliases:
 
 Required: False
-Position: 2
+Position: 3
 Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
@@ -176,7 +175,4 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## NOTES
 
-ALIASES
-
 ## RELATED LINKS
-

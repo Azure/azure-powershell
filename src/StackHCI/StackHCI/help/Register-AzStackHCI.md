@@ -1,5 +1,5 @@
 ---
-external help file:
+external help file: Az.StackHCI-help.xml
 Module Name: Az.StackHCI
 online version: https://learn.microsoft.com/powershell/module/az.stackhci/register-azstackhci
 schema: 2.0.0
@@ -16,9 +16,9 @@ Register-AzStackHCI creates a Microsoft.AzureStackHCI cloud resource representin
 Register-AzStackHCI [-SubscriptionId] <String> [-Region] <String> [[-ResourceName] <String>]
  [[-Tag] <Hashtable>] [[-TenantId] <String>] [[-ResourceGroupName] <String>] [[-ArmAccessToken] <String>]
  [[-AccountId] <String>] [[-EnvironmentName] <String>] [[-ComputerName] <String>]
- [[-CertificateThumbprint] <String>] [[-Credential] <PSCredential>] [[-ArcServerResourceGroupName] <String>]
- [[-ArcSpnCredential] <PSCredential>] [[-LogsDirectory] <String>] [-IsWAC] [-RepairRegistration]
- [-UseDeviceAuthentication] [-Confirm] [-WhatIf] [<CommonParameters>]
+ [[-CertificateThumbprint] <String>] [-RepairRegistration] [-UseDeviceAuthentication]
+ [[-Credential] <PSCredential>] [-IsWAC] [[-ArcServerResourceGroupName] <String>]
+ [[-ArcSpnCredential] <PSCredential>] [[-LogsDirectory] <String>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -40,7 +40,7 @@ PortalAADAppPermissionsURL: https://portal.azure.com/#blade/Microsoft_AAD_Regist
 
 Invoking on one of the cluster node.
 
-### Example 2: 
+### Example 2:
 ```powershell
 Register-AzStackHCI -SubscriptionId "12a0f531-56cb-4340-9501-257726d741fd" -ComputerName ClusterNode1 -Region "eastus"
 ```
@@ -54,9 +54,9 @@ PortalAADAppPermissionsURL: https://portal.azure.com/#blade/Microsoft_AAD_Regist
 
 Invoking from the management node.
 
-### Example 3: 
+### Example 3:
 ```powershell
-Register-AzStackHCI -SubscriptionId "12a0f531-56cb-4340-9501-257726d741fd" -ArmAccessToken etyer..ere= -AccountId user1@corp1.com -Region westus -ResourceName DemoHCICluster3 -ResourceGroupName DemoHCIRG 
+Register-AzStackHCI -SubscriptionId "12a0f531-56cb-4340-9501-257726d741fd" -ArmAccessToken etyer..ere= -AccountId user1@corp1.com -Region westus -ResourceName DemoHCICluster3 -ResourceGroupName DemoHCIRG
 ```
 
 ```output
@@ -68,7 +68,7 @@ PortalAADAppPermissionsURL: https://portal.azure.com/#blade/Microsoft_AAD_Regist
 
 Invoking from WAC.
 
-### Example 4: 
+### Example 4:
 ```powershell
 Register-AzStackHCI -SubscriptionId "12a0f531-56cb-4340-9501-257726d741fd" -Region westus -ResourceName HciCluster1 -TenantId "c31c0dbb-ce27-4c78-ad26-a5f717c14557" -ResourceGroupName HciRG -ArcServerResourceGroupName HciRG -ArmAccessToken eerrer..ere= -AccountId user1@corp1.com -EnvironmentName AzureCloud -ComputerName node1hci -Credential Get-Credential
 ```
@@ -94,7 +94,7 @@ Parameter Sets: (All)
 Aliases:
 
 Required: False
-Position: 7
+Position: 8
 Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
@@ -110,7 +110,7 @@ Parameter Sets: (All)
 Aliases:
 
 Required: False
-Position: 12
+Position: 13
 Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
@@ -126,7 +126,7 @@ Parameter Sets: (All)
 Aliases:
 
 Required: False
-Position: 13
+Position: 14
 Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
@@ -142,7 +142,7 @@ Parameter Sets: (All)
 Aliases:
 
 Required: False
-Position: 6
+Position: 7
 Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
@@ -158,7 +158,7 @@ Parameter Sets: (All)
 Aliases:
 
 Required: False
-Position: 10
+Position: 11
 Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
@@ -173,7 +173,7 @@ Parameter Sets: (All)
 Aliases:
 
 Required: False
-Position: 9
+Position: 10
 Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
@@ -189,7 +189,7 @@ Parameter Sets: (All)
 Aliases:
 
 Required: False
-Position: 11
+Position: 12
 Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
@@ -206,7 +206,7 @@ Parameter Sets: (All)
 Aliases:
 
 Required: False
-Position: 8
+Position: 9
 Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
@@ -238,7 +238,7 @@ Parameter Sets: (All)
 Aliases:
 
 Required: False
-Position: 14
+Position: 15
 Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
@@ -254,7 +254,7 @@ Parameter Sets: (All)
 Aliases:
 
 Required: True
-Position: 1
+Position: 2
 Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
@@ -262,7 +262,7 @@ Accept wildcard characters: False
 
 ### -RepairRegistration
 Repair the current Azure Stack HCI registration with the cloud.
-This cmdlet deletes the local certificates on the clustered nodes and the remote certificates in the Microsoft Entra application in the cloud and generates new replacement certificates for both.
+This cmdlet deletes the local certificates on the clustered nodes and the remote certificates in the Azure AD application in the cloud and generates new replacement certificates for both.
 The resource group, resource name, and other registration choices are preserved.
 
 ```yaml
@@ -287,7 +287,7 @@ Parameter Sets: (All)
 Aliases:
 
 Required: False
-Position: 5
+Position: 6
 Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
@@ -303,7 +303,7 @@ Parameter Sets: (All)
 Aliases:
 
 Required: False
-Position: 2
+Position: 3
 Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
@@ -319,7 +319,7 @@ Parameter Sets: (All)
 Aliases:
 
 Required: True
-Position: 0
+Position: 1
 Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
@@ -335,7 +335,7 @@ Parameter Sets: (All)
 Aliases:
 
 Required: False
-Position: 3
+Position: 4
 Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
@@ -350,7 +350,7 @@ Parameter Sets: (All)
 Aliases:
 
 Required: False
-Position: 4
+Position: 5
 Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
@@ -415,7 +415,5 @@ ResourceId: Resource ID of the resource created in Azure.
 PortalResourceURL: Azure Portal Resource URL.
 
 ## NOTES
-
-ALIASES
 
 ## RELATED LINKS

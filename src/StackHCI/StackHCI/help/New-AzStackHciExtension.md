@@ -1,5 +1,5 @@
 ---
-external help file:
+external help file: Az.StackHCI-help.xml
 Module Name: Az.StackHCI
 online version: https://learn.microsoft.com/powershell/module/az.stackhci/new-azstackhciextension
 schema: 2.0.0
@@ -18,8 +18,8 @@ New-AzStackHciExtension -ArcSettingName <String> -ClusterName <String> -Name <St
  [-ExtensionParameterEnableAutomaticUpgrade] [-ExtensionParameterForceUpdateTag <String>]
  [-ExtensionParameterProtectedSetting <Hashtable>] [-ExtensionParameterPublisher <String>]
  [-ExtensionParameterSetting <Hashtable>] [-ExtensionParameterType <String>]
- [-ExtensionParameterTypeHandlerVersion <String>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm]
- [-WhatIf] [<CommonParameters>]
+ [-ExtensionParameterTypeHandlerVersion <String>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-WhatIf]
+ [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -27,7 +27,7 @@ Create Extension for HCI cluster.
 
 ## EXAMPLES
 
-### Example 1: 
+### Example 1:
 ```powershell
 New-AzStackHciExtension -ArcSettingName "default" -ClusterName "myCluster" -Name "MicrosoftMonitoringAgent" -ResourceGroupName test-rg
 ```
@@ -342,7 +342,4 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## NOTES
 
-ALIASES
-
 ## RELATED LINKS
-

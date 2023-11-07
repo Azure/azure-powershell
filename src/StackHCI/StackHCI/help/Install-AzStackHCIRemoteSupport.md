@@ -1,5 +1,5 @@
 ---
-external help file:
+external help file: Az.StackHCI-help.xml
 Module Name: Az.StackHCI
 online version: https://learn.microsoft.com/powershell/module/az.stackhci/install-azstackhciremotesupport
 schema: 2.0.0
@@ -13,7 +13,7 @@ Installs Remote Support.
 ## SYNTAX
 
 ```
-Install-AzStackHCIRemoteSupport [-Confirm] [-WhatIf] [<CommonParameters>]
+Install-AzStackHCIRemoteSupport [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -21,7 +21,7 @@ Install-AzStackHCIRemoteSupport installs Remote Support Deployment module.
 
 ## EXAMPLES
 
-### Example 1: 
+### Example 1:
 ```powershell
 Install-AzStackHCIRemoteSupport
 ```
@@ -91,7 +91,4 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## NOTES
 
-ALIASES
-
 ## RELATED LINKS
-

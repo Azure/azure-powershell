@@ -1,5 +1,5 @@
 ---
-external help file:
+external help file: Az.StackHCI-help.xml
 Module Name: Az.StackHCI
 online version: https://learn.microsoft.com/powershell/module/az.stackhci/get-azstackhcivmattestation
 schema: 2.0.0
@@ -21,7 +21,7 @@ Get-AzStackHCIVMAttestation shows a list of guests added to IMDS Attestation on 
 
 ## EXAMPLES
 
-### Example 1: 
+### Example 1:
 ```powershell
 Get-AzStackHCIVMAttestation
 ```
@@ -40,7 +40,7 @@ ppt7pn0     HCINODE2        Connected
 
 Get all guests with IMDS Attestation on cluster.
 
-### Example 2: 
+### Example 2:
 ```powershell
 Get-AzStackHCIVMAttestation -Local
 ```
@@ -87,7 +87,4 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## NOTES
 
-ALIASES
-
 ## RELATED LINKS
-
