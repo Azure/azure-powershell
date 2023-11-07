@@ -54,27 +54,28 @@ Send test notifications to a set of provided receivers
 
 ## EXAMPLES
 
-### Example 1: {{ Add title here }}
+### Example 1: Send test notifications to provided receiver
 ```powershell
-{{ Add code here }}
+$email1 = New-AzActionGroupEmailReceiverObject -EmailAddress user@example.com -Name user1
+Test-AzActionGroup -ActionGroupName actiongroup1 -ResourceGroupName monitor-action -AlertType servicehealth -EmailReceiver $email1
 ```
 
 ```output
-{{ Add output here (remove the output block if the example doesn't have an output) }}
+ActionDetail              : {{
+                              "MechanismType": "Email",
+                              "Name": "user1",
+                              "Status": "Succeeded",
+                              "SubState": "Default",
+                              "SendTime": "2023-10-20T07:26:08.271003+00:00"
+                            }}
+CompletedTime             : 2023-10-20T07:28:08.7753691+00:00
+ContextNotificationSource : Microsoft.Insights/TestNotification
+ContextType               : Microsoft.Insights/ServiceHealth
+CreatedTime               : 2023-10-20T07:26:05.2860073+00:00
+State                     : Complete
 ```
 
-{{ Add description here }}
-
-### Example 2: {{ Add title here }}
-```powershell
-{{ Add code here }}
-```
-
-```output
-{{ Add output here (remove the output block if the example doesn't have an output) }}
-```
-
-{{ Add description here }}
+This command sends test notifications to a set of provided receivers.
 
 ## PARAMETERS
 

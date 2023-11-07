@@ -1,7 +1,7 @@
 ### Example 1: Send test notifications to provided receiver
 ```powershell
 $email1 = New-AzActionGroupEmailReceiverObject -EmailAddress user@example.com -Name user1
-Test-AzActionGroup-ActionGroupName actiongroup1 -ResourceGroupName monitor-action -AlertType servicehealth -EmailReceiver $email1
+Test-AzActionGroup -ActionGroupName actiongroup1 -ResourceGroupName monitor-action -AlertType servicehealth -EmailReceiver $email1
 ```
 
 ```output
