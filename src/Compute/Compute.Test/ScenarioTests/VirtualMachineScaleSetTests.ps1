@@ -5154,7 +5154,8 @@ function Test-VirtualMachineScaleSetAttachAndDetach
           -OrchestrationMode 'Flexible' `
           -Location 'eastus' `
           -Credential $cred `
-          -DomainNameLabel "scaleset-70f699"
+          -DomainNameLabel "scaleset-70f699" `
+          -SecurityType "Standard"
 
         $vm = new-azvm -resourcegroupname $rgname -location $loc -name $vmname -credential $cred -DomainNameLabel "scaleset-70f699"
 
