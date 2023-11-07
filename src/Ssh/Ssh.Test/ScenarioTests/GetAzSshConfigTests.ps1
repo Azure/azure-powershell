@@ -92,7 +92,8 @@ function Test-GetVmConfig
     $domainlabel = "d1" + $ResourceGroupName
     try 
     {
-        $vm = New-AzVM -ResourceGroupName $ResourceGroupName -Name $VmName -Location "eastus" -Credential $cred -DomainNameLabel $domainlabel
+        $stnd = "Standard";
+        $vm = New-AzVM -ResourceGroupName $ResourceGroupName -Name $VmName -Location "eastus" -Credential $cred -DomainNameLabel $domainlabel -SecurityType $stnd
         Remove-Item ./config -ErrorAction Ignore
 
         Assert-NotNull $vm

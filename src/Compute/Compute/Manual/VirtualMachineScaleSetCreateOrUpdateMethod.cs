@@ -555,7 +555,8 @@ namespace Microsoft.Azure.Commands.Compute.Automation
                     }
                 }
                 
-                if (_cmdlet.IsParameterBound(c => c.SecurityType))
+                if (_cmdlet.IsParameterBound(c => c.SecurityType)
+                    && _cmdlet.SecurityType != null)
                 {
                     if (_cmdlet.SecurityType?.ToLower() == ConstantValues.TrustedLaunchSecurityType || _cmdlet.SecurityType?.ToLower() == ConstantValues.ConfidentialVMSecurityType)
                     {
@@ -563,9 +564,11 @@ namespace Microsoft.Azure.Commands.Compute.Automation
                         _cmdlet.EnableVtpm = _cmdlet.EnableVtpm ?? true;
                         _cmdlet.EnableSecureBoot = _cmdlet.EnableSecureBoot ?? true;
                     }
-                    
+                    else if (_cmdlet.SecurityType?.ToLower() == ConstantValues.StandardSecurityType)
+                    {
+                        _cmdlet.SecurityType = _cmdlet.SecurityType;
+                    }
                 }
-
                 _cmdlet.NatBackendPort = ImageAndOsType.UpdatePorts(_cmdlet.NatBackendPort);
 
                 var networkSecurityGroup = noZones
@@ -619,7 +622,6 @@ namespace Microsoft.Azure.Commands.Compute.Automation
                 }
             }
         }
-
         
         async Task SimpleParameterSetExecuteCmdlet(IAsyncCmdlet asyncCmdlet)
         {
@@ -648,7 +650,36 @@ namespace Microsoft.Azure.Commands.Compute.Automation
                 LoadBalancerStrategy.IgnorePreExistingConfigCheck = false;
             }
 
-            //Guest Attestation Identity stuff
+            // TL default for Simple Param Set, no config object
+            if (!this.IsParameterBound(c => c.SecurityType)
+                && !this.IsParameterBound(c => c.ImageName)
+                && !this.IsParameterBound(c => c.ImageReferenceId)
+                && !this.IsParameterBound(c => c.SharedGalleryImageId))
+            {
+                this.SecurityType = ConstantValues.TrustedLaunchSecurityType;
+                if (!this.IsParameterBound(c => c.ImageName) && !this.IsParameterBound(c => c.ImageReferenceId) && !this.IsParameterBound(c => c.SharedGalleryImageId))
+                {
+                    this.ImageName = ConstantValues.TrustedLaunchDefaultImageAlias;
+                }
+                if (!this.IsParameterBound(c => c.EnableSecureBoot))
+                {
+                    this.EnableSecureBoot = true;
+                }
+                if (!this.IsParameterBound(c => c.EnableVtpm))
+                {
+                    this.EnableVtpm = true;
+                }
+            }
+            
+            // API does not currently support Standard securityType value, so need to null it out here. 
+            if (this.IsParameterBound(c => c.SecurityType)
+                && this.SecurityType != null
+                && this.SecurityType.ToString().ToLower() == ConstantValues.StandardSecurityType)
+            {
+                this.SecurityType = null;
+            }
+
+            //TrustedLaunch value defaulting for UEFI values.
             if (this.IsParameterBound(c => c.SecurityType))
             {
                 if (this.SecurityType?.ToLower() == ConstantValues.TrustedLaunchSecurityType || this.SecurityType?.ToLower() == ConstantValues.ConfidentialVMSecurityType)
@@ -658,6 +689,7 @@ namespace Microsoft.Azure.Commands.Compute.Automation
                     this.EnableSecureBoot = this.EnableSecureBoot ?? true;
                 }          
             }
+            
             if (shouldGuestAttestationExtBeInstalledSimple()
                 && !this.IsParameterBound(c => c.SystemAssignedIdentity)
                 && !this.IsParameterBound(c => c.UserAssignedIdentity)
@@ -665,7 +697,7 @@ namespace Microsoft.Azure.Commands.Compute.Automation
             {
                 this.SystemAssignedIdentity = true;
             }
-            
+
             var parameters = new Parameters(this, client);
 
             if (parameters?.ImageAndOsType?.Image?.Version?.ToLower() != "latest")
@@ -704,12 +736,12 @@ namespace Microsoft.Azure.Commands.Compute.Automation
                     range);
                 asyncCmdlet.WriteObject(psObject);
             }
-            
+
             if (shouldGuestAttestationExtBeInstalledSimple())
             {
                 string extensionNameGA = "GuestAttestation";
                 var extensionDirect = new VirtualMachineScaleSetExtension();
-                
+
                 if (result.VirtualMachineProfile?.OsProfile != null)
                 {
                     if (result.VirtualMachineProfile.OsProfile.LinuxConfiguration != null)
@@ -784,9 +816,9 @@ namespace Microsoft.Azure.Commands.Compute.Automation
 
                 }
             }
-            
-        }
 
+        }
+        
         /// <summary>
         /// Heres whats happening here :
         /// If "SystemAssignedIdentity" and "UserAssignedIdentity" are both present we set the type of identity to be SystemAssignedUsrAssigned and set the user 
@@ -814,7 +846,7 @@ namespace Microsoft.Azure.Commands.Compute.Automation
                 }
                 : null;
         }
-        
+
         /// <summary>
         /// Check to see if the Guest Attestation extension should be installed and Identity set to SystemAssigned.
         /// Requirements for this scenario to be true:

@@ -161,7 +161,8 @@ function Create-VirtualMachine
 
     # VM Profile & Hardware
     $vmsize = 'Standard_A2';
-    $p = New-AzVMConfig -VMName $vmname -VMSize $vmsize;
+    $stnd = "Standard";
+    $p = New-AzVMConfig -VMName $vmname -VMSize $vmsize -SecurityType $stnd;
     Assert-AreEqual $p.HardwareProfile.VmSize $vmsize;
 
     # NRP
@@ -267,7 +268,8 @@ function Create-VirtualMachineNoDataDisks
 
     # VM Profile & Hardware
     $vmsize = 'Standard_D2S_V3';
-    $p = New-AzVMConfig -VMName $vmname -VMSize $vmsize;
+    $stnd = "Standard";
+    $p = New-AzVMConfig -VMName $vmname -VMSize $vmsize -SecurityType $stnd;
     Assert-AreEqual $p.HardwareProfile.VmSize $vmsize;
 
     # NRP
