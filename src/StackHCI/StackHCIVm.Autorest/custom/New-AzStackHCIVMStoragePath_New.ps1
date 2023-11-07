@@ -64,7 +64,7 @@ param(
     # The name of the extended location.
     ${CustomLocationId},
 
-    [Parameter()]
+    [Parameter(Mandatory)]
     [Microsoft.Azure.PowerShell.Cmdlets.StackHCIVm.Category('Body')]
     [System.String]
     # Path of the storage container on the disk
