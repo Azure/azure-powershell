@@ -51,4 +51,3 @@ Describe 'AzStackHCIVmVirtualMachine' {
     }
 
 }
- 

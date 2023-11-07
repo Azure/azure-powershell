@@ -16,8 +16,7 @@ if(($null -eq $TestName) -or ($TestName -contains 'AzStackHCIVmNetworkInterface'
 
 Describe 'AzStackHCIVmNetworkInterface' {
     It 'Create Network Interface  '  {
-        New-AzStackHciVMLogicalNetwork  -Name $env.lnetName -SubscriptionId $env.subscriptionId -ResourceGroupName $env.resourceGroupName -CustomLocationId $env.customLocationId -Location $env.location -VmSwitchName $env.vmSwitchName | Select-Object -Property ProvisioningState | Should -BeExactly "@{ProvisioningState=Succeeded}"
-        New-AzStackHciVMNetworkInterface  -Name $env.nicName -SubscriptionId $env.subscriptionId -ResourceGroupName $env.resourceGroupName -CustomLocationId $env.customLocationId -Location $env.location -SubnetName $env.lnetName | Select-Object -Property ProvisioningState | Should -BeExactly "@{ProvisioningState=Succeeded}"
+        New-AzStackHciVMNetworkInterface  -Name $env.nicName -SubscriptionId $env.subscriptionId -ResourceGroupName $env.resourceGroupName -CustomLocationId $env.customLocationId -Location $env.location -SubnetName "bugbashlnet" | Select-Object -Property ProvisioningState | Should -BeExactly "@{ProvisioningState=Succeeded}"
     }
 
     It 'List'  {
@@ -38,7 +37,6 @@ Describe 'AzStackHCIVmNetworkInterface' {
     It 'Delete'{
         {
             Remove-AzStackHCIVMNetworkInterface -Name  $env.nicName -ResourceGroupName $env.resourceGroupName -Force
-            Remove-AzStackHCIVMLogicalNetwork -Name  $env.lnetName -ResourceGroupName $env.resourceGroupName -Force
             $config = Get-AzStackHCIVMNetworkInterface -Name  $env.nicName -ResourceGroupName $env.resourceGroupName 
             $config | Should -Be $null
         } | Should -Throw
