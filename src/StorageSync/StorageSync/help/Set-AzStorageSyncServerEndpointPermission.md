@@ -8,7 +8,7 @@ schema: 2.0.0
 # Set-AzStorageSyncServerEndpointPermission
 
 ## SYNOPSIS
-{{ Fill in the Synopsis }}
+This command will set the Server Endpoint permissions in a Storage Sync Service in a resource group.
 
 ## SYNTAX
 
@@ -32,16 +32,16 @@ Set-AzStorageSyncServerEndpointPermission [-InputObject] <PSServerEndpoint> [-As
 ```
 
 ## DESCRIPTION
-{{ Fill in the Description }}
+This command will set the Server Endpoint permissions in a Storage Sync Service in a resource group, allowing integration with Managed Identities.
 
 ## EXAMPLES
 
 ### Example 1
 ```powershell
-PS C:\> {{ Add example code here }}
+Set-AzStorageSyncServerEndpointPermission -ResourceGroupName "myResourceGroup" -StorageSyncServiceName "myStorageSyncServiceName" -SyncGroupName "mySyncGroupName" -Name "myServerEndpointName"
 ```
 
-{{ Add example description here }}
+This command will set the permissions for a Storage Sync Server Endpoint.
 
 ## PARAMETERS
 

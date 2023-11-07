@@ -8,7 +8,7 @@ schema: 2.0.0
 # Set-AzStorageSyncServiceIdentity
 
 ## SYNOPSIS
-{{ Fill in the Synopsis }}
+This command sets storage sync service identity in a resource group.
 
 ## SYNTAX
 
@@ -31,16 +31,16 @@ Set-AzStorageSyncServiceIdentity [-ResourceId] <String> [-AsJob] [-DefaultProfil
 ```
 
 ## DESCRIPTION
-{{ Fill in the Description }}
+This command will set the storage sync service identity in a resource group, allowing integration with Managed Identities.
 
 ## EXAMPLES
 
 ### Example 1
 ```powershell
-PS C:\> {{ Add example code here }}
+Set-AzStorageSyncServiceIdentity -ResourceGroupName "myResourceGroup" -Name "myStorageSyncServiceName"
 ```
 
-{{ Add example description here }}
+This command will set the identity on the Storage Sync Service.
 
 ## PARAMETERS
 
