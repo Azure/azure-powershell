@@ -16,6 +16,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Cmdlets
     [global::System.Management.Automation.OutputType(typeof(Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Models.Api20230301.IExtension))]
     [global::Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Description(@"List all Extensions under ArcSetting resource.")]
     [global::Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Generated]
+    [global::Microsoft.Azure.PowerShell.Cmdlets.StackHCI.HttpPath(Path = "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AzureStackHCI/clusters/{clusterName}/arcSettings/{arcSettingName}/extensions", ApiVersion = "2023-03-01")]
     public partial class GetAzStackHciExtension_List : global::System.Management.Automation.PSCmdlet,
         Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Runtime.IEventListener
     {

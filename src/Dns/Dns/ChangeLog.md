@@ -21,7 +21,8 @@
 * Added cmdlets:
     - `Get-AzDnsDnssecConfig`
     - `New-AzDnsDnssecConfig`
-    - `Remove-AzDnsDnssecConfig`     
+    - `Remove-AzDnsDnssecConfig`
+* Added three new record types, `DS`, `TLSA` and `NAPTR`.
 
 ## Version 1.1.3
 * Removed length validation for DNS TXT record to make it consistent with Azure CLI and Azure portal.

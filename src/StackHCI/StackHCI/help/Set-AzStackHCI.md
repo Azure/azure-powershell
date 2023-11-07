@@ -1,5 +1,5 @@
 ---
-external help file:
+external help file: Az.StackHCI-help.xml
 Module Name: Az.StackHCI
 online version: https://learn.microsoft.com/powershell/module/az.stackhci/set-azstackhci
 schema: 2.0.0
@@ -13,10 +13,10 @@ Set-AzStackHCI modifies resource properties of the Microsoft.AzureStackHCI cloud
 ## SYNTAX
 
 ```
-Set-AzStackHCI [[-ComputerName] <String>] [-AccountId <String>] [-ArmAccessToken <String>]
- [-Credential <PSCredential>] [-DiagnosticLevel <DiagnosticLevel>] [-EnableWSSubscription <Boolean>]
- [-EnvironmentName <String>] [-Force] [-ResourceId <String>] [-TenantId <String>] [-UseDeviceAuthentication]
- [-Confirm] [-WhatIf] [<CommonParameters>]
+Set-AzStackHCI [[-ComputerName] <String>] [-Credential <PSCredential>] [-ResourceId <String>]
+ [-EnableWSSubscription <Boolean>] [-DiagnosticLevel <DiagnosticLevel>] [-TenantId <String>]
+ [-ArmAccessToken <String>] [-AccountId <String>] [-EnvironmentName <String>] [-UseDeviceAuthentication]
+ [-Force] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -24,7 +24,7 @@ Set-AzStackHCI modifies resource properties of the Microsoft.AzureStackHCI cloud
 
 ## EXAMPLES
 
-### Example 1: 
+### Example 1:
 ```powershell
 Set-AzStackHCI -EnableWSSubscription $true
 ```
@@ -35,7 +35,7 @@ Result: Success
 
 Invoking on one of the cluster node to enable Windows Server Subscription feature
 
-### Example 2: 
+### Example 2:
 ```powershell
 Set-AzStackHCI -ComputerName ClusterNode1 -DiagnosticLevel Basic
 ```
@@ -89,7 +89,7 @@ Parameter Sets: (All)
 Aliases:
 
 Required: False
-Position: 0
+Position: 1
 Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
@@ -118,6 +118,7 @@ Specifies the diagnostic level for the cluster.
 Type: DiagnosticLevel
 Parameter Sets: (All)
 Aliases:
+Accepted values: Off, Basic, Enhanced
 
 Required: False
 Position: Named
@@ -261,7 +262,4 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## NOTES
 
-ALIASES
-
 ## RELATED LINKS
-

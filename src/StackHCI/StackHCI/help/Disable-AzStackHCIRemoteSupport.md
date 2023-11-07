@@ -1,5 +1,5 @@
 ---
-external help file:
+external help file: Az.StackHCI-help.xml
 Module Name: Az.StackHCI
 online version: https://learn.microsoft.com/powershell/module/az.stackhci/disable-azstackhciremotesupport
 schema: 2.0.0
@@ -13,7 +13,7 @@ Disables Remote Support.
 ## SYNTAX
 
 ```
-Disable-AzStackHCIRemoteSupport [-Confirm] [-WhatIf] [<CommonParameters>]
+Disable-AzStackHCIRemoteSupport [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -22,7 +22,7 @@ Any existing support sessions will be terminated, and new sessions can no longer
 
 ## EXAMPLES
 
-### Example 1: 
+### Example 1:
 ```powershell
 Disable-AzStackHCIRemoteSupport
 ```
@@ -79,7 +79,4 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## NOTES
 
-ALIASES
-
 ## RELATED LINKS
-

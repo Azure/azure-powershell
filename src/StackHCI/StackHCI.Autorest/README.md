@@ -49,7 +49,7 @@ In this directory, run AutoRest:
 ``` yaml
 branch: 5758cc23b0022e403d876662d9799f02c9bba3e6
 require:
-  - $(this-folder)/../readme.azure.noprofile.md
+  - $(this-folder)/../../readme.azure.noprofile.md
 # lock the commit
 input-file:
   - $(repo)/specification/azurestackhci/resource-manager/Microsoft.AzureStackHCI/stable/2023-03-01/arcSettings.json

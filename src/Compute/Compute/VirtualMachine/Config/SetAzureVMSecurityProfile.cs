@@ -57,7 +57,11 @@ namespace Microsoft.Azure.Commands.Compute
             }
             else if (SecurityType?.ToLower() == ConstantValues.StandardSecurityType)
             {
-                WriteInformation("You have set the SecurityType to Standard. This value makes this cmdlet perform no actions at this time.", new string[] { "PSHOST" });
+                if (this.VM.SecurityProfile == null)
+                {
+                    this.VM.SecurityProfile = new SecurityProfile();
+                }
+                this.VM.SecurityProfile.SecurityType = SecurityType;
             }
 
             WriteObject(this.VM);

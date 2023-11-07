@@ -507,6 +507,34 @@ $registerArcScript = {
 
         $DebugPreference = 'Continue'
 
+        $getManagementUrlScript = {
+            param (
+                [parameter(Mandatory=$true)]
+                [string] $EnvironmentName
+            )
+            if ($EnvironmentName -eq 'AzurePublicCloud')
+            {
+                $managementUrl = 'https://management.azure.com'
+            }
+            elseif ($EnvironmentName -eq 'AzureGermanCloud')
+            {
+                $managementUrl = 'https://management.microsoftazure.de'
+            }
+            elseif ($EnvironmentName -eq 'AzureChinaCloud')
+            {
+                $managementUrl = 'https://management.chinacloudapi.cn'
+            }
+            elseif ($EnvironmentName -eq 'AzureUSGovernmentCloud')
+            {
+                $managementUrl = 'https://management.usgovcloudapi.net'
+            }
+            else
+            {
+                throw 'Invalid Azure Environment name'
+            }
+
+            return $managementUrl
+        }
         # Delete only arc related log files older than 15 days
         Get-ChildItem -Path $LogsDirectory -Recurse | Where-Object {($_.Name.contains('RegisterArc'))} | Where-Object {($_.LastWriteTime -lt (Get-Date).AddDays(-15))} | Remove-Item -ErrorAction Ignore
 
@@ -543,17 +571,34 @@ $registerArcScript = {
 
                     while (($currentCount -le $enableAzureStackHCIArcIntegrationRetryCount) -and (-Not $isEnableArcIntegrationSuccessful)) 
                     {
-                        Write-Information 'Enabling Arc for Servers using Arc SPN Credential'
-                        Enable-AzureStackHCIArcIntegration -AgentInstallerWebLink $AgentInstaller_WebLink -AgentInstallerName $AgentInstaller_Name -AgentInstallerLogFile $AgentInstaller_LogFile -AgentExecutablePath $AgentExecutable_Path  *>&1 | Tee-Object -Variable enableArcIntegrationOutput
+                        if([String]::IsNullOrEmpty($arcStatus.ApplicationId))
+                        {
+                            Write-Information 'Getting token using MSI'
+                            $IMDSServiceResponse = Invoke-RestMethod -Uri 'http://127.0.0.1:42542/metadata/instance' -Method GET -UseBasicParsing -Headers @{'metadata'='true'} -UseDefaultCredentials
 
-                        $isEnableArcIntegrationSuccessful = $true
+                            # Fetching management url on the basis of Azure Environment
+                            $managementUrl = Invoke-Command -ScriptBlock $getManagementUrlScript -ArgumentList $IMDSServiceResponse.compute.AzEnvironment
+
+                            $tokenEndpoint = 'http://127.0.0.1:42542/metadata/identity/oauth2/token?resource={0}' -f $managementUrl
+                            $accessToken = Invoke-RestMethod -Method GET -UseBasicParsing -Uri $tokenEndpoint -Headers @{'metadata'='true'} -UseDefaultCredentials
+
+                            Write-Information ('Enabling Arc for Servers using MSI token of length: ' + $accessToken.access_token.Length)
+                            Enable-AzureStackHCIArcIntegration -AccessToken $accessToken.access_token -AgentInstallerWebLink $AgentInstaller_WebLink -AgentInstallerName $AgentInstaller_Name -AgentInstallerLogFile $AgentInstaller_LogFile -AgentExecutablePath $AgentExecutable_Path  *>&1 | Tee-Object -Variable enableArcIntegrationOutput
+                        }
+                        else
+                        {
+                            Write-Information 'Enabling Arc for Servers using Arc SPN Credential'
+                            Enable-AzureStackHCIArcIntegration -AgentInstallerWebLink $AgentInstaller_WebLink -AgentInstallerName $AgentInstaller_Name -AgentInstallerLogFile $AgentInstaller_LogFile -AgentExecutablePath $AgentExecutable_Path  *>&1 | Tee-Object -Variable enableArcIntegrationOutput
+                        }
+
+                        $isEnableArcIntegrationSuccessful = $false
                         if($enableArcIntegrationOutput -ne $null)
                         {
                             $enableArcIntegrationOutput | foreach {
                                 Write-Information $_.ToString()
-                                if($_.ToString().Contains('401') -or $_.ToString().Contains('403'))
+                                if($_.ToString().Contains('Arc agent process succeeded to onboard machine'))
                                 {
-                                    $isEnableArcIntegrationSuccessful = $false
+                                    $isEnableArcIntegrationSuccessful = $true
                                 }
                             }
                         }
@@ -588,7 +633,27 @@ $registerArcScript = {
                 # New node added case.
                 Write-Information 'Registering Arc for servers.'
                 Write-EventLog -LogName Application -Source 'HCI Registration' -EventId 9002 -EntryType 'Information' -Message 'Initiating Arc For Servers registration'
-                Enable-AzureStackHCIArcIntegration -AgentInstallerWebLink $AgentInstaller_WebLink -AgentInstallerName $AgentInstaller_Name -AgentInstallerLogFile $AgentInstaller_LogFile -AgentExecutablePath $AgentExecutable_Path
+
+                if(-Not [String]::IsNullOrEmpty($arcStatus.ApplicationId))
+                {
+                    Write-Information 'Getting token using MSI'
+                    $IMDSServiceResponse = Invoke-RestMethod -Uri 'http://127.0.0.1:42542/metadata/instance' -Method GET -UseBasicParsing -Headers @{'metadata'='true'} -UseDefaultCredential
+
+                    # Fetching management url on the basis of Azure Environment
+                    $managementUrl = Invoke-Command -ScriptBlock $getManagementUrlScript -ArgumentList $IMDSServiceResponse.compute.AzEnvironment
+
+                    $tokenEndpoint = 'http://127.0.0.1:42542/metadata/identity/oauth2/token?resource={0}' -f $managementUrl
+                    $accessToken = Invoke-RestMethod -Method GET -UseBasicParsing -Uri $tokenEndpoint -Headers @{'metadata'='true'} -UseDefaultCredentials
+
+                    Write-Information ('Enabling Arc for Servers using MSI token of length: ' + $accessToken.access_token.Length)
+                    Enable-AzureStackHCIArcIntegration -AccessToken $accessToken.access_token -AgentInstallerWebLink $AgentInstaller_WebLink -AgentInstallerName $AgentInstaller_Name -AgentInstallerLogFile $AgentInstaller_LogFile -AgentExecutablePath $AgentExecutable_Path
+                }
+                else
+                {
+                    Write-Information 'Enabling Arc for Servers using Arc SPN Credential'
+                    Enable-AzureStackHCIArcIntegration -AgentInstallerWebLink $AgentInstaller_WebLink -AgentInstallerName $AgentInstaller_Name -AgentInstallerLogFile $AgentInstaller_LogFile -AgentExecutablePath $AgentExecutable_Path
+                }
+
                 Sync-AzureStackHCI
                 Write-EventLog -LogName Application -Source 'HCI Registration' -EventId 9003 -EntryType 'Information' -Message 'Completed Arc For Servers registration'
             }
@@ -607,19 +672,6 @@ $registerArcScript = {
     }
     finally
     {
-        $customImdsScript = { try{ $customImdsRegKey = Get-Item 'HKLM:\Software\Microsoft\Windows Azure\CurrentVersion\IMDS' -ErrorAction Stop } catch{ $customImdsRegKey = New-Item 'HKLM:\Software\Microsoft\Windows Azure\CurrentVersion\IMDS' -Force -ErrorAction Stop } $customImdsRegKey | New-ItemProperty -Name 'CustomIMDSHostAddress' -Value 'http://127.0.0.1:42542' -Force -ErrorAction Stop | Out-Null }
-        try 
-        {
-            Write-Verbose ('Configuring CustomIMDSHostAddress')
-            Invoke-Command -ScriptBlock $customImdsScript 
-        } 
-        catch 
-        {
-            Write-Verbose ('Exception occurred while setting custom IMDS host. ErrorMessage : ' + $_.Exception.Message)
-            Write-Verbose ($_ | Out-String)
-            Write-Warning ('Could not configure CustomIMDSHostAddress for node.')
-        }
-
         try{ Stop-Transcript } catch {}
     }
 }
@@ -750,6 +802,36 @@ function Show-LatestModuleVersion{
             Write-WarnLog ($InstallLatestVersionWarningMsg)
         }
     }
+}
+
+function Get-ManagementUrl {
+    [Microsoft.Azure.PowerShell.Cmdlets.StackHCI.DoNotExportAttribute()]
+    param (
+        [parameter(Mandatory=$true)]
+        [string] $EnvironmentName
+    )
+    if ($EnvironmentName -eq 'AzurePublicCloud')
+    {
+        $managementUrl = 'https://management.azure.com'
+    }
+    elseif ($EnvironmentName -eq 'AzureGermanCloud')
+    {
+        $managementUrl = 'https://management.microsoftazure.de'
+    }
+    elseif ($EnvironmentName -eq 'AzureChinaCloud')
+    {
+        $managementUrl = 'https://management.chinacloudapi.cn'
+    }
+    elseif ($EnvironmentName -eq 'AzureUSGovernmentCloud')
+    {
+        $managementUrl = 'https://management.usgovcloudapi.net'
+    }
+    else
+    {
+        throw "Invalid Azure Environment name"
+    }
+
+    return $managementUrl
 }
 
 <#
@@ -1613,7 +1695,8 @@ param(
 function Assign-ArcRoles {
     [Microsoft.Azure.PowerShell.Cmdlets.StackHCI.DoNotExportAttribute()]
     param(
-        [string] $SpObjectId
+        [string] $SpObjectId,
+        [string] $ResourceGroupName
     )
     $stopLoop = $false
     [int]$retryCount = "0"
@@ -1637,11 +1720,11 @@ function Assign-ArcRoles {
             }
             if( -not $foundConnectedMachineOnboardingRole)
             {
-                New-AzRoleAssignment -ObjectId $SpObjectId -RoleDefinitionName $AzureConnectedMachineOnboardingRole | Out-Null
+                New-AzRoleAssignment -ResourceGroupName $ResourceGroupName -ObjectId $SpObjectId -RoleDefinitionName $AzureConnectedMachineOnboardingRole | Out-Null
             }
             if( -not $foundMachineResourceAdminstratorRole)
             {
-                New-AzRoleAssignment -ObjectId $SpObjectId -RoleDefinitionName $AzureConnectedMachineResourceAdministratorRole | Out-Null
+                New-AzRoleAssignment -ResourceGroupName $ResourceGroupName -ObjectId $SpObjectId -RoleDefinitionName $AzureConnectedMachineResourceAdministratorRole | Out-Null
             }
             Write-VerboseLog ("successfully assigned RBAC Roles to ARC SP: {0}" -f $SpObjectId)
             $stopLoop = $true
@@ -1742,9 +1825,11 @@ function Verify-ArcRegistration{
             # Trigger Sync-AzureStackHCI to patch Arc settings
             Invoke-Command -Session $Session -ScriptBlock { Sync-AzureStackHCI }
 
+            $progress = [Math]::Floor(($arcSettingsVerificationCount / $ArcSettingsVerificationLimit) * 100)
+
             # Get and verify Arc Settings resource
             $arcRegistrationOutput = Verify-ArcSettings -Session $Session -ArcResourceId $ArcResourceId
-            Write-Progress -Id $ArcProgressBarId -ParentId $MainProgressBarId -Activity $RegisterArcProgressActivityName -Status $VerifyingArcMessage -PercentComplete $($arcSettingsVerificationCount * 20)
+            Write-Progress -Id $ArcProgressBarId -ParentId $MainProgressBarId -Activity $RegisterArcProgressActivityName -Status $VerifyingArcMessage -PercentComplete $progress
         }
         else 
         {
@@ -1912,8 +1997,8 @@ param(
     )
 
     $res = $true
-    $AgentUninstaller_LogFile = $env:windir + '\Tasks\ArcForServers' + '\ConnectedMachineAgentUninstallationLog.txt';
-    $AgentInstaller_Name      = $env:windir + '\Tasks\ArcForServers' + '\AzureConnectedMachineAgent.msi';
+    $AgentUninstaller_LogFile = $global:HCILogsDirectory + '\ConnectedMachineAgentUninstallationLog.txt';
+    $AgentInstaller_Name      = $env:windir + '\Temp' + '\AzureConnectedMachineAgent.msi';
     $AgentExecutable_Path     = $Env:Programfiles + '\AzureConnectedMachineAgent\azcmagent.exe'
 
     $clusterNodeNames = Invoke-Command -Session $Session -ScriptBlock { Get-ClusterNode } | ForEach-Object { ($_.Name + "." + $ClusterDNSSuffix) }
@@ -1937,8 +2022,34 @@ param(
 
     try
     {
-        Invoke-Command -Session $clusterNodeSessions -ScriptBlock {
-            Disable-AzureStackHCIArcIntegration -AgentUninstallerLogFile $using:AgentUninstaller_LogFile -AgentInstallerName $using:AgentInstaller_Name -AgentExecutablePath $using:AgentExecutable_Path
+        Write-VerboseLog "Validating if Azure Arc for servers disablement using MSI is supported on the cluster"
+
+        $arcCommand = Invoke-Command -Session $Session -ScriptBlock { Get-Command -Name 'Enable-AzureStackHCIArcIntegration' -ErrorAction SilentlyContinue }
+
+        $IMDSServiceResponse = Invoke-Command -Session $Session -ScriptBlock {
+            Invoke-RestMethod -Uri 'http://127.0.0.1:42542/metadata/instance' -Method GET -UseBasicParsing -Headers @{'metadata'='true'} -UseDefaultCredentials
+        } -ErrorAction Ignore
+
+        if($arcCommand.Parameters.ContainsKey("AccessToken") -and [string]::IsNullOrEmpty($nodeArcStatus.ApplicationId) -and (-Not [string]::IsNullOrEmpty($IMDSServiceResponse.compute.AzEnvironment)))
+        {
+            Write-VerboseLog "Disabling Azure Arc for servers using MSI"
+
+            # Getting management url on the basis of Azure environment
+            $managementUrl = Get-ManagementUrl -EnvironmentName $IMDSServiceResponse.compute.AzEnvironment
+
+            Invoke-Command -Session $clusterNodeSessions -ScriptBlock {
+                $tokenEndpoint = "http://127.0.0.1:42542/metadata/identity/oauth2/token?resource={0}" -f $Using:managementUrl
+                $accessToken = Invoke-RestMethod -Method GET -UseBasicParsing -Uri $tokenEndpoint -Headers @{'metadata'='true'} -UseDefaultCredentials
+
+                Disable-AzureStackHCIArcIntegration -AccessToken $accessToken.access_token -AgentUninstallerLogFile $using:AgentUninstaller_LogFile -AgentInstallerName $using:AgentInstaller_Name -AgentExecutablePath $using:AgentExecutable_Path
+            }
+        }
+        else
+        {
+            Write-VerboseLog "Disabling Azure Arc for servers without using MSI"
+            Invoke-Command -Session $clusterNodeSessions -ScriptBlock {
+                Disable-AzureStackHCIArcIntegration -AgentUninstallerLogFile $using:AgentUninstaller_LogFile -AgentInstallerName $using:AgentInstaller_Name -AgentExecutablePath $using:AgentExecutable_Path
+            }
         }
     }
     catch
@@ -1968,6 +2079,75 @@ param(
     return $res
 }
 
+function Create-ArcSPN
+{
+    param(
+        [Object] $ArcResource
+    )
+    if($Null -eq $ArcResource.Properties.arcApplicationObjectId)
+    {
+        Write-VerboseLog ("Initiating Arc AAD App creation by HCI RP")
+        Write-Progress -Id $ArcProgressBarId -ParentId $MainProgressBarId -Activity $RegisterArcProgressActivityName -Status $ArcAADAppCreationMessage -PercentComplete 30
+        Execute-Without-ProgressBar -ScriptBlock { Invoke-AzResourceAction -ResourceId $ArcResource.ResourceId -ApiVersion $HCIArcAPIVersion -Action createArcIdentity -Force } | Out-Null
+        $ArcResource = Get-AzResource -ResourceId $ArcResource.ResourceId -ApiVersion $HCIArcAPIVersion -ErrorAction Ignore
+        Write-VerboseLog ("Created Arc AAD App by HCI service")
+    }
+    else
+    {
+        Write-VerboseLog ("Arc AAD App: {0} already created by service" -f $ArcResource.Properties.arcApplicationObjectId)
+    }
+    $AppId = $ArcResource.Properties.arcApplicationClientId
+    $ArcSpObjectId = $ArcResource.Properties.arcServicePrincipalObjectId
+    $roleAssignmentStatus = Assign-ArcRoles -SpObjectId $ArcSpObjectId -ResourceGroupName $ArcResource.Properties.arcInstanceResourceGroup
+    if($roleAssignmentStatus -eq $false)
+    {
+        return [ErrorDetail]::ArcPermissionsMissing
+    }
+    # Generate password for Arc SPN by calling HCI RP
+    Write-VerboseLog("Generating credentials for ARC SPN")
+    $arcSPNPassword = Execute-Without-ProgressBar -ScriptBlock { Invoke-AzResourceAction -ResourceId $ArcResource.ResourceId -ApiVersion $HCIArcAPIVersion -Action generatePassword -Force }
+    Write-VerboseLog("Generated credentials successfully for ARC SPN")
+    $Secret = $arcSPNPassword.secretText
+    $SecureSecret = $Secret | ConvertTo-SecureString -AsPlainText -Force
+    $ArcSPNCreated = New-Object System.Management.Automation.PSCredential -ArgumentList $AppId, $SecureSecret
+
+    return $ArcSPNCreated
+}
+
+function Validate-MSIForArc
+{
+    param(
+        [Object] $HCIResource,
+        [System.Management.Automation.Runspaces.PSSession] $Session
+    )
+    Write-VerboseLog "Validating if Azure Arc for servers enablement using MSI is supported on the cluster"
+
+    $arcCommand = Invoke-Command -Session $Session -ScriptBlock { Get-Command -Name 'Enable-AzureStackHCIArcIntegration' -ErrorAction SilentlyContinue }
+
+    if($arcCommand.Parameters.ContainsKey("AccessToken") -and ($null -ne $HCIResource.identity) -and ($HCIResource.identity.type -eq "SystemAssigned") -and (-Not [string]::IsNullOrEmpty($HCIResource.identity.principalId)))
+    {
+        try
+        {
+            $IMDSServiceResponse = Invoke-Command -Session $session -ScriptBlock {
+                Invoke-RestMethod -Uri 'http://127.0.0.1:42542/metadata/instance' -Method GET -UseBasicParsing -Headers @{'metadata'='true'} -UseDefaultCredentials
+            } -ErrorAction Ignore
+            if(-Not [string]::IsNullOrEmpty($IMDSServiceResponse.compute.AzEnvironment))
+            {
+                Write-VerboseLog "Azure Arc for servers enablement using MSI is supported on the cluster"
+                return $true
+            }
+        }
+        catch
+        {
+            Write-VerboseLog "Azure Arc for servers enablement using MSI is not supported on the cluster"
+            return $false
+        }
+    }
+
+    Write-VerboseLog "Azure Arc for servers enablement using MSI is not supported on the cluster"
+    return $false
+}
+
 function Register-ArcForServers{
     [Microsoft.Azure.PowerShell.Cmdlets.StackHCI.DoNotExportAttribute()]
 param(
@@ -1982,7 +2162,8 @@ param(
     [System.Management.Automation.PSCredential] $ArcSpnCredential,
     [Switch] $IsWAC,
     [string] $Environment,
-    [Object] $ArcResource
+    [Object] $ArcResource,
+    [Object] $HCIResource
     )
 
     if($IsManagementNode)
@@ -2038,33 +2219,35 @@ param(
     }
     else
     {
-        if($Null -eq $ArcResource.Properties.arcApplicationObjectId)
+        # Check if MSI is enabled on the cluster. Assign required roles.
+        $IsArcMSISupported = Validate-MSIForArc -HCIResource $HCIResource -Session $session
+
+        if($IsArcMSISupported)
         {
-            Write-VerboseLog ("Initiating Arc AAD App creation by HCI RP")
-            Write-Progress -Id $ArcProgressBarId -ParentId $MainProgressBarId -Activity $RegisterArcProgressActivityName -Status $ArcAADAppCreationMessage -PercentComplete 30
-            Execute-Without-ProgressBar -ScriptBlock { Invoke-AzResourceAction -ResourceId $arcResourceId -ApiVersion $HCIArcAPIVersion -Action createArcIdentity -Force } | Out-Null
-            $ArcResource = Get-AzResource -ResourceId $arcResourceId -ApiVersion $HCIArcAPIVersion -ErrorAction Ignore
-            Write-VerboseLog ("Created Arc AAD App by HCI service")
+            $roleAssignmentStatus = Assign-ArcRoles -SpObjectId $HCIResource.identity.principalId -ResourceGroupName $ArcResource.Properties.arcInstanceResourceGroup
+            if($roleAssignmentStatus -eq $false)
+            {
+                return [ErrorDetail]::ArcPermissionsMissing
+            }
         }
-        else
+
+        if(-Not $IsArcMSISupported)
         {
-            Write-VerboseLog ("Arc AAD App: $ArcApplicationId already created by service")
-        }
-        $AppId = $ArcResource.Properties.arcApplicationClientId
-        $ArcSpObjectId = $ArcResource.Properties.arcServicePrincipalObjectId
-        $roleAssignmentStatus = Assign-ArcRoles -SpObjectId $ArcSpObjectId
-        if($roleAssignmentStatus -eq $false)
+            # MSI not enabled on the cluster. Creating an Arc AAD app for Arc enablement.
+            $ArcSPNCreated = Create-ArcSPN -ArcResource $ArcResource
+
+            if($ArcSPNCreated -eq [ErrorDetail]::ArcPermissionsMissing)
         {
             return [ErrorDetail]::ArcPermissionsMissing
         }
-        # Generate password for Arc SPN by calling HCI RP
-        Write-VerboseLog("Generating credentials for ARC SPN")
-        $arcSPNPassword = Execute-Without-ProgressBar -ScriptBlock { Invoke-AzResourceAction -ResourceId $arcResourceId -ApiVersion $HCIArcAPIVersion -Action generatePassword -Force }
-        Write-VerboseLog("Generated credentials successfully for ARC SPN")
-        $Secret = $arcSPNPassword.secretText 
-        $clusterDNSName = Get-ClusterDNSName -Session $session
+        
+            $AppId = $ArcSPNCreated.UserName
+            $Secret = $ArcSPNCreated.GetNetworkCredential().Password
+        }
     }
-
+ 
+        $clusterDNSName = Get-ClusterDNSName -Session $session
+    
     $arcCommand = Invoke-Command -Session $session -ScriptBlock { Get-Command -Name 'Initialize-AzureStackHCIArcIntegration' -ErrorAction SilentlyContinue } 
     if ($arcCommand.Parameters.ContainsKey('Cloud'))
     {
@@ -2076,9 +2259,7 @@ param(
         }
         Write-VerboseLog ("invoking Initialize-AzureStackHCIArcIntegration with cloud switch")
         $ArcRegistrationParams = @{
-            AppId = $AppId
-            Secret = $Secret
-            TenantId = $TenantId
+                        TenantId = $TenantId
             SubscriptionId = $SubscriptionId
             Region = $Region
             ResourceGroup = $ResourceGroup
@@ -2089,14 +2270,26 @@ param(
     {
         Write-VerboseLog ("invoking Initialize-AzureStackHCIArcIntegration without cloud switch")
         $ArcRegistrationParams = @{
-            AppId = $AppId
-            Secret = $Secret
-            TenantId = $TenantId
+                        TenantId = $TenantId
             SubscriptionId = $SubscriptionId
             Region = $Region
             ResourceGroup = $ResourceGroup 
         }    
     }
+
+    if(-Not $IsArcMSISupported)
+    {
+        Write-VerboseLog "Invoking Initialize-AzureStackHCIArcIntegration using Service Principal Credential"
+        $ArcRegistrationParams += @{
+            AppId = $AppId
+            Secret = $Secret
+        }
+    }
+    else
+    {
+        Write-VerboseLog "Invoking Initialize-AzureStackHCIArcIntegration without using Service Principal Credential"
+    }
+
     # Save Arc context.
     Write-Progress -Id $ArcProgressBarId -ParentId $MainProgressBarId -Activity $RegisterArcProgressActivityName -Status $SetupArcMessage -PercentComplete 40 
     Invoke-Command -Session $session -ScriptBlock { Initialize-AzureStackHCIArcIntegration @Using:ArcRegistrationParams } | Out-Null
@@ -2395,9 +2588,13 @@ param(
                     }
                 }
             }
+            elseif (($null -ne $arcStatus) -and ([string]::IsNullOrEmpty($arcStatus.ApplicationId)))
+            {
+                Write-VerboseLog ("Azure Arc was enabled on the cluster using MSI, ignoring Arc application deletion check")
+            }
             else
             {
-                Write-VerboseLog ("ARC not enabled on the cluster, ignoring ARC application deletion check")
+                Write-VerboseLog ("Azure Arc not enabled on the cluster, ignoring Arc application deletion check")
             }
         }
 
@@ -3360,6 +3557,57 @@ param(
                 }
             }
 
+            $removeImdsRegKey = {
+                $imdsRegKeyPath     = 'HKLM:\Software\Microsoft\Windows Azure\CurrentVersion\IMDS'
+                $itemPropertyName   = 'CustomIMDSHostAddress'
+
+                $itemProperty = (Get-ItemProperty -Path $imdsRegKeyPath -Name $itemPropertyName -ErrorAction SilentlyContinue)
+                if($null -ne $itemProperty)
+                {
+                    $itemProperty | Remove-ItemProperty -Name $itemPropertyName -Force -ErrorAction SilentlyContinue -ErrorVariable err
+                    Write-Information ("Removed $($imdsRegKeyPath)")
+                }else
+                {
+                    Write-Information ("$($imdsRegKeyPath) does not exist on this machine")
+                }
+
+                if(-Not [string]::IsNullOrEmpty($err))
+                {
+                    Write-Information ("Could not remove regkey: $($imdsRegKeyPath). Error: $($err)")
+                }
+            }
+
+            $clusterNodes | ForEach-Object {
+                $nodeSession = $null
+
+                try
+                {
+                    if ($null -eq $Credential)
+                    {
+                        $nodeSession = New-PSSession -ComputerName ($_.Name + "." + $clusterDNSSuffix)
+                    }
+                    else
+                    {
+                        $nodeSession = New-PSSession -ComputerName ($_.Name + "." + $clusterDNSSuffix) -Credential $Credential
+                    }
+                }
+                catch
+                {
+                    Write-VerboseLog ("Exception occurred in establishing new PSSession to $($_.Name). Trying to erase IMDS reg key. ErrorMessage : " + $_.Exception.Message)
+                    Write-VerboseLog ($_)
+                    continue
+                }
+
+                Write-VerboseLog ("Checking and removing IMDS reg key from $($_.Name)")
+                Invoke-Command -Session $nodeSession -ScriptBlock $removeImdsRegKey -InformationVariable info
+                $info | ForEach-Object {Write-VerboseLog ($_)}
+
+                if ($null -ne $nodeSession)
+                {
+                    Remove-PSSession $nodeSession -ErrorAction Ignore | Out-Null
+                }
+            }
+
             $operationStatus = [OperationStatus]::Success
         }
 
@@ -3736,7 +3984,7 @@ param(
 
         $regContext, $IsClusterRegistered, $clusterNodeSession, $_ = Get-SetupLoggingDetails -ComputerName $ComputerName -Credential $Credential -IsManagementNode $isManagementNode
 
-        Setup-Logging -LogFilePrefix "UnregisterHCI" -DebugEnabled ($DebugPreference -ne "SilentlyContinue") -IsClusterRegistered $IsClusterRegistered -ClusterNodeSession $clusterNodeSession | Out-Null
+        $global:HCILogsDirectory = Setup-Logging -LogFilePrefix "UnregisterHCI" -DebugEnabled ($DebugPreference -ne "SilentlyContinue") -IsClusterRegistered $IsClusterRegistered -ClusterNodeSession $clusterNodeSession 
 
         Write-Progress -Id $MainProgressBarId -activity $UnregisterProgressActivityName -status $CheckingDependentModules -percentcomplete 1
         Check-DependentModules

@@ -12,10 +12,10 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-using Microsoft.Azure.Commands.ResourceManager.Common;
-
-namespace Microsoft.Azure.Commands.Dns.Models
+namespace Microsoft.Azure.Commands.Dns
 {
+    using Microsoft.Azure.Commands.ResourceManager.Common;
+
     public abstract class DnsBaseCmdlet : AzureRMCmdlet
     {
         private DnsClient dnsClient;
