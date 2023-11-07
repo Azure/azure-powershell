@@ -39,7 +39,7 @@ namespace StaticAnalysis.GeneratedSdkAnalyzer
 
         public string FormatRecord()
         {
-            return string.Format("\"{0}\",\"{1}\",\"{2}\",\"{3}\",\"{4}\"",
+            return string.Format("\"{0}\",\"{1}\",\"{2}\",\"{3}\",\"{4}\",\"{5}\"",
                 Module, Sdk, Severity, ProblemId, Description, Remediation);
         }
 
