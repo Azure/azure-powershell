@@ -11,7 +11,7 @@
   DotNetFrameworkVersion = '4.7.2'
   RequiredAssemblies = './bin/Az.ActionGroup.private.dll'
   FormatsToProcess = './Az.ActionGroup.format.ps1xml'
-  FunctionsToExport = 'Enable-AzActionGroupReceiver', 'Get-AzActionGroup', 'Get-AzActionGroupTestNotification', 'New-AzActionGroup', 'New-AzActionGroupArmRoleReceiverObject', 'New-AzActionGroupAutomationRunbookReceiverObject', 'New-AzActionGroupAzureAppPushReceiverObject', 'New-AzActionGroupAzureFunctionReceiverObject', 'New-AzActionGroupEmailReceiverObject', 'New-AzActionGroupEventHubReceiverObject', 'New-AzActionGroupItsmReceiverObject', 'New-AzActionGroupLogicAppReceiverObject', 'New-AzActionGroupNotification', 'New-AzActionGroupSmsReceiverObject', 'New-AzActionGroupVoiceReceiverObject', 'New-AzActionGroupWebhookReceiverObject', 'Remove-AzActionGroup', 'Update-AzActionGroup'
+  FunctionsToExport = 'Enable-AzActionGroupReceiver', 'Get-AzActionGroup', 'New-AzActionGroup', 'New-AzActionGroupArmRoleReceiverObject', 'New-AzActionGroupAutomationRunbookReceiverObject', 'New-AzActionGroupAzureAppPushReceiverObject', 'New-AzActionGroupAzureFunctionReceiverObject', 'New-AzActionGroupEmailReceiverObject', 'New-AzActionGroupEventHubReceiverObject', 'New-AzActionGroupItsmReceiverObject', 'New-AzActionGroupLogicAppReceiverObject', 'New-AzActionGroupSmsReceiverObject', 'New-AzActionGroupVoiceReceiverObject', 'New-AzActionGroupWebhookReceiverObject', 'Remove-AzActionGroup', 'Test-AzActionGroup', 'Update-AzActionGroup'
   PrivateData = @{
     PSData = @{
       Tags = 'Azure', 'ResourceManager', 'ARM', 'PSModule', 'ActionGroup'

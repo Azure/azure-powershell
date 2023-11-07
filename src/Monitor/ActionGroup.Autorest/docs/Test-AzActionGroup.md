@@ -1,11 +1,11 @@
 ---
 external help file:
 Module Name: Az.Monitor
-online version: https://learn.microsoft.com/powershell/module/az.monitor/new-azactiongroupnotification
+online version: https://learn.microsoft.com/powershell/module/az.monitor/test-azactiongroup
 schema: 2.0.0
 ---
 
-# New-AzActionGroupNotification
+# Test-AzActionGroup
 
 ## SYNOPSIS
 Send test notifications to a set of provided receivers
@@ -14,7 +14,7 @@ Send test notifications to a set of provided receivers
 
 ### CreateExpanded (Default)
 ```
-New-AzActionGroupNotification -ActionGroupName <String> -ResourceGroupName <String> -AlertType <String>
+Test-AzActionGroup -ActionGroupName <String> -ResourceGroupName <String> -AlertType <String>
  [-SubscriptionId <String>] [-ArmRoleReceiver <IArmRoleReceiver[]>]
  [-AutomationRunbookReceiver <IAutomationRunbookReceiver[]>] [-AzureAppPushReceiver <IAzureAppPushReceiver[]>]
  [-AzureFunctionReceiver <IAzureFunctionReceiver[]>] [-EmailReceiver <IEmailReceiver[]>]
@@ -26,7 +26,7 @@ New-AzActionGroupNotification -ActionGroupName <String> -ResourceGroupName <Stri
 
 ### CreateViaIdentityExpanded
 ```
-New-AzActionGroupNotification -InputObject <IActionGroupIdentity> -AlertType <String>
+Test-AzActionGroup -InputObject <IActionGroupIdentity> -AlertType <String>
  [-ArmRoleReceiver <IArmRoleReceiver[]>] [-AutomationRunbookReceiver <IAutomationRunbookReceiver[]>]
  [-AzureAppPushReceiver <IAzureAppPushReceiver[]>] [-AzureFunctionReceiver <IAzureFunctionReceiver[]>]
  [-EmailReceiver <IEmailReceiver[]>] [-EventHubReceiver <IEventHubReceiver[]>]
@@ -37,14 +37,14 @@ New-AzActionGroupNotification -InputObject <IActionGroupIdentity> -AlertType <St
 
 ### CreateViaJsonFilePath
 ```
-New-AzActionGroupNotification -ActionGroupName <String> -ResourceGroupName <String> -JsonFilePath <String>
+Test-AzActionGroup -ActionGroupName <String> -ResourceGroupName <String> -JsonFilePath <String>
  [-SubscriptionId <String>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf]
  [<CommonParameters>]
 ```
 
 ### CreateViaJsonString
 ```
-New-AzActionGroupNotification -ActionGroupName <String> -ResourceGroupName <String> -JsonString <String>
+Test-AzActionGroup -ActionGroupName <String> -ResourceGroupName <String> -JsonString <String>
  [-SubscriptionId <String>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf]
  [<CommonParameters>]
 ```
@@ -54,28 +54,27 @@ Send test notifications to a set of provided receivers
 
 ## EXAMPLES
 
-### Example 1: Send test notifications to provided receiver
+### Example 1: {{ Add title here }}
 ```powershell
-$email1 = New-AzActionGroupEmailReceiverObject -EmailAddress user@example.com -Name user1
-New-AzActionGroupNotification -ActionGroupName actiongroup1 -ResourceGroupName monitor-action -AlertType servicehealth -EmailReceiver $email1
+{{ Add code here }}
 ```
 
 ```output
-ActionDetail              : {{
-                              "MechanismType": "Email",
-                              "Name": "user1",
-                              "Status": "Succeeded",
-                              "SubState": "Default",
-                              "SendTime": "2023-10-20T07:26:08.271003+00:00"
-                            }}
-CompletedTime             : 2023-10-20T07:28:08.7753691+00:00
-ContextNotificationSource : Microsoft.Insights/TestNotification
-ContextType               : Microsoft.Insights/ServiceHealth
-CreatedTime               : 2023-10-20T07:26:05.2860073+00:00
-State                     : Complete
+{{ Add output here (remove the output block if the example doesn't have an output) }}
 ```
 
-This command sends test notifications to a set of provided receivers.
+{{ Add description here }}
+
+### Example 2: {{ Add title here }}
+```powershell
+{{ Add code here }}
+```
+
+```output
+{{ Add output here (remove the output block if the example doesn't have an output) }}
+```
+
+{{ Add description here }}
 
 ## PARAMETERS
 

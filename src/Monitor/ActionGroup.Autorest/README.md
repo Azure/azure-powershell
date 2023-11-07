@@ -63,7 +63,7 @@ directive:
       subject: ActionGroup
     hide: true
   - where:
-      variant: GetViaIdentity
+      verb: Get
       subject: ActionGroupTestNotification
     hide: true
   # fix breaking change
@@ -84,4 +84,11 @@ directive:
     - model-name: SmsReceiver
     - model-name: VoiceReceiver
     - model-name: WebhookReceiver
+  # feedback rename
+  - where:
+      subject: ActionGroupNotification
+      verb: New
+    set:
+      verb: Test
+      subject: ActionGroup
 ```

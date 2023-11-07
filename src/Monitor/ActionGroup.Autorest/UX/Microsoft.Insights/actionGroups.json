@@ -142,6 +142,68 @@
           ]
         }
       ]
+    },
+    {
+      "name": "Test-AzActionGroup",
+      "description": "Send test notifications to a set of provided receivers",
+      "path": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Insights/actionGroups/{actionGroupName}/createNotifications",
+      "help": {
+        "learnMore": {
+          "url": "https://learn.microsoft.com/powershell/module/az.monitor/test-azactiongroup"
+        },
+        "parameterSets": [
+          {
+            "parameters": [
+              "-ActionGroupName <String>",
+              "-ResourceGroupName <String>",
+              "[-SubscriptionId <String>]"
+            ]
+          },
+          {
+            "parameters": [
+              "-ActionGroupName <String>",
+              "-ResourceGroupName <String>",
+              "[-SubscriptionId <String>]"
+            ]
+          }
+        ]
+      },
+      "examples": [
+        {
+          "description": "Send test notifications to a set of provided receivers",
+          "parameters": [
+            {
+              "name": "-ActionGroupName",
+              "value": "[Path.actionGroupName]"
+            },
+            {
+              "name": "-ResourceGroupName",
+              "value": "[Path.resourceGroupName]"
+            },
+            {
+              "name": "-SubscriptionId",
+              "value": "[Path.subscriptionId]"
+            }
+          ]
+        },
+        {
+          "description": "Send test notifications to a set of provided receivers",
+          "parameters": [
+            {
+              "name": "-ActionGroupName",
+              "value": "[Path.actionGroupName]"
+            },
+            {
+              "name": "-ResourceGroupName",
+              "value": "[Path.resourceGroupName]"
+            },
+            {
+              "name": "-SubscriptionId",
+              "value": "[Path.subscriptionId]"
+            }
+          ]
+        }
+      ]
     }
   ]
 }
