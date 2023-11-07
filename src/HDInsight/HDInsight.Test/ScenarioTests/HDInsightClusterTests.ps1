@@ -412,7 +412,7 @@ function Test-ClusterEnableSecureChannelCommands{
 		$cluster = New-AzHDInsightCluster -Location $params.location -ResourceGroupName $params.resourceGroupName `
 		-ClusterName $params.clusterName -ClusterSizeInNodes $params.clusterSizeInNodes -ClusterType $params.clusterType `
 		-StorageAccountResourceId $params.storageAccountResourceId -StorageAccountKey $params.storageAccountKey `
-		-HttpCredential $params.httpCredential -SshCredential $params.sshCredential -Version $params.version `
+		-HttpCredential $params.httpCredential -SshCredential $params.sshCredential `
 		-MinSupportedTlsVersion $params.minSupportedTlsVersion -EnableSecureChannel $enableSecureChannel
 
 		Assert-NotNull $cluster
@@ -421,8 +421,8 @@ function Test-ClusterEnableSecureChannelCommands{
 	finally
 	{
 		# Delete cluster and resource group
-		Remove-AzHDInsightCluster -ClusterName $cluster.Name
-		Remove-AzResourceGroup -ResourceGroupName $cluster.ResourceGroup
+		# Remove-AzHDInsightCluster -ClusterName $cluster.Name
+		# Remove-AzResourceGroup -ResourceGroupName $cluster.ResourceGroup
 	}
 }
 
