@@ -146,6 +146,7 @@ function Update-AzFunctionApp {
             }
         }
 
+        $useParams = $false
         $params = GetParameterKeyValues -PSBoundParametersDictionary $PSBoundParameters `
                                         -ParameterList @("SubscriptionId", "HttpPipelineAppend", "HttpPipelinePrepend")
 
@@ -168,6 +169,7 @@ function Update-AzFunctionApp {
         }
         else
         {
+            $useParams = $true
             $existingFunctionApp = GetFunctionAppByName -Name $Name -ResourceGroupName $ResourceGroupName @params
         }
 
@@ -245,11 +247,21 @@ function Update-AzFunctionApp {
             # Copy the existing function app plan settings
             $functionAppDef.ServerFarmId = $existingFunctionApp.ServerFarmId
             $functionAppDef.Location = $existingFunctionApp.Location
-            $functionAppDef.Reserved = $existingFunctionApp.Reserved                
+            $functionAppDef.Reserved = $existingFunctionApp.Reserved
         }
 
         # Set Application Insights
-        $currentApplicationSettings = $existingFunctionApp.ApplicationSettings
+        $currentApplicationSettings = $null
+        $settings =  if ($useParams)
+                     {
+                        Az.Functions.internal\Get-AzWebAppApplicationSetting -Name $existingFunctionApp.Name -ResourceGroupName $existingFunctionApp.ResourceGroupName @params
+                     } else {
+                        Az.Functions.internal\Get-AzWebAppApplicationSetting -Name $existingFunctionApp.Name -ResourceGroupName $existingFunctionApp.ResourceGroupName -SubscriptionId $existingFunctionApp.SubscriptionId
+                     }
+        if ($null -ne $settings)
+        {
+            $currentApplicationSettings = ConvertWebAppApplicationSettingToHashtable -ApplicationSetting $settings -ShowAllAppSettings
+        }
 
         if ($ApplicationInsightsKey)
         {
