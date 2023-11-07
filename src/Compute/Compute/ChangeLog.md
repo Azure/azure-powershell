@@ -26,6 +26,7 @@
 * Removed unversioned and outdated images from New-AzVmss `-ImageName` argument completers.
 * Added new parameters `-ElasticSanResourceId` and `-OptimizedForFrequentAttach` to `New-AzDiskConfig` cmdlet.
 * Added new parameter `-ElasticSanResourceId` to `New-AzSnapshotConfig` cmdlet.
+* Added new parameter `-VirtualMachineScaleSetId` to `Update-AzVm` cmdlet.
 
 ## Version 6.3.0
 * Added `-Hibernate` switch parameter to `Stop-AzVmss` default parameter set. 
