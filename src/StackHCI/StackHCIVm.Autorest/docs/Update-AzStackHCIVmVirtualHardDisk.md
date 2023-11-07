@@ -1,51 +1,51 @@
 ---
 external help file:
-Module Name: Az.StackHCIVm
-online version: https://learn.microsoft.com/powershell/module/az.stackhcivm/update-azstackhcivmlogicalnetwork
+Module Name: Az.StackHCI
+online version: https://learn.microsoft.com/powershell/module/az.stackhci/update-azstackhcivmvirtualharddisk
 schema: 2.0.0
 ---
 
-# Update-AzStackHCIVmLogicalNetwork
+# Update-AzStackHCIVmVirtualHardDisk
 
 ## SYNOPSIS
-The operation to update a logical network.
+The operation to update a virtual hard disk.
 
 ## SYNTAX
 
 ### ByResourceId (Default)
 ```
-Update-AzStackHCIVmLogicalNetwork [-ResourceId <String>] [-Tag <Hashtable>] [<CommonParameters>]
+Update-AzStackHCIVmVirtualHardDisk [-ResourceId <String>] [-Tag <Hashtable>] [<CommonParameters>]
 ```
 
 ### UpdateExpanded
 ```
-Update-AzStackHCIVmLogicalNetwork -Name <String> -ResourceGroupName <String> [-SubscriptionId <String>]
+Update-AzStackHCIVmVirtualHardDisk -Name <String> -ResourceGroupName <String> [-SubscriptionId <String>]
  [-Tag <Hashtable>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ### UpdateViaIdentityExpanded
 ```
-Update-AzStackHCIVmLogicalNetwork -InputObject <IStackHciVMIdentity> [-Tag <Hashtable>]
+Update-AzStackHCIVmVirtualHardDisk -InputObject <IStackHciVMIdentity> [-Tag <Hashtable>]
  [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-The operation to update a logical network.
+The operation to update a virtual hard disk.
 
 ## EXAMPLES
 
-### Example 1: Update a Logical Network.
+### Example 1: Update a Virtual Hard Disk.
 ```powershell
-Update-AzStackHCIVmLogicalNetwork  -Name "testLnet" -ResourceGroupName "test-rg" -Tag  @{"tagname" = "tagvalue"}
+Update-AzStackHCIVmVirtualHardDisk  -Name "testVhd" -ResourceGroupName "test-rg" -Tag @{"tagname" = "tagvalue"}
 ```
 
 ```output
 Name            ResourceGroupName
 ----            -----------------
-testLnet      test-rg
+testVhd       test-rg
 ```
 
-This command updates an exisiting logical network in the specified resource group.
+This command updates an exisiting virtual hard disk in the specified resource group.
 
 ## PARAMETERS
 
@@ -65,7 +65,8 @@ Accept wildcard characters: False
 ```
 
 ### -DefaultProfile
-The credentials, account, tenant, and subscription used for communication with Azure.
+The DefaultProfile parameter is not functional.
+Use the SubscriptionId parameter when available if executing the cmdlet against a different subscription.
 
 ```yaml
 Type: System.Management.Automation.PSObject
@@ -96,12 +97,12 @@ Accept wildcard characters: False
 ```
 
 ### -Name
-Name of the logical network
+Name of the virtual hard disk
 
 ```yaml
 Type: System.String
 Parameter Sets: UpdateExpanded
-Aliases: LogicalNetworkName
+Aliases: VirtualHardDiskName
 
 Required: True
 Position: Named
@@ -142,7 +143,7 @@ Accept wildcard characters: False
 ```
 
 ### -ResourceId
-The ARM Resource ID of the virtual network.
+The ARM Resource ID of the virtual hard disk .
 
 ```yaml
 Type: System.String
@@ -226,36 +227,9 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.StackHCIVm.Models.Api20230901Preview.ILogicalNetworks
+### Microsoft.Azure.PowerShell.Cmdlets.StackHCIVm.Models.Api20230901Preview.IVirtualHardDisks
 
 ## NOTES
-
-ALIASES
-
-COMPLEX PARAMETER PROPERTIES
-
-To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
-
-
-INPUTOBJECT <IStackHciVMIdentity>: Identity Parameter
-  - `[ExtensionName <String>]`: The name of the machine extension.
-  - `[ExtensionType <String>]`: The extensionType of the Extension being received.
-  - `[GalleryImageName <String>]`: Name of the gallery image
-  - `[Id <String>]`: Resource identity path
-  - `[Location <String>]`: The location of the Extension being received.
-  - `[LogicalNetworkName <String>]`: Name of the logical network
-  - `[MachineName <String>]`: The name of the hybrid machine.
-  - `[MarketplaceGalleryImageName <String>]`: Name of the marketplace gallery image
-  - `[MetadataName <String>]`: Name of the HybridIdentityMetadata.
-  - `[NetworkInterfaceName <String>]`: Name of the network interface
-  - `[OSType <String>]`: Defines the os type.
-  - `[Publisher <String>]`: The publisher of the Extension being received.
-  - `[ResourceGroupName <String>]`: The name of the resource group. The name is case insensitive.
-  - `[ResourceUri <String>]`: The fully qualified Azure Resource manager identifier of the Hybrid Compute machine resource to be extended.
-  - `[StorageContainerName <String>]`: Name of the storage container
-  - `[SubscriptionId <String>]`: The ID of the target subscription.
-  - `[Version <String>]`: The version of the Extension being received.
-  - `[VirtualHardDiskName <String>]`: Name of the virtual hard disk
 
 ## RELATED LINKS
 

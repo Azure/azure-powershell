@@ -1,69 +1,70 @@
 ---
 external help file:
-Module Name: Az.StackHCIVm
-online version: https://learn.microsoft.com/powershell/module/az.stackhcivm/get-azstackhcivmlogicalnetwork
+Module Name: Az.StackHCI
+online version: https://learn.microsoft.com/powershell/module/az.stackhci/get-azstackhcivmvirtualharddisk
 schema: 2.0.0
 ---
 
-# Get-AzStackHCIVmLogicalNetwork
+# Get-AzStackHCIVmVirtualHardDisk
 
 ## SYNOPSIS
-Gets a logical network
+Gets a virtual hard disk
 
 ## SYNTAX
 
 ### List1 (Default)
 ```
-Get-AzStackHCIVmLogicalNetwork [-SubscriptionId <String[]>] [-DefaultProfile <PSObject>] [<CommonParameters>]
+Get-AzStackHCIVmVirtualHardDisk [-SubscriptionId <String[]>] [-DefaultProfile <PSObject>] [<CommonParameters>]
 ```
 
 ### ByResourceId
 ```
-Get-AzStackHCIVmLogicalNetwork [-ResourceId <String>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
+Get-AzStackHCIVmVirtualHardDisk [-ResourceId <String>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
  [<CommonParameters>]
 ```
 
 ### Get
 ```
-Get-AzStackHCIVmLogicalNetwork -Name <String> -ResourceGroupName <String> [-SubscriptionId <String[]>]
+Get-AzStackHCIVmVirtualHardDisk -Name <String> -ResourceGroupName <String> [-SubscriptionId <String[]>]
  [-DefaultProfile <PSObject>] [<CommonParameters>]
 ```
 
 ### List
 ```
-Get-AzStackHCIVmLogicalNetwork -ResourceGroupName <String> [-SubscriptionId <String[]>]
+Get-AzStackHCIVmVirtualHardDisk -ResourceGroupName <String> [-SubscriptionId <String[]>]
  [-DefaultProfile <PSObject>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-Gets a logical network
+Gets a virtual hard disk
 
 ## EXAMPLES
 
-### Example 1:  Get a Logical Network
+### Example 1: Get a Virtual Hard Disk
 ```powershell
-Get-AzStackHCIVmLogicalNetwork -Name 'testLnet' -ResourceGroupName 'test-rg' 
+Get-AzStackHCIVmVirtualHardDisk -Name  "testVhd" -ResourceGroupName "test-rg"
 ```
 
 ```output
 Name            ResourceGroupName
 ----            -----------------
-testLnet       test-rg
+testVhd       test-rg
 ```
 
-This command gets a specific logical network in the specified resource group.
+This command gets a specific virtual hard disk in the specified resource group.
 
-### Example 2: List all Logical Networks in a Resource Group  
+### Example 2: List all Virtual Hard Disks in a Resource Group
 ```powershell
-Get-AzStackHCIVmLogicalNetwork -ResourceGroupName 'test-rg'
+Get-AzStackHCIVmVirtualHardDisk -ResourceGroupName "test-rg"
 ```
 
 ```output
 Name            ResourceGroupName
 ----            -----------------
-testLnet       test-rg
+testVhd       test-rg
 ```
-This command lists all logical networks in the specified resource group.
+
+This command lists all virtual hard disks in the specified resource group.
 
 ## PARAMETERS
 
@@ -83,7 +84,8 @@ Accept wildcard characters: False
 ```
 
 ### -DefaultProfile
-The credentials, account, tenant, and subscription used for communication with Azure.
+The DefaultProfile parameter is not functional.
+Use the SubscriptionId parameter when available if executing the cmdlet against a different subscription.
 
 ```yaml
 Type: System.Management.Automation.PSObject
@@ -98,12 +100,12 @@ Accept wildcard characters: False
 ```
 
 ### -Name
-Name of the logical network
+Name of the virtual hard disk
 
 ```yaml
 Type: System.String
 Parameter Sets: Get
-Aliases: LogicalNetworkName
+Aliases: VirtualHardDiskName
 
 Required: True
 Position: Named
@@ -144,7 +146,7 @@ Accept wildcard characters: False
 ```
 
 ### -ResourceId
-The ARM ID of the logical network.
+The ARM ID of the virtual hard disk.
 
 ```yaml
 Type: System.String
@@ -180,11 +182,9 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.StackHCIVm.Models.Api20230901Preview.ILogicalNetworks
+### Microsoft.Azure.PowerShell.Cmdlets.StackHCIVm.Models.Api20230901Preview.IVirtualHardDisks
 
 ## NOTES
-
-ALIASES
 
 ## RELATED LINKS
 

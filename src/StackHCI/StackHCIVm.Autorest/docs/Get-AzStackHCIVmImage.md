@@ -1,6 +1,6 @@
 ---
 external help file:
-Module Name: Az.StackHCIVm
+Module Name: Az.StackHCI
 online version: https://learn.microsoft.com/powershell/module/az.stackhci/get-azstackhcivmimage
 schema: 2.0.0
 ---
@@ -64,6 +64,7 @@ Name            ResourceGroupName
 ----            -----------------
 testImage       test-rg
 ```
+
 This command lists all images in the specified resource group.
 
 ## PARAMETERS
@@ -186,8 +187,6 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ### Microsoft.Azure.PowerShell.Cmdlets.StackHCIVm.Models.Api20230901Preview.IMarketplaceGalleryImages
 
 ## NOTES
-
-ALIASES
 
 ## RELATED LINKS
 

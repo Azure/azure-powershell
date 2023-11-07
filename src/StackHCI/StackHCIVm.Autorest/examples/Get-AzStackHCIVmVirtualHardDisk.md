@@ -21,6 +21,3 @@ testVhd       test-rg
 ```
 
 This command lists all virtual hard disks in the specified resource group. 
-
-
-

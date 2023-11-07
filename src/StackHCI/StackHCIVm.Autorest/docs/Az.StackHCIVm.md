@@ -37,7 +37,7 @@ Gets a virtual machine
 
 ### [New-AzStackHCIVmImage](New-AzStackHCIVmImage.md)
 The operation to create an image.
-Please note some properties can be set only during image creation.
+Please note some properties can be set only during  image creation.
 
 ### [New-AzStackHCIVmLogicalNetwork](New-AzStackHCIVmLogicalNetwork.md)
 The operation to create or update a logical network.
@@ -78,10 +78,10 @@ The operation to delete a virtual hard disk.
 The operation to delete a virtual machine.
 
 ### [Remove-AzStackHCIVmVirtualMachineDataDisk](Remove-AzStackHCIVmVirtualMachineDataDisk.md)
-The operation to delete a data disk from a  virtual machine.
+The operation to delete a data disk from a virtual machine.
 
 ### [Remove-AzStackHCIVmVirtualMachineNetworkInterface](Remove-AzStackHCIVmVirtualMachineNetworkInterface.md)
-The operation to delete a network interface from a  virtual machine.
+The operation to delete a network interface from a virtual machine.
 
 ### [Restart-AzStackHCIVmVirtualMachine](Restart-AzStackHCIVmVirtualMachine.md)
 The operation to restart a virtual machine instance.
@@ -94,7 +94,6 @@ The operation to stop a virtual machine instance.
 
 ### [Update-AzStackHCIVmImage](Update-AzStackHCIVmImage.md)
 The operation to update an image.
-Please note some properties can be set only during image creation.
 
 ### [Update-AzStackHCIVmLogicalNetwork](Update-AzStackHCIVmLogicalNetwork.md)
 The operation to update a logical network.

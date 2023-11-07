@@ -1,6 +1,6 @@
 ---
 external help file:
-Module Name: Az.StackHCIVm
+Module Name: Az.StackHCI
 online version: https://learn.microsoft.com/powershell/module/az.stackhci/new-azstackhcivmlogicalnetwork
 schema: 2.0.0
 ---
@@ -38,6 +38,7 @@ Name            ResourceGroupName
 ----            -----------------
 testLnet       test-rg
 ```
+
 This command creates a logical network in the specified resource group.
 
 ## PARAMETERS
@@ -400,8 +401,6 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ### Microsoft.Azure.PowerShell.Cmdlets.StackHCIVm.Models.Api20230901Preview.ILogicalNetworks
 
 ## NOTES
-
-ALIASES
 
 ## RELATED LINKS
 

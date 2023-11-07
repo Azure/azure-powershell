@@ -1,6 +1,6 @@
 ---
 external help file:
-Module Name: Az.StackHCIVm
+Module Name: Az.StackHCI
 online version: https://learn.microsoft.com/powershell/module/az.stackhci/new-azstackhcivmimage
 schema: 2.0.0
 ---
@@ -56,6 +56,7 @@ Name            ResourceGroupName
 ----            -----------------
 testImage       test-rg
 ```
+
 This command creates a gallery image from a local path.
 
 ### Example 2:  Create a Marketplace Gallery Image 
@@ -68,6 +69,7 @@ Name            ResourceGroupName
 ----            -----------------
 testMarketplaceImage       test-rg
 ```
+
 This command creates a marketplace gallery image using the specified offer , publisher, sku and version.
 
 ### Example 3: {Create a  Marketplace Gallery Image From URN 
@@ -80,6 +82,7 @@ Name            ResourceGroupName
 ----            -----------------
 testMarketplaceImageURN       test-rg
 ```
+
 This command creates a marketplace gallery image using the specified urn.
 
 ## PARAMETERS
@@ -433,8 +436,6 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ### Microsoft.Azure.PowerShell.Cmdlets.StackHCIVm.Models.Api20230901Preview.IMarketplaceGalleryImages
 
 ## NOTES
-
-ALIASES
 
 ## RELATED LINKS
 

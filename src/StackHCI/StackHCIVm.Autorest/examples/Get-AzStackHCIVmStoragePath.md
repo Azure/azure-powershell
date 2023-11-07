@@ -21,6 +21,3 @@ testStoragePath       test-rg
 ```
 
 This command lists all storage paths in the specified resource group. 
-
-
-

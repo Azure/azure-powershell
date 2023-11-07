@@ -20,4 +20,3 @@ Name            ResourceGroupName
 testNic       test-rg
 ```
 This command lists all network interfaces in the specified resource group. 
-

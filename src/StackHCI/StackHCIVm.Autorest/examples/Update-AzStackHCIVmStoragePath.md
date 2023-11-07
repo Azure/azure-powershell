@@ -10,4 +10,3 @@ testStoragePath       test-rg
 ```
 
 This command updates an exisiting storage path in the specified resource group.
-

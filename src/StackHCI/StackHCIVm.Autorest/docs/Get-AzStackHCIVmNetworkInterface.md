@@ -1,7 +1,7 @@
 ---
 external help file:
-Module Name: Az.StackHCIVm
-online version: https://learn.microsoft.com/powershell/module/az.stackhcivm/get-azstackhcivmnetworkinterface
+Module Name: Az.StackHCI
+online version: https://learn.microsoft.com/powershell/module/az.stackhci/get-azstackhcivmnetworkinterface
 schema: 2.0.0
 ---
 
@@ -64,6 +64,7 @@ Name            ResourceGroupName
 ----            -----------------
 testNic       test-rg
 ```
+
 This command lists all network interfaces in the specified resource group.
 
 ## PARAMETERS
@@ -84,7 +85,8 @@ Accept wildcard characters: False
 ```
 
 ### -DefaultProfile
-The credentials, account, tenant, and subscription used for communication with Azure.
+The DefaultProfile parameter is not functional.
+Use the SubscriptionId parameter when available if executing the cmdlet against a different subscription.
 
 ```yaml
 Type: System.Management.Automation.PSObject
@@ -184,8 +186,6 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ### Microsoft.Azure.PowerShell.Cmdlets.StackHCIVm.Models.Api20230901Preview.INetworkInterfaces
 
 ## NOTES
-
-ALIASES
 
 ## RELATED LINKS
 
