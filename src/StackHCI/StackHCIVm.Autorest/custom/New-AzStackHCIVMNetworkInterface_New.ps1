@@ -121,7 +121,7 @@ param(
     [System.Collections.Hashtable]
     # Resource tags.
     ${Tag},
-    
+
     [Parameter()]
     [Alias('AzureRMContext', 'AzureCredential')]
     [ValidateNotNull()]
@@ -224,7 +224,7 @@ param(
         Write-Error "Invalid SubnetId: $SubnetId" -ErrorAction Stop
       }
       
-      $subnet = Az.StackHCIVm\Get-AzStackHCIVmLogicalNetwork -ResourceId $SubnetId  -ErrorAction SilentlyContinue
+      $subnet = Az.StackHCIVm\Get-AzStackHCIVmLogicalNetwork -ResourceId $SubnetId  
 
       if ($subnet -eq $null){
         Write-Error "A Logical Network with id : $SubnetId does not exist." -ErrorAction Stop

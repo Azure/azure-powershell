@@ -16,7 +16,7 @@ if(($null -eq $TestName) -or ($TestName -contains 'AzStackHCIVmNetworkInterface'
 
 Describe 'AzStackHCIVmNetworkInterface' {
     It 'Create Network Interface  '  {
-        New-AzStackHciVMNetworkInterface  -Name $env.nicName -SubscriptionId $env.subscriptionId -ResourceGroupName $env.resourceGroupName -CustomLocationId $env.customLocationId -Location $env.location -SubnetName "bugbashlnet"  | Select-Object -Property ProvisioningState | Should -BeExactly "@{ProvisioningState=Succeeded}"
+        New-AzStackHciVMNetworkInterface  -Name $env.nicName -SubscriptionId $env.subscriptionId -ResourceGroupName $env.resourceGroupName -CustomLocationId $env.customLocationId -Location $env.location -SubnetId "/subscriptions/0709bd7a-8383-4e1d-98c8-f81d1b3443fc/resourceGroups/AltaylSnClus-rg/providers/Microsoft.AzureStackHCI/logicalNetworks/bugbashlnet"  | Select-Object -Property ProvisioningState | Should -BeExactly "@{ProvisioningState=Succeeded}"
     }
 
     It 'List'  {
