@@ -18,7 +18,8 @@ New-AzStackHCIVmLogicalNetwork -Name <String> -ResourceGroupName <String> -Custo
  -Location <String> [-SubscriptionId <String>] [-AddressPrefix <String[]>] [-DnsServer <String[]>]
  [-IpAllocationMethod <String>] [-IpPool <Hashtable[]>] [-IpPoolEnd <String>] [-IpPoolStart <String>]
  [-IpPoolType <String>] [-Route <Hashtable[]>] [-Subnet <Hashtable[]>] [-SubnetName <String>]
- [-Tag <Hashtable>] [-Vlan <Int32>] [-VMSwitchName <String>] [-Confirm] [-WhatIf] [<CommonParameters>]
+ [-Tag <Hashtable>] [-Vlan <Int32>] [-VMSwitchName <String>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
+ [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -56,6 +57,21 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### -AsJob
+Run the command as a job
+
+```yaml
+Type: System.Management.Automation.SwitchParameter
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
 ### -CustomLocationId
 The name of the extended location.
 
@@ -65,6 +81,21 @@ Parameter Sets: (All)
 Aliases:
 
 Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -DefaultProfile
+The credentials, account, tenant, and subscription used for communication with Azure.
+
+```yaml
+Type: System.Management.Automation.PSObject
+Parameter Sets: (All)
+Aliases: AzureRMContext, AzureCredential
+
+Required: False
 Position: Named
 Default value: None
 Accept pipeline input: False
@@ -186,6 +217,21 @@ Parameter Sets: (All)
 Aliases: LogicalNetworkName
 
 Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -NoWait
+Run the command asynchronously
+
+```yaml
+Type: System.Management.Automation.SwitchParameter
+Parameter Sets: (All)
+Aliases:
+
+Required: False
 Position: Named
 Default value: None
 Accept pipeline input: False

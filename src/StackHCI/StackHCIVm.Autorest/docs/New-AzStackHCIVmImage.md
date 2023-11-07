@@ -18,7 +18,8 @@ Please note some properties can be set only during  image creation.
 New-AzStackHCIVmImage -Name <String> -ResourceGroupName <String> -CustomLocationId <String> -Location <String>
  -OSType <OperatingSystemTypes> -URN <String> [-SubscriptionId <String>]
  [-CloudInitDataSource <CloudInitDataSource>] [-StoragePathId <String>] [-StoragePathName <String>]
- [-StoragePathResourceGroup <String>] [-Tag <Hashtable>] [-Confirm] [-WhatIf] [<CommonParameters>]
+ [-StoragePathResourceGroup <String>] [-Tag <Hashtable>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
+ [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ### GalleryImage
@@ -26,7 +27,8 @@ New-AzStackHCIVmImage -Name <String> -ResourceGroupName <String> -CustomLocation
 New-AzStackHCIVmImage -Name <String> -ResourceGroupName <String> -CustomLocationId <String>
  -ImagePath <String> -Location <String> -OSType <OperatingSystemTypes> [-SubscriptionId <String>]
  [-CloudInitDataSource <CloudInitDataSource>] [-StoragePathId <String>] [-StoragePathName <String>]
- [-StoragePathResourceGroup <String>] [-Tag <Hashtable>] [-Confirm] [-WhatIf] [<CommonParameters>]
+ [-StoragePathResourceGroup <String>] [-Tag <Hashtable>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
+ [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ### Marketplace
@@ -34,8 +36,8 @@ New-AzStackHCIVmImage -Name <String> -ResourceGroupName <String> -CustomLocation
 New-AzStackHCIVmImage -Name <String> -ResourceGroupName <String> -CustomLocationId <String> -Location <String>
  -Offer <String> -OSType <OperatingSystemTypes> -Publisher <String> -Sku <String> -Version <String>
  [-SubscriptionId <String>] [-CloudInitDataSource <CloudInitDataSource>] [-StoragePathId <String>]
- [-StoragePathName <String>] [-StoragePathResourceGroup <String>] [-Tag <Hashtable>] [-Confirm] [-WhatIf]
- [<CommonParameters>]
+ [-StoragePathName <String>] [-StoragePathResourceGroup <String>] [-Tag <Hashtable>]
+ [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -82,6 +84,21 @@ This command creates a marketplace gallery image using the specified urn.
 
 ## PARAMETERS
 
+### -AsJob
+Run the command as a job
+
+```yaml
+Type: System.Management.Automation.SwitchParameter
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
 ### -CloudInitDataSource
 Datasource for the gallery image when provisioning with cloud-init [NoCloud, Azure]
 
@@ -106,6 +123,21 @@ Parameter Sets: (All)
 Aliases:
 
 Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -DefaultProfile
+The credentials, account, tenant, and subscription used for communication with Azure.
+
+```yaml
+Type: System.Management.Automation.PSObject
+Parameter Sets: (All)
+Aliases: AzureRMContext, AzureCredential
+
+Required: False
 Position: Named
 Default value: None
 Accept pipeline input: False
@@ -155,6 +187,21 @@ Parameter Sets: (All)
 Aliases: ImageName
 
 Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -NoWait
+Run the command asynchronously
+
+```yaml
+Type: System.Management.Automation.SwitchParameter
+Parameter Sets: (All)
+Aliases:
+
+Required: False
 Position: Named
 Default value: None
 Accept pipeline input: False

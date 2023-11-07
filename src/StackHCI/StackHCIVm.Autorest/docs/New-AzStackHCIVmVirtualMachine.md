@@ -24,7 +24,8 @@ New-AzStackHCIVmVirtualMachine -Name <String> -ResourceGroupName <String> -Custo
  [-NicResourceGroup <String>] [-ProvisionVMAgent] [-ProvisionVMConfigAgent] [-SecureBootEnabled]
  [-SshPublicKey <String[]>] [-StoragePathId <String>] [-StoragePathName <String>]
  [-StoragePathResourceGroup <String>] [-Tag <Hashtable>] [-TimeZone <String>] [-VmMemoryInMB <Int64>]
- [-VmProcessor <Int32>] [-VmSize <VMSizeEnum>] [-Confirm] [-WhatIf] [<CommonParameters>]
+ [-VmProcessor <Int32>] [-VmSize <VMSizeEnum>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm]
+ [-WhatIf] [<CommonParameters>]
 ```
 
 ### ByImageName
@@ -38,7 +39,8 @@ New-AzStackHCIVmVirtualMachine -Name <String> -ResourceGroupName <String> -Custo
  [-NicName <String[]>] [-NicResourceGroup <String>] [-ProvisionVMAgent] [-ProvisionVMConfigAgent]
  [-SecureBootEnabled] [-SshPublicKey <String[]>] [-StoragePathId <String>] [-StoragePathName <String>]
  [-StoragePathResourceGroup <String>] [-Tag <Hashtable>] [-TimeZone <String>] [-VmMemoryInMB <Int64>]
- [-VmProcessor <Int32>] [-VmSize <VMSizeEnum>] [-Confirm] [-WhatIf] [<CommonParameters>]
+ [-VmProcessor <Int32>] [-VmSize <VMSizeEnum>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm]
+ [-WhatIf] [<CommonParameters>]
 ```
 
 ### ByOsDiskId
@@ -52,7 +54,8 @@ New-AzStackHCIVmVirtualMachine -Name <String> -ResourceGroupName <String> -Custo
  [-NicResourceGroup <String>] [-ProvisionVMAgent] [-ProvisionVMConfigAgent] [-SecureBootEnabled]
  [-SshPublicKey <String[]>] [-StoragePathId <String>] [-StoragePathName <String>]
  [-StoragePathResourceGroup <String>] [-Tag <Hashtable>] [-TimeZone <String>] [-VmMemoryInMB <Int64>]
- [-VmProcessor <Int32>] [-VmSize <VMSizeEnum>] [-Confirm] [-WhatIf] [<CommonParameters>]
+ [-VmProcessor <Int32>] [-VmSize <VMSizeEnum>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm]
+ [-WhatIf] [<CommonParameters>]
 ```
 
 ### ByOsDiskName
@@ -66,7 +69,8 @@ New-AzStackHCIVmVirtualMachine -Name <String> -ResourceGroupName <String> -Custo
  [-NicResourceGroup <String>] [-OSDiskResourceGroup <String>] [-ProvisionVMAgent] [-ProvisionVMConfigAgent]
  [-SecureBootEnabled] [-SshPublicKey <String[]>] [-StoragePathId <String>] [-StoragePathName <String>]
  [-StoragePathResourceGroup <String>] [-Tag <Hashtable>] [-TimeZone <String>] [-VmMemoryInMB <Int64>]
- [-VmProcessor <Int32>] [-VmSize <VMSizeEnum>] [-Confirm] [-WhatIf] [<CommonParameters>]
+ [-VmProcessor <Int32>] [-VmSize <VMSizeEnum>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm]
+ [-WhatIf] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -122,6 +126,21 @@ AdminUsername - admin username
 
 ```yaml
 Type: System.String
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -AsJob
+Run the command as a job
+
+```yaml
+Type: System.Management.Automation.SwitchParameter
 Parameter Sets: (All)
 Aliases:
 
@@ -199,6 +218,21 @@ Data Disks - Resource Group of Data Disks.
 Type: System.String
 Parameter Sets: (All)
 Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -DefaultProfile
+The credentials, account, tenant, and subscription used for communication with Azure.
+
+```yaml
+Type: System.Management.Automation.PSObject
+Parameter Sets: (All)
+Aliases: AzureRMContext, AzureCredential
 
 Required: False
 Position: Named
@@ -424,6 +458,21 @@ NetworkInterfaces - Resource Group of Network Interfaces.
 
 ```yaml
 Type: System.String
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -NoWait
+Run the command asynchronously
+
+```yaml
+Type: System.Management.Automation.SwitchParameter
 Parameter Sets: (All)
 Aliases:
 

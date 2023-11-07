@@ -44,5 +44,4 @@ Describe 'AzStackHCIVmNetworkInterface' {
         } | Should -Throw
     }
 
-}
- #>
+} #>
