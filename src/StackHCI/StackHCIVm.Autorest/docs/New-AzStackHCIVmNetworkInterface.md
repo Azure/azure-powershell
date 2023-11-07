@@ -1,6 +1,6 @@
 ---
 external help file:
-Module Name: Az.StackHCI
+Module Name: Az.StackHCIVm
 online version: https://learn.microsoft.com/powershell/module/az.stackhci/new-azstackhcivmnetworkinterface
 schema: 2.0.0
 ---
@@ -37,7 +37,6 @@ Name            ResourceGroupName
 ----            -----------------
 testNic      test-rg
 ```
-
 This command creates a network interface in the specified resource group.
 
 ## PARAMETERS
@@ -324,6 +323,8 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ### Microsoft.Azure.PowerShell.Cmdlets.StackHCIVm.Models.Api20230901Preview.INetworkInterfaces
 
 ## NOTES
+
+ALIASES
 
 ## RELATED LINKS
 

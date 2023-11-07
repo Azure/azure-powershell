@@ -1,6 +1,6 @@
 ---
 external help file:
-Module Name: Az.StackHCI
+Module Name: Az.StackHCIVm
 online version: https://learn.microsoft.com/powershell/module/az.stackhci/get-azstackhcivmvirtualmachine
 schema: 2.0.0
 ---
@@ -203,6 +203,8 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ### Microsoft.Azure.PowerShell.Cmdlets.StackHCIVm.Models.Api20230901Preview.IVirtualMachineInstance
 
 ## NOTES
+
+ALIASES
 
 ## RELATED LINKS
 

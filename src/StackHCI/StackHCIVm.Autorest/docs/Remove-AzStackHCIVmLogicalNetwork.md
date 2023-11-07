@@ -1,6 +1,6 @@
 ---
 external help file:
-Module Name: Az.StackHCI
+Module Name: Az.StackHCIVm
 online version: https://learn.microsoft.com/powershell/module/az.stackhci/remove-azstackhcivmlogicalnetwork
 schema: 2.0.0
 ---
@@ -154,6 +154,8 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ### System.Boolean
 
 ## NOTES
+
+ALIASES
 
 ## RELATED LINKS
 

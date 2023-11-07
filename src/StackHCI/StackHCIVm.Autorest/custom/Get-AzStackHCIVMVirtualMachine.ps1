@@ -135,7 +135,7 @@ function Get-AzStackHCIVmVirtualMachine {
             }   
         } elseif ($PSCmdlet.ParameterSetName -eq "ByResourceGroup") {
             $allHCIMachines = [System.Collections.ArrayList]::new()
-            $machines = Az.StackHCIVm.internal\Get-AzStackHCIVmMachine -ResourceGroupName $ResourceGroupName
+            $machines = Az.StackHCIVm.internal\Get-AzStackHCIVmMachine -ResourceGroupName $ResourceGroupName -SubscriptionId $SubscriptionId
             foreach ($machine in $machines){
                 if ($machine.Kind.ToString() -eq "HCI"){
                     [void]$allHCIMachines.Add($machine) 

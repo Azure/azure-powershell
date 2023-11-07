@@ -1,7 +1,7 @@
 ---
 external help file:
-Module Name: Az.StackHCI
-online version: https://learn.microsoft.com/powershell/module/az.stackhci/get-azstackhcivmstoragepath
+Module Name: Az.StackHCIVm
+online version: https://learn.microsoft.com/powershell/module/az.stackhcivm/get-azstackhcivmstoragepath
 schema: 2.0.0
 ---
 
@@ -68,8 +68,7 @@ This command lists all storage paths in the specified resource group.
 ## PARAMETERS
 
 ### -DefaultProfile
-The DefaultProfile parameter is not functional.
-Use the SubscriptionId parameter when available if executing the cmdlet against a different subscription.
+The credentials, account, tenant, and subscription used for communication with Azure.
 
 ```yaml
 Type: System.Management.Automation.PSObject
@@ -169,6 +168,8 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ### Microsoft.Azure.PowerShell.Cmdlets.StackHCIVm.Models.Api20230901Preview.IStorageContainers
 
 ## NOTES
+
+ALIASES
 
 ## RELATED LINKS
 

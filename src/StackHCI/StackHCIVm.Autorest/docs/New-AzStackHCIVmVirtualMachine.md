@@ -1,6 +1,6 @@
 ---
 external help file:
-Module Name: Az.StackHCI
+Module Name: Az.StackHCIVm
 online version: https://learn.microsoft.com/powershell/module/az.stackhci/new-azstackhcivmvirtualmachine
 schema: 2.0.0
 ---
@@ -102,7 +102,6 @@ Name            ResourceGroupName
 ----            -----------------
 testVm          test-rg
 ```
-
 This command creates a virtual machine from a disk.
 
 ## PARAMETERS
@@ -804,6 +803,8 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ### Microsoft.Azure.PowerShell.Cmdlets.StackHCIVm.Models.Api20230901Preview.IVirtualMachineInstance
 
 ## NOTES
+
+ALIASES
 
 ## RELATED LINKS
 
