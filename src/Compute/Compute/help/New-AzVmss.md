@@ -207,7 +207,7 @@ $vmss = Get-AzVmss -ResourceGroupName $ResourceGroupName -VMScaleSetName $vmssNa
 
 Create a VMSS with a UserData value
 
-### Example 4: Create a VMSS with the TrustedLaunch security type.
+### Example 4: Create a VMSS with the Guest Attestation extension installed and with the TrustedLaunch security type.
 ```powershell
 # Common setup
 $rgname = <RESOURCE GROUP NAME>;
@@ -248,6 +248,7 @@ $vmss = New-AzVmssConfig -Location $loc -SkuCapacity 2 -SkuName $vmssSize -Upgra
 
 # Requirements for the Guest Attestation defaulting behavior.
 # SecurityType is TrustedLaunch, EnableVtpm is true, EnableSecureBoot is true.
+# DisableIntegrityMonitoring is not true.
 $vmss = Set-AzVmssSecurityProfile -VirtualMachineScaleSet $vmss -SecurityType $securityType;
 $vmss = Set-AzVmssUefi -VirtualMachineScaleSet $VMSS -EnableVtpm $vtpm -EnableSecureBoot $secureboot;
 

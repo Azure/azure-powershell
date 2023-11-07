@@ -51,7 +51,6 @@ using SM = Microsoft.Azure.PowerShell.Cmdlets.Compute.Helpers.Storage.Models;
 using Microsoft.Azure.Commands.Compute;
 using Microsoft.Azure.PowerShell.Cmdlets.Compute.Helpers.Network.Models;
 using Microsoft.WindowsAzure.Commands.Common.CustomAttributes;
-using Microsoft.Azure.Management.WebSites.Version2016_09_01.Models;
 using Microsoft.Azure.Commands.Common.Strategies.Compute;
 
 namespace Microsoft.Azure.Commands.Compute
@@ -774,8 +773,7 @@ namespace Microsoft.Azure.Commands.Compute
                     this.EnableVtpm = this.EnableVtpm ?? true;
                     this.EnableSecureBoot = this.EnableSecureBoot ?? true;
                 }
-                else if (this.SecurityType != null
-                        && this.SecurityType?.ToLower() == ConstantValues.StandardSecurityType)
+                else if (this.SecurityType?.ToLower() == ConstantValues.StandardSecurityType)
                 {
                     this.SecurityType = this.SecurityType;
                 }
@@ -786,7 +784,9 @@ namespace Microsoft.Azure.Commands.Compute
             else
             {
                 this.SecurityType = ConstantValues.TrustedLaunchSecurityType;
-                if (!this.IsParameterBound(c => c.Image) && !this.IsParameterBound(c => c.ImageReferenceId) && !this.IsParameterBound(c => c.SharedGalleryImageId))
+                if (!this.IsParameterBound(c => c.Image) 
+                    && !this.IsParameterBound(c => c.ImageReferenceId) 
+                    && !this.IsParameterBound(c => c.SharedGalleryImageId))
                 {
                     this.Image = ConstantValues.TrustedLaunchDefaultImageAlias;
                     if (!this.IsParameterBound(c => c.EnableSecureBoot))
@@ -999,7 +999,8 @@ namespace Microsoft.Azure.Commands.Compute
             }
 
             // Disk attached scenario for TL defaulting
-            // Determines if the disk is HyperVGeneration V2 supported or not.
+            // Determines if the disk has SecurityType enabled.
+            // If so, turns on TrustedLaunch for this VM.
             if (this.VM.SecurityProfile?.SecurityType == null
                 && this.VM.StorageProfile?.OsDisk?.ManagedDisk?.Id != null)
             {
@@ -1018,8 +1019,8 @@ namespace Microsoft.Azure.Commands.Compute
             // Guest Attestation extension defaulting scenario check.
             // And SecureBootEnabled and VtpmEnabled defaulting scenario.
             if (this.VM.SecurityProfile?.SecurityType != null
-                && this.VM.SecurityProfile?.SecurityType?.ToLower() == ConstantValues.TrustedLaunchSecurityType 
-                || this.VM.SecurityProfile?.SecurityType?.ToLower() == ConstantValues.ConfidentialVMSecurityType)
+                && (this.VM.SecurityProfile?.SecurityType?.ToLower() == ConstantValues.TrustedLaunchSecurityType 
+                || this.VM.SecurityProfile?.SecurityType?.ToLower() == ConstantValues.ConfidentialVMSecurityType))
             {
                 if (this.VM?.SecurityProfile?.UefiSettings != null)
                 {
@@ -1369,34 +1370,6 @@ namespace Microsoft.Azure.Commands.Compute
                     this.VM.StorageProfile.ImageReference.Offer,
                     this.VM.StorageProfile.ImageReference.Sku,
                     version: imageVersion).GetAwaiter().GetResult();
-            return imgResponse;
-        }
-
-        /// <summary>
-        /// Takes the VM object and gets the specific image in the ImageReference.
-        /// </summary>
-        /// <returns></returns>
-        private Microsoft.Rest.Azure.AzureOperationResponse<VirtualMachineImage> retrieveSpecificImageFromId()
-        {
-            string imageRefString = this.VM.StorageProfile.ImageReference.Id.ToString();
-
-            var parts = imageRefString.Split(new char[] { '/' }, StringSplitOptions.RemoveEmptyEntries);
-
-            string imagePublisher = parts[Array.IndexOf(parts, "Publishers") + 1];
-            string imageOffer = parts[Array.IndexOf(parts, "Offers") + 1];
-            string imageSku = parts[Array.IndexOf(parts, "Skus") + 1];
-            string imageVersion = parts[Array.IndexOf(parts, "Versions") + 1];
-            //location is required when config object provided. 
-
-            imageVersion = retrieveImageVersion(imagePublisher, imageOffer, imageSku, imageVersion);
-
-            var imgResponse = ComputeClient.ComputeManagementClient.VirtualMachineImages.GetWithHttpMessagesAsync(
-                    this.Location.Canonicalize(),
-                    imagePublisher,
-                    imageOffer,
-                    imageSku,
-                    version: imageVersion).GetAwaiter().GetResult();
-
             return imgResponse;
         }
 

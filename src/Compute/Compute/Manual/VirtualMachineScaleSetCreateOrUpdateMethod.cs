@@ -555,7 +555,8 @@ namespace Microsoft.Azure.Commands.Compute.Automation
                     }
                 }
                 
-                if (_cmdlet.IsParameterBound(c => c.SecurityType))
+                if (_cmdlet.IsParameterBound(c => c.SecurityType)
+                    && _cmdlet.SecurityType != null)
                 {
                     if (_cmdlet.SecurityType?.ToLower() == ConstantValues.TrustedLaunchSecurityType || _cmdlet.SecurityType?.ToLower() == ConstantValues.ConfidentialVMSecurityType)
                     {
