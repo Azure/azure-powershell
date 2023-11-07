@@ -19,7 +19,7 @@ Get-AzStackHCIVmVirtualHardDisk [-SubscriptionId <String[]>] [-DefaultProfile <P
 
 ### ByResourceId
 ```
-Get-AzStackHCIVmVirtualHardDisk [-ResourceId <String>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
+Get-AzStackHCIVmVirtualHardDisk [-ResourceId <String>] [-DefaultProfile <PSObject>] [-NoWait]
  [<CommonParameters>]
 ```
 
@@ -67,21 +67,6 @@ testVhd       test-rg
 This command lists all virtual hard disks in the specified resource group.
 
 ## PARAMETERS
-
-### -AsJob
-Run the command as a job
-
-```yaml
-Type: System.Management.Automation.SwitchParameter
-Parameter Sets: ByResourceId
-Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
 
 ### -DefaultProfile
 The DefaultProfile parameter is not functional.

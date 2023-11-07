@@ -43,12 +43,6 @@ param(
     # The credentials, account, tenant, and subscription used for communication with Azure.
     ${DefaultProfile},
 
-    [Parameter()]
-    [Microsoft.Azure.PowerShell.Cmdlets.StackHCIVm.Category('Runtime')]
-    [System.Management.Automation.SwitchParameter]
-    # Run the command as a job
-    ${AsJob},
-
     [Parameter(DontShow)]
     [Microsoft.Azure.PowerShell.Cmdlets.StackHCIVm.Category('Runtime')]
     [System.Management.Automation.SwitchParameter]
