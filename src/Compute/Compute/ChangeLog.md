@@ -25,8 +25,6 @@
 * [Breaking change] Removed unversioned and outdated linux image aliases of `CentOS`, `RHEL`, `UbuntuLTS` and `Debian`.
 * [Breaking Change] Added defaulting logic for VM and VMSS creation to set SecurityType to TrustedLaunch and SecureBootEnabled and VTpmEnalbed to true when those are not set by the user.
 * [Breaking Change] Added defaulting logic for Disk creation to default to TrustedLaunch when able. Allows the user to turn this off by setting the SecurityType to Standard.
-* Added new parameters `-ElasticSanResourceId` and `-OptimizedForFrequentAttach` to `New-AzDiskConfig` cmdlet.
-* Added new parameter `-ElasticSanResourceId` to `New-AzSnapshotConfig` cmdlet.
 * Fixed `New-AzVmss` and `New-Azvm` to use `SharedGalleryImageId` parameter.
 
 ## Version 6.3.0

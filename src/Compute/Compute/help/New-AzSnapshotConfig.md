@@ -21,8 +21,8 @@ New-AzSnapshotConfig [[-SkuName] <String>] [[-OsType] <OperatingSystemTypes>] [[
  [-DiskEncryptionKey <KeyVaultAndSecretReference>] [-KeyEncryptionKey <KeyVaultAndKeyReference>]
  [-DiskEncryptionSetId <String>] [-EncryptionType <String>] [-DiskAccessId <String>]
  [-NetworkAccessPolicy <String>] [-PublicNetworkAccess <String>] [-AcceleratedNetwork <Boolean>]
- [-DataAccessAuthMode <String>] [-Architecture <String>] [-ElasticSanResourceId <String>]
- [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-DataAccessAuthMode <String>] [-Architecture <String>] [-DefaultProfile <IAzureContextContainer>] [-WhatIf]
+ [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -196,21 +196,6 @@ Accept wildcard characters: False
 
 ### -EdgeZone
 Sets the edge zone name. If set, the query will be routed to the specified edgezone instead of the main region.
-
-```yaml
-Type: System.String
-Parameter Sets: (All)
-Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: True (ByPropertyName)
-Accept wildcard characters: False
-```
-
-### -ElasticSanResourceId
-Required if createOption is CopyFromSanSnapshot. this is the ARM id of the source elastic san volume snapshot.
 
 ```yaml
 Type: System.String
