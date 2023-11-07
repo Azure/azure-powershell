@@ -235,7 +235,7 @@ SITECONFIG <ISiteConfigResource>: Web app configuration ARM resource.
   [SlowRequestCount <Int32?>]: Request Count.
   [SlowRequestTimeInterval <String>]: Time interval.
   [SlowRequestTimeTaken <String>]: Time taken.
-  [TagWhitelistJson <String>]: Gets or sets a JSON string containing a list of tags that are whitelisted for use by the push registration endpoint.
+  [TagWhitelistJson <String>]: Gets or sets a JSON string containing a list of tags that are in the allowed list for use by the push registration endpoint.
   [TagsRequiringAuth <String>]: Gets or sets a JSON string containing a list of tags that require user authentication to be used in the push registration endpoint.         Tags can consist of alphanumeric characters and the following:         '_', '@', '#', '.', ':', '-'.         Validation should be performed at the PushRequestHandler.
   [TracingOption <String>]: Tracing options.
   [TriggerPrivateBytesInKb <Int32?>]: A rule based on private bytes.
@@ -794,7 +794,7 @@ param(
     [Parameter(ParameterSetName='CreateViaIdentityExpanded')]
     [Microsoft.Azure.PowerShell.Cmdlets.Functions.Category('Body')]
     [System.String]
-    # Gets or sets a JSON string containing a list of tags that are whitelisted for use by the push registration endpoint.
+    # Gets or sets a JSON string containing a list of tags that are in the allowed list for use by the push registration endpoint.
     ${TagWhitelistJson},
 
     [Parameter(ParameterSetName='CreateExpanded')]
@@ -877,7 +877,8 @@ param(
     [ValidateNotNull()]
     [Microsoft.Azure.PowerShell.Cmdlets.Functions.Category('Azure')]
     [System.Management.Automation.PSObject]
-    # The credentials, account, tenant, and subscription used for communication with Azure.
+    # The DefaultProfile parameter is not functional.
+    # Use the SubscriptionId parameter when available if executing the cmdlet against a different subscription.
     ${DefaultProfile},
 
     [Parameter(DontShow)]

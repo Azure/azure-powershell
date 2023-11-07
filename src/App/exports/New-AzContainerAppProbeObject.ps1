@@ -20,10 +20,12 @@ Create an in-memory object for ContainerAppProbe.
 .Description
 Create an in-memory object for ContainerAppProbe.
 .Example
-New-AzContainerAppProbeObject -HttpGetPath "/health" -HttpGetPort 8080 -InitialDelaySecond 3 -PeriodSecond 3 -Type Liveness
+$probeHttpGetHttpHeader = New-AzContainerAppProbeHeaderObject -Name "Custom-Header" -Value "Awesome"
+
+New-AzContainerAppProbeObject -Type "Liveness" -HttpGetPath "/health" -HttpGetPort 8080 -InitialDelaySecond 3 -PeriodSecond 3 -HttpGetHttpHeader $probeHttpGetHttpHeader
 
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.App.Models.Api20220301.ContainerAppProbe
+Microsoft.Azure.PowerShell.Cmdlets.App.Models.ContainerAppProbe
 .Notes
 COMPLEX PARAMETER PROPERTIES
 
@@ -33,10 +35,10 @@ HTTPGETHTTPHEADER <IContainerAppProbeHttpGetHttpHeadersItem[]>: Custom headers t
   Name <String>: The header field name
   Value <String>: The header field value
 .Link
-https://learn.microsoft.com/powershell/module/az.app/new-azcontainerappprobeobject
+https://learn.microsoft.com/powershell/module/Az.App/new-azcontainerappprobeobject
 #>
 function New-AzContainerAppProbeObject {
-[OutputType([Microsoft.Azure.PowerShell.Cmdlets.App.Models.Api20220301.ContainerAppProbe])]
+[OutputType([Microsoft.Azure.PowerShell.Cmdlets.App.Models.ContainerAppProbe])]
 [CmdletBinding(PositionalBinding=$false)]
 param(
     [Parameter()]
@@ -57,7 +59,7 @@ param(
 
     [Parameter()]
     [Microsoft.Azure.PowerShell.Cmdlets.App.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.App.Models.Api20220301.IContainerAppProbeHttpGetHttpHeadersItem[]]
+    [Microsoft.Azure.PowerShell.Cmdlets.App.Models.IContainerAppProbeHttpGetHttpHeadersItem[]]
     # Custom headers to set in the request.
     # HTTP allows repeated headers.
     # To construct, see NOTES section for HTTPGETHTTPHEADER properties and create a hash table.
@@ -78,9 +80,9 @@ param(
     ${HttpGetPort},
 
     [Parameter()]
-    [ArgumentCompleter([Microsoft.Azure.PowerShell.Cmdlets.App.Support.Scheme])]
+    [Microsoft.Azure.PowerShell.Cmdlets.App.PSArgumentCompleterAttribute("HTTP", "HTTPS")]
     [Microsoft.Azure.PowerShell.Cmdlets.App.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.App.Support.Scheme]
+    [System.String]
     # Scheme to use for connecting to the host.
     # Defaults to HTTP.
     ${HttpGetScheme},
@@ -150,9 +152,9 @@ param(
     ${TimeoutSecond},
 
     [Parameter()]
-    [ArgumentCompleter([Microsoft.Azure.PowerShell.Cmdlets.App.Support.Type])]
+    [Microsoft.Azure.PowerShell.Cmdlets.App.PSArgumentCompleterAttribute("Liveness", "Readiness", "Startup")]
     [Microsoft.Azure.PowerShell.Cmdlets.App.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.App.Support.Type]
+    [System.String]
     # The type of probe.
     ${Type}
 )
@@ -187,6 +189,10 @@ begin {
         }
         $cmdInfo = Get-Command -Name $mapping[$parameterSet]
         [Microsoft.Azure.PowerShell.Cmdlets.App.Runtime.MessageAttributeHelper]::ProcessCustomAttributesAtRuntime($cmdInfo, $MyInvocation, $parameterSet, $PSCmdlet)
+        if ($null -ne $MyInvocation.MyCommand -and [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PromptedPreviewMessageCmdlets -notcontains $MyInvocation.MyCommand.Name -and [Microsoft.Azure.PowerShell.Cmdlets.App.Runtime.MessageAttributeHelper]::ContainsPreviewAttribute($cmdInfo, $MyInvocation)){
+            [Microsoft.Azure.PowerShell.Cmdlets.App.Runtime.MessageAttributeHelper]::ProcessPreviewMessageAttributesAtRuntime($cmdInfo, $MyInvocation, $parameterSet, $PSCmdlet)
+            [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PromptedPreviewMessageCmdlets.Enqueue($MyInvocation.MyCommand.Name)
+        }
         $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Cmdlet)
         $scriptCmd = {& $wrappedCmd @PSBoundParameters}
         $steppablePipeline = $scriptCmd.GetSteppablePipeline($MyInvocation.CommandOrigin)

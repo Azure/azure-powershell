@@ -63,6 +63,7 @@ $vmname = 'v' + $rgname;
 $domainNameLabel = "d1" + $rgname;
 $vmSize = 'Standard_DS3_v2';
 $computerName = "c" + $rgname;
+$securityTypeStnd = "Standard";
         
 # Credential. Input Username and Password values
 $user = "";
@@ -70,7 +71,7 @@ $securePassword = "" | ConvertTo-SecureString -AsPlainText -Force;
 $cred = New-Object System.Management.Automation.PSCredential ($user, $securePassword);
         
 # Creating a VMConfig 
-$vmconfig = New-AzVMConfig -VMName $vmname -vmsize $vmsize;
+$vmconfig = New-AzVMConfig -VMName $vmname -vmsize $vmsize -SecurityType $securityTypeStnd;
 
 # Set source image values
 $publisherName = "MicrosoftWindowsServer";
@@ -115,6 +116,7 @@ $subnetAddress = "10.0.2.0/24";
 $vmssName = "vmss" + $rgname;
 $faultDomainNumber = 2;
 $vmssFaultDomain = 3;
+$securityTypeStnd = "Standard";
 
 $OSDiskName = $vmname + "-osdisk";
 $NICName = $vmname+ "-nic";
@@ -133,7 +135,7 @@ $cred = New-Object System.Management.Automation.PSCredential ($user, $securePass
 $frontendSubnet = New-AzVirtualNetworkSubnetConfig -Name $subnetname -AddressPrefix $subnetAddress;
 $vnet = New-AzVirtualNetwork -Name $vnetname -ResourceGroupName $rgname -Location $loc -AddressPrefix $vnetAddress -Subnet $frontendSubnet;
 
-$vmssConfig = New-AzVmssConfig -Location $loc -PlatformFaultDomainCount $vmssFaultDomain;
+$vmssConfig = New-AzVmssConfig -Location $loc -PlatformFaultDomainCount $vmssFaultDomain -SecurityType $securityTypeStnd;
 $vmss = New-AzVmss -ResourceGroupName $RGName -Name $VMSSName -VirtualMachineScaleSet $vmssConfig;
 
 $nsgRuleRDP = New-AzNetworkSecurityRuleConfig -Name RDP  -Protocol Tcp  -Direction Inbound -Priority 1001 -SourceAddressPrefix * -SourcePortRange * -DestinationAddressPrefix * -DestinationPortRange 3389 -Access Allow;
@@ -141,7 +143,7 @@ $nsg = New-AzNetworkSecurityGroup -ResourceGroupName $RGName -Location $loc -Nam
 $nic = New-AzNetworkInterface -Name $NICName -ResourceGroupName $RGName -Location $loc -SubnetId $vnet.Subnets[0].Id -NetworkSecurityGroupId $nsg.Id -EnableAcceleratedNetworking;
 
 # VM
-$vmConfig = New-AzVMConfig -VMName $vmName -VMSize $VMSize  -VmssId $vmss.Id -PlatformFaultDomain $faultDomainNumber ;
+$vmConfig = New-AzVMConfig -VMName $vmName -VMSize $VMSize  -VmssId $vmss.Id -PlatformFaultDomain $faultDomainNumber -SecurityType $securityTypeStnd;
 Set-AzVMOperatingSystem -VM $vmConfig -Windows -ComputerName $vmName -Credential $cred ;
 Set-AzVMOSDisk -VM $vmConfig -StorageAccountType "Premium_LRS" -Caching ReadWrite -Name $OSDiskName -DiskSizeInGB $OSDiskSizeinGB -CreateOption FromImage ;
 Set-AzVMSourceImage -VM $vmConfig -PublisherName $PublisherName -Offer $Offer -Skus $SKU -Version latest ;
@@ -151,7 +153,7 @@ New-AzVM -ResourceGroupName $RGName -Location $loc -VM $vmConfig;
 $vm = Get-AzVM -ResourceGroupName $rgname -Name $vmName;
 ```
 
-### Example 2: Create a VM using Virtual Machine Config object for TrustedLaunch Secuirty Type, flags Vtpm and Secure Boot are set to True by default.
+### Example 2: Create a VM using Virtual Machine Config object for TrustedLaunch Security Type, flags Vtpm and Secure Boot are set to True by default.
 ```powershell
 $rgname = "rgname";
 $loc = "eastus";

@@ -30,7 +30,8 @@ function Test-SingleNetworkInterface
         # VM Profile & Hardware
         $vmsize = 'Standard_A2';
         $vmname = 'vm' + $rgname;
-        $p = New-AzVMConfig -VMName $vmname -VMSize $vmsize;
+        $stnd = "Standard";
+        $p = New-AzVMConfig -VMName $vmname -VMSize $vmsize -SecurityType $stnd;
         Assert-AreEqual $p.HardwareProfile.VmSize $vmsize;
 
         # NRP
@@ -152,7 +153,8 @@ function Test-SingleNetworkInterfaceDnsSettings
         # VM Profile & Hardware
         $vmsize = 'Standard_A2';
         $vmname = 'vm' + $rgname;
-        $p = New-AzVMConfig -VMName $vmname -VMSize $vmsize;
+        $stnd = "Standard";
+        $p = New-AzVMConfig -VMName $vmname -VMSize $vmsize -SecurityType $stnd;
         Assert-AreEqual $p.HardwareProfile.VmSize $vmsize;
 
         # NRP
@@ -258,7 +260,8 @@ function Test-MultipleNetworkInterface
         # VM Profile & Hardware
         $vmsize = 'Standard_A4';
         $vmname = 'vm' + $rgname;
-        $p = New-AzVMConfig -VMName $vmname -VMSize $vmsize;
+        $stnd = "Standard";
+        $p = New-AzVMConfig -VMName $vmname -VMSize $vmsize -SecurityType $stnd;
         Assert-AreEqual $p.HardwareProfile.VmSize $vmsize;
 
         # NRP
@@ -372,7 +375,8 @@ function Test-AddNetworkInterface
         # VM Profile & Hardware
         $vmsize = 'Standard_A2';
         $vmname = 'vm' + $rgname;
-        $p = New-AzVMConfig -VMName $vmname -VMSize $vmsize;
+        $stnd = "Standard";
+        $p = New-AzVMConfig -VMName $vmname -VMSize $vmsize -SecurityType $stnd;
         Assert-AreEqual $p.HardwareProfile.VmSize $vmsize;
 
         # NRP
@@ -481,7 +485,8 @@ function Test-EffectiveRoutesAndNsg
         # VM Profile & Hardware
         $vmsize = 'Standard_A2';
         $vmname = 'vm' + $rgname;
-        $p = New-AzVMConfig -VMName $vmname -VMSize $vmsize;
+        $stnd = "Standard";
+        $p = New-AzVMConfig -VMName $vmname -VMSize $vmsize -SecurityType $stnd;
         Assert-AreEqual $p.HardwareProfile.VmSize $vmsize;
 
         # NRP
@@ -616,7 +621,8 @@ function Test-SingleNetworkInterfaceWithAcceleratedNetworking
         # VM Profile & Hardware
         $vmsize = 'Standard_DS15_v2';
         $vmname = 'vm' + $rgname;
-        $p = New-AzVMConfig -VMName $vmname -VMSize $vmsize;
+        $stnd = "Standard";
+        $p = New-AzVMConfig -VMName $vmname -VMSize $vmsize -SecurityType $stnd;
         Assert-AreEqual $p.HardwareProfile.VmSize $vmsize;
 
         # NRP
@@ -739,7 +745,8 @@ function Test-VMNicWithAcceleratedNetworkingValidations
         # VM Profile & Hardware
         $vmsize = 'Standard_DS15_v2';
         $vmname = 'vm' + $rgname;
-        $p = New-AzVMConfig -VMName $vmname -VMSize $vmsize;
+        $stnd = "Standard";
+        $p = New-AzVMConfig -VMName $vmname -VMSize $vmsize -SecurityType $stnd;
         Assert-AreEqual $p.HardwareProfile.VmSize $vmsize;
 
         # NRP

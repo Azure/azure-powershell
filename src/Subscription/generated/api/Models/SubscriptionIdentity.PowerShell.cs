@@ -112,6 +112,10 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Subscription.Models
             {
                 ((Microsoft.Azure.PowerShell.Cmdlets.Subscription.Models.ISubscriptionIdentityInternal)this).SubscriptionId = (string) content.GetValueForProperty("SubscriptionId",((Microsoft.Azure.PowerShell.Cmdlets.Subscription.Models.ISubscriptionIdentityInternal)this).SubscriptionId, global::System.Convert.ToString);
             }
+            if (content.Contains("OperationId"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Subscription.Models.ISubscriptionIdentityInternal)this).OperationId = (string) content.GetValueForProperty("OperationId",((Microsoft.Azure.PowerShell.Cmdlets.Subscription.Models.ISubscriptionIdentityInternal)this).OperationId, global::System.Convert.ToString);
+            }
             if (content.Contains("AliasName"))
             {
                 ((Microsoft.Azure.PowerShell.Cmdlets.Subscription.Models.ISubscriptionIdentityInternal)this).AliasName = (string) content.GetValueForProperty("AliasName",((Microsoft.Azure.PowerShell.Cmdlets.Subscription.Models.ISubscriptionIdentityInternal)this).AliasName, global::System.Convert.ToString);
@@ -144,6 +148,10 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Subscription.Models
             if (content.Contains("SubscriptionId"))
             {
                 ((Microsoft.Azure.PowerShell.Cmdlets.Subscription.Models.ISubscriptionIdentityInternal)this).SubscriptionId = (string) content.GetValueForProperty("SubscriptionId",((Microsoft.Azure.PowerShell.Cmdlets.Subscription.Models.ISubscriptionIdentityInternal)this).SubscriptionId, global::System.Convert.ToString);
+            }
+            if (content.Contains("OperationId"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Subscription.Models.ISubscriptionIdentityInternal)this).OperationId = (string) content.GetValueForProperty("OperationId",((Microsoft.Azure.PowerShell.Cmdlets.Subscription.Models.ISubscriptionIdentityInternal)this).OperationId, global::System.Convert.ToString);
             }
             if (content.Contains("AliasName"))
             {

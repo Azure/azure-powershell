@@ -1,7 +1,7 @@
 ---
 external help file:
 Module Name: Az.App
-online version: https://learn.microsoft.com/powershell/module/az.app/new-azcontainerappenvironmentvarobject
+online version: https://learn.microsoft.com/powershell/module/Az.App/new-azcontainerappenvironmentvarobject
 schema: 2.0.0
 ---
 
@@ -24,13 +24,13 @@ Create an in-memory object for EnvironmentVar.
 
 ### Example 1: Create an EnvironmentVar object for Env.
 ```powershell
-New-AzContainerAppEnvironmentVarObject -Name "envVarName" -SecretRef "facebook-secret" -Value "value"
+New-AzContainerAppEnvironmentVarObject -Name "envVarName" -SecretRef "redis-secret" -Value "value"
 ```
 
 ```output
-Name       SecretRef       Value
-----       ---------       -----
-envVarName facebook-secret value
+Name       SecretRef    Value
+----       ---------    -----
+envVarName redis-secret value
 ```
 
 Create an EnvironmentVar object for Env.
@@ -89,11 +89,9 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.App.Models.Api20220301.EnvironmentVar
+### Microsoft.Azure.PowerShell.Cmdlets.App.Models.EnvironmentVar
 
 ## NOTES
-
-ALIASES
 
 ## RELATED LINKS
 

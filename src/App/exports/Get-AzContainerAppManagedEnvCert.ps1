@@ -20,14 +20,17 @@ Get the specified Certificate.
 .Description
 Get the specified Certificate.
 .Example
-Get-AzContainerAppManagedEnvCert -EnvName azps-env -ResourceGroupName azpstest_gp
+Get-AzContainerAppManagedEnvCert -EnvName azps-env -ResourceGroupName azps_test_group_app
 .Example
-Get-AzContainerAppManagedEnvCert -EnvName azps-env -ResourceGroupName azpstest_gp -Name azps-env-cert
+Get-AzContainerAppManagedEnvCert -EnvName azps-env -ResourceGroupName azps_test_group_app -Name azps-env-cert
+.Example
+$managedenv = Get-AzContainerAppManagedEnv -Name azps-env -ResourceGroupName azps_test_group_app
+Get-AzContainerAppManagGet-AzContainerAppManagedEnvCert -ManagedEnvironmentInputObject $managedenv -Name azps-env-cert
 
 .Inputs
 Microsoft.Azure.PowerShell.Cmdlets.App.Models.IAppIdentity
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.App.Models.Api20220301.ICertificate
+Microsoft.Azure.PowerShell.Cmdlets.App.Models.ICertificate
 .Notes
 COMPLEX PARAMETER PROPERTIES
 
@@ -37,9 +40,35 @@ INPUTOBJECT <IAppIdentity>: Identity Parameter
   [AuthConfigName <String>]: Name of the Container App AuthConfig.
   [CertificateName <String>]: Name of the Certificate.
   [ComponentName <String>]: Name of the Dapr Component.
+  [ConnectedEnvironmentName <String>]: Name of the connectedEnvironment.
   [ContainerAppName <String>]: Name of the Container App.
-  [EnvironmentName <String>]: Name of the Managed Environment.
+  [DetectorName <String>]: Name of the Container App Detector.
+  [EnvironmentName <String>]: Name of the Environment.
   [Id <String>]: Resource identity path
+  [JobExecutionName <String>]: Job execution name.
+  [JobName <String>]: Job Name
+  [Location <String>]: The name of Azure region.
+  [ManagedCertificateName <String>]: Name of the Managed Certificate.
+  [ReplicaName <String>]: Name of the Container App Revision Replica.
+  [ResourceGroupName <String>]: The name of the resource group. The name is case insensitive.
+  [RevisionName <String>]: Name of the Container App Revision.
+  [SourceControlName <String>]: Name of the Container App SourceControl.
+  [StorageName <String>]: Name of the storage.
+  [SubscriptionId <String>]: The ID of the target subscription.
+
+MANAGEDENVIRONMENTINPUTOBJECT <IAppIdentity>: Identity Parameter
+  [AuthConfigName <String>]: Name of the Container App AuthConfig.
+  [CertificateName <String>]: Name of the Certificate.
+  [ComponentName <String>]: Name of the Dapr Component.
+  [ConnectedEnvironmentName <String>]: Name of the connectedEnvironment.
+  [ContainerAppName <String>]: Name of the Container App.
+  [DetectorName <String>]: Name of the Container App Detector.
+  [EnvironmentName <String>]: Name of the Environment.
+  [Id <String>]: Resource identity path
+  [JobExecutionName <String>]: Job execution name.
+  [JobName <String>]: Job Name
+  [Location <String>]: The name of Azure region.
+  [ManagedCertificateName <String>]: Name of the Managed Certificate.
   [ReplicaName <String>]: Name of the Container App Revision Replica.
   [ResourceGroupName <String>]: The name of the resource group. The name is case insensitive.
   [RevisionName <String>]: Name of the Container App Revision.
@@ -50,7 +79,7 @@ INPUTOBJECT <IAppIdentity>: Identity Parameter
 https://learn.microsoft.com/powershell/module/az.app/get-azcontainerappmanagedenvcert
 #>
 function Get-AzContainerAppManagedEnvCert {
-[OutputType([Microsoft.Azure.PowerShell.Cmdlets.App.Models.Api20220301.ICertificate])]
+[OutputType([Microsoft.Azure.PowerShell.Cmdlets.App.Models.ICertificate])]
 [CmdletBinding(DefaultParameterSetName='List', PositionalBinding=$false)]
 param(
     [Parameter(ParameterSetName='Get', Mandatory)]
@@ -61,6 +90,7 @@ param(
     ${EnvName},
 
     [Parameter(ParameterSetName='Get', Mandatory)]
+    [Parameter(ParameterSetName='GetViaIdentityManagedEnvironment', Mandatory)]
     [Alias('CertificateName')]
     [Microsoft.Azure.PowerShell.Cmdlets.App.Category('Path')]
     [System.String]
@@ -89,6 +119,13 @@ param(
     # Identity Parameter
     # To construct, see NOTES section for INPUTOBJECT properties and create a hash table.
     ${InputObject},
+
+    [Parameter(ParameterSetName='GetViaIdentityManagedEnvironment', Mandatory, ValueFromPipeline)]
+    [Microsoft.Azure.PowerShell.Cmdlets.App.Category('Path')]
+    [Microsoft.Azure.PowerShell.Cmdlets.App.Models.IAppIdentity]
+    # Identity Parameter
+    # To construct, see NOTES section for MANAGEDENVIRONMENTINPUTOBJECT properties and create a hash table.
+    ${ManagedEnvironmentInputObject},
 
     [Parameter()]
     [Alias('AzureRMContext', 'AzureCredential')]
@@ -167,13 +204,18 @@ begin {
         $mapping = @{
             Get = 'Az.App.private\Get-AzContainerAppManagedEnvCert_Get';
             GetViaIdentity = 'Az.App.private\Get-AzContainerAppManagedEnvCert_GetViaIdentity';
+            GetViaIdentityManagedEnvironment = 'Az.App.private\Get-AzContainerAppManagedEnvCert_GetViaIdentityManagedEnvironment';
             List = 'Az.App.private\Get-AzContainerAppManagedEnvCert_List';
         }
-        if (('Get', 'List') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId')) {
+        if (('Get', 'List') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId') ) {
             $PSBoundParameters['SubscriptionId'] = (Get-AzContext).Subscription.Id
         }
         $cmdInfo = Get-Command -Name $mapping[$parameterSet]
         [Microsoft.Azure.PowerShell.Cmdlets.App.Runtime.MessageAttributeHelper]::ProcessCustomAttributesAtRuntime($cmdInfo, $MyInvocation, $parameterSet, $PSCmdlet)
+        if ($null -ne $MyInvocation.MyCommand -and [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PromptedPreviewMessageCmdlets -notcontains $MyInvocation.MyCommand.Name -and [Microsoft.Azure.PowerShell.Cmdlets.App.Runtime.MessageAttributeHelper]::ContainsPreviewAttribute($cmdInfo, $MyInvocation)){
+            [Microsoft.Azure.PowerShell.Cmdlets.App.Runtime.MessageAttributeHelper]::ProcessPreviewMessageAttributesAtRuntime($cmdInfo, $MyInvocation, $parameterSet, $PSCmdlet)
+            [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PromptedPreviewMessageCmdlets.Enqueue($MyInvocation.MyCommand.Name)
+        }
         $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Cmdlet)
         $scriptCmd = {& $wrappedCmd @PSBoundParameters}
         $steppablePipeline = $scriptCmd.GetSteppablePipeline($MyInvocation.CommandOrigin)

@@ -27,13 +27,13 @@ namespace Microsoft.Azure.Management.Sql.Models
         /// <param name="name">The managed server version name.
         /// </param>
 
+        /// <param name="isGeneralPurposeV2">Whether or not this is a GPv2 variant of General Purpose edition.
+        /// </param>
+
         /// <param name="supportedFamilies">The supported families.
         /// </param>
 
         /// <param name="supportedStorageCapabilities">The list of supported storage capabilities for this edition
-        /// </param>
-
-        /// <param name="zoneRedundant">Whether or not zone redundancy is supported for the edition.
         /// </param>
 
         /// <param name="status">The status of the capability.
@@ -41,13 +41,13 @@ namespace Microsoft.Azure.Management.Sql.Models
 
         /// <param name="reason">The reason for the capability not being available.
         /// </param>
-        public ManagedInstanceEditionCapability(string name = default(string), System.Collections.Generic.IList<ManagedInstanceFamilyCapability> supportedFamilies = default(System.Collections.Generic.IList<ManagedInstanceFamilyCapability>), System.Collections.Generic.IList<StorageCapability> supportedStorageCapabilities = default(System.Collections.Generic.IList<StorageCapability>), bool? zoneRedundant = default(bool?), CapabilityStatus? status = default(CapabilityStatus?), string reason = default(string))
+        public ManagedInstanceEditionCapability(string name = default(string), bool? isGeneralPurposeV2 = default(bool?), System.Collections.Generic.IList<ManagedInstanceFamilyCapability> supportedFamilies = default(System.Collections.Generic.IList<ManagedInstanceFamilyCapability>), System.Collections.Generic.IList<StorageCapability> supportedStorageCapabilities = default(System.Collections.Generic.IList<StorageCapability>), CapabilityStatus? status = default(CapabilityStatus?), string reason = default(string))
 
         {
             this.Name = name;
+            this.IsGeneralPurposeV2 = isGeneralPurposeV2;
             this.SupportedFamilies = supportedFamilies;
             this.SupportedStorageCapabilities = supportedStorageCapabilities;
-            this.ZoneRedundant = zoneRedundant;
             this.Status = status;
             this.Reason = reason;
             CustomInit();
@@ -66,6 +66,12 @@ namespace Microsoft.Azure.Management.Sql.Models
         public string Name {get; private set; }
 
         /// <summary>
+        /// Gets whether or not this is a GPv2 variant of General Purpose edition.
+        /// </summary>
+        [Newtonsoft.Json.JsonProperty(PropertyName = "isGeneralPurposeV2")]
+        public bool? IsGeneralPurposeV2 {get; private set; }
+
+        /// <summary>
         /// Gets the supported families.
         /// </summary>
         [Newtonsoft.Json.JsonProperty(PropertyName = "supportedFamilies")]
@@ -76,12 +82,6 @@ namespace Microsoft.Azure.Management.Sql.Models
         /// </summary>
         [Newtonsoft.Json.JsonProperty(PropertyName = "supportedStorageCapabilities")]
         public System.Collections.Generic.IList<StorageCapability> SupportedStorageCapabilities {get; private set; }
-
-        /// <summary>
-        /// Gets whether or not zone redundancy is supported for the edition.
-        /// </summary>
-        [Newtonsoft.Json.JsonProperty(PropertyName = "zoneRedundant")]
-        public bool? ZoneRedundant {get; private set; }
 
         /// <summary>
         /// Gets the status of the capability. Possible values include: &#39;Visible&#39;, &#39;Available&#39;, &#39;Default&#39;, &#39;Disabled&#39;

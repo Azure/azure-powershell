@@ -21,6 +21,7 @@ using Microsoft.Azure.Management.Internal.Resources.Utilities.Models;
 using System.Collections.Generic;
 using System.Linq;
 using Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters;
+using Microsoft.Azure.Commands.Sql.Common;
 
 namespace Microsoft.Azure.Commands.Sql.ElasticJobs.Cmdlet
 {
@@ -103,6 +104,40 @@ namespace Microsoft.Azure.Commands.Sql.ElasticJobs.Cmdlet
         public Hashtable Tag { get; set; }
 
         /// <summary>
+        /// List of user assigned identities.
+        /// </summary>
+        [Parameter(Mandatory = false,
+            HelpMessage = "List of user assigned identities")]
+        public string[] UserAssignedIdentityId { get; set; }
+
+        /// <summary>
+        /// Type of identity to be assigned to the server..
+        /// </summary>
+        [Parameter(Mandatory = false,
+            HelpMessage = "Type of Identity to be used. Possible values are UserAssigned and None.")]
+        [PSArgumentCompleter("UserAssigned", "None")]
+        public string IdentityType { get; set; }
+
+        /// <summary>
+        /// Gets or sets the skuCapacity
+        /// </summary>
+        [Parameter(Mandatory = false,
+            HelpMessage = "WorkerCount is the capacity of the Azure SQL Job Agent which controls the number of concurrent targets that can be executed.")]
+        [PSArgumentCompleter("100", "200", "400", "800")]
+        [Alias("Capacity")]
+        public int? WorkerCount { get; set; }
+
+        /// <summary>
+        /// Gets or sets the name of the service objective to assign to the Azure SQL Job Agent. 
+        /// </summary>
+        [Parameter(Mandatory = false,
+            HelpMessage = "The name of the service objective to assign to the Azure SQL Job Agent.")]
+        [ValidateNotNullOrEmpty]
+        [PSArgumentCompleter("JA100", "JA200", "JA400", "JA800")]
+        [Alias("RequestedServiceObjectiveName")]
+        public string SkuName { get; set; }
+
+        /// <summary>
         /// Entry point for the cmdlet
         /// </summary>
         public override void ExecuteCmdlet()
@@ -154,8 +189,10 @@ namespace Microsoft.Azure.Commands.Sql.ElasticJobs.Cmdlet
                 AgentName = model.FirstOrDefault().AgentName,
                 DatabaseName = model.FirstOrDefault().DatabaseName, // Note: control database cannot be updated
                 Location = model.FirstOrDefault().Location,
-                Tags = TagsConversionHelper.ReadOrFetchTags(this, model.First().Tags),
-                WorkerCount = model.FirstOrDefault().WorkerCount    // TODO: In the future, we will expose this.
+                Tags = this.Tag != null ? TagsConversionHelper.CreateTagDictionary(this.Tag, validate: true) : model.First().Tags,
+                WorkerCount = this.WorkerCount,
+                SkuName = this.SkuName,
+                Identity = JobAgentIdentityHelper.GetJobAgentIdentity(this.IdentityType, this.UserAssignedIdentityId),
             };
 
             return new List<AzureSqlElasticJobAgentModel> { newEntity };
@@ -168,9 +205,7 @@ namespace Microsoft.Azure.Commands.Sql.ElasticJobs.Cmdlet
         /// <returns>The created agent</returns>
         protected override IEnumerable<AzureSqlElasticJobAgentModel> PersistChanges(IEnumerable<AzureSqlElasticJobAgentModel> entity)
         {
-            // Note: We are currently using Update / PATCH.
-            // We will need to update this to UpsertAgent when we expose worker count when we GA.
-            return new List<AzureSqlElasticJobAgentModel> { ModelAdapter.UpdateAgent(entity.First()) };
+            return new List<AzureSqlElasticJobAgentModel> { ModelAdapter.UpsertAgent(entity.First()) };
         }
     }
 }

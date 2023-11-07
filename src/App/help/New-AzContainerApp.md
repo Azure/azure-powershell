@@ -8,53 +8,124 @@ schema: 2.0.0
 # New-AzContainerApp
 
 ## SYNOPSIS
-Create or update a Container App.
+Create a Container App.
 
 ## SYNTAX
 
+### CreateExpanded (Default)
 ```
 New-AzContainerApp -Name <String> -ResourceGroupName <String> -Location <String> [-SubscriptionId <String>]
- [-ConfigurationActiveRevisionsMode <ActiveRevisionsMode>] [-ConfigurationRegistry <IRegistryCredentials[]>]
- [-ConfigurationSecret <ISecret[]>] [-DaprAppId <String>] [-DaprAppPort <Int32>]
- [-DaprAppProtocol <AppProtocol>] [-DaprEnabled] [-IdentityType <ManagedServiceIdentityType>]
- [-IdentityUserAssignedIdentity <Hashtable>] [-IngressAllowInsecure] [-IngressCustomDomain <ICustomDomain[]>]
- [-IngressExternal] [-IngressTargetPort <Int32>] [-IngressTraffic <ITrafficWeight[]>]
- [-IngressTransport <IngressTransportMethod>] [-ManagedEnvironmentId <String>] [-ScaleMaxReplica <Int32>]
- [-ScaleMinReplica <Int32>] [-ScaleRule <IScaleRule[]>] [-Tag <Hashtable>] [-TemplateContainer <IContainer[]>]
- [-TemplateRevisionSuffix <String>] [-TemplateVolume <IVolume[]>] [-DefaultProfile <PSObject>] [-AsJob]
- [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
+ [-Configuration <IConfiguration>] [-EnvironmentId <String>] [-ExtendedLocationName <String>]
+ [-ExtendedLocationType <String>] [-IdentityType <String>] [-IdentityUserAssignedIdentity <Hashtable>]
+ [-ManagedBy <String>] [-ManagedEnvironmentId <String>] [-ScaleMaxReplica <Int32>] [-ScaleMinReplica <Int32>]
+ [-ScaleRule <IScaleRule[]>] [-Tag <Hashtable>] [-TemplateContainer <IContainer[]>]
+ [-TemplateInitContainer <IInitContainer[]>] [-TemplateRevisionSuffix <String>]
+ [-TemplateServiceBind <IServiceBind[]>] [-TemplateTerminationGracePeriodSecond <Int64>]
+ [-TemplateVolume <IVolume[]>] [-WorkloadProfileName <String>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
+ [-Confirm] [-WhatIf] [<CommonParameters>]
+```
+
+### CreateViaIdentityExpanded
+```
+New-AzContainerApp -InputObject <IAppIdentity> -Location <String> [-Configuration <IConfiguration>]
+ [-EnvironmentId <String>] [-ExtendedLocationName <String>] [-ExtendedLocationType <String>]
+ [-IdentityType <String>] [-IdentityUserAssignedIdentity <Hashtable>] [-ManagedBy <String>]
+ [-ManagedEnvironmentId <String>] [-ScaleMaxReplica <Int32>] [-ScaleMinReplica <Int32>]
+ [-ScaleRule <IScaleRule[]>] [-Tag <Hashtable>] [-TemplateContainer <IContainer[]>]
+ [-TemplateInitContainer <IInitContainer[]>] [-TemplateRevisionSuffix <String>]
+ [-TemplateServiceBind <IServiceBind[]>] [-TemplateTerminationGracePeriodSecond <Int64>]
+ [-TemplateVolume <IVolume[]>] [-WorkloadProfileName <String>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
+ [-Confirm] [-WhatIf] [<CommonParameters>]
+```
+
+### CreateViaJsonFilePath
+```
+New-AzContainerApp -Name <String> -ResourceGroupName <String> -JsonFilePath <String>
+ [-SubscriptionId <String>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf]
+ [<CommonParameters>]
+```
+
+### CreateViaJsonString
+```
+New-AzContainerApp -Name <String> -ResourceGroupName <String> -JsonString <String> [-SubscriptionId <String>]
+ [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-Create or update a Container App.
+Create a Container App.
 
 ## EXAMPLES
 
-### Example 1: Create or update a Container App.
+### Example 1: Create a Container App for Managed Environment.
 ```powershell
-$trafficWeight = New-AzContainerAppTrafficWeightObject -Label production -LatestRevision $True -Weight 100
-$secretObject = New-AzContainerAppSecretObject -Name "facebook-secret" -Value "facebook-password"
+New-AzOperationalInsightsWorkspace -ResourceGroupName azps_test_group_app -Name workspace-azpstestgp -Sku PerGB2018 -Location eastus -PublicNetworkAccessForIngestion "Enabled" -PublicNetworkAccessForQuery "Enabled"
 
-$containerAppHttpHeader = New-AzContainerAppProbeHeaderObject -Name Custom-Header -Value Awesome
-$probe = New-AzContainerAppProbeObject -HttpGetPath "/health" -HttpGetPort 8080 -InitialDelaySecond 3 -PeriodSecond 3 -Type Liveness -HttpGetHttpHeader $containerAppHttpHeader
-$image = New-AzContainerAppTemplateObject -Name azps-containerapp -Image mcr.microsoft.com/azuredocs/containerapps-helloworld:latest -Probe $probe -ResourceCpu 2.0 -ResourceMemory 4.0Gi
+$CustomId = (Get-AzOperationalInsightsWorkspace -ResourceGroupName azps_test_group_app -Name workspace-azpstestgp).CustomerId
+$SharedKey = (Get-AzOperationalInsightsWorkspaceSharedKey -ResourceGroupName azps_test_group_app -Name workspace-azpstestgp).PrimarySharedKey
+$workloadProfile = New-AzContainerAppWorkloadProfileObject -Name "Consumption" -Type "Consumption"
+New-AzContainerAppManagedEnv -Name azps-env -ResourceGroupName azps_test_group_app -Location eastus -AppLogConfigurationDestination "log-analytics" -LogAnalyticConfigurationCustomerId $CustomId -LogAnalyticConfigurationSharedKey $SharedKey -VnetConfigurationInternal:$false -WorkloadProfile $workloadProfile
+$EnvId = (Get-AzContainerAppManagedEnv -ResourceGroupName azps_test_group_app -Name azps-env).Id
 
-$EnvId = (Get-AzContainerAppManagedEnv -ResourceGroupName azpstest_gp -EnvName azps-env).Id
+New-SelfSignedCertificate -DnsName "www.fabrikam.com", "www.contoso.com" -CertStoreLocation "cert:\LocalMachine\My"
+Get-ChildItem -Path cert:\LocalMachine\My
+$mypwd = ConvertTo-SecureString -String "1234" -Force -AsPlainText
+Get-ChildItem -Path cert:\localMachine\my\F61C9A8C53D0500F819463A66C5921AA09E1B787 | Export-PfxCertificate -FilePath C:\mypfx.pfx -Password $mypwd
+New-AzContainerAppManagedEnvCert -EnvName azps-env -Name azps-env-cert -ResourceGroupName azps_test_group_app -Location eastus -InputFile "C:\mypfx.pfx" -Password $mypwd
 
-$scaleRule = @()
-$scaleRule += New-AzContainerAppScaleRuleObject -Name scaleRuleName1 -AzureQueueLength 30 -AzureQueueName azps_containerapp -CustomType "azure-servicebus"
-$scaleRule += New-AzContainerAppScaleRuleObject -Name scaleRuleName2 -AzureQueueLength 30 -AzureQueueName azps_containerapp -CustomType "azure-servicebus"
+$trafficWeight = New-AzContainerAppTrafficWeightObject -Label "production" -Weight 100 -LatestRevision:$True
+$iPSecurityRestrictionRule = New-AzContainerAppIPSecurityRestrictionRuleObject -Action "Allow" -IPAddressRange "192.168.1.1/32" -Name "Allow work IP A subnet"
+$secretObject = New-AzContainerAppSecretObject -Name "redis-config" -Value "redis-password"
+$customDomain = New-AzContainerAppCustomDomainObject -Name "mycertweb.com" -BindingType Disabled
 
-New-AzContainerApp -Name azps-containerapp -ResourceGroupName azpstest_gp -Location canadacentral -ConfigurationActiveRevisionsMode 'Single' -ManagedEnvironmentId $EnvId -IngressExternal -IngressTransport 'auto' -IngressTargetPort 80 -TemplateContainer $image -ConfigurationSecret $secretObject -IngressTraffic $trafficWeight -DaprEnabled -DaprAppProtocol 'http' -DaprAppId "container-app-1" -DaprAppPort 8080 -ScaleRule $scaleRule
+$configuration = New-AzContainerAppConfigurationObject -IngressCustomDomain $customDomain -IngressIPSecurityRestriction $iPSecurityRestrictionRule -IngressTraffic $trafficWeight -IngressExternal:$True -IngressTargetPort 80 -IngressClientCertificateMode "accept" -CorPolicyAllowedOrigin "https://a.test.com","https://b.test.com" -CorPolicyAllowedMethod "GET","POST" -CorPolicyAllowedHeader "HEADER1","HEADER2" -CorPolicyExposeHeader "HEADER3","HEADER4" -CorPolicyMaxAge 1234 -CorPolicyAllowCredentials:$True -DaprEnabled:$True -DaprAppPort 3000 -DaprAppProtocol "http" -DaprHttpReadBufferSize 30 -DaprHttpMaxRequestSize 10 -DaprLogLevel "debug" -DaprEnableApiLogging:$True -MaxInactiveRevision 10 -ServiceType "redis" -Secret $secretObject
+
+$serviceBind = New-AzContainerAppServiceBindObject -Name "redisService" -ServiceId "/subscriptions/{subId}/resourceGroups/azps_test_group_app/providers/Microsoft.App/containerApps/azps-containerapp-1"
+
+$probeHttpGetHttpHeader = New-AzContainerAppProbeHeaderObject -Name "Custom-Header" -Value "Awesome"
+$probe = New-AzContainerAppProbeObject -Type "Liveness" -HttpGetPath "/health" -HttpGetPort 8080 -InitialDelaySecond 3 -PeriodSecond 3 -HttpGetHttpHeader $probeHttpGetHttpHeader
+$temp = New-AzContainerAppTemplateObject -Image "mcr.microsoft.com/k8se/quickstart-jobs:latest" -Name "simple-hello-world-container" -Probe $probe -ResourceCpu 0.25 -ResourceMemory "0.5Gi"
+$temp2 = New-AzContainerAppInitContainerTemplateObject -Image "mcr.microsoft.com/k8se/quickstart-jobs:latest" -Name "simple-hello-world-container2" -ResourceCpu 0.25 -ResourceMemory "0.5Gi" -Command "/bin/sh" -Arg "-c","echo hello; sleep 10;"
+
+New-AzContainerApp -Name "azps-containerapp-1" -ResourceGroupName "azps_test_group_app" -Location "eastus" -Configuration $configuration -TemplateContainer $temp -TemplateInitContainer $temp2 -TemplateServiceBind $serviceBind -EnvironmentId $EnvId
 ```
 
 ```output
-Location       Name              ResourceGroupName
---------       ----              -----------------
-Canada Central azps-containerapp azpstest_gp
+Location Name                ResourceGroupName
+-------- ----                -----------------
+East US  azps-containerapp-1 azps_test_group_app
 ```
 
-Create or update a Container App.
+Create a Container App for Managed Environment.
+
+### Example 2: Create a Container App for Connected Environment.
+```powershell
+# Here you need to provide the resource "CustomLocation", for more information on how to create a resource CustomLocation, please refer to the help file: https://learn.microsoft.com/en-us/azure/container-apps/azure-arc-enable-cluster?tabs=azure-powershell
+New-AzContainerAppConnectedEnv -Name azps-connectedenv -ResourceGroupName azps_test_group_app -Location eastus -ExtendedLocationName "/subscriptions/{subId}/resourceGroups/azps_test_group_app/providers/Microsoft.ExtendedLocation/customLocations/my-custom-location" -ExtendedLocationType CustomLocation
+$EnvId = (Get-AzContainerAppConnectedEnv -ResourceGroupName azps_test_group_app -Name azps-connectedenv).Id
+
+New-SelfSignedCertificate -DnsName "www.fabrikam.com", "www.contoso.com" -CertStoreLocation "cert:\LocalMachine\My"
+Get-ChildItem -Path cert:\LocalMachine\My
+$mypwd = ConvertTo-SecureString -String "1234" -Force -AsPlainText
+Get-ChildItem -Path cert:\localMachine\my\F61C9A8C53D0500F819463A66C5921AA09E1B787 | Export-PfxCertificate -FilePath C:\mypfx.pfx -Password $mypwd
+New-AzContainerAppConnectedEnvCert -Name azps-connectedenvcert -ConnectedEnvironmentName azps-connectedenv -ResourceGroupName azps_test_group_app -Location eastus -InputFile "C:\mypfx.pfx" -Password $mypwd
+
+$trafficWeight = New-AzContainerAppTrafficWeightObject -Label "production" -Weight 100 -LatestRevision:$True
+$secretObject = New-AzContainerAppSecretObject -Name "redis-config" -Value "redis-password"
+$configuration = New-AzContainerAppConfigurationObject -IngressTraffic $trafficWeight -IngressExternal:$True -IngressTargetPort 80 -Secret $secretObject
+
+$temp = New-AzContainerAppTemplateObject -Image "mcr.microsoft.com/k8se/quickstart-jobs:latest" -Name "simple-hello-world-container" -ResourceCpu 0.25 -ResourceMemory "0.5Gi"
+$temp2 = New-AzContainerAppInitContainerTemplateObject -Image "mcr.microsoft.com/k8se/quickstart-jobs:latest" -Name "simple-hello-world-container2" -ResourceCpu 0.25 -ResourceMemory "0.5Gi" -Command "/bin/sh" -Arg "-c","echo hello; sleep 10;"
+
+New-AzContainerApp -Name "azps-containerapp-2" -ResourceGroupName "azps_test_group_app" -Location "eastus" -Configuration $configuration -TemplateContainer $temp -TemplateInitContainer $temp2 -EnvironmentId $EnvId -ExtendedLocationName "/subscriptions/{subId}/resourceGroups/azps_test_group_app/providers/Microsoft.ExtendedLocation/customLocations/my-custom-location" -ExtendedLocationType CustomLocation
+```
+
+```output
+Location Name                ResourceGroupName
+-------- ----                -----------------
+East US  azps-containerapp-2 azps_test_group_app
+```
+
+Create a Container App for Connected Environment.
 
 ## PARAMETERS
 
@@ -73,108 +144,13 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -ConfigurationActiveRevisionsMode
-ActiveRevisionsMode controls how active revisions are handled for the Container app:\<list\>\<item\>Multiple: multiple revisions can be active.\</item\>\<item\>Single: Only one revision can be active at a time.
-Revision weights can not be used in this mode.
-If no value if provided, this is the default.\</item\>\</list\>
+### -Configuration
+Non versioned Container App configuration properties.
+To construct, see NOTES section for CONFIGURATION properties and create a hash table.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.App.Support.ActiveRevisionsMode
-Parameter Sets: (All)
-Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -ConfigurationRegistry
-Collection of private container registry credentials for containers used by the Container app
-To construct, see NOTES section for CONFIGURATIONREGISTRY properties and create a hash table.
-
-```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.App.Models.Api20220301.IRegistryCredentials[]
-Parameter Sets: (All)
-Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -ConfigurationSecret
-Collection of secrets used by a Container app
-To construct, see NOTES section for CONFIGURATIONSECRET properties and create a hash table.
-
-```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.App.Models.Api20220301.ISecret[]
-Parameter Sets: (All)
-Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -DaprAppId
-Dapr application identifier
-
-```yaml
-Type: System.String
-Parameter Sets: (All)
-Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -DaprAppPort
-Tells Dapr which port your application is listening on
-
-```yaml
-Type: System.Int32
-Parameter Sets: (All)
-Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -DaprAppProtocol
-Tells Dapr which protocol your application is using.
-Valid options are http and grpc.
-Default is http
-
-```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.App.Support.AppProtocol
-Parameter Sets: (All)
-Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -DaprEnabled
-Boolean indicating if the Dapr side car is enabled
-
-```yaml
-Type: System.Management.Automation.SwitchParameter
-Parameter Sets: (All)
+Type: Microsoft.Azure.PowerShell.Cmdlets.App.Models.IConfiguration
+Parameter Sets: CreateExpanded, CreateViaIdentityExpanded
 Aliases:
 
 Required: False
@@ -200,12 +176,57 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### -EnvironmentId
+Resource ID of environment.
+
+```yaml
+Type: System.String
+Parameter Sets: CreateExpanded, CreateViaIdentityExpanded
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -ExtendedLocationName
+The name of the extended location.
+
+```yaml
+Type: System.String
+Parameter Sets: CreateExpanded, CreateViaIdentityExpanded
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -ExtendedLocationType
+The type of the extended location.
+
+```yaml
+Type: System.String
+Parameter Sets: CreateExpanded, CreateViaIdentityExpanded
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
 ### -IdentityType
 Type of managed service identity (where both SystemAssigned and UserAssigned types are allowed).
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.App.Support.ManagedServiceIdentityType
-Parameter Sets: (All)
+Type: System.String
+Parameter Sets: CreateExpanded, CreateViaIdentityExpanded
 Aliases:
 
 Required: False
@@ -222,7 +243,7 @@ The dictionary values can be empty objects ({}) in requests.
 
 ```yaml
 Type: System.Collections.Hashtable
-Parameter Sets: (All)
+Parameter Sets: CreateExpanded, CreateViaIdentityExpanded
 Aliases:
 
 Required: False
@@ -232,93 +253,46 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -IngressAllowInsecure
-Bool indicating if HTTP connections to is allowed.
-If set to false HTTP connections are automatically redirected to HTTPS connections
+### -InputObject
+Identity Parameter
+To construct, see NOTES section for INPUTOBJECT properties and create a hash table.
 
 ```yaml
-Type: System.Management.Automation.SwitchParameter
-Parameter Sets: (All)
+Type: Microsoft.Azure.PowerShell.Cmdlets.App.Models.IAppIdentity
+Parameter Sets: CreateViaIdentityExpanded
 Aliases:
 
-Required: False
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: True (ByValue)
+Accept wildcard characters: False
+```
+
+### -JsonFilePath
+Path of Json file supplied to the Create operation
+
+```yaml
+Type: System.String
+Parameter Sets: CreateViaJsonFilePath
+Aliases:
+
+Required: True
 Position: Named
 Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -IngressCustomDomain
-custom domain bindings for Container Apps' hostnames.
-To construct, see NOTES section for INGRESSCUSTOMDOMAIN properties and create a hash table.
+### -JsonString
+Json string supplied to the Create operation
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.App.Models.Api20220301.ICustomDomain[]
-Parameter Sets: (All)
+Type: System.String
+Parameter Sets: CreateViaJsonString
 Aliases:
 
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -IngressExternal
-Bool indicating if app exposes an external http endpoint
-
-```yaml
-Type: System.Management.Automation.SwitchParameter
-Parameter Sets: (All)
-Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -IngressTargetPort
-Target Port in containers for traffic from ingress
-
-```yaml
-Type: System.Int32
-Parameter Sets: (All)
-Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -IngressTraffic
-Traffic weights for app's revisions
-To construct, see NOTES section for INGRESSTRAFFIC properties and create a hash table.
-
-```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.App.Models.Api20220301.ITrafficWeight[]
-Parameter Sets: (All)
-Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -IngressTransport
-Ingress transport protocol
-
-```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.App.Support.IngressTransportMethod
-Parameter Sets: (All)
-Aliases:
-
-Required: False
+Required: True
 Position: Named
 Default value: None
 Accept pipeline input: False
@@ -330,7 +304,7 @@ The geo-location where the resource lives
 
 ```yaml
 Type: System.String
-Parameter Sets: (All)
+Parameter Sets: CreateExpanded, CreateViaIdentityExpanded
 Aliases:
 
 Required: True
@@ -340,12 +314,30 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### -ManagedBy
+The fully qualified resource ID of the resource that manages this resource.
+Indicates if this resource is managed by another Azure resource.
+If this is present, complete mode deployment will not delete the resource if it is removed from the template since it is managed by another resource.
+
+```yaml
+Type: System.String
+Parameter Sets: CreateExpanded, CreateViaIdentityExpanded
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
 ### -ManagedEnvironmentId
+Deprecated.
 Resource ID of the Container App's environment.
 
 ```yaml
 Type: System.String
-Parameter Sets: (All)
+Parameter Sets: CreateExpanded, CreateViaIdentityExpanded
 Aliases:
 
 Required: False
@@ -360,7 +352,7 @@ Name of the Container App.
 
 ```yaml
 Type: System.String
-Parameter Sets: (All)
+Parameter Sets: CreateExpanded, CreateViaJsonFilePath, CreateViaJsonString
 Aliases: ContainerAppName
 
 Required: True
@@ -391,7 +383,7 @@ The name is case insensitive.
 
 ```yaml
 Type: System.String
-Parameter Sets: (All)
+Parameter Sets: CreateExpanded, CreateViaJsonFilePath, CreateViaJsonString
 Aliases:
 
 Required: True
@@ -408,7 +400,7 @@ Defaults to 10 if not set.
 
 ```yaml
 Type: System.Int32
-Parameter Sets: (All)
+Parameter Sets: CreateExpanded, CreateViaIdentityExpanded
 Aliases:
 
 Required: False
@@ -424,7 +416,7 @@ Minimum number of container replicas.
 
 ```yaml
 Type: System.Int32
-Parameter Sets: (All)
+Parameter Sets: CreateExpanded, CreateViaIdentityExpanded
 Aliases:
 
 Required: False
@@ -439,8 +431,8 @@ Scaling rules.
 To construct, see NOTES section for SCALERULE properties and create a hash table.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.App.Models.Api20220301.IScaleRule[]
-Parameter Sets: (All)
+Type: Microsoft.Azure.PowerShell.Cmdlets.App.Models.IScaleRule[]
+Parameter Sets: CreateExpanded, CreateViaIdentityExpanded
 Aliases:
 
 Required: False
@@ -455,7 +447,7 @@ The ID of the target subscription.
 
 ```yaml
 Type: System.String
-Parameter Sets: (All)
+Parameter Sets: CreateExpanded, CreateViaJsonFilePath, CreateViaJsonString
 Aliases:
 
 Required: False
@@ -470,7 +462,7 @@ Resource tags.
 
 ```yaml
 Type: System.Collections.Hashtable
-Parameter Sets: (All)
+Parameter Sets: CreateExpanded, CreateViaIdentityExpanded
 Aliases:
 
 Required: False
@@ -485,8 +477,24 @@ List of container definitions for the Container App.
 To construct, see NOTES section for TEMPLATECONTAINER properties and create a hash table.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.App.Models.Api20220301.IContainer[]
-Parameter Sets: (All)
+Type: Microsoft.Azure.PowerShell.Cmdlets.App.Models.IContainer[]
+Parameter Sets: CreateExpanded, CreateViaIdentityExpanded
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -TemplateInitContainer
+List of specialized containers that run before app containers.
+To construct, see NOTES section for TEMPLATEINITCONTAINER properties and create a hash table.
+
+```yaml
+Type: Microsoft.Azure.PowerShell.Cmdlets.App.Models.IInitContainer[]
+Parameter Sets: CreateExpanded, CreateViaIdentityExpanded
 Aliases:
 
 Required: False
@@ -501,7 +509,43 @@ User friendly suffix that is appended to the revision name
 
 ```yaml
 Type: System.String
-Parameter Sets: (All)
+Parameter Sets: CreateExpanded, CreateViaIdentityExpanded
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -TemplateServiceBind
+List of container app services bound to the app
+To construct, see NOTES section for TEMPLATESERVICEBIND properties and create a hash table.
+
+```yaml
+Type: Microsoft.Azure.PowerShell.Cmdlets.App.Models.IServiceBind[]
+Parameter Sets: CreateExpanded, CreateViaIdentityExpanded
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -TemplateTerminationGracePeriodSecond
+Optional duration in seconds the Container App Instance needs to terminate gracefully.
+Value must be non-negative integer.
+The value zero indicates stop immediately via the kill signal (no opportunity to shut down).
+If this value is nil, the default grace period will be used instead.
+Set this value longer than the expected cleanup time for your process.
+Defaults to 30 seconds.
+
+```yaml
+Type: System.Int64
+Parameter Sets: CreateExpanded, CreateViaIdentityExpanded
 Aliases:
 
 Required: False
@@ -516,8 +560,23 @@ List of volume definitions for the Container App.
 To construct, see NOTES section for TEMPLATEVOLUME properties and create a hash table.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.App.Models.Api20220301.IVolume[]
-Parameter Sets: (All)
+Type: Microsoft.Azure.PowerShell.Cmdlets.App.Models.IVolume[]
+Parameter Sets: CreateExpanded, CreateViaIdentityExpanded
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -WorkloadProfileName
+Workload profile name to pin for container app execution.
+
+```yaml
+Type: System.String
+Parameter Sets: CreateExpanded, CreateViaIdentityExpanded
 Aliases:
 
 Required: False
@@ -563,91 +622,13 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
+### Microsoft.Azure.PowerShell.Cmdlets.App.Models.IAppIdentity
+
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.App.Models.Api20220301.IContainerApp
+### Microsoft.Azure.PowerShell.Cmdlets.App.Models.IContainerApp
 
 ## NOTES
-
-ALIASES
-
-COMPLEX PARAMETER PROPERTIES
-
-To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
-
-
-`CONFIGURATIONREGISTRY <IRegistryCredentials[]>`: Collection of private container registry credentials for containers used by the Container app
-  - `[Identity <String>]`: A Managed Identity to use to authenticate with Azure Container Registry. For user-assigned identities, use the full user-assigned identity Resource ID. For system-assigned identities, use 'system'
-  - `[PasswordSecretRef <String>]`: The name of the Secret that contains the registry login password
-  - `[Server <String>]`: Container Registry Server
-  - `[Username <String>]`: Container Registry Username
-
-`CONFIGURATIONSECRET <ISecret[]>`: Collection of secrets used by a Container app
-  - `[Name <String>]`: Secret Name.
-  - `[Value <String>]`: Secret Value.
-
-`INGRESSCUSTOMDOMAIN <ICustomDomain[]>`: custom domain bindings for Container Apps' hostnames.
-  - `CertificateId <String>`: Resource Id of the Certificate to be bound to this hostname. Must exist in the Managed Environment.
-  - `Name <String>`: Hostname.
-  - `[BindingType <BindingType?>]`: Custom Domain binding type.
-
-`INGRESSTRAFFIC <ITrafficWeight[]>`: Traffic weights for app's revisions
-  - `[Label <String>]`: Associates a traffic label with a revision
-  - `[LatestRevision <Boolean?>]`: Indicates that the traffic weight belongs to a latest stable revision
-  - `[RevisionName <String>]`: Name of a revision
-  - `[Weight <Int32?>]`: Traffic weight assigned to a revision
-
-`SCALERULE <IScaleRule[]>`: Scaling rules.
-  - `[AzureQueueAuth <IScaleRuleAuth[]>]`: Authentication secrets for the queue scale rule.
-    - `[SecretRef <String>]`: Name of the Container App secret from which to pull the auth params.
-    - `[TriggerParameter <String>]`: Trigger Parameter that uses the secret
-  - `[AzureQueueLength <Int32?>]`: Queue length.
-  - `[AzureQueueName <String>]`: Queue name.
-  - `[CustomAuth <IScaleRuleAuth[]>]`: Authentication secrets for the custom scale rule.
-  - `[CustomMetadata <ICustomScaleRuleMetadata>]`: Metadata properties to describe custom scale rule.
-    - `[(Any) <String>]`: This indicates any property can be added to this object.
-  - `[CustomType <String>]`: Type of the custom scale rule         eg: azure-servicebus, redis etc.
-  - `[HttpAuth <IScaleRuleAuth[]>]`: Authentication secrets for the custom scale rule.
-  - `[HttpMetadata <IHttpScaleRuleMetadata>]`: Metadata properties to describe http scale rule.
-    - `[(Any) <String>]`: This indicates any property can be added to this object.
-  - `[Name <String>]`: Scale Rule Name
-
-`TEMPLATECONTAINER <IContainer[]>`: List of container definitions for the Container App.
-  - `[Arg <String[]>]`: Container start command arguments.
-  - `[Command <String[]>]`: Container start command.
-  - `[Env <IEnvironmentVar[]>]`: Container environment variables.
-    - `[Name <String>]`: Environment variable name.
-    - `[SecretRef <String>]`: Name of the Container App secret from which to pull the environment variable value.
-    - `[Value <String>]`: Non-secret environment variable value.
-  - `[Image <String>]`: Container image tag.
-  - `[Name <String>]`: Custom container name.
-  - `[Probe <IContainerAppProbe[]>]`: List of probes for the container.
-    - `[FailureThreshold <Int32?>]`: Minimum consecutive failures for the probe to be considered failed after having succeeded. Defaults to 3. Minimum value is 1. Maximum value is 10.
-    - `[HttpGetHost <String>]`: Host name to connect to, defaults to the pod IP. You probably want to set "Host" in httpHeaders instead.
-    - `[HttpGetHttpHeader <IContainerAppProbeHttpGetHttpHeadersItem[]>]`: Custom headers to set in the request. HTTP allows repeated headers.
-      - `Name <String>`: The header field name
-      - `Value <String>`: The header field value
-    - `[HttpGetPath <String>]`: Path to access on the HTTP server.
-    - `[HttpGetPort <Int32?>]`: Name or number of the port to access on the container. Number must be in the range 1 to 65535. Name must be an IANA_SVC_NAME.
-    - `[HttpGetScheme <Scheme?>]`: Scheme to use for connecting to the host. Defaults to HTTP.
-    - `[InitialDelaySecond <Int32?>]`: Number of seconds after the container has started before liveness probes are initiated. Minimum value is 1. Maximum value is 60.
-    - `[PeriodSecond <Int32?>]`: How often (in seconds) to perform the probe. Default to 10 seconds. Minimum value is 1. Maximum value is 240.
-    - `[SuccessThreshold <Int32?>]`: Minimum consecutive successes for the probe to be considered successful after having failed. Defaults to 1. Must be 1 for liveness and startup. Minimum value is 1. Maximum value is 10.
-    - `[TcpSocketHost <String>]`: Optional: Host name to connect to, defaults to the pod IP.
-    - `[TcpSocketPort <Int32?>]`: Number or name of the port to access on the container. Number must be in the range 1 to 65535. Name must be an IANA_SVC_NAME.
-    - `[TerminationGracePeriodSecond <Int64?>]`: Optional duration in seconds the pod needs to terminate gracefully upon probe failure. The grace period is the duration in seconds after the processes running in the pod are sent a termination signal and the time when the processes are forcibly halted with a kill signal. Set this value longer than the expected cleanup time for your process. If this value is nil, the pod's terminationGracePeriodSeconds will be used. Otherwise, this value overrides the value provided by the pod spec. Value must be non-negative integer. The value zero indicates stop immediately via the kill signal (no opportunity to shut down). This is an alpha field and requires enabling ProbeTerminationGracePeriod feature gate. Maximum value is 3600 seconds (1 hour)
-    - `[TimeoutSecond <Int32?>]`: Number of seconds after which the probe times out. Defaults to 1 second. Minimum value is 1. Maximum value is 240.
-    - `[Type <Type?>]`: The type of probe.
-  - `[ResourceCpu <Double?>]`: Required CPU in cores, e.g. 0.5
-  - `[ResourceMemory <String>]`: Required memory, e.g. "250Mb"
-  - `[VolumeMount <IVolumeMount[]>]`: Container volume mounts.
-    - `[MountPath <String>]`: Path within the container at which the volume should be mounted.Must not contain ':'.
-    - `[VolumeName <String>]`: This must match the Name of a Volume.
-
-`TEMPLATEVOLUME <IVolume[]>`: List of volume definitions for the Container App.
-  - `[Name <String>]`: Volume name.
-  - `[StorageName <String>]`: Name of storage resource. No need to provide for EmptyDir.
-  - `[StorageType <StorageType?>]`: Storage type for the volume. If not provided, use EmptyDir.
 
 ## RELATED LINKS
 

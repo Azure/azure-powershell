@@ -59,8 +59,9 @@ function Test-VirtualMachineZone
         $securePassword = ConvertTo-SecureString $password -AsPlainText -Force;
         $cred = New-Object System.Management.Automation.PSCredential ($user, $securePassword);
         $computerName = 'test';
+        $stnd = "Standard";
 
-        $p = New-AzVMConfig -VMName $vmname -VMSize $vmsize -Zone "1" `
+        $p = New-AzVMConfig -VMName $vmname -VMSize $vmsize -Zone "1" -SecurityType $stnd `
              | Add-AzVMNetworkInterface -Id $nicId -Primary `
              | Set-AzVMOperatingSystem -Windows -ComputerName $computerName -Credential $cred;
 

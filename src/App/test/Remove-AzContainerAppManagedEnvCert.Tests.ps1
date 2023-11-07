@@ -19,6 +19,10 @@ Describe 'Remove-AzContainerAppManagedEnvCert' {
         { throw [System.NotImplementedException] } | Should -Not -Throw
     }
 
+    It 'DeleteViaIdentityManagedEnvironment' -skip {
+        { throw [System.NotImplementedException] } | Should -Not -Throw
+    }
+
     It 'DeleteViaIdentity' -skip {
         { throw [System.NotImplementedException] } | Should -Not -Throw
     }

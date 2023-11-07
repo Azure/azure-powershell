@@ -30,7 +30,8 @@ function Test-VirtualMachineExtension
         # VM Profile & Hardware
         $vmsize = 'Standard_A2';
         $vmname = 'vm' + $rgname;
-        $p = New-AzVMConfig -VMName $vmname -VMSize $vmsize;
+        $stnd = "Standard";
+        $p = New-AzVMConfig -VMName $vmname -VMSize $vmsize -SecurityType $stnd;
         Assert-AreEqual $p.HardwareProfile.VmSize $vmsize;
 
         # NRP
@@ -178,7 +179,8 @@ function Test-VirtualMachineExtensionUsingHashTable
         # VM Profile & Hardware
         $vmsize = 'Standard_A2';
         $vmname = 'vm' + $rgname;
-        $p = New-AzVMConfig -VMName $vmname -VMSize $vmsize;
+        $stnd = "Standard";
+        $p = New-AzVMConfig -VMName $vmname -VMSize $vmsize -SecurityType $stnd;
         Assert-AreEqual $p.HardwareProfile.VmSize $vmsize;
 
         # NRP
@@ -344,7 +346,8 @@ function Test-VirtualMachineCustomScriptExtension
         # VM Profile & Hardware
         $vmsize = 'Standard_A4';
         $vmname = 'vm' + $rgname;
-        $p = New-AzVMConfig -VMName $vmname -VMSize $vmsize;
+        $stnd = "Standard";
+        $p = New-AzVMConfig -VMName $vmname -VMSize $vmsize -SecurityType $stnd;
         Assert-AreEqual $p.HardwareProfile.VmSize $vmsize;
 
         # NRP
@@ -498,7 +501,8 @@ function Test-VirtualMachineCustomScriptExtensionPiping
         $securePassword = ConvertTo-SecureString $password -AsPlainText -Force;
         $cred = New-Object System.Management.Automation.PSCredential ($user, $securePassword);
         [string]$domainNameLabel = "$vmname-$vmname".tolower();
-        $vmobject = New-AzVm -Name $vmname -ResourceGroupName $rgname -Credential $cred -DomainNameLabel $domainNameLabel;
+        $stnd = "Standard";
+        $vmobject = New-AzVm -Name $vmname -ResourceGroupName $rgname -Credential $cred -DomainNameLabel $domainNameLabel -SecurityType $stnd;
 
         $csename = "myCustomExtension";
         $fileUri = "https://raw.githubusercontent.com/neilpeterson/nepeters-azure-templates/master/windows-custom-script-simple/support-scripts/Create-File.ps1";
@@ -565,7 +569,8 @@ function Test-VirtualMachineCustomScriptExtensionWrongStorage
         # VM Profile & Hardware
         $vmsize = 'Standard_A4';
         $vmname = 'vm' + $rgname;
-        $p = New-AzVMConfig -VMName $vmname -VMSize $vmsize;
+        $stnd = "Standard";
+        $p = New-AzVMConfig -VMName $vmname -VMSize $vmsize -SecurityType $stnd;
         Assert-AreEqual $p.HardwareProfile.VmSize $vmsize;
 
         # NRP
@@ -676,7 +681,8 @@ function Test-VirtualMachineCustomScriptExtensionSecureExecution
         # VM Profile & Hardware
         $vmsize = 'Standard_A4';
         $vmname = 'vm' + $rgname;
-        $p = New-AzVMConfig -VMName $vmname -VMSize $vmsize;
+        $stnd = "Standard";
+        $p = New-AzVMConfig -VMName $vmname -VMSize $vmsize -SecurityType $stnd;
         Assert-AreEqual $p.HardwareProfile.VmSize $vmsize;
 
         # NRP
@@ -801,7 +807,8 @@ function Test-VirtualMachineCustomScriptExtensionFileUri
         # VM Profile & Hardware
         $vmsize = 'Standard_A4';
         $vmname = 'vm' + $rgname;
-        $p = New-AzVMConfig -VMName $vmname -VMSize $vmsize;
+        $stnd = "Standard";
+        $p = New-AzVMConfig -VMName $vmname -VMSize $vmsize -SecurityType $stnd;
         Assert-AreEqual $p.HardwareProfile.VmSize $vmsize;
 
         # NRP
@@ -959,7 +966,8 @@ function Test-VirtualMachineCustomScriptExtensionLinuxVM
         $imagePublisher = "RedHat";
         $imageOffer = "RHEL";
         $imageSku = "7.5";
-        $p = New-AzVMConfig -VMName $vmname -VMSize $vmsize;
+        $stnd = "Standard";
+        $p = New-AzVMConfig -VMName $vmname -VMSize $vmsize -SecurityType $stnd;
         Assert-AreEqual $p.HardwareProfile.VmSize $vmsize;
 
         # NRP
@@ -1047,9 +1055,10 @@ function Test-VirtualMachineCustomScriptExtensionManagedDisk
         $password = Get-PasswordForVM | ConvertTo-SecureString -AsPlainText -Force;
         $cred = new-object -typename System.Management.Automation.PSCredential -argumentlist $username, $password;
         [string]$domainNameLabel = "$vmname0-$vmname0".tolower();
-
+        $stnd = "Standard";
         $imgversion = Get-VMImageVersion -Publisher "MicrosoftWindowsServer" -Offer "WindowsServer" -Sku "2016-Datacenter";
         $x = New-AzVM `
+            -SecurityType $stnd `
             -ResourceGroupName $rgname `
             -Name $vmname0 `
             -Location $loc `
@@ -1075,7 +1084,8 @@ function Test-VirtualMachineCustomScriptExtensionManagedDisk
         # VM Profile & Hardware
         $vmsize = 'Standard_D2s_v3';
         $vmname1 = $rgname + "v1";
-        $p = New-AzVMConfig -VMName $vmname1 -VMSize $vmsize;
+        $stnd = "Standard";
+        $p = New-AzVMConfig -VMName $vmname1 -VMSize $vmsize -SecurityType $stnd;
 
         # NRP
         $subnet = New-AzVirtualNetworkSubnetConfig -Name ('subnet' + $rgname) -AddressPrefix "10.0.0.0/24";
@@ -1198,7 +1208,8 @@ function Test-VirtualMachineCustomScriptExtensionSubstatuses
         $securePassword = ConvertTo-SecureString $password -AsPlainText -Force;
         $cred = New-Object System.Management.Automation.PSCredential ($user, $securePassword);
         [string]$domainNameLabel = "$vmname-$vmname".tolower();
-        $vmobject = New-AzVm -Name $vmname -ResourceGroupName $rgname -Credential $cred -DomainNameLabel $domainNameLabel;
+        $stnd = "Standard";
+        $vmobject = New-AzVm -Name $vmname -ResourceGroupName $rgname -Credential $cred -DomainNameLabel $domainNameLabel -SecurityType $stnd;
 
         $csename = "myCustomExtension";
         $fileUri = "https://raw.githubusercontent.com/neilpeterson/nepeters-azure-templates/master/windows-custom-script-simple/support-scripts/Create-File.ps1";
@@ -1238,7 +1249,8 @@ function Test-VirtualMachineAccessExtension
         # VM Profile & Hardware
         $vmsize = 'Standard_A4';
         $vmname = 'vm' + $rgname;
-        $p = New-AzVMConfig -VMName $vmname -VMSize $vmsize;
+        $stnd = "Standard";
+        $p = New-AzVMConfig -VMName $vmname -VMSize $vmsize -SecurityType $stnd;
         Assert-AreEqual $p.HardwareProfile.VmSize $vmsize;
 
         # NRP
@@ -1607,7 +1619,8 @@ function Test-AzureDiskEncryptionLnxManagedDisk
         $imagePublisher = "RedHat";
         $imageOffer = "RHEL";
         $imageSku = "7.5";
-        $p = New-AzVMConfig -VMName $vmname -VMSize $vmsize;
+        $stnd = "Standard";
+        $p = New-AzVMConfig -VMName $vmname -VMSize $vmsize -SecurityType $stnd;
         Assert-AreEqual $p.HardwareProfile.VmSize $vmsize;
 
         # NRP
@@ -1796,7 +1809,8 @@ function Test-AzureDiskEncryptionExtension
         $keyVaultResourceId2 = $keyVault2.ResourceId;
 
         # VM Profile & Hardware
-        $p = New-AzVMConfig -VMName $vmname -VMSize $vmsize;
+        $stnd = "Standard";
+        $p = New-AzVMConfig -VMName $vmname -VMSize $vmsize -SecurityType $stnd;
 
         # NRP
         $subnet = New-AzVirtualNetworkSubnetConfig -Name ($subnetName) -AddressPrefix "10.0.0.0/24";
@@ -2055,7 +2069,8 @@ function Test-VirtualMachineBginfoExtension
         # VM Profile & Hardware
         $vmsize = 'Standard_A4';
         $vmname = 'vm' + $rgname;
-        $p = New-AzVMConfig -VMName $vmname -VMSize $vmsize;
+        $stnd = "Standard";
+        $p = New-AzVMConfig -VMName $vmname -VMSize $vmsize -SecurityType $stnd;
         Assert-AreEqual $p.HardwareProfile.VmSize $vmsize;
 
         # NRP
@@ -2208,7 +2223,8 @@ function Test-VirtualMachineExtensionWithSwitch
         # VM Profile & Hardware
         $vmsize = 'Standard_A2';
         $vmname = 'vm' + $rgname;
-        $p = New-AzVMConfig -VMName $vmname -VMSize $vmsize;
+        $stnd = "Standard";
+        $p = New-AzVMConfig -VMName $vmname -VMSize $vmsize -SecurityType $stnd;
         Assert-AreEqual $p.HardwareProfile.VmSize $vmsize;
 
         # NRP
@@ -2349,7 +2365,8 @@ function Test-VirtualMachineADDomainExtension
         # VM Profile & Hardware
         $vmsize = 'Standard_A4';
         $vmname = 'vm' + $rgname;
-        $p = New-AzVMConfig -VMName $vmname -VMSize $vmsize;
+        $stnd = "Standard";
+        $p = New-AzVMConfig -VMName $vmname -VMSize $vmsize -SecurityType $stnd;
         Assert-AreEqual $p.HardwareProfile.VmSize $vmsize;
 
         # NRP
@@ -2508,7 +2525,8 @@ function Test-VirtualMachineADDomainExtensionDomainJoin
         # VM Profile & Hardware
         $vmsize = 'Standard_A4';
         $vmname = 'vm' + $rgname;
-        $p = New-AzVMConfig -VMName $vmname -VMSize $vmsize;
+        $stnd = "Standard";
+        $p = New-AzVMConfig -VMName $vmname -VMSize $vmsize -SecurityType $stnd;
         Assert-AreEqual $p.HardwareProfile.VmSize $vmsize;
 
         # NRP
@@ -2681,8 +2699,9 @@ function Test-VirtualMachineExtensionEnableAutomaticUpgrade
 
 
         # create vm/vmss
-        New-AzVM -ResourceGroupName $rgname -Location $loc -name $vmname -credential $cred -domainNameLabel $domainNameLabel
-        New-AzVmss -ResourceGroupName $rgname -Location $loc -VMScalesetName $vmssname -credential $cred -domainNameLabel $domainNameLabel2
+        $stnd = "Standard";
+        New-AzVM -ResourceGroupName $rgname -Location $loc -name $vmname -credential $cred -domainNameLabel $domainNameLabel -SecurityType $stnd;
+        New-AzVmss -ResourceGroupName $rgname -Location $loc -VMScalesetName $vmssname -credential $cred -domainNameLabel $domainNameLabel2 -SecurityType $stnd;
 
         # check vm/vmss
         $vm = Get-AzVM -Name $vmname -ResourceGroupName $rgname;

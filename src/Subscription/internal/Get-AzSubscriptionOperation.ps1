@@ -16,23 +16,51 @@
 
 <#
 .Synopsis
-Lists all of the available Microsoft.Subscription API operations.
+Get the status of the pending Microsoft.Subscription API operations.
 .Description
-Lists all of the available Microsoft.Subscription API operations.
+Get the status of the pending Microsoft.Subscription API operations.
 .Example
 {{ Add code here }}
 .Example
 {{ Add code here }}
 
+.Inputs
+Microsoft.Azure.PowerShell.Cmdlets.Subscription.Models.ISubscriptionIdentity
 .Outputs
 Microsoft.Azure.PowerShell.Cmdlets.Subscription.Models.Api20211001.IOperation
+.Outputs
+System.String
+.Notes
+COMPLEX PARAMETER PROPERTIES
+
+To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
+
+INPUTOBJECT <ISubscriptionIdentity>: Identity Parameter
+  [AliasName <String>]: AliasName is the name for the subscription creation request. Note that this is not the same as subscription name and this doesn’t have any other lifecycle need beyond the request for subscription creation.
+  [BillingAccountId <String>]: Billing Account Id.
+  [Id <String>]: Resource identity path
+  [OperationId <String>]: The operation ID, which can be found from the Location field in the generate recommendation response header.
+  [SubscriptionId <String>]: Subscription Id.
 .Link
 https://learn.microsoft.com/powershell/module/az.subscription/get-azsubscriptionoperation
 #>
 function Get-AzSubscriptionOperation {
-[OutputType([Microsoft.Azure.PowerShell.Cmdlets.Subscription.Models.Api20211001.IOperation])]
+[OutputType([System.String], [Microsoft.Azure.PowerShell.Cmdlets.Subscription.Models.Api20211001.IOperation])]
 [CmdletBinding(DefaultParameterSetName='List', PositionalBinding=$false)]
 param(
+    [Parameter(ParameterSetName='Get', Mandatory)]
+    [Microsoft.Azure.PowerShell.Cmdlets.Subscription.Category('Path')]
+    [System.String]
+    # The operation ID, which can be found from the Location field in the generate recommendation response header.
+    ${OperationId},
+
+    [Parameter(ParameterSetName='GetViaIdentity', Mandatory, ValueFromPipeline)]
+    [Microsoft.Azure.PowerShell.Cmdlets.Subscription.Category('Path')]
+    [Microsoft.Azure.PowerShell.Cmdlets.Subscription.Models.ISubscriptionIdentity]
+    # Identity Parameter
+    # To construct, see NOTES section for INPUTOBJECT properties and create a hash table.
+    ${InputObject},
+
     [Parameter()]
     [Alias('AzureRMContext', 'AzureCredential')]
     [ValidateNotNull()]
@@ -61,6 +89,13 @@ param(
     [Microsoft.Azure.PowerShell.Cmdlets.Subscription.Runtime.SendAsyncStep[]]
     # SendAsync Pipeline Steps to be prepended to the front of the pipeline
     ${HttpPipelinePrepend},
+
+    [Parameter(ParameterSetName='Get')]
+    [Parameter(ParameterSetName='GetViaIdentity')]
+    [Microsoft.Azure.PowerShell.Cmdlets.Subscription.Category('Runtime')]
+    [System.Management.Automation.SwitchParameter]
+    # Returns true when the command succeeds
+    ${PassThru},
 
     [Parameter(DontShow)]
     [Microsoft.Azure.PowerShell.Cmdlets.Subscription.Category('Runtime')]
@@ -91,6 +126,8 @@ begin {
         $parameterSet = $PSCmdlet.ParameterSetName
 
         $mapping = @{
+            Get = 'Az.Subscription.private\Get-AzSubscriptionOperation_Get';
+            GetViaIdentity = 'Az.Subscription.private\Get-AzSubscriptionOperation_GetViaIdentity';
             List = 'Az.Subscription.private\Get-AzSubscriptionOperation_List';
         }
 
