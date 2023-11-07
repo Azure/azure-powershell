@@ -238,6 +238,7 @@ function Test-VmssDiagnosticsExtension
 
         $adminUsername = 'Foo12';
         $adminPassword = Get-PasswordForVM;
+        $stnd = "Standard";
 
         $imgRef = Get-DefaultCRPImage -loc $loc;
         $vhdContainer = "https://" + $stoname + ".blob.core.windows.net/" + $vmssName;
@@ -252,7 +253,7 @@ function Test-VmssDiagnosticsExtension
         New-AzStorageAccount -ResourceGroupName $rgname -Name $storagename -Location $loc -Type $storagetype;
 
         $ipCfg = New-AzVmssIPConfig -Name 'test' -SubnetId $subnetId;
-        $vmss = New-AzVmssConfig -Location $loc -SkuCapacity 2 -SkuName 'Standard_A1_v2' -UpgradePolicyMode 'automatic' -NetworkInterfaceConfiguration $netCfg `
+        $vmss = New-AzVmssConfig -Location $loc -SkuCapacity 2 -SkuName 'Standard_A1_v2' -UpgradePolicyMode 'automatic' -NetworkInterfaceConfiguration $netCfg -SecurityType $stnd `
             | Add-AzVmssNetworkInterfaceConfiguration -Name 'test' -Primary $true -IPConfiguration $ipCfg `
             | Set-AzVmssOSProfile -ComputerNamePrefix 'test' -AdminUsername $adminUsername -AdminPassword $adminPassword `
             | Set-AzVmssStorageProfile -Name 'test' -OsDiskCreateOption 'FromImage' -OsDiskCaching 'None' `

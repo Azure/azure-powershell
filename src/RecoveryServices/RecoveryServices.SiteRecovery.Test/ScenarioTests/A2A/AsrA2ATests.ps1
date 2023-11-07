@@ -1457,7 +1457,8 @@ function Test-VMSSReplication {
     $index = $RecoveryAzureNetworkId.IndexOf("/providers/")
     $recRg = $RecoveryAzureNetworkId.Substring(0, $index)
     #create virtual Machine scale set
-    $vmssConfig = New-AzVmssConfig -Location $recoveryLocation -PlatformFaultDomainCount 1 -SinglePlacementGroup 0
+    $stnd = "Standard"
+    $vmssConfig = New-AzVmssConfig -Location $recoveryLocation -PlatformFaultDomainCount 1 -SinglePlacementGroup 0 -SecurityType $stnd
     $recVmss = new-azvmss -resourcegroupname $recRgName -vmscalesetname 'vmss-asr' -virtualmachinescaleset $vmssConfig
     $recVmss1 = new-azvmss -resourcegroupname $recRgName -vmscalesetname 'vmss1-asr' -virtualmachinescaleset $vmssConfig
 

@@ -33,6 +33,8 @@ Describe 'New-AzFunctionApp, Update-AzFunctionApp, and Remove-AzFunctionApp E2E'
                               -PlanName $env.planNameWorkerTypeWindows `
                               -StorageAccount $env.storageAccountWindows  `
                               -Runtime PowerShell `
+                              -RuntimeVersion "7.2" `
+                              -FunctionsVersion 4 `
                               -IdentityType SystemAssigned `
                               -Tag $tags
 
@@ -82,7 +84,9 @@ Describe 'New-AzFunctionApp, Update-AzFunctionApp, and Remove-AzFunctionApp E2E'
 
             # Remove the managed identity from the function app - run Update-AzFunctionApp
             Write-Verbose "Update function -> remove SystemAssigned managed identity" -Verbose
-            Update-AzFunctionApp -InputObject $functionApp -IdentityType None -Force
+            # Update test to use -InputObject when https://github.com/Azure/azure-powershell/issues/23266 is fixed
+            # Update-AzFunctionApp -InputObject $functionApp -IdentityType None -Force
+            Update-AzFunctionApp -Name $functionName -ResourceGroupName $env.resourceGroupNameWindowsPremium -IdentityType None -Force
             
             $functionApp = Get-AzFunctionApp -Name $functionName -ResourceGroupName $env.resourceGroupNameWindowsPremium
             $functionApp.OSType | Should -Be "Windows"
@@ -90,23 +94,27 @@ Describe 'New-AzFunctionApp, Update-AzFunctionApp, and Remove-AzFunctionApp E2E'
             $functionApp.IdentityType | Should -Be $null
             $functionApp.AppServicePlan | Should -Be $planName
 
-            # Update application insigts
+            # Update application Insights
             Write-Verbose "Update function app ApplicationInsights via -ApplicationInsightsName" -Verbose
             $newApplInsights = $env.newApplInsights
-            Update-AzFunctionApp -InputObject $functionApp -ApplicationInsightsName $newApplInsights.Name -Force
+            # Update test to use -InputObject when https://github.com/Azure/azure-powershell/issues/23266 is fixed
+            # Update-AzFunctionApp -InputObject $functionApp -ApplicationInsightsName $newApplInsights.Name -Force
+            Update-AzFunctionApp -Name $functionName -ResourceGroupName $env.resourceGroupNameWindowsPremium -ApplicationInsightsName $newApplInsights.Name -Force
 
             $functionApp = Get-AzFunctionApp -Name $functionName -ResourceGroupName $env.resourceGroupNameWindowsPremium
             $functionApp.OSType | Should -Be "Windows"
             $functionApp.Runtime | Should -Be "PowerShell"
             $functionApp.IdentityType | Should -Be $null
             $functionApp.AppServicePlan | Should -Be $planName
-            $functionApp.ApplicationSettings["APPINSIGHTS_INSTRUMENTATIONKEY"] | Should -Be $newApplInsights.InstrumentationKey
 
             # Validate tags
             foreach ($tagName in $tags.Keys)
             {
                 $functionApp.Tag.AdditionalProperties[$tagName] | Should Be $tags[$tagName]
             }
+
+            $applicationSettings = Get-AzFunctionAppSetting -Name $functionName -ResourceGroupName $env.resourceGroupNameWindowsPremium
+            $applicationSettings["APPINSIGHTS_INSTRUMENTATIONKEY"] | Should -Be $newApplInsights.InstrumentationKey
         }
         finally
         {
@@ -137,8 +145,8 @@ Describe 'New-AzFunctionApp, Update-AzFunctionApp, and Remove-AzFunctionApp E2E'
                                                 -StorageAccount $env.storageAccountWindows `
                                                 -OSType "Windows" `
                                                 -Runtime "PowerShell" `
-                                                -RuntimeVersion 7.0 `
-                                                -FunctionsVersion 3 `
+                                                -RuntimeVersion 7.2 `
+                                                -FunctionsVersion 4 `
                                                 -AsJob
 
             Write-Verbose "Job completed. Validating result" -Verbose
@@ -193,8 +201,8 @@ Describe 'New-AzFunctionApp, Update-AzFunctionApp, and Remove-AzFunctionApp E2E'
                               -StorageAccount $env.storageAccountWindows `
                               -OSType "Windows" `
                               -Runtime "PowerShell" `
-                              -RuntimeVersion 7.0 `
-                              -FunctionsVersion 3
+                              -RuntimeVersion 7.2 `
+                              -FunctionsVersion 4
 
             $functionApp = Get-AzFunctionApp -Name $functionName -ResourceGroupName $env.resourceGroupNameWindowsPremium
             $functionApp.OSType | Should -Be "Windows"

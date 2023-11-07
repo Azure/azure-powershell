@@ -129,8 +129,8 @@ function setupEnv() {
             StorageAccountName = $storageAccountWindows
             OSType = "Windows"
             Runtime = "PowerShell"
-            RuntimeVersion = '7.0'
-            Name = "Functions-PowerShell-7-" + (RandomString -len 6)
+            RuntimeVersion = '7.2'
+            Name = "Functions-PowerShell-72-" + (RandomString -len 6)
             FunctionsVersion = 4
         },
         @{
@@ -139,8 +139,8 @@ function setupEnv() {
             StorageAccountName = $storageAccountLinux
             OSType = "Linux"
             Runtime = "Node"
-            RuntimeVersion = 14
-            Name = "Functions-Node-14-" + (RandomString -len 6)
+            RuntimeVersion = 18
+            Name = "Functions-Node-18-" + (RandomString -len 6)
             FunctionsVersion = 4
         },
         @{
@@ -149,7 +149,7 @@ function setupEnv() {
             StorageAccountName = $storageAccountWindows
             OSType = "Windows"
             Runtime = "DotNet"
-            RuntimeVersion = 6.0
+            RuntimeVersion = 6
             Name = "Functions-DoNet-6-" + (RandomString -len 6)
             FunctionsVersion = 4
         },
@@ -159,8 +159,8 @@ function setupEnv() {
             Location = $location
             OSType = "Linux"
             Runtime = "Python"
-            RuntimeVersion = 3.8
-            Name = "Functions-Python-3-8-" + (RandomString -len 6)
+            RuntimeVersion = "3.10"
+            Name = "Functions-Python-310-" + (RandomString -len 6)
             FunctionsVersion = 4
         }
     )
@@ -182,6 +182,8 @@ function setupEnv() {
     $functionNamePython = "Functions-Python-" + (RandomString -len 10)
     $functionAppPlanName= "Functions-MyPlan-" + (RandomString -len 10)
     $functionAppTestPlanName= "Functions-MyTestPlan1-" + (RandomString -len 10)
+    $functionNameDotNetIsolated = "Functions-DotNet-Isolated" + (RandomString -len 10)
+    $functionNameCustomHandler = "Functions-CustomHandler" + (RandomString -len 10)
 
     $env.add('functionNamePowerShell', $functionNamePowerShell) | Out-Null
     $env.add('functionNameContainer', $functionNameContainer) | Out-Null
@@ -192,6 +194,8 @@ function setupEnv() {
     $env.add('functionNamePython', $functionNamePython) | Out-Null
     $env.add('functionAppPlanName', $functionAppPlanName) | Out-Null
     $env.add('functionAppTestPlanName', $functionAppTestPlanName) | Out-Null
+    $env.add('functionNameDotNetIsolated', $functionNameDotNetIsolated) | Out-Null
+    $env.add('functionNameCustomHandler', $functionNameCustomHandler) | Out-Null
 
     # Create user assigned identity
     Write-Host "Create user assigned managed identity" -ForegroundColor Yellow

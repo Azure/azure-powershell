@@ -75,6 +75,16 @@ namespace Microsoft.Azure.Commands.Compute
                 this.Disk.SecurityProfile.SecurityType = SecurityType;
             }
 
+            // Allow the Standard scenario, which will be nulled out just before the .Net SDK create call for disks.
+            if (SecurityType.ToLower() == ConstantValues.StandardSecurityType)
+            {
+                if (this.Disk.SecurityProfile == null)
+                {
+                    this.Disk.SecurityProfile = new DiskSecurityProfile();
+                }
+                this.Disk.SecurityProfile.SecurityType = SecurityType;
+            }
+
             if (this.IsParameterBound(c => c.SecureVMDiskEncryptionSet))
             {
                 if (this.Disk.SecurityProfile == null)

@@ -516,7 +516,7 @@ namespace Microsoft.Azure.Commands.Compute.Test.ScenarioTests
         }
 
         [Fact]
-        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        [Trait(Category.AcceptanceType, Category.LiveOnly)]
         public void TestVirtualMachineGuestAttestation()
         {
             TestRunner.RunTestScript("Test-VirtualMachineGuestAttestation");
@@ -604,6 +604,27 @@ namespace Microsoft.Azure.Commands.Compute.Test.ScenarioTests
         public void TestVirtualMachineSecurityTypeStandardWithConfig()
         {
             TestRunner.RunTestScript("Test-VirtualMachineSecurityTypeStandardWithConfig");
+        }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void TestVMDefaultsToTrustedLaunch()
+        {
+            TestRunner.RunTestScript("Test-VMDefaultsToTrustedLaunch");
+        }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.LiveOnly)]
+        public void TestVMDefaultsToTrustedLaunchWithManagedDisk()
+        {
+            TestRunner.RunTestScript("Test-VMDefaultsToTrustedLaunchWithManagedDisk");
+        }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void TestVMDefaultsToTrustedLaunchWithGen2Image()
+        {
+            TestRunner.RunTestScript("Test-VMDefaultsToTrustedLaunchWithGen2Image");
         }
     }
 }
