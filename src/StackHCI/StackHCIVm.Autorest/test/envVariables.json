@@ -21,7 +21,7 @@
     "vmSwitchName": "ExternalSwitch",
     "nicName": "testnicPowershell",
     "storagePathName": "teststoragepath1106",
-    "storageContainerPath": "C:\\ClusterStorage\\Volume1\\testPathPowershell",
+    "storageContainerPath": "C:\\ClusterStorage\\Volume1\\testPath1106",
     "vmImageName": "bugbashimage",
     "vmVhdName": "testVhdDisk1106",
     "vmImageId": "/subscriptions/0709bd7a-8383-4e1d-98c8-f81d1b3443fc/resourcegroups/mkclus90-rg/mkclus90-rg/providers/Microsoft.AzureStackHCI/galleryImages/testVmImage",

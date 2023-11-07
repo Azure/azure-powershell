@@ -522,14 +522,14 @@ function New-AzStackHCIVmVirtualMachine {
 
       $NetworkProfileNetworkInterface =  [System.Collections.ArrayList]::new()
       foreach ($NName in $NicName){
-        $NicId = "/subscriptions/$SubscriptionId/resourceGroups/$rg/providers/Microsoft.AzureStackHCI/networkinterfaces/$NName"
-        $nic = Az.StackHCIVm\Get-AzStackHCIVmNetworkInterface -ResourceId $NicId  -ErrorAction SilentlyContinue
+        $NicIdNew = "/subscriptions/$SubscriptionId/resourceGroups/$rg/providers/Microsoft.AzureStackHCI/networkinterfaces/$NName"
+        $nic = Az.StackHCIVm\Get-AzStackHCIVmNetworkInterface -ResourceId $NicIdNew  -ErrorAction SilentlyContinue
    
         if ($nic -eq $null){
-          Write-Error "A Network Interface with id: $NicId does not exist." -ErrorAction Stop
+          Write-Error "A Network Interface with id: $NicIdNew does not exist." -ErrorAction Stop
         }
       
-        $NetworkInterface = @{Id = $NicId}
+        $NetworkInterface = @{Id = $NicIdNew}
         [void]$NetworkProfileNetworkInterface.Add($NetworkInterface)
       }
       $null = $PSBoundParameters.Remove("NicName")
@@ -642,8 +642,8 @@ function New-AzStackHCIVmVirtualMachine {
      
       $StorageProfileDataDisk =  [System.Collections.ArrayList]::new()
       foreach ($DiskName in $DataDiskName){
-        $DataDiskId = "/subscriptions/$SubscriptionId/resourceGroups/$rg/providers/Microsoft.AzureStackHCI/virtualharddisks/$DiskName"
-        $DataDisk = @{Id = $DataDiskId}
+        $DataDiskIdNew = "/subscriptions/$SubscriptionId/resourceGroups/$rg/providers/Microsoft.AzureStackHCI/virtualharddisks/$DiskName"
+        $DataDisk = @{Id = $DataDiskIdNew}
         [void]$StorageProfileDataDisk.Add($DataDisk)
       }
       $null = $PSBoundParameters.Remove("DataDiskName")

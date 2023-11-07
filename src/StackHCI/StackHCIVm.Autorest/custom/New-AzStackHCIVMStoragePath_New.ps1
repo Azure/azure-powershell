@@ -76,7 +76,7 @@ param(
     [System.Collections.Hashtable]
     # Resource tags.
     ${Tag},
-    
+
     [Parameter()]
     [Alias('AzureRMContext', 'AzureCredential')]
     [ValidateNotNull()]
@@ -145,11 +145,6 @@ param(
       Write-Error "Invalid CustomLocationId: $CustomLocationId" -ErrorAction Stop
     } 
     
-    if ($Path){
-        if (-not (Test-Path $Path -IsValid)){
-            Write-Error "Invalid Path:  $Path." -ErrorAction Stop
-        }
-    }
     
     return Az.StackHCIVm.internal\New-AzStackHCIVmStoragePath @PSBoundParameters
  

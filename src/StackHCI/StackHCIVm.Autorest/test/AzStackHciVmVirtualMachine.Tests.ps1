@@ -1,4 +1,4 @@
-<# if(($null -eq $TestName) -or ($TestName -contains 'AzStackHCIVmVirtualMachine'))
+if(($null -eq $TestName) -or ($TestName -contains 'AzStackHCIVmVirtualMachine'))
 {
   $loadEnvPath = Join-Path $PSScriptRoot 'loadEnv.ps1'
   if (-Not (Test-Path -Path $loadEnvPath)) {
@@ -17,26 +17,26 @@
 Describe 'AzStackHCIVmVirtualMachine' {
     It 'Create Virtual Machine  '  {
         
-        New-AzStackHciVMVirtualMachine -Name $env.vmName -OsType $env.osTypeLinux  -ImageName $env.vmImageName -VmSize $env.vmSize -AdminUsername $env.adminUsername -ComputerName $env.vmName -SubscriptionId $env.SubscriptionId -ResourceGroupName $env.resourceGroupName -CustomLocationId $env.customLocationId  -Location $env.location -ProvisionVMAgent:$false -ProvisionVMConfigAgent:$false| Select-Object -Property ProvisioningState | Should -BeExactly "@{ProvisioningState=Succeeded}"
+        New-AzStackHciVMVirtualMachine -Name manualvmtest2 -OsType Linux  -ImageName "bugbashimage" -VmSize "Standard_K8S_v1"  -ComputerName "manualvmtest2" -ResourceGroupName "AltaylSnClus-rg" -CustomLocationId "/subscriptions/0709bd7a-8383-4e1d-98c8-f81d1b3443fc/resourceGroups/AltaylSnClus-rg/providers/Microsoft.ExtendedLocation/customLocations/myResourceBridge-cl"  -Location "eastus" -ProvisionVMAgent:$false -ProvisionVMConfigAgent:$false | Select-Object -Property ProvisioningState | Should -BeExactly "@{ProvisioningState=Succeeded}"
     
     }
 
     It 'Get'  {
         {
-            $config = Get-AzStackHCIVMVirtualMachine -Name $env.vmName -ResourceGroupName $env.resourceGroupName 
+            $config = Get-AzStackHCIVMVirtualMachine -Name manualvmtest2 -ResourceGroupName $env.resourceGroupName 
             $config.Name | Should -Be  "default"
         } | Should -Not -Throw
     }
 
     It 'Stop'  {
         {
-            Stop-AzStackHCIVMVirtualMachine -Name $env.vmName -ResourceGroupName $env.resourceGroupName 
+            Stop-AzStackHCIVMVirtualMachine -Name manualvmtest2 -ResourceGroupName $env.resourceGroupName 
         } | Should -Not -Throw
     }
 
     It 'Start'  {
         {
-            Start-AzStackHCIVMVirtualMachine -Name $env.vmName -ResourceGroupName $env.resourceGroupName 
+            Start-AzStackHCIVMVirtualMachine -Name manualvmtest2 -ResourceGroupName $env.resourceGroupName 
         } | Should -Not -Throw
     }
 
@@ -44,11 +44,11 @@ Describe 'AzStackHCIVmVirtualMachine' {
     It 'Delete'{
         {
 
-            Remove-AzStackHCIVMVirtualMachine -Name  $env.vmName -ResourceGroupName $env.resourceGroupName -Force
-            $config = Get-AzStackHCIVMVirtualMachine -Name $env.vmName -ResourceGroupName $env.resourceGroupName 
+            Remove-AzStackHCIVMVirtualMachine -Name  manualvmtest2 -ResourceGroupName $env.resourceGroupName -Force
+            $config = Get-AzStackHCIVMVirtualMachine -Name manualvmtest2 -ResourceGroupName $env.resourceGroupName 
             $config | Should -Be $null
         } | Should -Throw
     }
 
 }
- #>
+ 
