@@ -103,8 +103,8 @@ function Add-AzStackHCIVmVirtualMachineNetworkInterface {
             }
     
             foreach ($NName in $NicName){
-                $NicId = "/subscriptions/$SubscriptionId/resourceGroups/$rg/providers/Microsoft.AzureStackHCI/networkinterfaces/$NName"
-                $Nic = @{Id = $NicId}
+                $NicIdNew = "/subscriptions/$SubscriptionId/resourceGroups/$rg/providers/Microsoft.AzureStackHCI/networkinterfaces/$NName"
+                $Nic = @{Id = $NicIdNew}
                 [void]$NetworkProfileNetworkInterface.Add($Nic)
             }
     

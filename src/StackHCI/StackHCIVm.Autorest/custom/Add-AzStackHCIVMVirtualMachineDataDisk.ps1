@@ -120,8 +120,8 @@ function Add-AzStackHCIVmVirtualMachineDataDisk {
             }
     
             foreach ($DiskName in $DataDiskName){
-                $DataDiskId = "/subscriptions/$SubscriptionId/resourceGroups/$rg/providers/Microsoft.AzureStackHCI/virtualharddisks/$DiskName"
-                $DataDisk = @{Id = $DataDiskId}
+                $DataDiskIdNew = "/subscriptions/$SubscriptionId/resourceGroups/$rg/providers/Microsoft.AzureStackHCI/virtualharddisks/$DiskName"
+                $DataDisk = @{Id = $DataDiskIdNew}
                 [void]$StorageProfileDataDisk.Add($DataDisk)
             }
     
