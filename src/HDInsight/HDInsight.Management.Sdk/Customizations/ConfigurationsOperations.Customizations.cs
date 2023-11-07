@@ -41,14 +41,16 @@ namespace Microsoft.Azure.Management.HDInsight
         /// <returns>
         /// The cluster long running operation response.
         /// </returns>
-        
+
         public async Task<AzureOperationResponse> EnableHttpAsync(string resourceGroupName, string clusterName,
             string username, string password, CancellationToken cancellationToken)
         {
             try
             {
                 HttpConnectivitySettings settings = GetEnableParameters(username, password);
+#pragma warning disable CS0618 // Type or member is obsolete
                 return await UpdateWithHttpMessagesAsync(resourceGroupName, clusterName, ConfigurationKey.Gateway, ConfigurationsConverter.Convert(settings), null, cancellationToken);
+#pragma warning restore CS0618 // Type or member is obsolete
             }
             catch (Exception ex)
             {
@@ -84,7 +86,9 @@ namespace Microsoft.Azure.Management.HDInsight
             try
             {
                 HttpConnectivitySettings settings = GetEnableParameters(username, password);
+#pragma warning disable CS0618 // Type or member is obsolete
                 return await BeginUpdateWithHttpMessagesAsync(resourceGroupName, clusterName, ConfigurationKey.Gateway, ConfigurationsConverter.Convert(settings), null, cancellationToken);
+#pragma warning restore CS0618 // Type or member is obsolete
             }
             catch (Exception ex)
             {
@@ -113,7 +117,9 @@ namespace Microsoft.Azure.Management.HDInsight
             try
             {
                 var settings = GetDisableParameters();
+#pragma warning disable CS0618 // Type or member is obsolete
                 return await UpdateWithHttpMessagesAsync(resourceGroupName, clusterName, ConfigurationKey.Gateway, ConfigurationsConverter.Convert(settings), null, cancellationToken);
+#pragma warning restore CS0618 // Type or member is obsolete
             }
             catch (Exception ex)
             {
@@ -136,13 +142,15 @@ namespace Microsoft.Azure.Management.HDInsight
         /// <returns>
         /// The cluster long running operation response.
         /// </returns>
-        
+
         public async Task<AzureOperationResponse> BeginDisablingHttpAsync(string resourceGroupName, string clusterName, CancellationToken cancellationToken)
         {
             try
             {
                 var settings = GetDisableParameters();
+#pragma warning disable CS0618 // Type or member is obsolete
                 return await BeginUpdateWithHttpMessagesAsync(resourceGroupName, clusterName, ConfigurationKey.Gateway, ConfigurationsConverter.Convert(settings), null, cancellationToken);
+#pragma warning restore CS0618 // Type or member is obsolete
             }
             catch (Exception ex)
             {
