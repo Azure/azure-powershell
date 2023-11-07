@@ -19,6 +19,10 @@ Describe 'Restart-AzContainerAppRevision' {
         { throw [System.NotImplementedException] } | Should -Not -Throw
     }
 
+    It 'RestartViaIdentityContainerApp' -skip {
+        { throw [System.NotImplementedException] } | Should -Not -Throw
+    }
+
     It 'RestartViaIdentity' -skip {
         { throw [System.NotImplementedException] } | Should -Not -Throw
     }

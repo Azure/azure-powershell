@@ -44,7 +44,7 @@ namespace Microsoft.Azure.Management.Sql.Models
 
         /// <param name="executionOptions">Execution options for the job step.
         /// </param>
-        public JobStepProperties(string targetGroup, string credential, JobStepAction action, int? stepId = default(int?), JobStepOutput output = default(JobStepOutput), JobStepExecutionOptions executionOptions = default(JobStepExecutionOptions))
+        public JobStepProperties(string targetGroup, JobStepAction action, int? stepId = default(int?), string credential = default(string), JobStepOutput output = default(JobStepOutput), JobStepExecutionOptions executionOptions = default(JobStepExecutionOptions))
 
         {
             this.StepId = stepId;
@@ -112,10 +112,6 @@ namespace Microsoft.Azure.Management.Sql.Models
             if (this.TargetGroup == null)
             {
                 throw new Microsoft.Rest.ValidationException(Microsoft.Rest.ValidationRules.CannotBeNull, "TargetGroup");
-            }
-            if (this.Credential == null)
-            {
-                throw new Microsoft.Rest.ValidationException(Microsoft.Rest.ValidationRules.CannotBeNull, "Credential");
             }
             if (this.Action == null)
             {

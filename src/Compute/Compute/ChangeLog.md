@@ -27,6 +27,9 @@
 * Added new parameters `-ElasticSanResourceId` and `-OptimizedForFrequentAttach` to `New-AzDiskConfig` cmdlet.
 * Added new parameter `-ElasticSanResourceId` to `New-AzSnapshotConfig` cmdlet.
 * Added new parameter `-VirtualMachineScaleSetId` to `Update-AzVm` cmdlet.
+* Fixed `New-AzVmss` and `New-Azvm` to use `SharedGalleryImageId` parameter.
+* Reducing File Permissions from 0644 to 0600 for SSH Private Key File in `New-AzVm`.
+
 
 ## Version 6.3.0
 * Added `-Hibernate` switch parameter to `Stop-AzVmss` default parameter set. 

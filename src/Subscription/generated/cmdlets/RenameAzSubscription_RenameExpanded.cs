@@ -12,10 +12,12 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Subscription.Cmdlets
     /// <remarks>
     /// [OpenAPI] Rename=>POST:"/subscriptions/{subscriptionId}/providers/Microsoft.Subscription/rename"
     /// </remarks>
+    [global::Microsoft.Azure.PowerShell.Cmdlets.Subscription.InternalExport]
     [global::System.Management.Automation.Cmdlet(global::System.Management.Automation.VerbsCommon.Rename, @"AzSubscription_RenameExpanded", SupportsShouldProcess = true)]
     [global::System.Management.Automation.OutputType(typeof(string))]
     [global::Microsoft.Azure.PowerShell.Cmdlets.Subscription.Description(@"The operation to rename a subscription")]
     [global::Microsoft.Azure.PowerShell.Cmdlets.Subscription.Generated]
+    [global::Microsoft.Azure.PowerShell.Cmdlets.Subscription.HttpPath(Path = "/subscriptions/{subscriptionId}/providers/Microsoft.Subscription/rename", ApiVersion = "2021-10-01")]
     public partial class RenameAzSubscription_RenameExpanded : global::System.Management.Automation.PSCmdlet,
         Microsoft.Azure.PowerShell.Cmdlets.Subscription.Runtime.IEventListener
     {

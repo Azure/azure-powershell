@@ -54,12 +54,21 @@ namespace Microsoft.Azure.Management.Sql.Models
         /// <param name="supportedMaintenanceConfigurations">List of supported maintenance configurations
         /// </param>
 
+        /// <param name="supportedMinCapacities">List of supported min capacities
+        /// </param>
+
+        /// <param name="supportedAutoPauseDelay">Supported time range for auto pause delay
+        /// </param>
+
+        /// <param name="supportedPerDatabaseAutoPauseDelay">Supported time range for per database auto pause delay
+        /// </param>
+
         /// <param name="status">The status of the capability.
         /// Possible values include: 'Visible', 'Available', 'Default', 'Disabled'</param>
 
         /// <param name="reason">The reason for the capability not being available.
         /// </param>
-        public ElasticPoolPerformanceLevelCapability(PerformanceLevelCapability performanceLevel = default(PerformanceLevelCapability), Sku sku = default(Sku), System.Collections.Generic.IList<LicenseTypeCapability> supportedLicenseTypes = default(System.Collections.Generic.IList<LicenseTypeCapability>), int? maxDatabaseCount = default(int?), MaxSizeCapability includedMaxSize = default(MaxSizeCapability), System.Collections.Generic.IList<MaxSizeRangeCapability> supportedMaxSizes = default(System.Collections.Generic.IList<MaxSizeRangeCapability>), System.Collections.Generic.IList<MaxSizeRangeCapability> supportedPerDatabaseMaxSizes = default(System.Collections.Generic.IList<MaxSizeRangeCapability>), System.Collections.Generic.IList<ElasticPoolPerDatabaseMaxPerformanceLevelCapability> supportedPerDatabaseMaxPerformanceLevels = default(System.Collections.Generic.IList<ElasticPoolPerDatabaseMaxPerformanceLevelCapability>), bool? zoneRedundant = default(bool?), System.Collections.Generic.IList<MaintenanceConfigurationCapability> supportedMaintenanceConfigurations = default(System.Collections.Generic.IList<MaintenanceConfigurationCapability>), CapabilityStatus? status = default(CapabilityStatus?), string reason = default(string))
+        public ElasticPoolPerformanceLevelCapability(PerformanceLevelCapability performanceLevel = default(PerformanceLevelCapability), Sku sku = default(Sku), System.Collections.Generic.IList<LicenseTypeCapability> supportedLicenseTypes = default(System.Collections.Generic.IList<LicenseTypeCapability>), int? maxDatabaseCount = default(int?), MaxSizeCapability includedMaxSize = default(MaxSizeCapability), System.Collections.Generic.IList<MaxSizeRangeCapability> supportedMaxSizes = default(System.Collections.Generic.IList<MaxSizeRangeCapability>), System.Collections.Generic.IList<MaxSizeRangeCapability> supportedPerDatabaseMaxSizes = default(System.Collections.Generic.IList<MaxSizeRangeCapability>), System.Collections.Generic.IList<ElasticPoolPerDatabaseMaxPerformanceLevelCapability> supportedPerDatabaseMaxPerformanceLevels = default(System.Collections.Generic.IList<ElasticPoolPerDatabaseMaxPerformanceLevelCapability>), bool? zoneRedundant = default(bool?), System.Collections.Generic.IList<MaintenanceConfigurationCapability> supportedMaintenanceConfigurations = default(System.Collections.Generic.IList<MaintenanceConfigurationCapability>), System.Collections.Generic.IList<MinCapacityCapability> supportedMinCapacities = default(System.Collections.Generic.IList<MinCapacityCapability>), AutoPauseDelayTimeRange supportedAutoPauseDelay = default(AutoPauseDelayTimeRange), PerDatabaseAutoPauseDelayTimeRange supportedPerDatabaseAutoPauseDelay = default(PerDatabaseAutoPauseDelayTimeRange), CapabilityStatus? status = default(CapabilityStatus?), string reason = default(string))
 
         {
             this.PerformanceLevel = performanceLevel;
@@ -72,6 +81,9 @@ namespace Microsoft.Azure.Management.Sql.Models
             this.SupportedPerDatabaseMaxPerformanceLevels = supportedPerDatabaseMaxPerformanceLevels;
             this.ZoneRedundant = zoneRedundant;
             this.SupportedMaintenanceConfigurations = supportedMaintenanceConfigurations;
+            this.SupportedMinCapacities = supportedMinCapacities;
+            this.SupportedAutoPauseDelay = supportedAutoPauseDelay;
+            this.SupportedPerDatabaseAutoPauseDelay = supportedPerDatabaseAutoPauseDelay;
             this.Status = status;
             this.Reason = reason;
             CustomInit();
@@ -144,6 +156,24 @@ namespace Microsoft.Azure.Management.Sql.Models
         public System.Collections.Generic.IList<MaintenanceConfigurationCapability> SupportedMaintenanceConfigurations {get; private set; }
 
         /// <summary>
+        /// Gets list of supported min capacities
+        /// </summary>
+        [Newtonsoft.Json.JsonProperty(PropertyName = "supportedMinCapacities")]
+        public System.Collections.Generic.IList<MinCapacityCapability> SupportedMinCapacities {get; private set; }
+
+        /// <summary>
+        /// Gets supported time range for auto pause delay
+        /// </summary>
+        [Newtonsoft.Json.JsonProperty(PropertyName = "supportedAutoPauseDelay")]
+        public AutoPauseDelayTimeRange SupportedAutoPauseDelay {get; private set; }
+
+        /// <summary>
+        /// Gets supported time range for per database auto pause delay
+        /// </summary>
+        [Newtonsoft.Json.JsonProperty(PropertyName = "supportedPerDatabaseAutoPauseDelay")]
+        public PerDatabaseAutoPauseDelayTimeRange SupportedPerDatabaseAutoPauseDelay {get; private set; }
+
+        /// <summary>
         /// Gets the status of the capability. Possible values include: &#39;Visible&#39;, &#39;Available&#39;, &#39;Default&#39;, &#39;Disabled&#39;
         /// </summary>
         [Newtonsoft.Json.JsonProperty(PropertyName = "status")]
@@ -167,6 +197,9 @@ namespace Microsoft.Azure.Management.Sql.Models
             {
                 this.Sku.Validate();
             }
+
+
+
 
 
 

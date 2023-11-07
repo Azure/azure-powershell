@@ -20,55 +20,48 @@ Describe 'AzContainerAppManagedEnvCert' {
 
     It 'CreateExpanded' -skip {
         {
+            $selfSignedCert = New-SelfSignedCertificate -DnsName "www.fabrikam.com", "www.contoso.com" -CertStoreLocation "cert:\LocalMachine\My"
+            Get-ChildItem -Path cert:\LocalMachine\My
             $mypwd = ConvertTo-SecureString -String "1234" -Force -AsPlainText
-
-            $config = New-AzContainerAppManagedEnvCert -EnvName $env.envName -Name $env.envCertName2 -ResourceGroupName $env.resourceGroup -Location $env.location -InputFile ".\test\mypfx.pfx" -Password $mypwd
-            $config.Name | Should -Be $env.envCertName2
-
-            $config = New-AzContainerAppManagedEnvCert -EnvName $env.envName -Name $env.envCertName3 -ResourceGroupName $env.resourceGroup -Location $env.location -InputFile ".\test\mypfx.pfx" -Password $mypwd
-            $config.Name | Should -Be $env.envCertName3
+            Get-ChildItem -Path cert:\localMachine\my\$($selfSignedCert.Thumbprint) | Export-PfxCertificate -FilePath ".\test\mypfx.pfx" -Password $mypwd
+        
+            New-AzContainerAppManagedEnvCert -managedEnv1 $env.managedEnv1 -Name $env.managedEnvCert2 -ResourceGroupName $env.resourceGroupManaged -Location $env.location -InputFile ".\test\mypfx.pfx" -Password $mypwd
+            $config.Name | Should -Be $env.managedEnvCert2
         } | Should -Not -Throw
     }
 
     It 'List' -skip {
         {
-            $config = Get-AzContainerAppManagedEnvCert -EnvName $env.envName -ResourceGroupName $env.resourceGroup
+            $config = Get-AzContainerAppManagedEnvCert -managedEnv1 $env.managedEnv1 -ResourceGroupName $env.resourceGroupManaged
             $config.Count | Should -BeGreaterThan 0
         } | Should -Not -Throw
     }
 
     It 'Get' -skip {
         {
-            $config = Get-AzContainerAppManagedEnvCert -EnvName $env.envName -ResourceGroupName $env.resourceGroup -Name $env.envCertName2
-            $config.Name | Should -Be $env.envCertName2
+            $config = Get-AzContainerAppManagedEnvCert -managedEnv1 $env.managedEnv1 -ResourceGroupName $env.resourceGroupManaged -Name $env.managedEnvCert2
+            $config.Name | Should -Be $env.managedEnvCert2
         } | Should -Not -Throw
     }
 
     It 'UpdateExpanded' -skip {
         {
-            $config = Update-AzContainerAppManagedEnvCert -EnvName $env.envName -ResourceGroupName $env.resourceGroup -Name $env.envCertName2 -Tag @{"123"="abc"}
-            $config.Name | Should -Be $env.envCertName2
+            $config = Update-AzContainerAppManagedEnvCert -managedEnv1 $env.managedEnv1 -ResourceGroupName $env.resourceGroupManaged -Name $env.managedEnvCert2 -Tag @{"123"="abc"}
+            $config.Name | Should -Be $env.managedEnvCert2
         } | Should -Not -Throw
     }
 
     It 'UpdateViaIdentityExpanded' -skip {
         {
-            $config = Get-AzContainerAppManagedEnvCert -EnvName $env.envName -ResourceGroupName $env.resourceGroup -Name $env.envCertName3
+            $config = Get-AzContainerAppManagedEnvCert -managedEnv1 $env.managedEnv1 -ResourceGroupName $env.resourceGroupManaged -Name $env.managedEnvCert2
             $config = Update-AzContainerAppManagedEnvCert -InputObject $config -Tag @{"123"="abc"}
-            $config.Name | Should -Be $env.envCertName3
+            $config.Name | Should -Be $env.managedEnvCert2
         } | Should -Not -Throw
     }
 
     It 'Delete' -skip {
         {
-            Remove-AzContainerAppManagedEnvCert -EnvName $env.envName -ResourceGroupName $env.resourceGroup -Name $env.envCertName2
-        } | Should -Not -Throw
-    }
-
-    It 'DeleteViaIdentity' -skip {
-        {
-            $config = Get-AzContainerAppManagedEnvCert -EnvName $env.envName -ResourceGroupName $env.resourceGroup -Name $env.envCertName3
-            Remove-AzContainerAppManagedEnvCert -InputObject $config
+            Remove-AzContainerAppManagedEnvCert -managedEnv1 $env.managedEnv1 -ResourceGroupName $env.resourceGroupManaged -Name $env.managedEnvCert2
         } | Should -Not -Throw
     }
 }

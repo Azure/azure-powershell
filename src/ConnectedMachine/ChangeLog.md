@@ -18,6 +18,7 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
+* Removed the version check in MachineExtensionProperties
 
 ## Version 0.5.0
 * Updated the API version to stable 2022-12-27

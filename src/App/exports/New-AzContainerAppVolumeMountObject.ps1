@@ -23,12 +23,12 @@ Create an in-memory object for VolumeMount.
 New-AzContainerAppVolumeMountObject -MountPath "/mountPath" -VolumeName "VolumeName"
 
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.App.Models.Api20220301.VolumeMount
+Microsoft.Azure.PowerShell.Cmdlets.App.Models.VolumeMount
 .Link
-https://learn.microsoft.com/powershell/module/az.app/new-azcontainerappvolumemountobject
+https://learn.microsoft.com/powershell/module/Az.App/new-azcontainerappvolumemountobject
 #>
 function New-AzContainerAppVolumeMountObject {
-[OutputType([Microsoft.Azure.PowerShell.Cmdlets.App.Models.Api20220301.VolumeMount])]
+[OutputType([Microsoft.Azure.PowerShell.Cmdlets.App.Models.VolumeMount])]
 [CmdletBinding(PositionalBinding=$false)]
 param(
     [Parameter()]
@@ -36,6 +36,13 @@ param(
     [System.String]
     # Path within the container at which the volume should be mounted.Must not contain ':'.
     ${MountPath},
+
+    [Parameter()]
+    [Microsoft.Azure.PowerShell.Cmdlets.App.Category('Body')]
+    [System.String]
+    # Path within the volume from which the container's volume should be mounted.
+    # Defaults to "" (volume's root).
+    ${SubPath},
 
     [Parameter()]
     [Microsoft.Azure.PowerShell.Cmdlets.App.Category('Body')]
@@ -74,6 +81,10 @@ begin {
         }
         $cmdInfo = Get-Command -Name $mapping[$parameterSet]
         [Microsoft.Azure.PowerShell.Cmdlets.App.Runtime.MessageAttributeHelper]::ProcessCustomAttributesAtRuntime($cmdInfo, $MyInvocation, $parameterSet, $PSCmdlet)
+        if ($null -ne $MyInvocation.MyCommand -and [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PromptedPreviewMessageCmdlets -notcontains $MyInvocation.MyCommand.Name -and [Microsoft.Azure.PowerShell.Cmdlets.App.Runtime.MessageAttributeHelper]::ContainsPreviewAttribute($cmdInfo, $MyInvocation)){
+            [Microsoft.Azure.PowerShell.Cmdlets.App.Runtime.MessageAttributeHelper]::ProcessPreviewMessageAttributesAtRuntime($cmdInfo, $MyInvocation, $parameterSet, $PSCmdlet)
+            [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PromptedPreviewMessageCmdlets.Enqueue($MyInvocation.MyCommand.Name)
+        }
         $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Cmdlet)
         $scriptCmd = {& $wrappedCmd @PSBoundParameters}
         $steppablePipeline = $scriptCmd.GetSteppablePipeline($MyInvocation.CommandOrigin)

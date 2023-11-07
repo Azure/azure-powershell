@@ -17,6 +17,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DataMigration.Cmdlets
     [global::System.Management.Automation.OutputType(typeof(Microsoft.Azure.PowerShell.Cmdlets.DataMigration.Models.Api20220330Preview.IOperationsDefinition))]
     [global::Microsoft.Azure.PowerShell.Cmdlets.DataMigration.Description(@"Lists all of the available SQL Migration REST API operations.")]
     [global::Microsoft.Azure.PowerShell.Cmdlets.DataMigration.Generated]
+    [global::Microsoft.Azure.PowerShell.Cmdlets.DataMigration.HttpPath(Path = "/providers/Microsoft.DataMigration/operations", ApiVersion = "2022-03-30-preview")]
     public partial class GetAzDataMigrationOperation_List : global::System.Management.Automation.PSCmdlet,
         Microsoft.Azure.PowerShell.Cmdlets.DataMigration.Runtime.IEventListener
     {

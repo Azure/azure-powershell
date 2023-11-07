@@ -1,7 +1,7 @@
 ---
 external help file:
 Module Name: Az.App
-online version: https://learn.microsoft.com/powershell/module/az.app/new-azcontainerappsecretobject
+online version: https://learn.microsoft.com/powershell/module/Az.App/new-azcontainerappsecretobject
 schema: 2.0.0
 ---
 
@@ -13,7 +13,8 @@ Create an in-memory object for Secret.
 ## SYNTAX
 
 ```
-New-AzContainerAppSecretObject [-Name <String>] [-Value <String>] [<CommonParameters>]
+New-AzContainerAppSecretObject [-Identity <String>] [-KeyVaultUrl <String>] [-Name <String>] [-Value <String>]
+ [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -21,20 +22,50 @@ Create an in-memory object for Secret.
 
 ## EXAMPLES
 
-### Example 1: Create a Secret object for ManagedEnvDaprSecret.
+### Example 1: Create an in-memory object for Secret.
 ```powershell
-New-AzContainerAppSecretObject -Name "masterkey" -Value "keyvalue"
+New-AzContainerAppSecretObject -Name "redis-secret" -Value "redis-password"
 ```
 
 ```output
-Name      Value
-----      -----
-masterkey keyvalue
+Identity KeyVaultUrl Name         Value
+-------- ----------- ----         -----
+                     redis-secret redis-password
 ```
 
-Create a Secret object for ManagedEnvDaprSecret.
+Create an in-memory object for Secret.
 
 ## PARAMETERS
+
+### -Identity
+Resource ID of a managed identity to authenticate with Azure Key Vault, or System to use a system-assigned identity.
+
+```yaml
+Type: System.String
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -KeyVaultUrl
+Azure Key Vault URL pointing to the secret referenced by the container app.
+
+```yaml
+Type: System.String
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
 
 ### -Name
 Secret Name.
@@ -73,11 +104,9 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.App.Models.Api20220301.Secret
+### Microsoft.Azure.PowerShell.Cmdlets.App.Models.Secret
 
 ## NOTES
-
-ALIASES
 
 ## RELATED LINKS
 

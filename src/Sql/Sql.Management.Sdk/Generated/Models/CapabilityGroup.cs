@@ -18,5 +18,6 @@ namespace Microsoft.Azure.Management.Sql.Models
         public const string SupportedManagedInstanceVersions = "supportedManagedInstanceVersions";
         public const string SupportedInstancePoolEditions = "supportedInstancePoolEditions";
         public const string SupportedManagedInstanceEditions = "supportedManagedInstanceEditions";
+        public const string SupportedJobAgentVersions = "supportedJobAgentVersions";
     }
 }

@@ -14,7 +14,7 @@ Deactivates a revision for a Container App
 
 ### Deactivate (Default)
 ```
-Disable-AzContainerAppRevision -ContainerAppName <String> -ResourceGroupName <String> -RevisionName <String>
+Disable-AzContainerAppRevision -ContainerAppName <String> -Name <String> -ResourceGroupName <String>
  [-SubscriptionId <String>] [-DefaultProfile <PSObject>] [-PassThru] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
@@ -24,27 +24,57 @@ Disable-AzContainerAppRevision -InputObject <IAppIdentity> [-DefaultProfile <PSO
  [-WhatIf] [<CommonParameters>]
 ```
 
+### DeactivateViaIdentityContainerApp
+```
+Disable-AzContainerAppRevision -ContainerAppInputObject <IAppIdentity> -Name <String>
+ [-DefaultProfile <PSObject>] [-PassThru] [-Confirm] [-WhatIf] [<CommonParameters>]
+```
+
 ## DESCRIPTION
 Deactivates a revision for a Container App
 
 ## EXAMPLES
 
-### Example 1: Deactivates a revision for a Container App
+### Example 1: Deactivates a revision for a Container App.
 ```powershell
-Disable-AzContainerAppRevision -ContainerAppName azps-containerapp -ResourceGroupName azpstest_gp -RevisionName azps-containerapp--ksjb6f1
-
-Get-AzContainerAppRevision -ContainerAppName azps-containerapp -ResourceGroupName azpstest_gp
+Disable-AzContainerAppRevision -ContainerAppName azps-containerapp-1 -ResourceGroupName azps_test_group_app -Name azps-containerapp-1--6a9svx2 -PassThru
 ```
 
 ```output
-Name                       Active TrafficWeight ProvisioningState ResourceGroupName
-----                       ------ ------------- ----------------- -----------------
-azps-containerapp--ksjb6f1 False  100           Provisioned       azpstest_gp
+True
 ```
 
-Deactivates a revision for a Container App
+Deactivates a revision for a Container App.
+
+### Example 2: Deactivates a revision for a Container App.
+```powershell
+$containerapp = Get-AzContainerApp -ResourceGroupName azps_test_group_app -Name azps-containerapp-1
+Disable-AzContainerAppRevision -ContainerAppInputObject $containerapp -Name azps-containerapp-1--6a9svx2 -PassThru
+```
+
+```output
+True
+```
+
+Deactivates a revision for a Container App.
 
 ## PARAMETERS
+
+### -ContainerAppInputObject
+Identity Parameter
+To construct, see NOTES section for CONTAINERAPPINPUTOBJECT properties and create a hash table.
+
+```yaml
+Type: Microsoft.Azure.PowerShell.Cmdlets.App.Models.IAppIdentity
+Parameter Sets: DeactivateViaIdentityContainerApp
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: True (ByValue)
+Accept wildcard characters: False
+```
 
 ### -ContainerAppName
 Name of the Container App.
@@ -93,6 +123,21 @@ Accept pipeline input: True (ByValue)
 Accept wildcard characters: False
 ```
 
+### -Name
+Name of the Container App Revision.
+
+```yaml
+Type: System.String
+Parameter Sets: Deactivate, DeactivateViaIdentityContainerApp
+Aliases: RevisionName
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
 ### -PassThru
 Returns true when the command succeeds
 
@@ -111,21 +156,6 @@ Accept wildcard characters: False
 ### -ResourceGroupName
 The name of the resource group.
 The name is case insensitive.
-
-```yaml
-Type: System.String
-Parameter Sets: Deactivate
-Aliases:
-
-Required: True
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -RevisionName
-Name of the Container App Revision.
 
 ```yaml
 Type: System.String
@@ -197,27 +227,6 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ### System.Boolean
 
 ## NOTES
-
-ALIASES
-
-COMPLEX PARAMETER PROPERTIES
-
-To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
-
-
-`INPUTOBJECT <IAppIdentity>`: Identity Parameter
-  - `[AuthConfigName <String>]`: Name of the Container App AuthConfig.
-  - `[CertificateName <String>]`: Name of the Certificate.
-  - `[ComponentName <String>]`: Name of the Dapr Component.
-  - `[ContainerAppName <String>]`: Name of the Container App.
-  - `[EnvironmentName <String>]`: Name of the Managed Environment.
-  - `[Id <String>]`: Resource identity path
-  - `[ReplicaName <String>]`: Name of the Container App Revision Replica.
-  - `[ResourceGroupName <String>]`: The name of the resource group. The name is case insensitive.
-  - `[RevisionName <String>]`: Name of the Container App Revision.
-  - `[SourceControlName <String>]`: Name of the Container App SourceControl.
-  - `[StorageName <String>]`: Name of the storage.
-  - `[SubscriptionId <String>]`: The ID of the target subscription.
 
 ## RELATED LINKS
 
