@@ -82,7 +82,7 @@ eastus     packageName2  Microsoft.DesktopVirtualization/appattachpackages
 
 This command lists Azure Virtual Desktop App Attach Packages in a subscription.
 
-### Example 3: List all Azure Virtual Desktop App Attach Packages in the current subscription
+### Example 4: List all Azure Virtual Desktop App Attach Packages in the current subscription
 ```powershell
 Get-AzWvdAppAttachPackage
 ```
