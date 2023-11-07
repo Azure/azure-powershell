@@ -121,8 +121,13 @@ function Update-AzFunctionAppSetting {
         $params = GetParameterKeyValues -PSBoundParametersDictionary $PSBoundParameters `
                                         -ParameterList @("SubscriptionId", "HttpPipelineAppend", "HttpPipelinePrepend")
 
-        $existingFunctionApp = GetFunctionAppByName -Name $Name -ResourceGroupName $ResourceGroupName @params
-        $currentAppSettings = $existingFunctionApp.ApplicationSettings
+        $currentAppSettings = $null
+        $settings = $null
+        $settings = Az.Functions.internal\Get-AzWebAppApplicationSetting -Name $Name -ResourceGroupName $ResourceGroupName @params
+        if ($null -ne $settings)
+        {
+            $currentAppSettings = ConvertWebAppApplicationSettingToHashtable -ApplicationSetting $settings -ShowAllAppSettings
+        }
 
         # Add new or replace any existing app settings
         foreach ($keyName in $AppSetting.Keys)
@@ -154,7 +159,9 @@ function Update-AzFunctionAppSetting {
 
             if ($settings)
             {
-                ConvertWebAppApplicationSettingToHashtable -ApplicationSetting $settings
+                ConvertWebAppApplicationSettingToHashtable -ApplicationSetting $settings `
+                                                           -AppSettingsToShow $AppSetting.Keys `
+                                                           -ShowOnlySpecificAppSettings
             }
         }        
     }
