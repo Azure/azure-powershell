@@ -19,6 +19,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "StackHCI.Autorest", "StackH
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "StackHCI", "StackHCI\StackHCI.csproj", "{076C5B97-2EE6-4553-91F8-31FF721E4CEE}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Az.StackHCIVm", "StackHCIVm.Autorest\Az.StackHCIVm.csproj", "{AAFE074D-EAE9-4FC9-834A-8B42ED5DCE44}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -60,5 +62,9 @@ Global
 		{076C5B97-2EE6-4553-91F8-31FF721E4CEE}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{076C5B97-2EE6-4553-91F8-31FF721E4CEE}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{076C5B97-2EE6-4553-91F8-31FF721E4CEE}.Release|Any CPU.Build.0 = Release|Any CPU
+		{AAFE074D-EAE9-4FC9-834A-8B42ED5DCE44}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{AAFE074D-EAE9-4FC9-834A-8B42ED5DCE44}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{AAFE074D-EAE9-4FC9-834A-8B42ED5DCE44}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{AAFE074D-EAE9-4FC9-834A-8B42ED5DCE44}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 EndGlobal
