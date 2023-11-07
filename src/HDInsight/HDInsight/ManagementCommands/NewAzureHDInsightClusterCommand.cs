@@ -44,6 +44,7 @@ namespace Microsoft.Azure.Commands.HDInsight
         private const string CertificateFilePathSet = "CertificateFilePath";
         private const string CertificateFileContentsSet = "CertificateFileContents";
         private const string DefaultParameterSet = "Default";
+        private const string DefaultClusterVersion = "4.0";
 
         #region These fields are marked obsolete in ClusterCreateParameters
         private string _osType;
@@ -604,7 +605,7 @@ namespace Microsoft.Azure.Commands.HDInsight
                         ComponentVersion = clusterComponentVersion,
                         Configurations = clusterConfigurations
                     },
-                    ClusterVersion = Version ?? "4.0",
+                    ClusterVersion = Version ?? DefaultClusterVersion,
                     KafkaRestProperties = kafkaRestProperties,
                     ComputeProfile = computeProfile,
                     OsType = OSType,
