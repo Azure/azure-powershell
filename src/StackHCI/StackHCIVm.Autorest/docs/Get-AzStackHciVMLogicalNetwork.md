@@ -19,7 +19,8 @@ Get-AzStackHCIVmLogicalNetwork [-SubscriptionId <String[]>] [-DefaultProfile <PS
 
 ### ByResourceId
 ```
-Get-AzStackHCIVmLogicalNetwork [-ResourceId <String>] [<CommonParameters>]
+Get-AzStackHCIVmLogicalNetwork [-ResourceId <String>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
+ [<CommonParameters>]
 ```
 
 ### Get
@@ -66,12 +67,27 @@ This command lists all logical networks in the specified resource group.
 
 ## PARAMETERS
 
+### -AsJob
+Run the command as a job
+
+```yaml
+Type: System.Management.Automation.SwitchParameter
+Parameter Sets: ByResourceId
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
 ### -DefaultProfile
 The credentials, account, tenant, and subscription used for communication with Azure.
 
 ```yaml
 Type: System.Management.Automation.PSObject
-Parameter Sets: Get, List, List1
+Parameter Sets: (All)
 Aliases: AzureRMContext, AzureCredential
 
 Required: False
@@ -90,6 +106,21 @@ Parameter Sets: Get
 Aliases: LogicalNetworkName
 
 Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -NoWait
+Run the command asynchronously
+
+```yaml
+Type: System.Management.Automation.SwitchParameter
+Parameter Sets: ByResourceId
+Aliases:
+
+Required: False
 Position: Named
 Default value: None
 Accept pipeline input: False

@@ -189,66 +189,90 @@ param(
   if ($CustomLocationId -notmatch $customLocationRegex){
       Write-Error "Invalid CustomLocationId: $CustomLocationId" -ErrorAction Stop
   } 
+
+  $null = $PSBoundParameters.Remove("MacAddress")
+  $null = $PSBoundParameters.Remove("DnsServer")
+  $null = $PSBoundParameters.Remove("Tag")
+
+
+  if (-Not $IpConfiguration){
+      $IpConfig = @{}
+      if ($SubnetName){
+        $rg = $ResourceGroupName
+        if ($SubnetResourceGroup){
+          $rg = $SubnetResourceGroup
+        }
+        $SubnetId = "/subscriptions/$SubscriptionId/resourceGroups/$rg/providers/Microsoft.AzureStackHCI/logicalNetworks/$SubnetName"
+        $null = $PSBoundParameters.Remove("SubnetName")
+        $null = $PSBoundParameters.Remove("SubnetResourceGroup")
+      }
+
+      if (-Not $SubnetId){
+        Write-Error "No Subnet provided. Either IpConfigurations or SubnetId or SubnetName is required." -ErrorAction Stop
+      } else {
+          if ($SubnetId -notmatch $vnetRegex){
+            Write-Error "Invalid SubnetId: $SubnetId" -ErrorAction Stop
+          }
+      }
+        
+      $null = $PSBoundParameters.Remove("Name")
+      $null = $PSBoundParameters.Remove("ResourceGroupName")
+      $null = $PSBoundParameters.Remove("SubscriptionId")
+      $null = $PSBoundParameters.Remove("Location")
+      $null = $PSBoundParameters.Remove("CustomLocationId")
+      $null = $PSBoundParameters.Remove("SubnetId")
+      $null = $PSBoundParameters.Remove("IpAddress")
+       
+      $PSBoundParameters.Add("ResourceId", $SubnetId)
+      $subnet = Az.StackHCIVm\Get-AzStackHCIVmLogicalNetwork @PSBoundParameters
+
+
+      if ($subnet -eq $null) {
+        Write-Error "A Logical Network with id : $SubnetId does not exist." -ErrorAction Stop
+      }   
+
+      $IpConfig["SubnetId"] = $SubnetId
+
+      $null = $PSBoundParameters.Remove("ResourceId")
+      $PSBoundParameters.Add("Name", $Name)
+      $PSBoundParameters.Add("ResourceGroupName", $ResourceGroupName)
+      $PSBoundParameters.Add("SubscriptionId", $SubscriptionId)
+      $PSBoundParameters.Add("Location", $Location)
+      $PSBoundParameters.Add("CustomLocationId", $CustomLocationId)
+
+      
+    
+      if ($IpAddress){
+        if ($IpAddress -notmatch $ipv4Regex){
+            Write-Error "Invalid Ip Address provided : $IpAddress" -ErrorAction Stop
+        } 
+        $IpConfig["IPAddress"] = $IpAddress   
+      }
+      
+
+      $PSBoundParameters.Add("IPConfiguration", $IpConfig)
+
+  }
+  
   if ($MacAddress){
     if ($MacAddress -notmatch $macAddressRegex){
       Write-Error "Invalid MacAddress: $MacAddress." -ErrorAction Stop
     }
+    $PSBoundParameters.Add("MacAddress", $MacAddress)
   }
+
   if ($DnsServer){
       foreach ($DnsServ in $DnsServer){
         if ($DnsServ -notmatch $ipv4Regex){
             Write-Error "Invalid ipaddress provided for Dns Servers : $DnsServ." -ErrorAction Stop
         }
       }
+      $PSBoundParameters.Add("DnsServer", $DnsServer)
   }
 
-
-  if ($IpConfiguration){
-
-  } else {
-    $IpConfig = @{}
-    if ($SubnetName){
-      $rg = $ResourceGroupName
-      if ($SubnetResourceGroup){
-        $rg = $SubnetResourceGroup
-      }
-      $SubnetId = "/subscriptions/$SubscriptionId/resourceGroups/$rg/providers/Microsoft.AzureStackHCI/logicalNetworks/$SubnetName"
-      $null = $PSBoundParameters.Remove("SubnetName")
-      $null = $PSBoundParameters.Remove("SubnetResourceGroup")
-    }
-
-    if (-Not $SubnetId){
-      Write-Error "No Subnet provided. Either IpConfigurations or SubnetId or SubnetName is required." -ErrorAction Stop
-    } else {
-      if ($SubnetId -notmatch $vnetRegex){
-        Write-Error "Invalid SubnetId: $SubnetId" -ErrorAction Stop
-      }
-      
-      $subnet = Az.StackHCIVm\Get-AzStackHCIVmLogicalNetwork -ResourceId $SubnetId  
-
-      if ($subnet -eq $null){
-        Write-Error "A Logical Network with id : $SubnetId does not exist." -ErrorAction Stop
-      }
-      
-      $IpConfig["SubnetId"] = $SubnetId
-    }
-
-   
-    if ($IpAddress){
-      if ($IpAddress -notmatch $ipv4Regex){
-          Write-Error "Invalid Ip Address provided : $IpAddress" -ErrorAction Stop
-      } 
-      $IpConfig["IPAddress"] = $IpAddress   
-    }
-    
-
-    $null = $PSBoundParameters.Remove("SubnetId")
-    $null = $PSBoundParameters.Remove("IpAddress")
-
-    $PSBoundParameters.Add("IPConfiguration", $IpConfig)
-
+  if ($Tag){
+    $PSBoundParameters.Add("Tag", $Tag)
   }
-
-    return Az.StackHCIVm.internal\New-AzStackHCIVmNetworkInterface @PSBoundParameters
+  return Az.StackHCIVm.internal\New-AzStackHCIVmNetworkInterface @PSBoundParameters
 
 }
