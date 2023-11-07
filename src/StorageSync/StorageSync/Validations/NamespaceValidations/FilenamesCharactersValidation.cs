@@ -122,6 +122,7 @@ namespace Microsoft.Azure.Commands.StorageSync.Evaluation.Validations.NamespaceV
                 }
                 else if (char.IsHighSurrogate(prevChar) && !char.IsLowSurrogate(name[i]))
                 {
+                    --codepointIndex;
                     codePoint = name[i];
                     message = $"Invalid hight surrogate char found in the file name at location {i + 1}";
                 }
@@ -146,6 +147,8 @@ namespace Microsoft.Azure.Commands.StorageSync.Evaluation.Validations.NamespaceV
                     // to make them more human friendly
                     positions.Add(codepointIndex + 1);
                 }
+
+                codepointIndex = i;
 
                 if (!string.IsNullOrEmpty(message))
                 {
