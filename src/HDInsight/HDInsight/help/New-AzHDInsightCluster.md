@@ -453,9 +453,7 @@ New-AzHDInsightCluster `
 $storageAccountResourceGroupName = "Group"
 $storageAccountResourceId = "yourstorageaccountresourceid"
 $storageAccountName = "yourstorageacct001"
-$storageAccountKey = Get-AzStorageAccountKey `
-    -ResourceGroupName $storageAccountResourceGroupName `
-    -Name $storageAccountName | Where-Object {$_.KeyName -eq "key1"} | ForEach-Object{$_.Value}
+$storageAccountKey = "yourstorageacctkey"
 $storageContainer = "container002"
 
 # Cluster configuration info
@@ -494,9 +492,7 @@ New-AzHDInsightCluster `
 $storageAccountResourceGroupName = "Group"
 $storageAccountResourceId = "yourstorageaccountresourceid"
 $storageAccountName = "yourstorageacct001"
-$storageAccountKey = Get-AzStorageAccountKey `
-    -ResourceGroupName $storageAccountResourceGroupName `
-    -Name $storageAccountName | Where-Object {$_.KeyName -eq "key1"} | ForEach-Object{$_.Value}
+$storageAccountKey = "yourstorageacctkey"
 $storageContainer = "container002"
 
 # Cluster configuration info
