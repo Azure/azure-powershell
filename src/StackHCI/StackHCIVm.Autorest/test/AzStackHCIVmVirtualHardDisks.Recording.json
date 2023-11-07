@@ -6,7 +6,7 @@
       "Content": null,
       "Headers": {
         "x-ms-unique-id": [ "6" ],
-        "x-ms-client-request-id": [ "736c203e-a1c4-4a2d-aacd-990d0cac34b3" ],
+        "x-ms-client-request-id": [ "57da1937-fa71-4e41-a020-b7f8b494ac7c" ],
         "CommandName": [ "Get-AzStackHCIVMVirtualHardDisk" ],
         "FullCommandName": [ "Get-AzStackHCIVmVirtualHardDisk_List" ],
         "ParameterSetName": [ "__AllParameterSets" ],
@@ -21,23 +21,23 @@
       "Headers": {
         "Cache-Control": [ "no-cache" ],
         "Pragma": [ "no-cache" ],
-        "x-ms-original-request-ids": [ "1591c343-88f9-459d-9c57-eae6ffcd82cc", "dcb54492-2b77-4d77-b884-81d120453a0f", "0b078dd9-2f0d-4bf3-b0e3-7b5acc2cd41e", "38906626-d068-46a4-afd3-7f0964ca835b", "b2bf5f21-d49e-4b8f-8f9f-93e779a87d50", "2693262d-c040-4121-b595-30393316690e", "463e2bed-fa49-46d5-bbb4-935154b4b0c5", "977eb2ac-2947-4047-9488-efd92a0222b8", "9c7672c0-4ca4-4a4e-8bbf-89895da3b66c", "4862b88f-6bfb-4ea4-be53-c6484443dc22" ],
-        "x-ms-ratelimit-remaining-subscription-reads": [ "11999" ],
-        "x-ms-request-id": [ "79d1a5e2-b1d0-4c40-8361-c996882430e0" ],
-        "x-ms-correlation-request-id": [ "79d1a5e2-b1d0-4c40-8361-c996882430e0" ],
-        "x-ms-routing-request-id": [ "WESTUS2:20231106T200724Z:79d1a5e2-b1d0-4c40-8361-c996882430e0" ],
+        "x-ms-original-request-ids": [ "087a2dde-5e4e-4731-8210-e7b3421bd76b", "a2153499-9682-4453-a2f4-8c3f6e586fb8", "1eff582d-3e26-4c72-8069-ebaeba516617", "81cc2005-536c-426e-925a-124f7c43cc7d", "ca7f2543-52b2-4b4c-a9ec-7c0cd5687b26", "2e20f871-21c1-42ec-8bfb-9dbff4f0d813", "72c0c5ce-17a9-4d62-adde-58f1c9c4cb78", "1cfe0055-b4eb-4b41-8ca8-0d6e05bb9a04", "a2f9f84a-62b6-4d52-96bf-5e28b704a595", "c459defe-6245-4bb4-a9c0-8ba7e1e24ee8" ],
+        "x-ms-ratelimit-remaining-subscription-reads": [ "11997" ],
+        "x-ms-request-id": [ "ee07db80-73b4-4086-b670-4244811a2913" ],
+        "x-ms-correlation-request-id": [ "ee07db80-73b4-4086-b670-4244811a2913" ],
+        "x-ms-routing-request-id": [ "WESTUS2:20231107T000913Z:ee07db80-73b4-4086-b670-4244811a2913" ],
         "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
         "X-Content-Type-Options": [ "nosniff" ],
         "X-Cache": [ "CONFIG_NOCACHE" ],
-        "X-MSEdge-Ref": [ "Ref A: 264C20C7CC9244F69FDDF6E26F345EC9 Ref B: CO6AA3150218029 Ref C: 2023-11-06T20:07:24Z" ],
-        "Date": [ "Mon, 06 Nov 2023 20:07:23 GMT" ]
+        "X-MSEdge-Ref": [ "Ref A: 22042FD8DD86453BA5C770B0727AC6D0 Ref B: CO1EDGE1421 Ref C: 2023-11-07T00:09:12Z" ],
+        "Date": [ "Tue, 07 Nov 2023 00:09:12 GMT" ]
       },
       "ContentHeaders": {
-        "Content-Length": [ "782" ],
+        "Content-Length": [ "797" ],
         "Content-Type": [ "application/json; charset=utf-8" ],
         "Expires": [ "-1" ]
       },
-      "Content": "{\"value\":[{\"id\":\"/subscriptions/0709bd7a-8383-4e1d-98c8-f81d1b3443fc/resourceGroups/AltaylSnClus-rg/providers/Microsoft.AzureStackHCI/virtualHardDisks/testVhd1106\",\"name\":\"testVhd1106\",\"type\":\"microsoft.azurestackhci/virtualharddisks\",\"location\":\"eastus\",\"extendedLocation\":{\"name\":\"/subscriptions/0709bd7a-8383-4e1d-98c8-f81d1b3443fc/resourceGroups/AltaylSnClus-rg/providers/Microsoft.ExtendedLocation/customLocations/myResourceBridge-cl\",\"type\":\"CustomLocation\"},\"systemData\":{\"createdBy\":\"havedati@microsoft.com\",\"createdByType\":\"User\",\"createdAt\":\"2023-11-06T20:05:51.9444129Z\",\"lastModifiedBy\":\"319f651f-7ddb-4fc6-9857-7aef9250bd05\",\"lastModifiedByType\":\"Application\",\"lastModifiedAt\":\"2023-11-06T20:07:02.993054Z\"},\"properties\":{\"provisioningState\":\"Succeeded\",\"status\":{}}}]}"
+      "Content": "{\"value\":[{\"id\":\"/subscriptions/0709bd7a-8383-4e1d-98c8-f81d1b3443fc/resourceGroups/AltaylSnClus-rg/providers/Microsoft.AzureStackHCI/virtualHardDisks/testVhd1106\",\"name\":\"testVhd1106\",\"type\":\"microsoft.azurestackhci/virtualharddisks\",\"location\":\"eastus\",\"extendedLocation\":{\"name\":\"/subscriptions/0709bd7a-8383-4e1d-98c8-f81d1b3443fc/resourceGroups/AltaylSnClus-rg/providers/Microsoft.ExtendedLocation/customLocations/myResourceBridge-cl\",\"type\":\"CustomLocation\"},\"systemData\":{\"createdBy\":\"havedati@microsoft.com\",\"createdByType\":\"User\",\"createdAt\":\"2023-11-07T00:07:40.614912Z\",\"lastModifiedBy\":\"319f651f-7ddb-4fc6-9857-7aef9250bd05\",\"lastModifiedByType\":\"Application\",\"lastModifiedAt\":\"2023-11-07T00:08:49.4001569Z\"},\"properties\":{\"provisioningState\":\"Succeeded\",\"status\":{},\"diskSizeGB\":2}}]}"
     }
   },
   "AzStackHCIVmVirtualHardDisks+[NoContext]+Get+$GET+https://management.azure.com/subscriptions/0709bd7a-8383-4e1d-98c8-f81d1b3443fc/resourceGroups/AltaylSnClus-rg/providers/Microsoft.AzureStackHCI/virtualHardDisks/testVhd1106?api-version=2023-09-01-preview+1": {
@@ -47,7 +47,7 @@
       "Content": null,
       "Headers": {
         "x-ms-unique-id": [ "7" ],
-        "x-ms-client-request-id": [ "fcafb3de-34c1-40c1-986f-24459f9a6ccf" ],
+        "x-ms-client-request-id": [ "9facfea5-5bcb-41ef-8c05-0f961bd32364" ],
         "CommandName": [ "Get-AzStackHCIVMVirtualHardDisk" ],
         "FullCommandName": [ "Get-AzStackHCIVmVirtualHardDisk_Get" ],
         "ParameterSetName": [ "__AllParameterSets" ],
@@ -62,24 +62,24 @@
       "Headers": {
         "Cache-Control": [ "no-cache" ],
         "Pragma": [ "no-cache" ],
-        "ETag": [ "\"af00d59a-0000-0100-0000-654947670000\"" ],
-        "x-ms-ratelimit-remaining-subscription-reads": [ "11999" ],
+        "ETag": [ "\"c20034a0-0000-0100-0000-654980110000\"" ],
+        "x-ms-ratelimit-remaining-subscription-reads": [ "11998" ],
         "x-ms-providerhub-traffic": [ "True" ],
-        "x-ms-request-id": [ "23c97a5c-4531-495d-b167-8d7c28ef794a" ],
-        "x-ms-correlation-request-id": [ "d7a7fd3d-6c79-499d-ba80-e43eca2b1ff1" ],
-        "x-ms-routing-request-id": [ "WESTUS2:20231106T200725Z:d7a7fd3d-6c79-499d-ba80-e43eca2b1ff1" ],
+        "x-ms-request-id": [ "76fd4869-c4b2-4a1c-8668-7a8c96f1f3a5" ],
+        "x-ms-correlation-request-id": [ "56e9cb47-3006-4bde-9d53-1065f37bd660" ],
+        "x-ms-routing-request-id": [ "WESTUS2:20231107T000913Z:56e9cb47-3006-4bde-9d53-1065f37bd660" ],
         "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
         "X-Content-Type-Options": [ "nosniff" ],
         "X-Cache": [ "CONFIG_NOCACHE" ],
-        "X-MSEdge-Ref": [ "Ref A: 9929655840DB4E5AAF488C3062D43C67 Ref B: CO6AA3150218029 Ref C: 2023-11-06T20:07:24Z" ],
-        "Date": [ "Mon, 06 Nov 2023 20:07:24 GMT" ]
+        "X-MSEdge-Ref": [ "Ref A: 7F40A276821944AA8F8CC653BB437DEE Ref B: CO1EDGE1421 Ref C: 2023-11-07T00:09:13Z" ],
+        "Date": [ "Tue, 07 Nov 2023 00:09:12 GMT" ]
       },
       "ContentHeaders": {
-        "Content-Length": [ "770" ],
+        "Content-Length": [ "785" ],
         "Content-Type": [ "application/json; charset=utf-8" ],
         "Expires": [ "-1" ]
       },
-      "Content": "{\"id\":\"/subscriptions/0709bd7a-8383-4e1d-98c8-f81d1b3443fc/resourceGroups/AltaylSnClus-rg/providers/Microsoft.AzureStackHCI/virtualHardDisks/testVhd1106\",\"name\":\"testVhd1106\",\"type\":\"microsoft.azurestackhci/virtualharddisks\",\"location\":\"eastus\",\"extendedLocation\":{\"name\":\"/subscriptions/0709bd7a-8383-4e1d-98c8-f81d1b3443fc/resourceGroups/AltaylSnClus-rg/providers/Microsoft.ExtendedLocation/customLocations/myResourceBridge-cl\",\"type\":\"CustomLocation\"},\"systemData\":{\"createdBy\":\"havedati@microsoft.com\",\"createdByType\":\"User\",\"createdAt\":\"2023-11-06T20:05:51.9444129Z\",\"lastModifiedBy\":\"319f651f-7ddb-4fc6-9857-7aef9250bd05\",\"lastModifiedByType\":\"Application\",\"lastModifiedAt\":\"2023-11-06T20:07:02.993054Z\"},\"properties\":{\"provisioningState\":\"Succeeded\",\"status\":{}}}"
+      "Content": "{\"id\":\"/subscriptions/0709bd7a-8383-4e1d-98c8-f81d1b3443fc/resourceGroups/AltaylSnClus-rg/providers/Microsoft.AzureStackHCI/virtualHardDisks/testVhd1106\",\"name\":\"testVhd1106\",\"type\":\"microsoft.azurestackhci/virtualharddisks\",\"location\":\"eastus\",\"extendedLocation\":{\"name\":\"/subscriptions/0709bd7a-8383-4e1d-98c8-f81d1b3443fc/resourceGroups/AltaylSnClus-rg/providers/Microsoft.ExtendedLocation/customLocations/myResourceBridge-cl\",\"type\":\"CustomLocation\"},\"systemData\":{\"createdBy\":\"havedati@microsoft.com\",\"createdByType\":\"User\",\"createdAt\":\"2023-11-07T00:07:40.614912Z\",\"lastModifiedBy\":\"319f651f-7ddb-4fc6-9857-7aef9250bd05\",\"lastModifiedByType\":\"Application\",\"lastModifiedAt\":\"2023-11-07T00:08:49.4001569Z\"},\"properties\":{\"provisioningState\":\"Succeeded\",\"status\":{},\"diskSizeGB\":2}}"
     }
   },
   "AzStackHCIVmVirtualHardDisks+[NoContext]+Delete+$GET+https://management.azure.com/subscriptions/0709bd7a-8383-4e1d-98c8-f81d1b3443fc/resourceGroups/AltaylSnClus-rg/providers/Microsoft.AzureStackHCI/virtualHardDisks/testVhd1106?api-version=2023-09-01-preview+1": {
@@ -88,8 +88,8 @@
       "RequestUri": "https://management.azure.com/subscriptions/0709bd7a-8383-4e1d-98c8-f81d1b3443fc/resourceGroups/AltaylSnClus-rg/providers/Microsoft.AzureStackHCI/virtualHardDisks/testVhd1106?api-version=2023-09-01-preview",
       "Content": null,
       "Headers": {
-        "x-ms-unique-id": [ "12" ],
-        "x-ms-client-request-id": [ "012c930e-5c34-49b5-97f1-1f5545d6cd31" ],
+        "x-ms-unique-id": [ "11" ],
+        "x-ms-client-request-id": [ "84bac5fd-aacf-4c90-a112-c772447a0986" ],
         "CommandName": [ "Get-AzStackHCIVMVirtualHardDisk" ],
         "FullCommandName": [ "Get-AzStackHCIVmVirtualHardDisk_Get" ],
         "ParameterSetName": [ "__AllParameterSets" ],
@@ -105,14 +105,14 @@
         "Cache-Control": [ "no-cache" ],
         "Pragma": [ "no-cache" ],
         "x-ms-failure-cause": [ "gateway" ],
-        "x-ms-request-id": [ "b7fdf055-0454-42d9-93a1-e396dbf9bfbb" ],
-        "x-ms-correlation-request-id": [ "b7fdf055-0454-42d9-93a1-e396dbf9bfbb" ],
-        "x-ms-routing-request-id": [ "WESTUS2:20231106T200830Z:b7fdf055-0454-42d9-93a1-e396dbf9bfbb" ],
+        "x-ms-request-id": [ "34d3d4e3-cf53-47b1-8bb9-d7b8b5afe985" ],
+        "x-ms-correlation-request-id": [ "34d3d4e3-cf53-47b1-8bb9-d7b8b5afe985" ],
+        "x-ms-routing-request-id": [ "WESTUS2:20231107T000945Z:34d3d4e3-cf53-47b1-8bb9-d7b8b5afe985" ],
         "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
         "X-Content-Type-Options": [ "nosniff" ],
         "X-Cache": [ "CONFIG_NOCACHE" ],
-        "X-MSEdge-Ref": [ "Ref A: 8560BB78F3FF4FDDB6556990412B789C Ref B: CO6AA3150218029 Ref C: 2023-11-06T20:08:30Z" ],
-        "Date": [ "Mon, 06 Nov 2023 20:08:30 GMT" ]
+        "X-MSEdge-Ref": [ "Ref A: 6BF6AD32043A41F68D85DF6C0FB33D4A Ref B: CO1EDGE1421 Ref C: 2023-11-07T00:09:45Z" ],
+        "Date": [ "Tue, 07 Nov 2023 00:09:44 GMT" ]
       },
       "ContentHeaders": {
         "Content-Length": [ "239" ],
