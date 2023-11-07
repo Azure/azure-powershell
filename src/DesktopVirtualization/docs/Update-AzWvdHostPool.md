@@ -78,7 +78,7 @@ Maintenance windows are 2 hours long.
 To construct, see NOTES section for AGENTUPDATEMAINTENANCEWINDOW properties and create a hash table.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.Api20230905.IMaintenanceWindowPatchProperties[]
+Type: Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.Api20231004Preview.IMaintenanceWindowPatchProperties[]
 Parameter Sets: (All)
 Aliases:
 
@@ -538,7 +538,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.Api20230905.IHostPool
+### Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.Api20231004Preview.IHostPool
 
 ## NOTES
 
@@ -554,6 +554,7 @@ To create the parameters described below, construct a hash table containing the 
   - `[Hour <Int32?>]`: The update start hour of the day. (0 - 23)
 
 `INPUTOBJECT <IDesktopVirtualizationIdentity>`: Identity Parameter
+  - `[AppAttachPackageName <String>]`: The name of the App Attach package arm object
   - `[ApplicationGroupName <String>]`: The name of the application group
   - `[ApplicationName <String>]`: The name of the application within the specified application group
   - `[DesktopName <String>]`: The name of the desktop within the specified desktop group
