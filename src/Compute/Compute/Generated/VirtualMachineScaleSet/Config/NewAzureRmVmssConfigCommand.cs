@@ -587,7 +587,7 @@ namespace Microsoft.Azure.Commands.Compute.Automation
                 vVirtualMachineProfile.NetworkProfile.NetworkInterfaceConfigurations = this.NetworkInterfaceConfiguration;
             }
 
-            if (this.IsParameterBound(c => c.SecurityType) && this.SecurityType?.ToLower() != ConstantValues.StandardSecurityType)
+            if (this.IsParameterBound(c => c.SecurityType))
             {
                 if (vVirtualMachineProfile == null)
                 {
@@ -598,7 +598,8 @@ namespace Microsoft.Azure.Commands.Compute.Automation
                     vVirtualMachineProfile.SecurityProfile = new SecurityProfile();
                 }
                 vVirtualMachineProfile.SecurityProfile.SecurityType = this.SecurityType;
-                if (vVirtualMachineProfile.SecurityProfile.SecurityType.ToLower() == ConstantValues.TrustedLaunchSecurityType || vVirtualMachineProfile.SecurityProfile.SecurityType.ToLower() == ConstantValues.ConfidentialVMSecurityType)
+                if (vVirtualMachineProfile.SecurityProfile.SecurityType != null
+                    && vVirtualMachineProfile.SecurityProfile.SecurityType.ToLower() == ConstantValues.TrustedLaunchSecurityType || vVirtualMachineProfile.SecurityProfile.SecurityType.ToLower() == ConstantValues.ConfidentialVMSecurityType)
                 {
                     if (vVirtualMachineProfile.SecurityProfile.UefiSettings == null)
                     {
@@ -607,19 +608,6 @@ namespace Microsoft.Azure.Commands.Compute.Automation
                     vVirtualMachineProfile.SecurityProfile.UefiSettings.VTpmEnabled = vVirtualMachineProfile.SecurityProfile.UefiSettings.VTpmEnabled == null ? true : this.EnableVtpm;
                     vVirtualMachineProfile.SecurityProfile.UefiSettings.SecureBootEnabled = vVirtualMachineProfile.SecurityProfile.UefiSettings.SecureBootEnabled == null ? true : this.EnableSecureBoot;
                 }
-            }
-
-            if (this.IsParameterBound(c => c.SecurityType) && this.SecurityType?.ToLower() == ConstantValues.StandardSecurityType)
-            {
-                if (vVirtualMachineProfile == null)
-                {
-                    vVirtualMachineProfile = new PSVirtualMachineScaleSetVMProfile();
-                }
-                if (vVirtualMachineProfile.SecurityProfile == null)
-                {
-                    vVirtualMachineProfile.SecurityProfile = new SecurityProfile();
-                }
-                vVirtualMachineProfile.SecurityProfile.SecurityType = this.SecurityType;
             }
 
             if (this.IsParameterBound(c => c.EnableVtpm))

@@ -221,6 +221,7 @@ namespace Microsoft.Azure.Commands.Compute
             "UbuntuLTS",
             "Ubuntu2204",
             "FlatcarLinuxFreeGen2",
+            "Win2022Datacenter",
             "Win2022AzureEditionCore",
             "Win2019Datacenter",
             "Win2016Datacenter",
