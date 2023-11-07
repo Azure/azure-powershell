@@ -46,6 +46,7 @@ The final command uses the **Set-AzDnsRecordSet** cmdlet to commit the update.
 
 ### Example 2: Update an SOA record
 ```powershell
+$Zone = Get-AzDnsZone -Name "myzone.com" -ResourceGroupName "MyResourceGroup"
 $RecordSet = Get-AzDnsRecordSet -Name "@" -RecordType SOA -Zone $Zone
 $RecordSet.Records[0].Email = "admin.myzone.com"
 Set-AzDnsRecordSet -RecordSet $RecordSet

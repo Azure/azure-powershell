@@ -56,7 +56,7 @@ DotNetFrameworkVersion = '4.7.2'
 RequiredModules = @(@{ModuleName = 'Az.Accounts'; ModuleVersion = '2.12.5'; })
 
 # Assemblies that must be loaded prior to importing this module
-RequiredAssemblies = 'Microsoft.Azure.Management.Dns.dll', 
+RequiredAssemblies = 'Microsoft.Azure.PowerShell.Dns.Management.Sdk.dll',
                'Dns.Autorest\bin\Az.Dns.private.dll'
 
 # Script files (.ps1) that are run in the caller's environment prior to importing this module.
@@ -77,10 +77,10 @@ FunctionsToExport = 'Get-AzDnsDnssecConfig', 'New-AzDnsDnssecConfig',
                'Remove-AzDnsDnssecConfig'
 
 # Cmdlets to export from this module, for best performance, do not use wildcards and do not delete the entry, use an empty array if there are no cmdlets to export.
-CmdletsToExport = 'Get-AzDnsRecordSet', 'New-AzDnsRecordConfig', 
-               'Remove-AzDnsRecordSet', 'Set-AzDnsRecordSet', 
-               'Remove-AzDnsRecordConfig', 'Add-AzDnsRecordConfig', 
-               'New-AzDnsRecordSet', 'Get-AzDnsZone', 'Remove-AzDnsZone', 
+CmdletsToExport = 'Get-AzDnsRecordSet', 'New-AzDnsRecordConfig',
+               'Remove-AzDnsRecordSet', 'Set-AzDnsRecordSet',
+               'Remove-AzDnsRecordConfig', 'Add-AzDnsRecordConfig',
+               'New-AzDnsRecordSet', 'Get-AzDnsZone', 'Remove-AzDnsZone',
                'Set-AzDnsZone', 'New-AzDnsZone'
 
 # Variables to export from this module

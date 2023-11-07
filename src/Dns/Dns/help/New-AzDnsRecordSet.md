@@ -300,7 +300,7 @@ SOA records are created automatically when the zone is created and cannot be cre
 Type: Microsoft.Azure.Management.Dns.Models.RecordType
 Parameter Sets: (All)
 Aliases:
-Accepted values: A, AAAA, CAA, CNAME, MX, NS, PTR, SOA, SRV, TXT
+Accepted values: A, Aaaa, CAA, Cname, MX, NS, PTR, SOA, SRV, TXT, Tlsa, DS, Naptr
 
 Required: True
 Position: Named

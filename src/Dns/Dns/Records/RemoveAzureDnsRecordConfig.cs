@@ -12,14 +12,13 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-using Microsoft.Azure.Commands.Dns.Models;
-using Microsoft.Azure.Management.Dns.Models;
-using System;
-using System.Management.Automation;
-using ProjectResources = Microsoft.Azure.Commands.Dns.Properties.Resources;
-
 namespace Microsoft.Azure.Commands.Dns
 {
+    using System;
+    using System.Management.Automation;
+    using Microsoft.Azure.Management.Dns.Models;
+    using ProjectResources = Microsoft.Azure.Commands.Dns.Properties.Resources;
+
     /// <summary>
     /// Removes a record from a record set object.
     /// </summary>
@@ -80,19 +79,51 @@ namespace Microsoft.Azure.Commands.Dns
         [ValidateNotNullOrEmpty]
         public string Cname { get; set; }
 
-        [Parameter(Mandatory = true, ValueFromPipelineByPropertyName = true, HelpMessage = "The flags for the CAA record to add. Must be a number between 0 and 255.", ParameterSetName = ParameterSetCaa)]
+        [Parameter(Mandatory = true, ValueFromPipelineByPropertyName = true, HelpMessage = "The flags for the CAA record to remove. Must be a number between 0 and 255.", ParameterSetName = ParameterSetCaa)]
         [ValidateNotNullOrEmpty]
         public byte CaaFlags { get; set; }
 
-        [Parameter(Mandatory = true, ValueFromPipelineByPropertyName = true, HelpMessage = "The tag field of the CAA record to add.", ParameterSetName = ParameterSetCaa)]
+        [Parameter(Mandatory = true, ValueFromPipelineByPropertyName = true, HelpMessage = "The tag field of the CAA record to remove.", ParameterSetName = ParameterSetCaa)]
         [ValidateNotNullOrEmpty]
         public string CaaTag { get; set; }
 
-        [Parameter(Mandatory = true, ValueFromPipelineByPropertyName = true, HelpMessage = "The value field for the CAA record to add.", ParameterSetName = ParameterSetCaa)]
+        [Parameter(Mandatory = true, ValueFromPipelineByPropertyName = true, HelpMessage = "The value field for the CAA record to remove.", ParameterSetName = ParameterSetCaa)]
         [ValidateNotNull]
         [AllowEmptyString]
         [ValidateLength(DnsRecordBase.CaaRecordMinLength, DnsRecordBase.CaaRecordMaxLength)]
         public string CaaValue { get; set; }
+
+        [Parameter(Mandatory = true, ValueFromPipelineByPropertyName = true, HelpMessage = "The key tag field of the DS record to remove.", ParameterSetName = "DS")]
+        [ValidateNotNullOrEmpty]
+        public int KeyTag { get; set; }
+
+        [Parameter(Mandatory = true, ValueFromPipelineByPropertyName = true, HelpMessage = "The algorithm field of the DS record to remove.", ParameterSetName = "DS")]
+        [ValidateNotNullOrEmpty]
+        public int Algorithm { get; set; }
+
+        [Parameter(Mandatory = true, ValueFromPipelineByPropertyName = true, HelpMessage = "The digest type field of the DS record to remove.", ParameterSetName = "DS")]
+        [ValidateNotNullOrEmpty]
+        public int DigestType { get; set; }
+
+        [Parameter(Mandatory = true, ValueFromPipelineByPropertyName = true, HelpMessage = "The digest field of the DS record to remove.", ParameterSetName = "DS")]
+        [ValidateNotNullOrEmpty]
+        public string Digest { get; set; }
+
+        [Parameter(Mandatory = true, ValueFromPipelineByPropertyName = true, HelpMessage = "The usage field of the TLSA record to remove.", ParameterSetName = "TLSA")]
+        [ValidateNotNullOrEmpty]
+        public int Usage { get; set; }
+
+        [Parameter(Mandatory = true, ValueFromPipelineByPropertyName = true, HelpMessage = "The selector field of the TLSA record to remove.", ParameterSetName = "TLSA")]
+        [ValidateNotNullOrEmpty]
+        public int Selector { get; set; }
+
+        [Parameter(Mandatory = true, ValueFromPipelineByPropertyName = true, HelpMessage = "The matching type field of the TLSA record to remove.", ParameterSetName = "TLSA")]
+        [ValidateNotNullOrEmpty]
+        public int MatchingType { get; set; }
+
+        [Parameter(Mandatory = true, ValueFromPipelineByPropertyName = true, HelpMessage = "The certificate association data field of the TLSA record to remove.", ParameterSetName = "TLSA")]
+        [ValidateNotNullOrEmpty]
+        public string CertificateAssociationData { get; set; }
 
         public override void ExecuteCmdlet()
         {
@@ -116,7 +147,7 @@ namespace Microsoft.Azure.Commands.Dns
                             break;
                         }
 
-                    case RecordType.AAAA:
+                    case RecordType.Aaaa:
                         {
                             removedCount = result.Records.RemoveAll(record =>
                                 record is AaaaRecord
@@ -164,7 +195,7 @@ namespace Microsoft.Azure.Commands.Dns
                                 && ((PtrRecord)record).Ptrdname == this.Ptrdname);
                             break;
                         }
-                    case RecordType.CNAME:
+                    case RecordType.Cname:
                         {
                             removedCount = result.Records.RemoveAll(record =>
                                 record is CnameRecord
@@ -179,6 +210,26 @@ namespace Microsoft.Azure.Commands.Dns
                                 && string.Equals(((CaaRecord)record).Tag, this.CaaTag, System.StringComparison.OrdinalIgnoreCase)
                                 && string.Equals(((CaaRecord)record).Value, this.CaaValue)
                                 && ((CaaRecord)record).Flags == this.CaaFlags);
+                            break;
+                        }
+                    case RecordType.DS:
+                        {
+                            removedCount = result.Records.RemoveAll(record =>
+                                record is DsRecord
+                                && ((DsRecord)record).KeyTag == this.KeyTag
+                                && ((DsRecord)record).Algorithm == this.Algorithm
+                                && ((DsRecord)record).DigestType == this.DigestType
+                                && string.Equals(((DsRecord)record).Digest, this.Digest, StringComparison.OrdinalIgnoreCase));
+                            break;
+                        }
+                    case RecordType.Tlsa:
+                        {
+                            removedCount = result.Records.RemoveAll(record =>
+                            record is TlsaRecord
+                            && ((TlsaRecord)record).Usage == this.Usage
+                            && ((TlsaRecord)record).Selector == this.Selector
+                            && ((TlsaRecord)record).MatchingType == this.MatchingType
+                            && string.Equals(((TlsaRecord)record).CertificateAssociationData, this.CertificateAssociationData, StringComparison.OrdinalIgnoreCase));
                             break;
                         }
                 }
