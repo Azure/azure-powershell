@@ -604,7 +604,7 @@ namespace Microsoft.Azure.Commands.HDInsight
                         ComponentVersion = clusterComponentVersion,
                         Configurations = clusterConfigurations
                     },
-                    ClusterVersion = Version ?? "default",
+                    ClusterVersion = Version ?? "4.0",
                     KafkaRestProperties = kafkaRestProperties,
                     ComputeProfile = computeProfile,
                     OsType = OSType,
