@@ -6387,8 +6387,8 @@ function Test-ConfVMSetAzDiskSecurityProfile
         $keyname = "key" + $rgname;
         $desName= "des" + $rgname;
         $KeySize = 3072; 
-        $keyVaultId = "/subscriptions/e37510d7-33b6-4676-886f-ee75bcc01871/resourceGroups/adsanddes2/providers/Microsoft.KeyVault/vaults/valadsanddes2";
-        $keyUrl = "https://valadsanddes2.vault.azure.net/keys/keyadsanddes2/929ebcca47fd4540a1ce06fbb35c821e";
+        $keyVaultId = "/subscriptions/0b1f6471-1bf0-4dda-aec3-cb9272f09590/resourceGroups/adsanddes2/providers/Microsoft.KeyVault/vaults/valadsanddes2";
+        $keyUrl = "https://valadsanddes2.vault.azure.net/keys/keyadsanddes2/186432bab3ba4f829f483670988a2996";
 
         # Create new DES Config and DES
         $diskEncryptionType = "ConfidentialVmEncryptedWithCustomerKey";
