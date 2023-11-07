@@ -1,5 +1,5 @@
 ---
-external help file:
+external help file: Az.StackHCI-help.xml
 Module Name: Az.StackHCI
 online version: https://learn.microsoft.com/powershell/module/az.stackhci/disable-azstackhciattestation
 schema: 2.0.0
@@ -13,8 +13,8 @@ Disable-AzStackHCIAttestation disables IMDS Attestation on the host
 ## SYNTAX
 
 ```
-Disable-AzStackHCIAttestation [[-ComputerName] <String>] [-Credential <PSCredential>] [-Force] [-RemoveVM]
- [-Confirm] [-WhatIf] [<CommonParameters>]
+Disable-AzStackHCIAttestation [[-ComputerName] <String>] [-Credential <PSCredential>] [-RemoveVM] [-Force]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -22,7 +22,7 @@ Disable-AzStackHCIAttestation disables IMDS Attestation on the host
 
 ## EXAMPLES
 
-### Example 1: 
+### Example 1:
 ```powershell
 Disable-AzStackHCIAttestation -RemoveVM
 ```
@@ -46,7 +46,7 @@ Parameter Sets: (All)
 Aliases:
 
 Required: False
-Position: 0
+Position: 1
 Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
@@ -141,7 +141,4 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## NOTES
 
-ALIASES
-
 ## RELATED LINKS
-

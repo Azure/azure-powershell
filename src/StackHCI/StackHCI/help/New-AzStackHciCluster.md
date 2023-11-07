@@ -1,5 +1,5 @@
 ---
-external help file:
+external help file: Az.StackHCI-help.xml
 Module Name: Az.StackHCI
 online version: https://learn.microsoft.com/powershell/module/az.stackhci/new-azstackhcicluster
 schema: 2.0.0
@@ -13,7 +13,7 @@ Create an HCI cluster.
 ## SYNTAX
 
 ```
-New-AzStackHciCluster -Name <String> -ResourceGroupName <String> -Location <String> [-SubscriptionId <String>]
+New-AzStackHciCluster -Name <String> -ResourceGroupName <String> [-SubscriptionId <String>] -Location <String>
  [-AadApplicationObjectId <String>] [-AadClientId <String>] [-AadServicePrincipalObjectId <String>]
  [-AadTenantId <String>] [-CloudManagementEndpoint <String>]
  [-DesiredPropertyDiagnosticLevel <DiagnosticLevel>]
@@ -21,7 +21,7 @@ New-AzStackHciCluster -Name <String> -ResourceGroupName <String> -Location <Stri
  [-IdentityType <ManagedServiceIdentityType>] [-IdentityUserAssignedIdentity <Hashtable>]
  [-SoftwareAssurancePropertySoftwareAssuranceIntent <SoftwareAssuranceIntent>]
  [-SoftwareAssurancePropertySoftwareAssuranceStatus <SoftwareAssuranceStatus>] [-Tag <Hashtable>]
- [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
+ [-DefaultProfile <PSObject>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -29,7 +29,7 @@ Create an HCI cluster.
 
 ## EXAMPLES
 
-### Example 1: 
+### Example 1:
 ```powershell
 New-AzStackHciCluster -Name "myCluster" -ResourceGroupName "test-rg" -AadTenantId "c76bd4d1-bea3-45ea-be1b-4a745a675d07" -AadClientId "24a6e53d-04e5-44d2-b7cc-1b732a847dfc" -Location "eastus"
 ```
@@ -42,7 +42,7 @@ eastus   myCluster test-rg
 
 This command creates a Stack HCI cluster
 
-### Example 2: 
+### Example 2:
 ```powershell
 New-AzStackHciCluster -Name "myCluster2" -ResourceGroupName "test-rg" -AadTenantId "c76bd4d1-bea3-45ea-be1b-4a745a675d07" -AadClientId "24a6e53d-04e5-44d2-b7cc-1b732a847dfc" -Location "westeurope" -DesiredPropertyDiagnosticLevel "Off" -DesiredPropertyWindowsServerSubscription "Enabled"
 ```
@@ -359,7 +359,4 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## NOTES
 
-ALIASES
-
 ## RELATED LINKS
-
