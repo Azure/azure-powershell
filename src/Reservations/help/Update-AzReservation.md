@@ -317,7 +317,7 @@ Accept wildcard characters: False
 ```
 
 ### -Renew
-Setting this to true will automatically purchase a new reservation on the expiration date time.
+Setting this to true will automatically purchase a new reservation on the expiration date time. I can select by -Renew:$true or -Renew:$false.
 
 ```yaml
 Type: System.Management.Automation.SwitchParameter
