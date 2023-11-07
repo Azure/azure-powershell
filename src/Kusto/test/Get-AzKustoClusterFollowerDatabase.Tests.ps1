@@ -22,7 +22,7 @@ Describe 'Get-AzKustoClusterFollowerDatabase' {
         $databaseName = $env.kustoDatabaseName
         $attachedDatabaseConfigurationName = "testAttachedDatabaseConfiguration"
         $followerClusterName = $env.kustoFollowerClusterName
-        $followerClusterResourceId = $env.kustoFolowerClusterResourceId
+        $followerClusterResourceId = $env.kustoFollowerClusterResourceId
 
         New-AzKustoAttachedDatabaseConfiguration -ResourceGroupName $resourceGroupName -ClusterName $followerClusterName -Name $attachedDatabaseConfigurationName -Location $env.location -ClusterResourceId $env.kustoClusterResourceId -DatabaseName $databaseName -DefaultPrincipalsModificationKind "Union"
         

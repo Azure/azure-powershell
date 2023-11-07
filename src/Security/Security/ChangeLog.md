@@ -19,6 +19,7 @@
 -->
 
 ## Upcoming Release
+* Fixed some minor issues
 * Updated Pricing cmdlets to support extensions
     `Get-AzSecurityPricing`
     `Set-AzSecurityPricing`

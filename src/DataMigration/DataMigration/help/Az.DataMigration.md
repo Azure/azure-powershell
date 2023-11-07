@@ -60,7 +60,7 @@ Initiate cutover for in-progress online database migration to SQL Managed Instan
 Initiate cutover for in-progress online database migration to SQL VM.
 
 ### [New-AzDataMigrationAzureActiveDirectoryApp](New-AzDataMigrationAzureActiveDirectoryApp.md)
-Create a new instance DataMigration Azure ActiveDirectory Application details.
+Create a new instance DataMigration Microsoft Entra Application details.
 
 ### [New-AzDataMigrationConnectionInfo](New-AzDataMigrationConnectionInfo.md)
 Creates a new Connection Info object specifying the server type and name for connection.

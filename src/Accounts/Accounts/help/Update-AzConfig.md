@@ -94,7 +94,7 @@ Accept wildcard characters: False
 ```
 
 ### -CheckForUpgrade
-When enabled, Azure PowerShell will check for updates automatically and display a hint message when an update is available. The default value will be changed from false to true in Az version 11.0.0.
+When enabled, Azure PowerShell will check for updates automatically and display a hint message when an update is available. The default value is true.
 
 ```yaml
 Type: System.Boolean

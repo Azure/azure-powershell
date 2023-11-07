@@ -16,6 +16,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Monitor.Autoscale.Cmdlets
     [global::System.Management.Automation.OutputType(typeof(Microsoft.Azure.PowerShell.Cmdlets.Monitor.Autoscale.Models.Api20221001.IPredictiveResponse))]
     [global::Microsoft.Azure.PowerShell.Cmdlets.Monitor.Autoscale.Description(@"get predictive autoscale metric future data")]
     [global::Microsoft.Azure.PowerShell.Cmdlets.Monitor.Autoscale.Generated]
+    [global::Microsoft.Azure.PowerShell.Cmdlets.Monitor.Autoscale.HttpPath(Path = "/subscriptions/{subscriptionId}/resourcegroups/{resourceGroupName}/providers/Microsoft.Insights/autoscalesettings/{autoscaleSettingName}/predictiveMetrics", ApiVersion = "2022-10-01")]
     public partial class GetAzAutoscalePredictiveMetric_GetViaIdentity : global::System.Management.Automation.PSCmdlet,
         Microsoft.Azure.PowerShell.Cmdlets.Monitor.Autoscale.Runtime.IEventListener
     {

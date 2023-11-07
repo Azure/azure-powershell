@@ -19,9 +19,11 @@
 -->
 
 ## Upcoming Release
-* Support $ref statements for user-defined types in Bicep files.
+* [Breaking Change] Redesigned CRUD cmdlets for `PolicyAssignment`, `PolicyDefinition`, `PolicyExemption`, `PolicySetDefinition`. Please see Az 11 migration guide https://learn.microsoft.com/en-us/powershell/azure/migrate-az-10.0.0 for more detail.
+* Supported $ref statements for user-defined types in Bicep files.
 * Fixed reporting duplicate warnings when compiling Bicep files.
 * Updated New and Set Management Group cmdlets to allow DeploymentSubscription to be optional.
+* Fixed inexplicable error message when subscription and scope are neither provided in RoleAssignment/RoleDefinition related commands. [#22716]
 
 ## Version 6.11.2
 * Fixed bug where `.bicepparam` values were not being correctly serialized in the correct format.

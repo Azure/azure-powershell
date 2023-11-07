@@ -18,6 +18,16 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
+* Invoke-AzSubscriptionAcceptOwnership:
+    - Added alias `-DisplayName` to parameter `-SubscriptionName`.
+* New-AzSubscriptionAlias:
+    - Added alias `-DisplayName` to parameter `-SubscriptionName`.
+* Rename-AzSubscription:
+    - Changed parameter `-SubscriptionName` to required.
+    - Added alias `-DisplayName` to parameter `-SubscriptionName`.
+* Removed cmdlet `Update-AzSubscriptionPolicy`
+* Get-AzSubscriptionAcceptOwnershipStatus
+    - Updated parameter type of `SubscriptionId` from `string[]` to `string`.
 
 ## Version 0.10.1
 * Removed the default value for the `New-AzSubscriptionAlias` cmdlet parameter `SubscriptionId`.

@@ -18,6 +18,10 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
+* Added cmdlets:
+    - `Get-AzDnsDnssecConfig`
+    - `New-AzDnsDnssecConfig`
+    - `Remove-AzDnsDnssecConfig`     
 
 ## Version 1.1.3
 * Removed length validation for DNS TXT record to make it consistent with Azure CLI and Azure portal.

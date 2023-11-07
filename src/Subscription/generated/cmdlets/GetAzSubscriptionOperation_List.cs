@@ -17,6 +17,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Subscription.Cmdlets
     [global::System.Management.Automation.OutputType(typeof(Microsoft.Azure.PowerShell.Cmdlets.Subscription.Models.Api20211001.IOperation))]
     [global::Microsoft.Azure.PowerShell.Cmdlets.Subscription.Description(@"Lists all of the available Microsoft.Subscription API operations.")]
     [global::Microsoft.Azure.PowerShell.Cmdlets.Subscription.Generated]
+    [global::Microsoft.Azure.PowerShell.Cmdlets.Subscription.HttpPath(Path = "/providers/Microsoft.Subscription/operations", ApiVersion = "2021-10-01")]
     public partial class GetAzSubscriptionOperation_List : global::System.Management.Automation.PSCmdlet,
         Microsoft.Azure.PowerShell.Cmdlets.Subscription.Runtime.IEventListener
     {

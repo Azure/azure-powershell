@@ -14,15 +14,15 @@ Accept subscription ownership.
 
 ### AcceptExpanded (Default)
 ```
-Invoke-AzSubscriptionAcceptOwnership -SubscriptionId <String> [-DisplayName <String>]
- [-ManagementGroupId <String>] [-Tag <Hashtable>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-PassThru]
+Invoke-AzSubscriptionAcceptOwnership -SubscriptionId <String> [-ManagementGroupId <String>]
+ [-SubscriptionName <String>] [-Tag <Hashtable>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-PassThru]
  [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ### AcceptViaIdentityExpanded
 ```
-Invoke-AzSubscriptionAcceptOwnership -InputObject <ISubscriptionIdentity> [-DisplayName <String>]
- [-ManagementGroupId <String>] [-Tag <Hashtable>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-PassThru]
+Invoke-AzSubscriptionAcceptOwnership -InputObject <ISubscriptionIdentity> [-ManagementGroupId <String>]
+ [-SubscriptionName <String>] [-Tag <Hashtable>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-PassThru]
  [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
@@ -33,7 +33,7 @@ Accept subscription ownership.
 
 ### Example 1: Accept subscription ownership.
 ```powershell
-Invoke-AzSubscriptionAcceptOwnership -SubscriptionId XXXXXXXX-XXXX-XXXX-XXXX-XXXXXXXXXXXX -DisplayName "createSub" -Tag @{"abc"="123"} -PassThru
+Invoke-AzSubscriptionAcceptOwnership -SubscriptionId XXXXXXXX-XXXX-XXXX-XXXX-XXXXXXXXXXXX -SubscriptionName "createSub" -Tag @{"abc"="123"} -PassThru
 ```
 
 ```output
@@ -67,21 +67,6 @@ Use the SubscriptionId parameter when available if executing the cmdlet against 
 Type: System.Management.Automation.PSObject
 Parameter Sets: (All)
 Aliases: AzureRMContext, AzureCredential
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -DisplayName
-The friendly name of the subscription.
-
-```yaml
-Type: System.String
-Parameter Sets: (All)
-Aliases:
 
 Required: False
 Position: Named
@@ -166,6 +151,21 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### -SubscriptionName
+The friendly name of the subscription.
+
+```yaml
+Type: System.String
+Parameter Sets: (All)
+Aliases: DisplayName
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
 ### -Tag
 Tags for the subscription
 
@@ -224,19 +224,6 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ### System.Boolean
 
 ## NOTES
-
-ALIASES
-
-COMPLEX PARAMETER PROPERTIES
-
-To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
-
-
-`INPUTOBJECT <ISubscriptionIdentity>`: Identity Parameter
-  - `[AliasName <String>]`: AliasName is the name for the subscription creation request. Note that this is not the same as subscription name and this doesn’t have any other lifecycle need beyond the request for subscription creation.
-  - `[BillingAccountId <String>]`: Billing Account Id.
-  - `[Id <String>]`: Resource identity path
-  - `[SubscriptionId <String>]`: Subscription Id.
 
 ## RELATED LINKS
 

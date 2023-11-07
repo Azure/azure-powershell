@@ -36,6 +36,30 @@ namespace Microsoft.Azure.Management.Sql.Models
         /// <param name="supportedStorageSizes">Storage size ranges.
         /// </param>
 
+        /// <param name="includedStorageIOps">Included storage IOps.
+        /// </param>
+
+        /// <param name="supportedStorageIOps">Storage IOps ranges.
+        /// </param>
+
+        /// <param name="iopsMinValueOverrideFactorPerSelectedStorageGb">Min IOps override factor per selected storage GB.
+        /// </param>
+
+        /// <param name="iopsIncludedValueOverrideFactorPerSelectedStorageGb">Included IOps override factor per selected storage GB.
+        /// </param>
+
+        /// <param name="includedStorageThroughputMBps">Included storage throughput MBps.
+        /// </param>
+
+        /// <param name="supportedStorageThroughputMBps">Storage throughput MBps ranges.
+        /// </param>
+
+        /// <param name="throughputMBpsMinValueOverrideFactorPerSelectedStorageGb">Min throughput MBps override factor per selected storage GB.
+        /// </param>
+
+        /// <param name="throughputMBpsIncludedValueOverrideFactorPerSelectedStorageGb">Included throughput MBps override factor per selected storage GB.
+        /// </param>
+
         /// <param name="instancePoolSupported">True if this service objective is supported for managed instances in an
         /// instance pool.
         /// </param>
@@ -52,13 +76,21 @@ namespace Microsoft.Azure.Management.Sql.Models
 
         /// <param name="reason">The reason for the capability not being available.
         /// </param>
-        public ManagedInstanceVcoresCapability(string name = default(string), int? value = default(int?), MaxSizeCapability includedMaxSize = default(MaxSizeCapability), System.Collections.Generic.IList<MaxSizeRangeCapability> supportedStorageSizes = default(System.Collections.Generic.IList<MaxSizeRangeCapability>), bool? instancePoolSupported = default(bool?), bool? standaloneSupported = default(bool?), System.Collections.Generic.IList<ManagedInstanceMaintenanceConfigurationCapability> supportedMaintenanceConfigurations = default(System.Collections.Generic.IList<ManagedInstanceMaintenanceConfigurationCapability>), CapabilityStatus? status = default(CapabilityStatus?), string reason = default(string))
+        public ManagedInstanceVcoresCapability(string name = default(string), int? value = default(int?), MaxSizeCapability includedMaxSize = default(MaxSizeCapability), System.Collections.Generic.IList<MaxSizeRangeCapability> supportedStorageSizes = default(System.Collections.Generic.IList<MaxSizeRangeCapability>), long? includedStorageIOps = default(long?), MaxLimitRangeCapability supportedStorageIOps = default(MaxLimitRangeCapability), double? iopsMinValueOverrideFactorPerSelectedStorageGb = default(double?), double? iopsIncludedValueOverrideFactorPerSelectedStorageGb = default(double?), long? includedStorageThroughputMBps = default(long?), MaxLimitRangeCapability supportedStorageThroughputMBps = default(MaxLimitRangeCapability), double? throughputMBpsMinValueOverrideFactorPerSelectedStorageGb = default(double?), double? throughputMBpsIncludedValueOverrideFactorPerSelectedStorageGb = default(double?), bool? instancePoolSupported = default(bool?), bool? standaloneSupported = default(bool?), System.Collections.Generic.IList<ManagedInstanceMaintenanceConfigurationCapability> supportedMaintenanceConfigurations = default(System.Collections.Generic.IList<ManagedInstanceMaintenanceConfigurationCapability>), CapabilityStatus? status = default(CapabilityStatus?), string reason = default(string))
 
         {
             this.Name = name;
             this.Value = value;
             this.IncludedMaxSize = includedMaxSize;
             this.SupportedStorageSizes = supportedStorageSizes;
+            this.IncludedStorageIOps = includedStorageIOps;
+            this.SupportedStorageIOps = supportedStorageIOps;
+            this.IopsMinValueOverrideFactorPerSelectedStorageGb = iopsMinValueOverrideFactorPerSelectedStorageGb;
+            this.IopsIncludedValueOverrideFactorPerSelectedStorageGb = iopsIncludedValueOverrideFactorPerSelectedStorageGb;
+            this.IncludedStorageThroughputMBps = includedStorageThroughputMBps;
+            this.SupportedStorageThroughputMBps = supportedStorageThroughputMBps;
+            this.ThroughputMBpsMinValueOverrideFactorPerSelectedStorageGb = throughputMBpsMinValueOverrideFactorPerSelectedStorageGb;
+            this.ThroughputMBpsIncludedValueOverrideFactorPerSelectedStorageGb = throughputMBpsIncludedValueOverrideFactorPerSelectedStorageGb;
             this.InstancePoolSupported = instancePoolSupported;
             this.StandaloneSupported = standaloneSupported;
             this.SupportedMaintenanceConfigurations = supportedMaintenanceConfigurations;
@@ -96,6 +128,54 @@ namespace Microsoft.Azure.Management.Sql.Models
         /// </summary>
         [Newtonsoft.Json.JsonProperty(PropertyName = "supportedStorageSizes")]
         public System.Collections.Generic.IList<MaxSizeRangeCapability> SupportedStorageSizes {get; private set; }
+
+        /// <summary>
+        /// Gets included storage IOps.
+        /// </summary>
+        [Newtonsoft.Json.JsonProperty(PropertyName = "includedStorageIOps")]
+        public long? IncludedStorageIOps {get; private set; }
+
+        /// <summary>
+        /// Gets storage IOps ranges.
+        /// </summary>
+        [Newtonsoft.Json.JsonProperty(PropertyName = "supportedStorageIOps")]
+        public MaxLimitRangeCapability SupportedStorageIOps {get; private set; }
+
+        /// <summary>
+        /// Gets min IOps override factor per selected storage GB.
+        /// </summary>
+        [Newtonsoft.Json.JsonProperty(PropertyName = "iopsMinValueOverrideFactorPerSelectedStorageGB")]
+        public double? IopsMinValueOverrideFactorPerSelectedStorageGb {get; private set; }
+
+        /// <summary>
+        /// Gets included IOps override factor per selected storage GB.
+        /// </summary>
+        [Newtonsoft.Json.JsonProperty(PropertyName = "iopsIncludedValueOverrideFactorPerSelectedStorageGB")]
+        public double? IopsIncludedValueOverrideFactorPerSelectedStorageGb {get; private set; }
+
+        /// <summary>
+        /// Gets included storage throughput MBps.
+        /// </summary>
+        [Newtonsoft.Json.JsonProperty(PropertyName = "includedStorageThroughputMBps")]
+        public long? IncludedStorageThroughputMBps {get; private set; }
+
+        /// <summary>
+        /// Gets storage throughput MBps ranges.
+        /// </summary>
+        [Newtonsoft.Json.JsonProperty(PropertyName = "supportedStorageThroughputMBps")]
+        public MaxLimitRangeCapability SupportedStorageThroughputMBps {get; private set; }
+
+        /// <summary>
+        /// Gets min throughput MBps override factor per selected storage GB.
+        /// </summary>
+        [Newtonsoft.Json.JsonProperty(PropertyName = "throughputMBpsMinValueOverrideFactorPerSelectedStorageGB")]
+        public double? ThroughputMBpsMinValueOverrideFactorPerSelectedStorageGb {get; private set; }
+
+        /// <summary>
+        /// Gets included throughput MBps override factor per selected storage GB.
+        /// </summary>
+        [Newtonsoft.Json.JsonProperty(PropertyName = "throughputMBpsIncludedValueOverrideFactorPerSelectedStorageGB")]
+        public double? ThroughputMBpsIncludedValueOverrideFactorPerSelectedStorageGb {get; private set; }
 
         /// <summary>
         /// Gets true if this service objective is supported for managed instances in
