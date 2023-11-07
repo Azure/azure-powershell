@@ -45,7 +45,6 @@ namespace Microsoft.Azure.Commands.StorageSync.Test.UnitTests
                 0x7A
             };
             configurationMockFactory.Setup(configuration => configuration.BlacklistOfCodePoints()).Returns(codePointBlacklist);
-            configurationMockFactory.Setup(configuration => configuration.WhitelistOfCodePointRanges()).Returns(this._configuration.WhitelistOfCodePointRanges);
             FilenamesCharactersValidation validation = new FilenamesCharactersValidation(configurationMockFactory.Object);
 
             var directoryInfoMockFactory = new Moq.Mock<IDirectoryInfo>();
@@ -69,7 +68,6 @@ namespace Microsoft.Azure.Commands.StorageSync.Test.UnitTests
                 0x7A
             };
             configurationMockFactory.Setup(configuration => configuration.BlacklistOfCodePoints()).Returns(codePointBlacklist);
-            configurationMockFactory.Setup(configuration => configuration.WhitelistOfCodePointRanges()).Returns(this._configuration.WhitelistOfCodePointRanges);
             FilenamesCharactersValidation validation = new FilenamesCharactersValidation(configurationMockFactory.Object);
 
             var fileInfoMockFactory = new Moq.Mock<IFileInfo>();
@@ -98,7 +96,6 @@ namespace Microsoft.Azure.Commands.StorageSync.Test.UnitTests
                     End = 0x10FFFF
                 },
             };
-            configurationMockFactory.Setup(configuration => configuration.WhitelistOfCodePointRanges()).Returns(whitelist);
             configurationMockFactory.Setup(configuration => configuration.BlacklistOfCodePoints()).Returns(new List<int>());
             FilenamesCharactersValidation validation = new FilenamesCharactersValidation(configurationMockFactory.Object);
 
@@ -131,7 +128,6 @@ namespace Microsoft.Azure.Commands.StorageSync.Test.UnitTests
                 },
             };
 
-            configurationMockFactory.Setup(configuration => configuration.WhitelistOfCodePointRanges()).Returns(whitelist);
             configurationMockFactory.Setup(configuration => configuration.BlacklistOfCodePoints()).Returns(new List<int>());
             FilenamesCharactersValidation validation = new FilenamesCharactersValidation(configurationMockFactory.Object);
 
