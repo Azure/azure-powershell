@@ -1,4 +1,4 @@
-<# if(($null -eq $TestName) -or ($TestName -contains 'AzStackHCIVmVirtualHardDisks'))
+if(($null -eq $TestName) -or ($TestName -contains 'AzStackHCIVmVirtualHardDisks'))
 {
   $loadEnvPath = Join-Path $PSScriptRoot 'loadEnv.ps1'
   if (-Not (Test-Path -Path $loadEnvPath)) {
@@ -44,4 +44,3 @@ Describe 'AzStackHCIVmVirtualHardDisks' {
     }
 
 }
- #>

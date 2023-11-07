@@ -1,4 +1,4 @@
-<# if(($null -eq $TestName) -or ($TestName -contains 'AzStackHCIVmImageNew'))
+if(($null -eq $TestName) -or ($TestName -contains 'AzStackHCIVmImageNew'))
 {
   $loadEnvPath = Join-Path $PSScriptRoot 'loadEnv.ps1'
   if (-Not (Test-Path -Path $loadEnvPath)) {
@@ -45,4 +45,3 @@ Describe 'AzStackHCIVmImageNew' {
     }
 
 }
- #>

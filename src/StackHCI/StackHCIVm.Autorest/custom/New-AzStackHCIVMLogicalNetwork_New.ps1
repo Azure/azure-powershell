@@ -275,15 +275,15 @@ function New-AzStackHCIVmLogicalNetwork {
             if($IpPoolEnd -notmatch $ipv4Regex){
               Write-Error "Invalid Ip Address provided : $IpPoolEnd" -ErrorAction Stop
             }
-            $IpPool = @{End = $IpPoolEnd; Start = $IpPoolStart}
+            $IpPoolNew = @{End = $IpPoolEnd; Start = $IpPoolStart}
             if ($IpPoolType){
               $IpPoolType = $IpPoolType.ToLower()
               if ($IpPoolType -ne "vm" -and $IpPoolType -ne "vippool"){
-                Write-Error "Invalid IpPoolType provided: $IpPoolType. Accepted values are 'vm' and 'vippool'."
+                Write-Error "Invalid IpPoolType provided: $IpPoolType. Accepted values are 'vm' and 'vippool'." -ErrorAction Stop
               }
-              $IpPool['Type'] = $IpPoolType
+              $IpPoolNew['Type'] = $IpPoolType
             }
-            $SubnetNew["IPPool"] = @($IpPool)
+            $SubnetNew["IPPool"] = @($IpPoolNew)
           } elseif ($IpPoolStart -or $IpPoolEnd){
               Write-Error "Both IpPoolStart and IpPoolEnd must be specified together." -ErrorAction Stop
           }

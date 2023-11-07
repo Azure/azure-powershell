@@ -14,23 +14,26 @@ Gets a gallery image
 
 ### BySubscription (Default)
 ```
-Get-AzStackHCIVmImage [-SubscriptionId <String[]>] [<CommonParameters>]
+Get-AzStackHCIVmImage [-SubscriptionId <String[]>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
+ [<CommonParameters>]
 ```
 
 ### ByName
 ```
 Get-AzStackHCIVmImage -Name <String> -ResourceGroupName <String> [-SubscriptionId <String[]>]
- [<CommonParameters>]
+ [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [<CommonParameters>]
 ```
 
 ### ByResourceGroup
 ```
-Get-AzStackHCIVmImage -ResourceGroupName <String> [-SubscriptionId <String[]>] [<CommonParameters>]
+Get-AzStackHCIVmImage -ResourceGroupName <String> [-SubscriptionId <String[]>] [-DefaultProfile <PSObject>]
+ [-AsJob] [-NoWait] [<CommonParameters>]
 ```
 
 ### ByResourceId
 ```
-Get-AzStackHCIVmImage -ResourceId <String> [-SubscriptionId <String[]>] [<CommonParameters>]
+Get-AzStackHCIVmImage -ResourceId <String> [-SubscriptionId <String[]>] [-DefaultProfile <PSObject>] [-AsJob]
+ [-NoWait] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -65,6 +68,36 @@ This command lists all images in the specified resource group.
 
 ## PARAMETERS
 
+### -AsJob
+Run the command as a job
+
+```yaml
+Type: System.Management.Automation.SwitchParameter
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -DefaultProfile
+The credentials, account, tenant, and subscription used for communication with Azure.
+
+```yaml
+Type: System.Management.Automation.PSObject
+Parameter Sets: (All)
+Aliases: AzureRMContext, AzureCredential
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
 ### -Name
 Name of the image
 
@@ -74,6 +107,21 @@ Parameter Sets: ByName
 Aliases:
 
 Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -NoWait
+Run the command asynchronously
+
+```yaml
+Type: System.Management.Automation.SwitchParameter
+Parameter Sets: (All)
+Aliases:
+
+Required: False
 Position: Named
 Default value: None
 Accept pipeline input: False
