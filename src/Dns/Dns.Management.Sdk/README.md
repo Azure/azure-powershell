@@ -19,6 +19,8 @@ openapi-type: arm
 azure-arm: true
 license-header: MICROSOFT_MIT_NO_VERSION
 payload-flattening-threshold: 2
+use-extension:
+  "@autorest/powershell": "4.x"
 ```
 
 ###
