@@ -278,6 +278,18 @@ $result = New-AzVmss -Credential $vmCred -VMScaleSetName $vmssName1 -ImageName $
 
 This example Creates a new VMSS with the new Security Type 'TrustedLaunch'.
 
+### Example 6: Create a Vmss in Orchestration Mode: Flexible by default
+```powershell
+# Create configration object
+$vmssConfig = New-AzVssConfig -Location EastUs2 -UpgradePolicyMode Manual -SinglePlacementGroup $true
+
+# VMSS Creation 
+New-AzVmss -ResourceGroupName TestRg -VMScaleSetName myVMSS -VirtualMachineScaleSet $vmssConfig
+
+```
+
+This example Creates a new VMSS and it will default to OrchestrationMode Flexible. 
+
 ## PARAMETERS
 
 ### -AllocationMethod
