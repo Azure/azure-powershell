@@ -16,10 +16,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Kusto
         /// <summary>
         /// Checks that the attached database configuration resource name is valid and is not already in use.
         /// </summary>
-        /// <param name="resourceGroupName">The name of the resource group containing the Kusto cluster.</param>
+        /// <param name="resourceGroupName">The name of the resource group. The name is case insensitive.</param>
         /// <param name="clusterName">The name of the Kusto cluster.</param>
-        /// <param name="subscriptionId">Gets subscription credentials which uniquely identify Microsoft Azure subscription. The subscription
-        /// ID forms part of the URI for every service call.</param>
+        /// <param name="subscriptionId">The ID of the target subscription.</param>
         /// <param name="body">The name of the resource.</param>
         /// <param name="onOk">a delegate that is called when the remote service returns 200 (OK).</param>
         /// <param name="onDefault">a delegate that is called when the remote service returns default (any response code not handled
@@ -29,9 +28,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Kusto
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        public async global::System.Threading.Tasks.Task AttachedDatabaseConfigurationsCheckNameAvailability(string resourceGroupName, string clusterName, string subscriptionId, Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api20221229.IAttachedDatabaseConfigurationsCheckNameRequest body, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api20221229.ICheckNameResult>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api20221229.ICloudError>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Kusto.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Kusto.Runtime.ISendAsync sender)
+        public async global::System.Threading.Tasks.Task AttachedDatabaseConfigurationsCheckNameAvailability(string resourceGroupName, string clusterName, string subscriptionId, Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api20230815.IAttachedDatabaseConfigurationsCheckNameRequest body, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api20230815.ICheckNameResult>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api30.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Kusto.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Kusto.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2022-12-29";
+            var apiVersion = @"2023-08-15";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -78,9 +77,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Kusto
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        public async global::System.Threading.Tasks.Task AttachedDatabaseConfigurationsCheckNameAvailabilityViaIdentity(global::System.String viaIdentity, Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api20221229.IAttachedDatabaseConfigurationsCheckNameRequest body, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api20221229.ICheckNameResult>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api20221229.ICloudError>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Kusto.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Kusto.Runtime.ISendAsync sender)
+        public async global::System.Threading.Tasks.Task AttachedDatabaseConfigurationsCheckNameAvailabilityViaIdentity(global::System.String viaIdentity, Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api20230815.IAttachedDatabaseConfigurationsCheckNameRequest body, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api20230815.ICheckNameResult>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api30.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Kusto.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Kusto.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2022-12-29";
+            var apiVersion = @"2023-08-15";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -138,7 +137,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Kusto
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        internal async global::System.Threading.Tasks.Task AttachedDatabaseConfigurationsCheckNameAvailability_Call(global::System.Net.Http.HttpRequestMessage request, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api20221229.ICheckNameResult>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api20221229.ICloudError>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Kusto.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Kusto.Runtime.ISendAsync sender)
+        internal async global::System.Threading.Tasks.Task AttachedDatabaseConfigurationsCheckNameAvailability_Call(global::System.Net.Http.HttpRequestMessage request, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api20230815.ICheckNameResult>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api30.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Kusto.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Kusto.Runtime.ISendAsync sender)
         {
             using( NoSynchronizationContext )
             {
@@ -156,13 +155,13 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Kusto
                         case global::System.Net.HttpStatusCode.OK:
                         {
                             await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Kusto.Runtime.Events.BeforeResponseDispatch, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
-                            await onOk(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api20221229.CheckNameResult.FromJson(Microsoft.Azure.PowerShell.Cmdlets.Kusto.Runtime.Json.JsonNode.Parse(body.Result)) ));
+                            await onOk(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api20230815.CheckNameResult.FromJson(Microsoft.Azure.PowerShell.Cmdlets.Kusto.Runtime.Json.JsonNode.Parse(body.Result)) ));
                             break;
                         }
                         default:
                         {
                             await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Kusto.Runtime.Events.BeforeResponseDispatch, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
-                            await onDefault(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api20221229.CloudError.FromJson(Microsoft.Azure.PowerShell.Cmdlets.Kusto.Runtime.Json.JsonNode.Parse(body.Result)) ));
+                            await onDefault(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api30.ErrorResponse.FromJson(Microsoft.Azure.PowerShell.Cmdlets.Kusto.Runtime.Json.JsonNode.Parse(body.Result)) ));
                             break;
                         }
                     }
@@ -181,33 +180,35 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Kusto
         /// Validation method for <see cref="AttachedDatabaseConfigurationsCheckNameAvailability" /> method. Call this like the actual
         /// call, but you will get validation events back.
         /// </summary>
-        /// <param name="resourceGroupName">The name of the resource group containing the Kusto cluster.</param>
+        /// <param name="resourceGroupName">The name of the resource group. The name is case insensitive.</param>
         /// <param name="clusterName">The name of the Kusto cluster.</param>
-        /// <param name="subscriptionId">Gets subscription credentials which uniquely identify Microsoft Azure subscription. The subscription
-        /// ID forms part of the URI for every service call.</param>
+        /// <param name="subscriptionId">The ID of the target subscription.</param>
         /// <param name="body">The name of the resource.</param>
         /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.Kusto.Runtime.IEventListener" /> instance that will receive events.</param>
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        internal async global::System.Threading.Tasks.Task AttachedDatabaseConfigurationsCheckNameAvailability_Validate(string resourceGroupName, string clusterName, string subscriptionId, Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api20221229.IAttachedDatabaseConfigurationsCheckNameRequest body, Microsoft.Azure.PowerShell.Cmdlets.Kusto.Runtime.IEventListener eventListener)
+        internal async global::System.Threading.Tasks.Task AttachedDatabaseConfigurationsCheckNameAvailability_Validate(string resourceGroupName, string clusterName, string subscriptionId, Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api20230815.IAttachedDatabaseConfigurationsCheckNameRequest body, Microsoft.Azure.PowerShell.Cmdlets.Kusto.Runtime.IEventListener eventListener)
         {
             using( NoSynchronizationContext )
             {
                 await eventListener.AssertNotNull(nameof(resourceGroupName),resourceGroupName);
+                await eventListener.AssertMinimumLength(nameof(resourceGroupName),resourceGroupName,1);
+                await eventListener.AssertMaximumLength(nameof(resourceGroupName),resourceGroupName,90);
                 await eventListener.AssertNotNull(nameof(clusterName),clusterName);
+                await eventListener.AssertRegEx(nameof(clusterName),clusterName,@"^.*$");
                 await eventListener.AssertNotNull(nameof(subscriptionId),subscriptionId);
+                await eventListener.AssertMinimumLength(nameof(subscriptionId),subscriptionId,1);
                 await eventListener.AssertNotNull(nameof(body), body);
                 await eventListener.AssertObjectIsValid(nameof(body), body);
             }
         }
 
         /// <summary>Creates or updates an attached database configuration.</summary>
-        /// <param name="resourceGroupName">The name of the resource group containing the Kusto cluster.</param>
+        /// <param name="resourceGroupName">The name of the resource group. The name is case insensitive.</param>
         /// <param name="clusterName">The name of the Kusto cluster.</param>
         /// <param name="attachedDatabaseConfigurationName">The name of the attached database configuration.</param>
-        /// <param name="subscriptionId">Gets subscription credentials which uniquely identify Microsoft Azure subscription. The subscription
-        /// ID forms part of the URI for every service call.</param>
+        /// <param name="subscriptionId">The ID of the target subscription.</param>
         /// <param name="body">The database parameters supplied to the CreateOrUpdate operation.</param>
         /// <param name="onOk">a delegate that is called when the remote service returns 200 (OK).</param>
         /// <param name="onDefault">a delegate that is called when the remote service returns default (any response code not handled
@@ -217,9 +218,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Kusto
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        public async global::System.Threading.Tasks.Task AttachedDatabaseConfigurationsCreateOrUpdate(string resourceGroupName, string clusterName, string attachedDatabaseConfigurationName, string subscriptionId, Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api20221229.IAttachedDatabaseConfiguration body, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api20221229.IAttachedDatabaseConfiguration>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api20221229.ICloudError>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Kusto.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Kusto.Runtime.ISendAsync sender)
+        public async global::System.Threading.Tasks.Task AttachedDatabaseConfigurationsCreateOrUpdate(string resourceGroupName, string clusterName, string attachedDatabaseConfigurationName, string subscriptionId, Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api20230815.IAttachedDatabaseConfiguration body, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api20230815.IAttachedDatabaseConfiguration>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api30.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Kusto.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Kusto.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2022-12-29";
+            var apiVersion = @"2023-08-15";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -265,9 +266,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Kusto
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        public async global::System.Threading.Tasks.Task AttachedDatabaseConfigurationsCreateOrUpdateViaIdentity(global::System.String viaIdentity, Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api20221229.IAttachedDatabaseConfiguration body, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api20221229.IAttachedDatabaseConfiguration>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api20221229.ICloudError>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Kusto.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Kusto.Runtime.ISendAsync sender)
+        public async global::System.Threading.Tasks.Task AttachedDatabaseConfigurationsCreateOrUpdateViaIdentity(global::System.String viaIdentity, Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api20230815.IAttachedDatabaseConfiguration body, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api20230815.IAttachedDatabaseConfiguration>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api30.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Kusto.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Kusto.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2022-12-29";
+            var apiVersion = @"2023-08-15";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -327,7 +328,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Kusto
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        internal async global::System.Threading.Tasks.Task AttachedDatabaseConfigurationsCreateOrUpdate_Call(global::System.Net.Http.HttpRequestMessage request, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api20221229.IAttachedDatabaseConfiguration>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api20221229.ICloudError>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Kusto.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Kusto.Runtime.ISendAsync sender)
+        internal async global::System.Threading.Tasks.Task AttachedDatabaseConfigurationsCreateOrUpdate_Call(global::System.Net.Http.HttpRequestMessage request, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api20230815.IAttachedDatabaseConfiguration>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api30.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Kusto.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Kusto.Runtime.ISendAsync sender)
         {
             using( NoSynchronizationContext )
             {
@@ -444,13 +445,13 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Kusto
                         case global::System.Net.HttpStatusCode.OK:
                         {
                             await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Kusto.Runtime.Events.BeforeResponseDispatch, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
-                            await onOk(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api20221229.AttachedDatabaseConfiguration.FromJson(Microsoft.Azure.PowerShell.Cmdlets.Kusto.Runtime.Json.JsonNode.Parse(body.Result)) ));
+                            await onOk(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api20230815.AttachedDatabaseConfiguration.FromJson(Microsoft.Azure.PowerShell.Cmdlets.Kusto.Runtime.Json.JsonNode.Parse(body.Result)) ));
                             break;
                         }
                         default:
                         {
                             await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Kusto.Runtime.Events.BeforeResponseDispatch, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
-                            await onDefault(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api20221229.CloudError.FromJson(Microsoft.Azure.PowerShell.Cmdlets.Kusto.Runtime.Json.JsonNode.Parse(body.Result)) ));
+                            await onDefault(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api30.ErrorResponse.FromJson(Microsoft.Azure.PowerShell.Cmdlets.Kusto.Runtime.Json.JsonNode.Parse(body.Result)) ));
                             break;
                         }
                     }
@@ -469,35 +470,38 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Kusto
         /// Validation method for <see cref="AttachedDatabaseConfigurationsCreateOrUpdate" /> method. Call this like the actual call,
         /// but you will get validation events back.
         /// </summary>
-        /// <param name="resourceGroupName">The name of the resource group containing the Kusto cluster.</param>
+        /// <param name="resourceGroupName">The name of the resource group. The name is case insensitive.</param>
         /// <param name="clusterName">The name of the Kusto cluster.</param>
         /// <param name="attachedDatabaseConfigurationName">The name of the attached database configuration.</param>
-        /// <param name="subscriptionId">Gets subscription credentials which uniquely identify Microsoft Azure subscription. The subscription
-        /// ID forms part of the URI for every service call.</param>
+        /// <param name="subscriptionId">The ID of the target subscription.</param>
         /// <param name="body">The database parameters supplied to the CreateOrUpdate operation.</param>
         /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.Kusto.Runtime.IEventListener" /> instance that will receive events.</param>
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        internal async global::System.Threading.Tasks.Task AttachedDatabaseConfigurationsCreateOrUpdate_Validate(string resourceGroupName, string clusterName, string attachedDatabaseConfigurationName, string subscriptionId, Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api20221229.IAttachedDatabaseConfiguration body, Microsoft.Azure.PowerShell.Cmdlets.Kusto.Runtime.IEventListener eventListener)
+        internal async global::System.Threading.Tasks.Task AttachedDatabaseConfigurationsCreateOrUpdate_Validate(string resourceGroupName, string clusterName, string attachedDatabaseConfigurationName, string subscriptionId, Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api20230815.IAttachedDatabaseConfiguration body, Microsoft.Azure.PowerShell.Cmdlets.Kusto.Runtime.IEventListener eventListener)
         {
             using( NoSynchronizationContext )
             {
                 await eventListener.AssertNotNull(nameof(resourceGroupName),resourceGroupName);
+                await eventListener.AssertMinimumLength(nameof(resourceGroupName),resourceGroupName,1);
+                await eventListener.AssertMaximumLength(nameof(resourceGroupName),resourceGroupName,90);
                 await eventListener.AssertNotNull(nameof(clusterName),clusterName);
+                await eventListener.AssertRegEx(nameof(clusterName),clusterName,@"^.*$");
                 await eventListener.AssertNotNull(nameof(attachedDatabaseConfigurationName),attachedDatabaseConfigurationName);
+                await eventListener.AssertRegEx(nameof(attachedDatabaseConfigurationName),attachedDatabaseConfigurationName,@"^.*$");
                 await eventListener.AssertNotNull(nameof(subscriptionId),subscriptionId);
+                await eventListener.AssertMinimumLength(nameof(subscriptionId),subscriptionId,1);
                 await eventListener.AssertNotNull(nameof(body), body);
                 await eventListener.AssertObjectIsValid(nameof(body), body);
             }
         }
 
         /// <summary>Deletes the attached database configuration with the given name.</summary>
-        /// <param name="resourceGroupName">The name of the resource group containing the Kusto cluster.</param>
+        /// <param name="resourceGroupName">The name of the resource group. The name is case insensitive.</param>
         /// <param name="clusterName">The name of the Kusto cluster.</param>
         /// <param name="attachedDatabaseConfigurationName">The name of the attached database configuration.</param>
-        /// <param name="subscriptionId">Gets subscription credentials which uniquely identify Microsoft Azure subscription. The subscription
-        /// ID forms part of the URI for every service call.</param>
+        /// <param name="subscriptionId">The ID of the target subscription.</param>
         /// <param name="onOk">a delegate that is called when the remote service returns 200 (OK).</param>
         /// <param name="onNoContent">a delegate that is called when the remote service returns 204 (NoContent).</param>
         /// <param name="onDefault">a delegate that is called when the remote service returns default (any response code not handled
@@ -507,9 +511,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Kusto
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        public async global::System.Threading.Tasks.Task AttachedDatabaseConfigurationsDelete(string resourceGroupName, string clusterName, string attachedDatabaseConfigurationName, string subscriptionId, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task> onNoContent, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api20221229.ICloudError>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Kusto.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Kusto.Runtime.ISendAsync sender)
+        public async global::System.Threading.Tasks.Task AttachedDatabaseConfigurationsDelete(string resourceGroupName, string clusterName, string attachedDatabaseConfigurationName, string subscriptionId, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task> onNoContent, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api30.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Kusto.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Kusto.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2022-12-29";
+            var apiVersion = @"2023-08-15";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -551,9 +555,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Kusto
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        public async global::System.Threading.Tasks.Task AttachedDatabaseConfigurationsDeleteViaIdentity(global::System.String viaIdentity, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task> onNoContent, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api20221229.ICloudError>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Kusto.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Kusto.Runtime.ISendAsync sender)
+        public async global::System.Threading.Tasks.Task AttachedDatabaseConfigurationsDeleteViaIdentity(global::System.String viaIdentity, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task> onNoContent, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api30.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Kusto.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Kusto.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2022-12-29";
+            var apiVersion = @"2023-08-15";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -610,7 +614,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Kusto
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        internal async global::System.Threading.Tasks.Task AttachedDatabaseConfigurationsDelete_Call(global::System.Net.Http.HttpRequestMessage request, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task> onNoContent, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api20221229.ICloudError>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Kusto.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Kusto.Runtime.ISendAsync sender)
+        internal async global::System.Threading.Tasks.Task AttachedDatabaseConfigurationsDelete_Call(global::System.Net.Http.HttpRequestMessage request, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task> onNoContent, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api30.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Kusto.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Kusto.Runtime.ISendAsync sender)
         {
             using( NoSynchronizationContext )
             {
@@ -740,7 +744,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Kusto
                         default:
                         {
                             await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Kusto.Runtime.Events.BeforeResponseDispatch, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
-                            await onDefault(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api20221229.CloudError.FromJson(Microsoft.Azure.PowerShell.Cmdlets.Kusto.Runtime.Json.JsonNode.Parse(body.Result)) ));
+                            await onDefault(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api30.ErrorResponse.FromJson(Microsoft.Azure.PowerShell.Cmdlets.Kusto.Runtime.Json.JsonNode.Parse(body.Result)) ));
                             break;
                         }
                     }
@@ -759,11 +763,10 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Kusto
         /// Validation method for <see cref="AttachedDatabaseConfigurationsDelete" /> method. Call this like the actual call, but
         /// you will get validation events back.
         /// </summary>
-        /// <param name="resourceGroupName">The name of the resource group containing the Kusto cluster.</param>
+        /// <param name="resourceGroupName">The name of the resource group. The name is case insensitive.</param>
         /// <param name="clusterName">The name of the Kusto cluster.</param>
         /// <param name="attachedDatabaseConfigurationName">The name of the attached database configuration.</param>
-        /// <param name="subscriptionId">Gets subscription credentials which uniquely identify Microsoft Azure subscription. The subscription
-        /// ID forms part of the URI for every service call.</param>
+        /// <param name="subscriptionId">The ID of the target subscription.</param>
         /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.Kusto.Runtime.IEventListener" /> instance that will receive events.</param>
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
@@ -773,18 +776,22 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Kusto
             using( NoSynchronizationContext )
             {
                 await eventListener.AssertNotNull(nameof(resourceGroupName),resourceGroupName);
+                await eventListener.AssertMinimumLength(nameof(resourceGroupName),resourceGroupName,1);
+                await eventListener.AssertMaximumLength(nameof(resourceGroupName),resourceGroupName,90);
                 await eventListener.AssertNotNull(nameof(clusterName),clusterName);
+                await eventListener.AssertRegEx(nameof(clusterName),clusterName,@"^.*$");
                 await eventListener.AssertNotNull(nameof(attachedDatabaseConfigurationName),attachedDatabaseConfigurationName);
+                await eventListener.AssertRegEx(nameof(attachedDatabaseConfigurationName),attachedDatabaseConfigurationName,@"^.*$");
                 await eventListener.AssertNotNull(nameof(subscriptionId),subscriptionId);
+                await eventListener.AssertMinimumLength(nameof(subscriptionId),subscriptionId,1);
             }
         }
 
         /// <summary>Returns an attached database configuration.</summary>
-        /// <param name="resourceGroupName">The name of the resource group containing the Kusto cluster.</param>
+        /// <param name="resourceGroupName">The name of the resource group. The name is case insensitive.</param>
         /// <param name="clusterName">The name of the Kusto cluster.</param>
         /// <param name="attachedDatabaseConfigurationName">The name of the attached database configuration.</param>
-        /// <param name="subscriptionId">Gets subscription credentials which uniquely identify Microsoft Azure subscription. The subscription
-        /// ID forms part of the URI for every service call.</param>
+        /// <param name="subscriptionId">The ID of the target subscription.</param>
         /// <param name="onOk">a delegate that is called when the remote service returns 200 (OK).</param>
         /// <param name="onDefault">a delegate that is called when the remote service returns default (any response code not handled
         /// elsewhere).</param>
@@ -793,9 +800,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Kusto
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        public async global::System.Threading.Tasks.Task AttachedDatabaseConfigurationsGet(string resourceGroupName, string clusterName, string attachedDatabaseConfigurationName, string subscriptionId, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api20221229.IAttachedDatabaseConfiguration>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api20221229.ICloudError>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Kusto.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Kusto.Runtime.ISendAsync sender)
+        public async global::System.Threading.Tasks.Task AttachedDatabaseConfigurationsGet(string resourceGroupName, string clusterName, string attachedDatabaseConfigurationName, string subscriptionId, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api20230815.IAttachedDatabaseConfiguration>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api30.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Kusto.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Kusto.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2022-12-29";
+            var apiVersion = @"2023-08-15";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -836,9 +843,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Kusto
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        public async global::System.Threading.Tasks.Task AttachedDatabaseConfigurationsGetViaIdentity(global::System.String viaIdentity, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api20221229.IAttachedDatabaseConfiguration>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api20221229.ICloudError>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Kusto.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Kusto.Runtime.ISendAsync sender)
+        public async global::System.Threading.Tasks.Task AttachedDatabaseConfigurationsGetViaIdentity(global::System.String viaIdentity, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api20230815.IAttachedDatabaseConfiguration>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api30.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Kusto.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Kusto.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2022-12-29";
+            var apiVersion = @"2023-08-15";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -892,7 +899,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Kusto
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        internal async global::System.Threading.Tasks.Task AttachedDatabaseConfigurationsGet_Call(global::System.Net.Http.HttpRequestMessage request, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api20221229.IAttachedDatabaseConfiguration>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api20221229.ICloudError>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Kusto.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Kusto.Runtime.ISendAsync sender)
+        internal async global::System.Threading.Tasks.Task AttachedDatabaseConfigurationsGet_Call(global::System.Net.Http.HttpRequestMessage request, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api20230815.IAttachedDatabaseConfiguration>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api30.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Kusto.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Kusto.Runtime.ISendAsync sender)
         {
             using( NoSynchronizationContext )
             {
@@ -910,13 +917,13 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Kusto
                         case global::System.Net.HttpStatusCode.OK:
                         {
                             await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Kusto.Runtime.Events.BeforeResponseDispatch, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
-                            await onOk(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api20221229.AttachedDatabaseConfiguration.FromJson(Microsoft.Azure.PowerShell.Cmdlets.Kusto.Runtime.Json.JsonNode.Parse(body.Result)) ));
+                            await onOk(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api20230815.AttachedDatabaseConfiguration.FromJson(Microsoft.Azure.PowerShell.Cmdlets.Kusto.Runtime.Json.JsonNode.Parse(body.Result)) ));
                             break;
                         }
                         default:
                         {
                             await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Kusto.Runtime.Events.BeforeResponseDispatch, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
-                            await onDefault(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api20221229.CloudError.FromJson(Microsoft.Azure.PowerShell.Cmdlets.Kusto.Runtime.Json.JsonNode.Parse(body.Result)) ));
+                            await onDefault(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api30.ErrorResponse.FromJson(Microsoft.Azure.PowerShell.Cmdlets.Kusto.Runtime.Json.JsonNode.Parse(body.Result)) ));
                             break;
                         }
                     }
@@ -935,11 +942,10 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Kusto
         /// Validation method for <see cref="AttachedDatabaseConfigurationsGet" /> method. Call this like the actual call, but you
         /// will get validation events back.
         /// </summary>
-        /// <param name="resourceGroupName">The name of the resource group containing the Kusto cluster.</param>
+        /// <param name="resourceGroupName">The name of the resource group. The name is case insensitive.</param>
         /// <param name="clusterName">The name of the Kusto cluster.</param>
         /// <param name="attachedDatabaseConfigurationName">The name of the attached database configuration.</param>
-        /// <param name="subscriptionId">Gets subscription credentials which uniquely identify Microsoft Azure subscription. The subscription
-        /// ID forms part of the URI for every service call.</param>
+        /// <param name="subscriptionId">The ID of the target subscription.</param>
         /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.Kusto.Runtime.IEventListener" /> instance that will receive events.</param>
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
@@ -949,19 +955,23 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Kusto
             using( NoSynchronizationContext )
             {
                 await eventListener.AssertNotNull(nameof(resourceGroupName),resourceGroupName);
+                await eventListener.AssertMinimumLength(nameof(resourceGroupName),resourceGroupName,1);
+                await eventListener.AssertMaximumLength(nameof(resourceGroupName),resourceGroupName,90);
                 await eventListener.AssertNotNull(nameof(clusterName),clusterName);
+                await eventListener.AssertRegEx(nameof(clusterName),clusterName,@"^.*$");
                 await eventListener.AssertNotNull(nameof(attachedDatabaseConfigurationName),attachedDatabaseConfigurationName);
+                await eventListener.AssertRegEx(nameof(attachedDatabaseConfigurationName),attachedDatabaseConfigurationName,@"^.*$");
                 await eventListener.AssertNotNull(nameof(subscriptionId),subscriptionId);
+                await eventListener.AssertMinimumLength(nameof(subscriptionId),subscriptionId,1);
             }
         }
 
         /// <summary>
         /// Returns the list of attached database configurations of the given Kusto cluster.
         /// </summary>
-        /// <param name="resourceGroupName">The name of the resource group containing the Kusto cluster.</param>
+        /// <param name="resourceGroupName">The name of the resource group. The name is case insensitive.</param>
         /// <param name="clusterName">The name of the Kusto cluster.</param>
-        /// <param name="subscriptionId">Gets subscription credentials which uniquely identify Microsoft Azure subscription. The subscription
-        /// ID forms part of the URI for every service call.</param>
+        /// <param name="subscriptionId">The ID of the target subscription.</param>
         /// <param name="onOk">a delegate that is called when the remote service returns 200 (OK).</param>
         /// <param name="onDefault">a delegate that is called when the remote service returns default (any response code not handled
         /// elsewhere).</param>
@@ -970,9 +980,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Kusto
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        public async global::System.Threading.Tasks.Task AttachedDatabaseConfigurationsListByCluster(string resourceGroupName, string clusterName, string subscriptionId, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api20221229.IAttachedDatabaseConfigurationListResult>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api20221229.ICloudError>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Kusto.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Kusto.Runtime.ISendAsync sender)
+        public async global::System.Threading.Tasks.Task AttachedDatabaseConfigurationsListByCluster(string resourceGroupName, string clusterName, string subscriptionId, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api20230815.IAttachedDatabaseConfigurationListResult>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api30.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Kusto.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Kusto.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2022-12-29";
+            var apiVersion = @"2023-08-15";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -1014,9 +1024,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Kusto
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        public async global::System.Threading.Tasks.Task AttachedDatabaseConfigurationsListByClusterViaIdentity(global::System.String viaIdentity, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api20221229.IAttachedDatabaseConfigurationListResult>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api20221229.ICloudError>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Kusto.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Kusto.Runtime.ISendAsync sender)
+        public async global::System.Threading.Tasks.Task AttachedDatabaseConfigurationsListByClusterViaIdentity(global::System.String viaIdentity, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api20230815.IAttachedDatabaseConfigurationListResult>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api30.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Kusto.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Kusto.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2022-12-29";
+            var apiVersion = @"2023-08-15";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -1070,7 +1080,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Kusto
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        internal async global::System.Threading.Tasks.Task AttachedDatabaseConfigurationsListByCluster_Call(global::System.Net.Http.HttpRequestMessage request, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api20221229.IAttachedDatabaseConfigurationListResult>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api20221229.ICloudError>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Kusto.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Kusto.Runtime.ISendAsync sender)
+        internal async global::System.Threading.Tasks.Task AttachedDatabaseConfigurationsListByCluster_Call(global::System.Net.Http.HttpRequestMessage request, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api20230815.IAttachedDatabaseConfigurationListResult>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api30.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Kusto.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Kusto.Runtime.ISendAsync sender)
         {
             using( NoSynchronizationContext )
             {
@@ -1088,13 +1098,13 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Kusto
                         case global::System.Net.HttpStatusCode.OK:
                         {
                             await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Kusto.Runtime.Events.BeforeResponseDispatch, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
-                            await onOk(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api20221229.AttachedDatabaseConfigurationListResult.FromJson(Microsoft.Azure.PowerShell.Cmdlets.Kusto.Runtime.Json.JsonNode.Parse(body.Result)) ));
+                            await onOk(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api20230815.AttachedDatabaseConfigurationListResult.FromJson(Microsoft.Azure.PowerShell.Cmdlets.Kusto.Runtime.Json.JsonNode.Parse(body.Result)) ));
                             break;
                         }
                         default:
                         {
                             await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Kusto.Runtime.Events.BeforeResponseDispatch, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
-                            await onDefault(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api20221229.CloudError.FromJson(Microsoft.Azure.PowerShell.Cmdlets.Kusto.Runtime.Json.JsonNode.Parse(body.Result)) ));
+                            await onDefault(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api30.ErrorResponse.FromJson(Microsoft.Azure.PowerShell.Cmdlets.Kusto.Runtime.Json.JsonNode.Parse(body.Result)) ));
                             break;
                         }
                     }
@@ -1113,10 +1123,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Kusto
         /// Validation method for <see cref="AttachedDatabaseConfigurationsListByCluster" /> method. Call this like the actual call,
         /// but you will get validation events back.
         /// </summary>
-        /// <param name="resourceGroupName">The name of the resource group containing the Kusto cluster.</param>
+        /// <param name="resourceGroupName">The name of the resource group. The name is case insensitive.</param>
         /// <param name="clusterName">The name of the Kusto cluster.</param>
-        /// <param name="subscriptionId">Gets subscription credentials which uniquely identify Microsoft Azure subscription. The subscription
-        /// ID forms part of the URI for every service call.</param>
+        /// <param name="subscriptionId">The ID of the target subscription.</param>
         /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.Kusto.Runtime.IEventListener" /> instance that will receive events.</param>
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
@@ -1126,16 +1135,19 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Kusto
             using( NoSynchronizationContext )
             {
                 await eventListener.AssertNotNull(nameof(resourceGroupName),resourceGroupName);
+                await eventListener.AssertMinimumLength(nameof(resourceGroupName),resourceGroupName,1);
+                await eventListener.AssertMaximumLength(nameof(resourceGroupName),resourceGroupName,90);
                 await eventListener.AssertNotNull(nameof(clusterName),clusterName);
+                await eventListener.AssertRegEx(nameof(clusterName),clusterName,@"^.*$");
                 await eventListener.AssertNotNull(nameof(subscriptionId),subscriptionId);
+                await eventListener.AssertMinimumLength(nameof(subscriptionId),subscriptionId,1);
             }
         }
 
         /// <summary>Checks that the principal assignment name is valid and is not already in use.</summary>
-        /// <param name="resourceGroupName">The name of the resource group containing the Kusto cluster.</param>
+        /// <param name="resourceGroupName">The name of the resource group. The name is case insensitive.</param>
         /// <param name="clusterName">The name of the Kusto cluster.</param>
-        /// <param name="subscriptionId">Gets subscription credentials which uniquely identify Microsoft Azure subscription. The subscription
-        /// ID forms part of the URI for every service call.</param>
+        /// <param name="subscriptionId">The ID of the target subscription.</param>
         /// <param name="body">The name of the principal assignment.</param>
         /// <param name="onOk">a delegate that is called when the remote service returns 200 (OK).</param>
         /// <param name="onDefault">a delegate that is called when the remote service returns default (any response code not handled
@@ -1145,9 +1157,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Kusto
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        public async global::System.Threading.Tasks.Task ClusterPrincipalAssignmentsCheckNameAvailability(string resourceGroupName, string clusterName, string subscriptionId, Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api20221229.IClusterPrincipalAssignmentCheckNameRequest body, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api20221229.ICheckNameResult>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api20221229.ICloudError>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Kusto.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Kusto.Runtime.ISendAsync sender)
+        public async global::System.Threading.Tasks.Task ClusterPrincipalAssignmentsCheckNameAvailability(string resourceGroupName, string clusterName, string subscriptionId, Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api20230815.IClusterPrincipalAssignmentCheckNameRequest body, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api20230815.ICheckNameResult>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api30.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Kusto.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Kusto.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2022-12-29";
+            var apiVersion = @"2023-08-15";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -1192,9 +1204,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Kusto
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        public async global::System.Threading.Tasks.Task ClusterPrincipalAssignmentsCheckNameAvailabilityViaIdentity(global::System.String viaIdentity, Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api20221229.IClusterPrincipalAssignmentCheckNameRequest body, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api20221229.ICheckNameResult>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api20221229.ICloudError>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Kusto.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Kusto.Runtime.ISendAsync sender)
+        public async global::System.Threading.Tasks.Task ClusterPrincipalAssignmentsCheckNameAvailabilityViaIdentity(global::System.String viaIdentity, Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api20230815.IClusterPrincipalAssignmentCheckNameRequest body, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api20230815.ICheckNameResult>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api30.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Kusto.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Kusto.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2022-12-29";
+            var apiVersion = @"2023-08-15";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -1252,7 +1264,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Kusto
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        internal async global::System.Threading.Tasks.Task ClusterPrincipalAssignmentsCheckNameAvailability_Call(global::System.Net.Http.HttpRequestMessage request, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api20221229.ICheckNameResult>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api20221229.ICloudError>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Kusto.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Kusto.Runtime.ISendAsync sender)
+        internal async global::System.Threading.Tasks.Task ClusterPrincipalAssignmentsCheckNameAvailability_Call(global::System.Net.Http.HttpRequestMessage request, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api20230815.ICheckNameResult>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api30.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Kusto.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Kusto.Runtime.ISendAsync sender)
         {
             using( NoSynchronizationContext )
             {
@@ -1270,13 +1282,13 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Kusto
                         case global::System.Net.HttpStatusCode.OK:
                         {
                             await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Kusto.Runtime.Events.BeforeResponseDispatch, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
-                            await onOk(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api20221229.CheckNameResult.FromJson(Microsoft.Azure.PowerShell.Cmdlets.Kusto.Runtime.Json.JsonNode.Parse(body.Result)) ));
+                            await onOk(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api20230815.CheckNameResult.FromJson(Microsoft.Azure.PowerShell.Cmdlets.Kusto.Runtime.Json.JsonNode.Parse(body.Result)) ));
                             break;
                         }
                         default:
                         {
                             await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Kusto.Runtime.Events.BeforeResponseDispatch, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
-                            await onDefault(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api20221229.CloudError.FromJson(Microsoft.Azure.PowerShell.Cmdlets.Kusto.Runtime.Json.JsonNode.Parse(body.Result)) ));
+                            await onDefault(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api30.ErrorResponse.FromJson(Microsoft.Azure.PowerShell.Cmdlets.Kusto.Runtime.Json.JsonNode.Parse(body.Result)) ));
                             break;
                         }
                     }
@@ -1295,31 +1307,33 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Kusto
         /// Validation method for <see cref="ClusterPrincipalAssignmentsCheckNameAvailability" /> method. Call this like the actual
         /// call, but you will get validation events back.
         /// </summary>
-        /// <param name="resourceGroupName">The name of the resource group containing the Kusto cluster.</param>
+        /// <param name="resourceGroupName">The name of the resource group. The name is case insensitive.</param>
         /// <param name="clusterName">The name of the Kusto cluster.</param>
-        /// <param name="subscriptionId">Gets subscription credentials which uniquely identify Microsoft Azure subscription. The subscription
-        /// ID forms part of the URI for every service call.</param>
+        /// <param name="subscriptionId">The ID of the target subscription.</param>
         /// <param name="body">The name of the principal assignment.</param>
         /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.Kusto.Runtime.IEventListener" /> instance that will receive events.</param>
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        internal async global::System.Threading.Tasks.Task ClusterPrincipalAssignmentsCheckNameAvailability_Validate(string resourceGroupName, string clusterName, string subscriptionId, Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api20221229.IClusterPrincipalAssignmentCheckNameRequest body, Microsoft.Azure.PowerShell.Cmdlets.Kusto.Runtime.IEventListener eventListener)
+        internal async global::System.Threading.Tasks.Task ClusterPrincipalAssignmentsCheckNameAvailability_Validate(string resourceGroupName, string clusterName, string subscriptionId, Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api20230815.IClusterPrincipalAssignmentCheckNameRequest body, Microsoft.Azure.PowerShell.Cmdlets.Kusto.Runtime.IEventListener eventListener)
         {
             using( NoSynchronizationContext )
             {
                 await eventListener.AssertNotNull(nameof(resourceGroupName),resourceGroupName);
+                await eventListener.AssertMinimumLength(nameof(resourceGroupName),resourceGroupName,1);
+                await eventListener.AssertMaximumLength(nameof(resourceGroupName),resourceGroupName,90);
                 await eventListener.AssertNotNull(nameof(clusterName),clusterName);
+                await eventListener.AssertRegEx(nameof(clusterName),clusterName,@"^.*$");
                 await eventListener.AssertNotNull(nameof(subscriptionId),subscriptionId);
+                await eventListener.AssertMinimumLength(nameof(subscriptionId),subscriptionId,1);
                 await eventListener.AssertNotNull(nameof(body), body);
                 await eventListener.AssertObjectIsValid(nameof(body), body);
             }
         }
 
         /// <summary>Create a Kusto cluster principalAssignment.</summary>
-        /// <param name="subscriptionId">Gets subscription credentials which uniquely identify Microsoft Azure subscription. The subscription
-        /// ID forms part of the URI for every service call.</param>
-        /// <param name="resourceGroupName">The name of the resource group containing the Kusto cluster.</param>
+        /// <param name="subscriptionId">The ID of the target subscription.</param>
+        /// <param name="resourceGroupName">The name of the resource group. The name is case insensitive.</param>
         /// <param name="clusterName">The name of the Kusto cluster.</param>
         /// <param name="principalAssignmentName">The name of the Kusto principalAssignment.</param>
         /// <param name="body">The Kusto cluster principalAssignment's parameters supplied for the operation.</param>
@@ -1331,9 +1345,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Kusto
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        public async global::System.Threading.Tasks.Task ClusterPrincipalAssignmentsCreateOrUpdate(string subscriptionId, string resourceGroupName, string clusterName, string principalAssignmentName, Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api20221229.IClusterPrincipalAssignment body, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api20221229.IClusterPrincipalAssignment>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api20221229.ICloudError>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Kusto.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Kusto.Runtime.ISendAsync sender)
+        public async global::System.Threading.Tasks.Task ClusterPrincipalAssignmentsCreateOrUpdate(string subscriptionId, string resourceGroupName, string clusterName, string principalAssignmentName, Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api20230815.IClusterPrincipalAssignment body, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api20230815.IClusterPrincipalAssignment>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api30.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Kusto.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Kusto.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2022-12-29";
+            var apiVersion = @"2023-08-15";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -1379,9 +1393,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Kusto
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        public async global::System.Threading.Tasks.Task ClusterPrincipalAssignmentsCreateOrUpdateViaIdentity(global::System.String viaIdentity, Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api20221229.IClusterPrincipalAssignment body, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api20221229.IClusterPrincipalAssignment>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api20221229.ICloudError>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Kusto.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Kusto.Runtime.ISendAsync sender)
+        public async global::System.Threading.Tasks.Task ClusterPrincipalAssignmentsCreateOrUpdateViaIdentity(global::System.String viaIdentity, Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api20230815.IClusterPrincipalAssignment body, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api20230815.IClusterPrincipalAssignment>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api30.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Kusto.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Kusto.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2022-12-29";
+            var apiVersion = @"2023-08-15";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -1441,7 +1455,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Kusto
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        internal async global::System.Threading.Tasks.Task ClusterPrincipalAssignmentsCreateOrUpdate_Call(global::System.Net.Http.HttpRequestMessage request, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api20221229.IClusterPrincipalAssignment>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api20221229.ICloudError>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Kusto.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Kusto.Runtime.ISendAsync sender)
+        internal async global::System.Threading.Tasks.Task ClusterPrincipalAssignmentsCreateOrUpdate_Call(global::System.Net.Http.HttpRequestMessage request, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api20230815.IClusterPrincipalAssignment>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api30.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Kusto.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Kusto.Runtime.ISendAsync sender)
         {
             using( NoSynchronizationContext )
             {
@@ -1558,13 +1572,13 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Kusto
                         case global::System.Net.HttpStatusCode.OK:
                         {
                             await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Kusto.Runtime.Events.BeforeResponseDispatch, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
-                            await onOk(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api20221229.ClusterPrincipalAssignment.FromJson(Microsoft.Azure.PowerShell.Cmdlets.Kusto.Runtime.Json.JsonNode.Parse(body.Result)) ));
+                            await onOk(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api20230815.ClusterPrincipalAssignment.FromJson(Microsoft.Azure.PowerShell.Cmdlets.Kusto.Runtime.Json.JsonNode.Parse(body.Result)) ));
                             break;
                         }
                         default:
                         {
                             await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Kusto.Runtime.Events.BeforeResponseDispatch, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
-                            await onDefault(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api20221229.CloudError.FromJson(Microsoft.Azure.PowerShell.Cmdlets.Kusto.Runtime.Json.JsonNode.Parse(body.Result)) ));
+                            await onDefault(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api30.ErrorResponse.FromJson(Microsoft.Azure.PowerShell.Cmdlets.Kusto.Runtime.Json.JsonNode.Parse(body.Result)) ));
                             break;
                         }
                     }
@@ -1583,9 +1597,8 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Kusto
         /// Validation method for <see cref="ClusterPrincipalAssignmentsCreateOrUpdate" /> method. Call this like the actual call,
         /// but you will get validation events back.
         /// </summary>
-        /// <param name="subscriptionId">Gets subscription credentials which uniquely identify Microsoft Azure subscription. The subscription
-        /// ID forms part of the URI for every service call.</param>
-        /// <param name="resourceGroupName">The name of the resource group containing the Kusto cluster.</param>
+        /// <param name="subscriptionId">The ID of the target subscription.</param>
+        /// <param name="resourceGroupName">The name of the resource group. The name is case insensitive.</param>
         /// <param name="clusterName">The name of the Kusto cluster.</param>
         /// <param name="principalAssignmentName">The name of the Kusto principalAssignment.</param>
         /// <param name="body">The Kusto cluster principalAssignment's parameters supplied for the operation.</param>
@@ -1593,23 +1606,27 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Kusto
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        internal async global::System.Threading.Tasks.Task ClusterPrincipalAssignmentsCreateOrUpdate_Validate(string subscriptionId, string resourceGroupName, string clusterName, string principalAssignmentName, Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api20221229.IClusterPrincipalAssignment body, Microsoft.Azure.PowerShell.Cmdlets.Kusto.Runtime.IEventListener eventListener)
+        internal async global::System.Threading.Tasks.Task ClusterPrincipalAssignmentsCreateOrUpdate_Validate(string subscriptionId, string resourceGroupName, string clusterName, string principalAssignmentName, Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api20230815.IClusterPrincipalAssignment body, Microsoft.Azure.PowerShell.Cmdlets.Kusto.Runtime.IEventListener eventListener)
         {
             using( NoSynchronizationContext )
             {
                 await eventListener.AssertNotNull(nameof(subscriptionId),subscriptionId);
+                await eventListener.AssertMinimumLength(nameof(subscriptionId),subscriptionId,1);
                 await eventListener.AssertNotNull(nameof(resourceGroupName),resourceGroupName);
+                await eventListener.AssertMinimumLength(nameof(resourceGroupName),resourceGroupName,1);
+                await eventListener.AssertMaximumLength(nameof(resourceGroupName),resourceGroupName,90);
                 await eventListener.AssertNotNull(nameof(clusterName),clusterName);
+                await eventListener.AssertRegEx(nameof(clusterName),clusterName,@"^.*$");
                 await eventListener.AssertNotNull(nameof(principalAssignmentName),principalAssignmentName);
+                await eventListener.AssertRegEx(nameof(principalAssignmentName),principalAssignmentName,@"^.*$");
                 await eventListener.AssertNotNull(nameof(body), body);
                 await eventListener.AssertObjectIsValid(nameof(body), body);
             }
         }
 
         /// <summary>Deletes a Kusto cluster principalAssignment.</summary>
-        /// <param name="subscriptionId">Gets subscription credentials which uniquely identify Microsoft Azure subscription. The subscription
-        /// ID forms part of the URI for every service call.</param>
-        /// <param name="resourceGroupName">The name of the resource group containing the Kusto cluster.</param>
+        /// <param name="subscriptionId">The ID of the target subscription.</param>
+        /// <param name="resourceGroupName">The name of the resource group. The name is case insensitive.</param>
         /// <param name="clusterName">The name of the Kusto cluster.</param>
         /// <param name="principalAssignmentName">The name of the Kusto principalAssignment.</param>
         /// <param name="onOk">a delegate that is called when the remote service returns 200 (OK).</param>
@@ -1621,9 +1638,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Kusto
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        public async global::System.Threading.Tasks.Task ClusterPrincipalAssignmentsDelete(string subscriptionId, string resourceGroupName, string clusterName, string principalAssignmentName, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task> onNoContent, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api20221229.ICloudError>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Kusto.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Kusto.Runtime.ISendAsync sender)
+        public async global::System.Threading.Tasks.Task ClusterPrincipalAssignmentsDelete(string subscriptionId, string resourceGroupName, string clusterName, string principalAssignmentName, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task> onNoContent, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api30.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Kusto.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Kusto.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2022-12-29";
+            var apiVersion = @"2023-08-15";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -1665,9 +1682,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Kusto
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        public async global::System.Threading.Tasks.Task ClusterPrincipalAssignmentsDeleteViaIdentity(global::System.String viaIdentity, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task> onNoContent, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api20221229.ICloudError>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Kusto.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Kusto.Runtime.ISendAsync sender)
+        public async global::System.Threading.Tasks.Task ClusterPrincipalAssignmentsDeleteViaIdentity(global::System.String viaIdentity, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task> onNoContent, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api30.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Kusto.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Kusto.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2022-12-29";
+            var apiVersion = @"2023-08-15";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -1722,7 +1739,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Kusto
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        internal async global::System.Threading.Tasks.Task ClusterPrincipalAssignmentsDelete_Call(global::System.Net.Http.HttpRequestMessage request, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task> onNoContent, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api20221229.ICloudError>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Kusto.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Kusto.Runtime.ISendAsync sender)
+        internal async global::System.Threading.Tasks.Task ClusterPrincipalAssignmentsDelete_Call(global::System.Net.Http.HttpRequestMessage request, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task> onNoContent, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api30.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Kusto.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Kusto.Runtime.ISendAsync sender)
         {
             using( NoSynchronizationContext )
             {
@@ -1852,7 +1869,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Kusto
                         default:
                         {
                             await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Kusto.Runtime.Events.BeforeResponseDispatch, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
-                            await onDefault(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api20221229.CloudError.FromJson(Microsoft.Azure.PowerShell.Cmdlets.Kusto.Runtime.Json.JsonNode.Parse(body.Result)) ));
+                            await onDefault(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api30.ErrorResponse.FromJson(Microsoft.Azure.PowerShell.Cmdlets.Kusto.Runtime.Json.JsonNode.Parse(body.Result)) ));
                             break;
                         }
                     }
@@ -1871,9 +1888,8 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Kusto
         /// Validation method for <see cref="ClusterPrincipalAssignmentsDelete" /> method. Call this like the actual call, but you
         /// will get validation events back.
         /// </summary>
-        /// <param name="subscriptionId">Gets subscription credentials which uniquely identify Microsoft Azure subscription. The subscription
-        /// ID forms part of the URI for every service call.</param>
-        /// <param name="resourceGroupName">The name of the resource group containing the Kusto cluster.</param>
+        /// <param name="subscriptionId">The ID of the target subscription.</param>
+        /// <param name="resourceGroupName">The name of the resource group. The name is case insensitive.</param>
         /// <param name="clusterName">The name of the Kusto cluster.</param>
         /// <param name="principalAssignmentName">The name of the Kusto principalAssignment.</param>
         /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.Kusto.Runtime.IEventListener" /> instance that will receive events.</param>
@@ -1885,16 +1901,20 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Kusto
             using( NoSynchronizationContext )
             {
                 await eventListener.AssertNotNull(nameof(subscriptionId),subscriptionId);
+                await eventListener.AssertMinimumLength(nameof(subscriptionId),subscriptionId,1);
                 await eventListener.AssertNotNull(nameof(resourceGroupName),resourceGroupName);
+                await eventListener.AssertMinimumLength(nameof(resourceGroupName),resourceGroupName,1);
+                await eventListener.AssertMaximumLength(nameof(resourceGroupName),resourceGroupName,90);
                 await eventListener.AssertNotNull(nameof(clusterName),clusterName);
+                await eventListener.AssertRegEx(nameof(clusterName),clusterName,@"^.*$");
                 await eventListener.AssertNotNull(nameof(principalAssignmentName),principalAssignmentName);
+                await eventListener.AssertRegEx(nameof(principalAssignmentName),principalAssignmentName,@"^.*$");
             }
         }
 
         /// <summary>Gets a Kusto cluster principalAssignment.</summary>
-        /// <param name="subscriptionId">Gets subscription credentials which uniquely identify Microsoft Azure subscription. The subscription
-        /// ID forms part of the URI for every service call.</param>
-        /// <param name="resourceGroupName">The name of the resource group containing the Kusto cluster.</param>
+        /// <param name="subscriptionId">The ID of the target subscription.</param>
+        /// <param name="resourceGroupName">The name of the resource group. The name is case insensitive.</param>
         /// <param name="clusterName">The name of the Kusto cluster.</param>
         /// <param name="principalAssignmentName">The name of the Kusto principalAssignment.</param>
         /// <param name="onOk">a delegate that is called when the remote service returns 200 (OK).</param>
@@ -1905,9 +1925,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Kusto
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        public async global::System.Threading.Tasks.Task ClusterPrincipalAssignmentsGet(string subscriptionId, string resourceGroupName, string clusterName, string principalAssignmentName, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api20221229.IClusterPrincipalAssignment>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api20221229.ICloudError>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Kusto.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Kusto.Runtime.ISendAsync sender)
+        public async global::System.Threading.Tasks.Task ClusterPrincipalAssignmentsGet(string subscriptionId, string resourceGroupName, string clusterName, string principalAssignmentName, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api20230815.IClusterPrincipalAssignment>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api30.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Kusto.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Kusto.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2022-12-29";
+            var apiVersion = @"2023-08-15";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -1948,9 +1968,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Kusto
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        public async global::System.Threading.Tasks.Task ClusterPrincipalAssignmentsGetViaIdentity(global::System.String viaIdentity, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api20221229.IClusterPrincipalAssignment>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api20221229.ICloudError>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Kusto.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Kusto.Runtime.ISendAsync sender)
+        public async global::System.Threading.Tasks.Task ClusterPrincipalAssignmentsGetViaIdentity(global::System.String viaIdentity, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api20230815.IClusterPrincipalAssignment>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api30.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Kusto.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Kusto.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2022-12-29";
+            var apiVersion = @"2023-08-15";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -2004,7 +2024,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Kusto
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        internal async global::System.Threading.Tasks.Task ClusterPrincipalAssignmentsGet_Call(global::System.Net.Http.HttpRequestMessage request, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api20221229.IClusterPrincipalAssignment>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api20221229.ICloudError>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Kusto.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Kusto.Runtime.ISendAsync sender)
+        internal async global::System.Threading.Tasks.Task ClusterPrincipalAssignmentsGet_Call(global::System.Net.Http.HttpRequestMessage request, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api20230815.IClusterPrincipalAssignment>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api30.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Kusto.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Kusto.Runtime.ISendAsync sender)
         {
             using( NoSynchronizationContext )
             {
@@ -2022,13 +2042,13 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Kusto
                         case global::System.Net.HttpStatusCode.OK:
                         {
                             await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Kusto.Runtime.Events.BeforeResponseDispatch, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
-                            await onOk(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api20221229.ClusterPrincipalAssignment.FromJson(Microsoft.Azure.PowerShell.Cmdlets.Kusto.Runtime.Json.JsonNode.Parse(body.Result)) ));
+                            await onOk(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api20230815.ClusterPrincipalAssignment.FromJson(Microsoft.Azure.PowerShell.Cmdlets.Kusto.Runtime.Json.JsonNode.Parse(body.Result)) ));
                             break;
                         }
                         default:
                         {
                             await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Kusto.Runtime.Events.BeforeResponseDispatch, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
-                            await onDefault(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api20221229.CloudError.FromJson(Microsoft.Azure.PowerShell.Cmdlets.Kusto.Runtime.Json.JsonNode.Parse(body.Result)) ));
+                            await onDefault(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api30.ErrorResponse.FromJson(Microsoft.Azure.PowerShell.Cmdlets.Kusto.Runtime.Json.JsonNode.Parse(body.Result)) ));
                             break;
                         }
                     }
@@ -2047,9 +2067,8 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Kusto
         /// Validation method for <see cref="ClusterPrincipalAssignmentsGet" /> method. Call this like the actual call, but you will
         /// get validation events back.
         /// </summary>
-        /// <param name="subscriptionId">Gets subscription credentials which uniquely identify Microsoft Azure subscription. The subscription
-        /// ID forms part of the URI for every service call.</param>
-        /// <param name="resourceGroupName">The name of the resource group containing the Kusto cluster.</param>
+        /// <param name="subscriptionId">The ID of the target subscription.</param>
+        /// <param name="resourceGroupName">The name of the resource group. The name is case insensitive.</param>
         /// <param name="clusterName">The name of the Kusto cluster.</param>
         /// <param name="principalAssignmentName">The name of the Kusto principalAssignment.</param>
         /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.Kusto.Runtime.IEventListener" /> instance that will receive events.</param>
@@ -2061,16 +2080,20 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Kusto
             using( NoSynchronizationContext )
             {
                 await eventListener.AssertNotNull(nameof(subscriptionId),subscriptionId);
+                await eventListener.AssertMinimumLength(nameof(subscriptionId),subscriptionId,1);
                 await eventListener.AssertNotNull(nameof(resourceGroupName),resourceGroupName);
+                await eventListener.AssertMinimumLength(nameof(resourceGroupName),resourceGroupName,1);
+                await eventListener.AssertMaximumLength(nameof(resourceGroupName),resourceGroupName,90);
                 await eventListener.AssertNotNull(nameof(clusterName),clusterName);
+                await eventListener.AssertRegEx(nameof(clusterName),clusterName,@"^.*$");
                 await eventListener.AssertNotNull(nameof(principalAssignmentName),principalAssignmentName);
+                await eventListener.AssertRegEx(nameof(principalAssignmentName),principalAssignmentName,@"^.*$");
             }
         }
 
         /// <summary>Lists all Kusto cluster principalAssignments.</summary>
-        /// <param name="subscriptionId">Gets subscription credentials which uniquely identify Microsoft Azure subscription. The subscription
-        /// ID forms part of the URI for every service call.</param>
-        /// <param name="resourceGroupName">The name of the resource group containing the Kusto cluster.</param>
+        /// <param name="subscriptionId">The ID of the target subscription.</param>
+        /// <param name="resourceGroupName">The name of the resource group. The name is case insensitive.</param>
         /// <param name="clusterName">The name of the Kusto cluster.</param>
         /// <param name="onOk">a delegate that is called when the remote service returns 200 (OK).</param>
         /// <param name="onDefault">a delegate that is called when the remote service returns default (any response code not handled
@@ -2080,9 +2103,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Kusto
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        public async global::System.Threading.Tasks.Task ClusterPrincipalAssignmentsList(string subscriptionId, string resourceGroupName, string clusterName, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api20221229.IClusterPrincipalAssignmentListResult>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api20221229.ICloudError>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Kusto.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Kusto.Runtime.ISendAsync sender)
+        public async global::System.Threading.Tasks.Task ClusterPrincipalAssignmentsList(string subscriptionId, string resourceGroupName, string clusterName, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api20230815.IClusterPrincipalAssignmentListResult>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api30.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Kusto.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Kusto.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2022-12-29";
+            var apiVersion = @"2023-08-15";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -2122,9 +2145,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Kusto
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        public async global::System.Threading.Tasks.Task ClusterPrincipalAssignmentsListViaIdentity(global::System.String viaIdentity, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api20221229.IClusterPrincipalAssignmentListResult>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api20221229.ICloudError>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Kusto.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Kusto.Runtime.ISendAsync sender)
+        public async global::System.Threading.Tasks.Task ClusterPrincipalAssignmentsListViaIdentity(global::System.String viaIdentity, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api20230815.IClusterPrincipalAssignmentListResult>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api30.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Kusto.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Kusto.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2022-12-29";
+            var apiVersion = @"2023-08-15";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -2176,7 +2199,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Kusto
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        internal async global::System.Threading.Tasks.Task ClusterPrincipalAssignmentsList_Call(global::System.Net.Http.HttpRequestMessage request, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api20221229.IClusterPrincipalAssignmentListResult>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api20221229.ICloudError>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Kusto.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Kusto.Runtime.ISendAsync sender)
+        internal async global::System.Threading.Tasks.Task ClusterPrincipalAssignmentsList_Call(global::System.Net.Http.HttpRequestMessage request, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api20230815.IClusterPrincipalAssignmentListResult>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api30.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Kusto.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Kusto.Runtime.ISendAsync sender)
         {
             using( NoSynchronizationContext )
             {
@@ -2194,13 +2217,13 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Kusto
                         case global::System.Net.HttpStatusCode.OK:
                         {
                             await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Kusto.Runtime.Events.BeforeResponseDispatch, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
-                            await onOk(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api20221229.ClusterPrincipalAssignmentListResult.FromJson(Microsoft.Azure.PowerShell.Cmdlets.Kusto.Runtime.Json.JsonNode.Parse(body.Result)) ));
+                            await onOk(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api20230815.ClusterPrincipalAssignmentListResult.FromJson(Microsoft.Azure.PowerShell.Cmdlets.Kusto.Runtime.Json.JsonNode.Parse(body.Result)) ));
                             break;
                         }
                         default:
                         {
                             await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Kusto.Runtime.Events.BeforeResponseDispatch, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
-                            await onDefault(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api20221229.CloudError.FromJson(Microsoft.Azure.PowerShell.Cmdlets.Kusto.Runtime.Json.JsonNode.Parse(body.Result)) ));
+                            await onDefault(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api30.ErrorResponse.FromJson(Microsoft.Azure.PowerShell.Cmdlets.Kusto.Runtime.Json.JsonNode.Parse(body.Result)) ));
                             break;
                         }
                     }
@@ -2219,9 +2242,8 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Kusto
         /// Validation method for <see cref="ClusterPrincipalAssignmentsList" /> method. Call this like the actual call, but you will
         /// get validation events back.
         /// </summary>
-        /// <param name="subscriptionId">Gets subscription credentials which uniquely identify Microsoft Azure subscription. The subscription
-        /// ID forms part of the URI for every service call.</param>
-        /// <param name="resourceGroupName">The name of the resource group containing the Kusto cluster.</param>
+        /// <param name="subscriptionId">The ID of the target subscription.</param>
+        /// <param name="resourceGroupName">The name of the resource group. The name is case insensitive.</param>
         /// <param name="clusterName">The name of the Kusto cluster.</param>
         /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.Kusto.Runtime.IEventListener" /> instance that will receive events.</param>
         /// <returns>
@@ -2232,15 +2254,18 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Kusto
             using( NoSynchronizationContext )
             {
                 await eventListener.AssertNotNull(nameof(subscriptionId),subscriptionId);
+                await eventListener.AssertMinimumLength(nameof(subscriptionId),subscriptionId,1);
                 await eventListener.AssertNotNull(nameof(resourceGroupName),resourceGroupName);
+                await eventListener.AssertMinimumLength(nameof(resourceGroupName),resourceGroupName,1);
+                await eventListener.AssertMaximumLength(nameof(resourceGroupName),resourceGroupName,90);
                 await eventListener.AssertNotNull(nameof(clusterName),clusterName);
+                await eventListener.AssertRegEx(nameof(clusterName),clusterName,@"^.*$");
             }
         }
 
         /// <summary>Add a list of language extensions that can run within KQL queries.</summary>
-        /// <param name="subscriptionId">Gets subscription credentials which uniquely identify Microsoft Azure subscription. The subscription
-        /// ID forms part of the URI for every service call.</param>
-        /// <param name="resourceGroupName">The name of the resource group containing the Kusto cluster.</param>
+        /// <param name="subscriptionId">The ID of the target subscription.</param>
+        /// <param name="resourceGroupName">The name of the resource group. The name is case insensitive.</param>
         /// <param name="clusterName">The name of the Kusto cluster.</param>
         /// <param name="body">The language extensions to add.</param>
         /// <param name="onOk">a delegate that is called when the remote service returns 200 (OK).</param>
@@ -2251,9 +2276,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Kusto
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        public async global::System.Threading.Tasks.Task ClustersAddLanguageExtensions(string subscriptionId, string resourceGroupName, string clusterName, Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api20221229.ILanguageExtensionsList body, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api20221229.ICloudError>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Kusto.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Kusto.Runtime.ISendAsync sender)
+        public async global::System.Threading.Tasks.Task ClustersAddLanguageExtensions(string subscriptionId, string resourceGroupName, string clusterName, Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api20230815.ILanguageExtensionsList body, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api30.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Kusto.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Kusto.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2022-12-29";
+            var apiVersion = @"2023-08-15";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -2298,9 +2323,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Kusto
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        public async global::System.Threading.Tasks.Task ClustersAddLanguageExtensionsViaIdentity(global::System.String viaIdentity, Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api20221229.ILanguageExtensionsList body, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api20221229.ICloudError>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Kusto.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Kusto.Runtime.ISendAsync sender)
+        public async global::System.Threading.Tasks.Task ClustersAddLanguageExtensionsViaIdentity(global::System.String viaIdentity, Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api20230815.ILanguageExtensionsList body, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api30.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Kusto.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Kusto.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2022-12-29";
+            var apiVersion = @"2023-08-15";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -2356,7 +2381,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Kusto
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        internal async global::System.Threading.Tasks.Task ClustersAddLanguageExtensions_Call(global::System.Net.Http.HttpRequestMessage request, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api20221229.ICloudError>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Kusto.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Kusto.Runtime.ISendAsync sender)
+        internal async global::System.Threading.Tasks.Task ClustersAddLanguageExtensions_Call(global::System.Net.Http.HttpRequestMessage request, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api30.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Kusto.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Kusto.Runtime.ISendAsync sender)
         {
             using( NoSynchronizationContext )
             {
@@ -2480,7 +2505,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Kusto
                         default:
                         {
                             await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Kusto.Runtime.Events.BeforeResponseDispatch, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
-                            await onDefault(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api20221229.CloudError.FromJson(Microsoft.Azure.PowerShell.Cmdlets.Kusto.Runtime.Json.JsonNode.Parse(body.Result)) ));
+                            await onDefault(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api30.ErrorResponse.FromJson(Microsoft.Azure.PowerShell.Cmdlets.Kusto.Runtime.Json.JsonNode.Parse(body.Result)) ));
                             break;
                         }
                     }
@@ -2499,31 +2524,33 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Kusto
         /// Validation method for <see cref="ClustersAddLanguageExtensions" /> method. Call this like the actual call, but you will
         /// get validation events back.
         /// </summary>
-        /// <param name="subscriptionId">Gets subscription credentials which uniquely identify Microsoft Azure subscription. The subscription
-        /// ID forms part of the URI for every service call.</param>
-        /// <param name="resourceGroupName">The name of the resource group containing the Kusto cluster.</param>
+        /// <param name="subscriptionId">The ID of the target subscription.</param>
+        /// <param name="resourceGroupName">The name of the resource group. The name is case insensitive.</param>
         /// <param name="clusterName">The name of the Kusto cluster.</param>
         /// <param name="body">The language extensions to add.</param>
         /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.Kusto.Runtime.IEventListener" /> instance that will receive events.</param>
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        internal async global::System.Threading.Tasks.Task ClustersAddLanguageExtensions_Validate(string subscriptionId, string resourceGroupName, string clusterName, Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api20221229.ILanguageExtensionsList body, Microsoft.Azure.PowerShell.Cmdlets.Kusto.Runtime.IEventListener eventListener)
+        internal async global::System.Threading.Tasks.Task ClustersAddLanguageExtensions_Validate(string subscriptionId, string resourceGroupName, string clusterName, Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api20230815.ILanguageExtensionsList body, Microsoft.Azure.PowerShell.Cmdlets.Kusto.Runtime.IEventListener eventListener)
         {
             using( NoSynchronizationContext )
             {
                 await eventListener.AssertNotNull(nameof(subscriptionId),subscriptionId);
+                await eventListener.AssertMinimumLength(nameof(subscriptionId),subscriptionId,1);
                 await eventListener.AssertNotNull(nameof(resourceGroupName),resourceGroupName);
+                await eventListener.AssertMinimumLength(nameof(resourceGroupName),resourceGroupName,1);
+                await eventListener.AssertMaximumLength(nameof(resourceGroupName),resourceGroupName,90);
                 await eventListener.AssertNotNull(nameof(clusterName),clusterName);
+                await eventListener.AssertRegEx(nameof(clusterName),clusterName,@"^.*$");
                 await eventListener.AssertNotNull(nameof(body), body);
                 await eventListener.AssertObjectIsValid(nameof(body), body);
             }
         }
 
         /// <summary>Checks that the cluster name is valid and is not already in use.</summary>
-        /// <param name="subscriptionId">Gets subscription credentials which uniquely identify Microsoft Azure subscription. The subscription
-        /// ID forms part of the URI for every service call.</param>
-        /// <param name="location">Azure location (region) name.</param>
+        /// <param name="subscriptionId">The ID of the target subscription.</param>
+        /// <param name="location">The name of Azure region.</param>
         /// <param name="body">The name of the cluster.</param>
         /// <param name="onOk">a delegate that is called when the remote service returns 200 (OK).</param>
         /// <param name="onDefault">a delegate that is called when the remote service returns default (any response code not handled
@@ -2533,9 +2560,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Kusto
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        public async global::System.Threading.Tasks.Task ClustersCheckNameAvailability(string subscriptionId, string location, Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api20221229.IClusterCheckNameRequest body, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api20221229.ICheckNameResult>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api20221229.ICloudError>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Kusto.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Kusto.Runtime.ISendAsync sender)
+        public async global::System.Threading.Tasks.Task ClustersCheckNameAvailability(string subscriptionId, string location, Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api20230815.IClusterCheckNameRequest body, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api20230815.ICheckNameResult>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api30.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Kusto.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Kusto.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2022-12-29";
+            var apiVersion = @"2023-08-15";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -2578,9 +2605,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Kusto
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        public async global::System.Threading.Tasks.Task ClustersCheckNameAvailabilityViaIdentity(global::System.String viaIdentity, Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api20221229.IClusterCheckNameRequest body, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api20221229.ICheckNameResult>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api20221229.ICloudError>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Kusto.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Kusto.Runtime.ISendAsync sender)
+        public async global::System.Threading.Tasks.Task ClustersCheckNameAvailabilityViaIdentity(global::System.String viaIdentity, Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api20230815.IClusterCheckNameRequest body, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api20230815.ICheckNameResult>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api30.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Kusto.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Kusto.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2022-12-29";
+            var apiVersion = @"2023-08-15";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -2633,7 +2660,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Kusto
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        internal async global::System.Threading.Tasks.Task ClustersCheckNameAvailability_Call(global::System.Net.Http.HttpRequestMessage request, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api20221229.ICheckNameResult>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api20221229.ICloudError>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Kusto.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Kusto.Runtime.ISendAsync sender)
+        internal async global::System.Threading.Tasks.Task ClustersCheckNameAvailability_Call(global::System.Net.Http.HttpRequestMessage request, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api20230815.ICheckNameResult>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api30.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Kusto.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Kusto.Runtime.ISendAsync sender)
         {
             using( NoSynchronizationContext )
             {
@@ -2651,13 +2678,13 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Kusto
                         case global::System.Net.HttpStatusCode.OK:
                         {
                             await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Kusto.Runtime.Events.BeforeResponseDispatch, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
-                            await onOk(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api20221229.CheckNameResult.FromJson(Microsoft.Azure.PowerShell.Cmdlets.Kusto.Runtime.Json.JsonNode.Parse(body.Result)) ));
+                            await onOk(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api20230815.CheckNameResult.FromJson(Microsoft.Azure.PowerShell.Cmdlets.Kusto.Runtime.Json.JsonNode.Parse(body.Result)) ));
                             break;
                         }
                         default:
                         {
                             await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Kusto.Runtime.Events.BeforeResponseDispatch, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
-                            await onDefault(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api20221229.CloudError.FromJson(Microsoft.Azure.PowerShell.Cmdlets.Kusto.Runtime.Json.JsonNode.Parse(body.Result)) ));
+                            await onDefault(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api30.ErrorResponse.FromJson(Microsoft.Azure.PowerShell.Cmdlets.Kusto.Runtime.Json.JsonNode.Parse(body.Result)) ));
                             break;
                         }
                     }
@@ -2676,34 +2703,34 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Kusto
         /// Validation method for <see cref="ClustersCheckNameAvailability" /> method. Call this like the actual call, but you will
         /// get validation events back.
         /// </summary>
-        /// <param name="subscriptionId">Gets subscription credentials which uniquely identify Microsoft Azure subscription. The subscription
-        /// ID forms part of the URI for every service call.</param>
-        /// <param name="location">Azure location (region) name.</param>
+        /// <param name="subscriptionId">The ID of the target subscription.</param>
+        /// <param name="location">The name of Azure region.</param>
         /// <param name="body">The name of the cluster.</param>
         /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.Kusto.Runtime.IEventListener" /> instance that will receive events.</param>
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        internal async global::System.Threading.Tasks.Task ClustersCheckNameAvailability_Validate(string subscriptionId, string location, Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api20221229.IClusterCheckNameRequest body, Microsoft.Azure.PowerShell.Cmdlets.Kusto.Runtime.IEventListener eventListener)
+        internal async global::System.Threading.Tasks.Task ClustersCheckNameAvailability_Validate(string subscriptionId, string location, Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api20230815.IClusterCheckNameRequest body, Microsoft.Azure.PowerShell.Cmdlets.Kusto.Runtime.IEventListener eventListener)
         {
             using( NoSynchronizationContext )
             {
                 await eventListener.AssertNotNull(nameof(subscriptionId),subscriptionId);
+                await eventListener.AssertMinimumLength(nameof(subscriptionId),subscriptionId,1);
                 await eventListener.AssertNotNull(nameof(location),location);
+                await eventListener.AssertMinimumLength(nameof(location),location,1);
                 await eventListener.AssertNotNull(nameof(body), body);
                 await eventListener.AssertObjectIsValid(nameof(body), body);
             }
         }
 
         /// <summary>Create or update a Kusto cluster.</summary>
-        /// <param name="resourceGroupName">The name of the resource group containing the Kusto cluster.</param>
+        /// <param name="resourceGroupName">The name of the resource group. The name is case insensitive.</param>
         /// <param name="clusterName">The name of the Kusto cluster.</param>
         /// <param name="ifMatch">The ETag of the cluster. Omit this value to always overwrite the current cluster. Specify the last-seen
         /// ETag value to prevent accidentally overwriting concurrent changes.</param>
         /// <param name="ifNoneMatch">Set to '*' to allow a new cluster to be created, but to prevent updating an existing cluster.
         /// Other values will result in a 412 Pre-condition Failed response.</param>
-        /// <param name="subscriptionId">Gets subscription credentials which uniquely identify Microsoft Azure subscription. The subscription
-        /// ID forms part of the URI for every service call.</param>
+        /// <param name="subscriptionId">The ID of the target subscription.</param>
         /// <param name="body">The Kusto cluster parameters supplied to the CreateOrUpdate operation.</param>
         /// <param name="onOk">a delegate that is called when the remote service returns 200 (OK).</param>
         /// <param name="onDefault">a delegate that is called when the remote service returns default (any response code not handled
@@ -2713,9 +2740,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Kusto
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        public async global::System.Threading.Tasks.Task ClustersCreateOrUpdate(string resourceGroupName, string clusterName, string ifMatch, string ifNoneMatch, string subscriptionId, Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api20221229.ICluster body, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api20221229.ICluster>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api20221229.ICloudError>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Kusto.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Kusto.Runtime.ISendAsync sender)
+        public async global::System.Threading.Tasks.Task ClustersCreateOrUpdate(string resourceGroupName, string clusterName, string ifMatch, string ifNoneMatch, string subscriptionId, Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api20230815.ICluster body, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api20230815.ICluster>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api30.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Kusto.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Kusto.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2022-12-29";
+            var apiVersion = @"2023-08-15";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -2773,9 +2800,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Kusto
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        public async global::System.Threading.Tasks.Task ClustersCreateOrUpdateViaIdentity(global::System.String viaIdentity, string ifMatch, string ifNoneMatch, Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api20221229.ICluster body, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api20221229.ICluster>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api20221229.ICloudError>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Kusto.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Kusto.Runtime.ISendAsync sender)
+        public async global::System.Threading.Tasks.Task ClustersCreateOrUpdateViaIdentity(global::System.String viaIdentity, string ifMatch, string ifNoneMatch, Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api20230815.ICluster body, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api20230815.ICluster>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api30.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Kusto.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Kusto.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2022-12-29";
+            var apiVersion = @"2023-08-15";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -2840,7 +2867,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Kusto
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        internal async global::System.Threading.Tasks.Task ClustersCreateOrUpdate_Call(global::System.Net.Http.HttpRequestMessage request, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api20221229.ICluster>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api20221229.ICloudError>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Kusto.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Kusto.Runtime.ISendAsync sender)
+        internal async global::System.Threading.Tasks.Task ClustersCreateOrUpdate_Call(global::System.Net.Http.HttpRequestMessage request, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api20230815.ICluster>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api30.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Kusto.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Kusto.Runtime.ISendAsync sender)
         {
             using( NoSynchronizationContext )
             {
@@ -2957,13 +2984,13 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Kusto
                         case global::System.Net.HttpStatusCode.OK:
                         {
                             await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Kusto.Runtime.Events.BeforeResponseDispatch, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
-                            await onOk(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api20221229.Cluster.FromJson(Microsoft.Azure.PowerShell.Cmdlets.Kusto.Runtime.Json.JsonNode.Parse(body.Result)) .ReadHeaders(_response.Headers)));
+                            await onOk(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api20230815.Cluster.FromJson(Microsoft.Azure.PowerShell.Cmdlets.Kusto.Runtime.Json.JsonNode.Parse(body.Result)) ));
                             break;
                         }
                         default:
                         {
                             await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Kusto.Runtime.Events.BeforeResponseDispatch, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
-                            await onDefault(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api20221229.CloudError.FromJson(Microsoft.Azure.PowerShell.Cmdlets.Kusto.Runtime.Json.JsonNode.Parse(body.Result)) ));
+                            await onDefault(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api30.ErrorResponse.FromJson(Microsoft.Azure.PowerShell.Cmdlets.Kusto.Runtime.Json.JsonNode.Parse(body.Result)) ));
                             break;
                         }
                     }
@@ -2982,38 +3009,40 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Kusto
         /// Validation method for <see cref="ClustersCreateOrUpdate" /> method. Call this like the actual call, but you will get validation
         /// events back.
         /// </summary>
-        /// <param name="resourceGroupName">The name of the resource group containing the Kusto cluster.</param>
+        /// <param name="resourceGroupName">The name of the resource group. The name is case insensitive.</param>
         /// <param name="clusterName">The name of the Kusto cluster.</param>
         /// <param name="ifMatch">The ETag of the cluster. Omit this value to always overwrite the current cluster. Specify the last-seen
         /// ETag value to prevent accidentally overwriting concurrent changes.</param>
         /// <param name="ifNoneMatch">Set to '*' to allow a new cluster to be created, but to prevent updating an existing cluster.
         /// Other values will result in a 412 Pre-condition Failed response.</param>
-        /// <param name="subscriptionId">Gets subscription credentials which uniquely identify Microsoft Azure subscription. The subscription
-        /// ID forms part of the URI for every service call.</param>
+        /// <param name="subscriptionId">The ID of the target subscription.</param>
         /// <param name="body">The Kusto cluster parameters supplied to the CreateOrUpdate operation.</param>
         /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.Kusto.Runtime.IEventListener" /> instance that will receive events.</param>
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        internal async global::System.Threading.Tasks.Task ClustersCreateOrUpdate_Validate(string resourceGroupName, string clusterName, string ifMatch, string ifNoneMatch, string subscriptionId, Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api20221229.ICluster body, Microsoft.Azure.PowerShell.Cmdlets.Kusto.Runtime.IEventListener eventListener)
+        internal async global::System.Threading.Tasks.Task ClustersCreateOrUpdate_Validate(string resourceGroupName, string clusterName, string ifMatch, string ifNoneMatch, string subscriptionId, Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api20230815.ICluster body, Microsoft.Azure.PowerShell.Cmdlets.Kusto.Runtime.IEventListener eventListener)
         {
             using( NoSynchronizationContext )
             {
                 await eventListener.AssertNotNull(nameof(resourceGroupName),resourceGroupName);
+                await eventListener.AssertMinimumLength(nameof(resourceGroupName),resourceGroupName,1);
+                await eventListener.AssertMaximumLength(nameof(resourceGroupName),resourceGroupName,90);
                 await eventListener.AssertNotNull(nameof(clusterName),clusterName);
+                await eventListener.AssertRegEx(nameof(clusterName),clusterName,@"^.*$");
                 await eventListener.AssertNotNull(nameof(ifMatch),ifMatch);
                 await eventListener.AssertNotNull(nameof(ifNoneMatch),ifNoneMatch);
                 await eventListener.AssertNotNull(nameof(subscriptionId),subscriptionId);
+                await eventListener.AssertMinimumLength(nameof(subscriptionId),subscriptionId,1);
                 await eventListener.AssertNotNull(nameof(body), body);
                 await eventListener.AssertObjectIsValid(nameof(body), body);
             }
         }
 
         /// <summary>Deletes a Kusto cluster.</summary>
-        /// <param name="resourceGroupName">The name of the resource group containing the Kusto cluster.</param>
+        /// <param name="resourceGroupName">The name of the resource group. The name is case insensitive.</param>
         /// <param name="clusterName">The name of the Kusto cluster.</param>
-        /// <param name="subscriptionId">Gets subscription credentials which uniquely identify Microsoft Azure subscription. The subscription
-        /// ID forms part of the URI for every service call.</param>
+        /// <param name="subscriptionId">The ID of the target subscription.</param>
         /// <param name="onOk">a delegate that is called when the remote service returns 200 (OK).</param>
         /// <param name="onNoContent">a delegate that is called when the remote service returns 204 (NoContent).</param>
         /// <param name="onDefault">a delegate that is called when the remote service returns default (any response code not handled
@@ -3023,9 +3052,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Kusto
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        public async global::System.Threading.Tasks.Task ClustersDelete(string resourceGroupName, string clusterName, string subscriptionId, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task> onNoContent, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api20221229.ICloudError>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Kusto.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Kusto.Runtime.ISendAsync sender)
+        public async global::System.Threading.Tasks.Task ClustersDelete(string resourceGroupName, string clusterName, string subscriptionId, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task> onNoContent, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api30.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Kusto.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Kusto.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2022-12-29";
+            var apiVersion = @"2023-08-15";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -3065,9 +3094,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Kusto
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        public async global::System.Threading.Tasks.Task ClustersDeleteViaIdentity(global::System.String viaIdentity, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task> onNoContent, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api20221229.ICloudError>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Kusto.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Kusto.Runtime.ISendAsync sender)
+        public async global::System.Threading.Tasks.Task ClustersDeleteViaIdentity(global::System.String viaIdentity, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task> onNoContent, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api30.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Kusto.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Kusto.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2022-12-29";
+            var apiVersion = @"2023-08-15";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -3119,7 +3148,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Kusto
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        internal async global::System.Threading.Tasks.Task ClustersDelete_Call(global::System.Net.Http.HttpRequestMessage request, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task> onNoContent, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api20221229.ICloudError>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Kusto.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Kusto.Runtime.ISendAsync sender)
+        internal async global::System.Threading.Tasks.Task ClustersDelete_Call(global::System.Net.Http.HttpRequestMessage request, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task> onNoContent, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api30.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Kusto.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Kusto.Runtime.ISendAsync sender)
         {
             using( NoSynchronizationContext )
             {
@@ -3249,7 +3278,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Kusto
                         default:
                         {
                             await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Kusto.Runtime.Events.BeforeResponseDispatch, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
-                            await onDefault(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api20221229.CloudError.FromJson(Microsoft.Azure.PowerShell.Cmdlets.Kusto.Runtime.Json.JsonNode.Parse(body.Result)) ));
+                            await onDefault(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api30.ErrorResponse.FromJson(Microsoft.Azure.PowerShell.Cmdlets.Kusto.Runtime.Json.JsonNode.Parse(body.Result)) ));
                             break;
                         }
                     }
@@ -3268,10 +3297,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Kusto
         /// Validation method for <see cref="ClustersDelete" /> method. Call this like the actual call, but you will get validation
         /// events back.
         /// </summary>
-        /// <param name="resourceGroupName">The name of the resource group containing the Kusto cluster.</param>
+        /// <param name="resourceGroupName">The name of the resource group. The name is case insensitive.</param>
         /// <param name="clusterName">The name of the Kusto cluster.</param>
-        /// <param name="subscriptionId">Gets subscription credentials which uniquely identify Microsoft Azure subscription. The subscription
-        /// ID forms part of the URI for every service call.</param>
+        /// <param name="subscriptionId">The ID of the target subscription.</param>
         /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.Kusto.Runtime.IEventListener" /> instance that will receive events.</param>
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
@@ -3281,16 +3309,19 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Kusto
             using( NoSynchronizationContext )
             {
                 await eventListener.AssertNotNull(nameof(resourceGroupName),resourceGroupName);
+                await eventListener.AssertMinimumLength(nameof(resourceGroupName),resourceGroupName,1);
+                await eventListener.AssertMaximumLength(nameof(resourceGroupName),resourceGroupName,90);
                 await eventListener.AssertNotNull(nameof(clusterName),clusterName);
+                await eventListener.AssertRegEx(nameof(clusterName),clusterName,@"^.*$");
                 await eventListener.AssertNotNull(nameof(subscriptionId),subscriptionId);
+                await eventListener.AssertMinimumLength(nameof(subscriptionId),subscriptionId,1);
             }
         }
 
         /// <summary>Detaches all followers of a database owned by this cluster.</summary>
-        /// <param name="resourceGroupName">The name of the resource group containing the Kusto cluster.</param>
+        /// <param name="resourceGroupName">The name of the resource group. The name is case insensitive.</param>
         /// <param name="clusterName">The name of the Kusto cluster.</param>
-        /// <param name="subscriptionId">Gets subscription credentials which uniquely identify Microsoft Azure subscription. The subscription
-        /// ID forms part of the URI for every service call.</param>
+        /// <param name="subscriptionId">The ID of the target subscription.</param>
         /// <param name="body">The follower databases properties to remove.</param>
         /// <param name="onOk">a delegate that is called when the remote service returns 200 (OK).</param>
         /// <param name="onDefault">a delegate that is called when the remote service returns default (any response code not handled
@@ -3300,9 +3331,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Kusto
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        public async global::System.Threading.Tasks.Task ClustersDetachFollowerDatabases(string resourceGroupName, string clusterName, string subscriptionId, Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api20221229.IFollowerDatabaseDefinition body, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api20221229.ICloudError>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Kusto.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Kusto.Runtime.ISendAsync sender)
+        public async global::System.Threading.Tasks.Task ClustersDetachFollowerDatabases(string resourceGroupName, string clusterName, string subscriptionId, Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api20230815.IFollowerDatabaseDefinition body, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api30.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Kusto.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Kusto.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2022-12-29";
+            var apiVersion = @"2023-08-15";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -3347,9 +3378,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Kusto
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        public async global::System.Threading.Tasks.Task ClustersDetachFollowerDatabasesViaIdentity(global::System.String viaIdentity, Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api20221229.IFollowerDatabaseDefinition body, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api20221229.ICloudError>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Kusto.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Kusto.Runtime.ISendAsync sender)
+        public async global::System.Threading.Tasks.Task ClustersDetachFollowerDatabasesViaIdentity(global::System.String viaIdentity, Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api20230815.IFollowerDatabaseDefinition body, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api30.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Kusto.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Kusto.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2022-12-29";
+            var apiVersion = @"2023-08-15";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -3405,7 +3436,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Kusto
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        internal async global::System.Threading.Tasks.Task ClustersDetachFollowerDatabases_Call(global::System.Net.Http.HttpRequestMessage request, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api20221229.ICloudError>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Kusto.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Kusto.Runtime.ISendAsync sender)
+        internal async global::System.Threading.Tasks.Task ClustersDetachFollowerDatabases_Call(global::System.Net.Http.HttpRequestMessage request, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api30.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Kusto.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Kusto.Runtime.ISendAsync sender)
         {
             using( NoSynchronizationContext )
             {
@@ -3529,7 +3560,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Kusto
                         default:
                         {
                             await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Kusto.Runtime.Events.BeforeResponseDispatch, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
-                            await onDefault(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api20221229.CloudError.FromJson(Microsoft.Azure.PowerShell.Cmdlets.Kusto.Runtime.Json.JsonNode.Parse(body.Result)) ));
+                            await onDefault(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api30.ErrorResponse.FromJson(Microsoft.Azure.PowerShell.Cmdlets.Kusto.Runtime.Json.JsonNode.Parse(body.Result)) ));
                             break;
                         }
                     }
@@ -3548,22 +3579,25 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Kusto
         /// Validation method for <see cref="ClustersDetachFollowerDatabases" /> method. Call this like the actual call, but you will
         /// get validation events back.
         /// </summary>
-        /// <param name="resourceGroupName">The name of the resource group containing the Kusto cluster.</param>
+        /// <param name="resourceGroupName">The name of the resource group. The name is case insensitive.</param>
         /// <param name="clusterName">The name of the Kusto cluster.</param>
-        /// <param name="subscriptionId">Gets subscription credentials which uniquely identify Microsoft Azure subscription. The subscription
-        /// ID forms part of the URI for every service call.</param>
+        /// <param name="subscriptionId">The ID of the target subscription.</param>
         /// <param name="body">The follower databases properties to remove.</param>
         /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.Kusto.Runtime.IEventListener" /> instance that will receive events.</param>
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        internal async global::System.Threading.Tasks.Task ClustersDetachFollowerDatabases_Validate(string resourceGroupName, string clusterName, string subscriptionId, Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api20221229.IFollowerDatabaseDefinition body, Microsoft.Azure.PowerShell.Cmdlets.Kusto.Runtime.IEventListener eventListener)
+        internal async global::System.Threading.Tasks.Task ClustersDetachFollowerDatabases_Validate(string resourceGroupName, string clusterName, string subscriptionId, Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api20230815.IFollowerDatabaseDefinition body, Microsoft.Azure.PowerShell.Cmdlets.Kusto.Runtime.IEventListener eventListener)
         {
             using( NoSynchronizationContext )
             {
                 await eventListener.AssertNotNull(nameof(resourceGroupName),resourceGroupName);
+                await eventListener.AssertMinimumLength(nameof(resourceGroupName),resourceGroupName,1);
+                await eventListener.AssertMaximumLength(nameof(resourceGroupName),resourceGroupName,90);
                 await eventListener.AssertNotNull(nameof(clusterName),clusterName);
+                await eventListener.AssertRegEx(nameof(clusterName),clusterName,@"^.*$");
                 await eventListener.AssertNotNull(nameof(subscriptionId),subscriptionId);
+                await eventListener.AssertMinimumLength(nameof(subscriptionId),subscriptionId,1);
                 await eventListener.AssertNotNull(nameof(body), body);
                 await eventListener.AssertObjectIsValid(nameof(body), body);
             }
@@ -3572,10 +3606,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Kusto
         /// <summary>
         /// Diagnoses network connectivity status for external resources on which the service is dependent on.
         /// </summary>
-        /// <param name="resourceGroupName">The name of the resource group containing the Kusto cluster.</param>
+        /// <param name="resourceGroupName">The name of the resource group. The name is case insensitive.</param>
         /// <param name="clusterName">The name of the Kusto cluster.</param>
-        /// <param name="subscriptionId">Gets subscription credentials which uniquely identify Microsoft Azure subscription. The subscription
-        /// ID forms part of the URI for every service call.</param>
+        /// <param name="subscriptionId">The ID of the target subscription.</param>
         /// <param name="onOk">a delegate that is called when the remote service returns 200 (OK).</param>
         /// <param name="onDefault">a delegate that is called when the remote service returns default (any response code not handled
         /// elsewhere).</param>
@@ -3584,9 +3617,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Kusto
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        public async global::System.Threading.Tasks.Task ClustersDiagnoseVirtualNetwork(string resourceGroupName, string clusterName, string subscriptionId, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api20221229.IDiagnoseVirtualNetworkResult>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api20221229.ICloudError>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Kusto.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Kusto.Runtime.ISendAsync sender)
+        public async global::System.Threading.Tasks.Task ClustersDiagnoseVirtualNetwork(string resourceGroupName, string clusterName, string subscriptionId, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api20230815.IDiagnoseVirtualNetworkResult>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api30.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Kusto.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Kusto.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2022-12-29";
+            var apiVersion = @"2023-08-15";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -3628,9 +3661,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Kusto
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        public async global::System.Threading.Tasks.Task ClustersDiagnoseVirtualNetworkViaIdentity(global::System.String viaIdentity, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api20221229.IDiagnoseVirtualNetworkResult>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api20221229.ICloudError>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Kusto.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Kusto.Runtime.ISendAsync sender)
+        public async global::System.Threading.Tasks.Task ClustersDiagnoseVirtualNetworkViaIdentity(global::System.String viaIdentity, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api20230815.IDiagnoseVirtualNetworkResult>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api30.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Kusto.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Kusto.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2022-12-29";
+            var apiVersion = @"2023-08-15";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -3682,7 +3715,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Kusto
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        internal async global::System.Threading.Tasks.Task ClustersDiagnoseVirtualNetwork_Call(global::System.Net.Http.HttpRequestMessage request, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api20221229.IDiagnoseVirtualNetworkResult>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api20221229.ICloudError>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Kusto.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Kusto.Runtime.ISendAsync sender)
+        internal async global::System.Threading.Tasks.Task ClustersDiagnoseVirtualNetwork_Call(global::System.Net.Http.HttpRequestMessage request, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api20230815.IDiagnoseVirtualNetworkResult>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api30.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Kusto.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Kusto.Runtime.ISendAsync sender)
         {
             using( NoSynchronizationContext )
             {
@@ -3695,7 +3728,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Kusto
                     await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Kusto.Runtime.Events.ResponseCreated, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
                     // this operation supports x-ms-long-running-operation
                     var _originalUri = request.RequestUri.AbsoluteUri;
-                    // declared final-state-via: location
+                    // declared final-state-via: default
                     var _finalUri = _response.GetFirstHeader(@"Location");
                     var asyncOperation = _response.GetFirstHeader(@"Azure-AsyncOperation");
                     var location = _response.GetFirstHeader(@"Location");
@@ -3779,16 +3812,19 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Kusto
                             continue;
                         }
                         // we are done polling, do a request on final target?
-                        // create a new request with the final uri
-                        request = request.CloneAndDispose(new global::System.Uri(_finalUri), Microsoft.Azure.PowerShell.Cmdlets.Kusto.Runtime.Method.Get);
+                        if (!string.IsNullOrWhiteSpace(_finalUri))
+                        {
+                            // create a new request with the final uri
+                            request = request.CloneAndDispose(new global::System.Uri(_finalUri), Microsoft.Azure.PowerShell.Cmdlets.Kusto.Runtime.Method.Get);
 
-                        // drop the old response
-                        _response?.Dispose();
+                            // drop the old response
+                            _response?.Dispose();
 
-                        // make the final call
-                        _response = await sender.SendAsync(request,  eventListener);
-                        await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Kusto.Runtime.Events.Polling, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
-                        break;
+                            // make the final call
+                            _response = await sender.SendAsync(request,  eventListener);
+                            await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Kusto.Runtime.Events.Polling, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
+                            break;
+                        }
                     }
                     var _contentType = _response.Content.Headers.ContentType?.MediaType;
 
@@ -3797,13 +3833,13 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Kusto
                         case global::System.Net.HttpStatusCode.OK:
                         {
                             await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Kusto.Runtime.Events.BeforeResponseDispatch, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
-                            await onOk(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api20221229.DiagnoseVirtualNetworkResult.FromJson(Microsoft.Azure.PowerShell.Cmdlets.Kusto.Runtime.Json.JsonNode.Parse(body.Result)) ));
+                            await onOk(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api20230815.DiagnoseVirtualNetworkResult.FromJson(Microsoft.Azure.PowerShell.Cmdlets.Kusto.Runtime.Json.JsonNode.Parse(body.Result)) ));
                             break;
                         }
                         default:
                         {
                             await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Kusto.Runtime.Events.BeforeResponseDispatch, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
-                            await onDefault(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api20221229.CloudError.FromJson(Microsoft.Azure.PowerShell.Cmdlets.Kusto.Runtime.Json.JsonNode.Parse(body.Result)) ));
+                            await onDefault(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api30.ErrorResponse.FromJson(Microsoft.Azure.PowerShell.Cmdlets.Kusto.Runtime.Json.JsonNode.Parse(body.Result)) ));
                             break;
                         }
                     }
@@ -3822,10 +3858,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Kusto
         /// Validation method for <see cref="ClustersDiagnoseVirtualNetwork" /> method. Call this like the actual call, but you will
         /// get validation events back.
         /// </summary>
-        /// <param name="resourceGroupName">The name of the resource group containing the Kusto cluster.</param>
+        /// <param name="resourceGroupName">The name of the resource group. The name is case insensitive.</param>
         /// <param name="clusterName">The name of the Kusto cluster.</param>
-        /// <param name="subscriptionId">Gets subscription credentials which uniquely identify Microsoft Azure subscription. The subscription
-        /// ID forms part of the URI for every service call.</param>
+        /// <param name="subscriptionId">The ID of the target subscription.</param>
         /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.Kusto.Runtime.IEventListener" /> instance that will receive events.</param>
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
@@ -3835,16 +3870,19 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Kusto
             using( NoSynchronizationContext )
             {
                 await eventListener.AssertNotNull(nameof(resourceGroupName),resourceGroupName);
+                await eventListener.AssertMinimumLength(nameof(resourceGroupName),resourceGroupName,1);
+                await eventListener.AssertMaximumLength(nameof(resourceGroupName),resourceGroupName,90);
                 await eventListener.AssertNotNull(nameof(clusterName),clusterName);
+                await eventListener.AssertRegEx(nameof(clusterName),clusterName,@"^.*$");
                 await eventListener.AssertNotNull(nameof(subscriptionId),subscriptionId);
+                await eventListener.AssertMinimumLength(nameof(subscriptionId),subscriptionId,1);
             }
         }
 
         /// <summary>Gets a Kusto cluster.</summary>
-        /// <param name="resourceGroupName">The name of the resource group containing the Kusto cluster.</param>
+        /// <param name="resourceGroupName">The name of the resource group. The name is case insensitive.</param>
         /// <param name="clusterName">The name of the Kusto cluster.</param>
-        /// <param name="subscriptionId">Gets subscription credentials which uniquely identify Microsoft Azure subscription. The subscription
-        /// ID forms part of the URI for every service call.</param>
+        /// <param name="subscriptionId">The ID of the target subscription.</param>
         /// <param name="onOk">a delegate that is called when the remote service returns 200 (OK).</param>
         /// <param name="onDefault">a delegate that is called when the remote service returns default (any response code not handled
         /// elsewhere).</param>
@@ -3853,9 +3891,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Kusto
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        public async global::System.Threading.Tasks.Task ClustersGet(string resourceGroupName, string clusterName, string subscriptionId, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api20221229.ICluster>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api20221229.ICloudError>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Kusto.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Kusto.Runtime.ISendAsync sender)
+        public async global::System.Threading.Tasks.Task ClustersGet(string resourceGroupName, string clusterName, string subscriptionId, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api20230815.ICluster>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api30.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Kusto.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Kusto.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2022-12-29";
+            var apiVersion = @"2023-08-15";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -3894,9 +3932,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Kusto
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        public async global::System.Threading.Tasks.Task ClustersGetViaIdentity(global::System.String viaIdentity, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api20221229.ICluster>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api20221229.ICloudError>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Kusto.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Kusto.Runtime.ISendAsync sender)
+        public async global::System.Threading.Tasks.Task ClustersGetViaIdentity(global::System.String viaIdentity, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api20230815.ICluster>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api30.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Kusto.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Kusto.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2022-12-29";
+            var apiVersion = @"2023-08-15";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -3947,7 +3985,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Kusto
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        internal async global::System.Threading.Tasks.Task ClustersGet_Call(global::System.Net.Http.HttpRequestMessage request, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api20221229.ICluster>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api20221229.ICloudError>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Kusto.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Kusto.Runtime.ISendAsync sender)
+        internal async global::System.Threading.Tasks.Task ClustersGet_Call(global::System.Net.Http.HttpRequestMessage request, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api20230815.ICluster>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api30.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Kusto.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Kusto.Runtime.ISendAsync sender)
         {
             using( NoSynchronizationContext )
             {
@@ -3965,13 +4003,13 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Kusto
                         case global::System.Net.HttpStatusCode.OK:
                         {
                             await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Kusto.Runtime.Events.BeforeResponseDispatch, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
-                            await onOk(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api20221229.Cluster.FromJson(Microsoft.Azure.PowerShell.Cmdlets.Kusto.Runtime.Json.JsonNode.Parse(body.Result)) .ReadHeaders(_response.Headers)));
+                            await onOk(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api20230815.Cluster.FromJson(Microsoft.Azure.PowerShell.Cmdlets.Kusto.Runtime.Json.JsonNode.Parse(body.Result)) ));
                             break;
                         }
                         default:
                         {
                             await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Kusto.Runtime.Events.BeforeResponseDispatch, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
-                            await onDefault(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api20221229.CloudError.FromJson(Microsoft.Azure.PowerShell.Cmdlets.Kusto.Runtime.Json.JsonNode.Parse(body.Result)) ));
+                            await onDefault(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api30.ErrorResponse.FromJson(Microsoft.Azure.PowerShell.Cmdlets.Kusto.Runtime.Json.JsonNode.Parse(body.Result)) ));
                             break;
                         }
                     }
@@ -3990,10 +4028,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Kusto
         /// Validation method for <see cref="ClustersGet" /> method. Call this like the actual call, but you will get validation events
         /// back.
         /// </summary>
-        /// <param name="resourceGroupName">The name of the resource group containing the Kusto cluster.</param>
+        /// <param name="resourceGroupName">The name of the resource group. The name is case insensitive.</param>
         /// <param name="clusterName">The name of the Kusto cluster.</param>
-        /// <param name="subscriptionId">Gets subscription credentials which uniquely identify Microsoft Azure subscription. The subscription
-        /// ID forms part of the URI for every service call.</param>
+        /// <param name="subscriptionId">The ID of the target subscription.</param>
         /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.Kusto.Runtime.IEventListener" /> instance that will receive events.</param>
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
@@ -4003,14 +4040,17 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Kusto
             using( NoSynchronizationContext )
             {
                 await eventListener.AssertNotNull(nameof(resourceGroupName),resourceGroupName);
+                await eventListener.AssertMinimumLength(nameof(resourceGroupName),resourceGroupName,1);
+                await eventListener.AssertMaximumLength(nameof(resourceGroupName),resourceGroupName,90);
                 await eventListener.AssertNotNull(nameof(clusterName),clusterName);
+                await eventListener.AssertRegEx(nameof(clusterName),clusterName,@"^.*$");
                 await eventListener.AssertNotNull(nameof(subscriptionId),subscriptionId);
+                await eventListener.AssertMinimumLength(nameof(subscriptionId),subscriptionId,1);
             }
         }
 
         /// <summary>Lists all Kusto clusters within a subscription.</summary>
-        /// <param name="subscriptionId">Gets subscription credentials which uniquely identify Microsoft Azure subscription. The subscription
-        /// ID forms part of the URI for every service call.</param>
+        /// <param name="subscriptionId">The ID of the target subscription.</param>
         /// <param name="onOk">a delegate that is called when the remote service returns 200 (OK).</param>
         /// <param name="onDefault">a delegate that is called when the remote service returns default (any response code not handled
         /// elsewhere).</param>
@@ -4019,9 +4059,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Kusto
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        public async global::System.Threading.Tasks.Task ClustersList(string subscriptionId, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api20221229.IClusterListResult>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api20221229.ICloudError>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Kusto.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Kusto.Runtime.ISendAsync sender)
+        public async global::System.Threading.Tasks.Task ClustersList(string subscriptionId, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api20230815.IClusterListResult>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api30.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Kusto.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Kusto.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2022-12-29";
+            var apiVersion = @"2023-08-15";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -4048,9 +4088,8 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Kusto
         }
 
         /// <summary>Lists all Kusto clusters within a resource group.</summary>
-        /// <param name="resourceGroupName">The name of the resource group containing the Kusto cluster.</param>
-        /// <param name="subscriptionId">Gets subscription credentials which uniquely identify Microsoft Azure subscription. The subscription
-        /// ID forms part of the URI for every service call.</param>
+        /// <param name="resourceGroupName">The name of the resource group. The name is case insensitive.</param>
+        /// <param name="subscriptionId">The ID of the target subscription.</param>
         /// <param name="onOk">a delegate that is called when the remote service returns 200 (OK).</param>
         /// <param name="onDefault">a delegate that is called when the remote service returns default (any response code not handled
         /// elsewhere).</param>
@@ -4059,9 +4098,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Kusto
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        public async global::System.Threading.Tasks.Task ClustersListByResourceGroup(string resourceGroupName, string subscriptionId, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api20221229.IClusterListResult>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api20221229.ICloudError>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Kusto.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Kusto.Runtime.ISendAsync sender)
+        public async global::System.Threading.Tasks.Task ClustersListByResourceGroup(string resourceGroupName, string subscriptionId, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api20230815.IClusterListResult>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api30.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Kusto.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Kusto.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2022-12-29";
+            var apiVersion = @"2023-08-15";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -4099,9 +4138,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Kusto
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        public async global::System.Threading.Tasks.Task ClustersListByResourceGroupViaIdentity(global::System.String viaIdentity, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api20221229.IClusterListResult>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api20221229.ICloudError>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Kusto.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Kusto.Runtime.ISendAsync sender)
+        public async global::System.Threading.Tasks.Task ClustersListByResourceGroupViaIdentity(global::System.String viaIdentity, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api20230815.IClusterListResult>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api30.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Kusto.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Kusto.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2022-12-29";
+            var apiVersion = @"2023-08-15";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -4150,7 +4189,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Kusto
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        internal async global::System.Threading.Tasks.Task ClustersListByResourceGroup_Call(global::System.Net.Http.HttpRequestMessage request, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api20221229.IClusterListResult>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api20221229.ICloudError>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Kusto.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Kusto.Runtime.ISendAsync sender)
+        internal async global::System.Threading.Tasks.Task ClustersListByResourceGroup_Call(global::System.Net.Http.HttpRequestMessage request, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api20230815.IClusterListResult>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api30.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Kusto.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Kusto.Runtime.ISendAsync sender)
         {
             using( NoSynchronizationContext )
             {
@@ -4168,13 +4207,13 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Kusto
                         case global::System.Net.HttpStatusCode.OK:
                         {
                             await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Kusto.Runtime.Events.BeforeResponseDispatch, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
-                            await onOk(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api20221229.ClusterListResult.FromJson(Microsoft.Azure.PowerShell.Cmdlets.Kusto.Runtime.Json.JsonNode.Parse(body.Result)) ));
+                            await onOk(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api20230815.ClusterListResult.FromJson(Microsoft.Azure.PowerShell.Cmdlets.Kusto.Runtime.Json.JsonNode.Parse(body.Result)) ));
                             break;
                         }
                         default:
                         {
                             await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Kusto.Runtime.Events.BeforeResponseDispatch, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
-                            await onDefault(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api20221229.CloudError.FromJson(Microsoft.Azure.PowerShell.Cmdlets.Kusto.Runtime.Json.JsonNode.Parse(body.Result)) ));
+                            await onDefault(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api30.ErrorResponse.FromJson(Microsoft.Azure.PowerShell.Cmdlets.Kusto.Runtime.Json.JsonNode.Parse(body.Result)) ));
                             break;
                         }
                     }
@@ -4193,9 +4232,8 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Kusto
         /// Validation method for <see cref="ClustersListByResourceGroup" /> method. Call this like the actual call, but you will
         /// get validation events back.
         /// </summary>
-        /// <param name="resourceGroupName">The name of the resource group containing the Kusto cluster.</param>
-        /// <param name="subscriptionId">Gets subscription credentials which uniquely identify Microsoft Azure subscription. The subscription
-        /// ID forms part of the URI for every service call.</param>
+        /// <param name="resourceGroupName">The name of the resource group. The name is case insensitive.</param>
+        /// <param name="subscriptionId">The ID of the target subscription.</param>
         /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.Kusto.Runtime.IEventListener" /> instance that will receive events.</param>
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
@@ -4205,17 +4243,19 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Kusto
             using( NoSynchronizationContext )
             {
                 await eventListener.AssertNotNull(nameof(resourceGroupName),resourceGroupName);
+                await eventListener.AssertMinimumLength(nameof(resourceGroupName),resourceGroupName,1);
+                await eventListener.AssertMaximumLength(nameof(resourceGroupName),resourceGroupName,90);
                 await eventListener.AssertNotNull(nameof(subscriptionId),subscriptionId);
+                await eventListener.AssertMinimumLength(nameof(subscriptionId),subscriptionId,1);
             }
         }
 
         /// <summary>
         /// Returns a list of databases that are owned by this cluster and were followed by another cluster.
         /// </summary>
-        /// <param name="resourceGroupName">The name of the resource group containing the Kusto cluster.</param>
+        /// <param name="resourceGroupName">The name of the resource group. The name is case insensitive.</param>
         /// <param name="clusterName">The name of the Kusto cluster.</param>
-        /// <param name="subscriptionId">Gets subscription credentials which uniquely identify Microsoft Azure subscription. The subscription
-        /// ID forms part of the URI for every service call.</param>
+        /// <param name="subscriptionId">The ID of the target subscription.</param>
         /// <param name="onOk">a delegate that is called when the remote service returns 200 (OK).</param>
         /// <param name="onDefault">a delegate that is called when the remote service returns default (any response code not handled
         /// elsewhere).</param>
@@ -4224,9 +4264,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Kusto
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        public async global::System.Threading.Tasks.Task ClustersListFollowerDatabases(string resourceGroupName, string clusterName, string subscriptionId, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api20221229.IFollowerDatabaseListResult>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api20221229.ICloudError>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Kusto.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Kusto.Runtime.ISendAsync sender)
+        public async global::System.Threading.Tasks.Task ClustersListFollowerDatabases(string resourceGroupName, string clusterName, string subscriptionId, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api20230815.IFollowerDatabaseListResult>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api30.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Kusto.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Kusto.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2022-12-29";
+            var apiVersion = @"2023-08-15";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -4268,9 +4308,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Kusto
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        public async global::System.Threading.Tasks.Task ClustersListFollowerDatabasesViaIdentity(global::System.String viaIdentity, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api20221229.IFollowerDatabaseListResult>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api20221229.ICloudError>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Kusto.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Kusto.Runtime.ISendAsync sender)
+        public async global::System.Threading.Tasks.Task ClustersListFollowerDatabasesViaIdentity(global::System.String viaIdentity, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api20230815.IFollowerDatabaseListResult>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api30.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Kusto.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Kusto.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2022-12-29";
+            var apiVersion = @"2023-08-15";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -4322,7 +4362,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Kusto
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        internal async global::System.Threading.Tasks.Task ClustersListFollowerDatabases_Call(global::System.Net.Http.HttpRequestMessage request, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api20221229.IFollowerDatabaseListResult>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api20221229.ICloudError>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Kusto.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Kusto.Runtime.ISendAsync sender)
+        internal async global::System.Threading.Tasks.Task ClustersListFollowerDatabases_Call(global::System.Net.Http.HttpRequestMessage request, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api20230815.IFollowerDatabaseListResult>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api30.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Kusto.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Kusto.Runtime.ISendAsync sender)
         {
             using( NoSynchronizationContext )
             {
@@ -4340,13 +4380,13 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Kusto
                         case global::System.Net.HttpStatusCode.OK:
                         {
                             await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Kusto.Runtime.Events.BeforeResponseDispatch, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
-                            await onOk(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api20221229.FollowerDatabaseListResult.FromJson(Microsoft.Azure.PowerShell.Cmdlets.Kusto.Runtime.Json.JsonNode.Parse(body.Result)) ));
+                            await onOk(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api20230815.FollowerDatabaseListResult.FromJson(Microsoft.Azure.PowerShell.Cmdlets.Kusto.Runtime.Json.JsonNode.Parse(body.Result)) ));
                             break;
                         }
                         default:
                         {
                             await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Kusto.Runtime.Events.BeforeResponseDispatch, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
-                            await onDefault(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api20221229.CloudError.FromJson(Microsoft.Azure.PowerShell.Cmdlets.Kusto.Runtime.Json.JsonNode.Parse(body.Result)) ));
+                            await onDefault(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api30.ErrorResponse.FromJson(Microsoft.Azure.PowerShell.Cmdlets.Kusto.Runtime.Json.JsonNode.Parse(body.Result)) ));
                             break;
                         }
                     }
@@ -4365,10 +4405,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Kusto
         /// Validation method for <see cref="ClustersListFollowerDatabases" /> method. Call this like the actual call, but you will
         /// get validation events back.
         /// </summary>
-        /// <param name="resourceGroupName">The name of the resource group containing the Kusto cluster.</param>
+        /// <param name="resourceGroupName">The name of the resource group. The name is case insensitive.</param>
         /// <param name="clusterName">The name of the Kusto cluster.</param>
-        /// <param name="subscriptionId">Gets subscription credentials which uniquely identify Microsoft Azure subscription. The subscription
-        /// ID forms part of the URI for every service call.</param>
+        /// <param name="subscriptionId">The ID of the target subscription.</param>
         /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.Kusto.Runtime.IEventListener" /> instance that will receive events.</param>
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
@@ -4378,15 +4417,18 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Kusto
             using( NoSynchronizationContext )
             {
                 await eventListener.AssertNotNull(nameof(resourceGroupName),resourceGroupName);
+                await eventListener.AssertMinimumLength(nameof(resourceGroupName),resourceGroupName,1);
+                await eventListener.AssertMaximumLength(nameof(resourceGroupName),resourceGroupName,90);
                 await eventListener.AssertNotNull(nameof(clusterName),clusterName);
+                await eventListener.AssertRegEx(nameof(clusterName),clusterName,@"^.*$");
                 await eventListener.AssertNotNull(nameof(subscriptionId),subscriptionId);
+                await eventListener.AssertMinimumLength(nameof(subscriptionId),subscriptionId,1);
             }
         }
 
         /// <summary>Returns a list of language extensions that can run within KQL queries.</summary>
-        /// <param name="subscriptionId">Gets subscription credentials which uniquely identify Microsoft Azure subscription. The subscription
-        /// ID forms part of the URI for every service call.</param>
-        /// <param name="resourceGroupName">The name of the resource group containing the Kusto cluster.</param>
+        /// <param name="subscriptionId">The ID of the target subscription.</param>
+        /// <param name="resourceGroupName">The name of the resource group. The name is case insensitive.</param>
         /// <param name="clusterName">The name of the Kusto cluster.</param>
         /// <param name="onOk">a delegate that is called when the remote service returns 200 (OK).</param>
         /// <param name="onDefault">a delegate that is called when the remote service returns default (any response code not handled
@@ -4396,9 +4438,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Kusto
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        public async global::System.Threading.Tasks.Task ClustersListLanguageExtensions(string subscriptionId, string resourceGroupName, string clusterName, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api20221229.ILanguageExtensionsList>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api20221229.ICloudError>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Kusto.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Kusto.Runtime.ISendAsync sender)
+        public async global::System.Threading.Tasks.Task ClustersListLanguageExtensions(string subscriptionId, string resourceGroupName, string clusterName, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api20230815.ILanguageExtensionsList>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api30.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Kusto.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Kusto.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2022-12-29";
+            var apiVersion = @"2023-08-15";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -4438,9 +4480,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Kusto
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        public async global::System.Threading.Tasks.Task ClustersListLanguageExtensionsViaIdentity(global::System.String viaIdentity, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api20221229.ILanguageExtensionsList>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api20221229.ICloudError>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Kusto.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Kusto.Runtime.ISendAsync sender)
+        public async global::System.Threading.Tasks.Task ClustersListLanguageExtensionsViaIdentity(global::System.String viaIdentity, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api20230815.ILanguageExtensionsList>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api30.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Kusto.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Kusto.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2022-12-29";
+            var apiVersion = @"2023-08-15";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -4492,7 +4534,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Kusto
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        internal async global::System.Threading.Tasks.Task ClustersListLanguageExtensions_Call(global::System.Net.Http.HttpRequestMessage request, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api20221229.ILanguageExtensionsList>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api20221229.ICloudError>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Kusto.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Kusto.Runtime.ISendAsync sender)
+        internal async global::System.Threading.Tasks.Task ClustersListLanguageExtensions_Call(global::System.Net.Http.HttpRequestMessage request, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api20230815.ILanguageExtensionsList>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api30.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Kusto.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Kusto.Runtime.ISendAsync sender)
         {
             using( NoSynchronizationContext )
             {
@@ -4510,13 +4552,13 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Kusto
                         case global::System.Net.HttpStatusCode.OK:
                         {
                             await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Kusto.Runtime.Events.BeforeResponseDispatch, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
-                            await onOk(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api20221229.LanguageExtensionsList.FromJson(Microsoft.Azure.PowerShell.Cmdlets.Kusto.Runtime.Json.JsonNode.Parse(body.Result)) ));
+                            await onOk(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api20230815.LanguageExtensionsList.FromJson(Microsoft.Azure.PowerShell.Cmdlets.Kusto.Runtime.Json.JsonNode.Parse(body.Result)) ));
                             break;
                         }
                         default:
                         {
                             await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Kusto.Runtime.Events.BeforeResponseDispatch, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
-                            await onDefault(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api20221229.CloudError.FromJson(Microsoft.Azure.PowerShell.Cmdlets.Kusto.Runtime.Json.JsonNode.Parse(body.Result)) ));
+                            await onDefault(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api30.ErrorResponse.FromJson(Microsoft.Azure.PowerShell.Cmdlets.Kusto.Runtime.Json.JsonNode.Parse(body.Result)) ));
                             break;
                         }
                     }
@@ -4535,9 +4577,8 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Kusto
         /// Validation method for <see cref="ClustersListLanguageExtensions" /> method. Call this like the actual call, but you will
         /// get validation events back.
         /// </summary>
-        /// <param name="subscriptionId">Gets subscription credentials which uniquely identify Microsoft Azure subscription. The subscription
-        /// ID forms part of the URI for every service call.</param>
-        /// <param name="resourceGroupName">The name of the resource group containing the Kusto cluster.</param>
+        /// <param name="subscriptionId">The ID of the target subscription.</param>
+        /// <param name="resourceGroupName">The name of the resource group. The name is case insensitive.</param>
         /// <param name="clusterName">The name of the Kusto cluster.</param>
         /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.Kusto.Runtime.IEventListener" /> instance that will receive events.</param>
         /// <returns>
@@ -4548,15 +4589,18 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Kusto
             using( NoSynchronizationContext )
             {
                 await eventListener.AssertNotNull(nameof(subscriptionId),subscriptionId);
+                await eventListener.AssertMinimumLength(nameof(subscriptionId),subscriptionId,1);
                 await eventListener.AssertNotNull(nameof(resourceGroupName),resourceGroupName);
+                await eventListener.AssertMinimumLength(nameof(resourceGroupName),resourceGroupName,1);
+                await eventListener.AssertMaximumLength(nameof(resourceGroupName),resourceGroupName,90);
                 await eventListener.AssertNotNull(nameof(clusterName),clusterName);
+                await eventListener.AssertRegEx(nameof(clusterName),clusterName,@"^.*$");
             }
         }
 
         /// <summary>Gets the network endpoints of all outbound dependencies of a Kusto cluster</summary>
-        /// <param name="subscriptionId">Gets subscription credentials which uniquely identify Microsoft Azure subscription. The subscription
-        /// ID forms part of the URI for every service call.</param>
-        /// <param name="resourceGroupName">The name of the resource group containing the Kusto cluster.</param>
+        /// <param name="subscriptionId">The ID of the target subscription.</param>
+        /// <param name="resourceGroupName">The name of the resource group. The name is case insensitive.</param>
         /// <param name="clusterName">The name of the Kusto cluster.</param>
         /// <param name="onOk">a delegate that is called when the remote service returns 200 (OK).</param>
         /// <param name="onDefault">a delegate that is called when the remote service returns default (any response code not handled
@@ -4566,9 +4610,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Kusto
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        public async global::System.Threading.Tasks.Task ClustersListOutboundNetworkDependenciesEndpoints(string subscriptionId, string resourceGroupName, string clusterName, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api20221229.IOutboundNetworkDependenciesEndpointListResult>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api20221229.ICloudError>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Kusto.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Kusto.Runtime.ISendAsync sender)
+        public async global::System.Threading.Tasks.Task ClustersListOutboundNetworkDependenciesEndpoints(string subscriptionId, string resourceGroupName, string clusterName, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api20230815.IOutboundNetworkDependenciesEndpointListResult>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api30.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Kusto.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Kusto.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2022-12-29";
+            var apiVersion = @"2023-08-15";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -4608,9 +4652,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Kusto
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        public async global::System.Threading.Tasks.Task ClustersListOutboundNetworkDependenciesEndpointsViaIdentity(global::System.String viaIdentity, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api20221229.IOutboundNetworkDependenciesEndpointListResult>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api20221229.ICloudError>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Kusto.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Kusto.Runtime.ISendAsync sender)
+        public async global::System.Threading.Tasks.Task ClustersListOutboundNetworkDependenciesEndpointsViaIdentity(global::System.String viaIdentity, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api20230815.IOutboundNetworkDependenciesEndpointListResult>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api30.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Kusto.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Kusto.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2022-12-29";
+            var apiVersion = @"2023-08-15";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -4664,7 +4708,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Kusto
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        internal async global::System.Threading.Tasks.Task ClustersListOutboundNetworkDependenciesEndpoints_Call(global::System.Net.Http.HttpRequestMessage request, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api20221229.IOutboundNetworkDependenciesEndpointListResult>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api20221229.ICloudError>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Kusto.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Kusto.Runtime.ISendAsync sender)
+        internal async global::System.Threading.Tasks.Task ClustersListOutboundNetworkDependenciesEndpoints_Call(global::System.Net.Http.HttpRequestMessage request, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api20230815.IOutboundNetworkDependenciesEndpointListResult>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api30.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Kusto.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Kusto.Runtime.ISendAsync sender)
         {
             using( NoSynchronizationContext )
             {
@@ -4682,13 +4726,13 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Kusto
                         case global::System.Net.HttpStatusCode.OK:
                         {
                             await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Kusto.Runtime.Events.BeforeResponseDispatch, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
-                            await onOk(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api20221229.OutboundNetworkDependenciesEndpointListResult.FromJson(Microsoft.Azure.PowerShell.Cmdlets.Kusto.Runtime.Json.JsonNode.Parse(body.Result)) ));
+                            await onOk(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api20230815.OutboundNetworkDependenciesEndpointListResult.FromJson(Microsoft.Azure.PowerShell.Cmdlets.Kusto.Runtime.Json.JsonNode.Parse(body.Result)) ));
                             break;
                         }
                         default:
                         {
                             await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Kusto.Runtime.Events.BeforeResponseDispatch, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
-                            await onDefault(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api20221229.CloudError.FromJson(Microsoft.Azure.PowerShell.Cmdlets.Kusto.Runtime.Json.JsonNode.Parse(body.Result)) ));
+                            await onDefault(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api30.ErrorResponse.FromJson(Microsoft.Azure.PowerShell.Cmdlets.Kusto.Runtime.Json.JsonNode.Parse(body.Result)) ));
                             break;
                         }
                     }
@@ -4707,9 +4751,8 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Kusto
         /// Validation method for <see cref="ClustersListOutboundNetworkDependenciesEndpoints" /> method. Call this like the actual
         /// call, but you will get validation events back.
         /// </summary>
-        /// <param name="subscriptionId">Gets subscription credentials which uniquely identify Microsoft Azure subscription. The subscription
-        /// ID forms part of the URI for every service call.</param>
-        /// <param name="resourceGroupName">The name of the resource group containing the Kusto cluster.</param>
+        /// <param name="subscriptionId">The ID of the target subscription.</param>
+        /// <param name="resourceGroupName">The name of the resource group. The name is case insensitive.</param>
         /// <param name="clusterName">The name of the Kusto cluster.</param>
         /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.Kusto.Runtime.IEventListener" /> instance that will receive events.</param>
         /// <returns>
@@ -4720,14 +4763,17 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Kusto
             using( NoSynchronizationContext )
             {
                 await eventListener.AssertNotNull(nameof(subscriptionId),subscriptionId);
+                await eventListener.AssertMinimumLength(nameof(subscriptionId),subscriptionId,1);
                 await eventListener.AssertNotNull(nameof(resourceGroupName),resourceGroupName);
+                await eventListener.AssertMinimumLength(nameof(resourceGroupName),resourceGroupName,1);
+                await eventListener.AssertMaximumLength(nameof(resourceGroupName),resourceGroupName,90);
                 await eventListener.AssertNotNull(nameof(clusterName),clusterName);
+                await eventListener.AssertRegEx(nameof(clusterName),clusterName,@"^.*$");
             }
         }
 
         /// <summary>Lists eligible SKUs for Kusto resource provider.</summary>
-        /// <param name="subscriptionId">Gets subscription credentials which uniquely identify Microsoft Azure subscription. The subscription
-        /// ID forms part of the URI for every service call.</param>
+        /// <param name="subscriptionId">The ID of the target subscription.</param>
         /// <param name="onOk">a delegate that is called when the remote service returns 200 (OK).</param>
         /// <param name="onDefault">a delegate that is called when the remote service returns default (any response code not handled
         /// elsewhere).</param>
@@ -4736,9 +4782,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Kusto
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        public async global::System.Threading.Tasks.Task ClustersListSkus(string subscriptionId, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api20221229.ISkuDescriptionList>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api20221229.ICloudError>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Kusto.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Kusto.Runtime.ISendAsync sender)
+        public async global::System.Threading.Tasks.Task ClustersListSkus(string subscriptionId, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api20230815.ISkuDescriptionList>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api30.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Kusto.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Kusto.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2022-12-29";
+            var apiVersion = @"2023-08-15";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -4765,10 +4811,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Kusto
         }
 
         /// <summary>Returns the SKUs available for the provided resource.</summary>
-        /// <param name="resourceGroupName">The name of the resource group containing the Kusto cluster.</param>
+        /// <param name="resourceGroupName">The name of the resource group. The name is case insensitive.</param>
         /// <param name="clusterName">The name of the Kusto cluster.</param>
-        /// <param name="subscriptionId">Gets subscription credentials which uniquely identify Microsoft Azure subscription. The subscription
-        /// ID forms part of the URI for every service call.</param>
+        /// <param name="subscriptionId">The ID of the target subscription.</param>
         /// <param name="onOk">a delegate that is called when the remote service returns 200 (OK).</param>
         /// <param name="onDefault">a delegate that is called when the remote service returns default (any response code not handled
         /// elsewhere).</param>
@@ -4777,9 +4822,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Kusto
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        public async global::System.Threading.Tasks.Task ClustersListSkusByResource(string resourceGroupName, string clusterName, string subscriptionId, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api20221229.IListResourceSkusResult>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api20221229.ICloudError>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Kusto.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Kusto.Runtime.ISendAsync sender)
+        public async global::System.Threading.Tasks.Task ClustersListSkusByResource(string resourceGroupName, string clusterName, string subscriptionId, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api20230815.IListResourceSkusResult>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api30.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Kusto.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Kusto.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2022-12-29";
+            var apiVersion = @"2023-08-15";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -4819,9 +4864,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Kusto
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        public async global::System.Threading.Tasks.Task ClustersListSkusByResourceViaIdentity(global::System.String viaIdentity, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api20221229.IListResourceSkusResult>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api20221229.ICloudError>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Kusto.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Kusto.Runtime.ISendAsync sender)
+        public async global::System.Threading.Tasks.Task ClustersListSkusByResourceViaIdentity(global::System.String viaIdentity, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api20230815.IListResourceSkusResult>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api30.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Kusto.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Kusto.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2022-12-29";
+            var apiVersion = @"2023-08-15";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -4873,7 +4918,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Kusto
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        internal async global::System.Threading.Tasks.Task ClustersListSkusByResource_Call(global::System.Net.Http.HttpRequestMessage request, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api20221229.IListResourceSkusResult>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api20221229.ICloudError>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Kusto.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Kusto.Runtime.ISendAsync sender)
+        internal async global::System.Threading.Tasks.Task ClustersListSkusByResource_Call(global::System.Net.Http.HttpRequestMessage request, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api20230815.IListResourceSkusResult>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api30.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Kusto.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Kusto.Runtime.ISendAsync sender)
         {
             using( NoSynchronizationContext )
             {
@@ -4891,13 +4936,13 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Kusto
                         case global::System.Net.HttpStatusCode.OK:
                         {
                             await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Kusto.Runtime.Events.BeforeResponseDispatch, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
-                            await onOk(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api20221229.ListResourceSkusResult.FromJson(Microsoft.Azure.PowerShell.Cmdlets.Kusto.Runtime.Json.JsonNode.Parse(body.Result)) ));
+                            await onOk(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api20230815.ListResourceSkusResult.FromJson(Microsoft.Azure.PowerShell.Cmdlets.Kusto.Runtime.Json.JsonNode.Parse(body.Result)) ));
                             break;
                         }
                         default:
                         {
                             await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Kusto.Runtime.Events.BeforeResponseDispatch, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
-                            await onDefault(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api20221229.CloudError.FromJson(Microsoft.Azure.PowerShell.Cmdlets.Kusto.Runtime.Json.JsonNode.Parse(body.Result)) ));
+                            await onDefault(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api30.ErrorResponse.FromJson(Microsoft.Azure.PowerShell.Cmdlets.Kusto.Runtime.Json.JsonNode.Parse(body.Result)) ));
                             break;
                         }
                     }
@@ -4916,10 +4961,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Kusto
         /// Validation method for <see cref="ClustersListSkusByResource" /> method. Call this like the actual call, but you will get
         /// validation events back.
         /// </summary>
-        /// <param name="resourceGroupName">The name of the resource group containing the Kusto cluster.</param>
+        /// <param name="resourceGroupName">The name of the resource group. The name is case insensitive.</param>
         /// <param name="clusterName">The name of the Kusto cluster.</param>
-        /// <param name="subscriptionId">Gets subscription credentials which uniquely identify Microsoft Azure subscription. The subscription
-        /// ID forms part of the URI for every service call.</param>
+        /// <param name="subscriptionId">The ID of the target subscription.</param>
         /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.Kusto.Runtime.IEventListener" /> instance that will receive events.</param>
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
@@ -4929,8 +4973,12 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Kusto
             using( NoSynchronizationContext )
             {
                 await eventListener.AssertNotNull(nameof(resourceGroupName),resourceGroupName);
+                await eventListener.AssertMinimumLength(nameof(resourceGroupName),resourceGroupName,1);
+                await eventListener.AssertMaximumLength(nameof(resourceGroupName),resourceGroupName,90);
                 await eventListener.AssertNotNull(nameof(clusterName),clusterName);
+                await eventListener.AssertRegEx(nameof(clusterName),clusterName,@"^.*$");
                 await eventListener.AssertNotNull(nameof(subscriptionId),subscriptionId);
+                await eventListener.AssertMinimumLength(nameof(subscriptionId),subscriptionId,1);
             }
         }
 
@@ -4944,9 +4992,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Kusto
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        public async global::System.Threading.Tasks.Task ClustersListSkusViaIdentity(global::System.String viaIdentity, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api20221229.ISkuDescriptionList>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api20221229.ICloudError>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Kusto.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Kusto.Runtime.ISendAsync sender)
+        public async global::System.Threading.Tasks.Task ClustersListSkusViaIdentity(global::System.String viaIdentity, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api20230815.ISkuDescriptionList>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api30.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Kusto.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Kusto.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2022-12-29";
+            var apiVersion = @"2023-08-15";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -4992,7 +5040,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Kusto
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        internal async global::System.Threading.Tasks.Task ClustersListSkus_Call(global::System.Net.Http.HttpRequestMessage request, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api20221229.ISkuDescriptionList>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api20221229.ICloudError>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Kusto.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Kusto.Runtime.ISendAsync sender)
+        internal async global::System.Threading.Tasks.Task ClustersListSkus_Call(global::System.Net.Http.HttpRequestMessage request, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api20230815.ISkuDescriptionList>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api30.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Kusto.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Kusto.Runtime.ISendAsync sender)
         {
             using( NoSynchronizationContext )
             {
@@ -5010,13 +5058,13 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Kusto
                         case global::System.Net.HttpStatusCode.OK:
                         {
                             await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Kusto.Runtime.Events.BeforeResponseDispatch, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
-                            await onOk(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api20221229.SkuDescriptionList.FromJson(Microsoft.Azure.PowerShell.Cmdlets.Kusto.Runtime.Json.JsonNode.Parse(body.Result)) ));
+                            await onOk(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api20230815.SkuDescriptionList.FromJson(Microsoft.Azure.PowerShell.Cmdlets.Kusto.Runtime.Json.JsonNode.Parse(body.Result)) ));
                             break;
                         }
                         default:
                         {
                             await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Kusto.Runtime.Events.BeforeResponseDispatch, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
-                            await onDefault(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api20221229.CloudError.FromJson(Microsoft.Azure.PowerShell.Cmdlets.Kusto.Runtime.Json.JsonNode.Parse(body.Result)) ));
+                            await onDefault(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api30.ErrorResponse.FromJson(Microsoft.Azure.PowerShell.Cmdlets.Kusto.Runtime.Json.JsonNode.Parse(body.Result)) ));
                             break;
                         }
                     }
@@ -5035,8 +5083,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Kusto
         /// Validation method for <see cref="ClustersListSkus" /> method. Call this like the actual call, but you will get validation
         /// events back.
         /// </summary>
-        /// <param name="subscriptionId">Gets subscription credentials which uniquely identify Microsoft Azure subscription. The subscription
-        /// ID forms part of the URI for every service call.</param>
+        /// <param name="subscriptionId">The ID of the target subscription.</param>
         /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.Kusto.Runtime.IEventListener" /> instance that will receive events.</param>
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
@@ -5046,6 +5093,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Kusto
             using( NoSynchronizationContext )
             {
                 await eventListener.AssertNotNull(nameof(subscriptionId),subscriptionId);
+                await eventListener.AssertMinimumLength(nameof(subscriptionId),subscriptionId,1);
             }
         }
 
@@ -5059,9 +5107,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Kusto
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        public async global::System.Threading.Tasks.Task ClustersListViaIdentity(global::System.String viaIdentity, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api20221229.IClusterListResult>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api20221229.ICloudError>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Kusto.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Kusto.Runtime.ISendAsync sender)
+        public async global::System.Threading.Tasks.Task ClustersListViaIdentity(global::System.String viaIdentity, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api20230815.IClusterListResult>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api30.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Kusto.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Kusto.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2022-12-29";
+            var apiVersion = @"2023-08-15";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -5107,7 +5155,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Kusto
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        internal async global::System.Threading.Tasks.Task ClustersList_Call(global::System.Net.Http.HttpRequestMessage request, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api20221229.IClusterListResult>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api20221229.ICloudError>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Kusto.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Kusto.Runtime.ISendAsync sender)
+        internal async global::System.Threading.Tasks.Task ClustersList_Call(global::System.Net.Http.HttpRequestMessage request, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api20230815.IClusterListResult>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api30.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Kusto.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Kusto.Runtime.ISendAsync sender)
         {
             using( NoSynchronizationContext )
             {
@@ -5125,13 +5173,13 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Kusto
                         case global::System.Net.HttpStatusCode.OK:
                         {
                             await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Kusto.Runtime.Events.BeforeResponseDispatch, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
-                            await onOk(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api20221229.ClusterListResult.FromJson(Microsoft.Azure.PowerShell.Cmdlets.Kusto.Runtime.Json.JsonNode.Parse(body.Result)) ));
+                            await onOk(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api20230815.ClusterListResult.FromJson(Microsoft.Azure.PowerShell.Cmdlets.Kusto.Runtime.Json.JsonNode.Parse(body.Result)) ));
                             break;
                         }
                         default:
                         {
                             await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Kusto.Runtime.Events.BeforeResponseDispatch, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
-                            await onDefault(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api20221229.CloudError.FromJson(Microsoft.Azure.PowerShell.Cmdlets.Kusto.Runtime.Json.JsonNode.Parse(body.Result)) ));
+                            await onDefault(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api30.ErrorResponse.FromJson(Microsoft.Azure.PowerShell.Cmdlets.Kusto.Runtime.Json.JsonNode.Parse(body.Result)) ));
                             break;
                         }
                     }
@@ -5150,8 +5198,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Kusto
         /// Validation method for <see cref="ClustersList" /> method. Call this like the actual call, but you will get validation
         /// events back.
         /// </summary>
-        /// <param name="subscriptionId">Gets subscription credentials which uniquely identify Microsoft Azure subscription. The subscription
-        /// ID forms part of the URI for every service call.</param>
+        /// <param name="subscriptionId">The ID of the target subscription.</param>
         /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.Kusto.Runtime.IEventListener" /> instance that will receive events.</param>
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
@@ -5161,13 +5208,298 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Kusto
             using( NoSynchronizationContext )
             {
                 await eventListener.AssertNotNull(nameof(subscriptionId),subscriptionId);
+                await eventListener.AssertMinimumLength(nameof(subscriptionId),subscriptionId,1);
+            }
+        }
+
+        /// <summary>Migrate data from a Kusto cluster to another cluster.</summary>
+        /// <param name="resourceGroupName">The name of the resource group. The name is case insensitive.</param>
+        /// <param name="clusterName">The name of the Kusto cluster.</param>
+        /// <param name="subscriptionId">The ID of the target subscription.</param>
+        /// <param name="body">The cluster migrate request parameters.</param>
+        /// <param name="onOk">a delegate that is called when the remote service returns 200 (OK).</param>
+        /// <param name="onDefault">a delegate that is called when the remote service returns default (any response code not handled
+        /// elsewhere).</param>
+        /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.Kusto.Runtime.IEventListener" /> instance that will receive events.</param>
+        /// <param name="sender">an instance of an Microsoft.Azure.PowerShell.Cmdlets.Kusto.Runtime.ISendAsync pipeline to use to make the request.</param>
+        /// <returns>
+        /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
+        /// </returns>
+        public async global::System.Threading.Tasks.Task ClustersMigrate(string resourceGroupName, string clusterName, string subscriptionId, Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api20230815.IClusterMigrateRequest body, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api30.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Kusto.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Kusto.Runtime.ISendAsync sender)
+        {
+            var apiVersion = @"2023-08-15";
+            // Constant Parameters
+            using( NoSynchronizationContext )
+            {
+                // construct URL
+                var pathAndQuery = global::System.Text.RegularExpressions.Regex.Replace(
+                        "/subscriptions/"
+                        + global::System.Uri.EscapeDataString(subscriptionId)
+                        + "/resourceGroups/"
+                        + global::System.Uri.EscapeDataString(resourceGroupName)
+                        + "/providers/Microsoft.Kusto/Clusters/"
+                        + global::System.Uri.EscapeDataString(clusterName)
+                        + "/migrate"
+                        + "?"
+                        + "api-version=" + global::System.Uri.EscapeDataString(apiVersion)
+                        ,"\\?&*$|&*$|(\\?)&+|(&)&+","$1$2");
+
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Kusto.Runtime.Events.URLCreated, pathAndQuery); if( eventListener.Token.IsCancellationRequested ) { return; }
+
+                // generate request object
+                var _url = new global::System.Uri($"https://management.azure.com{pathAndQuery}");
+                var request =  new global::System.Net.Http.HttpRequestMessage(Microsoft.Azure.PowerShell.Cmdlets.Kusto.Runtime.Method.Post, _url);
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Kusto.Runtime.Events.RequestCreated, request.RequestUri.PathAndQuery); if( eventListener.Token.IsCancellationRequested ) { return; }
+
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Kusto.Runtime.Events.HeaderParametersAdded); if( eventListener.Token.IsCancellationRequested ) { return; }
+                // set body content
+                request.Content = new global::System.Net.Http.StringContent(null != body ? body.ToJson(null).ToString() : @"{}", global::System.Text.Encoding.UTF8);
+                request.Content.Headers.ContentType = global::System.Net.Http.Headers.MediaTypeHeaderValue.Parse("application/json");
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Kusto.Runtime.Events.BodyContentSet); if( eventListener.Token.IsCancellationRequested ) { return; }
+                // make the call
+                await this.ClustersMigrate_Call(request,onOk,onDefault,eventListener,sender);
+            }
+        }
+
+        /// <summary>Migrate data from a Kusto cluster to another cluster.</summary>
+        /// <param name="viaIdentity"></param>
+        /// <param name="body">The cluster migrate request parameters.</param>
+        /// <param name="onOk">a delegate that is called when the remote service returns 200 (OK).</param>
+        /// <param name="onDefault">a delegate that is called when the remote service returns default (any response code not handled
+        /// elsewhere).</param>
+        /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.Kusto.Runtime.IEventListener" /> instance that will receive events.</param>
+        /// <param name="sender">an instance of an Microsoft.Azure.PowerShell.Cmdlets.Kusto.Runtime.ISendAsync pipeline to use to make the request.</param>
+        /// <returns>
+        /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
+        /// </returns>
+        public async global::System.Threading.Tasks.Task ClustersMigrateViaIdentity(global::System.String viaIdentity, Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api20230815.IClusterMigrateRequest body, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api30.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Kusto.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Kusto.Runtime.ISendAsync sender)
+        {
+            var apiVersion = @"2023-08-15";
+            // Constant Parameters
+            using( NoSynchronizationContext )
+            {
+                // verify that Identity format is an exact match for uri
+
+                var _match = new global::System.Text.RegularExpressions.Regex("^/subscriptions/(?<subscriptionId>[^/]+)/resourceGroups/(?<resourceGroupName>[^/]+)/providers/Microsoft.Kusto/Clusters/(?<clusterName>[^/]+)$", global::System.Text.RegularExpressions.RegexOptions.IgnoreCase).Match(viaIdentity);
+                if (!_match.Success)
+                {
+                    throw new global::System.Exception("Invalid identity for URI '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Kusto/Clusters/{clusterName}/migrate'");
+                }
+
+                // replace URI parameters with values from identity
+                var resourceGroupName = _match.Groups["resourceGroupName"].Value;
+                var clusterName = _match.Groups["clusterName"].Value;
+                var subscriptionId = _match.Groups["subscriptionId"].Value;
+                // construct URL
+                var pathAndQuery = global::System.Text.RegularExpressions.Regex.Replace(
+                        "/subscriptions/"
+                        + subscriptionId
+                        + "/resourceGroups/"
+                        + resourceGroupName
+                        + "/providers/Microsoft.Kusto/Clusters/"
+                        + clusterName
+                        + "/migrate"
+                        + "?"
+                        + "api-version=" + global::System.Uri.EscapeDataString(apiVersion)
+                        ,"\\?&*$|&*$|(\\?)&+|(&)&+","$1$2");
+
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Kusto.Runtime.Events.URLCreated, pathAndQuery); if( eventListener.Token.IsCancellationRequested ) { return; }
+
+                // generate request object
+                var _url = new global::System.Uri($"https://management.azure.com{pathAndQuery}");
+                var request =  new global::System.Net.Http.HttpRequestMessage(Microsoft.Azure.PowerShell.Cmdlets.Kusto.Runtime.Method.Post, _url);
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Kusto.Runtime.Events.RequestCreated, request.RequestUri.PathAndQuery); if( eventListener.Token.IsCancellationRequested ) { return; }
+
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Kusto.Runtime.Events.HeaderParametersAdded); if( eventListener.Token.IsCancellationRequested ) { return; }
+                // set body content
+                request.Content = new global::System.Net.Http.StringContent(null != body ? body.ToJson(null).ToString() : @"{}", global::System.Text.Encoding.UTF8);
+                request.Content.Headers.ContentType = global::System.Net.Http.Headers.MediaTypeHeaderValue.Parse("application/json");
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Kusto.Runtime.Events.BodyContentSet); if( eventListener.Token.IsCancellationRequested ) { return; }
+                // make the call
+                await this.ClustersMigrate_Call(request,onOk,onDefault,eventListener,sender);
+            }
+        }
+
+        /// <summary>Actual wire call for <see cref="ClustersMigrate" /> method.</summary>
+        /// <param name="request">the prepared HttpRequestMessage to send.</param>
+        /// <param name="onOk">a delegate that is called when the remote service returns 200 (OK).</param>
+        /// <param name="onDefault">a delegate that is called when the remote service returns default (any response code not handled
+        /// elsewhere).</param>
+        /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.Kusto.Runtime.IEventListener" /> instance that will receive events.</param>
+        /// <param name="sender">an instance of an Microsoft.Azure.PowerShell.Cmdlets.Kusto.Runtime.ISendAsync pipeline to use to make the request.</param>
+        /// <returns>
+        /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
+        /// </returns>
+        internal async global::System.Threading.Tasks.Task ClustersMigrate_Call(global::System.Net.Http.HttpRequestMessage request, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api30.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Kusto.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Kusto.Runtime.ISendAsync sender)
+        {
+            using( NoSynchronizationContext )
+            {
+                global::System.Net.Http.HttpResponseMessage _response = null;
+                try
+                {
+                    var sendTask = sender.SendAsync(request, eventListener);
+                    await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Kusto.Runtime.Events.BeforeCall, request); if( eventListener.Token.IsCancellationRequested ) { return; }
+                    _response = await sendTask;
+                    await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Kusto.Runtime.Events.ResponseCreated, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
+                    // this operation supports x-ms-long-running-operation
+                    var _originalUri = request.RequestUri.AbsoluteUri;
+                    // declared final-state-via: default
+                    var _finalUri = _response.GetFirstHeader(@"Location");
+                    var asyncOperation = _response.GetFirstHeader(@"Azure-AsyncOperation");
+                    var location = _response.GetFirstHeader(@"Location");
+                    while (request.Method == System.Net.Http.HttpMethod.Put && _response.StatusCode == global::System.Net.HttpStatusCode.OK || _response.StatusCode == global::System.Net.HttpStatusCode.Created || _response.StatusCode == global::System.Net.HttpStatusCode.Accepted )
+                    {
+
+                        // get the delay before polling. (default to 30 seconds if not present)
+                        int delay = (int)(_response.Headers.RetryAfter?.Delta?.TotalSeconds ?? 30);
+                        await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Kusto.Runtime.Events.DelayBeforePolling, $"Delaying {delay} seconds before polling.", _response); if( eventListener.Token.IsCancellationRequested ) { return; }
+
+                        // start the delay timer (we'll await later...)
+                        var waiting = global::System.Threading.Tasks.Task.Delay(delay * 1000, eventListener.Token );
+
+                        // while we wait, let's grab the headers and get ready to poll.
+                        if (!System.String.IsNullOrEmpty(_response.GetFirstHeader(@"Azure-AsyncOperation"))) {
+                            asyncOperation = _response.GetFirstHeader(@"Azure-AsyncOperation");
+                        }
+                        if (!global::System.String.IsNullOrEmpty(_response.GetFirstHeader(@"Location"))) {
+                            location = _response.GetFirstHeader(@"Location");
+                        }
+                        var _uri = global::System.String.IsNullOrEmpty(asyncOperation) ? global::System.String.IsNullOrEmpty(location) ? _originalUri : location : asyncOperation;
+                        request = request.CloneAndDispose(new global::System.Uri(_uri), Microsoft.Azure.PowerShell.Cmdlets.Kusto.Runtime.Method.Get);
+
+                        // and let's look at the current response body and see if we have some information we can give back to the listener
+                        var content = await _response.Content.ReadAsStringAsync();
+                        await waiting;
+
+                        // check for cancellation
+                        if( eventListener.Token.IsCancellationRequested ) { return; }
+
+                        // drop the old response
+                        _response?.Dispose();
+
+                        // make the polling call
+                        _response = await sender.SendAsync(request, eventListener);
+                        await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Kusto.Runtime.Events.Polling, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
+
+                        // if we got back an OK, take a peek inside and see if it's done
+                        if( _response.StatusCode == global::System.Net.HttpStatusCode.OK)
+                        {
+                            var error = false;
+                            try {
+                                if( Microsoft.Azure.PowerShell.Cmdlets.Kusto.Runtime.Json.JsonNode.Parse(await _response.Content.ReadAsStringAsync()) is Microsoft.Azure.PowerShell.Cmdlets.Kusto.Runtime.Json.JsonObject json)
+                                {
+                                    var state = json.Property("properties")?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Kusto.Runtime.Json.JsonString>("provisioningState") ?? json.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Kusto.Runtime.Json.JsonString>("status");
+                                    if( state is null )
+                                    {
+                                        // the body doesn't contain any information that has the state of the LRO
+                                        // we're going to just get out, and let the consumer have the result
+                                        break;
+                                    }
+
+                                    switch( state?.ToString()?.ToLower() )
+                                    {
+                                      case "failed":
+                                          error = true;
+                                          break;
+                                      case "succeeded":
+                                      case "canceled":
+                                        // we're done polling.
+                                        break;
+
+                                      default:
+                                        // need to keep polling!
+                                        _response.StatusCode = global::System.Net.HttpStatusCode.Created;
+                                        continue;
+                                    }
+                                }
+                            } catch {
+                                // if we run into a problem peeking into the result,
+                                // we really don't want to do anything special.
+                            }
+                            if (error) {
+                                throw new Microsoft.Azure.PowerShell.Cmdlets.Kusto.Runtime.UndeclaredResponseException(_response);
+                            }
+                        }
+
+                        // check for terminal status code
+                        if (_response.StatusCode == global::System.Net.HttpStatusCode.Created || _response.StatusCode == global::System.Net.HttpStatusCode.Accepted )
+                        {
+                            continue;
+                        }
+                        // we are done polling, do a request on final target?
+                        if (!string.IsNullOrWhiteSpace(_finalUri))
+                        {
+                            // create a new request with the final uri
+                            request = request.CloneAndDispose(new global::System.Uri(_finalUri), Microsoft.Azure.PowerShell.Cmdlets.Kusto.Runtime.Method.Get);
+
+                            // drop the old response
+                            _response?.Dispose();
+
+                            // make the final call
+                            _response = await sender.SendAsync(request,  eventListener);
+                            await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Kusto.Runtime.Events.Polling, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
+                            break;
+                        }
+                    }
+                    var _contentType = _response.Content.Headers.ContentType?.MediaType;
+
+                    switch ( _response.StatusCode )
+                    {
+                        case global::System.Net.HttpStatusCode.OK:
+                        {
+                            await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Kusto.Runtime.Events.BeforeResponseDispatch, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
+                            await onOk(_response);
+                            break;
+                        }
+                        default:
+                        {
+                            await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Kusto.Runtime.Events.BeforeResponseDispatch, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
+                            await onDefault(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api30.ErrorResponse.FromJson(Microsoft.Azure.PowerShell.Cmdlets.Kusto.Runtime.Json.JsonNode.Parse(body.Result)) ));
+                            break;
+                        }
+                    }
+                }
+                finally
+                {
+                    // finally statements
+                    await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Kusto.Runtime.Events.Finally, request, _response);
+                    _response?.Dispose();
+                    request?.Dispose();
+                }
+            }
+        }
+
+        /// <summary>
+        /// Validation method for <see cref="ClustersMigrate" /> method. Call this like the actual call, but you will get validation
+        /// events back.
+        /// </summary>
+        /// <param name="resourceGroupName">The name of the resource group. The name is case insensitive.</param>
+        /// <param name="clusterName">The name of the Kusto cluster.</param>
+        /// <param name="subscriptionId">The ID of the target subscription.</param>
+        /// <param name="body">The cluster migrate request parameters.</param>
+        /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.Kusto.Runtime.IEventListener" /> instance that will receive events.</param>
+        /// <returns>
+        /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
+        /// </returns>
+        internal async global::System.Threading.Tasks.Task ClustersMigrate_Validate(string resourceGroupName, string clusterName, string subscriptionId, Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api20230815.IClusterMigrateRequest body, Microsoft.Azure.PowerShell.Cmdlets.Kusto.Runtime.IEventListener eventListener)
+        {
+            using( NoSynchronizationContext )
+            {
+                await eventListener.AssertNotNull(nameof(resourceGroupName),resourceGroupName);
+                await eventListener.AssertMinimumLength(nameof(resourceGroupName),resourceGroupName,1);
+                await eventListener.AssertMaximumLength(nameof(resourceGroupName),resourceGroupName,90);
+                await eventListener.AssertNotNull(nameof(clusterName),clusterName);
+                await eventListener.AssertRegEx(nameof(clusterName),clusterName,@"^.*$");
+                await eventListener.AssertNotNull(nameof(subscriptionId),subscriptionId);
+                await eventListener.AssertMinimumLength(nameof(subscriptionId),subscriptionId,1);
+                await eventListener.AssertNotNull(nameof(body), body);
+                await eventListener.AssertObjectIsValid(nameof(body), body);
             }
         }
 
         /// <summary>Remove a list of language extensions that can run within KQL queries.</summary>
-        /// <param name="subscriptionId">Gets subscription credentials which uniquely identify Microsoft Azure subscription. The subscription
-        /// ID forms part of the URI for every service call.</param>
-        /// <param name="resourceGroupName">The name of the resource group containing the Kusto cluster.</param>
+        /// <param name="subscriptionId">The ID of the target subscription.</param>
+        /// <param name="resourceGroupName">The name of the resource group. The name is case insensitive.</param>
         /// <param name="clusterName">The name of the Kusto cluster.</param>
         /// <param name="body">The language extensions to remove.</param>
         /// <param name="onOk">a delegate that is called when the remote service returns 200 (OK).</param>
@@ -5178,9 +5510,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Kusto
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        public async global::System.Threading.Tasks.Task ClustersRemoveLanguageExtensions(string subscriptionId, string resourceGroupName, string clusterName, Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api20221229.ILanguageExtensionsList body, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api20221229.ICloudError>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Kusto.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Kusto.Runtime.ISendAsync sender)
+        public async global::System.Threading.Tasks.Task ClustersRemoveLanguageExtensions(string subscriptionId, string resourceGroupName, string clusterName, Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api20230815.ILanguageExtensionsList body, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api30.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Kusto.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Kusto.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2022-12-29";
+            var apiVersion = @"2023-08-15";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -5225,9 +5557,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Kusto
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        public async global::System.Threading.Tasks.Task ClustersRemoveLanguageExtensionsViaIdentity(global::System.String viaIdentity, Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api20221229.ILanguageExtensionsList body, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api20221229.ICloudError>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Kusto.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Kusto.Runtime.ISendAsync sender)
+        public async global::System.Threading.Tasks.Task ClustersRemoveLanguageExtensionsViaIdentity(global::System.String viaIdentity, Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api20230815.ILanguageExtensionsList body, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api30.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Kusto.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Kusto.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2022-12-29";
+            var apiVersion = @"2023-08-15";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -5283,7 +5615,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Kusto
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        internal async global::System.Threading.Tasks.Task ClustersRemoveLanguageExtensions_Call(global::System.Net.Http.HttpRequestMessage request, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api20221229.ICloudError>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Kusto.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Kusto.Runtime.ISendAsync sender)
+        internal async global::System.Threading.Tasks.Task ClustersRemoveLanguageExtensions_Call(global::System.Net.Http.HttpRequestMessage request, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api30.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Kusto.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Kusto.Runtime.ISendAsync sender)
         {
             using( NoSynchronizationContext )
             {
@@ -5407,7 +5739,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Kusto
                         default:
                         {
                             await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Kusto.Runtime.Events.BeforeResponseDispatch, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
-                            await onDefault(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api20221229.CloudError.FromJson(Microsoft.Azure.PowerShell.Cmdlets.Kusto.Runtime.Json.JsonNode.Parse(body.Result)) ));
+                            await onDefault(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api30.ErrorResponse.FromJson(Microsoft.Azure.PowerShell.Cmdlets.Kusto.Runtime.Json.JsonNode.Parse(body.Result)) ));
                             break;
                         }
                     }
@@ -5426,32 +5758,34 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Kusto
         /// Validation method for <see cref="ClustersRemoveLanguageExtensions" /> method. Call this like the actual call, but you
         /// will get validation events back.
         /// </summary>
-        /// <param name="subscriptionId">Gets subscription credentials which uniquely identify Microsoft Azure subscription. The subscription
-        /// ID forms part of the URI for every service call.</param>
-        /// <param name="resourceGroupName">The name of the resource group containing the Kusto cluster.</param>
+        /// <param name="subscriptionId">The ID of the target subscription.</param>
+        /// <param name="resourceGroupName">The name of the resource group. The name is case insensitive.</param>
         /// <param name="clusterName">The name of the Kusto cluster.</param>
         /// <param name="body">The language extensions to remove.</param>
         /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.Kusto.Runtime.IEventListener" /> instance that will receive events.</param>
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        internal async global::System.Threading.Tasks.Task ClustersRemoveLanguageExtensions_Validate(string subscriptionId, string resourceGroupName, string clusterName, Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api20221229.ILanguageExtensionsList body, Microsoft.Azure.PowerShell.Cmdlets.Kusto.Runtime.IEventListener eventListener)
+        internal async global::System.Threading.Tasks.Task ClustersRemoveLanguageExtensions_Validate(string subscriptionId, string resourceGroupName, string clusterName, Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api20230815.ILanguageExtensionsList body, Microsoft.Azure.PowerShell.Cmdlets.Kusto.Runtime.IEventListener eventListener)
         {
             using( NoSynchronizationContext )
             {
                 await eventListener.AssertNotNull(nameof(subscriptionId),subscriptionId);
+                await eventListener.AssertMinimumLength(nameof(subscriptionId),subscriptionId,1);
                 await eventListener.AssertNotNull(nameof(resourceGroupName),resourceGroupName);
+                await eventListener.AssertMinimumLength(nameof(resourceGroupName),resourceGroupName,1);
+                await eventListener.AssertMaximumLength(nameof(resourceGroupName),resourceGroupName,90);
                 await eventListener.AssertNotNull(nameof(clusterName),clusterName);
+                await eventListener.AssertRegEx(nameof(clusterName),clusterName,@"^.*$");
                 await eventListener.AssertNotNull(nameof(body), body);
                 await eventListener.AssertObjectIsValid(nameof(body), body);
             }
         }
 
         /// <summary>Starts a Kusto cluster.</summary>
-        /// <param name="resourceGroupName">The name of the resource group containing the Kusto cluster.</param>
+        /// <param name="resourceGroupName">The name of the resource group. The name is case insensitive.</param>
         /// <param name="clusterName">The name of the Kusto cluster.</param>
-        /// <param name="subscriptionId">Gets subscription credentials which uniquely identify Microsoft Azure subscription. The subscription
-        /// ID forms part of the URI for every service call.</param>
+        /// <param name="subscriptionId">The ID of the target subscription.</param>
         /// <param name="onOk">a delegate that is called when the remote service returns 200 (OK).</param>
         /// <param name="onDefault">a delegate that is called when the remote service returns default (any response code not handled
         /// elsewhere).</param>
@@ -5460,9 +5794,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Kusto
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        public async global::System.Threading.Tasks.Task ClustersStart(string resourceGroupName, string clusterName, string subscriptionId, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api20221229.ICloudError>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Kusto.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Kusto.Runtime.ISendAsync sender)
+        public async global::System.Threading.Tasks.Task ClustersStart(string resourceGroupName, string clusterName, string subscriptionId, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api30.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Kusto.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Kusto.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2022-12-29";
+            var apiVersion = @"2023-08-15";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -5502,9 +5836,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Kusto
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        public async global::System.Threading.Tasks.Task ClustersStartViaIdentity(global::System.String viaIdentity, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api20221229.ICloudError>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Kusto.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Kusto.Runtime.ISendAsync sender)
+        public async global::System.Threading.Tasks.Task ClustersStartViaIdentity(global::System.String viaIdentity, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api30.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Kusto.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Kusto.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2022-12-29";
+            var apiVersion = @"2023-08-15";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -5556,7 +5890,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Kusto
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        internal async global::System.Threading.Tasks.Task ClustersStart_Call(global::System.Net.Http.HttpRequestMessage request, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api20221229.ICloudError>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Kusto.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Kusto.Runtime.ISendAsync sender)
+        internal async global::System.Threading.Tasks.Task ClustersStart_Call(global::System.Net.Http.HttpRequestMessage request, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api30.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Kusto.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Kusto.Runtime.ISendAsync sender)
         {
             using( NoSynchronizationContext )
             {
@@ -5680,7 +6014,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Kusto
                         default:
                         {
                             await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Kusto.Runtime.Events.BeforeResponseDispatch, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
-                            await onDefault(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api20221229.CloudError.FromJson(Microsoft.Azure.PowerShell.Cmdlets.Kusto.Runtime.Json.JsonNode.Parse(body.Result)) ));
+                            await onDefault(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api30.ErrorResponse.FromJson(Microsoft.Azure.PowerShell.Cmdlets.Kusto.Runtime.Json.JsonNode.Parse(body.Result)) ));
                             break;
                         }
                     }
@@ -5699,10 +6033,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Kusto
         /// Validation method for <see cref="ClustersStart" /> method. Call this like the actual call, but you will get validation
         /// events back.
         /// </summary>
-        /// <param name="resourceGroupName">The name of the resource group containing the Kusto cluster.</param>
+        /// <param name="resourceGroupName">The name of the resource group. The name is case insensitive.</param>
         /// <param name="clusterName">The name of the Kusto cluster.</param>
-        /// <param name="subscriptionId">Gets subscription credentials which uniquely identify Microsoft Azure subscription. The subscription
-        /// ID forms part of the URI for every service call.</param>
+        /// <param name="subscriptionId">The ID of the target subscription.</param>
         /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.Kusto.Runtime.IEventListener" /> instance that will receive events.</param>
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
@@ -5712,16 +6045,19 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Kusto
             using( NoSynchronizationContext )
             {
                 await eventListener.AssertNotNull(nameof(resourceGroupName),resourceGroupName);
+                await eventListener.AssertMinimumLength(nameof(resourceGroupName),resourceGroupName,1);
+                await eventListener.AssertMaximumLength(nameof(resourceGroupName),resourceGroupName,90);
                 await eventListener.AssertNotNull(nameof(clusterName),clusterName);
+                await eventListener.AssertRegEx(nameof(clusterName),clusterName,@"^.*$");
                 await eventListener.AssertNotNull(nameof(subscriptionId),subscriptionId);
+                await eventListener.AssertMinimumLength(nameof(subscriptionId),subscriptionId,1);
             }
         }
 
         /// <summary>Stops a Kusto cluster.</summary>
-        /// <param name="resourceGroupName">The name of the resource group containing the Kusto cluster.</param>
+        /// <param name="resourceGroupName">The name of the resource group. The name is case insensitive.</param>
         /// <param name="clusterName">The name of the Kusto cluster.</param>
-        /// <param name="subscriptionId">Gets subscription credentials which uniquely identify Microsoft Azure subscription. The subscription
-        /// ID forms part of the URI for every service call.</param>
+        /// <param name="subscriptionId">The ID of the target subscription.</param>
         /// <param name="onOk">a delegate that is called when the remote service returns 200 (OK).</param>
         /// <param name="onDefault">a delegate that is called when the remote service returns default (any response code not handled
         /// elsewhere).</param>
@@ -5730,9 +6066,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Kusto
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        public async global::System.Threading.Tasks.Task ClustersStop(string resourceGroupName, string clusterName, string subscriptionId, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api20221229.ICloudError>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Kusto.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Kusto.Runtime.ISendAsync sender)
+        public async global::System.Threading.Tasks.Task ClustersStop(string resourceGroupName, string clusterName, string subscriptionId, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api30.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Kusto.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Kusto.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2022-12-29";
+            var apiVersion = @"2023-08-15";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -5772,9 +6108,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Kusto
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        public async global::System.Threading.Tasks.Task ClustersStopViaIdentity(global::System.String viaIdentity, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api20221229.ICloudError>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Kusto.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Kusto.Runtime.ISendAsync sender)
+        public async global::System.Threading.Tasks.Task ClustersStopViaIdentity(global::System.String viaIdentity, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api30.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Kusto.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Kusto.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2022-12-29";
+            var apiVersion = @"2023-08-15";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -5826,7 +6162,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Kusto
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        internal async global::System.Threading.Tasks.Task ClustersStop_Call(global::System.Net.Http.HttpRequestMessage request, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api20221229.ICloudError>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Kusto.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Kusto.Runtime.ISendAsync sender)
+        internal async global::System.Threading.Tasks.Task ClustersStop_Call(global::System.Net.Http.HttpRequestMessage request, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api30.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Kusto.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Kusto.Runtime.ISendAsync sender)
         {
             using( NoSynchronizationContext )
             {
@@ -5950,7 +6286,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Kusto
                         default:
                         {
                             await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Kusto.Runtime.Events.BeforeResponseDispatch, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
-                            await onDefault(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api20221229.CloudError.FromJson(Microsoft.Azure.PowerShell.Cmdlets.Kusto.Runtime.Json.JsonNode.Parse(body.Result)) ));
+                            await onDefault(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api30.ErrorResponse.FromJson(Microsoft.Azure.PowerShell.Cmdlets.Kusto.Runtime.Json.JsonNode.Parse(body.Result)) ));
                             break;
                         }
                     }
@@ -5969,10 +6305,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Kusto
         /// Validation method for <see cref="ClustersStop" /> method. Call this like the actual call, but you will get validation
         /// events back.
         /// </summary>
-        /// <param name="resourceGroupName">The name of the resource group containing the Kusto cluster.</param>
+        /// <param name="resourceGroupName">The name of the resource group. The name is case insensitive.</param>
         /// <param name="clusterName">The name of the Kusto cluster.</param>
-        /// <param name="subscriptionId">Gets subscription credentials which uniquely identify Microsoft Azure subscription. The subscription
-        /// ID forms part of the URI for every service call.</param>
+        /// <param name="subscriptionId">The ID of the target subscription.</param>
         /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.Kusto.Runtime.IEventListener" /> instance that will receive events.</param>
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
@@ -5982,18 +6317,21 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Kusto
             using( NoSynchronizationContext )
             {
                 await eventListener.AssertNotNull(nameof(resourceGroupName),resourceGroupName);
+                await eventListener.AssertMinimumLength(nameof(resourceGroupName),resourceGroupName,1);
+                await eventListener.AssertMaximumLength(nameof(resourceGroupName),resourceGroupName,90);
                 await eventListener.AssertNotNull(nameof(clusterName),clusterName);
+                await eventListener.AssertRegEx(nameof(clusterName),clusterName,@"^.*$");
                 await eventListener.AssertNotNull(nameof(subscriptionId),subscriptionId);
+                await eventListener.AssertMinimumLength(nameof(subscriptionId),subscriptionId,1);
             }
         }
 
         /// <summary>Update a Kusto cluster.</summary>
-        /// <param name="resourceGroupName">The name of the resource group containing the Kusto cluster.</param>
+        /// <param name="resourceGroupName">The name of the resource group. The name is case insensitive.</param>
         /// <param name="clusterName">The name of the Kusto cluster.</param>
         /// <param name="ifMatch">The ETag of the cluster. Omit this value to always overwrite the current cluster. Specify the last-seen
         /// ETag value to prevent accidentally overwriting concurrent changes.</param>
-        /// <param name="subscriptionId">Gets subscription credentials which uniquely identify Microsoft Azure subscription. The subscription
-        /// ID forms part of the URI for every service call.</param>
+        /// <param name="subscriptionId">The ID of the target subscription.</param>
         /// <param name="body">The Kusto cluster parameters supplied to the Update operation.</param>
         /// <param name="onOk">a delegate that is called when the remote service returns 200 (OK).</param>
         /// <param name="onDefault">a delegate that is called when the remote service returns default (any response code not handled
@@ -6003,9 +6341,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Kusto
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        public async global::System.Threading.Tasks.Task ClustersUpdate(string resourceGroupName, string clusterName, string ifMatch, string subscriptionId, Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api20221229.IClusterUpdate body, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api20221229.ICluster>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api20221229.ICloudError>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Kusto.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Kusto.Runtime.ISendAsync sender)
+        public async global::System.Threading.Tasks.Task ClustersUpdate(string resourceGroupName, string clusterName, string ifMatch, string subscriptionId, Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api20230815.IClusterUpdate body, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api20230815.ICluster>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api30.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Kusto.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Kusto.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2022-12-29";
+            var apiVersion = @"2023-08-15";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -6057,9 +6395,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Kusto
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        public async global::System.Threading.Tasks.Task ClustersUpdateViaIdentity(global::System.String viaIdentity, string ifMatch, Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api20221229.IClusterUpdate body, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api20221229.ICluster>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api20221229.ICloudError>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Kusto.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Kusto.Runtime.ISendAsync sender)
+        public async global::System.Threading.Tasks.Task ClustersUpdateViaIdentity(global::System.String viaIdentity, string ifMatch, Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api20230815.IClusterUpdate body, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api20230815.ICluster>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api30.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Kusto.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Kusto.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2022-12-29";
+            var apiVersion = @"2023-08-15";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -6120,7 +6458,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Kusto
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        internal async global::System.Threading.Tasks.Task ClustersUpdate_Call(global::System.Net.Http.HttpRequestMessage request, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api20221229.ICluster>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api20221229.ICloudError>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Kusto.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Kusto.Runtime.ISendAsync sender)
+        internal async global::System.Threading.Tasks.Task ClustersUpdate_Call(global::System.Net.Http.HttpRequestMessage request, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api20230815.ICluster>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api30.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Kusto.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Kusto.Runtime.ISendAsync sender)
         {
             using( NoSynchronizationContext )
             {
@@ -6237,13 +6575,13 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Kusto
                         case global::System.Net.HttpStatusCode.OK:
                         {
                             await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Kusto.Runtime.Events.BeforeResponseDispatch, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
-                            await onOk(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api20221229.Cluster.FromJson(Microsoft.Azure.PowerShell.Cmdlets.Kusto.Runtime.Json.JsonNode.Parse(body.Result)) .ReadHeaders(_response.Headers)));
+                            await onOk(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api20230815.Cluster.FromJson(Microsoft.Azure.PowerShell.Cmdlets.Kusto.Runtime.Json.JsonNode.Parse(body.Result)) ));
                             break;
                         }
                         default:
                         {
                             await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Kusto.Runtime.Events.BeforeResponseDispatch, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
-                            await onDefault(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api20221229.CloudError.FromJson(Microsoft.Azure.PowerShell.Cmdlets.Kusto.Runtime.Json.JsonNode.Parse(body.Result)) ));
+                            await onDefault(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api30.ErrorResponse.FromJson(Microsoft.Azure.PowerShell.Cmdlets.Kusto.Runtime.Json.JsonNode.Parse(body.Result)) ));
                             break;
                         }
                     }
@@ -6262,36 +6600,38 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Kusto
         /// Validation method for <see cref="ClustersUpdate" /> method. Call this like the actual call, but you will get validation
         /// events back.
         /// </summary>
-        /// <param name="resourceGroupName">The name of the resource group containing the Kusto cluster.</param>
+        /// <param name="resourceGroupName">The name of the resource group. The name is case insensitive.</param>
         /// <param name="clusterName">The name of the Kusto cluster.</param>
         /// <param name="ifMatch">The ETag of the cluster. Omit this value to always overwrite the current cluster. Specify the last-seen
         /// ETag value to prevent accidentally overwriting concurrent changes.</param>
-        /// <param name="subscriptionId">Gets subscription credentials which uniquely identify Microsoft Azure subscription. The subscription
-        /// ID forms part of the URI for every service call.</param>
+        /// <param name="subscriptionId">The ID of the target subscription.</param>
         /// <param name="body">The Kusto cluster parameters supplied to the Update operation.</param>
         /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.Kusto.Runtime.IEventListener" /> instance that will receive events.</param>
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        internal async global::System.Threading.Tasks.Task ClustersUpdate_Validate(string resourceGroupName, string clusterName, string ifMatch, string subscriptionId, Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api20221229.IClusterUpdate body, Microsoft.Azure.PowerShell.Cmdlets.Kusto.Runtime.IEventListener eventListener)
+        internal async global::System.Threading.Tasks.Task ClustersUpdate_Validate(string resourceGroupName, string clusterName, string ifMatch, string subscriptionId, Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api20230815.IClusterUpdate body, Microsoft.Azure.PowerShell.Cmdlets.Kusto.Runtime.IEventListener eventListener)
         {
             using( NoSynchronizationContext )
             {
                 await eventListener.AssertNotNull(nameof(resourceGroupName),resourceGroupName);
+                await eventListener.AssertMinimumLength(nameof(resourceGroupName),resourceGroupName,1);
+                await eventListener.AssertMaximumLength(nameof(resourceGroupName),resourceGroupName,90);
                 await eventListener.AssertNotNull(nameof(clusterName),clusterName);
+                await eventListener.AssertRegEx(nameof(clusterName),clusterName,@"^.*$");
                 await eventListener.AssertNotNull(nameof(ifMatch),ifMatch);
                 await eventListener.AssertNotNull(nameof(subscriptionId),subscriptionId);
+                await eventListener.AssertMinimumLength(nameof(subscriptionId),subscriptionId,1);
                 await eventListener.AssertNotNull(nameof(body), body);
                 await eventListener.AssertObjectIsValid(nameof(body), body);
             }
         }
 
         /// <summary>Checks that the data connection name is valid and is not already in use.</summary>
-        /// <param name="resourceGroupName">The name of the resource group containing the Kusto cluster.</param>
+        /// <param name="resourceGroupName">The name of the resource group. The name is case insensitive.</param>
         /// <param name="clusterName">The name of the Kusto cluster.</param>
         /// <param name="databaseName">The name of the database in the Kusto cluster.</param>
-        /// <param name="subscriptionId">Gets subscription credentials which uniquely identify Microsoft Azure subscription. The subscription
-        /// ID forms part of the URI for every service call.</param>
+        /// <param name="subscriptionId">The ID of the target subscription.</param>
         /// <param name="body">The name of the data connection.</param>
         /// <param name="onOk">a delegate that is called when the remote service returns 200 (OK).</param>
         /// <param name="onDefault">a delegate that is called when the remote service returns default (any response code not handled
@@ -6301,9 +6641,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Kusto
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        public async global::System.Threading.Tasks.Task DataConnectionsCheckNameAvailability(string resourceGroupName, string clusterName, string databaseName, string subscriptionId, Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api20221229.IDataConnectionCheckNameRequest body, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api20221229.ICheckNameResult>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api20221229.ICloudError>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Kusto.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Kusto.Runtime.ISendAsync sender)
+        public async global::System.Threading.Tasks.Task DataConnectionsCheckNameAvailability(string resourceGroupName, string clusterName, string databaseName, string subscriptionId, Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api20230815.IDataConnectionCheckNameRequest body, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api20230815.ICheckNameResult>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api30.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Kusto.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Kusto.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2022-12-29";
+            var apiVersion = @"2023-08-15";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -6350,9 +6690,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Kusto
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        public async global::System.Threading.Tasks.Task DataConnectionsCheckNameAvailabilityViaIdentity(global::System.String viaIdentity, Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api20221229.IDataConnectionCheckNameRequest body, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api20221229.ICheckNameResult>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api20221229.ICloudError>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Kusto.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Kusto.Runtime.ISendAsync sender)
+        public async global::System.Threading.Tasks.Task DataConnectionsCheckNameAvailabilityViaIdentity(global::System.String viaIdentity, Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api20230815.IDataConnectionCheckNameRequest body, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api20230815.ICheckNameResult>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api30.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Kusto.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Kusto.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2022-12-29";
+            var apiVersion = @"2023-08-15";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -6413,7 +6753,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Kusto
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        internal async global::System.Threading.Tasks.Task DataConnectionsCheckNameAvailability_Call(global::System.Net.Http.HttpRequestMessage request, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api20221229.ICheckNameResult>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api20221229.ICloudError>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Kusto.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Kusto.Runtime.ISendAsync sender)
+        internal async global::System.Threading.Tasks.Task DataConnectionsCheckNameAvailability_Call(global::System.Net.Http.HttpRequestMessage request, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api20230815.ICheckNameResult>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api30.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Kusto.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Kusto.Runtime.ISendAsync sender)
         {
             using( NoSynchronizationContext )
             {
@@ -6431,13 +6771,13 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Kusto
                         case global::System.Net.HttpStatusCode.OK:
                         {
                             await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Kusto.Runtime.Events.BeforeResponseDispatch, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
-                            await onOk(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api20221229.CheckNameResult.FromJson(Microsoft.Azure.PowerShell.Cmdlets.Kusto.Runtime.Json.JsonNode.Parse(body.Result)) ));
+                            await onOk(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api20230815.CheckNameResult.FromJson(Microsoft.Azure.PowerShell.Cmdlets.Kusto.Runtime.Json.JsonNode.Parse(body.Result)) ));
                             break;
                         }
                         default:
                         {
                             await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Kusto.Runtime.Events.BeforeResponseDispatch, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
-                            await onDefault(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api20221229.CloudError.FromJson(Microsoft.Azure.PowerShell.Cmdlets.Kusto.Runtime.Json.JsonNode.Parse(body.Result)) ));
+                            await onDefault(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api30.ErrorResponse.FromJson(Microsoft.Azure.PowerShell.Cmdlets.Kusto.Runtime.Json.JsonNode.Parse(body.Result)) ));
                             break;
                         }
                     }
@@ -6456,36 +6796,39 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Kusto
         /// Validation method for <see cref="DataConnectionsCheckNameAvailability" /> method. Call this like the actual call, but
         /// you will get validation events back.
         /// </summary>
-        /// <param name="resourceGroupName">The name of the resource group containing the Kusto cluster.</param>
+        /// <param name="resourceGroupName">The name of the resource group. The name is case insensitive.</param>
         /// <param name="clusterName">The name of the Kusto cluster.</param>
         /// <param name="databaseName">The name of the database in the Kusto cluster.</param>
-        /// <param name="subscriptionId">Gets subscription credentials which uniquely identify Microsoft Azure subscription. The subscription
-        /// ID forms part of the URI for every service call.</param>
+        /// <param name="subscriptionId">The ID of the target subscription.</param>
         /// <param name="body">The name of the data connection.</param>
         /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.Kusto.Runtime.IEventListener" /> instance that will receive events.</param>
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        internal async global::System.Threading.Tasks.Task DataConnectionsCheckNameAvailability_Validate(string resourceGroupName, string clusterName, string databaseName, string subscriptionId, Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api20221229.IDataConnectionCheckNameRequest body, Microsoft.Azure.PowerShell.Cmdlets.Kusto.Runtime.IEventListener eventListener)
+        internal async global::System.Threading.Tasks.Task DataConnectionsCheckNameAvailability_Validate(string resourceGroupName, string clusterName, string databaseName, string subscriptionId, Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api20230815.IDataConnectionCheckNameRequest body, Microsoft.Azure.PowerShell.Cmdlets.Kusto.Runtime.IEventListener eventListener)
         {
             using( NoSynchronizationContext )
             {
                 await eventListener.AssertNotNull(nameof(resourceGroupName),resourceGroupName);
+                await eventListener.AssertMinimumLength(nameof(resourceGroupName),resourceGroupName,1);
+                await eventListener.AssertMaximumLength(nameof(resourceGroupName),resourceGroupName,90);
                 await eventListener.AssertNotNull(nameof(clusterName),clusterName);
+                await eventListener.AssertRegEx(nameof(clusterName),clusterName,@"^.*$");
                 await eventListener.AssertNotNull(nameof(databaseName),databaseName);
+                await eventListener.AssertRegEx(nameof(databaseName),databaseName,@"^.*$");
                 await eventListener.AssertNotNull(nameof(subscriptionId),subscriptionId);
+                await eventListener.AssertMinimumLength(nameof(subscriptionId),subscriptionId,1);
                 await eventListener.AssertNotNull(nameof(body), body);
                 await eventListener.AssertObjectIsValid(nameof(body), body);
             }
         }
 
         /// <summary>Creates or updates a data connection.</summary>
-        /// <param name="resourceGroupName">The name of the resource group containing the Kusto cluster.</param>
+        /// <param name="resourceGroupName">The name of the resource group. The name is case insensitive.</param>
         /// <param name="clusterName">The name of the Kusto cluster.</param>
         /// <param name="databaseName">The name of the database in the Kusto cluster.</param>
         /// <param name="dataConnectionName">The name of the data connection.</param>
-        /// <param name="subscriptionId">Gets subscription credentials which uniquely identify Microsoft Azure subscription. The subscription
-        /// ID forms part of the URI for every service call.</param>
+        /// <param name="subscriptionId">The ID of the target subscription.</param>
         /// <param name="body">The data connection parameters supplied to the CreateOrUpdate operation.</param>
         /// <param name="onOk">a delegate that is called when the remote service returns 200 (OK).</param>
         /// <param name="onDefault">a delegate that is called when the remote service returns default (any response code not handled
@@ -6495,9 +6838,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Kusto
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        public async global::System.Threading.Tasks.Task DataConnectionsCreateOrUpdate(string resourceGroupName, string clusterName, string databaseName, string dataConnectionName, string subscriptionId, Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api20221229.IDataConnection body, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api20221229.IDataConnection>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api20221229.ICloudError>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Kusto.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Kusto.Runtime.ISendAsync sender)
+        public async global::System.Threading.Tasks.Task DataConnectionsCreateOrUpdate(string resourceGroupName, string clusterName, string databaseName, string dataConnectionName, string subscriptionId, Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api20230815.IDataConnection body, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api20230815.IDataConnection>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api30.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Kusto.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Kusto.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2022-12-29";
+            var apiVersion = @"2023-08-15";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -6545,9 +6888,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Kusto
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        public async global::System.Threading.Tasks.Task DataConnectionsCreateOrUpdateViaIdentity(global::System.String viaIdentity, Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api20221229.IDataConnection body, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api20221229.IDataConnection>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api20221229.ICloudError>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Kusto.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Kusto.Runtime.ISendAsync sender)
+        public async global::System.Threading.Tasks.Task DataConnectionsCreateOrUpdateViaIdentity(global::System.String viaIdentity, Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api20230815.IDataConnection body, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api20230815.IDataConnection>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api30.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Kusto.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Kusto.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2022-12-29";
+            var apiVersion = @"2023-08-15";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -6608,7 +6951,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Kusto
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        internal async global::System.Threading.Tasks.Task DataConnectionsCreateOrUpdate_Call(global::System.Net.Http.HttpRequestMessage request, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api20221229.IDataConnection>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api20221229.ICloudError>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Kusto.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Kusto.Runtime.ISendAsync sender)
+        internal async global::System.Threading.Tasks.Task DataConnectionsCreateOrUpdate_Call(global::System.Net.Http.HttpRequestMessage request, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api20230815.IDataConnection>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api30.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Kusto.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Kusto.Runtime.ISendAsync sender)
         {
             using( NoSynchronizationContext )
             {
@@ -6725,13 +7068,13 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Kusto
                         case global::System.Net.HttpStatusCode.OK:
                         {
                             await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Kusto.Runtime.Events.BeforeResponseDispatch, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
-                            await onOk(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api20221229.DataConnection.FromJson(Microsoft.Azure.PowerShell.Cmdlets.Kusto.Runtime.Json.JsonNode.Parse(body.Result)) .ReadHeaders(_response.Headers)));
+                            await onOk(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api20230815.DataConnection.FromJson(Microsoft.Azure.PowerShell.Cmdlets.Kusto.Runtime.Json.JsonNode.Parse(body.Result)) ));
                             break;
                         }
                         default:
                         {
                             await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Kusto.Runtime.Events.BeforeResponseDispatch, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
-                            await onDefault(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api20221229.CloudError.FromJson(Microsoft.Azure.PowerShell.Cmdlets.Kusto.Runtime.Json.JsonNode.Parse(body.Result)) ));
+                            await onDefault(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api30.ErrorResponse.FromJson(Microsoft.Azure.PowerShell.Cmdlets.Kusto.Runtime.Json.JsonNode.Parse(body.Result)) ));
                             break;
                         }
                     }
@@ -6750,37 +7093,41 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Kusto
         /// Validation method for <see cref="DataConnectionsCreateOrUpdate" /> method. Call this like the actual call, but you will
         /// get validation events back.
         /// </summary>
-        /// <param name="resourceGroupName">The name of the resource group containing the Kusto cluster.</param>
+        /// <param name="resourceGroupName">The name of the resource group. The name is case insensitive.</param>
         /// <param name="clusterName">The name of the Kusto cluster.</param>
         /// <param name="databaseName">The name of the database in the Kusto cluster.</param>
         /// <param name="dataConnectionName">The name of the data connection.</param>
-        /// <param name="subscriptionId">Gets subscription credentials which uniquely identify Microsoft Azure subscription. The subscription
-        /// ID forms part of the URI for every service call.</param>
+        /// <param name="subscriptionId">The ID of the target subscription.</param>
         /// <param name="body">The data connection parameters supplied to the CreateOrUpdate operation.</param>
         /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.Kusto.Runtime.IEventListener" /> instance that will receive events.</param>
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        internal async global::System.Threading.Tasks.Task DataConnectionsCreateOrUpdate_Validate(string resourceGroupName, string clusterName, string databaseName, string dataConnectionName, string subscriptionId, Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api20221229.IDataConnection body, Microsoft.Azure.PowerShell.Cmdlets.Kusto.Runtime.IEventListener eventListener)
+        internal async global::System.Threading.Tasks.Task DataConnectionsCreateOrUpdate_Validate(string resourceGroupName, string clusterName, string databaseName, string dataConnectionName, string subscriptionId, Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api20230815.IDataConnection body, Microsoft.Azure.PowerShell.Cmdlets.Kusto.Runtime.IEventListener eventListener)
         {
             using( NoSynchronizationContext )
             {
                 await eventListener.AssertNotNull(nameof(resourceGroupName),resourceGroupName);
+                await eventListener.AssertMinimumLength(nameof(resourceGroupName),resourceGroupName,1);
+                await eventListener.AssertMaximumLength(nameof(resourceGroupName),resourceGroupName,90);
                 await eventListener.AssertNotNull(nameof(clusterName),clusterName);
+                await eventListener.AssertRegEx(nameof(clusterName),clusterName,@"^.*$");
                 await eventListener.AssertNotNull(nameof(databaseName),databaseName);
+                await eventListener.AssertRegEx(nameof(databaseName),databaseName,@"^.*$");
                 await eventListener.AssertNotNull(nameof(dataConnectionName),dataConnectionName);
+                await eventListener.AssertRegEx(nameof(dataConnectionName),dataConnectionName,@"^.*$");
                 await eventListener.AssertNotNull(nameof(subscriptionId),subscriptionId);
+                await eventListener.AssertMinimumLength(nameof(subscriptionId),subscriptionId,1);
                 await eventListener.AssertNotNull(nameof(body), body);
                 await eventListener.AssertObjectIsValid(nameof(body), body);
             }
         }
 
         /// <summary>Checks that the data connection parameters are valid.</summary>
-        /// <param name="resourceGroupName">The name of the resource group containing the Kusto cluster.</param>
+        /// <param name="resourceGroupName">The name of the resource group. The name is case insensitive.</param>
         /// <param name="clusterName">The name of the Kusto cluster.</param>
         /// <param name="databaseName">The name of the database in the Kusto cluster.</param>
-        /// <param name="subscriptionId">Gets subscription credentials which uniquely identify Microsoft Azure subscription. The subscription
-        /// ID forms part of the URI for every service call.</param>
+        /// <param name="subscriptionId">The ID of the target subscription.</param>
         /// <param name="body">The data connection parameters supplied to the CreateOrUpdate operation.</param>
         /// <param name="onOk">a delegate that is called when the remote service returns 200 (OK).</param>
         /// <param name="onDefault">a delegate that is called when the remote service returns default (any response code not handled
@@ -6790,9 +7137,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Kusto
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        public async global::System.Threading.Tasks.Task DataConnectionsDataConnectionValidation(string resourceGroupName, string clusterName, string databaseName, string subscriptionId, Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api20221229.IDataConnectionValidation body, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api20221229.IDataConnectionValidationListResult>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api20221229.ICloudError>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Kusto.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Kusto.Runtime.ISendAsync sender)
+        public async global::System.Threading.Tasks.Task DataConnectionsDataConnectionValidation(string resourceGroupName, string clusterName, string databaseName, string subscriptionId, Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api20230815.IDataConnectionValidation body, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api20230815.IDataConnectionValidationListResult>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api30.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Kusto.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Kusto.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2022-12-29";
+            var apiVersion = @"2023-08-15";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -6839,9 +7186,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Kusto
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        public async global::System.Threading.Tasks.Task DataConnectionsDataConnectionValidationViaIdentity(global::System.String viaIdentity, Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api20221229.IDataConnectionValidation body, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api20221229.IDataConnectionValidationListResult>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api20221229.ICloudError>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Kusto.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Kusto.Runtime.ISendAsync sender)
+        public async global::System.Threading.Tasks.Task DataConnectionsDataConnectionValidationViaIdentity(global::System.String viaIdentity, Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api20230815.IDataConnectionValidation body, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api20230815.IDataConnectionValidationListResult>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api30.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Kusto.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Kusto.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2022-12-29";
+            var apiVersion = @"2023-08-15";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -6902,7 +7249,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Kusto
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        internal async global::System.Threading.Tasks.Task DataConnectionsDataConnectionValidation_Call(global::System.Net.Http.HttpRequestMessage request, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api20221229.IDataConnectionValidationListResult>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api20221229.ICloudError>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Kusto.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Kusto.Runtime.ISendAsync sender)
+        internal async global::System.Threading.Tasks.Task DataConnectionsDataConnectionValidation_Call(global::System.Net.Http.HttpRequestMessage request, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api20230815.IDataConnectionValidationListResult>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api30.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Kusto.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Kusto.Runtime.ISendAsync sender)
         {
             using( NoSynchronizationContext )
             {
@@ -6915,7 +7262,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Kusto
                     await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Kusto.Runtime.Events.ResponseCreated, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
                     // this operation supports x-ms-long-running-operation
                     var _originalUri = request.RequestUri.AbsoluteUri;
-                    // declared final-state-via: location
+                    // declared final-state-via: default
                     var _finalUri = _response.GetFirstHeader(@"Location");
                     var asyncOperation = _response.GetFirstHeader(@"Azure-AsyncOperation");
                     var location = _response.GetFirstHeader(@"Location");
@@ -6999,16 +7346,19 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Kusto
                             continue;
                         }
                         // we are done polling, do a request on final target?
-                        // create a new request with the final uri
-                        request = request.CloneAndDispose(new global::System.Uri(_finalUri), Microsoft.Azure.PowerShell.Cmdlets.Kusto.Runtime.Method.Get);
+                        if (!string.IsNullOrWhiteSpace(_finalUri))
+                        {
+                            // create a new request with the final uri
+                            request = request.CloneAndDispose(new global::System.Uri(_finalUri), Microsoft.Azure.PowerShell.Cmdlets.Kusto.Runtime.Method.Get);
 
-                        // drop the old response
-                        _response?.Dispose();
+                            // drop the old response
+                            _response?.Dispose();
 
-                        // make the final call
-                        _response = await sender.SendAsync(request,  eventListener);
-                        await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Kusto.Runtime.Events.Polling, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
-                        break;
+                            // make the final call
+                            _response = await sender.SendAsync(request,  eventListener);
+                            await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Kusto.Runtime.Events.Polling, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
+                            break;
+                        }
                     }
                     var _contentType = _response.Content.Headers.ContentType?.MediaType;
 
@@ -7017,13 +7367,13 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Kusto
                         case global::System.Net.HttpStatusCode.OK:
                         {
                             await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Kusto.Runtime.Events.BeforeResponseDispatch, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
-                            await onOk(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api20221229.DataConnectionValidationListResult.FromJson(Microsoft.Azure.PowerShell.Cmdlets.Kusto.Runtime.Json.JsonNode.Parse(body.Result)) ));
+                            await onOk(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api20230815.DataConnectionValidationListResult.FromJson(Microsoft.Azure.PowerShell.Cmdlets.Kusto.Runtime.Json.JsonNode.Parse(body.Result)) ));
                             break;
                         }
                         default:
                         {
                             await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Kusto.Runtime.Events.BeforeResponseDispatch, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
-                            await onDefault(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api20221229.CloudError.FromJson(Microsoft.Azure.PowerShell.Cmdlets.Kusto.Runtime.Json.JsonNode.Parse(body.Result)) ));
+                            await onDefault(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api30.ErrorResponse.FromJson(Microsoft.Azure.PowerShell.Cmdlets.Kusto.Runtime.Json.JsonNode.Parse(body.Result)) ));
                             break;
                         }
                     }
@@ -7042,36 +7392,39 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Kusto
         /// Validation method for <see cref="DataConnectionsDataConnectionValidation" /> method. Call this like the actual call, but
         /// you will get validation events back.
         /// </summary>
-        /// <param name="resourceGroupName">The name of the resource group containing the Kusto cluster.</param>
+        /// <param name="resourceGroupName">The name of the resource group. The name is case insensitive.</param>
         /// <param name="clusterName">The name of the Kusto cluster.</param>
         /// <param name="databaseName">The name of the database in the Kusto cluster.</param>
-        /// <param name="subscriptionId">Gets subscription credentials which uniquely identify Microsoft Azure subscription. The subscription
-        /// ID forms part of the URI for every service call.</param>
+        /// <param name="subscriptionId">The ID of the target subscription.</param>
         /// <param name="body">The data connection parameters supplied to the CreateOrUpdate operation.</param>
         /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.Kusto.Runtime.IEventListener" /> instance that will receive events.</param>
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        internal async global::System.Threading.Tasks.Task DataConnectionsDataConnectionValidation_Validate(string resourceGroupName, string clusterName, string databaseName, string subscriptionId, Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api20221229.IDataConnectionValidation body, Microsoft.Azure.PowerShell.Cmdlets.Kusto.Runtime.IEventListener eventListener)
+        internal async global::System.Threading.Tasks.Task DataConnectionsDataConnectionValidation_Validate(string resourceGroupName, string clusterName, string databaseName, string subscriptionId, Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api20230815.IDataConnectionValidation body, Microsoft.Azure.PowerShell.Cmdlets.Kusto.Runtime.IEventListener eventListener)
         {
             using( NoSynchronizationContext )
             {
                 await eventListener.AssertNotNull(nameof(resourceGroupName),resourceGroupName);
+                await eventListener.AssertMinimumLength(nameof(resourceGroupName),resourceGroupName,1);
+                await eventListener.AssertMaximumLength(nameof(resourceGroupName),resourceGroupName,90);
                 await eventListener.AssertNotNull(nameof(clusterName),clusterName);
+                await eventListener.AssertRegEx(nameof(clusterName),clusterName,@"^.*$");
                 await eventListener.AssertNotNull(nameof(databaseName),databaseName);
+                await eventListener.AssertRegEx(nameof(databaseName),databaseName,@"^.*$");
                 await eventListener.AssertNotNull(nameof(subscriptionId),subscriptionId);
+                await eventListener.AssertMinimumLength(nameof(subscriptionId),subscriptionId,1);
                 await eventListener.AssertNotNull(nameof(body), body);
                 await eventListener.AssertObjectIsValid(nameof(body), body);
             }
         }
 
         /// <summary>Deletes the data connection with the given name.</summary>
-        /// <param name="resourceGroupName">The name of the resource group containing the Kusto cluster.</param>
+        /// <param name="resourceGroupName">The name of the resource group. The name is case insensitive.</param>
         /// <param name="clusterName">The name of the Kusto cluster.</param>
         /// <param name="databaseName">The name of the database in the Kusto cluster.</param>
         /// <param name="dataConnectionName">The name of the data connection.</param>
-        /// <param name="subscriptionId">Gets subscription credentials which uniquely identify Microsoft Azure subscription. The subscription
-        /// ID forms part of the URI for every service call.</param>
+        /// <param name="subscriptionId">The ID of the target subscription.</param>
         /// <param name="onOk">a delegate that is called when the remote service returns 200 (OK).</param>
         /// <param name="onNoContent">a delegate that is called when the remote service returns 204 (NoContent).</param>
         /// <param name="onDefault">a delegate that is called when the remote service returns default (any response code not handled
@@ -7081,9 +7434,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Kusto
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        public async global::System.Threading.Tasks.Task DataConnectionsDelete(string resourceGroupName, string clusterName, string databaseName, string dataConnectionName, string subscriptionId, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task> onNoContent, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api20221229.ICloudError>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Kusto.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Kusto.Runtime.ISendAsync sender)
+        public async global::System.Threading.Tasks.Task DataConnectionsDelete(string resourceGroupName, string clusterName, string databaseName, string dataConnectionName, string subscriptionId, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task> onNoContent, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api30.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Kusto.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Kusto.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2022-12-29";
+            var apiVersion = @"2023-08-15";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -7127,9 +7480,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Kusto
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        public async global::System.Threading.Tasks.Task DataConnectionsDeleteViaIdentity(global::System.String viaIdentity, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task> onNoContent, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api20221229.ICloudError>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Kusto.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Kusto.Runtime.ISendAsync sender)
+        public async global::System.Threading.Tasks.Task DataConnectionsDeleteViaIdentity(global::System.String viaIdentity, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task> onNoContent, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api30.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Kusto.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Kusto.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2022-12-29";
+            var apiVersion = @"2023-08-15";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -7187,7 +7540,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Kusto
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        internal async global::System.Threading.Tasks.Task DataConnectionsDelete_Call(global::System.Net.Http.HttpRequestMessage request, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task> onNoContent, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api20221229.ICloudError>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Kusto.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Kusto.Runtime.ISendAsync sender)
+        internal async global::System.Threading.Tasks.Task DataConnectionsDelete_Call(global::System.Net.Http.HttpRequestMessage request, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task> onNoContent, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api30.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Kusto.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Kusto.Runtime.ISendAsync sender)
         {
             using( NoSynchronizationContext )
             {
@@ -7317,7 +7670,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Kusto
                         default:
                         {
                             await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Kusto.Runtime.Events.BeforeResponseDispatch, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
-                            await onDefault(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api20221229.CloudError.FromJson(Microsoft.Azure.PowerShell.Cmdlets.Kusto.Runtime.Json.JsonNode.Parse(body.Result)) ));
+                            await onDefault(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api30.ErrorResponse.FromJson(Microsoft.Azure.PowerShell.Cmdlets.Kusto.Runtime.Json.JsonNode.Parse(body.Result)) ));
                             break;
                         }
                     }
@@ -7336,12 +7689,11 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Kusto
         /// Validation method for <see cref="DataConnectionsDelete" /> method. Call this like the actual call, but you will get validation
         /// events back.
         /// </summary>
-        /// <param name="resourceGroupName">The name of the resource group containing the Kusto cluster.</param>
+        /// <param name="resourceGroupName">The name of the resource group. The name is case insensitive.</param>
         /// <param name="clusterName">The name of the Kusto cluster.</param>
         /// <param name="databaseName">The name of the database in the Kusto cluster.</param>
         /// <param name="dataConnectionName">The name of the data connection.</param>
-        /// <param name="subscriptionId">Gets subscription credentials which uniquely identify Microsoft Azure subscription. The subscription
-        /// ID forms part of the URI for every service call.</param>
+        /// <param name="subscriptionId">The ID of the target subscription.</param>
         /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.Kusto.Runtime.IEventListener" /> instance that will receive events.</param>
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
@@ -7351,20 +7703,25 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Kusto
             using( NoSynchronizationContext )
             {
                 await eventListener.AssertNotNull(nameof(resourceGroupName),resourceGroupName);
+                await eventListener.AssertMinimumLength(nameof(resourceGroupName),resourceGroupName,1);
+                await eventListener.AssertMaximumLength(nameof(resourceGroupName),resourceGroupName,90);
                 await eventListener.AssertNotNull(nameof(clusterName),clusterName);
+                await eventListener.AssertRegEx(nameof(clusterName),clusterName,@"^.*$");
                 await eventListener.AssertNotNull(nameof(databaseName),databaseName);
+                await eventListener.AssertRegEx(nameof(databaseName),databaseName,@"^.*$");
                 await eventListener.AssertNotNull(nameof(dataConnectionName),dataConnectionName);
+                await eventListener.AssertRegEx(nameof(dataConnectionName),dataConnectionName,@"^.*$");
                 await eventListener.AssertNotNull(nameof(subscriptionId),subscriptionId);
+                await eventListener.AssertMinimumLength(nameof(subscriptionId),subscriptionId,1);
             }
         }
 
         /// <summary>Returns a data connection.</summary>
-        /// <param name="resourceGroupName">The name of the resource group containing the Kusto cluster.</param>
+        /// <param name="resourceGroupName">The name of the resource group. The name is case insensitive.</param>
         /// <param name="clusterName">The name of the Kusto cluster.</param>
         /// <param name="databaseName">The name of the database in the Kusto cluster.</param>
         /// <param name="dataConnectionName">The name of the data connection.</param>
-        /// <param name="subscriptionId">Gets subscription credentials which uniquely identify Microsoft Azure subscription. The subscription
-        /// ID forms part of the URI for every service call.</param>
+        /// <param name="subscriptionId">The ID of the target subscription.</param>
         /// <param name="onOk">a delegate that is called when the remote service returns 200 (OK).</param>
         /// <param name="onDefault">a delegate that is called when the remote service returns default (any response code not handled
         /// elsewhere).</param>
@@ -7373,9 +7730,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Kusto
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        public async global::System.Threading.Tasks.Task DataConnectionsGet(string resourceGroupName, string clusterName, string databaseName, string dataConnectionName, string subscriptionId, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api20221229.IDataConnection>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api20221229.ICloudError>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Kusto.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Kusto.Runtime.ISendAsync sender)
+        public async global::System.Threading.Tasks.Task DataConnectionsGet(string resourceGroupName, string clusterName, string databaseName, string dataConnectionName, string subscriptionId, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api20230815.IDataConnection>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api30.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Kusto.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Kusto.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2022-12-29";
+            var apiVersion = @"2023-08-15";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -7418,9 +7775,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Kusto
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        public async global::System.Threading.Tasks.Task DataConnectionsGetViaIdentity(global::System.String viaIdentity, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api20221229.IDataConnection>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api20221229.ICloudError>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Kusto.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Kusto.Runtime.ISendAsync sender)
+        public async global::System.Threading.Tasks.Task DataConnectionsGetViaIdentity(global::System.String viaIdentity, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api20230815.IDataConnection>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api30.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Kusto.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Kusto.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2022-12-29";
+            var apiVersion = @"2023-08-15";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -7477,7 +7834,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Kusto
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        internal async global::System.Threading.Tasks.Task DataConnectionsGet_Call(global::System.Net.Http.HttpRequestMessage request, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api20221229.IDataConnection>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api20221229.ICloudError>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Kusto.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Kusto.Runtime.ISendAsync sender)
+        internal async global::System.Threading.Tasks.Task DataConnectionsGet_Call(global::System.Net.Http.HttpRequestMessage request, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api20230815.IDataConnection>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api30.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Kusto.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Kusto.Runtime.ISendAsync sender)
         {
             using( NoSynchronizationContext )
             {
@@ -7495,13 +7852,13 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Kusto
                         case global::System.Net.HttpStatusCode.OK:
                         {
                             await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Kusto.Runtime.Events.BeforeResponseDispatch, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
-                            await onOk(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api20221229.DataConnection.FromJson(Microsoft.Azure.PowerShell.Cmdlets.Kusto.Runtime.Json.JsonNode.Parse(body.Result)) .ReadHeaders(_response.Headers)));
+                            await onOk(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api20230815.DataConnection.FromJson(Microsoft.Azure.PowerShell.Cmdlets.Kusto.Runtime.Json.JsonNode.Parse(body.Result)) ));
                             break;
                         }
                         default:
                         {
                             await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Kusto.Runtime.Events.BeforeResponseDispatch, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
-                            await onDefault(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api20221229.CloudError.FromJson(Microsoft.Azure.PowerShell.Cmdlets.Kusto.Runtime.Json.JsonNode.Parse(body.Result)) ));
+                            await onDefault(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api30.ErrorResponse.FromJson(Microsoft.Azure.PowerShell.Cmdlets.Kusto.Runtime.Json.JsonNode.Parse(body.Result)) ));
                             break;
                         }
                     }
@@ -7520,12 +7877,11 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Kusto
         /// Validation method for <see cref="DataConnectionsGet" /> method. Call this like the actual call, but you will get validation
         /// events back.
         /// </summary>
-        /// <param name="resourceGroupName">The name of the resource group containing the Kusto cluster.</param>
+        /// <param name="resourceGroupName">The name of the resource group. The name is case insensitive.</param>
         /// <param name="clusterName">The name of the Kusto cluster.</param>
         /// <param name="databaseName">The name of the database in the Kusto cluster.</param>
         /// <param name="dataConnectionName">The name of the data connection.</param>
-        /// <param name="subscriptionId">Gets subscription credentials which uniquely identify Microsoft Azure subscription. The subscription
-        /// ID forms part of the URI for every service call.</param>
+        /// <param name="subscriptionId">The ID of the target subscription.</param>
         /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.Kusto.Runtime.IEventListener" /> instance that will receive events.</param>
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
@@ -7535,19 +7891,24 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Kusto
             using( NoSynchronizationContext )
             {
                 await eventListener.AssertNotNull(nameof(resourceGroupName),resourceGroupName);
+                await eventListener.AssertMinimumLength(nameof(resourceGroupName),resourceGroupName,1);
+                await eventListener.AssertMaximumLength(nameof(resourceGroupName),resourceGroupName,90);
                 await eventListener.AssertNotNull(nameof(clusterName),clusterName);
+                await eventListener.AssertRegEx(nameof(clusterName),clusterName,@"^.*$");
                 await eventListener.AssertNotNull(nameof(databaseName),databaseName);
+                await eventListener.AssertRegEx(nameof(databaseName),databaseName,@"^.*$");
                 await eventListener.AssertNotNull(nameof(dataConnectionName),dataConnectionName);
+                await eventListener.AssertRegEx(nameof(dataConnectionName),dataConnectionName,@"^.*$");
                 await eventListener.AssertNotNull(nameof(subscriptionId),subscriptionId);
+                await eventListener.AssertMinimumLength(nameof(subscriptionId),subscriptionId,1);
             }
         }
 
         /// <summary>Returns the list of data connections of the given Kusto database.</summary>
-        /// <param name="resourceGroupName">The name of the resource group containing the Kusto cluster.</param>
+        /// <param name="resourceGroupName">The name of the resource group. The name is case insensitive.</param>
         /// <param name="clusterName">The name of the Kusto cluster.</param>
         /// <param name="databaseName">The name of the database in the Kusto cluster.</param>
-        /// <param name="subscriptionId">Gets subscription credentials which uniquely identify Microsoft Azure subscription. The subscription
-        /// ID forms part of the URI for every service call.</param>
+        /// <param name="subscriptionId">The ID of the target subscription.</param>
         /// <param name="onOk">a delegate that is called when the remote service returns 200 (OK).</param>
         /// <param name="onDefault">a delegate that is called when the remote service returns default (any response code not handled
         /// elsewhere).</param>
@@ -7556,9 +7917,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Kusto
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        public async global::System.Threading.Tasks.Task DataConnectionsListByDatabase(string resourceGroupName, string clusterName, string databaseName, string subscriptionId, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api20221229.IDataConnectionListResult>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api20221229.ICloudError>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Kusto.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Kusto.Runtime.ISendAsync sender)
+        public async global::System.Threading.Tasks.Task DataConnectionsListByDatabase(string resourceGroupName, string clusterName, string databaseName, string subscriptionId, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api20230815.IDataConnectionListResult>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api30.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Kusto.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Kusto.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2022-12-29";
+            var apiVersion = @"2023-08-15";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -7600,9 +7961,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Kusto
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        public async global::System.Threading.Tasks.Task DataConnectionsListByDatabaseViaIdentity(global::System.String viaIdentity, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api20221229.IDataConnectionListResult>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api20221229.ICloudError>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Kusto.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Kusto.Runtime.ISendAsync sender)
+        public async global::System.Threading.Tasks.Task DataConnectionsListByDatabaseViaIdentity(global::System.String viaIdentity, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api20230815.IDataConnectionListResult>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api30.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Kusto.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Kusto.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2022-12-29";
+            var apiVersion = @"2023-08-15";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -7657,7 +8018,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Kusto
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        internal async global::System.Threading.Tasks.Task DataConnectionsListByDatabase_Call(global::System.Net.Http.HttpRequestMessage request, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api20221229.IDataConnectionListResult>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api20221229.ICloudError>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Kusto.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Kusto.Runtime.ISendAsync sender)
+        internal async global::System.Threading.Tasks.Task DataConnectionsListByDatabase_Call(global::System.Net.Http.HttpRequestMessage request, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api20230815.IDataConnectionListResult>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api30.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Kusto.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Kusto.Runtime.ISendAsync sender)
         {
             using( NoSynchronizationContext )
             {
@@ -7675,13 +8036,13 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Kusto
                         case global::System.Net.HttpStatusCode.OK:
                         {
                             await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Kusto.Runtime.Events.BeforeResponseDispatch, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
-                            await onOk(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api20221229.DataConnectionListResult.FromJson(Microsoft.Azure.PowerShell.Cmdlets.Kusto.Runtime.Json.JsonNode.Parse(body.Result)) ));
+                            await onOk(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api20230815.DataConnectionListResult.FromJson(Microsoft.Azure.PowerShell.Cmdlets.Kusto.Runtime.Json.JsonNode.Parse(body.Result)) ));
                             break;
                         }
                         default:
                         {
                             await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Kusto.Runtime.Events.BeforeResponseDispatch, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
-                            await onDefault(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api20221229.CloudError.FromJson(Microsoft.Azure.PowerShell.Cmdlets.Kusto.Runtime.Json.JsonNode.Parse(body.Result)) ));
+                            await onDefault(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api30.ErrorResponse.FromJson(Microsoft.Azure.PowerShell.Cmdlets.Kusto.Runtime.Json.JsonNode.Parse(body.Result)) ));
                             break;
                         }
                     }
@@ -7700,11 +8061,10 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Kusto
         /// Validation method for <see cref="DataConnectionsListByDatabase" /> method. Call this like the actual call, but you will
         /// get validation events back.
         /// </summary>
-        /// <param name="resourceGroupName">The name of the resource group containing the Kusto cluster.</param>
+        /// <param name="resourceGroupName">The name of the resource group. The name is case insensitive.</param>
         /// <param name="clusterName">The name of the Kusto cluster.</param>
         /// <param name="databaseName">The name of the database in the Kusto cluster.</param>
-        /// <param name="subscriptionId">Gets subscription credentials which uniquely identify Microsoft Azure subscription. The subscription
-        /// ID forms part of the URI for every service call.</param>
+        /// <param name="subscriptionId">The ID of the target subscription.</param>
         /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.Kusto.Runtime.IEventListener" /> instance that will receive events.</param>
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
@@ -7714,19 +8074,23 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Kusto
             using( NoSynchronizationContext )
             {
                 await eventListener.AssertNotNull(nameof(resourceGroupName),resourceGroupName);
+                await eventListener.AssertMinimumLength(nameof(resourceGroupName),resourceGroupName,1);
+                await eventListener.AssertMaximumLength(nameof(resourceGroupName),resourceGroupName,90);
                 await eventListener.AssertNotNull(nameof(clusterName),clusterName);
+                await eventListener.AssertRegEx(nameof(clusterName),clusterName,@"^.*$");
                 await eventListener.AssertNotNull(nameof(databaseName),databaseName);
+                await eventListener.AssertRegEx(nameof(databaseName),databaseName,@"^.*$");
                 await eventListener.AssertNotNull(nameof(subscriptionId),subscriptionId);
+                await eventListener.AssertMinimumLength(nameof(subscriptionId),subscriptionId,1);
             }
         }
 
         /// <summary>Updates a data connection.</summary>
-        /// <param name="resourceGroupName">The name of the resource group containing the Kusto cluster.</param>
+        /// <param name="resourceGroupName">The name of the resource group. The name is case insensitive.</param>
         /// <param name="clusterName">The name of the Kusto cluster.</param>
         /// <param name="databaseName">The name of the database in the Kusto cluster.</param>
         /// <param name="dataConnectionName">The name of the data connection.</param>
-        /// <param name="subscriptionId">Gets subscription credentials which uniquely identify Microsoft Azure subscription. The subscription
-        /// ID forms part of the URI for every service call.</param>
+        /// <param name="subscriptionId">The ID of the target subscription.</param>
         /// <param name="body">The data connection parameters supplied to the Update operation.</param>
         /// <param name="onOk">a delegate that is called when the remote service returns 200 (OK).</param>
         /// <param name="onDefault">a delegate that is called when the remote service returns default (any response code not handled
@@ -7736,9 +8100,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Kusto
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        public async global::System.Threading.Tasks.Task DataConnectionsUpdate(string resourceGroupName, string clusterName, string databaseName, string dataConnectionName, string subscriptionId, Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api20221229.IDataConnection body, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api20221229.IDataConnection>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api20221229.ICloudError>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Kusto.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Kusto.Runtime.ISendAsync sender)
+        public async global::System.Threading.Tasks.Task DataConnectionsUpdate(string resourceGroupName, string clusterName, string databaseName, string dataConnectionName, string subscriptionId, Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api20230815.IDataConnection body, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api20230815.IDataConnection>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api30.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Kusto.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Kusto.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2022-12-29";
+            var apiVersion = @"2023-08-15";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -7786,9 +8150,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Kusto
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        public async global::System.Threading.Tasks.Task DataConnectionsUpdateViaIdentity(global::System.String viaIdentity, Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api20221229.IDataConnection body, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api20221229.IDataConnection>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api20221229.ICloudError>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Kusto.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Kusto.Runtime.ISendAsync sender)
+        public async global::System.Threading.Tasks.Task DataConnectionsUpdateViaIdentity(global::System.String viaIdentity, Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api20230815.IDataConnection body, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api20230815.IDataConnection>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api30.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Kusto.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Kusto.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2022-12-29";
+            var apiVersion = @"2023-08-15";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -7849,7 +8213,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Kusto
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        internal async global::System.Threading.Tasks.Task DataConnectionsUpdate_Call(global::System.Net.Http.HttpRequestMessage request, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api20221229.IDataConnection>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api20221229.ICloudError>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Kusto.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Kusto.Runtime.ISendAsync sender)
+        internal async global::System.Threading.Tasks.Task DataConnectionsUpdate_Call(global::System.Net.Http.HttpRequestMessage request, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api20230815.IDataConnection>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api30.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Kusto.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Kusto.Runtime.ISendAsync sender)
         {
             using( NoSynchronizationContext )
             {
@@ -7966,13 +8330,13 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Kusto
                         case global::System.Net.HttpStatusCode.OK:
                         {
                             await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Kusto.Runtime.Events.BeforeResponseDispatch, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
-                            await onOk(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api20221229.DataConnection.FromJson(Microsoft.Azure.PowerShell.Cmdlets.Kusto.Runtime.Json.JsonNode.Parse(body.Result)) .ReadHeaders(_response.Headers)));
+                            await onOk(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api20230815.DataConnection.FromJson(Microsoft.Azure.PowerShell.Cmdlets.Kusto.Runtime.Json.JsonNode.Parse(body.Result)) ));
                             break;
                         }
                         default:
                         {
                             await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Kusto.Runtime.Events.BeforeResponseDispatch, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
-                            await onDefault(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api20221229.CloudError.FromJson(Microsoft.Azure.PowerShell.Cmdlets.Kusto.Runtime.Json.JsonNode.Parse(body.Result)) ));
+                            await onDefault(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api30.ErrorResponse.FromJson(Microsoft.Azure.PowerShell.Cmdlets.Kusto.Runtime.Json.JsonNode.Parse(body.Result)) ));
                             break;
                         }
                     }
@@ -7991,26 +8355,229 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Kusto
         /// Validation method for <see cref="DataConnectionsUpdate" /> method. Call this like the actual call, but you will get validation
         /// events back.
         /// </summary>
-        /// <param name="resourceGroupName">The name of the resource group containing the Kusto cluster.</param>
+        /// <param name="resourceGroupName">The name of the resource group. The name is case insensitive.</param>
         /// <param name="clusterName">The name of the Kusto cluster.</param>
         /// <param name="databaseName">The name of the database in the Kusto cluster.</param>
         /// <param name="dataConnectionName">The name of the data connection.</param>
-        /// <param name="subscriptionId">Gets subscription credentials which uniquely identify Microsoft Azure subscription. The subscription
-        /// ID forms part of the URI for every service call.</param>
+        /// <param name="subscriptionId">The ID of the target subscription.</param>
         /// <param name="body">The data connection parameters supplied to the Update operation.</param>
         /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.Kusto.Runtime.IEventListener" /> instance that will receive events.</param>
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        internal async global::System.Threading.Tasks.Task DataConnectionsUpdate_Validate(string resourceGroupName, string clusterName, string databaseName, string dataConnectionName, string subscriptionId, Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api20221229.IDataConnection body, Microsoft.Azure.PowerShell.Cmdlets.Kusto.Runtime.IEventListener eventListener)
+        internal async global::System.Threading.Tasks.Task DataConnectionsUpdate_Validate(string resourceGroupName, string clusterName, string databaseName, string dataConnectionName, string subscriptionId, Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api20230815.IDataConnection body, Microsoft.Azure.PowerShell.Cmdlets.Kusto.Runtime.IEventListener eventListener)
         {
             using( NoSynchronizationContext )
             {
                 await eventListener.AssertNotNull(nameof(resourceGroupName),resourceGroupName);
+                await eventListener.AssertMinimumLength(nameof(resourceGroupName),resourceGroupName,1);
+                await eventListener.AssertMaximumLength(nameof(resourceGroupName),resourceGroupName,90);
                 await eventListener.AssertNotNull(nameof(clusterName),clusterName);
+                await eventListener.AssertRegEx(nameof(clusterName),clusterName,@"^.*$");
                 await eventListener.AssertNotNull(nameof(databaseName),databaseName);
+                await eventListener.AssertRegEx(nameof(databaseName),databaseName,@"^.*$");
                 await eventListener.AssertNotNull(nameof(dataConnectionName),dataConnectionName);
+                await eventListener.AssertRegEx(nameof(dataConnectionName),dataConnectionName,@"^.*$");
                 await eventListener.AssertNotNull(nameof(subscriptionId),subscriptionId);
+                await eventListener.AssertMinimumLength(nameof(subscriptionId),subscriptionId,1);
+                await eventListener.AssertNotNull(nameof(body), body);
+                await eventListener.AssertObjectIsValid(nameof(body), body);
+            }
+        }
+
+        /// <summary>
+        /// Generates an invitation token that allows attaching a follower database to this database.
+        /// </summary>
+        /// <param name="subscriptionId">The ID of the target subscription.</param>
+        /// <param name="resourceGroupName">The name of the resource group. The name is case insensitive.</param>
+        /// <param name="clusterName">The name of the Kusto cluster.</param>
+        /// <param name="databaseName">The name of the database in the Kusto cluster.</param>
+        /// <param name="body">The follower invitation request parameters.</param>
+        /// <param name="onOk">a delegate that is called when the remote service returns 200 (OK).</param>
+        /// <param name="onDefault">a delegate that is called when the remote service returns default (any response code not handled
+        /// elsewhere).</param>
+        /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.Kusto.Runtime.IEventListener" /> instance that will receive events.</param>
+        /// <param name="sender">an instance of an Microsoft.Azure.PowerShell.Cmdlets.Kusto.Runtime.ISendAsync pipeline to use to make the request.</param>
+        /// <returns>
+        /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
+        /// </returns>
+        public async global::System.Threading.Tasks.Task DatabaseInviteFollower(string subscriptionId, string resourceGroupName, string clusterName, string databaseName, Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api20230815.IDatabaseInviteFollowerRequest body, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api20230815.IDatabaseInviteFollowerResult>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api30.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Kusto.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Kusto.Runtime.ISendAsync sender)
+        {
+            var apiVersion = @"2023-08-15";
+            // Constant Parameters
+            using( NoSynchronizationContext )
+            {
+                // construct URL
+                var pathAndQuery = global::System.Text.RegularExpressions.Regex.Replace(
+                        "/subscriptions/"
+                        + global::System.Uri.EscapeDataString(subscriptionId)
+                        + "/resourceGroups/"
+                        + global::System.Uri.EscapeDataString(resourceGroupName)
+                        + "/providers/Microsoft.Kusto/Clusters/"
+                        + global::System.Uri.EscapeDataString(clusterName)
+                        + "/Databases/"
+                        + global::System.Uri.EscapeDataString(databaseName)
+                        + "/inviteFollower"
+                        + "?"
+                        + "api-version=" + global::System.Uri.EscapeDataString(apiVersion)
+                        ,"\\?&*$|&*$|(\\?)&+|(&)&+","$1$2");
+
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Kusto.Runtime.Events.URLCreated, pathAndQuery); if( eventListener.Token.IsCancellationRequested ) { return; }
+
+                // generate request object
+                var _url = new global::System.Uri($"https://management.azure.com{pathAndQuery}");
+                var request =  new global::System.Net.Http.HttpRequestMessage(Microsoft.Azure.PowerShell.Cmdlets.Kusto.Runtime.Method.Post, _url);
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Kusto.Runtime.Events.RequestCreated, request.RequestUri.PathAndQuery); if( eventListener.Token.IsCancellationRequested ) { return; }
+
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Kusto.Runtime.Events.HeaderParametersAdded); if( eventListener.Token.IsCancellationRequested ) { return; }
+                // set body content
+                request.Content = new global::System.Net.Http.StringContent(null != body ? body.ToJson(null).ToString() : @"{}", global::System.Text.Encoding.UTF8);
+                request.Content.Headers.ContentType = global::System.Net.Http.Headers.MediaTypeHeaderValue.Parse("application/json");
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Kusto.Runtime.Events.BodyContentSet); if( eventListener.Token.IsCancellationRequested ) { return; }
+                // make the call
+                await this.DatabaseInviteFollower_Call(request,onOk,onDefault,eventListener,sender);
+            }
+        }
+
+        /// <summary>
+        /// Generates an invitation token that allows attaching a follower database to this database.
+        /// </summary>
+        /// <param name="viaIdentity"></param>
+        /// <param name="body">The follower invitation request parameters.</param>
+        /// <param name="onOk">a delegate that is called when the remote service returns 200 (OK).</param>
+        /// <param name="onDefault">a delegate that is called when the remote service returns default (any response code not handled
+        /// elsewhere).</param>
+        /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.Kusto.Runtime.IEventListener" /> instance that will receive events.</param>
+        /// <param name="sender">an instance of an Microsoft.Azure.PowerShell.Cmdlets.Kusto.Runtime.ISendAsync pipeline to use to make the request.</param>
+        /// <returns>
+        /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
+        /// </returns>
+        public async global::System.Threading.Tasks.Task DatabaseInviteFollowerViaIdentity(global::System.String viaIdentity, Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api20230815.IDatabaseInviteFollowerRequest body, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api20230815.IDatabaseInviteFollowerResult>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api30.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Kusto.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Kusto.Runtime.ISendAsync sender)
+        {
+            var apiVersion = @"2023-08-15";
+            // Constant Parameters
+            using( NoSynchronizationContext )
+            {
+                // verify that Identity format is an exact match for uri
+
+                var _match = new global::System.Text.RegularExpressions.Regex("^/subscriptions/(?<subscriptionId>[^/]+)/resourceGroups/(?<resourceGroupName>[^/]+)/providers/Microsoft.Kusto/Clusters/(?<clusterName>[^/]+)/Databases/(?<databaseName>[^/]+)$", global::System.Text.RegularExpressions.RegexOptions.IgnoreCase).Match(viaIdentity);
+                if (!_match.Success)
+                {
+                    throw new global::System.Exception("Invalid identity for URI '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Kusto/Clusters/{clusterName}/Databases/{databaseName}/inviteFollower'");
+                }
+
+                // replace URI parameters with values from identity
+                var subscriptionId = _match.Groups["subscriptionId"].Value;
+                var resourceGroupName = _match.Groups["resourceGroupName"].Value;
+                var clusterName = _match.Groups["clusterName"].Value;
+                var databaseName = _match.Groups["databaseName"].Value;
+                // construct URL
+                var pathAndQuery = global::System.Text.RegularExpressions.Regex.Replace(
+                        "/subscriptions/"
+                        + subscriptionId
+                        + "/resourceGroups/"
+                        + resourceGroupName
+                        + "/providers/Microsoft.Kusto/Clusters/"
+                        + clusterName
+                        + "/Databases/"
+                        + databaseName
+                        + "/inviteFollower"
+                        + "?"
+                        + "api-version=" + global::System.Uri.EscapeDataString(apiVersion)
+                        ,"\\?&*$|&*$|(\\?)&+|(&)&+","$1$2");
+
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Kusto.Runtime.Events.URLCreated, pathAndQuery); if( eventListener.Token.IsCancellationRequested ) { return; }
+
+                // generate request object
+                var _url = new global::System.Uri($"https://management.azure.com{pathAndQuery}");
+                var request =  new global::System.Net.Http.HttpRequestMessage(Microsoft.Azure.PowerShell.Cmdlets.Kusto.Runtime.Method.Post, _url);
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Kusto.Runtime.Events.RequestCreated, request.RequestUri.PathAndQuery); if( eventListener.Token.IsCancellationRequested ) { return; }
+
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Kusto.Runtime.Events.HeaderParametersAdded); if( eventListener.Token.IsCancellationRequested ) { return; }
+                // set body content
+                request.Content = new global::System.Net.Http.StringContent(null != body ? body.ToJson(null).ToString() : @"{}", global::System.Text.Encoding.UTF8);
+                request.Content.Headers.ContentType = global::System.Net.Http.Headers.MediaTypeHeaderValue.Parse("application/json");
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Kusto.Runtime.Events.BodyContentSet); if( eventListener.Token.IsCancellationRequested ) { return; }
+                // make the call
+                await this.DatabaseInviteFollower_Call(request,onOk,onDefault,eventListener,sender);
+            }
+        }
+
+        /// <summary>Actual wire call for <see cref="DatabaseInviteFollower" /> method.</summary>
+        /// <param name="request">the prepared HttpRequestMessage to send.</param>
+        /// <param name="onOk">a delegate that is called when the remote service returns 200 (OK).</param>
+        /// <param name="onDefault">a delegate that is called when the remote service returns default (any response code not handled
+        /// elsewhere).</param>
+        /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.Kusto.Runtime.IEventListener" /> instance that will receive events.</param>
+        /// <param name="sender">an instance of an Microsoft.Azure.PowerShell.Cmdlets.Kusto.Runtime.ISendAsync pipeline to use to make the request.</param>
+        /// <returns>
+        /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
+        /// </returns>
+        internal async global::System.Threading.Tasks.Task DatabaseInviteFollower_Call(global::System.Net.Http.HttpRequestMessage request, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api20230815.IDatabaseInviteFollowerResult>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api30.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Kusto.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Kusto.Runtime.ISendAsync sender)
+        {
+            using( NoSynchronizationContext )
+            {
+                global::System.Net.Http.HttpResponseMessage _response = null;
+                try
+                {
+                    var sendTask = sender.SendAsync(request, eventListener);
+                    await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Kusto.Runtime.Events.BeforeCall, request); if( eventListener.Token.IsCancellationRequested ) { return; }
+                    _response = await sendTask;
+                    await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Kusto.Runtime.Events.ResponseCreated, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
+                    var _contentType = _response.Content.Headers.ContentType?.MediaType;
+
+                    switch ( _response.StatusCode )
+                    {
+                        case global::System.Net.HttpStatusCode.OK:
+                        {
+                            await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Kusto.Runtime.Events.BeforeResponseDispatch, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
+                            await onOk(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api20230815.DatabaseInviteFollowerResult.FromJson(Microsoft.Azure.PowerShell.Cmdlets.Kusto.Runtime.Json.JsonNode.Parse(body.Result)) ));
+                            break;
+                        }
+                        default:
+                        {
+                            await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Kusto.Runtime.Events.BeforeResponseDispatch, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
+                            await onDefault(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api30.ErrorResponse.FromJson(Microsoft.Azure.PowerShell.Cmdlets.Kusto.Runtime.Json.JsonNode.Parse(body.Result)) ));
+                            break;
+                        }
+                    }
+                }
+                finally
+                {
+                    // finally statements
+                    await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Kusto.Runtime.Events.Finally, request, _response);
+                    _response?.Dispose();
+                    request?.Dispose();
+                }
+            }
+        }
+
+        /// <summary>
+        /// Validation method for <see cref="DatabaseInviteFollower" /> method. Call this like the actual call, but you will get validation
+        /// events back.
+        /// </summary>
+        /// <param name="subscriptionId">The ID of the target subscription.</param>
+        /// <param name="resourceGroupName">The name of the resource group. The name is case insensitive.</param>
+        /// <param name="clusterName">The name of the Kusto cluster.</param>
+        /// <param name="databaseName">The name of the database in the Kusto cluster.</param>
+        /// <param name="body">The follower invitation request parameters.</param>
+        /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.Kusto.Runtime.IEventListener" /> instance that will receive events.</param>
+        /// <returns>
+        /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
+        /// </returns>
+        internal async global::System.Threading.Tasks.Task DatabaseInviteFollower_Validate(string subscriptionId, string resourceGroupName, string clusterName, string databaseName, Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api20230815.IDatabaseInviteFollowerRequest body, Microsoft.Azure.PowerShell.Cmdlets.Kusto.Runtime.IEventListener eventListener)
+        {
+            using( NoSynchronizationContext )
+            {
+                await eventListener.AssertNotNull(nameof(subscriptionId),subscriptionId);
+                await eventListener.AssertMinimumLength(nameof(subscriptionId),subscriptionId,1);
+                await eventListener.AssertNotNull(nameof(resourceGroupName),resourceGroupName);
+                await eventListener.AssertMinimumLength(nameof(resourceGroupName),resourceGroupName,1);
+                await eventListener.AssertMaximumLength(nameof(resourceGroupName),resourceGroupName,90);
+                await eventListener.AssertNotNull(nameof(clusterName),clusterName);
+                await eventListener.AssertRegEx(nameof(clusterName),clusterName,@"^.*$");
+                await eventListener.AssertNotNull(nameof(databaseName),databaseName);
+                await eventListener.AssertRegEx(nameof(databaseName),databaseName,@"^.*$");
                 await eventListener.AssertNotNull(nameof(body), body);
                 await eventListener.AssertObjectIsValid(nameof(body), body);
             }
@@ -8019,11 +8586,10 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Kusto
         /// <summary>
         /// Checks that the database principal assignment is valid and is not already in use.
         /// </summary>
-        /// <param name="resourceGroupName">The name of the resource group containing the Kusto cluster.</param>
+        /// <param name="resourceGroupName">The name of the resource group. The name is case insensitive.</param>
         /// <param name="clusterName">The name of the Kusto cluster.</param>
         /// <param name="databaseName">The name of the database in the Kusto cluster.</param>
-        /// <param name="subscriptionId">Gets subscription credentials which uniquely identify Microsoft Azure subscription. The subscription
-        /// ID forms part of the URI for every service call.</param>
+        /// <param name="subscriptionId">The ID of the target subscription.</param>
         /// <param name="body">The name of the resource.</param>
         /// <param name="onOk">a delegate that is called when the remote service returns 200 (OK).</param>
         /// <param name="onDefault">a delegate that is called when the remote service returns default (any response code not handled
@@ -8033,9 +8599,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Kusto
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        public async global::System.Threading.Tasks.Task DatabasePrincipalAssignmentsCheckNameAvailability(string resourceGroupName, string clusterName, string databaseName, string subscriptionId, Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api20221229.IDatabasePrincipalAssignmentCheckNameRequest body, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api20221229.ICheckNameResult>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api20221229.ICloudError>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Kusto.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Kusto.Runtime.ISendAsync sender)
+        public async global::System.Threading.Tasks.Task DatabasePrincipalAssignmentsCheckNameAvailability(string resourceGroupName, string clusterName, string databaseName, string subscriptionId, Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api20230815.IDatabasePrincipalAssignmentCheckNameRequest body, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api20230815.ICheckNameResult>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api30.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Kusto.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Kusto.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2022-12-29";
+            var apiVersion = @"2023-08-15";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -8084,9 +8650,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Kusto
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        public async global::System.Threading.Tasks.Task DatabasePrincipalAssignmentsCheckNameAvailabilityViaIdentity(global::System.String viaIdentity, Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api20221229.IDatabasePrincipalAssignmentCheckNameRequest body, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api20221229.ICheckNameResult>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api20221229.ICloudError>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Kusto.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Kusto.Runtime.ISendAsync sender)
+        public async global::System.Threading.Tasks.Task DatabasePrincipalAssignmentsCheckNameAvailabilityViaIdentity(global::System.String viaIdentity, Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api20230815.IDatabasePrincipalAssignmentCheckNameRequest body, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api20230815.ICheckNameResult>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api30.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Kusto.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Kusto.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2022-12-29";
+            var apiVersion = @"2023-08-15";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -8147,7 +8713,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Kusto
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        internal async global::System.Threading.Tasks.Task DatabasePrincipalAssignmentsCheckNameAvailability_Call(global::System.Net.Http.HttpRequestMessage request, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api20221229.ICheckNameResult>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api20221229.ICloudError>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Kusto.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Kusto.Runtime.ISendAsync sender)
+        internal async global::System.Threading.Tasks.Task DatabasePrincipalAssignmentsCheckNameAvailability_Call(global::System.Net.Http.HttpRequestMessage request, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api20230815.ICheckNameResult>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api30.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Kusto.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Kusto.Runtime.ISendAsync sender)
         {
             using( NoSynchronizationContext )
             {
@@ -8165,13 +8731,13 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Kusto
                         case global::System.Net.HttpStatusCode.OK:
                         {
                             await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Kusto.Runtime.Events.BeforeResponseDispatch, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
-                            await onOk(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api20221229.CheckNameResult.FromJson(Microsoft.Azure.PowerShell.Cmdlets.Kusto.Runtime.Json.JsonNode.Parse(body.Result)) ));
+                            await onOk(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api20230815.CheckNameResult.FromJson(Microsoft.Azure.PowerShell.Cmdlets.Kusto.Runtime.Json.JsonNode.Parse(body.Result)) ));
                             break;
                         }
                         default:
                         {
                             await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Kusto.Runtime.Events.BeforeResponseDispatch, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
-                            await onDefault(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api20221229.CloudError.FromJson(Microsoft.Azure.PowerShell.Cmdlets.Kusto.Runtime.Json.JsonNode.Parse(body.Result)) ));
+                            await onDefault(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api30.ErrorResponse.FromJson(Microsoft.Azure.PowerShell.Cmdlets.Kusto.Runtime.Json.JsonNode.Parse(body.Result)) ));
                             break;
                         }
                     }
@@ -8190,33 +8756,36 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Kusto
         /// Validation method for <see cref="DatabasePrincipalAssignmentsCheckNameAvailability" /> method. Call this like the actual
         /// call, but you will get validation events back.
         /// </summary>
-        /// <param name="resourceGroupName">The name of the resource group containing the Kusto cluster.</param>
+        /// <param name="resourceGroupName">The name of the resource group. The name is case insensitive.</param>
         /// <param name="clusterName">The name of the Kusto cluster.</param>
         /// <param name="databaseName">The name of the database in the Kusto cluster.</param>
-        /// <param name="subscriptionId">Gets subscription credentials which uniquely identify Microsoft Azure subscription. The subscription
-        /// ID forms part of the URI for every service call.</param>
+        /// <param name="subscriptionId">The ID of the target subscription.</param>
         /// <param name="body">The name of the resource.</param>
         /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.Kusto.Runtime.IEventListener" /> instance that will receive events.</param>
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        internal async global::System.Threading.Tasks.Task DatabasePrincipalAssignmentsCheckNameAvailability_Validate(string resourceGroupName, string clusterName, string databaseName, string subscriptionId, Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api20221229.IDatabasePrincipalAssignmentCheckNameRequest body, Microsoft.Azure.PowerShell.Cmdlets.Kusto.Runtime.IEventListener eventListener)
+        internal async global::System.Threading.Tasks.Task DatabasePrincipalAssignmentsCheckNameAvailability_Validate(string resourceGroupName, string clusterName, string databaseName, string subscriptionId, Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api20230815.IDatabasePrincipalAssignmentCheckNameRequest body, Microsoft.Azure.PowerShell.Cmdlets.Kusto.Runtime.IEventListener eventListener)
         {
             using( NoSynchronizationContext )
             {
                 await eventListener.AssertNotNull(nameof(resourceGroupName),resourceGroupName);
+                await eventListener.AssertMinimumLength(nameof(resourceGroupName),resourceGroupName,1);
+                await eventListener.AssertMaximumLength(nameof(resourceGroupName),resourceGroupName,90);
                 await eventListener.AssertNotNull(nameof(clusterName),clusterName);
+                await eventListener.AssertRegEx(nameof(clusterName),clusterName,@"^.*$");
                 await eventListener.AssertNotNull(nameof(databaseName),databaseName);
+                await eventListener.AssertRegEx(nameof(databaseName),databaseName,@"^.*$");
                 await eventListener.AssertNotNull(nameof(subscriptionId),subscriptionId);
+                await eventListener.AssertMinimumLength(nameof(subscriptionId),subscriptionId,1);
                 await eventListener.AssertNotNull(nameof(body), body);
                 await eventListener.AssertObjectIsValid(nameof(body), body);
             }
         }
 
         /// <summary>Creates a Kusto cluster database principalAssignment.</summary>
-        /// <param name="subscriptionId">Gets subscription credentials which uniquely identify Microsoft Azure subscription. The subscription
-        /// ID forms part of the URI for every service call.</param>
-        /// <param name="resourceGroupName">The name of the resource group containing the Kusto cluster.</param>
+        /// <param name="subscriptionId">The ID of the target subscription.</param>
+        /// <param name="resourceGroupName">The name of the resource group. The name is case insensitive.</param>
         /// <param name="clusterName">The name of the Kusto cluster.</param>
         /// <param name="databaseName">The name of the database in the Kusto cluster.</param>
         /// <param name="principalAssignmentName">The name of the Kusto principalAssignment.</param>
@@ -8229,9 +8798,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Kusto
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        public async global::System.Threading.Tasks.Task DatabasePrincipalAssignmentsCreateOrUpdate(string subscriptionId, string resourceGroupName, string clusterName, string databaseName, string principalAssignmentName, Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api20221229.IDatabasePrincipalAssignment body, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api20221229.IDatabasePrincipalAssignment>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api20221229.ICloudError>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Kusto.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Kusto.Runtime.ISendAsync sender)
+        public async global::System.Threading.Tasks.Task DatabasePrincipalAssignmentsCreateOrUpdate(string subscriptionId, string resourceGroupName, string clusterName, string databaseName, string principalAssignmentName, Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api20230815.IDatabasePrincipalAssignment body, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api20230815.IDatabasePrincipalAssignment>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api30.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Kusto.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Kusto.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2022-12-29";
+            var apiVersion = @"2023-08-15";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -8279,9 +8848,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Kusto
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        public async global::System.Threading.Tasks.Task DatabasePrincipalAssignmentsCreateOrUpdateViaIdentity(global::System.String viaIdentity, Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api20221229.IDatabasePrincipalAssignment body, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api20221229.IDatabasePrincipalAssignment>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api20221229.ICloudError>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Kusto.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Kusto.Runtime.ISendAsync sender)
+        public async global::System.Threading.Tasks.Task DatabasePrincipalAssignmentsCreateOrUpdateViaIdentity(global::System.String viaIdentity, Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api20230815.IDatabasePrincipalAssignment body, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api20230815.IDatabasePrincipalAssignment>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api30.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Kusto.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Kusto.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2022-12-29";
+            var apiVersion = @"2023-08-15";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -8344,7 +8913,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Kusto
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        internal async global::System.Threading.Tasks.Task DatabasePrincipalAssignmentsCreateOrUpdate_Call(global::System.Net.Http.HttpRequestMessage request, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api20221229.IDatabasePrincipalAssignment>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api20221229.ICloudError>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Kusto.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Kusto.Runtime.ISendAsync sender)
+        internal async global::System.Threading.Tasks.Task DatabasePrincipalAssignmentsCreateOrUpdate_Call(global::System.Net.Http.HttpRequestMessage request, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api20230815.IDatabasePrincipalAssignment>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api30.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Kusto.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Kusto.Runtime.ISendAsync sender)
         {
             using( NoSynchronizationContext )
             {
@@ -8461,13 +9030,13 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Kusto
                         case global::System.Net.HttpStatusCode.OK:
                         {
                             await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Kusto.Runtime.Events.BeforeResponseDispatch, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
-                            await onOk(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api20221229.DatabasePrincipalAssignment.FromJson(Microsoft.Azure.PowerShell.Cmdlets.Kusto.Runtime.Json.JsonNode.Parse(body.Result)) ));
+                            await onOk(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api20230815.DatabasePrincipalAssignment.FromJson(Microsoft.Azure.PowerShell.Cmdlets.Kusto.Runtime.Json.JsonNode.Parse(body.Result)) ));
                             break;
                         }
                         default:
                         {
                             await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Kusto.Runtime.Events.BeforeResponseDispatch, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
-                            await onDefault(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api20221229.CloudError.FromJson(Microsoft.Azure.PowerShell.Cmdlets.Kusto.Runtime.Json.JsonNode.Parse(body.Result)) ));
+                            await onDefault(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api30.ErrorResponse.FromJson(Microsoft.Azure.PowerShell.Cmdlets.Kusto.Runtime.Json.JsonNode.Parse(body.Result)) ));
                             break;
                         }
                     }
@@ -8486,9 +9055,8 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Kusto
         /// Validation method for <see cref="DatabasePrincipalAssignmentsCreateOrUpdate" /> method. Call this like the actual call,
         /// but you will get validation events back.
         /// </summary>
-        /// <param name="subscriptionId">Gets subscription credentials which uniquely identify Microsoft Azure subscription. The subscription
-        /// ID forms part of the URI for every service call.</param>
-        /// <param name="resourceGroupName">The name of the resource group containing the Kusto cluster.</param>
+        /// <param name="subscriptionId">The ID of the target subscription.</param>
+        /// <param name="resourceGroupName">The name of the resource group. The name is case insensitive.</param>
         /// <param name="clusterName">The name of the Kusto cluster.</param>
         /// <param name="databaseName">The name of the database in the Kusto cluster.</param>
         /// <param name="principalAssignmentName">The name of the Kusto principalAssignment.</param>
@@ -8497,24 +9065,29 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Kusto
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        internal async global::System.Threading.Tasks.Task DatabasePrincipalAssignmentsCreateOrUpdate_Validate(string subscriptionId, string resourceGroupName, string clusterName, string databaseName, string principalAssignmentName, Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api20221229.IDatabasePrincipalAssignment body, Microsoft.Azure.PowerShell.Cmdlets.Kusto.Runtime.IEventListener eventListener)
+        internal async global::System.Threading.Tasks.Task DatabasePrincipalAssignmentsCreateOrUpdate_Validate(string subscriptionId, string resourceGroupName, string clusterName, string databaseName, string principalAssignmentName, Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api20230815.IDatabasePrincipalAssignment body, Microsoft.Azure.PowerShell.Cmdlets.Kusto.Runtime.IEventListener eventListener)
         {
             using( NoSynchronizationContext )
             {
                 await eventListener.AssertNotNull(nameof(subscriptionId),subscriptionId);
+                await eventListener.AssertMinimumLength(nameof(subscriptionId),subscriptionId,1);
                 await eventListener.AssertNotNull(nameof(resourceGroupName),resourceGroupName);
+                await eventListener.AssertMinimumLength(nameof(resourceGroupName),resourceGroupName,1);
+                await eventListener.AssertMaximumLength(nameof(resourceGroupName),resourceGroupName,90);
                 await eventListener.AssertNotNull(nameof(clusterName),clusterName);
+                await eventListener.AssertRegEx(nameof(clusterName),clusterName,@"^.*$");
                 await eventListener.AssertNotNull(nameof(databaseName),databaseName);
+                await eventListener.AssertRegEx(nameof(databaseName),databaseName,@"^.*$");
                 await eventListener.AssertNotNull(nameof(principalAssignmentName),principalAssignmentName);
+                await eventListener.AssertRegEx(nameof(principalAssignmentName),principalAssignmentName,@"^.*$");
                 await eventListener.AssertNotNull(nameof(body), body);
                 await eventListener.AssertObjectIsValid(nameof(body), body);
             }
         }
 
         /// <summary>Deletes a Kusto principalAssignment.</summary>
-        /// <param name="subscriptionId">Gets subscription credentials which uniquely identify Microsoft Azure subscription. The subscription
-        /// ID forms part of the URI for every service call.</param>
-        /// <param name="resourceGroupName">The name of the resource group containing the Kusto cluster.</param>
+        /// <param name="subscriptionId">The ID of the target subscription.</param>
+        /// <param name="resourceGroupName">The name of the resource group. The name is case insensitive.</param>
         /// <param name="clusterName">The name of the Kusto cluster.</param>
         /// <param name="databaseName">The name of the database in the Kusto cluster.</param>
         /// <param name="principalAssignmentName">The name of the Kusto principalAssignment.</param>
@@ -8527,9 +9100,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Kusto
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        public async global::System.Threading.Tasks.Task DatabasePrincipalAssignmentsDelete(string subscriptionId, string resourceGroupName, string clusterName, string databaseName, string principalAssignmentName, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task> onNoContent, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api20221229.ICloudError>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Kusto.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Kusto.Runtime.ISendAsync sender)
+        public async global::System.Threading.Tasks.Task DatabasePrincipalAssignmentsDelete(string subscriptionId, string resourceGroupName, string clusterName, string databaseName, string principalAssignmentName, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task> onNoContent, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api30.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Kusto.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Kusto.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2022-12-29";
+            var apiVersion = @"2023-08-15";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -8573,9 +9146,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Kusto
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        public async global::System.Threading.Tasks.Task DatabasePrincipalAssignmentsDeleteViaIdentity(global::System.String viaIdentity, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task> onNoContent, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api20221229.ICloudError>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Kusto.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Kusto.Runtime.ISendAsync sender)
+        public async global::System.Threading.Tasks.Task DatabasePrincipalAssignmentsDeleteViaIdentity(global::System.String viaIdentity, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task> onNoContent, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api30.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Kusto.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Kusto.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2022-12-29";
+            var apiVersion = @"2023-08-15";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -8633,7 +9206,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Kusto
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        internal async global::System.Threading.Tasks.Task DatabasePrincipalAssignmentsDelete_Call(global::System.Net.Http.HttpRequestMessage request, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task> onNoContent, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api20221229.ICloudError>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Kusto.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Kusto.Runtime.ISendAsync sender)
+        internal async global::System.Threading.Tasks.Task DatabasePrincipalAssignmentsDelete_Call(global::System.Net.Http.HttpRequestMessage request, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task> onNoContent, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api30.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Kusto.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Kusto.Runtime.ISendAsync sender)
         {
             using( NoSynchronizationContext )
             {
@@ -8763,7 +9336,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Kusto
                         default:
                         {
                             await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Kusto.Runtime.Events.BeforeResponseDispatch, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
-                            await onDefault(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api20221229.CloudError.FromJson(Microsoft.Azure.PowerShell.Cmdlets.Kusto.Runtime.Json.JsonNode.Parse(body.Result)) ));
+                            await onDefault(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api30.ErrorResponse.FromJson(Microsoft.Azure.PowerShell.Cmdlets.Kusto.Runtime.Json.JsonNode.Parse(body.Result)) ));
                             break;
                         }
                     }
@@ -8782,9 +9355,8 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Kusto
         /// Validation method for <see cref="DatabasePrincipalAssignmentsDelete" /> method. Call this like the actual call, but you
         /// will get validation events back.
         /// </summary>
-        /// <param name="subscriptionId">Gets subscription credentials which uniquely identify Microsoft Azure subscription. The subscription
-        /// ID forms part of the URI for every service call.</param>
-        /// <param name="resourceGroupName">The name of the resource group containing the Kusto cluster.</param>
+        /// <param name="subscriptionId">The ID of the target subscription.</param>
+        /// <param name="resourceGroupName">The name of the resource group. The name is case insensitive.</param>
         /// <param name="clusterName">The name of the Kusto cluster.</param>
         /// <param name="databaseName">The name of the database in the Kusto cluster.</param>
         /// <param name="principalAssignmentName">The name of the Kusto principalAssignment.</param>
@@ -8797,17 +9369,22 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Kusto
             using( NoSynchronizationContext )
             {
                 await eventListener.AssertNotNull(nameof(subscriptionId),subscriptionId);
+                await eventListener.AssertMinimumLength(nameof(subscriptionId),subscriptionId,1);
                 await eventListener.AssertNotNull(nameof(resourceGroupName),resourceGroupName);
+                await eventListener.AssertMinimumLength(nameof(resourceGroupName),resourceGroupName,1);
+                await eventListener.AssertMaximumLength(nameof(resourceGroupName),resourceGroupName,90);
                 await eventListener.AssertNotNull(nameof(clusterName),clusterName);
+                await eventListener.AssertRegEx(nameof(clusterName),clusterName,@"^.*$");
                 await eventListener.AssertNotNull(nameof(databaseName),databaseName);
+                await eventListener.AssertRegEx(nameof(databaseName),databaseName,@"^.*$");
                 await eventListener.AssertNotNull(nameof(principalAssignmentName),principalAssignmentName);
+                await eventListener.AssertRegEx(nameof(principalAssignmentName),principalAssignmentName,@"^.*$");
             }
         }
 
         /// <summary>Gets a Kusto cluster database principalAssignment.</summary>
-        /// <param name="subscriptionId">Gets subscription credentials which uniquely identify Microsoft Azure subscription. The subscription
-        /// ID forms part of the URI for every service call.</param>
-        /// <param name="resourceGroupName">The name of the resource group containing the Kusto cluster.</param>
+        /// <param name="subscriptionId">The ID of the target subscription.</param>
+        /// <param name="resourceGroupName">The name of the resource group. The name is case insensitive.</param>
         /// <param name="clusterName">The name of the Kusto cluster.</param>
         /// <param name="databaseName">The name of the database in the Kusto cluster.</param>
         /// <param name="principalAssignmentName">The name of the Kusto principalAssignment.</param>
@@ -8819,9 +9396,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Kusto
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        public async global::System.Threading.Tasks.Task DatabasePrincipalAssignmentsGet(string subscriptionId, string resourceGroupName, string clusterName, string databaseName, string principalAssignmentName, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api20221229.IDatabasePrincipalAssignment>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api20221229.ICloudError>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Kusto.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Kusto.Runtime.ISendAsync sender)
+        public async global::System.Threading.Tasks.Task DatabasePrincipalAssignmentsGet(string subscriptionId, string resourceGroupName, string clusterName, string databaseName, string principalAssignmentName, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api20230815.IDatabasePrincipalAssignment>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api30.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Kusto.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Kusto.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2022-12-29";
+            var apiVersion = @"2023-08-15";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -8864,9 +9441,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Kusto
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        public async global::System.Threading.Tasks.Task DatabasePrincipalAssignmentsGetViaIdentity(global::System.String viaIdentity, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api20221229.IDatabasePrincipalAssignment>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api20221229.ICloudError>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Kusto.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Kusto.Runtime.ISendAsync sender)
+        public async global::System.Threading.Tasks.Task DatabasePrincipalAssignmentsGetViaIdentity(global::System.String viaIdentity, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api20230815.IDatabasePrincipalAssignment>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api30.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Kusto.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Kusto.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2022-12-29";
+            var apiVersion = @"2023-08-15";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -8923,7 +9500,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Kusto
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        internal async global::System.Threading.Tasks.Task DatabasePrincipalAssignmentsGet_Call(global::System.Net.Http.HttpRequestMessage request, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api20221229.IDatabasePrincipalAssignment>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api20221229.ICloudError>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Kusto.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Kusto.Runtime.ISendAsync sender)
+        internal async global::System.Threading.Tasks.Task DatabasePrincipalAssignmentsGet_Call(global::System.Net.Http.HttpRequestMessage request, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api20230815.IDatabasePrincipalAssignment>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api30.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Kusto.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Kusto.Runtime.ISendAsync sender)
         {
             using( NoSynchronizationContext )
             {
@@ -8941,13 +9518,13 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Kusto
                         case global::System.Net.HttpStatusCode.OK:
                         {
                             await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Kusto.Runtime.Events.BeforeResponseDispatch, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
-                            await onOk(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api20221229.DatabasePrincipalAssignment.FromJson(Microsoft.Azure.PowerShell.Cmdlets.Kusto.Runtime.Json.JsonNode.Parse(body.Result)) ));
+                            await onOk(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api20230815.DatabasePrincipalAssignment.FromJson(Microsoft.Azure.PowerShell.Cmdlets.Kusto.Runtime.Json.JsonNode.Parse(body.Result)) ));
                             break;
                         }
                         default:
                         {
                             await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Kusto.Runtime.Events.BeforeResponseDispatch, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
-                            await onDefault(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api20221229.CloudError.FromJson(Microsoft.Azure.PowerShell.Cmdlets.Kusto.Runtime.Json.JsonNode.Parse(body.Result)) ));
+                            await onDefault(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api30.ErrorResponse.FromJson(Microsoft.Azure.PowerShell.Cmdlets.Kusto.Runtime.Json.JsonNode.Parse(body.Result)) ));
                             break;
                         }
                     }
@@ -8966,9 +9543,8 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Kusto
         /// Validation method for <see cref="DatabasePrincipalAssignmentsGet" /> method. Call this like the actual call, but you will
         /// get validation events back.
         /// </summary>
-        /// <param name="subscriptionId">Gets subscription credentials which uniquely identify Microsoft Azure subscription. The subscription
-        /// ID forms part of the URI for every service call.</param>
-        /// <param name="resourceGroupName">The name of the resource group containing the Kusto cluster.</param>
+        /// <param name="subscriptionId">The ID of the target subscription.</param>
+        /// <param name="resourceGroupName">The name of the resource group. The name is case insensitive.</param>
         /// <param name="clusterName">The name of the Kusto cluster.</param>
         /// <param name="databaseName">The name of the database in the Kusto cluster.</param>
         /// <param name="principalAssignmentName">The name of the Kusto principalAssignment.</param>
@@ -8981,17 +9557,22 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Kusto
             using( NoSynchronizationContext )
             {
                 await eventListener.AssertNotNull(nameof(subscriptionId),subscriptionId);
+                await eventListener.AssertMinimumLength(nameof(subscriptionId),subscriptionId,1);
                 await eventListener.AssertNotNull(nameof(resourceGroupName),resourceGroupName);
+                await eventListener.AssertMinimumLength(nameof(resourceGroupName),resourceGroupName,1);
+                await eventListener.AssertMaximumLength(nameof(resourceGroupName),resourceGroupName,90);
                 await eventListener.AssertNotNull(nameof(clusterName),clusterName);
+                await eventListener.AssertRegEx(nameof(clusterName),clusterName,@"^.*$");
                 await eventListener.AssertNotNull(nameof(databaseName),databaseName);
+                await eventListener.AssertRegEx(nameof(databaseName),databaseName,@"^.*$");
                 await eventListener.AssertNotNull(nameof(principalAssignmentName),principalAssignmentName);
+                await eventListener.AssertRegEx(nameof(principalAssignmentName),principalAssignmentName,@"^.*$");
             }
         }
 
         /// <summary>Lists all Kusto cluster database principalAssignments.</summary>
-        /// <param name="subscriptionId">Gets subscription credentials which uniquely identify Microsoft Azure subscription. The subscription
-        /// ID forms part of the URI for every service call.</param>
-        /// <param name="resourceGroupName">The name of the resource group containing the Kusto cluster.</param>
+        /// <param name="subscriptionId">The ID of the target subscription.</param>
+        /// <param name="resourceGroupName">The name of the resource group. The name is case insensitive.</param>
         /// <param name="clusterName">The name of the Kusto cluster.</param>
         /// <param name="databaseName">The name of the database in the Kusto cluster.</param>
         /// <param name="onOk">a delegate that is called when the remote service returns 200 (OK).</param>
@@ -9002,9 +9583,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Kusto
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        public async global::System.Threading.Tasks.Task DatabasePrincipalAssignmentsList(string subscriptionId, string resourceGroupName, string clusterName, string databaseName, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api20221229.IDatabasePrincipalAssignmentListResult>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api20221229.ICloudError>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Kusto.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Kusto.Runtime.ISendAsync sender)
+        public async global::System.Threading.Tasks.Task DatabasePrincipalAssignmentsList(string subscriptionId, string resourceGroupName, string clusterName, string databaseName, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api20230815.IDatabasePrincipalAssignmentListResult>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api30.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Kusto.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Kusto.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2022-12-29";
+            var apiVersion = @"2023-08-15";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -9046,9 +9627,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Kusto
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        public async global::System.Threading.Tasks.Task DatabasePrincipalAssignmentsListViaIdentity(global::System.String viaIdentity, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api20221229.IDatabasePrincipalAssignmentListResult>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api20221229.ICloudError>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Kusto.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Kusto.Runtime.ISendAsync sender)
+        public async global::System.Threading.Tasks.Task DatabasePrincipalAssignmentsListViaIdentity(global::System.String viaIdentity, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api20230815.IDatabasePrincipalAssignmentListResult>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api30.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Kusto.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Kusto.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2022-12-29";
+            var apiVersion = @"2023-08-15";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -9103,7 +9684,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Kusto
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        internal async global::System.Threading.Tasks.Task DatabasePrincipalAssignmentsList_Call(global::System.Net.Http.HttpRequestMessage request, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api20221229.IDatabasePrincipalAssignmentListResult>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api20221229.ICloudError>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Kusto.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Kusto.Runtime.ISendAsync sender)
+        internal async global::System.Threading.Tasks.Task DatabasePrincipalAssignmentsList_Call(global::System.Net.Http.HttpRequestMessage request, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api20230815.IDatabasePrincipalAssignmentListResult>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api30.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Kusto.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Kusto.Runtime.ISendAsync sender)
         {
             using( NoSynchronizationContext )
             {
@@ -9121,13 +9702,13 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Kusto
                         case global::System.Net.HttpStatusCode.OK:
                         {
                             await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Kusto.Runtime.Events.BeforeResponseDispatch, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
-                            await onOk(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api20221229.DatabasePrincipalAssignmentListResult.FromJson(Microsoft.Azure.PowerShell.Cmdlets.Kusto.Runtime.Json.JsonNode.Parse(body.Result)) ));
+                            await onOk(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api20230815.DatabasePrincipalAssignmentListResult.FromJson(Microsoft.Azure.PowerShell.Cmdlets.Kusto.Runtime.Json.JsonNode.Parse(body.Result)) ));
                             break;
                         }
                         default:
                         {
                             await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Kusto.Runtime.Events.BeforeResponseDispatch, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
-                            await onDefault(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api20221229.CloudError.FromJson(Microsoft.Azure.PowerShell.Cmdlets.Kusto.Runtime.Json.JsonNode.Parse(body.Result)) ));
+                            await onDefault(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api30.ErrorResponse.FromJson(Microsoft.Azure.PowerShell.Cmdlets.Kusto.Runtime.Json.JsonNode.Parse(body.Result)) ));
                             break;
                         }
                     }
@@ -9146,9 +9727,8 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Kusto
         /// Validation method for <see cref="DatabasePrincipalAssignmentsList" /> method. Call this like the actual call, but you
         /// will get validation events back.
         /// </summary>
-        /// <param name="subscriptionId">Gets subscription credentials which uniquely identify Microsoft Azure subscription. The subscription
-        /// ID forms part of the URI for every service call.</param>
-        /// <param name="resourceGroupName">The name of the resource group containing the Kusto cluster.</param>
+        /// <param name="subscriptionId">The ID of the target subscription.</param>
+        /// <param name="resourceGroupName">The name of the resource group. The name is case insensitive.</param>
         /// <param name="clusterName">The name of the Kusto cluster.</param>
         /// <param name="databaseName">The name of the database in the Kusto cluster.</param>
         /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.Kusto.Runtime.IEventListener" /> instance that will receive events.</param>
@@ -9160,18 +9740,22 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Kusto
             using( NoSynchronizationContext )
             {
                 await eventListener.AssertNotNull(nameof(subscriptionId),subscriptionId);
+                await eventListener.AssertMinimumLength(nameof(subscriptionId),subscriptionId,1);
                 await eventListener.AssertNotNull(nameof(resourceGroupName),resourceGroupName);
+                await eventListener.AssertMinimumLength(nameof(resourceGroupName),resourceGroupName,1);
+                await eventListener.AssertMaximumLength(nameof(resourceGroupName),resourceGroupName,90);
                 await eventListener.AssertNotNull(nameof(clusterName),clusterName);
+                await eventListener.AssertRegEx(nameof(clusterName),clusterName,@"^.*$");
                 await eventListener.AssertNotNull(nameof(databaseName),databaseName);
+                await eventListener.AssertRegEx(nameof(databaseName),databaseName,@"^.*$");
             }
         }
 
         /// <summary>Add Database principals permissions.</summary>
-        /// <param name="resourceGroupName">The name of the resource group containing the Kusto cluster.</param>
+        /// <param name="resourceGroupName">The name of the resource group. The name is case insensitive.</param>
         /// <param name="clusterName">The name of the Kusto cluster.</param>
         /// <param name="databaseName">The name of the database in the Kusto cluster.</param>
-        /// <param name="subscriptionId">Gets subscription credentials which uniquely identify Microsoft Azure subscription. The subscription
-        /// ID forms part of the URI for every service call.</param>
+        /// <param name="subscriptionId">The ID of the target subscription.</param>
         /// <param name="body">List of database principals to add.</param>
         /// <param name="onOk">a delegate that is called when the remote service returns 200 (OK).</param>
         /// <param name="onDefault">a delegate that is called when the remote service returns default (any response code not handled
@@ -9181,9 +9765,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Kusto
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        public async global::System.Threading.Tasks.Task DatabasesAddPrincipals(string resourceGroupName, string clusterName, string databaseName, string subscriptionId, Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api20221229.IDatabasePrincipalListRequest body, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api20221229.IDatabasePrincipalListResult>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api20221229.ICloudError>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Kusto.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Kusto.Runtime.ISendAsync sender)
+        public async global::System.Threading.Tasks.Task DatabasesAddPrincipals(string resourceGroupName, string clusterName, string databaseName, string subscriptionId, Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api20230815.IDatabasePrincipalListRequest body, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api20230815.IDatabasePrincipalListResult>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api30.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Kusto.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Kusto.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2022-12-29";
+            var apiVersion = @"2023-08-15";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -9230,9 +9814,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Kusto
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        public async global::System.Threading.Tasks.Task DatabasesAddPrincipalsViaIdentity(global::System.String viaIdentity, Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api20221229.IDatabasePrincipalListRequest body, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api20221229.IDatabasePrincipalListResult>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api20221229.ICloudError>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Kusto.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Kusto.Runtime.ISendAsync sender)
+        public async global::System.Threading.Tasks.Task DatabasesAddPrincipalsViaIdentity(global::System.String viaIdentity, Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api20230815.IDatabasePrincipalListRequest body, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api20230815.IDatabasePrincipalListResult>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api30.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Kusto.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Kusto.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2022-12-29";
+            var apiVersion = @"2023-08-15";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -9291,7 +9875,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Kusto
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        internal async global::System.Threading.Tasks.Task DatabasesAddPrincipals_Call(global::System.Net.Http.HttpRequestMessage request, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api20221229.IDatabasePrincipalListResult>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api20221229.ICloudError>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Kusto.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Kusto.Runtime.ISendAsync sender)
+        internal async global::System.Threading.Tasks.Task DatabasesAddPrincipals_Call(global::System.Net.Http.HttpRequestMessage request, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api20230815.IDatabasePrincipalListResult>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api30.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Kusto.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Kusto.Runtime.ISendAsync sender)
         {
             using( NoSynchronizationContext )
             {
@@ -9309,13 +9893,13 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Kusto
                         case global::System.Net.HttpStatusCode.OK:
                         {
                             await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Kusto.Runtime.Events.BeforeResponseDispatch, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
-                            await onOk(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api20221229.DatabasePrincipalListResult.FromJson(Microsoft.Azure.PowerShell.Cmdlets.Kusto.Runtime.Json.JsonNode.Parse(body.Result)) ));
+                            await onOk(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api20230815.DatabasePrincipalListResult.FromJson(Microsoft.Azure.PowerShell.Cmdlets.Kusto.Runtime.Json.JsonNode.Parse(body.Result)) ));
                             break;
                         }
                         default:
                         {
                             await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Kusto.Runtime.Events.BeforeResponseDispatch, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
-                            await onDefault(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api20221229.CloudError.FromJson(Microsoft.Azure.PowerShell.Cmdlets.Kusto.Runtime.Json.JsonNode.Parse(body.Result)) ));
+                            await onDefault(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api30.ErrorResponse.FromJson(Microsoft.Azure.PowerShell.Cmdlets.Kusto.Runtime.Json.JsonNode.Parse(body.Result)) ));
                             break;
                         }
                     }
@@ -9334,34 +9918,37 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Kusto
         /// Validation method for <see cref="DatabasesAddPrincipals" /> method. Call this like the actual call, but you will get validation
         /// events back.
         /// </summary>
-        /// <param name="resourceGroupName">The name of the resource group containing the Kusto cluster.</param>
+        /// <param name="resourceGroupName">The name of the resource group. The name is case insensitive.</param>
         /// <param name="clusterName">The name of the Kusto cluster.</param>
         /// <param name="databaseName">The name of the database in the Kusto cluster.</param>
-        /// <param name="subscriptionId">Gets subscription credentials which uniquely identify Microsoft Azure subscription. The subscription
-        /// ID forms part of the URI for every service call.</param>
+        /// <param name="subscriptionId">The ID of the target subscription.</param>
         /// <param name="body">List of database principals to add.</param>
         /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.Kusto.Runtime.IEventListener" /> instance that will receive events.</param>
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        internal async global::System.Threading.Tasks.Task DatabasesAddPrincipals_Validate(string resourceGroupName, string clusterName, string databaseName, string subscriptionId, Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api20221229.IDatabasePrincipalListRequest body, Microsoft.Azure.PowerShell.Cmdlets.Kusto.Runtime.IEventListener eventListener)
+        internal async global::System.Threading.Tasks.Task DatabasesAddPrincipals_Validate(string resourceGroupName, string clusterName, string databaseName, string subscriptionId, Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api20230815.IDatabasePrincipalListRequest body, Microsoft.Azure.PowerShell.Cmdlets.Kusto.Runtime.IEventListener eventListener)
         {
             using( NoSynchronizationContext )
             {
                 await eventListener.AssertNotNull(nameof(resourceGroupName),resourceGroupName);
+                await eventListener.AssertMinimumLength(nameof(resourceGroupName),resourceGroupName,1);
+                await eventListener.AssertMaximumLength(nameof(resourceGroupName),resourceGroupName,90);
                 await eventListener.AssertNotNull(nameof(clusterName),clusterName);
+                await eventListener.AssertRegEx(nameof(clusterName),clusterName,@"^.*$");
                 await eventListener.AssertNotNull(nameof(databaseName),databaseName);
+                await eventListener.AssertRegEx(nameof(databaseName),databaseName,@"^.*$");
                 await eventListener.AssertNotNull(nameof(subscriptionId),subscriptionId);
+                await eventListener.AssertMinimumLength(nameof(subscriptionId),subscriptionId,1);
                 await eventListener.AssertNotNull(nameof(body), body);
                 await eventListener.AssertObjectIsValid(nameof(body), body);
             }
         }
 
         /// <summary>Checks that the databases resource name is valid and is not already in use.</summary>
-        /// <param name="resourceGroupName">The name of the resource group containing the Kusto cluster.</param>
+        /// <param name="resourceGroupName">The name of the resource group. The name is case insensitive.</param>
         /// <param name="clusterName">The name of the Kusto cluster.</param>
-        /// <param name="subscriptionId">Gets subscription credentials which uniquely identify Microsoft Azure subscription. The subscription
-        /// ID forms part of the URI for every service call.</param>
+        /// <param name="subscriptionId">The ID of the target subscription.</param>
         /// <param name="body">The name of the resource.</param>
         /// <param name="onOk">a delegate that is called when the remote service returns 200 (OK).</param>
         /// <param name="onDefault">a delegate that is called when the remote service returns default (any response code not handled
@@ -9371,9 +9958,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Kusto
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        public async global::System.Threading.Tasks.Task DatabasesCheckNameAvailability(string resourceGroupName, string clusterName, string subscriptionId, Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api20221229.ICheckNameRequest body, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api20221229.ICheckNameResult>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api20221229.ICloudError>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Kusto.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Kusto.Runtime.ISendAsync sender)
+        public async global::System.Threading.Tasks.Task DatabasesCheckNameAvailability(string resourceGroupName, string clusterName, string subscriptionId, Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api20230815.ICheckNameRequest body, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api20230815.ICheckNameResult>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api30.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Kusto.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Kusto.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2022-12-29";
+            var apiVersion = @"2023-08-15";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -9418,9 +10005,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Kusto
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        public async global::System.Threading.Tasks.Task DatabasesCheckNameAvailabilityViaIdentity(global::System.String viaIdentity, Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api20221229.ICheckNameRequest body, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api20221229.ICheckNameResult>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api20221229.ICloudError>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Kusto.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Kusto.Runtime.ISendAsync sender)
+        public async global::System.Threading.Tasks.Task DatabasesCheckNameAvailabilityViaIdentity(global::System.String viaIdentity, Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api20230815.ICheckNameRequest body, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api20230815.ICheckNameResult>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api30.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Kusto.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Kusto.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2022-12-29";
+            var apiVersion = @"2023-08-15";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -9476,7 +10063,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Kusto
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        internal async global::System.Threading.Tasks.Task DatabasesCheckNameAvailability_Call(global::System.Net.Http.HttpRequestMessage request, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api20221229.ICheckNameResult>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api20221229.ICloudError>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Kusto.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Kusto.Runtime.ISendAsync sender)
+        internal async global::System.Threading.Tasks.Task DatabasesCheckNameAvailability_Call(global::System.Net.Http.HttpRequestMessage request, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api20230815.ICheckNameResult>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api30.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Kusto.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Kusto.Runtime.ISendAsync sender)
         {
             using( NoSynchronizationContext )
             {
@@ -9494,13 +10081,13 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Kusto
                         case global::System.Net.HttpStatusCode.OK:
                         {
                             await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Kusto.Runtime.Events.BeforeResponseDispatch, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
-                            await onOk(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api20221229.CheckNameResult.FromJson(Microsoft.Azure.PowerShell.Cmdlets.Kusto.Runtime.Json.JsonNode.Parse(body.Result)) ));
+                            await onOk(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api20230815.CheckNameResult.FromJson(Microsoft.Azure.PowerShell.Cmdlets.Kusto.Runtime.Json.JsonNode.Parse(body.Result)) ));
                             break;
                         }
                         default:
                         {
                             await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Kusto.Runtime.Events.BeforeResponseDispatch, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
-                            await onDefault(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api20221229.CloudError.FromJson(Microsoft.Azure.PowerShell.Cmdlets.Kusto.Runtime.Json.JsonNode.Parse(body.Result)) ));
+                            await onDefault(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api30.ErrorResponse.FromJson(Microsoft.Azure.PowerShell.Cmdlets.Kusto.Runtime.Json.JsonNode.Parse(body.Result)) ));
                             break;
                         }
                     }
@@ -9519,33 +10106,35 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Kusto
         /// Validation method for <see cref="DatabasesCheckNameAvailability" /> method. Call this like the actual call, but you will
         /// get validation events back.
         /// </summary>
-        /// <param name="resourceGroupName">The name of the resource group containing the Kusto cluster.</param>
+        /// <param name="resourceGroupName">The name of the resource group. The name is case insensitive.</param>
         /// <param name="clusterName">The name of the Kusto cluster.</param>
-        /// <param name="subscriptionId">Gets subscription credentials which uniquely identify Microsoft Azure subscription. The subscription
-        /// ID forms part of the URI for every service call.</param>
+        /// <param name="subscriptionId">The ID of the target subscription.</param>
         /// <param name="body">The name of the resource.</param>
         /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.Kusto.Runtime.IEventListener" /> instance that will receive events.</param>
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        internal async global::System.Threading.Tasks.Task DatabasesCheckNameAvailability_Validate(string resourceGroupName, string clusterName, string subscriptionId, Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api20221229.ICheckNameRequest body, Microsoft.Azure.PowerShell.Cmdlets.Kusto.Runtime.IEventListener eventListener)
+        internal async global::System.Threading.Tasks.Task DatabasesCheckNameAvailability_Validate(string resourceGroupName, string clusterName, string subscriptionId, Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api20230815.ICheckNameRequest body, Microsoft.Azure.PowerShell.Cmdlets.Kusto.Runtime.IEventListener eventListener)
         {
             using( NoSynchronizationContext )
             {
                 await eventListener.AssertNotNull(nameof(resourceGroupName),resourceGroupName);
+                await eventListener.AssertMinimumLength(nameof(resourceGroupName),resourceGroupName,1);
+                await eventListener.AssertMaximumLength(nameof(resourceGroupName),resourceGroupName,90);
                 await eventListener.AssertNotNull(nameof(clusterName),clusterName);
+                await eventListener.AssertRegEx(nameof(clusterName),clusterName,@"^.*$");
                 await eventListener.AssertNotNull(nameof(subscriptionId),subscriptionId);
+                await eventListener.AssertMinimumLength(nameof(subscriptionId),subscriptionId,1);
                 await eventListener.AssertNotNull(nameof(body), body);
                 await eventListener.AssertObjectIsValid(nameof(body), body);
             }
         }
 
         /// <summary>Creates or updates a database.</summary>
-        /// <param name="resourceGroupName">The name of the resource group containing the Kusto cluster.</param>
+        /// <param name="resourceGroupName">The name of the resource group. The name is case insensitive.</param>
         /// <param name="clusterName">The name of the Kusto cluster.</param>
         /// <param name="databaseName">The name of the database in the Kusto cluster.</param>
-        /// <param name="subscriptionId">Gets subscription credentials which uniquely identify Microsoft Azure subscription. The subscription
-        /// ID forms part of the URI for every service call.</param>
+        /// <param name="subscriptionId">The ID of the target subscription.</param>
         /// <param name="callerRole">By default, any user who run operation on a database become an Admin on it. This property allows
         /// the caller to exclude the caller from Admins list.</param>
         /// <param name="body">The database parameters supplied to the CreateOrUpdate operation.</param>
@@ -9557,9 +10146,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Kusto
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        public async global::System.Threading.Tasks.Task DatabasesCreateOrUpdate(string resourceGroupName, string clusterName, string databaseName, string subscriptionId, Microsoft.Azure.PowerShell.Cmdlets.Kusto.Support.CallerRole? callerRole, Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api20221229.IDatabase body, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api20221229.IDatabase>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api20221229.ICloudError>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Kusto.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Kusto.Runtime.ISendAsync sender)
+        public async global::System.Threading.Tasks.Task DatabasesCreateOrUpdate(string resourceGroupName, string clusterName, string databaseName, string subscriptionId, Microsoft.Azure.PowerShell.Cmdlets.Kusto.Support.CallerRole? callerRole, Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api20230815.IDatabase body, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api20230815.IDatabase>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api30.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Kusto.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Kusto.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2022-12-29";
+            var apiVersion = @"2023-08-15";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -9609,9 +10198,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Kusto
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        public async global::System.Threading.Tasks.Task DatabasesCreateOrUpdateViaIdentity(global::System.String viaIdentity, Microsoft.Azure.PowerShell.Cmdlets.Kusto.Support.CallerRole? callerRole, Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api20221229.IDatabase body, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api20221229.IDatabase>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api20221229.ICloudError>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Kusto.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Kusto.Runtime.ISendAsync sender)
+        public async global::System.Threading.Tasks.Task DatabasesCreateOrUpdateViaIdentity(global::System.String viaIdentity, Microsoft.Azure.PowerShell.Cmdlets.Kusto.Support.CallerRole? callerRole, Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api20230815.IDatabase body, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api20230815.IDatabase>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api30.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Kusto.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Kusto.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2022-12-29";
+            var apiVersion = @"2023-08-15";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -9671,7 +10260,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Kusto
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        internal async global::System.Threading.Tasks.Task DatabasesCreateOrUpdate_Call(global::System.Net.Http.HttpRequestMessage request, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api20221229.IDatabase>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api20221229.ICloudError>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Kusto.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Kusto.Runtime.ISendAsync sender)
+        internal async global::System.Threading.Tasks.Task DatabasesCreateOrUpdate_Call(global::System.Net.Http.HttpRequestMessage request, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api20230815.IDatabase>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api30.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Kusto.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Kusto.Runtime.ISendAsync sender)
         {
             using( NoSynchronizationContext )
             {
@@ -9788,13 +10377,13 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Kusto
                         case global::System.Net.HttpStatusCode.OK:
                         {
                             await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Kusto.Runtime.Events.BeforeResponseDispatch, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
-                            await onOk(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api20221229.Database.FromJson(Microsoft.Azure.PowerShell.Cmdlets.Kusto.Runtime.Json.JsonNode.Parse(body.Result)) .ReadHeaders(_response.Headers)));
+                            await onOk(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api20230815.Database.FromJson(Microsoft.Azure.PowerShell.Cmdlets.Kusto.Runtime.Json.JsonNode.Parse(body.Result)) ));
                             break;
                         }
                         default:
                         {
                             await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Kusto.Runtime.Events.BeforeResponseDispatch, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
-                            await onDefault(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api20221229.CloudError.FromJson(Microsoft.Azure.PowerShell.Cmdlets.Kusto.Runtime.Json.JsonNode.Parse(body.Result)) ));
+                            await onDefault(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api30.ErrorResponse.FromJson(Microsoft.Azure.PowerShell.Cmdlets.Kusto.Runtime.Json.JsonNode.Parse(body.Result)) ));
                             break;
                         }
                     }
@@ -9813,11 +10402,10 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Kusto
         /// Validation method for <see cref="DatabasesCreateOrUpdate" /> method. Call this like the actual call, but you will get
         /// validation events back.
         /// </summary>
-        /// <param name="resourceGroupName">The name of the resource group containing the Kusto cluster.</param>
+        /// <param name="resourceGroupName">The name of the resource group. The name is case insensitive.</param>
         /// <param name="clusterName">The name of the Kusto cluster.</param>
         /// <param name="databaseName">The name of the database in the Kusto cluster.</param>
-        /// <param name="subscriptionId">Gets subscription credentials which uniquely identify Microsoft Azure subscription. The subscription
-        /// ID forms part of the URI for every service call.</param>
+        /// <param name="subscriptionId">The ID of the target subscription.</param>
         /// <param name="callerRole">By default, any user who run operation on a database become an Admin on it. This property allows
         /// the caller to exclude the caller from Admins list.</param>
         /// <param name="body">The database parameters supplied to the CreateOrUpdate operation.</param>
@@ -9825,14 +10413,19 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Kusto
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        internal async global::System.Threading.Tasks.Task DatabasesCreateOrUpdate_Validate(string resourceGroupName, string clusterName, string databaseName, string subscriptionId, Microsoft.Azure.PowerShell.Cmdlets.Kusto.Support.CallerRole? callerRole, Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api20221229.IDatabase body, Microsoft.Azure.PowerShell.Cmdlets.Kusto.Runtime.IEventListener eventListener)
+        internal async global::System.Threading.Tasks.Task DatabasesCreateOrUpdate_Validate(string resourceGroupName, string clusterName, string databaseName, string subscriptionId, Microsoft.Azure.PowerShell.Cmdlets.Kusto.Support.CallerRole? callerRole, Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api20230815.IDatabase body, Microsoft.Azure.PowerShell.Cmdlets.Kusto.Runtime.IEventListener eventListener)
         {
             using( NoSynchronizationContext )
             {
                 await eventListener.AssertNotNull(nameof(resourceGroupName),resourceGroupName);
+                await eventListener.AssertMinimumLength(nameof(resourceGroupName),resourceGroupName,1);
+                await eventListener.AssertMaximumLength(nameof(resourceGroupName),resourceGroupName,90);
                 await eventListener.AssertNotNull(nameof(clusterName),clusterName);
+                await eventListener.AssertRegEx(nameof(clusterName),clusterName,@"^.*$");
                 await eventListener.AssertNotNull(nameof(databaseName),databaseName);
+                await eventListener.AssertRegEx(nameof(databaseName),databaseName,@"^.*$");
                 await eventListener.AssertNotNull(nameof(subscriptionId),subscriptionId);
+                await eventListener.AssertMinimumLength(nameof(subscriptionId),subscriptionId,1);
                 await eventListener.AssertNotNull(nameof(callerRole),callerRole);
                 await eventListener.AssertEnum(nameof(callerRole),callerRole,@"Admin", @"None");
                 await eventListener.AssertNotNull(nameof(body), body);
@@ -9841,11 +10434,10 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Kusto
         }
 
         /// <summary>Deletes the database with the given name.</summary>
-        /// <param name="resourceGroupName">The name of the resource group containing the Kusto cluster.</param>
+        /// <param name="resourceGroupName">The name of the resource group. The name is case insensitive.</param>
         /// <param name="clusterName">The name of the Kusto cluster.</param>
         /// <param name="databaseName">The name of the database in the Kusto cluster.</param>
-        /// <param name="subscriptionId">Gets subscription credentials which uniquely identify Microsoft Azure subscription. The subscription
-        /// ID forms part of the URI for every service call.</param>
+        /// <param name="subscriptionId">The ID of the target subscription.</param>
         /// <param name="onOk">a delegate that is called when the remote service returns 200 (OK).</param>
         /// <param name="onNoContent">a delegate that is called when the remote service returns 204 (NoContent).</param>
         /// <param name="onDefault">a delegate that is called when the remote service returns default (any response code not handled
@@ -9855,9 +10447,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Kusto
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        public async global::System.Threading.Tasks.Task DatabasesDelete(string resourceGroupName, string clusterName, string databaseName, string subscriptionId, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task> onNoContent, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api20221229.ICloudError>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Kusto.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Kusto.Runtime.ISendAsync sender)
+        public async global::System.Threading.Tasks.Task DatabasesDelete(string resourceGroupName, string clusterName, string databaseName, string subscriptionId, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task> onNoContent, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api30.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Kusto.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Kusto.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2022-12-29";
+            var apiVersion = @"2023-08-15";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -9899,9 +10491,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Kusto
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        public async global::System.Threading.Tasks.Task DatabasesDeleteViaIdentity(global::System.String viaIdentity, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task> onNoContent, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api20221229.ICloudError>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Kusto.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Kusto.Runtime.ISendAsync sender)
+        public async global::System.Threading.Tasks.Task DatabasesDeleteViaIdentity(global::System.String viaIdentity, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task> onNoContent, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api30.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Kusto.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Kusto.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2022-12-29";
+            var apiVersion = @"2023-08-15";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -9956,7 +10548,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Kusto
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        internal async global::System.Threading.Tasks.Task DatabasesDelete_Call(global::System.Net.Http.HttpRequestMessage request, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task> onNoContent, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api20221229.ICloudError>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Kusto.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Kusto.Runtime.ISendAsync sender)
+        internal async global::System.Threading.Tasks.Task DatabasesDelete_Call(global::System.Net.Http.HttpRequestMessage request, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task> onNoContent, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api30.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Kusto.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Kusto.Runtime.ISendAsync sender)
         {
             using( NoSynchronizationContext )
             {
@@ -10086,7 +10678,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Kusto
                         default:
                         {
                             await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Kusto.Runtime.Events.BeforeResponseDispatch, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
-                            await onDefault(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api20221229.CloudError.FromJson(Microsoft.Azure.PowerShell.Cmdlets.Kusto.Runtime.Json.JsonNode.Parse(body.Result)) ));
+                            await onDefault(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api30.ErrorResponse.FromJson(Microsoft.Azure.PowerShell.Cmdlets.Kusto.Runtime.Json.JsonNode.Parse(body.Result)) ));
                             break;
                         }
                     }
@@ -10105,11 +10697,10 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Kusto
         /// Validation method for <see cref="DatabasesDelete" /> method. Call this like the actual call, but you will get validation
         /// events back.
         /// </summary>
-        /// <param name="resourceGroupName">The name of the resource group containing the Kusto cluster.</param>
+        /// <param name="resourceGroupName">The name of the resource group. The name is case insensitive.</param>
         /// <param name="clusterName">The name of the Kusto cluster.</param>
         /// <param name="databaseName">The name of the database in the Kusto cluster.</param>
-        /// <param name="subscriptionId">Gets subscription credentials which uniquely identify Microsoft Azure subscription. The subscription
-        /// ID forms part of the URI for every service call.</param>
+        /// <param name="subscriptionId">The ID of the target subscription.</param>
         /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.Kusto.Runtime.IEventListener" /> instance that will receive events.</param>
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
@@ -10119,18 +10710,22 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Kusto
             using( NoSynchronizationContext )
             {
                 await eventListener.AssertNotNull(nameof(resourceGroupName),resourceGroupName);
+                await eventListener.AssertMinimumLength(nameof(resourceGroupName),resourceGroupName,1);
+                await eventListener.AssertMaximumLength(nameof(resourceGroupName),resourceGroupName,90);
                 await eventListener.AssertNotNull(nameof(clusterName),clusterName);
+                await eventListener.AssertRegEx(nameof(clusterName),clusterName,@"^.*$");
                 await eventListener.AssertNotNull(nameof(databaseName),databaseName);
+                await eventListener.AssertRegEx(nameof(databaseName),databaseName,@"^.*$");
                 await eventListener.AssertNotNull(nameof(subscriptionId),subscriptionId);
+                await eventListener.AssertMinimumLength(nameof(subscriptionId),subscriptionId,1);
             }
         }
 
         /// <summary>Returns a database.</summary>
-        /// <param name="resourceGroupName">The name of the resource group containing the Kusto cluster.</param>
+        /// <param name="resourceGroupName">The name of the resource group. The name is case insensitive.</param>
         /// <param name="clusterName">The name of the Kusto cluster.</param>
         /// <param name="databaseName">The name of the database in the Kusto cluster.</param>
-        /// <param name="subscriptionId">Gets subscription credentials which uniquely identify Microsoft Azure subscription. The subscription
-        /// ID forms part of the URI for every service call.</param>
+        /// <param name="subscriptionId">The ID of the target subscription.</param>
         /// <param name="onOk">a delegate that is called when the remote service returns 200 (OK).</param>
         /// <param name="onDefault">a delegate that is called when the remote service returns default (any response code not handled
         /// elsewhere).</param>
@@ -10139,9 +10734,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Kusto
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        public async global::System.Threading.Tasks.Task DatabasesGet(string resourceGroupName, string clusterName, string databaseName, string subscriptionId, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api20221229.IDatabase>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api20221229.ICloudError>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Kusto.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Kusto.Runtime.ISendAsync sender)
+        public async global::System.Threading.Tasks.Task DatabasesGet(string resourceGroupName, string clusterName, string databaseName, string subscriptionId, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api20230815.IDatabase>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api30.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Kusto.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Kusto.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2022-12-29";
+            var apiVersion = @"2023-08-15";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -10182,9 +10777,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Kusto
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        public async global::System.Threading.Tasks.Task DatabasesGetViaIdentity(global::System.String viaIdentity, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api20221229.IDatabase>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api20221229.ICloudError>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Kusto.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Kusto.Runtime.ISendAsync sender)
+        public async global::System.Threading.Tasks.Task DatabasesGetViaIdentity(global::System.String viaIdentity, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api20230815.IDatabase>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api30.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Kusto.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Kusto.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2022-12-29";
+            var apiVersion = @"2023-08-15";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -10238,7 +10833,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Kusto
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        internal async global::System.Threading.Tasks.Task DatabasesGet_Call(global::System.Net.Http.HttpRequestMessage request, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api20221229.IDatabase>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api20221229.ICloudError>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Kusto.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Kusto.Runtime.ISendAsync sender)
+        internal async global::System.Threading.Tasks.Task DatabasesGet_Call(global::System.Net.Http.HttpRequestMessage request, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api20230815.IDatabase>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api30.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Kusto.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Kusto.Runtime.ISendAsync sender)
         {
             using( NoSynchronizationContext )
             {
@@ -10256,13 +10851,13 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Kusto
                         case global::System.Net.HttpStatusCode.OK:
                         {
                             await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Kusto.Runtime.Events.BeforeResponseDispatch, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
-                            await onOk(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api20221229.Database.FromJson(Microsoft.Azure.PowerShell.Cmdlets.Kusto.Runtime.Json.JsonNode.Parse(body.Result)) .ReadHeaders(_response.Headers)));
+                            await onOk(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api20230815.Database.FromJson(Microsoft.Azure.PowerShell.Cmdlets.Kusto.Runtime.Json.JsonNode.Parse(body.Result)) ));
                             break;
                         }
                         default:
                         {
                             await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Kusto.Runtime.Events.BeforeResponseDispatch, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
-                            await onDefault(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api20221229.CloudError.FromJson(Microsoft.Azure.PowerShell.Cmdlets.Kusto.Runtime.Json.JsonNode.Parse(body.Result)) ));
+                            await onDefault(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api30.ErrorResponse.FromJson(Microsoft.Azure.PowerShell.Cmdlets.Kusto.Runtime.Json.JsonNode.Parse(body.Result)) ));
                             break;
                         }
                     }
@@ -10281,11 +10876,10 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Kusto
         /// Validation method for <see cref="DatabasesGet" /> method. Call this like the actual call, but you will get validation
         /// events back.
         /// </summary>
-        /// <param name="resourceGroupName">The name of the resource group containing the Kusto cluster.</param>
+        /// <param name="resourceGroupName">The name of the resource group. The name is case insensitive.</param>
         /// <param name="clusterName">The name of the Kusto cluster.</param>
         /// <param name="databaseName">The name of the database in the Kusto cluster.</param>
-        /// <param name="subscriptionId">Gets subscription credentials which uniquely identify Microsoft Azure subscription. The subscription
-        /// ID forms part of the URI for every service call.</param>
+        /// <param name="subscriptionId">The ID of the target subscription.</param>
         /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.Kusto.Runtime.IEventListener" /> instance that will receive events.</param>
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
@@ -10295,17 +10889,25 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Kusto
             using( NoSynchronizationContext )
             {
                 await eventListener.AssertNotNull(nameof(resourceGroupName),resourceGroupName);
+                await eventListener.AssertMinimumLength(nameof(resourceGroupName),resourceGroupName,1);
+                await eventListener.AssertMaximumLength(nameof(resourceGroupName),resourceGroupName,90);
                 await eventListener.AssertNotNull(nameof(clusterName),clusterName);
+                await eventListener.AssertRegEx(nameof(clusterName),clusterName,@"^.*$");
                 await eventListener.AssertNotNull(nameof(databaseName),databaseName);
+                await eventListener.AssertRegEx(nameof(databaseName),databaseName,@"^.*$");
                 await eventListener.AssertNotNull(nameof(subscriptionId),subscriptionId);
+                await eventListener.AssertMinimumLength(nameof(subscriptionId),subscriptionId,1);
             }
         }
 
         /// <summary>Returns the list of databases of the given Kusto cluster.</summary>
-        /// <param name="resourceGroupName">The name of the resource group containing the Kusto cluster.</param>
+        /// <param name="resourceGroupName">The name of the resource group. The name is case insensitive.</param>
         /// <param name="clusterName">The name of the Kusto cluster.</param>
-        /// <param name="subscriptionId">Gets subscription credentials which uniquely identify Microsoft Azure subscription. The subscription
-        /// ID forms part of the URI for every service call.</param>
+        /// <param name="subscriptionId">The ID of the target subscription.</param>
+        /// <param name="Top">limit the number of results</param>
+        /// <param name="Skiptoken">Skiptoken is only used if a previous operation returned a partial result. If a previous response
+        /// contains a nextLink element, the value of the nextLink element will include a skiptoken parameter that specifies a starting
+        /// point to use for subsequent calls.</param>
         /// <param name="onOk">a delegate that is called when the remote service returns 200 (OK).</param>
         /// <param name="onDefault">a delegate that is called when the remote service returns default (any response code not handled
         /// elsewhere).</param>
@@ -10314,9 +10916,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Kusto
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        public async global::System.Threading.Tasks.Task DatabasesListByCluster(string resourceGroupName, string clusterName, string subscriptionId, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api20221229.IDatabaseListResult>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api20221229.ICloudError>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Kusto.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Kusto.Runtime.ISendAsync sender)
+        public async global::System.Threading.Tasks.Task DatabasesListByCluster(string resourceGroupName, string clusterName, string subscriptionId, int? Top, string Skiptoken, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api20230815.IDatabaseListResult>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api30.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Kusto.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Kusto.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2022-12-29";
+            var apiVersion = @"2023-08-15";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -10331,6 +10933,10 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Kusto
                         + "/databases"
                         + "?"
                         + "api-version=" + global::System.Uri.EscapeDataString(apiVersion)
+                        + "&"
+                        + (null == Top ? global::System.String.Empty : "$top=" + global::System.Uri.EscapeDataString(Top.ToString()))
+                        + "&"
+                        + (string.IsNullOrEmpty(Skiptoken) ? global::System.String.Empty : "$skiptoken=" + global::System.Uri.EscapeDataString(Skiptoken))
                         ,"\\?&*$|&*$|(\\?)&+|(&)&+","$1$2");
 
                 await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Kusto.Runtime.Events.URLCreated, pathAndQuery); if( eventListener.Token.IsCancellationRequested ) { return; }
@@ -10348,6 +10954,10 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Kusto
 
         /// <summary>Returns the list of databases of the given Kusto cluster.</summary>
         /// <param name="viaIdentity"></param>
+        /// <param name="Top">limit the number of results</param>
+        /// <param name="Skiptoken">Skiptoken is only used if a previous operation returned a partial result. If a previous response
+        /// contains a nextLink element, the value of the nextLink element will include a skiptoken parameter that specifies a starting
+        /// point to use for subsequent calls.</param>
         /// <param name="onOk">a delegate that is called when the remote service returns 200 (OK).</param>
         /// <param name="onDefault">a delegate that is called when the remote service returns default (any response code not handled
         /// elsewhere).</param>
@@ -10356,9 +10966,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Kusto
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        public async global::System.Threading.Tasks.Task DatabasesListByClusterViaIdentity(global::System.String viaIdentity, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api20221229.IDatabaseListResult>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api20221229.ICloudError>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Kusto.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Kusto.Runtime.ISendAsync sender)
+        public async global::System.Threading.Tasks.Task DatabasesListByClusterViaIdentity(global::System.String viaIdentity, int? Top, string Skiptoken, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api20230815.IDatabaseListResult>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api30.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Kusto.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Kusto.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2022-12-29";
+            var apiVersion = @"2023-08-15";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -10385,6 +10995,10 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Kusto
                         + "/databases"
                         + "?"
                         + "api-version=" + global::System.Uri.EscapeDataString(apiVersion)
+                        + "&"
+                        + (null == Top ? global::System.String.Empty : "$top=" + global::System.Uri.EscapeDataString(Top.ToString()))
+                        + "&"
+                        + (string.IsNullOrEmpty(Skiptoken) ? global::System.String.Empty : "$skiptoken=" + global::System.Uri.EscapeDataString(Skiptoken))
                         ,"\\?&*$|&*$|(\\?)&+|(&)&+","$1$2");
 
                 await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Kusto.Runtime.Events.URLCreated, pathAndQuery); if( eventListener.Token.IsCancellationRequested ) { return; }
@@ -10410,7 +11024,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Kusto
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        internal async global::System.Threading.Tasks.Task DatabasesListByCluster_Call(global::System.Net.Http.HttpRequestMessage request, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api20221229.IDatabaseListResult>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api20221229.ICloudError>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Kusto.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Kusto.Runtime.ISendAsync sender)
+        internal async global::System.Threading.Tasks.Task DatabasesListByCluster_Call(global::System.Net.Http.HttpRequestMessage request, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api20230815.IDatabaseListResult>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api30.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Kusto.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Kusto.Runtime.ISendAsync sender)
         {
             using( NoSynchronizationContext )
             {
@@ -10428,13 +11042,13 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Kusto
                         case global::System.Net.HttpStatusCode.OK:
                         {
                             await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Kusto.Runtime.Events.BeforeResponseDispatch, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
-                            await onOk(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api20221229.DatabaseListResult.FromJson(Microsoft.Azure.PowerShell.Cmdlets.Kusto.Runtime.Json.JsonNode.Parse(body.Result)) ));
+                            await onOk(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api20230815.DatabaseListResult.FromJson(Microsoft.Azure.PowerShell.Cmdlets.Kusto.Runtime.Json.JsonNode.Parse(body.Result)) ));
                             break;
                         }
                         default:
                         {
                             await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Kusto.Runtime.Events.BeforeResponseDispatch, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
-                            await onDefault(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api20221229.CloudError.FromJson(Microsoft.Azure.PowerShell.Cmdlets.Kusto.Runtime.Json.JsonNode.Parse(body.Result)) ));
+                            await onDefault(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api30.ErrorResponse.FromJson(Microsoft.Azure.PowerShell.Cmdlets.Kusto.Runtime.Json.JsonNode.Parse(body.Result)) ));
                             break;
                         }
                     }
@@ -10453,30 +11067,39 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Kusto
         /// Validation method for <see cref="DatabasesListByCluster" /> method. Call this like the actual call, but you will get validation
         /// events back.
         /// </summary>
-        /// <param name="resourceGroupName">The name of the resource group containing the Kusto cluster.</param>
+        /// <param name="resourceGroupName">The name of the resource group. The name is case insensitive.</param>
         /// <param name="clusterName">The name of the Kusto cluster.</param>
-        /// <param name="subscriptionId">Gets subscription credentials which uniquely identify Microsoft Azure subscription. The subscription
-        /// ID forms part of the URI for every service call.</param>
+        /// <param name="subscriptionId">The ID of the target subscription.</param>
+        /// <param name="Top">limit the number of results</param>
+        /// <param name="Skiptoken">Skiptoken is only used if a previous operation returned a partial result. If a previous response
+        /// contains a nextLink element, the value of the nextLink element will include a skiptoken parameter that specifies a starting
+        /// point to use for subsequent calls.</param>
         /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.Kusto.Runtime.IEventListener" /> instance that will receive events.</param>
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        internal async global::System.Threading.Tasks.Task DatabasesListByCluster_Validate(string resourceGroupName, string clusterName, string subscriptionId, Microsoft.Azure.PowerShell.Cmdlets.Kusto.Runtime.IEventListener eventListener)
+        internal async global::System.Threading.Tasks.Task DatabasesListByCluster_Validate(string resourceGroupName, string clusterName, string subscriptionId, int? Top, string Skiptoken, Microsoft.Azure.PowerShell.Cmdlets.Kusto.Runtime.IEventListener eventListener)
         {
             using( NoSynchronizationContext )
             {
                 await eventListener.AssertNotNull(nameof(resourceGroupName),resourceGroupName);
+                await eventListener.AssertMinimumLength(nameof(resourceGroupName),resourceGroupName,1);
+                await eventListener.AssertMaximumLength(nameof(resourceGroupName),resourceGroupName,90);
                 await eventListener.AssertNotNull(nameof(clusterName),clusterName);
+                await eventListener.AssertRegEx(nameof(clusterName),clusterName,@"^.*$");
                 await eventListener.AssertNotNull(nameof(subscriptionId),subscriptionId);
+                await eventListener.AssertMinimumLength(nameof(subscriptionId),subscriptionId,1);
+                await eventListener.AssertIsGreaterThanOrEqual(nameof(Top),Top,5);
+                await eventListener.AssertIsLessThanOrEqual(nameof(Top),Top,1000);
+                await eventListener.AssertNotNull(nameof(Skiptoken),Skiptoken);
             }
         }
 
         /// <summary>Returns a list of database principals of the given Kusto cluster and database.</summary>
-        /// <param name="resourceGroupName">The name of the resource group containing the Kusto cluster.</param>
+        /// <param name="resourceGroupName">The name of the resource group. The name is case insensitive.</param>
         /// <param name="clusterName">The name of the Kusto cluster.</param>
         /// <param name="databaseName">The name of the database in the Kusto cluster.</param>
-        /// <param name="subscriptionId">Gets subscription credentials which uniquely identify Microsoft Azure subscription. The subscription
-        /// ID forms part of the URI for every service call.</param>
+        /// <param name="subscriptionId">The ID of the target subscription.</param>
         /// <param name="onOk">a delegate that is called when the remote service returns 200 (OK).</param>
         /// <param name="onDefault">a delegate that is called when the remote service returns default (any response code not handled
         /// elsewhere).</param>
@@ -10485,9 +11108,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Kusto
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        public async global::System.Threading.Tasks.Task DatabasesListPrincipals(string resourceGroupName, string clusterName, string databaseName, string subscriptionId, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api20221229.IDatabasePrincipalListResult>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api20221229.ICloudError>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Kusto.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Kusto.Runtime.ISendAsync sender)
+        public async global::System.Threading.Tasks.Task DatabasesListPrincipals(string resourceGroupName, string clusterName, string databaseName, string subscriptionId, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api20230815.IDatabasePrincipalListResult>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api30.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Kusto.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Kusto.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2022-12-29";
+            var apiVersion = @"2023-08-15";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -10529,9 +11152,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Kusto
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        public async global::System.Threading.Tasks.Task DatabasesListPrincipalsViaIdentity(global::System.String viaIdentity, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api20221229.IDatabasePrincipalListResult>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api20221229.ICloudError>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Kusto.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Kusto.Runtime.ISendAsync sender)
+        public async global::System.Threading.Tasks.Task DatabasesListPrincipalsViaIdentity(global::System.String viaIdentity, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api20230815.IDatabasePrincipalListResult>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api30.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Kusto.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Kusto.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2022-12-29";
+            var apiVersion = @"2023-08-15";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -10586,7 +11209,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Kusto
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        internal async global::System.Threading.Tasks.Task DatabasesListPrincipals_Call(global::System.Net.Http.HttpRequestMessage request, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api20221229.IDatabasePrincipalListResult>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api20221229.ICloudError>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Kusto.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Kusto.Runtime.ISendAsync sender)
+        internal async global::System.Threading.Tasks.Task DatabasesListPrincipals_Call(global::System.Net.Http.HttpRequestMessage request, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api20230815.IDatabasePrincipalListResult>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api30.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Kusto.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Kusto.Runtime.ISendAsync sender)
         {
             using( NoSynchronizationContext )
             {
@@ -10604,13 +11227,13 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Kusto
                         case global::System.Net.HttpStatusCode.OK:
                         {
                             await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Kusto.Runtime.Events.BeforeResponseDispatch, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
-                            await onOk(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api20221229.DatabasePrincipalListResult.FromJson(Microsoft.Azure.PowerShell.Cmdlets.Kusto.Runtime.Json.JsonNode.Parse(body.Result)) ));
+                            await onOk(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api20230815.DatabasePrincipalListResult.FromJson(Microsoft.Azure.PowerShell.Cmdlets.Kusto.Runtime.Json.JsonNode.Parse(body.Result)) ));
                             break;
                         }
                         default:
                         {
                             await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Kusto.Runtime.Events.BeforeResponseDispatch, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
-                            await onDefault(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api20221229.CloudError.FromJson(Microsoft.Azure.PowerShell.Cmdlets.Kusto.Runtime.Json.JsonNode.Parse(body.Result)) ));
+                            await onDefault(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api30.ErrorResponse.FromJson(Microsoft.Azure.PowerShell.Cmdlets.Kusto.Runtime.Json.JsonNode.Parse(body.Result)) ));
                             break;
                         }
                     }
@@ -10629,11 +11252,10 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Kusto
         /// Validation method for <see cref="DatabasesListPrincipals" /> method. Call this like the actual call, but you will get
         /// validation events back.
         /// </summary>
-        /// <param name="resourceGroupName">The name of the resource group containing the Kusto cluster.</param>
+        /// <param name="resourceGroupName">The name of the resource group. The name is case insensitive.</param>
         /// <param name="clusterName">The name of the Kusto cluster.</param>
         /// <param name="databaseName">The name of the database in the Kusto cluster.</param>
-        /// <param name="subscriptionId">Gets subscription credentials which uniquely identify Microsoft Azure subscription. The subscription
-        /// ID forms part of the URI for every service call.</param>
+        /// <param name="subscriptionId">The ID of the target subscription.</param>
         /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.Kusto.Runtime.IEventListener" /> instance that will receive events.</param>
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
@@ -10643,18 +11265,22 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Kusto
             using( NoSynchronizationContext )
             {
                 await eventListener.AssertNotNull(nameof(resourceGroupName),resourceGroupName);
+                await eventListener.AssertMinimumLength(nameof(resourceGroupName),resourceGroupName,1);
+                await eventListener.AssertMaximumLength(nameof(resourceGroupName),resourceGroupName,90);
                 await eventListener.AssertNotNull(nameof(clusterName),clusterName);
+                await eventListener.AssertRegEx(nameof(clusterName),clusterName,@"^.*$");
                 await eventListener.AssertNotNull(nameof(databaseName),databaseName);
+                await eventListener.AssertRegEx(nameof(databaseName),databaseName,@"^.*$");
                 await eventListener.AssertNotNull(nameof(subscriptionId),subscriptionId);
+                await eventListener.AssertMinimumLength(nameof(subscriptionId),subscriptionId,1);
             }
         }
 
         /// <summary>Remove Database principals permissions.</summary>
-        /// <param name="resourceGroupName">The name of the resource group containing the Kusto cluster.</param>
+        /// <param name="resourceGroupName">The name of the resource group. The name is case insensitive.</param>
         /// <param name="clusterName">The name of the Kusto cluster.</param>
         /// <param name="databaseName">The name of the database in the Kusto cluster.</param>
-        /// <param name="subscriptionId">Gets subscription credentials which uniquely identify Microsoft Azure subscription. The subscription
-        /// ID forms part of the URI for every service call.</param>
+        /// <param name="subscriptionId">The ID of the target subscription.</param>
         /// <param name="body">List of database principals to remove.</param>
         /// <param name="onOk">a delegate that is called when the remote service returns 200 (OK).</param>
         /// <param name="onDefault">a delegate that is called when the remote service returns default (any response code not handled
@@ -10664,9 +11290,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Kusto
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        public async global::System.Threading.Tasks.Task DatabasesRemovePrincipals(string resourceGroupName, string clusterName, string databaseName, string subscriptionId, Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api20221229.IDatabasePrincipalListRequest body, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api20221229.IDatabasePrincipalListResult>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api20221229.ICloudError>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Kusto.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Kusto.Runtime.ISendAsync sender)
+        public async global::System.Threading.Tasks.Task DatabasesRemovePrincipals(string resourceGroupName, string clusterName, string databaseName, string subscriptionId, Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api20230815.IDatabasePrincipalListRequest body, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api20230815.IDatabasePrincipalListResult>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api30.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Kusto.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Kusto.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2022-12-29";
+            var apiVersion = @"2023-08-15";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -10713,9 +11339,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Kusto
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        public async global::System.Threading.Tasks.Task DatabasesRemovePrincipalsViaIdentity(global::System.String viaIdentity, Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api20221229.IDatabasePrincipalListRequest body, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api20221229.IDatabasePrincipalListResult>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api20221229.ICloudError>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Kusto.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Kusto.Runtime.ISendAsync sender)
+        public async global::System.Threading.Tasks.Task DatabasesRemovePrincipalsViaIdentity(global::System.String viaIdentity, Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api20230815.IDatabasePrincipalListRequest body, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api20230815.IDatabasePrincipalListResult>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api30.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Kusto.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Kusto.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2022-12-29";
+            var apiVersion = @"2023-08-15";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -10774,7 +11400,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Kusto
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        internal async global::System.Threading.Tasks.Task DatabasesRemovePrincipals_Call(global::System.Net.Http.HttpRequestMessage request, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api20221229.IDatabasePrincipalListResult>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api20221229.ICloudError>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Kusto.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Kusto.Runtime.ISendAsync sender)
+        internal async global::System.Threading.Tasks.Task DatabasesRemovePrincipals_Call(global::System.Net.Http.HttpRequestMessage request, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api20230815.IDatabasePrincipalListResult>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api30.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Kusto.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Kusto.Runtime.ISendAsync sender)
         {
             using( NoSynchronizationContext )
             {
@@ -10792,13 +11418,13 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Kusto
                         case global::System.Net.HttpStatusCode.OK:
                         {
                             await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Kusto.Runtime.Events.BeforeResponseDispatch, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
-                            await onOk(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api20221229.DatabasePrincipalListResult.FromJson(Microsoft.Azure.PowerShell.Cmdlets.Kusto.Runtime.Json.JsonNode.Parse(body.Result)) ));
+                            await onOk(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api20230815.DatabasePrincipalListResult.FromJson(Microsoft.Azure.PowerShell.Cmdlets.Kusto.Runtime.Json.JsonNode.Parse(body.Result)) ));
                             break;
                         }
                         default:
                         {
                             await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Kusto.Runtime.Events.BeforeResponseDispatch, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
-                            await onDefault(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api20221229.CloudError.FromJson(Microsoft.Azure.PowerShell.Cmdlets.Kusto.Runtime.Json.JsonNode.Parse(body.Result)) ));
+                            await onDefault(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api30.ErrorResponse.FromJson(Microsoft.Azure.PowerShell.Cmdlets.Kusto.Runtime.Json.JsonNode.Parse(body.Result)) ));
                             break;
                         }
                     }
@@ -10817,35 +11443,38 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Kusto
         /// Validation method for <see cref="DatabasesRemovePrincipals" /> method. Call this like the actual call, but you will get
         /// validation events back.
         /// </summary>
-        /// <param name="resourceGroupName">The name of the resource group containing the Kusto cluster.</param>
+        /// <param name="resourceGroupName">The name of the resource group. The name is case insensitive.</param>
         /// <param name="clusterName">The name of the Kusto cluster.</param>
         /// <param name="databaseName">The name of the database in the Kusto cluster.</param>
-        /// <param name="subscriptionId">Gets subscription credentials which uniquely identify Microsoft Azure subscription. The subscription
-        /// ID forms part of the URI for every service call.</param>
+        /// <param name="subscriptionId">The ID of the target subscription.</param>
         /// <param name="body">List of database principals to remove.</param>
         /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.Kusto.Runtime.IEventListener" /> instance that will receive events.</param>
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        internal async global::System.Threading.Tasks.Task DatabasesRemovePrincipals_Validate(string resourceGroupName, string clusterName, string databaseName, string subscriptionId, Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api20221229.IDatabasePrincipalListRequest body, Microsoft.Azure.PowerShell.Cmdlets.Kusto.Runtime.IEventListener eventListener)
+        internal async global::System.Threading.Tasks.Task DatabasesRemovePrincipals_Validate(string resourceGroupName, string clusterName, string databaseName, string subscriptionId, Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api20230815.IDatabasePrincipalListRequest body, Microsoft.Azure.PowerShell.Cmdlets.Kusto.Runtime.IEventListener eventListener)
         {
             using( NoSynchronizationContext )
             {
                 await eventListener.AssertNotNull(nameof(resourceGroupName),resourceGroupName);
+                await eventListener.AssertMinimumLength(nameof(resourceGroupName),resourceGroupName,1);
+                await eventListener.AssertMaximumLength(nameof(resourceGroupName),resourceGroupName,90);
                 await eventListener.AssertNotNull(nameof(clusterName),clusterName);
+                await eventListener.AssertRegEx(nameof(clusterName),clusterName,@"^.*$");
                 await eventListener.AssertNotNull(nameof(databaseName),databaseName);
+                await eventListener.AssertRegEx(nameof(databaseName),databaseName,@"^.*$");
                 await eventListener.AssertNotNull(nameof(subscriptionId),subscriptionId);
+                await eventListener.AssertMinimumLength(nameof(subscriptionId),subscriptionId,1);
                 await eventListener.AssertNotNull(nameof(body), body);
                 await eventListener.AssertObjectIsValid(nameof(body), body);
             }
         }
 
         /// <summary>Updates a database.</summary>
-        /// <param name="resourceGroupName">The name of the resource group containing the Kusto cluster.</param>
+        /// <param name="resourceGroupName">The name of the resource group. The name is case insensitive.</param>
         /// <param name="clusterName">The name of the Kusto cluster.</param>
         /// <param name="databaseName">The name of the database in the Kusto cluster.</param>
-        /// <param name="subscriptionId">Gets subscription credentials which uniquely identify Microsoft Azure subscription. The subscription
-        /// ID forms part of the URI for every service call.</param>
+        /// <param name="subscriptionId">The ID of the target subscription.</param>
         /// <param name="callerRole">By default, any user who run operation on a database become an Admin on it. This property allows
         /// the caller to exclude the caller from Admins list.</param>
         /// <param name="body">The database parameters supplied to the Update operation.</param>
@@ -10857,9 +11486,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Kusto
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        public async global::System.Threading.Tasks.Task DatabasesUpdate(string resourceGroupName, string clusterName, string databaseName, string subscriptionId, Microsoft.Azure.PowerShell.Cmdlets.Kusto.Support.CallerRole? callerRole, Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api20221229.IDatabase body, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api20221229.IDatabase>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api20221229.ICloudError>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Kusto.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Kusto.Runtime.ISendAsync sender)
+        public async global::System.Threading.Tasks.Task DatabasesUpdate(string resourceGroupName, string clusterName, string databaseName, string subscriptionId, Microsoft.Azure.PowerShell.Cmdlets.Kusto.Support.CallerRole? callerRole, Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api20230815.IDatabase body, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api20230815.IDatabase>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api30.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Kusto.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Kusto.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2022-12-29";
+            var apiVersion = @"2023-08-15";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -10909,9 +11538,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Kusto
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        public async global::System.Threading.Tasks.Task DatabasesUpdateViaIdentity(global::System.String viaIdentity, Microsoft.Azure.PowerShell.Cmdlets.Kusto.Support.CallerRole? callerRole, Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api20221229.IDatabase body, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api20221229.IDatabase>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api20221229.ICloudError>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Kusto.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Kusto.Runtime.ISendAsync sender)
+        public async global::System.Threading.Tasks.Task DatabasesUpdateViaIdentity(global::System.String viaIdentity, Microsoft.Azure.PowerShell.Cmdlets.Kusto.Support.CallerRole? callerRole, Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api20230815.IDatabase body, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api20230815.IDatabase>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api30.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Kusto.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Kusto.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2022-12-29";
+            var apiVersion = @"2023-08-15";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -10971,7 +11600,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Kusto
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        internal async global::System.Threading.Tasks.Task DatabasesUpdate_Call(global::System.Net.Http.HttpRequestMessage request, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api20221229.IDatabase>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api20221229.ICloudError>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Kusto.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Kusto.Runtime.ISendAsync sender)
+        internal async global::System.Threading.Tasks.Task DatabasesUpdate_Call(global::System.Net.Http.HttpRequestMessage request, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api20230815.IDatabase>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api30.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Kusto.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Kusto.Runtime.ISendAsync sender)
         {
             using( NoSynchronizationContext )
             {
@@ -11088,13 +11717,13 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Kusto
                         case global::System.Net.HttpStatusCode.OK:
                         {
                             await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Kusto.Runtime.Events.BeforeResponseDispatch, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
-                            await onOk(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api20221229.Database.FromJson(Microsoft.Azure.PowerShell.Cmdlets.Kusto.Runtime.Json.JsonNode.Parse(body.Result)) .ReadHeaders(_response.Headers)));
+                            await onOk(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api20230815.Database.FromJson(Microsoft.Azure.PowerShell.Cmdlets.Kusto.Runtime.Json.JsonNode.Parse(body.Result)) ));
                             break;
                         }
                         default:
                         {
                             await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Kusto.Runtime.Events.BeforeResponseDispatch, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
-                            await onDefault(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api20221229.CloudError.FromJson(Microsoft.Azure.PowerShell.Cmdlets.Kusto.Runtime.Json.JsonNode.Parse(body.Result)) ));
+                            await onDefault(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api30.ErrorResponse.FromJson(Microsoft.Azure.PowerShell.Cmdlets.Kusto.Runtime.Json.JsonNode.Parse(body.Result)) ));
                             break;
                         }
                     }
@@ -11113,11 +11742,10 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Kusto
         /// Validation method for <see cref="DatabasesUpdate" /> method. Call this like the actual call, but you will get validation
         /// events back.
         /// </summary>
-        /// <param name="resourceGroupName">The name of the resource group containing the Kusto cluster.</param>
+        /// <param name="resourceGroupName">The name of the resource group. The name is case insensitive.</param>
         /// <param name="clusterName">The name of the Kusto cluster.</param>
         /// <param name="databaseName">The name of the database in the Kusto cluster.</param>
-        /// <param name="subscriptionId">Gets subscription credentials which uniquely identify Microsoft Azure subscription. The subscription
-        /// ID forms part of the URI for every service call.</param>
+        /// <param name="subscriptionId">The ID of the target subscription.</param>
         /// <param name="callerRole">By default, any user who run operation on a database become an Admin on it. This property allows
         /// the caller to exclude the caller from Admins list.</param>
         /// <param name="body">The database parameters supplied to the Update operation.</param>
@@ -11125,14 +11753,19 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Kusto
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        internal async global::System.Threading.Tasks.Task DatabasesUpdate_Validate(string resourceGroupName, string clusterName, string databaseName, string subscriptionId, Microsoft.Azure.PowerShell.Cmdlets.Kusto.Support.CallerRole? callerRole, Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api20221229.IDatabase body, Microsoft.Azure.PowerShell.Cmdlets.Kusto.Runtime.IEventListener eventListener)
+        internal async global::System.Threading.Tasks.Task DatabasesUpdate_Validate(string resourceGroupName, string clusterName, string databaseName, string subscriptionId, Microsoft.Azure.PowerShell.Cmdlets.Kusto.Support.CallerRole? callerRole, Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api20230815.IDatabase body, Microsoft.Azure.PowerShell.Cmdlets.Kusto.Runtime.IEventListener eventListener)
         {
             using( NoSynchronizationContext )
             {
                 await eventListener.AssertNotNull(nameof(resourceGroupName),resourceGroupName);
+                await eventListener.AssertMinimumLength(nameof(resourceGroupName),resourceGroupName,1);
+                await eventListener.AssertMaximumLength(nameof(resourceGroupName),resourceGroupName,90);
                 await eventListener.AssertNotNull(nameof(clusterName),clusterName);
+                await eventListener.AssertRegEx(nameof(clusterName),clusterName,@"^.*$");
                 await eventListener.AssertNotNull(nameof(databaseName),databaseName);
+                await eventListener.AssertRegEx(nameof(databaseName),databaseName,@"^.*$");
                 await eventListener.AssertNotNull(nameof(subscriptionId),subscriptionId);
+                await eventListener.AssertMinimumLength(nameof(subscriptionId),subscriptionId,1);
                 await eventListener.AssertNotNull(nameof(callerRole),callerRole);
                 await eventListener.AssertEnum(nameof(callerRole),callerRole,@"Admin", @"None");
                 await eventListener.AssertNotNull(nameof(body), body);
@@ -11143,10 +11776,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Kusto
         /// <summary>
         /// Checks that the managed private endpoints resource name is valid and is not already in use.
         /// </summary>
-        /// <param name="resourceGroupName">The name of the resource group containing the Kusto cluster.</param>
+        /// <param name="resourceGroupName">The name of the resource group. The name is case insensitive.</param>
         /// <param name="clusterName">The name of the Kusto cluster.</param>
-        /// <param name="subscriptionId">Gets subscription credentials which uniquely identify Microsoft Azure subscription. The subscription
-        /// ID forms part of the URI for every service call.</param>
+        /// <param name="subscriptionId">The ID of the target subscription.</param>
         /// <param name="body">The name of the resource.</param>
         /// <param name="onOk">a delegate that is called when the remote service returns 200 (OK).</param>
         /// <param name="onDefault">a delegate that is called when the remote service returns default (any response code not handled
@@ -11156,9 +11788,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Kusto
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        public async global::System.Threading.Tasks.Task ManagedPrivateEndpointsCheckNameAvailability(string resourceGroupName, string clusterName, string subscriptionId, Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api20221229.IManagedPrivateEndpointsCheckNameRequest body, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api20221229.ICheckNameResult>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api20221229.ICloudError>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Kusto.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Kusto.Runtime.ISendAsync sender)
+        public async global::System.Threading.Tasks.Task ManagedPrivateEndpointsCheckNameAvailability(string resourceGroupName, string clusterName, string subscriptionId, Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api20230815.IManagedPrivateEndpointsCheckNameRequest body, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api20230815.ICheckNameResult>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api30.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Kusto.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Kusto.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2022-12-29";
+            var apiVersion = @"2023-08-15";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -11205,9 +11837,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Kusto
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        public async global::System.Threading.Tasks.Task ManagedPrivateEndpointsCheckNameAvailabilityViaIdentity(global::System.String viaIdentity, Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api20221229.IManagedPrivateEndpointsCheckNameRequest body, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api20221229.ICheckNameResult>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api20221229.ICloudError>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Kusto.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Kusto.Runtime.ISendAsync sender)
+        public async global::System.Threading.Tasks.Task ManagedPrivateEndpointsCheckNameAvailabilityViaIdentity(global::System.String viaIdentity, Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api20230815.IManagedPrivateEndpointsCheckNameRequest body, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api20230815.ICheckNameResult>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api30.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Kusto.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Kusto.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2022-12-29";
+            var apiVersion = @"2023-08-15";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -11265,7 +11897,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Kusto
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        internal async global::System.Threading.Tasks.Task ManagedPrivateEndpointsCheckNameAvailability_Call(global::System.Net.Http.HttpRequestMessage request, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api20221229.ICheckNameResult>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api20221229.ICloudError>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Kusto.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Kusto.Runtime.ISendAsync sender)
+        internal async global::System.Threading.Tasks.Task ManagedPrivateEndpointsCheckNameAvailability_Call(global::System.Net.Http.HttpRequestMessage request, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api20230815.ICheckNameResult>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api30.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Kusto.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Kusto.Runtime.ISendAsync sender)
         {
             using( NoSynchronizationContext )
             {
@@ -11283,13 +11915,13 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Kusto
                         case global::System.Net.HttpStatusCode.OK:
                         {
                             await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Kusto.Runtime.Events.BeforeResponseDispatch, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
-                            await onOk(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api20221229.CheckNameResult.FromJson(Microsoft.Azure.PowerShell.Cmdlets.Kusto.Runtime.Json.JsonNode.Parse(body.Result)) ));
+                            await onOk(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api20230815.CheckNameResult.FromJson(Microsoft.Azure.PowerShell.Cmdlets.Kusto.Runtime.Json.JsonNode.Parse(body.Result)) ));
                             break;
                         }
                         default:
                         {
                             await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Kusto.Runtime.Events.BeforeResponseDispatch, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
-                            await onDefault(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api20221229.CloudError.FromJson(Microsoft.Azure.PowerShell.Cmdlets.Kusto.Runtime.Json.JsonNode.Parse(body.Result)) ));
+                            await onDefault(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api30.ErrorResponse.FromJson(Microsoft.Azure.PowerShell.Cmdlets.Kusto.Runtime.Json.JsonNode.Parse(body.Result)) ));
                             break;
                         }
                     }
@@ -11308,31 +11940,33 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Kusto
         /// Validation method for <see cref="ManagedPrivateEndpointsCheckNameAvailability" /> method. Call this like the actual call,
         /// but you will get validation events back.
         /// </summary>
-        /// <param name="resourceGroupName">The name of the resource group containing the Kusto cluster.</param>
+        /// <param name="resourceGroupName">The name of the resource group. The name is case insensitive.</param>
         /// <param name="clusterName">The name of the Kusto cluster.</param>
-        /// <param name="subscriptionId">Gets subscription credentials which uniquely identify Microsoft Azure subscription. The subscription
-        /// ID forms part of the URI for every service call.</param>
+        /// <param name="subscriptionId">The ID of the target subscription.</param>
         /// <param name="body">The name of the resource.</param>
         /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.Kusto.Runtime.IEventListener" /> instance that will receive events.</param>
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        internal async global::System.Threading.Tasks.Task ManagedPrivateEndpointsCheckNameAvailability_Validate(string resourceGroupName, string clusterName, string subscriptionId, Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api20221229.IManagedPrivateEndpointsCheckNameRequest body, Microsoft.Azure.PowerShell.Cmdlets.Kusto.Runtime.IEventListener eventListener)
+        internal async global::System.Threading.Tasks.Task ManagedPrivateEndpointsCheckNameAvailability_Validate(string resourceGroupName, string clusterName, string subscriptionId, Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api20230815.IManagedPrivateEndpointsCheckNameRequest body, Microsoft.Azure.PowerShell.Cmdlets.Kusto.Runtime.IEventListener eventListener)
         {
             using( NoSynchronizationContext )
             {
                 await eventListener.AssertNotNull(nameof(resourceGroupName),resourceGroupName);
+                await eventListener.AssertMinimumLength(nameof(resourceGroupName),resourceGroupName,1);
+                await eventListener.AssertMaximumLength(nameof(resourceGroupName),resourceGroupName,90);
                 await eventListener.AssertNotNull(nameof(clusterName),clusterName);
+                await eventListener.AssertRegEx(nameof(clusterName),clusterName,@"^.*$");
                 await eventListener.AssertNotNull(nameof(subscriptionId),subscriptionId);
+                await eventListener.AssertMinimumLength(nameof(subscriptionId),subscriptionId,1);
                 await eventListener.AssertNotNull(nameof(body), body);
                 await eventListener.AssertObjectIsValid(nameof(body), body);
             }
         }
 
         /// <summary>Creates a managed private endpoint.</summary>
-        /// <param name="subscriptionId">Gets subscription credentials which uniquely identify Microsoft Azure subscription. The subscription
-        /// ID forms part of the URI for every service call.</param>
-        /// <param name="resourceGroupName">The name of the resource group containing the Kusto cluster.</param>
+        /// <param name="subscriptionId">The ID of the target subscription.</param>
+        /// <param name="resourceGroupName">The name of the resource group. The name is case insensitive.</param>
         /// <param name="clusterName">The name of the Kusto cluster.</param>
         /// <param name="managedPrivateEndpointName">The name of the managed private endpoint.</param>
         /// <param name="body">The managed private endpoint parameters.</param>
@@ -11344,9 +11978,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Kusto
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        public async global::System.Threading.Tasks.Task ManagedPrivateEndpointsCreateOrUpdate(string subscriptionId, string resourceGroupName, string clusterName, string managedPrivateEndpointName, Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api20221229.IManagedPrivateEndpoint body, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api20221229.IManagedPrivateEndpoint>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api20221229.ICloudError>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Kusto.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Kusto.Runtime.ISendAsync sender)
+        public async global::System.Threading.Tasks.Task ManagedPrivateEndpointsCreateOrUpdate(string subscriptionId, string resourceGroupName, string clusterName, string managedPrivateEndpointName, Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api20230815.IManagedPrivateEndpoint body, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api20230815.IManagedPrivateEndpoint>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api30.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Kusto.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Kusto.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2022-12-29";
+            var apiVersion = @"2023-08-15";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -11392,9 +12026,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Kusto
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        public async global::System.Threading.Tasks.Task ManagedPrivateEndpointsCreateOrUpdateViaIdentity(global::System.String viaIdentity, Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api20221229.IManagedPrivateEndpoint body, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api20221229.IManagedPrivateEndpoint>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api20221229.ICloudError>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Kusto.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Kusto.Runtime.ISendAsync sender)
+        public async global::System.Threading.Tasks.Task ManagedPrivateEndpointsCreateOrUpdateViaIdentity(global::System.String viaIdentity, Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api20230815.IManagedPrivateEndpoint body, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api20230815.IManagedPrivateEndpoint>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api30.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Kusto.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Kusto.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2022-12-29";
+            var apiVersion = @"2023-08-15";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -11454,7 +12088,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Kusto
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        internal async global::System.Threading.Tasks.Task ManagedPrivateEndpointsCreateOrUpdate_Call(global::System.Net.Http.HttpRequestMessage request, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api20221229.IManagedPrivateEndpoint>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api20221229.ICloudError>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Kusto.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Kusto.Runtime.ISendAsync sender)
+        internal async global::System.Threading.Tasks.Task ManagedPrivateEndpointsCreateOrUpdate_Call(global::System.Net.Http.HttpRequestMessage request, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api20230815.IManagedPrivateEndpoint>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api30.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Kusto.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Kusto.Runtime.ISendAsync sender)
         {
             using( NoSynchronizationContext )
             {
@@ -11571,13 +12205,13 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Kusto
                         case global::System.Net.HttpStatusCode.OK:
                         {
                             await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Kusto.Runtime.Events.BeforeResponseDispatch, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
-                            await onOk(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api20221229.ManagedPrivateEndpoint.FromJson(Microsoft.Azure.PowerShell.Cmdlets.Kusto.Runtime.Json.JsonNode.Parse(body.Result)) .ReadHeaders(_response.Headers)));
+                            await onOk(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api20230815.ManagedPrivateEndpoint.FromJson(Microsoft.Azure.PowerShell.Cmdlets.Kusto.Runtime.Json.JsonNode.Parse(body.Result)) ));
                             break;
                         }
                         default:
                         {
                             await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Kusto.Runtime.Events.BeforeResponseDispatch, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
-                            await onDefault(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api20221229.CloudError.FromJson(Microsoft.Azure.PowerShell.Cmdlets.Kusto.Runtime.Json.JsonNode.Parse(body.Result)) ));
+                            await onDefault(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api30.ErrorResponse.FromJson(Microsoft.Azure.PowerShell.Cmdlets.Kusto.Runtime.Json.JsonNode.Parse(body.Result)) ));
                             break;
                         }
                     }
@@ -11596,9 +12230,8 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Kusto
         /// Validation method for <see cref="ManagedPrivateEndpointsCreateOrUpdate" /> method. Call this like the actual call, but
         /// you will get validation events back.
         /// </summary>
-        /// <param name="subscriptionId">Gets subscription credentials which uniquely identify Microsoft Azure subscription. The subscription
-        /// ID forms part of the URI for every service call.</param>
-        /// <param name="resourceGroupName">The name of the resource group containing the Kusto cluster.</param>
+        /// <param name="subscriptionId">The ID of the target subscription.</param>
+        /// <param name="resourceGroupName">The name of the resource group. The name is case insensitive.</param>
         /// <param name="clusterName">The name of the Kusto cluster.</param>
         /// <param name="managedPrivateEndpointName">The name of the managed private endpoint.</param>
         /// <param name="body">The managed private endpoint parameters.</param>
@@ -11606,23 +12239,27 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Kusto
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        internal async global::System.Threading.Tasks.Task ManagedPrivateEndpointsCreateOrUpdate_Validate(string subscriptionId, string resourceGroupName, string clusterName, string managedPrivateEndpointName, Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api20221229.IManagedPrivateEndpoint body, Microsoft.Azure.PowerShell.Cmdlets.Kusto.Runtime.IEventListener eventListener)
+        internal async global::System.Threading.Tasks.Task ManagedPrivateEndpointsCreateOrUpdate_Validate(string subscriptionId, string resourceGroupName, string clusterName, string managedPrivateEndpointName, Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api20230815.IManagedPrivateEndpoint body, Microsoft.Azure.PowerShell.Cmdlets.Kusto.Runtime.IEventListener eventListener)
         {
             using( NoSynchronizationContext )
             {
                 await eventListener.AssertNotNull(nameof(subscriptionId),subscriptionId);
+                await eventListener.AssertMinimumLength(nameof(subscriptionId),subscriptionId,1);
                 await eventListener.AssertNotNull(nameof(resourceGroupName),resourceGroupName);
+                await eventListener.AssertMinimumLength(nameof(resourceGroupName),resourceGroupName,1);
+                await eventListener.AssertMaximumLength(nameof(resourceGroupName),resourceGroupName,90);
                 await eventListener.AssertNotNull(nameof(clusterName),clusterName);
+                await eventListener.AssertRegEx(nameof(clusterName),clusterName,@"^.*$");
                 await eventListener.AssertNotNull(nameof(managedPrivateEndpointName),managedPrivateEndpointName);
+                await eventListener.AssertRegEx(nameof(managedPrivateEndpointName),managedPrivateEndpointName,@"^.*$");
                 await eventListener.AssertNotNull(nameof(body), body);
                 await eventListener.AssertObjectIsValid(nameof(body), body);
             }
         }
 
         /// <summary>Deletes a managed private endpoint.</summary>
-        /// <param name="subscriptionId">Gets subscription credentials which uniquely identify Microsoft Azure subscription. The subscription
-        /// ID forms part of the URI for every service call.</param>
-        /// <param name="resourceGroupName">The name of the resource group containing the Kusto cluster.</param>
+        /// <param name="subscriptionId">The ID of the target subscription.</param>
+        /// <param name="resourceGroupName">The name of the resource group. The name is case insensitive.</param>
         /// <param name="clusterName">The name of the Kusto cluster.</param>
         /// <param name="managedPrivateEndpointName">The name of the managed private endpoint.</param>
         /// <param name="onOk">a delegate that is called when the remote service returns 200 (OK).</param>
@@ -11634,9 +12271,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Kusto
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        public async global::System.Threading.Tasks.Task ManagedPrivateEndpointsDelete(string subscriptionId, string resourceGroupName, string clusterName, string managedPrivateEndpointName, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task> onNoContent, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api20221229.ICloudError>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Kusto.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Kusto.Runtime.ISendAsync sender)
+        public async global::System.Threading.Tasks.Task ManagedPrivateEndpointsDelete(string subscriptionId, string resourceGroupName, string clusterName, string managedPrivateEndpointName, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task> onNoContent, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api30.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Kusto.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Kusto.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2022-12-29";
+            var apiVersion = @"2023-08-15";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -11678,9 +12315,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Kusto
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        public async global::System.Threading.Tasks.Task ManagedPrivateEndpointsDeleteViaIdentity(global::System.String viaIdentity, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task> onNoContent, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api20221229.ICloudError>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Kusto.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Kusto.Runtime.ISendAsync sender)
+        public async global::System.Threading.Tasks.Task ManagedPrivateEndpointsDeleteViaIdentity(global::System.String viaIdentity, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task> onNoContent, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api30.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Kusto.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Kusto.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2022-12-29";
+            var apiVersion = @"2023-08-15";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -11735,7 +12372,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Kusto
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        internal async global::System.Threading.Tasks.Task ManagedPrivateEndpointsDelete_Call(global::System.Net.Http.HttpRequestMessage request, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task> onNoContent, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api20221229.ICloudError>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Kusto.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Kusto.Runtime.ISendAsync sender)
+        internal async global::System.Threading.Tasks.Task ManagedPrivateEndpointsDelete_Call(global::System.Net.Http.HttpRequestMessage request, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task> onNoContent, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api30.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Kusto.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Kusto.Runtime.ISendAsync sender)
         {
             using( NoSynchronizationContext )
             {
@@ -11865,7 +12502,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Kusto
                         default:
                         {
                             await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Kusto.Runtime.Events.BeforeResponseDispatch, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
-                            await onDefault(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api20221229.CloudError.FromJson(Microsoft.Azure.PowerShell.Cmdlets.Kusto.Runtime.Json.JsonNode.Parse(body.Result)) ));
+                            await onDefault(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api30.ErrorResponse.FromJson(Microsoft.Azure.PowerShell.Cmdlets.Kusto.Runtime.Json.JsonNode.Parse(body.Result)) ));
                             break;
                         }
                     }
@@ -11884,9 +12521,8 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Kusto
         /// Validation method for <see cref="ManagedPrivateEndpointsDelete" /> method. Call this like the actual call, but you will
         /// get validation events back.
         /// </summary>
-        /// <param name="subscriptionId">Gets subscription credentials which uniquely identify Microsoft Azure subscription. The subscription
-        /// ID forms part of the URI for every service call.</param>
-        /// <param name="resourceGroupName">The name of the resource group containing the Kusto cluster.</param>
+        /// <param name="subscriptionId">The ID of the target subscription.</param>
+        /// <param name="resourceGroupName">The name of the resource group. The name is case insensitive.</param>
         /// <param name="clusterName">The name of the Kusto cluster.</param>
         /// <param name="managedPrivateEndpointName">The name of the managed private endpoint.</param>
         /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.Kusto.Runtime.IEventListener" /> instance that will receive events.</param>
@@ -11898,16 +12534,20 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Kusto
             using( NoSynchronizationContext )
             {
                 await eventListener.AssertNotNull(nameof(subscriptionId),subscriptionId);
+                await eventListener.AssertMinimumLength(nameof(subscriptionId),subscriptionId,1);
                 await eventListener.AssertNotNull(nameof(resourceGroupName),resourceGroupName);
+                await eventListener.AssertMinimumLength(nameof(resourceGroupName),resourceGroupName,1);
+                await eventListener.AssertMaximumLength(nameof(resourceGroupName),resourceGroupName,90);
                 await eventListener.AssertNotNull(nameof(clusterName),clusterName);
+                await eventListener.AssertRegEx(nameof(clusterName),clusterName,@"^.*$");
                 await eventListener.AssertNotNull(nameof(managedPrivateEndpointName),managedPrivateEndpointName);
+                await eventListener.AssertRegEx(nameof(managedPrivateEndpointName),managedPrivateEndpointName,@"^.*$");
             }
         }
 
         /// <summary>Gets a managed private endpoint.</summary>
-        /// <param name="subscriptionId">Gets subscription credentials which uniquely identify Microsoft Azure subscription. The subscription
-        /// ID forms part of the URI for every service call.</param>
-        /// <param name="resourceGroupName">The name of the resource group containing the Kusto cluster.</param>
+        /// <param name="subscriptionId">The ID of the target subscription.</param>
+        /// <param name="resourceGroupName">The name of the resource group. The name is case insensitive.</param>
         /// <param name="clusterName">The name of the Kusto cluster.</param>
         /// <param name="managedPrivateEndpointName">The name of the managed private endpoint.</param>
         /// <param name="onOk">a delegate that is called when the remote service returns 200 (OK).</param>
@@ -11918,9 +12558,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Kusto
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        public async global::System.Threading.Tasks.Task ManagedPrivateEndpointsGet(string subscriptionId, string resourceGroupName, string clusterName, string managedPrivateEndpointName, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api20221229.IManagedPrivateEndpoint>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api20221229.ICloudError>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Kusto.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Kusto.Runtime.ISendAsync sender)
+        public async global::System.Threading.Tasks.Task ManagedPrivateEndpointsGet(string subscriptionId, string resourceGroupName, string clusterName, string managedPrivateEndpointName, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api20230815.IManagedPrivateEndpoint>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api30.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Kusto.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Kusto.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2022-12-29";
+            var apiVersion = @"2023-08-15";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -11961,9 +12601,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Kusto
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        public async global::System.Threading.Tasks.Task ManagedPrivateEndpointsGetViaIdentity(global::System.String viaIdentity, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api20221229.IManagedPrivateEndpoint>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api20221229.ICloudError>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Kusto.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Kusto.Runtime.ISendAsync sender)
+        public async global::System.Threading.Tasks.Task ManagedPrivateEndpointsGetViaIdentity(global::System.String viaIdentity, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api20230815.IManagedPrivateEndpoint>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api30.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Kusto.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Kusto.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2022-12-29";
+            var apiVersion = @"2023-08-15";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -12017,7 +12657,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Kusto
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        internal async global::System.Threading.Tasks.Task ManagedPrivateEndpointsGet_Call(global::System.Net.Http.HttpRequestMessage request, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api20221229.IManagedPrivateEndpoint>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api20221229.ICloudError>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Kusto.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Kusto.Runtime.ISendAsync sender)
+        internal async global::System.Threading.Tasks.Task ManagedPrivateEndpointsGet_Call(global::System.Net.Http.HttpRequestMessage request, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api20230815.IManagedPrivateEndpoint>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api30.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Kusto.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Kusto.Runtime.ISendAsync sender)
         {
             using( NoSynchronizationContext )
             {
@@ -12035,13 +12675,13 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Kusto
                         case global::System.Net.HttpStatusCode.OK:
                         {
                             await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Kusto.Runtime.Events.BeforeResponseDispatch, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
-                            await onOk(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api20221229.ManagedPrivateEndpoint.FromJson(Microsoft.Azure.PowerShell.Cmdlets.Kusto.Runtime.Json.JsonNode.Parse(body.Result)) .ReadHeaders(_response.Headers)));
+                            await onOk(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api20230815.ManagedPrivateEndpoint.FromJson(Microsoft.Azure.PowerShell.Cmdlets.Kusto.Runtime.Json.JsonNode.Parse(body.Result)) ));
                             break;
                         }
                         default:
                         {
                             await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Kusto.Runtime.Events.BeforeResponseDispatch, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
-                            await onDefault(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api20221229.CloudError.FromJson(Microsoft.Azure.PowerShell.Cmdlets.Kusto.Runtime.Json.JsonNode.Parse(body.Result)) ));
+                            await onDefault(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api30.ErrorResponse.FromJson(Microsoft.Azure.PowerShell.Cmdlets.Kusto.Runtime.Json.JsonNode.Parse(body.Result)) ));
                             break;
                         }
                     }
@@ -12060,9 +12700,8 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Kusto
         /// Validation method for <see cref="ManagedPrivateEndpointsGet" /> method. Call this like the actual call, but you will get
         /// validation events back.
         /// </summary>
-        /// <param name="subscriptionId">Gets subscription credentials which uniquely identify Microsoft Azure subscription. The subscription
-        /// ID forms part of the URI for every service call.</param>
-        /// <param name="resourceGroupName">The name of the resource group containing the Kusto cluster.</param>
+        /// <param name="subscriptionId">The ID of the target subscription.</param>
+        /// <param name="resourceGroupName">The name of the resource group. The name is case insensitive.</param>
         /// <param name="clusterName">The name of the Kusto cluster.</param>
         /// <param name="managedPrivateEndpointName">The name of the managed private endpoint.</param>
         /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.Kusto.Runtime.IEventListener" /> instance that will receive events.</param>
@@ -12074,16 +12713,20 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Kusto
             using( NoSynchronizationContext )
             {
                 await eventListener.AssertNotNull(nameof(subscriptionId),subscriptionId);
+                await eventListener.AssertMinimumLength(nameof(subscriptionId),subscriptionId,1);
                 await eventListener.AssertNotNull(nameof(resourceGroupName),resourceGroupName);
+                await eventListener.AssertMinimumLength(nameof(resourceGroupName),resourceGroupName,1);
+                await eventListener.AssertMaximumLength(nameof(resourceGroupName),resourceGroupName,90);
                 await eventListener.AssertNotNull(nameof(clusterName),clusterName);
+                await eventListener.AssertRegEx(nameof(clusterName),clusterName,@"^.*$");
                 await eventListener.AssertNotNull(nameof(managedPrivateEndpointName),managedPrivateEndpointName);
+                await eventListener.AssertRegEx(nameof(managedPrivateEndpointName),managedPrivateEndpointName,@"^.*$");
             }
         }
 
         /// <summary>Returns the list of managed private endpoints.</summary>
-        /// <param name="subscriptionId">Gets subscription credentials which uniquely identify Microsoft Azure subscription. The subscription
-        /// ID forms part of the URI for every service call.</param>
-        /// <param name="resourceGroupName">The name of the resource group containing the Kusto cluster.</param>
+        /// <param name="subscriptionId">The ID of the target subscription.</param>
+        /// <param name="resourceGroupName">The name of the resource group. The name is case insensitive.</param>
         /// <param name="clusterName">The name of the Kusto cluster.</param>
         /// <param name="onOk">a delegate that is called when the remote service returns 200 (OK).</param>
         /// <param name="onDefault">a delegate that is called when the remote service returns default (any response code not handled
@@ -12093,9 +12736,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Kusto
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        public async global::System.Threading.Tasks.Task ManagedPrivateEndpointsList(string subscriptionId, string resourceGroupName, string clusterName, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api20221229.IManagedPrivateEndpointListResult>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api20221229.ICloudError>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Kusto.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Kusto.Runtime.ISendAsync sender)
+        public async global::System.Threading.Tasks.Task ManagedPrivateEndpointsList(string subscriptionId, string resourceGroupName, string clusterName, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api20230815.IManagedPrivateEndpointListResult>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api30.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Kusto.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Kusto.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2022-12-29";
+            var apiVersion = @"2023-08-15";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -12135,9 +12778,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Kusto
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        public async global::System.Threading.Tasks.Task ManagedPrivateEndpointsListViaIdentity(global::System.String viaIdentity, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api20221229.IManagedPrivateEndpointListResult>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api20221229.ICloudError>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Kusto.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Kusto.Runtime.ISendAsync sender)
+        public async global::System.Threading.Tasks.Task ManagedPrivateEndpointsListViaIdentity(global::System.String viaIdentity, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api20230815.IManagedPrivateEndpointListResult>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api30.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Kusto.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Kusto.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2022-12-29";
+            var apiVersion = @"2023-08-15";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -12189,7 +12832,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Kusto
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        internal async global::System.Threading.Tasks.Task ManagedPrivateEndpointsList_Call(global::System.Net.Http.HttpRequestMessage request, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api20221229.IManagedPrivateEndpointListResult>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api20221229.ICloudError>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Kusto.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Kusto.Runtime.ISendAsync sender)
+        internal async global::System.Threading.Tasks.Task ManagedPrivateEndpointsList_Call(global::System.Net.Http.HttpRequestMessage request, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api20230815.IManagedPrivateEndpointListResult>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api30.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Kusto.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Kusto.Runtime.ISendAsync sender)
         {
             using( NoSynchronizationContext )
             {
@@ -12207,13 +12850,13 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Kusto
                         case global::System.Net.HttpStatusCode.OK:
                         {
                             await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Kusto.Runtime.Events.BeforeResponseDispatch, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
-                            await onOk(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api20221229.ManagedPrivateEndpointListResult.FromJson(Microsoft.Azure.PowerShell.Cmdlets.Kusto.Runtime.Json.JsonNode.Parse(body.Result)) ));
+                            await onOk(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api20230815.ManagedPrivateEndpointListResult.FromJson(Microsoft.Azure.PowerShell.Cmdlets.Kusto.Runtime.Json.JsonNode.Parse(body.Result)) ));
                             break;
                         }
                         default:
                         {
                             await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Kusto.Runtime.Events.BeforeResponseDispatch, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
-                            await onDefault(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api20221229.CloudError.FromJson(Microsoft.Azure.PowerShell.Cmdlets.Kusto.Runtime.Json.JsonNode.Parse(body.Result)) ));
+                            await onDefault(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api30.ErrorResponse.FromJson(Microsoft.Azure.PowerShell.Cmdlets.Kusto.Runtime.Json.JsonNode.Parse(body.Result)) ));
                             break;
                         }
                     }
@@ -12232,9 +12875,8 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Kusto
         /// Validation method for <see cref="ManagedPrivateEndpointsList" /> method. Call this like the actual call, but you will
         /// get validation events back.
         /// </summary>
-        /// <param name="subscriptionId">Gets subscription credentials which uniquely identify Microsoft Azure subscription. The subscription
-        /// ID forms part of the URI for every service call.</param>
-        /// <param name="resourceGroupName">The name of the resource group containing the Kusto cluster.</param>
+        /// <param name="subscriptionId">The ID of the target subscription.</param>
+        /// <param name="resourceGroupName">The name of the resource group. The name is case insensitive.</param>
         /// <param name="clusterName">The name of the Kusto cluster.</param>
         /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.Kusto.Runtime.IEventListener" /> instance that will receive events.</param>
         /// <returns>
@@ -12245,15 +12887,18 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Kusto
             using( NoSynchronizationContext )
             {
                 await eventListener.AssertNotNull(nameof(subscriptionId),subscriptionId);
+                await eventListener.AssertMinimumLength(nameof(subscriptionId),subscriptionId,1);
                 await eventListener.AssertNotNull(nameof(resourceGroupName),resourceGroupName);
+                await eventListener.AssertMinimumLength(nameof(resourceGroupName),resourceGroupName,1);
+                await eventListener.AssertMaximumLength(nameof(resourceGroupName),resourceGroupName,90);
                 await eventListener.AssertNotNull(nameof(clusterName),clusterName);
+                await eventListener.AssertRegEx(nameof(clusterName),clusterName,@"^.*$");
             }
         }
 
         /// <summary>Updates a managed private endpoint.</summary>
-        /// <param name="subscriptionId">Gets subscription credentials which uniquely identify Microsoft Azure subscription. The subscription
-        /// ID forms part of the URI for every service call.</param>
-        /// <param name="resourceGroupName">The name of the resource group containing the Kusto cluster.</param>
+        /// <param name="subscriptionId">The ID of the target subscription.</param>
+        /// <param name="resourceGroupName">The name of the resource group. The name is case insensitive.</param>
         /// <param name="clusterName">The name of the Kusto cluster.</param>
         /// <param name="managedPrivateEndpointName">The name of the managed private endpoint.</param>
         /// <param name="body">The managed private endpoint parameters.</param>
@@ -12265,9 +12910,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Kusto
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        public async global::System.Threading.Tasks.Task ManagedPrivateEndpointsUpdate(string subscriptionId, string resourceGroupName, string clusterName, string managedPrivateEndpointName, Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api20221229.IManagedPrivateEndpoint body, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api20221229.IManagedPrivateEndpoint>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api20221229.ICloudError>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Kusto.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Kusto.Runtime.ISendAsync sender)
+        public async global::System.Threading.Tasks.Task ManagedPrivateEndpointsUpdate(string subscriptionId, string resourceGroupName, string clusterName, string managedPrivateEndpointName, Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api20230815.IManagedPrivateEndpoint body, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api20230815.IManagedPrivateEndpoint>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api30.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Kusto.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Kusto.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2022-12-29";
+            var apiVersion = @"2023-08-15";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -12313,9 +12958,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Kusto
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        public async global::System.Threading.Tasks.Task ManagedPrivateEndpointsUpdateViaIdentity(global::System.String viaIdentity, Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api20221229.IManagedPrivateEndpoint body, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api20221229.IManagedPrivateEndpoint>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api20221229.ICloudError>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Kusto.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Kusto.Runtime.ISendAsync sender)
+        public async global::System.Threading.Tasks.Task ManagedPrivateEndpointsUpdateViaIdentity(global::System.String viaIdentity, Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api20230815.IManagedPrivateEndpoint body, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api20230815.IManagedPrivateEndpoint>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api30.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Kusto.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Kusto.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2022-12-29";
+            var apiVersion = @"2023-08-15";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -12373,7 +13018,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Kusto
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        internal async global::System.Threading.Tasks.Task ManagedPrivateEndpointsUpdate_Call(global::System.Net.Http.HttpRequestMessage request, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api20221229.IManagedPrivateEndpoint>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api20221229.ICloudError>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Kusto.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Kusto.Runtime.ISendAsync sender)
+        internal async global::System.Threading.Tasks.Task ManagedPrivateEndpointsUpdate_Call(global::System.Net.Http.HttpRequestMessage request, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api20230815.IManagedPrivateEndpoint>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api30.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Kusto.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Kusto.Runtime.ISendAsync sender)
         {
             using( NoSynchronizationContext )
             {
@@ -12490,13 +13135,13 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Kusto
                         case global::System.Net.HttpStatusCode.OK:
                         {
                             await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Kusto.Runtime.Events.BeforeResponseDispatch, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
-                            await onOk(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api20221229.ManagedPrivateEndpoint.FromJson(Microsoft.Azure.PowerShell.Cmdlets.Kusto.Runtime.Json.JsonNode.Parse(body.Result)) .ReadHeaders(_response.Headers)));
+                            await onOk(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api20230815.ManagedPrivateEndpoint.FromJson(Microsoft.Azure.PowerShell.Cmdlets.Kusto.Runtime.Json.JsonNode.Parse(body.Result)) ));
                             break;
                         }
                         default:
                         {
                             await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Kusto.Runtime.Events.BeforeResponseDispatch, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
-                            await onDefault(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api20221229.CloudError.FromJson(Microsoft.Azure.PowerShell.Cmdlets.Kusto.Runtime.Json.JsonNode.Parse(body.Result)) ));
+                            await onDefault(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api30.ErrorResponse.FromJson(Microsoft.Azure.PowerShell.Cmdlets.Kusto.Runtime.Json.JsonNode.Parse(body.Result)) ));
                             break;
                         }
                     }
@@ -12515,9 +13160,8 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Kusto
         /// Validation method for <see cref="ManagedPrivateEndpointsUpdate" /> method. Call this like the actual call, but you will
         /// get validation events back.
         /// </summary>
-        /// <param name="subscriptionId">Gets subscription credentials which uniquely identify Microsoft Azure subscription. The subscription
-        /// ID forms part of the URI for every service call.</param>
-        /// <param name="resourceGroupName">The name of the resource group containing the Kusto cluster.</param>
+        /// <param name="subscriptionId">The ID of the target subscription.</param>
+        /// <param name="resourceGroupName">The name of the resource group. The name is case insensitive.</param>
         /// <param name="clusterName">The name of the Kusto cluster.</param>
         /// <param name="managedPrivateEndpointName">The name of the managed private endpoint.</param>
         /// <param name="body">The managed private endpoint parameters.</param>
@@ -12525,14 +13169,19 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Kusto
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        internal async global::System.Threading.Tasks.Task ManagedPrivateEndpointsUpdate_Validate(string subscriptionId, string resourceGroupName, string clusterName, string managedPrivateEndpointName, Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api20221229.IManagedPrivateEndpoint body, Microsoft.Azure.PowerShell.Cmdlets.Kusto.Runtime.IEventListener eventListener)
+        internal async global::System.Threading.Tasks.Task ManagedPrivateEndpointsUpdate_Validate(string subscriptionId, string resourceGroupName, string clusterName, string managedPrivateEndpointName, Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api20230815.IManagedPrivateEndpoint body, Microsoft.Azure.PowerShell.Cmdlets.Kusto.Runtime.IEventListener eventListener)
         {
             using( NoSynchronizationContext )
             {
                 await eventListener.AssertNotNull(nameof(subscriptionId),subscriptionId);
+                await eventListener.AssertMinimumLength(nameof(subscriptionId),subscriptionId,1);
                 await eventListener.AssertNotNull(nameof(resourceGroupName),resourceGroupName);
+                await eventListener.AssertMinimumLength(nameof(resourceGroupName),resourceGroupName,1);
+                await eventListener.AssertMaximumLength(nameof(resourceGroupName),resourceGroupName,90);
                 await eventListener.AssertNotNull(nameof(clusterName),clusterName);
+                await eventListener.AssertRegEx(nameof(clusterName),clusterName,@"^.*$");
                 await eventListener.AssertNotNull(nameof(managedPrivateEndpointName),managedPrivateEndpointName);
+                await eventListener.AssertRegEx(nameof(managedPrivateEndpointName),managedPrivateEndpointName,@"^.*$");
                 await eventListener.AssertNotNull(nameof(body), body);
                 await eventListener.AssertObjectIsValid(nameof(body), body);
             }
@@ -12547,9 +13196,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Kusto
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        public async global::System.Threading.Tasks.Task OperationsList(global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api20221229.IOperationListResult>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api20221229.ICloudError>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Kusto.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Kusto.Runtime.ISendAsync sender)
+        public async global::System.Threading.Tasks.Task OperationsList(global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api20230815.IOperationListResult>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api30.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Kusto.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Kusto.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2022-12-29";
+            var apiVersion = @"2023-08-15";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -12583,9 +13232,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Kusto
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        public async global::System.Threading.Tasks.Task OperationsListViaIdentity(global::System.String viaIdentity, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api20221229.IOperationListResult>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api20221229.ICloudError>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Kusto.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Kusto.Runtime.ISendAsync sender)
+        public async global::System.Threading.Tasks.Task OperationsListViaIdentity(global::System.String viaIdentity, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api20230815.IOperationListResult>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api30.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Kusto.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Kusto.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2022-12-29";
+            var apiVersion = @"2023-08-15";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -12628,7 +13277,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Kusto
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        internal async global::System.Threading.Tasks.Task OperationsList_Call(global::System.Net.Http.HttpRequestMessage request, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api20221229.IOperationListResult>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api20221229.ICloudError>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Kusto.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Kusto.Runtime.ISendAsync sender)
+        internal async global::System.Threading.Tasks.Task OperationsList_Call(global::System.Net.Http.HttpRequestMessage request, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api20230815.IOperationListResult>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api30.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Kusto.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Kusto.Runtime.ISendAsync sender)
         {
             using( NoSynchronizationContext )
             {
@@ -12646,13 +13295,13 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Kusto
                         case global::System.Net.HttpStatusCode.OK:
                         {
                             await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Kusto.Runtime.Events.BeforeResponseDispatch, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
-                            await onOk(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api20221229.OperationListResult.FromJson(Microsoft.Azure.PowerShell.Cmdlets.Kusto.Runtime.Json.JsonNode.Parse(body.Result)) ));
+                            await onOk(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api20230815.OperationListResult.FromJson(Microsoft.Azure.PowerShell.Cmdlets.Kusto.Runtime.Json.JsonNode.Parse(body.Result)) ));
                             break;
                         }
                         default:
                         {
                             await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Kusto.Runtime.Events.BeforeResponseDispatch, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
-                            await onDefault(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api20221229.CloudError.FromJson(Microsoft.Azure.PowerShell.Cmdlets.Kusto.Runtime.Json.JsonNode.Parse(body.Result)) ));
+                            await onDefault(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api30.ErrorResponse.FromJson(Microsoft.Azure.PowerShell.Cmdlets.Kusto.Runtime.Json.JsonNode.Parse(body.Result)) ));
                             break;
                         }
                     }
@@ -12684,10 +13333,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Kusto
         }
 
         /// <summary>Returns operation results.</summary>
-        /// <param name="subscriptionId">Gets subscription credentials which uniquely identify Microsoft Azure subscription. The subscription
-        /// ID forms part of the URI for every service call.</param>
-        /// <param name="location">Azure location (region) name.</param>
-        /// <param name="operationId">The Guid of the operation ID</param>
+        /// <param name="subscriptionId">The ID of the target subscription.</param>
+        /// <param name="location">The name of Azure region.</param>
+        /// <param name="operationId">The ID of an ongoing async operation.</param>
         /// <param name="onOk">a delegate that is called when the remote service returns 200 (OK).</param>
         /// <param name="onDefault">a delegate that is called when the remote service returns default (any response code not handled
         /// elsewhere).</param>
@@ -12696,9 +13344,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Kusto
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        public async global::System.Threading.Tasks.Task OperationsResultsGet(string subscriptionId, string location, string operationId, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api20221229.IOperationResult>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api20221229.ICloudError>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Kusto.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Kusto.Runtime.ISendAsync sender)
+        public async global::System.Threading.Tasks.Task OperationsResultsGet(string subscriptionId, string location, string operationId, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api20230815.IOperationResult>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api30.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Kusto.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Kusto.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2022-12-29";
+            var apiVersion = @"2023-08-15";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -12737,9 +13385,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Kusto
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        public async global::System.Threading.Tasks.Task OperationsResultsGetViaIdentity(global::System.String viaIdentity, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api20221229.IOperationResult>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api20221229.ICloudError>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Kusto.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Kusto.Runtime.ISendAsync sender)
+        public async global::System.Threading.Tasks.Task OperationsResultsGetViaIdentity(global::System.String viaIdentity, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api20230815.IOperationResult>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api30.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Kusto.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Kusto.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2022-12-29";
+            var apiVersion = @"2023-08-15";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -12790,7 +13438,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Kusto
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        internal async global::System.Threading.Tasks.Task OperationsResultsGet_Call(global::System.Net.Http.HttpRequestMessage request, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api20221229.IOperationResult>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api20221229.ICloudError>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Kusto.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Kusto.Runtime.ISendAsync sender)
+        internal async global::System.Threading.Tasks.Task OperationsResultsGet_Call(global::System.Net.Http.HttpRequestMessage request, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api20230815.IOperationResult>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api30.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Kusto.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Kusto.Runtime.ISendAsync sender)
         {
             using( NoSynchronizationContext )
             {
@@ -12808,13 +13456,13 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Kusto
                         case global::System.Net.HttpStatusCode.OK:
                         {
                             await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Kusto.Runtime.Events.BeforeResponseDispatch, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
-                            await onOk(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api20221229.OperationResult.FromJson(Microsoft.Azure.PowerShell.Cmdlets.Kusto.Runtime.Json.JsonNode.Parse(body.Result)) ));
+                            await onOk(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api20230815.OperationResult.FromJson(Microsoft.Azure.PowerShell.Cmdlets.Kusto.Runtime.Json.JsonNode.Parse(body.Result)) ));
                             break;
                         }
                         default:
                         {
                             await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Kusto.Runtime.Events.BeforeResponseDispatch, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
-                            await onDefault(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api20221229.CloudError.FromJson(Microsoft.Azure.PowerShell.Cmdlets.Kusto.Runtime.Json.JsonNode.Parse(body.Result)) ));
+                            await onDefault(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api30.ErrorResponse.FromJson(Microsoft.Azure.PowerShell.Cmdlets.Kusto.Runtime.Json.JsonNode.Parse(body.Result)) ));
                             break;
                         }
                     }
@@ -12833,10 +13481,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Kusto
         /// Validation method for <see cref="OperationsResultsGet" /> method. Call this like the actual call, but you will get validation
         /// events back.
         /// </summary>
-        /// <param name="subscriptionId">Gets subscription credentials which uniquely identify Microsoft Azure subscription. The subscription
-        /// ID forms part of the URI for every service call.</param>
-        /// <param name="location">Azure location (region) name.</param>
-        /// <param name="operationId">The Guid of the operation ID</param>
+        /// <param name="subscriptionId">The ID of the target subscription.</param>
+        /// <param name="location">The name of Azure region.</param>
+        /// <param name="operationId">The ID of an ongoing async operation.</param>
         /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.Kusto.Runtime.IEventListener" /> instance that will receive events.</param>
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
@@ -12846,16 +13493,18 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Kusto
             using( NoSynchronizationContext )
             {
                 await eventListener.AssertNotNull(nameof(subscriptionId),subscriptionId);
+                await eventListener.AssertMinimumLength(nameof(subscriptionId),subscriptionId,1);
                 await eventListener.AssertNotNull(nameof(location),location);
+                await eventListener.AssertMinimumLength(nameof(location),location,1);
                 await eventListener.AssertNotNull(nameof(operationId),operationId);
+                await eventListener.AssertMinimumLength(nameof(operationId),operationId,1);
             }
         }
 
         /// <summary>Returns operation results.</summary>
-        /// <param name="subscriptionId">Gets subscription credentials which uniquely identify Microsoft Azure subscription. The subscription
-        /// ID forms part of the URI for every service call.</param>
-        /// <param name="location">Azure location (region) name.</param>
-        /// <param name="operationId">The Guid of the operation ID</param>
+        /// <param name="subscriptionId">The ID of the target subscription.</param>
+        /// <param name="location">The name of Azure region.</param>
+        /// <param name="operationId">The ID of an ongoing async operation.</param>
         /// <param name="onOk">a delegate that is called when the remote service returns 200 (OK).</param>
         /// <param name="onAccepted">a delegate that is called when the remote service returns 202 (Accepted).</param>
         /// <param name="onDefault">a delegate that is called when the remote service returns default (any response code not handled
@@ -12865,9 +13514,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Kusto
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        public async global::System.Threading.Tasks.Task OperationsResultsLocationGet(string subscriptionId, string location, string operationId, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task> onAccepted, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Kusto.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Kusto.Runtime.ISendAsync sender)
+        public async global::System.Threading.Tasks.Task OperationsResultsLocationGet(string subscriptionId, string location, string operationId, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.IOperationsResultsLocationGetAcceptedResponseHeaders>, global::System.Threading.Tasks.Task> onAccepted, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Kusto.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Kusto.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2022-12-29";
+            var apiVersion = @"2023-08-15";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -12907,9 +13556,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Kusto
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        public async global::System.Threading.Tasks.Task OperationsResultsLocationGetViaIdentity(global::System.String viaIdentity, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task> onAccepted, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Kusto.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Kusto.Runtime.ISendAsync sender)
+        public async global::System.Threading.Tasks.Task OperationsResultsLocationGetViaIdentity(global::System.String viaIdentity, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.IOperationsResultsLocationGetAcceptedResponseHeaders>, global::System.Threading.Tasks.Task> onAccepted, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Kusto.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Kusto.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2022-12-29";
+            var apiVersion = @"2023-08-15";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -12961,7 +13610,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Kusto
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        internal async global::System.Threading.Tasks.Task OperationsResultsLocationGet_Call(global::System.Net.Http.HttpRequestMessage request, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task> onAccepted, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Kusto.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Kusto.Runtime.ISendAsync sender)
+        internal async global::System.Threading.Tasks.Task OperationsResultsLocationGet_Call(global::System.Net.Http.HttpRequestMessage request, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.IOperationsResultsLocationGetAcceptedResponseHeaders>, global::System.Threading.Tasks.Task> onAccepted, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Kusto.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Kusto.Runtime.ISendAsync sender)
         {
             using( NoSynchronizationContext )
             {
@@ -12985,7 +13634,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Kusto
                         case global::System.Net.HttpStatusCode.Accepted:
                         {
                             await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Kusto.Runtime.Events.BeforeResponseDispatch, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
-                            await onAccepted(_response);
+                            await onAccepted(_response,null /* deserializeFromResponse doesn't support '-header-' C:\Users\cloudtest\.autorest\@autorest_powershell@3.0.512\node_modules\@autorest\powershell\dist\llcsharp\schema\object.js*/);
                             break;
                         }
                         default:
@@ -13010,10 +13659,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Kusto
         /// Validation method for <see cref="OperationsResultsLocationGet" /> method. Call this like the actual call, but you will
         /// get validation events back.
         /// </summary>
-        /// <param name="subscriptionId">Gets subscription credentials which uniquely identify Microsoft Azure subscription. The subscription
-        /// ID forms part of the URI for every service call.</param>
-        /// <param name="location">Azure location (region) name.</param>
-        /// <param name="operationId">The Guid of the operation ID</param>
+        /// <param name="subscriptionId">The ID of the target subscription.</param>
+        /// <param name="location">The name of Azure region.</param>
+        /// <param name="operationId">The ID of an ongoing async operation.</param>
         /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.Kusto.Runtime.IEventListener" /> instance that will receive events.</param>
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
@@ -13023,15 +13671,17 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Kusto
             using( NoSynchronizationContext )
             {
                 await eventListener.AssertNotNull(nameof(subscriptionId),subscriptionId);
+                await eventListener.AssertMinimumLength(nameof(subscriptionId),subscriptionId,1);
                 await eventListener.AssertNotNull(nameof(location),location);
+                await eventListener.AssertMinimumLength(nameof(location),location,1);
                 await eventListener.AssertNotNull(nameof(operationId),operationId);
+                await eventListener.AssertMinimumLength(nameof(operationId),operationId,1);
             }
         }
 
         /// <summary>Approve or reject a private endpoint connection with a given name.</summary>
-        /// <param name="subscriptionId">Gets subscription credentials which uniquely identify Microsoft Azure subscription. The subscription
-        /// ID forms part of the URI for every service call.</param>
-        /// <param name="resourceGroupName">The name of the resource group containing the Kusto cluster.</param>
+        /// <param name="subscriptionId">The ID of the target subscription.</param>
+        /// <param name="resourceGroupName">The name of the resource group. The name is case insensitive.</param>
         /// <param name="clusterName">The name of the Kusto cluster.</param>
         /// <param name="privateEndpointConnectionName">The name of the private endpoint connection.</param>
         /// <param name="body">A private endpoint connection</param>
@@ -13043,9 +13693,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Kusto
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        public async global::System.Threading.Tasks.Task PrivateEndpointConnectionsCreateOrUpdate(string subscriptionId, string resourceGroupName, string clusterName, string privateEndpointConnectionName, Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api20221229.IPrivateEndpointConnection body, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api20221229.IPrivateEndpointConnection>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api20221229.ICloudError>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Kusto.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Kusto.Runtime.ISendAsync sender)
+        public async global::System.Threading.Tasks.Task PrivateEndpointConnectionsCreateOrUpdate(string subscriptionId, string resourceGroupName, string clusterName, string privateEndpointConnectionName, Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api20230815.IPrivateEndpointConnection body, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api20230815.IPrivateEndpointConnection>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api30.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Kusto.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Kusto.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2022-12-29";
+            var apiVersion = @"2023-08-15";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -13091,9 +13741,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Kusto
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        public async global::System.Threading.Tasks.Task PrivateEndpointConnectionsCreateOrUpdateViaIdentity(global::System.String viaIdentity, Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api20221229.IPrivateEndpointConnection body, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api20221229.IPrivateEndpointConnection>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api20221229.ICloudError>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Kusto.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Kusto.Runtime.ISendAsync sender)
+        public async global::System.Threading.Tasks.Task PrivateEndpointConnectionsCreateOrUpdateViaIdentity(global::System.String viaIdentity, Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api20230815.IPrivateEndpointConnection body, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api20230815.IPrivateEndpointConnection>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api30.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Kusto.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Kusto.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2022-12-29";
+            var apiVersion = @"2023-08-15";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -13153,7 +13803,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Kusto
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        internal async global::System.Threading.Tasks.Task PrivateEndpointConnectionsCreateOrUpdate_Call(global::System.Net.Http.HttpRequestMessage request, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api20221229.IPrivateEndpointConnection>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api20221229.ICloudError>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Kusto.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Kusto.Runtime.ISendAsync sender)
+        internal async global::System.Threading.Tasks.Task PrivateEndpointConnectionsCreateOrUpdate_Call(global::System.Net.Http.HttpRequestMessage request, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api20230815.IPrivateEndpointConnection>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api30.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Kusto.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Kusto.Runtime.ISendAsync sender)
         {
             using( NoSynchronizationContext )
             {
@@ -13270,13 +13920,13 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Kusto
                         case global::System.Net.HttpStatusCode.OK:
                         {
                             await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Kusto.Runtime.Events.BeforeResponseDispatch, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
-                            await onOk(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api20221229.PrivateEndpointConnection.FromJson(Microsoft.Azure.PowerShell.Cmdlets.Kusto.Runtime.Json.JsonNode.Parse(body.Result)) ));
+                            await onOk(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api20230815.PrivateEndpointConnection.FromJson(Microsoft.Azure.PowerShell.Cmdlets.Kusto.Runtime.Json.JsonNode.Parse(body.Result)) ));
                             break;
                         }
                         default:
                         {
                             await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Kusto.Runtime.Events.BeforeResponseDispatch, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
-                            await onDefault(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api20221229.CloudError.FromJson(Microsoft.Azure.PowerShell.Cmdlets.Kusto.Runtime.Json.JsonNode.Parse(body.Result)) ));
+                            await onDefault(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api30.ErrorResponse.FromJson(Microsoft.Azure.PowerShell.Cmdlets.Kusto.Runtime.Json.JsonNode.Parse(body.Result)) ));
                             break;
                         }
                     }
@@ -13295,9 +13945,8 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Kusto
         /// Validation method for <see cref="PrivateEndpointConnectionsCreateOrUpdate" /> method. Call this like the actual call,
         /// but you will get validation events back.
         /// </summary>
-        /// <param name="subscriptionId">Gets subscription credentials which uniquely identify Microsoft Azure subscription. The subscription
-        /// ID forms part of the URI for every service call.</param>
-        /// <param name="resourceGroupName">The name of the resource group containing the Kusto cluster.</param>
+        /// <param name="subscriptionId">The ID of the target subscription.</param>
+        /// <param name="resourceGroupName">The name of the resource group. The name is case insensitive.</param>
         /// <param name="clusterName">The name of the Kusto cluster.</param>
         /// <param name="privateEndpointConnectionName">The name of the private endpoint connection.</param>
         /// <param name="body">A private endpoint connection</param>
@@ -13305,23 +13954,27 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Kusto
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        internal async global::System.Threading.Tasks.Task PrivateEndpointConnectionsCreateOrUpdate_Validate(string subscriptionId, string resourceGroupName, string clusterName, string privateEndpointConnectionName, Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api20221229.IPrivateEndpointConnection body, Microsoft.Azure.PowerShell.Cmdlets.Kusto.Runtime.IEventListener eventListener)
+        internal async global::System.Threading.Tasks.Task PrivateEndpointConnectionsCreateOrUpdate_Validate(string subscriptionId, string resourceGroupName, string clusterName, string privateEndpointConnectionName, Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api20230815.IPrivateEndpointConnection body, Microsoft.Azure.PowerShell.Cmdlets.Kusto.Runtime.IEventListener eventListener)
         {
             using( NoSynchronizationContext )
             {
                 await eventListener.AssertNotNull(nameof(subscriptionId),subscriptionId);
+                await eventListener.AssertMinimumLength(nameof(subscriptionId),subscriptionId,1);
                 await eventListener.AssertNotNull(nameof(resourceGroupName),resourceGroupName);
+                await eventListener.AssertMinimumLength(nameof(resourceGroupName),resourceGroupName,1);
+                await eventListener.AssertMaximumLength(nameof(resourceGroupName),resourceGroupName,90);
                 await eventListener.AssertNotNull(nameof(clusterName),clusterName);
+                await eventListener.AssertRegEx(nameof(clusterName),clusterName,@"^.*$");
                 await eventListener.AssertNotNull(nameof(privateEndpointConnectionName),privateEndpointConnectionName);
+                await eventListener.AssertRegEx(nameof(privateEndpointConnectionName),privateEndpointConnectionName,@"^.*$");
                 await eventListener.AssertNotNull(nameof(body), body);
                 await eventListener.AssertObjectIsValid(nameof(body), body);
             }
         }
 
         /// <summary>Deletes a private endpoint connection with a given name.</summary>
-        /// <param name="subscriptionId">Gets subscription credentials which uniquely identify Microsoft Azure subscription. The subscription
-        /// ID forms part of the URI for every service call.</param>
-        /// <param name="resourceGroupName">The name of the resource group containing the Kusto cluster.</param>
+        /// <param name="subscriptionId">The ID of the target subscription.</param>
+        /// <param name="resourceGroupName">The name of the resource group. The name is case insensitive.</param>
         /// <param name="clusterName">The name of the Kusto cluster.</param>
         /// <param name="privateEndpointConnectionName">The name of the private endpoint connection.</param>
         /// <param name="onOk">a delegate that is called when the remote service returns 200 (OK).</param>
@@ -13333,9 +13986,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Kusto
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        public async global::System.Threading.Tasks.Task PrivateEndpointConnectionsDelete(string subscriptionId, string resourceGroupName, string clusterName, string privateEndpointConnectionName, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task> onNoContent, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api20221229.ICloudError>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Kusto.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Kusto.Runtime.ISendAsync sender)
+        public async global::System.Threading.Tasks.Task PrivateEndpointConnectionsDelete(string subscriptionId, string resourceGroupName, string clusterName, string privateEndpointConnectionName, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task> onNoContent, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api30.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Kusto.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Kusto.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2022-12-29";
+            var apiVersion = @"2023-08-15";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -13377,9 +14030,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Kusto
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        public async global::System.Threading.Tasks.Task PrivateEndpointConnectionsDeleteViaIdentity(global::System.String viaIdentity, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task> onNoContent, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api20221229.ICloudError>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Kusto.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Kusto.Runtime.ISendAsync sender)
+        public async global::System.Threading.Tasks.Task PrivateEndpointConnectionsDeleteViaIdentity(global::System.String viaIdentity, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task> onNoContent, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api30.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Kusto.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Kusto.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2022-12-29";
+            var apiVersion = @"2023-08-15";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -13434,7 +14087,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Kusto
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        internal async global::System.Threading.Tasks.Task PrivateEndpointConnectionsDelete_Call(global::System.Net.Http.HttpRequestMessage request, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task> onNoContent, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api20221229.ICloudError>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Kusto.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Kusto.Runtime.ISendAsync sender)
+        internal async global::System.Threading.Tasks.Task PrivateEndpointConnectionsDelete_Call(global::System.Net.Http.HttpRequestMessage request, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task> onNoContent, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api30.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Kusto.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Kusto.Runtime.ISendAsync sender)
         {
             using( NoSynchronizationContext )
             {
@@ -13564,7 +14217,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Kusto
                         default:
                         {
                             await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Kusto.Runtime.Events.BeforeResponseDispatch, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
-                            await onDefault(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api20221229.CloudError.FromJson(Microsoft.Azure.PowerShell.Cmdlets.Kusto.Runtime.Json.JsonNode.Parse(body.Result)) ));
+                            await onDefault(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api30.ErrorResponse.FromJson(Microsoft.Azure.PowerShell.Cmdlets.Kusto.Runtime.Json.JsonNode.Parse(body.Result)) ));
                             break;
                         }
                     }
@@ -13583,9 +14236,8 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Kusto
         /// Validation method for <see cref="PrivateEndpointConnectionsDelete" /> method. Call this like the actual call, but you
         /// will get validation events back.
         /// </summary>
-        /// <param name="subscriptionId">Gets subscription credentials which uniquely identify Microsoft Azure subscription. The subscription
-        /// ID forms part of the URI for every service call.</param>
-        /// <param name="resourceGroupName">The name of the resource group containing the Kusto cluster.</param>
+        /// <param name="subscriptionId">The ID of the target subscription.</param>
+        /// <param name="resourceGroupName">The name of the resource group. The name is case insensitive.</param>
         /// <param name="clusterName">The name of the Kusto cluster.</param>
         /// <param name="privateEndpointConnectionName">The name of the private endpoint connection.</param>
         /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.Kusto.Runtime.IEventListener" /> instance that will receive events.</param>
@@ -13597,16 +14249,20 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Kusto
             using( NoSynchronizationContext )
             {
                 await eventListener.AssertNotNull(nameof(subscriptionId),subscriptionId);
+                await eventListener.AssertMinimumLength(nameof(subscriptionId),subscriptionId,1);
                 await eventListener.AssertNotNull(nameof(resourceGroupName),resourceGroupName);
+                await eventListener.AssertMinimumLength(nameof(resourceGroupName),resourceGroupName,1);
+                await eventListener.AssertMaximumLength(nameof(resourceGroupName),resourceGroupName,90);
                 await eventListener.AssertNotNull(nameof(clusterName),clusterName);
+                await eventListener.AssertRegEx(nameof(clusterName),clusterName,@"^.*$");
                 await eventListener.AssertNotNull(nameof(privateEndpointConnectionName),privateEndpointConnectionName);
+                await eventListener.AssertRegEx(nameof(privateEndpointConnectionName),privateEndpointConnectionName,@"^.*$");
             }
         }
 
         /// <summary>Gets a private endpoint connection.</summary>
-        /// <param name="subscriptionId">Gets subscription credentials which uniquely identify Microsoft Azure subscription. The subscription
-        /// ID forms part of the URI for every service call.</param>
-        /// <param name="resourceGroupName">The name of the resource group containing the Kusto cluster.</param>
+        /// <param name="subscriptionId">The ID of the target subscription.</param>
+        /// <param name="resourceGroupName">The name of the resource group. The name is case insensitive.</param>
         /// <param name="clusterName">The name of the Kusto cluster.</param>
         /// <param name="privateEndpointConnectionName">The name of the private endpoint connection.</param>
         /// <param name="onOk">a delegate that is called when the remote service returns 200 (OK).</param>
@@ -13617,9 +14273,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Kusto
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        public async global::System.Threading.Tasks.Task PrivateEndpointConnectionsGet(string subscriptionId, string resourceGroupName, string clusterName, string privateEndpointConnectionName, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api20221229.IPrivateEndpointConnection>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api20221229.ICloudError>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Kusto.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Kusto.Runtime.ISendAsync sender)
+        public async global::System.Threading.Tasks.Task PrivateEndpointConnectionsGet(string subscriptionId, string resourceGroupName, string clusterName, string privateEndpointConnectionName, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api20230815.IPrivateEndpointConnection>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api30.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Kusto.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Kusto.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2022-12-29";
+            var apiVersion = @"2023-08-15";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -13660,9 +14316,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Kusto
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        public async global::System.Threading.Tasks.Task PrivateEndpointConnectionsGetViaIdentity(global::System.String viaIdentity, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api20221229.IPrivateEndpointConnection>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api20221229.ICloudError>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Kusto.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Kusto.Runtime.ISendAsync sender)
+        public async global::System.Threading.Tasks.Task PrivateEndpointConnectionsGetViaIdentity(global::System.String viaIdentity, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api20230815.IPrivateEndpointConnection>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api30.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Kusto.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Kusto.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2022-12-29";
+            var apiVersion = @"2023-08-15";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -13716,7 +14372,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Kusto
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        internal async global::System.Threading.Tasks.Task PrivateEndpointConnectionsGet_Call(global::System.Net.Http.HttpRequestMessage request, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api20221229.IPrivateEndpointConnection>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api20221229.ICloudError>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Kusto.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Kusto.Runtime.ISendAsync sender)
+        internal async global::System.Threading.Tasks.Task PrivateEndpointConnectionsGet_Call(global::System.Net.Http.HttpRequestMessage request, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api20230815.IPrivateEndpointConnection>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api30.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Kusto.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Kusto.Runtime.ISendAsync sender)
         {
             using( NoSynchronizationContext )
             {
@@ -13734,13 +14390,13 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Kusto
                         case global::System.Net.HttpStatusCode.OK:
                         {
                             await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Kusto.Runtime.Events.BeforeResponseDispatch, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
-                            await onOk(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api20221229.PrivateEndpointConnection.FromJson(Microsoft.Azure.PowerShell.Cmdlets.Kusto.Runtime.Json.JsonNode.Parse(body.Result)) ));
+                            await onOk(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api20230815.PrivateEndpointConnection.FromJson(Microsoft.Azure.PowerShell.Cmdlets.Kusto.Runtime.Json.JsonNode.Parse(body.Result)) ));
                             break;
                         }
                         default:
                         {
                             await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Kusto.Runtime.Events.BeforeResponseDispatch, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
-                            await onDefault(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api20221229.CloudError.FromJson(Microsoft.Azure.PowerShell.Cmdlets.Kusto.Runtime.Json.JsonNode.Parse(body.Result)) ));
+                            await onDefault(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api30.ErrorResponse.FromJson(Microsoft.Azure.PowerShell.Cmdlets.Kusto.Runtime.Json.JsonNode.Parse(body.Result)) ));
                             break;
                         }
                     }
@@ -13759,9 +14415,8 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Kusto
         /// Validation method for <see cref="PrivateEndpointConnectionsGet" /> method. Call this like the actual call, but you will
         /// get validation events back.
         /// </summary>
-        /// <param name="subscriptionId">Gets subscription credentials which uniquely identify Microsoft Azure subscription. The subscription
-        /// ID forms part of the URI for every service call.</param>
-        /// <param name="resourceGroupName">The name of the resource group containing the Kusto cluster.</param>
+        /// <param name="subscriptionId">The ID of the target subscription.</param>
+        /// <param name="resourceGroupName">The name of the resource group. The name is case insensitive.</param>
         /// <param name="clusterName">The name of the Kusto cluster.</param>
         /// <param name="privateEndpointConnectionName">The name of the private endpoint connection.</param>
         /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.Kusto.Runtime.IEventListener" /> instance that will receive events.</param>
@@ -13773,16 +14428,20 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Kusto
             using( NoSynchronizationContext )
             {
                 await eventListener.AssertNotNull(nameof(subscriptionId),subscriptionId);
+                await eventListener.AssertMinimumLength(nameof(subscriptionId),subscriptionId,1);
                 await eventListener.AssertNotNull(nameof(resourceGroupName),resourceGroupName);
+                await eventListener.AssertMinimumLength(nameof(resourceGroupName),resourceGroupName,1);
+                await eventListener.AssertMaximumLength(nameof(resourceGroupName),resourceGroupName,90);
                 await eventListener.AssertNotNull(nameof(clusterName),clusterName);
+                await eventListener.AssertRegEx(nameof(clusterName),clusterName,@"^.*$");
                 await eventListener.AssertNotNull(nameof(privateEndpointConnectionName),privateEndpointConnectionName);
+                await eventListener.AssertRegEx(nameof(privateEndpointConnectionName),privateEndpointConnectionName,@"^.*$");
             }
         }
 
         /// <summary>Returns the list of private endpoint connections.</summary>
-        /// <param name="subscriptionId">Gets subscription credentials which uniquely identify Microsoft Azure subscription. The subscription
-        /// ID forms part of the URI for every service call.</param>
-        /// <param name="resourceGroupName">The name of the resource group containing the Kusto cluster.</param>
+        /// <param name="subscriptionId">The ID of the target subscription.</param>
+        /// <param name="resourceGroupName">The name of the resource group. The name is case insensitive.</param>
         /// <param name="clusterName">The name of the Kusto cluster.</param>
         /// <param name="onOk">a delegate that is called when the remote service returns 200 (OK).</param>
         /// <param name="onDefault">a delegate that is called when the remote service returns default (any response code not handled
@@ -13792,9 +14451,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Kusto
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        public async global::System.Threading.Tasks.Task PrivateEndpointConnectionsList(string subscriptionId, string resourceGroupName, string clusterName, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api20221229.IPrivateEndpointConnectionListResult>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api20221229.ICloudError>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Kusto.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Kusto.Runtime.ISendAsync sender)
+        public async global::System.Threading.Tasks.Task PrivateEndpointConnectionsList(string subscriptionId, string resourceGroupName, string clusterName, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api20230815.IPrivateEndpointConnectionListResult>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api30.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Kusto.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Kusto.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2022-12-29";
+            var apiVersion = @"2023-08-15";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -13834,9 +14493,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Kusto
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        public async global::System.Threading.Tasks.Task PrivateEndpointConnectionsListViaIdentity(global::System.String viaIdentity, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api20221229.IPrivateEndpointConnectionListResult>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api20221229.ICloudError>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Kusto.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Kusto.Runtime.ISendAsync sender)
+        public async global::System.Threading.Tasks.Task PrivateEndpointConnectionsListViaIdentity(global::System.String viaIdentity, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api20230815.IPrivateEndpointConnectionListResult>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api30.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Kusto.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Kusto.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2022-12-29";
+            var apiVersion = @"2023-08-15";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -13888,7 +14547,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Kusto
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        internal async global::System.Threading.Tasks.Task PrivateEndpointConnectionsList_Call(global::System.Net.Http.HttpRequestMessage request, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api20221229.IPrivateEndpointConnectionListResult>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api20221229.ICloudError>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Kusto.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Kusto.Runtime.ISendAsync sender)
+        internal async global::System.Threading.Tasks.Task PrivateEndpointConnectionsList_Call(global::System.Net.Http.HttpRequestMessage request, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api20230815.IPrivateEndpointConnectionListResult>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api30.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Kusto.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Kusto.Runtime.ISendAsync sender)
         {
             using( NoSynchronizationContext )
             {
@@ -13906,13 +14565,13 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Kusto
                         case global::System.Net.HttpStatusCode.OK:
                         {
                             await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Kusto.Runtime.Events.BeforeResponseDispatch, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
-                            await onOk(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api20221229.PrivateEndpointConnectionListResult.FromJson(Microsoft.Azure.PowerShell.Cmdlets.Kusto.Runtime.Json.JsonNode.Parse(body.Result)) ));
+                            await onOk(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api20230815.PrivateEndpointConnectionListResult.FromJson(Microsoft.Azure.PowerShell.Cmdlets.Kusto.Runtime.Json.JsonNode.Parse(body.Result)) ));
                             break;
                         }
                         default:
                         {
                             await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Kusto.Runtime.Events.BeforeResponseDispatch, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
-                            await onDefault(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api20221229.CloudError.FromJson(Microsoft.Azure.PowerShell.Cmdlets.Kusto.Runtime.Json.JsonNode.Parse(body.Result)) ));
+                            await onDefault(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api30.ErrorResponse.FromJson(Microsoft.Azure.PowerShell.Cmdlets.Kusto.Runtime.Json.JsonNode.Parse(body.Result)) ));
                             break;
                         }
                     }
@@ -13931,9 +14590,8 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Kusto
         /// Validation method for <see cref="PrivateEndpointConnectionsList" /> method. Call this like the actual call, but you will
         /// get validation events back.
         /// </summary>
-        /// <param name="subscriptionId">Gets subscription credentials which uniquely identify Microsoft Azure subscription. The subscription
-        /// ID forms part of the URI for every service call.</param>
-        /// <param name="resourceGroupName">The name of the resource group containing the Kusto cluster.</param>
+        /// <param name="subscriptionId">The ID of the target subscription.</param>
+        /// <param name="resourceGroupName">The name of the resource group. The name is case insensitive.</param>
         /// <param name="clusterName">The name of the Kusto cluster.</param>
         /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.Kusto.Runtime.IEventListener" /> instance that will receive events.</param>
         /// <returns>
@@ -13944,15 +14602,18 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Kusto
             using( NoSynchronizationContext )
             {
                 await eventListener.AssertNotNull(nameof(subscriptionId),subscriptionId);
+                await eventListener.AssertMinimumLength(nameof(subscriptionId),subscriptionId,1);
                 await eventListener.AssertNotNull(nameof(resourceGroupName),resourceGroupName);
+                await eventListener.AssertMinimumLength(nameof(resourceGroupName),resourceGroupName,1);
+                await eventListener.AssertMaximumLength(nameof(resourceGroupName),resourceGroupName,90);
                 await eventListener.AssertNotNull(nameof(clusterName),clusterName);
+                await eventListener.AssertRegEx(nameof(clusterName),clusterName,@"^.*$");
             }
         }
 
         /// <summary>Gets a private link resource.</summary>
-        /// <param name="subscriptionId">Gets subscription credentials which uniquely identify Microsoft Azure subscription. The subscription
-        /// ID forms part of the URI for every service call.</param>
-        /// <param name="resourceGroupName">The name of the resource group containing the Kusto cluster.</param>
+        /// <param name="subscriptionId">The ID of the target subscription.</param>
+        /// <param name="resourceGroupName">The name of the resource group. The name is case insensitive.</param>
         /// <param name="clusterName">The name of the Kusto cluster.</param>
         /// <param name="privateLinkResourceName">The name of the private link resource.</param>
         /// <param name="onOk">a delegate that is called when the remote service returns 200 (OK).</param>
@@ -13963,9 +14624,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Kusto
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        public async global::System.Threading.Tasks.Task PrivateLinkResourcesGet(string subscriptionId, string resourceGroupName, string clusterName, string privateLinkResourceName, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api20221229.IPrivateLinkResource>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api20221229.ICloudError>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Kusto.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Kusto.Runtime.ISendAsync sender)
+        public async global::System.Threading.Tasks.Task PrivateLinkResourcesGet(string subscriptionId, string resourceGroupName, string clusterName, string privateLinkResourceName, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api20230815.IPrivateLinkResource>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api30.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Kusto.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Kusto.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2022-12-29";
+            var apiVersion = @"2023-08-15";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -14006,9 +14667,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Kusto
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        public async global::System.Threading.Tasks.Task PrivateLinkResourcesGetViaIdentity(global::System.String viaIdentity, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api20221229.IPrivateLinkResource>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api20221229.ICloudError>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Kusto.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Kusto.Runtime.ISendAsync sender)
+        public async global::System.Threading.Tasks.Task PrivateLinkResourcesGetViaIdentity(global::System.String viaIdentity, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api20230815.IPrivateLinkResource>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api30.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Kusto.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Kusto.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2022-12-29";
+            var apiVersion = @"2023-08-15";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -14062,7 +14723,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Kusto
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        internal async global::System.Threading.Tasks.Task PrivateLinkResourcesGet_Call(global::System.Net.Http.HttpRequestMessage request, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api20221229.IPrivateLinkResource>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api20221229.ICloudError>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Kusto.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Kusto.Runtime.ISendAsync sender)
+        internal async global::System.Threading.Tasks.Task PrivateLinkResourcesGet_Call(global::System.Net.Http.HttpRequestMessage request, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api20230815.IPrivateLinkResource>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api30.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Kusto.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Kusto.Runtime.ISendAsync sender)
         {
             using( NoSynchronizationContext )
             {
@@ -14080,13 +14741,13 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Kusto
                         case global::System.Net.HttpStatusCode.OK:
                         {
                             await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Kusto.Runtime.Events.BeforeResponseDispatch, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
-                            await onOk(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api20221229.PrivateLinkResource.FromJson(Microsoft.Azure.PowerShell.Cmdlets.Kusto.Runtime.Json.JsonNode.Parse(body.Result)) ));
+                            await onOk(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api20230815.PrivateLinkResource.FromJson(Microsoft.Azure.PowerShell.Cmdlets.Kusto.Runtime.Json.JsonNode.Parse(body.Result)) ));
                             break;
                         }
                         default:
                         {
                             await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Kusto.Runtime.Events.BeforeResponseDispatch, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
-                            await onDefault(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api20221229.CloudError.FromJson(Microsoft.Azure.PowerShell.Cmdlets.Kusto.Runtime.Json.JsonNode.Parse(body.Result)) ));
+                            await onDefault(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api30.ErrorResponse.FromJson(Microsoft.Azure.PowerShell.Cmdlets.Kusto.Runtime.Json.JsonNode.Parse(body.Result)) ));
                             break;
                         }
                     }
@@ -14105,9 +14766,8 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Kusto
         /// Validation method for <see cref="PrivateLinkResourcesGet" /> method. Call this like the actual call, but you will get
         /// validation events back.
         /// </summary>
-        /// <param name="subscriptionId">Gets subscription credentials which uniquely identify Microsoft Azure subscription. The subscription
-        /// ID forms part of the URI for every service call.</param>
-        /// <param name="resourceGroupName">The name of the resource group containing the Kusto cluster.</param>
+        /// <param name="subscriptionId">The ID of the target subscription.</param>
+        /// <param name="resourceGroupName">The name of the resource group. The name is case insensitive.</param>
         /// <param name="clusterName">The name of the Kusto cluster.</param>
         /// <param name="privateLinkResourceName">The name of the private link resource.</param>
         /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.Kusto.Runtime.IEventListener" /> instance that will receive events.</param>
@@ -14119,16 +14779,20 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Kusto
             using( NoSynchronizationContext )
             {
                 await eventListener.AssertNotNull(nameof(subscriptionId),subscriptionId);
+                await eventListener.AssertMinimumLength(nameof(subscriptionId),subscriptionId,1);
                 await eventListener.AssertNotNull(nameof(resourceGroupName),resourceGroupName);
+                await eventListener.AssertMinimumLength(nameof(resourceGroupName),resourceGroupName,1);
+                await eventListener.AssertMaximumLength(nameof(resourceGroupName),resourceGroupName,90);
                 await eventListener.AssertNotNull(nameof(clusterName),clusterName);
+                await eventListener.AssertRegEx(nameof(clusterName),clusterName,@"^.*$");
                 await eventListener.AssertNotNull(nameof(privateLinkResourceName),privateLinkResourceName);
+                await eventListener.AssertRegEx(nameof(privateLinkResourceName),privateLinkResourceName,@"^.*$");
             }
         }
 
         /// <summary>Returns the list of private link resources.</summary>
-        /// <param name="subscriptionId">Gets subscription credentials which uniquely identify Microsoft Azure subscription. The subscription
-        /// ID forms part of the URI for every service call.</param>
-        /// <param name="resourceGroupName">The name of the resource group containing the Kusto cluster.</param>
+        /// <param name="subscriptionId">The ID of the target subscription.</param>
+        /// <param name="resourceGroupName">The name of the resource group. The name is case insensitive.</param>
         /// <param name="clusterName">The name of the Kusto cluster.</param>
         /// <param name="onOk">a delegate that is called when the remote service returns 200 (OK).</param>
         /// <param name="onDefault">a delegate that is called when the remote service returns default (any response code not handled
@@ -14138,9 +14802,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Kusto
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        public async global::System.Threading.Tasks.Task PrivateLinkResourcesList(string subscriptionId, string resourceGroupName, string clusterName, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api20221229.IPrivateLinkResourceListResult>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api20221229.ICloudError>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Kusto.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Kusto.Runtime.ISendAsync sender)
+        public async global::System.Threading.Tasks.Task PrivateLinkResourcesList(string subscriptionId, string resourceGroupName, string clusterName, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api20230815.IPrivateLinkResourceListResult>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api30.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Kusto.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Kusto.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2022-12-29";
+            var apiVersion = @"2023-08-15";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -14180,9 +14844,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Kusto
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        public async global::System.Threading.Tasks.Task PrivateLinkResourcesListViaIdentity(global::System.String viaIdentity, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api20221229.IPrivateLinkResourceListResult>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api20221229.ICloudError>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Kusto.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Kusto.Runtime.ISendAsync sender)
+        public async global::System.Threading.Tasks.Task PrivateLinkResourcesListViaIdentity(global::System.String viaIdentity, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api20230815.IPrivateLinkResourceListResult>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api30.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Kusto.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Kusto.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2022-12-29";
+            var apiVersion = @"2023-08-15";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -14234,7 +14898,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Kusto
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        internal async global::System.Threading.Tasks.Task PrivateLinkResourcesList_Call(global::System.Net.Http.HttpRequestMessage request, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api20221229.IPrivateLinkResourceListResult>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api20221229.ICloudError>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Kusto.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Kusto.Runtime.ISendAsync sender)
+        internal async global::System.Threading.Tasks.Task PrivateLinkResourcesList_Call(global::System.Net.Http.HttpRequestMessage request, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api20230815.IPrivateLinkResourceListResult>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api30.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Kusto.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Kusto.Runtime.ISendAsync sender)
         {
             using( NoSynchronizationContext )
             {
@@ -14252,13 +14916,13 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Kusto
                         case global::System.Net.HttpStatusCode.OK:
                         {
                             await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Kusto.Runtime.Events.BeforeResponseDispatch, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
-                            await onOk(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api20221229.PrivateLinkResourceListResult.FromJson(Microsoft.Azure.PowerShell.Cmdlets.Kusto.Runtime.Json.JsonNode.Parse(body.Result)) ));
+                            await onOk(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api20230815.PrivateLinkResourceListResult.FromJson(Microsoft.Azure.PowerShell.Cmdlets.Kusto.Runtime.Json.JsonNode.Parse(body.Result)) ));
                             break;
                         }
                         default:
                         {
                             await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Kusto.Runtime.Events.BeforeResponseDispatch, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
-                            await onDefault(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api20221229.CloudError.FromJson(Microsoft.Azure.PowerShell.Cmdlets.Kusto.Runtime.Json.JsonNode.Parse(body.Result)) ));
+                            await onDefault(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api30.ErrorResponse.FromJson(Microsoft.Azure.PowerShell.Cmdlets.Kusto.Runtime.Json.JsonNode.Parse(body.Result)) ));
                             break;
                         }
                     }
@@ -14277,9 +14941,8 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Kusto
         /// Validation method for <see cref="PrivateLinkResourcesList" /> method. Call this like the actual call, but you will get
         /// validation events back.
         /// </summary>
-        /// <param name="subscriptionId">Gets subscription credentials which uniquely identify Microsoft Azure subscription. The subscription
-        /// ID forms part of the URI for every service call.</param>
-        /// <param name="resourceGroupName">The name of the resource group containing the Kusto cluster.</param>
+        /// <param name="subscriptionId">The ID of the target subscription.</param>
+        /// <param name="resourceGroupName">The name of the resource group. The name is case insensitive.</param>
         /// <param name="clusterName">The name of the Kusto cluster.</param>
         /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.Kusto.Runtime.IEventListener" /> instance that will receive events.</param>
         /// <returns>
@@ -14290,17 +14953,1436 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Kusto
             using( NoSynchronizationContext )
             {
                 await eventListener.AssertNotNull(nameof(subscriptionId),subscriptionId);
+                await eventListener.AssertMinimumLength(nameof(subscriptionId),subscriptionId,1);
                 await eventListener.AssertNotNull(nameof(resourceGroupName),resourceGroupName);
+                await eventListener.AssertMinimumLength(nameof(resourceGroupName),resourceGroupName,1);
+                await eventListener.AssertMaximumLength(nameof(resourceGroupName),resourceGroupName,90);
                 await eventListener.AssertNotNull(nameof(clusterName),clusterName);
+                await eventListener.AssertRegEx(nameof(clusterName),clusterName,@"^.*$");
+            }
+        }
+
+        /// <summary>
+        /// Checks that the sandbox custom image resource name is valid and is not already in use.
+        /// </summary>
+        /// <param name="resourceGroupName">The name of the resource group. The name is case insensitive.</param>
+        /// <param name="clusterName">The name of the Kusto cluster.</param>
+        /// <param name="subscriptionId">The ID of the target subscription.</param>
+        /// <param name="body">The name of the resource.</param>
+        /// <param name="onOk">a delegate that is called when the remote service returns 200 (OK).</param>
+        /// <param name="onDefault">a delegate that is called when the remote service returns default (any response code not handled
+        /// elsewhere).</param>
+        /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.Kusto.Runtime.IEventListener" /> instance that will receive events.</param>
+        /// <param name="sender">an instance of an Microsoft.Azure.PowerShell.Cmdlets.Kusto.Runtime.ISendAsync pipeline to use to make the request.</param>
+        /// <returns>
+        /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
+        /// </returns>
+        public async global::System.Threading.Tasks.Task SandboxCustomImagesCheckNameAvailability(string resourceGroupName, string clusterName, string subscriptionId, Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api20230815.ISandboxCustomImagesCheckNameRequest body, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api20230815.ICheckNameResult>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api30.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Kusto.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Kusto.Runtime.ISendAsync sender)
+        {
+            var apiVersion = @"2023-08-15";
+            // Constant Parameters
+            using( NoSynchronizationContext )
+            {
+                // construct URL
+                var pathAndQuery = global::System.Text.RegularExpressions.Regex.Replace(
+                        "/subscriptions/"
+                        + global::System.Uri.EscapeDataString(subscriptionId)
+                        + "/resourceGroups/"
+                        + global::System.Uri.EscapeDataString(resourceGroupName)
+                        + "/providers/Microsoft.Kusto/Clusters/"
+                        + global::System.Uri.EscapeDataString(clusterName)
+                        + "/sandboxCustomImagesCheckNameAvailability"
+                        + "?"
+                        + "api-version=" + global::System.Uri.EscapeDataString(apiVersion)
+                        ,"\\?&*$|&*$|(\\?)&+|(&)&+","$1$2");
+
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Kusto.Runtime.Events.URLCreated, pathAndQuery); if( eventListener.Token.IsCancellationRequested ) { return; }
+
+                // generate request object
+                var _url = new global::System.Uri($"https://management.azure.com{pathAndQuery}");
+                var request =  new global::System.Net.Http.HttpRequestMessage(Microsoft.Azure.PowerShell.Cmdlets.Kusto.Runtime.Method.Post, _url);
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Kusto.Runtime.Events.RequestCreated, request.RequestUri.PathAndQuery); if( eventListener.Token.IsCancellationRequested ) { return; }
+
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Kusto.Runtime.Events.HeaderParametersAdded); if( eventListener.Token.IsCancellationRequested ) { return; }
+                // set body content
+                request.Content = new global::System.Net.Http.StringContent(null != body ? body.ToJson(null).ToString() : @"{}", global::System.Text.Encoding.UTF8);
+                request.Content.Headers.ContentType = global::System.Net.Http.Headers.MediaTypeHeaderValue.Parse("application/json");
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Kusto.Runtime.Events.BodyContentSet); if( eventListener.Token.IsCancellationRequested ) { return; }
+                // make the call
+                await this.SandboxCustomImagesCheckNameAvailability_Call(request,onOk,onDefault,eventListener,sender);
+            }
+        }
+
+        /// <summary>
+        /// Checks that the sandbox custom image resource name is valid and is not already in use.
+        /// </summary>
+        /// <param name="viaIdentity"></param>
+        /// <param name="body">The name of the resource.</param>
+        /// <param name="onOk">a delegate that is called when the remote service returns 200 (OK).</param>
+        /// <param name="onDefault">a delegate that is called when the remote service returns default (any response code not handled
+        /// elsewhere).</param>
+        /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.Kusto.Runtime.IEventListener" /> instance that will receive events.</param>
+        /// <param name="sender">an instance of an Microsoft.Azure.PowerShell.Cmdlets.Kusto.Runtime.ISendAsync pipeline to use to make the request.</param>
+        /// <returns>
+        /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
+        /// </returns>
+        public async global::System.Threading.Tasks.Task SandboxCustomImagesCheckNameAvailabilityViaIdentity(global::System.String viaIdentity, Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api20230815.ISandboxCustomImagesCheckNameRequest body, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api20230815.ICheckNameResult>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api30.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Kusto.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Kusto.Runtime.ISendAsync sender)
+        {
+            var apiVersion = @"2023-08-15";
+            // Constant Parameters
+            using( NoSynchronizationContext )
+            {
+                // verify that Identity format is an exact match for uri
+
+                var _match = new global::System.Text.RegularExpressions.Regex("^/subscriptions/(?<subscriptionId>[^/]+)/resourceGroups/(?<resourceGroupName>[^/]+)/providers/Microsoft.Kusto/Clusters/(?<clusterName>[^/]+)$", global::System.Text.RegularExpressions.RegexOptions.IgnoreCase).Match(viaIdentity);
+                if (!_match.Success)
+                {
+                    throw new global::System.Exception("Invalid identity for URI '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Kusto/Clusters/{clusterName}/sandboxCustomImagesCheckNameAvailability'");
+                }
+
+                // replace URI parameters with values from identity
+                var resourceGroupName = _match.Groups["resourceGroupName"].Value;
+                var clusterName = _match.Groups["clusterName"].Value;
+                var subscriptionId = _match.Groups["subscriptionId"].Value;
+                // construct URL
+                var pathAndQuery = global::System.Text.RegularExpressions.Regex.Replace(
+                        "/subscriptions/"
+                        + subscriptionId
+                        + "/resourceGroups/"
+                        + resourceGroupName
+                        + "/providers/Microsoft.Kusto/Clusters/"
+                        + clusterName
+                        + "/sandboxCustomImagesCheckNameAvailability"
+                        + "?"
+                        + "api-version=" + global::System.Uri.EscapeDataString(apiVersion)
+                        ,"\\?&*$|&*$|(\\?)&+|(&)&+","$1$2");
+
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Kusto.Runtime.Events.URLCreated, pathAndQuery); if( eventListener.Token.IsCancellationRequested ) { return; }
+
+                // generate request object
+                var _url = new global::System.Uri($"https://management.azure.com{pathAndQuery}");
+                var request =  new global::System.Net.Http.HttpRequestMessage(Microsoft.Azure.PowerShell.Cmdlets.Kusto.Runtime.Method.Post, _url);
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Kusto.Runtime.Events.RequestCreated, request.RequestUri.PathAndQuery); if( eventListener.Token.IsCancellationRequested ) { return; }
+
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Kusto.Runtime.Events.HeaderParametersAdded); if( eventListener.Token.IsCancellationRequested ) { return; }
+                // set body content
+                request.Content = new global::System.Net.Http.StringContent(null != body ? body.ToJson(null).ToString() : @"{}", global::System.Text.Encoding.UTF8);
+                request.Content.Headers.ContentType = global::System.Net.Http.Headers.MediaTypeHeaderValue.Parse("application/json");
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Kusto.Runtime.Events.BodyContentSet); if( eventListener.Token.IsCancellationRequested ) { return; }
+                // make the call
+                await this.SandboxCustomImagesCheckNameAvailability_Call(request,onOk,onDefault,eventListener,sender);
+            }
+        }
+
+        /// <summary>
+        /// Actual wire call for <see cref="SandboxCustomImagesCheckNameAvailability" /> method.
+        /// </summary>
+        /// <param name="request">the prepared HttpRequestMessage to send.</param>
+        /// <param name="onOk">a delegate that is called when the remote service returns 200 (OK).</param>
+        /// <param name="onDefault">a delegate that is called when the remote service returns default (any response code not handled
+        /// elsewhere).</param>
+        /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.Kusto.Runtime.IEventListener" /> instance that will receive events.</param>
+        /// <param name="sender">an instance of an Microsoft.Azure.PowerShell.Cmdlets.Kusto.Runtime.ISendAsync pipeline to use to make the request.</param>
+        /// <returns>
+        /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
+        /// </returns>
+        internal async global::System.Threading.Tasks.Task SandboxCustomImagesCheckNameAvailability_Call(global::System.Net.Http.HttpRequestMessage request, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api20230815.ICheckNameResult>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api30.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Kusto.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Kusto.Runtime.ISendAsync sender)
+        {
+            using( NoSynchronizationContext )
+            {
+                global::System.Net.Http.HttpResponseMessage _response = null;
+                try
+                {
+                    var sendTask = sender.SendAsync(request, eventListener);
+                    await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Kusto.Runtime.Events.BeforeCall, request); if( eventListener.Token.IsCancellationRequested ) { return; }
+                    _response = await sendTask;
+                    await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Kusto.Runtime.Events.ResponseCreated, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
+                    var _contentType = _response.Content.Headers.ContentType?.MediaType;
+
+                    switch ( _response.StatusCode )
+                    {
+                        case global::System.Net.HttpStatusCode.OK:
+                        {
+                            await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Kusto.Runtime.Events.BeforeResponseDispatch, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
+                            await onOk(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api20230815.CheckNameResult.FromJson(Microsoft.Azure.PowerShell.Cmdlets.Kusto.Runtime.Json.JsonNode.Parse(body.Result)) ));
+                            break;
+                        }
+                        default:
+                        {
+                            await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Kusto.Runtime.Events.BeforeResponseDispatch, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
+                            await onDefault(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api30.ErrorResponse.FromJson(Microsoft.Azure.PowerShell.Cmdlets.Kusto.Runtime.Json.JsonNode.Parse(body.Result)) ));
+                            break;
+                        }
+                    }
+                }
+                finally
+                {
+                    // finally statements
+                    await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Kusto.Runtime.Events.Finally, request, _response);
+                    _response?.Dispose();
+                    request?.Dispose();
+                }
+            }
+        }
+
+        /// <summary>
+        /// Validation method for <see cref="SandboxCustomImagesCheckNameAvailability" /> method. Call this like the actual call,
+        /// but you will get validation events back.
+        /// </summary>
+        /// <param name="resourceGroupName">The name of the resource group. The name is case insensitive.</param>
+        /// <param name="clusterName">The name of the Kusto cluster.</param>
+        /// <param name="subscriptionId">The ID of the target subscription.</param>
+        /// <param name="body">The name of the resource.</param>
+        /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.Kusto.Runtime.IEventListener" /> instance that will receive events.</param>
+        /// <returns>
+        /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
+        /// </returns>
+        internal async global::System.Threading.Tasks.Task SandboxCustomImagesCheckNameAvailability_Validate(string resourceGroupName, string clusterName, string subscriptionId, Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api20230815.ISandboxCustomImagesCheckNameRequest body, Microsoft.Azure.PowerShell.Cmdlets.Kusto.Runtime.IEventListener eventListener)
+        {
+            using( NoSynchronizationContext )
+            {
+                await eventListener.AssertNotNull(nameof(resourceGroupName),resourceGroupName);
+                await eventListener.AssertMinimumLength(nameof(resourceGroupName),resourceGroupName,1);
+                await eventListener.AssertMaximumLength(nameof(resourceGroupName),resourceGroupName,90);
+                await eventListener.AssertNotNull(nameof(clusterName),clusterName);
+                await eventListener.AssertRegEx(nameof(clusterName),clusterName,@"^.*$");
+                await eventListener.AssertNotNull(nameof(subscriptionId),subscriptionId);
+                await eventListener.AssertMinimumLength(nameof(subscriptionId),subscriptionId,1);
+                await eventListener.AssertNotNull(nameof(body), body);
+                await eventListener.AssertObjectIsValid(nameof(body), body);
+            }
+        }
+
+        /// <summary>Creates or updates a sandbox custom image.</summary>
+        /// <param name="subscriptionId">The ID of the target subscription.</param>
+        /// <param name="resourceGroupName">The name of the resource group. The name is case insensitive.</param>
+        /// <param name="clusterName">The name of the Kusto cluster.</param>
+        /// <param name="sandboxCustomImageName">The name of the sandbox custom image.</param>
+        /// <param name="body">The sandbox custom image parameters.</param>
+        /// <param name="onOk">a delegate that is called when the remote service returns 200 (OK).</param>
+        /// <param name="onDefault">a delegate that is called when the remote service returns default (any response code not handled
+        /// elsewhere).</param>
+        /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.Kusto.Runtime.IEventListener" /> instance that will receive events.</param>
+        /// <param name="sender">an instance of an Microsoft.Azure.PowerShell.Cmdlets.Kusto.Runtime.ISendAsync pipeline to use to make the request.</param>
+        /// <returns>
+        /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
+        /// </returns>
+        public async global::System.Threading.Tasks.Task SandboxCustomImagesCreateOrUpdate(string subscriptionId, string resourceGroupName, string clusterName, string sandboxCustomImageName, Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api20230815.ISandboxCustomImage body, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api20230815.ISandboxCustomImage>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api30.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Kusto.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Kusto.Runtime.ISendAsync sender)
+        {
+            var apiVersion = @"2023-08-15";
+            // Constant Parameters
+            using( NoSynchronizationContext )
+            {
+                // construct URL
+                var pathAndQuery = global::System.Text.RegularExpressions.Regex.Replace(
+                        "/subscriptions/"
+                        + global::System.Uri.EscapeDataString(subscriptionId)
+                        + "/resourceGroups/"
+                        + global::System.Uri.EscapeDataString(resourceGroupName)
+                        + "/providers/Microsoft.Kusto/Clusters/"
+                        + global::System.Uri.EscapeDataString(clusterName)
+                        + "/sandboxCustomImages/"
+                        + global::System.Uri.EscapeDataString(sandboxCustomImageName)
+                        + "?"
+                        + "api-version=" + global::System.Uri.EscapeDataString(apiVersion)
+                        ,"\\?&*$|&*$|(\\?)&+|(&)&+","$1$2");
+
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Kusto.Runtime.Events.URLCreated, pathAndQuery); if( eventListener.Token.IsCancellationRequested ) { return; }
+
+                // generate request object
+                var _url = new global::System.Uri($"https://management.azure.com{pathAndQuery}");
+                var request =  new global::System.Net.Http.HttpRequestMessage(Microsoft.Azure.PowerShell.Cmdlets.Kusto.Runtime.Method.Put, _url);
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Kusto.Runtime.Events.RequestCreated, request.RequestUri.PathAndQuery); if( eventListener.Token.IsCancellationRequested ) { return; }
+
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Kusto.Runtime.Events.HeaderParametersAdded); if( eventListener.Token.IsCancellationRequested ) { return; }
+                // set body content
+                request.Content = new global::System.Net.Http.StringContent(null != body ? body.ToJson(null).ToString() : @"{}", global::System.Text.Encoding.UTF8);
+                request.Content.Headers.ContentType = global::System.Net.Http.Headers.MediaTypeHeaderValue.Parse("application/json");
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Kusto.Runtime.Events.BodyContentSet); if( eventListener.Token.IsCancellationRequested ) { return; }
+                // make the call
+                await this.SandboxCustomImagesCreateOrUpdate_Call(request,onOk,onDefault,eventListener,sender);
+            }
+        }
+
+        /// <summary>Creates or updates a sandbox custom image.</summary>
+        /// <param name="viaIdentity"></param>
+        /// <param name="body">The sandbox custom image parameters.</param>
+        /// <param name="onOk">a delegate that is called when the remote service returns 200 (OK).</param>
+        /// <param name="onDefault">a delegate that is called when the remote service returns default (any response code not handled
+        /// elsewhere).</param>
+        /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.Kusto.Runtime.IEventListener" /> instance that will receive events.</param>
+        /// <param name="sender">an instance of an Microsoft.Azure.PowerShell.Cmdlets.Kusto.Runtime.ISendAsync pipeline to use to make the request.</param>
+        /// <returns>
+        /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
+        /// </returns>
+        public async global::System.Threading.Tasks.Task SandboxCustomImagesCreateOrUpdateViaIdentity(global::System.String viaIdentity, Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api20230815.ISandboxCustomImage body, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api20230815.ISandboxCustomImage>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api30.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Kusto.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Kusto.Runtime.ISendAsync sender)
+        {
+            var apiVersion = @"2023-08-15";
+            // Constant Parameters
+            using( NoSynchronizationContext )
+            {
+                // verify that Identity format is an exact match for uri
+
+                var _match = new global::System.Text.RegularExpressions.Regex("^/subscriptions/(?<subscriptionId>[^/]+)/resourceGroups/(?<resourceGroupName>[^/]+)/providers/Microsoft.Kusto/Clusters/(?<clusterName>[^/]+)/sandboxCustomImages/(?<sandboxCustomImageName>[^/]+)$", global::System.Text.RegularExpressions.RegexOptions.IgnoreCase).Match(viaIdentity);
+                if (!_match.Success)
+                {
+                    throw new global::System.Exception("Invalid identity for URI '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Kusto/Clusters/{clusterName}/sandboxCustomImages/{sandboxCustomImageName}'");
+                }
+
+                // replace URI parameters with values from identity
+                var subscriptionId = _match.Groups["subscriptionId"].Value;
+                var resourceGroupName = _match.Groups["resourceGroupName"].Value;
+                var clusterName = _match.Groups["clusterName"].Value;
+                var sandboxCustomImageName = _match.Groups["sandboxCustomImageName"].Value;
+                // construct URL
+                var pathAndQuery = global::System.Text.RegularExpressions.Regex.Replace(
+                        "/subscriptions/"
+                        + subscriptionId
+                        + "/resourceGroups/"
+                        + resourceGroupName
+                        + "/providers/Microsoft.Kusto/Clusters/"
+                        + clusterName
+                        + "/sandboxCustomImages/"
+                        + sandboxCustomImageName
+                        + "?"
+                        + "api-version=" + global::System.Uri.EscapeDataString(apiVersion)
+                        ,"\\?&*$|&*$|(\\?)&+|(&)&+","$1$2");
+
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Kusto.Runtime.Events.URLCreated, pathAndQuery); if( eventListener.Token.IsCancellationRequested ) { return; }
+
+                // generate request object
+                var _url = new global::System.Uri($"https://management.azure.com{pathAndQuery}");
+                var request =  new global::System.Net.Http.HttpRequestMessage(Microsoft.Azure.PowerShell.Cmdlets.Kusto.Runtime.Method.Put, _url);
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Kusto.Runtime.Events.RequestCreated, request.RequestUri.PathAndQuery); if( eventListener.Token.IsCancellationRequested ) { return; }
+
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Kusto.Runtime.Events.HeaderParametersAdded); if( eventListener.Token.IsCancellationRequested ) { return; }
+                // set body content
+                request.Content = new global::System.Net.Http.StringContent(null != body ? body.ToJson(null).ToString() : @"{}", global::System.Text.Encoding.UTF8);
+                request.Content.Headers.ContentType = global::System.Net.Http.Headers.MediaTypeHeaderValue.Parse("application/json");
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Kusto.Runtime.Events.BodyContentSet); if( eventListener.Token.IsCancellationRequested ) { return; }
+                // make the call
+                await this.SandboxCustomImagesCreateOrUpdate_Call(request,onOk,onDefault,eventListener,sender);
+            }
+        }
+
+        /// <summary>Actual wire call for <see cref="SandboxCustomImagesCreateOrUpdate" /> method.</summary>
+        /// <param name="request">the prepared HttpRequestMessage to send.</param>
+        /// <param name="onOk">a delegate that is called when the remote service returns 200 (OK).</param>
+        /// <param name="onDefault">a delegate that is called when the remote service returns default (any response code not handled
+        /// elsewhere).</param>
+        /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.Kusto.Runtime.IEventListener" /> instance that will receive events.</param>
+        /// <param name="sender">an instance of an Microsoft.Azure.PowerShell.Cmdlets.Kusto.Runtime.ISendAsync pipeline to use to make the request.</param>
+        /// <returns>
+        /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
+        /// </returns>
+        internal async global::System.Threading.Tasks.Task SandboxCustomImagesCreateOrUpdate_Call(global::System.Net.Http.HttpRequestMessage request, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api20230815.ISandboxCustomImage>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api30.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Kusto.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Kusto.Runtime.ISendAsync sender)
+        {
+            using( NoSynchronizationContext )
+            {
+                global::System.Net.Http.HttpResponseMessage _response = null;
+                try
+                {
+                    var sendTask = sender.SendAsync(request, eventListener);
+                    await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Kusto.Runtime.Events.BeforeCall, request); if( eventListener.Token.IsCancellationRequested ) { return; }
+                    _response = await sendTask;
+                    await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Kusto.Runtime.Events.ResponseCreated, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
+                    // this operation supports x-ms-long-running-operation
+                    var _originalUri = request.RequestUri.AbsoluteUri;
+                    // declared final-state-via: default
+                    var asyncOperation = _response.GetFirstHeader(@"Azure-AsyncOperation");
+                    var location = _response.GetFirstHeader(@"Location");
+                    while (request.Method == System.Net.Http.HttpMethod.Put && _response.StatusCode == global::System.Net.HttpStatusCode.OK || _response.StatusCode == global::System.Net.HttpStatusCode.Created || _response.StatusCode == global::System.Net.HttpStatusCode.Accepted )
+                    {
+
+                        // get the delay before polling. (default to 30 seconds if not present)
+                        int delay = (int)(_response.Headers.RetryAfter?.Delta?.TotalSeconds ?? 30);
+                        await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Kusto.Runtime.Events.DelayBeforePolling, $"Delaying {delay} seconds before polling.", _response); if( eventListener.Token.IsCancellationRequested ) { return; }
+
+                        // start the delay timer (we'll await later...)
+                        var waiting = global::System.Threading.Tasks.Task.Delay(delay * 1000, eventListener.Token );
+
+                        // while we wait, let's grab the headers and get ready to poll.
+                        if (!System.String.IsNullOrEmpty(_response.GetFirstHeader(@"Azure-AsyncOperation"))) {
+                            asyncOperation = _response.GetFirstHeader(@"Azure-AsyncOperation");
+                        }
+                        if (!global::System.String.IsNullOrEmpty(_response.GetFirstHeader(@"Location"))) {
+                            location = _response.GetFirstHeader(@"Location");
+                        }
+                        var _uri = global::System.String.IsNullOrEmpty(asyncOperation) ? global::System.String.IsNullOrEmpty(location) ? _originalUri : location : asyncOperation;
+                        request = request.CloneAndDispose(new global::System.Uri(_uri), Microsoft.Azure.PowerShell.Cmdlets.Kusto.Runtime.Method.Get);
+
+                        // and let's look at the current response body and see if we have some information we can give back to the listener
+                        var content = await _response.Content.ReadAsStringAsync();
+                        await waiting;
+
+                        // check for cancellation
+                        if( eventListener.Token.IsCancellationRequested ) { return; }
+
+                        // drop the old response
+                        _response?.Dispose();
+
+                        // make the polling call
+                        _response = await sender.SendAsync(request, eventListener);
+                        await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Kusto.Runtime.Events.Polling, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
+
+                        // if we got back an OK, take a peek inside and see if it's done
+                        if( _response.StatusCode == global::System.Net.HttpStatusCode.OK)
+                        {
+                            var error = false;
+                            try {
+                                if( Microsoft.Azure.PowerShell.Cmdlets.Kusto.Runtime.Json.JsonNode.Parse(await _response.Content.ReadAsStringAsync()) is Microsoft.Azure.PowerShell.Cmdlets.Kusto.Runtime.Json.JsonObject json)
+                                {
+                                    var state = json.Property("properties")?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Kusto.Runtime.Json.JsonString>("provisioningState") ?? json.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Kusto.Runtime.Json.JsonString>("status");
+                                    if( state is null )
+                                    {
+                                        // the body doesn't contain any information that has the state of the LRO
+                                        // we're going to just get out, and let the consumer have the result
+                                        break;
+                                    }
+
+                                    switch( state?.ToString()?.ToLower() )
+                                    {
+                                      case "failed":
+                                          error = true;
+                                          break;
+                                      case "succeeded":
+                                      case "canceled":
+                                        // we're done polling.
+                                        break;
+
+                                      default:
+                                        // need to keep polling!
+                                        _response.StatusCode = global::System.Net.HttpStatusCode.Created;
+                                        continue;
+                                    }
+                                }
+                            } catch {
+                                // if we run into a problem peeking into the result,
+                                // we really don't want to do anything special.
+                            }
+                            if (error) {
+                                throw new Microsoft.Azure.PowerShell.Cmdlets.Kusto.Runtime.UndeclaredResponseException(_response);
+                            }
+                        }
+
+                        // check for terminal status code
+                        if (_response.StatusCode == global::System.Net.HttpStatusCode.Created || _response.StatusCode == global::System.Net.HttpStatusCode.Accepted )
+                        {
+                            continue;
+                        }
+                        // we are done polling, do a request on final target?
+                        if (!string.IsNullOrWhiteSpace(_originalUri))
+                        {
+                            // create a new request with the final uri
+                            request = request.CloneAndDispose(new global::System.Uri(_originalUri), Microsoft.Azure.PowerShell.Cmdlets.Kusto.Runtime.Method.Get);
+
+                            // drop the old response
+                            _response?.Dispose();
+
+                            // make the final call
+                            _response = await sender.SendAsync(request,  eventListener);
+                            await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Kusto.Runtime.Events.Polling, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
+                            break;
+                        }
+                    }
+                    var _contentType = _response.Content.Headers.ContentType?.MediaType;
+
+                    switch ( _response.StatusCode )
+                    {
+                        case global::System.Net.HttpStatusCode.OK:
+                        {
+                            await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Kusto.Runtime.Events.BeforeResponseDispatch, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
+                            await onOk(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api20230815.SandboxCustomImage.FromJson(Microsoft.Azure.PowerShell.Cmdlets.Kusto.Runtime.Json.JsonNode.Parse(body.Result)) ));
+                            break;
+                        }
+                        default:
+                        {
+                            await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Kusto.Runtime.Events.BeforeResponseDispatch, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
+                            await onDefault(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api30.ErrorResponse.FromJson(Microsoft.Azure.PowerShell.Cmdlets.Kusto.Runtime.Json.JsonNode.Parse(body.Result)) ));
+                            break;
+                        }
+                    }
+                }
+                finally
+                {
+                    // finally statements
+                    await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Kusto.Runtime.Events.Finally, request, _response);
+                    _response?.Dispose();
+                    request?.Dispose();
+                }
+            }
+        }
+
+        /// <summary>
+        /// Validation method for <see cref="SandboxCustomImagesCreateOrUpdate" /> method. Call this like the actual call, but you
+        /// will get validation events back.
+        /// </summary>
+        /// <param name="subscriptionId">The ID of the target subscription.</param>
+        /// <param name="resourceGroupName">The name of the resource group. The name is case insensitive.</param>
+        /// <param name="clusterName">The name of the Kusto cluster.</param>
+        /// <param name="sandboxCustomImageName">The name of the sandbox custom image.</param>
+        /// <param name="body">The sandbox custom image parameters.</param>
+        /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.Kusto.Runtime.IEventListener" /> instance that will receive events.</param>
+        /// <returns>
+        /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
+        /// </returns>
+        internal async global::System.Threading.Tasks.Task SandboxCustomImagesCreateOrUpdate_Validate(string subscriptionId, string resourceGroupName, string clusterName, string sandboxCustomImageName, Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api20230815.ISandboxCustomImage body, Microsoft.Azure.PowerShell.Cmdlets.Kusto.Runtime.IEventListener eventListener)
+        {
+            using( NoSynchronizationContext )
+            {
+                await eventListener.AssertNotNull(nameof(subscriptionId),subscriptionId);
+                await eventListener.AssertMinimumLength(nameof(subscriptionId),subscriptionId,1);
+                await eventListener.AssertNotNull(nameof(resourceGroupName),resourceGroupName);
+                await eventListener.AssertMinimumLength(nameof(resourceGroupName),resourceGroupName,1);
+                await eventListener.AssertMaximumLength(nameof(resourceGroupName),resourceGroupName,90);
+                await eventListener.AssertNotNull(nameof(clusterName),clusterName);
+                await eventListener.AssertRegEx(nameof(clusterName),clusterName,@"^.*$");
+                await eventListener.AssertNotNull(nameof(sandboxCustomImageName),sandboxCustomImageName);
+                await eventListener.AssertRegEx(nameof(sandboxCustomImageName),sandboxCustomImageName,@"^.*$");
+                await eventListener.AssertNotNull(nameof(body), body);
+                await eventListener.AssertObjectIsValid(nameof(body), body);
+            }
+        }
+
+        /// <summary>Deletes a sandbox custom image.</summary>
+        /// <param name="subscriptionId">The ID of the target subscription.</param>
+        /// <param name="resourceGroupName">The name of the resource group. The name is case insensitive.</param>
+        /// <param name="clusterName">The name of the Kusto cluster.</param>
+        /// <param name="sandboxCustomImageName">The name of the sandbox custom image.</param>
+        /// <param name="onOk">a delegate that is called when the remote service returns 200 (OK).</param>
+        /// <param name="onNoContent">a delegate that is called when the remote service returns 204 (NoContent).</param>
+        /// <param name="onDefault">a delegate that is called when the remote service returns default (any response code not handled
+        /// elsewhere).</param>
+        /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.Kusto.Runtime.IEventListener" /> instance that will receive events.</param>
+        /// <param name="sender">an instance of an Microsoft.Azure.PowerShell.Cmdlets.Kusto.Runtime.ISendAsync pipeline to use to make the request.</param>
+        /// <returns>
+        /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
+        /// </returns>
+        public async global::System.Threading.Tasks.Task SandboxCustomImagesDelete(string subscriptionId, string resourceGroupName, string clusterName, string sandboxCustomImageName, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task> onNoContent, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api30.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Kusto.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Kusto.Runtime.ISendAsync sender)
+        {
+            var apiVersion = @"2023-08-15";
+            // Constant Parameters
+            using( NoSynchronizationContext )
+            {
+                // construct URL
+                var pathAndQuery = global::System.Text.RegularExpressions.Regex.Replace(
+                        "/subscriptions/"
+                        + global::System.Uri.EscapeDataString(subscriptionId)
+                        + "/resourceGroups/"
+                        + global::System.Uri.EscapeDataString(resourceGroupName)
+                        + "/providers/Microsoft.Kusto/Clusters/"
+                        + global::System.Uri.EscapeDataString(clusterName)
+                        + "/sandboxCustomImages/"
+                        + global::System.Uri.EscapeDataString(sandboxCustomImageName)
+                        + "?"
+                        + "api-version=" + global::System.Uri.EscapeDataString(apiVersion)
+                        ,"\\?&*$|&*$|(\\?)&+|(&)&+","$1$2");
+
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Kusto.Runtime.Events.URLCreated, pathAndQuery); if( eventListener.Token.IsCancellationRequested ) { return; }
+
+                // generate request object
+                var _url = new global::System.Uri($"https://management.azure.com{pathAndQuery}");
+                var request =  new global::System.Net.Http.HttpRequestMessage(Microsoft.Azure.PowerShell.Cmdlets.Kusto.Runtime.Method.Delete, _url);
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Kusto.Runtime.Events.RequestCreated, request.RequestUri.PathAndQuery); if( eventListener.Token.IsCancellationRequested ) { return; }
+
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Kusto.Runtime.Events.HeaderParametersAdded); if( eventListener.Token.IsCancellationRequested ) { return; }
+                // make the call
+                await this.SandboxCustomImagesDelete_Call(request,onOk,onNoContent,onDefault,eventListener,sender);
+            }
+        }
+
+        /// <summary>Deletes a sandbox custom image.</summary>
+        /// <param name="viaIdentity"></param>
+        /// <param name="onOk">a delegate that is called when the remote service returns 200 (OK).</param>
+        /// <param name="onNoContent">a delegate that is called when the remote service returns 204 (NoContent).</param>
+        /// <param name="onDefault">a delegate that is called when the remote service returns default (any response code not handled
+        /// elsewhere).</param>
+        /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.Kusto.Runtime.IEventListener" /> instance that will receive events.</param>
+        /// <param name="sender">an instance of an Microsoft.Azure.PowerShell.Cmdlets.Kusto.Runtime.ISendAsync pipeline to use to make the request.</param>
+        /// <returns>
+        /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
+        /// </returns>
+        public async global::System.Threading.Tasks.Task SandboxCustomImagesDeleteViaIdentity(global::System.String viaIdentity, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task> onNoContent, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api30.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Kusto.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Kusto.Runtime.ISendAsync sender)
+        {
+            var apiVersion = @"2023-08-15";
+            // Constant Parameters
+            using( NoSynchronizationContext )
+            {
+                // verify that Identity format is an exact match for uri
+
+                var _match = new global::System.Text.RegularExpressions.Regex("^/subscriptions/(?<subscriptionId>[^/]+)/resourceGroups/(?<resourceGroupName>[^/]+)/providers/Microsoft.Kusto/Clusters/(?<clusterName>[^/]+)/sandboxCustomImages/(?<sandboxCustomImageName>[^/]+)$", global::System.Text.RegularExpressions.RegexOptions.IgnoreCase).Match(viaIdentity);
+                if (!_match.Success)
+                {
+                    throw new global::System.Exception("Invalid identity for URI '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Kusto/Clusters/{clusterName}/sandboxCustomImages/{sandboxCustomImageName}'");
+                }
+
+                // replace URI parameters with values from identity
+                var subscriptionId = _match.Groups["subscriptionId"].Value;
+                var resourceGroupName = _match.Groups["resourceGroupName"].Value;
+                var clusterName = _match.Groups["clusterName"].Value;
+                var sandboxCustomImageName = _match.Groups["sandboxCustomImageName"].Value;
+                // construct URL
+                var pathAndQuery = global::System.Text.RegularExpressions.Regex.Replace(
+                        "/subscriptions/"
+                        + subscriptionId
+                        + "/resourceGroups/"
+                        + resourceGroupName
+                        + "/providers/Microsoft.Kusto/Clusters/"
+                        + clusterName
+                        + "/sandboxCustomImages/"
+                        + sandboxCustomImageName
+                        + "?"
+                        + "api-version=" + global::System.Uri.EscapeDataString(apiVersion)
+                        ,"\\?&*$|&*$|(\\?)&+|(&)&+","$1$2");
+
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Kusto.Runtime.Events.URLCreated, pathAndQuery); if( eventListener.Token.IsCancellationRequested ) { return; }
+
+                // generate request object
+                var _url = new global::System.Uri($"https://management.azure.com{pathAndQuery}");
+                var request =  new global::System.Net.Http.HttpRequestMessage(Microsoft.Azure.PowerShell.Cmdlets.Kusto.Runtime.Method.Delete, _url);
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Kusto.Runtime.Events.RequestCreated, request.RequestUri.PathAndQuery); if( eventListener.Token.IsCancellationRequested ) { return; }
+
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Kusto.Runtime.Events.HeaderParametersAdded); if( eventListener.Token.IsCancellationRequested ) { return; }
+                // make the call
+                await this.SandboxCustomImagesDelete_Call(request,onOk,onNoContent,onDefault,eventListener,sender);
+            }
+        }
+
+        /// <summary>Actual wire call for <see cref="SandboxCustomImagesDelete" /> method.</summary>
+        /// <param name="request">the prepared HttpRequestMessage to send.</param>
+        /// <param name="onOk">a delegate that is called when the remote service returns 200 (OK).</param>
+        /// <param name="onNoContent">a delegate that is called when the remote service returns 204 (NoContent).</param>
+        /// <param name="onDefault">a delegate that is called when the remote service returns default (any response code not handled
+        /// elsewhere).</param>
+        /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.Kusto.Runtime.IEventListener" /> instance that will receive events.</param>
+        /// <param name="sender">an instance of an Microsoft.Azure.PowerShell.Cmdlets.Kusto.Runtime.ISendAsync pipeline to use to make the request.</param>
+        /// <returns>
+        /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
+        /// </returns>
+        internal async global::System.Threading.Tasks.Task SandboxCustomImagesDelete_Call(global::System.Net.Http.HttpRequestMessage request, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task> onNoContent, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api30.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Kusto.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Kusto.Runtime.ISendAsync sender)
+        {
+            using( NoSynchronizationContext )
+            {
+                global::System.Net.Http.HttpResponseMessage _response = null;
+                try
+                {
+                    var sendTask = sender.SendAsync(request, eventListener);
+                    await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Kusto.Runtime.Events.BeforeCall, request); if( eventListener.Token.IsCancellationRequested ) { return; }
+                    _response = await sendTask;
+                    await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Kusto.Runtime.Events.ResponseCreated, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
+                    // this operation supports x-ms-long-running-operation
+                    var _originalUri = request.RequestUri.AbsoluteUri;
+                    // declared final-state-via: default
+                    var _finalUri = _response.GetFirstHeader(@"Location");
+                    var asyncOperation = _response.GetFirstHeader(@"Azure-AsyncOperation");
+                    var location = _response.GetFirstHeader(@"Location");
+                    while (request.Method == System.Net.Http.HttpMethod.Put && _response.StatusCode == global::System.Net.HttpStatusCode.OK || _response.StatusCode == global::System.Net.HttpStatusCode.Created || _response.StatusCode == global::System.Net.HttpStatusCode.Accepted )
+                    {
+
+                        // get the delay before polling. (default to 30 seconds if not present)
+                        int delay = (int)(_response.Headers.RetryAfter?.Delta?.TotalSeconds ?? 30);
+                        await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Kusto.Runtime.Events.DelayBeforePolling, $"Delaying {delay} seconds before polling.", _response); if( eventListener.Token.IsCancellationRequested ) { return; }
+
+                        // start the delay timer (we'll await later...)
+                        var waiting = global::System.Threading.Tasks.Task.Delay(delay * 1000, eventListener.Token );
+
+                        // while we wait, let's grab the headers and get ready to poll.
+                        if (!System.String.IsNullOrEmpty(_response.GetFirstHeader(@"Azure-AsyncOperation"))) {
+                            asyncOperation = _response.GetFirstHeader(@"Azure-AsyncOperation");
+                        }
+                        if (!global::System.String.IsNullOrEmpty(_response.GetFirstHeader(@"Location"))) {
+                            location = _response.GetFirstHeader(@"Location");
+                        }
+                        var _uri = global::System.String.IsNullOrEmpty(asyncOperation) ? global::System.String.IsNullOrEmpty(location) ? _originalUri : location : asyncOperation;
+                        request = request.CloneAndDispose(new global::System.Uri(_uri), Microsoft.Azure.PowerShell.Cmdlets.Kusto.Runtime.Method.Get);
+
+                        // and let's look at the current response body and see if we have some information we can give back to the listener
+                        var content = await _response.Content.ReadAsStringAsync();
+                        await waiting;
+
+                        // check for cancellation
+                        if( eventListener.Token.IsCancellationRequested ) { return; }
+
+                        // drop the old response
+                        _response?.Dispose();
+
+                        // make the polling call
+                        _response = await sender.SendAsync(request, eventListener);
+                        await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Kusto.Runtime.Events.Polling, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
+
+                        // if we got back an OK, take a peek inside and see if it's done
+                        if( _response.StatusCode == global::System.Net.HttpStatusCode.OK)
+                        {
+                            var error = false;
+                            try {
+                                if( Microsoft.Azure.PowerShell.Cmdlets.Kusto.Runtime.Json.JsonNode.Parse(await _response.Content.ReadAsStringAsync()) is Microsoft.Azure.PowerShell.Cmdlets.Kusto.Runtime.Json.JsonObject json)
+                                {
+                                    var state = json.Property("properties")?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Kusto.Runtime.Json.JsonString>("provisioningState") ?? json.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Kusto.Runtime.Json.JsonString>("status");
+                                    if( state is null )
+                                    {
+                                        // the body doesn't contain any information that has the state of the LRO
+                                        // we're going to just get out, and let the consumer have the result
+                                        break;
+                                    }
+
+                                    switch( state?.ToString()?.ToLower() )
+                                    {
+                                      case "failed":
+                                          error = true;
+                                          break;
+                                      case "succeeded":
+                                      case "canceled":
+                                        // we're done polling.
+                                        break;
+
+                                      default:
+                                        // need to keep polling!
+                                        _response.StatusCode = global::System.Net.HttpStatusCode.Created;
+                                        continue;
+                                    }
+                                }
+                            } catch {
+                                // if we run into a problem peeking into the result,
+                                // we really don't want to do anything special.
+                            }
+                            if (error) {
+                                throw new Microsoft.Azure.PowerShell.Cmdlets.Kusto.Runtime.UndeclaredResponseException(_response);
+                            }
+                        }
+
+                        // check for terminal status code
+                        if (_response.StatusCode == global::System.Net.HttpStatusCode.Created || _response.StatusCode == global::System.Net.HttpStatusCode.Accepted )
+                        {
+                            continue;
+                        }
+                        // we are done polling, do a request on final target?
+                        if (!string.IsNullOrWhiteSpace(_finalUri))
+                        {
+                            // create a new request with the final uri
+                            request = request.CloneAndDispose(new global::System.Uri(_finalUri), Microsoft.Azure.PowerShell.Cmdlets.Kusto.Runtime.Method.Get);
+
+                            // drop the old response
+                            _response?.Dispose();
+
+                            // make the final call
+                            _response = await sender.SendAsync(request,  eventListener);
+                            await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Kusto.Runtime.Events.Polling, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
+                            break;
+                        }
+                    }
+                    var _contentType = _response.Content.Headers.ContentType?.MediaType;
+
+                    switch ( _response.StatusCode )
+                    {
+                        case global::System.Net.HttpStatusCode.OK:
+                        {
+                            await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Kusto.Runtime.Events.BeforeResponseDispatch, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
+                            await onOk(_response);
+                            break;
+                        }
+                        case global::System.Net.HttpStatusCode.NoContent:
+                        {
+                            await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Kusto.Runtime.Events.BeforeResponseDispatch, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
+                            await onNoContent(_response);
+                            break;
+                        }
+                        default:
+                        {
+                            await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Kusto.Runtime.Events.BeforeResponseDispatch, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
+                            await onDefault(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api30.ErrorResponse.FromJson(Microsoft.Azure.PowerShell.Cmdlets.Kusto.Runtime.Json.JsonNode.Parse(body.Result)) ));
+                            break;
+                        }
+                    }
+                }
+                finally
+                {
+                    // finally statements
+                    await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Kusto.Runtime.Events.Finally, request, _response);
+                    _response?.Dispose();
+                    request?.Dispose();
+                }
+            }
+        }
+
+        /// <summary>
+        /// Validation method for <see cref="SandboxCustomImagesDelete" /> method. Call this like the actual call, but you will get
+        /// validation events back.
+        /// </summary>
+        /// <param name="subscriptionId">The ID of the target subscription.</param>
+        /// <param name="resourceGroupName">The name of the resource group. The name is case insensitive.</param>
+        /// <param name="clusterName">The name of the Kusto cluster.</param>
+        /// <param name="sandboxCustomImageName">The name of the sandbox custom image.</param>
+        /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.Kusto.Runtime.IEventListener" /> instance that will receive events.</param>
+        /// <returns>
+        /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
+        /// </returns>
+        internal async global::System.Threading.Tasks.Task SandboxCustomImagesDelete_Validate(string subscriptionId, string resourceGroupName, string clusterName, string sandboxCustomImageName, Microsoft.Azure.PowerShell.Cmdlets.Kusto.Runtime.IEventListener eventListener)
+        {
+            using( NoSynchronizationContext )
+            {
+                await eventListener.AssertNotNull(nameof(subscriptionId),subscriptionId);
+                await eventListener.AssertMinimumLength(nameof(subscriptionId),subscriptionId,1);
+                await eventListener.AssertNotNull(nameof(resourceGroupName),resourceGroupName);
+                await eventListener.AssertMinimumLength(nameof(resourceGroupName),resourceGroupName,1);
+                await eventListener.AssertMaximumLength(nameof(resourceGroupName),resourceGroupName,90);
+                await eventListener.AssertNotNull(nameof(clusterName),clusterName);
+                await eventListener.AssertRegEx(nameof(clusterName),clusterName,@"^.*$");
+                await eventListener.AssertNotNull(nameof(sandboxCustomImageName),sandboxCustomImageName);
+                await eventListener.AssertRegEx(nameof(sandboxCustomImageName),sandboxCustomImageName,@"^.*$");
+            }
+        }
+
+        /// <summary>Returns a sandbox custom image</summary>
+        /// <param name="subscriptionId">The ID of the target subscription.</param>
+        /// <param name="resourceGroupName">The name of the resource group. The name is case insensitive.</param>
+        /// <param name="clusterName">The name of the Kusto cluster.</param>
+        /// <param name="sandboxCustomImageName">The name of the sandbox custom image.</param>
+        /// <param name="onOk">a delegate that is called when the remote service returns 200 (OK).</param>
+        /// <param name="onDefault">a delegate that is called when the remote service returns default (any response code not handled
+        /// elsewhere).</param>
+        /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.Kusto.Runtime.IEventListener" /> instance that will receive events.</param>
+        /// <param name="sender">an instance of an Microsoft.Azure.PowerShell.Cmdlets.Kusto.Runtime.ISendAsync pipeline to use to make the request.</param>
+        /// <returns>
+        /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
+        /// </returns>
+        public async global::System.Threading.Tasks.Task SandboxCustomImagesGet(string subscriptionId, string resourceGroupName, string clusterName, string sandboxCustomImageName, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api20230815.ISandboxCustomImage>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api30.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Kusto.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Kusto.Runtime.ISendAsync sender)
+        {
+            var apiVersion = @"2023-08-15";
+            // Constant Parameters
+            using( NoSynchronizationContext )
+            {
+                // construct URL
+                var pathAndQuery = global::System.Text.RegularExpressions.Regex.Replace(
+                        "/subscriptions/"
+                        + global::System.Uri.EscapeDataString(subscriptionId)
+                        + "/resourceGroups/"
+                        + global::System.Uri.EscapeDataString(resourceGroupName)
+                        + "/providers/Microsoft.Kusto/Clusters/"
+                        + global::System.Uri.EscapeDataString(clusterName)
+                        + "/sandboxCustomImages/"
+                        + global::System.Uri.EscapeDataString(sandboxCustomImageName)
+                        + "?"
+                        + "api-version=" + global::System.Uri.EscapeDataString(apiVersion)
+                        ,"\\?&*$|&*$|(\\?)&+|(&)&+","$1$2");
+
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Kusto.Runtime.Events.URLCreated, pathAndQuery); if( eventListener.Token.IsCancellationRequested ) { return; }
+
+                // generate request object
+                var _url = new global::System.Uri($"https://management.azure.com{pathAndQuery}");
+                var request =  new global::System.Net.Http.HttpRequestMessage(Microsoft.Azure.PowerShell.Cmdlets.Kusto.Runtime.Method.Get, _url);
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Kusto.Runtime.Events.RequestCreated, request.RequestUri.PathAndQuery); if( eventListener.Token.IsCancellationRequested ) { return; }
+
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Kusto.Runtime.Events.HeaderParametersAdded); if( eventListener.Token.IsCancellationRequested ) { return; }
+                // make the call
+                await this.SandboxCustomImagesGet_Call(request,onOk,onDefault,eventListener,sender);
+            }
+        }
+
+        /// <summary>Returns a sandbox custom image</summary>
+        /// <param name="viaIdentity"></param>
+        /// <param name="onOk">a delegate that is called when the remote service returns 200 (OK).</param>
+        /// <param name="onDefault">a delegate that is called when the remote service returns default (any response code not handled
+        /// elsewhere).</param>
+        /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.Kusto.Runtime.IEventListener" /> instance that will receive events.</param>
+        /// <param name="sender">an instance of an Microsoft.Azure.PowerShell.Cmdlets.Kusto.Runtime.ISendAsync pipeline to use to make the request.</param>
+        /// <returns>
+        /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
+        /// </returns>
+        public async global::System.Threading.Tasks.Task SandboxCustomImagesGetViaIdentity(global::System.String viaIdentity, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api20230815.ISandboxCustomImage>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api30.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Kusto.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Kusto.Runtime.ISendAsync sender)
+        {
+            var apiVersion = @"2023-08-15";
+            // Constant Parameters
+            using( NoSynchronizationContext )
+            {
+                // verify that Identity format is an exact match for uri
+
+                var _match = new global::System.Text.RegularExpressions.Regex("^/subscriptions/(?<subscriptionId>[^/]+)/resourceGroups/(?<resourceGroupName>[^/]+)/providers/Microsoft.Kusto/Clusters/(?<clusterName>[^/]+)/sandboxCustomImages/(?<sandboxCustomImageName>[^/]+)$", global::System.Text.RegularExpressions.RegexOptions.IgnoreCase).Match(viaIdentity);
+                if (!_match.Success)
+                {
+                    throw new global::System.Exception("Invalid identity for URI '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Kusto/Clusters/{clusterName}/sandboxCustomImages/{sandboxCustomImageName}'");
+                }
+
+                // replace URI parameters with values from identity
+                var subscriptionId = _match.Groups["subscriptionId"].Value;
+                var resourceGroupName = _match.Groups["resourceGroupName"].Value;
+                var clusterName = _match.Groups["clusterName"].Value;
+                var sandboxCustomImageName = _match.Groups["sandboxCustomImageName"].Value;
+                // construct URL
+                var pathAndQuery = global::System.Text.RegularExpressions.Regex.Replace(
+                        "/subscriptions/"
+                        + subscriptionId
+                        + "/resourceGroups/"
+                        + resourceGroupName
+                        + "/providers/Microsoft.Kusto/Clusters/"
+                        + clusterName
+                        + "/sandboxCustomImages/"
+                        + sandboxCustomImageName
+                        + "?"
+                        + "api-version=" + global::System.Uri.EscapeDataString(apiVersion)
+                        ,"\\?&*$|&*$|(\\?)&+|(&)&+","$1$2");
+
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Kusto.Runtime.Events.URLCreated, pathAndQuery); if( eventListener.Token.IsCancellationRequested ) { return; }
+
+                // generate request object
+                var _url = new global::System.Uri($"https://management.azure.com{pathAndQuery}");
+                var request =  new global::System.Net.Http.HttpRequestMessage(Microsoft.Azure.PowerShell.Cmdlets.Kusto.Runtime.Method.Get, _url);
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Kusto.Runtime.Events.RequestCreated, request.RequestUri.PathAndQuery); if( eventListener.Token.IsCancellationRequested ) { return; }
+
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Kusto.Runtime.Events.HeaderParametersAdded); if( eventListener.Token.IsCancellationRequested ) { return; }
+                // make the call
+                await this.SandboxCustomImagesGet_Call(request,onOk,onDefault,eventListener,sender);
+            }
+        }
+
+        /// <summary>Actual wire call for <see cref="SandboxCustomImagesGet" /> method.</summary>
+        /// <param name="request">the prepared HttpRequestMessage to send.</param>
+        /// <param name="onOk">a delegate that is called when the remote service returns 200 (OK).</param>
+        /// <param name="onDefault">a delegate that is called when the remote service returns default (any response code not handled
+        /// elsewhere).</param>
+        /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.Kusto.Runtime.IEventListener" /> instance that will receive events.</param>
+        /// <param name="sender">an instance of an Microsoft.Azure.PowerShell.Cmdlets.Kusto.Runtime.ISendAsync pipeline to use to make the request.</param>
+        /// <returns>
+        /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
+        /// </returns>
+        internal async global::System.Threading.Tasks.Task SandboxCustomImagesGet_Call(global::System.Net.Http.HttpRequestMessage request, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api20230815.ISandboxCustomImage>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api30.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Kusto.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Kusto.Runtime.ISendAsync sender)
+        {
+            using( NoSynchronizationContext )
+            {
+                global::System.Net.Http.HttpResponseMessage _response = null;
+                try
+                {
+                    var sendTask = sender.SendAsync(request, eventListener);
+                    await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Kusto.Runtime.Events.BeforeCall, request); if( eventListener.Token.IsCancellationRequested ) { return; }
+                    _response = await sendTask;
+                    await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Kusto.Runtime.Events.ResponseCreated, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
+                    var _contentType = _response.Content.Headers.ContentType?.MediaType;
+
+                    switch ( _response.StatusCode )
+                    {
+                        case global::System.Net.HttpStatusCode.OK:
+                        {
+                            await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Kusto.Runtime.Events.BeforeResponseDispatch, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
+                            await onOk(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api20230815.SandboxCustomImage.FromJson(Microsoft.Azure.PowerShell.Cmdlets.Kusto.Runtime.Json.JsonNode.Parse(body.Result)) ));
+                            break;
+                        }
+                        default:
+                        {
+                            await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Kusto.Runtime.Events.BeforeResponseDispatch, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
+                            await onDefault(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api30.ErrorResponse.FromJson(Microsoft.Azure.PowerShell.Cmdlets.Kusto.Runtime.Json.JsonNode.Parse(body.Result)) ));
+                            break;
+                        }
+                    }
+                }
+                finally
+                {
+                    // finally statements
+                    await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Kusto.Runtime.Events.Finally, request, _response);
+                    _response?.Dispose();
+                    request?.Dispose();
+                }
+            }
+        }
+
+        /// <summary>
+        /// Validation method for <see cref="SandboxCustomImagesGet" /> method. Call this like the actual call, but you will get validation
+        /// events back.
+        /// </summary>
+        /// <param name="subscriptionId">The ID of the target subscription.</param>
+        /// <param name="resourceGroupName">The name of the resource group. The name is case insensitive.</param>
+        /// <param name="clusterName">The name of the Kusto cluster.</param>
+        /// <param name="sandboxCustomImageName">The name of the sandbox custom image.</param>
+        /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.Kusto.Runtime.IEventListener" /> instance that will receive events.</param>
+        /// <returns>
+        /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
+        /// </returns>
+        internal async global::System.Threading.Tasks.Task SandboxCustomImagesGet_Validate(string subscriptionId, string resourceGroupName, string clusterName, string sandboxCustomImageName, Microsoft.Azure.PowerShell.Cmdlets.Kusto.Runtime.IEventListener eventListener)
+        {
+            using( NoSynchronizationContext )
+            {
+                await eventListener.AssertNotNull(nameof(subscriptionId),subscriptionId);
+                await eventListener.AssertMinimumLength(nameof(subscriptionId),subscriptionId,1);
+                await eventListener.AssertNotNull(nameof(resourceGroupName),resourceGroupName);
+                await eventListener.AssertMinimumLength(nameof(resourceGroupName),resourceGroupName,1);
+                await eventListener.AssertMaximumLength(nameof(resourceGroupName),resourceGroupName,90);
+                await eventListener.AssertNotNull(nameof(clusterName),clusterName);
+                await eventListener.AssertRegEx(nameof(clusterName),clusterName,@"^.*$");
+                await eventListener.AssertNotNull(nameof(sandboxCustomImageName),sandboxCustomImageName);
+                await eventListener.AssertRegEx(nameof(sandboxCustomImageName),sandboxCustomImageName,@"^.*$");
+            }
+        }
+
+        /// <summary>
+        /// Returns the list of the existing sandbox custom images of the given Kusto cluster.
+        /// </summary>
+        /// <param name="resourceGroupName">The name of the resource group. The name is case insensitive.</param>
+        /// <param name="clusterName">The name of the Kusto cluster.</param>
+        /// <param name="subscriptionId">The ID of the target subscription.</param>
+        /// <param name="onOk">a delegate that is called when the remote service returns 200 (OK).</param>
+        /// <param name="onDefault">a delegate that is called when the remote service returns default (any response code not handled
+        /// elsewhere).</param>
+        /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.Kusto.Runtime.IEventListener" /> instance that will receive events.</param>
+        /// <param name="sender">an instance of an Microsoft.Azure.PowerShell.Cmdlets.Kusto.Runtime.ISendAsync pipeline to use to make the request.</param>
+        /// <returns>
+        /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
+        /// </returns>
+        public async global::System.Threading.Tasks.Task SandboxCustomImagesListByCluster(string resourceGroupName, string clusterName, string subscriptionId, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api20230815.ISandboxCustomImagesListResult>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api30.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Kusto.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Kusto.Runtime.ISendAsync sender)
+        {
+            var apiVersion = @"2023-08-15";
+            // Constant Parameters
+            using( NoSynchronizationContext )
+            {
+                // construct URL
+                var pathAndQuery = global::System.Text.RegularExpressions.Regex.Replace(
+                        "/subscriptions/"
+                        + global::System.Uri.EscapeDataString(subscriptionId)
+                        + "/resourceGroups/"
+                        + global::System.Uri.EscapeDataString(resourceGroupName)
+                        + "/providers/Microsoft.Kusto/Clusters/"
+                        + global::System.Uri.EscapeDataString(clusterName)
+                        + "/sandboxCustomImages"
+                        + "?"
+                        + "api-version=" + global::System.Uri.EscapeDataString(apiVersion)
+                        ,"\\?&*$|&*$|(\\?)&+|(&)&+","$1$2");
+
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Kusto.Runtime.Events.URLCreated, pathAndQuery); if( eventListener.Token.IsCancellationRequested ) { return; }
+
+                // generate request object
+                var _url = new global::System.Uri($"https://management.azure.com{pathAndQuery}");
+                var request =  new global::System.Net.Http.HttpRequestMessage(Microsoft.Azure.PowerShell.Cmdlets.Kusto.Runtime.Method.Get, _url);
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Kusto.Runtime.Events.RequestCreated, request.RequestUri.PathAndQuery); if( eventListener.Token.IsCancellationRequested ) { return; }
+
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Kusto.Runtime.Events.HeaderParametersAdded); if( eventListener.Token.IsCancellationRequested ) { return; }
+                // make the call
+                await this.SandboxCustomImagesListByCluster_Call(request,onOk,onDefault,eventListener,sender);
+            }
+        }
+
+        /// <summary>
+        /// Returns the list of the existing sandbox custom images of the given Kusto cluster.
+        /// </summary>
+        /// <param name="viaIdentity"></param>
+        /// <param name="onOk">a delegate that is called when the remote service returns 200 (OK).</param>
+        /// <param name="onDefault">a delegate that is called when the remote service returns default (any response code not handled
+        /// elsewhere).</param>
+        /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.Kusto.Runtime.IEventListener" /> instance that will receive events.</param>
+        /// <param name="sender">an instance of an Microsoft.Azure.PowerShell.Cmdlets.Kusto.Runtime.ISendAsync pipeline to use to make the request.</param>
+        /// <returns>
+        /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
+        /// </returns>
+        public async global::System.Threading.Tasks.Task SandboxCustomImagesListByClusterViaIdentity(global::System.String viaIdentity, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api20230815.ISandboxCustomImagesListResult>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api30.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Kusto.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Kusto.Runtime.ISendAsync sender)
+        {
+            var apiVersion = @"2023-08-15";
+            // Constant Parameters
+            using( NoSynchronizationContext )
+            {
+                // verify that Identity format is an exact match for uri
+
+                var _match = new global::System.Text.RegularExpressions.Regex("^/subscriptions/(?<subscriptionId>[^/]+)/resourceGroups/(?<resourceGroupName>[^/]+)/providers/Microsoft.Kusto/Clusters/(?<clusterName>[^/]+)/sandboxCustomImages$", global::System.Text.RegularExpressions.RegexOptions.IgnoreCase).Match(viaIdentity);
+                if (!_match.Success)
+                {
+                    throw new global::System.Exception("Invalid identity for URI '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Kusto/Clusters/{clusterName}/sandboxCustomImages'");
+                }
+
+                // replace URI parameters with values from identity
+                var resourceGroupName = _match.Groups["resourceGroupName"].Value;
+                var clusterName = _match.Groups["clusterName"].Value;
+                var subscriptionId = _match.Groups["subscriptionId"].Value;
+                // construct URL
+                var pathAndQuery = global::System.Text.RegularExpressions.Regex.Replace(
+                        "/subscriptions/"
+                        + subscriptionId
+                        + "/resourceGroups/"
+                        + resourceGroupName
+                        + "/providers/Microsoft.Kusto/Clusters/"
+                        + clusterName
+                        + "/sandboxCustomImages"
+                        + "?"
+                        + "api-version=" + global::System.Uri.EscapeDataString(apiVersion)
+                        ,"\\?&*$|&*$|(\\?)&+|(&)&+","$1$2");
+
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Kusto.Runtime.Events.URLCreated, pathAndQuery); if( eventListener.Token.IsCancellationRequested ) { return; }
+
+                // generate request object
+                var _url = new global::System.Uri($"https://management.azure.com{pathAndQuery}");
+                var request =  new global::System.Net.Http.HttpRequestMessage(Microsoft.Azure.PowerShell.Cmdlets.Kusto.Runtime.Method.Get, _url);
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Kusto.Runtime.Events.RequestCreated, request.RequestUri.PathAndQuery); if( eventListener.Token.IsCancellationRequested ) { return; }
+
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Kusto.Runtime.Events.HeaderParametersAdded); if( eventListener.Token.IsCancellationRequested ) { return; }
+                // make the call
+                await this.SandboxCustomImagesListByCluster_Call(request,onOk,onDefault,eventListener,sender);
+            }
+        }
+
+        /// <summary>Actual wire call for <see cref="SandboxCustomImagesListByCluster" /> method.</summary>
+        /// <param name="request">the prepared HttpRequestMessage to send.</param>
+        /// <param name="onOk">a delegate that is called when the remote service returns 200 (OK).</param>
+        /// <param name="onDefault">a delegate that is called when the remote service returns default (any response code not handled
+        /// elsewhere).</param>
+        /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.Kusto.Runtime.IEventListener" /> instance that will receive events.</param>
+        /// <param name="sender">an instance of an Microsoft.Azure.PowerShell.Cmdlets.Kusto.Runtime.ISendAsync pipeline to use to make the request.</param>
+        /// <returns>
+        /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
+        /// </returns>
+        internal async global::System.Threading.Tasks.Task SandboxCustomImagesListByCluster_Call(global::System.Net.Http.HttpRequestMessage request, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api20230815.ISandboxCustomImagesListResult>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api30.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Kusto.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Kusto.Runtime.ISendAsync sender)
+        {
+            using( NoSynchronizationContext )
+            {
+                global::System.Net.Http.HttpResponseMessage _response = null;
+                try
+                {
+                    var sendTask = sender.SendAsync(request, eventListener);
+                    await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Kusto.Runtime.Events.BeforeCall, request); if( eventListener.Token.IsCancellationRequested ) { return; }
+                    _response = await sendTask;
+                    await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Kusto.Runtime.Events.ResponseCreated, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
+                    var _contentType = _response.Content.Headers.ContentType?.MediaType;
+
+                    switch ( _response.StatusCode )
+                    {
+                        case global::System.Net.HttpStatusCode.OK:
+                        {
+                            await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Kusto.Runtime.Events.BeforeResponseDispatch, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
+                            await onOk(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api20230815.SandboxCustomImagesListResult.FromJson(Microsoft.Azure.PowerShell.Cmdlets.Kusto.Runtime.Json.JsonNode.Parse(body.Result)) ));
+                            break;
+                        }
+                        default:
+                        {
+                            await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Kusto.Runtime.Events.BeforeResponseDispatch, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
+                            await onDefault(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api30.ErrorResponse.FromJson(Microsoft.Azure.PowerShell.Cmdlets.Kusto.Runtime.Json.JsonNode.Parse(body.Result)) ));
+                            break;
+                        }
+                    }
+                }
+                finally
+                {
+                    // finally statements
+                    await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Kusto.Runtime.Events.Finally, request, _response);
+                    _response?.Dispose();
+                    request?.Dispose();
+                }
+            }
+        }
+
+        /// <summary>
+        /// Validation method for <see cref="SandboxCustomImagesListByCluster" /> method. Call this like the actual call, but you
+        /// will get validation events back.
+        /// </summary>
+        /// <param name="resourceGroupName">The name of the resource group. The name is case insensitive.</param>
+        /// <param name="clusterName">The name of the Kusto cluster.</param>
+        /// <param name="subscriptionId">The ID of the target subscription.</param>
+        /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.Kusto.Runtime.IEventListener" /> instance that will receive events.</param>
+        /// <returns>
+        /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
+        /// </returns>
+        internal async global::System.Threading.Tasks.Task SandboxCustomImagesListByCluster_Validate(string resourceGroupName, string clusterName, string subscriptionId, Microsoft.Azure.PowerShell.Cmdlets.Kusto.Runtime.IEventListener eventListener)
+        {
+            using( NoSynchronizationContext )
+            {
+                await eventListener.AssertNotNull(nameof(resourceGroupName),resourceGroupName);
+                await eventListener.AssertMinimumLength(nameof(resourceGroupName),resourceGroupName,1);
+                await eventListener.AssertMaximumLength(nameof(resourceGroupName),resourceGroupName,90);
+                await eventListener.AssertNotNull(nameof(clusterName),clusterName);
+                await eventListener.AssertRegEx(nameof(clusterName),clusterName,@"^.*$");
+                await eventListener.AssertNotNull(nameof(subscriptionId),subscriptionId);
+                await eventListener.AssertMinimumLength(nameof(subscriptionId),subscriptionId,1);
+            }
+        }
+
+        /// <summary>Updates a sandbox custom image.</summary>
+        /// <param name="subscriptionId">The ID of the target subscription.</param>
+        /// <param name="resourceGroupName">The name of the resource group. The name is case insensitive.</param>
+        /// <param name="clusterName">The name of the Kusto cluster.</param>
+        /// <param name="sandboxCustomImageName">The name of the sandbox custom image.</param>
+        /// <param name="body">The sandbox custom image parameters.</param>
+        /// <param name="onOk">a delegate that is called when the remote service returns 200 (OK).</param>
+        /// <param name="onDefault">a delegate that is called when the remote service returns default (any response code not handled
+        /// elsewhere).</param>
+        /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.Kusto.Runtime.IEventListener" /> instance that will receive events.</param>
+        /// <param name="sender">an instance of an Microsoft.Azure.PowerShell.Cmdlets.Kusto.Runtime.ISendAsync pipeline to use to make the request.</param>
+        /// <returns>
+        /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
+        /// </returns>
+        public async global::System.Threading.Tasks.Task SandboxCustomImagesUpdate(string subscriptionId, string resourceGroupName, string clusterName, string sandboxCustomImageName, Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api20230815.ISandboxCustomImage body, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api20230815.ISandboxCustomImage>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api30.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Kusto.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Kusto.Runtime.ISendAsync sender)
+        {
+            var apiVersion = @"2023-08-15";
+            // Constant Parameters
+            using( NoSynchronizationContext )
+            {
+                // construct URL
+                var pathAndQuery = global::System.Text.RegularExpressions.Regex.Replace(
+                        "/subscriptions/"
+                        + global::System.Uri.EscapeDataString(subscriptionId)
+                        + "/resourceGroups/"
+                        + global::System.Uri.EscapeDataString(resourceGroupName)
+                        + "/providers/Microsoft.Kusto/Clusters/"
+                        + global::System.Uri.EscapeDataString(clusterName)
+                        + "/sandboxCustomImages/"
+                        + global::System.Uri.EscapeDataString(sandboxCustomImageName)
+                        + "?"
+                        + "api-version=" + global::System.Uri.EscapeDataString(apiVersion)
+                        ,"\\?&*$|&*$|(\\?)&+|(&)&+","$1$2");
+
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Kusto.Runtime.Events.URLCreated, pathAndQuery); if( eventListener.Token.IsCancellationRequested ) { return; }
+
+                // generate request object
+                var _url = new global::System.Uri($"https://management.azure.com{pathAndQuery}");
+                var request =  new global::System.Net.Http.HttpRequestMessage(Microsoft.Azure.PowerShell.Cmdlets.Kusto.Runtime.Method.Patch, _url);
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Kusto.Runtime.Events.RequestCreated, request.RequestUri.PathAndQuery); if( eventListener.Token.IsCancellationRequested ) { return; }
+
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Kusto.Runtime.Events.HeaderParametersAdded); if( eventListener.Token.IsCancellationRequested ) { return; }
+                // set body content
+                request.Content = new global::System.Net.Http.StringContent(null != body ? body.ToJson(null).ToString() : @"{}", global::System.Text.Encoding.UTF8);
+                request.Content.Headers.ContentType = global::System.Net.Http.Headers.MediaTypeHeaderValue.Parse("application/json");
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Kusto.Runtime.Events.BodyContentSet); if( eventListener.Token.IsCancellationRequested ) { return; }
+                // make the call
+                await this.SandboxCustomImagesUpdate_Call(request,onOk,onDefault,eventListener,sender);
+            }
+        }
+
+        /// <summary>Updates a sandbox custom image.</summary>
+        /// <param name="viaIdentity"></param>
+        /// <param name="body">The sandbox custom image parameters.</param>
+        /// <param name="onOk">a delegate that is called when the remote service returns 200 (OK).</param>
+        /// <param name="onDefault">a delegate that is called when the remote service returns default (any response code not handled
+        /// elsewhere).</param>
+        /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.Kusto.Runtime.IEventListener" /> instance that will receive events.</param>
+        /// <param name="sender">an instance of an Microsoft.Azure.PowerShell.Cmdlets.Kusto.Runtime.ISendAsync pipeline to use to make the request.</param>
+        /// <returns>
+        /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
+        /// </returns>
+        public async global::System.Threading.Tasks.Task SandboxCustomImagesUpdateViaIdentity(global::System.String viaIdentity, Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api20230815.ISandboxCustomImage body, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api20230815.ISandboxCustomImage>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api30.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Kusto.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Kusto.Runtime.ISendAsync sender)
+        {
+            var apiVersion = @"2023-08-15";
+            // Constant Parameters
+            using( NoSynchronizationContext )
+            {
+                // verify that Identity format is an exact match for uri
+
+                var _match = new global::System.Text.RegularExpressions.Regex("^/subscriptions/(?<subscriptionId>[^/]+)/resourceGroups/(?<resourceGroupName>[^/]+)/providers/Microsoft.Kusto/Clusters/(?<clusterName>[^/]+)/sandboxCustomImages/(?<sandboxCustomImageName>[^/]+)$", global::System.Text.RegularExpressions.RegexOptions.IgnoreCase).Match(viaIdentity);
+                if (!_match.Success)
+                {
+                    throw new global::System.Exception("Invalid identity for URI '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Kusto/Clusters/{clusterName}/sandboxCustomImages/{sandboxCustomImageName}'");
+                }
+
+                // replace URI parameters with values from identity
+                var subscriptionId = _match.Groups["subscriptionId"].Value;
+                var resourceGroupName = _match.Groups["resourceGroupName"].Value;
+                var clusterName = _match.Groups["clusterName"].Value;
+                var sandboxCustomImageName = _match.Groups["sandboxCustomImageName"].Value;
+                // construct URL
+                var pathAndQuery = global::System.Text.RegularExpressions.Regex.Replace(
+                        "/subscriptions/"
+                        + subscriptionId
+                        + "/resourceGroups/"
+                        + resourceGroupName
+                        + "/providers/Microsoft.Kusto/Clusters/"
+                        + clusterName
+                        + "/sandboxCustomImages/"
+                        + sandboxCustomImageName
+                        + "?"
+                        + "api-version=" + global::System.Uri.EscapeDataString(apiVersion)
+                        ,"\\?&*$|&*$|(\\?)&+|(&)&+","$1$2");
+
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Kusto.Runtime.Events.URLCreated, pathAndQuery); if( eventListener.Token.IsCancellationRequested ) { return; }
+
+                // generate request object
+                var _url = new global::System.Uri($"https://management.azure.com{pathAndQuery}");
+                var request =  new global::System.Net.Http.HttpRequestMessage(Microsoft.Azure.PowerShell.Cmdlets.Kusto.Runtime.Method.Patch, _url);
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Kusto.Runtime.Events.RequestCreated, request.RequestUri.PathAndQuery); if( eventListener.Token.IsCancellationRequested ) { return; }
+
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Kusto.Runtime.Events.HeaderParametersAdded); if( eventListener.Token.IsCancellationRequested ) { return; }
+                // set body content
+                request.Content = new global::System.Net.Http.StringContent(null != body ? body.ToJson(null).ToString() : @"{}", global::System.Text.Encoding.UTF8);
+                request.Content.Headers.ContentType = global::System.Net.Http.Headers.MediaTypeHeaderValue.Parse("application/json");
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Kusto.Runtime.Events.BodyContentSet); if( eventListener.Token.IsCancellationRequested ) { return; }
+                // make the call
+                await this.SandboxCustomImagesUpdate_Call(request,onOk,onDefault,eventListener,sender);
+            }
+        }
+
+        /// <summary>Actual wire call for <see cref="SandboxCustomImagesUpdate" /> method.</summary>
+        /// <param name="request">the prepared HttpRequestMessage to send.</param>
+        /// <param name="onOk">a delegate that is called when the remote service returns 200 (OK).</param>
+        /// <param name="onDefault">a delegate that is called when the remote service returns default (any response code not handled
+        /// elsewhere).</param>
+        /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.Kusto.Runtime.IEventListener" /> instance that will receive events.</param>
+        /// <param name="sender">an instance of an Microsoft.Azure.PowerShell.Cmdlets.Kusto.Runtime.ISendAsync pipeline to use to make the request.</param>
+        /// <returns>
+        /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
+        /// </returns>
+        internal async global::System.Threading.Tasks.Task SandboxCustomImagesUpdate_Call(global::System.Net.Http.HttpRequestMessage request, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api20230815.ISandboxCustomImage>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api30.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Kusto.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Kusto.Runtime.ISendAsync sender)
+        {
+            using( NoSynchronizationContext )
+            {
+                global::System.Net.Http.HttpResponseMessage _response = null;
+                try
+                {
+                    var sendTask = sender.SendAsync(request, eventListener);
+                    await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Kusto.Runtime.Events.BeforeCall, request); if( eventListener.Token.IsCancellationRequested ) { return; }
+                    _response = await sendTask;
+                    await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Kusto.Runtime.Events.ResponseCreated, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
+                    // this operation supports x-ms-long-running-operation
+                    var _originalUri = request.RequestUri.AbsoluteUri;
+                    // declared final-state-via: default
+                    var asyncOperation = _response.GetFirstHeader(@"Azure-AsyncOperation");
+                    var location = _response.GetFirstHeader(@"Location");
+                    while (request.Method == System.Net.Http.HttpMethod.Put && _response.StatusCode == global::System.Net.HttpStatusCode.OK || _response.StatusCode == global::System.Net.HttpStatusCode.Created || _response.StatusCode == global::System.Net.HttpStatusCode.Accepted )
+                    {
+
+                        // get the delay before polling. (default to 30 seconds if not present)
+                        int delay = (int)(_response.Headers.RetryAfter?.Delta?.TotalSeconds ?? 30);
+                        await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Kusto.Runtime.Events.DelayBeforePolling, $"Delaying {delay} seconds before polling.", _response); if( eventListener.Token.IsCancellationRequested ) { return; }
+
+                        // start the delay timer (we'll await later...)
+                        var waiting = global::System.Threading.Tasks.Task.Delay(delay * 1000, eventListener.Token );
+
+                        // while we wait, let's grab the headers and get ready to poll.
+                        if (!System.String.IsNullOrEmpty(_response.GetFirstHeader(@"Azure-AsyncOperation"))) {
+                            asyncOperation = _response.GetFirstHeader(@"Azure-AsyncOperation");
+                        }
+                        if (!global::System.String.IsNullOrEmpty(_response.GetFirstHeader(@"Location"))) {
+                            location = _response.GetFirstHeader(@"Location");
+                        }
+                        var _uri = global::System.String.IsNullOrEmpty(asyncOperation) ? global::System.String.IsNullOrEmpty(location) ? _originalUri : location : asyncOperation;
+                        request = request.CloneAndDispose(new global::System.Uri(_uri), Microsoft.Azure.PowerShell.Cmdlets.Kusto.Runtime.Method.Get);
+
+                        // and let's look at the current response body and see if we have some information we can give back to the listener
+                        var content = await _response.Content.ReadAsStringAsync();
+                        await waiting;
+
+                        // check for cancellation
+                        if( eventListener.Token.IsCancellationRequested ) { return; }
+
+                        // drop the old response
+                        _response?.Dispose();
+
+                        // make the polling call
+                        _response = await sender.SendAsync(request, eventListener);
+                        await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Kusto.Runtime.Events.Polling, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
+
+                        // if we got back an OK, take a peek inside and see if it's done
+                        if( _response.StatusCode == global::System.Net.HttpStatusCode.OK)
+                        {
+                            var error = false;
+                            try {
+                                if( Microsoft.Azure.PowerShell.Cmdlets.Kusto.Runtime.Json.JsonNode.Parse(await _response.Content.ReadAsStringAsync()) is Microsoft.Azure.PowerShell.Cmdlets.Kusto.Runtime.Json.JsonObject json)
+                                {
+                                    var state = json.Property("properties")?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Kusto.Runtime.Json.JsonString>("provisioningState") ?? json.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Kusto.Runtime.Json.JsonString>("status");
+                                    if( state is null )
+                                    {
+                                        // the body doesn't contain any information that has the state of the LRO
+                                        // we're going to just get out, and let the consumer have the result
+                                        break;
+                                    }
+
+                                    switch( state?.ToString()?.ToLower() )
+                                    {
+                                      case "failed":
+                                          error = true;
+                                          break;
+                                      case "succeeded":
+                                      case "canceled":
+                                        // we're done polling.
+                                        break;
+
+                                      default:
+                                        // need to keep polling!
+                                        _response.StatusCode = global::System.Net.HttpStatusCode.Created;
+                                        continue;
+                                    }
+                                }
+                            } catch {
+                                // if we run into a problem peeking into the result,
+                                // we really don't want to do anything special.
+                            }
+                            if (error) {
+                                throw new Microsoft.Azure.PowerShell.Cmdlets.Kusto.Runtime.UndeclaredResponseException(_response);
+                            }
+                        }
+
+                        // check for terminal status code
+                        if (_response.StatusCode == global::System.Net.HttpStatusCode.Created || _response.StatusCode == global::System.Net.HttpStatusCode.Accepted )
+                        {
+                            continue;
+                        }
+                        // we are done polling, do a request on final target?
+                        if (!string.IsNullOrWhiteSpace(_originalUri))
+                        {
+                            // create a new request with the final uri
+                            request = request.CloneAndDispose(new global::System.Uri(_originalUri), Microsoft.Azure.PowerShell.Cmdlets.Kusto.Runtime.Method.Get);
+
+                            // drop the old response
+                            _response?.Dispose();
+
+                            // make the final call
+                            _response = await sender.SendAsync(request,  eventListener);
+                            await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Kusto.Runtime.Events.Polling, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
+                            break;
+                        }
+                    }
+                    var _contentType = _response.Content.Headers.ContentType?.MediaType;
+
+                    switch ( _response.StatusCode )
+                    {
+                        case global::System.Net.HttpStatusCode.OK:
+                        {
+                            await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Kusto.Runtime.Events.BeforeResponseDispatch, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
+                            await onOk(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api20230815.SandboxCustomImage.FromJson(Microsoft.Azure.PowerShell.Cmdlets.Kusto.Runtime.Json.JsonNode.Parse(body.Result)) ));
+                            break;
+                        }
+                        default:
+                        {
+                            await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Kusto.Runtime.Events.BeforeResponseDispatch, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
+                            await onDefault(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api30.ErrorResponse.FromJson(Microsoft.Azure.PowerShell.Cmdlets.Kusto.Runtime.Json.JsonNode.Parse(body.Result)) ));
+                            break;
+                        }
+                    }
+                }
+                finally
+                {
+                    // finally statements
+                    await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Kusto.Runtime.Events.Finally, request, _response);
+                    _response?.Dispose();
+                    request?.Dispose();
+                }
+            }
+        }
+
+        /// <summary>
+        /// Validation method for <see cref="SandboxCustomImagesUpdate" /> method. Call this like the actual call, but you will get
+        /// validation events back.
+        /// </summary>
+        /// <param name="subscriptionId">The ID of the target subscription.</param>
+        /// <param name="resourceGroupName">The name of the resource group. The name is case insensitive.</param>
+        /// <param name="clusterName">The name of the Kusto cluster.</param>
+        /// <param name="sandboxCustomImageName">The name of the sandbox custom image.</param>
+        /// <param name="body">The sandbox custom image parameters.</param>
+        /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.Kusto.Runtime.IEventListener" /> instance that will receive events.</param>
+        /// <returns>
+        /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
+        /// </returns>
+        internal async global::System.Threading.Tasks.Task SandboxCustomImagesUpdate_Validate(string subscriptionId, string resourceGroupName, string clusterName, string sandboxCustomImageName, Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api20230815.ISandboxCustomImage body, Microsoft.Azure.PowerShell.Cmdlets.Kusto.Runtime.IEventListener eventListener)
+        {
+            using( NoSynchronizationContext )
+            {
+                await eventListener.AssertNotNull(nameof(subscriptionId),subscriptionId);
+                await eventListener.AssertMinimumLength(nameof(subscriptionId),subscriptionId,1);
+                await eventListener.AssertNotNull(nameof(resourceGroupName),resourceGroupName);
+                await eventListener.AssertMinimumLength(nameof(resourceGroupName),resourceGroupName,1);
+                await eventListener.AssertMaximumLength(nameof(resourceGroupName),resourceGroupName,90);
+                await eventListener.AssertNotNull(nameof(clusterName),clusterName);
+                await eventListener.AssertRegEx(nameof(clusterName),clusterName,@"^.*$");
+                await eventListener.AssertNotNull(nameof(sandboxCustomImageName),sandboxCustomImageName);
+                await eventListener.AssertRegEx(nameof(sandboxCustomImageName),sandboxCustomImageName,@"^.*$");
+                await eventListener.AssertNotNull(nameof(body), body);
+                await eventListener.AssertObjectIsValid(nameof(body), body);
             }
         }
 
         /// <summary>Checks that the script name is valid and is not already in use.</summary>
-        /// <param name="resourceGroupName">The name of the resource group containing the Kusto cluster.</param>
+        /// <param name="resourceGroupName">The name of the resource group. The name is case insensitive.</param>
         /// <param name="clusterName">The name of the Kusto cluster.</param>
         /// <param name="databaseName">The name of the database in the Kusto cluster.</param>
-        /// <param name="subscriptionId">Gets subscription credentials which uniquely identify Microsoft Azure subscription. The subscription
-        /// ID forms part of the URI for every service call.</param>
+        /// <param name="subscriptionId">The ID of the target subscription.</param>
         /// <param name="body">The name of the script.</param>
         /// <param name="onOk">a delegate that is called when the remote service returns 200 (OK).</param>
         /// <param name="onDefault">a delegate that is called when the remote service returns default (any response code not handled
@@ -14310,9 +16392,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Kusto
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        public async global::System.Threading.Tasks.Task ScriptsCheckNameAvailability(string resourceGroupName, string clusterName, string databaseName, string subscriptionId, Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api20221229.IScriptCheckNameRequest body, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api20221229.ICheckNameResult>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api20221229.ICloudError>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Kusto.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Kusto.Runtime.ISendAsync sender)
+        public async global::System.Threading.Tasks.Task ScriptsCheckNameAvailability(string resourceGroupName, string clusterName, string databaseName, string subscriptionId, Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api20230815.IScriptCheckNameRequest body, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api20230815.ICheckNameResult>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api30.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Kusto.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Kusto.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2022-12-29";
+            var apiVersion = @"2023-08-15";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -14359,9 +16441,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Kusto
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        public async global::System.Threading.Tasks.Task ScriptsCheckNameAvailabilityViaIdentity(global::System.String viaIdentity, Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api20221229.IScriptCheckNameRequest body, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api20221229.ICheckNameResult>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api20221229.ICloudError>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Kusto.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Kusto.Runtime.ISendAsync sender)
+        public async global::System.Threading.Tasks.Task ScriptsCheckNameAvailabilityViaIdentity(global::System.String viaIdentity, Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api20230815.IScriptCheckNameRequest body, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api20230815.ICheckNameResult>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api30.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Kusto.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Kusto.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2022-12-29";
+            var apiVersion = @"2023-08-15";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -14420,7 +16502,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Kusto
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        internal async global::System.Threading.Tasks.Task ScriptsCheckNameAvailability_Call(global::System.Net.Http.HttpRequestMessage request, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api20221229.ICheckNameResult>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api20221229.ICloudError>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Kusto.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Kusto.Runtime.ISendAsync sender)
+        internal async global::System.Threading.Tasks.Task ScriptsCheckNameAvailability_Call(global::System.Net.Http.HttpRequestMessage request, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api20230815.ICheckNameResult>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api30.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Kusto.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Kusto.Runtime.ISendAsync sender)
         {
             using( NoSynchronizationContext )
             {
@@ -14438,13 +16520,13 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Kusto
                         case global::System.Net.HttpStatusCode.OK:
                         {
                             await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Kusto.Runtime.Events.BeforeResponseDispatch, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
-                            await onOk(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api20221229.CheckNameResult.FromJson(Microsoft.Azure.PowerShell.Cmdlets.Kusto.Runtime.Json.JsonNode.Parse(body.Result)) ));
+                            await onOk(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api20230815.CheckNameResult.FromJson(Microsoft.Azure.PowerShell.Cmdlets.Kusto.Runtime.Json.JsonNode.Parse(body.Result)) ));
                             break;
                         }
                         default:
                         {
                             await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Kusto.Runtime.Events.BeforeResponseDispatch, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
-                            await onDefault(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api20221229.CloudError.FromJson(Microsoft.Azure.PowerShell.Cmdlets.Kusto.Runtime.Json.JsonNode.Parse(body.Result)) ));
+                            await onDefault(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api30.ErrorResponse.FromJson(Microsoft.Azure.PowerShell.Cmdlets.Kusto.Runtime.Json.JsonNode.Parse(body.Result)) ));
                             break;
                         }
                     }
@@ -14463,33 +16545,36 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Kusto
         /// Validation method for <see cref="ScriptsCheckNameAvailability" /> method. Call this like the actual call, but you will
         /// get validation events back.
         /// </summary>
-        /// <param name="resourceGroupName">The name of the resource group containing the Kusto cluster.</param>
+        /// <param name="resourceGroupName">The name of the resource group. The name is case insensitive.</param>
         /// <param name="clusterName">The name of the Kusto cluster.</param>
         /// <param name="databaseName">The name of the database in the Kusto cluster.</param>
-        /// <param name="subscriptionId">Gets subscription credentials which uniquely identify Microsoft Azure subscription. The subscription
-        /// ID forms part of the URI for every service call.</param>
+        /// <param name="subscriptionId">The ID of the target subscription.</param>
         /// <param name="body">The name of the script.</param>
         /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.Kusto.Runtime.IEventListener" /> instance that will receive events.</param>
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        internal async global::System.Threading.Tasks.Task ScriptsCheckNameAvailability_Validate(string resourceGroupName, string clusterName, string databaseName, string subscriptionId, Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api20221229.IScriptCheckNameRequest body, Microsoft.Azure.PowerShell.Cmdlets.Kusto.Runtime.IEventListener eventListener)
+        internal async global::System.Threading.Tasks.Task ScriptsCheckNameAvailability_Validate(string resourceGroupName, string clusterName, string databaseName, string subscriptionId, Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api20230815.IScriptCheckNameRequest body, Microsoft.Azure.PowerShell.Cmdlets.Kusto.Runtime.IEventListener eventListener)
         {
             using( NoSynchronizationContext )
             {
                 await eventListener.AssertNotNull(nameof(resourceGroupName),resourceGroupName);
+                await eventListener.AssertMinimumLength(nameof(resourceGroupName),resourceGroupName,1);
+                await eventListener.AssertMaximumLength(nameof(resourceGroupName),resourceGroupName,90);
                 await eventListener.AssertNotNull(nameof(clusterName),clusterName);
+                await eventListener.AssertRegEx(nameof(clusterName),clusterName,@"^.*$");
                 await eventListener.AssertNotNull(nameof(databaseName),databaseName);
+                await eventListener.AssertRegEx(nameof(databaseName),databaseName,@"^.*$");
                 await eventListener.AssertNotNull(nameof(subscriptionId),subscriptionId);
+                await eventListener.AssertMinimumLength(nameof(subscriptionId),subscriptionId,1);
                 await eventListener.AssertNotNull(nameof(body), body);
                 await eventListener.AssertObjectIsValid(nameof(body), body);
             }
         }
 
         /// <summary>Creates a Kusto database script.</summary>
-        /// <param name="subscriptionId">Gets subscription credentials which uniquely identify Microsoft Azure subscription. The subscription
-        /// ID forms part of the URI for every service call.</param>
-        /// <param name="resourceGroupName">The name of the resource group containing the Kusto cluster.</param>
+        /// <param name="subscriptionId">The ID of the target subscription.</param>
+        /// <param name="resourceGroupName">The name of the resource group. The name is case insensitive.</param>
         /// <param name="clusterName">The name of the Kusto cluster.</param>
         /// <param name="databaseName">The name of the database in the Kusto cluster.</param>
         /// <param name="scriptName">The name of the Kusto database script.</param>
@@ -14502,9 +16587,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Kusto
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        public async global::System.Threading.Tasks.Task ScriptsCreateOrUpdate(string subscriptionId, string resourceGroupName, string clusterName, string databaseName, string scriptName, Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api20221229.IScript body, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api20221229.IScript>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api20221229.ICloudError>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Kusto.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Kusto.Runtime.ISendAsync sender)
+        public async global::System.Threading.Tasks.Task ScriptsCreateOrUpdate(string subscriptionId, string resourceGroupName, string clusterName, string databaseName, string scriptName, Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api20230815.IScript body, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api20230815.IScript>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api30.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Kusto.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Kusto.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2022-12-29";
+            var apiVersion = @"2023-08-15";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -14552,9 +16637,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Kusto
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        public async global::System.Threading.Tasks.Task ScriptsCreateOrUpdateViaIdentity(global::System.String viaIdentity, Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api20221229.IScript body, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api20221229.IScript>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api20221229.ICloudError>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Kusto.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Kusto.Runtime.ISendAsync sender)
+        public async global::System.Threading.Tasks.Task ScriptsCreateOrUpdateViaIdentity(global::System.String viaIdentity, Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api20230815.IScript body, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api20230815.IScript>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api30.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Kusto.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Kusto.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2022-12-29";
+            var apiVersion = @"2023-08-15";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -14615,7 +16700,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Kusto
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        internal async global::System.Threading.Tasks.Task ScriptsCreateOrUpdate_Call(global::System.Net.Http.HttpRequestMessage request, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api20221229.IScript>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api20221229.ICloudError>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Kusto.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Kusto.Runtime.ISendAsync sender)
+        internal async global::System.Threading.Tasks.Task ScriptsCreateOrUpdate_Call(global::System.Net.Http.HttpRequestMessage request, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api20230815.IScript>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api30.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Kusto.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Kusto.Runtime.ISendAsync sender)
         {
             using( NoSynchronizationContext )
             {
@@ -14732,13 +16817,13 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Kusto
                         case global::System.Net.HttpStatusCode.OK:
                         {
                             await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Kusto.Runtime.Events.BeforeResponseDispatch, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
-                            await onOk(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api20221229.Script.FromJson(Microsoft.Azure.PowerShell.Cmdlets.Kusto.Runtime.Json.JsonNode.Parse(body.Result)) .ReadHeaders(_response.Headers)));
+                            await onOk(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api20230815.Script.FromJson(Microsoft.Azure.PowerShell.Cmdlets.Kusto.Runtime.Json.JsonNode.Parse(body.Result)) ));
                             break;
                         }
                         default:
                         {
                             await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Kusto.Runtime.Events.BeforeResponseDispatch, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
-                            await onDefault(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api20221229.CloudError.FromJson(Microsoft.Azure.PowerShell.Cmdlets.Kusto.Runtime.Json.JsonNode.Parse(body.Result)) ));
+                            await onDefault(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api30.ErrorResponse.FromJson(Microsoft.Azure.PowerShell.Cmdlets.Kusto.Runtime.Json.JsonNode.Parse(body.Result)) ));
                             break;
                         }
                     }
@@ -14757,9 +16842,8 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Kusto
         /// Validation method for <see cref="ScriptsCreateOrUpdate" /> method. Call this like the actual call, but you will get validation
         /// events back.
         /// </summary>
-        /// <param name="subscriptionId">Gets subscription credentials which uniquely identify Microsoft Azure subscription. The subscription
-        /// ID forms part of the URI for every service call.</param>
-        /// <param name="resourceGroupName">The name of the resource group containing the Kusto cluster.</param>
+        /// <param name="subscriptionId">The ID of the target subscription.</param>
+        /// <param name="resourceGroupName">The name of the resource group. The name is case insensitive.</param>
         /// <param name="clusterName">The name of the Kusto cluster.</param>
         /// <param name="databaseName">The name of the database in the Kusto cluster.</param>
         /// <param name="scriptName">The name of the Kusto database script.</param>
@@ -14768,24 +16852,29 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Kusto
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        internal async global::System.Threading.Tasks.Task ScriptsCreateOrUpdate_Validate(string subscriptionId, string resourceGroupName, string clusterName, string databaseName, string scriptName, Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api20221229.IScript body, Microsoft.Azure.PowerShell.Cmdlets.Kusto.Runtime.IEventListener eventListener)
+        internal async global::System.Threading.Tasks.Task ScriptsCreateOrUpdate_Validate(string subscriptionId, string resourceGroupName, string clusterName, string databaseName, string scriptName, Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api20230815.IScript body, Microsoft.Azure.PowerShell.Cmdlets.Kusto.Runtime.IEventListener eventListener)
         {
             using( NoSynchronizationContext )
             {
                 await eventListener.AssertNotNull(nameof(subscriptionId),subscriptionId);
+                await eventListener.AssertMinimumLength(nameof(subscriptionId),subscriptionId,1);
                 await eventListener.AssertNotNull(nameof(resourceGroupName),resourceGroupName);
+                await eventListener.AssertMinimumLength(nameof(resourceGroupName),resourceGroupName,1);
+                await eventListener.AssertMaximumLength(nameof(resourceGroupName),resourceGroupName,90);
                 await eventListener.AssertNotNull(nameof(clusterName),clusterName);
+                await eventListener.AssertRegEx(nameof(clusterName),clusterName,@"^.*$");
                 await eventListener.AssertNotNull(nameof(databaseName),databaseName);
+                await eventListener.AssertRegEx(nameof(databaseName),databaseName,@"^.*$");
                 await eventListener.AssertNotNull(nameof(scriptName),scriptName);
+                await eventListener.AssertRegEx(nameof(scriptName),scriptName,@"^.*$");
                 await eventListener.AssertNotNull(nameof(body), body);
                 await eventListener.AssertObjectIsValid(nameof(body), body);
             }
         }
 
-        /// <summary>Deletes a Kusto principalAssignment.</summary>
-        /// <param name="subscriptionId">Gets subscription credentials which uniquely identify Microsoft Azure subscription. The subscription
-        /// ID forms part of the URI for every service call.</param>
-        /// <param name="resourceGroupName">The name of the resource group containing the Kusto cluster.</param>
+        /// <summary>Deletes a Kusto database script.</summary>
+        /// <param name="subscriptionId">The ID of the target subscription.</param>
+        /// <param name="resourceGroupName">The name of the resource group. The name is case insensitive.</param>
         /// <param name="clusterName">The name of the Kusto cluster.</param>
         /// <param name="databaseName">The name of the database in the Kusto cluster.</param>
         /// <param name="scriptName">The name of the Kusto database script.</param>
@@ -14798,9 +16887,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Kusto
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        public async global::System.Threading.Tasks.Task ScriptsDelete(string subscriptionId, string resourceGroupName, string clusterName, string databaseName, string scriptName, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task> onNoContent, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api20221229.ICloudError>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Kusto.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Kusto.Runtime.ISendAsync sender)
+        public async global::System.Threading.Tasks.Task ScriptsDelete(string subscriptionId, string resourceGroupName, string clusterName, string databaseName, string scriptName, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task> onNoContent, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api30.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Kusto.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Kusto.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2022-12-29";
+            var apiVersion = @"2023-08-15";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -14833,7 +16922,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Kusto
             }
         }
 
-        /// <summary>Deletes a Kusto principalAssignment.</summary>
+        /// <summary>Deletes a Kusto database script.</summary>
         /// <param name="viaIdentity"></param>
         /// <param name="onOk">a delegate that is called when the remote service returns 200 (OK).</param>
         /// <param name="onNoContent">a delegate that is called when the remote service returns 204 (NoContent).</param>
@@ -14844,9 +16933,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Kusto
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        public async global::System.Threading.Tasks.Task ScriptsDeleteViaIdentity(global::System.String viaIdentity, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task> onNoContent, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api20221229.ICloudError>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Kusto.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Kusto.Runtime.ISendAsync sender)
+        public async global::System.Threading.Tasks.Task ScriptsDeleteViaIdentity(global::System.String viaIdentity, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task> onNoContent, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api30.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Kusto.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Kusto.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2022-12-29";
+            var apiVersion = @"2023-08-15";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -14904,7 +16993,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Kusto
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        internal async global::System.Threading.Tasks.Task ScriptsDelete_Call(global::System.Net.Http.HttpRequestMessage request, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task> onNoContent, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api20221229.ICloudError>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Kusto.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Kusto.Runtime.ISendAsync sender)
+        internal async global::System.Threading.Tasks.Task ScriptsDelete_Call(global::System.Net.Http.HttpRequestMessage request, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task> onNoContent, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api30.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Kusto.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Kusto.Runtime.ISendAsync sender)
         {
             using( NoSynchronizationContext )
             {
@@ -15034,7 +17123,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Kusto
                         default:
                         {
                             await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Kusto.Runtime.Events.BeforeResponseDispatch, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
-                            await onDefault(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api20221229.CloudError.FromJson(Microsoft.Azure.PowerShell.Cmdlets.Kusto.Runtime.Json.JsonNode.Parse(body.Result)) ));
+                            await onDefault(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api30.ErrorResponse.FromJson(Microsoft.Azure.PowerShell.Cmdlets.Kusto.Runtime.Json.JsonNode.Parse(body.Result)) ));
                             break;
                         }
                     }
@@ -15053,9 +17142,8 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Kusto
         /// Validation method for <see cref="ScriptsDelete" /> method. Call this like the actual call, but you will get validation
         /// events back.
         /// </summary>
-        /// <param name="subscriptionId">Gets subscription credentials which uniquely identify Microsoft Azure subscription. The subscription
-        /// ID forms part of the URI for every service call.</param>
-        /// <param name="resourceGroupName">The name of the resource group containing the Kusto cluster.</param>
+        /// <param name="subscriptionId">The ID of the target subscription.</param>
+        /// <param name="resourceGroupName">The name of the resource group. The name is case insensitive.</param>
         /// <param name="clusterName">The name of the Kusto cluster.</param>
         /// <param name="databaseName">The name of the database in the Kusto cluster.</param>
         /// <param name="scriptName">The name of the Kusto database script.</param>
@@ -15068,17 +17156,22 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Kusto
             using( NoSynchronizationContext )
             {
                 await eventListener.AssertNotNull(nameof(subscriptionId),subscriptionId);
+                await eventListener.AssertMinimumLength(nameof(subscriptionId),subscriptionId,1);
                 await eventListener.AssertNotNull(nameof(resourceGroupName),resourceGroupName);
+                await eventListener.AssertMinimumLength(nameof(resourceGroupName),resourceGroupName,1);
+                await eventListener.AssertMaximumLength(nameof(resourceGroupName),resourceGroupName,90);
                 await eventListener.AssertNotNull(nameof(clusterName),clusterName);
+                await eventListener.AssertRegEx(nameof(clusterName),clusterName,@"^.*$");
                 await eventListener.AssertNotNull(nameof(databaseName),databaseName);
+                await eventListener.AssertRegEx(nameof(databaseName),databaseName,@"^.*$");
                 await eventListener.AssertNotNull(nameof(scriptName),scriptName);
+                await eventListener.AssertRegEx(nameof(scriptName),scriptName,@"^.*$");
             }
         }
 
         /// <summary>Gets a Kusto cluster database script.</summary>
-        /// <param name="subscriptionId">Gets subscription credentials which uniquely identify Microsoft Azure subscription. The subscription
-        /// ID forms part of the URI for every service call.</param>
-        /// <param name="resourceGroupName">The name of the resource group containing the Kusto cluster.</param>
+        /// <param name="subscriptionId">The ID of the target subscription.</param>
+        /// <param name="resourceGroupName">The name of the resource group. The name is case insensitive.</param>
         /// <param name="clusterName">The name of the Kusto cluster.</param>
         /// <param name="databaseName">The name of the database in the Kusto cluster.</param>
         /// <param name="scriptName">The name of the Kusto database script.</param>
@@ -15090,9 +17183,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Kusto
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        public async global::System.Threading.Tasks.Task ScriptsGet(string subscriptionId, string resourceGroupName, string clusterName, string databaseName, string scriptName, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api20221229.IScript>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api20221229.ICloudError>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Kusto.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Kusto.Runtime.ISendAsync sender)
+        public async global::System.Threading.Tasks.Task ScriptsGet(string subscriptionId, string resourceGroupName, string clusterName, string databaseName, string scriptName, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api20230815.IScript>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api30.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Kusto.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Kusto.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2022-12-29";
+            var apiVersion = @"2023-08-15";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -15135,9 +17228,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Kusto
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        public async global::System.Threading.Tasks.Task ScriptsGetViaIdentity(global::System.String viaIdentity, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api20221229.IScript>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api20221229.ICloudError>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Kusto.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Kusto.Runtime.ISendAsync sender)
+        public async global::System.Threading.Tasks.Task ScriptsGetViaIdentity(global::System.String viaIdentity, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api20230815.IScript>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api30.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Kusto.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Kusto.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2022-12-29";
+            var apiVersion = @"2023-08-15";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -15194,7 +17287,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Kusto
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        internal async global::System.Threading.Tasks.Task ScriptsGet_Call(global::System.Net.Http.HttpRequestMessage request, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api20221229.IScript>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api20221229.ICloudError>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Kusto.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Kusto.Runtime.ISendAsync sender)
+        internal async global::System.Threading.Tasks.Task ScriptsGet_Call(global::System.Net.Http.HttpRequestMessage request, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api20230815.IScript>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api30.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Kusto.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Kusto.Runtime.ISendAsync sender)
         {
             using( NoSynchronizationContext )
             {
@@ -15212,13 +17305,13 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Kusto
                         case global::System.Net.HttpStatusCode.OK:
                         {
                             await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Kusto.Runtime.Events.BeforeResponseDispatch, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
-                            await onOk(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api20221229.Script.FromJson(Microsoft.Azure.PowerShell.Cmdlets.Kusto.Runtime.Json.JsonNode.Parse(body.Result)) .ReadHeaders(_response.Headers)));
+                            await onOk(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api20230815.Script.FromJson(Microsoft.Azure.PowerShell.Cmdlets.Kusto.Runtime.Json.JsonNode.Parse(body.Result)) ));
                             break;
                         }
                         default:
                         {
                             await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Kusto.Runtime.Events.BeforeResponseDispatch, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
-                            await onDefault(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api20221229.CloudError.FromJson(Microsoft.Azure.PowerShell.Cmdlets.Kusto.Runtime.Json.JsonNode.Parse(body.Result)) ));
+                            await onDefault(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api30.ErrorResponse.FromJson(Microsoft.Azure.PowerShell.Cmdlets.Kusto.Runtime.Json.JsonNode.Parse(body.Result)) ));
                             break;
                         }
                     }
@@ -15237,9 +17330,8 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Kusto
         /// Validation method for <see cref="ScriptsGet" /> method. Call this like the actual call, but you will get validation events
         /// back.
         /// </summary>
-        /// <param name="subscriptionId">Gets subscription credentials which uniquely identify Microsoft Azure subscription. The subscription
-        /// ID forms part of the URI for every service call.</param>
-        /// <param name="resourceGroupName">The name of the resource group containing the Kusto cluster.</param>
+        /// <param name="subscriptionId">The ID of the target subscription.</param>
+        /// <param name="resourceGroupName">The name of the resource group. The name is case insensitive.</param>
         /// <param name="clusterName">The name of the Kusto cluster.</param>
         /// <param name="databaseName">The name of the database in the Kusto cluster.</param>
         /// <param name="scriptName">The name of the Kusto database script.</param>
@@ -15252,17 +17344,22 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Kusto
             using( NoSynchronizationContext )
             {
                 await eventListener.AssertNotNull(nameof(subscriptionId),subscriptionId);
+                await eventListener.AssertMinimumLength(nameof(subscriptionId),subscriptionId,1);
                 await eventListener.AssertNotNull(nameof(resourceGroupName),resourceGroupName);
+                await eventListener.AssertMinimumLength(nameof(resourceGroupName),resourceGroupName,1);
+                await eventListener.AssertMaximumLength(nameof(resourceGroupName),resourceGroupName,90);
                 await eventListener.AssertNotNull(nameof(clusterName),clusterName);
+                await eventListener.AssertRegEx(nameof(clusterName),clusterName,@"^.*$");
                 await eventListener.AssertNotNull(nameof(databaseName),databaseName);
+                await eventListener.AssertRegEx(nameof(databaseName),databaseName,@"^.*$");
                 await eventListener.AssertNotNull(nameof(scriptName),scriptName);
+                await eventListener.AssertRegEx(nameof(scriptName),scriptName,@"^.*$");
             }
         }
 
         /// <summary>Returns the list of database scripts for given database.</summary>
-        /// <param name="subscriptionId">Gets subscription credentials which uniquely identify Microsoft Azure subscription. The subscription
-        /// ID forms part of the URI for every service call.</param>
-        /// <param name="resourceGroupName">The name of the resource group containing the Kusto cluster.</param>
+        /// <param name="subscriptionId">The ID of the target subscription.</param>
+        /// <param name="resourceGroupName">The name of the resource group. The name is case insensitive.</param>
         /// <param name="clusterName">The name of the Kusto cluster.</param>
         /// <param name="databaseName">The name of the database in the Kusto cluster.</param>
         /// <param name="onOk">a delegate that is called when the remote service returns 200 (OK).</param>
@@ -15273,9 +17370,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Kusto
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        public async global::System.Threading.Tasks.Task ScriptsListByDatabase(string subscriptionId, string resourceGroupName, string clusterName, string databaseName, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api20221229.IScriptListResult>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api20221229.ICloudError>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Kusto.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Kusto.Runtime.ISendAsync sender)
+        public async global::System.Threading.Tasks.Task ScriptsListByDatabase(string subscriptionId, string resourceGroupName, string clusterName, string databaseName, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api20230815.IScriptListResult>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api30.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Kusto.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Kusto.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2022-12-29";
+            var apiVersion = @"2023-08-15";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -15317,9 +17414,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Kusto
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        public async global::System.Threading.Tasks.Task ScriptsListByDatabaseViaIdentity(global::System.String viaIdentity, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api20221229.IScriptListResult>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api20221229.ICloudError>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Kusto.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Kusto.Runtime.ISendAsync sender)
+        public async global::System.Threading.Tasks.Task ScriptsListByDatabaseViaIdentity(global::System.String viaIdentity, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api20230815.IScriptListResult>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api30.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Kusto.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Kusto.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2022-12-29";
+            var apiVersion = @"2023-08-15";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -15374,7 +17471,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Kusto
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        internal async global::System.Threading.Tasks.Task ScriptsListByDatabase_Call(global::System.Net.Http.HttpRequestMessage request, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api20221229.IScriptListResult>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api20221229.ICloudError>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Kusto.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Kusto.Runtime.ISendAsync sender)
+        internal async global::System.Threading.Tasks.Task ScriptsListByDatabase_Call(global::System.Net.Http.HttpRequestMessage request, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api20230815.IScriptListResult>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api30.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Kusto.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Kusto.Runtime.ISendAsync sender)
         {
             using( NoSynchronizationContext )
             {
@@ -15392,13 +17489,13 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Kusto
                         case global::System.Net.HttpStatusCode.OK:
                         {
                             await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Kusto.Runtime.Events.BeforeResponseDispatch, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
-                            await onOk(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api20221229.ScriptListResult.FromJson(Microsoft.Azure.PowerShell.Cmdlets.Kusto.Runtime.Json.JsonNode.Parse(body.Result)) ));
+                            await onOk(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api20230815.ScriptListResult.FromJson(Microsoft.Azure.PowerShell.Cmdlets.Kusto.Runtime.Json.JsonNode.Parse(body.Result)) ));
                             break;
                         }
                         default:
                         {
                             await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Kusto.Runtime.Events.BeforeResponseDispatch, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
-                            await onDefault(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api20221229.CloudError.FromJson(Microsoft.Azure.PowerShell.Cmdlets.Kusto.Runtime.Json.JsonNode.Parse(body.Result)) ));
+                            await onDefault(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api30.ErrorResponse.FromJson(Microsoft.Azure.PowerShell.Cmdlets.Kusto.Runtime.Json.JsonNode.Parse(body.Result)) ));
                             break;
                         }
                     }
@@ -15417,9 +17514,8 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Kusto
         /// Validation method for <see cref="ScriptsListByDatabase" /> method. Call this like the actual call, but you will get validation
         /// events back.
         /// </summary>
-        /// <param name="subscriptionId">Gets subscription credentials which uniquely identify Microsoft Azure subscription. The subscription
-        /// ID forms part of the URI for every service call.</param>
-        /// <param name="resourceGroupName">The name of the resource group containing the Kusto cluster.</param>
+        /// <param name="subscriptionId">The ID of the target subscription.</param>
+        /// <param name="resourceGroupName">The name of the resource group. The name is case insensitive.</param>
         /// <param name="clusterName">The name of the Kusto cluster.</param>
         /// <param name="databaseName">The name of the database in the Kusto cluster.</param>
         /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.Kusto.Runtime.IEventListener" /> instance that will receive events.</param>
@@ -15431,16 +17527,20 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Kusto
             using( NoSynchronizationContext )
             {
                 await eventListener.AssertNotNull(nameof(subscriptionId),subscriptionId);
+                await eventListener.AssertMinimumLength(nameof(subscriptionId),subscriptionId,1);
                 await eventListener.AssertNotNull(nameof(resourceGroupName),resourceGroupName);
+                await eventListener.AssertMinimumLength(nameof(resourceGroupName),resourceGroupName,1);
+                await eventListener.AssertMaximumLength(nameof(resourceGroupName),resourceGroupName,90);
                 await eventListener.AssertNotNull(nameof(clusterName),clusterName);
+                await eventListener.AssertRegEx(nameof(clusterName),clusterName,@"^.*$");
                 await eventListener.AssertNotNull(nameof(databaseName),databaseName);
+                await eventListener.AssertRegEx(nameof(databaseName),databaseName,@"^.*$");
             }
         }
 
         /// <summary>Updates a database script.</summary>
-        /// <param name="subscriptionId">Gets subscription credentials which uniquely identify Microsoft Azure subscription. The subscription
-        /// ID forms part of the URI for every service call.</param>
-        /// <param name="resourceGroupName">The name of the resource group containing the Kusto cluster.</param>
+        /// <param name="subscriptionId">The ID of the target subscription.</param>
+        /// <param name="resourceGroupName">The name of the resource group. The name is case insensitive.</param>
         /// <param name="clusterName">The name of the Kusto cluster.</param>
         /// <param name="databaseName">The name of the database in the Kusto cluster.</param>
         /// <param name="scriptName">The name of the Kusto database script.</param>
@@ -15453,9 +17553,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Kusto
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        public async global::System.Threading.Tasks.Task ScriptsUpdate(string subscriptionId, string resourceGroupName, string clusterName, string databaseName, string scriptName, Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api20221229.IScript body, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api20221229.IScript>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api20221229.ICloudError>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Kusto.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Kusto.Runtime.ISendAsync sender)
+        public async global::System.Threading.Tasks.Task ScriptsUpdate(string subscriptionId, string resourceGroupName, string clusterName, string databaseName, string scriptName, Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api20230815.IScript body, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api20230815.IScript>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api30.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Kusto.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Kusto.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2022-12-29";
+            var apiVersion = @"2023-08-15";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -15503,9 +17603,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Kusto
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        public async global::System.Threading.Tasks.Task ScriptsUpdateViaIdentity(global::System.String viaIdentity, Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api20221229.IScript body, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api20221229.IScript>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api20221229.ICloudError>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Kusto.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Kusto.Runtime.ISendAsync sender)
+        public async global::System.Threading.Tasks.Task ScriptsUpdateViaIdentity(global::System.String viaIdentity, Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api20230815.IScript body, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api20230815.IScript>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api30.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Kusto.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Kusto.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2022-12-29";
+            var apiVersion = @"2023-08-15";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -15566,7 +17666,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Kusto
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        internal async global::System.Threading.Tasks.Task ScriptsUpdate_Call(global::System.Net.Http.HttpRequestMessage request, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api20221229.IScript>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api20221229.ICloudError>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Kusto.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Kusto.Runtime.ISendAsync sender)
+        internal async global::System.Threading.Tasks.Task ScriptsUpdate_Call(global::System.Net.Http.HttpRequestMessage request, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api20230815.IScript>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api30.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Kusto.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Kusto.Runtime.ISendAsync sender)
         {
             using( NoSynchronizationContext )
             {
@@ -15683,13 +17783,13 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Kusto
                         case global::System.Net.HttpStatusCode.OK:
                         {
                             await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Kusto.Runtime.Events.BeforeResponseDispatch, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
-                            await onOk(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api20221229.Script.FromJson(Microsoft.Azure.PowerShell.Cmdlets.Kusto.Runtime.Json.JsonNode.Parse(body.Result)) .ReadHeaders(_response.Headers)));
+                            await onOk(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api20230815.Script.FromJson(Microsoft.Azure.PowerShell.Cmdlets.Kusto.Runtime.Json.JsonNode.Parse(body.Result)) ));
                             break;
                         }
                         default:
                         {
                             await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Kusto.Runtime.Events.BeforeResponseDispatch, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
-                            await onDefault(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api20221229.CloudError.FromJson(Microsoft.Azure.PowerShell.Cmdlets.Kusto.Runtime.Json.JsonNode.Parse(body.Result)) ));
+                            await onDefault(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api30.ErrorResponse.FromJson(Microsoft.Azure.PowerShell.Cmdlets.Kusto.Runtime.Json.JsonNode.Parse(body.Result)) ));
                             break;
                         }
                     }
@@ -15708,9 +17808,8 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Kusto
         /// Validation method for <see cref="ScriptsUpdate" /> method. Call this like the actual call, but you will get validation
         /// events back.
         /// </summary>
-        /// <param name="subscriptionId">Gets subscription credentials which uniquely identify Microsoft Azure subscription. The subscription
-        /// ID forms part of the URI for every service call.</param>
-        /// <param name="resourceGroupName">The name of the resource group containing the Kusto cluster.</param>
+        /// <param name="subscriptionId">The ID of the target subscription.</param>
+        /// <param name="resourceGroupName">The name of the resource group. The name is case insensitive.</param>
         /// <param name="clusterName">The name of the Kusto cluster.</param>
         /// <param name="databaseName">The name of the database in the Kusto cluster.</param>
         /// <param name="scriptName">The name of the Kusto database script.</param>
@@ -15719,24 +17818,29 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Kusto
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        internal async global::System.Threading.Tasks.Task ScriptsUpdate_Validate(string subscriptionId, string resourceGroupName, string clusterName, string databaseName, string scriptName, Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api20221229.IScript body, Microsoft.Azure.PowerShell.Cmdlets.Kusto.Runtime.IEventListener eventListener)
+        internal async global::System.Threading.Tasks.Task ScriptsUpdate_Validate(string subscriptionId, string resourceGroupName, string clusterName, string databaseName, string scriptName, Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api20230815.IScript body, Microsoft.Azure.PowerShell.Cmdlets.Kusto.Runtime.IEventListener eventListener)
         {
             using( NoSynchronizationContext )
             {
                 await eventListener.AssertNotNull(nameof(subscriptionId),subscriptionId);
+                await eventListener.AssertMinimumLength(nameof(subscriptionId),subscriptionId,1);
                 await eventListener.AssertNotNull(nameof(resourceGroupName),resourceGroupName);
+                await eventListener.AssertMinimumLength(nameof(resourceGroupName),resourceGroupName,1);
+                await eventListener.AssertMaximumLength(nameof(resourceGroupName),resourceGroupName,90);
                 await eventListener.AssertNotNull(nameof(clusterName),clusterName);
+                await eventListener.AssertRegEx(nameof(clusterName),clusterName,@"^.*$");
                 await eventListener.AssertNotNull(nameof(databaseName),databaseName);
+                await eventListener.AssertRegEx(nameof(databaseName),databaseName,@"^.*$");
                 await eventListener.AssertNotNull(nameof(scriptName),scriptName);
+                await eventListener.AssertRegEx(nameof(scriptName),scriptName,@"^.*$");
                 await eventListener.AssertNotNull(nameof(body), body);
                 await eventListener.AssertObjectIsValid(nameof(body), body);
             }
         }
 
         /// <summary>Lists eligible region SKUs for Kusto resource provider by Azure region.</summary>
-        /// <param name="subscriptionId">Gets subscription credentials which uniquely identify Microsoft Azure subscription. The subscription
-        /// ID forms part of the URI for every service call.</param>
-        /// <param name="location">Azure location (region) name.</param>
+        /// <param name="subscriptionId">The ID of the target subscription.</param>
+        /// <param name="location">The name of Azure region.</param>
         /// <param name="onOk">a delegate that is called when the remote service returns 200 (OK).</param>
         /// <param name="onDefault">a delegate that is called when the remote service returns default (any response code not handled
         /// elsewhere).</param>
@@ -15745,9 +17849,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Kusto
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        public async global::System.Threading.Tasks.Task SkusList(string subscriptionId, string location, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api20221229.ISkuDescriptionList>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api20221229.ICloudError>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Kusto.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Kusto.Runtime.ISendAsync sender)
+        public async global::System.Threading.Tasks.Task SkusList(string subscriptionId, string location, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api20230815.ISkuDescriptionList>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api30.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Kusto.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Kusto.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2022-12-29";
+            var apiVersion = @"2023-08-15";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -15785,9 +17889,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Kusto
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        public async global::System.Threading.Tasks.Task SkusListViaIdentity(global::System.String viaIdentity, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api20221229.ISkuDescriptionList>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api20221229.ICloudError>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Kusto.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Kusto.Runtime.ISendAsync sender)
+        public async global::System.Threading.Tasks.Task SkusListViaIdentity(global::System.String viaIdentity, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api20230815.ISkuDescriptionList>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api30.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Kusto.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Kusto.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2022-12-29";
+            var apiVersion = @"2023-08-15";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -15836,7 +17940,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Kusto
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        internal async global::System.Threading.Tasks.Task SkusList_Call(global::System.Net.Http.HttpRequestMessage request, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api20221229.ISkuDescriptionList>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api20221229.ICloudError>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Kusto.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Kusto.Runtime.ISendAsync sender)
+        internal async global::System.Threading.Tasks.Task SkusList_Call(global::System.Net.Http.HttpRequestMessage request, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api20230815.ISkuDescriptionList>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api30.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Kusto.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Kusto.Runtime.ISendAsync sender)
         {
             using( NoSynchronizationContext )
             {
@@ -15854,13 +17958,13 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Kusto
                         case global::System.Net.HttpStatusCode.OK:
                         {
                             await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Kusto.Runtime.Events.BeforeResponseDispatch, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
-                            await onOk(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api20221229.SkuDescriptionList.FromJson(Microsoft.Azure.PowerShell.Cmdlets.Kusto.Runtime.Json.JsonNode.Parse(body.Result)) ));
+                            await onOk(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api20230815.SkuDescriptionList.FromJson(Microsoft.Azure.PowerShell.Cmdlets.Kusto.Runtime.Json.JsonNode.Parse(body.Result)) ));
                             break;
                         }
                         default:
                         {
                             await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Kusto.Runtime.Events.BeforeResponseDispatch, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
-                            await onDefault(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api20221229.CloudError.FromJson(Microsoft.Azure.PowerShell.Cmdlets.Kusto.Runtime.Json.JsonNode.Parse(body.Result)) ));
+                            await onDefault(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api30.ErrorResponse.FromJson(Microsoft.Azure.PowerShell.Cmdlets.Kusto.Runtime.Json.JsonNode.Parse(body.Result)) ));
                             break;
                         }
                     }
@@ -15879,9 +17983,8 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Kusto
         /// Validation method for <see cref="SkusList" /> method. Call this like the actual call, but you will get validation events
         /// back.
         /// </summary>
-        /// <param name="subscriptionId">Gets subscription credentials which uniquely identify Microsoft Azure subscription. The subscription
-        /// ID forms part of the URI for every service call.</param>
-        /// <param name="location">Azure location (region) name.</param>
+        /// <param name="subscriptionId">The ID of the target subscription.</param>
+        /// <param name="location">The name of Azure region.</param>
         /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.Kusto.Runtime.IEventListener" /> instance that will receive events.</param>
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
@@ -15891,7 +17994,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Kusto
             using( NoSynchronizationContext )
             {
                 await eventListener.AssertNotNull(nameof(subscriptionId),subscriptionId);
+                await eventListener.AssertMinimumLength(nameof(subscriptionId),subscriptionId,1);
                 await eventListener.AssertNotNull(nameof(location),location);
+                await eventListener.AssertMinimumLength(nameof(location),location,1);
             }
         }
     }

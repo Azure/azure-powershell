@@ -12,20 +12,18 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-using Microsoft.Azure.Commands.Dns.Models;
-using Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters;
-using Microsoft.Azure.Management.Dns.Models;
-using System;
-using System.Collections;
-using System.Management.Automation;
-using ProjectResources = Microsoft.Azure.Commands.Dns.Properties.Resources;
-
 namespace Microsoft.Azure.Commands.Dns
 {
+    using System.Collections;
+    using System.Management.Automation;
+    using Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters;
+    using Microsoft.Azure.Management.Dns.Models;
+    using ProjectResources = Microsoft.Azure.Commands.Dns.Properties.Resources;
+
     /// <summary>
     /// Creates a new record set.
     /// </summary>
-    [Cmdlet("New", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "DnsRecordSet", DefaultParameterSetName = "Fields", SupportsShouldProcess = true),OutputType(typeof(DnsRecordSet))]
+    [Cmdlet("New", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "DnsRecordSet", DefaultParameterSetName = "Fields", SupportsShouldProcess = true), OutputType(typeof(DnsRecordSet))]
     public class NewAzureDnsRecordSet : DnsBaseCmdlet
     {
         private uint? ttl_value;
@@ -106,7 +104,7 @@ namespace Microsoft.Azure.Commands.Dns
                 zoneName = this.Zone.Name;
                 resourceGroupname = this.Zone.ResourceGroupName;
             }
-            if(this.Name.EndsWith(zoneName.ToString()))
+            if (this.Name.EndsWith(zoneName.ToString()))
             {
                 this.WriteWarning(string.Format(ProjectResources.Error_RecordSetNameEndsWithZoneName, this.Name, zoneName.ToString()));
             }
@@ -130,7 +128,7 @@ namespace Microsoft.Azure.Commands.Dns
                     result = this.DnsClient.CreateDnsRecordSet(
                         zoneName,
                         resourceGroupname,
-                        this.Name, 
+                        this.Name,
                         this.ttl_value,
                         this.RecordType,
                         this.Metadata,

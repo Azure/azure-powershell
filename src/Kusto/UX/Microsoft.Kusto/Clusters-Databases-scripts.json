@@ -1,6 +1,6 @@
 {
   "resourceType": "Clusters/Databases/scripts",
-  "apiVersion": "2022-12-29",
+  "apiVersion": "2023-08-15",
   "learnMore": {
     "url": "https://learn.microsoft.com/powershell/module/az.kusto"
   },
@@ -55,7 +55,7 @@
     },
     {
       "name": "Remove-AzKustoScript",
-      "description": "Deletes a Kusto principalAssignment.",
+      "description": "Deletes a Kusto database script.",
       "path": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Kusto/Clusters/{clusterName}/Databases/{databaseName}/scripts/{scriptName}",
       "help": {
         "learnMore": {
@@ -75,7 +75,7 @@
       },
       "examples": [
         {
-          "description": "Deletes a Kusto principalAssignment.",
+          "description": "Deletes a Kusto database script.",
           "parameters": [
             {
               "name": "-ClusterName",

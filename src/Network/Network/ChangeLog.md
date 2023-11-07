@@ -19,6 +19,7 @@
 --->
 
 ## Upcoming Release
+* [Breaking Change] Removed `Geo` as a valid input for parameter `VariableName` in `NewAzureApplicationGatewayFirewallCustomRuleGroupByVariable`.
 * Added AllowBranchToBranchTraffic property to New-AzRouteServer
 * Added AllowBranchToBranchTraffic property to Get-AzRouteServer
 * Changed Update-AzRouteServer functionality to fix bugs

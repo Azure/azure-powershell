@@ -18,7 +18,6 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
-* Added VM migration capabilities from Hyper-V and VMware platforms to Azure Stack HCI utilizing Azure Migrate
 
 ## Version 2.2.0
 * Fixed key vault SPN Id coming as null for some users

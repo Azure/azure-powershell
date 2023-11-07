@@ -96,7 +96,7 @@ Accept wildcard characters: False
 ```
 
 ### -Location
-Azure location (region) name.
+The name of Azure region.
 
 ```yaml
 Type: System.String
@@ -111,8 +111,7 @@ Accept wildcard characters: False
 ```
 
 ### -SubscriptionId
-Gets subscription credentials which uniquely identify Microsoft Azure subscription.
-The subscription ID forms part of the URI for every service call.
+The ID of the target subscription.
 
 ```yaml
 Type: System.String[]
@@ -133,11 +132,9 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api20221229.ISkuDescription
+### Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api20230815.ISkuDescription
 
 ## NOTES
-
-ALIASES
 
 ## RELATED LINKS
 

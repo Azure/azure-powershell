@@ -12,16 +12,13 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-using Microsoft.Azure.Commands.Dns.Models;
-using Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters;
-using Microsoft.Azure.Management.Dns.Models;
-using System;
-using System.Collections.Generic;
-using System.Management.Automation;
-using ProjectResources = Microsoft.Azure.Commands.Dns.Properties.Resources;
-
 namespace Microsoft.Azure.Commands.Dns
 {
+    using System.Collections.Generic;
+    using System.Management.Automation;
+    using Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters;
+    using Microsoft.Azure.Management.Dns.Models;
+
     /// <summary>
     /// Gets one or more existing record sets.
     /// </summary>

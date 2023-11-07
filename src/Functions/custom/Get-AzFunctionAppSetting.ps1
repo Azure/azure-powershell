@@ -96,7 +96,7 @@ function Get-AzFunctionAppSetting {
             $settings = Az.Functions.internal\Get-AzWebAppApplicationSetting @PSBoundParameters
             if ($settings)
             {
-                ConvertWebAppApplicationSettingToHashtable -ApplicationSetting $settings
+                ConvertWebAppApplicationSettingToHashtable -ApplicationSetting $settings -ShowAllAppSettings
             }
         }
     }

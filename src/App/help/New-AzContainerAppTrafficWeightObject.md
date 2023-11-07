@@ -1,7 +1,7 @@
 ---
 external help file:
 Module Name: Az.App
-online version: https://learn.microsoft.com/powershell/module/az.app/new-azcontainerapptrafficweightobject
+online version: https://learn.microsoft.com/powershell/module/Az.App/new-azcontainerapptrafficweightobject
 schema: 2.0.0
 ---
 
@@ -22,9 +22,9 @@ Create an in-memory object for TrafficWeight.
 
 ## EXAMPLES
 
-### Example 1: Create a TrafficWeight object for ContainerApp.
+### Example 1: Create an in-memory object for TrafficWeight.
 ```powershell
-New-AzContainerAppTrafficWeightObject -Label production -LatestRevision $True -Weight 100
+New-AzContainerAppTrafficWeightObject -Label "production" -Weight 100 -LatestRevision:$True
 ```
 
 ```output
@@ -33,7 +33,7 @@ Label      LatestRevision RevisionName Weight
 production True                        100
 ```
 
-Create a TrafficWeight object for ContainerApp.
+Create an in-memory object for TrafficWeight.
 
 ## PARAMETERS
 
@@ -104,11 +104,9 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.App.Models.Api20220301.TrafficWeight
+### Microsoft.Azure.PowerShell.Cmdlets.App.Models.TrafficWeight
 
 ## NOTES
-
-ALIASES
 
 ## RELATED LINKS
 

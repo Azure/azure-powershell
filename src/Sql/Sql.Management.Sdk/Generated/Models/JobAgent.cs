@@ -43,17 +43,21 @@ namespace Microsoft.Azure.Management.Sql.Models
         /// <param name="sku">The name and tier of the SKU.
         /// </param>
 
+        /// <param name="identity">The identity of the job agent.
+        /// </param>
+
         /// <param name="databaseId">Resource ID of the database to store job metadata in.
         /// </param>
 
         /// <param name="state">The state of the job agent.
         /// Possible values include: 'Creating', 'Ready', 'Updating', 'Deleting',
         /// 'Disabled'</param>
-        public JobAgent(string location, string id = default(string), string name = default(string), string type = default(string), System.Collections.Generic.IDictionary<string, string> tags = default(System.Collections.Generic.IDictionary<string, string>), Sku sku = default(Sku), string databaseId = default(string), string state = default(string))
+        public JobAgent(string location, string id = default(string), string name = default(string), string type = default(string), System.Collections.Generic.IDictionary<string, string> tags = default(System.Collections.Generic.IDictionary<string, string>), Sku sku = default(Sku), JobAgentIdentity identity = default(JobAgentIdentity), string databaseId = default(string), string state = default(string))
 
         : base(location, id, name, type, tags)
         {
             this.Sku = sku;
+            this.Identity = identity;
             this.DatabaseId = databaseId;
             this.State = state;
             CustomInit();
@@ -70,6 +74,12 @@ namespace Microsoft.Azure.Management.Sql.Models
         /// </summary>
         [Newtonsoft.Json.JsonProperty(PropertyName = "sku")]
         public Sku Sku {get; set; }
+
+        /// <summary>
+        /// Gets or sets the identity of the job agent.
+        /// </summary>
+        [Newtonsoft.Json.JsonProperty(PropertyName = "identity")]
+        public JobAgentIdentity Identity {get; set; }
 
         /// <summary>
         /// Gets or sets resource ID of the database to store job metadata in.
@@ -94,6 +104,10 @@ namespace Microsoft.Azure.Management.Sql.Models
             if (this.Sku != null)
             {
                 this.Sku.Validate();
+            }
+            if (this.Identity != null)
+            {
+                this.Identity.Validate();
             }
 
 

@@ -18,7 +18,7 @@ Set-AzDiskSecurityProfile [-Disk] <PSDisk> -SecurityType <String> [-SecureVMDisk
 ```
 
 ## DESCRIPTION
-Set SecurityProfile on managed disk
+Set the SecurityProfile on managed disks.
 
 ## EXAMPLES
 
@@ -28,8 +28,8 @@ $diskconfig = New-AzDiskConfig -DiskSizeGB 10 -AccountType PremiumLRS -OsType Wi
 $image = '/subscriptions/0000000-0000-0000-0000-000000000000/resourceGroups/ResourceGroup01/providers/Microsoft.Compute/images/TestImage123';        
 $diskconfig = Set-AzDiskImageReference -Disk $diskconfig -Id $image -Lun 0;
 $diskconfig = Set-AzDiskSecurityProfile -Disk $diskconfig -SecurityType "TrustedLaunch";
-New-AzDisk -ResourceGroupName 'ResourceGroup01' -DiskName 'Disk01' -Disk $diskconfig;
-#$disk.Properties.SecurityProfile.SecurityType == "TrustedLaunch";
+$disk = New-AzDisk -ResourceGroupName 'ResourceGroup01' -DiskName 'Disk01' -Disk $diskconfig;
+# $disk.Properties.SecurityProfile.SecurityType == "TrustedLaunch";
 ```
 
 Customers can set the SecurityType of managed Disks.
@@ -74,6 +74,22 @@ New-AzDisk -ResourceGroupName $ResourceGroupName -DiskName $diskName -Disk $disk
 $disk = Get-AzDisk -ResourceGroupName $ResourceGroupName -DiskName $diskName;
 # Verify the SecurityType value.
 # $disk.Properties.SecurityProfile.SecurityType returns "ConfidentialVM";
+```
+
+### Example 3: Set the SecurityType to Standard to avoid TrustedLaunch defaulting.
+```powershell
+$rgname = <Resource Group Name>;
+$loc = <Azure Region>;
+New-AzResourceGroup -Name $rgname -Location $loc -Force;
+$securityTypeStnd = "Standard";
+
+# Standard SecurityType
+$diskconfig = New-AzDiskConfig -Location $loc -DiskSizeGB 1 -AccountType "Premium_LRS" -OsType "Windows" -CreateOption "Empty" -HyperVGeneration "V1";
+$diskname = "diskstnd" + $rgname;
+$diskconfig = Set-AzDiskSecurityProfile -Disk $diskconfig -SecurityType $securityTypeStnd;
+$diskPr = New-AzDisk -ResourceGroupName $rgname -DiskName $diskname -Disk $diskconfig;
+$disk = Get-AzDisk -ResourceGroupName $rgname -DiskName $diskname;
+# Verify $disk.SecurityProfile is null;
 ```
 
 ## PARAMETERS

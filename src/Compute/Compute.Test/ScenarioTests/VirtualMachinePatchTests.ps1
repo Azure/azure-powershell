@@ -32,8 +32,9 @@ function Test-InvokeAzVmPatchAssessment
         # VM Profile & Hardware
         $vmsize = Get-AvailableSku $loc "virtualMachine"
         $vmname = 'vm' + $rgname;
+        $stnd = "Standard";
 
-        $p = New-AzVMConfig -VMName $vmname -VMSize $vmsize -Priority 'Low' -MaxPrice 0.1538;
+        $p = New-AzVMConfig -VMName $vmname -VMSize $vmsize -Priority 'Low' -MaxPrice 0.1538 -SecurityType $stnd;
 
         # NRP
         $subnet = New-AzVirtualNetworkSubnetConfig -Name ('subnet' + $rgname) -AddressPrefix "10.0.0.0/24";
@@ -95,13 +96,14 @@ function Test-PatchStatusGetAzVMinstanceview
         # VM Profile & Hardware
         $vmsize = Get-AvailableSku $loc "virtualMachine"
         $vmname = 'vm' + $rgname;
+        $stnd = "Standard";
 
         $username = "admin01"
         $password = Get-PasswordForVM | ConvertTo-SecureString -AsPlainText -Force
         $cred = new-object -typename System.Management.Automation.PSCredential -argumentlist $username, $password
         [string]$domainNameLabel = "$vmname-$vmname".tolower();
 
-        $x = New-AzVM -ResourceGroupName $rgname -Name $vmname -Location $loc -Credential $cred -DomainNameLabel $domainNameLabel
+        $x = New-AzVM -ResourceGroupName $rgname -Name $vmname -Location $loc -Credential $cred -DomainNameLabel $domainNameLabel -SecurityType $stnd
         $patchResult = invoke-azvmpatchAssessment -resourcegroupname $rgname -vmname $vmname
 
         $vm = Get-AzVM -ResourceGroupName $rgname -Name $vmname -Status;

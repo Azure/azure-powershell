@@ -1,6 +1,6 @@
 {
   "resourceType": "managedEnvironments/storages",
-  "apiVersion": "2022-03-01",
+  "apiVersion": "2023-05-01",
   "learnMore": {
     "url": "https://learn.microsoft.com/powershell/module/az.app"
   },
@@ -17,8 +17,8 @@
           {
             "parameters": [
               "-EnvName <String>",
+              "-Name <String>",
               "-ResourceGroupName <String>",
-              "-StorageName <String>",
               "[-SubscriptionId <String[]>]"
             ]
           }
@@ -33,12 +33,12 @@
               "value": "[Path.environmentName]"
             },
             {
-              "name": "-ResourceGroupName",
-              "value": "[Path.resourceGroupName]"
+              "name": "-Name",
+              "value": "[Path.storageName]"
             },
             {
-              "name": "-StorageName",
-              "value": "[Path.storageName]"
+              "name": "-ResourceGroupName",
+              "value": "[Path.resourceGroupName]"
             },
             {
               "name": "-SubscriptionId",
@@ -60,8 +60,8 @@
           {
             "parameters": [
               "-EnvName <String>",
+              "-Name <String>",
               "-ResourceGroupName <String>",
-              "-StorageName <String>",
               "[-SubscriptionId <String>]"
             ]
           }
@@ -76,12 +76,12 @@
               "value": "[Path.environmentName]"
             },
             {
-              "name": "-ResourceGroupName",
-              "value": "[Path.resourceGroupName]"
+              "name": "-Name",
+              "value": "[Path.storageName]"
             },
             {
-              "name": "-StorageName",
-              "value": "[Path.storageName]"
+              "name": "-ResourceGroupName",
+              "value": "[Path.resourceGroupName]"
             },
             {
               "name": "-SubscriptionId",

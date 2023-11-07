@@ -32,12 +32,16 @@ namespace Microsoft.Azure.Management.Sql.Models
 
         /// <param name="databases">List of databases in the failover group.
         /// </param>
-        public FailoverGroupUpdateProperties(FailoverGroupReadWriteEndpoint readWriteEndpoint = default(FailoverGroupReadWriteEndpoint), FailoverGroupReadOnlyEndpoint readOnlyEndpoint = default(FailoverGroupReadOnlyEndpoint), System.Collections.Generic.IList<string> databases = default(System.Collections.Generic.IList<string>))
+
+        /// <param name="partnerServers">List of partner server information for the failover group.
+        /// </param>
+        public FailoverGroupUpdateProperties(FailoverGroupReadWriteEndpoint readWriteEndpoint = default(FailoverGroupReadWriteEndpoint), FailoverGroupReadOnlyEndpoint readOnlyEndpoint = default(FailoverGroupReadOnlyEndpoint), System.Collections.Generic.IList<string> databases = default(System.Collections.Generic.IList<string>), System.Collections.Generic.IList<PartnerInfo> partnerServers = default(System.Collections.Generic.IList<PartnerInfo>))
 
         {
             this.ReadWriteEndpoint = readWriteEndpoint;
             this.ReadOnlyEndpoint = readOnlyEndpoint;
             this.Databases = databases;
+            this.PartnerServers = partnerServers;
             CustomInit();
         }
 
@@ -64,6 +68,12 @@ namespace Microsoft.Azure.Management.Sql.Models
         /// </summary>
         [Newtonsoft.Json.JsonProperty(PropertyName = "databases")]
         public System.Collections.Generic.IList<string> Databases {get; set; }
+
+        /// <summary>
+        /// Gets or sets list of partner server information for the failover group.
+        /// </summary>
+        [Newtonsoft.Json.JsonProperty(PropertyName = "partnerServers")]
+        public System.Collections.Generic.IList<PartnerInfo> PartnerServers {get; set; }
         /// <summary>
         /// Validate the object.
         /// </summary>
@@ -78,6 +88,16 @@ namespace Microsoft.Azure.Management.Sql.Models
             }
 
 
+            if (this.PartnerServers != null)
+            {
+                foreach (var element in this.PartnerServers)
+                {
+                    if (element != null)
+                    {
+                        element.Validate();
+                    }
+                }
+            }
         }
     }
 }

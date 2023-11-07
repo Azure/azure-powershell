@@ -20,7 +20,7 @@ Accept subscription ownership.
 .Description
 Accept subscription ownership.
 .Example
-Invoke-AzSubscriptionAcceptOwnership -SubscriptionId XXXXXXXX-XXXX-XXXX-XXXX-XXXXXXXXXXXX -DisplayName "createSub" -Tag @{"abc"="123"} -PassThru
+Invoke-AzSubscriptionAcceptOwnership -SubscriptionId XXXXXXXX-XXXX-XXXX-XXXX-XXXXXXXXXXXX -SubscriptionName "createSub" -Tag @{"abc"="123"} -PassThru
 
 .Inputs
 Microsoft.Azure.PowerShell.Cmdlets.Subscription.Models.ISubscriptionIdentity
@@ -35,6 +35,7 @@ INPUTOBJECT <ISubscriptionIdentity>: Identity Parameter
   [AliasName <String>]: AliasName is the name for the subscription creation request. Note that this is not the same as subscription name and this doesn’t have any other lifecycle need beyond the request for subscription creation.
   [BillingAccountId <String>]: Billing Account Id.
   [Id <String>]: Resource identity path
+  [OperationId <String>]: The operation ID, which can be found from the Location field in the generate recommendation response header.
   [SubscriptionId <String>]: Subscription Id.
 .Link
 https://learn.microsoft.com/powershell/module/az.subscription/invoke-azsubscriptionacceptownership
@@ -59,14 +60,15 @@ param(
     [Parameter()]
     [Microsoft.Azure.PowerShell.Cmdlets.Subscription.Category('Body')]
     [System.String]
-    # The friendly name of the subscription.
-    ${DisplayName},
-
-    [Parameter()]
-    [Microsoft.Azure.PowerShell.Cmdlets.Subscription.Category('Body')]
-    [System.String]
     # Management group Id for the subscription.
     ${ManagementGroupId},
+
+    [Parameter()]
+    [Alias('DisplayName')]
+    [Microsoft.Azure.PowerShell.Cmdlets.Subscription.Category('Body')]
+    [System.String]
+    # The friendly name of the subscription.
+    ${SubscriptionName},
 
     [Parameter()]
     [Microsoft.Azure.PowerShell.Cmdlets.Subscription.Category('Body')]
@@ -173,6 +175,10 @@ begin {
         }
         $cmdInfo = Get-Command -Name $mapping[$parameterSet]
         [Microsoft.Azure.PowerShell.Cmdlets.Subscription.Runtime.MessageAttributeHelper]::ProcessCustomAttributesAtRuntime($cmdInfo, $MyInvocation, $parameterSet, $PSCmdlet)
+        if ($null -ne $MyInvocation.MyCommand -and [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PromptedPreviewMessageCmdlets -notcontains $MyInvocation.MyCommand.Name -and [Microsoft.Azure.PowerShell.Cmdlets.Subscription.Runtime.MessageAttributeHelper]::ContainsPreviewAttribute($cmdInfo, $MyInvocation)){
+            [Microsoft.Azure.PowerShell.Cmdlets.Subscription.Runtime.MessageAttributeHelper]::ProcessPreviewMessageAttributesAtRuntime($cmdInfo, $MyInvocation, $parameterSet, $PSCmdlet)
+            [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PromptedPreviewMessageCmdlets.Enqueue($MyInvocation.MyCommand.Name)
+        }
         $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Cmdlet)
         $scriptCmd = {& $wrappedCmd @PSBoundParameters}
         $steppablePipeline = $scriptCmd.GetSteppablePipeline($MyInvocation.CommandOrigin)
