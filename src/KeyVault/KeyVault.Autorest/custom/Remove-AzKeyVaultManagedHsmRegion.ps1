@@ -133,7 +133,6 @@ function Remove-AzKeyVaultManagedHsmRegion {
                 $null = $PSBoundParameters.Remove('Parameter')
                 $null = $PSBoundParameters.Remove('Name')
                 $null = $PSBoundParameters.Add('HsmName', $HsmName)
-                $null = $PSBoundParameters.Remove('Region')
                 Az.KeyVault\Get-AzKeyVaultManagedHsmRegion @PSBoundParameters
             }
         } catch {
