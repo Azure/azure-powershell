@@ -53,10 +53,6 @@ function setupEnv() {
     $sms1 = New-AzActionGroupSmsReceiverObject -CountryCode $env.phonecountry -Name $env.smsreceiver -PhoneNumber $env.userphone
     $ag = New-AzActionGroup -Name $env.actiongroupname -ResourceGroupName $env.resourceGroup -Location southcentralus -EmailReceiver $email1 -SmsReceiver $sms1 -ShortName ag1
 
-    # Failed to get notification id from creation
-    # New-AzActionGroupNotification -ActionGroupName $env.actiongroupname -ResourceGroupName $env.resourceGroup -AlertType servicehealth -EmailReceiver $email1
-    # New-AzActionGroupNotification -InputObject $ag -AlertType servicehealth -EmailReceiver $sms1
-
     # For any resources you created for test, you should add it to $env here.
     $envFile = 'env.json'
     if ($TestMode -eq 'live') {
