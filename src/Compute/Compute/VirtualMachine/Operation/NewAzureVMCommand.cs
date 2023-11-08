@@ -804,16 +804,18 @@ namespace Microsoft.Azure.Commands.Compute
             else if (this.IsParameterBound(c => c.Image)
                 && !this.IsParameterBound(c => c.ImageReferenceId)
                 && !this.IsParameterBound(c => c.SharedGalleryImageId)
-                && this.Location != null) //Location cannot be null to query for image details.
+                && this.Location != null
+                && this.Image != null
+                && !this.Image.ToString().Contains(":")) //Location cannot be null to query for image details.
             {
                 // look at the image alias provided, get its image,
                 // if it is gen2, default to TL and the rest.
                 try
                 {
-                    string imagePublisher = ImageAliases.ImageAliasValues[this.Image]["publisher"];
-                    string imageOffer = ImageAliases.ImageAliasValues[this.Image]["offer"];
-                    string imageSku = ImageAliases.ImageAliasValues[this.Image]["sku"];
-                    string imageVersion = ImageAliases.ImageAliasValues[this.Image]["version"];
+                    string imagePublisher = ImageAliases.ImageAliasValues[this.Image.ToString().ToLower()]["publisher"];
+                    string imageOffer = ImageAliases.ImageAliasValues[this.Image.ToString().ToLower()]["offer"];
+                    string imageSku = ImageAliases.ImageAliasValues[this.Image.ToString().ToLower()]["sku"];
+                    string imageVersion = ImageAliases.ImageAliasValues[this.Image.ToString().ToLower()]["version"];
 
                     imageVersion = retrieveImageVersion(imagePublisher, imageOffer, imageSku, imageVersion);
 

@@ -9,7 +9,7 @@ namespace Microsoft.Azure.Commands.Compute.Common
         public static Dictionary<string, Dictionary<string, string>> ImageAliasValues = new Dictionary<string, Dictionary<string, string>>()
         {
             {
-                "Ubuntu2204", new Dictionary<string, string>()
+                "ubuntu2204", new Dictionary<string, string>()
                 {
                     {"publisher", "Canonical"},
                     {"offer", "0001-com-ubuntu-server-jammy"},
@@ -18,7 +18,7 @@ namespace Microsoft.Azure.Commands.Compute.Common
                 }
             },
             {
-                "CentOS85Gen2", new Dictionary<string, string>()
+                "centOS85Gen2", new Dictionary<string, string>()
                 {
                     {"publisher", "OpenLogic"},
                     {"offer", "CentOS"},
@@ -27,7 +27,7 @@ namespace Microsoft.Azure.Commands.Compute.Common
                 }
             },
             {
-                "Debian11", new Dictionary<string, string>()
+                "debian11", new Dictionary<string, string>()
                 {
                     {"publisher", "Debian"},
                     {"offer", "debian-11"},
@@ -36,7 +36,7 @@ namespace Microsoft.Azure.Commands.Compute.Common
                 }
             },
             {
-                "OpenSuseLeap154Gen2", new Dictionary<string, string>()
+                "opensuseleap154gen2", new Dictionary<string, string>()
                 {
                     {"publisher", "SUSE"},
                     {"offer", "openSUSE-leap-15-4"},
@@ -45,7 +45,7 @@ namespace Microsoft.Azure.Commands.Compute.Common
                 }
             },
             {
-                "RHELRaw8LVMGen2", new Dictionary<string, string>()
+                "rhelraw8LVMGen2", new Dictionary<string, string>()
                 {
                     {"publisher", "RedHat"},
                     {"offer", "RHEL"},
@@ -54,7 +54,7 @@ namespace Microsoft.Azure.Commands.Compute.Common
                 }
             },
             {
-                "SuseSles15SP3", new Dictionary<string, string>()
+                "susesles15sp3", new Dictionary<string, string>()
                 {
                     {"publisher", "SUSE"},
                     {"offer", "sles-15-sp3"},
@@ -63,7 +63,7 @@ namespace Microsoft.Azure.Commands.Compute.Common
                 }
             },
             {
-                "FlatcarLinuxFreeGen2", new Dictionary<string, string>()
+                "flatcarlinuxfreegen2", new Dictionary<string, string>()
                 {
                     {"publisher", "kinvolk"},
                     {"offer", "flatcar-container-linux-free"},
@@ -73,7 +73,7 @@ namespace Microsoft.Azure.Commands.Compute.Common
             },
             //windows aliases
             {
-                "Win2022AzureEdition", new Dictionary<string, string>()
+                "win2022azureedition", new Dictionary<string, string>()
                 {
                     {"publisher", "MicrosoftWindowsServer"},
                     {"offer", "WindowsServer"},
@@ -82,7 +82,7 @@ namespace Microsoft.Azure.Commands.Compute.Common
                 }
             },
             {
-                "Win2022AzureEditionCore", new Dictionary<string, string>()
+                "win2022azureeditioncore", new Dictionary<string, string>()
                 {
                     {"publisher", "MicrosoftWindowsServer"},
                     {"offer", "WindowsServer"},
@@ -91,7 +91,7 @@ namespace Microsoft.Azure.Commands.Compute.Common
                 }
             },
             {
-                "Win2019Datacenter", new Dictionary<string, string>()
+                "win2019datacenter", new Dictionary<string, string>()
                 {
                     {"publisher", "MicrosoftWindowsServer"},
                     {"offer", "WindowsServer"},
@@ -100,7 +100,7 @@ namespace Microsoft.Azure.Commands.Compute.Common
                 }
             },
             {
-                "Win2019DatacenterGen2", new Dictionary<string, string>()
+                "win2019datacentergen2", new Dictionary<string, string>()
                 {
                     {"publisher", "MicrosoftWindowsServer"},
                     {"offer", "WindowsServer"},
@@ -109,7 +109,7 @@ namespace Microsoft.Azure.Commands.Compute.Common
                 }
             },
             {
-                "Win2016Datacenter", new Dictionary<string, string>()
+                "win2016datacenter", new Dictionary<string, string>()
                 {
                     {"publisher", "MicrosoftWindowsServer"},
                     {"offer", "WindowsServer"},
@@ -118,7 +118,7 @@ namespace Microsoft.Azure.Commands.Compute.Common
                 }
             },
             {
-                "Win2012R2Datacenter", new Dictionary<string, string>()
+                "win2012r2datacenter", new Dictionary<string, string>()
                 {
                     {"publisher", "MicrosoftWindowsServer"},
                     {"offer", "WindowsServer"},
@@ -127,7 +127,7 @@ namespace Microsoft.Azure.Commands.Compute.Common
                 }
             },
             {
-                "Win2012Datacenter", new Dictionary<string, string>()
+                "win2012datacenter", new Dictionary<string, string>()
                 {
                     {"publisher", "MicrosoftWindowsServer"},
                     {"offer", "WindowsServer"},
@@ -136,7 +136,7 @@ namespace Microsoft.Azure.Commands.Compute.Common
                 }
             },
             {
-                "Win10", new Dictionary<string, string>()
+                "win10", new Dictionary<string, string>()
                 {
                     {"publisher", "MicrosoftVisualStudio"},
                     {"offer", "Windows"},
@@ -145,7 +145,7 @@ namespace Microsoft.Azure.Commands.Compute.Common
                 }
             },
             {
-                "Win2016DataCenterGenSecond", new Dictionary<string, string>()
+                "win2016datacentergensecond", new Dictionary<string, string>()
                 {
                     {"publisher", "MicrosoftWindowsServer"},
                     {"offer", "WindowsServer"},
