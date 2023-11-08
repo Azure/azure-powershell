@@ -15,38 +15,14 @@ Send test notifications to a set of provided receivers
 ### CreateExpanded (Default)
 ```
 Test-AzActionGroup -ActionGroupName <String> -ResourceGroupName <String> -AlertType <String>
- [-SubscriptionId <String>] [-ArmRoleReceiver <IArmRoleReceiver[]>]
- [-AutomationRunbookReceiver <IAutomationRunbookReceiver[]>] [-AzureAppPushReceiver <IAzureAppPushReceiver[]>]
- [-AzureFunctionReceiver <IAzureFunctionReceiver[]>] [-EmailReceiver <IEmailReceiver[]>]
- [-EventHubReceiver <IEventHubReceiver[]>] [-ItsmReceiver <IItsmReceiver[]>]
- [-LogicAppReceiver <ILogicAppReceiver[]>] [-SmsReceiver <ISmsReceiver[]>] [-VoiceReceiver <IVoiceReceiver[]>]
- [-WebhookReceiver <IWebhookReceiver[]>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf]
- [<CommonParameters>]
+ -Receiver <IActionGroupReceiver[]> [-SubscriptionId <String>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
+ [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ### CreateViaIdentityExpanded
 ```
-Test-AzActionGroup -InputObject <IActionGroupIdentity> -AlertType <String>
- [-ArmRoleReceiver <IArmRoleReceiver[]>] [-AutomationRunbookReceiver <IAutomationRunbookReceiver[]>]
- [-AzureAppPushReceiver <IAzureAppPushReceiver[]>] [-AzureFunctionReceiver <IAzureFunctionReceiver[]>]
- [-EmailReceiver <IEmailReceiver[]>] [-EventHubReceiver <IEventHubReceiver[]>]
- [-ItsmReceiver <IItsmReceiver[]>] [-LogicAppReceiver <ILogicAppReceiver[]>] [-SmsReceiver <ISmsReceiver[]>]
- [-VoiceReceiver <IVoiceReceiver[]>] [-WebhookReceiver <IWebhookReceiver[]>] [-DefaultProfile <PSObject>]
- [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
-```
-
-### CreateViaJsonFilePath
-```
-Test-AzActionGroup -ActionGroupName <String> -ResourceGroupName <String> -JsonFilePath <String>
- [-SubscriptionId <String>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf]
- [<CommonParameters>]
-```
-
-### CreateViaJsonString
-```
-Test-AzActionGroup -ActionGroupName <String> -ResourceGroupName <String> -JsonString <String>
- [-SubscriptionId <String>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf]
- [<CommonParameters>]
+Test-AzActionGroup -InputObject <IActionGroupIdentity> -AlertType <String> -Receiver <IActionGroupReceiver[]>
+ [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -56,22 +32,29 @@ Send test notifications to a set of provided receivers
 
 ### Example 1: Send test notifications to provided receiver
 ```powershell
-$email1 = New-AzActionGroupEmailReceiverObject -EmailAddress user@example.com -Name user1
-Test-AzActionGroup -ActionGroupName actiongroup1 -ResourceGroupName monitor-action -AlertType servicehealth -EmailReceiver $email1
+$sms1 = New-AzActionGroupSmsReceiverObject -CountryCode 86 -Name user1 -PhoneNumber 'phonenumber'
+$email2 = New-AzActionGroupEmailReceiverObject -EmailAddress user@example.com -Name user2
+Test-AzActionGroup -ActionGroupName actiongroup1 -ResourceGroupName monitor-action -AlertType servicehealth -Receiver $email2,$sms1
 ```
 
 ```output
 ActionDetail              : {{
                               "MechanismType": "Email",
+                              "Name": "user2",
+                              "Status": "Succeeded",
+                              "SubState": "Default",
+                              "SendTime": "2023-11-08T05:16:09.6280455+00:00"
+                            }, {
+                              "MechanismType": "Sms",
                               "Name": "user1",
                               "Status": "Succeeded",
                               "SubState": "Default",
-                              "SendTime": "2023-10-20T07:26:08.271003+00:00"
+                              "SendTime": "2023-11-08T05:16:09.642967+00:00"
                             }}
-CompletedTime             : 2023-10-20T07:28:08.7753691+00:00
+CompletedTime             : 2023-11-08T05:18:10.6755827+00:00
 ContextNotificationSource : Microsoft.Insights/TestNotification
 ContextType               : Microsoft.Insights/ServiceHealth
-CreatedTime               : 2023-10-20T07:26:05.2860073+00:00
+CreatedTime               : 2023-11-08T05:16:00.7951739+00:00
 State                     : Complete
 ```
 
@@ -84,7 +67,7 @@ The name of the action group.
 
 ```yaml
 Type: System.String
-Parameter Sets: CreateExpanded, CreateViaJsonFilePath, CreateViaJsonString
+Parameter Sets: CreateExpanded
 Aliases:
 
 Required: True
@@ -100,27 +83,10 @@ Supported alert type values are: servicehealth, metricstaticthreshold, metricsdy
 
 ```yaml
 Type: System.String
-Parameter Sets: CreateExpanded, CreateViaIdentityExpanded
+Parameter Sets: (All)
 Aliases:
 
 Required: True
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -ArmRoleReceiver
-The list of ARM role receivers that are part of this action group.
-Roles are Azure RBAC roles and only built-in roles are supported.
-To construct, see NOTES section for ARMROLERECEIVER properties and create a hash table.
-
-```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.Monitor.ActionGroup.Models.IArmRoleReceiver[]
-Parameter Sets: CreateExpanded, CreateViaIdentityExpanded
-Aliases:
-
-Required: False
 Position: Named
 Default value: None
 Accept pipeline input: False
@@ -133,54 +99,6 @@ Run the command as a job
 ```yaml
 Type: System.Management.Automation.SwitchParameter
 Parameter Sets: (All)
-Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -AutomationRunbookReceiver
-The list of AutomationRunbook receivers that are part of this action group.
-To construct, see NOTES section for AUTOMATIONRUNBOOKRECEIVER properties and create a hash table.
-
-```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.Monitor.ActionGroup.Models.IAutomationRunbookReceiver[]
-Parameter Sets: CreateExpanded, CreateViaIdentityExpanded
-Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -AzureAppPushReceiver
-The list of AzureAppPush receivers that are part of this action group.
-To construct, see NOTES section for AZUREAPPPUSHRECEIVER properties and create a hash table.
-
-```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.Monitor.ActionGroup.Models.IAzureAppPushReceiver[]
-Parameter Sets: CreateExpanded, CreateViaIdentityExpanded
-Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -AzureFunctionReceiver
-The list of azure function receivers that are part of this action group.
-To construct, see NOTES section for AZUREFUNCTIONRECEIVER properties and create a hash table.
-
-```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.Monitor.ActionGroup.Models.IAzureFunctionReceiver[]
-Parameter Sets: CreateExpanded, CreateViaIdentityExpanded
 Aliases:
 
 Required: False
@@ -206,38 +124,6 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -EmailReceiver
-The list of email receivers that are part of this action group.
-To construct, see NOTES section for EMAILRECEIVER properties and create a hash table.
-
-```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.Monitor.ActionGroup.Models.IEmailReceiver[]
-Parameter Sets: CreateExpanded, CreateViaIdentityExpanded
-Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -EventHubReceiver
-The list of event hub receivers that are part of this action group.
-To construct, see NOTES section for EVENTHUBRECEIVER properties and create a hash table.
-
-```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.Monitor.ActionGroup.Models.IEventHubReceiver[]
-Parameter Sets: CreateExpanded, CreateViaIdentityExpanded
-Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
 ### -InputObject
 Identity Parameter
 To construct, see NOTES section for INPUTOBJECT properties and create a hash table.
@@ -251,68 +137,6 @@ Required: True
 Position: Named
 Default value: None
 Accept pipeline input: True (ByValue)
-Accept wildcard characters: False
-```
-
-### -ItsmReceiver
-The list of ITSM receivers that are part of this action group.
-To construct, see NOTES section for ITSMRECEIVER properties and create a hash table.
-
-```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.Monitor.ActionGroup.Models.IItsmReceiver[]
-Parameter Sets: CreateExpanded, CreateViaIdentityExpanded
-Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -JsonFilePath
-Path of Json file supplied to the Create operation
-
-```yaml
-Type: System.String
-Parameter Sets: CreateViaJsonFilePath
-Aliases:
-
-Required: True
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -JsonString
-Json string supplied to the Create operation
-
-```yaml
-Type: System.String
-Parameter Sets: CreateViaJsonString
-Aliases:
-
-Required: True
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -LogicAppReceiver
-The list of logic app receivers that are part of this action group.
-To construct, see NOTES section for LOGICAPPRECEIVER properties and create a hash table.
-
-```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.Monitor.ActionGroup.Models.ILogicAppReceiver[]
-Parameter Sets: CreateExpanded, CreateViaIdentityExpanded
-Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
@@ -331,13 +155,12 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -ResourceGroupName
-The name of the resource group.
-The name is case insensitive.
+### -Receiver
+The list of receivers that are part of this action group.
 
 ```yaml
-Type: System.String
-Parameter Sets: CreateExpanded, CreateViaJsonFilePath, CreateViaJsonString
+Type: Microsoft.Azure.PowerShell.Cmdlets.Monitor.ActionGroup.Models.IActionGroupReceiver[]
+Parameter Sets: (All)
 Aliases:
 
 Required: True
@@ -347,16 +170,16 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -SmsReceiver
-The list of SMS receivers that are part of this action group.
-To construct, see NOTES section for SMSRECEIVER properties and create a hash table.
+### -ResourceGroupName
+The name of the resource group.
+The name is case insensitive.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.Monitor.ActionGroup.Models.ISmsReceiver[]
-Parameter Sets: CreateExpanded, CreateViaIdentityExpanded
+Type: System.String
+Parameter Sets: CreateExpanded
 Aliases:
 
-Required: False
+Required: True
 Position: Named
 Default value: None
 Accept pipeline input: False
@@ -368,44 +191,12 @@ The ID of the target subscription.
 
 ```yaml
 Type: System.String
-Parameter Sets: CreateExpanded, CreateViaJsonFilePath, CreateViaJsonString
+Parameter Sets: CreateExpanded
 Aliases:
 
 Required: False
 Position: Named
 Default value: (Get-AzContext).Subscription.Id
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -VoiceReceiver
-The list of voice receivers that are part of this action group.
-To construct, see NOTES section for VOICERECEIVER properties and create a hash table.
-
-```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.Monitor.ActionGroup.Models.IVoiceReceiver[]
-Parameter Sets: CreateExpanded, CreateViaIdentityExpanded
-Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -WebhookReceiver
-The list of webhook receivers that are part of this action group.
-To construct, see NOTES section for WEBHOOKRECEIVER properties and create a hash table.
-
-```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.Monitor.ActionGroup.Models.IWebhookReceiver[]
-Parameter Sets: CreateExpanded, CreateViaIdentityExpanded
-Aliases:
-
-Required: False
-Position: Named
-Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
 ```

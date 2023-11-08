@@ -17,8 +17,9 @@ if(($null -eq $TestName) -or ($TestName -contains 'Test-AzActionGroup'))
 Describe 'Test-AzActionGroup' {
     It 'CreateExpanded' {
         {
-            $email1 = New-AzActionGroupEmailReceiverObject -EmailAddress $env.useremail -Name $env.emailreceiver
-            Test-AzActionGroup -ActionGroupName $env.actiongroupname -ResourceGroupName $env.resourceGroup -AlertType servicehealth -EmailReceiver $email1
+            $email1 = New-AzActionGroupEmailReceiverObject -EmailAddress $env.useremail -Name $env.emailreceiver1
+            $email2 = New-AzActionGroupEmailReceiverObject -EmailAddress 'user@example.com' -Name $env.emailreceiver2
+            Test-AzActionGroup -ActionGroupName $env.actiongroupname -ResourceGroupName $env.resourceGroup -AlertType servicehealth -Receiver $email1,$email2
         } | Should -Not -Throw
     }
 
@@ -33,8 +34,9 @@ Describe 'Test-AzActionGroup' {
     It 'CreateViaIdentityExpanded' {
         {
             $sms1 = New-AzActionGroupSmsReceiverObject -CountryCode $env.phonecountry -Name $env.smsreceiver -PhoneNumber $env.userphone
+            $email1 = New-AzActionGroupEmailReceiverObject -EmailAddress $env.useremail -Name $env.emailreceiver1
             $ag = Get-AzActionGroup -Name $env.actiongroupname -ResourceGroupName $env.resourceGroup
-            Test-AzActionGroup -InputObject $ag -AlertType servicehealth -SmsReceiver $sms1
+            Test-AzActionGroup -InputObject $ag -AlertType servicehealth -Receiver $sms1,$email1
         } | Should -Not -Throw
     }
 }

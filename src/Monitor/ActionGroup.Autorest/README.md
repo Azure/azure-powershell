@@ -91,4 +91,8 @@ directive:
     set:
       verb: Test
       subject: ActionGroup
+  - where:
+      subject: ActionGroup
+      verb: Test
+    hide: true
 ```
