@@ -54,7 +54,9 @@ From the [_Strongly Encouraged Development Guidelines_](https://learn.microsoft.
 
 #### Secret Parameters
 
-For parameters that represent a value that should be kept secret in some fashion (such as a password, secret, key, etc.), the type of the parameter should be `SecureString` to avoid any sensitive information about the parameter from leaking during cmdlet execution.
+For parameters whose type is plain text and which represent a value that should be kept secret in some fashion (such as a password, secret, key, etc.), the type of the parameter should be `SecureString` to avoid any sensitive information about the parameter from leaking during cmdlet execution.
+
+Please notice that `SecureString` is not used for any encryption purposes. It is a wrapper of the plain text to prevent unexpected leakage of information. 
 
 #### Bool vs. SwitchParameter
 
