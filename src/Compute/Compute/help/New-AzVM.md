@@ -306,7 +306,7 @@ Set-AzVMSourceImage -VM $vmConfig -PublisherName $PublisherName -Offer $Offer -S
 Add-AzVMNetworkInterface -VM $vmConfig -Id $nic.Id;
 $vmConfig = Set-AzVMSecurityProfile -VM $vmConfig -SecurityType $securityType;
 $vmConfig = Set-AzVMUefi -VM $vmConfig -EnableVtpm $vtpm -EnableSecureBoot $secureboot;
-New-AzVM -ResourceGroupName $RGName -Location $loc -VM $vmConfig -DisableIntegrityMonitoring:$false;
+New-AzVM -ResourceGroupName $RGName -Location $loc -VM $vmConfig;
 # Verify values
 $vm = Get-AzVM -ResourceGroupName $rgname -Name $vmName;
 $vmExt = Get-AzVMExtension -ResourceGroupName $rgname -VMName $vmName -Name $extDefaultName;
