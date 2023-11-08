@@ -140,7 +140,7 @@ FunctionsToExport = 'Get-AzActivityLogAlert', 'New-AzActivityLogAlert',
                'Update-AzDataCollectionEndpoint', 'Update-AzDataCollectionRule', 
                'Update-AzDataCollectionRuleAssociation', 
                'Enable-AzActionGroupReceiver', 'Get-AzActionGroup', 
-               'Get-AzActionGroupTestNotification', 'New-AzActionGroup', 
+               'New-AzActionGroup', 
                'New-AzActionGroupArmRoleReceiverObject', 
                'New-AzActionGroupAutomationRunbookReceiverObject', 
                'New-AzActionGroupAzureAppPushReceiverObject', 
@@ -161,9 +161,7 @@ CmdletsToExport = 'Get-AzMetricDefinition', 'Get-AzMetric', 'Remove-AzLogProfile
                'Get-AzAutoscaleHistory', 'Add-AzMetricAlertRule', 
                'Add-AzWebtestAlertRule', 'Get-AzAlertHistory', 'Get-AzAlertRule', 
                'New-AzAlertRuleEmail', 'New-AzAlertRuleWebhook', 
-               'Remove-AzAlertRule', 'New-AzActionGroupReceiver', 
-               'Test-AzActionGroup', 'Set-AzActionGroup', 'Get-AzActionGroup', 
-               'Remove-AzActionGroup', 'New-AzMetricFilter', 
+               'Remove-AzAlertRule', 'New-AzMetricFilter', 
                'Add-AzMetricAlertRuleV2', 'Get-AzMetricAlertRuleV2', 
                'New-AzMetricAlertRuleV2DimensionSelection', 
                'New-AzMetricAlertRuleV2Criteria', 'Remove-AzMetricAlertRuleV2', 
@@ -172,13 +170,7 @@ CmdletsToExport = 'Get-AzMetricDefinition', 'Get-AzMetric', 'Remove-AzLogProfile
                'Remove-AzInsightsPrivateLinkScope', 
                'New-AzInsightsPrivateLinkScopedResource', 
                'Get-AzInsightsPrivateLinkScopedResource', 
-               'Remove-AzInsightsPrivateLinkScopedResource', 
-               'Get-AzDataCollectionRule', 'New-AzDataCollectionRule', 
-               'Set-AzDataCollectionRule', 'Update-AzDataCollectionRule', 
-               'Remove-AzDataCollectionRule', 
-               'Get-AzDataCollectionRuleAssociation', 
-               'New-AzDataCollectionRuleAssociation', 
-               'Remove-AzDataCollectionRuleAssociation'
+               'Remove-AzInsightsPrivateLinkScopedResource'
 
 # Variables to export from this module
 VariablesToExport = '*'
