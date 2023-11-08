@@ -37,6 +37,7 @@ input-file:
 # You need to specify your swagger files here.
   - $(repo)/specification/compute/resource-manager/Microsoft.Compute/GalleryRP/stable/2022-01-03/gallery.json
   - $(repo)/specification/compute/resource-manager/Microsoft.Compute/ComputeRP/stable/2023-07-01/runCommand.json
+  - $(repo)/specification/compute/resource-manager/Microsoft.Compute/common-types/v1/common.json
 # If the swagger has not been put in the repo, you may uncomment the following line and refer to it locally
 module-version: 0.3.0
 # Normally, title is the service name
