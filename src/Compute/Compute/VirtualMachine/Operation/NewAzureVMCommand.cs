@@ -406,7 +406,12 @@ namespace Microsoft.Azure.Commands.Compute
         public int vCPUCountPerCore { get; set; }
 
         [Parameter(
-           //ParameterSetName = DefaultParameterSet,
+           ParameterSetName = DefaultParameterSet,
+           Mandatory = false,
+           ValueFromPipelineByPropertyName = true,
+           HelpMessage = "This flag disables the default behavior to install the Guest Attestation extension to the virtual machine if: 1) SecurityType is TrustedLaunch, 2) SecureBootEnabled on the SecurityProfile is true, 3) VTpmEnabled on the SecurityProfile is true.")]
+        [Parameter(
+           ParameterSetName = SimpleParameterSet,
            Mandatory = false,
            ValueFromPipelineByPropertyName = true,
            HelpMessage = "This flag disables the default behavior to install the Guest Attestation extension to the virtual machine if: 1) SecurityType is TrustedLaunch, 2) SecureBootEnabled on the SecurityProfile is true, 3) VTpmEnabled on the SecurityProfile is true.")]
@@ -794,68 +799,6 @@ namespace Microsoft.Azure.Commands.Compute
                 if (!this.IsParameterBound(c => c.EnableVtpm))
                 {
                     this.EnableVtpm = true;
-                }
-            }
-            else if (!this.IsParameterBound(c => c.Image)
-                && this.IsParameterBound(c => c.ImageReferenceId)
-                && !this.IsParameterBound(c => c.SharedGalleryImageId)
-                && this.Location != null)//Location cannot be null to query for images. 
-            {
-                // check if imageReferenceId is a MArketplace image.
-                // if yes, see if the image is gen2. 
-                // Don't think I can actually do that bc 
-                // the get image api requires a location, but location is not required
-                // // in New-AzVM. 
-                if (this.ImageReferenceId.ToString().Contains("artifacttypes/vmimage")
-                    && this.ImageReferenceId.ToString().Contains("publishers")
-                    && this.ImageReferenceId.ToString().Contains("offers")
-                    && this.ImageReferenceId.ToString().Contains("skus")
-                    && this.ImageReferenceId.ToString().Contains("versions")) 
-                {
-                    var imageRefStr = this.ImageReferenceId.ToString();
-                    var parts = imageRefStr.Split(new char[] { '/' }, StringSplitOptions.RemoveEmptyEntries);
-
-                    string imagePublisher = parts[Array.IndexOf(parts, "Publishers") + 1];
-                    string imageOffer = parts[Array.IndexOf(parts, "Offers") + 1];
-                    string imageSku = parts[Array.IndexOf(parts, "Skus") + 1];
-                    string imageVersion = parts[Array.IndexOf(parts, "Versions") + 1];
-
-                    var imgResponse = this.ComputeClient.ComputeManagementClient.VirtualMachineImages.GetWithHttpMessagesAsync(
-                        this.Location.Canonicalize(),
-                        imagePublisher,
-                        imageOffer,
-                        imageSku,
-                        version: imageVersion).GetAwaiter().GetResult();
-
-                    if (imgResponse.Body.HyperVGeneration != null
-                        && imgResponse.Body.HyperVGeneration.ToString().ToUpper() == "V2")
-                    {
-                        // then assume this is TL supported as per design request.
-                        // If SecurityType already exists, so user set it, don't change it.
-                        this.SecurityType = ConstantValues.TrustedLaunchSecurityType;
-                        if (!this.IsParameterBound(c => c.EnableSecureBoot))
-                        {
-                            this.EnableSecureBoot = true;
-                        }
-                        if (!this.IsParameterBound(c => c.EnableVtpm))
-                        {
-                            this.EnableVtpm = true;
-                        }
-                    }
-                    else
-                    {
-                        if (this.AsJobPresent() == false) // to avoid a failure when it is a job. Seems to fail when it is a job.
-                        {
-                            WriteInformation(HelpMessages.TrustedLaunchUpgradeMessage, new string[] { "PSHOST" });
-                        }
-                    }
-                }
-                else
-                {
-                    if (this.AsJobPresent() == false) // to avoid a failure when it is a job. Seems to fail when it is a job.
-                    {
-                        WriteInformation(HelpMessages.TrustedLaunchUpgradeMessage, new string[] { "PSHOST" });
-                    }
                 }
             }
             else if (this.IsParameterBound(c => c.Image)
