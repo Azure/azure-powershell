@@ -115,7 +115,7 @@ $disk = New-AzDisk -ResourceGroupName $rgname -DiskName $diskname -Disk $diskcon
 # Validate $disk.HyperVGeneration is V2.
 ```
 
-### Example 3: Create a Disk with TrustedLaunch enabled by default.
+### Example 5: Create a Disk with TrustedLaunch enabled by default.
 ```powershell
 $rgname ="<Resource Group Name>";
 $loc = "<Azure Region>";
