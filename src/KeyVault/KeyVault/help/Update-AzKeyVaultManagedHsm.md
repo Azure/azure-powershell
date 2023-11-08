@@ -128,6 +128,7 @@ Security Domain ActivationStatusMessage : Your HSM has been activated and can be
 Regions                                 : 
 Tags
 ```
+
 This command adds an user assigned identity for the managed Hsm named `testmshm` in resource group `test-rg`.
 
 ## PARAMETERS
