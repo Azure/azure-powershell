@@ -464,6 +464,7 @@ function New-AzStackHCIVmVirtualMachine {
       if($OSDiskId -notmatch $vhdRegex){
         Write-Error "Invalid OSDiskId : $OSDiskId" -ErrorAction Stop
       }
+      $PSBoundParameters.Add('OSDiskId', $OSDiskId)
   } elseif ($PSCmdlet.ParameterSetName -eq "ByOsDiskName"){
       if ($OSDiskResourceGroup){
           $OSDiskId = "/subscriptions/$SubscriptionId/resourceGroups/$OSDiskResourceGroup/providers/Microsoft.AzureStackHCI/virtualharddisks/$OSDiskName"

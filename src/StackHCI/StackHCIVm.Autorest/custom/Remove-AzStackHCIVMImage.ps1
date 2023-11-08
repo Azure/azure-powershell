@@ -73,11 +73,11 @@ function Remove-AzStackHCIVmImage{
         $isMarketplaceGalleryImage = $false
 
         
-        $galImage = Az.StackHCIVm.internal\Get-AzStackHCIVmGalleryImage -Name $Name -ResourceGroupName $ResourceGroupName -ErrorAction SilentlyContinue
+        $galImage = Az.StackHCIVm.internal\Get-AzStackHCIVmGalleryImage -Name $Name -ResourceGroupName $ResourceGroupName -SubscriptionId $SubscriptionId -ErrorAction SilentlyContinue
         if ($galImage -ne $null){
             $isGalleryImage = $true 
         } else {
-            $marketplaceGalImage = Az.StackHCIVm.internal\Get-AzStackHCIVmMarketplaceGalleryImage -Name $Name -ResourceGroupName $ResourceGroupName -ErrorAction SilentlyContinue 
+            $marketplaceGalImage = Az.StackHCIVm.internal\Get-AzStackHCIVmMarketplaceGalleryImage -Name $Name -ResourceGroupName $ResourceGroupName -SubscriptionId $SubscriptionId -ErrorAction SilentlyContinue 
             if ($marketplaceGalImage -ne $null){
                 $isMarketplaceGalleryImage = $true 
             }
