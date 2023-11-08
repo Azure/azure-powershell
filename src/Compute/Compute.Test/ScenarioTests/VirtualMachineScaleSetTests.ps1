@@ -5121,6 +5121,39 @@ function Test-VirtualMachineScaleSetSecurityTypeDefaultingFromImage
     }
 }
 
+<#
+.SYNOPSIS
+Test Virtual Machine Scale Set defaulting to OrchestrationMode: Flexible when property is not provided.
+#>
+function Test-VirtualMachineScaleSetDefaultToFlexibleOrchestrationMode
+{
+    # Setup
+    $rgname = Get-ComputeTestResourceName;
+    $loc = Get-ComputeVMLocation;
+
+    try
+    {
+        # Common
+        New-AzResourceGroup -Name $rgname -Location $loc -Force;
+
+        # New VMSS Parameters
+        $vmssName1 = 'vmss1' + $rgname;
+
+        $vmssConfig = New-AzVmssConfig -Location $loc -UpgradePolicyMode 'Manual' -SinglePlacementGroup $true -securitytype standard
+        $vmss = New-AzVmss -ResourceGroupName $rgname -VMScaleSetName $vmssName1 -VirtualMachineScaleSet $vmssConfig
+
+        # Asserts 
+        # check flexmode
+        Assert-AreEqual $vmss.OrchestrationMode "Flexible"
+        # check SinglePlacementGroup
+        Assert-AreEqual $vmss.SinglePlacementGroup $true
+    }
+    finally
+    {
+        # Cleanup
+        Clean-ResourceGroup $rgname;
+    }
+}
 
 <#
 .SYNOPSIS
