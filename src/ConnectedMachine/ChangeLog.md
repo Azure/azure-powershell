@@ -18,9 +18,7 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
-
-## Version 0.5.1
-* Added revision option in MachineExtensionProperties that matches the input version of the extension that customers want to install.
+* Removed the version check in MachineExtensionProperties
 
 ## Version 0.5.0
 * Updated the API version to stable 2022-12-27

@@ -15,7 +15,15 @@ if(($null -eq $TestName) -or ($TestName -contains 'Get-AzContainerAppAuthConfig'
 }
 
 Describe 'Get-AzContainerAppAuthConfig' {
+    It 'List' -skip {
+        { throw [System.NotImplementedException] } | Should -Not -Throw
+    }
+
     It 'Get' -skip {
+        { throw [System.NotImplementedException] } | Should -Not -Throw
+    }
+
+    It 'GetViaIdentityContainerApp' -skip {
         { throw [System.NotImplementedException] } | Should -Not -Throw
     }
 

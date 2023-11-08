@@ -62,6 +62,10 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Kusto.Support
             {
                 yield return new global::System.Management.Automation.CompletionResult("'Updating'", "Updating", global::System.Management.Automation.CompletionResultType.ParameterValue, "Updating");
             }
+            if (global::System.String.IsNullOrEmpty(wordToComplete) || "Migrated".StartsWith(wordToComplete, global::System.StringComparison.InvariantCultureIgnoreCase))
+            {
+                yield return new global::System.Management.Automation.CompletionResult("'Migrated'", "Migrated", global::System.Management.Automation.CompletionResultType.ParameterValue, "Migrated");
+            }
         }
     }
 }

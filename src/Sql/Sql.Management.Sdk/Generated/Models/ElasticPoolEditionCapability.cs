@@ -33,17 +33,21 @@ namespace Microsoft.Azure.Management.Sql.Models
         /// <param name="zoneRedundant">Whether or not zone redundancy is supported for the edition.
         /// </param>
 
+        /// <param name="zonePinning">Whether or not zone pinning is supported for the edition.
+        /// </param>
+
         /// <param name="status">The status of the capability.
         /// Possible values include: 'Visible', 'Available', 'Default', 'Disabled'</param>
 
         /// <param name="reason">The reason for the capability not being available.
         /// </param>
-        public ElasticPoolEditionCapability(string name = default(string), System.Collections.Generic.IList<ElasticPoolPerformanceLevelCapability> supportedElasticPoolPerformanceLevels = default(System.Collections.Generic.IList<ElasticPoolPerformanceLevelCapability>), bool? zoneRedundant = default(bool?), CapabilityStatus? status = default(CapabilityStatus?), string reason = default(string))
+        public ElasticPoolEditionCapability(string name = default(string), System.Collections.Generic.IList<ElasticPoolPerformanceLevelCapability> supportedElasticPoolPerformanceLevels = default(System.Collections.Generic.IList<ElasticPoolPerformanceLevelCapability>), bool? zoneRedundant = default(bool?), bool? zonePinning = default(bool?), CapabilityStatus? status = default(CapabilityStatus?), string reason = default(string))
 
         {
             this.Name = name;
             this.SupportedElasticPoolPerformanceLevels = supportedElasticPoolPerformanceLevels;
             this.ZoneRedundant = zoneRedundant;
+            this.ZonePinning = zonePinning;
             this.Status = status;
             this.Reason = reason;
             CustomInit();
@@ -72,6 +76,12 @@ namespace Microsoft.Azure.Management.Sql.Models
         /// </summary>
         [Newtonsoft.Json.JsonProperty(PropertyName = "zoneRedundant")]
         public bool? ZoneRedundant {get; private set; }
+
+        /// <summary>
+        /// Gets whether or not zone pinning is supported for the edition.
+        /// </summary>
+        [Newtonsoft.Json.JsonProperty(PropertyName = "zonePinning")]
+        public bool? ZonePinning {get; private set; }
 
         /// <summary>
         /// Gets the status of the capability. Possible values include: &#39;Visible&#39;, &#39;Available&#39;, &#39;Default&#39;, &#39;Disabled&#39;

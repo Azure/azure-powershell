@@ -20,17 +20,29 @@ Create an in-memory object for Secret.
 .Description
 Create an in-memory object for Secret.
 .Example
-New-AzContainerAppSecretObject -Name "masterkey" -Value "keyvalue"
+New-AzContainerAppSecretObject -Name "redis-secret" -Value "redis-password"
 
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.App.Models.Api20220301.Secret
+Microsoft.Azure.PowerShell.Cmdlets.App.Models.Secret
 .Link
-https://learn.microsoft.com/powershell/module/az.app/new-azcontainerappsecretobject
+https://learn.microsoft.com/powershell/module/Az.App/new-azcontainerappsecretobject
 #>
 function New-AzContainerAppSecretObject {
-[OutputType([Microsoft.Azure.PowerShell.Cmdlets.App.Models.Api20220301.Secret])]
+[OutputType([Microsoft.Azure.PowerShell.Cmdlets.App.Models.Secret])]
 [CmdletBinding(PositionalBinding=$false)]
 param(
+    [Parameter()]
+    [Microsoft.Azure.PowerShell.Cmdlets.App.Category('Body')]
+    [System.String]
+    # Resource ID of a managed identity to authenticate with Azure Key Vault, or System to use a system-assigned identity.
+    ${Identity},
+
+    [Parameter()]
+    [Microsoft.Azure.PowerShell.Cmdlets.App.Category('Body')]
+    [System.String]
+    # Azure Key Vault URL pointing to the secret referenced by the container app.
+    ${KeyVaultUrl},
+
     [Parameter()]
     [Microsoft.Azure.PowerShell.Cmdlets.App.Category('Body')]
     [System.String]
@@ -74,6 +86,10 @@ begin {
         }
         $cmdInfo = Get-Command -Name $mapping[$parameterSet]
         [Microsoft.Azure.PowerShell.Cmdlets.App.Runtime.MessageAttributeHelper]::ProcessCustomAttributesAtRuntime($cmdInfo, $MyInvocation, $parameterSet, $PSCmdlet)
+        if ($null -ne $MyInvocation.MyCommand -and [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PromptedPreviewMessageCmdlets -notcontains $MyInvocation.MyCommand.Name -and [Microsoft.Azure.PowerShell.Cmdlets.App.Runtime.MessageAttributeHelper]::ContainsPreviewAttribute($cmdInfo, $MyInvocation)){
+            [Microsoft.Azure.PowerShell.Cmdlets.App.Runtime.MessageAttributeHelper]::ProcessPreviewMessageAttributesAtRuntime($cmdInfo, $MyInvocation, $parameterSet, $PSCmdlet)
+            [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PromptedPreviewMessageCmdlets.Enqueue($MyInvocation.MyCommand.Name)
+        }
         $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Cmdlet)
         $scriptCmd = {& $wrappedCmd @PSBoundParameters}
         $steppablePipeline = $scriptCmd.GetSteppablePipeline($MyInvocation.CommandOrigin)

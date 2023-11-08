@@ -20,15 +20,15 @@ Create an in-memory object for RegistryCredentials.
 .Description
 Create an in-memory object for RegistryCredentials.
 .Example
-New-AzContainerAppRegistryCredentialObject -Identity system -PasswordSecretRef "myloginpassword" -Server azps-containerapp -Username azps-container-user
+New-AzContainerAppRegistryCredentialObject -Identity system -PasswordSecretRef "myloginpassword" -Server azps-containerapp-1 -Username azps-container-user
 
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.App.Models.Api20220301.RegistryCredentials
+Microsoft.Azure.PowerShell.Cmdlets.App.Models.RegistryCredentials
 .Link
-https://learn.microsoft.com/powershell/module/az.app/new-azcontainerappregistrycredentialobject
+https://learn.microsoft.com/powershell/module/Az.App/new-azcontainerappregistrycredentialobject
 #>
 function New-AzContainerAppRegistryCredentialObject {
-[OutputType([Microsoft.Azure.PowerShell.Cmdlets.App.Models.Api20220301.RegistryCredentials])]
+[OutputType([Microsoft.Azure.PowerShell.Cmdlets.App.Models.RegistryCredentials])]
 [CmdletBinding(PositionalBinding=$false)]
 param(
     [Parameter()]
@@ -88,6 +88,10 @@ begin {
         }
         $cmdInfo = Get-Command -Name $mapping[$parameterSet]
         [Microsoft.Azure.PowerShell.Cmdlets.App.Runtime.MessageAttributeHelper]::ProcessCustomAttributesAtRuntime($cmdInfo, $MyInvocation, $parameterSet, $PSCmdlet)
+        if ($null -ne $MyInvocation.MyCommand -and [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PromptedPreviewMessageCmdlets -notcontains $MyInvocation.MyCommand.Name -and [Microsoft.Azure.PowerShell.Cmdlets.App.Runtime.MessageAttributeHelper]::ContainsPreviewAttribute($cmdInfo, $MyInvocation)){
+            [Microsoft.Azure.PowerShell.Cmdlets.App.Runtime.MessageAttributeHelper]::ProcessPreviewMessageAttributesAtRuntime($cmdInfo, $MyInvocation, $parameterSet, $PSCmdlet)
+            [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PromptedPreviewMessageCmdlets.Enqueue($MyInvocation.MyCommand.Name)
+        }
         $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Cmdlet)
         $scriptCmd = {& $wrappedCmd @PSBoundParameters}
         $steppablePipeline = $scriptCmd.GetSteppablePipeline($MyInvocation.CommandOrigin)

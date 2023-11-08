@@ -54,7 +54,11 @@ function ValidateAppSetting
 
     foreach ($appSettingName in $ExpectedAppSetting.Keys)
     {
-        $ActualAppSetting[$appSettingName] | Should Be $ExpectedAppSetting[$appSettingName]
+        # In this latest release, all app settings from Get-AzFunctionApp should be null
+        $ExpectedAppSetting[$appSettingName] | Should Be $null
+
+        # Validate that the keys is present
+        $ActualAppSetting.ContainsKey($appSettingName) | Should Be $true
     }
 }
 

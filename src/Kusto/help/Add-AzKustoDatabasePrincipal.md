@@ -109,7 +109,8 @@ Accept wildcard characters: False
 ```
 
 ### -ResourceGroupName
-The name of the resource group containing the Kusto cluster.
+The name of the resource group.
+The name is case insensitive.
 
 ```yaml
 Type: System.String
@@ -124,8 +125,7 @@ Accept wildcard characters: False
 ```
 
 ### -SubscriptionId
-Gets subscription credentials which uniquely identify Microsoft Azure subscription.
-The subscription ID forms part of the URI for every service call.
+The ID of the target subscription.
 
 ```yaml
 Type: System.String
@@ -144,7 +144,7 @@ The list of Kusto database principals.
 To construct, see NOTES section for VALUE properties and create a hash table.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api20221229.IDatabasePrincipal[]
+Type: Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api20230815.IDatabasePrincipal[]
 Parameter Sets: (All)
 Aliases:
 
@@ -195,40 +195,9 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api20221229.IDatabasePrincipal
+### Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api20230815.IDatabasePrincipal
 
 ## NOTES
-
-ALIASES
-
-COMPLEX PARAMETER PROPERTIES
-
-To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
-
-
-`INPUTOBJECT <IKustoIdentity>`: Identity Parameter
-  - `[AttachedDatabaseConfigurationName <String>]`: The name of the attached database configuration.
-  - `[ClusterName <String>]`: The name of the Kusto cluster.
-  - `[DataConnectionName <String>]`: The name of the data connection.
-  - `[DatabaseName <String>]`: The name of the database in the Kusto cluster.
-  - `[Id <String>]`: Resource identity path
-  - `[Location <String>]`: Azure location (region) name.
-  - `[ManagedPrivateEndpointName <String>]`: The name of the managed private endpoint.
-  - `[OperationId <String>]`: The Guid of the operation ID
-  - `[PrincipalAssignmentName <String>]`: The name of the Kusto principalAssignment.
-  - `[PrivateEndpointConnectionName <String>]`: The name of the private endpoint connection.
-  - `[PrivateLinkResourceName <String>]`: The name of the private link resource.
-  - `[ResourceGroupName <String>]`: The name of the resource group containing the Kusto cluster.
-  - `[ScriptName <String>]`: The name of the Kusto database script.
-  - `[SubscriptionId <String>]`: Gets subscription credentials which uniquely identify Microsoft Azure subscription. The subscription ID forms part of the URI for every service call.
-
-`VALUE <IDatabasePrincipal[]>`: The list of Kusto database principals.
-  - `Name <String>`: Database principal name.
-  - `Role <DatabasePrincipalRole>`: Database principal role.
-  - `Type <DatabasePrincipalType>`: Database principal type.
-  - `[AppId <String>]`: Application id - relevant only for application principal type.
-  - `[Email <String>]`: Database principal email if exists.
-  - `[Fqn <String>]`: Database principal fully qualified name.
 
 ## RELATED LINKS
 

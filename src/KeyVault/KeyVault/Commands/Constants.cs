@@ -64,4 +64,13 @@ namespace Microsoft.Azure.Commands.KeyVault
     {
         public const string ManagedHsm = "Microsoft.KeyVault/managedHSMs";
     }
+
+    internal static class ManagedServiceIdentityType 
+    {
+        internal const string None = "None";
+        internal const string SystemAssigned = "SystemAssigned";
+        internal const string UserAssigned = "UserAssigned";
+        internal const string SystemAssignedAndUserAssigned = "SystemAssigned,UserAssigned";
+
+    }
 }

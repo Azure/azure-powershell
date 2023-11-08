@@ -121,9 +121,13 @@ function Remove-AzFunctionAppSetting {
 
         $params = GetParameterKeyValues -PSBoundParametersDictionary $PSBoundParameters `
                                         -ParameterList @("SubscriptionId", "HttpPipelineAppend", "HttpPipelinePrepend")
-
-        $existingFunctionApp = GetFunctionAppByName -Name $Name -ResourceGroupName $ResourceGroupName @params
-        $currentAppSettings = $existingFunctionApp.ApplicationSettings
+        $currentAppSettings = $null
+        $settings = $null
+        $settings = Az.Functions.internal\Get-AzWebAppApplicationSetting -Name $Name -ResourceGroupName $ResourceGroupName @params
+        if ($null -ne $settings)
+        {
+            $currentAppSettings = ConvertWebAppApplicationSettingToHashtable -ApplicationSetting $settings -ShowAllAppSettings
+        }
 
         foreach ($name in $AppSettingName)
         {

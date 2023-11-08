@@ -17,7 +17,6 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Migrate.Cmdlets
     [global::System.Management.Automation.OutputType(typeof(Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api202001.IVCenter))]
     [global::Microsoft.Azure.PowerShell.Cmdlets.Migrate.Description(@"Method to get a vCenter.")]
     [global::Microsoft.Azure.PowerShell.Cmdlets.Migrate.Generated]
-    [global::Microsoft.Azure.PowerShell.Cmdlets.Migrate.HttpPath(Path = "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.OffAzure/VMwareSites/{siteName}/vCenters/{vcenterName}", ApiVersion = "2020-01-01")]
     public partial class GetAzMigrateVCenter_GetViaIdentity : global::System.Management.Automation.PSCmdlet,
         Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.IEventListener
     {

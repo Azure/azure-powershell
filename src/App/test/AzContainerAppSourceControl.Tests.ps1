@@ -18,12 +18,11 @@ Describe 'AzContainerAppSourceControl' {
     It 'CreateExpanded' -skip {
         {
             # Contains confidential information, please run it locally
-            # $mypwd = ConvertTo-SecureString -String "1234" -Force -AsPlainText
-            # $registryUrl = (Get-AzContainerRegistry -ResourceGroupName $env.resourceGroup -Name $env.acrName).LoginServer
-            # $containerRegistryCredential = (Get-AzContainerRegistryCredential -ResourceGroupName $env.resourceGroup -Name $env.acrName).Password
-            # $storageAccountKey = (Get-AzStorageAccountKey -ResourceGroupName $env.resourceGroup -AccountName $env.storageAccount).Value[0]
+            $AzureClientSecret = ConvertTo-SecureString -String "1234" -Force -AsPlainText
+            $RegistryPassword = ConvertTo-SecureString -String "1234" -Force -AsPlainText
+            $GithubAccessToken = ConvertTo-SecureString -String "1234" -Force -AsPlainText
 
-            # New-AzContainerAppSourceControl -ContainerAppName $env.containerAppName -ResourceGroupName $env.resourceGroup -SourceControlName current -RepoUrl https://github.com/yourgithub -Branch master -RegistryInfoRegistryUrl $registryUrl -RegistryInfoRegistryUserName $env.acrName -RegistryInfoRegistryPassword $containerRegistryCredential -GithubActionConfigurationContextPath "./Dockerfile" -GithubActionConfigurationImage "image/tag" -AzureCredentialsClientId $env.Tenant -AzureCredentialsClientSecret $mypwd -AzureCredentialsTenantId $env.Tenant -GithubActionConfigurationOS Linux
+            New-AzContainerAppSourceControl -ContainerAppName $env.containerApp1 -ResourceGroupName $env.resourceGroupManaged -Name current -AzureClientId "UserObjectId" -AzureClientSecret $AzureClientSecret -AzureKind "feaderated" -AzureTenantId "UserDirectoryID" -Branch "main" -GithubContextPath "./" -GithubAccessToken $GithubAccessToken -GithubConfigurationImage $env.containerApp1 -RegistryPassword $RegistryPassword -RegistryUrl $evn.containerRegistry1+".azurecr.io" -RegistryUserName $env.containerRegistry1 -RepoUrl "https://github.com/lijinpei2008/ghatest"
         } | Should -Not -Throw
     }
 }

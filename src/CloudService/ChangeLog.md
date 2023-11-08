@@ -18,6 +18,7 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
+* Downgraded the api version of referenced network to 2021-03-01.
 
 ## Version 1.2.0
 * Upgraded the api version to 2022-09-04.

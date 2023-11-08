@@ -1,7 +1,7 @@
 ---
 external help file:
 Module Name: Az.App
-online version: https://learn.microsoft.com/powershell/module/az.app/new-azcontainerappscaleruleauthobject
+online version: https://learn.microsoft.com/powershell/module/Az.App/new-azcontainerappscaleruleauthobject
 schema: 2.0.0
 ---
 
@@ -23,13 +23,13 @@ Create an in-memory object for ScaleRuleAuth.
 
 ### Example 1: Create a ScaleRuleAuth object for ScaleRule.
 ```powershell
-New-AzContainerAppScaleRuleAuthObject -SecretRef "facebook-secret" -TriggerParameter "TriggerParameter"
+New-AzContainerAppScaleRuleAuthObject -SecretRef "redis-secret" -TriggerParameter "TriggerParameter"
 ```
 
 ```output
-SecretRef       TriggerParameter
----------       ----------------
-facebook-secret TriggerParameter
+SecretRef    TriggerParameter
+---------    ----------------
+redis-secret TriggerParameter
 ```
 
 Create a ScaleRuleAuth object for ScaleRule.
@@ -37,7 +37,7 @@ Create a ScaleRuleAuth object for ScaleRule.
 ## PARAMETERS
 
 ### -SecretRef
-Name of the Container App secret from which to pull the auth params.
+Name of the secret from which to pull the auth params.
 
 ```yaml
 Type: System.String
@@ -73,11 +73,9 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.App.Models.Api20220301.ScaleRuleAuth
+### Microsoft.Azure.PowerShell.Cmdlets.App.Models.ScaleRuleAuth
 
 ## NOTES
-
-ALIASES
 
 ## RELATED LINKS
 

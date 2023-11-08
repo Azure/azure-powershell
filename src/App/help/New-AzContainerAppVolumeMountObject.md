@@ -1,7 +1,7 @@
 ---
 external help file:
 Module Name: Az.App
-online version: https://learn.microsoft.com/powershell/module/az.app/new-azcontainerappvolumemountobject
+online version: https://learn.microsoft.com/powershell/module/Az.App/new-azcontainerappvolumemountobject
 schema: 2.0.0
 ---
 
@@ -13,7 +13,8 @@ Create an in-memory object for VolumeMount.
 ## SYNTAX
 
 ```
-New-AzContainerAppVolumeMountObject [-MountPath <String>] [-VolumeName <String>] [<CommonParameters>]
+New-AzContainerAppVolumeMountObject [-MountPath <String>] [-SubPath <String>] [-VolumeName <String>]
+ [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -27,9 +28,9 @@ New-AzContainerAppVolumeMountObject -MountPath "/mountPath" -VolumeName "VolumeN
 ```
 
 ```output
-MountPath  VolumeName
----------  ----------
-/mountPath VolumeName
+MountPath  SubPath VolumeName
+---------  ------- ----------
+/mountPath         VolumeName
 ```
 
 Create a VolumeMount object for ContainerApp.
@@ -38,6 +39,22 @@ Create a VolumeMount object for ContainerApp.
 
 ### -MountPath
 Path within the container at which the volume should be mounted.Must not contain ':'.
+
+```yaml
+Type: System.String
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -SubPath
+Path within the volume from which the container's volume should be mounted.
+Defaults to "" (volume's root).
 
 ```yaml
 Type: System.String
@@ -73,11 +90,9 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.App.Models.Api20220301.VolumeMount
+### Microsoft.Azure.PowerShell.Cmdlets.App.Models.VolumeMount
 
 ## NOTES
-
-ALIASES
 
 ## RELATED LINKS
 

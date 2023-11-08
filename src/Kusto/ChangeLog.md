@@ -18,6 +18,9 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
+* Supported sandbox custom image
+* Supported database CMK
+* Supported cluster migration
 
 ## Version 2.2.0
 * Added cmdlet `Get-AzKustoSku`

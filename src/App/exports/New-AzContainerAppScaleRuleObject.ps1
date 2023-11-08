@@ -20,44 +20,49 @@ Create an in-memory object for ScaleRule.
 .Description
 Create an in-memory object for ScaleRule.
 .Example
-$scaleRule = @()
-$scaleRule += New-AzContainerAppScaleRuleObject -Name scaleRuleName1 -AzureQueueLength 30 -AzureQueueName azps_containerapp -CustomType "azure-servicebus"
-$scaleRule += New-AzContainerAppScaleRuleObject -Name scaleRuleName2 -AzureQueueLength 30 -AzureQueueName azps_containerapp -CustomType "azure-servicebus"
+New-AzContainerAppScaleRuleObject -Name "httpscalingrule" -CustomType "http" -AzureQueueLength 30 -AzureQueueName azps-containerapp
 
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.App.Models.Api20220301.ScaleRule
+Microsoft.Azure.PowerShell.Cmdlets.App.Models.ScaleRule
 .Notes
 COMPLEX PARAMETER PROPERTIES
 
 To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
 
 AZUREQUEUEAUTH <IScaleRuleAuth[]>: Authentication secrets for the queue scale rule.
-  [SecretRef <String>]: Name of the Container App secret from which to pull the auth params.
+  [SecretRef <String>]: Name of the secret from which to pull the auth params.
   [TriggerParameter <String>]: Trigger Parameter that uses the secret
 
 CUSTOMAUTH <IScaleRuleAuth[]>: Authentication secrets for the custom scale rule.
-  [SecretRef <String>]: Name of the Container App secret from which to pull the auth params.
+  [SecretRef <String>]: Name of the secret from which to pull the auth params.
   [TriggerParameter <String>]: Trigger Parameter that uses the secret
 
 CUSTOMMETADATA <ICustomScaleRuleMetadata>: Metadata properties to describe custom scale rule.
   [(Any) <String>]: This indicates any property can be added to this object.
 
 HTTPAUTH <IScaleRuleAuth[]>: Authentication secrets for the custom scale rule.
-  [SecretRef <String>]: Name of the Container App secret from which to pull the auth params.
+  [SecretRef <String>]: Name of the secret from which to pull the auth params.
   [TriggerParameter <String>]: Trigger Parameter that uses the secret
 
 HTTPMETADATA <IHttpScaleRuleMetadata>: Metadata properties to describe http scale rule.
   [(Any) <String>]: This indicates any property can be added to this object.
+
+TCPAUTH <IScaleRuleAuth[]>: Authentication secrets for the tcp scale rule.
+  [SecretRef <String>]: Name of the secret from which to pull the auth params.
+  [TriggerParameter <String>]: Trigger Parameter that uses the secret
+
+TCPMETADATA <ITcpScaleRuleMetadata>: Metadata properties to describe tcp scale rule.
+  [(Any) <String>]: This indicates any property can be added to this object.
 .Link
-https://learn.microsoft.com/powershell/module/az.app/new-azcontainerappscaleruleobject
+https://learn.microsoft.com/powershell/module/Az.App/new-azcontainerappscaleruleobject
 #>
 function New-AzContainerAppScaleRuleObject {
-[OutputType([Microsoft.Azure.PowerShell.Cmdlets.App.Models.Api20220301.ScaleRule])]
+[OutputType([Microsoft.Azure.PowerShell.Cmdlets.App.Models.ScaleRule])]
 [CmdletBinding(PositionalBinding=$false)]
 param(
     [Parameter()]
     [Microsoft.Azure.PowerShell.Cmdlets.App.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.App.Models.Api20220301.IScaleRuleAuth[]]
+    [Microsoft.Azure.PowerShell.Cmdlets.App.Models.IScaleRuleAuth[]]
     # Authentication secrets for the queue scale rule.
     # To construct, see NOTES section for AZUREQUEUEAUTH properties and create a hash table.
     ${AzureQueueAuth},
@@ -76,14 +81,14 @@ param(
 
     [Parameter()]
     [Microsoft.Azure.PowerShell.Cmdlets.App.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.App.Models.Api20220301.IScaleRuleAuth[]]
+    [Microsoft.Azure.PowerShell.Cmdlets.App.Models.IScaleRuleAuth[]]
     # Authentication secrets for the custom scale rule.
     # To construct, see NOTES section for CUSTOMAUTH properties and create a hash table.
     ${CustomAuth},
 
     [Parameter()]
     [Microsoft.Azure.PowerShell.Cmdlets.App.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.App.Models.Api20220301.ICustomScaleRuleMetadata]
+    [Microsoft.Azure.PowerShell.Cmdlets.App.Models.ICustomScaleRuleMetadata]
     # Metadata properties to describe custom scale rule.
     # To construct, see NOTES section for CUSTOMMETADATA properties and create a hash table.
     ${CustomMetadata},
@@ -97,14 +102,14 @@ param(
 
     [Parameter()]
     [Microsoft.Azure.PowerShell.Cmdlets.App.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.App.Models.Api20220301.IScaleRuleAuth[]]
+    [Microsoft.Azure.PowerShell.Cmdlets.App.Models.IScaleRuleAuth[]]
     # Authentication secrets for the custom scale rule.
     # To construct, see NOTES section for HTTPAUTH properties and create a hash table.
     ${HttpAuth},
 
     [Parameter()]
     [Microsoft.Azure.PowerShell.Cmdlets.App.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.App.Models.Api20220301.IHttpScaleRuleMetadata]
+    [Microsoft.Azure.PowerShell.Cmdlets.App.Models.IHttpScaleRuleMetadata]
     # Metadata properties to describe http scale rule.
     # To construct, see NOTES section for HTTPMETADATA properties and create a hash table.
     ${HttpMetadata},
@@ -113,7 +118,21 @@ param(
     [Microsoft.Azure.PowerShell.Cmdlets.App.Category('Body')]
     [System.String]
     # Scale Rule Name.
-    ${Name}
+    ${Name},
+
+    [Parameter()]
+    [Microsoft.Azure.PowerShell.Cmdlets.App.Category('Body')]
+    [Microsoft.Azure.PowerShell.Cmdlets.App.Models.IScaleRuleAuth[]]
+    # Authentication secrets for the tcp scale rule.
+    # To construct, see NOTES section for TCPAUTH properties and create a hash table.
+    ${TcpAuth},
+
+    [Parameter()]
+    [Microsoft.Azure.PowerShell.Cmdlets.App.Category('Body')]
+    [Microsoft.Azure.PowerShell.Cmdlets.App.Models.ITcpScaleRuleMetadata]
+    # Metadata properties to describe tcp scale rule.
+    # To construct, see NOTES section for TCPMETADATA properties and create a hash table.
+    ${TcpMetadata}
 )
 
 begin {
@@ -146,6 +165,10 @@ begin {
         }
         $cmdInfo = Get-Command -Name $mapping[$parameterSet]
         [Microsoft.Azure.PowerShell.Cmdlets.App.Runtime.MessageAttributeHelper]::ProcessCustomAttributesAtRuntime($cmdInfo, $MyInvocation, $parameterSet, $PSCmdlet)
+        if ($null -ne $MyInvocation.MyCommand -and [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PromptedPreviewMessageCmdlets -notcontains $MyInvocation.MyCommand.Name -and [Microsoft.Azure.PowerShell.Cmdlets.App.Runtime.MessageAttributeHelper]::ContainsPreviewAttribute($cmdInfo, $MyInvocation)){
+            [Microsoft.Azure.PowerShell.Cmdlets.App.Runtime.MessageAttributeHelper]::ProcessPreviewMessageAttributesAtRuntime($cmdInfo, $MyInvocation, $parameterSet, $PSCmdlet)
+            [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PromptedPreviewMessageCmdlets.Enqueue($MyInvocation.MyCommand.Name)
+        }
         $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Cmdlet)
         $scriptCmd = {& $wrappedCmd @PSBoundParameters}
         $steppablePipeline = $scriptCmd.GetSteppablePipeline($MyInvocation.CommandOrigin)

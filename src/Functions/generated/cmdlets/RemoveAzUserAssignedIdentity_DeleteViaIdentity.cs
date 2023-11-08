@@ -17,6 +17,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Functions.Cmdlets
     [global::System.Management.Automation.OutputType(typeof(bool))]
     [global::Microsoft.Azure.PowerShell.Cmdlets.Functions.Description(@"Deletes the identity.")]
     [global::Microsoft.Azure.PowerShell.Cmdlets.Functions.Generated]
+    [global::Microsoft.Azure.PowerShell.Cmdlets.Functions.HttpPath(Path = "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedIdentity/userAssignedIdentities/{resourceName}", ApiVersion = "2018-11-30")]
     public partial class RemoveAzUserAssignedIdentity_DeleteViaIdentity : global::System.Management.Automation.PSCmdlet,
         Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.IEventListener
     {
@@ -43,9 +44,10 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Functions.Cmdlets
         public Microsoft.Azure.PowerShell.Cmdlets.Functions.Functions Client => Microsoft.Azure.PowerShell.Cmdlets.Functions.Module.Instance.ClientAPI;
 
         /// <summary>
-        /// The credentials, account, tenant, and subscription used for communication with Azure
+        /// The DefaultProfile parameter is not functional. Use the SubscriptionId parameter when available if executing the cmdlet
+        /// against a different subscription
         /// </summary>
-        [global::System.Management.Automation.Parameter(Mandatory = false, HelpMessage = "The credentials, account, tenant, and subscription used for communication with Azure.")]
+        [global::System.Management.Automation.Parameter(Mandatory = false, HelpMessage = "The DefaultProfile parameter is not functional. Use the SubscriptionId parameter when available if executing the cmdlet against a different subscription.")]
         [global::System.Management.Automation.ValidateNotNull]
         [global::System.Management.Automation.Alias("AzureRMContext", "AzureCredential")]
         [global::Microsoft.Azure.PowerShell.Cmdlets.Functions.Category(global::Microsoft.Azure.PowerShell.Cmdlets.Functions.ParameterCategory.Azure)]

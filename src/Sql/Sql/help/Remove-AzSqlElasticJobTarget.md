@@ -22,7 +22,7 @@ Remove-AzSqlElasticJobTarget [-ResourceGroupName] <String> [-AgentServerName] <S
 ### SqlServerOrElasticPool
 ```
 Remove-AzSqlElasticJobTarget [-ResourceGroupName] <String> [-AgentServerName] <String> [-AgentName] <String>
- [-TargetGroupName] <String> -ServerName <String> [-ElasticPoolName <String>] -RefreshCredentialName <String>
+ [-TargetGroupName] <String> -ServerName <String> [-ElasticPoolName <String>] [-RefreshCredentialName <String>]
  [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
@@ -30,7 +30,7 @@ Remove-AzSqlElasticJobTarget [-ResourceGroupName] <String> [-AgentServerName] <S
 ```
 Remove-AzSqlElasticJobTarget [-ResourceGroupName] <String> [-AgentServerName] <String> [-AgentName] <String>
  [-TargetGroupName] <String> -ServerName <String> -ShardMapName <String> -DatabaseName <String>
- -RefreshCredentialName <String> [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
+ [-RefreshCredentialName <String>] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
  [<CommonParameters>]
 ```
 
@@ -43,14 +43,14 @@ Remove-AzSqlElasticJobTarget [-ParentObject] <AzureSqlElasticJobTargetGroupModel
 ### SqlServerOrElasticPoolUsingParentObject
 ```
 Remove-AzSqlElasticJobTarget [-ParentObject] <AzureSqlElasticJobTargetGroupModel> -ServerName <String>
- [-ElasticPoolName <String>] -RefreshCredentialName <String> [-DefaultProfile <IAzureContextContainer>]
+ [-ElasticPoolName <String>] [-RefreshCredentialName <String>] [-DefaultProfile <IAzureContextContainer>]
  [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### SqlShardMapUsingParentObject
 ```
 Remove-AzSqlElasticJobTarget [-ParentObject] <AzureSqlElasticJobTargetGroupModel> -ServerName <String>
- -ShardMapName <String> -DatabaseName <String> -RefreshCredentialName <String>
+ -ShardMapName <String> -DatabaseName <String> [-RefreshCredentialName <String>]
  [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
@@ -63,14 +63,14 @@ Remove-AzSqlElasticJobTarget [-ParentResourceId] <String> -ServerName <String> -
 ### SqlServerOrElasticPoolUsingParentResourceId
 ```
 Remove-AzSqlElasticJobTarget [-ParentResourceId] <String> -ServerName <String> [-ElasticPoolName <String>]
- -RefreshCredentialName <String> [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
+ [-RefreshCredentialName <String>] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
  [<CommonParameters>]
 ```
 
 ### SqlShardMapUsingParentResourceId
 ```
 Remove-AzSqlElasticJobTarget [-ParentResourceId] <String> -ServerName <String> -ShardMapName <String>
- -DatabaseName <String> -RefreshCredentialName <String> [-DefaultProfile <IAzureContextContainer>] [-WhatIf]
+ -DatabaseName <String> [-RefreshCredentialName <String>] [-DefaultProfile <IAzureContextContainer>] [-WhatIf]
  [-Confirm] [<CommonParameters>]
 ```
 
@@ -244,7 +244,7 @@ Type: System.String
 Parameter Sets: SqlServerOrElasticPool, SqlShardMap, SqlServerOrElasticPoolUsingParentObject, SqlShardMapUsingParentObject, SqlServerOrElasticPoolUsingParentResourceId, SqlShardMapUsingParentResourceId
 Aliases:
 
-Required: True
+Required: False
 Position: Named
 Default value: None
 Accept pipeline input: False

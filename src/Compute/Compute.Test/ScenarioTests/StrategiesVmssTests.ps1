@@ -28,9 +28,10 @@ function Test-SimpleNewVmss
         $password = Get-PasswordForVM | ConvertTo-SecureString -AsPlainText -Force
         $cred = new-object -typename System.Management.Automation.PSCredential -argumentlist $username, $password
         [string]$domainNameLabel = "$vmssname$vmssname".tolower();
+        $stnd = "Standard";
 
         # Common
-        $x = New-AzVmss -Name $vmssname -Credential $cred -DomainNameLabel $domainNameLabel -LoadBalancerName $lbName
+        $x = New-AzVmss -Name $vmssname -Credential $cred -DomainNameLabel $domainNameLabel -LoadBalancerName $lbName -SecurityType $stnd
 
         Assert-AreEqual $vmssname $x.Name;
         Assert-AreEqual $vmssname $x.ResourceGroupName;
@@ -169,8 +170,9 @@ function Test-SimpleNewVmssLbErrorScenario
         $password = Get-PasswordForVM | ConvertTo-SecureString -AsPlainText -Force
         $cred = new-object -typename System.Management.Automation.PSCredential -argumentlist $username, $password
         [string]$domainNameLabel = "$vmssname$vmssname".tolower();
+        $stnd = "Standard";
 
-        $x = New-AzVmss -Name $vmssname -Credential $cred -DomainNameLabel $domainNameLabel
+        $x = New-AzVmss -Name $vmssname -Credential $cred -DomainNameLabel $domainNameLabel -SecurityType $stnd
 
         Assert-AreEqual $vmssname $x.Name;
         $lb = Get-AzLoadBalancer -Name $vmssname -ResourceGroupName $vmssname 
@@ -182,7 +184,7 @@ function Test-SimpleNewVmssLbErrorScenario
         try
         {
             $newVmssName = $vmssname + "New"
-            $x = New-AzVmss -Name $newVmssName -Credential $cred -DomainNameLabel $domainNameLabel -ResourceGroupName $vmssname -LoadBalancerName $lbName
+            $x = New-AzVmss -Name $newVmssName -Credential $cred -DomainNameLabel $domainNameLabel -ResourceGroupName $vmssname -LoadBalancerName $lbName -SecurityType $stnd
         }
         catch
         {
@@ -213,9 +215,10 @@ function Test-SimpleNewVmssWithSystemAssignedIdentity
         $password = Get-PasswordForVM | ConvertTo-SecureString -AsPlainText -Force
         $cred = new-object -typename System.Management.Automation.PSCredential -argumentlist $username, $password
         [string]$domainNameLabel = "$vmssname$vmssname".tolower();
+        $stnd = "Standard";
 
         # Common
-        $x = New-AzVmss -Name $vmssname -Credential $cred -DomainNameLabel $domainNameLabel -SystemAssignedIdentity -SinglePlacementGroup
+        $x = New-AzVmss -Name $vmssname -Credential $cred -DomainNameLabel $domainNameLabel -SystemAssignedIdentity -SinglePlacementGroup -SecurityType $stnd
 
         Assert-AreEqual $vmssname $x.Name;
         Assert-AreEqual $vmssname $x.ResourceGroupName;
@@ -250,6 +253,7 @@ function Test-SimpleNewVmssWithsystemAssignedUserAssignedIdentity
         $password = Get-PasswordForVM | ConvertTo-SecureString -AsPlainText -Force
         $cred = new-object -typename System.Management.Automation.PSCredential -argumentlist $username, $password
         [string]$domainNameLabel = "$vmssname$vmssname".tolower();
+        $stnd = "Standard";
 
         # To record this test run these commands first :
         # New-AzResourceGroup -Name UAITG123456 -Location 'Central US'
@@ -267,7 +271,7 @@ function Test-SimpleNewVmssWithsystemAssignedUserAssignedIdentity
         $newUserId = "/subscriptions/24fb23e3-6ba3-41f0-9b6e-e41131d5d61e/resourcegroups/UAITG123456/providers/Microsoft.ManagedIdentity/userAssignedIdentities/UAITG123456Identity"
 
         # Common
-        $x = New-AzVmss -Name $vmssname -Credential $cred -DomainNameLabel $domainNameLabel -UserAssignedIdentity $newUserId -SystemAssignedIdentity -SinglePlacementGroup
+        $x = New-AzVmss -Name $vmssname -Credential $cred -DomainNameLabel $domainNameLabel -UserAssignedIdentity $newUserId -SystemAssignedIdentity -SinglePlacementGroup -SecurityType $stnd
 
         Assert-AreEqual $vmssname $x.Name;
         Assert-AreEqual $vmssname $x.ResourceGroupName;
@@ -347,9 +351,10 @@ function Test-SimpleNewVmssWithoutDomainName
         $username = "admin01"
         $password = Get-PasswordForVM | ConvertTo-SecureString -AsPlainText -Force
         $cred = new-object -typename System.Management.Automation.PSCredential -argumentlist $username, $password
-
+        $stnd = "Standard";
+        
         # Common
-        $x = New-AzVmss -Name $vmssname -Credential $cred -SinglePlacementGroup
+        $x = New-AzVmss -Name $vmssname -Credential $cred -SinglePlacementGroup -SecurityType $stnd
 
         Assert-AreEqual $vmssname $x.Name;
         Assert-AreEqual $vmssname $x.ResourceGroupName;
@@ -387,6 +392,7 @@ function Test-SimpleNewVmssPpg
         $password = Get-PasswordForVM | ConvertTo-SecureString -AsPlainText -Force
         $cred = new-object -typename System.Management.Automation.PSCredential -argumentlist $username, $password
         [string]$domainNameLabel = "$vmssname$vmssname".tolower();
+        $stnd = "Standard";
 
         # Common
         $rg = New-AzResourceGroup -Name $rgname -Location "eastus"
@@ -394,7 +400,7 @@ function Test-SimpleNewVmssPpg
             -ResourceGroupName $rgname `
             -Name $ppgname `
             -Location "eastus"
-        $vmss = New-AzVmss -Name $vmssname -ResourceGroup $rgname -Credential $cred -DomainNameLabel $domainNameLabel -LoadBalancerName $lbName -ProximityPlacementGroupId $ppgname
+        $vmss = New-AzVmss -Name $vmssname -ResourceGroup $rgname -Credential $cred -DomainNameLabel $domainNameLabel -LoadBalancerName $lbName -ProximityPlacementGroupId $ppgname -SecurityType $stnd
 
         Assert-AreEqual $vmss.ProximityPlacementGroup.Id $ppg.Id
     }
@@ -420,6 +426,7 @@ function Test-SimpleNewVmssHostGroup
         [string]$loc = Get-Location "Microsoft.Resources" "resourceGroups" "East US 2 EUAP";
         $loc = $loc.Replace(' ', '');
         $zone = "2"
+        $stnd = "Standard";
         
         # Creating the resource group
         New-AzResourceGroup -Name $rgname -Location $loc -Force;
@@ -438,7 +445,7 @@ function Test-SimpleNewVmssHostGroup
         $username = "admin01"
         $password = Get-PasswordForVM | ConvertTo-SecureString -AsPlainText -Force
         $cred = new-object -typename System.Management.Automation.PSCredential -argumentlist $username, $password
-        $vmss = New-AzVmss -Name $vmssname -ResourceGroup $rgname -Credential $cred -HostGroupId $hostGroup.Id -Zone $zone -VmSize $VmSku -DomainNameLabel "myvmss-48e3cf"
+        $vmss = New-AzVmss -Name $vmssname -ResourceGroup $rgname -Credential $cred -HostGroupId $hostGroup.Id -Zone $zone -VmSize $VmSku -DomainNameLabel "myvmss-48e3cf" -SecurityType $stnd
 
         Assert-AreEqual $vmss.HostGroup.Id $hostGroup.Id
     }
@@ -530,9 +537,10 @@ function Test-SimpleNewVmssSkipExtOverprovision
         $password = Get-PasswordForVM | ConvertTo-SecureString -AsPlainText -Force
         $cred = new-object -typename System.Management.Automation.PSCredential -argumentlist $username, $password
         [string]$domainNameLabel = "$vmssname$vmssname".tolower();
+        $stnd = "Standard";
 
         # Common
-        New-AzVmss -Name $vmssname -Location "westus2" -Credential $cred -DomainNameLabel $domainNameLabel `
+        New-AzVmss -Name $vmssname -Location "westus2" -Credential $cred -DomainNameLabel $domainNameLabel -SecurityType $stnd `
                    -SkipExtensionsOnOverprovisionedVMs;
         $vmss = Get-AzVmss -ResourceGroupName $vmssname -Name $vmssname;
         Assert-True { $vmss.DoNotRunExtensionsOnOverprovisionedVMs };

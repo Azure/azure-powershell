@@ -19,7 +19,7 @@
 -->
 
 ## Upcoming Release
-- Added support for maintenance configuration cancellation.
+* Added support for maintenance configuration cancellation.
 
 ## Version 1.3.1
 * Fixed breaking change information

@@ -36,6 +36,15 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Subscription.Models
         [Microsoft.Azure.PowerShell.Cmdlets.Subscription.Origin(Microsoft.Azure.PowerShell.Cmdlets.Subscription.PropertyOrigin.Owned)]
         public string Id { get => this._id; set => this._id = value; }
 
+        /// <summary>Backing field for <see cref="OperationId" /> property.</summary>
+        private string _operationId;
+
+        /// <summary>
+        /// The operation ID, which can be found from the Location field in the generate recommendation response header.
+        /// </summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.Subscription.Origin(Microsoft.Azure.PowerShell.Cmdlets.Subscription.PropertyOrigin.Owned)]
+        public string OperationId { get => this._operationId; set => this._operationId = value; }
+
         /// <summary>Backing field for <see cref="SubscriptionId" /> property.</summary>
         private string _subscriptionId;
 
@@ -79,6 +88,16 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Subscription.Models
         SerializedName = @"id",
         PossibleTypes = new [] { typeof(string) })]
         string Id { get; set; }
+        /// <summary>
+        /// The operation ID, which can be found from the Location field in the generate recommendation response header.
+        /// </summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.Subscription.Runtime.Info(
+        Required = false,
+        ReadOnly = false,
+        Description = @"The operation ID, which can be found from the Location field in the generate recommendation response header.",
+        SerializedName = @"operationId",
+        PossibleTypes = new [] { typeof(string) })]
+        string OperationId { get; set; }
         /// <summary>Subscription Id.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.Subscription.Runtime.Info(
         Required = false,
@@ -101,6 +120,10 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Subscription.Models
         string BillingAccountId { get; set; }
         /// <summary>Resource identity path</summary>
         string Id { get; set; }
+        /// <summary>
+        /// The operation ID, which can be found from the Location field in the generate recommendation response header.
+        /// </summary>
+        string OperationId { get; set; }
         /// <summary>Subscription Id.</summary>
         string SubscriptionId { get; set; }
 

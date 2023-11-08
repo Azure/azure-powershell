@@ -33,6 +33,13 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.App.Models
         [Microsoft.Azure.PowerShell.Cmdlets.App.Origin(Microsoft.Azure.PowerShell.Cmdlets.App.PropertyOrigin.Owned)]
         public string ComponentName { get => this._componentName; set => this._componentName = value; }
 
+        /// <summary>Backing field for <see cref="ConnectedEnvironmentName" /> property.</summary>
+        private string _connectedEnvironmentName;
+
+        /// <summary>Name of the connectedEnvironment.</summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.App.Origin(Microsoft.Azure.PowerShell.Cmdlets.App.PropertyOrigin.Owned)]
+        public string ConnectedEnvironmentName { get => this._connectedEnvironmentName; set => this._connectedEnvironmentName = value; }
+
         /// <summary>Backing field for <see cref="ContainerAppName" /> property.</summary>
         private string _containerAppName;
 
@@ -40,10 +47,17 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.App.Models
         [Microsoft.Azure.PowerShell.Cmdlets.App.Origin(Microsoft.Azure.PowerShell.Cmdlets.App.PropertyOrigin.Owned)]
         public string ContainerAppName { get => this._containerAppName; set => this._containerAppName = value; }
 
+        /// <summary>Backing field for <see cref="DetectorName" /> property.</summary>
+        private string _detectorName;
+
+        /// <summary>Name of the Container App Detector.</summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.App.Origin(Microsoft.Azure.PowerShell.Cmdlets.App.PropertyOrigin.Owned)]
+        public string DetectorName { get => this._detectorName; set => this._detectorName = value; }
+
         /// <summary>Backing field for <see cref="EnvironmentName" /> property.</summary>
         private string _environmentName;
 
-        /// <summary>Name of the Managed Environment.</summary>
+        /// <summary>Name of the Environment.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.App.Origin(Microsoft.Azure.PowerShell.Cmdlets.App.PropertyOrigin.Owned)]
         public string EnvironmentName { get => this._environmentName; set => this._environmentName = value; }
 
@@ -53,6 +67,34 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.App.Models
         /// <summary>Resource identity path</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.App.Origin(Microsoft.Azure.PowerShell.Cmdlets.App.PropertyOrigin.Owned)]
         public string Id { get => this._id; set => this._id = value; }
+
+        /// <summary>Backing field for <see cref="JobExecutionName" /> property.</summary>
+        private string _jobExecutionName;
+
+        /// <summary>Job execution name.</summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.App.Origin(Microsoft.Azure.PowerShell.Cmdlets.App.PropertyOrigin.Owned)]
+        public string JobExecutionName { get => this._jobExecutionName; set => this._jobExecutionName = value; }
+
+        /// <summary>Backing field for <see cref="JobName" /> property.</summary>
+        private string _jobName;
+
+        /// <summary>Job Name</summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.App.Origin(Microsoft.Azure.PowerShell.Cmdlets.App.PropertyOrigin.Owned)]
+        public string JobName { get => this._jobName; set => this._jobName = value; }
+
+        /// <summary>Backing field for <see cref="Location" /> property.</summary>
+        private string _location;
+
+        /// <summary>The name of Azure region.</summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.App.Origin(Microsoft.Azure.PowerShell.Cmdlets.App.PropertyOrigin.Owned)]
+        public string Location { get => this._location; set => this._location = value; }
+
+        /// <summary>Backing field for <see cref="ManagedCertificateName" /> property.</summary>
+        private string _managedCertificateName;
+
+        /// <summary>Name of the Managed Certificate.</summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.App.Origin(Microsoft.Azure.PowerShell.Cmdlets.App.PropertyOrigin.Owned)]
+        public string ManagedCertificateName { get => this._managedCertificateName; set => this._managedCertificateName = value; }
 
         /// <summary>Backing field for <see cref="ReplicaName" /> property.</summary>
         private string _replicaName;
@@ -109,6 +151,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.App.Models
         [Microsoft.Azure.PowerShell.Cmdlets.App.Runtime.Info(
         Required = false,
         ReadOnly = false,
+        Read = true,
+        Create = true,
+        Update = true,
         Description = @"Name of the Container App AuthConfig.",
         SerializedName = @"authConfigName",
         PossibleTypes = new [] { typeof(string) })]
@@ -117,6 +162,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.App.Models
         [Microsoft.Azure.PowerShell.Cmdlets.App.Runtime.Info(
         Required = false,
         ReadOnly = false,
+        Read = true,
+        Create = true,
+        Update = true,
         Description = @"Name of the Certificate.",
         SerializedName = @"certificateName",
         PossibleTypes = new [] { typeof(string) })]
@@ -125,23 +173,54 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.App.Models
         [Microsoft.Azure.PowerShell.Cmdlets.App.Runtime.Info(
         Required = false,
         ReadOnly = false,
+        Read = true,
+        Create = true,
+        Update = true,
         Description = @"Name of the Dapr Component.",
         SerializedName = @"componentName",
         PossibleTypes = new [] { typeof(string) })]
         string ComponentName { get; set; }
+        /// <summary>Name of the connectedEnvironment.</summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.App.Runtime.Info(
+        Required = false,
+        ReadOnly = false,
+        Read = true,
+        Create = true,
+        Update = true,
+        Description = @"Name of the connectedEnvironment.",
+        SerializedName = @"connectedEnvironmentName",
+        PossibleTypes = new [] { typeof(string) })]
+        string ConnectedEnvironmentName { get; set; }
         /// <summary>Name of the Container App.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.App.Runtime.Info(
         Required = false,
         ReadOnly = false,
+        Read = true,
+        Create = true,
+        Update = true,
         Description = @"Name of the Container App.",
         SerializedName = @"containerAppName",
         PossibleTypes = new [] { typeof(string) })]
         string ContainerAppName { get; set; }
-        /// <summary>Name of the Managed Environment.</summary>
+        /// <summary>Name of the Container App Detector.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.App.Runtime.Info(
         Required = false,
         ReadOnly = false,
-        Description = @"Name of the Managed Environment.",
+        Read = true,
+        Create = true,
+        Update = true,
+        Description = @"Name of the Container App Detector.",
+        SerializedName = @"detectorName",
+        PossibleTypes = new [] { typeof(string) })]
+        string DetectorName { get; set; }
+        /// <summary>Name of the Environment.</summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.App.Runtime.Info(
+        Required = false,
+        ReadOnly = false,
+        Read = true,
+        Create = true,
+        Update = true,
+        Description = @"Name of the Environment.",
         SerializedName = @"environmentName",
         PossibleTypes = new [] { typeof(string) })]
         string EnvironmentName { get; set; }
@@ -149,14 +228,64 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.App.Models
         [Microsoft.Azure.PowerShell.Cmdlets.App.Runtime.Info(
         Required = false,
         ReadOnly = false,
+        Read = true,
+        Create = true,
+        Update = true,
         Description = @"Resource identity path",
         SerializedName = @"id",
         PossibleTypes = new [] { typeof(string) })]
         string Id { get; set; }
+        /// <summary>Job execution name.</summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.App.Runtime.Info(
+        Required = false,
+        ReadOnly = false,
+        Read = true,
+        Create = true,
+        Update = true,
+        Description = @"Job execution name.",
+        SerializedName = @"jobExecutionName",
+        PossibleTypes = new [] { typeof(string) })]
+        string JobExecutionName { get; set; }
+        /// <summary>Job Name</summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.App.Runtime.Info(
+        Required = false,
+        ReadOnly = false,
+        Read = true,
+        Create = true,
+        Update = true,
+        Description = @"Job Name",
+        SerializedName = @"jobName",
+        PossibleTypes = new [] { typeof(string) })]
+        string JobName { get; set; }
+        /// <summary>The name of Azure region.</summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.App.Runtime.Info(
+        Required = false,
+        ReadOnly = false,
+        Read = true,
+        Create = true,
+        Update = true,
+        Description = @"The name of Azure region.",
+        SerializedName = @"location",
+        PossibleTypes = new [] { typeof(string) })]
+        string Location { get; set; }
+        /// <summary>Name of the Managed Certificate.</summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.App.Runtime.Info(
+        Required = false,
+        ReadOnly = false,
+        Read = true,
+        Create = true,
+        Update = true,
+        Description = @"Name of the Managed Certificate.",
+        SerializedName = @"managedCertificateName",
+        PossibleTypes = new [] { typeof(string) })]
+        string ManagedCertificateName { get; set; }
         /// <summary>Name of the Container App Revision Replica.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.App.Runtime.Info(
         Required = false,
         ReadOnly = false,
+        Read = true,
+        Create = true,
+        Update = true,
         Description = @"Name of the Container App Revision Replica.",
         SerializedName = @"replicaName",
         PossibleTypes = new [] { typeof(string) })]
@@ -165,6 +294,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.App.Models
         [Microsoft.Azure.PowerShell.Cmdlets.App.Runtime.Info(
         Required = false,
         ReadOnly = false,
+        Read = true,
+        Create = true,
+        Update = true,
         Description = @"The name of the resource group. The name is case insensitive.",
         SerializedName = @"resourceGroupName",
         PossibleTypes = new [] { typeof(string) })]
@@ -173,6 +305,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.App.Models
         [Microsoft.Azure.PowerShell.Cmdlets.App.Runtime.Info(
         Required = false,
         ReadOnly = false,
+        Read = true,
+        Create = true,
+        Update = true,
         Description = @"Name of the Container App Revision.",
         SerializedName = @"revisionName",
         PossibleTypes = new [] { typeof(string) })]
@@ -181,6 +316,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.App.Models
         [Microsoft.Azure.PowerShell.Cmdlets.App.Runtime.Info(
         Required = false,
         ReadOnly = false,
+        Read = true,
+        Create = true,
+        Update = true,
         Description = @"Name of the Container App SourceControl.",
         SerializedName = @"sourceControlName",
         PossibleTypes = new [] { typeof(string) })]
@@ -189,6 +327,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.App.Models
         [Microsoft.Azure.PowerShell.Cmdlets.App.Runtime.Info(
         Required = false,
         ReadOnly = false,
+        Read = true,
+        Create = true,
+        Update = true,
         Description = @"Name of the storage.",
         SerializedName = @"storageName",
         PossibleTypes = new [] { typeof(string) })]
@@ -197,6 +338,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.App.Models
         [Microsoft.Azure.PowerShell.Cmdlets.App.Runtime.Info(
         Required = false,
         ReadOnly = false,
+        Read = true,
+        Create = true,
+        Update = true,
         Description = @"The ID of the target subscription.",
         SerializedName = @"subscriptionId",
         PossibleTypes = new [] { typeof(string) })]
@@ -212,12 +356,24 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.App.Models
         string CertificateName { get; set; }
         /// <summary>Name of the Dapr Component.</summary>
         string ComponentName { get; set; }
+        /// <summary>Name of the connectedEnvironment.</summary>
+        string ConnectedEnvironmentName { get; set; }
         /// <summary>Name of the Container App.</summary>
         string ContainerAppName { get; set; }
-        /// <summary>Name of the Managed Environment.</summary>
+        /// <summary>Name of the Container App Detector.</summary>
+        string DetectorName { get; set; }
+        /// <summary>Name of the Environment.</summary>
         string EnvironmentName { get; set; }
         /// <summary>Resource identity path</summary>
         string Id { get; set; }
+        /// <summary>Job execution name.</summary>
+        string JobExecutionName { get; set; }
+        /// <summary>Job Name</summary>
+        string JobName { get; set; }
+        /// <summary>The name of Azure region.</summary>
+        string Location { get; set; }
+        /// <summary>Name of the Managed Certificate.</summary>
+        string ManagedCertificateName { get; set; }
         /// <summary>Name of the Container App Revision Replica.</summary>
         string ReplicaName { get; set; }
         /// <summary>The name of the resource group. The name is case insensitive.</summary>

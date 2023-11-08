@@ -20,15 +20,15 @@ Create an in-memory object for TrafficWeight.
 .Description
 Create an in-memory object for TrafficWeight.
 .Example
-New-AzContainerAppTrafficWeightObject -Label production -LatestRevision $True -Weight 100
+New-AzContainerAppTrafficWeightObject -Label "production" -Weight 100 -LatestRevision:$True
 
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.App.Models.Api20220301.TrafficWeight
+Microsoft.Azure.PowerShell.Cmdlets.App.Models.TrafficWeight
 .Link
-https://learn.microsoft.com/powershell/module/az.app/new-azcontainerapptrafficweightobject
+https://learn.microsoft.com/powershell/module/Az.App/new-azcontainerapptrafficweightobject
 #>
 function New-AzContainerAppTrafficWeightObject {
-[OutputType([Microsoft.Azure.PowerShell.Cmdlets.App.Models.Api20220301.TrafficWeight])]
+[OutputType([Microsoft.Azure.PowerShell.Cmdlets.App.Models.TrafficWeight])]
 [CmdletBinding(PositionalBinding=$false)]
 param(
     [Parameter()]
@@ -86,6 +86,10 @@ begin {
         }
         $cmdInfo = Get-Command -Name $mapping[$parameterSet]
         [Microsoft.Azure.PowerShell.Cmdlets.App.Runtime.MessageAttributeHelper]::ProcessCustomAttributesAtRuntime($cmdInfo, $MyInvocation, $parameterSet, $PSCmdlet)
+        if ($null -ne $MyInvocation.MyCommand -and [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PromptedPreviewMessageCmdlets -notcontains $MyInvocation.MyCommand.Name -and [Microsoft.Azure.PowerShell.Cmdlets.App.Runtime.MessageAttributeHelper]::ContainsPreviewAttribute($cmdInfo, $MyInvocation)){
+            [Microsoft.Azure.PowerShell.Cmdlets.App.Runtime.MessageAttributeHelper]::ProcessPreviewMessageAttributesAtRuntime($cmdInfo, $MyInvocation, $parameterSet, $PSCmdlet)
+            [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PromptedPreviewMessageCmdlets.Enqueue($MyInvocation.MyCommand.Name)
+        }
         $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Cmdlet)
         $scriptCmd = {& $wrappedCmd @PSBoundParameters}
         $steppablePipeline = $scriptCmd.GetSteppablePipeline($MyInvocation.CommandOrigin)

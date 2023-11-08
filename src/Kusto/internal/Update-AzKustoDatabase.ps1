@@ -37,11 +37,11 @@ $2ds = New-TimeSpan -Days 2
 Update-AzKustoDatabase -InputObject $database -Kind ReadOnlyFollowing -HotCachePeriod $2ds -Location 'East US'
 
 .Inputs
-Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api20221229.IDatabase
+Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api20230815.IDatabase
 .Inputs
 Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.IKustoIdentity
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api20221229.IDatabase
+Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api20230815.IDatabase
 .Notes
 COMPLEX PARAMETER PROPERTIES
 
@@ -53,25 +53,25 @@ INPUTOBJECT <IKustoIdentity>: Identity Parameter
   [DataConnectionName <String>]: The name of the data connection.
   [DatabaseName <String>]: The name of the database in the Kusto cluster.
   [Id <String>]: Resource identity path
-  [Location <String>]: Azure location (region) name.
+  [Location <String>]: The name of Azure region.
   [ManagedPrivateEndpointName <String>]: The name of the managed private endpoint.
-  [OperationId <String>]: The Guid of the operation ID
+  [OperationId <String>]: The ID of an ongoing async operation.
   [PrincipalAssignmentName <String>]: The name of the Kusto principalAssignment.
   [PrivateEndpointConnectionName <String>]: The name of the private endpoint connection.
   [PrivateLinkResourceName <String>]: The name of the private link resource.
-  [ResourceGroupName <String>]: The name of the resource group containing the Kusto cluster.
+  [ResourceGroupName <String>]: The name of the resource group. The name is case insensitive.
+  [SandboxCustomImageName <String>]: The name of the sandbox custom image.
   [ScriptName <String>]: The name of the Kusto database script.
-  [SubscriptionId <String>]: Gets subscription credentials which uniquely identify Microsoft Azure subscription. The subscription ID forms part of the URI for every service call.
+  [SubscriptionId <String>]: The ID of the target subscription.
 
 PARAMETER <IDatabase>: Class representing a Kusto database.
   Kind <Kind>: Kind of the database
-  [AzureAsyncOperation <String>]: 
   [Location <String>]: Resource location.
 .Link
 https://learn.microsoft.com/powershell/module/az.kusto/update-azkustodatabase
 #>
 function Update-AzKustoDatabase {
-[OutputType([Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api20221229.IDatabase])]
+[OutputType([Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api20230815.IDatabase])]
 [CmdletBinding(DefaultParameterSetName='UpdateExpanded', PositionalBinding=$false, SupportsShouldProcess, ConfirmImpact='Medium')]
 param(
     [Parameter(ParameterSetName='Update', Mandatory)]
@@ -93,7 +93,8 @@ param(
     [Parameter(ParameterSetName='UpdateExpanded', Mandatory)]
     [Microsoft.Azure.PowerShell.Cmdlets.Kusto.Category('Path')]
     [System.String]
-    # The name of the resource group containing the Kusto cluster.
+    # The name of the resource group.
+    # The name is case insensitive.
     ${ResourceGroupName},
 
     [Parameter(ParameterSetName='Update')]
@@ -101,8 +102,7 @@ param(
     [Microsoft.Azure.PowerShell.Cmdlets.Kusto.Category('Path')]
     [Microsoft.Azure.PowerShell.Cmdlets.Kusto.Runtime.DefaultInfo(Script='(Get-AzContext).Subscription.Id')]
     [System.String]
-    # Gets subscription credentials which uniquely identify Microsoft Azure subscription.
-    # The subscription ID forms part of the URI for every service call.
+    # The ID of the target subscription.
     ${SubscriptionId},
 
     [Parameter(ParameterSetName='UpdateViaIdentity', Mandatory, ValueFromPipeline)]
@@ -124,7 +124,7 @@ param(
     [Parameter(ParameterSetName='Update', Mandatory, ValueFromPipeline)]
     [Parameter(ParameterSetName='UpdateViaIdentity', Mandatory, ValueFromPipeline)]
     [Microsoft.Azure.PowerShell.Cmdlets.Kusto.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api20221229.IDatabase]
+    [Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api20230815.IDatabase]
     # Class representing a Kusto database.
     # To construct, see NOTES section for PARAMETER properties and create a hash table.
     ${Parameter},

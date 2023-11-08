@@ -39,16 +39,12 @@ INPUTOBJECT <IMigrateIdentity>: Identity Parameter
   [ClusterName <String>]: Cluster ARM name.
   [DatabaseInstanceName <String>]: Unique name of a database instance in Azure migration hub.
   [DatabaseName <String>]: Unique name of a database in Azure migration hub.
-  [DeploymentId <String>]: Deployment Id.
-  [EmailConfigurationName <String>]: The email configuration name.
   [EventName <String>]: Unique name of an event within a migrate project.
-  [FabricAgentName <String>]: The fabric agent (Dra) name.
   [FabricName <String>]: Fabric name.
   [HostName <String>]: Host ARM name.
   [Id <String>]: Resource identity path
   [IntentObjectName <String>]: Replication protection intent name.
   [JobName <String>]: Job ARM name.
-  [Location <String>]: The name of the Azure region.
   [LogicalNetworkName <String>]: Logical network name.
   [MachineName <String>]: Machine ARM name.
   [MappingName <String>]: Protection Container mapping name.
@@ -57,17 +53,14 @@ INPUTOBJECT <IMigrateIdentity>: Identity Parameter
   [MigrationRecoveryPointName <String>]: The migration recovery point name.
   [NetworkMappingName <String>]: Network mapping name.
   [NetworkName <String>]: Primary network name.
-  [OperationId <String>]: The ID of an ongoing async operation.
   [OperationStatusName <String>]: Operation status ARM name.
   [PolicyName <String>]: Replication policy name.
   [ProtectableItemName <String>]: Protectable item name.
-  [ProtectedItemName <String>]: The protected item name.
   [ProtectionContainerName <String>]: Protection container name.
   [ProviderName <String>]: Recovery services provider name.
   [RecoveryPlanName <String>]: Name of the recovery plan.
   [RecoveryPointName <String>]: The recovery point name.
   [ReplicatedProtectedItemName <String>]: Replication protected item name.
-  [ReplicationExtensionName <String>]: The replication extension name.
   [ResourceGroupName <String>]: The name of the resource group. The name is case insensitive.
   [ResourceName <String>]: The name of the recovery services vault.
   [SiteName <String>]: Site name.
@@ -75,7 +68,6 @@ INPUTOBJECT <IMigrateIdentity>: Identity Parameter
   [StorageClassificationMappingName <String>]: Storage classification mapping name.
   [StorageClassificationName <String>]: Storage classification name.
   [SubscriptionId <String>]: The ID of the target subscription.
-  [VaultName <String>]: The vault name.
   [VaultSettingName <String>]: Vault setting name.
   [VcenterName <String>]: VCenter ARM name.
   [VirtualMachineName <String>]: Virtual Machine name.

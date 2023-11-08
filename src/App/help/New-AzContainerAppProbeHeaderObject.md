@@ -1,7 +1,7 @@
 ---
 external help file:
 Module Name: Az.App
-online version: https://learn.microsoft.com/powershell/module/az.app/new-azcontainerappprobeheaderobject
+online version: https://learn.microsoft.com/powershell/module/Az.App/new-azcontainerappprobeheaderobject
 schema: 2.0.0
 ---
 
@@ -73,11 +73,9 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.App.Models.Api20220301.ContainerAppProbeHttpGetHttpHeadersItem
+### Microsoft.Azure.PowerShell.Cmdlets.App.Models.ContainerAppProbeHttpGetHttpHeadersItem
 
 ## NOTES
-
-ALIASES
 
 ## RELATED LINKS
 

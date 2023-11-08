@@ -1,6 +1,6 @@
 {
   "resourceType": "Clusters/managedPrivateEndpoints",
-  "apiVersion": "2022-12-29",
+  "apiVersion": "2023-08-15",
   "learnMore": {
     "url": "https://learn.microsoft.com/powershell/module/az.kusto"
   },

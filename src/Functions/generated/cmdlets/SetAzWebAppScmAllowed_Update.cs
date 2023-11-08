@@ -17,6 +17,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Functions.Cmdlets
     [global::System.Management.Automation.OutputType(typeof(Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.ICsmPublishingCredentialsPoliciesEntity))]
     [global::Microsoft.Azure.PowerShell.Cmdlets.Functions.Description(@"Updates whether user publishing credentials are allowed on the site or not.")]
     [global::Microsoft.Azure.PowerShell.Cmdlets.Functions.Generated]
+    [global::Microsoft.Azure.PowerShell.Cmdlets.Functions.HttpPath(Path = "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/sites/{name}/basicPublishingCredentialsPolicies/scm", ApiVersion = "2019-08-01")]
     public partial class SetAzWebAppScmAllowed_Update : global::System.Management.Automation.PSCmdlet,
         Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.IEventListener
     {
@@ -56,9 +57,10 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Functions.Cmdlets
         public Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.ICsmPublishingCredentialsPoliciesEntity CsmPublishingAccessPoliciesEntity { get => this._csmPublishingAccessPoliciesEntity; set => this._csmPublishingAccessPoliciesEntity = value; }
 
         /// <summary>
-        /// The credentials, account, tenant, and subscription used for communication with Azure
+        /// The DefaultProfile parameter is not functional. Use the SubscriptionId parameter when available if executing the cmdlet
+        /// against a different subscription
         /// </summary>
-        [global::System.Management.Automation.Parameter(Mandatory = false, HelpMessage = "The credentials, account, tenant, and subscription used for communication with Azure.")]
+        [global::System.Management.Automation.Parameter(Mandatory = false, HelpMessage = "The DefaultProfile parameter is not functional. Use the SubscriptionId parameter when available if executing the cmdlet against a different subscription.")]
         [global::System.Management.Automation.ValidateNotNull]
         [global::System.Management.Automation.Alias("AzureRMContext", "AzureCredential")]
         [global::Microsoft.Azure.PowerShell.Cmdlets.Functions.Category(global::Microsoft.Azure.PowerShell.Cmdlets.Functions.ParameterCategory.Azure)]

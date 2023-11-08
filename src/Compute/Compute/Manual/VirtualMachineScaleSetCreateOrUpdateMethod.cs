@@ -279,19 +279,18 @@ namespace Microsoft.Azure.Commands.Compute.Automation
             public ImageAndOsType ImageAndOsType { get; set; }
 
             public string DefaultLocation => "eastus";
-
+            
             public async Task<ResourceConfig<VirtualMachineScaleSet>> CreateConfigAsync()
             {
-                if (_cmdlet.OrchestrationMode != null)
-                {
-                    return await SimpleParameterSetOrchestrationMode();
-                }
-                else
+                if (_cmdlet.OrchestrationMode == uniformOrchestrationMode)
                 {
                     return await SimpleParameterSetNormalMode();
                 }
+                else
+                {
+                    return await SimpleParameterSetOrchestrationModeFlexible();
+                }
             }
-
             private async Task<ResourceConfig<VirtualMachineScaleSet>> SimpleParameterSetNormalMode()
             {
                 ImageAndOsType = await _client.UpdateImageAndOsTypeAsync(
@@ -467,32 +466,9 @@ namespace Microsoft.Azure.Commands.Compute.Automation
                     );
             }
 
-            private async Task<ResourceConfig<VirtualMachineScaleSet>> SimpleParameterSetOrchestrationMode()
-            {
-                switch (_cmdlet.OrchestrationMode)
-                {
-                    case flexibleOrchestrationMode:
-                        return await SimpleParameterSetOrchestrationModeFlexible();
-                    default:
-                        // When the OrchestrationMode is set but it is Uniform, which represents the current behavior. 
-                        return await SimpleParameterSetNormalMode();
-                }
-            }
-
             private async Task<ResourceConfig<VirtualMachineScaleSet>> SimpleParameterSetOrchestrationModeFlexible()
             {
-                //check omode params and throw error otherwise
-                checkFlexibleOrchestrationModeParams();
                 int platformFaultDomainCountFlexibleDefault = 1;
-                SwitchParameter singlePlacementGroupFlexibleDefault = false;
-
-                // Temporary message until after the Ignite 2023 release that should remove these outdated image aliases. 
-                if ((_cmdlet.ImageName == "CentOS" || _cmdlet.ImageName == "Debian" || _cmdlet.ImageName == "RHEL"
-                     || _cmdlet.ImageName == "UbuntuLTS"))
-                {
-                    string ImageOutdatedMessage = "You are using the image " + _cmdlet.ImageName + ", which is outdated and this image name will be removed in October 2023. Please update to a newer versioned image alias as seen here, [Find and use Azure Marketplace VM images with Azure PowerShell](https://learn.microsoft.com/en-us/azure/virtual-machines/windows/cli-ps-findimage#default-images).";
-                    _cmdlet.WriteInformation(ImageOutdatedMessage, new string[] { "PSHOST" });
-                }
 
                 ImageAndOsType = await _client.UpdateImageAndOsTypeAsync(
                         ImageAndOsType, _cmdlet.ResourceGroupName, _cmdlet.ImageName, Location);
@@ -555,7 +531,8 @@ namespace Microsoft.Azure.Commands.Compute.Automation
                     }
                 }
                 
-                if (_cmdlet.IsParameterBound(c => c.SecurityType))
+                if (_cmdlet.IsParameterBound(c => c.SecurityType)
+                    && _cmdlet.SecurityType != null)
                 {
                     if (_cmdlet.SecurityType?.ToLower() == ConstantValues.TrustedLaunchSecurityType || _cmdlet.SecurityType?.ToLower() == ConstantValues.ConfidentialVMSecurityType)
                     {
@@ -563,9 +540,11 @@ namespace Microsoft.Azure.Commands.Compute.Automation
                         _cmdlet.EnableVtpm = _cmdlet.EnableVtpm ?? true;
                         _cmdlet.EnableSecureBoot = _cmdlet.EnableSecureBoot ?? true;
                     }
-                    
+                    else if (_cmdlet.SecurityType?.ToLower() == ConstantValues.StandardSecurityType)
+                    {
+                        _cmdlet.SecurityType = _cmdlet.SecurityType;
+                    }
                 }
-
                 _cmdlet.NatBackendPort = ImageAndOsType.UpdatePorts(_cmdlet.NatBackendPort);
 
                 var networkSecurityGroup = noZones
@@ -577,6 +556,12 @@ namespace Microsoft.Azure.Commands.Compute.Automation
                 var proximityPlacementGroup = resourceGroup.CreateProximityPlacementGroupSubResourceFunc(_cmdlet.ProximityPlacementGroupId);
 
                 var hostGroup = resourceGroup.CreateDedicatedHostGroupSubResourceFunc(_cmdlet.HostGroupId);
+
+                if (!_cmdlet.IsParameterBound(c => c.SystemAssignedIdentity)
+                    && _cmdlet.SystemAssignedIdentity == true)
+                {
+                    _cmdlet.SystemAssignedIdentity = false;
+                }
 
                 return resourceGroup.CreateVirtualMachineScaleSetConfigOrchestrationModeFlexible(
                     name: _cmdlet.VMScaleSetName,
@@ -592,7 +577,7 @@ namespace Microsoft.Azure.Commands.Compute.Automation
                     zones: _cmdlet.Zone,
                     ultraSSDEnabled: _cmdlet.EnableUltraSSD.IsPresent,
                     identity: _cmdlet.GetVmssIdentityFromArgs(),
-                    singlePlacementGroup: singlePlacementGroupFlexibleDefault,
+                    singlePlacementGroup: _cmdlet.SinglePlacementGroup == true,
                     proximityPlacementGroup: proximityPlacementGroup,
                     hostGroup: hostGroup,
                     priority: _cmdlet.Priority,
@@ -601,25 +586,16 @@ namespace Microsoft.Azure.Commands.Compute.Automation
                     scaleInPolicy: _cmdlet.ScaleInPolicy,
                     doNotRunExtensionsOnOverprovisionedVMs: _cmdlet.SkipExtensionsOnOverprovisionedVMs.IsPresent,
                     encryptionAtHost: _cmdlet.EncryptionAtHost.IsPresent,
-                    platformFaultDomainCount: platformFaultDomainCountFlexibleDefault,
+                    platformFaultDomainCount: _cmdlet.IsParameterBound(c => c.PlatformFaultDomainCount) ? _cmdlet.PlatformFaultDomainCount : platformFaultDomainCountFlexibleDefault,
                     edgeZone: _cmdlet.EdgeZone,
-                    orchestrationMode: _cmdlet.IsParameterBound(c => c.OrchestrationMode) ? _cmdlet.OrchestrationMode : null,
+                    orchestrationMode: flexibleOrchestrationMode,
                     capacityReservationId: _cmdlet.IsParameterBound(c => c.CapacityReservationGroupId) ? _cmdlet.CapacityReservationGroupId : null,
                     securityType: _cmdlet.SecurityType,
                     enableVtpm: _cmdlet.EnableVtpm,
                     enableSecureBoot: _cmdlet.EnableSecureBoot
                     );
             }
-
-            private void checkFlexibleOrchestrationModeParams()
-            {
-                if (_cmdlet.IsParameterBound(c => c.UpgradePolicyMode))
-                {
-                    throw new Exception("UpgradePolicy is not currently supported for a VMSS with OrchestrationMode set to Flexible.");
-                }
-            }
         }
-
         
         async Task SimpleParameterSetExecuteCmdlet(IAsyncCmdlet asyncCmdlet)
         {
@@ -648,7 +624,36 @@ namespace Microsoft.Azure.Commands.Compute.Automation
                 LoadBalancerStrategy.IgnorePreExistingConfigCheck = false;
             }
 
-            //Guest Attestation Identity stuff
+            // TL default for Simple Param Set, no config object
+            if (!this.IsParameterBound(c => c.SecurityType)
+                && !this.IsParameterBound(c => c.ImageName)
+                && !this.IsParameterBound(c => c.ImageReferenceId)
+                && !this.IsParameterBound(c => c.SharedGalleryImageId))
+            {
+                this.SecurityType = ConstantValues.TrustedLaunchSecurityType;
+                if (!this.IsParameterBound(c => c.ImageName) && !this.IsParameterBound(c => c.ImageReferenceId) && !this.IsParameterBound(c => c.SharedGalleryImageId))
+                {
+                    this.ImageName = ConstantValues.TrustedLaunchDefaultImageAlias;
+                }
+                if (!this.IsParameterBound(c => c.EnableSecureBoot))
+                {
+                    this.EnableSecureBoot = true;
+                }
+                if (!this.IsParameterBound(c => c.EnableVtpm))
+                {
+                    this.EnableVtpm = true;
+                }
+            }
+            
+            // API does not currently support Standard securityType value, so need to null it out here. 
+            if (this.IsParameterBound(c => c.SecurityType)
+                && this.SecurityType != null
+                && this.SecurityType.ToString().ToLower() == ConstantValues.StandardSecurityType)
+            {
+                this.SecurityType = null;
+            }
+
+            //TrustedLaunch value defaulting for UEFI values.
             if (this.IsParameterBound(c => c.SecurityType))
             {
                 if (this.SecurityType?.ToLower() == ConstantValues.TrustedLaunchSecurityType || this.SecurityType?.ToLower() == ConstantValues.ConfidentialVMSecurityType)
@@ -658,6 +663,7 @@ namespace Microsoft.Azure.Commands.Compute.Automation
                     this.EnableSecureBoot = this.EnableSecureBoot ?? true;
                 }          
             }
+            
             if (shouldGuestAttestationExtBeInstalledSimple()
                 && !this.IsParameterBound(c => c.SystemAssignedIdentity)
                 && !this.IsParameterBound(c => c.UserAssignedIdentity)
@@ -665,7 +671,7 @@ namespace Microsoft.Azure.Commands.Compute.Automation
             {
                 this.SystemAssignedIdentity = true;
             }
-            
+
             var parameters = new Parameters(this, client);
 
             if (parameters?.ImageAndOsType?.Image?.Version?.ToLower() != "latest")
@@ -704,12 +710,13 @@ namespace Microsoft.Azure.Commands.Compute.Automation
                     range);
                 asyncCmdlet.WriteObject(psObject);
             }
-            
-            if (shouldGuestAttestationExtBeInstalledSimple())
+
+            if (shouldGuestAttestationExtBeInstalledSimple()
+                && this.SystemAssignedIdentity == true)
             {
                 string extensionNameGA = "GuestAttestation";
                 var extensionDirect = new VirtualMachineScaleSetExtension();
-                
+
                 if (result.VirtualMachineProfile?.OsProfile != null)
                 {
                     if (result.VirtualMachineProfile.OsProfile.LinuxConfiguration != null)
@@ -784,9 +791,9 @@ namespace Microsoft.Azure.Commands.Compute.Automation
 
                 }
             }
-            
-        }
 
+        }
+        
         /// <summary>
         /// Heres whats happening here :
         /// If "SystemAssignedIdentity" and "UserAssignedIdentity" are both present we set the type of identity to be SystemAssignedUsrAssigned and set the user 
@@ -814,7 +821,7 @@ namespace Microsoft.Azure.Commands.Compute.Automation
                 }
                 : null;
         }
-        
+
         /// <summary>
         /// Check to see if the Guest Attestation extension should be installed and Identity set to SystemAssigned.
         /// Requirements for this scenario to be true:
