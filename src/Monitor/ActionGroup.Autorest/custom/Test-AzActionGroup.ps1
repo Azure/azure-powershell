@@ -21,7 +21,7 @@ Send test notifications to a set of provided receivers
 Send test notifications to a set of provided receivers
 .Example
 $email1 = New-AzActionGroupEmailReceiverObject -EmailAddress user@example.com -Name user1
-New-AzActionGroupNotification -ActionGroupName actiongroup1 -ResourceGroupName monitor-action -AlertType servicehealth -EmailReceiver $email1
+Test-AzActionGroup -ActionGroupName actiongroup1 -ResourceGroupName monitor-action -AlertType servicehealth -EmailReceiver $email1
 
 .Inputs
 Microsoft.Azure.PowerShell.Cmdlets.Monitor.ActionGroup.Models.IActionGroupIdentity
@@ -109,23 +109,19 @@ WEBHOOKRECEIVER <IWebhookReceiver[]>: The list of webhook receivers that are par
   [UseAadAuth <Boolean?>]: Indicates whether or not use AAD authentication.
   [UseCommonAlertSchema <Boolean?>]: Indicates whether to use common alert schema.
 .Link
-https://learn.microsoft.com/powershell/module/az.monitor/new-azactiongroupnotification
+https://learn.microsoft.com/powershell/module/az.monitor/test-azactiongroup
 #>
-function New-AzActionGroupNotification {
+function Test-AzActionGroup {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.Monitor.ActionGroup.Models.ITestNotificationDetailsResponse])]
 [CmdletBinding(DefaultParameterSetName='CreateExpanded', PositionalBinding=$false, SupportsShouldProcess, ConfirmImpact='Medium')]
 param(
     [Parameter(ParameterSetName='CreateExpanded', Mandatory)]
-    [Parameter(ParameterSetName='CreateViaJsonFilePath', Mandatory)]
-    [Parameter(ParameterSetName='CreateViaJsonString', Mandatory)]
     [Microsoft.Azure.PowerShell.Cmdlets.Monitor.ActionGroup.Category('Path')]
     [System.String]
     # The name of the action group.
     ${ActionGroupName},
 
     [Parameter(ParameterSetName='CreateExpanded', Mandatory)]
-    [Parameter(ParameterSetName='CreateViaJsonFilePath', Mandatory)]
-    [Parameter(ParameterSetName='CreateViaJsonString', Mandatory)]
     [Microsoft.Azure.PowerShell.Cmdlets.Monitor.ActionGroup.Category('Path')]
     [System.String]
     # The name of the resource group.
@@ -133,8 +129,6 @@ param(
     ${ResourceGroupName},
 
     [Parameter(ParameterSetName='CreateExpanded')]
-    [Parameter(ParameterSetName='CreateViaJsonFilePath')]
-    [Parameter(ParameterSetName='CreateViaJsonString')]
     [Microsoft.Azure.PowerShell.Cmdlets.Monitor.ActionGroup.Category('Path')]
     [Microsoft.Azure.PowerShell.Cmdlets.Monitor.ActionGroup.Runtime.DefaultInfo(Script='(Get-AzContext).Subscription.Id')]
     [System.String]
@@ -156,117 +150,12 @@ param(
     # Supported alert type values are: servicehealth, metricstaticthreshold, metricsdynamicthreshold, logalertv2, smartalert, webtestalert, logalertv1numresult, logalertv1metricmeasurement, resourcehealth, activitylog, actualcostbudget, forecastedbudget
     ${AlertType},
 
-    [Parameter(ParameterSetName='CreateExpanded')]
-    [Parameter(ParameterSetName='CreateViaIdentityExpanded')]
-    [AllowEmptyCollection()]
+    [Parameter(ParameterSetName='CreateExpanded', Mandatory)]
+    [Parameter(ParameterSetName='CreateViaIdentityExpanded', Mandatory)]
     [Microsoft.Azure.PowerShell.Cmdlets.Monitor.ActionGroup.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.Monitor.ActionGroup.Models.IArmRoleReceiver[]]
-    # The list of ARM role receivers that are part of this action group.
-    # Roles are Azure RBAC roles and only built-in roles are supported.
-    # To construct, see NOTES section for ARMROLERECEIVER properties and create a hash table.
-    ${ArmRoleReceiver},
-
-    [Parameter(ParameterSetName='CreateExpanded')]
-    [Parameter(ParameterSetName='CreateViaIdentityExpanded')]
-    [AllowEmptyCollection()]
-    [Microsoft.Azure.PowerShell.Cmdlets.Monitor.ActionGroup.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.Monitor.ActionGroup.Models.IAutomationRunbookReceiver[]]
-    # The list of AutomationRunbook receivers that are part of this action group.
-    # To construct, see NOTES section for AUTOMATIONRUNBOOKRECEIVER properties and create a hash table.
-    ${AutomationRunbookReceiver},
-
-    [Parameter(ParameterSetName='CreateExpanded')]
-    [Parameter(ParameterSetName='CreateViaIdentityExpanded')]
-    [AllowEmptyCollection()]
-    [Microsoft.Azure.PowerShell.Cmdlets.Monitor.ActionGroup.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.Monitor.ActionGroup.Models.IAzureAppPushReceiver[]]
-    # The list of AzureAppPush receivers that are part of this action group.
-    # To construct, see NOTES section for AZUREAPPPUSHRECEIVER properties and create a hash table.
-    ${AzureAppPushReceiver},
-
-    [Parameter(ParameterSetName='CreateExpanded')]
-    [Parameter(ParameterSetName='CreateViaIdentityExpanded')]
-    [AllowEmptyCollection()]
-    [Microsoft.Azure.PowerShell.Cmdlets.Monitor.ActionGroup.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.Monitor.ActionGroup.Models.IAzureFunctionReceiver[]]
-    # The list of azure function receivers that are part of this action group.
-    # To construct, see NOTES section for AZUREFUNCTIONRECEIVER properties and create a hash table.
-    ${AzureFunctionReceiver},
-
-    [Parameter(ParameterSetName='CreateExpanded')]
-    [Parameter(ParameterSetName='CreateViaIdentityExpanded')]
-    [AllowEmptyCollection()]
-    [Microsoft.Azure.PowerShell.Cmdlets.Monitor.ActionGroup.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.Monitor.ActionGroup.Models.IEmailReceiver[]]
-    # The list of email receivers that are part of this action group.
-    # To construct, see NOTES section for EMAILRECEIVER properties and create a hash table.
-    ${EmailReceiver},
-
-    [Parameter(ParameterSetName='CreateExpanded')]
-    [Parameter(ParameterSetName='CreateViaIdentityExpanded')]
-    [AllowEmptyCollection()]
-    [Microsoft.Azure.PowerShell.Cmdlets.Monitor.ActionGroup.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.Monitor.ActionGroup.Models.IEventHubReceiver[]]
-    # The list of event hub receivers that are part of this action group.
-    # To construct, see NOTES section for EVENTHUBRECEIVER properties and create a hash table.
-    ${EventHubReceiver},
-
-    [Parameter(ParameterSetName='CreateExpanded')]
-    [Parameter(ParameterSetName='CreateViaIdentityExpanded')]
-    [AllowEmptyCollection()]
-    [Microsoft.Azure.PowerShell.Cmdlets.Monitor.ActionGroup.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.Monitor.ActionGroup.Models.IItsmReceiver[]]
-    # The list of ITSM receivers that are part of this action group.
-    # To construct, see NOTES section for ITSMRECEIVER properties and create a hash table.
-    ${ItsmReceiver},
-
-    [Parameter(ParameterSetName='CreateExpanded')]
-    [Parameter(ParameterSetName='CreateViaIdentityExpanded')]
-    [AllowEmptyCollection()]
-    [Microsoft.Azure.PowerShell.Cmdlets.Monitor.ActionGroup.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.Monitor.ActionGroup.Models.ILogicAppReceiver[]]
-    # The list of logic app receivers that are part of this action group.
-    # To construct, see NOTES section for LOGICAPPRECEIVER properties and create a hash table.
-    ${LogicAppReceiver},
-
-    [Parameter(ParameterSetName='CreateExpanded')]
-    [Parameter(ParameterSetName='CreateViaIdentityExpanded')]
-    [AllowEmptyCollection()]
-    [Microsoft.Azure.PowerShell.Cmdlets.Monitor.ActionGroup.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.Monitor.ActionGroup.Models.ISmsReceiver[]]
-    # The list of SMS receivers that are part of this action group.
-    # To construct, see NOTES section for SMSRECEIVER properties and create a hash table.
-    ${SmsReceiver},
-
-    [Parameter(ParameterSetName='CreateExpanded')]
-    [Parameter(ParameterSetName='CreateViaIdentityExpanded')]
-    [AllowEmptyCollection()]
-    [Microsoft.Azure.PowerShell.Cmdlets.Monitor.ActionGroup.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.Monitor.ActionGroup.Models.IVoiceReceiver[]]
-    # The list of voice receivers that are part of this action group.
-    # To construct, see NOTES section for VOICERECEIVER properties and create a hash table.
-    ${VoiceReceiver},
-
-    [Parameter(ParameterSetName='CreateExpanded')]
-    [Parameter(ParameterSetName='CreateViaIdentityExpanded')]
-    [AllowEmptyCollection()]
-    [Microsoft.Azure.PowerShell.Cmdlets.Monitor.ActionGroup.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.Monitor.ActionGroup.Models.IWebhookReceiver[]]
-    # The list of webhook receivers that are part of this action group.
-    # To construct, see NOTES section for WEBHOOKRECEIVER properties and create a hash table.
-    ${WebhookReceiver},
-
-    [Parameter(ParameterSetName='CreateViaJsonFilePath', Mandatory)]
-    [Microsoft.Azure.PowerShell.Cmdlets.Monitor.ActionGroup.Category('Body')]
-    [System.String]
-    # Path of Json file supplied to the Create operation
-    ${JsonFilePath},
-
-    [Parameter(ParameterSetName='CreateViaJsonString', Mandatory)]
-    [Microsoft.Azure.PowerShell.Cmdlets.Monitor.ActionGroup.Category('Body')]
-    [System.String]
-    # Json string supplied to the Create operation
-    ${JsonString},
+    [Microsoft.Azure.PowerShell.Cmdlets.Monitor.ActionGroup.Models.IActionGroupReceiver[]]
+    # The list of receivers that are part of this action group.
+    ${Receiver},
 
     [Parameter()]
     [Alias('AzureRMContext', 'AzureCredential')]
@@ -329,86 +218,108 @@ param(
     ${ProxyUseDefaultCredentials}
 )
 
-begin {
-    try {
-        $outBuffer = $null
-        if ($PSBoundParameters.TryGetValue('OutBuffer', [ref]$outBuffer)) {
-            $PSBoundParameters['OutBuffer'] = 1
-        }
-        $parameterSet = $PSCmdlet.ParameterSetName
-
-        if ($null -eq [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion) {
-            [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion = $PSVersionTable.PSVersion.ToString()
-        }         
-        $preTelemetryId = [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::TelemetryId
-        if ($preTelemetryId -eq '') {
-            [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::TelemetryId =(New-Guid).ToString()
-            [Microsoft.Azure.PowerShell.Cmdlets.Monitor.ActionGroup.module]::Instance.Telemetry.Invoke('Create', $MyInvocation, $parameterSet, $PSCmdlet)
-        } else {
-            $internalCalledCmdlets = [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::InternalCalledCmdlets
-            if ($internalCalledCmdlets -eq '') {
-                [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::InternalCalledCmdlets = $MyInvocation.MyCommand.Name
-            } else {
-                [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::InternalCalledCmdlets += ',' + $MyInvocation.MyCommand.Name
-            }
-            [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::TelemetryId = 'internal'
-        }
-
-        $mapping = @{
-            CreateExpanded = 'Az.ActionGroup.private\New-AzActionGroupNotification_CreateExpanded';
-            CreateViaIdentityExpanded = 'Az.ActionGroup.private\New-AzActionGroupNotification_CreateViaIdentityExpanded';
-            CreateViaJsonFilePath = 'Az.ActionGroup.private\New-AzActionGroupNotification_CreateViaJsonFilePath';
-            CreateViaJsonString = 'Az.ActionGroup.private\New-AzActionGroupNotification_CreateViaJsonString';
-        }
-        if (('CreateExpanded', 'CreateViaJsonFilePath', 'CreateViaJsonString') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId') ) {
-            $PSBoundParameters['SubscriptionId'] = (Get-AzContext).Subscription.Id
-        }
-        $cmdInfo = Get-Command -Name $mapping[$parameterSet]
-        [Microsoft.Azure.PowerShell.Cmdlets.Monitor.ActionGroup.Runtime.MessageAttributeHelper]::ProcessCustomAttributesAtRuntime($cmdInfo, $MyInvocation, $parameterSet, $PSCmdlet)
-        if ($null -ne $MyInvocation.MyCommand -and [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PromptedPreviewMessageCmdlets -notcontains $MyInvocation.MyCommand.Name -and [Microsoft.Azure.PowerShell.Cmdlets.Monitor.ActionGroup.Runtime.MessageAttributeHelper]::ContainsPreviewAttribute($cmdInfo, $MyInvocation)){
-            [Microsoft.Azure.PowerShell.Cmdlets.Monitor.ActionGroup.Runtime.MessageAttributeHelper]::ProcessPreviewMessageAttributesAtRuntime($cmdInfo, $MyInvocation, $parameterSet, $PSCmdlet)
-            [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PromptedPreviewMessageCmdlets.Enqueue($MyInvocation.MyCommand.Name)
-        }
-        $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Cmdlet)
-        $scriptCmd = {& $wrappedCmd @PSBoundParameters}
-        $steppablePipeline = $scriptCmd.GetSteppablePipeline($MyInvocation.CommandOrigin)
-        $steppablePipeline.Begin($PSCmdlet)
-    } catch {
-        [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::ClearTelemetryContext()
-        throw
-    }
-}
-
 process {
-    try {
-        $steppablePipeline.Process($_)
-    } catch {
-        [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::ClearTelemetryContext()
-        throw
-    }
+  try{
+      $receivers = @{}
 
-    finally {
-        $backupTelemetryId = [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::TelemetryId
-        $backupInternalCalledCmdlets = [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::InternalCalledCmdlets
-        [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::ClearTelemetryContext()
-    }
-
-}
-end {
-    try {
-        $steppablePipeline.End()
-
-        [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::TelemetryId = $backupTelemetryId
-        [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::InternalCalledCmdlets = $backupInternalCalledCmdlets
-        if ($preTelemetryId -eq '') {
-            [Microsoft.Azure.PowerShell.Cmdlets.Monitor.ActionGroup.module]::Instance.Telemetry.Invoke('Send', $MyInvocation, $parameterSet, $PSCmdlet)
-            [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::ClearTelemetryContext()
+      foreach ($subReceiver in $Receiver)
+      {
+        Write-Host $subReceiver.GetType().Name
+        if ($subReceiver.GetType().Name -eq 'ArmRoleReceiver')
+        {
+          if (-not $receivers.contains('ArmRoleReceiver'))
+          {
+            $receivers['ArmRoleReceiver'] = @()
+          }
+          $receivers['ArmRoleReceiver'] = $receivers['ArmRoleReceiver'] + $subReceiver
         }
-        [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::TelemetryId = $preTelemetryId
+        if ($subReceiver.GetType().Name -eq 'AutomationRunbookReceiver')
+        {
+          if (-not $receivers.contains('AutomationRunbookReceiver'))
+          {
+            $receivers['AutomationRunbookReceiver'] = @()
+          }
+          $receivers['AutomationRunbookReceiver'] = $receivers['AutomationRunbookReceiver'] + $subReceiver
+        }
+        if ($subReceiver.GetType().Name -eq 'AzureAppPushReceiver')
+        {
+          if (-not $receivers.contains('AzureAppPushReceiver'))
+          {
+            $receivers['AzureAppPushReceiver'] = @()
+          }
+          $receivers['AzureAppPushReceiver'] = $receivers['AzureAppPushReceiver'] + $subReceiver
+        }
+        if ($subReceiver.GetType().Name -eq 'AzureFunctionReceiver')
+        {
+          if (-not $receivers.contains('AzureFunctionReceiver'))
+          {
+            $receivers['AzureFunctionReceiver'] = @()
+          }
+          $receivers['AzureFunctionReceiver'] = $receivers['AzureFunctionReceiver'] + $subReceiver
+        }
+        if ($subReceiver.GetType().Name -eq 'EmailReceiver')
+        {
+          if (-not $receivers.contains('EmailReceiver'))
+          {
+            $receivers['EmailReceiver'] = @()
+          }
+          $receivers['EmailReceiver'] = $receivers['EmailReceiver'] + $subReceiver
+        }
+        if ($subReceiver.GetType().Name -eq 'EventHubReceiver')
+        {
+          if (-not $receivers.contains('EventHubReceiver'))
+          {
+            $receivers['EventHubReceiver'] = @()
+          }
+          $receivers['EventHubReceiver'] = $receivers['EventHubReceiver'] + $subReceiver
+        }
+        if ($subReceiver.GetType().Name -eq 'ItsmReceiver')
+        {
+          if (-not $receivers.contains('ItsmReceiver'))
+          {
+            $receivers['ItsmReceiver'] = @()
+          }
+          $receivers['ItsmReceiver'] = $receivers['ItsmReceiver'] + $subReceiver
+        }
+        if ($subReceiver.GetType().Name -eq 'LogicAppReceiver')
+        {
+          if (-not $receivers.contains('LogicAppReceiver'))
+          {
+            $receivers['LogicAppReceiver'] = @()
+          }
+          $receivers['LogicAppReceiver'] = $receivers['LogicAppReceiver'] + $subReceiver
+        }
+        if ($subReceiver.GetType().Name -eq 'SmsReceiver')
+        {
+          if (-not $receivers.contains('SmsReceiver'))
+          {
+            $receivers['SmsReceiver'] = @()
+          }
+          $receivers['SmsReceiver'] = $receivers['SmsReceiver'] + $subReceiver
+        }
+        if ($subReceiver.GetType().Name -eq 'VoiceReceiver')
+        {
+          if (-not $receivers.contains('VoiceReceiver'))
+          {
+            $receivers['VoiceReceiver'] = @()
+          }
+          $receivers['VoiceReceiver'] = $receivers['VoiceReceiver'] + $subReceiver
+        }
+        if ($subReceiver.GetType().Name -eq 'WebhookReceiver')
+        {
+          if (-not $receivers.contains('WebhookReceiver'))
+          {
+            $receivers['WebhookReceiver'] = @()
+          }
+          $receivers['WebhookReceiver'] = $receivers['WebhookReceiver'] + $subReceiver
+        }
+      }
 
-    } catch {
-        [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::ClearTelemetryContext()
+      $null = $PSBoundParameters.Remove('Receiver')
+      Az.ActionGroup.internal\Test-AzActionGroup @receivers @PSBoundParameters
+  } catch {
+
         throw
     }
-} 
+}
 }

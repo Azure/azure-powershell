@@ -16,11 +16,13 @@
 
 <#
 .Synopsis
-Get the test notifications by the notification id
+Send test notifications to a set of provided receivers
 .Description
-Get the test notifications by the notification id
+Send test notifications to a set of provided receivers
 .Example
-Get-AzActionGroupTestNotification -ActionGroupName actiongroup1 -ResourceGroupName monitor-action -NotificationId 11000009464546
+$sms1 = New-AzActionGroupSmsReceiverObject -CountryCode 86 -Name user1 -PhoneNumber 'phonenumber'
+$email2 = New-AzActionGroupEmailReceiverObject -EmailAddress user@example.com -Name user2
+Test-AzActionGroup -ActionGroupName actiongroup1 -ResourceGroupName monitor-action -AlertType servicehealth -Receiver $email2,$sms1
 
 .Inputs
 Microsoft.Azure.PowerShell.Cmdlets.Monitor.ActionGroup.Models.IActionGroupIdentity
@@ -31,51 +33,58 @@ COMPLEX PARAMETER PROPERTIES
 
 To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
 
-ACTIONGROUPINPUTOBJECT <IActionGroupIdentity>: Identity Parameter
+INPUTOBJECT <IActionGroupIdentity>: Identity Parameter
   [ActionGroupName <String>]: The name of the action group.
   [Id <String>]: Resource identity path
   [NotificationId <String>]: The notification id
   [ResourceGroupName <String>]: The name of the resource group. The name is case insensitive.
   [SubscriptionId <String>]: The ID of the target subscription.
 .Link
-https://learn.microsoft.com/powershell/module/az.monitor/get-azactiongrouptestnotification
+https://learn.microsoft.com/powershell/module/az.monitor/test-azactiongroup
 #>
-function Get-AzActionGroupTestNotification {
+function Test-AzActionGroup {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.Monitor.ActionGroup.Models.ITestNotificationDetailsResponse])]
-[CmdletBinding(DefaultParameterSetName='Get', PositionalBinding=$false)]
+[CmdletBinding(DefaultParameterSetName='CreateExpanded', PositionalBinding=$false, SupportsShouldProcess, ConfirmImpact='Medium')]
 param(
-    [Parameter(Mandatory)]
-    [Microsoft.Azure.PowerShell.Cmdlets.Monitor.ActionGroup.Category('Path')]
-    [System.String]
-    # The notification id
-    ${NotificationId},
-
-    [Parameter(ParameterSetName='Get', Mandatory)]
+    [Parameter(ParameterSetName='CreateExpanded', Mandatory)]
     [Microsoft.Azure.PowerShell.Cmdlets.Monitor.ActionGroup.Category('Path')]
     [System.String]
     # The name of the action group.
     ${ActionGroupName},
 
-    [Parameter(ParameterSetName='Get', Mandatory)]
+    [Parameter(ParameterSetName='CreateExpanded', Mandatory)]
     [Microsoft.Azure.PowerShell.Cmdlets.Monitor.ActionGroup.Category('Path')]
     [System.String]
     # The name of the resource group.
     # The name is case insensitive.
     ${ResourceGroupName},
 
-    [Parameter(ParameterSetName='Get')]
+    [Parameter(ParameterSetName='CreateExpanded')]
     [Microsoft.Azure.PowerShell.Cmdlets.Monitor.ActionGroup.Category('Path')]
     [Microsoft.Azure.PowerShell.Cmdlets.Monitor.ActionGroup.Runtime.DefaultInfo(Script='(Get-AzContext).Subscription.Id')]
-    [System.String[]]
+    [System.String]
     # The ID of the target subscription.
     ${SubscriptionId},
 
-    [Parameter(ParameterSetName='GetViaIdentityActionGroup', Mandatory, ValueFromPipeline)]
+    [Parameter(ParameterSetName='CreateViaIdentityExpanded', Mandatory, ValueFromPipeline)]
     [Microsoft.Azure.PowerShell.Cmdlets.Monitor.ActionGroup.Category('Path')]
     [Microsoft.Azure.PowerShell.Cmdlets.Monitor.ActionGroup.Models.IActionGroupIdentity]
     # Identity Parameter
-    # To construct, see NOTES section for ACTIONGROUPINPUTOBJECT properties and create a hash table.
-    ${ActionGroupInputObject},
+    # To construct, see NOTES section for INPUTOBJECT properties and create a hash table.
+    ${InputObject},
+
+    [Parameter(Mandatory)]
+    [Microsoft.Azure.PowerShell.Cmdlets.Monitor.ActionGroup.Category('Body')]
+    [System.String]
+    # The value of the supported alert type.
+    # Supported alert type values are: servicehealth, metricstaticthreshold, metricsdynamicthreshold, logalertv2, smartalert, webtestalert, logalertv1numresult, logalertv1metricmeasurement, resourcehealth, activitylog, actualcostbudget, forecastedbudget
+    ${AlertType},
+
+    [Parameter(Mandatory)]
+    [Microsoft.Azure.PowerShell.Cmdlets.Monitor.ActionGroup.Category('Body')]
+    [Microsoft.Azure.PowerShell.Cmdlets.Monitor.ActionGroup.Models.IActionGroupReceiver[]]
+    # The list of receivers that are part of this action group.
+    ${Receiver},
 
     [Parameter()]
     [Alias('AzureRMContext', 'AzureCredential')]
@@ -85,6 +94,12 @@ param(
     # The DefaultProfile parameter is not functional.
     # Use the SubscriptionId parameter when available if executing the cmdlet against a different subscription.
     ${DefaultProfile},
+
+    [Parameter()]
+    [Microsoft.Azure.PowerShell.Cmdlets.Monitor.ActionGroup.Category('Runtime')]
+    [System.Management.Automation.SwitchParameter]
+    # Run the command as a job
+    ${AsJob},
 
     [Parameter(DontShow)]
     [Microsoft.Azure.PowerShell.Cmdlets.Monitor.ActionGroup.Category('Runtime')]
@@ -105,6 +120,12 @@ param(
     [Microsoft.Azure.PowerShell.Cmdlets.Monitor.ActionGroup.Runtime.SendAsyncStep[]]
     # SendAsync Pipeline Steps to be prepended to the front of the pipeline
     ${HttpPipelinePrepend},
+
+    [Parameter()]
+    [Microsoft.Azure.PowerShell.Cmdlets.Monitor.ActionGroup.Category('Runtime')]
+    [System.Management.Automation.SwitchParameter]
+    # Run the command asynchronously
+    ${NoWait},
 
     [Parameter(DontShow)]
     [Microsoft.Azure.PowerShell.Cmdlets.Monitor.ActionGroup.Category('Runtime')]
@@ -152,10 +173,10 @@ begin {
         }
 
         $mapping = @{
-            Get = 'Az.ActionGroup.private\Get-AzActionGroupTestNotification_Get';
-            GetViaIdentityActionGroup = 'Az.ActionGroup.private\Get-AzActionGroupTestNotification_GetViaIdentityActionGroup';
+            CreateExpanded = 'Az.ActionGroup.custom\Test-AzActionGroup';
+            CreateViaIdentityExpanded = 'Az.ActionGroup.custom\Test-AzActionGroup';
         }
-        if (('Get') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId') ) {
+        if (('CreateExpanded') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId') ) {
             $PSBoundParameters['SubscriptionId'] = (Get-AzContext).Subscription.Id
         }
         $cmdInfo = Get-Command -Name $mapping[$parameterSet]

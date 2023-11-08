@@ -20,7 +20,9 @@ Get the test notifications by the notification id
 .Description
 Get the test notifications by the notification id
 .Example
-Get-AzActionGroupTestNotification -ActionGroupName actiongroup1 -ResourceGroupName monitor-action -NotificationId 11000009464546
+{{ Add code here }}
+.Example
+{{ Add code here }}
 
 .Inputs
 Microsoft.Azure.PowerShell.Cmdlets.Monitor.ActionGroup.Models.IActionGroupIdentity
@@ -30,6 +32,13 @@ Microsoft.Azure.PowerShell.Cmdlets.Monitor.ActionGroup.Models.ITestNotificationD
 COMPLEX PARAMETER PROPERTIES
 
 To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
+
+ACTIONGROUPINPUTOBJECT <IActionGroupIdentity>: Identity Parameter
+  [ActionGroupName <String>]: The name of the action group.
+  [Id <String>]: Resource identity path
+  [NotificationId <String>]: The notification id
+  [ResourceGroupName <String>]: The name of the resource group. The name is case insensitive.
+  [SubscriptionId <String>]: The ID of the target subscription.
 
 INPUTOBJECT <IActionGroupIdentity>: Identity Parameter
   [ActionGroupName <String>]: The name of the action group.
@@ -42,14 +51,48 @@ https://learn.microsoft.com/powershell/module/az.monitor/get-azactiongrouptestno
 #>
 function Get-AzActionGroupTestNotification {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.Monitor.ActionGroup.Models.ITestNotificationDetailsResponse])]
-[CmdletBinding(DefaultParameterSetName='GetViaIdentity', PositionalBinding=$false)]
+[CmdletBinding(DefaultParameterSetName='Get', PositionalBinding=$false)]
 param(
-    [Parameter(Mandatory, ValueFromPipeline)]
+    [Parameter(ParameterSetName='Get', Mandatory)]
+    [Microsoft.Azure.PowerShell.Cmdlets.Monitor.ActionGroup.Category('Path')]
+    [System.String]
+    # The name of the action group.
+    ${ActionGroupName},
+
+    [Parameter(ParameterSetName='Get', Mandatory)]
+    [Parameter(ParameterSetName='GetViaIdentityActionGroup', Mandatory)]
+    [Microsoft.Azure.PowerShell.Cmdlets.Monitor.ActionGroup.Category('Path')]
+    [System.String]
+    # The notification id
+    ${NotificationId},
+
+    [Parameter(ParameterSetName='Get', Mandatory)]
+    [Microsoft.Azure.PowerShell.Cmdlets.Monitor.ActionGroup.Category('Path')]
+    [System.String]
+    # The name of the resource group.
+    # The name is case insensitive.
+    ${ResourceGroupName},
+
+    [Parameter(ParameterSetName='Get')]
+    [Microsoft.Azure.PowerShell.Cmdlets.Monitor.ActionGroup.Category('Path')]
+    [Microsoft.Azure.PowerShell.Cmdlets.Monitor.ActionGroup.Runtime.DefaultInfo(Script='(Get-AzContext).Subscription.Id')]
+    [System.String[]]
+    # The ID of the target subscription.
+    ${SubscriptionId},
+
+    [Parameter(ParameterSetName='GetViaIdentity', Mandatory, ValueFromPipeline)]
     [Microsoft.Azure.PowerShell.Cmdlets.Monitor.ActionGroup.Category('Path')]
     [Microsoft.Azure.PowerShell.Cmdlets.Monitor.ActionGroup.Models.IActionGroupIdentity]
     # Identity Parameter
     # To construct, see NOTES section for INPUTOBJECT properties and create a hash table.
     ${InputObject},
+
+    [Parameter(ParameterSetName='GetViaIdentityActionGroup', Mandatory, ValueFromPipeline)]
+    [Microsoft.Azure.PowerShell.Cmdlets.Monitor.ActionGroup.Category('Path')]
+    [Microsoft.Azure.PowerShell.Cmdlets.Monitor.ActionGroup.Models.IActionGroupIdentity]
+    # Identity Parameter
+    # To construct, see NOTES section for ACTIONGROUPINPUTOBJECT properties and create a hash table.
+    ${ActionGroupInputObject},
 
     [Parameter()]
     [Alias('AzureRMContext', 'AzureCredential')]
@@ -109,7 +152,12 @@ begin {
         $parameterSet = $PSCmdlet.ParameterSetName
 
         $mapping = @{
+            Get = 'Az.ActionGroup.private\Get-AzActionGroupTestNotification_Get';
             GetViaIdentity = 'Az.ActionGroup.private\Get-AzActionGroupTestNotification_GetViaIdentity';
+            GetViaIdentityActionGroup = 'Az.ActionGroup.private\Get-AzActionGroupTestNotification_GetViaIdentityActionGroup';
+        }
+        if (('Get') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId') ) {
+            $PSBoundParameters['SubscriptionId'] = (Get-AzContext).Subscription.Id
         }
 
         $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Cmdlet)

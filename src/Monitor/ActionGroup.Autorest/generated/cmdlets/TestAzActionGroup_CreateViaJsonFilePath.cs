@@ -14,13 +14,14 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Monitor.ActionGroup.Cmdlets
     /// <remarks>
     /// [OpenAPI] CreateNotificationsAtActionGroupResourceLevel=>POST:"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Insights/actionGroups/{actionGroupName}/createNotifications"
     /// </remarks>
-    [global::System.Management.Automation.Cmdlet(global::System.Management.Automation.VerbsCommon.New, @"AzActionGroupNotification_CreateViaJsonFilePath", SupportsShouldProcess = true)]
+    [global::Microsoft.Azure.PowerShell.Cmdlets.Monitor.ActionGroup.InternalExport]
+    [global::System.Management.Automation.Cmdlet(global::System.Management.Automation.VerbsDiagnostic.Test, @"AzActionGroup_CreateViaJsonFilePath", SupportsShouldProcess = true)]
     [global::System.Management.Automation.OutputType(typeof(Microsoft.Azure.PowerShell.Cmdlets.Monitor.ActionGroup.Models.ITestNotificationDetailsResponse))]
     [global::Microsoft.Azure.PowerShell.Cmdlets.Monitor.ActionGroup.Description(@"Send test notifications to a set of provided receivers")]
     [global::Microsoft.Azure.PowerShell.Cmdlets.Monitor.ActionGroup.Generated]
     [global::Microsoft.Azure.PowerShell.Cmdlets.Monitor.ActionGroup.HttpPath(Path = "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Insights/actionGroups/{actionGroupName}/createNotifications", ApiVersion = "2023-01-01")]
     [global::Microsoft.Azure.PowerShell.Cmdlets.Monitor.ActionGroup.NotSuggestDefaultParameterSet]
-    public partial class NewAzActionGroupNotification_CreateViaJsonFilePath : global::System.Management.Automation.PSCmdlet,
+    public partial class TestAzActionGroup_CreateViaJsonFilePath : global::System.Management.Automation.PSCmdlet,
         Microsoft.Azure.PowerShell.Cmdlets.Monitor.ActionGroup.Runtime.IEventListener,
         Microsoft.Azure.PowerShell.Cmdlets.Monitor.ActionGroup.Runtime.IContext
     {
@@ -236,10 +237,10 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Monitor.ActionGroup.Cmdlets
         }
 
         /// <summary>Creates a duplicate instance of this cmdlet (via JSON serialization).</summary>
-        /// <returns>a duplicate instance of NewAzActionGroupNotification_CreateViaJsonFilePath</returns>
-        public Microsoft.Azure.PowerShell.Cmdlets.Monitor.ActionGroup.Cmdlets.NewAzActionGroupNotification_CreateViaJsonFilePath Clone()
+        /// <returns>a duplicate instance of TestAzActionGroup_CreateViaJsonFilePath</returns>
+        public Microsoft.Azure.PowerShell.Cmdlets.Monitor.ActionGroup.Cmdlets.TestAzActionGroup_CreateViaJsonFilePath Clone()
         {
-            var clone = new NewAzActionGroupNotification_CreateViaJsonFilePath();
+            var clone = new TestAzActionGroup_CreateViaJsonFilePath();
             clone.__correlationId = this.__correlationId;
             clone.__processRecordId = this.__processRecordId;
             clone.DefaultProfile = this.DefaultProfile;
@@ -382,14 +383,6 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Monitor.ActionGroup.Cmdlets
             }
         }
 
-        /// <summary>
-        /// Initializes a new instance of the <see cref="NewAzActionGroupNotification_CreateViaJsonFilePath" /> cmdlet class.
-        /// </summary>
-        public NewAzActionGroupNotification_CreateViaJsonFilePath()
-        {
-
-        }
-
         /// <summary>Performs execution of the command.</summary>
         protected override void ProcessRecord()
         {
@@ -484,6 +477,14 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Monitor.ActionGroup.Cmdlets
         {
             ((Microsoft.Azure.PowerShell.Cmdlets.Monitor.ActionGroup.Runtime.IEventListener)this).Cancel();
             base.StopProcessing();
+        }
+
+        /// <summary>
+        /// Initializes a new instance of the <see cref="TestAzActionGroup_CreateViaJsonFilePath" /> cmdlet class.
+        /// </summary>
+        public TestAzActionGroup_CreateViaJsonFilePath()
+        {
+
         }
 
         /// <summary>

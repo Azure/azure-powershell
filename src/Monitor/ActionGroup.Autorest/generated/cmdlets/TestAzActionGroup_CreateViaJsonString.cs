@@ -14,12 +14,14 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Monitor.ActionGroup.Cmdlets
     /// <remarks>
     /// [OpenAPI] CreateNotificationsAtActionGroupResourceLevel=>POST:"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Insights/actionGroups/{actionGroupName}/createNotifications"
     /// </remarks>
-    [global::System.Management.Automation.Cmdlet(global::System.Management.Automation.VerbsCommon.New, @"AzActionGroupNotification_CreateExpanded", SupportsShouldProcess = true)]
+    [global::Microsoft.Azure.PowerShell.Cmdlets.Monitor.ActionGroup.InternalExport]
+    [global::System.Management.Automation.Cmdlet(global::System.Management.Automation.VerbsDiagnostic.Test, @"AzActionGroup_CreateViaJsonString", SupportsShouldProcess = true)]
     [global::System.Management.Automation.OutputType(typeof(Microsoft.Azure.PowerShell.Cmdlets.Monitor.ActionGroup.Models.ITestNotificationDetailsResponse))]
     [global::Microsoft.Azure.PowerShell.Cmdlets.Monitor.ActionGroup.Description(@"Send test notifications to a set of provided receivers")]
     [global::Microsoft.Azure.PowerShell.Cmdlets.Monitor.ActionGroup.Generated]
     [global::Microsoft.Azure.PowerShell.Cmdlets.Monitor.ActionGroup.HttpPath(Path = "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Insights/actionGroups/{actionGroupName}/createNotifications", ApiVersion = "2023-01-01")]
-    public partial class NewAzActionGroupNotification_CreateExpanded : global::System.Management.Automation.PSCmdlet,
+    [global::Microsoft.Azure.PowerShell.Cmdlets.Monitor.ActionGroup.NotSuggestDefaultParameterSet]
+    public partial class TestAzActionGroup_CreateViaJsonString : global::System.Management.Automation.PSCmdlet,
         Microsoft.Azure.PowerShell.Cmdlets.Monitor.ActionGroup.Runtime.IEventListener,
         Microsoft.Azure.PowerShell.Cmdlets.Monitor.ActionGroup.Runtime.IContext
     {
@@ -43,9 +45,6 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Monitor.ActionGroup.Cmdlets
         /// <summary>A buffer to record first returned object in response.</summary>
         private object _firstResponse = null;
 
-        /// <summary>The request body which contain contact detail metadata</summary>
-        private Microsoft.Azure.PowerShell.Cmdlets.Monitor.ActionGroup.Models.INotificationRequestBody _notificationRequestBody = new Microsoft.Azure.PowerShell.Cmdlets.Monitor.ActionGroup.Models.NotificationRequestBody();
-
         /// <summary>
         /// A flag to tell whether it is the first returned object in a call. Zero means no response yet. One means 1 returned object.
         /// Two means multiple returned objects in response.
@@ -66,76 +65,10 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Monitor.ActionGroup.Cmdlets
         [global::Microsoft.Azure.PowerShell.Cmdlets.Monitor.ActionGroup.Category(global::Microsoft.Azure.PowerShell.Cmdlets.Monitor.ActionGroup.ParameterCategory.Path)]
         public string ActionGroupName { get => this._actionGroupName; set => this._actionGroupName = value; }
 
-        /// <summary>
-        /// The value of the supported alert type. Supported alert type values are: servicehealth, metricstaticthreshold, metricsdynamicthreshold,
-        /// logalertv2, smartalert, webtestalert, logalertv1numresult, logalertv1metricmeasurement, resourcehealth, activitylog, actualcostbudget,
-        /// forecastedbudget
-        /// </summary>
-        [global::System.Management.Automation.Parameter(Mandatory = true, HelpMessage = "The value of the supported alert type. Supported alert type values are: servicehealth, metricstaticthreshold, metricsdynamicthreshold, logalertv2, smartalert, webtestalert, logalertv1numresult, logalertv1metricmeasurement, resourcehealth, activitylog, actualcostbudget, forecastedbudget")]
-        [global::Microsoft.Azure.PowerShell.Cmdlets.Monitor.ActionGroup.Category(global::Microsoft.Azure.PowerShell.Cmdlets.Monitor.ActionGroup.ParameterCategory.Body)]
-        [Microsoft.Azure.PowerShell.Cmdlets.Monitor.ActionGroup.Runtime.Info(
-        Required = true,
-        ReadOnly = false,
-        Description = @"The value of the supported alert type. Supported alert type values are: servicehealth, metricstaticthreshold, metricsdynamicthreshold, logalertv2, smartalert, webtestalert, logalertv1numresult, logalertv1metricmeasurement, resourcehealth, activitylog, actualcostbudget, forecastedbudget",
-        SerializedName = @"alertType",
-        PossibleTypes = new [] { typeof(string) })]
-        public string AlertType { get => _notificationRequestBody.AlertType ?? null; set => _notificationRequestBody.AlertType = value; }
-
-        /// <summary>
-        /// The list of ARM role receivers that are part of this action group. Roles are Azure RBAC roles and only built-in roles
-        /// are supported.
-        /// </summary>
-        [global::System.Management.Automation.AllowEmptyCollection]
-        [global::System.Management.Automation.Parameter(Mandatory = false, HelpMessage = "The list of ARM role receivers that are part of this action group. Roles are Azure RBAC roles and only built-in roles are supported.")]
-        [global::Microsoft.Azure.PowerShell.Cmdlets.Monitor.ActionGroup.Category(global::Microsoft.Azure.PowerShell.Cmdlets.Monitor.ActionGroup.ParameterCategory.Body)]
-        [Microsoft.Azure.PowerShell.Cmdlets.Monitor.ActionGroup.Runtime.Info(
-        Required = false,
-        ReadOnly = false,
-        Description = @"The list of ARM role receivers that are part of this action group. Roles are Azure RBAC roles and only built-in roles are supported.",
-        SerializedName = @"armRoleReceivers",
-        PossibleTypes = new [] { typeof(Microsoft.Azure.PowerShell.Cmdlets.Monitor.ActionGroup.Models.IArmRoleReceiver) })]
-        public Microsoft.Azure.PowerShell.Cmdlets.Monitor.ActionGroup.Models.IArmRoleReceiver[] ArmRoleReceiver { get => _notificationRequestBody.ArmRoleReceiver?.ToArray() ?? null /* fixedArrayOf */; set => _notificationRequestBody.ArmRoleReceiver = (value != null ? new System.Collections.Generic.List<Microsoft.Azure.PowerShell.Cmdlets.Monitor.ActionGroup.Models.IArmRoleReceiver>(value) : null); }
-
         /// <summary>when specified, runs this cmdlet as a PowerShell job</summary>
         [global::System.Management.Automation.Parameter(Mandatory = false, HelpMessage = "Run the command as a job")]
         [global::Microsoft.Azure.PowerShell.Cmdlets.Monitor.ActionGroup.Category(global::Microsoft.Azure.PowerShell.Cmdlets.Monitor.ActionGroup.ParameterCategory.Runtime)]
         public global::System.Management.Automation.SwitchParameter AsJob { get; set; }
-
-        /// <summary>The list of AutomationRunbook receivers that are part of this action group.</summary>
-        [global::System.Management.Automation.AllowEmptyCollection]
-        [global::System.Management.Automation.Parameter(Mandatory = false, HelpMessage = "The list of AutomationRunbook receivers that are part of this action group.")]
-        [global::Microsoft.Azure.PowerShell.Cmdlets.Monitor.ActionGroup.Category(global::Microsoft.Azure.PowerShell.Cmdlets.Monitor.ActionGroup.ParameterCategory.Body)]
-        [Microsoft.Azure.PowerShell.Cmdlets.Monitor.ActionGroup.Runtime.Info(
-        Required = false,
-        ReadOnly = false,
-        Description = @"The list of AutomationRunbook receivers that are part of this action group.",
-        SerializedName = @"automationRunbookReceivers",
-        PossibleTypes = new [] { typeof(Microsoft.Azure.PowerShell.Cmdlets.Monitor.ActionGroup.Models.IAutomationRunbookReceiver) })]
-        public Microsoft.Azure.PowerShell.Cmdlets.Monitor.ActionGroup.Models.IAutomationRunbookReceiver[] AutomationRunbookReceiver { get => _notificationRequestBody.AutomationRunbookReceiver?.ToArray() ?? null /* fixedArrayOf */; set => _notificationRequestBody.AutomationRunbookReceiver = (value != null ? new System.Collections.Generic.List<Microsoft.Azure.PowerShell.Cmdlets.Monitor.ActionGroup.Models.IAutomationRunbookReceiver>(value) : null); }
-
-        /// <summary>The list of AzureAppPush receivers that are part of this action group.</summary>
-        [global::System.Management.Automation.AllowEmptyCollection]
-        [global::System.Management.Automation.Parameter(Mandatory = false, HelpMessage = "The list of AzureAppPush receivers that are part of this action group.")]
-        [global::Microsoft.Azure.PowerShell.Cmdlets.Monitor.ActionGroup.Category(global::Microsoft.Azure.PowerShell.Cmdlets.Monitor.ActionGroup.ParameterCategory.Body)]
-        [Microsoft.Azure.PowerShell.Cmdlets.Monitor.ActionGroup.Runtime.Info(
-        Required = false,
-        ReadOnly = false,
-        Description = @"The list of AzureAppPush receivers that are part of this action group.",
-        SerializedName = @"azureAppPushReceivers",
-        PossibleTypes = new [] { typeof(Microsoft.Azure.PowerShell.Cmdlets.Monitor.ActionGroup.Models.IAzureAppPushReceiver) })]
-        public Microsoft.Azure.PowerShell.Cmdlets.Monitor.ActionGroup.Models.IAzureAppPushReceiver[] AzureAppPushReceiver { get => _notificationRequestBody.AzureAppPushReceiver?.ToArray() ?? null /* fixedArrayOf */; set => _notificationRequestBody.AzureAppPushReceiver = (value != null ? new System.Collections.Generic.List<Microsoft.Azure.PowerShell.Cmdlets.Monitor.ActionGroup.Models.IAzureAppPushReceiver>(value) : null); }
-
-        /// <summary>The list of azure function receivers that are part of this action group.</summary>
-        [global::System.Management.Automation.AllowEmptyCollection]
-        [global::System.Management.Automation.Parameter(Mandatory = false, HelpMessage = "The list of azure function receivers that are part of this action group.")]
-        [global::Microsoft.Azure.PowerShell.Cmdlets.Monitor.ActionGroup.Category(global::Microsoft.Azure.PowerShell.Cmdlets.Monitor.ActionGroup.ParameterCategory.Body)]
-        [Microsoft.Azure.PowerShell.Cmdlets.Monitor.ActionGroup.Runtime.Info(
-        Required = false,
-        ReadOnly = false,
-        Description = @"The list of azure function receivers that are part of this action group.",
-        SerializedName = @"azureFunctionReceivers",
-        PossibleTypes = new [] { typeof(Microsoft.Azure.PowerShell.Cmdlets.Monitor.ActionGroup.Models.IAzureFunctionReceiver) })]
-        public Microsoft.Azure.PowerShell.Cmdlets.Monitor.ActionGroup.Models.IAzureFunctionReceiver[] AzureFunctionReceiver { get => _notificationRequestBody.AzureFunctionReceiver?.ToArray() ?? null /* fixedArrayOf */; set => _notificationRequestBody.AzureFunctionReceiver = (value != null ? new System.Collections.Generic.List<Microsoft.Azure.PowerShell.Cmdlets.Monitor.ActionGroup.Models.IAzureFunctionReceiver>(value) : null); }
 
         /// <summary>Wait for .NET debugger to attach</summary>
         [global::System.Management.Automation.Parameter(Mandatory = false, DontShow = true, HelpMessage = "Wait for .NET debugger to attach")]
@@ -158,30 +91,6 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Monitor.ActionGroup.Cmdlets
         [global::Microsoft.Azure.PowerShell.Cmdlets.Monitor.ActionGroup.Category(global::Microsoft.Azure.PowerShell.Cmdlets.Monitor.ActionGroup.ParameterCategory.Azure)]
         public global::System.Management.Automation.PSObject DefaultProfile { get; set; }
 
-        /// <summary>The list of email receivers that are part of this action group.</summary>
-        [global::System.Management.Automation.AllowEmptyCollection]
-        [global::System.Management.Automation.Parameter(Mandatory = false, HelpMessage = "The list of email receivers that are part of this action group.")]
-        [global::Microsoft.Azure.PowerShell.Cmdlets.Monitor.ActionGroup.Category(global::Microsoft.Azure.PowerShell.Cmdlets.Monitor.ActionGroup.ParameterCategory.Body)]
-        [Microsoft.Azure.PowerShell.Cmdlets.Monitor.ActionGroup.Runtime.Info(
-        Required = false,
-        ReadOnly = false,
-        Description = @"The list of email receivers that are part of this action group.",
-        SerializedName = @"emailReceivers",
-        PossibleTypes = new [] { typeof(Microsoft.Azure.PowerShell.Cmdlets.Monitor.ActionGroup.Models.IEmailReceiver) })]
-        public Microsoft.Azure.PowerShell.Cmdlets.Monitor.ActionGroup.Models.IEmailReceiver[] EmailReceiver { get => _notificationRequestBody.EmailReceiver?.ToArray() ?? null /* fixedArrayOf */; set => _notificationRequestBody.EmailReceiver = (value != null ? new System.Collections.Generic.List<Microsoft.Azure.PowerShell.Cmdlets.Monitor.ActionGroup.Models.IEmailReceiver>(value) : null); }
-
-        /// <summary>The list of event hub receivers that are part of this action group.</summary>
-        [global::System.Management.Automation.AllowEmptyCollection]
-        [global::System.Management.Automation.Parameter(Mandatory = false, HelpMessage = "The list of event hub receivers that are part of this action group.")]
-        [global::Microsoft.Azure.PowerShell.Cmdlets.Monitor.ActionGroup.Category(global::Microsoft.Azure.PowerShell.Cmdlets.Monitor.ActionGroup.ParameterCategory.Body)]
-        [Microsoft.Azure.PowerShell.Cmdlets.Monitor.ActionGroup.Runtime.Info(
-        Required = false,
-        ReadOnly = false,
-        Description = @"The list of event hub receivers that are part of this action group.",
-        SerializedName = @"eventHubReceivers",
-        PossibleTypes = new [] { typeof(Microsoft.Azure.PowerShell.Cmdlets.Monitor.ActionGroup.Models.IEventHubReceiver) })]
-        public Microsoft.Azure.PowerShell.Cmdlets.Monitor.ActionGroup.Models.IEventHubReceiver[] EventHubReceiver { get => _notificationRequestBody.EventHubReceiver?.ToArray() ?? null /* fixedArrayOf */; set => _notificationRequestBody.EventHubReceiver = (value != null ? new System.Collections.Generic.List<Microsoft.Azure.PowerShell.Cmdlets.Monitor.ActionGroup.Models.IEventHubReceiver>(value) : null); }
-
         /// <summary>Accessor for extensibleParameters.</summary>
         public global::System.Collections.Generic.IDictionary<global::System.String,global::System.Object> ExtensibleParameters { get => _extensibleParameters ; }
 
@@ -200,29 +109,18 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Monitor.ActionGroup.Cmdlets
         /// <summary>Accessor for our copy of the InvocationInfo.</summary>
         public global::System.Management.Automation.InvocationInfo InvocationInformation { get => __invocationInfo = __invocationInfo ?? this.MyInvocation ; set { __invocationInfo = value; } }
 
-        /// <summary>The list of ITSM receivers that are part of this action group.</summary>
-        [global::System.Management.Automation.AllowEmptyCollection]
-        [global::System.Management.Automation.Parameter(Mandatory = false, HelpMessage = "The list of ITSM receivers that are part of this action group.")]
-        [global::Microsoft.Azure.PowerShell.Cmdlets.Monitor.ActionGroup.Category(global::Microsoft.Azure.PowerShell.Cmdlets.Monitor.ActionGroup.ParameterCategory.Body)]
-        [Microsoft.Azure.PowerShell.Cmdlets.Monitor.ActionGroup.Runtime.Info(
-        Required = false,
-        ReadOnly = false,
-        Description = @"The list of ITSM receivers that are part of this action group.",
-        SerializedName = @"itsmReceivers",
-        PossibleTypes = new [] { typeof(Microsoft.Azure.PowerShell.Cmdlets.Monitor.ActionGroup.Models.IItsmReceiver) })]
-        public Microsoft.Azure.PowerShell.Cmdlets.Monitor.ActionGroup.Models.IItsmReceiver[] ItsmReceiver { get => _notificationRequestBody.ItsmReceiver?.ToArray() ?? null /* fixedArrayOf */; set => _notificationRequestBody.ItsmReceiver = (value != null ? new System.Collections.Generic.List<Microsoft.Azure.PowerShell.Cmdlets.Monitor.ActionGroup.Models.IItsmReceiver>(value) : null); }
+        /// <summary>Backing field for <see cref="JsonString" /> property.</summary>
+        private string _jsonString;
 
-        /// <summary>The list of logic app receivers that are part of this action group.</summary>
-        [global::System.Management.Automation.AllowEmptyCollection]
-        [global::System.Management.Automation.Parameter(Mandatory = false, HelpMessage = "The list of logic app receivers that are part of this action group.")]
-        [global::Microsoft.Azure.PowerShell.Cmdlets.Monitor.ActionGroup.Category(global::Microsoft.Azure.PowerShell.Cmdlets.Monitor.ActionGroup.ParameterCategory.Body)]
+        /// <summary>Json string supplied to the Create operation</summary>
+        [global::System.Management.Automation.Parameter(Mandatory = true, HelpMessage = "Json string supplied to the Create operation")]
         [Microsoft.Azure.PowerShell.Cmdlets.Monitor.ActionGroup.Runtime.Info(
-        Required = false,
+        Required = true,
         ReadOnly = false,
-        Description = @"The list of logic app receivers that are part of this action group.",
-        SerializedName = @"logicAppReceivers",
-        PossibleTypes = new [] { typeof(Microsoft.Azure.PowerShell.Cmdlets.Monitor.ActionGroup.Models.ILogicAppReceiver) })]
-        public Microsoft.Azure.PowerShell.Cmdlets.Monitor.ActionGroup.Models.ILogicAppReceiver[] LogicAppReceiver { get => _notificationRequestBody.LogicAppReceiver?.ToArray() ?? null /* fixedArrayOf */; set => _notificationRequestBody.LogicAppReceiver = (value != null ? new System.Collections.Generic.List<Microsoft.Azure.PowerShell.Cmdlets.Monitor.ActionGroup.Models.ILogicAppReceiver>(value) : null); }
+        Description = @"Json string supplied to the Create operation",
+        SerializedName = @"JsonString",
+        PossibleTypes = new [] { typeof(string) })]
+        public string JsonString { get => this._jsonString; set => this._jsonString = value; }
 
         /// <summary>
         /// <see cref="Microsoft.Azure.PowerShell.Cmdlets.Monitor.ActionGroup.Runtime.IEventListener" /> cancellation delegate. Stops the cmdlet when called.
@@ -275,18 +173,6 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Monitor.ActionGroup.Cmdlets
         [global::Microsoft.Azure.PowerShell.Cmdlets.Monitor.ActionGroup.Category(global::Microsoft.Azure.PowerShell.Cmdlets.Monitor.ActionGroup.ParameterCategory.Path)]
         public string ResourceGroupName { get => this._resourceGroupName; set => this._resourceGroupName = value; }
 
-        /// <summary>The list of SMS receivers that are part of this action group.</summary>
-        [global::System.Management.Automation.AllowEmptyCollection]
-        [global::System.Management.Automation.Parameter(Mandatory = false, HelpMessage = "The list of SMS receivers that are part of this action group.")]
-        [global::Microsoft.Azure.PowerShell.Cmdlets.Monitor.ActionGroup.Category(global::Microsoft.Azure.PowerShell.Cmdlets.Monitor.ActionGroup.ParameterCategory.Body)]
-        [Microsoft.Azure.PowerShell.Cmdlets.Monitor.ActionGroup.Runtime.Info(
-        Required = false,
-        ReadOnly = false,
-        Description = @"The list of SMS receivers that are part of this action group.",
-        SerializedName = @"smsReceivers",
-        PossibleTypes = new [] { typeof(Microsoft.Azure.PowerShell.Cmdlets.Monitor.ActionGroup.Models.ISmsReceiver) })]
-        public Microsoft.Azure.PowerShell.Cmdlets.Monitor.ActionGroup.Models.ISmsReceiver[] SmsReceiver { get => _notificationRequestBody.SmsReceiver?.ToArray() ?? null /* fixedArrayOf */; set => _notificationRequestBody.SmsReceiver = (value != null ? new System.Collections.Generic.List<Microsoft.Azure.PowerShell.Cmdlets.Monitor.ActionGroup.Models.ISmsReceiver>(value) : null); }
-
         /// <summary>Backing field for <see cref="SubscriptionId" /> property.</summary>
         private string _subscriptionId;
 
@@ -305,30 +191,6 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Monitor.ActionGroup.Cmdlets
         SetCondition = @"")]
         [global::Microsoft.Azure.PowerShell.Cmdlets.Monitor.ActionGroup.Category(global::Microsoft.Azure.PowerShell.Cmdlets.Monitor.ActionGroup.ParameterCategory.Path)]
         public string SubscriptionId { get => this._subscriptionId; set => this._subscriptionId = value; }
-
-        /// <summary>The list of voice receivers that are part of this action group.</summary>
-        [global::System.Management.Automation.AllowEmptyCollection]
-        [global::System.Management.Automation.Parameter(Mandatory = false, HelpMessage = "The list of voice receivers that are part of this action group.")]
-        [global::Microsoft.Azure.PowerShell.Cmdlets.Monitor.ActionGroup.Category(global::Microsoft.Azure.PowerShell.Cmdlets.Monitor.ActionGroup.ParameterCategory.Body)]
-        [Microsoft.Azure.PowerShell.Cmdlets.Monitor.ActionGroup.Runtime.Info(
-        Required = false,
-        ReadOnly = false,
-        Description = @"The list of voice receivers that are part of this action group.",
-        SerializedName = @"voiceReceivers",
-        PossibleTypes = new [] { typeof(Microsoft.Azure.PowerShell.Cmdlets.Monitor.ActionGroup.Models.IVoiceReceiver) })]
-        public Microsoft.Azure.PowerShell.Cmdlets.Monitor.ActionGroup.Models.IVoiceReceiver[] VoiceReceiver { get => _notificationRequestBody.VoiceReceiver?.ToArray() ?? null /* fixedArrayOf */; set => _notificationRequestBody.VoiceReceiver = (value != null ? new System.Collections.Generic.List<Microsoft.Azure.PowerShell.Cmdlets.Monitor.ActionGroup.Models.IVoiceReceiver>(value) : null); }
-
-        /// <summary>The list of webhook receivers that are part of this action group.</summary>
-        [global::System.Management.Automation.AllowEmptyCollection]
-        [global::System.Management.Automation.Parameter(Mandatory = false, HelpMessage = "The list of webhook receivers that are part of this action group.")]
-        [global::Microsoft.Azure.PowerShell.Cmdlets.Monitor.ActionGroup.Category(global::Microsoft.Azure.PowerShell.Cmdlets.Monitor.ActionGroup.ParameterCategory.Body)]
-        [Microsoft.Azure.PowerShell.Cmdlets.Monitor.ActionGroup.Runtime.Info(
-        Required = false,
-        ReadOnly = false,
-        Description = @"The list of webhook receivers that are part of this action group.",
-        SerializedName = @"webhookReceivers",
-        PossibleTypes = new [] { typeof(Microsoft.Azure.PowerShell.Cmdlets.Monitor.ActionGroup.Models.IWebhookReceiver) })]
-        public Microsoft.Azure.PowerShell.Cmdlets.Monitor.ActionGroup.Models.IWebhookReceiver[] WebhookReceiver { get => _notificationRequestBody.WebhookReceiver?.ToArray() ?? null /* fixedArrayOf */; set => _notificationRequestBody.WebhookReceiver = (value != null ? new System.Collections.Generic.List<Microsoft.Azure.PowerShell.Cmdlets.Monitor.ActionGroup.Models.IWebhookReceiver>(value) : null); }
 
         /// <summary>
         /// <c>overrideOnDefault</c> will be called before the regular onDefault has been processed, allowing customization of what
@@ -373,10 +235,10 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Monitor.ActionGroup.Cmdlets
         }
 
         /// <summary>Creates a duplicate instance of this cmdlet (via JSON serialization).</summary>
-        /// <returns>a duplicate instance of NewAzActionGroupNotification_CreateExpanded</returns>
-        public Microsoft.Azure.PowerShell.Cmdlets.Monitor.ActionGroup.Cmdlets.NewAzActionGroupNotification_CreateExpanded Clone()
+        /// <returns>a duplicate instance of TestAzActionGroup_CreateViaJsonString</returns>
+        public Microsoft.Azure.PowerShell.Cmdlets.Monitor.ActionGroup.Cmdlets.TestAzActionGroup_CreateViaJsonString Clone()
         {
-            var clone = new NewAzActionGroupNotification_CreateExpanded();
+            var clone = new TestAzActionGroup_CreateViaJsonString();
             clone.__correlationId = this.__correlationId;
             clone.__processRecordId = this.__processRecordId;
             clone.DefaultProfile = this.DefaultProfile;
@@ -389,10 +251,10 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Monitor.ActionGroup.Cmdlets
             clone.ProxyUseDefaultCredentials = this.ProxyUseDefaultCredentials;
             clone.HttpPipelinePrepend = this.HttpPipelinePrepend;
             clone.HttpPipelineAppend = this.HttpPipelineAppend;
-            clone._notificationRequestBody = this._notificationRequestBody;
             clone.SubscriptionId = this.SubscriptionId;
             clone.ResourceGroupName = this.ResourceGroupName;
             clone.ActionGroupName = this.ActionGroupName;
+            clone.JsonString = this.JsonString;
             return clone;
         }
 
@@ -519,14 +381,6 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Monitor.ActionGroup.Cmdlets
             }
         }
 
-        /// <summary>
-        /// Initializes a new instance of the <see cref="NewAzActionGroupNotification_CreateExpanded" /> cmdlet class.
-        /// </summary>
-        public NewAzActionGroupNotification_CreateExpanded()
-        {
-
-        }
-
         /// <summary>Performs execution of the command.</summary>
         protected override void ProcessRecord()
         {
@@ -599,7 +453,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Monitor.ActionGroup.Cmdlets
                 try
                 {
                     await ((Microsoft.Azure.PowerShell.Cmdlets.Monitor.ActionGroup.Runtime.IEventListener)this).Signal(Microsoft.Azure.PowerShell.Cmdlets.Monitor.ActionGroup.Runtime.Events.CmdletBeforeAPICall); if( ((Microsoft.Azure.PowerShell.Cmdlets.Monitor.ActionGroup.Runtime.IEventListener)this).Token.IsCancellationRequested ) { return; }
-                    await this.Client.ActionGroupsCreateNotificationsAtActionGroupResourceLevel(SubscriptionId, ResourceGroupName, ActionGroupName, _notificationRequestBody, onOk, onDefault, this, Pipeline);
+                    await this.Client.ActionGroupsCreateNotificationsAtActionGroupResourceLevelViaJsonString(SubscriptionId, ResourceGroupName, ActionGroupName, _jsonString, onOk, onDefault, this, Pipeline);
                     await ((Microsoft.Azure.PowerShell.Cmdlets.Monitor.ActionGroup.Runtime.IEventListener)this).Signal(Microsoft.Azure.PowerShell.Cmdlets.Monitor.ActionGroup.Runtime.Events.CmdletAfterAPICall); if( ((Microsoft.Azure.PowerShell.Cmdlets.Monitor.ActionGroup.Runtime.IEventListener)this).Token.IsCancellationRequested ) { return; }
                 }
                 catch (Microsoft.Azure.PowerShell.Cmdlets.Monitor.ActionGroup.Runtime.UndeclaredResponseException urexception)
@@ -621,6 +475,14 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Monitor.ActionGroup.Cmdlets
         {
             ((Microsoft.Azure.PowerShell.Cmdlets.Monitor.ActionGroup.Runtime.IEventListener)this).Cancel();
             base.StopProcessing();
+        }
+
+        /// <summary>
+        /// Initializes a new instance of the <see cref="TestAzActionGroup_CreateViaJsonString" /> cmdlet class.
+        /// </summary>
+        public TestAzActionGroup_CreateViaJsonString()
+        {
+
         }
 
         /// <summary>
