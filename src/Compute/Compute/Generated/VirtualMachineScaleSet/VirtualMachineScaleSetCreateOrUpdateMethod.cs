@@ -431,6 +431,7 @@ namespace Microsoft.Azure.Commands.Compute.Automation
         {
             if (this.DisableIntegrityMonitoring != true &&
                     vmssParameters != null &&
+                    vmssParameters.OrchestrationMode != "Flexible" &&
                     vmssParameters.VirtualMachineProfile != null &&
                     vmssParameters.VirtualMachineProfile.SecurityProfile != null &&
                     vmssParameters.VirtualMachineProfile.SecurityProfile.SecurityType?.ToLower() == ConstantValues.TrustedLaunchSecurityType &&

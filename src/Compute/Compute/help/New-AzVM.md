@@ -26,7 +26,7 @@ New-AzVM [[-ResourceGroupName] <String>] [[-Location] <String>] [-EdgeZone <Stri
  [-Priority <String>] [-EvictionPolicy <String>] [-MaxPrice <Double>] [-EncryptionAtHost]
  [-HostGroupId <String>] [-SshKeyName <String>] [-GenerateSshKey] [-CapacityReservationGroupId <String>]
  [-UserData <String>] [-ImageReferenceId <String>] [-PlatformFaultDomain <Int32>] [-HibernationEnabled]
- [-vCPUCountAvailable <Int32>] [-vCPUCountPerCore <Int32>] [-DiskControllerType <String>]
+ [-vCPUCountAvailable <Int32>] [-vCPUCountPerCore <Int32>] [-DiskControllerType <String>] [-DisableIntegrityMonitoring]
  [-SharedGalleryImageId <String>] [-SecurityType <String>] [-EnableVtpm <Boolean>]
  [-EnableSecureBoot <Boolean>] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
  [<CommonParameters>]
@@ -306,7 +306,7 @@ Set-AzVMSourceImage -VM $vmConfig -PublisherName $PublisherName -Offer $Offer -S
 Add-AzVMNetworkInterface -VM $vmConfig -Id $nic.Id;
 $vmConfig = Set-AzVMSecurityProfile -VM $vmConfig -SecurityType $securityType;
 $vmConfig = Set-AzVMUefi -VM $vmConfig -EnableVtpm $vtpm -EnableSecureBoot $secureboot;
-New-AzVM -ResourceGroupName $RGName -Location $loc -VM $vmConfig -DisableIntegrityMonitoring:$false;
+New-AzVM -ResourceGroupName $RGName -Location $loc -VM $vmConfig;
 # Verify values
 $vm = Get-AzVM -ResourceGroupName $rgname -Name $vmName;
 $vmExt = Get-AzVMExtension -ResourceGroupName $rgname -VMName $vmName -Name $extDefaultName;
@@ -548,7 +548,7 @@ This flag disables the default behavior to install the Guest Attestation extensi
 
 ```yaml
 Type: System.Management.Automation.SwitchParameter
-Parameter Sets: DefaultParameterSet
+Parameter Sets: DefaultParameterSet, SimpleParameterSet
 Aliases:
 
 Required: False

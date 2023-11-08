@@ -412,6 +412,11 @@ namespace Microsoft.Azure.Commands.Compute
            Mandatory = false,
            ValueFromPipelineByPropertyName = true,
            HelpMessage = "This flag disables the default behavior to install the Guest Attestation extension to the virtual machine if: 1) SecurityType is TrustedLaunch, 2) SecureBootEnabled on the SecurityProfile is true, 3) VTpmEnabled on the SecurityProfile is true.")]
+        [Parameter(
+           ParameterSetName = SimpleParameterSet,
+           Mandatory = false,
+           ValueFromPipelineByPropertyName = true,
+           HelpMessage = "This flag disables the default behavior to install the Guest Attestation extension to the virtual machine if: 1) SecurityType is TrustedLaunch, 2) SecureBootEnabled on the SecurityProfile is true, 3) VTpmEnabled on the SecurityProfile is true.")]
         public SwitchParameter DisableIntegrityMonitoring { get; set; }
 
         [Parameter(
@@ -785,11 +790,11 @@ namespace Microsoft.Azure.Commands.Compute
             // imagerefid is specifically shared gallery id, so don't want it.
             else
             {
-                this.SecurityType = ConstantValues.TrustedLaunchSecurityType;
                 if (!this.IsParameterBound(c => c.Image) 
                     && !this.IsParameterBound(c => c.ImageReferenceId) 
                     && !this.IsParameterBound(c => c.SharedGalleryImageId))
                 {
+                    this.SecurityType = ConstantValues.TrustedLaunchSecurityType;
                     this.Image = ConstantValues.TrustedLaunchDefaultImageAlias;
                     if (!this.IsParameterBound(c => c.EnableSecureBoot))
                     {
