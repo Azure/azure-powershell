@@ -50,7 +50,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Cmdlets
         [global::Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Category(global::Microsoft.Azure.PowerShell.Cmdlets.KeyVault.ParameterCategory.Path)]
         public string[] Region { get => this._region; set => this._region = value; }
 
-        [global::System.Management.Automation.Parameter(Mandatory = false, HelpMessage = "List of all regions associated with the managed hsm pool.")]
+        [global::System.Management.Automation.Parameter(Mandatory = false, HelpMessage = "Specify if add or remove regions to existing regions")]
         public SwitchParameter RemoveRegion;
 
         /// <summary>Performs execution of the command.</summary>

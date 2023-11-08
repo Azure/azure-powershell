@@ -128,7 +128,6 @@ function Remove-AzKeyVaultManagedHsmRegion {
             $Parameter = Az.KeyVault.internal\Get-AzKeyVaultManagedHsm @PSBoundParameters
             $Parameter = Az.KeyVault.private\Get-ParameterForRegion -Parameter $Parameter -Region $Region -RemoveRegion
             $null = $PSBoundParameters.Add('Parameter', $Parameter)
-            Write-Host $Parameter          
             $null = Az.KeyVault.internal\Update-AzKeyVaultManagedHsm @PSBoundParameters
             if($PassThru.IsPresent){
                 $null = $PSBoundParameters.Remove('Parameter')
