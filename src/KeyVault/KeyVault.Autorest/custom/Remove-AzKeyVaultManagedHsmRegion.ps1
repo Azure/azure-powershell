@@ -126,19 +126,13 @@ function Remove-AzKeyVaultManagedHsmRegion {
             $null = $PSBoundParameters.Add('Name', $HsmName)
             $null = $PSBoundParameters.Remove('Region')
             $Parameter = Az.KeyVault.internal\Get-AzKeyVaultManagedHsm @PSBoundParameters
-            $remainingRegions = @()
-            for ($i = 0; $i -lt $Parameter.Region.Count; $i++) {
-                if($Region -notcontains $Parameter.Region[$i].Name){
-                    $remainingRegions += $Parameter.Region[$i]
-                }
-            }
-            $Parameter.Region = $remainingRegions
-            $null = $PSBoundParameters.Add('Parameter', $Parameter)            
+            $Parameter = Az.KeyVault.private\Get-ParameterForRegion -Parameter $Parameter -Region $Region -RemoveRegion
+            $null = $PSBoundParameters.Add('Parameter', $Parameter)
             $null = Az.KeyVault.internal\Update-AzKeyVaultManagedHsm @PSBoundParameters
-            $null = $PSBoundParameters.Remove('Parameter')
-            $null = $PSBoundParameters.Remove('Name')
-            $null = $PSBoundParameters.Add('HsmName', $HsmName)
             if($PassThru.IsPresent){
+                $null = $PSBoundParameters.Remove('Parameter')
+                $null = $PSBoundParameters.Remove('Name')
+                $null = $PSBoundParameters.Add('HsmName', $HsmName)
                 Az.KeyVault\Get-AzKeyVaultManagedHsmRegion @PSBoundParameters
             }
         } catch {
