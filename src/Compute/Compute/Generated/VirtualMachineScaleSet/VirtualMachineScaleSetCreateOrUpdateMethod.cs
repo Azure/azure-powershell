@@ -109,28 +109,15 @@ namespace Microsoft.Azure.Commands.Compute.Automation
                                     "Consider using \"latest\" as the image version. This allows VMSS to auto upgrade when a newer version is available.");
                             }
 
-                            if (parameters?.OrchestrationMode == "Flexible")
-                            {
-                                if (parameters?.VirtualMachineProfile?.NetworkProfile?.NetworkInterfaceConfigurations != null)
-                                {
-                                    foreach (var nicConfig in parameters.VirtualMachineProfile.NetworkProfile.NetworkInterfaceConfigurations)
-                                    {
-                                        if (nicConfig.IpConfigurations != null)
-                                        {
-                                            foreach (var ipConfig in nicConfig.IpConfigurations)
-                                            {
-                                                ipConfig.LoadBalancerInboundNatPools = null;
-                                            }
-                                        }
-                                    }
-                                }
+                            if (parameters.OrchestrationMode == null) { parameters.OrchestrationMode = flexibleOrchestrationMode; }
 
-                                parameters.UpgradePolicy = null;
+                            if (parameters?.OrchestrationMode == flexibleOrchestrationMode)
+                            {
 
                                 flexibleOrchestrationModeDefaultParameters(parameters);
                                 checkFlexibleOrchestrationModeParamsDefaultParamSet(parameters);
                             }
-                            
+
                             if (parameters.VirtualMachineProfile?.SecurityProfile?.SecurityType?.ToLower() == ConstantValues.TrustedLaunchSecurityType || parameters.VirtualMachineProfile?.SecurityProfile?.SecurityType?.ToLower() == ConstantValues.ConfidentialVMSecurityType)
                             {
                                 if (parameters.VirtualMachineProfile?.SecurityProfile?.UefiSettings != null)
@@ -443,6 +430,7 @@ namespace Microsoft.Azure.Commands.Compute.Automation
         private bool shouldGuestAttestationExtBeInstalled(VirtualMachineScaleSet vmssParameters)
         {
             if (this.DisableIntegrityMonitoring != true &&
+                    vmssParameters.OrchestrationMode != "Flexible" &&
                     vmssParameters != null &&
                     vmssParameters.VirtualMachineProfile != null &&
                     vmssParameters.VirtualMachineProfile.SecurityProfile != null &&
@@ -463,19 +451,11 @@ namespace Microsoft.Azure.Commands.Compute.Automation
         /// There is some concern with the above behavior being correct or not, and requires additional testing before changing.
         private void checkFlexibleOrchestrationModeParamsDefaultParamSet(VirtualMachineScaleSet parameters)
         {
-            if (parameters?.UpgradePolicy != null)
-            {
-                throw new Exception("UpgradePolicy is not currently supported for a VMSS with OrchestrationMode set to Flexible.");
-            }
-            else if (parameters?.VirtualMachineProfile?.NetworkProfile?.NetworkApiVersion != null
+            if (parameters?.VirtualMachineProfile?.NetworkProfile?.NetworkApiVersion != null
                 && convertAPIVersionToInt(parameters?.VirtualMachineProfile?.NetworkProfile?.NetworkApiVersion) < vmssFlexibleOrchestrationModeNetworkAPIVersionMinimumInt)
             {
                 throw new Exception("The value for NetworkApiVersion is not valid for a VMSS with OrchestrationMode set to Flexible. You must use a valid Network API Version equal to or greater than " + vmssFlexibleOrchestrationModeNetworkAPIVersionMinimum);
             }
-            //else if (convertAPIVersionToInt(parameters?.VirtualMachineProfile?.NetworkProfile?.NetworkApiVersion) < vmssFlexibleOrchestrationModeNetworkAPIVersionMinimumInt)
-            //{
-            //    throw new Exception("The value for NetworkApiVersion is not valid for a VMSS with OrchestrationMode set to Flexible. You must use a valid Network API Version equal to or greater than " + vmssFlexibleOrchestrationModeNetworkAPIVersionMinimum);
-            //}
         }
 
         private void flexibleOrchestrationModeDefaultParameters(VirtualMachineScaleSet parameters)
@@ -485,10 +465,6 @@ namespace Microsoft.Azure.Commands.Compute.Automation
             {
                 parameters.VirtualMachineProfile.NetworkProfile.NetworkApiVersion = vmssFlexibleOrchestrationModeNetworkAPIVersionMinimum;
             }
-            /*if (parameters?.VirtualMachineProfile?.NetworkProfile?.NetworkApiVersion == null)
-            {
-                parameters.VirtualMachineProfile.NetworkProfile.NetworkApiVersion = vmssFlexibleOrchestrationModeNetworkAPIVersionMinimum;
-            }*/
             if (parameters?.PlatformFaultDomainCount == null)
             {
                 parameters.PlatformFaultDomainCount = 1;

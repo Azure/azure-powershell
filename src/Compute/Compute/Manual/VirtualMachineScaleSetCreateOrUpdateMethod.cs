@@ -282,13 +282,13 @@ namespace Microsoft.Azure.Commands.Compute.Automation
 
             public async Task<ResourceConfig<VirtualMachineScaleSet>> CreateConfigAsync()
             {
-                if (_cmdlet.OrchestrationMode != null)
+                if (_cmdlet.OrchestrationMode == uniformOrchestrationMode)
                 {
-                    return await SimpleParameterSetOrchestrationMode();
+                    return await SimpleParameterSetNormalMode();
                 }
                 else
                 {
-                    return await SimpleParameterSetNormalMode();
+                    return await SimpleParameterSetOrchestrationModeFlexible();
                 }
             }
 
@@ -581,6 +581,12 @@ namespace Microsoft.Azure.Commands.Compute.Automation
 
                 var hostGroup = resourceGroup.CreateDedicatedHostGroupSubResourceFunc(_cmdlet.HostGroupId);
 
+                if (!_cmdlet.IsParameterBound(c => c.SystemAssignedIdentity)
+                    && _cmdlet.SystemAssignedIdentity == true)
+                {
+                    //_cmdlet.SystemAssignedIdentity = false;
+                }
+                
                 return resourceGroup.CreateVirtualMachineScaleSetConfigOrchestrationModeFlexible(
                     name: _cmdlet.VMScaleSetName,
                     subnet: subnet,
@@ -595,7 +601,7 @@ namespace Microsoft.Azure.Commands.Compute.Automation
                     zones: _cmdlet.Zone,
                     ultraSSDEnabled: _cmdlet.EnableUltraSSD.IsPresent,
                     identity: _cmdlet.GetVmssIdentityFromArgs(),
-                    singlePlacementGroup: singlePlacementGroupFlexibleDefault,
+                    singlePlacementGroup: _cmdlet.SinglePlacementGroup == true,
                     proximityPlacementGroup: proximityPlacementGroup,
                     hostGroup: hostGroup,
                     priority: _cmdlet.Priority,
@@ -604,9 +610,9 @@ namespace Microsoft.Azure.Commands.Compute.Automation
                     scaleInPolicy: _cmdlet.ScaleInPolicy,
                     doNotRunExtensionsOnOverprovisionedVMs: _cmdlet.SkipExtensionsOnOverprovisionedVMs.IsPresent,
                     encryptionAtHost: _cmdlet.EncryptionAtHost.IsPresent,
-                    platformFaultDomainCount: platformFaultDomainCountFlexibleDefault,
+                    platformFaultDomainCount: _cmdlet.IsParameterBound(c => c.PlatformFaultDomainCount) ? _cmdlet.PlatformFaultDomainCount : platformFaultDomainCountFlexibleDefault,
                     edgeZone: _cmdlet.EdgeZone,
-                    orchestrationMode: _cmdlet.IsParameterBound(c => c.OrchestrationMode) ? _cmdlet.OrchestrationMode : null,
+                    orchestrationMode: flexibleOrchestrationMode,
                     capacityReservationId: _cmdlet.IsParameterBound(c => c.CapacityReservationGroupId) ? _cmdlet.CapacityReservationGroupId : null,
                     securityType: _cmdlet.SecurityType,
                     enableVtpm: _cmdlet.EnableVtpm,
@@ -737,7 +743,8 @@ namespace Microsoft.Azure.Commands.Compute.Automation
                 asyncCmdlet.WriteObject(psObject);
             }
 
-            if (shouldGuestAttestationExtBeInstalledSimple())
+            if (shouldGuestAttestationExtBeInstalledSimple()
+                && this.SystemAssignedIdentity == true)
             {
                 string extensionNameGA = "GuestAttestation";
                 var extensionDirect = new VirtualMachineScaleSetExtension();
@@ -859,6 +866,7 @@ namespace Microsoft.Azure.Commands.Compute.Automation
         private bool shouldGuestAttestationExtBeInstalledSimple()
         {
             if (this.DisableIntegrityMonitoring != true &&
+                    //this.OrchestrationMode != "Flexible" &&
                     this.SecurityType?.ToLower() == ConstantValues.TrustedLaunchSecurityType &&
                     this.EnableSecureBoot == true &&
                     this.EnableVtpm == true)
