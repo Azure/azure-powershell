@@ -15,10 +15,6 @@
     <PackageReference Include="Microsoft.Azure.Management.ManagementGroups" Version="2.0.0-beta" />
   </ItemGroup>
 
-  <ItemGroup>
-		<ProjectReference Include="..\Authorization.Management.Sdk\Authorization.Management.Sdk.csproj" />
-	</ItemGroup>
-
   <ItemGroup Condition="'$(TargetFramework)' == 'net472'">
     <PackageReference Include="Microsoft.Extensions.Primitives" Version="2.2.0" />
   </ItemGroup>
