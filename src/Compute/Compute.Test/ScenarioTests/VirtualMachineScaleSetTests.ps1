@@ -5120,3 +5120,93 @@ function Test-VirtualMachineScaleSetSecurityTypeDefaultingFromImage
         Clean-ResourceGroup $rgname;
     }
 }
+
+<#
+.SYNOPSIS
+Test Virtual Machine Scale Set defaulting to OrchestrationMode: Flexible when property is not provided.
+#>
+function Test-VirtualMachineScaleSetDefaultToFlexibleOrchestrationMode
+{
+    # Setup
+    $rgname = Get-ComputeTestResourceName;
+    $loc = Get-ComputeVMLocation;
+
+    try
+    {
+        # Common
+        New-AzResourceGroup -Name $rgname -Location $loc -Force;
+
+        # New VMSS Parameters
+        $vmssName1 = 'vmss1' + $rgname;
+
+        $vmssConfig = New-AzVmssConfig -Location $loc -UpgradePolicyMode 'Manual' -SinglePlacementGroup $true -securitytype standard
+        $vmss = New-AzVmss -ResourceGroupName $rgname -VMScaleSetName $vmssName1 -VirtualMachineScaleSet $vmssConfig
+
+        # Asserts 
+        # check flexmode
+        Assert-AreEqual $vmss.OrchestrationMode "Flexible"
+        # check SinglePlacementGroup
+        Assert-AreEqual $vmss.SinglePlacementGroup $true
+    }
+    finally
+    {
+        # Cleanup
+        Clean-ResourceGroup $rgname;
+    }
+}
+
+<#
+.SYNOPSIS
+    create a VMSS in flexible mode 
+    Test Attach scenario of adding a vmss
+    Test Detach scenario of removing the VMSS
+#>
+function Test-VirtualMachineScaleSetAttachAndDetach
+{
+    # Setup
+    $rgname = Get-ComputeTestResourceName
+
+    try
+    {
+        # Common
+        $loc = Get-ComputeVMLocation;
+        New-AzResourceGroup -Name $rgname -Location $loc -Force;
+
+        # New VMSS Parameters
+        $vmssName = 'vmssAttachAndDetach' + $rgname;
+        $vmName = 'vm' + $rgname;
+
+        $adminUsername = 'Foo12';
+        $adminPassword = $PLACEHOLDER;
+        $securePassword = ConvertTo-SecureString $adminPassword -AsPlainText -Force;
+        $cred = New-Object System.Management.Automation.PSCredential ($adminUsername, $securePassword);
+
+        $VmssFlex = New-AzVmss `
+          -ResourceGroupName $rgname `
+          -Name $vmssName `
+          -OrchestrationMode 'Flexible' `
+          -Location 'eastus' `
+          -Credential $cred `
+          -DomainNameLabel "scaleset-70f699" `
+          -SecurityType "Standard"
+
+        $vm = new-azvm -resourcegroupname $rgname -location $loc -name $vmname -credential $cred -DomainNameLabel "scaleset-70f699"
+
+        # attach
+        Update-Azvm -resourcegroupname $rgname -VM $vm -VirtualMachineScaleSetId $VmssFlex.id
+        $updatedVmWithVmss = get-azvm -resourcegroupname $rgname -Name $vmname 
+        Assert-AreEqual $VmssFlex.id $updatedVmWithVmss.VirtualMachineScaleSet.Id
+
+        # detach
+        Update-Azvm -resourcegroupname $rgname -VM $updatedVmWithVmss -VirtualMachineScaleSetId $null
+        $updatedVm = get-azvm -resourcegroupname $rgname -Name $vmname 
+        Assert-Null $updatedVm.VirtualMachineScaleSet.Id
+
+
+    }
+    finally
+    {
+        # Cleanup
+        Clean-ResourceGroup $rgname
+    }
+}

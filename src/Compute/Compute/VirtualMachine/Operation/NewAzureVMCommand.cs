@@ -51,6 +51,8 @@ using SM = Microsoft.Azure.PowerShell.Cmdlets.Compute.Helpers.Storage.Models;
 using Microsoft.Azure.Commands.Compute;
 using Microsoft.Azure.PowerShell.Cmdlets.Compute.Helpers.Network.Models;
 using Microsoft.WindowsAzure.Commands.Common.CustomAttributes;
+using System.Security.AccessControl;
+using System.Security.Principal;
 using Microsoft.Azure.Commands.Common.Strategies.Compute;
 
 namespace Microsoft.Azure.Commands.Compute
@@ -407,6 +409,11 @@ namespace Microsoft.Azure.Commands.Compute
 
         [Parameter(
            ParameterSetName = DefaultParameterSet,
+           Mandatory = false,
+           ValueFromPipelineByPropertyName = true,
+           HelpMessage = "This flag disables the default behavior to install the Guest Attestation extension to the virtual machine if: 1) SecurityType is TrustedLaunch, 2) SecureBootEnabled on the SecurityProfile is true, 3) VTpmEnabled on the SecurityProfile is true.")]
+        [Parameter(
+           ParameterSetName = SimpleParameterSet,
            Mandatory = false,
            ValueFromPipelineByPropertyName = true,
            HelpMessage = "This flag disables the default behavior to install the Guest Attestation extension to the virtual machine if: 1) SecurityType is TrustedLaunch, 2) SecureBootEnabled on the SecurityProfile is true, 3) VTpmEnabled on the SecurityProfile is true.")]
@@ -783,11 +790,11 @@ namespace Microsoft.Azure.Commands.Compute
             // imagerefid is specifically shared gallery id, so don't want it.
             else
             {
-                this.SecurityType = ConstantValues.TrustedLaunchSecurityType;
                 if (!this.IsParameterBound(c => c.Image) 
                     && !this.IsParameterBound(c => c.ImageReferenceId) 
                     && !this.IsParameterBound(c => c.SharedGalleryImageId))
                 {
+                    this.SecurityType = ConstantValues.TrustedLaunchSecurityType;
                     this.Image = ConstantValues.TrustedLaunchDefaultImageAlias;
                     if (!this.IsParameterBound(c => c.EnableSecureBoot))
                     {
@@ -1703,6 +1710,23 @@ namespace Microsoft.Azure.Commands.Compute
                         writer.WriteLine(keypair.PrivateKey);
                     }
                     Console.WriteLine("Private key is saved to " + privateKeyFilePath);
+
+                    FileSecurity fileSecurity = new FileSecurity(privateKeyFilePath, AccessControlSections.Access);
+                    // Define the owner's identity
+                    IdentityReference owner = new SecurityIdentifier(WellKnownSidType.BuiltinUsersSid, null);
+
+                    // Create an access rule for the owner with read and write permissions (0600)
+                    FileSystemAccessRule rule = new FileSystemAccessRule(
+                        owner,
+                        FileSystemRights.Read | FileSystemRights.Write,
+                        AccessControlType.Allow
+                    );
+
+                    // Add the access rule to the file security
+                    fileSecurity.AddAccessRule(rule);
+
+                    FileInfo fileinfo = new FileInfo(privateKeyFilePath);
+                    fileinfo.SetAccessControl(fileSecurity);
 
                     using (StreamWriter writer = new StreamWriter(publicKeyFilePath))
                     {

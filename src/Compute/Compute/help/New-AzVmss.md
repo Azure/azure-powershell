@@ -262,7 +262,6 @@ Create a VMSS with the TrustedLaunch security type and the necessary UEFISetting
 ```powershell
 $rgname = "rganme";
 $loc = "eastus";
-New-AzResourceGroup -Name $rgname -Location $loc -Force;
 
 # VMSS Profile & Hardware requirements for the TrustedLaunch default behavior.
 $vmssSize = 'Standard_D4s_v3';
@@ -281,6 +280,18 @@ $result = New-AzVmss -Credential $vmCred -VMScaleSetName $vmssName1 -ImageName $
 ```
 
 This example Creates a new VMSS with the new Security Type 'TrustedLaunch' and the necessary UEFISettings values,
+
+### Example 6: Create a Vmss in Orchestration Mode: Flexible by default
+```powershell
+# Create configration object
+$vmssConfig = New-AzVmssConfig -Location EastUs2 -UpgradePolicyMode Manual -SinglePlacementGroup $true
+
+# VMSS Creation 
+New-AzVmss -ResourceGroupName TestRg -VMScaleSetName myVMSS -VirtualMachineScaleSet $vmssConfig
+
+```
+
+This example Creates a new VMSS and it will default to OrchestrationMode Flexible. 
 
 ## PARAMETERS
 

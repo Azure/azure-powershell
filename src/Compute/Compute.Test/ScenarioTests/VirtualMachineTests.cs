@@ -445,7 +445,7 @@ namespace Microsoft.Azure.Commands.Compute.Test.ScenarioTests
             TestRunner.RunTestScript("Test-CapacityReservation");
         }
 
-        [Fact]
+        [Fact(Skip = "Cannot run on Github Platform due to ACL API")]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestVMwithSSHKey()
         {

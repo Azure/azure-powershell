@@ -61,7 +61,7 @@ Import-AzKeyVaultSecurityDomain -Name testmhsm -Keys $keys -SecurityDomainPath s
 First, the keys need be provided to decrypt the security domain data.
 Then, The **Import-AzKeyVaultSecurityDomain** command restores previous backed up security domain data to a managed HSM using these keys.
 
-### Example 2: Import Security domain by separate steps 
+### Example 2: Import Security domain by separate steps
 ```powershell
 $exchangeKeyOutputPath = "ExchangeKey.cer"
 $SecurityDomainRestoredBlob = "HsmRestoreBlob.json"
