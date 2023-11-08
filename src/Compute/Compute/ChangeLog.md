@@ -28,6 +28,7 @@
 * Added new parameters `-ElasticSanResourceId` and `-OptimizedForFrequentAttach` to `New-AzDiskConfig` cmdlet.
 * Added new parameter `-ElasticSanResourceId` to `New-AzSnapshotConfig` cmdlet.
 * Fixed `New-AzVmss` and `New-Azvm` to use `SharedGalleryImageId` parameter.
+* Added TrustedLaunch as Default examples for VM, VMSS, and Disk creation.
 
 ## Version 6.3.0
 * Added `-Hibernate` switch parameter to `Stop-AzVmss` default parameter set. 
