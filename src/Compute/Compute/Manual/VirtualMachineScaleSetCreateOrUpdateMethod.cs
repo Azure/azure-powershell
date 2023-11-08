@@ -581,6 +581,12 @@ namespace Microsoft.Azure.Commands.Compute.Automation
 
                 var hostGroup = resourceGroup.CreateDedicatedHostGroupSubResourceFunc(_cmdlet.HostGroupId);
 
+                if (!_cmdlet.IsParameterBound(c => c.SystemAssignedIdentity)
+                    && _cmdlet.SystemAssignedIdentity == true)
+                {
+                    _cmdlet.SystemAssignedIdentity = false;
+                }
+
                 return resourceGroup.CreateVirtualMachineScaleSetConfigOrchestrationModeFlexible(
                     name: _cmdlet.VMScaleSetName,
                     subnet: subnet,
@@ -737,7 +743,8 @@ namespace Microsoft.Azure.Commands.Compute.Automation
                 asyncCmdlet.WriteObject(psObject);
             }
 
-            if (shouldGuestAttestationExtBeInstalledSimple())
+            if (shouldGuestAttestationExtBeInstalledSimple()
+                && this.SystemAssignedIdentity == true)
             {
                 string extensionNameGA = "GuestAttestation";
                 var extensionDirect = new VirtualMachineScaleSetExtension();
