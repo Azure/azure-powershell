@@ -21,12 +21,12 @@ Create an in-memory object for MsSqlServerProviderInstanceProperties.
 Create an in-memory object for MsSqlServerProviderInstanceProperties.
 
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.Workloads.Models.Api20230401.MsSqlServerProviderInstanceProperties
+Microsoft.Azure.PowerShell.Cmdlets.Workloads.Models.Api20231001Preview.MsSqlServerProviderInstanceProperties
 .Link
 https://learn.microsoft.com/powershell/module/az.workloads/new-azworkloadsprovidersqlserverinstanceobject
 #>
 function New-AzWorkloadsProviderSqlServerInstanceObject {
-    [OutputType('Microsoft.Azure.PowerShell.Cmdlets.Workloads.Models.Api20230401.MsSqlServerProviderInstanceProperties')]
+    [OutputType('Microsoft.Azure.PowerShell.Cmdlets.Workloads.Models.Api20231001Preview.MsSqlServerProviderInstanceProperties')]
     [CmdletBinding(PositionalBinding=$false)]
     Param(
 
@@ -58,7 +58,7 @@ function New-AzWorkloadsProviderSqlServerInstanceObject {
     )
 
     process {
-        $Object = [Microsoft.Azure.PowerShell.Cmdlets.Workloads.Models.Api20230401.MsSqlServerProviderInstanceProperties]::New()
+        $Object = [Microsoft.Azure.PowerShell.Cmdlets.Workloads.Models.Api20231001Preview.MsSqlServerProviderInstanceProperties]::New()
 
         if ($PSBoundParameters.ContainsKey('Password')) {
             $Object.DbPassword = $Password

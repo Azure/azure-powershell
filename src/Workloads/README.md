@@ -30,10 +30,11 @@ For information on how to develop for `Az.Workloads`, see [how-to.md](how-to.md)
 > see https://aka.ms/autorest
 
 ```yaml
-branch: c7c06e7e311df89b6851aa7e12142c8f0d129cd8 
+branch: 13aec7f115c01ba6986ebf32488537392c0df6f5 
+tag:	package-preview-2023-10
 require:
   - $(this-folder)/../readme.azure.noprofile.md
-  - $(repo)/specification/workloads/resource-manager/readme.md
+  - /src/azure-rest-api-specs/specification/workloads/resource-manager/readme.md
 
 try-require: 
   - $(repo)/specification/workloads/resource-manager/readme.powershell.md
@@ -221,6 +222,14 @@ directive:
     parameter-name: ManagedResourceGroupConfigurationName
   set:
     parameter-name: ManagedResourceGroupName
+
+- where:
+    verb: Get
+    subject: ^SapVirtualInstance$
+  set:
+    preview-announcement:
+      preview-message: This is a test preview message.
+      estimated-ga-date: 2023-09-30
 
 # SapAvailabilityZoneDetail
 - where:

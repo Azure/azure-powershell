@@ -212,11 +212,9 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.Workloads.Models.Api20230401.HanaDbProviderInstanceProperties
+### Microsoft.Azure.PowerShell.Cmdlets.Workloads.Models.Api20231001Preview.HanaDbProviderInstanceProperties
 
 ## NOTES
-
-ALIASES
 
 ## RELATED LINKS
 

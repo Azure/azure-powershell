@@ -211,11 +211,9 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.Workloads.Models.Api20230401.SapNetWeaverProviderInstanceProperties
+### Microsoft.Azure.PowerShell.Cmdlets.Workloads.Models.Api20231001Preview.SapNetWeaverProviderInstanceProperties
 
 ## NOTES
-
-ALIASES
 
 ## RELATED LINKS
 

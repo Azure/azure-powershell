@@ -21,12 +21,12 @@ Create an in-memory object for PrometheusHaClusterProviderInstanceProperties.
 Create an in-memory object for PrometheusHaClusterProviderInstanceProperties.
 
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.Workloads.Models.Api20230401.PrometheusHaClusterProviderInstanceProperties
+Microsoft.Azure.PowerShell.Cmdlets.Workloads.Models.Api20231001Preview.PrometheusHaClusterProviderInstanceProperties
 .Link
 https://learn.microsoft.com/powershell/module/az.workloads/new-azworkloadsproviderprometheushaclusterinstanceobject
 #>
 function New-AzWorkloadsProviderPrometheusHaClusterInstanceObject {
-    [OutputType('Microsoft.Azure.PowerShell.Cmdlets.Workloads.Models.Api20230401.PrometheusHaClusterProviderInstanceProperties')]
+    [OutputType('Microsoft.Azure.PowerShell.Cmdlets.Workloads.Models.Api20231001Preview.PrometheusHaClusterProviderInstanceProperties')]
     [CmdletBinding(PositionalBinding=$false)]
     Param(
 
@@ -52,7 +52,7 @@ function New-AzWorkloadsProviderPrometheusHaClusterInstanceObject {
     )
 
     process {
-        $Object = [Microsoft.Azure.PowerShell.Cmdlets.Workloads.Models.Api20230401.PrometheusHaClusterProviderInstanceProperties]::New()
+        $Object = [Microsoft.Azure.PowerShell.Cmdlets.Workloads.Models.Api20231001Preview.PrometheusHaClusterProviderInstanceProperties]::New()
 
         if ($PSBoundParameters.ContainsKey('ClusterName')) {
             $Object.ClusterName = $ClusterName

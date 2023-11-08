@@ -21,12 +21,12 @@ Create an in-memory object for PrometheusOSProviderInstanceProperties.
 Create an in-memory object for PrometheusOSProviderInstanceProperties.
 
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.Workloads.Models.Api20230401.PrometheusOSProviderInstanceProperties
+Microsoft.Azure.PowerShell.Cmdlets.Workloads.Models.Api20231001Preview.PrometheusOSProviderInstanceProperties
 .Link
 https://learn.microsoft.com/powershell/module/az.workloads/new-azworkloadsproviderprometheusosinstanceobject
 #>
 function New-AzWorkloadsProviderPrometheusOSInstanceObject {
-    [OutputType('Microsoft.Azure.PowerShell.Cmdlets.Workloads.Models.Api20230401.PrometheusOSProviderInstanceProperties')]
+    [OutputType('Microsoft.Azure.PowerShell.Cmdlets.Workloads.Models.Api20231001Preview.PrometheusOSProviderInstanceProperties')]
     [CmdletBinding(PositionalBinding=$false)]
     Param(
 
@@ -46,7 +46,7 @@ function New-AzWorkloadsProviderPrometheusOSInstanceObject {
     )
 
     process {
-        $Object = [Microsoft.Azure.PowerShell.Cmdlets.Workloads.Models.Api20230401.PrometheusOSProviderInstanceProperties]::New()
+        $Object = [Microsoft.Azure.PowerShell.Cmdlets.Workloads.Models.Api20231001Preview.PrometheusOSProviderInstanceProperties]::New()
 
         if ($PSBoundParameters.ContainsKey('PrometheusUrl')) {
             $Object.PrometheusUrl = $PrometheusUrl

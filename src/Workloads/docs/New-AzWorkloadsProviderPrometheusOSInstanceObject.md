@@ -104,11 +104,9 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.Workloads.Models.Api20230401.PrometheusOSProviderInstanceProperties
+### Microsoft.Azure.PowerShell.Cmdlets.Workloads.Models.Api20231001Preview.PrometheusOSProviderInstanceProperties
 
 ## NOTES
-
-ALIASES
 
 ## RELATED LINKS
 
