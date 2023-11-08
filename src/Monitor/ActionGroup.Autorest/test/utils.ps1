@@ -31,7 +31,8 @@ function setupEnv() {
     }
 
     $env.useremail = 'v-jiaji@microsoft.com'
-    $env.emailreceiver = 'emailreceiver1'
+    $env.emailreceiver1 = 'emailreceiver1'
+    $env.emailreceiver2 = 'emailreceiver2'
     $env.userphone = '18964587446'
     $env.phonecountry = '86'
     $env.smsreceiver = 'smsreceiver'
@@ -48,7 +49,7 @@ function setupEnv() {
     Write-Host "create test event hub" $env.eventHubName
 
     Write-Host "Start to create test action group" $env.actiongroupname
-    $email1 = New-AzActionGroupEmailReceiverObject -EmailAddress $env.useremail -Name $env.emailreceiver
+    $email1 = New-AzActionGroupEmailReceiverObject -EmailAddress $env.useremail -Name $env.emailreceiver1
     $sms1 = New-AzActionGroupSmsReceiverObject -CountryCode $env.phonecountry -Name $env.smsreceiver -PhoneNumber $env.userphone
     $ag = New-AzActionGroup -Name $env.actiongroupname -ResourceGroupName $env.resourceGroup -Location southcentralus -EmailReceiver $email1 -SmsReceiver $sms1 -ShortName ag1
 

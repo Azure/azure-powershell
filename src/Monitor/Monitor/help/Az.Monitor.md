@@ -32,9 +32,6 @@ This operation is only supported for Email or SMS receivers.
 ### [Get-AzActionGroup](Get-AzActionGroup.md)
 Get an action group.
 
-### [Get-AzActionGroupTestNotification](Get-AzActionGroupTestNotification.md)
-Get the test notifications by the notification id
-
 ### [Get-AzActivityLog](Get-AzActivityLog.md)
 Retrieve Activity Log events.
 
@@ -128,9 +125,6 @@ Create an in-memory object for ItsmReceiver.
 
 ### [New-AzActionGroupLogicAppReceiverObject](New-AzActionGroupLogicAppReceiverObject.md)
 Create an in-memory object for LogicAppReceiver.
-
-### [New-AzActionGroupNotification](New-AzActionGroupNotification.md)
-Send test notifications to a set of provided receivers
 
 ### [New-AzActionGroupSmsReceiverObject](New-AzActionGroupSmsReceiverObject.md)
 Create an in-memory object for SmsReceiver.
@@ -320,6 +314,9 @@ Deletes a scheduled query rule.
 
 ### [Remove-AzSubscriptionDiagnosticSetting](Remove-AzSubscriptionDiagnosticSetting.md)
 Deletes existing subscription diagnostic settings for the specified resource.
+
+### [Test-AzActionGroup](Test-AzActionGroup.md)
+Send test notifications to a set of provided receivers
 
 ### [Update-AzActionGroup](Update-AzActionGroup.md)
 Create a new action group or update an existing one.

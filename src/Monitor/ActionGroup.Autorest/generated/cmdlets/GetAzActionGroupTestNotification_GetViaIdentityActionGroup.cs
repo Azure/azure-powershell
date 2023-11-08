@@ -14,6 +14,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Monitor.ActionGroup.Cmdlets
     /// <remarks>
     /// [OpenAPI] GetTestNotificationsAtActionGroupResourceLevel=>GET:"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Insights/actionGroups/{actionGroupName}/notificationStatus/{notificationId}"
     /// </remarks>
+    [global::Microsoft.Azure.PowerShell.Cmdlets.Monitor.ActionGroup.InternalExport]
     [global::System.Management.Automation.Cmdlet(global::System.Management.Automation.VerbsCommon.Get, @"AzActionGroupTestNotification_GetViaIdentityActionGroup")]
     [global::System.Management.Automation.OutputType(typeof(Microsoft.Azure.PowerShell.Cmdlets.Monitor.ActionGroup.Models.ITestNotificationDetailsResponse))]
     [global::Microsoft.Azure.PowerShell.Cmdlets.Monitor.ActionGroup.Description(@"Get the test notifications by the notification id")]

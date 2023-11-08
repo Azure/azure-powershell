@@ -1,5 +1,5 @@
 ---
-external help file: Az.ActionGroup.psm1-help.xml
+external help file:
 Module Name: Az.Monitor
 online version: https://learn.microsoft.com/powershell/module/az.monitor/test-azactiongroup
 schema: 2.0.0
@@ -14,15 +14,15 @@ Send test notifications to a set of provided receivers
 
 ### CreateExpanded (Default)
 ```
-Test-AzActionGroup -ActionGroupName <String> -ResourceGroupName <String> [-SubscriptionId <String>]
- -AlertType <String> -Receiver <IActionGroupReceiver[]> [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
- [-WhatIf] [-Confirm] [<CommonParameters>]
+Test-AzActionGroup -ActionGroupName <String> -ResourceGroupName <String> -AlertType <String>
+ -Receiver <IActionGroupReceiver[]> [-SubscriptionId <String>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
+ [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ### CreateViaIdentityExpanded
 ```
 Test-AzActionGroup -InputObject <IActionGroupIdentity> -AlertType <String> -Receiver <IActionGroupReceiver[]>
- [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -246,3 +246,4 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ## NOTES
 
 ## RELATED LINKS
+

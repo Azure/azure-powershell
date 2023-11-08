@@ -32,7 +32,7 @@ Describe 'Enable-AzActionGroupReceiver' {
     It 'EnableViaIdentityExpanded' {
         { 
             $ag = Get-AzActionGroup -Name $env.actiongroupname -ResourceGroupName $env.resourceGroup
-            Enable-AzActionGroupReceiver -InputObject $ag -ReceiverName $env.emailreceiver
+            Enable-AzActionGroupReceiver -InputObject $ag -ReceiverName $env.emailreceiver1
         } | Should -Not -Throw
     }
 }
