@@ -19,6 +19,20 @@
 -->
 
 ## Upcoming Release
+  * [Breaking Change] Action Group upgraded API version to stable 2023-01-01
+  * [Breaking Change] Use new and update cmdlets instead `Set-AzActionGroup` cmdlet
+  * The receiver used subtype cmdlets to create a replacement for command `New-AzActionGroupReceiver`
+    * New-AzActionGroupArmRoleReceiverObject
+    * New-AzActionGroupAutomationRunbookReceiverObject
+    * New-AzActionGroupAzureAppPushReceiverObject
+    * New-AzActionGroupAzureFunctionReceiverObject
+    * New-AzActionGroupEmailReceiverObject
+    * New-AzActionGroupEventHubReceiverObject
+    * New-AzActionGroupItsmReceiverObject
+    * New-AzActionGroupLogicAppReceiverObject
+    * New-AzActionGroupSmsReceiverObject
+    * New-AzActionGroupVoiceReceiverObject
+    * New-AzActionGroupWebhookReceiverObject
 * [Breaking Change] Data collection Rule upgraded API version to stable 2022-06-01
 * [Breaking Change] AMCS removed `Set-AzDataCollectionRule` cmdlet
 * Added cmdlets for data collection endpoint:
