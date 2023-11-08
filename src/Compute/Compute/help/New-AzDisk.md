@@ -72,6 +72,22 @@ $diskConfig.EncryptionSettingsCollection.EncryptionSettings += $encryptionSettin
 New-AzDisk -ResourceGroupName 'ResourceGroup01' -DiskName 'Disk01' -Disk $diskconfig;
 ```
 
+### Example 3: Create a Disk with TrustedLaunch enabled by default.
+```powershell
+$rgname ="<Resource Group Name>";
+$loc = "<Azure Region>";
+$diskname = "d" + $rgname;
+
+$image = Get-AzVMImage -Skus 2022-datacenter-azure-edition -Offer WindowsServer -PublisherName MicrosoftWindowsServer -Location $loc -Version latest;
+$diskconfig = New-AzDiskConfig -DiskSizeGB 127 -AccountType Premium_LRS -OsType Windows -CreateOption FromImage -Location $loc;
+$diskconfig = Set-AzDiskImageReference -Disk $diskconfig -Id $image.Id;
+
+$disk = New-AzDisk -ResourceGroupName $rgname -DiskName $diskname -Disk $diskconfig;
+# Verify $disk.SecurityProfile.securityType is TrustedLaunch.
+# As part of enabling TrustedLaunch, the HyperVGeneration is also set to V2.
+# Verify $disk.HyperVGeneration is V2.
+```
+
 The above command creates a disk with two encryption settings.
 
 ### Example 3: Export a gallery image version to disk.
