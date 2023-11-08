@@ -106,7 +106,7 @@ namespace Microsoft.Azure.Commands.Resources.Test.UnitTests.Utilities
             var bicepUtility = new BicepUtility(invokerMock.Object, dataStoreMock.Object);
 
             FluentActions.Invoking(() => bicepUtility.BuildParams("foo.bicepparam", new Dictionary<string, object>()))
-                .Should().Throw<AzPSApplicationException>().WithMessage("Please use bicep '0.16.1' or higher verison.");
+                .Should().Throw<AzPSApplicationException>().WithMessage("Please use bicep '0.16.1' or higher.");
         }
 
         [Fact]
