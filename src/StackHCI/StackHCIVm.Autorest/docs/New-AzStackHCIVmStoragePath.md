@@ -14,9 +14,9 @@ Please note some properties can be set only during storage container creation.
 ## SYNTAX
 
 ```
-New-AzStackHCIVmStoragePath -Name <String> -ResourceGroupName <String> -Location <String>
- [-SubscriptionId <String>] [-CustomLocationId <String>] [-Path <String>] [-Tag <Hashtable>]
- [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
+New-AzStackHCIVmStoragePath -Name <String> -ResourceGroupName <String> -Location <String> -Path <String>
+ [-SubscriptionId <String>] [-CustomLocationId <String>] [-Tag <Hashtable>] [-DefaultProfile <PSObject>] 
+ [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
