@@ -26,7 +26,7 @@ New-AzVM [[-ResourceGroupName] <String>] [[-Location] <String>] [-EdgeZone <Stri
  [-Priority <String>] [-EvictionPolicy <String>] [-MaxPrice <Double>] [-EncryptionAtHost]
  [-HostGroupId <String>] [-SshKeyName <String>] [-GenerateSshKey] [-CapacityReservationGroupId <String>]
  [-UserData <String>] [-ImageReferenceId <String>] [-PlatformFaultDomain <Int32>] [-HibernationEnabled]
- [-vCPUCountAvailable <Int32>] [-vCPUCountPerCore <Int32>] [-DiskControllerType <String>] [-DisableIntegrityMonitoring]
+ [-vCPUCountAvailable <Int32>] [-vCPUCountPerCore <Int32>] [-DiskControllerType <String>]
  [-SharedGalleryImageId <String>] [-SecurityType <String>] [-EnableVtpm <Boolean>]
  [-EnableSecureBoot <Boolean>] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
  [<CommonParameters>]
@@ -548,7 +548,7 @@ This flag disables the default behavior to install the Guest Attestation extensi
 
 ```yaml
 Type: System.Management.Automation.SwitchParameter
-Parameter Sets: DefaultParameterSet, SimpleParameterSet
+Parameter Sets: DefaultParameterSet
 Aliases:
 
 Required: False
