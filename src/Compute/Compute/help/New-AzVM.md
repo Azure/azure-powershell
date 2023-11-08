@@ -398,6 +398,7 @@ $VMSize = "Standard_DS2_v2";
 $PublisherName = "MicrosoftWindowsServer";
 $Offer = "WindowsServer";
 $SKU = "2022-datacenter-azure-edition";
+$version = "latest";
 
 $password = "<Password>";
 $securePassword = $password | ConvertTo-SecureString -AsPlainText -Force;  
@@ -438,7 +439,7 @@ $user = <Username>;
 $cred = New-Object System.Management.Automation.PSCredential ($user, $securePassword);
 # Create VM
 $vm = New-AzVM -ResourceGroupName $rgname -Name $vmname -Credential $cred -DomainNameLabel $domainNameLabel; 
-$vm = Get-AzVm -ResourceGroupName $rgname -Name $vmname;
+$vm = Get-AzVM -ResourceGroupName $rgname -Name $vmname;
 # Verify $vm.SecurityProfile.SecurityType is TrustedLaunch.
 # Verify the $vm.StorageProfile.ImageReference.Sku has defaulted to "2022-datacenter-azure-edition", a Gen2 image.
 ```
