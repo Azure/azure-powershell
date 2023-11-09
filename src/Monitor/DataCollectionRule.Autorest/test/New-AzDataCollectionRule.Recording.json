@@ -20,22 +20,22 @@
         "Vary": [ "Accept-Encoding" ],
         "x-ms-ratelimit-remaining-subscription-resource-requests": [ "147" ],
         "Request-Context": [ "appId=cid-v1:2bbfbac8-e1b0-44af-b9c6-3a40669d37e3" ],
-        "x-ms-correlation-request-id": [ "0ff0cc2e-bf36-4763-a5c7-5e0f70b4a323" ],
-        "x-ms-client-request-id": [ "657339d0-4999-4fcb-acda-e942126e73be" ],
-        "x-ms-routing-request-id": [ "KOREASOUTH:20231010T065254Z:0ff0cc2e-bf36-4763-a5c7-5e0f70b4a323" ],
-        "x-ms-request-id": [ "dc0b2584-f853-4220-94d2-6148b4621ae0" ],
+        "x-ms-correlation-request-id": [ "4c756f04-29c3-4877-8fa8-b60baff897f3" ],
+        "x-ms-client-request-id": [ "00d5b6bb-3763-4227-99d9-6025dc36ad3e" ],
+        "x-ms-routing-request-id": [ "SOUTHEASTASIA:20231109T064109Z:4c756f04-29c3-4877-8fa8-b60baff897f3" ],
+        "x-ms-request-id": [ "e3292dcf-5daa-4995-b2ae-4be2b8ee7bd5" ],
         "api-supported-versions": [ "2019-11-01-preview, 2021-04-01, 2021-09-01-preview, 2022-06-01, 2023-03-11" ],
         "Server": [ "Microsoft-HTTPAPI/2.0" ],
         "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
         "X-Content-Type-Options": [ "nosniff" ],
-        "Date": [ "Tue, 10 Oct 2023 06:52:55 GMT" ]
+        "Date": [ "Thu, 09 Nov 2023 06:41:10 GMT" ]
       },
       "ContentHeaders": {
         "Content-Length": [ "1522" ],
         "Content-Type": [ "application/json; charset=utf-8" ],
         "Expires": [ "-1" ]
       },
-      "Content": "{\"properties\":{\"immutableId\":\"dcr-ef36b313319546dda041d68b91342651\",\"dataSources\":{\"performanceCounters\":[{\"streams\":[\"Microsoft-Perf\"],\"samplingFrequencyInSeconds\":15,\"counterSpecifiers\":[\"\\\\\\\\Processor(_Total)\\\\\\\\% Processor Time\",\"\\\\\\\\Memory\\\\\\\\Committed Bytes\",\"\\\\\\\\LogicalDisk(_Total)\\\\\\\\Free Megabytes\",\"\\\\\\\\PhysicalDisk(_Total)\\\\\\\\Avg. Disk Queue Length\"],\"name\":\"cloudTeamCoreCounters\"},{\"streams\":[\"Microsoft-Perf\"],\"samplingFrequencyInSeconds\":30,\"counterSpecifiers\":[\"\\\\\\\\Process(_Total)\\\\\\\\Thread Count\"],\"name\":\"appTeamExtraCounters\"}],\"windowsEventLogs\":[{\"streams\":[\"Microsoft-WindowsEvent\"],\"xPathQueries\":[\"System![System[(Level = 1 or Level = 2 or Level = 3)]]\",\"Application!*[System[(Level = 1 or Level = 2 or Level = 3)]]\"],\"name\":\"appTeam1AppEvents\"}]},\"destinations\":{\"azureMonitorMetrics\":{\"name\":\"azureMonitorMetrics-default\"}},\"dataFlows\":[{\"streams\":[\"Microsoft-InsightsMetrics\"],\"destinations\":[\"azureMonitorMetrics-default\"]}],\"provisioningState\":\"Succeeded\"},\"location\":\"eastus\",\"id\":\"/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/AMCS-TEST/providers/Microsoft.Insights/dataCollectionRules/testCollectionRule3\",\"name\":\"testCollectionRule3\",\"type\":\"Microsoft.Insights/dataCollectionRules\",\"etag\":\"\\\"750141f1-0000-0100-0000-6524f4c60000\\\"\",\"systemData\":{\"createdBy\":\"v-jiaji@microsoft.com\",\"createdByType\":\"User\",\"createdAt\":\"2023-10-10T06:52:54.6695465Z\",\"lastModifiedBy\":\"v-jiaji@microsoft.com\",\"lastModifiedByType\":\"User\",\"lastModifiedAt\":\"2023-10-10T06:52:54.6695465Z\"}}",
+      "Content": "{\"properties\":{\"immutableId\":\"dcr-1d84d22307dc417f81fc4fc4499adf65\",\"dataSources\":{\"performanceCounters\":[{\"streams\":[\"Microsoft-Perf\"],\"samplingFrequencyInSeconds\":15,\"counterSpecifiers\":[\"\\\\\\\\Processor(_Total)\\\\\\\\% Processor Time\",\"\\\\\\\\Memory\\\\\\\\Committed Bytes\",\"\\\\\\\\LogicalDisk(_Total)\\\\\\\\Free Megabytes\",\"\\\\\\\\PhysicalDisk(_Total)\\\\\\\\Avg. Disk Queue Length\"],\"name\":\"cloudTeamCoreCounters\"},{\"streams\":[\"Microsoft-Perf\"],\"samplingFrequencyInSeconds\":30,\"counterSpecifiers\":[\"\\\\\\\\Process(_Total)\\\\\\\\Thread Count\"],\"name\":\"appTeamExtraCounters\"}],\"windowsEventLogs\":[{\"streams\":[\"Microsoft-WindowsEvent\"],\"xPathQueries\":[\"System![System[(Level = 1 or Level = 2 or Level = 3)]]\",\"Application!*[System[(Level = 1 or Level = 2 or Level = 3)]]\"],\"name\":\"appTeam1AppEvents\"}]},\"destinations\":{\"azureMonitorMetrics\":{\"name\":\"azureMonitorMetrics-default\"}},\"dataFlows\":[{\"streams\":[\"Microsoft-InsightsMetrics\"],\"destinations\":[\"azureMonitorMetrics-default\"]}],\"provisioningState\":\"Succeeded\"},\"location\":\"eastus\",\"id\":\"/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/AMCS-TEST/providers/Microsoft.Insights/dataCollectionRules/testCollectionRule3\",\"name\":\"testCollectionRule3\",\"type\":\"Microsoft.Insights/dataCollectionRules\",\"etag\":\"\\\"9200a6e1-0000-0100-0000-654c7f050000\\\"\",\"systemData\":{\"createdBy\":\"v-jiaji@microsoft.com\",\"createdByType\":\"User\",\"createdAt\":\"2023-11-09T06:41:09.6523401Z\",\"lastModifiedBy\":\"v-jiaji@microsoft.com\",\"lastModifiedByType\":\"User\",\"lastModifiedAt\":\"2023-11-09T06:41:09.6523401Z\"}}",
       "isContentBase64": false
     }
   },
@@ -60,22 +60,22 @@
         "Vary": [ "Accept-Encoding" ],
         "x-ms-ratelimit-remaining-subscription-resource-requests": [ "146" ],
         "Request-Context": [ "appId=cid-v1:2bbfbac8-e1b0-44af-b9c6-3a40669d37e3" ],
-        "x-ms-correlation-request-id": [ "9f701314-f27c-40f7-8078-6e3ebc78eabd" ],
-        "x-ms-client-request-id": [ "f236a0c6-b252-4f3d-af71-eec4e76cdcc8" ],
-        "x-ms-routing-request-id": [ "KOREASOUTH:20231010T065256Z:9f701314-f27c-40f7-8078-6e3ebc78eabd" ],
-        "x-ms-request-id": [ "8aeeb3c8-ee0a-49b6-9a75-96076f16f7aa" ],
+        "x-ms-correlation-request-id": [ "18cf91ff-10ee-47bf-b930-eaa6da1bc1b0" ],
+        "x-ms-client-request-id": [ "1f066bfa-de68-4308-a560-bd47e49d1a32" ],
+        "x-ms-routing-request-id": [ "SOUTHEASTASIA:20231109T064111Z:18cf91ff-10ee-47bf-b930-eaa6da1bc1b0" ],
+        "x-ms-request-id": [ "31e6d75f-347a-4452-97b5-8fee72752cf2" ],
         "api-supported-versions": [ "2019-11-01-preview, 2021-04-01, 2021-09-01-preview, 2022-06-01, 2023-03-11" ],
         "Server": [ "Microsoft-HTTPAPI/2.0" ],
         "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
         "X-Content-Type-Options": [ "nosniff" ],
-        "Date": [ "Tue, 10 Oct 2023 06:52:56 GMT" ]
+        "Date": [ "Thu, 09 Nov 2023 06:41:12 GMT" ]
       },
       "ContentHeaders": {
         "Content-Length": [ "1288" ],
         "Content-Type": [ "application/json; charset=utf-8" ],
         "Expires": [ "-1" ]
       },
-      "Content": "{\"properties\":{\"immutableId\":\"dcr-564f507f0c5b41d4b86763f1e3eeee47\",\"dataSources\":{\"performanceCounters\":[{\"streams\":[\"Microsoft-InsightsMetrics\"],\"samplingFrequencyInSeconds\":60,\"counterSpecifiers\":[\"\\\\Processor(_Total)\\\\% Processor Time\"],\"name\":\"perfCounter01\"},{\"streams\":[\"Microsoft-Perf\"],\"samplingFrequencyInSeconds\":15,\"counterSpecifiers\":[\"\\\\Processor(_Total)\\\\% Processor Time\",\"\\\\Memory\\\\Committed Bytes\",\"\\\\LogicalDisk(_Total)\\\\Free Megabytes\",\"\\\\PhysicalDisk(_Total)\\\\Avg. Disk Queue Length\"],\"name\":\"cloudTeamCoreCounters\"}]},\"destinations\":{\"azureMonitorMetrics\":{\"name\":\"azureMonitorMetrics-default\"}},\"dataFlows\":[{\"streams\":[\"Microsoft-InsightsMetrics\"],\"destinations\":[\"azureMonitorMetrics-default\"]}],\"provisioningState\":\"Succeeded\"},\"location\":\"eastus\",\"id\":\"/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/AMCS-TEST/providers/Microsoft.Insights/dataCollectionRules/testCollectionRule4\",\"name\":\"testCollectionRule4\",\"type\":\"Microsoft.Insights/dataCollectionRules\",\"etag\":\"\\\"750146f1-0000-0100-0000-6524f4c80000\\\"\",\"systemData\":{\"createdBy\":\"v-jiaji@microsoft.com\",\"createdByType\":\"User\",\"createdAt\":\"2023-10-10T06:52:56.3100526Z\",\"lastModifiedBy\":\"v-jiaji@microsoft.com\",\"lastModifiedByType\":\"User\",\"lastModifiedAt\":\"2023-10-10T06:52:56.3100526Z\"}}",
+      "Content": "{\"properties\":{\"immutableId\":\"dcr-78e81f160c594cfd886a6cb34a5d2591\",\"dataSources\":{\"performanceCounters\":[{\"streams\":[\"Microsoft-InsightsMetrics\"],\"samplingFrequencyInSeconds\":60,\"counterSpecifiers\":[\"\\\\Processor(_Total)\\\\% Processor Time\"],\"name\":\"perfCounter01\"},{\"streams\":[\"Microsoft-Perf\"],\"samplingFrequencyInSeconds\":15,\"counterSpecifiers\":[\"\\\\Processor(_Total)\\\\% Processor Time\",\"\\\\Memory\\\\Committed Bytes\",\"\\\\LogicalDisk(_Total)\\\\Free Megabytes\",\"\\\\PhysicalDisk(_Total)\\\\Avg. Disk Queue Length\"],\"name\":\"cloudTeamCoreCounters\"}]},\"destinations\":{\"azureMonitorMetrics\":{\"name\":\"azureMonitorMetrics-default\"}},\"dataFlows\":[{\"streams\":[\"Microsoft-InsightsMetrics\"],\"destinations\":[\"azureMonitorMetrics-default\"]}],\"provisioningState\":\"Succeeded\"},\"location\":\"eastus\",\"id\":\"/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/AMCS-TEST/providers/Microsoft.Insights/dataCollectionRules/testCollectionRule4\",\"name\":\"testCollectionRule4\",\"type\":\"Microsoft.Insights/dataCollectionRules\",\"etag\":\"\\\"9200aae1-0000-0100-0000-654c7f070000\\\"\",\"systemData\":{\"createdBy\":\"v-jiaji@microsoft.com\",\"createdByType\":\"User\",\"createdAt\":\"2023-11-09T06:41:11.5585614Z\",\"lastModifiedBy\":\"v-jiaji@microsoft.com\",\"lastModifiedByType\":\"User\",\"lastModifiedAt\":\"2023-11-09T06:41:11.5585614Z\"}}",
       "isContentBase64": false
     }
   }

@@ -53,6 +53,7 @@ use-extension:
   "@autorest/powershell": "4.x"
 
 directive:
+  - remove-operation: DataCollectionRules_Update
 #   # Following is two common directive which are normally required in all the RPs
 #   # 1. Remove the unexpanded parameter set
 #   # 2. For New-* cmdlets, ViaIdentity is not required, so CreateViaIdentityExpanded is removed as well
@@ -63,6 +64,11 @@ directive:
       parameter-name: IdentityUserAssignedIdentity
     set:
       parameter-name: UserAssignedIdentity
+  - where:
+      verb: Update
+      subject: DataCollectionRule
+    set:
+      command-description: 'Update a data collection rule.'
   # fix breaking change
   - where:
       subject: DataCollectionRule
