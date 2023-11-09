@@ -7,11 +7,11 @@
       "isContentBase64": false,
       "Headers": {
         "x-ms-unique-id": [ "27" ],
-        "x-ms-client-request-id": [ "a673b0fa-a843-454d-83d4-a0eb3f49d3ad" ],
+        "x-ms-client-request-id": [ "21437372-973c-41b9-9537-ecc412f20e50" ],
         "CommandName": [ "Remove-AzDataCollectionRule" ],
         "FullCommandName": [ "Remove-AzDataCollectionRule_Delete" ],
         "ParameterSetName": [ "__AllParameterSets" ],
-        "User-Agent": [ "AzurePowershell/v10.1.0", "PSVersion/v7.3.7", "Az.DataCollectionRule/0.1.0" ],
+        "User-Agent": [ "AzurePowershell/v11.0.0", "PSVersion/v7.3.9", "Az.DataCollectionRule/0.1.0" ],
         "Authorization": [ "[Filtered]" ]
       },
       "ContentHeaders": {
@@ -23,16 +23,16 @@
         "Cache-Control": [ "no-cache" ],
         "Pragma": [ "no-cache" ],
         "Request-Context": [ "appId=cid-v1:2bbfbac8-e1b0-44af-b9c6-3a40669d37e3" ],
-        "x-ms-correlation-request-id": [ "eda52a72-e142-4e4a-b1f8-676344f8cd76" ],
-        "x-ms-client-request-id": [ "a673b0fa-a843-454d-83d4-a0eb3f49d3ad" ],
-        "x-ms-routing-request-id": [ "KOREASOUTH:20231010T065316Z:eda52a72-e142-4e4a-b1f8-676344f8cd76" ],
-        "x-ms-request-id": [ "ec68d4b1-f5cb-47cf-9214-1dd55e967802" ],
+        "x-ms-correlation-request-id": [ "ac777d9a-7d81-482c-ae21-07d9795499cf" ],
+        "x-ms-client-request-id": [ "21437372-973c-41b9-9537-ecc412f20e50" ],
+        "x-ms-routing-request-id": [ "SOUTHEASTASIA:20231109T064132Z:ac777d9a-7d81-482c-ae21-07d9795499cf" ],
+        "x-ms-request-id": [ "ab013364-88a6-4365-9cbd-8311f27e264e" ],
         "api-supported-versions": [ "2019-11-01-preview, 2021-04-01, 2021-09-01-preview, 2022-06-01, 2023-03-11" ],
         "Server": [ "Microsoft-HTTPAPI/2.0" ],
         "x-ms-ratelimit-remaining-subscription-deletes": [ "14997" ],
         "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
         "X-Content-Type-Options": [ "nosniff" ],
-        "Date": [ "Tue, 10 Oct 2023 06:53:16 GMT" ]
+        "Date": [ "Thu, 09 Nov 2023 06:41:32 GMT" ]
       },
       "ContentHeaders": {
         "Expires": [ "-1" ],
@@ -50,11 +50,11 @@
       "isContentBase64": false,
       "Headers": {
         "x-ms-unique-id": [ "28" ],
-        "x-ms-client-request-id": [ "6bef5d75-93ab-434f-9502-e8c35a87f88a" ],
+        "x-ms-client-request-id": [ "ce7a3e22-4ef8-4d5d-88ff-2b8c2e99dfe8" ],
         "CommandName": [ "Get-AzDataCollectionRule" ],
         "FullCommandName": [ "Get-AzDataCollectionRule_Get" ],
         "ParameterSetName": [ "__AllParameterSets" ],
-        "User-Agent": [ "AzurePowershell/v10.1.0", "PSVersion/v7.3.7", "Az.DataCollectionRule/0.1.0" ],
+        "User-Agent": [ "AzurePowershell/v11.0.0", "PSVersion/v7.3.9", "Az.DataCollectionRule/0.1.0" ],
         "Authorization": [ "[Filtered]" ]
       },
       "ContentHeaders": {
@@ -66,24 +66,24 @@
         "Cache-Control": [ "no-cache" ],
         "Pragma": [ "no-cache" ],
         "Vary": [ "Accept-Encoding" ],
-        "x-ms-ratelimit-remaining-subscription-reads": [ "11986" ],
+        "x-ms-ratelimit-remaining-subscription-reads": [ "11987" ],
         "Request-Context": [ "appId=cid-v1:2bbfbac8-e1b0-44af-b9c6-3a40669d37e3" ],
-        "x-ms-correlation-request-id": [ "c8938788-4769-4784-a87a-a19e31d5a2ce" ],
-        "x-ms-client-request-id": [ "6bef5d75-93ab-434f-9502-e8c35a87f88a" ],
-        "x-ms-routing-request-id": [ "KOREASOUTH:20231010T065317Z:c8938788-4769-4784-a87a-a19e31d5a2ce" ],
-        "x-ms-request-id": [ "0d63736f-8b7a-4415-9419-767c93ace13c" ],
+        "x-ms-correlation-request-id": [ "cfde0950-f5e2-4015-965a-908725ad014a" ],
+        "x-ms-client-request-id": [ "ce7a3e22-4ef8-4d5d-88ff-2b8c2e99dfe8" ],
+        "x-ms-routing-request-id": [ "SOUTHEASTASIA:20231109T064133Z:cfde0950-f5e2-4015-965a-908725ad014a" ],
+        "x-ms-request-id": [ "081c9b9a-4727-4047-b875-bc8b40125865" ],
         "api-supported-versions": [ "2019-11-01-preview, 2021-04-01, 2021-09-01-preview, 2022-06-01, 2023-03-11" ],
         "Server": [ "Microsoft-HTTPAPI/2.0" ],
         "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
         "X-Content-Type-Options": [ "nosniff" ],
-        "Date": [ "Tue, 10 Oct 2023 06:53:17 GMT" ]
+        "Date": [ "Thu, 09 Nov 2023 06:41:33 GMT" ]
       },
       "ContentHeaders": {
         "Content-Length": [ "1288" ],
         "Content-Type": [ "application/json; charset=utf-8" ],
         "Expires": [ "-1" ]
       },
-      "Content": "{\"properties\":{\"immutableId\":\"dcr-564f507f0c5b41d4b86763f1e3eeee47\",\"dataSources\":{\"performanceCounters\":[{\"streams\":[\"Microsoft-InsightsMetrics\"],\"samplingFrequencyInSeconds\":60,\"counterSpecifiers\":[\"\\\\Processor(_Total)\\\\% Processor Time\"],\"name\":\"perfCounter01\"},{\"streams\":[\"Microsoft-Perf\"],\"samplingFrequencyInSeconds\":15,\"counterSpecifiers\":[\"\\\\Processor(_Total)\\\\% Processor Time\",\"\\\\Memory\\\\Committed Bytes\",\"\\\\LogicalDisk(_Total)\\\\Free Megabytes\",\"\\\\PhysicalDisk(_Total)\\\\Avg. Disk Queue Length\"],\"name\":\"cloudTeamCoreCounters\"}]},\"destinations\":{\"azureMonitorMetrics\":{\"name\":\"azureMonitorMetrics-default\"}},\"dataFlows\":[{\"streams\":[\"Microsoft-InsightsMetrics\"],\"destinations\":[\"azureMonitorMetrics-default\"]}],\"provisioningState\":\"Succeeded\"},\"location\":\"eastus\",\"id\":\"/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/AMCS-TEST/providers/Microsoft.Insights/dataCollectionRules/testCollectionRule4\",\"name\":\"testCollectionRule4\",\"type\":\"Microsoft.Insights/dataCollectionRules\",\"etag\":\"\\\"750146f1-0000-0100-0000-6524f4c80000\\\"\",\"systemData\":{\"createdBy\":\"v-jiaji@microsoft.com\",\"createdByType\":\"User\",\"createdAt\":\"2023-10-10T06:52:56.3100526Z\",\"lastModifiedBy\":\"v-jiaji@microsoft.com\",\"lastModifiedByType\":\"User\",\"lastModifiedAt\":\"2023-10-10T06:52:56.3100526Z\"}}",
+      "Content": "{\"properties\":{\"immutableId\":\"dcr-78e81f160c594cfd886a6cb34a5d2591\",\"dataSources\":{\"performanceCounters\":[{\"streams\":[\"Microsoft-InsightsMetrics\"],\"samplingFrequencyInSeconds\":60,\"counterSpecifiers\":[\"\\\\Processor(_Total)\\\\% Processor Time\"],\"name\":\"perfCounter01\"},{\"streams\":[\"Microsoft-Perf\"],\"samplingFrequencyInSeconds\":15,\"counterSpecifiers\":[\"\\\\Processor(_Total)\\\\% Processor Time\",\"\\\\Memory\\\\Committed Bytes\",\"\\\\LogicalDisk(_Total)\\\\Free Megabytes\",\"\\\\PhysicalDisk(_Total)\\\\Avg. Disk Queue Length\"],\"name\":\"cloudTeamCoreCounters\"}]},\"destinations\":{\"azureMonitorMetrics\":{\"name\":\"azureMonitorMetrics-default\"}},\"dataFlows\":[{\"streams\":[\"Microsoft-InsightsMetrics\"],\"destinations\":[\"azureMonitorMetrics-default\"]}],\"provisioningState\":\"Succeeded\"},\"location\":\"eastus\",\"id\":\"/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/AMCS-TEST/providers/Microsoft.Insights/dataCollectionRules/testCollectionRule4\",\"name\":\"testCollectionRule4\",\"type\":\"Microsoft.Insights/dataCollectionRules\",\"etag\":\"\\\"9200aae1-0000-0100-0000-654c7f070000\\\"\",\"systemData\":{\"createdBy\":\"v-jiaji@microsoft.com\",\"createdByType\":\"User\",\"createdAt\":\"2023-11-09T06:41:11.5585614Z\",\"lastModifiedBy\":\"v-jiaji@microsoft.com\",\"lastModifiedByType\":\"User\",\"lastModifiedAt\":\"2023-11-09T06:41:11.5585614Z\"}}",
       "isContentBase64": false
     }
   },
@@ -95,11 +95,11 @@
       "isContentBase64": false,
       "Headers": {
         "x-ms-unique-id": [ "29" ],
-        "x-ms-client-request-id": [ "e35b63ab-f151-4da0-9b34-0c4e25ea923e" ],
+        "x-ms-client-request-id": [ "c5049a4d-106d-437f-ac41-cf3c7f8a2386" ],
         "CommandName": [ "Remove-AzDataCollectionRule" ],
         "FullCommandName": [ "Remove-AzDataCollectionRule_DeleteViaIdentity" ],
         "ParameterSetName": [ "__AllParameterSets" ],
-        "User-Agent": [ "AzurePowershell/v10.1.0", "PSVersion/v7.3.7", "Az.DataCollectionRule/0.1.0" ],
+        "User-Agent": [ "AzurePowershell/v11.0.0", "PSVersion/v7.3.9", "Az.DataCollectionRule/0.1.0" ],
         "Authorization": [ "[Filtered]" ]
       },
       "ContentHeaders": {
@@ -111,16 +111,16 @@
         "Cache-Control": [ "no-cache" ],
         "Pragma": [ "no-cache" ],
         "Request-Context": [ "appId=cid-v1:2bbfbac8-e1b0-44af-b9c6-3a40669d37e3" ],
-        "x-ms-correlation-request-id": [ "0117c1a8-47a8-47c1-94b6-665c43000155" ],
-        "x-ms-client-request-id": [ "e35b63ab-f151-4da0-9b34-0c4e25ea923e" ],
-        "x-ms-routing-request-id": [ "KOREASOUTH:20231010T065318Z:0117c1a8-47a8-47c1-94b6-665c43000155" ],
-        "x-ms-request-id": [ "95ad5a09-5e6c-4f98-a182-22a8be3acea7" ],
+        "x-ms-correlation-request-id": [ "70993ff8-2286-4631-8971-2850998f3ba4" ],
+        "x-ms-client-request-id": [ "c5049a4d-106d-437f-ac41-cf3c7f8a2386" ],
+        "x-ms-routing-request-id": [ "SOUTHEASTASIA:20231109T064134Z:70993ff8-2286-4631-8971-2850998f3ba4" ],
+        "x-ms-request-id": [ "93383d0d-6c9f-42cf-9abe-ac509f1c8a21" ],
         "api-supported-versions": [ "2019-11-01-preview, 2021-04-01, 2021-09-01-preview, 2022-06-01, 2023-03-11" ],
         "Server": [ "Microsoft-HTTPAPI/2.0" ],
         "x-ms-ratelimit-remaining-subscription-deletes": [ "14996" ],
         "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
         "X-Content-Type-Options": [ "nosniff" ],
-        "Date": [ "Tue, 10 Oct 2023 06:53:18 GMT" ]
+        "Date": [ "Thu, 09 Nov 2023 06:41:35 GMT" ]
       },
       "ContentHeaders": {
         "Expires": [ "-1" ],
