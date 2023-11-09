@@ -794,14 +794,6 @@ namespace Microsoft.Azure.Commands.Compute
                     }
                 }
             } 
-            
-            if (shouldGuestAttestationExtBeInstalled()
-                && !this.IsParameterBound(c => c.SystemAssignedIdentity)
-                && !this.IsParameterBound(c => c.UserAssignedIdentity)
-               )
-            {
-                this.SystemAssignedIdentity = true;
-            }
 
             var resourceClient = AzureSession.Instance.ClientFactory.CreateArmClient<ResourceManagementClient>(
                     DefaultProfile.DefaultContext,
@@ -911,47 +903,7 @@ namespace Microsoft.Azure.Commands.Compute
                     Resources.VirtualMachineUseConnectionString,
                     connectionString);
                 asyncCmdlet.WriteObject(psResult);
-                
-                // Guest Attestation extension defaulting behavior
-                if (shouldGuestAttestationExtBeInstalled())
-                {
-                    var extensionParams = new VirtualMachineExtension { };
-
-                    if (IsLinuxOs()) //linux
-                    {
-                        extensionParams = new VirtualMachineExtension
-                        {
-                            Location = this.Location,
-                            Publisher = "Microsoft.Azure.Security.LinuxAttestation",
-                            VirtualMachineExtensionType = "GuestAttestation",
-                            TypeHandlerVersion = "1.0",
-                            EnableAutomaticUpgrade = true
-                        };
-                    }
-                    else //windows
-                    {
-                        extensionParams = new VirtualMachineExtension
-                        {
-                            Location = this.Location,
-                            Publisher = "Microsoft.Azure.Security.WindowsAttestation",
-                            VirtualMachineExtensionType = "GuestAttestation",
-                            TypeHandlerVersion = "1.0",
-                            EnableAutomaticUpgrade = true
-                        };
-                    }
-
-                    var extClient = ComputeClient.ComputeManagementClient.VirtualMachineExtensions;
-                    var op = extClient.BeginCreateOrUpdateWithHttpMessagesAsync
-                        (
-                            this.ResourceGroupName,
-                            this.Name,
-                            "GuestAttestation",
-                            extensionParams
-                        ).GetAwaiter().GetResult();
-                }
             }
-
-            
         }
 
         public void DefaultExecuteCmdlet()
