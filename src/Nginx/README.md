@@ -29,16 +29,18 @@ For information on how to develop for `Az.Nginx`, see [how-to.md](how-to.md).
 ### AutoRest Configuration
 > see https://aka.ms/autorest
 ``` yaml
+branch: e38e7dd462571865266d320bd7cec9804c67f70b
+tag: package-2023-04-01
 require:
 # readme.azure.noprofile.md is the common configuration file
   - $(this-folder)/../readme.azure.noprofile.md
 input-file:
 # You need to specify your swagger files here.
-  - https://github.com/Azure/azure-rest-api-specs/blob/5dd50f3a923888cae5b77a4d4a48cb57430ba9de/specification/nginx/resource-manager/NGINX.NGINXPLUS/stable/2022-08-01/swagger.json
+  - $(repo)/specification/nginx/resource-manager/NGINX.NGINXPLUS/stable/2023-04-01/swagger.json
 
 root-module-name: $(prefix).Nginx
 title: Nginx
-module-version: 0.1.0
+module-version: 1.0.0
 subject-prefix: Nginx
 nested-object-to-string: true
 
@@ -111,6 +113,12 @@ directive:
           },
           "logging": {
             "$ref": "#/definitions/NginxLogging"
+          },
+          "scalingProperties": {
+            "$ref": "#/definitions/NginxDeploymentScalingProperties"
+          },
+          "userProfile": {
+            "$ref": "#/definitions/NginxDeploymentUserProfile"
           }
         },
         "required": [
@@ -187,12 +195,6 @@ directive:
           },
           "properties": {
             "$ref": "#/definitions/NginxCertificateProperties"
-          },
-          "tags": {
-            "type": "object",
-            "additionalProperties": {
-              "type": "string"
-            }
           },
           "location": {
             "type": "string"

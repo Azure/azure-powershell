@@ -8,7 +8,7 @@ schema: 2.0.0
 # Remove-AzNginxDeployment
 
 ## SYNOPSIS
-Delete the Nginx deployment resource
+Delete the NGINX deployment resource
 
 ## SYNTAX
 
@@ -25,7 +25,7 @@ Remove-AzNginxDeployment -InputObject <INginxIdentity> [-DefaultProfile <PSObjec
 ```
 
 ## DESCRIPTION
-Delete the Nginx deployment resource
+Delete the NGINX deployment resource
 
 ## EXAMPLES
 
@@ -92,7 +92,7 @@ Accept wildcard characters: False
 ```
 
 ### -Name
-The name of targeted Nginx deployment
+The name of targeted NGINX deployment
 
 ```yaml
 Type: System.String

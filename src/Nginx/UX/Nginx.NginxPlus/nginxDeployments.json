@@ -1,13 +1,13 @@
 {
   "resourceType": "nginxDeployments",
-  "apiVersion": "2022-08-01",
+  "apiVersion": "2023-04-01",
   "learnMore": {
     "url": "https://learn.microsoft.com/powershell/module/az.nginx"
   },
   "commands": [
     {
       "name": "Get-AzNginxDeployment",
-      "description": "Get the Nginx deployment",
+      "description": "Get the NGINX deployment",
       "path": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Nginx.NginxPlus/nginxDeployments/{deploymentName}",
       "help": {
         "learnMore": {
@@ -25,7 +25,7 @@
       },
       "examples": [
         {
-          "description": "Get the Nginx deployment",
+          "description": "Get the NGINX deployment",
           "parameters": [
             {
               "name": "-Name",
@@ -45,7 +45,7 @@
     },
     {
       "name": "Remove-AzNginxDeployment",
-      "description": "Delete the Nginx deployment resource",
+      "description": "Delete the NGINX deployment resource",
       "path": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Nginx.NginxPlus/nginxDeployments/{deploymentName}",
       "help": {
         "learnMore": {
@@ -63,7 +63,7 @@
       },
       "examples": [
         {
-          "description": "Delete the Nginx deployment resource",
+          "description": "Delete the NGINX deployment resource",
           "parameters": [
             {
               "name": "-Name",

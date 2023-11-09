@@ -8,7 +8,7 @@ schema: 2.0.0
 # Get-AzNginxConfiguration
 
 ## SYNOPSIS
-Get the Nginx configuration of given Nginx deployment
+Get the NGINX configuration of given NGINX deployment
 
 ## SYNTAX
 
@@ -30,7 +30,7 @@ Get-AzNginxConfiguration -InputObject <INginxIdentity> [-DefaultProfile <PSObjec
 ```
 
 ## DESCRIPTION
-Get the Nginx configuration of given Nginx deployment
+Get the NGINX configuration of given NGINX deployment
 
 ## EXAMPLES
 
@@ -50,7 +50,8 @@ Get a default configuration.
 ## PARAMETERS
 
 ### -DefaultProfile
-The credentials, account, tenant, and subscription used for communication with Azure.
+The DefaultProfile parameter is not functional.
+Use the SubscriptionId parameter when available if executing the cmdlet against a different subscription.
 
 ```yaml
 Type: System.Management.Automation.PSObject
@@ -65,7 +66,7 @@ Accept wildcard characters: False
 ```
 
 ### -DeploymentName
-The name of targeted Nginx deployment
+The name of targeted NGINX deployment
 
 ```yaml
 Type: System.String
@@ -96,7 +97,7 @@ Accept wildcard characters: False
 ```
 
 ### -Name
-The name of configuration, only 'default' is supported value due to the singleton of Nginx conf
+The name of configuration, only 'default' is supported value due to the singleton of NGINX conf
 
 ```yaml
 Type: System.String
@@ -150,7 +151,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.Nginx.Models.Api20220801.INginxConfiguration
+### Microsoft.Azure.PowerShell.Cmdlets.Nginx.Models.Api20230401.INginxConfiguration
 
 ## NOTES
 
