@@ -337,72 +337,72 @@ namespace Microsoft.Azure.Commands.DataFactoryV2
         [Parameter(
            ParameterSetName = ParameterSetNames.ByIntegrationRuntimeName,
            Mandatory = false,
-           HelpMessage = Constants.HelpIntegrationRuntimeCopyComputeScaleDataIntegrationUnit)]
+           HelpMessage = Constants.HelpIntegrationRuntimeManagedVNetCopyComputeScaleDataIntegrationUnit)]
         [Parameter(
            ParameterSetName = ParameterSetNames.ByResourceId,
            Mandatory = false,
-           HelpMessage = Constants.HelpIntegrationRuntimeCopyComputeScaleDataIntegrationUnit)]
+           HelpMessage = Constants.HelpIntegrationRuntimeManagedVNetCopyComputeScaleDataIntegrationUnit)]
         [Parameter(
            ParameterSetName = ParameterSetNames.ByIntegrationRuntimeObject,
            Mandatory = false,
-           HelpMessage = Constants.HelpIntegrationRuntimeCopyComputeScaleDataIntegrationUnit)]
-        public int? CopyComputeScaleDataIntegrationUnit { get; set; }
+           HelpMessage = Constants.HelpIntegrationRuntimeManagedVNetCopyComputeScaleDataIntegrationUnit)]
+        public int? ManagedVNetCopyComputeScaleDataIntegrationUnit { get; set; }
 
         [Parameter(
            ParameterSetName = ParameterSetNames.ByIntegrationRuntimeName,
            Mandatory = false,
-           HelpMessage = Constants.HelpIntegrationRuntimeCopyComputeScaleTimeToLive)]
+           HelpMessage = Constants.HelpIntegrationRuntimeManagedVNetCopyComputeScaleTimeToLive)]
         [Parameter(
            ParameterSetName = ParameterSetNames.ByResourceId,
            Mandatory = false,
-           HelpMessage = Constants.HelpIntegrationRuntimeCopyComputeScaleTimeToLive)]
+           HelpMessage = Constants.HelpIntegrationRuntimeManagedVNetCopyComputeScaleTimeToLive)]
         [Parameter(
            ParameterSetName = ParameterSetNames.ByIntegrationRuntimeObject,
            Mandatory = false,
-           HelpMessage = Constants.HelpIntegrationRuntimeCopyComputeScaleTimeToLive)]
-        public int? CopyComputeScaleTimeToLive { get; set; }
+           HelpMessage = Constants.HelpIntegrationRuntimeManagedVNetCopyComputeScaleTimeToLive)]
+        public int? ManagedVNetCopyComputeScaleTimeToLive { get; set; }
 
         [Parameter(
            ParameterSetName = ParameterSetNames.ByIntegrationRuntimeName,
            Mandatory = false,
-           HelpMessage = Constants.HelpIntegrationRuntimePipelineExternalComputeScaleTimeToLive)]
+           HelpMessage = Constants.HelpIntegrationRuntimeManagedVNetPipelineExternalComputeScaleTimeToLive)]
         [Parameter(
            ParameterSetName = ParameterSetNames.ByResourceId,
            Mandatory = false,
-           HelpMessage = Constants.HelpIntegrationRuntimePipelineExternalComputeScaleTimeToLive)]
+           HelpMessage = Constants.HelpIntegrationRuntimeManagedVNetPipelineExternalComputeScaleTimeToLive)]
         [Parameter(
            ParameterSetName = ParameterSetNames.ByIntegrationRuntimeObject,
            Mandatory = false,
-           HelpMessage = Constants.HelpIntegrationRuntimePipelineExternalComputeScaleTimeToLive)]
-        public int? PipelineExternalComputeScaleTimeToLive { get; set; }
+           HelpMessage = Constants.HelpIntegrationRuntimeManagedVNetPipelineExternalComputeScaleTimeToLive)]
+        public int? ManagedVNetPipelineExternalComputeScaleTimeToLive { get; set; }
 
         [Parameter(
            ParameterSetName = ParameterSetNames.ByIntegrationRuntimeName,
            Mandatory = false,
-           HelpMessage = Constants.HelpIntegrationRuntimePipelineExternalComputeScaleNumberOfPipelineNodes)]
+           HelpMessage = Constants.HelpIntegrationRuntimeManagedVNetNumberOfPipelineNodes)]
         [Parameter(
            ParameterSetName = ParameterSetNames.ByResourceId,
            Mandatory = false,
-           HelpMessage = Constants.HelpIntegrationRuntimePipelineExternalComputeScaleNumberOfPipelineNodes)]
+           HelpMessage = Constants.HelpIntegrationRuntimeManagedVNetNumberOfPipelineNodes)]
         [Parameter(
            ParameterSetName = ParameterSetNames.ByIntegrationRuntimeObject,
            Mandatory = false,
-           HelpMessage = Constants.HelpIntegrationRuntimePipelineExternalComputeScaleNumberOfPipelineNodes)]
-        public int? PipelineExternalComputeScaleNumberOfPipelineNodes { get; set; }
+           HelpMessage = Constants.HelpIntegrationRuntimeManagedVNetNumberOfPipelineNodes)]
+        public int? ManagedVNetNumberOfPipelineNodes { get; set; }
 
         [Parameter(
            ParameterSetName = ParameterSetNames.ByIntegrationRuntimeName,
            Mandatory = false,
-           HelpMessage = Constants.HelpIntegrationRuntimePipelineExternalComputeScaleNumberOfPipelineNodes)]
+           HelpMessage = Constants.HelpIntegrationRuntimeManagedVNetNumberOfExternalNodes)]
         [Parameter(
            ParameterSetName = ParameterSetNames.ByResourceId,
            Mandatory = false,
-           HelpMessage = Constants.HelpIntegrationRuntimePipelineExternalComputeScaleNumberOfPipelineNodes)]
+           HelpMessage = Constants.HelpIntegrationRuntimeManagedVNetNumberOfExternalNodes)]
         [Parameter(
            ParameterSetName = ParameterSetNames.ByIntegrationRuntimeObject,
            Mandatory = false,
-           HelpMessage = Constants.HelpIntegrationRuntimePipelineExternalComputeScaleNumberOfPipelineNodes)]
-        public int? PipelineExternalComputeScaleNumberOfExternalNodes { get; set; }
+           HelpMessage = Constants.HelpIntegrationRuntimeManagedVNetNumberOfExternalNodes)]
+        public int? ManagedVNetNumberOfExternalNodes { get; set; }
 
         [Parameter(
            ParameterSetName = ParameterSetNames.ByIntegrationRuntimeName,
@@ -890,7 +890,7 @@ namespace Microsoft.Azure.Commands.DataFactoryV2
 
             }
 
-            if (CopyComputeScaleDataIntegrationUnit != null || CopyComputeScaleTimeToLive != null)
+            if (ManagedVNetCopyComputeScaleDataIntegrationUnit != null || ManagedVNetCopyComputeScaleTimeToLive != null)
             {
                 if (integrationRuntime.ComputeProperties == null)
                 {
@@ -901,11 +901,11 @@ namespace Microsoft.Azure.Commands.DataFactoryV2
                     integrationRuntime.ComputeProperties.CopyComputeScaleProperties = new CopyComputeScaleProperties();
                 }
 
-                integrationRuntime.ComputeProperties.CopyComputeScaleProperties.DataIntegrationUnit = CopyComputeScaleDataIntegrationUnit ?? integrationRuntime.ComputeProperties.CopyComputeScaleProperties.DataIntegrationUnit;
-                integrationRuntime.ComputeProperties.CopyComputeScaleProperties.TimeToLive = CopyComputeScaleTimeToLive ?? integrationRuntime.ComputeProperties.CopyComputeScaleProperties.TimeToLive;
+                integrationRuntime.ComputeProperties.CopyComputeScaleProperties.DataIntegrationUnit = ManagedVNetCopyComputeScaleDataIntegrationUnit ?? integrationRuntime.ComputeProperties.CopyComputeScaleProperties.DataIntegrationUnit;
+                integrationRuntime.ComputeProperties.CopyComputeScaleProperties.TimeToLive = ManagedVNetCopyComputeScaleTimeToLive ?? integrationRuntime.ComputeProperties.CopyComputeScaleProperties.TimeToLive;
             }
 
-            if (PipelineExternalComputeScaleTimeToLive != null || PipelineExternalComputeScaleNumberOfPipelineNodes != null || PipelineExternalComputeScaleNumberOfExternalNodes != null)
+            if (ManagedVNetPipelineExternalComputeScaleTimeToLive != null || ManagedVNetNumberOfPipelineNodes != null || ManagedVNetNumberOfExternalNodes != null)
             {
                 if (integrationRuntime.ComputeProperties == null)
                 {
@@ -916,9 +916,9 @@ namespace Microsoft.Azure.Commands.DataFactoryV2
                     integrationRuntime.ComputeProperties.PipelineExternalComputeScaleProperties = new PipelineExternalComputeScaleProperties();
                 }
 
-                integrationRuntime.ComputeProperties.PipelineExternalComputeScaleProperties.TimeToLive = PipelineExternalComputeScaleTimeToLive ?? integrationRuntime.ComputeProperties.PipelineExternalComputeScaleProperties.TimeToLive;
-                integrationRuntime.ComputeProperties.PipelineExternalComputeScaleProperties.NumberOfPipelineNodes = PipelineExternalComputeScaleNumberOfPipelineNodes ?? integrationRuntime.ComputeProperties.PipelineExternalComputeScaleProperties.NumberOfPipelineNodes;
-                integrationRuntime.ComputeProperties.PipelineExternalComputeScaleProperties.NumberOfExternalNodes = PipelineExternalComputeScaleNumberOfExternalNodes ?? integrationRuntime.ComputeProperties.PipelineExternalComputeScaleProperties.NumberOfExternalNodes;
+                integrationRuntime.ComputeProperties.PipelineExternalComputeScaleProperties.TimeToLive = ManagedVNetPipelineExternalComputeScaleTimeToLive ?? integrationRuntime.ComputeProperties.PipelineExternalComputeScaleProperties.TimeToLive;
+                integrationRuntime.ComputeProperties.PipelineExternalComputeScaleProperties.NumberOfPipelineNodes = ManagedVNetNumberOfPipelineNodes ?? integrationRuntime.ComputeProperties.PipelineExternalComputeScaleProperties.NumberOfPipelineNodes;
+                integrationRuntime.ComputeProperties.PipelineExternalComputeScaleProperties.NumberOfExternalNodes = ManagedVNetNumberOfExternalNodes ?? integrationRuntime.ComputeProperties.PipelineExternalComputeScaleProperties.NumberOfExternalNodes;
             }
 
             if (PublicIPs != null)

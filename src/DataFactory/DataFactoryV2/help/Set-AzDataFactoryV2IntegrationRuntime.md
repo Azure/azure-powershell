@@ -289,7 +289,7 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -CopyComputeScaleDataIntegrationUnit
+### -ManagedVNetCopyComputeScaleDataIntegrationUnit
 DIU number setting reserved for copy activity execution.
 
 ```yaml
@@ -304,7 +304,7 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -CopyComputeScaleTimeToLive
+### -ManagedVNetCopyComputeScaleTimeToLive
 Time to live (in minutes) setting of integration runtime which will execute copy activity.
 
 ```yaml
@@ -319,7 +319,7 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -PipelineExternalComputeScaleTimeToLive
+### -ManagedVNetPipelineExternalComputeScaleTimeToLive
 Time to live (in minutes) setting of integration runtime which will execute pipeline and external activity.
 
 ```yaml
@@ -334,7 +334,7 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -PipelineExternalComputeScaleNumberOfPipelineNodes
+### -ManagedVNetNumberOfPipelineNodes
 Number of the pipeline nodes, which should be greater than 0 and less than 11.
 
 ```yaml
@@ -349,7 +349,7 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -PipelineExternalComputeScaleNumberOfExternalNodes
+### -ManagedVNetNumberOfExternalNodes
 Number of the the external nodes, which should be greater than 0 and less than 11.
 
 ```yaml
