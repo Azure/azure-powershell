@@ -50,7 +50,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models
         /// <summary>Backing field for <see cref="Location" /> property.</summary>
         private string _location;
 
-        /// <summary>Azure location (region) name.</summary>
+        /// <summary>The name of Azure region.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.Kusto.Origin(Microsoft.Azure.PowerShell.Cmdlets.Kusto.PropertyOrigin.Owned)]
         public string Location { get => this._location; set => this._location = value; }
 
@@ -64,7 +64,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models
         /// <summary>Backing field for <see cref="OperationId" /> property.</summary>
         private string _operationId;
 
-        /// <summary>The Guid of the operation ID</summary>
+        /// <summary>The ID of an ongoing async operation.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.Kusto.Origin(Microsoft.Azure.PowerShell.Cmdlets.Kusto.PropertyOrigin.Owned)]
         public string OperationId { get => this._operationId; set => this._operationId = value; }
 
@@ -92,9 +92,16 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models
         /// <summary>Backing field for <see cref="ResourceGroupName" /> property.</summary>
         private string _resourceGroupName;
 
-        /// <summary>The name of the resource group containing the Kusto cluster.</summary>
+        /// <summary>The name of the resource group. The name is case insensitive.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.Kusto.Origin(Microsoft.Azure.PowerShell.Cmdlets.Kusto.PropertyOrigin.Owned)]
         public string ResourceGroupName { get => this._resourceGroupName; set => this._resourceGroupName = value; }
+
+        /// <summary>Backing field for <see cref="SandboxCustomImageName" /> property.</summary>
+        private string _sandboxCustomImageName;
+
+        /// <summary>The name of the sandbox custom image.</summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.Kusto.Origin(Microsoft.Azure.PowerShell.Cmdlets.Kusto.PropertyOrigin.Owned)]
+        public string SandboxCustomImageName { get => this._sandboxCustomImageName; set => this._sandboxCustomImageName = value; }
 
         /// <summary>Backing field for <see cref="ScriptName" /> property.</summary>
         private string _scriptName;
@@ -106,10 +113,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models
         /// <summary>Backing field for <see cref="SubscriptionId" /> property.</summary>
         private string _subscriptionId;
 
-        /// <summary>
-        /// Gets subscription credentials which uniquely identify Microsoft Azure subscription. The subscription ID forms part of
-        /// the URI for every service call.
-        /// </summary>
+        /// <summary>The ID of the target subscription.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.Kusto.Origin(Microsoft.Azure.PowerShell.Cmdlets.Kusto.PropertyOrigin.Owned)]
         public string SubscriptionId { get => this._subscriptionId; set => this._subscriptionId = value; }
 
@@ -162,11 +166,11 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models
         SerializedName = @"id",
         PossibleTypes = new [] { typeof(string) })]
         string Id { get; set; }
-        /// <summary>Azure location (region) name.</summary>
+        /// <summary>The name of Azure region.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.Kusto.Runtime.Info(
         Required = false,
         ReadOnly = false,
-        Description = @"Azure location (region) name.",
+        Description = @"The name of Azure region.",
         SerializedName = @"location",
         PossibleTypes = new [] { typeof(string) })]
         string Location { get; set; }
@@ -178,11 +182,11 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models
         SerializedName = @"managedPrivateEndpointName",
         PossibleTypes = new [] { typeof(string) })]
         string ManagedPrivateEndpointName { get; set; }
-        /// <summary>The Guid of the operation ID</summary>
+        /// <summary>The ID of an ongoing async operation.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.Kusto.Runtime.Info(
         Required = false,
         ReadOnly = false,
-        Description = @"The Guid of the operation ID",
+        Description = @"The ID of an ongoing async operation.",
         SerializedName = @"operationId",
         PossibleTypes = new [] { typeof(string) })]
         string OperationId { get; set; }
@@ -210,14 +214,22 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models
         SerializedName = @"privateLinkResourceName",
         PossibleTypes = new [] { typeof(string) })]
         string PrivateLinkResourceName { get; set; }
-        /// <summary>The name of the resource group containing the Kusto cluster.</summary>
+        /// <summary>The name of the resource group. The name is case insensitive.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.Kusto.Runtime.Info(
         Required = false,
         ReadOnly = false,
-        Description = @"The name of the resource group containing the Kusto cluster.",
+        Description = @"The name of the resource group. The name is case insensitive.",
         SerializedName = @"resourceGroupName",
         PossibleTypes = new [] { typeof(string) })]
         string ResourceGroupName { get; set; }
+        /// <summary>The name of the sandbox custom image.</summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.Kusto.Runtime.Info(
+        Required = false,
+        ReadOnly = false,
+        Description = @"The name of the sandbox custom image.",
+        SerializedName = @"sandboxCustomImageName",
+        PossibleTypes = new [] { typeof(string) })]
+        string SandboxCustomImageName { get; set; }
         /// <summary>The name of the Kusto database script.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.Kusto.Runtime.Info(
         Required = false,
@@ -226,14 +238,11 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models
         SerializedName = @"scriptName",
         PossibleTypes = new [] { typeof(string) })]
         string ScriptName { get; set; }
-        /// <summary>
-        /// Gets subscription credentials which uniquely identify Microsoft Azure subscription. The subscription ID forms part of
-        /// the URI for every service call.
-        /// </summary>
+        /// <summary>The ID of the target subscription.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.Kusto.Runtime.Info(
         Required = false,
         ReadOnly = false,
-        Description = @"Gets subscription credentials which uniquely identify Microsoft Azure subscription. The subscription ID forms part of the URI for every service call.",
+        Description = @"The ID of the target subscription.",
         SerializedName = @"subscriptionId",
         PossibleTypes = new [] { typeof(string) })]
         string SubscriptionId { get; set; }
@@ -252,11 +261,11 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models
         string DatabaseName { get; set; }
         /// <summary>Resource identity path</summary>
         string Id { get; set; }
-        /// <summary>Azure location (region) name.</summary>
+        /// <summary>The name of Azure region.</summary>
         string Location { get; set; }
         /// <summary>The name of the managed private endpoint.</summary>
         string ManagedPrivateEndpointName { get; set; }
-        /// <summary>The Guid of the operation ID</summary>
+        /// <summary>The ID of an ongoing async operation.</summary>
         string OperationId { get; set; }
         /// <summary>The name of the Kusto principalAssignment.</summary>
         string PrincipalAssignmentName { get; set; }
@@ -264,14 +273,13 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models
         string PrivateEndpointConnectionName { get; set; }
         /// <summary>The name of the private link resource.</summary>
         string PrivateLinkResourceName { get; set; }
-        /// <summary>The name of the resource group containing the Kusto cluster.</summary>
+        /// <summary>The name of the resource group. The name is case insensitive.</summary>
         string ResourceGroupName { get; set; }
+        /// <summary>The name of the sandbox custom image.</summary>
+        string SandboxCustomImageName { get; set; }
         /// <summary>The name of the Kusto database script.</summary>
         string ScriptName { get; set; }
-        /// <summary>
-        /// Gets subscription credentials which uniquely identify Microsoft Azure subscription. The subscription ID forms part of
-        /// the URI for every service call.
-        /// </summary>
+        /// <summary>The ID of the target subscription.</summary>
         string SubscriptionId { get; set; }
 
     }

@@ -16,22 +16,31 @@ Describe 'Get-AzKustoPrivateLinkResource' {
         . ($mockingPath | Select-Object -First 1).FullName
     }
 
-    It 'GetViaIdentity' -Skip {
-        { throw [System.NotImplementedException] } | Should -Not -Throw
+    It 'GetViaIdentity' {
+        $privateLinkResourceName = "cluster"
+        $fullPrivateLinkResourceName = $env.kustoClusterName + "/cluster"
+        $resourceId = "/subscriptions/" + $env.SubscriptionId + "/resourceGroups/" + $env.resourceGroupName + "/providers/Microsoft.Kusto/Clusters/" + $env.kustoClusterName + "/PrivateLinkResources/cluster"
+
+        $privateLink = Get-AzKustoPrivateLinkResource -ClusterName $env.kustoClusterName -Name $privateLinkResourceName -ResourceGroupName $env.resourceGroupName
+        $privateLink = Get-AzKustoPrivateLinkResource -InputObject $privateLink
+        
+        Validate_PrivateLink $privateLink $resourceId $fullPrivateLinkResourceName
     }
 
     It 'List' {
-        $PrivateLinkList = Get-AzKustoPrivateLinkResource -ClusterName $env.kustoClusterName -ResourceGroupName $env.resourceGroupName
         $fullPrivateLinkResourceName = $env.kustoClusterName + "/cluster"
         $resourceId = "/subscriptions/" + $env.SubscriptionId + "/resourceGroups/" + $env.resourceGroupName + "/providers/Microsoft.Kusto/Clusters/" + $env.kustoClusterName + "/PrivateLinkResources/cluster"
-        Validate_PrivateLinkList $PrivateLinkList $resourceId $fullPrivateLinkResourceName
+
+        $privateLinkList = Get-AzKustoPrivateLinkResource -ClusterName $env.kustoClusterName -ResourceGroupName $env.resourceGroupName
+        Validate_PrivateLinkList $privateLinkList $resourceId $fullPrivateLinkResourceName
     }
 
     It 'Get' {        
         $privateLinkResourceName = "cluster"
-        $PrivateLink = Get-AzKustoPrivateLinkResource -ClusterName $env.kustoClusterName -Name $privateLinkResourceName -ResourceGroupName $env.resourceGroupName
         $fullPrivateLinkResourceName = $env.kustoClusterName + "/cluster"
         $resourceId = "/subscriptions/" + $env.SubscriptionId + "/resourceGroups/" + $env.resourceGroupName + "/providers/Microsoft.Kusto/Clusters/" + $env.kustoClusterName + "/PrivateLinkResources/cluster"
-        Validate_PrivateLink $PrivateLink $resourceId $fullPrivateLinkResourceName
+
+        $privateLink = Get-AzKustoPrivateLinkResource -ClusterName $env.kustoClusterName -Name $privateLinkResourceName -ResourceGroupName $env.resourceGroupName
+        Validate_PrivateLink $privateLink $resourceId $fullPrivateLinkResourceName
     }
 }

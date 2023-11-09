@@ -1,5 +1,5 @@
 ---
-external help file:
+external help file: Az.StackHCI-help.xml
 Module Name: Az.StackHCI
 online version: https://learn.microsoft.com/powershell/module/az.stackhci/get-azstackhciremotesupportsessionhistory
 schema: 2.0.0
@@ -13,8 +13,8 @@ Gets Remote Support Session History Details.
 ## SYNTAX
 
 ```
-Get-AzStackHCIRemoteSupportSessionHistory [[-SessionId] <String>] [[-FromDate] <DateTime>]
- [-IncludeSessionTranscript] [<CommonParameters>]
+Get-AzStackHCIRemoteSupportSessionHistory [[-SessionId] <String>] [-IncludeSessionTranscript]
+ [[-FromDate] <DateTime>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -24,7 +24,7 @@ Session history represents all remote accesses made by Microsoft Support for eit
 
 ### Example 1:
 ```powershell
-Get-AzStackHCIRemoteSupportSessionHistory 
+Get-AzStackHCIRemoteSupportSessionHistory
 ```
 
 ```output
@@ -48,7 +48,7 @@ Parameter Sets: (All)
 Aliases:
 
 Required: False
-Position: 1
+Position: 2
 Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
@@ -83,7 +83,7 @@ Parameter Sets: (All)
 Aliases:
 
 Required: False
-Position: 0
+Position: 1
 Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
@@ -100,7 +100,4 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## NOTES
 
-ALIASES
-
 ## RELATED LINKS
-

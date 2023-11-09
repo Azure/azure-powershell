@@ -16,6 +16,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Subscription.Cmdlets
     [global::System.Management.Automation.OutputType(typeof(bool))]
     [global::Microsoft.Azure.PowerShell.Cmdlets.Subscription.Description(@"Delete Alias.")]
     [global::Microsoft.Azure.PowerShell.Cmdlets.Subscription.Generated]
+    [global::Microsoft.Azure.PowerShell.Cmdlets.Subscription.HttpPath(Path = "/providers/Microsoft.Subscription/aliases/{aliasName}", ApiVersion = "2021-10-01")]
     public partial class RemoveAzSubscriptionAlias_DeleteViaIdentity : global::System.Management.Automation.PSCmdlet,
         Microsoft.Azure.PowerShell.Cmdlets.Subscription.Runtime.IEventListener
     {

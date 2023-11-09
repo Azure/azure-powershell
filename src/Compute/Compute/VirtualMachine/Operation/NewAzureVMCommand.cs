@@ -51,6 +51,7 @@ using SM = Microsoft.Azure.PowerShell.Cmdlets.Compute.Helpers.Storage.Models;
 using Microsoft.Azure.Commands.Compute;
 using Microsoft.Azure.PowerShell.Cmdlets.Compute.Helpers.Network.Models;
 using Microsoft.WindowsAzure.Commands.Common.CustomAttributes;
+using Microsoft.Azure.Commands.Common.Strategies.Compute;
 
 namespace Microsoft.Azure.Commands.Compute
 {
@@ -219,6 +220,7 @@ namespace Microsoft.Azure.Commands.Compute
             "UbuntuLTS",
             "Ubuntu2204",
             "FlatcarLinuxFreeGen2",
+            "Win2022Datacenter",
             "Win2022AzureEditionCore",
             "Win2019Datacenter",
             "Win2016Datacenter",
@@ -585,6 +587,14 @@ namespace Microsoft.Azure.Commands.Compute
                     }
                 }
 
+                // Standard security type removing value since API does not support it.
+                if (_cmdlet.IsParameterBound(c => c.SecurityType)  
+                    && _cmdlet.SecurityType != null
+                    && _cmdlet.SecurityType.ToString().ToLower() == ConstantValues.StandardSecurityType)
+                {
+                    _cmdlet.SecurityType = null;
+                }
+
                 var resourceGroup = ResourceGroupStrategy.CreateResourceGroupConfig(_cmdlet.ResourceGroupName);
                 var virtualNetwork = resourceGroup.CreateVirtualNetworkConfig(
                     name: _cmdlet.VirtualNetworkName, edgeZone: _cmdlet.EdgeZone, addressPrefix: _cmdlet.AddressPrefix);
@@ -753,8 +763,9 @@ namespace Microsoft.Azure.Commands.Compute
             PublicIpAddressName = PublicIpAddressName;
             SecurityGroupName = SecurityGroupName ?? Name;
 
-            // Check Guest Attestation
-            if (this.IsParameterBound(c => c.SecurityType))
+            // Check TrustedLaunch UEFI values defaulting
+            if (this.IsParameterBound(c => c.SecurityType)
+                && this.SecurityType != null)
             {
                 if (this.SecurityType?.ToLower() == ConstantValues.TrustedLaunchSecurityType || this.SecurityType?.ToLower() == ConstantValues.ConfidentialVMSecurityType)
                 {
@@ -762,8 +773,33 @@ namespace Microsoft.Azure.Commands.Compute
                     this.EnableVtpm = this.EnableVtpm ?? true;
                     this.EnableSecureBoot = this.EnableSecureBoot ?? true;
                 }
+                else if (this.SecurityType?.ToLower() == ConstantValues.StandardSecurityType)
+                {
+                    this.SecurityType = this.SecurityType;
+                }
                 
             }
+            // Default TrustedLaunch values for SimpleParameterSet (no config)
+            // imagerefid is specifically shared gallery id, so don't want it.
+            else
+            {
+                this.SecurityType = ConstantValues.TrustedLaunchSecurityType;
+                if (!this.IsParameterBound(c => c.Image) 
+                    && !this.IsParameterBound(c => c.ImageReferenceId) 
+                    && !this.IsParameterBound(c => c.SharedGalleryImageId))
+                {
+                    this.Image = ConstantValues.TrustedLaunchDefaultImageAlias;
+                    if (!this.IsParameterBound(c => c.EnableSecureBoot))
+                    {
+                        this.EnableSecureBoot = true;
+                    }
+                    if (!this.IsParameterBound(c => c.EnableVtpm))
+                    {
+                        this.EnableVtpm = true;
+                    }
+                }
+            } 
+            
             if (shouldGuestAttestationExtBeInstalled()
                 && !this.IsParameterBound(c => c.SystemAssignedIdentity)
                 && !this.IsParameterBound(c => c.UserAssignedIdentity)
@@ -812,7 +848,7 @@ namespace Microsoft.Azure.Commands.Compute
                         Kind = "StorageV2",
                         Sku = new Microsoft.Azure.PowerShell.Cmdlets.Compute.Helpers.Storage.Models.Sku
                         {
-                            Name = SkuName.PremiumLRS
+                            Name = Microsoft.Azure.PowerShell.Cmdlets.Compute.Helpers.Storage.Models.SkuName.PremiumLRS
                         },
                         Location = Location
                     });
@@ -880,8 +916,7 @@ namespace Microsoft.Azure.Commands.Compute
                     Resources.VirtualMachineUseConnectionString,
                     connectionString);
                 asyncCmdlet.WriteObject(psResult);
-
-
+                
                 // Guest Attestation extension defaulting behavior
                 if (shouldGuestAttestationExtBeInstalled())
                 {
@@ -952,8 +987,40 @@ namespace Microsoft.Azure.Commands.Compute
                 ExtendedLocation = new CM.ExtendedLocation { Name = this.EdgeZone, Type = CM.ExtendedLocationTypes.EdgeZone };
             }
 
+            // Normal TL defaulting check, minimal params
+            if (this.VM.SecurityProfile?.SecurityType == null
+             && this.VM.StorageProfile?.ImageReference == null
+             && this.VM.StorageProfile?.OsDisk?.ManagedDisk?.Id == null
+             && this.VM.StorageProfile?.ImageReference?.SharedGalleryImageId == null) //had to add this
+            {
+                defaultTrustedLaunchAndUefi();
+
+                setTrustedLaunchImage();
+            }
+
+            // Disk attached scenario for TL defaulting
+            // Determines if the disk has SecurityType enabled.
+            // If so, turns on TrustedLaunch for this VM.
+            if (this.VM.SecurityProfile?.SecurityType == null
+                && this.VM.StorageProfile?.OsDisk?.ManagedDisk?.Id != null)
+            {
+                var mDiskId = this.VM.StorageProfile?.OsDisk?.ManagedDisk.Id.ToString();
+                var diskIdParts = mDiskId.Split(new char[] { '/' }, StringSplitOptions.RemoveEmptyEntries);
+                string rgName = diskIdParts[Array.IndexOf(diskIdParts, "resourceGroups") + 1];
+                string diskName = diskIdParts[Array.IndexOf(diskIdParts, "disks") + 1];
+                var getManagedDisk = ComputeClient.ComputeManagementClient.Disks.Get(rgName, diskName);
+                if (getManagedDisk.SecurityProfile?.SecurityType != null
+                    && getManagedDisk.SecurityProfile?.SecurityType?.ToString().ToLower() == ConstantValues.TrustedLaunchSecurityType)
+                {
+                    defaultTrustedLaunchAndUefi();
+                }
+            }
+
             // Guest Attestation extension defaulting scenario check.
-            if (this.VM?.SecurityProfile?.SecurityType?.ToLower() == ConstantValues.TrustedLaunchSecurityType || this.VM?.SecurityProfile?.SecurityType?.ToLower() == ConstantValues.ConfidentialVMSecurityType)
+            // And SecureBootEnabled and VtpmEnabled defaulting scenario.
+            if (this.VM.SecurityProfile?.SecurityType != null
+                && (this.VM.SecurityProfile?.SecurityType?.ToLower() == ConstantValues.TrustedLaunchSecurityType 
+                || this.VM.SecurityProfile?.SecurityType?.ToLower() == ConstantValues.ConfidentialVMSecurityType))
             {
                 if (this.VM?.SecurityProfile?.UefiSettings != null)
                 {
@@ -965,6 +1032,66 @@ namespace Microsoft.Azure.Commands.Compute
                     this.VM.SecurityProfile.UefiSettings = new UefiSettings(true, true);
                 }
             }
+            
+
+            // ImageReference provided, TL defaulting occurs if image is Gen2. 
+            if (this.VM.SecurityProfile?.SecurityType == null
+                && this.VM.StorageProfile?.ImageReference != null)
+            {
+                if (this.VM.StorageProfile?.ImageReference?.Id != null)//This code should never happen apparently
+                {
+                    string imageRefString = this.VM.StorageProfile.ImageReference.Id.ToString();
+
+                    var parts = imageRefString.Split(new char[] { '/' }, StringSplitOptions.RemoveEmptyEntries);
+
+                    string imagePublisher = parts[Array.IndexOf(parts, "Publishers") + 1];
+                    string imageOffer = parts[Array.IndexOf(parts, "Offers") + 1];
+                    string imageSku = parts[Array.IndexOf(parts, "Skus") + 1];
+                    string imageVersion = parts[Array.IndexOf(parts, "Versions") + 1];
+                    //location is required when config object provided. 
+                    var imgResponse = ComputeClient.ComputeManagementClient.VirtualMachineImages.GetWithHttpMessagesAsync(
+                            this.Location.Canonicalize(),
+                            imagePublisher,
+                            imageOffer,
+                            imageSku,
+                            version: imageVersion).GetAwaiter().GetResult();
+
+                    setHyperVGenForImageCheckAndTLDefaulting(imgResponse);
+                }
+                else
+                {
+                    // handle each field in image reference itself to then call it.
+                    Microsoft.Rest.Azure.AzureOperationResponse<VirtualMachineImage> specificImageRespone = retrieveSpecificImageFromNotId();
+                    setHyperVGenForImageCheckAndTLDefaulting(specificImageRespone);
+                }
+            }
+
+            if (this.VM.SecurityProfile?.SecurityType == ConstantValues.TrustedLaunchSecurityType
+             && this.VM.StorageProfile?.ImageReference == null
+             && this.VM.StorageProfile?.OsDisk?.ManagedDisk?.Id == null //had to add this
+             && this.VM.StorageProfile?.ImageReference?.SharedGalleryImageId == null) 
+            {
+                defaultTrustedLaunchAndUefi();
+
+                setTrustedLaunchImage();
+            }
+
+            // Standard security type removing value since API does not support it yet.
+            if (this.VM.SecurityProfile?.SecurityType != null
+                && this.VM.SecurityProfile?.SecurityType?.ToString().ToLower() == ConstantValues.StandardSecurityType)
+            {
+                if (this.VM.SecurityProfile.UefiSettings?.SecureBootEnabled == null
+                    && this.VM.SecurityProfile.UefiSettings?.VTpmEnabled == null
+                    && this.VM.SecurityProfile.EncryptionAtHost == null)
+                {
+                    this.VM.SecurityProfile = null;
+                }
+                else
+                {
+                    this.VM.SecurityProfile.SecurityType = null;
+                }
+            }
+
             // Check if Identity can be defaulted in. 
             if (shouldGuestAttestationExtBeInstalled() &&
                 this.VM != null &&
@@ -972,6 +1099,7 @@ namespace Microsoft.Azure.Commands.Compute
             {
                 this.VM.Identity = new VirtualMachineIdentity(null, null, Microsoft.Azure.Management.Compute.Models.ResourceIdentityType.SystemAssigned);
             }
+
 
             if (ShouldProcess(this.VM.Name, VerbsCommon.New))
             {
@@ -1120,6 +1248,75 @@ namespace Microsoft.Azure.Commands.Compute
                 });
             }
         }
+        
+        private void setTrustedLaunchImage()
+        {
+            if (this.VM.StorageProfile == null)
+            {
+                this.VM.StorageProfile = new StorageProfile();
+            }
+            if (this.VM.StorageProfile.ImageReference == null)
+            {
+                this.VM.StorageProfile.ImageReference = new ImageReference
+                {
+                    Publisher = "MicrosoftWindowsServer",
+                    Offer = "WindowsServer",
+                    Sku = "2022-datacenter-azure-edition",
+                    Version = "latest"
+                };
+            } 
+        }
+
+        /// <summary>
+        /// Default the TrustedLaunch SecurityType and UEFI values
+        /// </summary>
+        private void defaultTrustedLaunchAndUefi()
+        {
+            if (this.VM.SecurityProfile == null)
+            {
+                this.VM.SecurityProfile = new SecurityProfile();
+            }
+            this.VM.SecurityProfile.SecurityType = ConstantValues.TrustedLaunchSecurityType;
+
+            if (this.VM.SecurityProfile.UefiSettings == null)
+            {
+                this.VM.SecurityProfile.UefiSettings = new UefiSettings(true, true);
+            }
+
+            if (this.VM.SecurityProfile.UefiSettings.VTpmEnabled == null)
+            {
+                this.VM.SecurityProfile.UefiSettings.VTpmEnabled = true;
+            }
+            if (this.VM.SecurityProfile.UefiSettings.SecureBootEnabled == null)
+            {
+                this.VM.SecurityProfile.UefiSettings.SecureBootEnabled = true;
+            }
+        }
+
+        private void setHyperVGenForImageCheckAndTLDefaulting(Microsoft.Rest.Azure.AzureOperationResponse<VirtualMachineImage> specificImageRespone)
+        {
+            if (specificImageRespone.Body.HyperVGeneration.ToUpper() == "V2")
+            {
+                defaultTrustedLaunchAndUefi();
+            }
+            else if (specificImageRespone.Body.HyperVGeneration.ToUpper() == "V1")
+            {
+                if (this.VM.VirtualMachineScaleSet == null && !this.IsParameterBound(c => c.VmssId)) // for now, does not support adding vm to vmss directly, not worth the extra api call to see if the vmss is flex.
+                {
+                    if (this.VM.SecurityProfile == null)
+                    {
+                        this.VM.SecurityProfile = new SecurityProfile();
+                    }
+                    this.VM.SecurityProfile.SecurityType = ConstantValues.StandardSecurityType;
+                    
+                }
+
+                if (this.AsJobPresent() == false) // to avoid a failure when it is a job. Seems to fail when it is a job.
+                {
+                    WriteInformation(HelpMessages.TrustedLaunchUpgradeMessage, new string[] { "PSHOST" });
+                }
+            }
+        }
 
         /// <summary>
         /// Check to see if the Guest Attestation extension should be installed and Identity set to SystemAssigned.
@@ -1154,6 +1351,57 @@ namespace Microsoft.Azure.Commands.Compute
             else
             {
                 return false;
+            }
+        }
+
+        /// <summary>
+        /// Query for the given image if the ImageId is not used. 
+        /// </summary>
+        /// <returns> The API response of the VirtualMachineImage with the HyperVGeneration property. </returns>
+        private Microsoft.Rest.Azure.AzureOperationResponse<VirtualMachineImage> retrieveSpecificImageFromNotId()
+        {
+            var imageVersion = retrieveImageVersion(this.VM.StorageProfile.ImageReference.Publisher,
+                                                    this.VM.StorageProfile.ImageReference.Offer,
+                                                    this.VM.StorageProfile.ImageReference.Sku,
+                                                    this.VM.StorageProfile.ImageReference.Version);
+            var imgResponse = ComputeClient.ComputeManagementClient.VirtualMachineImages.GetWithHttpMessagesAsync(
+                    this.Location.Canonicalize(),
+                    this.VM.StorageProfile.ImageReference.Publisher,
+                    this.VM.StorageProfile.ImageReference.Offer,
+                    this.VM.StorageProfile.ImageReference.Sku,
+                    version: imageVersion).GetAwaiter().GetResult();
+            return imgResponse;
+        }
+
+        /// <summary>
+        /// Retrieves the specific image value if the version is 'latest' to use in Get calls.
+        /// </summary>
+        /// <param name="publisher"></param>
+        /// <param name="offer"></param>
+        /// <param name="sku"></param>
+        /// <param name="version"></param>
+        /// <returns></returns>
+        private string retrieveImageVersion(string publisher, string offer, string sku, string version)
+        {
+            if (version.ToLower() == "latest")
+            {
+                var imgResponse = ComputeClient.ComputeManagementClient.VirtualMachineImages.ListWithHttpMessagesAsync(
+                            this.Location.Canonicalize(),
+                            publisher,
+                            offer,
+                            sku,
+                            top: 1,
+                            orderby: "name desc").GetAwaiter().GetResult();
+
+                var parts = imgResponse.Body[0].Id.ToString().Split(new char[] { '/' }, StringSplitOptions.RemoveEmptyEntries);
+                
+                string imageVersion = parts[Array.IndexOf(parts, "Versions") + 1];
+
+                return imageVersion;
+            }
+            else 
+            {
+                return version;
             }
         }
 

@@ -16,6 +16,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Cmdlets
     [global::System.Management.Automation.OutputType(typeof(bool))]
     [global::Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Description(@"Delete ArcSetting resource details of HCI Cluster.")]
     [global::Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Generated]
+    [global::Microsoft.Azure.PowerShell.Cmdlets.StackHCI.HttpPath(Path = "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AzureStackHCI/clusters/{clusterName}/arcSettings/{arcSettingName}", ApiVersion = "2023-03-01")]
     public partial class RemoveAzStackHciArcSetting_Delete : global::System.Management.Automation.PSCmdlet,
         Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Runtime.IEventListener
     {

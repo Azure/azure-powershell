@@ -22,14 +22,20 @@ Currently only patching of tags is supported
 Patches a certificate.
 Currently only patching of tags is supported
 .Example
-Update-AzContainerAppManagedEnvCert -EnvName azps-env -ResourceGroupName azpstest_gp -Name azps-env-cert -Tag @{"123"="abc"}
+Update-AzContainerAppManagedEnvCert -EnvName azps-env -Name azps-env-cert -ResourceGroupName azps_test_group_app -Tag @{"abc"="123"}
 .Example
-Get-AzContainerAppManagedEnvCert -EnvName azps-env -ResourceGroupName azpstest_gp -Name azps-env-cert | Update-AzContainerAppManagedEnvCert -Tag @{"123"="abc"}
+$managedenvcert = Get-AzContainerAppManagedEnvCert -EnvName azps-env -Name azps-env-cert -ResourceGroupName azps_test_group_app
+
+Update-AzContainerAppManagedEnvCert -InputObject $managedenvcert -Tag @{"abc"="123"}
+.Example
+$managedenv = Get-AzContainerAppManagedEnv -Name azps-env -ResourceGroupName azps_test_group_app
+
+Update-AzContainerAppManagedEnvCert -ManagedEnvironmentInputObject $managedenv -Name azps-env-cert -Tag @{"abc"="123"}
 
 .Inputs
 Microsoft.Azure.PowerShell.Cmdlets.App.Models.IAppIdentity
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.App.Models.Api20220301.ICertificate
+Microsoft.Azure.PowerShell.Cmdlets.App.Models.ICertificate
 .Notes
 COMPLEX PARAMETER PROPERTIES
 
@@ -39,9 +45,35 @@ INPUTOBJECT <IAppIdentity>: Identity Parameter
   [AuthConfigName <String>]: Name of the Container App AuthConfig.
   [CertificateName <String>]: Name of the Certificate.
   [ComponentName <String>]: Name of the Dapr Component.
+  [ConnectedEnvironmentName <String>]: Name of the connectedEnvironment.
   [ContainerAppName <String>]: Name of the Container App.
-  [EnvironmentName <String>]: Name of the Managed Environment.
+  [DetectorName <String>]: Name of the Container App Detector.
+  [EnvironmentName <String>]: Name of the Environment.
   [Id <String>]: Resource identity path
+  [JobExecutionName <String>]: Job execution name.
+  [JobName <String>]: Job Name
+  [Location <String>]: The name of Azure region.
+  [ManagedCertificateName <String>]: Name of the Managed Certificate.
+  [ReplicaName <String>]: Name of the Container App Revision Replica.
+  [ResourceGroupName <String>]: The name of the resource group. The name is case insensitive.
+  [RevisionName <String>]: Name of the Container App Revision.
+  [SourceControlName <String>]: Name of the Container App SourceControl.
+  [StorageName <String>]: Name of the storage.
+  [SubscriptionId <String>]: The ID of the target subscription.
+
+MANAGEDENVIRONMENTINPUTOBJECT <IAppIdentity>: Identity Parameter
+  [AuthConfigName <String>]: Name of the Container App AuthConfig.
+  [CertificateName <String>]: Name of the Certificate.
+  [ComponentName <String>]: Name of the Dapr Component.
+  [ConnectedEnvironmentName <String>]: Name of the connectedEnvironment.
+  [ContainerAppName <String>]: Name of the Container App.
+  [DetectorName <String>]: Name of the Container App Detector.
+  [EnvironmentName <String>]: Name of the Environment.
+  [Id <String>]: Resource identity path
+  [JobExecutionName <String>]: Job execution name.
+  [JobName <String>]: Job Name
+  [Location <String>]: The name of Azure region.
+  [ManagedCertificateName <String>]: Name of the Managed Certificate.
   [ReplicaName <String>]: Name of the Container App Revision Replica.
   [ResourceGroupName <String>]: The name of the resource group. The name is case insensitive.
   [RevisionName <String>]: Name of the Container App Revision.
@@ -52,16 +84,21 @@ INPUTOBJECT <IAppIdentity>: Identity Parameter
 https://learn.microsoft.com/powershell/module/az.app/update-azcontainerappmanagedenvcert
 #>
 function Update-AzContainerAppManagedEnvCert {
-[OutputType([Microsoft.Azure.PowerShell.Cmdlets.App.Models.Api20220301.ICertificate])]
+[OutputType([Microsoft.Azure.PowerShell.Cmdlets.App.Models.ICertificate])]
 [CmdletBinding(DefaultParameterSetName='UpdateExpanded', PositionalBinding=$false, SupportsShouldProcess, ConfirmImpact='Medium')]
 param(
     [Parameter(ParameterSetName='UpdateExpanded', Mandatory)]
+    [Parameter(ParameterSetName='UpdateViaJsonFilePath', Mandatory)]
+    [Parameter(ParameterSetName='UpdateViaJsonString', Mandatory)]
     [Microsoft.Azure.PowerShell.Cmdlets.App.Category('Path')]
     [System.String]
     # Name of the Managed Environment.
     ${EnvName},
 
     [Parameter(ParameterSetName='UpdateExpanded', Mandatory)]
+    [Parameter(ParameterSetName='UpdateViaIdentityManagedEnvironmentExpanded', Mandatory)]
+    [Parameter(ParameterSetName='UpdateViaJsonFilePath', Mandatory)]
+    [Parameter(ParameterSetName='UpdateViaJsonString', Mandatory)]
     [Alias('CertificateName')]
     [Microsoft.Azure.PowerShell.Cmdlets.App.Category('Path')]
     [System.String]
@@ -69,6 +106,8 @@ param(
     ${Name},
 
     [Parameter(ParameterSetName='UpdateExpanded', Mandatory)]
+    [Parameter(ParameterSetName='UpdateViaJsonFilePath', Mandatory)]
+    [Parameter(ParameterSetName='UpdateViaJsonString', Mandatory)]
     [Microsoft.Azure.PowerShell.Cmdlets.App.Category('Path')]
     [System.String]
     # The name of the resource group.
@@ -76,6 +115,8 @@ param(
     ${ResourceGroupName},
 
     [Parameter(ParameterSetName='UpdateExpanded')]
+    [Parameter(ParameterSetName='UpdateViaJsonFilePath')]
+    [Parameter(ParameterSetName='UpdateViaJsonString')]
     [Microsoft.Azure.PowerShell.Cmdlets.App.Category('Path')]
     [Microsoft.Azure.PowerShell.Cmdlets.App.Runtime.DefaultInfo(Script='(Get-AzContext).Subscription.Id')]
     [System.String]
@@ -89,12 +130,33 @@ param(
     # To construct, see NOTES section for INPUTOBJECT properties and create a hash table.
     ${InputObject},
 
-    [Parameter()]
+    [Parameter(ParameterSetName='UpdateViaIdentityManagedEnvironmentExpanded', Mandatory, ValueFromPipeline)]
+    [Microsoft.Azure.PowerShell.Cmdlets.App.Category('Path')]
+    [Microsoft.Azure.PowerShell.Cmdlets.App.Models.IAppIdentity]
+    # Identity Parameter
+    # To construct, see NOTES section for MANAGEDENVIRONMENTINPUTOBJECT properties and create a hash table.
+    ${ManagedEnvironmentInputObject},
+
+    [Parameter(ParameterSetName='UpdateExpanded')]
+    [Parameter(ParameterSetName='UpdateViaIdentityExpanded')]
+    [Parameter(ParameterSetName='UpdateViaIdentityManagedEnvironmentExpanded')]
     [Microsoft.Azure.PowerShell.Cmdlets.App.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.App.Runtime.Info(PossibleTypes=([Microsoft.Azure.PowerShell.Cmdlets.App.Models.Api20220301.ICertificatePatchTags]))]
+    [Microsoft.Azure.PowerShell.Cmdlets.App.Runtime.Info(PossibleTypes=([Microsoft.Azure.PowerShell.Cmdlets.App.Models.ICertificatePatchTags]))]
     [System.Collections.Hashtable]
     # Application-specific metadata in the form of key-value pairs.
     ${Tag},
+
+    [Parameter(ParameterSetName='UpdateViaJsonFilePath', Mandatory)]
+    [Microsoft.Azure.PowerShell.Cmdlets.App.Category('Body')]
+    [System.String]
+    # Path of Json file supplied to the Update operation
+    ${JsonFilePath},
+
+    [Parameter(ParameterSetName='UpdateViaJsonString', Mandatory)]
+    [Microsoft.Azure.PowerShell.Cmdlets.App.Category('Body')]
+    [System.String]
+    # Json string supplied to the Update operation
+    ${JsonString},
 
     [Parameter()]
     [Alias('AzureRMContext', 'AzureCredential')]
@@ -173,12 +235,19 @@ begin {
         $mapping = @{
             UpdateExpanded = 'Az.App.private\Update-AzContainerAppManagedEnvCert_UpdateExpanded';
             UpdateViaIdentityExpanded = 'Az.App.private\Update-AzContainerAppManagedEnvCert_UpdateViaIdentityExpanded';
+            UpdateViaIdentityManagedEnvironmentExpanded = 'Az.App.private\Update-AzContainerAppManagedEnvCert_UpdateViaIdentityManagedEnvironmentExpanded';
+            UpdateViaJsonFilePath = 'Az.App.private\Update-AzContainerAppManagedEnvCert_UpdateViaJsonFilePath';
+            UpdateViaJsonString = 'Az.App.private\Update-AzContainerAppManagedEnvCert_UpdateViaJsonString';
         }
-        if (('UpdateExpanded') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId')) {
+        if (('UpdateExpanded', 'UpdateViaJsonFilePath', 'UpdateViaJsonString') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId') ) {
             $PSBoundParameters['SubscriptionId'] = (Get-AzContext).Subscription.Id
         }
         $cmdInfo = Get-Command -Name $mapping[$parameterSet]
         [Microsoft.Azure.PowerShell.Cmdlets.App.Runtime.MessageAttributeHelper]::ProcessCustomAttributesAtRuntime($cmdInfo, $MyInvocation, $parameterSet, $PSCmdlet)
+        if ($null -ne $MyInvocation.MyCommand -and [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PromptedPreviewMessageCmdlets -notcontains $MyInvocation.MyCommand.Name -and [Microsoft.Azure.PowerShell.Cmdlets.App.Runtime.MessageAttributeHelper]::ContainsPreviewAttribute($cmdInfo, $MyInvocation)){
+            [Microsoft.Azure.PowerShell.Cmdlets.App.Runtime.MessageAttributeHelper]::ProcessPreviewMessageAttributesAtRuntime($cmdInfo, $MyInvocation, $parameterSet, $PSCmdlet)
+            [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PromptedPreviewMessageCmdlets.Enqueue($MyInvocation.MyCommand.Name)
+        }
         $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Cmdlet)
         $scriptCmd = {& $wrappedCmd @PSBoundParameters}
         $steppablePipeline = $scriptCmd.GetSteppablePipeline($MyInvocation.CommandOrigin)

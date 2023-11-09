@@ -22,7 +22,7 @@ Create Alias Subscription.
 .Example
 New-AzSubscriptionAlias -AliasName test-subscription -SubscriptionId XXXXXXXX-XXXX-XXXX-XXXX-XXXXXXXXXXXX
 .Example
-New-AzSubscriptionAlias -AliasName test-subscription -DisplayName "createSub" -BillingScope "/billingAccounts/{billingAccountName}/billingProfiles/{billingProfileName}/invoiceSections/{invoiceSectionName}" -Workload 'Production' 
+New-AzSubscriptionAlias -AliasName test-subscription -SubscriptionName "createSub" -BillingScope "/billingAccounts/{billingAccountName}/billingProfiles/{billingProfileName}/invoiceSections/{invoiceSectionName}" -Workload 'Production' 
 
 .Outputs
 Microsoft.Azure.PowerShell.Cmdlets.Subscription.Models.Api20211001.ISubscriptionAliasResponse
@@ -40,47 +40,11 @@ param(
     # Note that this is not the same as subscription name and this doesn’t have any other lifecycle need beyond the request for subscription creation.
     ${AliasName},
 
-    [Parameter()]
-    [Microsoft.Azure.PowerShell.Cmdlets.Subscription.Category('Body')]
-    [System.String]
-    # Billing scope of the subscription.For CustomerLed and FieldLed - /billingAccounts/{billingAccountName}/billingProfiles/{billingProfileName}/invoiceSections/{invoiceSectionName}For PartnerLed - /billingAccounts/{billingAccountName}/customers/{customerName}For Legacy EA - /billingAccounts/{billingAccountName}/enrollmentAccounts/{enrollmentAccountName}
-    ${BillingScope},
-
-    [Parameter()]
-    [Microsoft.Azure.PowerShell.Cmdlets.Subscription.Category('Body')]
-    [System.String]
-    # The friendly name of the subscription.
-    ${DisplayName},
-
-    [Parameter()]
-    [Microsoft.Azure.PowerShell.Cmdlets.Subscription.Category('Body')]
-    [System.String]
-    # Management group Id for the subscription.
-    ${ManagementGroupId},
-
-    [Parameter()]
-    [Microsoft.Azure.PowerShell.Cmdlets.Subscription.Category('Body')]
-    [System.String]
-    # Reseller Id
-    ${ResellerId},
-
-    [Parameter()]
+    [Parameter(ParameterSetName='CreateExpanded', Mandatory)]
     [Microsoft.Azure.PowerShell.Cmdlets.Subscription.Category('Body')]
     [System.String]
     # This parameter can be used to create alias for existing subscription Id
     ${SubscriptionId},
-
-    [Parameter()]
-    [Microsoft.Azure.PowerShell.Cmdlets.Subscription.Category('Body')]
-    [System.String]
-    # Owner Id of the subscription
-    ${SubscriptionOwnerId},
-
-    [Parameter()]
-    [Microsoft.Azure.PowerShell.Cmdlets.Subscription.Category('Body')]
-    [System.String]
-    # Tenant Id of the subscription
-    ${SubscriptionTenantId},
 
     [Parameter()]
     [Microsoft.Azure.PowerShell.Cmdlets.Subscription.Category('Body')]
@@ -89,13 +53,50 @@ param(
     # Tags for the subscription
     ${Tag},
 
-    [Parameter()]
+    [Parameter(ParameterSetName='WorkloadCreateExpanded', Mandatory)]
+    [Microsoft.Azure.PowerShell.Cmdlets.Subscription.Category('Body')]
+    [System.String]
+    # Billing scope of the subscription.For CustomerLed and FieldLed - /billingAccounts/{billingAccountName}/billingProfiles/{billingProfileName}/invoiceSections/{invoiceSectionName}For PartnerLed - /billingAccounts/{billingAccountName}/customers/{customerName}For Legacy EA - /billingAccounts/{billingAccountName}/enrollmentAccounts/{enrollmentAccountName}
+    ${BillingScope},
+
+    [Parameter(ParameterSetName='WorkloadCreateExpanded', Mandatory)]
+    [Alias('DisplayName')]
+    [Microsoft.Azure.PowerShell.Cmdlets.Subscription.Category('Body')]
+    [System.String]
+    # The friendly name of the subscription.
+    ${SubscriptionName},
+
+    [Parameter(ParameterSetName='WorkloadCreateExpanded', Mandatory)]
     [ArgumentCompleter([Microsoft.Azure.PowerShell.Cmdlets.Subscription.Support.Workload])]
     [Microsoft.Azure.PowerShell.Cmdlets.Subscription.Category('Body')]
     [Microsoft.Azure.PowerShell.Cmdlets.Subscription.Support.Workload]
     # The workload type of the subscription.
     # It can be either Production or DevTest.
     ${Workload},
+
+    [Parameter(ParameterSetName='WorkloadCreateExpanded')]
+    [Microsoft.Azure.PowerShell.Cmdlets.Subscription.Category('Body')]
+    [System.String]
+    # Management group Id for the subscription.
+    ${ManagementGroupId},
+
+    [Parameter(ParameterSetName='WorkloadCreateExpanded')]
+    [Microsoft.Azure.PowerShell.Cmdlets.Subscription.Category('Body')]
+    [System.String]
+    # Reseller Id
+    ${ResellerId},
+
+    [Parameter(ParameterSetName='WorkloadCreateExpanded')]
+    [Microsoft.Azure.PowerShell.Cmdlets.Subscription.Category('Body')]
+    [System.String]
+    # Owner Id of the subscription
+    ${SubscriptionOwnerId},
+
+    [Parameter(ParameterSetName='WorkloadCreateExpanded')]
+    [Microsoft.Azure.PowerShell.Cmdlets.Subscription.Category('Body')]
+    [System.String]
+    # Tenant Id of the subscription
+    ${SubscriptionTenantId},
 
     [Parameter()]
     [Alias('AzureRMContext', 'AzureCredential')]
@@ -184,10 +185,15 @@ begin {
         }
 
         $mapping = @{
-            CreateExpanded = 'Az.Subscription.private\New-AzSubscriptionAlias_CreateExpanded';
+            CreateExpanded = 'Az.Subscription.custom\New-AzSubscriptionAlias';
+            WorkloadCreateExpanded = 'Az.Subscription.custom\New-AzSubscriptionAlias';
         }
         $cmdInfo = Get-Command -Name $mapping[$parameterSet]
         [Microsoft.Azure.PowerShell.Cmdlets.Subscription.Runtime.MessageAttributeHelper]::ProcessCustomAttributesAtRuntime($cmdInfo, $MyInvocation, $parameterSet, $PSCmdlet)
+        if ($null -ne $MyInvocation.MyCommand -and [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PromptedPreviewMessageCmdlets -notcontains $MyInvocation.MyCommand.Name -and [Microsoft.Azure.PowerShell.Cmdlets.Subscription.Runtime.MessageAttributeHelper]::ContainsPreviewAttribute($cmdInfo, $MyInvocation)){
+            [Microsoft.Azure.PowerShell.Cmdlets.Subscription.Runtime.MessageAttributeHelper]::ProcessPreviewMessageAttributesAtRuntime($cmdInfo, $MyInvocation, $parameterSet, $PSCmdlet)
+            [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PromptedPreviewMessageCmdlets.Enqueue($MyInvocation.MyCommand.Name)
+        }
         $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Cmdlet)
         $scriptCmd = {& $wrappedCmd @PSBoundParameters}
         $steppablePipeline = $scriptCmd.GetSteppablePipeline($MyInvocation.CommandOrigin)

@@ -91,6 +91,26 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.App.Models
             {
                 ((Microsoft.Azure.PowerShell.Cmdlets.App.Models.IAppIdentityInternal)this).AuthConfigName = (string) content.GetValueForProperty("AuthConfigName",((Microsoft.Azure.PowerShell.Cmdlets.App.Models.IAppIdentityInternal)this).AuthConfigName, global::System.Convert.ToString);
             }
+            if (content.Contains("Location"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.App.Models.IAppIdentityInternal)this).Location = (string) content.GetValueForProperty("Location",((Microsoft.Azure.PowerShell.Cmdlets.App.Models.IAppIdentityInternal)this).Location, global::System.Convert.ToString);
+            }
+            if (content.Contains("ConnectedEnvironmentName"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.App.Models.IAppIdentityInternal)this).ConnectedEnvironmentName = (string) content.GetValueForProperty("ConnectedEnvironmentName",((Microsoft.Azure.PowerShell.Cmdlets.App.Models.IAppIdentityInternal)this).ConnectedEnvironmentName, global::System.Convert.ToString);
+            }
+            if (content.Contains("CertificateName"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.App.Models.IAppIdentityInternal)this).CertificateName = (string) content.GetValueForProperty("CertificateName",((Microsoft.Azure.PowerShell.Cmdlets.App.Models.IAppIdentityInternal)this).CertificateName, global::System.Convert.ToString);
+            }
+            if (content.Contains("ComponentName"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.App.Models.IAppIdentityInternal)this).ComponentName = (string) content.GetValueForProperty("ComponentName",((Microsoft.Azure.PowerShell.Cmdlets.App.Models.IAppIdentityInternal)this).ComponentName, global::System.Convert.ToString);
+            }
+            if (content.Contains("StorageName"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.App.Models.IAppIdentityInternal)this).StorageName = (string) content.GetValueForProperty("StorageName",((Microsoft.Azure.PowerShell.Cmdlets.App.Models.IAppIdentityInternal)this).StorageName, global::System.Convert.ToString);
+            }
             if (content.Contains("RevisionName"))
             {
                 ((Microsoft.Azure.PowerShell.Cmdlets.App.Models.IAppIdentityInternal)this).RevisionName = (string) content.GetValueForProperty("RevisionName",((Microsoft.Azure.PowerShell.Cmdlets.App.Models.IAppIdentityInternal)this).RevisionName, global::System.Convert.ToString);
@@ -99,21 +119,25 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.App.Models
             {
                 ((Microsoft.Azure.PowerShell.Cmdlets.App.Models.IAppIdentityInternal)this).ReplicaName = (string) content.GetValueForProperty("ReplicaName",((Microsoft.Azure.PowerShell.Cmdlets.App.Models.IAppIdentityInternal)this).ReplicaName, global::System.Convert.ToString);
             }
+            if (content.Contains("DetectorName"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.App.Models.IAppIdentityInternal)this).DetectorName = (string) content.GetValueForProperty("DetectorName",((Microsoft.Azure.PowerShell.Cmdlets.App.Models.IAppIdentityInternal)this).DetectorName, global::System.Convert.ToString);
+            }
             if (content.Contains("EnvironmentName"))
             {
                 ((Microsoft.Azure.PowerShell.Cmdlets.App.Models.IAppIdentityInternal)this).EnvironmentName = (string) content.GetValueForProperty("EnvironmentName",((Microsoft.Azure.PowerShell.Cmdlets.App.Models.IAppIdentityInternal)this).EnvironmentName, global::System.Convert.ToString);
             }
-            if (content.Contains("ComponentName"))
+            if (content.Contains("JobName"))
             {
-                ((Microsoft.Azure.PowerShell.Cmdlets.App.Models.IAppIdentityInternal)this).ComponentName = (string) content.GetValueForProperty("ComponentName",((Microsoft.Azure.PowerShell.Cmdlets.App.Models.IAppIdentityInternal)this).ComponentName, global::System.Convert.ToString);
+                ((Microsoft.Azure.PowerShell.Cmdlets.App.Models.IAppIdentityInternal)this).JobName = (string) content.GetValueForProperty("JobName",((Microsoft.Azure.PowerShell.Cmdlets.App.Models.IAppIdentityInternal)this).JobName, global::System.Convert.ToString);
             }
-            if (content.Contains("CertificateName"))
+            if (content.Contains("JobExecutionName"))
             {
-                ((Microsoft.Azure.PowerShell.Cmdlets.App.Models.IAppIdentityInternal)this).CertificateName = (string) content.GetValueForProperty("CertificateName",((Microsoft.Azure.PowerShell.Cmdlets.App.Models.IAppIdentityInternal)this).CertificateName, global::System.Convert.ToString);
+                ((Microsoft.Azure.PowerShell.Cmdlets.App.Models.IAppIdentityInternal)this).JobExecutionName = (string) content.GetValueForProperty("JobExecutionName",((Microsoft.Azure.PowerShell.Cmdlets.App.Models.IAppIdentityInternal)this).JobExecutionName, global::System.Convert.ToString);
             }
-            if (content.Contains("StorageName"))
+            if (content.Contains("ManagedCertificateName"))
             {
-                ((Microsoft.Azure.PowerShell.Cmdlets.App.Models.IAppIdentityInternal)this).StorageName = (string) content.GetValueForProperty("StorageName",((Microsoft.Azure.PowerShell.Cmdlets.App.Models.IAppIdentityInternal)this).StorageName, global::System.Convert.ToString);
+                ((Microsoft.Azure.PowerShell.Cmdlets.App.Models.IAppIdentityInternal)this).ManagedCertificateName = (string) content.GetValueForProperty("ManagedCertificateName",((Microsoft.Azure.PowerShell.Cmdlets.App.Models.IAppIdentityInternal)this).ManagedCertificateName, global::System.Convert.ToString);
             }
             if (content.Contains("SourceControlName"))
             {
@@ -156,6 +180,26 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.App.Models
             {
                 ((Microsoft.Azure.PowerShell.Cmdlets.App.Models.IAppIdentityInternal)this).AuthConfigName = (string) content.GetValueForProperty("AuthConfigName",((Microsoft.Azure.PowerShell.Cmdlets.App.Models.IAppIdentityInternal)this).AuthConfigName, global::System.Convert.ToString);
             }
+            if (content.Contains("Location"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.App.Models.IAppIdentityInternal)this).Location = (string) content.GetValueForProperty("Location",((Microsoft.Azure.PowerShell.Cmdlets.App.Models.IAppIdentityInternal)this).Location, global::System.Convert.ToString);
+            }
+            if (content.Contains("ConnectedEnvironmentName"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.App.Models.IAppIdentityInternal)this).ConnectedEnvironmentName = (string) content.GetValueForProperty("ConnectedEnvironmentName",((Microsoft.Azure.PowerShell.Cmdlets.App.Models.IAppIdentityInternal)this).ConnectedEnvironmentName, global::System.Convert.ToString);
+            }
+            if (content.Contains("CertificateName"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.App.Models.IAppIdentityInternal)this).CertificateName = (string) content.GetValueForProperty("CertificateName",((Microsoft.Azure.PowerShell.Cmdlets.App.Models.IAppIdentityInternal)this).CertificateName, global::System.Convert.ToString);
+            }
+            if (content.Contains("ComponentName"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.App.Models.IAppIdentityInternal)this).ComponentName = (string) content.GetValueForProperty("ComponentName",((Microsoft.Azure.PowerShell.Cmdlets.App.Models.IAppIdentityInternal)this).ComponentName, global::System.Convert.ToString);
+            }
+            if (content.Contains("StorageName"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.App.Models.IAppIdentityInternal)this).StorageName = (string) content.GetValueForProperty("StorageName",((Microsoft.Azure.PowerShell.Cmdlets.App.Models.IAppIdentityInternal)this).StorageName, global::System.Convert.ToString);
+            }
             if (content.Contains("RevisionName"))
             {
                 ((Microsoft.Azure.PowerShell.Cmdlets.App.Models.IAppIdentityInternal)this).RevisionName = (string) content.GetValueForProperty("RevisionName",((Microsoft.Azure.PowerShell.Cmdlets.App.Models.IAppIdentityInternal)this).RevisionName, global::System.Convert.ToString);
@@ -164,21 +208,25 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.App.Models
             {
                 ((Microsoft.Azure.PowerShell.Cmdlets.App.Models.IAppIdentityInternal)this).ReplicaName = (string) content.GetValueForProperty("ReplicaName",((Microsoft.Azure.PowerShell.Cmdlets.App.Models.IAppIdentityInternal)this).ReplicaName, global::System.Convert.ToString);
             }
+            if (content.Contains("DetectorName"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.App.Models.IAppIdentityInternal)this).DetectorName = (string) content.GetValueForProperty("DetectorName",((Microsoft.Azure.PowerShell.Cmdlets.App.Models.IAppIdentityInternal)this).DetectorName, global::System.Convert.ToString);
+            }
             if (content.Contains("EnvironmentName"))
             {
                 ((Microsoft.Azure.PowerShell.Cmdlets.App.Models.IAppIdentityInternal)this).EnvironmentName = (string) content.GetValueForProperty("EnvironmentName",((Microsoft.Azure.PowerShell.Cmdlets.App.Models.IAppIdentityInternal)this).EnvironmentName, global::System.Convert.ToString);
             }
-            if (content.Contains("ComponentName"))
+            if (content.Contains("JobName"))
             {
-                ((Microsoft.Azure.PowerShell.Cmdlets.App.Models.IAppIdentityInternal)this).ComponentName = (string) content.GetValueForProperty("ComponentName",((Microsoft.Azure.PowerShell.Cmdlets.App.Models.IAppIdentityInternal)this).ComponentName, global::System.Convert.ToString);
+                ((Microsoft.Azure.PowerShell.Cmdlets.App.Models.IAppIdentityInternal)this).JobName = (string) content.GetValueForProperty("JobName",((Microsoft.Azure.PowerShell.Cmdlets.App.Models.IAppIdentityInternal)this).JobName, global::System.Convert.ToString);
             }
-            if (content.Contains("CertificateName"))
+            if (content.Contains("JobExecutionName"))
             {
-                ((Microsoft.Azure.PowerShell.Cmdlets.App.Models.IAppIdentityInternal)this).CertificateName = (string) content.GetValueForProperty("CertificateName",((Microsoft.Azure.PowerShell.Cmdlets.App.Models.IAppIdentityInternal)this).CertificateName, global::System.Convert.ToString);
+                ((Microsoft.Azure.PowerShell.Cmdlets.App.Models.IAppIdentityInternal)this).JobExecutionName = (string) content.GetValueForProperty("JobExecutionName",((Microsoft.Azure.PowerShell.Cmdlets.App.Models.IAppIdentityInternal)this).JobExecutionName, global::System.Convert.ToString);
             }
-            if (content.Contains("StorageName"))
+            if (content.Contains("ManagedCertificateName"))
             {
-                ((Microsoft.Azure.PowerShell.Cmdlets.App.Models.IAppIdentityInternal)this).StorageName = (string) content.GetValueForProperty("StorageName",((Microsoft.Azure.PowerShell.Cmdlets.App.Models.IAppIdentityInternal)this).StorageName, global::System.Convert.ToString);
+                ((Microsoft.Azure.PowerShell.Cmdlets.App.Models.IAppIdentityInternal)this).ManagedCertificateName = (string) content.GetValueForProperty("ManagedCertificateName",((Microsoft.Azure.PowerShell.Cmdlets.App.Models.IAppIdentityInternal)this).ManagedCertificateName, global::System.Convert.ToString);
             }
             if (content.Contains("SourceControlName"))
             {

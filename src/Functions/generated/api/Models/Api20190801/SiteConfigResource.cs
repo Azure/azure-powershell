@@ -398,7 +398,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801
         public string SlowRequestTimeTaken { get => ((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.ISiteConfigInternal)Property).SlowRequestTimeTaken; set => ((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.ISiteConfigInternal)Property).SlowRequestTimeTaken = value ?? null; }
 
         /// <summary>
-        /// Gets or sets a JSON string containing a list of tags that are whitelisted for use by the push registration endpoint.
+        /// Gets or sets a JSON string containing a list of tags that are in the allowed list for use by the push registration endpoint.
         /// </summary>
         [Microsoft.Azure.PowerShell.Cmdlets.Functions.Origin(Microsoft.Azure.PowerShell.Cmdlets.Functions.PropertyOrigin.Inlined)]
         public string TagWhitelistJson { get => ((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.ISiteConfigInternal)Property).TagWhitelistJson; set => ((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.ISiteConfigInternal)Property).TagWhitelistJson = value ?? null; }
@@ -1054,12 +1054,12 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801
         PossibleTypes = new [] { typeof(string) })]
         string SlowRequestTimeTaken { get; set; }
         /// <summary>
-        /// Gets or sets a JSON string containing a list of tags that are whitelisted for use by the push registration endpoint.
+        /// Gets or sets a JSON string containing a list of tags that are in the allowed list for use by the push registration endpoint.
         /// </summary>
         [Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.Info(
         Required = false,
         ReadOnly = false,
-        Description = @"Gets or sets a JSON string containing a list of tags that are whitelisted for use by the push registration endpoint.",
+        Description = @"Gets or sets a JSON string containing a list of tags that are in the allowed list for use by the push registration endpoint.",
         SerializedName = @"tagWhitelistJson",
         PossibleTypes = new [] { typeof(string) })]
         string TagWhitelistJson { get; set; }
@@ -1343,7 +1343,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801
         /// <summary>Time taken.</summary>
         string SlowRequestTimeTaken { get; set; }
         /// <summary>
-        /// Gets or sets a JSON string containing a list of tags that are whitelisted for use by the push registration endpoint.
+        /// Gets or sets a JSON string containing a list of tags that are in the allowed list for use by the push registration endpoint.
         /// </summary>
         string TagWhitelistJson { get; set; }
         /// <summary>

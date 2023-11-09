@@ -20,26 +20,19 @@ Create an in-memory object for CustomDomain.
 .Description
 Create an in-memory object for CustomDomain.
 .Example
-$certificateId = (Get-AzContainerAppManagedEnvCert -EnvName azps-env -ResourceGroupName azpstest_gp -Name azps-env-cert).Id
+$certificateId = (Get-AzContainerAppManagedEnvCert -EnvName azps-env -ResourceGroupName azps_test_group_app -Name azps-env-cert).Id
 
-$customDomain = New-AzContainerAppCustomDomainObject -CertificateId $certificateId -Name www.fabrikam.com -BindingType SniEnabled
+New-AzContainerAppCustomDomainObject -Name "www.my-name.com" -BindingType "SniEnabled" -CertificateId $certificateId
 
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.App.Models.Api20220301.CustomDomain
+Microsoft.Azure.PowerShell.Cmdlets.App.Models.CustomDomain
 .Link
-https://learn.microsoft.com/powershell/module/az.app/new-azcontainerappcustomdomainobject
+https://learn.microsoft.com/powershell/module/Az.App/new-azcontainerappcustomdomainobject
 #>
 function New-AzContainerAppCustomDomainObject {
-[OutputType([Microsoft.Azure.PowerShell.Cmdlets.App.Models.Api20220301.CustomDomain])]
+[OutputType([Microsoft.Azure.PowerShell.Cmdlets.App.Models.CustomDomain])]
 [CmdletBinding(PositionalBinding=$false)]
 param(
-    [Parameter(Mandatory)]
-    [Microsoft.Azure.PowerShell.Cmdlets.App.Category('Body')]
-    [System.String]
-    # Resource Id of the Certificate to be bound to this hostname.
-    # Must exist in the Managed Environment.
-    ${CertificateId},
-
     [Parameter(Mandatory)]
     [Microsoft.Azure.PowerShell.Cmdlets.App.Category('Body')]
     [System.String]
@@ -47,11 +40,18 @@ param(
     ${Name},
 
     [Parameter()]
-    [ArgumentCompleter([Microsoft.Azure.PowerShell.Cmdlets.App.Support.BindingType])]
+    [Microsoft.Azure.PowerShell.Cmdlets.App.PSArgumentCompleterAttribute("Disabled", "SniEnabled")]
     [Microsoft.Azure.PowerShell.Cmdlets.App.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.App.Support.BindingType]
+    [System.String]
     # Custom Domain binding type.
-    ${BindingType}
+    ${BindingType},
+
+    [Parameter()]
+    [Microsoft.Azure.PowerShell.Cmdlets.App.Category('Body')]
+    [System.String]
+    # Resource Id of the Certificate to be bound to this hostname.
+    # Must exist in the Managed Environment.
+    ${CertificateId}
 )
 
 begin {
@@ -84,6 +84,10 @@ begin {
         }
         $cmdInfo = Get-Command -Name $mapping[$parameterSet]
         [Microsoft.Azure.PowerShell.Cmdlets.App.Runtime.MessageAttributeHelper]::ProcessCustomAttributesAtRuntime($cmdInfo, $MyInvocation, $parameterSet, $PSCmdlet)
+        if ($null -ne $MyInvocation.MyCommand -and [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PromptedPreviewMessageCmdlets -notcontains $MyInvocation.MyCommand.Name -and [Microsoft.Azure.PowerShell.Cmdlets.App.Runtime.MessageAttributeHelper]::ContainsPreviewAttribute($cmdInfo, $MyInvocation)){
+            [Microsoft.Azure.PowerShell.Cmdlets.App.Runtime.MessageAttributeHelper]::ProcessPreviewMessageAttributesAtRuntime($cmdInfo, $MyInvocation, $parameterSet, $PSCmdlet)
+            [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PromptedPreviewMessageCmdlets.Enqueue($MyInvocation.MyCommand.Name)
+        }
         $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Cmdlet)
         $scriptCmd = {& $wrappedCmd @PSBoundParameters}
         $steppablePipeline = $scriptCmd.GetSteppablePipeline($MyInvocation.CommandOrigin)

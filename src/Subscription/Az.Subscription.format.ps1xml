@@ -15,6 +15,9 @@
             <Label>BillingAccountId</Label>
           </TableColumnHeader>
           <TableColumnHeader>
+            <Label>OperationId</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
             <Label>SubscriptionId</Label>
           </TableColumnHeader>
         </TableHeaders>
@@ -26,6 +29,9 @@
               </TableColumnItem>
               <TableColumnItem>
                 <PropertyName>BillingAccountId</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>OperationId</PropertyName>
               </TableColumnItem>
               <TableColumnItem>
                 <PropertyName>SubscriptionId</PropertyName>
@@ -151,9 +157,6 @@
             <Label>BillingOwner</Label>
           </TableColumnHeader>
           <TableColumnHeader>
-            <Label>DisplayName</Label>
-          </TableColumnHeader>
-          <TableColumnHeader>
             <Label>ProvisioningState</Label>
           </TableColumnHeader>
           <TableColumnHeader>
@@ -171,9 +174,6 @@
               </TableColumnItem>
               <TableColumnItem>
                 <PropertyName>BillingOwner</PropertyName>
-              </TableColumnItem>
-              <TableColumnItem>
-                <PropertyName>DisplayName</PropertyName>
               </TableColumnItem>
               <TableColumnItem>
                 <PropertyName>ProvisioningState</PropertyName>
@@ -726,9 +726,6 @@
             <Label>AliasName</Label>
           </TableColumnHeader>
           <TableColumnHeader>
-            <Label>DisplayName</Label>
-          </TableColumnHeader>
-          <TableColumnHeader>
             <Label>SubscriptionId</Label>
           </TableColumnHeader>
           <TableColumnHeader>
@@ -740,9 +737,6 @@
             <TableColumnItems>
               <TableColumnItem>
                 <PropertyName>AliasName</PropertyName>
-              </TableColumnItem>
-              <TableColumnItem>
-                <PropertyName>DisplayName</PropertyName>
               </TableColumnItem>
               <TableColumnItem>
                 <PropertyName>SubscriptionId</PropertyName>
@@ -853,6 +847,28 @@
             <TableColumnItems>
               <TableColumnItem>
                 <PropertyName>Item</PropertyName>
+              </TableColumnItem>
+            </TableColumnItems>
+          </TableRowEntry>
+        </TableRowEntries>
+      </TableControl>
+    </View>
+    <View>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.Subscription.Models.Api20211001.SubscriptionCreationResult</Name>
+      <ViewSelectedBy>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.Subscription.Models.Api20211001.SubscriptionCreationResult</TypeName>
+      </ViewSelectedBy>
+      <TableControl>
+        <TableHeaders>
+          <TableColumnHeader>
+            <Label>SubscriptionLink</Label>
+          </TableColumnHeader>
+        </TableHeaders>
+        <TableRowEntries>
+          <TableRowEntry>
+            <TableColumnItems>
+              <TableColumnItem>
+                <PropertyName>SubscriptionLink</PropertyName>
               </TableColumnItem>
             </TableColumnItems>
           </TableRowEntry>

@@ -1,5 +1,5 @@
 ---
-external help file:
+external help file: Az.StackHCI-help.xml
 Module Name: Az.StackHCI
 online version: https://learn.microsoft.com/powershell/module/az.stackhci/update-azstackhcicluster
 schema: 2.0.0
@@ -19,7 +19,7 @@ Update-AzStackHciCluster -Name <String> -ResourceGroupName <String> [-Subscripti
  [-DesiredPropertyDiagnosticLevel <DiagnosticLevel>]
  [-DesiredPropertyWindowsServerSubscription <WindowsServerSubscription>]
  [-IdentityType <ManagedServiceIdentityType>] [-IdentityUserAssignedIdentity <Hashtable>] [-Tag <Hashtable>]
- [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
+ [-DefaultProfile <PSObject>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### UpdateViaIdentityExpanded
@@ -28,7 +28,7 @@ Update-AzStackHciCluster -InputObject <IStackHciIdentity> [-AadTenantId <String>
  [-CloudManagementEndpoint <String>] [-DesiredPropertyDiagnosticLevel <DiagnosticLevel>]
  [-DesiredPropertyWindowsServerSubscription <WindowsServerSubscription>]
  [-IdentityType <ManagedServiceIdentityType>] [-IdentityUserAssignedIdentity <Hashtable>] [-Tag <Hashtable>]
- [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
+ [-DefaultProfile <PSObject>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -36,7 +36,7 @@ Update an HCI cluster.
 
 ## EXAMPLES
 
-### Example 1: 
+### Example 1:
 ```powershell
 Update-AzStackHciCluster -ResourceGroupName test-rg -Name myCluster3 -DesiredPropertyDiagnosticLevel Enhanced -DesiredPropertyWindowsServerSubscription Disabled
 ```
@@ -280,20 +280,4 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## NOTES
 
-ALIASES
-
-COMPLEX PARAMETER PROPERTIES
-
-To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
-
-
-`INPUTOBJECT <IStackHciIdentity>`: Identity Parameter
-  - `[ArcSettingName <String>]`: The name of the proxy resource holding details of HCI ArcSetting information.
-  - `[ClusterName <String>]`: The name of the cluster.
-  - `[ExtensionName <String>]`: The name of the machine extension.
-  - `[Id <String>]`: Resource identity path
-  - `[ResourceGroupName <String>]`: The name of the resource group. The name is case insensitive.
-  - `[SubscriptionId <String>]`: The ID of the target subscription.
-
 ## RELATED LINKS
-

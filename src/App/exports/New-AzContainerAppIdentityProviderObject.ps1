@@ -20,10 +20,10 @@ Create an in-memory object for IdentityProviders.
 .Description
 Create an in-memory object for IdentityProviders.
 .Example
-New-AzContainerAppIdentityProviderObject -RegistrationAppId xxxxxx@xxx.com -RegistrationAppSecretSettingName facebook-secret
+New-AzContainerAppIdentityProviderObject -RegistrationAppId xxxxxx@xxx.com -RegistrationAppSecretSettingName redis-secret
 
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.App.Models.Api20220301.IdentityProviders
+Microsoft.Azure.PowerShell.Cmdlets.App.Models.IdentityProviders
 .Notes
 COMPLEX PARAMETER PROPERTIES
 
@@ -32,10 +32,10 @@ To create the parameters described below, construct a hash table containing the 
 CUSTOMOPENIDCONNECTPROVIDER <IIdentityProvidersCustomOpenIdConnectProviders>: The map of the name of the alias of each custom Open ID Connect provider to the         configuration settings of the custom Open ID Connect provider.
   [(Any) <ICustomOpenIdConnectProvider>]: This indicates any property can be added to this object.
 .Link
-https://learn.microsoft.com/powershell/module/az.app/new-azcontainerappidentityproviderobject
+https://learn.microsoft.com/powershell/module/Az.App/new-azcontainerappidentityproviderobject
 #>
 function New-AzContainerAppIdentityProviderObject {
-[OutputType([Microsoft.Azure.PowerShell.Cmdlets.App.Models.Api20220301.IdentityProviders])]
+[OutputType([Microsoft.Azure.PowerShell.Cmdlets.App.Models.IdentityProviders])]
 [CmdletBinding(PositionalBinding=$false)]
 param(
     [Parameter()]
@@ -124,7 +124,7 @@ param(
 
     [Parameter()]
     [Microsoft.Azure.PowerShell.Cmdlets.App.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.App.Models.Api20220301.IIdentityProvidersCustomOpenIdConnectProviders]
+    [Microsoft.Azure.PowerShell.Cmdlets.App.Models.IIdentityProvidersCustomOpenIdConnectProviders]
     # The map of the name of the alias of each custom Open ID Connect provider to the
     #         configuration settings of the custom Open ID Connect provider.
     # To construct, see NOTES section for CUSTOMOPENIDCONNECTPROVIDER properties and create a hash table.
@@ -335,6 +335,10 @@ begin {
         }
         $cmdInfo = Get-Command -Name $mapping[$parameterSet]
         [Microsoft.Azure.PowerShell.Cmdlets.App.Runtime.MessageAttributeHelper]::ProcessCustomAttributesAtRuntime($cmdInfo, $MyInvocation, $parameterSet, $PSCmdlet)
+        if ($null -ne $MyInvocation.MyCommand -and [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PromptedPreviewMessageCmdlets -notcontains $MyInvocation.MyCommand.Name -and [Microsoft.Azure.PowerShell.Cmdlets.App.Runtime.MessageAttributeHelper]::ContainsPreviewAttribute($cmdInfo, $MyInvocation)){
+            [Microsoft.Azure.PowerShell.Cmdlets.App.Runtime.MessageAttributeHelper]::ProcessPreviewMessageAttributesAtRuntime($cmdInfo, $MyInvocation, $parameterSet, $PSCmdlet)
+            [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PromptedPreviewMessageCmdlets.Enqueue($MyInvocation.MyCommand.Name)
+        }
         $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Cmdlet)
         $scriptCmd = {& $wrappedCmd @PSBoundParameters}
         $steppablePipeline = $scriptCmd.GetSteppablePipeline($MyInvocation.CommandOrigin)

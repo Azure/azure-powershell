@@ -76,7 +76,7 @@ See [Quickstart: Create a Windows virtual machine in Azure with PowerShell](http
 
 ### Example 1: Create a virtual machine
 ```powershell
-New-AzVM -Name MyVm -Credential (Get-Credential)
+New-AzVM -Name MyVm -Credential (Get-Credential) -SecurityType "Standard"
 ```
 
 ```output
@@ -143,7 +143,8 @@ $NIC = New-AzNetworkInterface -Name $NICName -ResourceGroupName $ResourceGroupNa
 
 $Credential = New-Object System.Management.Automation.PSCredential ($VMLocalAdminUser, $VMLocalAdminSecurePassword);
 
-$VirtualMachine = New-AzVMConfig -VMName $VMName -VMSize $VMSize
+$securityTypeStnd = "Standard"
+$VirtualMachine = New-AzVMConfig -VMName $VMName -VMSize $VMSize -SecurityType $securityTypeStnd 
 $VirtualMachine = Set-AzVMOperatingSystem -VM $VirtualMachine -Windows -ComputerName $ComputerName -Credential $Credential -ProvisionVMAgent -EnableAutoUpdate
 $VirtualMachine = Add-AzVMNetworkInterface -VM $VirtualMachine -Id $NIC.Id
 $VirtualMachine = Set-AzVMOSDisk -VM $VirtualMachine -Name $OSDiskName -VhdUri $OSDiskUri -SourceImageUri $SourceImageUri -Caching $OSDiskCaching -CreateOption $OSCreateOption -Windows
@@ -178,7 +179,8 @@ $NIC = New-AzNetworkInterface -Name $NICName -ResourceGroupName $ResourceGroupNa
 
 $Credential = New-Object System.Management.Automation.PSCredential ($VMLocalAdminUser, $VMLocalAdminSecurePassword);
 
-$VirtualMachine = New-AzVMConfig -VMName $VMName -VMSize $VMSize
+$securityTypeStnd = "Standard"
+$VirtualMachine = New-AzVMConfig -VMName $VMName -VMSize $VMSize -SecurityType $securityTypeStnd
 $VirtualMachine = Set-AzVMOperatingSystem -VM $VirtualMachine -Windows -ComputerName $ComputerName -Credential $Credential -ProvisionVMAgent -EnableAutoUpdate
 $VirtualMachine = Add-AzVMNetworkInterface -VM $VirtualMachine -Id $NIC.Id
 $VirtualMachine = Set-AzVMSourceImage -VM $VirtualMachine -PublisherName 'MicrosoftWindowsServer' -Offer 'WindowsServer' -Skus '2022-datacenter-azure-edition-core' -Version latest
@@ -199,6 +201,7 @@ $LocationName = "eastus";
 $ResourceGroupName = "MyResourceGroup";
 
 # VM Profile & Hardware
+$securityTypeStnd = "Standard";
 $VMName = 'v' + $ResourceGroupName;
 $domainNameLabel = "d1" + $ResourceGroupName;
 $Credential = New-Object System.Management.Automation.PSCredential ($VMLocalAdminUser, $VMLocalAdminSecurePassword);
@@ -209,7 +212,7 @@ $bytes = [System.Text.Encoding]::Unicode.GetBytes($text);
 $userData = [Convert]::ToBase64String($bytes);
 
 # Create VM
-New-AzVM -ResourceGroupName $ResourceGroupName -Name $VMName -Credential $Credential -DomainNameLabel $domainNameLabel -UserData $userData;
+New-AzVM -ResourceGroupName $ResourceGroupName -Name $VMName -Credential $Credential -DomainNameLabel $domainNameLabel -UserData $userData -SecurityType $securityTypeStnd;
 $vm = Get-AzVM -ResourceGroupName $ResourceGroupName -Name $VMName -UserData;
 ```
 
@@ -220,12 +223,13 @@ The UserData value must always be Base64 encoded.
 $UserName = "User"
 $Password = ConvertTo-SecureString "############" -AsPlainText -Force
 $psCred = New-Object System.Management.Automation.PSCredential($UserName, $Password)
+$securityTypeStnd = "Standard";
 
 $Vnet = $(Get-AzVirtualNetwork -ResourceGroupName ResourceGroup2 -Name VnetName)
 $PIP = (Get-AzPublicIpAddress -ResourceGroupName ResourceGroup2 -Name PublicIPName)
 
 $NIC = New-AzNetworkInterface -Name NICname -ResourceGroupName ResourceGroup2 -Location SouthCentralUS -SubnetId $Vnet.Subnets[1].Id -PublicIpAddressId $PIP.Id
-$VirtualMachine = New-AzVMConfig -VMName VirtualMachineName -VMSize Standard_D4s_v3
+$VirtualMachine = New-AzVMConfig -VMName VirtualMachineName -VMSize Standard_D4s_v3 -SecurityType $securityTypeStnd
 $VirtualMachine = Set-AzVMOperatingSystem -VM $VirtualMachine -Windows -ComputerName computerName -Credential $psCred -ProvisionVMAgent -EnableAutoUpdate
 $VirtualMachine = Add-AzVMNetworkInterface -VM $VirtualMachine -Id $NIC.Id
 $VirtualMachine = Set-AzVMSourceImage -VM $VirtualMachine -PublisherName 'MicrosoftWindowsServer' -Offer 'WindowsServer' -Skus '2022-datacenter-azure-edition-core' -Version latest
@@ -239,6 +243,7 @@ This example deploys a Windows VM from the marketplace in one resource group wit
 $resourceGroupName= "ResourceGroupName";
 $loc = 'eastus';
 New-AzResourceGroup -Name $resourceGroupName -Location $loc -Force;
+$securityTypeStnd = "Standard";
 
 $domainNameLabel = "d1" + $resourceGroupName;
 $vmname = "vm" + $resourceGroupName;
@@ -249,7 +254,7 @@ $user = <USERNAME>;
 $cred = New-Object System.Management.Automation.PSCredential ($user, $securePassword);
 $vmssName = "vmss" + $resourceGroupName;
 
-$vmssConfig = New-AzVmssConfig -Location $loc -PlatformFaultDomainCount $vmssFaultDomain;
+$vmssConfig = New-AzVmssConfig -Location $loc -PlatformFaultDomainCount $vmssFaultDomain -SecurityType $securityTypeStnd;
 $vmss = New-AzVmss -ResourceGroupName $resourceGroupName -Name $vmssName -VirtualMachineScaleSet $vmssConfig;
 
 $vm = New-AzVM -ResourceGroupName $resourceGroupName -Name $vmname -Credential $cred -DomainNameLabel $domainNameLabel -PlatformFaultDomain $platformFaultDomainVMDefaultSet -VmssId $vmss.Id;
@@ -262,7 +267,6 @@ This example creates a new VM as part of a VMSS with a PlatformFaultDomain value
 $rgname = <RESOURCE GROUP NAME>;
 $loc = <AZURE REGION>;
 New-AzResourceGroup -Name $rgname -Location $loc -Force;
-
 # VM Profile & Hardware
 $vmname = 'vm' + $rgname;
 $domainNameLabel = "d1" + $rgname;
@@ -281,24 +285,20 @@ $SKU = "2019-DATACENTER-GENSECOND";
 $securityType = "TrustedLaunch";
 $secureboot = $true;
 $vtpm = $true;
-
 # Default extension and identity values.
 $extDefaultName = "GuestAttestation";
 $vmGADefaultIDentity = "SystemAssigned";
-
 # Credential
 $password = <PASSWORD>;
 $securePassword = $password | ConvertTo-SecureString -AsPlainText -Force;  
 $user = <USER NAME>;
 $cred = New-Object System.Management.Automation.PSCredential ($user, $securePassword);
-
 # Network resources
 $frontendSubnet = New-AzVirtualNetworkSubnetConfig -Name $subnetname -AddressPrefix $subnetAddress;
 $vnet = New-AzVirtualNetwork -Name $vnetname -ResourceGroupName $rgname -Location $loc -AddressPrefix $vnetAddress -Subnet $frontendSubnet;
 $nsgRuleRDP = New-AzNetworkSecurityRuleConfig -Name RDP  -Protocol Tcp  -Direction Inbound -Priority 1001 -SourceAddressPrefix * -SourcePortRange * -DestinationAddressPrefix * -DestinationPortRange 3389 -Access Allow;
 $nsg = New-AzNetworkSecurityGroup -ResourceGroupName $RGName -Location $loc -Name $NSGName  -SecurityRules $nsgRuleRDP;
 $nic = New-AzNetworkInterface -Name $NICName -ResourceGroupName $RGName -Location $loc -SubnetId $vnet.Subnets[0].Id -NetworkSecurityGroupId $nsg.Id -EnableAcceleratedNetworking;
-
 # VM creation
 $vmConfig = New-AzVMConfig -VMName $vmName -VMSize $VMSize;
 Set-AzVMOperatingSystem -VM $vmConfig -Windows -ComputerName $vmName -Credential $cred;
@@ -306,22 +306,16 @@ Set-AzVMSourceImage -VM $vmConfig -PublisherName $PublisherName -Offer $Offer -S
 Add-AzVMNetworkInterface -VM $vmConfig -Id $nic.Id;
 $vmConfig = Set-AzVMSecurityProfile -VM $vmConfig -SecurityType $securityType;
 $vmConfig = Set-AzVMUefi -VM $vmConfig -EnableVtpm $vtpm -EnableSecureBoot $secureboot;
-New-AzVM -ResourceGroupName $RGName -Location $loc -VM $vmConfig;
-
+New-AzVM -ResourceGroupName $RGName -Location $loc -VM $vmConfig -DisableIntegrityMonitoring:$false;
 # Verify values
 $vm = Get-AzVM -ResourceGroupName $rgname -Name $vmName;
 $vmExt = Get-AzVMExtension -ResourceGroupName $rgname -VMName $vmName -Name $extDefaultName;
 # Check the default extension has been installed, and the Identity.Type defaulted to SystemAssigned.
 # $vmExt.Name
 # $vm.Identity.Type
-
-# Use the DisableIntegrityMonitoring parameter
-Remove-AzVM -ResourceGroupName $rgname -Name $vmname -Force;
-New-AzVM -ResourceGroupName $rgname -Location $loc -VM $vmConfig -DisableIntegrityMonitoring;
-# This VM does not have the Guest Attestation extension installed on it, and the Identity is not set to SystemAssigned by default.
 ```
 
-This example creates a new VM with the GuestAttestation extension installed by default, then recreating the VM with DisableIntegrityMonitoring to prevent this.
+This example creates a new VM with the GuestAttestation extension installed.
 
 ### Example 8: Create a VM using the -Image alias.
 ```powershell
@@ -332,13 +326,14 @@ $vmname = "<Virtual Machine Name>"
 $securePassword = "<Password>" | ConvertTo-SecureString -AsPlainText -Force
 $user = "<Username>"
 $cred = New-Object System.Management.Automation.PSCredential ($user, $securePassword)
+$securityTypeStnd = "Standard"
 
 New-AzResourceGroup -Name $resourceGroupName -Location $loc -Force
 
 # Create a VM using an Image alias.
 $vmname = 'v' + $resourceGroupName
 $domainNameLabel = "d" + $resourceGroupName
-$vm = New-AzVM -ResourceGroupName $resourceGroupName -Name $vmname -Credential $cred -Image OpenSuseLeap154Gen2 -DomainNameLabel $domainNameLabel
+$vm = New-AzVM -ResourceGroupName $resourceGroupName -Name $vmname -Credential $cred -Image OpenSuseLeap154Gen2 -DomainNameLabel $domainNameLabel -SecurityType $securityTypeStnd
 
 $vm = Get-AzVM -ResourceGroupName $resourceGroupName -Name $vmname
 ```
@@ -378,7 +373,7 @@ $vm1 = Get-AzVM -ResourceGroupName $rgname -Name $vmname1;
 $vm = Get-AzVM -ResourceGroupName $rgname -Name $vmname1;
 $extDefaultName = "GuestAttestation";
 $vmExt = Get-AzVMExtension -ResourceGroupName $rgname -VMName $vmname1 -Name $extDefaultName;
-# $vmExt.Name "GuestAttestation";
+# verify $vmExt.Name is "GuestAttestation";
 ```
 
 This example Creates a new VM with the TrustedLaunch Security Type and sets flags EnableSecureBoot and EnableVtpm as True by default. 

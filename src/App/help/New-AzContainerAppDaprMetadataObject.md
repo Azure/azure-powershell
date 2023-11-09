@@ -1,7 +1,7 @@
 ---
 external help file:
 Module Name: Az.App
-online version: https://learn.microsoft.com/powershell/module/az.app/new-azcontainerappdaprmetadataobject
+online version: https://learn.microsoft.com/powershell/module/Az.App/new-azcontainerappdaprmetadataobject
 schema: 2.0.0
 ---
 
@@ -89,11 +89,9 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.App.Models.Api20220301.DaprMetadata
+### Microsoft.Azure.PowerShell.Cmdlets.App.Models.DaprMetadata
 
 ## NOTES
-
-ALIASES
 
 ## RELATED LINKS
 

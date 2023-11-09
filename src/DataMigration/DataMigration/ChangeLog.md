@@ -18,6 +18,7 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
+* Supported console app automatically upgrade.
 
 ## Version 0.14.2
 * Updated the description of command `New-AzDataMigrationToSqlDb` to inform the customers that they can use `New-AzDataMigrationSqlServerSchema` to do schema migration.

@@ -364,28 +364,5 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## NOTES
 
-ALIASES
-
-COMPLEX PARAMETER PROPERTIES
-
-To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
-
-
-`INPUTOBJECT <IConnectedMachineIdentity>`: Identity Parameter
-  - `[ExtensionName <String>]`: The name of the machine extension.
-  - `[ExtensionType <String>]`: The extensionType of the Extension being received.
-  - `[GroupName <String>]`: The name of the private link resource.
-  - `[Id <String>]`: Resource identity path
-  - `[Location <String>]`: The location of the Extension being received.
-  - `[MachineName <String>]`: The name of the hybrid machine.
-  - `[Name <String>]`: The name of the hybrid machine.
-  - `[PrivateEndpointConnectionName <String>]`: The name of the private endpoint connection.
-  - `[PrivateLinkScopeId <String>]`: The id (Guid) of the Azure Arc PrivateLinkScope resource.
-  - `[Publisher <String>]`: The publisher of the Extension being received.
-  - `[ResourceGroupName <String>]`: The name of the resource group. The name is case insensitive.
-  - `[ScopeName <String>]`: The name of the Azure Arc PrivateLinkScope resource.
-  - `[SubscriptionId <String>]`: The ID of the target subscription.
-  - `[Version <String>]`: The version of the Extension being received.
-
 ## RELATED LINKS
 

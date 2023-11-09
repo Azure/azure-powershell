@@ -18,11 +18,16 @@ Describe 'Test-AzKustoManagedPrivateEndpointNameAvailability' {
 
     It 'CheckExpanded' {
         $managedPrivateEndpointName = "test-name-avilability"
-        $testResult = Test-AzKustoManagedPrivateEndpointNameAvailability -ClusterName $env.kustoClusterName -ResourceGroupName $env.resourceGroupName -Name $managedPrivateEndpointName -SubscriptionId $env.subscriptionId
+        
+        $testResult = Test-AzKustoManagedPrivateEndpointNameAvailability -ClusterName $env.kustoClusterName -ResourceGroupName $env.resourceGroupName -Name $managedPrivateEndpointName
         $testResult.NameAvailable | Should -Be $true
     }
 
-    It 'CheckViaIdentityExpanded' -skip {
-        { throw [System.NotImplementedException] } | Should -Not -Throw
+    It 'CheckViaIdentityExpanded' {
+        $managedPrivateEndpointName = "test-name-avilability"
+        $cluster = Get-AzKustoCluster -ResourceGroupName $env.resourceGroupName -Name $env.kustoClusterName
+        
+        $testResult = Test-AzKustoManagedPrivateEndpointNameAvailability -InputObject $cluster -Name $managedPrivateEndpointName
+        $testResult.NameAvailable | Should -Be $true
     }
 }

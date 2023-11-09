@@ -1,14 +1,22 @@
-### Example 1: Restarts a revision for a Container App
+### Example 1: Restarts a revision for a Container App.
 ```powershell
-Restart-AzContainerAppRevision -ContainerAppName azps-containerapp -ResourceGroupName azpstest_gp -RevisionName azps-containerapp--ksjb6f1
-
-Get-AzContainerAppRevision -ContainerAppName azps-containerapp -ResourceGroupName azpstest_gp
+Restart-AzContainerAppRevision -ContainerAppName azps-containerapp-1 -ResourceGroupName azps_test_group_app -Name azps-containerapp-1--6a9svx2 -PassThru
 ```
 
 ```output
-Name                       Active TrafficWeight ProvisioningState ResourceGroupName
-----                       ------ ------------- ----------------- -----------------
-azps-containerapp--ksjb6f1 True   100           Provisioned       azpstest_gp
+True
 ```
 
-Restarts a revision for a Container App
+Restarts a revision for a Container App.
+
+### Example 2: Restarts a revision for a Container App.
+```powershell
+$containerapp = Get-AzContainerApp -ResourceGroupName azps_test_group_app -Name azps-containerapp-1
+Restart-AzContainerAppRevision -ContainerAppInputObject $containerapp -Name azps-containerapp-1--6a9svx2 -PassThru
+```
+
+```output
+True
+```
+
+Restarts a revision for a Container App.

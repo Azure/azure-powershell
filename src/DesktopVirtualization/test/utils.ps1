@@ -25,8 +25,6 @@ function setupEnv() {
     $null = $env.Add("PvtLinkHP", "PrivateLinkHostPool")
     $null = $env.Add("RemoteApplicationGroup", "ApplicationGroupPowershell2")
     $null = $env.Add("DesktopApplicationGroup", "ApplicationGroupPowershell1")
-    #TODO: Need to make this not local
-    $null = $env.Add("MSIXImagePath", "C:\AppAttach\Firefox20110.0.1.vhdx")
     $null = $env.Add("PrivateEndpointConnectionNameWS", "pwshTestPECWS")
     $null = $env.Add("PrivateEndpointConnectionNameWS1", "pwshTestPECWS1")
     $null = $env.Add("PrivateEndpointConnectionNameHP", "pwshTestPECHP")
@@ -51,10 +49,12 @@ function setupEnv() {
     $null = $env.Add("HostPoolPersistent2", "alecbRemoteAppHP")
     $null = $env.Add("HostPoolPersistentArmPath", "/subscriptions/"+ $env.SubscriptionId + "/resourcegroups/"+ $env.ResourceGroupPersistent + "/providers/Microsoft.DesktopVirtualization/hostpools/"+ $env.HostPoolPersistent)
     $null = $env.Add("SessionHostName", "userSess-sh-0")
-    $null = $env.Add("SessionHostNameRemove", "pwshDelete-1")
+    $null = $env.Add("SessionHostNameRemove", "PSTestRmve-0")
     $null = $env.Add("PersistentDesktopAppGroup", "alecbUserSessionHP-DAG")
     $null = $env.Add("PersistentRemoteAppGroup", "alecbRemoteAppHP-RAG")
     $null = $env.Add("VnetName", "alecbUserSession-vnet")
+    #TODO: Instead of this being a persistent resource on the HP, we should add the vhd to a Storage Account and access it from there.
+    $null = $env.Add("MSIXImagePath", "C:\AppAttach\Firefox20110.0.1.vhdx")
     # The context in which the tests are run will change the tenant and subscription ID when -record is run. 
     # Currently the scaling tests need to be run in a context with @microsoft, while the other tests are run with a test account
     # Modify the env.json manually after recording the necessary tests to get around this issue.

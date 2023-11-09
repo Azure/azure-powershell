@@ -16,77 +16,166 @@
 
 <#
 .Synopsis
-Create or Update a Certificate.
+Create a Certificate.
 .Description
-Create or Update a Certificate.
+Create a Certificate.
 .Example
 New-SelfSignedCertificate -DnsName "www.fabrikam.com", "www.contoso.com" -CertStoreLocation "cert:\LocalMachine\My"
 Get-ChildItem -Path cert:\LocalMachine\My
 $mypwd = ConvertTo-SecureString -String "1234" -Force -AsPlainText
-Get-ChildItem -Path cert:\localMachine\my\5F98EBBFE735CDDAE00E33E0FD69050EF9220254 | Export-PfxCertificate -FilePath C:\mypfx.pfx -Password $mypwd
+Get-ChildItem -Path cert:\localMachine\my\F61C9A8C53D0500F819463A66C5921AA09E1B787 | Export-PfxCertificate -FilePath C:\mypfx.pfx -Password $mypwd
 
-New-AzContainerAppManagedEnvCert -EnvName azps-env -Name azps-env-cert -ResourceGroupName azpstest_gp -Location canadacentral -InputFile "C:\mypfx.pfx" -Password $mypwd
+New-AzContainerAppManagedEnvCert -EnvName azps-env -Name azps-env-cert -ResourceGroupName azps_test_group_app -Location eastus -InputFile "C:\mypfx.pfx" -Password $mypwd
 
+.Inputs
+Microsoft.Azure.PowerShell.Cmdlets.App.Models.IAppIdentity
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.App.Models.Api20220301.ICertificate
+Microsoft.Azure.PowerShell.Cmdlets.App.Models.ICertificate
+.Notes
+COMPLEX PARAMETER PROPERTIES
+
+To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
+
+INPUTOBJECT <IAppIdentity>: Identity Parameter
+  [AuthConfigName <String>]: Name of the Container App AuthConfig.
+  [CertificateName <String>]: Name of the Certificate.
+  [ComponentName <String>]: Name of the Dapr Component.
+  [ConnectedEnvironmentName <String>]: Name of the connectedEnvironment.
+  [ContainerAppName <String>]: Name of the Container App.
+  [DetectorName <String>]: Name of the Container App Detector.
+  [EnvironmentName <String>]: Name of the Environment.
+  [Id <String>]: Resource identity path
+  [JobExecutionName <String>]: Job execution name.
+  [JobName <String>]: Job Name
+  [Location <String>]: The name of Azure region.
+  [ManagedCertificateName <String>]: Name of the Managed Certificate.
+  [ReplicaName <String>]: Name of the Container App Revision Replica.
+  [ResourceGroupName <String>]: The name of the resource group. The name is case insensitive.
+  [RevisionName <String>]: Name of the Container App Revision.
+  [SourceControlName <String>]: Name of the Container App SourceControl.
+  [StorageName <String>]: Name of the storage.
+  [SubscriptionId <String>]: The ID of the target subscription.
+
+MANAGEDENVIRONMENTINPUTOBJECT <IAppIdentity>: Identity Parameter
+  [AuthConfigName <String>]: Name of the Container App AuthConfig.
+  [CertificateName <String>]: Name of the Certificate.
+  [ComponentName <String>]: Name of the Dapr Component.
+  [ConnectedEnvironmentName <String>]: Name of the connectedEnvironment.
+  [ContainerAppName <String>]: Name of the Container App.
+  [DetectorName <String>]: Name of the Container App Detector.
+  [EnvironmentName <String>]: Name of the Environment.
+  [Id <String>]: Resource identity path
+  [JobExecutionName <String>]: Job execution name.
+  [JobName <String>]: Job Name
+  [Location <String>]: The name of Azure region.
+  [ManagedCertificateName <String>]: Name of the Managed Certificate.
+  [ReplicaName <String>]: Name of the Container App Revision Replica.
+  [ResourceGroupName <String>]: The name of the resource group. The name is case insensitive.
+  [RevisionName <String>]: Name of the Container App Revision.
+  [SourceControlName <String>]: Name of the Container App SourceControl.
+  [StorageName <String>]: Name of the storage.
+  [SubscriptionId <String>]: The ID of the target subscription.
 .Link
 https://learn.microsoft.com/powershell/module/az.app/new-azcontainerappmanagedenvcert
 #>
 function New-AzContainerAppManagedEnvCert {
-[OutputType([Microsoft.Azure.PowerShell.Cmdlets.App.Models.Api20220301.ICertificate])]
+[OutputType([Microsoft.Azure.PowerShell.Cmdlets.App.Models.ICertificate])]
 [CmdletBinding(DefaultParameterSetName='CreateExpanded', PositionalBinding=$false, SupportsShouldProcess, ConfirmImpact='Medium')]
 param(
-    [Parameter(Mandatory)]
+    [Parameter(ParameterSetName='CreateExpanded', Mandatory)]
+    [Parameter(ParameterSetName='CreateViaJsonFilePath', Mandatory)]
+    [Parameter(ParameterSetName='CreateViaJsonString', Mandatory)]
     [Microsoft.Azure.PowerShell.Cmdlets.App.Category('Path')]
     [System.String]
     # Name of the Managed Environment.
     ${EnvName},
 
-    [Parameter(Mandatory)]
+    [Parameter(ParameterSetName='CreateExpanded', Mandatory)]
+    [Parameter(ParameterSetName='CreateViaIdentityManagedEnvironmentExpanded', Mandatory)]
+    [Parameter(ParameterSetName='CreateViaJsonFilePath', Mandatory)]
+    [Parameter(ParameterSetName='CreateViaJsonString', Mandatory)]
     [Alias('CertificateName')]
     [Microsoft.Azure.PowerShell.Cmdlets.App.Category('Path')]
     [System.String]
     # Name of the Certificate.
     ${Name},
 
-    [Parameter(Mandatory)]
+    [Parameter(ParameterSetName='CreateExpanded', Mandatory)]
+    [Parameter(ParameterSetName='CreateViaJsonFilePath', Mandatory)]
+    [Parameter(ParameterSetName='CreateViaJsonString', Mandatory)]
     [Microsoft.Azure.PowerShell.Cmdlets.App.Category('Path')]
     [System.String]
     # The name of the resource group.
     # The name is case insensitive.
     ${ResourceGroupName},
 
-    [Parameter()]
+    [Parameter(ParameterSetName='CreateExpanded')]
+    [Parameter(ParameterSetName='CreateViaJsonFilePath')]
+    [Parameter(ParameterSetName='CreateViaJsonString')]
     [Microsoft.Azure.PowerShell.Cmdlets.App.Category('Path')]
     [Microsoft.Azure.PowerShell.Cmdlets.App.Runtime.DefaultInfo(Script='(Get-AzContext).Subscription.Id')]
     [System.String]
     # The ID of the target subscription.
     ${SubscriptionId},
 
-    [Parameter(Mandatory)]
+    [Parameter(ParameterSetName='CreateViaIdentityExpanded', Mandatory, ValueFromPipeline)]
+    [Microsoft.Azure.PowerShell.Cmdlets.App.Category('Path')]
+    [Microsoft.Azure.PowerShell.Cmdlets.App.Models.IAppIdentity]
+    # Identity Parameter
+    # To construct, see NOTES section for INPUTOBJECT properties and create a hash table.
+    ${InputObject},
+
+    [Parameter(ParameterSetName='CreateViaIdentityManagedEnvironmentExpanded', Mandatory, ValueFromPipeline)]
+    [Microsoft.Azure.PowerShell.Cmdlets.App.Category('Path')]
+    [Microsoft.Azure.PowerShell.Cmdlets.App.Models.IAppIdentity]
+    # Identity Parameter
+    # To construct, see NOTES section for MANAGEDENVIRONMENTINPUTOBJECT properties and create a hash table.
+    ${ManagedEnvironmentInputObject},
+
+    [Parameter(ParameterSetName='CreateExpanded', Mandatory)]
+    [Parameter(ParameterSetName='CreateViaIdentityExpanded', Mandatory)]
+    [Parameter(ParameterSetName='CreateViaIdentityManagedEnvironmentExpanded', Mandatory)]
     [Microsoft.Azure.PowerShell.Cmdlets.App.Category('Body')]
     [System.String]
     # The geo-location where the resource lives
     ${Location},
 
-    [Parameter()]
+    [Parameter(ParameterSetName='CreateExpanded')]
+    [Parameter(ParameterSetName='CreateViaIdentityExpanded')]
+    [Parameter(ParameterSetName='CreateViaIdentityManagedEnvironmentExpanded')]
     [Microsoft.Azure.PowerShell.Cmdlets.App.Category('Body')]
     [System.String]
     # Input File for Value (PFX or PEM blob)
     ${InputFile},
 
-    [Parameter()]
+    [Parameter(ParameterSetName='CreateExpanded')]
+    [Parameter(ParameterSetName='CreateViaIdentityExpanded')]
+    [Parameter(ParameterSetName='CreateViaIdentityManagedEnvironmentExpanded')]
     [Microsoft.Azure.PowerShell.Cmdlets.App.Category('Body')]
     [System.Security.SecureString]
-    # Certificate password.
+    # Certificate password
     ${Password},
 
-    [Parameter()]
+    [Parameter(ParameterSetName='CreateExpanded')]
+    [Parameter(ParameterSetName='CreateViaIdentityExpanded')]
+    [Parameter(ParameterSetName='CreateViaIdentityManagedEnvironmentExpanded')]
     [Microsoft.Azure.PowerShell.Cmdlets.App.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.App.Runtime.Info(PossibleTypes=([Microsoft.Azure.PowerShell.Cmdlets.App.Models.Api30.ITrackedResourceTags]))]
+    [Microsoft.Azure.PowerShell.Cmdlets.App.Runtime.Info(PossibleTypes=([Microsoft.Azure.PowerShell.Cmdlets.App.Models.ITrackedResourceTags]))]
     [System.Collections.Hashtable]
     # Resource tags.
     ${Tag},
+
+    [Parameter(ParameterSetName='CreateViaJsonFilePath', Mandatory)]
+    [Microsoft.Azure.PowerShell.Cmdlets.App.Category('Body')]
+    [System.String]
+    # Path of Json file supplied to the Create operation
+    ${JsonFilePath},
+
+    [Parameter(ParameterSetName='CreateViaJsonString', Mandatory)]
+    [Microsoft.Azure.PowerShell.Cmdlets.App.Category('Body')]
+    [System.String]
+    # Json string supplied to the Create operation
+    ${JsonString},
 
     [Parameter()]
     [Alias('AzureRMContext', 'AzureCredential')]
@@ -164,12 +253,20 @@ begin {
 
         $mapping = @{
             CreateExpanded = 'Az.App.private\New-AzContainerAppManagedEnvCert_CreateExpanded';
+            CreateViaIdentityExpanded = 'Az.App.private\New-AzContainerAppManagedEnvCert_CreateViaIdentityExpanded';
+            CreateViaIdentityManagedEnvironmentExpanded = 'Az.App.private\New-AzContainerAppManagedEnvCert_CreateViaIdentityManagedEnvironmentExpanded';
+            CreateViaJsonFilePath = 'Az.App.private\New-AzContainerAppManagedEnvCert_CreateViaJsonFilePath';
+            CreateViaJsonString = 'Az.App.private\New-AzContainerAppManagedEnvCert_CreateViaJsonString';
         }
-        if (('CreateExpanded') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId')) {
+        if (('CreateExpanded', 'CreateViaJsonFilePath', 'CreateViaJsonString') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId') ) {
             $PSBoundParameters['SubscriptionId'] = (Get-AzContext).Subscription.Id
         }
         $cmdInfo = Get-Command -Name $mapping[$parameterSet]
         [Microsoft.Azure.PowerShell.Cmdlets.App.Runtime.MessageAttributeHelper]::ProcessCustomAttributesAtRuntime($cmdInfo, $MyInvocation, $parameterSet, $PSCmdlet)
+        if ($null -ne $MyInvocation.MyCommand -and [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PromptedPreviewMessageCmdlets -notcontains $MyInvocation.MyCommand.Name -and [Microsoft.Azure.PowerShell.Cmdlets.App.Runtime.MessageAttributeHelper]::ContainsPreviewAttribute($cmdInfo, $MyInvocation)){
+            [Microsoft.Azure.PowerShell.Cmdlets.App.Runtime.MessageAttributeHelper]::ProcessPreviewMessageAttributesAtRuntime($cmdInfo, $MyInvocation, $parameterSet, $PSCmdlet)
+            [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PromptedPreviewMessageCmdlets.Enqueue($MyInvocation.MyCommand.Name)
+        }
         $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Cmdlet)
         $scriptCmd = {& $wrappedCmd @PSBoundParameters}
         $steppablePipeline = $scriptCmd.GetSteppablePipeline($MyInvocation.CommandOrigin)

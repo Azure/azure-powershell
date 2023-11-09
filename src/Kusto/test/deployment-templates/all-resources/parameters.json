@@ -3,22 +3,37 @@
   "contentVersion": "1.0.0.0",
   "parameters": {
     "kustoApiVersion": {
-      "value": "2022-12-29"
+      "value": "2023-08-15"
+    },
+    "userAssignedManagedIdentityName": {
+      "value": "uaMi3w8cj7"
     },
     "kustoSkuName": {
       "value": "Dev(No SLA)_Standard_E2a_v4"
     },
+    "kustoFollowerSkuName": {
+      "value": "Standard_E8as_v5+1TB_PS"
+    },
     "kustoClusterTier": {
       "value": "Basic"
     },
+    "kustoFollowerClusterTier": {
+      "value": "Standard"
+    },
     "kustoClusterName": {
-      "value": "pssdk4cv18e"
+      "value": "pssdk3w8cj7"
     },
     "kustoFollowerClusterName": {
-      "value": "pssdkfollow4cv18e"
+      "value": "pssdkfollow3w8cj7"
+    },
+    "kustoMigrationClusterName": {
+      "value": "pssdkmigr3w8cj7"
     },
     "kustoDatabaseName": {
       "value": "TestDb"
+    },
+    "kustoMigrationDatabaseName": {
+      "value": "DbToMigrate"
     },
     "kustoDatabaseScriptName": {
       "value": "CreateTableScript"
@@ -30,16 +45,16 @@
       "value": "713c3475-5021-4f3b-a650-eaa9a83f25a4"
     },
     "eventHubNameSpaceName": {
-      "value": "EHNamespace4cv18e"
+      "value": "EHNamespace3w8cj7"
     },
     "eventHubName": {
-      "value": "eh4cv18e"
+      "value": "eh3w8cj7"
     },
     "iotHubName": {
-      "value": "iot4cv18e"
+      "value": "iot3w8cj7"
     },
     "cosmosDbAccountName": {
-      "value": "cosmos4cv18e"
+      "value": "cosmos3w8cj7"
     },
     "cosmosDbDatabaseName": {
       "value": "cosmostestdb"
@@ -48,16 +63,22 @@
       "value": "cosmostestcontainer"
     },
     "storageAccountName": {
-      "value": "sa4cv18e"
+      "value": "sa3w8cj7"
     },
     "virtualNetworkName": {
-      "value": "vnet4cv18e"
+      "value": "vnet3w8cj7"
     },
     "subnetName": {
-      "value": "subnet4cv18e"
+      "value": "subnet3w8cj7"
     },
     "privateEndpointName": {
-      "value": "pe4cv18e"
+      "value": "pe3w8cj7"
+    },
+    "keyVaultName": {
+      "value": "kvPwsh3w8cj7"
+    },
+    "keyName": {
+      "value": "byok3w8cj7"
     }
   }
 }

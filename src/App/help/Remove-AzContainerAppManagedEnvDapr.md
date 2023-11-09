@@ -14,7 +14,7 @@ Delete a Dapr Component from a Managed Environment.
 
 ### Delete (Default)
 ```
-Remove-AzContainerAppManagedEnvDapr -DaprName <String> -EnvName <String> -ResourceGroupName <String>
+Remove-AzContainerAppManagedEnvDapr -EnvName <String> -Name <String> -ResourceGroupName <String>
  [-SubscriptionId <String>] [-DefaultProfile <PSObject>] [-PassThru] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
@@ -24,6 +24,12 @@ Remove-AzContainerAppManagedEnvDapr -InputObject <IAppIdentity> [-DefaultProfile
  [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
+### DeleteViaIdentityManagedEnvironment
+```
+Remove-AzContainerAppManagedEnvDapr -ManagedEnvironmentInputObject <IAppIdentity> -Name <String>
+ [-DefaultProfile <PSObject>] [-PassThru] [-Confirm] [-WhatIf] [<CommonParameters>]
+```
+
 ## DESCRIPTION
 Delete a Dapr Component from a Managed Environment.
 
@@ -31,34 +37,30 @@ Delete a Dapr Component from a Managed Environment.
 
 ### Example 1: Delete a Dapr Component from a Managed Environment.
 ```powershell
-Remove-AzContainerAppManagedEnvDapr -EnvName azps-env -ResourceGroupName azpstest_gp -DaprName azps-dapr
+Remove-AzContainerAppManagedEnvDapr -EnvName azps-env -ResourceGroupName azps_test_group_app -Name azps-dapr
 ```
 
 Delete a Dapr Component from a Managed Environment.
 
 ### Example 2: Delete a Dapr Component from a Managed Environment.
 ```powershell
-Get-AzContainerAppManagedEnvDapr -EnvName azps-env -ResourceGroupName azpstest_gp -DaprName azps-dapr | Remove-AzContainerAppManagedEnvDapr
+$managedenvdapr = Get-AzContainerAppManagedEnvDapr -EnvName azps-env -ResourceGroupName azps_test_group_app -Name azps-dapr
+
+Remove-AzContainerAppManagedEnvDapr -InputObject $managedenvdapr
+```
+
+Delete a Dapr Component from a Managed Environment.
+
+### Example 3: Delete a Dapr Component from a Managed Environment.
+```powershell
+$managedenv = Get-AzContainerAppManagedEnv -Name azps-env -ResourceGroupName azps_test_group_app
+
+Remove-AzContainerAppManagedEnvDapr -ManagedEnvironmentInputObject $managedenv -Name azps-dapr
 ```
 
 Delete a Dapr Component from a Managed Environment.
 
 ## PARAMETERS
-
-### -DaprName
-Name of the Dapr Component.
-
-```yaml
-Type: System.String
-Parameter Sets: Delete
-Aliases:
-
-Required: True
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
 
 ### -DefaultProfile
 The DefaultProfile parameter is not functional.
@@ -104,6 +106,37 @@ Required: True
 Position: Named
 Default value: None
 Accept pipeline input: True (ByValue)
+Accept wildcard characters: False
+```
+
+### -ManagedEnvironmentInputObject
+Identity Parameter
+To construct, see NOTES section for MANAGEDENVIRONMENTINPUTOBJECT properties and create a hash table.
+
+```yaml
+Type: Microsoft.Azure.PowerShell.Cmdlets.App.Models.IAppIdentity
+Parameter Sets: DeleteViaIdentityManagedEnvironment
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: True (ByValue)
+Accept wildcard characters: False
+```
+
+### -Name
+Name of the Dapr Component.
+
+```yaml
+Type: System.String
+Parameter Sets: Delete, DeleteViaIdentityManagedEnvironment
+Aliases: DaprName
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
@@ -196,27 +229,6 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ### System.Boolean
 
 ## NOTES
-
-ALIASES
-
-COMPLEX PARAMETER PROPERTIES
-
-To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
-
-
-`INPUTOBJECT <IAppIdentity>`: Identity Parameter
-  - `[AuthConfigName <String>]`: Name of the Container App AuthConfig.
-  - `[CertificateName <String>]`: Name of the Certificate.
-  - `[ComponentName <String>]`: Name of the Dapr Component.
-  - `[ContainerAppName <String>]`: Name of the Container App.
-  - `[EnvironmentName <String>]`: Name of the Managed Environment.
-  - `[Id <String>]`: Resource identity path
-  - `[ReplicaName <String>]`: Name of the Container App Revision Replica.
-  - `[ResourceGroupName <String>]`: The name of the resource group. The name is case insensitive.
-  - `[RevisionName <String>]`: Name of the Container App Revision.
-  - `[SourceControlName <String>]`: Name of the Container App SourceControl.
-  - `[StorageName <String>]`: Name of the storage.
-  - `[SubscriptionId <String>]`: The ID of the target subscription.
 
 ## RELATED LINKS
 

@@ -23,11 +23,11 @@ Updates a managed private endpoint.
 Update-AzKustoManagedPrivateEndpoint -ResourceGroupName "testrg" -ClusterName "mycluster" -Name "ManagedPrivateEndpointName" -RequestMessage "Please Approve Managed Private Endpoint Request." -GroupId "blob" -PrivateLinkResourceId "/subscriptions/12345678-1234-1234-1234-123456789098/resourceGroups/testrg/providers/Microsoft.Storage/storageAccounts/storageAccountTest"
 
 .Inputs
-Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api20221229.IManagedPrivateEndpoint
+Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api20230815.IManagedPrivateEndpoint
 .Inputs
 Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.IKustoIdentity
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api20221229.IManagedPrivateEndpoint
+Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api20230815.IManagedPrivateEndpoint
 .Notes
 COMPLEX PARAMETER PROPERTIES
 
@@ -39,18 +39,18 @@ INPUTOBJECT <IKustoIdentity>: Identity Parameter
   [DataConnectionName <String>]: The name of the data connection.
   [DatabaseName <String>]: The name of the database in the Kusto cluster.
   [Id <String>]: Resource identity path
-  [Location <String>]: Azure location (region) name.
+  [Location <String>]: The name of Azure region.
   [ManagedPrivateEndpointName <String>]: The name of the managed private endpoint.
-  [OperationId <String>]: The Guid of the operation ID
+  [OperationId <String>]: The ID of an ongoing async operation.
   [PrincipalAssignmentName <String>]: The name of the Kusto principalAssignment.
   [PrivateEndpointConnectionName <String>]: The name of the private endpoint connection.
   [PrivateLinkResourceName <String>]: The name of the private link resource.
-  [ResourceGroupName <String>]: The name of the resource group containing the Kusto cluster.
+  [ResourceGroupName <String>]: The name of the resource group. The name is case insensitive.
+  [SandboxCustomImageName <String>]: The name of the sandbox custom image.
   [ScriptName <String>]: The name of the Kusto database script.
-  [SubscriptionId <String>]: Gets subscription credentials which uniquely identify Microsoft Azure subscription. The subscription ID forms part of the URI for every service call.
+  [SubscriptionId <String>]: The ID of the target subscription.
 
 PARAMETER <IManagedPrivateEndpoint>: Class representing a managed private endpoint.
-  [AzureAsyncOperation <String>]: 
   [GroupId <String>]: The groupId in which the managed private endpoint is created.
   [PrivateLinkResourceId <String>]: The ARM resource ID of the resource for which the managed private endpoint is created.
   [PrivateLinkResourceRegion <String>]: The region of the resource to which the managed private endpoint is created.
@@ -65,7 +65,7 @@ PARAMETER <IManagedPrivateEndpoint>: Class representing a managed private endpoi
 https://learn.microsoft.com/powershell/module/az.kusto/update-azkustomanagedprivateendpoint
 #>
 function Update-AzKustoManagedPrivateEndpoint {
-[OutputType([Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api20221229.IManagedPrivateEndpoint])]
+[OutputType([Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api20230815.IManagedPrivateEndpoint])]
 [CmdletBinding(DefaultParameterSetName='UpdateExpanded', PositionalBinding=$false, SupportsShouldProcess, ConfirmImpact='Medium')]
 param(
     [Parameter(ParameterSetName='Update', Mandatory)]
@@ -87,7 +87,8 @@ param(
     [Parameter(ParameterSetName='UpdateExpanded', Mandatory)]
     [Microsoft.Azure.PowerShell.Cmdlets.Kusto.Category('Path')]
     [System.String]
-    # The name of the resource group containing the Kusto cluster.
+    # The name of the resource group.
+    # The name is case insensitive.
     ${ResourceGroupName},
 
     [Parameter(ParameterSetName='Update')]
@@ -95,8 +96,7 @@ param(
     [Microsoft.Azure.PowerShell.Cmdlets.Kusto.Category('Path')]
     [Microsoft.Azure.PowerShell.Cmdlets.Kusto.Runtime.DefaultInfo(Script='(Get-AzContext).Subscription.Id')]
     [System.String]
-    # Gets subscription credentials which uniquely identify Microsoft Azure subscription.
-    # The subscription ID forms part of the URI for every service call.
+    # The ID of the target subscription.
     ${SubscriptionId},
 
     [Parameter(ParameterSetName='UpdateViaIdentity', Mandatory, ValueFromPipeline)]
@@ -110,7 +110,7 @@ param(
     [Parameter(ParameterSetName='Update', Mandatory, ValueFromPipeline)]
     [Parameter(ParameterSetName='UpdateViaIdentity', Mandatory, ValueFromPipeline)]
     [Microsoft.Azure.PowerShell.Cmdlets.Kusto.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api20221229.IManagedPrivateEndpoint]
+    [Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api20230815.IManagedPrivateEndpoint]
     # Class representing a managed private endpoint.
     # To construct, see NOTES section for PARAMETER properties and create a hash table.
     ${Parameter},
@@ -240,6 +240,10 @@ begin {
         }
         $cmdInfo = Get-Command -Name $mapping[$parameterSet]
         [Microsoft.Azure.PowerShell.Cmdlets.Kusto.Runtime.MessageAttributeHelper]::ProcessCustomAttributesAtRuntime($cmdInfo, $MyInvocation, $parameterSet, $PSCmdlet)
+        if ($null -ne $MyInvocation.MyCommand -and [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PromptedPreviewMessageCmdlets -notcontains $MyInvocation.MyCommand.Name -and [Microsoft.Azure.PowerShell.Cmdlets.Kusto.Runtime.MessageAttributeHelper]::ContainsPreviewAttribute($cmdInfo, $MyInvocation)){
+            [Microsoft.Azure.PowerShell.Cmdlets.Kusto.Runtime.MessageAttributeHelper]::ProcessPreviewMessageAttributesAtRuntime($cmdInfo, $MyInvocation, $parameterSet, $PSCmdlet)
+            [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PromptedPreviewMessageCmdlets.Enqueue($MyInvocation.MyCommand.Name)
+        }
         $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Cmdlet)
         $scriptCmd = {& $wrappedCmd @PSBoundParameters}
         $steppablePipeline = $scriptCmd.GetSteppablePipeline($MyInvocation.CommandOrigin)

@@ -19,70 +19,151 @@ function setupEnv() {
     $env.SubscriptionId = (Get-AzContext).Subscription.Id
     $env.Tenant = (Get-AzContext).Tenant.Id
 
-    $tag1 = RandomString -allChars $false -len 4
-    $tag2 = RandomString -allChars $false -len 4
-    $tag3 = RandomString -allChars $false -len 4
+    $containerApp1 = "a" + (RandomString -allChars $false -len 4)
+    $containerApp2 = "a" + (RandomString -allChars $false -len 4)
+    $containerApp3 = "a" + (RandomString -allChars $false -len 4)
+    $env.Add("containerApp1", $containerApp1)
+    $env.Add("containerApp2", $containerApp2)
+    $env.Add("containerApp3", $containerApp3)
 
-    $workSpace = "workspace" + $tag1
-    $env.Add("workSpace", $workSpace)
+    $containerAppJob1 = "a" + (RandomString -allChars $false -len 5)
+    $env.Add("containerAppJob1", $containerAppJob1)
 
-    $envName = "env" + $tag1
-    $envName2 = "env" + $tag2
-    $env.Add("envName", $envName)
-    $env.Add("envName2", $envName2)
+    $containerRegistry1 = "a" + (RandomString -allChars $false -len 5)
+    $containerRegistry2 = "a" + (RandomString -allChars $false -len 5)
+    $env.Add("containerRegistry1", $containerRegistry1)
+    $env.Add("containerRegistry2", $containerRegistry2)
 
-    $envCertName = "envcert" + $tag1
-    $envCertName2 = "envcert" + $tag2
-    $envCertName3 = "envcert" + $tag3
-    $env.Add("envCertName", $envCertName)
-    $env.Add("envCertName2", $envCertName2)
-    $env.Add("envCertName3", $envCertName3)
+    $storageAccount1 = "a" + (RandomString -allChars $false -len 5)
+    $storageAccount2 = "a" + (RandomString -allChars $false -len 5)
+    $env.Add("storageAccount1", $storageAccount1)
+    $env.Add("storageAccount2", $storageAccount2)
 
-    $containerAppName = "containerapp" + $tag1
-    $containerAppName2 = "containerapp" + $tag2
-    $containerAppName3 = "containerapp" + $tag3
-    $env.Add("containerAppName", $containerAppName)
-    $env.Add("containerAppName2", $containerAppName2)
-    $env.Add("containerAppName3", $containerAppName3)
+    $authConfig = "a" + (RandomString -allChars $false -len 5)
+    $env.Add("authConfig", $authConfig)
 
-    $envDaprName = "envdapr" + $tag1
-    $envDaprName2 = "envdapr" + $tag2
-    $env.Add("envDaprName", $envDaprName)
-    $env.Add("envDaprName2", $envDaprName2)
+    $connectedEnv1 = "a" + (RandomString -allChars $false -len 5)
+    $connectedEnv2 = "a" + (RandomString -allChars $false -len 5)
+    $env.Add("connectedEnv1", $connectedEnv1)
+    $env.Add("connectedEnv2", $connectedEnv2)
 
-    $storageAccount = "storageaccount" + $tag1
-    $env.Add("storageAccount", $storageAccount)
+    $connectedEnvCert1 = "a" + (RandomString -allChars $false -len 5)
+    $connectedEnvCert2 = "a" + (RandomString -allChars $false -len 5)
+    $env.Add("connectedEnvCert1", $connectedEnvCert1)
+    $env.Add("connectedEnvCert2", $connectedEnvCert2)
 
-    $acrName = "acr" + $tag1
-    $env.Add("acrName", $acrName)
+    $connectedEnvDapr = "a" + (RandomString -allChars $false -len 5)
+    $env.Add("connectedEnvDapr", $connectedEnvDapr)
 
-    $resourceGroup = "testgroup" + $tag1
-    $env.Add("location", "canadacentral")
-    $env.Add("resourceGroup", $resourceGroup)
-    New-AzResourceGroup -Name $env.resourceGroup -Location $env.location
+    $connectedEnvStorage = "a" + (RandomString -allChars $false -len 5)
+    $env.Add("connectedEnvStorage", $connectedEnvStorage)
 
-    New-AzOperationalInsightsWorkspace -ResourceGroupName $env.resourceGroup -Name $env.workSpace -Sku PerGB2018 -Location $env.location -PublicNetworkAccessForIngestion "Enabled" -PublicNetworkAccessForQuery "Enabled"
-    $customId = (Get-AzOperationalInsightsWorkspace -ResourceGroupName $env.resourceGroup -Name $env.workSpace).CustomerId
-    $sharedKey = (Get-AzOperationalInsightsWorkspaceSharedKey -ResourceGroupName $env.resourceGroup -Name $env.workSpace).PrimarySharedKey
-    New-AzContainerAppManagedEnv -EnvName $env.envName -ResourceGroupName $env.resourceGroup -Location $env.location -AppLogConfigurationDestination "log-analytics" -LogAnalyticConfigurationCustomerId $customId -LogAnalyticConfigurationSharedKey $sharedKey -VnetConfigurationInternal:$false
+    $managedCert1 = "a" + (RandomString -allChars $false -len 5)
+    $env.Add("managedCert1", $managedCert1)
 
-    New-SelfSignedCertificate -DnsName "www.fabrikam.com" -CertStoreLocation "cert:\LocalMachine\My"
+    $managedEnv1 = "a" + (RandomString -allChars $false -len 5)
+    $managedEnv2 = "a" + (RandomString -allChars $false -len 5)
+    $env.Add("managedEnv1", $managedEnv1)
+    $env.Add("managedEnv2", $managedEnv2)
+
+    $managedEnvCert1 = "a" + (RandomString -allChars $false -len 5)
+    $managedEnvCert2 = "a" + (RandomString -allChars $false -len 5)
+    $env.Add("managedEnvCert1", $managedEnvCert1)
+    $env.Add("managedEnvCert2", $managedEnvCert2)
+
+    $managedEnvDapr = "a" + (RandomString -allChars $false -len 5)
+    $env.Add("managedEnvDapr", $managedEnvDapr)
+
+    $managedEnvStorage = "a" + (RandomString -allChars $false -len 5)
+    $env.Add("managedEnvStorage", $managedEnvStorage)
+
+    $sourceControl = "a" + (RandomString -allChars $false -len 5)
+    $env.Add("sourceControl", $sourceControl)
+
+    $managedWorkSpace = "a" + (RandomString -allChars $false -len 5)
+    $env.Add("managedWorkSpace", $managedWorkSpace)
+
+    $location = "eastus"
+    $env.Add("location", $location)
+
+    $customLocation = "my-custom-location"
+    $env.Add("customLocation", $customLocation)
+
+    $resourceGroupManaged = "a" + (RandomString -allChars $false -len 6)
+    $resourceGroupConnected = "azps_test_group_app" #"a" + (RandomString -allChars $false -len 6)
+    $env.Add("resourceGroupManaged", $resourceGroupManaged)
+    $env.Add("resourceGroupConnected", $resourceGroupConnected)
+    
+    write-host "Create ResourceGroup for managed env"
+    New-AzResourceGroup -Name $env.resourceGroupManaged -Location $env.location
+
+    write-host "Create storage account"
+    New-AzStorageAccount -ResourceGroupName $env.resourceGroupManaged -AccountName $env.storageAccount1 -Location $env.location -SkuName Standard_GRS
+
+    write-host "Create container registry"
+    New-AzContainerRegistry -ResourceGroupName $env.resourceGroupManaged -Name $env.containerRegistry1 -Sku "Premium" -EnableAdminUser
+
+    write-host "Create workspace"
+    New-AzOperationalInsightsWorkspace -ResourceGroupName $env.resourceGroupManaged -Name $env.managedWorkSpace -Sku PerGB2018 -Location $env.location -PublicNetworkAccessForIngestion "Enabled" -PublicNetworkAccessForQuery "Enabled"
+    $CustomId = (Get-AzOperationalInsightsWorkspace -ResourceGroupName $env.resourceGroupManaged -Name $env.managedWorkSpace).CustomerId
+    $SharedKey = (Get-AzOperationalInsightsWorkspaceSharedKey -ResourceGroupName $env.resourceGroupManaged -Name $env.managedWorkSpace).PrimarySharedKey
+    $workloadProfile = New-AzContainerAppWorkloadProfileObject -Name "Consumption" -Type "Consumption"
+
+    write-host "Create managed env"
+    New-AzContainerAppManagedEnv -ResourceGroupName $env.resourceGroupManaged -Name $env.managedEnv1 -Location $env.location -AppLogConfigurationDestination "log-analytics" -LogAnalyticConfigurationCustomerId $CustomId -LogAnalyticConfigurationSharedKey $SharedKey -VnetConfigurationInternal:$false -WorkloadProfile $workloadProfile
+    $EnvId = (Get-AzContainerAppManagedEnv -ResourceGroupName $env.resourceGroupManaged -Name $env.managedEnv1).Id
+
+    $selfSignedCert = New-SelfSignedCertificate -DnsName "www.fabrikam.com", "www.contoso.com" -CertStoreLocation "cert:\LocalMachine\My"
+    Get-ChildItem -Path cert:\LocalMachine\My
     $mypwd = ConvertTo-SecureString -String "1234" -Force -AsPlainText
-    Get-ChildItem -Path cert:\localMachine\my\4FCA2F8CA8A95F87F7CDC7B69DA441C3E1A178FF | Export-PfxCertificate -FilePath "C:\mypfx.pfx" -Password $mypwd
-    New-AzContainerAppManagedEnvCert -EnvName $env.envName -Name $env.envCertName -ResourceGroupName $env.resourceGroup -Location $env.location -InputFile "C:\mypfx.pfx" -Password $mypwd
+    Get-ChildItem -Path cert:\localMachine\my\$($selfSignedCert.Thumbprint) | Export-PfxCertificate -FilePath ".\test\mypfx.pfx" -Password $mypwd
 
-    $certificateId = (Get-AzContainerAppManagedEnvCert -EnvName $env.EnvName -ResourceGroupName $env.resourceGroup -Name $env.envCertName).Id
-    $customDomain = New-AzContainerAppCustomDomainObject -CertificateId $certificateId -Name "www.fabrikam.com" -BindingType SniEnabled
-    $trafficWeight = New-AzContainerAppTrafficWeightObject -Label production -LatestRevision:$True -Weight 100
-    $secretObject = New-AzContainerAppSecretObject -Name "facebook-secret" -Value "facebook-password"
-    $containerAppHttpHeader = New-AzContainerAppProbeHeaderObject -Name Custom-Header -Value Awesome
-    $probe = New-AzContainerAppProbeObject -HttpGetPath "/health" -HttpGetPort 8080 -InitialDelaySecond 3 -PeriodSecond 3 -Type Liveness -HttpGetHttpHeader $containerAppHttpHeader
-    $image = New-AzContainerAppTemplateObject -Name $env.containerAppName -Image "mcr.microsoft.com/azuredocs/containerapps-helloworld:latest" -Probe $probe -ResourceCpu 2.0 -ResourceMemory 4.0Gi
-    $envId = (Get-AzContainerAppManagedEnv -ResourceGroupName $env.resourceGroup -EnvName $env.envName).Id
-    New-AzContainerApp -Name $env.containerAppName -ResourceGroupName $env.resourceGroup -Location $env.location -ConfigurationActiveRevisionsMode 'Single' -ManagedEnvironmentId $envId -IngressExternal -IngressTransport 'auto' -IngressTargetPort 80 -TemplateContainer $image -ConfigurationSecret $secretObject -IngressTraffic $trafficWeight -DaprEnabled -DaprAppProtocol 'http' -DaprAppId "container-app-1" -DaprAppPort 8080 -IngressCustomDomain $customDomain
+    write-host "Create managed env cert"
+    New-AzContainerAppManagedEnvCert -EnvName $env.managedEnv1 -Name $env.managedEnvCert1 -ResourceGroupName $env.resourceGroupManaged -Location $env.location -InputFile ".\test\mypfx.pfx" -Password $mypwd
 
-    New-AzStorageAccount -ResourceGroupName $env.resourceGroup -AccountName $env.storageAccount -Location $env.location -SkuName Standard_GRS
-    New-AzContainerRegistry -ResourceGroupName $env.resourceGroup -Name $env.acrName -Sku "Premium" -EnableAdminUser
+    $trafficWeight = New-AzContainerAppTrafficWeightObject -Label "production" -Weight 100 -LatestRevision:$True
+    $iPSecurityRestrictionRule = New-AzContainerAppIPSecurityRestrictionRuleObject -Action "Allow" -IPAddressRange "192.168.1.1/32" -Name "Allow work IP A subnet"
+    $secretObject = New-AzContainerAppSecretObject -Name "redis-config" -Value "redis-password"
+    $configuration = New-AzContainerAppConfigurationObject -IngressIPSecurityRestriction $iPSecurityRestrictionRule -IngressTraffic $trafficWeight -IngressExternal:$True -IngressTargetPort 80 -IngressClientCertificateMode "accept" -CorPolicyAllowedOrigin "https://a.test.com","https://b.test.com" -CorPolicyAllowedMethod "GET","POST" -CorPolicyAllowedHeader "HEADER1","HEADER2" -CorPolicyExposeHeader "HEADER3","HEADER4" -CorPolicyMaxAge 1234 -CorPolicyAllowCredentials:$True -DaprEnabled:$True -DaprAppPort 3000 -DaprAppProtocol "http" -DaprHttpReadBufferSize 30 -DaprHttpMaxRequestSize 10 -DaprLogLevel "debug" -DaprEnableApiLogging:$True -MaxInactiveRevision 10 -ServiceType "redis" -Secret $secretObject
+    $serviceBind = New-AzContainerAppServiceBindObject -Name "redisService" -ServiceId "/subscriptions/$($env.SubscriptionId)/resourceGroups/$($env.resourceGroupManaged)/providers/Microsoft.App/containerApps/$($env.containerApp1)"
+    
+    $probeHttpGetHttpHeader = New-AzContainerAppProbeHeaderObject -Name "Custom-Header" -Value "Awesome"
+    $probe = New-AzContainerAppProbeObject -Type "Liveness" -HttpGetPath "/health" -HttpGetPort 8080 -InitialDelaySecond 3 -PeriodSecond 3 -HttpGetHttpHeader $probeHttpGetHttpHeader
+    $temp = New-AzContainerAppTemplateObject -Image "mcr.microsoft.com/k8se/quickstart-jobs:latest" -Name "simple-hello-world-container" -Probe $probe -ResourceCpu 0.25 -ResourceMemory "0.5Gi"
+    $temp2 = New-AzContainerAppInitContainerTemplateObject -Image "mcr.microsoft.com/k8se/quickstart-jobs:latest" -Name "simple-hello-world-container2" -ResourceCpu 0.25 -ResourceMemory "0.5Gi" -Command "/bin/sh" -Arg "-c","echo hello; sleep 10;"
+    
+    write-host "Create container app for managed env"
+    New-AzContainerApp -ResourceGroupName $env.resourceGroupManaged -Name $env.containerApp1 -Location $env.location -Configuration $configuration -TemplateContainer $temp -TemplateInitContainer $temp2 -TemplateServiceBind $serviceBind -EnvironmentId $EnvId
+
+    write-host "Create ResourceGroup for connected env"
+    # New-AzResourceGroup -Name $env.resourceGroupConnected -Location $env.location
+
+    write-host "Create storage account"
+    New-AzStorageAccount -ResourceGroupName $env.resourceGroupConnected -AccountName $env.storageAccount2 -Location $env.location -SkuName Standard_GRS
+
+    write-host "Create container registry"
+    New-AzContainerRegistry -ResourceGroupName $env.resourceGroupConnected -Name $env.containerRegistry2 -Sku "Premium" -EnableAdminUser
+
+    write-host "Here you need to provide the resource 'CustomLocation', for more information on how to create a resource CustomLocation, please refer to the help file: https://learn.microsoft.com/en-us/azure/container-apps/azure-arc-enable-cluster?tabs=azure-powershell"
+    write-host "Create connected env"
+    New-AzContainerAppConnectedEnv -ResourceGroupName $env.resourceGroupConnected -Name $env.connectedEnv1 -Location $env.location -ExtendedLocationName "/subscriptions/$($env.SubscriptionId)/resourceGroups/$($env.resourceGroupConnected)/providers/Microsoft.ExtendedLocation/customLocations/$($env.customLocation)" -ExtendedLocationType CustomLocation
+    $EnvId = (Get-AzContainerAppConnectedEnv -ResourceGroupName $env.resourceGroupConnected -Name $env.connectedEnv1).Id
+
+    $selfSignedCert = New-SelfSignedCertificate -DnsName "www.fabrikam.com", "www.contoso.com" -CertStoreLocation "cert:\LocalMachine\My"
+    Get-ChildItem -Path cert:\LocalMachine\My
+    $mypwd = ConvertTo-SecureString -String "1234" -Force -AsPlainText
+    Get-ChildItem -Path cert:\localMachine\my\$($selfSignedCert.Thumbprint) | Export-PfxCertificate -FilePath ".\test\mypfx.pfx" -Password $mypwd
+
+    write-host "Create connected env cert"
+    New-AzContainerAppConnectedEnvCert -Name $env.connectedEnvCert1 -ConnectedEnvironmentName $env.connectedEnv1 -ResourceGroupName $env.resourceGroupConnected -Location $env.location -InputFile ".\test\mypfx.pfx" -Password $mypwd
+    
+    $trafficWeight = New-AzContainerAppTrafficWeightObject -Label "production" -Weight 100 -LatestRevision:$True
+    $configuration = New-AzContainerAppConfigurationObject -IngressTraffic $trafficWeight -IngressExternal:$True -IngressTargetPort 80
+    $temp = New-AzContainerAppTemplateObject -Image "mcr.microsoft.com/k8se/quickstart-jobs:latest" -Name "simple-hello-world-container" -ResourceCpu 0.25 -ResourceMemory "0.5Gi"
+    $temp2 = New-AzContainerAppInitContainerTemplateObject -Image "mcr.microsoft.com/k8se/quickstart-jobs:latest" -Name "simple-hello-world-container2" -ResourceCpu 0.25 -ResourceMemory "0.5Gi" -Command "/bin/sh" -Arg "-c","echo hello; sleep 10;"
+    
+    write-host "Create container app for connected env"
+    New-AzContainerApp -ResourceGroupName $env.resourceGroupConnected -Name $env.containerApp2 -Location $env.location -Configuration $configuration -TemplateContainer $temp -TemplateInitContainer $temp2 -EnvironmentId $EnvId -ExtendedLocationName "/subscriptions/$($env.SubscriptionId)/resourceGroups/$($env.resourceGroupConnected)/providers/Microsoft.ExtendedLocation/customLocations/$($env.customLocation)" -ExtendedLocationType CustomLocation
 
     # For any resources you created for test, you should add it to $env here.
     $envFile = 'env.json'
@@ -93,6 +174,7 @@ function setupEnv() {
 }
 
 function cleanupEnv() {
-    # Remove-AzResourceGroup -Name $env.resourceGroup
+    # Remove-AzResourceGroup -Name $env.resourceGroupManaged
+    # Remove-AzResourceGroup -Name $env.resourceGroupConnected
 }
 

@@ -6,18 +6,22 @@
 namespace Microsoft.Azure.PowerShell.Cmdlets.App.Cmdlets
 {
     using static Microsoft.Azure.PowerShell.Cmdlets.App.Runtime.Extensions;
+    using Microsoft.Azure.PowerShell.Cmdlets.App.Runtime.PowerShell;
+    using Microsoft.Azure.PowerShell.Cmdlets.App.Runtime.Cmdlets;
     using System;
 
-    /// <summary>Create or Update a Certificate.</summary>
+    /// <summary>Create a Certificate.</summary>
     /// <remarks>
     /// [OpenAPI] CreateOrUpdate=>PUT:"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.App/managedEnvironments/{environmentName}/certificates/{certificateName}"
     /// </remarks>
     [global::System.Management.Automation.Cmdlet(global::System.Management.Automation.VerbsCommon.New, @"AzContainerAppManagedEnvCert_CreateExpanded", SupportsShouldProcess = true)]
-    [global::System.Management.Automation.OutputType(typeof(Microsoft.Azure.PowerShell.Cmdlets.App.Models.Api20220301.ICertificate))]
-    [global::Microsoft.Azure.PowerShell.Cmdlets.App.Description(@"Create or Update a Certificate.")]
+    [global::System.Management.Automation.OutputType(typeof(Microsoft.Azure.PowerShell.Cmdlets.App.Models.ICertificate))]
+    [global::Microsoft.Azure.PowerShell.Cmdlets.App.Description(@"Create a Certificate.")]
     [global::Microsoft.Azure.PowerShell.Cmdlets.App.Generated]
+    [global::Microsoft.Azure.PowerShell.Cmdlets.App.HttpPath(Path = "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.App/managedEnvironments/{environmentName}/certificates/{certificateName}", ApiVersion = "2023-05-01")]
     public partial class NewAzContainerAppManagedEnvCert_CreateExpanded : global::System.Management.Automation.PSCmdlet,
-        Microsoft.Azure.PowerShell.Cmdlets.App.Runtime.IEventListener
+        Microsoft.Azure.PowerShell.Cmdlets.App.Runtime.IEventListener,
+        Microsoft.Azure.PowerShell.Cmdlets.App.Runtime.IContext
     {
         /// <summary>A unique id generatd for the this cmdlet when it is instantiated.</summary>
         private string __correlationId = System.Guid.NewGuid().ToString();
@@ -36,12 +40,18 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.App.Cmdlets
         /// <summary>
         /// Certificate used for Custom Domain bindings of Container Apps in a Managed Environment
         /// </summary>
-        private Microsoft.Azure.PowerShell.Cmdlets.App.Models.Api20220301.ICertificate _certificateEnvelopeBody = new Microsoft.Azure.PowerShell.Cmdlets.App.Models.Api20220301.Certificate();
+        private Microsoft.Azure.PowerShell.Cmdlets.App.Models.ICertificate _certificateEnvelopeBody = new Microsoft.Azure.PowerShell.Cmdlets.App.Models.Certificate();
+
+        /// <summary>A dictionary to carry over additional data for pipeline.</summary>
+        private global::System.Collections.Generic.Dictionary<global::System.String,global::System.Object> _extensibleParameters = new System.Collections.Generic.Dictionary<string, object>();
 
         /// <summary>Wait for .NET debugger to attach</summary>
         [global::System.Management.Automation.Parameter(Mandatory = false, DontShow = true, HelpMessage = "Wait for .NET debugger to attach")]
         [global::Microsoft.Azure.PowerShell.Cmdlets.App.Category(global::Microsoft.Azure.PowerShell.Cmdlets.App.ParameterCategory.Runtime)]
         public global::System.Management.Automation.SwitchParameter Break { get; set; }
+
+        /// <summary>Accessor for cancellationTokenSource.</summary>
+        public global::System.Threading.CancellationTokenSource CancellationTokenSource { get => _cancellationTokenSource ; set { _cancellationTokenSource = value; } }
 
         /// <summary>The reference to the client API class.</summary>
         public Microsoft.Azure.PowerShell.Cmdlets.App.App Client => Microsoft.Azure.PowerShell.Cmdlets.App.Module.Instance.ClientAPI;
@@ -69,6 +79,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.App.Cmdlets
         PossibleTypes = new [] { typeof(string) })]
         [global::Microsoft.Azure.PowerShell.Cmdlets.App.Category(global::Microsoft.Azure.PowerShell.Cmdlets.App.ParameterCategory.Path)]
         public string EnvName { get => this._envName; set => this._envName = value; }
+
+        /// <summary>Accessor for extensibleParameters.</summary>
+        public global::System.Collections.Generic.IDictionary<global::System.String,global::System.Object> ExtensibleParameters { get => _extensibleParameters ; }
 
         /// <summary>SendAsync Pipeline Steps to be appended to the front of the pipeline</summary>
         [global::System.Management.Automation.Parameter(Mandatory = false, DontShow = true, HelpMessage = "SendAsync Pipeline Steps to be appended to the front of the pipeline")]
@@ -139,13 +152,13 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.App.Cmdlets
         [global::Microsoft.Azure.PowerShell.Cmdlets.App.Category(global::Microsoft.Azure.PowerShell.Cmdlets.App.ParameterCategory.Path)]
         public string Name { get => this._name; set => this._name = value; }
 
-        /// <summary>Certificate password.</summary>
-        [global::System.Management.Automation.Parameter(Mandatory = false, HelpMessage = "Certificate password.")]
+        /// <summary>Certificate password</summary>
+        [global::System.Management.Automation.Parameter(Mandatory = false, HelpMessage = "Certificate password")]
         [global::Microsoft.Azure.PowerShell.Cmdlets.App.Category(global::Microsoft.Azure.PowerShell.Cmdlets.App.ParameterCategory.Body)]
         [Microsoft.Azure.PowerShell.Cmdlets.App.Runtime.Info(
         Required = false,
         ReadOnly = false,
-        Description = @"Certificate password.",
+        Description = @"Certificate password",
         SerializedName = @"password",
         PossibleTypes = new [] { typeof(System.Security.SecureString) })]
         public System.Security.SecureString Password { get => _certificateEnvelopeBody.Password ?? null; set => _certificateEnvelopeBody.Password = value; }
@@ -153,7 +166,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.App.Cmdlets
         /// <summary>
         /// The instance of the <see cref="Microsoft.Azure.PowerShell.Cmdlets.App.Runtime.HttpPipeline" /> that the remote call will use.
         /// </summary>
-        private Microsoft.Azure.PowerShell.Cmdlets.App.Runtime.HttpPipeline Pipeline { get; set; }
+        public Microsoft.Azure.PowerShell.Cmdlets.App.Runtime.HttpPipeline Pipeline { get; set; }
 
         /// <summary>The URI for the proxy server to use</summary>
         [global::System.Management.Automation.Parameter(Mandatory = false, DontShow = true, HelpMessage = "The URI for the proxy server to use")]
@@ -199,7 +212,8 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.App.Cmdlets
         [Microsoft.Azure.PowerShell.Cmdlets.App.Runtime.DefaultInfo(
         Name = @"",
         Description =@"",
-        Script = @"(Get-AzContext).Subscription.Id")]
+        Script = @"(Get-AzContext).Subscription.Id",
+        SetCondition = @"")]
         [global::Microsoft.Azure.PowerShell.Cmdlets.App.Category(global::Microsoft.Azure.PowerShell.Cmdlets.App.ParameterCategory.Path)]
         public string SubscriptionId { get => this._subscriptionId; set => this._subscriptionId = value; }
 
@@ -212,8 +226,8 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.App.Cmdlets
         ReadOnly = false,
         Description = @"Resource tags.",
         SerializedName = @"tags",
-        PossibleTypes = new [] { typeof(Microsoft.Azure.PowerShell.Cmdlets.App.Models.Api30.ITrackedResourceTags) })]
-        public Microsoft.Azure.PowerShell.Cmdlets.App.Models.Api30.ITrackedResourceTags Tag { get => _certificateEnvelopeBody.Tag ?? null /* object */; set => _certificateEnvelopeBody.Tag = value; }
+        PossibleTypes = new [] { typeof(Microsoft.Azure.PowerShell.Cmdlets.App.Models.ITrackedResourceTags) })]
+        public Microsoft.Azure.PowerShell.Cmdlets.App.Models.ITrackedResourceTags Tag { get => _certificateEnvelopeBody.Tag ?? null /* object */; set => _certificateEnvelopeBody.Tag = value; }
 
         /// <summary>PFX or PEM blob</summary>
         internal byte[] Value { get => _certificateEnvelopeBody.Value ?? null /* byte array */; set => _certificateEnvelopeBody.Value = value; }
@@ -223,24 +237,24 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.App.Cmdlets
         /// happens on that response. Implement this method in a partial class to enable this behavior
         /// </summary>
         /// <param name="responseMessage">the raw response message as an global::System.Net.Http.HttpResponseMessage.</param>
-        /// <param name="response">the body result as a <see cref="Microsoft.Azure.PowerShell.Cmdlets.App.Models.Api20220301.IDefaultErrorResponse">Microsoft.Azure.PowerShell.Cmdlets.App.Models.Api20220301.IDefaultErrorResponse</see>
+        /// <param name="response">the body result as a <see cref="Microsoft.Azure.PowerShell.Cmdlets.App.Models.IDefaultErrorResponse">Microsoft.Azure.PowerShell.Cmdlets.App.Models.IDefaultErrorResponse</see>
         /// from the remote call</param>
         /// <param name="returnNow">/// Determines if the rest of the onDefault method should be processed, or if the method should
         /// return immediately (set to true to skip further processing )</param>
 
-        partial void overrideOnDefault(global::System.Net.Http.HttpResponseMessage responseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.App.Models.Api20220301.IDefaultErrorResponse> response, ref global::System.Threading.Tasks.Task<bool> returnNow);
+        partial void overrideOnDefault(global::System.Net.Http.HttpResponseMessage responseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.App.Models.IDefaultErrorResponse> response, ref global::System.Threading.Tasks.Task<bool> returnNow);
 
         /// <summary>
         /// <c>overrideOnOk</c> will be called before the regular onOk has been processed, allowing customization of what happens
         /// on that response. Implement this method in a partial class to enable this behavior
         /// </summary>
         /// <param name="responseMessage">the raw response message as an global::System.Net.Http.HttpResponseMessage.</param>
-        /// <param name="response">the body result as a <see cref="Microsoft.Azure.PowerShell.Cmdlets.App.Models.Api20220301.ICertificate">Microsoft.Azure.PowerShell.Cmdlets.App.Models.Api20220301.ICertificate</see>
+        /// <param name="response">the body result as a <see cref="Microsoft.Azure.PowerShell.Cmdlets.App.Models.ICertificate">Microsoft.Azure.PowerShell.Cmdlets.App.Models.ICertificate</see>
         /// from the remote call</param>
         /// <param name="returnNow">/// Determines if the rest of the onOk method should be processed, or if the method should return
         /// immediately (set to true to skip further processing )</param>
 
-        partial void overrideOnOk(global::System.Net.Http.HttpResponseMessage responseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.App.Models.Api20220301.ICertificate> response, ref global::System.Threading.Tasks.Task<bool> returnNow);
+        partial void overrideOnOk(global::System.Net.Http.HttpResponseMessage responseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.App.Models.ICertificate> response, ref global::System.Threading.Tasks.Task<bool> returnNow);
 
         /// <summary>
         /// (overrides the default BeginProcessing method in global::System.Management.Automation.PSCmdlet)
@@ -310,8 +324,33 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.App.Cmdlets
                         WriteError(new global::System.Management.Automation.ErrorRecord( new global::System.Exception(messageData().Message), string.Empty, global::System.Management.Automation.ErrorCategory.NotSpecified, null ) );
                         return ;
                     }
+                    case Microsoft.Azure.PowerShell.Cmdlets.App.Runtime.Events.Progress:
+                    {
+                        var data = messageData();
+                        int progress = (int)data.Value;
+                        string activityMessage, statusDescription;
+                        global::System.Management.Automation.ProgressRecordType recordType;
+                        if (progress < 100)
+                        {
+                            activityMessage = "In progress";
+                            statusDescription = "Checking operation status";
+                            recordType = System.Management.Automation.ProgressRecordType.Processing;
+                        }
+                        else
+                        {
+                            activityMessage = "Completed";
+                            statusDescription = "Completed";
+                            recordType = System.Management.Automation.ProgressRecordType.Completed;
+                        }
+                        WriteProgress(new global::System.Management.Automation.ProgressRecord(1, activityMessage, statusDescription)
+                        {
+                            PercentComplete = progress,
+                        RecordType = recordType
+                        });
+                        return ;
+                    }
                 }
-                await Microsoft.Azure.PowerShell.Cmdlets.App.Module.Instance.Signal(id, token, messageData, (i,t,m) => ((Microsoft.Azure.PowerShell.Cmdlets.App.Runtime.IEventListener)this).Signal(i,t,()=> Microsoft.Azure.PowerShell.Cmdlets.App.Runtime.EventDataConverter.ConvertFrom( m() ) as Microsoft.Azure.PowerShell.Cmdlets.App.Runtime.EventData ), InvocationInformation, this.ParameterSetName, __correlationId, __processRecordId, null );
+                await Microsoft.Azure.PowerShell.Cmdlets.App.Module.Instance.Signal(id, token, messageData, (i, t, m) => ((Microsoft.Azure.PowerShell.Cmdlets.App.Runtime.IEventListener)this).Signal(i, t, () => Microsoft.Azure.PowerShell.Cmdlets.App.Runtime.EventDataConverter.ConvertFrom(m()) as Microsoft.Azure.PowerShell.Cmdlets.App.Runtime.EventData), InvocationInformation, this.ParameterSetName, __correlationId, __processRecordId, null );
                 if (token.IsCancellationRequested)
                 {
                     return ;
@@ -321,7 +360,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.App.Cmdlets
         }
 
         /// <summary>
-        /// Intializes a new instance of the <see cref="NewAzContainerAppManagedEnvCert_CreateExpanded" /> cmdlet class.
+        /// Initializes a new instance of the <see cref="NewAzContainerAppManagedEnvCert_CreateExpanded" /> cmdlet class.
         /// </summary>
         public NewAzContainerAppManagedEnvCert_CreateExpanded()
         {
@@ -375,7 +414,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.App.Cmdlets
             using( NoSynchronizationContext )
             {
                 await ((Microsoft.Azure.PowerShell.Cmdlets.App.Runtime.IEventListener)this).Signal(Microsoft.Azure.PowerShell.Cmdlets.App.Runtime.Events.CmdletGetPipeline); if( ((Microsoft.Azure.PowerShell.Cmdlets.App.Runtime.IEventListener)this).Token.IsCancellationRequested ) { return; }
-                Pipeline = Microsoft.Azure.PowerShell.Cmdlets.App.Module.Instance.CreatePipeline(InvocationInformation, __correlationId, __processRecordId, this.ParameterSetName);
+                Pipeline = Microsoft.Azure.PowerShell.Cmdlets.App.Module.Instance.CreatePipeline(InvocationInformation, __correlationId, __processRecordId, this.ParameterSetName, this.ExtensibleParameters);
                 if (null != HttpPipelinePrepend)
                 {
                     Pipeline.Prepend((this.CommandRuntime as Microsoft.Azure.PowerShell.Cmdlets.App.Runtime.PowerShell.IAsyncCommandRuntimeExtensions)?.Wrap(HttpPipelinePrepend) ?? HttpPipelinePrepend);
@@ -388,12 +427,12 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.App.Cmdlets
                 try
                 {
                     await ((Microsoft.Azure.PowerShell.Cmdlets.App.Runtime.IEventListener)this).Signal(Microsoft.Azure.PowerShell.Cmdlets.App.Runtime.Events.CmdletBeforeAPICall); if( ((Microsoft.Azure.PowerShell.Cmdlets.App.Runtime.IEventListener)this).Token.IsCancellationRequested ) { return; }
-                    await this.Client.CertificatesCreateOrUpdate(SubscriptionId, ResourceGroupName, EnvName, Name, _certificateEnvelopeBody, onOk, onDefault, this, Pipeline);
+                    await this.Client.CertificatesCreateOrUpdate(SubscriptionId, ResourceGroupName, EnvName, Name, _certificateEnvelopeBody, onOk, onDefault, this, Pipeline, Microsoft.Azure.PowerShell.Cmdlets.App.Runtime.SerializationMode.IncludeCreate);
                     await ((Microsoft.Azure.PowerShell.Cmdlets.App.Runtime.IEventListener)this).Signal(Microsoft.Azure.PowerShell.Cmdlets.App.Runtime.Events.CmdletAfterAPICall); if( ((Microsoft.Azure.PowerShell.Cmdlets.App.Runtime.IEventListener)this).Token.IsCancellationRequested ) { return; }
                 }
                 catch (Microsoft.Azure.PowerShell.Cmdlets.App.Runtime.UndeclaredResponseException urexception)
                 {
-                    WriteError(new global::System.Management.Automation.ErrorRecord(urexception, urexception.StatusCode.ToString(), global::System.Management.Automation.ErrorCategory.InvalidOperation, new {  SubscriptionId=SubscriptionId,ResourceGroupName=ResourceGroupName,EnvName=EnvName,Name=Name,body=_certificateEnvelopeBody})
+                    WriteError(new global::System.Management.Automation.ErrorRecord(urexception, urexception.StatusCode.ToString(), global::System.Management.Automation.ErrorCategory.InvalidOperation, new { SubscriptionId=SubscriptionId,ResourceGroupName=ResourceGroupName,EnvName=EnvName,Name=Name})
                     {
                       ErrorDetails = new global::System.Management.Automation.ErrorDetails(urexception.Message) { RecommendedAction = urexception.Action }
                     });
@@ -416,12 +455,12 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.App.Cmdlets
         /// a delegate that is called when the remote service returns default (any response code not handled elsewhere).
         /// </summary>
         /// <param name="responseMessage">the raw response message as an global::System.Net.Http.HttpResponseMessage.</param>
-        /// <param name="response">the body result as a <see cref="Microsoft.Azure.PowerShell.Cmdlets.App.Models.Api20220301.IDefaultErrorResponse">Microsoft.Azure.PowerShell.Cmdlets.App.Models.Api20220301.IDefaultErrorResponse</see>
+        /// <param name="response">the body result as a <see cref="Microsoft.Azure.PowerShell.Cmdlets.App.Models.IDefaultErrorResponse">Microsoft.Azure.PowerShell.Cmdlets.App.Models.IDefaultErrorResponse</see>
         /// from the remote call</param>
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the method is completed.
         /// </returns>
-        private async global::System.Threading.Tasks.Task onDefault(global::System.Net.Http.HttpResponseMessage responseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.App.Models.Api20220301.IDefaultErrorResponse> response)
+        private async global::System.Threading.Tasks.Task onDefault(global::System.Net.Http.HttpResponseMessage responseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.App.Models.IDefaultErrorResponse> response)
         {
             using( NoSynchronizationContext )
             {
@@ -438,15 +477,15 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.App.Cmdlets
                 if ((null == code || null == message))
                 {
                     // Unrecognized Response. Create an error record based on what we have.
-                    var ex = new Microsoft.Azure.PowerShell.Cmdlets.App.Runtime.RestException<Microsoft.Azure.PowerShell.Cmdlets.App.Models.Api20220301.IDefaultErrorResponse>(responseMessage, await response);
-                    WriteError( new global::System.Management.Automation.ErrorRecord(ex, ex.Code, global::System.Management.Automation.ErrorCategory.InvalidOperation, new { SubscriptionId=SubscriptionId, ResourceGroupName=ResourceGroupName, EnvName=EnvName, Name=Name, body=_certificateEnvelopeBody })
+                    var ex = new Microsoft.Azure.PowerShell.Cmdlets.App.Runtime.RestException<Microsoft.Azure.PowerShell.Cmdlets.App.Models.IDefaultErrorResponse>(responseMessage, await response);
+                    WriteError( new global::System.Management.Automation.ErrorRecord(ex, ex.Code, global::System.Management.Automation.ErrorCategory.InvalidOperation, new {  })
                     {
                       ErrorDetails = new global::System.Management.Automation.ErrorDetails(ex.Message) { RecommendedAction = ex.Action }
                     });
                 }
                 else
                 {
-                    WriteError( new global::System.Management.Automation.ErrorRecord(new global::System.Exception($"[{code}] : {message}"), code?.ToString(), global::System.Management.Automation.ErrorCategory.InvalidOperation, new { SubscriptionId=SubscriptionId, ResourceGroupName=ResourceGroupName, EnvName=EnvName, Name=Name, body=_certificateEnvelopeBody })
+                    WriteError( new global::System.Management.Automation.ErrorRecord(new global::System.Exception($"[{code}] : {message}"), code?.ToString(), global::System.Management.Automation.ErrorCategory.InvalidOperation, new {  })
                     {
                       ErrorDetails = new global::System.Management.Automation.ErrorDetails(message) { RecommendedAction = global::System.String.Empty }
                     });
@@ -456,12 +495,12 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.App.Cmdlets
 
         /// <summary>a delegate that is called when the remote service returns 200 (OK).</summary>
         /// <param name="responseMessage">the raw response message as an global::System.Net.Http.HttpResponseMessage.</param>
-        /// <param name="response">the body result as a <see cref="Microsoft.Azure.PowerShell.Cmdlets.App.Models.Api20220301.ICertificate">Microsoft.Azure.PowerShell.Cmdlets.App.Models.Api20220301.ICertificate</see>
+        /// <param name="response">the body result as a <see cref="Microsoft.Azure.PowerShell.Cmdlets.App.Models.ICertificate">Microsoft.Azure.PowerShell.Cmdlets.App.Models.ICertificate</see>
         /// from the remote call</param>
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the method is completed.
         /// </returns>
-        private async global::System.Threading.Tasks.Task onOk(global::System.Net.Http.HttpResponseMessage responseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.App.Models.Api20220301.ICertificate> response)
+        private async global::System.Threading.Tasks.Task onOk(global::System.Net.Http.HttpResponseMessage responseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.App.Models.ICertificate> response)
         {
             using( NoSynchronizationContext )
             {
@@ -473,8 +512,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.App.Cmdlets
                     return ;
                 }
                 // onOk - response for 200 / application/json
-                // (await response) // should be Microsoft.Azure.PowerShell.Cmdlets.App.Models.Api20220301.ICertificate
-                WriteObject((await response));
+                // (await response) // should be Microsoft.Azure.PowerShell.Cmdlets.App.Models.ICertificate
+                var result = (await response);
+                WriteObject(result, false);
             }
         }
     }

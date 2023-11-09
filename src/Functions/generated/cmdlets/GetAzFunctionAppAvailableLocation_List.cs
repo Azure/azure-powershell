@@ -17,6 +17,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Functions.Cmdlets
     [global::System.Management.Automation.OutputType(typeof(Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IGeoRegion))]
     [global::Microsoft.Azure.PowerShell.Cmdlets.Functions.Description(@"Get a list of available geographical regions.")]
     [global::Microsoft.Azure.PowerShell.Cmdlets.Functions.Generated]
+    [global::Microsoft.Azure.PowerShell.Cmdlets.Functions.HttpPath(Path = "/subscriptions/{subscriptionId}/providers/Microsoft.Web/geoRegions", ApiVersion = "2019-08-01")]
     public partial class GetAzFunctionAppAvailableLocation_List : global::System.Management.Automation.PSCmdlet,
         Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.IEventListener
     {
@@ -49,9 +50,10 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Functions.Cmdlets
         public Microsoft.Azure.PowerShell.Cmdlets.Functions.Functions Client => Microsoft.Azure.PowerShell.Cmdlets.Functions.Module.Instance.ClientAPI;
 
         /// <summary>
-        /// The credentials, account, tenant, and subscription used for communication with Azure
+        /// The DefaultProfile parameter is not functional. Use the SubscriptionId parameter when available if executing the cmdlet
+        /// against a different subscription
         /// </summary>
-        [global::System.Management.Automation.Parameter(Mandatory = false, HelpMessage = "The credentials, account, tenant, and subscription used for communication with Azure.")]
+        [global::System.Management.Automation.Parameter(Mandatory = false, HelpMessage = "The DefaultProfile parameter is not functional. Use the SubscriptionId parameter when available if executing the cmdlet against a different subscription.")]
         [global::System.Management.Automation.ValidateNotNull]
         [global::System.Management.Automation.Alias("AzureRMContext", "AzureCredential")]
         [global::Microsoft.Azure.PowerShell.Cmdlets.Functions.Category(global::Microsoft.Azure.PowerShell.Cmdlets.Functions.ParameterCategory.Azure)]

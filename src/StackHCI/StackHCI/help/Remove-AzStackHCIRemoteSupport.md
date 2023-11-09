@@ -1,5 +1,5 @@
 ---
-external help file:
+external help file: Az.StackHCI-help.xml
 Module Name: Az.StackHCI
 online version: https://learn.microsoft.com/powershell/module/az.stackhci/remove-azstackhciremotesupport
 schema: 2.0.0
@@ -13,7 +13,7 @@ Removes Remote Support.
 ## SYNTAX
 
 ```
-Remove-AzStackHCIRemoteSupport [-Confirm] [-WhatIf] [<CommonParameters>]
+Remove-AzStackHCIRemoteSupport [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -21,7 +21,7 @@ Remove-AzStackHCIRemoteSupport uninstalls Remote Support Deployment module.
 
 ## EXAMPLES
 
-### Example 1: 
+### Example 1:
 ```powershell
 Remove-AzStackHCIRemoteSupport
 ```
@@ -82,7 +82,4 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## NOTES
 
-ALIASES
-
 ## RELATED LINKS
-
