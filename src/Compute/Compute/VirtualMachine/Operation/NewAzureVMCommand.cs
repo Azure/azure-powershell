@@ -781,24 +781,76 @@ namespace Microsoft.Azure.Commands.Compute
             }
             // Default TrustedLaunch values for SimpleParameterSet (no config)
             // imagerefid is specifically shared gallery id, so don't want it.
-            else
+            else if (!this.IsParameterBound(c => c.Image) 
+                && !this.IsParameterBound(c => c.ImageReferenceId) 
+                && !this.IsParameterBound(c => c.SharedGalleryImageId))
             {
                 this.SecurityType = ConstantValues.TrustedLaunchSecurityType;
-                if (!this.IsParameterBound(c => c.Image) 
-                    && !this.IsParameterBound(c => c.ImageReferenceId) 
-                    && !this.IsParameterBound(c => c.SharedGalleryImageId))
+                this.Image = ConstantValues.TrustedLaunchDefaultImageAlias;
+                if (!this.IsParameterBound(c => c.EnableSecureBoot))
                 {
-                    this.Image = ConstantValues.TrustedLaunchDefaultImageAlias;
-                    if (!this.IsParameterBound(c => c.EnableSecureBoot))
+                    this.EnableSecureBoot = true;
+                }
+                if (!this.IsParameterBound(c => c.EnableVtpm))
+                {
+                    this.EnableVtpm = true;
+                }
+            }
+            else if (this.IsParameterBound(c => c.Image)
+                && !this.IsParameterBound(c => c.ImageReferenceId)
+                && !this.IsParameterBound(c => c.SharedGalleryImageId)
+                && this.Location != null
+                && this.Image != null
+                && !this.Image.ToString().Contains(":")) //Location cannot be null to query for image details.
+            {
+                // look at the image alias provided, get its image,
+                // if it is gen2, default to TL and the rest.
+                try
+                {
+                    string imagePublisher = ImageAliases.ImageAliasValues[this.Image.ToString().ToLower()]["publisher"];
+                    string imageOffer = ImageAliases.ImageAliasValues[this.Image.ToString().ToLower()]["offer"];
+                    string imageSku = ImageAliases.ImageAliasValues[this.Image.ToString().ToLower()]["sku"];
+                    string imageVersion = ImageAliases.ImageAliasValues[this.Image.ToString().ToLower()]["version"];
+
+                    imageVersion = retrieveImageVersion(imagePublisher, imageOffer, imageSku, imageVersion);
+
+                    var imgResponse = this.ComputeClient.ComputeManagementClient.VirtualMachineImages.GetWithHttpMessagesAsync(
+                        this.Location.Canonicalize(),
+                        imagePublisher,
+                        imageOffer,
+                        imageSku,
+                        version: imageVersion).GetAwaiter().GetResult();
+
+                    if (imgResponse.Body.HyperVGeneration != null
+                            && imgResponse.Body.HyperVGeneration.ToString().ToUpper() == "V2")
                     {
-                        this.EnableSecureBoot = true;
+                        // then assume this is TL supported as per design request.
+                        // If SecurityType already exists, so user set it, don't change it.
+                        this.SecurityType = ConstantValues.TrustedLaunchSecurityType;
+                        if (!this.IsParameterBound(c => c.EnableSecureBoot))
+                        {
+                            this.EnableSecureBoot = true;
+                        }
+                        if (!this.IsParameterBound(c => c.EnableVtpm))
+                        {
+                            this.EnableVtpm = true;
+                        }
                     }
-                    if (!this.IsParameterBound(c => c.EnableVtpm))
+                    else
                     {
-                        this.EnableVtpm = true;
+                        if (this.AsJobPresent() == false) // to avoid a failure when it is a job. Seems to fail when it is a job.
+                        {
+                            WriteInformation(HelpMessages.TrustedLaunchUpgradeMessage, new string[] { "PSHOST" });
+                        }
                     }
                 }
-            } 
+                catch(KeyNotFoundException)
+                {
+                    throw new Exception("The provided Image value" + this.Image +  " is not valid. Please provide a valid image alias.");
+                }
+                
+                
+            }
             
             if (shouldGuestAttestationExtBeInstalled()
                 && !this.IsParameterBound(c => c.SystemAssignedIdentity)

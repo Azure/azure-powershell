@@ -7302,3 +7302,51 @@ function Test-VMDefaultsToTrustedLaunchWithGen2Image
         Clean-ResourceGroup $rgname;
     }
 }
+
+<#
+.SYNOPSIS
+Test Virtual Machines default to SecurityType = TrustedLaunch.
+With Image alias value for a gen2 machine. 
+TEST WORKS
+Feature request 1241
+#>
+function Test-VMDefaultsToTrustedLaunchWithImageAlias
+{
+    # Setup
+    $rgname = Get-ComputeTestResourceName;
+    $loc = Get-ComputeVMLocation;
+
+    try
+    {
+
+        New-AzResourceGroup -Name $rgname -Location $loc -Force;
+        # VM Profile & Hardware
+        $vmname = 'vm' + $rgname;
+        $domainNameLabel = "d1" + $rgname;
+        $securityTypeTL = "TrustedLaunch";
+        $secureboot = $true;
+        $vtpm = $true;
+        $imageAlias = "Win2022AzureEdition";
+
+        # Creating a VM using Simple parameterset
+        $password = Get-PasswordForVM;
+        $user = Get-ComputeTestResourceName;
+        $securePassword = $password | ConvertTo-SecureString -AsPlainText -Force;  
+        $cred = New-Object System.Management.Automation.PSCredential ($user, $securePassword);
+
+        New-AzVM -ResourceGroupName $rgname -Location $loc -Name $vmname -Credential $cred -ImageName $imageAlias;
+        
+        $vm = Get-AzVM -ResourceGroupName $rgname -Name $vmname;
+        
+        # Validate VMConfig scenario
+        # this.VM.StorageProfile.OsDisk.ManagedDisk
+        Assert-AreEqual $vm.SecurityProfile.SecurityType $securityTypeTL;
+        Assert-AreEqual $vm.SecurityProfile.UefiSettings.SecureBootEnabled $secureboot;
+        Assert-AreEqual $vm.SecurityProfile.UefiSettings.VTpmEnabled $vtpm;
+    }
+    finally 
+    {
+        # Cleanup
+        Clean-ResourceGroup $rgname;
+    }
+}

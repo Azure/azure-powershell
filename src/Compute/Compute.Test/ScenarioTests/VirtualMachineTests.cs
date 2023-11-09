@@ -626,5 +626,12 @@ namespace Microsoft.Azure.Commands.Compute.Test.ScenarioTests
         {
             TestRunner.RunTestScript("Test-VMDefaultsToTrustedLaunchWithGen2Image");
         }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void TestVMDefaultsToTrustedLaunchWithImageAlias()
+        {
+            TestRunner.RunTestScript("Test-VMDefaultsToTrustedLaunchWithImageAlias");
+        }
     }
 }
