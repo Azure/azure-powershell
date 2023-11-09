@@ -8,6 +8,7 @@ The parameter  'DockerBridgeCidr' is removed from the cmdlet 'New-AzAksCluster',
 ## Az.CloudService
 
 ### `Get-AzCloudServiceNetworkInterface`
+The api version is downgraded to `2021-03-01`. Some properties are removed.
 - 'ProtectionMode' and 'DdosProtectionPlanId' of type 'IDdosSettings' have been removed.
 - 'InboundNatRulesPortMapping' and 'AdminState' of type 'ILoadBalancerBackendAddress' have been removed.
 - 'InboundNatRule' and 'DrainPeriodInSecond' of type 'IBackendAddressPool' have been removed.
