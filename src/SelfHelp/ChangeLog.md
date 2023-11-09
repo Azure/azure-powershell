@@ -18,6 +18,8 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
+
+## Version 0.1.1
 * Added support for discovery API as the first point of entry in Help RP.
 * Added support for new solution types (Diagnostics, Azure Solutions, Troubleshooters) in preview
 * Enabled customers to access Azure curated, relevant self-help solutions including diagnostics and Azure solutions at the resource and subscription scopes.

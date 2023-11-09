@@ -12,7 +12,7 @@
 # RootModule = ''
 
 # Version number of this module.
-ModuleVersion = '4.6.0'
+ModuleVersion = '5.0.0'
 
 # Supported PSEditions
 CompatiblePSEditions = 'Core', 'Desktop'
@@ -53,7 +53,7 @@ DotNetFrameworkVersion = '4.7.2'
 # ProcessorArchitecture = ''
 
 # Modules that must be imported into the global environment prior to importing this module
-RequiredModules = @(@{ModuleName = 'Az.Accounts'; ModuleVersion = '2.13.0'; })
+RequiredModules = @(@{ModuleName = 'Az.Accounts'; ModuleVersion = '2.13.2'; })
 
 # Assemblies that must be loaded prior to importing this module
 RequiredAssemblies = 'Microsoft.Azure.Management.Monitor.dll', 
@@ -191,7 +191,7 @@ PrivateData = @{
     PSData = @{
 
         # Tags applied to this module. These help with module discovery in online galleries.
-        Tags = 'Azure', 'ResourceManager', 'ARM', 'Monitor'
+        Tags = 'Azure','ResourceManager','ARM','Monitor'
 
         # A URL to the license for this module.
         LicenseUri = 'https://aka.ms/azps-license'
@@ -203,12 +203,27 @@ PrivateData = @{
         # IconUri = ''
 
         # ReleaseNotes of this module
-        ReleaseNotes = '* Fixed ''Get-AzInsightsPrivateLinkScope'' to support ''ResourceId'' parameter [#22568]
-* Fixed ''New-AzMetricAlertRuleV2DimensionSelection'' to have ''exclude'' or ''include'' values only [#22256]
-* Fixed ''Add-AzMetriAlertRuleV2'' and ''Get-AzMetricAlertRuleV2'' to support web tests criteria [#22350]
-* Added parameter ''Dimension'' for ''Get-AzMetric'' to easily filter metrics by dimensions [#22320]
-* Added breaking change for Data Collection Rule
-* Added breaking change for Action Group'
+        ReleaseNotes = '  * [Breaking Change] Action Group upgraded API version to stable 2023-01-01
+  * [Breaking Change] Use new and update cmdlets instead ''Set-AzActionGroup'' cmdlet
+  * The receiver used subtype cmdlets to create a replacement for command ''New-AzActionGroupReceiver''
+    * New-AzActionGroupArmRoleReceiverObject
+    * New-AzActionGroupAutomationRunbookReceiverObject
+    * New-AzActionGroupAzureAppPushReceiverObject
+    * New-AzActionGroupAzureFunctionReceiverObject
+    * New-AzActionGroupEmailReceiverObject
+    * New-AzActionGroupEventHubReceiverObject
+    * New-AzActionGroupItsmReceiverObject
+    * New-AzActionGroupLogicAppReceiverObject
+    * New-AzActionGroupSmsReceiverObject
+    * New-AzActionGroupVoiceReceiverObject
+    * New-AzActionGroupWebhookReceiverObject
+* [Breaking Change] Data collection Rule upgraded API version to stable 2022-06-01
+* [Breaking Change] AMCS removed ''Set-AzDataCollectionRule'' cmdlet
+* Added cmdlets for data collection endpoint:
+    - ''Get-AzDataCollectionEndpoint''
+    - ''New-AzDataCollectionEndpoint''
+    - ''Remove-AzDataCollectionEndpoint''
+    - ''Update-AzDataCollectionEndpoint'''
 
         # Prerelease string of this module
         # Prerelease = ''
@@ -221,7 +236,7 @@ PrivateData = @{
 
     } # End of PSData hashtable
 
-} # End of PrivateData hashtable
+ } # End of PrivateData hashtable
 
 # HelpInfo URI of this module
 # HelpInfoURI = ''
