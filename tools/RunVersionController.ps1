@@ -371,9 +371,9 @@ function Update-AzPreview
     }
 
     $releaseNotes = @()
-    $releaseNotes += "$newVersion - $Release"
+    $releaseNotes += "$AzPrviewVersion - $Release"
     $changeLog = @()
-    $changeLog += "## $newVersion - $Release"
+    $changeLog += "## $AzPrviewVersion - $Release"
     $rootPath = "$PSScriptRoot\.."
     foreach ($updatedModule in $updatedModules)
     {
