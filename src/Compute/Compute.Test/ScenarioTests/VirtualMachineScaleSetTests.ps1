@@ -5139,14 +5139,14 @@ function Test-VirtualMachineScaleSetDefaultToFlexibleOrchestrationMode
         # New VMSS Parameters
         $vmssName1 = 'vmss1' + $rgname;
 
-        $vmssConfig = New-AzVmssConfig -Location $loc -UpgradePolicyMode 'Manual' -SinglePlacementGroup $true -securitytype standard
-        $vmss = New-AzVmss -ResourceGroupName $rgname -VMScaleSetName $vmssName1 -VirtualMachineScaleSet $vmssConfig
+        $vmssConfig = New-AzVmssConfig -Location $loc -UpgradePolicyMode 'Manual' -SinglePlacementGroup $true;
+        $vmss = New-AzVmss -ResourceGroupName $rgname -VMScaleSetName $vmssName1 -VirtualMachineScaleSet $vmssConfig;
 
         # Asserts 
         # check flexmode
-        Assert-AreEqual $vmss.OrchestrationMode "Flexible"
+        Assert-AreEqual $vmss.OrchestrationMode "Flexible";
         # check SinglePlacementGroup
-        Assert-AreEqual $vmss.SinglePlacementGroup $true
+        Assert-AreEqual $vmss.SinglePlacementGroup $true;
     }
     finally
     {
@@ -5208,5 +5208,38 @@ function Test-VirtualMachineScaleSetAttachAndDetach
     {
         # Cleanup
         Clean-ResourceGroup $rgname
+    }
+}
+
+<#
+.SYNOPSIS
+Test Virtual Machine Scale Set securityType TrustedLaunch is default.
+TL can only be used when a VMProfile is provided.
+This would require a lot of other vmConfig setup. 
+#>
+function Test-VirtualMachineScaleSetSecurityTypeNoVMProfile
+{
+    # Setup
+    $rgname = Get-ComputeTestResourceName;
+    $loc = Get-ComputeVMLocation;
+
+    try
+    {
+        # Common
+        New-AzResourceGroup -Name $rgname -Location $loc -Force;
+        $vmssName = 'vmss' + $rgname;
+        
+        # Create TL Vmss
+        $vmssConfig = New-AzVmssConfig -loc $loc;
+        New-AzVmss -ResourceGroupName $rgname -VMScaleSetName $vmssName -VirtualMachineScaleSet $vmssConfig;
+        $vmssGet = Get-AzVmss -ResourceGroupName $rgname -VMScaleSetName $vmssName;
+        
+        Assert-Null $vmssGet.VirtualMachineProfile;
+        Assert-AreEqual $vmssGet.OrchestrationMode "Flexible"; 
+    }
+    finally
+    {
+        # Cleanup
+        Clean-ResourceGroup $rgname;
     }
 }
