@@ -560,7 +560,7 @@ namespace Microsoft.Azure.Commands.Compute.Automation
                 if (!_cmdlet.IsParameterBound(c => c.SystemAssignedIdentity)
                     && _cmdlet.SystemAssignedIdentity == true)
                 {
-                    _cmdlet.SystemAssignedIdentity = false;
+                    _cmdlet.SystemAssignedIdentity = null;
                 }
 
                 return resourceGroup.CreateVirtualMachineScaleSetConfigOrchestrationModeFlexible(
