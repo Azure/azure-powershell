@@ -17,11 +17,18 @@ if(($null -eq $TestName) -or ($TestName -contains 'Update-AzDataCollectionRule')
 Describe 'Update-AzDataCollectionRule' {
     It 'UpdateExpanded' {
         {
-            Update-AzDataCollectionRule -Name $env.testCollectionRule1 -ResourceGroupName $env.resourceGroup -Tag @{"123"="abc"}
+            $syslog = New-AzSyslogDataSourceObject -FacilityName syslog -LogLevel Alert,Critical,Emergency -Name syslogBase -Stream Microsoft-Syslog
+            $rule = Update-AzDataCollectionRule -Name $env.testCollectionRule1 -ResourceGroupName $env.resourceGroup -DataSourceSyslog $syslog -Tag @{"123"="abc"}
+            $rule.DataSourceSyslog -eq $syslog
         } | Should -Not -Throw
     }
 
-    It 'UpdateViaIdentityExpanded' -skip {
-        { throw [System.NotImplementedException] } | Should -Not -Throw
+    It 'UpdateViaIdentityExpanded' {
+        {
+            $cronlog = New-AzSyslogDataSourceObject -FacilityName cron -LogLevel Debug,Critical,Emergency -Name cronSyslog -Stream Microsoft-Syslog
+            $ruleGet = Get-AzDataCollectionRule -ResourceGroupName $env.resourceGroup -Name $env.testCollectionRule1
+            $ruleResult = Update-AzDataCollectionRule -InputObject $ruleGet -DataSourceSyslog $cronlog
+            $ruleResult.DataSourceSyslog -eq $cronlog
+        } | Should -Not -Throw
     }
 }
