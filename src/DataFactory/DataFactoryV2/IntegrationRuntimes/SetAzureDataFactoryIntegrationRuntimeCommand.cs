@@ -917,7 +917,7 @@ namespace Microsoft.Azure.Commands.DataFactoryV2
                 }
 
                 integrationRuntime.ComputeProperties.PipelineExternalComputeScaleProperties.TimeToLive = PipelineExternalComputeScaleTimeToLive ?? integrationRuntime.ComputeProperties.PipelineExternalComputeScaleProperties.TimeToLive;
-                integrationRuntime.ComputeProperties.PipelineExternalComputeScaleProperties.TimeToLive = PipelineExternalComputeScaleNumberOfPipelineNodes ?? integrationRuntime.ComputeProperties.PipelineExternalComputeScaleProperties.NumberOfPipelineNodes;
+                integrationRuntime.ComputeProperties.PipelineExternalComputeScaleProperties.NumberOfPipelineNodes = PipelineExternalComputeScaleNumberOfPipelineNodes ?? integrationRuntime.ComputeProperties.PipelineExternalComputeScaleProperties.NumberOfPipelineNodes;
                 integrationRuntime.ComputeProperties.PipelineExternalComputeScaleProperties.NumberOfExternalNodes = PipelineExternalComputeScaleNumberOfExternalNodes ?? integrationRuntime.ComputeProperties.PipelineExternalComputeScaleProperties.NumberOfExternalNodes;
             }
 
