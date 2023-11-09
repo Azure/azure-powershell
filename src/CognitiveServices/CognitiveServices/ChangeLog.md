@@ -18,6 +18,8 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
+
+## Version 1.14.1
 * Updated SDK via autorest.powershell.
 
 ## Version 1.14.0

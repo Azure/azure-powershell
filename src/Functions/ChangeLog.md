@@ -18,6 +18,8 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
+
+## Version 4.0.7
 * Used ARM API to get Stacks information for Functions [#14682]
 * Removed support to create v3 function apps (Functions v3 has reached EOL) [#20838]
 * Removeed Preview flag for Java 17 function apps [#20009]

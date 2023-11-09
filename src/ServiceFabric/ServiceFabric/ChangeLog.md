@@ -18,6 +18,8 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
+
+## Version 3.3.0
 * Fixed minor issues
 
 ## Version 3.2.0
