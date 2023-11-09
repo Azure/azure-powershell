@@ -3135,16 +3135,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Resources.Authorization.generated.r
         }
 
         /// <summary>
-        ///   Looks up a localized string similar to  The estimated generally available date is &apos;{0}&apos;..
-        /// </summary>
-        public static string PreviewCmdletETAMessage {
-            get {
-                return ResourceManager.GetString("PreviewCmdletETAMessage", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        /// Looks up a localized string similar to  This cmdlet is in preview. Its behavior is subject to change based on customer feedback..
+        /// Looks up a localized string similar to This cmdlet is in preview. The functionality may not be available in the selected subscription.
         /// </summary>
         public static string PreviewCmdletMessage
         {

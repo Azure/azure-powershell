@@ -269,4 +269,33 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## NOTES
 
+ALIASES
+
+COMPLEX PARAMETER PROPERTIES
+
+To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
+
+
+`INPUTOBJECT <IAuthorizationIdentity>`: Identity Parameter
+  - `[Id <String>]`: Resource identity path
+  - `[RoleAssignmentScheduleInstanceName <String>]`: The name (hash of schedule name + time) of the role assignment schedule to get.
+  - `[RoleAssignmentScheduleName <String>]`: The name (guid) of the role assignment schedule to get.
+  - `[RoleAssignmentScheduleRequestName <String>]`: The name of the role assignment to create. It can be any valid GUID.
+  - `[RoleEligibilityScheduleInstanceName <String>]`: The name (hash of schedule name + time) of the role eligibility schedule to get.
+  - `[RoleEligibilityScheduleName <String>]`: The name (guid) of the role eligibility schedule to get.
+  - `[RoleEligibilityScheduleRequestName <String>]`: The name of the role eligibility to create. It can be any valid GUID.
+  - `[RoleManagementPolicyAssignmentName <String>]`: The name of format {guid_guid} the role management policy assignment to get.
+  - `[RoleManagementPolicyName <String>]`: The name (guid) of the role management policy to get.
+  - `[Scope <String>]`: The scope of the role management policy.
+
+`RULE <IRoleManagementPolicyRule[]>`: The rule applied to the policy.
+  - `RuleType <RoleManagementPolicyRuleType>`: The type of rule
+  - `[Id <String>]`: The id of the rule.
+  - `[TargetCaller <String>]`: The caller of the setting.
+  - `[TargetEnforcedSetting <String[]>]`: The list of enforced settings.
+  - `[TargetInheritableSetting <String[]>]`: The list of inheritable settings.
+  - `[TargetLevel <String>]`: The assignment level to which it is applied.
+  - `[TargetObject <String[]>]`: The list of target objects.
+  - `[TargetOperation <String[]>]`: The type of operation.
+
 ## RELATED LINKS

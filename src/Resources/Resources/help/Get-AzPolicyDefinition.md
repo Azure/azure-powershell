@@ -1,6 +1,7 @@
 ---
-external help file: Az.Resources-help.xml
+external help file: Microsoft.Azure.PowerShell.Cmdlets.ResourceManager.dll-Help.xml
 Module Name: Az.Resources
+ms.assetid: 6396AEC3-DFE6-45DA-BCF4-69C55C5D051B
 online version: https://learn.microsoft.com/powershell/module/az.resources/get-azpolicydefinition
 schema: 2.0.0
 ---
@@ -8,52 +9,48 @@ schema: 2.0.0
 # Get-AzPolicyDefinition
 
 ## SYNOPSIS
-Gets policy set definitions.
+Gets policy definitions.
 
 ## SYNTAX
 
-### Name (Default)
+### NameParameterSet (Default)
 ```
-Get-AzPolicyDefinition [-Name <String>] [-BackwardCompatible] [-DefaultProfile <PSObject>] [<CommonParameters>]
-```
-
-### ManagementGroupName
-```
-Get-AzPolicyDefinition [-Name <String>] -ManagementGroupName <String> [-BackwardCompatible]
- [-DefaultProfile <PSObject>] [<CommonParameters>]
+Get-AzPolicyDefinition [-Name <String>] [-ApiVersion <String>] [-Pre]
+ [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
-### SubscriptionId
+### ManagementGroupNameParameterSet
 ```
-Get-AzPolicyDefinition [-Name <String>] -SubscriptionId <String> [-BackwardCompatible]
- [-DefaultProfile <PSObject>] [<CommonParameters>]
-```
-
-### BuiltIn
-```
-Get-AzPolicyDefinition [-SubscriptionId <String>] [-ManagementGroupName <String>] [-BuiltIn]
- [-BackwardCompatible] [-DefaultProfile <PSObject>] [<CommonParameters>]
+Get-AzPolicyDefinition [-Name <String>] -ManagementGroupName <String> [-ApiVersion <String>] [-Pre]
+ [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
-### Custom
+### SubscriptionIdParameterSet
 ```
-Get-AzPolicyDefinition [-SubscriptionId <String>] [-ManagementGroupName <String>] [-Custom]
- [-BackwardCompatible] [-DefaultProfile <PSObject>] [<CommonParameters>]
-```
-
-### Static
-```
-Get-AzPolicyDefinition [-SubscriptionId <String>] [-ManagementGroupName <String>] [-Static]
- [-BackwardCompatible] [-DefaultProfile <PSObject>] [<CommonParameters>]
+Get-AzPolicyDefinition [-Name <String>] -SubscriptionId <Guid> [-ApiVersion <String>] [-Pre]
+ [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
-### Id
+### IdParameterSet
 ```
-Get-AzPolicyDefinition -Id <String> [-BackwardCompatible] [-DefaultProfile <PSObject>] [<CommonParameters>]
+Get-AzPolicyDefinition -Id <String> [-ApiVersion <String>] [-Pre] [-DefaultProfile <IAzureContextContainer>]
+ [<CommonParameters>]
+```
+
+### BuiltinFilterParameterSet
+```
+Get-AzPolicyDefinition [-ManagementGroupName <String>] [-SubscriptionId <Guid>] [-Builtin]
+ [-ApiVersion <String>] [-Pre] [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
+```
+
+### CustomFilterParameterSet
+```
+Get-AzPolicyDefinition [-ManagementGroupName <String>] [-SubscriptionId <Guid>] [-Custom]
+ [-ApiVersion <String>] [-Pre] [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-The **Get-AzPolicySetDefinition** cmdlet gets a collection of policy set definitions or a specific policy set definition identified by name or ID.
+The **Get-AzPolicyDefinition** cmdlet gets a collection of policy definitions or a specific policy definition identified by name or ID.
 
 ## EXAMPLES
 
@@ -93,30 +90,22 @@ Get-AzPolicyDefinition | Where-Object {$_.Properties.metadata.category -eq 'Tags
 This command gets all policy definitions in the category **Tags**.
 
 ### Example 6: Get the display name, description, policy type, and metadata of all policy definitions formatted as a list
+
 ```powershell
-Get-AzPolicyDefinition | Select-Object -Property DisplayName, Description, PolicyType, Metadata | Format-List
+Get-AzPolicyDefinition | Select-Object -ExpandProperty properties | Select-Object -Property DisplayName, Description, PolicyType, Metadata | Format-List
 ```
 
 This command is useful when you need to find the reader-friendly **DisplayName** property of an Azure
-Policy definition.
-You can parse the **Metadata** property to discover the policy definition's version number and category assignment.
-
-### Example 7: [Backcompat] Get the display name, description, policy type, and metadata of all policy definitions formatted as a list
-```powershell
-Get-AzPolicyDefinition -BackwardCompatible | Select-Object -ExpandProperty properties | Select-Object -Property DisplayName, Description, PolicyType, Metadata | Format-List
-```
-
-This command is useful when you need to find the reader-friendly **DisplayName** property of an Azure
-Policy definition.
-You can parse the **Metadata** property to discover the policy definition's version number and category assignment.
+Policy definition. You can parse the **Metadata** property to discover the policy definition's version number and category assignment.
 
 ## PARAMETERS
 
-### -BackwardCompatible
-Causes cmdlet to return artifacts using legacy format placing policy-specific properties in a property bag object.
+### -ApiVersion
+Specifies the version of the resource provider API to use.
+If you do not specify a version, this cmdlet uses the latest available version.
 
 ```yaml
-Type: System.Management.Automation.SwitchParameter
+Type: System.String
 Parameter Sets: (All)
 Aliases:
 
@@ -127,43 +116,43 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -BuiltIn
-Causes cmdlet to return only built-in policy definitions.
+### -Builtin
+Limits list of results to only built-in policy definitions.
 
 ```yaml
 Type: System.Management.Automation.SwitchParameter
-Parameter Sets: BuiltIn
+Parameter Sets: BuiltinFilterParameterSet
 Aliases:
 
 Required: True
 Position: Named
 Default value: None
-Accept pipeline input: True (ByPropertyName)
+Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
 ### -Custom
-Causes cmdlet to return only custom policy definitions.
+Limits list of results to only custom policy definitions.
 
 ```yaml
 Type: System.Management.Automation.SwitchParameter
-Parameter Sets: Custom
+Parameter Sets: CustomFilterParameterSet
 Aliases:
 
 Required: True
 Position: Named
 Default value: None
-Accept pipeline input: True (ByPropertyName)
+Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
 ### -DefaultProfile
-The credentials, account, tenant, and subscription used for communication with Azure.
+The credentials, account, tenant, and subscription used for communication with azure
 
 ```yaml
-Type: System.Management.Automation.PSObject
+Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer
 Parameter Sets: (All)
-Aliases: AzureRMContext, AzureCredential
+Aliases: AzContext, AzureRmContext, AzureCredential
 
 Required: False
 Position: Named
@@ -173,11 +162,11 @@ Accept wildcard characters: False
 ```
 
 ### -Id
-The full Id of the policy definition to get.
+Specifies the fully qualified resource ID for the policy definition that this cmdlet gets.
 
 ```yaml
 Type: System.String
-Parameter Sets: Id
+Parameter Sets: IdParameterSet
 Aliases: ResourceId
 
 Required: True
@@ -188,11 +177,11 @@ Accept wildcard characters: False
 ```
 
 ### -ManagementGroupName
-The name of the management group.
+The name of the management group of the policy definition(s) to get.
 
 ```yaml
 Type: System.String
-Parameter Sets: ManagementGroupName
+Parameter Sets: ManagementGroupNameParameterSet
 Aliases:
 
 Required: True
@@ -204,7 +193,7 @@ Accept wildcard characters: False
 
 ```yaml
 Type: System.String
-Parameter Sets: BuiltIn, Custom, Static
+Parameter Sets: BuiltinFilterParameterSet, CustomFilterParameterSet
 Aliases:
 
 Required: False
@@ -215,12 +204,12 @@ Accept wildcard characters: False
 ```
 
 ### -Name
-The name of the policy definition to get.
+Specifies the name of the policy definition that this cmdlet gets.
 
 ```yaml
 Type: System.String
-Parameter Sets: Name, ManagementGroupName, SubscriptionId
-Aliases: PolicyDefinitionName
+Parameter Sets: NameParameterSet, ManagementGroupNameParameterSet, SubscriptionIdParameterSet
+Aliases:
 
 Required: False
 Position: Named
@@ -229,27 +218,27 @@ Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
 ```
 
-### -Static
-Causes cmdlet to return only static policy definitions.
+### -Pre
+Indicates that this cmdlet considers pre-release API versions when it automatically determines which version to use.
 
 ```yaml
 Type: System.Management.Automation.SwitchParameter
-Parameter Sets: Static
+Parameter Sets: (All)
 Aliases:
 
-Required: True
+Required: False
 Position: Named
 Default value: None
-Accept pipeline input: True (ByPropertyName)
+Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
 ### -SubscriptionId
-The ID of the target subscription.
+The subscription ID of the policy definition(s) to get.
 
 ```yaml
-Type: System.String
-Parameter Sets: SubscriptionId
+Type: System.Nullable`1[System.Guid]
+Parameter Sets: SubscriptionIdParameterSet
 Aliases:
 
 Required: True
@@ -260,8 +249,8 @@ Accept wildcard characters: False
 ```
 
 ```yaml
-Type: System.String
-Parameter Sets: BuiltIn, Custom, Static
+Type: System.Nullable`1[System.Guid]
+Parameter Sets: BuiltinFilterParameterSet, CustomFilterParameterSet
 Aliases:
 
 Required: False
@@ -276,14 +265,22 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
-### System.Management.Automation.SwitchParameter
-
 ### System.String
+
+### System.Nullable`1[[System.Guid, System.Private.CoreLib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]]
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.Policy.Models.Api20210601.IPolicyDefinition
+### System.Management.Automation.PSObject
 
 ## NOTES
 
 ## RELATED LINKS
+
+[New-AzPolicyDefinition](./New-AzPolicyDefinition.md)
+
+[Remove-AzPolicyDefinition](./Remove-AzPolicyDefinition.md)
+
+[Set-AzPolicyDefinition](./Set-AzPolicyDefinition.md)
+
+

@@ -16,7 +16,6 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Resources.Authorization.Cmdlets
     [global::System.Management.Automation.OutputType(typeof(Microsoft.Azure.PowerShell.Cmdlets.Resources.Authorization.Models.Api20201001Preview.IRoleEligibilityScheduleRequest))]
     [global::Microsoft.Azure.PowerShell.Cmdlets.Resources.Authorization.Description(@"Creates a role eligibility schedule request.")]
     [global::Microsoft.Azure.PowerShell.Cmdlets.Resources.Authorization.Generated]
-    [global::Microsoft.Azure.PowerShell.Cmdlets.Resources.Authorization.HttpPath(Path = "/{scope}/providers/Microsoft.Authorization/roleEligibilityScheduleRequests/{roleEligibilityScheduleRequestName}", ApiVersion = "2020-10-01-preview")]
     public partial class NewAzRoleEligibilityScheduleRequest_CreateExpanded : global::System.Management.Automation.PSCmdlet,
         Microsoft.Azure.PowerShell.Cmdlets.Resources.Authorization.Runtime.IEventListener
     {
