@@ -402,5 +402,12 @@ namespace Microsoft.Azure.Commands.Compute.Test.ScenarioTests
         {
             TestRunner.RunTestScript("Test-VirtualMachineScaleSetSecurityTypeDefaultingFromImage");
         }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void TestVirtualMachineScaleSetSecurityTypeAndFlexDefaults()
+        {
+            TestRunner.RunTestScript("Test-VirtualMachineScaleSetSecurityTypeAndFlexDefaults");
+        }
     }
 }
