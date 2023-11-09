@@ -582,6 +582,27 @@ function Add-AllModules {
         Add-Modules -TempRepo $TempRepo -TempRepoPath $TempRepoPath -ModulePath $modulePath -NugetExe $NugetExe
         Write-Output " "
     }
+    Write-Output "Removing lower version Az.Accounts packages"
+    $packages = Get-ChildItem -Path "./artifacts" -Filter "Az.Accounts.*.nupkg"
+    $latestVersion = [version]"0.0.0"
+    $latestPackage = $null
+    
+    foreach ($package in $packages) {
+        $fileName = $package.Name
+        $versionString = $fileName.Replace('Az.Accounts.', '').Replace('.nupkg', '')
+        $version = [version]$versionString
+        
+        if ($version -gt $latestVersion) {
+            $latestVersion = $version
+            $latestPackage = $package
+        }
+    }
+    
+    foreach ($package in $packages) {
+        if ($package.FullName -ne $latestPackage.FullName) {
+            Remove-Item $package.FullName -Force
+        }
+    }
     Write-Output " "
 }
 

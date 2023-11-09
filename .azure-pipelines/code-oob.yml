@@ -143,7 +143,7 @@ stages:
       ChangedModule: ${{ parameters.ServiceName }}
       BuildInstaller: false
   - job: PulishForTest
-    dependsOn: Build
+    dependsOn: Release
     steps:
     - task: DownloadBuildArtifacts@1
       inputs:
