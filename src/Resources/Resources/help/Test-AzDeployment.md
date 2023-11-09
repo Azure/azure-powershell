@@ -74,12 +74,6 @@ Test-AzDeployment [-Name <String>] -Location <String> [-QueryString <String>] -T
  [<CommonParameters>]
 ```
 
-### ByParameterFileWithNoTemplate
-```
-Test-AzDeployment [-Name <String>] -Location <String> [-QueryString <String>] -TemplateParameterFile <String>
- [-SkipTemplateParameterPrompt] [-Pre] [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
-```
-
 ### ByTemplateObjectAndParameterUri
 ```
 Test-AzDeployment [-Name <String>] -Location <String> [-QueryString <String>] -TemplateParameterUri <String>
@@ -123,6 +117,12 @@ Test-AzDeployment [-Name <String>] -Location <String> [-QueryString <String>] -T
 ### ByTemplateSpecResourceId
 ```
 Test-AzDeployment [-Name <String>] -Location <String> [-QueryString <String>] -TemplateSpecId <String>
+ [-SkipTemplateParameterPrompt] [-Pre] [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
+```
+
+### ByParameterFileWithNoTemplate
+```
+Test-AzDeployment [-Name <String>] -Location <String> [-QueryString <String>] -TemplateParameterFile <String>
  [-SkipTemplateParameterPrompt] [-Pre] [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 

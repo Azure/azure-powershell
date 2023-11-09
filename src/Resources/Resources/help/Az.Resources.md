@@ -132,7 +132,7 @@ The -ListAvailable switch modifies this behavior by listing all matching resourc
 Gets policy assignments.
 
 ### [Get-AzPolicyDefinition](Get-AzPolicyDefinition.md)
-Gets policy set definitions.
+Gets policy definitions.
 
 ### [Get-AzPolicyExemption](Get-AzPolicyExemption.md)
 Gets policy exemptions.
@@ -300,18 +300,16 @@ Creates Hierarchy Settings under the current tenant
 Adds a Subscription to a Management Group.
 
 ### [New-AzPolicyAssignment](New-AzPolicyAssignment.md)
-This operation creates or updates a policy assignment with the given scope and name.
-Policy assignments apply to all resources contained within their scope.
-For example, when you assign a policy at resource group scope, that policy applies to all resources in the group.
+Creates a policy assignment.
 
 ### [New-AzPolicyDefinition](New-AzPolicyDefinition.md)
-Creates or updates a policy definition.
+Creates a policy definition.
 
 ### [New-AzPolicyExemption](New-AzPolicyExemption.md)
-Creates or updates a policy exemption.
+Creates a policy exemption.
 
 ### [New-AzPolicySetDefinition](New-AzPolicySetDefinition.md)
-Creates or updates a policy set definition.
+Creates a policy set definition.
 
 ### [New-AzPrivateLinkAssociation](New-AzPrivateLinkAssociation.md)
 Creates the Azure Resource Management Private Link Association.
@@ -448,18 +446,16 @@ Deletes all Hierarchy Settings under the current tenant
 Removes a Subscription from a Management Group.
 
 ### [Remove-AzPolicyAssignment](Remove-AzPolicyAssignment.md)
-This operation deletes a policy assignment, given its name and the scope it was created in.
-The scope of a policy assignment is the part of its ID preceding '/providers/Microsoft.Authorization/policyAssignments/{policyAssignmentName}'.
+Removes a policy assignment.
 
 ### [Remove-AzPolicyDefinition](Remove-AzPolicyDefinition.md)
-This operation deletes the policy definition in the given subscription with the given name.
+Removes a policy definition.
 
 ### [Remove-AzPolicyExemption](Remove-AzPolicyExemption.md)
-This operation deletes a policy exemption, given its name and the scope it was created in.
-The scope of a policy exemption is the part of its ID preceding '/providers/Microsoft.Authorization/policyExemptions/{policyExemptionName}'.
+Removes a policy exemption.
 
 ### [Remove-AzPolicySetDefinition](Remove-AzPolicySetDefinition.md)
-This operation deletes the policy definition in the given subscription with the given name.
+Removes a policy set definition.
 
 ### [Remove-AzPrivateLinkAssociation](Remove-AzPrivateLinkAssociation.md)
 Delete a specific azure private link association.
@@ -663,20 +659,6 @@ Updates a Management Group
 
 ### [Update-AzManagementGroupHierarchySetting](Update-AzManagementGroupHierarchySetting.md)
 Updates Hierarchy Settings under the current tenant
-
-### [Update-AzPolicyAssignment](Update-AzPolicyAssignment.md)
-This operation updates a policy assignment with the given scope and name.
-Policy assignments apply to all resources contained within their scope.
-For example, when you assign a policy at resource group scope, that policy applies to all resources in the group.
-
-### [Update-AzPolicyDefinition](Update-AzPolicyDefinition.md)
-This operation updates an existing policy definition in the given subscription or management group with the given name.
-
-### [Update-AzPolicyExemption](Update-AzPolicyExemption.md)
-This operation updates a policy exemption with the given scope and name.
-
-### [Update-AzPolicySetDefinition](Update-AzPolicySetDefinition.md)
-This operation updates an existing policy set definition in the given subscription or management group with the given name.
 
 ### [Update-AzRoleManagementPolicy](Update-AzRoleManagementPolicy.md)
 Update a role management policy

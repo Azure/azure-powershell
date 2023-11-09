@@ -48,13 +48,6 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Resources.Authorization
         }
     }
 
-    [AttributeUsage(AttributeTargets.Class)]
-    public class HttpPathAttribute : Attribute
-    {
-        public string Path { get; set; }
-        public string ApiVersion { get; set; }
-    }
-
     [AttributeUsage(AttributeTargets.Field | AttributeTargets.Property)]
     public class CategoryAttribute : Attribute
     {
