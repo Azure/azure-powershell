@@ -26,7 +26,7 @@ using Microsoft.Rest.Azure;
 
 namespace Microsoft.Azure.Commands.DataFactoryV2
 {
-    [Cmdlet("Set", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "DataFactoryV2IntegrationRuntime",DefaultParameterSetName = ParameterSetNames.ByIntegrationRuntimeName,SupportsShouldProcess = true),OutputType(typeof(PSIntegrationRuntime))]
+    [Cmdlet("Set", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "DataFactoryV2IntegrationRuntime", DefaultParameterSetName = ParameterSetNames.ByIntegrationRuntimeName, SupportsShouldProcess = true), OutputType(typeof(PSIntegrationRuntime))]
     public class SetAzureDataFactoryIntegrationRuntimeCommand : IntegrationRuntimeCmdlet
     {
         [Parameter(
@@ -286,8 +286,8 @@ namespace Microsoft.Azure.Commands.DataFactoryV2
             ParameterSetName = ParameterSetNames.ByIntegrationRuntimeObject,
             Mandatory = false,
             HelpMessage = Constants.HelpIntegrationRuntimeDataFlowComputeType)]
-        [PSArgumentCompleter(Management.DataFactory.Models.DataFlowComputeType.General, 
-            Management.DataFactory.Models.DataFlowComputeType.MemoryOptimized, 
+        [PSArgumentCompleter(Management.DataFactory.Models.DataFlowComputeType.General,
+            Management.DataFactory.Models.DataFlowComputeType.MemoryOptimized,
             Management.DataFactory.Models.DataFlowComputeType.ComputeOptimized)]
         [ValidateNotNullOrEmpty]
         public string DataFlowComputeType { get; set; }
@@ -333,6 +333,90 @@ namespace Microsoft.Azure.Commands.DataFactoryV2
             Mandatory = false,
             HelpMessage = Constants.HelpIntegrationRuntimeDataFlowTimeToLive)]
         public int? DataFlowTimeToLive { get; set; }
+
+        [Parameter(
+           ParameterSetName = ParameterSetNames.ByIntegrationRuntimeName,
+           Mandatory = false,
+           HelpMessage = Constants.HelpIntegrationRuntimeCopyComputeScaleDataIntegrationUnit)]
+        [Parameter(
+           ParameterSetName = ParameterSetNames.ByResourceId,
+           Mandatory = false,
+           HelpMessage = Constants.HelpIntegrationRuntimeCopyComputeScaleDataIntegrationUnit)]
+        [Parameter(
+           ParameterSetName = ParameterSetNames.ByIntegrationRuntimeObject,
+           Mandatory = false,
+           HelpMessage = Constants.HelpIntegrationRuntimeCopyComputeScaleDataIntegrationUnit)]
+        public int? CopyComputeScaleDataIntegrationUnit { get; set; }
+
+        [Parameter(
+           ParameterSetName = ParameterSetNames.ByIntegrationRuntimeName,
+           Mandatory = false,
+           HelpMessage = Constants.HelpIntegrationRuntimeCopyComputeScaleTimeToLive)]
+        [Parameter(
+           ParameterSetName = ParameterSetNames.ByResourceId,
+           Mandatory = false,
+           HelpMessage = Constants.HelpIntegrationRuntimeCopyComputeScaleTimeToLive)]
+        [Parameter(
+           ParameterSetName = ParameterSetNames.ByIntegrationRuntimeObject,
+           Mandatory = false,
+           HelpMessage = Constants.HelpIntegrationRuntimeCopyComputeScaleTimeToLive)]
+        public int? CopyComputeScaleTimeToLive { get; set; }
+
+        [Parameter(
+           ParameterSetName = ParameterSetNames.ByIntegrationRuntimeName,
+           Mandatory = false,
+           HelpMessage = Constants.HelpIntegrationRuntimePipelineExternalComputeScaleTimeToLive)]
+        [Parameter(
+           ParameterSetName = ParameterSetNames.ByResourceId,
+           Mandatory = false,
+           HelpMessage = Constants.HelpIntegrationRuntimePipelineExternalComputeScaleTimeToLive)]
+        [Parameter(
+           ParameterSetName = ParameterSetNames.ByIntegrationRuntimeObject,
+           Mandatory = false,
+           HelpMessage = Constants.HelpIntegrationRuntimePipelineExternalComputeScaleTimeToLive)]
+        public int? PipelineExternalComputeScaleTimeToLive { get; set; }
+
+        [Parameter(
+           ParameterSetName = ParameterSetNames.ByIntegrationRuntimeName,
+           Mandatory = false,
+           HelpMessage = Constants.HelpIntegrationRuntimePipelineExternalComputeScaleNumberOfPipelineNodes)]
+        [Parameter(
+           ParameterSetName = ParameterSetNames.ByResourceId,
+           Mandatory = false,
+           HelpMessage = Constants.HelpIntegrationRuntimePipelineExternalComputeScaleNumberOfPipelineNodes)]
+        [Parameter(
+           ParameterSetName = ParameterSetNames.ByIntegrationRuntimeObject,
+           Mandatory = false,
+           HelpMessage = Constants.HelpIntegrationRuntimePipelineExternalComputeScaleNumberOfPipelineNodes)]
+        public int? PipelineExternalComputeScaleNumberOfPipelineNodes { get; set; }
+
+        [Parameter(
+           ParameterSetName = ParameterSetNames.ByIntegrationRuntimeName,
+           Mandatory = false,
+           HelpMessage = Constants.HelpIntegrationRuntimePipelineExternalComputeScaleNumberOfPipelineNodes)]
+        [Parameter(
+           ParameterSetName = ParameterSetNames.ByResourceId,
+           Mandatory = false,
+           HelpMessage = Constants.HelpIntegrationRuntimePipelineExternalComputeScaleNumberOfPipelineNodes)]
+        [Parameter(
+           ParameterSetName = ParameterSetNames.ByIntegrationRuntimeObject,
+           Mandatory = false,
+           HelpMessage = Constants.HelpIntegrationRuntimePipelineExternalComputeScaleNumberOfPipelineNodes)]
+        public int? PipelineExternalComputeScaleNumberOfExternalNodes { get; set; }
+
+        [Parameter(
+           ParameterSetName = ParameterSetNames.ByIntegrationRuntimeName,
+           Mandatory = false,
+           HelpMessage = Constants.HelpIntegrationRuntimeSelfContainedInteractiveAuthoringEnabled)]
+        [Parameter(
+           ParameterSetName = ParameterSetNames.ByResourceId,
+           Mandatory = false,
+           HelpMessage = Constants.HelpIntegrationRuntimeSelfContainedInteractiveAuthoringEnabled)]
+        [Parameter(
+           ParameterSetName = ParameterSetNames.ByIntegrationRuntimeObject,
+           Mandatory = false,
+           HelpMessage = Constants.HelpIntegrationRuntimeSelfContainedInteractiveAuthoringEnabled)]
+        public SwitchParameter SelfContainedInteractiveAuthoringEnabled { get; set; }
 
         [Parameter(
             ParameterSetName = ParameterSetNames.ByIntegrationRuntimeName,
@@ -613,7 +697,10 @@ namespace Microsoft.Azure.Commands.DataFactoryV2
                             var authKey = ConvertToUnsecureString(AuthKey);
                             selfHosted.LinkedInfo = new LinkedIntegrationRuntimeKeyAuthorization(new SecureString(authKey));
                         }
-
+                        if (SelfContainedInteractiveAuthoringEnabled.IsPresent)
+                        {
+                            selfHosted.SelfContainedInteractiveAuthoringEnabled = true;
+                        }
                         resource.Properties = selfHosted;
                     }
                 }
@@ -629,6 +716,10 @@ namespace Microsoft.Azure.Commands.DataFactoryV2
                 if (selfHostedIr != null)
                 {
                     selfHostedIr.LinkedInfo = new LinkedIntegrationRuntimeRbacAuthorization(SharedIntegrationRuntimeResourceId);
+                    if (SelfContainedInteractiveAuthoringEnabled.IsPresent)
+                    {
+                        selfHostedIr.SelfContainedInteractiveAuthoringEnabled = true;
+                    }
                 }
                 else
                 {
@@ -790,13 +881,44 @@ namespace Microsoft.Azure.Commands.DataFactoryV2
                 if (DataFlowEnableQuickReuse.IsPresent)
                 {
                     integrationRuntime.ComputeProperties.DataFlowProperties.Cleanup = false;
-                } 
+                }
                 else
                 {
                     // setting it as null as the default value for the cleanup variable is false, and the backend endpoint treats null value as true.
                     integrationRuntime.ComputeProperties.DataFlowProperties.Cleanup = null;
                 }
 
+            }
+
+            if (CopyComputeScaleDataIntegrationUnit != null || CopyComputeScaleTimeToLive != null)
+            {
+                if (integrationRuntime.ComputeProperties == null)
+                {
+                    integrationRuntime.ComputeProperties = new IntegrationRuntimeComputeProperties();
+                }
+                if (integrationRuntime.ComputeProperties.CopyComputeScaleProperties == null)
+                {
+                    integrationRuntime.ComputeProperties.CopyComputeScaleProperties = new CopyComputeScaleProperties();
+                }
+
+                integrationRuntime.ComputeProperties.CopyComputeScaleProperties.DataIntegrationUnit = CopyComputeScaleDataIntegrationUnit ?? integrationRuntime.ComputeProperties.CopyComputeScaleProperties.DataIntegrationUnit;
+                integrationRuntime.ComputeProperties.CopyComputeScaleProperties.TimeToLive = CopyComputeScaleTimeToLive ?? integrationRuntime.ComputeProperties.CopyComputeScaleProperties.TimeToLive;
+            }
+
+            if (PipelineExternalComputeScaleTimeToLive != null || PipelineExternalComputeScaleNumberOfPipelineNodes != null || PipelineExternalComputeScaleNumberOfExternalNodes != null)
+            {
+                if (integrationRuntime.ComputeProperties == null)
+                {
+                    integrationRuntime.ComputeProperties = new IntegrationRuntimeComputeProperties();
+                }
+                if (integrationRuntime.ComputeProperties.PipelineExternalComputeScaleProperties == null)
+                {
+                    integrationRuntime.ComputeProperties.PipelineExternalComputeScaleProperties = new PipelineExternalComputeScaleProperties();
+                }
+
+                integrationRuntime.ComputeProperties.PipelineExternalComputeScaleProperties.TimeToLive = PipelineExternalComputeScaleTimeToLive ?? integrationRuntime.ComputeProperties.PipelineExternalComputeScaleProperties.TimeToLive;
+                integrationRuntime.ComputeProperties.PipelineExternalComputeScaleProperties.TimeToLive = PipelineExternalComputeScaleNumberOfPipelineNodes ?? integrationRuntime.ComputeProperties.PipelineExternalComputeScaleProperties.NumberOfPipelineNodes;
+                integrationRuntime.ComputeProperties.PipelineExternalComputeScaleProperties.NumberOfExternalNodes = PipelineExternalComputeScaleNumberOfExternalNodes ?? integrationRuntime.ComputeProperties.PipelineExternalComputeScaleProperties.NumberOfExternalNodes;
             }
 
             if (PublicIPs != null)

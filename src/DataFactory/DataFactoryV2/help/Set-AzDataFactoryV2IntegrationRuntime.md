@@ -289,6 +289,96 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### -CopyComputeScaleDataIntegrationUnit
+DIU number setting reserved for copy activity execution.
+
+```yaml
+Type: System.Nullable`1[System.Int32]
+Parameter Sets: ByIntegrationRuntimeName, ByResourceId, ByIntegrationRuntimeObject
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -CopyComputeScaleTimeToLive
+Time to live (in minutes) setting of integration runtime which will execute copy activity.
+
+```yaml
+Type: System.Nullable`1[System.Int32]
+Parameter Sets: ByIntegrationRuntimeName, ByResourceId, ByIntegrationRuntimeObject
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -PipelineExternalComputeScaleTimeToLive
+Time to live (in minutes) setting of integration runtime which will execute pipeline and external activity.
+
+```yaml
+Type: System.Nullable`1[System.Int32]
+Parameter Sets: ByIntegrationRuntimeName, ByResourceId, ByIntegrationRuntimeObject
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -PipelineExternalComputeScaleNumberOfPipelineNodes
+Number of the pipeline nodes, which should be greater than 0 and less than 11.
+
+```yaml
+Type: System.Nullable`1[System.Int32]
+Parameter Sets: ByIntegrationRuntimeName, ByResourceId, ByIntegrationRuntimeObject
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -PipelineExternalComputeScaleNumberOfExternalNodes
+Number of the the external nodes, which should be greater than 0 and less than 11.
+
+```yaml
+Type: System.Nullable`1[System.Int32]
+Parameter Sets: ByIntegrationRuntimeName, ByResourceId, ByIntegrationRuntimeObject
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -SelfContainedInteractiveAuthoringEnabled
+An alternative option to ensure interactive authoring function when your self-hosted integration runtime is unable to establish a connection with Azure Relay.
+
+```yaml
+Type: System.Management.Automation.SwitchParameter
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
 ### -DataProxyIntegrationRuntimeName
 The Self-Hosted Integration Runtime name which is used as a proxy
 
