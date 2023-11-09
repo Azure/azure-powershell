@@ -33,6 +33,7 @@
 * Added new parameter `-VirtualMachineScaleSetId` to `Update-AzVm` cmdlet.
 * Fixed `New-AzVmss` and `New-Azvm` to use `SharedGalleryImageId` parameter.
 * Reducing File Permissions from 0644 to 0600 for SSH Private Key File in `New-AzVm`.
+* Remove GuestAttestaion vm extension installation for Vmss and Vm creation cmdlets. 
 
 
 ## Version 6.3.0
