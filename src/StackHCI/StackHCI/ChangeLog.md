@@ -18,10 +18,9 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
-* Added support for ARC Onboarding using Cluster Managed Identity. 
-* Removed previous IMDS Reg Key during Registration/Repair-Registration. 
-* Removed creation of custom IMDS Reg Key during Arc Enablement.
-* Improved logging experience.
+* Added commands for image, virtual hard disk, storager path, logical network, network interface, and virtual machine creations.
+* Added CRUD commands for each resource. 
+* Added ability to Add and Remove a Disk from a Virtual Machine and Add and Remove a Network Interface from a virtual machine.
 
 ## Version 2.2.2
 * Reverted remove CustomIMDSHost
