@@ -14,8 +14,8 @@ Creates or updates the action of alert rule.
 
 ```
 New-AzSentinelAlertRuleAction -ResourceGroupName <String> -RuleId <String> -WorkspaceName <String>
- [-SubscriptionId <String>] [-LogicAppResourceId <String>] [-TriggerUri <String>] [-DefaultProfile <PSObject>]
- [-Confirm] [-WhatIf] [<CommonParameters>]
+ [-Id <String>] [-SubscriptionId <String>] [-LogicAppResourceId <String>] [-TriggerUri <String>]
+ [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -35,7 +35,8 @@ This command adds an existing Logic App Playbook to an existing analytics rule
 ## PARAMETERS
 
 ### -DefaultProfile
-The credentials, account, tenant, and subscription used for communication with Azure.
+The DefaultProfile parameter is not functional.
+Use the SubscriptionId parameter when available if executing the cmdlet against a different subscription.
 
 ```yaml
 Type: System.Management.Automation.PSObject
@@ -45,6 +46,21 @@ Aliases: AzureRMContext, AzureCredential
 Required: False
 Position: Named
 Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -Id
+Action ID
+
+```yaml
+Type: System.String
+Parameter Sets: (All)
+Aliases: ActionId
+
+Required: False
+Position: Named
+Default value: (New-Guid).Guid
 Accept pipeline input: False
 Accept wildcard characters: False
 ```

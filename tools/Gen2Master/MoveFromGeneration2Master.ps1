@@ -105,6 +105,9 @@ Function Move-Generation2Master {
         If ($Psd1Metadata.FunctionsToExport -Contains "*") {
             $Psd1Metadata.FunctionsToExport = ($Psd1Metadata.FunctionsToExport | Where-Object { $_ -ne "*" })
         }
+        If ($Psd1Metadata.AliasesToExport.Length -ne 1) {
+            $Psd1Metadata.AliasesToExport = @($Psd1Metadata.AliasesToExport | Where-Object { $_ -ne "*" })
+        }
         Update-ModuleManifest -Path $SourcePsd1Path @Psd1Metadata
         Copy-Item -Path $SourcePsd1Path -Destination $DestPsd1Path
         #EndRegion
@@ -269,7 +272,7 @@ Function Move-Generation2MasterHybrid {
             if (-not (Test-Path (Join-Path -Path (Join-Path -Path $DestPath -ChildPath $ModuleName) -ChildPath "Az.$ModuleName.psd1"))) {
                 $Psd1FolderPostfix = '.Management'
             }
-            Copy-Item -Path ("$SourcePath\{0}\docs\*" -f $submoduleDir.Name) -Destination "$DestPath\$ModuleName$Psd1FolderPostfix\help" -Filter *-*
+            Copy-Item -Path ("$SourcePath\{0}\docs\*" -f $submoduleDir.Name) -Destination "$DestPath\$ModuleName$Psd1FolderPostfix\help" -Filter *-* -Force
 
             #Region generate-info.json Here have a issue that user may not use latest version to generate the code.
             $generateInfo = @{}

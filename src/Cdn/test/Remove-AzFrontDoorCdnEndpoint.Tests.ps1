@@ -16,7 +16,7 @@ if(($null -eq $TestName) -or ($TestName -contains 'Remove-AzFrontDoorCdnEndpoint
 
 Describe 'Remove-AzFrontDoorCdnEndpoint'  {
     It 'Delete' {
-        $endpointName = 'end-' + (RandomString -allChars $false -len 6);
+        $endpointName = 'end-pstest070'
         Write-Host -ForegroundColor Green "Use frontDoorCdnEndpointName : $($endpointName)"
         $endpoint = New-AzFrontDoorCdnEndpoint -EndpointName $endpointName -ProfileName $env.FrontDoorCdnProfileName -ResourceGroupName $env.ResourceGroupName -Location Global
 
@@ -27,14 +27,13 @@ Describe 'Remove-AzFrontDoorCdnEndpoint'  {
     }
 
     It 'DeleteViaIdentity' {
-        $PSDefaultParameterValues['Disabled'] = $true
-
-        $endpointName = 'end-' + (RandomString -allChars $false -len 6);
+        $endpointName = 'end-pstest071'
         Write-Host -ForegroundColor Green "Use frontDoorCdnEndpointName : $($endpointName)"
         $endpoint = New-AzFrontDoorCdnEndpoint -SubscriptionId $env.SubscriptionId -EndpointName $endpointName -ProfileName $env.FrontDoorCdnProfileName -ResourceGroupName $env.ResourceGroupName -Location Global
 
         $endpoint.Name | Should -Be $endpointName
         $endpoint.Location | Should -Be "Global"
-        Get-AzFrontdoorCdnEndpoint -ResourceGroupName $env.ResourceGroupName -ProfileName $env.FrontDoorCdnProfileName -EndpointName $endpointName | Remove-AzFrontdoorCdnEndpoint
+        $endpointObject = Get-AzFrontdoorCdnEndpoint -ResourceGroupName $env.ResourceGroupName -ProfileName $env.FrontDoorCdnProfileName -EndpointName $endpointName
+        Remove-AzFrontdoorCdnEndpoint -InputObject $endpointObject
     }
 }

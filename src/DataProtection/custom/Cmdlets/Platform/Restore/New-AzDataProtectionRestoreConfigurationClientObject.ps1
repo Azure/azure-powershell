@@ -40,17 +40,21 @@ function New-AzDataProtectionRestoreConfigurationClientObject{
         ${ConflictPolicy},
 
         [Parameter(Mandatory=$false, HelpMessage='Namespaces mapping from source namespaces to target namespaces to resolve namespace naming conflicts in the target cluster.')]
-        [Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api202301.KubernetesClusterRestoreCriteriaNamespaceMappings]
+        [Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20230501.KubernetesClusterRestoreCriteriaNamespaceMappings]
         ${NamespaceMapping},
 
         [Parameter(Mandatory=$false, HelpMessage='Restore mode for persistent volumes. Allowed values are RestoreWithVolumeData, RestoreWithoutVolumeData. Default value is RestoreWithVolumeData')]
         [System.String]
         [ValidateSet('RestoreWithVolumeData','RestoreWithoutVolumeData')]
-        ${PersistentVolumeRestoreMode}
+        ${PersistentVolumeRestoreMode},
+        
+        [Parameter(Mandatory=$false, HelpMessage='Hook reference to be executed during restore.')]
+        [Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20230501.NamespacedNameResource[]]
+        ${RestoreHookReference}        
     )
 
     process {
-        $restoreCriteria =  [Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api202301.KubernetesClusterRestoreCriteria]::new()
+        $restoreCriteria =  [Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20230501.KubernetesClusterRestoreCriteria]::new()
         $restoreCriteria.ObjectType = "KubernetesClusterRestoreCriteria"
 
         $restoreCriteria.ExcludedResourceType = $ExcludedResourceType
@@ -59,6 +63,7 @@ function New-AzDataProtectionRestoreConfigurationClientObject{
         $restoreCriteria.IncludedNamespace = $IncludedNamespace
         $restoreCriteria.LabelSelector = $LabelSelector
         $restoreCriteria.NamespaceMapping = $NamespaceMapping
+        $restoreCriteria.RestoreHookReference = $RestoreHookReference
                 
         if($IncludeClusterScopeResource -ne $null) {
             $restoreCriteria.IncludeClusterScopeResource =  $IncludeClusterScopeResource

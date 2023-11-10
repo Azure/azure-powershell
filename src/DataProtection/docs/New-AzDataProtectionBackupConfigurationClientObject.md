@@ -14,10 +14,11 @@ Creates new backup configuration object
 
 ```
 New-AzDataProtectionBackupConfigurationClientObject -DatasourceType <DatasourceTypes>
- [-ExcludedNamespace <String[]>] [-ExcludedResourceType <String[]>] [-IncludeAllContainer]
- [-IncludeClusterScopeResource <Boolean?>] [-IncludedNamespace <String[]>] [-IncludedResourceType <String[]>]
- [-LabelSelector <String[]>] [-SnapshotVolume <Boolean?>] [-StorageAccountName <String>]
- [-StorageAccountResourceGroupName <String>] [-VaultedBackupContainer <String[]>] [<CommonParameters>]
+ [-BackupHookReference <NamespacedNameResource[]>] [-ExcludedNamespace <String[]>]
+ [-ExcludedResourceType <String[]>] [-IncludeAllContainer] [-IncludeClusterScopeResource <Boolean?>]
+ [-IncludedNamespace <String[]>] [-IncludedResourceType <String[]>] [-LabelSelector <String[]>]
+ [-SnapshotVolume <Boolean?>] [-StorageAccountName <String>] [-StorageAccountResourceGroupName <String>]
+ [-VaultedBackupContainer <String[]>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -27,7 +28,7 @@ Creates new backup configuration object
 
 ### Example 1: Create a BackupConfiguration for configuring protection with AzureKubernetesService
 ```powershell
-$backupConfig = New-AzDataProtectionBackupConfigurationClientObject -SnapshotVolume $true -IncludeClusterScopeResource $true -DatasourceType AzureKubernetesService -LabelSelector "key=val","foo=bar" -ExcludedNamespace "excludeNS1","excludeNS2"
+$backupConfig = New-AzDataProtectionBackupConfigurationClientObject -SnapshotVolume $true -IncludeClusterScopeResource $true -DatasourceType AzureKubernetesService -LabelSelector "key=val","foo=bar" -ExcludedNamespace "excludeNS1","excludeNS2" -BackupHookReference @(@{name='bkphookname';namespace='default'},@{name='bkphookname1';namespace='hrweb'})
 ```
 
 ```output
@@ -36,13 +37,14 @@ ObjectType                                  ExcludedNamespace        ExcludedRes
 KubernetesClusterBackupDatasourceParameters {excludeNS1, excludeNS2}                      True                                                               {key=val, foo=bar} True
 ```
 
-This command can be used to create a backup configuration client object used for configuring backup for a Kubernetes cluster
+This command can be used to create a backup configuration client object used for configuring backup for a Kubernetes cluster.
+BackupHookReferences is a list of references to BackupHooks that should be executed before and after the backup is executed.
 
 ### Example 2: Create a BackupConfiguration to select specific containers for configuring vaulted backups for AzureBlob. 
 ```powershell
 $storageAccount = Get-AzStorageAccount -ResourceGroupName $resourceGroupName -Name $storageAccountName 
 $containers=Get-AzStorageContainer -Context $storageAccount.Context        
-$backupConfig = New-AzDataProtectionBackupConfigurationClientObject -DatasourceType AzureBlob -VaultedBackupContainer $containers.Name[1,3,4]      
+$backupConfig = New-AzDataProtectionBackupConfigurationClientObject -DatasourceType AzureBlob -VaultedBackupContainer $containers.Name[1,3,4]
 ```
 
 ```output
@@ -54,6 +56,22 @@ BlobBackupDatasourceParameters {conabb, conwxy, conzzz}
 This command can be used to create a backup configuration client object used for configuring backup for vaulted Blob backup containers.
 
 ## PARAMETERS
+
+### -BackupHookReference
+Hook reference to be executed during backup.
+To construct, see NOTES section for BACKUPHOOKREFERENCE properties and create a hash table.
+
+```yaml
+Type: Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20230501.NamespacedNameResource[]
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
 
 ### -DatasourceType
 Datasource Type
@@ -253,6 +271,15 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ## NOTES
 
 ALIASES
+
+COMPLEX PARAMETER PROPERTIES
+
+To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
+
+
+`BACKUPHOOKREFERENCE <NamespacedNameResource[]>`: Hook reference to be executed during backup.
+  - `[Name <String>]`: Name of the resource
+  - `[Namespace <String>]`: Namespace in which the resource exists
 
 ## RELATED LINKS
 

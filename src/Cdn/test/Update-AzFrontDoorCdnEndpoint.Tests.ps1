@@ -16,7 +16,7 @@ if(($null -eq $TestName) -or ($TestName -contains 'Update-AzFrontDoorCdnEndpoint
 
 Describe 'Update-AzFrontDoorCdnEndpoint'  {
     BeforeAll {
-        $endpointName = 'end-' + (RandomString -allChars $false -len 6);
+        $endpointName = 'end-pstest100'
         Write-Host -ForegroundColor Green "Use frontDoorCdnEndpointName : $($endpointName)"
         New-AzFrontDoorCdnEndpoint -EndpointName $endpointName -ProfileName $env.FrontDoorCdnProfileName -ResourceGroupName $env.ResourceGroupName -Location Global
 
@@ -30,8 +30,8 @@ Describe 'Update-AzFrontDoorCdnEndpoint'  {
     }
 
     It 'UpdateViaIdentityExpanded' {
-        $PSDefaultParameterValues['Disabled'] = $true
-        Get-AzFrontdoorCdnEndpoint -ResourceGroupName $env.ResourceGroupName -ProfileName $env.FrontDoorCdnProfileName -EndpointName $endpointName | Update-AzFrontdoorCdnEndpoint -EnabledState "Enabled"
+        $endObject = Get-AzFrontdoorCdnEndpoint -ResourceGroupName $env.ResourceGroupName -ProfileName $env.FrontDoorCdnProfileName -EndpointName $endpointName
+        Update-AzFrontdoorCdnEndpoint -EnabledState "Enabled" -InputObject $endObject
         $updatedEndpoint = Get-AzFrontdoorCdnEndpoint -ResourceGroupName $env.ResourceGroupName -ProfileName $env.FrontDoorCdnProfileName -EndpointName $endpointName
         $updatedEndpoint.EnabledState | Should -Be "Enabled"
     }

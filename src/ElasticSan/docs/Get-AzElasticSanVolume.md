@@ -29,6 +29,18 @@ Get-AzElasticSanVolume -ElasticSanName <String> -Name <String> -ResourceGroupNam
 Get-AzElasticSanVolume -InputObject <IElasticSanIdentity> [-DefaultProfile <PSObject>] [<CommonParameters>]
 ```
 
+### GetViaIdentityElasticSan
+```
+Get-AzElasticSanVolume -ElasticSanInputObject <IElasticSanIdentity> -Name <String> -VolumeGroupName <String>
+ [-DefaultProfile <PSObject>] [<CommonParameters>]
+```
+
+### GetViaIdentityVolumegroup
+```
+Get-AzElasticSanVolume -Name <String> -VolumegroupInputObject <IElasticSanIdentity>
+ [-DefaultProfile <PSObject>] [<CommonParameters>]
+```
+
 ## DESCRIPTION
 Get either a list of all volumes from a volume group or get a single volume from a volume group.
 
@@ -115,7 +127,8 @@ This command gets a specific volume.
 ## PARAMETERS
 
 ### -DefaultProfile
-The credentials, account, tenant, and subscription used for communication with Azure.
+The DefaultProfile parameter is not functional.
+Use the SubscriptionId parameter when available if executing the cmdlet against a different subscription.
 
 ```yaml
 Type: System.Management.Automation.PSObject
@@ -126,6 +139,22 @@ Required: False
 Position: Named
 Default value: None
 Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -ElasticSanInputObject
+Identity Parameter
+To construct, see NOTES section for ELASTICSANINPUTOBJECT properties and create a hash table.
+
+```yaml
+Type: Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Models.IElasticSanIdentity
+Parameter Sets: GetViaIdentityElasticSan
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: True (ByValue)
 Accept wildcard characters: False
 ```
 
@@ -165,7 +194,7 @@ The name of the Volume.
 
 ```yaml
 Type: System.String
-Parameter Sets: Get
+Parameter Sets: Get, GetViaIdentityElasticSan, GetViaIdentityVolumegroup
 Aliases: VolumeName
 
 Required: True
@@ -206,12 +235,28 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### -VolumegroupInputObject
+Identity Parameter
+To construct, see NOTES section for VOLUMEGROUPINPUTOBJECT properties and create a hash table.
+
+```yaml
+Type: Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Models.IElasticSanIdentity
+Parameter Sets: GetViaIdentityVolumegroup
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: True (ByValue)
+Accept wildcard characters: False
+```
+
 ### -VolumeGroupName
 The name of the VolumeGroup.
 
 ```yaml
 Type: System.String
-Parameter Sets: Get, List
+Parameter Sets: Get, GetViaIdentityElasticSan, List
 Aliases:
 
 Required: True
@@ -230,24 +275,9 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Models.Api20211120Preview.IVolume
+### Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Models.IVolume
 
 ## NOTES
-
-ALIASES
-
-COMPLEX PARAMETER PROPERTIES
-
-To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
-
-
-`INPUTOBJECT <IElasticSanIdentity>`: Identity Parameter
-  - `[ElasticSanName <String>]`: The name of the ElasticSan.
-  - `[Id <String>]`: Resource identity path
-  - `[ResourceGroupName <String>]`: The name of the resource group. The name is case insensitive.
-  - `[SubscriptionId <String>]`: The ID of the target subscription.
-  - `[VolumeGroupName <String>]`: The name of the VolumeGroup.
-  - `[VolumeName <String>]`: The name of the Volume.
 
 ## RELATED LINKS
 

@@ -1,7 +1,7 @@
 ---
 external help file:
 Module Name: Az.ElasticSan
-online version: https://learn.microsoft.com/powershell/module/az.ElasticSan/new-AzElasticSanVirtualNetworkRuleObject
+online version: https://learn.microsoft.com/powershell/module/Az.ElasticSan/new-azelasticsanvirtualnetworkruleobject
 schema: 2.0.0
 ---
 
@@ -13,7 +13,7 @@ Create an in-memory object for VirtualNetworkRule.
 ## SYNTAX
 
 ```
-New-AzElasticSanVirtualNetworkRuleObject -VirtualNetworkResourceId <String> [-Action <Action>]
+New-AzElasticSanVirtualNetworkRuleObject -VirtualNetworkResourceId <String> [-Action <String>]
  [<CommonParameters>]
 ```
 
@@ -41,7 +41,7 @@ This command creates a new virtual network rule object using the virtual network
 The action of virtual network rule.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Support.Action
+Type: System.String
 Parameter Sets: (All)
 Aliases:
 
@@ -74,11 +74,9 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Models.Api20211120Preview.VirtualNetworkRule
+### Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Models.VirtualNetworkRule
 
 ## NOTES
-
-ALIASES
 
 ## RELATED LINKS
 

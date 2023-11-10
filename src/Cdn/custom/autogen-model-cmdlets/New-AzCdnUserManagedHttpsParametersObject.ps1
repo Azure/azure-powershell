@@ -21,12 +21,12 @@ Create an in-memory object for UserManagedHttpsParameters.
 Create an in-memory object for UserManagedHttpsParameters.
 
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20221101Preview.UserManagedHttpsParameters
+Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20230501.UserManagedHttpsParameters
 .Link
 https://learn.microsoft.com/powershell/module/Az.Cdn/new-AzCdnUserManagedHttpsParametersObject
 #>
 function New-AzCdnUserManagedHttpsParametersObject {
-    [OutputType('Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20221101Preview.UserManagedHttpsParameters')]
+    [OutputType('Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20230501.UserManagedHttpsParameters')]
     [CmdletBinding(PositionalBinding=$false)]
     Param(
 
@@ -60,7 +60,7 @@ function New-AzCdnUserManagedHttpsParametersObject {
     )
 
     process {
-        $Object = [Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20221101Preview.UserManagedHttpsParameters]::New()
+        $Object = [Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20230501.UserManagedHttpsParameters]::New()
 
         if ($PSBoundParameters.ContainsKey('CertificateSourceParameterResourceGroupName')) {
             $Object.CertificateSourceParameterResourceGroupName = $CertificateSourceParameterResourceGroupName

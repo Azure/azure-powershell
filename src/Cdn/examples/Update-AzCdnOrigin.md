@@ -25,3 +25,15 @@ origin1 testps-rg-da16jm
 
 Update an AzureCDN origin under the AzureCDN endpoint via identity
 
+### Example 3: Update an AzureCDN origin under the AzureCDN endpoint, disable the origin
+```powershell
+Update-AzCdnOrigin -ResourceGroupName testps-rg-da16jm -ProfileName cdn001 -EndpointName endptest001 -Name origin1 -HttpPort 456 -HttpsPort 789
+```
+
+```output
+Name    ResourceGroupName
+----    -----------------
+origin1 testps-rg-da16jm
+```
+
+Update an AzureCDN origin under the AzureCDN endpoint, disable the origin

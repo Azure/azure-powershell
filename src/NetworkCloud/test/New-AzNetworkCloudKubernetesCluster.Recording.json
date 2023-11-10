@@ -1,0 +1,1108 @@
+{
+  "New-AzNetworkCloudKubernetesCluster+[NoContext]+Create+$PUT+https://management.azure.com/subscriptions/a3eeb848-665a-4dbf-80a4-eb460930fb23/resourceGroups/pstest_rg2rsxo8/providers/Microsoft.NetworkCloud/kubernetesClusters/k8s-cluster-name?api-version=2023-07-01+1": {
+    "Request": {
+      "Method": "PUT",
+      "RequestUri": "https://management.azure.com/subscriptions/a3eeb848-665a-4dbf-80a4-eb460930fb23/resourceGroups/pstest_rg2rsxo8/providers/Microsoft.NetworkCloud/kubernetesClusters/k8s-cluster-name?api-version=2023-07-01",
+      "Content": "{\n  \"tags\": {\n    \"tags\": \"tag1\"\n  },\n  \"location\": \"eastus\",\n  \"extendedLocation\": {\n    \"name\": \"/subscriptions/a3eeb848-665a-4dbf-80a4-eb460930fb23/resourcegroups/dev04-46c383141dc5-hostedresources-2da8791c/providers/microsoft.extendedlocation/customlocations/dev04-46c383141dc5-cstm-loc\",\n    \"type\": \"CustomLocation\"\n  },\n  \"properties\": {\n    \"aadConfiguration\": {\n      \"adminGroupObjectIds\": [ \"598f3796-d0dd-45ec-b0fc-e00731b0283f\" ]\n    },\n    \"administratorConfiguration\": {\n      \"adminUsername\": \"azureuser\",\n      \"sshPublicKeys\": [\n        {\n          \"keyData\": \"ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABgQDMpSVYkRXyN2QXTMFeqgv1vChIVitMeg4W+1BbO46VotFQ3/GESrf8SwMt5+gp8ctYBEFDsnAu8v/VUYszA/jeCdhVOsBbnI6KHLBa8vPcz8b/dlj3q418th3OpPfPQXoW33dnZQ22U1KSjCIu0ZO0bXYd8wm3xwPkTmlSb+h8BcP28BDmtOJ2Oagusr7E23uizheGyh5Nd4tOfkrPworNECYls4S5O32g33oZIcLg96UGQEl+KNPE8hjIOfbigceVze9m1Wip/SMg0yOlttPAXk0CefGF0Q1ZWlIzwbsvshVhfoR4y3bZIwhqTm12TBj17CYIgnCVJmsqRtVG967UiEGseSMqTwLGH30Fr6e47LXzdCo0FDU3tCKlJ4IawL/gYT4OiqSs9Kdpe4GB0C3xEaXsxXZUhU86NacP+XLhUQz1bp4LM800KmDl+gIMuo5X/7q36POvo1h3ZUSfS1UwkHFITSwDlwQmkLE8cPfPML2a9ZMAWSsIjSqCytAzpVE= azureuser@mikepvm\"\n        }\n      ]\n    },\n    \"controlPlaneNodeConfiguration\": {\n      \"count\": 1,\n      \"vmSkuName\": \"NC_G2_v1\"\n    },\n    \"networkConfiguration\": {\n      \"cloudServicesNetworkId\": \"/subscriptions/a3eeb848-665a-4dbf-80a4-eb460930fb23/resourceGroups/dev04-cluster/providers/Microsoft.NetworkCloud/cloudServicesNetworks/wideopen\",\n      \"cniNetworkId\": \"/subscriptions/a3eeb848-665a-4dbf-80a4-eb460930fb23/resourceGroups/dev04-cluster/providers/Microsoft.NetworkCloud/l3Networks/l3network-503\"\n    },\n    \"initialAgentPoolConfigurations\": [\n      {\n        \"count\": 1,\n        \"mode\": \"System\",\n        \"name\": \"agentpool1\",\n        \"vmSkuName\": \"NC_G2_v1\"\n      }\n    ],\n    \"kubernetesVersion\": \"1.24.9\"\n  }\n}",
+      "isContentBase64": false,
+      "Headers": {
+      },
+      "ContentHeaders": {
+        "Content-Type": [ "application/json" ],
+        "Content-Length": [ "1860" ]
+      }
+    },
+    "Response": {
+      "StatusCode": 201,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "ETag": [ "\"0d00a415-0000-0100-0000-64d3cd5d0000\"" ],
+        "x-ms-ratelimit-remaining-subscription-writes": [ "1197" ],
+        "x-ms-providerhub-traffic": [ "True" ],
+        "mise-correlation-id": [ "347520b6-c022-4b19-8a71-dc339195c89d" ],
+        "x-ms-request-id": [ "00000000-0000-0000-0000-000000000000" ],
+        "Azure-AsyncOperation": [ "https://management.azure.com/subscriptions/a3eeb848-665a-4dbf-80a4-eb460930fb23/providers/Microsoft.NetworkCloud/locations/EASTUS/operationStatuses/f52d1a50-922f-40bf-ae04-edf070d8524c*DEA59E20243B8A28D1017369DE9D0F7C271741C1CFBF5B133EE8CB967AA6DBB4?api-version=2023-07-01" ],
+        "x-ms-correlation-request-id": [ "981e9b39-5b5d-4bc6-9eeb-7fde094e38fa" ],
+        "x-ms-routing-request-id": [ "EASTUS:20230809T173109Z:981e9b39-5b5d-4bc6-9eeb-7fde094e38fa" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "Date": [ "Wed, 09 Aug 2023 17:31:09 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "2218" ],
+        "Content-Type": [ "application/json; charset=utf-8" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\"id\":\"/subscriptions/a3eeb848-665a-4dbf-80a4-eb460930fb23/resourceGroups/pstest_rg2rsxo8/providers/Microsoft.NetworkCloud/kubernetesClusters/k8s-cluster-name\",\"name\":\"k8s-cluster-name\",\"type\":\"microsoft.networkcloud/kubernetesclusters\",\"location\":\"eastus\",\"extendedLocation\":{\"name\":\"/subscriptions/a3eeb848-665a-4dbf-80a4-eb460930fb23/resourcegroups/dev04-46c383141dc5-hostedresources-2da8791c/providers/microsoft.extendedlocation/customlocations/dev04-46c383141dc5-cstm-loc\",\"type\":\"CustomLocation\"},\"tags\":{\"tags\":\"tag1\"},\"systemData\":{\"createdBy\":\"REDACTED\",\"createdByType\":\"User\",\"createdAt\":\"2023-08-09T17:31:09.1756977Z\",\"lastModifiedBy\":\"REDACTED\",\"lastModifiedByType\":\"User\",\"lastModifiedAt\":\"2023-08-09T17:31:09.1756977Z\"},\"properties\":{\"aadConfiguration\":{\"adminGroupObjectIds\":[\"598f3796-d0dd-45ec-b0fc-e00731b0283f\"]},\"administratorConfiguration\":{\"adminUsername\":\"azureuser\",\"sshPublicKeys\":[{\"keyData\":\"ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABgQDMpSVYkRXyN2QXTMFeqgv1vChIVitMeg4W+1BbO46VotFQ3/GESrf8SwMt5+gp8ctYBEFDsnAu8v/VUYszA/jeCdhVOsBbnI6KHLBa8vPcz8b/dlj3q418th3OpPfPQXoW33dnZQ22U1KSjCIu0ZO0bXYd8wm3xwPkTmlSb+h8BcP28BDmtOJ2Oagusr7E23uizheGyh5Nd4tOfkrPworNECYls4S5O32g33oZIcLg96UGQEl+KNPE8hjIOfbigceVze9m1Wip/SMg0yOlttPAXk0CefGF0Q1ZWlIzwbsvshVhfoR4y3bZIwhqTm12TBj17CYIgnCVJmsqRtVG967UiEGseSMqTwLGH30Fr6e47LXzdCo0FDU3tCKlJ4IawL/gYT4OiqSs9Kdpe4GB0C3xEaXsxXZUhU86NacP+XLhUQz1bp4LM800KmDl+gIMuo5X/7q36POvo1h3ZUSfS1UwkHFITSwDlwQmkLE8cPfPML2a9ZMAWSsIjSqCytAzpVE= azureuser@mikepvm\"}]},\"controlPlaneNodeConfiguration\":{\"count\":1,\"vmSkuName\":\"NC_G2_v1\"},\"networkConfiguration\":{\"cloudServicesNetworkId\":\"/subscriptions/a3eeb848-665a-4dbf-80a4-eb460930fb23/resourceGroups/dev04-cluster/providers/Microsoft.NetworkCloud/cloudServicesNetworks/wideopen\",\"cniNetworkId\":\"/subscriptions/a3eeb848-665a-4dbf-80a4-eb460930fb23/resourceGroups/dev04-cluster/providers/Microsoft.NetworkCloud/l3Networks/l3network-503\"},\"initialAgentPoolConfigurations\":[{\"count\":1,\"mode\":\"System\",\"name\":\"agentpool1\",\"vmSkuName\":\"NC_G2_v1\"}],\"kubernetesVersion\":\"1.24.9\",\"managedResourceGroupConfiguration\":{\"location\":\"eastus\",\"name\":\"k8s-cluster-name-HostedResources-58162DA1\"},\"provisioningState\":\"Accepted\"}}",
+      "isContentBase64": false
+    }
+  },
+  "New-AzNetworkCloudKubernetesCluster+[NoContext]+Create+$GET+https://management.azure.com/subscriptions/a3eeb848-665a-4dbf-80a4-eb460930fb23/providers/Microsoft.NetworkCloud/locations/EASTUS/operationStatuses/f52d1a50-922f-40bf-ae04-edf070d8524c*DEA59E20243B8A28D1017369DE9D0F7C271741C1CFBF5B133EE8CB967AA6DBB4?api-version=2023-07-01+2": {
+    "Request": {
+      "Method": "GET",
+      "RequestUri": "https://management.azure.com/subscriptions/a3eeb848-665a-4dbf-80a4-eb460930fb23/providers/Microsoft.NetworkCloud/locations/EASTUS/operationStatuses/f52d1a50-922f-40bf-ae04-edf070d8524c*DEA59E20243B8A28D1017369DE9D0F7C271741C1CFBF5B133EE8CB967AA6DBB4?api-version=2023-07-01",
+      "Content": null,
+      "isContentBase64": false,
+      "Headers": {
+        "Authorization": [ "[Filtered]" ],
+        "x-ms-unique-id": [ "3" ],
+        "x-ms-client-request-id": [ "aa07acca-38a4-42d9-9277-1833679be7e2" ],
+        "CommandName": [ "New-AzNetworkCloudKubernetesCluster" ],
+        "FullCommandName": [ "New-AzNetworkCloudKubernetesCluster_Create" ],
+        "ParameterSetName": [ "__AllParameterSets" ],
+        "User-Agent": [ "AzurePowershell/v0.0.0", "PSVersion/v7.3.4", "Az.NetworkCloud/0.1.0" ]
+      },
+      "ContentHeaders": {
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "ETag": [ "\"0800180c-0000-0100-0000-64d3cd5d0000\"" ],
+        "x-ms-ratelimit-remaining-subscription-reads": [ "11996" ],
+        "x-ms-request-id": [ "aa394ffa-4d9e-4a41-82cc-8e4d905e0705" ],
+        "x-ms-correlation-request-id": [ "04d35bc1-3e38-4692-87a2-2ea2e2c62e5c" ],
+        "x-ms-routing-request-id": [ "EASTUS:20230809T173139Z:04d35bc1-3e38-4692-87a2-2ea2e2c62e5c" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "Date": [ "Wed, 09 Aug 2023 17:31:39 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "571" ],
+        "Content-Type": [ "application/json; charset=utf-8" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\"id\":\"/subscriptions/a3eeb848-665a-4dbf-80a4-eb460930fb23/providers/Microsoft.NetworkCloud/locations/EASTUS/operationStatuses/f52d1a50-922f-40bf-ae04-edf070d8524c*DEA59E20243B8A28D1017369DE9D0F7C271741C1CFBF5B133EE8CB967AA6DBB4\",\"name\":\"f52d1a50-922f-40bf-ae04-edf070d8524c*DEA59E20243B8A28D1017369DE9D0F7C271741C1CFBF5B133EE8CB967AA6DBB4\",\"resourceId\":\"/subscriptions/a3eeb848-665a-4dbf-80a4-eb460930fb23/resourceGroups/pstest_rg2rsxo8/providers/Microsoft.NetworkCloud/kubernetesClusters/k8s-cluster-name\",\"status\":\"Accepted\",\"startTime\":\"2023-08-09T17:31:09.2572325Z\"}",
+      "isContentBase64": false
+    }
+  },
+  "New-AzNetworkCloudKubernetesCluster+[NoContext]+Create+$GET+https://management.azure.com/subscriptions/a3eeb848-665a-4dbf-80a4-eb460930fb23/providers/Microsoft.NetworkCloud/locations/EASTUS/operationStatuses/f52d1a50-922f-40bf-ae04-edf070d8524c*DEA59E20243B8A28D1017369DE9D0F7C271741C1CFBF5B133EE8CB967AA6DBB4?api-version=2023-07-01+3": {
+    "Request": {
+      "Method": "GET",
+      "RequestUri": "https://management.azure.com/subscriptions/a3eeb848-665a-4dbf-80a4-eb460930fb23/providers/Microsoft.NetworkCloud/locations/EASTUS/operationStatuses/f52d1a50-922f-40bf-ae04-edf070d8524c*DEA59E20243B8A28D1017369DE9D0F7C271741C1CFBF5B133EE8CB967AA6DBB4?api-version=2023-07-01",
+      "Content": null,
+      "isContentBase64": false,
+      "Headers": {
+        "Authorization": [ "[Filtered]" ],
+        "x-ms-unique-id": [ "4" ],
+        "x-ms-client-request-id": [ "aa07acca-38a4-42d9-9277-1833679be7e2" ],
+        "CommandName": [ "New-AzNetworkCloudKubernetesCluster" ],
+        "FullCommandName": [ "New-AzNetworkCloudKubernetesCluster_Create" ],
+        "ParameterSetName": [ "__AllParameterSets" ],
+        "User-Agent": [ "AzurePowershell/v0.0.0", "PSVersion/v7.3.4", "Az.NetworkCloud/0.1.0" ]
+      },
+      "ContentHeaders": {
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "ETag": [ "\"0800180c-0000-0100-0000-64d3cd5d0000\"" ],
+        "x-ms-ratelimit-remaining-subscription-reads": [ "11995" ],
+        "x-ms-request-id": [ "67cf4b13-a0fb-4377-8ca9-590c77aa1208" ],
+        "x-ms-correlation-request-id": [ "4c8f92dd-44d6-418c-8b5c-f718bfa14da6" ],
+        "x-ms-routing-request-id": [ "EASTUS:20230809T173209Z:4c8f92dd-44d6-418c-8b5c-f718bfa14da6" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "Date": [ "Wed, 09 Aug 2023 17:32:09 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "571" ],
+        "Content-Type": [ "application/json; charset=utf-8" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\"id\":\"/subscriptions/a3eeb848-665a-4dbf-80a4-eb460930fb23/providers/Microsoft.NetworkCloud/locations/EASTUS/operationStatuses/f52d1a50-922f-40bf-ae04-edf070d8524c*DEA59E20243B8A28D1017369DE9D0F7C271741C1CFBF5B133EE8CB967AA6DBB4\",\"name\":\"f52d1a50-922f-40bf-ae04-edf070d8524c*DEA59E20243B8A28D1017369DE9D0F7C271741C1CFBF5B133EE8CB967AA6DBB4\",\"resourceId\":\"/subscriptions/a3eeb848-665a-4dbf-80a4-eb460930fb23/resourceGroups/pstest_rg2rsxo8/providers/Microsoft.NetworkCloud/kubernetesClusters/k8s-cluster-name\",\"status\":\"Accepted\",\"startTime\":\"2023-08-09T17:31:09.2572325Z\"}",
+      "isContentBase64": false
+    }
+  },
+  "New-AzNetworkCloudKubernetesCluster+[NoContext]+Create+$GET+https://management.azure.com/subscriptions/a3eeb848-665a-4dbf-80a4-eb460930fb23/providers/Microsoft.NetworkCloud/locations/EASTUS/operationStatuses/f52d1a50-922f-40bf-ae04-edf070d8524c*DEA59E20243B8A28D1017369DE9D0F7C271741C1CFBF5B133EE8CB967AA6DBB4?api-version=2023-07-01+4": {
+    "Request": {
+      "Method": "GET",
+      "RequestUri": "https://management.azure.com/subscriptions/a3eeb848-665a-4dbf-80a4-eb460930fb23/providers/Microsoft.NetworkCloud/locations/EASTUS/operationStatuses/f52d1a50-922f-40bf-ae04-edf070d8524c*DEA59E20243B8A28D1017369DE9D0F7C271741C1CFBF5B133EE8CB967AA6DBB4?api-version=2023-07-01",
+      "Content": null,
+      "isContentBase64": false,
+      "Headers": {
+        "Authorization": [ "[Filtered]" ],
+        "x-ms-unique-id": [ "5" ],
+        "x-ms-client-request-id": [ "aa07acca-38a4-42d9-9277-1833679be7e2" ],
+        "CommandName": [ "New-AzNetworkCloudKubernetesCluster" ],
+        "FullCommandName": [ "New-AzNetworkCloudKubernetesCluster_Create" ],
+        "ParameterSetName": [ "__AllParameterSets" ],
+        "User-Agent": [ "AzurePowershell/v0.0.0", "PSVersion/v7.3.4", "Az.NetworkCloud/0.1.0" ]
+      },
+      "ContentHeaders": {
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "ETag": [ "\"0800180c-0000-0100-0000-64d3cd5d0000\"" ],
+        "x-ms-ratelimit-remaining-subscription-reads": [ "11994" ],
+        "x-ms-request-id": [ "51452e3f-ff69-4fc1-8de1-aa015df5e590" ],
+        "x-ms-correlation-request-id": [ "c272ef06-6099-4988-8538-1bad22cec306" ],
+        "x-ms-routing-request-id": [ "EASTUS:20230809T173239Z:c272ef06-6099-4988-8538-1bad22cec306" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "Date": [ "Wed, 09 Aug 2023 17:32:39 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "571" ],
+        "Content-Type": [ "application/json; charset=utf-8" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\"id\":\"/subscriptions/a3eeb848-665a-4dbf-80a4-eb460930fb23/providers/Microsoft.NetworkCloud/locations/EASTUS/operationStatuses/f52d1a50-922f-40bf-ae04-edf070d8524c*DEA59E20243B8A28D1017369DE9D0F7C271741C1CFBF5B133EE8CB967AA6DBB4\",\"name\":\"f52d1a50-922f-40bf-ae04-edf070d8524c*DEA59E20243B8A28D1017369DE9D0F7C271741C1CFBF5B133EE8CB967AA6DBB4\",\"resourceId\":\"/subscriptions/a3eeb848-665a-4dbf-80a4-eb460930fb23/resourceGroups/pstest_rg2rsxo8/providers/Microsoft.NetworkCloud/kubernetesClusters/k8s-cluster-name\",\"status\":\"Accepted\",\"startTime\":\"2023-08-09T17:31:09.2572325Z\"}",
+      "isContentBase64": false
+    }
+  },
+  "New-AzNetworkCloudKubernetesCluster+[NoContext]+Create+$GET+https://management.azure.com/subscriptions/a3eeb848-665a-4dbf-80a4-eb460930fb23/providers/Microsoft.NetworkCloud/locations/EASTUS/operationStatuses/f52d1a50-922f-40bf-ae04-edf070d8524c*DEA59E20243B8A28D1017369DE9D0F7C271741C1CFBF5B133EE8CB967AA6DBB4?api-version=2023-07-01+5": {
+    "Request": {
+      "Method": "GET",
+      "RequestUri": "https://management.azure.com/subscriptions/a3eeb848-665a-4dbf-80a4-eb460930fb23/providers/Microsoft.NetworkCloud/locations/EASTUS/operationStatuses/f52d1a50-922f-40bf-ae04-edf070d8524c*DEA59E20243B8A28D1017369DE9D0F7C271741C1CFBF5B133EE8CB967AA6DBB4?api-version=2023-07-01",
+      "Content": null,
+      "isContentBase64": false,
+      "Headers": {
+        "Authorization": [ "[Filtered]" ],
+        "x-ms-unique-id": [ "6" ],
+        "x-ms-client-request-id": [ "aa07acca-38a4-42d9-9277-1833679be7e2" ],
+        "CommandName": [ "New-AzNetworkCloudKubernetesCluster" ],
+        "FullCommandName": [ "New-AzNetworkCloudKubernetesCluster_Create" ],
+        "ParameterSetName": [ "__AllParameterSets" ],
+        "User-Agent": [ "AzurePowershell/v0.0.0", "PSVersion/v7.3.4", "Az.NetworkCloud/0.1.0" ]
+      },
+      "ContentHeaders": {
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "ETag": [ "\"0800180c-0000-0100-0000-64d3cd5d0000\"" ],
+        "x-ms-ratelimit-remaining-subscription-reads": [ "11993" ],
+        "x-ms-request-id": [ "7d1a2a14-e56b-4668-9f71-92f09a4b8038" ],
+        "x-ms-correlation-request-id": [ "6edf23ca-9a8d-47fc-976b-5bd2152d147f" ],
+        "x-ms-routing-request-id": [ "EASTUS:20230809T173309Z:6edf23ca-9a8d-47fc-976b-5bd2152d147f" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "Date": [ "Wed, 09 Aug 2023 17:33:08 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "571" ],
+        "Content-Type": [ "application/json; charset=utf-8" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\"id\":\"/subscriptions/a3eeb848-665a-4dbf-80a4-eb460930fb23/providers/Microsoft.NetworkCloud/locations/EASTUS/operationStatuses/f52d1a50-922f-40bf-ae04-edf070d8524c*DEA59E20243B8A28D1017369DE9D0F7C271741C1CFBF5B133EE8CB967AA6DBB4\",\"name\":\"f52d1a50-922f-40bf-ae04-edf070d8524c*DEA59E20243B8A28D1017369DE9D0F7C271741C1CFBF5B133EE8CB967AA6DBB4\",\"resourceId\":\"/subscriptions/a3eeb848-665a-4dbf-80a4-eb460930fb23/resourceGroups/pstest_rg2rsxo8/providers/Microsoft.NetworkCloud/kubernetesClusters/k8s-cluster-name\",\"status\":\"Accepted\",\"startTime\":\"2023-08-09T17:31:09.2572325Z\"}",
+      "isContentBase64": false
+    }
+  },
+  "New-AzNetworkCloudKubernetesCluster+[NoContext]+Create+$GET+https://management.azure.com/subscriptions/a3eeb848-665a-4dbf-80a4-eb460930fb23/providers/Microsoft.NetworkCloud/locations/EASTUS/operationStatuses/f52d1a50-922f-40bf-ae04-edf070d8524c*DEA59E20243B8A28D1017369DE9D0F7C271741C1CFBF5B133EE8CB967AA6DBB4?api-version=2023-07-01+6": {
+    "Request": {
+      "Method": "GET",
+      "RequestUri": "https://management.azure.com/subscriptions/a3eeb848-665a-4dbf-80a4-eb460930fb23/providers/Microsoft.NetworkCloud/locations/EASTUS/operationStatuses/f52d1a50-922f-40bf-ae04-edf070d8524c*DEA59E20243B8A28D1017369DE9D0F7C271741C1CFBF5B133EE8CB967AA6DBB4?api-version=2023-07-01",
+      "Content": null,
+      "isContentBase64": false,
+      "Headers": {
+        "Authorization": [ "[Filtered]" ],
+        "x-ms-unique-id": [ "7" ],
+        "x-ms-client-request-id": [ "aa07acca-38a4-42d9-9277-1833679be7e2" ],
+        "CommandName": [ "New-AzNetworkCloudKubernetesCluster" ],
+        "FullCommandName": [ "New-AzNetworkCloudKubernetesCluster_Create" ],
+        "ParameterSetName": [ "__AllParameterSets" ],
+        "User-Agent": [ "AzurePowershell/v0.0.0", "PSVersion/v7.3.4", "Az.NetworkCloud/0.1.0" ]
+      },
+      "ContentHeaders": {
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "ETag": [ "\"0800180c-0000-0100-0000-64d3cd5d0000\"" ],
+        "x-ms-ratelimit-remaining-subscription-reads": [ "11992" ],
+        "x-ms-routing-request-id": [ "EASTUS:20230809T173339Z:32168a24-3765-4bb1-84b1-2ad2e7d1d8c0" ],
+        "x-ms-request-id": [ "b3ac7f6f-cfbe-4b19-94da-c801ec29f9cd" ],
+        "x-ms-correlation-request-id": [ "32168a24-3765-4bb1-84b1-2ad2e7d1d8c0" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "Date": [ "Wed, 09 Aug 2023 17:33:39 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "571" ],
+        "Content-Type": [ "application/json; charset=utf-8" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\"id\":\"/subscriptions/a3eeb848-665a-4dbf-80a4-eb460930fb23/providers/Microsoft.NetworkCloud/locations/EASTUS/operationStatuses/f52d1a50-922f-40bf-ae04-edf070d8524c*DEA59E20243B8A28D1017369DE9D0F7C271741C1CFBF5B133EE8CB967AA6DBB4\",\"name\":\"f52d1a50-922f-40bf-ae04-edf070d8524c*DEA59E20243B8A28D1017369DE9D0F7C271741C1CFBF5B133EE8CB967AA6DBB4\",\"resourceId\":\"/subscriptions/a3eeb848-665a-4dbf-80a4-eb460930fb23/resourceGroups/pstest_rg2rsxo8/providers/Microsoft.NetworkCloud/kubernetesClusters/k8s-cluster-name\",\"status\":\"Accepted\",\"startTime\":\"2023-08-09T17:31:09.2572325Z\"}",
+      "isContentBase64": false
+    }
+  },
+  "New-AzNetworkCloudKubernetesCluster+[NoContext]+Create+$GET+https://management.azure.com/subscriptions/a3eeb848-665a-4dbf-80a4-eb460930fb23/providers/Microsoft.NetworkCloud/locations/EASTUS/operationStatuses/f52d1a50-922f-40bf-ae04-edf070d8524c*DEA59E20243B8A28D1017369DE9D0F7C271741C1CFBF5B133EE8CB967AA6DBB4?api-version=2023-07-01+7": {
+    "Request": {
+      "Method": "GET",
+      "RequestUri": "https://management.azure.com/subscriptions/a3eeb848-665a-4dbf-80a4-eb460930fb23/providers/Microsoft.NetworkCloud/locations/EASTUS/operationStatuses/f52d1a50-922f-40bf-ae04-edf070d8524c*DEA59E20243B8A28D1017369DE9D0F7C271741C1CFBF5B133EE8CB967AA6DBB4?api-version=2023-07-01",
+      "Content": null,
+      "isContentBase64": false,
+      "Headers": {
+        "Authorization": [ "[Filtered]" ],
+        "x-ms-unique-id": [ "8" ],
+        "x-ms-client-request-id": [ "aa07acca-38a4-42d9-9277-1833679be7e2" ],
+        "CommandName": [ "New-AzNetworkCloudKubernetesCluster" ],
+        "FullCommandName": [ "New-AzNetworkCloudKubernetesCluster_Create" ],
+        "ParameterSetName": [ "__AllParameterSets" ],
+        "User-Agent": [ "AzurePowershell/v0.0.0", "PSVersion/v7.3.4", "Az.NetworkCloud/0.1.0" ]
+      },
+      "ContentHeaders": {
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "ETag": [ "\"0800180c-0000-0100-0000-64d3cd5d0000\"" ],
+        "x-ms-ratelimit-remaining-subscription-reads": [ "11991" ],
+        "x-ms-request-id": [ "8faa356c-2ac7-4041-afdb-4bde06ddd5b6" ],
+        "x-ms-correlation-request-id": [ "f8790f42-0d3b-4665-967a-aae123ec581d" ],
+        "x-ms-routing-request-id": [ "EASTUS:20230809T173409Z:f8790f42-0d3b-4665-967a-aae123ec581d" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "Date": [ "Wed, 09 Aug 2023 17:34:09 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "571" ],
+        "Content-Type": [ "application/json; charset=utf-8" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\"id\":\"/subscriptions/a3eeb848-665a-4dbf-80a4-eb460930fb23/providers/Microsoft.NetworkCloud/locations/EASTUS/operationStatuses/f52d1a50-922f-40bf-ae04-edf070d8524c*DEA59E20243B8A28D1017369DE9D0F7C271741C1CFBF5B133EE8CB967AA6DBB4\",\"name\":\"f52d1a50-922f-40bf-ae04-edf070d8524c*DEA59E20243B8A28D1017369DE9D0F7C271741C1CFBF5B133EE8CB967AA6DBB4\",\"resourceId\":\"/subscriptions/a3eeb848-665a-4dbf-80a4-eb460930fb23/resourceGroups/pstest_rg2rsxo8/providers/Microsoft.NetworkCloud/kubernetesClusters/k8s-cluster-name\",\"status\":\"Accepted\",\"startTime\":\"2023-08-09T17:31:09.2572325Z\"}",
+      "isContentBase64": false
+    }
+  },
+  "New-AzNetworkCloudKubernetesCluster+[NoContext]+Create+$GET+https://management.azure.com/subscriptions/a3eeb848-665a-4dbf-80a4-eb460930fb23/providers/Microsoft.NetworkCloud/locations/EASTUS/operationStatuses/f52d1a50-922f-40bf-ae04-edf070d8524c*DEA59E20243B8A28D1017369DE9D0F7C271741C1CFBF5B133EE8CB967AA6DBB4?api-version=2023-07-01+8": {
+    "Request": {
+      "Method": "GET",
+      "RequestUri": "https://management.azure.com/subscriptions/a3eeb848-665a-4dbf-80a4-eb460930fb23/providers/Microsoft.NetworkCloud/locations/EASTUS/operationStatuses/f52d1a50-922f-40bf-ae04-edf070d8524c*DEA59E20243B8A28D1017369DE9D0F7C271741C1CFBF5B133EE8CB967AA6DBB4?api-version=2023-07-01",
+      "Content": null,
+      "isContentBase64": false,
+      "Headers": {
+        "Authorization": [ "[Filtered]" ],
+        "x-ms-unique-id": [ "9" ],
+        "x-ms-client-request-id": [ "aa07acca-38a4-42d9-9277-1833679be7e2" ],
+        "CommandName": [ "New-AzNetworkCloudKubernetesCluster" ],
+        "FullCommandName": [ "New-AzNetworkCloudKubernetesCluster_Create" ],
+        "ParameterSetName": [ "__AllParameterSets" ],
+        "User-Agent": [ "AzurePowershell/v0.0.0", "PSVersion/v7.3.4", "Az.NetworkCloud/0.1.0" ]
+      },
+      "ContentHeaders": {
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "ETag": [ "\"0800180c-0000-0100-0000-64d3cd5d0000\"" ],
+        "x-ms-ratelimit-remaining-subscription-reads": [ "11990" ],
+        "x-ms-request-id": [ "3a3526ea-c2c7-4f63-8238-6e09e88e4be3" ],
+        "x-ms-correlation-request-id": [ "bd9242df-5977-4fc4-8617-23192661a858" ],
+        "x-ms-routing-request-id": [ "EASTUS:20230809T173439Z:bd9242df-5977-4fc4-8617-23192661a858" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "Date": [ "Wed, 09 Aug 2023 17:34:39 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "571" ],
+        "Content-Type": [ "application/json; charset=utf-8" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\"id\":\"/subscriptions/a3eeb848-665a-4dbf-80a4-eb460930fb23/providers/Microsoft.NetworkCloud/locations/EASTUS/operationStatuses/f52d1a50-922f-40bf-ae04-edf070d8524c*DEA59E20243B8A28D1017369DE9D0F7C271741C1CFBF5B133EE8CB967AA6DBB4\",\"name\":\"f52d1a50-922f-40bf-ae04-edf070d8524c*DEA59E20243B8A28D1017369DE9D0F7C271741C1CFBF5B133EE8CB967AA6DBB4\",\"resourceId\":\"/subscriptions/a3eeb848-665a-4dbf-80a4-eb460930fb23/resourceGroups/pstest_rg2rsxo8/providers/Microsoft.NetworkCloud/kubernetesClusters/k8s-cluster-name\",\"status\":\"Accepted\",\"startTime\":\"2023-08-09T17:31:09.2572325Z\"}",
+      "isContentBase64": false
+    }
+  },
+  "New-AzNetworkCloudKubernetesCluster+[NoContext]+Create+$GET+https://management.azure.com/subscriptions/a3eeb848-665a-4dbf-80a4-eb460930fb23/providers/Microsoft.NetworkCloud/locations/EASTUS/operationStatuses/f52d1a50-922f-40bf-ae04-edf070d8524c*DEA59E20243B8A28D1017369DE9D0F7C271741C1CFBF5B133EE8CB967AA6DBB4?api-version=2023-07-01+9": {
+    "Request": {
+      "Method": "GET",
+      "RequestUri": "https://management.azure.com/subscriptions/a3eeb848-665a-4dbf-80a4-eb460930fb23/providers/Microsoft.NetworkCloud/locations/EASTUS/operationStatuses/f52d1a50-922f-40bf-ae04-edf070d8524c*DEA59E20243B8A28D1017369DE9D0F7C271741C1CFBF5B133EE8CB967AA6DBB4?api-version=2023-07-01",
+      "Content": null,
+      "isContentBase64": false,
+      "Headers": {
+        "Authorization": [ "[Filtered]" ],
+        "x-ms-unique-id": [ "10" ],
+        "x-ms-client-request-id": [ "aa07acca-38a4-42d9-9277-1833679be7e2" ],
+        "CommandName": [ "New-AzNetworkCloudKubernetesCluster" ],
+        "FullCommandName": [ "New-AzNetworkCloudKubernetesCluster_Create" ],
+        "ParameterSetName": [ "__AllParameterSets" ],
+        "User-Agent": [ "AzurePowershell/v0.0.0", "PSVersion/v7.3.4", "Az.NetworkCloud/0.1.0" ]
+      },
+      "ContentHeaders": {
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "ETag": [ "\"0800180c-0000-0100-0000-64d3cd5d0000\"" ],
+        "x-ms-ratelimit-remaining-subscription-reads": [ "11989" ],
+        "x-ms-request-id": [ "767ba340-fb4d-428d-a5d2-ac6401ddffae" ],
+        "x-ms-correlation-request-id": [ "b40903b9-037e-4830-906a-77b7ede29075" ],
+        "x-ms-routing-request-id": [ "EASTUS:20230809T173509Z:b40903b9-037e-4830-906a-77b7ede29075" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "Date": [ "Wed, 09 Aug 2023 17:35:09 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "571" ],
+        "Content-Type": [ "application/json; charset=utf-8" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\"id\":\"/subscriptions/a3eeb848-665a-4dbf-80a4-eb460930fb23/providers/Microsoft.NetworkCloud/locations/EASTUS/operationStatuses/f52d1a50-922f-40bf-ae04-edf070d8524c*DEA59E20243B8A28D1017369DE9D0F7C271741C1CFBF5B133EE8CB967AA6DBB4\",\"name\":\"f52d1a50-922f-40bf-ae04-edf070d8524c*DEA59E20243B8A28D1017369DE9D0F7C271741C1CFBF5B133EE8CB967AA6DBB4\",\"resourceId\":\"/subscriptions/a3eeb848-665a-4dbf-80a4-eb460930fb23/resourceGroups/pstest_rg2rsxo8/providers/Microsoft.NetworkCloud/kubernetesClusters/k8s-cluster-name\",\"status\":\"Accepted\",\"startTime\":\"2023-08-09T17:31:09.2572325Z\"}",
+      "isContentBase64": false
+    }
+  },
+  "New-AzNetworkCloudKubernetesCluster+[NoContext]+Create+$GET+https://management.azure.com/subscriptions/a3eeb848-665a-4dbf-80a4-eb460930fb23/providers/Microsoft.NetworkCloud/locations/EASTUS/operationStatuses/f52d1a50-922f-40bf-ae04-edf070d8524c*DEA59E20243B8A28D1017369DE9D0F7C271741C1CFBF5B133EE8CB967AA6DBB4?api-version=2023-07-01+10": {
+    "Request": {
+      "Method": "GET",
+      "RequestUri": "https://management.azure.com/subscriptions/a3eeb848-665a-4dbf-80a4-eb460930fb23/providers/Microsoft.NetworkCloud/locations/EASTUS/operationStatuses/f52d1a50-922f-40bf-ae04-edf070d8524c*DEA59E20243B8A28D1017369DE9D0F7C271741C1CFBF5B133EE8CB967AA6DBB4?api-version=2023-07-01",
+      "Content": null,
+      "isContentBase64": false,
+      "Headers": {
+        "Authorization": [ "[Filtered]" ],
+        "x-ms-unique-id": [ "11" ],
+        "x-ms-client-request-id": [ "aa07acca-38a4-42d9-9277-1833679be7e2" ],
+        "CommandName": [ "New-AzNetworkCloudKubernetesCluster" ],
+        "FullCommandName": [ "New-AzNetworkCloudKubernetesCluster_Create" ],
+        "ParameterSetName": [ "__AllParameterSets" ],
+        "User-Agent": [ "AzurePowershell/v0.0.0", "PSVersion/v7.3.4", "Az.NetworkCloud/0.1.0" ]
+      },
+      "ContentHeaders": {
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "ETag": [ "\"0800180c-0000-0100-0000-64d3cd5d0000\"" ],
+        "x-ms-ratelimit-remaining-subscription-reads": [ "11988" ],
+        "x-ms-request-id": [ "b86f8a29-76a2-4117-8ce5-a55c9d8d6401" ],
+        "x-ms-correlation-request-id": [ "98937211-e817-4335-9db6-b3586af5445b" ],
+        "x-ms-routing-request-id": [ "EASTUS:20230809T173539Z:98937211-e817-4335-9db6-b3586af5445b" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "Date": [ "Wed, 09 Aug 2023 17:35:39 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "571" ],
+        "Content-Type": [ "application/json; charset=utf-8" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\"id\":\"/subscriptions/a3eeb848-665a-4dbf-80a4-eb460930fb23/providers/Microsoft.NetworkCloud/locations/EASTUS/operationStatuses/f52d1a50-922f-40bf-ae04-edf070d8524c*DEA59E20243B8A28D1017369DE9D0F7C271741C1CFBF5B133EE8CB967AA6DBB4\",\"name\":\"f52d1a50-922f-40bf-ae04-edf070d8524c*DEA59E20243B8A28D1017369DE9D0F7C271741C1CFBF5B133EE8CB967AA6DBB4\",\"resourceId\":\"/subscriptions/a3eeb848-665a-4dbf-80a4-eb460930fb23/resourceGroups/pstest_rg2rsxo8/providers/Microsoft.NetworkCloud/kubernetesClusters/k8s-cluster-name\",\"status\":\"Accepted\",\"startTime\":\"2023-08-09T17:31:09.2572325Z\"}",
+      "isContentBase64": false
+    }
+  },
+  "New-AzNetworkCloudKubernetesCluster+[NoContext]+Create+$GET+https://management.azure.com/subscriptions/a3eeb848-665a-4dbf-80a4-eb460930fb23/providers/Microsoft.NetworkCloud/locations/EASTUS/operationStatuses/f52d1a50-922f-40bf-ae04-edf070d8524c*DEA59E20243B8A28D1017369DE9D0F7C271741C1CFBF5B133EE8CB967AA6DBB4?api-version=2023-07-01+11": {
+    "Request": {
+      "Method": "GET",
+      "RequestUri": "https://management.azure.com/subscriptions/a3eeb848-665a-4dbf-80a4-eb460930fb23/providers/Microsoft.NetworkCloud/locations/EASTUS/operationStatuses/f52d1a50-922f-40bf-ae04-edf070d8524c*DEA59E20243B8A28D1017369DE9D0F7C271741C1CFBF5B133EE8CB967AA6DBB4?api-version=2023-07-01",
+      "Content": null,
+      "isContentBase64": false,
+      "Headers": {
+        "Authorization": [ "[Filtered]" ],
+        "x-ms-unique-id": [ "12" ],
+        "x-ms-client-request-id": [ "aa07acca-38a4-42d9-9277-1833679be7e2" ],
+        "CommandName": [ "New-AzNetworkCloudKubernetesCluster" ],
+        "FullCommandName": [ "New-AzNetworkCloudKubernetesCluster_Create" ],
+        "ParameterSetName": [ "__AllParameterSets" ],
+        "User-Agent": [ "AzurePowershell/v0.0.0", "PSVersion/v7.3.4", "Az.NetworkCloud/0.1.0" ]
+      },
+      "ContentHeaders": {
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "ETag": [ "\"0800180c-0000-0100-0000-64d3cd5d0000\"" ],
+        "x-ms-ratelimit-remaining-subscription-reads": [ "11987" ],
+        "x-ms-request-id": [ "2a120d2a-39dd-4b77-ae66-90881664b5c9" ],
+        "x-ms-correlation-request-id": [ "7dd8d039-a571-40ee-a5f0-4e241be1cf6e" ],
+        "x-ms-routing-request-id": [ "EASTUS:20230809T173609Z:7dd8d039-a571-40ee-a5f0-4e241be1cf6e" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "Date": [ "Wed, 09 Aug 2023 17:36:09 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "571" ],
+        "Content-Type": [ "application/json; charset=utf-8" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\"id\":\"/subscriptions/a3eeb848-665a-4dbf-80a4-eb460930fb23/providers/Microsoft.NetworkCloud/locations/EASTUS/operationStatuses/f52d1a50-922f-40bf-ae04-edf070d8524c*DEA59E20243B8A28D1017369DE9D0F7C271741C1CFBF5B133EE8CB967AA6DBB4\",\"name\":\"f52d1a50-922f-40bf-ae04-edf070d8524c*DEA59E20243B8A28D1017369DE9D0F7C271741C1CFBF5B133EE8CB967AA6DBB4\",\"resourceId\":\"/subscriptions/a3eeb848-665a-4dbf-80a4-eb460930fb23/resourceGroups/pstest_rg2rsxo8/providers/Microsoft.NetworkCloud/kubernetesClusters/k8s-cluster-name\",\"status\":\"Accepted\",\"startTime\":\"2023-08-09T17:31:09.2572325Z\"}",
+      "isContentBase64": false
+    }
+  },
+  "New-AzNetworkCloudKubernetesCluster+[NoContext]+Create+$GET+https://management.azure.com/subscriptions/a3eeb848-665a-4dbf-80a4-eb460930fb23/providers/Microsoft.NetworkCloud/locations/EASTUS/operationStatuses/f52d1a50-922f-40bf-ae04-edf070d8524c*DEA59E20243B8A28D1017369DE9D0F7C271741C1CFBF5B133EE8CB967AA6DBB4?api-version=2023-07-01+12": {
+    "Request": {
+      "Method": "GET",
+      "RequestUri": "https://management.azure.com/subscriptions/a3eeb848-665a-4dbf-80a4-eb460930fb23/providers/Microsoft.NetworkCloud/locations/EASTUS/operationStatuses/f52d1a50-922f-40bf-ae04-edf070d8524c*DEA59E20243B8A28D1017369DE9D0F7C271741C1CFBF5B133EE8CB967AA6DBB4?api-version=2023-07-01",
+      "Content": null,
+      "isContentBase64": false,
+      "Headers": {
+        "Authorization": [ "[Filtered]" ],
+        "x-ms-unique-id": [ "13" ],
+        "x-ms-client-request-id": [ "aa07acca-38a4-42d9-9277-1833679be7e2" ],
+        "CommandName": [ "New-AzNetworkCloudKubernetesCluster" ],
+        "FullCommandName": [ "New-AzNetworkCloudKubernetesCluster_Create" ],
+        "ParameterSetName": [ "__AllParameterSets" ],
+        "User-Agent": [ "AzurePowershell/v0.0.0", "PSVersion/v7.3.4", "Az.NetworkCloud/0.1.0" ]
+      },
+      "ContentHeaders": {
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "ETag": [ "\"0800180c-0000-0100-0000-64d3cd5d0000\"" ],
+        "x-ms-ratelimit-remaining-subscription-reads": [ "11986" ],
+        "x-ms-request-id": [ "9ad1f33c-5ffa-4199-8443-321a92446fcb" ],
+        "x-ms-correlation-request-id": [ "0158ebf9-4ffb-45f2-87c9-7cc412448493" ],
+        "x-ms-routing-request-id": [ "EASTUS:20230809T173640Z:0158ebf9-4ffb-45f2-87c9-7cc412448493" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "Date": [ "Wed, 09 Aug 2023 17:36:39 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "571" ],
+        "Content-Type": [ "application/json; charset=utf-8" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\"id\":\"/subscriptions/a3eeb848-665a-4dbf-80a4-eb460930fb23/providers/Microsoft.NetworkCloud/locations/EASTUS/operationStatuses/f52d1a50-922f-40bf-ae04-edf070d8524c*DEA59E20243B8A28D1017369DE9D0F7C271741C1CFBF5B133EE8CB967AA6DBB4\",\"name\":\"f52d1a50-922f-40bf-ae04-edf070d8524c*DEA59E20243B8A28D1017369DE9D0F7C271741C1CFBF5B133EE8CB967AA6DBB4\",\"resourceId\":\"/subscriptions/a3eeb848-665a-4dbf-80a4-eb460930fb23/resourceGroups/pstest_rg2rsxo8/providers/Microsoft.NetworkCloud/kubernetesClusters/k8s-cluster-name\",\"status\":\"Accepted\",\"startTime\":\"2023-08-09T17:31:09.2572325Z\"}",
+      "isContentBase64": false
+    }
+  },
+  "New-AzNetworkCloudKubernetesCluster+[NoContext]+Create+$GET+https://management.azure.com/subscriptions/a3eeb848-665a-4dbf-80a4-eb460930fb23/providers/Microsoft.NetworkCloud/locations/EASTUS/operationStatuses/f52d1a50-922f-40bf-ae04-edf070d8524c*DEA59E20243B8A28D1017369DE9D0F7C271741C1CFBF5B133EE8CB967AA6DBB4?api-version=2023-07-01+13": {
+    "Request": {
+      "Method": "GET",
+      "RequestUri": "https://management.azure.com/subscriptions/a3eeb848-665a-4dbf-80a4-eb460930fb23/providers/Microsoft.NetworkCloud/locations/EASTUS/operationStatuses/f52d1a50-922f-40bf-ae04-edf070d8524c*DEA59E20243B8A28D1017369DE9D0F7C271741C1CFBF5B133EE8CB967AA6DBB4?api-version=2023-07-01",
+      "Content": null,
+      "isContentBase64": false,
+      "Headers": {
+        "Authorization": [ "[Filtered]" ],
+        "x-ms-unique-id": [ "14" ],
+        "x-ms-client-request-id": [ "aa07acca-38a4-42d9-9277-1833679be7e2" ],
+        "CommandName": [ "New-AzNetworkCloudKubernetesCluster" ],
+        "FullCommandName": [ "New-AzNetworkCloudKubernetesCluster_Create" ],
+        "ParameterSetName": [ "__AllParameterSets" ],
+        "User-Agent": [ "AzurePowershell/v0.0.0", "PSVersion/v7.3.4", "Az.NetworkCloud/0.1.0" ]
+      },
+      "ContentHeaders": {
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "ETag": [ "\"0800180c-0000-0100-0000-64d3cd5d0000\"" ],
+        "x-ms-ratelimit-remaining-subscription-reads": [ "11985" ],
+        "x-ms-request-id": [ "22056ea0-d4b5-4e8c-b48a-277b0cee354a" ],
+        "x-ms-correlation-request-id": [ "b44760d6-7ed8-453d-b695-f7db52dde7d4" ],
+        "x-ms-routing-request-id": [ "EASTUS:20230809T173710Z:b44760d6-7ed8-453d-b695-f7db52dde7d4" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "Date": [ "Wed, 09 Aug 2023 17:37:09 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "571" ],
+        "Content-Type": [ "application/json; charset=utf-8" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\"id\":\"/subscriptions/a3eeb848-665a-4dbf-80a4-eb460930fb23/providers/Microsoft.NetworkCloud/locations/EASTUS/operationStatuses/f52d1a50-922f-40bf-ae04-edf070d8524c*DEA59E20243B8A28D1017369DE9D0F7C271741C1CFBF5B133EE8CB967AA6DBB4\",\"name\":\"f52d1a50-922f-40bf-ae04-edf070d8524c*DEA59E20243B8A28D1017369DE9D0F7C271741C1CFBF5B133EE8CB967AA6DBB4\",\"resourceId\":\"/subscriptions/a3eeb848-665a-4dbf-80a4-eb460930fb23/resourceGroups/pstest_rg2rsxo8/providers/Microsoft.NetworkCloud/kubernetesClusters/k8s-cluster-name\",\"status\":\"Accepted\",\"startTime\":\"2023-08-09T17:31:09.2572325Z\"}",
+      "isContentBase64": false
+    }
+  },
+  "New-AzNetworkCloudKubernetesCluster+[NoContext]+Create+$GET+https://management.azure.com/subscriptions/a3eeb848-665a-4dbf-80a4-eb460930fb23/providers/Microsoft.NetworkCloud/locations/EASTUS/operationStatuses/f52d1a50-922f-40bf-ae04-edf070d8524c*DEA59E20243B8A28D1017369DE9D0F7C271741C1CFBF5B133EE8CB967AA6DBB4?api-version=2023-07-01+14": {
+    "Request": {
+      "Method": "GET",
+      "RequestUri": "https://management.azure.com/subscriptions/a3eeb848-665a-4dbf-80a4-eb460930fb23/providers/Microsoft.NetworkCloud/locations/EASTUS/operationStatuses/f52d1a50-922f-40bf-ae04-edf070d8524c*DEA59E20243B8A28D1017369DE9D0F7C271741C1CFBF5B133EE8CB967AA6DBB4?api-version=2023-07-01",
+      "Content": null,
+      "isContentBase64": false,
+      "Headers": {
+        "Authorization": [ "[Filtered]" ],
+        "x-ms-unique-id": [ "15" ],
+        "x-ms-client-request-id": [ "aa07acca-38a4-42d9-9277-1833679be7e2" ],
+        "CommandName": [ "New-AzNetworkCloudKubernetesCluster" ],
+        "FullCommandName": [ "New-AzNetworkCloudKubernetesCluster_Create" ],
+        "ParameterSetName": [ "__AllParameterSets" ],
+        "User-Agent": [ "AzurePowershell/v0.0.0", "PSVersion/v7.3.4", "Az.NetworkCloud/0.1.0" ]
+      },
+      "ContentHeaders": {
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "ETag": [ "\"0800180c-0000-0100-0000-64d3cd5d0000\"" ],
+        "x-ms-ratelimit-remaining-subscription-reads": [ "11984" ],
+        "x-ms-request-id": [ "6467be9c-4f02-4db9-aeb7-b09edb1b930d" ],
+        "x-ms-correlation-request-id": [ "b42027e6-9bda-40df-b5f9-1e864e67902b" ],
+        "x-ms-routing-request-id": [ "EASTUS:20230809T173740Z:b42027e6-9bda-40df-b5f9-1e864e67902b" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "Date": [ "Wed, 09 Aug 2023 17:37:40 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "571" ],
+        "Content-Type": [ "application/json; charset=utf-8" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\"id\":\"/subscriptions/a3eeb848-665a-4dbf-80a4-eb460930fb23/providers/Microsoft.NetworkCloud/locations/EASTUS/operationStatuses/f52d1a50-922f-40bf-ae04-edf070d8524c*DEA59E20243B8A28D1017369DE9D0F7C271741C1CFBF5B133EE8CB967AA6DBB4\",\"name\":\"f52d1a50-922f-40bf-ae04-edf070d8524c*DEA59E20243B8A28D1017369DE9D0F7C271741C1CFBF5B133EE8CB967AA6DBB4\",\"resourceId\":\"/subscriptions/a3eeb848-665a-4dbf-80a4-eb460930fb23/resourceGroups/pstest_rg2rsxo8/providers/Microsoft.NetworkCloud/kubernetesClusters/k8s-cluster-name\",\"status\":\"Accepted\",\"startTime\":\"2023-08-09T17:31:09.2572325Z\"}",
+      "isContentBase64": false
+    }
+  },
+  "New-AzNetworkCloudKubernetesCluster+[NoContext]+Create+$GET+https://management.azure.com/subscriptions/a3eeb848-665a-4dbf-80a4-eb460930fb23/providers/Microsoft.NetworkCloud/locations/EASTUS/operationStatuses/f52d1a50-922f-40bf-ae04-edf070d8524c*DEA59E20243B8A28D1017369DE9D0F7C271741C1CFBF5B133EE8CB967AA6DBB4?api-version=2023-07-01+15": {
+    "Request": {
+      "Method": "GET",
+      "RequestUri": "https://management.azure.com/subscriptions/a3eeb848-665a-4dbf-80a4-eb460930fb23/providers/Microsoft.NetworkCloud/locations/EASTUS/operationStatuses/f52d1a50-922f-40bf-ae04-edf070d8524c*DEA59E20243B8A28D1017369DE9D0F7C271741C1CFBF5B133EE8CB967AA6DBB4?api-version=2023-07-01",
+      "Content": null,
+      "isContentBase64": false,
+      "Headers": {
+        "Authorization": [ "[Filtered]" ],
+        "x-ms-unique-id": [ "16" ],
+        "x-ms-client-request-id": [ "aa07acca-38a4-42d9-9277-1833679be7e2" ],
+        "CommandName": [ "New-AzNetworkCloudKubernetesCluster" ],
+        "FullCommandName": [ "New-AzNetworkCloudKubernetesCluster_Create" ],
+        "ParameterSetName": [ "__AllParameterSets" ],
+        "User-Agent": [ "AzurePowershell/v0.0.0", "PSVersion/v7.3.4", "Az.NetworkCloud/0.1.0" ]
+      },
+      "ContentHeaders": {
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "ETag": [ "\"0800180c-0000-0100-0000-64d3cd5d0000\"" ],
+        "x-ms-ratelimit-remaining-subscription-reads": [ "11983" ],
+        "x-ms-request-id": [ "2bde56f0-c7f2-4bbf-8a77-e9432baffa68" ],
+        "x-ms-correlation-request-id": [ "e60b7519-4714-4c20-a960-5977867741f9" ],
+        "x-ms-routing-request-id": [ "EASTUS:20230809T173810Z:e60b7519-4714-4c20-a960-5977867741f9" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "Date": [ "Wed, 09 Aug 2023 17:38:09 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "571" ],
+        "Content-Type": [ "application/json; charset=utf-8" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\"id\":\"/subscriptions/a3eeb848-665a-4dbf-80a4-eb460930fb23/providers/Microsoft.NetworkCloud/locations/EASTUS/operationStatuses/f52d1a50-922f-40bf-ae04-edf070d8524c*DEA59E20243B8A28D1017369DE9D0F7C271741C1CFBF5B133EE8CB967AA6DBB4\",\"name\":\"f52d1a50-922f-40bf-ae04-edf070d8524c*DEA59E20243B8A28D1017369DE9D0F7C271741C1CFBF5B133EE8CB967AA6DBB4\",\"resourceId\":\"/subscriptions/a3eeb848-665a-4dbf-80a4-eb460930fb23/resourceGroups/pstest_rg2rsxo8/providers/Microsoft.NetworkCloud/kubernetesClusters/k8s-cluster-name\",\"status\":\"Accepted\",\"startTime\":\"2023-08-09T17:31:09.2572325Z\"}",
+      "isContentBase64": false
+    }
+  },
+  "New-AzNetworkCloudKubernetesCluster+[NoContext]+Create+$GET+https://management.azure.com/subscriptions/a3eeb848-665a-4dbf-80a4-eb460930fb23/providers/Microsoft.NetworkCloud/locations/EASTUS/operationStatuses/f52d1a50-922f-40bf-ae04-edf070d8524c*DEA59E20243B8A28D1017369DE9D0F7C271741C1CFBF5B133EE8CB967AA6DBB4?api-version=2023-07-01+16": {
+    "Request": {
+      "Method": "GET",
+      "RequestUri": "https://management.azure.com/subscriptions/a3eeb848-665a-4dbf-80a4-eb460930fb23/providers/Microsoft.NetworkCloud/locations/EASTUS/operationStatuses/f52d1a50-922f-40bf-ae04-edf070d8524c*DEA59E20243B8A28D1017369DE9D0F7C271741C1CFBF5B133EE8CB967AA6DBB4?api-version=2023-07-01",
+      "Content": null,
+      "isContentBase64": false,
+      "Headers": {
+        "Authorization": [ "[Filtered]" ],
+        "x-ms-unique-id": [ "17" ],
+        "x-ms-client-request-id": [ "aa07acca-38a4-42d9-9277-1833679be7e2" ],
+        "CommandName": [ "New-AzNetworkCloudKubernetesCluster" ],
+        "FullCommandName": [ "New-AzNetworkCloudKubernetesCluster_Create" ],
+        "ParameterSetName": [ "__AllParameterSets" ],
+        "User-Agent": [ "AzurePowershell/v0.0.0", "PSVersion/v7.3.4", "Az.NetworkCloud/0.1.0" ]
+      },
+      "ContentHeaders": {
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "ETag": [ "\"0800180c-0000-0100-0000-64d3cd5d0000\"" ],
+        "x-ms-ratelimit-remaining-subscription-reads": [ "11982" ],
+        "x-ms-request-id": [ "f55ba864-1102-4d44-8cf6-c419af516479" ],
+        "x-ms-correlation-request-id": [ "706133fc-903c-48f2-b8ce-458522a53473" ],
+        "x-ms-routing-request-id": [ "EASTUS:20230809T173840Z:706133fc-903c-48f2-b8ce-458522a53473" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "Date": [ "Wed, 09 Aug 2023 17:38:39 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "571" ],
+        "Content-Type": [ "application/json; charset=utf-8" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\"id\":\"/subscriptions/a3eeb848-665a-4dbf-80a4-eb460930fb23/providers/Microsoft.NetworkCloud/locations/EASTUS/operationStatuses/f52d1a50-922f-40bf-ae04-edf070d8524c*DEA59E20243B8A28D1017369DE9D0F7C271741C1CFBF5B133EE8CB967AA6DBB4\",\"name\":\"f52d1a50-922f-40bf-ae04-edf070d8524c*DEA59E20243B8A28D1017369DE9D0F7C271741C1CFBF5B133EE8CB967AA6DBB4\",\"resourceId\":\"/subscriptions/a3eeb848-665a-4dbf-80a4-eb460930fb23/resourceGroups/pstest_rg2rsxo8/providers/Microsoft.NetworkCloud/kubernetesClusters/k8s-cluster-name\",\"status\":\"Accepted\",\"startTime\":\"2023-08-09T17:31:09.2572325Z\"}",
+      "isContentBase64": false
+    }
+  },
+  "New-AzNetworkCloudKubernetesCluster+[NoContext]+Create+$GET+https://management.azure.com/subscriptions/a3eeb848-665a-4dbf-80a4-eb460930fb23/providers/Microsoft.NetworkCloud/locations/EASTUS/operationStatuses/f52d1a50-922f-40bf-ae04-edf070d8524c*DEA59E20243B8A28D1017369DE9D0F7C271741C1CFBF5B133EE8CB967AA6DBB4?api-version=2023-07-01+17": {
+    "Request": {
+      "Method": "GET",
+      "RequestUri": "https://management.azure.com/subscriptions/a3eeb848-665a-4dbf-80a4-eb460930fb23/providers/Microsoft.NetworkCloud/locations/EASTUS/operationStatuses/f52d1a50-922f-40bf-ae04-edf070d8524c*DEA59E20243B8A28D1017369DE9D0F7C271741C1CFBF5B133EE8CB967AA6DBB4?api-version=2023-07-01",
+      "Content": null,
+      "isContentBase64": false,
+      "Headers": {
+        "Authorization": [ "[Filtered]" ],
+        "x-ms-unique-id": [ "18" ],
+        "x-ms-client-request-id": [ "aa07acca-38a4-42d9-9277-1833679be7e2" ],
+        "CommandName": [ "New-AzNetworkCloudKubernetesCluster" ],
+        "FullCommandName": [ "New-AzNetworkCloudKubernetesCluster_Create" ],
+        "ParameterSetName": [ "__AllParameterSets" ],
+        "User-Agent": [ "AzurePowershell/v0.0.0", "PSVersion/v7.3.4", "Az.NetworkCloud/0.1.0" ]
+      },
+      "ContentHeaders": {
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "ETag": [ "\"0800180c-0000-0100-0000-64d3cd5d0000\"" ],
+        "x-ms-ratelimit-remaining-subscription-reads": [ "11981" ],
+        "x-ms-request-id": [ "1c45d7a4-53f4-4057-802f-25eba1b65cb0" ],
+        "x-ms-correlation-request-id": [ "f99c9895-604c-47ae-9840-75b93a8678a1" ],
+        "x-ms-routing-request-id": [ "EASTUS:20230809T173910Z:f99c9895-604c-47ae-9840-75b93a8678a1" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "Date": [ "Wed, 09 Aug 2023 17:39:09 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "571" ],
+        "Content-Type": [ "application/json; charset=utf-8" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\"id\":\"/subscriptions/a3eeb848-665a-4dbf-80a4-eb460930fb23/providers/Microsoft.NetworkCloud/locations/EASTUS/operationStatuses/f52d1a50-922f-40bf-ae04-edf070d8524c*DEA59E20243B8A28D1017369DE9D0F7C271741C1CFBF5B133EE8CB967AA6DBB4\",\"name\":\"f52d1a50-922f-40bf-ae04-edf070d8524c*DEA59E20243B8A28D1017369DE9D0F7C271741C1CFBF5B133EE8CB967AA6DBB4\",\"resourceId\":\"/subscriptions/a3eeb848-665a-4dbf-80a4-eb460930fb23/resourceGroups/pstest_rg2rsxo8/providers/Microsoft.NetworkCloud/kubernetesClusters/k8s-cluster-name\",\"status\":\"Accepted\",\"startTime\":\"2023-08-09T17:31:09.2572325Z\"}",
+      "isContentBase64": false
+    }
+  },
+  "New-AzNetworkCloudKubernetesCluster+[NoContext]+Create+$GET+https://management.azure.com/subscriptions/a3eeb848-665a-4dbf-80a4-eb460930fb23/providers/Microsoft.NetworkCloud/locations/EASTUS/operationStatuses/f52d1a50-922f-40bf-ae04-edf070d8524c*DEA59E20243B8A28D1017369DE9D0F7C271741C1CFBF5B133EE8CB967AA6DBB4?api-version=2023-07-01+18": {
+    "Request": {
+      "Method": "GET",
+      "RequestUri": "https://management.azure.com/subscriptions/a3eeb848-665a-4dbf-80a4-eb460930fb23/providers/Microsoft.NetworkCloud/locations/EASTUS/operationStatuses/f52d1a50-922f-40bf-ae04-edf070d8524c*DEA59E20243B8A28D1017369DE9D0F7C271741C1CFBF5B133EE8CB967AA6DBB4?api-version=2023-07-01",
+      "Content": null,
+      "isContentBase64": false,
+      "Headers": {
+        "Authorization": [ "[Filtered]" ],
+        "x-ms-unique-id": [ "19" ],
+        "x-ms-client-request-id": [ "aa07acca-38a4-42d9-9277-1833679be7e2" ],
+        "CommandName": [ "New-AzNetworkCloudKubernetesCluster" ],
+        "FullCommandName": [ "New-AzNetworkCloudKubernetesCluster_Create" ],
+        "ParameterSetName": [ "__AllParameterSets" ],
+        "User-Agent": [ "AzurePowershell/v0.0.0", "PSVersion/v7.3.4", "Az.NetworkCloud/0.1.0" ]
+      },
+      "ContentHeaders": {
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "ETag": [ "\"0800180c-0000-0100-0000-64d3cd5d0000\"" ],
+        "x-ms-ratelimit-remaining-subscription-reads": [ "11980" ],
+        "x-ms-request-id": [ "36e9c264-a6c5-4eb9-95e6-c8d1b7b00aeb" ],
+        "x-ms-correlation-request-id": [ "cadc618c-606a-4668-ba53-52037df6a2bd" ],
+        "x-ms-routing-request-id": [ "EASTUS:20230809T173940Z:cadc618c-606a-4668-ba53-52037df6a2bd" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "Date": [ "Wed, 09 Aug 2023 17:39:40 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "571" ],
+        "Content-Type": [ "application/json; charset=utf-8" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\"id\":\"/subscriptions/a3eeb848-665a-4dbf-80a4-eb460930fb23/providers/Microsoft.NetworkCloud/locations/EASTUS/operationStatuses/f52d1a50-922f-40bf-ae04-edf070d8524c*DEA59E20243B8A28D1017369DE9D0F7C271741C1CFBF5B133EE8CB967AA6DBB4\",\"name\":\"f52d1a50-922f-40bf-ae04-edf070d8524c*DEA59E20243B8A28D1017369DE9D0F7C271741C1CFBF5B133EE8CB967AA6DBB4\",\"resourceId\":\"/subscriptions/a3eeb848-665a-4dbf-80a4-eb460930fb23/resourceGroups/pstest_rg2rsxo8/providers/Microsoft.NetworkCloud/kubernetesClusters/k8s-cluster-name\",\"status\":\"Accepted\",\"startTime\":\"2023-08-09T17:31:09.2572325Z\"}",
+      "isContentBase64": false
+    }
+  },
+  "New-AzNetworkCloudKubernetesCluster+[NoContext]+Create+$GET+https://management.azure.com/subscriptions/a3eeb848-665a-4dbf-80a4-eb460930fb23/providers/Microsoft.NetworkCloud/locations/EASTUS/operationStatuses/f52d1a50-922f-40bf-ae04-edf070d8524c*DEA59E20243B8A28D1017369DE9D0F7C271741C1CFBF5B133EE8CB967AA6DBB4?api-version=2023-07-01+19": {
+    "Request": {
+      "Method": "GET",
+      "RequestUri": "https://management.azure.com/subscriptions/a3eeb848-665a-4dbf-80a4-eb460930fb23/providers/Microsoft.NetworkCloud/locations/EASTUS/operationStatuses/f52d1a50-922f-40bf-ae04-edf070d8524c*DEA59E20243B8A28D1017369DE9D0F7C271741C1CFBF5B133EE8CB967AA6DBB4?api-version=2023-07-01",
+      "Content": null,
+      "isContentBase64": false,
+      "Headers": {
+        "Authorization": [ "[Filtered]" ],
+        "x-ms-unique-id": [ "20" ],
+        "x-ms-client-request-id": [ "aa07acca-38a4-42d9-9277-1833679be7e2" ],
+        "CommandName": [ "New-AzNetworkCloudKubernetesCluster" ],
+        "FullCommandName": [ "New-AzNetworkCloudKubernetesCluster_Create" ],
+        "ParameterSetName": [ "__AllParameterSets" ],
+        "User-Agent": [ "AzurePowershell/v0.0.0", "PSVersion/v7.3.4", "Az.NetworkCloud/0.1.0" ]
+      },
+      "ContentHeaders": {
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "ETag": [ "\"0800180c-0000-0100-0000-64d3cd5d0000\"" ],
+        "x-ms-ratelimit-remaining-subscription-reads": [ "11979" ],
+        "x-ms-request-id": [ "31f38cf2-e1e9-41f7-ac86-3d46a8253abb" ],
+        "x-ms-correlation-request-id": [ "88a0694a-c9a8-4802-af4b-2c4b0c54676b" ],
+        "x-ms-routing-request-id": [ "EASTUS:20230809T174010Z:88a0694a-c9a8-4802-af4b-2c4b0c54676b" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "Date": [ "Wed, 09 Aug 2023 17:40:09 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "571" ],
+        "Content-Type": [ "application/json; charset=utf-8" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\"id\":\"/subscriptions/a3eeb848-665a-4dbf-80a4-eb460930fb23/providers/Microsoft.NetworkCloud/locations/EASTUS/operationStatuses/f52d1a50-922f-40bf-ae04-edf070d8524c*DEA59E20243B8A28D1017369DE9D0F7C271741C1CFBF5B133EE8CB967AA6DBB4\",\"name\":\"f52d1a50-922f-40bf-ae04-edf070d8524c*DEA59E20243B8A28D1017369DE9D0F7C271741C1CFBF5B133EE8CB967AA6DBB4\",\"resourceId\":\"/subscriptions/a3eeb848-665a-4dbf-80a4-eb460930fb23/resourceGroups/pstest_rg2rsxo8/providers/Microsoft.NetworkCloud/kubernetesClusters/k8s-cluster-name\",\"status\":\"Accepted\",\"startTime\":\"2023-08-09T17:31:09.2572325Z\"}",
+      "isContentBase64": false
+    }
+  },
+  "New-AzNetworkCloudKubernetesCluster+[NoContext]+Create+$GET+https://management.azure.com/subscriptions/a3eeb848-665a-4dbf-80a4-eb460930fb23/providers/Microsoft.NetworkCloud/locations/EASTUS/operationStatuses/f52d1a50-922f-40bf-ae04-edf070d8524c*DEA59E20243B8A28D1017369DE9D0F7C271741C1CFBF5B133EE8CB967AA6DBB4?api-version=2023-07-01+20": {
+    "Request": {
+      "Method": "GET",
+      "RequestUri": "https://management.azure.com/subscriptions/a3eeb848-665a-4dbf-80a4-eb460930fb23/providers/Microsoft.NetworkCloud/locations/EASTUS/operationStatuses/f52d1a50-922f-40bf-ae04-edf070d8524c*DEA59E20243B8A28D1017369DE9D0F7C271741C1CFBF5B133EE8CB967AA6DBB4?api-version=2023-07-01",
+      "Content": null,
+      "isContentBase64": false,
+      "Headers": {
+        "Authorization": [ "[Filtered]" ],
+        "x-ms-unique-id": [ "21" ],
+        "x-ms-client-request-id": [ "aa07acca-38a4-42d9-9277-1833679be7e2" ],
+        "CommandName": [ "New-AzNetworkCloudKubernetesCluster" ],
+        "FullCommandName": [ "New-AzNetworkCloudKubernetesCluster_Create" ],
+        "ParameterSetName": [ "__AllParameterSets" ],
+        "User-Agent": [ "AzurePowershell/v0.0.0", "PSVersion/v7.3.4", "Az.NetworkCloud/0.1.0" ]
+      },
+      "ContentHeaders": {
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "ETag": [ "\"0800180c-0000-0100-0000-64d3cd5d0000\"" ],
+        "x-ms-ratelimit-remaining-subscription-reads": [ "11978" ],
+        "x-ms-request-id": [ "652301ab-889f-4dca-8cee-06c374200ae1" ],
+        "x-ms-correlation-request-id": [ "dec48007-888f-46b7-a07c-702b54a9189d" ],
+        "x-ms-routing-request-id": [ "EASTUS:20230809T174040Z:dec48007-888f-46b7-a07c-702b54a9189d" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "Date": [ "Wed, 09 Aug 2023 17:40:39 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "571" ],
+        "Content-Type": [ "application/json; charset=utf-8" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\"id\":\"/subscriptions/a3eeb848-665a-4dbf-80a4-eb460930fb23/providers/Microsoft.NetworkCloud/locations/EASTUS/operationStatuses/f52d1a50-922f-40bf-ae04-edf070d8524c*DEA59E20243B8A28D1017369DE9D0F7C271741C1CFBF5B133EE8CB967AA6DBB4\",\"name\":\"f52d1a50-922f-40bf-ae04-edf070d8524c*DEA59E20243B8A28D1017369DE9D0F7C271741C1CFBF5B133EE8CB967AA6DBB4\",\"resourceId\":\"/subscriptions/a3eeb848-665a-4dbf-80a4-eb460930fb23/resourceGroups/pstest_rg2rsxo8/providers/Microsoft.NetworkCloud/kubernetesClusters/k8s-cluster-name\",\"status\":\"Accepted\",\"startTime\":\"2023-08-09T17:31:09.2572325Z\"}",
+      "isContentBase64": false
+    }
+  },
+  "New-AzNetworkCloudKubernetesCluster+[NoContext]+Create+$GET+https://management.azure.com/subscriptions/a3eeb848-665a-4dbf-80a4-eb460930fb23/providers/Microsoft.NetworkCloud/locations/EASTUS/operationStatuses/f52d1a50-922f-40bf-ae04-edf070d8524c*DEA59E20243B8A28D1017369DE9D0F7C271741C1CFBF5B133EE8CB967AA6DBB4?api-version=2023-07-01+21": {
+    "Request": {
+      "Method": "GET",
+      "RequestUri": "https://management.azure.com/subscriptions/a3eeb848-665a-4dbf-80a4-eb460930fb23/providers/Microsoft.NetworkCloud/locations/EASTUS/operationStatuses/f52d1a50-922f-40bf-ae04-edf070d8524c*DEA59E20243B8A28D1017369DE9D0F7C271741C1CFBF5B133EE8CB967AA6DBB4?api-version=2023-07-01",
+      "Content": null,
+      "isContentBase64": false,
+      "Headers": {
+        "Authorization": [ "[Filtered]" ],
+        "x-ms-unique-id": [ "22" ],
+        "x-ms-client-request-id": [ "aa07acca-38a4-42d9-9277-1833679be7e2" ],
+        "CommandName": [ "New-AzNetworkCloudKubernetesCluster" ],
+        "FullCommandName": [ "New-AzNetworkCloudKubernetesCluster_Create" ],
+        "ParameterSetName": [ "__AllParameterSets" ],
+        "User-Agent": [ "AzurePowershell/v0.0.0", "PSVersion/v7.3.4", "Az.NetworkCloud/0.1.0" ]
+      },
+      "ContentHeaders": {
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "ETag": [ "\"0800180c-0000-0100-0000-64d3cd5d0000\"" ],
+        "x-ms-ratelimit-remaining-subscription-reads": [ "11977" ],
+        "x-ms-request-id": [ "1279321a-4e02-4e7b-8787-0d0230aff5a0" ],
+        "x-ms-correlation-request-id": [ "644a8b6d-c8da-40b7-9816-6fbe2c879014" ],
+        "x-ms-routing-request-id": [ "EASTUS:20230809T174110Z:644a8b6d-c8da-40b7-9816-6fbe2c879014" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "Date": [ "Wed, 09 Aug 2023 17:41:09 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "571" ],
+        "Content-Type": [ "application/json; charset=utf-8" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\"id\":\"/subscriptions/a3eeb848-665a-4dbf-80a4-eb460930fb23/providers/Microsoft.NetworkCloud/locations/EASTUS/operationStatuses/f52d1a50-922f-40bf-ae04-edf070d8524c*DEA59E20243B8A28D1017369DE9D0F7C271741C1CFBF5B133EE8CB967AA6DBB4\",\"name\":\"f52d1a50-922f-40bf-ae04-edf070d8524c*DEA59E20243B8A28D1017369DE9D0F7C271741C1CFBF5B133EE8CB967AA6DBB4\",\"resourceId\":\"/subscriptions/a3eeb848-665a-4dbf-80a4-eb460930fb23/resourceGroups/pstest_rg2rsxo8/providers/Microsoft.NetworkCloud/kubernetesClusters/k8s-cluster-name\",\"status\":\"Accepted\",\"startTime\":\"2023-08-09T17:31:09.2572325Z\"}",
+      "isContentBase64": false
+    }
+  },
+  "New-AzNetworkCloudKubernetesCluster+[NoContext]+Create+$GET+https://management.azure.com/subscriptions/a3eeb848-665a-4dbf-80a4-eb460930fb23/providers/Microsoft.NetworkCloud/locations/EASTUS/operationStatuses/f52d1a50-922f-40bf-ae04-edf070d8524c*DEA59E20243B8A28D1017369DE9D0F7C271741C1CFBF5B133EE8CB967AA6DBB4?api-version=2023-07-01+22": {
+    "Request": {
+      "Method": "GET",
+      "RequestUri": "https://management.azure.com/subscriptions/a3eeb848-665a-4dbf-80a4-eb460930fb23/providers/Microsoft.NetworkCloud/locations/EASTUS/operationStatuses/f52d1a50-922f-40bf-ae04-edf070d8524c*DEA59E20243B8A28D1017369DE9D0F7C271741C1CFBF5B133EE8CB967AA6DBB4?api-version=2023-07-01",
+      "Content": null,
+      "isContentBase64": false,
+      "Headers": {
+        "Authorization": [ "[Filtered]" ],
+        "x-ms-unique-id": [ "23" ],
+        "x-ms-client-request-id": [ "aa07acca-38a4-42d9-9277-1833679be7e2" ],
+        "CommandName": [ "New-AzNetworkCloudKubernetesCluster" ],
+        "FullCommandName": [ "New-AzNetworkCloudKubernetesCluster_Create" ],
+        "ParameterSetName": [ "__AllParameterSets" ],
+        "User-Agent": [ "AzurePowershell/v0.0.0", "PSVersion/v7.3.4", "Az.NetworkCloud/0.1.0" ]
+      },
+      "ContentHeaders": {
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "ETag": [ "\"0800180c-0000-0100-0000-64d3cd5d0000\"" ],
+        "x-ms-ratelimit-remaining-subscription-reads": [ "11976" ],
+        "x-ms-request-id": [ "0fc2722a-a5be-4dfb-8058-bd98f017f746" ],
+        "x-ms-correlation-request-id": [ "95bd9e14-9bcb-4a2a-819a-a97404016435" ],
+        "x-ms-routing-request-id": [ "EASTUS:20230809T174140Z:95bd9e14-9bcb-4a2a-819a-a97404016435" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "Date": [ "Wed, 09 Aug 2023 17:41:40 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "571" ],
+        "Content-Type": [ "application/json; charset=utf-8" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\"id\":\"/subscriptions/a3eeb848-665a-4dbf-80a4-eb460930fb23/providers/Microsoft.NetworkCloud/locations/EASTUS/operationStatuses/f52d1a50-922f-40bf-ae04-edf070d8524c*DEA59E20243B8A28D1017369DE9D0F7C271741C1CFBF5B133EE8CB967AA6DBB4\",\"name\":\"f52d1a50-922f-40bf-ae04-edf070d8524c*DEA59E20243B8A28D1017369DE9D0F7C271741C1CFBF5B133EE8CB967AA6DBB4\",\"resourceId\":\"/subscriptions/a3eeb848-665a-4dbf-80a4-eb460930fb23/resourceGroups/pstest_rg2rsxo8/providers/Microsoft.NetworkCloud/kubernetesClusters/k8s-cluster-name\",\"status\":\"Accepted\",\"startTime\":\"2023-08-09T17:31:09.2572325Z\"}",
+      "isContentBase64": false
+    }
+  },
+  "New-AzNetworkCloudKubernetesCluster+[NoContext]+Create+$GET+https://management.azure.com/subscriptions/a3eeb848-665a-4dbf-80a4-eb460930fb23/providers/Microsoft.NetworkCloud/locations/EASTUS/operationStatuses/f52d1a50-922f-40bf-ae04-edf070d8524c*DEA59E20243B8A28D1017369DE9D0F7C271741C1CFBF5B133EE8CB967AA6DBB4?api-version=2023-07-01+23": {
+    "Request": {
+      "Method": "GET",
+      "RequestUri": "https://management.azure.com/subscriptions/a3eeb848-665a-4dbf-80a4-eb460930fb23/providers/Microsoft.NetworkCloud/locations/EASTUS/operationStatuses/f52d1a50-922f-40bf-ae04-edf070d8524c*DEA59E20243B8A28D1017369DE9D0F7C271741C1CFBF5B133EE8CB967AA6DBB4?api-version=2023-07-01",
+      "Content": null,
+      "isContentBase64": false,
+      "Headers": {
+        "Authorization": [ "[Filtered]" ],
+        "x-ms-unique-id": [ "24" ],
+        "x-ms-client-request-id": [ "aa07acca-38a4-42d9-9277-1833679be7e2" ],
+        "CommandName": [ "New-AzNetworkCloudKubernetesCluster" ],
+        "FullCommandName": [ "New-AzNetworkCloudKubernetesCluster_Create" ],
+        "ParameterSetName": [ "__AllParameterSets" ],
+        "User-Agent": [ "AzurePowershell/v0.0.0", "PSVersion/v7.3.4", "Az.NetworkCloud/0.1.0" ]
+      },
+      "ContentHeaders": {
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "ETag": [ "\"0800180c-0000-0100-0000-64d3cd5d0000\"" ],
+        "x-ms-ratelimit-remaining-subscription-reads": [ "11975" ],
+        "x-ms-request-id": [ "9d7238c5-429e-42b8-9dcc-9cd2352ac9bc" ],
+        "x-ms-correlation-request-id": [ "c7053c7b-3499-4c29-8921-09d925b8822d" ],
+        "x-ms-routing-request-id": [ "EASTUS:20230809T174210Z:c7053c7b-3499-4c29-8921-09d925b8822d" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "Date": [ "Wed, 09 Aug 2023 17:42:10 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "571" ],
+        "Content-Type": [ "application/json; charset=utf-8" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\"id\":\"/subscriptions/a3eeb848-665a-4dbf-80a4-eb460930fb23/providers/Microsoft.NetworkCloud/locations/EASTUS/operationStatuses/f52d1a50-922f-40bf-ae04-edf070d8524c*DEA59E20243B8A28D1017369DE9D0F7C271741C1CFBF5B133EE8CB967AA6DBB4\",\"name\":\"f52d1a50-922f-40bf-ae04-edf070d8524c*DEA59E20243B8A28D1017369DE9D0F7C271741C1CFBF5B133EE8CB967AA6DBB4\",\"resourceId\":\"/subscriptions/a3eeb848-665a-4dbf-80a4-eb460930fb23/resourceGroups/pstest_rg2rsxo8/providers/Microsoft.NetworkCloud/kubernetesClusters/k8s-cluster-name\",\"status\":\"Accepted\",\"startTime\":\"2023-08-09T17:31:09.2572325Z\"}",
+      "isContentBase64": false
+    }
+  },
+  "New-AzNetworkCloudKubernetesCluster+[NoContext]+Create+$GET+https://management.azure.com/subscriptions/a3eeb848-665a-4dbf-80a4-eb460930fb23/providers/Microsoft.NetworkCloud/locations/EASTUS/operationStatuses/f52d1a50-922f-40bf-ae04-edf070d8524c*DEA59E20243B8A28D1017369DE9D0F7C271741C1CFBF5B133EE8CB967AA6DBB4?api-version=2023-07-01+24": {
+    "Request": {
+      "Method": "GET",
+      "RequestUri": "https://management.azure.com/subscriptions/a3eeb848-665a-4dbf-80a4-eb460930fb23/providers/Microsoft.NetworkCloud/locations/EASTUS/operationStatuses/f52d1a50-922f-40bf-ae04-edf070d8524c*DEA59E20243B8A28D1017369DE9D0F7C271741C1CFBF5B133EE8CB967AA6DBB4?api-version=2023-07-01",
+      "Content": null,
+      "isContentBase64": false,
+      "Headers": {
+        "Authorization": [ "[Filtered]" ],
+        "x-ms-unique-id": [ "25" ],
+        "x-ms-client-request-id": [ "aa07acca-38a4-42d9-9277-1833679be7e2" ],
+        "CommandName": [ "New-AzNetworkCloudKubernetesCluster" ],
+        "FullCommandName": [ "New-AzNetworkCloudKubernetesCluster_Create" ],
+        "ParameterSetName": [ "__AllParameterSets" ],
+        "User-Agent": [ "AzurePowershell/v0.0.0", "PSVersion/v7.3.4", "Az.NetworkCloud/0.1.0" ]
+      },
+      "ContentHeaders": {
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "ETag": [ "\"0800180c-0000-0100-0000-64d3cd5d0000\"" ],
+        "x-ms-ratelimit-remaining-subscription-reads": [ "11974" ],
+        "x-ms-request-id": [ "86449d55-852c-4673-b0e8-185f971325fd" ],
+        "x-ms-correlation-request-id": [ "ae7b88be-539b-4260-9ea9-889fd2429f23" ],
+        "x-ms-routing-request-id": [ "EASTUS:20230809T174240Z:ae7b88be-539b-4260-9ea9-889fd2429f23" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "Date": [ "Wed, 09 Aug 2023 17:42:39 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "571" ],
+        "Content-Type": [ "application/json; charset=utf-8" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\"id\":\"/subscriptions/a3eeb848-665a-4dbf-80a4-eb460930fb23/providers/Microsoft.NetworkCloud/locations/EASTUS/operationStatuses/f52d1a50-922f-40bf-ae04-edf070d8524c*DEA59E20243B8A28D1017369DE9D0F7C271741C1CFBF5B133EE8CB967AA6DBB4\",\"name\":\"f52d1a50-922f-40bf-ae04-edf070d8524c*DEA59E20243B8A28D1017369DE9D0F7C271741C1CFBF5B133EE8CB967AA6DBB4\",\"resourceId\":\"/subscriptions/a3eeb848-665a-4dbf-80a4-eb460930fb23/resourceGroups/pstest_rg2rsxo8/providers/Microsoft.NetworkCloud/kubernetesClusters/k8s-cluster-name\",\"status\":\"Accepted\",\"startTime\":\"2023-08-09T17:31:09.2572325Z\"}",
+      "isContentBase64": false
+    }
+  },
+  "New-AzNetworkCloudKubernetesCluster+[NoContext]+Create+$GET+https://management.azure.com/subscriptions/a3eeb848-665a-4dbf-80a4-eb460930fb23/providers/Microsoft.NetworkCloud/locations/EASTUS/operationStatuses/f52d1a50-922f-40bf-ae04-edf070d8524c*DEA59E20243B8A28D1017369DE9D0F7C271741C1CFBF5B133EE8CB967AA6DBB4?api-version=2023-07-01+25": {
+    "Request": {
+      "Method": "GET",
+      "RequestUri": "https://management.azure.com/subscriptions/a3eeb848-665a-4dbf-80a4-eb460930fb23/providers/Microsoft.NetworkCloud/locations/EASTUS/operationStatuses/f52d1a50-922f-40bf-ae04-edf070d8524c*DEA59E20243B8A28D1017369DE9D0F7C271741C1CFBF5B133EE8CB967AA6DBB4?api-version=2023-07-01",
+      "Content": null,
+      "isContentBase64": false,
+      "Headers": {
+        "Authorization": [ "[Filtered]" ],
+        "x-ms-unique-id": [ "26" ],
+        "x-ms-client-request-id": [ "aa07acca-38a4-42d9-9277-1833679be7e2" ],
+        "CommandName": [ "New-AzNetworkCloudKubernetesCluster" ],
+        "FullCommandName": [ "New-AzNetworkCloudKubernetesCluster_Create" ],
+        "ParameterSetName": [ "__AllParameterSets" ],
+        "User-Agent": [ "AzurePowershell/v0.0.0", "PSVersion/v7.3.4", "Az.NetworkCloud/0.1.0" ]
+      },
+      "ContentHeaders": {
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "ETag": [ "\"0800180c-0000-0100-0000-64d3cd5d0000\"" ],
+        "x-ms-ratelimit-remaining-subscription-reads": [ "11973" ],
+        "x-ms-request-id": [ "9b46fb69-573e-4273-a2e4-ad34be33a4ce" ],
+        "x-ms-correlation-request-id": [ "54473cc4-a9a7-4f0f-9647-1ef51b760472" ],
+        "x-ms-routing-request-id": [ "EASTUS:20230809T174310Z:54473cc4-a9a7-4f0f-9647-1ef51b760472" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "Date": [ "Wed, 09 Aug 2023 17:43:09 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "571" ],
+        "Content-Type": [ "application/json; charset=utf-8" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\"id\":\"/subscriptions/a3eeb848-665a-4dbf-80a4-eb460930fb23/providers/Microsoft.NetworkCloud/locations/EASTUS/operationStatuses/f52d1a50-922f-40bf-ae04-edf070d8524c*DEA59E20243B8A28D1017369DE9D0F7C271741C1CFBF5B133EE8CB967AA6DBB4\",\"name\":\"f52d1a50-922f-40bf-ae04-edf070d8524c*DEA59E20243B8A28D1017369DE9D0F7C271741C1CFBF5B133EE8CB967AA6DBB4\",\"resourceId\":\"/subscriptions/a3eeb848-665a-4dbf-80a4-eb460930fb23/resourceGroups/pstest_rg2rsxo8/providers/Microsoft.NetworkCloud/kubernetesClusters/k8s-cluster-name\",\"status\":\"Accepted\",\"startTime\":\"2023-08-09T17:31:09.2572325Z\"}",
+      "isContentBase64": false
+    }
+  },
+  "New-AzNetworkCloudKubernetesCluster+[NoContext]+Create+$GET+https://management.azure.com/subscriptions/a3eeb848-665a-4dbf-80a4-eb460930fb23/providers/Microsoft.NetworkCloud/locations/EASTUS/operationStatuses/f52d1a50-922f-40bf-ae04-edf070d8524c*DEA59E20243B8A28D1017369DE9D0F7C271741C1CFBF5B133EE8CB967AA6DBB4?api-version=2023-07-01+26": {
+    "Request": {
+      "Method": "GET",
+      "RequestUri": "https://management.azure.com/subscriptions/a3eeb848-665a-4dbf-80a4-eb460930fb23/providers/Microsoft.NetworkCloud/locations/EASTUS/operationStatuses/f52d1a50-922f-40bf-ae04-edf070d8524c*DEA59E20243B8A28D1017369DE9D0F7C271741C1CFBF5B133EE8CB967AA6DBB4?api-version=2023-07-01",
+      "Content": null,
+      "isContentBase64": false,
+      "Headers": {
+        "Authorization": [ "[Filtered]" ],
+        "x-ms-unique-id": [ "27" ],
+        "x-ms-client-request-id": [ "aa07acca-38a4-42d9-9277-1833679be7e2" ],
+        "CommandName": [ "New-AzNetworkCloudKubernetesCluster" ],
+        "FullCommandName": [ "New-AzNetworkCloudKubernetesCluster_Create" ],
+        "ParameterSetName": [ "__AllParameterSets" ],
+        "User-Agent": [ "AzurePowershell/v0.0.0", "PSVersion/v7.3.4", "Az.NetworkCloud/0.1.0" ]
+      },
+      "ContentHeaders": {
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "ETag": [ "\"01003cd4-0000-4d00-0000-64d3d0390000\"" ],
+        "x-ms-ratelimit-remaining-subscription-reads": [ "11972" ],
+        "x-ms-request-id": [ "86ccf0a5-05aa-46b4-9ae0-5bb18047fa80" ],
+        "x-ms-correlation-request-id": [ "377f43fa-fa6d-49ec-9514-3beb38998223" ],
+        "x-ms-routing-request-id": [ "EASTUS:20230809T174340Z:377f43fa-fa6d-49ec-9514-3beb38998223" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "Date": [ "Wed, 09 Aug 2023 17:43:40 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "590" ],
+        "Content-Type": [ "application/json; charset=utf-8" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\"id\":\"/subscriptions/a3eeb848-665a-4dbf-80a4-eb460930fb23/providers/Microsoft.NetworkCloud/locations/EASTUS/operationStatuses/f52d1a50-922f-40bf-ae04-edf070d8524c*DEA59E20243B8A28D1017369DE9D0F7C271741C1CFBF5B133EE8CB967AA6DBB4\",\"name\":\"f52d1a50-922f-40bf-ae04-edf070d8524c*DEA59E20243B8A28D1017369DE9D0F7C271741C1CFBF5B133EE8CB967AA6DBB4\",\"resourceId\":\"/subscriptions/a3eeb848-665a-4dbf-80a4-eb460930fb23/resourceGroups/pstest_rg2rsxo8/providers/Microsoft.NetworkCloud/kubernetesClusters/k8s-cluster-name\",\"status\":\"Succeeded\",\"startTime\":\"2023-08-09T17:31:09.2572325Z\",\"properties\":null}",
+      "isContentBase64": false
+    }
+  },
+  "New-AzNetworkCloudKubernetesCluster+[NoContext]+Create+$GET+https://management.azure.com/subscriptions/a3eeb848-665a-4dbf-80a4-eb460930fb23/resourceGroups/pstest_rg2rsxo8/providers/Microsoft.NetworkCloud/kubernetesClusters/k8s-cluster-name?api-version=2023-07-01+27": {
+    "Request": {
+      "Method": "GET",
+      "RequestUri": "https://management.azure.com/subscriptions/a3eeb848-665a-4dbf-80a4-eb460930fb23/resourceGroups/pstest_rg2rsxo8/providers/Microsoft.NetworkCloud/kubernetesClusters/k8s-cluster-name?api-version=2023-07-01",
+      "Content": null,
+      "isContentBase64": false,
+      "Headers": {
+        "Authorization": [ "[Filtered]" ],
+        "x-ms-unique-id": [ "28" ],
+        "x-ms-client-request-id": [ "aa07acca-38a4-42d9-9277-1833679be7e2" ],
+        "CommandName": [ "New-AzNetworkCloudKubernetesCluster" ],
+        "FullCommandName": [ "New-AzNetworkCloudKubernetesCluster_Create" ],
+        "ParameterSetName": [ "__AllParameterSets" ],
+        "User-Agent": [ "AzurePowershell/v0.0.0", "PSVersion/v7.3.4", "Az.NetworkCloud/0.1.0" ]
+      },
+      "ContentHeaders": {
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "ETag": [ "\"0d00e32b-0000-0100-0000-64d3d0280000\"" ],
+        "x-ms-ratelimit-remaining-subscription-reads": [ "11971" ],
+        "x-ms-providerhub-traffic": [ "True" ],
+        "x-ms-request-id": [ "cdf042fc-6dc7-4708-9500-f7e423cc0def" ],
+        "x-ms-correlation-request-id": [ "83e1f327-8888-4068-a314-33c29017a1be" ],
+        "x-ms-routing-request-id": [ "EASTUS:20230809T174340Z:83e1f327-8888-4068-a314-33c29017a1be" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "Date": [ "Wed, 09 Aug 2023 17:43:40 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "7487" ],
+        "Content-Type": [ "application/json; charset=utf-8" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\"id\":\"/subscriptions/a3eeb848-665a-4dbf-80a4-eb460930fb23/resourceGroups/pstest_rg2rsxo8/providers/Microsoft.NetworkCloud/kubernetesClusters/k8s-cluster-name\",\"name\":\"k8s-cluster-name\",\"type\":\"microsoft.networkcloud/kubernetesclusters\",\"location\":\"eastus\",\"extendedLocation\":{\"name\":\"/subscriptions/a3eeb848-665a-4dbf-80a4-eb460930fb23/resourcegroups/dev04-46c383141dc5-hostedresources-2da8791c/providers/microsoft.extendedlocation/customlocations/dev04-46c383141dc5-cstm-loc\",\"type\":\"CustomLocation\"},\"tags\":{\"tags\":\"tag1\"},\"systemData\":{\"createdBy\":\"REDACTED\",\"createdByType\":\"User\",\"createdAt\":\"2023-08-09T17:31:09.1756977Z\",\"lastModifiedBy\":\"319f651f-7ddb-4fc6-9857-7aef9250bd05\",\"lastModifiedByType\":\"Application\",\"lastModifiedAt\":\"2023-08-09T17:43:04.2294856Z\"},\"properties\":{\"provisioningState\":\"Succeeded\",\"aadConfiguration\":{\"adminGroupObjectIds\":[\"598f3796-d0dd-45ec-b0fc-e00731b0283f\"]},\"administratorConfiguration\":{\"adminUsername\":\"azureuser\",\"sshPublicKeys\":[{\"keyData\":\"ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABgQDMpSVYkRXyN2QXTMFeqgv1vChIVitMeg4W+1BbO46VotFQ3/GESrf8SwMt5+gp8ctYBEFDsnAu8v/VUYszA/jeCdhVOsBbnI6KHLBa8vPcz8b/dlj3q418th3OpPfPQXoW33dnZQ22U1KSjCIu0ZO0bXYd8wm3xwPkTmlSb+h8BcP28BDmtOJ2Oagusr7E23uizheGyh5Nd4tOfkrPworNECYls4S5O32g33oZIcLg96UGQEl+KNPE8hjIOfbigceVze9m1Wip/SMg0yOlttPAXk0CefGF0Q1ZWlIzwbsvshVhfoR4y3bZIwhqTm12TBj17CYIgnCVJmsqRtVG967UiEGseSMqTwLGH30Fr6e47LXzdCo0FDU3tCKlJ4IawL/gYT4OiqSs9Kdpe4GB0C3xEaXsxXZUhU86NacP+XLhUQz1bp4LM800KmDl+gIMuo5X/7q36POvo1h3ZUSfS1UwkHFITSwDlwQmkLE8cPfPML2a9ZMAWSsIjSqCytAzpVE= azureuser@mikepvm\"}]},\"controlPlaneNodeConfiguration\":{\"count\":1,\"vmSkuName\":\"NC_G2_v1\",\"administratorConfiguration\":{}},\"networkConfiguration\":{\"cloudServicesNetworkId\":\"/subscriptions/a3eeb848-665a-4dbf-80a4-eb460930fb23/resourceGroups/dev04-cluster/providers/Microsoft.NetworkCloud/cloudServicesNetworks/wideopen\",\"cniNetworkId\":\"/subscriptions/a3eeb848-665a-4dbf-80a4-eb460930fb23/resourceGroups/dev04-cluster/providers/Microsoft.NetworkCloud/l3Networks/l3network-503\",\"attachedNetworkConfiguration\":{},\"bgpServiceLoadBalancerConfiguration\":{\"bgpAdvertisements\":[],\"fabricPeeringEnabled\":\"True\",\"bgpPeers\":[],\"ipAddressPools\":[]},\"dnsServiceIp\":\"10.96.0.10\",\"podCidrs\":[\"10.244.0.0/16\"],\"serviceCidrs\":[\"10.96.0.0/16\"]},\"initialAgentPoolConfigurations\":[{\"count\":1,\"mode\":\"System\",\"name\":\"agentpool1\",\"vmSkuName\":\"NC_G2_v1\"}],\"kubernetesVersion\":\"v1.24.9\",\"managedResourceGroupConfiguration\":{\"location\":\"eastus\",\"name\":\"k8s-cluster-name-HostedResources-58162DA1\"},\"availableUpgrades\":[{\"availabilityLifecycle\":\"GenerallyAvailable\",\"version\":\"v1.25.4-1\"},{\"availabilityLifecycle\":\"GenerallyAvailable\",\"version\":\"v1.25.4-2\"},{\"availabilityLifecycle\":\"GenerallyAvailable\",\"version\":\"v1.25.4-3\"}],\"attachedNetworkIds\":[\"/subscriptions/a3eeb848-665a-4dbf-80a4-eb460930fb23/resourceGroups/dev04-cluster/providers/Microsoft.NetworkCloud/cloudServicesNetworks/wideopen\",\"/subscriptions/a3eeb848-665a-4dbf-80a4-eb460930fb23/resourceGroups/dev04-cluster/providers/Microsoft.NetworkCloud/l3Networks/l3network-503\"],\"clusterId\":\"/subscriptions/a3eeb848-665a-4dbf-80a4-eb460930fb23/resourceGroups/dev04-cluster/providers/Microsoft.NetworkCloud/clusters/dev04-46c383141dc5\",\"connectedClusterId\":\"/subscriptions/a3eeb848-665a-4dbf-80a4-eb460930fb23/resourceGroups/k8s-cluster-name-HostedResources-58162DA1/providers/Microsoft.Kubernetes/connectedClusters/k8s-cluster-name\",\"detailedStatus\":\"Available\",\"detailedStatusMessage\":\"Cluster is operational and ready\",\"featureStatuses\":[{\"detailedStatus\":\"Running\",\"detailedStatusMessage\":\"The feature is running\",\"name\":\"azure-arc-k8sagents\",\"version\":\"v1.1.0\"},{\"detailedStatus\":\"Running\",\"detailedStatusMessage\":\"The feature is running\",\"name\":\"calico\",\"version\":\"v1.0.0\"},{\"detailedStatus\":\"Running\",\"detailedStatusMessage\":\"The feature is running\",\"name\":\"cloud-provider-kubevirt\",\"version\":\"v1.0.1\"},{\"detailedStatus\":\"Running\",\"detailedStatusMessage\":\"The feature is running\",\"name\":\"csi-nfs\",\"version\":\"v1.0.1\"},{\"detailedStatus\":\"Running\",\"detailedStatusMessage\":\"The feature is running\",\"name\":\"csi-volume\",\"version\":\"v1.0.1\"},{\"detailedStatus\":\"Running\",\"detailedStatusMessage\":\"The feature is running\",\"name\":\"ipam-cni-plugin\",\"version\":\"v1.0.0\"},{\"detailedStatus\":\"Running\",\"detailedStatusMessage\":\"The feature is running\",\"name\":\"metallb\",\"version\":\"v1.0.0\"},{\"detailedStatus\":\"Running\",\"detailedStatusMessage\":\"The feature is running\",\"name\":\"metrics-server\",\"version\":\"v1.0.0\"},{\"detailedStatus\":\"Running\",\"detailedStatusMessage\":\"The feature is running\",\"name\":\"multus\",\"version\":\"v1.0.0\"},{\"detailedStatus\":\"Running\",\"detailedStatusMessage\":\"The feature is running\",\"name\":\"node-local-dns\",\"version\":\"v1.0.0\"},{\"detailedStatus\":\"Running\",\"detailedStatusMessage\":\"The feature is running\",\"name\":\"sriov-dp\",\"version\":\"v1.0.0\"}],\"nodes\":[{\"agentPoolId\":\"/subscriptions/a3eeb848-665a-4dbf-80a4-eb460930fb23/resourceGroups/pstest_rg2rsxo8/providers/Microsoft.NetworkCloud/kubernetesClusters/k8s-cluster-name/agentPools/agentpool1\",\"bareMetalMachineId\":\"/subscriptions/a3eeb848-665a-4dbf-80a4-eb460930fb23/resourceGroups/dev04-46c383141dc5-HostedResources-2DA8791C/providers/Microsoft.NetworkCloud/bareMetalMachines/b37dev04a1co03\",\"cpuCores\":2,\"detailedStatus\":\"Running\",\"detailedStatusMessage\":\"Running - virtual machine is running.\",\"diskSizeGB\":300,\"image\":\"mariner-guest-image-qcow2-k8s-1.24.9\",\"kubernetesVersion\":\"v1.24.9-3\",\"memorySizeGB\":4,\"mode\":\"System\",\"name\":\"k8s-cluster-name-12f7e183-agentpool1-md-7g8dn\",\"networkAttachments\":[{\"attachedNetworkId\":\"/subscriptions/a3eeb848-665a-4dbf-80a4-eb460930fb23/resourceGroups/dev04-cluster/providers/Microsoft.NetworkCloud/cloudServicesNetworks/wideopen\",\"defaultGateway\":\"False\",\"ipAllocationMethod\":\"Dynamic\",\"ipv4Address\":\"169.254.8.6\",\"macAddress\":\"aa:bb:cc:db:82:1f\",\"networkAttachmentName\":\"cloudservices\"},{\"attachedNetworkId\":\"/subscriptions/a3eeb848-665a-4dbf-80a4-eb460930fb23/resourceGroups/dev04-cluster/providers/Microsoft.NetworkCloud/l3Networks/l3network-503\",\"defaultGateway\":\"False\",\"ipAllocationMethod\":\"Dynamic\",\"ipv4Address\":\"10.6.36.16\",\"macAddress\":\"aa:bb:cc:b4:2c:46\",\"networkAttachmentName\":\"defaultcni\"}],\"powerState\":\"On\",\"role\":\"Worker\",\"vmSkuName\":\"NC_G2_v1\"},{\"bareMetalMachineId\":\"/subscriptions/a3eeb848-665a-4dbf-80a4-eb460930fb23/resourceGroups/dev04-46c383141dc5-HostedResources-2DA8791C/providers/Microsoft.NetworkCloud/bareMetalMachines/b37dev04a1co04\",\"cpuCores\":2,\"detailedStatus\":\"Running\",\"detailedStatusMessage\":\"Running - virtual machine is running.\",\"diskSizeGB\":300,\"image\":\"mariner-guest-image-qcow2-k8s-1.24.9\",\"kubernetesVersion\":\"v1.24.9\",\"memorySizeGB\":4,\"name\":\"k8s-cluster-name-12f7e183-control-plane-qkt49\",\"networkAttachments\":[{\"attachedNetworkId\":\"/subscriptions/a3eeb848-665a-4dbf-80a4-eb460930fb23/resourceGroups/dev04-cluster/providers/Microsoft.NetworkCloud/cloudServicesNetworks/wideopen\",\"defaultGateway\":\"False\",\"ipAllocationMethod\":\"Dynamic\",\"ipv4Address\":\"169.254.8.5\",\"macAddress\":\"aa:bb:cc:0c:48:da\",\"networkAttachmentName\":\"cloudservices\"},{\"attachedNetworkId\":\"/subscriptions/a3eeb848-665a-4dbf-80a4-eb460930fb23/resourceGroups/dev04-cluster/providers/Microsoft.NetworkCloud/l3Networks/l3network-503\",\"defaultGateway\":\"False\",\"ipAllocationMethod\":\"Dynamic\",\"ipv4Address\":\"10.6.36.15\",\"macAddress\":\"aa:bb:cc:40:08:5c\",\"networkAttachmentName\":\"defaultcni\"}],\"powerState\":\"On\",\"role\":\"ControlPlane\",\"vmSkuName\":\"NC_G2_v1\"}],\"controlPlaneKubernetesVersion\":\"v1.24.9-3\"}}",
+      "isContentBase64": false
+    }
+  }
+}

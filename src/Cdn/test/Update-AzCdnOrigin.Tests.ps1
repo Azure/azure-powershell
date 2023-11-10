@@ -41,7 +41,6 @@ Describe 'Update-AzCdnOrigin'  {
     }
 
     It 'UpdateViaIdentityExpanded' {
-        $PSDefaultParameterValues['Disabled'] = $true
         $origin = Get-AzCdnOrigin -Name $originName -EndpointName $env.ClassicEndpointName -ProfileName $env.ClassicCdnProfileName -ResourceGroupName $env.ResourceGroupName
         
         $origin.Name | Should -Be $originName
@@ -49,7 +48,7 @@ Describe 'Update-AzCdnOrigin'  {
         $origin.HttpPort | Should -Be 456
         $origin.HttpsPort | Should -Be 789
 
-        $origin = $origin | Update-AzCdnOrigin -HostName "www.azure.com" -HttpPort 123 -HttpsPort 666
+        $origin = Update-AzCdnOrigin -HostName "www.azure.com" -HttpPort 123 -HttpsPort 666 -InputObject $origin
 
         $origin.Name | Should -Be $originName
         $origin.HostName | Should -Be "www.azure.com"

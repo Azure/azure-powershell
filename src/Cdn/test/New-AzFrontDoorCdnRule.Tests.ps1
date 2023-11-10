@@ -16,7 +16,7 @@ if(($null -eq $TestName) -or ($TestName -contains 'New-AzFrontDoorCdnRule'))
 
 Describe 'New-AzFrontDoorCdnRule'  {
     It 'CreateExpanded' {
-        $rulesetName = 'rs' + (RandomString -allChars $false -len 6);
+        $rulesetName = 'rsName060'
         Write-Host -ForegroundColor Green "Use rulesetName : $($rulesetName)"
         New-AzFrontDoorCdnRuleSet -ProfileName $env.FrontDoorCdnProfileName -ResourceGroupName $env.ResourceGroupName -Name $rulesetName
         $uriConditon = New-AzFrontDoorCdnRuleRequestUriConditionObject -Name "RequestUri" -ParameterOperator "Any"
@@ -30,7 +30,7 @@ Describe 'New-AzFrontDoorCdnRule'  {
         -CacheConfigurationCacheBehavior "HonorOrigin"
         $actions = @($overrideAction);
         
-        $ruleName = 'r' + (RandomString -allChars $false -len 6);
+        $ruleName = 'ruleName040'
         Write-Host -ForegroundColor Green "Use ruleName : $($ruleName)"
         New-AzFrontDoorCdnRule -ProfileName $env.FrontDoorCdnProfileName -ResourceGroupName $env.ResourceGroupName -RuleSetName $rulesetName -Name $ruleName `
         -Action $actions -Condition $conditions

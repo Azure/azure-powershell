@@ -2,8 +2,22 @@
   "rules": [
     {
       "patterns": [
+        "src/{ModuleName}/{ModuleName}.Management.Sdk/Generated/*",
+        "src/{ModuleName}/{ModuleName}.LegacySdk/Generated/*",
+        "src/{ModuleName}/{ModuleName}.Sdk/Generated/*"
+      ],
+      "phases": [
+        "generated-sdk:module"
+      ]
+    },
+    {
+      "patterns": [
         "src/{ModuleName}/readme.md",
-        "src/{ModuleName}[a-zA-Z`.`/]*/readme.md"
+        "src/{ModuleName}/README.md",
+        "src/{ModuleName}[a-zA-Z`.`/]*/readme.md",
+        "src/{ModuleName}[a-zA-Z`.`/]*/README.md",
+        "src/{ModuleName}/*/README.md",
+        "src/{ModuleName}/*/readme.md"
       ],
       "phases": [
         "build:related-module",
@@ -105,6 +119,15 @@
     },
     {
       "patterns": [
+        "src/{ModuleName}/*UX/*.json$"
+      ],
+      "phases": [
+        "build:module",
+        "ux:module"
+      ]
+    },
+    {
+      "patterns": [
         "src/{ModuleName}/*"
       ],
       "phases": [
@@ -117,6 +140,12 @@
         "ux:module",
         "cmdlet-diff:module"
       ]
+    },
+    {
+      "patterns": [
+        "tools/StaticAnalysis/Exceptions/{ModuleName}/*"
+      ],
+      "phases": []
     },
     {
       "patterns": [

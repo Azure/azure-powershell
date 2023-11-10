@@ -29,25 +29,19 @@ Create artifacts from a existing image template
 
 ## EXAMPLES
 
-### Example 1: Start an image template
+### Example 1: Create artifacts from a existing image template.
 ```powershell
-Start-AzImageBuilderTemplate -Name bez-test-img-temp12 -ResourceGroupName bez-rg
+Start-AzImageBuilderTemplate -Name azps-ibt-1 -ResourceGroupName azps_test_group_imagebuilder
 ```
 
-```output
-Id     Name            PSJobTypeName   State         HasMoreData     Location             Command
---     ----            -------------   -----         -----------     --------             -------
-1      Start-AzImageB…                 Running       True            localhost            Start-AzImageBuilderTemp…
-```
+Create artifacts from a existing image template.
 
-This command starts an image template.
-
-### Example 2: Start an image template
+### Example 2: Create artifacts from a existing image template.
 ```powershell
-Get-AzImageBuilderTemplate -Name bez-test-img-temp12 -ResourceGroupName bez-rg | Start-AzImageBuilderTemplate
+Get-AzImageBuilderTemplate -Name azps-ibt-2 -ResourceGroupName azps_test_group_imagebuilder | Start-AzImageBuilderTemplate
 ```
 
-This command starts an image template.
+Create artifacts from a existing image template.
 
 ## PARAMETERS
 
@@ -67,7 +61,8 @@ Accept wildcard characters: False
 ```
 
 ### -DefaultProfile
-The credentials, account, tenant, and subscription used for communication with Azure.
+The DefaultProfile parameter is not functional.
+Use the SubscriptionId parameter when available if executing the cmdlet against a different subscription.
 
 ```yaml
 Type: System.Management.Automation.PSObject
@@ -230,6 +225,7 @@ To create the parameters described below, construct a hash table containing the 
   - `[ResourceGroupName <String>]`: The name of the resource group.
   - `[RunOutputName <String>]`: The name of the run output
   - `[SubscriptionId <String>]`: Subscription credentials which uniquely identify Microsoft Azure subscription. The subscription Id forms part of the URI for every service call.
+  - `[TriggerName <String>]`: The name of the trigger
 
 ## RELATED LINKS
 

@@ -16,7 +16,7 @@ if(($null -eq $TestName) -or ($TestName -contains 'New-AzFrontDoorCdnOriginGroup
 
 Describe 'New-AzFrontDoorCdnOriginGroup'  {
     It 'CreateExpanded' {
-        $originGroupName = 'org' + (RandomString -allChars $false -len 6);
+        $originGroupName = 'org-pstest060'
 
         $healthProbeSetting = New-AzFrontDoorCdnOriginGroupHealthProbeSettingObject -ProbeIntervalInSecond 1 -ProbePath "/" `
         -ProbeProtocol "Https" -ProbeRequestType "GET"

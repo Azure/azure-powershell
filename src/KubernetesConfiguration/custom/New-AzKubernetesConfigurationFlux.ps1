@@ -20,23 +20,19 @@ Create a new Kubernetes Flux Configuration.
 .Description
 Create a new Kubernetes Flux Configuration.
 .Example
-PS C:\> {{ Add code here }}
-
-{{ Add output here }}
+{{ Add code here }}
 .Example
-PS C:\> {{ Add code here }}
-
-{{ Add output here }}
+{{ Add code here }}
 
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.KubernetesConfiguration.Models.Api20220301.IFluxConfiguration
+Microsoft.Azure.PowerShell.Cmdlets.KubernetesConfiguration.Models.Api20221101.IFluxConfiguration
 .Link
 https://learn.microsoft.com/powershell/module/az.kubernetesconfiguration/new-azkubernetesconfigurationflux
 #>
 function New-AzKubernetesConfigurationFlux {
     [Alias('New-AzK8sConfigurationFlux')]
-    [OutputType([Microsoft.Azure.PowerShell.Cmdlets.KubernetesConfiguration.Models.Api20220301.IFluxConfiguration])]
-    [CmdletBinding(DefaultParameterSetName='CreateExpanded', PositionalBinding=$false, SupportsShouldProcess, ConfirmImpact='Medium')]
+    [OutputType([Microsoft.Azure.PowerShell.Cmdlets.KubernetesConfiguration.Models.Api20221101.IFluxConfiguration])]
+    [CmdletBinding(DefaultParameterSetName = 'CreateExpanded', PositionalBinding = $false, SupportsShouldProcess, ConfirmImpact = 'Medium')]
     param(
         [Parameter(Mandatory)]
         [Microsoft.Azure.PowerShell.Cmdlets.KubernetesConfiguration.Category('Path')]
@@ -45,7 +41,7 @@ function New-AzKubernetesConfigurationFlux {
         ${ClusterName},
 
         [Parameter(Mandatory)]
-        [ValidateSet('ConnectedClusters', 'ManagedClusters')]
+        [ArgumentCompleter({ 'ManagedClusters', 'ConnectedClusters', 'ProvisionedClusters' })]
         [Microsoft.Azure.PowerShell.Cmdlets.KubernetesConfiguration.Category('Path')]
         [System.String]
         # The Kubernetes cluster resource name - i.e.
@@ -68,10 +64,52 @@ function New-AzKubernetesConfigurationFlux {
 
         [Parameter()]
         [Microsoft.Azure.PowerShell.Cmdlets.KubernetesConfiguration.Category('Path')]
-        [Microsoft.Azure.PowerShell.Cmdlets.KubernetesConfiguration.Runtime.DefaultInfo(Script='(Get-AzContext).Subscription.Id')]
+        [Microsoft.Azure.PowerShell.Cmdlets.KubernetesConfiguration.Runtime.DefaultInfo(Script = '(Get-AzContext).Subscription.Id')]
         [System.String]
         # The ID of the target subscription.
         ${SubscriptionId},
+
+        [Parameter()]
+        [Microsoft.Azure.PowerShell.Cmdlets.KubernetesConfiguration.Category('Body')]
+        [System.String]
+        # The account key (shared key) to access the storage account
+        ${AzureBlobAccountKey},
+
+        [Parameter()]
+        [Microsoft.Azure.PowerShell.Cmdlets.KubernetesConfiguration.Category('Body')]
+        [System.String]
+        # The Azure Blob container name to sync from the url endpoint for the flux configuration.
+        ${AzureBlobContainerName},
+
+        [Parameter()]
+        [Microsoft.Azure.PowerShell.Cmdlets.KubernetesConfiguration.Category('Body')]
+        [System.String]
+        # Name of a local secret on the Kubernetes cluster to use as the authentication secret rather than the managed or user-provided configuration secrets.
+        ${AzureBlobLocalAuthRef},
+
+        [Parameter()]
+        [Microsoft.Azure.PowerShell.Cmdlets.KubernetesConfiguration.Category('Body')]
+        [System.String]
+        # The Shared Access token to access the storage container
+        ${AzureBlobSasToken},
+
+        [Parameter()]
+        [Microsoft.Azure.PowerShell.Cmdlets.KubernetesConfiguration.Category('Body')]
+        [System.Int64]
+        # The interval at which to re-reconcile the cluster Azure Blob source with the remote.
+        ${AzureBlobSyncIntervalInSecond},
+
+        [Parameter()]
+        [Microsoft.Azure.PowerShell.Cmdlets.KubernetesConfiguration.Category('Body')]
+        [System.Int64]
+        # The maximum time to attempt to reconcile the cluster Azure Blob source with the remote.
+        ${AzureBlobTimeoutInSecond},
+
+        [Parameter()]
+        [Microsoft.Azure.PowerShell.Cmdlets.KubernetesConfiguration.Category('Body')]
+        [System.String]
+        # The URL to sync for the flux configuration Azure Blob storage account.
+        ${AzureBlobUrl},
 
         [Parameter()]
         [Microsoft.Azure.PowerShell.Cmdlets.KubernetesConfiguration.Category('Body')]
@@ -100,13 +138,13 @@ function New-AzKubernetesConfigurationFlux {
         [Parameter()]
         [Microsoft.Azure.PowerShell.Cmdlets.KubernetesConfiguration.Category('Body')]
         [System.Int64]
-        # The interval at which to re-reconcile the cluster git repository source with the remote.
+        # The interval at which to re-reconcile the cluster bucket source with the remote.
         ${BucketSyncIntervalInSecond},
 
         [Parameter()]
         [Microsoft.Azure.PowerShell.Cmdlets.KubernetesConfiguration.Category('Body')]
         [System.Int64]
-        # The maximum time to attempt to reconcile the cluster git repository source with the remote.
+        # The maximum time to attempt to reconcile the cluster bucket source with the remote.
         ${BucketTimeoutInSecond},
 
         [Parameter()]
@@ -117,7 +155,7 @@ function New-AzKubernetesConfigurationFlux {
 
         [Parameter()]
         [Microsoft.Azure.PowerShell.Cmdlets.KubernetesConfiguration.Category('Body')]
-        [Microsoft.Azure.PowerShell.Cmdlets.KubernetesConfiguration.Runtime.Info(PossibleTypes=([Microsoft.Azure.PowerShell.Cmdlets.KubernetesConfiguration.Models.Api20220301.IFluxConfigurationPropertiesConfigurationProtectedSettings]))]
+        [Microsoft.Azure.PowerShell.Cmdlets.KubernetesConfiguration.Runtime.Info(PossibleTypes = ([Microsoft.Azure.PowerShell.Cmdlets.KubernetesConfiguration.Models.Api20221101.IFluxConfigurationPropertiesConfigurationProtectedSettings]))]
         [System.Collections.Hashtable]
         # Key-value pairs of protected configuration settings for the configuration
         ${ConfigurationProtectedSetting},
@@ -166,10 +204,16 @@ function New-AzKubernetesConfigurationFlux {
 
         [Parameter()]
         [Microsoft.Azure.PowerShell.Cmdlets.KubernetesConfiguration.Category('Body')]
-        [Microsoft.Azure.PowerShell.Cmdlets.KubernetesConfiguration.Runtime.Info(PossibleTypes=([Microsoft.Azure.PowerShell.Cmdlets.KubernetesConfiguration.Models.Api20220301.IFluxConfigurationPropertiesKustomizations]))]
+        [Microsoft.Azure.PowerShell.Cmdlets.KubernetesConfiguration.Runtime.Info(PossibleTypes = ([Microsoft.Azure.PowerShell.Cmdlets.KubernetesConfiguration.Models.Api20221101.IFluxConfigurationPropertiesKustomizations]))]
         [System.Collections.Hashtable]
         # Array of kustomizations used to reconcile the artifact pulled by the source type on the cluster.
         ${Kustomization},
+
+        [Parameter()]
+        [Microsoft.Azure.PowerShell.Cmdlets.KubernetesConfiguration.Category('Body')]
+        [System.String]
+        # The client Id for authenticating a Managed Identity.
+        ${ManagedIdentityClientId},
 
         [Parameter()]
         [Microsoft.Azure.PowerShell.Cmdlets.KubernetesConfiguration.Category('Body')]
@@ -214,6 +258,42 @@ function New-AzKubernetesConfigurationFlux {
         ${Scope},
 
         [Parameter()]
+        [Microsoft.Azure.PowerShell.Cmdlets.KubernetesConfiguration.Category('Body')]
+        [System.String]
+        # Base64-encoded certificate used to authenticate a Service Principal
+        ${ServicePrincipalClientCertificate},
+
+        [Parameter()]
+        [Microsoft.Azure.PowerShell.Cmdlets.KubernetesConfiguration.Category('Body')]
+        [System.String]
+        # The password for the certificate used to authenticate a Service Principal
+        ${ServicePrincipalClientCertificatePassword},
+
+        [Parameter()]
+        [Microsoft.Azure.PowerShell.Cmdlets.KubernetesConfiguration.Category('Body')]
+        [System.Management.Automation.SwitchParameter]
+        # Specifies whether to include x5c header in client claims when acquiring a token to enable subject name / issuer based authentication for the Client Certificate
+        ${ServicePrincipalClientCertificateSendChain},
+
+        [Parameter()]
+        [Microsoft.Azure.PowerShell.Cmdlets.KubernetesConfiguration.Category('Body')]
+        [System.String]
+        # The client Id for authenticating a Service Principal.
+        ${ServicePrincipalClientId},
+
+        [Parameter()]
+        [Microsoft.Azure.PowerShell.Cmdlets.KubernetesConfiguration.Category('Body')]
+        [System.String]
+        # The client secret for authenticating a Service Principal
+        ${ServicePrincipalClientSecret},
+
+        [Parameter()]
+        [Microsoft.Azure.PowerShell.Cmdlets.KubernetesConfiguration.Category('Body')]
+        [System.String]
+        # The tenant Id for authenticating a Service Principal
+        ${ServicePrincipalTenantId},
+
+        [Parameter()]
         [ArgumentCompleter([Microsoft.Azure.PowerShell.Cmdlets.KubernetesConfiguration.Support.SourceKindType])]
         [Microsoft.Azure.PowerShell.Cmdlets.KubernetesConfiguration.Category('Body')]
         [Microsoft.Azure.PowerShell.Cmdlets.KubernetesConfiguration.Support.SourceKindType]
@@ -231,7 +311,8 @@ function New-AzKubernetesConfigurationFlux {
         [ValidateNotNull()]
         [Microsoft.Azure.PowerShell.Cmdlets.KubernetesConfiguration.Category('Azure')]
         [System.Management.Automation.PSObject]
-        # The credentials, account, tenant, and subscription used for communication with Azure.
+        # The DefaultProfile parameter is not functional.
+        # Use the SubscriptionId parameter when available if executing the cmdlet against a different subscription.
         ${DefaultProfile},
 
         [Parameter()]
@@ -284,16 +365,28 @@ function New-AzKubernetesConfigurationFlux {
         [System.Management.Automation.SwitchParameter]
         # Use the default credentials for the proxy
         ${ProxyUseDefaultCredentials}
-)
+    )
 
     process {
-        if ($ClusterType -eq 'ManagedClusters') {
-            $PSBoundParameters.Add('ClusterRp', 'Microsoft.ContainerService')
-        }
-        elseif ($ClusterType -eq 'ConnectedClusters') {
-            $PSBoundParameters.Add('ClusterRp', 'Microsoft.Kubernetes')
-        }
+        try {
+            if ($ClusterType -eq 'ManagedClusters') {
+                $PSBoundParameters.Add('ClusterRp', 'Microsoft.ContainerService')
+            }
+            elseif ($ClusterType -eq 'ConnectedClusters') {
+                $PSBoundParameters.Add('ClusterRp', 'Microsoft.Kubernetes')
+            }
+            elseif ($ClusterType -eq 'ProvisionedClusters') {
+                $PSBoundParameters.Add('ClusterRp', 'Microsoft.HybridContainerService')
+            }
+            else {
+                Write-Error "Please select ClusterType from the following three values: 'ManagedClusters', 'ConnectedClusters', 'ProvisionedClusters'"
+            }
 
-        Az.KubernetesConfiguration.internal\New-AzKubernetesConfigurationFlux @PSBoundParameters
+            write-host "Azure Kubernetes Configuration Flux is being created, need to wait a few minutes..."
+            Az.KubernetesConfiguration.internal\New-AzKubernetesConfigurationFlux @PSBoundParameters
+        }
+        catch {
+            throw
+        }
     }
 }

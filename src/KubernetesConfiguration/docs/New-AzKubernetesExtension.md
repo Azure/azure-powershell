@@ -15,10 +15,12 @@ Create a new Kubernetes Cluster Extension.
 ```
 New-AzKubernetesExtension -ClusterName <String> -ClusterType <String> -Name <String>
  -ResourceGroupName <String> -ExtensionType <String> [-SubscriptionId <String>]
- [-AkAssignedIdentityType <AksIdentityType>] [-AutoUpgradeMinorVersion] [-ClusterReleaseNamespace <String>]
+ [-AkAssignedIdentityType <AksIdentityType>] [-AutoUpgradeMinorVersion]
  [-ConfigurationProtectedSetting <Hashtable>] [-ConfigurationSetting <Hashtable>]
- [-IdentityType <ResourceIdentityType>] [-NamespaceTargetNamespace <String>] [-ReleaseTrain <String>]
- [-Version <String>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
+ [-IdentityType <ResourceIdentityType>] [-PlanName <String>] [-PlanProduct <String>]
+ [-PlanPromotionCode <String>] [-PlanPublisher <String>] [-PlanVersion <String>] [-ReleaseNamespace <String>]
+ [-ReleaseTrain <String>] [-TargetNamespace <String>] [-Version <String>] [-DefaultProfile <PSObject>]
+ [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -28,7 +30,7 @@ Create a new Kubernetes Cluster Extension.
 
 ### Example 1: Create a new Kubernetes Cluster Extension.
 ```powershell
-New-AzKubernetesExtension -ClusterName azpstest_cluster_arc -ClusterType ConnectedClusters -Name azpstest-extension -ResourceGroupName azpstest_gp -ExtensionType azuremonitor-containers
+New-AzKubernetesExtension -ClusterName azpstest_cluster_arc -ClusterType ConnectedClusters -Name azpstest-extension -ResourceGroupName azps_test_group -ExtensionType azuremonitor-containers
 ```
 
 ```output
@@ -41,7 +43,7 @@ Create a new Kubernetes Cluster Extension.
 
 ### Example 2: Create a Flux Cluster Extension.
 ```powershell
-New-AzKubernetesExtension -ClusterName azpstest_cluster_arc -ClusterType ConnectedClusters -Name flux -ResourceGroupName azpstest_gp -ExtensionType microsoft.flux -AutoUpgradeMinorVersion -ClusterReleaseNamespace flux-system -IdentityType 'SystemAssigned'
+New-AzKubernetesExtension -ClusterName azpstest_cluster_arc -ClusterType ConnectedClusters -Name flux -ResourceGroupName azps_test_group -ExtensionType microsoft.flux -AutoUpgradeMinorVersion -ReleaseNamespace flux-system -IdentityType 'SystemAssigned'
 ```
 
 ```output
@@ -114,22 +116,6 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -ClusterReleaseNamespace
-Namespace where the extension Release must be placed, for a Cluster scoped extension.
-If this namespace does not exist, it will be created
-
-```yaml
-Type: System.String
-Parameter Sets: (All)
-Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
 ### -ClusterType
 The Kubernetes cluster resource name - i.e.
 managedClusters, connectedClusters, provisionedClusters.
@@ -177,7 +163,8 @@ Accept wildcard characters: False
 ```
 
 ### -DefaultProfile
-The credentials, account, tenant, and subscription used for communication with Azure.
+The DefaultProfile parameter is not functional.
+Use the SubscriptionId parameter when available if executing the cmdlet against a different subscription.
 
 ```yaml
 Type: System.Management.Automation.PSObject
@@ -237,9 +224,23 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -NamespaceTargetNamespace
-Namespace where the extension will be created for an Namespace scoped extension.
-If this namespace does not exist, it will be created
+### -NoWait
+Run the command asynchronously
+
+```yaml
+Type: System.Management.Automation.SwitchParameter
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -PlanName
+A user defined name of the 3rd Party Artifact that is being procured.
 
 ```yaml
 Type: System.String
@@ -253,11 +254,77 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -NoWait
-Run the command asynchronously
+### -PlanProduct
+The 3rd Party artifact that is being procured.
+E.g.
+NewRelic.
+Product maps to the OfferID specified for the artifact at the time of Data Market onboarding.
 
 ```yaml
-Type: System.Management.Automation.SwitchParameter
+Type: System.String
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -PlanPromotionCode
+A publisher provided promotion code as provisioned in Data Market for the said product/artifact.
+
+```yaml
+Type: System.String
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -PlanPublisher
+The publisher of the 3rd Party Artifact that is being bought.
+E.g.
+NewRelic
+
+```yaml
+Type: System.String
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -PlanVersion
+The version of the desired product/artifact.
+
+```yaml
+Type: System.String
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -ReleaseNamespace
+Namespace where the extension Release must be placed, for a Cluster scoped extension.
+If this namespace does not exist, it will be created
+
+```yaml
+Type: System.String
 Parameter Sets: (All)
 Aliases:
 
@@ -311,6 +378,22 @@ Aliases:
 Required: False
 Position: Named
 Default value: (Get-AzContext).Subscription.Id
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -TargetNamespace
+Namespace where the extension will be created for an Namespace scoped extension.
+If this namespace does not exist, it will be created
+
+```yaml
+Type: System.String
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
 ```
@@ -369,7 +452,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.KubernetesConfiguration.Models.Api20220301.IExtension
+### Microsoft.Azure.PowerShell.Cmdlets.KubernetesConfiguration.Models.Api20221101.IExtension
 
 ## NOTES
 

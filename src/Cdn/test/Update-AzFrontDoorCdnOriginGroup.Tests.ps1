@@ -16,7 +16,7 @@ if(($null -eq $TestName) -or ($TestName -contains 'Update-AzFrontDoorCdnOriginGr
 
 Describe 'Update-AzFrontDoorCdnOriginGroup'  {
     BeforeAll {
-        $originGroupName = 'org' + (RandomString -allChars $false -len 6);
+        $originGroupName = 'org-pstest120'
         $healthProbeSetting = New-AzFrontDoorCdnOriginGroupHealthProbeSettingObject -ProbeIntervalInSecond 1 -ProbePath "/" `
         -ProbeProtocol "Https" -ProbeRequestType "GET"
         $loadBalancingSetting = New-AzFrontDoorCdnOriginGroupLoadBalancingSettingObject -AdditionalLatencyInMillisecond 200 `
@@ -40,11 +40,10 @@ Describe 'Update-AzFrontDoorCdnOriginGroup'  {
     }
 
     It 'UpdateViaIdentityExpanded'  {
-        $PSDefaultParameterValues['Disabled'] = $true
         $updateLoadBalancingSetting = New-AzFrontDoorCdnOriginGroupLoadBalancingSettingObject -AdditionalLatencyInMillisecond 200 `
         -SampleSize 5 -SuccessfulSamplesRequired 3
-        Get-AzFrontDoorCdnOriginGroup -ResourceGroupName $env.ResourceGroupName -ProfileName $env.FrontDoorCdnProfileName -OriginGroupName $originGroupName `
-        | Update-AzFrontDoorCdnOriginGroup  -LoadBalancingSetting $updateLoadBalancingSetting
+        $ogObject = Get-AzFrontDoorCdnOriginGroup -ResourceGroupName $env.ResourceGroupName -ProfileName $env.FrontDoorCdnProfileName -OriginGroupName $originGroupName
+        Update-AzFrontDoorCdnOriginGroup  -LoadBalancingSetting $updateLoadBalancingSetting -InputObject $ogObject
     
         $originGroup = Get-AzFrontDoorCdnOriginGroup -ResourceGroupName $env.ResourceGroupName -ProfileName $env.FrontDoorCdnProfileName -OriginGroupName $originGroupName
         $originGroup.LoadBalancingSetting.SuccessfulSamplesRequired | Should -Be 3

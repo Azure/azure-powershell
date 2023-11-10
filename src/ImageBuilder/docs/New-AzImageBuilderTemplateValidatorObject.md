@@ -30,7 +30,7 @@ Create an in-memory object for ImageTemplateValidator.
 
 ## EXAMPLES
 
-### Example 1: Create a PowerShell validator
+### Example 1: Create a PowerShell validator.
 ```powershell
 New-AzImageBuilderTemplateValidatorObject -PowerShellValidator -Name PowerShellValidator -ScriptUri "https://example.com/path/to/script.sh"
 ```
@@ -43,7 +43,7 @@ PowerShellValidator                                https://example.com/path/to/s
 
 This command creates a powershell validator.
 
-### Example 2: Create a Shell validator
+### Example 2: Create a Shell validator.
 ```powershell
 New-AzImageBuilderTemplateValidatorObject -ShellValidator -Name ShellValidator -ScriptUri "https://example.com/path/to/script.sh"
 ```
@@ -207,9 +207,9 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.ImageBuilder.Models.Api20220214.ImageTemplatePowerShellValidator
+### Microsoft.Azure.PowerShell.Cmdlets.ImageBuilder.Models.Api20220701.ImageTemplatePowerShellValidator
 
-### Microsoft.Azure.PowerShell.Cmdlets.ImageBuilder.Models.Api20220214.ImageTemplateShellValidator
+### Microsoft.Azure.PowerShell.Cmdlets.ImageBuilder.Models.Api20220701.ImageTemplateShellValidator
 
 ## NOTES
 

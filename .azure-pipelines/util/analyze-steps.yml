@@ -2,13 +2,14 @@ parameters:
   configuration: ''
   testFramework: ''
   powerShellPlatform: ''
+  IsGenerateBased: ''
 
 steps:
+- template: get-github-pat-steps.yml
 - template: download-build-steps.yml
   parameters:
     artifactName: build-${{ parameters.testFramework }}
 - task: NodeTool@0
-  condition: eq(variables.IsGenerateBased, true)
   displayName: Install autorest
   inputs:
     versionSpec: '14.17.1'
@@ -16,7 +17,6 @@ steps:
     verbose: false
     customCommand: install autorest@latest
 - task: PowerShell@2
-  condition: eq(variables.IsGenerateBased, true)
   displayName: Setup environment for autorest
   inputs:
     targetType: inline
@@ -24,10 +24,10 @@ steps:
     pwsh: true
 
 - task: UseDotNet@2
-  displayName: 'Use .NET Core sdk'
+  displayName: 'Use .NET Core sdk 6.0.x'
   inputs:
     packageType: sdk
-    version: 3.1.x
+    version: 6.0.x
 
 - pwsh: 'Install-Module "platyPS", "PSScriptAnalyzer" -Force -Confirm:$false -Scope CurrentUser'
   displayName: 'Install PowerShell Dependencies'
@@ -50,7 +50,7 @@ steps:
     custom: msbuild
     arguments: 'build.proj /t:GenerateHelp /p:Configuration=${{ parameters.configuration }};PullRequestNumber=$(System.PullRequest.PullRequestNumber)'
   env:
-      OCTOKITPAT: $(OCTOKITPAT)
+      OCTOKITPAT: $(GithubToken)
       PowerShellPlatform: ${{ parameters.powerShellPlatform }}
 
 - task: DotNetCoreCLI@2
@@ -60,7 +60,8 @@ steps:
     custom: msbuild
     arguments: 'build.proj /t:StaticAnalysis /p:Configuration=${{ parameters.configuration }};PullRequestNumber=$(System.PullRequest.PullRequestNumber)'
   env:
-      OCTOKITPAT: $(OCTOKITPAT)
+      OCTOKITPAT: $(GithubToken)
+      IsGenerateBased: ${{ parameters.IsGenerateBased }}
 
 - template: publish-artifacts-steps.yml
   parameters:

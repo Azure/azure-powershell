@@ -1,6 +1,8 @@
-### Example 1: Create a ContainerAppProb object for ContainerApp.
+### Example 1: Create an in-memory object for ContainerAppProbe.
 ```powershell
-New-AzContainerAppProbeObject -HttpGetPath "/health" -HttpGetPort 8080 -InitialDelaySecond 3 -PeriodSecond 3 -Type Liveness
+$probeHttpGetHttpHeader = New-AzContainerAppProbeHeaderObject -Name "Custom-Header" -Value "Awesome"
+
+New-AzContainerAppProbeObject -Type "Liveness" -HttpGetPath "/health" -HttpGetPort 8080 -InitialDelaySecond 3 -PeriodSecond 3 -HttpGetHttpHeader $probeHttpGetHttpHeader
 ```
 
 ```output
@@ -9,4 +11,4 @@ FailureThreshold InitialDelaySecond PeriodSecond SuccessThreshold TerminationGra
                  3                  3
 ```
 
-Create a ContainerAppProb object for ContainerApp.
+Create an in-memory object for ContainerAppProbe.

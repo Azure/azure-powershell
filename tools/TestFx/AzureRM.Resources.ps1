@@ -173,6 +173,9 @@ function New-AzureRmRoleAssignmentWithId
         [Guid]   [Parameter()] [alias("Id", "PrincipalId")] $ObjectId,
         [string] [Parameter()] [alias("Email", "UserPrincipalName")] $SignInName,
         [string] [Parameter()] [alias("SPN", "ServicePrincipalName")] $ApplicationId,
+        [string] [Parameter()] $Condition,
+        [string] [Parameter()] $ConditionVersion,
+        [string] [Parameter()] $Description,
         [string] [Parameter()] $ResourceGroupName,
         [string] [Parameter()] $ResourceName,
         [string] [Parameter()] $ResourceType,
@@ -202,6 +205,21 @@ function New-AzureRmRoleAssignmentWithId
     if (-not ([string]::IsNullOrEmpty($ApplicationId)))
     {
         $cmdlet.ApplicationId = $ApplicationId
+    }
+
+    if (-not ([string]::IsNullOrEmpty($Description)))
+    {
+        $cmdlet.Description = $Description
+    }
+
+    if (-not ([string]::IsNullOrEmpty($Condition)))
+    {
+        $cmdlet.Condition = $Condition
+    }
+
+    if (-not ([string]::IsNullOrEmpty($ConditionVersion)))
+    {
+        $cmdlet.ConditionVersion = $ConditionVersion
     }
 
     if (-not ([string]::IsNullOrEmpty($ResourceGroupName)))

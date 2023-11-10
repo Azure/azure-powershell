@@ -1,7 +1,7 @@
 ---
 external help file:
 Module Name: Az.NetworkFunction
-online version: https://learn.microsoft.com/powershell/module/az.networkfunction/set-aznetworkfunctiontrafficcollector
+online version: https://learn.microsoft.com/powershell/module/az.networkfunction/update-aznetworkfunctiontrafficcollector
 schema: 2.0.0
 ---
 

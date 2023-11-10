@@ -22,10 +22,10 @@ Describe 'Test-AzFrontDoorCdnProfileHostNameAvailability'  {
     }
 
     It 'CheckViaIdentityExpanded' {
-        $PSDefaultParameterValues['Disabled'] = $true
         $hostName = "hello1.dev.cdn.azure.cn";
-        $result = Get-AzFrontDoorCdnProfile -Name $env.FrontDoorCdnProfileName -ResourceGroupName $env.ResourceGroupName | `
-        Test-AzFrontDoorCdnProfileHostNameAvailability -HostName $hostName
+        $resultObject = Get-AzFrontDoorCdnProfile -Name $env.FrontDoorCdnProfileName -ResourceGroupName $env.ResourceGroupName
+        $result = Test-AzFrontDoorCdnProfileHostNameAvailability -HostName $hostName -InputObject $resultObject
+
         $result.NameAvailable | Should -Be $true
     }
 }

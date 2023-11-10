@@ -1,11 +1,4 @@
 parameters:
-- name: poolName
-  displayName: Pool Name
-  type: string
-  default: pool-windows-2019
-- name: dotnet_sdk_3_1
-  displayName: .NET Core 3.1
-  default: 3.1.x
 - name: dotnet_sdk_6
   displayName: .NET 6
   type: string
@@ -17,7 +10,15 @@ parameters:
 - name: testFramework
   displayName: Test Framework
   type: string
-  default: netcoreapp3.1
+  default: net6.0
+- name: testPoolName
+  displayName: Test Pool Name
+  type: string
+  default: pool-windows-2019
+- name: testPoolVMImage
+  displayName: Test Pool VM Image
+  type: string
+  default: ' '
 
 variables:
   EnableTestCoverage: true
@@ -27,17 +28,44 @@ pr: none
 trigger: none
 
 jobs:
-- job: TestCoverage
-  timeoutInMinutes: 600
-  pool:
-    name: ${{ parameters.poolName }}
+- job: Build
+  displayName: Build
+  pool: pool-windows-2019
 
   steps:
   - task: UseDotNet@2
-    displayName: 'Install .NET Core 3.1 SDK'
+    displayName: 'Install .NET 6 SDK'
     inputs:
       packageType: sdk
-      version: ${{ parameters.dotnet_sdk_3_1 }}
+      version: ${{ parameters.dotnet_sdk_6 }}
+
+  - task: DotNetCoreCLI@2
+    displayName: Build Azure PowerShell Modules
+    inputs:
+      command: custom
+      custom: msbuild
+      arguments: 'build.proj -t:"Clean;Build" -p:"Configuration=Debug"'
+
+  - task: PublishPipelineArtifact@1
+    displayName: Publish Build Artifacts
+    inputs:
+      targetPath: artifacts
+      artifact: BuildArtifacts
+
+- job: TestCoverage
+  dependsOn: Build
+  timeoutInMinutes: 600
+  pool:
+    name: ${{ parameters.testPoolName }}
+    vmImage: ${{ parameters.testPoolVMImage }}
+
+  steps:
+  - template: util/get-github-pat-steps.yml
+  - task: UseDotNet@2
+    displayName: 'Install .NET 6.0 SDK'
+    inputs:
+      packageType: sdk
+      version: ${{ parameters.dotnet_sdk_6 }}
 
   - task: PowerShell@2
     displayName: Initialize Environment
@@ -46,12 +74,11 @@ jobs:
       targetType: filePath
       filePath: ./tools/TestFx/Utilities/CommonUtility.ps1
 
-  - task: DotNetCoreCLI@2
-    displayName: Build Azure PowerShell Solution
+  - task: DownloadPipelineArtifact@2
+    displayName: Download pipeline artifacts
     inputs:
-      command: custom
-      custom: msbuild
-      arguments: 'build.proj -t:"Clean;Build" -p:"Configuration=Debug"'
+      targetPath: artifacts
+      artifactName: BuildArtifacts
 
   - task: DotNetCoreCLI@2
     displayName: Test SDK-Based Cmdlets
@@ -66,25 +93,18 @@ jobs:
     condition: succeeded()
     inputs:
       pwsh: true
-      workingDirectory: 'artifacts/Debug'
       targetType: inline
       script: |
         Install-Module -Name Pester -RequiredVersion 4.10.1 -Force
-        Import-Module (Join-Path -Path . -ChildPath Az.Accounts | Join-Path -ChildPath Az.Accounts.psd1) -Force
 
-        $PreErrorActionPreference = $ErrorActionPreference
-        $ErrorActionPreference = "SilentlyContinue"
-
-        Get-ChildItem -Path . -Filter test-module.ps1 -File -Recurse | ForEach-Object {
-          try {
-            . $_ -Isolated
-          }
-          catch {
-            Write-Host $_.Exception
-          }
+        if ($IsWindows) { $delimiter = ";" } else { $delimiter = ":" }
+        $rootDir = (Get-Location).Path
+        $debugDir = Join-Path -Path $rootDir -ChildPath "artifacts" | Join-Path -ChildPath "Debug"
+        $env:PSModulePath += $delimiter + $debugDir
+        Get-ChildItem -Path $debugDir -Filter test-module.ps1 -File -Recurse | Select-Object -ExpandProperty FullName | ForEach-Object {
+          Write-Host "##[section]Testing $_"
+          & $_
         }
-
-        $ErrorActionPreference = $PreErrorActionPreference
 
   - task: PowerShell@2
     displayName: Analyze Test Coverage
@@ -102,7 +122,7 @@ jobs:
       pwsh: true
       targetType: filePath
       filePath: ./tools/TestFx/Coverage/SaveTestCoverageResult.ps1
-      arguments: CITest $(KustoServicePrincipalTenantId) $(KustoServicePrincipalId) $(KustoServicePrincipalSecret) $(KustoClusterName) $(KustoClusterRegion)
+      arguments: CITest $(KustoTenantId) $(KustoServicePrincipalId) $(KustoServicePrincipalSecret) $(KustoClusterName) $(KustoClusterRegion)
 
   - task: PowerShell@2
     displayName: Update Test Coverage Baseline
@@ -119,14 +139,14 @@ jobs:
         git config user.name "azure-powershell-bot"
         git add $blCsv
         git commit -m "Update with the latest test coverage data"
-        git remote set-url origin https://azure-powershell-bot:$(BotAccessToken)@github.com/Azure/azure-powershell.git
+        git remote set-url origin https://azure-powershell-bot:$(GithubToken)@github.com/Azure/azure-powershell.git
         git push origin testcoverage-baseline --force
 
         $title = "Update test coverage baseline"
         $headBranch = "testcoverage-baseline"
         $targetBranch = "main"
         $description = "Update with the latest test coverage baseline data"
-        ./tools/Github/CreatePR.ps1 -Title $title -HeadBranch $headBranch -BaseBranch $targetBranch -BotAccessToken $(BotAccessToken) -Description $description
+        ./tools/Github/CreatePR.ps1 -Title $title -HeadBranch $headBranch -BaseBranch $targetBranch -BotAccessToken $(GithubToken) -Description $description
 
   - task: PublishPipelineArtifact@1
     displayName: Publish Test Coverage Result

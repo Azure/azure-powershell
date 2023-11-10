@@ -20,7 +20,7 @@ Describe 'New-AzCdnCustomDomain'  {
         # Hard-coding host and endpoint names due to requirement for DNS CNAME
         $classicCdnEndpointName = 'aa-powershell-20230422-oigr9w'
         $customDomainHostName = 'aa-powershell-20230422-oigr9w.cdne2e.azfdtest.xyz'
-        $customDomainName = 'cd-' + (RandomString -allChars $false -len 6);
+        $customDomainName = 'cd-pstest010'
         $location = "westus"
         $origin = @{
             Name = "origin1"
@@ -46,8 +46,6 @@ Describe 'New-AzCdnCustomDomain'  {
 
         $customDomain.Name | Should -Be $customDomainName
         $customDomain.HostName | Should -Be $customDomainHostName
-
-        # /Remove-AzCdnCustomDomain -EndpointName $classicCdnEndpointName -Name $customDomainName -ProfileName $env.ClassicCdnProfileName -ResourceGroupName $env.ResourceGroupName
     }
 }
 

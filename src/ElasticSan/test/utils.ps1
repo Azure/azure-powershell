@@ -26,7 +26,9 @@ function setupEnv() {
 
     $env.RandomString = (RandomString $false 8)
     $env.ResourceGroupName = "testelasticsanrg" + $env.RandomString
-    $env.Location = "eastus"
+    $env.ResourceGroupName2 = "testelasticsanrg"
+    # $env.ResourceGroupName3 = "weitry"
+    $env.Location = "eastus2euap"
 
     New-AzResourceGroup -Name $env.ResourceGroupName -Location $env.Location
 
@@ -39,16 +41,25 @@ function setupEnv() {
     $env.vnetResourceId1 = '/subscriptions/' + $env.SubscriptionId + '/resourceGroups/' + $env.ResourceGroupName + '/providers/Microsoft.Network/virtualNetworks/' + $vnetName + '/subnets/' + $subnet1Name
     $env.vnetResourceId2 = '/subscriptions/' + $env.SubscriptionId + '/resourceGroups/' + $env.ResourceGroupName + '/providers/Microsoft.Network/virtualNetworks/' + $vnetName + '/subnets/' + $subnet2Name
 
-    $env.ElasticSanLocation = "southcentralusstg"
+    $env.Keyvaultname = "testelasticsanvault1"
+    $env.Keyname = "eskey1"
+    $env.KeyvaultUri = "https://testelasticsanvault1.vault.azure.net:443"
+    $uai1 = "estestuserid1"
+    $uai2 = "estestuserid2"
+    $env.Useridentity = Get-AzUserAssignedIdentity -ResourceGroupName $env.ResourceGroupName2 -Name $uai1
+    $env.Useridentity2 = Get-AzUserAssignedIdentity -ResourceGroupName $env.ResourceGroupName2 -Name $uai2
+
+    $env.ElasticSanLocation = "eastus2euap"
     $env.ElasticSanName1 = "testelasticsan1" + $env.RandomString
     $env.ElasticSanName2 = "testelasticsan2" + $env.RandomString
+    $env.ElasticSanName3 = "testelasticsan1"
     $env.BaseSizeTib = 1
     $env.ExtendedCapacitySizeTib = 6 
     $env.ElasticSanTags = @{tag1 = "value1"; tag2 = "value2"}
 
     # Initialize an Elastic SAN
-    New-AzElasticSan -ResourceGroupName $env.ResourceGroupName -Name $env.ElasticSanName1 -AvailabilityZone 'zone1' -BaseSizeTib $env.BaseSizeTib -ExtendedCapacitySizeTib $env.ExtendedCapacitySizeTib -Location $env.ElasticSanLocation -SkuName 'Premium_LRS' -Tag $env.ElasticSanTags
-    New-AzElasticSan -ResourceGroupName $env.ResourceGroupName -Name $env.ElasticSanName2 -AvailabilityZone 'zone1' -BaseSizeTib $env.BaseSizeTib -ExtendedCapacitySizeTib $env.ExtendedCapacitySizeTib -Location $env.ElasticSanLocation -SkuName 'Premium_LRS' -Tag $env.ElasticSanTags
+    New-AzElasticSan -ResourceGroupName $env.ResourceGroupName -Name $env.ElasticSanName1 -BaseSizeTib $env.BaseSizeTib -ExtendedCapacitySizeTib $env.ExtendedCapacitySizeTib -Location $env.ElasticSanLocation -SkuName 'Premium_LRS' -Tag $env.ElasticSanTags
+    New-AzElasticSan -ResourceGroupName $env.ResourceGroupName -Name $env.ElasticSanName2 -BaseSizeTib $env.BaseSizeTib -ExtendedCapacitySizeTib $env.ExtendedCapacitySizeTib -Location $env.ElasticSanLocation -SkuName 'Premium_LRS' -Tag $env.ElasticSanTags
     $env.VolumeGroupName = "testvolgroup" + $env.RandomString
     New-AzElasticSanVolumeGroup -ResourceGroupName $env.ResourceGroupName -ElasticSanName $env.ElasticSanName1 -Name $env.VolumeGroupName -Encryption 'EncryptionAtRestWithPlatformKey' -ProtocolType 'Iscsi'
     $env.VolumeName = "testvol" + $env.RandomString

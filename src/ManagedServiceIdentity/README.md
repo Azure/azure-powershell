@@ -77,7 +77,8 @@ directive:
   - where:
       subject: UserAssignedIdentityAssociatedResource
     set:
-      preview-message: This is a preview version of the Associated Resources feature.
+      preview-announcement:
+        preview-message: This is a preview version of the Associated Resources feature.
 
   # END     
 

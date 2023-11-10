@@ -21,12 +21,12 @@ Create an in-memory object for ImageTemplateValidator.
 Create an in-memory object for ImageTemplateValidator.
 
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.ImageBuilder.Models.Api20220214.ImageTemplatePowerShellValidator
+Microsoft.Azure.PowerShell.Cmdlets.ImageBuilder.Models.Api20220701.ImageTemplatePowerShellValidator
 .Link
 https://learn.microsoft.com/powershell/module/az.ImageBuilder/new-azimagebuildertemplatevalidatorobject
 #>
 function New-AzImageBuilderTemplateValidatorObject_PowerShellValidator {
-    [OutputType('Microsoft.Azure.PowerShell.Cmdlets.ImageBuilder.Models.Api20220214.ImageTemplatePowerShellValidator')]
+    [OutputType('Microsoft.Azure.PowerShell.Cmdlets.ImageBuilder.Models.Api20220701.ImageTemplatePowerShellValidator')]
     [CmdletBinding(PositionalBinding=$false)]
     Param(
 
@@ -54,14 +54,14 @@ function New-AzImageBuilderTemplateValidatorObject_PowerShellValidator {
         # Change it to switch parameter
         # [Parameter(Mandatory, HelpMessage="The type of validation you want to use on the Image. For example, `"Shell`" can be shell validation.")]
         # [string]
-        # $Type 
+        # $Type
         [Parameter(Mandatory, HelpMessage="Runs the specified PowerShell script during the validation phase (Windows). Corresponds to Packer powershell provisioner. Exactly one of 'scriptUri' or 'inline' can be specified.")]
         [Switch]
         $PowerShellValidator
     )
 
     process {
-        $Object = [Microsoft.Azure.PowerShell.Cmdlets.ImageBuilder.Models.Api20220214.ImageTemplatePowerShellValidator]::New()
+        $Object = [Microsoft.Azure.PowerShell.Cmdlets.ImageBuilder.Models.Api20220701.ImageTemplatePowerShellValidator]::New()
 
         if ($PSBoundParameters.ContainsKey('Inline')) {
             $Object.Inline = $Inline

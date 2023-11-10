@@ -44,7 +44,7 @@ namespace Microsoft.Azure.PowerShell.Tools.AzPredictor.Test.Mocks
         /// <summary>
         /// The task that a test can wait on until RequestPredictionsAsync is complete.
         /// </summary>
-        public TaskCompletionSource<bool?> RequestPredictionTaskCompletionSource { get; private set; }
+        public TaskCompletionSource<(bool, CommandLineSummary)?> RequestPredictionTaskCompletionSource { get; private set; }
 
         /// <summary>
         /// Constructs a new instance of <see cref="MockAzPredictorService"/>
@@ -73,11 +73,11 @@ namespace Microsoft.Azure.PowerShell.Tools.AzPredictor.Test.Mocks
         }
 
         /// <inheritdoc/>
-        public override Task<bool?> RequestPredictionsAsync(IEnumerable<string> commands, string requestId, CancellationToken cancellationToken)
+        public override Task<(bool, CommandLineSummary)?> RequestPredictionsAsync(IEnumerable<string> commands, string requestId, CancellationToken cancellationToken)
         {
             if (ThrowException)
             {
-                RequestPredictionTaskCompletionSource.TrySetResult(false);
+                RequestPredictionTaskCompletionSource.TrySetResult((false, null));
                 var e = new MockTestException("Test Exception");
                 throw new ServiceRequestException(e.Message, e)
                 {
@@ -86,7 +86,7 @@ namespace Microsoft.Azure.PowerShell.Tools.AzPredictor.Test.Mocks
             }
 
             Commands = commands;
-            RequestPredictionTaskCompletionSource.TrySetResult(true);
+            RequestPredictionTaskCompletionSource.TrySetResult((true, new CommandLineSummary(3, 3, null)));
             return RequestPredictionTaskCompletionSource.Task;
         }
 
@@ -115,7 +115,7 @@ namespace Microsoft.Azure.PowerShell.Tools.AzPredictor.Test.Mocks
 
         public void ResetRequestPredictionTask()
         {
-            RequestPredictionTaskCompletionSource = new TaskCompletionSource<bool?>();
+            RequestPredictionTaskCompletionSource = new TaskCompletionSource<(bool, CommandLineSummary)?>();
         }
     }
 }

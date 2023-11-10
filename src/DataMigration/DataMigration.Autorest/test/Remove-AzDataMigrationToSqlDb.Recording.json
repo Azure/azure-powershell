@@ -18,7 +18,7 @@
         "Cache-Control": [ "no-cache" ],
         "Pragma": [ "no-cache" ],
         "Retry-After": [ "15" ],
-        "Azure-AsyncOperation": [ "https://eastus2euap.management.azure.com/subscriptions/f133ff51-53dc-4486-a487-47049d50ab9e/providers/Microsoft.DataMigration/locations/eastus2euap/operationTypes/createsqldbmigration/operationResults/7e51d7ab-e5ab-4f67-94f5-6c2e7b8e0db9?api-version=2022-03-30-preview" ],
+        "Azure-AsyncOperation": [ "https://management.azure.com/subscriptions/f133ff51-53dc-4486-a487-47049d50ab9e/providers/Microsoft.DataMigration/locations/eastus2euap/operationTypes/createsqldbmigration/operationResults/7e51d7ab-e5ab-4f67-94f5-6c2e7b8e0db9?api-version=2022-03-30-preview" ],
         "x-ms-request-id": [ "cac6b5f1-3650-448b-ad77-fdb2aeaee0bb" ],
         "Server": [ "Microsoft-HTTPAPI/2.0" ],
         "x-ms-ratelimit-remaining-subscription-writes": [ "1198" ],
@@ -37,10 +37,10 @@
       "isContentBase64": false
     }
   },
-  "Remove-AzDataMigrationToSqlDb+[NoContext]+Delete+$GET+https://eastus2euap.management.azure.com/subscriptions/f133ff51-53dc-4486-a487-47049d50ab9e/providers/Microsoft.DataMigration/locations/eastus2euap/operationTypes/createsqldbmigration/operationResults/7e51d7ab-e5ab-4f67-94f5-6c2e7b8e0db9?api-version=2022-03-30-preview+2": {
+  "Remove-AzDataMigrationToSqlDb+[NoContext]+Delete+$GET+https://management.azure.com/subscriptions/f133ff51-53dc-4486-a487-47049d50ab9e/providers/Microsoft.DataMigration/locations/eastus2euap/operationTypes/createsqldbmigration/operationResults/7e51d7ab-e5ab-4f67-94f5-6c2e7b8e0db9?api-version=2022-03-30-preview+2": {
     "Request": {
       "Method": "GET",
-      "RequestUri": "https://eastus2euap.management.azure.com/subscriptions/f133ff51-53dc-4486-a487-47049d50ab9e/providers/Microsoft.DataMigration/locations/eastus2euap/operationTypes/createsqldbmigration/operationResults/7e51d7ab-e5ab-4f67-94f5-6c2e7b8e0db9?api-version=2022-03-30-preview",
+      "RequestUri": "https://management.azure.com/subscriptions/f133ff51-53dc-4486-a487-47049d50ab9e/providers/Microsoft.DataMigration/locations/eastus2euap/operationTypes/createsqldbmigration/operationResults/7e51d7ab-e5ab-4f67-94f5-6c2e7b8e0db9?api-version=2022-03-30-preview",
       "Content": null,
       "isContentBase64": false,
       "Headers": {
@@ -79,10 +79,10 @@
       "isContentBase64": false
     }
   },
-  "Remove-AzDataMigrationToSqlDb+[NoContext]+Delete+$GET+https://eastus2euap.management.azure.com/subscriptions/f133ff51-53dc-4486-a487-47049d50ab9e/resourceGroups/tsum38RG/providers/Microsoft.Sql/servers/dmstestsqldb/providers/Microsoft.DataMigration/databaseMigrations/at_sqldbtrgt1?api-version=2022-03-30-preview+3": {
+  "Remove-AzDataMigrationToSqlDb+[NoContext]+Delete+$GET+https://management.azure.com/subscriptions/f133ff51-53dc-4486-a487-47049d50ab9e/resourceGroups/tsum38RG/providers/Microsoft.Sql/servers/dmstestsqldb/providers/Microsoft.DataMigration/databaseMigrations/at_sqldbtrgt1?api-version=2022-03-30-preview+3": {
     "Request": {
       "Method": "GET",
-      "RequestUri": "https://eastus2euap.management.azure.com/subscriptions/f133ff51-53dc-4486-a487-47049d50ab9e/resourceGroups/tsum38RG/providers/Microsoft.Sql/servers/dmstestsqldb/providers/Microsoft.DataMigration/databaseMigrations/at_sqldbtrgt1?api-version=2022-03-30-preview",
+      "RequestUri": "https://management.azure.com/subscriptions/f133ff51-53dc-4486-a487-47049d50ab9e/resourceGroups/tsum38RG/providers/Microsoft.Sql/servers/dmstestsqldb/providers/Microsoft.DataMigration/databaseMigrations/at_sqldbtrgt1?api-version=2022-03-30-preview",
       "Content": null,
       "isContentBase64": false,
       "Headers": {
@@ -123,7 +123,7 @@
   "Remove-AzDataMigrationToSqlDb+[NoContext]+Delete+$DELETE+https://management.azure.com/subscriptions/f133ff51-53dc-4486-a487-47049d50ab9e/resourceGroups/tsum38RG/providers/Microsoft.Sql/servers/dmstestsqldb/providers/Microsoft.DataMigration/databaseMigrations/at_sqldbtrgt1?force=True\u0026api-version=2022-03-30-preview+4": {
     "Request": {
       "Method": "DELETE",
-      "RequestUri": "https://eastus2euap.management.azure.com/subscriptions/f133ff51-53dc-4486-a487-47049d50ab9e/resourceGroups/tsum38RG/providers/Microsoft.Sql/servers/dmstestsqldb/providers/Microsoft.DataMigration/databaseMigrations/at_sqldbtrgt1?force=True\u0026api-version=2022-03-30-preview",
+      "RequestUri": "https://management.azure.com/subscriptions/f133ff51-53dc-4486-a487-47049d50ab9e/resourceGroups/tsum38RG/providers/Microsoft.Sql/servers/dmstestsqldb/providers/Microsoft.DataMigration/databaseMigrations/at_sqldbtrgt1?force=True\u0026api-version=2022-03-30-preview",
       "Content": null,
       "isContentBase64": false,
       "Headers": {
@@ -144,7 +144,7 @@
         "Cache-Control": [ "no-cache" ],
         "Pragma": [ "no-cache" ],
         "Retry-After": [ "15" ],
-        "Azure-AsyncOperation": [ "https://eastus2euap.management.azure.com/subscriptions/f133ff51-53dc-4486-a487-47049d50ab9e/providers/Microsoft.DataMigration/locations/eastus2euap/operationTypes/dropsqldbmigration/operationResults/ea8a014b-27a8-4961-bcfb-2c08cd2c343c?api-version=2022-03-30-preview" ],
+        "Azure-AsyncOperation": [ "https://management.azure.com/subscriptions/f133ff51-53dc-4486-a487-47049d50ab9e/providers/Microsoft.DataMigration/locations/eastus2euap/operationTypes/dropsqldbmigration/operationResults/ea8a014b-27a8-4961-bcfb-2c08cd2c343c?api-version=2022-03-30-preview" ],
         "x-ms-request-id": [ "49cfb2d7-39c3-402a-8716-823e0b01e677" ],
         "Server": [ "Microsoft-HTTPAPI/2.0" ],
         "x-ms-ratelimit-remaining-subscription-deletes": [ "14998" ],
@@ -165,7 +165,7 @@
   "Remove-AzDataMigrationToSqlDb+[NoContext]+Delete+$GET+https://management.azure.com/subscriptions/f133ff51-53dc-4486-a487-47049d50ab9e/resourceGroups/tsum38RG/providers/Microsoft.Sql/servers/dmstestsqldb/providers/Microsoft.DataMigration/databaseMigrations/at_sqldbtrgt1?api-version=2022-03-30-preview+5": {
     "Request": {
       "Method": "GET",
-      "RequestUri": "https://eastus2euap.management.azure.com/subscriptions/f133ff51-53dc-4486-a487-47049d50ab9e/resourceGroups/tsum38RG/providers/Microsoft.Sql/servers/dmstestsqldb/providers/Microsoft.DataMigration/databaseMigrations/at_sqldbtrgt1?api-version=2022-03-30-preview",
+      "RequestUri": "https://management.azure.com/subscriptions/f133ff51-53dc-4486-a487-47049d50ab9e/resourceGroups/tsum38RG/providers/Microsoft.Sql/servers/dmstestsqldb/providers/Microsoft.DataMigration/databaseMigrations/at_sqldbtrgt1?api-version=2022-03-30-preview",
       "Content": null,
       "isContentBase64": false,
       "Headers": {

@@ -19,6 +19,10 @@ Describe 'Remove-AzContainerAppAuthConfig' {
         { throw [System.NotImplementedException] } | Should -Not -Throw
     }
 
+    It 'DeleteViaIdentityContainerApp' -skip {
+        { throw [System.NotImplementedException] } | Should -Not -Throw
+    }
+
     It 'DeleteViaIdentity' -skip {
         { throw [System.NotImplementedException] } | Should -Not -Throw
     }

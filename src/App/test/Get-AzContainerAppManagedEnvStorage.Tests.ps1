@@ -23,6 +23,10 @@ Describe 'Get-AzContainerAppManagedEnvStorage' {
         { throw [System.NotImplementedException] } | Should -Not -Throw
     }
 
+    It 'GetViaIdentityManagedEnvironment' -skip {
+        { throw [System.NotImplementedException] } | Should -Not -Throw
+    }
+
     It 'GetViaIdentity' -skip {
         { throw [System.NotImplementedException] } | Should -Not -Throw
     }

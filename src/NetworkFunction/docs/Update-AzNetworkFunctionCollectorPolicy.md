@@ -1,7 +1,7 @@
 ---
 external help file:
 Module Name: Az.NetworkFunction
-online version: https://learn.microsoft.com/powershell/module/az.networkfunction/set-aznetworkfunctioncollectorpolicy
+online version: https://learn.microsoft.com/powershell/module/az.networkfunction/update-aznetworkfunctioncollectorpolicy
 schema: 2.0.0
 ---
 

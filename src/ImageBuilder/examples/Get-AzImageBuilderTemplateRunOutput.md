@@ -1,25 +1,25 @@
-### Example 1: List all run results under a template
+### Example 1: List the specified run output for the specified image template resource by ImageTemplateName.
 ```powershell
-Get-AzImageBuilderTemplateRunOutput -ImageTemplateName test-img-temp -ResourceGroupName bez-rg
+Get-AzImageBuilderTemplateRunOutput -ImageTemplateName azps-ibt-1 -ResourceGroupName azps_test_group_imagebuilder
 ```
 
 ```output
-Name    SystemDataCreatedAt SystemDataCreatedBy SystemDataCreatedByType SystemDataLastModifiedAt SystemDataLastModifiedBy SystemDataLastModifiedByType ResourceGroupName
-----    ------------------- ------------------- ----------------------- ------------------------ ------------------------ ---------------------------- -----------------
-testrunoutput                                                                                                                                          bez-rg
+Name         ProvisioningState ResourceGroupName
+----         ----------------- -----------------
+runoutput-01 Succeeded         azps_test_group_imagebuilder
 ```
 
-This command lists all run results under a template.
+List the specified run output for the specified image template resource by ImageTemplateName.
 
-### Example 2: Get a run result under a template
+### Example 2: Get the specified run output for the specified image template resource by Name.
 ```powershell
-Get-AzImageBuilderTemplateRunOutput -ImageTemplateName test-img-temp -ResourceGroupName bez-rg -Name runout-template-name-u7gjq
+Get-AzImageBuilderTemplateRunOutput -ImageTemplateName azps-ibt-1 -ResourceGroupName azps_test_group_imagebuilder -Name runoutput-01
 ```
 
 ```output
-Name    SystemDataCreatedAt SystemDataCreatedBy SystemDataCreatedByType SystemDataLastModifiedAt SystemDataLastModifiedBy SystemDataLastModifiedByType ResourceGroupName
-----    ------------------- ------------------- ----------------------- ------------------------ ------------------------ ---------------------------- -----------------
-runout-template-name-u7gjq  
+Name         ProvisioningState ResourceGroupName
+----         ----------------- -----------------
+runoutput-01 Succeeded         azps_test_group_imagebuilder
 ```
-This command gets a run result under a template.
 
+Get the specified run output for the specified image template resource by Name.

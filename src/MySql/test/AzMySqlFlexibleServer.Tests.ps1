@@ -15,9 +15,9 @@ Describe 'AzMySqlFlexibleServer' {
     It 'List1' {
         {
             $servers = Get-AzMySqlFlexibleServer
-            $servers.Count | Should -BeGreaterOrEqual 1  
+            $servers.Count | Should -BeGreaterOrEqual 1
             $servers = Get-AzMySqlFlexibleServer -ResourceGroupName $env.resourceGroup
-            $servers.Count | Should -Be 1  
+            $servers.Count | Should -Be 1
         } | Should -Not -Throw
     }
 
@@ -25,8 +25,8 @@ Describe 'AzMySqlFlexibleServer' {
         {
             $servers = Get-AzMySqlFlexibleServer -ResourceGroupName $env.resourceGroup -Name $env.flexibleServerName
             $servers.Name | Should -Be $env.flexibleServerName
-            
-            $server = Update-AzMySqlFlexibleServer -ResourceGroupName $env.resourceGroup -Name $env.flexibleServerName -BackupRetentionDay 12 
+
+            $server = Update-AzMySqlFlexibleServer -ResourceGroupName $env.resourceGroup -Name $env.flexibleServerName -BackupRetentionDay 12
             $server.BackupRetentionDay | Should -Be 12
 
             $server = Update-AzMySqlFlexibleServer -ResourceGroupName $env.resourceGroup -Name $env.flexibleServerName -MaintenanceWindow "Mon:1:30"
@@ -34,14 +34,15 @@ Describe 'AzMySqlFlexibleServer' {
             $server.MaintenanceWindowDayOfWeek | Should -Be '1'
             $server.MaintenanceWindowStartHour | Should -Be '1'
             $server.MaintenanceWindowStartMinute | Should -Be '30'
-            
+
             Stop-AzMySqlFlexibleServer -ResourceGroupName $env.resourceGroup -Name $env.flexibleServerName
-            
+
             Start-AzMySqlFlexibleServer -ResourceGroupName $env.resourceGroup -Name $env.flexibleServerName
-            
+
             Restart-AzMySqlFlexibleServer -ResourceGroupName $env.resourceGroup -Name $env.flexibleServerName
-        
-            $replica = Get-AzMySqlFlexibleServer -ResourceGroupName $env.resourceGroup -ServerName $env.flexibleServerName | New-AzMySqlFlexibleServerReplica -Replica $env.replicaName -ResourceGroupName $env.resourceGroup 
+
+            $flxServer = Get-AzMySqlFlexibleServer -ResourceGroupName $env.resourceGroup -ServerName $env.flexibleServerName
+            $replica = New-AzMySqlFlexibleServerReplica -InputObject $flxServer -Replica $env.replicaName -ResourceGroupName $env.resourceGroup
             $replica.Name | Should -Be $env.replicaName
             $replica.SkuName | Should -Be $env.flexibleSku
 
@@ -49,7 +50,7 @@ Describe 'AzMySqlFlexibleServer' {
             $replica.Count | Should -Be 1
 
             Remove-AzMySqlFlexibleServer -ResourceGroupName $env.resourceGroup -Name $env.replicaName
-        
+
         } | Should -Not -Throw
     }
 
@@ -68,16 +69,16 @@ Describe 'AzMySqlFlexibleServer' {
 
             $ID = "/subscriptions/$($env.SubscriptionId)/resourceGroups/$($env.resourceGroup)/providers/Microsoft.DBforMySQL/flexibleServers/$($env.flexibleServerName)/stop"
             Stop-AzMySqlFlexibleServer -InputObject $ID
-            
+
             $ID = "/subscriptions/$($env.SubscriptionId)/resourceGroups/$($env.resourceGroup)/providers/Microsoft.DBforMySQL/flexibleServers/$($env.flexibleServerName)/start"
             Start-AzMySqlFlexibleServer -InputObject $ID
-            
+
             $ID = "/subscriptions/$($env.SubscriptionId)/resourceGroups/$($env.resourceGroup)/providers/Microsoft.DBforMySQL/flexibleServers/$($env.flexibleServerName)/restart"
             Restart-AzMySqlFlexibleServer -InputObject $ID
-            
+
             $restorePointInTime = (Get-Date).AddMinutes(-10)
             $restoredServer = Restore-AzMySqlFlexibleServer -Name $env.restoreName -ResourceGroupName $env.resourceGroup -RestorePointInTime $restorePointInTime -InputObject $server
-            
+
             Remove-AzMySqlFlexibleServer -ResourceGroupName $env.resourceGroup -Name $restoredServer.Name
 
         } | Should -Not -Throw

@@ -1,12 +1,13 @@
 ### Example 1: Update the tags of a private link scope
 ```powershell
-$scope = Update-AzConnectedPrivateLinkScopeTag -ResourceGroupName $resourceGroupName -ScopeName $scopeName -Tag $tags2
+$tag = @{ "Tag1" = "Value1" }
+Update-AzConnectedPrivateLinkScopeTag -ResourceGroupName "az-sdk-test" -ScopeName "scope-test" -Tag $tag
+```
 
-Name         Location    PublicNetworkAccess ProvisioningState
-----         --------    ------------------- -----------------
-name         eastus2euap Disabled            Succeeded
-
-$scope.Tag
+```output
+Name               Location    PublicNetworkAccess ProvisioningState
+----               --------    ------------------- -----------------
+scope-test         eastus2euap Disabled            Succeeded
 ```
 
 Update the tags of a private link scope

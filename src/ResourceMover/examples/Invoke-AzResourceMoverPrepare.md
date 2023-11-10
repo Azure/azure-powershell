@@ -1,7 +1,9 @@
 ### Example 1: Validate the dependecies before prepare of the resources. Get the required dependent resources that also need to be prepared.
 ```powershell
 $resp = Invoke-AzResourceMoverPrepare -ResourceGroupName "RG-MoveCollection-demoRMS" -MoveCollectionName "PS-centralus-westcentralus-demoRMS"  -MoveResource $('psdemovm') -ValidateOnly
+```
 
+```output
 AdditionalInfo : {Microsoft.Azure.PowerShell.Cmdlets.ResourceMover.Models.Api20191001Preview.OperationErrorAdditionalInfo}
 Code           : MoveCollectionMissingRequiredDependentResources
 Detail         : {}
@@ -22,12 +24,11 @@ MoveCollectionMissingRequiredDependentResources
 
 $resp.AdditionalInfo[0].InfoMoveResource
 
-SourceId                                                                                                                                  
---------                                                                                                                                  
+SourceId
+--------
 /subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx/resourcegroups/psdemorm/providers/microsoft.network/networkinterfaces/psdemovm111     
 /subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx/resourceGroups/psdemorm/providers/Microsoft.Network/virtualNetworks/psdemorm-vnet     
 /subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx/resourcegroups/psdemorm/providers/microsoft.network/networksecuritygroups/psdemovm-nsg
-
 ```
 
 Validate the dependecies before prepare of the resources. Get the required dependent resources that also need to be prepared.

@@ -25,11 +25,11 @@ Add a list of virtual network rules to a VolumeGroup
 {{ Add code here }}
 
 .Inputs
-Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Models.Api20211120Preview.IVolumeGroupUpdate
+Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Models.Api20221201Preview.IVolumeGroupUpdate
 .Inputs
 Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Models.IElasticSanIdentity
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Models.Api20211120Preview.VirtualNetworkRule[]
+Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Models.Api20221201Preview.VirtualNetworkRule[]
 .Notes
 COMPLEX PARAMETER PROPERTIES
 
@@ -38,12 +38,9 @@ To create the parameters described below, construct a hash table containing the 
 NETWORKACLSVIRTUALNETWORKRULE <IVirtualNetworkRule[]>: The list of virtual network rules.
   VirtualNetworkResourceId <String>: Resource ID of a subnet, for example: /subscriptions/{subscriptionId}/resourceGroups/{groupName}/providers/Microsoft.Network/virtualNetworks/{vnetName}/subnets/{subnetName}.
   [Action <Action?>]: The action of virtual network rule.
-
-.Link
-https://learn.microsoft.com/powershell/module/az.elasticsan/update-azelasticsanvolumegroup
 #>
 function Add-AzElasticSanVolumeGroupNetworkRule {
-    [OutputType([Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Models.Api20211120Preview.VirtualNetworkRule[]])]
+    [OutputType([Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Models.VirtualNetworkRule[]])]
     [CmdletBinding(DefaultParameterSetName='NetworkRuleObject', PositionalBinding=$false, SupportsShouldProcess, ConfirmImpact='Medium')]
     param(
         [Parameter(ParameterSetName='NetworkRuleObject', Mandatory)]
@@ -78,7 +75,7 @@ function Add-AzElasticSanVolumeGroupNetworkRule {
     
         [Parameter(ParameterSetName='NetworkRuleObject', Mandatory, ValueFromPipeline=$true)]
         [Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Category('Body')]
-        [Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Models.Api20211120Preview.IVirtualNetworkRule[]]
+        [Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Models.IVirtualNetworkRule[]]
         # The list of virtual network rules.
         # To construct, see NOTES section for NETWORKACLSVIRTUALNETWORKRULE properties and create a hash table.
         ${NetworkAclsVirtualNetworkRule},
@@ -171,9 +168,9 @@ function Add-AzElasticSanVolumeGroupNetworkRule {
             return
         }
         
-        $originalRules = [System.Collections.Generic.List[Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Models.Api20211120Preview.IVirtualNetworkRule]]$volumeGroup.NetworkAclsVirtualNetworkRule
+        $originalRules = [System.Collections.Generic.List[Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Models.IVirtualNetworkRule]]$volumeGroup.NetworkAclsVirtualNetworkRule
         if ($originalRules.count -eq 0) {
-            $originalRules = New-Object System.Collections.Generic.List[Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Models.Api20211120Preview.IVirtualNetworkRule]
+            $originalRules = New-Object System.Collections.Generic.List[Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Models.IVirtualNetworkRule]
         }
         
         switch ($PScmdlet.ParameterSetName) {

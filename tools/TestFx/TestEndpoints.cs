@@ -129,7 +129,6 @@ namespace Microsoft.Azure.Commands.TestFx
                     Name = TestEnvironmentName.Prod;
                     GraphUri = new Uri("https://graph.windows.net/");
                     AADAuthUri = new Uri("https://login.microsoftonline.com/");
-                    GalleryUri = new Uri("https://gallery.azure.com/");
                     IbizaPortalUri = new Uri("https://portal.azure.com/");
                     RdfePortalUri = new Uri("https://manage.windowsazure.com/");
                     ResourceManagementUri = new Uri("https://management.azure.com/");
@@ -143,7 +142,6 @@ namespace Microsoft.Azure.Commands.TestFx
                     Name = TestEnvironmentName.Dogfood;
                     GraphUri = new Uri("https://graph.ppe.windows.net/");
                     AADAuthUri = new Uri("https://login.windows-ppe.net");
-                    GalleryUri = new Uri("https://df.gallery.azure-test.net/");
                     IbizaPortalUri = new Uri("http://df.onecloud.azure-test.net");
                     RdfePortalUri = new Uri("https://windows.azure-test.net");
                     ResourceManagementUri = new Uri("https://api-dogfood.resources.windows-int.net/");
@@ -155,7 +153,6 @@ namespace Microsoft.Azure.Commands.TestFx
                     break;
                 case TestEnvironmentName.Next:
                     Name = TestEnvironmentName.Next;
-                    GalleryUri = new Uri("https://next.gallery.azure-test.net/");
                     AADAuthUri = new Uri("https://login.windows-ppe.net");
                     GraphUri = new Uri("https://graph.ppe.windows.net/");
                     IbizaPortalUri = new Uri("http://next.onecloud.azure-test.net");
@@ -169,7 +166,6 @@ namespace Microsoft.Azure.Commands.TestFx
                     break;
                 case TestEnvironmentName.Current:
                     Name = TestEnvironmentName.Current;
-                    GalleryUri = new Uri("https://current.gallery.azure-test.net/");
                     AADAuthUri = new Uri("https://login.windows-ppe.net");
                     GraphUri = new Uri("https://graph.ppe.windows.net/");
                     IbizaPortalUri = new Uri("http://current.onecloud.azure-test.net");

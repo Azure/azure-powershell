@@ -21,12 +21,12 @@ Create an in-memory object for ProfileChangeSkuWafMapping.
 Create an in-memory object for ProfileChangeSkuWafMapping.
 
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20221101Preview.ProfileChangeSkuWafMapping
+Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20230501.ProfileChangeSkuWafMapping
 .Link
 https://learn.microsoft.com/powershell/module/Az.Cdn/new-AzFrontDoorCdnProfileChangeSkuWafMappingObject
 #>
 function New-AzFrontDoorCdnProfileChangeSkuWafMappingObject {
-    [OutputType('Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20221101Preview.ProfileChangeSkuWafMapping')]
+    [OutputType('Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20230501.ProfileChangeSkuWafMapping')]
     [CmdletBinding(PositionalBinding=$false)]
     Param(
 
@@ -39,7 +39,7 @@ function New-AzFrontDoorCdnProfileChangeSkuWafMappingObject {
     )
 
     process {
-        $Object = [Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20221101Preview.ProfileChangeSkuWafMapping]::New()
+        $Object = [Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20230501.ProfileChangeSkuWafMapping]::New()
 
         if ($PSBoundParameters.ContainsKey('ChangeToWafPolicyId')) {
             $Object.ChangeToWafPolicyId = $ChangeToWafPolicyId

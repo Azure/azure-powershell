@@ -8,49 +8,65 @@ schema: 2.0.0
 # Test-AzFrontDoorCdnProfileMigration
 
 ## SYNOPSIS
-Checks if CDN profile can be migrated to Azure Frontdoor(Standard/Premium) profile.
+Check if a classic AFD instance can be migrated to Azure Front Door(Standard/Premium) profile.
 
 ## SYNTAX
 
 ```
 Test-AzFrontDoorCdnProfileMigration -ResourceGroupName <String> -ClassicResourceReferenceId <String>
- [-SubscriptionId <String>] [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
+ [-SubscriptionId <String>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf]
+ [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-Checks if CDN profile can be migrated to Azure Frontdoor(Standard/Premium) profile.
+Check if a classic AFD instance can be migrated to Azure Front Door(Standard/Premium) profile.
 
 ## EXAMPLES
 
-### Example 1: Checks if CDN profile can be migrated to Azure Frontdoor(Standard/Premium) profile.
+### Example 1: Checks if a classic AFD instance can be migrated to Azure Front Door(Standard/Premium) profile.
 ```powershell
 Test-AzFrontDoorCdnProfileMigration -ResourceGroupName testrg -ClassicResourceReferenceId /subscriptions/testSubId/resourcegroups/testrg/providers/Microsoft.Network/Frontdoors/frontdoorName
 ```
 
 ```output
-CanMigrate DefaultSku
----------- ----------
-True       Standard_AzureFrontDoor
+CanMigrate DefaultSku              Error
+---------- ----------              -----
+True       Standard_AzureFrontDoor {}
 ```
 
-Checks if CDN profile can be migrated to Azure Frontdoor(Standard/Premium) profile.
+Checks if a classic AFD instance can be migrated to Azure Front Door(Standard/Premium) profile.
 
-### Example 2: Checks if CDN profile can be migrated to Azure Frontdoor(Standard/Premium) profile, when the subscription of the CDN profile is different from the local subscrition.
+### Example 2: Checks if a classic AFD instance can be migrated to Azure Front Door(Standard/Premium) profile, when the subscription of the CDN profile is different from the local subscrition.
 ```powershell
 Test-AzFrontDoorCdnProfileMigration -ResourceGroupName testrg -ClassicResourceReferenceId /subscriptions/testSubId01/resourcegroups/testrg/providers/Microsoft.Network/Frontdoors/frontdoorName -SubscriptionId testSubId01 
 ```
 
 ```output
-CanMigrate DefaultSku
----------- ----------
-True       Standard_AzureFrontDoor
+CanMigrate DefaultSku              Error
+---------- ----------              -----
+True       Standard_AzureFrontDoor {}
 ```
 
-Checks if CDN profile can be migrated to Azure Frontdoor(Standard/Premium) profile, when the subscription of the CDN profile is different from the local subscrition.
+Checks if a classic AFD instance can be migrated to Azure Front Door(Standard/Premium) profile, when the subscription of the CDN profile is different from the local subscrition.
 
 You need to set the value of the subscription parameter.
 
 ## PARAMETERS
+
+### -AsJob
+Run the command as a job
+
+```yaml
+Type: System.Management.Automation.SwitchParameter
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
 
 ### -ClassicResourceReferenceId
 Resource ID of the classic front door instance.
@@ -74,6 +90,21 @@ The credentials, account, tenant, and subscription used for communication with A
 Type: System.Management.Automation.PSObject
 Parameter Sets: (All)
 Aliases: AzureRMContext, AzureCredential
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -NoWait
+Run the command asynchronously
+
+```yaml
+Type: System.Management.Automation.SwitchParameter
+Parameter Sets: (All)
+Aliases:
 
 Required: False
 Position: Named
@@ -150,7 +181,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20221101Preview.ICanMigrateResult
+### Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20230501.ICanMigrateResult
 
 ## NOTES
 

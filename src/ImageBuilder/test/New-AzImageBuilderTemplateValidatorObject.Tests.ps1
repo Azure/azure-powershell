@@ -15,11 +15,17 @@ if(($null -eq $TestName) -or ($TestName -contains 'New-AzImageBuilderTemplateVal
 }
 
 Describe 'New-AzImageBuilderTemplateValidatorObject' {
-    It 'PowerShellValidator' -skip {
-        { throw [System.NotImplementedException] } | Should -Not -Throw
+    It 'PowerShellValidator' {
+        {
+            $validator = New-AzImageBuilderTemplateValidatorObject -PowerShellValidator -Name PowerShellValidator -ScriptUri "https://example.com/path/to/script.sh"
+            $validator.Name | Should -Be "PowerShellValidator"
+        } | Should -Not -Throw
     }
 
-    It 'ShellValidator' -skip {
-        { throw [System.NotImplementedException] } | Should -Not -Throw
+    It 'ShellValidator' {
+        {
+            $validator = New-AzImageBuilderTemplateValidatorObject -ShellValidator -Name ShellValidator -ScriptUri "https://example.com/path/to/script.sh"
+            $validator.Name | Should -Be "ShellValidator"
+        } | Should -Not -Throw
     }
 }

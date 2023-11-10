@@ -1,4 +1,4 @@
-### Example 1: Get resouce usages of an AzureFrontDoor rule set
+### Example 1: Get resource usages of an AzureFrontDoor rule set
 ```powershell
 Get-AzFrontDoorCdnRuleSetResourceUsage -ResourceGroupName testps-rg-da16jm -ProfileName fdp-v542q6 -RuleSetName ruleset001
 ```
@@ -9,5 +9,5 @@ CurrentValue Limit Unit
 0            100   count
 ```
 
-Get resouce usages of an AzureFrontDoor rule set
+Get resource usages of an AzureFrontDoor rule set
 

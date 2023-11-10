@@ -12,6 +12,8 @@ Discards the set of resources included in the request body.
 The discard operation is triggered on the moveResources in the moveState 'CommitPending' or 'DiscardFailed', on a successful completion the moveResource moveState do a transition to MovePending.
 To aid the user to prerequisite the operation the client can call operation with validateOnly property set to true.
 
+**The 'Invoke-AzResourceMoverDiscard' command is not applicable on move collections with moveType 'RegionToZone' since discard is not a valid operation for region to zone move scenario.**
+
 ## SYNTAX
 
 ```
@@ -24,6 +26,8 @@ Invoke-AzResourceMoverDiscard -Name <String> -ResourceGroupName <String> -MoveRe
 Discards the set of resources included in the request body.
 The discard operation is triggered on the moveResources in the moveState 'CommitPending' or 'DiscardFailed', on a successful completion the moveResource moveState do a transition to MovePending.
 To aid the user to prerequisite the operation the client can call operation with validateOnly property set to true.
+
+**The 'Invoke-AzResourceMoverDiscard' command is not applicable on move collections with moveType 'RegionToZone' since discard is not a valid operation for region to zone move scenario.**
 
 ## EXAMPLES
 
@@ -112,7 +116,8 @@ Accept wildcard characters: False
 ```
 
 ### -DefaultProfile
-The credentials, account, tenant, and subscription used for communication with Azure.
+The DefaultProfile parameter is not functional.
+Use the SubscriptionId parameter when available if executing the cmdlet against a different subscription.
 
 ```yaml
 Type: System.Management.Automation.PSObject
@@ -269,7 +274,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.ResourceMover.Models.Api20210801.IOperationStatus
+### Microsoft.Azure.PowerShell.Cmdlets.ResourceMover.Models.Api20230801.IOperationStatus
 
 ## NOTES
 

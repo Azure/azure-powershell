@@ -11,12 +11,12 @@ switch ($Source) {
     "PSGallery" {
         Set-PSRepository -Name $Source -InstallationPolicy Trusted
     }
-    { "DailyBuild" -or "Sign" } {
+    { $_ -in "DailyBuild", "Sign" } {
         Register-PSRepository -Name $Source -SourceLocation $AzPackagesLocation -PackageManagementProvider NuGet -InstallationPolicy Trusted
     }
 }
 
 Install-Module -Name AzPreview -Repository $Source -Scope CurrentUser -AllowClobber -Force
 
-Get-Module -Name Az
+Get-Module -Name AzPreview -ListAvailable
 Get-Module -Name Az.* -ListAvailable

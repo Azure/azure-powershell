@@ -18,11 +18,11 @@ Describe 'Get-AzFrontDoorCdnSecurityPolicy'  {
     BeforeAll {
         $subId = $env.SubscriptionId
 
-        $endpointName = 'end-' + (RandomString -allChars $false -len 6);
+        $endpointName = 'end-pstest010'
         Write-Host -ForegroundColor Green "Use frontDoorCdnEndpointName : $($endpointName)"
         $endpoint = New-AzFrontDoorCdnEndpoint -EndpointName $endpointName -ProfileName $env.FrontDoorCdnProfileName -ResourceGroupName $env.ResourceGroupName -Location Global
 
-        $policyName = "pol-" + (RandomString -allChars $false -len 6);
+        $policyName = "pol-psName010"
         Write-Host -ForegroundColor Green "Use policyName : $($policyName)"
 
         $association = New-AzFrontDoorCdnSecurityPolicyWebApplicationFirewallAssociationObject -PatternsToMatch @("/*") -Domain @(@{"Id"=$($endpoint.Id)})
@@ -43,8 +43,9 @@ Describe 'Get-AzFrontDoorCdnSecurityPolicy'  {
     }
 
     It 'GetViaIdentity' {
-        $PSDefaultParameterValues['Disabled'] = $true
-        $policy = Get-AzFrontDoorCdnSecurityPolicy -ProfileName $env.FrontDoorCdnProfileName -ResourceGroupName $env.ResourceGroupName -Name $policyName | Get-AzFrontDoorCdnSecurityPolicy
+        $policyObject = Get-AzFrontDoorCdnSecurityPolicy -ProfileName $env.FrontDoorCdnProfileName -ResourceGroupName $env.ResourceGroupName -Name $policyName
+        $policy = Get-AzFrontDoorCdnSecurityPolicy -InputObject $policyObject
+
         $policy.Name | Should -Be $policyName
         Remove-AzFrontDoorCdnSecurityPolicy -ProfileName $env.FrontDoorCdnProfileName -ResourceGroupName $env.ResourceGroupName -Name $policyName
     }

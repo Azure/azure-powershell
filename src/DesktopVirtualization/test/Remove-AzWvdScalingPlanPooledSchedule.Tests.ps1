@@ -63,7 +63,7 @@ Describe 'Remove-AzWvdScalingPlanPooledSchedule' {
                 -ScalingPlanName $scalingPlanName `
                 -ScalingPlanScheduleName 'PooledSchedule1'
 
-            $scalingPlanPooledSchedules = Get-AzWvdScalingPlanPooledSchedule `
+            $scalingPlanPooledSchedule = Get-AzWvdScalingPlanPooledSchedule `
             -SubscriptionId $env.SubscriptionId `
             -ResourceGroupName $env.ResourceGroup `
             -ScalingPlanName $scalingPlanName `

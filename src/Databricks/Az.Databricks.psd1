@@ -1,7 +1,7 @@
 @{
   GUID = 'b453c0c1-7867-4fa1-9fd0-0cf8f6c6959c'
   RootModule = './Az.Databricks.psm1'
-  ModuleVersion = '1.1.0'
+  ModuleVersion = '1.2.0'
   CompatiblePSEditions = 'Core', 'Desktop'
   Author = 'Microsoft Corporation'
   CompanyName = 'Microsoft Corporation'
@@ -11,7 +11,7 @@
   DotNetFrameworkVersion = '4.7.2'
   RequiredAssemblies = './bin/Az.Databricks.private.dll'
   FormatsToProcess = './Az.Databricks.format.ps1xml'
-  FunctionsToExport = 'Get-AzDatabricksAccessConnector', 'Get-AzDatabricksOutboundNetworkDependenciesEndpoint', 'Get-AzDatabricksVNetPeering', 'Get-AzDatabricksWorkspace', 'New-AzDatabricksAccessConnector', 'New-AzDatabricksVNetPeering', 'New-AzDatabricksWorkspace', 'Remove-AzDatabricksAccessConnector', 'Remove-AzDatabricksVNetPeering', 'Remove-AzDatabricksWorkspace', 'Update-AzDatabricksAccessConnector', 'Update-AzDatabricksVNetPeering', 'Update-AzDatabricksWorkspace', '*'
+  FunctionsToExport = 'Get-AzDatabricksAccessConnector', 'Get-AzDatabricksOutboundNetworkDependenciesEndpoint', 'Get-AzDatabricksVNetPeering', 'Get-AzDatabricksWorkspace', 'New-AzDatabricksAccessConnector', 'New-AzDatabricksVNetPeering', 'New-AzDatabricksWorkspace', 'New-AzDatabricksWorkspaceProviderAuthorizationObject', 'Remove-AzDatabricksAccessConnector', 'Remove-AzDatabricksVNetPeering', 'Remove-AzDatabricksWorkspace', 'Update-AzDatabricksAccessConnector', 'Update-AzDatabricksVNetPeering', 'Update-AzDatabricksWorkspace', '*'
   AliasesToExport = '*'
   PrivateData = @{
     PSData = @{

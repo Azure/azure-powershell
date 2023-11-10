@@ -16,7 +16,7 @@ if(($null -eq $TestName) -or ($TestName -contains 'Test-AzEventHubName'))
 
 Describe 'Test-AzEventHubName' {
     It 'NamespaceAvailability'  {
-        $checkName = Test-AzEventHubName -NamespaceName $env.namespace
+        $checkName = Test-AzEventHubName -NamespaceName $env.namespaceV1
         $checkName.NameAvailable | Should -Be $false
     }
 

@@ -19,11 +19,11 @@ Describe 'Remove-AzCdnCustomDomain'  {
         # Hard-coding host and endpoint names due to requirement for DNS CNAME
         $endpointName = 'aa-powershell-20230423-oigr9w'
         $customDomainHostName = 'aa-powershell-20230423-oigr9w.cdne2e.azfdtest.xyz'
-        $customDomainName = 'cd-' + (RandomString -allChars $false -len 6);
+        $customDomainName = 'cd-pstest020'
 
         $endpointName2 = 'aa-powershell-20230424-oigr9w'
         $customDomainHostName2 = 'aa-powershell-20230424-oigr9w.cdne2e.azfdtest.xyz'
-        $customDomainName2 = 'cd-' + (RandomString -allChars $false -len 6);
+        $customDomainName2 = 'cd-pstest021'
         
         $origin = @{
             Name = "origin2"
@@ -45,7 +45,7 @@ Describe 'Remove-AzCdnCustomDomain'  {
     }
 
     It 'DeleteViaIdentity' {
-        $PSDefaultParameterValues['Disabled'] = $true
-        Get-AzCdnCustomDomain -EndpointName $endpointName2 -Name $customDomainName2 -ProfileName $env.ClassicCdnProfileName -ResourceGroupName $env.ResourceGroupName | Remove-AzCdnCustomDomain
+        $domainObject = Get-AzCdnCustomDomain -EndpointName $endpointName2 -Name $customDomainName2 -ProfileName $env.ClassicCdnProfileName -ResourceGroupName $env.ResourceGroupName
+        Remove-AzCdnCustomDomain -InputObject $domainObject
     }
 }

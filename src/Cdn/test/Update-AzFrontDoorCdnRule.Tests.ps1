@@ -16,7 +16,7 @@ if(($null -eq $TestName) -or ($TestName -contains 'Update-AzFrontDoorCdnRule'))
 
 Describe 'Update-AzFrontDoorCdnRule'  {
     BeforeAll {
-        $rulesetName = 'rs' + (RandomString -allChars $false -len 6);
+        $rulesetName = 'rsName120'
         Write-Host -ForegroundColor Green "Use rulesetName : $($rulesetName)"
         New-AzFrontDoorCdnRuleSet -ProfileName $env.FrontDoorCdnProfileName -ResourceGroupName $env.ResourceGroupName -Name $rulesetName
         $uriConditon = New-AzFrontDoorCdnRuleRequestUriConditionObject -Name "RequestUri" -ParameterOperator "Any"
@@ -30,7 +30,7 @@ Describe 'Update-AzFrontDoorCdnRule'  {
         -CacheConfigurationCacheBehavior "HonorOrigin"
         $actions = @($overrideAction);
         
-        $ruleName = 'r' + (RandomString -allChars $false -len 6);
+        $ruleName = 'ruleName080'
         Write-Host -ForegroundColor Green "Use ruleName : $($ruleName)"
         New-AzFrontDoorCdnRule -ProfileName $env.FrontDoorCdnProfileName -ResourceGroupName $env.ResourceGroupName -RuleSetName $rulesetName -Name $ruleName `
         -Action $actions -Condition $conditions
@@ -59,7 +59,6 @@ Describe 'Update-AzFrontDoorCdnRule'  {
     }
 
     It 'UpdateViaIdentityExpanded' {
-        $PSDefaultParameterValues['Disabled'] = $true
         $updatedConditions = @();
         $updatedOverrideAction = New-AzFrontDoorCdnRuleRouteConfigurationOverrideActionObject -Name "RouteConfigurationOverride" `
         -CacheConfigurationQueryStringCachingBehavior "IgnoreSpecifiedQueryStrings" `
@@ -67,8 +66,8 @@ Describe 'Update-AzFrontDoorCdnRule'  {
         -CacheConfigurationIsCompressionEnabled "Enabled" `
         -CacheConfigurationCacheBehavior "HonorOrigin"
         $updatedActions = @($updatedOverrideAction);
-        Get-AzFrontDoorCdnRule -ProfileName $env.FrontDoorCdnProfileName -ResourceGroupName $env.ResourceGroupName -RuleSetName $rulesetName -Name $ruleName | Update-AzFrontDoorCdnRule `
-        -Action $updatedActions -Condition $updatedConditions
+        $ruleObject = Get-AzFrontDoorCdnRule -ProfileName $env.FrontDoorCdnProfileName -ResourceGroupName $env.ResourceGroupName -RuleSetName $rulesetName -Name $ruleName
+        Update-AzFrontDoorCdnRule -Action $updatedActions -Condition $updatedConditions -InputObject $ruleObject
 
         $updatedRule = Get-AzFrontDoorCdnRule -ProfileName $env.FrontDoorCdnProfileName -ResourceGroupName $env.ResourceGroupName -RuleSetName $rulesetName -Name $ruleName
         $updatedRule.Name | Should -Be $ruleName

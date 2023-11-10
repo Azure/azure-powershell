@@ -16,7 +16,7 @@ if(($null -eq $TestName) -or ($TestName -contains 'New-AzCdnProfile'))
 
 Describe 'New-AzCdnProfile'  {
     It 'CreateExpanded' {
-        $cdnProfileName = 'p-' + (RandomString -allChars $false -len 6);
+        $cdnProfileName = 'cdnpps01'
         Write-Host -ForegroundColor Green "Use CdnProfileName : $($cdnProfileName)"
 
         $profileSku = "Standard_Microsoft";

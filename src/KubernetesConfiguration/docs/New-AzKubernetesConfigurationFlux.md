@@ -14,16 +14,22 @@ Create a new Kubernetes Flux Configuration.
 
 ```
 New-AzKubernetesConfigurationFlux -ClusterName <String> -ClusterType <String> -Name <String>
- -ResourceGroupName <String> [-SubscriptionId <String>] [-BucketAccessKey <SecureString>] [-BucketInsecure]
- [-BucketLocalAuthRef <String>] [-BucketName <String>] [-BucketSyncIntervalInSecond <Int64>]
- [-BucketTimeoutInSecond <Int64>] [-BucketUrl <String>] [-ConfigurationProtectedSetting <Hashtable>]
- [-GitRepositoryHttpsCaCert <String>] [-GitRepositoryHttpsUser <String>] [-GitRepositoryLocalAuthRef <String>]
+ -ResourceGroupName <String> [-SubscriptionId <String>] [-AzureBlobAccountKey <String>]
+ [-AzureBlobContainerName <String>] [-AzureBlobLocalAuthRef <String>] [-AzureBlobSasToken <String>]
+ [-AzureBlobSyncIntervalInSecond <Int64>] [-AzureBlobTimeoutInSecond <Int64>] [-AzureBlobUrl <String>]
+ [-BucketAccessKey <SecureString>] [-BucketInsecure] [-BucketLocalAuthRef <String>] [-BucketName <String>]
+ [-BucketSyncIntervalInSecond <Int64>] [-BucketTimeoutInSecond <Int64>] [-BucketUrl <String>]
+ [-ConfigurationProtectedSetting <Hashtable>] [-GitRepositoryHttpsCaCert <String>]
+ [-GitRepositoryHttpsUser <String>] [-GitRepositoryLocalAuthRef <String>]
  [-GitRepositorySshKnownHost <String>] [-GitRepositorySyncIntervalInSecond <Int64>]
  [-GitRepositoryTimeoutInSecond <Int64>] [-GitRepositoryUrl <String>] [-Kustomization <Hashtable>]
- [-Namespace <String>] [-RepositoryRefBranch <String>] [-RepositoryRefCommit <String>]
- [-RepositoryRefSemver <String>] [-RepositoryRefTag <String>] [-Scope <ScopeType>]
- [-SourceKind <SourceKindType>] [-Suspend] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm]
- [-WhatIf] [<CommonParameters>]
+ [-ManagedIdentityClientId <String>] [-Namespace <String>] [-RepositoryRefBranch <String>]
+ [-RepositoryRefCommit <String>] [-RepositoryRefSemver <String>] [-RepositoryRefTag <String>]
+ [-Scope <ScopeType>] [-ServicePrincipalClientCertificate <String>]
+ [-ServicePrincipalClientCertificatePassword <String>] [-ServicePrincipalClientCertificateSendChain]
+ [-ServicePrincipalClientId <String>] [-ServicePrincipalClientSecret <String>]
+ [-ServicePrincipalTenantId <String>] [-SourceKind <SourceKindType>] [-Suspend] [-DefaultProfile <PSObject>]
+ [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -64,6 +70,111 @@ Run the command as a job
 
 ```yaml
 Type: System.Management.Automation.SwitchParameter
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -AzureBlobAccountKey
+The account key (shared key) to access the storage account
+
+```yaml
+Type: System.String
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -AzureBlobContainerName
+The Azure Blob container name to sync from the url endpoint for the flux configuration.
+
+```yaml
+Type: System.String
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -AzureBlobLocalAuthRef
+Name of a local secret on the Kubernetes cluster to use as the authentication secret rather than the managed or user-provided configuration secrets.
+
+```yaml
+Type: System.String
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -AzureBlobSasToken
+The Shared Access token to access the storage container
+
+```yaml
+Type: System.String
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -AzureBlobSyncIntervalInSecond
+The interval at which to re-reconcile the cluster Azure Blob source with the remote.
+
+```yaml
+Type: System.Int64
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -AzureBlobTimeoutInSecond
+The maximum time to attempt to reconcile the cluster Azure Blob source with the remote.
+
+```yaml
+Type: System.Int64
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -AzureBlobUrl
+The URL to sync for the flux configuration Azure Blob storage account.
+
+```yaml
+Type: System.String
 Parameter Sets: (All)
 Aliases:
 
@@ -135,7 +246,7 @@ Accept wildcard characters: False
 ```
 
 ### -BucketSyncIntervalInSecond
-The interval at which to re-reconcile the cluster git repository source with the remote.
+The interval at which to re-reconcile the cluster bucket source with the remote.
 
 ```yaml
 Type: System.Int64
@@ -150,7 +261,7 @@ Accept wildcard characters: False
 ```
 
 ### -BucketTimeoutInSecond
-The maximum time to attempt to reconcile the cluster git repository source with the remote.
+The maximum time to attempt to reconcile the cluster bucket source with the remote.
 
 ```yaml
 Type: System.Int64
@@ -226,7 +337,8 @@ Accept wildcard characters: False
 ```
 
 ### -DefaultProfile
-The credentials, account, tenant, and subscription used for communication with Azure.
+The DefaultProfile parameter is not functional.
+Use the SubscriptionId parameter when available if executing the cmdlet against a different subscription.
 
 ```yaml
 Type: System.Management.Automation.PSObject
@@ -350,6 +462,21 @@ Array of kustomizations used to reconcile the artifact pulled by the source type
 
 ```yaml
 Type: System.Collections.Hashtable
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -ManagedIdentityClientId
+The client Id for authenticating a Managed Identity.
+
+```yaml
+Type: System.String
 Parameter Sets: (All)
 Aliases:
 
@@ -501,6 +628,96 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### -ServicePrincipalClientCertificate
+Base64-encoded certificate used to authenticate a Service Principal
+
+```yaml
+Type: System.String
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -ServicePrincipalClientCertificatePassword
+The password for the certificate used to authenticate a Service Principal
+
+```yaml
+Type: System.String
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -ServicePrincipalClientCertificateSendChain
+Specifies whether to include x5c header in client claims when acquiring a token to enable subject name / issuer based authentication for the Client Certificate
+
+```yaml
+Type: System.Management.Automation.SwitchParameter
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -ServicePrincipalClientId
+The client Id for authenticating a Service Principal.
+
+```yaml
+Type: System.String
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -ServicePrincipalClientSecret
+The client secret for authenticating a Service Principal
+
+```yaml
+Type: System.String
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -ServicePrincipalTenantId
+The tenant Id for authenticating a Service Principal
+
+```yaml
+Type: System.String
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
 ### -SourceKind
 Source Kind to pull the configuration data from.
 
@@ -584,7 +801,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.KubernetesConfiguration.Models.Api20220301.IFluxConfiguration
+### Microsoft.Azure.PowerShell.Cmdlets.KubernetesConfiguration.Models.Api20221101.IFluxConfiguration
 
 ## NOTES
 

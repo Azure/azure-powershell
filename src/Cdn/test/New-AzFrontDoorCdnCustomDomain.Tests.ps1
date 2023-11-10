@@ -17,10 +17,10 @@ if(($null -eq $TestName) -or ($TestName -contains 'New-AzFrontDoorCdnCustomDomai
 Describe 'New-AzFrontDoorCdnCustomDomain'  {
     It 'CreateExpanded' {
         $subId = $env.SubscriptionId
-        $secretName = "se-" + (RandomString -allChars $false -len 6);
+        $secretName = "se-psName020"
         Write-Host -ForegroundColor Green "Use secretName : $($secretName)"
 
-        $customDomainName = "domain-" + (RandomString -allChars $false -len 6);
+        $customDomainName = "domain-psName010" 
         $hostName = "pstestnew.dev.cdn.azure.cn"
         New-AzFrontDoorCdnCustomDomain -CustomDomainName $customDomainName -ProfileName $env.FrontDoorCdnProfileName -ResourceGroupName $env.ResourceGroupName `
         -HostName $hostName

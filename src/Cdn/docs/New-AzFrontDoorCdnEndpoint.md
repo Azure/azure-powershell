@@ -245,7 +245,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20221101Preview.IAfdEndpoint
+### Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20230501.IAfdEndpoint
 
 ## NOTES
 

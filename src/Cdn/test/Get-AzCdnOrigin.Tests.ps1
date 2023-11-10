@@ -35,9 +35,9 @@ Describe 'Get-AzCdnOrigin'  {
     }
 
     It 'GetViaIdentity' {
-        $PSDefaultParameterValues['Disabled'] = $true
-        $origin = Get-AzCdnOrigin -SubscriptionId $env.SubscriptionId -Name $originName -EndpointName $env.ClassicEndpointName -ProfileName $env.ClassicCdnProfileName -ResourceGroupName $env.ResourceGroupName | Get-AzCdnOrigin
+        $originObject = Get-AzCdnOrigin -Name $originName -EndpointName $env.ClassicEndpointName -ProfileName $env.ClassicCdnProfileName -ResourceGroupName $env.ResourceGroupName
         
+        $origin = Get-AzCdnOrigin -InputObject $originObject
         $origin.Name | Should -Be $originName
         $origin.HostName | Should -Be $originHostName
         $origin.HttpsPort | Should -Be $null

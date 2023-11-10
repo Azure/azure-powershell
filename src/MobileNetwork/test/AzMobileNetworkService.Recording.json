@@ -1,8 +1,8 @@
 {
-  "AzMobileNetworkService+[NoContext]+CreateExpanded+$PUT+https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/testgroup-mobilenetwork/providers/Microsoft.MobileNetwork/mobileNetworks/test-mn3/services/test-mn-service?api-version=2022-11-01+1": {
+  "AzMobileNetworkService+[NoContext]+CreateExpanded+$PUT+https://management.azure.com/subscriptions/9e276fe5-9273-4474-80c6-032321ab3795/resourceGroups/testgroup-mobilenetwork/providers/Microsoft.MobileNetwork/mobileNetworks/test-mn3/services/test-mn-service?api-version=2022-11-01+1": {
     "Request": {
       "Method": "PUT",
-      "RequestUri": "https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/testgroup-mobilenetwork/providers/Microsoft.MobileNetwork/mobileNetworks/test-mn3/services/test-mn-service?api-version=2022-11-01",
+      "RequestUri": "https://management.azure.com/subscriptions/9e276fe5-9273-4474-80c6-032321ab3795/resourceGroups/testgroup-mobilenetwork/providers/Microsoft.MobileNetwork/mobileNetworks/test-mn3/services/test-mn-service?api-version=2022-11-01",
       "Content": "{\r\n  \"location\": \"eastus\",\r\n  \"properties\": {\r\n    \"serviceQosPolicy\": {\r\n      \"maximumBitRate\": {\r\n        \"uplink\": \"500 Mbps\",\r\n        \"downlink\": \"1 Gbps\"\r\n      },\r\n      \"5qi\": 9,\r\n      \"allocationAndRetentionPriorityLevel\": 9,\r\n      \"preemptionCapability\": \"MayPreempt\",\r\n      \"preemptionVulnerability\": \"Preemptable\"\r\n    },\r\n    \"servicePrecedence\": 0,\r\n    \"pccRules\": [\r\n      {\r\n        \"ruleQosPolicy\": {\r\n          \"maximumBitRate\": {\r\n            \"uplink\": \"500 Mbps\",\r\n            \"downlink\": \"1 Gbps\"\r\n          },\r\n          \"allocationAndRetentionPriorityLevel\": 9,\r\n          \"preemptionCapability\": \"NotPreempt\",\r\n          \"preemptionVulnerability\": \"Preemptable\"\r\n        },\r\n        \"ruleName\": \"test-mn-service-rule\",\r\n        \"rulePrecedence\": 0,\r\n        \"trafficControl\": \"Enabled\",\r\n        \"serviceDataFlowTemplates\": [\r\n          {\r\n            \"templateName\": \"test-mn-flow-template\",\r\n            \"direction\": \"Bidirectional\",\r\n            \"protocol\": [ \"255\" ],\r\n            \"remoteIpList\": [ \"any\" ]\r\n          }\r\n        ]\r\n      }\r\n    ]\r\n  }\r\n}",
       "isContentBase64": false,
       "Headers": {
@@ -34,7 +34,7 @@
         "Content-Type": [ "application/json; charset=utf-8" ],
         "Expires": [ "-1" ]
       },
-      "Content": "{\"id\":\"/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/testgroup-mobilenetwork/providers/Microsoft.MobileNetwork/mobileNetworks/test-mn3/services/test-mn-service\",\"name\":\"test-mn-service\",\"type\":\"microsoft.mobilenetwork/mobilenetworks/services\",\"location\":\"eastus\",\"systemData\":{\"createdBy\":\"v-jinpel@microsoft.com\",\"createdByType\":\"User\",\"createdAt\":\"2023-03-22T10:48:16.7663581Z\",\"lastModifiedBy\":\"v-jinpel@microsoft.com\",\"lastModifiedByType\":\"User\",\"lastModifiedAt\":\"2023-03-22T10:48:16.7663581Z\"},\"properties\":{\"serviceQosPolicy\":{\"maximumBitRate\":{\"uplink\":\"500 Mbps\",\"downlink\":\"1 Gbps\"},\"5qi\":9,\"allocationAndRetentionPriorityLevel\":9,\"preemptionCapability\":\"MayPreempt\",\"preemptionVulnerability\":\"Preemptable\"},\"servicePrecedence\":0,\"pccRules\":[{\"ruleQosPolicy\":{\"maximumBitRate\":{\"uplink\":\"500 Mbps\",\"downlink\":\"1 Gbps\"},\"allocationAndRetentionPriorityLevel\":9,\"preemptionCapability\":\"NotPreempt\",\"preemptionVulnerability\":\"Preemptable\"},\"ruleName\":\"test-mn-service-rule\",\"rulePrecedence\":0,\"trafficControl\":\"Enabled\",\"serviceDataFlowTemplates\":[{\"templateName\":\"test-mn-flow-template\",\"direction\":\"Bidirectional\",\"protocol\":[\"255\"],\"remoteIpList\":[\"any\"]}]}],\"provisioningState\":\"Accepted\"}}",
+      "Content": "{\"id\":\"/subscriptions/9e276fe5-9273-4474-80c6-032321ab3795/resourceGroups/testgroup-mobilenetwork/providers/Microsoft.MobileNetwork/mobileNetworks/test-mn3/services/test-mn-service\",\"name\":\"test-mn-service\",\"type\":\"microsoft.mobilenetwork/mobilenetworks/services\",\"location\":\"eastus\",\"systemData\":{\"createdBy\":\"v-jinpel@microsoft.com\",\"createdByType\":\"User\",\"createdAt\":\"2023-03-22T10:48:16.7663581Z\",\"lastModifiedBy\":\"v-jinpel@microsoft.com\",\"lastModifiedByType\":\"User\",\"lastModifiedAt\":\"2023-03-22T10:48:16.7663581Z\"},\"properties\":{\"serviceQosPolicy\":{\"maximumBitRate\":{\"uplink\":\"500 Mbps\",\"downlink\":\"1 Gbps\"},\"5qi\":9,\"allocationAndRetentionPriorityLevel\":9,\"preemptionCapability\":\"MayPreempt\",\"preemptionVulnerability\":\"Preemptable\"},\"servicePrecedence\":0,\"pccRules\":[{\"ruleQosPolicy\":{\"maximumBitRate\":{\"uplink\":\"500 Mbps\",\"downlink\":\"1 Gbps\"},\"allocationAndRetentionPriorityLevel\":9,\"preemptionCapability\":\"NotPreempt\",\"preemptionVulnerability\":\"Preemptable\"},\"ruleName\":\"test-mn-service-rule\",\"rulePrecedence\":0,\"trafficControl\":\"Enabled\",\"serviceDataFlowTemplates\":[{\"templateName\":\"test-mn-flow-template\",\"direction\":\"Bidirectional\",\"protocol\":[\"255\"],\"remoteIpList\":[\"any\"]}]}],\"provisioningState\":\"Accepted\"}}",
       "isContentBase64": false
     }
   },
@@ -75,7 +75,7 @@
         "Content-Type": [ "application/json; charset=utf-8" ],
         "Expires": [ "-1" ]
       },
-      "Content": "{\"id\":\"/providers/Microsoft.MobileNetwork/locations/EASTUS/operationStatuses/e2408958-3523-4a5a-a5ca-0d2dda1bf299*635526C4AE250EF192E4150550240CEC408B62D881F1CA27C876E4A71CAC9C50\",\"name\":\"e2408958-3523-4a5a-a5ca-0d2dda1bf299*635526C4AE250EF192E4150550240CEC408B62D881F1CA27C876E4A71CAC9C50\",\"resourceId\":\"/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/testgroup-mobilenetwork/providers/Microsoft.MobileNetwork/mobileNetworks/test-mn3/services/test-mn-service\",\"status\":\"Accepted\",\"startTime\":\"2023-03-22T10:48:17.6101903Z\"}",
+      "Content": "{\"id\":\"/providers/Microsoft.MobileNetwork/locations/EASTUS/operationStatuses/e2408958-3523-4a5a-a5ca-0d2dda1bf299*635526C4AE250EF192E4150550240CEC408B62D881F1CA27C876E4A71CAC9C50\",\"name\":\"e2408958-3523-4a5a-a5ca-0d2dda1bf299*635526C4AE250EF192E4150550240CEC408B62D881F1CA27C876E4A71CAC9C50\",\"resourceId\":\"/subscriptions/9e276fe5-9273-4474-80c6-032321ab3795/resourceGroups/testgroup-mobilenetwork/providers/Microsoft.MobileNetwork/mobileNetworks/test-mn3/services/test-mn-service\",\"status\":\"Accepted\",\"startTime\":\"2023-03-22T10:48:17.6101903Z\"}",
       "isContentBase64": false
     }
   },
@@ -116,7 +116,7 @@
         "Content-Type": [ "application/json; charset=utf-8" ],
         "Expires": [ "-1" ]
       },
-      "Content": "{\"id\":\"/providers/Microsoft.MobileNetwork/locations/EASTUS/operationStatuses/e2408958-3523-4a5a-a5ca-0d2dda1bf299*635526C4AE250EF192E4150550240CEC408B62D881F1CA27C876E4A71CAC9C50\",\"name\":\"e2408958-3523-4a5a-a5ca-0d2dda1bf299*635526C4AE250EF192E4150550240CEC408B62D881F1CA27C876E4A71CAC9C50\",\"resourceId\":\"/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/testgroup-mobilenetwork/providers/Microsoft.MobileNetwork/mobileNetworks/test-mn3/services/test-mn-service\",\"status\":\"Accepted\",\"startTime\":\"2023-03-22T10:48:17.6101903Z\"}",
+      "Content": "{\"id\":\"/providers/Microsoft.MobileNetwork/locations/EASTUS/operationStatuses/e2408958-3523-4a5a-a5ca-0d2dda1bf299*635526C4AE250EF192E4150550240CEC408B62D881F1CA27C876E4A71CAC9C50\",\"name\":\"e2408958-3523-4a5a-a5ca-0d2dda1bf299*635526C4AE250EF192E4150550240CEC408B62D881F1CA27C876E4A71CAC9C50\",\"resourceId\":\"/subscriptions/9e276fe5-9273-4474-80c6-032321ab3795/resourceGroups/testgroup-mobilenetwork/providers/Microsoft.MobileNetwork/mobileNetworks/test-mn3/services/test-mn-service\",\"status\":\"Accepted\",\"startTime\":\"2023-03-22T10:48:17.6101903Z\"}",
       "isContentBase64": false
     }
   },
@@ -157,14 +157,14 @@
         "Content-Type": [ "application/json; charset=utf-8" ],
         "Expires": [ "-1" ]
       },
-      "Content": "{\"id\":\"/providers/Microsoft.MobileNetwork/locations/EASTUS/operationStatuses/e2408958-3523-4a5a-a5ca-0d2dda1bf299*635526C4AE250EF192E4150550240CEC408B62D881F1CA27C876E4A71CAC9C50\",\"name\":\"e2408958-3523-4a5a-a5ca-0d2dda1bf299*635526C4AE250EF192E4150550240CEC408B62D881F1CA27C876E4A71CAC9C50\",\"resourceId\":\"/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/testgroup-mobilenetwork/providers/Microsoft.MobileNetwork/mobileNetworks/test-mn3/services/test-mn-service\",\"status\":\"Succeeded\",\"startTime\":\"2023-03-22T10:48:17.6101903Z\",\"properties\":null}",
+      "Content": "{\"id\":\"/providers/Microsoft.MobileNetwork/locations/EASTUS/operationStatuses/e2408958-3523-4a5a-a5ca-0d2dda1bf299*635526C4AE250EF192E4150550240CEC408B62D881F1CA27C876E4A71CAC9C50\",\"name\":\"e2408958-3523-4a5a-a5ca-0d2dda1bf299*635526C4AE250EF192E4150550240CEC408B62D881F1CA27C876E4A71CAC9C50\",\"resourceId\":\"/subscriptions/9e276fe5-9273-4474-80c6-032321ab3795/resourceGroups/testgroup-mobilenetwork/providers/Microsoft.MobileNetwork/mobileNetworks/test-mn3/services/test-mn-service\",\"status\":\"Succeeded\",\"startTime\":\"2023-03-22T10:48:17.6101903Z\",\"properties\":null}",
       "isContentBase64": false
     }
   },
-  "AzMobileNetworkService+[NoContext]+CreateExpanded+$GET+https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/testgroup-mobilenetwork/providers/Microsoft.MobileNetwork/mobileNetworks/test-mn3/services/test-mn-service?api-version=2022-11-01+5": {
+  "AzMobileNetworkService+[NoContext]+CreateExpanded+$GET+https://management.azure.com/subscriptions/9e276fe5-9273-4474-80c6-032321ab3795/resourceGroups/testgroup-mobilenetwork/providers/Microsoft.MobileNetwork/mobileNetworks/test-mn3/services/test-mn-service?api-version=2022-11-01+5": {
     "Request": {
       "Method": "GET",
-      "RequestUri": "https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/testgroup-mobilenetwork/providers/Microsoft.MobileNetwork/mobileNetworks/test-mn3/services/test-mn-service?api-version=2022-11-01",
+      "RequestUri": "https://management.azure.com/subscriptions/9e276fe5-9273-4474-80c6-032321ab3795/resourceGroups/testgroup-mobilenetwork/providers/Microsoft.MobileNetwork/mobileNetworks/test-mn3/services/test-mn-service?api-version=2022-11-01",
       "Content": null,
       "isContentBase64": false,
       "Headers": {
@@ -199,14 +199,14 @@
         "Content-Type": [ "application/json; charset=utf-8" ],
         "Expires": [ "-1" ]
       },
-      "Content": "{\"id\":\"/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/testgroup-mobilenetwork/providers/Microsoft.MobileNetwork/mobileNetworks/test-mn3/services/test-mn-service\",\"name\":\"test-mn-service\",\"type\":\"microsoft.mobilenetwork/mobilenetworks/services\",\"location\":\"eastus\",\"systemData\":{\"createdBy\":\"v-jinpel@microsoft.com\",\"createdByType\":\"User\",\"createdAt\":\"2023-03-22T10:48:16.7663581Z\",\"lastModifiedBy\":\"v-jinpel@microsoft.com\",\"lastModifiedByType\":\"User\",\"lastModifiedAt\":\"2023-03-22T10:48:16.7663581Z\"},\"properties\":{\"serviceQosPolicy\":{\"maximumBitRate\":{\"uplink\":\"500 Mbps\",\"downlink\":\"1 Gbps\"},\"5qi\":9,\"allocationAndRetentionPriorityLevel\":9,\"preemptionCapability\":\"MayPreempt\",\"preemptionVulnerability\":\"Preemptable\"},\"servicePrecedence\":0,\"pccRules\":[{\"ruleQosPolicy\":{\"maximumBitRate\":{\"uplink\":\"500 Mbps\",\"downlink\":\"1 Gbps\"},\"allocationAndRetentionPriorityLevel\":9,\"preemptionCapability\":\"NotPreempt\",\"preemptionVulnerability\":\"Preemptable\"},\"ruleName\":\"test-mn-service-rule\",\"rulePrecedence\":0,\"trafficControl\":\"Enabled\",\"serviceDataFlowTemplates\":[{\"templateName\":\"test-mn-flow-template\",\"direction\":\"Bidirectional\",\"protocol\":[\"255\"],\"remoteIpList\":[\"any\"]}]}],\"provisioningState\":\"Succeeded\"}}",
+      "Content": "{\"id\":\"/subscriptions/9e276fe5-9273-4474-80c6-032321ab3795/resourceGroups/testgroup-mobilenetwork/providers/Microsoft.MobileNetwork/mobileNetworks/test-mn3/services/test-mn-service\",\"name\":\"test-mn-service\",\"type\":\"microsoft.mobilenetwork/mobilenetworks/services\",\"location\":\"eastus\",\"systemData\":{\"createdBy\":\"v-jinpel@microsoft.com\",\"createdByType\":\"User\",\"createdAt\":\"2023-03-22T10:48:16.7663581Z\",\"lastModifiedBy\":\"v-jinpel@microsoft.com\",\"lastModifiedByType\":\"User\",\"lastModifiedAt\":\"2023-03-22T10:48:16.7663581Z\"},\"properties\":{\"serviceQosPolicy\":{\"maximumBitRate\":{\"uplink\":\"500 Mbps\",\"downlink\":\"1 Gbps\"},\"5qi\":9,\"allocationAndRetentionPriorityLevel\":9,\"preemptionCapability\":\"MayPreempt\",\"preemptionVulnerability\":\"Preemptable\"},\"servicePrecedence\":0,\"pccRules\":[{\"ruleQosPolicy\":{\"maximumBitRate\":{\"uplink\":\"500 Mbps\",\"downlink\":\"1 Gbps\"},\"allocationAndRetentionPriorityLevel\":9,\"preemptionCapability\":\"NotPreempt\",\"preemptionVulnerability\":\"Preemptable\"},\"ruleName\":\"test-mn-service-rule\",\"rulePrecedence\":0,\"trafficControl\":\"Enabled\",\"serviceDataFlowTemplates\":[{\"templateName\":\"test-mn-flow-template\",\"direction\":\"Bidirectional\",\"protocol\":[\"255\"],\"remoteIpList\":[\"any\"]}]}],\"provisioningState\":\"Succeeded\"}}",
       "isContentBase64": false
     }
   },
-  "AzMobileNetworkService+[NoContext]+List+$GET+https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/testgroup-mobilenetwork/providers/Microsoft.MobileNetwork/mobileNetworks/test-mn3/services?api-version=2022-11-01+1": {
+  "AzMobileNetworkService+[NoContext]+List+$GET+https://management.azure.com/subscriptions/9e276fe5-9273-4474-80c6-032321ab3795/resourceGroups/testgroup-mobilenetwork/providers/Microsoft.MobileNetwork/mobileNetworks/test-mn3/services?api-version=2022-11-01+1": {
     "Request": {
       "Method": "GET",
-      "RequestUri": "https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/testgroup-mobilenetwork/providers/Microsoft.MobileNetwork/mobileNetworks/test-mn3/services?api-version=2022-11-01",
+      "RequestUri": "https://management.azure.com/subscriptions/9e276fe5-9273-4474-80c6-032321ab3795/resourceGroups/testgroup-mobilenetwork/providers/Microsoft.MobileNetwork/mobileNetworks/test-mn3/services?api-version=2022-11-01",
       "Content": null,
       "isContentBase64": false,
       "Headers": {
@@ -240,14 +240,14 @@
         "Expires": [ "-1" ],
         "Content-Length": [ "1233" ]
       },
-      "Content": "{\"value\":[{\"id\":\"/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/testgroup-mobilenetwork/providers/Microsoft.MobileNetwork/mobileNetworks/test-mn3/services/test-mn-service\",\"name\":\"test-mn-service\",\"type\":\"microsoft.mobilenetwork/mobilenetworks/services\",\"location\":\"eastus\",\"systemData\":{\"createdBy\":\"v-jinpel@microsoft.com\",\"createdByType\":\"User\",\"createdAt\":\"2023-03-22T10:48:16.7663581Z\",\"lastModifiedBy\":\"v-jinpel@microsoft.com\",\"lastModifiedByType\":\"User\",\"lastModifiedAt\":\"2023-03-22T10:48:16.7663581Z\"},\"properties\":{\"serviceQosPolicy\":{\"maximumBitRate\":{\"uplink\":\"500 Mbps\",\"downlink\":\"1 Gbps\"},\"5qi\":9,\"allocationAndRetentionPriorityLevel\":9,\"preemptionCapability\":\"MayPreempt\",\"preemptionVulnerability\":\"Preemptable\"},\"servicePrecedence\":0,\"pccRules\":[{\"ruleQosPolicy\":{\"maximumBitRate\":{\"uplink\":\"500 Mbps\",\"downlink\":\"1 Gbps\"},\"allocationAndRetentionPriorityLevel\":9,\"preemptionCapability\":\"NotPreempt\",\"preemptionVulnerability\":\"Preemptable\"},\"ruleName\":\"test-mn-service-rule\",\"rulePrecedence\":0,\"trafficControl\":\"Enabled\",\"serviceDataFlowTemplates\":[{\"templateName\":\"test-mn-flow-template\",\"direction\":\"Bidirectional\",\"protocol\":[\"255\"],\"remoteIpList\":[\"any\"]}]}],\"provisioningState\":\"Succeeded\"}}]}",
+      "Content": "{\"value\":[{\"id\":\"/subscriptions/9e276fe5-9273-4474-80c6-032321ab3795/resourceGroups/testgroup-mobilenetwork/providers/Microsoft.MobileNetwork/mobileNetworks/test-mn3/services/test-mn-service\",\"name\":\"test-mn-service\",\"type\":\"microsoft.mobilenetwork/mobilenetworks/services\",\"location\":\"eastus\",\"systemData\":{\"createdBy\":\"v-jinpel@microsoft.com\",\"createdByType\":\"User\",\"createdAt\":\"2023-03-22T10:48:16.7663581Z\",\"lastModifiedBy\":\"v-jinpel@microsoft.com\",\"lastModifiedByType\":\"User\",\"lastModifiedAt\":\"2023-03-22T10:48:16.7663581Z\"},\"properties\":{\"serviceQosPolicy\":{\"maximumBitRate\":{\"uplink\":\"500 Mbps\",\"downlink\":\"1 Gbps\"},\"5qi\":9,\"allocationAndRetentionPriorityLevel\":9,\"preemptionCapability\":\"MayPreempt\",\"preemptionVulnerability\":\"Preemptable\"},\"servicePrecedence\":0,\"pccRules\":[{\"ruleQosPolicy\":{\"maximumBitRate\":{\"uplink\":\"500 Mbps\",\"downlink\":\"1 Gbps\"},\"allocationAndRetentionPriorityLevel\":9,\"preemptionCapability\":\"NotPreempt\",\"preemptionVulnerability\":\"Preemptable\"},\"ruleName\":\"test-mn-service-rule\",\"rulePrecedence\":0,\"trafficControl\":\"Enabled\",\"serviceDataFlowTemplates\":[{\"templateName\":\"test-mn-flow-template\",\"direction\":\"Bidirectional\",\"protocol\":[\"255\"],\"remoteIpList\":[\"any\"]}]}],\"provisioningState\":\"Succeeded\"}}]}",
       "isContentBase64": false
     }
   },
-  "AzMobileNetworkService+[NoContext]+Get+$GET+https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/testgroup-mobilenetwork/providers/Microsoft.MobileNetwork/mobileNetworks/test-mn3/services/test-mn-service?api-version=2022-11-01+1": {
+  "AzMobileNetworkService+[NoContext]+Get+$GET+https://management.azure.com/subscriptions/9e276fe5-9273-4474-80c6-032321ab3795/resourceGroups/testgroup-mobilenetwork/providers/Microsoft.MobileNetwork/mobileNetworks/test-mn3/services/test-mn-service?api-version=2022-11-01+1": {
     "Request": {
       "Method": "GET",
-      "RequestUri": "https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/testgroup-mobilenetwork/providers/Microsoft.MobileNetwork/mobileNetworks/test-mn3/services/test-mn-service?api-version=2022-11-01",
+      "RequestUri": "https://management.azure.com/subscriptions/9e276fe5-9273-4474-80c6-032321ab3795/resourceGroups/testgroup-mobilenetwork/providers/Microsoft.MobileNetwork/mobileNetworks/test-mn3/services/test-mn-service?api-version=2022-11-01",
       "Content": null,
       "isContentBase64": false,
       "Headers": {
@@ -282,14 +282,14 @@
         "Content-Type": [ "application/json; charset=utf-8" ],
         "Expires": [ "-1" ]
       },
-      "Content": "{\"id\":\"/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/testgroup-mobilenetwork/providers/Microsoft.MobileNetwork/mobileNetworks/test-mn3/services/test-mn-service\",\"name\":\"test-mn-service\",\"type\":\"microsoft.mobilenetwork/mobilenetworks/services\",\"location\":\"eastus\",\"systemData\":{\"createdBy\":\"v-jinpel@microsoft.com\",\"createdByType\":\"User\",\"createdAt\":\"2023-03-22T10:48:16.7663581Z\",\"lastModifiedBy\":\"v-jinpel@microsoft.com\",\"lastModifiedByType\":\"User\",\"lastModifiedAt\":\"2023-03-22T10:48:16.7663581Z\"},\"properties\":{\"serviceQosPolicy\":{\"maximumBitRate\":{\"uplink\":\"500 Mbps\",\"downlink\":\"1 Gbps\"},\"5qi\":9,\"allocationAndRetentionPriorityLevel\":9,\"preemptionCapability\":\"MayPreempt\",\"preemptionVulnerability\":\"Preemptable\"},\"servicePrecedence\":0,\"pccRules\":[{\"ruleQosPolicy\":{\"maximumBitRate\":{\"uplink\":\"500 Mbps\",\"downlink\":\"1 Gbps\"},\"allocationAndRetentionPriorityLevel\":9,\"preemptionCapability\":\"NotPreempt\",\"preemptionVulnerability\":\"Preemptable\"},\"ruleName\":\"test-mn-service-rule\",\"rulePrecedence\":0,\"trafficControl\":\"Enabled\",\"serviceDataFlowTemplates\":[{\"templateName\":\"test-mn-flow-template\",\"direction\":\"Bidirectional\",\"protocol\":[\"255\"],\"remoteIpList\":[\"any\"]}]}],\"provisioningState\":\"Succeeded\"}}",
+      "Content": "{\"id\":\"/subscriptions/9e276fe5-9273-4474-80c6-032321ab3795/resourceGroups/testgroup-mobilenetwork/providers/Microsoft.MobileNetwork/mobileNetworks/test-mn3/services/test-mn-service\",\"name\":\"test-mn-service\",\"type\":\"microsoft.mobilenetwork/mobilenetworks/services\",\"location\":\"eastus\",\"systemData\":{\"createdBy\":\"v-jinpel@microsoft.com\",\"createdByType\":\"User\",\"createdAt\":\"2023-03-22T10:48:16.7663581Z\",\"lastModifiedBy\":\"v-jinpel@microsoft.com\",\"lastModifiedByType\":\"User\",\"lastModifiedAt\":\"2023-03-22T10:48:16.7663581Z\"},\"properties\":{\"serviceQosPolicy\":{\"maximumBitRate\":{\"uplink\":\"500 Mbps\",\"downlink\":\"1 Gbps\"},\"5qi\":9,\"allocationAndRetentionPriorityLevel\":9,\"preemptionCapability\":\"MayPreempt\",\"preemptionVulnerability\":\"Preemptable\"},\"servicePrecedence\":0,\"pccRules\":[{\"ruleQosPolicy\":{\"maximumBitRate\":{\"uplink\":\"500 Mbps\",\"downlink\":\"1 Gbps\"},\"allocationAndRetentionPriorityLevel\":9,\"preemptionCapability\":\"NotPreempt\",\"preemptionVulnerability\":\"Preemptable\"},\"ruleName\":\"test-mn-service-rule\",\"rulePrecedence\":0,\"trafficControl\":\"Enabled\",\"serviceDataFlowTemplates\":[{\"templateName\":\"test-mn-flow-template\",\"direction\":\"Bidirectional\",\"protocol\":[\"255\"],\"remoteIpList\":[\"any\"]}]}],\"provisioningState\":\"Succeeded\"}}",
       "isContentBase64": false
     }
   },
-  "AzMobileNetworkService+[NoContext]+UpdateExpanded+$PUT+https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/testgroup-mobilenetwork/providers/Microsoft.MobileNetwork/mobileNetworks/test-mn3/services/test-mn-service?api-version=2022-11-01+1": {
+  "AzMobileNetworkService+[NoContext]+UpdateExpanded+$PUT+https://management.azure.com/subscriptions/9e276fe5-9273-4474-80c6-032321ab3795/resourceGroups/testgroup-mobilenetwork/providers/Microsoft.MobileNetwork/mobileNetworks/test-mn3/services/test-mn-service?api-version=2022-11-01+1": {
     "Request": {
       "Method": "PUT",
-      "RequestUri": "https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/testgroup-mobilenetwork/providers/Microsoft.MobileNetwork/mobileNetworks/test-mn3/services/test-mn-service?api-version=2022-11-01",
+      "RequestUri": "https://management.azure.com/subscriptions/9e276fe5-9273-4474-80c6-032321ab3795/resourceGroups/testgroup-mobilenetwork/providers/Microsoft.MobileNetwork/mobileNetworks/test-mn3/services/test-mn-service?api-version=2022-11-01",
       "Content": "{\r\n  \"tags\": {\r\n    \"abc\": \"123\"\r\n  },\r\n  \"location\": \"eastus\",\r\n  \"properties\": {\r\n    \"serviceQosPolicy\": {\r\n      \"maximumBitRate\": {\r\n        \"uplink\": \"500 Mbps\",\r\n        \"downlink\": \"1 Gbps\"\r\n      }\r\n    },\r\n    \"servicePrecedence\": 0,\r\n    \"pccRules\": [\r\n      {\r\n        \"ruleQosPolicy\": {\r\n          \"maximumBitRate\": {\r\n            \"uplink\": \"500 Mbps\",\r\n            \"downlink\": \"1 Gbps\"\r\n          },\r\n          \"allocationAndRetentionPriorityLevel\": 9,\r\n          \"preemptionCapability\": \"NotPreempt\",\r\n          \"preemptionVulnerability\": \"Preemptable\"\r\n        },\r\n        \"ruleName\": \"test-mn-service-rule\",\r\n        \"rulePrecedence\": 0,\r\n        \"trafficControl\": \"Enabled\",\r\n        \"serviceDataFlowTemplates\": [\r\n          {\r\n            \"templateName\": \"test-mn-flow-template\",\r\n            \"direction\": \"Bidirectional\",\r\n            \"protocol\": [ \"255\" ],\r\n            \"remoteIpList\": [ \"any\" ]\r\n          }\r\n        ]\r\n      }\r\n    ]\r\n  }\r\n}",
       "isContentBase64": false,
       "Headers": {
@@ -321,7 +321,7 @@
         "Content-Type": [ "application/json; charset=utf-8" ],
         "Expires": [ "-1" ]
       },
-      "Content": "{\"id\":\"/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/testgroup-mobilenetwork/providers/Microsoft.MobileNetwork/mobileNetworks/test-mn3/services/test-mn-service\",\"name\":\"test-mn-service\",\"type\":\"microsoft.mobilenetwork/mobilenetworks/services\",\"location\":\"eastus\",\"tags\":{\"abc\":\"123\"},\"systemData\":{\"createdBy\":\"v-jinpel@microsoft.com\",\"createdByType\":\"User\",\"createdAt\":\"2023-03-22T10:48:16.7663581Z\",\"lastModifiedBy\":\"v-jinpel@microsoft.com\",\"lastModifiedByType\":\"User\",\"lastModifiedAt\":\"2023-03-22T10:49:54.0171519Z\"},\"properties\":{\"provisioningState\":\"Accepted\",\"serviceQosPolicy\":{\"maximumBitRate\":{\"uplink\":\"500 Mbps\",\"downlink\":\"1 Gbps\"}},\"servicePrecedence\":0,\"pccRules\":[{\"ruleQosPolicy\":{\"maximumBitRate\":{\"uplink\":\"500 Mbps\",\"downlink\":\"1 Gbps\"},\"allocationAndRetentionPriorityLevel\":9,\"preemptionCapability\":\"NotPreempt\",\"preemptionVulnerability\":\"Preemptable\"},\"ruleName\":\"test-mn-service-rule\",\"rulePrecedence\":0,\"trafficControl\":\"Enabled\",\"serviceDataFlowTemplates\":[{\"templateName\":\"test-mn-flow-template\",\"direction\":\"Bidirectional\",\"protocol\":[\"255\"],\"remoteIpList\":[\"any\"]}]}]}}",
+      "Content": "{\"id\":\"/subscriptions/9e276fe5-9273-4474-80c6-032321ab3795/resourceGroups/testgroup-mobilenetwork/providers/Microsoft.MobileNetwork/mobileNetworks/test-mn3/services/test-mn-service\",\"name\":\"test-mn-service\",\"type\":\"microsoft.mobilenetwork/mobilenetworks/services\",\"location\":\"eastus\",\"tags\":{\"abc\":\"123\"},\"systemData\":{\"createdBy\":\"v-jinpel@microsoft.com\",\"createdByType\":\"User\",\"createdAt\":\"2023-03-22T10:48:16.7663581Z\",\"lastModifiedBy\":\"v-jinpel@microsoft.com\",\"lastModifiedByType\":\"User\",\"lastModifiedAt\":\"2023-03-22T10:49:54.0171519Z\"},\"properties\":{\"provisioningState\":\"Accepted\",\"serviceQosPolicy\":{\"maximumBitRate\":{\"uplink\":\"500 Mbps\",\"downlink\":\"1 Gbps\"}},\"servicePrecedence\":0,\"pccRules\":[{\"ruleQosPolicy\":{\"maximumBitRate\":{\"uplink\":\"500 Mbps\",\"downlink\":\"1 Gbps\"},\"allocationAndRetentionPriorityLevel\":9,\"preemptionCapability\":\"NotPreempt\",\"preemptionVulnerability\":\"Preemptable\"},\"ruleName\":\"test-mn-service-rule\",\"rulePrecedence\":0,\"trafficControl\":\"Enabled\",\"serviceDataFlowTemplates\":[{\"templateName\":\"test-mn-flow-template\",\"direction\":\"Bidirectional\",\"protocol\":[\"255\"],\"remoteIpList\":[\"any\"]}]}]}}",
       "isContentBase64": false
     }
   },
@@ -362,7 +362,7 @@
         "Content-Type": [ "application/json; charset=utf-8" ],
         "Expires": [ "-1" ]
       },
-      "Content": "{\"id\":\"/providers/Microsoft.MobileNetwork/locations/EASTUS/operationStatuses/7b083f41-c8c6-4858-8fa1-8126e7a686a5*635526C4AE250EF192E4150550240CEC408B62D881F1CA27C876E4A71CAC9C50\",\"name\":\"7b083f41-c8c6-4858-8fa1-8126e7a686a5*635526C4AE250EF192E4150550240CEC408B62D881F1CA27C876E4A71CAC9C50\",\"resourceId\":\"/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/testgroup-mobilenetwork/providers/Microsoft.MobileNetwork/mobileNetworks/test-mn3/services/test-mn-service\",\"status\":\"Accepted\",\"startTime\":\"2023-03-22T10:49:54.7966304Z\"}",
+      "Content": "{\"id\":\"/providers/Microsoft.MobileNetwork/locations/EASTUS/operationStatuses/7b083f41-c8c6-4858-8fa1-8126e7a686a5*635526C4AE250EF192E4150550240CEC408B62D881F1CA27C876E4A71CAC9C50\",\"name\":\"7b083f41-c8c6-4858-8fa1-8126e7a686a5*635526C4AE250EF192E4150550240CEC408B62D881F1CA27C876E4A71CAC9C50\",\"resourceId\":\"/subscriptions/9e276fe5-9273-4474-80c6-032321ab3795/resourceGroups/testgroup-mobilenetwork/providers/Microsoft.MobileNetwork/mobileNetworks/test-mn3/services/test-mn-service\",\"status\":\"Accepted\",\"startTime\":\"2023-03-22T10:49:54.7966304Z\"}",
       "isContentBase64": false
     }
   },
@@ -403,7 +403,7 @@
         "Content-Type": [ "application/json; charset=utf-8" ],
         "Expires": [ "-1" ]
       },
-      "Content": "{\"id\":\"/providers/Microsoft.MobileNetwork/locations/EASTUS/operationStatuses/7b083f41-c8c6-4858-8fa1-8126e7a686a5*635526C4AE250EF192E4150550240CEC408B62D881F1CA27C876E4A71CAC9C50\",\"name\":\"7b083f41-c8c6-4858-8fa1-8126e7a686a5*635526C4AE250EF192E4150550240CEC408B62D881F1CA27C876E4A71CAC9C50\",\"resourceId\":\"/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/testgroup-mobilenetwork/providers/Microsoft.MobileNetwork/mobileNetworks/test-mn3/services/test-mn-service\",\"status\":\"Accepted\",\"startTime\":\"2023-03-22T10:49:54.7966304Z\"}",
+      "Content": "{\"id\":\"/providers/Microsoft.MobileNetwork/locations/EASTUS/operationStatuses/7b083f41-c8c6-4858-8fa1-8126e7a686a5*635526C4AE250EF192E4150550240CEC408B62D881F1CA27C876E4A71CAC9C50\",\"name\":\"7b083f41-c8c6-4858-8fa1-8126e7a686a5*635526C4AE250EF192E4150550240CEC408B62D881F1CA27C876E4A71CAC9C50\",\"resourceId\":\"/subscriptions/9e276fe5-9273-4474-80c6-032321ab3795/resourceGroups/testgroup-mobilenetwork/providers/Microsoft.MobileNetwork/mobileNetworks/test-mn3/services/test-mn-service\",\"status\":\"Accepted\",\"startTime\":\"2023-03-22T10:49:54.7966304Z\"}",
       "isContentBase64": false
     }
   },
@@ -444,14 +444,14 @@
         "Content-Type": [ "application/json; charset=utf-8" ],
         "Expires": [ "-1" ]
       },
-      "Content": "{\"id\":\"/providers/Microsoft.MobileNetwork/locations/EASTUS/operationStatuses/7b083f41-c8c6-4858-8fa1-8126e7a686a5*635526C4AE250EF192E4150550240CEC408B62D881F1CA27C876E4A71CAC9C50\",\"name\":\"7b083f41-c8c6-4858-8fa1-8126e7a686a5*635526C4AE250EF192E4150550240CEC408B62D881F1CA27C876E4A71CAC9C50\",\"resourceId\":\"/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/testgroup-mobilenetwork/providers/Microsoft.MobileNetwork/mobileNetworks/test-mn3/services/test-mn-service\",\"status\":\"Succeeded\",\"startTime\":\"2023-03-22T10:49:54.7966304Z\",\"properties\":null}",
+      "Content": "{\"id\":\"/providers/Microsoft.MobileNetwork/locations/EASTUS/operationStatuses/7b083f41-c8c6-4858-8fa1-8126e7a686a5*635526C4AE250EF192E4150550240CEC408B62D881F1CA27C876E4A71CAC9C50\",\"name\":\"7b083f41-c8c6-4858-8fa1-8126e7a686a5*635526C4AE250EF192E4150550240CEC408B62D881F1CA27C876E4A71CAC9C50\",\"resourceId\":\"/subscriptions/9e276fe5-9273-4474-80c6-032321ab3795/resourceGroups/testgroup-mobilenetwork/providers/Microsoft.MobileNetwork/mobileNetworks/test-mn3/services/test-mn-service\",\"status\":\"Succeeded\",\"startTime\":\"2023-03-22T10:49:54.7966304Z\",\"properties\":null}",
       "isContentBase64": false
     }
   },
-  "AzMobileNetworkService+[NoContext]+UpdateExpanded+$GET+https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/testgroup-mobilenetwork/providers/Microsoft.MobileNetwork/mobileNetworks/test-mn3/services/test-mn-service?api-version=2022-11-01+5": {
+  "AzMobileNetworkService+[NoContext]+UpdateExpanded+$GET+https://management.azure.com/subscriptions/9e276fe5-9273-4474-80c6-032321ab3795/resourceGroups/testgroup-mobilenetwork/providers/Microsoft.MobileNetwork/mobileNetworks/test-mn3/services/test-mn-service?api-version=2022-11-01+5": {
     "Request": {
       "Method": "GET",
-      "RequestUri": "https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/testgroup-mobilenetwork/providers/Microsoft.MobileNetwork/mobileNetworks/test-mn3/services/test-mn-service?api-version=2022-11-01",
+      "RequestUri": "https://management.azure.com/subscriptions/9e276fe5-9273-4474-80c6-032321ab3795/resourceGroups/testgroup-mobilenetwork/providers/Microsoft.MobileNetwork/mobileNetworks/test-mn3/services/test-mn-service?api-version=2022-11-01",
       "Content": null,
       "isContentBase64": false,
       "Headers": {
@@ -486,14 +486,14 @@
         "Content-Type": [ "application/json; charset=utf-8" ],
         "Expires": [ "-1" ]
       },
-      "Content": "{\"id\":\"/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/testgroup-mobilenetwork/providers/Microsoft.MobileNetwork/mobileNetworks/test-mn3/services/test-mn-service\",\"name\":\"test-mn-service\",\"type\":\"microsoft.mobilenetwork/mobilenetworks/services\",\"location\":\"eastus\",\"tags\":{\"abc\":\"123\"},\"systemData\":{\"createdBy\":\"v-jinpel@microsoft.com\",\"createdByType\":\"User\",\"createdAt\":\"2023-03-22T10:48:16.7663581Z\",\"lastModifiedBy\":\"v-jinpel@microsoft.com\",\"lastModifiedByType\":\"User\",\"lastModifiedAt\":\"2023-03-22T10:49:54.0171519Z\"},\"properties\":{\"provisioningState\":\"Succeeded\",\"serviceQosPolicy\":{\"maximumBitRate\":{\"uplink\":\"500 Mbps\",\"downlink\":\"1 Gbps\"}},\"servicePrecedence\":0,\"pccRules\":[{\"ruleQosPolicy\":{\"maximumBitRate\":{\"uplink\":\"500 Mbps\",\"downlink\":\"1 Gbps\"},\"allocationAndRetentionPriorityLevel\":9,\"preemptionCapability\":\"NotPreempt\",\"preemptionVulnerability\":\"Preemptable\"},\"ruleName\":\"test-mn-service-rule\",\"rulePrecedence\":0,\"trafficControl\":\"Enabled\",\"serviceDataFlowTemplates\":[{\"templateName\":\"test-mn-flow-template\",\"direction\":\"Bidirectional\",\"protocol\":[\"255\"],\"remoteIpList\":[\"any\"]}]}]}}",
+      "Content": "{\"id\":\"/subscriptions/9e276fe5-9273-4474-80c6-032321ab3795/resourceGroups/testgroup-mobilenetwork/providers/Microsoft.MobileNetwork/mobileNetworks/test-mn3/services/test-mn-service\",\"name\":\"test-mn-service\",\"type\":\"microsoft.mobilenetwork/mobilenetworks/services\",\"location\":\"eastus\",\"tags\":{\"abc\":\"123\"},\"systemData\":{\"createdBy\":\"v-jinpel@microsoft.com\",\"createdByType\":\"User\",\"createdAt\":\"2023-03-22T10:48:16.7663581Z\",\"lastModifiedBy\":\"v-jinpel@microsoft.com\",\"lastModifiedByType\":\"User\",\"lastModifiedAt\":\"2023-03-22T10:49:54.0171519Z\"},\"properties\":{\"provisioningState\":\"Succeeded\",\"serviceQosPolicy\":{\"maximumBitRate\":{\"uplink\":\"500 Mbps\",\"downlink\":\"1 Gbps\"}},\"servicePrecedence\":0,\"pccRules\":[{\"ruleQosPolicy\":{\"maximumBitRate\":{\"uplink\":\"500 Mbps\",\"downlink\":\"1 Gbps\"},\"allocationAndRetentionPriorityLevel\":9,\"preemptionCapability\":\"NotPreempt\",\"preemptionVulnerability\":\"Preemptable\"},\"ruleName\":\"test-mn-service-rule\",\"rulePrecedence\":0,\"trafficControl\":\"Enabled\",\"serviceDataFlowTemplates\":[{\"templateName\":\"test-mn-flow-template\",\"direction\":\"Bidirectional\",\"protocol\":[\"255\"],\"remoteIpList\":[\"any\"]}]}]}}",
       "isContentBase64": false
     }
   },
-  "AzMobileNetworkService+[NoContext]+Delete+$DELETE+https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/testgroup-mobilenetwork/providers/Microsoft.MobileNetwork/mobileNetworks/test-mn3/services/test-mn-service?api-version=2022-11-01+1": {
+  "AzMobileNetworkService+[NoContext]+Delete+$DELETE+https://management.azure.com/subscriptions/9e276fe5-9273-4474-80c6-032321ab3795/resourceGroups/testgroup-mobilenetwork/providers/Microsoft.MobileNetwork/mobileNetworks/test-mn3/services/test-mn-service?api-version=2022-11-01+1": {
     "Request": {
       "Method": "DELETE",
-      "RequestUri": "https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/testgroup-mobilenetwork/providers/Microsoft.MobileNetwork/mobileNetworks/test-mn3/services/test-mn-service?api-version=2022-11-01",
+      "RequestUri": "https://management.azure.com/subscriptions/9e276fe5-9273-4474-80c6-032321ab3795/resourceGroups/testgroup-mobilenetwork/providers/Microsoft.MobileNetwork/mobileNetworks/test-mn3/services/test-mn-service?api-version=2022-11-01",
       "Content": null,
       "isContentBase64": false,
       "Headers": {
@@ -572,7 +572,7 @@
         "Content-Type": [ "application/json; charset=utf-8" ],
         "Expires": [ "-1" ]
       },
-      "Content": "{\"id\":\"/providers/Microsoft.MobileNetwork/locations/EASTUS/operationStatuses/8dff02e4-c223-41e1-bf9e-a42cfebd6b52*635526C4AE250EF192E4150550240CEC408B62D881F1CA27C876E4A71CAC9C50\",\"name\":\"8dff02e4-c223-41e1-bf9e-a42cfebd6b52*635526C4AE250EF192E4150550240CEC408B62D881F1CA27C876E4A71CAC9C50\",\"resourceId\":\"/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/testgroup-mobilenetwork/providers/Microsoft.MobileNetwork/mobileNetworks/test-mn3/services/test-mn-service\",\"status\":\"Deleting\",\"startTime\":\"2023-03-22T10:51:30.9044029Z\"}",
+      "Content": "{\"id\":\"/providers/Microsoft.MobileNetwork/locations/EASTUS/operationStatuses/8dff02e4-c223-41e1-bf9e-a42cfebd6b52*635526C4AE250EF192E4150550240CEC408B62D881F1CA27C876E4A71CAC9C50\",\"name\":\"8dff02e4-c223-41e1-bf9e-a42cfebd6b52*635526C4AE250EF192E4150550240CEC408B62D881F1CA27C876E4A71CAC9C50\",\"resourceId\":\"/subscriptions/9e276fe5-9273-4474-80c6-032321ab3795/resourceGroups/testgroup-mobilenetwork/providers/Microsoft.MobileNetwork/mobileNetworks/test-mn3/services/test-mn-service\",\"status\":\"Deleting\",\"startTime\":\"2023-03-22T10:51:30.9044029Z\"}",
       "isContentBase64": false
     }
   },
@@ -613,7 +613,7 @@
         "Content-Type": [ "application/json; charset=utf-8" ],
         "Expires": [ "-1" ]
       },
-      "Content": "{\"id\":\"/providers/Microsoft.MobileNetwork/locations/EASTUS/operationStatuses/8dff02e4-c223-41e1-bf9e-a42cfebd6b52*635526C4AE250EF192E4150550240CEC408B62D881F1CA27C876E4A71CAC9C50\",\"name\":\"8dff02e4-c223-41e1-bf9e-a42cfebd6b52*635526C4AE250EF192E4150550240CEC408B62D881F1CA27C876E4A71CAC9C50\",\"resourceId\":\"/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/testgroup-mobilenetwork/providers/Microsoft.MobileNetwork/mobileNetworks/test-mn3/services/test-mn-service\",\"status\":\"Deleting\",\"startTime\":\"2023-03-22T10:51:30.9044029Z\"}",
+      "Content": "{\"id\":\"/providers/Microsoft.MobileNetwork/locations/EASTUS/operationStatuses/8dff02e4-c223-41e1-bf9e-a42cfebd6b52*635526C4AE250EF192E4150550240CEC408B62D881F1CA27C876E4A71CAC9C50\",\"name\":\"8dff02e4-c223-41e1-bf9e-a42cfebd6b52*635526C4AE250EF192E4150550240CEC408B62D881F1CA27C876E4A71CAC9C50\",\"resourceId\":\"/subscriptions/9e276fe5-9273-4474-80c6-032321ab3795/resourceGroups/testgroup-mobilenetwork/providers/Microsoft.MobileNetwork/mobileNetworks/test-mn3/services/test-mn-service\",\"status\":\"Deleting\",\"startTime\":\"2023-03-22T10:51:30.9044029Z\"}",
       "isContentBase64": false
     }
   },
@@ -654,7 +654,7 @@
         "Content-Type": [ "application/json; charset=utf-8" ],
         "Expires": [ "-1" ]
       },
-      "Content": "{\"id\":\"/providers/Microsoft.MobileNetwork/locations/EASTUS/operationStatuses/8dff02e4-c223-41e1-bf9e-a42cfebd6b52*635526C4AE250EF192E4150550240CEC408B62D881F1CA27C876E4A71CAC9C50\",\"name\":\"8dff02e4-c223-41e1-bf9e-a42cfebd6b52*635526C4AE250EF192E4150550240CEC408B62D881F1CA27C876E4A71CAC9C50\",\"resourceId\":\"/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/testgroup-mobilenetwork/providers/Microsoft.MobileNetwork/mobileNetworks/test-mn3/services/test-mn-service\",\"status\":\"Succeeded\",\"startTime\":\"2023-03-22T10:51:30.9044029Z\",\"properties\":null}",
+      "Content": "{\"id\":\"/providers/Microsoft.MobileNetwork/locations/EASTUS/operationStatuses/8dff02e4-c223-41e1-bf9e-a42cfebd6b52*635526C4AE250EF192E4150550240CEC408B62D881F1CA27C876E4A71CAC9C50\",\"name\":\"8dff02e4-c223-41e1-bf9e-a42cfebd6b52*635526C4AE250EF192E4150550240CEC408B62D881F1CA27C876E4A71CAC9C50\",\"resourceId\":\"/subscriptions/9e276fe5-9273-4474-80c6-032321ab3795/resourceGroups/testgroup-mobilenetwork/providers/Microsoft.MobileNetwork/mobileNetworks/test-mn3/services/test-mn-service\",\"status\":\"Succeeded\",\"startTime\":\"2023-03-22T10:51:30.9044029Z\",\"properties\":null}",
       "isContentBase64": false
     }
   },
@@ -695,7 +695,7 @@
         "Content-Type": [ "application/json; charset=utf-8" ],
         "Expires": [ "-1" ]
       },
-      "Content": "{\"id\":\"/providers/Microsoft.MobileNetwork/locations/EASTUS/operationStatuses/8dff02e4-c223-41e1-bf9e-a42cfebd6b52*635526C4AE250EF192E4150550240CEC408B62D881F1CA27C876E4A71CAC9C50\",\"name\":\"8dff02e4-c223-41e1-bf9e-a42cfebd6b52*635526C4AE250EF192E4150550240CEC408B62D881F1CA27C876E4A71CAC9C50\",\"resourceId\":\"/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/testgroup-mobilenetwork/providers/Microsoft.MobileNetwork/mobileNetworks/test-mn3/services/test-mn-service\",\"status\":\"Succeeded\",\"startTime\":\"2023-03-22T10:51:30.9044029Z\",\"properties\":null}",
+      "Content": "{\"id\":\"/providers/Microsoft.MobileNetwork/locations/EASTUS/operationStatuses/8dff02e4-c223-41e1-bf9e-a42cfebd6b52*635526C4AE250EF192E4150550240CEC408B62D881F1CA27C876E4A71CAC9C50\",\"name\":\"8dff02e4-c223-41e1-bf9e-a42cfebd6b52*635526C4AE250EF192E4150550240CEC408B62D881F1CA27C876E4A71CAC9C50\",\"resourceId\":\"/subscriptions/9e276fe5-9273-4474-80c6-032321ab3795/resourceGroups/testgroup-mobilenetwork/providers/Microsoft.MobileNetwork/mobileNetworks/test-mn3/services/test-mn-service\",\"status\":\"Succeeded\",\"startTime\":\"2023-03-22T10:51:30.9044029Z\",\"properties\":null}",
       "isContentBase64": false
     }
   }

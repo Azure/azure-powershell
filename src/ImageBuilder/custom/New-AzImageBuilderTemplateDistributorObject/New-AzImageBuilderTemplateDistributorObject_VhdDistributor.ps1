@@ -21,17 +21,20 @@ Create an in-memory object for ImageTemplateDistributor.
 Create an in-memory object for ImageTemplateDistributor.
 
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.ImageBuilder.Models.Api20220214.ImageTemplateVhdDistributor
+Microsoft.Azure.PowerShell.Cmdlets.ImageBuilder.Models.Api20220701.ImageTemplateVhdDistributor
 .Link
 https://learn.microsoft.com/powershell/module/az.ImageBuilder/new-azimagebuildertemplatedistributorobject
 #>
 function New-AzImageBuilderTemplateDistributorObject_VhdDistributor {
-    [OutputType('Microsoft.Azure.PowerShell.Cmdlets.ImageBuilder.Models.Api20220214.ImageTemplateVhdDistributor')]
+    [OutputType('Microsoft.Azure.PowerShell.Cmdlets.ImageBuilder.Models.Api20220701.ImageTemplateVhdDistributor')]
     [CmdletBinding(PositionalBinding=$false)]
     Param(
 
+        [Parameter(HelpMessage="Optional Azure Storage URI for the distributed VHD blob. Omit to use the default (empty string) in which case VHD would be published to the storage account in the staging resource group.")]
+        [string]
+        $Uri,
         [Parameter(HelpMessage="Tags that will be applied to the artifact once it has been created/updated by the distributor.")]
-        [Microsoft.Azure.PowerShell.Cmdlets.ImageBuilder.Models.Api20220214.IImageTemplateDistributorArtifactTags]
+        [Microsoft.Azure.PowerShell.Cmdlets.ImageBuilder.Models.Api20220701.IImageTemplateDistributorArtifactTags]
         $ArtifactTag,
         [Parameter(Mandatory, HelpMessage="The name to be used for the associated RunOutput.")]
         [string]
@@ -46,8 +49,11 @@ function New-AzImageBuilderTemplateDistributorObject_VhdDistributor {
     )
 
     process {
-        $Object = [Microsoft.Azure.PowerShell.Cmdlets.ImageBuilder.Models.Api20220214.ImageTemplateVhdDistributor]::New()
+        $Object = [Microsoft.Azure.PowerShell.Cmdlets.ImageBuilder.Models.Api20220701.ImageTemplateVhdDistributor]::New()
 
+        if ($PSBoundParameters.ContainsKey('Uri')) {
+            $Object.Uri = $Uri
+        }
         if ($PSBoundParameters.ContainsKey('ArtifactTag')) {
             $Object.ArtifactTag = $ArtifactTag
         }

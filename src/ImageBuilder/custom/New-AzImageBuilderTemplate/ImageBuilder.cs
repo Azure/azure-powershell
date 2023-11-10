@@ -27,9 +27,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ImageBuilder
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        public async global::System.Threading.Tasks.Task VirtualMachineImageTemplatesCreateOrUpdateViaJsonString(string subscriptionId, string resourceGroupName, string imageTemplateName, string jsonString, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.ImageBuilder.Models.Api20220214.IImageTemplate>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.ImageBuilder.Models.Api20220214.ICloudError>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.ImageBuilder.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.ImageBuilder.Runtime.ISendAsync sender)
+        public async global::System.Threading.Tasks.Task VirtualMachineImageTemplatesCreateOrUpdateViaJsonString(string subscriptionId, string resourceGroupName, string imageTemplateName, string jsonString, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.ImageBuilder.Models.Api20220701.IImageTemplate>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.ImageBuilder.Models.Api20220701.ICloudError>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.ImageBuilder.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.ImageBuilder.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2022-02-14";
+            var apiVersion = @"2022-07-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {

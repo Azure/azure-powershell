@@ -84,7 +84,8 @@ This command gets a Threat Intelligence Indicator by object
 ## PARAMETERS
 
 ### -DefaultProfile
-The credentials, account, tenant, and subscription used for communication with Azure.
+The DefaultProfile parameter is not functional.
+Use the SubscriptionId parameter when available if executing the cmdlet against a different subscription.
 
 ```yaml
 Type: System.Management.Automation.PSObject
@@ -260,7 +261,7 @@ COMPLEX PARAMETER PROPERTIES
 To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
 
 
-INPUTOBJECT <ISecurityInsightsIdentity>: Identity Parameter
+`INPUTOBJECT <ISecurityInsightsIdentity>`: Identity Parameter
   - `[ActionId <String>]`: Action ID
   - `[AlertRuleTemplateId <String>]`: Alert rule template ID
   - `[AutomationRuleId <String>]`: Automation rule ID

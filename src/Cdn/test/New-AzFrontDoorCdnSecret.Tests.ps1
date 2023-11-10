@@ -19,7 +19,7 @@ Describe 'New-AzFrontDoorCdnSecret'  {
         $subId = $env.SubscriptionId
         Write-Host -ForegroundColor Green "Use SubscriptionId : $($subId)"
 
-        $secretName = "se-" + (RandomString -allChars $false -len 6);
+        $secretName = "se-psName030"
         Write-Host -ForegroundColor Green "Use secretName : $($secretName)"
 
         $parameter = New-AzFrontDoorCdnSecretCustomerCertificateParametersObject -UseLatestVersion $true -SubjectAlternativeName @() -Type "CustomerCertificate"`

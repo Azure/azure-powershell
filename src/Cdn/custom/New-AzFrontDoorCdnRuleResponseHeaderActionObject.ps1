@@ -21,12 +21,12 @@ Create an in-memory object for DeliveryRuleResponseHeaderAction.
 Create an in-memory object for DeliveryRuleResponseHeaderAction.
 
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20221101Preview.DeliveryRuleResponseHeaderAction
+Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20230501.DeliveryRuleResponseHeaderAction
 .Link
 https://learn.microsoft.com/powershell/module/az.Cdn/new-AzFrontDoorCdnRuleResponseHeaderActionObject
 #>
 function New-AzFrontDoorCdnRuleResponseHeaderActionObject {
-    [OutputType('Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20221101Preview.DeliveryRuleResponseHeaderAction')]
+    [OutputType('Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20230501.DeliveryRuleResponseHeaderAction')]
     [CmdletBinding(PositionalBinding=$false)]
     Param(
 
@@ -47,7 +47,7 @@ function New-AzFrontDoorCdnRuleResponseHeaderActionObject {
     )
 
     process {
-        $Object = [Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20221101Preview.DeliveryRuleResponseHeaderAction]::New()
+        $Object = [Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20230501.DeliveryRuleResponseHeaderAction]::New()
 
         if ($PSBoundParameters.ContainsKey('ParameterHeaderAction')) {
             $Object.ParameterHeaderAction = $ParameterHeaderAction

@@ -66,6 +66,33 @@ Global   fdp-v542q6 frontdoor testps-rg-da16jm
 
 Update an AzureFrontDoor profile under the resource group via identity
 
+### Example 3: Enable managed identity using SystemAssigned type to an AzureFrontDoor profile
+```powershell
+Update-AzFrontDoorCdnProfile -ResourceGroupName testps-rg-da16jm -Name fdp-v542q6 -IdentityType SystemAssigned
+```
+
+```output
+Location Name       Kind      ResourceGroupName
+-------- ----       ----      -----------------
+Global   fdp-v542q6 frontdoor testps-rg-da16jm
+```
+
+Enable managed identity using SystemAssigned type to an AzureFrontDoor profile
+
+### Example 4: Enable managed identity using UserAssigned type to an AzureFrontDoor profile
+```powershell
+$userId =  @{"/subscriptions/subId/resourceGroups/testps-rg-da16jm/providers/Microsoft.ManagedIdentity/userAssignedIdentities/testcdnrpaadidentity" = @{}}
+Update-AzFrontDoorCdnProfile -ResourceGroupName testps-rg-da16jm -Name fdp-v542q6 -IdentityType UserAssigned -IdentityUserAssignedIdentity $userId
+```
+
+```output
+Location Name       Kind      ResourceGroupName
+-------- ----       ----      -----------------
+Global   fdp-v542q6 frontdoor testps-rg-da16jm
+```
+
+Enable managed identity using UserAssigned type to an AzureFrontDoor profile
+
 ## PARAMETERS
 
 ### -AsJob
@@ -277,7 +304,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20221101Preview.IProfile
+### Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20230501.IProfile
 
 ## NOTES
 
@@ -294,7 +321,7 @@ To create the parameters described below, construct a hash table containing the 
   - `[Id <String>]`: Resource identity path
   - `[OriginGroupName <String>]`: Name of the origin group which is unique within the endpoint.
   - `[OriginName <String>]`: Name of the origin which is unique within the profile.
-  - `[ProfileName <String>]`: Name of the Azure Front Door Standard or Azure Front Door Premium profile which is unique within the resource group.
+  - `[ProfileName <String>]`: Name of the Azure Front Door Standard or Azure Front Door Premium which is unique within the resource group.
   - `[ResourceGroupName <String>]`: Name of the Resource group within the Azure subscription.
   - `[RouteName <String>]`: Name of the routing rule.
   - `[RuleName <String>]`: Name of the delivery rule which is unique within the endpoint.

@@ -15,13 +15,28 @@ Delete an Volume.
 ### Delete (Default)
 ```
 Remove-AzElasticSanVolume -ElasticSanName <String> -Name <String> -ResourceGroupName <String>
- -VolumeGroupName <String> [-SubscriptionId <String>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
- [-PassThru] [-Confirm] [-WhatIf] [<CommonParameters>]
+ -VolumeGroupName <String> [-SubscriptionId <String>] [-DeleteSnapshot <String>] [-ForceDelete <String>]
+ [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-PassThru] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ### DeleteViaIdentity
 ```
-Remove-AzElasticSanVolume -InputObject <IElasticSanIdentity> [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
+Remove-AzElasticSanVolume -InputObject <IElasticSanIdentity> [-DeleteSnapshot <String>]
+ [-ForceDelete <String>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-PassThru] [-Confirm] [-WhatIf]
+ [<CommonParameters>]
+```
+
+### DeleteViaIdentityElasticSan
+```
+Remove-AzElasticSanVolume -ElasticSanInputObject <IElasticSanIdentity> -Name <String>
+ -VolumeGroupName <String> [-DeleteSnapshot <String>] [-ForceDelete <String>] [-DefaultProfile <PSObject>]
+ [-AsJob] [-NoWait] [-PassThru] [-Confirm] [-WhatIf] [<CommonParameters>]
+```
+
+### DeleteViaIdentityVolumegroup
+```
+Remove-AzElasticSanVolume -Name <String> -VolumegroupInputObject <IElasticSanIdentity>
+ [-DeleteSnapshot <String>] [-ForceDelete <String>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
  [-PassThru] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
@@ -55,7 +70,8 @@ Accept wildcard characters: False
 ```
 
 ### -DefaultProfile
-The credentials, account, tenant, and subscription used for communication with Azure.
+The DefaultProfile parameter is not functional.
+Use the SubscriptionId parameter when available if executing the cmdlet against a different subscription.
 
 ```yaml
 Type: System.Management.Automation.PSObject
@@ -69,6 +85,39 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### -DeleteSnapshot
+Optional, used to delete snapshots under volume.
+Allowed value are only true or false.
+Default value is false.
+
+```yaml
+Type: System.String
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -ElasticSanInputObject
+Identity Parameter
+To construct, see NOTES section for ELASTICSANINPUTOBJECT properties and create a hash table.
+
+```yaml
+Type: Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Models.IElasticSanIdentity
+Parameter Sets: DeleteViaIdentityElasticSan
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: True (ByValue)
+Accept wildcard characters: False
+```
+
 ### -ElasticSanName
 The name of the ElasticSan.
 
@@ -78,6 +127,23 @@ Parameter Sets: Delete
 Aliases:
 
 Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -ForceDelete
+Optional, used to delete volume if active sessions present.
+Allowed value are only true or false.
+Default value is false.
+
+```yaml
+Type: System.String
+Parameter Sets: (All)
+Aliases:
+
+Required: False
 Position: Named
 Default value: None
 Accept pipeline input: False
@@ -105,7 +171,7 @@ The name of the Volume.
 
 ```yaml
 Type: System.String
-Parameter Sets: Delete
+Parameter Sets: Delete, DeleteViaIdentityElasticSan, DeleteViaIdentityVolumegroup
 Aliases: VolumeName
 
 Required: True
@@ -176,12 +242,28 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### -VolumegroupInputObject
+Identity Parameter
+To construct, see NOTES section for VOLUMEGROUPINPUTOBJECT properties and create a hash table.
+
+```yaml
+Type: Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Models.IElasticSanIdentity
+Parameter Sets: DeleteViaIdentityVolumegroup
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: True (ByValue)
+Accept wildcard characters: False
+```
+
 ### -VolumeGroupName
 The name of the VolumeGroup.
 
 ```yaml
 Type: System.String
-Parameter Sets: Delete
+Parameter Sets: Delete, DeleteViaIdentityElasticSan
 Aliases:
 
 Required: True
@@ -234,21 +316,6 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ### System.Boolean
 
 ## NOTES
-
-ALIASES
-
-COMPLEX PARAMETER PROPERTIES
-
-To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
-
-
-`INPUTOBJECT <IElasticSanIdentity>`: Identity Parameter
-  - `[ElasticSanName <String>]`: The name of the ElasticSan.
-  - `[Id <String>]`: Resource identity path
-  - `[ResourceGroupName <String>]`: The name of the resource group. The name is case insensitive.
-  - `[SubscriptionId <String>]`: The ID of the target subscription.
-  - `[VolumeGroupName <String>]`: The name of the VolumeGroup.
-  - `[VolumeName <String>]`: The name of the Volume.
 
 ## RELATED LINKS
 

@@ -17,7 +17,7 @@ if(($null -eq $TestName) -or ($TestName -contains 'Remove-AzCdnOrigin'))
 Describe 'Remove-AzCdnOrigin'  {
     BeforeAll {
         $subId = $env.SubscriptionId
-        $endpointName = 'e-' + (RandomString -allChars $false -len 6);
+        $endpointName = 'e-ndpstest080'
         Write-Host -ForegroundColor Green "Create endpointName : $($endpointName)"
         
         $origin = @{
@@ -41,7 +41,7 @@ Describe 'Remove-AzCdnOrigin'  {
             -Origin $origin -OriginGroup $originGroup -DefaultOriginGroupId $defaultOriginGroup
         New-AzCdnOrigin -Name "origin2" -HostName "host2.hello.com" -EndpointName $endpointName -ProfileName $env.ClassicCdnProfileName -ResourceGroupName $env.ResourceGroupName
 
-        $endpointName2 = 'e-' + (RandomString -allChars $false -len 6);
+        $endpointName2 = 'e-ndpstest081'
         Write-Host -ForegroundColor Green "Create endpointName : $($endpointName2)"
         
         $originId2 = "/subscriptions/$subId/resourcegroups/$($env.ResourceGroupName)/providers/Microsoft.Cdn/profiles/$($env.ClassicCdnProfileName)/endpoints/$endpointName2/origins/$($origin.Name)"
@@ -66,7 +66,7 @@ Describe 'Remove-AzCdnOrigin'  {
     }
 
     It 'DeleteViaIdentity' {
-        $PSDefaultParameterValues['Disabled'] = $true
-        Get-AzCdnOrigin -Name "origin3" -EndpointName $endpointName2 -ProfileName $env.ClassicCdnProfileName -ResourceGroupName $env.ResourceGroupName | Remove-AzCdnOrigin
+        $originObject = Get-AzCdnOrigin -Name "origin3" -EndpointName $endpointName2 -ProfileName $env.ClassicCdnProfileName -ResourceGroupName $env.ResourceGroupName
+        Remove-AzCdnOrigin -InputObject $originObject
     }
 }

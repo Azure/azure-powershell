@@ -13,7 +13,7 @@ while(-not $mockingPath) {
 
 Describe 'Get-AzResourceMoverRequiredForResources' {
     It 'List' {
-       $requiredStatus = Get-AzResourceMoverRequiredForResources -SubscriptionId $env.SubscriptionId -ResourceGroupName $env.moveCollectionMetadataRG -MoveCollectionName $env.moveCollectionName -SourceId "/subscriptions/e80eb9fa-c996-4435-aa32-5af6f3d3077c/resourceGroups/rms-sRg"
+       $requiredStatus = Get-AzResourceMoverRequiredForResources -SubscriptionId $env.SubscriptionId -ResourceGroupName $env.moveCollectionMetadataRG -MoveCollectionName $env.moveCollectionName -SourceId "/subscriptions/e80eb9fa-c996-4435-aa32-5af6f3d3077c/resourcegroups/demo-RG-rms/providers/Microsoft.Network/networkSecurityGroups/demo-NSG-rms"
        $requiredStatus.Length | Should -Be 0
     }
 }

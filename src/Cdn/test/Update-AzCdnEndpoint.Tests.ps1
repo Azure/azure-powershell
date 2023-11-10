@@ -28,12 +28,12 @@ Describe 'Update-AzCdnEndpoint'  {
     }
 
     It 'UpdateViaIdentityExpanded' {
-        $PSDefaultParameterValues['Disabled'] = $true
         $tags = @{
             Tag1 = 33
             Tag2 = 44
         }
-        Get-AzCdnEndpoint -Name $env.ClassicEndpointName -ProfileName $env.ClassicCdnProfileName -ResourceGroupName $env.ResourceGroupName | Update-AzCdnEndpoint -Tag $tags
+        $endObject = Get-AzCdnEndpoint -Name $env.ClassicEndpointName -ProfileName $env.ClassicCdnProfileName -ResourceGroupName $env.ResourceGroupName
+        Update-AzCdnEndpoint -Tag $tags -InputObject $endObject
         $updatedEndpoint = Get-AzCdnEndpoint -Name $env.ClassicEndpointName -ProfileName $env.ClassicCdnProfileName -ResourceGroupName $env.ResourceGroupName
 
         $updatedEndpoint.Tag["Tag1"] | Should -Be "33"

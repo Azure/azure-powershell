@@ -47,17 +47,17 @@ In this directory, run AutoRest:
 > see https://aka.ms/autorest
 
 ``` yaml
-branch: 791255f0c5dd775015cd51f3e642549190fb3803
+branch: d11245bcaa06b6d87db179c903ba4b049adf1bf2
 require:
   - $(this-folder)/../readme.azure.noprofile.md
 input-file:
-  - $(repo)/specification/kubernetesconfiguration/resource-manager/Microsoft.KubernetesConfiguration/stable/2022-03-01/extensions.json
-  - $(repo)/specification/kubernetesconfiguration/resource-manager/Microsoft.KubernetesConfiguration/stable/2022-03-01/fluxconfiguration.json
-  - $(repo)/specification/kubernetesconfiguration/resource-manager/Microsoft.KubernetesConfiguration/stable/2022-03-01/operations.json
-  - $(repo)/specification/kubernetesconfiguration/resource-manager/Microsoft.KubernetesConfiguration/stable/2022-03-01/kubernetesconfiguration.json
+  - $(repo)/specification/kubernetesconfiguration/resource-manager/Microsoft.KubernetesConfiguration/stable/2022-11-01/extensions.json
+  - $(repo)/specification/kubernetesconfiguration/resource-manager/Microsoft.KubernetesConfiguration/stable/2022-11-01/fluxconfiguration.json
+  - $(repo)/specification/kubernetesconfiguration/resource-manager/Microsoft.KubernetesConfiguration/stable/2022-11-01/operations.json
+  - $(repo)/specification/kubernetesconfiguration/resource-manager/Microsoft.KubernetesConfiguration/stable/2022-11-01/kubernetesconfiguration.json
 
 title: KubernetesConfiguration
-module-version: 0.2.0
+module-version: 0.3.0
 subject-prefix: ''
 
 identity-correction-for-post: true
@@ -70,7 +70,7 @@ directive:
     transform: >-
       return {
         "200": {
-          "description": "OK",
+          "description": "No update is done to extension so return OK",
           "schema": {
             "$ref": "#/definitions/Extension"
           }
@@ -91,13 +91,13 @@ directive:
           "description": "Conflict",
           "x-ms-error-response": true,
           "schema": {
-            "$ref": "https://github.com/Azure/azure-rest-api-specs/blob/791255f0c5dd775015cd51f3e642549190fb3803/specification/common-types/resource-management/v2/types.json#/definitions/ErrorResponse"
+            "$ref": "https://github.com/Azure/azure-rest-api-specs/blob/d11245bcaa06b6d87db179c903ba4b049adf1bf2/specification/common-types/resource-management/v2/types.json#/definitions/ErrorResponse"
           }
         },
         "default": {
           "description": "Error response describing why the operation failed.",
           "schema": {
-            "$ref": "https://github.com/Azure/azure-rest-api-specs/blob/791255f0c5dd775015cd51f3e642549190fb3803/specification/common-types/resource-management/v2/types.json#/definitions/ErrorResponse"
+            "$ref": "https://github.com/Azure/azure-rest-api-specs/blob/d11245bcaa06b6d87db179c903ba4b049adf1bf2/specification/common-types/resource-management/v2/types.json#/definitions/ErrorResponse"
           }
         }
       }
@@ -121,13 +121,13 @@ directive:
           "description": "Conflict",
           "x-ms-error-response": true,
           "schema": {
-            "$ref": "https://github.com/Azure/azure-rest-api-specs/blob/791255f0c5dd775015cd51f3e642549190fb3803/specification/common-types/resource-management/v2/types.json#/definitions/ErrorResponse"
+            "$ref": "https://github.com/Azure/azure-rest-api-specs/blob/d11245bcaa06b6d87db179c903ba4b049adf1bf2/specification/common-types/resource-management/v2/types.json#/definitions/ErrorResponse"
           }
         },
         "default": {
           "description": "Error response describing why the operation failed.",
           "schema": {
-            "$ref": "https://github.com/Azure/azure-rest-api-specs/blob/791255f0c5dd775015cd51f3e642549190fb3803/specification/common-types/resource-management/v2/types.json#/definitions/ErrorResponse"
+            "$ref": "https://github.com/Azure/azure-rest-api-specs/blob/d11245bcaa06b6d87db179c903ba4b049adf1bf2/specification/common-types/resource-management/v2/types.json#/definitions/ErrorResponse"
           }
         }
       }
@@ -150,7 +150,7 @@ directive:
         "default": {
           "description": "Error response describing why the operation failed.",
           "schema": {
-            "$ref": "https://github.com/Azure/azure-rest-api-specs/blob/791255f0c5dd775015cd51f3e642549190fb3803/specification/common-types/resource-management/v2/types.json#/definitions/ErrorResponse"
+            "$ref": "https://github.com/Azure/azure-rest-api-specs/blob/d11245bcaa06b6d87db179c903ba4b049adf1bf2/specification/common-types/resource-management/v2/types.json#/definitions/ErrorResponse"
           }
         }
       }
@@ -190,9 +190,11 @@ directive:
   - from: swagger-document
     where: $.definitions.EnableHelmOperatorDefinition.type
     transform: return "string"
+
   - where:
       variant: ^Create$|^CreateViaIdentity$|^CreateViaIdentityExpanded$|^Update$|^UpdateViaIdentity$
     remove: true
+
   - where:
       subject: SourceControlConfiguration
     set:
@@ -205,6 +207,19 @@ directive:
       subject: FluxConfigOperationStatus
     set:
       subject: KubernetesConfigFluxOperationStatus
+  - where:
+      subject: ^Extension$
+    set:
+      subject: KubernetesExtension
+
+  - where:
+      parameter-name: NamespaceTargetNamespace
+    set:
+      parameter-name: TargetNamespace
+  - where:
+      parameter-name: ClusterReleaseNamespace
+    set:
+      parameter-name: ReleaseNamespace
   - where:
       parameter-name: ClusterResourceName
     set:
@@ -233,25 +248,17 @@ directive:
       parameter-name: SshKnownHostsContent
     set:
       parameter-name: SshKnownHost
+
   - where:
       verb: Set
-      subject: KubernetesConfiguration
-    set:
-      verb: Update
-  - where:
-      subject: KubernetesConfiguration
-    hide: true
-  - where:
-      verb: Update
-      subject: KubernetesConfiguration
     remove: true
   - where:
       subject: OperationStatus
     remove: true
+
   - where:
-      subject: ^Extension$
-    set:
-      subject: KubernetesExtension
+      subject: KubernetesConfiguration
+    hide: true
   - where:
       subject: KubernetesExtension
     hide: true
@@ -261,6 +268,7 @@ directive:
   - where:
       subject: KubernetesConfigFluxOperationStatus
     hide: true
+
   - where:
       verb: Get
       subject: KubernetesExtension
@@ -321,6 +329,7 @@ directive:
       subject: KubernetesConfigFluxOperationStatus
     set:
       alias: Get-AzK8sConfigFluxOperationStatus
+
   - where:
       model-name: Extension
     set:
@@ -340,4 +349,10 @@ directive:
           - Name
           - RepositoryUrl
           - ResourceGroupName
+
+  - where:
+      parameter-name: ClusterType
+    set:
+      completer:
+        script: "'ManagedClusters', 'ConnectedClusters', 'ProvisionedClusters'"
 ```

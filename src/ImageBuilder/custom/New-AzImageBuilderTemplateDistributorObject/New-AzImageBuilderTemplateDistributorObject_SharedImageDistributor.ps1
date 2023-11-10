@@ -21,30 +21,36 @@ Create an in-memory object for ImageTemplateDistributor.
 Create an in-memory object for ImageTemplateDistributor.
 
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.ImageBuilder.Models.Api20220214.ImageTemplateSharedImageDistributor
+Microsoft.Azure.PowerShell.Cmdlets.ImageBuilder.Models.Api20220701.ImageTemplateSharedImageDistributor
 .Link
 https://learn.microsoft.com/powershell/module/az.ImageBuilder/new-azimagebuildertemplatedistributorobject
 #>
 function New-AzImageBuilderTemplateDistributorObject_SharedImageDistributor {
-    [OutputType('Microsoft.Azure.PowerShell.Cmdlets.ImageBuilder.Models.Api20220214.ImageTemplateSharedImageDistributor')]
+    [OutputType('Microsoft.Azure.PowerShell.Cmdlets.ImageBuilder.Models.Api20220701.ImageTemplateSharedImageDistributor')]
     [CmdletBinding(PositionalBinding=$false)]
     Param(
 
         [Parameter(HelpMessage="Flag that indicates whether created image version should be excluded from latest. Omit to use the default (false).")]
         [bool]
         $ExcludeFromLatest,
-        [Parameter(Mandatory, HelpMessage="Resource Id of the Shared Image Gallery image.")]
+        [Parameter(Mandatory, HelpMessage="Resource Id of the Azure Compute Gallery image.")]
         [string]
         $GalleryImageId,
-        [Parameter(Mandatory, HelpMessage="A list of regions that the image will be replicated to.")]
+        [Parameter(HelpMessage="[Deprecated] A list of regions that the image will be replicated to. This list can be specified only if targetRegions is not specified. This field is deprecated - use targetRegions instead.")]
         [string[]]
         $ReplicationRegion,
-        [Parameter(HelpMessage="Storage account type to be used to store the shared image. Omit to use the default (Standard_LRS).")]
+        [Parameter(HelpMessage="[Deprecated] Storage account type to be used to store the shared image. Omit to use the default (Standard_LRS). This field can be specified only if replicationRegions is specified. This field is deprecated - use targetRegions instead.")]
         [ArgumentCompleter([Microsoft.Azure.PowerShell.Cmdlets.ImageBuilder.Support.SharedImageStorageAccountType])]
         [Microsoft.Azure.PowerShell.Cmdlets.ImageBuilder.Support.SharedImageStorageAccountType]
         $StorageAccountType,
+        [Parameter(HelpMessage="The target regions where the distributed Image Version is going to be replicated to. This object supersedes replicationRegions and can be specified only if replicationRegions is not specified.")]
+        [Microsoft.Azure.PowerShell.Cmdlets.ImageBuilder.Models.Api20220701.ITargetRegion[]]
+        $TargetRegion,
+        [Parameter(HelpMessage="Describes how to generate new x.y.z version number for distribution.")]
+        [Microsoft.Azure.PowerShell.Cmdlets.ImageBuilder.Models.Api20220701.IDistributeVersioner]
+        $Versioning,
         [Parameter(HelpMessage="Tags that will be applied to the artifact once it has been created/updated by the distributor.")]
-        [Microsoft.Azure.PowerShell.Cmdlets.ImageBuilder.Models.Api20220214.IImageTemplateDistributorArtifactTags]
+        [Microsoft.Azure.PowerShell.Cmdlets.ImageBuilder.Models.Api20220701.IImageTemplateDistributorArtifactTags]
         $ArtifactTag,
         [Parameter(Mandatory, HelpMessage="The name to be used for the associated RunOutput.")]
         [string]
@@ -59,7 +65,7 @@ function New-AzImageBuilderTemplateDistributorObject_SharedImageDistributor {
     )
 
     process {
-        $Object = [Microsoft.Azure.PowerShell.Cmdlets.ImageBuilder.Models.Api20220214.ImageTemplateSharedImageDistributor]::New()
+        $Object = [Microsoft.Azure.PowerShell.Cmdlets.ImageBuilder.Models.Api20220701.ImageTemplateSharedImageDistributor]::New()
 
         if ($PSBoundParameters.ContainsKey('ExcludeFromLatest')) {
             $Object.ExcludeFromLatest = $ExcludeFromLatest
@@ -72,6 +78,12 @@ function New-AzImageBuilderTemplateDistributorObject_SharedImageDistributor {
         }
         if ($PSBoundParameters.ContainsKey('StorageAccountType')) {
             $Object.StorageAccountType = $StorageAccountType
+        }
+        if ($PSBoundParameters.ContainsKey('TargetRegion')) {
+            $Object.TargetRegion = $TargetRegion
+        }
+        if ($PSBoundParameters.ContainsKey('Versioning')) {
+            $Object.Versioning = $Versioning
         }
         if ($PSBoundParameters.ContainsKey('ArtifactTag')) {
             $Object.ArtifactTag = $ArtifactTag

@@ -112,6 +112,7 @@ function Start-AzMigrateTestMigration {
     
     process {
         $null = $PSBoundParameters.Remove('TargetObjectID')
+        $null = $PSBoundParameters.Remove('OsUpgradeVersion')
         $null = $PSBoundParameters.Remove('TestNetworkID')
         $null = $PSBoundParameters.Remove('NicToUpdate')
         $null = $PSBoundParameters.Remove('ResourceGroupName')
@@ -187,7 +188,7 @@ function Start-AzMigrateTestMigration {
             $ProviderSpecificDetailInput.InstanceType = 'VMwareCbt'
             $ProviderSpecificDetailInput.NetworkId = $TestNetworkID
             if ($OsUpgradeVersion) {
-                $SupportedOSVersions = $ReplicationMigrationItem.ProviderSpecificDetail.SupportedOSVersions
+                $SupportedOSVersions = $ReplicationMigrationItem.ProviderSpecificDetail.SupportedOSVersion
                 if ($null -eq $SupportedOSVersions) {
                     throw "There is no supported target OS available. Please check or remove the OsUpgradeVersion input." 
                 }

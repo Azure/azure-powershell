@@ -36,8 +36,8 @@ Describe 'Get-AzCdnProfile'  {
     }
 
     It 'GetViaIdentity' {
-        $PSDefaultParameterValues['Disabled'] = $true
-        $cdnProfile = Get-AzCdnProfile -SubscriptionId $env.SubscriptionId -ResourceGroupName $env.ResourceGroupName -Name $env.ClassicCdnProfileName | Get-AzCdnProfile
+        $cdnProfileObject = Get-AzCdnProfile -ResourceGroupName $env.ResourceGroupName -Name $env.ClassicCdnProfileName
+        $cdnProfile = Get-AzCdnProfile -InputObject $cdnProfileObject
 
         $cdnProfile.Name | Should -Be $env.ClassicCdnProfileName
         $cdnProfile.SkuName | Should -Be "Standard_Microsoft"

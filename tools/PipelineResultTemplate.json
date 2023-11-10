@@ -47,6 +47,12 @@
         "Details": [
         ]
     },
+    "generated-sdk": {
+        "PhaseName": "Generated Sdk Check",
+        "Order": 9,
+        "Details": [
+        ]
+    },
     "test": {
         "PhaseName": "Test",
         "Order": 100,

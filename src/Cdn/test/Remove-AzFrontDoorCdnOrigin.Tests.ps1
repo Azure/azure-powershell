@@ -16,7 +16,7 @@ if(($null -eq $TestName) -or ($TestName -contains 'Remove-AzFrontDoorCdnOrigin')
 
 Describe 'Remove-AzFrontDoorCdnOrigin'  {
     BeforeAll {
-        $originGroupName = 'org' + (RandomString -allChars $false -len 6);
+        $originGroupName = 'org-pstest080'
         $healthProbeSetting = New-AzFrontDoorCdnOriginGroupHealthProbeSettingObject -ProbeIntervalInSecond 1 -ProbePath "/" `
         -ProbeProtocol "Https" -ProbeRequestType "GET"
         $loadBalancingSetting = New-AzFrontDoorCdnOriginGroupLoadBalancingSettingObject -AdditionalLatencyInMillisecond 200 `
@@ -27,7 +27,7 @@ Describe 'Remove-AzFrontDoorCdnOrigin'  {
         Get-AzFrontDoorCdnOriginGroup -ResourceGroupName $env.ResourceGroupName -ProfileName $env.FrontDoorCdnProfileName -OriginGroupName $originGroupName
 
         $hostName = "en.wikipedia.org";
-        $originName = 'ori' + (RandomString -allChars $false -len 6);
+        $originName = 'ori-psName050'
         New-AzFrontDoorCdnOrigin -ResourceGroupName $env.ResourceGroupName -ProfileName $env.FrontDoorCdnProfileName -OriginGroupName $originGroupName `
             -OriginName $originName -OriginHostHeader $hostName -HostName $hostName `
             -HttpPort 80 -HttpsPort 443 -Priority 1 -Weight 1000
@@ -38,11 +38,11 @@ Describe 'Remove-AzFrontDoorCdnOrigin'  {
     }
 
     It 'DeleteViaIdentity' {
-        $PSDefaultParameterValues['Disabled'] = $true
         New-AzFrontDoorCdnOrigin -SubscriptionId $env.SubscriptionId -ResourceGroupName $env.ResourceGroupName -ProfileName $env.FrontDoorCdnProfileName -OriginGroupName $originGroupName `
             -OriginName $originName -OriginHostHeader $hostName -HostName $hostName `
             -HttpPort 80 -HttpsPort 443 -Priority 1 -Weight 1000
 
-        Get-AzFrontDoorCdnOrigin -ResourceGroupName $env.ResourceGroupName -ProfileName $env.FrontDoorCdnProfileName -OriginGroupName $originGroupName -OriginName $originName | Remove-AzFrontDoorCdnOrigin
+        $originObject = Get-AzFrontDoorCdnOrigin -ResourceGroupName $env.ResourceGroupName -ProfileName $env.FrontDoorCdnProfileName -OriginGroupName $originGroupName -OriginName $originName
+        Remove-AzFrontDoorCdnOrigin -InputObject $originObject
     }
 }

@@ -1,15 +1,6 @@
 {
-  "ClassicCdnProfileName": "p-sd4xb0",
-  "VerizonEndpointName": "e-gotyw4",
-  "ClassicCustomDomainName": "cd-ije713",
-  "ResourceGroupName": "testps-rg-bpi9",
-  "ClassicCustomDomainHostName": "aa-powershell-20230421-oigr9w.cdne2e.azfdtest.xyz",
+  "ResourceGroupName": "testps-rg-mq96",
   "SubscriptionId": "27cafca8-b9a4-4264-b399-45d0c9cca1ab",
   "location": "westus",
-  "FrontDoorCdnProfileName": "fdp-yaozps",
-  "Tenant": null,
-  "VerizonCdnProfileName": "p-45lbxj",
-  "ClassicEndpointName": "aa-powershell-20230421-oigr9w",
-  "FrontDoorEndpointName": "end-gvldrc",
-  "FrontDoorCustomDomainName": "domain-a7sqcd"
+  "Tenant": null
 }

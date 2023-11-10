@@ -1,0 +1,46 @@
+{
+  "AzContainerAppCustomHostName+[NoContext]+List+$POST+https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/azps_test_group_app/providers/Microsoft.App/containerApps/a4x3d/listCustomHostNameAnalysis?api-version=2023-05-01+1": {
+    "Request": {
+      "Method": "POST",
+      "RequestUri": "https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/azps_test_group_app/providers/Microsoft.App/containerApps/a4x3d/listCustomHostNameAnalysis?api-version=2023-05-01",
+      "Content": null,
+      "isContentBase64": false,
+      "Headers": {
+        "x-ms-unique-id": [ "70" ],
+        "x-ms-client-request-id": [ "2cd4344f-ea3c-4962-8c05-b906d5fc9634" ],
+        "CommandName": [ "Get-AzContainerAppCustomHostName" ],
+        "FullCommandName": [ "Get-AzContainerAppCustomHostName_List" ],
+        "ParameterSetName": [ "__AllParameterSets" ],
+        "User-Agent": [ "AzurePowershell/v0.0.0", "PSVersion/v7.3.8", "Az.App/0.2.0" ],
+        "Authorization": [ "[Filtered]" ]
+      },
+      "ContentHeaders": {
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "Vary": [ "Accept-Encoding" ],
+        "x-ms-ratelimit-remaining-subscription-writes": [ "1197" ],
+        "api-supported-versions": [ "2022-01-01-preview, 2022-03-01, 2022-06-01-preview, 2022-10-01, 2022-11-01-preview, 2023-04-01-preview, 2023-05-01, 2023-05-02-preview, 2023-08-01-preview" ],
+        "Server": [ "Microsoft-IIS/10.0" ],
+        "X-Powered-By": [ "ASP.NET" ],
+        "x-ms-request-id": [ "dcdc6476-9ee1-4b2f-8be1-de2bab1c346d" ],
+        "x-ms-correlation-request-id": [ "dcdc6476-9ee1-4b2f-8be1-de2bab1c346d" ],
+        "x-ms-routing-request-id": [ "JAPANEAST:20231030T102935Z:dcdc6476-9ee1-4b2f-8be1-de2bab1c346d" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "Date": [ "Mon, 30 Oct 2023 10:29:34 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "258" ],
+        "Content-Type": [ "application/json; charset=utf-8" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\"isHostnameAlreadyVerified\":false,\"customDomainVerificationTest\":\"Failed\",\"customDomainVerificationFailureInfo\":{\"code\":\"InvalidHostName\",\"message\":\"Invalid host name \u0027\u0027.\"},\"hasConflictOnManagedEnvironment\":false,\"conflictWithEnvironmentCustomDomain\":false}",
+      "isContentBase64": false
+    }
+  }
+}

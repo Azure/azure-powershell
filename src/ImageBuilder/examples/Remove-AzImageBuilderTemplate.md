@@ -1,14 +1,13 @@
-### Example 1: Remove a image template
+### Example 1: Delete a virtual machine image template.
 ```powershell
-Remove-AzImageBuilderTemplate -Name bez-test-img-temp13 -ResourceGroupName bez-rg
+Remove-AzImageBuilderTemplate -Name azps-ibt-2 -ResourceGroupName azps_test_group_imagebuilder
 ```
 
-This command removes a image template.
+Delete a virtual machine image template.
 
-### Example 2: Remove a image template
+### Example 2: Delete a virtual machine image template.
 ```powershell
-Get-AzImageBuilderTemplate -Name bez-test-img-temp13 -ResourceGroupName bez-rg | Remove-AzImageBuilderTemplate
+Get-AzImageBuilderTemplate -Name azps-ibt-3 -ResourceGroupName azps_test_group_imagebuilder | Remove-AzImageBuilderTemplate
 ```
 
-This command removes a image template.
-
+Delete a virtual machine image template.

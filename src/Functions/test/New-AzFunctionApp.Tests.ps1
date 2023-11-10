@@ -287,7 +287,9 @@ Describe 'New-AzFunctionApp' {
             $functionApp = Get-AzFunctionApp -Name $functionName -ResourceGroupName $env.resourceGroupNameLinuxPremium
             $functionApp.OSType | Should -Be "Linux"
             $functionApp.Runtime | Should -Be "Python"
-            $functionApp.ApplicationSettings.ContainsKey("WEBSITE_NODE_DEFAULT_VERSION") | Should -Be $false
+
+            $applicationSettings = Get-AzFunctionAppSetting -Name $functionName -ResourceGroupName $env.resourceGroupNameLinuxPremium
+            $applicationSettings.ContainsKey("WEBSITE_NODE_DEFAULT_VERSION") | Should -Be $false
         }
         finally
         {
@@ -348,6 +350,7 @@ Describe 'New-AzFunctionApp' {
             }
 
             # Validate app settings
+            $applicationSettings = Get-AzFunctionAppSetting -Name $functionName -ResourceGroupName $env.resourceGroupNameWindowsConsumption
             foreach ($appSettingName in $appSetting.Keys)
             {
                 $expectedValue = $appSetting[$appSettingName]
@@ -357,19 +360,18 @@ Describe 'New-AzFunctionApp' {
                     $expectedValue = ""
                 }
 
-                $functionApp.ApplicationSettings[$appSettingName] | Should Be $expectedValue
+                $applicationSettings[$appSettingName] | Should Be $expectedValue
             }
 
             # Validate WEBSITE_CONTENTSHARE
-            $functionApp.ApplicationSettings["WEBSITE_CONTENTSHARE"] | Should Match $functionName
+            $applicationSettings["WEBSITE_CONTENTSHARE"] | Should Match $functionName
 
             # Validate the connection string suffix
             $expectedSuffix = GetStorageAccountEndpointSuffix
             foreach ($appSettingName in @("AzureWebJobsStorage", "AzureWebJobsDashboard", "WEBSITE_CONTENTAZUREFILECONNECTIONSTRING"))
             {
-                $functionApp.ApplicationSettings[$appSettingName] | Should Match $expectedSuffix
+                $applicationSettings[$appSettingName] | Should Match $expectedSuffix
             }
-
         }
         finally
         {
@@ -437,9 +439,12 @@ Describe 'New-AzFunctionApp' {
             $functionApp.Runtime | Should -Be "PowerShell"
             $functionApp.IdentityType | Should -Be "SystemAssigned"
 
+            # Get app settings
+            $applicationSettings = Get-AzFunctionAppSetting -Name $functionName -ResourceGroupName $env.resourceGroupNameWindowsPremium
+
             foreach ($appSettingName in $appSetting.Keys)
             {
-                $functionApp.ApplicationSettings[$appSettingName] | Should Be $appSetting[$appSettingName]
+                $applicationSettings[$appSettingName] | Should Be $appSetting[$appSettingName]
             }
         }
         finally
@@ -520,7 +525,10 @@ Describe 'New-AzFunctionApp' {
             $functionApp = Get-AzFunctionApp -Name $functionName -ResourceGroupName $env.resourceGroupNameWindowsPremium
             $functionApp.OSType | Should -Be "Windows"
             $functionApp.Runtime | Should -Be "PowerShell"
-            $functionApp.ApplicationSettings.ContainsKey("APPINSIGHTS_INSTRUMENTATIONKEY") | Should -Be $false
+
+            # Get app settings
+            $applicationSettings = Get-AzFunctionAppSetting -Name $functionName -ResourceGroupName $env.resourceGroupNameWindowsPremium
+            $applicationSettings.ContainsKey("APPINSIGHTS_INSTRUMENTATIONKEY") | Should -Be $false
         }
         finally
         {
@@ -557,7 +565,6 @@ Describe 'New-AzFunctionApp' {
             "OSType" = "Linux"
             "ExpectedSiteConfig" = @{
                 "LinuxFxVersion" = "Java|17"
-                "use32BitWorkerProcess" = $false
             }
         },
         @{
@@ -570,7 +577,6 @@ Describe 'New-AzFunctionApp' {
             "OSType" = "Linux"
             "ExpectedSiteConfig" = @{
                 "LinuxFxVersion" = "Node|18"
-                "use32BitWorkerProcess" = $false
             }
         },
         @{
@@ -583,7 +589,6 @@ Describe 'New-AzFunctionApp' {
             "OSType" = "Linux"
             "ExpectedSiteConfig" = @{
                 "LinuxFxVersion" = "Python|3.10"
-                "use32BitWorkerProcess" = $false
             }
         },
         @{
@@ -596,7 +601,6 @@ Describe 'New-AzFunctionApp' {
             "OSType" = "Linux"
             "ExpectedSiteConfig" = @{
                 "LinuxFxVersion" = "PowerShell|7.2"
-                "use32BitWorkerProcess" = $false
             }
         }
         # Premium function app service plan
@@ -610,7 +614,6 @@ Describe 'New-AzFunctionApp' {
             "OSType" = "Windows"
             "ExpectedSiteConfig" = @{
                 "NetFrameworkVersion" = "v6.0"
-                "use32BitWorkerProcess" = $true
             }
             "ExpectedAppSettings" = @{
                 "FUNCTIONS_WORKER_RUNTIME" = "dotnet-isolated"
@@ -626,7 +629,6 @@ Describe 'New-AzFunctionApp' {
             "OSType" = "Linux"
             "ExpectedSiteConfig" = @{
                 "LinuxFxVersion" = "Python|3.9"
-                "use32BitWorkerProcess" = $false
             }
         },
         @{
@@ -639,7 +641,6 @@ Describe 'New-AzFunctionApp' {
             "OSType" = "Windows"
             "ExpectedSiteConfig" = @{
                 "JavaVersion" = "17"
-                "use32BitWorkerProcess" = $true
                 "netFrameworkVersion" = "v6.0"
             }
         }
@@ -652,7 +653,6 @@ Describe 'New-AzFunctionApp' {
             "PlanName" = $env.planNameWorkerTypeWindows
             "OSType" = "Windows"
             "ExpectedSiteConfig" = @{
-                "use32BitWorkerProcess" = $true
                 "netFrameworkVersion" = "v6.0"
             }
             "ExpectedAppSettings" = @{
@@ -744,7 +744,8 @@ Describe 'New-AzFunctionApp' {
                 $functionApp.Runtime | Should -Be $runtime
 
                 # Validate FUNCTIONS_EXTENSION_VERSION
-                $functionApp.ApplicationSettings.FUNCTIONS_EXTENSION_VERSION | Should be "~$functionsVersion"
+                $applicationSettings = Get-AzFunctionAppSetting -Name $functionName -ResourceGroupName $resourceGroupName
+                $applicationSettings.FUNCTIONS_EXTENSION_VERSION | Should be "~$functionsVersion"
 
                 if ($testCase.ContainsKey("ExpectedSiteConfig"))
                 {
@@ -762,7 +763,7 @@ Describe 'New-AzFunctionApp' {
                     foreach ($appSettingName in $expectedAppSettings.Keys)
                     {
                         $expectedAppSettingValue = $expectedAppSettings[$appSettingName]
-                        $functionApp.ApplicationSettings[$appSettingName] | Should -Be $expectedAppSettingValue
+                        $applicationSettings[$appSettingName] | Should -Be $expectedAppSettingValue
                     }
                 }
             }

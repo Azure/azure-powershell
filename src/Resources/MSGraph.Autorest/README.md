@@ -176,7 +176,8 @@ directive:
   - where:
       subject: ^applicationfederatedidentitycredential$|GroupGraphRefMember$|grouprefmember$|groupmember$
     set:
-      preview-message: This cmdlet is using API version beta which is under preview.
+      preview-announcement:
+        preview-message: This cmdlet is using API version beta which is under preview.
 
   - where:
       subject: ^applicationfederatedidentitycredentials$
@@ -212,6 +213,41 @@ directive:
       subject: ^group$
       verb: ^(?!.*Update).*
     hide: true
+
+  - where:
+      subject: ^GroupOwnerGraphBPreRef$
+      variant: ^Create(?!.*?Expanded)
+    remove: true
+
+  - where:
+      subject: ^GroupOwnerGraphBPreRef$
+      variant: ^CreateExpanded$
+    hide: true
+
+  - where:
+      subject: ^GroupOwnerGraphBPreRef$
+      variant: Delete
+      parameter-name: Id
+    hide: true
+
+  - where:
+      subject: ^GroupOwnerGraphBPreRef$
+      variant: Delete
+      parameter-name: IfMatch
+    hide: true
+
+  - where:
+      subject: ^GroupOwnerGraphBPreRef$
+      variant: Delete
+      parameter-name: DirectoryObjectId
+    set: 
+      parameter-name: OwnerId
+
+  - where:
+      subject: ^GroupOwnerGraphBPreRef$
+      variant: Delete
+    set:
+      subject: GroupOwner
 
   - where:
       subject: UserSigned$

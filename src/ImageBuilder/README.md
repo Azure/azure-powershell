@@ -47,17 +47,19 @@ In this directory, run AutoRest:
 > see https://aka.ms/autorest
 
 ``` yaml
+branch: 4b4bb1021353692578499f43f1aa912964a2b7e2
 require:
   - $(this-folder)/../readme.azure.noprofile.md
 input-file:
-  - $(repo)/specification/imagebuilder/resource-manager/Microsoft.VirtualMachineImages/stable/2022-02-14/imagebuilder.json
-branch: 9f3ac7b135ac83007b7f3f68ca8ca9705284cff9
+  - $(repo)/specification/imagebuilder/resource-manager/Microsoft.VirtualMachineImages/stable/2022-07-01/imagebuilder.json
+
 title: ImageBuilder
 module-version: 0.1.0
 subject-prefix: $(service-name)
 
 identity-correction-for-post: true
 resourcegroup-append: true
+nested-object-to-string: true
 
 directive:
   # 1. Remove the unexpanded parameter set
@@ -70,14 +72,15 @@ directive:
       verb: Set
     remove: true
 
+  # To remove non-expanded update variants:
+  - where:
+      variant: ^Update(?!.*?Expanded)
+    remove: true
+
   # 1. Field 'identity' is required => IdentityType and IdentityUserAssignedIdentity are required
   # 2. Hide IdentityType as only 'UserAssigned' is valid value so far
   # 3. Wrap UserAssignedIdentity with UserAssignedIdentityId to simplify customer's input 
   # 4. Field 'properties' is required => Source, Customize and Distribute are required
-  - where:
-      variant: ^CreateExpanded$
-    hide: true
-  
   # Rename IdentityUserAssignedIdentity to UserAssignedIdentity
   - where:
       parameter-name: IdentityUserAssignedIdentity
@@ -90,11 +93,10 @@ directive:
     set:
       subject: $2
 
-  # Update/Upgrade of image template is not supported
   - where:
-      verb: Update
       subject: Template
-    remove: true
+      variant: ^CreateExpanded$
+    hide: true
 
   # Rename ImageTemplateName -> Name and keep ImageTemplateName as alias in *-AzImageBuildTemplate
   - where:
@@ -124,33 +126,64 @@ directive:
     - ImageTemplateDistributor
     - ImageTemplateSource
     - ImageTemplateInVMValidator
-  
+    - DistributeVersioner
+
+  - where:
+      model-name: ImageTemplate
+    set:
+      format-table:
+        properties:
+          - Location
+          - Name
+          - ResourceGroupName
+  - where:
+      model-name: Trigger
+    set:
+      format-table:
+        properties:
+          - Kind
+          - Name
+          - ProvisioningState
+          - ResourceGroupName
+  - where:
+      model-name: RunOutput
+    set:
+      format-table:
+        properties:
+          - Name
+          - ProvisioningState
+          - ResourceGroupName
+
   # Generate models and combine them as 1 cmdlet
   # - model-cmdlet:
-    ############ ImageTemplateCustomizer ############
-    # Combine as 1 cmdlet named New-AzImageBuilderTemplateCustomizerObject
-    # # - ImageTemplateCustomizer
-    # - ImageTemplateShellCustomizer
-    # - ImageTemplateRestartCustomizer
-    # - ImageTemplateWindowsUpdateCustomizer
-    # - ImageTemplatePowerShellCustomizer
-    # - ImageTemplateFileCustomizer
-    ########### ImageTemplateDistributor ###########
-    # Combine as 1 cmdlet named New-AzImageBuilderTemplateDistributorObject
-    # # - ImageTemplateDistributor
-    # - ImageTemplateManagedImageDistributor
-    # - ImageTemplateSharedImageDistributor
-    # - ImageTemplateVhdDistributor
-    ############## ImageTemplateSource ##############
-    # Combine as 1 cmdlet named New-AzImageBuilderTemplateSourceObject
-    # # - ImageTemplateSource
-    # Note: publisher, offer, sku and version are required
-    # - ImageTemplatePlatformImageSource 
-    # - ImageTemplateManagedImageSource
-    # - ImageTemplateSharedImageVersionSource
-    ########### ImageTemplateInVMValidator ###########
-    # Combine as 1 cmdlet named New-AzImageBuilderTemplateValidatorObject
-    # # - ImageTemplateInVMValidator
-    # - ImageTemplateShellValidator
-    # - ImageTemplatePowerShellValidator
+  #   ########### ImageTemplateCustomizer ############
+  #   # Combine as 1 cmdlet named New-AzImageBuilderTemplateCustomizerObject
+  #   - ImageTemplateCustomizer
+  #   - ImageTemplateShellCustomizer
+  #   - ImageTemplateRestartCustomizer
+  #   - ImageTemplateWindowsUpdateCustomizer
+  #   - ImageTemplatePowerShellCustomizer
+  #   - ImageTemplateFileCustomizer
+  #   ########## ImageTemplateDistributor ###########
+  #   # Combine as 1 cmdlet named New-AzImageBuilderTemplateDistributorObject
+  #   - ImageTemplateDistributor
+  #   - ImageTemplateManagedImageDistributor
+  #   - ImageTemplateSharedImageDistributor
+  #   - ImageTemplateVhdDistributor
+  #   ############# ImageTemplateSource ##############
+  #   # Combine as 1 cmdlet named New-AzImageBuilderTemplateSourceObject
+  #   - ImageTemplateSource
+  #   # Note: publisher, offer, sku and version are required
+  #   - ImageTemplatePlatformImageSource 
+  #   - ImageTemplateManagedImageSource
+  #   - ImageTemplateSharedImageVersionSource
+  #   ########## ImageTemplateInVMValidator ###########
+  #   # Combine as 1 cmdlet named New-AzImageBuilderTemplateValidatorObject
+  #   - ImageTemplateInVMValidator
+  #   - ImageTemplateShellValidator
+  #   - ImageTemplatePowerShellValidator
+  #   ########## AzImageBuilderTemplateDistributorVersioning ###########
+  #   - DistributeVersioner
+  #   - DistributeVersionerLatest
+  #   - DistributeVersionerSource
 ```

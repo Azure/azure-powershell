@@ -1,7 +1,7 @@
 ---
 external help file:
 Module Name: Az.DynatraceObservability
-online version: https://learn.microsoft.com/powershell/module/az.Dynatrace/new-AzDynatraceMonitorFilteringTagObject
+online version: https://learn.microsoft.com/powershell/module/az.dynatraceobservability/new-azdynatracemonitorfilteringtagobject
 schema: 2.0.0
 ---
 

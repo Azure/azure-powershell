@@ -1,11 +1,11 @@
 ### Example 1: Create a volume
 ```powershell
-New-AzElasticSanVolume -ResourceGroupName myresourcegroup -ElasticSanName myelasticsan -VolumeGroupName myvolumegroup -Name myvolumegroup -SizeGib 100  -CreationDataSourceUri 'https://abc.com' -Tag @{tag1="value1";tag2="value2"}
+New-AzElasticSanVolume -ResourceGroupName myresourcegroup -ElasticSanName myelasticsan -VolumeGroupName myvolumegroup -Name myvolumegroup -SizeGib 100  -CreationDataSourceId '/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/myresourcegroup/providers/Microsoft.ElasticSan/elasticSans/myelasticsan/volumeGroups/myvolumegroup/snapshots/mysnapshot'
 ```
 
 ```output
 CreationDataCreateSource       : 
-CreationDataSourceUri          : https://abc.com
+CreationDataSourceId           : /subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/myresourcegroup/providers/Microsoft.ElasticSan/elasticSans/myelasticsan/volumeGroups/myvolumegroup/snapshots/mysnapshot
 Id                             : /subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx/resourceGroups/myresourcegroup/providers/Microsoft.ElasticSan/elasticSans/myelasticsan/volumegroups/myvolumegroup/volumes/myvolume
 Name                           : myvolume
 SizeGiB                        : 100
@@ -20,7 +20,6 @@ SystemDataCreatedByType        : Application
 SystemDataLastModifiedAt       : 9/19/2022 2:39:28 AM
 SystemDataLastModifiedBy       : yyyyyyyy-yyyy-yyyy-yyyy-yyyyyyyyyyyy
 SystemDataLastModifiedByType   : Application
-Tag                            : Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Models.Api20211120Preview.ResourceTags
 Type                           : Microsoft.ElasticSan/ElasticSans
 VolumeId                       : abababab-abab-abab-abab-abababababab
 ```

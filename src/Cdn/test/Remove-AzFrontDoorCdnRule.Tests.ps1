@@ -16,7 +16,7 @@ if(($null -eq $TestName) -or ($TestName -contains 'Remove-AzFrontDoorCdnRule'))
 
 Describe 'Remove-AzFrontDoorCdnRule'  {
     It 'Delete' {
-        $rulesetName = 'rs' + (RandomString -allChars $false -len 6);
+        $rulesetName = 'rsName090'
         Write-Host -ForegroundColor Green "Use rulesetName : $($rulesetName)"
         New-AzFrontDoorCdnRuleSet -ProfileName $env.FrontDoorCdnProfileName -ResourceGroupName $env.ResourceGroupName -Name $rulesetName
         $uriConditon = New-AzFrontDoorCdnRuleRequestUriConditionObject -Name "RequestUri" -ParameterOperator "Any"
@@ -30,7 +30,7 @@ Describe 'Remove-AzFrontDoorCdnRule'  {
         -CacheConfigurationCacheBehavior "HonorOrigin"
         $actions = @($overrideAction);
         
-        $ruleName = 'r' + (RandomString -allChars $false -len 6);
+        $ruleName = 'ruleName060'
         Write-Host -ForegroundColor Green "Use ruleName : $($ruleName)"
         New-AzFrontDoorCdnRule -ProfileName $env.FrontDoorCdnProfileName -ResourceGroupName $env.ResourceGroupName -RuleSetName $rulesetName -Name $ruleName `
         -Action $actions -Condition $conditions
@@ -42,8 +42,7 @@ Describe 'Remove-AzFrontDoorCdnRule'  {
     }
 
     It 'DeleteViaIdentity' {
-        $PSDefaultParameterValues['Disabled'] = $true
-        $rulesetName = 'rs' + (RandomString -allChars $false -len 6);
+        $rulesetName = 'ruleName06'
         Write-Host -ForegroundColor Green "Use rulesetName : $($rulesetName)"
         New-AzFrontDoorCdnRuleSet -ProfileName $env.FrontDoorCdnProfileName -ResourceGroupName $env.ResourceGroupName -Name $rulesetName
         $uriConditon = New-AzFrontDoorCdnRuleRequestUriConditionObject -Name "RequestUri" -ParameterOperator "Any"
@@ -57,11 +56,12 @@ Describe 'Remove-AzFrontDoorCdnRule'  {
         -CacheConfigurationCacheBehavior "HonorOrigin"
         $actions = @($overrideAction);
         
-        $ruleName = 'r' + (RandomString -allChars $false -len 6);
+        $ruleName = 'ruleName061'
         Write-Host -ForegroundColor Green "Use ruleName : $($ruleName)"
         New-AzFrontDoorCdnRule -SubscriptionId $env.SubscriptionId -ProfileName $env.FrontDoorCdnProfileName -ResourceGroupName $env.ResourceGroupName -RuleSetName $rulesetName -Name $ruleName `
         -Action $actions -Condition $conditions
 
-        Get-AzFrontDoorCdnRule -ProfileName $env.FrontDoorCdnProfileName -ResourceGroupName $env.ResourceGroupName -RuleSetName $rulesetName -Name $ruleName | Remove-AzFrontDoorCdnRule
+        $ruleObject = Get-AzFrontDoorCdnRule -ProfileName $env.FrontDoorCdnProfileName -ResourceGroupName $env.ResourceGroupName -RuleSetName $rulesetName -Name $ruleName
+        Remove-AzFrontDoorCdnRule -InputObject $ruleObject
     }
 }

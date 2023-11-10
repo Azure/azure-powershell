@@ -19,11 +19,11 @@ Describe 'New-AzFrontDoorCdnSecurityPolicy'  {
         $subId = $env.SubscriptionId
         Write-Host -ForegroundColor Green "Use subscriptionId : $($subId)"
 
-        $endpointName = 'end-' + (RandomString -allChars $false -len 6);
+        $endpointName = 'end-pstest060'
         Write-Host -ForegroundColor Green "Use frontDoorCdnEndpointName : $($endpointName)"
         $endpoint = New-AzFrontDoorCdnEndpoint -EndpointName $endpointName -ProfileName $env.FrontDoorCdnProfileName -ResourceGroupName $env.ResourceGroupName -Location Global
 
-        $policyName = "pol-" + (RandomString -allChars $false -len 6);
+        $policyName = "pol-psName020"
         Write-Host -ForegroundColor Green "Use policyName : $($policyName)"
 
         $association = New-AzFrontDoorCdnSecurityPolicyWebApplicationFirewallAssociationObject -PatternsToMatch @("/*") -Domain @(@{"Id"=$($endpoint.Id)})

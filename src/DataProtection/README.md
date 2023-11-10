@@ -34,21 +34,35 @@ This file contains the configuration for generating My API from the OpenAPI spec
 
 ``` yaml
 # it's the same options as command line options, just drop the double-dash!
-branch: 8c9a6bd96daf9e0e7f4bba47df78dfa0a23acf07
+branch: acf24167b5174d88f36302e243c883f2e63eec52
 require:
   - $(this-folder)/../readme.azure.noprofile.md
 input-file:
-  - $(repo)/specification/dataprotection/resource-manager/Microsoft.DataProtection/stable/2023-01-01/dataprotection.json
+  - $(repo)/specification/dataprotection/resource-manager/Microsoft.DataProtection/stable/2023-05-01/dataprotection.json
 title: DataProtection
 directive:
   - from: swagger-document
     where: $.paths["/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DataProtection/backupVaults/{vaultName}/backupInstances/{backupInstanceName}"].delete
     transform: $["description"] = "Delete a backupInstances"
-  - where:      
+  - from: swagger-document
+    where: $.paths["/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DataProtection/backupVaults/{vaultName}/backupResourceGuardProxies/{resourceGuardProxyName}/unlockDelete"]["post"]["parameters"]
+    transform: >
+        $.push({"name": "x-ms-authorization-auxiliary","in": "header","type": "string"})
+  - where:
+      parameter-name: XmsAuthorizationAuxiliary
+    set:
+      parameter-name: Token
+      parameter-description: Parameter to authorize operations protected by cross tenant resource guard. Use command (Get-AzAccessToken -TenantId "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx").Token to fetch authorization token for different tenant.
+  - where:
       parameter-name: AzureMonitorAlertSettingAlertsForAllJobFailure
     set:
       parameter-name: AzureMonitorAlertsForAllJobFailure
       parameter-description: Parameter to Enable or Disable built-in azure monitor alerts for job failures. Security alerts cannot be disabled.
+  - where:
+      parameter-name: ResourceGuardResourceId
+    set:
+      parameter-name: ResourceGuardId      
+      parameter-description: Resource Guard ARM Id to enable MUA protection for Backup Vault.
   - where:      
       parameter-name: VaultCriticalOperationExclusionList
     set:
@@ -65,6 +79,12 @@ directive:
     set:
       parameter-name: CrossSubscriptionRestoreState
       parameter-description: Cross subscription restore state of the vault. Allowed values are Disabled, Enabled, PermanentlyDisabled.
+    clear-alias: true
+  - where:      
+      parameter-name: CrossRegionRestoreSettingState
+    set:
+      parameter-name: CrossRegionRestoreState
+      parameter-description: Cross region restore state of the vault. Allowed values are Disabled, Enabled.
     clear-alias: true
   - where:      
       parameter-name: SoftDeleteSettingRetentionDurationInDay
@@ -100,14 +120,15 @@ directive:
       parameter-name: Name
     clear-alias: true
   - where:
-      subject: ResourceGuard.+      
+      subject: ResourceGuard.+RequestObject
     remove: true
   - where:
       verb: Update
       subject: ResourceGuard      
     remove: true
   - where:
-      subject: DeletedBackupInstance      
+      verb: Get
+      subject: ResourceGuardResource
     remove: true
   - where:
       verb: Set
@@ -118,6 +139,46 @@ directive:
       verb: New
       subject: ResourceGuard      
     hide: true
+  - where:
+      verb: Unlock
+      variant: ^UnlockViaIdentityExpanded$|^UnlockViaIdentity$|^Unlock$
+    remove: true
+  - where:
+      verb: Unlock
+      variant: ^UnlockExpanded$
+    hide: true
+  - where:
+      verb: New
+      subject: ResourceGuardProxy$
+      variant: ^Create$|^UpdateExpanded$|^UpdateViaIdentityExpanded$
+    remove: true
+  - where:
+      subject: DppResourceGuardProxy$
+    set: 
+      subject: ResourceGuardMapping
+  - where:
+      parameter-name: ResourceGuardProxyName
+    hide: true
+    set:
+      default:
+        script: '"DppResourceGuardProxy"'
+  - where:
+      verb: New
+      subject: ResourceGuardMapping
+      parameter-name: LastUpdatedTime|Description|ResourceGuardOperationDetail
+    hide: true 
+  - where:
+      verb: Get
+      subject: DeletedBackupInstance
+    set:
+      verb: Get
+      subject: SoftDeletedBackupInstance
+  - where:
+      verb: Restore
+      subject: DeletedBackupInstance
+    set:
+      verb: Undo
+      subject: BackupInstanceDeletion
   - where:
       subject: RecoveryPoint
       variant: List
@@ -208,9 +269,17 @@ directive:
     set:
       verb: Find
       subject: RestorableTimeRange
+  - where:
+      verb: New
+      subject: ResourceGuardMapping$
+    set:
+      verb: Set
   - from: swagger-document
     where: $.paths["/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DataProtection/backupVaults/{vaultName}/backupInstances/{backupInstanceName}/findRestorableTimeRanges"].post
     transform: $["description"] = "Finds the valid recovery point in time ranges for the restore."
+  - from: swagger-document
+    where: $.paths["/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DataProtection/backupVaults/{vaultName}/deletedBackupInstances/{backupInstanceName}/undelete"].post
+    transform: $["description"] = "Undeletes a soft deleted backup instance"
   - where:
       verb: Test
       subject: BackupInstance
@@ -236,7 +305,11 @@ directive:
   - where:
       property-name: AzureMonitorAlertSettingAlertsForAllJobFailure
     set:
-      property-name: AzureMonitorAlertsForAllJobFailure
+      property-name: AzureMonitorAlertsForAllJobFailure  
+  - where:
+      property-name: ResourceGuardResourceId
+    set:
+      property-name: ResourceGuardId  
   - where:
       property-name: VaultCriticalOperationExclusionList
     set:
@@ -253,6 +326,10 @@ directive:
       property-name: CrossSubscriptionRestoreSettingState
     set:
       property-name: CrossSubscriptionRestoreState
+  - where:
+      property-name: CrossRegionRestoreSettingState
+    set:
+      property-name: CrossRegionRestoreState
   - where:
       property-name: SoftDeleteSettingRetentionDurationInDay
     set:
@@ -281,30 +358,31 @@ directive:
           - Type
           - IdentityType
   - no-inline:
-    - InnerError
     - BackupInstance
-    - RestoreTargetInfo
-    - ValidateRestoreRequestObject
+    - DeletionInfo
+    - InnerError
     - ItemLevelRestoreTargetInfo
-    - RestoreFilesTargetInfo
-    - RestoreTargetInfoBase
     - PolicyParameters
+    - RestoreFilesTargetInfo
+    - RestoreTargetInfo
+    - RestoreTargetInfoBase
     - SecretStoreBasedAuthCredentials
     - SecretStoreResource    
     - SystemData
     - UserFacingError    
+    - ValidateRestoreRequestObject    
   - from: source-file-csharp
     where: $
-    transform: $ = $.replace('internal Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api202301.IBaseBackupPolicy Property', 'public Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api202301.IBaseBackupPolicy Property');
+    transform: $ = $.replace('internal Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20230501.IBaseBackupPolicy Property', 'public Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20230501.IBaseBackupPolicy Property');
   - from: source-file-csharp
     where: $
-    transform: $ = $.replace('internal Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api202301.ITriggerContext Trigger', 'public Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api202301.ITriggerContext Trigger');
+    transform: $ = $.replace('internal Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20230501.ITriggerContext Trigger', 'public Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20230501.ITriggerContext Trigger');
   - from: source-file-csharp
     where: $
-    transform: $ = $.replace('internal Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api202301.IBackupParameters BackupParameter', 'public Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api202301.IBackupParameters BackupParameter');
+    transform: $ = $.replace('internal Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20230501.IBackupParameters BackupParameter', 'public Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20230501.IBackupParameters BackupParameter');
   - from: source-file-csharp
     where: $
-    transform: $ = $.replace('internal Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api202301.IAzureBackupRecoveryPoint Property', 'public Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api202301.IAzureBackupRecoveryPoint Property');
+    transform: $ = $.replace('internal Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20230501.IAzureBackupRecoveryPoint Property', 'public Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20230501.IAzureBackupRecoveryPoint Property');
 ```
 
 ## Alternate settings

@@ -32,7 +32,7 @@ For information on how to develop for `Az.MobileNetwork`, see [how-to.md](how-to
 ``` yaml
 branch: 933dbc070dda85e2d115dc42893f07b2ed5b74f6
 require:
-  - $(this-folder)/../readme.azure.noprofile.md 
+  - $(this-folder)/../readme.azure.noprofile.md
 input-file:
   - $(repo)/specification/mobilenetwork/resource-manager/Microsoft.MobileNetwork/stable/2022-11-01/attachedDataNetwork.json
   - $(repo)/specification/mobilenetwork/resource-manager/Microsoft.MobileNetwork/stable/2022-11-01/common.json
@@ -59,7 +59,7 @@ nested-object-to-string: true
 
 directive:
   # Change interopSettings type from <IAny> to <HashTable>
-  - from: swagger-document 
+  - from: swagger-document
     where: $.definitions.PacketCoreControlPlanePropertiesFormat.properties.interopSettings
     transform: >-
       return {
@@ -69,10 +69,10 @@ directive:
       }
 
   # Remove parameters from swagger file
-  - from: swagger-document 
+  - from: swagger-document
     where: $.definitions
     transform: delete $.CoreNetworkTypeRm
-  - from: swagger-document 
+  - from: swagger-document
     where: $.definitions
     transform: delete $.PduSessionTypeRm
 
@@ -163,31 +163,43 @@ directive:
       subject: ^Site$
     hide: true
 
-  # Due to business needs, some commands are deleted and not exposed to the public
   - where:
       verb: Invoke
       subject: ^BulkSimDelete$
-    remove: true
+    set:
+      verb: Remove
+
   - where:
       verb: Invoke
       subject: ^BulkSimUpload$
-    remove: true
+    set:
+      verb: Update
+
+  - where:
+      verb: Invoke
+      subject: ^BulkSimUploadEncrypted$
+    set:
+      verb: Update
   - where:
       verb: Invoke
       subject: ^BulkSimUploadEncrypted$
     remove: true
+
   - where:
       verb: Invoke
       subject: ^CollectPacketCoreControlPlaneDiagnosticPackage$
-    remove: true
+    set:
+      verb: Trace
   - where:
       verb: Invoke
       subject: ^ReinstallPacketCoreControlPlane$
-    remove: true
+    set:
+      verb: Deploy
   - where:
       verb: Invoke
       subject: ^RollbackPacketCoreControlPlane$
-    remove: true
+    set:
+      verb: Deploy
 
   # Some of the parameters are of type Object and need to be expanded into a command for the convenience of the user
   # The following are commented out and their generated cmdlets may be renamed and custom logic
@@ -316,4 +328,8 @@ directive:
       format-table:
         properties:
           - Name
+
+  - from: RemoveAzMobileNetworkSite_Delete.cs
+    where: $
+    transform: $ = $.replace('Call remote \'SitesDelete\' operation', '{this.Name} and all dependent resources');
 ```

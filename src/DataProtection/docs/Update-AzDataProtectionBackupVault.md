@@ -16,21 +16,21 @@ For example, updating tags for a resource.
 ### UpdateExpanded (Default)
 ```
 Update-AzDataProtectionBackupVault -ResourceGroupName <String> -VaultName <String> [-SubscriptionId <String>]
- [-AzureMonitorAlertsForAllJobFailure <AlertsState>]
+ [-AzureMonitorAlertsForAllJobFailure <AlertsState>] [-CrossRegionRestoreState <CrossRegionRestoreState>]
  [-CrossSubscriptionRestoreState <CrossSubscriptionRestoreState>] [-IdentityType <String>]
- [-ImmutabilityState <ImmutabilityState>] [-SoftDeleteRetentionDurationInDay <Double>]
- [-SoftDeleteState <SoftDeleteState>] [-Tag <Hashtable>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
- [-Confirm] [-WhatIf] [<CommonParameters>]
+ [-IdentityUserAssignedIdentity <Hashtable>] [-ImmutabilityState <ImmutabilityState>]
+ [-SoftDeleteRetentionDurationInDay <Double>] [-SoftDeleteState <SoftDeleteState>] [-Tag <Hashtable>]
+ [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ### UpdateViaIdentityExpanded
 ```
 Update-AzDataProtectionBackupVault -InputObject <IDataProtectionIdentity>
- [-AzureMonitorAlertsForAllJobFailure <AlertsState>]
+ [-AzureMonitorAlertsForAllJobFailure <AlertsState>] [-CrossRegionRestoreState <CrossRegionRestoreState>]
  [-CrossSubscriptionRestoreState <CrossSubscriptionRestoreState>] [-IdentityType <String>]
- [-ImmutabilityState <ImmutabilityState>] [-SoftDeleteRetentionDurationInDay <Double>]
- [-SoftDeleteState <SoftDeleteState>] [-Tag <Hashtable>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
- [-Confirm] [-WhatIf] [<CommonParameters>]
+ [-IdentityUserAssignedIdentity <Hashtable>] [-ImmutabilityState <ImmutabilityState>]
+ [-SoftDeleteRetentionDurationInDay <Double>] [-SoftDeleteState <SoftDeleteState>] [-Tag <Hashtable>]
+ [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -116,6 +116,22 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### -CrossRegionRestoreState
+Cross region restore state of the vault.
+Allowed values are Disabled, Enabled.
+
+```yaml
+Type: Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Support.CrossRegionRestoreState
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
 ### -CrossSubscriptionRestoreState
 Cross subscription restore state of the vault.
 Allowed values are Disabled, Enabled, PermanentlyDisabled.
@@ -149,10 +165,25 @@ Accept wildcard characters: False
 ```
 
 ### -IdentityType
-The identityType which can be either SystemAssigned or None
+The identityType which can be either SystemAssigned, UserAssigned, 'SystemAssigned,UserAssigned' or None
 
 ```yaml
 Type: System.String
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -IdentityUserAssignedIdentity
+Gets or sets the user assigned identities.
+
+```yaml
+Type: System.Collections.Hashtable
 Parameter Sets: (All)
 Aliases:
 
@@ -343,7 +374,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api202301.IBackupVaultResource
+### Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20230501.IBackupVaultResource
 
 ## NOTES
 
@@ -364,6 +395,7 @@ To create the parameters described below, construct a hash table containing the 
   - `[RecoveryPointId <String>]`: 
   - `[RequestName <String>]`: 
   - `[ResourceGroupName <String>]`: The name of the resource group. The name is case insensitive.
+  - `[ResourceGuardProxyName <String>]`: name of the resource guard proxy
   - `[ResourceGuardsName <String>]`: The name of ResourceGuard
   - `[SubscriptionId <String>]`: The ID of the target subscription. The value must be an UUID.
   - `[VaultName <String>]`: The name of the backup vault.

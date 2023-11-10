@@ -14,6 +14,9 @@ Microsoft Azure PowerShell: ConnectedMachine cmdlets
 ### [Connect-AzConnectedMachine](Connect-AzConnectedMachine.md)
 API to register a new machine and thereby create a tracked resource in ARM
 
+### [Get-AzConnectedExtensionMetadata](Get-AzConnectedExtensionMetadata.md)
+Gets an Extension Metadata based on location, publisher, extensionType and version
+
 ### [Get-AzConnectedMachine](Get-AzConnectedMachine.md)
 Retrieves information about the model view or the instance view of a hybrid machine.
 
@@ -23,6 +26,12 @@ The operation to get the extension.
 ### [Get-AzConnectedPrivateLinkScope](Get-AzConnectedPrivateLinkScope.md)
 Returns a Azure Arc PrivateLinkScope.
 
+### [Install-AzConnectedMachinePatch](Install-AzConnectedMachinePatch.md)
+The operation to install patches on a hybrid machine identity in Azure.
+
+### [Invoke-AzConnectedAssessMachinePatch](Invoke-AzConnectedAssessMachinePatch.md)
+The operation to assess patches on a hybrid machine identity in Azure.
+
 ### [New-AzConnectedMachineExtension](New-AzConnectedMachineExtension.md)
 The operation to create or update the extension.
 
@@ -31,7 +40,7 @@ Creates (or updates) a Azure Arc PrivateLinkScope.
 Note: You cannot specify a different value for InstrumentationKey nor AppId in the Put operation.
 
 ### [Remove-AzConnectedMachine](Remove-AzConnectedMachine.md)
-The operation to remove a hybrid machine identity in Azure.
+The operation to delete a hybrid machine.
 
 ### [Remove-AzConnectedMachineExtension](Remove-AzConnectedMachineExtension.md)
 The operation to delete the extension.

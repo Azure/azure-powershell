@@ -15,7 +15,6 @@ trigger:
 variables:
   TargetedRepo: azure-docs-powershell
   TargetedBranchName: sync-upcoming-breaking-changes
-  GithubToken: $(GITHUB_TOKEN)
 
 jobs:
 - job: Sync
@@ -27,6 +26,7 @@ jobs:
         BranchName: ${{ variables.TargetedBranchName }}
 
   steps:
+  - template: util/get-github-pat-steps.yml
   - task: PowerShell@2
     displayName: Sync branch
     inputs:

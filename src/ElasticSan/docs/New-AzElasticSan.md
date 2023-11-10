@@ -15,29 +15,17 @@ Create ElasticSan.
 ### CreateExpanded (Default)
 ```
 New-AzElasticSan -Name <String> -ResourceGroupName <String> -BaseSizeTiB <Int64>
- -ExtendedCapacitySizeTiB <Int64> -SkuName <SkuName> [-SubscriptionId <String>] [-AvailabilityZone <String[]>]
- [-Location <String>] [-SkuTier <SkuTier>] [-Tag <Hashtable>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
- [-Confirm] [-WhatIf] [<CommonParameters>]
-```
-
-### Create
-```
-New-AzElasticSan -Name <String> -ResourceGroupName <String> -Parameter <IElasticSan>
- [-SubscriptionId <String>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf]
- [<CommonParameters>]
-```
-
-### CreateViaIdentity
-```
-New-AzElasticSan -InputObject <IElasticSanIdentity> -Parameter <IElasticSan> [-DefaultProfile <PSObject>]
- [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
+ -ExtendedCapacitySizeTiB <Int64> -Location <String> -SkuName <String> [-SubscriptionId <String>]
+ [-AvailabilityZone <String[]>] [-PublicNetworkAccess <String>] [-SkuTier <String>] [-Tag <Hashtable>]
+ [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ### CreateViaIdentityExpanded
 ```
 New-AzElasticSan -InputObject <IElasticSanIdentity> -BaseSizeTiB <Int64> -ExtendedCapacitySizeTiB <Int64>
- -SkuName <SkuName> [-AvailabilityZone <String[]>] [-Location <String>] [-SkuTier <SkuTier>]
- [-Tag <Hashtable>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
+ -Location <String> -SkuName <String> [-AvailabilityZone <String[]>] [-PublicNetworkAccess <String>]
+ [-SkuTier <String>] [-Tag <Hashtable>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf]
+ [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -99,7 +87,7 @@ Logical zone for Elastic San resource; example: ["1"].
 
 ```yaml
 Type: System.String[]
-Parameter Sets: CreateExpanded, CreateViaIdentityExpanded
+Parameter Sets: (All)
 Aliases:
 
 Required: False
@@ -114,7 +102,7 @@ Base size of the Elastic San appliance in TiB.
 
 ```yaml
 Type: System.Int64
-Parameter Sets: CreateExpanded, CreateViaIdentityExpanded
+Parameter Sets: (All)
 Aliases:
 
 Required: True
@@ -125,7 +113,8 @@ Accept wildcard characters: False
 ```
 
 ### -DefaultProfile
-The credentials, account, tenant, and subscription used for communication with Azure.
+The DefaultProfile parameter is not functional.
+Use the SubscriptionId parameter when available if executing the cmdlet against a different subscription.
 
 ```yaml
 Type: System.Management.Automation.PSObject
@@ -144,7 +133,7 @@ Extended size of the Elastic San appliance in TiB.
 
 ```yaml
 Type: System.Int64
-Parameter Sets: CreateExpanded, CreateViaIdentityExpanded
+Parameter Sets: (All)
 Aliases:
 
 Required: True
@@ -160,7 +149,7 @@ To construct, see NOTES section for INPUTOBJECT properties and create a hash tab
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Models.IElasticSanIdentity
-Parameter Sets: CreateViaIdentity, CreateViaIdentityExpanded
+Parameter Sets: CreateViaIdentityExpanded
 Aliases:
 
 Required: True
@@ -171,14 +160,14 @@ Accept wildcard characters: False
 ```
 
 ### -Location
-The geo-location where the resource lives.
+The geo-location where the resource lives
 
 ```yaml
 Type: System.String
-Parameter Sets: CreateExpanded, CreateViaIdentityExpanded
+Parameter Sets: (All)
 Aliases:
 
-Required: False
+Required: True
 Position: Named
 Default value: None
 Accept pipeline input: False
@@ -190,7 +179,7 @@ The name of the ElasticSan.
 
 ```yaml
 Type: System.String
-Parameter Sets: Create, CreateExpanded
+Parameter Sets: CreateExpanded
 Aliases: ElasticSanName
 
 Required: True
@@ -215,19 +204,19 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -Parameter
-Response for ElasticSan request.
-To construct, see NOTES section for PARAMETER properties and create a hash table.
+### -PublicNetworkAccess
+Allow or disallow public network access to ElasticSan.
+Value is optional but if passed in, must be 'Enabled' or 'Disabled'.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Models.Api20211120Preview.IElasticSan
-Parameter Sets: Create, CreateViaIdentity
+Type: System.String
+Parameter Sets: (All)
 Aliases:
 
-Required: True
+Required: False
 Position: Named
 Default value: None
-Accept pipeline input: True (ByValue)
+Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
@@ -237,7 +226,7 @@ The name is case insensitive.
 
 ```yaml
 Type: System.String
-Parameter Sets: Create, CreateExpanded
+Parameter Sets: CreateExpanded
 Aliases:
 
 Required: True
@@ -251,8 +240,8 @@ Accept wildcard characters: False
 The sku name.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Support.SkuName
-Parameter Sets: CreateExpanded, CreateViaIdentityExpanded
+Type: System.String
+Parameter Sets: (All)
 Aliases:
 
 Required: True
@@ -266,8 +255,8 @@ Accept wildcard characters: False
 The sku tier.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Support.SkuTier
-Parameter Sets: CreateExpanded, CreateViaIdentityExpanded
+Type: System.String
+Parameter Sets: (All)
 Aliases:
 
 Required: False
@@ -282,7 +271,7 @@ The ID of the target subscription.
 
 ```yaml
 Type: System.String
-Parameter Sets: Create, CreateExpanded
+Parameter Sets: CreateExpanded
 Aliases:
 
 Required: False
@@ -293,11 +282,11 @@ Accept wildcard characters: False
 ```
 
 ### -Tag
-Azure resource tags.
+Resource tags.
 
 ```yaml
 Type: System.Collections.Hashtable
-Parameter Sets: CreateExpanded, CreateViaIdentityExpanded
+Parameter Sets: (All)
 Aliases:
 
 Required: False
@@ -343,46 +332,13 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Models.Api20211120Preview.IElasticSan
-
 ### Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Models.IElasticSanIdentity
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Models.Api20211120Preview.IElasticSan
+### Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Models.IElasticSan
 
 ## NOTES
-
-ALIASES
-
-COMPLEX PARAMETER PROPERTIES
-
-To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
-
-
-`INPUTOBJECT <IElasticSanIdentity>`: Identity Parameter
-  - `[ElasticSanName <String>]`: The name of the ElasticSan.
-  - `[Id <String>]`: Resource identity path
-  - `[ResourceGroupName <String>]`: The name of the resource group. The name is case insensitive.
-  - `[SubscriptionId <String>]`: The ID of the target subscription.
-  - `[VolumeGroupName <String>]`: The name of the VolumeGroup.
-  - `[VolumeName <String>]`: The name of the Volume.
-
-`PARAMETER <IElasticSan>`: Response for ElasticSan request.
-  - `BaseSizeTiB <Int64>`: Base size of the Elastic San appliance in TiB.
-  - `ExtendedCapacitySizeTiB <Int64>`: Extended size of the Elastic San appliance in TiB.
-  - `SkuName <SkuName>`: The sku name.
-  - `[Location <String>]`: The geo-location where the resource lives.
-  - `[Tag <IResourceTags>]`: Azure resource tags.
-    - `[(Any) <String>]`: This indicates any property can be added to this object.
-  - `[AvailabilityZone <String[]>]`: Logical zone for Elastic San resource; example: ["1"].
-  - `[SkuTier <SkuTier?>]`: The sku tier.
-  - `[SystemDataCreatedAt <DateTime?>]`: The timestamp of resource creation (UTC).
-  - `[SystemDataCreatedBy <String>]`: The identity that created the resource.
-  - `[SystemDataCreatedByType <CreatedByType?>]`: The type of identity that created the resource.
-  - `[SystemDataLastModifiedAt <DateTime?>]`: The timestamp of resource last modification (UTC)
-  - `[SystemDataLastModifiedBy <String>]`: The identity that last modified the resource.
-  - `[SystemDataLastModifiedByType <CreatedByType?>]`: The type of identity that last modified the resource.
 
 ## RELATED LINKS
 

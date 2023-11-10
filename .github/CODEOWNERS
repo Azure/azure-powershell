@@ -1,0 +1,8 @@
+# To make sure Network PRs go to the right branch, e.g. network-april
+/src/Network/    @Joanna-Yang-Art @htippanaboya
+/src/Compute/    @bilaakpan-ms @sandido @haagha @grizzlytheodore
+/src/PolicyInsights/  @pilor
+/src/Batch/ @wiboris @dpwatrous
+
+# Make sure changes to .github folder go through our team's double check
+/.github/        @isra-fel

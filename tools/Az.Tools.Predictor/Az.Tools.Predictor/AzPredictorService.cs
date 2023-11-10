@@ -148,17 +148,7 @@ namespace Microsoft.Azure.PowerShell.Tools.AzPredictor
             Validation.CheckArgument<ArgumentOutOfRangeException>(suggestionCount > 0, $"{nameof(suggestionCount)} must be larger than 0.");
             Validation.CheckArgument<ArgumentOutOfRangeException>(maxAllowedCommandDuplicate > 0, $"{nameof(maxAllowedCommandDuplicate)} must be larger than 0.");
 
-            var relatedAsts = context.RelatedAsts;
-            CommandAst commandAst = null;
-
-            for (var i = relatedAsts.Count - 1; i >= 0; --i)
-            {
-                if (relatedAsts[i] is CommandAst c)
-                {
-                    commandAst = c;
-                    break;
-                }
-            }
+            CommandAst commandAst = CommandLineUtilities.GetCommandAst(context);
 
             CommandLineSuggestion earlyReturnResult = new()
             {
@@ -266,7 +256,7 @@ namespace Microsoft.Azure.PowerShell.Tools.AzPredictor
         }
 
         /// <inheritdoc/>
-        public virtual async Task<bool?> RequestPredictionsAsync(IEnumerable<string> commands, string requestId, CancellationToken cancellationToken)
+        public virtual async Task<(bool, CommandLineSummary)?> RequestPredictionsAsync(IEnumerable<string> commands, string requestId, CancellationToken cancellationToken)
         {
             Validation.CheckArgument(commands, $"{nameof(commands)} cannot be null.");
 
@@ -318,11 +308,12 @@ namespace Microsoft.Azure.PowerShell.Tools.AzPredictor
             {
                 throw new ServiceRequestException(e.Message, e)
                         {
-                            IsRequestSent =isRequestSent
+                            IsRequestSent = isRequestSent,
+                            PredictorSummary = _commandBasedPredictor.Item2.PredictorSummary,
                         };
             }
 
-            return isRequestSent;
+            return (isRequestSent, _commandBasedPredictor.Item2.PredictorSummary);
         }
 
         /// <inheritdoc/>
@@ -355,10 +346,10 @@ namespace Microsoft.Azure.PowerShell.Tools.AzPredictor
 
             // There must be two parts (verb and noun) to be a valid PowerShell commands.
             // The first part must be an approved PowerShell verb and the second part must begin with "Az".
-            if (commandParts?.Length == 2 )
+            if (commandParts?.Length == 2)
             {
                 return AzPredictorConstants.ApprovedPowerShellVerbs.Contains(commandParts[0])
-                    && commandParts[1].StartsWith(AzPredictorConstants.AzCommandMoniker, StringComparison.OrdinalIgnoreCase);
+                    && AzPredictorConstants.AzNounPattern.IsMatch(commandParts[1]);
             }
 
             return false;
@@ -406,7 +397,8 @@ namespace Microsoft.Azure.PowerShell.Tools.AzPredictor
                             _telemetryClient.OnRequestPrediction(new RequestPredictionTelemetryData(null,
                                         new List<string>(),
                                         hasSentHttpRequest,
-                                        exception));
+                                        exception,
+                                        _fallbackPredictor.PredictorSummary));
                         }
 
                         // Initialize predictions

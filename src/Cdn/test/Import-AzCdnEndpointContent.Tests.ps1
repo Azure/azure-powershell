@@ -45,35 +45,33 @@ Describe 'Import-AzCdnEndpointContent'  {
     }
 
     It 'LoadViaIdentityExpanded' {
-        $PSDefaultParameterValues['Disabled'] = $true
         Start-AzCdnEndpoint -SubscriptionId $env.SubscriptionId -Name $env.VerizonEndpointName -ResourceGroupName $env.ResourceGroupName -ProfileName $env.VerizonCdnProfileName 
 
         $contentPath = @("/movies/amazing.mp4","/pictures/pic1.jpg") 
 
         # Load content on endpoint should succeed
         $endpoint = Get-AzCdnEndpoint -Name $env.VerizonEndpointName -ProfileName $env.VerizonCdnProfileName -ResourceGroupName $env.ResourceGroupName
-        $endpoint | Import-AzCdnEndpointContent -ContentPath $contentPath
+        Import-AzCdnEndpointContent -ContentPath $contentPath -InputObject $endpoint
         # Load content on endpoint with invalid content paths should fail
-        { $endpoint | Import-AzCdnEndpointContent -ContentPath "/movies/*" } | Should -Throw
+        { Import-AzCdnEndpointContent -ContentPath "/movies/*" -InputObject $endpoint} | Should -Throw
         # Load content on stopped endpoint should fail
         Stop-AzCdnEndpoint -Name $env.VerizonEndpointName -ResourceGroupName $env.ResourceGroupName -ProfileName $env.VerizonCdnProfileName 
         { $endpoint | Import-AzCdnEndpointContent -ContentPath $contentPath } | Should -Throw
     }
 
     It 'LoadViaIdentity' {
-        $PSDefaultParameterValues['Disabled'] = $true
         Start-AzCdnEndpoint -SubscriptionId $env.SubscriptionId -Name $env.VerizonEndpointName -ResourceGroupName $env.ResourceGroupName -ProfileName $env.VerizonCdnProfileName 
 
         $contentPath = @{ ContentPath = @("/movies/amazing.mp4","/pictures/pic1.jpg") }
 
         # Load content on endpoint should succeed
         $endpoint = Get-AzCdnEndpoint -Name $env.VerizonEndpointName -ProfileName $env.VerizonCdnProfileName -ResourceGroupName $env.ResourceGroupName
-        $endpoint | Import-AzCdnEndpointContent -ContentFilePath $contentPath
+        Import-AzCdnEndpointContent -ContentFilePath $contentPath -InputObject $endpoint
         # Load content on endpoint with invalid content paths should fail
-        { $endpoint | Import-AzCdnEndpointContent -ContentFilePath @{ ContentPath = "/movies/*" } } | Should -Throw
+        { Import-AzCdnEndpointContent -ContentFilePath @{ ContentPath = "/movies/*" } -InputObject $endpoint } | Should -Throw
         # Load content on stopped endpoint should fail
         Stop-AzCdnEndpoint -Name $env.VerizonEndpointName -ResourceGroupName $env.ResourceGroupName -ProfileName $env.VerizonCdnProfileName 
-        { $endpoint | Import-AzCdnEndpointContent -ContentFilePath $contentPath } | Should -Throw
+        { Import-AzCdnEndpointContent -ContentFilePath $contentPath -InputObject $endpoint } | Should -Throw
 
         # For other tests, need to start the endpoint
         Start-AzCdnEndpoint -Name $env.VerizonEndpointName -ResourceGroupName $env.ResourceGroupName -ProfileName $env.VerizonCdnProfileName 

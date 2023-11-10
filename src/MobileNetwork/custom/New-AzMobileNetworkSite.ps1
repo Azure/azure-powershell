@@ -339,8 +339,8 @@ function New-AzMobileNetworkSite {
             $null = $PSBoundParameters.Remove('DataNetworkName')
             $null = $PSBoundParameters.Remove('Name')
             if ($hasPlatformType -And $hasControlPlaneAccessInterfaceName `
-                    -And $hasControlPlaneAccessInterfaceIpv4Address -And $hasControlPlaneAccessInterfaceIpv4Gateway `
-                    -And $hasControlPlaneAccessInterfaceIpv4Subnet -And $hasAzureStackEdgeDeviceId `
+                    -And $hasControlPlaneAccessInterfaceIpv4Address -And (($hasControlPlaneAccessInterfaceIpv4Gateway `
+                    -And $hasControlPlaneAccessInterfaceIpv4Subnet) -Or $hasAzureStackEdgeDeviceId) `
                     -And $hasLocalDiagnosticAccessAuthenticationType -And $hasCoreNetworkTechnology -And $hasSku) {
 
                 $SiteResourceId = New-AzMobileNetworkSiteResourceIdObject -Id "/subscriptions/$SubscriptionId/resourceGroups/$ResourceGroupName/providers/Microsoft.MobileNetwork/mobileNetworks/$MobileNetworkName/sites/$Name"
@@ -350,13 +350,23 @@ function New-AzMobileNetworkSite {
                 $PSBoundParameters.Add('PlatformType', $PlatformType)
                 $PSBoundParameters.Add('ControlPlaneAccessInterfaceName', $ControlPlaneAccessInterfaceName)
                 $PSBoundParameters.Add('ControlPlaneAccessInterfaceIpv4Address', $ControlPlaneAccessInterfaceIpv4Address)
-                $PSBoundParameters.Add('ControlPlaneAccessInterfaceIpv4Gateway', $ControlPlaneAccessInterfaceIpv4Gateway)
-                $PSBoundParameters.Add('ControlPlaneAccessInterfaceIpv4Subnet', $ControlPlaneAccessInterfaceIpv4Subnet)
-                $PSBoundParameters.Add('AzureStackEdgeDeviceId', $AzureStackEdgeDeviceId)
+
+                if ($hasControlPlaneAccessInterfaceIpv4Gateway) {
+                    $PSBoundParameters.Add('ControlPlaneAccessInterfaceIpv4Gateway', $ControlPlaneAccessInterfaceIpv4Gateway)
+                }
+
+                if ($hasControlPlaneAccessInterfaceIpv4Subnet) {
+                    $PSBoundParameters.Add('ControlPlaneAccessInterfaceIpv4Subnet', $ControlPlaneAccessInterfaceIpv4Subnet)
+                }
+
+                if ($hasAzureStackEdgeDeviceId) {
+                    $PSBoundParameters.Add('AzureStackEdgeDeviceId', $AzureStackEdgeDeviceId)
+                }
+
                 $PSBoundParameters.Add('LocalDiagnosticAccessAuthenticationType', $LocalDiagnosticAccessAuthenticationType)
                 $PSBoundParameters.Add('CoreNetworkTechnology', $CoreNetworkTechnology)
                 $PSBoundParameters.Add('Sku', $Sku)
-                
+
                 if ($hasCustomLocationId) {
                     $PSBoundParameters.Add('CustomLocationId', $CustomLocationId)
                 }
@@ -376,18 +386,27 @@ function New-AzMobileNetworkSite {
                 $null = $PSBoundParameters.Remove('LocalDiagnosticAccessAuthenticationType')
                 $null = $PSBoundParameters.Remove('CoreNetworkTechnology')
                 $null = $PSBoundParameters.Remove('Sku')
-                if ($hasUserPlaneAccessInterfaceIpv4Address -And $hasUserPlaneAccessInterfaceIpv4Gateway `
-                        -And $hasUserPlaneAccessInterfaceIpv4Subnet -And $hasUserPlaneAccessInterfaceName) {
+                if ((($hasUserPlaneAccessInterfaceIpv4Address -And $hasUserPlaneAccessInterfaceIpv4Gateway `
+                        -And $hasUserPlaneAccessInterfaceIpv4Subnet) -Or $hasAzureStackEdgeDeviceId) -And $hasUserPlaneAccessInterfaceName) {
 
-                    $PSBoundParameters.Add('UserPlaneAccessInterfaceIpv4Address', $UserPlaneAccessInterfaceIpv4Address)
-                    $PSBoundParameters.Add('UserPlaneAccessInterfaceIpv4Gateway', $UserPlaneAccessInterfaceIpv4Gateway)
-                    $PSBoundParameters.Add('UserPlaneAccessInterfaceIpv4Subnet', $UserPlaneAccessInterfaceIpv4Subnet)
+                    if ($hasUserPlaneAccessInterfaceIpv4Address) {
+                        $PSBoundParameters.Add('UserPlaneAccessInterfaceIpv4Address', $UserPlaneAccessInterfaceIpv4Address)
+                    }
+
+                    if ($hasUserPlaneAccessInterfaceIpv4Gateway) {
+                        $PSBoundParameters.Add('UserPlaneAccessInterfaceIpv4Gateway', $UserPlaneAccessInterfaceIpv4Gateway)
+                    }
+
+                    if ($hasUserPlaneAccessInterfaceIpv4Subnet) {
+                        $PSBoundParameters.Add('UserPlaneAccessInterfaceIpv4Subnet', $UserPlaneAccessInterfaceIpv4Subnet)
+                    }
+
                     $PSBoundParameters.Add('UserPlaneAccessInterfaceName', $UserPlaneAccessInterfaceName)
                     $PSBoundParameters.Add('PacketCoreControlPlane', $Name + '-PacketCoreControlPlane')
                     $PSBoundParameters.Add('Name', $Name + '-PacketCoreDataPlane')
 
                     Az.MobileNetwork.private\New-AzMobileNetworkPacketCoreDataPlane_CreateExpanded @PSBoundParameters
-                    
+
                     # New-AzMobileNetworkAttachedDataNetwork
                     $null = $PSBoundParameters.Remove('UserPlaneAccessInterfaceIpv4Address')
                     $null = $PSBoundParameters.Remove('UserPlaneAccessInterfaceIpv4Gateway')
@@ -395,19 +414,29 @@ function New-AzMobileNetworkSite {
                     $null = $PSBoundParameters.Remove('UserPlaneAccessInterfaceName')
                     $null = $PSBoundParameters.Remove('PacketCoreControlPlane')
                     $null = $PSBoundParameters.Remove('Name')
-                    if ($hasDnsAddress -And $hasUserPlaneDataInterfaceIpv4Address -And $hasUserPlaneDataInterfaceIpv4Gateway `
-                            -And $hasUserPlaneDataInterfaceIpv4Subnet -And $hasUserPlaneDataInterfaceName `
+                    if ($hasDnsAddress -And (($hasUserPlaneDataInterfaceIpv4Address -And $hasUserPlaneDataInterfaceIpv4Gateway `
+                            -And $hasUserPlaneDataInterfaceIpv4Subnet) -Or $hasAzureStackEdgeDeviceId) -And $hasUserPlaneDataInterfaceName `
                             -And ($hasUserEquipmentStaticAddressPoolPrefix -Or $hasUserEquipmentAddressPoolPrefix)) {
 
                         $PSBoundParameters.Add('DnsAddress', $DnsAddress)
-                        $PSBoundParameters.Add('UserPlaneDataInterfaceIpv4Address', $UserPlaneDataInterfaceIpv4Address)
-                        $PSBoundParameters.Add('UserPlaneDataInterfaceIpv4Gateway', $UserPlaneDataInterfaceIpv4Gateway)
-                        $PSBoundParameters.Add('UserPlaneDataInterfaceIpv4Subnet', $UserPlaneDataInterfaceIpv4Subnet)
+
+                        if ($hasUserPlaneDataInterfaceIpv4Address) {
+                            $PSBoundParameters.Add('UserPlaneDataInterfaceIpv4Address', $UserPlaneDataInterfaceIpv4Address)
+                        }
+
+                        if ($hasUserPlaneDataInterfaceIpv4Gateway) {
+                            $PSBoundParameters.Add('UserPlaneDataInterfaceIpv4Gateway', $UserPlaneDataInterfaceIpv4Gateway)
+                        }
+
+                        if ($hasUserPlaneDataInterfaceIpv4Subnet) {
+                            $PSBoundParameters.Add('UserPlaneDataInterfaceIpv4Subnet', $UserPlaneDataInterfaceIpv4Subnet)
+                        }
+
                         $PSBoundParameters.Add('UserPlaneDataInterfaceName', $UserPlaneDataInterfaceName)
                         $PSBoundParameters.Add('PacketCoreControlPlaneName', $Name + '-PacketCoreControlPlane')
                         $PSBoundParameters.Add('PacketCoreDataPlaneName', $Name + '-PacketCoreDataPlane')
                         $PSBoundParameters.Add('Name', $DataNetworkName)
-                        
+
                         if ($hasNaptConfigurationEnabled) {
                             $PSBoundParameters.Add('NaptConfigurationEnabled', $NaptConfigurationEnabled)
                         }
@@ -423,19 +452,19 @@ function New-AzMobileNetworkSite {
                     elseif ($hasDnsAddress -Or $hasUserPlaneDataInterfaceIpv4Address -Or $hasUserPlaneDataInterfaceIpv4Gateway `
                             -Or $hasUserPlaneDataInterfaceIpv4Subnet -Or $hasUserPlaneDataInterfaceName `
                             -Or $hasUserEquipmentStaticAddressPoolPrefix -Or $hasUserEquipmentAddressPoolPrefix) {
-                        Write-Warning "In order to create a Mobile Network Attached Data Network successfully, please ensure that parameters [-DnsAddress], [-UserPlaneDataInterfaceIpv4Address], [-UserPlaneDataInterfaceIpv4Gateway], [-UserPlaneDataInterfaceIpv4Subnet], [-UserPlaneDataInterfaceName] are correctly filled."
+                        Write-Warning "In order to create a Mobile Network Attached Data Network successfully, please ensure that parameters [-DnsAddress] and [-UserPlaneDataInterfaceName] is correctly filled, at least one of [-UserEquipmentStaticAddressPoolPrefix] or [-UserEquipmentAddressPoolPrefix], and either all of [-UserPlaneDataInterfaceIpv4Address], [-UserPlaneDataInterfaceIpv4Gateway] and [-UserPlaneDataInterfaceIpv4Subnet], or [-AzureStackEdgeDeviceId]."
                     }
                 }
                 elseif ($hasUserPlaneAccessInterfaceIpv4Address -Or $hasUserPlaneAccessInterfaceIpv4Gateway `
                         -Or $hasUserPlaneAccessInterfaceIpv4Subnet -Or $hasUserPlaneAccessInterfaceName) {
-                    Write-Warning "In order to create a Mobile Network Packet Core Data Plane successfully, please ensure that parameters [-UserPlaneAccessInterfaceIpv4Address], [-UserPlaneAccessInterfaceIpv4Gateway], [-UserPlaneAccessInterfaceIpv4Subnet], [-UserPlaneAccessInterfaceName] are correctly filled."
+                    Write-Warning "In order to create a Mobile Network Packet Core Data Plane successfully, please ensure that parameters [-UserPlaneAccessInterfaceName] is correctly filled, and either all of [-UserPlaneAccessInterfaceIpv4Address], [-UserPlaneAccessInterfaceIpv4Gateway] and [-UserPlaneAccessInterfaceIpv4Subnet], or [-AzureStackEdgeDeviceId]."
                 }
             }
             elseif ($hasPlatformType -Or $hasControlPlaneAccessInterfaceName `
                     -Or $hasControlPlaneAccessInterfaceIpv4Address -Or $hasControlPlaneAccessInterfaceIpv4Gateway `
                     -Or $hasControlPlaneAccessInterfaceIpv4Subnet -Or $hasAzureStackEdgeDeviceId `
                     -Or $hasLocalDiagnosticAccessAuthenticationType -Or $hasCoreNetworkTechnology -Or $hasSku) {
-                Write-Warning "In order to create a Mobile Network Packet Core Control Plane successfully, please ensure that parameters [-PlatformType], [-ControlPlaneAccessInterfaceName], [-ControlPlaneAccessInterfaceIpv4Address], [-ControlPlaneAccessInterfaceIpv4Gateway], [-ControlPlaneAccessInterfaceIpv4Subnet], [-AzureStackEdgeDeviceId], [-LocalDiagnosticAccessAuthenticationType], [-CoreNetworkTechnology], [-Sku] are correctly filled."
+                Write-Warning "In order to create a Mobile Network Packet Core Control Plane successfully, please ensure that parameters [-PlatformType], [-ControlPlaneAccessInterfaceName], [-ControlPlaneAccessInterfaceIpv4Address], [-AzureStackEdgeDeviceId], [-LocalDiagnosticAccessAuthenticationType], [-CoreNetworkTechnology], [-Sku] are correctly filled, and either [-ControlPlaneAccessInterfaceIpv4Gateway] and [-ControlPlaneAccessInterfaceIpv4Subnet], or [-AzureStackEdgeDeviceId]."
             }
         }
         catch {

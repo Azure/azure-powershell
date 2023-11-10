@@ -1,0 +1,6 @@
+"Module","Severity","ResourceType","SubResourceType","Command","Description"
+"Az.Logz","1","Microsoft.Logz","monitors-accounts-tagRules","Get-AzLogzSubAccountTagRule","ruleSetName is defined in path but cannot find in example"
+"Az.Logz","1","Microsoft.Logz","monitors-accounts-tagRules","Remove-AzLogzSubAccountTagRule","ruleSetName is defined in path but cannot find in example"
+"Az.Logz","1","Microsoft.Logz","monitors-singleSignOnConfigurations","Get-AzLogzMonitorSSOConfiguration","configurationName is defined in path but cannot find in example"
+"Az.Logz","1","Microsoft.Logz","monitors-tagRules","Get-AzLogzMonitorTagRule","ruleSetName is defined in path but cannot find in example"
+"Az.Logz","1","Microsoft.Logz","monitors-tagRules","Remove-AzLogzMonitorTagRule","ruleSetName is defined in path but cannot find in example"

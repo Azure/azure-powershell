@@ -151,4 +151,17 @@ directive:
       }
   # - model-cmdlet:
   #   - Volume # Hide to customize AzureFileStorageAccountKey from string to securestring
+
+  # Fix Typo: Parameters starting with PreviouState will be corrected as PreviousState.
+  - where:
+      model-name: ContainerPropertiesInstanceView|InitContainerPropertiesDefinitionInstanceView|Container|ContainerProperties|InitContainerDefinition|InitContainerPropertiesDefinition
+      property-name: PreviousState
+    set:
+      property-name: PreviousStateInternal
+
+  - where:
+      model-name: ContainerPropertiesInstanceView|InitContainerPropertiesDefinitionInstanceView|Container|ContainerProperties|InitContainerDefinition|InitContainerPropertiesDefinition
+      property-name: ^PreviouState
+    set:
+      property-name: PreviousState
 ```

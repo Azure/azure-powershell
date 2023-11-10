@@ -48,33 +48,31 @@ Describe 'Clear-AzCdnEndpointContent' {
     }
 
     It 'PurgeViaIdentityExpanded' {
-        $PSDefaultParameterValues['Disabled'] = $true
         $contentPath = @("/movies/*","/pictures/pic1.jpg") 
 
         # Purge content on endpoint should succeed
-        $endpoint = Get-AzCdnEndpoint -Name $env.VerizonEndpointName -ProfileName $env.VerizonCdnProfileName -ResourceGroupName $env.ResourceGroupName -SubscriptionId $env.SubscriptionId
-        $endpoint | Clear-AzCdnEndpointContent -ContentPath $contentPath
+        $endpoint = Get-AzCdnEndpoint -Name $env.VerizonEndpointName -ProfileName $env.VerizonCdnProfileName -ResourceGroupName $env.ResourceGroupName
+        Clear-AzCdnEndpointContent -ContentPath $contentPath -InputObject $endpoint
         # Purge content on endpoint with invalid content paths should fail
-        { $endpoint | Clear-AzCdnEndpointContent -ContentPath "invalidpath!" } | Should -Throw
+        { Clear-AzCdnEndpointContent -ContentPath "invalidpath!" -InputObject $endpoint } | Should -Throw
         # Purge content on stopped endpoint should fail
         Stop-AzCdnEndpoint -Name $env.VerizonEndpointName -ResourceGroupName $env.ResourceGroupName -ProfileName $env.VerizonCdnProfileName 
-        { $endpoint | Clear-AzCdnEndpointContent -ContentPath $contentPath } | Should -Throw
+        { Clear-AzCdnEndpointContent -ContentPath $contentPath -InputObject $endpoint} | Should -Throw
 
         Start-AzCdnEndpoint -Name $env.VerizonEndpointName -ResourceGroupName $env.ResourceGroupName -ProfileName $env.VerizonCdnProfileName 
     }
 
     It 'PurgeViaIdentity' {
-        $PSDefaultParameterValues['Disabled'] = $true
         $contentPath = @{ ContentPath = @("/movies/*","/pictures/pic1.jpg") }
 
         # Purge content on endpoint should succeed
-        $endpoint = Get-AzCdnEndpoint -Name $env.VerizonEndpointName -ProfileName $env.VerizonCdnProfileName -ResourceGroupName $env.ResourceGroupName -SubscriptionId $env.SubscriptionId
-        $endpoint | Clear-AzCdnEndpointContent -ContentFilePath $contentPath
+        $endpoint = Get-AzCdnEndpoint -Name $env.VerizonEndpointName -ProfileName $env.VerizonCdnProfileName -ResourceGroupName $env.ResourceGroupName
+        Clear-AzCdnEndpointContent -ContentFilePath $contentPath -InputObject $endpoint
         # Purge content on endpoint with invalid content paths should fail
-        { $endpoint | Clear-AzCdnEndpointContent -ContentFilePath @{ ContentPath = "invalidpath!" } } | Should -Throw
+        { Clear-AzCdnEndpointContent -ContentFilePath @{ ContentPath = "invalidpath!" } -InputObject $endpoint } | Should -Throw
         # Purge content on stopped endpoint should fail
         Stop-AzCdnEndpoint -Name $env.VerizonEndpointName -ResourceGroupName $env.ResourceGroupName -ProfileName $env.VerizonCdnProfileName 
-        { $endpoint | Clear-AzCdnEndpointContent -ContentFilePath $contentPath } | Should -Throw
+        { Clear-AzCdnEndpointContent -ContentFilePath $contentPath  -InputObject $endpoint} | Should -Throw
 
         Start-AzCdnEndpoint -Name $env.VerizonEndpointName -ResourceGroupName $env.ResourceGroupName -ProfileName $env.VerizonCdnProfileName 
     }

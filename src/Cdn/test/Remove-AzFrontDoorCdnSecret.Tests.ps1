@@ -19,7 +19,7 @@ Describe 'Remove-AzFrontDoorCdnSecret'  {
         $subId = $env.SubscriptionId
         Write-Host -ForegroundColor Green "Use SubscriptionId : $($subId)"
 
-        $secretName = "se-" + (RandomString -allChars $false -len 6);
+        $secretName = "se-psName040"
         Write-Host -ForegroundColor Green "Use secretName : $($secretName)"
 
         $parameter = New-AzFrontDoorCdnSecretCustomerCertificateParametersObject -UseLatestVersion $true -SubjectAlternativeName @() -Type "CustomerCertificate"`
@@ -29,20 +29,18 @@ Describe 'Remove-AzFrontDoorCdnSecret'  {
         Remove-AzFrontDoorCdnSecret -ProfileName $env.FrontDoorCdnProfileName -ResourceGroupName $env.ResourceGroupName -Name $secretName -SubscriptionId $subId
     }
 
-    It 'DeleteViaIdentity'  {
-        $PSDefaultParameterValues['Disabled'] = $true
-
+    It 'DeleteViaIdentity' {
         $subId = $env.SubscriptionId
         Write-Host -ForegroundColor Green "Use SubscriptionId : $($subId)"
 
-        $secretName = "se-" + (RandomString -allChars $false -len 6);
+        $secretName = "se-psName041"
         Write-Host -ForegroundColor Green "Use secretName : $($secretName)"
 
         $parameter = New-AzFrontDoorCdnSecretCustomerCertificateParametersObject -UseLatestVersion $true -SubjectAlternativeName @() -Type "CustomerCertificate"`
         -SecretSourceId "/subscriptions/$subId/resourceGroups/powershelltest/providers/Microsoft.KeyVault/vaults/cdn-ps-kv/secrets/testps"
         
         New-AzFrontDoorCdnSecret -Name $secretName -ProfileName $env.FrontDoorCdnProfileName -ResourceGroupName $env.ResourceGroupName -Parameter $parameter
-        Get-AzFrontDoorCdnSecret -SubscriptionId $subId -ProfileName $env.FrontDoorCdnProfileName -ResourceGroupName $env.ResourceGroupName -Name $secretName `
-        | Remove-AzFrontDoorCdnSecret
+        $secretObject = Get-AzFrontDoorCdnSecret -SubscriptionId $subId -ProfileName $env.FrontDoorCdnProfileName -ResourceGroupName $env.ResourceGroupName -Name $secretName
+        Remove-AzFrontDoorCdnSecret -InputObject $secretObject
     }
 }

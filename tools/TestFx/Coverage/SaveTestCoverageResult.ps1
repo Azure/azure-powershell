@@ -5,15 +5,15 @@ param (
 
     [Parameter(Mandatory, Position = 1)]
     [ValidateNotNullOrEmpty()]
-    [guid] $KustoServicePrincipalTenantId,
+    [guid] $TenantId,
 
     [Parameter(Mandatory, Position = 2)]
     [ValidateNotNullOrEmpty()]
-    [guid] $KustoServicePrincipalId,
+    [guid] $ServicePrincipalId,
 
     [Parameter(Mandatory, Position = 3)]
     [ValidateNotNullOrEmpty()]
-    [string] $KustoServicePrincipalSecret,
+    [string] $ServicePrincipalSecret,
 
     [Parameter(Mandatory, Position = 4)]
     [ValidateNotNullOrEmpty()]
@@ -30,7 +30,7 @@ $script:AzPSCommonParameters = @("-Break", "-Confirm", "-Debug", "-DefaultProfil
 $cvgDir = Join-Path -Path ${env:TESTCOVERAGELOCATION} -ChildPath "TestCoverageAnalysis" | Join-Path -ChildPath "Raw"
 if (Test-Path -LiteralPath $cvgDir -PathType Container) {
     $kustoUtil = Join-Path -Path ($PSScriptRoot | Split-Path) -ChildPath "Utilities" | Join-Path -ChildPath "KustoUtility.psd1"
-    Import-Module $kustoUtil -ArgumentList $KustoServicePrincipalTenantId, $KustoServicePrincipalId, $KustoServicePrincipalSecret, $ClusterName, $ClusterRegion -Force
+    Import-Module $kustoUtil -ArgumentList $TenantId, $ServicePrincipalId, $ServicePrincipalSecret, $ClusterName, $ClusterRegion -Force
 
     $cvgRawCsv = Get-ChildItem -Path $cvgDir -Filter "*.csv" -File | Select-Object -ExpandProperty FullName
     $cvgRawCsv | ForEach-Object {
@@ -49,11 +49,12 @@ if (Test-Path -LiteralPath $cvgDir -PathType Container) {
         @{ Name = "LineNumber"; Expression = { $_.LineNumber } }, `
         @{ Name = "StartDateTime"; Expression = { $_.StartDateTime } }, `
         @{ Name = "EndDateTime"; Expression = { $_.EndDateTime } }, `
-        @{ Name = "IsSuccess"; Expression = { $_.IsSuccess } } |
+        @{ Name = "IsSuccess"; Expression = { $_.IsSuccess } }, `
+        @{ Name = "ExtendedProperties"; Expression = { $null } } |
         Export-Csv -Path $_ -Encoding utf8 -NoTypeInformation -Force
     }
 
-    Import-KustoDataFromCsv -DatabaseName ${env:TESTCOVERAGEDATABASENAME} -TableName ${env:TESTCOVERAGETABLENAME} -CsvFile $cvgRawCsv
+    Add-KustoData -DatabaseName ${env:TESTCOVERAGEDATABASENAME} -TableName ${env:TESTCOVERAGETABLENAME} -CsvFile $cvgRawCsv
 }
 else {
     Write-Host "##[warning]No test coverage data was found." -ForegroundColor Yellow

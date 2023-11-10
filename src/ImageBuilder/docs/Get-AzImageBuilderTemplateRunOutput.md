@@ -35,36 +35,37 @@ Get the specified run output for the specified image template resource
 
 ## EXAMPLES
 
-### Example 1: List all run results under a template
+### Example 1: List the specified run output for the specified image template resource by ImageTemplateName.
 ```powershell
-Get-AzImageBuilderTemplateRunOutput -ImageTemplateName test-img-temp -ResourceGroupName bez-rg
+Get-AzImageBuilderTemplateRunOutput -ImageTemplateName azps-ibt-1 -ResourceGroupName azps_test_group_imagebuilder
 ```
 
 ```output
-Name    SystemDataCreatedAt SystemDataCreatedBy SystemDataCreatedByType SystemDataLastModifiedAt SystemDataLastModifiedBy SystemDataLastModifiedByType ResourceGroupName
-----    ------------------- ------------------- ----------------------- ------------------------ ------------------------ ---------------------------- -----------------
-testrunoutput                                                                                                                                          bez-rg
+Name         ProvisioningState ResourceGroupName
+----         ----------------- -----------------
+runoutput-01 Succeeded         azps_test_group_imagebuilder
 ```
 
-This command lists all run results under a template.
+List the specified run output for the specified image template resource by ImageTemplateName.
 
-### Example 2: Get a run result under a template
+### Example 2: Get the specified run output for the specified image template resource by Name.
 ```powershell
-Get-AzImageBuilderTemplateRunOutput -ImageTemplateName test-img-temp -ResourceGroupName bez-rg -Name runout-template-name-u7gjq
+Get-AzImageBuilderTemplateRunOutput -ImageTemplateName azps-ibt-1 -ResourceGroupName azps_test_group_imagebuilder -Name runoutput-01
 ```
 
 ```output
-Name    SystemDataCreatedAt SystemDataCreatedBy SystemDataCreatedByType SystemDataLastModifiedAt SystemDataLastModifiedBy SystemDataLastModifiedByType ResourceGroupName
-----    ------------------- ------------------- ----------------------- ------------------------ ------------------------ ---------------------------- -----------------
-runout-template-name-u7gjq  
+Name         ProvisioningState ResourceGroupName
+----         ----------------- -----------------
+runoutput-01 Succeeded         azps_test_group_imagebuilder
 ```
 
-This command gets a run result under a template.
+Get the specified run output for the specified image template resource by Name.
 
 ## PARAMETERS
 
 ### -DefaultProfile
-The credentials, account, tenant, and subscription used for communication with Azure.
+The DefaultProfile parameter is not functional.
+Use the SubscriptionId parameter when available if executing the cmdlet against a different subscription.
 
 ```yaml
 Type: System.Management.Automation.PSObject
@@ -164,7 +165,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.ImageBuilder.Models.Api20220214.IRunOutput
+### Microsoft.Azure.PowerShell.Cmdlets.ImageBuilder.Models.Api20220701.IRunOutput
 
 ## NOTES
 
@@ -181,6 +182,7 @@ To create the parameters described below, construct a hash table containing the 
   - `[ResourceGroupName <String>]`: The name of the resource group.
   - `[RunOutputName <String>]`: The name of the run output
   - `[SubscriptionId <String>]`: Subscription credentials which uniquely identify Microsoft Azure subscription. The subscription Id forms part of the URI for every service call.
+  - `[TriggerName <String>]`: The name of the trigger
 
 ## RELATED LINKS
 

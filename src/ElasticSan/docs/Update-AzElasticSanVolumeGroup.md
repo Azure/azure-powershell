@@ -15,29 +15,29 @@ Update an VolumeGroup.
 ### UpdateExpanded (Default)
 ```
 Update-AzElasticSanVolumeGroup -ElasticSanName <String> -Name <String> -ResourceGroupName <String>
- [-SubscriptionId <String>] [-Encryption <EncryptionType>]
- [-NetworkAclsVirtualNetworkRule <IVirtualNetworkRule[]>] [-ProtocolType <StorageTargetType>]
- [-Tag <Hashtable>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
+ [-SubscriptionId <String>] [-Encryption <String>] [-EncryptionUserAssignedIdentity <String>]
+ [-IdentityType <String>] [-IdentityUserAssignedIdentityId <String>] [-KeyName <String>]
+ [-KeyVaultUri <String>] [-KeyVersion <String>] [-NetworkAclsVirtualNetworkRule <IVirtualNetworkRule[]>]
+ [-ProtocolType <String>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf]
+ [<CommonParameters>]
 ```
 
-### Update
+### UpdateViaIdentityElasticSanExpanded
 ```
-Update-AzElasticSanVolumeGroup -ElasticSanName <String> -Name <String> -ResourceGroupName <String>
- -Parameter <IVolumeGroupUpdate> [-SubscriptionId <String>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
- [-Confirm] [-WhatIf] [<CommonParameters>]
-```
-
-### UpdateViaIdentity
-```
-Update-AzElasticSanVolumeGroup -InputObject <IElasticSanIdentity> -Parameter <IVolumeGroupUpdate>
+Update-AzElasticSanVolumeGroup -ElasticSanInputObject <IElasticSanIdentity> -Name <String>
+ [-Encryption <String>] [-EncryptionUserAssignedIdentity <String>] [-IdentityType <String>]
+ [-IdentityUserAssignedIdentityId <String>] [-KeyName <String>] [-KeyVaultUri <String>] [-KeyVersion <String>]
+ [-NetworkAclsVirtualNetworkRule <IVirtualNetworkRule[]>] [-ProtocolType <String>]
  [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ### UpdateViaIdentityExpanded
 ```
-Update-AzElasticSanVolumeGroup -InputObject <IElasticSanIdentity> [-Encryption <EncryptionType>]
- [-NetworkAclsVirtualNetworkRule <IVirtualNetworkRule[]>] [-ProtocolType <StorageTargetType>]
- [-Tag <Hashtable>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
+Update-AzElasticSanVolumeGroup -InputObject <IElasticSanIdentity> [-Encryption <String>]
+ [-EncryptionUserAssignedIdentity <String>] [-IdentityType <String>]
+ [-IdentityUserAssignedIdentityId <String>] [-KeyName <String>] [-KeyVaultUri <String>] [-KeyVersion <String>]
+ [-NetworkAclsVirtualNetworkRule <IVirtualNetworkRule[]>] [-ProtocolType <String>]
+ [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -66,7 +66,6 @@ SystemDataCreatedByType       : Application
 SystemDataLastModifiedAt      : 9/19/2022 7:05:47 AM
 SystemDataLastModifiedBy      : yyyyyyyy-yyyy-yyyy-yyyy-yyyyyyyyyyyy
 SystemDataLastModifiedByType  : Application
-Tag                           : Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Models.Api20211120Preview.ResourceTags
 Type                          : Microsoft.ElasticSan/ElasticSans
 ```
 
@@ -74,7 +73,7 @@ This example updates the protocol type and virtual network rules of a volume gor
 
 ### Example 2: Update a volume group virtual network rule with JSON input 
 ```powershell
-Update-AzElasticSanVolumeGroup -ResourceGroupName myresourcegroup -ElasticSanName myelasticsan -Name myvolumegroup -ProtocolType 'Iscsi' -Tag @{tag1="value1";tag2="value2"} `
+Update-AzElasticSanVolumeGroup -ResourceGroupName myresourcegroup -ElasticSanName myelasticsan -Name myvolumegroup -ProtocolType 'Iscsi'`
             -NetworkAclsVirtualNetworkRule (
                 @{VirtualNetworkResourceId="/subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx/resourceGroups/myresourcegroup/providers/Microsoft.Network/virtualNetworks/myvnet/subnets/subnet1";
                     Action="Allow"},
@@ -95,12 +94,91 @@ SystemDataCreatedByType       : Application
 SystemDataLastModifiedAt      : 9/19/2022 7:05:47 AM
 SystemDataLastModifiedBy      : yyyyyyyy-yyyy-yyyy-yyyy-yyyyyyyyyyyy
 SystemDataLastModifiedByType  : Application
-Tag                           : Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Models.Api20211120Preview.ResourceTags
 Type                          : Microsoft.ElasticSan/ElasticSans
 ```
 
 This example updates the protocol type, virtual network rules, and tag of a volume group.
 It takes in the virtual network rules in JSON format.
+
+### Example 3: Update a volume group from CMK to PMK 
+```powershell
+Update-AzElasticSanVolumeGroup -ResourceGroupName myresourcegroup -ElasticSanName myelasticsan -Name myvolumegroup -Encryption EncryptionAtRestWithPlatformKey
+```
+
+```output
+Encryption                                             : EncryptionAtRestWithPlatformKey
+EncryptionIdentityEncryptionUserAssignedIdentity       :
+Id                                                     : /subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/myresourcegroup/providers/Microsoft.ElasticSan/elasticSans/myelasticsan/volumeGroups/myvolumegroup
+IdentityPrincipalId                                    :
+IdentityTenantId                                       :
+IdentityType                                           : UserAssigned
+IdentityUserAssignedIdentity                           : {
+                                                           "/subscriptions/00000000-0000-0000-0000-000000000000/resourcegroups/myresourcegroup/providers/Microsoft.ManagedIdentity/userAssignedIdentities/myuai": {
+                                                           }
+                                                         }
+KeyVaultPropertyCurrentVersionedKeyExpirationTimestamp :
+KeyVaultPropertyCurrentVersionedKeyIdentifier          :
+KeyVaultPropertyKeyName                                :
+KeyVaultPropertyKeyVaultUri                            :
+KeyVaultPropertyKeyVersion                             :
+KeyVaultPropertyLastKeyRotationTimestamp               :
+Name                                                   : myvolumegroup
+NetworkAclsVirtualNetworkRule                          :
+PrivateEndpointConnection                              :
+ProtocolType                                           : iSCSI
+ProvisioningState                                      : Succeeded
+ResourceGroupName                                      : myresourcegroup
+SystemDataCreatedAt                                    : 10/7/2023 2:31:45 AM
+SystemDataCreatedBy                                    : 00000000-0000-0000-0000-000000000000
+SystemDataCreatedByType                                : Application
+SystemDataLastModifiedAt                               : 10/7/2023 6:47:24 AM
+SystemDataLastModifiedBy                               : 00000000-0000-0000-0000-000000000000
+SystemDataLastModifiedByType                           : Application
+Type                                                   : Microsoft.ElasticSan/elasticSans/volumeGroups
+```
+
+This command updates a volume group from CMK to PMK.
+
+### Example 4: Update a volume group to a new user assigned identity
+```powershell
+$useridentity2 = Get-AzUserAssignedIdentity -ResourceGroupName myresoucegroup -Name myuai2
+
+Update-AzElasticSanVolumeGroup -ResourceGroupName myresourcegroup -ElasticSanName myelasticsan -Name myvolumegroup -IdentityType UserAssigned -IdentityUserAssignedIdentityId $useridentity2.Id -EncryptionUserAssignedIdentity $useridentity2.Id
+```
+
+```output
+Encryption                                             : EncryptionAtRestWithCustomerManagedKey
+EncryptionIdentityEncryptionUserAssignedIdentity       : /subscriptions/00000000-0000-0000-0000-000000000000/resourcegroups/myresourcegroup/providers/Microsoft.ManagedIdentity/userAssignedIdentities/myuai2
+Id                                                     : /subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/myresourcegroup/providers/Microsoft.ElasticSan/elasticSans/myelasticsan/volumeGroups/myvolumegroup
+IdentityPrincipalId                                    :
+IdentityTenantId                                       :
+IdentityType                                           : UserAssigned
+IdentityUserAssignedIdentity                           : {
+                                                           "/subscriptions/00000000-0000-0000-0000-000000000000/resourcegroups/myresourcegroup/providers/Microsoft.ManagedIdentity/userAssignedIdentities/myuai2": {
+                                                           }
+                                                         }
+KeyVaultPropertyCurrentVersionedKeyExpirationTimestamp : 1/1/1970 12:00:00 AM
+KeyVaultPropertyCurrentVersionedKeyIdentifier          : https://mykeyvault.vault.azure.net/keys/mykey/37ec78b20f9e4a29b14a0d29d93cb79f
+KeyVaultPropertyKeyName                                : mykey
+KeyVaultPropertyKeyVaultUri                            : https://mykeyvault.vault.azure.net:443
+KeyVaultPropertyKeyVersion                             :
+KeyVaultPropertyLastKeyRotationTimestamp               : 10/7/2023 7:03:27 AM
+Name                                                   : myvolumegroup
+NetworkAclsVirtualNetworkRule                          :
+PrivateEndpointConnection                              :
+ProtocolType                                           : iSCSI
+ProvisioningState                                      : Succeeded
+ResourceGroupName                                      : myresourcegroup
+SystemDataCreatedAt                                    : 10/7/2023 6:32:27 AM
+SystemDataCreatedBy                                    : 00000000-0000-0000-0000-000000000000
+SystemDataCreatedByType                                : Application
+SystemDataLastModifiedAt                               : 10/7/2023 7:03:27 AM
+SystemDataLastModifiedBy                               : 00000000-0000-0000-0000-000000000000
+SystemDataLastModifiedByType                           : Application
+Type                                                   : Microsoft.ElasticSan/elasticSans/volumeGroups
+```
+
+This command updates a volume group's user assigned identity.
 
 ## PARAMETERS
 
@@ -120,7 +198,8 @@ Accept wildcard characters: False
 ```
 
 ### -DefaultProfile
-The credentials, account, tenant, and subscription used for communication with Azure.
+The DefaultProfile parameter is not functional.
+Use the SubscriptionId parameter when available if executing the cmdlet against a different subscription.
 
 ```yaml
 Type: System.Management.Automation.PSObject
@@ -134,12 +213,28 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### -ElasticSanInputObject
+Identity Parameter
+To construct, see NOTES section for ELASTICSANINPUTOBJECT properties and create a hash table.
+
+```yaml
+Type: Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Models.IElasticSanIdentity
+Parameter Sets: UpdateViaIdentityElasticSanExpanded
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: True (ByValue)
+Accept wildcard characters: False
+```
+
 ### -ElasticSanName
 The name of the ElasticSan.
 
 ```yaml
 Type: System.String
-Parameter Sets: Update, UpdateExpanded
+Parameter Sets: UpdateExpanded
 Aliases:
 
 Required: True
@@ -153,8 +248,54 @@ Accept wildcard characters: False
 Type of encryption
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Support.EncryptionType
-Parameter Sets: UpdateExpanded, UpdateViaIdentityExpanded
+Type: System.String
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -EncryptionUserAssignedIdentity
+Resource identifier of the UserAssigned identity to be associated with server-side encryption on the volume group.
+
+```yaml
+Type: System.String
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -IdentityType
+The identity type.
+
+```yaml
+Type: System.String
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -IdentityUserAssignedIdentityId
+Gets or sets a list of key value pairs that describe the set of User Assigned identities that will be used with this volume group.
+The key is the ARM resource identifier of the identity.
+
+```yaml
+Type: System.String
+Parameter Sets: (All)
 Aliases:
 
 Required: False
@@ -170,7 +311,7 @@ To construct, see NOTES section for INPUTOBJECT properties and create a hash tab
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Models.IElasticSanIdentity
-Parameter Sets: UpdateViaIdentity, UpdateViaIdentityExpanded
+Parameter Sets: UpdateViaIdentityExpanded
 Aliases:
 
 Required: True
@@ -180,12 +321,57 @@ Accept pipeline input: True (ByValue)
 Accept wildcard characters: False
 ```
 
+### -KeyName
+The name of KeyVault key.
+
+```yaml
+Type: System.String
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -KeyVaultUri
+The Uri of KeyVault.
+
+```yaml
+Type: System.String
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -KeyVersion
+The version of KeyVault key.
+
+```yaml
+Type: System.String
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
 ### -Name
 The name of the VolumeGroup.
 
 ```yaml
 Type: System.String
-Parameter Sets: Update, UpdateExpanded
+Parameter Sets: UpdateExpanded, UpdateViaIdentityElasticSanExpanded
 Aliases: VolumeGroupName
 
 Required: True
@@ -200,8 +386,8 @@ The list of virtual network rules.
 To construct, see NOTES section for NETWORKACLSVIRTUALNETWORKRULE properties and create a hash table.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Models.Api20211120Preview.IVirtualNetworkRule[]
-Parameter Sets: UpdateExpanded, UpdateViaIdentityExpanded
+Type: Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Models.IVirtualNetworkRule[]
+Parameter Sets: (All)
 Aliases:
 
 Required: False
@@ -226,28 +412,12 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -Parameter
-Volume Group request.
-To construct, see NOTES section for PARAMETER properties and create a hash table.
-
-```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Models.Api20211120Preview.IVolumeGroupUpdate
-Parameter Sets: Update, UpdateViaIdentity
-Aliases:
-
-Required: True
-Position: Named
-Default value: None
-Accept pipeline input: True (ByValue)
-Accept wildcard characters: False
-```
-
 ### -ProtocolType
 Type of storage target
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Support.StorageTargetType
-Parameter Sets: UpdateExpanded, UpdateViaIdentityExpanded
+Type: System.String
+Parameter Sets: (All)
 Aliases:
 
 Required: False
@@ -263,7 +433,7 @@ The name is case insensitive.
 
 ```yaml
 Type: System.String
-Parameter Sets: Update, UpdateExpanded
+Parameter Sets: UpdateExpanded
 Aliases:
 
 Required: True
@@ -278,27 +448,12 @@ The ID of the target subscription.
 
 ```yaml
 Type: System.String
-Parameter Sets: Update, UpdateExpanded
+Parameter Sets: UpdateExpanded
 Aliases:
 
 Required: False
 Position: Named
 Default value: (Get-AzContext).Subscription.Id
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -Tag
-Resource tags.
-
-```yaml
-Type: System.Collections.Hashtable
-Parameter Sets: UpdateExpanded, UpdateViaIdentityExpanded
-Aliases:
-
-Required: False
-Position: Named
-Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
 ```
@@ -339,43 +494,13 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Models.Api20211120Preview.IVolumeGroupUpdate
-
 ### Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Models.IElasticSanIdentity
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Models.Api20211120Preview.IVolumeGroup
+### Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Models.IVolumeGroup
 
 ## NOTES
-
-ALIASES
-
-COMPLEX PARAMETER PROPERTIES
-
-To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
-
-
-`INPUTOBJECT <IElasticSanIdentity>`: Identity Parameter
-  - `[ElasticSanName <String>]`: The name of the ElasticSan.
-  - `[Id <String>]`: Resource identity path
-  - `[ResourceGroupName <String>]`: The name of the resource group. The name is case insensitive.
-  - `[SubscriptionId <String>]`: The ID of the target subscription.
-  - `[VolumeGroupName <String>]`: The name of the VolumeGroup.
-  - `[VolumeName <String>]`: The name of the Volume.
-
-`NETWORKACLSVIRTUALNETWORKRULE <IVirtualNetworkRule[]>`: The list of virtual network rules.
-  - `VirtualNetworkResourceId <String>`: Resource ID of a subnet, for example: /subscriptions/{subscriptionId}/resourceGroups/{groupName}/providers/Microsoft.Network/virtualNetworks/{vnetName}/subnets/{subnetName}.
-  - `[Action <Action?>]`: The action of virtual network rule.
-
-`PARAMETER <IVolumeGroupUpdate>`: Volume Group request.
-  - `[Encryption <EncryptionType?>]`: Type of encryption
-  - `[NetworkAclsVirtualNetworkRule <IVirtualNetworkRule[]>]`: The list of virtual network rules.
-    - `VirtualNetworkResourceId <String>`: Resource ID of a subnet, for example: /subscriptions/{subscriptionId}/resourceGroups/{groupName}/providers/Microsoft.Network/virtualNetworks/{vnetName}/subnets/{subnetName}.
-    - `[Action <Action?>]`: The action of virtual network rule.
-  - `[ProtocolType <StorageTargetType?>]`: Type of storage target
-  - `[Tag <IVolumeGroupUpdateTags>]`: Resource tags.
-    - `[(Any) <String>]`: This indicates any property can be added to this object.
 
 ## RELATED LINKS
 

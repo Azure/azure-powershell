@@ -34,6 +34,9 @@ Creates vNet Peering for workspace.
 ### [New-AzDatabricksWorkspace](New-AzDatabricksWorkspace.md)
 Creates a new workspace.
 
+### [New-AzDatabricksWorkspaceProviderAuthorizationObject](New-AzDatabricksWorkspaceProviderAuthorizationObject.md)
+Create an in-memory object for WorkspaceProviderAuthorization.
+
 ### [Remove-AzDatabricksAccessConnector](Remove-AzDatabricksAccessConnector.md)
 Deletes the azure databricks accessConnector.
 

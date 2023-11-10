@@ -28,6 +28,21 @@ namespace Microsoft.Azure.PowerShell.Tools.AzPredictor.Telemetry
         /// </summary>
         public const string PropertyNameHttpRequestSent = "HttpRequestSent";
 
+        /// <summary>
+        /// The telemetry property name for "ReceivedCommandCount".
+        /// </summary>
+        public const string PropertyNameReceivedCommandCount = "ReceivedCommandCount";
+
+        /// <summary>
+        /// The telemetry property name for "ValidCommandCount".
+        /// </summary>
+        public const string PropertyNameValidCommandCount = "ValidCommandCount";
+
+        /// <summary>
+        /// The telemetry property name for command line parsing errors.
+        /// </summary>
+        public const string PropertyNameCommandLineParsingError = "CommandLineParsingError";
+
         /// <inheritdoc/>
         public PredictionClient Client { get; init; }
 
@@ -56,18 +71,29 @@ namespace Microsoft.Azure.PowerShell.Tools.AzPredictor.Telemetry
         public Exception Exception { get; }
 
         /// <summary>
+        /// Gets the summary of the <see cref="CommandLinePredictor" /> after it's created with the response.
+        /// </summary>
+        public CommandLineSummary PredictorSummary { get; init; }
+
+        /// <summary>
         /// Creates an instance of <see cref="RequestPredictionTelemetryData"/>.
         /// </summary>
         /// <param name="client">The client that makes the call.</param>
         /// <param name="commands">The commands to request prediction for.</param>
         /// <param name="hasSentHttpRequest">The flag to indicate whether the http request is canceled.</param>
         /// <param name="exception">The exception that may be thrown.</param>
-        public RequestPredictionTelemetryData(PredictionClient client, IEnumerable<string> commands, bool hasSentHttpRequest, Exception exception)
+        /// <param name="predictorSummary">The summary of the predictor.</param>
+        public RequestPredictionTelemetryData(PredictionClient client,
+                IEnumerable<string> commands,
+                bool hasSentHttpRequest,
+                Exception exception,
+                CommandLineSummary predictorSummary)
         {
             Client = client;
             Commands = commands;
             HasSentHttpRequest = hasSentHttpRequest;
             Exception = exception;
+            PredictorSummary = predictorSummary;
         }
     }
 }

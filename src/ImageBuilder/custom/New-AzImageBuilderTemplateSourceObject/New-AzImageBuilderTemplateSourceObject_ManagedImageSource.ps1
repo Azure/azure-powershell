@@ -21,12 +21,12 @@ Create an in-memory object for ImageTemplateSource.
 Create an in-memory object for ImageTemplateSource.
 
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.ImageBuilder.Models.Api20220214.ImageTemplateManagedImageSource
+Microsoft.Azure.PowerShell.Cmdlets.ImageBuilder.Models.Api20220701.ImageTemplateManagedImageSource
 .Link
 https://learn.microsoft.com/powershell/module/az.ImageBuilder/new-azimagebuildertemplatesourceobject
 #>
 function New-AzImageBuilderTemplateSourceObject_ManagedImageSource {
-    [OutputType('Microsoft.Azure.PowerShell.Cmdlets.ImageBuilder.Models.Api20220214.ImageTemplateManagedImageSource')]
+    [OutputType('Microsoft.Azure.PowerShell.Cmdlets.ImageBuilder.Models.Api20220701.ImageTemplateManagedImageSource')]
     [CmdletBinding(PositionalBinding=$false)]
     Param(
 
@@ -43,7 +43,7 @@ function New-AzImageBuilderTemplateSourceObject_ManagedImageSource {
     )
 
     process {
-        $Object = [Microsoft.Azure.PowerShell.Cmdlets.ImageBuilder.Models.Api20220214.ImageTemplateManagedImageSource]::New()
+        $Object = [Microsoft.Azure.PowerShell.Cmdlets.ImageBuilder.Models.Api20220701.ImageTemplateManagedImageSource]::New()
 
         if ($PSBoundParameters.ContainsKey('ImageId')) {
             $Object.ImageId = $ImageId

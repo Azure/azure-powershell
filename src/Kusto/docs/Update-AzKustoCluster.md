@@ -27,8 +27,9 @@ Update-AzKustoCluster -Name <String> -ResourceGroupName <String> [-SubscriptionI
  [-SkuCapacity <Int32>] [-SkuName <AzureSkuName>] [-SkuTier <AzureSkuTier>] [-Tag <Hashtable>]
  [-TrustedExternalTenant <ITrustedExternalTenant[]>] [-VirtualClusterGraduationProperty <String>]
  [-VirtualNetworkConfigurationDataManagementPublicIPId <String>]
- [-VirtualNetworkConfigurationEnginePublicIPId <String>] [-VirtualNetworkConfigurationSubnetId <String>]
- [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
+ [-VirtualNetworkConfigurationEnginePublicIPId <String>] [-VirtualNetworkConfigurationState <VnetState>]
+ [-VirtualNetworkConfigurationSubnetId <String>] [-Zone <String[]>] [-DefaultProfile <PSObject>] [-AsJob]
+ [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ### UpdateViaIdentityExpanded
@@ -46,8 +47,9 @@ Update-AzKustoCluster -InputObject <IKustoIdentity> [-IfMatch <String>]
  [-SkuCapacity <Int32>] [-SkuName <AzureSkuName>] [-SkuTier <AzureSkuTier>] [-Tag <Hashtable>]
  [-TrustedExternalTenant <ITrustedExternalTenant[]>] [-VirtualClusterGraduationProperty <String>]
  [-VirtualNetworkConfigurationDataManagementPublicIPId <String>]
- [-VirtualNetworkConfigurationEnginePublicIPId <String>] [-VirtualNetworkConfigurationSubnetId <String>]
- [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
+ [-VirtualNetworkConfigurationEnginePublicIPId <String>] [-VirtualNetworkConfigurationState <VnetState>]
+ [-VirtualNetworkConfigurationSubnetId <String>] [-Zone <String[]>] [-DefaultProfile <PSObject>] [-AsJob]
+ [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -88,7 +90,7 @@ The cluster's accepted audiences.
 To construct, see NOTES section for ACCEPTEDAUDIENCE properties and create a hash table.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api20221229.IAcceptedAudiences[]
+Type: Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api20230815.IAcceptedAudiences[]
 Parameter Sets: (All)
 Aliases:
 
@@ -381,7 +383,7 @@ The list of language extensions.
 To construct, see NOTES section for LANGUAGEEXTENSIONVALUE properties and create a hash table.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api20221229.ILanguageExtension[]
+Type: Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api20230815.ILanguageExtension[]
 Parameter Sets: (All)
 Aliases:
 
@@ -529,7 +531,8 @@ Accept wildcard characters: False
 ```
 
 ### -ResourceGroupName
-The name of the resource group containing the Kusto cluster.
+The name of the resource group.
+The name is case insensitive.
 
 ```yaml
 Type: System.String
@@ -605,8 +608,7 @@ Accept wildcard characters: False
 ```
 
 ### -SubscriptionId
-Gets subscription credentials which uniquely identify Microsoft Azure subscription.
-The subscription ID forms part of the URI for every service call.
+The ID of the target subscription.
 
 ```yaml
 Type: System.String
@@ -640,7 +642,7 @@ The cluster's external tenants.
 To construct, see NOTES section for TRUSTEDEXTERNALTENANT properties and create a hash table.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api20221229.ITrustedExternalTenant[]
+Type: Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api20230815.ITrustedExternalTenant[]
 Parameter Sets: (All)
 Aliases:
 
@@ -696,11 +698,41 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### -VirtualNetworkConfigurationState
+When enabled, the cluster is deployed into the configured subnet, when disabled it will be removed from the subnet.
+
+```yaml
+Type: Microsoft.Azure.PowerShell.Cmdlets.Kusto.Support.VnetState
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
 ### -VirtualNetworkConfigurationSubnetId
 The subnet resource id.
 
 ```yaml
 Type: System.String
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -Zone
+The availability zones of the cluster.
+
+```yaml
+Type: System.String[]
 Parameter Sets: (All)
 Aliases:
 
@@ -751,42 +783,9 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api20221229.ICluster
+### Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api20230815.ICluster
 
 ## NOTES
-
-ALIASES
-
-COMPLEX PARAMETER PROPERTIES
-
-To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
-
-
-`ACCEPTEDAUDIENCE <IAcceptedAudiences[]>`: The cluster's accepted audiences.
-  - `[Value <String>]`: GUID or valid URL representing an accepted audience.
-
-`INPUTOBJECT <IKustoIdentity>`: Identity Parameter
-  - `[AttachedDatabaseConfigurationName <String>]`: The name of the attached database configuration.
-  - `[ClusterName <String>]`: The name of the Kusto cluster.
-  - `[DataConnectionName <String>]`: The name of the data connection.
-  - `[DatabaseName <String>]`: The name of the database in the Kusto cluster.
-  - `[Id <String>]`: Resource identity path
-  - `[Location <String>]`: Azure location (region) name.
-  - `[ManagedPrivateEndpointName <String>]`: The name of the managed private endpoint.
-  - `[OperationId <String>]`: The Guid of the operation ID
-  - `[PrincipalAssignmentName <String>]`: The name of the Kusto principalAssignment.
-  - `[PrivateEndpointConnectionName <String>]`: The name of the private endpoint connection.
-  - `[PrivateLinkResourceName <String>]`: The name of the private link resource.
-  - `[ResourceGroupName <String>]`: The name of the resource group containing the Kusto cluster.
-  - `[ScriptName <String>]`: The name of the Kusto database script.
-  - `[SubscriptionId <String>]`: Gets subscription credentials which uniquely identify Microsoft Azure subscription. The subscription ID forms part of the URI for every service call.
-
-`LANGUAGEEXTENSIONVALUE <ILanguageExtension[]>`: The list of language extensions.
-  - `[ImageName <LanguageExtensionImageName?>]`: The language extension image name.
-  - `[Name <LanguageExtensionName?>]`: The language extension name.
-
-`TRUSTEDEXTERNALTENANT <ITrustedExternalTenant[]>`: The cluster's external tenants.
-  - `[Value <String>]`: GUID representing an external tenant.
 
 ## RELATED LINKS
 

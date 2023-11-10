@@ -14,15 +14,20 @@ Delete a Container App AuthConfig.
 
 ### Delete (Default)
 ```
-Remove-AzContainerAppAuthConfig -AuthConfigName <String> -ContainerAppName <String>
- -ResourceGroupName <String> [-SubscriptionId <String>] [-DefaultProfile <PSObject>] [-PassThru] [-Confirm]
- [-WhatIf] [<CommonParameters>]
+Remove-AzContainerAppAuthConfig -ContainerAppName <String> -Name <String> -ResourceGroupName <String>
+ [-SubscriptionId <String>] [-DefaultProfile <PSObject>] [-PassThru] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ### DeleteViaIdentity
 ```
 Remove-AzContainerAppAuthConfig -InputObject <IAppIdentity> [-DefaultProfile <PSObject>] [-PassThru]
  [-Confirm] [-WhatIf] [<CommonParameters>]
+```
+
+### DeleteViaIdentityContainerApp
+```
+Remove-AzContainerAppAuthConfig -ContainerAppInputObject <IAppIdentity> -Name <String>
+ [-DefaultProfile <PSObject>] [-PassThru] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -32,32 +37,44 @@ Delete a Container App AuthConfig.
 
 ### Example 1: Delete a Container App AuthConfig.
 ```powershell
-Remove-AzContainerAppAuthConfig -AuthConfigName current -ContainerAppName azps-containerapp -ResourceGroupName azpstest_gp
+Remove-AzContainerAppAuthConfig -ContainerAppName azps-containerapp-2 -ResourceGroupName azps_test_group_app -Name current
 ```
 
 Delete a Container App AuthConfig.
 
 ### Example 2: Delete a Container App AuthConfig.
 ```powershell
-Get-AzContainerAppAuthConfig -AuthConfigName current -ContainerAppName azps-containerapp -ResourceGroupName azpstest_gp | Remove-AzContainerAppAuthConfig
+$containerapp = Get-AzContainerApp -ResourceGroupName azps_test_group_app -Name azps-containerapp-2
+
+Remove-AzContainerAppAuthConfig -ContainerAppInputObject $containerapp -Name current
+```
+
+Delete a Container App AuthConfig.
+
+### Example 3: Delete a Container App AuthConfig.
+```powershell
+$authconfig = Get-AzContainerAppAuthConfig -Name current -ContainerAppName azps-containerapp-2 -ResourceGroupName azps_test_group_app
+
+Remove-AzContainerAppAuthConfig -InputObject $authconfig
 ```
 
 Delete a Container App AuthConfig.
 
 ## PARAMETERS
 
-### -AuthConfigName
-Name of the Container App AuthConfig.
+### -ContainerAppInputObject
+Identity Parameter
+To construct, see NOTES section for CONTAINERAPPINPUTOBJECT properties and create a hash table.
 
 ```yaml
-Type: System.String
-Parameter Sets: Delete
+Type: Microsoft.Azure.PowerShell.Cmdlets.App.Models.IAppIdentity
+Parameter Sets: DeleteViaIdentityContainerApp
 Aliases:
 
 Required: True
 Position: Named
 Default value: None
-Accept pipeline input: False
+Accept pipeline input: True (ByValue)
 Accept wildcard characters: False
 ```
 
@@ -77,7 +94,8 @@ Accept wildcard characters: False
 ```
 
 ### -DefaultProfile
-The credentials, account, tenant, and subscription used for communication with Azure.
+The DefaultProfile parameter is not functional.
+Use the SubscriptionId parameter when available if executing the cmdlet against a different subscription.
 
 ```yaml
 Type: System.Management.Automation.PSObject
@@ -104,6 +122,21 @@ Required: True
 Position: Named
 Default value: None
 Accept pipeline input: True (ByValue)
+Accept wildcard characters: False
+```
+
+### -Name
+Name of the Container App AuthConfig.
+
+```yaml
+Type: System.String
+Parameter Sets: Delete, DeleteViaIdentityContainerApp
+Aliases: AuthConfigName
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
@@ -196,27 +229,6 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ### System.Boolean
 
 ## NOTES
-
-ALIASES
-
-COMPLEX PARAMETER PROPERTIES
-
-To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
-
-
-`INPUTOBJECT <IAppIdentity>`: Identity Parameter
-  - `[AuthConfigName <String>]`: Name of the Container App AuthConfig.
-  - `[CertificateName <String>]`: Name of the Certificate.
-  - `[ComponentName <String>]`: Name of the Dapr Component.
-  - `[ContainerAppName <String>]`: Name of the Container App.
-  - `[EnvironmentName <String>]`: Name of the Managed Environment.
-  - `[Id <String>]`: Resource identity path
-  - `[ReplicaName <String>]`: Name of the Container App Revision Replica.
-  - `[ResourceGroupName <String>]`: The name of the resource group. The name is case insensitive.
-  - `[RevisionName <String>]`: Name of the Container App Revision.
-  - `[SourceControlName <String>]`: Name of the Container App SourceControl.
-  - `[StorageName <String>]`: Name of the storage.
-  - `[SubscriptionId <String>]`: The ID of the target subscription.
 
 ## RELATED LINKS
 

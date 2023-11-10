@@ -29,17 +29,16 @@ Deletes the workspace.
 
 ## EXAMPLES
 
-### Example 1: Remove a Databricks workspace
+### Example 1: Remove a Databricks workspace.
 ```powershell
-Remove-AzDatabricksWorkspace -ResourceGroupName testgroup -Name databricks-test
+Remove-AzDatabricksWorkspace -Name azps-databricks-workspace -ResourceGroupName azps_test_gp_db
 ```
 
 This command removes a Databricks workspace from a resource group.
 
-### Example 2: Remove a Databricks workspace by object
+### Example 2: Remove a Databricks workspace by object.
 ```powershell
-$dbr = Get-AzDatabricksWorkspace -ResourceGroupName testgroup -Name databricks-test02
-Remove-AzDatabricksWorkspace -InputObject $dbr
+Get-AzDatabricksWorkspace -ResourceGroupName azps_test_gp_db -Name azps-databricks-workspace-t3 | Remove-AzDatabricksWorkspace
 ```
 
 This command removes a Databricks workspace from a resource group.

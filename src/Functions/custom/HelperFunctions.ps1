@@ -373,18 +373,81 @@ function ConvertWebAppApplicationSettingToHashtable
         [Parameter(Mandatory=$true)]
         [ValidateNotNullOrEmpty()]
         [Object]
-        $ApplicationSetting
+        $ApplicationSetting,
+
+        [System.Management.Automation.SwitchParameter]
+        $ShowAllAppSettings,
+
+        [System.Management.Automation.SwitchParameter]
+        $RedactAppSettings,
+
+        [System.Management.Automation.SwitchParameter]
+        $ShowOnlySpecificAppSettings,
+
+        [Parameter(Mandatory=$false)]
+        [ValidateNotNullOrEmpty()]
+        [String[]]
+        $AppSettingsToShow
     )
+
+    if ($RedactAppSettings.IsPresent)
+    {
+        Write-Warning "App settings have been redacted. Use the Get-AzFunctionAppSetting cmdlet to view them."
+    }
 
     # Create a key value pair to hold the function app settings
     $applicationSettings = @{}
+
     foreach ($keyName in $ApplicationSetting.Property.Keys)
     {
-        $applicationSettings[$keyName] = $ApplicationSetting.Property[$keyName]
+        if($ShowAllAppSettings.IsPresent)
+        {
+            $applicationSettings[$keyName] = $ApplicationSetting.Property[$keyName]
+        }
+        elseif ($RedactAppSettings.IsPresent)
+        {
+            # When RedactAppSettings is present, all app settings are set to null
+            $applicationSettings[$keyName] = $null
+        }
+        elseif($ShowOnlySpecificAppSettings.IsPresent)
+        {
+            # When ShowOnlySpecificAppSettings is present, only show the app settings in this list AppSettingsToShow
+            if ($AppSettingsToShow.Contains($keyName))
+            {
+                $applicationSettings[$keyName] = $ApplicationSetting.Property[$keyName]
+            }
+        }
     }
 
     return $applicationSettings
 }
+
+function GetRuntime
+{
+    [Microsoft.Azure.PowerShell.Cmdlets.Functions.DoNotExportAttribute()]
+    param(
+        [Parameter(Mandatory=$true)]
+        [ValidateNotNullOrEmpty()]
+        [Object]
+        $Settings
+    )
+
+    $appSettings = ConvertWebAppApplicationSettingToHashtable -ApplicationSetting $Settings -ShowAllAppSettings
+    $runtimeName = $appSettings["FUNCTIONS_WORKER_RUNTIME"]
+
+    $runtime = ""
+    if (($null -ne $runtimeName) -and ($RuntimeToFormattedName.ContainsKey($runtimeName)))
+    {
+        $runtime = $RuntimeToFormattedName[$runtimeName]
+    }
+    elseif ($appSettings.ContainsKey("DOCKER_CUSTOM_IMAGE_NAME"))
+    {
+        $runtime = "Custom Image"
+    }
+
+    return $runtime
+}
+
 
 function AddFunctionAppSettings
 {
@@ -452,19 +515,9 @@ function AddFunctionAppSettings
         }
     }
 
-    # Add application settings
-    $App.ApplicationSettings = ConvertWebAppApplicationSettingToHashtable -ApplicationSetting $settings
-
-    $runtimeName = $App.ApplicationSettings["FUNCTIONS_WORKER_RUNTIME"]
-    $App.Runtime = if (($null -ne $runtimeName) -and ($RuntimeToFormattedName.ContainsKey($runtimeName)))
-                   {
-                       $RuntimeToFormattedName[$runtimeName]
-                   }
-                   elseif ($App.ApplicationSettings.ContainsKey("DOCKER_CUSTOM_IMAGE_NAME"))
-                   {
-                       "Custom Image"
-                   }
-                   else {""}
+    # Add application settings and runtime
+    $App.ApplicationSettings = ConvertWebAppApplicationSettingToHashtable -ApplicationSetting $settings -RedactAppSettings
+    $App.Runtime = GetRuntime -Settings $settings
 
     # Get the app site config
     $config = GetAzWebAppConfig -Name $App.Name -ResourceGroupName $App.ResourceGroup @PSBoundParameters
@@ -958,8 +1011,8 @@ function GetStackDefinitionForRuntime
     {
         # Try to get the default version
         $defaultVersionFound = $false
-        $RuntimeVersion = $supportedRuntimes[$Runtime]
-                            | ForEach-Object { if ($_.IsDefault -and ($_.SupportedFunctionsExtensionVersions -contains $functionsExtensionVersion)) { $_.Version } }
+        $RuntimeVersion = $supportedRuntimes[$Runtime] |
+                            ForEach-Object { if ($_.IsDefault -and ($_.SupportedFunctionsExtensionVersions -contains $functionsExtensionVersion)) { $_.Version } }
 
         if ($RuntimeVersion)
         {
@@ -971,10 +1024,10 @@ function GetStackDefinitionForRuntime
             Write-Debug "$DEBUG_PREFIX Runtime '$Runtime' does not have a default version. Finding the latest version."
 
             # Iterate through the list to find the latest non preview version
-            $latestVersion = $supportedRuntimes[$Runtime]
-                                | Sort-Object -Property Version -Descending
-                                | Where-Object { $_.SupportedFunctionsExtensionVersions -contains $functionsExtensionVersion -and (-not $_.IsPreview) }
-                                | Select-Object -First 1 -ExpandProperty Version
+            $latestVersion = $supportedRuntimes[$Runtime] |
+                                Sort-Object -Property Version -Descending |
+                                Where-Object { $_.SupportedFunctionsExtensionVersions -contains $functionsExtensionVersion -and (-not $_.IsPreview) } |
+                                Select-Object -First 1 -ExpandProperty Version
 
             if ($latestVersion)
             {
@@ -1007,10 +1060,10 @@ function GetStackDefinitionForRuntime
     {
         $errorMessage = "Runtime '$Runtime' version '$RuntimeVersion' in Functions version '$FunctionsVersion' on '$OSType' is not supported."
 
-        $supporedVersions = @($supportedRuntimes[$Runtime]
-                                | Sort-Object -Property Version -Descending
-                                | Where-Object { $_.SupportedFunctionsExtensionVersions -contains $functionsExtensionVersion }
-                                | Select-Object -ExpandProperty Version)
+        $supporedVersions = @($supportedRuntimes[$Runtime] |
+                                Sort-Object -Property Version -Descending |
+                                Where-Object { $_.SupportedFunctionsExtensionVersions -contains $functionsExtensionVersion } |
+                                Select-Object -ExpandProperty Version)
 
         if ($supporedVersions.Count -gt 0)
         {
@@ -1665,7 +1718,7 @@ function GetFunctionAppStackDefinition
     [Microsoft.Azure.PowerShell.Cmdlets.Functions.DoNotExportAttribute()]
     param ()
 
-    if ($null -ne $env:SYSTEM_DEFINITIONID -or $null -ne $env:Release_DefinitionId -or $null -ne $env:AZUREPS_HOST_ENVIRONMENT)
+    if ($env:FunctionsTestMode -or ($null -ne $env:SYSTEM_DEFINITIONID -or $null -ne $env:Release_DefinitionId -or $null -ne $env:AZUREPS_HOST_ENVIRONMENT))
     {
         Write-Debug "$DEBUG_PREFIX Running on test mode. Using built in json file definition."
         $json = GetBuiltInFunctionAppStacksDefinition -DoNotShowWarning
@@ -1763,6 +1816,26 @@ function GetFunctionAppStackDefinition
     return $json
 }
 
+function ContainsProperty
+{
+    [Microsoft.Azure.PowerShell.Cmdlets.Functions.DoNotExportAttribute()]
+    param
+    (
+        [Parameter(Mandatory=$true)]
+        [ValidateNotNullOrEmpty()]
+        [System.Object]
+        $Object,
+
+        [Parameter(Mandatory=$true)]
+        [ValidateNotNullOrEmpty()]
+        [System.String]
+        $PropertyName
+    )
+
+    $result = $Object | Get-Member -MemberType Properties | Where-Object { $_.Name -eq $PropertyName }
+    return ($null -ne $result)
+}
+
 function ParseMinorVersion
 {
     [Microsoft.Azure.PowerShell.Cmdlets.Functions.DoNotExportAttribute()]
@@ -1830,22 +1903,28 @@ function ParseMinorVersion
         Write-Debug "$DEBUG_PREFIX Runtime version for Java is modified to be compatible with the current release. Current version '$RuntimeVersion'"
     }
 
-    # When $env:FunctionsDisplayHiddenRuntimes is set to true, we will display all runtimes
-    if ($RuntimeSettings.IsHidden -and (-not $env:FunctionsDisplayHiddenRuntimes))
-    {
-        Write-Debug "$DEBUG_PREFIX Runtime $runtimeName is hidden. Skipping..."
-        return
-    }
-
     $runtime = [Runtime]::new()
     $runtime.Name = $runtimeName
-    $runtime.IsDefault = $RuntimeSettings.IsDefault
-    $runtime.IsPreview = $RuntimeSettings.IsPreview
-    $runtime.IsHidden = $RuntimeSettings.IsHidden
     $runtime.AppSettingsDictionary = GetDictionary -SettingsDictionary $RuntimeSettings.AppSettingsDictionary
     $runtime.SiteConfigPropertiesDictionary = GetDictionary -SettingsDictionary $RuntimeSettings.SiteConfigPropertiesDictionary
     $runtime.AppInsightsSettings = GetDictionary -SettingsDictionary $RuntimeSettings.AppInsightsSettings
     $runtime.SupportedFunctionsExtensionVersions = GetSupportedFunctionsExtensionVersion -SupportedFunctionsExtensionVersions $RuntimeSettings.SupportedFunctionsExtensionVersions
+
+    foreach ($propertyName in @("isPreview", "isHidden", "isDefault"))
+    {
+        if (ContainsProperty -Object $RuntimeSettings -PropertyName $propertyName)
+        {
+            Write-Debug "$DEBUG_PREFIX Runtime setting contains '$propertyName'"
+            $runtime.$propertyName = $RuntimeSettings.$propertyName
+        }
+    }
+
+    # When $env:FunctionsDisplayHiddenRuntimes is set to true, we will display all runtimes
+    if ($runtime.IsHidden -and (-not $env:FunctionsDisplayHiddenRuntimes))
+    {
+        Write-Debug "$DEBUG_PREFIX Runtime $runtimeName is hidden. Skipping..."
+        return
+    }
 
     if ($RuntimeVersion -and ($runtimeName -ne "custom"))
     {
@@ -2057,13 +2136,12 @@ function SetLinuxandWindowsSupportedRuntimes
                 Write-Debug "$DEBUG_PREFIX runtime full name: $runtimeFullName"
                 Write-Debug "$DEBUG_PREFIX runtime version: $runtimeVersion"
 
-                $windowsRuntimeSettings = $minorVersion.stackSettings.windowsRuntimeSettings
-                $linuxRuntimeSettings = $minorVersion.stackSettings.linuxRuntimeSettings
+                $runtime = $null
 
-                if ($windowsRuntimeSettings)
+                if (ContainsProperty -Object $minorVersion.stackSettings -PropertyName "windowsRuntimeSettings")
                 {
                     $runtime = ParseMinorVersion -RuntimeVersion $runtimeVersion `
-                                                 -RuntimeSettings $windowsRuntimeSettings `
+                                                 -RuntimeSettings $minorVersion.stackSettings.windowsRuntimeSettings `
                                                  -RuntimeFullName $runtimeFullName `
                                                  -PreferredOs $preferredOs
 
@@ -2073,10 +2151,10 @@ function SetLinuxandWindowsSupportedRuntimes
                     }
                 }
 
-                if ($linuxRuntimeSettings)
+                if (ContainsProperty -Object $minorVersion.stackSettings -PropertyName "linuxRuntimeSettings")
                 {
                     $runtime = ParseMinorVersion -RuntimeVersion $runtimeVersion `
-                                                 -RuntimeSettings $linuxRuntimeSettings `
+                                                 -RuntimeSettings $minorVersion.stackSettings.linuxRuntimeSettings `
                                                  -RuntimeFullName $runtimeFullName `
                                                  -PreferredOs $preferredOs `
                                                  -StackIsLinux

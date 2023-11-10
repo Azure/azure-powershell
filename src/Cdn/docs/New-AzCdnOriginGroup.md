@@ -93,7 +93,7 @@ Health probe settings to the origin that is used to determine the health of the 
 To construct, see NOTES section for HEALTHPROBESETTING properties and create a hash table.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20221101Preview.IHealthProbeParameters
+Type: Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20230501.IHealthProbeParameters
 Parameter Sets: (All)
 Aliases:
 
@@ -139,7 +139,7 @@ The source of the content being delivered via CDN within given origin group.
 To construct, see NOTES section for ORIGIN properties and create a hash table.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20221101Preview.IResourceReference[]
+Type: Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20230501.IResourceReference[]
 Parameter Sets: (All)
 Aliases:
 
@@ -186,7 +186,7 @@ This property is currently not supported.
 To construct, see NOTES section for RESPONSEBASEDORIGINERRORDETECTIONSETTING properties and create a hash table.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20221101Preview.IResponseBasedOriginErrorDetectionParameters
+Type: Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20230501.IResponseBasedOriginErrorDetectionParameters
 Parameter Sets: (All)
 Aliases:
 
@@ -267,7 +267,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20221101Preview.IOriginGroup
+### Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20230501.IOriginGroup
 
 ## NOTES
 

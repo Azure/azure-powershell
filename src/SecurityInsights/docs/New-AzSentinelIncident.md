@@ -14,8 +14,8 @@ Creates or updates the incident.
 
 ### CreateExpanded (Default)
 ```
-New-AzSentinelIncident -ResourceGroupName <String> -WorkspaceName <String> [-SubscriptionId <String>]
- [-Classification <IncidentClassification>] [-ClassificationComment <String>]
+New-AzSentinelIncident -ResourceGroupName <String> -WorkspaceName <String> [-Id <String>]
+ [-SubscriptionId <String>] [-Classification <IncidentClassification>] [-ClassificationComment <String>]
  [-ClassificationReason <IncidentClassificationReason>] [-Description <String>]
  [-FirstActivityTimeUtc <DateTime>] [-Label <IIncidentLabel[]>] [-LastActivityTimeUtc <DateTime>]
  [-OwnerAssignedTo <String>] [-OwnerEmail <String>] [-OwnerObjectId <String>]
@@ -27,7 +27,8 @@ New-AzSentinelIncident -ResourceGroupName <String> -WorkspaceName <String> [-Sub
 ### Create
 ```
 New-AzSentinelIncident -ResourceGroupName <String> -WorkspaceName <String> -Incident <IIncident>
- [-SubscriptionId <String>] [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
+ [-Id <String>] [-SubscriptionId <String>] [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf]
+ [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -101,7 +102,8 @@ Accept wildcard characters: False
 ```
 
 ### -DefaultProfile
-The credentials, account, tenant, and subscription used for communication with Azure.
+The DefaultProfile parameter is not functional.
+Use the SubscriptionId parameter when available if executing the cmdlet against a different subscription.
 
 ```yaml
 Type: System.Management.Automation.PSObject
@@ -141,6 +143,21 @@ Aliases:
 Required: False
 Position: Named
 Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -Id
+Incident ID
+
+```yaml
+Type: System.String
+Parameter Sets: (All)
+Aliases: IncidentId
+
+Required: False
+Position: Named
+Default value: (New-Guid).Guid
 Accept pipeline input: False
 Accept wildcard characters: False
 ```
@@ -424,7 +441,7 @@ COMPLEX PARAMETER PROPERTIES
 To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
 
 
-INCIDENT <IIncident>: Represents an incident in Azure Security Insights.
+`INCIDENT <IIncident>`: Represents an incident in Azure Security Insights.
   - `[Etag <String>]`: Etag of the azure resource
   - `[SystemDataCreatedAt <DateTime?>]`: The timestamp of resource creation (UTC).
   - `[SystemDataCreatedBy <String>]`: The identity that created the resource.
@@ -450,7 +467,7 @@ INCIDENT <IIncident>: Represents an incident in Azure Security Insights.
   - `[Status <IncidentStatus?>]`: The status of the incident
   - `[Title <String>]`: The title of the incident
 
-LABEL <IIncidentLabel[]>: List of labels relevant to this incident
+`LABEL <IIncidentLabel[]>`: List of labels relevant to this incident
   - `LabelName <String>`: The name of the label
 
 ## RELATED LINKS

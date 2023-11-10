@@ -36,12 +36,19 @@ $cvgMessageHeader80 = "|Type|Title|Current Coverage|Last Coverage|Description|`n
 
 $rptData | Where-Object Module -in $testedModules | ForEach-Object {
     $module = $_.Module
-    Write-Host "##[section]Validating test coverage for module $module..."
+    Write-Host "##[section]Validating test coverage for module $module ..."
 
     $cmdCvg = $_.CommandCoverage
     $cmdCvgD = [decimal]$cmdCvg.TrimEnd("%") / 100
 
-    Write-Host "Test coverage for module $module is $cmdCvg."
+    $psetCvg = $_.ParameterSetCoverage
+    $pCvg = $_.ParameterCoverage
+
+    Write-Host "Test coverage for Module: $module"
+    Write-Host "- Cmdlet-Level Coverage: $cmdCvg."
+    Write-Host "- Parameter Set-Level Coverage: $psetCvg."
+    Write-Host "- Parameter-Level Coverage: $pCvg."
+
     if ($cmdCvgD -lt 0.5) {
         Write-Warning "Test coverage for module $module is less than 50% !"
         $cvgMessageBody50 = "|⚠️|Test Coverage Less Than 50%|$cmdCvg|Test coverage for the module cannot be lower than 50%.|`n"
@@ -50,12 +57,14 @@ $rptData | Where-Object Module -in $testedModules | ForEach-Object {
     elseif ($cmdCvgD -lt 0.8) {
         $blCvgRow = $blData | Where-Object Module -eq $module
         $blCvg = $blCvgRow.CommandCoverage
-        $blCvgD = [decimal]$blCvg.TrimEnd("%") / 100
-        Write-Host "Last release test coverage for module $module is $blCvg."
-        if ($cmdCvgD -lt $blCvgD) {
-            Write-Warning "Test coverage for module $module is less than 80% and lower than the last release !"
-            $cvgMessageBody80 = "|⚠️|Test Coverage Less Than 80%|$cmdCvg|$blCvg|Test coverage cannot be lower than the number of the last release.|`n"
-            Set-ModuleTestStatusInPipelineResult -ModuleName "Az.$module" -Status Warning -Content ($cvgMessageHeader80 + $cvgMessageBody80)
+        if ($null -ne $blCvg) { # null check is necessary for new module
+            $blCvgD = [decimal]$blCvg.TrimEnd("%") / 100
+            Write-Host "Last release test coverage for module $module is $blCvg."
+            if ($cmdCvgD -lt $blCvgD) {
+                Write-Warning "Test coverage for module $module is less than 80% and lower than the last release !"
+                $cvgMessageBody80 = "|⚠️|Test Coverage Less Than 80%|$cmdCvg|$blCvg|Test coverage cannot be lower than the number of the last release.|`n"
+                Set-ModuleTestStatusInPipelineResult -ModuleName "Az.$module" -Status Warning -Content ($cvgMessageHeader80 + $cvgMessageBody80)
+            }
         }
     }
 

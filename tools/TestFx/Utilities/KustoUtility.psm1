@@ -14,7 +14,7 @@
 param (
     [Parameter(Mandatory)]
     [ValidateNotNullOrEmpty()]
-    [guid] $ServicePrincipalTenantId,
+    [guid] $TenantId,
 
     [Parameter(Mandatory)]
     [ValidateNotNullOrEmpty()]
@@ -70,7 +70,7 @@ function InitializeKustoPackages {
     }
 }
 
-function Import-KustoDataFromCsv {
+function Add-KustoData {
     [CmdletBinding()]
     param (
         [Parameter(Mandatory)]
@@ -87,7 +87,7 @@ function Import-KustoDataFromCsv {
     )
 
     $ingestUri = "https://ingest-$ClusterName.$ClusterRegion.kusto.windows.net"
-    $ingestBuilder = [Kusto.Data.KustoConnectionStringBuilder]::new($ingestUri).WithAadApplicationKeyAuthentication($ServicePrincipalId, $ServicePrincipalSecret, $ServicePrincipalTenantId.ToString())
+    $ingestBuilder = [Kusto.Data.KustoConnectionStringBuilder]::new($ingestUri).WithAadApplicationKeyAuthentication($ServicePrincipalId, $ServicePrincipalSecret, $TenantId.ToString())
     IngestDataFromCsv -IngestBuilder $ingestBuilder -DatabaseName $DatabaseName -TableName $TableName -CsvFile $CsvFile
 }
 
@@ -151,7 +151,7 @@ function Get-KustoQueryData {
     )
 
     $queryUri = "https://$ClusterName.$ClusterRegion.kusto.windows.net"
-    $queryBuilder = [Kusto.Data.KustoConnectionStringBuilder]::new($queryUri).WithAadApplicationKeyAuthentication($ServicePrincipalId, $ServicePrincipalSecret, $ServicePrincipalTenantId.ToString())
+    $queryBuilder = [Kusto.Data.KustoConnectionStringBuilder]::new($queryUri).WithAadApplicationKeyAuthentication($ServicePrincipalId, $ServicePrincipalSecret, $TenantId.ToString())
     $queryClient = [Kusto.Data.Net.Client.KustoClientFactory]::CreateCslQueryProvider($queryBuilder)
     $queryResult = $queryClient.ExecuteQuery($DatabaseName, $Query, $null)
     $results = @()

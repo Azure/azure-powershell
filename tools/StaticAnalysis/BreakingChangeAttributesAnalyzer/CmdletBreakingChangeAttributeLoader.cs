@@ -58,35 +58,28 @@ namespace StaticAnalysis.BreakingChangeAttributesAnalyzer
         {
             var results = new List<BreakingChangeAttributesInCmdlet>();
 
-            try
+            var assembly = Assembly.LoadFrom(assemblyPath);
+            foreach (var type in assembly.GetCmdletTypes())
             {
-                var assembly = Assembly.LoadFrom(assemblyPath);
-                foreach (var type in assembly.GetCmdletTypes())
-                {
-                    var cmdlet = type.GetAttribute<CmdletAttribute>();
-// TODO: Remove IfDef code
+                var cmdlet = type.GetAttribute<CmdletAttribute>();
+                // TODO: Remove IfDef code
 #if !NETSTANDARD
                     var attributes = type.GetAttributes<GenericBreakingChangeAttribute>();
 
                     if (attributes != null && (attributes.Count() > 0)) { }
 #endif
-                    var cmdletMetadata = new BreakingChangeAttributesInCmdlet
-                    {
-                        CmdletType = type,
-                        CmdletName = cmdlet.VerbName + "-" + cmdlet.NounName,
-// TODO: Remove IfDef code
+                var cmdletMetadata = new BreakingChangeAttributesInCmdlet
+                {
+                    CmdletType = type,
+                    CmdletName = cmdlet.VerbName + "-" + cmdlet.NounName,
+                    // TODO: Remove IfDef code
 #if !NETSTANDARD
                         BreakingChangeAttributes = attributes.ToList()
 #endif
-                    };
+                };
 
-                    results.Add(cmdletMetadata);
-                }
-            }
-            catch (Exception ex)
-            {
-                throw ex;
-            }
+                results.Add(cmdletMetadata);
+            }            
 
             if (!results.Any()) return null;
 

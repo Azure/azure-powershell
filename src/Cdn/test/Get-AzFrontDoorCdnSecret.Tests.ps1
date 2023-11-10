@@ -19,7 +19,7 @@ Describe 'Get-AzFrontDoorCdnSecret'  {
         $subId = $env.SubscriptionId
         Write-Host -ForegroundColor Green "Use SubscriptionId : $($subId)"
 
-        $secretName = "se-" + (RandomString -allChars $false -len 6);
+        $secretName = "se-psName010"
         Write-Host -ForegroundColor Green "Use secretName : $($secretName)"
 
         $parameter = New-AzFrontDoorCdnSecretCustomerCertificateParametersObject -UseLatestVersion $true -SubjectAlternativeName @() -Type "CustomerCertificate"`
@@ -39,8 +39,8 @@ Describe 'Get-AzFrontDoorCdnSecret'  {
     }
 
     It 'GetViaIdentity' {
-        $PSDefaultParameterValues['Disabled'] = $true
-        $secret = Get-AzFrontDoorCdnSecret -ProfileName $env.FrontDoorCdnProfileName -ResourceGroupName $env.ResourceGroupName -Name $secretName
+        $secretObject = Get-AzFrontDoorCdnSecret -ProfileName $env.FrontDoorCdnProfileName -ResourceGroupName $env.ResourceGroupName -Name $secretName
+        $secret = Get-AzFrontDoorCdnSecret -InputObject $secretObject
         $secret.Name | Should -Be $secretName
     }
 }
