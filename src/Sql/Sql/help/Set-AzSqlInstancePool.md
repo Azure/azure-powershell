@@ -15,18 +15,21 @@ Sets properties for an Azure SQL Instance pool.
 ### DefaultSetInstancePoolParameterSet (Default)
 ```
 Set-AzSqlInstancePool [-ResourceGroupName] <String> [-Name] <String> [-LicenseType <String>] [-Tag <Hashtable>]
+ -VCore <Int32> -Edition <String> -ComputeGeneration <String> -MaintenanceConfigurationId <String>
  [-AsJob] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### InputObjectSetInstancePoolParameterSet
 ```
 Set-AzSqlInstancePool [-InputObject] <AzureSqlInstancePoolModel> [-LicenseType <String>] [-Tag <Hashtable>]
+ -VCore <Int32> -Edition <String> -ComputeGeneration <String> -MaintenanceConfigurationId <String>
  [-AsJob] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### ResourceIdSetInstancePoolParameterSet
 ```
-Set-AzSqlInstancePool [-ResourceId] <String> [-LicenseType <String>] [-Tag <Hashtable>] [-AsJob]
+Set-AzSqlInstancePool [-ResourceId] <String> [-LicenseType <String>] [-Tag <Hashtable>]
+ -VCore <Int32> -Edition <String> -ComputeGeneration <String> -MaintenanceConfigurationId <String> [-AsJob]
  [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
@@ -41,18 +44,20 @@ Set-AzSqlInstancePool -ResourceGroupName resourcegroup01 -Name instancePool0 -Li
 ```
 
 ```output
-ResourceGroupName : resourcegroup01
-Type              : Microsoft.Sql/instancePools
-Id                : /subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx/resourceGroups/resourcegroup01/providers/Microsoft.Sql/instancePools/instancePool0
-InstancePoolName  : instancePool0
-SubnetId          : /subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx/resourceGroups/resourcegroup01/providers/Microsoft.Network/virtualNetworks/vnet_name/subnets/subnet_name
-VCores            : 8
-ComputeGeneration : Gen5
-Edition           : GeneralPurpose
-Tags              :
-Sku               : Microsoft.Azure.Management.Sql.Models.Sku
-Location          : canadacentral
-LicenseType       : LicenseIncluded
+ResourceGroupName          : resourcegroup01
+Type                       : Microsoft.Sql/instancePools
+Id                         : /subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx/resourceGroups/resourcegroup01/providers/Microsoft.Sql/instancePools/instancePool0
+InstancePoolName           : instancePool0
+SubnetId                   : /subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx/resourceGroups/resourcegroup01/providers/Microsoft.Network/virtualNetworks/vnet_name/subnets/subnet_name
+VCores                     : 8
+ComputeGeneration          : Gen5
+Edition                    : GeneralPurpose
+Tags                       :
+Sku                        : Microsoft.Azure.Management.Sql.Models.Sku
+Location                   : canadacentral
+LicenseType                : LicenseIncluded
+DnsZone                    : 1234567890
+MaintenanceConfigurationId : /subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx/providers/Microsoft.Maintenance/publicMaintenanceConfigurations/SQL_canadacentral_MI_1
 ```
 
 This command sets the license type and/or tags for an instance pool named instancePool0.
@@ -76,6 +81,8 @@ Tags              :
 Sku               : Microsoft.Azure.Management.Sql.Models.Sku
 Location          : canadacentral
 LicenseType       : LicenseIncluded
+DnsZone                    : 1234567890
+MaintenanceConfigurationId : /subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx/providers/Microsoft.Maintenance/publicMaintenanceConfigurations/SQL_canadacentral_MI_1
 ```
 
 This command sets the license type and/or tags for an instance pool using an instance pool object.
@@ -98,6 +105,8 @@ Tags              :
 Sku               : Microsoft.Azure.Management.Sql.Models.Sku
 Location          : canadacentral
 LicenseType       : LicenseIncluded
+DnsZone                    : 1234567890
+MaintenanceConfigurationId : /subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx/providers/Microsoft.Maintenance/publicMaintenanceConfigurations/SQL_canadacentral_MI_1
 ```
 
 This command sets the license type and/or tags for an instance pool named instancePool0.
