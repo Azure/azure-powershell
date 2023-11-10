@@ -8,7 +8,7 @@
 // regenerated.
 // </auto-generated>
 
-namespace Microsoft.Authorization
+namespace Microsoft.Azure.Management.Authorization
 {
     using Microsoft.Rest;
     using Microsoft.Rest.Azure;

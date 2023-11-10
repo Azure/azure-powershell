@@ -5,7 +5,7 @@
 // regenerated.
 // </auto-generated>
 
-namespace Microsoft.Authorization
+namespace Microsoft.Azure.Management.Authorization
 {
   using System;
   using System.Collections.Generic;

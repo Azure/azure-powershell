@@ -30,5 +30,5 @@ input-file:
 
 output-folder: Generated
 
-namespace: Microsoft.Authorization
+namespace: Microsoft.Azure.Management.Authorization
 ```
