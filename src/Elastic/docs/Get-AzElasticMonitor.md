@@ -47,9 +47,9 @@ Get-AzElasticMonitor
 ```output
 Name                           SkuName                         MonitoringStatus Location      ResourceGroupName
 ----                           -------                         ---------------- --------      -----------------
-kk-elastictest02               ess-monthly-consumption_Monthly Enabled          westus2       kk-rg
-kk-elastictest03               ess-monthly-consumption_Monthly Enabled          westus2       kk-rg
-wusDeployValidate              ess-monthly-consumption_Monthly Enabled          westus2       poshett-rg
+kk-elastictest02               ess-consumption-2024_Monthly Enabled          westus2       kk-rg
+kk-elastictest03               ess-consumption-2024_Monthly Enabled          westus2       kk-rg
+wusDeployValidate              ess-consumption-2024_Monthly Enabled          westus2       poshett-rg
 poshett-WestUS2-01             staging_Monthly                 Enabled          westus2       poshett-rg
 hashahdemo01                   staging_Monthly                 Enabled          westus2       test-sub
 ```
@@ -64,10 +64,10 @@ Get-AzElasticMonitor -ResourceGroupName azure-elastic-test
 ```output
 Name             SkuName                         MonitoringStatus Location ResourceGroupName
 ----             -------                         ---------------- -------- -----------------
-elastic-portal01 ess-monthly-consumption_Monthly Enabled          westus2  azure-elastic-test
-elastic-portal02 ess-monthly-consumption_Monthly Enabled          westus2  azure-elastic-test
-elastic-pwsh01   ess-monthly-consumption_Monthly Enabled          westus2  azure-elastic-test
-elastic-pwsh02   ess-monthly-consumption_Monthly Enabled          westus2  azure-elastic-test
+elastic-portal01 ess-consumption-2024_Monthly Enabled          westus2  azure-elastic-test
+elastic-portal02 ess-consumption-2024_Monthly Enabled          westus2  azure-elastic-test
+elastic-pwsh01   ess-consumption-2024_Monthly Enabled          westus2  azure-elastic-test
+elastic-pwsh02   ess-consumption-2024_Monthly Enabled          westus2  azure-elastic-test
 ```
 
 This command lists all elastic monitors under a resource group.
@@ -80,20 +80,20 @@ Get-AzElasticMonitor -ResourceGroupName azure-elastic-test -Name elastic-pwsh02
 ```output
 Name           SkuName                         MonitoringStatus Location ResourceGroupName
 ----           -------                         ---------------- -------- -----------------
-elastic-pwsh02 ess-monthly-consumption_Monthly Enabled          westus2  azure-elastic-test
+elastic-pwsh02 ess-consumption-2024_Monthly Enabled          westus2  azure-elastic-test
 ```
 
 This command gets the properties of a specific monitor resource.
 
 ### Example 4: Get the properties of a specific monitor resource by pipeline
 ```powershell
-New-AzElasticMonitor -ResourceGroupName azps-elastic-test -Name elastic-pwsh02 -Location "westus2" -Sku "ess-monthly-consumption_Monthly" -UserInfoEmailAddress 'xxx@microsoft.com' | Get-AzElasticMonitor
+New-AzElasticMonitor -ResourceGroupName azps-elastic-test -Name elastic-pwsh02 -Location "westus2" -Sku "ess-consumption-2024_Monthly" -UserInfoEmailAddress 'xxx@microsoft.com' | Get-AzElasticMonitor
 ```
 
 ```output
 Name           SkuName                         MonitoringStatus Location ResourceGroupName
 ----           -------                         ---------------- -------- -----------------
-elastic-pwsh02 ess-monthly-consumption_Monthly Enabled          westus2  azure-elastic-test
+elastic-pwsh02 ess-consumption-2024_Monthly Enabled          westus2  azure-elastic-test
 ```
 
 This command gets the properties of a specific monitor resource by pipeline.
@@ -101,7 +101,8 @@ This command gets the properties of a specific monitor resource by pipeline.
 ## PARAMETERS
 
 ### -DefaultProfile
-The credentials, account, tenant, and subscription used for communication with Azure.
+The DefaultProfile parameter is not functional.
+Use the SubscriptionId parameter when available if executing the cmdlet against a different subscription.
 
 ```yaml
 Type: System.Management.Automation.PSObject
@@ -190,20 +191,6 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ### Microsoft.Azure.PowerShell.Cmdlets.Elastic.Models.Api20200701.IElasticMonitorResource
 
 ## NOTES
-
-ALIASES
-
-COMPLEX PARAMETER PROPERTIES
-
-To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
-
-
-INPUTOBJECT <IElasticIdentity>: Identity Parameter
-  - `[Id <String>]`: Resource identity path
-  - `[MonitorName <String>]`: Monitor resource name
-  - `[ResourceGroupName <String>]`: The name of the resource group to which the Elastic resource belongs.
-  - `[RuleSetName <String>]`: Tag Rule Set resource name
-  - `[SubscriptionId <String>]`: The Azure subscription ID. This is a GUID-formatted string (e.g. 00000000-0000-0000-0000-000000000000)
 
 ## RELATED LINKS
 

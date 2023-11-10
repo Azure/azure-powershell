@@ -6,7 +6,7 @@ Update-AzElasticMonitor -ResourceGroupName lucas-elastic-test -Name elastic-pwsh
 ```output
 Name           SkuName                         MonitoringStatus Location ResourceGroupName
 ----           -------                         ---------------- -------- -----------------
-elastic-pwsh02 ess-monthly-consumption_Monthly Enabled          westus2  azure-elastic-test
+elastic-pwsh02 ess-consumption-2024_Monthly Enabled          westus2  azure-elastic-test
 ```
 
 This command updates a monitor resource.
@@ -19,7 +19,7 @@ Get-AzElasticMonitor -ResourceGroupName lucas-elastic-test -Name elastic-pwsh02 
 ```output
 Name           SkuName                         MonitoringStatus Location ResourceGroupName
 ----           -------                         ---------------- -------- -----------------
-elastic-pwsh02 ess-monthly-consumption_Monthly Enabled          westus2  azure-elastic-test
+elastic-pwsh02 ess-consumption-2024_Monthly Enabled          westus2  azure-elastic-test
 ```
 
 This command updates a monitor resource by pipeline.
