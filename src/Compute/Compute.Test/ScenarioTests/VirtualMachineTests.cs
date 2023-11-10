@@ -514,13 +514,6 @@ namespace Microsoft.Azure.Commands.Compute.Test.ScenarioTests
         {
             TestRunner.RunTestScript("Test-VirtualMachinePlatformFaultDomain");
         }
-
-        [Fact]
-        [Trait(Category.AcceptanceType, Category.LiveOnly)]
-        public void TestVirtualMachineGuestAttestation()
-        {
-            TestRunner.RunTestScript("Test-VirtualMachineGuestAttestation");
-        }
         
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
