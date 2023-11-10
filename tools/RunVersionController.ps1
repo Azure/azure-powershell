@@ -335,7 +335,11 @@ function Update-AzPreview
 
     $AzPrviewPsd1 = New-Item -Path "$PSScriptRoot\AzPreview\" -Name "AzPreview.psd1" -ItemType "file" -Force
     Set-Content -Path $AzPrviewPsd1.FullName -Value $AzPreviewPsd1Content -Encoding UTF8
+}
 
+function Update-AzPreviewChangelog
+{
+    
     $localAz = Import-PowerShellDataFile -Path "$PSScriptRoot\AzPreview\AzPreview.psd1"
 
     Write-Host "Getting gallery AzPreview information..." -ForegroundColor Yellow
@@ -498,6 +502,7 @@ switch ($PSCmdlet.ParameterSetName)
         # Each release needs to update AzPreview.psd1 and dotnet csv
         # Refresh AzPreview.psd1
         Update-AzPreview
+        Update-AzPreviewChangelog
         # We need to generate the upcoming-breaking-changes.md after the process of bump version in minor release
         if ([PSVersion]::MINOR -Eq $versionBump)
         {
