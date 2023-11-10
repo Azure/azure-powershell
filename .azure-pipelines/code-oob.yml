@@ -24,7 +24,7 @@ stages:
       inputs:
         command: custom
         custom: msbuild
-        arguments: 'build.proj "/t:Clean;Build" /p:Configuration=Release'
+        arguments: 'build.proj "/t:Clean;Build" /p:Configuration=Release;ModifiedModuleBuild=true;ModifiedModules=${{ parameters.ServiceName }}'
     - pwsh: |
           .\tools\RunVersionController.ps1 -ModuleName "Az.${{ parameters.ServiceName }}”
       displayName: 'Bump up version'

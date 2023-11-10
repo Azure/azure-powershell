@@ -454,6 +454,7 @@ switch ($PSCmdlet.ParameterSetName)
     {
         Write-Host executing dotnet $PSScriptRoot/../artifacts/VersionController/VersionController.Netcore.dll $PSScriptRoot/../artifacts/VersionController/Exceptions $ModuleName
         dotnet $PSScriptRoot/../artifacts/VersionController/VersionController.Netcore.dll $PSScriptRoot/../artifacts/VersionController/Exceptions $ModuleName
+        Update-AzPreview
     }
 
     "ReleaseAzByMonthAndYear"
