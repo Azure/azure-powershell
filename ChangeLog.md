@@ -226,9 +226,6 @@
     - 'Set-AzStorageQueueStoredAccessPolicy'
     - 'Remove-AzStorageQueueStoredAccessPolicy'
 
-#### Az.StorageMover 1.2.0
-
-
 #### Az.StorageSync 2.1.0
 * Fixed minor issues.
 
