@@ -7,11 +7,56 @@
       "isContentBase64": false,
       "Headers": {
         "x-ms-unique-id": [ "17" ],
-        "x-ms-client-request-id": [ "458c282f-1219-49fc-adc6-74c20764e1a4" ],
+        "x-ms-client-request-id": [ "f0bdbf4c-6aff-4f40-8e58-03caecb8ec15" ],
         "CommandName": [ "Get-AzDataCollectionRuleAssociation" ],
         "FullCommandName": [ "Get-AzDataCollectionRuleAssociation_List" ],
         "ParameterSetName": [ "__AllParameterSets" ],
-        "User-Agent": [ "AzurePowershell/v10.1.0", "PSVersion/v7.3.7", "Az.DataCollectionRule/0.1.0" ],
+        "User-Agent": [ "AzurePowershell/v11.0.0", "PSVersion/v7.3.9", "Az.DataCollectionRule/0.1.0" ],
+        "Authorization": [ "[Filtered]" ]
+      },
+      "ContentHeaders": {
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "Vary": [ "Accept-Encoding" ],
+        "x-ms-ratelimit-remaining-subscription-reads": [ "11991" ],
+        "Request-Context": [ "appId=cid-v1:2bbfbac8-e1b0-44af-b9c6-3a40669d37e3" ],
+        "x-ms-correlation-request-id": [ "3a79a784-0995-41ec-b895-235d64c12328" ],
+        "x-ms-client-request-id": [ "f0bdbf4c-6aff-4f40-8e58-03caecb8ec15" ],
+        "x-ms-routing-request-id": [ "SOUTHEASTASIA:20231109T064106Z:3a79a784-0995-41ec-b895-235d64c12328" ],
+        "x-ms-request-id": [ "57f0cccc-0586-4cce-99d9-00b6ea55948e" ],
+        "api-supported-versions": [ "2019-11-01-preview, 2021-04-01, 2021-09-01-preview, 2022-06-01, 2023-03-11" ],
+        "Server": [ "Microsoft-HTTPAPI/2.0" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "Date": [ "Thu, 09 Nov 2023 06:41:06 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "1635" ],
+        "Content-Type": [ "application/json; charset=utf-8" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\"value\":[{\"properties\":{\"dataCollectionEndpointId\":\"/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/AMCS-TEST/providers/Microsoft.Insights/dataCollectionEndpoints/testCollectionEndpoint\"},\"id\":\"/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/AMCS-TEST/providers/Microsoft.Compute/virtualMachines/testAMCSvm/providers/Microsoft.Insights/dataCollectionRuleAssociations/configurationAccessEndpoint\",\"name\":\"configurationAccessEndpoint\",\"type\":\"Microsoft.Insights/dataCollectionRuleAssociations\",\"etag\":\"\\\"920095e1-0000-0100-0000-654c7efa0000\\\"\",\"systemData\":{\"createdBy\":\"v-jiaji@microsoft.com\",\"createdByType\":\"User\",\"createdAt\":\"2023-11-09T06:40:58.308471Z\",\"lastModifiedBy\":\"v-jiaji@microsoft.com\",\"lastModifiedByType\":\"User\",\"lastModifiedAt\":\"2023-11-09T06:40:58.308471Z\"}},{\"properties\":{\"dataCollectionRuleId\":\"/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/AMCS-TEST2/providers/Microsoft.Insights/dataCollectionRules/testCollectionRule2\"},\"id\":\"/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/AMCS-TEST/providers/Microsoft.Compute/virtualMachines/testAMCSvm/providers/Microsoft.Insights/dataCollectionRuleAssociations/testCollectionRule-association2\",\"name\":\"testCollectionRule-association2\",\"type\":\"Microsoft.Insights/dataCollectionRuleAssociations\",\"etag\":\"\\\"920097e1-0000-0100-0000-654c7efb0000\\\"\",\"systemData\":{\"createdBy\":\"v-jiaji@microsoft.com\",\"createdByType\":\"User\",\"createdAt\":\"2023-11-09T06:40:59.3396787Z\",\"lastModifiedBy\":\"v-jiaji@microsoft.com\",\"lastModifiedByType\":\"User\",\"lastModifiedAt\":\"2023-11-09T06:40:59.3396787Z\"}}],\"nextLink\":null}",
+      "isContentBase64": false
+    }
+  },
+  "Get-AzDataCollectionRuleAssociation+[NoContext]+Get+$GET+https://management.azure.com//subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/AMCS-TEST/providers/Microsoft.Compute/virtualMachines/testAMCSvm/providers/Microsoft.Insights/dataCollectionRuleAssociations/testCollectionRule-association2?api-version=2022-06-01+1": {
+    "Request": {
+      "Method": "GET",
+      "RequestUri": "https://management.azure.com//subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/AMCS-TEST/providers/Microsoft.Compute/virtualMachines/testAMCSvm/providers/Microsoft.Insights/dataCollectionRuleAssociations/testCollectionRule-association2?api-version=2022-06-01",
+      "Content": null,
+      "isContentBase64": false,
+      "Headers": {
+        "x-ms-unique-id": [ "18" ],
+        "x-ms-client-request-id": [ "e4221795-6f0b-4c77-8d82-136ba480825a" ],
+        "CommandName": [ "Get-AzDataCollectionRuleAssociation" ],
+        "FullCommandName": [ "Get-AzDataCollectionRuleAssociation_Get" ],
+        "ParameterSetName": [ "__AllParameterSets" ],
+        "User-Agent": [ "AzurePowershell/v11.0.0", "PSVersion/v7.3.9", "Az.DataCollectionRule/0.1.0" ],
         "Authorization": [ "[Filtered]" ]
       },
       "ContentHeaders": {
@@ -25,38 +70,38 @@
         "Vary": [ "Accept-Encoding" ],
         "x-ms-ratelimit-remaining-subscription-reads": [ "11990" ],
         "Request-Context": [ "appId=cid-v1:2bbfbac8-e1b0-44af-b9c6-3a40669d37e3" ],
-        "x-ms-correlation-request-id": [ "f786803e-cd31-4310-a9d8-6d020bbf0987" ],
-        "x-ms-client-request-id": [ "458c282f-1219-49fc-adc6-74c20764e1a4" ],
-        "x-ms-routing-request-id": [ "KOREASOUTH:20231010T065251Z:f786803e-cd31-4310-a9d8-6d020bbf0987" ],
-        "x-ms-request-id": [ "11f28f26-307e-4542-9d5b-84cc5569241f" ],
+        "x-ms-correlation-request-id": [ "c766dfc2-78a3-4cac-ad0c-714cb6c6c19d" ],
+        "x-ms-client-request-id": [ "e4221795-6f0b-4c77-8d82-136ba480825a" ],
+        "x-ms-routing-request-id": [ "SOUTHEASTASIA:20231109T064106Z:c766dfc2-78a3-4cac-ad0c-714cb6c6c19d" ],
+        "x-ms-request-id": [ "6b27f25a-6d49-4503-bbbd-e96fa6d4f3e9" ],
         "api-supported-versions": [ "2019-11-01-preview, 2021-04-01, 2021-09-01-preview, 2022-06-01, 2023-03-11" ],
         "Server": [ "Microsoft-HTTPAPI/2.0" ],
         "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
         "X-Content-Type-Options": [ "nosniff" ],
-        "Date": [ "Tue, 10 Oct 2023 06:52:51 GMT" ]
+        "Date": [ "Thu, 09 Nov 2023 06:41:07 GMT" ]
       },
       "ContentHeaders": {
-        "Content-Length": [ "1635" ],
+        "Content-Length": [ "803" ],
         "Content-Type": [ "application/json; charset=utf-8" ],
         "Expires": [ "-1" ]
       },
-      "Content": "{\"value\":[{\"properties\":{\"dataCollectionEndpointId\":\"/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/AMCS-TEST/providers/Microsoft.Insights/dataCollectionEndpoints/testCollectionEndpoint\"},\"id\":\"/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/AMCS-TEST/providers/Microsoft.Compute/virtualMachines/testAMCSvm/providers/Microsoft.Insights/dataCollectionRuleAssociations/configurationAccessEndpoint\",\"name\":\"configurationAccessEndpoint\",\"type\":\"Microsoft.Insights/dataCollectionRuleAssociations\",\"etag\":\"\\\"750113f1-0000-0100-0000-6524f4bd0000\\\"\",\"systemData\":{\"createdBy\":\"v-jiaji@microsoft.com\",\"createdByType\":\"User\",\"createdAt\":\"2023-10-10T06:52:45.013918Z\",\"lastModifiedBy\":\"v-jiaji@microsoft.com\",\"lastModifiedByType\":\"User\",\"lastModifiedAt\":\"2023-10-10T06:52:45.013918Z\"}},{\"properties\":{\"dataCollectionRuleId\":\"/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/AMCS-TEST2/providers/Microsoft.Insights/dataCollectionRules/testCollectionRule2\"},\"id\":\"/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/AMCS-TEST/providers/Microsoft.Compute/virtualMachines/testAMCSvm/providers/Microsoft.Insights/dataCollectionRuleAssociations/testCollectionRule-association2\",\"name\":\"testCollectionRule-association2\",\"type\":\"Microsoft.Insights/dataCollectionRuleAssociations\",\"etag\":\"\\\"75011bf1-0000-0100-0000-6524f4be0000\\\"\",\"systemData\":{\"createdBy\":\"v-jiaji@microsoft.com\",\"createdByType\":\"User\",\"createdAt\":\"2023-10-10T06:52:45.9357051Z\",\"lastModifiedBy\":\"v-jiaji@microsoft.com\",\"lastModifiedByType\":\"User\",\"lastModifiedAt\":\"2023-10-10T06:52:45.9357051Z\"}}],\"nextLink\":null}",
+      "Content": "{\"properties\":{\"dataCollectionRuleId\":\"/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/AMCS-TEST2/providers/Microsoft.Insights/dataCollectionRules/testCollectionRule2\"},\"id\":\"/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/AMCS-TEST/providers/Microsoft.Compute/virtualMachines/testAMCSvm/providers/Microsoft.Insights/dataCollectionRuleAssociations/testCollectionRule-association2\",\"name\":\"testCollectionRule-association2\",\"type\":\"Microsoft.Insights/dataCollectionRuleAssociations\",\"etag\":\"\\\"920097e1-0000-0100-0000-654c7efb0000\\\"\",\"systemData\":{\"createdBy\":\"v-jiaji@microsoft.com\",\"createdByType\":\"User\",\"createdAt\":\"2023-11-09T06:40:59.3396787Z\",\"lastModifiedBy\":\"v-jiaji@microsoft.com\",\"lastModifiedByType\":\"User\",\"lastModifiedAt\":\"2023-11-09T06:40:59.3396787Z\"}}",
       "isContentBase64": false
     }
   },
-  "Get-AzDataCollectionRuleAssociation+[NoContext]+Get+$GET+https://management.azure.com//subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/AMCS-TEST/providers/Microsoft.Compute/virtualMachines/testAMCSvm/providers/Microsoft.Insights/dataCollectionRuleAssociations/testCollectionRule-association2?api-version=2022-06-01+1": {
+  "Get-AzDataCollectionRuleAssociation+[NoContext]+List1+$GET+https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/AMCS-TEST2/providers/Microsoft.Insights/dataCollectionRules/testCollectionRule2/associations?api-version=2022-06-01+1": {
     "Request": {
       "Method": "GET",
-      "RequestUri": "https://management.azure.com//subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/AMCS-TEST/providers/Microsoft.Compute/virtualMachines/testAMCSvm/providers/Microsoft.Insights/dataCollectionRuleAssociations/testCollectionRule-association2?api-version=2022-06-01",
+      "RequestUri": "https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/AMCS-TEST2/providers/Microsoft.Insights/dataCollectionRules/testCollectionRule2/associations?api-version=2022-06-01",
       "Content": null,
       "isContentBase64": false,
       "Headers": {
-        "x-ms-unique-id": [ "18" ],
-        "x-ms-client-request-id": [ "2fa72fe6-812c-469a-b196-08002b9919d6" ],
+        "x-ms-unique-id": [ "19" ],
+        "x-ms-client-request-id": [ "66f266a5-6927-4569-95ff-ac049d8ad0d2" ],
         "CommandName": [ "Get-AzDataCollectionRuleAssociation" ],
-        "FullCommandName": [ "Get-AzDataCollectionRuleAssociation_Get" ],
+        "FullCommandName": [ "Get-AzDataCollectionRuleAssociation_List1" ],
         "ParameterSetName": [ "__AllParameterSets" ],
-        "User-Agent": [ "AzurePowershell/v10.1.0", "PSVersion/v7.3.7", "Az.DataCollectionRule/0.1.0" ],
+        "User-Agent": [ "AzurePowershell/v11.0.0", "PSVersion/v7.3.9", "Az.DataCollectionRule/0.1.0" ],
         "Authorization": [ "[Filtered]" ]
       },
       "ContentHeaders": {
@@ -70,60 +115,15 @@
         "Vary": [ "Accept-Encoding" ],
         "x-ms-ratelimit-remaining-subscription-reads": [ "11989" ],
         "Request-Context": [ "appId=cid-v1:2bbfbac8-e1b0-44af-b9c6-3a40669d37e3" ],
-        "x-ms-correlation-request-id": [ "7aed2605-086e-4a48-b080-8b2c8c33febb" ],
-        "x-ms-client-request-id": [ "2fa72fe6-812c-469a-b196-08002b9919d6" ],
-        "x-ms-routing-request-id": [ "KOREASOUTH:20231010T065252Z:7aed2605-086e-4a48-b080-8b2c8c33febb" ],
-        "x-ms-request-id": [ "5a383f0b-da1f-43ab-8f69-7e4a80f783c3" ],
+        "x-ms-correlation-request-id": [ "9e3345f2-8a1c-44b5-ade9-1a3b6e88dc2c" ],
+        "x-ms-client-request-id": [ "66f266a5-6927-4569-95ff-ac049d8ad0d2" ],
+        "x-ms-routing-request-id": [ "SOUTHEASTASIA:20231109T064107Z:9e3345f2-8a1c-44b5-ade9-1a3b6e88dc2c" ],
+        "x-ms-request-id": [ "ae51d32c-7df1-4308-90b9-58e6c1fefa6a" ],
         "api-supported-versions": [ "2019-11-01-preview, 2021-04-01, 2021-09-01-preview, 2022-06-01, 2023-03-11" ],
         "Server": [ "Microsoft-HTTPAPI/2.0" ],
         "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
         "X-Content-Type-Options": [ "nosniff" ],
-        "Date": [ "Tue, 10 Oct 2023 06:52:52 GMT" ]
-      },
-      "ContentHeaders": {
-        "Content-Length": [ "803" ],
-        "Content-Type": [ "application/json; charset=utf-8" ],
-        "Expires": [ "-1" ]
-      },
-      "Content": "{\"properties\":{\"dataCollectionRuleId\":\"/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/AMCS-TEST2/providers/Microsoft.Insights/dataCollectionRules/testCollectionRule2\"},\"id\":\"/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/AMCS-TEST/providers/Microsoft.Compute/virtualMachines/testAMCSvm/providers/Microsoft.Insights/dataCollectionRuleAssociations/testCollectionRule-association2\",\"name\":\"testCollectionRule-association2\",\"type\":\"Microsoft.Insights/dataCollectionRuleAssociations\",\"etag\":\"\\\"75011bf1-0000-0100-0000-6524f4be0000\\\"\",\"systemData\":{\"createdBy\":\"v-jiaji@microsoft.com\",\"createdByType\":\"User\",\"createdAt\":\"2023-10-10T06:52:45.9357051Z\",\"lastModifiedBy\":\"v-jiaji@microsoft.com\",\"lastModifiedByType\":\"User\",\"lastModifiedAt\":\"2023-10-10T06:52:45.9357051Z\"}}",
-      "isContentBase64": false
-    }
-  },
-  "Get-AzDataCollectionRuleAssociation+[NoContext]+List1+$GET+https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/AMCS-TEST2/providers/Microsoft.Insights/dataCollectionRules/testCollectionRule2/associations?api-version=2022-06-01+1": {
-    "Request": {
-      "Method": "GET",
-      "RequestUri": "https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/AMCS-TEST2/providers/Microsoft.Insights/dataCollectionRules/testCollectionRule2/associations?api-version=2022-06-01",
-      "Content": null,
-      "isContentBase64": false,
-      "Headers": {
-        "x-ms-unique-id": [ "19" ],
-        "x-ms-client-request-id": [ "1f5fa991-2e44-422f-830b-7680b0e416fd" ],
-        "CommandName": [ "Get-AzDataCollectionRuleAssociation" ],
-        "FullCommandName": [ "Get-AzDataCollectionRuleAssociation_List1" ],
-        "ParameterSetName": [ "__AllParameterSets" ],
-        "User-Agent": [ "AzurePowershell/v10.1.0", "PSVersion/v7.3.7", "Az.DataCollectionRule/0.1.0" ],
-        "Authorization": [ "[Filtered]" ]
-      },
-      "ContentHeaders": {
-      }
-    },
-    "Response": {
-      "StatusCode": 200,
-      "Headers": {
-        "Cache-Control": [ "no-cache" ],
-        "Pragma": [ "no-cache" ],
-        "Vary": [ "Accept-Encoding" ],
-        "x-ms-ratelimit-remaining-subscription-reads": [ "11988" ],
-        "Request-Context": [ "appId=cid-v1:2bbfbac8-e1b0-44af-b9c6-3a40669d37e3" ],
-        "x-ms-correlation-request-id": [ "fb5eeeae-c307-479d-887f-215e75ad5aae" ],
-        "x-ms-client-request-id": [ "1f5fa991-2e44-422f-830b-7680b0e416fd" ],
-        "x-ms-routing-request-id": [ "KOREASOUTH:20231010T065252Z:fb5eeeae-c307-479d-887f-215e75ad5aae" ],
-        "x-ms-request-id": [ "d714e432-904e-435f-8e2b-4284d4f94f7b" ],
-        "api-supported-versions": [ "2019-11-01-preview, 2021-04-01, 2021-09-01-preview, 2022-06-01, 2023-03-11" ],
-        "Server": [ "Microsoft-HTTPAPI/2.0" ],
-        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
-        "X-Content-Type-Options": [ "nosniff" ],
-        "Date": [ "Tue, 10 Oct 2023 06:52:52 GMT" ]
+        "Date": [ "Thu, 09 Nov 2023 06:41:07 GMT" ]
       },
       "ContentHeaders": {
         "Content-Length": [ "547" ],
@@ -142,11 +142,11 @@
       "isContentBase64": false,
       "Headers": {
         "x-ms-unique-id": [ "20" ],
-        "x-ms-client-request-id": [ "b0207708-e290-4233-9e71-e201a64abd9b" ],
+        "x-ms-client-request-id": [ "ea486160-bb01-4659-90e0-25d2d00dd8be" ],
         "CommandName": [ "Get-AzDataCollectionRuleAssociation" ],
         "FullCommandName": [ "Get-AzDataCollectionRuleAssociation_List2" ],
         "ParameterSetName": [ "__AllParameterSets" ],
-        "User-Agent": [ "AzurePowershell/v10.1.0", "PSVersion/v7.3.7", "Az.DataCollectionRule/0.1.0" ],
+        "User-Agent": [ "AzurePowershell/v11.0.0", "PSVersion/v7.3.9", "Az.DataCollectionRule/0.1.0" ],
         "Authorization": [ "[Filtered]" ]
       },
       "ContentHeaders": {
@@ -158,24 +158,24 @@
         "Cache-Control": [ "no-cache" ],
         "Pragma": [ "no-cache" ],
         "Vary": [ "Accept-Encoding" ],
-        "x-ms-ratelimit-remaining-subscription-reads": [ "11987" ],
+        "x-ms-ratelimit-remaining-subscription-reads": [ "11988" ],
         "Request-Context": [ "appId=cid-v1:2bbfbac8-e1b0-44af-b9c6-3a40669d37e3" ],
-        "x-ms-correlation-request-id": [ "4ac4ba4a-e40b-4930-a74a-1b94d24cd2fe" ],
-        "x-ms-client-request-id": [ "b0207708-e290-4233-9e71-e201a64abd9b" ],
-        "x-ms-routing-request-id": [ "KOREASOUTH:20231010T065253Z:4ac4ba4a-e40b-4930-a74a-1b94d24cd2fe" ],
-        "x-ms-request-id": [ "cf81fe20-a2f6-45d2-8c9a-c59ac3b85693" ],
+        "x-ms-correlation-request-id": [ "ac568801-831d-44c9-84b9-3ca0bf76c5ee" ],
+        "x-ms-client-request-id": [ "ea486160-bb01-4659-90e0-25d2d00dd8be" ],
+        "x-ms-routing-request-id": [ "SOUTHEASTASIA:20231109T064108Z:ac568801-831d-44c9-84b9-3ca0bf76c5ee" ],
+        "x-ms-request-id": [ "993a5efe-6976-46bc-98e8-25083346ae8f" ],
         "api-supported-versions": [ "2019-11-01-preview, 2021-04-01, 2021-09-01-preview, 2022-06-01, 2023-03-11" ],
         "Server": [ "Microsoft-HTTPAPI/2.0" ],
         "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
         "X-Content-Type-Options": [ "nosniff" ],
-        "Date": [ "Tue, 10 Oct 2023 06:52:53 GMT" ]
+        "Date": [ "Thu, 09 Nov 2023 06:41:08 GMT" ]
       },
       "ContentHeaders": {
         "Content-Length": [ "831" ],
         "Content-Type": [ "application/json; charset=utf-8" ],
         "Expires": [ "-1" ]
       },
-      "Content": "{\"value\":[{\"properties\":{\"dataCollectionEndpointId\":\"/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/AMCS-TEST/providers/Microsoft.Insights/dataCollectionEndpoints/testCollectionEndpoint\"},\"id\":\"/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/AMCS-TEST/providers/Microsoft.Compute/virtualMachines/testAMCSvm/providers/Microsoft.Insights/dataCollectionRuleAssociations/configurationAccessEndpoint\",\"name\":\"configurationAccessEndpoint\",\"type\":\"Microsoft.Insights/dataCollectionRuleAssociations\",\"etag\":\"\\\"750113f1-0000-0100-0000-6524f4bd0000\\\"\",\"systemData\":{\"createdBy\":\"v-jiaji@microsoft.com\",\"createdByType\":\"User\",\"createdAt\":\"2023-10-10T06:52:45.013918Z\",\"lastModifiedBy\":\"v-jiaji@microsoft.com\",\"lastModifiedByType\":\"User\",\"lastModifiedAt\":\"2023-10-10T06:52:45.013918Z\"}}],\"nextLink\":null}",
+      "Content": "{\"value\":[{\"properties\":{\"dataCollectionEndpointId\":\"/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/AMCS-TEST/providers/Microsoft.Insights/dataCollectionEndpoints/testCollectionEndpoint\"},\"id\":\"/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/AMCS-TEST/providers/Microsoft.Compute/virtualMachines/testAMCSvm/providers/Microsoft.Insights/dataCollectionRuleAssociations/configurationAccessEndpoint\",\"name\":\"configurationAccessEndpoint\",\"type\":\"Microsoft.Insights/dataCollectionRuleAssociations\",\"etag\":\"\\\"920095e1-0000-0100-0000-654c7efa0000\\\"\",\"systemData\":{\"createdBy\":\"v-jiaji@microsoft.com\",\"createdByType\":\"User\",\"createdAt\":\"2023-11-09T06:40:58.308471Z\",\"lastModifiedBy\":\"v-jiaji@microsoft.com\",\"lastModifiedByType\":\"User\",\"lastModifiedAt\":\"2023-11-09T06:40:58.308471Z\"}}],\"nextLink\":null}",
       "isContentBase64": false
     }
   }

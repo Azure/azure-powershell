@@ -20,14 +20,21 @@
 
 -->
 ## Upcoming Release
+
+## Version 7.0.0
 * Added update functionality in `Update-AzVmss` for parameters `SecurityType`, `EnableSecureBoot`, and `EnableVtpm` for the parameter set with the Put operation.
 * Upgraded Azure.Core to 1.35.0.
 * [Breaking change] Removed unversioned and outdated linux image aliases of `CentOS`, `RHEL`, `UbuntuLTS` and `Debian`.
+* [Breaking change] `New-AzVmss` will default to `OrchestrationMode` set as  `Flexible` if it is not set as `Uniform` explicitly.
+* `New-AzVmss` can now create VMSS with `OrchestrationMode` set to `Flexible` using `-SinglePlacementGroup` and `-UpgradePolicy`.
+* Removed unversioned and outdated images from New-AzVmss `-ImageName` argument completers.
 * [Breaking Change] Added defaulting logic for VM and VMSS creation to set SecurityType to TrustedLaunch and SecureBootEnabled and VTpmEnalbed to true when those are not set by the user.
 * [Breaking Change] Added defaulting logic for Disk creation to default to TrustedLaunch when able. Allows the user to turn this off by setting the SecurityType to Standard.
-* Added new parameters `-ElasticSanResourceId` and `-OptimizedForFrequentAttach` to `New-AzDiskConfig` cmdlet.
-* Added new parameter `-ElasticSanResourceId` to `New-AzSnapshotConfig` cmdlet.
+* Added new parameter `-VirtualMachineScaleSetId` to `Update-AzVm` cmdlet.
 * Fixed `New-AzVmss` and `New-Azvm` to use `SharedGalleryImageId` parameter.
+* Reduced File Permissions from 0644 to 0600 for SSH Private Key File in `New-AzVm`.
+* Removed GuestAttestaion vm extension installation for Vmss and Vm creation cmdlets. 
+
 
 ## Version 6.3.0
 * Added `-Hibernate` switch parameter to `Stop-AzVmss` default parameter set. 

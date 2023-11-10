@@ -1,6 +1,7 @@
 ### Example 1: Update tag for data collection rule 
 ```powershell
-Update-AzDataCollectionRule -Name myCollectionRule1 -ResourceGroupName AMCS-Test -Tag @{"123"="abc"}
+$syslog = New-AzSyslogDataSourceObject -FacilityName syslog -LogLevel Alert,Critical,Emergency -Name syslogBase -Stream Microsoft-Syslog
+Update-AzDataCollectionRule -Name myCollectionRule1 -ResourceGroupName Monitor-ActionGroup -DataSourceSyslog $syslog
 ```
 
 ```output
@@ -18,8 +19,8 @@ DataSourceLogFile                         :
 DataSourcePerformanceCounter              : {{
                                               "streams": [ "Microsoft-Perf" ],
                                               "samplingFrequencyInSeconds": 15,
-                                              "counterSpecifiers": [ "\\\\Processor(_Total)\\\\% Processor Time", "\\\\Memory\\\\Committed Bytes", "\\\\LogicalDisk(_Total)\\\\Free
-                                            Megabytes", "\\\\PhysicalDisk(_Total)\\\\Avg. Disk Queue Length" ],
+                                              "counterSpecifiers": [ "\\\\Processor(_Total)\\\\% Processor Time", "\\\\Memory\\\\Committed Bytes",
+                                            "\\\\LogicalDisk(_Total)\\\\Free Megabytes", "\\\\PhysicalDisk(_Total)\\\\Avg. Disk Queue Length" ],
                                               "name": "cloudTeamCoreCounters"
                                             }, {
                                               "streams": [ "Microsoft-Perf" ],
@@ -29,10 +30,16 @@ DataSourcePerformanceCounter              : {{
                                             }}
 DataSourcePlatformTelemetry               : 
 DataSourcePrometheusForwarder             : 
-DataSourceSyslog                          : 
+DataSourceSyslog                          : {{
+                                              "streams": [ "Microsoft-Syslog" ],
+                                              "facilityNames": [ "syslog" ],
+                                              "logLevels": [ "Alert", "Critical", "Emergency" ],
+                                              "name": "syslogBase"
+                                            }}
 DataSourceWindowsEventLog                 : {{
                                               "streams": [ "Microsoft-WindowsEvent" ],
-                                              "xPathQueries": [ "System![System[(Level = 1 or Level = 2 or Level = 3)]]", "Application!*[System[(Level = 1 or Level = 2 or Level = 3)]]" ],   
+                                              "xPathQueries": [ "System![System[(Level = 1 or Level = 2 or Level = 3)]]", "Application!*[System[(Level = 1 or Level = 2   
+                                            or Level = 3)]]" ],
                                               "name": "appTeam1AppEvents"
                                             }}
 DataSourceWindowsFirewallLog              : 
@@ -45,31 +52,31 @@ DestinationMonitoringAccount              :
 DestinationStorageAccount                 : 
 DestinationStorageBlobsDirect             : 
 DestinationStorageTablesDirect            : 
-Etag                                      : "2201d32f-0000-0100-0000-651159230000"
-Id                                        : /subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/AMCS-TEST/providers/Microsoft.Insights/dataCollectionRules/myCollectionRule1   
+Etag                                      : "9200a3d3-0000-0100-0000-654c72ae0000"
+Id                                        : /subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/Monitor-ActionGroup/providers/Microsoft.Insights/dataColle 
+                                            ctionRules/myCollectionRule1
 IdentityPrincipalId                       : 
 IdentityTenantId                          : 
 IdentityType                              : 
 IdentityUserAssignedIdentity              : {
                                             }
-ImmutableId                               : dcr-9a6169afee634c13baa880dee8c5eb97
+ImmutableId                               : dcr-e30a8188813f426d962ef7053a3d1be4
 Kind                                      : 
 Location                                  : eastus
 MetadataProvisionedBy                     : 
 MetadataProvisionedByResourceId           : 
 Name                                      : myCollectionRule1
 ProvisioningState                         : Succeeded
-ResourceGroupName                         : AMCS-TEST
+ResourceGroupName                         : Monitor-ActionGroup
 StreamDeclaration                         : {
                                             }
-SystemDataCreatedAt                       : 9/22/2023 9:18:41 AM
+SystemDataCreatedAt                       : 11/9/2023 5:04:01 AM
 SystemDataCreatedBy                       : v-jiaji@microsoft.com
 SystemDataCreatedByType                   : User
-SystemDataLastModifiedAt                  : 9/25/2023 9:55:45 AM
+SystemDataLastModifiedAt                  : 11/9/2023 5:48:29 AM
 SystemDataLastModifiedBy                  : v-jiaji@microsoft.com
 SystemDataLastModifiedByType              : User
 Tag                                       : {
-                                              "123": "abc"
                                             }
 Type                                      : Microsoft.Insights/dataCollectionRules
 ```

@@ -168,11 +168,6 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Resources.Authorization.Runtime
     {
         public string _message;
 
-        public DateTime EstimatedGaDate { get; }
-
-        public bool IsEstimatedGaDateSet { get; } = false;
-
-
         public PreviewMessageAttribute()
         {
             this._message = Resources.PreviewCmdletMessage;
@@ -180,26 +175,12 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Resources.Authorization.Runtime
 
         public PreviewMessageAttribute(string message)
         {
-            this._message = string.IsNullOrEmpty(message) ? Resources.PreviewCmdletMessage : message;
+            this._message = message;
         }
 
-        public PreviewMessageAttribute(string message, string estimatedDateOfGa) : this(message)
+        public void PrintCustomAttributeInfo(System.Management.Automation.PSCmdlet psCmdlet)
         {
-            if (DateTime.TryParse(estimatedDateOfGa, new CultureInfo("en-US"), DateTimeStyles.None, out DateTime result))
-            {
-                this.EstimatedGaDate = result;
-                this.IsEstimatedGaDateSet = true;
-            }
-        }
-        
-        public void PrintCustomAttributeInfo(Action<string> writeOutput)
-        {
-            writeOutput(this._message);
-            
-            if (IsEstimatedGaDateSet)
-            {
-                writeOutput(string.Format(Resources.PreviewCmdletETAMessage, this.EstimatedGaDate.ToShortDateString()));
-            }
+            psCmdlet.WriteWarning(this._message);
         }
 
         public virtual bool IsApplicableToInvocation(InvocationInfo invocation)

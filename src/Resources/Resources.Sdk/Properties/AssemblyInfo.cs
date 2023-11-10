@@ -7,8 +7,8 @@ using System.Resources;
 [assembly: AssemblyTitle("Microsoft Azure Resource Management Library")]
 [assembly: AssemblyDescription("Provides Microsoft Azure resource management operations including Resource Groups.")]
 
-[assembly: AssemblyVersion("6.11.2")]
-[assembly: AssemblyFileVersion("6.11.2")]
+[assembly: AssemblyVersion("6.12.0")]
+[assembly: AssemblyFileVersion("6.12.0")]
 [assembly: AssemblyConfiguration("")]
 [assembly: AssemblyCompany("Microsoft")]
 [assembly: AssemblyProduct("Azure .NET SDK")]

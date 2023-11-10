@@ -25,8 +25,8 @@ New-AzDiskConfig [[-SkuName] <String>] [-Tier <String>] [-LogicalSectorSize <Int
  [-DiskEncryptionSetId <String>] [-EncryptionType <String>] [-DiskAccessId <String>]
  [-NetworkAccessPolicy <String>] [-BurstingEnabled <Boolean>] [-PublicNetworkAccess <String>]
  [-AcceleratedNetwork <Boolean>] [-DataAccessAuthMode <String>] [-Architecture <String>]
- [-PerformancePlus <Boolean>] [-ElasticSanResourceId <String>] [-OptimizedForFrequentAttach <Boolean>]
- [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-PerformancePlus <Boolean>] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
+ [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -313,21 +313,6 @@ Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
 ```
 
-### -ElasticSanResourceId
-Required if createOption is CopyFromSanSnapshot. this is the ARM id of the source elastic san volume snapshot.
-
-```yaml
-Type: System.String
-Parameter Sets: (All)
-Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: True (ByPropertyName)
-Accept wildcard characters: False
-```
-
 ### -EncryptionSettingsEnabled
 Enable encryption settings.
 
@@ -474,21 +459,6 @@ Possible values include: 'AllowAll', 'AllowPrivate', 'DenyAll'
 
 ```yaml
 Type: System.String
-Parameter Sets: (All)
-Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: True (ByPropertyName)
-Accept wildcard characters: False
-```
-
-### -OptimizedForFrequentAttach
-Setting this property to true improves reliability and performance of data disks that are frequently (more than 5 times a day) by detached from one virtual machine and attached to another. This property should not be set for disks that are not detached and attached frequently as it causes the disks to not align with the fault domain of the virtual machine.
-
-```yaml
-Type: System.Nullable`1[System.Boolean]
 Parameter Sets: (All)
 Aliases:
 

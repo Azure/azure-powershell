@@ -66,8 +66,8 @@ foreach($directory in $directories)
   $docsPath = Join-Path $docsFolder $directory.Name
   $null = New-Item -ItemType Directory -Force -Path $docsPath -ErrorAction SilentlyContinue
   $examplesPath = Join-Path $examplesFolder $directory.Name
-  $addComplexInterfaceInfo = ![System.Convert]::ToBoolean('true')
-  Export-HelpMarkdown -ModuleInfo $moduleInfo -FunctionInfo $cmdletFunctionInfo -HelpInfo $cmdletHelpInfo -DocsFolder $docsPath -ExamplesFolder $examplesPath -AddComplexInterfaceInfo:$addComplexInterfaceInfo
+
+  Export-HelpMarkdown -ModuleInfo $moduleInfo -FunctionInfo $cmdletFunctionInfo -HelpInfo $cmdletHelpInfo -DocsFolder $docsPath -ExamplesFolder $examplesPath
   Write-Host -ForegroundColor Green "Created documentation in '$docsPath'"
 }
 

@@ -18,6 +18,9 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
+* Added new parameters `MaintenanceConfigurationId`, `DnsZone` to `AzSqlInstancePool` cmdlets
+
+## Version 4.11.0
 * Added new parameters to `New-AzSqlDatabaseFailoverGroup`, `Set-AzSqlDatabaseFailoverGroup`
     - PartnerServers
     - ReadOnlyEndpointTargetServer
@@ -26,7 +29,6 @@
 * Added new parameters `WorkerCount`, `SkuName`, `Identity` to `AzSqlElasticJobAgent` cmdlets
 * Added support for optional SQL auth for Elastic Job Agent cmdlets
 *   - The following parameters are now optional: `CredentialName`, `OutputCredentialName`, `RefreshCredentialName`
-* Added new parameters `MaintenanceConfigurationId`, `DnsZone` to `AzSqlInstancePool` cmdlets
 
 ## Version 4.10.0
 * Fixed cmdlets to use 2018-06-01-preview api version

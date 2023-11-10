@@ -18,6 +18,8 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
+
+## Version 2.3.0
 * Supported sandbox custom image
 * Supported database CMK
 * Supported cluster migration

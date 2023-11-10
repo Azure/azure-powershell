@@ -18,6 +18,8 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
+
+## Version 0.5.1
 * Removed the version check in MachineExtensionProperties
 
 ## Version 0.5.0
