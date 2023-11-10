@@ -72,32 +72,34 @@ namespace Microsoft.Azure.Commands.Compute.Automation
                     {
                         if (ShouldProcess(this.VMScaleSetName, VerbsCommon.New))
                         {
-                            // TL defaulting for default param set, config object.
-                            // if security type not set, 
-                            // if parameters.VirtualMachineProfile.StorageProfile.ImageReference.SharedGalleryImageId == null
-                            // if parameters.VirtualMachineProfile.StorageProfile.ImageReference.Id == null
-                            // if parameters.VirtualMachineProfile.StorageProfile.OsDisk == null
-                            if (this.VirtualMachineScaleSet.VirtualMachineProfile?.SecurityProfile?.SecurityType == null
-                                && this.VirtualMachineScaleSet.VirtualMachineProfile?.StorageProfile?.ImageReference == null
-                                && this.VirtualMachineScaleSet.VirtualMachineProfile?.StorageProfile?.OsDisk == null)
+                            if (this.VirtualMachineScaleSet?.VirtualMachineProfile != null)
                             {
-                                trustedLaunchDefaultingSecurityValues();
-                                trustedLaunchDefaultingImageValues();
-                            }
+                                // TL defaulting for default param set, config object.
+                                // if security type not set, 
+                                // if parameters.VirtualMachineProfile.StorageProfile.ImageReference.SharedGalleryImageId == null
+                                // if parameters.VirtualMachineProfile.StorageProfile.ImageReference.Id == null
+                                // if parameters.VirtualMachineProfile.StorageProfile.OsDisk == null
+                                if (this.VirtualMachineScaleSet.VirtualMachineProfile?.SecurityProfile?.SecurityType == null
+                                    && this.VirtualMachineScaleSet.VirtualMachineProfile?.StorageProfile?.ImageReference == null
+                                    && this.VirtualMachineScaleSet.VirtualMachineProfile?.StorageProfile?.OsDisk == null)
+                                {
+                                    trustedLaunchDefaultingSecurityValues();
+                                    trustedLaunchDefaultingImageValues();
+                                }
 
-                            if (this.VirtualMachineScaleSet.VirtualMachineProfile?.SecurityProfile?.SecurityType == null
-                                //&& this.VirtualMachineScaleSet.VirtualMachineProfile?.StorageProfile?.OsDisk == null//had to remove this as it has the FromImage value from set-azvmssstorageprofile call
-                                && this.VirtualMachineScaleSet.VirtualMachineProfile?.StorageProfile?.ImageReference?.Publisher != null
-                                && this.VirtualMachineScaleSet.VirtualMachineProfile?.StorageProfile?.ImageReference?.Offer != null
-                                && this.VirtualMachineScaleSet.VirtualMachineProfile?.StorageProfile?.ImageReference?.Sku != null
-                                && this.VirtualMachineScaleSet.VirtualMachineProfile?.StorageProfile?.ImageReference?.Version != null)
-                            {
-                                // retrieve the image that this points to and check if it is HyperVGeneration V2.
-                                Microsoft.Rest.Azure.AzureOperationResponse<VirtualMachineImage> specificImageRespone;
-                                specificImageRespone = retrieveSpecificImageFromNotId();
-                                setHyperVGenForImageCheckAndTLDefaulting(specificImageRespone);
+                                if (this.VirtualMachineScaleSet.VirtualMachineProfile?.SecurityProfile?.SecurityType == null
+                                    //&& this.VirtualMachineScaleSet.VirtualMachineProfile?.StorageProfile?.OsDisk == null//had to remove this as it has the FromImage value from set-azvmssstorageprofile call
+                                    && this.VirtualMachineScaleSet.VirtualMachineProfile?.StorageProfile?.ImageReference?.Publisher != null
+                                    && this.VirtualMachineScaleSet.VirtualMachineProfile?.StorageProfile?.ImageReference?.Offer != null
+                                    && this.VirtualMachineScaleSet.VirtualMachineProfile?.StorageProfile?.ImageReference?.Sku != null
+                                    && this.VirtualMachineScaleSet.VirtualMachineProfile?.StorageProfile?.ImageReference?.Version != null)
+                                {
+                                    // retrieve the image that this points to and check if it is HyperVGeneration V2.
+                                    Microsoft.Rest.Azure.AzureOperationResponse<VirtualMachineImage> specificImageRespone;
+                                    specificImageRespone = retrieveSpecificImageFromNotId();
+                                    setHyperVGenForImageCheckAndTLDefaulting(specificImageRespone);
+                                }
                             }
-
 
                             string resourceGroupName = this.ResourceGroupName;
                             string vmScaleSetName = this.VMScaleSetName;
