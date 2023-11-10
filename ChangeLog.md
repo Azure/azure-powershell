@@ -27,7 +27,8 @@
 * [Breaking Change] Added defaulting logic for Disk creation to default to TrustedLaunch when able. Allows the user to turn this off by setting the SecurityType to Standard.
 * Added new parameter '-VirtualMachineScaleSetId' to 'Update-AzVm' cmdlet.
 * Fixed 'New-AzVmss' and 'New-Azvm' to use 'SharedGalleryImageId' parameter.
-* Reducing File Permissions from 0644 to 0600 for SSH Private Key File in 'New-AzVm'.
+* Reduced File Permissions from 0644 to 0600 for SSH Private Key File in 'New-AzVm'.
+* Removed GuestAttestaion vm extension installation for Vmss and Vm creation cmdlets. 
 
 #### Az.ContainerInstance 4.0.0
 * [Breaking Change] Fixed the typo that output property starting with PreviousState was misspelled as PreviouState. [#22268]
