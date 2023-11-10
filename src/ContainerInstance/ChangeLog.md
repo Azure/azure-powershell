@@ -19,8 +19,6 @@
 -->
 
 ## Upcoming Release
-
-## Version 4.0.0
 * [Breaking Change] Fixed the typo that output property starting with PreviousState was misspelled as PreviouState. [#22268]
 
 ## Version 3.2.2

@@ -19,8 +19,6 @@
 -->
 
 ## Upcoming Release
-
-## Version 1.4.0
 * Added support for maintenance configuration cancellation.
 
 ## Version 1.3.1

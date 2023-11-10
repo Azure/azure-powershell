@@ -18,8 +18,6 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
-
-## Version 0.11.0
 * Invoke-AzSubscriptionAcceptOwnership:
     - Added alias `-DisplayName` to parameter `-SubscriptionName`.
 * New-AzSubscriptionAlias:

@@ -19,8 +19,6 @@
 -->
 
 ## Upcoming Release
-
-## Version 2.13.2
 * Enabled in-tool notification for version upgrade by default.
 * Upgraded Azure.Core to 1.35.0.
 

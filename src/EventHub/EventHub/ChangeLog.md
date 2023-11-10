@@ -18,8 +18,6 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
-
-## Version 4.2.0
 *  Added parameter `PartitionCount` to `Set-AzEventHub`
 
 ## Version 4.1.0

@@ -19,8 +19,6 @@
 -->
 
 ## Upcoming Release
-
-## Version 6.12.0
 * Supported $ref statements for user-defined types in Bicep files.
 * Fixed reporting duplicate warnings when compiling Bicep files.
 * Updated New and Set Management Group cmdlets to allow DeploymentSubscription to be optional.
