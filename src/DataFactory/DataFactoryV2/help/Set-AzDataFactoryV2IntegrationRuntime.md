@@ -334,7 +334,7 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -ManagedVNetNumberOfPipelineNodes
+### -ManagedVNetNumberOfPipelineNodeCount
 Number of the pipeline nodes, which should be greater than 0 and less than 11.
 
 ```yaml
@@ -349,7 +349,7 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -ManagedVNetNumberOfExternalNodes
+### -ManagedVNetNumberOfExternalNodeCount
 Number of the the external nodes, which should be greater than 0 and less than 11.
 
 ```yaml

@@ -388,7 +388,7 @@ namespace Microsoft.Azure.Commands.DataFactoryV2
            ParameterSetName = ParameterSetNames.ByIntegrationRuntimeObject,
            Mandatory = false,
            HelpMessage = Constants.HelpIntegrationRuntimeManagedVNetNumberOfPipelineNodes)]
-        public int? ManagedVNetNumberOfPipelineNodes { get; set; }
+        public int? ManagedVNetNumberOfPipelineNodeCount { get; set; }
 
         [Parameter(
            ParameterSetName = ParameterSetNames.ByIntegrationRuntimeName,
@@ -402,7 +402,7 @@ namespace Microsoft.Azure.Commands.DataFactoryV2
            ParameterSetName = ParameterSetNames.ByIntegrationRuntimeObject,
            Mandatory = false,
            HelpMessage = Constants.HelpIntegrationRuntimeManagedVNetNumberOfExternalNodes)]
-        public int? ManagedVNetNumberOfExternalNodes { get; set; }
+        public int? ManagedVNetNumberOfExternalNodeCount { get; set; }
 
         [Parameter(
            ParameterSetName = ParameterSetNames.ByIntegrationRuntimeName,
@@ -905,7 +905,7 @@ namespace Microsoft.Azure.Commands.DataFactoryV2
                 integrationRuntime.ComputeProperties.CopyComputeScaleProperties.TimeToLive = ManagedVNetCopyComputeScaleTimeToLive ?? integrationRuntime.ComputeProperties.CopyComputeScaleProperties.TimeToLive;
             }
 
-            if (ManagedVNetPipelineExternalComputeScaleTimeToLive != null || ManagedVNetNumberOfPipelineNodes != null || ManagedVNetNumberOfExternalNodes != null)
+            if (ManagedVNetPipelineExternalComputeScaleTimeToLive != null || ManagedVNetNumberOfPipelineNodeCount != null || ManagedVNetNumberOfExternalNodeCount != null)
             {
                 if (integrationRuntime.ComputeProperties == null)
                 {
@@ -917,8 +917,8 @@ namespace Microsoft.Azure.Commands.DataFactoryV2
                 }
 
                 integrationRuntime.ComputeProperties.PipelineExternalComputeScaleProperties.TimeToLive = ManagedVNetPipelineExternalComputeScaleTimeToLive ?? integrationRuntime.ComputeProperties.PipelineExternalComputeScaleProperties.TimeToLive;
-                integrationRuntime.ComputeProperties.PipelineExternalComputeScaleProperties.NumberOfPipelineNodes = ManagedVNetNumberOfPipelineNodes ?? integrationRuntime.ComputeProperties.PipelineExternalComputeScaleProperties.NumberOfPipelineNodes;
-                integrationRuntime.ComputeProperties.PipelineExternalComputeScaleProperties.NumberOfExternalNodes = ManagedVNetNumberOfExternalNodes ?? integrationRuntime.ComputeProperties.PipelineExternalComputeScaleProperties.NumberOfExternalNodes;
+                integrationRuntime.ComputeProperties.PipelineExternalComputeScaleProperties.NumberOfPipelineNodes = ManagedVNetNumberOfPipelineNodeCount ?? integrationRuntime.ComputeProperties.PipelineExternalComputeScaleProperties.NumberOfPipelineNodes;
+                integrationRuntime.ComputeProperties.PipelineExternalComputeScaleProperties.NumberOfExternalNodes = ManagedVNetNumberOfExternalNodeCount ?? integrationRuntime.ComputeProperties.PipelineExternalComputeScaleProperties.NumberOfExternalNodes;
             }
 
             if (PublicIPs != null)
