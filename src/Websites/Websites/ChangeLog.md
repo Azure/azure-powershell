@@ -18,6 +18,7 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
+* Removed snapshot time parsing to avoid trimming the timestamp.
 * Adjusted `Publish-AzWebApp` default behavior
 
 ## Version 3.1.1
