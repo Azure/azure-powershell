@@ -32,9 +32,8 @@ foreach ($BreakingChangeItem in $BreakingChangeItems) {
     $Null = $TotalTable[$ModuleName].Add($BreakingChangeItem)
 }
 
-$MigrationGuidePath = [System.IO.Path]::Combine($PSScriptRoot, '..', '..', 'documentation', 'migration-guides')
+$MigrationGuidePath = [System.IO.Path]::Combine($PSScriptRoot, '..', '..', 'documentation', 'migration-guides', "Az.$TargetAzVersion.0-migration-guide.md")
 $MigrationGuidePath = Resolve-Path -Path $MigrationGuidePath
-$MigrationGuidePath = [System.IO.Path]::Combine($MigrationGuidePath, "Az.$TargetAzVersion.0-migration-guide.md")
 Set-Content -Path $MigrationGuidePath -Value "# Migration Guide for Az $TargetAzVersion.0`n"
 
 foreach ($Module in ($TotalTable.Keys | Sort-Object)) {

@@ -22,11 +22,11 @@ body:
   attributes:
     label: Type of issue
     options:
-      - Other (describe below)
+      - Typo
       - Code doesn't work
       - Missing information
       - Outdated article
-      - Typo
+      - Other (describe below)
   validations:
     required: true
 - type: textarea

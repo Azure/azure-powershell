@@ -41,33 +41,31 @@ Get-AzSqlInstancePool
 ```
 
 ```output
-ResourceGroupName          : resourcegroup01
-Type                       : Microsoft.Sql/instancePools
-Id                         : /subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx/resourceGroups/resourcegroup01/providers/Microsoft.Sql/instancePools/instancePool0
-InstancePoolName           : instancePool0
-SubnetId                   : /subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx/resourceGroups/resourcegroup01/providers/Microsoft.Network/virtualNetworks/vnet_name/subnets/subnet_name
-VCores                     : 8
-ComputeGeneration          : Gen5
-Edition                    : GeneralPurpose
-Tags                       :
-Sku                        : Microsoft.Azure.Management.Sql.Models.Sku
-Location                   : canadacentral
-LicenseType                : LicenseIncluded
-MaintenanceConfigurationId : /subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx/providers/Microsoft.Maintenance/publicMaintenanceConfigurations/SQL_canadacentral_MI_1
+ResourceGroupName : resourcegroup01
+Type              : Microsoft.Sql/instancePools
+Id                : /subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx/resourceGroups/resourcegroup01/providers/Microsoft.Sql/instancePools/instancePool0
+InstancePoolName  : instancePool0
+SubnetId          : /subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx/resourceGroups/resourcegroup01/providers/Microsoft.Network/virtualNetworks/vnet_name/subnets/subnet_name
+VCores            : 8
+ComputeGeneration : Gen5
+Edition           : GeneralPurpose
+Tags              :
+Sku               : Microsoft.Azure.Management.Sql.Models.Sku
+Location          : canadacentral
+LicenseType       : LicenseIncluded
 
-ResourceGroupName          : resourcegroup02
-Type                       : Microsoft.Sql/instancePools
-Id                         : /subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx/resourceGroups/resourcegroup02/providers/Microsoft.Sql/instancePools/ps-instancepool-1
-InstancePoolName           : instancePool0
-SubnetId                   : /subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx/resourceGroups/resourcegroup02/providers/Microsoft.Network/virtualNetworks/vnet_name/subnets/subnet_name
-VCores                     : 8
-ComputeGeneration          : Gen5
-Edition                    : GeneralPurpose
-Tags                       :
-Sku                        : Microsoft.Azure.Management.Sql.Models.Sku
-Location                   : canadacentral
-LicenseType                : LicenseIncluded
-MaintenanceConfigurationId : /subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx/providers/Microsoft.Maintenance/publicMaintenanceConfigurations/SQL_canadacentral_MI_1
+ResourceGroupName : resourcegroup02
+Type              : Microsoft.Sql/instancePools
+Id                : /subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx/resourceGroups/resourcegroup02/providers/Microsoft.Sql/instancePools/ps-instancepool-1
+InstancePoolName  : instancePool0
+SubnetId          : /subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx/resourceGroups/resourcegroup02/providers/Microsoft.Network/virtualNetworks/vnet_name/subnets/subnet_name
+VCores            : 8
+ComputeGeneration : Gen5
+Edition           : GeneralPurpose
+Tags              :
+Sku               : Microsoft.Azure.Management.Sql.Models.Sku
+Location          : canadacentral
+LicenseType       : LicenseIncluded
 ```
 
 This command gets information about all instance pools within the customer subscription.
@@ -78,20 +76,18 @@ Get-AzSqlInstancePool -ResourceGroupName resourcegroup01
 ```
 
 ```output
-ResourceGroupName          : resourcegroup01
-Type                       : Microsoft.Sql/instancePools
-Id                         : /subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx/resourceGroups/resourcegroup01/providers/Microsoft.Sql/instancePools/instancePool0
-InstancePoolName           : instancePool0
-SubnetId                   : /subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx/resourceGroups/resourcegroup01/providers/Microsoft.Network/virtualNetworks/vnet_name/subnets/subnet_name
-VCores                     : 8
-ComputeGeneration          : Gen5
-Edition                    : GeneralPurpose
-Tags                       :
-Sku                        : Microsoft.Azure.Management.Sql.Models.Sku
-Location                   : canadacentral
-LicenseType                : LicenseIncluded
-DnsZone                    : 1234567890
-MaintenanceConfigurationId : /subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx/providers/Microsoft.Maintenance/publicMaintenanceConfigurations/SQL_canadacentral_MI_1
+ResourceGroupName : resourcegroup01
+Type              : Microsoft.Sql/instancePools
+Id                : /subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx/resourceGroups/resourcegroup01/providers/Microsoft.Sql/instancePools/instancePool0
+InstancePoolName  : instancePool0
+SubnetId          : /subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx/resourceGroups/resourcegroup01/providers/Microsoft.Network/virtualNetworks/vnet_name/subnets/subnet_name
+VCores            : 8
+ComputeGeneration : Gen5
+Edition           : GeneralPurpose
+Tags              :
+Sku               : Microsoft.Azure.Management.Sql.Models.Sku
+Location          : canadacentral
+LicenseType       : LicenseIncluded
 ```
 
 This command gets information about all instance pools within the resource group resourcegroup01.
@@ -102,20 +98,18 @@ Get-AzSqlInstancePool -ResourceGroupName resourcegroup01 -Name instancePool0
 ```
 
 ```output
-ResourceGroupName          : resourcegroup01
-Type                       : Microsoft.Sql/instancePools
-Id                         : /subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx/resourceGroups/resourcegroup01/providers/Microsoft.Sql/instancePools/instancePool0
-InstancePoolName           : instancePool0
-SubnetId                   : /subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx/resourceGroups/resourcegroup01/providers/Microsoft.Network/virtualNetworks/vnet_name/subnets/subnet_name
-VCores                     : 8
-ComputeGeneration          : Gen5
-Edition                    : GeneralPurpose
-Tags                       :
-Sku                        : Microsoft.Azure.Management.Sql.Models.Sku
-Location                   : canadacentral
-LicenseType                : LicenseIncluded
-DnsZone                    : 1234567890
-MaintenanceConfigurationId : /subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx/providers/Microsoft.Maintenance/publicMaintenanceConfigurations/SQL_canadacentral_MI_1
+ResourceGroupName : resourcegroup01
+Type              : Microsoft.Sql/instancePools
+Id                : /subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx/resourceGroups/resourcegroup01/providers/Microsoft.Sql/instancePools/instancePool0
+InstancePoolName  : instancePool0
+SubnetId          : /subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx/resourceGroups/resourcegroup01/providers/Microsoft.Network/virtualNetworks/vnet_name/subnets/subnet_name
+VCores            : 8
+ComputeGeneration : Gen5
+Edition           : GeneralPurpose
+Tags              :
+Sku               : Microsoft.Azure.Management.Sql.Models.Sku
+Location          : canadacentral
+LicenseType       : LicenseIncluded
 ```
 
 This command gets information about the instance pool instancePool0.
@@ -126,20 +120,18 @@ Get-AzSqlInstancePool -ResourceId "/subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxx
 ```
 
 ```output
-ResourceGroupName          : resourcegroup01
-Type                       : Microsoft.Sql/instancePools
-Id                         : /subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx/resourceGroups/resourcegroup01/providers/Microsoft.Sql/instancePools/instancePool0
-InstancePoolName           : instancePool0
-SubnetId                   : /subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx/resourceGroups/resourcegroup01/providers/Microsoft.Network/virtualNetworks/vnet_name/subnets/subnet_name
-VCores                     : 8
-ComputeGeneration          : Gen5
-Edition                    : GeneralPurpose
-Tags                       :
-Sku                        : Microsoft.Azure.Management.Sql.Models.Sku
-Location                   : canadacentral
-LicenseType                : LicenseIncluded
-DnsZone                    : 1234567890
-MaintenanceConfigurationId : /subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx/providers/Microsoft.Maintenance/publicMaintenanceConfigurations/SQL_canadacentral_MI_1
+ResourceGroupName : resourcegroup01
+Type              : Microsoft.Sql/instancePools
+Id                : /subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx/resourceGroups/resourcegroup01/providers/Microsoft.Sql/instancePools/instancePool0
+InstancePoolName  : instancePool0
+SubnetId          : /subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx/resourceGroups/resourcegroup01/providers/Microsoft.Network/virtualNetworks/vnet_name/subnets/subnet_name
+VCores            : 8
+ComputeGeneration : Gen5
+Edition           : GeneralPurpose
+Tags              :
+Sku               : Microsoft.Azure.Management.Sql.Models.Sku
+Location          : canadacentral
+LicenseType       : LicenseIncluded
 ```
 
 This command gets information about the instance pool with its resource identifier.

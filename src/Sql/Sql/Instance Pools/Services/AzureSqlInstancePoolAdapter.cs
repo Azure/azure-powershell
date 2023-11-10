@@ -63,8 +63,7 @@ namespace Microsoft.Azure.Commands.Sql.Instance_Pools.Services
                     Location = model.Location,
                     SubnetId = model.SubnetId,
                     Tags = model.Tags,
-                    VCores = model.VCores,
-                    MaintenanceConfigurationId = model.MaintenanceConfigurationId,
+                    VCores = model.VCores
                 });
             return CreateInstancePoolModelFromResponse(result);
         }
@@ -125,7 +124,6 @@ namespace Microsoft.Azure.Commands.Sql.Instance_Pools.Services
                 VCores = instancePoolResp.VCores.Value,
                 LicenseType = instancePoolResp.LicenseType,
                 Sku = instancePoolResp.Sku,
-                MaintenanceConfigurationId = instancePoolResp.MaintenanceConfigurationId,
             };
         }
 
