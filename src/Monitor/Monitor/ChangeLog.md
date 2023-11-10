@@ -19,6 +19,8 @@
 -->
 
 ## Upcoming Release
+
+## Version 5.0.0
   * [Breaking Change] Action Group upgraded API version to stable 2023-01-01
   * [Breaking Change] Use new and update cmdlets instead `Set-AzActionGroup` cmdlet
   * The receiver used subtype cmdlets to create a replacement for command `New-AzActionGroupReceiver`
