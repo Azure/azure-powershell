@@ -1,7 +1,7 @@
 @{
   GUID = 'a6006217-b983-465f-9b21-5017989fa14f'
   RootModule = './Az.Nginx.psm1'
-  ModuleVersion = '1.0.0'
+  ModuleVersion = '0.1.0'
   CompatiblePSEditions = 'Core', 'Desktop'
   Author = 'Microsoft Corporation'
   CompanyName = 'Microsoft Corporation'
