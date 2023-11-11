@@ -18,6 +18,8 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
+
+## Version 3.0.0
 * Added commands for image, virtual hard disk, storager path, logical network, network interface, and virtual machine creations.
 * Added CRUD commands for each resource. 
 * Added ability to Add and Remove a Disk from a Virtual Machine and Add and Remove a Network Interface from a virtual machine.
