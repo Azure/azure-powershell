@@ -8,7 +8,7 @@ schema: 2.0.0
 # Remove-AzNginxConfiguration
 
 ## SYNOPSIS
-Reset the Nginx configuration of given Nginx deployment to default
+Reset the NGINX configuration of given NGINX deployment to default
 
 ## SYNTAX
 
@@ -26,7 +26,7 @@ Remove-AzNginxConfiguration -InputObject <INginxIdentity> [-DefaultProfile <PSOb
 ```
 
 ## DESCRIPTION
-Reset the Nginx configuration of given Nginx deployment to default
+Reset the NGINX configuration of given NGINX deployment to default
 
 ## EXAMPLES
 
@@ -77,7 +77,7 @@ Accept wildcard characters: False
 ```
 
 ### -DeploymentName
-The name of targeted Nginx deployment
+The name of targeted NGINX deployment
 
 ```yaml
 Type: System.String
@@ -108,7 +108,7 @@ Accept wildcard characters: False
 ```
 
 ### -Name
-The name of configuration, only 'default' is supported value due to the singleton of Nginx conf
+The name of configuration, only 'default' is supported value due to the singleton of NGINX conf
 
 ```yaml
 Type: System.String

@@ -8,19 +8,19 @@ schema: 2.0.0
 # New-AzNginxCertificate
 
 ## SYNOPSIS
-Create or update the Nginx certificates for given Nginx deployment
+Create or update the NGINX certificates for given NGINX deployment
 
 ## SYNTAX
 
 ```
 New-AzNginxCertificate -DeploymentName <String> -Name <String> -ResourceGroupName <String>
  -CertificateVirtualPath <String> -KeyVaultSecretId <String> -KeyVirtualPath <String>
- [-SubscriptionId <String>] [-Location <String>] [-Tag <Hashtable>] [-DefaultProfile <PSObject>] [-AsJob]
- [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
+ [-SubscriptionId <String>] [-Location <String>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm]
+ [-WhatIf] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-Create or update the Nginx certificates for given Nginx deployment
+Create or update the NGINX certificates for given NGINX deployment
 
 ## EXAMPLES
 
@@ -85,7 +85,7 @@ Accept wildcard characters: False
 ```
 
 ### -DeploymentName
-The name of targeted Nginx deployment
+The name of targeted NGINX deployment
 
 ```yaml
 Type: System.String
@@ -205,21 +205,6 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -Tag
-Dictionary of \<string\>
-
-```yaml
-Type: System.Collections.Hashtable
-Parameter Sets: (All)
-Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
 ### -Confirm
 Prompts you for confirmation before running the cmdlet.
 
@@ -258,7 +243,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.Nginx.Models.Api20220801.INginxCertificate
+### Microsoft.Azure.PowerShell.Cmdlets.Nginx.Models.Api20230401.INginxCertificate
 
 ## NOTES
 

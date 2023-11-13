@@ -1,13 +1,13 @@
 {
   "resourceType": "nginxDeployments/configurations",
-  "apiVersion": "2022-08-01",
+  "apiVersion": "2023-04-01",
   "learnMore": {
     "url": "https://learn.microsoft.com/powershell/module/az.nginx"
   },
   "commands": [
     {
       "name": "Get-AzNginxConfiguration",
-      "description": "Get the Nginx configuration of given Nginx deployment",
+      "description": "Get the NGINX configuration of given NGINX deployment",
       "path": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Nginx.NginxPlus/nginxDeployments/{deploymentName}/configurations/{configurationName}",
       "help": {
         "learnMore": {
@@ -26,7 +26,7 @@
       },
       "examples": [
         {
-          "description": "Get the Nginx configuration of given Nginx deployment",
+          "description": "Get the NGINX configuration of given NGINX deployment",
           "parameters": [
             {
               "name": "-DeploymentName",
@@ -50,7 +50,7 @@
     },
     {
       "name": "Remove-AzNginxConfiguration",
-      "description": "Reset the Nginx configuration of given Nginx deployment to default",
+      "description": "Reset the NGINX configuration of given NGINX deployment to default",
       "path": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Nginx.NginxPlus/nginxDeployments/{deploymentName}/configurations/{configurationName}",
       "help": {
         "learnMore": {
@@ -69,7 +69,7 @@
       },
       "examples": [
         {
-          "description": "Reset the Nginx configuration of given Nginx deployment to default",
+          "description": "Reset the NGINX configuration of given NGINX deployment to default",
           "parameters": [
             {
               "name": "-DeploymentName",
