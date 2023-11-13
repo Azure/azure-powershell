@@ -69,7 +69,7 @@ directive:
 ```
 
 ``` yaml
-branch: main
+commit: 78eac0bd58633028293cb1ec1709baa200bed9e2
 require:
   - $(this-folder)/../readme.azure.noprofile.md
 input-file:

@@ -54,8 +54,8 @@ title: ResourceMover
 service-name: ResourceMover
 prefix: Az
 subject-prefix: $(service-name)
-branch: bf2585e9f0696cc8d5f230481612a37eac542f39
-repo: https://github.com/Azure/azure-rest-api-specs/tree/$(branch)
+commit: bf2585e9f0696cc8d5f230481612a37eac542f39
+repo: https://github.com/Azure/azure-rest-api-specs/tree/$(commit)
 module-name: $(prefix).$(service-name)
 namespace: Microsoft.Azure.PowerShell.Cmdlets.$(service-name)
 clear-output-folder: true

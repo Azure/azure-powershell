@@ -49,7 +49,7 @@ In this directory, run AutoRest:
 ### General settings
 > Values
 ``` yaml
-branch: f09aacf4c6b63be416212cb182f6b31e8bc6d545
+commit: f09aacf4c6b63be416212cb182f6b31e8bc6d545
 require:
   - $(this-folder)/../readme.azure.noprofile.md
   - $(repo)/specification/hdinsight/resource-manager/Microsoft.HDInsight/HDInsightOnAks/readme.md

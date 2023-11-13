@@ -50,7 +50,7 @@ In this directory, run AutoRest:
 require:
   - $(this-folder)/../readme.azure.noprofile.md
 # lock the commit
-branch: 6d7653ffd37cdc781e16202306567e355b45ebf8
+commit: 6d7653ffd37cdc781e16202306567e355b45ebf8
 input-file:
   - $(repo)/specification/labservices/resource-manager/Microsoft.LabServices/preview/2021-10-01-preview/Images.json
   - $(repo)/specification/labservices/resource-manager/Microsoft.LabServices/preview/2021-10-01-preview/LabPlans.json

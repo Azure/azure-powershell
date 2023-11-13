@@ -30,7 +30,7 @@ For information on how to develop for `Az.Dns`, see [how-to.md](how-to.md).
 > see https://aka.ms/autorest
 
 ``` yaml
-branch: a3126a361b75f952ece050b2cf67c11d4e542ef8
+commit: a3126a361b75f952ece050b2cf67c11d4e542ef8
 require:
   - $(this-folder)/../../readme.azure.noprofile.md
 input-file:

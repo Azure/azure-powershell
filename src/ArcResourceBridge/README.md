@@ -30,7 +30,7 @@ For information on how to develop for `Az.ArcResourceBridge`, see [how-to.md](ho
 > see https://aka.ms/autorest
 
 ``` yaml
-branch: 7d6c14d986a67dca3451d7d92d8f6b9416d61fbf
+commit: 7d6c14d986a67dca3451d7d92d8f6b9416d61fbf
 require:
   - $(this-folder)/../readme.azure.noprofile.md
 input-file:

@@ -34,7 +34,7 @@ For information on how to develop for `Az.DataCollectionRule`, see [how-to.md](h
 require:
 # readme.azure.noprofile.md is the common configuration file
   - $(this-folder)/../../readme.azure.noprofile.md
-branch: 4f4044394791773e6e7e82a9bd90d3935caaca1b
+commit: 4f4044394791773e6e7e82a9bd90d3935caaca1b
 
 input-file:
     - $(repo)/specification/monitor/resource-manager/Microsoft.Insights/stable/2022-06-01/dataCollectionEndpoints_API.json

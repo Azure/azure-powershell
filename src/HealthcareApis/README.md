@@ -30,7 +30,7 @@ For information on how to develop for `Az.HealthcareApis`, see [how-to.md](how-t
 > see https://aka.ms/autorest
 
 ``` yaml
-branch: 672281444dd67605420fc9b3bcbd170040708380
+commit: 672281444dd67605420fc9b3bcbd170040708380
 require:
   - $(this-folder)/../readme.azure.noprofile.md 
 input-file:

@@ -29,7 +29,7 @@ For information on how to develop for `Az.Compute`, see [how-to.md](how-to.md).
 ### AutoRest Configuration
 > see https://aka.ms/autorest
 ``` yaml
-branch: 1a925d1afe288a5f20d078bbc89214a36a0e4287
+commit: 1a925d1afe288a5f20d078bbc89214a36a0e4287
 require:
 # readme.azure.noprofile.md is the common configuration file
   - $(this-folder)/../../readme.azure.noprofile.md

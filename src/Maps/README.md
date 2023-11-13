@@ -30,7 +30,7 @@ For information on how to develop for `Az.Maps`, see [how-to.md](how-to.md).
 > see https://aka.ms/autorest
 
 ``` yaml
-branch: 34f09c2b143dc50acc8905a415b8d6c959c9e142
+commit: 34f09c2b143dc50acc8905a415b8d6c959c9e142
 require:
   - $(this-folder)/../readme.azure.noprofile.md
 input-file:

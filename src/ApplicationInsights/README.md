@@ -31,7 +31,7 @@ For information on how to develop for `Az.ApplicationInsights`, see [how-to.md](
 
 ``` yaml
 # lock the commit
-branch: 60be34ab72f1483aef8feede852bc9f2f1921897
+commit: 60be34ab72f1483aef8feede852bc9f2f1921897
 require:
   - $(this-folder)/../readme.azure.noprofile.md
 input-file:

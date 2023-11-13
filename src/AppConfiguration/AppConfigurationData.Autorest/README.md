@@ -47,7 +47,7 @@ In this directory, run AutoRest:
 > see https://aka.ms/autorest
 
 ``` yaml
-branch: 498ccf7ddf78ced8ef515f88b755b2eb3775de9e
+commit: 498ccf7ddf78ced8ef515f88b755b2eb3775de9e
 require:
   - $(this-folder)/../../readme.azure.noprofile.md
 input-file:

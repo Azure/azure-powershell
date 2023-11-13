@@ -30,7 +30,7 @@ For information on how to develop for `Az.MonitorWorkspace`, see [how-to.md](how
 > see https://aka.ms/autorest
 
 ``` yaml
-branch: 14268abc2d999d7c0425490f8ecf0c91b46ea44b
+commit: 14268abc2d999d7c0425490f8ecf0c91b46ea44b
 require:
   - $(this-folder)/../../readme.azure.noprofile.md
 input-file:

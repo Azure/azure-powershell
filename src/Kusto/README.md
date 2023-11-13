@@ -54,7 +54,7 @@ require:
 # lock the commit
 input-file:
   - $(repo)/specification/azure-kusto/resource-manager/Microsoft.Kusto/stable/2023-08-15/kusto.json
-branch: 4c38cb9966cd6afbb03c7e9b14997720a728baee
+commit: 4c38cb9966cd6afbb03c7e9b14997720a728baee
 
 ```
 

@@ -32,8 +32,8 @@ For information on how to develop for `Az.NetworkCloud`, see [how-to.md](how-to.
 ```yaml
 # pin the swagger version by using the commit id instead of branch name
 # the 2023-05-01-preview in main: 64efc48302878a07d1d1231eaed0ca9cadfaf037
-# the 2023-07-01 stable in a temp branch: f7ab2a992ff6a3a51a8f0bc82f2d7beebf61d90b
-branch: f7ab2a992ff6a3a51a8f0bc82f2d7beebf61d90b
+# the 2023-07-01 stable in a temp commit: f7ab2a992ff6a3a51a8f0bc82f2d7beebf61d90b
+commit: f7ab2a992ff6a3a51a8f0bc82f2d7beebf61d90b
 require:
 # readme.azure.noprofile.md is the common configuration file
   - $(this-folder)/../readme.azure.noprofile.md

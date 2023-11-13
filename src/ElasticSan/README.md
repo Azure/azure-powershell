@@ -31,7 +31,7 @@ For information on how to develop for `Az.ElasticSan`, see [how-to.md](how-to.md
 
 ``` yaml
 # Please specify the commit id that includes your features to make sure generated codes stable.
-branch: 9770615578c920dad8cb6fce33d79c7e112824c0
+commit: 9770615578c920dad8cb6fce33d79c7e112824c0
 require:
   - $(this-folder)/../readme.azure.noprofile.md
 input-file:

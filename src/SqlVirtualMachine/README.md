@@ -30,7 +30,7 @@ For information on how to develop for `Az.SqlVirtualMachine`, see [how-to.md](ho
 > see https://aka.ms/autorest
 
 ```yaml
-branch: 0e20dd2e4e2a40e83840c30cce2efc4847fd9cb9
+commit: 0e20dd2e4e2a40e83840c30cce2efc4847fd9cb9
 require:
 # readme.azure.noprofile.md is the common configuration file
   - $(this-folder)/../readme.azure.noprofile.md
