@@ -152,7 +152,7 @@ namespace Microsoft.Azure.Commands.StorageSync.Evaluation.Validations.NamespaceV
 
                 if (!string.IsNullOrEmpty(message))
                 {
-                    Trace.TraceInformation(message);
+                    Trace.TraceWarning(message);
                 }
             }
 
