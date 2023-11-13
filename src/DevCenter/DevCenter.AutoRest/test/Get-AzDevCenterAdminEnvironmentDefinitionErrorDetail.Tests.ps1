@@ -16,11 +16,11 @@ if(($null -eq $TestName) -or ($TestName -contains 'Get-AzDevCenterAdminEnvironme
 
 Describe 'Get-AzDevCenterAdminEnvironmentDefinitionErrorDetail' {
     It 'Get' -skip {
-        Get-AzDevCenterAdminEnvironmentDefinitionErrorDetail -EnvironmentDefinition "Sandbox" -DevCenterName $env.devCenterName -CatalogName $env.catalogName -ResourceGroupName $env.resourceGroup
+        Get-AzDevCenterAdminEnvironmentDefinitionErrorDetail -EnvironmentDefinition "Sandbox" -DevCenterName $env.devCenterName10 -CatalogName $env.catalogName -ResourceGroupName $env.resourceGroupName10 -SubscriptionId $env.SubscriptionId2
         }
 
     It 'GetViaIdentity' -skip {
-        Get-AzDevCenterAdminEnvironmentDefinitionErrorDetail -InputObject @{"EnvironmentDefinition" = "Sandbox"; "-DevCenterName" = $env.devCenterName; "ResourceGroupName" = $env.resourceGroupCheck; "CatalogName" = $env.catalogName; "SubscriptionId" = $env.SubscriptionId2}
+        Get-AzDevCenterAdminEnvironmentDefinitionErrorDetail -InputObject @{"EnvironmentDefinition" = "Sandbox"; "-DevCenterName" = $env.devCenterName10; "ResourceGroupName" = $env.resourceGroupName10; "CatalogName" = $env.catalogName; "SubscriptionId" = $env.SubscriptionId2}
         
     }
 }

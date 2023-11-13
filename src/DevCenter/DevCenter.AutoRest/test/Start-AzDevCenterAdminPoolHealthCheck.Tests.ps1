@@ -16,10 +16,10 @@ if(($null -eq $TestName) -or ($TestName -contains 'Start-AzDevCenterAdminPoolHea
 
 Describe 'Start-AzDevCenterAdminPoolHealthCheck' {
     It 'Run' {
-        Start-AzDevCenterAdminPoolHealthCheck -PoolName $env.poolCheck -ProjectName $env.projectCheck -ResourceGroupName $env.resourceGroupCheck -SubscriptionId $env.SubscriptionId2
+        Start-AzDevCenterAdminPoolHealthCheck -PoolName $env.poolName -ProjectName $env.projectName -ResourceGroupName $env.resourceGroupName10 -SubscriptionId $env.SubscriptionId2
         }
 
-    It 'RunViaIdentity' -skip {
-        Start-AzDevCenterAdminPoolHealthCheck -InputObject @{"PoolName" = $env.poolCheck; "ProjectName" = $env.projectCheck; "ResourceGroupName" = $env.resourceGroupCheck; "SubscriptionId" = $env.SubscriptionId2}
+    It 'RunViaIdentity' {
+        Start-AzDevCenterAdminPoolHealthCheck -InputObject @{"PoolName" = $env.poolName; "ProjectName" = $env.projectName; "ResourceGroupName" = $env.resourceGroupName10; "SubscriptionId" = $env.SubscriptionId2}
     }
 }

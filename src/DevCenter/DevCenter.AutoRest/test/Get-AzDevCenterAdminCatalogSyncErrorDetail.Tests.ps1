@@ -16,11 +16,11 @@ if(($null -eq $TestName) -or ($TestName -contains 'Get-AzDevCenterAdminCatalogSy
 
 Describe 'Get-AzDevCenterAdminCatalogSyncErrorDetail' {
     It 'Get' -skip {
-        Get-AzDevCenterAdminCatalogSyncErrorDetail -DevCenterName $env.devCenterName -CatalogName $env.catalogName -ResourceGroupName $env.resourceGroup
+        Get-AzDevCenterAdminCatalogSyncErrorDetail -DevCenterName $env.devCenterName10 -CatalogName $env.catalogName -ResourceGroupName $env.resourceGroupName10 -SubscriptionId $env.SubscriptionId2
     }
 
     It 'GetViaIdentity' -skip {
-        $catalog = Get-AzDevCenterAdminCatalog -DevCenterName $env.devCenterName -Name $env.catalogName -ResourceGroupName $env.resourceGroup
+        $catalog = Get-AzDevCenterAdminCatalog -DevCenterName $env.devCenterName10 -Name $env.catalogName -ResourceGroupName $env.resourceGroupName10 -SubscriptionId $env.SubscriptionId2
         Get-AzDevCenterAdminCatalogSyncErrorDetail -InputObject $catalog   
     }
 }
