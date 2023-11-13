@@ -11,9 +11,6 @@ Locale: en-US
 Microsoft Azure PowerShell: DevCenter cmdlets
 
 ## Az.DevCenter Cmdlets
-### [Connect-AzDevCenterAdminCatalog](Connect-AzDevCenterAdminCatalog.md)
-Connects a catalog to enable syncing.
-
 ### [Get-AzDevCenterAdminAttachedNetwork](Get-AzDevCenterAdminAttachedNetwork.md)
 Gets an attached NetworkConnection.
 
