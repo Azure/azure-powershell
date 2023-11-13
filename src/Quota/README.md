@@ -47,6 +47,10 @@ nested-object-to-string: true
 
 inlining-threshold: 50
 
+# For new modules, please avoid setting 3.x using the use-extension method and instead, use 4.x as the default option
+use-extension:
+  "@autorest/powershell": "3.x"
+
 directive:
   # The regex(^/(?<scope>[^/]+)/) mathch failed because the scope inlcude '/' character.
   # Replace regex to fixed it. 

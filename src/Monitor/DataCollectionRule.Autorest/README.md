@@ -49,8 +49,6 @@ subject-prefix: ''
 resourcegroup-append: true
 nested-object-to-string: true
 
-use-extension:
-  "@autorest/powershell": "4.x"
 
 directive:
   - remove-operation: DataCollectionRules_Update

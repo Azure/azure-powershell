@@ -64,8 +64,7 @@ identity-correction-for-post: true
 resourcegroup-append: true
 nested-object-to-string: true
 endpoint-resource-id-key-name: AzureAppConfigurationEndpointResourceId
-use-extension:
-  "@autorest/powershell": "4.x"
+
 
 directive:
   # Remove the Etag and Last-Modified in headers from the response

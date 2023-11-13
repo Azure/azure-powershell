@@ -45,8 +45,6 @@ title: Storage
 subject-prefix: $(service-name)
 nested-object-to-string: true
 identity-correction-for-post: true 
-use-extension: 
-  "@autorest/powershell": "4.x"
 
 directive:
   - where:  
