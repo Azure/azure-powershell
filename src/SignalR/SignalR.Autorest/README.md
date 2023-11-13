@@ -50,7 +50,7 @@ psm1-custom: custom/Az.SignalR.custom.psm1
 title: WebPubSub
 subject-prefix: ''
 # When updating the commit hash, please update all occurrences in the file
-branch: 492cf91751be945ceae53cfdd53b1ff2fb878703
+commit: 492cf91751be945ceae53cfdd53b1ff2fb878703
 
 # If there are post APIs for some kinds of actions in the RP, you may need to
 # uncomment following line to support viaIdentity for these post APIs

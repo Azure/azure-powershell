@@ -31,7 +31,7 @@ For information on how to develop for `Az.Logz`, see [how-to.md](how-to.md).
 
 ``` yaml
 # lock the commit
-branch: b4f133f7c44af4189d61d35e34c5ed05fd9fa72b
+commit: b4f133f7c44af4189d61d35e34c5ed05fd9fa72b
 require:
   - $(this-folder)/../readme.azure.noprofile.md
 input-file:

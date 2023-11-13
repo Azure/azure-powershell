@@ -31,7 +31,7 @@ For information on how to develop for `Az.Qumulo`, see [how-to.md](how-to.md).
 
 ```yaml
 # pin the swagger version by using the commit id instead of branch name
-branch: b56524cc505fc6605c9d62d913a974af63e43112
+commit: b56524cc505fc6605c9d62d913a974af63e43112
 tag: package-2022-10-12-preview
 require:
 # readme.azure.noprofile.md is the common configuration file

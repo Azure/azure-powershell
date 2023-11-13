@@ -31,7 +31,7 @@ For information on how to develop for `Az.Quota`, see [how-to.md](how-to.md).
 
 ``` yaml
 # lock the commit
-branch: 679887ace44697c726aba8d2814ee415a5d25e6f
+commit: 679887ace44697c726aba8d2814ee415a5d25e6f
 require:
   - $(this-folder)/../readme.azure.noprofile.md
 input-file:

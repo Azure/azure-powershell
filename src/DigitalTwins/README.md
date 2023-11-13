@@ -30,7 +30,7 @@ For information on how to develop for `Az.DigitalTwins`, see [how-to.md](how-to.
 > see https://aka.ms/autorest
 
 ``` yaml
-branch: 9a312bb730561b8e8e3c0ea7c224de38a9d05238
+commit: 9a312bb730561b8e8e3c0ea7c224de38a9d05238
 require:
   - $(this-folder)/../readme.azure.noprofile.md
 input-file:

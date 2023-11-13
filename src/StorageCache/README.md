@@ -30,7 +30,7 @@ For information on how to develop for `Az.StorageCache`, see [how-to.md](how-to.
 > see https://aka.ms/autorest
 
 ``` yaml
-branch: 7a65f22cf67826187f75981e914c7e679039257b
+commit: 7a65f22cf67826187f75981e914c7e679039257b
 require:
   - $(this-folder)/../readme.azure.noprofile.md
 input-file:

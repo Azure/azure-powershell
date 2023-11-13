@@ -30,7 +30,7 @@ For information on how to develop for `Az.Attestation`, see [how-to.md](how-to.m
 > see https://aka.ms/autorest
 
 ``` yaml
-branch: 49761e90136044aa164e59d3dc8da0a66644f239
+commit: 49761e90136044aa164e59d3dc8da0a66644f239
 require:
 # readme.azure.noprofile.md is the common configuration file
   - $(this-folder)/../../readme.azure.noprofile.md

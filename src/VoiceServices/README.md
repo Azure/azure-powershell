@@ -35,7 +35,7 @@ In this directory, run AutoRest:
 > see https://aka.ms/autorest
 
 ``` yaml
-branch: 78ec1b99699a4bf44869bd13f1b0ed7d92a99c27
+commit: 78ec1b99699a4bf44869bd13f1b0ed7d92a99c27
 require:
   - $(this-folder)/../readme.azure.noprofile.md
   - $(repo)/specification/voiceservices/resource-manager/readme.md

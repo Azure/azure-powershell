@@ -30,7 +30,7 @@ For information on how to develop for `Az.ServiceLinker`, see [how-to.md](how-to
 > see https://aka.ms/autorest
 
 ``` yaml
-branch: e7bf3adfa2d5e5cdbb804eec35279501794f461c
+commit: e7bf3adfa2d5e5cdbb804eec35279501794f461c
 require:
 # readme.azure.noprofile.md is the common configuration file
   - $(this-folder)/../readme.azure.noprofile.md

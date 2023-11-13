@@ -31,7 +31,7 @@ For information on how to develop for `Az.NewRelic`, see [how-to.md](how-to.md).
 
 ```yaml
 # pin the swagger version by using the commit id instead of branch name
-branch: 6b992c049ed7d6a95465d5c0a2234fc54c87b9bf
+commit: 6b992c049ed7d6a95465d5c0a2234fc54c87b9bf
 tag: package-2022-07-01
 require:
 # readme.azure.noprofile.md is the common configuration file

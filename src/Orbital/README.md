@@ -30,7 +30,7 @@ For information on how to develop for `Az.Orbital`, see [how-to.md](how-to.md).
 > see https://aka.ms/autorest
 
 ``` yaml
-branch: 8725e0700974d2c8cba436b5696728ebc5a80f1b
+commit: 8725e0700974d2c8cba436b5696728ebc5a80f1b
 require:
   - $(this-folder)/../readme.azure.noprofile.md 
 input-file:

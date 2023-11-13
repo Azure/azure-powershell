@@ -31,7 +31,7 @@ For information on how to develop for `Az.KeyVault`, see [how-to.md](how-to.md).
 
 ``` yaml
 # Please specify the commit id that includes your features to make sure generated codes stable.
-branch: 8fa9b5051129dd4808c9be1f5b753af226b044db
+commit: 8fa9b5051129dd4808c9be1f5b753af226b044db
 require:
 # readme.azure.noprofile.md is the common configuration file
   - $(this-folder)/../../readme.azure.noprofile.md

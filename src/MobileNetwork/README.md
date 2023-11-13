@@ -30,7 +30,7 @@ For information on how to develop for `Az.MobileNetwork`, see [how-to.md](how-to
 > see https://aka.ms/autorest
 
 ``` yaml
-branch: 933dbc070dda85e2d115dc42893f07b2ed5b74f6
+commit: 933dbc070dda85e2d115dc42893f07b2ed5b74f6
 require:
   - $(this-folder)/../readme.azure.noprofile.md
 input-file:

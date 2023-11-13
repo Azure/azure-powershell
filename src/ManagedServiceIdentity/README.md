@@ -30,7 +30,7 @@ For information on how to develop for `Az.ManagedServiceIdentity`, see [how-to.m
 > see https://aka.ms/autorest
 
 ``` yaml
-branch: main
+commit: 78eac0bd58633028293cb1ec1709baa200bed9e2
 require:
   - $(this-folder)/../readme.azure.noprofile.md
 input-file:

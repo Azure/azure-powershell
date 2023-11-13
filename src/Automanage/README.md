@@ -31,7 +31,7 @@ For information on how to develop for `Az.Automanage`, see [how-to.md](how-to.md
 > see https://aka.ms/autorest
 
 ``` yaml
-branch: 54ad712dbb6f83113574e2c81558cb146740912a
+commit: 54ad712dbb6f83113574e2c81558cb146740912a
 require:
   - $(this-folder)/../readme.azure.noprofile.md
 input-file:

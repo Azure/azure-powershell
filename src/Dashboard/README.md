@@ -30,7 +30,7 @@ For information on how to develop for `Az.Dashboard`, see [how-to.md](how-to.md)
 > see https://aka.ms/autorest
 
 ``` yaml
-branch: 02ed6d4aac29881364f8698b4fdac9c76cd0f538
+commit: 02ed6d4aac29881364f8698b4fdac9c76cd0f538
 require:
   - $(this-folder)/../readme.azure.noprofile.md
 input-file:

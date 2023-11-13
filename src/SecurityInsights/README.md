@@ -50,7 +50,7 @@ In this directory, run AutoRest:
 require:
   - $(this-folder)/../readme.azure.noprofile.md
 # lock the commit
-branch: 59eb5a7f1d09d0be2b80b8497785ffa2d784b5b6
+commit: 59eb5a7f1d09d0be2b80b8497785ffa2d784b5b6
 
 input-file:
   - $(repo)/specification/securityinsights/resource-manager/Microsoft.SecurityInsights/preview/2021-09-01-preview/AlertRules.json

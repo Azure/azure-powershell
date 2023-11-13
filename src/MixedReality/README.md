@@ -30,7 +30,7 @@ For information on how to develop for `Az.MixedReality`, see [how-to.md](how-to.
 > see https://aka.ms/autorest
 
 ``` yaml
-branch: a0c83df51e02f4e0b21ff3ae72c5a1ac52f72586
+commit: a0c83df51e02f4e0b21ff3ae72c5a1ac52f72586
 require:
   - $(this-folder)/../readme.azure.noprofile.md
 input-file:

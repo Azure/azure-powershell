@@ -34,7 +34,7 @@ This file contains the configuration for generating My API from the OpenAPI spec
 
 ``` yaml
 # it's the same options as command line options, just drop the double-dash!
-branch: acf24167b5174d88f36302e243c883f2e63eec52
+commit: acf24167b5174d88f36302e243c883f2e63eec52
 require:
   - $(this-folder)/../readme.azure.noprofile.md
 input-file:

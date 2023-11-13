@@ -30,7 +30,7 @@ For information on how to develop for `Az.MachineLearningServices`, see [how-to.
 > see https://aka.ms/autorest
 
 ``` yaml
-# branch: 476564a1aa6ddb38ec681c9f89d42f00c1becd25
+# commit: 476564a1aa6ddb38ec681c9f89d42f00c1becd25
 require:
   - $(this-folder)/../readme.azure.noprofile.md
 input-file:

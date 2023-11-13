@@ -31,7 +31,7 @@ For information on how to develop for `Az.BareMetal`, see [how-to.md](how-to.md)
 > see https://aka.ms/autorest
 
 ``` yaml
-branch: 1e42e81660d1bc0be000477a4659b29a7ce7d67b
+commit: 1e42e81660d1bc0be000477a4659b29a7ce7d67b
 require:
   - $(this-folder)/../readme.azure.noprofile.md
 input-file: 

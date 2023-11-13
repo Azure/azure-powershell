@@ -30,7 +30,7 @@ For information on how to develop for `Az.ContainerInstance`, see [how-to.md](ho
 > see https://aka.ms/autorest
 
 ``` yaml
-branch: 81562c6c057a510ddde50ff40720d254bd5f6dbf
+commit: 81562c6c057a510ddde50ff40720d254bd5f6dbf
 require:
 # readme.azure.noprofile.md is the common configuration file
   - $(this-folder)/../readme.azure.noprofile.md

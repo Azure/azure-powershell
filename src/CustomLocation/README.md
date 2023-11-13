@@ -30,7 +30,7 @@ For information on how to develop for `Az.CustomLocation`, see [how-to.md](how-t
 > see https://aka.ms/autorest
 
 ``` yaml
-branch: c6c9e02ae4de78cd7357bc4a5a7be38e6f1909d0
+commit: c6c9e02ae4de78cd7357bc4a5a7be38e6f1909d0
 require:
   - $(this-folder)/../readme.azure.noprofile.md
 input-file: 

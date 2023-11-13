@@ -30,7 +30,7 @@ For information on how to develop for `Az.DeviceUpdate`, see [how-to.md](how-to.
 > see https://aka.ms/autorest
 
 ``` yaml
-branch: a7480c1f8b16b7b2be41de94726dca359e93178b
+commit: a7480c1f8b16b7b2be41de94726dca359e93178b
 require:
   - $(this-folder)/../readme.azure.noprofile.md
 input-file:

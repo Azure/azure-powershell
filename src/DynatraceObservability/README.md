@@ -30,7 +30,7 @@ For information on how to develop for `Az.DynatraceObservability`, see [how-to.m
 > see https://aka.ms/autorest
 
 ``` yaml
-branch: 8820fa48b53c2c5c6cada3d44046b879932893cd
+commit: 8820fa48b53c2c5c6cada3d44046b879932893cd
 require:
   - $(this-folder)/../readme.azure.noprofile.md
 input-file:

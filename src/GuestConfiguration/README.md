@@ -29,7 +29,7 @@ For information on how to develop for `Az.GuestConfiguration`, see [how-to.md](h
 ### AutoRest Configuration
 > see https://aka.ms/autorest
 ``` yaml
-branch: d5c524d7228920ac75e27efe2e4616d5e43f71b1
+commit: d5c524d7228920ac75e27efe2e4616d5e43f71b1
 require:
   - $(this-folder)/../readme.azure.noprofile.md
 # lock the commit

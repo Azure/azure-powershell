@@ -30,7 +30,7 @@ For information on how to develop for `Az.Purview`, see [how-to.md](how-to.md).
 > see https://aka.ms/autorest
 
 ``` yaml
-branch: ebe90b1dfef9ec9706dee06e84676a6c6979ab53
+commit: ebe90b1dfef9ec9706dee06e84676a6c6979ab53
 require:
   - $(this-folder)/../../readme.azure.noprofile.md
 # lock the commit

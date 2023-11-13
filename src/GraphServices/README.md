@@ -31,7 +31,7 @@ For information on how to develop for `Az.GraphServices`, see [how-to.md](how-to
 
 ```yaml
 # pin the swagger version by using the commit id instead of branch name
-branch: 7b9aa4cc7456fd7ef2bc3166dba1a77bec6bd52e
+commit: 7b9aa4cc7456fd7ef2bc3166dba1a77bec6bd52e
 require:
 # readme.azure.noprofile.md is the common configuration file
   - $(this-folder)/../readme.azure.noprofile.md

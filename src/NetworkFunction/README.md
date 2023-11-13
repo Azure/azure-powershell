@@ -30,7 +30,7 @@ For information on how to develop for `Az.NetworkFunction`, see [how-to.md](how-
 > see https://aka.ms/autorest
 
 ``` yaml
-branch: 5ef93469c04983e472e57ca227fc5159d13a172a
+commit: 5ef93469c04983e472e57ca227fc5159d13a172a
 require:
   - $(this-folder)/../readme.azure.noprofile.md
 input-file:

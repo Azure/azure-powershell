@@ -30,7 +30,7 @@ For information on how to develop for `Az.WindowsIotServices`, see [how-to.md](h
 > see https://aka.ms/autorest
 
 ``` yaml
-branch: cae75058ed79deb758e08021315ce5a7fc27d403
+commit: cae75058ed79deb758e08021315ce5a7fc27d403
 require:
   - $(this-folder)/../readme.azure.noprofile.md
 input-file:

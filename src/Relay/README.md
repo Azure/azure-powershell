@@ -30,7 +30,7 @@ For information on how to develop for `Az.Relay`, see [how-to.md](how-to.md).
 > see https://aka.ms/autorest
 
 ``` yaml
-branch: 591b17c5a50e7fc0ef09211197279e6d9f7ebc22
+commit: 591b17c5a50e7fc0ef09211197279e6d9f7ebc22
 require:
   - $(this-folder)/../readme.azure.noprofile.md
   - $(repo)/specification/relay/resource-manager/readme.md

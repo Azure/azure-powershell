@@ -31,7 +31,7 @@ For information on how to develop for `Az.NetworkAnalytics`, see [how-to.md](how
 
 ```yaml
 # pin the swagger version by using the commit id instead of branch name
-branch: c364b64a6b412ffd7507dea71ae53251d35748c1
+commit: c364b64a6b412ffd7507dea71ae53251d35748c1
 require:
 # readme.azure.noprofile.md is the common configuration file
   - $(this-folder)/../readme.azure.noprofile.md

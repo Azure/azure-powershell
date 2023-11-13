@@ -45,7 +45,7 @@ module-version: 0.1.0
 # Normally, title is the service name
 title: Cdn
 subject-prefix: $(service-name)
-branch: 61c04ab5495e259114bc427cdd77c3ab8ce8ec81
+commit: 61c04ab5495e259114bc427cdd77c3ab8ce8ec81
 
 # If there are post APIs for some kinds of actions in the RP, you may need to 
 # uncomment following line to support viaIdentity for these post APIs

@@ -30,7 +30,7 @@ For information on how to develop for `Az.Aks`, see [how-to.md](how-to.md).
 > see https://aka.ms/autorest
 
 ``` yaml
-branch: 6031674c73a95ffd60f58b5cdd633c94b3360467
+commit: 6031674c73a95ffd60f58b5cdd633c94b3360467
 require:
   - $(this-folder)/../../readme.azure.noprofile.md
 input-file:
