@@ -14,18 +14,18 @@ if (($null -eq $TestName) -or ($TestName -contains 'Get-AzDevCenterAdminEnvironm
 }
 
 Describe 'Get-AzDevCenterAdminEnvironmentDefinition' {
-    It 'List' -skip {
-        $listOfEnvironmentDefinitions = Get-AzDevCenterAdminEnvironmentDefinition -DevCenterName $env.devCenterNameEnvDef -Name $env.catalogName -ResourceGroupName $env.resourceGroupEnvDef - SubscriptionId $env.SubscriptionId2
+    It 'List' {
+        $listOfEnvironmentDefinitions = Get-AzDevCenterAdminEnvironmentDefinition -DevCenterName $env.devCenterNameEnvDef -Name $env.catalogName -ResourceGroupName $env.resourceGroupEnvDef -SubscriptionId $env.SubscriptionId2
         $listOfEnvironmentDefinitions.Count | Should -BeGreaterOrEqual 1
     }
 
-    It 'Get' -skip {
-        $envDef = Get-AzDevCenterAdminEnvironmentDefinition -Name "Sandbox" -DevCenterName $env.devCenterName -CatalogName $env.catalogName -ResourceGroupName $env.resourceGroup
+    It 'Get' {
+        $envDef = Get-AzDevCenterAdminEnvironmentDefinition -Name "Sandbox" -DevCenterName $env.devCenterName -CatalogName $env.catalogName -ResourceGroupName $env.resourceGroup -SubscriptionId $env.SubscriptionId2
         $envDef.Name | Should -Be "Sandbox"
     }
 
-    It 'GetViaIdentity' -skip {
-        $envDef = Get-AzDevCenterAdminEnvironmentDefinition -Name "Sandbox" -DevCenterName $env.devCenterName -CatalogName $env.catalogName -ResourceGroupName $env.resourceGroup
+    It 'GetViaIdentity' {
+        $envDef = Get-AzDevCenterAdminEnvironmentDefinition -Name "Sandbox" -DevCenterName $env.devCenterName -CatalogName $env.catalogName -ResourceGroupName $env.resourceGroup -SubscriptionId $env.SubscriptionId2
         $envDef = Get-AzDevCenterAdminEnvironmentDefinition -InputObject $envDef
         $envDef.Name | Should -Be "Sandbox"    
     }
