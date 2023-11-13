@@ -78,6 +78,5 @@ namespace Microsoft.Azure.Commands.Compute.Automation.Models
         public SupportedCapabilities SupportedCapabilities { get; set; }
         public string DataAccessAuthMode { get; set; }
         public double? CompletionPercent { get; set; }
-        public bool? OptimizedForFrequentAttach { get; set; }
     }
 }

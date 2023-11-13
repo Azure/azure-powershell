@@ -18,8 +18,9 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
-* Check in track-1 source code.
-* Add new feature: Enable secure channels while creating a new cluster.
+* Added new feature: Enable secure channels while creating a new cluster.
+
+## Version 6.0.2
 * Fixed a bug where the get cluster command does not display abfss storage information.
 
 ## Version 6.0.1

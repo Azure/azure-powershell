@@ -19,7 +19,8 @@
 -->
 
 ## Upcoming Release
-* [Breaking Change] Redesigned CRUD cmdlets for `PolicyAssignment`, `PolicyDefinition`, `PolicyExemption`, `PolicySetDefinition`. Please see Az 11 migration guide https://learn.microsoft.com/en-us/powershell/azure/migrate-az-10.0.0 for more detail.
+
+## Version 6.12.0
 * Supported $ref statements for user-defined types in Bicep files.
 * Fixed reporting duplicate warnings when compiling Bicep files.
 * Updated New and Set Management Group cmdlets to allow DeploymentSubscription to be optional.

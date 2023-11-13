@@ -18,6 +18,9 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
+* Added support copyComputeScale And pipelineExternalComputeScale in `Set-AzDataFactoryV2IntegrationRuntime` Command
+
+## Version 1.17.1
 * Added ParquetReadSettings in ADF
 * Fixed minor issues
 

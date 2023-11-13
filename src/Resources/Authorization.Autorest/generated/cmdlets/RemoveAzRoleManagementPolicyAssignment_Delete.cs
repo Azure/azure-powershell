@@ -16,7 +16,6 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Resources.Authorization.Cmdlets
     [global::System.Management.Automation.OutputType(typeof(bool))]
     [global::Microsoft.Azure.PowerShell.Cmdlets.Resources.Authorization.Description(@"Delete a role management policy assignment")]
     [global::Microsoft.Azure.PowerShell.Cmdlets.Resources.Authorization.Generated]
-    [global::Microsoft.Azure.PowerShell.Cmdlets.Resources.Authorization.HttpPath(Path = "/{scope}/providers/Microsoft.Authorization/roleManagementPolicyAssignments/{roleManagementPolicyAssignmentName}", ApiVersion = "2020-10-01-preview")]
     public partial class RemoveAzRoleManagementPolicyAssignment_Delete : global::System.Management.Automation.PSCmdlet,
         Microsoft.Azure.PowerShell.Cmdlets.Resources.Authorization.Runtime.IEventListener
     {

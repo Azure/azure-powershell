@@ -125,7 +125,7 @@ PrivateData = @{
         # IconUri = ''
 
         # ReleaseNotes of this module
-        # ReleaseNotes = ''
+        # ReleaseNotes = '* Supported SmbFileShareEndpoint and SmbEndpoint'
 
         # Prerelease string of this module
         # Prerelease = ''

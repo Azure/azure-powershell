@@ -24,8 +24,13 @@ Adds or updates a V2 (non-classic) metric-based alert rule.
 Adds or updates a classic webtest alert rule (already retired on public cloud).
 To create a new webtest alert rule, use the [Add-AzMetricAlertRuleV2](./Add-AzMetricAlertRuleV2.md) cmdlet, passing a criteria object for webtest (created via the [New-AzMetricAlertRuleV2Criteria](./New-AzMetricAlertRuleV2Criteria.md) cmdlet with a "-WebTest" criteria type).
 
+### [Enable-AzActionGroupReceiver](Enable-AzActionGroupReceiver.md)
+Enable a receiver in an action group.
+This changes the receiver's status from Disabled to Enabled.
+This operation is only supported for Email or SMS receivers.
+
 ### [Get-AzActionGroup](Get-AzActionGroup.md)
-Gets action group(s).
+Get an action group.
 
 ### [Get-AzActivityLog](Get-AzActivityLog.md)
 Retrieve Activity Log events.
@@ -94,8 +99,41 @@ Retrieve an scheduled query rule definition.
 ### [Get-AzSubscriptionDiagnosticSetting](Get-AzSubscriptionDiagnosticSetting.md)
 Gets the active subscription diagnostic settings for the specified resource.
 
-### [New-AzActionGroupReceiver](New-AzActionGroupReceiver.md)
-Creates an new action group receiver.
+### [New-AzActionGroup](New-AzActionGroup.md)
+Create a new action group or update an existing one.
+
+### [New-AzActionGroupArmRoleReceiverObject](New-AzActionGroupArmRoleReceiverObject.md)
+Create an in-memory object for ArmRoleReceiver.
+
+### [New-AzActionGroupAutomationRunbookReceiverObject](New-AzActionGroupAutomationRunbookReceiverObject.md)
+Create an in-memory object for AutomationRunbookReceiver.
+
+### [New-AzActionGroupAzureAppPushReceiverObject](New-AzActionGroupAzureAppPushReceiverObject.md)
+Create an in-memory object for AzureAppPushReceiver.
+
+### [New-AzActionGroupAzureFunctionReceiverObject](New-AzActionGroupAzureFunctionReceiverObject.md)
+Create an in-memory object for AzureFunctionReceiver.
+
+### [New-AzActionGroupEmailReceiverObject](New-AzActionGroupEmailReceiverObject.md)
+Create an in-memory object for EmailReceiver.
+
+### [New-AzActionGroupEventHubReceiverObject](New-AzActionGroupEventHubReceiverObject.md)
+Create an in-memory object for EventHubReceiver.
+
+### [New-AzActionGroupItsmReceiverObject](New-AzActionGroupItsmReceiverObject.md)
+Create an in-memory object for ItsmReceiver.
+
+### [New-AzActionGroupLogicAppReceiverObject](New-AzActionGroupLogicAppReceiverObject.md)
+Create an in-memory object for LogicAppReceiver.
+
+### [New-AzActionGroupSmsReceiverObject](New-AzActionGroupSmsReceiverObject.md)
+Create an in-memory object for SmsReceiver.
+
+### [New-AzActionGroupVoiceReceiverObject](New-AzActionGroupVoiceReceiverObject.md)
+Create an in-memory object for VoiceReceiver.
+
+### [New-AzActionGroupWebhookReceiverObject](New-AzActionGroupWebhookReceiverObject.md)
+Create an in-memory object for WebhookReceiver.
 
 ### [New-AzActivityLogAlert](New-AzActivityLogAlert.md)
 Create a new Activity Log Alert rule or update an existing one.
@@ -233,7 +271,7 @@ Create an in-memory object for WindowsEventLogDataSource.
 Create an in-memory object for WindowsFirewallLogsDataSource.
 
 ### [Remove-AzActionGroup](Remove-AzActionGroup.md)
-Removes an action group.
+Delete an action group.
 
 ### [Remove-AzActivityLogAlert](Remove-AzActivityLogAlert.md)
 Delete an Activity Log Alert rule.
@@ -277,11 +315,11 @@ Deletes a scheduled query rule.
 ### [Remove-AzSubscriptionDiagnosticSetting](Remove-AzSubscriptionDiagnosticSetting.md)
 Deletes existing subscription diagnostic settings for the specified resource.
 
-### [Set-AzActionGroup](Set-AzActionGroup.md)
-Creates a new or updates an existing action group.
-
 ### [Test-AzActionGroup](Test-AzActionGroup.md)
-Sends test notifications
+Send test notifications to a set of provided receivers
+
+### [Update-AzActionGroup](Update-AzActionGroup.md)
+Create a new action group or update an existing one.
 
 ### [Update-AzActivityLogAlert](Update-AzActivityLogAlert.md)
 Updates 'tags' and 'enabled' fields in an existing Alert rule.
@@ -296,7 +334,7 @@ To update other fields use the CreateOrUpdate method.
 Updates part of a data collection endpoint.
 
 ### [Update-AzDataCollectionRule](Update-AzDataCollectionRule.md)
-Updates part of a data collection rule.
+Update a data collection rule.
 
 ### [Update-AzDataCollectionRuleAssociation](Update-AzDataCollectionRuleAssociation.md)
 Create an association.

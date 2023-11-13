@@ -75,13 +75,6 @@ Test-AzManagementGroupDeployment [-Name <String>] -ManagementGroupId <String> -L
  [-SkipTemplateParameterPrompt] [-Pre] [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
-### ByParameterFileWithNoTemplate
-```
-Test-AzManagementGroupDeployment [-Name <String>] -ManagementGroupId <String> -Location <String>
- [-QueryString <String>] -TemplateParameterFile <String> [-SkipTemplateParameterPrompt] [-Pre]
- [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
-```
-
 ### ByTemplateObjectAndParameterUri
 ```
 Test-AzManagementGroupDeployment [-Name <String>] -ManagementGroupId <String> -Location <String>
@@ -128,6 +121,13 @@ Test-AzManagementGroupDeployment [-Name <String>] -ManagementGroupId <String> -L
 ```
 Test-AzManagementGroupDeployment [-Name <String>] -ManagementGroupId <String> -Location <String>
  [-QueryString <String>] -TemplateSpecId <String> [-SkipTemplateParameterPrompt] [-Pre]
+ [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
+```
+
+### ByParameterFileWithNoTemplate
+```
+Test-AzManagementGroupDeployment [-Name <String>] -ManagementGroupId <String> -Location <String>
+ [-QueryString <String>] -TemplateParameterFile <String> [-SkipTemplateParameterPrompt] [-Pre]
  [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
