@@ -26,7 +26,7 @@ Microsoft.Azure.PowerShell.Cmdlets.Workloads.Models.Api20231001Preview.HanaDbPro
 https://learn.microsoft.com/powershell/module/az.workloads/new-azworkloadsproviderhanadbinstanceobject
 #>
 function New-AzWorkloadsProviderHanaDbInstanceObject {
-    [OutputType('Microsoft.Azure.PowerShell.Cmdlets.Workloads.Models.Api20231001Preview.HanaDbProviderInstanceProperties')]
+    [OutputType('Microsoft.Azure.PowerShell.Cmdlets.Workloads.Models.Api20230401.HanaDbProviderInstanceProperties')]
     [CmdletBinding(PositionalBinding=$false)]
     Param(
 
@@ -67,7 +67,7 @@ function New-AzWorkloadsProviderHanaDbInstanceObject {
     )
 
     process {
-        $Object = [Microsoft.Azure.PowerShell.Cmdlets.Workloads.Models.Api20231001Preview.HanaDbProviderInstanceProperties]::New()
+        $Object = [Microsoft.Azure.PowerShell.Cmdlets.Workloads.Models.Api20230401.HanaDbProviderInstanceProperties]::New()
 
         if ($PSBoundParameters.ContainsKey('Name')) {
             $Object.DbName = $Name

@@ -45,6 +45,14 @@ nested-object-to-string: true
 inlining-threshold: 100
 
 directive:
+#Preview message
+- where:
+    subject: ^SapVirtualInstance$|^SapApplicationServerInstance$|^SapCentralInstance$|^SapDatabaseInstance$|^SapAvailabilityZoneDetail$|^SapDiskConfiguration$|^SapSizingRecommendation$|^SapSupportedSku$
+  set:
+    preview-announcement:
+      preview-message: This is a test preview message.
+      estimated-ga-date: 2023-09-30
+
 # Monitor
 - where:
     verb: New
@@ -223,14 +231,6 @@ directive:
   set:
     parameter-name: ManagedResourceGroupName
 
-- where:
-    verb: Get
-    subject: ^SapVirtualInstance$
-  set:
-    preview-announcement:
-      preview-message: This is a test preview message.
-      estimated-ga-date: 2023-09-30
-
 # SapAvailabilityZoneDetail
 - where:
     verb: Invoke
@@ -364,7 +364,7 @@ directive:
 # Result shoule be in SingleServerRecommendationResult and ThreeTierRecommendationResult
 - from: source-file-csharp
   where: $
-  transform: $ = $.replace('internal Microsoft.Azure.PowerShell.Cmdlets.Workloads.Models.Api20230401.ISapSizingRecommendationResult Property', 'public Microsoft.Azure.PowerShell.Cmdlets.Workloads.Models.Api20230401.ISapSizingRecommendationResult Property');
+  transform: $ = $.replace('internal Microsoft.Azure.PowerShell.Cmdlets.Workloads.Models.Api20231001Preview.ISapSizingRecommendationResult Property', 'public Microsoft.Azure.PowerShell.Cmdlets.Workloads.Models.Api20230401.ISapSizingRecommendationResult Property');
 
 # remove System Data in module Monitor, ProviderInstance, SapApplicationServerInstance, SapCentralServerInstance, SapDatabaseInstance, SapLandscapeMonitor, SapVirtualInstance
 - from: Monitor.cs

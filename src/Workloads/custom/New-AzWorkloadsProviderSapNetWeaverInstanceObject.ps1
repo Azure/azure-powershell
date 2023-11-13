@@ -26,7 +26,7 @@ Microsoft.Azure.PowerShell.Cmdlets.Workloads.Models.Api20231001Preview.SapNetWea
 https://learn.microsoft.com/powershell/module/az.workloads/new-azworkloadsprovidersapnetweaverinstanceobject
 #>
 function New-AzWorkloadsProviderSapNetWeaverInstanceObject {
-    [OutputType('Microsoft.Azure.PowerShell.Cmdlets.Workloads.Models.Api20231001Preview.SapNetWeaverProviderInstanceProperties')]
+    [OutputType('Microsoft.Azure.PowerShell.Cmdlets.Workloads.Models.Api20230401.SapNetWeaverProviderInstanceProperties')]
     [CmdletBinding(PositionalBinding=$false)]
     Param(
 
@@ -67,7 +67,7 @@ function New-AzWorkloadsProviderSapNetWeaverInstanceObject {
     )
 
     process {
-        $Object = [Microsoft.Azure.PowerShell.Cmdlets.Workloads.Models.Api20231001Preview.SapNetWeaverProviderInstanceProperties]::New()
+        $Object = [Microsoft.Azure.PowerShell.Cmdlets.Workloads.Models.Api20230401.SapNetWeaverProviderInstanceProperties]::New()
 
         if ($PSBoundParameters.ContainsKey('SapClientId')) {
             $Object.SapClientId = $SapClientId

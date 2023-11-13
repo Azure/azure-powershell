@@ -26,7 +26,7 @@ Microsoft.Azure.PowerShell.Cmdlets.Workloads.Models.Api20231001Preview.DB2Provid
 https://learn.microsoft.com/powershell/module/az.workloads/new-azworkloadsproviderdb2instanceobject
 #>
 function New-AzWorkloadsProviderDB2InstanceObject {
-    [OutputType('Microsoft.Azure.PowerShell.Cmdlets.Workloads.Models.Api20231001Preview.DB2ProviderInstanceProperties')]
+    [OutputType('Microsoft.Azure.PowerShell.Cmdlets.Workloads.Models.Api20230401.DB2ProviderInstanceProperties')]
     [CmdletBinding(PositionalBinding=$false)]
     Param(
 
@@ -61,7 +61,7 @@ function New-AzWorkloadsProviderDB2InstanceObject {
     )
 
     process {
-        $Object = [Microsoft.Azure.PowerShell.Cmdlets.Workloads.Models.Api20231001Preview.DB2ProviderInstanceProperties]::New()
+        $Object = [Microsoft.Azure.PowerShell.Cmdlets.Workloads.Models.Api20230401.DB2ProviderInstanceProperties]::New()
 
         if ($PSBoundParameters.ContainsKey('Name')) {
             $Object.DbName = $Name
