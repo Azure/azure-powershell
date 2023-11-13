@@ -142,7 +142,7 @@ Accept wildcard characters: False
 ```
 
 ### -Scope
-Scope to install modules.
+Scope to install modules. Default value is `CurrentUser` for all the Powershell platforms.
 Accepted values: CurrentUser, AllUser.
 
 ```yaml

@@ -31,7 +31,7 @@ For information on how to develop for `Az.DevCenterdata`, see [how-to.md](how-to
 
 ```yaml
 # pin the swagger version by using the commit id instead of branch name
-branch: bce3a8d1141c8c6df26d17c94b0f5437f214141f
+commit: bce3a8d1141c8c6df26d17c94b0f5437f214141f
 require:
 # readme.azure.noprofile.md is the common configuration file
   - $(this-folder)/../../readme.azure.noprofile.md
@@ -42,6 +42,10 @@ input-file:
 title: DevCenterdata
 subject-prefix: DevCenter
 endpoint-resource-id-key-name: https://devcenter.azure.com
+# For new modules, please avoid setting 3.x using the use-extension method and instead, use 4.x as the default option
+use-extension:
+  "@autorest/powershell": "3.x"
+
 directive:
   - from: swagger-document
     where: $.paths["/projects/{projectName}/users/{userId}/devboxes/{devBoxName}"].delete.responses

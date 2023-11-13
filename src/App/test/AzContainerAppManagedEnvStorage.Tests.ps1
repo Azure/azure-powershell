@@ -20,29 +20,49 @@ Describe 'AzContainerAppManagedEnvStorage' {
 
     It 'CreateExpanded' -skip {
         {
-            $storageAccountKey = (Get-AzStorageAccountKey -ResourceGroupName $env.resourceGroup -AccountName $env.storageAccount).Value[0]
-            $config = New-AzContainerAppManagedEnvStorage -EnvName $env.envName -ResourceGroupName $env.resourceGroup -StorageName $env.storageAccount -AzureFileAccessMode 'ReadWrite' -AzureFileAccountKey $storageAccountKey -AzureFileAccountName $env.storageAccount -AzureFileShareName azps-rw-sharename
+            $storageAccountKey = (Get-AzStorageAccountKey -ResourceGroupName $env.resourceGroupManaged -AccountName $env.storageAccount1).Value[0]
+
+            $config = New-AzContainerAppManagedEnvStorage -EnvName $env.managedEnv1 -ResourceGroupName $env.resourceGroupManaged -Name $env.managedEnvStorage -AzureFileAccessMode 'ReadWrite' -AzureFileAccountKey $storageAccountKey -AzureFileAccountName $env.storageAccount1 -AzureFileShareName azps-rw-sharename
             $config.AzureFileShareName | Should -Be "azps-rw-sharename"
         } | Should -Not -Throw
     }
 
     It 'List' -skip {
         {
-            $config = Get-AzContainerAppManagedEnvStorage -EnvName $env.envName -ResourceGroupName $env.resourceGroup
+            $config = Get-AzContainerAppManagedEnvStorage -EnvName $env.managedEnv1 -ResourceGroupName $env.resourceGroupManaged
             $config.Count | Should -BeGreaterThan 0
         } | Should -Not -Throw
     }
 
     It 'Get' -skip {
         {
-            $config = Get-AzContainerAppManagedEnvStorage -EnvName $env.envName -ResourceGroupName $env.resourceGroup -StorageName $env.storageAccount
+            $config = Get-AzContainerAppManagedEnvStorage -EnvName $env.managedEnv1 -ResourceGroupName $env.resourceGroupManaged -Name $env.managedEnvStorage
+            $config.AzureFileShareName | Should -Be "azps-rw-sharename"
+        } | Should -Not -Throw
+    }
+
+    It 'UpdateExpanded' -skip {
+        {
+            $storageAccountKey = (Get-AzStorageAccountKey -ResourceGroupName $env.resourceGroupManaged -AccountName $env.storageAccount1).Value[0]
+
+            $config = Update-AzContainerAppManagedEnvStorage -EnvName $env.managedEnv1 -ResourceGroupName $env.resourceGroupManaged -Name $env.managedEnvStorage -AzureFileAccessMode 'ReadWrite' -AzureFileAccountKey $storageAccountKey -AzureFileAccountName azpstestsa -AzureFileShareName azps-rw-sharename
+            $config.AzureFileShareName | Should -Be "azps-rw-sharename"
+        } | Should -Not -Throw
+    }
+
+    It 'UpdateViaIdentityExpanded' -skip {
+        {
+            $storageAccountKey = (Get-AzStorageAccountKey -ResourceGroupName $env.resourceGroupManaged -AccountName $env.storageAccount1).Value[0]
+            $config = Get-AzContainerAppManagedEnvStorage -EnvName $env.managedEnv1 -ResourceGroupName $env.resourceGroupManaged -Name $env.managedEnvStorage
+
+            $config = Update-AzContainerAppManagedEnvStorage -InputObject $config -AzureFileAccessMode 'ReadWrite' -AzureFileAccountKey $storageAccountKey -AzureFileAccountName azpstestsa -AzureFileShareName azps-rw-sharename
             $config.AzureFileShareName | Should -Be "azps-rw-sharename"
         } | Should -Not -Throw
     }
 
     It 'Delete' -skip {
         {
-            Remove-AzContainerAppManagedEnvStorage -EnvName $env.envName -ResourceGroupName $env.resourceGroup -StorageName $env.storageAccount
+            Remove-AzContainerAppManagedEnvStorage -EnvName $env.managedEnv1 -ResourceGroupName $env.resourceGroupManaged -Name $env.managedEnvStorage
         } | Should -Not -Throw
     }
 }

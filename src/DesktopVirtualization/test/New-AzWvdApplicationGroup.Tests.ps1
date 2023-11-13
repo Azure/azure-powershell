@@ -38,7 +38,8 @@ Describe 'New-AzWvdApplicationGroup' {
                                 -FriendlyName 'fri' `
                                 -Description 'des' `
                                 -HostPoolArmPath $env.HostPoolArmPath `
-                                -ApplicationGroupType 'RemoteApp'
+                                -ApplicationGroupType 'RemoteApp' `
+                                -ShowInFeed
                 $applicationGroup.Name | Should -Be $env.RemoteApplicationGroup
                 $applicationGroup.Location | Should -Be $env.Location
                 $applicationGroup.FriendlyName | Should -Be 'fri'

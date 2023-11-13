@@ -8,19 +8,19 @@ schema: 2.0.0
 # New-AzNginxConfiguration
 
 ## SYNOPSIS
-Create or update the Nginx configuration for given Nginx deployment
+Create or update the NGINX configuration for given NGINX deployment
 
 ## SYNTAX
 
 ```
 New-AzNginxConfiguration -DeploymentName <String> -Name <String> -ResourceGroupName <String>
  [-SubscriptionId <String>] [-File <INginxConfigurationFile[]>] [-Location <String>] [-PackageData <String>]
- [-ProtectedFile <INginxConfigurationFile[]>] [-RootFile <String>] [-Tag <Hashtable>]
+ [-PackageProtectedFile <String[]>] [-ProtectedFile <INginxConfigurationFile[]>] [-RootFile <String>]
  [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-Create or update the Nginx configuration for given Nginx deployment
+Create or update the NGINX configuration for given NGINX deployment
 
 ## EXAMPLES
 
@@ -70,7 +70,7 @@ Accept wildcard characters: False
 ```
 
 ### -DeploymentName
-The name of targeted Nginx deployment
+The name of targeted NGINX deployment
 
 ```yaml
 Type: System.String
@@ -89,7 +89,7 @@ Accept wildcard characters: False
 To construct, see NOTES section for FILE properties and create a hash table.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.Nginx.Models.Api20220801.INginxConfigurationFile[]
+Type: Microsoft.Azure.PowerShell.Cmdlets.Nginx.Models.Api20230401.INginxConfigurationFile[]
 Parameter Sets: (All)
 Aliases:
 
@@ -116,7 +116,7 @@ Accept wildcard characters: False
 ```
 
 ### -Name
-The name of configuration, only 'default' is supported value due to the singleton of Nginx conf
+The name of configuration, only 'default' is supported value due to the singleton of NGINX conf
 
 ```yaml
 Type: System.String
@@ -160,12 +160,27 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### -PackageProtectedFile
+.
+
+```yaml
+Type: System.String[]
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
 ### -ProtectedFile
 .
 To construct, see NOTES section for PROTECTEDFILE properties and create a hash table.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.Nginx.Models.Api20220801.INginxConfigurationFile[]
+Type: Microsoft.Azure.PowerShell.Cmdlets.Nginx.Models.Api20230401.INginxConfigurationFile[]
 Parameter Sets: (All)
 Aliases:
 
@@ -222,21 +237,6 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -Tag
-Dictionary of \<string\>
-
-```yaml
-Type: System.Collections.Hashtable
-Parameter Sets: (All)
-Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
 ### -Confirm
 Prompts you for confirmation before running the cmdlet.
 
@@ -275,7 +275,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.Nginx.Models.Api20220801.INginxConfiguration
+### Microsoft.Azure.PowerShell.Cmdlets.Nginx.Models.Api20230401.INginxConfiguration
 
 ## NOTES
 

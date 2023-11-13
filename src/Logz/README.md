@@ -31,7 +31,7 @@ For information on how to develop for `Az.Logz`, see [how-to.md](how-to.md).
 
 ``` yaml
 # lock the commit
-branch: b4f133f7c44af4189d61d35e34c5ed05fd9fa72b
+commit: b4f133f7c44af4189d61d35e34c5ed05fd9fa72b
 require:
   - $(this-folder)/../readme.azure.noprofile.md
 input-file:
@@ -43,6 +43,10 @@ subject-prefix: $(service-name)
 
 identity-correction-for-post: true
 resourcegroup-append: true
+
+# For new modules, please avoid setting 3.x using the use-extension method and instead, use 4.x as the default option
+use-extension:
+  "@autorest/powershell": "3.x"
 
 directive:
   # Remove cmdlets

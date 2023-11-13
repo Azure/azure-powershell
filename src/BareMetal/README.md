@@ -31,7 +31,7 @@ For information on how to develop for `Az.BareMetal`, see [how-to.md](how-to.md)
 > see https://aka.ms/autorest
 
 ``` yaml
-branch: 1e42e81660d1bc0be000477a4659b29a7ce7d67b
+commit: 1e42e81660d1bc0be000477a4659b29a7ce7d67b
 require:
   - $(this-folder)/../readme.azure.noprofile.md
 input-file: 
@@ -44,6 +44,10 @@ subject-prefix: $(service-name)
 identity-correction-for-post: true
 resourcegroup-append: true
 nested-object-to-string: true
+
+# For new modules, please avoid setting 3.x using the use-extension method and instead, use 4.x as the default option
+use-extension:
+  "@autorest/powershell": "3.x"
 
 directive:
   - where:

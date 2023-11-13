@@ -40,7 +40,7 @@ Describe 'Update-AzKustoDatabase' {
         $followerClusterName = $env.kustoFollowerClusterName
         $DefaultPrincipalsModificationKind = "Union"
         $clusterResourceId = $env.kustoClusterResourceId
-        $followerClusterResourceId = $env.kustoFolowerClusterResourceId
+        $followerClusterResourceId = $env.kustoFollowerClusterResourceId
         $databaseFullName = $followerClusterName + "/" + $databaseName
 
         New-AzKustoAttachedDatabaseConfiguration -ResourceGroupName $resourceGroupName -ClusterName $followerClusterName -Name $attachedDatabaseConfigurationName -Location $location -ClusterResourceId $clusterResourceId -DatabaseName $databaseName -DefaultPrincipalsModificationKind $DefaultPrincipalsModificationKind
@@ -79,7 +79,7 @@ Describe 'Update-AzKustoDatabase' {
         $followerClusterName = $env.kustoFollowerClusterName
         $DefaultPrincipalsModificationKind = "Union"
         $clusterResourceId = $env.kustoClusterResourceId
-        $followerClusterResourceId = $env.kustoFolowerClusterResourceId
+        $followerClusterResourceId = $env.kustoFollowerClusterResourceId
         $databaseFullName = $followerClusterName + "/" + $databaseName
 
         New-AzKustoAttachedDatabaseConfiguration -ResourceGroupName $resourceGroupName -ClusterName $followerClusterName -Name $attachedDatabaseConfigurationName -Location $location -ClusterResourceId $clusterResourceId -DatabaseName $databaseName -DefaultPrincipalsModificationKind $DefaultPrincipalsModificationKind
@@ -92,5 +92,30 @@ Describe 'Update-AzKustoDatabase' {
         Validate_Database $databaseUpdatedWithParameters $databaseFullName $env.location "Microsoft.Kusto/Clusters/Databases" $softDeletePeriodInDaysUpdated $hotCachePeriodInDaysUpdated
 
         { Invoke-AzKustoDetachClusterFollowerDatabase -ResourceGroupName $resourceGroupName -ClusterName $clusterName -AttachedDatabaseConfigurationName $attachedDatabaseConfigurationName -ClusterResourceId $followerClusterResourceId } | Should -Not -Throw
+    }
+
+    It 'UpdateViaIdentityExpandedCMK' {
+        $clusterName = $env.kustoClusterName
+        $resourceGroupName = $env.resourceGroupName
+        $databaseName = "testcmkdatabase" + $env.rstr6
+        $databaseFullName = $clusterName + "/" + $databaseName
+
+        $keyVaultPropertyKeyName = $env.keyName
+        $keyVaultPropertyKeyVaultUri = $env.keyVaultUrl
+        $keyVaultPropertyKeyVersion = $env.keyVersion
+        $keyVaultPropertyUserIdentity = $env.userAssignedManagedIdentityResourceId
+
+        New-AzKustoDatabase -ResourceGroupName $env.resourceGroupName -ClusterName $clusterName -Name $databaseName -Location $env.location -Kind ReadWrite -KeyVaultPropertyKeyName $keyVaultPropertyKeyName -KeyVaultPropertyKeyVaultUri $keyVaultPropertyKeyVaultUri -KeyVaultPropertyKeyVersion $keyVaultPropertyKeyVersion -KeyVaultPropertyUserIdentity $keyVaultPropertyUserIdentity
+        
+        $database = Get-AzKustoDatabase -ResourceGroupName $resourceGroupName -ClusterName $clusterName -Name $databaseName
+        
+        $softDeletePeriodInDaysUpdated = (New-TimeSpan -Days 5)
+        $hotCachePeriodInDaysUpdated = (New-TimeSpan -Days 10)
+        
+        $databaseUpdatedWithParameters = Update-AzKustoDatabase -InputObject $database -Location $env.location -Kind "ReadWrite" -KeyVaultPropertyKeyName $keyVaultPropertyKeyName -KeyVaultPropertyKeyVaultUri $keyVaultPropertyKeyVaultUri -KeyVaultPropertyKeyVersion $keyVaultPropertyKeyVersion -KeyVaultPropertyUserIdentity $keyVaultPropertyUserIdentity -SoftDeletePeriod $softDeletePeriodInDaysUpdated -HotCachePeriod $hotCachePeriodInDaysUpdated
+
+        Validate_CMKDatabase $databaseUpdatedWithParameters $databaseFullName $env.location "Microsoft.Kusto/Clusters/Databases" $keyVaultPropertyKeyName $keyVaultPropertyKeyVaultUri $keyVaultPropertyKeyVersion $keyVaultPropertyUserIdentity $softDeletePeriodInDaysUpdated $hotCachePeriodInDaysUpdated
+
+        { Remove-AzKustoDatabase -ResourceGroupName $env.resourceGroupName -ClusterName $clusterName -Name $databaseName } | Should -Not -Throw
     }
 }

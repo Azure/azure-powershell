@@ -23,6 +23,14 @@ Describe 'Get-AzContainerAppRevisionReplica' {
         { throw [System.NotImplementedException] } | Should -Not -Throw
     }
 
+    It 'GetViaIdentityRevision' -skip {
+        { throw [System.NotImplementedException] } | Should -Not -Throw
+    }
+
+    It 'GetViaIdentityContainerApp' -skip {
+        { throw [System.NotImplementedException] } | Should -Not -Throw
+    }
+
     It 'GetViaIdentity' -skip {
         { throw [System.NotImplementedException] } | Should -Not -Throw
     }

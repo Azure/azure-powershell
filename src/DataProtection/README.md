@@ -34,12 +34,16 @@ This file contains the configuration for generating My API from the OpenAPI spec
 
 ``` yaml
 # it's the same options as command line options, just drop the double-dash!
-branch: acf24167b5174d88f36302e243c883f2e63eec52
+commit: acf24167b5174d88f36302e243c883f2e63eec52
 require:
   - $(this-folder)/../readme.azure.noprofile.md
 input-file:
   - $(repo)/specification/dataprotection/resource-manager/Microsoft.DataProtection/stable/2023-05-01/dataprotection.json
 title: DataProtection
+# For new modules, please avoid setting 3.x using the use-extension method and instead, use 4.x as the default option
+use-extension:
+  "@autorest/powershell": "3.x"
+
 directive:
   - from: swagger-document
     where: $.paths["/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DataProtection/backupVaults/{vaultName}/backupInstances/{backupInstanceName}"].delete

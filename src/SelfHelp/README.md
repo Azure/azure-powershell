@@ -32,7 +32,7 @@ For information on how to develop for `Az.SelfHelp`, see [how-to.md](how-to.md).
 
 ```yaml
 # pin the swagger version by using the commit id instead of branch name
-branch: c2c2f7a359c217380a5ae047e153bac36c404a0c
+commit: 270eeb7a7883e0ad4e183e809fb67c6551d0eaa0
 require:
   # readme.azure.noprofile.md is the common configuration file
   - $(this-folder)/../readme.azure.noprofile.md
@@ -54,6 +54,10 @@ subject-prefix: $(service-name)
 # identity-correction-for-post: true
 resourcegroup-append: true
 nested-object-to-string: true
+
+# For new modules, please avoid setting 3.x using the use-extension method and instead, use 4.x as the default option
+use-extension:
+  "@autorest/powershell": "3.x"
 
 directive:
   # Following is two common directive which are normally required in all the RPs

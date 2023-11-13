@@ -1,0 +1,46 @@
+{
+  "AzContainerAppManagedEnvWorkloadProfileState+[NoContext]+List+$GET+https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/a5hfaey/providers/Microsoft.App/managedEnvironments/a360na/workloadProfileStates?api-version=2023-05-01+1": {
+    "Request": {
+      "Method": "GET",
+      "RequestUri": "https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/a5hfaey/providers/Microsoft.App/managedEnvironments/a360na/workloadProfileStates?api-version=2023-05-01",
+      "Content": null,
+      "isContentBase64": false,
+      "Headers": {
+        "x-ms-unique-id": [ "107" ],
+        "x-ms-client-request-id": [ "6b3234c4-7dba-4a23-a67e-ee838a5ee39a" ],
+        "CommandName": [ "Get-AzContainerAppManagedEnvWorkloadProfileState" ],
+        "FullCommandName": [ "Get-AzContainerAppManagedEnvWorkloadProfileState_List" ],
+        "ParameterSetName": [ "__AllParameterSets" ],
+        "User-Agent": [ "AzurePowershell/v0.0.0", "PSVersion/v7.3.8", "Az.App/0.2.0" ],
+        "Authorization": [ "[Filtered]" ]
+      },
+      "ContentHeaders": {
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "Vary": [ "Accept-Encoding" ],
+        "x-ms-ratelimit-remaining-subscription-reads": [ "11922" ],
+        "api-supported-versions": [ "2022-01-01-preview, 2022-03-01, 2022-06-01-preview, 2022-10-01, 2022-11-01-preview, 2023-04-01-preview, 2023-05-01, 2023-05-02-preview, 2023-08-01-preview" ],
+        "Server": [ "Microsoft-IIS/10.0" ],
+        "X-Powered-By": [ "ASP.NET" ],
+        "x-ms-request-id": [ "bba1d968-f56c-4960-be29-889137815d97" ],
+        "x-ms-correlation-request-id": [ "bba1d968-f56c-4960-be29-889137815d97" ],
+        "x-ms-routing-request-id": [ "JAPANEAST:20231030T103109Z:bba1d968-f56c-4960-be29-889137815d97" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "Date": [ "Mon, 30 Oct 2023 10:31:08 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "294" ],
+        "Content-Type": [ "application/json; charset=utf-8" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\"value\":[{\"id\":\"/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/a5hfaey/providers/Microsoft.App/managedEnvironments/a360na/workloadProfileStates/Consumption\",\"name\":\"Consumption\",\"type\":\"Consumption\",\"properties\":{\"workloadProfileType\":\"Consumption\",\"name\":\"Consumption\"}}]}",
+      "isContentBase64": false
+    }
+  }
+}

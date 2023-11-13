@@ -30,7 +30,7 @@ For information on how to develop for `Az.WindowsIotServices`, see [how-to.md](h
 > see https://aka.ms/autorest
 
 ``` yaml
-branch: cae75058ed79deb758e08021315ce5a7fc27d403
+commit: cae75058ed79deb758e08021315ce5a7fc27d403
 require:
   - $(this-folder)/../readme.azure.noprofile.md
 input-file:
@@ -40,6 +40,10 @@ input-file:
 title: WindowsIotServices
 module-version: 0.1.0
 subject-prefix: WindowsIotServices
+
+# For new modules, please avoid setting 3.x using the use-extension method and instead, use 4.x as the default option
+use-extension:
+  "@autorest/powershell": "3.x"
 
 directive:
   # Changed schema ref of the patch and put request.

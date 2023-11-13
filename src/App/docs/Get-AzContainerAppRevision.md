@@ -20,7 +20,7 @@ Get-AzContainerAppRevision -ContainerAppName <String> -ResourceGroupName <String
 
 ### Get
 ```
-Get-AzContainerAppRevision -ContainerAppName <String> -ResourceGroupName <String> -RevisionName <String>
+Get-AzContainerAppRevision -ContainerAppName <String> -Name <String> -ResourceGroupName <String>
  [-SubscriptionId <String[]>] [-DefaultProfile <PSObject>] [<CommonParameters>]
 ```
 
@@ -29,38 +29,74 @@ Get-AzContainerAppRevision -ContainerAppName <String> -ResourceGroupName <String
 Get-AzContainerAppRevision -InputObject <IAppIdentity> [-DefaultProfile <PSObject>] [<CommonParameters>]
 ```
 
+### GetViaIdentityContainerApp
+```
+Get-AzContainerAppRevision -ContainerAppInputObject <IAppIdentity> -Name <String> [-DefaultProfile <PSObject>]
+ [<CommonParameters>]
+```
+
 ## DESCRIPTION
 Get a revision of a Container App.
 
 ## EXAMPLES
 
-### Example 1: List revisions by Resource Group.
+### Example 1: List revision of a Container App.
 ```powershell
-Get-AzContainerAppRevision -ContainerAppName azps-containerapp -ResourceGroupName azpstest_gp
+Get-AzContainerAppRevision -ContainerAppName azps-containerapp-1 -ResourceGroupName azps_test_group_app
 ```
 
 ```output
-Name                       Active TrafficWeight ProvisioningState ResourceGroupName
-----                       ------ ------------- ----------------- -----------------
-azps-containerapp--ksjb6f1 True   100           Provisioned       azpstest_gp
+Name                         Active TrafficWeight ProvisioningState ResourceGroupName
+----                         ------ ------------- ----------------- -----------------
+azps-containerapp-1--6a9svx2 True   100           Provisioned       azps_test_group_app
 ```
 
-List revisions by Resource Group.
+List revision of a Container App.
 
-### Example 2: Get a revision of a Container App.
+### Example 2: Get a revision by name.
 ```powershell
-Get-AzContainerAppRevision -ContainerAppName azps-containerapp -ResourceGroupName azpstest_gp -RevisionName azps-containerapp--ksjb6f1
+Get-AzContainerAppRevision -ContainerAppName azps-containerapp-1 -ResourceGroupName azps_test_group_app -Name azps-containerapp-1--6a9svx2
 ```
 
 ```output
-Name                       Active TrafficWeight ProvisioningState ResourceGroupName
-----                       ------ ------------- ----------------- -----------------
-azps-containerapp--ksjb6f1 True   100           Provisioned       azpstest_gp
+Name                         Active TrafficWeight ProvisioningState ResourceGroupName
+----                         ------ ------------- ----------------- -----------------
+azps-containerapp-1--6a9svx2 True   100           Provisioned       azps_test_group_app
 ```
 
-Get a revision of a Container App.
+Get a revision by name.
+
+### Example 3: Get a revision by Container App.
+```powershell
+$containerapp = Get-AzContainerApp -ResourceGroupName azps_test_group_app -Name azps-containerapp-1
+Get-AzContainerAppRevision -ContainerAppInputObject $containerapp -Name azps-containerapp-1--6a9svx2
+```
+
+```output
+Name                         Active TrafficWeight ProvisioningState ResourceGroupName
+----                         ------ ------------- ----------------- -----------------
+azps-containerapp-1--6a9svx2 True   100           Provisioned       azps_test_group_app
+```
+
+Get a revision by Container App.
 
 ## PARAMETERS
+
+### -ContainerAppInputObject
+Identity Parameter
+To construct, see NOTES section for CONTAINERAPPINPUTOBJECT properties and create a hash table.
+
+```yaml
+Type: Microsoft.Azure.PowerShell.Cmdlets.App.Models.IAppIdentity
+Parameter Sets: GetViaIdentityContainerApp
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: True (ByValue)
+Accept wildcard characters: False
+```
 
 ### -ContainerAppName
 Name of the Container App.
@@ -78,7 +114,8 @@ Accept wildcard characters: False
 ```
 
 ### -DefaultProfile
-The credentials, account, tenant, and subscription used for communication with Azure.
+The DefaultProfile parameter is not functional.
+Use the SubscriptionId parameter when available if executing the cmdlet against a different subscription.
 
 ```yaml
 Type: System.Management.Automation.PSObject
@@ -123,14 +160,13 @@ Accept pipeline input: True (ByValue)
 Accept wildcard characters: False
 ```
 
-### -ResourceGroupName
-The name of the resource group.
-The name is case insensitive.
+### -Name
+Name of the Container App Revision.
 
 ```yaml
 Type: System.String
-Parameter Sets: Get, List
-Aliases:
+Parameter Sets: Get, GetViaIdentityContainerApp
+Aliases: RevisionName
 
 Required: True
 Position: Named
@@ -139,12 +175,13 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -RevisionName
-Name of the Container App Revision.
+### -ResourceGroupName
+The name of the resource group.
+The name is case insensitive.
 
 ```yaml
 Type: System.String
-Parameter Sets: Get
+Parameter Sets: Get, List
 Aliases:
 
 Required: True
@@ -178,30 +215,9 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.App.Models.Api20220301.IRevision
+### Microsoft.Azure.PowerShell.Cmdlets.App.Models.IRevision
 
 ## NOTES
-
-ALIASES
-
-COMPLEX PARAMETER PROPERTIES
-
-To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
-
-
-`INPUTOBJECT <IAppIdentity>`: Identity Parameter
-  - `[AuthConfigName <String>]`: Name of the Container App AuthConfig.
-  - `[CertificateName <String>]`: Name of the Certificate.
-  - `[ComponentName <String>]`: Name of the Dapr Component.
-  - `[ContainerAppName <String>]`: Name of the Container App.
-  - `[EnvironmentName <String>]`: Name of the Managed Environment.
-  - `[Id <String>]`: Resource identity path
-  - `[ReplicaName <String>]`: Name of the Container App Revision Replica.
-  - `[ResourceGroupName <String>]`: The name of the resource group. The name is case insensitive.
-  - `[RevisionName <String>]`: Name of the Container App Revision.
-  - `[SourceControlName <String>]`: Name of the Container App SourceControl.
-  - `[StorageName <String>]`: Name of the storage.
-  - `[SubscriptionId <String>]`: The ID of the target subscription.
 
 ## RELATED LINKS
 

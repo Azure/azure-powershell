@@ -12,19 +12,52 @@ while(-not $mockingPath) {
 . ($mockingPath | Select-Object -First 1).FullName
 
 Describe 'Remove-AzWvdPrivateEndpointConnection' {
-    It 'Delete' -skip {
-        { throw [System.NotImplementedException] } | Should -Not -Throw
+    It 'DeleteWorkspace' {
+        $privateEndpointConnection = Get-AzWvdPrivateEndpointConnection -ResourceGroupName $env.ResourceGroup `
+                                                                        -WorkspaceName $env.PvtLinkWS 
+
+        $privateEndpointConnection.Name | Should -Match $env.PrivateEndpointConnectionNameWS
+
+        Remove-AzWvdPrivateEndpointConnection -ResourceGroupName $env.ResourceGroup `
+                                                -WorkspaceName $env.PvtLinkWS `
+                                                -Name $privateEndpointConnection[1].Name
+
+        Remove-AzWvdPrivateEndpointConnection -ResourceGroupName $env.ResourceGroup `
+                                                -WorkspaceName $env.PvtLinkWS `
+                                                -Name $privateEndpointConnection[0].Name
+        try{
+            $privateEndpointConnection = Get-AzWvdPrivateEndpointConnection -ResourceGroupName $env.ResourceGroup `
+                                                                            -WorkspaceName $env.PvtLinkWS
+            throw "Get should have failed" 
+        }
+        catch {
+
+        }
     }
 
-    It 'Delete1' -skip {
-        { throw [System.NotImplementedException] } | Should -Not -Throw
-    }
+    It 'DeleteHostpool' {
+        $privateEndpointConnection = Get-AzWvdPrivateEndpointConnection -ResourceGroupName $env.ResourceGroup `
+                                                                        -HostPoolName $env.PvtLinkHP
 
-    It 'DeleteViaIdentity1' -skip {
-        { throw [System.NotImplementedException] } | Should -Not -Throw
-    }
+        $privateEndpointConnection.Name | Should -Match $env.PrivateEndpointConnectionNameHP
 
-    It 'DeleteViaIdentity' -skip {
-        { throw [System.NotImplementedException] } | Should -Not -Throw
+        Remove-AzWvdPrivateEndpointConnection -ResourceGroupName $env.ResourceGroup `
+                                                -HostPoolName $env.PvtLinkHP `
+                                                -Name $privateEndpointConnection[0].Name
+
+                                                                            
+        Remove-AzWvdPrivateEndpointConnection -ResourceGroupName $env.ResourceGroup `
+                                                -HostPoolName $env.PvtLinkHP `
+                                                -Name $privateEndpointConnection[1].Name
+
+        try{
+            $privateEndpointConnection = Get-AzWvdPrivateEndpointConnection -ResourceGroupName $env.ResourceGroup `
+                                                                            -HostpoolName $env.PvtLinkHP
+            throw "Get should have failed" 
+        }
+        catch {
+
+        }
+        
     }
 }

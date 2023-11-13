@@ -1,7 +1,7 @@
 ---
 external help file:
 Module Name: Az.Nginx
-online version: https://learn.microsoft.com/powershell/module/az.Nginx/new-AzNginxNetworkProfileObject
+online version: https://learn.microsoft.com/powershell/module/Az.Nginx/new-AzNginxNetworkProfileObject
 schema: 2.0.0
 ---
 
@@ -41,7 +41,7 @@ Create an in-memory object for NginxNetworkProfile.
 To construct, see NOTES section for FRONTENDIPCONFIGURATION properties and create a hash table.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.Nginx.Models.Api20220801.INginxFrontendIPConfiguration
+Type: Microsoft.Azure.PowerShell.Cmdlets.Nginx.Models.Api20230401.INginxFrontendIPConfiguration
 Parameter Sets: (All)
 Aliases:
 
@@ -56,7 +56,7 @@ Accept wildcard characters: False
 To construct, see NOTES section for NETWORKINTERFACECONFIGURATION properties and create a hash table.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.Nginx.Models.Api20220801.INginxNetworkInterfaceConfiguration
+Type: Microsoft.Azure.PowerShell.Cmdlets.Nginx.Models.Api20230401.INginxNetworkInterfaceConfiguration
 Parameter Sets: (All)
 Aliases:
 
@@ -74,7 +74,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.Nginx.Models.Api20220801.NginxNetworkProfile
+### Microsoft.Azure.PowerShell.Cmdlets.Nginx.Models.Api20230401.NginxNetworkProfile
 
 ## NOTES
 

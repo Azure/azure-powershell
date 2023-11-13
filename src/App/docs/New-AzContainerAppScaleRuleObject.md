@@ -1,7 +1,7 @@
 ---
 external help file:
 Module Name: Az.App
-online version: https://learn.microsoft.com/powershell/module/az.app/new-azcontainerappscaleruleobject
+online version: https://learn.microsoft.com/powershell/module/Az.App/new-azcontainerappscaleruleobject
 schema: 2.0.0
 ---
 
@@ -16,7 +16,7 @@ Create an in-memory object for ScaleRule.
 New-AzContainerAppScaleRuleObject [-AzureQueueAuth <IScaleRuleAuth[]>] [-AzureQueueLength <Int32>]
  [-AzureQueueName <String>] [-CustomAuth <IScaleRuleAuth[]>] [-CustomMetadata <ICustomScaleRuleMetadata>]
  [-CustomType <String>] [-HttpAuth <IScaleRuleAuth[]>] [-HttpMetadata <IHttpScaleRuleMetadata>]
- [-Name <String>] [<CommonParameters>]
+ [-Name <String>] [-TcpAuth <IScaleRuleAuth[]>] [-TcpMetadata <ITcpScaleRuleMetadata>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -24,21 +24,18 @@ Create an in-memory object for ScaleRule.
 
 ## EXAMPLES
 
-### Example 1: Create a ScaleRule object for ContainerApp.
+### Example 1: Create an in-memory object for ScaleRule.
 ```powershell
-$scaleRule = @()
-$scaleRule += New-AzContainerAppScaleRuleObject -Name scaleRuleName1 -AzureQueueLength 30 -AzureQueueName azps_containerapp -CustomType "azure-servicebus"
-$scaleRule += New-AzContainerAppScaleRuleObject -Name scaleRuleName2 -AzureQueueLength 30 -AzureQueueName azps_containerapp -CustomType "azure-servicebus"
+New-AzContainerAppScaleRuleObject -Name "httpscalingrule" -CustomType "http" -AzureQueueLength 30 -AzureQueueName azps-containerapp
 ```
 
 ```output
 Name
 ----
-scaleRuleName
+httpscalingrule
 ```
 
-Create a ScaleRule object for ContainerApp.
-The ScaleRule object as value of the `ScaleRule` parameter in the cmdlet `New-AzContainerApp`.
+Create an in-memory object for ScaleRule.
 
 ## PARAMETERS
 
@@ -47,7 +44,7 @@ Authentication secrets for the queue scale rule.
 To construct, see NOTES section for AZUREQUEUEAUTH properties and create a hash table.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.App.Models.Api20220301.IScaleRuleAuth[]
+Type: Microsoft.Azure.PowerShell.Cmdlets.App.Models.IScaleRuleAuth[]
 Parameter Sets: (All)
 Aliases:
 
@@ -93,7 +90,7 @@ Authentication secrets for the custom scale rule.
 To construct, see NOTES section for CUSTOMAUTH properties and create a hash table.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.App.Models.Api20220301.IScaleRuleAuth[]
+Type: Microsoft.Azure.PowerShell.Cmdlets.App.Models.IScaleRuleAuth[]
 Parameter Sets: (All)
 Aliases:
 
@@ -109,7 +106,7 @@ Metadata properties to describe custom scale rule.
 To construct, see NOTES section for CUSTOMMETADATA properties and create a hash table.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.App.Models.Api20220301.ICustomScaleRuleMetadata
+Type: Microsoft.Azure.PowerShell.Cmdlets.App.Models.ICustomScaleRuleMetadata
 Parameter Sets: (All)
 Aliases:
 
@@ -141,7 +138,7 @@ Authentication secrets for the custom scale rule.
 To construct, see NOTES section for HTTPAUTH properties and create a hash table.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.App.Models.Api20220301.IScaleRuleAuth[]
+Type: Microsoft.Azure.PowerShell.Cmdlets.App.Models.IScaleRuleAuth[]
 Parameter Sets: (All)
 Aliases:
 
@@ -157,7 +154,7 @@ Metadata properties to describe http scale rule.
 To construct, see NOTES section for HTTPMETADATA properties and create a hash table.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.App.Models.Api20220301.IHttpScaleRuleMetadata
+Type: Microsoft.Azure.PowerShell.Cmdlets.App.Models.IHttpScaleRuleMetadata
 Parameter Sets: (All)
 Aliases:
 
@@ -183,6 +180,38 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### -TcpAuth
+Authentication secrets for the tcp scale rule.
+To construct, see NOTES section for TCPAUTH properties and create a hash table.
+
+```yaml
+Type: Microsoft.Azure.PowerShell.Cmdlets.App.Models.IScaleRuleAuth[]
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -TcpMetadata
+Metadata properties to describe tcp scale rule.
+To construct, see NOTES section for TCPMETADATA properties and create a hash table.
+
+```yaml
+Type: Microsoft.Azure.PowerShell.Cmdlets.App.Models.ITcpScaleRuleMetadata
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
 ### CommonParameters
 This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable. For more information, see [about_CommonParameters](http://go.microsoft.com/fwlink/?LinkID=113216).
 
@@ -190,34 +219,9 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.App.Models.Api20220301.ScaleRule
+### Microsoft.Azure.PowerShell.Cmdlets.App.Models.ScaleRule
 
 ## NOTES
-
-ALIASES
-
-COMPLEX PARAMETER PROPERTIES
-
-To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
-
-
-`AZUREQUEUEAUTH <IScaleRuleAuth[]>`: Authentication secrets for the queue scale rule.
-  - `[SecretRef <String>]`: Name of the Container App secret from which to pull the auth params.
-  - `[TriggerParameter <String>]`: Trigger Parameter that uses the secret
-
-`CUSTOMAUTH <IScaleRuleAuth[]>`: Authentication secrets for the custom scale rule.
-  - `[SecretRef <String>]`: Name of the Container App secret from which to pull the auth params.
-  - `[TriggerParameter <String>]`: Trigger Parameter that uses the secret
-
-`CUSTOMMETADATA <ICustomScaleRuleMetadata>`: Metadata properties to describe custom scale rule.
-  - `[(Any) <String>]`: This indicates any property can be added to this object.
-
-`HTTPAUTH <IScaleRuleAuth[]>`: Authentication secrets for the custom scale rule.
-  - `[SecretRef <String>]`: Name of the Container App secret from which to pull the auth params.
-  - `[TriggerParameter <String>]`: Trigger Parameter that uses the secret
-
-`HTTPMETADATA <IHttpScaleRuleMetadata>`: Metadata properties to describe http scale rule.
-  - `[(Any) <String>]`: This indicates any property can be added to this object.
 
 ## RELATED LINKS
 

@@ -24,7 +24,7 @@ Describe 'Invoke-AzKustoDetachClusterFollowerDatabase' {
         $attachedDatabaseConfigurationName = "testdbconf" + $env.rstr4
         $followerClusterName = $env.kustoFollowerClusterName
         $clusterResourceId = $env.kustoClusterResourceId
-        $followerClusterResourceId = $env.kustoFolowerClusterResourceId
+        $followerClusterResourceId = $env.kustoFollowerClusterResourceId
         $databaseName = "testdatabase" + $env.rstr4
         $DefaultPrincipalsModificationKind = "Union"
 
@@ -41,7 +41,7 @@ Describe 'Invoke-AzKustoDetachClusterFollowerDatabase' {
         $attachedDatabaseConfigurationName = "testdbconf" + $env.rstr5
         $followerClusterName = $env.kustoFollowerClusterName
         $clusterResourceId = $env.kustoClusterResourceId
-        $followerClusterResourceId = $env.kustoFolowerClusterResourceId
+        $followerClusterResourceId = $env.kustoFollowerClusterResourceId
         $databaseName = "testdatabase" + $env.rstr5
         $DefaultPrincipalsModificationKind = "Union"
 

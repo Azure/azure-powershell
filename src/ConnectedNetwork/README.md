@@ -30,7 +30,7 @@ For information on how to develop for `Az.ConnectedNetwork`, see [how-to.md](how
 > see https://aka.ms/autorest
 
 ``` yaml
-branch: 5f32b50e18ed0a91eefe39287078bf66c4d6c3a8
+commit: 5f32b50e18ed0a91eefe39287078bf66c4d6c3a8
 require:
   - $(this-folder)/../readme.azure.noprofile.md
 input-file:
@@ -47,6 +47,10 @@ subject-prefix: $(service-name)
 identity-correction-for-post: true
 resourcegroup-append: true
 nested-object-to-string: true
+
+# For new modules, please avoid setting 3.x using the use-extension method and instead, use 4.x as the default option
+use-extension:
+  "@autorest/powershell": "3.x"
 
 directive:
   - where:

@@ -47,6 +47,10 @@ subject-prefix: 'RedisEnterpriseCache'
 
 # This will remove the 'RedisEnterprise' prefix from the subject of every cmdlet
 # beginning with 'RedisEnterprise', because we have already set the subject-prefix above
+# For new modules, please avoid setting 3.x using the use-extension method and instead, use 4.x as the default option
+use-extension:
+  "@autorest/powershell": "3.x"
+
 directive:
   # This will remove the 'RedisEnterprise' prefix from the subject of every cmdlet
   # beginning with 'RedisEnterprise', because we have already set the subject-prefix above

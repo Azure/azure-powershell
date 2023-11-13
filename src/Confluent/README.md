@@ -47,7 +47,7 @@ In this directory, run AutoRest:
 > see https://aka.ms/autorest
 
 ``` yaml
-branch: a71245db9eb5b27e3d95f266422c65be4df8789e
+commit: a71245db9eb5b27e3d95f266422c65be4df8789e
 require:
   - $(this-folder)/../readme.azure.noprofile.md
 # lock the commit
@@ -57,6 +57,10 @@ input-file:
 module-version: 0.2.0
 title: Confluent
 subject-prefix: $(service-name)
+
+# For new modules, please avoid setting 3.x using the use-extension method and instead, use 4.x as the default option
+use-extension:
+  "@autorest/powershell": "3.x"
 
 directive:
   # New-AzConfluentMarketplaceAgreeemt has  be removed, because it cand be replace by Set-AzMarketplaceTerms (Az.MarketplaceOrdering).

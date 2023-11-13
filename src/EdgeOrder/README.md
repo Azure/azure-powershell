@@ -37,7 +37,7 @@ input-file:
 # You need to specify your swagger files here.
   - $(repo)/specification/edgeorder/resource-manager/Microsoft.EdgeOrder/stable/2021-12-01/edgeorder.json
   
-branch: 34018925632ef75ef5416e3add65324e0a12489f
+commit: 34018925632ef75ef5416e3add65324e0a12489f
 # If the swagger has not been put in the repo, you may uncomment the following line and refer to it locally
 # - (this-folder)/relative-path-to-your-swagger 
 
@@ -51,6 +51,10 @@ inlining-threshold: 50
 # If there are post APIs for some kinds of actions in the RP, you may need to 
 # uncomment following line to support viaIdentity for these post APIs
 # identity-correction-for-post: true
+
+# For new modules, please avoid setting 3.x using the use-extension method and instead, use 4.x as the default option
+use-extension:
+  "@autorest/powershell": "3.x"
 
 directive:
   # Following is two common directive which are normally required in all the RPs

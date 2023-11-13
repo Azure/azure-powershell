@@ -72,7 +72,7 @@ In this directory, run AutoRest:
 ### AutoRest Configuration
 > see https://aka.ms/autorest
 ``` yaml
-branch: 827a487dc10fb666baa2d2b261c9264ea710f1b4 
+commit: 827a487dc10fb666baa2d2b261c9264ea710f1b4
 require:
   - $(this-folder)/../readme.azure.noprofile.md
 input-file:
@@ -81,6 +81,10 @@ title: BotService
 module-version: 0.1.0
 identity-correction-for-post: true
 subject-prefix: 'BotService'
+# For new modules, please avoid setting 3.x using the use-extension method and instead, use 4.x as the default option
+use-extension:
+  "@autorest/powershell": "3.x"
+
 directive:
   - from: botservice.json
     where: $.definitions.EmailChannelAuthMethod

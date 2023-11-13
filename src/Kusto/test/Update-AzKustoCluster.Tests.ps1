@@ -16,11 +16,6 @@ Describe 'Update-AzKustoCluster' {
         . ($mockingPath | Select-Object -First 1).FullName
     }
     
-    It 'UpdateExpandedPublicIpType' {
-        $updatedCluster = Update-AzKustoCluster -ResourceGroupName $env.resourceGroupName -Name $env.kustoClusterName -PublicIPType "DualStack"
-        $updatedCluster.PublicIPType | Should -Be "DualStack"        
-    }
-
     It 'UpdateExpanded' {
         $updatedCluster = Update-AzKustoCluster -ResourceGroupName $env.resourceGroupName -Name $env.kustoClusterName -PublicIPType "IPv4"
         $updatedCluster.PublicIPType | Should -Be "IPv4"

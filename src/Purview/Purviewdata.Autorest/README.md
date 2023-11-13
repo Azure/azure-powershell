@@ -30,7 +30,7 @@ For information on how to develop for `Az.Purviewdata`, see [how-to.md](how-to.m
 > see https://aka.ms/autorest
 
 ``` yaml
-branch: c599abd70c39fa417d97dc59cbf5822f44b47f11
+commit: c599abd70c39fa417d97dc59cbf5822f44b47f11
 require:
   - $(this-folder)/../../readme.azure.noprofile.md
 # lock the commit
@@ -45,6 +45,10 @@ identity-correction-for-post: true
 nested-object-to-string: true
 resourcegroup-append: true
 endpoint-resource-id-key-name: AzurePurviewEndpointResourceId
+
+# For new modules, please avoid setting 3.x using the use-extension method and instead, use 4.x as the default option
+use-extension:
+  "@autorest/powershell": "3.x"
 
 directive:
   # Following is two common directive which are normally required in all the RPs

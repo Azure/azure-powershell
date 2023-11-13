@@ -17,20 +17,21 @@ Updates an EventHub Entity
 Set-AzEventHub -Name <String> -NamespaceName <String> -ResourceGroupName <String> [-SubscriptionId <String>]
  [-ArchiveNameFormat <String>] [-BlobContainer <String>] [-CaptureEnabled] [-DestinationName <String>]
  [-Encoding <EncodingCaptureDescription>] [-IdentityType <ManagedServiceIdentityType>]
- [-IntervalInSeconds <Int32>] [-RetentionTimeInHour <Int64>] [-SizeLimitInBytes <Int32>] [-SkipEmptyArchive]
- [-Status <EntityStatus>] [-StorageAccountResourceId <String>] [-TombstoneRetentionTimeInHour <Int32>]
- [-UserAssignedIdentityId <String>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf]
- [<CommonParameters>]
+ [-IntervalInSeconds <Int32>] [-PartitionCount <Int64>] [-RetentionTimeInHour <Int64>]
+ [-SizeLimitInBytes <Int32>] [-SkipEmptyArchive] [-Status <EntityStatus>] [-StorageAccountResourceId <String>]
+ [-TombstoneRetentionTimeInHour <Int32>] [-UserAssignedIdentityId <String>] [-DefaultProfile <PSObject>]
+ [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ### SetViaIdentityExpanded
 ```
 Set-AzEventHub -InputObject <IEventHubIdentity> [-ArchiveNameFormat <String>] [-BlobContainer <String>]
  [-CaptureEnabled] [-DestinationName <String>] [-Encoding <EncodingCaptureDescription>]
- [-IdentityType <ManagedServiceIdentityType>] [-IntervalInSeconds <Int32>] [-RetentionTimeInHour <Int64>]
- [-SizeLimitInBytes <Int32>] [-SkipEmptyArchive] [-Status <EntityStatus>] [-StorageAccountResourceId <String>]
- [-TombstoneRetentionTimeInHour <Int32>] [-UserAssignedIdentityId <String>] [-DefaultProfile <PSObject>]
- [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
+ [-IdentityType <ManagedServiceIdentityType>] [-IntervalInSeconds <Int32>] [-PartitionCount <Int64>]
+ [-RetentionTimeInHour <Int64>] [-SizeLimitInBytes <Int32>] [-SkipEmptyArchive] [-Status <EntityStatus>]
+ [-StorageAccountResourceId <String>] [-TombstoneRetentionTimeInHour <Int32>]
+ [-UserAssignedIdentityId <String>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf]
+ [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -316,6 +317,22 @@ Run the command asynchronously
 
 ```yaml
 Type: System.Management.Automation.SwitchParameter
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -PartitionCount
+Number of partitions created for the Event Hub.
+allowed values are from 1 to 32 partitions.
+
+```yaml
+Type: System.Int64
 Parameter Sets: (All)
 Aliases:
 

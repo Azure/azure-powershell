@@ -43,5 +43,5 @@ function setupEnv() {
 function cleanupEnv() {
     # Clean resources you create for testing
     write-host "Cleaning up resources created for testing."
-    Remove-AzResourceGroup -Name $env.resourceGroup -Force
+    Remove-AzResourceGroup -Name $env.resourceGroup
 }

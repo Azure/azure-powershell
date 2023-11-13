@@ -31,7 +31,7 @@ For information on how to develop for `Az.Peering`, see [how-to.md](how-to.md).
 
 ``` yaml
 # Please specify the commit id that includes your features to make sure generated codes stable.
-branch: 5fc05d0f0b15cbf16de942cadce464b495c66a58
+commit: 5fc05d0f0b15cbf16de942cadce464b495c66a58
 require:
 # readme.azure.noprofile.md is the common configuration file
   - $(this-folder)/../readme.azure.noprofile.md
@@ -52,6 +52,10 @@ subject-prefix: $(service-name)
 resourcegroup-append: true
 identity-correction-for-post: true
 nested-object-to-string: true
+
+# For new modules, please avoid setting 3.x using the use-extension method and instead, use 4.x as the default option
+use-extension:
+  "@autorest/powershell": "3.x"
 
 directive:
   # Following is two common directive which are normally required in all the RPs

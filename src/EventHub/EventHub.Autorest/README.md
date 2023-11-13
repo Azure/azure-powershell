@@ -31,7 +31,7 @@ For information on how to develop for `Az.EventHub`, see [how-to.md](how-to.md).
 
 ``` yaml
 # Please specify the commit id that includes your features to make sure generated codes stable.
-branch: 49946abc47b5ea9402d7763ae61b183ca4741855
+commit: 49946abc47b5ea9402d7763ae61b183ca4741855
 require:
 # readme.azure.noprofile.md is the common configuration file
   - $(this-folder)/../../readme.azure.noprofile.md
@@ -62,6 +62,10 @@ subject-prefix: $(service-name)
 # uncomment following line to support viaIdentity for these post APIs
 resourcegroup-append: true
 nested-object-to-string: true
+
+# For new modules, please avoid setting 3.x using the use-extension method and instead, use 4.x as the default option
+use-extension:
+  "@autorest/powershell": "3.x"
 
 directive:
   - where:

@@ -1,4 +1,4 @@
-# Variable 'BotAccessToken', 'KeyVaultName' and 'ADOTokenName' was defined in the Variables tab
+# Variable 'KeyVaultName' and 'ADOTokenName' was defined in the Variables tab
 schedules:
 - cron: "50 15 * * *"
   displayName: 11:50 PM (UTC + 8:00) China Daily Run
@@ -17,6 +17,7 @@ jobs:
     inputs:
       packageType: sdk
       version: 7.0.x
+  - template: util/get-github-pat-steps.yml
 
   - pwsh: |
       dotnet --version
@@ -57,7 +58,7 @@ jobs:
       git add .github/policies
       git commit -m "Sync resourceManagement.yml"
 
-      git remote set-url origin https://azure-powershell-bot:$(BotAccessToken)@github.com/Azure/azure-powershell.git;
+      git remote set-url origin https://azure-powershell-bot:$(GithubToken)@github.com/Azure/azure-powershell.git;
       git push origin internal/sync-resourcemanagement-yml --force
     displayName: Git commit and push
     condition: and(succeeded(), eq(variables['ChangesDetected'], 'true'))
@@ -67,6 +68,6 @@ jobs:
       $HeadBranch = "internal/sync-resourcemanagement-yml"
       $BaseBranch = "main"
       $Description = "This PR synchronizes the task: 'Triage issues to the service team' part of resourceManagement.yml from table of Service Contact List in ADO wiki page"
-      ./tools/Github/CreatePR.ps1 -Title $Title -HeadBranch $HeadBranch -BaseBranch $BaseBranch -BotAccessToken $(BotAccessToken) -Description $Description
+      ./tools/Github/CreatePR.ps1 -Title $Title -HeadBranch $HeadBranch -BaseBranch $BaseBranch -BotAccessToken $(GithubToken) -Description $Description
     displayName: Create PR to main branch
     condition: and(succeeded(), eq(variables['ChangesDetected'], 'true'))

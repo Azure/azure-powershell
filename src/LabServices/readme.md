@@ -50,7 +50,7 @@ In this directory, run AutoRest:
 require:
   - $(this-folder)/../readme.azure.noprofile.md
 # lock the commit
-branch: 6d7653ffd37cdc781e16202306567e355b45ebf8
+commit: 6d7653ffd37cdc781e16202306567e355b45ebf8
 input-file:
   - $(repo)/specification/labservices/resource-manager/Microsoft.LabServices/preview/2021-10-01-preview/Images.json
   - $(repo)/specification/labservices/resource-manager/Microsoft.LabServices/preview/2021-10-01-preview/LabPlans.json
@@ -65,6 +65,10 @@ title: LabServices
 subject-prefix: $(service-name)
 
 inlining-threshold: 50
+
+# For new modules, please avoid setting 3.x using the use-extension method and instead, use 4.x as the default option
+use-extension:
+  "@autorest/powershell": "3.x"
 
 directive:
   # change VirtualMachine to VM

@@ -16,8 +16,8 @@ API to register a new Kubernetes cluster and create a tracked resource in Azure 
 New-AzConnectedKubernetes -ClusterName <String> -ResourceGroupName <String> -Location <String>
  [-ContainerLogPath <String>] [-DisableAutoUpgrade] [-HttpProxy <Uri>] [-HttpsProxy <Uri>] [-NoProxy <String>]
  [-OnboardingTimeout <Int32>] [-ProxyCert <String>] [-SubscriptionId <String>] [-AcceptEULA]
- [-AzureHybridBenefit <AzureHybridBenefit>] [-Distribution <String>] [-DistributionVersion <String>]
- [-Infrastructure <String>] [-KubeConfig <String>] [-KubeContext <String>]
+ [-AzureHybridBenefit <AzureHybridBenefit>] [-CustomLocationsOid <String>] [-Distribution <String>]
+ [-DistributionVersion <String>] [-Infrastructure <String>] [-KubeConfig <String>] [-KubeContext <String>]
  [-PrivateLinkScopeResourceId <String>] [-PrivateLinkState <PrivateLinkState>]
  [-ProvisioningState <ProvisioningState>] [-Tag <Hashtable>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
  [-Confirm] [-WhatIf] [<CommonParameters>]
@@ -201,6 +201,21 @@ Accept wildcard characters: False
 
 ### -ContainerLogPath
 Override the default container log path to enable fluent-bit logging.
+
+```yaml
+Type: System.String
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -CustomLocationsOid
+OID of 'custom-locations' app.
 
 ```yaml
 Type: System.String

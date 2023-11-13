@@ -6,6 +6,7 @@ parameters:
   powerShellPlatform: ''
 
 steps:
+- template: get-github-pat-steps.yml
 - template: download-build-steps.yml
   parameters:
     artifactName: build-${{ parameters.testFramework }}
@@ -30,7 +31,7 @@ steps:
     custom: msbuild
     arguments: 'build.proj /t:${{ parameters.testTarget }} /p:Configuration=${{ parameters.configuration }};TestFramework=${{ parameters.testFramework }};PullRequestNumber=$(System.PullRequest.PullRequestNumber)'
   env:
-    OCTOKITPAT: $(OCTOKITPAT)
+    OCTOKITPAT: $(GithubToken)
     PowerShellPlatform: ${{ parameters.powerShellPlatform }}
   continueOnError: true
 

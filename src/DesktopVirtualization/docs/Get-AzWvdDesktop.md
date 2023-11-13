@@ -46,7 +46,7 @@ Name                             Type
 ApplicationGroupName/DesktopName Microsoft.DesktopVirtualization/applicationgroups/desktops
 ```
 
-This command gets a Windows Virtual Desktop Desktop in an applicaton Group.
+This command gets a Windows Virtual Desktop Desktop in an application Group.
 
 ### Example 2: List Windows Virtual Desktop Desktops
 ```powershell
@@ -59,7 +59,7 @@ Name                             Type
 ApplicationGroupName/DesktopName Microsoft.DesktopVirtualization/applicationgroups/desktops
 ```
 
-This command listsWindows Virtual Desktop Desktops in an applicaton Group.
+This command lists Windows Virtual Desktop Desktops in an application Group.
 
 ## PARAMETERS
 
@@ -210,7 +210,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.Api202209.IDesktop
+### Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.Api20231004Preview.IDesktop
 
 ## NOTES
 
@@ -222,12 +222,14 @@ To create the parameters described below, construct a hash table containing the 
 
 
 `INPUTOBJECT <IDesktopVirtualizationIdentity>`: Identity Parameter
+  - `[AppAttachPackageName <String>]`: The name of the App Attach package arm object
   - `[ApplicationGroupName <String>]`: The name of the application group
   - `[ApplicationName <String>]`: The name of the application within the specified application group
   - `[DesktopName <String>]`: The name of the desktop within the specified desktop group
   - `[HostPoolName <String>]`: The name of the host pool within the specified resource group
   - `[Id <String>]`: Resource identity path
   - `[MsixPackageFullName <String>]`: The version specific package full name of the MSIX package within specified hostpool
+  - `[PrivateEndpointConnectionName <String>]`: The name of the private endpoint connection associated with the Azure resource
   - `[ResourceGroupName <String>]`: The name of the resource group. The name is case insensitive.
   - `[ScalingPlanName <String>]`: The name of the scaling plan.
   - `[ScalingPlanScheduleName <String>]`: The name of the ScalingPlanSchedule

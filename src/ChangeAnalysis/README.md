@@ -36,7 +36,7 @@ In this directory, run AutoRest:
 
 ``` yaml
 # lock the commit
-branch: 4b131739f528aea3da3ee4f6874da20602629432
+commit: 4b131739f528aea3da3ee4f6874da20602629432
 require:
   - $(this-folder)/../readme.azure.noprofile.md
 input-file:
@@ -47,6 +47,10 @@ module-version: 0.1.0
 subject-prefix: $(service-name)
 
 identity-correction-for-post: true
+
+# For new modules, please avoid setting 3.x using the use-extension method and instead, use 4.x as the default option
+use-extension:
+  "@autorest/powershell": "3.x"
 
 directive:
   - from: swagger-document 

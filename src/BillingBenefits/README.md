@@ -47,7 +47,7 @@ In this directory, run AutoRest:
 > see https://aka.ms/autorest
 
 ``` yaml
-branch: bab95d5636c7d47cc5584ea8dadb21199d229ca7
+commit: bab95d5636c7d47cc5584ea8dadb21199d229ca7
 require:
   - $(this-folder)/../readme.azure.noprofile.md
 input-file:
@@ -59,6 +59,10 @@ subject-prefix: $(service-name)
 resourcegroup-append: true
 nested-object-to-string: true
   
+# For new modules, please avoid setting 3.x using the use-extension method and instead, use 4.x as the default option
+use-extension:
+  "@autorest/powershell": "3.x"
+
 directive:
   ### No inline
   - no-inline:
