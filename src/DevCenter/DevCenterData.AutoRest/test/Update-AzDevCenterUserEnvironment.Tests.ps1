@@ -16,34 +16,21 @@ if(($null -eq $TestName) -or ($TestName -contains 'Update-AzDevCenterUserEnviron
 
 Describe 'Update-AzDevCenterUserEnvironment' {
     It 'PatchExpanded' -skip {
-        { throw [System.NotImplementedException] } | Should -Not -Throw
-    }
+        $environment = Get-AzDevCenterUserEnvironment -Endpoint $env.endpoint10 -EnvironmentName $env.envName10 -ProjectName $env.projectName10 -UserId "me"
+        $newExpirationTime = $environment.ExpirationDate + $delayTime
 
-    It 'Patch' -skip {
-        { throw [System.NotImplementedException] } | Should -Not -Throw
-    }
+        $updatedEnvironment = Update-AzDevCenterUserEnvironment -Endpoint $env.endpoint10 -EnvironmentName $env.envName10 -ProjectName $env.projectName10 -ExpirationDate $newExpirationTime
+        $updatedEnvironment.ExpirationDate | Should -Be $newExpirationTime
+        }
 
-    It 'PatchViaIdentity' -skip {
-        { throw [System.NotImplementedException] } | Should -Not -Throw
-    }
 
     It 'PatchViaIdentityExpanded' -skip {
-        { throw [System.NotImplementedException] } | Should -Not -Throw
-    }
+        $envInput = @{"UserId" = "me"; "ProjectName" = $env.projectName10; "EnvironmentName" = $env.envName10 }
+        $environment = Get-AzDevCenterUserEnvironment -Endpoint $env.endpoint10 -EnvironmentName $env.envName10 -ProjectName $env.projectName10 -UserId "me"
+        $newExpirationTime = $environment.ExpirationDate + $delayTime
 
-    It 'PatchByDevCenter' -skip {
-        { throw [System.NotImplementedException] } | Should -Not -Throw
-    }
+        $updatedEnvironment = Update-AzDevCenterUserEnvironment -Endpoint $env.endpoint10 -InputObject $envInput -ExpirationDate $newExpirationTime
+        $updatedEnvironment.ExpirationDate | Should -Be $newExpirationTime
 
-    It 'PatchExpandedByDevCenter' -skip {
-        { throw [System.NotImplementedException] } | Should -Not -Throw
-    }
-
-    It 'PatchViaIdentityByDevCenter' -skip {
-        { throw [System.NotImplementedException] } | Should -Not -Throw
-    }
-
-    It 'PatchViaIdentityExpandedByDevCenter' -skip {
-        { throw [System.NotImplementedException] } | Should -Not -Throw
     }
 }

@@ -18,35 +18,10 @@ Update-AzDevCenterUserEnvironment -Endpoint <String> -Name <String> -ProjectName
  [-ExpirationDate <DateTime>] [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
-### Patch
-```
-Update-AzDevCenterUserEnvironment -Endpoint <String> -Name <String> -ProjectName <String> [-UserId <String>]
- [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
-```
-
-### PatchByDevCenter
-```
-Update-AzDevCenterUserEnvironment -DevCenter <String> -Name <String> -ProjectName <String> [-UserId <String>]
- [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
-```
-
 ### PatchExpandedByDevCenter
 ```
-Update-AzDevCenterUserEnvironment -DevCenter <String> -Name <String> -ProjectName <String>
- -ExpirationDate <DateTime> [-UserId <String>] [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf]
- [<CommonParameters>]
-```
-
-### PatchViaIdentity
-```
-Update-AzDevCenterUserEnvironment -Endpoint <String> -InputObject <IDevCenterdataIdentity>
- [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
-```
-
-### PatchViaIdentityByDevCenter
-```
-Update-AzDevCenterUserEnvironment -DevCenter <String> -InputObject <IDevCenterdataIdentity>
- [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
+Update-AzDevCenterUserEnvironment -DevCenter <String> -Name <String> -ProjectName <String> [-UserId <String>]
+ [-ExpirationDate <DateTime>] [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ### PatchViaIdentityExpanded
@@ -58,7 +33,7 @@ Update-AzDevCenterUserEnvironment -Endpoint <String> -InputObject <IDevCenterdat
 ### PatchViaIdentityExpandedByDevCenter
 ```
 Update-AzDevCenterUserEnvironment -DevCenter <String> -InputObject <IDevCenterdataIdentity>
- -ExpirationDate <DateTime> [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
+ [-ExpirationDate <DateTime>] [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -133,7 +108,7 @@ The DevCenter upon which to execute operations.
 
 ```yaml
 Type: System.String
-Parameter Sets: PatchByDevCenter, PatchExpandedByDevCenter, PatchViaIdentityByDevCenter, PatchViaIdentityExpandedByDevCenter
+Parameter Sets: PatchExpandedByDevCenter, PatchViaIdentityExpandedByDevCenter
 Aliases:
 
 Required: True
@@ -148,7 +123,7 @@ The DevCenter-specific URI to operate on.
 
 ```yaml
 Type: System.String
-Parameter Sets: Patch, PatchExpanded, PatchViaIdentity, PatchViaIdentityExpanded
+Parameter Sets: PatchExpanded, PatchViaIdentityExpanded
 Aliases:
 
 Required: True
@@ -163,10 +138,10 @@ The time the expiration date will be triggered (UTC), after which the environmen
 
 ```yaml
 Type: System.DateTime
-Parameter Sets: PatchExpanded, PatchExpandedByDevCenter, PatchViaIdentityExpanded, PatchViaIdentityExpandedByDevCenter
+Parameter Sets: (All)
 Aliases:
 
-Required: True
+Required: False
 Position: Named
 Default value: None
 Accept pipeline input: False
@@ -179,7 +154,7 @@ To construct, see NOTES section for INPUTOBJECT properties and create a hash tab
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Models.IDevCenterdataIdentity
-Parameter Sets: PatchViaIdentity, PatchViaIdentityByDevCenter, PatchViaIdentityExpanded, PatchViaIdentityExpandedByDevCenter
+Parameter Sets: PatchViaIdentityExpanded, PatchViaIdentityExpandedByDevCenter
 Aliases:
 
 Required: True
@@ -194,7 +169,7 @@ The name of the environment.
 
 ```yaml
 Type: System.String
-Parameter Sets: Patch, PatchByDevCenter, PatchExpanded, PatchExpandedByDevCenter
+Parameter Sets: PatchExpanded, PatchExpandedByDevCenter
 Aliases: EnvironmentName
 
 Required: True
@@ -209,7 +184,7 @@ The DevCenter Project upon which to execute operations.
 
 ```yaml
 Type: System.String
-Parameter Sets: Patch, PatchByDevCenter, PatchExpanded, PatchExpandedByDevCenter
+Parameter Sets: PatchExpanded, PatchExpandedByDevCenter
 Aliases:
 
 Required: True
@@ -225,7 +200,7 @@ If value is 'me', the identity is taken from the authentication context.
 
 ```yaml
 Type: System.String
-Parameter Sets: Patch, PatchByDevCenter, PatchExpanded, PatchExpandedByDevCenter
+Parameter Sets: PatchExpanded, PatchExpandedByDevCenter
 Aliases:
 
 Required: False

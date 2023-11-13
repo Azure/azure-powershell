@@ -15,27 +15,25 @@ if(($null -eq $TestName) -or ($TestName -contains 'Get-AzDevCenterUserEnvironmen
 }
 
 Describe 'Get-AzDevCenterUserEnvironmentAction' {
-    It 'List' -skip {
-        { throw [System.NotImplementedException] } | Should -Not -Throw
+    It 'List' {
+        $listOfActions = Get-AzDevCenterUserEnvironmentAction -Endpoint $env.endpoint10 -EnvironmentName $env.envName10 -ProjectName $env.projectName10
+        $listOfActions.Count | Should -BeGreaterOrEqual 1
     }
 
-    It 'Get' -skip {
-        { throw [System.NotImplementedException] } | Should -Not -Throw
+    It 'Get' {
+        $action = Get-AzDevCenterUserEnvironmentAction -Endpoint $env.endpoint10 -EnvironmentName $env.envName10 -ProjectName $env.projectName10 -ActionName "Delete"
+        
+        $action.Name | Should -Be "Delete"
+        $action.ActionType | Should -Be "Delete"    
     }
 
-    It 'GetViaIdentity' -skip {
-        { throw [System.NotImplementedException] } | Should -Not -Throw
-    }
+    It 'GetViaIdentity' {
+        $environmentInput = @{"EnvironmentName" = $env.envName10; "UserId" = "me"; "ProjectName" = $env.projectName10; "ActionName" = "Delete" }
 
-    It 'GetViaIdentityByDevCenter' -skip {
-        { throw [System.NotImplementedException] } | Should -Not -Throw
-    }
+        $action = Get-AzDevCenterUserEnvironmentAction -Endpoint $env.endpoint10 -InputObject $environmentInput
 
-    It 'ListByDevCenter' -skip {
-        { throw [System.NotImplementedException] } | Should -Not -Throw
-    }
+        $action.Name | Should -Be "Delete"
+        $action.ActionType | Should -Be "Delete"
+        }
 
-    It 'GetByDevCenter' -skip {
-        { throw [System.NotImplementedException] } | Should -Not -Throw
-    }
 }

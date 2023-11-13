@@ -15,27 +15,24 @@ if(($null -eq $TestName) -or ($TestName -contains 'Get-AzDevCenterUserEnvironmen
 }
 
 Describe 'Get-AzDevCenterUserEnvironmentOperation' {
-    It 'List' -skip {
-        { throw [System.NotImplementedException] } | Should -Not -Throw
-    }
+    It 'List' {
+        $listOfOperations = Get-AzDevCenterUserEnvironmentOperation -Endpoint $env.endpoint10 -EnvironmentName $env.envName10 -ProjectName $env.projectName10
+        $listOfOperations.Count | Should -BeGreaterOrEqual 1
+        }
 
-    It 'Get' -skip {
-        { throw [System.NotImplementedException] } | Should -Not -Throw
-    }
+    It 'Get' {
+        $operation = Get-AzDevCenterUserEnvironmentOperation -Endpoint $env.endpoint10 -EnvironmentName $env.envName10 -ProjectName $env.projectName10 -OperationId "4d48a4d5-7edc-437d-9bfa-30e9b4328f68"
+        $operation.Kind | Should -Be "Deploy"
+        $operation.OperationId | Should -Be "4d48a4d5-7edc-437d-9bfa-30e9b4328f68"
+        $operation.Status | Should -Be "Succeeded"
 
-    It 'GetViaIdentity' -skip {
-        { throw [System.NotImplementedException] } | Should -Not -Throw
-    }
+       }
 
-    It 'GetViaIdentityByDevCenter' -skip {
-        { throw [System.NotImplementedException] } | Should -Not -Throw
-    }
-
-    It 'ListByDevCenter' -skip {
-        { throw [System.NotImplementedException] } | Should -Not -Throw
-    }
-
-    It 'GetByDevCenter' -skip {
-        { throw [System.NotImplementedException] } | Should -Not -Throw
-    }
+    It 'GetViaIdentity' {
+        $environmentInput = @{"EnvironmentName" = $env.envName10; "UserId" = "me"; "ProjectName" = $env.projectName10; "OperationId" = "4d48a4d5-7edc-437d-9bfa-30e9b4328f68" }
+        $operation = Get-AzDevCenterUserEnvironmentOperation -Endpoint $env.endpoint10 -InputObject $environmentInput
+        $operation.Kind | Should -Be "Deploy"
+        $operation.OperationId | Should -Be "4d48a4d5-7edc-437d-9bfa-30e9b4328f68"
+        $operation.Status | Should -Be "Succeeded"
+        }
 }

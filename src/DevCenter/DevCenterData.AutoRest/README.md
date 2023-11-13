@@ -93,6 +93,32 @@ directive:
         "schema": {"$ref": "devcenter.json#/definitions/OperationStatus"}
       }
   - from: swagger-document
+    where-operation: Environments_PatchEnvironment
+    transform: >
+      $['parameters'] = [
+          {
+            "$ref": "devcenter.json#/parameters/ApiVersionParameter"
+          },
+          {
+            "$ref": "devcenter.json#/parameters/ProjectNameParameter"
+          },
+          {
+            "$ref": "devcenter.json#/parameters/UserIdParameter"
+          },
+          {
+            "$ref": "#/parameters/EnvironmentNameParameter"
+          },
+          {
+            "name": "body",
+            "in": "body",
+            "description": "Updatable environment properties.",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/EnvironmentPatchProperties"
+            }
+          }
+      ]
+  - from: swagger-document
     where: $.paths["/devboxes"].get.operationId
     transform: return "DevBoxes_ListAllDevBoxes"
   - from: swagger-document

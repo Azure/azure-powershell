@@ -56,14 +56,12 @@ function Invoke-AzDevCenterUserDelayEnvironmentAction {
     [CmdletBinding(DefaultParameterSetName = 'Delay', PositionalBinding = $false, SupportsShouldProcess, ConfirmImpact = 'Medium')]
     param(
         [Parameter(ParameterSetName = 'Delay', Mandatory)]
-        [Parameter(ParameterSetName = 'DelayViaIdentity', Mandatory)]
         [Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Category('Uri')]
         [System.String]
         # The DevCenter-specific URI to operate on.
         ${Endpoint},
 
         [Parameter(ParameterSetName = 'DelayByDevCenter', Mandatory)]
-        [Parameter(ParameterSetName = 'DelayViaIdentityByDevCenter', Mandatory)]
         [Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Category('Uri')]
         [System.String]
         # The DevCenter upon which to execute operations.
@@ -99,14 +97,6 @@ function Invoke-AzDevCenterUserDelayEnvironmentAction {
         # The AAD object id of the user.
         # If value is 'me', the identity is taken from the authentication context.
         ${UserId},
-
-        [Parameter(ParameterSetName = 'DelayViaIdentity', Mandatory, ValueFromPipeline)]
-        [Parameter(ParameterSetName = 'DelayViaIdentityByDevCenter', Mandatory)]
-        [Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Category('Path')]
-        [Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Models.IDevCenterdataIdentity]
-        # Identity Parameter
-        # To construct, see NOTES section for INPUTOBJECT properties and create a hash table.
-        ${InputObject},
 
         [Parameter(Mandatory)]
         [Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Category('Query')]
@@ -187,7 +177,7 @@ function Invoke-AzDevCenterUserDelayEnvironmentAction {
         }
 
         $Until = GetDelayedActionTimeFromActionName -ActionName $ActionName -Endpoint $Endpoint `
-            -Project $ProjectName -DevBoxName $DevBoxName -DelayTime $DelayTime -UserId $User
+            -Project $ProjectName -EnvironmentName $EnvironmentName -DelayTime $DelayTime -UserId $User
 
         $null = $PSBoundParameters.Add("Until", $Until)
         $null = $PSBoundParameters.Remove("DelayTime")

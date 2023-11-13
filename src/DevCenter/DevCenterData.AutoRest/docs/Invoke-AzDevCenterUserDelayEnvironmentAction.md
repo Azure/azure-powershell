@@ -26,18 +26,6 @@ Invoke-AzDevCenterUserDelayEnvironmentAction -DevCenter <String> -ActionName <St
  [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
-### DelayViaIdentity
-```
-Invoke-AzDevCenterUserDelayEnvironmentAction -Endpoint <String> -InputObject <IDevCenterdataIdentity>
- -DelayTime <TimeSpan> [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
-```
-
-### DelayViaIdentityByDevCenter
-```
-Invoke-AzDevCenterUserDelayEnvironmentAction -DevCenter <String> -InputObject <IDevCenterdataIdentity>
- -DelayTime <TimeSpan> [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
-```
-
 ## DESCRIPTION
 Delays the occurrence of an action.
 
@@ -64,7 +52,7 @@ The name of an action that will take place on an Environment.
 
 ```yaml
 Type: System.String
-Parameter Sets: Delay, DelayByDevCenter
+Parameter Sets: (All)
 Aliases:
 
 Required: True
@@ -111,7 +99,7 @@ The DevCenter upon which to execute operations.
 
 ```yaml
 Type: System.String
-Parameter Sets: DelayByDevCenter, DelayViaIdentityByDevCenter
+Parameter Sets: DelayByDevCenter
 Aliases:
 
 Required: True
@@ -126,7 +114,7 @@ The DevCenter-specific URI to operate on.
 
 ```yaml
 Type: System.String
-Parameter Sets: Delay, DelayViaIdentity
+Parameter Sets: Delay
 Aliases:
 
 Required: True
@@ -141,7 +129,7 @@ The name of the environment.
 
 ```yaml
 Type: System.String
-Parameter Sets: Delay, DelayByDevCenter
+Parameter Sets: (All)
 Aliases:
 
 Required: True
@@ -151,28 +139,12 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -InputObject
-Identity Parameter
-To construct, see NOTES section for INPUTOBJECT properties and create a hash table.
-
-```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Models.IDevCenterdataIdentity
-Parameter Sets: DelayViaIdentity, DelayViaIdentityByDevCenter
-Aliases:
-
-Required: True
-Position: Named
-Default value: None
-Accept pipeline input: True (ByValue)
-Accept wildcard characters: False
-```
-
 ### -ProjectName
 The DevCenter Project upon which to execute operations.
 
 ```yaml
 Type: System.String
-Parameter Sets: Delay, DelayByDevCenter
+Parameter Sets: (All)
 Aliases:
 
 Required: True
@@ -188,7 +160,7 @@ If value is 'me', the identity is taken from the authentication context.
 
 ```yaml
 Type: System.String
-Parameter Sets: Delay, DelayByDevCenter
+Parameter Sets: (All)
 Aliases:
 
 Required: False

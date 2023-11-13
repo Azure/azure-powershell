@@ -16,18 +16,21 @@ if(($null -eq $TestName) -or ($TestName -contains 'Skip-AzDevCenterUserEnvironme
 
 Describe 'Skip-AzDevCenterUserEnvironmentAction' {
     It 'Skip' -skip {
-        { throw [System.NotImplementedException] } | Should -Not -Throw
+        Skip-AzDevCenterUserDevBoxAction -Endpoint $env.endpoint10 -EnvironmentName $env.envName10 -ProjectName $env.projectName10 -ActionName "Delete"
+        $listOfActions = Get-AzDevCenterUserEnvironmentAction -Endpoint $env.endpoint10 -EnvironmentName $env.envName10 -ProjectName $env.projectName10
+        $listOfActions.Count | Should -Be 0
+    
     }
 
     It 'SkipViaIdentity' -skip {
-        { throw [System.NotImplementedException] } | Should -Not -Throw
-    }
+        $environmentInput = @{"EnvironmentName" = $env.envName11; "UserId" = "me"; "ProjectName" = $env.projectName10; "ActionName" = "Delete" }
 
-    It 'SkipViaIdentityByDevCenter' -skip {
-        { throw [System.NotImplementedException] } | Should -Not -Throw
-    }
 
-    It 'SkipByDevCenter' -skip {
-        { throw [System.NotImplementedException] } | Should -Not -Throw
-    }
+        Skip-AzDevCenterUserDevBoxAction -Endpoint $env.endpoint -InputObject $environmentInput
+
+        $listOfActions = Get-AzDevCenterUserEnvironmentAction -Endpoint $env.endpoint10 -EnvironmentName $env.envName11 -ProjectName $env.projectName10
+        $listOfActions.Count | Should -Be 0
+            }
+
+
 }

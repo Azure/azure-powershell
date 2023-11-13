@@ -16,18 +16,14 @@ if(($null -eq $TestName) -or ($TestName -contains 'Get-AzDevCenterUserEnvironmen
 
 Describe 'Get-AzDevCenterUserEnvironmentOutput' {
     It 'Get' -skip {
-        { throw [System.NotImplementedException] } | Should -Not -Throw
-    }
+        Get-AzDevCenterUserEnvironmentOutput -Endpoint $env.endpoint10 -EnvironmentName $env.envName10 -ProjectName $env.projectName10 -OperationId "4d48a4d5-7edc-437d-9bfa-30e9b4328f68"
+
+       }
 
     It 'GetViaIdentity' -skip {
-        { throw [System.NotImplementedException] } | Should -Not -Throw
-    }
+        $environmentInput = @{"EnvironmentName" = $env.envName10; "UserId" = "me"; "ProjectName" = $env.projectName10; "OperationId" = "4d48a4d5-7edc-437d-9bfa-30e9b4328f68" }
+        Get-AzDevCenterUserDevBoxOperation -Endpoint $env.endpoint10 -InputObject $environmentInput
+        }
 
-    It 'GetViaIdentityByDevCenter' -skip {
-        { throw [System.NotImplementedException] } | Should -Not -Throw
-    }
 
-    It 'GetByDevCenter' -skip {
-        { throw [System.NotImplementedException] } | Should -Not -Throw
-    }
 }

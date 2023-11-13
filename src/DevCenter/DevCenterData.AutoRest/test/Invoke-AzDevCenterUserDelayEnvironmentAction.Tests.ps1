@@ -15,19 +15,13 @@ if(($null -eq $TestName) -or ($TestName -contains 'Invoke-AzDevCenterUserDelayEn
 }
 
 Describe 'Invoke-AzDevCenterUserDelayEnvironmentAction' {
-    It 'Delay' -skip {
-        { throw [System.NotImplementedException] } | Should -Not -Throw
+    It 'Delay' {
+        $action = Get-AzDevCenterUserEnvironmentAction -Endpoint $env.endpoint10 -EnvironmentName $env.envName10 -ProjectName $env.projectName10 -ActionName "Delete"
+        $delayTime = New-TimeSpan -Minutes 5
+        $newScheduledTime = $action.NextScheduledTime + $delayTime
+        $delayAction = Invoke-AzDevCenterUserDelayEnvironmentAction -Endpoint $env.endpoint10 -EnvironmentName $env.envName10 -ProjectName $env.projectName10 -ActionName "Delete" -DelayTime "00:05"
+        $delayAction.NextScheduledTime | Should -Be $newScheduledTime
     }
 
-    It 'DelayViaIdentity' -skip {
-        { throw [System.NotImplementedException] } | Should -Not -Throw
-    }
 
-    It 'DelayByDevCenter' -skip {
-        { throw [System.NotImplementedException] } | Should -Not -Throw
-    }
-
-    It 'DelayViaIdentityByDevCenter' -skip {
-        { throw [System.NotImplementedException] } | Should -Not -Throw
-    }
 }

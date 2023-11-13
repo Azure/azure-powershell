@@ -74,27 +74,21 @@ function Update-AzDevCenterUserEnvironment {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Models.Api20231001Preview.IEnvironment])]
 [CmdletBinding(DefaultParameterSetName='PatchExpanded', PositionalBinding=$false, SupportsShouldProcess, ConfirmImpact='Medium')]
 param(
-    [Parameter(ParameterSetName='Patch', Mandatory)]
     [Parameter(ParameterSetName='PatchExpanded', Mandatory)]
-    [Parameter(ParameterSetName='PatchViaIdentity', Mandatory)]
     [Parameter(ParameterSetName='PatchViaIdentityExpanded', Mandatory)]
     [Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Category('Uri')]
     [System.String]
     # The DevCenter-specific URI to operate on.
     ${Endpoint},
 
-    [Parameter(ParameterSetName = 'PatchByDevCenter', Mandatory)]
     [Parameter(ParameterSetName = 'PatchExpandedByDevCenter', Mandatory)]
-    [Parameter(ParameterSetName='PatchViaIdentityByDevCenter', Mandatory)]
     [Parameter(ParameterSetName='PatchViaIdentityExpandedByDevCenter', Mandatory)]
     [Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Category('Uri')]
     [System.String]
     # The DevCenter upon which to execute operations.
     ${DevCenter},
 
-    [Parameter(ParameterSetName='Patch', Mandatory)]
     [Parameter(ParameterSetName='PatchExpanded', Mandatory)]
-    [Parameter(ParameterSetName = 'PatchByDevCenter', Mandatory)]
     [Parameter(ParameterSetName = 'PatchExpandedByDevCenter', Mandatory)]
     [Alias('EnvironmentName')]
     [Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Category('Path')]
@@ -102,18 +96,14 @@ param(
     # The name of the environment.
     ${Name},
 
-    [Parameter(ParameterSetName='Patch', Mandatory)]
     [Parameter(ParameterSetName='PatchExpanded', Mandatory)]
-    [Parameter(ParameterSetName = 'PatchByDevCenter', Mandatory)]
     [Parameter(ParameterSetName = 'PatchExpandedByDevCenter', Mandatory)]
     [Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Category('Path')]
     [System.String]
     # The DevCenter Project upon which to execute operations.
     ${ProjectName},
 
-    [Parameter(ParameterSetName='Patch')]
     [Parameter(ParameterSetName='PatchExpanded')]
-    [Parameter(ParameterSetName = 'PatchByDevCenter')]
     [Parameter(ParameterSetName = 'PatchExpandedByDevCenter')]
     [Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Category('Path')]
     [Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Runtime.DefaultInfo(Script='"me"')]
@@ -122,9 +112,7 @@ param(
     # If value is 'me', the identity is taken from the authentication context.
     ${UserId},
 
-    [Parameter(ParameterSetName='PatchViaIdentity', Mandatory, ValueFromPipeline)]
     [Parameter(ParameterSetName='PatchViaIdentityExpanded', Mandatory, ValueFromPipeline)]
-    [Parameter(ParameterSetName='PatchViaIdentityByDevCenter', Mandatory, ValueFromPipeline)]
     [Parameter(ParameterSetName='PatchViaIdentityExpandedByDevCenter', Mandatory, ValueFromPipeline)]
     [Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Category('Path')]
     [Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Models.IDevCenterdataIdentity]
@@ -132,10 +120,7 @@ param(
     # To construct, see NOTES section for INPUTOBJECT properties and create a hash table.
     ${InputObject},
 
-    [Parameter(ParameterSetName='PatchExpanded')]
-    [Parameter(ParameterSetName='PatchViaIdentityExpanded')]
-    [Parameter(ParameterSetName='PatchExpandedByDevCenter', Mandatory)]
-    [Parameter(ParameterSetName='PatchViaIdentityExpandedByDevCenter', Mandatory)]
+    [Parameter()]
     [Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Category('Body')]
     [System.DateTime]
     # The time the expiration date will be triggered (UTC), after which the environment and associated resources will be deleted.

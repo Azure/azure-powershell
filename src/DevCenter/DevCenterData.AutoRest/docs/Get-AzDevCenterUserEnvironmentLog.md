@@ -26,18 +26,6 @@ Get-AzDevCenterUserEnvironmentLog -DevCenter <String> -EnvironmentName <String> 
  [<CommonParameters>]
 ```
 
-### GetViaIdentity
-```
-Get-AzDevCenterUserEnvironmentLog -Endpoint <String> -InputObject <IDevCenterdataIdentity> -OutFile <String>
- [-DefaultProfile <PSObject>] [-PassThru] [<CommonParameters>]
-```
-
-### GetViaIdentityByDevCenter
-```
-Get-AzDevCenterUserEnvironmentLog -DevCenter <String> -InputObject <IDevCenterdataIdentity> -OutFile <String>
- [-DefaultProfile <PSObject>] [-PassThru] [<CommonParameters>]
-```
-
 ## DESCRIPTION
 Gets the logs for an operation on an environment.
 
@@ -88,7 +76,7 @@ The DevCenter upon which to execute operations.
 
 ```yaml
 Type: System.String
-Parameter Sets: GetByDevCenter, GetViaIdentityByDevCenter
+Parameter Sets: GetByDevCenter
 Aliases:
 
 Required: True
@@ -103,7 +91,7 @@ The DevCenter-specific URI to operate on.
 
 ```yaml
 Type: System.String
-Parameter Sets: Get, GetViaIdentity
+Parameter Sets: Get
 Aliases:
 
 Required: True
@@ -118,7 +106,7 @@ The name of the environment.
 
 ```yaml
 Type: System.String
-Parameter Sets: Get, GetByDevCenter
+Parameter Sets: (All)
 Aliases:
 
 Required: True
@@ -128,28 +116,12 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -InputObject
-Identity Parameter
-To construct, see NOTES section for INPUTOBJECT properties and create a hash table.
-
-```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Models.IDevCenterdataIdentity
-Parameter Sets: GetViaIdentity, GetViaIdentityByDevCenter
-Aliases:
-
-Required: True
-Position: Named
-Default value: None
-Accept pipeline input: True (ByValue)
-Accept wildcard characters: False
-```
-
 ### -OperationId
 The id of the operation on an environment.
 
 ```yaml
 Type: System.String
-Parameter Sets: Get, GetByDevCenter
+Parameter Sets: (All)
 Aliases:
 
 Required: True
@@ -194,7 +166,7 @@ The DevCenter Project upon which to execute operations.
 
 ```yaml
 Type: System.String
-Parameter Sets: Get, GetByDevCenter
+Parameter Sets: (All)
 Aliases:
 
 Required: True
@@ -210,7 +182,7 @@ If value is 'me', the identity is taken from the authentication context.
 
 ```yaml
 Type: System.String
-Parameter Sets: Get, GetByDevCenter
+Parameter Sets: (All)
 Aliases:
 
 Required: False

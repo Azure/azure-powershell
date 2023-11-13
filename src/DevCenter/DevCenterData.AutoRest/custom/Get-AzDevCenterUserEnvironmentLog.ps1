@@ -56,13 +56,11 @@ function Get-AzDevCenterUserEnvironmentLog {
     [CmdletBinding(DefaultParameterSetName = 'Get', PositionalBinding = $false)]
     param(
         [Parameter(ParameterSetName = 'Get', Mandatory)]
-        [Parameter(ParameterSetName = 'GetViaIdentity', Mandatory)]
         [Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Category('Uri')]
         [System.String]
         # The DevCenter-specific URI to operate on.
         ${Endpoint},
 
-        [Parameter(ParameterSetName = 'GetViaIdentityByDevCenter', Mandatory)]
         [Parameter(ParameterSetName = 'GetByDevCenter', Mandatory)]
         [Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Category('Uri')]
         [System.String]
@@ -98,14 +96,6 @@ function Get-AzDevCenterUserEnvironmentLog {
         # The AAD object id of the user.
         # If value is 'me', the identity is taken from the authentication context.
         ${UserId},
-
-        [Parameter(ParameterSetName = 'GetViaIdentity', Mandatory, ValueFromPipeline)]
-        [Parameter(ParameterSetName = 'GetViaIdentityByDevCenter', Mandatory, ValueFromPipeline)]
-        [Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Category('Path')]
-        [Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Models.IDevCenterdataIdentity]
-        # Identity Parameter
-        # To construct, see NOTES section for INPUTOBJECT properties and create a hash table.
-        ${InputObject},
 
         [Parameter(Mandatory)]
         [ValidateNotNull()]
