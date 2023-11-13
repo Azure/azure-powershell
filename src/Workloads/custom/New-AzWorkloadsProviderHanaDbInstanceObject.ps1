@@ -21,7 +21,7 @@ Create an in-memory object for HanaDbProviderInstanceProperties.
 Create an in-memory object for HanaDbProviderInstanceProperties.
 
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.Workloads.Models.Api20230401.HanaDbProviderInstanceProperties
+Microsoft.Azure.PowerShell.Cmdlets.Workloads.Models.Api20231001Preview.HanaDbProviderInstanceProperties
 .Link
 https://learn.microsoft.com/powershell/module/az.workloads/new-azworkloadsproviderhanadbinstanceobject
 #>

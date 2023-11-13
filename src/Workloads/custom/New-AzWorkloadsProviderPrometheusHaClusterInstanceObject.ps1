@@ -21,7 +21,7 @@ Create an in-memory object for PrometheusHaClusterProviderInstanceProperties.
 Create an in-memory object for PrometheusHaClusterProviderInstanceProperties.
 
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.Workloads.Models.Api20230401.PrometheusHaClusterProviderInstanceProperties
+Microsoft.Azure.PowerShell.Cmdlets.Workloads.Models.Api20231001Preview.PrometheusHaClusterProviderInstanceProperties
 .Link
 https://learn.microsoft.com/powershell/module/az.workloads/new-azworkloadsproviderprometheushaclusterinstanceobject
 #>

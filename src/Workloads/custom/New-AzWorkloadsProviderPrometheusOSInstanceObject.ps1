@@ -21,7 +21,7 @@ Create an in-memory object for PrometheusOSProviderInstanceProperties.
 Create an in-memory object for PrometheusOSProviderInstanceProperties.
 
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.Workloads.Models.Api20230401.PrometheusOSProviderInstanceProperties
+Microsoft.Azure.PowerShell.Cmdlets.Workloads.Models.Api20231001Preview.PrometheusOSProviderInstanceProperties
 .Link
 https://learn.microsoft.com/powershell/module/az.workloads/new-azworkloadsproviderprometheusosinstanceobject
 #>

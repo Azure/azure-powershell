@@ -30,10 +30,11 @@ For information on how to develop for `Az.Workloads`, see [how-to.md](how-to.md)
 > see https://aka.ms/autorest
 
 ```yaml
-branch: c7c06e7e311df89b6851aa7e12142c8f0d129cd8 
+branch: 13aec7f115c01ba6986ebf32488537392c0df6f5 
+tag:	package-preview-2023-10
 require:
   - $(this-folder)/../readme.azure.noprofile.md
-  - $(repo)/specification/workloads/resource-manager/readme.md
+  - /src/azure-rest-api-specs/specification/workloads/resource-manager/readme.md
 
 try-require: 
   - $(repo)/specification/workloads/resource-manager/readme.powershell.md
@@ -48,6 +49,14 @@ use-extension:
   "@autorest/powershell": "3.x"
 
 directive:
+#Preview message
+- where:
+    subject: ^SapVirtualInstance$|^SapApplicationServerInstance$|^SapCentralInstance$|^SapDatabaseInstance$|^SapAvailabilityZoneDetail$|^SapDiskConfiguration$|^SapSizingRecommendation$|^SapSupportedSku$
+  set:
+    preview-announcement:
+      preview-message: This is a test preview message.
+      estimated-ga-date: 2023-09-30
+
 # Monitor
 - where:
     verb: New
@@ -359,7 +368,7 @@ directive:
 # Result shoule be in SingleServerRecommendationResult and ThreeTierRecommendationResult
 - from: source-file-csharp
   where: $
-  transform: $ = $.replace('internal Microsoft.Azure.PowerShell.Cmdlets.Workloads.Models.Api20230401.ISapSizingRecommendationResult Property', 'public Microsoft.Azure.PowerShell.Cmdlets.Workloads.Models.Api20230401.ISapSizingRecommendationResult Property');
+  transform: $ = $.replace('internal Microsoft.Azure.PowerShell.Cmdlets.Workloads.Models.Api20231001Preview.ISapSizingRecommendationResult Property', 'public Microsoft.Azure.PowerShell.Cmdlets.Workloads.Models.Api20230401.ISapSizingRecommendationResult Property');
 
 # remove System Data in module Monitor, ProviderInstance, SapApplicationServerInstance, SapCentralServerInstance, SapDatabaseInstance, SapLandscapeMonitor, SapVirtualInstance
 - from: Monitor.cs

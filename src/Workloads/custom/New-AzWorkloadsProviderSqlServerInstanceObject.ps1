@@ -21,7 +21,7 @@ Create an in-memory object for MsSqlServerProviderInstanceProperties.
 Create an in-memory object for MsSqlServerProviderInstanceProperties.
 
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.Workloads.Models.Api20230401.MsSqlServerProviderInstanceProperties
+Microsoft.Azure.PowerShell.Cmdlets.Workloads.Models.Api20231001Preview.MsSqlServerProviderInstanceProperties
 .Link
 https://learn.microsoft.com/powershell/module/az.workloads/new-azworkloadsprovidersqlserverinstanceobject
 #>
