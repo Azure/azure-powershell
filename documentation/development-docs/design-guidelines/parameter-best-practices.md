@@ -54,9 +54,13 @@ From the [_Strongly Encouraged Development Guidelines_](https://learn.microsoft.
 
 #### Secret Parameters
 
-For parameters whose type is plain text and which represent a value that should be kept secret in some fashion (such as a password, secret, key, etc.), the type of the parameter should be `SecureString` to avoid any sensitive information about the parameter from leaking during cmdlet execution.
+For parameters whose type is string and which represent a value that should be kept secret in some fashion (such as a password, secret, key, etc.), the type of the parameter should be `SecureString` to limit the exposure of sensitive string data from unexpected leakage during cmdlet execution. The practice also applies to output properties whose type is string and that should be kept in secret.
 
-Please notice that `SecureString` is not used for any encryption purposes. It is a wrapper of the plain text to prevent unexpected leakage of information. 
+Please notice that DO NOT use `SecureString` for encryption purposes. We only recommend to use `SecureString` as a wrapper of string to prevent unexpected leakage of information as string may still be exposed to any process or operation that has access to raw memory. 
+
+From [see SecureString shouldn't be used](https://github.com/dotnet/platform-compat/blob/master/docs/DE0001.md)
+
+> _SecureString is more secure than String because it limits the exposure of sensitive string data. However, those strings may still be exposed to any process or operation that has access to raw memory, such as a malicious process running on the host computer, a process dump, or a user-viewable swap file. Instead of using SecureString to protect passwords, the recommended alternative is to use an opaque handle to credentials that are stored outside of the process._
 
 #### Bool vs. SwitchParameter
 
