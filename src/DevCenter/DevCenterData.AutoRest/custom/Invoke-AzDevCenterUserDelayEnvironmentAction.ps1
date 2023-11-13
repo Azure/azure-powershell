@@ -176,7 +176,7 @@ function Invoke-AzDevCenterUserDelayEnvironmentAction {
             $User = $PSBoundParameters["InputObject"].UserId
         }
 
-        $Until = GetDelayedActionTimeFromActionName -ActionName $ActionName -Endpoint $Endpoint `
+        $Until = GetDelayedEnvironmentActionTimeFromActionName -ActionName $ActionName -Endpoint $Endpoint `
             -Project $ProjectName -EnvironmentName $EnvironmentName -DelayTime $DelayTime -UserId $User
 
         $null = $PSBoundParameters.Add("Until", $Until)

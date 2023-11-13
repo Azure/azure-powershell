@@ -133,6 +133,45 @@ function GetDelayedActionTimeFromActionName {
     }
 }
 
+function GetDelayedEnvironmentActionTimeFromActionName {
+    [Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.DoNotExportAttribute()]
+    param(
+        [Parameter(Mandatory = $true, HelpMessage = 'Name of the action')]
+        [System.String]
+        ${ActionName},
+
+        [Parameter(Mandatory = $true, HelpMessage = 'Endpoint URL')]
+        [System.String]
+        ${Endpoint},
+
+        [Parameter(Mandatory = $true, HelpMessage = 'Name of the project')]
+        [System.String]
+        ${Project},
+
+        [Parameter(Mandatory = $true, HelpMessage = 'Name of the environment')]
+        [System.String]
+        ${EnvironmentName},
+
+        [Parameter(Mandatory)]
+        [System.TimeSpan]
+        ${DelayTime},
+
+        [Parameter(HelpMessage = 'User id')]
+        [System.String]
+        ${UserId}
+        
+    ) 
+
+    process {
+        $action = Az.DevCenterdata.internal\Get-AzDevCenterUserEnvironmentAction -Endpoint $Endpoint -ActionName $ActionName `
+            -ProjectName $Project -EnvironmentName $EnvironmentName -UserId $UserId | ConvertTo-Json | ConvertFrom-Json
+        
+        $newScheduledTime = $action.NextScheduledTime + $DelayTime
+
+        return $newScheduledTime
+    }
+}
+
 function ValidateAndProcessEndpoint {
     [Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.DoNotExportAttribute()]
     param(
