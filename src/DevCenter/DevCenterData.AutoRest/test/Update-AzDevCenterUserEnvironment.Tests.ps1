@@ -15,22 +15,22 @@ if(($null -eq $TestName) -or ($TestName -contains 'Update-AzDevCenterUserEnviron
 }
 
 Describe 'Update-AzDevCenterUserEnvironment' {
-    It 'PatchExpanded' -skip {
-        $environment = Get-AzDevCenterUserEnvironment -Endpoint $env.endpoint10 -EnvironmentName $env.envName10 -ProjectName $env.projectName10 -UserId "me"
-        $newExpirationTime = $environment.ExpirationDate + $delayTime
+    It 'PatchExpanded' {
+        $currentDate = Get-Date
+        $dateIn8Months = $currentDate.AddMonths(8)
 
-        $updatedEnvironment = Update-AzDevCenterUserEnvironment -Endpoint $env.endpoint10 -EnvironmentName $env.envName10 -ProjectName $env.projectName10 -ExpirationDate $newExpirationTime
-        $updatedEnvironment.ExpirationDate | Should -Be $newExpirationTime
+        $updatedEnvironment = Update-AzDevCenterUserEnvironment -Endpoint $env.endpoint10 -EnvironmentName $env.envName10 -ProjectName $env.projectName10 -ExpirationDate $dateIn8Months
+        $updatedEnvironment.ExpirationDate | Should -Be $dateIn8Months.ToUniversalTime()
         }
 
 
-    It 'PatchViaIdentityExpanded' -skip {
+    It 'PatchViaIdentityExpanded' {
         $envInput = @{"UserId" = "me"; "ProjectName" = $env.projectName10; "EnvironmentName" = $env.envName10 }
-        $environment = Get-AzDevCenterUserEnvironment -Endpoint $env.endpoint10 -EnvironmentName $env.envName10 -ProjectName $env.projectName10 -UserId "me"
-        $newExpirationTime = $environment.ExpirationDate + $delayTime
+        $currentDate = Get-Date
+        $dateIn9Months = $currentDate.AddMonths(9)
 
-        $updatedEnvironment = Update-AzDevCenterUserEnvironment -Endpoint $env.endpoint10 -InputObject $envInput -ExpirationDate $newExpirationTime
-        $updatedEnvironment.ExpirationDate | Should -Be $newExpirationTime
+        $updatedEnvironment = Update-AzDevCenterUserEnvironment -Endpoint $env.endpoint10 -InputObject $envInput -ExpirationDate $dateIn9Months
+        $updatedEnvironment.ExpirationDate | Should -Be $dateIn9Months.ToUniversalTime()
 
     }
 }

@@ -15,18 +15,18 @@ if(($null -eq $TestName) -or ($TestName -contains 'Skip-AzDevCenterUserEnvironme
 }
 
 Describe 'Skip-AzDevCenterUserEnvironmentAction' {
-    It 'Skip' -skip {
-        Skip-AzDevCenterUserDevBoxAction -Endpoint $env.endpoint10 -EnvironmentName $env.envName10 -ProjectName $env.projectName10 -ActionName "Delete"
+    It 'Skip' {
+        Skip-AzDevCenterUserEnvironmentAction -Endpoint $env.endpoint10 -EnvironmentName $env.envName10 -ProjectName $env.projectName10 -ActionName "Delete"
         $listOfActions = Get-AzDevCenterUserEnvironmentAction -Endpoint $env.endpoint10 -EnvironmentName $env.envName10 -ProjectName $env.projectName10
         $listOfActions.Count | Should -Be 0
     
     }
 
-    It 'SkipViaIdentity' -skip {
+    It 'SkipViaIdentity' {
         $environmentInput = @{"EnvironmentName" = $env.envName11; "UserId" = "me"; "ProjectName" = $env.projectName10; "ActionName" = "Delete" }
 
 
-        Skip-AzDevCenterUserDevBoxAction -Endpoint $env.endpoint -InputObject $environmentInput
+        Skip-AzDevCenterUserEnvironmentAction -Endpoint $env.endpoint10 -InputObject $environmentInput
 
         $listOfActions = Get-AzDevCenterUserEnvironmentAction -Endpoint $env.endpoint10 -EnvironmentName $env.envName11 -ProjectName $env.projectName10
         $listOfActions.Count | Should -Be 0
