@@ -43,27 +43,35 @@ The Dev Box may restart during this operation.
 
 ## EXAMPLES
 
-### Example 1: {{ Add title here }}
+### Example 1: Reapir dev box by endpoint
 ```powershell
-{{ Add code here }}
+Repair-AzDevCenterUserDevBox -Endpoint "https://8a40af38-3b4c-4672-a6a4-5e964b1870ed-contosodevcenter.centralus.devcenter.azure.com/" -Name myDevBox -ProjectName DevProject
 ```
 
-```output
-{{ Add output here }}
-```
+This command repairs the dev box "myDevBox".
 
-{{ Add description here }}
-
-### Example 2: {{ Add title here }}
+### Example 2: Repair dev box by dev center
 ```powershell
-{{ Add code here }}
+Repair-AzDevCenterUserDevBox -DevCenter Contoso -Name myDevBox -ProjectName DevProject
 ```
 
-```output
-{{ Add output here }}
+This command repairs the dev box "myDevBox".
+
+### Example 3: Repair dev box by endpoint and InputObject
+```powershell
+$devBoxInput = @{"DevBoxName" = "myDevBox"; "UserId" = "me"; "ProjectName" = "DevProject";}
+Repair-AzDevCenterUserDevBox -Endpoint "https://8a40af38-3b4c-4672-a6a4-5e964b1870ed-contosodevcenter.centralus.devcenter.azure.com/" -InputObject $devBoxInput
 ```
 
-{{ Add description here }}
+This command repairs the dev box "myDevBox".
+
+### Example 4: Reapir dev box by dev center and InputObject
+```powershell
+$devBoxInput = @{"DevBoxName" = "myDevBox"; "UserId" = "me"; "ProjectName" = "DevProject";}
+Repair-AzDevCenterUserDevBox -DevCenter Contoso -InputObject $devBoxInput
+```
+
+This command repairs the dev box "myDevBox".
 
 ## PARAMETERS
 
