@@ -31,7 +31,7 @@ For information on how to develop for `Az.DevCenterdata`, see [how-to.md](how-to
 
 ```yaml
 # pin the swagger version by using the commit id instead of branch name
-branch: bce3a8d1141c8c6df26d17c94b0f5437f214141f
+commit: bce3a8d1141c8c6df26d17c94b0f5437f214141f
 require:
 # readme.azure.noprofile.md is the common configuration file
   - $(this-folder)/../../readme.azure.noprofile.md
