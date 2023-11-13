@@ -58,7 +58,7 @@ For parameters whose type is string and which represent a value that should be k
 
 Please notice that DO NOT use `SecureString` for encryption purposes. We only recommend to use `SecureString` as a wrapper of string to prevent unexpected leakage of information as string may still be exposed to any process or operation that has access to raw memory. 
 
-From [see SecureString shouldn't be used](https://github.com/dotnet/platform-compat/blob/master/docs/DE0001.md)
+From [How secure is SecureString?](https://learn.microsoft.com/dotnet/api/system.security.securestring#how-secure-is-securestring)
 
 > _SecureString is more secure than String because it limits the exposure of sensitive string data. However, those strings may still be exposed to any process or operation that has access to raw memory, such as a malicious process running on the host computer, a process dump, or a user-viewable swap file. Instead of using SecureString to protect passwords, the recommended alternative is to use an opaque handle to credentials that are stored outside of the process._
 
