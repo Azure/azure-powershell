@@ -31,7 +31,7 @@ For information on how to develop for `Az.NewRelic`, see [how-to.md](how-to.md).
 
 ```yaml
 # pin the swagger version by using the commit id instead of branch name
-branch: 6b992c049ed7d6a95465d5c0a2234fc54c87b9bf
+commit: 6b992c049ed7d6a95465d5c0a2234fc54c87b9bf
 tag: package-2022-07-01
 require:
 # readme.azure.noprofile.md is the common configuration file
@@ -54,6 +54,10 @@ subject-prefix: $(service-name)
 # identity-correction-for-post: true
 resourcegroup-append: true
 nested-object-to-string: true
+
+# For new modules, please avoid setting 3.x using the use-extension method and instead, use 4.x as the default option
+use-extension:
+  "@autorest/powershell": "3.x"
 
 directive:
   - where:

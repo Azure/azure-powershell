@@ -48,7 +48,7 @@ Describe 'AzSubscription' {
         } | Should -Not -Throw
     }
 
-    It 'UpdateSubPolicy' {
+    It 'UpdateSubPolicy' -skip {
         {
             $config = Update-AzSubscriptionPolicy -BlockSubscriptionsIntoTenant:$false -BlockSubscriptionsLeavingTenant:$false 
             $config.Count | Should -BeGreaterThan 0

@@ -30,7 +30,7 @@ For information on how to develop for `Az.CustomLocation`, see [how-to.md](how-t
 > see https://aka.ms/autorest
 
 ``` yaml
-branch: c6c9e02ae4de78cd7357bc4a5a7be38e6f1909d0
+commit: c6c9e02ae4de78cd7357bc4a5a7be38e6f1909d0
 require:
   - $(this-folder)/../readme.azure.noprofile.md
 input-file: 
@@ -41,6 +41,10 @@ title: CustomLocation
 subject-prefix: $(service-name)
 
 identity-correction-for-post: true
+
+# For new modules, please avoid setting 3.x using the use-extension method and instead, use 4.x as the default option
+use-extension:
+  "@autorest/powershell": "3.x"
 
 directive:
   - from: swagger-document 

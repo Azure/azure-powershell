@@ -47,7 +47,7 @@ In this directory, run AutoRest:
 > see https://aka.ms/autorest
 
 ``` yaml
-branch: 4b4bb1021353692578499f43f1aa912964a2b7e2
+commit: 4b4bb1021353692578499f43f1aa912964a2b7e2
 require:
   - $(this-folder)/../readme.azure.noprofile.md
 input-file:
@@ -60,6 +60,10 @@ subject-prefix: $(service-name)
 identity-correction-for-post: true
 resourcegroup-append: true
 nested-object-to-string: true
+
+# For new modules, please avoid setting 3.x using the use-extension method and instead, use 4.x as the default option
+use-extension:
+  "@autorest/powershell": "3.x"
 
 directive:
   # 1. Remove the unexpanded parameter set

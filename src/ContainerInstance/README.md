@@ -30,7 +30,7 @@ For information on how to develop for `Az.ContainerInstance`, see [how-to.md](ho
 > see https://aka.ms/autorest
 
 ``` yaml
-branch: 81562c6c057a510ddde50ff40720d254bd5f6dbf
+commit: 81562c6c057a510ddde50ff40720d254bd5f6dbf
 require:
 # readme.azure.noprofile.md is the common configuration file
   - $(this-folder)/../readme.azure.noprofile.md
@@ -52,6 +52,10 @@ resourcegroup-append: true
 # If there are post APIs for some kinds of actions in the RP, you may need to 
 # uncomment following line to support viaIdentity for these post APIs
 # identity-correctiEXon-for-post: true
+
+# For new modules, please avoid setting 3.x using the use-extension method and instead, use 4.x as the default option
+use-extension:
+  "@autorest/powershell": "3.x"
 
 directive:
   # Following is two common directive which are normally required in all the RPs
@@ -151,4 +155,17 @@ directive:
       }
   # - model-cmdlet:
   #   - Volume # Hide to customize AzureFileStorageAccountKey from string to securestring
+
+  # Fix Typo: Parameters starting with PreviouState will be corrected as PreviousState.
+  - where:
+      model-name: ContainerPropertiesInstanceView|InitContainerPropertiesDefinitionInstanceView|Container|ContainerProperties|InitContainerDefinition|InitContainerPropertiesDefinition
+      property-name: PreviousState
+    set:
+      property-name: PreviousStateInternal
+
+  - where:
+      model-name: ContainerPropertiesInstanceView|InitContainerPropertiesDefinitionInstanceView|Container|ContainerProperties|InitContainerDefinition|InitContainerPropertiesDefinition
+      property-name: ^PreviouState
+    set:
+      property-name: PreviousState
 ```

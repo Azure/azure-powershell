@@ -16,8 +16,10 @@ if(($null -eq $TestName) -or ($TestName -contains 'Unregister-AzStorageMoverAgen
 
 Describe 'Unregister-AzStorageMoverAgent' {
     It 'Delete' {
-        Unregister-AzStorageMoverAgent -Name $env.AgentName -ResourceGroupName $env.ResourceGroupName -StorageMoverName $env.StorageMoverNameWithAgent -Force
-        $agents =  Get-AzStorageMoverAgent -ResourceGroupName $env.ResourceGroupName -StorageMoverName $env.StorageMoverNameWithAgent
-        $agents.Name | Should -Not -Contain $env.AgentName
+        Unregister-AzStorageMoverAgent -Name $env.AgentName -ResourceGroupName $env.ResourceGroupName -StorageMoverName $env.StorageMoverNameWithAgent -Force -AsJob
+        $agents =  Get-AzStorageMoverAgent -ResourceGroupName $env.ResourceGroupName -StorageMoverName $env.StorageMoverNameWithAgent -Name $env.AgentName
+        $agents.Name | Should -Be $env.AgentName
+        $agents.AgentStatus | Should -Be "Unregistering"
+        $agents.ProvisioningState | Should -Be "Deleting"
     }
 }

@@ -31,7 +31,7 @@ For information on how to develop for `Az.Quota`, see [how-to.md](how-to.md).
 
 ``` yaml
 # lock the commit
-branch: 679887ace44697c726aba8d2814ee415a5d25e6f
+commit: 679887ace44697c726aba8d2814ee415a5d25e6f
 require:
   - $(this-folder)/../readme.azure.noprofile.md
 input-file:
@@ -46,6 +46,10 @@ identity-correction-for-post: true
 nested-object-to-string: true
 
 inlining-threshold: 50
+
+# For new modules, please avoid setting 3.x using the use-extension method and instead, use 4.x as the default option
+use-extension:
+  "@autorest/powershell": "3.x"
 
 directive:
   # The regex(^/(?<scope>[^/]+)/) mathch failed because the scope inlcude '/' character.

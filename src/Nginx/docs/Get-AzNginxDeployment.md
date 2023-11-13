@@ -8,7 +8,7 @@ schema: 2.0.0
 # Get-AzNginxDeployment
 
 ## SYNOPSIS
-Get the Nginx deployment
+Get the NGINX deployment
 
 ## SYNTAX
 
@@ -35,7 +35,7 @@ Get-AzNginxDeployment -ResourceGroupName <String> [-SubscriptionId <String[]>] [
 ```
 
 ## DESCRIPTION
-Get the Nginx deployment
+Get the NGINX deployment
 
 ## EXAMPLES
 
@@ -116,7 +116,7 @@ Accept wildcard characters: False
 ```
 
 ### -Name
-The name of targeted Nginx deployment
+The name of targeted NGINX deployment
 
 ```yaml
 Type: System.String
@@ -170,7 +170,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.Nginx.Models.Api20220801.INginxDeployment
+### Microsoft.Azure.PowerShell.Cmdlets.Nginx.Models.Api20230401.INginxDeployment
 
 ## NOTES
 

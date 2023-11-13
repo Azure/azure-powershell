@@ -30,7 +30,7 @@ For information on how to develop for `Az.NetworkFunction`, see [how-to.md](how-
 > see https://aka.ms/autorest
 
 ``` yaml
-branch: 5ef93469c04983e472e57ca227fc5159d13a172a
+commit: 5ef93469c04983e472e57ca227fc5159d13a172a
 require:
   - $(this-folder)/../readme.azure.noprofile.md
 input-file:
@@ -41,6 +41,10 @@ subject-prefix: $(service-name)
 identity-correction-for-post: true
 resourcegroup-append: true
 nested-object-to-string: true
+
+# For new modules, please avoid setting 3.x using the use-extension method and instead, use 4.x as the default option
+use-extension:
+  "@autorest/powershell": "3.x"
 
 directive:
   - where:

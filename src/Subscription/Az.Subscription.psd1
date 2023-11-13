@@ -11,7 +11,7 @@
   DotNetFrameworkVersion = '4.7.2'
   RequiredAssemblies = './bin/Az.Subscription.private.dll'
   FormatsToProcess = './Az.Subscription.format.ps1xml'
-  FunctionsToExport = 'Disable-AzSubscription', 'Enable-AzSubscription', 'Get-AzSubscriptionAcceptOwnershipStatus', 'Get-AzSubscriptionAlias', 'Get-AzSubscriptionPolicy', 'Invoke-AzSubscriptionAcceptOwnership', 'New-AzSubscriptionAlias', 'Remove-AzSubscriptionAlias', 'Rename-AzSubscription', 'Update-AzSubscriptionPolicy', '*'
+  FunctionsToExport = 'Disable-AzSubscription', 'Enable-AzSubscription', 'Get-AzSubscriptionAcceptOwnershipStatus', 'Get-AzSubscriptionAlias', 'Get-AzSubscriptionPolicy', 'Invoke-AzSubscriptionAcceptOwnership', 'New-AzSubscriptionAlias', 'Remove-AzSubscriptionAlias', 'Rename-AzSubscription', '*'
   AliasesToExport = '*'
   PrivateData = @{
     PSData = @{

@@ -29,7 +29,6 @@ trigger:
       
 variables:
   GenerationBranchName: generation
-  GithubToken: $(GITHUB_TOKEN)
 
 jobs:
 - job: Sync
@@ -41,6 +40,7 @@ jobs:
         BranchName: ${{ variables.GenerationBranchName }}
 
   steps:
+  - template: util/get-github-pat-steps.yml
   - task: PowerShell@2
     displayName: Sync branch
     inputs:

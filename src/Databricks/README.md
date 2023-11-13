@@ -31,7 +31,7 @@ For information on how to develop for `Az.Databricks`, see [how-to.md](how-to.md
 > see https://aka.ms/autorest
 
 ``` yaml
-branch: a078cebc3964c8968d141906c613794ca0453861
+commit: a078cebc3964c8968d141906c613794ca0453861
 require:
   - $(this-folder)/../readme.azure.noprofile.md
   - $(repo)/specification/databricks/resource-manager/readme.md
@@ -48,8 +48,21 @@ resourcegroup-append: true
 identity-correction-for-post: true
 nested-object-to-string: true
 
+# For new modules, please avoid setting 3.x using the use-extension method and instead, use 4.x as the default option
+use-extension:
+  "@autorest/powershell": "3.x"
+
 directive:
-  # Remove cmdlet, Private link related resource should be ignored. 
+# Worked around this issue: https://github.com/Azure/autorest.powershell/issues/1258
+  - from: EncryptionEntitiesDefinition.json.cs
+    where: $
+    transform: $ = $.replace('ManagedService;', '_managedService;')
+
+  - from: EncryptionEntitiesDefinition.json.cs
+    where: $
+    transform: $ = $.replace('ManagedDisk;', '_managedDisk;')
+
+# Remove cmdlet, Private link related resource should be ignored. 
   - where:
      subject: PrivateEndpointConnection|PrivateLinkResource
     remove: true

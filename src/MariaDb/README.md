@@ -47,7 +47,7 @@ In this directory, run AutoRest:
 > see https://aka.ms/autorest
 
 ``` yaml
-branch: ae862b1c090b4c2c951ea46bf97ddbafd6f76d82
+commit: ae862b1c090b4c2c951ea46bf97ddbafd6f76d82
 require:
   - $(this-folder)/../readme.azure.noprofile.md
 input-file:
@@ -55,6 +55,10 @@ input-file:
 
 title: MariaDB
 module-version: 0.1.0
+
+# For new modules, please avoid setting 3.x using the use-extension method and instead, use 4.x as the default option
+use-extension:
+  "@autorest/powershell": "3.x"
 
 directive:
   - where:

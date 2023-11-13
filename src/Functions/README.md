@@ -49,6 +49,10 @@ In this directory, run AutoRest:
 ### Suppression
 
 ``` yaml
+# For new modules, please avoid setting 3.x using the use-extension method and instead, use 4.x as the default option
+use-extension:
+  "@autorest/powershell": "3.x"
+
 directive:
   - suppress: XmsResourceInPutResponse
     from: WebApps.json
@@ -65,7 +69,7 @@ directive:
 ```
 
 ``` yaml
-branch: main
+commit: 78eac0bd58633028293cb1ec1709baa200bed9e2
 require:
   - $(this-folder)/../readme.azure.noprofile.md
 input-file:

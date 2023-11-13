@@ -47,7 +47,7 @@ In this directory, run AutoRest:
 > see https://aka.ms/autorest
 
 ``` yaml
-branch: 5df8962
+commit: 5df8962f094d431b8f8e7cbe143e742d316e9141
 require:
   - $(this-folder)/../readme.azure.noprofile.md
 input-file:
@@ -65,6 +65,10 @@ subject-prefix: SapMonitor
 # If there are post APIs for some kinds of actions in the RP, you may need to
 # uncomment following line to support viaIdentity for these post APIs
 # identity-correction-for-post: true
+
+# For new modules, please avoid setting 3.x using the use-extension method and instead, use 4.x as the default option
+use-extension:
+  "@autorest/powershell": "3.x"
 
 directive:
   # Following is two common directive which are normally required in all the RPs

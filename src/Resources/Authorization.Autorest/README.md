@@ -55,6 +55,10 @@ identity-correction-for-post: true
 resourcegroup-append: true
 default-exclude-tableview-properties: false
 
+# For new modules, please avoid setting 3.x using the use-extension method and instead, use 4.x as the default option
+use-extension:
+  "@autorest/powershell": "3.x"
+
 directive:
   # Swaager bug: The scope should be readonly according to the server response.
   - from: swagger-document

@@ -6,4 +6,3 @@ Unregister-AzWvdApplicationGroup -ResourceGroupName ResourceGroupName `
 ```
 
 This command unregisters an Application Group from a Workspace
-

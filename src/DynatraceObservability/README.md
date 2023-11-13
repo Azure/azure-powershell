@@ -30,7 +30,7 @@ For information on how to develop for `Az.DynatraceObservability`, see [how-to.m
 > see https://aka.ms/autorest
 
 ``` yaml
-branch: 8820fa48b53c2c5c6cada3d44046b879932893cd
+commit: 8820fa48b53c2c5c6cada3d44046b879932893cd
 require:
   - $(this-folder)/../readme.azure.noprofile.md
 input-file:
@@ -41,6 +41,10 @@ subject-prefix: Dynatrace
 inlining-threshold: 100
 resourcegroup-append: true
 nested-object-to-string: true
+
+# For new modules, please avoid setting 3.x using the use-extension method and instead, use 4.x as the default option
+use-extension:
+  "@autorest/powershell": "3.x"
 
 directive:
   - where:

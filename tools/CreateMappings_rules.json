@@ -847,5 +847,17 @@
   {
     "module": "DevCenter",
     "alias": "DevCenter"
+  },
+  {
+    "alias": "NetworkCloud",
+    "module": "NetworkCloud"
+  },
+  {
+    "alias": "HdInsightOnAks",
+    "module": "HdInsightOnAks"
+  },
+  {
+    "module": "NetworkAnalytics",
+    "alias": "NetworkAnalytics"
   }
 ]

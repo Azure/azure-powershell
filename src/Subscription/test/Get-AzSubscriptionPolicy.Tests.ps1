@@ -15,7 +15,7 @@ if(($null -eq $TestName) -or ($TestName -contains 'Get-AzSubscriptionPolicy'))
 }
 
 Describe 'Get-AzSubscriptionPolicy' {
-    It 'Get' -skip {
+    It 'List' -skip {
         { throw [System.NotImplementedException] } | Should -Not -Throw
     }
 }

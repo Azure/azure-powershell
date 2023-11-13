@@ -30,7 +30,7 @@ For information on how to develop for `Az.FluidRelay`, see [how-to.md](how-to.md
 > see https://aka.ms/autorest
 
 ``` yaml
-branch: 1b8d88d20ea46eaaf4b8a5237f206e925b8b1180
+commit: 1b8d88d20ea46eaaf4b8a5237f206e925b8b1180
 require:
   - $(this-folder)/../readme.azure.noprofile.md 
 input-file:
@@ -43,6 +43,10 @@ subject-prefix: $(service-name)
 resourcegroup-append: true
 identity-correction-for-post: true
 nested-object-to-string: true
+
+# For new modules, please avoid setting 3.x using the use-extension method and instead, use 4.x as the default option
+use-extension:
+  "@autorest/powershell": "3.x"
 
 directive:
   - where:

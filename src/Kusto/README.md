@@ -53,8 +53,8 @@ require:
   - $(this-folder)/../readme.azure.noprofile.md
 # lock the commit
 input-file:
-  - $(repo)/specification/azure-kusto/resource-manager/Microsoft.Kusto/stable/2022-12-29/kusto.json
-branch: 519850b125f5b5257c6d73512ac0705dd6f26131
+  - $(repo)/specification/azure-kusto/resource-manager/Microsoft.Kusto/stable/2023-08-15/kusto.json
+commit: 4c38cb9966cd6afbb03c7e9b14997720a728baee
 
 ```
 
@@ -74,6 +74,10 @@ output-folder: .
 > Directives
 ``` yaml
 identity-correction-for-post: true
+# For new modules, please avoid setting 3.x using the use-extension method and instead, use 4.x as the default option
+use-extension:
+  "@autorest/powershell": "3.x"
+
 directive:
   # Fix the error in swagger, RP actually returns 200 when deletion succeeds
   - from: swagger-document
@@ -139,8 +143,15 @@ directive:
       subject: OperationsResultLocation
       parameter-name: ^PassThru$
     hide: true
+    # Rename Move-AzKustoCluster -> Invoke-AzKustoClusterMigration
+  - where:
+      verb: Move
+      subject: Cluster
+    set:
+      verb: Invoke
+      subject: ClusterMigration
   # Correct some generated code
   - from: source-file-csharp
     where: $
-    transform: $ = $.replace('internal Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api20221229.IDataConnection Property', 'public Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api20221229.IDataConnection Property');
+    transform: $ = $.replace('internal Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api20230815.IDataConnection Property', 'public Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api20230815.IDataConnection Property');
 ```

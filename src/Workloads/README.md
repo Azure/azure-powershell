@@ -30,7 +30,7 @@ For information on how to develop for `Az.Workloads`, see [how-to.md](how-to.md)
 > see https://aka.ms/autorest
 
 ```yaml
-branch: c7c06e7e311df89b6851aa7e12142c8f0d129cd8 
+commit: c7c06e7e311df89b6851aa7e12142c8f0d129cd8
 require:
   - $(this-folder)/../readme.azure.noprofile.md
   - $(repo)/specification/workloads/resource-manager/readme.md
@@ -42,6 +42,10 @@ resourcegroup-append: true
 identity-correction-for-post: true
 nested-object-to-string: true
 inlining-threshold: 100
+
+# For new modules, please avoid setting 3.x using the use-extension method and instead, use 4.x as the default option
+use-extension:
+  "@autorest/powershell": "3.x"
 
 directive:
 # Monitor

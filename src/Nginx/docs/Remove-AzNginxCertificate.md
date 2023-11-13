@@ -8,7 +8,7 @@ schema: 2.0.0
 # Remove-AzNginxCertificate
 
 ## SYNOPSIS
-Deletes a certificate from the nginx deployment
+Deletes a certificate from the NGINX deployment
 
 ## SYNTAX
 
@@ -26,7 +26,7 @@ Remove-AzNginxCertificate -InputObject <INginxIdentity> [-DefaultProfile <PSObje
 ```
 
 ## DESCRIPTION
-Deletes a certificate from the nginx deployment
+Deletes a certificate from the NGINX deployment
 
 ## EXAMPLES
 
@@ -77,7 +77,7 @@ Accept wildcard characters: False
 ```
 
 ### -DeploymentName
-The name of targeted Nginx deployment
+The name of targeted NGINX deployment
 
 ```yaml
 Type: System.String

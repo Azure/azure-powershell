@@ -70,7 +70,7 @@ In this directory, run AutoRest:
 > see https://aka.ms/autorest
 
 ``` yaml
-branch: 37072829f795ce840b8085035e8adf4721602f34
+commit: 37072829f795ce840b8085035e8adf4721602f34
 require:
   - $(this-folder)/../readme.azure.noprofile.md
 input-file:
@@ -84,6 +84,10 @@ inlining-threshold: 50
 # If there are post APIs for some kinds of actions in the RP, you may need to
 # uncomment following line to support viaIdentity for these post APIs
 # identity-correction-for-post: true
+
+# For new modules, please avoid setting 3.x using the use-extension method and instead, use 4.x as the default option
+use-extension:
+  "@autorest/powershell": "3.x"
 
 directive:
   - where:

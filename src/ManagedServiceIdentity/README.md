@@ -30,7 +30,7 @@ For information on how to develop for `Az.ManagedServiceIdentity`, see [how-to.m
 > see https://aka.ms/autorest
 
 ``` yaml
-branch: main
+commit: 78eac0bd58633028293cb1ec1709baa200bed9e2
 require:
   - $(this-folder)/../readme.azure.noprofile.md
 input-file:
@@ -42,6 +42,10 @@ resourcegroup-append: true
 nested-object-to-string: true
 identity-correction-for-post: true
 module-version: 0.3.0
+
+# For new modules, please avoid setting 3.x using the use-extension method and instead, use 4.x as the default option
+use-extension:
+  "@autorest/powershell": "3.x"
 
 directive:
   - where:

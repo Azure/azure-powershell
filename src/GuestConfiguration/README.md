@@ -29,7 +29,7 @@ For information on how to develop for `Az.GuestConfiguration`, see [how-to.md](h
 ### AutoRest Configuration
 > see https://aka.ms/autorest
 ``` yaml
-branch: d5c524d7228920ac75e27efe2e4616d5e43f71b1
+commit: d5c524d7228920ac75e27efe2e4616d5e43f71b1
 require:
   - $(this-folder)/../readme.azure.noprofile.md
 # lock the commit
@@ -41,6 +41,10 @@ subject-prefix: $(service-name)
 identity-correction-for-post: true 
 nested-object-to-string: true
 resourcegroup-append: true
+# For new modules, please avoid setting 3.x using the use-extension method and instead, use 4.x as the default option
+use-extension:
+  "@autorest/powershell": "3.x"
+
 directive:
   # Following is two common directive which are normally required in all the RPs
   # 1. Remove the unexpanded parameter set

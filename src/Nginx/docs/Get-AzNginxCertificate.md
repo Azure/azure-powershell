@@ -8,7 +8,7 @@ schema: 2.0.0
 # Get-AzNginxCertificate
 
 ## SYNOPSIS
-Get a certificate of given Nginx deployment
+Get a certificate of given NGINX deployment
 
 ## SYNTAX
 
@@ -30,7 +30,7 @@ Get-AzNginxCertificate -InputObject <INginxIdentity> [-DefaultProfile <PSObject>
 ```
 
 ## DESCRIPTION
-Get a certificate of given Nginx deployment
+Get a certificate of given NGINX deployment
 
 ## EXAMPLES
 
@@ -79,7 +79,7 @@ Accept wildcard characters: False
 ```
 
 ### -DeploymentName
-The name of targeted Nginx deployment
+The name of targeted NGINX deployment
 
 ```yaml
 Type: System.String
@@ -164,7 +164,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.Nginx.Models.Api20220801.INginxCertificate
+### Microsoft.Azure.PowerShell.Cmdlets.Nginx.Models.Api20230401.INginxCertificate
 
 ## NOTES
 

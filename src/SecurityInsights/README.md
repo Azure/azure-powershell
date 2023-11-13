@@ -50,7 +50,7 @@ In this directory, run AutoRest:
 require:
   - $(this-folder)/../readme.azure.noprofile.md
 # lock the commit
-branch: 59eb5a7f1d09d0be2b80b8497785ffa2d784b5b6
+commit: 59eb5a7f1d09d0be2b80b8497785ffa2d784b5b6
 
 input-file:
   - $(repo)/specification/securityinsights/resource-manager/Microsoft.SecurityInsights/preview/2021-09-01-preview/AlertRules.json
@@ -76,6 +76,10 @@ title: SecurityInsights
 subject-prefix: Sentinel
   
 inlining-threshold: 50
+
+# For new modules, please avoid setting 3.x using the use-extension method and instead, use 4.x as the default option
+use-extension:
+  "@autorest/powershell": "3.x"
 
 directive:
   # Fixes/overrides to swaggers
@@ -342,101 +346,4 @@ directive:
       enum-value-name: Equals
     set:
       enum-value-name: Equal
-  # breaking change message
-  - where:
-      subject: BookmarkRelation
-    set:
-      breaking-change:
-        deprecated-by-version: 4.0.0
-        deprecated-by-azversion: 11.0.0
-        change-effective-date: 2023/11/15
-  - where:
-      subject: EntityQuery
-    set:
-      breaking-change:
-        deprecated-by-version: 4.0.0
-        deprecated-by-azversion: 11.0.0
-        change-effective-date: 2023/11/15
-  - where:
-      subject: Setting
-    set:
-      breaking-change:
-        deprecated-by-version: 4.0.0
-        deprecated-by-azversion: 11.0.0
-        change-effective-date: 2023/11/15
-  - where:
-      verb: Get
-      subject: Enrichment|Entity|EntityActivity|EntityInsight|EntityQueryTemplate|EntityRelation|EntityTimeline
-    set:
-      breaking-change:
-        deprecated-by-version: 4.0.0
-        deprecated-by-azversion: 11.0.0
-        change-effective-date: 2023/11/15
-  - where:
-      verb: New
-      subject: IncidentTeam
-    set:
-      breaking-change:
-        deprecated-by-version: 4.0.0
-        deprecated-by-azversion: 11.0.0
-        change-effective-date: 2023/11/15
-  - where:
-      parameter-name: Action
-    set:
-      breaking-change:
-        become-mandatory: true
-        change-description: Action is required.
-        deprecated-by-version: 4.0.0
-        deprecated-by-azversion: 11.0.0
-        change-effective-date: 2023/11/15
-  - where:
-      parameter-name: Order
-      subject: AutomationRule
-    set:
-      breaking-change:
-        become-mandatory: true
-        change-description: Order is required.
-        deprecated-by-version: 4.0.0
-        deprecated-by-azversion: 11.0.0
-        change-effective-date: 2023/11/15
-  - where:
-      parameter-name: DisplayName
-      subject: AutomationRule
-    set:
-      breaking-change:
-        become-mandatory: true
-        change-description: DisplayName is required.
-        deprecated-by-version: 4.0.0
-        deprecated-by-azversion: 11.0.0
-        change-effective-date: 2023/11/15
-  - where:
-      verb: New
-      subject: Incident
-      variant: Create
-    set:
-      breaking-change:
-        change-description: ParameterSet Create will be deprecated.
-        deprecated-by-version: 4.0.0
-        deprecated-by-azversion: 11.0.0
-        change-effective-date: 2023/11/15
-  - where:
-      verb: New
-      subject: AutomationRule
-      variant: Create
-    set:
-      breaking-change:
-        change-description: ParameterSet Create will be deprecated.
-        deprecated-by-version: 4.0.0
-        deprecated-by-azversion: 11.0.0
-        change-effective-date: 2023/11/15
-  - where:
-      verb: New
-      subject: Bookmark
-      variant: Create
-    set:
-      breaking-change:
-        change-description: ParameterSet Create will be deprecated.
-        deprecated-by-version: 4.0.0
-        deprecated-by-azversion: 11.0.0
-        change-effective-date: 2023/11/15
 ```

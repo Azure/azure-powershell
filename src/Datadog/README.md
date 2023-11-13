@@ -30,7 +30,7 @@ For information on how to develop for `Az.Datadog`, see [how-to.md](how-to.md).
 > see https://aka.ms/autorest
 
 ``` yaml
-branch: 2e3f1e0c67ee7da1d681a26b6b23b888ce856695
+commit: 2e3f1e0c67ee7da1d681a26b6b23b888ce856695
 require:
   - $(this-folder)/../readme.azure.noprofile.md
 input-file: 
@@ -41,6 +41,10 @@ module-version: 0.1.0
 subject-prefix: Datadog
 nested-object-to-string: true
 identity-correction-for-post: true
+
+# For new modules, please avoid setting 3.x using the use-extension method and instead, use 4.x as the default option
+use-extension:
+  "@autorest/powershell": "3.x"
 
 directive:
   # Remove cmdlet.

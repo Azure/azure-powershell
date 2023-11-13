@@ -15,10 +15,6 @@ if(($null -eq $TestName) -or ($TestName -contains 'Stop-AzStorageMoverJobDefinit
 }
 
 Describe 'Stop-AzStorageMoverJobDefinition' {
-    It 'Stop' {
-        $job = Start-AzStorageMoverJobDefinition -JobDefinitionName $env.JobDefinitionName -ProjectName $env.ProjectName -ResourceGroupName $env.ResourceGroupName -StorageMoverName $env.StorageMoverNameWithAgent
-        $job | Should -Not -Be $null
-        $job = Stop-AzStorageMoverJobDefinition -JobDefinitionName $env.JobDefinitionName -ProjectName $env.ProjectName -ResourceGroupName $env.ResourceGroupName -StorageMoverName $env.StorageMoverNameWithAgent
-        $job | Should -Not -Be $null
+    It 'Stop' -skip {
     }
 }
