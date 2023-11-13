@@ -16,21 +16,23 @@ if(($null -eq $TestName) -or ($TestName -contains 'Update-AzDevCenterUserEnviron
 
 Describe 'Update-AzDevCenterUserEnvironment' {
     It 'PatchExpanded' {
-        $currentDate = Get-Date
-        $dateIn8Months = $currentDate.AddMonths(8)
+        $dateString = "2024-07-13T05:02:04.3117922Z"
+        $dateTime = [DateTime]::ParseExact($dateString, "yyyy-MM-ddTHH:mm:ss.fffffffZ", [System.Globalization.CultureInfo]::InvariantCulture, [System.Globalization.DateTimeStyles]::AssumeUniversal)
 
-        $updatedEnvironment = Update-AzDevCenterUserEnvironment -Endpoint $env.endpoint10 -EnvironmentName $env.envName10 -ProjectName $env.projectName10 -ExpirationDate $dateIn8Months
-        $updatedEnvironment.ExpirationDate | Should -Be $dateIn8Months.ToUniversalTime()
+
+        $updatedEnvironment = Update-AzDevCenterUserEnvironment -Endpoint $env.endpoint10 -EnvironmentName $env.envName10 -ProjectName $env.projectName10 -ExpirationDate $dateTime
+        $updatedEnvironment.ExpirationDate | Should -Be $dateTime.ToUniversalTime()
         }
 
 
     It 'PatchViaIdentityExpanded' {
         $envInput = @{"UserId" = "me"; "ProjectName" = $env.projectName10; "EnvironmentName" = $env.envName10 }
-        $currentDate = Get-Date
-        $dateIn9Months = $currentDate.AddMonths(9)
 
-        $updatedEnvironment = Update-AzDevCenterUserEnvironment -Endpoint $env.endpoint10 -InputObject $envInput -ExpirationDate $dateIn9Months
-        $updatedEnvironment.ExpirationDate | Should -Be $dateIn9Months.ToUniversalTime()
+        $dateString = "2024-08-13T05:02:04.7642679Z"
+        $dateTime = [DateTime]::ParseExact($dateString, "yyyy-MM-ddTHH:mm:ss.fffffffZ", [System.Globalization.CultureInfo]::InvariantCulture, [System.Globalization.DateTimeStyles]::AssumeUniversal)
+
+        $updatedEnvironment = Update-AzDevCenterUserEnvironment -Endpoint $env.endpoint10 -InputObject $envInput -ExpirationDate $dateTime
+        $updatedEnvironment.ExpirationDate | Should -Be $dateTime.ToUniversalTime()
 
     }
 }
