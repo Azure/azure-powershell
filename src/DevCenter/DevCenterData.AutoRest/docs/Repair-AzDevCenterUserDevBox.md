@@ -43,27 +43,35 @@ The Dev Box may restart during this operation.
 
 ## EXAMPLES
 
-### Example 1: {{ Add title here }}
+### Example 1: Reapir dev box by endpoint
 ```powershell
-{{ Add code here }}
+Repair-AzDevCenterUserDevBox -Endpoint "https://8a40af38-3b4c-4672-a6a4-5e964b1870ed-contosodevcenter.centralus.devcenter.azure.com/" -Name myDevBox -ProjectName DevProject
 ```
 
-```output
-{{ Add output here }}
-```
+This command repairs the dev box "myDevBox".
 
-{{ Add description here }}
-
-### Example 2: {{ Add title here }}
+### Example 2: Repair dev box by dev center
 ```powershell
-{{ Add code here }}
+Repair-AzDevCenterUserDevBox -DevCenter Contoso -Name myDevBox -ProjectName DevProject
 ```
 
-```output
-{{ Add output here }}
+This command repairs the dev box "myDevBox".
+
+### Example 3: Repair dev box by endpoint and InputObject
+```powershell
+$devBoxInput = @{"DevBoxName" = "myDevBox"; "UserId" = "me"; "ProjectName" = "DevProject";}
+Repair-AzDevCenterUserDevBox -Endpoint "https://8a40af38-3b4c-4672-a6a4-5e964b1870ed-contosodevcenter.centralus.devcenter.azure.com/" -InputObject $devBoxInput
 ```
 
-{{ Add description here }}
+This command repairs the dev box "myDevBox".
+
+### Example 4: Reapir dev box by dev center and InputObject
+```powershell
+$devBoxInput = @{"DevBoxName" = "myDevBox"; "UserId" = "me"; "ProjectName" = "DevProject";}
+Repair-AzDevCenterUserDevBox -DevCenter Contoso -InputObject $devBoxInput
+```
+
+This command repairs the dev box "myDevBox".
 
 ## PARAMETERS
 
@@ -248,26 +256,6 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ### System.Boolean
 
 ## NOTES
-
-ALIASES
-
-COMPLEX PARAMETER PROPERTIES
-
-To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
-
-
-`INPUTOBJECT <IDevCenterdataIdentity>`: Identity Parameter
-  - `[ActionName <String>]`: The name of an action that will take place on a Dev Box.
-  - `[CatalogName <String>]`: The name of the catalog
-  - `[DefinitionName <String>]`: The name of the environment definition
-  - `[DevBoxName <String>]`: The name of a Dev Box.
-  - `[EnvironmentName <String>]`: The name of the environment.
-  - `[Id <String>]`: Resource identity path
-  - `[OperationId <String>]`: The id of the operation on a Dev Box.
-  - `[PoolName <String>]`: The name of a pool of Dev Boxes.
-  - `[ProjectName <String>]`: The DevCenter Project upon which to execute operations.
-  - `[ScheduleName <String>]`: The name of a schedule.
-  - `[UserId <String>]`: The AAD object id of the user. If value is 'me', the identity is taken from the authentication context.
 
 ## RELATED LINKS
 

@@ -197,6 +197,10 @@ directive:
       subject: ^CatalogDevBoxDefinition$|^CatalogDevBoxDefinitionErrorDetail$|^CustomizationTask|^CustomizationTaskErrorDetail$
     hide: true
   - where:
+      verb: Connect
+      subject: Catalog
+    hide: true
+  - where:
       subject: OperationStatuses
     set:
       subject: OperationStatus

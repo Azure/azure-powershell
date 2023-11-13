@@ -238,13 +238,11 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Models.Api20230701Preview.IDevBoxAction
+### Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Models.Api20231001Preview.IDevBoxAction
 
-### Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Models.Api20230701Preview.IDevBoxActionDelayResult
+### Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Models.Api20231001Preview.IDevBoxActionDelayResult
 
 ## NOTES
-
-ALIASES
 
 ## RELATED LINKS
 

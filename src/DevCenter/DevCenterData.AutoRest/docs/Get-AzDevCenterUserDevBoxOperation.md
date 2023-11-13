@@ -53,27 +53,49 @@ Gets an operation on a Dev Box.
 
 ## EXAMPLES
 
-### Example 1: {{ Add title here }}
+### Example 1: List operations on the dev box by endpoint
 ```powershell
-{{ Add code here }}
+Get-AzDevCenterUserDevBoxOperation -Endpoint "https://8a40af38-3b4c-4672-a6a4-5e964b1870ed-contosodevcenter.centralus.devcenter.azure.com/" -DevBoxName myDevBox -ProjectName DevProject
 ```
 
-```output
-{{ Add output here }}
-```
+This command lists the operations on the dev box "myDevBox".
 
-{{ Add description here }}
-
-### Example 2: {{ Add title here }}
+### Example 2: List operations on the dev box by dev center
 ```powershell
-{{ Add code here }}
+Get-AzDevCenterUserDevBoxOperation -DevCenter Contoso -DevBoxName myDevBox -ProjectName DevProject
 ```
 
-```output
-{{ Add output here }}
+This command lists the operations on the dev box "myDevBox".
+
+### Example 3: Get an operation on the dev box by endpoint
+```powershell
+Get-AzDevCenterUserDevBoxOperation -Endpoint "https://8a40af38-3b4c-4672-a6a4-5e964b1870ed-contosodevcenter.centralus.devcenter.azure.com/" -DevBoxName myDevBox -ProjectName DevProject -OperationId "d0954a94-3550-4919-bcbe-1c94ed79e0cd"
 ```
 
-{{ Add description here }}
+This command gets the operation "d0954a94-3550-4919-bcbe-1c94ed79e0cd" for the dev box "myDevBox".
+
+### Example 4: Get an operation on the dev box by dev center
+```powershell
+Get-AzDevCenterUserDevBoxOperation -DevCenter Contoso -DevBoxName myDevBox -ProjectName DevProject -OperationId "d0954a94-3550-4919-bcbe-1c94ed79e0cd"
+```
+
+This command gets the operation "d0954a94-3550-4919-bcbe-1c94ed79e0cd" for the dev box "myDevBox".
+
+### Example 5: Get an operation on the dev box by endpoint and InputObject
+```powershell
+$devBoxInput = @{"DevBoxName" = "myDevBox"; "UserId" = "me"; "ProjectName" = "DevProject"; "OperationId" = "d0954a94-3550-4919-bcbe-1c94ed79e0cd"}
+Get-AzDevCenterUserDevBoxOperation -Endpoint "https://8a40af38-3b4c-4672-a6a4-5e964b1870ed-contosodevcenter.centralus.devcenter.azure.com/" -InputObject $devBoxInput
+```
+
+This command gets the operation "d0954a94-3550-4919-bcbe-1c94ed79e0cd" for the dev box "myDevBox".
+
+### Example 6: Get an operation on the dev box by dev center and InputObject
+```powershell
+$devBoxInput = @{"DevBoxName" = "myDevBox"; "UserId" = "me"; "ProjectName" = "DevProject"; "OperationId" = "d0954a94-3550-4919-bcbe-1c94ed79e0cd"}
+Get-AzDevCenterUserDevBoxOperation -DevCenter Contoso -InputObject $devBoxInput
+```
+
+This command gets the operation "d0954a94-3550-4919-bcbe-1c94ed79e0cd" for the dev box "myDevBox".
 
 ## PARAMETERS
 
@@ -209,29 +231,9 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Models.Api20230701Preview.IDevBoxOperation
+### Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Models.Api20231001Preview.IDevBoxOperation
 
 ## NOTES
-
-ALIASES
-
-COMPLEX PARAMETER PROPERTIES
-
-To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
-
-
-`INPUTOBJECT <IDevCenterdataIdentity>`: Identity Parameter
-  - `[ActionName <String>]`: The name of an action that will take place on a Dev Box.
-  - `[CatalogName <String>]`: The name of the catalog
-  - `[DefinitionName <String>]`: The name of the environment definition
-  - `[DevBoxName <String>]`: The name of a Dev Box.
-  - `[EnvironmentName <String>]`: The name of the environment.
-  - `[Id <String>]`: Resource identity path
-  - `[OperationId <String>]`: The id of the operation on a Dev Box.
-  - `[PoolName <String>]`: The name of a pool of Dev Boxes.
-  - `[ProjectName <String>]`: The DevCenter Project upon which to execute operations.
-  - `[ScheduleName <String>]`: The name of a schedule.
-  - `[UserId <String>]`: The AAD object id of the user. If value is 'me', the identity is taken from the authentication context.
 
 ## RELATED LINKS
 

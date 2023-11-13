@@ -25,7 +25,7 @@ Creates or updates an environment.
 {{ Add code here }}
 
 .Inputs
-Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Models.Api20230701Preview.IEnvironment
+Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Models.Api20231001Preview.IEnvironment
 .Inputs
 Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Models.IDevCenterdataIdentity
 .Outputs
@@ -146,10 +146,16 @@ function Deploy-AzDevCenterUserEnvironment {
     [Parameter(ParameterSetName = 'CreateViaIdentityExpandedByDevCenter')]
     [Parameter(ParameterSetName = 'CreateExpandedByDevCenter')]
     [Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Runtime.Info(PossibleTypes=([Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Models.Api20230701Preview.IEnvironmentUpdatePropertiesParameters]))]
+    [Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Runtime.Info(PossibleTypes=([Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Models.Api20231001Preview.IEnvironmentUpdatePropertiesParameters]))]
     [System.Collections.Hashtable]
     # Parameters object for the environment.
     ${Parameter},
+
+    [Parameter()]
+    [Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Category('Body')]
+    [System.DateTime]
+    # The time the expiration date will be triggered (UTC), after which the environment and associated resources will be deleted.
+    ${ExpirationDate},
   
     [Parameter()]
     [Alias('AzureRMContext', 'AzureCredential')]
