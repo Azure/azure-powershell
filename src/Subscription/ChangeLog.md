@@ -33,7 +33,7 @@ The latest module that got auto generated from Swagger resulted not only in chan
 
 We did a hotfix for this issue and created a new release 0.10.2. Most of the changes made, reflect parity with the public Swagger and we have now fixed the parameters issue.  Features of the new release mentioned below:
 
-1. `New-AzSubscriptionAlias` now supports additional input "ManagementGroup" to associate the subscription to, additional owner and tenant for the subscription.
+1. `New-AzSubscriptionAlias` now supports additional input "ManagementGroup" to associate the subscription with, additional owner and tenant for the subscription.
 1. The parameter `SubscriptionName` has been changed to `DisplayName`. However, `SubscriptionName` is still available as an alias parameter for `DisplayName`.
 1. `Updated-AzSubscription` cmdlet which was used for cancel, enable, and rename operations is replaced with new separate cmdlets to directly reflect actions: `Disable-AzSubscription`, `Enable-AzSubscription`, and `Rename-AzSubscription`.
 1. New cmdlets (`Get-AzSubscriptionAcceptOwnershipStatus` & `Invoke-AzSubscriptionAcceptOwnership`) are introduced to handle / to work with invitation model - to get the status and to accept the invitation for new subscription creation.
