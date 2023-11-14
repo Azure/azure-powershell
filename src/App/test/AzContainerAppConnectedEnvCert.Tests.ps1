@@ -18,7 +18,7 @@ Describe 'AzContainerAppConnectedEnvCert' {
 
     # Contains confidential information, please run it locally
 
-    It 'CreateExpanded' {
+    It 'CreateExpanded' -Skip {
         {
             $selfSignedCert = New-SelfSignedCertificate -DnsName "www.fabrikam.com", "www.contoso.com" -CertStoreLocation "cert:\LocalMachine\My"
             Get-ChildItem -Path cert:\LocalMachine\My
