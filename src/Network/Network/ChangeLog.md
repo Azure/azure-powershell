@@ -22,6 +22,7 @@
 * Updated cmdlet `New-AzPublicIpPrefix` and `New-PublicIpAddress` to require Location parameter
 * Updated cmdlet `New-AzLoadBalancerBackendAddressPool` to support managed IP based backend
 * Added cmdlet `New-AzSaaSNetworkVirtualAppliance` for creating a NetworkVirtualAppliance of SaaS type.
+* Updated cmdlet `New-AzBastion`, `Set-AzBastion` and `Get-AzBastion` to support Bastion features for CRUD operations
 
 ## Version 6.2.0
 * Added support for new Application Gateway SKU type, Basic SKU
