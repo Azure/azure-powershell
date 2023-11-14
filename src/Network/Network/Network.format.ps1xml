@@ -6865,11 +6865,11 @@
                 <PropertyName>Location</PropertyName>
               </ListItem>
               <ListItem>
-                <Label>Tag</Label>
+                <Label>Tags</Label>
                 <PropertyName>Tag</PropertyName>
               </ListItem>
               <ListItem>
-                <Label>TagsTable</Label>
+                <Label>Tags Table</Label>
                 <PropertyName>TagsTable</PropertyName>
               </ListItem>
               <ListItem>
@@ -6906,19 +6906,19 @@
               </ListItem>
               <ListItem>
                   <Label>Copy/Paste</Label>
-              <PropertyName>DisableCopyPaste</PropertyName>
+				  <PropertyName>DisableCopyPaste</PropertyName>
               </ListItem>
               <ListItem>
-              <Label>Native Client</Label>
-              <PropertyName>EnableTunneling</PropertyName>
+				  <Label>Native Client</Label>
+				  <PropertyName>EnableTunneling</PropertyName>
               </ListItem>
               <ListItem>
-              <Label>IP Connect</Label>
-              <PropertyName>EnableIpConnect</PropertyName>
+				  <Label>IP Connect</Label>
+				  <PropertyName>EnableIpConnect</PropertyName>
               </ListItem>
               <ListItem>
-              <Label>Shareable Link</Label>
-              <PropertyName>EnableShareableLink</PropertyName>
+				  <Label>Shareable Link</Label>
+				  <PropertyName>EnableShareableLink</PropertyName>
               </ListItem>
             </ListItems>
           </ListEntry>

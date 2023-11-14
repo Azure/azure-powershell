@@ -61,31 +61,31 @@ namespace Microsoft.Azure.Commands.Network.Models
 
         public string ProvisioningState { get; set; }
 
-        [Ps1Xml(Label = "Sku Name", Target = ViewControl.All, ScriptBlock = "$_.Sku.Name")]
+        [Ps1Xml(Label = "Sku Name", Target = ViewControl.List, ScriptBlock = "$_.Sku.Name")]
         [DefaultValue(PSBastionSku.Standard)]
         public PSBastionSku Sku { get; set; }
 
-        [Ps1Xml(Label = "Scale Units", Target = ViewControl.All)]
+        [Ps1Xml(Label = "Scale Units", Target = ViewControl.List)]
         [DefaultValue(2)]
         public int? ScaleUnit { get; set; }
 
-        [Ps1Xml(Label = "Kerberos", Target = ViewControl.All)]
+        [Ps1Xml(Label = "Kerberos", Target = ViewControl.List)]
         [DefaultValue(false)]
         public bool? EnableKerberos { get; set; }
 
-        [Ps1Xml(Label = "Copy and Paste", Target = ViewControl.All)]
+        [Ps1Xml(Label = "Copy and Paste", Target = ViewControl.List)]
         [DefaultValue(false)]
         public bool? DisableCopyPaste { get; set; }
 
-        [Ps1Xml(Label = "Native Client", Target = ViewControl.All)]
+        [Ps1Xml(Label = "Native Client", Target = ViewControl.List)]
         [DefaultValue(false)]
         public bool? EnableTunneling { get; set; }
 
-        [Ps1Xml(Label = "IP Connect", Target = ViewControl.All)]
+        [Ps1Xml(Label = "IP Connect", Target = ViewControl.List)]
         [DefaultValue(false)]
         public bool? EnableIpConnect { get; set; }
 
-        [Ps1Xml(Label = "Shareable Link", Target = ViewControl.All)]
+        [Ps1Xml(Label = "Shareable Link", Target = ViewControl.List)]
         [DefaultValue(false)]
         public bool? EnableShareableLink { get; set; }
 
