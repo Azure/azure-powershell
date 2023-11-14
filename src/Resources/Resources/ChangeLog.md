@@ -19,6 +19,7 @@
 -->
 
 ## Upcoming Release
+* Use utf8 encoding for reading stdout & stderr when invoking Bicep. [#23246]
 
 ## Version 6.12.0
 * Supported $ref statements for user-defined types in Bicep files.
