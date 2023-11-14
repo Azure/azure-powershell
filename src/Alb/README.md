@@ -17,7 +17,7 @@ This directory contains the PowerShell module for the Alb service.
 This module was primarily generated via [AutoRest](https://github.com/Azure/autorest) using the [PowerShell](https://github.com/Azure/autorest.powershell) extension.
 
 ## Module Requirements
-- [Az.Accounts module](https://www.powershellgallery.com/packages/Az.Accounts/), version 2.7.5 or greater
+- [Az.Accounts module](https://www.powershellgallery.com/packages/Az.Accounts/), version 2.2.3 or greater
 
 ## Authentication
 AutoRest does not generate authentication code for the module. Authentication is handled via Az.Accounts by altering the HTTP payload before it is sent.
@@ -39,7 +39,7 @@ resourcegroup-append: true
 nested-object-to-string: true
 
 # pin the swagger version by using the commit id instead of branch name
-commit: f7c77a57cf879e3938f5084c3d0cf0611b5834e7
+commit: 1b338481329645df2d9460738cbaab6109472488
 require:
 # readme.azure.noprofile.md is the common configuration file
   - $(this-folder)/../readme.azure.noprofile.md
@@ -56,7 +56,7 @@ directive:
   # Bug: https://github.com/Azure/autorest.powershell/issues/983
   - from: source-file-csharp
     where: $
-    transform: $ = $.replace('((Microsoft.Azure.PowerShell.Cmdlets.Alb.Models.Api20230501Preview.IAssociationPropertiesInternal)Property).AssociationType = value;', '((Microsoft.Azure.PowerShell.Cmdlets.Alb.Models.Api20230501Preview.IAssociationPropertiesInternal)Property).AssociationType = value ?? "";');
+    transform: $ = $.replace('((Microsoft.Azure.PowerShell.Cmdlets.Alb.Models.Api20231101.IAssociationPropertiesInternal)Property).AssociationType = value;', '((Microsoft.Azure.PowerShell.Cmdlets.Alb.Models.Api20231101.IAssociationPropertiesInternal)Property).AssociationType = value ?? "";');
   # Fix swagger issues
   - from: swagger-document
     where: $.definitions.TrafficControllerUpdateProperties

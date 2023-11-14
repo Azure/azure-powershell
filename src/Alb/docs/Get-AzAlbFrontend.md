@@ -79,8 +79,7 @@ Accept wildcard characters: False
 ```
 
 ### -DefaultProfile
-The DefaultProfile parameter is not functional.
-Use the SubscriptionId parameter when available if executing the cmdlet against a different subscription.
+The credentials, account, tenant, and subscription used for communication with Azure.
 
 ```yaml
 Type: System.Management.Automation.PSObject
@@ -165,7 +164,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.Alb.Models.Api20230501Preview.IFrontend
+### Microsoft.Azure.PowerShell.Cmdlets.Alb.Models.Api20231101.IFrontend
 
 ## NOTES
 
@@ -176,7 +175,7 @@ COMPLEX PARAMETER PROPERTIES
 To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
 
 
-`INPUTOBJECT <IAlbIdentity>`: Identity Parameter
+INPUTOBJECT <IAlbIdentity>: Identity Parameter
   - `[AssociationName <String>]`: Name of Association
   - `[FrontendName <String>]`: Frontends
   - `[Id <String>]`: Resource identity path
