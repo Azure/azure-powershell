@@ -67,8 +67,9 @@ namespace Microsoft.Azure.Management.ServiceFabric.Models
         /// <param name="clusterCodeVersion">The Service Fabric runtime version of the cluster. This property can only
         /// by set the user when **upgradeMode** is set to &#39;Manual&#39;. To get list of
         /// available Service Fabric versions for new clusters use [ClusterVersion
-        /// API](./ClusterVersion.md). To get the list of available version for
-        /// existing clusters use **availableClusterVersions**.
+        /// API](https://learn.microsoft.com/rest/api/servicefabric/cluster-versions/list).
+        /// To get the list of available version for existing clusters use
+        /// **availableClusterVersions**.
         /// </param>
 
         /// <param name="eventStoreServiceEnabled">Indicates if the event store service is enabled.
@@ -119,7 +120,7 @@ namespace Microsoft.Azure.Management.ServiceFabric.Models
 
         /// <param name="notifications">Indicates a list of notification channels for cluster events.
         /// </param>
-        public ClusterUpdateParameters(System.Collections.Generic.IList<string> addOnFeatures = default(System.Collections.Generic.IList<string>), CertificateDescription certificate = default(CertificateDescription), ServerCertificateCommonNames certificateCommonNames = default(ServerCertificateCommonNames), System.Collections.Generic.IList<ClientCertificateCommonName> clientCertificateCommonNames = default(System.Collections.Generic.IList<ClientCertificateCommonName>), System.Collections.Generic.IList<ClientCertificateThumbprint> clientCertificateThumbprints = default(System.Collections.Generic.IList<ClientCertificateThumbprint>), string clusterCodeVersion = default(string), bool? eventStoreServiceEnabled = default(bool?), System.Collections.Generic.IList<SettingsSectionDescription> fabricSettings = default(System.Collections.Generic.IList<SettingsSectionDescription>), System.Collections.Generic.IList<NodeTypeDescription> nodeTypes = default(System.Collections.Generic.IList<NodeTypeDescription>), string reliabilityLevel = default(string), CertificateDescription reverseProxyCertificate = default(CertificateDescription), ClusterUpgradePolicy upgradeDescription = default(ClusterUpgradePolicy), ApplicationTypeVersionsCleanupPolicy applicationTypeVersionsCleanupPolicy = default(ApplicationTypeVersionsCleanupPolicy), string upgradeMode = default(string), string sfZonalUpgradeMode = default(string), string vmssZonalUpgradeMode = default(string), bool? infrastructureServiceManager = default(bool?), string upgradeWave = default(string), System.DateTime? upgradePauseStartTimestampUtc = default(System.DateTime?), System.DateTime? upgradePauseEndTimestampUtc = default(System.DateTime?), bool? waveUpgradePaused = default(bool?), System.Collections.Generic.IList<Notification> notifications = default(System.Collections.Generic.IList<Notification>), System.Collections.Generic.IDictionary<string, string> tags = default(System.Collections.Generic.IDictionary<string, string>))
+        public ClusterUpdateParameters(System.Collections.Generic.IDictionary<string, string> tags = default(System.Collections.Generic.IDictionary<string, string>), string reliabilityLevel = default(string), string upgradeMode = default(string), System.Collections.Generic.IList<string> addOnFeatures = default(System.Collections.Generic.IList<string>), CertificateDescription certificate = default(CertificateDescription), ServerCertificateCommonNames certificateCommonNames = default(ServerCertificateCommonNames), System.Collections.Generic.IList<ClientCertificateCommonName> clientCertificateCommonNames = default(System.Collections.Generic.IList<ClientCertificateCommonName>), System.Collections.Generic.IList<ClientCertificateThumbprint> clientCertificateThumbprints = default(System.Collections.Generic.IList<ClientCertificateThumbprint>), string clusterCodeVersion = default(string), bool? eventStoreServiceEnabled = default(bool?), System.Collections.Generic.IList<SettingsSectionDescription> fabricSettings = default(System.Collections.Generic.IList<SettingsSectionDescription>), System.Collections.Generic.IList<NodeTypeDescription> nodeTypes = default(System.Collections.Generic.IList<NodeTypeDescription>), CertificateDescription reverseProxyCertificate = default(CertificateDescription), ClusterUpgradePolicy upgradeDescription = default(ClusterUpgradePolicy), ApplicationTypeVersionsCleanupPolicy applicationTypeVersionsCleanupPolicy = default(ApplicationTypeVersionsCleanupPolicy), string sfZonalUpgradeMode = default(string), string vmssZonalUpgradeMode = default(string), bool? infrastructureServiceManager = default(bool?), string upgradeWave = default(string), System.DateTime? upgradePauseStartTimestampUtc = default(System.DateTime?), System.DateTime? upgradePauseEndTimestampUtc = default(System.DateTime?), bool? waveUpgradePaused = default(bool?), System.Collections.Generic.IList<Notification> notifications = default(System.Collections.Generic.IList<Notification>))
 
         {
             this.Tags = tags;
@@ -222,8 +223,10 @@ namespace Microsoft.Azure.Management.ServiceFabric.Models
         /// Gets or sets the Service Fabric runtime version of the cluster. This
         /// property can only by set the user when **upgradeMode** is set to &#39;Manual&#39;.
         /// To get list of available Service Fabric versions for new clusters use
-        /// [ClusterVersion API](./ClusterVersion.md). To get the list of available
-        /// version for existing clusters use **availableClusterVersions**.
+        /// [ClusterVersion
+        /// API](https://learn.microsoft.com/rest/api/servicefabric/cluster-versions/list).
+        /// To get the list of available version for existing clusters use
+        /// **availableClusterVersions**.
         /// </summary>
         [Newtonsoft.Json.JsonProperty(PropertyName = "properties.clusterCodeVersion")]
         public string ClusterCodeVersion {get; set; }

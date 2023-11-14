@@ -48,7 +48,12 @@ namespace Microsoft.Azure.Management.ServiceFabric.Models
         /// UnmonitoredAuto, UnmonitoredManual, and Monitored.
         /// Possible values include: 'Invalid', 'UnmonitoredAuto', 'UnmonitoredManual',
         /// 'Monitored'</param>
-        public ApplicationUpgradePolicy(string upgradeReplicaSetCheckTimeout = default(string), bool? forceRestart = default(bool?), ArmRollingUpgradeMonitoringPolicy rollingUpgradeMonitoringPolicy = default(ArmRollingUpgradeMonitoringPolicy), ArmApplicationHealthPolicy applicationHealthPolicy = default(ArmApplicationHealthPolicy), string upgradeMode = default(string))
+
+        /// <param name="recreateApplication">Determines whether the application should be recreated on update. If
+        /// value=true, the rest of the upgrade policy parameters are not allowed and
+        /// it will result in availability loss.
+        /// </param>
+        public ApplicationUpgradePolicy(string upgradeReplicaSetCheckTimeout = default(string), bool? forceRestart = default(bool?), ArmRollingUpgradeMonitoringPolicy rollingUpgradeMonitoringPolicy = default(ArmRollingUpgradeMonitoringPolicy), ArmApplicationHealthPolicy applicationHealthPolicy = default(ArmApplicationHealthPolicy), string upgradeMode = default(string), bool? recreateApplication = default(bool?))
 
         {
             this.UpgradeReplicaSetCheckTimeout = upgradeReplicaSetCheckTimeout;
@@ -56,6 +61,7 @@ namespace Microsoft.Azure.Management.ServiceFabric.Models
             this.RollingUpgradeMonitoringPolicy = rollingUpgradeMonitoringPolicy;
             this.ApplicationHealthPolicy = applicationHealthPolicy;
             this.UpgradeMode = upgradeMode;
+            this.RecreateApplication = recreateApplication;
             CustomInit();
         }
 
@@ -103,6 +109,14 @@ namespace Microsoft.Azure.Management.ServiceFabric.Models
         /// </summary>
         [Newtonsoft.Json.JsonProperty(PropertyName = "upgradeMode")]
         public string UpgradeMode {get; set; }
+
+        /// <summary>
+        /// Gets or sets determines whether the application should be recreated on
+        /// update. If value=true, the rest of the upgrade policy parameters are not
+        /// allowed and it will result in availability loss.
+        /// </summary>
+        [Newtonsoft.Json.JsonProperty(PropertyName = "recreateApplication")]
+        public bool? RecreateApplication {get; set; }
         /// <summary>
         /// Validate the object.
         /// </summary>
