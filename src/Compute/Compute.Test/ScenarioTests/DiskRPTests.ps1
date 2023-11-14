@@ -1749,16 +1749,24 @@ function Test-SnapshotConfigElasticSanResourceId
 
     try
     {
+        #
+        # Note: In order to record this test, you need to run the following commands to create ElasticSan volumn snapshot in a separate Powershell window.
+        # 
+        # New-AzResourceGroup -Name $rgname -Location $loc -Force;
+        # New-AzElasticSan -ResourceGroupName $rgname -Name $ElasticSanName -BaseSizeTiB 1 -SkuName 'Premium_LRS' -Location $loc -ExtendedCapacitySizeTiB 3 
+        # New-AzElasticSanVolumeGroup -ResourceGroupName $rgname -ElasticSanName $ElasticSanName  -Name $VolumeGroupName -Encryption 'EncryptionAtRestWithPlatformKey'  -ProtocolType 'Iscsi'
+        # $volumn = New-AzElasticSanVolume -ResourceGroupName $rgname -ElasticSanName $ElasticSanName -VolumeGroupName $VolumeGroupName -Name $volumnName -SizeGiB 100 
+        # $volumnSnapshot = New-AzElasticSanVolumeSnapshot -ResourceGroupName $rgname -ElasticSanName $ElasticSanName -VolumeGroupName $VolumeGroupName -Name $volumnSnapshotName -CreationDataSourceId $volumn.Id
+        # $mockElasticSanVolumeSnapshotResourceId = $volumnSnapshot.Id
+
         # Common
         $loc = Get-Location "Microsoft.Compute" "snapshots" "France Central"
         New-AzResourceGroup -Name $rgname -Location $loc -Force;
         
-        $mockElasticSanVolumeSnapshotResourceId = "/subscriptions/45b60d85-fd72-427a-a708-f994d26e593e/resourceGroups/weitry/providers/Microsoft.ElasticSan/elasticSans/weitestsan2/volumeGroups/weitestvolumegroup2/snapshots/snapshot1"
+        $mockElasticSanVolumeSnapshotResourceId = "/subscriptions/0000000-0000-0000-0000-000000000000/resourceGroups/ResourceGroup01/providers/Microsoft.ElasticSan/elasticSans/san1/volumeGroups/volumegroup1/snapshots/snapshot1"
 
         # Config and create test
-
-        $snapshotconfig = New-AzSnapshotConfig -Location 'France Central' -AccountType Standard_LRS -CreateOption CopyFromSanSnapshot -ElasticSanResourceId $mockElasticSanVolumeSnapshotResourceId -Incremental
-        
+        $snapshotconfig = New-AzSnapshotConfig -Location $loc -AccountType Standard_LRS -CreateOption CopyFromSanSnapshot -ElasticSanResourceId $mockElasticSanVolumeSnapshotResourceId -Incremental        
         Assert-AreEqual CopyFromSanSnapshot $snapshotconfig.CreationData.CreateOption
         Assert-AreEqual $mockElasticSanVolumeSnapshotResourceId $snapshotconfig.CreationData.ElasticSanResourceId
 
