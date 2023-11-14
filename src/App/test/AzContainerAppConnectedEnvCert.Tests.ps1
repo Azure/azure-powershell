@@ -18,7 +18,7 @@ Describe 'AzContainerAppConnectedEnvCert' {
 
     # Contains confidential information, please run it locally
 
-    It 'CreateExpanded' -Skip {
+    It 'CreateExpanded' {
         {
             $selfSignedCert = New-SelfSignedCertificate -DnsName "www.fabrikam.com", "www.contoso.com" -CertStoreLocation "cert:\LocalMachine\My"
             Get-ChildItem -Path cert:\LocalMachine\My
@@ -30,28 +30,28 @@ Describe 'AzContainerAppConnectedEnvCert' {
         } | Should -Not -Throw
     }
 
-    It 'List' -Skip {
+    It 'List' {
         {
             $config = Get-AzContainerAppConnectedEnvCert -ConnectedEnvironmentName $env.connectedEnv1 -ResourceGroupName $env.resourceGroupConnected
             $config.Count | Should -BeGreaterThan 0
         } | Should -Not -Throw
     }
 
-    It 'Get' -Skip {
+    It 'Get' {
         {
             $config = Get-AzContainerAppConnectedEnvCert -Name $env.connectedEnvCert2 -ConnectedEnvironmentName $env.connectedEnv1 -ResourceGroupName $env.resourceGroupConnected
             $config.Name | Should -Be $env.connectedEnvCert2
         } | Should -Not -Throw
     }
 
-    It 'UpdateExpanded' -Skip {
+    It 'UpdateExpanded' {
         {
             $config = Update-AzContainerAppConnectedEnvCert -Name $env.connectedEnvCert2 -ConnectedEnvironmentName $env.connectedEnv1 -ResourceGroupName $env.resourceGroupConnected -Tag @{"abc"="123"}
             $config.Name | Should -Be $env.connectedEnvCert2
         } | Should -Not -Throw
     }
 
-    It 'UpdateViaJsonString' -Skip {
+    It 'UpdateViaJsonString' {
         {
             $config = Get-AzContainerAppConnectedEnvCert -Name $env.connectedEnvCert2 -ConnectedEnvironmentName $env.connectedEnv1 -ResourceGroupName $env.resourceGroupConnected
             $config = Update-AzContainerAppConnectedEnvCert -InputObject $config -Tag @{"abc"="123"}
@@ -59,7 +59,7 @@ Describe 'AzContainerAppConnectedEnvCert' {
         } | Should -Not -Throw
     }
 
-    It 'Delete' -Skip {
+    It 'Delete' {
         {
             Remove-AzContainerAppConnectedEnvCert -Name $env.connectedEnvCert2 -ConnectedEnvironmentName $env.connectedEnv1 -ResourceGroupName $env.resourceGroupConnected
         } | Should -Not -Throw

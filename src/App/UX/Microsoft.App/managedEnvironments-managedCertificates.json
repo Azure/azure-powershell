@@ -1,17 +1,17 @@
 {
-  "resourceType": "managedEnvironments/daprComponents",
+  "resourceType": "managedEnvironments/managedCertificates",
   "apiVersion": "2023-05-01",
   "learnMore": {
     "url": "https://learn.microsoft.com/powershell/module/az.app"
   },
   "commands": [
     {
-      "name": "Get-AzContainerAppManagedEnvDapr",
-      "description": "Get a dapr component.",
-      "path": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.App/managedEnvironments/{environmentName}/daprComponents/{componentName}",
+      "name": "Get-AzContainerAppManagedCert",
+      "description": "Get the specified Managed Certificate.",
+      "path": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.App/managedEnvironments/{environmentName}/managedCertificates/{managedCertificateName}",
       "help": {
         "learnMore": {
-          "url": "https://learn.microsoft.com/powershell/module/az.app/get-azcontainerappmanagedenvdapr"
+          "url": "https://learn.microsoft.com/powershell/module/az.app/get-azcontainerappmanagedcert"
         },
         "parameterSets": [
           {
@@ -26,7 +26,7 @@
       },
       "examples": [
         {
-          "description": "Get a dapr component.",
+          "description": "Get the specified Managed Certificate.",
           "parameters": [
             {
               "name": "-EnvName",
@@ -34,7 +34,7 @@
             },
             {
               "name": "-Name",
-              "value": "[Path.componentName]"
+              "value": "[Path.managedCertificateName]"
             },
             {
               "name": "-ResourceGroupName",
@@ -49,12 +49,12 @@
       ]
     },
     {
-      "name": "Remove-AzContainerAppManagedEnvDapr",
-      "description": "Delete a Dapr Component from a Managed Environment.",
-      "path": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.App/managedEnvironments/{environmentName}/daprComponents/{componentName}",
+      "name": "Remove-AzContainerAppManagedCert",
+      "description": "Deletes the specified Managed Certificate.",
+      "path": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.App/managedEnvironments/{environmentName}/managedCertificates/{managedCertificateName}",
       "help": {
         "learnMore": {
-          "url": "https://learn.microsoft.com/powershell/module/az.app/remove-azcontainerappmanagedenvdapr"
+          "url": "https://learn.microsoft.com/powershell/module/az.app/remove-azcontainerappmanagedcert"
         },
         "parameterSets": [
           {
@@ -69,7 +69,7 @@
       },
       "examples": [
         {
-          "description": "Delete a Dapr Component from a Managed Environment.",
+          "description": "Deletes the specified Managed Certificate.",
           "parameters": [
             {
               "name": "-EnvName",
@@ -77,7 +77,7 @@
             },
             {
               "name": "-Name",
-              "value": "[Path.componentName]"
+              "value": "[Path.managedCertificateName]"
             },
             {
               "name": "-ResourceGroupName",
