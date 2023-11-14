@@ -20,6 +20,7 @@
 
 -->
 ## Upcoming Release
+* Added new examples in `New-AzVM` and `New-AzVmss` for TrustedLaunch default usage.
 
 ## Version 7.0.0
 * Added update functionality in `Update-AzVmss` for parameters `SecurityType`, `EnableSecureBoot`, and `EnableVtpm` for the parameter set with the Put operation.
