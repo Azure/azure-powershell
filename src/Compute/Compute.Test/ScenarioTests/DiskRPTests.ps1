@@ -1101,11 +1101,12 @@ function Test-DiskConfigDiskAccessNetworkAccess
         #Testing disk access
         $diskAccess = New-AzDiskAccess -ResourceGroupName $rgname -Name "diskaccessname" -location $loc
         $diskconfig = New-AzDiskConfig -Location $loc -SkuName 'Standard_LRS' -OsType 'Windows' `
-                                        -UploadSizeInBytes 35183298347520 -CreateOption 'Upload' -DiskAccessId $diskAccess.Id;
+                                        -UploadSizeInBytes 35183298347520 -CreateOption 'Upload' -DiskAccessId $diskAccess.Id -OptimizedForFrequentAttach $true;
         New-AzDisk -ResourceGroupName $rgname -DiskName $diskname0 -Disk $diskconfig;
         $disk = Get-AzDisk -ResourceGroupName $rgname -DiskName $diskname0;
         
         Assert-AreEqual $diskAccess.Id $disk.DiskAccessId;
+        Assert-AreEqual $true $disk.OptimizedForFrequentAttach;
 
         Remove-AzDisk -ResourceGroupName $rgname -DiskName $diskname0 -Force;
 
