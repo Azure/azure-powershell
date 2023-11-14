@@ -1736,3 +1736,50 @@ function Test-NewDiskSecurityTypeDefaulting
 		Clean-ResourceGroup $rgname;
 	}
 }
+
+<#
+.SYNOPSIS
+Testing SnapshotConfig create with ElasticSanResourceId
+#>
+function Test-SnapshotConfigElasticSanResourceId
+{
+    # Setup
+    $rgname = Get-ComputeTestResourceName;
+    $snapshotname = 'snapshot' + $rgname;
+
+    try
+    {
+        # Common
+        $loc = Get-Location "Microsoft.Compute" "snapshots" "France Central"
+        New-AzResourceGroup -Name $rgname -Location $loc -Force;
+        
+        $mockElasticSanVolumeSnapshotResourceId = "/subscriptions/45b60d85-fd72-427a-a708-f994d26e593e/resourceGroups/weitry/providers/Microsoft.ElasticSan/elasticSans/weitestsan2/volumeGroups/weitestvolumegroup2/snapshots/snapshot1"
+
+        # Config and create test
+
+        $snapshotconfig = New-AzSnapshotConfig -Location 'France Central' -AccountType Standard_LRS -CreateOption CopyFromSanSnapshot -ElasticSanResourceId $mockElasticSanVolumeSnapshotResourceId -Incremental
+        
+        Assert-AreEqual CopyFromSanSnapshot $snapshotconfig.CreationData.CreateOption
+        Assert-AreEqual $mockElasticSanVolumeSnapshotResourceId $snapshotconfig.CreationData.ElasticSanResourceId
+
+        $snapshot = New-AzSnapshot -ResourceGroupName $rgname -SnapshotName $snapshotname -Snapshot $snapshotconfig
+        Assert-AreEqual CopyFromSanSnapshot $snapshot.CreationData.CreateOption
+        Assert-AreEqual $mockElasticSanVolumeSnapshotResourceId $snapshot.CreationData.ElasticSanResourceId
+
+        $snapshot = Get-AzSnapshot -ResourceGroupName $rgname
+        Assert-AreEqual CopyFromSanSnapshot $snapshot.CreationData.CreateOption
+        Assert-AreEqual $mockElasticSanVolumeSnapshotResourceId $snapshot.CreationData.ElasticSanResourceId
+
+        # Remove test
+        $job = Remove-AzSnapshot -ResourceGroupName $rgname -SnapshotName $snapshotname -Force -AsJob;
+        $result = $job | Wait-Job;
+        Assert-AreEqual "Completed" $result.State;
+        $st = $job | Receive-Job;
+        Verify-PSOperationStatusResponse $st;
+    }
+    finally
+    {
+        # Cleanup
+        Clean-ResourceGroup $rgname
+    }
+}
