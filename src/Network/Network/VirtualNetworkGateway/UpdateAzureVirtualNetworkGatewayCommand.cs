@@ -241,6 +241,18 @@ namespace Microsoft.Azure.Commands.Network
         public string AdminState { get; set; }
 
         [Parameter(
+            Mandatory = false,
+            ValueFromPipelineByPropertyName = true,
+            HelpMessage = "Determines whether this gateway should accept traffic from other VNets.")]
+        public bool? AllowRemoteVnetTraffic { get; set; }
+
+        [Parameter(
+            Mandatory = false,
+            ValueFromPipelineByPropertyName = true,
+            HelpMessage = "Determines whether this gateway should accept traffic from other Virtual WAN networks.")]
+        public bool? AllowVirtualWanTraffic { get; set; }
+
+        [Parameter(
             Mandatory = true,
             ParameterSetName = VirtualNetworkGatewayParameterSets.UpdateResourceWithTags,
             HelpMessage = "P2S External Radius server address.")]
@@ -529,6 +541,16 @@ namespace Microsoft.Azure.Commands.Network
             if (AdminState != null)
             {
                 this.VirtualNetworkGateway.AdminState = AdminState;
+            }
+
+            if (AllowRemoteVnetTraffic.HasValue)
+            {
+                this.VirtualNetworkGateway.AllowRemoteVnetTraffic = AllowRemoteVnetTraffic.Value;
+            }
+
+            if (AllowVirtualWanTraffic.HasValue)
+            {
+                this.VirtualNetworkGateway.AllowVirtualWanTraffic = AllowVirtualWanTraffic.Value;
             }
 
             // Map to the sdk object
