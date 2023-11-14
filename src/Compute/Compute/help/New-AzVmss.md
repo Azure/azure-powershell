@@ -237,10 +237,46 @@ $vmssConfig = New-AzVmssConfig -Location EastUs2 -UpgradePolicyMode Manual -Sing
 
 # VMSS Creation 
 New-AzVmss -ResourceGroupName TestRg -VMScaleSetName myVMSS -VirtualMachineScaleSet $vmssConfig
-
 ```
-
 This example Creates a new VMSS and it will default to OrchestrationMode Flexible. 
+
+### Example 6: Create a new VMSS with TrustedLaunch turned on by default. 
+```powershell
+$rgname = "<Resource Group>";
+$loc = "<Azure Region>";
+New-AzResourceGroup -Name $rgname -Location $loc -Force;
+
+$vmssName = 'vmss' + $rgname;
+$imageName = "Win2022AzureEdition";
+$publisherName = "MicrosoftWindowsServer";
+$offer = "WindowsServer";
+$sku = "2022-Datacenter-Azure-Edition";
+$adminUsername = "<Username>";
+$password = "<Password>";
+
+# NRP
+$vnetworkName = 'vnet' + $rgname;
+$subnetName = 'subnet' + $rgname;
+$subnet = New-AzVirtualNetworkSubnetConfig -Name $subnetName -AddressPrefix "10.0.0.0/24";
+$vnet = New-AzVirtualNetwork -Name $vnetworkName -ResourceGroupName $rgname -Location $loc -AddressPrefix "10.0.0.0/16" -Subnet $subnet;
+$vnet = Get-AzVirtualNetwork -Name $vnetworkName -ResourceGroupName $rgname;
+$subnetId = $vnet.Subnets[0].Id;
+
+$ipCfg = New-AzVmssIPConfig -Name 'test' -SubnetId $subnetId;
+
+$vmss = New-AzVmssConfig -Location $loc -SkuCapacity 2 -SkuName $vmssSize -UpgradePolicyMode 'Manual' `
+    | Add-AzVmssNetworkInterfaceConfiguration -Name 'test' -Primary $true -IPConfiguration $ipCfg `
+    | Set-AzVmssOSProfile -ComputerNamePrefix 'test' -AdminUsername $adminUsername -AdminPassword $password;
+    
+# Create TL Vmss
+$result = New-AzVmss -ResourceGroupName $rgname -VMScaleSetName $vmssName -VirtualMachineScaleSet $vmss;
+$vmssGet = Get-AzVmss -ResourceGroupName $rgname -VMScaleSetName $vmssName;
+
+# Verify $vmssGet.VirtualMachineProfile.SecurityProfile.SecurityType is TrustedLaunch.
+# Verify $vmssGet.VirtualMachineProfile.SecurityProfile.UefiSettings.VTpmEnabled is True.
+# Verify $vmssGet.VirtualMachineProfile.SecurityProfile.UefiSettings.SecureBootEnabled is True.
+# Verify $vmssGet.VirtualMachineProfile.StorageProfile.ImageReference.Sku is 2022-Datacenter-Azure-Edition.
+```
 
 ## PARAMETERS
 
