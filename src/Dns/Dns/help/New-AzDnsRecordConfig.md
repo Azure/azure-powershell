@@ -61,6 +61,18 @@ New-AzDnsRecordConfig -CaaFlags <Byte> -CaaTag <String> -CaaValue <String>
  [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
+### Ds
+```
+New-AzDnsRecordConfig -KeyTag <Int32> -Algorithm <Int32> -DigestType <Int32> -Digest <String>
+ [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
+```
+
+### Tlsa
+```
+New-AzDnsRecordConfig -Usage <Int32> -Selector <Int32> -MatchingType <Int32>
+ -CertificateAssociationData <String> [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
+```
+
 ## DESCRIPTION
 The **New-AzDnsRecordConfig** cmdlet creates a local **DnsRecord** object.
 An array of these objects is passed to the New-AzDnsRecordSet cmdlet using the *DnsRecords* parameter to specify the records to create in the record set.
@@ -175,7 +187,48 @@ The record set is of type TXT and has a TTL of 1 hour (3600 seconds).
 It contains a single DNS record.
 To create a **RecordSet** using only one line of pn_PowerShell_short, or to create a record set with multiple records, see Example 1.
 
+### Example 9: Create a RecordSet of type DS
+```powershell
+$Records = @()
+$Records += New-AzDnsRecordConfig -KeyTag 12345 -Algorithm 3 -DigestType 1 -Digest "49FD46E6C4B45C55D4AC"
+$RecordSet = New-AzDnsRecordSet -Name "childds" -RecordType DS -ResourceGroupName "MyResourceGroup" -TTL 3600 -ZoneName "myzone.com" -DnsRecords $Records
+```
+
+This command creates a **RecordSet** named childds in the zone myzone.com.
+The record set is of type DS and has a TTL of 1 hour (3600 seconds).
+It contains a single DNS record.
+The record data contains the key tag, algorithm, digest type, and digest of the child zone's DNSKEY record.
+To create a **RecordSet** using only one line of pn_PowerShell_short, or to create a record set with multiple records, see Example 1.
+
+### Example 10: Create a RecordSet of type TLSA
+```powershell
+$Records = @()
+$Records += New-AzDnsRecordConfig -Usage 3 -Selector 1 -MatchingType 1 -CertificateAssociationData "49FD46E6C4B45C55D4AC"
+$RecordSet = New-AzDnsRecordSet -Name "_443._tcp.www" -RecordType TLSA -ResourceGroupName "MyResourceGroup" -TTL 3600 -ZoneName "myzone.com" -DnsRecords $Records
+```
+
+This command creates a **RecordSet** named _443._tcp.www in the zone myzone.com.
+The record set is of type TLSA and has a TTL of 1 hour (3600 seconds).
+It contains a single DNS record.
+The record data contains the usage, selector, and matching type of the certificate association data.
+To create a **RecordSet** using only one line of pn_PowerShell_short, or to create a record set with multiple records, see Example 1.
+
 ## PARAMETERS
+
+### -Algorithm
+The algorithm field of the DS record to add.
+
+```yaml
+Type: System.Int32
+Parameter Sets: Ds
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: True (ByPropertyName)
+Accept wildcard characters: False
+```
 
 ### -CaaFlags
 The flags for the CAA record to add. Must be a number between 0 and 255.
@@ -222,6 +275,21 @@ Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
 ```
 
+### -CertificateAssociationData
+The certificate association data field of the TLSA record to add.
+
+```yaml
+Type: System.String
+Parameter Sets: Tlsa
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: True (ByPropertyName)
+Accept wildcard characters: False
+```
+
 ### -Cname
 Specifies the domain name for a canonical name (CNAME) record.
 
@@ -249,6 +317,36 @@ Required: False
 Position: Named
 Default value: None
 Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -Digest
+The digest field of the DS record to add.
+
+```yaml
+Type: System.String
+Parameter Sets: Ds
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: True (ByPropertyName)
+Accept wildcard characters: False
+```
+
+### -DigestType
+The digest type field of the DS record to add.
+
+```yaml
+Type: System.Int32
+Parameter Sets: Ds
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
 ```
 
@@ -288,6 +386,36 @@ Specifies an IPv6 address for an AAAA record.
 ```yaml
 Type: System.String
 Parameter Sets: Aaaa
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: True (ByPropertyName)
+Accept wildcard characters: False
+```
+
+### -KeyTag
+The key tag field of the DS record to add.
+
+```yaml
+Type: System.Int32
+Parameter Sets: Ds
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: True (ByPropertyName)
+Accept wildcard characters: False
+```
+
+### -MatchingType
+The matching type field of the TLSA record to add.
+
+```yaml
+Type: System.Int32
+Parameter Sets: Tlsa
 Aliases:
 
 Required: True
@@ -372,12 +500,42 @@ Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
 ```
 
+### -Selector
+The selector field of the TLSA record to add.
+
+```yaml
+Type: System.Int32
+Parameter Sets: Tlsa
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: True (ByPropertyName)
+Accept wildcard characters: False
+```
+
 ### -Target
 Specifies the target for an SRV record.
 
 ```yaml
 Type: System.String
 Parameter Sets: Srv
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: True (ByPropertyName)
+Accept wildcard characters: False
+```
+
+### -Usage
+The usage field of the TLSA record to add.
+
+```yaml
+Type: System.Int32
+Parameter Sets: Tlsa
 Aliases:
 
 Required: True
@@ -418,7 +576,7 @@ Accept wildcard characters: False
 ```
 
 ### CommonParameters
-This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable. For more information, see about_CommonParameters (http://go.microsoft.com/fwlink/?LinkID=113216).
+This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable. For more information, see [about_CommonParameters](http://go.microsoft.com/fwlink/?LinkID=113216).
 
 ## INPUTS
 

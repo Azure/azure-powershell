@@ -36,6 +36,8 @@ namespace Microsoft.Azure.Commands.DataFactoryV2.Models
             }
         }
 
+        public bool? SelfContainedInteractiveAuthoringEnabled => SelfHostedIntegrationRuntime.SelfContainedInteractiveAuthoringEnabled;
+
         protected SelfHostedIntegrationRuntime SelfHostedIntegrationRuntime => IntegrationRuntime.Properties as SelfHostedIntegrationRuntime;
     }
 }

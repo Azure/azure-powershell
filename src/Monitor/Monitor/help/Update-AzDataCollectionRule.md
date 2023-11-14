@@ -8,32 +8,64 @@ schema: 2.0.0
 # Update-AzDataCollectionRule
 
 ## SYNOPSIS
-Updates part of a data collection rule.
+Update a data collection rule.
 
 ## SYNTAX
 
 ### UpdateExpanded (Default)
 ```
 Update-AzDataCollectionRule -Name <String> -ResourceGroupName <String> [-SubscriptionId <String>]
- [-IdentityType <String>] [-Tag <Hashtable>] [-UserAssignedIdentity <Hashtable>] [-DefaultProfile <PSObject>]
- [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-DataCollectionEndpointId <String>] [-DataFlow <IDataFlow[]>]
+ [-DataSourceDataImportEventHubConsumerGroup <String>] [-DataSourceDataImportEventHubName <String>]
+ [-DataSourceDataImportEventHubStream <String>] [-DataSourceExtension <IExtensionDataSource[]>]
+ [-DataSourceIisLog <IIisLogsDataSource[]>] [-DataSourceLogFile <ILogFilesDataSource[]>]
+ [-DataSourcePerformanceCounter <IPerfCounterDataSource[]>]
+ [-DataSourcePlatformTelemetry <IPlatformTelemetryDataSource[]>]
+ [-DataSourcePrometheusForwarder <IPrometheusForwarderDataSource[]>] [-DataSourceSyslog <ISyslogDataSource[]>]
+ [-DataSourceWindowsEventLog <IWindowsEventLogDataSource[]>]
+ [-DataSourceWindowsFirewallLog <IWindowsFirewallLogsDataSource[]>] [-Description <String>]
+ [-DestinationAzureMonitorMetricName <String>] [-DestinationEventHub <IEventHubDestination[]>]
+ [-DestinationEventHubsDirect <IEventHubDirectDestination[]>]
+ [-DestinationLogAnalytic <ILogAnalyticsDestination[]>]
+ [-DestinationMonitoringAccount <IMonitoringAccountDestination[]>]
+ [-DestinationStorageAccount <IStorageBlobDestination[]>]
+ [-DestinationStorageBlobsDirect <IStorageBlobDestination[]>]
+ [-DestinationStorageTablesDirect <IStorageTableDestination[]>] [-IdentityType <String>] [-Kind <String>]
+ [-Location <String>] [-StreamDeclaration <Hashtable>] [-Tag <Hashtable>] [-UserAssignedIdentity <Hashtable>]
+ [-DefaultProfile <PSObject>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### UpdateViaIdentityExpanded
 ```
-Update-AzDataCollectionRule -InputObject <IDataCollectionRuleIdentity> [-IdentityType <String>]
- [-Tag <Hashtable>] [-UserAssignedIdentity <Hashtable>] [-DefaultProfile <PSObject>] [-WhatIf] [-Confirm]
- [<CommonParameters>]
+Update-AzDataCollectionRule -InputObject <IDataCollectionRuleIdentity> [-DataCollectionEndpointId <String>]
+ [-DataFlow <IDataFlow[]>] [-DataSourceDataImportEventHubConsumerGroup <String>]
+ [-DataSourceDataImportEventHubName <String>] [-DataSourceDataImportEventHubStream <String>]
+ [-DataSourceExtension <IExtensionDataSource[]>] [-DataSourceIisLog <IIisLogsDataSource[]>]
+ [-DataSourceLogFile <ILogFilesDataSource[]>] [-DataSourcePerformanceCounter <IPerfCounterDataSource[]>]
+ [-DataSourcePlatformTelemetry <IPlatformTelemetryDataSource[]>]
+ [-DataSourcePrometheusForwarder <IPrometheusForwarderDataSource[]>] [-DataSourceSyslog <ISyslogDataSource[]>]
+ [-DataSourceWindowsEventLog <IWindowsEventLogDataSource[]>]
+ [-DataSourceWindowsFirewallLog <IWindowsFirewallLogsDataSource[]>] [-Description <String>]
+ [-DestinationAzureMonitorMetricName <String>] [-DestinationEventHub <IEventHubDestination[]>]
+ [-DestinationEventHubsDirect <IEventHubDirectDestination[]>]
+ [-DestinationLogAnalytic <ILogAnalyticsDestination[]>]
+ [-DestinationMonitoringAccount <IMonitoringAccountDestination[]>]
+ [-DestinationStorageAccount <IStorageBlobDestination[]>]
+ [-DestinationStorageBlobsDirect <IStorageBlobDestination[]>]
+ [-DestinationStorageTablesDirect <IStorageTableDestination[]>] [-IdentityType <String>] [-Kind <String>]
+ [-Location <String>] [-StreamDeclaration <Hashtable>] [-Tag <Hashtable>] [-UserAssignedIdentity <Hashtable>]
+ [-DefaultProfile <PSObject>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-Updates part of a data collection rule.
+Update a data collection rule.
 
 ## EXAMPLES
 
 ### Example 1: Update tag for data collection rule
 ```powershell
-Update-AzDataCollectionRule -Name myCollectionRule1 -ResourceGroupName AMCS-Test -Tag @{"123"="abc"}
+$syslog = New-AzSyslogDataSourceObject -FacilityName syslog -LogLevel Alert,Critical,Emergency -Name syslogBase -Stream Microsoft-Syslog
+Update-AzDataCollectionRule -Name myCollectionRule1 -ResourceGroupName Monitor-ActionGroup -DataSourceSyslog $syslog
 ```
 
 ```output
@@ -51,8 +83,8 @@ DataSourceLogFile                         :
 DataSourcePerformanceCounter              : {{
                                               "streams": [ "Microsoft-Perf" ],
                                               "samplingFrequencyInSeconds": 15,
-                                              "counterSpecifiers": [ "\\\\Processor(_Total)\\\\% Processor Time", "\\\\Memory\\\\Committed Bytes", "\\\\LogicalDisk(_Total)\\\\Free
-                                            Megabytes", "\\\\PhysicalDisk(_Total)\\\\Avg. Disk Queue Length" ],
+                                              "counterSpecifiers": [ "\\\\Processor(_Total)\\\\% Processor Time", "\\\\Memory\\\\Committed Bytes",
+                                            "\\\\LogicalDisk(_Total)\\\\Free Megabytes", "\\\\PhysicalDisk(_Total)\\\\Avg. Disk Queue Length" ],
                                               "name": "cloudTeamCoreCounters"
                                             }, {
                                               "streams": [ "Microsoft-Perf" ],
@@ -62,10 +94,16 @@ DataSourcePerformanceCounter              : {{
                                             }}
 DataSourcePlatformTelemetry               : 
 DataSourcePrometheusForwarder             : 
-DataSourceSyslog                          : 
+DataSourceSyslog                          : {{
+                                              "streams": [ "Microsoft-Syslog" ],
+                                              "facilityNames": [ "syslog" ],
+                                              "logLevels": [ "Alert", "Critical", "Emergency" ],
+                                              "name": "syslogBase"
+                                            }}
 DataSourceWindowsEventLog                 : {{
                                               "streams": [ "Microsoft-WindowsEvent" ],
-                                              "xPathQueries": [ "System![System[(Level = 1 or Level = 2 or Level = 3)]]", "Application!*[System[(Level = 1 or Level = 2 or Level = 3)]]" ],   
+                                              "xPathQueries": [ "System![System[(Level = 1 or Level = 2 or Level = 3)]]", "Application!*[System[(Level = 1 or Level = 2   
+                                            or Level = 3)]]" ],
                                               "name": "appTeam1AppEvents"
                                             }}
 DataSourceWindowsFirewallLog              : 
@@ -78,31 +116,31 @@ DestinationMonitoringAccount              :
 DestinationStorageAccount                 : 
 DestinationStorageBlobsDirect             : 
 DestinationStorageTablesDirect            : 
-Etag                                      : "2201d32f-0000-0100-0000-651159230000"
-Id                                        : /subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/AMCS-TEST/providers/Microsoft.Insights/dataCollectionRules/myCollectionRule1   
+Etag                                      : "9200a3d3-0000-0100-0000-654c72ae0000"
+Id                                        : /subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/Monitor-ActionGroup/providers/Microsoft.Insights/dataColle 
+                                            ctionRules/myCollectionRule1
 IdentityPrincipalId                       : 
 IdentityTenantId                          : 
 IdentityType                              : 
 IdentityUserAssignedIdentity              : {
                                             }
-ImmutableId                               : dcr-9a6169afee634c13baa880dee8c5eb97
+ImmutableId                               : dcr-e30a8188813f426d962ef7053a3d1be4
 Kind                                      : 
 Location                                  : eastus
 MetadataProvisionedBy                     : 
 MetadataProvisionedByResourceId           : 
 Name                                      : myCollectionRule1
 ProvisioningState                         : Succeeded
-ResourceGroupName                         : AMCS-TEST
+ResourceGroupName                         : Monitor-ActionGroup
 StreamDeclaration                         : {
                                             }
-SystemDataCreatedAt                       : 9/22/2023 9:18:41 AM
+SystemDataCreatedAt                       : 11/9/2023 5:04:01 AM
 SystemDataCreatedBy                       : v-jiaji@microsoft.com
 SystemDataCreatedByType                   : User
-SystemDataLastModifiedAt                  : 9/25/2023 9:55:45 AM
+SystemDataLastModifiedAt                  : 11/9/2023 5:48:29 AM
 SystemDataLastModifiedBy                  : v-jiaji@microsoft.com
 SystemDataLastModifiedByType              : User
 Tag                                       : {
-                                              "123": "abc"
                                             }
 Type                                      : Microsoft.Insights/dataCollectionRules
 ```
@@ -110,6 +148,227 @@ Type                                      : Microsoft.Insights/dataCollectionRul
 This command updates data collection rule.
 
 ## PARAMETERS
+
+### -DataCollectionEndpointId
+The resource ID of the data collection endpoint that this rule can be used with.
+
+```yaml
+Type: System.String
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -DataFlow
+The specification of data flows.
+To construct, see NOTES section for DATAFLOW properties and create a hash table.
+
+```yaml
+Type: Microsoft.Azure.PowerShell.Cmdlets.Monitor.DataCollection.Models.IDataFlow[]
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -DataSourceDataImportEventHubConsumerGroup
+Event Hub consumer group name
+
+```yaml
+Type: System.String
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -DataSourceDataImportEventHubName
+A friendly name for the data source.
+This name should be unique across all data sources (regardless of type) within the data collection rule.
+
+```yaml
+Type: System.String
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -DataSourceDataImportEventHubStream
+The stream to collect from EventHub
+
+```yaml
+Type: System.String
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -DataSourceExtension
+The list of Azure VM extension data source configurations.
+To construct, see NOTES section for DATASOURCEEXTENSION properties and create a hash table.
+
+```yaml
+Type: Microsoft.Azure.PowerShell.Cmdlets.Monitor.DataCollection.Models.IExtensionDataSource[]
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -DataSourceIisLog
+The list of IIS logs source configurations.
+To construct, see NOTES section for DATASOURCEIISLOG properties and create a hash table.
+
+```yaml
+Type: Microsoft.Azure.PowerShell.Cmdlets.Monitor.DataCollection.Models.IIisLogsDataSource[]
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -DataSourceLogFile
+The list of Log files source configurations.
+To construct, see NOTES section for DATASOURCELOGFILE properties and create a hash table.
+
+```yaml
+Type: Microsoft.Azure.PowerShell.Cmdlets.Monitor.DataCollection.Models.ILogFilesDataSource[]
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -DataSourcePerformanceCounter
+The list of performance counter data source configurations.
+To construct, see NOTES section for DATASOURCEPERFORMANCECOUNTER properties and create a hash table.
+
+```yaml
+Type: Microsoft.Azure.PowerShell.Cmdlets.Monitor.DataCollection.Models.IPerfCounterDataSource[]
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -DataSourcePlatformTelemetry
+The list of platform telemetry configurations
+To construct, see NOTES section for DATASOURCEPLATFORMTELEMETRY properties and create a hash table.
+
+```yaml
+Type: Microsoft.Azure.PowerShell.Cmdlets.Monitor.DataCollection.Models.IPlatformTelemetryDataSource[]
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -DataSourcePrometheusForwarder
+The list of Prometheus forwarder data source configurations.
+To construct, see NOTES section for DATASOURCEPROMETHEUSFORWARDER properties and create a hash table.
+
+```yaml
+Type: Microsoft.Azure.PowerShell.Cmdlets.Monitor.DataCollection.Models.IPrometheusForwarderDataSource[]
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -DataSourceSyslog
+The list of Syslog data source configurations.
+To construct, see NOTES section for DATASOURCESYSLOG properties and create a hash table.
+
+```yaml
+Type: Microsoft.Azure.PowerShell.Cmdlets.Monitor.DataCollection.Models.ISyslogDataSource[]
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -DataSourceWindowsEventLog
+The list of Windows Event Log data source configurations.
+To construct, see NOTES section for DATASOURCEWINDOWSEVENTLOG properties and create a hash table.
+
+```yaml
+Type: Microsoft.Azure.PowerShell.Cmdlets.Monitor.DataCollection.Models.IWindowsEventLogDataSource[]
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -DataSourceWindowsFirewallLog
+The list of Windows Firewall logs source configurations.
+To construct, see NOTES section for DATASOURCEWINDOWSFIREWALLLOG properties and create a hash table.
+
+```yaml
+Type: Microsoft.Azure.PowerShell.Cmdlets.Monitor.DataCollection.Models.IWindowsFirewallLogsDataSource[]
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
 
 ### -DefaultProfile
 The DefaultProfile parameter is not functional.
@@ -119,6 +378,150 @@ Use the SubscriptionId parameter when available if executing the cmdlet against 
 Type: System.Management.Automation.PSObject
 Parameter Sets: (All)
 Aliases: AzureRMContext, AzureCredential
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -Description
+Description of the data collection rule.
+
+```yaml
+Type: System.String
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -DestinationAzureMonitorMetricName
+A friendly name for the destination.
+This name should be unique across all destinations (regardless of type) within the data collection rule.
+
+```yaml
+Type: System.String
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -DestinationEventHub
+List of Event Hubs destinations.
+To construct, see NOTES section for DESTINATIONEVENTHUB properties and create a hash table.
+
+```yaml
+Type: Microsoft.Azure.PowerShell.Cmdlets.Monitor.DataCollection.Models.IEventHubDestination[]
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -DestinationEventHubsDirect
+List of Event Hubs Direct destinations.
+To construct, see NOTES section for DESTINATIONEVENTHUBSDIRECT properties and create a hash table.
+
+```yaml
+Type: Microsoft.Azure.PowerShell.Cmdlets.Monitor.DataCollection.Models.IEventHubDirectDestination[]
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -DestinationLogAnalytic
+List of Log Analytics destinations.
+To construct, see NOTES section for DESTINATIONLOGANALYTIC properties and create a hash table.
+
+```yaml
+Type: Microsoft.Azure.PowerShell.Cmdlets.Monitor.DataCollection.Models.ILogAnalyticsDestination[]
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -DestinationMonitoringAccount
+List of monitoring account destinations.
+To construct, see NOTES section for DESTINATIONMONITORINGACCOUNT properties and create a hash table.
+
+```yaml
+Type: Microsoft.Azure.PowerShell.Cmdlets.Monitor.DataCollection.Models.IMonitoringAccountDestination[]
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -DestinationStorageAccount
+List of storage accounts destinations.
+To construct, see NOTES section for DESTINATIONSTORAGEACCOUNT properties and create a hash table.
+
+```yaml
+Type: Microsoft.Azure.PowerShell.Cmdlets.Monitor.DataCollection.Models.IStorageBlobDestination[]
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -DestinationStorageBlobsDirect
+List of Storage Blob Direct destinations.
+To be used only for sending data directly to store from the agent.
+To construct, see NOTES section for DESTINATIONSTORAGEBLOBSDIRECT properties and create a hash table.
+
+```yaml
+Type: Microsoft.Azure.PowerShell.Cmdlets.Monitor.DataCollection.Models.IStorageBlobDestination[]
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -DestinationStorageTablesDirect
+List of Storage Table Direct destinations.
+To construct, see NOTES section for DESTINATIONSTORAGETABLESDIRECT properties and create a hash table.
+
+```yaml
+Type: Microsoft.Azure.PowerShell.Cmdlets.Monitor.DataCollection.Models.IStorageTableDestination[]
+Parameter Sets: (All)
+Aliases:
 
 Required: False
 Position: Named
@@ -158,6 +561,36 @@ Accept pipeline input: True (ByValue)
 Accept wildcard characters: False
 ```
 
+### -Kind
+The kind of the resource.
+
+```yaml
+Type: System.String
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -Location
+The geo-location where the resource lives.
+
+```yaml
+Type: System.String
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
 ### -Name
 The name of the data collection rule.
 The name is case insensitive.
@@ -184,6 +617,21 @@ Parameter Sets: UpdateExpanded
 Aliases:
 
 Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -StreamDeclaration
+Declaration of custom streams used in this rule.
+
+```yaml
+Type: System.Collections.Hashtable
+Parameter Sets: (All)
+Aliases:
+
+Required: False
 Position: Named
 Default value: None
 Accept pipeline input: False

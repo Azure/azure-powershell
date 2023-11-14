@@ -20,7 +20,7 @@ Get-AzContainerAppManagedEnvDapr -EnvName <String> -ResourceGroupName <String> [
 
 ### Get
 ```
-Get-AzContainerAppManagedEnvDapr -DaprName <String> -EnvName <String> -ResourceGroupName <String>
+Get-AzContainerAppManagedEnvDapr -EnvName <String> -Name <String> -ResourceGroupName <String>
  [-SubscriptionId <String[]>] [-DefaultProfile <PSObject>] [<CommonParameters>]
 ```
 
@@ -29,54 +29,58 @@ Get-AzContainerAppManagedEnvDapr -DaprName <String> -EnvName <String> -ResourceG
 Get-AzContainerAppManagedEnvDapr -InputObject <IAppIdentity> [-DefaultProfile <PSObject>] [<CommonParameters>]
 ```
 
+### GetViaIdentityManagedEnvironment
+```
+Get-AzContainerAppManagedEnvDapr -ManagedEnvironmentInputObject <IAppIdentity> -Name <String>
+ [-DefaultProfile <PSObject>] [<CommonParameters>]
+```
+
 ## DESCRIPTION
 Get a dapr component.
 
 ## EXAMPLES
 
-### Example 1: List dapr component.
+### Example 1: List dapr component by env name.
 ```powershell
-Get-AzContainerAppManagedEnvDapr -EnvName azps-env -ResourceGroupName azpstest_gp
+Get-AzContainerAppManagedEnvDapr -EnvName azps-env -ResourceGroupName azps_test_group_app
 ```
 
 ```output
-Name       ComponentType        IgnoreError InitTimeout ResourceGroupName Version
-----       -------------        ----------- ----------- ----------------- -------
-azps-dapr  state.azure.cosmosdb False       50s         azpstest_gp       v1
-azps-dapr1 state.azure.cosmosdb True        50s         azpstest_gp       v1
+Name      ComponentType        IgnoreError InitTimeout ResourceGroupName   Version
+----      -------------        ----------- ----------- -----------------   -------
+azps-dapr state.azure.cosmosdb False       50s         azps_test_group_app v1
 ```
 
-List dapr component.
+List dapr component by env name.
 
-### Example 2: Get a dapr component.
+### Example 2: Get a dapr component by name.
 ```powershell
-Get-AzContainerAppManagedEnvDapr -EnvName azps-env -ResourceGroupName azpstest_gp -DaprName azps-dapr1
+Get-AzContainerAppManagedEnvDapr -EnvName azps-env -ResourceGroupName azps_test_group_app -Name azps-dapr
 ```
 
 ```output
-Name       ComponentType        IgnoreError InitTimeout ResourceGroupName Version
-----       -------------        ----------- ----------- ----------------- -------
-azps-dapr1 state.azure.cosmosdb True        50s         azpstest_gp       v1
+Name      ComponentType        IgnoreError InitTimeout ResourceGroupName   Version
+----      -------------        ----------- ----------- -----------------   -------
+azps-dapr state.azure.cosmosdb False       50s         azps_test_group_app v1
+```
+
+Get a dapr component by name.
+
+### Example 3: Get a dapr component.
+```powershell
+$managedenv = Get-AzContainerAppManagedEnv -Name azps-env -ResourceGroupName azps_test_group_app
+Get-AzContainerAppManagedEnvDapr -ManagedEnvironmentInputObject $managedenv -Name azps-dapr
+```
+
+```output
+Name      ComponentType        IgnoreError InitTimeout ResourceGroupName   Version
+----      -------------        ----------- ----------- -----------------   -------
+azps-dapr state.azure.cosmosdb False       50s         azps_test_group_app v1
 ```
 
 Get a dapr component.
 
 ## PARAMETERS
-
-### -DaprName
-Name of the Dapr Component.
-
-```yaml
-Type: System.String
-Parameter Sets: Get
-Aliases:
-
-Required: True
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
 
 ### -DefaultProfile
 The DefaultProfile parameter is not functional.
@@ -125,6 +129,37 @@ Accept pipeline input: True (ByValue)
 Accept wildcard characters: False
 ```
 
+### -ManagedEnvironmentInputObject
+Identity Parameter
+To construct, see NOTES section for MANAGEDENVIRONMENTINPUTOBJECT properties and create a hash table.
+
+```yaml
+Type: Microsoft.Azure.PowerShell.Cmdlets.App.Models.IAppIdentity
+Parameter Sets: GetViaIdentityManagedEnvironment
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: True (ByValue)
+Accept wildcard characters: False
+```
+
+### -Name
+Name of the Dapr Component.
+
+```yaml
+Type: System.String
+Parameter Sets: Get, GetViaIdentityManagedEnvironment
+Aliases: DaprName
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
 ### -ResourceGroupName
 The name of the resource group.
 The name is case insensitive.
@@ -165,30 +200,9 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.App.Models.Api20220301.IDaprComponent
+### Microsoft.Azure.PowerShell.Cmdlets.App.Models.IDaprComponent
 
 ## NOTES
-
-ALIASES
-
-COMPLEX PARAMETER PROPERTIES
-
-To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
-
-
-`INPUTOBJECT <IAppIdentity>`: Identity Parameter
-  - `[AuthConfigName <String>]`: Name of the Container App AuthConfig.
-  - `[CertificateName <String>]`: Name of the Certificate.
-  - `[ComponentName <String>]`: Name of the Dapr Component.
-  - `[ContainerAppName <String>]`: Name of the Container App.
-  - `[EnvironmentName <String>]`: Name of the Managed Environment.
-  - `[Id <String>]`: Resource identity path
-  - `[ReplicaName <String>]`: Name of the Container App Revision Replica.
-  - `[ResourceGroupName <String>]`: The name of the resource group. The name is case insensitive.
-  - `[RevisionName <String>]`: Name of the Container App Revision.
-  - `[SourceControlName <String>]`: Name of the Container App SourceControl.
-  - `[StorageName <String>]`: Name of the storage.
-  - `[SubscriptionId <String>]`: The ID of the target subscription.
 
 ## RELATED LINKS
 

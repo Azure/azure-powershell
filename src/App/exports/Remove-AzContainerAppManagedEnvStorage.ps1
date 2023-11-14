@@ -20,9 +20,15 @@ Delete storage for a managedEnvironment.
 .Description
 Delete storage for a managedEnvironment.
 .Example
-Remove-AzContainerAppManagedEnvStorage -EnvName azps-env -ResourceGroupName azpstest_gp -StorageName azpstestsa
+Remove-AzContainerAppManagedEnvStorage -EnvName azps-env -ResourceGroupName azps_test_group_app -Name azpstestsa
 .Example
-Get-AzContainerAppManagedEnvStorage -EnvName azps-env -ResourceGroupName azpstest_gp -StorageName azpstestsa | Remove-AzContainerAppManagedEnvStorage
+$managedenvstorage = Get-AzContainerAppManagedEnvStorage -EnvName azps-env -ResourceGroupName azps_test_group_app -Name azpstestsa
+
+Remove-AzContainerAppManagedEnvStorage -InputObject $managedenvstorage
+.Example
+$managedenv = Get-AzContainerAppManagedEnv -Name azps-env -ResourceGroupName azps_test_group_app
+
+Remove-AzContainerAppManagedEnvStorage -ManagedEnvironmentInputObject $managedenv -Name azpstestsa
 
 .Inputs
 Microsoft.Azure.PowerShell.Cmdlets.App.Models.IAppIdentity
@@ -37,9 +43,35 @@ INPUTOBJECT <IAppIdentity>: Identity Parameter
   [AuthConfigName <String>]: Name of the Container App AuthConfig.
   [CertificateName <String>]: Name of the Certificate.
   [ComponentName <String>]: Name of the Dapr Component.
+  [ConnectedEnvironmentName <String>]: Name of the connectedEnvironment.
   [ContainerAppName <String>]: Name of the Container App.
-  [EnvironmentName <String>]: Name of the Managed Environment.
+  [DetectorName <String>]: Name of the Container App Detector.
+  [EnvironmentName <String>]: Name of the Environment.
   [Id <String>]: Resource identity path
+  [JobExecutionName <String>]: Job execution name.
+  [JobName <String>]: Job Name
+  [Location <String>]: The name of Azure region.
+  [ManagedCertificateName <String>]: Name of the Managed Certificate.
+  [ReplicaName <String>]: Name of the Container App Revision Replica.
+  [ResourceGroupName <String>]: The name of the resource group. The name is case insensitive.
+  [RevisionName <String>]: Name of the Container App Revision.
+  [SourceControlName <String>]: Name of the Container App SourceControl.
+  [StorageName <String>]: Name of the storage.
+  [SubscriptionId <String>]: The ID of the target subscription.
+
+MANAGEDENVIRONMENTINPUTOBJECT <IAppIdentity>: Identity Parameter
+  [AuthConfigName <String>]: Name of the Container App AuthConfig.
+  [CertificateName <String>]: Name of the Certificate.
+  [ComponentName <String>]: Name of the Dapr Component.
+  [ConnectedEnvironmentName <String>]: Name of the connectedEnvironment.
+  [ContainerAppName <String>]: Name of the Container App.
+  [DetectorName <String>]: Name of the Container App Detector.
+  [EnvironmentName <String>]: Name of the Environment.
+  [Id <String>]: Resource identity path
+  [JobExecutionName <String>]: Job execution name.
+  [JobName <String>]: Job Name
+  [Location <String>]: The name of Azure region.
+  [ManagedCertificateName <String>]: Name of the Managed Certificate.
   [ReplicaName <String>]: Name of the Container App Revision Replica.
   [ResourceGroupName <String>]: The name of the resource group. The name is case insensitive.
   [RevisionName <String>]: Name of the Container App Revision.
@@ -60,17 +92,19 @@ param(
     ${EnvName},
 
     [Parameter(ParameterSetName='Delete', Mandatory)]
+    [Parameter(ParameterSetName='DeleteViaIdentityManagedEnvironment', Mandatory)]
+    [Alias('StorageName')]
+    [Microsoft.Azure.PowerShell.Cmdlets.App.Category('Path')]
+    [System.String]
+    # Name of the storage.
+    ${Name},
+
+    [Parameter(ParameterSetName='Delete', Mandatory)]
     [Microsoft.Azure.PowerShell.Cmdlets.App.Category('Path')]
     [System.String]
     # The name of the resource group.
     # The name is case insensitive.
     ${ResourceGroupName},
-
-    [Parameter(ParameterSetName='Delete', Mandatory)]
-    [Microsoft.Azure.PowerShell.Cmdlets.App.Category('Path')]
-    [System.String]
-    # Name of the storage.
-    ${StorageName},
 
     [Parameter(ParameterSetName='Delete')]
     [Microsoft.Azure.PowerShell.Cmdlets.App.Category('Path')]
@@ -85,6 +119,13 @@ param(
     # Identity Parameter
     # To construct, see NOTES section for INPUTOBJECT properties and create a hash table.
     ${InputObject},
+
+    [Parameter(ParameterSetName='DeleteViaIdentityManagedEnvironment', Mandatory, ValueFromPipeline)]
+    [Microsoft.Azure.PowerShell.Cmdlets.App.Category('Path')]
+    [Microsoft.Azure.PowerShell.Cmdlets.App.Models.IAppIdentity]
+    # Identity Parameter
+    # To construct, see NOTES section for MANAGEDENVIRONMENTINPUTOBJECT properties and create a hash table.
+    ${ManagedEnvironmentInputObject},
 
     [Parameter()]
     [Alias('AzureRMContext', 'AzureCredential')]
@@ -169,12 +210,17 @@ begin {
         $mapping = @{
             Delete = 'Az.App.private\Remove-AzContainerAppManagedEnvStorage_Delete';
             DeleteViaIdentity = 'Az.App.private\Remove-AzContainerAppManagedEnvStorage_DeleteViaIdentity';
+            DeleteViaIdentityManagedEnvironment = 'Az.App.private\Remove-AzContainerAppManagedEnvStorage_DeleteViaIdentityManagedEnvironment';
         }
-        if (('Delete') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId')) {
+        if (('Delete') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId') ) {
             $PSBoundParameters['SubscriptionId'] = (Get-AzContext).Subscription.Id
         }
         $cmdInfo = Get-Command -Name $mapping[$parameterSet]
         [Microsoft.Azure.PowerShell.Cmdlets.App.Runtime.MessageAttributeHelper]::ProcessCustomAttributesAtRuntime($cmdInfo, $MyInvocation, $parameterSet, $PSCmdlet)
+        if ($null -ne $MyInvocation.MyCommand -and [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PromptedPreviewMessageCmdlets -notcontains $MyInvocation.MyCommand.Name -and [Microsoft.Azure.PowerShell.Cmdlets.App.Runtime.MessageAttributeHelper]::ContainsPreviewAttribute($cmdInfo, $MyInvocation)){
+            [Microsoft.Azure.PowerShell.Cmdlets.App.Runtime.MessageAttributeHelper]::ProcessPreviewMessageAttributesAtRuntime($cmdInfo, $MyInvocation, $parameterSet, $PSCmdlet)
+            [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PromptedPreviewMessageCmdlets.Enqueue($MyInvocation.MyCommand.Name)
+        }
         $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Cmdlet)
         $scriptCmd = {& $wrappedCmd @PSBoundParameters}
         $steppablePipeline = $scriptCmd.GetSteppablePipeline($MyInvocation.CommandOrigin)

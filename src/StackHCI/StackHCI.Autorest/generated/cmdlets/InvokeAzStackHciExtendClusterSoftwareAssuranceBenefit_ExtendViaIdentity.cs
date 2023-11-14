@@ -16,6 +16,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Cmdlets
     [global::System.Management.Automation.OutputType(typeof(Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Models.Api20230301.ICluster))]
     [global::Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Description(@"Extends Software Assurance Benefit to a cluster")]
     [global::Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Generated]
+    [global::Microsoft.Azure.PowerShell.Cmdlets.StackHCI.HttpPath(Path = "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AzureStackHCI/clusters/{clusterName}/extendSoftwareAssuranceBenefit", ApiVersion = "2023-03-01")]
     public partial class InvokeAzStackHciExtendClusterSoftwareAssuranceBenefit_ExtendViaIdentity : global::System.Management.Automation.PSCmdlet,
         Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Runtime.IEventListener
     {

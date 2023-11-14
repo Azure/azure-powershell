@@ -6,6 +6,8 @@
 namespace Microsoft.Azure.PowerShell.Cmdlets.App.Cmdlets
 {
     using static Microsoft.Azure.PowerShell.Cmdlets.App.Runtime.Extensions;
+    using Microsoft.Azure.PowerShell.Cmdlets.App.Runtime.PowerShell;
+    using Microsoft.Azure.PowerShell.Cmdlets.App.Runtime.Cmdlets;
     using System;
 
     /// <summary>Deactivates a revision for a Container App</summary>
@@ -16,8 +18,10 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.App.Cmdlets
     [global::System.Management.Automation.OutputType(typeof(bool))]
     [global::Microsoft.Azure.PowerShell.Cmdlets.App.Description(@"Deactivates a revision for a Container App")]
     [global::Microsoft.Azure.PowerShell.Cmdlets.App.Generated]
+    [global::Microsoft.Azure.PowerShell.Cmdlets.App.HttpPath(Path = "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.App/containerApps/{containerAppName}/revisions/{revisionName}/deactivate", ApiVersion = "2023-05-01")]
     public partial class DisableAzContainerAppRevision_Deactivate : global::System.Management.Automation.PSCmdlet,
-        Microsoft.Azure.PowerShell.Cmdlets.App.Runtime.IEventListener
+        Microsoft.Azure.PowerShell.Cmdlets.App.Runtime.IEventListener,
+        Microsoft.Azure.PowerShell.Cmdlets.App.Runtime.IContext
     {
         /// <summary>A unique id generatd for the this cmdlet when it is instantiated.</summary>
         private string __correlationId = System.Guid.NewGuid().ToString();
@@ -33,10 +37,16 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.App.Cmdlets
         /// </summary>
         private global::System.Threading.CancellationTokenSource _cancellationTokenSource = new global::System.Threading.CancellationTokenSource();
 
+        /// <summary>A dictionary to carry over additional data for pipeline.</summary>
+        private global::System.Collections.Generic.Dictionary<global::System.String,global::System.Object> _extensibleParameters = new System.Collections.Generic.Dictionary<string, object>();
+
         /// <summary>Wait for .NET debugger to attach</summary>
         [global::System.Management.Automation.Parameter(Mandatory = false, DontShow = true, HelpMessage = "Wait for .NET debugger to attach")]
         [global::Microsoft.Azure.PowerShell.Cmdlets.App.Category(global::Microsoft.Azure.PowerShell.Cmdlets.App.ParameterCategory.Runtime)]
         public global::System.Management.Automation.SwitchParameter Break { get; set; }
+
+        /// <summary>Accessor for cancellationTokenSource.</summary>
+        public global::System.Threading.CancellationTokenSource CancellationTokenSource { get => _cancellationTokenSource ; set { _cancellationTokenSource = value; } }
 
         /// <summary>The reference to the client API class.</summary>
         public Microsoft.Azure.PowerShell.Cmdlets.App.App Client => Microsoft.Azure.PowerShell.Cmdlets.App.Module.Instance.ClientAPI;
@@ -65,6 +75,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.App.Cmdlets
         [global::Microsoft.Azure.PowerShell.Cmdlets.App.Category(global::Microsoft.Azure.PowerShell.Cmdlets.App.ParameterCategory.Azure)]
         public global::System.Management.Automation.PSObject DefaultProfile { get; set; }
 
+        /// <summary>Accessor for extensibleParameters.</summary>
+        public global::System.Collections.Generic.IDictionary<global::System.String,global::System.Object> ExtensibleParameters { get => _extensibleParameters ; }
+
         /// <summary>SendAsync Pipeline Steps to be appended to the front of the pipeline</summary>
         [global::System.Management.Automation.Parameter(Mandatory = false, DontShow = true, HelpMessage = "SendAsync Pipeline Steps to be appended to the front of the pipeline")]
         [global::System.Management.Automation.ValidateNotNull]
@@ -88,6 +101,21 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.App.Cmdlets
         /// <summary><see cref="Microsoft.Azure.PowerShell.Cmdlets.App.Runtime.IEventListener" /> cancellation token.</summary>
         global::System.Threading.CancellationToken Microsoft.Azure.PowerShell.Cmdlets.App.Runtime.IEventListener.Token => _cancellationTokenSource.Token;
 
+        /// <summary>Backing field for <see cref="Name" /> property.</summary>
+        private string _name;
+
+        /// <summary>Name of the Container App Revision.</summary>
+        [global::System.Management.Automation.Parameter(Mandatory = true, HelpMessage = "Name of the Container App Revision.")]
+        [Microsoft.Azure.PowerShell.Cmdlets.App.Runtime.Info(
+        Required = true,
+        ReadOnly = false,
+        Description = @"Name of the Container App Revision.",
+        SerializedName = @"revisionName",
+        PossibleTypes = new [] { typeof(string) })]
+        [global::System.Management.Automation.Alias("RevisionName")]
+        [global::Microsoft.Azure.PowerShell.Cmdlets.App.Category(global::Microsoft.Azure.PowerShell.Cmdlets.App.ParameterCategory.Path)]
+        public string Name { get => this._name; set => this._name = value; }
+
         /// <summary>
         /// When specified, forces the cmdlet return a 'bool' given that there isn't a return type by default.
         /// </summary>
@@ -98,7 +126,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.App.Cmdlets
         /// <summary>
         /// The instance of the <see cref="Microsoft.Azure.PowerShell.Cmdlets.App.Runtime.HttpPipeline" /> that the remote call will use.
         /// </summary>
-        private Microsoft.Azure.PowerShell.Cmdlets.App.Runtime.HttpPipeline Pipeline { get; set; }
+        public Microsoft.Azure.PowerShell.Cmdlets.App.Runtime.HttpPipeline Pipeline { get; set; }
 
         /// <summary>The URI for the proxy server to use</summary>
         [global::System.Management.Automation.Parameter(Mandatory = false, DontShow = true, HelpMessage = "The URI for the proxy server to use")]
@@ -130,20 +158,6 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.App.Cmdlets
         [global::Microsoft.Azure.PowerShell.Cmdlets.App.Category(global::Microsoft.Azure.PowerShell.Cmdlets.App.ParameterCategory.Path)]
         public string ResourceGroupName { get => this._resourceGroupName; set => this._resourceGroupName = value; }
 
-        /// <summary>Backing field for <see cref="RevisionName" /> property.</summary>
-        private string _revisionName;
-
-        /// <summary>Name of the Container App Revision.</summary>
-        [global::System.Management.Automation.Parameter(Mandatory = true, HelpMessage = "Name of the Container App Revision.")]
-        [Microsoft.Azure.PowerShell.Cmdlets.App.Runtime.Info(
-        Required = true,
-        ReadOnly = false,
-        Description = @"Name of the Container App Revision.",
-        SerializedName = @"revisionName",
-        PossibleTypes = new [] { typeof(string) })]
-        [global::Microsoft.Azure.PowerShell.Cmdlets.App.Category(global::Microsoft.Azure.PowerShell.Cmdlets.App.ParameterCategory.Path)]
-        public string RevisionName { get => this._revisionName; set => this._revisionName = value; }
-
         /// <summary>Backing field for <see cref="SubscriptionId" /> property.</summary>
         private string _subscriptionId;
 
@@ -158,7 +172,8 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.App.Cmdlets
         [Microsoft.Azure.PowerShell.Cmdlets.App.Runtime.DefaultInfo(
         Name = @"",
         Description =@"",
-        Script = @"(Get-AzContext).Subscription.Id")]
+        Script = @"(Get-AzContext).Subscription.Id",
+        SetCondition = @"")]
         [global::Microsoft.Azure.PowerShell.Cmdlets.App.Category(global::Microsoft.Azure.PowerShell.Cmdlets.App.ParameterCategory.Path)]
         public string SubscriptionId { get => this._subscriptionId; set => this._subscriptionId = value; }
 
@@ -167,12 +182,12 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.App.Cmdlets
         /// happens on that response. Implement this method in a partial class to enable this behavior
         /// </summary>
         /// <param name="responseMessage">the raw response message as an global::System.Net.Http.HttpResponseMessage.</param>
-        /// <param name="response">the body result as a <see cref="Microsoft.Azure.PowerShell.Cmdlets.App.Models.Api20220301.IDefaultErrorResponse">Microsoft.Azure.PowerShell.Cmdlets.App.Models.Api20220301.IDefaultErrorResponse</see>
+        /// <param name="response">the body result as a <see cref="Microsoft.Azure.PowerShell.Cmdlets.App.Models.IDefaultErrorResponse">Microsoft.Azure.PowerShell.Cmdlets.App.Models.IDefaultErrorResponse</see>
         /// from the remote call</param>
         /// <param name="returnNow">/// Determines if the rest of the onDefault method should be processed, or if the method should
         /// return immediately (set to true to skip further processing )</param>
 
-        partial void overrideOnDefault(global::System.Net.Http.HttpResponseMessage responseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.App.Models.Api20220301.IDefaultErrorResponse> response, ref global::System.Threading.Tasks.Task<bool> returnNow);
+        partial void overrideOnDefault(global::System.Net.Http.HttpResponseMessage responseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.App.Models.IDefaultErrorResponse> response, ref global::System.Threading.Tasks.Task<bool> returnNow);
 
         /// <summary>
         /// <c>overrideOnOk</c> will be called before the regular onOk has been processed, allowing customization of what happens
@@ -203,7 +218,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.App.Cmdlets
         }
 
         /// <summary>
-        /// Intializes a new instance of the <see cref="DisableAzContainerAppRevision_Deactivate" /> cmdlet class.
+        /// Initializes a new instance of the <see cref="DisableAzContainerAppRevision_Deactivate" /> cmdlet class.
         /// </summary>
         public DisableAzContainerAppRevision_Deactivate()
         {
@@ -260,8 +275,33 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.App.Cmdlets
                         WriteError(new global::System.Management.Automation.ErrorRecord( new global::System.Exception(messageData().Message), string.Empty, global::System.Management.Automation.ErrorCategory.NotSpecified, null ) );
                         return ;
                     }
+                    case Microsoft.Azure.PowerShell.Cmdlets.App.Runtime.Events.Progress:
+                    {
+                        var data = messageData();
+                        int progress = (int)data.Value;
+                        string activityMessage, statusDescription;
+                        global::System.Management.Automation.ProgressRecordType recordType;
+                        if (progress < 100)
+                        {
+                            activityMessage = "In progress";
+                            statusDescription = "Checking operation status";
+                            recordType = System.Management.Automation.ProgressRecordType.Processing;
+                        }
+                        else
+                        {
+                            activityMessage = "Completed";
+                            statusDescription = "Completed";
+                            recordType = System.Management.Automation.ProgressRecordType.Completed;
+                        }
+                        WriteProgress(new global::System.Management.Automation.ProgressRecord(1, activityMessage, statusDescription)
+                        {
+                            PercentComplete = progress,
+                        RecordType = recordType
+                        });
+                        return ;
+                    }
                 }
-                await Microsoft.Azure.PowerShell.Cmdlets.App.Module.Instance.Signal(id, token, messageData, (i,t,m) => ((Microsoft.Azure.PowerShell.Cmdlets.App.Runtime.IEventListener)this).Signal(i,t,()=> Microsoft.Azure.PowerShell.Cmdlets.App.Runtime.EventDataConverter.ConvertFrom( m() ) as Microsoft.Azure.PowerShell.Cmdlets.App.Runtime.EventData ), InvocationInformation, this.ParameterSetName, __correlationId, __processRecordId, null );
+                await Microsoft.Azure.PowerShell.Cmdlets.App.Module.Instance.Signal(id, token, messageData, (i, t, m) => ((Microsoft.Azure.PowerShell.Cmdlets.App.Runtime.IEventListener)this).Signal(i, t, () => Microsoft.Azure.PowerShell.Cmdlets.App.Runtime.EventDataConverter.ConvertFrom(m()) as Microsoft.Azure.PowerShell.Cmdlets.App.Runtime.EventData), InvocationInformation, this.ParameterSetName, __correlationId, __processRecordId, null );
                 if (token.IsCancellationRequested)
                 {
                     return ;
@@ -317,7 +357,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.App.Cmdlets
             using( NoSynchronizationContext )
             {
                 await ((Microsoft.Azure.PowerShell.Cmdlets.App.Runtime.IEventListener)this).Signal(Microsoft.Azure.PowerShell.Cmdlets.App.Runtime.Events.CmdletGetPipeline); if( ((Microsoft.Azure.PowerShell.Cmdlets.App.Runtime.IEventListener)this).Token.IsCancellationRequested ) { return; }
-                Pipeline = Microsoft.Azure.PowerShell.Cmdlets.App.Module.Instance.CreatePipeline(InvocationInformation, __correlationId, __processRecordId, this.ParameterSetName);
+                Pipeline = Microsoft.Azure.PowerShell.Cmdlets.App.Module.Instance.CreatePipeline(InvocationInformation, __correlationId, __processRecordId, this.ParameterSetName, this.ExtensibleParameters);
                 if (null != HttpPipelinePrepend)
                 {
                     Pipeline.Prepend((this.CommandRuntime as Microsoft.Azure.PowerShell.Cmdlets.App.Runtime.PowerShell.IAsyncCommandRuntimeExtensions)?.Wrap(HttpPipelinePrepend) ?? HttpPipelinePrepend);
@@ -330,12 +370,12 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.App.Cmdlets
                 try
                 {
                     await ((Microsoft.Azure.PowerShell.Cmdlets.App.Runtime.IEventListener)this).Signal(Microsoft.Azure.PowerShell.Cmdlets.App.Runtime.Events.CmdletBeforeAPICall); if( ((Microsoft.Azure.PowerShell.Cmdlets.App.Runtime.IEventListener)this).Token.IsCancellationRequested ) { return; }
-                    await this.Client.ContainerAppsRevisionsDeactivateRevision(SubscriptionId, ResourceGroupName, ContainerAppName, RevisionName, onOk, onDefault, this, Pipeline);
+                    await this.Client.ContainerAppsRevisionsDeactivateRevision(SubscriptionId, ResourceGroupName, ContainerAppName, Name, onOk, onDefault, this, Pipeline);
                     await ((Microsoft.Azure.PowerShell.Cmdlets.App.Runtime.IEventListener)this).Signal(Microsoft.Azure.PowerShell.Cmdlets.App.Runtime.Events.CmdletAfterAPICall); if( ((Microsoft.Azure.PowerShell.Cmdlets.App.Runtime.IEventListener)this).Token.IsCancellationRequested ) { return; }
                 }
                 catch (Microsoft.Azure.PowerShell.Cmdlets.App.Runtime.UndeclaredResponseException urexception)
                 {
-                    WriteError(new global::System.Management.Automation.ErrorRecord(urexception, urexception.StatusCode.ToString(), global::System.Management.Automation.ErrorCategory.InvalidOperation, new {  SubscriptionId=SubscriptionId,ResourceGroupName=ResourceGroupName,ContainerAppName=ContainerAppName,RevisionName=RevisionName})
+                    WriteError(new global::System.Management.Automation.ErrorRecord(urexception, urexception.StatusCode.ToString(), global::System.Management.Automation.ErrorCategory.InvalidOperation, new { SubscriptionId=SubscriptionId,ResourceGroupName=ResourceGroupName,ContainerAppName=ContainerAppName,Name=Name})
                     {
                       ErrorDetails = new global::System.Management.Automation.ErrorDetails(urexception.Message) { RecommendedAction = urexception.Action }
                     });
@@ -358,12 +398,12 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.App.Cmdlets
         /// a delegate that is called when the remote service returns default (any response code not handled elsewhere).
         /// </summary>
         /// <param name="responseMessage">the raw response message as an global::System.Net.Http.HttpResponseMessage.</param>
-        /// <param name="response">the body result as a <see cref="Microsoft.Azure.PowerShell.Cmdlets.App.Models.Api20220301.IDefaultErrorResponse">Microsoft.Azure.PowerShell.Cmdlets.App.Models.Api20220301.IDefaultErrorResponse</see>
+        /// <param name="response">the body result as a <see cref="Microsoft.Azure.PowerShell.Cmdlets.App.Models.IDefaultErrorResponse">Microsoft.Azure.PowerShell.Cmdlets.App.Models.IDefaultErrorResponse</see>
         /// from the remote call</param>
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the method is completed.
         /// </returns>
-        private async global::System.Threading.Tasks.Task onDefault(global::System.Net.Http.HttpResponseMessage responseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.App.Models.Api20220301.IDefaultErrorResponse> response)
+        private async global::System.Threading.Tasks.Task onDefault(global::System.Net.Http.HttpResponseMessage responseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.App.Models.IDefaultErrorResponse> response)
         {
             using( NoSynchronizationContext )
             {
@@ -380,15 +420,15 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.App.Cmdlets
                 if ((null == code || null == message))
                 {
                     // Unrecognized Response. Create an error record based on what we have.
-                    var ex = new Microsoft.Azure.PowerShell.Cmdlets.App.Runtime.RestException<Microsoft.Azure.PowerShell.Cmdlets.App.Models.Api20220301.IDefaultErrorResponse>(responseMessage, await response);
-                    WriteError( new global::System.Management.Automation.ErrorRecord(ex, ex.Code, global::System.Management.Automation.ErrorCategory.InvalidOperation, new { SubscriptionId=SubscriptionId, ResourceGroupName=ResourceGroupName, ContainerAppName=ContainerAppName, RevisionName=RevisionName })
+                    var ex = new Microsoft.Azure.PowerShell.Cmdlets.App.Runtime.RestException<Microsoft.Azure.PowerShell.Cmdlets.App.Models.IDefaultErrorResponse>(responseMessage, await response);
+                    WriteError( new global::System.Management.Automation.ErrorRecord(ex, ex.Code, global::System.Management.Automation.ErrorCategory.InvalidOperation, new {  })
                     {
                       ErrorDetails = new global::System.Management.Automation.ErrorDetails(ex.Message) { RecommendedAction = ex.Action }
                     });
                 }
                 else
                 {
-                    WriteError( new global::System.Management.Automation.ErrorRecord(new global::System.Exception($"[{code}] : {message}"), code?.ToString(), global::System.Management.Automation.ErrorCategory.InvalidOperation, new { SubscriptionId=SubscriptionId, ResourceGroupName=ResourceGroupName, ContainerAppName=ContainerAppName, RevisionName=RevisionName })
+                    WriteError( new global::System.Management.Automation.ErrorRecord(new global::System.Exception($"[{code}] : {message}"), code?.ToString(), global::System.Management.Automation.ErrorCategory.InvalidOperation, new {  })
                     {
                       ErrorDetails = new global::System.Management.Automation.ErrorDetails(message) { RecommendedAction = global::System.String.Empty }
                     });

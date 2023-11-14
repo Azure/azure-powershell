@@ -16,7 +16,6 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Resources.Authorization.Cmdlets
     [global::System.Management.Automation.OutputType(typeof(Microsoft.Azure.PowerShell.Cmdlets.Resources.Authorization.Models.Api20201001Preview.IRoleEligibilitySchedule))]
     [global::Microsoft.Azure.PowerShell.Cmdlets.Resources.Authorization.Description(@"Get the specified role eligibility schedule for a resource scope")]
     [global::Microsoft.Azure.PowerShell.Cmdlets.Resources.Authorization.Generated]
-    [global::Microsoft.Azure.PowerShell.Cmdlets.Resources.Authorization.HttpPath(Path = "/{scope}/providers/Microsoft.Authorization/roleEligibilitySchedules/{roleEligibilityScheduleName}", ApiVersion = "2020-10-01-preview")]
     public partial class GetAzRoleEligibilitySchedule_Get : global::System.Management.Automation.PSCmdlet,
         Microsoft.Azure.PowerShell.Cmdlets.Resources.Authorization.Runtime.IEventListener
     {

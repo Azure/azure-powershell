@@ -1,7 +1,7 @@
 ---
 external help file:
 Module Name: Az.App
-online version: https://learn.microsoft.com/powershell/module/az.app/new-azcontainerappcustomdomainobject
+online version: https://learn.microsoft.com/powershell/module/Az.App/new-azcontainerappcustomdomainobject
 schema: 2.0.0
 ---
 
@@ -13,7 +13,7 @@ Create an in-memory object for CustomDomain.
 ## SYNTAX
 
 ```
-New-AzContainerAppCustomDomainObject -CertificateId <String> -Name <String> [-BindingType <BindingType>]
+New-AzContainerAppCustomDomainObject -Name <String> [-BindingType <String>] [-CertificateId <String>]
  [<CommonParameters>]
 ```
 
@@ -22,20 +22,20 @@ Create an in-memory object for CustomDomain.
 
 ## EXAMPLES
 
-### Example 1: Create a CustomDomain object for ContainerApp.
+### Example 1: Create an in-memory object for CustomDomain.
 ```powershell
-$certificateId = (Get-AzContainerAppManagedEnvCert -EnvName azps-env -ResourceGroupName azpstest_gp -Name azps-env-cert).Id
+$certificateId = (Get-AzContainerAppManagedEnvCert -EnvName azps-env -ResourceGroupName azps_test_group_app -Name azps-env-cert).Id
 
-$customDomain = New-AzContainerAppCustomDomainObject -CertificateId $certificateId -Name www.fabrikam.com -BindingType SniEnabled
+New-AzContainerAppCustomDomainObject -Name "www.my-name.com" -BindingType "SniEnabled" -CertificateId $certificateId
 ```
 
 ```output
-BindingType CertificateId                                                                                                                                                Name
------------ -------------                                                                                                                                                ----
-SniEnabled  /subscriptions/{subscriptionid}/resourceGroups/rg/providers/Microsoft.App/managedEnvironments/demokube/certificates/my-certificate-for-my-other-name-dot-com www.my-name.com
+BindingType CertificateId                                                                                                                                 Name
+----------- -------------                                                                                                                                 ----
+SniEnabled  /subscriptions/{subId}/resourceGroups/azps_test_group_app/providers/Microsoft.App/managedEnvironments/{manageEnvName}/certificates/{testcert} www.my-name.com
 ```
 
-Create a CustomDomain object for ContainerApp.
+Create an in-memory object for CustomDomain.
 
 ## PARAMETERS
 
@@ -43,7 +43,7 @@ Create a CustomDomain object for ContainerApp.
 Custom Domain binding type.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.App.Support.BindingType
+Type: System.String
 Parameter Sets: (All)
 Aliases:
 
@@ -63,7 +63,7 @@ Type: System.String
 Parameter Sets: (All)
 Aliases:
 
-Required: True
+Required: False
 Position: Named
 Default value: None
 Accept pipeline input: False
@@ -92,11 +92,9 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.App.Models.Api20220301.CustomDomain
+### Microsoft.Azure.PowerShell.Cmdlets.App.Models.CustomDomain
 
 ## NOTES
-
-ALIASES
 
 ## RELATED LINKS
 

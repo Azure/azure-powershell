@@ -18,6 +18,14 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
+
+## Version 4.2.0
+* Added cmdlets:
+    - `Get-AzWvdAppAttachPackage`
+    - `Import-AzWvdAppAttachPackageInfo`
+    - `New-AzWvdAppAttachPackage`
+    - `Remove-AzWvdAppAttachPackage`
+    - `Update-AzWvdAppAttachPackage`
 * Added Private Link Cmdlets
     - `Get-AzWvdPrivateEndpointConnection`
     - `Get-AzWvdPrivateLinkResource`

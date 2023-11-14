@@ -203,7 +203,7 @@ Class representing a database script.
 To construct, see NOTES section for PARAMETER properties and create a hash table.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api20221229.IScript
+Type: Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api20230815.IScript
 Parameter Sets: Update, UpdateViaIdentity
 Aliases:
 
@@ -215,7 +215,8 @@ Accept wildcard characters: False
 ```
 
 ### -ResourceGroupName
-The name of the resource group containing the Kusto cluster.
+The name of the resource group.
+The name is case insensitive.
 
 ```yaml
 Type: System.String
@@ -279,8 +280,7 @@ Accept wildcard characters: False
 ```
 
 ### -SubscriptionId
-Gets subscription credentials which uniquely identify Microsoft Azure subscription.
-The subscription ID forms part of the URI for every service call.
+The ID of the target subscription.
 
 ```yaml
 Type: System.String
@@ -330,52 +330,15 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api20221229.IScript
+### Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api20230815.IScript
 
 ### Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.IKustoIdentity
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api20221229.IScript
+### Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api20230815.IScript
 
 ## NOTES
-
-ALIASES
-
-COMPLEX PARAMETER PROPERTIES
-
-To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
-
-
-`INPUTOBJECT <IKustoIdentity>`: Identity Parameter
-  - `[AttachedDatabaseConfigurationName <String>]`: The name of the attached database configuration.
-  - `[ClusterName <String>]`: The name of the Kusto cluster.
-  - `[DataConnectionName <String>]`: The name of the data connection.
-  - `[DatabaseName <String>]`: The name of the database in the Kusto cluster.
-  - `[Id <String>]`: Resource identity path
-  - `[Location <String>]`: Azure location (region) name.
-  - `[ManagedPrivateEndpointName <String>]`: The name of the managed private endpoint.
-  - `[OperationId <String>]`: The Guid of the operation ID
-  - `[PrincipalAssignmentName <String>]`: The name of the Kusto principalAssignment.
-  - `[PrivateEndpointConnectionName <String>]`: The name of the private endpoint connection.
-  - `[PrivateLinkResourceName <String>]`: The name of the private link resource.
-  - `[ResourceGroupName <String>]`: The name of the resource group containing the Kusto cluster.
-  - `[ScriptName <String>]`: The name of the Kusto database script.
-  - `[SubscriptionId <String>]`: Gets subscription credentials which uniquely identify Microsoft Azure subscription. The subscription ID forms part of the URI for every service call.
-
-`PARAMETER <IScript>`: Class representing a database script.
-  - `[AzureAsyncOperation <String>]`: 
-  - `[Content <String>]`: The script content. This property should be used when the script is provide inline and not through file in a SA. Must not be used together with scriptUrl and scriptUrlSasToken properties.
-  - `[ContinueOnError <Boolean?>]`: Flag that indicates whether to continue if one of the command fails.
-  - `[ForceUpdateTag <String>]`: A unique string. If changed the script will be applied again.
-  - `[SystemDataCreatedAt <DateTime?>]`: The timestamp of resource creation (UTC).
-  - `[SystemDataCreatedBy <String>]`: The identity that created the resource.
-  - `[SystemDataCreatedByType <CreatedByType?>]`: The type of identity that created the resource.
-  - `[SystemDataLastModifiedAt <DateTime?>]`: The timestamp of resource last modification (UTC)
-  - `[SystemDataLastModifiedBy <String>]`: The identity that last modified the resource.
-  - `[SystemDataLastModifiedByType <CreatedByType?>]`: The type of identity that last modified the resource.
-  - `[Url <String>]`: The url to the KQL script blob file. Must not be used together with scriptContent property
-  - `[UrlSasToken <String>]`: The SaS token that provide read access to the file which contain the script. Must be provided when using scriptUrl property.
 
 ## RELATED LINKS
 

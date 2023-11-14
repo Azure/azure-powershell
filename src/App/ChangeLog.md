@@ -19,6 +19,10 @@
 -->
 ## Upcoming Release
 
+## Version 1.0.0
+* General availability for module Az.App.
+* Upgraded api version to 2023-05-01.
+
 ## Version 0.1.1
 * Added enrich example for the cmdlet `New-AzContainerAppScaleRuleObject`.[#20334]
 

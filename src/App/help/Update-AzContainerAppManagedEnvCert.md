@@ -26,37 +26,74 @@ Update-AzContainerAppManagedEnvCert -InputObject <IAppIdentity> [-Tag <Hashtable
  [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
+### UpdateViaIdentityManagedEnvironmentExpanded
+```
+Update-AzContainerAppManagedEnvCert -ManagedEnvironmentInputObject <IAppIdentity> -Name <String>
+ [-Tag <Hashtable>] [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
+```
+
+### UpdateViaJsonFilePath
+```
+Update-AzContainerAppManagedEnvCert -EnvName <String> -Name <String> -ResourceGroupName <String>
+ -JsonFilePath <String> [-SubscriptionId <String>] [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf]
+ [<CommonParameters>]
+```
+
+### UpdateViaJsonString
+```
+Update-AzContainerAppManagedEnvCert -EnvName <String> -Name <String> -ResourceGroupName <String>
+ -JsonString <String> [-SubscriptionId <String>] [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf]
+ [<CommonParameters>]
+```
+
 ## DESCRIPTION
 Patches a certificate.
 Currently only patching of tags is supported
 
 ## EXAMPLES
 
-### Example 1: Patches a certificate.
+### Example 1: Update managed environment certificate.
 ```powershell
-Update-AzContainerAppManagedEnvCert -EnvName azps-env -ResourceGroupName azpstest_gp -Name azps-env-cert -Tag @{"123"="abc"}
+Update-AzContainerAppManagedEnvCert -EnvName azps-env -Name azps-env-cert -ResourceGroupName azps_test_group_app -Tag @{"abc"="123"}
 ```
 
 ```output
-Name          Location      Issuer              ProvisioningState SubjectName         Thumbprint                               ResourceGroupName
-----          --------      ------              ----------------- -----------         ----------                               -----------------
-azps-env-cert canadacentral CN=www.fabrikam.com Succeeded         CN=www.fabrikam.com 684DFA8457230B8A04675FBCB7251FA88AE10D80 azpstest_gp
+Name          Location Issuer              ProvisioningState SubjectName         Thumbprint                               ResourceGroupName
+----          -------- ------              ----------------- -----------         ----------                               -----------------
+azps-env-cert eastus   CN=www.fabrikam.com Succeeded         CN=www.fabrikam.com B3C038866E6ADBB2F33DFDBEF5C7FC71D339A943 azps_test_group_app
 ```
 
-Currently only patching of tags is supported.
+Update managed environment certificate.
 
-### Example 2: Patches a certificate.
+### Example 2: Update managed environment certificate.
 ```powershell
-Get-AzContainerAppManagedEnvCert -EnvName azps-env -ResourceGroupName azpstest_gp -Name azps-env-cert | Update-AzContainerAppManagedEnvCert -Tag @{"123"="abc"}
+$managedenvcert = Get-AzContainerAppManagedEnvCert -EnvName azps-env -Name azps-env-cert -ResourceGroupName azps_test_group_app
+
+Update-AzContainerAppManagedEnvCert -InputObject $managedenvcert -Tag @{"abc"="123"}
 ```
 
 ```output
-Name          Location      Issuer              ProvisioningState SubjectName         Thumbprint                               ResourceGroupName
-----          --------      ------              ----------------- -----------         ----------                               -----------------
-azps-env-cert canadacentral CN=www.fabrikam.com Succeeded         CN=www.fabrikam.com 684DFA8457230B8A04675FBCB7251FA88AE10D80 azpstest_gp
+Name          Location Issuer              ProvisioningState SubjectName         Thumbprint                               ResourceGroupName
+----          -------- ------              ----------------- -----------         ----------                               -----------------
+azps-env-cert eastus   CN=www.fabrikam.com Succeeded         CN=www.fabrikam.com B3C038866E6ADBB2F33DFDBEF5C7FC71D339A943 azps_test_group_app
 ```
 
-Currently only patching of tags is supported.
+Update managed environment certificate.
+
+### Example 3: Update managed environment certificate.
+```powershell
+$managedenv = Get-AzContainerAppManagedEnv -Name azps-env -ResourceGroupName azps_test_group_app
+
+Update-AzContainerAppManagedEnvCert -ManagedEnvironmentInputObject $managedenv -Name azps-env-cert -Tag @{"abc"="123"}
+```
+
+```output
+Name          Location Issuer              ProvisioningState SubjectName         Thumbprint                               ResourceGroupName
+----          -------- ------              ----------------- -----------         ----------                               -----------------
+azps-env-cert eastus   CN=www.fabrikam.com Succeeded         CN=www.fabrikam.com B3C038866E6ADBB2F33DFDBEF5C7FC71D339A943 azps_test_group_app
+```
+
+Update managed environment certificate.
 
 ## PARAMETERS
 
@@ -81,7 +118,7 @@ Name of the Managed Environment.
 
 ```yaml
 Type: System.String
-Parameter Sets: UpdateExpanded
+Parameter Sets: UpdateExpanded, UpdateViaJsonFilePath, UpdateViaJsonString
 Aliases:
 
 Required: True
@@ -107,12 +144,58 @@ Accept pipeline input: True (ByValue)
 Accept wildcard characters: False
 ```
 
+### -JsonFilePath
+Path of Json file supplied to the Update operation
+
+```yaml
+Type: System.String
+Parameter Sets: UpdateViaJsonFilePath
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -JsonString
+Json string supplied to the Update operation
+
+```yaml
+Type: System.String
+Parameter Sets: UpdateViaJsonString
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -ManagedEnvironmentInputObject
+Identity Parameter
+To construct, see NOTES section for MANAGEDENVIRONMENTINPUTOBJECT properties and create a hash table.
+
+```yaml
+Type: Microsoft.Azure.PowerShell.Cmdlets.App.Models.IAppIdentity
+Parameter Sets: UpdateViaIdentityManagedEnvironmentExpanded
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: True (ByValue)
+Accept wildcard characters: False
+```
+
 ### -Name
 Name of the Certificate.
 
 ```yaml
 Type: System.String
-Parameter Sets: UpdateExpanded
+Parameter Sets: UpdateExpanded, UpdateViaIdentityManagedEnvironmentExpanded, UpdateViaJsonFilePath, UpdateViaJsonString
 Aliases: CertificateName
 
 Required: True
@@ -128,7 +211,7 @@ The name is case insensitive.
 
 ```yaml
 Type: System.String
-Parameter Sets: UpdateExpanded
+Parameter Sets: UpdateExpanded, UpdateViaJsonFilePath, UpdateViaJsonString
 Aliases:
 
 Required: True
@@ -143,7 +226,7 @@ The ID of the target subscription.
 
 ```yaml
 Type: System.String
-Parameter Sets: UpdateExpanded
+Parameter Sets: UpdateExpanded, UpdateViaJsonFilePath, UpdateViaJsonString
 Aliases:
 
 Required: False
@@ -158,7 +241,7 @@ Application-specific metadata in the form of key-value pairs.
 
 ```yaml
 Type: System.Collections.Hashtable
-Parameter Sets: (All)
+Parameter Sets: UpdateExpanded, UpdateViaIdentityExpanded, UpdateViaIdentityManagedEnvironmentExpanded
 Aliases:
 
 Required: False
@@ -208,30 +291,9 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.App.Models.Api20220301.ICertificate
+### Microsoft.Azure.PowerShell.Cmdlets.App.Models.ICertificate
 
 ## NOTES
-
-ALIASES
-
-COMPLEX PARAMETER PROPERTIES
-
-To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
-
-
-`INPUTOBJECT <IAppIdentity>`: Identity Parameter
-  - `[AuthConfigName <String>]`: Name of the Container App AuthConfig.
-  - `[CertificateName <String>]`: Name of the Certificate.
-  - `[ComponentName <String>]`: Name of the Dapr Component.
-  - `[ContainerAppName <String>]`: Name of the Container App.
-  - `[EnvironmentName <String>]`: Name of the Managed Environment.
-  - `[Id <String>]`: Resource identity path
-  - `[ReplicaName <String>]`: Name of the Container App Revision Replica.
-  - `[ResourceGroupName <String>]`: The name of the resource group. The name is case insensitive.
-  - `[RevisionName <String>]`: Name of the Container App Revision.
-  - `[SourceControlName <String>]`: Name of the Container App SourceControl.
-  - `[StorageName <String>]`: Name of the storage.
-  - `[SubscriptionId <String>]`: The ID of the target subscription.
 
 ## RELATED LINKS
 

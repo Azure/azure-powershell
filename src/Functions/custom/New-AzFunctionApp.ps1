@@ -72,24 +72,23 @@ function New-AzFunctionApp {
         
         [Parameter(Mandatory=$true, ParameterSetName="ByAppServicePlan", HelpMessage='The function runtime.')]
         [Parameter(Mandatory=$true, ParameterSetName="Consumption")]
-        [ArgumentCompleter([Microsoft.Azure.PowerShell.Cmdlets.Functions.Support.RuntimeType])]
         [ValidateNotNullOrEmpty()]
         [System.String]
-        # Runtime type (DotNet, Node, Java, PowerShell or Python)
+        # Runtime types are defined in HelperFunctions.ps1
         ${Runtime},
 
         [Parameter(ParameterSetName="ByAppServicePlan", HelpMessage='The function runtime.')]
         [Parameter(ParameterSetName="Consumption")]
         [ValidateNotNullOrEmpty()]
         [System.String]
+        # RuntimeVersion types are defined in HelperFunctions.ps1
         ${RuntimeVersion},
 
         [Parameter(ParameterSetName="ByAppServicePlan", HelpMessage='The Functions version.')]
         [Parameter(ParameterSetName="Consumption")]
-        [ArgumentCompleter([Microsoft.Azure.PowerShell.Cmdlets.Functions.Support.FunctionsVersionType])]
         [ValidateNotNullOrEmpty()]
         [System.String]
-        # FunctionsVersion type (3 or 4). Default Functions version is defined in HelperFunctions.ps1
+        # FunctionsVersion types are defined in HelperFunctions.ps1
         ${FunctionsVersion},
 
         [Parameter(ParameterSetName="ByAppServicePlan", HelpMessage='Disable creating application insights resource during the function app creation. No logs will be available.')]
@@ -247,39 +246,18 @@ function New-AzFunctionApp {
         $params = GetParameterKeyValues -PSBoundParametersDictionary $PSBoundParameters `
                                         -ParameterList @("SubscriptionId", "HttpPipelineAppend", "HttpPipelinePrepend")
 
-        $runtimeJsonDefintion = $null
+        $runtimeJsonDefinition = $null
         ValidateFunctionName -Name $Name @params
 
         if (-not $functionAppIsCustomDockerImage)
         {
             if (-not $FunctionsVersion)
             {
-                if ($Runtime -eq "DotNet")
-                {
-                    $errorId = "MissingFunctionsVersionValue"
-                    $message += "For 'DotNet' function apps, the runtime version is specified by the FunctionsVersion parameter. Please specify this value and try again."
-                    $exception = [System.InvalidOperationException]::New($message)
-                    ThrowTerminatingError -ErrorId $errorId `
-                                          -ErrorMessage $message `
-                                          -ErrorCategory ([System.Management.Automation.ErrorCategory]::InvalidOperation) `
-                                          -Exception $exception
-                }
-
                 $FunctionsVersion = $DefaultFunctionsVersion
                 Write-Warning "FunctionsVersion not specified. Setting default value to '$FunctionsVersion'. $SetDefaultValueParameterWarningMessage"
             }
 
             ValidateFunctionsVersion -FunctionsVersion $FunctionsVersion
-
-            if ($FunctionsVersion -eq "3")
-            {
-                # In Functions V3, RuntimeVersion matches FunctionsVersion. However, this is no longer the case for Functions V4 or higher
-                if (($Runtime -eq "DotNet") -and ($RuntimeVersion -ne $FunctionsVersion))
-                {
-                    Write-Verbose "'DotNet' runtime version is specified by FunctionsVersion. The value of the -RuntimeVersion will be set to '$FunctionsVersion'." -Verbose
-                    $RuntimeVersion = $FunctionsVersion
-                }
-            }
 
             if (-not $OSType)
             {
@@ -287,9 +265,9 @@ function New-AzFunctionApp {
                 Write-Warning "OSType not specified. Setting default value to '$OSType'. $SetDefaultValueParameterWarningMessage"
             }
 
-            $runtimeJsonDefintion = GetRuntimeJsonDefinition -FunctionsVersion $FunctionsVersion -Runtime $Runtime -RuntimeVersion $RuntimeVersion -OSType $OSType
+            $runtimeJsonDefinition = GetStackDefinitionForRuntime -FunctionsVersion $FunctionsVersion -Runtime $Runtime -RuntimeVersion $RuntimeVersion -OSType $OSType
 
-            if (-not $runtimeJsonDefintion)
+            if (-not $runtimeJsonDefinition)
             {
                 $errorId = "FailedToGetRuntimeDefinition"
                 $message += "Failed to get runtime definition for '$Runtime' version '$RuntimeVersion' in Functions version '$FunctionsVersion' on '$OSType'."
@@ -302,28 +280,21 @@ function New-AzFunctionApp {
             }
 
             # Add app settings
-            if ($runtimeJsonDefintion.AppSettingsDictionary.Count -gt 0)
+            if ($runtimeJsonDefinition.AppSettingsDictionary.Count -gt 0)
             {
-                foreach ($keyName in $runtimeJsonDefintion.AppSettingsDictionary.Keys)
+                foreach ($keyName in $runtimeJsonDefinition.AppSettingsDictionary.Keys)
                 {
-                    $value = $runtimeJsonDefintion.AppSettingsDictionary[$keyName]
+                    $value = $runtimeJsonDefinition.AppSettingsDictionary[$keyName]
                     $appSettings.Add((NewAppSetting -Name $keyName -Value $value))
                 }
             }
 
             # Add site config properties
-            if ($runtimeJsonDefintion.SiteConfigPropertiesDictionary.Count -gt 0)
+            if ($runtimeJsonDefinition.SiteConfigPropertiesDictionary.Count -gt 0)
             {
-                foreach ($PropertyName in $runtimeJsonDefintion.SiteConfigPropertiesDictionary.Keys)
+                foreach ($PropertyName in $runtimeJsonDefinition.SiteConfigPropertiesDictionary.Keys)
                 {
-                    $value = $runtimeJsonDefintion.SiteConfigPropertiesDictionary[$PropertyName]
-
-                    if (($OSType -eq "Windows") -and ($FunctionsVersion -eq "3") -and ($PropertyName -eq "netFrameworkVersion"))
-                    {
-                        # For Functions V3 apps, do not set netFrameworkVersion.
-                        continue
-                    }
-
+                    $value = $runtimeJsonDefinition.SiteConfigPropertiesDictionary[$PropertyName]
                     $siteCofig.$PropertyName = $value
                 }
             }            
@@ -356,8 +327,6 @@ function New-AzFunctionApp {
             $functionAppDef.ServerFarmId = $servicePlan.Id
             $functionAppDef.Location = $Location
         }
-
-        ValidateFunctionsV2NotAvailableLocation -Location $functionAppDef.Location
 
         if ($OSIsLinux)
         {

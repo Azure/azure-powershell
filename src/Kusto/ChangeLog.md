@@ -19,6 +19,11 @@
 -->
 ## Upcoming Release
 
+## Version 2.3.0
+* Supported sandbox custom image
+* Supported database CMK
+* Supported cluster migration
+
 ## Version 2.2.0
 * Added cmdlet `Get-AzKustoSku`
 * Added parameter `CallerRole` for cmdlet `AzKustoDatabase` and `Update-AzKustoDatabase`

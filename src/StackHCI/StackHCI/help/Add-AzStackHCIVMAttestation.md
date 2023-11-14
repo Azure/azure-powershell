@@ -1,5 +1,5 @@
 ---
-external help file:
+external help file: Az.StackHCI-help.xml
 Module Name: Az.StackHCI
 online version: https://learn.microsoft.com/powershell/module/az.stackhci/add-azstackhcivmattestation
 schema: 2.0.0
@@ -14,17 +14,17 @@ Add-AzStackHCIVMAttestation configures guests for AzureStack HCI IMDS Attestatio
 
 ### VMName (Default)
 ```
-Add-AzStackHCIVMAttestation [-VMName] <String[]> [-Force] [-Confirm] [-WhatIf] [<CommonParameters>]
-```
-
-### AddAll
-```
-Add-AzStackHCIVMAttestation -AddAll [-Force] [-Confirm] [-WhatIf] [<CommonParameters>]
+Add-AzStackHCIVMAttestation [-VMName] <String[]> [-Force] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### VMObject
 ```
-Add-AzStackHCIVMAttestation [-VM] <Object[]> [-Force] [-Confirm] [-WhatIf] [<CommonParameters>]
+Add-AzStackHCIVMAttestation [-Force] [-VM] <Object[]> [-WhatIf] [-Confirm] [<CommonParameters>]
+```
+
+### AddAll
+```
+Add-AzStackHCIVMAttestation [-Force] [-AddAll] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -32,7 +32,7 @@ Add-AzStackHCIVMAttestation configures guests for AzureStack HCI IMDS Attestatio
 
 ## EXAMPLES
 
-### Example 1: 
+### Example 1:
 ```powershell
 Add-AzStackHCIVMAttestation -AddAll
 ```
@@ -51,7 +51,7 @@ ppt7pn0     HCINODE2        Connected
 
 Adding all guests on current node
 
-### Example 2: 
+### Example 2:
 ```powershell
 Invoke-Command -ScriptBlock {Add-AzStackHCIVMAttestation -VMName "bhat2", "ppt7pn0"} -ComputerName "HCINODE2"
 ```
@@ -113,7 +113,7 @@ Parameter Sets: VMObject
 Aliases:
 
 Required: True
-Position: 0
+Position: 1
 Default value: None
 Accept pipeline input: True (ByValue)
 Accept wildcard characters: False
@@ -128,7 +128,7 @@ Parameter Sets: VMName
 Aliases:
 
 Required: True
-Position: 0
+Position: 1
 Default value: None
 Accept pipeline input: True (ByValue)
 Accept wildcard characters: False
@@ -180,7 +180,4 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## NOTES
 
-ALIASES
-
 ## RELATED LINKS
-

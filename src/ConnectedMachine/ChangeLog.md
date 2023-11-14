@@ -19,6 +19,9 @@
 -->
 ## Upcoming Release
 
+## Version 0.5.1
+* Removed the version check in MachineExtensionProperties
+
 ## Version 0.5.0
 * Updated the API version to stable 2022-12-27
 * Added cmdlet `Install-AzConnectedMachinePatch`, `Invoke-AzConnectedAssessMachinePatch` and `Get-AzConnectedExtensionMetadata`

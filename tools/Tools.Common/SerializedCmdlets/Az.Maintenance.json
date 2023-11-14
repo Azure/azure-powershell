@@ -1,6 +1,6 @@
 {
   "ModuleName": "Az.Maintenance",
-  "ModuleVersion": "1.3.1",
+  "ModuleVersion": "1.4.0",
   "Cmdlets": [
     {
       "VerbName": "Get",
@@ -16,7 +16,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.Maintenance.Models",
             "Name": "Microsoft.Azure.Commands.Maintenance.Models.PSApplyUpdate",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Maintenance.Models.PSApplyUpdate, Microsoft.Azure.PowerShell.Cmdlets.Maintenance, Version=1.3.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Maintenance.Models.PSApplyUpdate, Microsoft.Azure.PowerShell.Cmdlets.Maintenance, Version=1.3.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "Properties": {
               "LastUpdateTime": "System.Nullable`1[System.DateTime]",
               "Status": "System.String",
@@ -329,7 +329,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.Maintenance.Models",
             "Name": "Microsoft.Azure.Commands.Maintenance.Models.PSConfigurationAssignment",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Maintenance.Models.PSConfigurationAssignment, Microsoft.Azure.PowerShell.Cmdlets.Maintenance, Version=1.3.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Maintenance.Models.PSConfigurationAssignment, Microsoft.Azure.PowerShell.Cmdlets.Maintenance, Version=1.3.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "Properties": {
               "Location": "System.String",
               "MaintenanceConfigurationId": "System.String",
@@ -648,7 +648,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.Maintenance.Models",
             "Name": "Microsoft.Azure.Commands.Maintenance.Models.PSMaintenanceConfiguration",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Maintenance.Models.PSMaintenanceConfiguration, Microsoft.Azure.PowerShell.Cmdlets.Maintenance, Version=1.3.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Maintenance.Models.PSMaintenanceConfiguration, Microsoft.Azure.PowerShell.Cmdlets.Maintenance, Version=1.3.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "Properties": {
               "WindowParameterClassificationToInclude": "System.Collections.Generic.HashSet`1[System.String]",
               "WindowParameterKbNumberToExclude": "System.Collections.Generic.HashSet`1[System.String]",
@@ -859,7 +859,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.Maintenance.Models",
             "Name": "Microsoft.Azure.Commands.Maintenance.Models.PSMaintenanceConfiguration",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Maintenance.Models.PSMaintenanceConfiguration, Microsoft.Azure.PowerShell.Cmdlets.Maintenance, Version=1.3.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Maintenance.Models.PSMaintenanceConfiguration, Microsoft.Azure.PowerShell.Cmdlets.Maintenance, Version=1.3.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "Properties": {
               "WindowParameterClassificationToInclude": "System.Collections.Generic.HashSet`1[System.String]",
               "WindowParameterKbNumberToExclude": "System.Collections.Generic.HashSet`1[System.String]",
@@ -1070,7 +1070,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Management.Maintenance.Models",
             "Name": "Microsoft.Azure.Management.Maintenance.Models.Update",
-            "AssemblyQualifiedName": "Microsoft.Azure.Management.Maintenance.Models.Update, Microsoft.Azure.Management.Maintenance, Version=1.4.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+            "AssemblyQualifiedName": "Microsoft.Azure.Management.Maintenance.Models.Update, Microsoft.Azure.PowerShell.Maintenance.Management.Sdk, Version=1.4.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "Properties": {
               "NotBefore": "System.Nullable`1[System.DateTime]",
               "ImpactDurationInSec": "System.Nullable`1[System.Int32]",
@@ -1388,7 +1388,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.Maintenance.Models",
             "Name": "Microsoft.Azure.Commands.Maintenance.Models.PSApplyUpdate",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Maintenance.Models.PSApplyUpdate, Microsoft.Azure.PowerShell.Cmdlets.Maintenance, Version=1.3.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Maintenance.Models.PSApplyUpdate, Microsoft.Azure.PowerShell.Cmdlets.Maintenance, Version=1.3.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "Properties": {
               "LastUpdateTime": "System.Nullable`1[System.DateTime]",
               "Status": "System.String",
@@ -1479,6 +1479,24 @@
           "ValidateNotNullOrEmpty": false
         },
         {
+          "Name": "ApplyUpdateName",
+          "Type": {
+            "Namespace": "System",
+            "Name": "System.String",
+            "AssemblyQualifiedName": "System.String, System.Private.CoreLib, Version=6.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e"
+          },
+          "ValidateNotNullOrEmpty": false
+        },
+        {
+          "Name": "Status",
+          "Type": {
+            "Namespace": "System",
+            "Name": "System.String",
+            "AssemblyQualifiedName": "System.String, System.Private.CoreLib, Version=6.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e"
+          },
+          "ValidateNotNullOrEmpty": false
+        },
+        {
           "Name": "ResourceName",
           "Type": {
             "Namespace": "System",
@@ -1492,7 +1510,7 @@
           "Type": {
             "Namespace": "System.Management.Automation",
             "Name": "System.Management.Automation.SwitchParameter",
-            "AssemblyQualifiedName": "System.Management.Automation.SwitchParameter, System.Management.Automation, Version=7.0.6.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35"
+            "AssemblyQualifiedName": "System.Management.Automation.SwitchParameter, System.Management.Automation, Version=7.2.10.500, Culture=neutral, PublicKeyToken=31bf3856ad364e35"
           },
           "ValidateNotNullOrEmpty": false
         },
@@ -1598,6 +1616,36 @@
             },
             {
               "ParameterMetadata": {
+                "Name": "ApplyUpdateName",
+                "Type": {
+                  "Namespace": "System",
+                  "Name": "System.String",
+                  "AssemblyQualifiedName": "System.String, System.Private.CoreLib, Version=6.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e"
+                },
+                "ValidateNotNullOrEmpty": false
+              },
+              "Mandatory": false,
+              "Position": -2147483648,
+              "ValueFromPipeline": false,
+              "ValueFromPipelineByPropertyName": true
+            },
+            {
+              "ParameterMetadata": {
+                "Name": "Status",
+                "Type": {
+                  "Namespace": "System",
+                  "Name": "System.String",
+                  "AssemblyQualifiedName": "System.String, System.Private.CoreLib, Version=6.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e"
+                },
+                "ValidateNotNullOrEmpty": false
+              },
+              "Mandatory": false,
+              "Position": -2147483648,
+              "ValueFromPipeline": false,
+              "ValueFromPipelineByPropertyName": true
+            },
+            {
+              "ParameterMetadata": {
                 "Name": "ResourceName",
                 "Type": {
                   "Namespace": "System",
@@ -1617,7 +1665,7 @@
                 "Type": {
                   "Namespace": "System.Management.Automation",
                   "Name": "System.Management.Automation.SwitchParameter",
-                  "AssemblyQualifiedName": "System.Management.Automation.SwitchParameter, System.Management.Automation, Version=7.0.6.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35"
+                  "AssemblyQualifiedName": "System.Management.Automation.SwitchParameter, System.Management.Automation, Version=7.2.10.500, Culture=neutral, PublicKeyToken=31bf3856ad364e35"
                 },
                 "ValidateNotNullOrEmpty": false
               },
@@ -1663,7 +1711,7 @@
                 "Type": {
                   "Namespace": "System.Management.Automation",
                   "Name": "System.Management.Automation.SwitchParameter",
-                  "AssemblyQualifiedName": "System.Management.Automation.SwitchParameter, System.Management.Automation, Version=7.0.6.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35"
+                  "AssemblyQualifiedName": "System.Management.Automation.SwitchParameter, System.Management.Automation, Version=7.2.10.500, Culture=neutral, PublicKeyToken=31bf3856ad364e35"
                 },
                 "ValidateNotNullOrEmpty": false
               },
@@ -1716,7 +1764,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.Maintenance.Models",
             "Name": "Microsoft.Azure.Commands.Maintenance.Models.PSConfigurationAssignment",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Maintenance.Models.PSConfigurationAssignment, Microsoft.Azure.PowerShell.Cmdlets.Maintenance, Version=1.3.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Maintenance.Models.PSConfigurationAssignment, Microsoft.Azure.PowerShell.Cmdlets.Maintenance, Version=1.3.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "Properties": {
               "Location": "System.String",
               "MaintenanceConfigurationId": "System.String",
@@ -1920,7 +1968,7 @@
           "Type": {
             "Namespace": "System.Management.Automation",
             "Name": "System.Management.Automation.SwitchParameter",
-            "AssemblyQualifiedName": "System.Management.Automation.SwitchParameter, System.Management.Automation, Version=7.0.6.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35"
+            "AssemblyQualifiedName": "System.Management.Automation.SwitchParameter, System.Management.Automation, Version=7.2.10.500, Culture=neutral, PublicKeyToken=31bf3856ad364e35"
           },
           "ValidateNotNullOrEmpty": false
         },
@@ -2199,7 +2247,7 @@
                 "Type": {
                   "Namespace": "System.Management.Automation",
                   "Name": "System.Management.Automation.SwitchParameter",
-                  "AssemblyQualifiedName": "System.Management.Automation.SwitchParameter, System.Management.Automation, Version=7.0.6.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35"
+                  "AssemblyQualifiedName": "System.Management.Automation.SwitchParameter, System.Management.Automation, Version=7.2.10.500, Culture=neutral, PublicKeyToken=31bf3856ad364e35"
                 },
                 "ValidateNotNullOrEmpty": false
               },
@@ -2245,7 +2293,7 @@
                 "Type": {
                   "Namespace": "System.Management.Automation",
                   "Name": "System.Management.Automation.SwitchParameter",
-                  "AssemblyQualifiedName": "System.Management.Automation.SwitchParameter, System.Management.Automation, Version=7.0.6.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35"
+                  "AssemblyQualifiedName": "System.Management.Automation.SwitchParameter, System.Management.Automation, Version=7.2.10.500, Culture=neutral, PublicKeyToken=31bf3856ad364e35"
                 },
                 "ValidateNotNullOrEmpty": false
               },
@@ -2298,7 +2346,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.Maintenance.Models",
             "Name": "Microsoft.Azure.Commands.Maintenance.Models.PSMaintenanceConfiguration",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Maintenance.Models.PSMaintenanceConfiguration, Microsoft.Azure.PowerShell.Cmdlets.Maintenance, Version=1.3.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Maintenance.Models.PSMaintenanceConfiguration, Microsoft.Azure.PowerShell.Cmdlets.Maintenance, Version=1.3.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "Properties": {
               "WindowParameterClassificationToInclude": "System.Collections.Generic.HashSet`1[System.String]",
               "WindowParameterKbNumberToExclude": "System.Collections.Generic.HashSet`1[System.String]",
@@ -2585,7 +2633,7 @@
           "Type": {
             "Namespace": "System.Management.Automation",
             "Name": "System.Management.Automation.SwitchParameter",
-            "AssemblyQualifiedName": "System.Management.Automation.SwitchParameter, System.Management.Automation, Version=7.0.6.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35"
+            "AssemblyQualifiedName": "System.Management.Automation.SwitchParameter, System.Management.Automation, Version=7.2.10.500, Culture=neutral, PublicKeyToken=31bf3856ad364e35"
           },
           "ValidateNotNullOrEmpty": false
         },
@@ -2971,7 +3019,7 @@
                 "Type": {
                   "Namespace": "System.Management.Automation",
                   "Name": "System.Management.Automation.SwitchParameter",
-                  "AssemblyQualifiedName": "System.Management.Automation.SwitchParameter, System.Management.Automation, Version=7.0.6.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35"
+                  "AssemblyQualifiedName": "System.Management.Automation.SwitchParameter, System.Management.Automation, Version=7.2.10.500, Culture=neutral, PublicKeyToken=31bf3856ad364e35"
                 },
                 "ValidateNotNullOrEmpty": false
               },
@@ -3323,7 +3371,7 @@
                 "Type": {
                   "Namespace": "System.Management.Automation",
                   "Name": "System.Management.Automation.SwitchParameter",
-                  "AssemblyQualifiedName": "System.Management.Automation.SwitchParameter, System.Management.Automation, Version=7.0.6.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35"
+                  "AssemblyQualifiedName": "System.Management.Automation.SwitchParameter, System.Management.Automation, Version=7.2.10.500, Culture=neutral, PublicKeyToken=31bf3856ad364e35"
                 },
                 "ValidateNotNullOrEmpty": false
               },
@@ -3452,7 +3500,7 @@
           "Type": {
             "Namespace": "System.Management.Automation",
             "Name": "System.Management.Automation.SwitchParameter",
-            "AssemblyQualifiedName": "System.Management.Automation.SwitchParameter, System.Management.Automation, Version=7.0.6.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35"
+            "AssemblyQualifiedName": "System.Management.Automation.SwitchParameter, System.Management.Automation, Version=7.2.10.500, Culture=neutral, PublicKeyToken=31bf3856ad364e35"
           },
           "ValidateNotNullOrEmpty": false
         },
@@ -3461,7 +3509,7 @@
           "Type": {
             "Namespace": "System.Management.Automation",
             "Name": "System.Management.Automation.SwitchParameter",
-            "AssemblyQualifiedName": "System.Management.Automation.SwitchParameter, System.Management.Automation, Version=7.0.6.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35"
+            "AssemblyQualifiedName": "System.Management.Automation.SwitchParameter, System.Management.Automation, Version=7.2.10.500, Culture=neutral, PublicKeyToken=31bf3856ad364e35"
           },
           "ValidateNotNullOrEmpty": false
         },
@@ -3470,7 +3518,7 @@
           "Type": {
             "Namespace": "System.Management.Automation",
             "Name": "System.Management.Automation.SwitchParameter",
-            "AssemblyQualifiedName": "System.Management.Automation.SwitchParameter, System.Management.Automation, Version=7.0.6.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35"
+            "AssemblyQualifiedName": "System.Management.Automation.SwitchParameter, System.Management.Automation, Version=7.2.10.500, Culture=neutral, PublicKeyToken=31bf3856ad364e35"
           },
           "ValidateNotNullOrEmpty": false
         },
@@ -3610,7 +3658,7 @@
                 "Type": {
                   "Namespace": "System.Management.Automation",
                   "Name": "System.Management.Automation.SwitchParameter",
-                  "AssemblyQualifiedName": "System.Management.Automation.SwitchParameter, System.Management.Automation, Version=7.0.6.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35"
+                  "AssemblyQualifiedName": "System.Management.Automation.SwitchParameter, System.Management.Automation, Version=7.2.10.500, Culture=neutral, PublicKeyToken=31bf3856ad364e35"
                 },
                 "ValidateNotNullOrEmpty": false
               },
@@ -3625,7 +3673,7 @@
                 "Type": {
                   "Namespace": "System.Management.Automation",
                   "Name": "System.Management.Automation.SwitchParameter",
-                  "AssemblyQualifiedName": "System.Management.Automation.SwitchParameter, System.Management.Automation, Version=7.0.6.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35"
+                  "AssemblyQualifiedName": "System.Management.Automation.SwitchParameter, System.Management.Automation, Version=7.2.10.500, Culture=neutral, PublicKeyToken=31bf3856ad364e35"
                 },
                 "ValidateNotNullOrEmpty": false
               },
@@ -3640,7 +3688,7 @@
                 "Type": {
                   "Namespace": "System.Management.Automation",
                   "Name": "System.Management.Automation.SwitchParameter",
-                  "AssemblyQualifiedName": "System.Management.Automation.SwitchParameter, System.Management.Automation, Version=7.0.6.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35"
+                  "AssemblyQualifiedName": "System.Management.Automation.SwitchParameter, System.Management.Automation, Version=7.2.10.500, Culture=neutral, PublicKeyToken=31bf3856ad364e35"
                 },
                 "ValidateNotNullOrEmpty": false
               },
@@ -3686,7 +3734,7 @@
                 "Type": {
                   "Namespace": "System.Management.Automation",
                   "Name": "System.Management.Automation.SwitchParameter",
-                  "AssemblyQualifiedName": "System.Management.Automation.SwitchParameter, System.Management.Automation, Version=7.0.6.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35"
+                  "AssemblyQualifiedName": "System.Management.Automation.SwitchParameter, System.Management.Automation, Version=7.2.10.500, Culture=neutral, PublicKeyToken=31bf3856ad364e35"
                 },
                 "ValidateNotNullOrEmpty": false
               },
@@ -3701,7 +3749,7 @@
                 "Type": {
                   "Namespace": "System.Management.Automation",
                   "Name": "System.Management.Automation.SwitchParameter",
-                  "AssemblyQualifiedName": "System.Management.Automation.SwitchParameter, System.Management.Automation, Version=7.0.6.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35"
+                  "AssemblyQualifiedName": "System.Management.Automation.SwitchParameter, System.Management.Automation, Version=7.2.10.500, Culture=neutral, PublicKeyToken=31bf3856ad364e35"
                 },
                 "ValidateNotNullOrEmpty": false
               },
@@ -3785,7 +3833,7 @@
           "Type": {
             "Namespace": "System.Management.Automation",
             "Name": "System.Management.Automation.SwitchParameter",
-            "AssemblyQualifiedName": "System.Management.Automation.SwitchParameter, System.Management.Automation, Version=7.0.6.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35"
+            "AssemblyQualifiedName": "System.Management.Automation.SwitchParameter, System.Management.Automation, Version=7.2.10.500, Culture=neutral, PublicKeyToken=31bf3856ad364e35"
           },
           "ValidateNotNullOrEmpty": false
         },
@@ -3794,7 +3842,7 @@
           "Type": {
             "Namespace": "System.Management.Automation",
             "Name": "System.Management.Automation.SwitchParameter",
-            "AssemblyQualifiedName": "System.Management.Automation.SwitchParameter, System.Management.Automation, Version=7.0.6.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35"
+            "AssemblyQualifiedName": "System.Management.Automation.SwitchParameter, System.Management.Automation, Version=7.2.10.500, Culture=neutral, PublicKeyToken=31bf3856ad364e35"
           },
           "ValidateNotNullOrEmpty": false
         },
@@ -3803,7 +3851,7 @@
           "Type": {
             "Namespace": "System.Management.Automation",
             "Name": "System.Management.Automation.SwitchParameter",
-            "AssemblyQualifiedName": "System.Management.Automation.SwitchParameter, System.Management.Automation, Version=7.0.6.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35"
+            "AssemblyQualifiedName": "System.Management.Automation.SwitchParameter, System.Management.Automation, Version=7.2.10.500, Culture=neutral, PublicKeyToken=31bf3856ad364e35"
           },
           "ValidateNotNullOrEmpty": false
         },
@@ -3868,7 +3916,7 @@
                 "Type": {
                   "Namespace": "System.Management.Automation",
                   "Name": "System.Management.Automation.SwitchParameter",
-                  "AssemblyQualifiedName": "System.Management.Automation.SwitchParameter, System.Management.Automation, Version=7.0.6.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35"
+                  "AssemblyQualifiedName": "System.Management.Automation.SwitchParameter, System.Management.Automation, Version=7.2.10.500, Culture=neutral, PublicKeyToken=31bf3856ad364e35"
                 },
                 "ValidateNotNullOrEmpty": false
               },
@@ -3883,7 +3931,7 @@
                 "Type": {
                   "Namespace": "System.Management.Automation",
                   "Name": "System.Management.Automation.SwitchParameter",
-                  "AssemblyQualifiedName": "System.Management.Automation.SwitchParameter, System.Management.Automation, Version=7.0.6.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35"
+                  "AssemblyQualifiedName": "System.Management.Automation.SwitchParameter, System.Management.Automation, Version=7.2.10.500, Culture=neutral, PublicKeyToken=31bf3856ad364e35"
                 },
                 "ValidateNotNullOrEmpty": false
               },
@@ -3898,7 +3946,7 @@
                 "Type": {
                   "Namespace": "System.Management.Automation",
                   "Name": "System.Management.Automation.SwitchParameter",
-                  "AssemblyQualifiedName": "System.Management.Automation.SwitchParameter, System.Management.Automation, Version=7.0.6.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35"
+                  "AssemblyQualifiedName": "System.Management.Automation.SwitchParameter, System.Management.Automation, Version=7.2.10.500, Culture=neutral, PublicKeyToken=31bf3856ad364e35"
                 },
                 "ValidateNotNullOrEmpty": false
               },
@@ -3944,7 +3992,7 @@
                 "Type": {
                   "Namespace": "System.Management.Automation",
                   "Name": "System.Management.Automation.SwitchParameter",
-                  "AssemblyQualifiedName": "System.Management.Automation.SwitchParameter, System.Management.Automation, Version=7.0.6.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35"
+                  "AssemblyQualifiedName": "System.Management.Automation.SwitchParameter, System.Management.Automation, Version=7.2.10.500, Culture=neutral, PublicKeyToken=31bf3856ad364e35"
                 },
                 "ValidateNotNullOrEmpty": false
               },
@@ -3959,7 +4007,7 @@
                 "Type": {
                   "Namespace": "System.Management.Automation",
                   "Name": "System.Management.Automation.SwitchParameter",
-                  "AssemblyQualifiedName": "System.Management.Automation.SwitchParameter, System.Management.Automation, Version=7.0.6.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35"
+                  "AssemblyQualifiedName": "System.Management.Automation.SwitchParameter, System.Management.Automation, Version=7.2.10.500, Culture=neutral, PublicKeyToken=31bf3856ad364e35"
                 },
                 "ValidateNotNullOrEmpty": false
               },
@@ -4012,7 +4060,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.Maintenance.Models",
             "Name": "Microsoft.Azure.Commands.Maintenance.Models.PSMaintenanceConfiguration",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Maintenance.Models.PSMaintenanceConfiguration, Microsoft.Azure.PowerShell.Cmdlets.Maintenance, Version=1.3.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Maintenance.Models.PSMaintenanceConfiguration, Microsoft.Azure.PowerShell.Cmdlets.Maintenance, Version=1.3.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "Properties": {
               "WindowParameterClassificationToInclude": "System.Collections.Generic.HashSet`1[System.String]",
               "WindowParameterKbNumberToExclude": "System.Collections.Generic.HashSet`1[System.String]",
@@ -4098,7 +4146,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.Maintenance.Models",
             "Name": "Microsoft.Azure.Commands.Maintenance.Models.PSMaintenanceConfiguration",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Maintenance.Models.PSMaintenanceConfiguration, Microsoft.Azure.PowerShell.Cmdlets.Maintenance, Version=1.3.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Maintenance.Models.PSMaintenanceConfiguration, Microsoft.Azure.PowerShell.Cmdlets.Maintenance, Version=1.3.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "Properties": {
               "WindowParameterClassificationToInclude": "System.Collections.Generic.HashSet`1[System.String]",
               "WindowParameterKbNumberToExclude": "System.Collections.Generic.HashSet`1[System.String]",
@@ -4133,7 +4181,7 @@
           "Type": {
             "Namespace": "System.Management.Automation",
             "Name": "System.Management.Automation.SwitchParameter",
-            "AssemblyQualifiedName": "System.Management.Automation.SwitchParameter, System.Management.Automation, Version=7.0.6.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35"
+            "AssemblyQualifiedName": "System.Management.Automation.SwitchParameter, System.Management.Automation, Version=7.2.10.500, Culture=neutral, PublicKeyToken=31bf3856ad364e35"
           },
           "ValidateNotNullOrEmpty": false
         },
@@ -4198,7 +4246,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.Commands.Maintenance.Models",
                   "Name": "Microsoft.Azure.Commands.Maintenance.Models.PSMaintenanceConfiguration",
-                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.Maintenance.Models.PSMaintenanceConfiguration, Microsoft.Azure.PowerShell.Cmdlets.Maintenance, Version=1.3.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.Maintenance.Models.PSMaintenanceConfiguration, Microsoft.Azure.PowerShell.Cmdlets.Maintenance, Version=1.3.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "Properties": {
                     "WindowParameterClassificationToInclude": "System.Collections.Generic.HashSet`1[System.String]",
                     "WindowParameterKbNumberToExclude": "System.Collections.Generic.HashSet`1[System.String]",
@@ -4239,7 +4287,7 @@
                 "Type": {
                   "Namespace": "System.Management.Automation",
                   "Name": "System.Management.Automation.SwitchParameter",
-                  "AssemblyQualifiedName": "System.Management.Automation.SwitchParameter, System.Management.Automation, Version=7.0.6.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35"
+                  "AssemblyQualifiedName": "System.Management.Automation.SwitchParameter, System.Management.Automation, Version=7.2.10.500, Culture=neutral, PublicKeyToken=31bf3856ad364e35"
                 },
                 "ValidateNotNullOrEmpty": false
               },
@@ -4285,7 +4333,7 @@
                 "Type": {
                   "Namespace": "System.Management.Automation",
                   "Name": "System.Management.Automation.SwitchParameter",
-                  "AssemblyQualifiedName": "System.Management.Automation.SwitchParameter, System.Management.Automation, Version=7.0.6.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35"
+                  "AssemblyQualifiedName": "System.Management.Automation.SwitchParameter, System.Management.Automation, Version=7.2.10.500, Culture=neutral, PublicKeyToken=31bf3856ad364e35"
                 },
                 "ValidateNotNullOrEmpty": false
               },
