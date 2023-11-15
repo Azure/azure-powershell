@@ -49,7 +49,7 @@ In this directory, run AutoRest:
 ``` yaml
 require:
 # readme.azure.noprofile.md is the common configuration file
-  - $(this-folder)/../readme.azure.noprofile.md
+  - $(this-folder)/../../readme.azure.noprofile.md
 input-file:
   - $(repo)/specification/providerhub/resource-manager/Microsoft.ProviderHub/stable/2020-11-20/providerhub.json
 

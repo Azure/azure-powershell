@@ -49,7 +49,7 @@ In this directory, run AutoRest:
 > Metadata
 ``` yaml
 require:
-  - $(this-folder)/../readme.azure.noprofile.md
+  - $(this-folder)/../../readme.azure.noprofile.md
 title: ResourceMover
 service-name: ResourceMover
 prefix: Az
