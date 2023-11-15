@@ -142,8 +142,8 @@ directive:
 # HELPERS
 # ManagedIdentity and KeyVault is required when creating provider instance
 require:
-  - $(this-folder)/../helpers/ManagedIdentity/readme.noprofile.md
-  - $(this-folder)/../helpers/KeyVault/readme.noprofile.md
+  - $(this-folder)/../../helpers/ManagedIdentity/readme.noprofile.md
+  - $(this-folder)/../../helpers/KeyVault/readme.noprofile.md
 
 directive:
   #  remove unneeded cmdlets
