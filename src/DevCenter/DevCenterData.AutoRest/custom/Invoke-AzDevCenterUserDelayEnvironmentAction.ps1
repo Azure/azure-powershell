@@ -49,7 +49,7 @@ INPUTOBJECT <IDevCenterdataIdentity>: Identity Parameter
   [TaskName <String>]: A customization task name.
   [UserId <String>]: The AAD object id of the user. If value is 'me', the identity is taken from the authentication context.
 .Link
-https://learn.microsoft.com/powershell/module/az.devcenterdata/invoke-azdevcenteruserdelayenvironmentaction
+https://learn.microsoft.com/powershell/module/az.devcenter/invoke-azdevcenteruserdelayenvironmentaction
 #>
 function Invoke-AzDevCenterUserDelayEnvironmentAction {
     [OutputType([Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Models.Api20231001Preview.IEnvironmentAction])]
