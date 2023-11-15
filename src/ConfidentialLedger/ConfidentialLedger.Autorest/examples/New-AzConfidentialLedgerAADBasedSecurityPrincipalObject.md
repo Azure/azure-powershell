@@ -1,6 +1,6 @@
 ### Example 1: Object creation
 ```powershell
-PS C:\> New-AzConfidentialLedgerAadBasedSecurityPrincipalObject `
+PS C:\> New-AzConfidentialLedgerAADBasedSecurityPrincipalObject `
   -LedgerRoleName "Administrator" `
   -PrincipalId "34621747-6fc8-4771-a2eb-72f31c461f2e" `
   -TenantId "bce123b9-2b7b-4975-8360-5ca0b9b1cd08"

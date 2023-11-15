@@ -54,8 +54,7 @@ DotNetFrameworkVersion = '4.7.2'
 RequiredModules = @(@{ModuleName = 'Az.Accounts'; ModuleVersion = '2.9.1'; })
 
 # Assemblies that must be loaded prior to importing this module
-RequiredAssemblies = 
-               'ConfidentialLedger.Autorest/bin/Az.ConfidentialLedger.private.dll'
+RequiredAssemblies = 'ConfidentialLedger.Autorest/bin/Az.ConfidentialLedger.private.dll'
 
 # Script files (.ps1) that are run in the caller's environment prior to importing this module.
 # ScriptsToProcess = @()
@@ -70,11 +69,11 @@ FormatsToProcess = 'ConfidentialLedger.Autorest/Az.ConfidentialLedger.format.ps1
 NestedModules = @('ConfidentialLedger.Autorest/Az.ConfidentialLedger.psm1')
 
 # Functions to export from this module, for best performance, do not use wildcards and do not delete the entry, use an empty array if there are no functions to export.
-FunctionsToExport = 'Get-AzConfidentialLedger', 'New-AzConfidentialLedger', 
-               'New-AzConfidentialLedgerAADBasedSecurityPrincipalObject', 
-               'New-AzConfidentialLedgerCertBasedSecurityPrincipalObject', 
-               'Remove-AzConfidentialLedger', 
-               'Test-AzConfidentialLedgerNameAvailability', 
+FunctionsToExport = 'Get-AzConfidentialLedger', 'New-AzConfidentialLedger',
+               'New-AzConfidentialLedgerAADBasedSecurityPrincipalObject',
+               'New-AzConfidentialLedgerCertBasedSecurityPrincipalObject',
+               'Remove-AzConfidentialLedger',
+               'Test-AzConfidentialLedgerNameAvailability',
                'Update-AzConfidentialLedger'
 
 # Cmdlets to export from this module, for best performance, do not use wildcards and do not delete the entry, use an empty array if there are no cmdlets to export.
