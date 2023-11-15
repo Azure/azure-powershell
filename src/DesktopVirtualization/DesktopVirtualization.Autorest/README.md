@@ -49,7 +49,7 @@ In this directory, run AutoRest:
 ``` yaml
 commit: 50175f111e9c899249e79eb082a75fb8a7aba0e2
 require:
-  - $(this-folder)/../readme.azure.noprofile.md
+  - $(this-folder)/../../readme.azure.noprofile.md
 sanitize-names: true
 subject-prefix: 'Wvd'
 input-file:
