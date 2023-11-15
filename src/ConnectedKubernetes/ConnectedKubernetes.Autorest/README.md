@@ -1,10 +1,10 @@
 <!-- region Generated -->
-# Az.DesktopVirtualization
-This directory contains the PowerShell module for the DesktopVirtualization service.
+# Az.ConnectedKubernetes
+This directory contains the PowerShell module for the ConnectedKubernetes service.
 
 ---
 ## Status
-[![Az.DesktopVirtualization](https://img.shields.io/powershellgallery/v/Az.DesktopVirtualization.svg?style=flat-square&label=Az.DesktopVirtualization "Az.DesktopVirtualization")](https://www.powershellgallery.com/packages/Az.DesktopVirtualization/)
+[![Az.ConnectedKubernetes](https://img.shields.io/powershellgallery/v/Az.ConnectedKubernetes.svg?style=flat-square&label=Az.ConnectedKubernetes "Az.ConnectedKubernetes")](https://www.powershellgallery.com/packages/Az.ConnectedKubernetes/)
 
 ## Info
 - Modifiable: yes
@@ -23,7 +23,7 @@ This module was primarily generated via [AutoRest](https://github.com/Azure/auto
 AutoRest does not generate authentication code for the module. Authentication is handled via Az.Accounts by altering the HTTP payload before it is sent.
 
 ## Development
-For information on how to develop for `Az.DesktopVirtualization`, see [how-to.md](how-to.md).
+For information on how to develop for `Az.ConnectedKubernetes`, see [how-to.md](how-to.md).
 <!-- endregion -->
 
 ---
@@ -47,60 +47,46 @@ In this directory, run AutoRest:
 > see https://aka.ms/autorest
 
 ``` yaml
-commit: 50175f111e9c899249e79eb082a75fb8a7aba0e2
+commit: ac6324d13863e8157f4b392ef0ceef1e86eea935
 require:
-  - $(this-folder)/../readme.azure.noprofile.md
-sanitize-names: true
-subject-prefix: 'Wvd'
+  - $(this-folder)/../../readme.azure.noprofile.md
 input-file:
-- $(repo)/specification/desktopvirtualization/resource-manager/Microsoft.DesktopVirtualization/preview/2023-10-04-preview/desktopvirtualization.json
+  - $(repo)/specification/hybridkubernetes/resource-manager/Microsoft.Kubernetes/preview/2022-10-01-preview/connectedClusters.json
 
-module-version: 2.1.0
-title: DesktopVirtualizationClient
+title: ConnectedKubernetes
+module-version: 0.1.0
+subject-prefix: $(service-name)
+
+identity-correction-for-post: true
+resourcegroup-append: true
+nested-object-to-string: true
+
 # For new modules, please avoid setting 3.x using the use-extension method and instead, use 4.x as the default option
 use-extension:
   "@autorest/powershell": "3.x"
 
 directive:
   - where:
-      verb: New
-      subject: HostPool
-      parameter-name: RegistrationInfoRegistrationTokenOperation
+      subject: ^ConnectedCluster(.*)
     set:
-      parameter-name: RegistrationTokenOperation
+      subject: $1
   - where:
-      verb: New
-      subject: HostPool
-      parameter-name: RegistrationInfoExpirationTime
+      variant: ^Create$|^CreateViaIdentity$|^CreateViaIdentityExpanded$|^Update$|^UpdateViaIdentity$
+      subject-prefix: ConnectedKubernetes
+    remove: true
+  - where:
+      subject-prefix: ConnectedKubernetes
+      parameter-name: ClusterName
     set:
-      parameter-name: ExpirationTime
+      alias: Name
   - where:
-      parameter-name: SubscriptionId
-    set:
-      default:
-        script: '(Get-AzContext).Subscription.Id'
+      verb: Update
+      subject-prefix: ConnectedKubernetes
+      parameter-name: Property
+    hide: true
   - where:
-      variant: ^Create$|^CreateViaIdentity$|^CreateViaIdentityExpanded$|^Update$|^UpdateViaIdentity$|^Send$|^SendViaIdentity$
-    remove: true
-  - where:
-      verb: Set
-    remove: true
-  - where:
-      verb: Get
-      subject: Operation
-    remove: true
-  - where:
-      verb: Invoke
-      subject: LevelApplicationGroupAssignment
-    remove: true
-  - where:
-      verb: Get
-      subject: ActiveApplication
-    remove: true
-  - where:      
-      verb: Remove    
-      subject: UserSession
-      parameter-name: Force
-    set:
-      parameter-description: 'Specify to force userSession deletion.'
+      verb: New|Update|Remove
+      subject-prefix: ConnectedKubernetes
+    hide: true
+
 ```
