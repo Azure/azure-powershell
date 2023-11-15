@@ -127,7 +127,7 @@ directive:
           "default": {
             "description": "Error.",
             "schema": {
-              "$ref": "https://github.com/Azure/azure-rest-api-specs/blob/ec2cba2ff0953d431b88a9fd4922de76157119e0/specification/streamanalytics/resource-manager/Microsoft.StreamAnalytics/common/v1/definitions.json#/definitions/Error"
+              "$ref": "https://github.com/Azure/azure-rest-api-specs/blob/f7fd049bbc0089ad8faa7dc1c89610ca8ad78c83/specification/streamanalytics/resource-manager/Microsoft.StreamAnalytics/common/v1/definitions.json#/definitions/Error"
             }
           }
         }
