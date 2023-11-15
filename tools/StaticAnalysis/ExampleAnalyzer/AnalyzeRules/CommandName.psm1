@@ -48,6 +48,9 @@ function Measure-CommandName {
                     }
                     $ModuleCmdletExNum = $funcAst.name
 
+                    $x = gmo | ConvertTo-Json -Depth 3
+                    $guid = New-Guid
+                    Set-Content -Value $x -Path "$PSScriptRoot\..\..\..\..\artifacts\$guid.json"
                     if ($CommandAst.InvocationOperator -eq "Unknown") {
                         $CommandName = $CommandAst.CommandElements[0].Extent.Text
                         $GetCommand = Get-Command $CommandName -ErrorAction SilentlyContinue
