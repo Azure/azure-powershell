@@ -5,7 +5,11 @@
     File: CommandName.psm1
     Import-Module should be at the beginning of the rule to avoid thread conflict.
 #>
-Get-Item "$PSScriptRoot\..\..\..\..\artifacts\Debug\Az.*\Az.*.psd1" | Import-Module -Global
+$psd1s = Get-Item "$PSScriptRoot\..\..\..\..\artifacts\Debug\Az.*\Az.*.psd1"
+foreach ($psd1 in $psd1s)
+{
+    Import-Module -Golbal -Name $psd1.FullName -Force
+}
 
 . $PSScriptRoot\..\utils.ps1
 
@@ -48,7 +52,7 @@ function Measure-CommandName {
                     }
                     $ModuleCmdletExNum = $funcAst.name
 
-                    $x = gmo | ConvertTo-Json -Depth 3
+                    $x = gmo | ConvertTo-Json -Depth 1
                     $guid = New-Guid
                     Set-Content -Value $x -Path "$PSScriptRoot\..\..\..\..\artifacts\$guid.json"
                     if ($CommandAst.InvocationOperator -eq "Unknown") {
