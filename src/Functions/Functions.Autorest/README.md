@@ -550,8 +550,8 @@ directive:
 
 # Add Storage and AppInsights cmdlet subset
 require:
-  - $(this-folder)/../helpers/Storage/readme.noprofile.md
-  - $(this-folder)/../helpers/AppInsights/readme.noprofile.md
-  - $(this-folder)/../helpers/ManagedIdentity/readme.noprofile.md
+  - $(this-folder)/../../helpers/Storage/readme.noprofile.md
+  - $(this-folder)/../../helpers/AppInsights/readme.noprofile.md
+  - $(this-folder)/../../helpers/ManagedIdentity/readme.noprofile.md
   
 ```
