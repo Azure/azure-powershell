@@ -1,7 +1,7 @@
 ---
 external help file:
 Module Name: Az.DevCenterdata
-online version: https://learn.microsoft.com/powershell/module/az.devcenterdata/invoke-azdevcenteruserdelayenvironmentaction
+online version: https://learn.microsoft.com/powershell/module/az.devcenter/invoke-azdevcenteruserdelayenvironmentaction
 schema: 2.0.0
 ---
 
@@ -21,7 +21,7 @@ Invoke-AzDevCenterUserDelayEnvironmentAction -Endpoint <String> -ActionName <Str
 
 ### DelayByDevCenter
 ```
-Invoke-AzDevCenterUserDelayEnvironmentAction -DevCenter <String> -ActionName <String>
+Invoke-AzDevCenterUserDelayEnvironmentAction -DevCenterName <String> -ActionName <String>
  -EnvironmentName <String> -ProjectName <String> -DelayTime <TimeSpan> [-UserId <String>]
  [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
@@ -40,7 +40,7 @@ This command delays the action "schedule-default" for the environment "myEnviron
 
 ### Example 2: Delay an action on the environment by dev center
 ```powershell
-Invoke-AzDevCenterUserDelayEnvironmentAction -DevCenter Contoso -EnvironmentName myEnvironment -UserId "me" -ProjectName DevProject -ActionName "myEnvironment-Delete" -DelayTime "05:15"
+Invoke-AzDevCenterUserDelayEnvironmentAction -DevCenterName Contoso -EnvironmentName myEnvironment -UserId "me" -ProjectName DevProject -ActionName "myEnvironment-Delete" -DelayTime "05:15"
 ```
 
 This command delays the action "myEnvironment-Delete" for the environment "myEnvironment" for 5 hours and 15 minutes.
@@ -94,7 +94,7 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -DevCenter
+### -DevCenterName
 The DevCenter upon which to execute operations.
 
 ```yaml

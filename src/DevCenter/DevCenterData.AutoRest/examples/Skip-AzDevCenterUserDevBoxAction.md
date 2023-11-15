@@ -6,7 +6,7 @@ This command skips the action "schedule-default" for the dev box "myDevBox".
 
 ### Example 2: Skip an action on the dev box by dev center
 ```powershell
-Skip-AzDevCenterUserDevBoxAction -DevCenter Contoso -DevBoxName myDevBox -ProjectName DevProject -ActionName "schedule-default"
+Skip-AzDevCenterUserDevBoxAction -DevCenterName Contoso -DevBoxName myDevBox -ProjectName DevProject -ActionName "schedule-default"
 ```
 This command skips the action "schedule-default" for the dev box "myDevBox". 
 
@@ -20,6 +20,6 @@ This command skips the action "schedule-default" for the dev box "myDevBox".
 ### Example 4: Skip an action on the dev box by dev center and InputObject
 ```powershell
 $devBoxInput = @{"DevBoxName" = "myDevBox"; "UserId" = "me"; "ProjectName" = "DevProject"; "ActionName" = "schedule-default"}
-Skip-AzDevCenterUserDevBoxAction -DevCenter Contoso -InputObject $devBoxInput
+Skip-AzDevCenterUserDevBoxAction -DevCenterName Contoso -InputObject $devBoxInput
 ```
 This command skips the action "schedule-default" for the dev box "myDevBox". 

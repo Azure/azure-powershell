@@ -86,7 +86,7 @@ param(
     [Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Category('Uri')]
     [System.String]
     # The DevCenter upon which to execute operations.
-    ${DevCenter},
+    ${DevCenterName},
 
     [Parameter(ParameterSetName='PatchExpanded', Mandatory)]
     [Parameter(ParameterSetName = 'PatchExpandedByDevCenter', Mandatory)]
@@ -177,7 +177,7 @@ param(
 
 process {
     if (-not $PSBoundParameters.ContainsKey('Endpoint')) {
-      $Endpoint = GetEndpointFromResourceGraph -DevCenter $DevCenter -Project $ProjectName
+      $Endpoint = GetEndpointFromResourceGraph -DevCenterName $DevCenterName -Project $ProjectName
       $null = $PSBoundParameters.Add("Endpoint", $Endpoint)
       $null = $PSBoundParameters.Remove("DevCenter")
 

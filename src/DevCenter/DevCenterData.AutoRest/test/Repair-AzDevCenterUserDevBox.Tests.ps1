@@ -19,7 +19,7 @@ Describe 'Repair-AzDevCenterUserDevBox' {
         $repairOperation.Status | Should -Be "Succeeded"
 
         if ($Record -or $Live) {
-            $repairOperation = Repair-AzDevCenterUserDevBox -DevCenter "amlim-dc-euap" -Name "devbox3" -ProjectName "amlim-project"
+            $repairOperation = Repair-AzDevCenterUserDevBox -DevCenterName "amlim-dc-euap" -Name "devbox3" -ProjectName "amlim-project"
             $repairOperation.Status | Should -Be "Succeeded"
         } }
 
@@ -30,7 +30,7 @@ Describe 'Repair-AzDevCenterUserDevBox' {
         $repairOperation.Status | Should -Be "Succeeded"
 
         if ($Record -or $Live) {
-            $repairOperation = Repair-AzDevCenterUserDevBox -DevCenter "amlim-dc-euap" -InputObject $devBoxInput
+            $repairOperation = Repair-AzDevCenterUserDevBox -DevCenterName "amlim-dc-euap" -InputObject $devBoxInput
             $repairOperation.Status | Should -Be "Succeeded"
         }
     }

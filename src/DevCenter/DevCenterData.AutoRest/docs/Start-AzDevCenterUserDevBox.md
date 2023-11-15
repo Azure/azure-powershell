@@ -20,7 +20,7 @@ Start-AzDevCenterUserDevBox -Endpoint <String> -Name <String> -ProjectName <Stri
 
 ### StartByDevCenter
 ```
-Start-AzDevCenterUserDevBox -DevCenter <String> -Name <String> -ProjectName <String> [-UserId <String>]
+Start-AzDevCenterUserDevBox -DevCenterName <String> -Name <String> -ProjectName <String> [-UserId <String>]
  [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
@@ -32,7 +32,7 @@ Start-AzDevCenterUserDevBox -Endpoint <String> -InputObject <IDevCenterdataIdent
 
 ### StartViaIdentityByDevCenter
 ```
-Start-AzDevCenterUserDevBox -DevCenter <String> -InputObject <IDevCenterdataIdentity>
+Start-AzDevCenterUserDevBox -DevCenterName <String> -InputObject <IDevCenterdataIdentity>
  [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
@@ -50,7 +50,7 @@ This command starts the dev box "myDevBox" assigned to user "786a823c-8037-48ab-
 
 ### Example 2: Start a dev box by dev center
 ```powershell
-Start-AzDevCenterUserDevBox -DevCenter Contoso -ProjectName DevProject -UserId "me" -Name myDevBox
+Start-AzDevCenterUserDevBox -DevCenterName Contoso -ProjectName DevProject -UserId "me" -Name myDevBox
 ```
 
 This command starts the dev box "myDevBox" assigned to the currently signed-in user.
@@ -66,7 +66,7 @@ This command starts the dev box "myDevBox" assigned to the currently signed-in u
 ### Example 4: Start a dev box by dev center and InputObject
 ```powershell
 $devBoxInput = @{"DevBoxName" = "myDevBox"; "UserId" = "786a823c-8037-48ab-89b8-8599901e67d0"; "ProjectName" = "DevProject" }
-Start-AzDevCenterUserDevBox -DevCenter Contoso -InputObject $devBoxInput 
+Start-AzDevCenterUserDevBox -DevCenterName Contoso -InputObject $devBoxInput 
 ```
 
 This command starts the dev box "myDevBox" assigned to user "786a823c-8037-48ab-89b8-8599901e67d0".
@@ -104,7 +104,7 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -DevCenter
+### -DevCenterName
 The DevCenter upon which to execute operations.
 
 ```yaml

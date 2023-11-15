@@ -13,7 +13,7 @@ This command creates an environment named envtest" to the project "DevProject".
 $currentDate = Get-Date
 $dateIn8Months = $currentDate.AddMonths(8)
 
-New-AzDevCenterUserEnvironment -DevCenter Contoso -Name "envtest" -ProjectName DevProject -CatalogName CentralCatalog -EnvironmentDefinitionName Sandbox -EnvironmentType DevTest -ExpirationDate $dateIn8Months
+New-AzDevCenterUserEnvironment -DevCenterName Contoso -Name "envtest" -ProjectName DevProject -CatalogName CentralCatalog -EnvironmentDefinitionName Sandbox -EnvironmentType DevTest -ExpirationDate $dateIn8Months
 ```
 This command creates an environment named envtest" to the project "DevProject".
 
@@ -34,6 +34,6 @@ $envInput = @{"UserId" = "me"; "ProjectName" = "DevProject"; "EnvironmentName" =
 $currentDate = Get-Date
 $dateIn8Months = $currentDate.AddMonths(8)
 
-New-AzDevCenterUserEnvironment -DevCenter Contoso -InputObject $envInput -CatalogName CentralCatalog -EnvironmentDefinitionName FunctionApp -EnvironmentType DevTest -Parameter $functionAppParameters -ExpirationDate $dateIn8Months
+New-AzDevCenterUserEnvironment -DevCenterName Contoso -InputObject $envInput -CatalogName CentralCatalog -EnvironmentDefinitionName FunctionApp -EnvironmentType DevTest -Parameter $functionAppParameters -ExpirationDate $dateIn8Months
 ```
 This command creates an environment named envtest" to the project "DevProject".

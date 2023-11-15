@@ -20,8 +20,9 @@ Update-AzDevCenterUserEnvironment -Endpoint <String> -Name <String> -ProjectName
 
 ### PatchExpandedByDevCenter
 ```
-Update-AzDevCenterUserEnvironment -DevCenter <String> -Name <String> -ProjectName <String> [-UserId <String>]
- [-ExpirationDate <DateTime>] [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
+Update-AzDevCenterUserEnvironment -DevCenterName <String> -Name <String> -ProjectName <String>
+ [-UserId <String>] [-ExpirationDate <DateTime>] [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf]
+ [<CommonParameters>]
 ```
 
 ### PatchViaIdentityExpanded
@@ -32,7 +33,7 @@ Update-AzDevCenterUserEnvironment -Endpoint <String> -InputObject <IDevCenterdat
 
 ### PatchViaIdentityExpandedByDevCenter
 ```
-Update-AzDevCenterUserEnvironment -DevCenter <String> -InputObject <IDevCenterdataIdentity>
+Update-AzDevCenterUserEnvironment -DevCenterName <String> -InputObject <IDevCenterdataIdentity>
  [-ExpirationDate <DateTime>] [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
@@ -56,7 +57,7 @@ This command updates an environment named "envtest" to the project "DevProject".
 $currentDate = Get-Date
 $dateIn8Months = $currentDate.AddMonths(8)
 
-Update-AzDevCenterUserEnvironment -DevCenter Contoso -Name "envtest" -ProjectName DevProject -ExpirationDate $dateIn8Months
+Update-AzDevCenterUserEnvironment -DevCenterName Contoso -Name "envtest" -ProjectName DevProject -ExpirationDate $dateIn8Months
 ```
 
 This command updates an environment named "envtest" to the project "DevProject".
@@ -80,7 +81,7 @@ $dateIn8Months = $currentDate.AddMonths(8)
 
 $envInput = @{"UserId" = "me"; "ProjectName" = "DevProject"; "EnvironmentName" = "envtest" }
 
-Update-AzDevCenterUserEnvironment -DevCenter Contoso -InputObject $envInput -ExpirationDate $dateIn8Months
+Update-AzDevCenterUserEnvironment -DevCenterName Contoso -InputObject $envInput -ExpirationDate $dateIn8Months
 ```
 
 This command updates an environment named "envtest" to the project "DevProject".
@@ -103,7 +104,7 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -DevCenter
+### -DevCenterName
 The DevCenter upon which to execute operations.
 
 ```yaml

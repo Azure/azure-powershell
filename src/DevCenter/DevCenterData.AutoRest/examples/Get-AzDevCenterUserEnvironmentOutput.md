@@ -6,7 +6,7 @@ This command gets the outputs for the environment "myEnvironment".
 
 ### Example 2: Get the outputs on the environment by dev center
 ```powershell
-Get-AzDevCenterUserEnvironmentOutput -DevCenter Contoso -EnvironmentName myEnvironment -ProjectName DevProject
+Get-AzDevCenterUserEnvironmentOutput -DevCenterName Contoso -EnvironmentName myEnvironment -ProjectName DevProject
 ```
 This command gets the outputs for the environment "myEnvironment". 
 
@@ -20,6 +20,6 @@ This command gets the outputs for the environment "myEnvironment".
 ### Example 4: Get the outputs on the environment by dev center and InputObject
 ```powershell
 $environmentInput = @{"EnvironmentName" = "myEnvironment"; "UserId" = "me"; "ProjectName" = "DevProject";}
-Get-AzDevCenterUserEnvironmentOutput -DevCenter Contoso -InputObject $environmentInput
+Get-AzDevCenterUserEnvironmentOutput -DevCenterName Contoso -InputObject $environmentInput
 ```
 This command gets the outputs for the environment "myEnvironment". 

@@ -20,7 +20,7 @@ Restart-AzDevCenterUserDevBox -Endpoint <String> -Name <String> -ProjectName <St
 
 ### RestartByDevCenter
 ```
-Restart-AzDevCenterUserDevBox -DevCenter <String> -Name <String> -ProjectName <String> [-UserId <String>]
+Restart-AzDevCenterUserDevBox -DevCenterName <String> -Name <String> -ProjectName <String> [-UserId <String>]
  [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
@@ -32,7 +32,7 @@ Restart-AzDevCenterUserDevBox -Endpoint <String> -InputObject <IDevCenterdataIde
 
 ### RestartViaIdentityByDevCenter
 ```
-Restart-AzDevCenterUserDevBox -DevCenter <String> -InputObject <IDevCenterdataIdentity>
+Restart-AzDevCenterUserDevBox -DevCenterName <String> -InputObject <IDevCenterdataIdentity>
  [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
@@ -50,7 +50,7 @@ This command restarts the dev box "myDevBox" assigned to user "786a823c-8037-48a
 
 ### Example 2: Restart a dev box by dev center
 ```powershell
-Restart-AzDevCenterUserDevBox -DevCenter Contoso -ProjectName DevProject -UserId "me" -Name myDevBox
+Restart-AzDevCenterUserDevBox -DevCenterName Contoso -ProjectName DevProject -UserId "me" -Name myDevBox
 ```
 
 This command restarts the dev box "myDevBox" assigned to the currently signed-in user.
@@ -66,7 +66,7 @@ This command restarts the dev box "myDevBox" assigned to the currently signed-in
 ### Example 4: Restart a dev box by dev center and InputObject
 ```powershell
 $devBoxInput = @{"DevBoxName" = "myDevBox"; "UserId" = "786a823c-8037-48ab-89b8-8599901e67d0"; "ProjectName" = "DevProject" }
-Restart-AzDevCenterUserDevBox -DevCenter Contoso -InputObject $devBoxInput 
+Restart-AzDevCenterUserDevBox -DevCenterName Contoso -InputObject $devBoxInput 
 ```
 
 This command restarts the dev box "myDevBox" assigned to user "786a823c-8037-48ab-89b8-8599901e67d0".
@@ -104,7 +104,7 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -DevCenter
+### -DevCenterName
 The DevCenter upon which to execute operations.
 
 ```yaml

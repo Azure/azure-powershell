@@ -21,7 +21,7 @@ Skip-AzDevCenterUserEnvironmentAction -Endpoint <String> -ActionName <String> -E
 
 ### SkipByDevCenter
 ```
-Skip-AzDevCenterUserEnvironmentAction -DevCenter <String> -ActionName <String> -EnvironmentName <String>
+Skip-AzDevCenterUserEnvironmentAction -DevCenterName <String> -ActionName <String> -EnvironmentName <String>
  -ProjectName <String> [-UserId <String>] [-DefaultProfile <PSObject>] [-PassThru] [-Confirm] [-WhatIf]
  [<CommonParameters>]
 ```
@@ -34,7 +34,7 @@ Skip-AzDevCenterUserEnvironmentAction -Endpoint <String> -InputObject <IDevCente
 
 ### SkipViaIdentityByDevCenter
 ```
-Skip-AzDevCenterUserEnvironmentAction -DevCenter <String> -InputObject <IDevCenterdataIdentity>
+Skip-AzDevCenterUserEnvironmentAction -DevCenterName <String> -InputObject <IDevCenterdataIdentity>
  [-DefaultProfile <PSObject>] [-PassThru] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
@@ -52,7 +52,7 @@ This command skips the action "myEnvironment-Delete" for the environment "myEnvi
 
 ### Example 2: Skip an action on the environment by dev center
 ```powershell
-Skip-AzDevCenterUserEnvironmentAction -DevCenter Contoso -EnvironmentName myEnvironment -ProjectName DevProject -ActionName "myEnvironment-Delete"
+Skip-AzDevCenterUserEnvironmentAction -DevCenterName Contoso -EnvironmentName myEnvironment -ProjectName DevProject -ActionName "myEnvironment-Delete"
 ```
 
 This command skips the action "myEnvironment-Delete" for the environment "myEnvironment".
@@ -68,7 +68,7 @@ This command skips the action "myEnvironment-Delete" for the environment "myEnvi
 ### Example 4: Skip an action on the environment by dev center and InputObject
 ```powershell
 $environmentInput = @{"EnvironmentName" = "myEnvironment"; "UserId" = "me"; "ProjectName" = "DevProject"; "ActionName" = "myEnvironment-Delete"}
-Skip-AzDevCenterUserEnvironmentAction -DevCenter Contoso -InputObject $environmentInput
+Skip-AzDevCenterUserEnvironmentAction -DevCenterName Contoso -InputObject $environmentInput
 ```
 
 This command skips the action "myEnvironment-Delete" for the environment "myEnvironment".
@@ -106,7 +106,7 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -DevCenter
+### -DevCenterName
 The DevCenter upon which to execute operations.
 
 ```yaml

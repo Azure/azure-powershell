@@ -1,7 +1,7 @@
 ---
 external help file:
 Module Name: Az.DevCenterdata
-online version: https://learn.microsoft.com/powershell/module/az.devcenterdata/get-azdevcenteruserenvironmentoperation
+online version: https://learn.microsoft.com/powershell/module/az.devcenter/get-azdevcenteruserenvironmentoperation
 schema: 2.0.0
 ---
 
@@ -26,8 +26,9 @@ Get-AzDevCenterUserEnvironmentOperation -Endpoint <String> -EnvironmentName <Str
 
 ### GetByDevCenter
 ```
-Get-AzDevCenterUserEnvironmentOperation -DevCenter <String> -EnvironmentName <String> -OperationId <String>
- -ProjectName <String> [-UserId <String>] [-DefaultProfile <PSObject>] [<CommonParameters>]
+Get-AzDevCenterUserEnvironmentOperation -DevCenterName <String> -EnvironmentName <String>
+ -OperationId <String> -ProjectName <String> [-UserId <String>] [-DefaultProfile <PSObject>]
+ [<CommonParameters>]
 ```
 
 ### GetViaIdentity
@@ -38,14 +39,14 @@ Get-AzDevCenterUserEnvironmentOperation -Endpoint <String> -InputObject <IDevCen
 
 ### GetViaIdentityByDevCenter
 ```
-Get-AzDevCenterUserEnvironmentOperation -DevCenter <String> -InputObject <IDevCenterdataIdentity>
+Get-AzDevCenterUserEnvironmentOperation -DevCenterName <String> -InputObject <IDevCenterdataIdentity>
  [-DefaultProfile <PSObject>] [<CommonParameters>]
 ```
 
 ### ListByDevCenter
 ```
-Get-AzDevCenterUserEnvironmentOperation -DevCenter <String> -EnvironmentName <String> -ProjectName <String>
- [-UserId <String>] [-DefaultProfile <PSObject>] [<CommonParameters>]
+Get-AzDevCenterUserEnvironmentOperation -DevCenterName <String> -EnvironmentName <String>
+ -ProjectName <String> [-UserId <String>] [-DefaultProfile <PSObject>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -62,7 +63,7 @@ This command lists the operations on the environment "myEnvironment".
 
 ### Example 2: List operations on the environment by dev center
 ```powershell
-Get-AzDevCenterUserEnvironmentOperation -DevCenter Contoso -EnvironmentName myEnvironment -ProjectName DevProject
+Get-AzDevCenterUserEnvironmentOperation -DevCenterName Contoso -EnvironmentName myEnvironment -ProjectName DevProject
 ```
 
 This command lists the operations on the environment "myEnvironment".
@@ -76,7 +77,7 @@ This command gets the operation "d0954a94-3550-4919-bcbe-1c94ed79e0cd" for the e
 
 ### Example 4: Get an operation on the environment by dev center
 ```powershell
-Get-AzDevCenterUserEnvironmentOperation -DevCenter Contoso -EnvironmentName myEnvironment -ProjectName DevProject -OperationId "d0954a94-3550-4919-bcbe-1c94ed79e0cd"
+Get-AzDevCenterUserEnvironmentOperation -DevCenterName Contoso -EnvironmentName myEnvironment -ProjectName DevProject -OperationId "d0954a94-3550-4919-bcbe-1c94ed79e0cd"
 ```
 
 This command gets the operation "d0954a94-3550-4919-bcbe-1c94ed79e0cd" for the environment "myEnvironment".
@@ -92,7 +93,7 @@ This command gets the operation "d0954a94-3550-4919-bcbe-1c94ed79e0cd" for the e
 ### Example 6: Get an operation on the environment by dev center and InputObject
 ```powershell
 $environmentInput = @{"EnvironmentName" = "myEnvironment"; "UserId" = "me"; "ProjectName" = "DevProject"; "OperationId" = "d0954a94-3550-4919-bcbe-1c94ed79e0cd"}
-Get-AzDevCenterUserEnvironmentOperation -DevCenter Contoso -InputObject $environmentInput
+Get-AzDevCenterUserEnvironmentOperation -DevCenterName Contoso -InputObject $environmentInput
 ```
 
 This command gets the operation "d0954a94-3550-4919-bcbe-1c94ed79e0cd" for the environment "myEnvironment".
@@ -115,7 +116,7 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -DevCenter
+### -DevCenterName
 The DevCenter upon which to execute operations.
 
 ```yaml

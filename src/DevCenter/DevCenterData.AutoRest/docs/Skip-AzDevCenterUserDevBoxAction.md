@@ -21,7 +21,7 @@ Skip-AzDevCenterUserDevBoxAction -Endpoint <String> -ActionName <String> -DevBox
 
 ### SkipByDevCenter
 ```
-Skip-AzDevCenterUserDevBoxAction -DevCenter <String> -ActionName <String> -DevBoxName <String>
+Skip-AzDevCenterUserDevBoxAction -DevCenterName <String> -ActionName <String> -DevBoxName <String>
  -ProjectName <String> [-UserId <String>] [-DefaultProfile <PSObject>] [-PassThru] [-Confirm] [-WhatIf]
  [<CommonParameters>]
 ```
@@ -34,7 +34,7 @@ Skip-AzDevCenterUserDevBoxAction -Endpoint <String> -InputObject <IDevCenterdata
 
 ### SkipViaIdentityByDevCenter
 ```
-Skip-AzDevCenterUserDevBoxAction -DevCenter <String> -InputObject <IDevCenterdataIdentity>
+Skip-AzDevCenterUserDevBoxAction -DevCenterName <String> -InputObject <IDevCenterdataIdentity>
  [-DefaultProfile <PSObject>] [-PassThru] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
@@ -52,7 +52,7 @@ This command skips the action "schedule-default" for the dev box "myDevBox".
 
 ### Example 2: Skip an action on the dev box by dev center
 ```powershell
-Skip-AzDevCenterUserDevBoxAction -DevCenter Contoso -DevBoxName myDevBox -ProjectName DevProject -ActionName "schedule-default"
+Skip-AzDevCenterUserDevBoxAction -DevCenterName Contoso -DevBoxName myDevBox -ProjectName DevProject -ActionName "schedule-default"
 ```
 
 This command skips the action "schedule-default" for the dev box "myDevBox".
@@ -68,7 +68,7 @@ This command skips the action "schedule-default" for the dev box "myDevBox".
 ### Example 4: Skip an action on the dev box by dev center and InputObject
 ```powershell
 $devBoxInput = @{"DevBoxName" = "myDevBox"; "UserId" = "me"; "ProjectName" = "DevProject"; "ActionName" = "schedule-default"}
-Skip-AzDevCenterUserDevBoxAction -DevCenter Contoso -InputObject $devBoxInput
+Skip-AzDevCenterUserDevBoxAction -DevCenterName Contoso -InputObject $devBoxInput
 ```
 
 This command skips the action "schedule-default" for the dev box "myDevBox".
@@ -121,7 +121,7 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -DevCenter
+### -DevCenterName
 The DevCenter upon which to execute operations.
 
 ```yaml

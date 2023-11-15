@@ -28,7 +28,7 @@ Describe 'Skip-AzDevCenterUserDevBoxAction' {
             $skipTimeSpan = New-TimeSpan -Days 1
             $newScheduledTime = $action.NextScheduledTime + $skipTimeSpan
 
-            Skip-AzDevCenterUserDevBoxAction -DevCenter $env.devCenterName -DevBoxName $env.skipDevBox4 -ProjectName $env.projectName -ActionName "schedule-default"
+            Skip-AzDevCenterUserDevBoxAction -DevCenterName $env.devCenterName -DevBoxName $env.skipDevBox4 -ProjectName $env.projectName -ActionName "schedule-default"
             $action = Get-AzDevCenterUserDevBoxAction -Endpoint $env.endpoint -DevBoxName $env.skipDevBox4 -ProjectName $env.projectName -ActionName "schedule-default"
             $action.NextScheduledTime | Should -Be $newScheduledTime
         }
@@ -50,7 +50,7 @@ Describe 'Skip-AzDevCenterUserDevBoxAction' {
             $action = Get-AzDevCenterUserDevBoxAction -Endpoint $env.endpoint -DevBoxName $env.skipDevBox3 -ProjectName $env.projectName -ActionName "schedule-default"
             $skipTimeSpan = New-TimeSpan -Days 1
             $newScheduledTime = $action.NextScheduledTime + $skipTimeSpan
-            Skip-AzDevCenterUserDevBoxAction -DevCenter $env.devCenterName  -InputObject $actionInput2
+            Skip-AzDevCenterUserDevBoxAction -DevCenterName $env.devCenterName  -InputObject $actionInput2
             $action = Get-AzDevCenterUserDevBoxAction -Endpoint $env.endpoint -DevBoxName $env.skipDevBox3 -ProjectName $env.projectName -ActionName "schedule-default"
             $action.NextScheduledTime | Should -Be $newScheduledTime
         }

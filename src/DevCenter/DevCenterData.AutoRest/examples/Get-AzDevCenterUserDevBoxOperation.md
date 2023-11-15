@@ -6,7 +6,7 @@ This command lists the operations on the dev box "myDevBox".
 
 ### Example 2: List operations on the dev box by dev center
 ```powershell
-Get-AzDevCenterUserDevBoxOperation -DevCenter Contoso -DevBoxName myDevBox -ProjectName DevProject
+Get-AzDevCenterUserDevBoxOperation -DevCenterName Contoso -DevBoxName myDevBox -ProjectName DevProject
 ```
 This command lists the operations on the dev box "myDevBox".
 
@@ -18,7 +18,7 @@ This command gets the operation "d0954a94-3550-4919-bcbe-1c94ed79e0cd" for the d
 
 ### Example 4: Get an operation on the dev box by dev center
 ```powershell
-Get-AzDevCenterUserDevBoxOperation -DevCenter Contoso -DevBoxName myDevBox -ProjectName DevProject -OperationId "d0954a94-3550-4919-bcbe-1c94ed79e0cd"
+Get-AzDevCenterUserDevBoxOperation -DevCenterName Contoso -DevBoxName myDevBox -ProjectName DevProject -OperationId "d0954a94-3550-4919-bcbe-1c94ed79e0cd"
 ```
 This command gets the operation "d0954a94-3550-4919-bcbe-1c94ed79e0cd" for the dev box "myDevBox". 
 
@@ -32,6 +32,6 @@ This command gets the operation "d0954a94-3550-4919-bcbe-1c94ed79e0cd" for the d
 ### Example 6: Get an operation on the dev box by dev center and InputObject
 ```powershell
 $devBoxInput = @{"DevBoxName" = "myDevBox"; "UserId" = "me"; "ProjectName" = "DevProject"; "OperationId" = "d0954a94-3550-4919-bcbe-1c94ed79e0cd"}
-Get-AzDevCenterUserDevBoxOperation -DevCenter Contoso -InputObject $devBoxInput
+Get-AzDevCenterUserDevBoxOperation -DevCenterName Contoso -InputObject $devBoxInput
 ```
 This command gets the operation "d0954a94-3550-4919-bcbe-1c94ed79e0cd" for the dev box "myDevBox". 

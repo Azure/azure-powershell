@@ -1,7 +1,7 @@
 ---
 external help file:
 Module Name: Az.DevCenterdata
-online version: https://learn.microsoft.com/powershell/module/az.devcenterdata/repair-azdevcenteruserdevbox
+online version: https://learn.microsoft.com/powershell/module/az.devcenter/repair-azdevcenteruserdevbox
 schema: 2.0.0
 ---
 
@@ -21,7 +21,7 @@ Repair-AzDevCenterUserDevBox -Endpoint <String> -Name <String> -ProjectName <Str
 
 ### RepairByDevCenter
 ```
-Repair-AzDevCenterUserDevBox -DevCenter <String> -Name <String> -ProjectName <String> [-UserId <String>]
+Repair-AzDevCenterUserDevBox -DevCenterName <String> -Name <String> -ProjectName <String> [-UserId <String>]
  [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
@@ -33,7 +33,7 @@ Repair-AzDevCenterUserDevBox -Endpoint <String> -InputObject <IDevCenterdataIden
 
 ### RepairViaIdentityByDevCenter
 ```
-Repair-AzDevCenterUserDevBox -DevCenter <String> -InputObject <IDevCenterdataIdentity>
+Repair-AzDevCenterUserDevBox -DevCenterName <String> -InputObject <IDevCenterdataIdentity>
  [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
@@ -52,7 +52,7 @@ This command repairs the dev box "myDevBox".
 
 ### Example 2: Repair dev box by dev center
 ```powershell
-Repair-AzDevCenterUserDevBox -DevCenter Contoso -Name myDevBox -ProjectName DevProject
+Repair-AzDevCenterUserDevBox -DevCenterName Contoso -Name myDevBox -ProjectName DevProject
 ```
 
 This command repairs the dev box "myDevBox".
@@ -68,7 +68,7 @@ This command repairs the dev box "myDevBox".
 ### Example 4: Reapir dev box by dev center and InputObject
 ```powershell
 $devBoxInput = @{"DevBoxName" = "myDevBox"; "UserId" = "me"; "ProjectName" = "DevProject";}
-Repair-AzDevCenterUserDevBox -DevCenter Contoso -InputObject $devBoxInput
+Repair-AzDevCenterUserDevBox -DevCenterName Contoso -InputObject $devBoxInput
 ```
 
 This command repairs the dev box "myDevBox".
@@ -106,7 +106,7 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -DevCenter
+### -DevCenterName
 The DevCenter upon which to execute operations.
 
 ```yaml

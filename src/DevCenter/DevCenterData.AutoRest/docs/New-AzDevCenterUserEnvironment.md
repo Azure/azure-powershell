@@ -22,10 +22,10 @@ New-AzDevCenterUserEnvironment -Endpoint <String> -Name <String> -ProjectName <S
 
 ### CreateExpandedByDevCenter
 ```
-New-AzDevCenterUserEnvironment -DevCenter <String> -Name <String> -ProjectName <String> -CatalogName <String>
- -EnvironmentDefinitionName <String> -EnvironmentType <String> [-UserId <String>] [-ExpirationDate <DateTime>]
- [-Parameter <Hashtable>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf]
- [<CommonParameters>]
+New-AzDevCenterUserEnvironment -DevCenterName <String> -Name <String> -ProjectName <String>
+ -CatalogName <String> -EnvironmentDefinitionName <String> -EnvironmentType <String> [-UserId <String>]
+ [-ExpirationDate <DateTime>] [-Parameter <Hashtable>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
+ [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ### CreateViaIdentityExpanded
@@ -38,10 +38,10 @@ New-AzDevCenterUserEnvironment -Endpoint <String> -InputObject <IDevCenterdataId
 
 ### CreateViaIdentityExpandedByDevCenter
 ```
-New-AzDevCenterUserEnvironment -DevCenter <String> -InputObject <IDevCenterdataIdentity> -CatalogName <String>
- -EnvironmentDefinitionName <String> -EnvironmentType <String> [-ExpirationDate <DateTime>]
- [-Parameter <Hashtable>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf]
- [<CommonParameters>]
+New-AzDevCenterUserEnvironment -DevCenterName <String> -InputObject <IDevCenterdataIdentity>
+ -CatalogName <String> -EnvironmentDefinitionName <String> -EnvironmentType <String>
+ [-ExpirationDate <DateTime>] [-Parameter <Hashtable>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
+ [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -65,7 +65,7 @@ This command creates an environment named envtest" to the project "DevProject".
 $currentDate = Get-Date
 $dateIn8Months = $currentDate.AddMonths(8)
 
-New-AzDevCenterUserEnvironment -DevCenter Contoso -Name "envtest" -ProjectName DevProject -CatalogName CentralCatalog -EnvironmentDefinitionName Sandbox -EnvironmentType DevTest -ExpirationDate $dateIn8Months
+New-AzDevCenterUserEnvironment -DevCenterName Contoso -Name "envtest" -ProjectName DevProject -CatalogName CentralCatalog -EnvironmentDefinitionName Sandbox -EnvironmentType DevTest -ExpirationDate $dateIn8Months
 ```
 
 This command creates an environment named envtest" to the project "DevProject".
@@ -88,7 +88,7 @@ $envInput = @{"UserId" = "me"; "ProjectName" = "DevProject"; "EnvironmentName" =
 $currentDate = Get-Date
 $dateIn8Months = $currentDate.AddMonths(8)
 
-New-AzDevCenterUserEnvironment -DevCenter Contoso -InputObject $envInput -CatalogName CentralCatalog -EnvironmentDefinitionName FunctionApp -EnvironmentType DevTest -Parameter $functionAppParameters -ExpirationDate $dateIn8Months
+New-AzDevCenterUserEnvironment -DevCenterName Contoso -InputObject $envInput -CatalogName CentralCatalog -EnvironmentDefinitionName FunctionApp -EnvironmentType DevTest -Parameter $functionAppParameters -ExpirationDate $dateIn8Months
 ```
 
 This command creates an environment named envtest" to the project "DevProject".
@@ -141,7 +141,7 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -DevCenter
+### -DevCenterName
 The DevCenter upon which to execute operations.
 
 ```yaml

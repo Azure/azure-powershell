@@ -28,14 +28,14 @@ Invoke-AzDevCenterUserDelayDevBoxAction -Endpoint <String> -ActionName <String> 
 
 ### Delay1ByDevCenter
 ```
-Invoke-AzDevCenterUserDelayDevBoxAction -DevCenter <String> -DevBoxName <String> -ProjectName <String>
+Invoke-AzDevCenterUserDelayDevBoxAction -DevCenterName <String> -DevBoxName <String> -ProjectName <String>
  -DelayTime <TimeSpan> [-UserId <String>] [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf]
  [<CommonParameters>]
 ```
 
 ### DelayByDevCenter
 ```
-Invoke-AzDevCenterUserDelayDevBoxAction -DevCenter <String> -ActionName <String> -DevBoxName <String>
+Invoke-AzDevCenterUserDelayDevBoxAction -DevCenterName <String> -ActionName <String> -DevBoxName <String>
  -ProjectName <String> -DelayTime <TimeSpan> [-UserId <String>] [-DefaultProfile <PSObject>] [-Confirm]
  [-WhatIf] [<CommonParameters>]
 ```
@@ -54,7 +54,7 @@ This command delays all actions on the dev box "myDevBox" to the time 1 hour and
 
 ### Example 2: Delay all actions on the dev box by dev center
 ```powershell
-Invoke-AzDevCenterUserDelayDevBoxAction -DevCenter Contoso -DevBoxName myDevBox -ProjectName DevProject -DelayTime "02:00"
+Invoke-AzDevCenterUserDelayDevBoxAction -DevCenterName Contoso -DevBoxName myDevBox -ProjectName DevProject -DelayTime "02:00"
 ```
 
 This command delays all actions on the dev box "myDevBox" to the time 2 hours from the earliest scheduled action.
@@ -68,7 +68,7 @@ This command delays the action "schedule-default" for the dev box "myDevBox" for
 
 ### Example 4: Delay an action on the dev box by dev center
 ```powershell
-Invoke-AzDevCenterUserDelayDevBoxAction -DevCenter Contoso -DevBoxName myDevBox -UserId "me" -ProjectName DevProject -ActionName "schedule-default" -DelayTime "05:15"
+Invoke-AzDevCenterUserDelayDevBoxAction -DevCenterName Contoso -DevBoxName myDevBox -UserId "me" -ProjectName DevProject -ActionName "schedule-default" -DelayTime "05:15"
 ```
 
 This command delays the action "schedule-default" for the dev box "myDevBox" for 5 hours and 15 minutes.
@@ -137,7 +137,7 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -DevCenter
+### -DevCenterName
 The DevCenter upon which to execute operations.
 
 ```yaml

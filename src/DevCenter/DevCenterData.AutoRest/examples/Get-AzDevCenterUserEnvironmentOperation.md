@@ -6,7 +6,7 @@ This command lists the operations on the environment "myEnvironment".
 
 ### Example 2: List operations on the environment by dev center
 ```powershell
-Get-AzDevCenterUserEnvironmentOperation -DevCenter Contoso -EnvironmentName myEnvironment -ProjectName DevProject
+Get-AzDevCenterUserEnvironmentOperation -DevCenterName Contoso -EnvironmentName myEnvironment -ProjectName DevProject
 ```
 This command lists the operations on the environment "myEnvironment".
 
@@ -18,7 +18,7 @@ This command gets the operation "d0954a94-3550-4919-bcbe-1c94ed79e0cd" for the e
 
 ### Example 4: Get an operation on the environment by dev center
 ```powershell
-Get-AzDevCenterUserEnvironmentOperation -DevCenter Contoso -EnvironmentName myEnvironment -ProjectName DevProject -OperationId "d0954a94-3550-4919-bcbe-1c94ed79e0cd"
+Get-AzDevCenterUserEnvironmentOperation -DevCenterName Contoso -EnvironmentName myEnvironment -ProjectName DevProject -OperationId "d0954a94-3550-4919-bcbe-1c94ed79e0cd"
 ```
 This command gets the operation "d0954a94-3550-4919-bcbe-1c94ed79e0cd" for the environment "myEnvironment". 
 
@@ -32,6 +32,6 @@ This command gets the operation "d0954a94-3550-4919-bcbe-1c94ed79e0cd" for the e
 ### Example 6: Get an operation on the environment by dev center and InputObject
 ```powershell
 $environmentInput = @{"EnvironmentName" = "myEnvironment"; "UserId" = "me"; "ProjectName" = "DevProject"; "OperationId" = "d0954a94-3550-4919-bcbe-1c94ed79e0cd"}
-Get-AzDevCenterUserEnvironmentOperation -DevCenter Contoso -InputObject $environmentInput
+Get-AzDevCenterUserEnvironmentOperation -DevCenterName Contoso -InputObject $environmentInput
 ```
 This command gets the operation "d0954a94-3550-4919-bcbe-1c94ed79e0cd" for the environment "myEnvironment". 

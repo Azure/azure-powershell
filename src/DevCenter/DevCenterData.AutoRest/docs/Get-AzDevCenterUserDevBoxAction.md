@@ -26,7 +26,7 @@ Get-AzDevCenterUserDevBoxAction -Endpoint <String> -ActionName <String> -DevBoxN
 
 ### GetByDevCenter
 ```
-Get-AzDevCenterUserDevBoxAction -DevCenter <String> -ActionName <String> -DevBoxName <String>
+Get-AzDevCenterUserDevBoxAction -DevCenterName <String> -ActionName <String> -DevBoxName <String>
  -ProjectName <String> [-UserId <String>] [-DefaultProfile <PSObject>] [<CommonParameters>]
 ```
 
@@ -38,13 +38,13 @@ Get-AzDevCenterUserDevBoxAction -Endpoint <String> -InputObject <IDevCenterdataI
 
 ### GetViaIdentityByDevCenter
 ```
-Get-AzDevCenterUserDevBoxAction -DevCenter <String> -InputObject <IDevCenterdataIdentity>
+Get-AzDevCenterUserDevBoxAction -DevCenterName <String> -InputObject <IDevCenterdataIdentity>
  [-DefaultProfile <PSObject>] [<CommonParameters>]
 ```
 
 ### ListByDevCenter
 ```
-Get-AzDevCenterUserDevBoxAction -DevCenter <String> -DevBoxName <String> -ProjectName <String>
+Get-AzDevCenterUserDevBoxAction -DevCenterName <String> -DevBoxName <String> -ProjectName <String>
  [-UserId <String>] [-DefaultProfile <PSObject>] [<CommonParameters>]
 ```
 
@@ -62,7 +62,7 @@ This command lists the actions on the dev box "myDevBox".
 
 ### Example 2: List actions on the dev box by dev center
 ```powershell
-Get-AzDevCenterUserDevBoxAction -DevCenter Contoso -DevBoxName myDevBox -ProjectName DevProject
+Get-AzDevCenterUserDevBoxAction -DevCenterName Contoso -DevBoxName myDevBox -ProjectName DevProject
 ```
 
 This command lists the actions on the dev box "myDevBox".
@@ -76,7 +76,7 @@ This command gets the action "schedule-default" for the dev box "myDevBox".
 
 ### Example 4: Get an action on the dev box by dev center
 ```powershell
-Get-AzDevCenterUserDevBoxAction -DevCenter Contoso -DevBoxName myDevBox -ProjectName DevProject -ActionName "schedule-default"
+Get-AzDevCenterUserDevBoxAction -DevCenterName Contoso -DevBoxName myDevBox -ProjectName DevProject -ActionName "schedule-default"
 ```
 
 This command gets the action "schedule-default" for the dev box "myDevBox".
@@ -92,7 +92,7 @@ This command gets the action "schedule-default" for the dev box "myDevBox".
 ### Example 6: Get an action on the dev box by dev center and InputObject
 ```powershell
 $devBoxInput = @{"DevBoxName" = "myDevBox"; "UserId" = "me"; "ProjectName" = "DevProject"; "ActionName" = "schedule-default"}
-Get-AzDevCenterUserDevBoxAction -DevCenter Contoso -InputObject $devBoxInput
+Get-AzDevCenterUserDevBoxAction -DevCenterName Contoso -InputObject $devBoxInput
 ```
 
 This command gets the action "schedule-default" for the dev box "myDevBox".
@@ -145,7 +145,7 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -DevCenter
+### -DevCenterName
 The DevCenter upon which to execute operations.
 
 ```yaml

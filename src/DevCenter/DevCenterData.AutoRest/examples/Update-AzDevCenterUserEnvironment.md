@@ -12,7 +12,7 @@ This command updates an environment named "envtest" to the project "DevProject".
 $currentDate = Get-Date
 $dateIn8Months = $currentDate.AddMonths(8)
 
-Update-AzDevCenterUserEnvironment -DevCenter Contoso -Name "envtest" -ProjectName DevProject -ExpirationDate $dateIn8Months
+Update-AzDevCenterUserEnvironment -DevCenterName Contoso -Name "envtest" -ProjectName DevProject -ExpirationDate $dateIn8Months
 ```
 This command updates an environment named "envtest" to the project "DevProject".
 
@@ -34,6 +34,6 @@ $dateIn8Months = $currentDate.AddMonths(8)
 
 $envInput = @{"UserId" = "me"; "ProjectName" = "DevProject"; "EnvironmentName" = "envtest" }
 
-Update-AzDevCenterUserEnvironment -DevCenter Contoso -InputObject $envInput -ExpirationDate $dateIn8Months
+Update-AzDevCenterUserEnvironment -DevCenterName Contoso -InputObject $envInput -ExpirationDate $dateIn8Months
 ```
 This command updates an environment named "envtest" to the project "DevProject".

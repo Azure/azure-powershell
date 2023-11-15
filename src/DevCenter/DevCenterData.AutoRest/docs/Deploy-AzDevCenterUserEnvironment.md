@@ -22,7 +22,7 @@ Deploy-AzDevCenterUserEnvironment -Endpoint <String> -Name <String> -ProjectName
 
 ### CreateExpandedByDevCenter
 ```
-Deploy-AzDevCenterUserEnvironment -DevCenter <String> -Name <String> -ProjectName <String>
+Deploy-AzDevCenterUserEnvironment -DevCenterName <String> -Name <String> -ProjectName <String>
  -CatalogName <String> -EnvironmentDefinitionName <String> -EnvironmentType <String> [-UserId <String>]
  [-ExpirationDate <DateTime>] [-Parameter <Hashtable>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
  [-Confirm] [-WhatIf] [<CommonParameters>]
@@ -38,7 +38,7 @@ Deploy-AzDevCenterUserEnvironment -Endpoint <String> -InputObject <IDevCenterdat
 
 ### CreateViaIdentityExpandedByDevCenter
 ```
-Deploy-AzDevCenterUserEnvironment -DevCenter <String> -InputObject <IDevCenterdataIdentity>
+Deploy-AzDevCenterUserEnvironment -DevCenterName <String> -InputObject <IDevCenterdataIdentity>
  -CatalogName <String> -EnvironmentDefinitionName <String> -EnvironmentType <String>
  [-ExpirationDate <DateTime>] [-Parameter <Hashtable>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
  [-Confirm] [-WhatIf] [<CommonParameters>]
@@ -60,7 +60,7 @@ This command deploys an environment named "envtest" to the project "DevProject".
 
 ### Example 2: Deploy an environment by dev center
 ```powershell
-Deploy-AzDevCenterUserEnvironment -DevCenter Contoso -Name "envtest" -ProjectName DevProject -CatalogName CentralCatalog -EnvironmentDefinitionName Sandbox -EnvironmentType DevTest
+Deploy-AzDevCenterUserEnvironment -DevCenterName Contoso -Name "envtest" -ProjectName DevProject -CatalogName CentralCatalog -EnvironmentDefinitionName Sandbox -EnvironmentType DevTest
 ```
 
 This command deploys an environment named "envtest" to the project "DevProject".
@@ -81,7 +81,7 @@ This command deploys an environment named "envtest" to the project "DevProject".
 $functionAppParameters = @{"name" = "testfuncApp" }
 $envInput = @{"UserId" = "me"; "ProjectName" = "DevProject"; "EnvironmentName" = "envtest" }
 
-Deploy-AzDevCenterUserEnvironment -DevCenter Contoso -InputObject $envInput -CatalogName CentralCatalog -EnvironmentDefinitionName FunctionApp -EnvironmentType DevTest -Parameter $functionAppParameters
+Deploy-AzDevCenterUserEnvironment -DevCenterName Contoso -InputObject $envInput -CatalogName CentralCatalog -EnvironmentDefinitionName FunctionApp -EnvironmentType DevTest -Parameter $functionAppParameters
 ```
 
 This command deploys an environment named "envtest" to the project "DevProject".
@@ -134,7 +134,7 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -DevCenter
+### -DevCenterName
 The DevCenter upon which to execute operations.
 
 ```yaml

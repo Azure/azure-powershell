@@ -20,7 +20,7 @@ Stop-AzDevCenterUserDevBox -Endpoint <String> -Name <String> -ProjectName <Strin
 
 ### StopByDevCenter
 ```
-Stop-AzDevCenterUserDevBox -DevCenter <String> -Name <String> -ProjectName <String> [-UserId <String>]
+Stop-AzDevCenterUserDevBox -DevCenterName <String> -Name <String> -ProjectName <String> [-UserId <String>]
  [-Hibernate] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
@@ -32,7 +32,7 @@ Stop-AzDevCenterUserDevBox -Endpoint <String> -InputObject <IDevCenterdataIdenti
 
 ### StopViaIdentityByDevCenter
 ```
-Stop-AzDevCenterUserDevBox -DevCenter <String> -InputObject <IDevCenterdataIdentity> [-Hibernate]
+Stop-AzDevCenterUserDevBox -DevCenterName <String> -InputObject <IDevCenterdataIdentity> [-Hibernate]
  [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
@@ -50,7 +50,7 @@ This command stops the dev box "myDevBox" assigned to user "786a823c-8037-48ab-8
 
 ### Example 2: Stop a dev box by dev center
 ```powershell
-Stop-AzDevCenterUserDevBox -DevCenter Contoso -ProjectName DevProject -UserId "me" -Name myDevBox
+Stop-AzDevCenterUserDevBox -DevCenterName Contoso -ProjectName DevProject -UserId "me" -Name myDevBox
 ```
 
 This command stops the dev box "myDevBox" assigned to the currently signed-in user.
@@ -66,7 +66,7 @@ This command stops the dev box "myDevBox" assigned to the currently signed-in us
 ### Example 4: Stop a dev box by dev center and InputObject
 ```powershell
 $devBoxInput = @{"DevBoxName" = "myDevBox"; "UserId" = "786a823c-8037-48ab-89b8-8599901e67d0"; "ProjectName" = "DevProject" }
-Stop-AzDevCenterUserDevBox -DevCenter Contoso -InputObject $devBoxInput 
+Stop-AzDevCenterUserDevBox -DevCenterName Contoso -InputObject $devBoxInput 
 ```
 
 This command stops the dev box "myDevBox" assigned to user "786a823c-8037-48ab-89b8-8599901e67d0".
@@ -104,7 +104,7 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -DevCenter
+### -DevCenterName
 The DevCenter upon which to execute operations.
 
 ```yaml

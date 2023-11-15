@@ -26,7 +26,7 @@ Get-AzDevCenterUserCatalog -Endpoint <String> -CatalogName <String> -ProjectName
 
 ### GetByDevCenter
 ```
-Get-AzDevCenterUserCatalog -DevCenter <String> -CatalogName <String> -ProjectName <String>
+Get-AzDevCenterUserCatalog -DevCenterName <String> -CatalogName <String> -ProjectName <String>
  [-DefaultProfile <PSObject>] [<CommonParameters>]
 ```
 
@@ -38,13 +38,13 @@ Get-AzDevCenterUserCatalog -Endpoint <String> -InputObject <IDevCenterdataIdenti
 
 ### GetViaIdentityByDevCenter
 ```
-Get-AzDevCenterUserCatalog -DevCenter <String> -InputObject <IDevCenterdataIdentity>
+Get-AzDevCenterUserCatalog -DevCenterName <String> -InputObject <IDevCenterdataIdentity>
  [-DefaultProfile <PSObject>] [<CommonParameters>]
 ```
 
 ### ListByDevCenter
 ```
-Get-AzDevCenterUserCatalog -DevCenter <String> -ProjectName <String> [-DefaultProfile <PSObject>]
+Get-AzDevCenterUserCatalog -DevCenterName <String> -ProjectName <String> [-DefaultProfile <PSObject>]
  [<CommonParameters>]
 ```
 
@@ -62,7 +62,7 @@ This command lists catalogs in the project "DevProject".
 
 ### Example 2: List catalogs by dev center
 ```powershell
-Get-AzDevCenterUserCatalog -DevCenter Contoso -ProjectName DevProject
+Get-AzDevCenterUserCatalog -DevCenterName Contoso -ProjectName DevProject
 ```
 
 This command lists catalogs in the project "DevProject".
@@ -76,7 +76,7 @@ This command gets a catalog named "CentralCatalog" in the project "DevProject".
 
 ### Example 4: Get a catalog by dev center
 ```powershell
-Get-AzDevCenterUserCatalog -DevCenter Contoso -ProjectName DevProject -CatalogName CentralCatalog 
+Get-AzDevCenterUserCatalog -DevCenterName Contoso -ProjectName DevProject -CatalogName CentralCatalog 
 ```
 
 This command gets a catalog named "CentralCatalog" in the project "DevProject".
@@ -92,7 +92,7 @@ This command gets a catalog named "CentralCatalog" in the project "DevProject".
 ### Example 6: Get a catalog by dev center and InputObject
 ```powershell
 $catalogInput = @{"CatalogName" = "CentralCatalog"; "ProjectName" = "DevProject" }
-Get-AzDevCenterUserCatalog -DevCenter Contoso -InputObject $catalogInput 
+Get-AzDevCenterUserCatalog -DevCenterName Contoso -InputObject $catalogInput 
 ```
 
 This command gets a catalog named "CentralCatalog" in the project "DevProject".
@@ -130,7 +130,7 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -DevCenter
+### -DevCenterName
 The DevCenter upon which to execute operations.
 
 ```yaml

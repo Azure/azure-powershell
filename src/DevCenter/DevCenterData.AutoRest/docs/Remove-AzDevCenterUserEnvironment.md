@@ -20,8 +20,9 @@ Remove-AzDevCenterUserEnvironment -Endpoint <String> -Name <String> -ProjectName
 
 ### DeleteByDevCenter
 ```
-Remove-AzDevCenterUserEnvironment -DevCenter <String> -Name <String> -ProjectName <String> [-UserId <String>]
- [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-PassThru] [-Confirm] [-WhatIf] [<CommonParameters>]
+Remove-AzDevCenterUserEnvironment -DevCenterName <String> -Name <String> -ProjectName <String>
+ [-UserId <String>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-PassThru] [-Confirm] [-WhatIf]
+ [<CommonParameters>]
 ```
 
 ### DeleteViaIdentity
@@ -32,7 +33,7 @@ Remove-AzDevCenterUserEnvironment -Endpoint <String> -InputObject <IDevCenterdat
 
 ### DeleteViaIdentityByDevCenter
 ```
-Remove-AzDevCenterUserEnvironment -DevCenter <String> -InputObject <IDevCenterdataIdentity>
+Remove-AzDevCenterUserEnvironment -DevCenterName <String> -InputObject <IDevCenterdataIdentity>
  [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-PassThru] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
@@ -50,7 +51,7 @@ This command deletes the environment "myEnv" under the project "DevProject" assi
 
 ### Example 2: Delete an environment by dev center
 ```powershell
-Remove-AzDevCenterUserEnvironment -DevCenter Contoso -ProjectName DevProject -UserId "786a823c-8037-48ab-89b8-8599901e67d0" -Name myEnv
+Remove-AzDevCenterUserEnvironment -DevCenterName Contoso -ProjectName DevProject -UserId "786a823c-8037-48ab-89b8-8599901e67d0" -Name myEnv
 ```
 
 This command deletes the environment "myEnv" under the project "DevProject" assigned to the user "786a823c-8037-48ab-89b8-8599901e67d0".
@@ -66,7 +67,7 @@ This command deletes the environment "myEnv" under the project "DevProject" assi
 ### Example 4: Delete an environment by dev center and InputObject
 ```powershell
 $envInput = @{"UserId" = "me"; "ProjectName" = "DevProject"; "EnvironmentName" = "myEnv" }
-Remove-AzDevCenterUserEnvironment -DevCenter Contoso -InputObject $envInput
+Remove-AzDevCenterUserEnvironment -DevCenterName Contoso -InputObject $envInput
 ```
 
 This command deletes the environment "myEnv" under the project "DevProject" assigned to the currently signed-in user.
@@ -104,7 +105,7 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -DevCenter
+### -DevCenterName
 The DevCenter upon which to execute operations.
 
 ```yaml

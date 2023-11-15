@@ -19,7 +19,7 @@ Describe 'Get-AzDevCenterUserSchedule' {
         $listofSchedules.Count | Should -Be 1
 
         if ($Record -or $Live) {
-            $listofSchedules = Get-AzDevCenterUserSchedule -DevCenter $env.devCenterName -ProjectName $env.projectName
+            $listofSchedules = Get-AzDevCenterUserSchedule -DevCenterName $env.devCenterName -ProjectName $env.projectName
             $listofSchedules.Count | Should -Be 1
 
         }
@@ -30,7 +30,7 @@ Describe 'Get-AzDevCenterUserSchedule' {
         $listofSchedules.Count | Should -Be 1
 
         if ($Record -or $Live) {
-            $listofSchedules = Get-AzDevCenterUserSchedule -DevCenter $env.devCenterName -PoolName $env.poolName -ProjectName $env.projectName
+            $listofSchedules = Get-AzDevCenterUserSchedule -DevCenterName $env.devCenterName -PoolName $env.poolName -ProjectName $env.projectName
             $listofSchedules.Count | Should -Be 1
         }
     }
@@ -44,7 +44,7 @@ Describe 'Get-AzDevCenterUserSchedule' {
         $schedule.Type | Should -Be "StopDevBox"
 
         if ($Record -or $Live) {
-            $schedule = Get-AzDevCenterUserSchedule -DevCenter $env.devCenterName -PoolName $env.poolName -ProjectName $env.projectName -ScheduleName "default"
+            $schedule = Get-AzDevCenterUserSchedule -DevCenterName $env.devCenterName -PoolName $env.poolName -ProjectName $env.projectName -ScheduleName "default"
             $schedule.Frequency | Should -Be "Daily"
             $schedule.Name | Should -Be "default"
             $schedule.Time | Should -Be "19:00"
@@ -64,7 +64,7 @@ Describe 'Get-AzDevCenterUserSchedule' {
         $schedule.Type | Should -Be "StopDevBox"
 
         if ($Record -or $Live) {
-            $schedule = Get-AzDevCenterUserSchedule -DevCenter $env.devCenterName -InputObject $scheduleInput
+            $schedule = Get-AzDevCenterUserSchedule -DevCenterName $env.devCenterName -InputObject $scheduleInput
             $schedule.Frequency | Should -Be "Daily"
             $schedule.Name | Should -Be "default"
             $schedule.Time | Should -Be "19:00"

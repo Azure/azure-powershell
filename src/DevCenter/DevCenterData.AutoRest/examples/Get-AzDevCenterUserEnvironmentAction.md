@@ -6,7 +6,7 @@ This command lists the actions on the environment "myEnvironment".
 
 ### Example 2: List actions on the environment by dev center
 ```powershell
-Get-AzDevCenterUserEnvironmentAction -DevCenter Contoso -EnvironmentName myEnvironment -ProjectName DevProject
+Get-AzDevCenterUserEnvironmentAction -DevCenterName Contoso -EnvironmentName myEnvironment -ProjectName DevProject
 ```
 This command lists the actions on the environment "myEnvironment".
 
@@ -18,7 +18,7 @@ This command gets the action "myEnvironment-Delete" for the environment "myEnvir
 
 ### Example 4: Get an action on the environment by dev center
 ```powershell
-Get-AzDevCenterUserEnvironmentAction -DevCenter Contoso -EnvironmentName myEnvironment -ProjectName DevProject -ActionName "myEnvironment-Delete"
+Get-AzDevCenterUserEnvironmentAction -DevCenterName Contoso -EnvironmentName myEnvironment -ProjectName DevProject -ActionName "myEnvironment-Delete"
 ```
 This command gets the action "myEnvironment-Delete" for the environment "myEnvironment". 
 
@@ -32,6 +32,6 @@ This command gets the action "myEnvironment-Delete" for the environment "myEnvir
 ### Example 6: Get an action on the environment by dev center and InputObject
 ```powershell
 $environmentInput = @{"EnvironmentName" = "myEnvironment"; "UserId" = "me"; "ProjectName" = "DevProject"; "ActionName" = "myEnvironment-Delete"}
-Get-AzDevCenterUserEnvironmentAction -DevCenter Contoso -InputObject $environmentInput
+Get-AzDevCenterUserEnvironmentAction -DevCenterName Contoso -InputObject $environmentInput
 ```
 This command gets the action "myEnvironment-Delete" for the environment "myEnvironment". 
