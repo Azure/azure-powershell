@@ -20,7 +20,7 @@ Get-AzDevCenterUserDevBoxRemoteConnection -Endpoint <String> -DevBoxName <String
 
 ### GetByDevCenter
 ```
-Get-AzDevCenterUserDevBoxRemoteConnection -DevCenter <String> -DevBoxName <String> -ProjectName <String>
+Get-AzDevCenterUserDevBoxRemoteConnection -DevCenterName <String> -DevBoxName <String> -ProjectName <String>
  [-UserId <String>] [-DefaultProfile <PSObject>] [<CommonParameters>]
 ```
 
@@ -32,7 +32,7 @@ Get-AzDevCenterUserDevBoxRemoteConnection -Endpoint <String> -InputObject <IDevC
 
 ### GetViaIdentityByDevCenter
 ```
-Get-AzDevCenterUserDevBoxRemoteConnection -DevCenter <String> -InputObject <IDevCenterdataIdentity>
+Get-AzDevCenterUserDevBoxRemoteConnection -DevCenterName <String> -InputObject <IDevCenterdataIdentity>
  [-DefaultProfile <PSObject>] [<CommonParameters>]
 ```
 
@@ -50,7 +50,7 @@ This commands gets the remote connection for the dev box "myDevBox".
 
 ### Example 2: Get the remote connection on the dev box by dev center
 ```powershell
-Get-AzDevCenterUserDevBoxRemoteConnection -DevCenter Contoso -DevBoxName myDevBox -ProjectName DevProject
+Get-AzDevCenterUserDevBoxRemoteConnection -DevCenterName Contoso -DevBoxName myDevBox -ProjectName DevProject
 ```
 
 This commands gets the remote connection for the dev box "myDevBox".
@@ -66,7 +66,7 @@ This commands gets the remote connection for the dev box "myDevBox".
 ### Example 4: Get the remote connection on the dev box by dev center and InputObject
 ```powershell
 $devBoxInput = @{"DevBoxName" = "myDevBox"; "UserId" = "me"; "ProjectName" = "DevProject" }
-Get-AzDevCenterUserDevBoxRemoteConnection -DevCenter Contoso -InputObject $devBoxInput
+Get-AzDevCenterUserDevBoxRemoteConnection -DevCenterName Contoso -InputObject $devBoxInput
 ```
 
 This commands gets the remote connection for the dev box "myDevBox".
@@ -104,7 +104,7 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -DevCenter
+### -DevCenterName
 The DevCenter upon which to execute operations.
 
 ```yaml

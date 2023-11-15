@@ -19,7 +19,7 @@ Describe 'Get-AzDevCenterUserCatalog' {
         $listOfCatalogs.Count | Should -Be 1
 
         if ($Record -or $Live) {
-            $listOfCatalogs = Get-AzDevCenterUserCatalog -DevCenter $env.devCenterName -ProjectName $env.projectName
+            $listOfCatalogs = Get-AzDevCenterUserCatalog -DevCenterName $env.devCenterName -ProjectName $env.projectName
             $listOfCatalogs.Count | Should -Be 1
         }
 
@@ -30,7 +30,7 @@ Describe 'Get-AzDevCenterUserCatalog' {
         $catalog.Name | Should -Be $env.catalogName
 
         if ($Record -or $Live) {
-            $catalog = Get-AzDevCenterUserCatalog -DevCenter $env.devCenterName -ProjectName $env.projectName -CatalogName $env.catalogName 
+            $catalog = Get-AzDevCenterUserCatalog -DevCenterName $env.devCenterName -ProjectName $env.projectName -CatalogName $env.catalogName 
             $catalog.Name | Should -Be $env.catalogName
         }
     }
@@ -41,7 +41,7 @@ Describe 'Get-AzDevCenterUserCatalog' {
         $catalog.Name | Should -Be $env.catalogName
 
         if ($Record -or $Live) {
-            $catalog = Get-AzDevCenterUserCatalog -DevCenter $env.devCenterName -InputObject $catalogInput 
+            $catalog = Get-AzDevCenterUserCatalog -DevCenterName $env.devCenterName -InputObject $catalogInput 
             $catalog.Name | Should -Be $env.catalogName
         }
 

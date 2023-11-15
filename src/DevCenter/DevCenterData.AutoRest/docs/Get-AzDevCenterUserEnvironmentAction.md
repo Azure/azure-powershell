@@ -1,7 +1,7 @@
 ---
 external help file:
 Module Name: Az.DevCenterdata
-online version: https://learn.microsoft.com/powershell/module/az.devcenterdata/get-azdevcenteruserenvironmentaction
+online version: https://learn.microsoft.com/powershell/module/az.devcenter/get-azdevcenteruserenvironmentaction
 schema: 2.0.0
 ---
 
@@ -26,7 +26,7 @@ Get-AzDevCenterUserEnvironmentAction -Endpoint <String> -ActionName <String> -En
 
 ### GetByDevCenter
 ```
-Get-AzDevCenterUserEnvironmentAction -DevCenter <String> -ActionName <String> -EnvironmentName <String>
+Get-AzDevCenterUserEnvironmentAction -DevCenterName <String> -ActionName <String> -EnvironmentName <String>
  -ProjectName <String> [-UserId <String>] [-DefaultProfile <PSObject>] [<CommonParameters>]
 ```
 
@@ -38,13 +38,13 @@ Get-AzDevCenterUserEnvironmentAction -Endpoint <String> -InputObject <IDevCenter
 
 ### GetViaIdentityByDevCenter
 ```
-Get-AzDevCenterUserEnvironmentAction -DevCenter <String> -InputObject <IDevCenterdataIdentity>
+Get-AzDevCenterUserEnvironmentAction -DevCenterName <String> -InputObject <IDevCenterdataIdentity>
  [-DefaultProfile <PSObject>] [<CommonParameters>]
 ```
 
 ### ListByDevCenter
 ```
-Get-AzDevCenterUserEnvironmentAction -DevCenter <String> -EnvironmentName <String> -ProjectName <String>
+Get-AzDevCenterUserEnvironmentAction -DevCenterName <String> -EnvironmentName <String> -ProjectName <String>
  [-UserId <String>] [-DefaultProfile <PSObject>] [<CommonParameters>]
 ```
 
@@ -62,7 +62,7 @@ This command lists the actions on the environment "myEnvironment".
 
 ### Example 2: List actions on the environment by dev center
 ```powershell
-Get-AzDevCenterUserEnvironmentAction -DevCenter Contoso -EnvironmentName myEnvironment -ProjectName DevProject
+Get-AzDevCenterUserEnvironmentAction -DevCenterName Contoso -EnvironmentName myEnvironment -ProjectName DevProject
 ```
 
 This command lists the actions on the environment "myEnvironment".
@@ -76,7 +76,7 @@ This command gets the action "myEnvironment-Delete" for the environment "myEnvir
 
 ### Example 4: Get an action on the environment by dev center
 ```powershell
-Get-AzDevCenterUserEnvironmentAction -DevCenter Contoso -EnvironmentName myEnvironment -ProjectName DevProject -ActionName "myEnvironment-Delete"
+Get-AzDevCenterUserEnvironmentAction -DevCenterName Contoso -EnvironmentName myEnvironment -ProjectName DevProject -ActionName "myEnvironment-Delete"
 ```
 
 This command gets the action "myEnvironment-Delete" for the environment "myEnvironment".
@@ -92,7 +92,7 @@ This command gets the action "myEnvironment-Delete" for the environment "myEnvir
 ### Example 6: Get an action on the environment by dev center and InputObject
 ```powershell
 $environmentInput = @{"EnvironmentName" = "myEnvironment"; "UserId" = "me"; "ProjectName" = "DevProject"; "ActionName" = "myEnvironment-Delete"}
-Get-AzDevCenterUserEnvironmentAction -DevCenter Contoso -InputObject $environmentInput
+Get-AzDevCenterUserEnvironmentAction -DevCenterName Contoso -InputObject $environmentInput
 ```
 
 This command gets the action "myEnvironment-Delete" for the environment "myEnvironment".
@@ -130,7 +130,7 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -DevCenter
+### -DevCenterName
 The DevCenter upon which to execute operations.
 
 ```yaml

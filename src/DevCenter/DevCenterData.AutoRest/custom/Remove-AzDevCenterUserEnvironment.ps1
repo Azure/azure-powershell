@@ -63,7 +63,7 @@ function Remove-AzDevCenterUserEnvironment {
     [Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Category('Uri')]
     [System.String]
     # The DevCenter upon which to execute operations.
-    ${DevCenter},
+    ${DevCenterName},
 
     [Parameter(ParameterSetName = 'Delete', Mandatory)]
     [Parameter(ParameterSetName = 'DeleteByDevCenter', Mandatory)]
@@ -166,7 +166,7 @@ function Remove-AzDevCenterUserEnvironment {
 
   process {
     if (-not $PSBoundParameters.ContainsKey('Endpoint')) {
-      $Endpoint = GetEndpointFromResourceGraph -DevCenter $DevCenter -Project $ProjectName
+      $Endpoint = GetEndpointFromResourceGraph -DevCenterName $DevCenterName -Project $ProjectName
       $null = $PSBoundParameters.Add("Endpoint", $Endpoint)
       $null = $PSBoundParameters.Remove("DevCenter")
 

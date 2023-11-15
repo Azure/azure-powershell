@@ -6,7 +6,7 @@ This command delays all actions on the dev box "myDevBox" to the time 1 hour and
 
 ### Example 2: Delay all actions on the dev box by dev center
 ```powershell
-Invoke-AzDevCenterUserDelayDevBoxAction -DevCenter Contoso -DevBoxName myDevBox -ProjectName DevProject -DelayTime "02:00"
+Invoke-AzDevCenterUserDelayDevBoxAction -DevCenterName Contoso -DevBoxName myDevBox -ProjectName DevProject -DelayTime "02:00"
 ```
 This command delays all actions on the dev box "myDevBox" to the time 2 hours from the earliest scheduled action.
 
@@ -18,7 +18,7 @@ This command delays the action "schedule-default" for the dev box "myDevBox" for
 
 ### Example 4: Delay an action on the dev box by dev center
 ```powershell
-Invoke-AzDevCenterUserDelayDevBoxAction -DevCenter Contoso -DevBoxName myDevBox -UserId "me" -ProjectName DevProject -ActionName "schedule-default" -DelayTime "05:15"
+Invoke-AzDevCenterUserDelayDevBoxAction -DevCenterName Contoso -DevBoxName myDevBox -UserId "me" -ProjectName DevProject -ActionName "schedule-default" -DelayTime "05:15"
 ```
 This command delays the action "schedule-default" for the dev box "myDevBox" for 5 hours and 15 minutes. 
 

@@ -1,7 +1,7 @@
 ---
 external help file:
 Module Name: Az.DevCenterdata
-online version: https://learn.microsoft.com/powershell/module/az.devcenterdata/get-azdevcenteruserenvironmentoutput
+online version: https://learn.microsoft.com/powershell/module/az.devcenter/get-azdevcenteruserenvironmentoutput
 schema: 2.0.0
 ---
 
@@ -20,7 +20,7 @@ Get-AzDevCenterUserEnvironmentOutput -Endpoint <String> -EnvironmentName <String
 
 ### GetByDevCenter
 ```
-Get-AzDevCenterUserEnvironmentOutput -DevCenter <String> -EnvironmentName <String> -ProjectName <String>
+Get-AzDevCenterUserEnvironmentOutput -DevCenterName <String> -EnvironmentName <String> -ProjectName <String>
  [-UserId <String>] [-DefaultProfile <PSObject>] [<CommonParameters>]
 ```
 
@@ -32,7 +32,7 @@ Get-AzDevCenterUserEnvironmentOutput -Endpoint <String> -InputObject <IDevCenter
 
 ### GetViaIdentityByDevCenter
 ```
-Get-AzDevCenterUserEnvironmentOutput -DevCenter <String> -InputObject <IDevCenterdataIdentity>
+Get-AzDevCenterUserEnvironmentOutput -DevCenterName <String> -InputObject <IDevCenterdataIdentity>
  [-DefaultProfile <PSObject>] [<CommonParameters>]
 ```
 
@@ -50,7 +50,7 @@ This command gets the outputs for the environment "myEnvironment".
 
 ### Example 2: Get the outputs on the environment by dev center
 ```powershell
-Get-AzDevCenterUserEnvironmentOutput -DevCenter Contoso -EnvironmentName myEnvironment -ProjectName DevProject
+Get-AzDevCenterUserEnvironmentOutput -DevCenterName Contoso -EnvironmentName myEnvironment -ProjectName DevProject
 ```
 
 This command gets the outputs for the environment "myEnvironment".
@@ -66,7 +66,7 @@ This command gets the outputs for the environment "myEnvironment".
 ### Example 4: Get the outputs on the environment by dev center and InputObject
 ```powershell
 $environmentInput = @{"EnvironmentName" = "myEnvironment"; "UserId" = "me"; "ProjectName" = "DevProject";}
-Get-AzDevCenterUserEnvironmentOutput -DevCenter Contoso -InputObject $environmentInput
+Get-AzDevCenterUserEnvironmentOutput -DevCenterName Contoso -InputObject $environmentInput
 ```
 
 This command gets the outputs for the environment "myEnvironment".
@@ -89,7 +89,7 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -DevCenter
+### -DevCenterName
 The DevCenter upon which to execute operations.
 
 ```yaml

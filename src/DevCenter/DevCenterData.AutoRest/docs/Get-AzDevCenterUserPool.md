@@ -26,7 +26,7 @@ Get-AzDevCenterUserPool -Endpoint <String> -PoolName <String> -ProjectName <Stri
 
 ### GetByDevCenter
 ```
-Get-AzDevCenterUserPool -DevCenter <String> -PoolName <String> -ProjectName <String>
+Get-AzDevCenterUserPool -DevCenterName <String> -PoolName <String> -ProjectName <String>
  [-DefaultProfile <PSObject>] [<CommonParameters>]
 ```
 
@@ -38,13 +38,13 @@ Get-AzDevCenterUserPool -Endpoint <String> -InputObject <IDevCenterdataIdentity>
 
 ### GetViaIdentityByDevCenter
 ```
-Get-AzDevCenterUserPool -DevCenter <String> -InputObject <IDevCenterdataIdentity> [-DefaultProfile <PSObject>]
- [<CommonParameters>]
+Get-AzDevCenterUserPool -DevCenterName <String> -InputObject <IDevCenterdataIdentity>
+ [-DefaultProfile <PSObject>] [<CommonParameters>]
 ```
 
 ### ListByDevCenter
 ```
-Get-AzDevCenterUserPool -DevCenter <String> -ProjectName <String> [-DefaultProfile <PSObject>]
+Get-AzDevCenterUserPool -DevCenterName <String> -ProjectName <String> [-DefaultProfile <PSObject>]
  [<CommonParameters>]
 ```
 
@@ -62,7 +62,7 @@ This command lists the pools in the project "DevProject".
 
 ### Example 2: List pools by dev center
 ```powershell
-Get-AzDevCenterUserPool -DevCenter Contoso -ProjectName DevProject
+Get-AzDevCenterUserPool -DevCenterName Contoso -ProjectName DevProject
 ```
 
 This command lists the pools in the project "DevProject".
@@ -76,7 +76,7 @@ This command gets the pool "DevPool" in the project "DevProject".
 
 ### Example 4: Get pool by dev center
 ```powershell
-Get-AzDevCenterUserPool -DevCenter Contoso -ProjectName DevProject -PoolName DevPool
+Get-AzDevCenterUserPool -DevCenterName Contoso -ProjectName DevProject -PoolName DevPool
 ```
 
 This command gets the pool "DevPool" in the project "DevProject".
@@ -92,7 +92,7 @@ This command gets the pool "DevPool" in the project "DevProject".
 ### Example 6: Get pool by dev center and InputObject
 ```powershell
 $devBoxInput = @{"ProjectName" = "DevProject"; "PoolName" = "DevPool" }
-Get-AzDevCenterUserPool -DevCenter Contoso -InputObject $devBoxInput
+Get-AzDevCenterUserPool -DevCenterName Contoso -InputObject $devBoxInput
 ```
 
 This command gets the pool "DevPool" in the project "DevProject".
@@ -115,7 +115,7 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -DevCenter
+### -DevCenterName
 The DevCenter upon which to execute operations.
 
 ```yaml

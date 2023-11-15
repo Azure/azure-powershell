@@ -25,7 +25,7 @@ Get-AzDevCenterUserProject -Endpoint <String> -ProjectName <String> [-DefaultPro
 
 ### GetByDevCenter
 ```
-Get-AzDevCenterUserProject -DevCenter <String> -ProjectName <String> [-DefaultProfile <PSObject>]
+Get-AzDevCenterUserProject -DevCenterName <String> -ProjectName <String> [-DefaultProfile <PSObject>]
  [<CommonParameters>]
 ```
 
@@ -37,13 +37,13 @@ Get-AzDevCenterUserProject -Endpoint <String> -InputObject <IDevCenterdataIdenti
 
 ### GetViaIdentityByDevCenter
 ```
-Get-AzDevCenterUserProject -DevCenter <String> -InputObject <IDevCenterdataIdentity>
+Get-AzDevCenterUserProject -DevCenterName <String> -InputObject <IDevCenterdataIdentity>
  [-DefaultProfile <PSObject>] [<CommonParameters>]
 ```
 
 ### ListByDevCenter
 ```
-Get-AzDevCenterUserProject -DevCenter <String> [-DefaultProfile <PSObject>] [<CommonParameters>]
+Get-AzDevCenterUserProject -DevCenterName <String> [-DefaultProfile <PSObject>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -60,7 +60,7 @@ This command lists the projects under the endpoint.
 
 ### Example 2: List projects by dev center
 ```powershell
-Get-AzDevCenterUserProject -DevCenter Contoso -ProjectName DevProject
+Get-AzDevCenterUserProject -DevCenterName Contoso -ProjectName DevProject
 ```
 
 This command lists the projects under the dev center.
@@ -74,7 +74,7 @@ This command gets the project "DevProject".
 
 ### Example 4: Get project by dev center
 ```powershell
-Get-AzDevCenterUserProject -DevCenter Contoso -ProjectName DevProject 
+Get-AzDevCenterUserProject -DevCenterName Contoso -ProjectName DevProject 
 ```
 
 This command gets the project "DevProject".
@@ -90,7 +90,7 @@ This command gets the project "DevProject".
 ### Example 6: Get project by dev center and InputObject
 ```powershell
 $devBoxInput = @{"ProjectName" = "DevProject";}
-Get-AzDevCenterUserProject -DevCenter Contoso -InputObject $devBoxInput
+Get-AzDevCenterUserProject -DevCenterName Contoso -InputObject $devBoxInput
 ```
 
 This command gets the project "DevProject".
@@ -113,7 +113,7 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -DevCenter
+### -DevCenterName
 The DevCenter upon which to execute operations.
 
 ```yaml

@@ -6,7 +6,7 @@ This command delays the action "schedule-default" for the environment "myEnviron
 
 ### Example 2: Delay an action on the environment by dev center
 ```powershell
-Invoke-AzDevCenterUserDelayEnvironmentAction -DevCenter Contoso -EnvironmentName myEnvironment -UserId "me" -ProjectName DevProject -ActionName "myEnvironment-Delete" -DelayTime "05:15"
+Invoke-AzDevCenterUserDelayEnvironmentAction -DevCenterName Contoso -EnvironmentName myEnvironment -UserId "me" -ProjectName DevProject -ActionName "myEnvironment-Delete" -DelayTime "05:15"
 ```
 This command delays the action "myEnvironment-Delete" for the environment "myEnvironment" for 5 hours and 15 minutes. 
 

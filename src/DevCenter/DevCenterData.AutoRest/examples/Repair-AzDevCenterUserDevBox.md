@@ -6,7 +6,7 @@ This command repairs the dev box "myDevBox".
 
 ### Example 2: Repair dev box by dev center
 ```powershell
-Repair-AzDevCenterUserDevBox -DevCenter Contoso -Name myDevBox -ProjectName DevProject
+Repair-AzDevCenterUserDevBox -DevCenterName Contoso -Name myDevBox -ProjectName DevProject
 ```
 This command repairs the dev box "myDevBox". 
 
@@ -20,6 +20,6 @@ This command repairs the dev box "myDevBox".
 ### Example 4: Reapir dev box by dev center and InputObject
 ```powershell
 $devBoxInput = @{"DevBoxName" = "myDevBox"; "UserId" = "me"; "ProjectName" = "DevProject";}
-Repair-AzDevCenterUserDevBox -DevCenter Contoso -InputObject $devBoxInput
+Repair-AzDevCenterUserDevBox -DevCenterName Contoso -InputObject $devBoxInput
 ```
 This command repairs the dev box "myDevBox". 

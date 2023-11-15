@@ -6,7 +6,7 @@ This command skips the action "myEnvironment-Delete" for the environment "myEnvi
 
 ### Example 2: Skip an action on the environment by dev center
 ```powershell
-Skip-AzDevCenterUserEnvironmentAction -DevCenter Contoso -EnvironmentName myEnvironment -ProjectName DevProject -ActionName "myEnvironment-Delete"
+Skip-AzDevCenterUserEnvironmentAction -DevCenterName Contoso -EnvironmentName myEnvironment -ProjectName DevProject -ActionName "myEnvironment-Delete"
 ```
 This command skips the action "myEnvironment-Delete" for the environment "myEnvironment". 
 
@@ -20,6 +20,6 @@ This command skips the action "myEnvironment-Delete" for the environment "myEnvi
 ### Example 4: Skip an action on the environment by dev center and InputObject
 ```powershell
 $environmentInput = @{"EnvironmentName" = "myEnvironment"; "UserId" = "me"; "ProjectName" = "DevProject"; "ActionName" = "myEnvironment-Delete"}
-Skip-AzDevCenterUserEnvironmentAction -DevCenter Contoso -InputObject $environmentInput
+Skip-AzDevCenterUserEnvironmentAction -DevCenterName Contoso -InputObject $environmentInput
 ```
 This command skips the action "myEnvironment-Delete" for the environment "myEnvironment". 

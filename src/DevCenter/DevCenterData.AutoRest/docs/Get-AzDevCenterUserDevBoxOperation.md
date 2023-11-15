@@ -1,7 +1,7 @@
 ---
 external help file:
 Module Name: Az.DevCenterdata
-online version: https://learn.microsoft.com/powershell/module/az.devcenterdata/get-azdevcenteruserdevboxoperation
+online version: https://learn.microsoft.com/powershell/module/az.devcenter/get-azdevcenteruserdevboxoperation
 schema: 2.0.0
 ---
 
@@ -26,7 +26,7 @@ Get-AzDevCenterUserDevBoxOperation -Endpoint <String> -DevBoxName <String> -Oper
 
 ### GetByDevCenter
 ```
-Get-AzDevCenterUserDevBoxOperation -DevCenter <String> -DevBoxName <String> -OperationId <String>
+Get-AzDevCenterUserDevBoxOperation -DevCenterName <String> -DevBoxName <String> -OperationId <String>
  -ProjectName <String> [-UserId <String>] [-DefaultProfile <PSObject>] [<CommonParameters>]
 ```
 
@@ -38,13 +38,13 @@ Get-AzDevCenterUserDevBoxOperation -Endpoint <String> -InputObject <IDevCenterda
 
 ### GetViaIdentityByDevCenter
 ```
-Get-AzDevCenterUserDevBoxOperation -DevCenter <String> -InputObject <IDevCenterdataIdentity>
+Get-AzDevCenterUserDevBoxOperation -DevCenterName <String> -InputObject <IDevCenterdataIdentity>
  [-DefaultProfile <PSObject>] [<CommonParameters>]
 ```
 
 ### ListByDevCenter
 ```
-Get-AzDevCenterUserDevBoxOperation -DevCenter <String> -DevBoxName <String> -ProjectName <String>
+Get-AzDevCenterUserDevBoxOperation -DevCenterName <String> -DevBoxName <String> -ProjectName <String>
  [-UserId <String>] [-DefaultProfile <PSObject>] [<CommonParameters>]
 ```
 
@@ -62,7 +62,7 @@ This command lists the operations on the dev box "myDevBox".
 
 ### Example 2: List operations on the dev box by dev center
 ```powershell
-Get-AzDevCenterUserDevBoxOperation -DevCenter Contoso -DevBoxName myDevBox -ProjectName DevProject
+Get-AzDevCenterUserDevBoxOperation -DevCenterName Contoso -DevBoxName myDevBox -ProjectName DevProject
 ```
 
 This command lists the operations on the dev box "myDevBox".
@@ -76,7 +76,7 @@ This command gets the operation "d0954a94-3550-4919-bcbe-1c94ed79e0cd" for the d
 
 ### Example 4: Get an operation on the dev box by dev center
 ```powershell
-Get-AzDevCenterUserDevBoxOperation -DevCenter Contoso -DevBoxName myDevBox -ProjectName DevProject -OperationId "d0954a94-3550-4919-bcbe-1c94ed79e0cd"
+Get-AzDevCenterUserDevBoxOperation -DevCenterName Contoso -DevBoxName myDevBox -ProjectName DevProject -OperationId "d0954a94-3550-4919-bcbe-1c94ed79e0cd"
 ```
 
 This command gets the operation "d0954a94-3550-4919-bcbe-1c94ed79e0cd" for the dev box "myDevBox".
@@ -92,7 +92,7 @@ This command gets the operation "d0954a94-3550-4919-bcbe-1c94ed79e0cd" for the d
 ### Example 6: Get an operation on the dev box by dev center and InputObject
 ```powershell
 $devBoxInput = @{"DevBoxName" = "myDevBox"; "UserId" = "me"; "ProjectName" = "DevProject"; "OperationId" = "d0954a94-3550-4919-bcbe-1c94ed79e0cd"}
-Get-AzDevCenterUserDevBoxOperation -DevCenter Contoso -InputObject $devBoxInput
+Get-AzDevCenterUserDevBoxOperation -DevCenterName Contoso -InputObject $devBoxInput
 ```
 
 This command gets the operation "d0954a94-3550-4919-bcbe-1c94ed79e0cd" for the dev box "myDevBox".
@@ -130,7 +130,7 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -DevCenter
+### -DevCenterName
 The DevCenter upon which to execute operations.
 
 ```yaml

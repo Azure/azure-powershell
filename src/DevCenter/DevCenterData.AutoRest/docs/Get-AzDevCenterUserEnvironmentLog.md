@@ -1,7 +1,7 @@
 ---
 external help file:
 Module Name: Az.DevCenterdata
-online version: https://learn.microsoft.com/powershell/module/az.devcenterdata/get-azdevcenteruserenvironmentlog
+online version: https://learn.microsoft.com/powershell/module/az.devcenter/get-azdevcenteruserenvironmentlog
 schema: 2.0.0
 ---
 
@@ -21,7 +21,7 @@ Get-AzDevCenterUserEnvironmentLog -Endpoint <String> -EnvironmentName <String> -
 
 ### GetByDevCenter
 ```
-Get-AzDevCenterUserEnvironmentLog -DevCenter <String> -EnvironmentName <String> -OperationId <String>
+Get-AzDevCenterUserEnvironmentLog -DevCenterName <String> -EnvironmentName <String> -OperationId <String>
  -ProjectName <String> -OutFile <String> [-UserId <String>] [-DefaultProfile <PSObject>] [-PassThru]
  [<CommonParameters>]
 ```
@@ -40,7 +40,7 @@ This command gets the logs on the environment "myEnvironment" for the operation 
 
 ### Example 2: Get environment logs by dev center
 ```powershell
-Get-AzDevCenterUserEnvironmentLog -DevCenter Contoso -EnvironmentName myEnvironment -ProjectName DevProject -OperationId "d0954a94-3550-4919-bcbe-1c94ed79e0cd" -Outfile "../output_logs.txt"
+Get-AzDevCenterUserEnvironmentLog -DevCenterName Contoso -EnvironmentName myEnvironment -ProjectName DevProject -OperationId "d0954a94-3550-4919-bcbe-1c94ed79e0cd" -Outfile "../output_logs.txt"
 ```
 
 This command gets the logs on the environment "myEnvironment"  for the operation id "d0954a94-3550-4919-bcbe-1c94ed79e0cd" and outputs the logs to the file "output_logs.txt".
@@ -63,7 +63,7 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -DevCenter
+### -DevCenterName
 The DevCenter upon which to execute operations.
 
 ```yaml

@@ -19,7 +19,7 @@ Describe 'Get-AzDevCenterUserDevBoxOperation' {
         $listOfOperations.Count | Should -BeGreaterOrEqual 1
 
         if ($Record -or $Live) {
-            $listOfOperations = Get-AzDevCenterUserDevBoxAction -DevCenter $env.devCenterName -DevBoxName $env.devboxName -ProjectName $env.projectName
+            $listOfOperations = Get-AzDevCenterUserDevBoxAction -DevCenterName $env.devCenterName -DevBoxName $env.devboxName -ProjectName $env.projectName
             $listOfOperations.Count | Should -BeGreaterOrEqual 1
         }
 
