@@ -34,6 +34,11 @@ namespace Microsoft.Azure.Commands.Sql.Database_Backup.Cmdlet
         private const string UpdateBackupDefaultSet = "UpdateBackupDefault";
 
         /// <summary>
+        /// Parameter set name for remove with a resource ID.
+        /// </summary>
+        private const string UpdateBackupByResourceIdSet = "UpdateBackupByResourceId";
+
+        /// <summary>
         /// Parameter set name for update with an input object.
         /// </summary>
         private const string UpdateBackupByInputObjectSet = "UpdateByInputObjectSet";

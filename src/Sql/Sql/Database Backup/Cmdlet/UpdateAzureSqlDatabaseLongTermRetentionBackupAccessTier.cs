@@ -22,6 +22,9 @@ using Microsoft.Azure.Commands.Sql.Backup.Model;
 using Microsoft.Azure.Commands.Sql.Database.Model;
 using Microsoft.Azure.Management.Internal.Resources.Utilities.Models;
 using Microsoft.Azure.Commands.Common.Exceptions;
+using Microsoft.Azure.Commands.ResourceManager.Common.Tags;
+using Microsoft.Azure.Commands.Sql.Common;
+using Microsoft.Azure.Commands.Sql.ElasticJobs.Model;
 
 namespace Microsoft.Azure.Commands.Sql.Database_Backup.Cmdlet
 {
@@ -154,11 +157,21 @@ namespace Microsoft.Azure.Commands.Sql.Database_Backup.Cmdlet
         protected override IEnumerable<AzureSqlDatabaseLongTermRetentionBackupModel> ApplyUserInputToModel(
             IEnumerable<AzureSqlDatabaseLongTermRetentionBackupModel> model)
         {
-            return model;
+            AzureSqlDatabaseLongTermRetentionBackupModel newEntity = new AzureSqlDatabaseLongTermRetentionBackupModel
+            {
+                ResourceGroupName = model.FirstOrDefault().ResourceGroupName,
+                ServerName = model.FirstOrDefault().ServerName,
+                DatabaseName = model.FirstOrDefault().DatabaseName,
+                Location = model.FirstOrDefault().Location,
+                BackupName = model.FirstOrDefault().BackupName,
+                BackupStorageAccessTier = model.FirstOrDefault().BackupStorageAccessTier,
+                OperationMode = model.FirstOrDefault().OperationMode};
+
+            return new List<AzureSqlDatabaseLongTermRetentionBackupModel> { newEntity };
         }
 
         /// <summary>
-        /// Persist changes to ser
+        /// Sends the changes to the service -> Creates the agent
         /// </summary>
         /// <param name="entity">The output of apply user input to model</param>
         /// <returns>The input entity</returns>
@@ -174,6 +187,7 @@ namespace Microsoft.Azure.Commands.Sql.Database_Backup.Cmdlet
                     ModelAdapter.UpdateDatabaeLongTermRetentionBackupAccessTier(entity.First(), updateParameters)
                 };
             }
+
             return null;
         }
 
@@ -189,9 +203,11 @@ namespace Microsoft.Azure.Commands.Sql.Database_Backup.Cmdlet
                 DatabaseName = InputObject.DatabaseName;
                 BackupName = InputObject.BackupName;
                 ResourceGroupName = InputObject.ResourceGroupName;
+                BackupStorageAccessTier = InputObject.BackupStorageAccessTier;
+                OperationMode = InputObject.OperationMode;
             }
 
-            if (ShouldProcess(this.BackupName))
+            if (ShouldProcess(this.BackupName) && ShouldProcess(this.BackupStorageAccessTier) & ShouldProcess(this.OperationMode))
             {
                 base.ExecuteCmdlet();
             }

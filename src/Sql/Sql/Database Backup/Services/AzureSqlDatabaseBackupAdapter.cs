@@ -17,6 +17,7 @@ using Microsoft.Azure.Commands.Sql.Backup.Model;
 using Microsoft.Azure.Commands.Sql.Database.Model;
 using Microsoft.Azure.Commands.Sql.Server.Adapter;
 using Microsoft.Azure.Management.Sql.LegacySdk.Models;
+using Microsoft.Azure.Management.Sql.Models;
 using Microsoft.Rest.Azure.OData;
 using System;
 using System.Collections.Generic;
@@ -429,7 +430,7 @@ namespace Microsoft.Azure.Commands.Sql.Backup.Services
             AzureSqlDatabaseLongTermRetentionBackupModel model,
             Management.Sql.Models.ChangeLongTermRetentionBackupAccessTierParameters updateParameters)
         {
-            Management.Sql.Models.ChangeLongTermRetentionBackupAccessTierOperationResults response = Communicator.UpdateDatabaseLongTermRetentionBackupAccessTier(
+            LongTermRetentionBackup response = Communicator.UpdateDatabaseLongTermRetentionBackupAccessTier(
                 model.Location,
                 model.ServerName,
                 model.DatabaseName,
@@ -445,6 +446,7 @@ namespace Microsoft.Azure.Commands.Sql.Backup.Services
                 model.BackupName,
                 model.ResourceGroupName);
 
+            // API returns 202 always. Do I still need return a model? 
             AzureSqlDatabaseLongTermRetentionBackupModel backupModel = GetBackupModel(backup, model.Location);
             return backupModel;
         }

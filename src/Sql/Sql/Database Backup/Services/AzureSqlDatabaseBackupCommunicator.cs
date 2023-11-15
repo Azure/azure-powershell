@@ -18,6 +18,7 @@ using Microsoft.Azure.Management.Internal.Resources;
 using Microsoft.Azure.Management.Sql;
 using Microsoft.Azure.Management.Sql.LegacySdk;
 using Microsoft.Azure.Management.Sql.LegacySdk.Models;
+using Microsoft.Azure.Management.Sql.Models;
 using Microsoft.Rest.Azure.OData;
 using System.Collections.Generic;
 
@@ -416,7 +417,7 @@ namespace Microsoft.Azure.Commands.Sql.Backup.Services
         /// <param name="backupName">The backup name.</param>
         /// <param name="resourceGroupName">The resource group name</param>
         /// <param name="parameters">The requested backup resource state</param>
-        public Management.Sql.Models.ChangeLongTermRetentionBackupAccessTierOperationResults UpdateDatabaseLongTermRetentionBackupAccessTier(
+        public LongTermRetentionBackup UpdateDatabaseLongTermRetentionBackupAccessTier(
             string locationName,
             string serverName,
             string databaseName,
@@ -426,11 +427,11 @@ namespace Microsoft.Azure.Commands.Sql.Backup.Services
         {
             if (string.IsNullOrWhiteSpace(resourceGroupName))
             {
-                return GetCurrentSqlClient().LongTermRetentionBackups.Update(locationName, serverName, databaseName, backupName, parameters);
+                return GetCurrentSqlClient().LongTermRetentionBackups.ChangeAccessTier(locationName, serverName, databaseName, backupName, parameters);
             }
             else
             {
-                return GetCurrentSqlClient().LongTermRetentionBackups.UpdateByResourceGroup(resourceGroupName, locationName, serverName, databaseName, backupName, parameters);
+                return GetCurrentSqlClient().LongTermRetentionBackups.ChangeAccessTierByResourceGroup(resourceGroupName, locationName, serverName, databaseName, backupName, parameters);
             }
         }
 
