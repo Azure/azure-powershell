@@ -46,7 +46,7 @@ INPUTOBJECT <IDevCenterdataIdentity>: Identity Parameter
   [ScheduleName <String>]: The name of a schedule.
   [UserId <String>]: The AAD object id of the user. If value is 'me', the identity is taken from the authentication context.
 .Link
-https://learn.microsoft.com/powershell/module/az.devcenterdata/get-azdevcenteruserdevboxoperation
+https://learn.microsoft.com/powershell/module/az.devcenter/get-azdevcenteruserdevboxoperation
 #>
 function Get-AzDevCenterUserDevBoxOperation {
     [OutputType([Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Models.Api20231001Preview.IDevBoxOperation])]
