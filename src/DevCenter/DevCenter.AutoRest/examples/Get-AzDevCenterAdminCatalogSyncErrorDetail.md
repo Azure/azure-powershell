@@ -1,6 +1,6 @@
 ### Example 1: Get the catalog sync error dteail
 ```powershell
-Get-AzDevCenterAdminCatalogSyncErrorDetail -DevCenterName Contoso -Name CentralCatalog -ResourceGroupName testRg
+Get-AzDevCenterAdminCatalogSyncErrorDetail -DevCenterName Contoso -CatalogName CentralCatalog -ResourceGroupName testRg
 ```
 This command gets the sync error detail of the catalog named "CentralCatalog" in the dev center "Contoso" under the resource group "testRg".
 
