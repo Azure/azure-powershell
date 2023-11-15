@@ -29,7 +29,7 @@ For information on how to develop for `Az.Nginx`, see [how-to.md](how-to.md).
 ### AutoRest Configuration
 > see https://aka.ms/autorest
 ``` yaml
-branch: e38e7dd462571865266d320bd7cec9804c67f70b
+commit: e38e7dd462571865266d320bd7cec9804c67f70b
 tag: package-2023-04-01
 require:
 # readme.azure.noprofile.md is the common configuration file
