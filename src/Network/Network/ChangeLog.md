@@ -19,6 +19,7 @@
 --->
 
 ## Upcoming Release
+* Fixed a few minor issues
 
 ## Version 7.0.0
 * [Breaking Change] Removed `Geo` as a valid input for parameter `VariableName` in `NewAzureApplicationGatewayFirewallCustomRuleGroupByVariable`.
