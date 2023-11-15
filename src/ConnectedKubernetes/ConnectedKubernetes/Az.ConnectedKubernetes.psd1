@@ -54,8 +54,7 @@ DotNetFrameworkVersion = '4.7.2'
 RequiredModules = @(@{ModuleName = 'Az.Accounts'; ModuleVersion = '2.13.1'; })
 
 # Assemblies that must be loaded prior to importing this module
-RequiredAssemblies = 
-               'ConnectedKubernetes.Autorest/bin/Az.ConnectedKubernetes.private.dll'
+RequiredAssemblies = 'ConnectedKubernetes.Autorest/bin/Az.ConnectedKubernetes.private.dll'
 
 # Script files (.ps1) that are run in the caller's environment prior to importing this module.
 # ScriptsToProcess = @()
@@ -64,16 +63,15 @@ RequiredAssemblies =
 # TypesToProcess = @()
 
 # Format files (.ps1xml) to be loaded when importing this module
-FormatsToProcess = 
-               'ConnectedKubernetes.Autorest/Az.ConnectedKubernetes.format.ps1xml'
+FormatsToProcess = 'ConnectedKubernetes.Autorest/Az.ConnectedKubernetes.format.ps1xml'
 
 # Modules to import as nested modules of the module specified in RootModule/ModuleToProcess
 NestedModules = @('ConnectedKubernetes.Autorest/Az.ConnectedKubernetes.psm1')
 
 # Functions to export from this module, for best performance, do not use wildcards and do not delete the entry, use an empty array if there are no functions to export.
-FunctionsToExport = 'Get-AzConnectedKubernetes', 
-               'Get-AzConnectedKubernetesUserCredential', 
-               'New-AzConnectedKubernetes', 'Remove-AzConnectedKubernetes', 
+FunctionsToExport = 'Get-AzConnectedKubernetes',
+               'Get-AzConnectedKubernetesUserCredential',
+               'New-AzConnectedKubernetes', 'Remove-AzConnectedKubernetes',
                'Update-AzConnectedKubernetes'
 
 # Cmdlets to export from this module, for best performance, do not use wildcards and do not delete the entry, use an empty array if there are no cmdlets to export.
