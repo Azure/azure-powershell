@@ -421,6 +421,35 @@ namespace Microsoft.Azure.Commands.Sql.Backup.Services
         }
 
         /// <summary>
+        /// Update a Long Term Retention backup storage access tier.
+        /// </summary>
+        /// <param name="model"></param>
+        /// <param name="updateParameters"></param>
+        internal AzureSqlDatabaseLongTermRetentionBackupModel UpdateDatabaeLongTermRetentionBackupAccessTier(
+            AzureSqlDatabaseLongTermRetentionBackupModel model,
+            Management.Sql.Models.ChangeLongTermRetentionBackupAccessTierParameters updateParameters)
+        {
+            Management.Sql.Models.ChangeLongTermRetentionBackupAccessTierOperationResults response = Communicator.UpdateDatabaseLongTermRetentionBackupAccessTier(
+                model.Location,
+                model.ServerName,
+                model.DatabaseName,
+                model.BackupName,
+                model.ResourceGroupName,
+                updateParameters);
+
+            // This is long running operation, response will always be 202, no need to call GET
+            Management.Sql.Models.LongTermRetentionBackup backup = Communicator.GetDatabaseLongTermRetentionBackup(
+                model.Location,
+                model.ServerName,
+                model.DatabaseName,
+                model.BackupName,
+                model.ResourceGroupName);
+
+            AzureSqlDatabaseLongTermRetentionBackupModel backupModel = GetBackupModel(backup, model.Location);
+            return backupModel;
+        }
+
+        /// <summary>
         /// Create or update a backup LongTermRetention vault for a given Azure SQL Server
         /// </summary>
         /// <param name="resourceGroup">The name of the resource group</param>

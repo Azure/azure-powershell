@@ -26,7 +26,7 @@ using Microsoft.Azure.Commands.Common.Exceptions;
 namespace Microsoft.Azure.Commands.Sql.Database_Backup.Cmdlet
 {
     [Cmdlet("Update", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "SqlDatabaseLongTermRetentionBackup", DefaultParameterSetName = UpdateBackupDefaultSet, SupportsShouldProcess = true), OutputType(typeof(AzureSqlDatabaseLongTermRetentionBackupModel))]
-    public class UpdateAzureSqlDatabaseLongTermRetentionBackup : AzureSqlDatabaseLongTermRetentionBackupCmdletBase<AzureSqlDatabaseLongTermRetentionBackupModel>
+    public class UpdateAzureSqlDatabaseLongTermRetentionBackupAccessTier : AzureSqlDatabaseLongTermRetentionBackupCmdletBase<AzureSqlDatabaseLongTermRetentionBackupModel>
     {
         /// <summary>
         /// Parameter set name for remove with an input object.
@@ -72,17 +72,6 @@ namespace Microsoft.Azure.Commands.Sql.Database_Backup.Cmdlet
         public string DatabaseName { get; set; }
 
         /// <summary>
-        /// Gets or sets the resource ID of the LTR Backup to update.
-        /// </summary>
-        [Parameter(ParameterSetName = UpdateBackupByResourceIdSet,
-            Mandatory = true,
-            Position = 0,
-            ValueFromPipelineByPropertyName = true,
-            HelpMessage = "The Resource ID of the Database Long Term Retention Backup to remove.")]
-        [ValidateNotNullOrEmpty]
-        public string ResourceId { get; set; }
-
-        /// <summary>
         /// Gets or sets the backup name.
         /// </summary>
         [Parameter(Mandatory = true,
@@ -94,6 +83,28 @@ namespace Microsoft.Azure.Commands.Sql.Database_Backup.Cmdlet
         public string BackupName { get; set; }
 
         /// <summary>
+        /// Gets or sets the backup name.
+        /// </summary>
+        [Parameter(Mandatory = true,
+            ParameterSetName = UpdateBackupDefaultSet,
+            ValueFromPipelineByPropertyName = true,
+            Position = 4,
+            HelpMessage = "The target storage access tier of the backup.")]
+        [ValidateNotNullOrEmpty]
+        public string BackupStorageAccessTier { get; set; }
+
+        /// <summary>
+        /// Gets or sets the backup name.
+        /// </summary>
+        [Parameter(Mandatory = true,
+            ParameterSetName = UpdateBackupDefaultSet,
+            ValueFromPipelineByPropertyName = true,
+            Position = 5,
+            HelpMessage = "The target operation mode of the target storage access.")]
+        [ValidateNotNullOrEmpty]
+        public string OperationMode { get; set; }
+
+        /// <summary>
         /// Gets or sets the name of the resource group to use.
         /// </summary>
         [Parameter(Mandatory = false,
@@ -101,21 +112,6 @@ namespace Microsoft.Azure.Commands.Sql.Database_Backup.Cmdlet
             HelpMessage = "The name of the resource group.")]
         [ResourceGroupCompleter]
         public override string ResourceGroupName { get; set; }
-
-        /// <summary>
-        /// Gets or sets the backup storage redundancy of the long term retention backup.
-        /// </summary>
-        [Parameter(Mandatory = false,
-            HelpMessage = "The Backup storage redundancy used to store backups for the SQL Database. Options are: Local, Zone and Geo.",
-            ParameterSetName = UpdateBackupDefaultSet)]
-        [Parameter(Mandatory = false,
-            HelpMessage = "The Backup storage redundancy used to store backups for the SQL Database. Options are: Local, Zone and Geo.",
-            ParameterSetName = UpdateBackupByResourceIdSet)]
-        [Parameter(Mandatory = false,
-            HelpMessage = "The Backup storage redundancy used to store backups for the SQL Database. Options are: Local, Zone and Geo.",
-            ParameterSetName = UpdateBackupByInputObjectSet)]
-        [ValidateSet("Local", "Zone", "Geo")]
-        public string BackupStorageRedundancy { get; set; }
 
         /// <summary>
         /// Gets or sets the LTR Backup object to update.
@@ -171,11 +167,11 @@ namespace Microsoft.Azure.Commands.Sql.Database_Backup.Cmdlet
         {
             if (ShouldProcess(DatabaseName))
             {
-                Management.Sql.Models.UpdateLongTermRetentionBackupParameters updateParameters = new Management.Sql.Models.UpdateLongTermRetentionBackupParameters(BackupStorageRedundancy);
+                Management.Sql.Models.ChangeLongTermRetentionBackupAccessTierParameters updateParameters = new Management.Sql.Models.ChangeLongTermRetentionBackupAccessTierParameters(BackupStorageAccessTier, OperationMode);
 
                 return new List<AzureSqlDatabaseLongTermRetentionBackupModel>()
                 {
-                    ModelAdapter.UpdateDatabaseLongTermRetentionBackup(entity.First(), updateParameters)
+                    ModelAdapter.UpdateDatabaeLongTermRetentionBackupAccessTier(entity.First(), updateParameters)
                 };
             }
             return null;
@@ -194,36 +190,10 @@ namespace Microsoft.Azure.Commands.Sql.Database_Backup.Cmdlet
                 BackupName = InputObject.BackupName;
                 ResourceGroupName = InputObject.ResourceGroupName;
             }
-            else if (!string.IsNullOrWhiteSpace(ResourceId))
-            {
-                Dictionary<string, string> resourceIdSegments = ParseLongTermRetentionBackupResourceId(ResourceId);
-                Location = resourceIdSegments["locations"];
-                ServerName = resourceIdSegments["longTermRetentionServers"];
-                DatabaseName = resourceIdSegments["longTermRetentionDatabases"];
-                BackupName = resourceIdSegments["longTermRetentionBackups"];
-                ResourceGroupName = resourceIdSegments.ContainsKey("resourceGroupname") ? resourceIdSegments["resourceGroups"] : null;
-            }
-
-            ShowBackupStorageRedundancyWarningIfNeeded(BackupStorageRedundancy, Location);
 
             if (ShouldProcess(this.BackupName))
             {
                 base.ExecuteCmdlet();
-            }
-        }
-
-        // show warning only for Geo selected, not for none specified
-        protected new void ShowBackupStorageRedundancyWarningIfNeeded(string backupStorageRedundancy, string location)
-        {
-            if (ListOfRegionsToShowWarningMessageForGeoBackupStorage.Contains(location.ToLower()))
-            {
-                if (backupStorageRedundancy != null)
-                {
-                    if (string.Equals(backupStorageRedundancy, "Geo", System.StringComparison.OrdinalIgnoreCase))
-                    {
-                        WriteWarning(string.Format(CultureInfo.InvariantCulture, Properties.Resources.BackupRedundancyChosenIsGeoWarning));
-                    }
-                }
             }
         }
     }
