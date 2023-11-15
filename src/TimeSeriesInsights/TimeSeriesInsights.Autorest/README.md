@@ -47,10 +47,11 @@ In this directory, run AutoRest:
 > see https://aka.ms/autorest
 
 ``` yaml
+commit: 4d7a4424bf14aaf73fcca5a3158336305c3d7ac1
 require:
   - $(this-folder)/../../readme.azure.noprofile.md
 input-file:
-  - https://github.com/Azure/azure-rest-api-specs/blob/4d7a4424bf14aaf73fcca5a3158336305c3d7ac1/specification/timeseriesinsights/resource-manager/Microsoft.TimeSeriesInsights/stable/2020-05-15/timeseriesinsights.json
+  - $(repo)/specification/timeseriesinsights/resource-manager/Microsoft.TimeSeriesInsights/stable/2020-05-15/timeseriesinsights.json
 
 module-version: 0.0.1
 title: TimeSeriesInsights
