@@ -33,7 +33,7 @@ branch: e38e7dd462571865266d320bd7cec9804c67f70b
 tag: package-2023-04-01
 require:
 # readme.azure.noprofile.md is the common configuration file
-  - $(this-folder)/../readme.azure.noprofile.md
+  - $(this-folder)/../../readme.azure.noprofile.md
 input-file:
 # You need to specify your swagger files here.
   - $(repo)/specification/nginx/resource-manager/NGINX.NGINXPLUS/stable/2023-04-01/swagger.json
