@@ -36,7 +36,7 @@ namespace Microsoft.Azure.Management.Network.Models
         /// 'Enabled'</param>
         /// <param name="action">Describes the override action to be applied
         /// when rule matches. Possible values include: 'AnomalyScoring',
-        /// 'Allow', 'Block', 'Log'</param>
+        /// 'Allow', 'Block', 'Log', 'JSChallenge'</param>
         public ManagedRuleOverride(string ruleId, string state = default(string), string action = default(string))
         {
             RuleId = ruleId;
@@ -66,7 +66,7 @@ namespace Microsoft.Azure.Management.Network.Models
         /// <summary>
         /// Gets or sets describes the override action to be applied when rule
         /// matches. Possible values include: 'AnomalyScoring', 'Allow',
-        /// 'Block', 'Log'
+        /// 'Block', 'Log', 'JSChallenge'
         /// </summary>
         [JsonProperty(PropertyName = "action")]
         public string Action { get; set; }
