@@ -1,6 +1,6 @@
 ### Example 1: Start a pool health check
 ```powershell
-Start-AzDevCenterAdminPoolHealthCheck -ResourceGroupName testRg -Name DevPool -ProjectName DevProject
+Start-AzDevCenterAdminPoolHealthCheck -ResourceGroupName testRg -PoolName DevPool -ProjectName DevProject
 ```
 This command starts the health check for the pool named "DevPool" in the project "DevProject".
 
