@@ -49,11 +49,12 @@ In this directory, run AutoRest:
 ### General settings
 > Values
 ``` yaml
+commit: 57e4490a06aad262ca9154dc15b40f5a11bf7af5
 require:
   - $(this-folder)/../../readme.azure.noprofile.md
 # lock the commit
 input-file:
-  - https://github.com/Azure/azure-rest-api-specs/blob/57e4490a06aad262ca9154dc15b40f5a11bf7af5/specification/synapse/resource-manager/Microsoft.Synapse/preview/2021-06-01-preview/kustoPool.json
+  - $(repo)/specification/synapse/resource-manager/Microsoft.Synapse/preview/2021-06-01-preview/kustoPool.json
 
 ```
 

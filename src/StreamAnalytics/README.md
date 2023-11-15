@@ -30,17 +30,18 @@ For information on how to develop for `Az.StreamAnalytics`, see [how-to.md](how-
 > see https://aka.ms/autorest
 
 ``` yaml
+commit: f7fd049bbc0089ad8faa7dc1c89610ca8ad78c83
 require:
   - $(this-folder)/../readme.azure.noprofile.md
 input-file:
-  - https://github.com/Azure/azure-rest-api-specs/blob/ec2cba2ff0953d431b88a9fd4922de76157119e0/specification/streamanalytics/resource-manager/Microsoft.StreamAnalytics/preview/2020-03-01-preview/clusters.json
-  - https://github.com/Azure/azure-rest-api-specs/blob/f7fd049bbc0089ad8faa7dc1c89610ca8ad78c83/specification/streamanalytics/resource-manager/Microsoft.StreamAnalytics/preview/2017-04-01-preview/streamingjobs.json 
-  - https://github.com/Azure/azure-rest-api-specs/blob/ec2cba2ff0953d431b88a9fd4922de76157119e0/specification/streamanalytics/resource-manager/Microsoft.StreamAnalytics/preview/2017-04-01-preview/functions.json 
-  - https://github.com/Azure/azure-rest-api-specs/blob/ec2cba2ff0953d431b88a9fd4922de76157119e0/specification/streamanalytics/resource-manager/Microsoft.StreamAnalytics/preview/2017-04-01-preview/outputs.json
-  - https://github.com/Azure/azure-rest-api-specs/blob/ec2cba2ff0953d431b88a9fd4922de76157119e0/specification/streamanalytics/resource-manager/Microsoft.StreamAnalytics/preview/2017-04-01-preview/inputs.json
-  - https://github.com/Azure/azure-rest-api-specs/blob/ec2cba2ff0953d431b88a9fd4922de76157119e0/specification/streamanalytics/resource-manager/Microsoft.StreamAnalytics/preview/2017-04-01-preview/transformations.json
-  - https://github.com/Azure/azure-rest-api-specs/blob/ec2cba2ff0953d431b88a9fd4922de76157119e0/specification/streamanalytics/resource-manager/Microsoft.StreamAnalytics/preview/2017-04-01-preview/subscriptions.json
-  - https://github.com/Azure/azure-rest-api-specs/blob/ec2cba2ff0953d431b88a9fd4922de76157119e0/specification/streamanalytics/resource-manager/Microsoft.StreamAnalytics/preview/2017-04-01-preview/operations.json
+  - $(repo)/specification/streamanalytics/resource-manager/Microsoft.StreamAnalytics/preview/2020-03-01-preview/clusters.json
+  - $(repo)/specification/streamanalytics/resource-manager/Microsoft.StreamAnalytics/preview/2017-04-01-preview/streamingjobs.json 
+  - $(repo)/specification/streamanalytics/resource-manager/Microsoft.StreamAnalytics/preview/2017-04-01-preview/functions.json 
+  - $(repo)/specification/streamanalytics/resource-manager/Microsoft.StreamAnalytics/preview/2017-04-01-preview/outputs.json
+  - $(repo)/specification/streamanalytics/resource-manager/Microsoft.StreamAnalytics/preview/2017-04-01-preview/inputs.json
+  - $(repo)/specification/streamanalytics/resource-manager/Microsoft.StreamAnalytics/preview/2017-04-01-preview/transformations.json
+  - $(repo)/specification/streamanalytics/resource-manager/Microsoft.StreamAnalytics/preview/2017-04-01-preview/subscriptions.json
+  - $(repo)/specification/streamanalytics/resource-manager/Microsoft.StreamAnalytics/preview/2017-04-01-preview/operations.json
 
 title: StreamAnalytics
 module-version: 2.0.0
