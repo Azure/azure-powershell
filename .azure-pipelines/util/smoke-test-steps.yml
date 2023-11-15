@@ -128,14 +128,12 @@ jobs:
       arguments: '-RequiredPsVersion ${{ parameters.psVersion }} -Script "./tools/Test/SmokeTest/RmCoreSmokeTests.ps1 " -PowerShellPath "${{ parameters.PowerShellPath }}" -AgentOS "$(Agent.OS)"'
       failOnStderr: true
 
-
   - task: PowerShell@2
     displayName: 'Run Smoke Test Reversely'
     inputs:
       filePath: 'tools/Test/SmokeTest/ScriptsCaller.ps1'
       arguments: '-RequiredPsVersion ${{ parameters.psVersion }} -Script "./tools/Test/SmokeTest/RmCoreSmokeTests.ps1 -Reverse" -PowerShellPath "${{ parameters.PowerShellPath }}" -AgentOS "$(Agent.OS)"'
       failOnStderr: true
-
 
   - task: PowerShell@2
     displayName: Clean Az Modules
@@ -156,14 +154,12 @@ jobs:
       arguments: '-RequiredPsVersion ${{ parameters.psVersion }} -Script "./tools/Test/SmokeTest/RmCoreSmokeTests.ps1 " -PowerShellPath "${{ parameters.PowerShellPath }}" -AgentOS "$(Agent.OS)"'
       failOnStderr: true
 
-
   - task: PowerShell@2
     displayName: 'Run Smoke Test Reversely'
     inputs:
       filePath: 'tools/Test/SmokeTest/ScriptsCaller.ps1'
       arguments: '-RequiredPsVersion ${{ parameters.psVersion }} -Script "./tools/Test/SmokeTest/RmCoreSmokeTests.ps1 -Reverse " -PowerShellPath "${{ parameters.PowerShellPath }}" -AgentOS "$(Agent.OS)"'
       failOnStderr: true
-
 
   - task: PowerShell@2
     displayName: Clean Az Modules
