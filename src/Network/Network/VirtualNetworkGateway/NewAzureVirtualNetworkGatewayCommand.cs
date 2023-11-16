@@ -649,7 +649,7 @@ namespace Microsoft.Azure.Commands.Network
 
             if (!string.IsNullOrEmpty(this.GatewaySku) && this.GatewaySku.Equals(MNM.VirtualNetworkGatewaySkuTier.ErGwScale))
             {
-                if (this.MaxScaleUnit > 0 && this.MinScaleUnit > this.MaxScaleUnit)
+                if (this.MaxScaleUnit > 0 && this.MinScaleUnit > this.MaxScaleUnit || this.MinScaleUnit > 40 || this.MaxScaleUnit > 40)
                 {
                    throw new PSArgumentException(string.Format(Properties.Resources.InvalidAutoScaleConfiguration, this.MinScaleUnit, this.MaxScaleUnit));
                 }
