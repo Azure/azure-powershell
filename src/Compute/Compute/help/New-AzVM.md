@@ -295,7 +295,7 @@ New-AzResourceGroup -Name $rgname -Location $loc -Force;
 $domainNameLabel1 = 'd1' + $rgname;
 $vmsize = 'Standard_D4s_v3';
 $vmname1 = 'v' + $rgname;
-$imageName = "Win2016DataCenterGenSecond";
+$imageName = "Win2022AzureEdition";
 $disable = $false;
 $enable = $true;
 $securityType = "TrustedLaunch";
@@ -739,7 +739,7 @@ Accept wildcard characters: False
 ```
 
 ### -Image
-The friendly image name upon which the VM will be built. The available aliases are: Win2022AzureEditionCore, Win2019Datacenter, Win2016Datacenter, Win2012R2Datacenter, Win2012Datacenter, Ubuntu2204, CentOS85Gen2, Debian11, OpenSuseLeap154Gen2, RHELRaw8LVMGen2, SuseSles15SP3, FlatcarLinuxFreeGen2.
+The friendly image name upon which the VM will be built. The available aliases are: Win2022AzureEdition, Win2022AzureEditionCore, Win2019Datacenter, Win2016Datacenter, Win2012R2Datacenter, Win2012Datacenter, Ubuntu2204, CentOS85Gen2, Debian11, OpenSuseLeap154Gen2, RHELRaw8LVMGen2, SuseSles15SP3, FlatcarLinuxFreeGen2.
 
 ```yaml
 Type: System.String
