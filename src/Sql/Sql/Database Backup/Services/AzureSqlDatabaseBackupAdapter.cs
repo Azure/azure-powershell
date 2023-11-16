@@ -13,8 +13,10 @@
 // ----------------------------------------------------------------------------------
 
 using Microsoft.Azure.Commands.Common.Authentication.Abstractions;
+using Microsoft.Azure.Commands.Common.KeyVault.Version2016_10_1.Models;
 using Microsoft.Azure.Commands.Sql.Backup.Model;
 using Microsoft.Azure.Commands.Sql.Database.Model;
+using Microsoft.Azure.Commands.Sql.FailoverGroup.Model;
 using Microsoft.Azure.Commands.Sql.Server.Adapter;
 using Microsoft.Azure.Management.Sql.LegacySdk.Models;
 using Microsoft.Azure.Management.Sql.Models;
@@ -438,17 +440,16 @@ namespace Microsoft.Azure.Commands.Sql.Backup.Services
                 model.ResourceGroupName,
                 updateParameters);
 
-            // This is long running operation, response will always be 202, no need to call GET
-            Management.Sql.Models.LongTermRetentionBackup backup = Communicator.GetDatabaseLongTermRetentionBackup(
-                model.Location,
-                model.ServerName,
-                model.DatabaseName,
-                model.BackupName,
-                model.ResourceGroupName);
-
-            // API returns 202 always. Do I still need return a model? 
-            AzureSqlDatabaseLongTermRetentionBackupModel backupModel = GetBackupModel(backup, model.Location);
-            return backupModel;
+            return new AzureSqlDatabaseLongTermRetentionBackupModel()
+            {
+                Location = model.Location,
+                ServerName = response.ServerName,
+                DatabaseName = response.DatabaseName,
+                BackupName = model.BackupName,
+                ResourceGroupName = model.ResourceGroupName,
+                BackupStorageAccessTier = response.BackupStorageAccessTier,
+                OperationMode = model.OperationMode
+            };
         }
 
         /// <summary>
