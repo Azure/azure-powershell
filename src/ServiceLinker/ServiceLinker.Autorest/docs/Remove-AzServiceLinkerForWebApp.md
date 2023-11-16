@@ -35,10 +35,6 @@ Delete a link in webapp.
 Remove-AzServiceLinkerForWebApp -WebApp servicelinker-app -ResourceGroupName servicelinker-test-group -Name testLinker       
 ```
 
-```output
-
-```
-
 Remove linker
 
 ## PARAMETERS

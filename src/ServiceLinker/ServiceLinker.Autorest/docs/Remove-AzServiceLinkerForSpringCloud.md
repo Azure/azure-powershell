@@ -36,10 +36,6 @@ Delete a link in spring cloud.
 Remove-AzServiceLinkerForSpringCloud -ServiceName servicelinker-springcloud -AppName appconfiguration -DeploymentName "default" -ResourceGroupName servicelinker-test-group -Name testLinker
 ```
 
-```output
-
-```
-
 Remove linker
 
 ## PARAMETERS
