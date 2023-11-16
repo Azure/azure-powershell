@@ -14,16 +14,16 @@ Delays the occurrence of an action.
 
 ### Delay (Default)
 ```
-Invoke-AzDevCenterUserDelayEnvironmentAction -Endpoint <String> -ActionName <String> -EnvironmentName <String>
+Invoke-AzDevCenterUserDelayEnvironmentAction -Endpoint <String> -EnvironmentName <String> -Name <String>
  -ProjectName <String> -DelayTime <TimeSpan> [-UserId <String>] [-DefaultProfile <PSObject>] [-Confirm]
  [-WhatIf] [<CommonParameters>]
 ```
 
 ### DelayByDevCenter
 ```
-Invoke-AzDevCenterUserDelayEnvironmentAction -DevCenterName <String> -ActionName <String>
- -EnvironmentName <String> -ProjectName <String> -DelayTime <TimeSpan> [-UserId <String>]
- [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
+Invoke-AzDevCenterUserDelayEnvironmentAction -DevCenterName <String> -EnvironmentName <String> -Name <String>
+ -ProjectName <String> -DelayTime <TimeSpan> [-UserId <String>] [-DefaultProfile <PSObject>] [-Confirm]
+ [-WhatIf] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -33,34 +33,19 @@ Delays the occurrence of an action.
 
 ### Example 1: Delay an action on the environment by endpoint
 ```powershell
-Invoke-AzDevCenterUserDelayEnvironmentAction -Endpoint "https://8a40af38-3b4c-4672-a6a4-5e964b1870ed-contosodevcenter.centralus.devcenter.azure.com/" -EnvironmentName myEnvironment -ProjectName DevProject -ActionName "myEnvironment-Delete" -DelayTime "00:30"
+Invoke-AzDevCenterUserDelayEnvironmentAction -Endpoint "https://8a40af38-3b4c-4672-a6a4-5e964b1870ed-contosodevcenter.centralus.devcenter.azure.com/" -EnvironmentName myEnvironment -ProjectName DevProject -Name "myEnvironment-Delete" -DelayTime "00:30"
 ```
 
 This command delays the action "schedule-default" for the environment "myEnvironment" for 30 minutes.
 
 ### Example 2: Delay an action on the environment by dev center
 ```powershell
-Invoke-AzDevCenterUserDelayEnvironmentAction -DevCenterName Contoso -EnvironmentName myEnvironment -UserId "me" -ProjectName DevProject -ActionName "myEnvironment-Delete" -DelayTime "05:15"
+Invoke-AzDevCenterUserDelayEnvironmentAction -DevCenterName Contoso -EnvironmentName myEnvironment -UserId "me" -ProjectName DevProject -Name "myEnvironment-Delete" -DelayTime "05:15"
 ```
 
 This command delays the action "myEnvironment-Delete" for the environment "myEnvironment" for 5 hours and 15 minutes.
 
 ## PARAMETERS
-
-### -ActionName
-The name of an action that will take place on an Environment.
-
-```yaml
-Type: System.String
-Parameter Sets: (All)
-Aliases:
-
-Required: True
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
 
 ### -DefaultProfile
 The DefaultProfile parameter is not functional.
@@ -126,6 +111,21 @@ Accept wildcard characters: False
 
 ### -EnvironmentName
 The name of the environment.
+
+```yaml
+Type: System.String
+Parameter Sets: (All)
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -Name
+The name of an action that will take place on an Environment.
 
 ```yaml
 Type: System.String
