@@ -18,15 +18,15 @@
         "Cache-Control": [ "no-cache" ],
         "Pragma": [ "no-cache" ],
         "X-Content-Type-Options": [ "nosniff" ],
-        "x-ms-request-id": [ "bad8e9d3-6297-46a6-9a0c-c5e8998d6606" ],
-        "x-ms-client-request-id": [ "87bd5994-3078-4992-bb44-7a941b881a9e" ],
+        "x-ms-request-id": [ "b76b801f-8f24-4bd2-97a3-a6d1a8a3ef57" ],
+        "x-ms-client-request-id": [ "62274606-dd01-4fa0-a340-5f06203201b3" ],
         "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
         "Server": [ "Kestrel" ],
         "X-Powered-By": [ "ASP.NET" ],
         "x-ms-ratelimit-remaining-subscription-writes": [ "1199" ],
-        "x-ms-correlation-request-id": [ "bad8e9d3-6297-46a6-9a0c-c5e8998d6606" ],
-        "x-ms-routing-request-id": [ "WESTINDIA:20231025T093058Z:bad8e9d3-6297-46a6-9a0c-c5e8998d6606" ],
-        "Date": [ "Wed, 25 Oct 2023 09:30:57 GMT" ]
+        "x-ms-correlation-request-id": [ "b76b801f-8f24-4bd2-97a3-a6d1a8a3ef57" ],
+        "x-ms-routing-request-id": [ "WESTINDIA:20231106T124952Z:b76b801f-8f24-4bd2-97a3-a6d1a8a3ef57" ],
+        "Date": [ "Mon, 06 Nov 2023 12:49:51 GMT" ]
       },
       "ContentHeaders": {
         "Content-Length": [ "1774" ],
@@ -45,11 +45,11 @@
       "isContentBase64": false,
       "Headers": {
         "x-ms-unique-id": [ "2" ],
-        "x-ms-client-request-id": [ "f468f784-132f-488a-a40a-0c7163671e25" ],
+        "x-ms-client-request-id": [ "9b8da259-b673-4ddb-b81b-e7a7f72dc40c" ],
         "CommandName": [ "Az.RecoveryServices.Internal\\Get-AzRecoveryServicesBackupPolicy" ],
         "FullCommandName": [ "Get-AzRecoveryServicesBackupPolicy_Get" ],
         "ParameterSetName": [ "__AllParameterSets" ],
-        "User-Agent": [ "AzurePowershell/v0.0.0", "PSVersion/v7.3.8", "Az.RecoveryServices/0.1.0" ],
+        "User-Agent": [ "AzurePowershell/v0.0.0", "PSVersion/v7.3.9", "Az.RecoveryServices/0.1.0" ],
         "Authorization": [ "[Filtered]" ]
       },
       "ContentHeaders": {
@@ -61,15 +61,15 @@
         "Cache-Control": [ "no-cache" ],
         "Pragma": [ "no-cache" ],
         "X-Content-Type-Options": [ "nosniff" ],
-        "x-ms-request-id": [ "8ae8124d-b978-42fd-91de-678b22cf3787" ],
-        "x-ms-client-request-id": [ "f468f784-132f-488a-a40a-0c7163671e25" ],
+        "x-ms-request-id": [ "f4bb6037-b717-4c04-a3ae-43cb3d49cf0d" ],
+        "x-ms-client-request-id": [ "9b8da259-b673-4ddb-b81b-e7a7f72dc40c" ],
         "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
         "Server": [ "Kestrel" ],
         "X-Powered-By": [ "ASP.NET" ],
         "x-ms-ratelimit-remaining-subscription-resource-requests": [ "299" ],
-        "x-ms-correlation-request-id": [ "8ae8124d-b978-42fd-91de-678b22cf3787" ],
-        "x-ms-routing-request-id": [ "WESTINDIA:20231025T093058Z:8ae8124d-b978-42fd-91de-678b22cf3787" ],
-        "Date": [ "Wed, 25 Oct 2023 09:30:58 GMT" ]
+        "x-ms-correlation-request-id": [ "f4bb6037-b717-4c04-a3ae-43cb3d49cf0d" ],
+        "x-ms-routing-request-id": [ "WESTINDIA:20231106T124952Z:f4bb6037-b717-4c04-a3ae-43cb3d49cf0d" ],
+        "Date": [ "Mon, 06 Nov 2023 12:49:52 GMT" ]
       },
       "ContentHeaders": {
         "Content-Length": [ "1774" ],
@@ -88,11 +88,11 @@
       "isContentBase64": false,
       "Headers": {
         "x-ms-unique-id": [ "3" ],
-        "x-ms-client-request-id": [ "ab4d513c-af32-4e2a-9d88-e8d9ebd6829e" ],
+        "x-ms-client-request-id": [ "70bb0fad-85d6-43fe-934d-608f6b748169" ],
         "CommandName": [ "Remove-AzRecoveryServicesBackupProtectionPolicy" ],
         "FullCommandName": [ "Remove-AzRecoveryServicesBackupProtectionPolicy_Delete" ],
         "ParameterSetName": [ "__AllParameterSets" ],
-        "User-Agent": [ "AzurePowershell/v0.0.0", "PSVersion/v7.3.8", "Az.RecoveryServices/0.1.0" ],
+        "User-Agent": [ "AzurePowershell/v0.0.0", "PSVersion/v7.3.9", "Az.RecoveryServices/0.1.0" ],
         "Authorization": [ "[Filtered]" ]
       },
       "ContentHeaders": {
@@ -104,15 +104,15 @@
         "Cache-Control": [ "no-cache" ],
         "Pragma": [ "no-cache" ],
         "X-Content-Type-Options": [ "nosniff" ],
-        "x-ms-request-id": [ "899da968-3dfd-4e25-9331-920d924858c7" ],
-        "x-ms-client-request-id": [ "ab4d513c-af32-4e2a-9d88-e8d9ebd6829e" ],
+        "x-ms-request-id": [ "2299ce55-33ab-4c28-b391-2b646b01d24a" ],
+        "x-ms-client-request-id": [ "70bb0fad-85d6-43fe-934d-608f6b748169" ],
         "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
         "Server": [ "Kestrel" ],
         "X-Powered-By": [ "ASP.NET" ],
         "x-ms-ratelimit-remaining-subscription-deletes": [ "14999" ],
-        "x-ms-correlation-request-id": [ "899da968-3dfd-4e25-9331-920d924858c7" ],
-        "x-ms-routing-request-id": [ "WESTINDIA:20231025T093059Z:899da968-3dfd-4e25-9331-920d924858c7" ],
-        "Date": [ "Wed, 25 Oct 2023 09:30:59 GMT" ]
+        "x-ms-correlation-request-id": [ "2299ce55-33ab-4c28-b391-2b646b01d24a" ],
+        "x-ms-routing-request-id": [ "WESTINDIA:20231106T124953Z:2299ce55-33ab-4c28-b391-2b646b01d24a" ],
+        "Date": [ "Mon, 06 Nov 2023 12:49:53 GMT" ]
       },
       "ContentHeaders": {
         "Expires": [ "-1" ],
@@ -141,15 +141,15 @@
         "Cache-Control": [ "no-cache" ],
         "Pragma": [ "no-cache" ],
         "X-Content-Type-Options": [ "nosniff" ],
-        "x-ms-request-id": [ "6f61a8d2-aa9d-4936-ba25-6532256c4334" ],
-        "x-ms-client-request-id": [ "c611c50f-72e7-4fe1-b63a-4bb40acda0d1" ],
+        "x-ms-request-id": [ "aa809cb6-b189-4209-8f30-bff52968c1f6" ],
+        "x-ms-client-request-id": [ "44023c47-5877-4a31-b461-1bec7493e7ca" ],
         "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
         "Server": [ "Kestrel" ],
         "X-Powered-By": [ "ASP.NET" ],
         "x-ms-ratelimit-remaining-subscription-writes": [ "1198" ],
-        "x-ms-correlation-request-id": [ "6f61a8d2-aa9d-4936-ba25-6532256c4334" ],
-        "x-ms-routing-request-id": [ "WESTINDIA:20231025T093101Z:6f61a8d2-aa9d-4936-ba25-6532256c4334" ],
-        "Date": [ "Wed, 25 Oct 2023 09:31:00 GMT" ]
+        "x-ms-correlation-request-id": [ "aa809cb6-b189-4209-8f30-bff52968c1f6" ],
+        "x-ms-routing-request-id": [ "WESTINDIA:20231106T124954Z:aa809cb6-b189-4209-8f30-bff52968c1f6" ],
+        "Date": [ "Mon, 06 Nov 2023 12:49:54 GMT" ]
       },
       "ContentHeaders": {
         "Content-Length": [ "1572" ],
@@ -168,11 +168,11 @@
       "isContentBase64": false,
       "Headers": {
         "x-ms-unique-id": [ "5" ],
-        "x-ms-client-request-id": [ "cdd12a4b-2de8-4d00-9923-6fb7ebac165d" ],
+        "x-ms-client-request-id": [ "c04ce0a6-54fc-4b0d-bf00-73fdcefb2ede" ],
         "CommandName": [ "Az.RecoveryServices.Internal\\Get-AzRecoveryServicesBackupPolicy" ],
         "FullCommandName": [ "Get-AzRecoveryServicesBackupPolicy_Get" ],
         "ParameterSetName": [ "__AllParameterSets" ],
-        "User-Agent": [ "AzurePowershell/v0.0.0", "PSVersion/v7.3.8", "Az.RecoveryServices/0.1.0" ],
+        "User-Agent": [ "AzurePowershell/v0.0.0", "PSVersion/v7.3.9", "Az.RecoveryServices/0.1.0" ],
         "Authorization": [ "[Filtered]" ]
       },
       "ContentHeaders": {
@@ -184,15 +184,15 @@
         "Cache-Control": [ "no-cache" ],
         "Pragma": [ "no-cache" ],
         "X-Content-Type-Options": [ "nosniff" ],
-        "x-ms-request-id": [ "601d4495-2f07-465d-9941-5949a216e75e" ],
-        "x-ms-client-request-id": [ "cdd12a4b-2de8-4d00-9923-6fb7ebac165d" ],
+        "x-ms-request-id": [ "5323a7de-9c70-4b25-a337-e670f28b65c2" ],
+        "x-ms-client-request-id": [ "c04ce0a6-54fc-4b0d-bf00-73fdcefb2ede" ],
         "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
         "Server": [ "Kestrel" ],
         "X-Powered-By": [ "ASP.NET" ],
         "x-ms-ratelimit-remaining-subscription-resource-requests": [ "298" ],
-        "x-ms-correlation-request-id": [ "601d4495-2f07-465d-9941-5949a216e75e" ],
-        "x-ms-routing-request-id": [ "WESTINDIA:20231025T093102Z:601d4495-2f07-465d-9941-5949a216e75e" ],
-        "Date": [ "Wed, 25 Oct 2023 09:31:01 GMT" ]
+        "x-ms-correlation-request-id": [ "5323a7de-9c70-4b25-a337-e670f28b65c2" ],
+        "x-ms-routing-request-id": [ "WESTINDIA:20231106T124955Z:5323a7de-9c70-4b25-a337-e670f28b65c2" ],
+        "Date": [ "Mon, 06 Nov 2023 12:49:54 GMT" ]
       },
       "ContentHeaders": {
         "Content-Length": [ "1572" ],
@@ -211,11 +211,11 @@
       "isContentBase64": false,
       "Headers": {
         "x-ms-unique-id": [ "6" ],
-        "x-ms-client-request-id": [ "e5e4ea25-f9b9-4b35-958c-05279ce97fa7" ],
+        "x-ms-client-request-id": [ "e298b547-a4e6-42e1-b583-d8168f9f49d9" ],
         "CommandName": [ "Remove-AzRecoveryServicesBackupProtectionPolicy" ],
         "FullCommandName": [ "Remove-AzRecoveryServicesBackupProtectionPolicy_Delete" ],
         "ParameterSetName": [ "__AllParameterSets" ],
-        "User-Agent": [ "AzurePowershell/v0.0.0", "PSVersion/v7.3.8", "Az.RecoveryServices/0.1.0" ],
+        "User-Agent": [ "AzurePowershell/v0.0.0", "PSVersion/v7.3.9", "Az.RecoveryServices/0.1.0" ],
         "Authorization": [ "[Filtered]" ]
       },
       "ContentHeaders": {
@@ -227,15 +227,15 @@
         "Cache-Control": [ "no-cache" ],
         "Pragma": [ "no-cache" ],
         "X-Content-Type-Options": [ "nosniff" ],
-        "x-ms-request-id": [ "2118cc22-6a50-4d02-ba22-a372c7ca893d" ],
-        "x-ms-client-request-id": [ "e5e4ea25-f9b9-4b35-958c-05279ce97fa7" ],
+        "x-ms-request-id": [ "019d9cc3-db67-462e-ad7a-a13ef1727f4c" ],
+        "x-ms-client-request-id": [ "e298b547-a4e6-42e1-b583-d8168f9f49d9" ],
         "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
         "Server": [ "Kestrel" ],
         "X-Powered-By": [ "ASP.NET" ],
         "x-ms-ratelimit-remaining-subscription-deletes": [ "14998" ],
-        "x-ms-correlation-request-id": [ "2118cc22-6a50-4d02-ba22-a372c7ca893d" ],
-        "x-ms-routing-request-id": [ "WESTINDIA:20231025T093103Z:2118cc22-6a50-4d02-ba22-a372c7ca893d" ],
-        "Date": [ "Wed, 25 Oct 2023 09:31:02 GMT" ]
+        "x-ms-correlation-request-id": [ "019d9cc3-db67-462e-ad7a-a13ef1727f4c" ],
+        "x-ms-routing-request-id": [ "WESTINDIA:20231106T124956Z:019d9cc3-db67-462e-ad7a-a13ef1727f4c" ],
+        "Date": [ "Mon, 06 Nov 2023 12:49:55 GMT" ]
       },
       "ContentHeaders": {
         "Expires": [ "-1" ],
@@ -264,15 +264,15 @@
         "Cache-Control": [ "no-cache" ],
         "Pragma": [ "no-cache" ],
         "X-Content-Type-Options": [ "nosniff" ],
-        "x-ms-request-id": [ "0006aa38-ae87-4268-b8e9-76d944fa1262" ],
-        "x-ms-client-request-id": [ "0ce44740-1249-4e29-95eb-c1424fe0fb6f" ],
+        "x-ms-request-id": [ "36a13069-f88d-4940-af18-d3549b11b248" ],
+        "x-ms-client-request-id": [ "d0c25940-25dc-4a60-a458-4d41508c3dd9" ],
         "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
         "Server": [ "Kestrel" ],
         "X-Powered-By": [ "ASP.NET" ],
         "x-ms-ratelimit-remaining-subscription-writes": [ "1197" ],
-        "x-ms-correlation-request-id": [ "0006aa38-ae87-4268-b8e9-76d944fa1262" ],
-        "x-ms-routing-request-id": [ "WESTINDIA:20231025T093104Z:0006aa38-ae87-4268-b8e9-76d944fa1262" ],
-        "Date": [ "Wed, 25 Oct 2023 09:31:03 GMT" ]
+        "x-ms-correlation-request-id": [ "36a13069-f88d-4940-af18-d3549b11b248" ],
+        "x-ms-routing-request-id": [ "WESTINDIA:20231106T124957Z:36a13069-f88d-4940-af18-d3549b11b248" ],
+        "Date": [ "Mon, 06 Nov 2023 12:49:56 GMT" ]
       },
       "ContentHeaders": {
         "Content-Length": [ "1833" ],
@@ -291,11 +291,11 @@
       "isContentBase64": false,
       "Headers": {
         "x-ms-unique-id": [ "8" ],
-        "x-ms-client-request-id": [ "c42b84c0-2f95-4d77-8f58-a728e3d626c9" ],
+        "x-ms-client-request-id": [ "921cd52a-e708-47b5-97bd-b5a38f6bd036" ],
         "CommandName": [ "Az.RecoveryServices.Internal\\Get-AzRecoveryServicesBackupPolicy" ],
         "FullCommandName": [ "Get-AzRecoveryServicesBackupPolicy_Get" ],
         "ParameterSetName": [ "__AllParameterSets" ],
-        "User-Agent": [ "AzurePowershell/v0.0.0", "PSVersion/v7.3.8", "Az.RecoveryServices/0.1.0" ],
+        "User-Agent": [ "AzurePowershell/v0.0.0", "PSVersion/v7.3.9", "Az.RecoveryServices/0.1.0" ],
         "Authorization": [ "[Filtered]" ]
       },
       "ContentHeaders": {
@@ -307,15 +307,15 @@
         "Cache-Control": [ "no-cache" ],
         "Pragma": [ "no-cache" ],
         "X-Content-Type-Options": [ "nosniff" ],
-        "x-ms-request-id": [ "7f799f49-dacf-403e-a982-bde06ae1ecee" ],
-        "x-ms-client-request-id": [ "c42b84c0-2f95-4d77-8f58-a728e3d626c9" ],
+        "x-ms-request-id": [ "04d4a20a-9551-49e2-a0ae-d83a6832077d" ],
+        "x-ms-client-request-id": [ "921cd52a-e708-47b5-97bd-b5a38f6bd036" ],
         "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
         "Server": [ "Kestrel" ],
         "X-Powered-By": [ "ASP.NET" ],
         "x-ms-ratelimit-remaining-subscription-resource-requests": [ "297" ],
-        "x-ms-correlation-request-id": [ "7f799f49-dacf-403e-a982-bde06ae1ecee" ],
-        "x-ms-routing-request-id": [ "WESTINDIA:20231025T093104Z:7f799f49-dacf-403e-a982-bde06ae1ecee" ],
-        "Date": [ "Wed, 25 Oct 2023 09:31:04 GMT" ]
+        "x-ms-correlation-request-id": [ "04d4a20a-9551-49e2-a0ae-d83a6832077d" ],
+        "x-ms-routing-request-id": [ "WESTINDIA:20231106T124958Z:04d4a20a-9551-49e2-a0ae-d83a6832077d" ],
+        "Date": [ "Mon, 06 Nov 2023 12:49:57 GMT" ]
       },
       "ContentHeaders": {
         "Content-Length": [ "1833" ],
@@ -334,11 +334,11 @@
       "isContentBase64": false,
       "Headers": {
         "x-ms-unique-id": [ "9" ],
-        "x-ms-client-request-id": [ "b29df603-0e05-454b-b6f1-e13191c9a301" ],
+        "x-ms-client-request-id": [ "d918a0bc-ada7-477e-ab87-9dfba097f5f4" ],
         "CommandName": [ "Remove-AzRecoveryServicesBackupProtectionPolicy" ],
         "FullCommandName": [ "Remove-AzRecoveryServicesBackupProtectionPolicy_Delete" ],
         "ParameterSetName": [ "__AllParameterSets" ],
-        "User-Agent": [ "AzurePowershell/v0.0.0", "PSVersion/v7.3.8", "Az.RecoveryServices/0.1.0" ],
+        "User-Agent": [ "AzurePowershell/v0.0.0", "PSVersion/v7.3.9", "Az.RecoveryServices/0.1.0" ],
         "Authorization": [ "[Filtered]" ]
       },
       "ContentHeaders": {
@@ -350,15 +350,15 @@
         "Cache-Control": [ "no-cache" ],
         "Pragma": [ "no-cache" ],
         "X-Content-Type-Options": [ "nosniff" ],
-        "x-ms-request-id": [ "5b1c96d7-e9ed-461f-87c5-602c59fd8590" ],
-        "x-ms-client-request-id": [ "b29df603-0e05-454b-b6f1-e13191c9a301" ],
+        "x-ms-request-id": [ "ea2a2aaa-182e-4a68-969b-28e6b55171a7" ],
+        "x-ms-client-request-id": [ "d918a0bc-ada7-477e-ab87-9dfba097f5f4" ],
         "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
         "Server": [ "Kestrel" ],
         "X-Powered-By": [ "ASP.NET" ],
         "x-ms-ratelimit-remaining-subscription-deletes": [ "14997" ],
-        "x-ms-correlation-request-id": [ "5b1c96d7-e9ed-461f-87c5-602c59fd8590" ],
-        "x-ms-routing-request-id": [ "WESTINDIA:20231025T093105Z:5b1c96d7-e9ed-461f-87c5-602c59fd8590" ],
-        "Date": [ "Wed, 25 Oct 2023 09:31:05 GMT" ]
+        "x-ms-correlation-request-id": [ "ea2a2aaa-182e-4a68-969b-28e6b55171a7" ],
+        "x-ms-routing-request-id": [ "WESTINDIA:20231106T124959Z:ea2a2aaa-182e-4a68-969b-28e6b55171a7" ],
+        "Date": [ "Mon, 06 Nov 2023 12:49:58 GMT" ]
       },
       "ContentHeaders": {
         "Expires": [ "-1" ],
@@ -372,7 +372,7 @@
     "Request": {
       "Method": "PUT",
       "RequestUri": "https://management.azure.com/subscriptions/38304e13-357e-405e-9e9a-220351dcce8c/resourceGroups/arohijain-rg/providers/Microsoft.RecoveryServices/vaults/arohijain-vault/backupPolicies/arohijain-p-1?api-version=2023-02-01",
-      "Content": "{\r\n  \"properties\": {\r\n    \"backupManagementType\": \"AzureWorkload\",\r\n    \"workLoadType\": \"SAPHanaDatabase\",\r\n    \"settings\": {\r\n      \"timeZone\": \"Tokyo Standard Time\",\r\n      \"issqlcompression\": false,\r\n      \"isCompression\": false\r\n    },\r\n    \"subProtectionPolicy\": [\r\n      {\r\n        \"schedulePolicy\": {\r\n          \"schedulePolicyType\": \"SimpleSchedulePolicy\",\r\n          \"scheduleRunFrequency\": \"Weekly\",\r\n          \"scheduleRunDays\": [ \"Monday\", \"Tuesday\" ],\r\n          \"scheduleRunTimes\": [ \"2023-10-25T13:30:00.0000000Z\" ],\r\n          \"scheduleWeeklyFrequency\": 0\r\n        },\r\n        \"retentionPolicy\": {\r\n          \"retentionPolicyType\": \"LongTermRetentionPolicy\",\r\n          \"weeklySchedule\": {\r\n            \"daysOfTheWeek\": [ \"Monday\", \"Tuesday\" ],\r\n            \"retentionTimes\": [ \"2023-10-25T13:30:00.0000000Z\" ],\r\n            \"retentionDuration\": {\r\n              \"count\": 11,\r\n              \"durationType\": \"Weeks\"\r\n            }\r\n          },\r\n          \"monthlySchedule\": {\r\n            \"retentionScheduleFormatType\": \"Weekly\",\r\n            \"retentionScheduleWeekly\": {\r\n              \"daysOfTheWeek\": [ \"Monday\", \"Tuesday\" ],\r\n              \"weeksOfTheMonth\": [ \"First\", \"Last\" ]\r\n            },\r\n            \"retentionTimes\": [ \"2023-10-25T13:30:00.0000000Z\" ],\r\n            \"retentionDuration\": {\r\n              \"count\": 34,\r\n              \"durationType\": \"Months\"\r\n            }\r\n          },\r\n          \"yearlySchedule\": {\r\n            \"retentionScheduleFormatType\": \"Weekly\",\r\n            \"monthsOfYear\": [ \"May\", \"June\" ],\r\n            \"retentionScheduleWeekly\": {\r\n              \"daysOfTheWeek\": [ \"Monday\", \"Tuesday\" ],\r\n              \"weeksOfTheMonth\": [ \"Last\", \"First\" ]\r\n            },\r\n            \"retentionTimes\": [ \"2023-10-25T13:30:00.0000000Z\" ],\r\n            \"retentionDuration\": {\r\n              \"count\": 47,\r\n              \"durationType\": \"Years\"\r\n            }\r\n          }\r\n        },\r\n        \"policyType\": \"Full\",\r\n        \"tieringPolicy\": {\r\n          \"ArchivedRP\": {\r\n            \"tieringMode\": \"DoNotTier\",\r\n            \"duration\": 0,\r\n            \"durationType\": \"Invalid\"\r\n          }\r\n        }\r\n      },\r\n      {\r\n        \"schedulePolicy\": {\r\n          \"schedulePolicyType\": \"LogSchedulePolicy\",\r\n          \"scheduleFrequencyInMins\": 120\r\n        },\r\n        \"retentionPolicy\": {\r\n          \"retentionPolicyType\": \"SimpleRetentionPolicy\",\r\n          \"retentionDuration\": {\r\n            \"count\": 23,\r\n            \"durationType\": \"Days\"\r\n          }\r\n        },\r\n        \"policyType\": \"Log\"\r\n      },\r\n      {\r\n        \"schedulePolicy\": {\r\n          \"schedulePolicyType\": \"SimpleSchedulePolicy\",\r\n          \"scheduleRunFrequency\": \"Weekly\",\r\n          \"scheduleRunDays\": [ \"Sunday\" ],\r\n          \"scheduleRunTimes\": [ \"2023-10-25T02:00:00.0000000Z\" ],\r\n          \"scheduleWeeklyFrequency\": 0\r\n        },\r\n        \"retentionPolicy\": {\r\n          \"retentionPolicyType\": \"SimpleRetentionPolicy\",\r\n          \"retentionDuration\": {\r\n            \"count\": 64,\r\n            \"durationType\": \"Days\"\r\n          }\r\n        },\r\n        \"policyType\": \"Incremental\"\r\n      }\r\n    ]\r\n  }\r\n}",
+      "Content": "{\r\n  \"properties\": {\r\n    \"backupManagementType\": \"AzureWorkload\",\r\n    \"workLoadType\": \"SAPHanaDatabase\",\r\n    \"settings\": {\r\n      \"timeZone\": \"Tokyo Standard Time\",\r\n      \"issqlcompression\": false,\r\n      \"isCompression\": false\r\n    },\r\n    \"subProtectionPolicy\": [\r\n      {\r\n        \"schedulePolicy\": {\r\n          \"schedulePolicyType\": \"SimpleSchedulePolicy\",\r\n          \"scheduleRunFrequency\": \"Weekly\",\r\n          \"scheduleRunDays\": [ \"Monday\", \"Tuesday\" ],\r\n          \"scheduleRunTimes\": [ \"2023-11-06T13:30:00.0000000Z\" ],\r\n          \"scheduleWeeklyFrequency\": 0\r\n        },\r\n        \"retentionPolicy\": {\r\n          \"retentionPolicyType\": \"LongTermRetentionPolicy\",\r\n          \"weeklySchedule\": {\r\n            \"daysOfTheWeek\": [ \"Monday\", \"Tuesday\" ],\r\n            \"retentionTimes\": [ \"2023-11-06T13:30:00.0000000Z\" ],\r\n            \"retentionDuration\": {\r\n              \"count\": 11,\r\n              \"durationType\": \"Weeks\"\r\n            }\r\n          },\r\n          \"monthlySchedule\": {\r\n            \"retentionScheduleFormatType\": \"Weekly\",\r\n            \"retentionScheduleWeekly\": {\r\n              \"daysOfTheWeek\": [ \"Monday\", \"Tuesday\" ],\r\n              \"weeksOfTheMonth\": [ \"First\", \"Last\" ]\r\n            },\r\n            \"retentionTimes\": [ \"2023-11-06T13:30:00.0000000Z\" ],\r\n            \"retentionDuration\": {\r\n              \"count\": 34,\r\n              \"durationType\": \"Months\"\r\n            }\r\n          },\r\n          \"yearlySchedule\": {\r\n            \"retentionScheduleFormatType\": \"Weekly\",\r\n            \"monthsOfYear\": [ \"May\", \"June\" ],\r\n            \"retentionScheduleWeekly\": {\r\n              \"daysOfTheWeek\": [ \"Monday\", \"Tuesday\" ],\r\n              \"weeksOfTheMonth\": [ \"Last\", \"First\" ]\r\n            },\r\n            \"retentionTimes\": [ \"2023-11-06T13:30:00.0000000Z\" ],\r\n            \"retentionDuration\": {\r\n              \"count\": 47,\r\n              \"durationType\": \"Years\"\r\n            }\r\n          }\r\n        },\r\n        \"policyType\": \"Full\",\r\n        \"tieringPolicy\": {\r\n          \"ArchivedRP\": {\r\n            \"tieringMode\": \"DoNotTier\",\r\n            \"duration\": 0,\r\n            \"durationType\": \"Invalid\"\r\n          }\r\n        }\r\n      },\r\n      {\r\n        \"schedulePolicy\": {\r\n          \"schedulePolicyType\": \"LogSchedulePolicy\",\r\n          \"scheduleFrequencyInMins\": 120\r\n        },\r\n        \"retentionPolicy\": {\r\n          \"retentionPolicyType\": \"SimpleRetentionPolicy\",\r\n          \"retentionDuration\": {\r\n            \"count\": 23,\r\n            \"durationType\": \"Days\"\r\n          }\r\n        },\r\n        \"policyType\": \"Log\"\r\n      },\r\n      {\r\n        \"schedulePolicy\": {\r\n          \"schedulePolicyType\": \"SimpleSchedulePolicy\",\r\n          \"scheduleRunFrequency\": \"Weekly\",\r\n          \"scheduleRunDays\": [ \"Sunday\" ],\r\n          \"scheduleRunTimes\": [ \"2023-11-06T02:00:00.0000000Z\" ],\r\n          \"scheduleWeeklyFrequency\": 0\r\n        },\r\n        \"retentionPolicy\": {\r\n          \"retentionPolicyType\": \"SimpleRetentionPolicy\",\r\n          \"retentionDuration\": {\r\n            \"count\": 64,\r\n            \"durationType\": \"Days\"\r\n          }\r\n        },\r\n        \"policyType\": \"Incremental\"\r\n      }\r\n    ]\r\n  }\r\n}",
       "isContentBase64": false,
       "Headers": {
       },
@@ -387,22 +387,22 @@
         "Cache-Control": [ "no-cache" ],
         "Pragma": [ "no-cache" ],
         "X-Content-Type-Options": [ "nosniff" ],
-        "x-ms-request-id": [ "2ec64d2a-7755-4400-a135-16f9a6642aad" ],
-        "x-ms-client-request-id": [ "5f998387-cb6c-4495-9d60-65b90309369e" ],
+        "x-ms-request-id": [ "6b1e794a-eec2-4f95-ba1a-0693052a8443" ],
+        "x-ms-client-request-id": [ "76ff984a-3344-4410-8123-30bd42b3382b" ],
         "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
         "Server": [ "Kestrel" ],
         "X-Powered-By": [ "ASP.NET" ],
         "x-ms-ratelimit-remaining-subscription-writes": [ "1196" ],
-        "x-ms-correlation-request-id": [ "2ec64d2a-7755-4400-a135-16f9a6642aad" ],
-        "x-ms-routing-request-id": [ "WESTINDIA:20231025T093107Z:2ec64d2a-7755-4400-a135-16f9a6642aad" ],
-        "Date": [ "Wed, 25 Oct 2023 09:31:06 GMT" ]
+        "x-ms-correlation-request-id": [ "6b1e794a-eec2-4f95-ba1a-0693052a8443" ],
+        "x-ms-routing-request-id": [ "WESTINDIA:20231106T125000Z:6b1e794a-eec2-4f95-ba1a-0693052a8443" ],
+        "Date": [ "Mon, 06 Nov 2023 12:49:59 GMT" ]
       },
       "ContentHeaders": {
         "Content-Length": [ "2155" ],
         "Content-Type": [ "application/json; charset=utf-8" ],
         "Expires": [ "-1" ]
       },
-      "Content": "{\"id\":\"/subscriptions/38304e13-357e-405e-9e9a-220351dcce8c/resourceGroups/arohijain-rg/providers/Microsoft.RecoveryServices/vaults/arohijain-vault/backupPolicies/arohijain-p-1\",\"name\":\"arohijain-p-1\",\"type\":\"Microsoft.RecoveryServices/vaults/backupPolicies\",\"properties\":{\"backupManagementType\":\"AzureWorkload\",\"workLoadType\":\"SAPHanaDatabase\",\"settings\":{\"timeZone\":\"Tokyo Standard Time\",\"issqlcompression\":false,\"isCompression\":false},\"subProtectionPolicy\":[{\"policyType\":\"Full\",\"schedulePolicy\":{\"schedulePolicyType\":\"SimpleSchedulePolicy\",\"scheduleRunFrequency\":\"Weekly\",\"scheduleRunDays\":[\"Monday\",\"Tuesday\"],\"scheduleRunTimes\":[\"2023-10-25T13:30:00Z\"],\"scheduleWeeklyFrequency\":0},\"retentionPolicy\":{\"retentionPolicyType\":\"LongTermRetentionPolicy\",\"weeklySchedule\":{\"daysOfTheWeek\":[\"Monday\",\"Tuesday\"],\"retentionTimes\":[\"2023-10-25T13:30:00Z\"],\"retentionDuration\":{\"count\":11,\"durationType\":\"Weeks\"}},\"monthlySchedule\":{\"retentionScheduleFormatType\":\"Weekly\",\"retentionScheduleWeekly\":{\"daysOfTheWeek\":[\"Monday\",\"Tuesday\"],\"weeksOfTheMonth\":[\"First\",\"Last\"]},\"retentionTimes\":[\"2023-10-25T13:30:00Z\"],\"retentionDuration\":{\"count\":34,\"durationType\":\"Months\"}},\"yearlySchedule\":{\"retentionScheduleFormatType\":\"Weekly\",\"monthsOfYear\":[\"May\",\"June\"],\"retentionScheduleWeekly\":{\"daysOfTheWeek\":[\"Monday\",\"Tuesday\"],\"weeksOfTheMonth\":[\"Last\",\"First\"]},\"retentionTimes\":[\"2023-10-25T13:30:00Z\"],\"retentionDuration\":{\"count\":47,\"durationType\":\"Years\"}}},\"tieringPolicy\":{\"ArchivedRP\":{\"tieringMode\":\"DoNotTier\",\"duration\":0,\"durationType\":\"Invalid\"}}},{\"policyType\":\"Incremental\",\"schedulePolicy\":{\"schedulePolicyType\":\"SimpleSchedulePolicy\",\"scheduleRunFrequency\":\"Weekly\",\"scheduleRunDays\":[\"Sunday\"],\"scheduleRunTimes\":[\"2023-10-25T02:00:00Z\"],\"scheduleWeeklyFrequency\":0},\"retentionPolicy\":{\"retentionPolicyType\":\"SimpleRetentionPolicy\",\"retentionDuration\":{\"count\":64,\"durationType\":\"Days\"}}},{\"policyType\":\"Log\",\"schedulePolicy\":{\"schedulePolicyType\":\"LogSchedulePolicy\",\"scheduleFrequencyInMins\":120},\"retentionPolicy\":{\"retentionPolicyType\":\"SimpleRetentionPolicy\",\"retentionDuration\":{\"count\":23,\"durationType\":\"Days\"}}}],\"protectedItemsCount\":0}}",
+      "Content": "{\"id\":\"/subscriptions/38304e13-357e-405e-9e9a-220351dcce8c/resourceGroups/arohijain-rg/providers/Microsoft.RecoveryServices/vaults/arohijain-vault/backupPolicies/arohijain-p-1\",\"name\":\"arohijain-p-1\",\"type\":\"Microsoft.RecoveryServices/vaults/backupPolicies\",\"properties\":{\"backupManagementType\":\"AzureWorkload\",\"workLoadType\":\"SAPHanaDatabase\",\"settings\":{\"timeZone\":\"Tokyo Standard Time\",\"issqlcompression\":false,\"isCompression\":false},\"subProtectionPolicy\":[{\"policyType\":\"Full\",\"schedulePolicy\":{\"schedulePolicyType\":\"SimpleSchedulePolicy\",\"scheduleRunFrequency\":\"Weekly\",\"scheduleRunDays\":[\"Monday\",\"Tuesday\"],\"scheduleRunTimes\":[\"2023-11-06T13:30:00Z\"],\"scheduleWeeklyFrequency\":0},\"retentionPolicy\":{\"retentionPolicyType\":\"LongTermRetentionPolicy\",\"weeklySchedule\":{\"daysOfTheWeek\":[\"Monday\",\"Tuesday\"],\"retentionTimes\":[\"2023-11-06T13:30:00Z\"],\"retentionDuration\":{\"count\":11,\"durationType\":\"Weeks\"}},\"monthlySchedule\":{\"retentionScheduleFormatType\":\"Weekly\",\"retentionScheduleWeekly\":{\"daysOfTheWeek\":[\"Monday\",\"Tuesday\"],\"weeksOfTheMonth\":[\"First\",\"Last\"]},\"retentionTimes\":[\"2023-11-06T13:30:00Z\"],\"retentionDuration\":{\"count\":34,\"durationType\":\"Months\"}},\"yearlySchedule\":{\"retentionScheduleFormatType\":\"Weekly\",\"monthsOfYear\":[\"May\",\"June\"],\"retentionScheduleWeekly\":{\"daysOfTheWeek\":[\"Monday\",\"Tuesday\"],\"weeksOfTheMonth\":[\"Last\",\"First\"]},\"retentionTimes\":[\"2023-11-06T13:30:00Z\"],\"retentionDuration\":{\"count\":47,\"durationType\":\"Years\"}}},\"tieringPolicy\":{\"ArchivedRP\":{\"tieringMode\":\"DoNotTier\",\"duration\":0,\"durationType\":\"Invalid\"}}},{\"policyType\":\"Incremental\",\"schedulePolicy\":{\"schedulePolicyType\":\"SimpleSchedulePolicy\",\"scheduleRunFrequency\":\"Weekly\",\"scheduleRunDays\":[\"Sunday\"],\"scheduleRunTimes\":[\"2023-11-06T02:00:00Z\"],\"scheduleWeeklyFrequency\":0},\"retentionPolicy\":{\"retentionPolicyType\":\"SimpleRetentionPolicy\",\"retentionDuration\":{\"count\":64,\"durationType\":\"Days\"}}},{\"policyType\":\"Log\",\"schedulePolicy\":{\"schedulePolicyType\":\"LogSchedulePolicy\",\"scheduleFrequencyInMins\":120},\"retentionPolicy\":{\"retentionPolicyType\":\"SimpleRetentionPolicy\",\"retentionDuration\":{\"count\":23,\"durationType\":\"Days\"}}}],\"protectedItemsCount\":0}}",
       "isContentBase64": false
     }
   },
@@ -414,11 +414,11 @@
       "isContentBase64": false,
       "Headers": {
         "x-ms-unique-id": [ "11" ],
-        "x-ms-client-request-id": [ "6e2232d6-bea6-4fb4-b612-375b6f54426d" ],
+        "x-ms-client-request-id": [ "a38e42c2-937a-4f44-bc15-403d668abfce" ],
         "CommandName": [ "Az.RecoveryServices.Internal\\Get-AzRecoveryServicesBackupPolicy" ],
         "FullCommandName": [ "Get-AzRecoveryServicesBackupPolicy_Get" ],
         "ParameterSetName": [ "__AllParameterSets" ],
-        "User-Agent": [ "AzurePowershell/v0.0.0", "PSVersion/v7.3.8", "Az.RecoveryServices/0.1.0" ],
+        "User-Agent": [ "AzurePowershell/v0.0.0", "PSVersion/v7.3.9", "Az.RecoveryServices/0.1.0" ],
         "Authorization": [ "[Filtered]" ]
       },
       "ContentHeaders": {
@@ -430,22 +430,22 @@
         "Cache-Control": [ "no-cache" ],
         "Pragma": [ "no-cache" ],
         "X-Content-Type-Options": [ "nosniff" ],
-        "x-ms-request-id": [ "03e7fb54-96d0-47d8-af15-4523c9384b0e" ],
-        "x-ms-client-request-id": [ "6e2232d6-bea6-4fb4-b612-375b6f54426d" ],
+        "x-ms-request-id": [ "24de68c0-8927-4329-86bc-ee001b864256" ],
+        "x-ms-client-request-id": [ "a38e42c2-937a-4f44-bc15-403d668abfce" ],
         "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
         "Server": [ "Kestrel" ],
         "X-Powered-By": [ "ASP.NET" ],
         "x-ms-ratelimit-remaining-subscription-resource-requests": [ "296" ],
-        "x-ms-correlation-request-id": [ "03e7fb54-96d0-47d8-af15-4523c9384b0e" ],
-        "x-ms-routing-request-id": [ "WESTINDIA:20231025T093107Z:03e7fb54-96d0-47d8-af15-4523c9384b0e" ],
-        "Date": [ "Wed, 25 Oct 2023 09:31:07 GMT" ]
+        "x-ms-correlation-request-id": [ "24de68c0-8927-4329-86bc-ee001b864256" ],
+        "x-ms-routing-request-id": [ "WESTINDIA:20231106T125001Z:24de68c0-8927-4329-86bc-ee001b864256" ],
+        "Date": [ "Mon, 06 Nov 2023 12:50:00 GMT" ]
       },
       "ContentHeaders": {
         "Content-Length": [ "2155" ],
         "Content-Type": [ "application/json; charset=utf-8" ],
         "Expires": [ "-1" ]
       },
-      "Content": "{\"id\":\"/subscriptions/38304e13-357e-405e-9e9a-220351dcce8c/resourceGroups/arohijain-rg/providers/Microsoft.RecoveryServices/vaults/arohijain-vault/backupPolicies/arohijain-p-1\",\"name\":\"arohijain-p-1\",\"type\":\"Microsoft.RecoveryServices/vaults/backupPolicies\",\"properties\":{\"backupManagementType\":\"AzureWorkload\",\"workLoadType\":\"SAPHanaDatabase\",\"settings\":{\"timeZone\":\"Tokyo Standard Time\",\"issqlcompression\":false,\"isCompression\":false},\"subProtectionPolicy\":[{\"policyType\":\"Full\",\"schedulePolicy\":{\"schedulePolicyType\":\"SimpleSchedulePolicy\",\"scheduleRunFrequency\":\"Weekly\",\"scheduleRunDays\":[\"Monday\",\"Tuesday\"],\"scheduleRunTimes\":[\"2023-10-25T13:30:00Z\"],\"scheduleWeeklyFrequency\":0},\"retentionPolicy\":{\"retentionPolicyType\":\"LongTermRetentionPolicy\",\"weeklySchedule\":{\"daysOfTheWeek\":[\"Monday\",\"Tuesday\"],\"retentionTimes\":[\"2023-10-25T13:30:00Z\"],\"retentionDuration\":{\"count\":11,\"durationType\":\"Weeks\"}},\"monthlySchedule\":{\"retentionScheduleFormatType\":\"Weekly\",\"retentionScheduleWeekly\":{\"daysOfTheWeek\":[\"Monday\",\"Tuesday\"],\"weeksOfTheMonth\":[\"First\",\"Last\"]},\"retentionTimes\":[\"2023-10-25T13:30:00Z\"],\"retentionDuration\":{\"count\":34,\"durationType\":\"Months\"}},\"yearlySchedule\":{\"retentionScheduleFormatType\":\"Weekly\",\"monthsOfYear\":[\"May\",\"June\"],\"retentionScheduleWeekly\":{\"daysOfTheWeek\":[\"Monday\",\"Tuesday\"],\"weeksOfTheMonth\":[\"Last\",\"First\"]},\"retentionTimes\":[\"2023-10-25T13:30:00Z\"],\"retentionDuration\":{\"count\":47,\"durationType\":\"Years\"}}},\"tieringPolicy\":{\"ArchivedRP\":{\"tieringMode\":\"DoNotTier\",\"duration\":0,\"durationType\":\"Invalid\"}}},{\"policyType\":\"Incremental\",\"schedulePolicy\":{\"schedulePolicyType\":\"SimpleSchedulePolicy\",\"scheduleRunFrequency\":\"Weekly\",\"scheduleRunDays\":[\"Sunday\"],\"scheduleRunTimes\":[\"2023-10-25T02:00:00Z\"],\"scheduleWeeklyFrequency\":0},\"retentionPolicy\":{\"retentionPolicyType\":\"SimpleRetentionPolicy\",\"retentionDuration\":{\"count\":64,\"durationType\":\"Days\"}}},{\"policyType\":\"Log\",\"schedulePolicy\":{\"schedulePolicyType\":\"LogSchedulePolicy\",\"scheduleFrequencyInMins\":120},\"retentionPolicy\":{\"retentionPolicyType\":\"SimpleRetentionPolicy\",\"retentionDuration\":{\"count\":23,\"durationType\":\"Days\"}}}],\"protectedItemsCount\":0}}",
+      "Content": "{\"id\":\"/subscriptions/38304e13-357e-405e-9e9a-220351dcce8c/resourceGroups/arohijain-rg/providers/Microsoft.RecoveryServices/vaults/arohijain-vault/backupPolicies/arohijain-p-1\",\"name\":\"arohijain-p-1\",\"type\":\"Microsoft.RecoveryServices/vaults/backupPolicies\",\"properties\":{\"backupManagementType\":\"AzureWorkload\",\"workLoadType\":\"SAPHanaDatabase\",\"settings\":{\"timeZone\":\"Tokyo Standard Time\",\"issqlcompression\":false,\"isCompression\":false},\"subProtectionPolicy\":[{\"policyType\":\"Full\",\"schedulePolicy\":{\"schedulePolicyType\":\"SimpleSchedulePolicy\",\"scheduleRunFrequency\":\"Weekly\",\"scheduleRunDays\":[\"Monday\",\"Tuesday\"],\"scheduleRunTimes\":[\"2023-11-06T13:30:00Z\"],\"scheduleWeeklyFrequency\":0},\"retentionPolicy\":{\"retentionPolicyType\":\"LongTermRetentionPolicy\",\"weeklySchedule\":{\"daysOfTheWeek\":[\"Monday\",\"Tuesday\"],\"retentionTimes\":[\"2023-11-06T13:30:00Z\"],\"retentionDuration\":{\"count\":11,\"durationType\":\"Weeks\"}},\"monthlySchedule\":{\"retentionScheduleFormatType\":\"Weekly\",\"retentionScheduleWeekly\":{\"daysOfTheWeek\":[\"Monday\",\"Tuesday\"],\"weeksOfTheMonth\":[\"First\",\"Last\"]},\"retentionTimes\":[\"2023-11-06T13:30:00Z\"],\"retentionDuration\":{\"count\":34,\"durationType\":\"Months\"}},\"yearlySchedule\":{\"retentionScheduleFormatType\":\"Weekly\",\"monthsOfYear\":[\"May\",\"June\"],\"retentionScheduleWeekly\":{\"daysOfTheWeek\":[\"Monday\",\"Tuesday\"],\"weeksOfTheMonth\":[\"Last\",\"First\"]},\"retentionTimes\":[\"2023-11-06T13:30:00Z\"],\"retentionDuration\":{\"count\":47,\"durationType\":\"Years\"}}},\"tieringPolicy\":{\"ArchivedRP\":{\"tieringMode\":\"DoNotTier\",\"duration\":0,\"durationType\":\"Invalid\"}}},{\"policyType\":\"Incremental\",\"schedulePolicy\":{\"schedulePolicyType\":\"SimpleSchedulePolicy\",\"scheduleRunFrequency\":\"Weekly\",\"scheduleRunDays\":[\"Sunday\"],\"scheduleRunTimes\":[\"2023-11-06T02:00:00Z\"],\"scheduleWeeklyFrequency\":0},\"retentionPolicy\":{\"retentionPolicyType\":\"SimpleRetentionPolicy\",\"retentionDuration\":{\"count\":64,\"durationType\":\"Days\"}}},{\"policyType\":\"Log\",\"schedulePolicy\":{\"schedulePolicyType\":\"LogSchedulePolicy\",\"scheduleFrequencyInMins\":120},\"retentionPolicy\":{\"retentionPolicyType\":\"SimpleRetentionPolicy\",\"retentionDuration\":{\"count\":23,\"durationType\":\"Days\"}}}],\"protectedItemsCount\":0}}",
       "isContentBase64": false
     }
   },
@@ -457,11 +457,11 @@
       "isContentBase64": false,
       "Headers": {
         "x-ms-unique-id": [ "12" ],
-        "x-ms-client-request-id": [ "591acee0-4c27-4619-9916-ac31228c6d47" ],
+        "x-ms-client-request-id": [ "ce041472-587d-46be-aa9f-f7d9a546bef5" ],
         "CommandName": [ "Remove-AzRecoveryServicesBackupProtectionPolicy" ],
         "FullCommandName": [ "Remove-AzRecoveryServicesBackupProtectionPolicy_Delete" ],
         "ParameterSetName": [ "__AllParameterSets" ],
-        "User-Agent": [ "AzurePowershell/v0.0.0", "PSVersion/v7.3.8", "Az.RecoveryServices/0.1.0" ],
+        "User-Agent": [ "AzurePowershell/v0.0.0", "PSVersion/v7.3.9", "Az.RecoveryServices/0.1.0" ],
         "Authorization": [ "[Filtered]" ]
       },
       "ContentHeaders": {
@@ -473,15 +473,15 @@
         "Cache-Control": [ "no-cache" ],
         "Pragma": [ "no-cache" ],
         "X-Content-Type-Options": [ "nosniff" ],
-        "x-ms-request-id": [ "8e2a964e-ac7f-4c4a-9684-01b4d513415d" ],
-        "x-ms-client-request-id": [ "591acee0-4c27-4619-9916-ac31228c6d47" ],
+        "x-ms-request-id": [ "ec27e794-85b8-4c43-bc7d-208f19145e67" ],
+        "x-ms-client-request-id": [ "ce041472-587d-46be-aa9f-f7d9a546bef5" ],
         "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
         "Server": [ "Kestrel" ],
         "X-Powered-By": [ "ASP.NET" ],
         "x-ms-ratelimit-remaining-subscription-deletes": [ "14996" ],
-        "x-ms-correlation-request-id": [ "8e2a964e-ac7f-4c4a-9684-01b4d513415d" ],
-        "x-ms-routing-request-id": [ "WESTINDIA:20231025T093108Z:8e2a964e-ac7f-4c4a-9684-01b4d513415d" ],
-        "Date": [ "Wed, 25 Oct 2023 09:31:08 GMT" ]
+        "x-ms-correlation-request-id": [ "ec27e794-85b8-4c43-bc7d-208f19145e67" ],
+        "x-ms-routing-request-id": [ "WESTINDIA:20231106T125002Z:ec27e794-85b8-4c43-bc7d-208f19145e67" ],
+        "Date": [ "Mon, 06 Nov 2023 12:50:01 GMT" ]
       },
       "ContentHeaders": {
         "Expires": [ "-1" ],
@@ -510,15 +510,15 @@
         "Cache-Control": [ "no-cache" ],
         "Pragma": [ "no-cache" ],
         "X-Content-Type-Options": [ "nosniff" ],
-        "x-ms-request-id": [ "341353cb-5d65-4ba2-99e7-c51a6b1c3078" ],
-        "x-ms-client-request-id": [ "77fe232d-5f2f-4b7c-b4cc-e4e8d801d29a" ],
+        "x-ms-request-id": [ "e54f7ff2-57b0-41f5-9ebd-ad0c327ebc9f" ],
+        "x-ms-client-request-id": [ "4153c044-325e-4d75-9fad-a8d083e74655" ],
         "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
         "Server": [ "Kestrel" ],
         "X-Powered-By": [ "ASP.NET" ],
         "x-ms-ratelimit-remaining-subscription-writes": [ "1195" ],
-        "x-ms-correlation-request-id": [ "341353cb-5d65-4ba2-99e7-c51a6b1c3078" ],
-        "x-ms-routing-request-id": [ "WESTINDIA:20231025T093109Z:341353cb-5d65-4ba2-99e7-c51a6b1c3078" ],
-        "Date": [ "Wed, 25 Oct 2023 09:31:09 GMT" ]
+        "x-ms-correlation-request-id": [ "e54f7ff2-57b0-41f5-9ebd-ad0c327ebc9f" ],
+        "x-ms-routing-request-id": [ "WESTINDIA:20231106T125003Z:e54f7ff2-57b0-41f5-9ebd-ad0c327ebc9f" ],
+        "Date": [ "Mon, 06 Nov 2023 12:50:02 GMT" ]
       },
       "ContentHeaders": {
         "Content-Length": [ "1821" ],
@@ -537,11 +537,11 @@
       "isContentBase64": false,
       "Headers": {
         "x-ms-unique-id": [ "14" ],
-        "x-ms-client-request-id": [ "fbe1ede1-606b-49cf-a34f-71f5a97fb1a9" ],
+        "x-ms-client-request-id": [ "8a1fb59c-b47f-40f3-a6ec-d747e1b2b9a8" ],
         "CommandName": [ "Az.RecoveryServices.Internal\\Get-AzRecoveryServicesBackupPolicy" ],
         "FullCommandName": [ "Get-AzRecoveryServicesBackupPolicy_Get" ],
         "ParameterSetName": [ "__AllParameterSets" ],
-        "User-Agent": [ "AzurePowershell/v0.0.0", "PSVersion/v7.3.8", "Az.RecoveryServices/0.1.0" ],
+        "User-Agent": [ "AzurePowershell/v0.0.0", "PSVersion/v7.3.9", "Az.RecoveryServices/0.1.0" ],
         "Authorization": [ "[Filtered]" ]
       },
       "ContentHeaders": {
@@ -553,15 +553,15 @@
         "Cache-Control": [ "no-cache" ],
         "Pragma": [ "no-cache" ],
         "X-Content-Type-Options": [ "nosniff" ],
-        "x-ms-request-id": [ "15380cfc-74f5-45e5-9241-5818e2f0c1ad" ],
-        "x-ms-client-request-id": [ "fbe1ede1-606b-49cf-a34f-71f5a97fb1a9" ],
+        "x-ms-request-id": [ "765a58ee-64e0-4783-9d32-96a9f0e6d103" ],
+        "x-ms-client-request-id": [ "8a1fb59c-b47f-40f3-a6ec-d747e1b2b9a8" ],
         "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
         "Server": [ "Kestrel" ],
         "X-Powered-By": [ "ASP.NET" ],
         "x-ms-ratelimit-remaining-subscription-resource-requests": [ "295" ],
-        "x-ms-correlation-request-id": [ "15380cfc-74f5-45e5-9241-5818e2f0c1ad" ],
-        "x-ms-routing-request-id": [ "WESTINDIA:20231025T093110Z:15380cfc-74f5-45e5-9241-5818e2f0c1ad" ],
-        "Date": [ "Wed, 25 Oct 2023 09:31:09 GMT" ]
+        "x-ms-correlation-request-id": [ "765a58ee-64e0-4783-9d32-96a9f0e6d103" ],
+        "x-ms-routing-request-id": [ "WESTINDIA:20231106T125003Z:765a58ee-64e0-4783-9d32-96a9f0e6d103" ],
+        "Date": [ "Mon, 06 Nov 2023 12:50:03 GMT" ]
       },
       "ContentHeaders": {
         "Content-Length": [ "1821" ],
@@ -580,11 +580,11 @@
       "isContentBase64": false,
       "Headers": {
         "x-ms-unique-id": [ "15" ],
-        "x-ms-client-request-id": [ "f54d24c1-882e-4270-8258-ec0066801349" ],
+        "x-ms-client-request-id": [ "3bc306e1-9f04-47b4-bcab-652ad20b2f28" ],
         "CommandName": [ "Remove-AzRecoveryServicesBackupProtectionPolicy" ],
         "FullCommandName": [ "Remove-AzRecoveryServicesBackupProtectionPolicy_Delete" ],
         "ParameterSetName": [ "__AllParameterSets" ],
-        "User-Agent": [ "AzurePowershell/v0.0.0", "PSVersion/v7.3.8", "Az.RecoveryServices/0.1.0" ],
+        "User-Agent": [ "AzurePowershell/v0.0.0", "PSVersion/v7.3.9", "Az.RecoveryServices/0.1.0" ],
         "Authorization": [ "[Filtered]" ]
       },
       "ContentHeaders": {
@@ -596,15 +596,15 @@
         "Cache-Control": [ "no-cache" ],
         "Pragma": [ "no-cache" ],
         "X-Content-Type-Options": [ "nosniff" ],
-        "x-ms-request-id": [ "e586771e-57d9-4277-b4e5-99557eda9792" ],
-        "x-ms-client-request-id": [ "f54d24c1-882e-4270-8258-ec0066801349" ],
+        "x-ms-request-id": [ "cab59883-fd15-4be4-a11e-c886e3a2b673" ],
+        "x-ms-client-request-id": [ "3bc306e1-9f04-47b4-bcab-652ad20b2f28" ],
         "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
         "Server": [ "Kestrel" ],
         "X-Powered-By": [ "ASP.NET" ],
         "x-ms-ratelimit-remaining-subscription-deletes": [ "14995" ],
-        "x-ms-correlation-request-id": [ "e586771e-57d9-4277-b4e5-99557eda9792" ],
-        "x-ms-routing-request-id": [ "WESTINDIA:20231025T093111Z:e586771e-57d9-4277-b4e5-99557eda9792" ],
-        "Date": [ "Wed, 25 Oct 2023 09:31:10 GMT" ]
+        "x-ms-correlation-request-id": [ "cab59883-fd15-4be4-a11e-c886e3a2b673" ],
+        "x-ms-routing-request-id": [ "WESTINDIA:20231106T125004Z:cab59883-fd15-4be4-a11e-c886e3a2b673" ],
+        "Date": [ "Mon, 06 Nov 2023 12:50:03 GMT" ]
       },
       "ContentHeaders": {
         "Expires": [ "-1" ],
@@ -633,15 +633,15 @@
         "Cache-Control": [ "no-cache" ],
         "Pragma": [ "no-cache" ],
         "X-Content-Type-Options": [ "nosniff" ],
-        "x-ms-request-id": [ "fbb47f83-85c1-4852-9b8a-b70a245a61b7" ],
-        "x-ms-client-request-id": [ "0a73a204-855a-488f-aa4c-b199b3fe14a7" ],
+        "x-ms-request-id": [ "2badfdf0-6949-43ec-adf4-bb4187e72c3c" ],
+        "x-ms-client-request-id": [ "60c21d85-22bf-4d85-903e-7ae31a5de1c6" ],
         "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
         "Server": [ "Kestrel" ],
         "X-Powered-By": [ "ASP.NET" ],
         "x-ms-ratelimit-remaining-subscription-writes": [ "1194" ],
-        "x-ms-correlation-request-id": [ "fbb47f83-85c1-4852-9b8a-b70a245a61b7" ],
-        "x-ms-routing-request-id": [ "WESTINDIA:20231025T093112Z:fbb47f83-85c1-4852-9b8a-b70a245a61b7" ],
-        "Date": [ "Wed, 25 Oct 2023 09:31:12 GMT" ]
+        "x-ms-correlation-request-id": [ "2badfdf0-6949-43ec-adf4-bb4187e72c3c" ],
+        "x-ms-routing-request-id": [ "WESTINDIA:20231106T125005Z:2badfdf0-6949-43ec-adf4-bb4187e72c3c" ],
+        "Date": [ "Mon, 06 Nov 2023 12:50:04 GMT" ]
       },
       "ContentHeaders": {
         "Content-Length": [ "1529" ],
@@ -660,11 +660,11 @@
       "isContentBase64": false,
       "Headers": {
         "x-ms-unique-id": [ "17" ],
-        "x-ms-client-request-id": [ "e6e1857a-d982-4566-bbb2-579120502728" ],
+        "x-ms-client-request-id": [ "4430f03a-0a43-420e-9267-b028f1fd7fce" ],
         "CommandName": [ "Az.RecoveryServices.Internal\\Get-AzRecoveryServicesBackupPolicy" ],
         "FullCommandName": [ "Get-AzRecoveryServicesBackupPolicy_Get" ],
         "ParameterSetName": [ "__AllParameterSets" ],
-        "User-Agent": [ "AzurePowershell/v0.0.0", "PSVersion/v7.3.8", "Az.RecoveryServices/0.1.0" ],
+        "User-Agent": [ "AzurePowershell/v0.0.0", "PSVersion/v7.3.9", "Az.RecoveryServices/0.1.0" ],
         "Authorization": [ "[Filtered]" ]
       },
       "ContentHeaders": {
@@ -676,15 +676,15 @@
         "Cache-Control": [ "no-cache" ],
         "Pragma": [ "no-cache" ],
         "X-Content-Type-Options": [ "nosniff" ],
-        "x-ms-request-id": [ "e2924411-9229-4615-bde1-6f10ed7620a9" ],
-        "x-ms-client-request-id": [ "e6e1857a-d982-4566-bbb2-579120502728" ],
+        "x-ms-request-id": [ "0d1fc1cf-ea8d-4ea6-b7f6-39d705b5418b" ],
+        "x-ms-client-request-id": [ "4430f03a-0a43-420e-9267-b028f1fd7fce" ],
         "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
         "Server": [ "Kestrel" ],
         "X-Powered-By": [ "ASP.NET" ],
         "x-ms-ratelimit-remaining-subscription-resource-requests": [ "294" ],
-        "x-ms-correlation-request-id": [ "e2924411-9229-4615-bde1-6f10ed7620a9" ],
-        "x-ms-routing-request-id": [ "WESTINDIA:20231025T093113Z:e2924411-9229-4615-bde1-6f10ed7620a9" ],
-        "Date": [ "Wed, 25 Oct 2023 09:31:12 GMT" ]
+        "x-ms-correlation-request-id": [ "0d1fc1cf-ea8d-4ea6-b7f6-39d705b5418b" ],
+        "x-ms-routing-request-id": [ "WESTINDIA:20231106T125006Z:0d1fc1cf-ea8d-4ea6-b7f6-39d705b5418b" ],
+        "Date": [ "Mon, 06 Nov 2023 12:50:05 GMT" ]
       },
       "ContentHeaders": {
         "Content-Length": [ "1529" ],
@@ -703,11 +703,11 @@
       "isContentBase64": false,
       "Headers": {
         "x-ms-unique-id": [ "18" ],
-        "x-ms-client-request-id": [ "f8e0ba07-1aca-4741-9cf3-434763720c9e" ],
+        "x-ms-client-request-id": [ "f2c309da-425a-40bd-8ff4-f20aef818054" ],
         "CommandName": [ "Remove-AzRecoveryServicesBackupProtectionPolicy" ],
         "FullCommandName": [ "Remove-AzRecoveryServicesBackupProtectionPolicy_Delete" ],
         "ParameterSetName": [ "__AllParameterSets" ],
-        "User-Agent": [ "AzurePowershell/v0.0.0", "PSVersion/v7.3.8", "Az.RecoveryServices/0.1.0" ],
+        "User-Agent": [ "AzurePowershell/v0.0.0", "PSVersion/v7.3.9", "Az.RecoveryServices/0.1.0" ],
         "Authorization": [ "[Filtered]" ]
       },
       "ContentHeaders": {
@@ -719,15 +719,15 @@
         "Cache-Control": [ "no-cache" ],
         "Pragma": [ "no-cache" ],
         "X-Content-Type-Options": [ "nosniff" ],
-        "x-ms-request-id": [ "3c11c652-33ee-4733-bf2f-3ba63ac883be" ],
-        "x-ms-client-request-id": [ "f8e0ba07-1aca-4741-9cf3-434763720c9e" ],
+        "x-ms-request-id": [ "5821009c-18d5-4f9f-98f9-2b4954653c60" ],
+        "x-ms-client-request-id": [ "f2c309da-425a-40bd-8ff4-f20aef818054" ],
         "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
         "Server": [ "Kestrel" ],
         "X-Powered-By": [ "ASP.NET" ],
         "x-ms-ratelimit-remaining-subscription-deletes": [ "14994" ],
-        "x-ms-correlation-request-id": [ "3c11c652-33ee-4733-bf2f-3ba63ac883be" ],
-        "x-ms-routing-request-id": [ "WESTINDIA:20231025T093114Z:3c11c652-33ee-4733-bf2f-3ba63ac883be" ],
-        "Date": [ "Wed, 25 Oct 2023 09:31:13 GMT" ]
+        "x-ms-correlation-request-id": [ "5821009c-18d5-4f9f-98f9-2b4954653c60" ],
+        "x-ms-routing-request-id": [ "WESTINDIA:20231106T125007Z:5821009c-18d5-4f9f-98f9-2b4954653c60" ],
+        "Date": [ "Mon, 06 Nov 2023 12:50:06 GMT" ]
       },
       "ContentHeaders": {
         "Expires": [ "-1" ],
