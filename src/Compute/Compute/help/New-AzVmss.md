@@ -209,14 +209,13 @@ Create a VMSS with a UserData value
 
 ### Example 4: Create a Vmss with the security type TrustedLaunch
 ```powershell
-$rgname = "rganme";
+$rgname = "rgname";
 $loc = "eastus";
 
 # VMSS Profile & Hardware requirements for the TrustedLaunch default behavior.
 $vmssSize = 'Standard_D4s_v3';
 $vmssName1 = 'vmss1' + $rgname;
-$vmssName2 = 'vmss2' + $rgname;
-$imageName = "Win2016DataCenterGenSecond";
+$imageName = "Win2022AzureEdition";
 $adminUsername = "<Username>";
 $adminPassword = "<Password>" | ConvertTo-SecureString -AsPlainText -Force;
 $vmCred = New-Object System.Management.Automation.PSCredential ($adminUsername, $adminPassword);
