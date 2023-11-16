@@ -12,7 +12,7 @@
 # RootModule = ''
 
 # Version number of this module.
-ModuleVersion = '2.13.2'
+ModuleVersion = '2.13.99'
 
 # Supported PSEditions
 CompatiblePSEditions = 'Core', 'Desktop'
@@ -147,8 +147,9 @@ PrivateData = @{
         # IconUri = ''
 
         # ReleaseNotes of this module
-        ReleaseNotes = '* Enabled in-tool notification for version upgrade by default.
-* Upgraded Azure.Core to 1.35.0.'
+        ReleaseNotes = '* Upgraded Azure.Identity to 1.10.3 [#23018].
+  - Renamed token cache from `msal.cache` to `msal.cache.cae` or `masl.cache.nocae`.
+* Enable Continue Access Evalution (CAE) for Service Principal and Federated Token login method.'
 
         # Prerelease string of this module
         # Prerelease = ''
