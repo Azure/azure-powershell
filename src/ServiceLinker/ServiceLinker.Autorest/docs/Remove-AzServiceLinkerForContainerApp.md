@@ -1,42 +1,38 @@
 ---
 external help file:
 Module Name: Az.ServiceLinker
-online version: https://learn.microsoft.com/powershell/module/az.servicelinker/remove-azservicelinkerforwebapp
+online version: https://learn.microsoft.com/powershell/module/az.servicelinker/remove-azservicelinkerforcontainerapp
 schema: 2.0.0
 ---
 
-# Remove-AzServiceLinkerForWebApp
+# Remove-AzServiceLinkerForContainerApp
 
 ## SYNOPSIS
-Delete a link in webapp.
+Delete a link.
 
 ## SYNTAX
 
 ### Delete (Default)
 ```
-Remove-AzServiceLinkerForWebApp -Name <String> -ResourceGroupName <String> -WebApp <String>
+Remove-AzServiceLinkerForContainerApp -Name <String> -ContainerApp <String> -ResourceGroupName <String>
  [-ResourceUri <String>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-PassThru]
  [-SubscriptionId <String>] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ### DeleteViaIdentity
 ```
-Remove-AzServiceLinkerForWebApp -InputObject <IServiceLinkerIdentity> [-DefaultProfile <PSObject>] [-AsJob]
- [-NoWait] [-PassThru] [-SubscriptionId <String>] [-Confirm] [-WhatIf] [<CommonParameters>]
+Remove-AzServiceLinkerForContainerApp -InputObject <IServiceLinkerIdentity> [-DefaultProfile <PSObject>]
+ [-AsJob] [-NoWait] [-PassThru] [-SubscriptionId <String>] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-Delete a link in webapp.
+Delete a link in container app.
 
 ## EXAMPLES
 
 ### Example 1: Remove linker
 ```powershell
-Remove-AzServiceLinkerForWebApp -WebApp servicelinker-app -ResourceGroupName servicelinker-test-group -Name testLinker       
-```
-
-```output
-
+Remove-AzServiceLinkerForContainerApp -ContainerApp servicelinker-app -ResourceGroupName servicelinker-test-group -Name testLinker
 ```
 
 Remove linker
@@ -52,6 +48,21 @@ Parameter Sets: (All)
 Aliases:
 
 Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -ContainerApp
+The Name of container app of the resource to be connected.
+
+```yaml
+Type: System.String
+Parameter Sets: Delete
+Aliases:
+
+Required: True
 Position: Named
 Default value: None
 Accept pipeline input: False
@@ -176,21 +187,6 @@ Aliases:
 Required: False
 Position: Named
 Default value: (Get-AzContext).Subscription.Id
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -WebApp
-The Name of webapp of the resource to be connected.
-
-```yaml
-Type: System.String
-Parameter Sets: Delete
-Aliases:
-
-Required: True
-Position: Named
-Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
 ```

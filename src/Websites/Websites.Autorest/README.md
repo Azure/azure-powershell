@@ -30,11 +30,12 @@ For information on how to develop for `Az.Websites`, see [how-to.md](how-to.md).
 > see https://aka.ms/autorest
 
 ``` yaml
+commit: ec2b6d1985ce89c8646276e0806a738338e98bd2
 require:
   - $(this-folder)/../../readme.azure.noprofile.md
 input-file:
-  - https://github.com/Azure/azure-rest-api-specs/blob/7a2cc29033fe4027ef421267f1684efbd0d40a93/specification/web/resource-manager/Microsoft.Web/stable/2020-12-01/StaticSites.json
-  - https://github.com/Azure/azure-rest-api-specs/blob/ec2b6d1985ce89c8646276e0806a738338e98bd2/specification/web/resource-manager/Microsoft.Web/stable/2021-02-01/WebApps.json
+  - $(repo)/specification/web/resource-manager/Microsoft.Web/stable/2020-12-01/StaticSites.json
+  - $(repo)/specification/web/resource-manager/Microsoft.Web/stable/2021-02-01/WebApps.json
 
 title: Websites
 module-version: 0.1.0
@@ -89,7 +90,7 @@ directive:
           "default": {
             "description": "App Service error response.",
             "schema": {
-              "$ref": "https://github.com/Azure/azure-rest-api-specs/blob/7a2cc29033fe4027ef421267f1684efbd0d40a93/specification/web/resource-manager/Microsoft.Web/stable/2020-12-01/CommonDefinitions.json#/definitions/DefaultErrorResponse"
+              "$ref": "https://github.com/Azure/azure-rest-api-specs/blob/ec2b6d1985ce89c8646276e0806a738338e98bd2/specification/web/resource-manager/Microsoft.Web/stable/2020-12-01/CommonDefinitions.json#/definitions/DefaultErrorResponse"
             }
           }
         }
@@ -110,7 +111,7 @@ directive:
           "default": {
             "description": "App Service error response.",
             "schema": {
-              "$ref": "https://github.com/Azure/azure-rest-api-specs/blob/7a2cc29033fe4027ef421267f1684efbd0d40a93/specification/web/resource-manager/Microsoft.Web/stable/2020-12-01/CommonDefinitions.json#/definitions/DefaultErrorResponse"
+              "$ref": "https://github.com/Azure/azure-rest-api-specs/blob/ec2b6d1985ce89c8646276e0806a738338e98bd2/specification/web/resource-manager/Microsoft.Web/stable/2020-12-01/CommonDefinitions.json#/definitions/DefaultErrorResponse"
             }
           }
         }
@@ -128,7 +129,7 @@ directive:
           "default": {
             "description": "App Service error response.",
             "schema": {
-              "$ref": "https://github.com/Azure/azure-rest-api-specs/blob/7a2cc29033fe4027ef421267f1684efbd0d40a93/specification/web/resource-manager/Microsoft.Web/stable/2020-12-01/CommonDefinitions.json#/definitions/DefaultErrorResponse"
+              "$ref": "https://github.com/Azure/azure-rest-api-specs/blob/ec2b6d1985ce89c8646276e0806a738338e98bd2/specification/web/resource-manager/Microsoft.Web/stable/2020-12-01/CommonDefinitions.json#/definitions/DefaultErrorResponse"
             }
           }
         }
