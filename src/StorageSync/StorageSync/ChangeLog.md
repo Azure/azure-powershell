@@ -21,6 +21,7 @@
 
 ## Version 2.1.0
 * Fixed minor issues.
+* Updated supported character sets in `Invoke-AzStorageSyncCompatibilityCheck`.
 
 ## Version 2.0.0
 * Deprecated "RegisteredServer" alias for InputObject parameter for Set-AzStorageSyncServerEndpoint
