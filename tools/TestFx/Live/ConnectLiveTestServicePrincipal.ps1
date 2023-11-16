@@ -21,6 +21,11 @@ $ErrorActionPreference = "Stop"
 
 $servicePrincipalSecureSecret = ConvertTo-SecureString -String $ServicePrincipalSecret -AsPlainText -Force
 $servicePrincipalCredential = New-Object -TypeName System.Management.Automation.PSCredential -ArgumentList $ServicePrincipalId, $servicePrincipalSecureSecret
-Connect-AzAccount -SubscriptionId $SubscriptionId -TenantId $TenantId -Credential $servicePrincipalCredential -ServicePrincipal
+
+Write-Host "Connecting Az account ..."
+
+Connect-AzAccount -SubscriptionId $SubscriptionId -TenantId $TenantId -Credential $servicePrincipalCredential -ServicePrincipal -Debug
+
+Write-Host "Connected Az account."
 
 $ErrorActionPreference = $PreErrorActionPreference
