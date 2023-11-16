@@ -330,7 +330,7 @@ function Get-AzMigrateServerReplicationStatus {
             else {
                 $row1["TimeRemaining"] = Convert-MillisecondsToTime -Milliseconds $ReplicationMigrationItem.ProviderSpecificDetail.GatewayOperationDetailTimeRemaining
                 $row1["UploadSpeed"] = $ReplicationMigrationItem.ProviderSpecificDetail.GatewayOperationDetailUploadSpeed
-                $row1["Progress"] = $ReplicationMigrationItem.ProviderSpecificDetail.GatewayOperationDetailProgressPercentage
+            $row1["Progress"] = $ReplicationMigrationItem.ProviderSpecificDetail.GatewayOperationDetailProgressPercentage
                 $row1["TimeElapsed"] = Convert-MillisecondsToTime -Milliseconds $ReplicationMigrationItem.ProviderSpecificDetail.GatewayOperationDetailTimeElapsed
             }
             #$row1["ESXiHost"] = $ReplicationMigrationItem.ProviderSpecificDetail.GatewayOperationDetailHostName
@@ -378,7 +378,7 @@ function Get-AzMigrateServerReplicationStatus {
                     else {
                         $row["TimeRemaining"] = Convert-MillisecondsToTime -Milliseconds $disk.GatewayOperationDetailTimeRemaining
                         $row["UploadSpeed"] = $disk.GatewayOperationDetailUploadSpeed
-                        $row["Progress"] = $disk.GatewayOperationDetailProgressPercentage
+                    $row["Progress"] = $disk.GatewayOperationDetailProgressPercentage
                         $row["TimeElapsed"] = Convert-MillisecondsToTime -Milliseconds $disk.GatewayOperationDetailTimeElapsed
                     }
                     $row["Datastore"] = $disk.GatewayOperationDetailDataStore[0]
