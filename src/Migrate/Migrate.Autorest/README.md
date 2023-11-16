@@ -47,9 +47,10 @@ In this directory, run AutoRest:
 > see https://aka.ms/autorest
 
 ``` yaml
+commit: 0dd49a444195fef7f3555cad038cb7665cbd928c
 skip-semantics-validation: true
 require:
-  - $(this-folder)/../readme.azure.noprofile.md
+  - $(this-folder)/../../readme.azure.noprofile.md
 input-file:
   - $(repo)/specification/migrate/resource-manager/Microsoft.OffAzure/stable/2020-01-01/migrate.json
   - $(repo)/specification/migrateprojects/resource-manager/Microsoft.Migrate/preview/2018-09-01-preview/migrate.json
