@@ -277,6 +277,7 @@ $vmssGet = Get-AzVmss -ResourceGroupName $rgname -VMScaleSetName $vmssName;
 # Verify $vmssGet.VirtualMachineProfile.SecurityProfile.UefiSettings.SecureBootEnabled is True.
 # Verify $vmssGet.VirtualMachineProfile.StorageProfile.ImageReference.Sku is 2022-Datacenter-Azure-Edition.
 ```
+The virtual machine scale set above has Trusted Launch enabled by default. Please check [the Trusted Launch feature page](aka.ms/trustedlaunch) for more information.
 
 ## PARAMETERS
 
