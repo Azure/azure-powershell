@@ -54,7 +54,7 @@ From the [_Strongly Encouraged Development Guidelines_](https://learn.microsoft.
 
 #### Secret Parameters
 
-For parameters whose type is string and which represent a value that should be kept secret in some fashion (such as a password, secret, key, etc.), the type of the parameter should be `SecureString` to limit the exposure of sensitive string data from unexpected leakage during cmdlet execution. The practice also applies to output properties whose type is string and that should be kept in secret.
+For parameters whose type is string and which represent a value that should be kept secret in some fashion (such as a password, secret, key, etc.), the type of the parameter should be [SecureString](https://learn.microsoft.com/dotnet/api/system.security.securestring) to limit the exposure of sensitive string data from unexpected leakage during cmdlet execution. The practice also applies to output properties whose type is string and that should be kept in secret.
 
 Please notice that DO NOT use `SecureString` for encryption purposes. We only recommend to use `SecureString` as a wrapper of string to prevent unexpected leakage of information as string may still be exposed to any process or operation that has access to raw memory. 
 
