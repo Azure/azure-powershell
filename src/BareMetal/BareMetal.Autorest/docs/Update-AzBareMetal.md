@@ -31,8 +31,10 @@ Patches the Tags field of a Azure BareMetal instance for the specified subscript
 
 ### Example 1: UpdateExpanded
 ```powershell
-PS C:\> Update-AzBareMetal -Name oraclerac53 -ResourceGroupName SAT09A-T530 -Tag @{"env"="test"}
+Update-AzBareMetal -Name oraclerac53 -ResourceGroupName SAT09A-T530 -Tag @{"env"="test"}
+```
 
+```output
 Location       Name        ResourceGroupName
 --------       ----        -----------------
 southcentralus oraclerac53 SAT09A-T530
@@ -42,8 +44,10 @@ Patches the Tags field of a Azure BareMetal instance for the specified subscript
 
 ### Example 2: UpdateViaIdentityExpanded
 ```powershell
-PS C:\> Get-AzBareMetal -Name oraclerac53 -ResourceGroupName SAT09A-T530 | Update-AzBareMetal -Tag @{"env"="test"}
+Get-AzBareMetal -Name oraclerac53 -ResourceGroupName SAT09A-T530 | Update-AzBareMetal -Tag @{"env"="test"}
+```
 
+```output
 Location       Name        ResourceGroupName
 --------       ----        -----------------
 southcentralus oraclerac53 SAT09A-T530
@@ -54,7 +58,8 @@ Patches the Tags field of a Azure BareMetal instance for the specified subscript
 ## PARAMETERS
 
 ### -DefaultProfile
-The credentials, account, tenant, and subscription used for communication with Azure.
+The DefaultProfile parameter is not functional.
+Use the SubscriptionId parameter when available if executing the cmdlet against a different subscription.
 
 ```yaml
 Type: System.Management.Automation.PSObject
@@ -188,19 +193,6 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ### Microsoft.Azure.PowerShell.Cmdlets.BareMetal.Models.Api20210809.IAzureBareMetalInstance
 
 ## NOTES
-
-ALIASES
-
-COMPLEX PARAMETER PROPERTIES
-
-To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
-
-
-INPUTOBJECT <IBareMetalIdentity>: Identity Parameter
-  - `[AzureBareMetalInstanceName <String>]`: Name of the Azure BareMetal on Azure instance.
-  - `[Id <String>]`: Resource identity path
-  - `[ResourceGroupName <String>]`: The name of the resource group. The name is case insensitive.
-  - `[SubscriptionId <String>]`: The ID of the target subscription.
 
 ## RELATED LINKS
 
