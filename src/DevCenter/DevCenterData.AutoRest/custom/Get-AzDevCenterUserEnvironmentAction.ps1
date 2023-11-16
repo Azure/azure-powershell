@@ -34,7 +34,7 @@ COMPLEX PARAMETER PROPERTIES
 To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
 
 INPUTOBJECT <IDevCenterdataIdentity>: Identity Parameter
-  [ActionName <String>]: The name of an action that will take place on a Dev Box.
+  [Name <String>]: The name of an action that will take place on a Dev Box.
   [CatalogName <String>]: The name of the catalog
   [CustomizationGroupName <String>]: A customization group name.
   [CustomizationTaskId <String>]: A customization task ID.
@@ -76,7 +76,7 @@ function Get-AzDevCenterUserEnvironmentAction {
         [Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Category('Path')]
         [System.String]
         # The name of an action that will take place on an Environment.
-        ${ActionName},
+        ${Name},
 
         [Parameter(ParameterSetName = 'Get', Mandatory)]
         [Parameter(ParameterSetName = 'GetByDevCenter', Mandatory)]

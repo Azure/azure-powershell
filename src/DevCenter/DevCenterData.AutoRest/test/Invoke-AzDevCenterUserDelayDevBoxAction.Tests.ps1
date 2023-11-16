@@ -23,10 +23,10 @@ Describe 'Invoke-AzDevCenterUserDelayDevBoxAction' {
 
     It 'Delay'  {
         if ($Record -or $Live) {
-            $action = Get-AzDevCenterUserDevBoxAction -Endpoint $env.endpoint -DevBoxName $env.devboxName3 -ProjectName $env.projectName -ActionName "schedule-default"
+            $action = Get-AzDevCenterUserDevBoxAction -Endpoint $env.endpoint -DevBoxName $env.devboxName3 -ProjectName $env.projectName -Name "schedule-default"
             $delayTime = New-TimeSpan -Minutes 5
             $newScheduledTime = $action.NextScheduledTime + $delayTime
-            $delayAction = Invoke-AzDevCenterUserDelayDevBoxAction -Endpoint $env.endpoint -DevBoxName  $env.devboxName3 -ProjectName $env.projectName -ActionName "schedule-default" -DelayTime "00:05"
+            $delayAction = Invoke-AzDevCenterUserDelayDevBoxAction -Endpoint $env.endpoint -DevBoxName  $env.devboxName3 -ProjectName $env.projectName -Name "schedule-default" -DelayTime "00:05"
             $delayAction.NextScheduledTime | Should -Be $newScheduledTime
         }
     }
@@ -40,10 +40,10 @@ Describe 'Invoke-AzDevCenterUserDelayDevBoxAction' {
 
     It 'DelayByDevCenter'  {
         if ($Record -or $Live) {
-            $action = Get-AzDevCenterUserDevBoxAction -Endpoint $env.endpoint -DevBoxName $env.devboxName3 -ProjectName $env.projectName -ActionName "schedule-default"
+            $action = Get-AzDevCenterUserDevBoxAction -Endpoint $env.endpoint -DevBoxName $env.devboxName3 -ProjectName $env.projectName -Name "schedule-default"
             $delayTime = New-TimeSpan -Minutes 5
             $newScheduledTime = $action.NextScheduledTime + $delayTime
-            $delayAction = Invoke-AzDevCenterUserDelayDevBoxAction -DevCenterName $env.devCenterName -DevBoxName $env.devboxName3 -ProjectName $env.projectName -ActionName "schedule-default" -DelayTime "00:05"
+            $delayAction = Invoke-AzDevCenterUserDelayDevBoxAction -DevCenterName $env.devCenterName -DevBoxName $env.devboxName3 -ProjectName $env.projectName -Name "schedule-default" -DelayTime "00:05"
             $delayAction.NextScheduledTime | Should -Be $newScheduledTime
         }
     }

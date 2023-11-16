@@ -21,7 +21,7 @@ Describe 'Get-AzDevCenterUserEnvironmentAction' {
     }
 
     It 'Get' {
-        $action = Get-AzDevCenterUserEnvironmentAction -Endpoint $env.endpoint10 -EnvironmentName $env.envName10 -ProjectName $env.projectName10 -ActionName "Delete"
+        $action = Get-AzDevCenterUserEnvironmentAction -Endpoint $env.endpoint10 -EnvironmentName $env.envName10 -ProjectName $env.projectName10 -Name "Delete"
         
         $action.Name | Should -Be "Delete"
         $action.ActionType | Should -Be "Delete"    

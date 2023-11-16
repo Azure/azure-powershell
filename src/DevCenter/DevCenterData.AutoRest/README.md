@@ -166,6 +166,10 @@ directive:
       parameter-name: Filter
     hide: true
   - where:
+      parameter-name: ActionName
+    set:
+      parameter-name: Name
+  - where:
       verb: New
       variant: ^Create$|^CreateViaIdentity$
     remove: true

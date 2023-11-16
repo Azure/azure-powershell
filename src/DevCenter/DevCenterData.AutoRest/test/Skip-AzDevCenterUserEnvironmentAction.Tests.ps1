@@ -16,7 +16,7 @@ if(($null -eq $TestName) -or ($TestName -contains 'Skip-AzDevCenterUserEnvironme
 
 Describe 'Skip-AzDevCenterUserEnvironmentAction' {
     It 'Skip' {
-        Skip-AzDevCenterUserEnvironmentAction -Endpoint $env.endpoint10 -EnvironmentName $env.envName10 -ProjectName $env.projectName10 -ActionName "Delete"
+        Skip-AzDevCenterUserEnvironmentAction -Endpoint $env.endpoint10 -EnvironmentName $env.envName10 -ProjectName $env.projectName10 -Name "Delete"
         $listOfActions = Get-AzDevCenterUserEnvironmentAction -Endpoint $env.endpoint10 -EnvironmentName $env.envName10 -ProjectName $env.projectName10
         $listOfActions.Count | Should -Be 0
     

@@ -26,13 +26,13 @@ Describe 'Get-AzDevCenterUserDevBoxAction' {
     }
 
     It 'Get'  {
-        $action = Get-AzDevCenterUserDevBoxAction -Endpoint $env.endpoint -DevBoxName $env.devboxName -ProjectName $env.projectName -ActionName "schedule-default"
+        $action = Get-AzDevCenterUserDevBoxAction -Endpoint $env.endpoint -DevBoxName $env.devboxName -ProjectName $env.projectName -Name "schedule-default"
         
         $action.Name | Should -Be "schedule-default"
         $action.ActionType | Should -Be "Stop"
 
         if ($Record -or $Live) {
-            $action = Get-AzDevCenterUserDevBoxAction -DevCenterName $env.devCenterName -DevBoxName $env.devboxName -ProjectName $env.projectName -ActionName "schedule-default"
+            $action = Get-AzDevCenterUserDevBoxAction -DevCenterName $env.devCenterName -DevBoxName $env.devboxName -ProjectName $env.projectName -Name "schedule-default"
 
             $action.Name | Should -Be "schedule-default"
             $action.ActionType | Should -Be "Stop"

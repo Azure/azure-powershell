@@ -14,14 +14,13 @@ Skips an occurrence of an action.
 
 ### Skip (Default)
 ```
-Skip-AzDevCenterUserDevBoxAction -Endpoint <String> -ActionName <String> -DevBoxName <String>
- -ProjectName <String> [-UserId <String>] [-DefaultProfile <PSObject>] [-PassThru] [-Confirm] [-WhatIf]
- [<CommonParameters>]
+Skip-AzDevCenterUserDevBoxAction -Endpoint <String> -DevBoxName <String> -Name <String> -ProjectName <String>
+ [-UserId <String>] [-DefaultProfile <PSObject>] [-PassThru] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ### SkipByDevCenter
 ```
-Skip-AzDevCenterUserDevBoxAction -DevCenterName <String> -ActionName <String> -DevBoxName <String>
+Skip-AzDevCenterUserDevBoxAction -DevCenterName <String> -DevBoxName <String> -Name <String>
  -ProjectName <String> [-UserId <String>] [-DefaultProfile <PSObject>] [-PassThru] [-Confirm] [-WhatIf]
  [<CommonParameters>]
 ```
@@ -45,14 +44,14 @@ Skips an occurrence of an action.
 
 ### Example 1: Skip an action on the dev box by endpoint
 ```powershell
-Skip-AzDevCenterUserDevBoxAction -Endpoint "https://8a40af38-3b4c-4672-a6a4-5e964b1870ed-contosodevcenter.centralus.devcenter.azure.com/" -DevBoxName myDevBox -ProjectName DevProject -ActionName "schedule-default"
+Skip-AzDevCenterUserDevBoxAction -Endpoint "https://8a40af38-3b4c-4672-a6a4-5e964b1870ed-contosodevcenter.centralus.devcenter.azure.com/" -DevBoxName myDevBox -ProjectName DevProject -Name "schedule-default"
 ```
 
 This command skips the action "schedule-default" for the dev box "myDevBox".
 
 ### Example 2: Skip an action on the dev box by dev center
 ```powershell
-Skip-AzDevCenterUserDevBoxAction -DevCenterName Contoso -DevBoxName myDevBox -ProjectName DevProject -ActionName "schedule-default"
+Skip-AzDevCenterUserDevBoxAction -DevCenterName Contoso -DevBoxName myDevBox -ProjectName DevProject -Name "schedule-default"
 ```
 
 This command skips the action "schedule-default" for the dev box "myDevBox".
@@ -74,21 +73,6 @@ Skip-AzDevCenterUserDevBoxAction -DevCenterName Contoso -InputObject $devBoxInpu
 This command skips the action "schedule-default" for the dev box "myDevBox".
 
 ## PARAMETERS
-
-### -ActionName
-The name of an action that will take place on a Dev Box.
-
-```yaml
-Type: System.String
-Parameter Sets: Skip, SkipByDevCenter
-Aliases:
-
-Required: True
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
 
 ### -DefaultProfile
 The DefaultProfile parameter is not functional.
@@ -164,6 +148,21 @@ Required: True
 Position: Named
 Default value: None
 Accept pipeline input: True (ByValue)
+Accept wildcard characters: False
+```
+
+### -Name
+The name of an action that will take place on a Dev Box.
+
+```yaml
+Type: System.String
+Parameter Sets: Skip, SkipByDevCenter
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
 Accept wildcard characters: False
 ```
 

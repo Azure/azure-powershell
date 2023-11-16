@@ -20,13 +20,13 @@ Get-AzDevCenterUserDevBoxAction -Endpoint <String> -DevBoxName <String> -Project
 
 ### Get
 ```
-Get-AzDevCenterUserDevBoxAction -Endpoint <String> -ActionName <String> -DevBoxName <String>
- -ProjectName <String> [-UserId <String>] [-DefaultProfile <PSObject>] [<CommonParameters>]
+Get-AzDevCenterUserDevBoxAction -Endpoint <String> -DevBoxName <String> -Name <String> -ProjectName <String>
+ [-UserId <String>] [-DefaultProfile <PSObject>] [<CommonParameters>]
 ```
 
 ### GetByDevCenter
 ```
-Get-AzDevCenterUserDevBoxAction -DevCenterName <String> -ActionName <String> -DevBoxName <String>
+Get-AzDevCenterUserDevBoxAction -DevCenterName <String> -DevBoxName <String> -Name <String>
  -ProjectName <String> [-UserId <String>] [-DefaultProfile <PSObject>] [<CommonParameters>]
 ```
 
@@ -69,14 +69,14 @@ This command lists the actions on the dev box "myDevBox".
 
 ### Example 3: Get an action on the dev box by endpoint
 ```powershell
-Get-AzDevCenterUserDevBoxAction -Endpoint "https://8a40af38-3b4c-4672-a6a4-5e964b1870ed-contosodevcenter.centralus.devcenter.azure.com/" -DevBoxName myDevBox -ProjectName DevProject -ActionName "schedule-default"
+Get-AzDevCenterUserDevBoxAction -Endpoint "https://8a40af38-3b4c-4672-a6a4-5e964b1870ed-contosodevcenter.centralus.devcenter.azure.com/" -DevBoxName myDevBox -ProjectName DevProject -Name "schedule-default"
 ```
 
 This command gets the action "schedule-default" for the dev box "myDevBox".
 
 ### Example 4: Get an action on the dev box by dev center
 ```powershell
-Get-AzDevCenterUserDevBoxAction -DevCenterName Contoso -DevBoxName myDevBox -ProjectName DevProject -ActionName "schedule-default"
+Get-AzDevCenterUserDevBoxAction -DevCenterName Contoso -DevBoxName myDevBox -ProjectName DevProject -Name "schedule-default"
 ```
 
 This command gets the action "schedule-default" for the dev box "myDevBox".
@@ -98,21 +98,6 @@ Get-AzDevCenterUserDevBoxAction -DevCenterName Contoso -InputObject $devBoxInput
 This command gets the action "schedule-default" for the dev box "myDevBox".
 
 ## PARAMETERS
-
-### -ActionName
-The name of an action that will take place on a Dev Box.
-
-```yaml
-Type: System.String
-Parameter Sets: Get, GetByDevCenter
-Aliases:
-
-Required: True
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
 
 ### -DefaultProfile
 The DefaultProfile parameter is not functional.
@@ -188,6 +173,21 @@ Required: True
 Position: Named
 Default value: None
 Accept pipeline input: True (ByValue)
+Accept wildcard characters: False
+```
+
+### -Name
+The name of an action that will take place on a Dev Box.
+
+```yaml
+Type: System.String
+Parameter Sets: Get, GetByDevCenter
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
 Accept wildcard characters: False
 ```
 

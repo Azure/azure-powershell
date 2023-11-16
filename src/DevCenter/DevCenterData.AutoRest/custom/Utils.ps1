@@ -99,7 +99,7 @@ function GetDelayedActionTimeFromActionName {
     param(
         [Parameter(Mandatory = $true, HelpMessage = 'Name of the action')]
         [System.String]
-        ${ActionName},
+        ${Name},
 
         [Parameter(Mandatory = $true, HelpMessage = 'Endpoint URL')]
         [System.String]
@@ -124,7 +124,7 @@ function GetDelayedActionTimeFromActionName {
     ) 
 
     process {
-        $action = Az.DevCenterdata.internal\Get-AzDevCenterUserDevBoxAction -Endpoint $Endpoint -ActionName $ActionName `
+        $action = Az.DevCenterdata.internal\Get-AzDevCenterUserDevBoxAction -Endpoint $Endpoint -Name $Name `
             -ProjectName $Project -DevBoxName $DevBoxName -UserId $UserId | ConvertTo-Json | ConvertFrom-Json
         
         $newScheduledTime = $action.NextScheduledTime + $DelayTime
@@ -138,7 +138,7 @@ function GetDelayedEnvironmentActionTimeFromActionName {
     param(
         [Parameter(Mandatory = $true, HelpMessage = 'Name of the action')]
         [System.String]
-        ${ActionName},
+        ${Name},
 
         [Parameter(Mandatory = $true, HelpMessage = 'Endpoint URL')]
         [System.String]
@@ -163,7 +163,7 @@ function GetDelayedEnvironmentActionTimeFromActionName {
     ) 
 
     process {
-        $action = Az.DevCenterdata.internal\Get-AzDevCenterUserEnvironmentAction -Endpoint $Endpoint -ActionName $ActionName `
+        $action = Az.DevCenterdata.internal\Get-AzDevCenterUserEnvironmentAction -Endpoint $Endpoint -Name $Name `
             -ProjectName $Project -EnvironmentName $EnvironmentName -UserId $UserId | ConvertTo-Json | ConvertFrom-Json
         
         $newScheduledTime = $action.NextScheduledTime + $DelayTime
