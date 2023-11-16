@@ -71,7 +71,7 @@ directive:
 ``` yaml
 commit: 78eac0bd58633028293cb1ec1709baa200bed9e2
 require:
-  - $(this-folder)/../readme.azure.noprofile.md
+  - $(this-folder)/../../readme.azure.noprofile.md
 input-file:
   - $(repo)/specification/web/resource-manager/Microsoft.CertificateRegistration/stable/2019-08-01/AppServiceCertificateOrders.json
   - $(repo)/specification/web/resource-manager/Microsoft.CertificateRegistration/stable/2019-08-01/CertificateRegistrationProvider.json
@@ -550,8 +550,8 @@ directive:
 
 # Add Storage and AppInsights cmdlet subset
 require:
-  - $(this-folder)/../helpers/Storage/readme.noprofile.md
-  - $(this-folder)/../helpers/AppInsights/readme.noprofile.md
-  - $(this-folder)/../helpers/ManagedIdentity/readme.noprofile.md
+  - $(this-folder)/../../helpers/Storage/readme.noprofile.md
+  - $(this-folder)/../../helpers/AppInsights/readme.noprofile.md
+  - $(this-folder)/../../helpers/ManagedIdentity/readme.noprofile.md
   
 ```
