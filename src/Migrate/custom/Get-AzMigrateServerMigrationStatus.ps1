@@ -28,7 +28,7 @@ function Get-AzMigrateServerReplicationStatus {
         [Parameter(ParameterSetName = 'GetByMachineName', Mandatory)]
         [Parameter(ParameterSetName = 'GetHealthByMachineName', Mandatory)]
         [Parameter(ParameterSetName = 'GetByApplianceName', Mandatory)]
-        [Parameter(ParameterSetName = 'GetByPrioritiseServer', Mandatory)]
+        #[Parameter(ParameterSetName = 'GetByPrioritiseServer', Mandatory)]
         [Microsoft.Azure.PowerShell.Cmdlets.Migrate.Category('Path')]
         [System.String]
         # Specifies the Resource Group of the Azure Migrate Project in the current subscription.
@@ -38,7 +38,7 @@ function Get-AzMigrateServerReplicationStatus {
         [Parameter(ParameterSetName = 'GetByMachineName', Mandatory)]
         [Parameter(ParameterSetName = 'GetHealthByMachineName', Mandatory)]
         [Parameter(ParameterSetName = 'GetByApplianceName', Mandatory)]
-        [Parameter(ParameterSetName = 'GetByPrioritiseServer', Mandatory)]
+        #[Parameter(ParameterSetName = 'GetByPrioritiseServer', Mandatory)]
         [Microsoft.Azure.PowerShell.Cmdlets.Migrate.Category('Path')]
         [System.String]
         # Specifies the Azure Migrate project  in the current subscription.
@@ -46,7 +46,7 @@ function Get-AzMigrateServerReplicationStatus {
 
         [Parameter(ParameterSetName = 'GetByMachineName', Mandatory)]
         [Parameter(ParameterSetName = 'GetHealthByMachineName', Mandatory)]
-        [Parameter(ParameterSetName = 'GetByPrioritiseServer', Mandatory)]
+        #[Parameter(ParameterSetName = 'GetByPrioritiseServer', Mandatory)]
         [Microsoft.Azure.PowerShell.Cmdlets.Migrate.Category('Path')]
         [System.String]
         # Specifies the display name of the replicating machine.
@@ -64,7 +64,7 @@ function Get-AzMigrateServerReplicationStatus {
         # Specifies whether the health issues to show for replicating server.
         ${Health},
 
-        [Parameter(ParameterSetName = 'GetByPrioritiseServer', Mandatory)]
+        #[Parameter(ParameterSetName = 'GetByPrioritiseServer', Mandatory)]
         [Parameter(ParameterSetName = 'GetBySRSID', Mandatory)]
         [Microsoft.Azure.PowerShell.Cmdlets.Migrate.Category('Path')]
         [System.Management.Automation.SwitchParameter]
@@ -185,6 +185,26 @@ function Get-AzMigrateServerReplicationStatus {
             return $appMap[$site]
         }
 
+        function Convert-MillisecondsToTime {
+            param (
+                [int]$Milliseconds
+            )
+
+            if ($Milliseconds -eq $null) {
+                return $null
+            }
+
+            $TotalMinutes = [math]::Floor($Milliseconds / 60000)
+            $Hours = [math]::Floor($TotalMinutes / 60)
+            $Minutes = $TotalMinutes % 60
+
+            if ($Hours -eq 0) {
+                return "$Minutes min"
+            } else {
+                return "$Hours hr $Minutes min"
+            }
+        }
+
         $parameterSet = $PSCmdlet.ParameterSetName
         $null = $PSBoundParameters.Remove('ResourceGroupName')
         $null = $PSBoundParameters.Remove('ProjectName')
@@ -238,17 +258,22 @@ function Get-AzMigrateServerReplicationStatus {
         }
 
         if ($ReplicationMigrationItems -eq $null) {
-            Write-Host "No replicating machine found with name $MachineName"
+            if ($parameterSet -eq "GetByMachineName" -or $parameterSet -eq "GetHealthByMachineName") {
+                Write-Host "No replicating machine found with name $MachineName."
+            }
+            else {
+                Write-Host "No replicating machine found."
+            }
             return;
         }
 
         $vmMigrationStatusTable = New-Object System.Data.DataTable("")
 
         if ($parameterSet -eq "GetByApplianceName") {
-            $column = @("Server", "State", "Progress", "TimeElapsed", "TimeRemaining", "UploadSpeed", "ESXiHost", "Datastore")
+            $column = @("Server", "State", "Progress", "TimeElapsed", "TimeRemaining", "UploadSpeed", "Datastore")
         }
         else {
-            $column = @("Appliance", "Server", "State", "Progress", "TimeElapsed", "TimeRemaining", "UploadSpeed", "ESXiHost", "Datastore")
+            $column = @("Appliance", "Server", "State", "Progress", "TimeElapsed", "TimeRemaining", "UploadSpeed", "Datastore")
         }
 
         MakeTable $vmMigrationStatusTable $column
@@ -282,12 +307,34 @@ function Get-AzMigrateServerReplicationStatus {
 
             $row1["Server"] = $ReplicationMigrationItem.MachineName
             $row1["State"] = $ReplicationMigrationItem.ProviderSpecificDetail.GatewayOperationDetailState
-            $row1["Progress"] = $ReplicationMigrationItem.ProviderSpecificDetail.GatewayOperationDetailProgressPercentage
-            $row1["TimeElapsed"] = $ReplicationMigrationItem.ProviderSpecificDetail.GatewayOperationDetailTimeElapsed
-            $row1["TimeRemaining"] = $ReplicationMigrationItem.ProviderSpecificDetail.GatewayOperationDetailTimeRemaining
-            $row1["UploadSpeed"] = $ReplicationMigrationItem.ProviderSpecificDetail.GatewayOperationDetailUploadSpeed
-            $row1["ESXiHost"] = $ReplicationMigrationItem.ProviderSpecificDetail.GatewayOperationDetailHostName
-            $row1["Datastore"] = $ReplicationMigrationItem.ProviderSpecificDetail.GatewayOperationDetailDataStore
+            if ($ReplicationMigrationItem.ReplicationStatus -match "Pause") {
+                $row1["State"] = $ReplicationMigrationItem.ReplicationStatus
+                $row1["TimeRemaining"] = "     -"
+                $row1["UploadSpeed"] = "     -"
+                $row1["Progress"] = "    -"
+                $row1["TimeElapsed"] = "     -"
+            }
+            elseif ($ReplicationMigrationItem.ReplicationStatus -match "Resum") {
+                $row1["State"] = $ReplicationMigrationItem.ReplicationStatus
+                $row1["TimeRemaining"] = "     -"
+                $row1["UploadSpeed"] = "     -"
+                $row1["Progress"] = ($ReplicationMigrationItem.ProviderSpecificDetail.GatewayOperationDetailProgressPercentage -ne $null) ? $ReplicationMigrationItem.ProviderSpecificDetail.GatewayOperationDetailProgressPercentage : "    -"
+                $row1["TimeElapsed"] = "     -"
+            }
+            elseif ($ReplicationMigrationItem.ProviderSpecificDetail.GatewayOperationDetailState -match "Completed") {
+                $row1["TimeRemaining"] = "     -"
+                $row1["UploadSpeed"] = "     -"
+                $row1["Progress"] = "    -"
+                $row1["TimeElapsed"] = "     -"
+            }
+            else {
+                $row1["TimeRemaining"] = Convert-MillisecondsToTime -Milliseconds $ReplicationMigrationItem.ProviderSpecificDetail.GatewayOperationDetailTimeRemaining
+                $row1["UploadSpeed"] = $ReplicationMigrationItem.ProviderSpecificDetail.GatewayOperationDetailUploadSpeed
+                $row1["Progress"] = $ReplicationMigrationItem.ProviderSpecificDetail.GatewayOperationDetailProgressPercentage
+                $row1["TimeElapsed"] = Convert-MillisecondsToTime -Milliseconds $ReplicationMigrationItem.ProviderSpecificDetail.GatewayOperationDetailTimeElapsed
+            }
+            #$row1["ESXiHost"] = $ReplicationMigrationItem.ProviderSpecificDetail.GatewayOperationDetailHostName
+            $row1["Datastore"] = $ReplicationMigrationItem.ProviderSpecificDetail.GatewayOperationDetailDataStore -join ', '
             $vmMigrationStatusTable.Rows.Add($row1)
 
             if( $parameterSet -eq "GetByMachineName" -or $parameterSet -eq "GetHealthByMachineName" -or $parameterSet -eq "GetByPrioritiseServer") {
@@ -307,11 +354,34 @@ function Get-AzMigrateServerReplicationStatus {
                     $row = $diskStatusTable.NewRow()
                     $row["Disk"] = $disk.DiskName
                     $row["State"] = $disk.GatewayOperationDetailState
-                    $row["Progress"] = $disk.GatewayOperationDetailProgressPercentage
-                    $row["TimeElapsed"] = $disk.GatewayOperationDetailTimeElapsed
-                    $row["TimeRemaining"] = $disk.GatewayOperationDetailTimeRemaining
-                    $row["UploadSpeed"] = $disk.GatewayOperationDetailUploadSpeed
-                    $row["Datastore"] = $disk.GatewayOperationDetailDataStore
+
+                    if ($ReplicationMigrationItem.ReplicationStatus -match "Pause") {
+                        $row["State"] = $ReplicationMigrationItem.ReplicationStatus
+                        $row["TimeRemaining"] = "     -"
+                        $row["UploadSpeed"] = "     -"
+                        $row["Progress"] = "    -"
+                        $row["TimeElapsed"] = "     -"
+                    }
+                    elseif ($ReplicationMigrationItem.ReplicationStatus -match "Resum") {
+                        $row["State"] = $ReplicationMigrationItem.ReplicationStatus
+                        $row["TimeRemaining"] = "     -"
+                        $row["UploadSpeed"] = "     -"
+                        $row["Progress"] = ($disk.GatewayOperationDetailProgressPercentage -ne $null) ? $disk.GatewayOperationDetailProgressPercentage : "    -"
+                        $row["TimeElapsed"] = "     -"
+                    }
+                    elseif ($disk.GatewayOperationDetailState -match "Completed") {
+                        $row["Progress"] = "    -"
+                        $row["TimeElapsed"] = "     -"
+                        $row["TimeRemaining"] = "     -"
+                        $row["UploadSpeed"] = "     -"
+                    }
+                    else {
+                        $row["TimeRemaining"] = Convert-MillisecondsToTime -Milliseconds $disk.GatewayOperationDetailTimeRemaining
+                        $row["UploadSpeed"] = $disk.GatewayOperationDetailUploadSpeed
+                        $row["Progress"] = $disk.GatewayOperationDetailProgressPercentage
+                        $row["TimeElapsed"] = Convert-MillisecondsToTime -Milliseconds $disk.GatewayOperationDetailTimeElapsed
+                    }
+                    $row["Datastore"] = $disk.GatewayOperationDetailDataStore[0]
                     $diskStatusTable.Rows.Add($row)
                 }
 
@@ -331,7 +401,7 @@ function Get-AzMigrateServerReplicationStatus {
                 }
             }
 
-            if( $parameterSet -eq "GetByPrioritiseServer") {
+            <#if( $parameterSet -eq "GetByPrioritiseServer") {
                 $vmMigrationTable = New-Object System.Data.DataTable("")
                 $column = @("Appliance", "Server", "State", "TimeRemaining", "ESXiHost", "Datastore")
                 MakeTable $vmMigrationTable $column
@@ -404,7 +474,7 @@ function Get-AzMigrateServerReplicationStatus {
                 $resourceUtilizationTable.Rows.Add($row5)
 
                 $row6 = $resourceUtilizationTable.NewRow()
-                $row6["Resource"] = "Datastore Snapshot Count (for each datastore corresponding to the server’s disks)"
+                $row6["Resource"] = "Datastore Snapshot Count (for each datastore corresponding to the server s disks)"
                 $row6["Capacity"] = $ReplicationMigrationItem.ProviderSpecificDetail.ApplianceMonitoringDetail.DatastoreSnapshotCapacity
                 $row6["Utilization for server migrations"] = $ReplicationMigrationItem.ProviderSpecificDetail.ApplianceMonitoringDetail.DatastoreSnapshotProcessUtilization
                 $row6["Total utilization"] = $ReplicationMigrationItem.ProviderSpecificDetail.ApplianceMonitoringDetail.DatastoreSnapshotTotalUtilization
@@ -423,7 +493,7 @@ function Get-AzMigrateServerReplicationStatus {
                 Write-Host "3. Increase the Network bandwidth available for appliances so that upload speeds can increase."
                 Write-Host "4. Increase the NFC buffer size to increase the upload speed."
                 Write-Host "5. Perform storage Vmotion on server $($ReplicationMigrationItem.MachineName)."
-            }
+            }#>
         }
 
         if ($parameterSet -eq "GetByApplianceName" -or $parameterSet -eq "ListByName") {
