@@ -117,6 +117,7 @@
 | Database for MySQL             | `Az.MySql`                      | [![MySql]][MySqlGallery]                                           | [Changelog][MySqlChangeLog]                      |
 | NetApp Files                   | `Az.NetAppFiles`                | [![NetAppFiles]][NetAppFilesGallery]                               | [Changelog][NetAppFilesChangeLog]                |
 | Network                        | `Az.Network`                    | [![Network]][NetworkGallery]                                       | [Changelog][NetworkChangeLog]                    |
+| NetworkAnalytics               | `Az.NetworkAnalytics`           | [![NetworkAnalytics]][NetworkAnalyticsGallery]                     | [Changelog][NetworkAnalyticsChangeLog]           |
 | NetworkCloud                   | `Az.NetworkCloud`               | [![NetworkCloud]][NetworkCloudGallery]                             | [Changelog][NetworkCloudChangeLog]               |
 | NetworkFunction                | `Az.NetworkFunction`            | [![NetworkFunction]][NetworkFunctionGallery]                       | [Changelog][NetworkFunctionChangeLog]            |
 | Nginx                          | `Az.Nginx`                      | [![Nginx]][NginxGallery]                                           | [Changelog][NginxChangeLog]                      |
@@ -282,6 +283,7 @@
 [MySql]:                      https://img.shields.io/powershellgallery/v/Az.MySql.svg?style=flat-square&label=Az.MySql
 [NetAppFiles]:                https://img.shields.io/powershellgallery/v/Az.NetAppFiles.svg?style=flat-square&label=Az.NetAppFiles
 [Network]:                    https://img.shields.io/powershellgallery/v/Az.Network.svg?style=flat-square&label=Az.Network
+[NetworkAnalytics]:           https://img.shields.io/powershellgallery/v/Az.NetworkAnalytics.svg?style=flat-square&label=Az.NetworkAnalytics
 [NetworkCloud]:               https://img.shields.io/powershellgallery/v/Az.NetworkCloud.svg?style=flat-square&label=Az.NetworkCloud
 [NetworkFunction]:            https://img.shields.io/powershellgallery/v/Az.NetworkFunction.svg?style=flat-square&label=Az.NetworkFunction
 [Nginx]:                      https://img.shields.io/powershellgallery/v/Az.Nginx.svg?style=flat-square&label=Az.Nginx
@@ -443,6 +445,7 @@
 [MySqlGallery]:                      https://www.powershellgallery.com/packages/Az.MySql/
 [NetAppFilesGallery]:                https://www.powershellgallery.com/packages/Az.NetAppFiles/
 [NetworkGallery]:                    https://www.powershellgallery.com/packages/Az.Network/
+[NetworkAnalyticsGallery]:           https://www.powershellgallery.com/packages/Az.NetworkAnalytics/
 [NetworkCloudGallery]:               https://www.powershellgallery.com/packages/Az.NetworkCloud/
 [NetworkFunctionGallery]:            https://www.powershellgallery.com/packages/Az.NetworkFunction/
 [NginxGallery]:                      https://www.powershellgallery.com/packages/Az.Nginx/
@@ -602,6 +605,7 @@
 [MySqlChangeLog]:                      ../src/MySql/ChangeLog.md
 [NetAppFilesChangeLog]:                ../src/NetAppFiles/NetAppFiles/ChangeLog.md
 [NetworkChangeLog]:                    ../src/Network/Network/ChangeLog.md
+[NetworkAnalyticsChangeLog]:           ../src/NetworkAnalytics/NetworkAnalytics/ChangeLog.md
 [NetworkCloudChangeLog]:               ../src/NetworkCloud/NetworkCloud/ChangeLog.md
 [NetworkFunctionChangeLog]:            ../src/NetworkFunction/ChangeLog.md
 [NginxChangeLog]:                      ../src/Nginx/ChangeLog.md
