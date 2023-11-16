@@ -30,12 +30,13 @@ For information on how to develop for `Az.Communication`, see [how-to.md](how-to
 > see https://aka.ms/autorest
 
 ``` yaml
+commit: 23ff943dbe3b5ccdc63a6195daa0f30b17ed9d88
 require:
 # readme.azure.noprofile.md is the common configuration file
-  - $(this-folder)/../readme.azure.noprofile.md
+  - $(this-folder)/../../readme.azure.noprofile.md
 input-file:
 # You need to specify your swagger files here.
-  - https://github.com/Azure/azure-rest-api-specs/blob/23ff943dbe3b5ccdc63a6195daa0f30b17ed9d88/specification/communication/resource-manager/Microsoft.Communication/stable/2020-08-20/CommunicationService.json
+  - $(repo)/specification/communication/resource-manager/Microsoft.Communication/stable/2020-08-20/CommunicationService.json
 
 # If the swagger has not been put in the repo, you may uncomment the following line and refer to it locally
 # - (this-folder)/relative-path-to-your-swagger 

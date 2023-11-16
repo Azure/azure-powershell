@@ -45,12 +45,13 @@ In this directory, run AutoRest:
 > see https://aka.ms/autorest
 
 ``` yaml
+commit: 14f29e62df4563d9bf4b9d98ae0688420df12053
 require:
-  - $(this-folder)/../readme.azure.noprofile.md
+  - $(this-folder)/../../readme.azure.noprofile.md
 input-file:
-  - https://github.com/Azure/azure-rest-api-specs/blob/6080bb1fc0e219b72ed3c85966b54334e22e9980/specification/cost-management/resource-manager/Microsoft.CostManagement/stable/2021-10-01/costmanagement.json
-  - https://github.com/Azure/azure-rest-api-specs/blob/14f29e62df4563d9bf4b9d98ae0688420df12053/specification/cost-management/resource-manager/Microsoft.CostManagement/stable/2021-10-01/costmanagement.exports.json
-  - https://github.com/Azure/azure-rest-api-specs/blob/fbb4e2c74897a67a75116d2a3157bd146262def4/specification/cost-management/resource-manager/Microsoft.CostManagement/stable/2022-05-01/costmanagement.generatecostdetailsreport.json
+  - $(repo)/specification/cost-management/resource-manager/Microsoft.CostManagement/stable/2021-10-01/costmanagement.json
+  - $(repo)/specification/cost-management/resource-manager/Microsoft.CostManagement/stable/2021-10-01/costmanagement.exports.json
+  - $(repo)/specification/cost-management/resource-manager/Microsoft.CostManagement/stable/2022-05-01/costmanagement.generatecostdetailsreport.json
 title: CostManagement
 module-version: 0.3.0
 
