@@ -227,7 +227,7 @@ $result = New-AzVmss -Credential $vmCred -VMScaleSetName $vmssName1 -ImageName $
 # $result.VirtualMachineProfile.SecurityProfile.UefiSettings.SecureBootEnabled;
 ```
 
-This example Creates a new VMSS with the new Security Type 'TrustedLaunch' and the necessary UEFISettings values,
+This example Creates a new VMSS with the new Security Type 'TrustedLaunch' and the necessary UEFISettings values, VTpmEnabled and SecureBootEnalbed are true. Please check [the Trusted Launch feature page](aka.ms/trustedlaunch) for more information.
 
 ### Example 5: Create a Vmss in Orchestration Mode: Flexible by default
 ```powershell
