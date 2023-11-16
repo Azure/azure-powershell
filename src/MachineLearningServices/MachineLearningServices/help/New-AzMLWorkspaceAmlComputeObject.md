@@ -1,7 +1,7 @@
 ---
-external help file:
+external help file: Az.MachineLearningServices-help.xml
 Module Name: Az.MachineLearningServices
-online version: https://learn.microsoft.com/powershell/module/az.machinelearningservices/new-azmlworkspaceamlcomputeobject
+online version: https://learn.microsoft.com/powershell/module/az.MachineLearningServices/new-AzMLWorkspaceAmlComputeObject
 schema: 2.0.0
 ---
 
@@ -13,13 +13,12 @@ Create an in-memory object for AmlCompute.
 ## SYNTAX
 
 ```
-New-AzMLWorkspaceAmlComputeObject [-AdminUserName <String>] [-AdminUserPassword <String>]
- [-AdminUserSshPublicKey <String>] [-Description <String>] [-DisableLocalAuth <Boolean>]
+New-AzMLWorkspaceAmlComputeObject [-Description <String>] [-DisableLocalAuth <Boolean>] [-ResourceId <String>]
  [-EnableNodePublicIP <Boolean>] [-IsolatedNetwork <Boolean>] [-OSType <OSType>] [-PropertyBag <IAny>]
- [-RemoteLoginPortPublicAccess <RemoteLoginPortPublicAccess>] [-ResourceId <String>]
- [-ScaleMaxNodeCount <Int32>] [-ScaleMinNodeCount <Int32>] [-ScaleNodeIdleTimeBeforeScaleDown <TimeSpan>]
- [-SubnetId <String>] [-VirtualMachineImageId <String>] [-VMPriority <VMPriority>] [-VMSize <String>]
- [<CommonParameters>]
+ [-RemoteLoginPortPublicAccess <RemoteLoginPortPublicAccess>] [-ScaleMaxNodeCount <Int32>]
+ [-ScaleMinNodeCount <Int32>] [-ScaleNodeIdleTimeBeforeScaleDown <TimeSpan>] [-SubnetId <String>]
+ [-AdminUserName <String>] [-AdminUserPassword <String>] [-AdminUserSshPublicKey <String>]
+ [-VMPriority <VMPriority>] [-VMSize <String>] [-VirtualMachineImageId <String>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -324,7 +323,4 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## NOTES
 
-ALIASES
-
 ## RELATED LINKS
-

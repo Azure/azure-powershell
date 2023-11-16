@@ -1,7 +1,7 @@
 ---
-external help file:
+external help file: Az.MachineLearningServices-help.xml
 Module Name: Az.MachineLearningServices
-online version: https://learn.microsoft.com/powershell/module/az.machinelearningservices/new-azmlworkspacedatastoreblobobject
+online version: https://learn.microsoft.com/powershell/module/az.MachineLearningServices/new-AzMLWorkspaceDatastoreBlobObject
 schema: 2.0.0
 ---
 
@@ -14,9 +14,9 @@ Create an in-memory object for AzureBlobDatastore.
 
 ```
 New-AzMLWorkspaceDatastoreBlobObject -Credentials <IDatastoreCredentials> [-AccountName <String>]
- [-ContainerName <String>] [-Description <String>] [-Endpoint <String>] [-Property <IResourceBaseProperties>]
- [-Protocol <String>] [-ServiceDataAccessAuthIdentity <ServiceDataAccessAuthIdentity>]
- [-Tag <IResourceBaseTags>] [<CommonParameters>]
+ [-ContainerName <String>] [-Endpoint <String>] [-Protocol <String>]
+ [-ServiceDataAccessAuthIdentity <ServiceDataAccessAuthIdentity>] [-Description <String>]
+ [-Property <IResourceBaseProperties>] [-Tag <IResourceBaseTags>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -183,21 +183,4 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## NOTES
 
-ALIASES
-
-COMPLEX PARAMETER PROPERTIES
-
-To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
-
-
-CREDENTIALS `<IDatastoreCredentials>`: [Required] Account credentials.
-  - `CredentialsType <CredentialsType>`: [Required] Credential type used to authentication with storage.
-
-PROPERTY `<IResourceBaseProperties>`: The asset property dictionary.
-  - `[(Any) <String>]`: This indicates any property can be added to this object.
-
-TAG `<IResourceBaseTags>`: Tag dictionary. Tags can be added, removed, and updated.
-  - `[(Any) <String>]`: This indicates any property can be added to this object.
-
 ## RELATED LINKS
-

@@ -1,7 +1,7 @@
 ---
-external help file:
+external help file: Az.MachineLearningServices-help.xml
 Module Name: Az.MachineLearningServices
-online version: https://learn.microsoft.com/powershell/module/az.machinelearningservices/new-azmlworkspacekubernetesobject
+online version: https://learn.microsoft.com/powershell/module/az.MachineLearningServices/new-AzMLWorkspaceKubernetesObject
 schema: 2.0.0
 ---
 
@@ -13,11 +13,11 @@ Create an in-memory object for Kubernetes.
 ## SYNTAX
 
 ```
-New-AzMLWorkspaceKubernetesObject [-DefaultInstanceType <String>] [-Description <String>]
- [-DisableLocalAuth <Boolean>] [-ExtensionInstanceReleaseTrain <String>] [-ExtensionPrincipalId <String>]
- [-InstanceLimit <Hashtable>] [-InstanceNodeSelector <Hashtable>] [-InstanceRequest <Hashtable>]
- [-Namespace <String>] [-RelayConnectionString <String>] [-ResourceId <String>]
- [-ServiceBusConnectionString <String>] [-VcName <String>] [<CommonParameters>]
+New-AzMLWorkspaceKubernetesObject [-Description <String>] [-DisableLocalAuth <Boolean>] [-ResourceId <String>]
+ [-DefaultInstanceType <String>] [-ExtensionInstanceReleaseTrain <String>] [-ExtensionPrincipalId <String>]
+ [-InstanceNodeSelector <Hashtable>] [-InstanceLimit <Hashtable>] [-InstanceRequest <Hashtable>]
+ [-Namespace <String>] [-RelayConnectionString <String>] [-ServiceBusConnectionString <String>]
+ [-VcName <String>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -244,7 +244,4 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## NOTES
 
-ALIASES
-
 ## RELATED LINKS
-

@@ -1,5 +1,5 @@
 ---
-external help file:
+external help file: Az.MachineLearningServices-help.xml
 Module Name: Az.MachineLearningServices
 online version: https://learn.microsoft.com/powershell/module/az.machinelearningservices/new-azmlworkspaceonlineendpoint
 schema: 2.0.0
@@ -14,12 +14,12 @@ Create or update Online Endpoint (asynchronous).
 
 ```
 New-AzMLWorkspaceOnlineEndpoint -Name <String> -ResourceGroupName <String> -WorkspaceName <String>
- -AuthMode <EndpointAuthMode> -Location <String> [-SubscriptionId <String>] [-Compute <String>]
+ [-SubscriptionId <String>] -AuthMode <EndpointAuthMode> -Location <String> [-Compute <String>]
  [-Description <String>] [-EndpointPropertiesBaseProperty <Hashtable>]
  [-IdentityType <ManagedServiceIdentityType>] [-IdentityUserAssigned <Hashtable>] [-KeyPrimaryKey <String>]
  [-KeySecondaryKey <String>] [-Kind <String>] [-SkuCapacity <Int32>] [-SkuFamily <String>] [-SkuName <String>]
  [-SkuSize <String>] [-SkuTier <SkuTier>] [-Tag <Hashtable>] [-Traffic <Hashtable>]
- [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
+ [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -89,7 +89,8 @@ Accept wildcard characters: False
 ```
 
 ### -DefaultProfile
-The credentials, account, tenant, and subscription used for communication with Azure.
+The DefaultProfile parameter is not functional.
+Use the SubscriptionId parameter when available if executing the cmdlet against a different subscription.
 
 ```yaml
 Type: System.Management.Automation.PSObject
@@ -454,7 +455,4 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## NOTES
 
-ALIASES
-
 ## RELATED LINKS
-

@@ -1,5 +1,5 @@
 ---
-external help file:
+external help file: Az.MachineLearningServices-help.xml
 Module Name: Az.MachineLearningServices
 online version: https://learn.microsoft.com/powershell/module/az.machinelearningservices/new-azmlworkspaceconnection
 schema: 2.0.0
@@ -8,19 +8,19 @@ schema: 2.0.0
 # New-AzMLWorkspaceConnection
 
 ## SYNOPSIS
-Creates or updates a workspace connection with the specified parameters.
+Creating or updating a new workspace connection
 
 ## SYNTAX
 
 ```
 New-AzMLWorkspaceConnection -Name <String> -ResourceGroupName <String> -WorkspaceName <String>
- -AuthType <ConnectionAuthType> [-SubscriptionId <String>] [-Category <ConnectionCategory>] [-Target <String>]
- [-Value <String>] [-ValueFormat <ValueFormat>] [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf]
+ [-SubscriptionId <String>] -AuthType <ConnectionAuthType> [-Category <ConnectionCategory>] [-Target <String>]
+ [-Value <String>] [-ValueFormat <ValueFormat>] [-DefaultProfile <PSObject>] [-WhatIf] [-Confirm]
  [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-Creates or updates a workspace connection with the specified parameters.
+Creating or updating a new workspace connection
 
 ## EXAMPLES
 
@@ -70,7 +70,8 @@ Accept wildcard characters: False
 ```
 
 ### -DefaultProfile
-The credentials, account, tenant, and subscription used for communication with Azure.
+The DefaultProfile parameter is not functional.
+Use the SubscriptionId parameter when available if executing the cmdlet against a different subscription.
 
 ```yaml
 Type: System.Management.Automation.PSObject
@@ -232,7 +233,4 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## NOTES
 
-ALIASES
-
 ## RELATED LINKS
-

@@ -1,7 +1,7 @@
 ---
-external help file:
+external help file: Az.MachineLearningServices-help.xml
 Module Name: Az.MachineLearningServices
-online version: https://learn.microsoft.com/powershell/module/az.machinelearningservices/new-azmlworkspacedatastorecredentialobject
+online version: https://learn.microsoft.com/powershell/module/az.MachineLearningServices/new-AzMLWorkspaceDatastoreCredentialObject
 schema: 2.0.0
 ---
 
@@ -13,8 +13,8 @@ Create an in-memory object for CertificateDatastoreCredentials.
 ## SYNTAX
 
 ```
-New-AzMLWorkspaceDatastoreCredentialObject -Certificate <String> -ClientId <String> -TenantId <String>
- -Thumbprint <String> [-AuthorityUrl <String>] [-ResourceUrl <String>] [<CommonParameters>]
+New-AzMLWorkspaceDatastoreCredentialObject -ClientId <String> -TenantId <String> -Thumbprint <String>
+ -Certificate <String> [-AuthorityUrl <String>] [-ResourceUrl <String>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -132,7 +132,4 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## NOTES
 
-ALIASES
-
 ## RELATED LINKS
-
