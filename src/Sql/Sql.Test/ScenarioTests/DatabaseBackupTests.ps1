@@ -235,6 +235,34 @@ function Test-LongTermRetentionV2ResourceGroupBasedBackup($location = "southeast
 	}
 }
 
+function Test-UpdateLongTermRetentionBackupAccessTier($location = "westus1")
+{
+	# Setup
+	$rg = "WestUS1ResourceGroup"
+	$serverName = "lillian-westus1-server"
+	$databaseName = "Westus1LTRBackupLillianDB1"
+	$backupName = ""
+	$backupStorageAccessTier = "Archive"
+	$operationMode = "Move"
+
+	$result = Update-AzSqlDatabaseLongTermRetentionBackupAccessTier -Location $location -ServerName $serverName -DatabaseName $databaseName -BackupName $backupName -BackupStorageAccessTier $backupStorageAccessTier -OperationMode $operationMode
+	Assert-NotNull $$result
+}
+
+function Test-UpdateLongTermRetentionResourceGroupBasedBackupAccessTier($location = "westus1")
+{
+	# Setup
+	$rg = "WestUS1ResourceGroup"
+	$serverName = "lillian-westus1-server"
+	$databaseName = "Westus1LTRBackupLillianDB1"
+	$backupName = ""
+	$backupStorageAccessTier = "Archive"
+	$operationMode = "Move"
+
+	$result = Update-AzSqlDatabaseLongTermRetentionBackupAccessTier -Location $location -ServerName $serverName -DatabaseName $databaseName -BackupName $backupName -BackupStorageAccessTier $backupStorageAccessTier -OperationMode $operationMode -ResourceGroupName $rg
+	Assert-NotNull $$result
+}
+
 function Test-LongTermRetentionV2
 {
 
