@@ -162,7 +162,7 @@ function Skip-AzDevCenterUserDevBoxAction {
     if (-not $PSBoundParameters.ContainsKey('Endpoint')) {
       $Endpoint = GetEndpointFromResourceGraph -DevCenterName $DevCenterName -Project $ProjectName
       $null = $PSBoundParameters.Add("Endpoint", $Endpoint)
-      $null = $PSBoundParameters.Remove("DevCenter")
+      $null = $PSBoundParameters.Remove("DevCenterName")
 
     }
     else {
