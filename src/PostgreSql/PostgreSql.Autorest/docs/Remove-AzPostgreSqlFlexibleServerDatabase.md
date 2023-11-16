@@ -33,15 +33,13 @@ Deletes a database.
 ### Example 1: Remove a database by name
 ```powershell
 Remove-AzPostgreSqlFlexibleServerDatabase -ResourceGroupName PowershellPostgreSqlTest -ServerName postgresql -Name testdb
-
 ```
 
 Remove a database by name
 
 ### Example 2: Remove a database by Id
 ```powershell
-Remove-AzPostgreSqlFlexibleServerDatabase-InputObject /subscriptions/0000000000-0000-0000-0000-000000000000/resourceGroups/PowershellPostgreSqlTest/providers/Microsoft.DBforPostgreSQL/flexibleServers/postgresql-test/databases/flexibleserverdb
-
+Remove-AzPostgreSqlFlexibleServerDatabase -InputObject /subscriptions/0000000000-0000-0000-0000-000000000000/resourceGroups/PowershellPostgreSqlTest/providers/Microsoft.DBforPostgreSQL/flexibleServers/postgresql-test/databases/flexibleserverdb
 ```
 
 Remove a database by Id
@@ -64,7 +62,8 @@ Accept wildcard characters: False
 ```
 
 ### -DefaultProfile
-The credentials, account, tenant, and subscription used for communication with Azure.
+The DefaultProfile parameter is not functional.
+Use the SubscriptionId parameter when available if executing the cmdlet against a different subscription.
 
 ```yaml
 Type: System.Management.Automation.PSObject
@@ -228,25 +227,6 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ### System.Boolean
 
 ## NOTES
-
-ALIASES
-
-COMPLEX PARAMETER PROPERTIES
-
-To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
-
-
-INPUTOBJECT <IPostgreSqlIdentity>: Identity Parameter
-  - `[ConfigurationName <String>]`: The name of the server configuration.
-  - `[DatabaseName <String>]`: The name of the database.
-  - `[FirewallRuleName <String>]`: The name of the server firewall rule.
-  - `[Id <String>]`: Resource identity path
-  - `[LocationName <String>]`: The name of the location.
-  - `[ResourceGroupName <String>]`: The name of the resource group. The name is case insensitive.
-  - `[SecurityAlertPolicyName <SecurityAlertPolicyName?>]`: The name of the security alert policy.
-  - `[ServerName <String>]`: The name of the server.
-  - `[SubscriptionId <String>]`: The ID of the target subscription.
-  - `[VirtualNetworkRuleName <String>]`: The name of the virtual network rule.
 
 ## RELATED LINKS
 
