@@ -1,59 +1,55 @@
 ---
-external help file: Az.SelfHelp-help.xml
+external help file:
 Module Name: Az.SelfHelp
-online version: https://learn.microsoft.com/powershell/module/az.selfhelp/new-azselfhelpsolution
+online version: https://learn.microsoft.com/powershell/module/az.selfhelp/update-azselfhelpsolution
 schema: 2.0.0
 ---
 
-# New-AzSelfHelpSolution
+# Update-AzSelfHelpSolution
 
 ## SYNOPSIS
-Creates a solution for the specific Azure resource or subscription using the triggering criteria 'solutionId and requiredInputs' from discovery solutions.\<br/\> Solutions are a rich, insightful and a centralized self help experience that brings all the relevant content to troubleshoot an Azure issue into a unified experience.
-Solutions include the following components : Text, Diagnostics , Troubleshooters, Images , Video tutorials, Tables , custom charts, images , AzureKB, etc, with capabilities to support new solutions types in the future.
-Each solution type may require one or more 'requiredParameters' that are required to execute the individual solution component.
-In the absence of the 'requiredParameters' it is likely that some of the solutions might fail execution, and you might see an empty response.
-\<br/\>\<br/\> \<b\>Note:\</b\>  \<br/\>1.
-'requiredInputs' from Discovery solutions response must be passed via 'parameters' in the request body of Solutions API.
-\<br/\>2.
-'requiredParameters' from the Solutions response is the same as ' additionalParameters' in the request for diagnostics \<br/\>3.
-'requiredParameters' from the Solutions response is the same as 'properties.parameters' in the request for Troubleshooters
+Update the requiredInputs or additional information needed to execute the solution
 
 ## SYNTAX
 
+### UpdateExpanded (Default)
 ```
-New-AzSelfHelpSolution -ResourceName <String> -Scope <String> [-Content <String>] [-Parameter <Hashtable>]
+Update-AzSelfHelpSolution -ResourceName <String> -Scope <String> [-Content <String>] [-Parameter <Hashtable>]
  [-ProvisioningState <SolutionProvisioningState>] [-ReplacementMapDiagnostic <ISolutionsDiagnostic[]>]
  [-ReplacementMapMetricsBasedChart <IMetricsBasedChart[]>]
  [-ReplacementMapTroubleshooter <ISolutionsTroubleshooters[]>] [-ReplacementMapVideo <IVideo[]>]
  [-ReplacementMapVideoGroup <IVideoGroup[]>] [-ReplacementMapWebResult <IWebResult[]>] [-Section <ISection[]>]
  [-SolutionId <String>] [-Title <String>] [-TriggerCriterion <ITriggerCriterion[]>]
- [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
+```
+
+### UpdateViaIdentityExpanded
+```
+Update-AzSelfHelpSolution -InputObject <ISelfHelpIdentity> [-Content <String>] [-Parameter <Hashtable>]
+ [-ProvisioningState <SolutionProvisioningState>] [-ReplacementMapDiagnostic <ISolutionsDiagnostic[]>]
+ [-ReplacementMapMetricsBasedChart <IMetricsBasedChart[]>]
+ [-ReplacementMapTroubleshooter <ISolutionsTroubleshooters[]>] [-ReplacementMapVideo <IVideo[]>]
+ [-ReplacementMapVideoGroup <IVideoGroup[]>] [-ReplacementMapWebResult <IWebResult[]>] [-Section <ISection[]>]
+ [-SolutionId <String>] [-Title <String>] [-TriggerCriterion <ITriggerCriterion[]>]
+ [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-Creates a solution for the specific Azure resource or subscription using the triggering criteria 'solutionId and requiredInputs' from discovery solutions.\<br/\> Solutions are a rich, insightful and a centralized self help experience that brings all the relevant content to troubleshoot an Azure issue into a unified experience.
-Solutions include the following components : Text, Diagnostics , Troubleshooters, Images , Video tutorials, Tables , custom charts, images , AzureKB, etc, with capabilities to support new solutions types in the future.
-Each solution type may require one or more 'requiredParameters' that are required to execute the individual solution component.
-In the absence of the 'requiredParameters' it is likely that some of the solutions might fail execution, and you might see an empty response.
-\<br/\>\<br/\> \<b\>Note:\</b\>  \<br/\>1.
-'requiredInputs' from Discovery solutions response must be passed via 'parameters' in the request body of Solutions API.
-\<br/\>2.
-'requiredParameters' from the Solutions response is the same as ' additionalParameters' in the request for diagnostics \<br/\>3.
-'requiredParameters' from the Solutions response is the same as 'properties.parameters' in the request for Troubleshooters
+Update the requiredInputs or additional information needed to execute the solution
 
 ## EXAMPLES
 
-### Example 1: Create New SelfHelp Solution
+### Example 1: Update the Solution Resource
 ```powershell
-$criteria = [ordered]@{
-    "name" ="SolutionId"
-    "value" = "keyvault-lostdeletedkeys-apollo-solution"
-}
-$parameters = [ordered]@{
-        "SearchText" = "Can not RDP"
-        "vault_name" = "DemoKeyvault"
-}
-New-AzSelfHelpSolution -ResourceName test-resource -Scope  /subscriptions/<subid>/resourceGroups/testRG/providers/Microsoft.KeyVault/kv/testDB -Parameter $parameters -TriggerCriterion $criteria
+$parameters = [ordered]@{ 
+        "SearchText" = "Can not RDP" 
+        "vault_name" = "DemoKeyvault" 
+} 
+$criteria = [ordered]@{ 
+    "name" =" ReplacementKey" 
+    "value" = "<!--85c7bc9e-4405-4e3a-82b0-8c4edc29a04d-->" 
+} 
+Update-AzSelfHelpSolution -ResourceName test-resource -Scope  /subscriptions/6bded6d5-a6af-43e1-96d3-bf71f6f5f8ba/resourceGroups/DiagnosticsRp-Ev2AssistId-Public-Dev/providers/Microsoft.KeyVault/vaults/DiagRp-Ev2PublicDev -Parameter $parameters -TriggerCriterion $criteria 
 ```
 
 ```output
@@ -62,7 +58,7 @@ Location Name             ResourceGroupName
          test-resource    testRg
 ```
 
-Creates a SelfHelp Solution for a resource.
+Updates the requiredInputs or additional information needed to execute the solution
 
 ## PARAMETERS
 
@@ -109,6 +105,22 @@ Required: False
 Position: Named
 Default value: None
 Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -InputObject
+Identity Parameter
+To construct, see NOTES section for INPUTOBJECT properties and create a hash table.
+
+```yaml
+Type: Microsoft.Azure.PowerShell.Cmdlets.SelfHelp.Models.ISelfHelpIdentity
+Parameter Sets: UpdateViaIdentityExpanded
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: True (ByValue)
 Accept wildcard characters: False
 ```
 
@@ -258,7 +270,7 @@ Solution resource Name.
 
 ```yaml
 Type: System.String
-Parameter Sets: (All)
+Parameter Sets: UpdateExpanded
 Aliases: SolutionResourceName
 
 Required: True
@@ -273,7 +285,7 @@ This is an extension resource provider and only resource level extension is supp
 
 ```yaml
 Type: System.String
-Parameter Sets: (All)
+Parameter Sets: UpdateExpanded
 Aliases:
 
 Required: True
@@ -381,6 +393,8 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
+### Microsoft.Azure.PowerShell.Cmdlets.SelfHelp.Models.ISelfHelpIdentity
+
 ## OUTPUTS
 
 ### Microsoft.Azure.PowerShell.Cmdlets.SelfHelp.Models.Api20230901Preview.ISolutionResource
@@ -388,3 +402,4 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ## NOTES
 
 ## RELATED LINKS
+

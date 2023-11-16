@@ -1,5 +1,5 @@
 ---
-external help file: Az.SelfHelp-help.xml
+external help file:
 Module Name: Az.SelfHelp
 online version: https://learn.microsoft.com/powershell/module/az.selfhelp/get-azselfhelpsolution
 schema: 2.0.0
@@ -14,7 +14,8 @@ Get the solution using the applicable solutionResourceName while creating the so
 
 ### Get (Default)
 ```
-Get-AzSelfHelpSolution -ResourceName <String> -Scope <String> [-DefaultProfile <PSObject>] [<CommonParameters>]
+Get-AzSelfHelpSolution -ResourceName <String> -Scope <String> [-DefaultProfile <PSObject>]
+ [<CommonParameters>]
 ```
 
 ### GetViaIdentity
@@ -118,3 +119,4 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ## NOTES
 
 ## RELATED LINKS
+

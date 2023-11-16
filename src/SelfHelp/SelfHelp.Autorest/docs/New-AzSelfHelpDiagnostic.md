@@ -1,5 +1,5 @@
 ---
-external help file: Az.SelfHelp-help.xml
+external help file:
 Module Name: Az.SelfHelp
 online version: https://learn.microsoft.com/powershell/module/az.selfhelp/new-azselfhelpdiagnostic
 schema: 2.0.0
@@ -11,13 +11,13 @@ schema: 2.0.0
 Creates a diagnostic for the specific resource using solutionId and requiredInputs* from discovery solutions.
 \<br/\>Diagnostics tells you precisely the root cause of the issue and the steps to address it.
 You can get diagnostics once you discover the relevant solution for your Azure issue.
-\<br/\>\<br/\> \<b\>Note: \</b\> requiredInputs' from Discovery solutions response must be passed via 'additionalParameters' as an input to Diagnostics API.
+\<br/\>\<br/\> \<b\>Note: \</b\> requiredInputs’ from Discovery solutions response must be passed via ‘additionalParameters’ as an input to Diagnostics API.
 
 ## SYNTAX
 
 ```
-New-AzSelfHelpDiagnostic -SResourceName <String> -Scope <String> [-GlobalParameter <Hashtable>]
- [-Insight <IDiagnosticInvocation[]>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-WhatIf] [-Confirm]
+New-AzSelfHelpDiagnostic -Scope <String> -SResourceName <String> [-GlobalParameter <Hashtable>]
+ [-Insight <IDiagnosticInvocation[]>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf]
  [<CommonParameters>]
 ```
 
@@ -25,7 +25,7 @@ New-AzSelfHelpDiagnostic -SResourceName <String> -Scope <String> [-GlobalParamet
 Creates a diagnostic for the specific resource using solutionId and requiredInputs* from discovery solutions.
 \<br/\>Diagnostics tells you precisely the root cause of the issue and the steps to address it.
 You can get diagnostics once you discover the relevant solution for your Azure issue.
-\<br/\>\<br/\> \<b\>Note: \</b\> requiredInputs' from Discovery solutions response must be passed via 'additionalParameters' as an input to Diagnostics API.
+\<br/\>\<br/\> \<b\>Note: \</b\> requiredInputs’ from Discovery solutions response must be passed via ‘additionalParameters’ as an input to Diagnostics API.
 
 ## EXAMPLES
 
@@ -197,3 +197,4 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ## NOTES
 
 ## RELATED LINKS
+

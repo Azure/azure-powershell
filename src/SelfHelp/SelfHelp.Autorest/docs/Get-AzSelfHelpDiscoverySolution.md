@@ -1,5 +1,5 @@
 ---
-external help file: Az.SelfHelp-help.xml
+external help file:
 Module Name: Az.SelfHelp
 online version: https://learn.microsoft.com/powershell/module/az.selfhelp/get-azselfhelpdiscoverysolution
 schema: 2.0.0
@@ -9,7 +9,7 @@ schema: 2.0.0
 
 ## SYNOPSIS
 Lists the relevant Azure diagnostics and solutions using [problemClassification API](https://learn.microsoft.com/rest/api/support/problem-classifications/list?tabs=HTTP)) AND  resourceUri or resourceType.\<br/\> Discovery Solutions is the initial entry point within Help API, which identifies relevant Azure diagnostics and solutions.
-We will do our best to return the most effective solutions based on the type of inputs, in the request URL  \<br/\>\<br/\> Mandatory input :  problemClassificationId (Use the [problemClassification API](https://learn.microsoft.com/rest/api/support/problem-classifications/list?tabs=HTTP)) \<br/\>Optional input: resourceUri OR resource Type \<br/\>\<br/\> \<b\>Note: \</b\>  'requiredInputs' from Discovery solutions response must be passed via 'additionalParameters' as an input to Diagnostics and Solutions API.
+We will do our best to return the most effective solutions based on the type of inputs, in the request URL  \<br/\>\<br/\> Mandatory input :  problemClassificationId (Use the [problemClassification API](https://learn.microsoft.com/rest/api/support/problem-classifications/list?tabs=HTTP)) \<br/\>Optional input: resourceUri OR resource Type \<br/\>\<br/\> \<b\>Note: \</b\>  ‘requiredInputs’ from Discovery solutions response must be passed via ‘additionalParameters’ as an input to Diagnostics and Solutions API.
 
 ## SYNTAX
 
@@ -20,13 +20,13 @@ Get-AzSelfHelpDiscoverySolution -Scope <String> [-Filter <String>] [-Skiptoken <
 
 ## DESCRIPTION
 Lists the relevant Azure diagnostics and solutions using [problemClassification API](https://learn.microsoft.com/rest/api/support/problem-classifications/list?tabs=HTTP)) AND  resourceUri or resourceType.\<br/\> Discovery Solutions is the initial entry point within Help API, which identifies relevant Azure diagnostics and solutions.
-We will do our best to return the most effective solutions based on the type of inputs, in the request URL  \<br/\>\<br/\> Mandatory input :  problemClassificationId (Use the [problemClassification API](https://learn.microsoft.com/rest/api/support/problem-classifications/list?tabs=HTTP)) \<br/\>Optional input: resourceUri OR resource Type \<br/\>\<br/\> \<b\>Note: \</b\>  'requiredInputs' from Discovery solutions response must be passed via 'additionalParameters' as an input to Diagnostics and Solutions API.
+We will do our best to return the most effective solutions based on the type of inputs, in the request URL  \<br/\>\<br/\> Mandatory input :  problemClassificationId (Use the [problemClassification API](https://learn.microsoft.com/rest/api/support/problem-classifications/list?tabs=HTTP)) \<br/\>Optional input: resourceUri OR resource Type \<br/\>\<br/\> \<b\>Note: \</b\>  ‘requiredInputs’ from Discovery solutions response must be passed via ‘additionalParameters’ as an input to Diagnostics and Solutions API.
 
 ## EXAMPLES
 
 ### Example 1: Get Solution Metadata by resource id
 ```powershell
-Get-AzSelfHelpDiscoverySolution -Scope "subscriptions/6bded6d5-a6df-44e1-96d3-bf71f6f5f8ba/resourceGroups/test-rgName/providers/Microsoft.KeyVault/vaults/testKeyVault" -Filter "problemClassificationId eq '1ddda5b4-cf6c-4d4f-91ad-bc38ab0e811e'"
+ Get-AzSelfHelpDiscoverySolution -Scope "subscriptions/6bded6d5-a6df-44e1-96d3-bf71f6f5f8ba/resourceGroups/test-rgName/providers/Microsoft.KeyVault/vaults/testKeyVault" -Filter "problemClassificationId eq '1ddda5b4-cf6c-4d4f-91ad-bc38ab0e811e'"
 ```
 
 ```output
@@ -34,7 +34,7 @@ Name                                 SystemDataCreatedAt SystemDataCreatedBy Sys
 
 ----                                 ------------------- ------------------- ----------------------- ------------------------ ------------------------ ---------------------------- 
 
-a5db90c3-f147-bce6-83b0-ab5e0aeca1f0
+a5db90c3-f147-bce6-83b0-ab5e0aeca1f0 
 ```
 
 Get Solution Metadata by resource id
@@ -117,3 +117,4 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ## NOTES
 
 ## RELATED LINKS
+

@@ -1,5 +1,5 @@
 ---
-external help file: Az.SelfHelp-help.xml
+external help file:
 Module Name: Az.SelfHelp
 online version: https://learn.microsoft.com/powershell/module/az.selfhelp/new-azselfhelptroubleshooter
 schema: 2.0.0
@@ -8,27 +8,27 @@ schema: 2.0.0
 # New-AzSelfHelpTroubleshooter
 
 ## SYNOPSIS
-Creates the specific troubleshooter action under a resource or subscription using the 'solutionId' and  'properties.parameters' as the trigger.
+Creates the specific troubleshooter action under a resource or subscription using the ‘solutionId’ and  ‘properties.parameters’ as the trigger.
 \<br/\> Troubleshooters are step-by-step interactive guidance that scope the problem by collecting additional inputs from you in each stage while troubleshooting an Azure issue.
 You will be guided down decision tree style workflow and the best possible solution will be presented at the end of the workflow.
-\<br/\> Create API creates the Troubleshooter API using 'parameters' and 'solutionId' \<br/\> After creating the Troubleshooter instance, the following APIs can be used:\<br/\> CONTINUE API: to move to the next step in the flow \<br/\>GET API: to identify the next step after executing the CONTINUE API.
- \<br/\>\<br/\> \<b\>Note:\</b\> 'requiredParameters' from solutions response must be passed via 'properties.
-parameters' in the request body of Troubleshooters API.
+\<br/\> Create API creates the Troubleshooter API using ‘parameters’ and ‘solutionId’ \<br/\> After creating the Troubleshooter instance, the following APIs can be used:\<br/\> CONTINUE API: to move to the next step in the flow \<br/\>GET API: to identify the next step after executing the CONTINUE API.
+ \<br/\>\<br/\> \<b\>Note:\</b\> ‘requiredParameters’ from solutions response must be passed via ‘properties.
+parameters’ in the request body of Troubleshooters API.
 
 ## SYNTAX
 
 ```
 New-AzSelfHelpTroubleshooter -Name <String> -Scope <String> [-Parameter <Hashtable>] [-SolutionId <String>]
- [-DefaultProfile <PSObject>] [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-Creates the specific troubleshooter action under a resource or subscription using the 'solutionId' and  'properties.parameters' as the trigger.
+Creates the specific troubleshooter action under a resource or subscription using the ‘solutionId’ and  ‘properties.parameters’ as the trigger.
 \<br/\> Troubleshooters are step-by-step interactive guidance that scope the problem by collecting additional inputs from you in each stage while troubleshooting an Azure issue.
 You will be guided down decision tree style workflow and the best possible solution will be presented at the end of the workflow.
-\<br/\> Create API creates the Troubleshooter API using 'parameters' and 'solutionId' \<br/\> After creating the Troubleshooter instance, the following APIs can be used:\<br/\> CONTINUE API: to move to the next step in the flow \<br/\>GET API: to identify the next step after executing the CONTINUE API.
- \<br/\>\<br/\> \<b\>Note:\</b\> 'requiredParameters' from solutions response must be passed via 'properties.
-parameters' in the request body of Troubleshooters API.
+\<br/\> Create API creates the Troubleshooter API using ‘parameters’ and ‘solutionId’ \<br/\> After creating the Troubleshooter instance, the following APIs can be used:\<br/\> CONTINUE API: to move to the next step in the flow \<br/\>GET API: to identify the next step after executing the CONTINUE API.
+ \<br/\>\<br/\> \<b\>Note:\</b\> ‘requiredParameters’ from solutions response must be passed via ‘properties.
+parameters’ in the request body of Troubleshooters API.
 
 ## EXAMPLES
 
@@ -171,3 +171,4 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ## NOTES
 
 ## RELATED LINKS
+

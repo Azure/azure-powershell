@@ -1,51 +1,44 @@
 ---
-external help file: Az.SelfHelp-help.xml
+external help file:
 Module Name: Az.SelfHelp
-online version: https://learn.microsoft.com/powershell/module/az.selfhelp/restart-azselfhelptroubleshooter
+online version: https://learn.microsoft.com/powershell/module/az.selfhelp/stop-azselfhelptroubleshooter
 schema: 2.0.0
 ---
 
-# Restart-AzSelfHelpTroubleshooter
+# Stop-AzSelfHelpTroubleshooter
 
 ## SYNOPSIS
-Restarts the troubleshooter API using applicable troubleshooter resource name as the input.\<br/\> It returns new resource name which should be used in subsequent request.
-The old resource name is obsolete after this API is invoked.
+Ends the troubleshooter action
 
 ## SYNTAX
 
-### Restart (Default)
+### End (Default)
 ```
-Restart-AzSelfHelpTroubleshooter -Name <String> -Scope <String> [-DefaultProfile <PSObject>] [-WhatIf]
- [-Confirm] [<CommonParameters>]
+Stop-AzSelfHelpTroubleshooter -Name <String> -Scope <String> [-DefaultProfile <PSObject>] [-PassThru]
+ [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
-### RestartViaIdentity
+### EndViaIdentity
 ```
-Restart-AzSelfHelpTroubleshooter -InputObject <ISelfHelpIdentity> [-DefaultProfile <PSObject>] [-WhatIf]
- [-Confirm] [<CommonParameters>]
+Stop-AzSelfHelpTroubleshooter -InputObject <ISelfHelpIdentity> [-DefaultProfile <PSObject>] [-PassThru]
+ [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-Restarts the troubleshooter API using applicable troubleshooter resource name as the input.\<br/\> It returns new resource name which should be used in subsequent request.
-The old resource name is obsolete after this API is invoked.
+Ends the troubleshooter action
 
 ## EXAMPLES
 
-### Example 1: Restarts troubleshooter instance
+### Example 1: End Troubleshooter action
 ```powershell
-Restart-AzSelfHelpTroubleshooter -Scope "/subscriptions/6bded6d5-a6af-43e1-96d3-bf71f6f5f8ba" -Name "02d59989-f8a9-4b69-9919-1ef51df4eff6"
+Stop-AzSelfHelpTroubleshooter -Scope "/subscriptions/6bded6d5-a6af-43e1-96d3-bf71f6f5f8ba" -Name "02d59989-f8a9-4b69-9919-1ef51df4eff6" 
 ```
 
 ```output
-Location TroubleshooterResourceName 
-
--------- -------------------------- 
-
-         0b8b324c-be00-410b-988b-175815878690
+[No Response Body If Success - HttpStatus Code 204]
 ```
 
-Restarts Troubleshooter instance.
-It returns new resource name which should be used in subsequent request.
+It is used to end the troubleshooter resource name that is being executed.
 
 ## PARAMETERS
 
@@ -71,7 +64,7 @@ To construct, see NOTES section for INPUTOBJECT properties and create a hash tab
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.SelfHelp.Models.ISelfHelpIdentity
-Parameter Sets: RestartViaIdentity
+Parameter Sets: EndViaIdentity
 Aliases:
 
 Required: True
@@ -86,10 +79,25 @@ Troubleshooter resource Name.
 
 ```yaml
 Type: System.String
-Parameter Sets: Restart
+Parameter Sets: End
 Aliases: TroubleshooterName
 
 Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -PassThru
+Returns true when the command succeeds
+
+```yaml
+Type: System.Management.Automation.SwitchParameter
+Parameter Sets: (All)
+Aliases:
+
+Required: False
 Position: Named
 Default value: None
 Accept pipeline input: False
@@ -101,7 +109,7 @@ This is an extension resource provider and only resource level extension is supp
 
 ```yaml
 Type: System.String
-Parameter Sets: Restart
+Parameter Sets: End
 Aliases:
 
 Required: True
@@ -151,8 +159,9 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.SelfHelp.Models.Api20230901Preview.IRestartTroubleshooterResponse
+### System.Boolean
 
 ## NOTES
 
 ## RELATED LINKS
+

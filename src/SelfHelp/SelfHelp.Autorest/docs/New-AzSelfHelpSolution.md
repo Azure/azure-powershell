@@ -1,5 +1,5 @@
 ---
-external help file: Az.SelfHelp-help.xml
+external help file:
 Module Name: Az.SelfHelp
 online version: https://learn.microsoft.com/powershell/module/az.selfhelp/new-azselfhelpsolution
 schema: 2.0.0
@@ -8,15 +8,15 @@ schema: 2.0.0
 # New-AzSelfHelpSolution
 
 ## SYNOPSIS
-Creates a solution for the specific Azure resource or subscription using the triggering criteria 'solutionId and requiredInputs' from discovery solutions.\<br/\> Solutions are a rich, insightful and a centralized self help experience that brings all the relevant content to troubleshoot an Azure issue into a unified experience.
+Creates a solution for the specific Azure resource or subscription using the triggering criteria ‘solutionId and requiredInputs’ from discovery solutions.\<br/\> Solutions are a rich, insightful and a centralized self help experience that brings all the relevant content to troubleshoot an Azure issue into a unified experience.
 Solutions include the following components : Text, Diagnostics , Troubleshooters, Images , Video tutorials, Tables , custom charts, images , AzureKB, etc, with capabilities to support new solutions types in the future.
-Each solution type may require one or more 'requiredParameters' that are required to execute the individual solution component.
-In the absence of the 'requiredParameters' it is likely that some of the solutions might fail execution, and you might see an empty response.
+Each solution type may require one or more ‘requiredParameters’ that are required to execute the individual solution component.
+In the absence of the ‘requiredParameters’ it is likely that some of the solutions might fail execution, and you might see an empty response.
 \<br/\>\<br/\> \<b\>Note:\</b\>  \<br/\>1.
-'requiredInputs' from Discovery solutions response must be passed via 'parameters' in the request body of Solutions API.
+‘requiredInputs’ from Discovery solutions response must be passed via ‘parameters’ in the request body of Solutions API.
 \<br/\>2.
-'requiredParameters' from the Solutions response is the same as ' additionalParameters' in the request for diagnostics \<br/\>3.
-'requiredParameters' from the Solutions response is the same as 'properties.parameters' in the request for Troubleshooters
+‘requiredParameters’ from the Solutions response is the same as ‘ additionalParameters’ in the request for diagnostics \<br/\>3.
+‘requiredParameters’ from the Solutions response is the same as ‘properties.parameters’ in the request for Troubleshooters
 
 ## SYNTAX
 
@@ -27,19 +27,19 @@ New-AzSelfHelpSolution -ResourceName <String> -Scope <String> [-Content <String>
  [-ReplacementMapTroubleshooter <ISolutionsTroubleshooters[]>] [-ReplacementMapVideo <IVideo[]>]
  [-ReplacementMapVideoGroup <IVideoGroup[]>] [-ReplacementMapWebResult <IWebResult[]>] [-Section <ISection[]>]
  [-SolutionId <String>] [-Title <String>] [-TriggerCriterion <ITriggerCriterion[]>]
- [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-Creates a solution for the specific Azure resource or subscription using the triggering criteria 'solutionId and requiredInputs' from discovery solutions.\<br/\> Solutions are a rich, insightful and a centralized self help experience that brings all the relevant content to troubleshoot an Azure issue into a unified experience.
+Creates a solution for the specific Azure resource or subscription using the triggering criteria ‘solutionId and requiredInputs’ from discovery solutions.\<br/\> Solutions are a rich, insightful and a centralized self help experience that brings all the relevant content to troubleshoot an Azure issue into a unified experience.
 Solutions include the following components : Text, Diagnostics , Troubleshooters, Images , Video tutorials, Tables , custom charts, images , AzureKB, etc, with capabilities to support new solutions types in the future.
-Each solution type may require one or more 'requiredParameters' that are required to execute the individual solution component.
-In the absence of the 'requiredParameters' it is likely that some of the solutions might fail execution, and you might see an empty response.
+Each solution type may require one or more ‘requiredParameters’ that are required to execute the individual solution component.
+In the absence of the ‘requiredParameters’ it is likely that some of the solutions might fail execution, and you might see an empty response.
 \<br/\>\<br/\> \<b\>Note:\</b\>  \<br/\>1.
-'requiredInputs' from Discovery solutions response must be passed via 'parameters' in the request body of Solutions API.
+‘requiredInputs’ from Discovery solutions response must be passed via ‘parameters’ in the request body of Solutions API.
 \<br/\>2.
-'requiredParameters' from the Solutions response is the same as ' additionalParameters' in the request for diagnostics \<br/\>3.
-'requiredParameters' from the Solutions response is the same as 'properties.parameters' in the request for Troubleshooters
+‘requiredParameters’ from the Solutions response is the same as ‘ additionalParameters’ in the request for diagnostics \<br/\>3.
+‘requiredParameters’ from the Solutions response is the same as ‘properties.parameters’ in the request for Troubleshooters
 
 ## EXAMPLES
 
@@ -388,3 +388,4 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ## NOTES
 
 ## RELATED LINKS
+

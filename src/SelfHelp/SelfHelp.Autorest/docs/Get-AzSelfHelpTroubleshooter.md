@@ -1,5 +1,5 @@
 ---
-external help file: Az.SelfHelp-help.xml
+external help file:
 Module Name: Az.SelfHelp
 online version: https://learn.microsoft.com/powershell/module/az.selfhelp/get-azselfhelptroubleshooter
 schema: 2.0.0
@@ -20,7 +20,8 @@ Get-AzSelfHelpTroubleshooter -Name <String> -Scope <String> [-DefaultProfile <PS
 
 ### GetViaIdentity
 ```
-Get-AzSelfHelpTroubleshooter -InputObject <ISelfHelpIdentity> [-DefaultProfile <PSObject>] [<CommonParameters>]
+Get-AzSelfHelpTroubleshooter -InputObject <ISelfHelpIdentity> [-DefaultProfile <PSObject>]
+ [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -38,6 +39,7 @@ Get-AzSelfHelpTroubleshooter -Scope "/subscriptions/<subid>" -Name "02d59989-f8a
 Name                                 SystemDataCreatedAt SystemDataCreatedBy SystemDataCreatedByType SystemDataLastModifiedAt SystemDataLastModifiedBy SystemDataLastModifiedByType ResourceGroupName
 ----                                 ------------------- ------------------- ----------------------- ------------------------ ------------------------ ---------------------------- -----------------
 02d59989-f8a9-4b69-9919-1ef51df4eff6
+
 ```
 
 Get Azure SelfHelp Troubleshooter by name.
@@ -121,3 +123,4 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ## NOTES
 
 ## RELATED LINKS
+
