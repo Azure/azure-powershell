@@ -9,7 +9,7 @@ schema: 2.0.0
 # New-AzVmss
 
 ## SYNOPSIS
-Creates a VMSS.
+Creates a virtual machine scale set.
 
 ## SYNTAX
 
