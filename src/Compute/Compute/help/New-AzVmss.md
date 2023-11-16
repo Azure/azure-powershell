@@ -247,6 +247,7 @@ $loc = "<Azure Region>";
 New-AzResourceGroup -Name $rgname -Location $loc -Force;
 
 $vmssName = 'vmss' + $rgname;
+$vmssSize = 'Standard_D4s_v3';
 $imageName = "Win2022AzureEdition";
 $publisherName = "MicrosoftWindowsServer";
 $offer = "WindowsServer";
@@ -262,11 +263,11 @@ $vnet = New-AzVirtualNetwork -Name $vnetworkName -ResourceGroupName $rgname -Loc
 $vnet = Get-AzVirtualNetwork -Name $vnetworkName -ResourceGroupName $rgname;
 $subnetId = $vnet.Subnets[0].Id;
 
-$ipCfg = New-AzVmssIPConfig -Name 'test' -SubnetId $subnetId;
+$ipCfg = New-AzVmssIpConfig -Name 'test' -SubnetId $subnetId;
 
 $vmss = New-AzVmssConfig -Location $loc -SkuCapacity 2 -SkuName $vmssSize -UpgradePolicyMode 'Manual' `
     | Add-AzVmssNetworkInterfaceConfiguration -Name 'test' -Primary $true -IPConfiguration $ipCfg `
-    | Set-AzVmssOSProfile -ComputerNamePrefix 'test' -AdminUsername $adminUsername -AdminPassword $password;
+    | Set-AzVmssOsProfile -ComputerNamePrefix 'test' -AdminUsername $adminUsername -AdminPassword $password;
     
 # Create TL Vmss
 $result = New-AzVmss -ResourceGroupName $rgname -VMScaleSetName $vmssName -VirtualMachineScaleSet $vmss;
