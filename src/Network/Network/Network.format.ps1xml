@@ -6156,8 +6156,8 @@
           <ListEntry>
             <ListItems>
               <ListItem>
-                <Label>Bounds</Label>
-                <PropertyName>BoundsText</PropertyName>
+                <Label>ScaleUnit</Label>
+                <PropertyName>Range</PropertyName>
               </ListItem>
             </ListItems>
           </ListEntry>

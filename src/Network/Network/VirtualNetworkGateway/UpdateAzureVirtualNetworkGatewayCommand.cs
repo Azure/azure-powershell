@@ -547,9 +547,9 @@ namespace Microsoft.Azure.Commands.Network
                 }
 
                 this.VirtualNetworkGateway.AutoScaleConfiguration = new PSVirtualNetworkGatewayAutoscaleConfiguration();
-                this.VirtualNetworkGateway.AutoScaleConfiguration.Bounds = new PSVirtualNetworkGatewayPropertiesAutoScaleConfigurationBounds();
-                this.VirtualNetworkGateway.AutoScaleConfiguration.Bounds.Min = Convert.ToInt32(this.MinScaleUnit);
-                this.VirtualNetworkGateway.AutoScaleConfiguration.Bounds.Max = Convert.ToInt32(this.MaxScaleUnit);
+                this.VirtualNetworkGateway.AutoScaleConfiguration.ScaleUnit = new PSVirtualNetworkGatewayPropertiesAutoScaleConfigurationBounds();
+                this.VirtualNetworkGateway.AutoScaleConfiguration.ScaleUnit.Min = Convert.ToInt32(this.MinScaleUnit);
+                this.VirtualNetworkGateway.AutoScaleConfiguration.ScaleUnit.Max = Convert.ToInt32(this.MaxScaleUnit);
             }
 
             if (this.BgpRouteTranslationForNat.HasValue)
