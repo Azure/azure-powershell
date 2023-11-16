@@ -19,7 +19,7 @@
 -->
 ## Upcoming Release
 
-## Version 0.5.1
+## Version 0.5.2
 * Removed the version check in MachineExtensionProperties
 
 ## Version 0.5.0
