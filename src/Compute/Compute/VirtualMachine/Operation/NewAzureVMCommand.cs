@@ -1027,33 +1027,17 @@ namespace Microsoft.Azure.Commands.Compute
             if (this.VM.SecurityProfile?.SecurityType != null
                 && this.VM.SecurityProfile?.SecurityType?.ToString().ToLower() == ConstantValues.StandardSecurityType)
             {
-                try
-                {
-                    if (this.VM.SecurityProfile.UefiSettings?.SecureBootEnabled == null
+                if (this.VM.SecurityProfile.UefiSettings?.SecureBootEnabled == null
                         && this.VM.SecurityProfile.UefiSettings?.VTpmEnabled == null
                         && this.VM.SecurityProfile.EncryptionAtHost == null)
-                    {
-                        this.VM.SecurityProfile = null;
-                    }
-                    else
-                    {
-                        this.VM.SecurityProfile.SecurityType = null;
-                    }
-                }
-                catch (Exception e) when (e.Message.ToString().ToLower().Contains("not enabled") && (e.Message.ToString().ToLower().Contains("encryptionathost")))
                 {
-                    if (this.VM.SecurityProfile.UefiSettings?.SecureBootEnabled == null
-                        && this.VM.SecurityProfile.UefiSettings?.VTpmEnabled == null)
-                    {
-                        this.VM.SecurityProfile = null;
-                    }
-                    else
-                    {
-                        this.VM.SecurityProfile.SecurityType = null;
-                    }
+                    this.VM.SecurityProfile = null;
+                }
+                else
+                {
+                    this.VM.SecurityProfile.SecurityType = null;
                 }
             }
-
 
             if (ShouldProcess(this.VM.Name, VerbsCommon.New))
             {
