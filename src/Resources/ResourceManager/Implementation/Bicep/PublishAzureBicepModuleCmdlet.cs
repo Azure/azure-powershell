@@ -12,6 +12,7 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
+using Microsoft.Azure.Commands.Common.Authentication.Abstractions;
 using Microsoft.Azure.Commands.ResourceManager.Cmdlets.Utilities;
 using Microsoft.Azure.Commands.ResourceManager.Common;
 using Microsoft.WindowsAzure.Commands.Utilities.Common;
@@ -41,7 +42,7 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Implementation.Bicep
 
         public override void ExecuteCmdlet()
         {
-            BicepUtility.PublishFile(this.TryResolvePath(this.FilePath), this.Target, this.DocumentationUri, this.Force.IsPresent, this.WriteVerbose, this.WriteWarning);
+            BicepUtility.Create().PublishFile(this.TryResolvePath(this.FilePath), this.Target, this.DocumentationUri, this.Force.IsPresent, this.WriteVerbose, this.WriteWarning);
 
             if (this.PassThru.IsPresent)
             {

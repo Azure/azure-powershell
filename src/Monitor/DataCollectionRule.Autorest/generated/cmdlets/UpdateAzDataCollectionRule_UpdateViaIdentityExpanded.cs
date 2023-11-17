@@ -10,15 +10,15 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Monitor.DataCollection.Cmdlets
     using Microsoft.Azure.PowerShell.Cmdlets.Monitor.DataCollection.Runtime.Cmdlets;
     using System;
 
-    /// <summary>Updates part of a data collection rule.</summary>
+    /// <summary>Update a data collection rule.</summary>
     /// <remarks>
-    /// [OpenAPI] Update=>PATCH:"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Insights/dataCollectionRules/{dataCollectionRuleName}"
+    /// [OpenAPI] Get=>GET:"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Insights/dataCollectionRules/{dataCollectionRuleName}"
+    /// [OpenAPI] Create=>PUT:"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Insights/dataCollectionRules/{dataCollectionRuleName}"
     /// </remarks>
     [global::System.Management.Automation.Cmdlet(global::System.Management.Automation.VerbsData.Update, @"AzDataCollectionRule_UpdateViaIdentityExpanded", SupportsShouldProcess = true)]
     [global::System.Management.Automation.OutputType(typeof(Microsoft.Azure.PowerShell.Cmdlets.Monitor.DataCollection.Models.IDataCollectionRuleResource))]
-    [global::Microsoft.Azure.PowerShell.Cmdlets.Monitor.DataCollection.Description(@"Updates part of a data collection rule.")]
+    [global::Microsoft.Azure.PowerShell.Cmdlets.Monitor.DataCollection.Description(@"Update a data collection rule.")]
     [global::Microsoft.Azure.PowerShell.Cmdlets.Monitor.DataCollection.Generated]
-    [global::Microsoft.Azure.PowerShell.Cmdlets.Monitor.DataCollection.HttpPath(Path = "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Insights/dataCollectionRules/{dataCollectionRuleName}", ApiVersion = "2022-06-01")]
     public partial class UpdateAzDataCollectionRule_UpdateViaIdentityExpanded : global::System.Management.Automation.PSCmdlet,
         Microsoft.Azure.PowerShell.Cmdlets.Monitor.DataCollection.Runtime.IEventListener,
         Microsoft.Azure.PowerShell.Cmdlets.Monitor.DataCollection.Runtime.IContext
@@ -32,8 +32,8 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Monitor.DataCollection.Cmdlets
         /// <summary>A unique id generatd for the this cmdlet when ProcessRecord() is called.</summary>
         private string __processRecordId;
 
-        /// <summary>Definition of ARM tracked top level resource properties for update operation.</summary>
-        private Microsoft.Azure.PowerShell.Cmdlets.Monitor.DataCollection.Models.IResourceForUpdate _body = new Microsoft.Azure.PowerShell.Cmdlets.Monitor.DataCollection.Models.ResourceForUpdate();
+        /// <summary>Definition of ARM tracked top level resource.</summary>
+        private Microsoft.Azure.PowerShell.Cmdlets.Monitor.DataCollection.Models.IDataCollectionRuleResource _body = new Microsoft.Azure.PowerShell.Cmdlets.Monitor.DataCollection.Models.DataCollectionRuleResource();
 
         /// <summary>
         /// The <see cref="global::System.Threading.CancellationTokenSource" /> for this operation.
@@ -64,6 +64,175 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Monitor.DataCollection.Cmdlets
         public Microsoft.Azure.PowerShell.Cmdlets.Monitor.DataCollection.DataCollectionRule Client => Microsoft.Azure.PowerShell.Cmdlets.Monitor.DataCollection.Module.Instance.ClientAPI;
 
         /// <summary>
+        /// The resource ID of the data collection endpoint that this rule can be used with.
+        /// </summary>
+        [global::System.Management.Automation.Parameter(Mandatory = false, HelpMessage = "The resource ID of the data collection endpoint that this rule can be used with.")]
+        [global::Microsoft.Azure.PowerShell.Cmdlets.Monitor.DataCollection.Category(global::Microsoft.Azure.PowerShell.Cmdlets.Monitor.DataCollection.ParameterCategory.Body)]
+        [Microsoft.Azure.PowerShell.Cmdlets.Monitor.DataCollection.Runtime.Info(
+        Required = false,
+        ReadOnly = false,
+        Description = @"The resource ID of the data collection endpoint that this rule can be used with.",
+        SerializedName = @"dataCollectionEndpointId",
+        PossibleTypes = new [] { typeof(string) })]
+        public string DataCollectionEndpointId { get => _body.DataCollectionEndpointId ?? null; set => _body.DataCollectionEndpointId = value; }
+
+        /// <summary>The specification of data flows.</summary>
+        [global::System.Management.Automation.AllowEmptyCollection]
+        [global::System.Management.Automation.Parameter(Mandatory = false, HelpMessage = "The specification of data flows.")]
+        [global::Microsoft.Azure.PowerShell.Cmdlets.Monitor.DataCollection.Category(global::Microsoft.Azure.PowerShell.Cmdlets.Monitor.DataCollection.ParameterCategory.Body)]
+        [Microsoft.Azure.PowerShell.Cmdlets.Monitor.DataCollection.Runtime.Info(
+        Required = false,
+        ReadOnly = false,
+        Description = @"The specification of data flows.",
+        SerializedName = @"dataFlows",
+        PossibleTypes = new [] { typeof(Microsoft.Azure.PowerShell.Cmdlets.Monitor.DataCollection.Models.IDataFlow) })]
+        public Microsoft.Azure.PowerShell.Cmdlets.Monitor.DataCollection.Models.IDataFlow[] DataFlow { get => _body.DataFlow?.ToArray() ?? null /* fixedArrayOf */; set => _body.DataFlow = (value != null ? new System.Collections.Generic.List<Microsoft.Azure.PowerShell.Cmdlets.Monitor.DataCollection.Models.IDataFlow>(value) : null); }
+
+        /// <summary>Event Hub consumer group name</summary>
+        [global::System.Management.Automation.Parameter(Mandatory = false, HelpMessage = "Event Hub consumer group name")]
+        [global::Microsoft.Azure.PowerShell.Cmdlets.Monitor.DataCollection.Category(global::Microsoft.Azure.PowerShell.Cmdlets.Monitor.DataCollection.ParameterCategory.Body)]
+        [Microsoft.Azure.PowerShell.Cmdlets.Monitor.DataCollection.Runtime.Info(
+        Required = false,
+        ReadOnly = false,
+        Description = @"Event Hub consumer group name",
+        SerializedName = @"consumerGroup",
+        PossibleTypes = new [] { typeof(string) })]
+        public string DataSourceDataImportEventHubConsumerGroup { get => _body.DataSourceDataImportEventHubConsumerGroup ?? null; set => _body.DataSourceDataImportEventHubConsumerGroup = value; }
+
+        /// <summary>
+        /// A friendly name for the data source. This name should be unique across all data sources (regardless of type) within the
+        /// data collection rule.
+        /// </summary>
+        [global::System.Management.Automation.Parameter(Mandatory = false, HelpMessage = "A friendly name for the data source. This name should be unique across all data sources (regardless of type) within the data collection rule.")]
+        [global::Microsoft.Azure.PowerShell.Cmdlets.Monitor.DataCollection.Category(global::Microsoft.Azure.PowerShell.Cmdlets.Monitor.DataCollection.ParameterCategory.Body)]
+        [Microsoft.Azure.PowerShell.Cmdlets.Monitor.DataCollection.Runtime.Info(
+        Required = false,
+        ReadOnly = false,
+        Description = @"A friendly name for the data source. This name should be unique across all data sources (regardless of type) within the data collection rule.",
+        SerializedName = @"name",
+        PossibleTypes = new [] { typeof(string) })]
+        public string DataSourceDataImportEventHubName { get => _body.DataSourceDataImportEventHubName ?? null; set => _body.DataSourceDataImportEventHubName = value; }
+
+        /// <summary>The stream to collect from EventHub</summary>
+        [global::System.Management.Automation.Parameter(Mandatory = false, HelpMessage = "The stream to collect from EventHub")]
+        [global::Microsoft.Azure.PowerShell.Cmdlets.Monitor.DataCollection.Category(global::Microsoft.Azure.PowerShell.Cmdlets.Monitor.DataCollection.ParameterCategory.Body)]
+        [Microsoft.Azure.PowerShell.Cmdlets.Monitor.DataCollection.Runtime.Info(
+        Required = false,
+        ReadOnly = false,
+        Description = @"The stream to collect from EventHub",
+        SerializedName = @"stream",
+        PossibleTypes = new [] { typeof(string) })]
+        public string DataSourceDataImportEventHubStream { get => _body.DataSourceDataImportEventHubStream ?? null; set => _body.DataSourceDataImportEventHubStream = value; }
+
+        /// <summary>The list of Azure VM extension data source configurations.</summary>
+        [global::System.Management.Automation.AllowEmptyCollection]
+        [global::System.Management.Automation.Parameter(Mandatory = false, HelpMessage = "The list of Azure VM extension data source configurations.")]
+        [global::Microsoft.Azure.PowerShell.Cmdlets.Monitor.DataCollection.Category(global::Microsoft.Azure.PowerShell.Cmdlets.Monitor.DataCollection.ParameterCategory.Body)]
+        [Microsoft.Azure.PowerShell.Cmdlets.Monitor.DataCollection.Runtime.Info(
+        Required = false,
+        ReadOnly = false,
+        Description = @"The list of Azure VM extension data source configurations.",
+        SerializedName = @"extensions",
+        PossibleTypes = new [] { typeof(Microsoft.Azure.PowerShell.Cmdlets.Monitor.DataCollection.Models.IExtensionDataSource) })]
+        public Microsoft.Azure.PowerShell.Cmdlets.Monitor.DataCollection.Models.IExtensionDataSource[] DataSourceExtension { get => _body.DataSourceExtension?.ToArray() ?? null /* fixedArrayOf */; set => _body.DataSourceExtension = (value != null ? new System.Collections.Generic.List<Microsoft.Azure.PowerShell.Cmdlets.Monitor.DataCollection.Models.IExtensionDataSource>(value) : null); }
+
+        /// <summary>The list of IIS logs source configurations.</summary>
+        [global::System.Management.Automation.AllowEmptyCollection]
+        [global::System.Management.Automation.Parameter(Mandatory = false, HelpMessage = "The list of IIS logs source configurations.")]
+        [global::Microsoft.Azure.PowerShell.Cmdlets.Monitor.DataCollection.Category(global::Microsoft.Azure.PowerShell.Cmdlets.Monitor.DataCollection.ParameterCategory.Body)]
+        [Microsoft.Azure.PowerShell.Cmdlets.Monitor.DataCollection.Runtime.Info(
+        Required = false,
+        ReadOnly = false,
+        Description = @"The list of IIS logs source configurations.",
+        SerializedName = @"iisLogs",
+        PossibleTypes = new [] { typeof(Microsoft.Azure.PowerShell.Cmdlets.Monitor.DataCollection.Models.IIisLogsDataSource) })]
+        public Microsoft.Azure.PowerShell.Cmdlets.Monitor.DataCollection.Models.IIisLogsDataSource[] DataSourceIisLog { get => _body.DataSourceIisLog?.ToArray() ?? null /* fixedArrayOf */; set => _body.DataSourceIisLog = (value != null ? new System.Collections.Generic.List<Microsoft.Azure.PowerShell.Cmdlets.Monitor.DataCollection.Models.IIisLogsDataSource>(value) : null); }
+
+        /// <summary>The list of Log files source configurations.</summary>
+        [global::System.Management.Automation.AllowEmptyCollection]
+        [global::System.Management.Automation.Parameter(Mandatory = false, HelpMessage = "The list of Log files source configurations.")]
+        [global::Microsoft.Azure.PowerShell.Cmdlets.Monitor.DataCollection.Category(global::Microsoft.Azure.PowerShell.Cmdlets.Monitor.DataCollection.ParameterCategory.Body)]
+        [Microsoft.Azure.PowerShell.Cmdlets.Monitor.DataCollection.Runtime.Info(
+        Required = false,
+        ReadOnly = false,
+        Description = @"The list of Log files source configurations.",
+        SerializedName = @"logFiles",
+        PossibleTypes = new [] { typeof(Microsoft.Azure.PowerShell.Cmdlets.Monitor.DataCollection.Models.ILogFilesDataSource) })]
+        public Microsoft.Azure.PowerShell.Cmdlets.Monitor.DataCollection.Models.ILogFilesDataSource[] DataSourceLogFile { get => _body.DataSourceLogFile?.ToArray() ?? null /* fixedArrayOf */; set => _body.DataSourceLogFile = (value != null ? new System.Collections.Generic.List<Microsoft.Azure.PowerShell.Cmdlets.Monitor.DataCollection.Models.ILogFilesDataSource>(value) : null); }
+
+        /// <summary>The list of performance counter data source configurations.</summary>
+        [global::System.Management.Automation.AllowEmptyCollection]
+        [global::System.Management.Automation.Parameter(Mandatory = false, HelpMessage = "The list of performance counter data source configurations.")]
+        [global::Microsoft.Azure.PowerShell.Cmdlets.Monitor.DataCollection.Category(global::Microsoft.Azure.PowerShell.Cmdlets.Monitor.DataCollection.ParameterCategory.Body)]
+        [Microsoft.Azure.PowerShell.Cmdlets.Monitor.DataCollection.Runtime.Info(
+        Required = false,
+        ReadOnly = false,
+        Description = @"The list of performance counter data source configurations.",
+        SerializedName = @"performanceCounters",
+        PossibleTypes = new [] { typeof(Microsoft.Azure.PowerShell.Cmdlets.Monitor.DataCollection.Models.IPerfCounterDataSource) })]
+        public Microsoft.Azure.PowerShell.Cmdlets.Monitor.DataCollection.Models.IPerfCounterDataSource[] DataSourcePerformanceCounter { get => _body.DataSourcePerformanceCounter?.ToArray() ?? null /* fixedArrayOf */; set => _body.DataSourcePerformanceCounter = (value != null ? new System.Collections.Generic.List<Microsoft.Azure.PowerShell.Cmdlets.Monitor.DataCollection.Models.IPerfCounterDataSource>(value) : null); }
+
+        /// <summary>The list of platform telemetry configurations</summary>
+        [global::System.Management.Automation.AllowEmptyCollection]
+        [global::System.Management.Automation.Parameter(Mandatory = false, HelpMessage = "The list of platform telemetry configurations")]
+        [global::Microsoft.Azure.PowerShell.Cmdlets.Monitor.DataCollection.Category(global::Microsoft.Azure.PowerShell.Cmdlets.Monitor.DataCollection.ParameterCategory.Body)]
+        [Microsoft.Azure.PowerShell.Cmdlets.Monitor.DataCollection.Runtime.Info(
+        Required = false,
+        ReadOnly = false,
+        Description = @"The list of platform telemetry configurations",
+        SerializedName = @"platformTelemetry",
+        PossibleTypes = new [] { typeof(Microsoft.Azure.PowerShell.Cmdlets.Monitor.DataCollection.Models.IPlatformTelemetryDataSource) })]
+        public Microsoft.Azure.PowerShell.Cmdlets.Monitor.DataCollection.Models.IPlatformTelemetryDataSource[] DataSourcePlatformTelemetry { get => _body.DataSourcePlatformTelemetry?.ToArray() ?? null /* fixedArrayOf */; set => _body.DataSourcePlatformTelemetry = (value != null ? new System.Collections.Generic.List<Microsoft.Azure.PowerShell.Cmdlets.Monitor.DataCollection.Models.IPlatformTelemetryDataSource>(value) : null); }
+
+        /// <summary>The list of Prometheus forwarder data source configurations.</summary>
+        [global::System.Management.Automation.AllowEmptyCollection]
+        [global::System.Management.Automation.Parameter(Mandatory = false, HelpMessage = "The list of Prometheus forwarder data source configurations.")]
+        [global::Microsoft.Azure.PowerShell.Cmdlets.Monitor.DataCollection.Category(global::Microsoft.Azure.PowerShell.Cmdlets.Monitor.DataCollection.ParameterCategory.Body)]
+        [Microsoft.Azure.PowerShell.Cmdlets.Monitor.DataCollection.Runtime.Info(
+        Required = false,
+        ReadOnly = false,
+        Description = @"The list of Prometheus forwarder data source configurations.",
+        SerializedName = @"prometheusForwarder",
+        PossibleTypes = new [] { typeof(Microsoft.Azure.PowerShell.Cmdlets.Monitor.DataCollection.Models.IPrometheusForwarderDataSource) })]
+        public Microsoft.Azure.PowerShell.Cmdlets.Monitor.DataCollection.Models.IPrometheusForwarderDataSource[] DataSourcePrometheusForwarder { get => _body.DataSourcePrometheusForwarder?.ToArray() ?? null /* fixedArrayOf */; set => _body.DataSourcePrometheusForwarder = (value != null ? new System.Collections.Generic.List<Microsoft.Azure.PowerShell.Cmdlets.Monitor.DataCollection.Models.IPrometheusForwarderDataSource>(value) : null); }
+
+        /// <summary>The list of Syslog data source configurations.</summary>
+        [global::System.Management.Automation.AllowEmptyCollection]
+        [global::System.Management.Automation.Parameter(Mandatory = false, HelpMessage = "The list of Syslog data source configurations.")]
+        [global::Microsoft.Azure.PowerShell.Cmdlets.Monitor.DataCollection.Category(global::Microsoft.Azure.PowerShell.Cmdlets.Monitor.DataCollection.ParameterCategory.Body)]
+        [Microsoft.Azure.PowerShell.Cmdlets.Monitor.DataCollection.Runtime.Info(
+        Required = false,
+        ReadOnly = false,
+        Description = @"The list of Syslog data source configurations.",
+        SerializedName = @"syslog",
+        PossibleTypes = new [] { typeof(Microsoft.Azure.PowerShell.Cmdlets.Monitor.DataCollection.Models.ISyslogDataSource) })]
+        public Microsoft.Azure.PowerShell.Cmdlets.Monitor.DataCollection.Models.ISyslogDataSource[] DataSourceSyslog { get => _body.DataSourceSyslog?.ToArray() ?? null /* fixedArrayOf */; set => _body.DataSourceSyslog = (value != null ? new System.Collections.Generic.List<Microsoft.Azure.PowerShell.Cmdlets.Monitor.DataCollection.Models.ISyslogDataSource>(value) : null); }
+
+        /// <summary>The list of Windows Event Log data source configurations.</summary>
+        [global::System.Management.Automation.AllowEmptyCollection]
+        [global::System.Management.Automation.Parameter(Mandatory = false, HelpMessage = "The list of Windows Event Log data source configurations.")]
+        [global::Microsoft.Azure.PowerShell.Cmdlets.Monitor.DataCollection.Category(global::Microsoft.Azure.PowerShell.Cmdlets.Monitor.DataCollection.ParameterCategory.Body)]
+        [Microsoft.Azure.PowerShell.Cmdlets.Monitor.DataCollection.Runtime.Info(
+        Required = false,
+        ReadOnly = false,
+        Description = @"The list of Windows Event Log data source configurations.",
+        SerializedName = @"windowsEventLogs",
+        PossibleTypes = new [] { typeof(Microsoft.Azure.PowerShell.Cmdlets.Monitor.DataCollection.Models.IWindowsEventLogDataSource) })]
+        public Microsoft.Azure.PowerShell.Cmdlets.Monitor.DataCollection.Models.IWindowsEventLogDataSource[] DataSourceWindowsEventLog { get => _body.DataSourceWindowsEventLog?.ToArray() ?? null /* fixedArrayOf */; set => _body.DataSourceWindowsEventLog = (value != null ? new System.Collections.Generic.List<Microsoft.Azure.PowerShell.Cmdlets.Monitor.DataCollection.Models.IWindowsEventLogDataSource>(value) : null); }
+
+        /// <summary>The list of Windows Firewall logs source configurations.</summary>
+        [global::System.Management.Automation.AllowEmptyCollection]
+        [global::System.Management.Automation.Parameter(Mandatory = false, HelpMessage = "The list of Windows Firewall logs source configurations.")]
+        [global::Microsoft.Azure.PowerShell.Cmdlets.Monitor.DataCollection.Category(global::Microsoft.Azure.PowerShell.Cmdlets.Monitor.DataCollection.ParameterCategory.Body)]
+        [Microsoft.Azure.PowerShell.Cmdlets.Monitor.DataCollection.Runtime.Info(
+        Required = false,
+        ReadOnly = false,
+        Description = @"The list of Windows Firewall logs source configurations.",
+        SerializedName = @"windowsFirewallLogs",
+        PossibleTypes = new [] { typeof(Microsoft.Azure.PowerShell.Cmdlets.Monitor.DataCollection.Models.IWindowsFirewallLogsDataSource) })]
+        public Microsoft.Azure.PowerShell.Cmdlets.Monitor.DataCollection.Models.IWindowsFirewallLogsDataSource[] DataSourceWindowsFirewallLog { get => _body.DataSourceWindowsFirewallLog?.ToArray() ?? null /* fixedArrayOf */; set => _body.DataSourceWindowsFirewallLog = (value != null ? new System.Collections.Generic.List<Microsoft.Azure.PowerShell.Cmdlets.Monitor.DataCollection.Models.IWindowsFirewallLogsDataSource>(value) : null); }
+
+        /// <summary>
         /// The DefaultProfile parameter is not functional. Use the SubscriptionId parameter when available if executing the cmdlet
         /// against a different subscription
         /// </summary>
@@ -72,6 +241,117 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Monitor.DataCollection.Cmdlets
         [global::System.Management.Automation.Alias("AzureRMContext", "AzureCredential")]
         [global::Microsoft.Azure.PowerShell.Cmdlets.Monitor.DataCollection.Category(global::Microsoft.Azure.PowerShell.Cmdlets.Monitor.DataCollection.ParameterCategory.Azure)]
         public global::System.Management.Automation.PSObject DefaultProfile { get; set; }
+
+        /// <summary>Description of the data collection rule.</summary>
+        [global::System.Management.Automation.Parameter(Mandatory = false, HelpMessage = "Description of the data collection rule.")]
+        [global::Microsoft.Azure.PowerShell.Cmdlets.Monitor.DataCollection.Category(global::Microsoft.Azure.PowerShell.Cmdlets.Monitor.DataCollection.ParameterCategory.Body)]
+        [Microsoft.Azure.PowerShell.Cmdlets.Monitor.DataCollection.Runtime.Info(
+        Required = false,
+        ReadOnly = false,
+        Description = @"Description of the data collection rule.",
+        SerializedName = @"description",
+        PossibleTypes = new [] { typeof(string) })]
+        public string Description { get => _body.Description ?? null; set => _body.Description = value; }
+
+        /// <summary>
+        /// A friendly name for the destination. This name should be unique across all destinations (regardless of type) within the
+        /// data collection rule.
+        /// </summary>
+        [global::System.Management.Automation.Parameter(Mandatory = false, HelpMessage = "A friendly name for the destination. This name should be unique across all destinations (regardless of type) within the data collection rule.")]
+        [global::Microsoft.Azure.PowerShell.Cmdlets.Monitor.DataCollection.Category(global::Microsoft.Azure.PowerShell.Cmdlets.Monitor.DataCollection.ParameterCategory.Body)]
+        [Microsoft.Azure.PowerShell.Cmdlets.Monitor.DataCollection.Runtime.Info(
+        Required = false,
+        ReadOnly = false,
+        Description = @"A friendly name for the destination. This name should be unique across all destinations (regardless of type) within the data collection rule.",
+        SerializedName = @"name",
+        PossibleTypes = new [] { typeof(string) })]
+        public string DestinationAzureMonitorMetricName { get => _body.DestinationAzureMonitorMetricName ?? null; set => _body.DestinationAzureMonitorMetricName = value; }
+
+        /// <summary>List of Event Hubs destinations.</summary>
+        [global::System.Management.Automation.AllowEmptyCollection]
+        [global::System.Management.Automation.Parameter(Mandatory = false, HelpMessage = "List of Event Hubs destinations.")]
+        [global::Microsoft.Azure.PowerShell.Cmdlets.Monitor.DataCollection.Category(global::Microsoft.Azure.PowerShell.Cmdlets.Monitor.DataCollection.ParameterCategory.Body)]
+        [Microsoft.Azure.PowerShell.Cmdlets.Monitor.DataCollection.Runtime.Info(
+        Required = false,
+        ReadOnly = false,
+        Description = @"List of Event Hubs destinations.",
+        SerializedName = @"eventHubs",
+        PossibleTypes = new [] { typeof(Microsoft.Azure.PowerShell.Cmdlets.Monitor.DataCollection.Models.IEventHubDestination) })]
+        public Microsoft.Azure.PowerShell.Cmdlets.Monitor.DataCollection.Models.IEventHubDestination[] DestinationEventHub { get => _body.DestinationEventHub?.ToArray() ?? null /* fixedArrayOf */; set => _body.DestinationEventHub = (value != null ? new System.Collections.Generic.List<Microsoft.Azure.PowerShell.Cmdlets.Monitor.DataCollection.Models.IEventHubDestination>(value) : null); }
+
+        /// <summary>List of Event Hubs Direct destinations.</summary>
+        [global::System.Management.Automation.AllowEmptyCollection]
+        [global::System.Management.Automation.Parameter(Mandatory = false, HelpMessage = "List of Event Hubs Direct destinations.")]
+        [global::Microsoft.Azure.PowerShell.Cmdlets.Monitor.DataCollection.Category(global::Microsoft.Azure.PowerShell.Cmdlets.Monitor.DataCollection.ParameterCategory.Body)]
+        [Microsoft.Azure.PowerShell.Cmdlets.Monitor.DataCollection.Runtime.Info(
+        Required = false,
+        ReadOnly = false,
+        Description = @"List of Event Hubs Direct destinations.",
+        SerializedName = @"eventHubsDirect",
+        PossibleTypes = new [] { typeof(Microsoft.Azure.PowerShell.Cmdlets.Monitor.DataCollection.Models.IEventHubDirectDestination) })]
+        public Microsoft.Azure.PowerShell.Cmdlets.Monitor.DataCollection.Models.IEventHubDirectDestination[] DestinationEventHubsDirect { get => _body.DestinationEventHubsDirect?.ToArray() ?? null /* fixedArrayOf */; set => _body.DestinationEventHubsDirect = (value != null ? new System.Collections.Generic.List<Microsoft.Azure.PowerShell.Cmdlets.Monitor.DataCollection.Models.IEventHubDirectDestination>(value) : null); }
+
+        /// <summary>List of Log Analytics destinations.</summary>
+        [global::System.Management.Automation.AllowEmptyCollection]
+        [global::System.Management.Automation.Parameter(Mandatory = false, HelpMessage = "List of Log Analytics destinations.")]
+        [global::Microsoft.Azure.PowerShell.Cmdlets.Monitor.DataCollection.Category(global::Microsoft.Azure.PowerShell.Cmdlets.Monitor.DataCollection.ParameterCategory.Body)]
+        [Microsoft.Azure.PowerShell.Cmdlets.Monitor.DataCollection.Runtime.Info(
+        Required = false,
+        ReadOnly = false,
+        Description = @"List of Log Analytics destinations.",
+        SerializedName = @"logAnalytics",
+        PossibleTypes = new [] { typeof(Microsoft.Azure.PowerShell.Cmdlets.Monitor.DataCollection.Models.ILogAnalyticsDestination) })]
+        public Microsoft.Azure.PowerShell.Cmdlets.Monitor.DataCollection.Models.ILogAnalyticsDestination[] DestinationLogAnalytic { get => _body.DestinationLogAnalytic?.ToArray() ?? null /* fixedArrayOf */; set => _body.DestinationLogAnalytic = (value != null ? new System.Collections.Generic.List<Microsoft.Azure.PowerShell.Cmdlets.Monitor.DataCollection.Models.ILogAnalyticsDestination>(value) : null); }
+
+        /// <summary>List of monitoring account destinations.</summary>
+        [global::System.Management.Automation.AllowEmptyCollection]
+        [global::System.Management.Automation.Parameter(Mandatory = false, HelpMessage = "List of monitoring account destinations.")]
+        [global::Microsoft.Azure.PowerShell.Cmdlets.Monitor.DataCollection.Category(global::Microsoft.Azure.PowerShell.Cmdlets.Monitor.DataCollection.ParameterCategory.Body)]
+        [Microsoft.Azure.PowerShell.Cmdlets.Monitor.DataCollection.Runtime.Info(
+        Required = false,
+        ReadOnly = false,
+        Description = @"List of monitoring account destinations.",
+        SerializedName = @"monitoringAccounts",
+        PossibleTypes = new [] { typeof(Microsoft.Azure.PowerShell.Cmdlets.Monitor.DataCollection.Models.IMonitoringAccountDestination) })]
+        public Microsoft.Azure.PowerShell.Cmdlets.Monitor.DataCollection.Models.IMonitoringAccountDestination[] DestinationMonitoringAccount { get => _body.DestinationMonitoringAccount?.ToArray() ?? null /* fixedArrayOf */; set => _body.DestinationMonitoringAccount = (value != null ? new System.Collections.Generic.List<Microsoft.Azure.PowerShell.Cmdlets.Monitor.DataCollection.Models.IMonitoringAccountDestination>(value) : null); }
+
+        /// <summary>List of storage accounts destinations.</summary>
+        [global::System.Management.Automation.AllowEmptyCollection]
+        [global::System.Management.Automation.Parameter(Mandatory = false, HelpMessage = "List of storage accounts destinations.")]
+        [global::Microsoft.Azure.PowerShell.Cmdlets.Monitor.DataCollection.Category(global::Microsoft.Azure.PowerShell.Cmdlets.Monitor.DataCollection.ParameterCategory.Body)]
+        [Microsoft.Azure.PowerShell.Cmdlets.Monitor.DataCollection.Runtime.Info(
+        Required = false,
+        ReadOnly = false,
+        Description = @"List of storage accounts destinations.",
+        SerializedName = @"storageAccounts",
+        PossibleTypes = new [] { typeof(Microsoft.Azure.PowerShell.Cmdlets.Monitor.DataCollection.Models.IStorageBlobDestination) })]
+        public Microsoft.Azure.PowerShell.Cmdlets.Monitor.DataCollection.Models.IStorageBlobDestination[] DestinationStorageAccount { get => _body.DestinationStorageAccount?.ToArray() ?? null /* fixedArrayOf */; set => _body.DestinationStorageAccount = (value != null ? new System.Collections.Generic.List<Microsoft.Azure.PowerShell.Cmdlets.Monitor.DataCollection.Models.IStorageBlobDestination>(value) : null); }
+
+        /// <summary>
+        /// List of Storage Blob Direct destinations. To be used only for sending data directly to store from the agent.
+        /// </summary>
+        [global::System.Management.Automation.AllowEmptyCollection]
+        [global::System.Management.Automation.Parameter(Mandatory = false, HelpMessage = "List of Storage Blob Direct destinations. To be used only for sending data directly to store from the agent.")]
+        [global::Microsoft.Azure.PowerShell.Cmdlets.Monitor.DataCollection.Category(global::Microsoft.Azure.PowerShell.Cmdlets.Monitor.DataCollection.ParameterCategory.Body)]
+        [Microsoft.Azure.PowerShell.Cmdlets.Monitor.DataCollection.Runtime.Info(
+        Required = false,
+        ReadOnly = false,
+        Description = @"List of Storage Blob Direct destinations. To be used only for sending data directly to store from the agent.",
+        SerializedName = @"storageBlobsDirect",
+        PossibleTypes = new [] { typeof(Microsoft.Azure.PowerShell.Cmdlets.Monitor.DataCollection.Models.IStorageBlobDestination) })]
+        public Microsoft.Azure.PowerShell.Cmdlets.Monitor.DataCollection.Models.IStorageBlobDestination[] DestinationStorageBlobsDirect { get => _body.DestinationStorageBlobsDirect?.ToArray() ?? null /* fixedArrayOf */; set => _body.DestinationStorageBlobsDirect = (value != null ? new System.Collections.Generic.List<Microsoft.Azure.PowerShell.Cmdlets.Monitor.DataCollection.Models.IStorageBlobDestination>(value) : null); }
+
+        /// <summary>List of Storage Table Direct destinations.</summary>
+        [global::System.Management.Automation.AllowEmptyCollection]
+        [global::System.Management.Automation.Parameter(Mandatory = false, HelpMessage = "List of Storage Table Direct destinations.")]
+        [global::Microsoft.Azure.PowerShell.Cmdlets.Monitor.DataCollection.Category(global::Microsoft.Azure.PowerShell.Cmdlets.Monitor.DataCollection.ParameterCategory.Body)]
+        [Microsoft.Azure.PowerShell.Cmdlets.Monitor.DataCollection.Runtime.Info(
+        Required = false,
+        ReadOnly = false,
+        Description = @"List of Storage Table Direct destinations.",
+        SerializedName = @"storageTablesDirect",
+        PossibleTypes = new [] { typeof(Microsoft.Azure.PowerShell.Cmdlets.Monitor.DataCollection.Models.IStorageTableDestination) })]
+        public Microsoft.Azure.PowerShell.Cmdlets.Monitor.DataCollection.Models.IStorageTableDestination[] DestinationStorageTablesDirect { get => _body.DestinationStorageTablesDirect?.ToArray() ?? null /* fixedArrayOf */; set => _body.DestinationStorageTablesDirect = (value != null ? new System.Collections.Generic.List<Microsoft.Azure.PowerShell.Cmdlets.Monitor.DataCollection.Models.IStorageTableDestination>(value) : null); }
 
         /// <summary>Accessor for extensibleParameters.</summary>
         public global::System.Collections.Generic.IDictionary<global::System.String,global::System.Object> ExtensibleParameters { get => _extensibleParameters ; }
@@ -113,6 +393,29 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Monitor.DataCollection.Cmdlets
         /// <summary>Accessor for our copy of the InvocationInfo.</summary>
         public global::System.Management.Automation.InvocationInfo InvocationInformation { get => __invocationInfo = __invocationInfo ?? this.MyInvocation ; set { __invocationInfo = value; } }
 
+        /// <summary>The kind of the resource.</summary>
+        [global::System.Management.Automation.Parameter(Mandatory = false, HelpMessage = "The kind of the resource.")]
+        [global::Microsoft.Azure.PowerShell.Cmdlets.Monitor.DataCollection.Category(global::Microsoft.Azure.PowerShell.Cmdlets.Monitor.DataCollection.ParameterCategory.Body)]
+        [Microsoft.Azure.PowerShell.Cmdlets.Monitor.DataCollection.Runtime.Info(
+        Required = false,
+        ReadOnly = false,
+        Description = @"The kind of the resource.",
+        SerializedName = @"kind",
+        PossibleTypes = new [] { typeof(string) })]
+        [global::Microsoft.Azure.PowerShell.Cmdlets.Monitor.DataCollection.PSArgumentCompleterAttribute("Linux", "Windows")]
+        public string Kind { get => _body.Kind ?? null; set => _body.Kind = value; }
+
+        /// <summary>The geo-location where the resource lives.</summary>
+        [global::System.Management.Automation.Parameter(Mandatory = false, HelpMessage = "The geo-location where the resource lives.")]
+        [global::Microsoft.Azure.PowerShell.Cmdlets.Monitor.DataCollection.Category(global::Microsoft.Azure.PowerShell.Cmdlets.Monitor.DataCollection.ParameterCategory.Body)]
+        [Microsoft.Azure.PowerShell.Cmdlets.Monitor.DataCollection.Runtime.Info(
+        Required = false,
+        ReadOnly = false,
+        Description = @"The geo-location where the resource lives.",
+        SerializedName = @"location",
+        PossibleTypes = new [] { typeof(string) })]
+        public string Location { get => _body.Location ?? null; set => _body.Location = value; }
+
         /// <summary>
         /// <see cref="Microsoft.Azure.PowerShell.Cmdlets.Monitor.DataCollection.Runtime.IEventListener" /> cancellation delegate. Stops the cmdlet when called.
         /// </summary>
@@ -142,6 +445,18 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Monitor.DataCollection.Cmdlets
         [global::Microsoft.Azure.PowerShell.Cmdlets.Monitor.DataCollection.Category(global::Microsoft.Azure.PowerShell.Cmdlets.Monitor.DataCollection.ParameterCategory.Runtime)]
         public global::System.Management.Automation.SwitchParameter ProxyUseDefaultCredentials { get; set; }
 
+        /// <summary>Declaration of custom streams used in this rule.</summary>
+        [global::Microsoft.Azure.PowerShell.Cmdlets.Monitor.DataCollection.ExportAs(typeof(global::System.Collections.Hashtable))]
+        [global::System.Management.Automation.Parameter(Mandatory = false, HelpMessage = "Declaration of custom streams used in this rule.")]
+        [global::Microsoft.Azure.PowerShell.Cmdlets.Monitor.DataCollection.Category(global::Microsoft.Azure.PowerShell.Cmdlets.Monitor.DataCollection.ParameterCategory.Body)]
+        [Microsoft.Azure.PowerShell.Cmdlets.Monitor.DataCollection.Runtime.Info(
+        Required = false,
+        ReadOnly = false,
+        Description = @"Declaration of custom streams used in this rule.",
+        SerializedName = @"streamDeclarations",
+        PossibleTypes = new [] { typeof(Microsoft.Azure.PowerShell.Cmdlets.Monitor.DataCollection.Models.IDataCollectionRuleStreamDeclarations) })]
+        public Microsoft.Azure.PowerShell.Cmdlets.Monitor.DataCollection.Models.IDataCollectionRuleStreamDeclarations StreamDeclaration { get => _body.StreamDeclaration ?? null /* object */; set => _body.StreamDeclaration = value; }
+
         /// <summary>Resource tags.</summary>
         [global::Microsoft.Azure.PowerShell.Cmdlets.Monitor.DataCollection.ExportAs(typeof(global::System.Collections.Hashtable))]
         [global::System.Management.Automation.Parameter(Mandatory = false, HelpMessage = "Resource tags.")]
@@ -151,8 +466,8 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Monitor.DataCollection.Cmdlets
         ReadOnly = false,
         Description = @"Resource tags.",
         SerializedName = @"tags",
-        PossibleTypes = new [] { typeof(Microsoft.Azure.PowerShell.Cmdlets.Monitor.DataCollection.Models.IResourceForUpdateTags) })]
-        public Microsoft.Azure.PowerShell.Cmdlets.Monitor.DataCollection.Models.IResourceForUpdateTags Tag { get => _body.Tag ?? null /* object */; set => _body.Tag = value; }
+        PossibleTypes = new [] { typeof(Microsoft.Azure.PowerShell.Cmdlets.Monitor.DataCollection.Models.IDataCollectionRuleResourceTags) })]
+        public Microsoft.Azure.PowerShell.Cmdlets.Monitor.DataCollection.Models.IDataCollectionRuleResourceTags Tag { get => _body.Tag ?? null /* object */; set => _body.Tag = value; }
 
         /// <summary>
         /// The set of user assigned identities associated with the resource. The userAssignedIdentities dictionary keys will be ARM
@@ -169,6 +484,18 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Monitor.DataCollection.Cmdlets
         SerializedName = @"userAssignedIdentities",
         PossibleTypes = new [] { typeof(Microsoft.Azure.PowerShell.Cmdlets.Monitor.DataCollection.Models.IUserAssignedIdentities) })]
         public Microsoft.Azure.PowerShell.Cmdlets.Monitor.DataCollection.Models.IUserAssignedIdentities UserAssignedIdentity { get => _body.IdentityUserAssignedIdentity ?? null /* object */; set => _body.IdentityUserAssignedIdentity = value; }
+
+        /// <summary>
+        /// <c>overrideOnCreated</c> will be called before the regular onCreated has been processed, allowing customization of what
+        /// happens on that response. Implement this method in a partial class to enable this behavior
+        /// </summary>
+        /// <param name="responseMessage">the raw response message as an global::System.Net.Http.HttpResponseMessage.</param>
+        /// <param name="response">the body result as a <see cref="Microsoft.Azure.PowerShell.Cmdlets.Monitor.DataCollection.Models.IDataCollectionRuleResource">Microsoft.Azure.PowerShell.Cmdlets.Monitor.DataCollection.Models.IDataCollectionRuleResource</see>
+        /// from the remote call</param>
+        /// <param name="returnNow">/// Determines if the rest of the onCreated method should be processed, or if the method should
+        /// return immediately (set to true to skip further processing )</param>
+
+        partial void overrideOnCreated(global::System.Net.Http.HttpResponseMessage responseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Monitor.DataCollection.Models.IDataCollectionRuleResource> response, ref global::System.Threading.Tasks.Task<bool> returnNow);
 
         /// <summary>
         /// <c>overrideOnDefault</c> will be called before the regular onDefault has been processed, allowing customization of what
@@ -309,7 +636,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Monitor.DataCollection.Cmdlets
             try
             {
                 // work
-                if (ShouldProcess($"Call remote 'DataCollectionRulesUpdate' operation"))
+                if (ShouldProcess($"Call remote 'DataCollectionRulesCreate' operation"))
                 {
                     using( var asyncCommandRuntime = new Microsoft.Azure.PowerShell.Cmdlets.Monitor.DataCollection.Runtime.PowerShell.AsyncCommandRuntime(this, ((Microsoft.Azure.PowerShell.Cmdlets.Monitor.DataCollection.Runtime.IEventListener)this).Token) )
                     {
@@ -363,7 +690,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Monitor.DataCollection.Cmdlets
                     await ((Microsoft.Azure.PowerShell.Cmdlets.Monitor.DataCollection.Runtime.IEventListener)this).Signal(Microsoft.Azure.PowerShell.Cmdlets.Monitor.DataCollection.Runtime.Events.CmdletBeforeAPICall); if( ((Microsoft.Azure.PowerShell.Cmdlets.Monitor.DataCollection.Runtime.IEventListener)this).Token.IsCancellationRequested ) { return; }
                     if (InputObject?.Id != null)
                     {
-                        await this.Client.DataCollectionRulesUpdateViaIdentity(InputObject.Id, _body, onOk, onDefault, this, Pipeline, Microsoft.Azure.PowerShell.Cmdlets.Monitor.DataCollection.Runtime.SerializationMode.IncludeUpdate);
+                        _body = await this.Client.DataCollectionRulesGetViaIdentityWithResult(InputObject.Id, this, Pipeline);
+                        this.Update_body();
+                        await this.Client.DataCollectionRulesCreateViaIdentity(InputObject.Id, _body, onOk, onCreated, onDefault, this, Pipeline);
                     }
                     else
                     {
@@ -380,7 +709,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Monitor.DataCollection.Cmdlets
                         {
                             ThrowTerminatingError( new global::System.Management.Automation.ErrorRecord(new global::System.Exception("InputObject has null value for InputObject.DataCollectionRuleName"),string.Empty, global::System.Management.Automation.ErrorCategory.InvalidArgument, InputObject) );
                         }
-                        await this.Client.DataCollectionRulesUpdate(InputObject.SubscriptionId ?? null, InputObject.ResourceGroupName ?? null, InputObject.DataCollectionRuleName ?? null, _body, onOk, onDefault, this, Pipeline, Microsoft.Azure.PowerShell.Cmdlets.Monitor.DataCollection.Runtime.SerializationMode.IncludeUpdate);
+                        _body = await this.Client.DataCollectionRulesGetWithResult(InputObject.SubscriptionId ?? null, InputObject.ResourceGroupName ?? null, InputObject.DataCollectionRuleName ?? null, this, Pipeline);
+                        this.Update_body();
+                        await this.Client.DataCollectionRulesCreate(InputObject.SubscriptionId ?? null, InputObject.ResourceGroupName ?? null, InputObject.DataCollectionRuleName ?? null, _body, onOk, onCreated, onDefault, this, Pipeline);
                     }
                     await ((Microsoft.Azure.PowerShell.Cmdlets.Monitor.DataCollection.Runtime.IEventListener)this).Signal(Microsoft.Azure.PowerShell.Cmdlets.Monitor.DataCollection.Runtime.Events.CmdletAfterAPICall); if( ((Microsoft.Azure.PowerShell.Cmdlets.Monitor.DataCollection.Runtime.IEventListener)this).Token.IsCancellationRequested ) { return; }
                 }
@@ -411,6 +742,168 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Monitor.DataCollection.Cmdlets
         public UpdateAzDataCollectionRule_UpdateViaIdentityExpanded()
         {
 
+        }
+
+        private void Update_body()
+        {
+            if ((bool)(true == this.MyInvocation?.BoundParameters.ContainsKey("Location")))
+            {
+                this.Location = (string)(this.MyInvocation?.BoundParameters["Location"]);
+            }
+            if ((bool)(true == this.MyInvocation?.BoundParameters.ContainsKey("Tag")))
+            {
+                this.Tag = (Microsoft.Azure.PowerShell.Cmdlets.Monitor.DataCollection.Models.IDataCollectionRuleResourceTags)(this.MyInvocation?.BoundParameters["Tag"]);
+            }
+            if ((bool)(true == this.MyInvocation?.BoundParameters.ContainsKey("Kind")))
+            {
+                this.Kind = (string)(this.MyInvocation?.BoundParameters["Kind"]);
+            }
+            if ((bool)(true == this.MyInvocation?.BoundParameters.ContainsKey("Description")))
+            {
+                this.Description = (string)(this.MyInvocation?.BoundParameters["Description"]);
+            }
+            if ((bool)(true == this.MyInvocation?.BoundParameters.ContainsKey("DataCollectionEndpointId")))
+            {
+                this.DataCollectionEndpointId = (string)(this.MyInvocation?.BoundParameters["DataCollectionEndpointId"]);
+            }
+            if ((bool)(true == this.MyInvocation?.BoundParameters.ContainsKey("StreamDeclaration")))
+            {
+                this.StreamDeclaration = (Microsoft.Azure.PowerShell.Cmdlets.Monitor.DataCollection.Models.IDataCollectionRuleStreamDeclarations)(this.MyInvocation?.BoundParameters["StreamDeclaration"]);
+            }
+            if ((bool)(true == this.MyInvocation?.BoundParameters.ContainsKey("DataFlow")))
+            {
+                this.DataFlow = (Microsoft.Azure.PowerShell.Cmdlets.Monitor.DataCollection.Models.IDataFlow[])(this.MyInvocation?.BoundParameters["DataFlow"]);
+            }
+            if ((bool)(true == this.MyInvocation?.BoundParameters.ContainsKey("IdentityType")))
+            {
+                this.IdentityType = (string)(this.MyInvocation?.BoundParameters["IdentityType"]);
+            }
+            if ((bool)(true == this.MyInvocation?.BoundParameters.ContainsKey("UserAssignedIdentity")))
+            {
+                this.UserAssignedIdentity = (Microsoft.Azure.PowerShell.Cmdlets.Monitor.DataCollection.Models.IUserAssignedIdentities)(this.MyInvocation?.BoundParameters["UserAssignedIdentity"]);
+            }
+            if ((bool)(true == this.MyInvocation?.BoundParameters.ContainsKey("DataSourcePerformanceCounter")))
+            {
+                this.DataSourcePerformanceCounter = (Microsoft.Azure.PowerShell.Cmdlets.Monitor.DataCollection.Models.IPerfCounterDataSource[])(this.MyInvocation?.BoundParameters["DataSourcePerformanceCounter"]);
+            }
+            if ((bool)(true == this.MyInvocation?.BoundParameters.ContainsKey("DataSourceWindowsEventLog")))
+            {
+                this.DataSourceWindowsEventLog = (Microsoft.Azure.PowerShell.Cmdlets.Monitor.DataCollection.Models.IWindowsEventLogDataSource[])(this.MyInvocation?.BoundParameters["DataSourceWindowsEventLog"]);
+            }
+            if ((bool)(true == this.MyInvocation?.BoundParameters.ContainsKey("DataSourceSyslog")))
+            {
+                this.DataSourceSyslog = (Microsoft.Azure.PowerShell.Cmdlets.Monitor.DataCollection.Models.ISyslogDataSource[])(this.MyInvocation?.BoundParameters["DataSourceSyslog"]);
+            }
+            if ((bool)(true == this.MyInvocation?.BoundParameters.ContainsKey("DataSourceExtension")))
+            {
+                this.DataSourceExtension = (Microsoft.Azure.PowerShell.Cmdlets.Monitor.DataCollection.Models.IExtensionDataSource[])(this.MyInvocation?.BoundParameters["DataSourceExtension"]);
+            }
+            if ((bool)(true == this.MyInvocation?.BoundParameters.ContainsKey("DataSourceLogFile")))
+            {
+                this.DataSourceLogFile = (Microsoft.Azure.PowerShell.Cmdlets.Monitor.DataCollection.Models.ILogFilesDataSource[])(this.MyInvocation?.BoundParameters["DataSourceLogFile"]);
+            }
+            if ((bool)(true == this.MyInvocation?.BoundParameters.ContainsKey("DataSourceIisLog")))
+            {
+                this.DataSourceIisLog = (Microsoft.Azure.PowerShell.Cmdlets.Monitor.DataCollection.Models.IIisLogsDataSource[])(this.MyInvocation?.BoundParameters["DataSourceIisLog"]);
+            }
+            if ((bool)(true == this.MyInvocation?.BoundParameters.ContainsKey("DataSourceWindowsFirewallLog")))
+            {
+                this.DataSourceWindowsFirewallLog = (Microsoft.Azure.PowerShell.Cmdlets.Monitor.DataCollection.Models.IWindowsFirewallLogsDataSource[])(this.MyInvocation?.BoundParameters["DataSourceWindowsFirewallLog"]);
+            }
+            if ((bool)(true == this.MyInvocation?.BoundParameters.ContainsKey("DataSourcePrometheusForwarder")))
+            {
+                this.DataSourcePrometheusForwarder = (Microsoft.Azure.PowerShell.Cmdlets.Monitor.DataCollection.Models.IPrometheusForwarderDataSource[])(this.MyInvocation?.BoundParameters["DataSourcePrometheusForwarder"]);
+            }
+            if ((bool)(true == this.MyInvocation?.BoundParameters.ContainsKey("DataSourcePlatformTelemetry")))
+            {
+                this.DataSourcePlatformTelemetry = (Microsoft.Azure.PowerShell.Cmdlets.Monitor.DataCollection.Models.IPlatformTelemetryDataSource[])(this.MyInvocation?.BoundParameters["DataSourcePlatformTelemetry"]);
+            }
+            if ((bool)(true == this.MyInvocation?.BoundParameters.ContainsKey("DestinationLogAnalytic")))
+            {
+                this.DestinationLogAnalytic = (Microsoft.Azure.PowerShell.Cmdlets.Monitor.DataCollection.Models.ILogAnalyticsDestination[])(this.MyInvocation?.BoundParameters["DestinationLogAnalytic"]);
+            }
+            if ((bool)(true == this.MyInvocation?.BoundParameters.ContainsKey("DestinationMonitoringAccount")))
+            {
+                this.DestinationMonitoringAccount = (Microsoft.Azure.PowerShell.Cmdlets.Monitor.DataCollection.Models.IMonitoringAccountDestination[])(this.MyInvocation?.BoundParameters["DestinationMonitoringAccount"]);
+            }
+            if ((bool)(true == this.MyInvocation?.BoundParameters.ContainsKey("DestinationEventHub")))
+            {
+                this.DestinationEventHub = (Microsoft.Azure.PowerShell.Cmdlets.Monitor.DataCollection.Models.IEventHubDestination[])(this.MyInvocation?.BoundParameters["DestinationEventHub"]);
+            }
+            if ((bool)(true == this.MyInvocation?.BoundParameters.ContainsKey("DestinationEventHubsDirect")))
+            {
+                this.DestinationEventHubsDirect = (Microsoft.Azure.PowerShell.Cmdlets.Monitor.DataCollection.Models.IEventHubDirectDestination[])(this.MyInvocation?.BoundParameters["DestinationEventHubsDirect"]);
+            }
+            if ((bool)(true == this.MyInvocation?.BoundParameters.ContainsKey("DestinationStorageBlobsDirect")))
+            {
+                this.DestinationStorageBlobsDirect = (Microsoft.Azure.PowerShell.Cmdlets.Monitor.DataCollection.Models.IStorageBlobDestination[])(this.MyInvocation?.BoundParameters["DestinationStorageBlobsDirect"]);
+            }
+            if ((bool)(true == this.MyInvocation?.BoundParameters.ContainsKey("DestinationStorageTablesDirect")))
+            {
+                this.DestinationStorageTablesDirect = (Microsoft.Azure.PowerShell.Cmdlets.Monitor.DataCollection.Models.IStorageTableDestination[])(this.MyInvocation?.BoundParameters["DestinationStorageTablesDirect"]);
+            }
+            if ((bool)(true == this.MyInvocation?.BoundParameters.ContainsKey("DestinationStorageAccount")))
+            {
+                this.DestinationStorageAccount = (Microsoft.Azure.PowerShell.Cmdlets.Monitor.DataCollection.Models.IStorageBlobDestination[])(this.MyInvocation?.BoundParameters["DestinationStorageAccount"]);
+            }
+            if ((bool)(true == this.MyInvocation?.BoundParameters.ContainsKey("DestinationAzureMonitorMetricName")))
+            {
+                this.DestinationAzureMonitorMetricName = (string)(this.MyInvocation?.BoundParameters["DestinationAzureMonitorMetricName"]);
+            }
+            if ((bool)(true == this.MyInvocation?.BoundParameters.ContainsKey("DataSourceDataImportEventHubName")))
+            {
+                this.DataSourceDataImportEventHubName = (string)(this.MyInvocation?.BoundParameters["DataSourceDataImportEventHubName"]);
+            }
+            if ((bool)(true == this.MyInvocation?.BoundParameters.ContainsKey("DataSourceDataImportEventHubConsumerGroup")))
+            {
+                this.DataSourceDataImportEventHubConsumerGroup = (string)(this.MyInvocation?.BoundParameters["DataSourceDataImportEventHubConsumerGroup"]);
+            }
+            if ((bool)(true == this.MyInvocation?.BoundParameters.ContainsKey("DataSourceDataImportEventHubStream")))
+            {
+                this.DataSourceDataImportEventHubStream = (string)(this.MyInvocation?.BoundParameters["DataSourceDataImportEventHubStream"]);
+            }
+        }
+
+        /// <summary>a delegate that is called when the remote service returns 201 (Created).</summary>
+        /// <param name="responseMessage">the raw response message as an global::System.Net.Http.HttpResponseMessage.</param>
+        /// <param name="response">the body result as a <see cref="Microsoft.Azure.PowerShell.Cmdlets.Monitor.DataCollection.Models.IDataCollectionRuleResource">Microsoft.Azure.PowerShell.Cmdlets.Monitor.DataCollection.Models.IDataCollectionRuleResource</see>
+        /// from the remote call</param>
+        /// <returns>
+        /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the method is completed.
+        /// </returns>
+        private async global::System.Threading.Tasks.Task onCreated(global::System.Net.Http.HttpResponseMessage responseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Monitor.DataCollection.Models.IDataCollectionRuleResource> response)
+        {
+            using( NoSynchronizationContext )
+            {
+                var _returnNow = global::System.Threading.Tasks.Task<bool>.FromResult(false);
+                overrideOnCreated(responseMessage, response, ref _returnNow);
+                // if overrideOnCreated has returned true, then return right away.
+                if ((null != _returnNow && await _returnNow))
+                {
+                    return ;
+                }
+                // onCreated - response for 201 / application/json
+                // (await response) // should be Microsoft.Azure.PowerShell.Cmdlets.Monitor.DataCollection.Models.IDataCollectionRuleResource
+                var result = (await response);
+                if (null != result)
+                {
+                    if (0 == _responseSize)
+                    {
+                        _firstResponse = result;
+                        _responseSize = 1;
+                    }
+                    else
+                    {
+                        if (1 ==_responseSize)
+                        {
+                            // Flush buffer
+                            WriteObject(_firstResponse.AddMultipleTypeNameIntoPSObject());
+                        }
+                        WriteObject(result.AddMultipleTypeNameIntoPSObject());
+                        _responseSize = 2;
+                    }
+                }
+            }
         }
 
         /// <summary>

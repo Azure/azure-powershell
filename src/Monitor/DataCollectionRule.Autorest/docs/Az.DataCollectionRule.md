@@ -90,7 +90,7 @@ Deletes an association.
 Updates part of a data collection endpoint.
 
 ### [Update-AzDataCollectionRule](Update-AzDataCollectionRule.md)
-Updates part of a data collection rule.
+Update a data collection rule.
 
 ### [Update-AzDataCollectionRuleAssociation](Update-AzDataCollectionRuleAssociation.md)
 Create an association.

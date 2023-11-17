@@ -22,10 +22,6 @@
 	</ItemGroup>
 
 	<ItemGroup>
-		<ProjectReference Include="..\Authorization.Management.Sdk\Authorization.Management.Sdk.csproj" />
-	</ItemGroup>
-	
-	<ItemGroup>
 		<ProjectReference Include="..\ResourceManager\ResourceManager.csproj" />
 	</ItemGroup>
 

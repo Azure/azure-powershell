@@ -12,7 +12,7 @@
     RootModule = 'Az.Tools.Installer.psm1'
     
     # Version number of this module.
-    ModuleVersion = '0.2.3'
+    ModuleVersion = '1.0.0'
     
     # Supported PSEditions
     CompatiblePSEditions = 'Core', 'Desktop'
@@ -109,7 +109,7 @@
             # IconUri = ''
     
             # ReleaseNotes of this module
-            ReleaseNotes = '* Fix Update-Module errors when Az modules are installed using Az.Tools.Installer [#21262]'
+            ReleaseNotes = '* General Availability of Az.Tools.Installer.'
     
             # Prerelease string of this module
             # Prerelease = ''

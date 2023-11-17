@@ -10,6 +10,7 @@ namespace Microsoft.Azure.Management.Sql.Models
     /// <summary>
     /// An update to an Instance pool.
     /// </summary>
+    [Microsoft.Rest.Serialization.JsonTransformation]
     public partial class InstancePoolUpdate
     {
         /// <summary>
@@ -24,12 +25,37 @@ namespace Microsoft.Azure.Management.Sql.Models
         /// Initializes a new instance of the InstancePoolUpdate class.
         /// </summary>
 
+        /// <param name="sku">The name and tier of the SKU.
+        /// </param>
+
         /// <param name="tags">Resource tags.
         /// </param>
-        public InstancePoolUpdate(System.Collections.Generic.IDictionary<string, string> tags = default(System.Collections.Generic.IDictionary<string, string>))
+
+        /// <param name="subnetId">Resource ID of the subnet to place this instance pool in.
+        /// </param>
+
+        /// <param name="vCores">Count of vCores belonging to this instance pool.
+        /// </param>
+
+        /// <param name="licenseType">The license type. Possible values are &#39;LicenseIncluded&#39; (price for SQL
+        /// license is included) and &#39;BasePrice&#39; (without SQL license price).
+        /// Possible values include: 'LicenseIncluded', 'BasePrice'</param>
+
+        /// <param name="dnsZone">The Dns Zone that the managed instance pool is in.
+        /// </param>
+
+        /// <param name="maintenanceConfigurationId">Specifies maintenance configuration id to apply to this managed instance.
+        /// </param>
+        public InstancePoolUpdate(Sku sku = default(Sku), System.Collections.Generic.IDictionary<string, string> tags = default(System.Collections.Generic.IDictionary<string, string>), string subnetId = default(string), int? vCores = default(int?), string licenseType = default(string), string dnsZone = default(string), string maintenanceConfigurationId = default(string))
 
         {
+            this.Sku = sku;
             this.Tags = tags;
+            this.SubnetId = subnetId;
+            this.VCores = vCores;
+            this.LicenseType = licenseType;
+            this.DnsZone = dnsZone;
+            this.MaintenanceConfigurationId = maintenanceConfigurationId;
             CustomInit();
         }
 
@@ -40,9 +66,65 @@ namespace Microsoft.Azure.Management.Sql.Models
 
 
         /// <summary>
+        /// Gets or sets the name and tier of the SKU.
+        /// </summary>
+        [Newtonsoft.Json.JsonProperty(PropertyName = "sku")]
+        public Sku Sku {get; set; }
+
+        /// <summary>
         /// Gets or sets resource tags.
         /// </summary>
         [Newtonsoft.Json.JsonProperty(PropertyName = "tags")]
         public System.Collections.Generic.IDictionary<string, string> Tags {get; set; }
+
+        /// <summary>
+        /// Gets or sets resource ID of the subnet to place this instance pool in.
+        /// </summary>
+        [Newtonsoft.Json.JsonProperty(PropertyName = "properties.subnetId")]
+        public string SubnetId {get; set; }
+
+        /// <summary>
+        /// Gets or sets count of vCores belonging to this instance pool.
+        /// </summary>
+        [Newtonsoft.Json.JsonProperty(PropertyName = "properties.vCores")]
+        public int? VCores {get; set; }
+
+        /// <summary>
+        /// Gets or sets the license type. Possible values are &#39;LicenseIncluded&#39; (price
+        /// for SQL license is included) and &#39;BasePrice&#39; (without SQL license price). Possible values include: &#39;LicenseIncluded&#39;, &#39;BasePrice&#39;
+        /// </summary>
+        [Newtonsoft.Json.JsonProperty(PropertyName = "properties.licenseType")]
+        public string LicenseType {get; set; }
+
+        /// <summary>
+        /// Gets the Dns Zone that the managed instance pool is in.
+        /// </summary>
+        [Newtonsoft.Json.JsonProperty(PropertyName = "properties.dnsZone")]
+        public string DnsZone {get; private set; }
+
+        /// <summary>
+        /// Gets or sets specifies maintenance configuration id to apply to this
+        /// managed instance.
+        /// </summary>
+        [Newtonsoft.Json.JsonProperty(PropertyName = "properties.maintenanceConfigurationId")]
+        public string MaintenanceConfigurationId {get; set; }
+        /// <summary>
+        /// Validate the object.
+        /// </summary>
+        /// <exception cref="Microsoft.Rest.ValidationException">
+        /// Thrown if validation fails
+        /// </exception>
+        public virtual void Validate()
+        {
+            if (this.Sku != null)
+            {
+                this.Sku.Validate();
+            }
+
+
+
+
+
+        }
     }
 }

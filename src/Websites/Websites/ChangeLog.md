@@ -18,6 +18,8 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
+
+## Version 3.1.2
 * Adjusted `Publish-AzWebApp` default behavior
 
 ## Version 3.1.1
