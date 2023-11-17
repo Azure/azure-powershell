@@ -655,9 +655,9 @@ namespace Microsoft.Azure.Commands.Network
                 }
 
                 vnetGateway.AutoScaleConfiguration = new PSVirtualNetworkGatewayAutoscaleConfiguration();
-                vnetGateway.AutoScaleConfiguration.ScaleUnit = new PSVirtualNetworkGatewayPropertiesAutoScaleConfigurationBounds();
-                vnetGateway.AutoScaleConfiguration.ScaleUnit.Min = Convert.ToInt32(this.MinScaleUnit);
-                vnetGateway.AutoScaleConfiguration.ScaleUnit.Max = (this.MaxScaleUnit > 0) ? Convert.ToInt32(this.MaxScaleUnit) : Convert.ToInt32(this.MinScaleUnit);    
+                vnetGateway.AutoScaleConfiguration.Bounds = new PSVirtualNetworkGatewayPropertiesAutoScaleConfigurationBounds();
+                vnetGateway.AutoScaleConfiguration.Bounds.Min = Convert.ToInt32(this.MinScaleUnit);
+                vnetGateway.AutoScaleConfiguration.Bounds.Max = (this.MaxScaleUnit > 0) ? Convert.ToInt32(this.MaxScaleUnit) : Convert.ToInt32(this.MinScaleUnit);    
             }
                 
             // Set the EnableBgpRouteTranslationForNat, if it is specified by customer.

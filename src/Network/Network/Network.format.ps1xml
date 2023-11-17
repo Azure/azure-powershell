@@ -6157,7 +6157,7 @@
             <ListItems>
               <ListItem>
                 <Label>ScaleUnit</Label>
-                <PropertyName>Range</PropertyName>
+                <PropertyName>ScaleUnitText</PropertyName>
               </ListItem>
             </ListItems>
           </ListEntry>

@@ -21,12 +21,16 @@ namespace Microsoft.Azure.Commands.Network.Models
     public class PSVirtualNetworkGatewayAutoscaleConfiguration
     {
         [Ps1Xml(Target = ViewControl.Table)]
-        public PSVirtualNetworkGatewayPropertiesAutoScaleConfigurationBounds ScaleUnit { get; set; }
+        public PSVirtualNetworkGatewayPropertiesAutoScaleConfigurationBounds Bounds { get; set; }
 
         [JsonIgnore]
-        public string Range
+        public string ScaleUnitText
         {
-            get { return JsonConvert.SerializeObject(ScaleUnit, Formatting.Indented, new JsonSerializerSettings() { NullValueHandling = NullValueHandling.Ignore }); }
+            get { return JsonConvert.SerializeObject(Bounds, Formatting.Indented, new JsonSerializerSettings() { NullValueHandling = NullValueHandling.Ignore }); }
+        }
+
+        public PSVirtualNetworkGatewayPropertiesAutoScaleConfigurationBounds ScaleUnit { 
+            get { return Bounds; } 
         }
     }
 }
