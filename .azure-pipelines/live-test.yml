@@ -39,6 +39,10 @@ parameters:
   displayName: .NET 7 SDK Version
   type: string
   default: 7.0.x
+- name: dotnet_sdk_8
+  displayName: .NET 8 SDK Version
+  type: string
+  default: 8.0.x
 
 variables:
   ArtifactsName: LiveTestArtifacts
@@ -98,7 +102,7 @@ stages:
       vmImage: ${{ parameters.os_windows_2019 }}
       osType: 'Windows'
       psVersion: ${{ parameters.ps_latest }}
-      dotnetVersion: ${{ parameters.dotnet_sdk_7 }}
+      dotnetVersion: ${{ parameters.dotnet_sdk_8 }}
 
   - template: util/live-test-steps.yml
     parameters:
@@ -122,7 +126,7 @@ stages:
       vmImage: ${{ parameters.os_windows_2022 }}
       osType: 'Windows'
       psVersion: ${{ parameters.ps_latest }}
-      dotnetVersion: ${{ parameters.dotnet_sdk_7 }}
+      dotnetVersion: ${{ parameters.dotnet_sdk_8 }}
 
   - template: util/live-test-steps.yml
     parameters:
@@ -146,7 +150,7 @@ stages:
       vmImage: ${{ parameters.os_linux }}
       osType: 'Linux'
       psVersion: ${{ parameters.ps_latest }}
-      dotnetVersion: ${{ parameters.dotnet_sdk_7 }}
+      dotnetVersion: ${{ parameters.dotnet_sdk_8 }}
 
   - template: util/live-test-steps.yml
     parameters:
@@ -170,7 +174,7 @@ stages:
       vmImage: ${{ parameters.os_macos }}
       osType: 'MacOS'
       psVersion: ${{ parameters.ps_latest }}
-      dotnetVersion: ${{ parameters.dotnet_sdk_7 }}
+      dotnetVersion: ${{ parameters.dotnet_sdk_8 }}
 
 - stage: Report
   displayName: Send Report
