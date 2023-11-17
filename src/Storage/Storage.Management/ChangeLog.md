@@ -18,7 +18,6 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
-* test ci
 
 ## Version 6.0.0
 * Supported customer initiated migration
