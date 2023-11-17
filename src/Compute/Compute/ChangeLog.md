@@ -20,6 +20,7 @@
 
 -->
 ## Upcoming Release
+* Fixed the `New-AzVM` bug to avoid accessing the `EncryptionAtHost` property for subscriptions who cannot access it since it is behind a feature flag.
 
 ## Version 7.0.0
 * Added update functionality in `Update-AzVmss` for parameters `SecurityType`, `EnableSecureBoot`, and `EnableVtpm` for the parameter set with the Put operation.
