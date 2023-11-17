@@ -20,6 +20,8 @@
 
 -->
 ## Upcoming Release
+* Added new parameter `-ElasticSanResourceId` to `New-AzSnapshotConfig` cmdlet.
+* Added new parameter `-OptimizedForFrequentAttach` to `New-AzDiskConfig` cmdlet.
 
 ## Version 7.0.0
 * Added update functionality in `Update-AzVmss` for parameters `SecurityType`, `EnableSecureBoot`, and `EnableVtpm` for the parameter set with the Put operation.
