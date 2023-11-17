@@ -19,6 +19,9 @@
 -->
 ## Upcoming Release
 
+## Version 3.3.1
+* Fixing bug in Get commands
+
 ## Version 3.3.0
 * Fixed minor issues
 
