@@ -1,0 +1,120 @@
+{
+  "Update-AzStorageMoverNfsEndpoint+[NoContext]+UpdateExpanded+$PUT+https://management.azure.com/subscriptions/45b60d85-fd72-427a-a708-f994d26e593e/resourceGroups/teststoragemover/providers/Microsoft.StorageMover/storageMovers/testStoMover1hc715gxy/endpoints/testNfsEndpoint2hc715gxy?api-version=2023-10-01+1": {
+    "Request": {
+      "Method": "PUT",
+      "RequestUri": "https://management.azure.com/subscriptions/45b60d85-fd72-427a-a708-f994d26e593e/resourceGroups/teststoragemover/providers/Microsoft.StorageMover/storageMovers/testStoMover1hc715gxy/endpoints/testNfsEndpoint2hc715gxy?api-version=2023-10-01",
+      "Content": "{\r\n  \"properties\": {\r\n    \"endpointType\": \"NfsMount\",\r\n    \"description\": \"Nfs endpoint description\",\r\n    \"host\": \"10.0.0.1\",\r\n    \"nfsVersion\": \"NFSv3\",\r\n    \"export\": \"/\"\r\n  }\r\n}",
+      "isContentBase64": false,
+      "Headers": {
+      },
+      "ContentHeaders": {
+        "Content-Type": [ "application/json" ],
+        "Content-Length": [ "181" ]
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "ETag": [ "\"2d013f48-0000-3400-0000-64ba0a050000\"" ],
+        "x-ms-ratelimit-remaining-subscription-writes": [ "1172" ],
+        "x-ms-providerhub-traffic": [ "True" ],
+        "mise-correlation-id": [ "6f4bcfa6-0d06-4481-95bb-37ccf2209480" ],
+        "x-ms-request-id": [ "914714f6-011f-4a54-bb50-7f318f03f59f" ],
+        "x-ms-correlation-request-id": [ "12df1431-eb32-42f3-8c5e-65441bd62f8b" ],
+        "x-ms-routing-request-id": [ "EASTUS2EUAP:20230721T043101Z:12df1431-eb32-42f3-8c5e-65441bd62f8b" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "Date": [ "Fri, 21 Jul 2023 04:31:01 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "730" ],
+        "Content-Type": [ "application/json; charset=utf-8" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\"id\":\"/subscriptions/45b60d85-fd72-427a-a708-f994d26e593e/resourceGroups/teststoragemover/providers/Microsoft.StorageMover/storageMovers/testStoMover1hc715gxy/endpoints/testNfsEndpoint2hc715gxy\",\"name\":\"testNfsEndpoint2hc715gxy\",\"type\":\"microsoft.storagemover/storagemovers/endpoints\",\"systemData\":{\"createdBy\":\"a000255f-5f09-45e0-a970-9d9ed9cc6453\",\"createdByType\":\"Application\",\"createdAt\":\"2023-07-21T04:31:01.6632142Z\",\"lastModifiedBy\":\"a000255f-5f09-45e0-a970-9d9ed9cc6453\",\"lastModifiedByType\":\"Application\",\"lastModifiedAt\":\"2023-07-21T04:31:01.6632142Z\"},\"properties\":{\"host\":\"10.0.0.1\",\"nfsVersion\":\"NFSv3\",\"export\":\"/\",\"endpointType\":\"NfsMount\",\"description\":\"Nfs endpoint description\",\"provisioningState\":\"Succeeded\"}}",
+      "isContentBase64": false
+    }
+  },
+  "Update-AzStorageMoverNfsEndpoint+[NoContext]+UpdateExpanded+$PATCH+https://management.azure.com/subscriptions/45b60d85-fd72-427a-a708-f994d26e593e/resourceGroups/teststoragemover/providers/Microsoft.StorageMover/storageMovers/testStoMover1hc715gxy/endpoints/testNfsEndpoint2hc715gxy?api-version=2023-10-01+2": {
+    "Request": {
+      "Method": "PATCH",
+      "RequestUri": "https://management.azure.com/subscriptions/45b60d85-fd72-427a-a708-f994d26e593e/resourceGroups/teststoragemover/providers/Microsoft.StorageMover/storageMovers/testStoMover1hc715gxy/endpoints/testNfsEndpoint2hc715gxy?api-version=2023-10-01",
+      "Content": "{\r\n  \"properties\": {\r\n    \"endpointType\": \"NfsMount\",\r\n    \"description\": \"update Nfs endpoint Description\"\r\n  }\r\n}",
+      "isContentBase64": false,
+      "Headers": {
+      },
+      "ContentHeaders": {
+        "Content-Type": [ "application/json" ],
+        "Content-Length": [ "115" ]
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "ETag": [ "\"2d014048-0000-3400-0000-64ba0a060000\"" ],
+        "x-ms-ratelimit-remaining-subscription-writes": [ "1171" ],
+        "x-ms-providerhub-traffic": [ "True" ],
+        "mise-correlation-id": [ "96c73f93-692c-4ef3-8a47-5e29f7cc6095" ],
+        "x-ms-request-id": [ "fb228d44-f6f8-4562-bd49-9cdc07c29bb2" ],
+        "x-ms-correlation-request-id": [ "fbd307d6-5245-443b-bc5f-ae1979fe8431" ],
+        "x-ms-routing-request-id": [ "EASTUS2EUAP:20230721T043102Z:fbd307d6-5245-443b-bc5f-ae1979fe8431" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "Date": [ "Fri, 21 Jul 2023 04:31:02 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "737" ],
+        "Content-Type": [ "application/json; charset=utf-8" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\"id\":\"/subscriptions/45b60d85-fd72-427a-a708-f994d26e593e/resourceGroups/teststoragemover/providers/Microsoft.StorageMover/storageMovers/testStoMover1hc715gxy/endpoints/testNfsEndpoint2hc715gxy\",\"name\":\"testNfsEndpoint2hc715gxy\",\"type\":\"microsoft.storagemover/storagemovers/endpoints\",\"systemData\":{\"createdBy\":\"a000255f-5f09-45e0-a970-9d9ed9cc6453\",\"createdByType\":\"Application\",\"createdAt\":\"2023-07-21T04:31:01.6632142Z\",\"lastModifiedBy\":\"a000255f-5f09-45e0-a970-9d9ed9cc6453\",\"lastModifiedByType\":\"Application\",\"lastModifiedAt\":\"2023-07-21T04:31:02.6788476Z\"},\"properties\":{\"host\":\"10.0.0.1\",\"nfsVersion\":\"NFSv3\",\"export\":\"/\",\"endpointType\":\"NfsMount\",\"description\":\"update Nfs endpoint Description\",\"provisioningState\":\"Succeeded\"}}",
+      "isContentBase64": false
+    }
+  },
+  "Update-AzStorageMoverNfsEndpoint+[NoContext]+UpdateExpanded+$GET+https://management.azure.com/subscriptions/45b60d85-fd72-427a-a708-f994d26e593e/resourceGroups/teststoragemover/providers/Microsoft.StorageMover/storageMovers/testStoMover1hc715gxy/endpoints/testNfsEndpoint2hc715gxy?api-version=2023-10-01+3": {
+    "Request": {
+      "Method": "GET",
+      "RequestUri": "https://management.azure.com/subscriptions/45b60d85-fd72-427a-a708-f994d26e593e/resourceGroups/teststoragemover/providers/Microsoft.StorageMover/storageMovers/testStoMover1hc715gxy/endpoints/testNfsEndpoint2hc715gxy?api-version=2023-10-01",
+      "Content": null,
+      "isContentBase64": false,
+      "Headers": {
+        "x-ms-unique-id": [ "70" ],
+        "x-ms-client-request-id": [ "de8e0f7b-17bb-4ba9-9de6-f3e8071f5c77" ],
+        "CommandName": [ "Get-AzStorageMoverEndpoint" ],
+        "FullCommandName": [ "Get-AzStorageMoverEndpoint_Get" ],
+        "ParameterSetName": [ "__AllParameterSets" ],
+        "User-Agent": [ "AzurePowershell/v0.0.0", "PSVersion/v7.2.12", "Az.StorageMover/1.0.1" ],
+        "Authorization": [ "[Filtered]" ]
+      },
+      "ContentHeaders": {
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "ETag": [ "\"2d014048-0000-3400-0000-64ba0a060000\"" ],
+        "x-ms-ratelimit-remaining-subscription-reads": [ "11965" ],
+        "x-ms-providerhub-traffic": [ "True" ],
+        "x-ms-request-id": [ "31f2f729-c959-4b97-bc83-f02c91009bf9" ],
+        "x-ms-correlation-request-id": [ "54a8f8d4-49c2-40d4-b87c-3956cd8f5225" ],
+        "x-ms-routing-request-id": [ "EASTUS2EUAP:20230721T043103Z:54a8f8d4-49c2-40d4-b87c-3956cd8f5225" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "Date": [ "Fri, 21 Jul 2023 04:31:02 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "737" ],
+        "Content-Type": [ "application/json; charset=utf-8" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\"id\":\"/subscriptions/45b60d85-fd72-427a-a708-f994d26e593e/resourceGroups/teststoragemover/providers/Microsoft.StorageMover/storageMovers/testStoMover1hc715gxy/endpoints/testNfsEndpoint2hc715gxy\",\"name\":\"testNfsEndpoint2hc715gxy\",\"type\":\"microsoft.storagemover/storagemovers/endpoints\",\"systemData\":{\"createdBy\":\"a000255f-5f09-45e0-a970-9d9ed9cc6453\",\"createdByType\":\"Application\",\"createdAt\":\"2023-07-21T04:31:01.6632142Z\",\"lastModifiedBy\":\"a000255f-5f09-45e0-a970-9d9ed9cc6453\",\"lastModifiedByType\":\"Application\",\"lastModifiedAt\":\"2023-07-21T04:31:02.6788476Z\"},\"properties\":{\"host\":\"10.0.0.1\",\"nfsVersion\":\"NFSv3\",\"export\":\"/\",\"endpointType\":\"NfsMount\",\"description\":\"update Nfs endpoint Description\",\"provisioningState\":\"Succeeded\"}}",
+      "isContentBase64": false
+    }
+  }
+}

@@ -35,6 +35,7 @@ using System.Threading;
 using Microsoft.WindowsAzure.Commands.Utilities.Common;
 using Microsoft.Azure.Commands.Common.Authentication.Utilities;
 using Microsoft.WindowsAzure.Commands.Common.Utilities;
+using Microsoft.WindowsAzure.Commands.Common;
 
 namespace Microsoft.Azure.Commands.Common.Authentication
 {
@@ -282,6 +283,8 @@ namespace Microsoft.Azure.Commands.Common.Authentication
                 () => new DefaultRecommendationService());
             session.RegisterComponent<IParameterTelemetryFormatter>(nameof(IParameterTelemetryFormatter),
                 () => new ParameterTelemetryFormatter());
+            session.RegisterComponent<IFrequencyService>(nameof(IFrequencyService),
+                () => new FrequencyService(dataStore));
             session.TokenCache = session.TokenCache ?? new AzureTokenCache();
             return session;
         }

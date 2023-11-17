@@ -155,11 +155,11 @@ namespace Microsoft.WindowsAzure.Commands.Storage.File.Cmdlet
         [Parameter(HelpMessage = "Destination Storage context object", ParameterSetName = UriFileParameterSet)]
         public IStorageContext DestContext { get; set; }
 
-        [Parameter(Mandatory = false, HelpMessage = "Disallow trailing dot (.) to suffex source directory and source file names.", ParameterSetName = ShareNameParameterSet)]
+        [Parameter(Mandatory = false, HelpMessage = "Disallow trailing dot (.) to suffix source directory and source file names.", ParameterSetName = ShareNameParameterSet)]
         public virtual SwitchParameter DisAllowSourceTrailingDot { get; set; }
 
-        [Parameter(Mandatory = false, HelpMessage = "Disallow trailing dot (.) to suffex destination directory and destination file names.", ParameterSetName = ContainerNameParameterSet)]
-        [Parameter(Mandatory = false, HelpMessage = "Disallow trailing dot (.) to suffex destination directory and destination file names.", ParameterSetName = ShareNameParameterSet)]
+        [Parameter(Mandatory = false, HelpMessage = "Disallow trailing dot (.) to suffix destination directory and destination file names.", ParameterSetName = ContainerNameParameterSet)]
+        [Parameter(Mandatory = false, HelpMessage = "Disallow trailing dot (.) to suffix destination directory and destination file names.", ParameterSetName = ShareNameParameterSet)]
         public virtual SwitchParameter DisAllowDestTrailingDot { get; set; }
 
         // Overwrite the useless parameter

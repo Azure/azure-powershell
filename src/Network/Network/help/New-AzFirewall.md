@@ -166,7 +166,7 @@ New-AzFirewall -Name "azFw" -ResourceGroupName $rgName -Location centralus -SkuN
 
 This example creates a Firewall attached to virtual hub "vHub". A firewall policy $fp will be attached to the firewall. This firewall allows/denies the traffic based on the rules mentioned in the firewall policy $fp. The virtual hub and the firewall should be in the same regions.
 
-### Example 10: Create a Firewall with threat intelligence whitelist setup
+### Example 10: Create a Firewall with threat intelligence allowlist setup
 ```powershell
 $rgName = "resourceGroupName"
 $vnet = Get-AzVirtualNetwork -ResourceGroupName $rgName -Name "vnet"
@@ -176,7 +176,7 @@ $tiWhitelist = New-AzFirewallThreatIntelWhitelist -FQDN @("www.microsoft.com") -
 New-AzFirewall -Name "azFw" -ResourceGroupName $rgName -Location centralus -VirtualNetwork $vnet -PublicIpAddress $pip -ThreatIntelWhitelist $tiWhitelist
 ```
 
-This example creates a Firewall that whitelist "www.microsoft.com" and "8.8.8.8" from threat intelligence
+This example creates a Firewall that allowlists "www.microsoft.com" and "8.8.8.8" from threat intelligence
 
 ### Example 11: Create a Firewall with customized private range setup
 ```powershell
@@ -649,7 +649,7 @@ Accept wildcard characters: False
 ```
 
 ### -ThreatIntelWhitelist
-The whitelist for Threat Intelligence
+The allowlist for Threat Intelligence
 
 ```yaml
 Type: Microsoft.Azure.Commands.Network.Models.PSAzureFirewallThreatIntelWhitelist

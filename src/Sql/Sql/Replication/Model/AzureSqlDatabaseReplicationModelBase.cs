@@ -71,5 +71,10 @@ namespace Microsoft.Azure.Commands.Sql.Replication.Model
         /// Gets or sets a federated client id to use in xtcmk scenario
         /// </summary>
         public Guid? FederatedClientId { get; set; }
+
+        /// <summary>
+        /// Gets or sets the value of AKV key auto rotation flag.
+        /// </summary>
+        public bool? EncryptionProtectorAutoRotation { get; set; }
     }
 }

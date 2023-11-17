@@ -1,0 +1,95 @@
+{
+  "resourceType": "trafficControllers/frontends",
+  "apiVersion": "2023-05-01-preview",
+  "learnMore": {
+    "url": "https://learn.microsoft.com/powershell/module/az.alb"
+  },
+  "commands": [
+    {
+      "name": "Get-AzAlbFrontend",
+      "description": "Get a Frontend",
+      "path": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ServiceNetworking/trafficControllers/{trafficControllerName}/frontends/{frontendName}",
+      "help": {
+        "learnMore": {
+          "url": "https://learn.microsoft.com/powershell/module/az.alb/get-azalbfrontend"
+        },
+        "parameterSets": [
+          {
+            "parameters": [
+              "-AlbName <String>",
+              "-Name <String>",
+              "-ResourceGroupName <String>",
+              "[-SubscriptionId <String[]>]"
+            ]
+          }
+        ]
+      },
+      "examples": [
+        {
+          "description": "Get a Frontend",
+          "parameters": [
+            {
+              "name": "-AlbName",
+              "value": "[Path.trafficControllerName]"
+            },
+            {
+              "name": "-Name",
+              "value": "[Path.frontendName]"
+            },
+            {
+              "name": "-ResourceGroupName",
+              "value": "[Path.resourceGroupName]"
+            },
+            {
+              "name": "-SubscriptionId",
+              "value": "[Path.subscriptionId]"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Remove-AzAlbFrontend",
+      "description": "Delete a Frontend",
+      "path": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ServiceNetworking/trafficControllers/{trafficControllerName}/frontends/{frontendName}",
+      "help": {
+        "learnMore": {
+          "url": "https://learn.microsoft.com/powershell/module/az.alb/remove-azalbfrontend"
+        },
+        "parameterSets": [
+          {
+            "parameters": [
+              "-AlbName <String>",
+              "-Name <String>",
+              "-ResourceGroupName <String>",
+              "[-SubscriptionId <String>]"
+            ]
+          }
+        ]
+      },
+      "examples": [
+        {
+          "description": "Delete a Frontend",
+          "parameters": [
+            {
+              "name": "-AlbName",
+              "value": "[Path.trafficControllerName]"
+            },
+            {
+              "name": "-Name",
+              "value": "[Path.frontendName]"
+            },
+            {
+              "name": "-ResourceGroupName",
+              "value": "[Path.resourceGroupName]"
+            },
+            {
+              "name": "-SubscriptionId",
+              "value": "[Path.subscriptionId]"
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

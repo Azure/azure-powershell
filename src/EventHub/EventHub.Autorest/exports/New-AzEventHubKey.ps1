@@ -25,12 +25,12 @@ New-AzEventHubKey -ResourceGroupName myResourceGroup -NamespaceName myNamespace 
 New-AzEventHubKey -ResourceGroupName myResourceGroup -NamespaceName myNamespace -EventHubName myEventHub -Name rootmanagesharedaccesskey -KeyType SecondaryKey
 
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.EventHub.Models.Api20221001Preview.IAccessKeys
+Microsoft.Azure.PowerShell.Cmdlets.EventHub.Models.Api202301Preview.IAccessKeys
 .Link
 https://learn.microsoft.com/powershell/module/az.eventhub/new-azeventhubkey
 #>
 function New-AzEventHubKey {
-[OutputType([Microsoft.Azure.PowerShell.Cmdlets.EventHub.Models.Api20221001Preview.IAccessKeys])]
+[OutputType([Microsoft.Azure.PowerShell.Cmdlets.EventHub.Models.Api202301Preview.IAccessKeys])]
 [CmdletBinding(DefaultParameterSetName='NewExpandedNamespace', PositionalBinding=$false, SupportsShouldProcess, ConfirmImpact='Medium')]
 param(
     [Parameter(Mandatory)]
@@ -173,6 +173,10 @@ begin {
         }
         $cmdInfo = Get-Command -Name $mapping[$parameterSet]
         [Microsoft.Azure.PowerShell.Cmdlets.EventHub.Runtime.MessageAttributeHelper]::ProcessCustomAttributesAtRuntime($cmdInfo, $MyInvocation, $parameterSet, $PSCmdlet)
+        if ($null -ne $MyInvocation.MyCommand -and [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PromptedPreviewMessageCmdlets -notcontains $MyInvocation.MyCommand.Name -and [Microsoft.Azure.PowerShell.Cmdlets.EventHub.Runtime.MessageAttributeHelper]::ContainsPreviewAttribute($cmdInfo, $MyInvocation)){
+            [Microsoft.Azure.PowerShell.Cmdlets.EventHub.Runtime.MessageAttributeHelper]::ProcessPreviewMessageAttributesAtRuntime($cmdInfo, $MyInvocation, $parameterSet, $PSCmdlet)
+            [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PromptedPreviewMessageCmdlets.Enqueue($MyInvocation.MyCommand.Name)
+        }
         $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Cmdlet)
         $scriptCmd = {& $wrappedCmd @PSBoundParameters}
         $steppablePipeline = $scriptCmd.GetSteppablePipeline($MyInvocation.CommandOrigin)

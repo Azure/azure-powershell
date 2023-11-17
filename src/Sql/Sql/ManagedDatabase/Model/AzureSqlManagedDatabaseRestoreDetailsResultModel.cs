@@ -153,9 +153,9 @@ namespace Microsoft.Azure.Commands.Sql.ManagedDatabase.Model
             LastRestoredFileName = result.LastRestoredFileName;
             LastRestoredFileTime = result.LastRestoredFileTime.ToString();
             PercentCompleted = result.PercentCompleted ?? -1;
-            Type = result.ManagedDatabaseRestoreDetailsResultType;
-            CurrentRestoredSizeMB = result.CurrentRestoredSizeMB;
-            CurrentRestorePlanSizeMB = result.CurrentRestorePlanSizeMB;
+            Type = result.Type;
+            CurrentRestoredSizeMB = result.CurrentRestoredSizeMb;
+            CurrentRestorePlanSizeMB = result.CurrentRestorePlanSizeMb;
             CurrentBackupType = result.CurrentBackupType;
             NumberOfFilesQueued = result.NumberOfFilesQueued;
             NumberOfFilesSkipped = result.NumberOfFilesSkipped;

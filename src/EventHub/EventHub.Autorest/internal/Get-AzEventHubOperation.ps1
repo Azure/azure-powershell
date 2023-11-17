@@ -25,12 +25,12 @@ Lists all of the available Event Hub REST API operations.
 {{ Add code here }}
 
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.EventHub.Models.Api20221001Preview.IOperation
+Microsoft.Azure.PowerShell.Cmdlets.EventHub.Models.Api202301Preview.IOperation
 .Link
 https://learn.microsoft.com/powershell/module/az.eventhub/get-azeventhuboperation
 #>
 function Get-AzEventHubOperation {
-[OutputType([Microsoft.Azure.PowerShell.Cmdlets.EventHub.Models.Api20221001Preview.IOperation])]
+[OutputType([Microsoft.Azure.PowerShell.Cmdlets.EventHub.Models.Api202301Preview.IOperation])]
 [CmdletBinding(DefaultParameterSetName='List', PositionalBinding=$false)]
 param(
     [Parameter()]

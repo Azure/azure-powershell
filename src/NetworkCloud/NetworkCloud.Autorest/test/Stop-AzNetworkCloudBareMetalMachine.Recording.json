@@ -1,0 +1,467 @@
+{
+  "Stop-AzNetworkCloudBareMetalMachine+[NoContext]+PowerOff+$POST+https://management.azure.com/subscriptions/a3eeb848-665a-4dbf-80a4-eb460930fb23/resourceGroups/simulator-HostedResources-1493033C/providers/Microsoft.NetworkCloud/bareMetalMachines/rack1compute02/powerOff?api-version=2023-07-01+1": {
+    "Request": {
+      "Method": "POST",
+      "RequestUri": "https://management.azure.com/subscriptions/a3eeb848-665a-4dbf-80a4-eb460930fb23/resourceGroups/simulator-HostedResources-1493033C/providers/Microsoft.NetworkCloud/bareMetalMachines/rack1compute02/powerOff?api-version=2023-07-01",
+      "Content": "{\n}",
+      "isContentBase64": false,
+      "Headers": {
+      },
+      "ContentHeaders": {
+        "Content-Type": [ "application/json" ],
+        "Content-Length": [ "3" ]
+      }
+    },
+    "Response": {
+      "StatusCode": 202,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "Location": [ "https://management.azure.com/subscriptions/a3eeb848-665a-4dbf-80a4-eb460930fb23/providers/Microsoft.NetworkCloud/locations/EASTUS/operationStatuses/f24932bb-a8a3-4578-adc6-e85c2c704ef6*EF43F96D82FF690FBEFC22F2F42C0126D380BC968C77CCD0FDC691AA8DB385E7?api-version=2023-07-01" ],
+        "x-ms-ratelimit-remaining-subscription-writes": [ "1199" ],
+        "x-ms-providerhub-traffic": [ "True" ],
+        "mise-correlation-id": [ "80ae7c78-3b98-48f5-a49c-3afffc9993cd" ],
+        "x-ms-request-id": [ "00000000-0000-0000-0000-000000000000" ],
+        "Azure-AsyncOperation": [ "https://management.azure.com/subscriptions/a3eeb848-665a-4dbf-80a4-eb460930fb23/providers/Microsoft.NetworkCloud/locations/EASTUS/operationStatuses/f24932bb-a8a3-4578-adc6-e85c2c704ef6*EF43F96D82FF690FBEFC22F2F42C0126D380BC968C77CCD0FDC691AA8DB385E7?api-version=2023-07-01" ],
+        "x-ms-correlation-request-id": [ "8f6f3a75-8a1d-4b7e-9d25-841587d3c754" ],
+        "x-ms-routing-request-id": [ "EASTUS:20230731T223926Z:8f6f3a75-8a1d-4b7e-9d25-841587d3c754" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "Date": [ "Mon, 31 Jul 2023 22:39:25 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "4" ],
+        "Content-Type": [ "application/json; charset=utf-8" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "bnVsbA==",
+      "isContentBase64": false
+    }
+  },
+  "Stop-AzNetworkCloudBareMetalMachine+[NoContext]+PowerOff+$GET+https://management.azure.com/subscriptions/a3eeb848-665a-4dbf-80a4-eb460930fb23/providers/Microsoft.NetworkCloud/locations/EASTUS/operationStatuses/f24932bb-a8a3-4578-adc6-e85c2c704ef6*EF43F96D82FF690FBEFC22F2F42C0126D380BC968C77CCD0FDC691AA8DB385E7?api-version=2023-07-01+2": {
+    "Request": {
+      "Method": "GET",
+      "RequestUri": "https://management.azure.com/subscriptions/a3eeb848-665a-4dbf-80a4-eb460930fb23/providers/Microsoft.NetworkCloud/locations/EASTUS/operationStatuses/f24932bb-a8a3-4578-adc6-e85c2c704ef6*EF43F96D82FF690FBEFC22F2F42C0126D380BC968C77CCD0FDC691AA8DB385E7?api-version=2023-07-01",
+      "Content": null,
+      "isContentBase64": false,
+      "Headers": {
+        "Authorization": [ "[Filtered]" ],
+        "x-ms-unique-id": [ "5" ],
+        "x-ms-client-request-id": [ "550de02b-e2ab-40c2-b20e-2dea97fe0b89" ],
+        "CommandName": [ "Stop-AzNetworkCloudBareMetalMachine" ],
+        "FullCommandName": [ "Stop-AzNetworkCloudBareMetalMachine_PowerOff" ],
+        "ParameterSetName": [ "__AllParameterSets" ],
+        "User-Agent": [ "AzurePowershell/v0.0.0", "PSVersion/v7.3.4", "Az.NetworkCloud/0.1.0" ]
+      },
+      "ContentHeaders": {
+      }
+    },
+    "Response": {
+      "StatusCode": 202,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "ETag": [ "\"2209eafb-0000-0100-0000-64c838220000\"" ],
+        "Location": [ "https://management.azure.com/subscriptions/a3eeb848-665a-4dbf-80a4-eb460930fb23/providers/Microsoft.NetworkCloud/locations/eastus/operationStatuses/f24932bb-a8a3-4578-adc6-e85c2c704ef6*EF43F96D82FF690FBEFC22F2F42C0126D380BC968C77CCD0FDC691AA8DB385E7?api-version=2023-07-01" ],
+        "x-ms-ratelimit-remaining-subscription-reads": [ "11995" ],
+        "Azure-AsyncOperation": [ "https://management.azure.com/subscriptions/a3eeb848-665a-4dbf-80a4-eb460930fb23/providers/Microsoft.NetworkCloud/locations/eastus/operationStatuses/f24932bb-a8a3-4578-adc6-e85c2c704ef6*EF43F96D82FF690FBEFC22F2F42C0126D380BC968C77CCD0FDC691AA8DB385E7?api-version=2023-07-01" ],
+        "x-ms-request-id": [ "c770fc51-d641-4d4f-a9c2-e76a0853b0b8" ],
+        "x-ms-correlation-request-id": [ "709d9408-9e1d-4572-93fd-16c551022da9" ],
+        "x-ms-routing-request-id": [ "EASTUS:20230731T223956Z:709d9408-9e1d-4572-93fd-16c551022da9" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "Date": [ "Mon, 31 Jul 2023 22:39:55 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "587" ],
+        "Content-Type": [ "application/json; charset=utf-8" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\"id\":\"/subscriptions/a3eeb848-665a-4dbf-80a4-eb460930fb23/providers/Microsoft.NetworkCloud/locations/EASTUS/operationStatuses/f24932bb-a8a3-4578-adc6-e85c2c704ef6*EF43F96D82FF690FBEFC22F2F42C0126D380BC968C77CCD0FDC691AA8DB385E7\",\"name\":\"f24932bb-a8a3-4578-adc6-e85c2c704ef6*EF43F96D82FF690FBEFC22F2F42C0126D380BC968C77CCD0FDC691AA8DB385E7\",\"resourceId\":\"/subscriptions/a3eeb848-665a-4dbf-80a4-eb460930fb23/resourceGroups/simulator-HostedResources-1493033C/providers/Microsoft.NetworkCloud/bareMetalMachines/rack1compute02\",\"status\":\"Accepted\",\"startTime\":\"2023-07-31T22:39:24.9801187Z\"}",
+      "isContentBase64": false
+    }
+  },
+  "Stop-AzNetworkCloudBareMetalMachine+[NoContext]+PowerOff+$GET+https://management.azure.com/subscriptions/a3eeb848-665a-4dbf-80a4-eb460930fb23/providers/Microsoft.NetworkCloud/locations/eastus/operationStatuses/f24932bb-a8a3-4578-adc6-e85c2c704ef6*EF43F96D82FF690FBEFC22F2F42C0126D380BC968C77CCD0FDC691AA8DB385E7?api-version=2023-07-01+3": {
+    "Request": {
+      "Method": "GET",
+      "RequestUri": "https://management.azure.com/subscriptions/a3eeb848-665a-4dbf-80a4-eb460930fb23/providers/Microsoft.NetworkCloud/locations/eastus/operationStatuses/f24932bb-a8a3-4578-adc6-e85c2c704ef6*EF43F96D82FF690FBEFC22F2F42C0126D380BC968C77CCD0FDC691AA8DB385E7?api-version=2023-07-01",
+      "Content": null,
+      "isContentBase64": false,
+      "Headers": {
+        "Authorization": [ "[Filtered]" ],
+        "x-ms-unique-id": [ "6" ],
+        "x-ms-client-request-id": [ "550de02b-e2ab-40c2-b20e-2dea97fe0b89" ],
+        "CommandName": [ "Stop-AzNetworkCloudBareMetalMachine" ],
+        "FullCommandName": [ "Stop-AzNetworkCloudBareMetalMachine_PowerOff" ],
+        "ParameterSetName": [ "__AllParameterSets" ],
+        "User-Agent": [ "AzurePowershell/v0.0.0", "PSVersion/v7.3.4", "Az.NetworkCloud/0.1.0" ]
+      },
+      "ContentHeaders": {
+      }
+    },
+    "Response": {
+      "StatusCode": 202,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "ETag": [ "\"2209eafb-0000-0100-0000-64c838220000\"" ],
+        "Location": [ "https://management.azure.com/subscriptions/a3eeb848-665a-4dbf-80a4-eb460930fb23/providers/Microsoft.NetworkCloud/locations/eastus/operationStatuses/f24932bb-a8a3-4578-adc6-e85c2c704ef6*EF43F96D82FF690FBEFC22F2F42C0126D380BC968C77CCD0FDC691AA8DB385E7?api-version=2023-07-01" ],
+        "x-ms-ratelimit-remaining-subscription-reads": [ "11994" ],
+        "Azure-AsyncOperation": [ "https://management.azure.com/subscriptions/a3eeb848-665a-4dbf-80a4-eb460930fb23/providers/Microsoft.NetworkCloud/locations/eastus/operationStatuses/f24932bb-a8a3-4578-adc6-e85c2c704ef6*EF43F96D82FF690FBEFC22F2F42C0126D380BC968C77CCD0FDC691AA8DB385E7?api-version=2023-07-01" ],
+        "x-ms-request-id": [ "ddd6c058-9677-4fb1-9589-49bfd6db3092" ],
+        "x-ms-correlation-request-id": [ "5a7dc023-baee-4e75-bd29-ab3b65b2a5c4" ],
+        "x-ms-routing-request-id": [ "EASTUS:20230731T224026Z:5a7dc023-baee-4e75-bd29-ab3b65b2a5c4" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "Date": [ "Mon, 31 Jul 2023 22:40:25 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "587" ],
+        "Content-Type": [ "application/json; charset=utf-8" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\"id\":\"/subscriptions/a3eeb848-665a-4dbf-80a4-eb460930fb23/providers/Microsoft.NetworkCloud/locations/eastus/operationStatuses/f24932bb-a8a3-4578-adc6-e85c2c704ef6*EF43F96D82FF690FBEFC22F2F42C0126D380BC968C77CCD0FDC691AA8DB385E7\",\"name\":\"f24932bb-a8a3-4578-adc6-e85c2c704ef6*EF43F96D82FF690FBEFC22F2F42C0126D380BC968C77CCD0FDC691AA8DB385E7\",\"resourceId\":\"/subscriptions/a3eeb848-665a-4dbf-80a4-eb460930fb23/resourceGroups/simulator-HostedResources-1493033C/providers/Microsoft.NetworkCloud/bareMetalMachines/rack1compute02\",\"status\":\"Accepted\",\"startTime\":\"2023-07-31T22:39:24.9801187Z\"}",
+      "isContentBase64": false
+    }
+  },
+  "Stop-AzNetworkCloudBareMetalMachine+[NoContext]+PowerOff+$GET+https://management.azure.com/subscriptions/a3eeb848-665a-4dbf-80a4-eb460930fb23/providers/Microsoft.NetworkCloud/locations/eastus/operationStatuses/f24932bb-a8a3-4578-adc6-e85c2c704ef6*EF43F96D82FF690FBEFC22F2F42C0126D380BC968C77CCD0FDC691AA8DB385E7?api-version=2023-07-01+4": {
+    "Request": {
+      "Method": "GET",
+      "RequestUri": "https://management.azure.com/subscriptions/a3eeb848-665a-4dbf-80a4-eb460930fb23/providers/Microsoft.NetworkCloud/locations/eastus/operationStatuses/f24932bb-a8a3-4578-adc6-e85c2c704ef6*EF43F96D82FF690FBEFC22F2F42C0126D380BC968C77CCD0FDC691AA8DB385E7?api-version=2023-07-01",
+      "Content": null,
+      "isContentBase64": false,
+      "Headers": {
+        "Authorization": [ "[Filtered]" ],
+        "x-ms-unique-id": [ "7" ],
+        "x-ms-client-request-id": [ "550de02b-e2ab-40c2-b20e-2dea97fe0b89" ],
+        "CommandName": [ "Stop-AzNetworkCloudBareMetalMachine" ],
+        "FullCommandName": [ "Stop-AzNetworkCloudBareMetalMachine_PowerOff" ],
+        "ParameterSetName": [ "__AllParameterSets" ],
+        "User-Agent": [ "AzurePowershell/v0.0.0", "PSVersion/v7.3.4", "Az.NetworkCloud/0.1.0" ]
+      },
+      "ContentHeaders": {
+      }
+    },
+    "Response": {
+      "StatusCode": 202,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "ETag": [ "\"2209eafb-0000-0100-0000-64c838220000\"" ],
+        "Location": [ "https://management.azure.com/subscriptions/a3eeb848-665a-4dbf-80a4-eb460930fb23/providers/Microsoft.NetworkCloud/locations/eastus/operationStatuses/f24932bb-a8a3-4578-adc6-e85c2c704ef6*EF43F96D82FF690FBEFC22F2F42C0126D380BC968C77CCD0FDC691AA8DB385E7?api-version=2023-07-01" ],
+        "x-ms-ratelimit-remaining-subscription-reads": [ "11993" ],
+        "Azure-AsyncOperation": [ "https://management.azure.com/subscriptions/a3eeb848-665a-4dbf-80a4-eb460930fb23/providers/Microsoft.NetworkCloud/locations/eastus/operationStatuses/f24932bb-a8a3-4578-adc6-e85c2c704ef6*EF43F96D82FF690FBEFC22F2F42C0126D380BC968C77CCD0FDC691AA8DB385E7?api-version=2023-07-01" ],
+        "x-ms-request-id": [ "53dd2419-832b-4de4-8588-dc53d4ff42ef" ],
+        "x-ms-correlation-request-id": [ "34696447-626e-4bad-859e-7649fc560711" ],
+        "x-ms-routing-request-id": [ "EASTUS:20230731T224056Z:34696447-626e-4bad-859e-7649fc560711" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "Date": [ "Mon, 31 Jul 2023 22:40:55 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "587" ],
+        "Content-Type": [ "application/json; charset=utf-8" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\"id\":\"/subscriptions/a3eeb848-665a-4dbf-80a4-eb460930fb23/providers/Microsoft.NetworkCloud/locations/eastus/operationStatuses/f24932bb-a8a3-4578-adc6-e85c2c704ef6*EF43F96D82FF690FBEFC22F2F42C0126D380BC968C77CCD0FDC691AA8DB385E7\",\"name\":\"f24932bb-a8a3-4578-adc6-e85c2c704ef6*EF43F96D82FF690FBEFC22F2F42C0126D380BC968C77CCD0FDC691AA8DB385E7\",\"resourceId\":\"/subscriptions/a3eeb848-665a-4dbf-80a4-eb460930fb23/resourceGroups/simulator-HostedResources-1493033C/providers/Microsoft.NetworkCloud/bareMetalMachines/rack1compute02\",\"status\":\"Accepted\",\"startTime\":\"2023-07-31T22:39:24.9801187Z\"}",
+      "isContentBase64": false
+    }
+  },
+  "Stop-AzNetworkCloudBareMetalMachine+[NoContext]+PowerOff+$GET+https://management.azure.com/subscriptions/a3eeb848-665a-4dbf-80a4-eb460930fb23/providers/Microsoft.NetworkCloud/locations/eastus/operationStatuses/f24932bb-a8a3-4578-adc6-e85c2c704ef6*EF43F96D82FF690FBEFC22F2F42C0126D380BC968C77CCD0FDC691AA8DB385E7?api-version=2023-07-01+5": {
+    "Request": {
+      "Method": "GET",
+      "RequestUri": "https://management.azure.com/subscriptions/a3eeb848-665a-4dbf-80a4-eb460930fb23/providers/Microsoft.NetworkCloud/locations/eastus/operationStatuses/f24932bb-a8a3-4578-adc6-e85c2c704ef6*EF43F96D82FF690FBEFC22F2F42C0126D380BC968C77CCD0FDC691AA8DB385E7?api-version=2023-07-01",
+      "Content": null,
+      "isContentBase64": false,
+      "Headers": {
+        "Authorization": [ "[Filtered]" ],
+        "x-ms-unique-id": [ "8" ],
+        "x-ms-client-request-id": [ "550de02b-e2ab-40c2-b20e-2dea97fe0b89" ],
+        "CommandName": [ "Stop-AzNetworkCloudBareMetalMachine" ],
+        "FullCommandName": [ "Stop-AzNetworkCloudBareMetalMachine_PowerOff" ],
+        "ParameterSetName": [ "__AllParameterSets" ],
+        "User-Agent": [ "AzurePowershell/v0.0.0", "PSVersion/v7.3.4", "Az.NetworkCloud/0.1.0" ]
+      },
+      "ContentHeaders": {
+      }
+    },
+    "Response": {
+      "StatusCode": 202,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "ETag": [ "\"2209eafb-0000-0100-0000-64c838220000\"" ],
+        "Location": [ "https://management.azure.com/subscriptions/a3eeb848-665a-4dbf-80a4-eb460930fb23/providers/Microsoft.NetworkCloud/locations/eastus/operationStatuses/f24932bb-a8a3-4578-adc6-e85c2c704ef6*EF43F96D82FF690FBEFC22F2F42C0126D380BC968C77CCD0FDC691AA8DB385E7?api-version=2023-07-01" ],
+        "x-ms-ratelimit-remaining-subscription-reads": [ "11992" ],
+        "Azure-AsyncOperation": [ "https://management.azure.com/subscriptions/a3eeb848-665a-4dbf-80a4-eb460930fb23/providers/Microsoft.NetworkCloud/locations/eastus/operationStatuses/f24932bb-a8a3-4578-adc6-e85c2c704ef6*EF43F96D82FF690FBEFC22F2F42C0126D380BC968C77CCD0FDC691AA8DB385E7?api-version=2023-07-01" ],
+        "x-ms-request-id": [ "17255927-777c-4fa5-b2d4-87ba6f7794f9" ],
+        "x-ms-correlation-request-id": [ "e018958c-68e4-4f6e-aa68-ebcdea9e7cf0" ],
+        "x-ms-routing-request-id": [ "EASTUS:20230731T224126Z:e018958c-68e4-4f6e-aa68-ebcdea9e7cf0" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "Date": [ "Mon, 31 Jul 2023 22:41:25 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "587" ],
+        "Content-Type": [ "application/json; charset=utf-8" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\"id\":\"/subscriptions/a3eeb848-665a-4dbf-80a4-eb460930fb23/providers/Microsoft.NetworkCloud/locations/eastus/operationStatuses/f24932bb-a8a3-4578-adc6-e85c2c704ef6*EF43F96D82FF690FBEFC22F2F42C0126D380BC968C77CCD0FDC691AA8DB385E7\",\"name\":\"f24932bb-a8a3-4578-adc6-e85c2c704ef6*EF43F96D82FF690FBEFC22F2F42C0126D380BC968C77CCD0FDC691AA8DB385E7\",\"resourceId\":\"/subscriptions/a3eeb848-665a-4dbf-80a4-eb460930fb23/resourceGroups/simulator-HostedResources-1493033C/providers/Microsoft.NetworkCloud/bareMetalMachines/rack1compute02\",\"status\":\"Accepted\",\"startTime\":\"2023-07-31T22:39:24.9801187Z\"}",
+      "isContentBase64": false
+    }
+  },
+  "Stop-AzNetworkCloudBareMetalMachine+[NoContext]+PowerOff+$GET+https://management.azure.com/subscriptions/a3eeb848-665a-4dbf-80a4-eb460930fb23/providers/Microsoft.NetworkCloud/locations/eastus/operationStatuses/f24932bb-a8a3-4578-adc6-e85c2c704ef6*EF43F96D82FF690FBEFC22F2F42C0126D380BC968C77CCD0FDC691AA8DB385E7?api-version=2023-07-01+6": {
+    "Request": {
+      "Method": "GET",
+      "RequestUri": "https://management.azure.com/subscriptions/a3eeb848-665a-4dbf-80a4-eb460930fb23/providers/Microsoft.NetworkCloud/locations/eastus/operationStatuses/f24932bb-a8a3-4578-adc6-e85c2c704ef6*EF43F96D82FF690FBEFC22F2F42C0126D380BC968C77CCD0FDC691AA8DB385E7?api-version=2023-07-01",
+      "Content": null,
+      "isContentBase64": false,
+      "Headers": {
+        "Authorization": [ "[Filtered]" ],
+        "x-ms-unique-id": [ "9" ],
+        "x-ms-client-request-id": [ "550de02b-e2ab-40c2-b20e-2dea97fe0b89" ],
+        "CommandName": [ "Stop-AzNetworkCloudBareMetalMachine" ],
+        "FullCommandName": [ "Stop-AzNetworkCloudBareMetalMachine_PowerOff" ],
+        "ParameterSetName": [ "__AllParameterSets" ],
+        "User-Agent": [ "AzurePowershell/v0.0.0", "PSVersion/v7.3.4", "Az.NetworkCloud/0.1.0" ]
+      },
+      "ContentHeaders": {
+      }
+    },
+    "Response": {
+      "StatusCode": 202,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "ETag": [ "\"2209eafb-0000-0100-0000-64c838220000\"" ],
+        "Location": [ "https://management.azure.com/subscriptions/a3eeb848-665a-4dbf-80a4-eb460930fb23/providers/Microsoft.NetworkCloud/locations/eastus/operationStatuses/f24932bb-a8a3-4578-adc6-e85c2c704ef6*EF43F96D82FF690FBEFC22F2F42C0126D380BC968C77CCD0FDC691AA8DB385E7?api-version=2023-07-01" ],
+        "x-ms-ratelimit-remaining-subscription-reads": [ "11991" ],
+        "Azure-AsyncOperation": [ "https://management.azure.com/subscriptions/a3eeb848-665a-4dbf-80a4-eb460930fb23/providers/Microsoft.NetworkCloud/locations/eastus/operationStatuses/f24932bb-a8a3-4578-adc6-e85c2c704ef6*EF43F96D82FF690FBEFC22F2F42C0126D380BC968C77CCD0FDC691AA8DB385E7?api-version=2023-07-01" ],
+        "x-ms-request-id": [ "e3336d25-4c47-4885-ac7c-1edfb56179cb" ],
+        "x-ms-correlation-request-id": [ "f35f2222-1c6a-4d49-a11d-4ebf673b3158" ],
+        "x-ms-routing-request-id": [ "EASTUS:20230731T224156Z:f35f2222-1c6a-4d49-a11d-4ebf673b3158" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "Date": [ "Mon, 31 Jul 2023 22:41:55 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "587" ],
+        "Content-Type": [ "application/json; charset=utf-8" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\"id\":\"/subscriptions/a3eeb848-665a-4dbf-80a4-eb460930fb23/providers/Microsoft.NetworkCloud/locations/eastus/operationStatuses/f24932bb-a8a3-4578-adc6-e85c2c704ef6*EF43F96D82FF690FBEFC22F2F42C0126D380BC968C77CCD0FDC691AA8DB385E7\",\"name\":\"f24932bb-a8a3-4578-adc6-e85c2c704ef6*EF43F96D82FF690FBEFC22F2F42C0126D380BC968C77CCD0FDC691AA8DB385E7\",\"resourceId\":\"/subscriptions/a3eeb848-665a-4dbf-80a4-eb460930fb23/resourceGroups/simulator-HostedResources-1493033C/providers/Microsoft.NetworkCloud/bareMetalMachines/rack1compute02\",\"status\":\"Accepted\",\"startTime\":\"2023-07-31T22:39:24.9801187Z\"}",
+      "isContentBase64": false
+    }
+  },
+  "Stop-AzNetworkCloudBareMetalMachine+[NoContext]+PowerOff+$GET+https://management.azure.com/subscriptions/a3eeb848-665a-4dbf-80a4-eb460930fb23/providers/Microsoft.NetworkCloud/locations/eastus/operationStatuses/f24932bb-a8a3-4578-adc6-e85c2c704ef6*EF43F96D82FF690FBEFC22F2F42C0126D380BC968C77CCD0FDC691AA8DB385E7?api-version=2023-07-01+7": {
+    "Request": {
+      "Method": "GET",
+      "RequestUri": "https://management.azure.com/subscriptions/a3eeb848-665a-4dbf-80a4-eb460930fb23/providers/Microsoft.NetworkCloud/locations/eastus/operationStatuses/f24932bb-a8a3-4578-adc6-e85c2c704ef6*EF43F96D82FF690FBEFC22F2F42C0126D380BC968C77CCD0FDC691AA8DB385E7?api-version=2023-07-01",
+      "Content": null,
+      "isContentBase64": false,
+      "Headers": {
+        "Authorization": [ "[Filtered]" ],
+        "x-ms-unique-id": [ "10" ],
+        "x-ms-client-request-id": [ "550de02b-e2ab-40c2-b20e-2dea97fe0b89" ],
+        "CommandName": [ "Stop-AzNetworkCloudBareMetalMachine" ],
+        "FullCommandName": [ "Stop-AzNetworkCloudBareMetalMachine_PowerOff" ],
+        "ParameterSetName": [ "__AllParameterSets" ],
+        "User-Agent": [ "AzurePowershell/v0.0.0", "PSVersion/v7.3.4", "Az.NetworkCloud/0.1.0" ]
+      },
+      "ContentHeaders": {
+      }
+    },
+    "Response": {
+      "StatusCode": 202,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "ETag": [ "\"2209eafb-0000-0100-0000-64c838220000\"" ],
+        "Location": [ "https://management.azure.com/subscriptions/a3eeb848-665a-4dbf-80a4-eb460930fb23/providers/Microsoft.NetworkCloud/locations/eastus/operationStatuses/f24932bb-a8a3-4578-adc6-e85c2c704ef6*EF43F96D82FF690FBEFC22F2F42C0126D380BC968C77CCD0FDC691AA8DB385E7?api-version=2023-07-01" ],
+        "x-ms-ratelimit-remaining-subscription-reads": [ "11990" ],
+        "Azure-AsyncOperation": [ "https://management.azure.com/subscriptions/a3eeb848-665a-4dbf-80a4-eb460930fb23/providers/Microsoft.NetworkCloud/locations/eastus/operationStatuses/f24932bb-a8a3-4578-adc6-e85c2c704ef6*EF43F96D82FF690FBEFC22F2F42C0126D380BC968C77CCD0FDC691AA8DB385E7?api-version=2023-07-01" ],
+        "x-ms-request-id": [ "11445c70-6211-4f38-9b52-4140f80fcde1" ],
+        "x-ms-correlation-request-id": [ "4f1124f1-f5c1-43af-b91c-f7a765ae693c" ],
+        "x-ms-routing-request-id": [ "EASTUS:20230731T224226Z:4f1124f1-f5c1-43af-b91c-f7a765ae693c" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "Date": [ "Mon, 31 Jul 2023 22:42:26 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "587" ],
+        "Content-Type": [ "application/json; charset=utf-8" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\"id\":\"/subscriptions/a3eeb848-665a-4dbf-80a4-eb460930fb23/providers/Microsoft.NetworkCloud/locations/eastus/operationStatuses/f24932bb-a8a3-4578-adc6-e85c2c704ef6*EF43F96D82FF690FBEFC22F2F42C0126D380BC968C77CCD0FDC691AA8DB385E7\",\"name\":\"f24932bb-a8a3-4578-adc6-e85c2c704ef6*EF43F96D82FF690FBEFC22F2F42C0126D380BC968C77CCD0FDC691AA8DB385E7\",\"resourceId\":\"/subscriptions/a3eeb848-665a-4dbf-80a4-eb460930fb23/resourceGroups/simulator-HostedResources-1493033C/providers/Microsoft.NetworkCloud/bareMetalMachines/rack1compute02\",\"status\":\"Accepted\",\"startTime\":\"2023-07-31T22:39:24.9801187Z\"}",
+      "isContentBase64": false
+    }
+  },
+  "Stop-AzNetworkCloudBareMetalMachine+[NoContext]+PowerOff+$GET+https://management.azure.com/subscriptions/a3eeb848-665a-4dbf-80a4-eb460930fb23/providers/Microsoft.NetworkCloud/locations/eastus/operationStatuses/f24932bb-a8a3-4578-adc6-e85c2c704ef6*EF43F96D82FF690FBEFC22F2F42C0126D380BC968C77CCD0FDC691AA8DB385E7?api-version=2023-07-01+8": {
+    "Request": {
+      "Method": "GET",
+      "RequestUri": "https://management.azure.com/subscriptions/a3eeb848-665a-4dbf-80a4-eb460930fb23/providers/Microsoft.NetworkCloud/locations/eastus/operationStatuses/f24932bb-a8a3-4578-adc6-e85c2c704ef6*EF43F96D82FF690FBEFC22F2F42C0126D380BC968C77CCD0FDC691AA8DB385E7?api-version=2023-07-01",
+      "Content": null,
+      "isContentBase64": false,
+      "Headers": {
+        "Authorization": [ "[Filtered]" ],
+        "x-ms-unique-id": [ "11" ],
+        "x-ms-client-request-id": [ "550de02b-e2ab-40c2-b20e-2dea97fe0b89" ],
+        "CommandName": [ "Stop-AzNetworkCloudBareMetalMachine" ],
+        "FullCommandName": [ "Stop-AzNetworkCloudBareMetalMachine_PowerOff" ],
+        "ParameterSetName": [ "__AllParameterSets" ],
+        "User-Agent": [ "AzurePowershell/v0.0.0", "PSVersion/v7.3.4", "Az.NetworkCloud/0.1.0" ]
+      },
+      "ContentHeaders": {
+      }
+    },
+    "Response": {
+      "StatusCode": 202,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "ETag": [ "\"2209eafb-0000-0100-0000-64c838220000\"" ],
+        "Location": [ "https://management.azure.com/subscriptions/a3eeb848-665a-4dbf-80a4-eb460930fb23/providers/Microsoft.NetworkCloud/locations/eastus/operationStatuses/f24932bb-a8a3-4578-adc6-e85c2c704ef6*EF43F96D82FF690FBEFC22F2F42C0126D380BC968C77CCD0FDC691AA8DB385E7?api-version=2023-07-01" ],
+        "x-ms-ratelimit-remaining-subscription-reads": [ "11989" ],
+        "Azure-AsyncOperation": [ "https://management.azure.com/subscriptions/a3eeb848-665a-4dbf-80a4-eb460930fb23/providers/Microsoft.NetworkCloud/locations/eastus/operationStatuses/f24932bb-a8a3-4578-adc6-e85c2c704ef6*EF43F96D82FF690FBEFC22F2F42C0126D380BC968C77CCD0FDC691AA8DB385E7?api-version=2023-07-01" ],
+        "x-ms-request-id": [ "2f5a5369-d62f-4934-9681-18fbf5627d28" ],
+        "x-ms-correlation-request-id": [ "7b12b39c-97e6-4691-a472-4d3e83308ae1" ],
+        "x-ms-routing-request-id": [ "EASTUS:20230731T224256Z:7b12b39c-97e6-4691-a472-4d3e83308ae1" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "Date": [ "Mon, 31 Jul 2023 22:42:56 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "587" ],
+        "Content-Type": [ "application/json; charset=utf-8" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\"id\":\"/subscriptions/a3eeb848-665a-4dbf-80a4-eb460930fb23/providers/Microsoft.NetworkCloud/locations/eastus/operationStatuses/f24932bb-a8a3-4578-adc6-e85c2c704ef6*EF43F96D82FF690FBEFC22F2F42C0126D380BC968C77CCD0FDC691AA8DB385E7\",\"name\":\"f24932bb-a8a3-4578-adc6-e85c2c704ef6*EF43F96D82FF690FBEFC22F2F42C0126D380BC968C77CCD0FDC691AA8DB385E7\",\"resourceId\":\"/subscriptions/a3eeb848-665a-4dbf-80a4-eb460930fb23/resourceGroups/simulator-HostedResources-1493033C/providers/Microsoft.NetworkCloud/bareMetalMachines/rack1compute02\",\"status\":\"Accepted\",\"startTime\":\"2023-07-31T22:39:24.9801187Z\"}",
+      "isContentBase64": false
+    }
+  },
+  "Stop-AzNetworkCloudBareMetalMachine+[NoContext]+PowerOff+$GET+https://management.azure.com/subscriptions/a3eeb848-665a-4dbf-80a4-eb460930fb23/providers/Microsoft.NetworkCloud/locations/eastus/operationStatuses/f24932bb-a8a3-4578-adc6-e85c2c704ef6*EF43F96D82FF690FBEFC22F2F42C0126D380BC968C77CCD0FDC691AA8DB385E7?api-version=2023-07-01+9": {
+    "Request": {
+      "Method": "GET",
+      "RequestUri": "https://management.azure.com/subscriptions/a3eeb848-665a-4dbf-80a4-eb460930fb23/providers/Microsoft.NetworkCloud/locations/eastus/operationStatuses/f24932bb-a8a3-4578-adc6-e85c2c704ef6*EF43F96D82FF690FBEFC22F2F42C0126D380BC968C77CCD0FDC691AA8DB385E7?api-version=2023-07-01",
+      "Content": null,
+      "isContentBase64": false,
+      "Headers": {
+        "Authorization": [ "[Filtered]" ],
+        "x-ms-unique-id": [ "12" ],
+        "x-ms-client-request-id": [ "550de02b-e2ab-40c2-b20e-2dea97fe0b89" ],
+        "CommandName": [ "Stop-AzNetworkCloudBareMetalMachine" ],
+        "FullCommandName": [ "Stop-AzNetworkCloudBareMetalMachine_PowerOff" ],
+        "ParameterSetName": [ "__AllParameterSets" ],
+        "User-Agent": [ "AzurePowershell/v0.0.0", "PSVersion/v7.3.4", "Az.NetworkCloud/0.1.0" ]
+      },
+      "ContentHeaders": {
+      }
+    },
+    "Response": {
+      "StatusCode": 202,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "ETag": [ "\"2209eafb-0000-0100-0000-64c838220000\"" ],
+        "Location": [ "https://management.azure.com/subscriptions/a3eeb848-665a-4dbf-80a4-eb460930fb23/providers/Microsoft.NetworkCloud/locations/eastus/operationStatuses/f24932bb-a8a3-4578-adc6-e85c2c704ef6*EF43F96D82FF690FBEFC22F2F42C0126D380BC968C77CCD0FDC691AA8DB385E7?api-version=2023-07-01" ],
+        "x-ms-ratelimit-remaining-subscription-reads": [ "11988" ],
+        "Azure-AsyncOperation": [ "https://management.azure.com/subscriptions/a3eeb848-665a-4dbf-80a4-eb460930fb23/providers/Microsoft.NetworkCloud/locations/eastus/operationStatuses/f24932bb-a8a3-4578-adc6-e85c2c704ef6*EF43F96D82FF690FBEFC22F2F42C0126D380BC968C77CCD0FDC691AA8DB385E7?api-version=2023-07-01" ],
+        "x-ms-request-id": [ "6ccd5d6f-775d-4d5a-ae6d-d4c4a0fcb261" ],
+        "x-ms-correlation-request-id": [ "c856f7af-f4db-4a27-8289-08f06030e849" ],
+        "x-ms-routing-request-id": [ "EASTUS:20230731T224326Z:c856f7af-f4db-4a27-8289-08f06030e849" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "Date": [ "Mon, 31 Jul 2023 22:43:25 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "587" ],
+        "Content-Type": [ "application/json; charset=utf-8" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\"id\":\"/subscriptions/a3eeb848-665a-4dbf-80a4-eb460930fb23/providers/Microsoft.NetworkCloud/locations/eastus/operationStatuses/f24932bb-a8a3-4578-adc6-e85c2c704ef6*EF43F96D82FF690FBEFC22F2F42C0126D380BC968C77CCD0FDC691AA8DB385E7\",\"name\":\"f24932bb-a8a3-4578-adc6-e85c2c704ef6*EF43F96D82FF690FBEFC22F2F42C0126D380BC968C77CCD0FDC691AA8DB385E7\",\"resourceId\":\"/subscriptions/a3eeb848-665a-4dbf-80a4-eb460930fb23/resourceGroups/simulator-HostedResources-1493033C/providers/Microsoft.NetworkCloud/bareMetalMachines/rack1compute02\",\"status\":\"Accepted\",\"startTime\":\"2023-07-31T22:39:24.9801187Z\"}",
+      "isContentBase64": false
+    }
+  },
+  "Stop-AzNetworkCloudBareMetalMachine+[NoContext]+PowerOff+$GET+https://management.azure.com/subscriptions/a3eeb848-665a-4dbf-80a4-eb460930fb23/providers/Microsoft.NetworkCloud/locations/eastus/operationStatuses/f24932bb-a8a3-4578-adc6-e85c2c704ef6*EF43F96D82FF690FBEFC22F2F42C0126D380BC968C77CCD0FDC691AA8DB385E7?api-version=2023-07-01+10": {
+    "Request": {
+      "Method": "GET",
+      "RequestUri": "https://management.azure.com/subscriptions/a3eeb848-665a-4dbf-80a4-eb460930fb23/providers/Microsoft.NetworkCloud/locations/eastus/operationStatuses/f24932bb-a8a3-4578-adc6-e85c2c704ef6*EF43F96D82FF690FBEFC22F2F42C0126D380BC968C77CCD0FDC691AA8DB385E7?api-version=2023-07-01",
+      "Content": null,
+      "isContentBase64": false,
+      "Headers": {
+        "Authorization": [ "[Filtered]" ],
+        "x-ms-unique-id": [ "13" ],
+        "x-ms-client-request-id": [ "550de02b-e2ab-40c2-b20e-2dea97fe0b89" ],
+        "CommandName": [ "Stop-AzNetworkCloudBareMetalMachine" ],
+        "FullCommandName": [ "Stop-AzNetworkCloudBareMetalMachine_PowerOff" ],
+        "ParameterSetName": [ "__AllParameterSets" ],
+        "User-Agent": [ "AzurePowershell/v0.0.0", "PSVersion/v7.3.4", "Az.NetworkCloud/0.1.0" ]
+      },
+      "ContentHeaders": {
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "ETag": [ "\"23098016-0000-0100-0000-64c839130000\"" ],
+        "x-ms-ratelimit-remaining-subscription-reads": [ "11987" ],
+        "x-ms-request-id": [ "43479abe-11c5-4846-befc-f6ec1b765e75" ],
+        "x-ms-correlation-request-id": [ "52c614fc-c6b4-4712-b552-922b0ca42a69" ],
+        "x-ms-routing-request-id": [ "EASTUS:20230731T224356Z:52c614fc-c6b4-4712-b552-922b0ca42a69" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "Date": [ "Mon, 31 Jul 2023 22:43:55 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "658" ],
+        "Content-Type": [ "application/json; charset=utf-8" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\"id\":\"/subscriptions/a3eeb848-665a-4dbf-80a4-eb460930fb23/providers/Microsoft.NetworkCloud/locations/eastus/operationStatuses/f24932bb-a8a3-4578-adc6-e85c2c704ef6*EF43F96D82FF690FBEFC22F2F42C0126D380BC968C77CCD0FDC691AA8DB385E7\",\"name\":\"f24932bb-a8a3-4578-adc6-e85c2c704ef6*EF43F96D82FF690FBEFC22F2F42C0126D380BC968C77CCD0FDC691AA8DB385E7\",\"resourceId\":\"/subscriptions/a3eeb848-665a-4dbf-80a4-eb460930fb23/resourceGroups/simulator-HostedResources-1493033C/providers/Microsoft.NetworkCloud/bareMetalMachines/rack1compute02\",\"status\":\"Succeeded\",\"startTime\":\"2023-07-31T22:39:24.9801187Z\",\"endTime\":\"2023-07-31T22:43:31.6858382Z\",\"error\":{},\"properties\":null}",
+      "isContentBase64": false
+    }
+  },
+  "Stop-AzNetworkCloudBareMetalMachine+[NoContext]+PowerOff+$GET+https://management.azure.com/subscriptions/a3eeb848-665a-4dbf-80a4-eb460930fb23/providers/Microsoft.NetworkCloud/locations/EASTUS/operationStatuses/f24932bb-a8a3-4578-adc6-e85c2c704ef6*EF43F96D82FF690FBEFC22F2F42C0126D380BC968C77CCD0FDC691AA8DB385E7?api-version=2023-07-01+11": {
+    "Request": {
+      "Method": "GET",
+      "RequestUri": "https://management.azure.com/subscriptions/a3eeb848-665a-4dbf-80a4-eb460930fb23/providers/Microsoft.NetworkCloud/locations/EASTUS/operationStatuses/f24932bb-a8a3-4578-adc6-e85c2c704ef6*EF43F96D82FF690FBEFC22F2F42C0126D380BC968C77CCD0FDC691AA8DB385E7?api-version=2023-07-01",
+      "Content": null,
+      "isContentBase64": false,
+      "Headers": {
+        "Authorization": [ "[Filtered]" ],
+        "x-ms-unique-id": [ "14" ],
+        "x-ms-client-request-id": [ "550de02b-e2ab-40c2-b20e-2dea97fe0b89" ],
+        "CommandName": [ "Stop-AzNetworkCloudBareMetalMachine" ],
+        "FullCommandName": [ "Stop-AzNetworkCloudBareMetalMachine_PowerOff" ],
+        "ParameterSetName": [ "__AllParameterSets" ],
+        "User-Agent": [ "AzurePowershell/v0.0.0", "PSVersion/v7.3.4", "Az.NetworkCloud/0.1.0" ]
+      },
+      "ContentHeaders": {
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "ETag": [ "\"23098016-0000-0100-0000-64c839130000\"" ],
+        "x-ms-ratelimit-remaining-subscription-reads": [ "11986" ],
+        "x-ms-request-id": [ "0467c7fb-7820-4c9a-a25d-208cf76ba5ac" ],
+        "x-ms-correlation-request-id": [ "47480cf9-9442-42d0-8739-b99d08690e54" ],
+        "x-ms-routing-request-id": [ "EASTUS:20230731T224356Z:47480cf9-9442-42d0-8739-b99d08690e54" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "Date": [ "Mon, 31 Jul 2023 22:43:55 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "658" ],
+        "Content-Type": [ "application/json; charset=utf-8" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\"id\":\"/subscriptions/a3eeb848-665a-4dbf-80a4-eb460930fb23/providers/Microsoft.NetworkCloud/locations/EASTUS/operationStatuses/f24932bb-a8a3-4578-adc6-e85c2c704ef6*EF43F96D82FF690FBEFC22F2F42C0126D380BC968C77CCD0FDC691AA8DB385E7\",\"name\":\"f24932bb-a8a3-4578-adc6-e85c2c704ef6*EF43F96D82FF690FBEFC22F2F42C0126D380BC968C77CCD0FDC691AA8DB385E7\",\"resourceId\":\"/subscriptions/a3eeb848-665a-4dbf-80a4-eb460930fb23/resourceGroups/simulator-HostedResources-1493033C/providers/Microsoft.NetworkCloud/bareMetalMachines/rack1compute02\",\"status\":\"Succeeded\",\"startTime\":\"2023-07-31T22:39:24.9801187Z\",\"endTime\":\"2023-07-31T22:43:31.6858382Z\",\"error\":{},\"properties\":null}",
+      "isContentBase64": false
+    }
+  }
+}

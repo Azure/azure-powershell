@@ -190,10 +190,8 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.EventHub.Models.Api20221001Preview.IConsumerGroup
+### Microsoft.Azure.PowerShell.Cmdlets.EventHub.Models.Api202301Preview.IConsumerGroup
 
 ## NOTES
-
-ALIASES
 
 ## RELATED LINKS

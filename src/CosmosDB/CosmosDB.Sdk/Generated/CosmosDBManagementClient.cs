@@ -481,7 +481,7 @@ namespace Microsoft.Azure.Management.CosmosDB
             this.RestorableTableResources = new RestorableTableResourcesOperations(this);
             this.Service = new ServiceOperations(this);
             this.BaseUri = new System.Uri("https://management.azure.com");
-            this.ApiVersion = "2023-04-15";
+            this.ApiVersion = "2023-09-15";
             this.AcceptLanguage = "en-US";
             this.LongRunningOperationRetryTimeout = 30;
             this.GenerateClientRequestId = true;

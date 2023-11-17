@@ -34,7 +34,7 @@ namespace Microsoft.Azure.Commands.WebApps.Cmdlets.WebApps
         [Parameter(Mandatory = false, HelpMessage = "If this is the last app in the App Service plan. Delete this App Service plan to prevent unexpected charges.")]
         public SwitchParameter DeleteAppServicePlan { get; set; }
 
-        [Parameter(Mandatory = false, HelpMessage = "Do not ask for confirmation.")]
+        [Parameter(Mandatory = false, HelpMessage = "Forces the command to run without asking for user confirmation.")]
         public SwitchParameter Force { get; set; }
 
          [Parameter(Mandatory = false, HelpMessage = "Run cmdlet in the background")]

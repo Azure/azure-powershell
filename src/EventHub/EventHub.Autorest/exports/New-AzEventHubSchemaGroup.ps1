@@ -23,12 +23,12 @@ Creates or Updates an EventHub schema group.
 $schemaGroup = New-AzEventHubSchemaGroup -ResourceGroupName myResourceGroup -NamespaceName myNamespace -Name mySchemaGroup -SchemaCompatibility Backward -SchemaType Avro
 
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.EventHub.Models.Api20221001Preview.ISchemaGroup
+Microsoft.Azure.PowerShell.Cmdlets.EventHub.Models.Api202301Preview.ISchemaGroup
 .Link
 https://learn.microsoft.com/powershell/module/az.eventhub/new-azeventhubschemagroup
 #>
 function New-AzEventHubSchemaGroup {
-[OutputType([Microsoft.Azure.PowerShell.Cmdlets.EventHub.Models.Api20221001Preview.ISchemaGroup])]
+[OutputType([Microsoft.Azure.PowerShell.Cmdlets.EventHub.Models.Api202301Preview.ISchemaGroup])]
 [CmdletBinding(DefaultParameterSetName='CreateExpanded', PositionalBinding=$false, SupportsShouldProcess, ConfirmImpact='Medium')]
 param(
     [Parameter(Mandatory)]
@@ -60,7 +60,7 @@ param(
 
     [Parameter()]
     [Microsoft.Azure.PowerShell.Cmdlets.EventHub.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.EventHub.Runtime.Info(PossibleTypes=([Microsoft.Azure.PowerShell.Cmdlets.EventHub.Models.Api20221001Preview.ISchemaGroupProperties]))]
+    [Microsoft.Azure.PowerShell.Cmdlets.EventHub.Runtime.Info(PossibleTypes=([Microsoft.Azure.PowerShell.Cmdlets.EventHub.Models.Api202301Preview.ISchemaGroupProperties]))]
     [System.Collections.Hashtable]
     # dictionary object for SchemaGroup group properties
     ${GroupProperty},
@@ -161,6 +161,10 @@ begin {
         }
         $cmdInfo = Get-Command -Name $mapping[$parameterSet]
         [Microsoft.Azure.PowerShell.Cmdlets.EventHub.Runtime.MessageAttributeHelper]::ProcessCustomAttributesAtRuntime($cmdInfo, $MyInvocation, $parameterSet, $PSCmdlet)
+        if ($null -ne $MyInvocation.MyCommand -and [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PromptedPreviewMessageCmdlets -notcontains $MyInvocation.MyCommand.Name -and [Microsoft.Azure.PowerShell.Cmdlets.EventHub.Runtime.MessageAttributeHelper]::ContainsPreviewAttribute($cmdInfo, $MyInvocation)){
+            [Microsoft.Azure.PowerShell.Cmdlets.EventHub.Runtime.MessageAttributeHelper]::ProcessPreviewMessageAttributesAtRuntime($cmdInfo, $MyInvocation, $parameterSet, $PSCmdlet)
+            [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PromptedPreviewMessageCmdlets.Enqueue($MyInvocation.MyCommand.Name)
+        }
         $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Cmdlet)
         $scriptCmd = {& $wrappedCmd @PSBoundParameters}
         $steppablePipeline = $scriptCmd.GetSteppablePipeline($MyInvocation.CommandOrigin)

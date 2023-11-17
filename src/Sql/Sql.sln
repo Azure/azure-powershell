@@ -44,7 +44,7 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Az.MonitorWorkspace", "..\M
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "KeyVault", "..\KeyVault\KeyVault\KeyVault.csproj", "{9BDC0965-CC31-4767-9D8C-BAF4C0DB3C06}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Sql.Sdk", "Sql.Sdk\Sql.Sdk.csproj", "{EEFA7E00-46FE-445B-8CE9-10DBDB46CA05}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Sql.Management.Sdk", "Sql.Management.Sdk\Sql.Management.Sdk.csproj", "{EEFA7E00-46FE-445B-8CE9-10DBDB46CA05}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

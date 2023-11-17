@@ -15,8 +15,8 @@ Creates an Azure RouteServer.
 ```
 New-AzRouteServer -ResourceGroupName <String> -RouteServerName <String> -HostedSubnet <String>
  [-PublicIpAddress <PSPublicIpAddress>] -Location <String> [-Tag <Hashtable>] [-Force] [-AsJob]
- [-HubRoutingPreference <String>] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
- [<CommonParameters>]
+ [-HubRoutingPreference <String>] [-AllowBranchToBranchTraffic] [-DefaultProfile <IAzureContextContainer>]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -37,6 +37,21 @@ New-AzRouteServer -RouteServerName myRouteServer -ResourceGroupName myResourceGr
 ```
 
 ## PARAMETERS
+
+### -AllowBranchToBranchTraffic
+Flag to allow branch to branch traffic for route server.
+
+```yaml
+Type: System.Management.Automation.SwitchParameter
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
 
 ### -AsJob
 Run cmdlet in the background

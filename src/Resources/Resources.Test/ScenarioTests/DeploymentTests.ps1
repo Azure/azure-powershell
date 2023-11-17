@@ -12,6 +12,16 @@
 # limitations under the License.
 # ----------------------------------------------------------------------------------
 
+# Note(antmarti): Commands to quickly re-record a test in this file:
+#
+# &az account set -n a1bfa635-f2bf-42f1-86b5-848c674fc321
+# $accessToken = &az account get-access-token --query accessToken --output tsv
+# $tenantId = "72f988bf-86f1-41af-91ab-2d7cd011db47"
+# $subscriptionId = "a1bfa635-f2bf-42f1-86b5-848c674fc321"
+# $env:TEST_CSM_ORGID_AUTHENTICATION="Environment=Prod;SubscriptionId=$subscriptionId;TenantId=$tenantId;RawToken=$accessToken;HttpRecorderMode=Record;"
+# $env:AZURE_TEST_MODE="Record"
+# dotnet test ./src/Resources/Resources.Test --filter <your_test_name>
+
 <#
 .SYNOPSIS
 Converts an object to a Hashtable.
@@ -879,6 +889,142 @@ function Test-NewDeploymentFromBicepFileAndBicepparamFile
         $deploymentId = "/subscriptions/$subId/resourcegroups/$rgname/providers/Microsoft.Resources/deployments/$rname"
         $getById = Get-AzResourceGroupDeployment -Id $deploymentId
         Assert-AreEqual $getById.DeploymentName $deployment.DeploymentName
+    }
+    finally
+    {
+        # Cleanup
+        Clean-ResourceGroup $rgname
+    }
+}
+
+
+
+<#
+.SYNOPSIS
+Tests deployment via .bicepparam file without supplying a .bicep file.
+#>
+function Test-NewDeploymentFromBicepparamFileOnly
+{
+    # Setup
+    $rgname = Get-ResourceGroupName
+    $rname = Get-ResourceName
+    $rglocation = "West US 2"
+
+    try
+    {
+        # Test
+        New-AzResourceGroup -Name $rgname -Location $rglocation
+
+        $deployment = New-AzResourceGroupDeployment -Name $rname -ResourceGroupName $rgname -TemplateParameterFile sampleDeploymentBicepFileParams.bicepparam
+
+        # Assert
+        Assert-AreEqual Succeeded $deployment.ProvisioningState
+
+        $subId = (Get-AzContext).Subscription.SubscriptionId
+        $deploymentId = "/subscriptions/$subId/resourcegroups/$rgname/providers/Microsoft.Resources/deployments/$rname"
+        $getById = Get-AzResourceGroupDeployment -Id $deploymentId
+        Assert-AreEqual $getById.DeploymentName $deployment.DeploymentName
+    }
+    finally
+    {
+        # Cleanup
+        Clean-ResourceGroup $rgname
+    }
+}
+
+<#
+.SYNOPSIS
+Tests deployment via .bicepparam file with inline parameter overrides.
+#>
+function Test-NewDeploymentFromBicepparamFileWithOverrides
+{
+    # Setup
+    $rgname = Get-ResourceGroupName
+    $rname = Get-ResourceName
+    $rglocation = "West US 2"
+	  $expectedAllOutput = @'
+{
+  "array": [
+    "abc"
+  ],
+  "string": "hello",
+  "object": {
+    "def": "ghi"
+  },
+  "int": 42,
+  "bool": true
+}
+'@ | ConvertFrom-Json
+
+    try
+    {
+        # Test
+        New-AzResourceGroup -Name $rgname -Location $rglocation
+
+        $deployment = New-AzResourceGroupDeployment -Name $rname -ResourceGroupName $rgname -TemplateParameterFile deployWithParamOverrides.bicepparam `
+          -myArray @("abc") -myObject @{"def" = "ghi";} -myString "hello" -myInt 42 -myBool $true
+
+        # Assert
+        Assert-AreEqual Succeeded $deployment.ProvisioningState
+
+        $actualAllOutput = $deployment.Outputs["all"].Value.ToString() | ConvertFrom-Json
+        Assert-AreEqual ($expectedAllOutput | ConvertTo-Json) ($actualAllOutput | ConvertTo-Json)
+    }
+    finally
+    {
+        # Cleanup
+        Clean-ResourceGroup $rgname
+    }
+}
+
+<#
+.SYNOPSIS
+Tests deployment with custom types.
+#>
+function Test-NewDeploymentWithCustomTypes
+{
+    # Setup
+    $rgname = Get-ResourceGroupName
+    $rname = Get-ResourceName
+    $rglocation = "West US 2"
+
+    try
+    {
+        # Test
+        New-AzResourceGroup -Name $rgname -Location $rglocation
+
+        $deployment = New-AzResourceGroupDeployment -Name $rname -ResourceGroupName $rgname -TemplateParameterFile deployWithCustomTypes.bicepparam
+
+        # Assert
+        Assert-AreEqual Succeeded $deployment.ProvisioningState
+    }
+    finally
+    {
+        # Cleanup
+        Clean-ResourceGroup $rgname
+    }
+}
+
+<#
+.SYNOPSIS
+Tests deployment with custom types and in-line overrides.
+#>
+function Test-NewDeploymentWithCustomTypesAndInlineOverrides
+{
+    # Setup
+    $rgname = Get-ResourceGroupName
+    $rname = Get-ResourceName
+    $rglocation = "West US 2"
+
+    try
+    {
+        # Test
+        New-AzResourceGroup -Name $rgname -Location $rglocation
+
+        $deployment = New-AzResourceGroupDeployment -Name $rname -ResourceGroupName $rgname -TemplateParameterFile deployWithCustomTypes.bicepparam -array @(123) -enum "abc" -enumRef "abc" -int2 342 -object @{ "def" = "hello" } -objectRef @{ "abc" = "blah" }
+
+        # Assert
+        Assert-AreEqual Succeesded $deployment.ProvisioningState
     }
     finally
     {

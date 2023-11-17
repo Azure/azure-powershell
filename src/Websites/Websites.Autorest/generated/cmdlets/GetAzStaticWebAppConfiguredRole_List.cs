@@ -16,6 +16,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Websites.Cmdlets
     [global::System.Management.Automation.OutputType(typeof(Microsoft.Azure.PowerShell.Cmdlets.Websites.Models.Api20201201.IStringList))]
     [global::Microsoft.Azure.PowerShell.Cmdlets.Websites.Description(@"Description for Lists the roles configured for the static site.")]
     [global::Microsoft.Azure.PowerShell.Cmdlets.Websites.Generated]
+    [global::Microsoft.Azure.PowerShell.Cmdlets.Websites.HttpPath(Path = "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/staticSites/{name}/listConfiguredRoles", ApiVersion = "2020-12-01")]
     public partial class GetAzStaticWebAppConfiguredRole_List : global::System.Management.Automation.PSCmdlet,
         Microsoft.Azure.PowerShell.Cmdlets.Websites.Runtime.IEventListener
     {

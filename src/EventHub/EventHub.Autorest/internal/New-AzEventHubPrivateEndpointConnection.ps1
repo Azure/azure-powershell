@@ -25,11 +25,11 @@ Creates or updates PrivateEndpointConnections of service namespace.
 {{ Add code here }}
 
 .Inputs
-Microsoft.Azure.PowerShell.Cmdlets.EventHub.Models.Api20221001Preview.IPrivateEndpointConnection
+Microsoft.Azure.PowerShell.Cmdlets.EventHub.Models.Api202301Preview.IPrivateEndpointConnection
 .Inputs
 Microsoft.Azure.PowerShell.Cmdlets.EventHub.Models.IEventHubIdentity
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.EventHub.Models.Api20221001Preview.IPrivateEndpointConnection
+Microsoft.Azure.PowerShell.Cmdlets.EventHub.Models.Api202301Preview.IPrivateEndpointConnection
 .Notes
 COMPLEX PARAMETER PROPERTIES
 
@@ -65,7 +65,7 @@ PARAMETER <IPrivateEndpointConnection>: Properties of the PrivateEndpointConnect
 https://learn.microsoft.com/powershell/module/az.eventhub/new-azeventhubprivateendpointconnection
 #>
 function New-AzEventHubPrivateEndpointConnection {
-[OutputType([Microsoft.Azure.PowerShell.Cmdlets.EventHub.Models.Api20221001Preview.IPrivateEndpointConnection])]
+[OutputType([Microsoft.Azure.PowerShell.Cmdlets.EventHub.Models.Api202301Preview.IPrivateEndpointConnection])]
 [CmdletBinding(DefaultParameterSetName='CreateExpanded', PositionalBinding=$false, SupportsShouldProcess, ConfirmImpact='Medium')]
 param(
     [Parameter(ParameterSetName='CreateExpanded', Mandatory)]
@@ -130,7 +130,7 @@ param(
 
     [Parameter(ParameterSetName='CreateViaIdentity', Mandatory, ValueFromPipeline)]
     [Microsoft.Azure.PowerShell.Cmdlets.EventHub.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.EventHub.Models.Api20221001Preview.IPrivateEndpointConnection]
+    [Microsoft.Azure.PowerShell.Cmdlets.EventHub.Models.Api202301Preview.IPrivateEndpointConnection]
     # Properties of the PrivateEndpointConnection.
     # To construct, see NOTES section for PARAMETER properties and create a hash table.
     ${Parameter},

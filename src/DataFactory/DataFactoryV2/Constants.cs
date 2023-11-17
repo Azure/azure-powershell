@@ -156,6 +156,18 @@ namespace Microsoft.Azure.Commands.DataFactoryV2
 
         public const string HelpIntegrationRuntimeDataFlowTimeToLive = "Time to live (in minutes) setting of the data flow cluster which will execute data flow job.";
 
+        public const string HelpIntegrationRuntimeManagedVNetCopyComputeScaleDataIntegrationUnit = "DIU number setting reserved for copy activity execution.";
+
+        public const string HelpIntegrationRuntimeManagedVNetCopyComputeScaleTimeToLive = "Time to live (in minutes) setting of integration runtime which will execute copy activity.";
+
+        public const string HelpIntegrationRuntimeManagedVNetPipelineExternalComputeScaleTimeToLive = "Time to live (in minutes) setting of integration runtime which will execute pipeline and external activity.";
+
+        public const string HelpIntegrationRuntimeManagedVNetNumberOfPipelineNodes = "Number of the pipeline nodes, which should be greater than 0 and less than 11.";
+
+        public const string HelpIntegrationRuntimeManagedVNetNumberOfExternalNodes = "Number of the the external nodes, which should be greater than 0 and less than 11.";
+
+        public const string HelpIntegrationRuntimeSelfContainedInteractiveAuthoringEnabled = "An alternative option to ensure interactive authoring function when your self-hosted integration runtime is unable to establish a connection with Azure Relay.";
+
         public const string HelpIntegrationRuntimeSetupScriptContainerSasUri = "The SAS URI of the Azure blob container that contains the custom setup script.";
 
         public const string HelpIntegrationRuntimeEdition = "The edition for SSIS integration runtime which could be Standard or Enterprise, default is Standard if it is not specified.";

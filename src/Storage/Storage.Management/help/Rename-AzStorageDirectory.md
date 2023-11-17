@@ -132,7 +132,7 @@ Accept wildcard characters: False
 ```
 
 ### -DisAllowDestTrailingDot
-Disallow trailing dot (.) to suffex destination directory and destination file names.
+Disallow trailing dot (.) to suffix destination directory and destination file names.
 
 ```yaml
 Type: System.Management.Automation.SwitchParameter
@@ -147,7 +147,7 @@ Accept wildcard characters: False
 ```
 
 ### -DisAllowSourceTrailingDot
-Disallow trailing dot (.) to suffex source directory and source file names.
+Disallow trailing dot (.) to suffix source directory and source file names.
 
 ```yaml
 Type: System.Management.Automation.SwitchParameter

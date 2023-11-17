@@ -70,12 +70,12 @@ namespace Microsoft.Azure.Commands.Automation.Common
             var decryptedAccessToken = Utils.GetStringFromSecureString(accessToken);
 
             var createParams = new SourceControlCreateOrUpdateParameters(
+                                    sourceType,
                                     repoUrl,
                                     branch,
                                     folderPath,
                                     autoSync,
                                     publishRunbook,
-                                    sourceType,
                                     GetAccessTokenProperties(decryptedAccessToken),
                                     description);
 

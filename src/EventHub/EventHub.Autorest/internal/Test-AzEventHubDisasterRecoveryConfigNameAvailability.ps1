@@ -25,11 +25,11 @@ Check the give Namespace name availability.
 {{ Add code here }}
 
 .Inputs
-Microsoft.Azure.PowerShell.Cmdlets.EventHub.Models.Api20221001Preview.ICheckNameAvailabilityParameter
+Microsoft.Azure.PowerShell.Cmdlets.EventHub.Models.Api202301Preview.ICheckNameAvailabilityParameter
 .Inputs
 Microsoft.Azure.PowerShell.Cmdlets.EventHub.Models.IEventHubIdentity
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.EventHub.Models.Api20221001Preview.ICheckNameAvailabilityResult
+Microsoft.Azure.PowerShell.Cmdlets.EventHub.Models.Api202301Preview.ICheckNameAvailabilityResult
 .Notes
 COMPLEX PARAMETER PROPERTIES
 
@@ -56,7 +56,7 @@ PARAMETER <ICheckNameAvailabilityParameter>: Parameter supplied to check Namespa
 https://learn.microsoft.com/powershell/module/az.eventhub/test-azeventhubdisasterrecoveryconfignameavailability
 #>
 function Test-AzEventHubDisasterRecoveryConfigNameAvailability {
-[OutputType([Microsoft.Azure.PowerShell.Cmdlets.EventHub.Models.Api20221001Preview.ICheckNameAvailabilityResult])]
+[OutputType([Microsoft.Azure.PowerShell.Cmdlets.EventHub.Models.Api202301Preview.ICheckNameAvailabilityResult])]
 [CmdletBinding(DefaultParameterSetName='CheckExpanded', PositionalBinding=$false, SupportsShouldProcess, ConfirmImpact='Medium')]
 param(
     [Parameter(ParameterSetName='Check', Mandatory)]
@@ -93,7 +93,7 @@ param(
     [Parameter(ParameterSetName='Check', Mandatory, ValueFromPipeline)]
     [Parameter(ParameterSetName='CheckViaIdentity', Mandatory, ValueFromPipeline)]
     [Microsoft.Azure.PowerShell.Cmdlets.EventHub.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.EventHub.Models.Api20221001Preview.ICheckNameAvailabilityParameter]
+    [Microsoft.Azure.PowerShell.Cmdlets.EventHub.Models.Api202301Preview.ICheckNameAvailabilityParameter]
     # Parameter supplied to check Namespace name availability operation 
     # To construct, see NOTES section for PARAMETER properties and create a hash table.
     ${Parameter},

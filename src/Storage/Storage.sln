@@ -28,7 +28,7 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Storage.Management.Sdk", "S
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "AssemblyLoading", "..\Accounts\AssemblyLoading\AssemblyLoading.csproj", "{02615977-4499-48E6-9824-8B9F431E30EA}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Az.Storage", "Storage.Autorest\Az.Storage.csproj", "{4C664BEC-248E-459F-94AF-62B2326D5D23}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Az.Storage", "Storage.Autorest\Az.Storage.csproj", "{30A6EDE1-2AAC-43D3-8E9C-F11C1CC3C8A8}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -84,10 +84,10 @@ Global
 		{02615977-4499-48E6-9824-8B9F431E30EA}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{02615977-4499-48E6-9824-8B9F431E30EA}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{02615977-4499-48E6-9824-8B9F431E30EA}.Release|Any CPU.Build.0 = Release|Any CPU
-		{4C664BEC-248E-459F-94AF-62B2326D5D23}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{4C664BEC-248E-459F-94AF-62B2326D5D23}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{4C664BEC-248E-459F-94AF-62B2326D5D23}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{4C664BEC-248E-459F-94AF-62B2326D5D23}.Release|Any CPU.Build.0 = Release|Any CPU
+		{30A6EDE1-2AAC-43D3-8E9C-F11C1CC3C8A8}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{30A6EDE1-2AAC-43D3-8E9C-F11C1CC3C8A8}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{30A6EDE1-2AAC-43D3-8E9C-F11C1CC3C8A8}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{30A6EDE1-2AAC-43D3-8E9C-F11C1CC3C8A8}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

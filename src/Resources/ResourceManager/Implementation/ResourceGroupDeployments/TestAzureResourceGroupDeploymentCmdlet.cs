@@ -68,7 +68,7 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Implementation
                 TemplateFile = TemplateUri ?? this.ResolvePath(TemplateFile),
                 TemplateObject = TemplateObject,
                 QueryString = QueryString,
-                TemplateParameterObject = GetTemplateParameterObject(TemplateParameterObject),
+                TemplateParameterObject = GetTemplateParameterObject(),
                 ParameterUri = TemplateParameterUri,
                 OnErrorDeployment = RollbackToLastDeployment || !string.IsNullOrEmpty(RollBackDeploymentName)
                     ? new OnErrorDeployment

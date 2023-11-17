@@ -210,7 +210,7 @@ namespace Microsoft.Azure.Commands.Sql.DataClassification.Services
             PatchOperations operations, bool isManagedInstance, string currentOrRecommended)
         {
             Uri endpoint = Context.Environment.GetEndpointAsUri(AzureEnvironment.Endpoint.ResourceManager);
-            string uri = $"{endpoint}/subscriptions/{Subscription.Id}/resourceGroups/{resourceGroupName}/providers/Microsoft.Sql/{(isManagedInstance ? "managedInstances" : "servers")}/{serverName}/databases/{databaseName}/{currentOrRecommended}SensitivityLabels?api-version=2017-03-01-preview";
+            string uri = $"{endpoint}/subscriptions/{Subscription.Id}/resourceGroups/{resourceGroupName}/providers/Microsoft.Sql/{(isManagedInstance ? "managedInstances" : "servers")}/{serverName}/databases/{databaseName}/{currentOrRecommended}SensitivityLabels?api-version={(isManagedInstance ? "2018-06-01-preview" : "2017-03-01-preview")}";
             string content = JsonConvert.SerializeObject(operations, new JsonSerializerSettings
             {
                 Converters = new List<JsonConverter>() { new Rest.Serialization.TransformationJsonConverter() },

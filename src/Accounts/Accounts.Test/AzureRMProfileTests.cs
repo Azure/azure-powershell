@@ -42,6 +42,7 @@ using System.Management.Automation;
 using System.Net.Http;
 using System.Runtime.InteropServices;
 using System.Runtime.Serialization.Formatters.Binary;
+using System.Text.Json;
 using System.Threading;
 using System.Threading.Tasks;
 
@@ -1064,20 +1065,10 @@ namespace Microsoft.Azure.Commands.ResourceManager.Common.Test
             currentProfile.EnvironmentTable[environment.Name] = environment;
             currentProfile.DefaultContext.TokenCache = new AzureTokenCache { CacheData = new byte[] { 1, 2, 3, 4, 5, 6, 8, 9, 0 } };
 
-            AzureRmProfile deserializedProfile;
             // Round-trip the exception: Serialize and de-serialize with a BinaryFormatter
-            BinaryFormatter bf = new BinaryFormatter();
-            using (MemoryStream ms = new MemoryStream())
-            {
-                // "Save" object state
-                bf.Serialize(ms, currentProfile);
-
-                // Re-use the same stream for de-serialization
-                ms.Seek(0, 0);
-
-                // Replace the original exception with de-serialized one
-                deserializedProfile = (AzureRmProfile)bf.Deserialize(ms);
-            }
+            var serializedProfile = JsonSerializer.Serialize(currentProfile);
+            // Replace the original exception with de-serialized one
+            var deserializedProfile = JsonSerializer.Deserialize<AzureRmProfile>(serializedProfile);
             Assert.NotNull(deserializedProfile);
             var jCurrentProfile = currentProfile.ToString();
             var jDeserializedProfile = deserializedProfile.ToString();

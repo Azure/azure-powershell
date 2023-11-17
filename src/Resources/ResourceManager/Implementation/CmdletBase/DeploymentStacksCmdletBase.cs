@@ -17,6 +17,9 @@ using Microsoft.Azure.Commands.ResourceManager.Cmdlets.SdkClient;
 using Microsoft.Azure.Commands.ResourceManager.Cmdlets.Utilities;
 using Microsoft.WindowsAzure.Commands.Utilities.Common;
 using System.Collections;
+using System.Collections.Generic;
+using System.IO;
+using System.Text;
 
 namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Implementation
 {
@@ -64,39 +67,55 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Implementation
             
         }
 
-        protected string ResolveBicepParameterFile(string TemplateParameterFile)
+        protected BicepBuildParamsStdout ResolveBicepParameterFile(string TemplateParameterFile)
         {
             if (BicepUtility.IsBicepparamFile(TemplateParameterFile))
             {
-                return BicepUtility.BuildParamFile(this.ResolvePath(TemplateParameterFile), this.WriteVerbose, this.WriteWarning);
+                return BicepUtility.BuildParams(this.ResolvePath(TemplateParameterFile), new Dictionary<string, object>(), this.WriteVerbose, this.WriteWarning);
             }
-            else
-                return TemplateParameterFile;
+
+            return null;
+        }
+
+        private Hashtable GetParametersFromJsonStream(Stream parametersJson)
+        {
+            var parameters = new Hashtable();
+            var parametersFromJson = TemplateUtility.ParseTemplateParameterJson(parametersJson);
+
+            parametersFromJson.ForEach(dp =>
+            {
+                var parameter = new Hashtable();
+                if (dp.Value.Value != null)
+                {
+                    parameter.Add("value", dp.Value.Value);
+                }
+                if (dp.Value.Reference != null)
+                {
+                    parameter.Add("reference", dp.Value.Reference);
+                }
+
+                parameters[dp.Key] = parameter;
+            });
+
+            return parameters;
+        }
+
+        protected Hashtable GetParametersFromJson(string parametersJson)
+        {
+            using (var stream = new MemoryStream(Encoding.UTF8.GetBytes(parametersJson)))
+            {
+                return GetParametersFromJsonStream(stream);
+            }
         }
 
         protected Hashtable GetParameterObject(string parameterFile)
         {
-            var parameters = new Hashtable();
             string templateParameterFilePath = this.ResolvePath(parameterFile);
             if (parameterFile != null && FileUtilities.DataStore.FileExists(templateParameterFilePath))
             {
-                var parametersFromFile = TemplateUtility.ParseTemplateParameterFileContents(templateParameterFilePath);
-                parametersFromFile.ForEach(dp =>
-                {
-                    var parameter = new Hashtable();
-                    if (dp.Value.Value != null)
-                    {
-                        parameter.Add("value", dp.Value.Value);
-                    }
-                    if (dp.Value.Reference != null)
-                    {
-                        parameter.Add("reference", dp.Value.Reference);
-                    }
-
-                    parameters[dp.Key] = parameter;
-                });
+                return GetParametersFromJsonStream(FileUtilities.DataStore.ReadFileAsStream(templateParameterFilePath));
             }
-            return parameters;
+            return new Hashtable();
         }
 
         protected Hashtable GetTemplateParameterObject(Hashtable templateParameterObject)

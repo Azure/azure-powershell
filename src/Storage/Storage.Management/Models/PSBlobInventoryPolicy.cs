@@ -66,12 +66,12 @@ namespace Microsoft.Azure.Commands.Management.Storage.Models
                 Rules = invRules
             };
             return new BlobInventoryPolicy(
-                policySchema,
-                this.Id,
-                this.Name,
-                this.Type,
-                this.LastModifiedTime,
-                this.SystemData is null ? null : this.SystemData.ParseSystemData()
+                policy: policySchema,
+                id: this.Id,
+                name: this.Name,
+                type: this.Type,
+                lastModifiedTime: this.LastModifiedTime,
+                systemData: this.SystemData is null ? null : this.SystemData.ParseSystemData()
             );
         }
 
@@ -226,6 +226,7 @@ namespace Microsoft.Azure.Commands.Management.Storage.Models
             this.IncludeBlobVersions = filters.IncludeBlobVersions;
             this.IncludeSnapshots = filters.IncludeSnapshots;
             this.IncludeDeleted = filters.IncludeDeleted;
+            this.CreationTime = filters.CreationTime == null ? null : new PSBlobInventoryCreationTime(filters.CreationTime);
         }
 
         public BlobInventoryPolicyFilter ParseBlobInventoryPolicyFilter()
@@ -237,7 +238,8 @@ namespace Microsoft.Azure.Commands.Management.Storage.Models
                 BlobTypes = PSManagementPolicyRuleFilter.StringArrayToList(this.BlobTypes),
                 IncludeSnapshots = this.IncludeSnapshots,
                 IncludeBlobVersions = this.IncludeBlobVersions,
-                IncludeDeleted = this.IncludeDeleted
+                IncludeDeleted = this.IncludeDeleted,
+                CreationTime = this.CreationTime == null ? null : this.CreationTime.ParseBlobInventoryCreationTime(),
             };
         }
 
@@ -247,6 +249,27 @@ namespace Microsoft.Azure.Commands.Management.Storage.Models
         public bool? IncludeBlobVersions { get; set; }
         public bool? IncludeSnapshots { get; set; }
         public bool? IncludeDeleted { get; set; }
+        public PSBlobInventoryCreationTime CreationTime { get; set; }
+    }
+
+    public class PSBlobInventoryCreationTime
+    {
+        public PSBlobInventoryCreationTime() { }
+
+        public PSBlobInventoryCreationTime(BlobInventoryCreationTime creationTime)
+        {
+            this.LastNDays = creationTime.LastNDays;
+        }
+
+        public BlobInventoryCreationTime ParseBlobInventoryCreationTime()
+        {
+            return new BlobInventoryCreationTime()
+            {
+                LastNDays = this.LastNDays,                 
+            };
+        }
+
+        public int? LastNDays { get; set; }
     }
 
     /// <summary>

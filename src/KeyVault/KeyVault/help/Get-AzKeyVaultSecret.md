@@ -291,7 +291,7 @@ Register-SecretVault -Name AzKeyVault -ModuleName Az.KeyVault -VaultParameters @
 # Set secret for vault AzKeyVault
 $secure = ConvertTo-SecureString -String "Password" -AsPlainText -Force
 Set-Secret -Vault AzKeyVault -Name secureSecret -SecureStringSecret $secure 
-Get-Secret -Vault AzKeyVault -Name secureSecret -AsPlainText 
+Get-Secret -Vault AzKeyVault -Name secureSecret -AsPlainText
 ```
 
 ```output

@@ -19,6 +19,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Monitor.DiagnosticSetting.Cmdlets
     [global::System.Management.Automation.OutputType(typeof(Microsoft.Azure.PowerShell.Cmdlets.Monitor.DiagnosticSetting.Models.Api20150401.ILocalizableString))]
     [global::Microsoft.Azure.PowerShell.Cmdlets.Monitor.DiagnosticSetting.Description(@"Get the list of available event categories supported in the Activity Logs Service.<br>The current list includes the following: Administrative, Security, ServiceHealth, Alert, Recommendation, Policy.")]
     [global::Microsoft.Azure.PowerShell.Cmdlets.Monitor.DiagnosticSetting.Generated]
+    [global::Microsoft.Azure.PowerShell.Cmdlets.Monitor.DiagnosticSetting.HttpPath(Path = "/providers/Microsoft.Insights/eventcategories", ApiVersion = "2015-04-01")]
     public partial class GetAzEventCategory_List : global::System.Management.Automation.PSCmdlet,
         Microsoft.Azure.PowerShell.Cmdlets.Monitor.DiagnosticSetting.Runtime.IEventListener
     {

@@ -19,7 +19,13 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.Models
     /// <summary>
     /// Represents Azure File Share specific job class.
     /// </summary>
-    public class AzureFileShareJob : AzureJob { }
+    public class AzureFileShareJob : AzureJob
+    {
+        /// <summary>
+        /// Storage account name for Azure file share.
+        /// </summary>
+        public string StorageAccountName { get; set; }
+    }
 
     /// <summary>
     /// Azure File Share specific job details class.

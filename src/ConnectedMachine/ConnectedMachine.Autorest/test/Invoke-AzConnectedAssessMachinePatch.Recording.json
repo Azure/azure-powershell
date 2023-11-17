@@ -1,0 +1,360 @@
+{
+  "Invoke-AzConnectedAssessMachinePatch+[NoContext]+Assess+$POST+https://management.azure.com/subscriptions/e6fe6705-4c9c-4b54-81d2-e455780e20b8/resourceGroups/az-sdk-test/providers/Microsoft.HybridCompute/machines/testmachine/assessPatches?api-version=2022-12-27+1": {
+    "Request": {
+      "Method": "POST",
+      "RequestUri": "https://management.azure.com/subscriptions/e6fe6705-4c9c-4b54-81d2-e455780e20b8/resourceGroups/az-sdk-test/providers/Microsoft.HybridCompute/machines/testmachine/assessPatches?api-version=2022-12-27",
+      "Content": null,
+      "Headers": {
+        "x-ms-unique-id": [ "11" ],
+        "x-ms-client-request-id": [ "bde8c7ce-7a05-4575-858d-df4eb7ee39fe" ],
+        "CommandName": [ "Invoke-AzConnectedAssessMachinePatch" ],
+        "FullCommandName": [ "Invoke-AzConnectedAssessMachinePatch_Assess" ],
+        "ParameterSetName": [ "__AllParameterSets" ],
+        "User-Agent": [ "AzurePowershell/Az4.0.0-preview" ],
+        "Authorization": [ "[Filtered]" ]
+      },
+      "ContentHeaders": {
+      }
+    },
+    "Response": {
+      "StatusCode": 202,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "Location": [ "https://management.azure.com/subscriptions/e6fe6705-4c9c-4b54-81d2-e455780e20b8/providers/Microsoft.HybridCompute/locations/eastus2euap/updateCenterOperationResults/55df7c65-d892-42f3-b9ea-93091de18b04?api-version=2022-12-27" ],
+        "api-supported-versions": [ "2020-08-15-preview" ],
+        "x-ms-client-request-id": [ "bde8c7ce-7a05-4575-858d-df4eb7ee39fe" ],
+        "x-ms-ratelimit-remaining-subscription-writes": [ "1198" ],
+        "x-ms-request-id": [ "dc4a4835-55ba-474e-9fa1-bf536fd6c121" ],
+        "x-ms-correlation-request-id": [ "dc4a4835-55ba-474e-9fa1-bf536fd6c121" ],
+        "x-ms-routing-request-id": [ "CENTRALUS:20230802T064025Z:dc4a4835-55ba-474e-9fa1-bf536fd6c121" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "Date": [ "Wed, 02 Aug 2023 06:40:25 GMT" ]
+      },
+      "ContentHeaders": {
+        "Expires": [ "-1" ],
+        "Content-Length": [ "0" ]
+      },
+      "Content": null
+    }
+  },
+  "Invoke-AzConnectedAssessMachinePatch+[NoContext]+Assess+$GET+https://management.azure.com/subscriptions/e6fe6705-4c9c-4b54-81d2-e455780e20b8/providers/Microsoft.HybridCompute/locations/eastus2euap/updateCenterOperationResults/55df7c65-d892-42f3-b9ea-93091de18b04?api-version=2022-12-27+2": {
+    "Request": {
+      "Method": "GET",
+      "RequestUri": "https://management.azure.com/subscriptions/e6fe6705-4c9c-4b54-81d2-e455780e20b8/providers/Microsoft.HybridCompute/locations/eastus2euap/updateCenterOperationResults/55df7c65-d892-42f3-b9ea-93091de18b04?api-version=2022-12-27",
+      "Content": null,
+      "Headers": {
+        "Authorization": [ "[Filtered]" ],
+        "x-ms-unique-id": [ "12" ],
+        "x-ms-client-request-id": [ "bde8c7ce-7a05-4575-858d-df4eb7ee39fe" ],
+        "CommandName": [ "Invoke-AzConnectedAssessMachinePatch" ],
+        "FullCommandName": [ "Invoke-AzConnectedAssessMachinePatch_Assess" ],
+        "ParameterSetName": [ "__AllParameterSets" ],
+        "User-Agent": [ "AzurePowershell/Az4.0.0-preview" ]
+      },
+      "ContentHeaders": {
+      }
+    },
+    "Response": {
+      "StatusCode": 202,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "Location": [ "https://management.azure.com/subscriptions/e6fe6705-4c9c-4b54-81d2-e455780e20b8/providers/Microsoft.HybridCompute/locations/eastus2euap/updateCenterOperationResults/55df7c65-d892-42f3-b9ea-93091de18b04?api-version=2022-12-27" ],
+        "api-supported-versions": [ "2020-08-15-preview" ],
+        "x-ms-client-request-id": [ "bde8c7ce-7a05-4575-858d-df4eb7ee39fe" ],
+        "x-ms-ratelimit-remaining-subscription-resource-requests": [ "991" ],
+        "x-ms-request-id": [ "7adb1f71-6d92-4f0c-a02f-5e486a14ba6c" ],
+        "x-ms-correlation-request-id": [ "7adb1f71-6d92-4f0c-a02f-5e486a14ba6c" ],
+        "x-ms-routing-request-id": [ "CENTRALUS:20230802T064056Z:7adb1f71-6d92-4f0c-a02f-5e486a14ba6c" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "Date": [ "Wed, 02 Aug 2023 06:40:55 GMT" ]
+      },
+      "ContentHeaders": {
+        "Expires": [ "-1" ],
+        "Content-Length": [ "0" ]
+      },
+      "Content": null
+    }
+  },
+  "Invoke-AzConnectedAssessMachinePatch+[NoContext]+Assess+$GET+https://management.azure.com/subscriptions/e6fe6705-4c9c-4b54-81d2-e455780e20b8/providers/Microsoft.HybridCompute/locations/eastus2euap/updateCenterOperationResults/55df7c65-d892-42f3-b9ea-93091de18b04?api-version=2022-12-27+3": {
+    "Request": {
+      "Method": "GET",
+      "RequestUri": "https://management.azure.com/subscriptions/e6fe6705-4c9c-4b54-81d2-e455780e20b8/providers/Microsoft.HybridCompute/locations/eastus2euap/updateCenterOperationResults/55df7c65-d892-42f3-b9ea-93091de18b04?api-version=2022-12-27",
+      "Content": null,
+      "Headers": {
+        "Authorization": [ "[Filtered]" ],
+        "x-ms-unique-id": [ "13" ],
+        "x-ms-client-request-id": [ "bde8c7ce-7a05-4575-858d-df4eb7ee39fe" ],
+        "CommandName": [ "Invoke-AzConnectedAssessMachinePatch" ],
+        "FullCommandName": [ "Invoke-AzConnectedAssessMachinePatch_Assess" ],
+        "ParameterSetName": [ "__AllParameterSets" ],
+        "User-Agent": [ "AzurePowershell/Az4.0.0-preview" ]
+      },
+      "ContentHeaders": {
+      }
+    },
+    "Response": {
+      "StatusCode": 202,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "Location": [ "https://management.azure.com/subscriptions/e6fe6705-4c9c-4b54-81d2-e455780e20b8/providers/Microsoft.HybridCompute/locations/eastus2euap/updateCenterOperationResults/55df7c65-d892-42f3-b9ea-93091de18b04?api-version=2022-12-27" ],
+        "api-supported-versions": [ "2020-08-15-preview" ],
+        "x-ms-client-request-id": [ "bde8c7ce-7a05-4575-858d-df4eb7ee39fe" ],
+        "x-ms-ratelimit-remaining-subscription-resource-requests": [ "990" ],
+        "x-ms-request-id": [ "85658dae-cc19-4804-8933-95410eaecad0" ],
+        "x-ms-correlation-request-id": [ "85658dae-cc19-4804-8933-95410eaecad0" ],
+        "x-ms-routing-request-id": [ "CENTRALUS:20230802T064126Z:85658dae-cc19-4804-8933-95410eaecad0" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "Date": [ "Wed, 02 Aug 2023 06:41:25 GMT" ]
+      },
+      "ContentHeaders": {
+        "Expires": [ "-1" ],
+        "Content-Length": [ "0" ]
+      },
+      "Content": null
+    }
+  },
+  "Invoke-AzConnectedAssessMachinePatch+[NoContext]+Assess+$GET+https://management.azure.com/subscriptions/e6fe6705-4c9c-4b54-81d2-e455780e20b8/providers/Microsoft.HybridCompute/locations/eastus2euap/updateCenterOperationResults/55df7c65-d892-42f3-b9ea-93091de18b04?api-version=2022-12-27+4": {
+    "Request": {
+      "Method": "GET",
+      "RequestUri": "https://management.azure.com/subscriptions/e6fe6705-4c9c-4b54-81d2-e455780e20b8/providers/Microsoft.HybridCompute/locations/eastus2euap/updateCenterOperationResults/55df7c65-d892-42f3-b9ea-93091de18b04?api-version=2022-12-27",
+      "Content": null,
+      "Headers": {
+        "Authorization": [ "[Filtered]" ],
+        "x-ms-unique-id": [ "14" ],
+        "x-ms-client-request-id": [ "bde8c7ce-7a05-4575-858d-df4eb7ee39fe" ],
+        "CommandName": [ "Invoke-AzConnectedAssessMachinePatch" ],
+        "FullCommandName": [ "Invoke-AzConnectedAssessMachinePatch_Assess" ],
+        "ParameterSetName": [ "__AllParameterSets" ],
+        "User-Agent": [ "AzurePowershell/Az4.0.0-preview" ]
+      },
+      "ContentHeaders": {
+      }
+    },
+    "Response": {
+      "StatusCode": 202,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "Location": [ "https://management.azure.com/subscriptions/e6fe6705-4c9c-4b54-81d2-e455780e20b8/providers/Microsoft.HybridCompute/locations/eastus2euap/updateCenterOperationResults/55df7c65-d892-42f3-b9ea-93091de18b04?api-version=2022-12-27" ],
+        "x-ms-ratelimit-remaining-subscription-resource-requests": [ "989" ],
+        "api-supported-versions": [ "2020-08-15-preview" ],
+        "x-ms-client-request-id": [ "bde8c7ce-7a05-4575-858d-df4eb7ee39fe" ],
+        "x-ms-request-id": [ "e8189a7d-4356-46c5-8e8e-f4ca969cb8a7" ],
+        "x-ms-correlation-request-id": [ "e8189a7d-4356-46c5-8e8e-f4ca969cb8a7" ],
+        "x-ms-routing-request-id": [ "CENTRALUS:20230802T064157Z:e8189a7d-4356-46c5-8e8e-f4ca969cb8a7" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "Date": [ "Wed, 02 Aug 2023 06:41:56 GMT" ]
+      },
+      "ContentHeaders": {
+        "Expires": [ "-1" ],
+        "Content-Length": [ "0" ]
+      },
+      "Content": null
+    }
+  },
+  "Invoke-AzConnectedAssessMachinePatch+[NoContext]+Assess+$GET+https://management.azure.com/subscriptions/e6fe6705-4c9c-4b54-81d2-e455780e20b8/providers/Microsoft.HybridCompute/locations/eastus2euap/updateCenterOperationResults/55df7c65-d892-42f3-b9ea-93091de18b04?api-version=2022-12-27+5": {
+    "Request": {
+      "Method": "GET",
+      "RequestUri": "https://management.azure.com/subscriptions/e6fe6705-4c9c-4b54-81d2-e455780e20b8/providers/Microsoft.HybridCompute/locations/eastus2euap/updateCenterOperationResults/55df7c65-d892-42f3-b9ea-93091de18b04?api-version=2022-12-27",
+      "Content": null,
+      "Headers": {
+        "Authorization": [ "[Filtered]" ],
+        "x-ms-unique-id": [ "15" ],
+        "x-ms-client-request-id": [ "bde8c7ce-7a05-4575-858d-df4eb7ee39fe" ],
+        "CommandName": [ "Invoke-AzConnectedAssessMachinePatch" ],
+        "FullCommandName": [ "Invoke-AzConnectedAssessMachinePatch_Assess" ],
+        "ParameterSetName": [ "__AllParameterSets" ],
+        "User-Agent": [ "AzurePowershell/Az4.0.0-preview" ]
+      },
+      "ContentHeaders": {
+      }
+    },
+    "Response": {
+      "StatusCode": 202,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "Location": [ "https://management.azure.com/subscriptions/e6fe6705-4c9c-4b54-81d2-e455780e20b8/providers/Microsoft.HybridCompute/locations/eastus2euap/updateCenterOperationResults/55df7c65-d892-42f3-b9ea-93091de18b04?api-version=2022-12-27" ],
+        "api-supported-versions": [ "2020-08-15-preview" ],
+        "x-ms-client-request-id": [ "bde8c7ce-7a05-4575-858d-df4eb7ee39fe" ],
+        "x-ms-ratelimit-remaining-subscription-resource-requests": [ "988" ],
+        "x-ms-request-id": [ "6e678b53-46c4-4efe-9436-bc554a0f1f2f" ],
+        "x-ms-correlation-request-id": [ "6e678b53-46c4-4efe-9436-bc554a0f1f2f" ],
+        "x-ms-routing-request-id": [ "CENTRALUS:20230802T064227Z:6e678b53-46c4-4efe-9436-bc554a0f1f2f" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "Date": [ "Wed, 02 Aug 2023 06:42:26 GMT" ]
+      },
+      "ContentHeaders": {
+        "Expires": [ "-1" ],
+        "Content-Length": [ "0" ]
+      },
+      "Content": null
+    }
+  },
+  "Invoke-AzConnectedAssessMachinePatch+[NoContext]+Assess+$GET+https://management.azure.com/subscriptions/e6fe6705-4c9c-4b54-81d2-e455780e20b8/providers/Microsoft.HybridCompute/locations/eastus2euap/updateCenterOperationResults/55df7c65-d892-42f3-b9ea-93091de18b04?api-version=2022-12-27+6": {
+    "Request": {
+      "Method": "GET",
+      "RequestUri": "https://management.azure.com/subscriptions/e6fe6705-4c9c-4b54-81d2-e455780e20b8/providers/Microsoft.HybridCompute/locations/eastus2euap/updateCenterOperationResults/55df7c65-d892-42f3-b9ea-93091de18b04?api-version=2022-12-27",
+      "Content": null,
+      "Headers": {
+        "Authorization": [ "[Filtered]" ],
+        "x-ms-unique-id": [ "16" ],
+        "x-ms-client-request-id": [ "bde8c7ce-7a05-4575-858d-df4eb7ee39fe" ],
+        "CommandName": [ "Invoke-AzConnectedAssessMachinePatch" ],
+        "FullCommandName": [ "Invoke-AzConnectedAssessMachinePatch_Assess" ],
+        "ParameterSetName": [ "__AllParameterSets" ],
+        "User-Agent": [ "AzurePowershell/Az4.0.0-preview" ]
+      },
+      "ContentHeaders": {
+      }
+    },
+    "Response": {
+      "StatusCode": 202,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "Location": [ "https://management.azure.com/subscriptions/e6fe6705-4c9c-4b54-81d2-e455780e20b8/providers/Microsoft.HybridCompute/locations/eastus2euap/updateCenterOperationResults/55df7c65-d892-42f3-b9ea-93091de18b04?api-version=2022-12-27" ],
+        "api-supported-versions": [ "2020-08-15-preview" ],
+        "x-ms-client-request-id": [ "bde8c7ce-7a05-4575-858d-df4eb7ee39fe" ],
+        "x-ms-ratelimit-remaining-subscription-resource-requests": [ "987" ],
+        "x-ms-request-id": [ "e129111c-326a-4c03-9c66-ac3d534fc558" ],
+        "x-ms-correlation-request-id": [ "e129111c-326a-4c03-9c66-ac3d534fc558" ],
+        "x-ms-routing-request-id": [ "CENTRALUS:20230802T064257Z:e129111c-326a-4c03-9c66-ac3d534fc558" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "Date": [ "Wed, 02 Aug 2023 06:42:57 GMT" ]
+      },
+      "ContentHeaders": {
+        "Expires": [ "-1" ],
+        "Content-Length": [ "0" ]
+      },
+      "Content": null
+    }
+  },
+  "Invoke-AzConnectedAssessMachinePatch+[NoContext]+Assess+$GET+https://management.azure.com/subscriptions/e6fe6705-4c9c-4b54-81d2-e455780e20b8/providers/Microsoft.HybridCompute/locations/eastus2euap/updateCenterOperationResults/55df7c65-d892-42f3-b9ea-93091de18b04?api-version=2022-12-27+7": {
+    "Request": {
+      "Method": "GET",
+      "RequestUri": "https://management.azure.com/subscriptions/e6fe6705-4c9c-4b54-81d2-e455780e20b8/providers/Microsoft.HybridCompute/locations/eastus2euap/updateCenterOperationResults/55df7c65-d892-42f3-b9ea-93091de18b04?api-version=2022-12-27",
+      "Content": null,
+      "Headers": {
+        "Authorization": [ "[Filtered]" ],
+        "x-ms-unique-id": [ "17" ],
+        "x-ms-client-request-id": [ "bde8c7ce-7a05-4575-858d-df4eb7ee39fe" ],
+        "CommandName": [ "Invoke-AzConnectedAssessMachinePatch" ],
+        "FullCommandName": [ "Invoke-AzConnectedAssessMachinePatch_Assess" ],
+        "ParameterSetName": [ "__AllParameterSets" ],
+        "User-Agent": [ "AzurePowershell/Az4.0.0-preview" ]
+      },
+      "ContentHeaders": {
+      }
+    },
+    "Response": {
+      "StatusCode": 202,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "Location": [ "https://management.azure.com/subscriptions/e6fe6705-4c9c-4b54-81d2-e455780e20b8/providers/Microsoft.HybridCompute/locations/eastus2euap/updateCenterOperationResults/55df7c65-d892-42f3-b9ea-93091de18b04?api-version=2022-12-27" ],
+        "api-supported-versions": [ "2020-08-15-preview" ],
+        "x-ms-client-request-id": [ "bde8c7ce-7a05-4575-858d-df4eb7ee39fe" ],
+        "x-ms-ratelimit-remaining-subscription-resource-requests": [ "986" ],
+        "x-ms-request-id": [ "dc9ae6b6-2b65-40ce-aabd-dc5802aff201" ],
+        "x-ms-correlation-request-id": [ "dc9ae6b6-2b65-40ce-aabd-dc5802aff201" ],
+        "x-ms-routing-request-id": [ "CENTRALUS:20230802T064327Z:dc9ae6b6-2b65-40ce-aabd-dc5802aff201" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "Date": [ "Wed, 02 Aug 2023 06:43:27 GMT" ]
+      },
+      "ContentHeaders": {
+        "Expires": [ "-1" ],
+        "Content-Length": [ "0" ]
+      },
+      "Content": null
+    }
+  },
+  "Invoke-AzConnectedAssessMachinePatch+[NoContext]+Assess+$GET+https://management.azure.com/subscriptions/e6fe6705-4c9c-4b54-81d2-e455780e20b8/providers/Microsoft.HybridCompute/locations/eastus2euap/updateCenterOperationResults/55df7c65-d892-42f3-b9ea-93091de18b04?api-version=2022-12-27+8": {
+    "Request": {
+      "Method": "GET",
+      "RequestUri": "https://management.azure.com/subscriptions/e6fe6705-4c9c-4b54-81d2-e455780e20b8/providers/Microsoft.HybridCompute/locations/eastus2euap/updateCenterOperationResults/55df7c65-d892-42f3-b9ea-93091de18b04?api-version=2022-12-27",
+      "Content": null,
+      "Headers": {
+        "Authorization": [ "[Filtered]" ],
+        "x-ms-unique-id": [ "18" ],
+        "x-ms-client-request-id": [ "bde8c7ce-7a05-4575-858d-df4eb7ee39fe" ],
+        "CommandName": [ "Invoke-AzConnectedAssessMachinePatch" ],
+        "FullCommandName": [ "Invoke-AzConnectedAssessMachinePatch_Assess" ],
+        "ParameterSetName": [ "__AllParameterSets" ],
+        "User-Agent": [ "AzurePowershell/Az4.0.0-preview" ]
+      },
+      "ContentHeaders": {
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "x-ms-ratelimit-remaining-subscription-resource-requests": [ "985" ],
+        "api-supported-versions": [ "2020-08-15-preview" ],
+        "x-ms-request-id": [ "6e2bede7-2a2d-4ae1-ab5f-5535dde65dc8" ],
+        "x-ms-correlation-request-id": [ "6e2bede7-2a2d-4ae1-ab5f-5535dde65dc8" ],
+        "x-ms-routing-request-id": [ "CENTRALUS:20230802T064358Z:6e2bede7-2a2d-4ae1-ab5f-5535dde65dc8" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "Date": [ "Wed, 02 Aug 2023 06:43:57 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "421" ],
+        "Content-Type": [ "application/json; charset=utf-8" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\"startDateTime\":\"2023-08-02T06:40:25.7362912Z\",\"lastModifiedDateTime\":\"2023-08-02T06:43:31.4474615Z\",\"startedBy\":\"User\",\"rebootPending\":false,\"patchServiceUsed\":\"WU\",\"status\":\"Succeeded\",\"availablePatchCountByClassification\":{\"security\":0,\"critical\":0,\"definition\":1,\"updateRollup\":0,\"featurePack\":0,\"servicePack\":0,\"tools\":0,\"updates\":0},\"assessmentActivityId\":\"55df7c65-d892-42f3-b9ea-93091de18b04\",\"osType\":\"Windows\"}"
+    }
+  },
+  "Invoke-AzConnectedAssessMachinePatch+[NoContext]+Assess+$GET+https://management.azure.com/subscriptions/e6fe6705-4c9c-4b54-81d2-e455780e20b8/providers/Microsoft.HybridCompute/locations/eastus2euap/updateCenterOperationResults/55df7c65-d892-42f3-b9ea-93091de18b04?api-version=2022-12-27+9": {
+    "Request": {
+      "Method": "GET",
+      "RequestUri": "https://management.azure.com/subscriptions/e6fe6705-4c9c-4b54-81d2-e455780e20b8/providers/Microsoft.HybridCompute/locations/eastus2euap/updateCenterOperationResults/55df7c65-d892-42f3-b9ea-93091de18b04?api-version=2022-12-27",
+      "Content": null,
+      "Headers": {
+        "Authorization": [ "[Filtered]" ],
+        "x-ms-unique-id": [ "19" ],
+        "x-ms-client-request-id": [ "bde8c7ce-7a05-4575-858d-df4eb7ee39fe" ],
+        "CommandName": [ "Invoke-AzConnectedAssessMachinePatch" ],
+        "FullCommandName": [ "Invoke-AzConnectedAssessMachinePatch_Assess" ],
+        "ParameterSetName": [ "__AllParameterSets" ],
+        "User-Agent": [ "AzurePowershell/Az4.0.0-preview" ]
+      },
+      "ContentHeaders": {
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "x-ms-ratelimit-remaining-subscription-resource-requests": [ "984" ],
+        "api-supported-versions": [ "2020-08-15-preview" ],
+        "x-ms-request-id": [ "d24c6b21-c3d4-403d-b0ab-d9713830efd1" ],
+        "x-ms-correlation-request-id": [ "d24c6b21-c3d4-403d-b0ab-d9713830efd1" ],
+        "x-ms-routing-request-id": [ "CENTRALUS:20230802T064358Z:d24c6b21-c3d4-403d-b0ab-d9713830efd1" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "Date": [ "Wed, 02 Aug 2023 06:43:57 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "421" ],
+        "Content-Type": [ "application/json; charset=utf-8" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\"startDateTime\":\"2023-08-02T06:40:25.7362912Z\",\"lastModifiedDateTime\":\"2023-08-02T06:43:31.4474615Z\",\"startedBy\":\"User\",\"rebootPending\":false,\"patchServiceUsed\":\"WU\",\"status\":\"Succeeded\",\"availablePatchCountByClassification\":{\"security\":0,\"critical\":0,\"definition\":1,\"updateRollup\":0,\"featurePack\":0,\"servicePack\":0,\"tools\":0,\"updates\":0},\"assessmentActivityId\":\"55df7c65-d892-42f3-b9ea-93091de18b04\",\"osType\":\"Windows\"}"
+    }
+  }
+}

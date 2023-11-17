@@ -1561,7 +1561,7 @@ namespace Microsoft.Azure.Commands.Automation.Common
             var hybridWorkerCreationParams = new HybridRunbookWorkerCreateParameters()
             {
                 Name = hybridRunbookWorkerGroupName,
-                VmResourceId = vmResourceId,
+                VMResourceId = vmResourceId,
             };
 
             response = this.automationManagementClient.HybridRunbookWorkers.Create(resourceGroupName, automationAccountName, hybridRunbookWorkerGroupName, workerName, hybridWorkerCreationParams);

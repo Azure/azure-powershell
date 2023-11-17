@@ -73,7 +73,7 @@ namespace Microsoft.Azure.Commands.DataLakeStore.Test.ScenarioTests
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestAdlsFileSystem()
         {
-            var workingPath = Path.GetDirectoryName(new Uri(Assembly.GetExecutingAssembly().CodeBase).AbsolutePath);
+            var workingPath = Path.GetDirectoryName(new Uri(Assembly.GetExecutingAssembly().Location).AbsolutePath);
             var testLocation = Path.Combine(workingPath, "ScenarioTests", (this.GetType().Name + ".ps1"));
             TestRunner.RunTestScript($"Test-DataLakeStoreFileSystem -fileToCopy '{testLocation}' -location '{TestFileSystemResourceGroupLocation}'");
         }

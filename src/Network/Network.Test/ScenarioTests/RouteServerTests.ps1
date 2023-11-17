@@ -43,12 +43,13 @@ function Test-RouteServerCRUD
       $publicIp = Get-AzPublicIpAddress -Name $publicIpAddressName -ResourceGroupName $rgName
 
       # Create route server
-      $actualvr = New-AzRouteServer -ResourceGroupName $rgname -location $rglocation -RouteServerName $routeServerName -HostedSubnet $hostedsubnet.Id -PublicIpAddress $publicIp -HubRoutingPreference $hubRoutingPreference
+      $actualvr = New-AzRouteServer -ResourceGroupName $rgname -location $rglocation -RouteServerName $routeServerName -HostedSubnet $hostedsubnet.Id -PublicIpAddress $publicIp -HubRoutingPreference $hubRoutingPreference -AllowBranchToBranchTraffic
       $expectedvr = Get-AzRouteServer -ResourceGroupName $rgname -RouteServerName $routeServerName
       Assert-AreEqual $expectedvr.ResourceGroupName $actualvr.ResourceGroupName	
       Assert-AreEqual $expectedvr.Name $actualvr.Name
       Assert-AreEqual $expectedvr.Location $actualvr.Location
       Assert-AreEqual $expectedvr.HubRoutingPreference $actualvr.HubRoutingPreference
+      Assert-AreEqual $expectedvr.AllowBranchToBranchTraffic $actualvr.AllowBranchToBranchTraffic
 
       # Update route server
       $actualvr = Update-AzRouteServer -ResourceGroupName $rgname -RouteServerName $routeServerName -HubRoutingPreference "ASPath"
@@ -60,6 +61,7 @@ function Test-RouteServerCRUD
       Assert-AreEqual $list[0].Name $actualvr.Name	
       Assert-AreEqual $list[0].Location $actualvr.Location
       Assert-AreEqual $list[0].HubRoutingPreference $actualvr.HubRoutingPreference
+      Assert-AreEqual $list[0].AllowBranchToBranchTraffic $actualvr.AllowBranchToBranchTraffic
         
       # Delete VR
       $deletevr = Remove-AzRouteServer -ResourceGroupName $rgname -RouteServerName $routeServerName -PassThru -Force

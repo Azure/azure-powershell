@@ -244,7 +244,7 @@ namespace Microsoft.Azure.Commands.Sql.ManagedDatabase.Services
             {
                 // Check if the database provided by the caller is indeed created by Log Replay migration
                 var dbRestoreDetails = Communicator.GetLogReplayStatus(parameters.ResourceGroupName, parameters.ManagedInstanceName, parameters.Name);
-                if (dbRestoreDetails.ManagedDatabaseRestoreDetailsResultType.Equals("lrsrestore", StringComparison.OrdinalIgnoreCase))
+                if (dbRestoreDetails.Type.Equals("lrsrestore", StringComparison.OrdinalIgnoreCase))
                 {
                     Communicator.Remove(parameters.ResourceGroupName, parameters.ManagedInstanceName, parameters.Name);
                 }

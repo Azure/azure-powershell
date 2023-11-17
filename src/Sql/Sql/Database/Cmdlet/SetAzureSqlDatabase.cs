@@ -255,7 +255,7 @@ namespace Microsoft.Azure.Commands.Sql.Database.Cmdlet
         public string MaintenanceConfigurationId { get; set; }
 
         [Parameter(Mandatory = false,
-            HelpMessage = "Generate and assign an Azure Active Directory Identity for this database for use with key management services like Azure KeyVault.")]
+            HelpMessage = "Generate and assign a Microsoft Entra identity for this database for use with key management services like Azure KeyVault.")]
         public SwitchParameter AssignIdentity { get; set; }
 
         [Parameter(Mandatory = false,
@@ -287,6 +287,33 @@ namespace Microsoft.Azure.Commands.Sql.Database.Cmdlet
             "Default",
             "VBS")]
         public string PreferredEnclaveType { get; set; }
+
+        /// <summary>
+        /// Gets or sets the encryption protector key auto rotation status
+        /// </summary>
+        [Parameter(Mandatory = false,
+        ValueFromPipelineByPropertyName = true,
+            HelpMessage = "The AKV Key Auto Rotation status")]
+        public SwitchParameter EncryptionProtectorAutoRotation { get; set; }
+
+        /// <summary>
+        /// Gets or sets the value indicating if free limit will be used on this database
+        /// </summary>
+        [Parameter(Mandatory = false,
+            HelpMessage = "Use free limit on this database.")]
+        public SwitchParameter UseFreeLimit { get; set; }
+
+
+        /// <summary>
+        /// Gets or sets the exhaustion behavior of database if free limit is selected
+        /// </summary>
+        [Parameter(Mandatory = false,
+        HelpMessage = "Exhaustion behavior of free limit database.")]
+        [PSArgumentCompleter(
+            "AutoPause",
+            "BillOverUsage")]
+        public string FreeLimitExhaustionBehavior { get; set; }
+
 
         /// <summary>
         /// Overriding to add warning message
@@ -350,6 +377,9 @@ namespace Microsoft.Azure.Commands.Sql.Database.Cmdlet
                 Identity = DatabaseIdentityAndKeysHelper.GetDatabaseIdentity(this.AssignIdentity.IsPresent, this.UserAssignedIdentityId),
                 EncryptionProtector = this.EncryptionProtector ?? model.FirstOrDefault().EncryptionProtector,
                 FederatedClientId = this.FederatedClientId ?? model.FirstOrDefault().FederatedClientId,
+                EncryptionProtectorAutoRotation = this.IsParameterBound(p => p.EncryptionProtectorAutoRotation) ? EncryptionProtectorAutoRotation.ToBool() : (bool?)null,
+                UseFreeLimit = this.IsParameterBound(p => p.UseFreeLimit) ? UseFreeLimit.ToBool() : (bool?)null,
+                FreeLimitExhaustionBehavior = this.FreeLimitExhaustionBehavior
             };
 
             var database = ModelAdapter.GetDatabase(ResourceGroupName, ServerName, DatabaseName);

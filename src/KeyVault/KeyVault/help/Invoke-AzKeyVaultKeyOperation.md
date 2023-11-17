@@ -14,23 +14,23 @@ Performs operation like "Encrypt", "Decrypt", "Wrap" or "Unwrap" using a specifi
 
 ### ByVaultName (Default)
 ```
-Invoke-AzKeyVaultKeyOperation -Operation <String> -Algorithm <String> -Value <SecureString>
- [-VaultName] <String> [-Name] <String> [-Version <String>] [-DefaultProfile <IAzureContextContainer>]
- [-WhatIf] [-Confirm] [<CommonParameters>]
+Invoke-AzKeyVaultKeyOperation [-Version <String>] -Operation <String> -Algorithm <String> -Value <SecureString>
+ [-Name] <String> [-VaultName] <String> [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
+ [<CommonParameters>]
 ```
 
 ### ByHsmName
 ```
-Invoke-AzKeyVaultKeyOperation -Operation <String> -Algorithm <String> -Value <SecureString> [-HsmName] <String>
- [-Name] <String> [-Version <String>] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
+Invoke-AzKeyVaultKeyOperation [-Version <String>] -Operation <String> -Algorithm <String> -Value <SecureString>
+ [-HsmName] <String> [-Name] <String> [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
  [<CommonParameters>]
 ```
 
 ### ByKeyInputObject
 ```
-Invoke-AzKeyVaultKeyOperation -Operation <String> -Algorithm <String> -Value <SecureString>
- [-InputObject] <PSKeyVaultKeyIdentityItem> [-Version <String>] [-DefaultProfile <IAzureContextContainer>]
- [-WhatIf] [-Confirm] [<CommonParameters>]
+Invoke-AzKeyVaultKeyOperation [-Version <String>] -Operation <String> -Algorithm <String> -Value <SecureString>
+ [-InputObject] <PSKeyVaultKeyIdentityItem> [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
+ [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -94,7 +94,7 @@ Wraps a symmetric key using key named test-key stored in test-kv. The `Result` i
 
 ### Example 4: Unwraps a symmetric key using a specified key
 ```powershell
-Invoke-AzKeyVaultKeyOperation -Operation Unwrap -Algorithm RSA1_5 -VaultName test-kv -Name test-key -Value (ConvertTo-SecureString -String $result.Result -AsPlainText -Force) 
+Invoke-AzKeyVaultKeyOperation -Operation Unwrap -Algorithm RSA1_5 -VaultName test-kv -Name test-key -Value (ConvertTo-SecureString -String $result.Result -AsPlainText -Force)
 ```
 
 ```output

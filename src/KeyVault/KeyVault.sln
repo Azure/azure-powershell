@@ -1,3 +1,4 @@
+﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.3.32901.215
@@ -21,6 +22,12 @@ EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "TestFx", "..\..\tools\TestFx\TestFx.csproj", "{BC80A1D0-FFA4-43D9-AA74-799F5CB54B58}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "KeyVault.Sdk", "KeyVault.Sdk\KeyVault.Sdk.csproj", "{809F0E21-22C6-4CD0-ACE8-AB8ADA0BA4BD}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Az.KeyVault", "KeyVault.Autorest\Az.KeyVault.csproj", "{0062B427-4E86-43EF-8D7F-2E211D3C1BE7}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Network.Management.Sdk", "..\Network\Network.Management.Sdk\Network.Management.Sdk.csproj", "{46D2C182-FE70-46DD-85AD-C356275BBBFE}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Network", "..\Network\Network\Network.csproj", "{72AB7911-D3FE-4E4A-B056-83AA48A5E4A5}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -64,6 +71,18 @@ Global
 		{809F0E21-22C6-4CD0-ACE8-AB8ADA0BA4BD}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{809F0E21-22C6-4CD0-ACE8-AB8ADA0BA4BD}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{809F0E21-22C6-4CD0-ACE8-AB8ADA0BA4BD}.Release|Any CPU.Build.0 = Release|Any CPU
+		{0062B427-4E86-43EF-8D7F-2E211D3C1BE7}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{0062B427-4E86-43EF-8D7F-2E211D3C1BE7}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{0062B427-4E86-43EF-8D7F-2E211D3C1BE7}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{0062B427-4E86-43EF-8D7F-2E211D3C1BE7}.Release|Any CPU.Build.0 = Release|Any CPU
+		{46D2C182-FE70-46DD-85AD-C356275BBBFE}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{46D2C182-FE70-46DD-85AD-C356275BBBFE}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{46D2C182-FE70-46DD-85AD-C356275BBBFE}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{46D2C182-FE70-46DD-85AD-C356275BBBFE}.Release|Any CPU.Build.0 = Release|Any CPU
+		{72AB7911-D3FE-4E4A-B056-83AA48A5E4A5}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{72AB7911-D3FE-4E4A-B056-83AA48A5E4A5}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{72AB7911-D3FE-4E4A-B056-83AA48A5E4A5}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{72AB7911-D3FE-4E4A-B056-83AA48A5E4A5}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

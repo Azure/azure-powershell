@@ -35,7 +35,7 @@ namespace Microsoft.WindowsAzure.Commands.Storage.File
 
     public abstract class AzureStorageFileCmdletBase : StorageCloudCmdletBase<IStorageFileManagement>
     {
-        [Parameter(Mandatory = false, HelpMessage = "Disallow trailing dot (.) to suffex directory and file names.", ParameterSetName = Constants.ShareNameParameterSetName)]
+        [Parameter(Mandatory = false, HelpMessage = "Disallow trailing dot (.) to suffix directory and file names.", ParameterSetName = Constants.ShareNameParameterSetName)]
         public virtual SwitchParameter DisAllowTrailingDot { get; set; }
         protected FileRequestOptions RequestOptions
         {

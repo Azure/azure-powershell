@@ -1,0 +1,125 @@
+{
+  "Update-AzNetworkCloudStorageAppliance+[NoContext]+Update+$PATCH+https://management.azure.com/subscriptions/fca2e8ee-1179-48b8-9532-428ed0873a2e/resourceGroups/dev07-2bb5c1f33a7f-HostedResources-0FB08C6D/providers/Microsoft.NetworkCloud/storageAppliances/b37dev07purestor1?api-version=2023-07-01+1": {
+    "Request": {
+      "Method": "PATCH",
+      "RequestUri": "https://management.azure.com/subscriptions/fca2e8ee-1179-48b8-9532-428ed0873a2e/resourceGroups/dev07-2bb5c1f33a7f-HostedResources-0FB08C6D/providers/Microsoft.NetworkCloud/storageAppliances/b37dev07purestor1?api-version=2023-07-01",
+      "Content": "{\n  \"properties\": {\n    \"serialNumber\": \"serial\"\n  },\n  \"tags\": {\n    \"CreatedBy\": \"/subscriptions/fca2e8ee-1179-48b8-9532-428ed0873a2e/resourceGroups/dev07-2bb5c1f33a7f-hostedresources-0fb08c6d/providers/microsoft.extendedlocation/customlocations/dev07-2bb5c1f33a7f-cstm-loc/resourcesyncrules/storageapplianceshydrationrule\",\n    \"tag2\": \"tagUpdate\"\n  }\n}",
+      "isContentBase64": false,
+      "Headers": {
+      },
+      "ContentHeaders": {
+        "Content-Type": [ "application/json" ],
+        "Content-Length": [ "356" ]
+      }
+    },
+    "Response": {
+      "StatusCode": 202,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "ETag": [ "\"070063e7-0000-0100-0000-64c424840000\"" ],
+        "Location": [ "https://management.azure.com/subscriptions/fca2e8ee-1179-48b8-9532-428ed0873a2e/providers/Microsoft.NetworkCloud/locations/EASTUS/operationStatuses/62fbec0d-514d-42d3-9d6c-6d9311d84c85*6AEFECFA3E3556128C3E856E5E3C24DA5A341B137037F5D04D8745B934922818?api-version=2023-07-01" ],
+        "x-ms-ratelimit-remaining-subscription-writes": [ "1199" ],
+        "x-ms-providerhub-traffic": [ "True" ],
+        "mise-correlation-id": [ "f535dc7f-6016-4f68-ae06-f8da15d9d761" ],
+        "x-ms-request-id": [ "bd247ea7-8f08-451d-b702-c89a3495b50a" ],
+        "x-ms-correlation-request-id": [ "3ad313df-9cb3-4b6a-bb4f-81c101d23a9f" ],
+        "Azure-AsyncOperation": [ "https://management.azure.com/subscriptions/fca2e8ee-1179-48b8-9532-428ed0873a2e/providers/Microsoft.NetworkCloud/locations/EASTUS/operationStatuses/62fbec0d-514d-42d3-9d6c-6d9311d84c85*6AEFECFA3E3556128C3E856E5E3C24DA5A341B137037F5D04D8745B934922818?api-version=2023-07-01" ],
+        "x-ms-routing-request-id": [ "WESTUS2:20230728T202644Z:3ad313df-9cb3-4b6a-bb4f-81c101d23a9f" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "Date": [ "Fri, 28 Jul 2023 20:26:44 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "4" ],
+        "Content-Type": [ "application/json; charset=utf-8" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "bnVsbA==",
+      "isContentBase64": false
+    }
+  },
+  "Update-AzNetworkCloudStorageAppliance+[NoContext]+Update+$GET+https://management.azure.com/subscriptions/fca2e8ee-1179-48b8-9532-428ed0873a2e/providers/Microsoft.NetworkCloud/locations/EASTUS/operationStatuses/62fbec0d-514d-42d3-9d6c-6d9311d84c85*6AEFECFA3E3556128C3E856E5E3C24DA5A341B137037F5D04D8745B934922818?api-version=2023-07-01+2": {
+    "Request": {
+      "Method": "GET",
+      "RequestUri": "https://management.azure.com/subscriptions/fca2e8ee-1179-48b8-9532-428ed0873a2e/providers/Microsoft.NetworkCloud/locations/EASTUS/operationStatuses/62fbec0d-514d-42d3-9d6c-6d9311d84c85*6AEFECFA3E3556128C3E856E5E3C24DA5A341B137037F5D04D8745B934922818?api-version=2023-07-01",
+      "Content": null,
+      "isContentBase64": false,
+      "Headers": {
+        "Authorization": [ "[Filtered]" ],
+        "x-ms-unique-id": [ "5" ],
+        "x-ms-client-request-id": [ "33a0cd56-efa9-4a45-a22a-7395bcd4dd0c" ],
+        "CommandName": [ "Update-AzNetworkCloudStorageAppliance" ],
+        "FullCommandName": [ "Update-AzNetworkCloudStorageAppliance_Update" ],
+        "ParameterSetName": [ "__AllParameterSets" ],
+        "User-Agent": [ "AzurePowershell/v0.0.0", "PSVersion/v7.3.4", "Az.NetworkCloud/0.1.0" ]
+      },
+      "ContentHeaders": {
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "ETag": [ "\"d60518dd-0000-0100-0000-64c4248f0000\"" ],
+        "x-ms-ratelimit-remaining-subscription-reads": [ "11996" ],
+        "x-ms-request-id": [ "ad4a5632-eac1-44de-984f-d0404d4ea0ad" ],
+        "x-ms-correlation-request-id": [ "e91b4767-54ae-4c99-9f2d-527f79709f98" ],
+        "x-ms-routing-request-id": [ "WESTUS2:20230728T202714Z:e91b4767-54ae-4c99-9f2d-527f79709f98" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "Date": [ "Fri, 28 Jul 2023 20:27:14 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "668" ],
+        "Content-Type": [ "application/json; charset=utf-8" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\"id\":\"/subscriptions/fca2e8ee-1179-48b8-9532-428ed0873a2e/providers/Microsoft.NetworkCloud/locations/EASTUS/operationStatuses/62fbec0d-514d-42d3-9d6c-6d9311d84c85*6AEFECFA3E3556128C3E856E5E3C24DA5A341B137037F5D04D8745B934922818\",\"name\":\"62fbec0d-514d-42d3-9d6c-6d9311d84c85*6AEFECFA3E3556128C3E856E5E3C24DA5A341B137037F5D04D8745B934922818\",\"resourceId\":\"/subscriptions/fca2e8ee-1179-48b8-9532-428ed0873a2e/resourceGroups/dev07-2bb5c1f33a7f-HostedResources-0FB08C6D/providers/Microsoft.NetworkCloud/storageAppliances/b37dev07purestor1\",\"status\":\"Succeeded\",\"startTime\":\"2023-07-28T20:26:44.46485Z\",\"endTime\":\"2023-07-28T20:26:55.0069612Z\",\"error\":{},\"properties\":null}",
+      "isContentBase64": false
+    }
+  },
+  "Update-AzNetworkCloudStorageAppliance+[NoContext]+Update+$GET+https://management.azure.com/subscriptions/fca2e8ee-1179-48b8-9532-428ed0873a2e/resourceGroups/dev07-2bb5c1f33a7f-HostedResources-0FB08C6D/providers/Microsoft.NetworkCloud/storageAppliances/b37dev07purestor1?api-version=2023-07-01+3": {
+    "Request": {
+      "Method": "GET",
+      "RequestUri": "https://management.azure.com/subscriptions/fca2e8ee-1179-48b8-9532-428ed0873a2e/resourceGroups/dev07-2bb5c1f33a7f-HostedResources-0FB08C6D/providers/Microsoft.NetworkCloud/storageAppliances/b37dev07purestor1?api-version=2023-07-01",
+      "Content": null,
+      "isContentBase64": false,
+      "Headers": {
+        "Authorization": [ "[Filtered]" ],
+        "x-ms-unique-id": [ "6" ],
+        "x-ms-client-request-id": [ "33a0cd56-efa9-4a45-a22a-7395bcd4dd0c" ],
+        "CommandName": [ "Update-AzNetworkCloudStorageAppliance" ],
+        "FullCommandName": [ "Update-AzNetworkCloudStorageAppliance_Update" ],
+        "ParameterSetName": [ "__AllParameterSets" ],
+        "User-Agent": [ "AzurePowershell/v0.0.0", "PSVersion/v7.3.4", "Az.NetworkCloud/0.1.0" ]
+      },
+      "ContentHeaders": {
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "ETag": [ "\"07007ee7-0000-0100-0000-64c424900000\"" ],
+        "x-ms-ratelimit-remaining-subscription-reads": [ "11995" ],
+        "x-ms-providerhub-traffic": [ "True" ],
+        "x-ms-request-id": [ "4c40e8fa-e980-4f98-9334-4ed7b7f40560" ],
+        "x-ms-correlation-request-id": [ "efef5a9c-d347-46c5-bd8d-0618457c6157" ],
+        "x-ms-routing-request-id": [ "WESTUS2:20230728T202715Z:efef5a9c-d347-46c5-bd8d-0618457c6157" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "Date": [ "Fri, 28 Jul 2023 20:27:14 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "1828" ],
+        "Content-Type": [ "application/json; charset=utf-8" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\"id\":\"/subscriptions/fca2e8ee-1179-48b8-9532-428ed0873a2e/resourceGroups/dev07-2bb5c1f33a7f-HostedResources-0FB08C6D/providers/Microsoft.NetworkCloud/storageAppliances/b37dev07purestor1\",\"name\":\"b37dev07purestor1\",\"type\":\"microsoft.networkcloud/storageappliances\",\"location\":\"eastus\",\"extendedLocation\":{\"name\":\"/subscriptions/fca2e8ee-1179-48b8-9532-428ed0873a2e/resourceGroups/dev07-2bb5c1f33a7f-hostedresources-0fb08c6d/providers/microsoft.extendedlocation/customlocations/dev07-2bb5c1f33a7f-cstm-loc\",\"type\":\"CustomLocation\"},\"tags\":{\"CreatedBy\":\"/subscriptions/fca2e8ee-1179-48b8-9532-428ed0873a2e/resourceGroups/dev07-2bb5c1f33a7f-hostedresources-0fb08c6d/providers/microsoft.extendedlocation/customlocations/dev07-2bb5c1f33a7f-cstm-loc/resourcesyncrules/storageapplianceshydrationrule\",\"tag2\":\"tagUpdate\"},\"systemData\":{\"createdBy\":\"319f651f-7ddb-4fc6-9857-7aef9250bd05\",\"createdByType\":\"Application\",\"createdAt\":\"2023-07-26T14:33:51.8736609Z\",\"lastModifiedBy\":\"319f651f-7ddb-4fc6-9857-7aef9250bd05\",\"lastModifiedByType\":\"Application\",\"lastModifiedAt\":\"2023-07-28T20:26:56.1931872Z\"},\"properties\":{\"rackId\":\"/subscriptions/fca2e8ee-1179-48b8-9532-428ed0873a2e/resourceGroups/dev07-2bb5c1f33a7f-HostedResources-0FB08C6D/providers/Microsoft.NetworkCloud/racks/b37dev07\",\"storageApplianceSkuId\":\"Pure_x70r3_9_91000GB\",\"serialNumber\":\"serial\",\"rackSlot\":1,\"administratorCredentials\":{\"username\":\"pureuser\"},\"clusterId\":\"/subscriptions/fca2e8ee-1179-48b8-9532-428ed0873a2e/resourceGroups/shared-dev-dev07-cluster/providers/Microsoft.NetworkCloud/clusters/dev07-2bb5c1f33a7f\",\"detailedStatus\":\"Available\",\"detailedStatusMessage\":\"OK\",\"managementIpv4Address\":\"172.29.7.237\",\"capacity\":11792,\"capacityUsed\":0,\"remoteVendorManagementStatus\":\"Disabled\",\"remoteVendorManagementFeature\":\"Supported\",\"provisioningState\":\"Succeeded\"}}",
+      "isContentBase64": false
+    }
+  }
+}

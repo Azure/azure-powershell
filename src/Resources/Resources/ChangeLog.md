@@ -20,6 +20,30 @@
 
 ## Upcoming Release
 
+## Version 6.12.0
+* Supported $ref statements for user-defined types in Bicep files.
+* Fixed reporting duplicate warnings when compiling Bicep files.
+* Updated New and Set Management Group cmdlets to allow DeploymentSubscription to be optional.
+* Fixed inexplicable error message when subscription and scope are neither provided in RoleAssignment/RoleDefinition related commands. [#22716]
+
+## Version 6.11.2
+* Fixed bug where `.bicepparam` values were not being correctly serialized in the correct format.
+* Allowed supplemental parameters for Deployments cmdlets when used with `.bicepparam` file.
+
+## Version 6.11.1
+* Reverted commits that caused regression in `Get-AzRoleAssignment`. [#22863]
+
+## Version 6.11.0
+* Supported `TemplateParameterFile` to accept a `.bicepparam` file.
+* Fixed inexplicable error message when subscription and scope are neither provided in `Get-AzRoleDefinition`. [#22716]
+
+## Version 6.10.0
+* Added breaking change warnings for Azure Policy cmdlets.
+* Implemented logic that allows Deployment Stack objects to be piped into Save and Remove Deployment Stack cmdlets.
+
+## Version 6.9.1
+* Fixed the warning prompt condition check in New-Az*DeploymentStack cmdlets.
+
 ## Version 6.9.0
 * Fixed the issue that `New-AzRoleAssignment` didn't work without subscription.
 * Added cmdlets for group owner

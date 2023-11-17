@@ -52,8 +52,10 @@ function Test-CreateBasicCluster
 
 function Test-NodeTypeOperations
 {
-	$resourceGroupName = "sfmcps-rg-" + (getAssetname)
-	$clusterName = "sfmcps-" + (getAssetname)
+	#$resourceGroupName = "sfmcps-rg-" + (getAssetname)
+	#$clusterName = "sfmcps-" + (getAssetname)
+	$resourceGroupName = "sfmcps-rg-node-ops"
+	$clusterName = "sfmcps-node-ops"
 	$location = "southcentralus"
 	$testClientTp = "123BDACDCDFB2C7B250192C6078E47D1E1DB119B"
 	$pass = (ConvertTo-SecureString -AsPlainText -Force "TestPass1234!@#")
@@ -99,8 +101,10 @@ function Test-NodeTypeOperations
 
 function Test-CertAndExtension
 {
-	$resourceGroupName = "sfmcps-rg-" + (getAssetname)
-	$clusterName = "sfmcps-" + (getAssetname)
+	#$resourceGroupName = "sfmcps-rg-" + (getAssetname)
+	#$clusterName = "sfmcps-" + (getAssetname)
+	$resourceGroupName = "sfmcps-rg-tcl1"
+	$clusterName = "sfmcps-test-cluster1"
 	$location = "southcentralus"
 	$testClientTp = "123BDACDCDFB2C7B250192C6078E47D1E1DB119B"
 	$pass = (ConvertTo-SecureString -AsPlainText -Force "TestPass1234!@#")

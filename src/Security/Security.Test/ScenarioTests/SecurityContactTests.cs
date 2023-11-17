@@ -25,13 +25,6 @@ namespace Microsoft.Azure.Commands.Security.Test.ScenarioTests
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
-        public void GetSubscriptionScope()
-        {
-            TestRunner.RunTestScript("Get-AzureRmSecurityContact-SubscriptionScope");
-        }
-
-        [Fact]
-        [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void GetSubscriptionLevelResource()
         {
             TestRunner.RunTestScript("Get-AzureRmSecurityContact-SubscriptionLevelResource");

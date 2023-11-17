@@ -26,9 +26,9 @@ namespace Microsoft.Azure.Commands.NetAppFiles.Helpers
         {
             var psLdapSearchScope = new PSNetAppFilesLdapSearchScopeOpt
             {
-                GroupDN = ldapSearchScope.GroupDN,
+                GroupDN = ldapSearchScope.GroupDn,
                 GroupMembershipFilter = ldapSearchScope.GroupMembershipFilter,
-                UserDN = ldapSearchScope.UserDN
+                UserDN = ldapSearchScope.UserDn
             };
             return psLdapSearchScope;
         }
@@ -37,9 +37,9 @@ namespace Microsoft.Azure.Commands.NetAppFiles.Helpers
         {
             var ldapSearchScope = new LdapSearchScopeOpt
             {
-                GroupDN = psLdapSearchScope.GroupDN,
+                GroupDn = psLdapSearchScope.GroupDN,
                 GroupMembershipFilter = psLdapSearchScope.GroupMembershipFilter,
-                UserDN = psLdapSearchScope.UserDN
+                UserDn = psLdapSearchScope.UserDN
             };
             return ldapSearchScope;
         }

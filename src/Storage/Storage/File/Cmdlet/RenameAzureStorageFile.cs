@@ -120,10 +120,10 @@ namespace Microsoft.WindowsAzure.Commands.Storage.File.Cmdlet
             "Default value: Inherit. If SDDL is specified as input, it must have owner, group and dacl.")]
         public string Permission { get; set; }
 
-        [Parameter(Mandatory = false, HelpMessage = "Disallow trailing dot (.) to suffex source directory and source file names.", ParameterSetName = ShareNameParameterSet)]
+        [Parameter(Mandatory = false, HelpMessage = "Disallow trailing dot (.) to suffix source directory and source file names.", ParameterSetName = ShareNameParameterSet)]
         public virtual SwitchParameter DisAllowSourceTrailingDot { get; set; }
 
-        [Parameter(Mandatory = false, HelpMessage = "Disallow trailing dot (.) to suffex destination directory and destination file names.", ParameterSetName = ShareNameParameterSet)]
+        [Parameter(Mandatory = false, HelpMessage = "Disallow trailing dot (.) to suffix destination directory and destination file names.", ParameterSetName = ShareNameParameterSet)]
         public virtual SwitchParameter DisAllowDestTrailingDot { get; set; }
 
         public override int? ClientTimeoutPerRequest { get; set; }
@@ -154,6 +154,7 @@ namespace Microsoft.WindowsAzure.Commands.Storage.File.Cmdlet
                     }
 
                     srcFileClient = Util.GetTrack2FileServiceClient((AzureStorageContext)this.Context, sourceClientOptions).GetShareClient(this.ShareName).GetRootDirectoryClient().GetFileClient(this.SourcePath);
+                    // Need to set ClientOptions.AllowSourceTrailingDot, to allow/disallow  TrailingDot in Rename() 
                     srcFileClient2ForRename = Util.GetTrack2FileServiceClient((AzureStorageContext)this.Context, destClientOptions).GetShareClient(this.ShareName).GetRootDirectoryClient().GetFileClient(this.SourcePath);
                     destFileClient = Util.GetTrack2FileServiceClient((AzureStorageContext)this.Context, destClientOptions).GetShareClient(this.ShareName).GetRootDirectoryClient().GetFileClient(this.DestinationPath);
                     break;

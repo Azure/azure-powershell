@@ -23,10 +23,5 @@ namespace Microsoft.Azure.Management.KeyVault.Models
             // default values for properties IpRules and VirtualNetworkRules are 'null'
             // and so no explicit customization is necessary.
         }
-        /// <summary>
-        /// This is an alias to the IPRules property. This is for backward compatibility.
-        /// This property will be deprecated in the future, please use IPRules instead.
-        /// </summary>
-        public System.Collections.Generic.IList<IPRule> IpRules {get=>IPRules; set=>IPRules=value; }
     }
 }

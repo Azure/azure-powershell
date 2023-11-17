@@ -108,7 +108,7 @@ namespace Microsoft.Azure.Commands.NetAppFiles.ActiveDirectory
                 var anfAccount = AzureNetAppFilesManagementClient.Accounts.Get(ResourceGroupName, AccountName);
                 var activeDirectory = anfAccount.ActiveDirectories.FirstOrDefault(a => a.ActiveDirectoryId == ActiveDirectoryId);
                 anfAccount.ActiveDirectories.Remove(activeDirectory);
-                var updatedAnfAccount = AzureNetAppFilesManagementClient.Accounts.BeginCreateOrUpdate(anfAccount, ResourceGroupName, AccountName);
+                var updatedAnfAccount = AzureNetAppFilesManagementClient.Accounts.BeginCreateOrUpdate(ResourceGroupName, AccountName, anfAccount);
                 success = true;
             }
             if (PassThru)

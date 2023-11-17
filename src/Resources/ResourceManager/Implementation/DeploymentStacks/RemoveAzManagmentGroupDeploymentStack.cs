@@ -15,6 +15,7 @@
 namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Implementation
 {
     using Microsoft.Azure.Commands.ResourceManager.Cmdlets.Components;
+    using Microsoft.Azure.Commands.ResourceManager.Cmdlets.SdkModels;
     using Microsoft.Azure.Management.Resources.Models;
     using Microsoft.WindowsAzure.Commands.Common.CustomAttributes;
     using System;
@@ -29,6 +30,7 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Implementation
 
         internal const string RemoveByResourceIdParameterSetName = "RemoveByResourceId";
         internal const string RemoveByNameAndManagementGroupIdParameterSetName = "RemoveByNameAndManagementGroupId";
+        internal const string RemoveByStackObjectParameterSetName = "RemoveByStackObject";
 
         [Alias("StackName")]
         [Parameter(Position = 1, Mandatory = true, ValueFromPipelineByPropertyName = true, ParameterSetName = RemoveByNameAndManagementGroupIdParameterSetName,
@@ -46,6 +48,11 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Implementation
             HelpMessage = "The id of the ManagementGroup where the DeploymentStack is being deleted")]
         [ValidateNotNullOrEmpty]
         public string ManagementGroupId { get; set; }
+
+        [Parameter(Position = 0, Mandatory = true, ValueFromPipeline = true, ParameterSetName = RemoveByStackObjectParameterSetName,
+            HelpMessage = "The stack PS object")]
+        [ValidateNotNullOrEmpty]
+        public PSDeploymentStack InputObjet { get; set; }
 
         [Parameter(Mandatory = false, HelpMessage = "Signal to delete both unmanaged Resources and ResourceGroups after updating stack.")]
         public SwitchParameter DeleteAll { get; set; }
@@ -73,9 +80,15 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Implementation
                 var shouldDeleteResources = (DeleteAll.ToBool() || DeleteResources.ToBool()) ? true : false;
                 var shouldDeleteResourceGroups = (DeleteAll.ToBool() || DeleteResourceGroups.ToBool()) ? true : false;
 
+                if (InputObjet != null)
+                {
+                    ResourceId = InputObjet.id;
+                }
+
                 // resolve Name and ManagementGroupId if ResourceId was provided
                 ManagementGroupId = ManagementGroupId ?? ResourceIdUtility.GetManagementGroupId(ResourceId);
                 Name = Name ?? ResourceIdUtility.GetDeploymentName(ResourceId);
+
 
                 // failed resolving the resource id
                 if (Name == null || ManagementGroupId == null)

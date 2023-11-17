@@ -72,12 +72,13 @@ The acceptable values for this parameter are:
 - WAF_Large
 - Standard_v2
 - WAF_v2
+- Basic
 
 ```yaml
 Type: System.String
 Parameter Sets: (All)
 Aliases:
-Accepted values: Standard_Small, Standard_Medium, Standard_Large, WAF_Medium, WAF_Large, Standard_v2, WAF_v2
+Accepted values: Standard_Small, Standard_Medium, Standard_Large, WAF_Medium, WAF_Large, Standard_v2, WAF_v2, Basic
 
 Required: True
 Position: Named
@@ -93,12 +94,13 @@ The acceptable values for this parameter are:
 - WAF
 - Standard_v2
 - WAF_v2
+- Basic
 
 ```yaml
 Type: System.String
 Parameter Sets: (All)
 Aliases:
-Accepted values: Standard, WAF, Standard_v2, WAF_v2
+Accepted values: Standard, WAF, Standard_v2, WAF_v2, Basic
 
 Required: True
 Position: Named

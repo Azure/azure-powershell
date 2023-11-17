@@ -15,7 +15,7 @@ namespace Microsoft.Azure.Commands.Automation.Model
         }
         public HybridRunbookWorker(Azure.Management.Automation.Models.HybridRunbookWorker worker)
         {
-            this.IpAddress = worker.Ip;
+            this.IpAddress = worker.IP;
             this.Name = worker.Name;
             this.LastSeenDateTime = worker.LastSeenDateTime;
         }

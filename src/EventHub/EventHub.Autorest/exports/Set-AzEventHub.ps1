@@ -28,7 +28,7 @@ Set-AzEventHub -InputObject $eventhub -RetentionTimeInHour 72
 .Inputs
 Microsoft.Azure.PowerShell.Cmdlets.EventHub.Models.IEventHubIdentity
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.EventHub.Models.Api20221001Preview.IEventhub
+Microsoft.Azure.PowerShell.Cmdlets.EventHub.Models.Api202301Preview.IEventhub
 .Notes
 COMPLEX PARAMETER PROPERTIES
 
@@ -52,7 +52,7 @@ INPUTOBJECT <IEventHubIdentity>: Identity parameter.
 https://learn.microsoft.com/powershell/module/az.eventhub/set-azeventhub
 #>
 function Set-AzEventHub {
-[OutputType([Microsoft.Azure.PowerShell.Cmdlets.EventHub.Models.Api20221001Preview.IEventhub])]
+[OutputType([Microsoft.Azure.PowerShell.Cmdlets.EventHub.Models.Api202301Preview.IEventhub])]
 [CmdletBinding(DefaultParameterSetName='SetExpanded', PositionalBinding=$false, SupportsShouldProcess, ConfirmImpact='Medium')]
 param(
     [Parameter(ParameterSetName='SetExpanded', Mandatory)]
@@ -147,6 +147,25 @@ param(
     [System.String]
     # Name for capture destination
     ${DestinationName},
+
+    [Parameter()]
+    [Microsoft.Azure.PowerShell.Cmdlets.EventHub.Category('Body')]
+    [Microsoft.Azure.PowerShell.Cmdlets.EventHub.Support.ManagedServiceIdentityType]
+    # Type of managed service identity.
+    ${IdentityType},
+
+    [Parameter()]
+    [Microsoft.Azure.PowerShell.Cmdlets.EventHub.Category('Body')]
+    [System.String]
+    # Properties for User Assigned Identities
+    ${UserAssignedIdentityId},
+
+    [Parameter()]
+    [Microsoft.Azure.PowerShell.Cmdlets.EventHub.Category('Body')]
+    [System.Int64]
+    # Number of partitions created for the Event Hub.
+    # allowed values are from 1 to 32 partitions.
+    ${PartitionCount},
 
     [Parameter()]
     [Microsoft.Azure.PowerShell.Cmdlets.EventHub.Category('Body')]
@@ -263,6 +282,10 @@ begin {
         }
         $cmdInfo = Get-Command -Name $mapping[$parameterSet]
         [Microsoft.Azure.PowerShell.Cmdlets.EventHub.Runtime.MessageAttributeHelper]::ProcessCustomAttributesAtRuntime($cmdInfo, $MyInvocation, $parameterSet, $PSCmdlet)
+        if ($null -ne $MyInvocation.MyCommand -and [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PromptedPreviewMessageCmdlets -notcontains $MyInvocation.MyCommand.Name -and [Microsoft.Azure.PowerShell.Cmdlets.EventHub.Runtime.MessageAttributeHelper]::ContainsPreviewAttribute($cmdInfo, $MyInvocation)){
+            [Microsoft.Azure.PowerShell.Cmdlets.EventHub.Runtime.MessageAttributeHelper]::ProcessPreviewMessageAttributesAtRuntime($cmdInfo, $MyInvocation, $parameterSet, $PSCmdlet)
+            [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PromptedPreviewMessageCmdlets.Enqueue($MyInvocation.MyCommand.Name)
+        }
         $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Cmdlet)
         $scriptCmd = {& $wrappedCmd @PSBoundParameters}
         $steppablePipeline = $scriptCmd.GetSteppablePipeline($MyInvocation.CommandOrigin)

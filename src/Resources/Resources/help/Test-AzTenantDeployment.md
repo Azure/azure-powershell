@@ -120,6 +120,12 @@ Test-AzTenantDeployment [-Name <String>] -Location <String> [-QueryString <Strin
  [-SkipTemplateParameterPrompt] [-Pre] [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
+### ByParameterFileWithNoTemplate
+```
+Test-AzTenantDeployment [-Name <String>] -Location <String> [-QueryString <String>] -TemplateParameterFile <String>
+ [-SkipTemplateParameterPrompt] [-Pre] [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
+```
+
 ## DESCRIPTION
 The **Test-AzTenantDeployment** cmdlet determines whether a deployment template and its parameter values are valid at the current tenant scope.
 
@@ -140,6 +146,14 @@ Test-AzTenantDeployment -Location "West US" -TemplateObject $TemplateObject -Tem
 ```
 
 This command tests a deployment at the current tenant scope using the an in-memory hashtable created from the given template file and a parameter file.
+
+### Example 3: Use a .bicepparam file to validate a deployment
+```powershell
+Test-AzTenantDeployment -Location "West US" -TemplateParameterFile "./parameters.bicepparam"
+```
+
+This command validates the deployment at the current tenant scope by using a .bicepparam file on disk.
+The command uses the *TemplateParameterFile* parameter to specify a .bicepparam file.
 
 ## PARAMETERS
 
@@ -266,11 +280,11 @@ Accept wildcard characters: False
 ```
 
 ### -TemplateParameterFile
-A file that has the template parameters.
+Parameter file to use for the template.
 
 ```yaml
 Type: System.String
-Parameter Sets: ByTemplateObjectAndParameterFile, ByTemplateFileAndParameterFile, ByTemplateUriAndParameterFile, ByTemplateSpecResourceIdAndParams
+Parameter Sets: ByTemplateObjectAndParameterFile, ByTemplateFileAndParameterFile, ByTemplateUriAndParameterFile, ByTemplateSpecResourceIdAndParams, ByParameterFileWithNoTemplate
 Aliases:
 
 Required: True

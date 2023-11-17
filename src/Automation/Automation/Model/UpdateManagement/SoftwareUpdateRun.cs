@@ -31,7 +31,7 @@ namespace Microsoft.Azure.Commands.Automation.Model.UpdateManagement
             this.FailedCount = sucr.FailedCount.HasValue ? sucr.FailedCount.Value : 0;
             this.LastModifiedTime = sucr.LastModifiedTime;
             this.Name = sucr.Name;
-            this.OperatingSystem = (OperatingSystemType)Enum.Parse(typeof(OperatingSystemType), sucr.OsType, true);
+            this.OperatingSystem = (OperatingSystemType)Enum.Parse(typeof(OperatingSystemType), sucr.OSType, true);
             this.RunId = Guid.Parse(sucr.Name);
             this.SoftwareUpdateConfigurationName = sucr.SoftwareUpdateConfiguration.Name;
             this.StartTime = sucr.StartTime;

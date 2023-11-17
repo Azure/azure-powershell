@@ -15,9 +15,9 @@ if(($null -eq $TestName) -or ($TestName -contains 'Set-AzEventHubGeoDRConfigurat
 }
 
 Describe 'Set-AzEventHubGeoDRConfigurationFailOver' {
-    It 'Fail' -Skip {
+    It 'Fail' {
         Set-AzEventHubGeoDRConfigurationFailOver -ResourceGroupName $env.resourceGroup -NamespaceName $env.secondaryNamespace -Name $env.alias
-
+        
         while($drConfig.ProvisioningState -ne "Succeeded"){
             $drConfig = Get-AzEventHubGeoDRConfiguration -Name $env.alias -ResourceGroupName $env.resourceGroup -NamespaceName $env.secondaryNamespace
             if ($TestMode -ne 'playback') {
@@ -35,7 +35,7 @@ Describe 'Set-AzEventHubGeoDRConfigurationFailOver' {
             Start-Sleep 180
         }
         $drConfig = New-AzEventHubGeoDRConfiguration -Name $env.alias -ResourceGroupName $env.resourceGroup -NamespaceName $env.primaryNamespace -PartnerNamespace $env.secondaryNamespaceResourceId
-
+        
         while($drConfig.ProvisioningState -ne "Succeeded"){
             $drConfig = Get-AzEventHubGeoDRConfiguration -Name $env.alias -ResourceGroupName $env.resourceGroup -NamespaceName $env.primaryNamespace
             if ($TestMode -ne 'playback') {
@@ -43,11 +43,11 @@ Describe 'Set-AzEventHubGeoDRConfigurationFailOver' {
             }
         }
     }
-    It 'FailViaIdentity' -Skip {
+    It 'FailViaIdentity' {
         $drConfig = Get-AzEventHubGeoDRConfiguration -Name $env.alias -ResourceGroupName $env.resourceGroup -NamespaceName $env.secondaryNamespace
-
+        
         Set-AzEventHubGeoDRConfigurationFailOver -InputObject $drConfig
-
+        
         do {
             $drConfig = Get-AzEventHubGeoDRConfiguration -Name $env.alias -ResourceGroupName $env.resourceGroup -NamespaceName $env.secondaryNamespace
             if ($TestMode -ne 'playback') {
@@ -61,7 +61,7 @@ Describe 'Set-AzEventHubGeoDRConfigurationFailOver' {
         $drConfig.Role | Should -Be "PrimaryNotReplicating"
 
         $drConfig = Remove-AzEventHubGeoDRConfiguration -Name $env.alias -ResourceGroupName $env.resourceGroup -NamespaceName $env.secondaryNamespace
-
+        
         if ($TestMode -ne 'playback') {
             Start-Sleep 180
         }

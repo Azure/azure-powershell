@@ -1,0 +1,1044 @@
+{
+  "Entries": [
+    {
+      "RequestUri": "/providers/Microsoft.Management/managementGroups/AzBlueprintAssignTest/providers/Microsoft.Resources/deploymentStacks/ps3851?api-version=2022-08-01-preview",
+      "EncodedRequestUri": "L3Byb3ZpZGVycy9NaWNyb3NvZnQuTWFuYWdlbWVudC9tYW5hZ2VtZW50R3JvdXBzL0F6Qmx1ZXByaW50QXNzaWduVGVzdC9wcm92aWRlcnMvTWljcm9zb2Z0LlJlc291cmNlcy9kZXBsb3ltZW50U3RhY2tzL3BzMzg1MT9hcGktdmVyc2lvbj0yMDIyLTA4LTAxLXByZXZpZXc=",
+      "RequestMethod": "GET",
+      "RequestHeaders": {
+        "x-ms-client-request-id": [
+          "66f93c45-1167-4e66-8f9d-dbf6c5776663"
+        ],
+        "Accept-Language": [
+          "en-US"
+        ],
+        "User-Agent": [
+          "FxVersion/6.0.2123.36311",
+          "OSName/Windows",
+          "OSVersion/Microsoft.Windows.10.0.22621",
+          "Microsoft.Azure.Management.Resources.DeploymentStacksClient/6.9.1"
+        ]
+      },
+      "RequestBody": "",
+      "ResponseHeaders": {
+        "Cache-Control": [
+          "no-cache"
+        ],
+        "Pragma": [
+          "no-cache"
+        ],
+        "x-ms-failure-cause": [
+          "gateway"
+        ],
+        "x-ms-ratelimit-remaining-tenant-reads": [
+          "11999"
+        ],
+        "x-ms-request-id": [
+          "3d163617-0fb1-4f13-8c3b-2ece473b77e0"
+        ],
+        "x-ms-correlation-request-id": [
+          "3d163617-0fb1-4f13-8c3b-2ece473b77e0"
+        ],
+        "x-ms-routing-request-id": [
+          "WESTUS:20230815T043105Z:3d163617-0fb1-4f13-8c3b-2ece473b77e0"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
+        ],
+        "X-Content-Type-Options": [
+          "nosniff"
+        ],
+        "Date": [
+          "Tue, 15 Aug 2023 04:31:05 GMT"
+        ],
+        "Content-Type": [
+          "application/json; charset=utf-8"
+        ],
+        "Expires": [
+          "-1"
+        ],
+        "Content-Length": [
+          "154"
+        ],
+        "Retry-After": [
+          "0"
+        ]
+      },
+      "ResponseBody": "{\r\n  \"error\": {\r\n    \"code\": \"ResourceNotFound\",\r\n    \"message\": \"The resource 'ps3851' was not found. For more details please go to https://aka.ms/ARMResourceNotFoundFix\"\r\n  }\r\n}",
+      "StatusCode": 404
+    },
+    {
+      "RequestUri": "/providers/Microsoft.Management/managementGroups/AzBlueprintAssignTest/providers/Microsoft.Resources/deploymentStacks/ps3851?api-version=2022-08-01-preview",
+      "EncodedRequestUri": "L3Byb3ZpZGVycy9NaWNyb3NvZnQuTWFuYWdlbWVudC9tYW5hZ2VtZW50R3JvdXBzL0F6Qmx1ZXByaW50QXNzaWduVGVzdC9wcm92aWRlcnMvTWljcm9zb2Z0LlJlc291cmNlcy9kZXBsb3ltZW50U3RhY2tzL3BzMzg1MT9hcGktdmVyc2lvbj0yMDIyLTA4LTAxLXByZXZpZXc=",
+      "RequestMethod": "GET",
+      "RequestHeaders": {
+        "x-ms-client-request-id": [
+          "66f93c45-1167-4e66-8f9d-dbf6c5776663"
+        ],
+        "Accept-Language": [
+          "en-US"
+        ],
+        "User-Agent": [
+          "FxVersion/6.0.2123.36311",
+          "OSName/Windows",
+          "OSVersion/Microsoft.Windows.10.0.22621",
+          "Microsoft.Azure.Management.Resources.DeploymentStacksClient/6.9.1"
+        ]
+      },
+      "RequestBody": "",
+      "ResponseHeaders": {
+        "Cache-Control": [
+          "no-cache"
+        ],
+        "Pragma": [
+          "no-cache"
+        ],
+        "x-ms-request-id": [
+          "faf597f8-627c-4ad6-a12e-b49f354e2149"
+        ],
+        "Server": [
+          "Microsoft-HTTPAPI/2.0"
+        ],
+        "x-ms-ratelimit-remaining-tenant-reads": [
+          "11998"
+        ],
+        "x-ms-correlation-request-id": [
+          "3f94f908-5080-4556-8a42-011120b2a816"
+        ],
+        "x-ms-routing-request-id": [
+          "WESTUS:20230815T043111Z:3f94f908-5080-4556-8a42-011120b2a816"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
+        ],
+        "X-Content-Type-Options": [
+          "nosniff"
+        ],
+        "Date": [
+          "Tue, 15 Aug 2023 04:31:11 GMT"
+        ],
+        "Content-Length": [
+          "1545"
+        ],
+        "Content-Type": [
+          "application/json; charset=utf-8"
+        ],
+        "Expires": [
+          "-1"
+        ],
+        "Retry-After": [
+          "0"
+        ]
+      },
+      "ResponseBody": "{\r\n  \"location\": \"westus2\",\r\n  \"properties\": {\r\n    \"actionOnUnmanage\": {\r\n      \"resources\": \"detach\",\r\n      \"resourceGroups\": \"detach\",\r\n      \"managementGroups\": \"detach\"\r\n    },\r\n    \"deploymentId\": \"/subscriptions/a1bfa635-f2bf-42f1-86b5-848c674fc321/providers/Microsoft.Resources/deployments/ps3851-2023-08-15-04-31-06-84b03\",\r\n    \"deploymentScope\": \"/subscriptions/a1bfa635-f2bf-42f1-86b5-848c674fc321\",\r\n    \"denySettings\": {\r\n      \"mode\": \"none\",\r\n      \"applyToChildScopes\": false\r\n    },\r\n    \"parameters\": {\r\n      \"subId\": {\r\n        \"value\": \"4ce8c9fe-cadc-47d6-9c76-335812fd59df\",\r\n        \"type\": \"string\"\r\n      },\r\n      \"policyDefinitionName\": {\r\n        \"value\": \"PSCmdletTestPolicy476223\",\r\n        \"type\": \"string\"\r\n      },\r\n      \"moduleName\": {\r\n        \"value\": \"stacksMGtestmod\",\r\n        \"type\": \"string\"\r\n      }\r\n    },\r\n    \"resources\": [],\r\n    \"provisioningState\": \"deploying\",\r\n    \"detachedResources\": [],\r\n    \"deletedResources\": [],\r\n    \"failedResources\": []\r\n  },\r\n  \"systemData\": {\r\n    \"createdBy\": \"546094f3-32fa-493c-824c-bd9575b0d2fe\",\r\n    \"createdByType\": \"Application\",\r\n    \"createdAt\": \"2023-08-15T04:31:05.9623315Z\",\r\n    \"lastModifiedBy\": \"546094f3-32fa-493c-824c-bd9575b0d2fe\",\r\n    \"lastModifiedByType\": \"Application\",\r\n    \"lastModifiedAt\": \"2023-08-15T04:31:05.9623315Z\"\r\n  },\r\n  \"id\": \"/providers/Microsoft.Management/managementGroups/AzBlueprintAssignTest/providers/Microsoft.Resources/deploymentStacks/ps3851\",\r\n  \"type\": \"Microsoft.Resources/deploymentStacks\",\r\n  \"name\": \"ps3851\"\r\n}",
+      "StatusCode": 200
+    },
+    {
+      "RequestUri": "/providers/Microsoft.Management/managementGroups/AzBlueprintAssignTest/providers/Microsoft.Resources/deploymentStacks/ps3851?api-version=2022-08-01-preview",
+      "EncodedRequestUri": "L3Byb3ZpZGVycy9NaWNyb3NvZnQuTWFuYWdlbWVudC9tYW5hZ2VtZW50R3JvdXBzL0F6Qmx1ZXByaW50QXNzaWduVGVzdC9wcm92aWRlcnMvTWljcm9zb2Z0LlJlc291cmNlcy9kZXBsb3ltZW50U3RhY2tzL3BzMzg1MT9hcGktdmVyc2lvbj0yMDIyLTA4LTAxLXByZXZpZXc=",
+      "RequestMethod": "GET",
+      "RequestHeaders": {
+        "x-ms-client-request-id": [
+          "66f93c45-1167-4e66-8f9d-dbf6c5776663"
+        ],
+        "Accept-Language": [
+          "en-US"
+        ],
+        "User-Agent": [
+          "FxVersion/6.0.2123.36311",
+          "OSName/Windows",
+          "OSVersion/Microsoft.Windows.10.0.22621",
+          "Microsoft.Azure.Management.Resources.DeploymentStacksClient/6.9.1"
+        ]
+      },
+      "RequestBody": "",
+      "ResponseHeaders": {
+        "Cache-Control": [
+          "no-cache"
+        ],
+        "Pragma": [
+          "no-cache"
+        ],
+        "x-ms-request-id": [
+          "b64721c3-248c-4371-9c78-2cfb2af396fc"
+        ],
+        "Server": [
+          "Microsoft-HTTPAPI/2.0"
+        ],
+        "x-ms-ratelimit-remaining-tenant-reads": [
+          "11997"
+        ],
+        "x-ms-correlation-request-id": [
+          "a4e04939-76f9-4538-a84c-1712ee0949b8"
+        ],
+        "x-ms-routing-request-id": [
+          "WESTUS:20230815T043130Z:a4e04939-76f9-4538-a84c-1712ee0949b8"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
+        ],
+        "X-Content-Type-Options": [
+          "nosniff"
+        ],
+        "Date": [
+          "Tue, 15 Aug 2023 04:31:30 GMT"
+        ],
+        "Content-Length": [
+          "1810"
+        ],
+        "Content-Type": [
+          "application/json; charset=utf-8"
+        ],
+        "Expires": [
+          "-1"
+        ],
+        "Retry-After": [
+          "0"
+        ]
+      },
+      "ResponseBody": "{\r\n  \"location\": \"westus2\",\r\n  \"properties\": {\r\n    \"actionOnUnmanage\": {\r\n      \"resources\": \"detach\",\r\n      \"resourceGroups\": \"detach\",\r\n      \"managementGroups\": \"detach\"\r\n    },\r\n    \"deploymentId\": \"/subscriptions/a1bfa635-f2bf-42f1-86b5-848c674fc321/providers/Microsoft.Resources/deployments/ps3851-2023-08-15-04-31-06-84b03\",\r\n    \"deploymentScope\": \"/subscriptions/a1bfa635-f2bf-42f1-86b5-848c674fc321\",\r\n    \"duration\": \"PT19.3595893S\",\r\n    \"denySettings\": {\r\n      \"mode\": \"none\",\r\n      \"applyToChildScopes\": false\r\n    },\r\n    \"parameters\": {\r\n      \"subId\": {\r\n        \"value\": \"4ce8c9fe-cadc-47d6-9c76-335812fd59df\",\r\n        \"type\": \"string\"\r\n      },\r\n      \"policyDefinitionName\": {\r\n        \"value\": \"PSCmdletTestPolicy476223\",\r\n        \"type\": \"string\"\r\n      },\r\n      \"moduleName\": {\r\n        \"value\": \"stacksMGtestmod\",\r\n        \"type\": \"string\"\r\n      }\r\n    },\r\n    \"resources\": [\r\n      {\r\n        \"status\": \"managed\",\r\n        \"denyStatus\": \"none\",\r\n        \"id\": \"/subscriptions/4ce8c9fe-cadc-47d6-9c76-335812fd59df/providers/Microsoft.Authorization/policyDefinitions/PSCmdletTestPolicy476223\"\r\n      }\r\n    ],\r\n    \"provisioningState\": \"succeeded\",\r\n    \"detachedResources\": [],\r\n    \"deletedResources\": [],\r\n    \"failedResources\": []\r\n  },\r\n  \"systemData\": {\r\n    \"createdBy\": \"546094f3-32fa-493c-824c-bd9575b0d2fe\",\r\n    \"createdByType\": \"Application\",\r\n    \"createdAt\": \"2023-08-15T04:31:05.9623315Z\",\r\n    \"lastModifiedBy\": \"546094f3-32fa-493c-824c-bd9575b0d2fe\",\r\n    \"lastModifiedByType\": \"Application\",\r\n    \"lastModifiedAt\": \"2023-08-15T04:31:05.9623315Z\"\r\n  },\r\n  \"id\": \"/providers/Microsoft.Management/managementGroups/AzBlueprintAssignTest/providers/Microsoft.Resources/deploymentStacks/ps3851\",\r\n  \"type\": \"Microsoft.Resources/deploymentStacks\",\r\n  \"name\": \"ps3851\"\r\n}",
+      "StatusCode": 200
+    },
+    {
+      "RequestUri": "/providers/Microsoft.Management/managementGroups/AzBlueprintAssignTest/providers/Microsoft.Resources/deploymentStacks/ps3851?api-version=2022-08-01-preview",
+      "EncodedRequestUri": "L3Byb3ZpZGVycy9NaWNyb3NvZnQuTWFuYWdlbWVudC9tYW5hZ2VtZW50R3JvdXBzL0F6Qmx1ZXByaW50QXNzaWduVGVzdC9wcm92aWRlcnMvTWljcm9zb2Z0LlJlc291cmNlcy9kZXBsb3ltZW50U3RhY2tzL3BzMzg1MT9hcGktdmVyc2lvbj0yMDIyLTA4LTAxLXByZXZpZXc=",
+      "RequestMethod": "GET",
+      "RequestHeaders": {
+        "x-ms-client-request-id": [
+          "c35515ff-5ff3-44af-afa8-c02fd19204e6"
+        ],
+        "Accept-Language": [
+          "en-US"
+        ],
+        "User-Agent": [
+          "FxVersion/6.0.2123.36311",
+          "OSName/Windows",
+          "OSVersion/Microsoft.Windows.10.0.22621",
+          "Microsoft.Azure.Management.Resources.DeploymentStacksClient/6.9.1"
+        ]
+      },
+      "RequestBody": "",
+      "ResponseHeaders": {
+        "Cache-Control": [
+          "no-cache"
+        ],
+        "Pragma": [
+          "no-cache"
+        ],
+        "x-ms-request-id": [
+          "8ed418af-50b0-4722-98b3-ba1f0d4e3707"
+        ],
+        "Server": [
+          "Microsoft-HTTPAPI/2.0"
+        ],
+        "x-ms-ratelimit-remaining-tenant-reads": [
+          "11999"
+        ],
+        "x-ms-correlation-request-id": [
+          "db8e731f-8407-4434-95d6-efb6f166edb9"
+        ],
+        "x-ms-routing-request-id": [
+          "WESTUS:20230815T043131Z:db8e731f-8407-4434-95d6-efb6f166edb9"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
+        ],
+        "X-Content-Type-Options": [
+          "nosniff"
+        ],
+        "Date": [
+          "Tue, 15 Aug 2023 04:31:30 GMT"
+        ],
+        "Content-Length": [
+          "1810"
+        ],
+        "Content-Type": [
+          "application/json; charset=utf-8"
+        ],
+        "Expires": [
+          "-1"
+        ],
+        "Retry-After": [
+          "0"
+        ]
+      },
+      "ResponseBody": "{\r\n  \"location\": \"westus2\",\r\n  \"properties\": {\r\n    \"actionOnUnmanage\": {\r\n      \"resources\": \"detach\",\r\n      \"resourceGroups\": \"detach\",\r\n      \"managementGroups\": \"detach\"\r\n    },\r\n    \"deploymentId\": \"/subscriptions/a1bfa635-f2bf-42f1-86b5-848c674fc321/providers/Microsoft.Resources/deployments/ps3851-2023-08-15-04-31-06-84b03\",\r\n    \"deploymentScope\": \"/subscriptions/a1bfa635-f2bf-42f1-86b5-848c674fc321\",\r\n    \"duration\": \"PT19.3595893S\",\r\n    \"denySettings\": {\r\n      \"mode\": \"none\",\r\n      \"applyToChildScopes\": false\r\n    },\r\n    \"parameters\": {\r\n      \"subId\": {\r\n        \"value\": \"4ce8c9fe-cadc-47d6-9c76-335812fd59df\",\r\n        \"type\": \"string\"\r\n      },\r\n      \"policyDefinitionName\": {\r\n        \"value\": \"PSCmdletTestPolicy476223\",\r\n        \"type\": \"string\"\r\n      },\r\n      \"moduleName\": {\r\n        \"value\": \"stacksMGtestmod\",\r\n        \"type\": \"string\"\r\n      }\r\n    },\r\n    \"resources\": [\r\n      {\r\n        \"status\": \"managed\",\r\n        \"denyStatus\": \"none\",\r\n        \"id\": \"/subscriptions/4ce8c9fe-cadc-47d6-9c76-335812fd59df/providers/Microsoft.Authorization/policyDefinitions/PSCmdletTestPolicy476223\"\r\n      }\r\n    ],\r\n    \"provisioningState\": \"succeeded\",\r\n    \"detachedResources\": [],\r\n    \"deletedResources\": [],\r\n    \"failedResources\": []\r\n  },\r\n  \"systemData\": {\r\n    \"createdBy\": \"546094f3-32fa-493c-824c-bd9575b0d2fe\",\r\n    \"createdByType\": \"Application\",\r\n    \"createdAt\": \"2023-08-15T04:31:05.9623315Z\",\r\n    \"lastModifiedBy\": \"546094f3-32fa-493c-824c-bd9575b0d2fe\",\r\n    \"lastModifiedByType\": \"Application\",\r\n    \"lastModifiedAt\": \"2023-08-15T04:31:05.9623315Z\"\r\n  },\r\n  \"id\": \"/providers/Microsoft.Management/managementGroups/AzBlueprintAssignTest/providers/Microsoft.Resources/deploymentStacks/ps3851\",\r\n  \"type\": \"Microsoft.Resources/deploymentStacks\",\r\n  \"name\": \"ps3851\"\r\n}",
+      "StatusCode": 200
+    },
+    {
+      "RequestUri": "/providers/Microsoft.Management/managementGroups/AzBlueprintAssignTest/providers/Microsoft.Resources/deploymentStacks/ps3851?api-version=2022-08-01-preview",
+      "EncodedRequestUri": "L3Byb3ZpZGVycy9NaWNyb3NvZnQuTWFuYWdlbWVudC9tYW5hZ2VtZW50R3JvdXBzL0F6Qmx1ZXByaW50QXNzaWduVGVzdC9wcm92aWRlcnMvTWljcm9zb2Z0LlJlc291cmNlcy9kZXBsb3ltZW50U3RhY2tzL3BzMzg1MT9hcGktdmVyc2lvbj0yMDIyLTA4LTAxLXByZXZpZXc=",
+      "RequestMethod": "GET",
+      "RequestHeaders": {
+        "x-ms-client-request-id": [
+          "53687624-adb1-4ae2-98d2-8c62d9d02a03"
+        ],
+        "Accept-Language": [
+          "en-US"
+        ],
+        "User-Agent": [
+          "FxVersion/6.0.2123.36311",
+          "OSName/Windows",
+          "OSVersion/Microsoft.Windows.10.0.22621",
+          "Microsoft.Azure.Management.Resources.DeploymentStacksClient/6.9.1"
+        ]
+      },
+      "RequestBody": "",
+      "ResponseHeaders": {
+        "Cache-Control": [
+          "no-cache"
+        ],
+        "Pragma": [
+          "no-cache"
+        ],
+        "x-ms-request-id": [
+          "9cb8a01b-119a-4c28-9233-4ccc2c28a149"
+        ],
+        "Server": [
+          "Microsoft-HTTPAPI/2.0"
+        ],
+        "x-ms-ratelimit-remaining-tenant-reads": [
+          "11999"
+        ],
+        "x-ms-correlation-request-id": [
+          "5dafdcc7-81d8-4e02-9975-65e0319e7935"
+        ],
+        "x-ms-routing-request-id": [
+          "WESTUS:20230815T043131Z:5dafdcc7-81d8-4e02-9975-65e0319e7935"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
+        ],
+        "X-Content-Type-Options": [
+          "nosniff"
+        ],
+        "Date": [
+          "Tue, 15 Aug 2023 04:31:31 GMT"
+        ],
+        "Content-Length": [
+          "1810"
+        ],
+        "Content-Type": [
+          "application/json; charset=utf-8"
+        ],
+        "Expires": [
+          "-1"
+        ],
+        "Retry-After": [
+          "0"
+        ]
+      },
+      "ResponseBody": "{\r\n  \"location\": \"westus2\",\r\n  \"properties\": {\r\n    \"actionOnUnmanage\": {\r\n      \"resources\": \"detach\",\r\n      \"resourceGroups\": \"detach\",\r\n      \"managementGroups\": \"detach\"\r\n    },\r\n    \"deploymentId\": \"/subscriptions/a1bfa635-f2bf-42f1-86b5-848c674fc321/providers/Microsoft.Resources/deployments/ps3851-2023-08-15-04-31-06-84b03\",\r\n    \"deploymentScope\": \"/subscriptions/a1bfa635-f2bf-42f1-86b5-848c674fc321\",\r\n    \"duration\": \"PT19.3595893S\",\r\n    \"denySettings\": {\r\n      \"mode\": \"none\",\r\n      \"applyToChildScopes\": false\r\n    },\r\n    \"parameters\": {\r\n      \"subId\": {\r\n        \"value\": \"4ce8c9fe-cadc-47d6-9c76-335812fd59df\",\r\n        \"type\": \"string\"\r\n      },\r\n      \"policyDefinitionName\": {\r\n        \"value\": \"PSCmdletTestPolicy476223\",\r\n        \"type\": \"string\"\r\n      },\r\n      \"moduleName\": {\r\n        \"value\": \"stacksMGtestmod\",\r\n        \"type\": \"string\"\r\n      }\r\n    },\r\n    \"resources\": [\r\n      {\r\n        \"status\": \"managed\",\r\n        \"denyStatus\": \"none\",\r\n        \"id\": \"/subscriptions/4ce8c9fe-cadc-47d6-9c76-335812fd59df/providers/Microsoft.Authorization/policyDefinitions/PSCmdletTestPolicy476223\"\r\n      }\r\n    ],\r\n    \"provisioningState\": \"succeeded\",\r\n    \"detachedResources\": [],\r\n    \"deletedResources\": [],\r\n    \"failedResources\": []\r\n  },\r\n  \"systemData\": {\r\n    \"createdBy\": \"546094f3-32fa-493c-824c-bd9575b0d2fe\",\r\n    \"createdByType\": \"Application\",\r\n    \"createdAt\": \"2023-08-15T04:31:05.9623315Z\",\r\n    \"lastModifiedBy\": \"546094f3-32fa-493c-824c-bd9575b0d2fe\",\r\n    \"lastModifiedByType\": \"Application\",\r\n    \"lastModifiedAt\": \"2023-08-15T04:31:05.9623315Z\"\r\n  },\r\n  \"id\": \"/providers/Microsoft.Management/managementGroups/AzBlueprintAssignTest/providers/Microsoft.Resources/deploymentStacks/ps3851\",\r\n  \"type\": \"Microsoft.Resources/deploymentStacks\",\r\n  \"name\": \"ps3851\"\r\n}",
+      "StatusCode": 200
+    },
+    {
+      "RequestUri": "/providers/Microsoft.Management/managementGroups/AzBlueprintAssignTest/providers/Microsoft.Resources/deploymentStacks/ps3851?api-version=2022-08-01-preview",
+      "EncodedRequestUri": "L3Byb3ZpZGVycy9NaWNyb3NvZnQuTWFuYWdlbWVudC9tYW5hZ2VtZW50R3JvdXBzL0F6Qmx1ZXByaW50QXNzaWduVGVzdC9wcm92aWRlcnMvTWljcm9zb2Z0LlJlc291cmNlcy9kZXBsb3ltZW50U3RhY2tzL3BzMzg1MT9hcGktdmVyc2lvbj0yMDIyLTA4LTAxLXByZXZpZXc=",
+      "RequestMethod": "PUT",
+      "RequestHeaders": {
+        "x-ms-client-request-id": [
+          "66f93c45-1167-4e66-8f9d-dbf6c5776663"
+        ],
+        "Accept-Language": [
+          "en-US"
+        ],
+        "User-Agent": [
+          "FxVersion/6.0.2123.36311",
+          "OSName/Windows",
+          "OSVersion/Microsoft.Windows.10.0.22621",
+          "Microsoft.Azure.Management.Resources.DeploymentStacksClient/6.9.1"
+        ],
+        "Content-Type": [
+          "application/json; charset=utf-8"
+        ],
+        "Content-Length": [
+          "3664"
+        ]
+      },
+      "RequestBody": "{\r\n  \"location\": \"West US 2\",\r\n  \"properties\": {\r\n    \"template\": {\r\n      \"$schema\": \"https://schema.management.azure.com/schemas/2019-08-01/managementGroupDeploymentTemplate.json#\",\r\n      \"contentVersion\": \"1.0.0.0\",\r\n      \"metadata\": {\r\n        \"_generator\": {\r\n          \"name\": \"bicep\",\r\n          \"version\": \"0.16.2.56959\",\r\n          \"templateHash\": \"13529450622016881009\"\r\n        }\r\n      },\r\n      \"parameters\": {\r\n        \"subId\": {\r\n          \"type\": \"string\"\r\n        },\r\n        \"moduleName\": {\r\n          \"type\": \"string\"\r\n        },\r\n        \"policyDefinitionName\": {\r\n          \"type\": \"string\"\r\n        }\r\n      },\r\n      \"resources\": [\r\n        {\r\n          \"type\": \"Microsoft.Resources/deployments\",\r\n          \"apiVersion\": \"2022-09-01\",\r\n          \"name\": \"[parameters('moduleName')]\",\r\n          \"subscriptionId\": \"[parameters('subId')]\",\r\n          \"location\": \"[deployment().location]\",\r\n          \"properties\": {\r\n            \"expressionEvaluationOptions\": {\r\n              \"scope\": \"inner\"\r\n            },\r\n            \"mode\": \"Incremental\",\r\n            \"parameters\": {\r\n              \"policyDefinitionName\": {\r\n                \"value\": \"[parameters('policyDefinitionName')]\"\r\n              }\r\n            },\r\n            \"template\": {\r\n              \"$schema\": \"https://schema.management.azure.com/schemas/2018-05-01/subscriptionDeploymentTemplate.json#\",\r\n              \"contentVersion\": \"1.0.0.0\",\r\n              \"metadata\": {\r\n                \"_generator\": {\r\n                  \"name\": \"bicep\",\r\n                  \"version\": \"0.16.2.56959\",\r\n                  \"templateHash\": \"17912971569522144482\"\r\n                }\r\n              },\r\n              \"parameters\": {\r\n                \"allowedLocations\": {\r\n                  \"type\": \"array\",\r\n                  \"defaultValue\": [\r\n                    \"westus\"\r\n                  ],\r\n                  \"metadata\": {\r\n                    \"description\": \"An array of the allowed locations, all other locations will be denied by the created policy.\"\r\n                  }\r\n                },\r\n                \"policyDefinitionName\": {\r\n                  \"type\": \"string\"\r\n                }\r\n              },\r\n              \"resources\": [\r\n                {\r\n                  \"type\": \"Microsoft.Authorization/policyDefinitions\",\r\n                  \"apiVersion\": \"2020-03-01\",\r\n                  \"name\": \"[parameters('policyDefinitionName')]\",\r\n                  \"properties\": {\r\n                    \"policyType\": \"Custom\",\r\n                    \"mode\": \"All\",\r\n                    \"parameters\": {},\r\n                    \"policyRule\": {\r\n                      \"if\": {\r\n                        \"not\": {\r\n                          \"field\": \"location\",\r\n                          \"in\": \"[parameters('allowedLocations')]\"\r\n                        }\r\n                      },\r\n                      \"then\": {\r\n                        \"effect\": \"audit\"\r\n                      }\r\n                    }\r\n                  }\r\n                }\r\n              ]\r\n            }\r\n          }\r\n        }\r\n      ]\r\n    },\r\n    \"parameters\": {\r\n      \"subId\": {\r\n        \"value\": \"4ce8c9fe-cadc-47d6-9c76-335812fd59df\"\r\n      },\r\n      \"policyDefinitionName\": {\r\n        \"value\": \"PSCmdletTestPolicy476223\"\r\n      },\r\n      \"moduleName\": {\r\n        \"value\": \"stacksMGtestmod\"\r\n      }\r\n    },\r\n    \"actionOnUnmanage\": {\r\n      \"resources\": \"detach\",\r\n      \"resourceGroups\": \"detach\",\r\n      \"managementGroups\": \"detach\"\r\n    },\r\n    \"deploymentScope\": \"/subscriptions/a1bfa635-f2bf-42f1-86b5-848c674fc321\",\r\n    \"denySettings\": {\r\n      \"mode\": \"None\",\r\n      \"applyToChildScopes\": false\r\n    }\r\n  }\r\n}",
+      "ResponseHeaders": {
+        "Cache-Control": [
+          "no-cache"
+        ],
+        "Pragma": [
+          "no-cache"
+        ],
+        "Retry-After": [
+          "0"
+        ],
+        "Azure-AsyncOperation": [
+          "https://management.azure.com/providers/Microsoft.Resources/locations/westus2/deploymentStackOperationStatus/cf25f02a-ed40-4e08-803f-dacd1ec4ccb7?api-version=2022-08-01-preview&t=2023-08-15T04%3a31%3a06&c=MIIHHjCCBgagAwIBAgITfwHQwFKsM_SaZ3oYQwAEAdDAUjANBgkqhkiG9w0BAQsFADBEMRMwEQYKCZImiZPyLGQBGRYDR0JMMRMwEQYKCZImiZPyLGQBGRYDQU1FMRgwFgYDVQQDEw9BTUUgSW5mcmEgQ0EgMDIwHhcNMjMwODAzMDkwMzExWhcNMjQwNzI4MDkwMzExWjBAMT4wPAYDVQQDEzVhc3luY29wZXJhdGlvbnNpZ25pbmdjZXJ0aWZpY2F0ZS5tYW5hZ2VtZW50LmF6dXJlLmNvbTCCASIwDQYJKoZIhvcNAQEBBQADggEPADCCAQoCggEBAJQbCh6bI1fy33ihbuhnYAi-tK-wY4yp8CUXk_uSV8w0AzXrOwZStPhGL2QLmMALLJhLlGruhSEdRUd-ej9YImb9EcB7Sxa7gZM4TttscUWTI37jWjJGvmL2IS8gO-V08sDqRJs9nd7v3NYjwkYwI6upPO198_TvDODjEOoXzdbqNzdg8HK9PRg4R6BQ2SYtQVjaKuTmTVPKtHbYjFDSwqH4QCNwKB-RWl8y_n0aagYHyQLs7HxDh_OYa_ragWKwpVX12uIkZZOlOYoo9z-B3yg2Qc6H93HIyyNLvYYyWvzsXlWbxsigQspOpB-JsijqIMX2LpkicZ9Qt3hdqEH3TgECAwEAAaOCBAswggQHMCcGCSsGAQQBgjcVCgQaMBgwCgYIKwYBBQUHAwEwCgYIKwYBBQUHAwIwPQYJKwYBBAGCNxUHBDAwLgYmKwYBBAGCNxUIhpDjDYTVtHiE8Ys-hZvdFs6dEoFggvX2K4Py0SACAWQCAQowggHaBggrBgEFBQcBAQSCAcwwggHIMGYGCCsGAQUFBzAChlpodHRwOi8vY3JsLm1pY3Jvc29mdC5jb20vcGtpaW5mcmEvQ2VydHMvQkwyUEtJSU5UQ0EwMS5BTUUuR0JMX0FNRSUyMEluZnJhJTIwQ0ElMjAwMig0KS5jcnQwVgYIKwYBBQUHMAKGSmh0dHA6Ly9jcmwxLmFtZS5nYmwvYWlhL0JMMlBLSUlOVENBMDEuQU1FLkdCTF9BTUUlMjBJbmZyYSUyMENBJTIwMDIoNCkuY3J0MFYGCCsGAQUFBzAChkpodHRwOi8vY3JsMi5hbWUuZ2JsL2FpYS9CTDJQS0lJTlRDQTAxLkFNRS5HQkxfQU1FJTIwSW5mcmElMjBDQSUyMDAyKDQpLmNydDBWBggrBgEFBQcwAoZKaHR0cDovL2NybDMuYW1lLmdibC9haWEvQkwyUEtJSU5UQ0EwMS5BTUUuR0JMX0FNRSUyMEluZnJhJTIwQ0ElMjAwMig0KS5jcnQwVgYIKwYBBQUHMAKGSmh0dHA6Ly9jcmw0LmFtZS5nYmwvYWlhL0JMMlBLSUlOVENBMDEuQU1FLkdCTF9BTUUlMjBJbmZyYSUyMENBJTIwMDIoNCkuY3J0MB0GA1UdDgQWBBSotg9l-TRXg2Od_Oq4_NlEL1rRszAOBgNVHQ8BAf8EBAMCBaAwggE1BgNVHR8EggEsMIIBKDCCASSgggEgoIIBHIZCaHR0cDovL2NybC5taWNyb3NvZnQuY29tL3BraWluZnJhL0NSTC9BTUUlMjBJbmZyYSUyMENBJTIwMDIoNCkuY3JshjRodHRwOi8vY3JsMS5hbWUuZ2JsL2NybC9BTUUlMjBJbmZyYSUyMENBJTIwMDIoNCkuY3JshjRodHRwOi8vY3JsMi5hbWUuZ2JsL2NybC9BTUUlMjBJbmZyYSUyMENBJTIwMDIoNCkuY3JshjRodHRwOi8vY3JsMy5hbWUuZ2JsL2NybC9BTUUlMjBJbmZyYSUyMENBJTIwMDIoNCkuY3JshjRodHRwOi8vY3JsNC5hbWUuZ2JsL2NybC9BTUUlMjBJbmZyYSUyMENBJTIwMDIoNCkuY3JsMBcGA1UdIAQQMA4wDAYKKwYBBAGCN3sBATAfBgNVHSMEGDAWgBSuecJrXSWIEwb2BwnDl3x7l48dVTAdBgNVHSUEFjAUBggrBgEFBQcDAQYIKwYBBQUHAwIwDQYJKoZIhvcNAQELBQADggEBAHXBDjxwU1_SCJTLnITpRn3jC6-hLvpBjlvAcTcon2IrYP1NmLYetTIHeRJIXmkXroCJpCUa740vZLaRyyZKweV_Xav9ODpmbAEriFc24VQpI0eCg5lZxjnpY3SF7pjsQN5R5iXCcf8uPGz-ehUdVqLsTHThEqxqeDjneKzUFHd67creOfJih1BzFDUzzkYs2_ffNVEd_BsQb1RKlb8H3uxdoUizcXw92vz3Ymkntcb6GBTSAp9uTnZyiJaZOtJ4w77PIJqK4IKM2vDqYN6xRIoo9iANNAPHuL8yUSgxYh2LMXQ9b1zW5XrNJ2Q1ajEsRu-zctoZJAYDXhLXDz04rSo&s=ZLpcNI9tokdXBIZ3ZIHedfU16DOFKYgBo3Z-tlN1AMlYXszHQ_E7GrjbM7vyWRPaf1id9gdI5P-5c4yt7A0G7YpLNN2saaUxkSGO4Rm5VtPDLWLPOCipipta-M3_7fXGVIVcx3BpxxPcTHIfVzKgzvN9wHN8P74kFLe9mmD3M81AXcyOPAzsdQ6NNlKZxcJ2nuxQOc_ioTrpi_1FcnnXGtcHXttCHi6IFEcZql9EV2Zi4XRG38nbyIvHFKzFWKWV8i1YmztgaTvzcdUodugTdxMW6Xefok9xMKfYdfpV1edXD3EQALnfAQtarhL5_JJHLM7xGtmpeiTolkIneIdxgA&h=NxfW1oJFh6InKmf24l8I6XFclhesU5OXIW_DG8dS2zA"
+        ],
+        "x-ms-request-id": [
+          "dde3b580-c281-4175-8c71-30e4f83bee73"
+        ],
+        "Server": [
+          "Microsoft-HTTPAPI/2.0"
+        ],
+        "x-ms-ratelimit-remaining-tenant-writes": [
+          "1199"
+        ],
+        "x-ms-correlation-request-id": [
+          "be3ef8be-6eb9-43f5-ab27-0ccee71bd694"
+        ],
+        "x-ms-routing-request-id": [
+          "WESTUS:20230815T043106Z:be3ef8be-6eb9-43f5-ab27-0ccee71bd694"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
+        ],
+        "X-Content-Type-Options": [
+          "nosniff"
+        ],
+        "Date": [
+          "Tue, 15 Aug 2023 04:31:06 GMT"
+        ],
+        "Content-Length": [
+          "1397"
+        ],
+        "Content-Type": [
+          "application/json; charset=utf-8"
+        ],
+        "Expires": [
+          "-1"
+        ]
+      },
+      "ResponseBody": "{\r\n  \"location\": \"westus2\",\r\n  \"properties\": {\r\n    \"actionOnUnmanage\": {\r\n      \"resources\": \"detach\",\r\n      \"resourceGroups\": \"detach\",\r\n      \"managementGroups\": \"detach\"\r\n    },\r\n    \"deploymentScope\": \"/subscriptions/a1bfa635-f2bf-42f1-86b5-848c674fc321\",\r\n    \"denySettings\": {\r\n      \"mode\": \"none\",\r\n      \"applyToChildScopes\": false\r\n    },\r\n    \"parameters\": {\r\n      \"subId\": {\r\n        \"value\": \"4ce8c9fe-cadc-47d6-9c76-335812fd59df\",\r\n        \"type\": \"string\"\r\n      },\r\n      \"policyDefinitionName\": {\r\n        \"value\": \"PSCmdletTestPolicy476223\",\r\n        \"type\": \"string\"\r\n      },\r\n      \"moduleName\": {\r\n        \"value\": \"stacksMGtestmod\",\r\n        \"type\": \"string\"\r\n      }\r\n    },\r\n    \"resources\": [],\r\n    \"provisioningState\": \"initializing\",\r\n    \"detachedResources\": [],\r\n    \"deletedResources\": [],\r\n    \"failedResources\": []\r\n  },\r\n  \"systemData\": {\r\n    \"createdBy\": \"546094f3-32fa-493c-824c-bd9575b0d2fe\",\r\n    \"createdByType\": \"Application\",\r\n    \"createdAt\": \"2023-08-15T04:31:05.9623315Z\",\r\n    \"lastModifiedBy\": \"546094f3-32fa-493c-824c-bd9575b0d2fe\",\r\n    \"lastModifiedByType\": \"Application\",\r\n    \"lastModifiedAt\": \"2023-08-15T04:31:05.9623315Z\"\r\n  },\r\n  \"id\": \"/providers/Microsoft.Management/managementGroups/AzBlueprintAssignTest/providers/Microsoft.Resources/deploymentStacks/ps3851\",\r\n  \"type\": \"Microsoft.Resources/deploymentStacks\",\r\n  \"name\": \"ps3851\"\r\n}",
+      "StatusCode": 201
+    },
+    {
+      "RequestUri": "/subscriptions/a1bfa635-f2bf-42f1-86b5-848c674fc321/providers/Microsoft.Resources/deployments/ps3851-2023-08-15-04-31-06-84b03/operations?api-version=2022-09-01",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvYTFiZmE2MzUtZjJiZi00MmYxLTg2YjUtODQ4YzY3NGZjMzIxL3Byb3ZpZGVycy9NaWNyb3NvZnQuUmVzb3VyY2VzL2RlcGxveW1lbnRzL3BzMzg1MS0yMDIzLTA4LTE1LTA0LTMxLTA2LTg0YjAzL29wZXJhdGlvbnM/YXBpLXZlcnNpb249MjAyMi0wOS0wMQ==",
+      "RequestMethod": "GET",
+      "RequestHeaders": {
+        "x-ms-client-request-id": [
+          "66f93c45-1167-4e66-8f9d-dbf6c5776663"
+        ],
+        "Accept-Language": [
+          "en-US"
+        ],
+        "User-Agent": [
+          "FxVersion/6.0.2123.36311",
+          "OSName/Windows",
+          "OSVersion/Microsoft.Windows.10.0.22621",
+          "Microsoft.Azure.Management.Resources.ResourceManagementClient/6.9.1"
+        ]
+      },
+      "RequestBody": "",
+      "ResponseHeaders": {
+        "Cache-Control": [
+          "no-cache"
+        ],
+        "Pragma": [
+          "no-cache"
+        ],
+        "x-ms-ratelimit-remaining-subscription-reads": [
+          "11999"
+        ],
+        "x-ms-request-id": [
+          "8bf82b19-bd53-481b-8e32-cd714147e08d"
+        ],
+        "x-ms-correlation-request-id": [
+          "8bf82b19-bd53-481b-8e32-cd714147e08d"
+        ],
+        "x-ms-routing-request-id": [
+          "WESTUS:20230815T043116Z:8bf82b19-bd53-481b-8e32-cd714147e08d"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
+        ],
+        "X-Content-Type-Options": [
+          "nosniff"
+        ],
+        "Date": [
+          "Tue, 15 Aug 2023 04:31:16 GMT"
+        ],
+        "Content-Type": [
+          "application/json; charset=utf-8"
+        ],
+        "Expires": [
+          "-1"
+        ],
+        "Content-Length": [
+          "643"
+        ],
+        "Retry-After": [
+          "0"
+        ]
+      },
+      "ResponseBody": "{\r\n  \"value\": [\r\n    {\r\n      \"id\": \"/subscriptions/a1bfa635-f2bf-42f1-86b5-848c674fc321/providers/Microsoft.Resources/deployments/ps3851-2023-08-15-04-31-06-84b03/operations/38B77F1D7F608A8D\",\r\n      \"operationId\": \"38B77F1D7F608A8D\",\r\n      \"properties\": {\r\n        \"provisioningOperation\": \"Create\",\r\n        \"provisioningState\": \"Running\",\r\n        \"timestamp\": \"2023-08-15T04:31:08.6811909Z\",\r\n        \"duration\": \"PT0.6455351S\",\r\n        \"trackingId\": \"a72724f0-4f9f-49c0-9737-ed8c9b4453b1\",\r\n        \"statusCode\": \"OK\",\r\n        \"targetResource\": {\r\n          \"id\": \"/subscriptions/4ce8c9fe-cadc-47d6-9c76-335812fd59df/providers/Microsoft.Resources/deployments/stacksMGtestmod\",\r\n          \"resourceType\": \"Microsoft.Resources/deployments\",\r\n          \"resourceName\": \"stacksMGtestmod\"\r\n        }\r\n      }\r\n    }\r\n  ]\r\n}",
+      "StatusCode": 200
+    },
+    {
+      "RequestUri": "/subscriptions/a1bfa635-f2bf-42f1-86b5-848c674fc321/providers/Microsoft.Resources/deployments/ps3851-2023-08-15-04-31-06-84b03/operations?api-version=2022-09-01",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvYTFiZmE2MzUtZjJiZi00MmYxLTg2YjUtODQ4YzY3NGZjMzIxL3Byb3ZpZGVycy9NaWNyb3NvZnQuUmVzb3VyY2VzL2RlcGxveW1lbnRzL3BzMzg1MS0yMDIzLTA4LTE1LTA0LTMxLTA2LTg0YjAzL29wZXJhdGlvbnM/YXBpLXZlcnNpb249MjAyMi0wOS0wMQ==",
+      "RequestMethod": "GET",
+      "RequestHeaders": {
+        "x-ms-client-request-id": [
+          "66f93c45-1167-4e66-8f9d-dbf6c5776663"
+        ],
+        "Accept-Language": [
+          "en-US"
+        ],
+        "User-Agent": [
+          "FxVersion/6.0.2123.36311",
+          "OSName/Windows",
+          "OSVersion/Microsoft.Windows.10.0.22621",
+          "Microsoft.Azure.Management.Resources.ResourceManagementClient/6.9.1"
+        ]
+      },
+      "RequestBody": "",
+      "ResponseHeaders": {
+        "Cache-Control": [
+          "no-cache"
+        ],
+        "Pragma": [
+          "no-cache"
+        ],
+        "x-ms-ratelimit-remaining-subscription-reads": [
+          "11997"
+        ],
+        "x-ms-request-id": [
+          "1d6edff4-b953-4ea4-aa9f-8a4703988feb"
+        ],
+        "x-ms-correlation-request-id": [
+          "1d6edff4-b953-4ea4-aa9f-8a4703988feb"
+        ],
+        "x-ms-routing-request-id": [
+          "WESTUS:20230815T043125Z:1d6edff4-b953-4ea4-aa9f-8a4703988feb"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
+        ],
+        "X-Content-Type-Options": [
+          "nosniff"
+        ],
+        "Date": [
+          "Tue, 15 Aug 2023 04:31:25 GMT"
+        ],
+        "Content-Type": [
+          "application/json; charset=utf-8"
+        ],
+        "Expires": [
+          "-1"
+        ],
+        "Content-Length": [
+          "1088"
+        ],
+        "Retry-After": [
+          "0"
+        ]
+      },
+      "ResponseBody": "{\r\n  \"value\": [\r\n    {\r\n      \"id\": \"/subscriptions/a1bfa635-f2bf-42f1-86b5-848c674fc321/providers/Microsoft.Resources/deployments/ps3851-2023-08-15-04-31-06-84b03/operations/38B77F1D7F608A8D\",\r\n      \"operationId\": \"38B77F1D7F608A8D\",\r\n      \"properties\": {\r\n        \"provisioningOperation\": \"Create\",\r\n        \"provisioningState\": \"Succeeded\",\r\n        \"timestamp\": \"2023-08-15T04:31:24.052287Z\",\r\n        \"duration\": \"PT16.0166312S\",\r\n        \"trackingId\": \"69f3cd22-819e-45f0-ae19-58ca063babb6\",\r\n        \"statusCode\": \"OK\",\r\n        \"targetResource\": {\r\n          \"id\": \"/subscriptions/4ce8c9fe-cadc-47d6-9c76-335812fd59df/providers/Microsoft.Resources/deployments/stacksMGtestmod\",\r\n          \"resourceType\": \"Microsoft.Resources/deployments\",\r\n          \"resourceName\": \"stacksMGtestmod\"\r\n        }\r\n      }\r\n    },\r\n    {\r\n      \"id\": \"/subscriptions/a1bfa635-f2bf-42f1-86b5-848c674fc321/providers/Microsoft.Resources/deployments/ps3851-2023-08-15-04-31-06-84b03/operations/08585095330183114410\",\r\n      \"operationId\": \"08585095330183114410\",\r\n      \"properties\": {\r\n        \"provisioningOperation\": \"EvaluateDeploymentOutput\",\r\n        \"provisioningState\": \"Succeeded\",\r\n        \"timestamp\": \"2023-08-15T04:31:24.1482183Z\",\r\n        \"duration\": \"PT16.1125625S\",\r\n        \"trackingId\": \"55364bb0-1791-4a95-bbb8-a220be5c502c\",\r\n        \"statusCode\": \"OK\"\r\n      }\r\n    }\r\n  ]\r\n}",
+      "StatusCode": 200
+    },
+    {
+      "RequestUri": "/subscriptions/4ce8c9fe-cadc-47d6-9c76-335812fd59df/providers/Microsoft.Resources/deployments/stacksMGtestmod?api-version=2022-09-01",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvNGNlOGM5ZmUtY2FkYy00N2Q2LTljNzYtMzM1ODEyZmQ1OWRmL3Byb3ZpZGVycy9NaWNyb3NvZnQuUmVzb3VyY2VzL2RlcGxveW1lbnRzL3N0YWNrc01HdGVzdG1vZD9hcGktdmVyc2lvbj0yMDIyLTA5LTAx",
+      "RequestMethod": "HEAD",
+      "RequestHeaders": {
+        "x-ms-client-request-id": [
+          "66f93c45-1167-4e66-8f9d-dbf6c5776663"
+        ],
+        "Accept-Language": [
+          "en-US"
+        ],
+        "User-Agent": [
+          "FxVersion/6.0.2123.36311",
+          "OSName/Windows",
+          "OSVersion/Microsoft.Windows.10.0.22621",
+          "Microsoft.Azure.Management.Resources.ResourceManagementClient/6.9.1"
+        ]
+      },
+      "RequestBody": "",
+      "ResponseHeaders": {
+        "Cache-Control": [
+          "no-cache"
+        ],
+        "Pragma": [
+          "no-cache"
+        ],
+        "x-ms-ratelimit-remaining-subscription-reads": [
+          "11999"
+        ],
+        "x-ms-request-id": [
+          "a2ab1119-4d70-40ec-8cdf-d445d73f08e4"
+        ],
+        "x-ms-correlation-request-id": [
+          "a2ab1119-4d70-40ec-8cdf-d445d73f08e4"
+        ],
+        "x-ms-routing-request-id": [
+          "WESTUS:20230815T043117Z:a2ab1119-4d70-40ec-8cdf-d445d73f08e4"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
+        ],
+        "X-Content-Type-Options": [
+          "nosniff"
+        ],
+        "Date": [
+          "Tue, 15 Aug 2023 04:31:16 GMT"
+        ],
+        "Content-Length": [
+          "0"
+        ],
+        "Expires": [
+          "-1"
+        ],
+        "Retry-After": [
+          "0"
+        ]
+      },
+      "ResponseBody": "",
+      "StatusCode": 204
+    },
+    {
+      "RequestUri": "/subscriptions/4ce8c9fe-cadc-47d6-9c76-335812fd59df/providers/Microsoft.Resources/deployments/stacksMGtestmod?api-version=2022-09-01",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvNGNlOGM5ZmUtY2FkYy00N2Q2LTljNzYtMzM1ODEyZmQ1OWRmL3Byb3ZpZGVycy9NaWNyb3NvZnQuUmVzb3VyY2VzL2RlcGxveW1lbnRzL3N0YWNrc01HdGVzdG1vZD9hcGktdmVyc2lvbj0yMDIyLTA5LTAx",
+      "RequestMethod": "HEAD",
+      "RequestHeaders": {
+        "x-ms-client-request-id": [
+          "66f93c45-1167-4e66-8f9d-dbf6c5776663"
+        ],
+        "Accept-Language": [
+          "en-US"
+        ],
+        "User-Agent": [
+          "FxVersion/6.0.2123.36311",
+          "OSName/Windows",
+          "OSVersion/Microsoft.Windows.10.0.22621",
+          "Microsoft.Azure.Management.Resources.ResourceManagementClient/6.9.1"
+        ]
+      },
+      "RequestBody": "",
+      "ResponseHeaders": {
+        "Cache-Control": [
+          "no-cache"
+        ],
+        "Pragma": [
+          "no-cache"
+        ],
+        "x-ms-ratelimit-remaining-subscription-reads": [
+          "11997"
+        ],
+        "x-ms-request-id": [
+          "c27a997a-97bb-47f0-b094-cfd734d724d6"
+        ],
+        "x-ms-correlation-request-id": [
+          "c27a997a-97bb-47f0-b094-cfd734d724d6"
+        ],
+        "x-ms-routing-request-id": [
+          "WESTUS:20230815T043125Z:c27a997a-97bb-47f0-b094-cfd734d724d6"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
+        ],
+        "X-Content-Type-Options": [
+          "nosniff"
+        ],
+        "Date": [
+          "Tue, 15 Aug 2023 04:31:24 GMT"
+        ],
+        "Content-Length": [
+          "0"
+        ],
+        "Expires": [
+          "-1"
+        ],
+        "Retry-After": [
+          "0"
+        ]
+      },
+      "ResponseBody": "",
+      "StatusCode": 204
+    },
+    {
+      "RequestUri": "/subscriptions/4ce8c9fe-cadc-47d6-9c76-335812fd59df/providers/Microsoft.Resources/deployments/stacksMGtestmod/operations?api-version=2022-09-01",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvNGNlOGM5ZmUtY2FkYy00N2Q2LTljNzYtMzM1ODEyZmQ1OWRmL3Byb3ZpZGVycy9NaWNyb3NvZnQuUmVzb3VyY2VzL2RlcGxveW1lbnRzL3N0YWNrc01HdGVzdG1vZC9vcGVyYXRpb25zP2FwaS12ZXJzaW9uPTIwMjItMDktMDE=",
+      "RequestMethod": "GET",
+      "RequestHeaders": {
+        "x-ms-client-request-id": [
+          "66f93c45-1167-4e66-8f9d-dbf6c5776663"
+        ],
+        "Accept-Language": [
+          "en-US"
+        ],
+        "User-Agent": [
+          "FxVersion/6.0.2123.36311",
+          "OSName/Windows",
+          "OSVersion/Microsoft.Windows.10.0.22621",
+          "Microsoft.Azure.Management.Resources.ResourceManagementClient/6.9.1"
+        ]
+      },
+      "RequestBody": "",
+      "ResponseHeaders": {
+        "Cache-Control": [
+          "no-cache"
+        ],
+        "Pragma": [
+          "no-cache"
+        ],
+        "x-ms-ratelimit-remaining-subscription-reads": [
+          "11998"
+        ],
+        "x-ms-request-id": [
+          "dfc3532e-1a4f-46df-8a9d-4ed548cb78b5"
+        ],
+        "x-ms-correlation-request-id": [
+          "dfc3532e-1a4f-46df-8a9d-4ed548cb78b5"
+        ],
+        "x-ms-routing-request-id": [
+          "WESTUS:20230815T043117Z:dfc3532e-1a4f-46df-8a9d-4ed548cb78b5"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
+        ],
+        "X-Content-Type-Options": [
+          "nosniff"
+        ],
+        "Date": [
+          "Tue, 15 Aug 2023 04:31:16 GMT"
+        ],
+        "Content-Type": [
+          "application/json; charset=utf-8"
+        ],
+        "Expires": [
+          "-1"
+        ],
+        "Content-Length": [
+          "1096"
+        ],
+        "Retry-After": [
+          "0"
+        ]
+      },
+      "ResponseBody": "{\r\n  \"value\": [\r\n    {\r\n      \"id\": \"/subscriptions/4ce8c9fe-cadc-47d6-9c76-335812fd59df/providers/Microsoft.Resources/deployments/stacksMGtestmod/operations/12A33A1100F72FB9\",\r\n      \"operationId\": \"12A33A1100F72FB9\",\r\n      \"properties\": {\r\n        \"provisioningOperation\": \"Create\",\r\n        \"provisioningState\": \"Succeeded\",\r\n        \"timestamp\": \"2023-08-15T04:31:09.8040691Z\",\r\n        \"duration\": \"PT0.4682999S\",\r\n        \"trackingId\": \"ef616dbb-4b70-42f8-b3ee-faba49970c61\",\r\n        \"statusCode\": \"Created\",\r\n        \"targetResource\": {\r\n          \"id\": \"/subscriptions/4ce8c9fe-cadc-47d6-9c76-335812fd59df/providers/Microsoft.Authorization/policyDefinitions/PSCmdletTestPolicy476223\",\r\n          \"resourceType\": \"Microsoft.Authorization/policyDefinitions\",\r\n          \"resourceName\": \"PSCmdletTestPolicy476223\"\r\n        }\r\n      }\r\n    },\r\n    {\r\n      \"id\": \"/subscriptions/4ce8c9fe-cadc-47d6-9c76-335812fd59df/providers/Microsoft.Resources/deployments/stacksMGtestmod/operations/08585095330171972964\",\r\n      \"operationId\": \"08585095330171972964\",\r\n      \"properties\": {\r\n        \"provisioningOperation\": \"EvaluateDeploymentOutput\",\r\n        \"provisioningState\": \"Succeeded\",\r\n        \"timestamp\": \"2023-08-15T04:31:09.8781049Z\",\r\n        \"duration\": \"PT0.5423357S\",\r\n        \"trackingId\": \"c4b9f03e-1619-4e68-b17d-fb78a5c1cbb7\",\r\n        \"statusCode\": \"OK\"\r\n      }\r\n    }\r\n  ]\r\n}",
+      "StatusCode": 200
+    },
+    {
+      "RequestUri": "/subscriptions/4ce8c9fe-cadc-47d6-9c76-335812fd59df/providers/Microsoft.Resources/deployments/stacksMGtestmod/operations?api-version=2022-09-01",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvNGNlOGM5ZmUtY2FkYy00N2Q2LTljNzYtMzM1ODEyZmQ1OWRmL3Byb3ZpZGVycy9NaWNyb3NvZnQuUmVzb3VyY2VzL2RlcGxveW1lbnRzL3N0YWNrc01HdGVzdG1vZC9vcGVyYXRpb25zP2FwaS12ZXJzaW9uPTIwMjItMDktMDE=",
+      "RequestMethod": "GET",
+      "RequestHeaders": {
+        "x-ms-client-request-id": [
+          "66f93c45-1167-4e66-8f9d-dbf6c5776663"
+        ],
+        "Accept-Language": [
+          "en-US"
+        ],
+        "User-Agent": [
+          "FxVersion/6.0.2123.36311",
+          "OSName/Windows",
+          "OSVersion/Microsoft.Windows.10.0.22621",
+          "Microsoft.Azure.Management.Resources.ResourceManagementClient/6.9.1"
+        ]
+      },
+      "RequestBody": "",
+      "ResponseHeaders": {
+        "Cache-Control": [
+          "no-cache"
+        ],
+        "Pragma": [
+          "no-cache"
+        ],
+        "x-ms-ratelimit-remaining-subscription-reads": [
+          "11996"
+        ],
+        "x-ms-request-id": [
+          "7ef385d6-ca13-476d-b1d1-c2dee0b8c863"
+        ],
+        "x-ms-correlation-request-id": [
+          "7ef385d6-ca13-476d-b1d1-c2dee0b8c863"
+        ],
+        "x-ms-routing-request-id": [
+          "WESTUS:20230815T043125Z:7ef385d6-ca13-476d-b1d1-c2dee0b8c863"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
+        ],
+        "X-Content-Type-Options": [
+          "nosniff"
+        ],
+        "Date": [
+          "Tue, 15 Aug 2023 04:31:25 GMT"
+        ],
+        "Content-Type": [
+          "application/json; charset=utf-8"
+        ],
+        "Expires": [
+          "-1"
+        ],
+        "Content-Length": [
+          "1096"
+        ],
+        "Retry-After": [
+          "0"
+        ]
+      },
+      "ResponseBody": "{\r\n  \"value\": [\r\n    {\r\n      \"id\": \"/subscriptions/4ce8c9fe-cadc-47d6-9c76-335812fd59df/providers/Microsoft.Resources/deployments/stacksMGtestmod/operations/12A33A1100F72FB9\",\r\n      \"operationId\": \"12A33A1100F72FB9\",\r\n      \"properties\": {\r\n        \"provisioningOperation\": \"Create\",\r\n        \"provisioningState\": \"Succeeded\",\r\n        \"timestamp\": \"2023-08-15T04:31:09.8040691Z\",\r\n        \"duration\": \"PT0.4682999S\",\r\n        \"trackingId\": \"ef616dbb-4b70-42f8-b3ee-faba49970c61\",\r\n        \"statusCode\": \"Created\",\r\n        \"targetResource\": {\r\n          \"id\": \"/subscriptions/4ce8c9fe-cadc-47d6-9c76-335812fd59df/providers/Microsoft.Authorization/policyDefinitions/PSCmdletTestPolicy476223\",\r\n          \"resourceType\": \"Microsoft.Authorization/policyDefinitions\",\r\n          \"resourceName\": \"PSCmdletTestPolicy476223\"\r\n        }\r\n      }\r\n    },\r\n    {\r\n      \"id\": \"/subscriptions/4ce8c9fe-cadc-47d6-9c76-335812fd59df/providers/Microsoft.Resources/deployments/stacksMGtestmod/operations/08585095330171972964\",\r\n      \"operationId\": \"08585095330171972964\",\r\n      \"properties\": {\r\n        \"provisioningOperation\": \"EvaluateDeploymentOutput\",\r\n        \"provisioningState\": \"Succeeded\",\r\n        \"timestamp\": \"2023-08-15T04:31:09.8781049Z\",\r\n        \"duration\": \"PT0.5423357S\",\r\n        \"trackingId\": \"c4b9f03e-1619-4e68-b17d-fb78a5c1cbb7\",\r\n        \"statusCode\": \"OK\"\r\n      }\r\n    }\r\n  ]\r\n}",
+      "StatusCode": 200
+    },
+    {
+      "RequestUri": "/subscriptions/a1bfa635-f2bf-42f1-86b5-848c674fc321/providers/Microsoft.Resources/deployments/ps3851-2023-08-15-04-31-06-84b03?api-version=2022-09-01",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvYTFiZmE2MzUtZjJiZi00MmYxLTg2YjUtODQ4YzY3NGZjMzIxL3Byb3ZpZGVycy9NaWNyb3NvZnQuUmVzb3VyY2VzL2RlcGxveW1lbnRzL3BzMzg1MS0yMDIzLTA4LTE1LTA0LTMxLTA2LTg0YjAzP2FwaS12ZXJzaW9uPTIwMjItMDktMDE=",
+      "RequestMethod": "GET",
+      "RequestHeaders": {
+        "x-ms-client-request-id": [
+          "66f93c45-1167-4e66-8f9d-dbf6c5776663"
+        ],
+        "Accept-Language": [
+          "en-US"
+        ],
+        "User-Agent": [
+          "FxVersion/6.0.2123.36311",
+          "OSName/Windows",
+          "OSVersion/Microsoft.Windows.10.0.22621",
+          "Microsoft.Azure.Management.Resources.ResourceManagementClient/6.9.1"
+        ]
+      },
+      "RequestBody": "",
+      "ResponseHeaders": {
+        "Cache-Control": [
+          "no-cache"
+        ],
+        "Pragma": [
+          "no-cache"
+        ],
+        "Retry-After": [
+          "0"
+        ],
+        "x-ms-ratelimit-remaining-subscription-reads": [
+          "11998"
+        ],
+        "x-ms-request-id": [
+          "156ecbc1-0000-4951-a4a6-007376131cb1"
+        ],
+        "x-ms-correlation-request-id": [
+          "156ecbc1-0000-4951-a4a6-007376131cb1"
+        ],
+        "x-ms-routing-request-id": [
+          "WESTUS:20230815T043117Z:156ecbc1-0000-4951-a4a6-007376131cb1"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
+        ],
+        "X-Content-Type-Options": [
+          "nosniff"
+        ],
+        "Date": [
+          "Tue, 15 Aug 2023 04:31:16 GMT"
+        ],
+        "Content-Type": [
+          "application/json; charset=utf-8"
+        ],
+        "Expires": [
+          "-1"
+        ],
+        "Content-Length": [
+          "829"
+        ]
+      },
+      "ResponseBody": "{\r\n  \"id\": \"/subscriptions/a1bfa635-f2bf-42f1-86b5-848c674fc321/providers/Microsoft.Resources/deployments/ps3851-2023-08-15-04-31-06-84b03\",\r\n  \"name\": \"ps3851-2023-08-15-04-31-06-84b03\",\r\n  \"type\": \"Microsoft.Resources/deployments\",\r\n  \"location\": \"westus2\",\r\n  \"properties\": {\r\n    \"templateHash\": \"13529450622016881009\",\r\n    \"parameters\": {\r\n      \"subId\": {\r\n        \"type\": \"String\",\r\n        \"value\": \"4ce8c9fe-cadc-47d6-9c76-335812fd59df\"\r\n      },\r\n      \"moduleName\": {\r\n        \"type\": \"String\",\r\n        \"value\": \"stacksMGtestmod\"\r\n      },\r\n      \"policyDefinitionName\": {\r\n        \"type\": \"String\",\r\n        \"value\": \"PSCmdletTestPolicy476223\"\r\n      }\r\n    },\r\n    \"mode\": \"Incremental\",\r\n    \"provisioningState\": \"Running\",\r\n    \"timestamp\": \"2023-08-15T04:31:08.6467274Z\",\r\n    \"duration\": \"PT1.3081154S\",\r\n    \"correlationId\": \"be3ef8be-6eb9-43f5-ab27-0ccee71bd694\",\r\n    \"providers\": [\r\n      {\r\n        \"namespace\": \"Microsoft.Resources\",\r\n        \"resourceTypes\": [\r\n          {\r\n            \"resourceType\": \"deployments\",\r\n            \"locations\": [\r\n              \"westus2\"\r\n            ]\r\n          }\r\n        ]\r\n      }\r\n    ],\r\n    \"dependencies\": []\r\n  }\r\n}",
+      "StatusCode": 200
+    },
+    {
+      "RequestUri": "/subscriptions/a1bfa635-f2bf-42f1-86b5-848c674fc321/providers/Microsoft.Resources/deployments/ps3851-2023-08-15-04-31-06-84b03?api-version=2022-09-01",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvYTFiZmE2MzUtZjJiZi00MmYxLTg2YjUtODQ4YzY3NGZjMzIxL3Byb3ZpZGVycy9NaWNyb3NvZnQuUmVzb3VyY2VzL2RlcGxveW1lbnRzL3BzMzg1MS0yMDIzLTA4LTE1LTA0LTMxLTA2LTg0YjAzP2FwaS12ZXJzaW9uPTIwMjItMDktMDE=",
+      "RequestMethod": "GET",
+      "RequestHeaders": {
+        "x-ms-client-request-id": [
+          "66f93c45-1167-4e66-8f9d-dbf6c5776663"
+        ],
+        "Accept-Language": [
+          "en-US"
+        ],
+        "User-Agent": [
+          "FxVersion/6.0.2123.36311",
+          "OSName/Windows",
+          "OSVersion/Microsoft.Windows.10.0.22621",
+          "Microsoft.Azure.Management.Resources.ResourceManagementClient/6.9.1"
+        ]
+      },
+      "RequestBody": "",
+      "ResponseHeaders": {
+        "Cache-Control": [
+          "no-cache"
+        ],
+        "Pragma": [
+          "no-cache"
+        ],
+        "x-ms-ratelimit-remaining-subscription-reads": [
+          "11996"
+        ],
+        "x-ms-request-id": [
+          "814a5a93-8730-46f0-86d4-77ecc98429cf"
+        ],
+        "x-ms-correlation-request-id": [
+          "814a5a93-8730-46f0-86d4-77ecc98429cf"
+        ],
+        "x-ms-routing-request-id": [
+          "WESTUS:20230815T043125Z:814a5a93-8730-46f0-86d4-77ecc98429cf"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
+        ],
+        "X-Content-Type-Options": [
+          "nosniff"
+        ],
+        "Date": [
+          "Tue, 15 Aug 2023 04:31:25 GMT"
+        ],
+        "Content-Type": [
+          "application/json; charset=utf-8"
+        ],
+        "Expires": [
+          "-1"
+        ],
+        "Content-Length": [
+          "988"
+        ],
+        "Retry-After": [
+          "0"
+        ]
+      },
+      "ResponseBody": "{\r\n  \"id\": \"/subscriptions/a1bfa635-f2bf-42f1-86b5-848c674fc321/providers/Microsoft.Resources/deployments/ps3851-2023-08-15-04-31-06-84b03\",\r\n  \"name\": \"ps3851-2023-08-15-04-31-06-84b03\",\r\n  \"type\": \"Microsoft.Resources/deployments\",\r\n  \"location\": \"westus2\",\r\n  \"properties\": {\r\n    \"templateHash\": \"13529450622016881009\",\r\n    \"parameters\": {\r\n      \"subId\": {\r\n        \"type\": \"String\",\r\n        \"value\": \"4ce8c9fe-cadc-47d6-9c76-335812fd59df\"\r\n      },\r\n      \"moduleName\": {\r\n        \"type\": \"String\",\r\n        \"value\": \"stacksMGtestmod\"\r\n      },\r\n      \"policyDefinitionName\": {\r\n        \"type\": \"String\",\r\n        \"value\": \"PSCmdletTestPolicy476223\"\r\n      }\r\n    },\r\n    \"mode\": \"Incremental\",\r\n    \"provisioningState\": \"Succeeded\",\r\n    \"timestamp\": \"2023-08-15T04:31:24.163988Z\",\r\n    \"duration\": \"PT16.825376S\",\r\n    \"correlationId\": \"be3ef8be-6eb9-43f5-ab27-0ccee71bd694\",\r\n    \"providers\": [\r\n      {\r\n        \"namespace\": \"Microsoft.Resources\",\r\n        \"resourceTypes\": [\r\n          {\r\n            \"resourceType\": \"deployments\",\r\n            \"locations\": [\r\n              \"westus2\"\r\n            ]\r\n          }\r\n        ]\r\n      }\r\n    ],\r\n    \"dependencies\": [],\r\n    \"outputResources\": [\r\n      {\r\n        \"id\": \"/subscriptions/4ce8c9fe-cadc-47d6-9c76-335812fd59df/providers/Microsoft.Authorization/policyDefinitions/PSCmdletTestPolicy476223\"\r\n      }\r\n    ]\r\n  }\r\n}",
+      "StatusCode": 200
+    },
+    {
+      "RequestUri": "/providers/Microsoft.Management/managementGroups/AzBlueprintAssignTest/providers/Microsoft.Resources/deploymentStacks/ps3851/exportTemplate?api-version=2022-08-01-preview",
+      "EncodedRequestUri": "L3Byb3ZpZGVycy9NaWNyb3NvZnQuTWFuYWdlbWVudC9tYW5hZ2VtZW50R3JvdXBzL0F6Qmx1ZXByaW50QXNzaWduVGVzdC9wcm92aWRlcnMvTWljcm9zb2Z0LlJlc291cmNlcy9kZXBsb3ltZW50U3RhY2tzL3BzMzg1MS9leHBvcnRUZW1wbGF0ZT9hcGktdmVyc2lvbj0yMDIyLTA4LTAxLXByZXZpZXc=",
+      "RequestMethod": "POST",
+      "RequestHeaders": {
+        "x-ms-client-request-id": [
+          "c35515ff-5ff3-44af-afa8-c02fd19204e6"
+        ],
+        "Accept-Language": [
+          "en-US"
+        ],
+        "User-Agent": [
+          "FxVersion/6.0.2123.36311",
+          "OSName/Windows",
+          "OSVersion/Microsoft.Windows.10.0.22621",
+          "Microsoft.Azure.Management.Resources.DeploymentStacksClient/6.9.1"
+        ]
+      },
+      "RequestBody": "",
+      "ResponseHeaders": {
+        "Cache-Control": [
+          "no-cache"
+        ],
+        "Pragma": [
+          "no-cache"
+        ],
+        "x-ms-request-id": [
+          "97132342-8ac4-4d94-84ce-109f8f5640c8"
+        ],
+        "Server": [
+          "Microsoft-HTTPAPI/2.0"
+        ],
+        "x-ms-ratelimit-remaining-tenant-writes": [
+          "1199"
+        ],
+        "x-ms-correlation-request-id": [
+          "3e79ad68-adcb-4f93-86c1-3074ffec4ef0"
+        ],
+        "x-ms-routing-request-id": [
+          "WESTUS:20230815T043131Z:3e79ad68-adcb-4f93-86c1-3074ffec4ef0"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
+        ],
+        "X-Content-Type-Options": [
+          "nosniff"
+        ],
+        "Date": [
+          "Tue, 15 Aug 2023 04:31:30 GMT"
+        ],
+        "Content-Length": [
+          "2858"
+        ],
+        "Content-Type": [
+          "application/json; charset=utf-8"
+        ],
+        "Expires": [
+          "-1"
+        ],
+        "Retry-After": [
+          "0"
+        ]
+      },
+      "ResponseBody": "{\r\n  \"template\": {\r\n    \"$schema\": \"https://schema.management.azure.com/schemas/2019-08-01/managementGroupDeploymentTemplate.json#\",\r\n    \"contentVersion\": \"1.0.0.0\",\r\n    \"metadata\": {\r\n      \"_generator\": {\r\n        \"name\": \"bicep\",\r\n        \"version\": \"0.16.2.56959\",\r\n        \"templateHash\": \"13529450622016881009\"\r\n      }\r\n    },\r\n    \"parameters\": {\r\n      \"subId\": {\r\n        \"type\": \"string\"\r\n      },\r\n      \"moduleName\": {\r\n        \"type\": \"string\"\r\n      },\r\n      \"policyDefinitionName\": {\r\n        \"type\": \"string\"\r\n      }\r\n    },\r\n    \"resources\": [\r\n      {\r\n        \"type\": \"Microsoft.Resources/deployments\",\r\n        \"apiVersion\": \"2022-09-01\",\r\n        \"name\": \"[parameters('moduleName')]\",\r\n        \"subscriptionId\": \"[parameters('subId')]\",\r\n        \"location\": \"[deployment().location]\",\r\n        \"properties\": {\r\n          \"expressionEvaluationOptions\": {\r\n            \"scope\": \"inner\"\r\n          },\r\n          \"mode\": \"Incremental\",\r\n          \"parameters\": {\r\n            \"policyDefinitionName\": {\r\n              \"value\": \"[parameters('policyDefinitionName')]\"\r\n            }\r\n          },\r\n          \"template\": {\r\n            \"$schema\": \"https://schema.management.azure.com/schemas/2018-05-01/subscriptionDeploymentTemplate.json#\",\r\n            \"contentVersion\": \"1.0.0.0\",\r\n            \"metadata\": {\r\n              \"_generator\": {\r\n                \"name\": \"bicep\",\r\n                \"version\": \"0.16.2.56959\",\r\n                \"templateHash\": \"17912971569522144482\"\r\n              }\r\n            },\r\n            \"parameters\": {\r\n              \"allowedLocations\": {\r\n                \"type\": \"array\",\r\n                \"defaultValue\": [\r\n                  \"westus\"\r\n                ],\r\n                \"metadata\": {\r\n                  \"description\": \"An array of the allowed locations, all other locations will be denied by the created policy.\"\r\n                }\r\n              },\r\n              \"policyDefinitionName\": {\r\n                \"type\": \"string\"\r\n              }\r\n            },\r\n            \"resources\": [\r\n              {\r\n                \"type\": \"Microsoft.Authorization/policyDefinitions\",\r\n                \"apiVersion\": \"2020-03-01\",\r\n                \"name\": \"[parameters('policyDefinitionName')]\",\r\n                \"properties\": {\r\n                  \"policyType\": \"Custom\",\r\n                  \"mode\": \"All\",\r\n                  \"parameters\": {},\r\n                  \"policyRule\": {\r\n                    \"if\": {\r\n                      \"not\": {\r\n                        \"field\": \"location\",\r\n                        \"in\": \"[parameters('allowedLocations')]\"\r\n                      }\r\n                    },\r\n                    \"then\": {\r\n                      \"effect\": \"audit\"\r\n                    }\r\n                  }\r\n                }\r\n              }\r\n            ]\r\n          }\r\n        }\r\n      }\r\n    ]\r\n  }\r\n}",
+      "StatusCode": 200
+    },
+    {
+      "RequestUri": "/providers/Microsoft.Management/managementGroups/AzBlueprintAssignTest/providers/Microsoft.Resources/deploymentStacks/ps3851?unmanageAction.Resources=detach&unmanageAction.ResourceGroups=detach&api-version=2022-08-01-preview",
+      "EncodedRequestUri": "L3Byb3ZpZGVycy9NaWNyb3NvZnQuTWFuYWdlbWVudC9tYW5hZ2VtZW50R3JvdXBzL0F6Qmx1ZXByaW50QXNzaWduVGVzdC9wcm92aWRlcnMvTWljcm9zb2Z0LlJlc291cmNlcy9kZXBsb3ltZW50U3RhY2tzL3BzMzg1MT91bm1hbmFnZUFjdGlvbi5SZXNvdXJjZXM9ZGV0YWNoJnVubWFuYWdlQWN0aW9uLlJlc291cmNlR3JvdXBzPWRldGFjaCZhcGktdmVyc2lvbj0yMDIyLTA4LTAxLXByZXZpZXc=",
+      "RequestMethod": "DELETE",
+      "RequestHeaders": {
+        "x-ms-client-request-id": [
+          "53687624-adb1-4ae2-98d2-8c62d9d02a03"
+        ],
+        "Accept-Language": [
+          "en-US"
+        ],
+        "User-Agent": [
+          "FxVersion/6.0.2123.36311",
+          "OSName/Windows",
+          "OSVersion/Microsoft.Windows.10.0.22621",
+          "Microsoft.Azure.Management.Resources.DeploymentStacksClient/6.9.1"
+        ]
+      },
+      "RequestBody": "",
+      "ResponseHeaders": {
+        "Cache-Control": [
+          "no-cache"
+        ],
+        "Pragma": [
+          "no-cache"
+        ],
+        "x-ms-request-id": [
+          "f7b9da39-fe78-4c7d-be82-aa76c718e87b"
+        ],
+        "Server": [
+          "Microsoft-HTTPAPI/2.0"
+        ],
+        "x-ms-ratelimit-remaining-tenant-deletes": [
+          "14999"
+        ],
+        "x-ms-correlation-request-id": [
+          "d79d71d8-ff3c-47fd-9fee-edacb18807d1"
+        ],
+        "x-ms-routing-request-id": [
+          "WESTUS:20230815T043132Z:d79d71d8-ff3c-47fd-9fee-edacb18807d1"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
+        ],
+        "X-Content-Type-Options": [
+          "nosniff"
+        ],
+        "Date": [
+          "Tue, 15 Aug 2023 04:31:31 GMT"
+        ],
+        "Expires": [
+          "-1"
+        ],
+        "Content-Length": [
+          "0"
+        ],
+        "Retry-After": [
+          "0"
+        ]
+      },
+      "ResponseBody": "",
+      "StatusCode": 200
+    }
+  ],
+  "Names": {
+    "Test-SaveAndRemoveManagementGroupDeploymentStackWithPipeOperator": [
+      "ps3851"
+    ]
+  },
+  "Variables": {
+    "SubscriptionId": "a1bfa635-f2bf-42f1-86b5-848c674fc321"
+  }
+}

@@ -739,7 +739,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.ProviderModel
             var queryFilterString = "null";
             if (string.Compare(restorePointQueryType, "All") == 0)
             {
-                queryFilterString = QueryBuilder.Instance.GetQueryString(new BMSRPQueryObject()
+                queryFilterString = QueryBuilder.Instance.GetQueryString(new BmsrpQueryObject()
                 {
                     StartDate = startDate,
                     EndDate = endDate,
@@ -747,7 +747,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.ProviderModel
             }
             else
             {
-                queryFilterString = QueryBuilder.Instance.GetQueryString(new BMSRPQueryObject()
+                queryFilterString = QueryBuilder.Instance.GetQueryString(new BmsrpQueryObject()
                 {
                     StartDate = startDate,
                     EndDate = endDate,
@@ -759,7 +759,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.ProviderModel
             List<RecoveryPointBase> recoveryPointList;
             if (secondaryRegion)
             {
-                ODataQuery<CrrModel.BMSRPQueryObject> queryFilter = new ODataQuery<CrrModel.BMSRPQueryObject>();
+                ODataQuery<CrrModel.BmsrpQueryObject> queryFilter = new ODataQuery<CrrModel.BmsrpQueryObject>();
                 queryFilter.Filter = queryFilterString;
 
                 //fetch recovery points from secondary region                
@@ -775,7 +775,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.ProviderModel
             }
             else
             {
-                ODataQuery<BMSRPQueryObject> queryFilter = new ODataQuery<BMSRPQueryObject>();
+                ODataQuery<BmsrpQueryObject> queryFilter = new ODataQuery<BmsrpQueryObject>();
                 queryFilter.Filter = queryFilterString;
                                 
                 List<RecoveryPointResource> rpListResponse;
@@ -832,7 +832,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.ProviderModel
             string protectedItemName = HelperUtils.GetProtectedItemUri(uriDict, item.Id);
 
             //we need to fetch the list of RPs
-            var queryFilterString = QueryBuilder.Instance.GetQueryString(new BMSRPQueryObject()
+            var queryFilterString = QueryBuilder.Instance.GetQueryString(new BmsrpQueryObject()
             {
                 ExtendedInfo = true,
                 StartDate = startDate,
@@ -843,7 +843,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.ProviderModel
             List<PointInTimeBase> timeRanges = new List<PointInTimeBase>();
             if (secondaryRegion)
             {
-                ODataQuery<CrrModel.BMSRPQueryObject> queryFilter = new ODataQuery<CrrModel.BMSRPQueryObject>();
+                ODataQuery<CrrModel.BmsrpQueryObject> queryFilter = new ODataQuery<CrrModel.BmsrpQueryObject>();
                 queryFilter.Filter = queryFilterString;
 
                 //fetch recovery points Log Chain from secondary region
@@ -875,7 +875,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.ProviderModel
             }
             else
             {
-                ODataQuery<BMSRPQueryObject> queryFilter = new ODataQuery<BMSRPQueryObject>();
+                ODataQuery<BmsrpQueryObject> queryFilter = new ODataQuery<BmsrpQueryObject>();
                 queryFilter.Filter = queryFilterString;
 
                 List<RecoveryPointResource> rpListResponse = ServiceClientAdapter.GetRecoveryPoints(

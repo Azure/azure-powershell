@@ -65,7 +65,7 @@ namespace Microsoft.Azure.Management.Network.Models
         /// <param name="port">Custom port which will be used for probing the
         /// backend servers. The valid value ranges from 1 to 65535. In case
         /// not set, port from http settings will be used. This property is
-        /// valid for Standard_v2 and WAF_v2 only.</param>
+        /// valid for Basic, Standard_v2 and WAF_v2 only.</param>
         /// <param name="name">Name of the probe that is unique within an
         /// Application Gateway.</param>
         /// <param name="etag">A unique read-only string that changes whenever
@@ -180,7 +180,7 @@ namespace Microsoft.Azure.Management.Network.Models
         /// Gets or sets custom port which will be used for probing the backend
         /// servers. The valid value ranges from 1 to 65535. In case not set,
         /// port from http settings will be used. This property is valid for
-        /// Standard_v2 and WAF_v2 only.
+        /// Basic, Standard_v2 and WAF_v2 only.
         /// </summary>
         [JsonProperty(PropertyName = "properties.port")]
         public int? Port { get; set; }

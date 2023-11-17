@@ -21,7 +21,7 @@ $ChangedFiles = Get-Content -Path "$PSScriptRoot\..\artifacts\FilesChanged.txt"
 
 $ALL_MODULE = "ALL_MODULE"
 
-$SKIP_MODULES = @("lib", "shared") # lib and shared are special folders in src that should not trigger autorest. Do not remove them.
+$SKIP_MODULES = @("lib", "shared", "Accounts") # lib and shared are special folders in src that should not trigger autorest. Do not remove them.
 
 #Region Detect which module should be processed
 $ModuleSet = New-Object System.Collections.Generic.HashSet[string]

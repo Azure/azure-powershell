@@ -1,5 +1,5 @@
 ---
-external help file: Microsoft.Azure.PowerShell.Cmdlets.Monitor.dll-Help.xml
+external help file: Az.DataCollectionRule.psm1-help.xml
 Module Name: Az.Monitor
 online version: https://learn.microsoft.com/powershell/module/az.monitor/remove-azdatacollectionruleassociation
 schema: 2.0.0
@@ -8,79 +8,43 @@ schema: 2.0.0
 # Remove-AzDataCollectionRuleAssociation
 
 ## SYNOPSIS
-Delete a data collection rule association.
+Deletes an association.
 
 ## SYNTAX
 
-### ByName (Default)
+### Delete (Default)
 ```
-Remove-AzDataCollectionRuleAssociation -TargetResourceId <String> -AssociationName <String> [-PassThru]
- [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
-```
-
-### ByInputObject
-```
-Remove-AzDataCollectionRuleAssociation -InputObject <PSDataCollectionRuleAssociationProxyOnlyResource>
- [-PassThru] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
+Remove-AzDataCollectionRuleAssociation -AssociationName <String> -ResourceUri <String>
+ [-DefaultProfile <PSObject>] [-PassThru] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
-### ByResourceId
+### DeleteViaIdentity
 ```
-Remove-AzDataCollectionRuleAssociation -AssociationId <String> [-PassThru]
- [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
+Remove-AzDataCollectionRuleAssociation -InputObject <IDataCollectionRuleIdentity> [-DefaultProfile <PSObject>]
+ [-PassThru] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-The **Remove-AzDataCollectionRuleAssociation** cmdlet delete a data collection rule association (DCRA).
-
-To apply a DCR to a virtual machine, you create an association for the virtual machine. A virtual machine may have an association to multiple DCRs, and a DCR may have multiple virtual machines associated to it. This allows you to define a set of DCRs, each matching a particular requirement, and apply them to only the virtual machines where they apply. Here is the ["Configure data collection for the Azure Monitor agent"](https://learn.microsoft.com/azure/azure-monitor/platform/data-collection-rule-azure-monitor-agent) using DCRA article.
+Deletes an association.
 
 ## EXAMPLES
 
-### Example 1: Delete data collection rule association with name and target resource ID (associated virtual machine) parameters
+### Example 1: Remove specific data collection rule association with specified name and resource URI
 ```powershell
-Remove-AzDataCollectionRuleAssociation -TargetResourceId $vm.Id -AssociationName $assocName
+Remove-AzDataCollectionRuleAssociation -AssociationName configurationAccessEndpoint -ResourceUri /subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/azsecpack-rg/providers/Microsoft.Compute/virtualMachines/ubuntu-2004
 ```
 
-Delete data collection rule association with name and target resource ID (associated virtual machine) parameters
-
-### Example 2: Delete data collection rule with Input Object
-```powershell
-$dcrAssoc | Remove-AzDataCollectionRule
-```
-
-Delete data collection rule with Input Object
-
-### Example 3: Delete data collection rule with the association resource ID property
-```powershell
-Remove-AzDataCollectionRuleAssociation -AssociationId $dcrAssoc.Id
-```
-
-Delete data collection rule with the association resource ID property
+This command removes specific data collection rule association with specified name and resource URI.
 
 ## PARAMETERS
 
-### -AssociationId
-The resource identifier.
-
-```yaml
-Type: System.String
-Parameter Sets: ByResourceId
-Aliases: ResourceId
-
-Required: True
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
 ### -AssociationName
-The name of the association resource.
+The name of the association.
+The name is case insensitive.
 
 ```yaml
 Type: System.String
-Parameter Sets: ByName
+Parameter Sets: Delete
 Aliases: Name
 
 Required: True
@@ -91,12 +55,13 @@ Accept wildcard characters: False
 ```
 
 ### -DefaultProfile
-The credentials, account, tenant, and subscription used for communication with azure
+The DefaultProfile parameter is not functional.
+Use the SubscriptionId parameter when available if executing the cmdlet against a different subscription.
 
 ```yaml
-Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer
+Type: System.Management.Automation.PSObject
 Parameter Sets: (All)
-Aliases: AzContext, AzureRmContext, AzureCredential
+Aliases: AzureRMContext, AzureCredential
 
 Required: False
 Position: Named
@@ -106,11 +71,12 @@ Accept wildcard characters: False
 ```
 
 ### -InputObject
-PSDataCollectionRuleResource Object
+Identity Parameter
+To construct, see NOTES section for INPUTOBJECT properties and create a hash table.
 
 ```yaml
-Type: Microsoft.Azure.Commands.Insights.OutputClasses.PSDataCollectionRuleAssociationProxyOnlyResource
-Parameter Sets: ByInputObject
+Type: Microsoft.Azure.PowerShell.Cmdlets.Monitor.DataCollection.Models.IDataCollectionRuleIdentity
+Parameter Sets: DeleteViaIdentity
 Aliases:
 
 Required: True
@@ -121,7 +87,7 @@ Accept wildcard characters: False
 ```
 
 ### -PassThru
-Return true upon successful removal.
+Returns true when the command succeeds
 
 ```yaml
 Type: System.Management.Automation.SwitchParameter
@@ -135,13 +101,13 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -TargetResourceId
-The associated resource ID.
+### -ResourceUri
+The identifier of the resource.
 
 ```yaml
 Type: System.String
-Parameter Sets: ByName
-Aliases: ResourceUri
+Parameter Sets: Delete
+Aliases: TargetResourceId
 
 Required: True
 Position: Named
@@ -160,13 +126,14 @@ Aliases: cf
 
 Required: False
 Position: Named
-Default value: False
+Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
 ### -WhatIf
-Shows what would happen if the cmdlet runs. The cmdlet is not run.
+Shows what would happen if the cmdlet runs.
+The cmdlet is not run.
 
 ```yaml
 Type: System.Management.Automation.SwitchParameter
@@ -175,7 +142,7 @@ Aliases: wi
 
 Required: False
 Position: Named
-Default value: False
+Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
 ```
@@ -185,8 +152,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
-### System.String
-### Microsoft.Azure.Commands.Insights.OutputClasses.PSDataCollectionRuleAssociationProxyOnlyResource
+### Microsoft.Azure.PowerShell.Cmdlets.Monitor.DataCollection.Models.IDataCollectionRuleIdentity
 
 ## OUTPUTS
 
@@ -195,6 +161,3 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ## NOTES
 
 ## RELATED LINKS
-
-[Get-AzDataCollectionRule](./Get-AzDataCollectionRule.md)
-[New-AzDataCollectionRule](./New-AzDataCollectionRule.md)

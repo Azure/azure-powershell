@@ -234,5 +234,19 @@ namespace Microsoft.Azure.Commands.Sql.Test.ScenarioTests
         {
             TestRunner.RunTestScript("Test-RevalidateAndRevertAKVKeyForDatabaseWithPerDBCMK");
         }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void TestFreeLimitDatabaseCreate()
+        {
+            TestRunner.RunTestScript("Test-FreeLimitDatabaseCreate");
+        }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void TestFreeLimitDatabaseUpdateFreeLimitExhaustionBehavior()
+        {
+            TestRunner.RunTestScript("Test-FreeLimitDatabaseUpdateFreeLimitExhaustionBehavior");
+        }
     }
 }

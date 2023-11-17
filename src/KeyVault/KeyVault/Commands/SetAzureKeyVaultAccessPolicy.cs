@@ -172,13 +172,9 @@ namespace Microsoft.Azure.Commands.KeyVault
         /// </summary>
         [Parameter(Mandatory = true,
             ParameterSetName = ByServicePrincipalName,
-            HelpMessage = "Specifies the service principal name of the application to which to grant permissions. Specify the application ID, also known as client ID, registered for the application in Azure Active Directory. The application with the service principal name that this parameter specifies must be registered in the Azure directory that contains your current subscription.")]
-        [Parameter(Mandatory = true,
-            ParameterSetName = InputObjectByServicePrincipalName,
-            HelpMessage = "Specifies the service principal name of the application to which to grant permissions. Specify the application ID, also known as client ID, registered for the application in Azure Active Directory. The application with the service principal name that this parameter specifies must be registered in the Azure directory that contains your current subscription.")]
-        [Parameter(Mandatory = true,
-            ParameterSetName = ResourceIdByServicePrincipalName,
-            HelpMessage = "Specifies the service principal name of the application to which to grant permissions. Specify the application ID, also known as client ID, registered for the application in Azure Active Directory. The application with the service principal name that this parameter specifies must be registered in the Azure directory that contains your current subscription.")]
+            HelpMessage = "Specifies the service principal name of the application to which to grant permissions. Specify the application ID, also known as client ID, registered for the application in Microsoft Entra ID. The application with the service principal name that this parameter specifies must be registered in the Azure directory that contains your current subscription.")]
+        [Parameter(Mandatory = true, ParameterSetName = InputObjectByServicePrincipalName)]
+        [Parameter(Mandatory = true, ParameterSetName = ResourceIdByServicePrincipalName)]
         [ValidateNotNullOrEmpty()]
         [Alias("SPN")]
         public string ServicePrincipalName { get; set; }
@@ -204,13 +200,9 @@ namespace Microsoft.Azure.Commands.KeyVault
         /// </summary>
         [Parameter(Mandatory = true,
             ParameterSetName = ByObjectId,
-            HelpMessage = "Specifies the object ID of the user or service principal in Azure Active Directory for which to grant permissions. Its value is in the format of GUID.")]
-        [Parameter(Mandatory = true,
-            ParameterSetName = InputObjectByObjectId,
-            HelpMessage = "Specifies the object ID of the user or service principal in Azure Active Directory for which to grant permissions. Its value is in the format of GUID.")]
-        [Parameter(Mandatory = true,
-            ParameterSetName = ResourceIdByObjectId,
-            HelpMessage = "Specifies the object ID of the user or service principal in Azure Active Directory for which to grant permissions. Its value is in the format of GUID.")]
+            HelpMessage = "Specifies the object ID of the user or service principal in Microsoft Entra ID for which to grant permissions. Its value is in the format of GUID.")]
+        [Parameter(Mandatory = true, ParameterSetName = InputObjectByObjectId)]
+        [Parameter(Mandatory = true, ParameterSetName = ResourceIdByObjectId)]
         [ValidateNotNullOrEmpty()]
         public string ObjectId { get; set; }
 

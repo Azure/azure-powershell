@@ -14,8 +14,8 @@ Creates a managed HSM.
 
 ```
 New-AzKeyVaultManagedHsm [-Name] <String> [-ResourceGroupName] <String> [-Location] <String>
- [-Administrator] <String[]> [-Sku <String>] [-SoftDeleteRetentionInDays <Int32>]
- [-PublicNetworkAccess <String>] [-EnablePurgeProtection] [-Tag <Hashtable>] [-AsJob]
+ [-Administrator] <String[]> [-Sku <String>] -SoftDeleteRetentionInDays <Int32> [-PublicNetworkAccess <String>]
+ [-EnablePurgeProtection] [-UserAssignedIdentity <String[]>] [-Tag <Hashtable>] [-AsJob]
  [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [-SubscriptionId <String>]
  [<CommonParameters>]
 ```
@@ -31,7 +31,7 @@ remove, or list keys in the managed HSM, user should:
 
 ### Example 1: Create a StandardB1 managed HSM
 ```powershell
-New-AzKeyVaultManagedHsm -Name 'myhsm' -ResourceGroupName 'myrg1' -Location 'eastus2euap' -Administrator "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx"
+New-AzKeyVaultManagedHsm -Name 'myhsm' -ResourceGroupName 'myrg1' -Location 'eastus2euap' -Administrator "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx" -SoftDeleteRetentionInDays 70
 ```
 
 ```output
@@ -46,7 +46,7 @@ value for the *SKU* parameter, it creates a Standard_B1 managed HSM.
 
 ### Example 2: Create a CustomB32 managed HSM
 ```powershell
-New-AzKeyVaultManagedHsm -Name 'myhsm' -ResourceGroupName 'myrg1' -Location 'eastus2euap' -Administrator "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx" -Sku 'CustomB32'
+New-AzKeyVaultManagedHsm -Name 'myhsm' -ResourceGroupName 'myrg1' -Location 'eastus2euap' -Administrator "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx" -Sku 'CustomB32' -SoftDeleteRetentionInDays 70
 ```
 
 ```output
@@ -58,6 +58,37 @@ myhsm myrg1               eastus2euap CustomB32
 
 This command creates a managed HSM, just like the previous example. However, it specifies a value of
 CustomB32 for the *SKU* parameter to create a CustomB32 managed HSM.
+
+### Example 3: Create a managed HSM with an user assigned identity
+```powershell
+New-AzKeyVaultManagedHsm -Name 'myhsm' -ResourceGroupName 'myrg1' -Location 'eastus2euap' -Administrator "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx"-SoftDeleteRetentionInDays 70 -UserAssignedIdentity /subscriptions/xxxx/resourceGroups/xxxx/providers/Microsoft.ManagedIdentity/userAssignedIdentities/identityName | Format-List
+```
+
+```output
+Managed HSM Name                        : myhsm
+Resource Group Name                     : myrg1
+Location                                : eastus2euap
+Resource ID                             : /subscriptions/0b1f6471-1bf0-4dda-aec3-cb9272f09590/resourceGroups/bez-rg/pro
+                                          viders/Microsoft.KeyVault/managedHSMs/bezmhsm
+HSM Pool URI                            :
+Tenant ID                               : 54826b22-38d6-4fb2-bad9-b7b93a3e9c5a
+Initial Admin Object Ids                : {xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx}
+SKU                                     : StandardB1
+Soft Delete Enabled?                    : True
+Enabled Purge Protection?               : False
+Soft Delete Retention Period (days)     : 70
+Public Network Access                   : Enabled
+IdentityType                            : UserAssigned
+UserAssignedIdentities                  : /subscriptions/xxxx/resourceGroups/xxxx/providers/Microsoft.ManagedIdentity/userAssignedIdentities/identityName
+Provisioning State                      : Succeeded
+Status Message                          : The Managed HSM is provisioned and ready to use.
+Security Domain ActivationStatus        : Active
+Security Domain ActivationStatusMessage : Your HSM has been activated and can be used for cryptographic operations.
+Regions                                 : 
+Tags
+```
+
+This command creates a managed HSM with an user assigned identity.
 
 ## PARAMETERS
 
@@ -201,14 +232,14 @@ Accept wildcard characters: False
 ```
 
 ### -SoftDeleteRetentionInDays
-Specifies how long the deleted managed hsm pool is retained, and how long until the managed hsm pool in the deleted state can be purged. The default is 90 days.
+Specifies how long the deleted managed hsm pool is retained, and how long until the managed hsm pool in the deleted state can be purged.
 
 ```yaml
 Type: System.Int32
 Parameter Sets: (All)
 Aliases:
 
-Required: False
+Required: True
 Position: Named
 Default value: None
 Accept pipeline input: False
@@ -244,6 +275,21 @@ Required: False
 Position: Named
 Default value: None
 Accept pipeline input: True (ByPropertyName)
+Accept wildcard characters: False
+```
+
+### -UserAssignedIdentity
+The set of user assigned identities associated with the managed HSM. Its value will be ARM resource ids in the form: '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedIdentity/userAssignedIdentities/{identityName}'.
+
+```yaml
+Type: System.String[]
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
 Accept wildcard characters: False
 ```
 

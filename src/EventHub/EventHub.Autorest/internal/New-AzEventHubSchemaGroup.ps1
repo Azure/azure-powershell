@@ -23,11 +23,11 @@ Creates or Updates an EventHub schema group.
 $schemaGroup = New-AzEventHubSchemaGroup -ResourceGroupName myResourceGroup -NamespaceName myNamespace -Name mySchemaGroup -SchemaCompatibility Backward -SchemaType Avro
 
 .Inputs
-Microsoft.Azure.PowerShell.Cmdlets.EventHub.Models.Api20221001Preview.ISchemaGroup
+Microsoft.Azure.PowerShell.Cmdlets.EventHub.Models.Api202301Preview.ISchemaGroup
 .Inputs
 Microsoft.Azure.PowerShell.Cmdlets.EventHub.Models.IEventHubIdentity
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.EventHub.Models.Api20221001Preview.ISchemaGroup
+Microsoft.Azure.PowerShell.Cmdlets.EventHub.Models.Api202301Preview.ISchemaGroup
 .Notes
 COMPLEX PARAMETER PROPERTIES
 
@@ -63,7 +63,7 @@ PARAMETER <ISchemaGroup>: Single item in List or Get Schema Group operation
 https://learn.microsoft.com/powershell/module/az.eventhub/new-azeventhubschemagroup
 #>
 function New-AzEventHubSchemaGroup {
-[OutputType([Microsoft.Azure.PowerShell.Cmdlets.EventHub.Models.Api20221001Preview.ISchemaGroup])]
+[OutputType([Microsoft.Azure.PowerShell.Cmdlets.EventHub.Models.Api202301Preview.ISchemaGroup])]
 [CmdletBinding(DefaultParameterSetName='CreateViaIdentity', PositionalBinding=$false, SupportsShouldProcess, ConfirmImpact='Medium')]
 param(
     [Parameter(Mandatory, ValueFromPipeline)]
@@ -75,7 +75,7 @@ param(
 
     [Parameter(Mandatory, ValueFromPipeline)]
     [Microsoft.Azure.PowerShell.Cmdlets.EventHub.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.EventHub.Models.Api20221001Preview.ISchemaGroup]
+    [Microsoft.Azure.PowerShell.Cmdlets.EventHub.Models.Api202301Preview.ISchemaGroup]
     # Single item in List or Get Schema Group operation
     # To construct, see NOTES section for PARAMETER properties and create a hash table.
     ${Parameter},

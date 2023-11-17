@@ -482,10 +482,10 @@
     <value>Downloading byte range {0} to {1}</value>
   </data>
   <data name="UsingAadAuth" xml:space="preserve">
-    <value>Using Azure Active Directory authentication to interact with the Batch service. To use shared key authentication, supply a BatchAccountContext that was returned from the Get-AzBatchAccountKeys cmdlet.</value>
+    <value>Using Microsoft Entra authentication to interact with the Batch service. To use shared key authentication, supply a BatchAccountContext that was returned from the Get-AzBatchAccountKeys cmdlet.</value>
   </data>
   <data name="UsingSharedKeyAuth" xml:space="preserve">
-    <value>Using shared key authentication to interact with the Batch service. Current key in use: {0}. To change keys, set the BatchAccountContext.KeyInUse property. To use Azure Active Directory authentication, supply a BatchAccountContext that was returned from the Get-AzBatchAccount cmdlet.</value>
+    <value>Using shared key authentication to interact with the Batch service. Current key in use: {0}. To change keys, set the BatchAccountContext.KeyInUse property. To use Microsoft Entra authentication, supply a BatchAccountContext that was returned from the Get-AzBatchAccount cmdlet.</value>
   </data>
   <data name="GetTaskCounts" xml:space="preserve">
     <value>Getting task counts for job {0}.</value>

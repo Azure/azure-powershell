@@ -36,7 +36,7 @@ The **New-AzWebAppBackup** cmdlet creates an Azure Web App Backup.
 New-AzWebAppBackup -ResourceGroupName "Default-Web-WestUS" -Name "ContosoWebApp" -StorageAccountUrl "https://storageaccount.file.core.windows.net"
 ```
 
-Creates a backup of the specified app ContosoWebApp that is within resource group Default-Web-WestUS in https://storageaccount.file.core.windows.net
+Creates a backup of the specified app ContosoWebApp that is within resource group Default-Web-WestUS in `https://storageaccount.file.core.windows.net`
 
 ### Example 2
 

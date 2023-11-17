@@ -194,7 +194,7 @@ namespace Microsoft.Azure.Commands.Management.Storage
                         blobInventoryPolicy = this.StorageClient.BlobInventoryPolicies.CreateOrUpdate(
                             this.ResourceGroupName,
                             this.StorageAccountName,
-                            new BlobInventoryPolicySchema(
+                            policy:new BlobInventoryPolicySchema(
                                 enabled: !(this.Disabled.IsPresent),
                                 rules: PSBlobInventoryPolicy.ParseBlobInventoryPolicyRules(this.Rule)));
                         break;
@@ -202,9 +202,9 @@ namespace Microsoft.Azure.Commands.Management.Storage
                     case AccountNamePolicyObjectParameterSet:
                     case AccountResourceIdPolicyObjectParameterSet:
                         blobInventoryPolicy = this.StorageClient.BlobInventoryPolicies.CreateOrUpdate(
-                            this.ResourceGroupName,
-                            this.StorageAccountName,
-                            this.Policy.ParseBlobInventoryPolicy().Policy);
+                            resourceGroupName: this.ResourceGroupName,
+                            accountName: this.StorageAccountName,
+                            policy: this.Policy.ParseBlobInventoryPolicy().Policy);
                         break;
                     default:
                         throw new PSArgumentException(string.Format(CultureInfo.InvariantCulture, "Invalid ParameterSet: {0}", this.ParameterSetName));

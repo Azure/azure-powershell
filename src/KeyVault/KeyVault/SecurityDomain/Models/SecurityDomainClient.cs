@@ -271,14 +271,7 @@ namespace Microsoft.Azure.Commands.KeyVault.SecurityDomain.Models
             return valid;
         }
 
-        /// <summary>
-        /// Download a security domain exchange key.
-        /// This key is used to encrypt SD data before uploading to the HSM where SD is going to be restored.
-        /// </summary>
-        /// <param name="hsmName"></param>
-        /// <param name="cancellationToken"></param>
-        /// <returns></returns>
-        public X509Certificate2 DownloadSecurityDomainExchangeKey(string hsmName, CancellationToken cancellationToken)
+        private SecurityDomainTransferKey DownloadSecurityDomainTransferKey(string hsmName, CancellationToken cancellationToken)
         {
             try
             {
@@ -291,21 +284,7 @@ namespace Microsoft.Azure.Commands.KeyVault.SecurityDomain.Models
                     var response = httpResponseMessage.Content.ReadAsStringAsync().ConfigureAwait(false).GetAwaiter().GetResult();
                     var key = JsonConvert.DeserializeObject<SecurityDomainTransferKey>(response);
 
-                    switch (key.KeyFormat)
-                    {
-                        case "pem":
-                            // Transitional, remove later
-                            return Utils.CertificateFromPem(key.TransferKey);
-                        case "jwk":
-                            // handle below
-                            break;
-                        default:
-                            throw new Exception($"Unexpected key type {key.KeyFormat}");
-                    }
-
-                    // The transfer key is a JWK, need to parse it, and return the cert
-                    JWK jwk = JsonConvert.DeserializeObject<JWK>(key.TransferKey);
-                    return Utils.CertificateFromPem(jwk.GetX5cAsPem());
+                    return key;
                 }
                 else
                 {
@@ -313,12 +292,68 @@ namespace Microsoft.Azure.Commands.KeyVault.SecurityDomain.Models
                     _writeDebug($"Invalid security domain response: {response}");
                     throw new Exception(Resources.DownloadSecurityDomainKeyFail);
                 }
-
             }
             catch (Exception ex)
             {
                 throw new Exception(Resources.DownloadSecurityDomainKeyFail, ex);
             }
+        }
+
+        /// <summary>
+        /// Download a security domain exchange key.
+        /// This key is used to encrypt SD data before uploading to the HSM where SD is going to be restored.
+        /// </summary>
+        /// <param name="hsmName"></param>
+        /// <param name="cancellationToken"></param>
+        /// <returns></returns>
+        public X509Certificate2 DownloadSecurityDomainExchangeKey(string hsmName, CancellationToken cancellationToken)
+        {
+            var key = DownloadSecurityDomainTransferKey(hsmName, cancellationToken);
+
+            switch (key.KeyFormat)
+            {
+                case "pem":
+                    // Transitional, remove later
+                    return Utils.CertificateFromPem(key.TransferKey);
+                case "jwk":
+                    // handle below
+                    break;
+                default:
+                    throw new Exception($"Unexpected key type {key.KeyFormat}");
+            }
+
+            // The transfer key is a JWK, need to parse it, and return the cert
+            JWK jwk = JsonConvert.DeserializeObject<JWK>(key.TransferKey);
+            return Utils.CertificateFromPem(jwk.GetX5cAsPem());
+                
+        }
+
+        /// <summary>
+        /// Download a security domain exchange key.
+        /// This key is used to encrypt SD data before uploading to the HSM where SD is going to be restored.
+        /// </summary>
+        /// <param name="hsmName"></param>
+        /// <param name="cancellationToken"></param>
+        /// <returns></returns>
+        public string DownloadSecurityDomainExchangeKeyAsPem(string hsmName, CancellationToken cancellationToken)
+        {
+            var key = DownloadSecurityDomainTransferKey(hsmName, cancellationToken);
+
+            switch (key.KeyFormat)
+            {
+                case "pem":
+                    // Transitional, remove later
+                    return key.TransferKey;
+                case "jwk":
+                    // handle below
+                    break;
+                default:
+                    throw new Exception($"Unexpected key type {key.KeyFormat}");
+            }
+
+            // The transfer key is a JWK, need to parse it, and return the cert
+            JWK jwk = JsonConvert.DeserializeObject<JWK>(key.TransferKey);
+            return jwk.GetX5cAsPem();
         }
 
         /// <summary>

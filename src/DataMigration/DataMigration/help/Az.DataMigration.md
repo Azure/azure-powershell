@@ -60,7 +60,7 @@ Initiate cutover for in-progress online database migration to SQL Managed Instan
 Initiate cutover for in-progress online database migration to SQL VM.
 
 ### [New-AzDataMigrationAzureActiveDirectoryApp](New-AzDataMigrationAzureActiveDirectoryApp.md)
-Create a new instance DataMigration Azure ActiveDirectory Application details.
+Create a new instance DataMigration Microsoft Entra Application details.
 
 ### [New-AzDataMigrationConnectionInfo](New-AzDataMigrationConnectionInfo.md)
 Creates a new Connection Info object specifying the server type and name for connection.
@@ -109,6 +109,8 @@ Migrate TDE certificate(s) from source SQL Server to the target Azure SQL Server
 
 ### [New-AzDataMigrationToSqlDb](New-AzDataMigrationToSqlDb.md)
 Create a new database migration to a given SQL Db.
+This command can migrate data from the selected source database tables to the target database tables.
+If the target database have no table existing, please use [New-AzDataMigrationSqlServerSchema](https://learn.microsoft.com/powershell/module/az.datamigration/new-azdatamigrationsqlserverschema) command to migrate schema objects from source database to target databse.
 
 ### [New-AzDataMigrationToSqlManagedInstance](New-AzDataMigrationToSqlManagedInstance.md)
 Create a new database migration to a given SQL Managed Instance.

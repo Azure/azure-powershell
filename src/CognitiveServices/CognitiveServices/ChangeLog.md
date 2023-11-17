@@ -19,6 +19,9 @@
 -->
 ## Upcoming Release
 
+## Version 1.14.1
+* Updated SDK via autorest.powershell.
+
 ## Version 1.14.0
 * Updated CognitiveServices PowerShell to use 2023-05-01 version.
 

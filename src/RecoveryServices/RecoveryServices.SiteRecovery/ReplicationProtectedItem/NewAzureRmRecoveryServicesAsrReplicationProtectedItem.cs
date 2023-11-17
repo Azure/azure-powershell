@@ -712,10 +712,10 @@ namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery
                 TargetAzureNetworkId = this.RecoveryAzureNetworkId,
                 TargetAzureSubnetId = this.RecoveryAzureSubnetName,
                 LogStorageAccountId = this.LogStorageAccountId,
-                MultiVmGroupName = this.ReplicationGroupName,
+                MultiVMGroupName = this.ReplicationGroupName,
                 DiskType = this.DiskType,
-                MultiVmGroupId = this.ReplicationGroupName,
-                TargetAzureVmName = string.IsNullOrEmpty(this.RecoveryVmName)
+                MultiVMGroupId = this.ReplicationGroupName,
+                TargetAzureVMName = string.IsNullOrEmpty(this.RecoveryVmName)
                                             ? this.ProtectableItem.FriendlyName
                                             : this.RecoveryVmName,
                 EnableRdpOnTargetOption = Constants.NeverEnableRDPOnTargetOption,
@@ -723,9 +723,9 @@ namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery
                 TargetAvailabilityZone = this.RecoveryAvailabilityZone,
                 TargetProximityPlacementGroupId = this.RecoveryProximityPlacementGroupId,
                 TargetAvailabilitySetId = this.RecoveryAvailabilitySetId,
-                TargetVmSize = this.Size,
+                TargetVMSize = this.Size,
                 SqlServerLicenseType = this.SqlServerLicenseType,
-                TargetVmTags = this.RecoveryVmTag,
+                TargetVMTags = this.RecoveryVmTag,
                 TargetNicTags = this.RecoveryNicTag,
                 SeedManagedDiskTags = seedManagedDiskTag,
                 TargetManagedDiskTags = this.DiskTag
@@ -778,16 +778,16 @@ namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery
                         // Compare the Multi VM Group Name.
                         if (string.Compare(
                                 this.ReplicationGroupName,
-                                providerSpecificDetails.MultiVmGroupName,
+                                providerSpecificDetails.MultiVMGroupName,
                                 StringComparison.OrdinalIgnoreCase) ==
                             0)
                         {
                             // Multi VM Group found.
                             // Set the values in the InMageAzureV2 Provider specific input.
-                            providerSettings.MultiVmGroupName =
-                                providerSpecificDetails.MultiVmGroupName;
-                            providerSettings.MultiVmGroupId =
-                                providerSpecificDetails.MultiVmGroupId;
+                            providerSettings.MultiVMGroupName =
+                                providerSpecificDetails.MultiVMGroupName;
+                            providerSettings.MultiVMGroupId =
+                                providerSpecificDetails.MultiVMGroupId;
                             flag = true;
                             break;
                         }
@@ -800,8 +800,8 @@ namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery
                     // Multi VM Group was not found.
                     // Create a new Multi VM Group and Set the values in the 
                     // InMageAzureV2 Provider specific input.
-                    providerSettings.MultiVmGroupName = this.ReplicationGroupName;
-                    providerSettings.MultiVmGroupId = Guid.NewGuid().ToString();
+                    providerSettings.MultiVMGroupName = this.ReplicationGroupName;
+                    providerSettings.MultiVMGroupId = Guid.NewGuid().ToString();
                 }
             }
 
@@ -816,9 +816,9 @@ namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery
         {
             var providerSettings = new HyperVReplicaAzureEnableProtectionInput();
 
-            providerSettings.HvHostVmId = this.ProtectableItem.FabricObjectId;
-            providerSettings.VmName = this.ProtectableItem.FriendlyName;
-            providerSettings.TargetAzureVmName = string.IsNullOrEmpty(this.RecoveryVmName)
+            providerSettings.HvHostVMId = this.ProtectableItem.FabricObjectId;
+            providerSettings.VMName = this.ProtectableItem.FriendlyName;
+            providerSettings.TargetAzureVMName = string.IsNullOrEmpty(this.RecoveryVmName)
                                                     ? this.ProtectableItem.FriendlyName
                                                     : this.RecoveryVmName;
             providerSettings.TargetProximityPlacementGroupId = this.RecoveryProximityPlacementGroupId;
@@ -826,9 +826,9 @@ namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery
             providerSettings.UseManagedDisks = this.UseManagedDisk;
             providerSettings.UseManagedDisksForReplication = this.UseManagedDisksForReplication;
             providerSettings.TargetAvailabilitySetId = this.RecoveryAvailabilitySetId;
-            providerSettings.TargetVmSize = this.Size;
+            providerSettings.TargetVMSize = this.Size;
             providerSettings.SqlServerLicenseType = this.SqlServerLicenseType;
-            providerSettings.TargetVmTags = this.RecoveryVmTag;
+            providerSettings.TargetVMTags = this.RecoveryVmTag;
             providerSettings.TargetNicTags = this.RecoveryNicTag;
             providerSettings.TargetManagedDiskTags = this.DiskTag;
 
@@ -873,7 +873,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery
 
             if (string.IsNullOrWhiteSpace(this.OS))
             {
-                providerSettings.OsType = (string.Compare(
+                providerSettings.OSType = (string.Compare(
                                                this.ProtectableItem.OS,
                                                Constants.OSWindows,
                                                StringComparison.OrdinalIgnoreCase) ==
@@ -887,7 +887,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery
             }
             else
             {
-                providerSettings.OsType = this.OS;
+                providerSettings.OSType = this.OS;
             }
 
             if (string.IsNullOrWhiteSpace(this.OSDiskName))
@@ -943,13 +943,19 @@ namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery
         /// </summary>
         private void AzureToAzureReplication(EnableProtectionInput input)
         {
+            Logger.Instance.WriteWarning("Ignite (November) 2023 onwards Virtual Machine deployments using PS and CLI will default " +
+                "to security type Trusted Launch. Azure Site Recovery currently does not support Trusted Launch VMs, hence, " +
+                "to keep using Azure Site Recovery please create Virtual Machine with security type Standard. Non-Trusted Launch " +
+                "Virtual Machines will not be impacted by this change. To know more about default change and Trusted Launch, " +
+                "please visit https://aka.ms/TLaD.");
+
             var providerSettings = new A2AEnableProtectionInput()
             {
                 FabricObjectId = this.AzureVmId,
                 RecoveryContainerId =
                         this.ProtectionContainerMapping.TargetProtectionContainerId,
-                VmDisks = new List<A2AVmDiskInputDetails>(),
-                VmManagedDisks = new List<A2AVmManagedDiskInputDetails>(),
+                VMDisks = new List<A2AVmDiskInputDetails>(),
+                VMManagedDisks = new List<A2AVmManagedDiskInputDetails>(),
                 RecoveryResourceGroupId = this.RecoveryResourceGroupId,
                 RecoveryCloudServiceId = this.RecoveryCloudServiceId,
                 RecoveryAvailabilitySetId = this.RecoveryAvailabilitySetId,
@@ -968,7 +974,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery
 
             if (!string.IsNullOrEmpty(this.ReplicationGroupName))
             {
-                providerSettings.MultiVmGroupName = this.ReplicationGroupName;
+                providerSettings.MultiVMGroupName = this.ReplicationGroupName;
             }
 
             if (!string.IsNullOrEmpty(this.RecoveryCloudServiceId))
@@ -1002,7 +1008,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery
                             throw new Exception("Recovery Storage account is not required for managed disk vm to protect");
                         }
                         var osDisk = virtualMachine.StorageProfile.OsDisk;
-                        providerSettings.VmManagedDisks.Add(new A2AVmManagedDiskInputDetails
+                        providerSettings.VMManagedDisks.Add(new A2AVmManagedDiskInputDetails
                         {
                             DiskId = osDisk.ManagedDisk.Id,
                             RecoveryResourceGroupId = this.RecoveryResourceGroupId,
@@ -1014,7 +1020,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery
                         {
                             foreach (var dataDisk in virtualMachine.StorageProfile.DataDisks)
                             {
-                                providerSettings.VmManagedDisks.Add(new A2AVmManagedDiskInputDetails
+                                providerSettings.VMManagedDisks.Add(new A2AVmManagedDiskInputDetails
                                 {
                                     DiskId = dataDisk.ManagedDisk.Id,
                                     RecoveryResourceGroupId = this.RecoveryResourceGroupId,
@@ -1033,7 +1039,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery
                         }
 
                         var osDisk = virtualMachine.StorageProfile.OsDisk;
-                        providerSettings.VmDisks.Add(new A2AVmDiskInputDetails
+                        providerSettings.VMDisks.Add(new A2AVmDiskInputDetails
                         {
                             DiskUri = osDisk.Vhd.Uri,
                             RecoveryAzureStorageAccountId = this.RecoveryAzureStorageAccountId,
@@ -1043,7 +1049,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery
                         {
                             foreach (var dataDisk in virtualMachine.StorageProfile.DataDisks)
                             {
-                                providerSettings.VmDisks.Add(new A2AVmDiskInputDetails
+                                providerSettings.VMDisks.Add(new A2AVmDiskInputDetails
                                 {
                                     DiskUri = dataDisk.Vhd.Uri,
                                     RecoveryAzureStorageAccountId = this.RecoveryAzureStorageAccountId,
@@ -1064,7 +1070,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery
                 {
                     if (disk.IsManagedDisk)
                     {
-                        providerSettings.VmManagedDisks.Add(new A2AVmManagedDiskInputDetails
+                        providerSettings.VMManagedDisks.Add(new A2AVmManagedDiskInputDetails
                         {
                             DiskId = disk.DiskId,
                             RecoveryResourceGroupId = disk.RecoveryResourceGroupId,
@@ -1083,7 +1089,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery
                     }
                     else
                     {
-                        providerSettings.VmDisks.Add(new A2AVmDiskInputDetails
+                        providerSettings.VMDisks.Add(new A2AVmDiskInputDetails
                         {
                             DiskUri = disk.VhdUri,
                             RecoveryAzureStorageAccountId =
@@ -1165,14 +1171,14 @@ namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery
                 TargetProximityPlacementGroupId = this.RecoveryProximityPlacementGroupId,
                 TargetBootDiagnosticsStorageAccountId = this.RecoveryBootDiagStorageAccountId,
                 TargetSubnetName = this.RecoveryAzureSubnetName,
-                TargetVmName = string.IsNullOrEmpty(this.RecoveryVmName)
+                TargetVMName = string.IsNullOrEmpty(this.RecoveryVmName)
                     ? this.ProtectableItem.FriendlyName
                     : this.RecoveryVmName,
-                TargetVmSize = this.Size,
+                TargetVMSize = this.Size,
                 LicenseType = this.LicenseType,
                 TestNetworkId = this.TestNetworkId,
                 TestSubnetName = this.TestSubnetName,
-                MultiVmGroupName = this.ReplicationGroupName,
+                MultiVMGroupName = this.ReplicationGroupName,
                 ProcessServerId = processServer.Id,
                 DisksDefault = new InMageRcmDisksDefaultInput()
                 {
@@ -1227,14 +1233,14 @@ namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery
                         // Compare the multi VM group name.
                         if (string.Compare(
                                 this.ReplicationGroupName,
-                                providerSpecificDetails.MultiVmGroupName,
+                                providerSpecificDetails.MultiVMGroupName,
                                 StringComparison.OrdinalIgnoreCase) ==
                             0)
                         {
                             // Multi VM group found.
                             // Set the values in the InMageRcm provider specific input.
-                            providerSettings.MultiVmGroupName =
-                                providerSpecificDetails.MultiVmGroupName;
+                            providerSettings.MultiVMGroupName =
+                                providerSpecificDetails.MultiVMGroupName;
                             flag = true;
                             break;
                         }
@@ -1247,7 +1253,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery
                     // Multi VM group was not found.
                     // Create a new multi VM group and set the values in the 
                     // InMageRcm provider specific input.
-                    providerSettings.MultiVmGroupName = this.ReplicationGroupName;
+                    providerSettings.MultiVMGroupName = this.ReplicationGroupName;
                 }
             }
 

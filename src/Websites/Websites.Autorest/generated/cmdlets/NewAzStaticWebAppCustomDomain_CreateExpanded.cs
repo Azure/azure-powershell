@@ -18,6 +18,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Websites.Cmdlets
     [global::System.Management.Automation.OutputType(typeof(Microsoft.Azure.PowerShell.Cmdlets.Websites.Models.Api20201201.IStaticSiteCustomDomainOverviewArmResource))]
     [global::Microsoft.Azure.PowerShell.Cmdlets.Websites.Description(@"Description for Creates a new static site custom domain in an existing resource group and static site.")]
     [global::Microsoft.Azure.PowerShell.Cmdlets.Websites.Generated]
+    [global::Microsoft.Azure.PowerShell.Cmdlets.Websites.HttpPath(Path = "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/staticSites/{name}/customDomains/{domainName}", ApiVersion = "2020-12-01")]
     public partial class NewAzStaticWebAppCustomDomain_CreateExpanded : global::System.Management.Automation.PSCmdlet,
         Microsoft.Azure.PowerShell.Cmdlets.Websites.Runtime.IEventListener
     {
