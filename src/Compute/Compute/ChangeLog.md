@@ -20,6 +20,7 @@
 
 -->
 ## Upcoming Release
+* Reverting SSH Private Key File permission changes in `New-AzVm`.
 
 ## Version 7.0.0
 * Added update functionality in `Update-AzVmss` for parameters `SecurityType`, `EnableSecureBoot`, and `EnableVtpm` for the parameter set with the Put operation.
