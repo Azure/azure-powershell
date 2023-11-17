@@ -52,7 +52,7 @@ Describe 'AzContainerAppRevision' {
         } | Should -Not -Throw
     }
 
-    It 'RevisionReplica-Get' -skip {
+    It 'RevisionReplica-Get' {
         {
             $config = Get-AzContainerAppRevisionReplica -ContainerAppName $env.containerApp1 -ResourceGroupName $env.resourceGroupManaged -RevisionName $revisionName
             $config.Count | Should -BeGreaterThan 0

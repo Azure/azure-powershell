@@ -1,0 +1,113 @@
+﻿<?xml version="1.0" encoding="utf-8" standalone="no"?>
+<test-results xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="nunit_schema_2.5.xsd" name="Pester" total="4" errors="0" failures="0" not-run="0" inconclusive="0" ignored="20" skipped="0" invalid="0" date="2023-11-06" time="15:10:36">
+  <environment platform="Microsoft Windows 11 企业版|C:\WINDOWS|\Device\Harddisk0\Partition3" os-version="10.0.22631" user="v-jinpel" nunit-version="2.5.8.0" user-domain="FAREAST" machine-name="MCI-V-JINPEL" cwd="D:\_code\3\azure-powershell\src\Subscription" clr-version="Unknown" />
+  <culture-info current-culture="zh-CN" current-uiculture="zh-CN" />
+  <test-suite type="TestFixture" name="Pester" executed="True" result="Ignored" success="True" time="4.1251" asserts="0" description="Pester">
+    <results>
+      <test-suite type="TestFixture" name="D:\_code\3\azure-powershell\src\Subscription\test\AzSubscription.Tests.ps1" executed="True" result="Ignored" success="True" time="2.8578" asserts="0" description="D:\_code\3\azure-powershell\src\Subscription\test\AzSubscription.Tests.ps1">
+        <results>
+          <test-suite type="TestFixture" name="AzSubscription" executed="True" result="Ignored" success="True" time="2.6885" asserts="0" description="AzSubscription">
+            <results>
+              <test-case description="CreateAliasExpanded" name="AzSubscription.CreateAliasExpanded" time="1.3375" asserts="0" success="True" result="Success" executed="True" />
+              <test-case description="ListAlias" name="AzSubscription.ListAlias" time="0.3056" asserts="0" success="True" result="Success" executed="True" />
+              <test-case description="GetPolicy" name="AzSubscription.GetPolicy" time="0.2908" asserts="0" success="True" result="Success" executed="True" />
+              <test-case description="RenameSub" name="AzSubscription.RenameSub" time="0.2929" asserts="0" success="True" result="Success" executed="True" />
+              <test-case description="DeleteAlias" name="AzSubscription.DeleteAlias" time="0" asserts="0" success="True" result="Ignored" executed="False" />
+              <test-case description="UpdateSubPolicy" name="AzSubscription.UpdateSubPolicy" time="0" asserts="0" success="True" result="Ignored" executed="False" />
+            </results>
+          </test-suite>
+        </results>
+      </test-suite>
+      <test-suite type="TestFixture" name="D:\_code\3\azure-powershell\src\Subscription\test\Disable-AzSubscription.Tests.ps1" executed="True" result="Ignored" success="True" time="0.1567" asserts="0" description="D:\_code\3\azure-powershell\src\Subscription\test\Disable-AzSubscription.Tests.ps1">
+        <results>
+          <test-suite type="TestFixture" name="Disable-AzSubscription" executed="True" result="Ignored" success="True" time="0.0632" asserts="0" description="Disable-AzSubscription">
+            <results>
+              <test-case description="Cancel" name="Disable-AzSubscription.Cancel" time="0" asserts="0" success="True" result="Ignored" executed="False" />
+              <test-case description="CancelViaIdentity" name="Disable-AzSubscription.CancelViaIdentity" time="0" asserts="0" success="True" result="Ignored" executed="False" />
+            </results>
+          </test-suite>
+        </results>
+      </test-suite>
+      <test-suite type="TestFixture" name="D:\_code\3\azure-powershell\src\Subscription\test\Enable-AzSubscription.Tests.ps1" executed="True" result="Ignored" success="True" time="0.1522" asserts="0" description="D:\_code\3\azure-powershell\src\Subscription\test\Enable-AzSubscription.Tests.ps1">
+        <results>
+          <test-suite type="TestFixture" name="Enable-AzSubscription" executed="True" result="Ignored" success="True" time="0.0534" asserts="0" description="Enable-AzSubscription">
+            <results>
+              <test-case description="Enable" name="Enable-AzSubscription.Enable" time="0" asserts="0" success="True" result="Ignored" executed="False" />
+              <test-case description="EnableViaIdentity" name="Enable-AzSubscription.EnableViaIdentity" time="0" asserts="0" success="True" result="Ignored" executed="False" />
+            </results>
+          </test-suite>
+        </results>
+      </test-suite>
+      <test-suite type="TestFixture" name="D:\_code\3\azure-powershell\src\Subscription\test\Get-AzSubscriptionAcceptOwnershipStatus.Tests.ps1" executed="True" result="Ignored" success="True" time="0.142" asserts="0" description="D:\_code\3\azure-powershell\src\Subscription\test\Get-AzSubscriptionAcceptOwnershipStatus.Tests.ps1">
+        <results>
+          <test-suite type="TestFixture" name="Get-AzSubscriptionAcceptOwnershipStatus" executed="True" result="Ignored" success="True" time="0.0523" asserts="0" description="Get-AzSubscriptionAcceptOwnershipStatus">
+            <results>
+              <test-case description="AcceptExpanded" name="Get-AzSubscriptionAcceptOwnershipStatus.AcceptExpanded" time="0" asserts="0" success="True" result="Ignored" executed="False" />
+              <test-case description="AcceptViaIdentityExpanded" name="Get-AzSubscriptionAcceptOwnershipStatus.AcceptViaIdentityExpanded" time="0" asserts="0" success="True" result="Ignored" executed="False" />
+            </results>
+          </test-suite>
+        </results>
+      </test-suite>
+      <test-suite type="TestFixture" name="D:\_code\3\azure-powershell\src\Subscription\test\Get-AzSubscriptionAlias.Tests.ps1" executed="True" result="Ignored" success="True" time="0.1403" asserts="0" description="D:\_code\3\azure-powershell\src\Subscription\test\Get-AzSubscriptionAlias.Tests.ps1">
+        <results>
+          <test-suite type="TestFixture" name="Get-AzSubscriptionAlias" executed="True" result="Ignored" success="True" time="0.0536" asserts="0" description="Get-AzSubscriptionAlias">
+            <results>
+              <test-case description="List" name="Get-AzSubscriptionAlias.List" time="0" asserts="0" success="True" result="Ignored" executed="False" />
+              <test-case description="Get" name="Get-AzSubscriptionAlias.Get" time="0" asserts="0" success="True" result="Ignored" executed="False" />
+              <test-case description="GetViaIdentity" name="Get-AzSubscriptionAlias.GetViaIdentity" time="0" asserts="0" success="True" result="Ignored" executed="False" />
+            </results>
+          </test-suite>
+        </results>
+      </test-suite>
+      <test-suite type="TestFixture" name="D:\_code\3\azure-powershell\src\Subscription\test\Get-AzSubscriptionPolicy.Tests.ps1" executed="True" result="Ignored" success="True" time="0.131" asserts="0" description="D:\_code\3\azure-powershell\src\Subscription\test\Get-AzSubscriptionPolicy.Tests.ps1">
+        <results>
+          <test-suite type="TestFixture" name="Get-AzSubscriptionPolicy" executed="True" result="Ignored" success="True" time="0.0459" asserts="0" description="Get-AzSubscriptionPolicy">
+            <results>
+              <test-case description="List" name="Get-AzSubscriptionPolicy.List" time="0" asserts="0" success="True" result="Ignored" executed="False" />
+            </results>
+          </test-suite>
+        </results>
+      </test-suite>
+      <test-suite type="TestFixture" name="D:\_code\3\azure-powershell\src\Subscription\test\Invoke-AzSubscriptionAcceptOwnership.Tests.ps1" executed="True" result="Ignored" success="True" time="0.1352" asserts="0" description="D:\_code\3\azure-powershell\src\Subscription\test\Invoke-AzSubscriptionAcceptOwnership.Tests.ps1">
+        <results>
+          <test-suite type="TestFixture" name="Invoke-AzSubscriptionAcceptOwnership" executed="True" result="Ignored" success="True" time="0.0468" asserts="0" description="Invoke-AzSubscriptionAcceptOwnership">
+            <results>
+              <test-case description="AcceptExpanded" name="Invoke-AzSubscriptionAcceptOwnership.AcceptExpanded" time="0" asserts="0" success="True" result="Ignored" executed="False" />
+              <test-case description="AcceptViaIdentityExpanded" name="Invoke-AzSubscriptionAcceptOwnership.AcceptViaIdentityExpanded" time="0" asserts="0" success="True" result="Ignored" executed="False" />
+            </results>
+          </test-suite>
+        </results>
+      </test-suite>
+      <test-suite type="TestFixture" name="D:\_code\3\azure-powershell\src\Subscription\test\New-AzSubscriptionAlias.Tests.ps1" executed="True" result="Ignored" success="True" time="0.1384" asserts="0" description="D:\_code\3\azure-powershell\src\Subscription\test\New-AzSubscriptionAlias.Tests.ps1">
+        <results>
+          <test-suite type="TestFixture" name="New-AzSubscriptionAlias" executed="True" result="Ignored" success="True" time="0.052" asserts="0" description="New-AzSubscriptionAlias">
+            <results>
+              <test-case description="CreateExpanded" name="New-AzSubscriptionAlias.CreateExpanded" time="0" asserts="0" success="True" result="Ignored" executed="False" />
+              <test-case description="WorkloadCreateExpanded" name="New-AzSubscriptionAlias.WorkloadCreateExpanded" time="0" asserts="0" success="True" result="Ignored" executed="False" />
+            </results>
+          </test-suite>
+        </results>
+      </test-suite>
+      <test-suite type="TestFixture" name="D:\_code\3\azure-powershell\src\Subscription\test\Remove-AzSubscriptionAlias.Tests.ps1" executed="True" result="Ignored" success="True" time="0.1352" asserts="0" description="D:\_code\3\azure-powershell\src\Subscription\test\Remove-AzSubscriptionAlias.Tests.ps1">
+        <results>
+          <test-suite type="TestFixture" name="Remove-AzSubscriptionAlias" executed="True" result="Ignored" success="True" time="0.0468" asserts="0" description="Remove-AzSubscriptionAlias">
+            <results>
+              <test-case description="Delete" name="Remove-AzSubscriptionAlias.Delete" time="0" asserts="0" success="True" result="Ignored" executed="False" />
+              <test-case description="DeleteViaIdentity" name="Remove-AzSubscriptionAlias.DeleteViaIdentity" time="0" asserts="0" success="True" result="Ignored" executed="False" />
+            </results>
+          </test-suite>
+        </results>
+      </test-suite>
+      <test-suite type="TestFixture" name="D:\_code\3\azure-powershell\src\Subscription\test\Rename-AzSubscription.Tests.ps1" executed="True" result="Ignored" success="True" time="0.1364" asserts="0" description="D:\_code\3\azure-powershell\src\Subscription\test\Rename-AzSubscription.Tests.ps1">
+        <results>
+          <test-suite type="TestFixture" name="Rename-AzSubscription" executed="True" result="Ignored" success="True" time="0.0494" asserts="0" description="Rename-AzSubscription">
+            <results>
+              <test-case description="RenameExpanded" name="Rename-AzSubscription.RenameExpanded" time="0" asserts="0" success="True" result="Ignored" executed="False" />
+              <test-case description="RenameViaIdentityExpanded" name="Rename-AzSubscription.RenameViaIdentityExpanded" time="0" asserts="0" success="True" result="Ignored" executed="False" />
+            </results>
+          </test-suite>
+        </results>
+      </test-suite>
+    </results>
+  </test-suite>
+</test-results>

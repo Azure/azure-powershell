@@ -1,0 +1,142 @@
+﻿<?xml version="1.0" encoding="utf-8" standalone="no"?>
+<test-results xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="nunit_schema_2.5.xsd" name="Pester" total="29" errors="0" failures="0" not-run="0" inconclusive="0" ignored="0" skipped="0" invalid="0" date="2023-05-08" time="21:03:32">
+  <environment os-version="10.0.22621" user-domain="FAREAST" platform="Microsoft Windows 11 企业版|C:\WINDOWS|\Device\Harddisk0\Partition3" nunit-version="2.5.8.0" clr-version="Unknown" cwd="D:\_code\3\azure-powershell\src\Databricks" user="v-jinpel" machine-name="MCI-V-JINPEL" />
+  <culture-info current-culture="zh-CN" current-uiculture="zh-CN" />
+  <test-suite type="TestFixture" name="Pester" executed="True" result="Success" success="True" time="16.5366" asserts="0" description="Pester">
+    <results>
+      <test-suite type="TestFixture" name="D:\_code\3\azure-powershell\src\Databricks\test\Get-AzDatabricksAccessConnector.Tests.ps1" executed="True" result="Success" success="True" time="2.9285" asserts="0" description="D:\_code\3\azure-powershell\src\Databricks\test\Get-AzDatabricksAccessConnector.Tests.ps1">
+        <results>
+          <test-suite type="TestFixture" name="Get-AzDatabricksAccessConnector" executed="True" result="Success" success="True" time="2.743" asserts="0" description="Get-AzDatabricksAccessConnector">
+            <results>
+              <test-case description="List1" name="Get-AzDatabricksAccessConnector.List1" time="1.1797" asserts="0" success="True" result="Success" executed="True" />
+              <test-case description="Get" name="Get-AzDatabricksAccessConnector.Get" time="0.2781" asserts="0" success="True" result="Success" executed="True" />
+              <test-case description="List" name="Get-AzDatabricksAccessConnector.List" time="0.2673" asserts="0" success="True" result="Success" executed="True" />
+              <test-case description="GetViaIdentity" name="Get-AzDatabricksAccessConnector.GetViaIdentity" time="0.5497" asserts="0" success="True" result="Success" executed="True" />
+            </results>
+          </test-suite>
+        </results>
+      </test-suite>
+      <test-suite type="TestFixture" name="D:\_code\3\azure-powershell\src\Databricks\test\Get-AzDatabricksOutboundNetworkDependenciesEndpoint.Tests.ps1" executed="True" result="Success" success="True" time="0.8063" asserts="0" description="D:\_code\3\azure-powershell\src\Databricks\test\Get-AzDatabricksOutboundNetworkDependenciesEndpoint.Tests.ps1">
+        <results>
+          <test-suite type="TestFixture" name="Get-AzDatabricksOutboundNetworkDependenciesEndpoint" executed="True" result="Success" success="True" time="0.7003" asserts="0" description="Get-AzDatabricksOutboundNetworkDependenciesEndpoint">
+            <results>
+              <test-case description="List" name="Get-AzDatabricksOutboundNetworkDependenciesEndpoint.List" time="0.6524" asserts="0" success="True" result="Success" executed="True" />
+            </results>
+          </test-suite>
+        </results>
+      </test-suite>
+      <test-suite type="TestFixture" name="D:\_code\3\azure-powershell\src\Databricks\test\Get-AzDatabricksVNetPeering.Tests.ps1" executed="True" result="Success" success="True" time="1.2522" asserts="0" description="D:\_code\3\azure-powershell\src\Databricks\test\Get-AzDatabricksVNetPeering.Tests.ps1">
+        <results>
+          <test-suite type="TestFixture" name="Get-AzDatabricksVNetPeering" executed="True" result="Success" success="True" time="1.1571" asserts="0" description="Get-AzDatabricksVNetPeering">
+            <results>
+              <test-case description="List" name="Get-AzDatabricksVNetPeering.List" time="0.3305" asserts="0" success="True" result="Success" executed="True" />
+              <test-case description="Get" name="Get-AzDatabricksVNetPeering.Get" time="0.2588" asserts="0" success="True" result="Success" executed="True" />
+              <test-case description="GetViaIdentity" name="Get-AzDatabricksVNetPeering.GetViaIdentity" time="0.5016" asserts="0" success="True" result="Success" executed="True" />
+            </results>
+          </test-suite>
+        </results>
+      </test-suite>
+      <test-suite type="TestFixture" name="D:\_code\3\azure-powershell\src\Databricks\test\Get-AzDatabricksWorkspace.Tests.ps1" executed="True" result="Success" success="True" time="1.4724" asserts="0" description="D:\_code\3\azure-powershell\src\Databricks\test\Get-AzDatabricksWorkspace.Tests.ps1">
+        <results>
+          <test-suite type="TestFixture" name="Get-AzDatabricksWorkspace" executed="True" result="Success" success="True" time="1.3755" asserts="0" description="Get-AzDatabricksWorkspace">
+            <results>
+              <test-case description="List1" name="Get-AzDatabricksWorkspace.List1" time="0.2955" asserts="0" success="True" result="Success" executed="True" />
+              <test-case description="Get" name="Get-AzDatabricksWorkspace.Get" time="0.2759" asserts="0" success="True" result="Success" executed="True" />
+              <test-case description="List" name="Get-AzDatabricksWorkspace.List" time="0.2544" asserts="0" success="True" result="Success" executed="True" />
+              <test-case description="GetViaIdentity" name="Get-AzDatabricksWorkspace.GetViaIdentity" time="0.4917" asserts="0" success="True" result="Success" executed="True" />
+            </results>
+          </test-suite>
+        </results>
+      </test-suite>
+      <test-suite type="TestFixture" name="D:\_code\3\azure-powershell\src\Databricks\test\New-AzDatabricksAccessConnector.Tests.ps1" executed="True" result="Success" success="True" time="0.4185" asserts="0" description="D:\_code\3\azure-powershell\src\Databricks\test\New-AzDatabricksAccessConnector.Tests.ps1">
+        <results>
+          <test-suite type="TestFixture" name="New-AzDatabricksAccessConnector" executed="True" result="Success" success="True" time="0.3258" asserts="0" description="New-AzDatabricksAccessConnector">
+            <results>
+              <test-case description="CreateExpanded" name="New-AzDatabricksAccessConnector.CreateExpanded" time="0.28" asserts="0" success="True" result="Success" executed="True" />
+            </results>
+          </test-suite>
+        </results>
+      </test-suite>
+      <test-suite type="TestFixture" name="D:\_code\3\azure-powershell\src\Databricks\test\New-AzDatabricksVNetPeering.Tests.ps1" executed="True" result="Success" success="True" time="0.4616" asserts="0" description="D:\_code\3\azure-powershell\src\Databricks\test\New-AzDatabricksVNetPeering.Tests.ps1">
+        <results>
+          <test-suite type="TestFixture" name="New-AzDatabricksVNetPeering" executed="True" result="Success" success="True" time="0.3605" asserts="0" description="New-AzDatabricksVNetPeering">
+            <results>
+              <test-case description="CreateExpanded" name="New-AzDatabricksVNetPeering.CreateExpanded" time="0.3149" asserts="0" success="True" result="Success" executed="True" />
+            </results>
+          </test-suite>
+        </results>
+      </test-suite>
+      <test-suite type="TestFixture" name="D:\_code\3\azure-powershell\src\Databricks\test\New-AzDatabricksWorkspace.Tests.ps1" executed="True" result="Success" success="True" time="1.3822" asserts="0" description="D:\_code\3\azure-powershell\src\Databricks\test\New-AzDatabricksWorkspace.Tests.ps1">
+        <results>
+          <test-suite type="TestFixture" name="New-AzDatabricksWorkspace" executed="True" result="Success" success="True" time="1.2742" asserts="0" description="New-AzDatabricksWorkspace">
+            <results>
+              <test-case description="CreateExpanded" name="New-AzDatabricksWorkspace.CreateExpanded" time="0.6382" asserts="0" success="True" result="Success" executed="True" />
+              <test-case description="CreateExpandedWithEncryption" name="New-AzDatabricksWorkspace.CreateExpandedWithEncryption" time="0.5854" asserts="0" success="True" result="Success" executed="True" />
+            </results>
+          </test-suite>
+        </results>
+      </test-suite>
+      <test-suite type="TestFixture" name="D:\_code\3\azure-powershell\src\Databricks\test\Remove-AzDatabricksAccessConnector.Tests.ps1" executed="True" result="Success" success="True" time="0.9496" asserts="0" description="D:\_code\3\azure-powershell\src\Databricks\test\Remove-AzDatabricksAccessConnector.Tests.ps1">
+        <results>
+          <test-suite type="TestFixture" name="Remove-AzDatabricksAccessConnector" executed="True" result="Success" success="True" time="0.8374" asserts="0" description="Remove-AzDatabricksAccessConnector">
+            <results>
+              <test-case description="Delete" name="Remove-AzDatabricksAccessConnector.Delete" time="0.285" asserts="0" success="True" result="Success" executed="True" />
+              <test-case description="DeleteViaIdentity" name="Remove-AzDatabricksAccessConnector.DeleteViaIdentity" time="0.5044" asserts="0" success="True" result="Success" executed="True" />
+            </results>
+          </test-suite>
+        </results>
+      </test-suite>
+      <test-suite type="TestFixture" name="D:\_code\3\azure-powershell\src\Databricks\test\Remove-AzDatabricksVNetPeering.Tests.ps1" executed="True" result="Success" success="True" time="1.4289" asserts="0" description="D:\_code\3\azure-powershell\src\Databricks\test\Remove-AzDatabricksVNetPeering.Tests.ps1">
+        <results>
+          <test-suite type="TestFixture" name="Remove-AzDatabricksVNetPeering" executed="True" result="Success" success="True" time="1.3331" asserts="0" description="Remove-AzDatabricksVNetPeering">
+            <results>
+              <test-case description="Delete" name="Remove-AzDatabricksVNetPeering.Delete" time="0.5235" asserts="0" success="True" result="Success" executed="True" />
+              <test-case description="DeleteViaIdentity" name="Remove-AzDatabricksVNetPeering.DeleteViaIdentity" time="0.7602" asserts="0" success="True" result="Success" executed="True" />
+            </results>
+          </test-suite>
+        </results>
+      </test-suite>
+      <test-suite type="TestFixture" name="D:\_code\3\azure-powershell\src\Databricks\test\Remove-AzDatabricksWorkspace.Tests.ps1" executed="True" result="Success" success="True" time="1.5422" asserts="0" description="D:\_code\3\azure-powershell\src\Databricks\test\Remove-AzDatabricksWorkspace.Tests.ps1">
+        <results>
+          <test-suite type="TestFixture" name="Remove-AzDatabricksWorkspace" executed="True" result="Success" success="True" time="1.4495" asserts="0" description="Remove-AzDatabricksWorkspace">
+            <results>
+              <test-case description="Delete" name="Remove-AzDatabricksWorkspace.Delete" time="0.6321" asserts="0" success="True" result="Success" executed="True" />
+              <test-case description="DeleteViaIdentity" name="Remove-AzDatabricksWorkspace.DeleteViaIdentity" time="0.7692" asserts="0" success="True" result="Success" executed="True" />
+            </results>
+          </test-suite>
+        </results>
+      </test-suite>
+      <test-suite type="TestFixture" name="D:\_code\3\azure-powershell\src\Databricks\test\Update-AzDatabricksAccessConnector.Tests.ps1" executed="True" result="Success" success="True" time="0.9341" asserts="0" description="D:\_code\3\azure-powershell\src\Databricks\test\Update-AzDatabricksAccessConnector.Tests.ps1">
+        <results>
+          <test-suite type="TestFixture" name="Update-AzDatabricksAccessConnector" executed="True" result="Success" success="True" time="0.8357" asserts="0" description="Update-AzDatabricksAccessConnector">
+            <results>
+              <test-case description="UpdateExpanded" name="Update-AzDatabricksAccessConnector.UpdateExpanded" time="0.2829" asserts="0" success="True" result="Success" executed="True" />
+              <test-case description="UpdateViaIdentityExpanded" name="Update-AzDatabricksAccessConnector.UpdateViaIdentityExpanded" time="0.4939" asserts="0" success="True" result="Success" executed="True" />
+            </results>
+          </test-suite>
+        </results>
+      </test-suite>
+      <test-suite type="TestFixture" name="D:\_code\3\azure-powershell\src\Databricks\test\Update-AzDatabricksVNetPeering.Tests.ps1" executed="True" result="Success" success="True" time="0.9181" asserts="0" description="D:\_code\3\azure-powershell\src\Databricks\test\Update-AzDatabricksVNetPeering.Tests.ps1">
+        <results>
+          <test-suite type="TestFixture" name="Update-AzDatabricksVNetPeering" executed="True" result="Success" success="True" time="0.8226" asserts="0" description="Update-AzDatabricksVNetPeering">
+            <results>
+              <test-case description="UpdateExpanded" name="Update-AzDatabricksVNetPeering.UpdateExpanded" time="0.2935" asserts="0" success="True" result="Success" executed="True" />
+              <test-case description="UpdateViaIdentityExpanded" name="Update-AzDatabricksVNetPeering.UpdateViaIdentityExpanded" time="0.4799" asserts="0" success="True" result="Success" executed="True" />
+            </results>
+          </test-suite>
+        </results>
+      </test-suite>
+      <test-suite type="TestFixture" name="D:\_code\3\azure-powershell\src\Databricks\test\Update-AzDatabricksWorkspace.Tests.ps1" executed="True" result="Success" success="True" time="2.0418" asserts="0" description="D:\_code\3\azure-powershell\src\Databricks\test\Update-AzDatabricksWorkspace.Tests.ps1">
+        <results>
+          <test-suite type="TestFixture" name="Update-AzDatabricksWorkspace" executed="True" result="Success" success="True" time="1.9433" asserts="0" description="Update-AzDatabricksWorkspace">
+            <results>
+              <test-case description="UpdateExpanded" name="Update-AzDatabricksWorkspace.UpdateExpanded" time="0.3042" asserts="0" success="True" result="Success" executed="True" />
+              <test-case description="UpdateViaIdentityExpanded" name="Update-AzDatabricksWorkspace.UpdateViaIdentityExpanded" time="0.5055" asserts="0" success="True" result="Success" executed="True" />
+              <test-case description="UpdateViaIdentityForEncryption" name="Update-AzDatabricksWorkspace.UpdateViaIdentityForEncryption" time="1.0823" asserts="0" success="True" result="Success" executed="True" />
+            </results>
+          </test-suite>
+        </results>
+      </test-suite>
+    </results>
+  </test-suite>
+</test-results>

@@ -1,0 +1,76 @@
+﻿<?xml version="1.0" encoding="utf-8" standalone="no"?>
+<test-results xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="nunit_schema_2.5.xsd" name="Pester" total="1" errors="0" failures="1" not-run="0" inconclusive="0" ignored="10" skipped="0" invalid="0" date="2023-08-28" time="14:07:39">
+  <environment user="v-jinpel" os-version="10.0.22621" cwd="D:\_code\3\azure-powershell\src\CustomLocation" nunit-version="2.5.8.0" platform="Microsoft Windows 11 企业版|C:\WINDOWS|\Device\Harddisk0\Partition3" clr-version="Unknown" machine-name="MCI-V-JINPEL" user-domain="FAREAST" />
+  <culture-info current-culture="zh-CN" current-uiculture="zh-CN" />
+  <test-suite type="TestFixture" name="Pester" executed="True" result="Failure" success="False" time="2.1351" asserts="0" description="Pester">
+    <results>
+      <test-suite type="TestFixture" name="D:\_code\3\azure-powershell\src\CustomLocation\test\AzCustomLocation.Tests.ps1" executed="True" result="Failure" success="False" time="1.4048" asserts="0" description="D:\_code\3\azure-powershell\src\CustomLocation\test\AzCustomLocation.Tests.ps1">
+        <results>
+          <test-suite type="TestFixture" name="AzCustomLocation" executed="True" result="Failure" success="False" time="1.1736" asserts="0" description="AzCustomLocation">
+            <results>
+              <test-case description="Create" name="AzCustomLocation.Create" time="0.0927" asserts="0" success="False" result="Failure" executed="True">
+                <failure>
+                  <message>Expected no exception to be thrown, but an exception "Cannot bind argument to parameter 'ClusterExtensionId' because it is null." was thrown from D:\_code\3\azure-powershell\src\CustomLocation\test\AzCustomLocation.Tests.ps1:17 char:157
+    + … ion $env.location -ClusterExtensionId $env.ClusterExtensionId -HostRe …
+    +                                         ~~~~~~~~~~~~~~~~~~~~~~~.</message>
+                  <stack-trace>at &lt;ScriptBlock&gt;, D:\_code\3\azure-powershell\src\CustomLocation\test\AzCustomLocation.Tests.ps1: line 22
+22:         } | Should -Not -Throw</stack-trace>
+                </failure>
+              </test-case>
+            </results>
+          </test-suite>
+        </results>
+      </test-suite>
+      <test-suite type="TestFixture" name="D:\_code\3\azure-powershell\src\CustomLocation\test\Get-AzCustomLocation.Tests.ps1" executed="True" result="Ignored" success="True" time="0.1471" asserts="0" description="D:\_code\3\azure-powershell\src\CustomLocation\test\Get-AzCustomLocation.Tests.ps1">
+        <results>
+          <test-suite type="TestFixture" name="Get-AzCustomLocation" executed="True" result="Ignored" success="True" time="0.0535" asserts="0" description="Get-AzCustomLocation">
+            <results>
+              <test-case description="List" name="Get-AzCustomLocation.List" time="0" asserts="0" success="True" result="Ignored" executed="False" />
+              <test-case description="Get" name="Get-AzCustomLocation.Get" time="0" asserts="0" success="True" result="Ignored" executed="False" />
+              <test-case description="List1" name="Get-AzCustomLocation.List1" time="0" asserts="0" success="True" result="Ignored" executed="False" />
+              <test-case description="GetViaIdentity" name="Get-AzCustomLocation.GetViaIdentity" time="0" asserts="0" success="True" result="Ignored" executed="False" />
+            </results>
+          </test-suite>
+        </results>
+      </test-suite>
+      <test-suite type="TestFixture" name="D:\_code\3\azure-powershell\src\CustomLocation\test\Get-AzCustomLocationEnabledResourceType.Tests.ps1" executed="True" result="Ignored" success="True" time="0.1214" asserts="0" description="D:\_code\3\azure-powershell\src\CustomLocation\test\Get-AzCustomLocationEnabledResourceType.Tests.ps1">
+        <results>
+          <test-suite type="TestFixture" name="Get-AzCustomLocationEnabledResourceType" executed="True" result="Ignored" success="True" time="0.0425" asserts="0" description="Get-AzCustomLocationEnabledResourceType">
+            <results>
+              <test-case description="List" name="Get-AzCustomLocationEnabledResourceType.List" time="0" asserts="0" success="True" result="Ignored" executed="False" />
+            </results>
+          </test-suite>
+        </results>
+      </test-suite>
+      <test-suite type="TestFixture" name="D:\_code\3\azure-powershell\src\CustomLocation\test\New-AzCustomLocation.Tests.ps1" executed="True" result="Ignored" success="True" time="0.1585" asserts="0" description="D:\_code\3\azure-powershell\src\CustomLocation\test\New-AzCustomLocation.Tests.ps1">
+        <results>
+          <test-suite type="TestFixture" name="New-AzCustomLocation" executed="True" result="Ignored" success="True" time="0.0621" asserts="0" description="New-AzCustomLocation">
+            <results>
+              <test-case description="CreateExpanded" name="New-AzCustomLocation.CreateExpanded" time="0" asserts="0" success="True" result="Ignored" executed="False" />
+            </results>
+          </test-suite>
+        </results>
+      </test-suite>
+      <test-suite type="TestFixture" name="D:\_code\3\azure-powershell\src\CustomLocation\test\Remove-AzCustomLocation.Tests.ps1" executed="True" result="Ignored" success="True" time="0.1499" asserts="0" description="D:\_code\3\azure-powershell\src\CustomLocation\test\Remove-AzCustomLocation.Tests.ps1">
+        <results>
+          <test-suite type="TestFixture" name="Remove-AzCustomLocation" executed="True" result="Ignored" success="True" time="0.0515" asserts="0" description="Remove-AzCustomLocation">
+            <results>
+              <test-case description="Delete" name="Remove-AzCustomLocation.Delete" time="0" asserts="0" success="True" result="Ignored" executed="False" />
+              <test-case description="DeleteViaIdentity" name="Remove-AzCustomLocation.DeleteViaIdentity" time="0" asserts="0" success="True" result="Ignored" executed="False" />
+            </results>
+          </test-suite>
+        </results>
+      </test-suite>
+      <test-suite type="TestFixture" name="D:\_code\3\azure-powershell\src\CustomLocation\test\Update-AzCustomLocation.Tests.ps1" executed="True" result="Ignored" success="True" time="0.1533" asserts="0" description="D:\_code\3\azure-powershell\src\CustomLocation\test\Update-AzCustomLocation.Tests.ps1">
+        <results>
+          <test-suite type="TestFixture" name="Update-AzCustomLocation" executed="True" result="Ignored" success="True" time="0.0576" asserts="0" description="Update-AzCustomLocation">
+            <results>
+              <test-case description="UpdateExpanded" name="Update-AzCustomLocation.UpdateExpanded" time="0" asserts="0" success="True" result="Ignored" executed="False" />
+              <test-case description="UpdateViaIdentityExpanded" name="Update-AzCustomLocation.UpdateViaIdentityExpanded" time="0" asserts="0" success="True" result="Ignored" executed="False" />
+            </results>
+          </test-suite>
+        </results>
+      </test-suite>
+    </results>
+  </test-suite>
+</test-results>

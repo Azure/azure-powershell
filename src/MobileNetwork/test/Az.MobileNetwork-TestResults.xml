@@ -1,0 +1,104 @@
+﻿<?xml version="1.0" encoding="utf-8" standalone="no"?>
+<test-results xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="nunit_schema_2.5.xsd" name="Pester" total="34" errors="0" failures="0" not-run="0" inconclusive="0" ignored="5" skipped="0" invalid="0" date="2023-05-29" time="14:53:26">
+  <environment user-domain="FAREAST" user="v-jinpel" cwd="D:\_code\3\azure-powershell\src\MobileNetwork" os-version="10.0.22621" nunit-version="2.5.8.0" machine-name="MCI-V-JINPEL" platform="Microsoft Windows 11 企业版|C:\WINDOWS|\Device\Harddisk0\Partition3" clr-version="Unknown" />
+  <culture-info current-culture="zh-CN" current-uiculture="zh-CN" />
+  <test-suite type="TestFixture" name="Pester" executed="True" result="Ignored" success="True" time="14.4398" asserts="0" description="Pester">
+    <results>
+      <test-suite type="TestFixture" name="D:\_code\3\azure-powershell\src\MobileNetwork\test\AzMobileNetwork.Tests.ps1" executed="True" result="Success" success="True" time="4.0512" asserts="0" description="D:\_code\3\azure-powershell\src\MobileNetwork\test\AzMobileNetwork.Tests.ps1">
+        <results>
+          <test-suite type="TestFixture" name="AzMobileNetwork" executed="True" result="Success" success="True" time="3.8423" asserts="0" description="AzMobileNetwork">
+            <results>
+              <test-case description="CreateExpanded" name="AzMobileNetwork.CreateExpanded" time="1.2758" asserts="0" success="True" result="Success" executed="True" />
+              <test-case description="List" name="AzMobileNetwork.List" time="0.2888" asserts="0" success="True" result="Success" executed="True" />
+              <test-case description="Get" name="AzMobileNetwork.Get" time="0.266" asserts="0" success="True" result="Success" executed="True" />
+              <test-case description="List1" name="AzMobileNetwork.List1" time="0.2559" asserts="0" success="True" result="Success" executed="True" />
+              <test-case description="UpdateExpanded" name="AzMobileNetwork.UpdateExpanded" time="0.2956" asserts="0" success="True" result="Success" executed="True" />
+              <test-case description="UpdateViaIdentityExpanded" name="AzMobileNetwork.UpdateViaIdentityExpanded" time="0.6146" asserts="0" success="True" result="Success" executed="True" />
+              <test-case description="Delete" name="AzMobileNetwork.Delete" time="0.391" asserts="0" success="True" result="Success" executed="True" />
+            </results>
+          </test-suite>
+        </results>
+      </test-suite>
+      <test-suite type="TestFixture" name="D:\_code\3\azure-powershell\src\MobileNetwork\test\AzMobileNetworkDataNetwork.Tests.ps1" executed="True" result="Ignored" success="True" time="1.316" asserts="0" description="D:\_code\3\azure-powershell\src\MobileNetwork\test\AzMobileNetworkDataNetwork.Tests.ps1">
+        <results>
+          <test-suite type="TestFixture" name="AzMobileNetworkDataNetwork" executed="True" result="Ignored" success="True" time="1.2168" asserts="0" description="AzMobileNetworkDataNetwork">
+            <results>
+              <test-case description="CreateExpanded" name="AzMobileNetworkDataNetwork.CreateExpanded" time="0.2827" asserts="0" success="True" result="Success" executed="True" />
+              <test-case description="List" name="AzMobileNetworkDataNetwork.List" time="0.2857" asserts="0" success="True" result="Success" executed="True" />
+              <test-case description="Get" name="AzMobileNetworkDataNetwork.Get" time="0.2541" asserts="0" success="True" result="Success" executed="True" />
+              <test-case description="UpdateExpanded" name="AzMobileNetworkDataNetwork.UpdateExpanded" time="0" asserts="0" success="True" result="Ignored" executed="False" />
+              <test-case description="Delete" name="AzMobileNetworkDataNetwork.Delete" time="0.3421" asserts="0" success="True" result="Success" executed="True" />
+            </results>
+          </test-suite>
+        </results>
+      </test-suite>
+      <test-suite type="TestFixture" name="D:\_code\3\azure-powershell\src\MobileNetwork\test\AzMobileNetworkService.Tests.ps1" executed="True" result="Ignored" success="True" time="2.0722" asserts="0" description="D:\_code\3\azure-powershell\src\MobileNetwork\test\AzMobileNetworkService.Tests.ps1">
+        <results>
+          <test-suite type="TestFixture" name="AzMobileNetworkService" executed="True" result="Ignored" success="True" time="1.9657" asserts="0" description="AzMobileNetworkService">
+            <results>
+              <test-case description="CreateExpanded" name="AzMobileNetworkService.CreateExpanded" time="0.87" asserts="0" success="True" result="Success" executed="True" />
+              <test-case description="List" name="AzMobileNetworkService.List" time="0.4686" asserts="0" success="True" result="Success" executed="True" />
+              <test-case description="Get" name="AzMobileNetworkService.Get" time="0.2857" asserts="0" success="True" result="Success" executed="True" />
+              <test-case description="UpdateExpanded" name="AzMobileNetworkService.UpdateExpanded" time="0" asserts="0" success="True" result="Ignored" executed="False" />
+              <test-case description="Delete" name="AzMobileNetworkService.Delete" time="0.2763" asserts="0" success="True" result="Success" executed="True" />
+            </results>
+          </test-suite>
+        </results>
+      </test-suite>
+      <test-suite type="TestFixture" name="D:\_code\3\azure-powershell\src\MobileNetwork\test\AzMobileNetworkSimGroup.Tests.ps1" executed="True" result="Ignored" success="True" time="1.5437" asserts="0" description="D:\_code\3\azure-powershell\src\MobileNetwork\test\AzMobileNetworkSimGroup.Tests.ps1">
+        <results>
+          <test-suite type="TestFixture" name="AzMobileNetworkSimGroup" executed="True" result="Ignored" success="True" time="1.4408" asserts="0" description="AzMobileNetworkSimGroup">
+            <results>
+              <test-case description="CreateExpanded" name="AzMobileNetworkSimGroup.CreateExpanded" time="0.3026" asserts="0" success="True" result="Success" executed="True" />
+              <test-case description="List" name="AzMobileNetworkSimGroup.List" time="0.2849" asserts="0" success="True" result="Success" executed="True" />
+              <test-case description="Get" name="AzMobileNetworkSimGroup.Get" time="0.2614" asserts="0" success="True" result="Success" executed="True" />
+              <test-case description="List1" name="AzMobileNetworkSimGroup.List1" time="0.2659" asserts="0" success="True" result="Success" executed="True" />
+              <test-case description="UpdateExpanded" name="AzMobileNetworkSimGroup.UpdateExpanded" time="0" asserts="0" success="True" result="Ignored" executed="False" />
+              <test-case description="Delete" name="AzMobileNetworkSimGroup.Delete" time="0.2624" asserts="0" success="True" result="Success" executed="True" />
+            </results>
+          </test-suite>
+        </results>
+      </test-suite>
+      <test-suite type="TestFixture" name="D:\_code\3\azure-powershell\src\MobileNetwork\test\AzMobileNetworkSimPolicy.Tests.ps1" executed="True" result="Ignored" success="True" time="2.0843" asserts="0" description="D:\_code\3\azure-powershell\src\MobileNetwork\test\AzMobileNetworkSimPolicy.Tests.ps1">
+        <results>
+          <test-suite type="TestFixture" name="AzMobileNetworkSimPolicy" executed="True" result="Ignored" success="True" time="1.9875" asserts="0" description="AzMobileNetworkSimPolicy">
+            <results>
+              <test-case description="CreateExpanded" name="AzMobileNetworkSimPolicy.CreateExpanded" time="1.1072" asserts="0" success="True" result="Success" executed="True" />
+              <test-case description="List" name="AzMobileNetworkSimPolicy.List" time="0.2767" asserts="0" success="True" result="Success" executed="True" />
+              <test-case description="Get" name="AzMobileNetworkSimPolicy.Get" time="0.2668" asserts="0" success="True" result="Success" executed="True" />
+              <test-case description="UpdateExpanded" name="AzMobileNetworkSimPolicy.UpdateExpanded" time="0" asserts="0" success="True" result="Ignored" executed="False" />
+              <test-case description="Delete" name="AzMobileNetworkSimPolicy.Delete" time="0.2776" asserts="0" success="True" result="Success" executed="True" />
+            </results>
+          </test-suite>
+        </results>
+      </test-suite>
+      <test-suite type="TestFixture" name="D:\_code\3\azure-powershell\src\MobileNetwork\test\AzMobileNetworkSite.Tests.ps1" executed="True" result="Success" success="True" time="2.1144" asserts="0" description="D:\_code\3\azure-powershell\src\MobileNetwork\test\AzMobileNetworkSite.Tests.ps1">
+        <results>
+          <test-suite type="TestFixture" name="AzMobileNetworkSite" executed="True" result="Success" success="True" time="2.0179" asserts="0" description="AzMobileNetworkSite">
+            <results>
+              <test-case description="CreateExpanded" name="AzMobileNetworkSite.CreateExpanded" time="0.3353" asserts="0" success="True" result="Success" executed="True" />
+              <test-case description="List" name="AzMobileNetworkSite.List" time="0.2823" asserts="0" success="True" result="Success" executed="True" />
+              <test-case description="Get" name="AzMobileNetworkSite.Get" time="0.264" asserts="0" success="True" result="Success" executed="True" />
+              <test-case description="UpdateExpanded" name="AzMobileNetworkSite.UpdateExpanded" time="0.2783" asserts="0" success="True" result="Success" executed="True" />
+              <test-case description="UpdateViaIdentityExpanded" name="AzMobileNetworkSite.UpdateViaIdentityExpanded" time="0.5209" asserts="0" success="True" result="Success" executed="True" />
+              <test-case description="Delete" name="AzMobileNetworkSite.Delete" time="0.282" asserts="0" success="True" result="Success" executed="True" />
+            </results>
+          </test-suite>
+        </results>
+      </test-suite>
+      <test-suite type="TestFixture" name="D:\_code\3\azure-powershell\src\MobileNetwork\test\AzMobileNetworkSlice.Tests.ps1" executed="True" result="Ignored" success="True" time="1.2579" asserts="0" description="D:\_code\3\azure-powershell\src\MobileNetwork\test\AzMobileNetworkSlice.Tests.ps1">
+        <results>
+          <test-suite type="TestFixture" name="AzMobileNetworkSlice" executed="True" result="Ignored" success="True" time="1.1567" asserts="0" description="AzMobileNetworkSlice">
+            <results>
+              <test-case description="CreateExpanded" name="AzMobileNetworkSlice.CreateExpanded" time="0.3049" asserts="0" success="True" result="Success" executed="True" />
+              <test-case description="List" name="AzMobileNetworkSlice.List" time="0.2627" asserts="0" success="True" result="Success" executed="True" />
+              <test-case description="Get" name="AzMobileNetworkSlice.Get" time="0.2632" asserts="0" success="True" result="Success" executed="True" />
+              <test-case description="UpdateExpanded" name="AzMobileNetworkSlice.UpdateExpanded" time="0" asserts="0" success="True" result="Ignored" executed="False" />
+              <test-case description="Delete" name="AzMobileNetworkSlice.Delete" time="0.2774" asserts="0" success="True" result="Success" executed="True" />
+            </results>
+          </test-suite>
+        </results>
+      </test-suite>
+    </results>
+  </test-suite>
+</test-results>
