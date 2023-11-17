@@ -1028,8 +1028,8 @@ namespace Microsoft.Azure.Commands.Compute
                 && this.VM.SecurityProfile?.SecurityType?.ToString().ToLower() == ConstantValues.StandardSecurityType)
             {
                 if (this.VM.SecurityProfile.UefiSettings?.SecureBootEnabled == null
-                        && this.VM.SecurityProfile.UefiSettings?.VTpmEnabled == null
-                        && this.VM.SecurityProfile.EncryptionAtHost == null)
+                    && this.VM.SecurityProfile.UefiSettings?.VTpmEnabled == null
+                    && this.VM.SecurityProfile.EncryptionAtHost == null)
                 {
                     this.VM.SecurityProfile = null;
                 }
