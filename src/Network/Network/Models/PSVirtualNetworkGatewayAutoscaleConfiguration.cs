@@ -24,7 +24,7 @@ namespace Microsoft.Azure.Commands.Network.Models
         public PSVirtualNetworkGatewayPropertiesAutoScaleConfigurationBounds Bounds { get; set; }
 
         [JsonIgnore]
-        public string ScaleUnitText
+        public string Range
         {
             get { return JsonConvert.SerializeObject(Bounds, Formatting.Indented, new JsonSerializerSettings() { NullValueHandling = NullValueHandling.Ignore }); }
         }

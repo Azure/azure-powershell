@@ -541,9 +541,15 @@ namespace Microsoft.Azure.Commands.Network
 
             if (!string.IsNullOrEmpty(this.VirtualNetworkGateway.Sku.Name) && (this.VirtualNetworkGateway.Sku.Name.Equals(MNM.VirtualNetworkGatewaySkuTier.ErGwScale) && (this.MinScaleUnit > 0 || this.MaxScaleUnit > 0)))
             {
-                if (this.MinScaleUnit > this.MaxScaleUnit || this.MinScaleUnit > 40 || this.MaxScaleUnit > 40)
+                if (this.MinScaleUnit > this.MaxScaleUnit) 
                 {
-                    throw new PSArgumentException(string.Format(Properties.Resources.InvalidAutoScaleConfiguration, this.MinScaleUnit, this.MaxScaleUnit));
+
+                    throw new PSArgumentException(string.Format(Properties.Resources.InvalidAutoScaleConfiguration, this.MinScaleUnit, this.MaxScaleUnit));          
+                }
+
+                if (this.MinScaleUnit > 40 || this.MaxScaleUnit > 40)
+                {
+                    throw new PSArgumentException(Properties.Resources.InvalidAutoScaleConfigurationBounds);          
                 }
 
                 this.VirtualNetworkGateway.AutoScaleConfiguration = new PSVirtualNetworkGatewayAutoscaleConfiguration();
