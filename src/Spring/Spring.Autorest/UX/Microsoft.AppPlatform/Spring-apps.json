@@ -1,0 +1,167 @@
+{
+  "resourceType": "Spring/apps",
+  "apiVersion": "2022-12-01",
+  "learnMore": {
+    "url": "https://learn.microsoft.com/powershell/module/az.springapps"
+  },
+  "commands": [
+    {
+      "name": "Get-AzSpringAppResourceUploadUrl",
+      "description": "Get an resource upload URL for an App, which may be artifacts or source archive.",
+      "path": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AppPlatform/Spring/{serviceName}/apps/{appName}/getResourceUploadUrl",
+      "help": {
+        "learnMore": {
+          "url": "https://learn.microsoft.com/powershell/module/az.springapps/get-azspringappresourceuploadurl"
+        },
+        "parameterSets": [
+          {
+            "parameters": [
+              "-Name <String>",
+              "-ResourceGroupName <String>",
+              "-ServiceName <String>",
+              "[-SubscriptionId <String[]>]"
+            ]
+          }
+        ]
+      },
+      "examples": [
+        {
+          "description": "Get an resource upload URL for an App, which may be artifacts or source archive.",
+          "parameters": [
+            {
+              "name": "-Name",
+              "value": "[Path.appName]"
+            },
+            {
+              "name": "-ResourceGroupName",
+              "value": "[Path.resourceGroupName]"
+            },
+            {
+              "name": "-ServiceName",
+              "value": "[Path.serviceName]"
+            },
+            {
+              "name": "-SubscriptionId",
+              "value": "[Path.subscriptionId]"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Remove-AzSpringApp",
+      "description": "Operation to delete an App.",
+      "path": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AppPlatform/Spring/{serviceName}/apps/{appName}",
+      "help": {
+        "learnMore": {
+          "url": "https://learn.microsoft.com/powershell/module/az.springapps/remove-azspringapp"
+        },
+        "parameterSets": [
+          {
+            "parameters": [
+              "-Name <String>",
+              "-ResourceGroupName <String>",
+              "-ServiceName <String>",
+              "[-SubscriptionId <String>]"
+            ]
+          }
+        ]
+      },
+      "examples": [
+        {
+          "description": "Operation to delete an App.",
+          "parameters": [
+            {
+              "name": "-Name",
+              "value": "[Path.appName]"
+            },
+            {
+              "name": "-ResourceGroupName",
+              "value": "[Path.resourceGroupName]"
+            },
+            {
+              "name": "-ServiceName",
+              "value": "[Path.serviceName]"
+            },
+            {
+              "name": "-SubscriptionId",
+              "value": "[Path.subscriptionId]"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Test-AzSpringAppCustomDomainNameAvailability",
+      "description": "Check the resource name is valid as well as not in use.",
+      "path": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AppPlatform/Spring/{serviceName}/apps/{appName}/validateDomain",
+      "help": {
+        "learnMore": {
+          "url": "https://learn.microsoft.com/powershell/module/az.springapps/test-azspringappcustomdomainnameavailability"
+        },
+        "parameterSets": [
+          {
+            "parameters": [
+              "-AppName <String>",
+              "-ResourceGroupName <String>",
+              "-ServiceName <String>",
+              "[-SubscriptionId <String>]"
+            ]
+          },
+          {
+            "parameters": [
+              "-AppName <String>",
+              "-ResourceGroupName <String>",
+              "-ServiceName <String>",
+              "[-SubscriptionId <String>]"
+            ]
+          }
+        ]
+      },
+      "examples": [
+        {
+          "description": "Check the resource name is valid as well as not in use.",
+          "parameters": [
+            {
+              "name": "-AppName",
+              "value": "[Path.appName]"
+            },
+            {
+              "name": "-ResourceGroupName",
+              "value": "[Path.resourceGroupName]"
+            },
+            {
+              "name": "-ServiceName",
+              "value": "[Path.serviceName]"
+            },
+            {
+              "name": "-SubscriptionId",
+              "value": "[Path.subscriptionId]"
+            }
+          ]
+        },
+        {
+          "description": "Check the resource name is valid as well as not in use.",
+          "parameters": [
+            {
+              "name": "-AppName",
+              "value": "[Path.appName]"
+            },
+            {
+              "name": "-ResourceGroupName",
+              "value": "[Path.resourceGroupName]"
+            },
+            {
+              "name": "-ServiceName",
+              "value": "[Path.serviceName]"
+            },
+            {
+              "name": "-SubscriptionId",
+              "value": "[Path.subscriptionId]"
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

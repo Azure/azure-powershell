@@ -1,0 +1,105 @@
+{
+  "resourceType": "Spring/gateways/routeConfigs",
+  "apiVersion": "2022-12-01",
+  "learnMore": {
+    "url": "https://learn.microsoft.com/powershell/module/az.springapps"
+  },
+  "commands": [
+    {
+      "name": "Get-AzSpringGatewayRouteConfig",
+      "description": "Get the Spring Cloud Gateway route configs.",
+      "path": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AppPlatform/Spring/{serviceName}/gateways/{gatewayName}/routeConfigs/{routeConfigName}",
+      "help": {
+        "learnMore": {
+          "url": "https://learn.microsoft.com/powershell/module/az.springapps/get-azspringgatewayrouteconfig"
+        },
+        "parameterSets": [
+          {
+            "parameters": [
+              "-GatewayName <String>",
+              "-ResourceGroupName <String>",
+              "-RouteConfigName <String>",
+              "-ServiceName <String>",
+              "[-SubscriptionId <String[]>]"
+            ]
+          }
+        ]
+      },
+      "examples": [
+        {
+          "description": "Get the Spring Cloud Gateway route configs.",
+          "parameters": [
+            {
+              "name": "-GatewayName",
+              "value": "[Path.gatewayName]"
+            },
+            {
+              "name": "-ResourceGroupName",
+              "value": "[Path.resourceGroupName]"
+            },
+            {
+              "name": "-RouteConfigName",
+              "value": "[Path.routeConfigName]"
+            },
+            {
+              "name": "-ServiceName",
+              "value": "[Path.serviceName]"
+            },
+            {
+              "name": "-SubscriptionId",
+              "value": "[Path.subscriptionId]"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Remove-AzSpringGatewayRouteConfig",
+      "description": "Delete the Spring Cloud Gateway route config.",
+      "path": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AppPlatform/Spring/{serviceName}/gateways/{gatewayName}/routeConfigs/{routeConfigName}",
+      "help": {
+        "learnMore": {
+          "url": "https://learn.microsoft.com/powershell/module/az.springapps/remove-azspringgatewayrouteconfig"
+        },
+        "parameterSets": [
+          {
+            "parameters": [
+              "-GatewayName <String>",
+              "-ResourceGroupName <String>",
+              "-RouteConfigName <String>",
+              "-ServiceName <String>",
+              "[-SubscriptionId <String>]"
+            ]
+          }
+        ]
+      },
+      "examples": [
+        {
+          "description": "Delete the Spring Cloud Gateway route config.",
+          "parameters": [
+            {
+              "name": "-GatewayName",
+              "value": "[Path.gatewayName]"
+            },
+            {
+              "name": "-ResourceGroupName",
+              "value": "[Path.resourceGroupName]"
+            },
+            {
+              "name": "-RouteConfigName",
+              "value": "[Path.routeConfigName]"
+            },
+            {
+              "name": "-ServiceName",
+              "value": "[Path.serviceName]"
+            },
+            {
+              "name": "-SubscriptionId",
+              "value": "[Path.subscriptionId]"
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

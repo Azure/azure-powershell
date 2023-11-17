@@ -1,0 +1,105 @@
+{
+  "resourceType": "Spring/apiPortals/domains",
+  "apiVersion": "2022-12-01",
+  "learnMore": {
+    "url": "https://learn.microsoft.com/powershell/module/az.springapps"
+  },
+  "commands": [
+    {
+      "name": "Get-AzSpringApiPortalCustomDomain",
+      "description": "Get the API portal custom domain.",
+      "path": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AppPlatform/Spring/{serviceName}/apiPortals/{apiPortalName}/domains/{domainName}",
+      "help": {
+        "learnMore": {
+          "url": "https://learn.microsoft.com/powershell/module/az.springapps/get-azspringapiportalcustomdomain"
+        },
+        "parameterSets": [
+          {
+            "parameters": [
+              "-ApiPortalName <String>",
+              "-DomainName <String>",
+              "-ResourceGroupName <String>",
+              "-ServiceName <String>",
+              "[-SubscriptionId <String[]>]"
+            ]
+          }
+        ]
+      },
+      "examples": [
+        {
+          "description": "Get the API portal custom domain.",
+          "parameters": [
+            {
+              "name": "-ApiPortalName",
+              "value": "[Path.apiPortalName]"
+            },
+            {
+              "name": "-DomainName",
+              "value": "[Path.domainName]"
+            },
+            {
+              "name": "-ResourceGroupName",
+              "value": "[Path.resourceGroupName]"
+            },
+            {
+              "name": "-ServiceName",
+              "value": "[Path.serviceName]"
+            },
+            {
+              "name": "-SubscriptionId",
+              "value": "[Path.subscriptionId]"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Remove-AzSpringApiPortalCustomDomain",
+      "description": "Delete the API portal custom domain.",
+      "path": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AppPlatform/Spring/{serviceName}/apiPortals/{apiPortalName}/domains/{domainName}",
+      "help": {
+        "learnMore": {
+          "url": "https://learn.microsoft.com/powershell/module/az.springapps/remove-azspringapiportalcustomdomain"
+        },
+        "parameterSets": [
+          {
+            "parameters": [
+              "-ApiPortalName <String>",
+              "-DomainName <String>",
+              "-ResourceGroupName <String>",
+              "-ServiceName <String>",
+              "[-SubscriptionId <String>]"
+            ]
+          }
+        ]
+      },
+      "examples": [
+        {
+          "description": "Delete the API portal custom domain.",
+          "parameters": [
+            {
+              "name": "-ApiPortalName",
+              "value": "[Path.apiPortalName]"
+            },
+            {
+              "name": "-DomainName",
+              "value": "[Path.domainName]"
+            },
+            {
+              "name": "-ResourceGroupName",
+              "value": "[Path.resourceGroupName]"
+            },
+            {
+              "name": "-ServiceName",
+              "value": "[Path.serviceName]"
+            },
+            {
+              "name": "-SubscriptionId",
+              "value": "[Path.subscriptionId]"
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}
