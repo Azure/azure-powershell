@@ -169,6 +169,7 @@ directive:
       parameter-name: ActionName
     set:
       parameter-name: Name
+      alias: ActionName
   - where:
       verb: New
       variant: ^Create$|^CreateViaIdentity$
@@ -179,6 +180,11 @@ directive:
   - where:
       subject: ^(.*)
     hide: true
+ - where: 
+     parameter-name: DevCenter 
+   set: 
+     parameter-name: DevCenterName 
+     alias: DevCenter 
   - where:
       subject: ^(.*)
     set:
