@@ -37,17 +37,17 @@ require:
   - $(this-folder)/../../readme.azure.noprofile.md
 input-file:
 # You need to specify your swagger files here.
-  - https://github.com/Azure/azure-rest-api-specs/blob/main/specification/servicebus/resource-manager/Microsoft.ServiceBus/preview/2022-10-01-preview/Queue.json
-  - https://github.com/Azure/azure-rest-api-specs/blob/main/specification/servicebus/resource-manager/Microsoft.ServiceBus/preview/2022-10-01-preview/topics.json
-  - https://github.com/Azure/azure-rest-api-specs/blob/main/specification/servicebus/resource-manager/Microsoft.ServiceBus/preview/2022-10-01-preview/namespace-preview.json
-  - https://github.com/Azure/azure-rest-api-specs/blob/main/specification/servicebus/resource-manager/Microsoft.ServiceBus/preview/2022-10-01-preview/AuthorizationRules.json
-  - https://github.com/Azure/azure-rest-api-specs/blob/main/specification/servicebus/resource-manager/Microsoft.ServiceBus/preview/2022-10-01-preview/CheckNameAvailability.json
-  - https://github.com/Azure/azure-rest-api-specs/blob/main/specification/servicebus/resource-manager/Microsoft.ServiceBus/preview/2022-10-01-preview/DisasterRecoveryConfig.json
-  - https://github.com/Azure/azure-rest-api-specs/blob/main/specification/servicebus/resource-manager/Microsoft.ServiceBus/preview/2022-10-01-preview/migrationconfigs.json
-  - https://github.com/Azure/azure-rest-api-specs/blob/main/specification/servicebus/resource-manager/Microsoft.ServiceBus/preview/2022-10-01-preview/networksets.json
-  - https://github.com/Azure/azure-rest-api-specs/blob/main/specification/servicebus/resource-manager/Microsoft.ServiceBus/preview/2022-10-01-preview/operations.json
-  - https://github.com/Azure/azure-rest-api-specs/blob/main/specification/servicebus/resource-manager/Microsoft.ServiceBus/preview/2022-10-01-preview/Rules.json
-  - https://github.com/Azure/azure-rest-api-specs/blob/main/specification/servicebus/resource-manager/Microsoft.ServiceBus/preview/2022-10-01-preview/subscriptions.json
+  - $(repo)/specification/servicebus/resource-manager/Microsoft.ServiceBus/preview/2022-10-01-preview/Queue.json
+  - $(repo)/specification/servicebus/resource-manager/Microsoft.ServiceBus/preview/2022-10-01-preview/topics.json
+  - $(repo)/specification/servicebus/resource-manager/Microsoft.ServiceBus/preview/2022-10-01-preview/namespace-preview.json
+  - $(repo)/specification/servicebus/resource-manager/Microsoft.ServiceBus/preview/2022-10-01-preview/AuthorizationRules.json
+  - $(repo)/specification/servicebus/resource-manager/Microsoft.ServiceBus/preview/2022-10-01-preview/CheckNameAvailability.json
+  - $(repo)/specification/servicebus/resource-manager/Microsoft.ServiceBus/preview/2022-10-01-preview/DisasterRecoveryConfig.json
+  - $(repo)/specification/servicebus/resource-manager/Microsoft.ServiceBus/preview/2022-10-01-preview/migrationconfigs.json
+  - $(repo)/specification/servicebus/resource-manager/Microsoft.ServiceBus/preview/2022-10-01-preview/networksets.json
+  - $(repo)/specification/servicebus/resource-manager/Microsoft.ServiceBus/preview/2022-10-01-preview/operations.json
+  - $(repo)/specification/servicebus/resource-manager/Microsoft.ServiceBus/preview/2022-10-01-preview/Rules.json
+  - $(repo)/specification/servicebus/resource-manager/Microsoft.ServiceBus/preview/2022-10-01-preview/subscriptions.json
 # If the swagger has not been put in the repo, you may uncomment the following line and refer to it locally
 # - (this-folder)/relative-path-to-your-swagger
 

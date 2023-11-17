@@ -29,12 +29,13 @@ For information on how to develop for `Az.Autoscale`, see [how-to.md](how-to.md)
 ### AutoRest Configuration
 > see https://aka.ms/autorest
 ``` yaml
+commit: 9ae616c4a5447e9cae43752b68f089bff2e46398
 require:
 # readme.azure.noprofile.md is the common configuration file
   - $(this-folder)/../../readme.azure.noprofile.md
 input-file:
 # You need to specify your swagger files here.
-  - https://github.com/Azure/azure-rest-api-specs/blob/9ae616c4a5447e9cae43752b68f089bff2e46398/specification/monitor/resource-manager/Microsoft.Insights/stable/2022-10-01/autoscale_API.json
+  - $(repo)/specification/monitor/resource-manager/Microsoft.Insights/stable/2022-10-01/autoscale_API.json
 
 root-module-name: $(prefix).Monitor
 title: Autoscale
