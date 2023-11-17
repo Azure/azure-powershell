@@ -1,0 +1,630 @@
+{
+  "New-AzDataProtectionBackupVault+[NoContext]+CreateExpanded+$PUT+https://management.azure.com/subscriptions/38304e13-357e-405e-9e9a-220351dcce8c/resourceGroups/sarath-rg/providers/Microsoft.DataProtection/backupVaults/new-pstest-vault?api-version=2023-05-01+1": {
+    "Request": {
+      "Method": "PUT",
+      "RequestUri": "https://management.azure.com/subscriptions/38304e13-357e-405e-9e9a-220351dcce8c/resourceGroups/sarath-rg/providers/Microsoft.DataProtection/backupVaults/new-pstest-vault?api-version=2023-05-01",
+      "Content": "{\r\n  \"location\": \"centraluseuap\",\r\n  \"identity\": {\r\n    \"type\": \"SystemAssigned\"\r\n  },\r\n  \"properties\": {\r\n    \"storageSettings\": [\r\n      {\r\n        \"datastoreType\": \"VaultStore\",\r\n        \"type\": \"LocallyRedundant\"\r\n      }\r\n    ]\r\n  }\r\n}",
+      "isContentBase64": false,
+      "Headers": {
+      },
+      "ContentHeaders": {
+        "Content-Type": [ "application/json" ],
+        "Content-Length": [ "240" ]
+      }
+    },
+    "Response": {
+      "StatusCode": 201,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "Retry-After": [ "10" ],
+        "Azure-AsyncOperation": [ "https://management.azure.com/subscriptions/38304e13-357e-405e-9e9a-220351dcce8c/resourceGroups/sarath-rg/providers/Microsoft.DataProtection/backupVaults/new-pstest-vault/operationStatus/MzM0YzRmYjItYjUxZi00MDYxLWJlMzgtMDM5OGVjZWFhOWNhOzViODQwNDlkLTJiNDUtNGJjNC1iNDQwLTMxOTZjNjg0NjJlYg==?api-version=2023-05-01\u0026t=2023-08-28T14%3a10%3a02\u0026c=MIIHADCCBeigAwIBAgITHgMis3caoWHPUD84qAAAAyKzdzANBgkqhkiG9w0BAQsFADBEMRMwEQYKCZImiZPyLGQBGRYDR0JMMRMwEQYKCZImiZPyLGQBGRYDQU1FMRgwFgYDVQQDEw9BTUUgSW5mcmEgQ0EgMDYwHhcNMjMwODAzMDAxOTAwWhcNMjQwNzI4MDAxOTAwWjBAMT4wPAYDVQQDEzVhc3luY29wZXJhdGlvbnNpZ25pbmdjZXJ0aWZpY2F0ZS5tYW5hZ2VtZW50LmF6dXJlLmNvbTCCASIwDQYJKoZIhvcNAQEBBQADggEPADCCAQoCggEBAJ7NYt6Dh7vD4bFaue37w-ib6qjn-PvOVmc3eEhutBR4Zl8pcXig4SW9-kjKq4hDRrVi-hCmGGI0Kj_1Z8HFedXauV9OCk9TRmA8FHMHEW2Q0L2l6IolLc5bJbJOD4JjveobJRdOD0kUOT6MIDO01vqqk4JMx5b-DxYtmUk6a1AVLUZvkDtxSAewFiu7vWT76ExmF0S_4-wqPKCKwDflqw85FW-xILGvDNU0MPcgI-abUuoEEy0S-5WCPG50x4SLtigith5Ju_xBcl5sH7RUz4HGBn5P8FsUz64W2N5BS1ZkHRJUHTXQfYEaMz1qQwJqlaEKc3UBJD5_hdwZNaExLt0CAwEAAaOCA-0wggPpMCcGCSsGAQQBgjcVCgQaMBgwCgYIKwYBBQUHAwEwCgYIKwYBBQUHAwIwPQYJKwYBBAGCNxUHBDAwLgYmKwYBBAGCNxUIhpDjDYTVtHiE8Ys-hZvdFs6dEoFggvX2K4Py0SACAWQCAQowggHLBggrBgEFBQcBAQSCAb0wggG5MGMGCCsGAQUFBzAChldodHRwOi8vY3JsLm1pY3Jvc29mdC5jb20vcGtpaW5mcmEvQ2VydHMvQkwyUEtJSU5UQ0EwMi5BTUUuR0JMX0FNRSUyMEluZnJhJTIwQ0ElMjAwNi5jcnQwUwYIKwYBBQUHMAKGR2h0dHA6Ly9jcmwxLmFtZS5nYmwvYWlhL0JMMlBLSUlOVENBMDIuQU1FLkdCTF9BTUUlMjBJbmZyYSUyMENBJTIwMDYuY3J0MFMGCCsGAQUFBzAChkdodHRwOi8vY3JsMi5hbWUuZ2JsL2FpYS9CTDJQS0lJTlRDQTAyLkFNRS5HQkxfQU1FJTIwSW5mcmElMjBDQSUyMDA2LmNydDBTBggrBgEFBQcwAoZHaHR0cDovL2NybDMuYW1lLmdibC9haWEvQkwyUEtJSU5UQ0EwMi5BTUUuR0JMX0FNRSUyMEluZnJhJTIwQ0ElMjAwNi5jcnQwUwYIKwYBBQUHMAKGR2h0dHA6Ly9jcmw0LmFtZS5nYmwvYWlhL0JMMlBLSUlOVENBMDIuQU1FLkdCTF9BTUUlMjBJbmZyYSUyMENBJTIwMDYuY3J0MB0GA1UdDgQWBBRWTtlmMViy02jqjxx62TfTXg5BfzAOBgNVHQ8BAf8EBAMCBaAwggEmBgNVHR8EggEdMIIBGTCCARWgggERoIIBDYY_aHR0cDovL2NybC5taWNyb3NvZnQuY29tL3BraWluZnJhL0NSTC9BTUUlMjBJbmZyYSUyMENBJTIwMDYuY3JshjFodHRwOi8vY3JsMS5hbWUuZ2JsL2NybC9BTUUlMjBJbmZyYSUyMENBJTIwMDYuY3JshjFodHRwOi8vY3JsMi5hbWUuZ2JsL2NybC9BTUUlMjBJbmZyYSUyMENBJTIwMDYuY3JshjFodHRwOi8vY3JsMy5hbWUuZ2JsL2NybC9BTUUlMjBJbmZyYSUyMENBJTIwMDYuY3JshjFodHRwOi8vY3JsNC5hbWUuZ2JsL2NybC9BTUUlMjBJbmZyYSUyMENBJTIwMDYuY3JsMBcGA1UdIAQQMA4wDAYKKwYBBAGCN3sBATAfBgNVHSMEGDAWgBTxRmjG8cPwKy19i2rhsvm-NfzRQTAdBgNVHSUEFjAUBggrBgEFBQcDAQYIKwYBBQUHAwIwDQYJKoZIhvcNAQELBQADggEBAGS9E7Z3dO3hDEsvw1L4XOe6iH16hGeZWW6paR071dwkUN-0TqmQ_sU8ls4YrXPOlHd2VFTpMRIWVp23r1rYg9Gu2qDr0UvQ5spceN9YQansiLFLPFYGFvXTCqoPrYbcxAYoCN6KpZERGqWvf8B_lLvC8CcKV4FQdznqVSimSWtYz_60JTN1E56mTci02wcCatmMg6zsKes5I4faxTLNwMBJm6qPg-snY1IaxzLsMasZG40y7OnMR-Vk_EvW__vBvK7DZVedsVuqTKOw9ZR9qJYc2PucgCCF-DkPpd_gj78eI44mCqHRZ5kjNQymPLnA1zByHODONdiPjxHJLKx6Yyw\u0026s=aidBvdtaypI-fbF6XtIdQACNb-EV29WoWYSB-1cQ8dldySxnGLu2muSjL39_2ZXGk86N7WaoREpCpRmoGZ7zSxPbwY6-qYFqVJfo6DXBHpcrXo59f3XR3dj6RVrgnmN5mOuKY8hDl9O5ME8zFjSnvtbbLxRTLRdjKanNKQy3eCyYpNq9uBku9gPLXarqnrbKGsNCAT3J4Bsl45B2N7XFfeUw3KzIvFyqGYJoDSFNE3077hpOnFXJyTQCGHLO9TMEfg5gSurZncrPExDVR7KP5VupzIldPXzH8jA-3-m7ffcTOg6OMp1DokasQzie2817BBqtlFh8a4fEyNgJ3zMKGw\u0026h=iSyxvHHBfmOWdHrj9fmsaDby8lYcvQ5o9tsDVuwJb58" ],
+        "x-ms-arm-resource-system-data": [ "{\"createdBy\":\"hiaga@microsoft.com\",\"createdByType\":\"User\",\"createdAt\":\"2023-08-28T14:09:59.4542614Z\",\"lastModifiedBy\":\"hiaga@microsoft.com\",\"lastModifiedByType\":\"User\",\"lastModifiedAt\":\"2023-08-28T14:09:59.4542614Z\"}" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "x-ms-request-id": [ "" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "Server": [ "Microsoft-IIS/10.0" ],
+        "X-Powered-By": [ "ASP.NET" ],
+        "x-ms-ratelimit-remaining-subscription-resource-requests": [ "99" ],
+        "x-ms-correlation-request-id": [ "176abd9d-5278-4e3c-bd10-ddc044622ad4" ],
+        "x-ms-routing-request-id": [ "WESTINDIA:20230828T141002Z:176abd9d-5278-4e3c-bd10-ddc044622ad4" ],
+        "Date": [ "Mon, 28 Aug 2023 14:10:02 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "666" ],
+        "Content-Type": [ "application/json" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\"location\":\"centraluseuap\",\"identity\":{\"type\":\"SystemAssigned\",\"principalId\":\"88476969-8492-49cc-813b-eb4be42f5f5f\",\"tenantId\":\"72f988bf-86f1-41af-91ab-2d7cd011db47\"},\"properties\":{\"provisioningState\":\"Provisioning\",\"storageSettings\":[{\"datastoreType\":\"VaultStore\",\"type\":\"LocallyRedundant\"}],\"isVaultProtectedByResourceGuard\":false,\"securitySettings\":{\"softDeleteSettings\":{\"state\":\"On\",\"retentionDurationInDays\":14.0}},\"secureScore\":\"None\"},\"id\":\"/subscriptions/38304e13-357e-405e-9e9a-220351dcce8c/resourceGroups/sarath-rg/providers/Microsoft.DataProtection/backupVaults/new-pstest-vault\",\"name\":\"new-pstest-vault\",\"type\":\"Microsoft.DataProtection/backupVaults\"}",
+      "isContentBase64": false
+    }
+  },
+  "New-AzDataProtectionBackupVault+[NoContext]+CreateExpanded+$GET+https://management.azure.com/subscriptions/38304e13-357e-405e-9e9a-220351dcce8c/resourceGroups/sarath-rg/providers/Microsoft.DataProtection/backupVaults/new-pstest-vault/operationStatus/MzM0YzRmYjItYjUxZi00MDYxLWJlMzgtMDM5OGVjZWFhOWNhOzViODQwNDlkLTJiNDUtNGJjNC1iNDQwLTMxOTZjNjg0NjJlYg==?api-version=2023-05-01\u0026t=2023-08-28T14%3a10%3a02\u0026c=MIIHADCCBeigAwIBAgITHgMis3caoWHPUD84qAAAAyKzdzANBgkqhkiG9w0BAQsFADBEMRMwEQYKCZImiZPyLGQBGRYDR0JMMRMwEQYKCZImiZPyLGQBGRYDQU1FMRgwFgYDVQQDEw9BTUUgSW5mcmEgQ0EgMDYwHhcNMjMwODAzMDAxOTAwWhcNMjQwNzI4MDAxOTAwWjBAMT4wPAYDVQQDEzVhc3luY29wZXJhdGlvbnNpZ25pbmdjZXJ0aWZpY2F0ZS5tYW5hZ2VtZW50LmF6dXJlLmNvbTCCASIwDQYJKoZIhvcNAQEBBQADggEPADCCAQoCggEBAJ7NYt6Dh7vD4bFaue37w-ib6qjn-PvOVmc3eEhutBR4Zl8pcXig4SW9-kjKq4hDRrVi-hCmGGI0Kj_1Z8HFedXauV9OCk9TRmA8FHMHEW2Q0L2l6IolLc5bJbJOD4JjveobJRdOD0kUOT6MIDO01vqqk4JMx5b-DxYtmUk6a1AVLUZvkDtxSAewFiu7vWT76ExmF0S_4-wqPKCKwDflqw85FW-xILGvDNU0MPcgI-abUuoEEy0S-5WCPG50x4SLtigith5Ju_xBcl5sH7RUz4HGBn5P8FsUz64W2N5BS1ZkHRJUHTXQfYEaMz1qQwJqlaEKc3UBJD5_hdwZNaExLt0CAwEAAaOCA-0wggPpMCcGCSsGAQQBgjcVCgQaMBgwCgYIKwYBBQUHAwEwCgYIKwYBBQUHAwIwPQYJKwYBBAGCNxUHBDAwLgYmKwYBBAGCNxUIhpDjDYTVtHiE8Ys-hZvdFs6dEoFggvX2K4Py0SACAWQCAQowggHLBggrBgEFBQcBAQSCAb0wggG5MGMGCCsGAQUFBzAChldodHRwOi8vY3JsLm1pY3Jvc29mdC5jb20vcGtpaW5mcmEvQ2VydHMvQkwyUEtJSU5UQ0EwMi5BTUUuR0JMX0FNRSUyMEluZnJhJTIwQ0ElMjAwNi5jcnQwUwYIKwYBBQUHMAKGR2h0dHA6Ly9jcmwxLmFtZS5nYmwvYWlhL0JMMlBLSUlOVENBMDIuQU1FLkdCTF9BTUUlMjBJbmZyYSUyMENBJTIwMDYuY3J0MFMGCCsGAQUFBzAChkdodHRwOi8vY3JsMi5hbWUuZ2JsL2FpYS9CTDJQS0lJTlRDQTAyLkFNRS5HQkxfQU1FJTIwSW5mcmElMjBDQSUyMDA2LmNydDBTBggrBgEFBQcwAoZHaHR0cDovL2NybDMuYW1lLmdibC9haWEvQkwyUEtJSU5UQ0EwMi5BTUUuR0JMX0FNRSUyMEluZnJhJTIwQ0ElMjAwNi5jcnQwUwYIKwYBBQUHMAKGR2h0dHA6Ly9jcmw0LmFtZS5nYmwvYWlhL0JMMlBLSUlOVENBMDIuQU1FLkdCTF9BTUUlMjBJbmZyYSUyMENBJTIwMDYuY3J0MB0GA1UdDgQWBBRWTtlmMViy02jqjxx62TfTXg5BfzAOBgNVHQ8BAf8EBAMCBaAwggEmBgNVHR8EggEdMIIBGTCCARWgggERoIIBDYY_aHR0cDovL2NybC5taWNyb3NvZnQuY29tL3BraWluZnJhL0NSTC9BTUUlMjBJbmZyYSUyMENBJTIwMDYuY3JshjFodHRwOi8vY3JsMS5hbWUuZ2JsL2NybC9BTUUlMjBJbmZyYSUyMENBJTIwMDYuY3JshjFodHRwOi8vY3JsMi5hbWUuZ2JsL2NybC9BTUUlMjBJbmZyYSUyMENBJTIwMDYuY3JshjFodHRwOi8vY3JsMy5hbWUuZ2JsL2NybC9BTUUlMjBJbmZyYSUyMENBJTIwMDYuY3JshjFodHRwOi8vY3JsNC5hbWUuZ2JsL2NybC9BTUUlMjBJbmZyYSUyMENBJTIwMDYuY3JsMBcGA1UdIAQQMA4wDAYKKwYBBAGCN3sBATAfBgNVHSMEGDAWgBTxRmjG8cPwKy19i2rhsvm-NfzRQTAdBgNVHSUEFjAUBggrBgEFBQcDAQYIKwYBBQUHAwIwDQYJKoZIhvcNAQELBQADggEBAGS9E7Z3dO3hDEsvw1L4XOe6iH16hGeZWW6paR071dwkUN-0TqmQ_sU8ls4YrXPOlHd2VFTpMRIWVp23r1rYg9Gu2qDr0UvQ5spceN9YQansiLFLPFYGFvXTCqoPrYbcxAYoCN6KpZERGqWvf8B_lLvC8CcKV4FQdznqVSimSWtYz_60JTN1E56mTci02wcCatmMg6zsKes5I4faxTLNwMBJm6qPg-snY1IaxzLsMasZG40y7OnMR-Vk_EvW__vBvK7DZVedsVuqTKOw9ZR9qJYc2PucgCCF-DkPpd_gj78eI44mCqHRZ5kjNQymPLnA1zByHODONdiPjxHJLKx6Yyw\u0026s=aidBvdtaypI-fbF6XtIdQACNb-EV29WoWYSB-1cQ8dldySxnGLu2muSjL39_2ZXGk86N7WaoREpCpRmoGZ7zSxPbwY6-qYFqVJfo6DXBHpcrXo59f3XR3dj6RVrgnmN5mOuKY8hDl9O5ME8zFjSnvtbbLxRTLRdjKanNKQy3eCyYpNq9uBku9gPLXarqnrbKGsNCAT3J4Bsl45B2N7XFfeUw3KzIvFyqGYJoDSFNE3077hpOnFXJyTQCGHLO9TMEfg5gSurZncrPExDVR7KP5VupzIldPXzH8jA-3-m7ffcTOg6OMp1DokasQzie2817BBqtlFh8a4fEyNgJ3zMKGw\u0026h=iSyxvHHBfmOWdHrj9fmsaDby8lYcvQ5o9tsDVuwJb58+2": {
+    "Request": {
+      "Method": "GET",
+      "RequestUri": "https://management.azure.com/subscriptions/38304e13-357e-405e-9e9a-220351dcce8c/resourceGroups/sarath-rg/providers/Microsoft.DataProtection/backupVaults/new-pstest-vault/operationStatus/MzM0YzRmYjItYjUxZi00MDYxLWJlMzgtMDM5OGVjZWFhOWNhOzViODQwNDlkLTJiNDUtNGJjNC1iNDQwLTMxOTZjNjg0NjJlYg==?api-version=2023-05-01\u0026t=2023-08-28T14%3a10%3a02\u0026c=MIIHADCCBeigAwIBAgITHgMis3caoWHPUD84qAAAAyKzdzANBgkqhkiG9w0BAQsFADBEMRMwEQYKCZImiZPyLGQBGRYDR0JMMRMwEQYKCZImiZPyLGQBGRYDQU1FMRgwFgYDVQQDEw9BTUUgSW5mcmEgQ0EgMDYwHhcNMjMwODAzMDAxOTAwWhcNMjQwNzI4MDAxOTAwWjBAMT4wPAYDVQQDEzVhc3luY29wZXJhdGlvbnNpZ25pbmdjZXJ0aWZpY2F0ZS5tYW5hZ2VtZW50LmF6dXJlLmNvbTCCASIwDQYJKoZIhvcNAQEBBQADggEPADCCAQoCggEBAJ7NYt6Dh7vD4bFaue37w-ib6qjn-PvOVmc3eEhutBR4Zl8pcXig4SW9-kjKq4hDRrVi-hCmGGI0Kj_1Z8HFedXauV9OCk9TRmA8FHMHEW2Q0L2l6IolLc5bJbJOD4JjveobJRdOD0kUOT6MIDO01vqqk4JMx5b-DxYtmUk6a1AVLUZvkDtxSAewFiu7vWT76ExmF0S_4-wqPKCKwDflqw85FW-xILGvDNU0MPcgI-abUuoEEy0S-5WCPG50x4SLtigith5Ju_xBcl5sH7RUz4HGBn5P8FsUz64W2N5BS1ZkHRJUHTXQfYEaMz1qQwJqlaEKc3UBJD5_hdwZNaExLt0CAwEAAaOCA-0wggPpMCcGCSsGAQQBgjcVCgQaMBgwCgYIKwYBBQUHAwEwCgYIKwYBBQUHAwIwPQYJKwYBBAGCNxUHBDAwLgYmKwYBBAGCNxUIhpDjDYTVtHiE8Ys-hZvdFs6dEoFggvX2K4Py0SACAWQCAQowggHLBggrBgEFBQcBAQSCAb0wggG5MGMGCCsGAQUFBzAChldodHRwOi8vY3JsLm1pY3Jvc29mdC5jb20vcGtpaW5mcmEvQ2VydHMvQkwyUEtJSU5UQ0EwMi5BTUUuR0JMX0FNRSUyMEluZnJhJTIwQ0ElMjAwNi5jcnQwUwYIKwYBBQUHMAKGR2h0dHA6Ly9jcmwxLmFtZS5nYmwvYWlhL0JMMlBLSUlOVENBMDIuQU1FLkdCTF9BTUUlMjBJbmZyYSUyMENBJTIwMDYuY3J0MFMGCCsGAQUFBzAChkdodHRwOi8vY3JsMi5hbWUuZ2JsL2FpYS9CTDJQS0lJTlRDQTAyLkFNRS5HQkxfQU1FJTIwSW5mcmElMjBDQSUyMDA2LmNydDBTBggrBgEFBQcwAoZHaHR0cDovL2NybDMuYW1lLmdibC9haWEvQkwyUEtJSU5UQ0EwMi5BTUUuR0JMX0FNRSUyMEluZnJhJTIwQ0ElMjAwNi5jcnQwUwYIKwYBBQUHMAKGR2h0dHA6Ly9jcmw0LmFtZS5nYmwvYWlhL0JMMlBLSUlOVENBMDIuQU1FLkdCTF9BTUUlMjBJbmZyYSUyMENBJTIwMDYuY3J0MB0GA1UdDgQWBBRWTtlmMViy02jqjxx62TfTXg5BfzAOBgNVHQ8BAf8EBAMCBaAwggEmBgNVHR8EggEdMIIBGTCCARWgggERoIIBDYY_aHR0cDovL2NybC5taWNyb3NvZnQuY29tL3BraWluZnJhL0NSTC9BTUUlMjBJbmZyYSUyMENBJTIwMDYuY3JshjFodHRwOi8vY3JsMS5hbWUuZ2JsL2NybC9BTUUlMjBJbmZyYSUyMENBJTIwMDYuY3JshjFodHRwOi8vY3JsMi5hbWUuZ2JsL2NybC9BTUUlMjBJbmZyYSUyMENBJTIwMDYuY3JshjFodHRwOi8vY3JsMy5hbWUuZ2JsL2NybC9BTUUlMjBJbmZyYSUyMENBJTIwMDYuY3JshjFodHRwOi8vY3JsNC5hbWUuZ2JsL2NybC9BTUUlMjBJbmZyYSUyMENBJTIwMDYuY3JsMBcGA1UdIAQQMA4wDAYKKwYBBAGCN3sBATAfBgNVHSMEGDAWgBTxRmjG8cPwKy19i2rhsvm-NfzRQTAdBgNVHSUEFjAUBggrBgEFBQcDAQYIKwYBBQUHAwIwDQYJKoZIhvcNAQELBQADggEBAGS9E7Z3dO3hDEsvw1L4XOe6iH16hGeZWW6paR071dwkUN-0TqmQ_sU8ls4YrXPOlHd2VFTpMRIWVp23r1rYg9Gu2qDr0UvQ5spceN9YQansiLFLPFYGFvXTCqoPrYbcxAYoCN6KpZERGqWvf8B_lLvC8CcKV4FQdznqVSimSWtYz_60JTN1E56mTci02wcCatmMg6zsKes5I4faxTLNwMBJm6qPg-snY1IaxzLsMasZG40y7OnMR-Vk_EvW__vBvK7DZVedsVuqTKOw9ZR9qJYc2PucgCCF-DkPpd_gj78eI44mCqHRZ5kjNQymPLnA1zByHODONdiPjxHJLKx6Yyw\u0026s=aidBvdtaypI-fbF6XtIdQACNb-EV29WoWYSB-1cQ8dldySxnGLu2muSjL39_2ZXGk86N7WaoREpCpRmoGZ7zSxPbwY6-qYFqVJfo6DXBHpcrXo59f3XR3dj6RVrgnmN5mOuKY8hDl9O5ME8zFjSnvtbbLxRTLRdjKanNKQy3eCyYpNq9uBku9gPLXarqnrbKGsNCAT3J4Bsl45B2N7XFfeUw3KzIvFyqGYJoDSFNE3077hpOnFXJyTQCGHLO9TMEfg5gSurZncrPExDVR7KP5VupzIldPXzH8jA-3-m7ffcTOg6OMp1DokasQzie2817BBqtlFh8a4fEyNgJ3zMKGw\u0026h=iSyxvHHBfmOWdHrj9fmsaDby8lYcvQ5o9tsDVuwJb58",
+      "Content": null,
+      "isContentBase64": false,
+      "Headers": {
+        "Authorization": [ "[Filtered]" ],
+        "x-ms-unique-id": [ "335" ],
+        "x-ms-client-request-id": [ "f86618eb-0b94-4897-959c-fb35d0d26d22" ],
+        "CommandName": [ "Az.DataProtection.Internal\\New-AzDataProtectionBackupVault" ],
+        "FullCommandName": [ "New-AzDataProtectionBackupVault_CreateExpanded" ],
+        "ParameterSetName": [ "__AllParameterSets" ],
+        "User-Agent": [ "AzurePowershell/v0.0.0", "PSVersion/v7.3.6", "Az.DataProtection/0.1.0" ]
+      },
+      "ContentHeaders": {
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "x-ms-request-id": [ "" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "Server": [ "Microsoft-IIS/10.0" ],
+        "X-Powered-By": [ "ASP.NET" ],
+        "x-ms-ratelimit-remaining-subscription-resource-requests": [ "999" ],
+        "x-ms-correlation-request-id": [ "0830dac1-995c-47bf-a922-29aeae336e4a" ],
+        "x-ms-routing-request-id": [ "WESTINDIA:20230828T141013Z:0830dac1-995c-47bf-a922-29aeae336e4a" ],
+        "Date": [ "Mon, 28 Aug 2023 14:10:13 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "474" ],
+        "Content-Type": [ "application/json" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\"id\":\"/subscriptions/38304e13-357e-405e-9e9a-220351dcce8c/resourceGroups/sarath-rg/providers/Microsoft.DataProtection/backupVaults/new-pstest-vault/operationStatus/MzM0YzRmYjItYjUxZi00MDYxLWJlMzgtMDM5OGVjZWFhOWNhOzViODQwNDlkLTJiNDUtNGJjNC1iNDQwLTMxOTZjNjg0NjJlYg==\",\"name\":\"MzM0YzRmYjItYjUxZi00MDYxLWJlMzgtMDM5OGVjZWFhOWNhOzViODQwNDlkLTJiNDUtNGJjNC1iNDQwLTMxOTZjNjg0NjJlYg==\",\"status\":\"Succeeded\",\"startTime\":\"2023-08-28T14:10:01.1772089Z\",\"endTime\":\"2023-08-28T14:10:01Z\"}",
+      "isContentBase64": false
+    }
+  },
+  "New-AzDataProtectionBackupVault+[NoContext]+CreateExpanded+$GET+https://management.azure.com/subscriptions/38304e13-357e-405e-9e9a-220351dcce8c/resourceGroups/sarath-rg/providers/Microsoft.DataProtection/backupVaults/new-pstest-vault?api-version=2023-05-01+3": {
+    "Request": {
+      "Method": "GET",
+      "RequestUri": "https://management.azure.com/subscriptions/38304e13-357e-405e-9e9a-220351dcce8c/resourceGroups/sarath-rg/providers/Microsoft.DataProtection/backupVaults/new-pstest-vault?api-version=2023-05-01",
+      "Content": null,
+      "isContentBase64": false,
+      "Headers": {
+        "Authorization": [ "[Filtered]" ],
+        "x-ms-unique-id": [ "336" ],
+        "x-ms-client-request-id": [ "f86618eb-0b94-4897-959c-fb35d0d26d22" ],
+        "CommandName": [ "Az.DataProtection.Internal\\New-AzDataProtectionBackupVault" ],
+        "FullCommandName": [ "New-AzDataProtectionBackupVault_CreateExpanded" ],
+        "ParameterSetName": [ "__AllParameterSets" ],
+        "User-Agent": [ "AzurePowershell/v0.0.0", "PSVersion/v7.3.6", "Az.DataProtection/0.1.0" ]
+      },
+      "ContentHeaders": {
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "x-ms-request-id": [ "" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "Server": [ "Microsoft-IIS/10.0" ],
+        "X-Powered-By": [ "ASP.NET" ],
+        "x-ms-ratelimit-remaining-subscription-resource-requests": [ "498" ],
+        "x-ms-correlation-request-id": [ "da9409bd-6978-482b-bb76-e614e30b7cb5" ],
+        "x-ms-routing-request-id": [ "WESTINDIA:20230828T141014Z:da9409bd-6978-482b-bb76-e614e30b7cb5" ],
+        "Date": [ "Mon, 28 Aug 2023 14:10:13 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "663" ],
+        "Content-Type": [ "application/json" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\"location\":\"centraluseuap\",\"identity\":{\"type\":\"SystemAssigned\",\"principalId\":\"88476969-8492-49cc-813b-eb4be42f5f5f\",\"tenantId\":\"72f988bf-86f1-41af-91ab-2d7cd011db47\"},\"properties\":{\"provisioningState\":\"Succeeded\",\"storageSettings\":[{\"datastoreType\":\"VaultStore\",\"type\":\"LocallyRedundant\"}],\"isVaultProtectedByResourceGuard\":false,\"securitySettings\":{\"softDeleteSettings\":{\"state\":\"On\",\"retentionDurationInDays\":14.0}},\"secureScore\":\"None\"},\"id\":\"/subscriptions/38304e13-357e-405e-9e9a-220351dcce8c/resourceGroups/sarath-rg/providers/Microsoft.DataProtection/backupVaults/new-pstest-vault\",\"name\":\"new-pstest-vault\",\"type\":\"Microsoft.DataProtection/backupVaults\"}",
+      "isContentBase64": false
+    }
+  },
+  "New-AzDataProtectionBackupVault+[NoContext]+CreateExpanded+$GET+https://management.azure.com/subscriptions/38304e13-357e-405e-9e9a-220351dcce8c/resourceGroups/sarath-rg/providers/Microsoft.DataProtection/backupVaults/new-pstest-vault?api-version=2023-05-01+4": {
+    "Request": {
+      "Method": "GET",
+      "RequestUri": "https://management.azure.com/subscriptions/38304e13-357e-405e-9e9a-220351dcce8c/resourceGroups/sarath-rg/providers/Microsoft.DataProtection/backupVaults/new-pstest-vault?api-version=2023-05-01",
+      "Content": null,
+      "isContentBase64": false,
+      "Headers": {
+        "x-ms-unique-id": [ "337" ],
+        "x-ms-client-request-id": [ "39bc341e-36b0-44d5-8693-e1765cd7b7a4" ],
+        "CommandName": [ "Get-AzDataProtectionBackupVault" ],
+        "FullCommandName": [ "Get-AzDataProtectionBackupVault_Get2" ],
+        "ParameterSetName": [ "__AllParameterSets" ],
+        "User-Agent": [ "AzurePowershell/v0.0.0", "PSVersion/v7.3.6", "Az.DataProtection/0.1.0" ],
+        "Authorization": [ "[Filtered]" ]
+      },
+      "ContentHeaders": {
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "x-ms-request-id": [ "" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "Server": [ "Microsoft-IIS/10.0" ],
+        "X-Powered-By": [ "ASP.NET" ],
+        "x-ms-ratelimit-remaining-subscription-resource-requests": [ "497" ],
+        "x-ms-correlation-request-id": [ "1bed963a-48c6-4508-9682-8d0b2ad209f9" ],
+        "x-ms-routing-request-id": [ "WESTINDIA:20230828T141014Z:1bed963a-48c6-4508-9682-8d0b2ad209f9" ],
+        "Date": [ "Mon, 28 Aug 2023 14:10:14 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "663" ],
+        "Content-Type": [ "application/json" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\"location\":\"centraluseuap\",\"identity\":{\"type\":\"SystemAssigned\",\"principalId\":\"88476969-8492-49cc-813b-eb4be42f5f5f\",\"tenantId\":\"72f988bf-86f1-41af-91ab-2d7cd011db47\"},\"properties\":{\"provisioningState\":\"Succeeded\",\"storageSettings\":[{\"datastoreType\":\"VaultStore\",\"type\":\"LocallyRedundant\"}],\"isVaultProtectedByResourceGuard\":false,\"securitySettings\":{\"softDeleteSettings\":{\"state\":\"On\",\"retentionDurationInDays\":14.0}},\"secureScore\":\"None\"},\"id\":\"/subscriptions/38304e13-357e-405e-9e9a-220351dcce8c/resourceGroups/sarath-rg/providers/Microsoft.DataProtection/backupVaults/new-pstest-vault\",\"name\":\"new-pstest-vault\",\"type\":\"Microsoft.DataProtection/backupVaults\"}",
+      "isContentBase64": false
+    }
+  },
+  "New-AzDataProtectionBackupVault+[NoContext]+CreateExpanded+$DELETE+https://management.azure.com/subscriptions/38304e13-357e-405e-9e9a-220351dcce8c/resourceGroups/sarath-rg/providers/Microsoft.DataProtection/backupVaults/new-pstest-vault?api-version=2023-05-01+5": {
+    "Request": {
+      "Method": "DELETE",
+      "RequestUri": "https://management.azure.com/subscriptions/38304e13-357e-405e-9e9a-220351dcce8c/resourceGroups/sarath-rg/providers/Microsoft.DataProtection/backupVaults/new-pstest-vault?api-version=2023-05-01",
+      "Content": null,
+      "isContentBase64": false,
+      "Headers": {
+        "x-ms-unique-id": [ "338" ],
+        "x-ms-client-request-id": [ "adff20cf-b199-42b3-b816-e5c4f043fb76" ],
+        "CommandName": [ "Remove-AzDataProtectionBackupVault" ],
+        "FullCommandName": [ "Remove-AzDataProtectionBackupVault_Delete" ],
+        "ParameterSetName": [ "__AllParameterSets" ],
+        "User-Agent": [ "AzurePowershell/v0.0.0", "PSVersion/v7.3.6", "Az.DataProtection/0.1.0" ],
+        "Authorization": [ "[Filtered]" ]
+      },
+      "ContentHeaders": {
+      }
+    },
+    "Response": {
+      "StatusCode": 202,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "Location": [ "https://management.azure.com/subscriptions/38304e13-357e-405e-9e9a-220351dcce8c/providers/Microsoft.DataProtection/locations/centraluseuap/operationResults/MzM0YzRmYjItYjUxZi00MDYxLWJlMzgtMDM5OGVjZWFhOWNhO2U0YzY4NDlhLTc2NGEtNDhhZi1hMWU4LTY3OTE2ZTUxNjRmNA==?api-version=2023-05-01\u0026t=2023-08-28T14%3a10%3a16\u0026c=MIIHADCCBeigAwIBAgITHgMis3caoWHPUD84qAAAAyKzdzANBgkqhkiG9w0BAQsFADBEMRMwEQYKCZImiZPyLGQBGRYDR0JMMRMwEQYKCZImiZPyLGQBGRYDQU1FMRgwFgYDVQQDEw9BTUUgSW5mcmEgQ0EgMDYwHhcNMjMwODAzMDAxOTAwWhcNMjQwNzI4MDAxOTAwWjBAMT4wPAYDVQQDEzVhc3luY29wZXJhdGlvbnNpZ25pbmdjZXJ0aWZpY2F0ZS5tYW5hZ2VtZW50LmF6dXJlLmNvbTCCASIwDQYJKoZIhvcNAQEBBQADggEPADCCAQoCggEBAJ7NYt6Dh7vD4bFaue37w-ib6qjn-PvOVmc3eEhutBR4Zl8pcXig4SW9-kjKq4hDRrVi-hCmGGI0Kj_1Z8HFedXauV9OCk9TRmA8FHMHEW2Q0L2l6IolLc5bJbJOD4JjveobJRdOD0kUOT6MIDO01vqqk4JMx5b-DxYtmUk6a1AVLUZvkDtxSAewFiu7vWT76ExmF0S_4-wqPKCKwDflqw85FW-xILGvDNU0MPcgI-abUuoEEy0S-5WCPG50x4SLtigith5Ju_xBcl5sH7RUz4HGBn5P8FsUz64W2N5BS1ZkHRJUHTXQfYEaMz1qQwJqlaEKc3UBJD5_hdwZNaExLt0CAwEAAaOCA-0wggPpMCcGCSsGAQQBgjcVCgQaMBgwCgYIKwYBBQUHAwEwCgYIKwYBBQUHAwIwPQYJKwYBBAGCNxUHBDAwLgYmKwYBBAGCNxUIhpDjDYTVtHiE8Ys-hZvdFs6dEoFggvX2K4Py0SACAWQCAQowggHLBggrBgEFBQcBAQSCAb0wggG5MGMGCCsGAQUFBzAChldodHRwOi8vY3JsLm1pY3Jvc29mdC5jb20vcGtpaW5mcmEvQ2VydHMvQkwyUEtJSU5UQ0EwMi5BTUUuR0JMX0FNRSUyMEluZnJhJTIwQ0ElMjAwNi5jcnQwUwYIKwYBBQUHMAKGR2h0dHA6Ly9jcmwxLmFtZS5nYmwvYWlhL0JMMlBLSUlOVENBMDIuQU1FLkdCTF9BTUUlMjBJbmZyYSUyMENBJTIwMDYuY3J0MFMGCCsGAQUFBzAChkdodHRwOi8vY3JsMi5hbWUuZ2JsL2FpYS9CTDJQS0lJTlRDQTAyLkFNRS5HQkxfQU1FJTIwSW5mcmElMjBDQSUyMDA2LmNydDBTBggrBgEFBQcwAoZHaHR0cDovL2NybDMuYW1lLmdibC9haWEvQkwyUEtJSU5UQ0EwMi5BTUUuR0JMX0FNRSUyMEluZnJhJTIwQ0ElMjAwNi5jcnQwUwYIKwYBBQUHMAKGR2h0dHA6Ly9jcmw0LmFtZS5nYmwvYWlhL0JMMlBLSUlOVENBMDIuQU1FLkdCTF9BTUUlMjBJbmZyYSUyMENBJTIwMDYuY3J0MB0GA1UdDgQWBBRWTtlmMViy02jqjxx62TfTXg5BfzAOBgNVHQ8BAf8EBAMCBaAwggEmBgNVHR8EggEdMIIBGTCCARWgggERoIIBDYY_aHR0cDovL2NybC5taWNyb3NvZnQuY29tL3BraWluZnJhL0NSTC9BTUUlMjBJbmZyYSUyMENBJTIwMDYuY3JshjFodHRwOi8vY3JsMS5hbWUuZ2JsL2NybC9BTUUlMjBJbmZyYSUyMENBJTIwMDYuY3JshjFodHRwOi8vY3JsMi5hbWUuZ2JsL2NybC9BTUUlMjBJbmZyYSUyMENBJTIwMDYuY3JshjFodHRwOi8vY3JsMy5hbWUuZ2JsL2NybC9BTUUlMjBJbmZyYSUyMENBJTIwMDYuY3JshjFodHRwOi8vY3JsNC5hbWUuZ2JsL2NybC9BTUUlMjBJbmZyYSUyMENBJTIwMDYuY3JsMBcGA1UdIAQQMA4wDAYKKwYBBAGCN3sBATAfBgNVHSMEGDAWgBTxRmjG8cPwKy19i2rhsvm-NfzRQTAdBgNVHSUEFjAUBggrBgEFBQcDAQYIKwYBBQUHAwIwDQYJKoZIhvcNAQELBQADggEBAGS9E7Z3dO3hDEsvw1L4XOe6iH16hGeZWW6paR071dwkUN-0TqmQ_sU8ls4YrXPOlHd2VFTpMRIWVp23r1rYg9Gu2qDr0UvQ5spceN9YQansiLFLPFYGFvXTCqoPrYbcxAYoCN6KpZERGqWvf8B_lLvC8CcKV4FQdznqVSimSWtYz_60JTN1E56mTci02wcCatmMg6zsKes5I4faxTLNwMBJm6qPg-snY1IaxzLsMasZG40y7OnMR-Vk_EvW__vBvK7DZVedsVuqTKOw9ZR9qJYc2PucgCCF-DkPpd_gj78eI44mCqHRZ5kjNQymPLnA1zByHODONdiPjxHJLKx6Yyw\u0026s=kvG24viDMfiM_d8GgRIkmUn3PYhzk-9ewxGhP9h9U2J7_2UNUCub2D21li8nt_jMLgWB6AhZ3dNnc6ZuY5olgeC1Uat9tR2HYI79cU8_9nxvw_yV6YeivpPBQU-Ht5law18bBZCJEmwwuA-84fTjppXQsNpw31FrxuB5IbHfMav9OQuCrhtSF0Rq09NnBkWCcxEBMq1hM1_cwdetKyk3H7fWOC78ctYe_naiVL0JOyp_A0JCWjDvplznubEKsoSYzW1Ql4EkYpOi5BxG2SYmOhgI2c4ne_Qj3lhF9pZT93wwX7BFOKJMvQZ2YukX30n7DCnCcVvylKHBN7ihciF8hg\u0026h=Owsr7w253NNnXnBTVwWPIgh5lV86wf5PTqx-MOuWUxQ" ],
+        "Retry-After": [ "30" ],
+        "Azure-AsyncOperation": [ "https://management.azure.com/subscriptions/38304e13-357e-405e-9e9a-220351dcce8c/resourceGroups/sarath-rg/providers/Microsoft.DataProtection/locations/centraluseuap/operationStatus/MzM0YzRmYjItYjUxZi00MDYxLWJlMzgtMDM5OGVjZWFhOWNhO2U0YzY4NDlhLTc2NGEtNDhhZi1hMWU4LTY3OTE2ZTUxNjRmNA==?api-version=2023-05-01" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "x-ms-request-id": [ "" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "X-Powered-By": [ "ASP.NET" ],
+        "x-ms-ratelimit-remaining-subscription-resource-requests": [ "99" ],
+        "x-ms-correlation-request-id": [ "f17aae44-a2e2-4580-9af8-f55069576fdd" ],
+        "x-ms-routing-request-id": [ "WESTINDIA:20230828T141016Z:f17aae44-a2e2-4580-9af8-f55069576fdd" ],
+        "Date": [ "Mon, 28 Aug 2023 14:10:15 GMT" ]
+      },
+      "ContentHeaders": {
+        "Expires": [ "-1" ],
+        "Content-Length": [ "0" ]
+      },
+      "Content": null,
+      "isContentBase64": false
+    }
+  },
+  "New-AzDataProtectionBackupVault+[NoContext]+CreateExpanded+$GET+https://management.azure.com/subscriptions/38304e13-357e-405e-9e9a-220351dcce8c/resourceGroups/sarath-rg/providers/Microsoft.DataProtection/locations/centraluseuap/operationStatus/MzM0YzRmYjItYjUxZi00MDYxLWJlMzgtMDM5OGVjZWFhOWNhO2U0YzY4NDlhLTc2NGEtNDhhZi1hMWU4LTY3OTE2ZTUxNjRmNA==?api-version=2023-05-01+6": {
+    "Request": {
+      "Method": "GET",
+      "RequestUri": "https://management.azure.com/subscriptions/38304e13-357e-405e-9e9a-220351dcce8c/resourceGroups/sarath-rg/providers/Microsoft.DataProtection/locations/centraluseuap/operationStatus/MzM0YzRmYjItYjUxZi00MDYxLWJlMzgtMDM5OGVjZWFhOWNhO2U0YzY4NDlhLTc2NGEtNDhhZi1hMWU4LTY3OTE2ZTUxNjRmNA==?api-version=2023-05-01",
+      "Content": null,
+      "isContentBase64": false,
+      "Headers": {
+        "Authorization": [ "[Filtered]" ],
+        "x-ms-unique-id": [ "339" ],
+        "x-ms-client-request-id": [ "adff20cf-b199-42b3-b816-e5c4f043fb76" ],
+        "CommandName": [ "Remove-AzDataProtectionBackupVault" ],
+        "FullCommandName": [ "Remove-AzDataProtectionBackupVault_Delete" ],
+        "ParameterSetName": [ "__AllParameterSets" ],
+        "User-Agent": [ "AzurePowershell/v0.0.0", "PSVersion/v7.3.6", "Az.DataProtection/0.1.0" ]
+      },
+      "ContentHeaders": {
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "x-ms-request-id": [ "" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "Server": [ "Microsoft-IIS/10.0" ],
+        "X-Powered-By": [ "ASP.NET" ],
+        "x-ms-ratelimit-remaining-subscription-resource-requests": [ "14999" ],
+        "x-ms-correlation-request-id": [ "f7b8b318-a341-48bf-942a-81d1562a7ea8" ],
+        "x-ms-routing-request-id": [ "WESTINDIA:20230828T141046Z:f7b8b318-a341-48bf-942a-81d1562a7ea8" ],
+        "Date": [ "Mon, 28 Aug 2023 14:10:46 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "468" ],
+        "Content-Type": [ "application/json" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\"id\":\"/subscriptions/38304e13-357e-405e-9e9a-220351dcce8c/resourceGroups/sarath-rg/providers/Microsoft.DataProtection/locations/centraluseuap/operationStatus/MzM0YzRmYjItYjUxZi00MDYxLWJlMzgtMDM5OGVjZWFhOWNhO2U0YzY4NDlhLTc2NGEtNDhhZi1hMWU4LTY3OTE2ZTUxNjRmNA==\",\"name\":\"MzM0YzRmYjItYjUxZi00MDYxLWJlMzgtMDM5OGVjZWFhOWNhO2U0YzY4NDlhLTc2NGEtNDhhZi1hMWU4LTY3OTE2ZTUxNjRmNA==\",\"status\":\"Succeeded\",\"startTime\":\"2023-08-28T14:10:16.0799283Z\",\"endTime\":\"2023-08-28T14:10:16Z\"}",
+      "isContentBase64": false
+    }
+  },
+  "New-AzDataProtectionBackupVault+[NoContext]+CreateExpanded+$GET+https://management.azure.com/subscriptions/38304e13-357e-405e-9e9a-220351dcce8c/providers/Microsoft.DataProtection/locations/centraluseuap/operationResults/MzM0YzRmYjItYjUxZi00MDYxLWJlMzgtMDM5OGVjZWFhOWNhO2U0YzY4NDlhLTc2NGEtNDhhZi1hMWU4LTY3OTE2ZTUxNjRmNA==?api-version=2023-05-01\u0026t=2023-08-28T14%3a10%3a16\u0026c=MIIHADCCBeigAwIBAgITHgMis3caoWHPUD84qAAAAyKzdzANBgkqhkiG9w0BAQsFADBEMRMwEQYKCZImiZPyLGQBGRYDR0JMMRMwEQYKCZImiZPyLGQBGRYDQU1FMRgwFgYDVQQDEw9BTUUgSW5mcmEgQ0EgMDYwHhcNMjMwODAzMDAxOTAwWhcNMjQwNzI4MDAxOTAwWjBAMT4wPAYDVQQDEzVhc3luY29wZXJhdGlvbnNpZ25pbmdjZXJ0aWZpY2F0ZS5tYW5hZ2VtZW50LmF6dXJlLmNvbTCCASIwDQYJKoZIhvcNAQEBBQADggEPADCCAQoCggEBAJ7NYt6Dh7vD4bFaue37w-ib6qjn-PvOVmc3eEhutBR4Zl8pcXig4SW9-kjKq4hDRrVi-hCmGGI0Kj_1Z8HFedXauV9OCk9TRmA8FHMHEW2Q0L2l6IolLc5bJbJOD4JjveobJRdOD0kUOT6MIDO01vqqk4JMx5b-DxYtmUk6a1AVLUZvkDtxSAewFiu7vWT76ExmF0S_4-wqPKCKwDflqw85FW-xILGvDNU0MPcgI-abUuoEEy0S-5WCPG50x4SLtigith5Ju_xBcl5sH7RUz4HGBn5P8FsUz64W2N5BS1ZkHRJUHTXQfYEaMz1qQwJqlaEKc3UBJD5_hdwZNaExLt0CAwEAAaOCA-0wggPpMCcGCSsGAQQBgjcVCgQaMBgwCgYIKwYBBQUHAwEwCgYIKwYBBQUHAwIwPQYJKwYBBAGCNxUHBDAwLgYmKwYBBAGCNxUIhpDjDYTVtHiE8Ys-hZvdFs6dEoFggvX2K4Py0SACAWQCAQowggHLBggrBgEFBQcBAQSCAb0wggG5MGMGCCsGAQUFBzAChldodHRwOi8vY3JsLm1pY3Jvc29mdC5jb20vcGtpaW5mcmEvQ2VydHMvQkwyUEtJSU5UQ0EwMi5BTUUuR0JMX0FNRSUyMEluZnJhJTIwQ0ElMjAwNi5jcnQwUwYIKwYBBQUHMAKGR2h0dHA6Ly9jcmwxLmFtZS5nYmwvYWlhL0JMMlBLSUlOVENBMDIuQU1FLkdCTF9BTUUlMjBJbmZyYSUyMENBJTIwMDYuY3J0MFMGCCsGAQUFBzAChkdodHRwOi8vY3JsMi5hbWUuZ2JsL2FpYS9CTDJQS0lJTlRDQTAyLkFNRS5HQkxfQU1FJTIwSW5mcmElMjBDQSUyMDA2LmNydDBTBggrBgEFBQcwAoZHaHR0cDovL2NybDMuYW1lLmdibC9haWEvQkwyUEtJSU5UQ0EwMi5BTUUuR0JMX0FNRSUyMEluZnJhJTIwQ0ElMjAwNi5jcnQwUwYIKwYBBQUHMAKGR2h0dHA6Ly9jcmw0LmFtZS5nYmwvYWlhL0JMMlBLSUlOVENBMDIuQU1FLkdCTF9BTUUlMjBJbmZyYSUyMENBJTIwMDYuY3J0MB0GA1UdDgQWBBRWTtlmMViy02jqjxx62TfTXg5BfzAOBgNVHQ8BAf8EBAMCBaAwggEmBgNVHR8EggEdMIIBGTCCARWgggERoIIBDYY_aHR0cDovL2NybC5taWNyb3NvZnQuY29tL3BraWluZnJhL0NSTC9BTUUlMjBJbmZyYSUyMENBJTIwMDYuY3JshjFodHRwOi8vY3JsMS5hbWUuZ2JsL2NybC9BTUUlMjBJbmZyYSUyMENBJTIwMDYuY3JshjFodHRwOi8vY3JsMi5hbWUuZ2JsL2NybC9BTUUlMjBJbmZyYSUyMENBJTIwMDYuY3JshjFodHRwOi8vY3JsMy5hbWUuZ2JsL2NybC9BTUUlMjBJbmZyYSUyMENBJTIwMDYuY3JshjFodHRwOi8vY3JsNC5hbWUuZ2JsL2NybC9BTUUlMjBJbmZyYSUyMENBJTIwMDYuY3JsMBcGA1UdIAQQMA4wDAYKKwYBBAGCN3sBATAfBgNVHSMEGDAWgBTxRmjG8cPwKy19i2rhsvm-NfzRQTAdBgNVHSUEFjAUBggrBgEFBQcDAQYIKwYBBQUHAwIwDQYJKoZIhvcNAQELBQADggEBAGS9E7Z3dO3hDEsvw1L4XOe6iH16hGeZWW6paR071dwkUN-0TqmQ_sU8ls4YrXPOlHd2VFTpMRIWVp23r1rYg9Gu2qDr0UvQ5spceN9YQansiLFLPFYGFvXTCqoPrYbcxAYoCN6KpZERGqWvf8B_lLvC8CcKV4FQdznqVSimSWtYz_60JTN1E56mTci02wcCatmMg6zsKes5I4faxTLNwMBJm6qPg-snY1IaxzLsMasZG40y7OnMR-Vk_EvW__vBvK7DZVedsVuqTKOw9ZR9qJYc2PucgCCF-DkPpd_gj78eI44mCqHRZ5kjNQymPLnA1zByHODONdiPjxHJLKx6Yyw\u0026s=kvG24viDMfiM_d8GgRIkmUn3PYhzk-9ewxGhP9h9U2J7_2UNUCub2D21li8nt_jMLgWB6AhZ3dNnc6ZuY5olgeC1Uat9tR2HYI79cU8_9nxvw_yV6YeivpPBQU-Ht5law18bBZCJEmwwuA-84fTjppXQsNpw31FrxuB5IbHfMav9OQuCrhtSF0Rq09NnBkWCcxEBMq1hM1_cwdetKyk3H7fWOC78ctYe_naiVL0JOyp_A0JCWjDvplznubEKsoSYzW1Ql4EkYpOi5BxG2SYmOhgI2c4ne_Qj3lhF9pZT93wwX7BFOKJMvQZ2YukX30n7DCnCcVvylKHBN7ihciF8hg\u0026h=Owsr7w253NNnXnBTVwWPIgh5lV86wf5PTqx-MOuWUxQ+7": {
+    "Request": {
+      "Method": "GET",
+      "RequestUri": "https://management.azure.com/subscriptions/38304e13-357e-405e-9e9a-220351dcce8c/providers/Microsoft.DataProtection/locations/centraluseuap/operationResults/MzM0YzRmYjItYjUxZi00MDYxLWJlMzgtMDM5OGVjZWFhOWNhO2U0YzY4NDlhLTc2NGEtNDhhZi1hMWU4LTY3OTE2ZTUxNjRmNA==?api-version=2023-05-01\u0026t=2023-08-28T14%3a10%3a16\u0026c=MIIHADCCBeigAwIBAgITHgMis3caoWHPUD84qAAAAyKzdzANBgkqhkiG9w0BAQsFADBEMRMwEQYKCZImiZPyLGQBGRYDR0JMMRMwEQYKCZImiZPyLGQBGRYDQU1FMRgwFgYDVQQDEw9BTUUgSW5mcmEgQ0EgMDYwHhcNMjMwODAzMDAxOTAwWhcNMjQwNzI4MDAxOTAwWjBAMT4wPAYDVQQDEzVhc3luY29wZXJhdGlvbnNpZ25pbmdjZXJ0aWZpY2F0ZS5tYW5hZ2VtZW50LmF6dXJlLmNvbTCCASIwDQYJKoZIhvcNAQEBBQADggEPADCCAQoCggEBAJ7NYt6Dh7vD4bFaue37w-ib6qjn-PvOVmc3eEhutBR4Zl8pcXig4SW9-kjKq4hDRrVi-hCmGGI0Kj_1Z8HFedXauV9OCk9TRmA8FHMHEW2Q0L2l6IolLc5bJbJOD4JjveobJRdOD0kUOT6MIDO01vqqk4JMx5b-DxYtmUk6a1AVLUZvkDtxSAewFiu7vWT76ExmF0S_4-wqPKCKwDflqw85FW-xILGvDNU0MPcgI-abUuoEEy0S-5WCPG50x4SLtigith5Ju_xBcl5sH7RUz4HGBn5P8FsUz64W2N5BS1ZkHRJUHTXQfYEaMz1qQwJqlaEKc3UBJD5_hdwZNaExLt0CAwEAAaOCA-0wggPpMCcGCSsGAQQBgjcVCgQaMBgwCgYIKwYBBQUHAwEwCgYIKwYBBQUHAwIwPQYJKwYBBAGCNxUHBDAwLgYmKwYBBAGCNxUIhpDjDYTVtHiE8Ys-hZvdFs6dEoFggvX2K4Py0SACAWQCAQowggHLBggrBgEFBQcBAQSCAb0wggG5MGMGCCsGAQUFBzAChldodHRwOi8vY3JsLm1pY3Jvc29mdC5jb20vcGtpaW5mcmEvQ2VydHMvQkwyUEtJSU5UQ0EwMi5BTUUuR0JMX0FNRSUyMEluZnJhJTIwQ0ElMjAwNi5jcnQwUwYIKwYBBQUHMAKGR2h0dHA6Ly9jcmwxLmFtZS5nYmwvYWlhL0JMMlBLSUlOVENBMDIuQU1FLkdCTF9BTUUlMjBJbmZyYSUyMENBJTIwMDYuY3J0MFMGCCsGAQUFBzAChkdodHRwOi8vY3JsMi5hbWUuZ2JsL2FpYS9CTDJQS0lJTlRDQTAyLkFNRS5HQkxfQU1FJTIwSW5mcmElMjBDQSUyMDA2LmNydDBTBggrBgEFBQcwAoZHaHR0cDovL2NybDMuYW1lLmdibC9haWEvQkwyUEtJSU5UQ0EwMi5BTUUuR0JMX0FNRSUyMEluZnJhJTIwQ0ElMjAwNi5jcnQwUwYIKwYBBQUHMAKGR2h0dHA6Ly9jcmw0LmFtZS5nYmwvYWlhL0JMMlBLSUlOVENBMDIuQU1FLkdCTF9BTUUlMjBJbmZyYSUyMENBJTIwMDYuY3J0MB0GA1UdDgQWBBRWTtlmMViy02jqjxx62TfTXg5BfzAOBgNVHQ8BAf8EBAMCBaAwggEmBgNVHR8EggEdMIIBGTCCARWgggERoIIBDYY_aHR0cDovL2NybC5taWNyb3NvZnQuY29tL3BraWluZnJhL0NSTC9BTUUlMjBJbmZyYSUyMENBJTIwMDYuY3JshjFodHRwOi8vY3JsMS5hbWUuZ2JsL2NybC9BTUUlMjBJbmZyYSUyMENBJTIwMDYuY3JshjFodHRwOi8vY3JsMi5hbWUuZ2JsL2NybC9BTUUlMjBJbmZyYSUyMENBJTIwMDYuY3JshjFodHRwOi8vY3JsMy5hbWUuZ2JsL2NybC9BTUUlMjBJbmZyYSUyMENBJTIwMDYuY3JshjFodHRwOi8vY3JsNC5hbWUuZ2JsL2NybC9BTUUlMjBJbmZyYSUyMENBJTIwMDYuY3JsMBcGA1UdIAQQMA4wDAYKKwYBBAGCN3sBATAfBgNVHSMEGDAWgBTxRmjG8cPwKy19i2rhsvm-NfzRQTAdBgNVHSUEFjAUBggrBgEFBQcDAQYIKwYBBQUHAwIwDQYJKoZIhvcNAQELBQADggEBAGS9E7Z3dO3hDEsvw1L4XOe6iH16hGeZWW6paR071dwkUN-0TqmQ_sU8ls4YrXPOlHd2VFTpMRIWVp23r1rYg9Gu2qDr0UvQ5spceN9YQansiLFLPFYGFvXTCqoPrYbcxAYoCN6KpZERGqWvf8B_lLvC8CcKV4FQdznqVSimSWtYz_60JTN1E56mTci02wcCatmMg6zsKes5I4faxTLNwMBJm6qPg-snY1IaxzLsMasZG40y7OnMR-Vk_EvW__vBvK7DZVedsVuqTKOw9ZR9qJYc2PucgCCF-DkPpd_gj78eI44mCqHRZ5kjNQymPLnA1zByHODONdiPjxHJLKx6Yyw\u0026s=kvG24viDMfiM_d8GgRIkmUn3PYhzk-9ewxGhP9h9U2J7_2UNUCub2D21li8nt_jMLgWB6AhZ3dNnc6ZuY5olgeC1Uat9tR2HYI79cU8_9nxvw_yV6YeivpPBQU-Ht5law18bBZCJEmwwuA-84fTjppXQsNpw31FrxuB5IbHfMav9OQuCrhtSF0Rq09NnBkWCcxEBMq1hM1_cwdetKyk3H7fWOC78ctYe_naiVL0JOyp_A0JCWjDvplznubEKsoSYzW1Ql4EkYpOi5BxG2SYmOhgI2c4ne_Qj3lhF9pZT93wwX7BFOKJMvQZ2YukX30n7DCnCcVvylKHBN7ihciF8hg\u0026h=Owsr7w253NNnXnBTVwWPIgh5lV86wf5PTqx-MOuWUxQ",
+      "Content": null,
+      "isContentBase64": false,
+      "Headers": {
+        "Authorization": [ "[Filtered]" ],
+        "x-ms-unique-id": [ "340" ],
+        "x-ms-client-request-id": [ "adff20cf-b199-42b3-b816-e5c4f043fb76" ],
+        "CommandName": [ "Remove-AzDataProtectionBackupVault" ],
+        "FullCommandName": [ "Remove-AzDataProtectionBackupVault_Delete" ],
+        "ParameterSetName": [ "__AllParameterSets" ],
+        "User-Agent": [ "AzurePowershell/v0.0.0", "PSVersion/v7.3.6", "Az.DataProtection/0.1.0" ]
+      },
+      "ContentHeaders": {
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "Retry-After": [ "30" ],
+        "Azure-AsyncOperation": [ "https://management.azure.com/subscriptions/38304e13-357e-405e-9e9a-220351dcce8c/providers/Microsoft.DataProtection/locations/centraluseuap/operationStatus/MzM0YzRmYjItYjUxZi00MDYxLWJlMzgtMDM5OGVjZWFhOWNhO2U0YzY4NDlhLTc2NGEtNDhhZi1hMWU4LTY3OTE2ZTUxNjRmNA==?api-version=2023-05-01" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "x-ms-request-id": [ "" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "Server": [ "Microsoft-IIS/10.0" ],
+        "X-Powered-By": [ "ASP.NET" ],
+        "x-ms-ratelimit-remaining-subscription-resource-requests": [ "199" ],
+        "x-ms-correlation-request-id": [ "b42c6823-5ba2-414c-9ad8-d21a2cebb0ae" ],
+        "x-ms-routing-request-id": [ "WESTINDIA:20230828T141047Z:b42c6823-5ba2-414c-9ad8-d21a2cebb0ae" ],
+        "Date": [ "Mon, 28 Aug 2023 14:10:46 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "41" ],
+        "Content-Type": [ "application/json" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\"objectType\":\"OperationJobExtendedInfo\"}",
+      "isContentBase64": false
+    }
+  },
+  "New-AzDataProtectionBackupVault+[NoContext]+ImmutabilityCSRSoftDelete+$PUT+https://management.azure.com/subscriptions/38304e13-357e-405e-9e9a-220351dcce8c/resourceGroups/sarath-rg/providers/Microsoft.DataProtection/backupVaults/new-pstest-vault?api-version=2023-05-01+1": {
+    "Request": {
+      "Method": "PUT",
+      "RequestUri": "https://management.azure.com/subscriptions/38304e13-357e-405e-9e9a-220351dcce8c/resourceGroups/sarath-rg/providers/Microsoft.DataProtection/backupVaults/new-pstest-vault?api-version=2023-05-01",
+      "Content": "{\r\n  \"location\": \"centraluseuap\",\r\n  \"identity\": {\r\n    \"type\": \"SystemAssigned\"\r\n  },\r\n  \"properties\": {\r\n    \"securitySettings\": {\r\n      \"softDeleteSettings\": {\r\n        \"state\": \"On\",\r\n        \"retentionDurationInDays\": 100\r\n      },\r\n      \"immutabilitySettings\": {\r\n        \"state\": \"Unlocked\"\r\n      }\r\n    },\r\n    \"featureSettings\": {\r\n      \"crossSubscriptionRestoreSettings\": {\r\n        \"state\": \"Enabled\"\r\n      }\r\n    },\r\n    \"storageSettings\": [\r\n      {\r\n        \"datastoreType\": \"VaultStore\",\r\n        \"type\": \"LocallyRedundant\"\r\n      }\r\n    ]\r\n  }\r\n}",
+      "isContentBase64": false,
+      "Headers": {
+      },
+      "ContentHeaders": {
+        "Content-Type": [ "application/json" ],
+        "Content-Length": [ "567" ]
+      }
+    },
+    "Response": {
+      "StatusCode": 201,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "Retry-After": [ "10" ],
+        "Azure-AsyncOperation": [ "https://management.azure.com/subscriptions/38304e13-357e-405e-9e9a-220351dcce8c/resourceGroups/sarath-rg/providers/Microsoft.DataProtection/backupVaults/new-pstest-vault/operationStatus/NTY2MTQ0MDMtNTlmNi00YzU3LWE0ODYtNzVkZmM0ZTYwZjQyOzFmMDhjMTE4LTJlMTctNDJhMi05ZmZmLTk0MjlhMGI0N2ViZA==?api-version=2023-05-01\u0026t=2023-08-28T14%3a10%3a49\u0026c=MIIHADCCBeigAwIBAgITHgMis3caoWHPUD84qAAAAyKzdzANBgkqhkiG9w0BAQsFADBEMRMwEQYKCZImiZPyLGQBGRYDR0JMMRMwEQYKCZImiZPyLGQBGRYDQU1FMRgwFgYDVQQDEw9BTUUgSW5mcmEgQ0EgMDYwHhcNMjMwODAzMDAxOTAwWhcNMjQwNzI4MDAxOTAwWjBAMT4wPAYDVQQDEzVhc3luY29wZXJhdGlvbnNpZ25pbmdjZXJ0aWZpY2F0ZS5tYW5hZ2VtZW50LmF6dXJlLmNvbTCCASIwDQYJKoZIhvcNAQEBBQADggEPADCCAQoCggEBAJ7NYt6Dh7vD4bFaue37w-ib6qjn-PvOVmc3eEhutBR4Zl8pcXig4SW9-kjKq4hDRrVi-hCmGGI0Kj_1Z8HFedXauV9OCk9TRmA8FHMHEW2Q0L2l6IolLc5bJbJOD4JjveobJRdOD0kUOT6MIDO01vqqk4JMx5b-DxYtmUk6a1AVLUZvkDtxSAewFiu7vWT76ExmF0S_4-wqPKCKwDflqw85FW-xILGvDNU0MPcgI-abUuoEEy0S-5WCPG50x4SLtigith5Ju_xBcl5sH7RUz4HGBn5P8FsUz64W2N5BS1ZkHRJUHTXQfYEaMz1qQwJqlaEKc3UBJD5_hdwZNaExLt0CAwEAAaOCA-0wggPpMCcGCSsGAQQBgjcVCgQaMBgwCgYIKwYBBQUHAwEwCgYIKwYBBQUHAwIwPQYJKwYBBAGCNxUHBDAwLgYmKwYBBAGCNxUIhpDjDYTVtHiE8Ys-hZvdFs6dEoFggvX2K4Py0SACAWQCAQowggHLBggrBgEFBQcBAQSCAb0wggG5MGMGCCsGAQUFBzAChldodHRwOi8vY3JsLm1pY3Jvc29mdC5jb20vcGtpaW5mcmEvQ2VydHMvQkwyUEtJSU5UQ0EwMi5BTUUuR0JMX0FNRSUyMEluZnJhJTIwQ0ElMjAwNi5jcnQwUwYIKwYBBQUHMAKGR2h0dHA6Ly9jcmwxLmFtZS5nYmwvYWlhL0JMMlBLSUlOVENBMDIuQU1FLkdCTF9BTUUlMjBJbmZyYSUyMENBJTIwMDYuY3J0MFMGCCsGAQUFBzAChkdodHRwOi8vY3JsMi5hbWUuZ2JsL2FpYS9CTDJQS0lJTlRDQTAyLkFNRS5HQkxfQU1FJTIwSW5mcmElMjBDQSUyMDA2LmNydDBTBggrBgEFBQcwAoZHaHR0cDovL2NybDMuYW1lLmdibC9haWEvQkwyUEtJSU5UQ0EwMi5BTUUuR0JMX0FNRSUyMEluZnJhJTIwQ0ElMjAwNi5jcnQwUwYIKwYBBQUHMAKGR2h0dHA6Ly9jcmw0LmFtZS5nYmwvYWlhL0JMMlBLSUlOVENBMDIuQU1FLkdCTF9BTUUlMjBJbmZyYSUyMENBJTIwMDYuY3J0MB0GA1UdDgQWBBRWTtlmMViy02jqjxx62TfTXg5BfzAOBgNVHQ8BAf8EBAMCBaAwggEmBgNVHR8EggEdMIIBGTCCARWgggERoIIBDYY_aHR0cDovL2NybC5taWNyb3NvZnQuY29tL3BraWluZnJhL0NSTC9BTUUlMjBJbmZyYSUyMENBJTIwMDYuY3JshjFodHRwOi8vY3JsMS5hbWUuZ2JsL2NybC9BTUUlMjBJbmZyYSUyMENBJTIwMDYuY3JshjFodHRwOi8vY3JsMi5hbWUuZ2JsL2NybC9BTUUlMjBJbmZyYSUyMENBJTIwMDYuY3JshjFodHRwOi8vY3JsMy5hbWUuZ2JsL2NybC9BTUUlMjBJbmZyYSUyMENBJTIwMDYuY3JshjFodHRwOi8vY3JsNC5hbWUuZ2JsL2NybC9BTUUlMjBJbmZyYSUyMENBJTIwMDYuY3JsMBcGA1UdIAQQMA4wDAYKKwYBBAGCN3sBATAfBgNVHSMEGDAWgBTxRmjG8cPwKy19i2rhsvm-NfzRQTAdBgNVHSUEFjAUBggrBgEFBQcDAQYIKwYBBQUHAwIwDQYJKoZIhvcNAQELBQADggEBAGS9E7Z3dO3hDEsvw1L4XOe6iH16hGeZWW6paR071dwkUN-0TqmQ_sU8ls4YrXPOlHd2VFTpMRIWVp23r1rYg9Gu2qDr0UvQ5spceN9YQansiLFLPFYGFvXTCqoPrYbcxAYoCN6KpZERGqWvf8B_lLvC8CcKV4FQdznqVSimSWtYz_60JTN1E56mTci02wcCatmMg6zsKes5I4faxTLNwMBJm6qPg-snY1IaxzLsMasZG40y7OnMR-Vk_EvW__vBvK7DZVedsVuqTKOw9ZR9qJYc2PucgCCF-DkPpd_gj78eI44mCqHRZ5kjNQymPLnA1zByHODONdiPjxHJLKx6Yyw\u0026s=bnWqlCOy6iejXHqXjPG5HI-rI-ObGokpAQCyB3cskmXjdA2ZStt05eVnNNPvpDTOmBTixbT_SX-Jgy_LzQmpEVRRmFOjJGBzEKTuNFrsqZX016Ynbk71HIA95DLVPhf-cXBXa0u7Zst-LQHETm8l2YmBUd2EG1oOOmc4-9DT5ac37fX_hIEDDmUIhfbe5k44A2PPWg_8zz_SgsudgJJuokSTbyMrgVQQ-3JwoG4kI-eaHypaD3O-lzujyWlZPDXZzAwFZqpdc9k9shXwzHxVIewcRv_hhRU9o0M3v0FY4C5Bvt_qkJ6xO-PCGpnvSQFLsIm0aUG9o3lI9ylCiyuubQ\u0026h=U35rYa8bux9QY23IzblgGCP-l_AuS8EFkc2zA8YbsUg" ],
+        "x-ms-arm-resource-system-data": [ "{\"lastModifiedBy\":\"hiaga@microsoft.com\",\"lastModifiedByType\":\"User\",\"lastModifiedAt\":\"2023-08-28T14:10:47.5016119Z\"}" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "x-ms-request-id": [ "" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "Server": [ "Microsoft-IIS/10.0" ],
+        "X-Powered-By": [ "ASP.NET" ],
+        "x-ms-ratelimit-remaining-subscription-resource-requests": [ "98" ],
+        "x-ms-correlation-request-id": [ "fb23a636-ab50-4d60-a271-2ae3d77cd486" ],
+        "x-ms-routing-request-id": [ "WESTINDIA:20230828T141049Z:fb23a636-ab50-4d60-a271-2ae3d77cd486" ],
+        "Date": [ "Mon, 28 Aug 2023 14:10:49 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "789" ],
+        "Content-Type": [ "application/json" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\"location\":\"centraluseuap\",\"identity\":{\"type\":\"SystemAssigned\",\"principalId\":\"88476969-8492-49cc-813b-eb4be42f5f5f\",\"tenantId\":\"72f988bf-86f1-41af-91ab-2d7cd011db47\"},\"properties\":{\"provisioningState\":\"Provisioning\",\"storageSettings\":[{\"datastoreType\":\"VaultStore\",\"type\":\"LocallyRedundant\"}],\"isVaultProtectedByResourceGuard\":false,\"securitySettings\":{\"softDeleteSettings\":{\"state\":\"On\",\"retentionDurationInDays\":100.0},\"immutabilitySettings\":{\"state\":\"Unlocked\"}},\"featureSettings\":{\"crossSubscriptionRestoreSettings\":{\"state\":\"Enabled\"}},\"secureScore\":\"Minimum\"},\"id\":\"/subscriptions/38304e13-357e-405e-9e9a-220351dcce8c/resourceGroups/sarath-rg/providers/Microsoft.DataProtection/backupVaults/new-pstest-vault\",\"name\":\"new-pstest-vault\",\"type\":\"Microsoft.DataProtection/backupVaults\"}",
+      "isContentBase64": false
+    }
+  },
+  "New-AzDataProtectionBackupVault+[NoContext]+ImmutabilityCSRSoftDelete+$GET+https://management.azure.com/subscriptions/38304e13-357e-405e-9e9a-220351dcce8c/resourceGroups/sarath-rg/providers/Microsoft.DataProtection/backupVaults/new-pstest-vault/operationStatus/NTY2MTQ0MDMtNTlmNi00YzU3LWE0ODYtNzVkZmM0ZTYwZjQyOzFmMDhjMTE4LTJlMTctNDJhMi05ZmZmLTk0MjlhMGI0N2ViZA==?api-version=2023-05-01\u0026t=2023-08-28T14%3a10%3a49\u0026c=MIIHADCCBeigAwIBAgITHgMis3caoWHPUD84qAAAAyKzdzANBgkqhkiG9w0BAQsFADBEMRMwEQYKCZImiZPyLGQBGRYDR0JMMRMwEQYKCZImiZPyLGQBGRYDQU1FMRgwFgYDVQQDEw9BTUUgSW5mcmEgQ0EgMDYwHhcNMjMwODAzMDAxOTAwWhcNMjQwNzI4MDAxOTAwWjBAMT4wPAYDVQQDEzVhc3luY29wZXJhdGlvbnNpZ25pbmdjZXJ0aWZpY2F0ZS5tYW5hZ2VtZW50LmF6dXJlLmNvbTCCASIwDQYJKoZIhvcNAQEBBQADggEPADCCAQoCggEBAJ7NYt6Dh7vD4bFaue37w-ib6qjn-PvOVmc3eEhutBR4Zl8pcXig4SW9-kjKq4hDRrVi-hCmGGI0Kj_1Z8HFedXauV9OCk9TRmA8FHMHEW2Q0L2l6IolLc5bJbJOD4JjveobJRdOD0kUOT6MIDO01vqqk4JMx5b-DxYtmUk6a1AVLUZvkDtxSAewFiu7vWT76ExmF0S_4-wqPKCKwDflqw85FW-xILGvDNU0MPcgI-abUuoEEy0S-5WCPG50x4SLtigith5Ju_xBcl5sH7RUz4HGBn5P8FsUz64W2N5BS1ZkHRJUHTXQfYEaMz1qQwJqlaEKc3UBJD5_hdwZNaExLt0CAwEAAaOCA-0wggPpMCcGCSsGAQQBgjcVCgQaMBgwCgYIKwYBBQUHAwEwCgYIKwYBBQUHAwIwPQYJKwYBBAGCNxUHBDAwLgYmKwYBBAGCNxUIhpDjDYTVtHiE8Ys-hZvdFs6dEoFggvX2K4Py0SACAWQCAQowggHLBggrBgEFBQcBAQSCAb0wggG5MGMGCCsGAQUFBzAChldodHRwOi8vY3JsLm1pY3Jvc29mdC5jb20vcGtpaW5mcmEvQ2VydHMvQkwyUEtJSU5UQ0EwMi5BTUUuR0JMX0FNRSUyMEluZnJhJTIwQ0ElMjAwNi5jcnQwUwYIKwYBBQUHMAKGR2h0dHA6Ly9jcmwxLmFtZS5nYmwvYWlhL0JMMlBLSUlOVENBMDIuQU1FLkdCTF9BTUUlMjBJbmZyYSUyMENBJTIwMDYuY3J0MFMGCCsGAQUFBzAChkdodHRwOi8vY3JsMi5hbWUuZ2JsL2FpYS9CTDJQS0lJTlRDQTAyLkFNRS5HQkxfQU1FJTIwSW5mcmElMjBDQSUyMDA2LmNydDBTBggrBgEFBQcwAoZHaHR0cDovL2NybDMuYW1lLmdibC9haWEvQkwyUEtJSU5UQ0EwMi5BTUUuR0JMX0FNRSUyMEluZnJhJTIwQ0ElMjAwNi5jcnQwUwYIKwYBBQUHMAKGR2h0dHA6Ly9jcmw0LmFtZS5nYmwvYWlhL0JMMlBLSUlOVENBMDIuQU1FLkdCTF9BTUUlMjBJbmZyYSUyMENBJTIwMDYuY3J0MB0GA1UdDgQWBBRWTtlmMViy02jqjxx62TfTXg5BfzAOBgNVHQ8BAf8EBAMCBaAwggEmBgNVHR8EggEdMIIBGTCCARWgggERoIIBDYY_aHR0cDovL2NybC5taWNyb3NvZnQuY29tL3BraWluZnJhL0NSTC9BTUUlMjBJbmZyYSUyMENBJTIwMDYuY3JshjFodHRwOi8vY3JsMS5hbWUuZ2JsL2NybC9BTUUlMjBJbmZyYSUyMENBJTIwMDYuY3JshjFodHRwOi8vY3JsMi5hbWUuZ2JsL2NybC9BTUUlMjBJbmZyYSUyMENBJTIwMDYuY3JshjFodHRwOi8vY3JsMy5hbWUuZ2JsL2NybC9BTUUlMjBJbmZyYSUyMENBJTIwMDYuY3JshjFodHRwOi8vY3JsNC5hbWUuZ2JsL2NybC9BTUUlMjBJbmZyYSUyMENBJTIwMDYuY3JsMBcGA1UdIAQQMA4wDAYKKwYBBAGCN3sBATAfBgNVHSMEGDAWgBTxRmjG8cPwKy19i2rhsvm-NfzRQTAdBgNVHSUEFjAUBggrBgEFBQcDAQYIKwYBBQUHAwIwDQYJKoZIhvcNAQELBQADggEBAGS9E7Z3dO3hDEsvw1L4XOe6iH16hGeZWW6paR071dwkUN-0TqmQ_sU8ls4YrXPOlHd2VFTpMRIWVp23r1rYg9Gu2qDr0UvQ5spceN9YQansiLFLPFYGFvXTCqoPrYbcxAYoCN6KpZERGqWvf8B_lLvC8CcKV4FQdznqVSimSWtYz_60JTN1E56mTci02wcCatmMg6zsKes5I4faxTLNwMBJm6qPg-snY1IaxzLsMasZG40y7OnMR-Vk_EvW__vBvK7DZVedsVuqTKOw9ZR9qJYc2PucgCCF-DkPpd_gj78eI44mCqHRZ5kjNQymPLnA1zByHODONdiPjxHJLKx6Yyw\u0026s=bnWqlCOy6iejXHqXjPG5HI-rI-ObGokpAQCyB3cskmXjdA2ZStt05eVnNNPvpDTOmBTixbT_SX-Jgy_LzQmpEVRRmFOjJGBzEKTuNFrsqZX016Ynbk71HIA95DLVPhf-cXBXa0u7Zst-LQHETm8l2YmBUd2EG1oOOmc4-9DT5ac37fX_hIEDDmUIhfbe5k44A2PPWg_8zz_SgsudgJJuokSTbyMrgVQQ-3JwoG4kI-eaHypaD3O-lzujyWlZPDXZzAwFZqpdc9k9shXwzHxVIewcRv_hhRU9o0M3v0FY4C5Bvt_qkJ6xO-PCGpnvSQFLsIm0aUG9o3lI9ylCiyuubQ\u0026h=U35rYa8bux9QY23IzblgGCP-l_AuS8EFkc2zA8YbsUg+2": {
+    "Request": {
+      "Method": "GET",
+      "RequestUri": "https://management.azure.com/subscriptions/38304e13-357e-405e-9e9a-220351dcce8c/resourceGroups/sarath-rg/providers/Microsoft.DataProtection/backupVaults/new-pstest-vault/operationStatus/NTY2MTQ0MDMtNTlmNi00YzU3LWE0ODYtNzVkZmM0ZTYwZjQyOzFmMDhjMTE4LTJlMTctNDJhMi05ZmZmLTk0MjlhMGI0N2ViZA==?api-version=2023-05-01\u0026t=2023-08-28T14%3a10%3a49\u0026c=MIIHADCCBeigAwIBAgITHgMis3caoWHPUD84qAAAAyKzdzANBgkqhkiG9w0BAQsFADBEMRMwEQYKCZImiZPyLGQBGRYDR0JMMRMwEQYKCZImiZPyLGQBGRYDQU1FMRgwFgYDVQQDEw9BTUUgSW5mcmEgQ0EgMDYwHhcNMjMwODAzMDAxOTAwWhcNMjQwNzI4MDAxOTAwWjBAMT4wPAYDVQQDEzVhc3luY29wZXJhdGlvbnNpZ25pbmdjZXJ0aWZpY2F0ZS5tYW5hZ2VtZW50LmF6dXJlLmNvbTCCASIwDQYJKoZIhvcNAQEBBQADggEPADCCAQoCggEBAJ7NYt6Dh7vD4bFaue37w-ib6qjn-PvOVmc3eEhutBR4Zl8pcXig4SW9-kjKq4hDRrVi-hCmGGI0Kj_1Z8HFedXauV9OCk9TRmA8FHMHEW2Q0L2l6IolLc5bJbJOD4JjveobJRdOD0kUOT6MIDO01vqqk4JMx5b-DxYtmUk6a1AVLUZvkDtxSAewFiu7vWT76ExmF0S_4-wqPKCKwDflqw85FW-xILGvDNU0MPcgI-abUuoEEy0S-5WCPG50x4SLtigith5Ju_xBcl5sH7RUz4HGBn5P8FsUz64W2N5BS1ZkHRJUHTXQfYEaMz1qQwJqlaEKc3UBJD5_hdwZNaExLt0CAwEAAaOCA-0wggPpMCcGCSsGAQQBgjcVCgQaMBgwCgYIKwYBBQUHAwEwCgYIKwYBBQUHAwIwPQYJKwYBBAGCNxUHBDAwLgYmKwYBBAGCNxUIhpDjDYTVtHiE8Ys-hZvdFs6dEoFggvX2K4Py0SACAWQCAQowggHLBggrBgEFBQcBAQSCAb0wggG5MGMGCCsGAQUFBzAChldodHRwOi8vY3JsLm1pY3Jvc29mdC5jb20vcGtpaW5mcmEvQ2VydHMvQkwyUEtJSU5UQ0EwMi5BTUUuR0JMX0FNRSUyMEluZnJhJTIwQ0ElMjAwNi5jcnQwUwYIKwYBBQUHMAKGR2h0dHA6Ly9jcmwxLmFtZS5nYmwvYWlhL0JMMlBLSUlOVENBMDIuQU1FLkdCTF9BTUUlMjBJbmZyYSUyMENBJTIwMDYuY3J0MFMGCCsGAQUFBzAChkdodHRwOi8vY3JsMi5hbWUuZ2JsL2FpYS9CTDJQS0lJTlRDQTAyLkFNRS5HQkxfQU1FJTIwSW5mcmElMjBDQSUyMDA2LmNydDBTBggrBgEFBQcwAoZHaHR0cDovL2NybDMuYW1lLmdibC9haWEvQkwyUEtJSU5UQ0EwMi5BTUUuR0JMX0FNRSUyMEluZnJhJTIwQ0ElMjAwNi5jcnQwUwYIKwYBBQUHMAKGR2h0dHA6Ly9jcmw0LmFtZS5nYmwvYWlhL0JMMlBLSUlOVENBMDIuQU1FLkdCTF9BTUUlMjBJbmZyYSUyMENBJTIwMDYuY3J0MB0GA1UdDgQWBBRWTtlmMViy02jqjxx62TfTXg5BfzAOBgNVHQ8BAf8EBAMCBaAwggEmBgNVHR8EggEdMIIBGTCCARWgggERoIIBDYY_aHR0cDovL2NybC5taWNyb3NvZnQuY29tL3BraWluZnJhL0NSTC9BTUUlMjBJbmZyYSUyMENBJTIwMDYuY3JshjFodHRwOi8vY3JsMS5hbWUuZ2JsL2NybC9BTUUlMjBJbmZyYSUyMENBJTIwMDYuY3JshjFodHRwOi8vY3JsMi5hbWUuZ2JsL2NybC9BTUUlMjBJbmZyYSUyMENBJTIwMDYuY3JshjFodHRwOi8vY3JsMy5hbWUuZ2JsL2NybC9BTUUlMjBJbmZyYSUyMENBJTIwMDYuY3JshjFodHRwOi8vY3JsNC5hbWUuZ2JsL2NybC9BTUUlMjBJbmZyYSUyMENBJTIwMDYuY3JsMBcGA1UdIAQQMA4wDAYKKwYBBAGCN3sBATAfBgNVHSMEGDAWgBTxRmjG8cPwKy19i2rhsvm-NfzRQTAdBgNVHSUEFjAUBggrBgEFBQcDAQYIKwYBBQUHAwIwDQYJKoZIhvcNAQELBQADggEBAGS9E7Z3dO3hDEsvw1L4XOe6iH16hGeZWW6paR071dwkUN-0TqmQ_sU8ls4YrXPOlHd2VFTpMRIWVp23r1rYg9Gu2qDr0UvQ5spceN9YQansiLFLPFYGFvXTCqoPrYbcxAYoCN6KpZERGqWvf8B_lLvC8CcKV4FQdznqVSimSWtYz_60JTN1E56mTci02wcCatmMg6zsKes5I4faxTLNwMBJm6qPg-snY1IaxzLsMasZG40y7OnMR-Vk_EvW__vBvK7DZVedsVuqTKOw9ZR9qJYc2PucgCCF-DkPpd_gj78eI44mCqHRZ5kjNQymPLnA1zByHODONdiPjxHJLKx6Yyw\u0026s=bnWqlCOy6iejXHqXjPG5HI-rI-ObGokpAQCyB3cskmXjdA2ZStt05eVnNNPvpDTOmBTixbT_SX-Jgy_LzQmpEVRRmFOjJGBzEKTuNFrsqZX016Ynbk71HIA95DLVPhf-cXBXa0u7Zst-LQHETm8l2YmBUd2EG1oOOmc4-9DT5ac37fX_hIEDDmUIhfbe5k44A2PPWg_8zz_SgsudgJJuokSTbyMrgVQQ-3JwoG4kI-eaHypaD3O-lzujyWlZPDXZzAwFZqpdc9k9shXwzHxVIewcRv_hhRU9o0M3v0FY4C5Bvt_qkJ6xO-PCGpnvSQFLsIm0aUG9o3lI9ylCiyuubQ\u0026h=U35rYa8bux9QY23IzblgGCP-l_AuS8EFkc2zA8YbsUg",
+      "Content": null,
+      "isContentBase64": false,
+      "Headers": {
+        "Authorization": [ "[Filtered]" ],
+        "x-ms-unique-id": [ "342" ],
+        "x-ms-client-request-id": [ "4d613814-72a8-4627-8ae6-5773f7ef0b9d" ],
+        "CommandName": [ "Az.DataProtection.Internal\\New-AzDataProtectionBackupVault" ],
+        "FullCommandName": [ "New-AzDataProtectionBackupVault_CreateExpanded" ],
+        "ParameterSetName": [ "__AllParameterSets" ],
+        "User-Agent": [ "AzurePowershell/v0.0.0", "PSVersion/v7.3.6", "Az.DataProtection/0.1.0" ]
+      },
+      "ContentHeaders": {
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "x-ms-request-id": [ "" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "Server": [ "Microsoft-IIS/10.0" ],
+        "X-Powered-By": [ "ASP.NET" ],
+        "x-ms-ratelimit-remaining-subscription-resource-requests": [ "998" ],
+        "x-ms-correlation-request-id": [ "cccaa0ed-f39c-4cea-8f13-11e09902c706" ],
+        "x-ms-routing-request-id": [ "WESTINDIA:20230828T141100Z:cccaa0ed-f39c-4cea-8f13-11e09902c706" ],
+        "Date": [ "Mon, 28 Aug 2023 14:11:00 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "474" ],
+        "Content-Type": [ "application/json" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\"id\":\"/subscriptions/38304e13-357e-405e-9e9a-220351dcce8c/resourceGroups/sarath-rg/providers/Microsoft.DataProtection/backupVaults/new-pstest-vault/operationStatus/NTY2MTQ0MDMtNTlmNi00YzU3LWE0ODYtNzVkZmM0ZTYwZjQyOzFmMDhjMTE4LTJlMTctNDJhMi05ZmZmLTk0MjlhMGI0N2ViZA==\",\"name\":\"NTY2MTQ0MDMtNTlmNi00YzU3LWE0ODYtNzVkZmM0ZTYwZjQyOzFmMDhjMTE4LTJlMTctNDJhMi05ZmZmLTk0MjlhMGI0N2ViZA==\",\"status\":\"Succeeded\",\"startTime\":\"2023-08-28T14:10:48.2105029Z\",\"endTime\":\"2023-08-28T14:10:48Z\"}",
+      "isContentBase64": false
+    }
+  },
+  "New-AzDataProtectionBackupVault+[NoContext]+ImmutabilityCSRSoftDelete+$GET+https://management.azure.com/subscriptions/38304e13-357e-405e-9e9a-220351dcce8c/resourceGroups/sarath-rg/providers/Microsoft.DataProtection/backupVaults/new-pstest-vault?api-version=2023-05-01+3": {
+    "Request": {
+      "Method": "GET",
+      "RequestUri": "https://management.azure.com/subscriptions/38304e13-357e-405e-9e9a-220351dcce8c/resourceGroups/sarath-rg/providers/Microsoft.DataProtection/backupVaults/new-pstest-vault?api-version=2023-05-01",
+      "Content": null,
+      "isContentBase64": false,
+      "Headers": {
+        "Authorization": [ "[Filtered]" ],
+        "x-ms-unique-id": [ "343" ],
+        "x-ms-client-request-id": [ "4d613814-72a8-4627-8ae6-5773f7ef0b9d" ],
+        "CommandName": [ "Az.DataProtection.Internal\\New-AzDataProtectionBackupVault" ],
+        "FullCommandName": [ "New-AzDataProtectionBackupVault_CreateExpanded" ],
+        "ParameterSetName": [ "__AllParameterSets" ],
+        "User-Agent": [ "AzurePowershell/v0.0.0", "PSVersion/v7.3.6", "Az.DataProtection/0.1.0" ]
+      },
+      "ContentHeaders": {
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "x-ms-request-id": [ "" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "Server": [ "Microsoft-IIS/10.0" ],
+        "X-Powered-By": [ "ASP.NET" ],
+        "x-ms-ratelimit-remaining-subscription-resource-requests": [ "496" ],
+        "x-ms-correlation-request-id": [ "b4cc1e94-633c-421b-8149-c5dbae6b75fa" ],
+        "x-ms-routing-request-id": [ "WESTINDIA:20230828T141101Z:b4cc1e94-633c-421b-8149-c5dbae6b75fa" ],
+        "Date": [ "Mon, 28 Aug 2023 14:11:00 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "786" ],
+        "Content-Type": [ "application/json" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\"location\":\"centraluseuap\",\"identity\":{\"type\":\"SystemAssigned\",\"principalId\":\"88476969-8492-49cc-813b-eb4be42f5f5f\",\"tenantId\":\"72f988bf-86f1-41af-91ab-2d7cd011db47\"},\"properties\":{\"provisioningState\":\"Succeeded\",\"storageSettings\":[{\"datastoreType\":\"VaultStore\",\"type\":\"LocallyRedundant\"}],\"isVaultProtectedByResourceGuard\":false,\"securitySettings\":{\"softDeleteSettings\":{\"state\":\"On\",\"retentionDurationInDays\":100.0},\"immutabilitySettings\":{\"state\":\"Unlocked\"}},\"featureSettings\":{\"crossSubscriptionRestoreSettings\":{\"state\":\"Enabled\"}},\"secureScore\":\"Minimum\"},\"id\":\"/subscriptions/38304e13-357e-405e-9e9a-220351dcce8c/resourceGroups/sarath-rg/providers/Microsoft.DataProtection/backupVaults/new-pstest-vault\",\"name\":\"new-pstest-vault\",\"type\":\"Microsoft.DataProtection/backupVaults\"}",
+      "isContentBase64": false
+    }
+  },
+  "New-AzDataProtectionBackupVault+[NoContext]+ImmutabilityCSRSoftDelete+$GET+https://management.azure.com/subscriptions/38304e13-357e-405e-9e9a-220351dcce8c/resourceGroups/sarath-rg/providers/Microsoft.DataProtection/backupVaults/new-pstest-vault?api-version=2023-05-01+4": {
+    "Request": {
+      "Method": "GET",
+      "RequestUri": "https://management.azure.com/subscriptions/38304e13-357e-405e-9e9a-220351dcce8c/resourceGroups/sarath-rg/providers/Microsoft.DataProtection/backupVaults/new-pstest-vault?api-version=2023-05-01",
+      "Content": null,
+      "isContentBase64": false,
+      "Headers": {
+        "x-ms-unique-id": [ "344" ],
+        "x-ms-client-request-id": [ "8be88e19-ae41-4829-a7c1-6cf4a920c88e" ],
+        "CommandName": [ "Get-AzDataProtectionBackupVault" ],
+        "FullCommandName": [ "Get-AzDataProtectionBackupVault_Get2" ],
+        "ParameterSetName": [ "__AllParameterSets" ],
+        "User-Agent": [ "AzurePowershell/v0.0.0", "PSVersion/v7.3.6", "Az.DataProtection/0.1.0" ],
+        "Authorization": [ "[Filtered]" ]
+      },
+      "ContentHeaders": {
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "x-ms-request-id": [ "" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "Server": [ "Microsoft-IIS/10.0" ],
+        "X-Powered-By": [ "ASP.NET" ],
+        "x-ms-ratelimit-remaining-subscription-resource-requests": [ "495" ],
+        "x-ms-correlation-request-id": [ "fec5fec7-dbce-4ce5-a1cb-80a72676ca20" ],
+        "x-ms-routing-request-id": [ "WESTINDIA:20230828T141101Z:fec5fec7-dbce-4ce5-a1cb-80a72676ca20" ],
+        "Date": [ "Mon, 28 Aug 2023 14:11:01 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "786" ],
+        "Content-Type": [ "application/json" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\"location\":\"centraluseuap\",\"identity\":{\"type\":\"SystemAssigned\",\"principalId\":\"88476969-8492-49cc-813b-eb4be42f5f5f\",\"tenantId\":\"72f988bf-86f1-41af-91ab-2d7cd011db47\"},\"properties\":{\"provisioningState\":\"Succeeded\",\"storageSettings\":[{\"datastoreType\":\"VaultStore\",\"type\":\"LocallyRedundant\"}],\"isVaultProtectedByResourceGuard\":false,\"securitySettings\":{\"softDeleteSettings\":{\"state\":\"On\",\"retentionDurationInDays\":100.0},\"immutabilitySettings\":{\"state\":\"Unlocked\"}},\"featureSettings\":{\"crossSubscriptionRestoreSettings\":{\"state\":\"Enabled\"}},\"secureScore\":\"Minimum\"},\"id\":\"/subscriptions/38304e13-357e-405e-9e9a-220351dcce8c/resourceGroups/sarath-rg/providers/Microsoft.DataProtection/backupVaults/new-pstest-vault\",\"name\":\"new-pstest-vault\",\"type\":\"Microsoft.DataProtection/backupVaults\"}",
+      "isContentBase64": false
+    }
+  },
+  "New-AzDataProtectionBackupVault+[NoContext]+ImmutabilityCSRSoftDelete+$PATCH+https://management.azure.com/subscriptions/38304e13-357e-405e-9e9a-220351dcce8c/resourceGroups/sarath-rg/providers/Microsoft.DataProtection/backupVaults/new-pstest-vault?api-version=2023-05-01+5": {
+    "Request": {
+      "Method": "PATCH",
+      "RequestUri": "https://management.azure.com/subscriptions/38304e13-357e-405e-9e9a-220351dcce8c/resourceGroups/sarath-rg/providers/Microsoft.DataProtection/backupVaults/new-pstest-vault?api-version=2023-05-01",
+      "Content": "{\r\n  \"properties\": {\r\n    \"securitySettings\": {\r\n      \"softDeleteSettings\": {\r\n        \"state\": \"Off\",\r\n        \"retentionDurationInDays\": 99\r\n      },\r\n      \"immutabilitySettings\": {\r\n        \"state\": \"Disabled\"\r\n      }\r\n    },\r\n    \"featureSettings\": {\r\n      \"crossSubscriptionRestoreSettings\": {\r\n        \"state\": \"Disabled\"\r\n      }\r\n    }\r\n  }\r\n}",
+      "isContentBase64": false,
+      "Headers": {
+      },
+      "ContentHeaders": {
+        "Content-Type": [ "application/json" ],
+        "Content-Length": [ "355" ]
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "x-ms-arm-resource-system-data": [ "{\"lastModifiedBy\":\"hiaga@microsoft.com\",\"lastModifiedByType\":\"User\",\"lastModifiedAt\":\"2023-08-28T14:11:02.6424377Z\"}" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "x-ms-request-id": [ "" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "Server": [ "Microsoft-IIS/10.0" ],
+        "X-Powered-By": [ "ASP.NET" ],
+        "x-ms-ratelimit-remaining-subscription-resource-requests": [ "97" ],
+        "x-ms-correlation-request-id": [ "d8cf8a2b-1f18-4e32-8513-836f8c5dbe31" ],
+        "x-ms-routing-request-id": [ "WESTINDIA:20230828T141102Z:d8cf8a2b-1f18-4e32-8513-836f8c5dbe31" ],
+        "Date": [ "Mon, 28 Aug 2023 14:11:02 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "784" ],
+        "Content-Type": [ "application/json" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\"location\":\"centraluseuap\",\"identity\":{\"type\":\"SystemAssigned\",\"principalId\":\"88476969-8492-49cc-813b-eb4be42f5f5f\",\"tenantId\":\"72f988bf-86f1-41af-91ab-2d7cd011db47\"},\"properties\":{\"provisioningState\":\"Succeeded\",\"storageSettings\":[{\"datastoreType\":\"VaultStore\",\"type\":\"LocallyRedundant\"}],\"isVaultProtectedByResourceGuard\":false,\"securitySettings\":{\"softDeleteSettings\":{\"state\":\"Off\",\"retentionDurationInDays\":99.0},\"immutabilitySettings\":{\"state\":\"Disabled\"}},\"featureSettings\":{\"crossSubscriptionRestoreSettings\":{\"state\":\"Disabled\"}},\"secureScore\":\"None\"},\"id\":\"/subscriptions/38304e13-357e-405e-9e9a-220351dcce8c/resourceGroups/sarath-rg/providers/Microsoft.DataProtection/backupVaults/new-pstest-vault\",\"name\":\"new-pstest-vault\",\"type\":\"Microsoft.DataProtection/backupVaults\"}",
+      "isContentBase64": false
+    }
+  },
+  "New-AzDataProtectionBackupVault+[NoContext]+ImmutabilityCSRSoftDelete+$DELETE+https://management.azure.com/subscriptions/38304e13-357e-405e-9e9a-220351dcce8c/resourceGroups/sarath-rg/providers/Microsoft.DataProtection/backupVaults/new-pstest-vault?api-version=2023-05-01+6": {
+    "Request": {
+      "Method": "DELETE",
+      "RequestUri": "https://management.azure.com/subscriptions/38304e13-357e-405e-9e9a-220351dcce8c/resourceGroups/sarath-rg/providers/Microsoft.DataProtection/backupVaults/new-pstest-vault?api-version=2023-05-01",
+      "Content": null,
+      "isContentBase64": false,
+      "Headers": {
+        "x-ms-unique-id": [ "346" ],
+        "x-ms-client-request-id": [ "078cbbc7-5491-48af-9356-1060eaf09682" ],
+        "CommandName": [ "Remove-AzDataProtectionBackupVault" ],
+        "FullCommandName": [ "Remove-AzDataProtectionBackupVault_Delete" ],
+        "ParameterSetName": [ "__AllParameterSets" ],
+        "User-Agent": [ "AzurePowershell/v0.0.0", "PSVersion/v7.3.6", "Az.DataProtection/0.1.0" ],
+        "Authorization": [ "[Filtered]" ]
+      },
+      "ContentHeaders": {
+      }
+    },
+    "Response": {
+      "StatusCode": 202,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "Location": [ "https://management.azure.com/subscriptions/38304e13-357e-405e-9e9a-220351dcce8c/providers/Microsoft.DataProtection/locations/centraluseuap/operationResults/NTY2MTQ0MDMtNTlmNi00YzU3LWE0ODYtNzVkZmM0ZTYwZjQyOzM3MDM4NmM5LWQ3NjctNDBlMy1iZmNkLWI1Y2Y1MTExMDJkYQ==?api-version=2023-05-01\u0026t=2023-08-28T14%3a11%3a04\u0026c=MIIHADCCBeigAwIBAgITHgMis3caoWHPUD84qAAAAyKzdzANBgkqhkiG9w0BAQsFADBEMRMwEQYKCZImiZPyLGQBGRYDR0JMMRMwEQYKCZImiZPyLGQBGRYDQU1FMRgwFgYDVQQDEw9BTUUgSW5mcmEgQ0EgMDYwHhcNMjMwODAzMDAxOTAwWhcNMjQwNzI4MDAxOTAwWjBAMT4wPAYDVQQDEzVhc3luY29wZXJhdGlvbnNpZ25pbmdjZXJ0aWZpY2F0ZS5tYW5hZ2VtZW50LmF6dXJlLmNvbTCCASIwDQYJKoZIhvcNAQEBBQADggEPADCCAQoCggEBAJ7NYt6Dh7vD4bFaue37w-ib6qjn-PvOVmc3eEhutBR4Zl8pcXig4SW9-kjKq4hDRrVi-hCmGGI0Kj_1Z8HFedXauV9OCk9TRmA8FHMHEW2Q0L2l6IolLc5bJbJOD4JjveobJRdOD0kUOT6MIDO01vqqk4JMx5b-DxYtmUk6a1AVLUZvkDtxSAewFiu7vWT76ExmF0S_4-wqPKCKwDflqw85FW-xILGvDNU0MPcgI-abUuoEEy0S-5WCPG50x4SLtigith5Ju_xBcl5sH7RUz4HGBn5P8FsUz64W2N5BS1ZkHRJUHTXQfYEaMz1qQwJqlaEKc3UBJD5_hdwZNaExLt0CAwEAAaOCA-0wggPpMCcGCSsGAQQBgjcVCgQaMBgwCgYIKwYBBQUHAwEwCgYIKwYBBQUHAwIwPQYJKwYBBAGCNxUHBDAwLgYmKwYBBAGCNxUIhpDjDYTVtHiE8Ys-hZvdFs6dEoFggvX2K4Py0SACAWQCAQowggHLBggrBgEFBQcBAQSCAb0wggG5MGMGCCsGAQUFBzAChldodHRwOi8vY3JsLm1pY3Jvc29mdC5jb20vcGtpaW5mcmEvQ2VydHMvQkwyUEtJSU5UQ0EwMi5BTUUuR0JMX0FNRSUyMEluZnJhJTIwQ0ElMjAwNi5jcnQwUwYIKwYBBQUHMAKGR2h0dHA6Ly9jcmwxLmFtZS5nYmwvYWlhL0JMMlBLSUlOVENBMDIuQU1FLkdCTF9BTUUlMjBJbmZyYSUyMENBJTIwMDYuY3J0MFMGCCsGAQUFBzAChkdodHRwOi8vY3JsMi5hbWUuZ2JsL2FpYS9CTDJQS0lJTlRDQTAyLkFNRS5HQkxfQU1FJTIwSW5mcmElMjBDQSUyMDA2LmNydDBTBggrBgEFBQcwAoZHaHR0cDovL2NybDMuYW1lLmdibC9haWEvQkwyUEtJSU5UQ0EwMi5BTUUuR0JMX0FNRSUyMEluZnJhJTIwQ0ElMjAwNi5jcnQwUwYIKwYBBQUHMAKGR2h0dHA6Ly9jcmw0LmFtZS5nYmwvYWlhL0JMMlBLSUlOVENBMDIuQU1FLkdCTF9BTUUlMjBJbmZyYSUyMENBJTIwMDYuY3J0MB0GA1UdDgQWBBRWTtlmMViy02jqjxx62TfTXg5BfzAOBgNVHQ8BAf8EBAMCBaAwggEmBgNVHR8EggEdMIIBGTCCARWgggERoIIBDYY_aHR0cDovL2NybC5taWNyb3NvZnQuY29tL3BraWluZnJhL0NSTC9BTUUlMjBJbmZyYSUyMENBJTIwMDYuY3JshjFodHRwOi8vY3JsMS5hbWUuZ2JsL2NybC9BTUUlMjBJbmZyYSUyMENBJTIwMDYuY3JshjFodHRwOi8vY3JsMi5hbWUuZ2JsL2NybC9BTUUlMjBJbmZyYSUyMENBJTIwMDYuY3JshjFodHRwOi8vY3JsMy5hbWUuZ2JsL2NybC9BTUUlMjBJbmZyYSUyMENBJTIwMDYuY3JshjFodHRwOi8vY3JsNC5hbWUuZ2JsL2NybC9BTUUlMjBJbmZyYSUyMENBJTIwMDYuY3JsMBcGA1UdIAQQMA4wDAYKKwYBBAGCN3sBATAfBgNVHSMEGDAWgBTxRmjG8cPwKy19i2rhsvm-NfzRQTAdBgNVHSUEFjAUBggrBgEFBQcDAQYIKwYBBQUHAwIwDQYJKoZIhvcNAQELBQADggEBAGS9E7Z3dO3hDEsvw1L4XOe6iH16hGeZWW6paR071dwkUN-0TqmQ_sU8ls4YrXPOlHd2VFTpMRIWVp23r1rYg9Gu2qDr0UvQ5spceN9YQansiLFLPFYGFvXTCqoPrYbcxAYoCN6KpZERGqWvf8B_lLvC8CcKV4FQdznqVSimSWtYz_60JTN1E56mTci02wcCatmMg6zsKes5I4faxTLNwMBJm6qPg-snY1IaxzLsMasZG40y7OnMR-Vk_EvW__vBvK7DZVedsVuqTKOw9ZR9qJYc2PucgCCF-DkPpd_gj78eI44mCqHRZ5kjNQymPLnA1zByHODONdiPjxHJLKx6Yyw\u0026s=ZHzHxVZlAgFcshQvF3O5LXAz1oIApjG5z-WDYEXVzE2gZdT2S4VCN_z2epShvYRhCp0_9sP1Ul6rEhjppmFZQ6pjuMToFpkBScYSp_nymGsBzGy-2CplvamvQ0yuYTi-P5m4yrP1s96elrZUG6FTa-gJb8trezC3xu3SifwJoqx4TJnE3Ml9FCDz8F9epYJ47ydcoS-Shfd-VwLcCbCWz4-3xq5P4ms0U-wkMBNgVo7T1Lh-g0cEntecstNulZdBo7tNGyzgrwocTKGR2-TLDoW85py86F7yju8ytx0HhGr3-EN4wPZhFzE0d4oAxVHpeHY7szlxuVIcdGUBZBK84w\u0026h=u1-M_u0mIMQZ9VgkFktgpGYiERgQPmqlc5Y4XQx2Ul0" ],
+        "Retry-After": [ "30" ],
+        "Azure-AsyncOperation": [ "https://management.azure.com/subscriptions/38304e13-357e-405e-9e9a-220351dcce8c/resourceGroups/sarath-rg/providers/Microsoft.DataProtection/locations/centraluseuap/operationStatus/NTY2MTQ0MDMtNTlmNi00YzU3LWE0ODYtNzVkZmM0ZTYwZjQyOzM3MDM4NmM5LWQ3NjctNDBlMy1iZmNkLWI1Y2Y1MTExMDJkYQ==?api-version=2023-05-01" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "x-ms-request-id": [ "" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "X-Powered-By": [ "ASP.NET" ],
+        "x-ms-ratelimit-remaining-subscription-resource-requests": [ "98" ],
+        "x-ms-correlation-request-id": [ "cdaac8e5-23bc-44c2-a0b3-1252f4ca4ab8" ],
+        "x-ms-routing-request-id": [ "WESTINDIA:20230828T141104Z:cdaac8e5-23bc-44c2-a0b3-1252f4ca4ab8" ],
+        "Date": [ "Mon, 28 Aug 2023 14:11:03 GMT" ]
+      },
+      "ContentHeaders": {
+        "Expires": [ "-1" ],
+        "Content-Length": [ "0" ]
+      },
+      "Content": null,
+      "isContentBase64": false
+    }
+  },
+  "New-AzDataProtectionBackupVault+[NoContext]+ImmutabilityCSRSoftDelete+$GET+https://management.azure.com/subscriptions/38304e13-357e-405e-9e9a-220351dcce8c/resourceGroups/sarath-rg/providers/Microsoft.DataProtection/locations/centraluseuap/operationStatus/NTY2MTQ0MDMtNTlmNi00YzU3LWE0ODYtNzVkZmM0ZTYwZjQyOzM3MDM4NmM5LWQ3NjctNDBlMy1iZmNkLWI1Y2Y1MTExMDJkYQ==?api-version=2023-05-01+7": {
+    "Request": {
+      "Method": "GET",
+      "RequestUri": "https://management.azure.com/subscriptions/38304e13-357e-405e-9e9a-220351dcce8c/resourceGroups/sarath-rg/providers/Microsoft.DataProtection/locations/centraluseuap/operationStatus/NTY2MTQ0MDMtNTlmNi00YzU3LWE0ODYtNzVkZmM0ZTYwZjQyOzM3MDM4NmM5LWQ3NjctNDBlMy1iZmNkLWI1Y2Y1MTExMDJkYQ==?api-version=2023-05-01",
+      "Content": null,
+      "isContentBase64": false,
+      "Headers": {
+        "Authorization": [ "[Filtered]" ],
+        "x-ms-unique-id": [ "347" ],
+        "x-ms-client-request-id": [ "078cbbc7-5491-48af-9356-1060eaf09682" ],
+        "CommandName": [ "Remove-AzDataProtectionBackupVault" ],
+        "FullCommandName": [ "Remove-AzDataProtectionBackupVault_Delete" ],
+        "ParameterSetName": [ "__AllParameterSets" ],
+        "User-Agent": [ "AzurePowershell/v0.0.0", "PSVersion/v7.3.6", "Az.DataProtection/0.1.0" ]
+      },
+      "ContentHeaders": {
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "x-ms-request-id": [ "" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "Server": [ "Microsoft-IIS/10.0" ],
+        "X-Powered-By": [ "ASP.NET" ],
+        "x-ms-ratelimit-remaining-subscription-resource-requests": [ "14998" ],
+        "x-ms-correlation-request-id": [ "acc9ed31-3265-4817-ba1b-6b930e2ee6bc" ],
+        "x-ms-routing-request-id": [ "WESTINDIA:20230828T141134Z:acc9ed31-3265-4817-ba1b-6b930e2ee6bc" ],
+        "Date": [ "Mon, 28 Aug 2023 14:11:34 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "468" ],
+        "Content-Type": [ "application/json" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\"id\":\"/subscriptions/38304e13-357e-405e-9e9a-220351dcce8c/resourceGroups/sarath-rg/providers/Microsoft.DataProtection/locations/centraluseuap/operationStatus/NTY2MTQ0MDMtNTlmNi00YzU3LWE0ODYtNzVkZmM0ZTYwZjQyOzM3MDM4NmM5LWQ3NjctNDBlMy1iZmNkLWI1Y2Y1MTExMDJkYQ==\",\"name\":\"NTY2MTQ0MDMtNTlmNi00YzU3LWE0ODYtNzVkZmM0ZTYwZjQyOzM3MDM4NmM5LWQ3NjctNDBlMy1iZmNkLWI1Y2Y1MTExMDJkYQ==\",\"status\":\"Succeeded\",\"startTime\":\"2023-08-28T14:11:04.1002535Z\",\"endTime\":\"2023-08-28T14:11:04Z\"}",
+      "isContentBase64": false
+    }
+  },
+  "New-AzDataProtectionBackupVault+[NoContext]+ImmutabilityCSRSoftDelete+$GET+https://management.azure.com/subscriptions/38304e13-357e-405e-9e9a-220351dcce8c/providers/Microsoft.DataProtection/locations/centraluseuap/operationResults/NTY2MTQ0MDMtNTlmNi00YzU3LWE0ODYtNzVkZmM0ZTYwZjQyOzM3MDM4NmM5LWQ3NjctNDBlMy1iZmNkLWI1Y2Y1MTExMDJkYQ==?api-version=2023-05-01\u0026t=2023-08-28T14%3a11%3a04\u0026c=MIIHADCCBeigAwIBAgITHgMis3caoWHPUD84qAAAAyKzdzANBgkqhkiG9w0BAQsFADBEMRMwEQYKCZImiZPyLGQBGRYDR0JMMRMwEQYKCZImiZPyLGQBGRYDQU1FMRgwFgYDVQQDEw9BTUUgSW5mcmEgQ0EgMDYwHhcNMjMwODAzMDAxOTAwWhcNMjQwNzI4MDAxOTAwWjBAMT4wPAYDVQQDEzVhc3luY29wZXJhdGlvbnNpZ25pbmdjZXJ0aWZpY2F0ZS5tYW5hZ2VtZW50LmF6dXJlLmNvbTCCASIwDQYJKoZIhvcNAQEBBQADggEPADCCAQoCggEBAJ7NYt6Dh7vD4bFaue37w-ib6qjn-PvOVmc3eEhutBR4Zl8pcXig4SW9-kjKq4hDRrVi-hCmGGI0Kj_1Z8HFedXauV9OCk9TRmA8FHMHEW2Q0L2l6IolLc5bJbJOD4JjveobJRdOD0kUOT6MIDO01vqqk4JMx5b-DxYtmUk6a1AVLUZvkDtxSAewFiu7vWT76ExmF0S_4-wqPKCKwDflqw85FW-xILGvDNU0MPcgI-abUuoEEy0S-5WCPG50x4SLtigith5Ju_xBcl5sH7RUz4HGBn5P8FsUz64W2N5BS1ZkHRJUHTXQfYEaMz1qQwJqlaEKc3UBJD5_hdwZNaExLt0CAwEAAaOCA-0wggPpMCcGCSsGAQQBgjcVCgQaMBgwCgYIKwYBBQUHAwEwCgYIKwYBBQUHAwIwPQYJKwYBBAGCNxUHBDAwLgYmKwYBBAGCNxUIhpDjDYTVtHiE8Ys-hZvdFs6dEoFggvX2K4Py0SACAWQCAQowggHLBggrBgEFBQcBAQSCAb0wggG5MGMGCCsGAQUFBzAChldodHRwOi8vY3JsLm1pY3Jvc29mdC5jb20vcGtpaW5mcmEvQ2VydHMvQkwyUEtJSU5UQ0EwMi5BTUUuR0JMX0FNRSUyMEluZnJhJTIwQ0ElMjAwNi5jcnQwUwYIKwYBBQUHMAKGR2h0dHA6Ly9jcmwxLmFtZS5nYmwvYWlhL0JMMlBLSUlOVENBMDIuQU1FLkdCTF9BTUUlMjBJbmZyYSUyMENBJTIwMDYuY3J0MFMGCCsGAQUFBzAChkdodHRwOi8vY3JsMi5hbWUuZ2JsL2FpYS9CTDJQS0lJTlRDQTAyLkFNRS5HQkxfQU1FJTIwSW5mcmElMjBDQSUyMDA2LmNydDBTBggrBgEFBQcwAoZHaHR0cDovL2NybDMuYW1lLmdibC9haWEvQkwyUEtJSU5UQ0EwMi5BTUUuR0JMX0FNRSUyMEluZnJhJTIwQ0ElMjAwNi5jcnQwUwYIKwYBBQUHMAKGR2h0dHA6Ly9jcmw0LmFtZS5nYmwvYWlhL0JMMlBLSUlOVENBMDIuQU1FLkdCTF9BTUUlMjBJbmZyYSUyMENBJTIwMDYuY3J0MB0GA1UdDgQWBBRWTtlmMViy02jqjxx62TfTXg5BfzAOBgNVHQ8BAf8EBAMCBaAwggEmBgNVHR8EggEdMIIBGTCCARWgggERoIIBDYY_aHR0cDovL2NybC5taWNyb3NvZnQuY29tL3BraWluZnJhL0NSTC9BTUUlMjBJbmZyYSUyMENBJTIwMDYuY3JshjFodHRwOi8vY3JsMS5hbWUuZ2JsL2NybC9BTUUlMjBJbmZyYSUyMENBJTIwMDYuY3JshjFodHRwOi8vY3JsMi5hbWUuZ2JsL2NybC9BTUUlMjBJbmZyYSUyMENBJTIwMDYuY3JshjFodHRwOi8vY3JsMy5hbWUuZ2JsL2NybC9BTUUlMjBJbmZyYSUyMENBJTIwMDYuY3JshjFodHRwOi8vY3JsNC5hbWUuZ2JsL2NybC9BTUUlMjBJbmZyYSUyMENBJTIwMDYuY3JsMBcGA1UdIAQQMA4wDAYKKwYBBAGCN3sBATAfBgNVHSMEGDAWgBTxRmjG8cPwKy19i2rhsvm-NfzRQTAdBgNVHSUEFjAUBggrBgEFBQcDAQYIKwYBBQUHAwIwDQYJKoZIhvcNAQELBQADggEBAGS9E7Z3dO3hDEsvw1L4XOe6iH16hGeZWW6paR071dwkUN-0TqmQ_sU8ls4YrXPOlHd2VFTpMRIWVp23r1rYg9Gu2qDr0UvQ5spceN9YQansiLFLPFYGFvXTCqoPrYbcxAYoCN6KpZERGqWvf8B_lLvC8CcKV4FQdznqVSimSWtYz_60JTN1E56mTci02wcCatmMg6zsKes5I4faxTLNwMBJm6qPg-snY1IaxzLsMasZG40y7OnMR-Vk_EvW__vBvK7DZVedsVuqTKOw9ZR9qJYc2PucgCCF-DkPpd_gj78eI44mCqHRZ5kjNQymPLnA1zByHODONdiPjxHJLKx6Yyw\u0026s=ZHzHxVZlAgFcshQvF3O5LXAz1oIApjG5z-WDYEXVzE2gZdT2S4VCN_z2epShvYRhCp0_9sP1Ul6rEhjppmFZQ6pjuMToFpkBScYSp_nymGsBzGy-2CplvamvQ0yuYTi-P5m4yrP1s96elrZUG6FTa-gJb8trezC3xu3SifwJoqx4TJnE3Ml9FCDz8F9epYJ47ydcoS-Shfd-VwLcCbCWz4-3xq5P4ms0U-wkMBNgVo7T1Lh-g0cEntecstNulZdBo7tNGyzgrwocTKGR2-TLDoW85py86F7yju8ytx0HhGr3-EN4wPZhFzE0d4oAxVHpeHY7szlxuVIcdGUBZBK84w\u0026h=u1-M_u0mIMQZ9VgkFktgpGYiERgQPmqlc5Y4XQx2Ul0+8": {
+    "Request": {
+      "Method": "GET",
+      "RequestUri": "https://management.azure.com/subscriptions/38304e13-357e-405e-9e9a-220351dcce8c/providers/Microsoft.DataProtection/locations/centraluseuap/operationResults/NTY2MTQ0MDMtNTlmNi00YzU3LWE0ODYtNzVkZmM0ZTYwZjQyOzM3MDM4NmM5LWQ3NjctNDBlMy1iZmNkLWI1Y2Y1MTExMDJkYQ==?api-version=2023-05-01\u0026t=2023-08-28T14%3a11%3a04\u0026c=MIIHADCCBeigAwIBAgITHgMis3caoWHPUD84qAAAAyKzdzANBgkqhkiG9w0BAQsFADBEMRMwEQYKCZImiZPyLGQBGRYDR0JMMRMwEQYKCZImiZPyLGQBGRYDQU1FMRgwFgYDVQQDEw9BTUUgSW5mcmEgQ0EgMDYwHhcNMjMwODAzMDAxOTAwWhcNMjQwNzI4MDAxOTAwWjBAMT4wPAYDVQQDEzVhc3luY29wZXJhdGlvbnNpZ25pbmdjZXJ0aWZpY2F0ZS5tYW5hZ2VtZW50LmF6dXJlLmNvbTCCASIwDQYJKoZIhvcNAQEBBQADggEPADCCAQoCggEBAJ7NYt6Dh7vD4bFaue37w-ib6qjn-PvOVmc3eEhutBR4Zl8pcXig4SW9-kjKq4hDRrVi-hCmGGI0Kj_1Z8HFedXauV9OCk9TRmA8FHMHEW2Q0L2l6IolLc5bJbJOD4JjveobJRdOD0kUOT6MIDO01vqqk4JMx5b-DxYtmUk6a1AVLUZvkDtxSAewFiu7vWT76ExmF0S_4-wqPKCKwDflqw85FW-xILGvDNU0MPcgI-abUuoEEy0S-5WCPG50x4SLtigith5Ju_xBcl5sH7RUz4HGBn5P8FsUz64W2N5BS1ZkHRJUHTXQfYEaMz1qQwJqlaEKc3UBJD5_hdwZNaExLt0CAwEAAaOCA-0wggPpMCcGCSsGAQQBgjcVCgQaMBgwCgYIKwYBBQUHAwEwCgYIKwYBBQUHAwIwPQYJKwYBBAGCNxUHBDAwLgYmKwYBBAGCNxUIhpDjDYTVtHiE8Ys-hZvdFs6dEoFggvX2K4Py0SACAWQCAQowggHLBggrBgEFBQcBAQSCAb0wggG5MGMGCCsGAQUFBzAChldodHRwOi8vY3JsLm1pY3Jvc29mdC5jb20vcGtpaW5mcmEvQ2VydHMvQkwyUEtJSU5UQ0EwMi5BTUUuR0JMX0FNRSUyMEluZnJhJTIwQ0ElMjAwNi5jcnQwUwYIKwYBBQUHMAKGR2h0dHA6Ly9jcmwxLmFtZS5nYmwvYWlhL0JMMlBLSUlOVENBMDIuQU1FLkdCTF9BTUUlMjBJbmZyYSUyMENBJTIwMDYuY3J0MFMGCCsGAQUFBzAChkdodHRwOi8vY3JsMi5hbWUuZ2JsL2FpYS9CTDJQS0lJTlRDQTAyLkFNRS5HQkxfQU1FJTIwSW5mcmElMjBDQSUyMDA2LmNydDBTBggrBgEFBQcwAoZHaHR0cDovL2NybDMuYW1lLmdibC9haWEvQkwyUEtJSU5UQ0EwMi5BTUUuR0JMX0FNRSUyMEluZnJhJTIwQ0ElMjAwNi5jcnQwUwYIKwYBBQUHMAKGR2h0dHA6Ly9jcmw0LmFtZS5nYmwvYWlhL0JMMlBLSUlOVENBMDIuQU1FLkdCTF9BTUUlMjBJbmZyYSUyMENBJTIwMDYuY3J0MB0GA1UdDgQWBBRWTtlmMViy02jqjxx62TfTXg5BfzAOBgNVHQ8BAf8EBAMCBaAwggEmBgNVHR8EggEdMIIBGTCCARWgggERoIIBDYY_aHR0cDovL2NybC5taWNyb3NvZnQuY29tL3BraWluZnJhL0NSTC9BTUUlMjBJbmZyYSUyMENBJTIwMDYuY3JshjFodHRwOi8vY3JsMS5hbWUuZ2JsL2NybC9BTUUlMjBJbmZyYSUyMENBJTIwMDYuY3JshjFodHRwOi8vY3JsMi5hbWUuZ2JsL2NybC9BTUUlMjBJbmZyYSUyMENBJTIwMDYuY3JshjFodHRwOi8vY3JsMy5hbWUuZ2JsL2NybC9BTUUlMjBJbmZyYSUyMENBJTIwMDYuY3JshjFodHRwOi8vY3JsNC5hbWUuZ2JsL2NybC9BTUUlMjBJbmZyYSUyMENBJTIwMDYuY3JsMBcGA1UdIAQQMA4wDAYKKwYBBAGCN3sBATAfBgNVHSMEGDAWgBTxRmjG8cPwKy19i2rhsvm-NfzRQTAdBgNVHSUEFjAUBggrBgEFBQcDAQYIKwYBBQUHAwIwDQYJKoZIhvcNAQELBQADggEBAGS9E7Z3dO3hDEsvw1L4XOe6iH16hGeZWW6paR071dwkUN-0TqmQ_sU8ls4YrXPOlHd2VFTpMRIWVp23r1rYg9Gu2qDr0UvQ5spceN9YQansiLFLPFYGFvXTCqoPrYbcxAYoCN6KpZERGqWvf8B_lLvC8CcKV4FQdznqVSimSWtYz_60JTN1E56mTci02wcCatmMg6zsKes5I4faxTLNwMBJm6qPg-snY1IaxzLsMasZG40y7OnMR-Vk_EvW__vBvK7DZVedsVuqTKOw9ZR9qJYc2PucgCCF-DkPpd_gj78eI44mCqHRZ5kjNQymPLnA1zByHODONdiPjxHJLKx6Yyw\u0026s=ZHzHxVZlAgFcshQvF3O5LXAz1oIApjG5z-WDYEXVzE2gZdT2S4VCN_z2epShvYRhCp0_9sP1Ul6rEhjppmFZQ6pjuMToFpkBScYSp_nymGsBzGy-2CplvamvQ0yuYTi-P5m4yrP1s96elrZUG6FTa-gJb8trezC3xu3SifwJoqx4TJnE3Ml9FCDz8F9epYJ47ydcoS-Shfd-VwLcCbCWz4-3xq5P4ms0U-wkMBNgVo7T1Lh-g0cEntecstNulZdBo7tNGyzgrwocTKGR2-TLDoW85py86F7yju8ytx0HhGr3-EN4wPZhFzE0d4oAxVHpeHY7szlxuVIcdGUBZBK84w\u0026h=u1-M_u0mIMQZ9VgkFktgpGYiERgQPmqlc5Y4XQx2Ul0",
+      "Content": null,
+      "isContentBase64": false,
+      "Headers": {
+        "Authorization": [ "[Filtered]" ],
+        "x-ms-unique-id": [ "348" ],
+        "x-ms-client-request-id": [ "078cbbc7-5491-48af-9356-1060eaf09682" ],
+        "CommandName": [ "Remove-AzDataProtectionBackupVault" ],
+        "FullCommandName": [ "Remove-AzDataProtectionBackupVault_Delete" ],
+        "ParameterSetName": [ "__AllParameterSets" ],
+        "User-Agent": [ "AzurePowershell/v0.0.0", "PSVersion/v7.3.6", "Az.DataProtection/0.1.0" ]
+      },
+      "ContentHeaders": {
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "Retry-After": [ "30" ],
+        "Azure-AsyncOperation": [ "https://management.azure.com/subscriptions/38304e13-357e-405e-9e9a-220351dcce8c/providers/Microsoft.DataProtection/locations/centraluseuap/operationStatus/NTY2MTQ0MDMtNTlmNi00YzU3LWE0ODYtNzVkZmM0ZTYwZjQyOzM3MDM4NmM5LWQ3NjctNDBlMy1iZmNkLWI1Y2Y1MTExMDJkYQ==?api-version=2023-05-01" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "x-ms-request-id": [ "" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "Server": [ "Microsoft-IIS/10.0" ],
+        "X-Powered-By": [ "ASP.NET" ],
+        "x-ms-ratelimit-remaining-subscription-resource-requests": [ "198" ],
+        "x-ms-correlation-request-id": [ "b6b52455-3f64-48e5-819d-fb4f7897281d" ],
+        "x-ms-routing-request-id": [ "WESTINDIA:20230828T141135Z:b6b52455-3f64-48e5-819d-fb4f7897281d" ],
+        "Date": [ "Mon, 28 Aug 2023 14:11:34 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "41" ],
+        "Content-Type": [ "application/json" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\"objectType\":\"OperationJobExtendedInfo\"}",
+      "isContentBase64": false
+    }
+  }
+}

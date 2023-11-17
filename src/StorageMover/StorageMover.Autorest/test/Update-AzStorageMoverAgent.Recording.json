@@ -1,0 +1,83 @@
+{
+  "Update-AzStorageMoverAgent+[NoContext]+UpdateExpanded+$PATCH+https://management.azure.com/subscriptions/45b60d85-fd72-427a-a708-f994d26e593e/resourceGroups/teststoragemover/providers/Microsoft.StorageMover/storageMovers/testmoverpreview1/agents/testagent1?api-version=2023-10-01+1": {
+    "Request": {
+      "Method": "PATCH",
+      "RequestUri": "https://management.azure.com/subscriptions/45b60d85-fd72-427a-a708-f994d26e593e/resourceGroups/teststoragemover/providers/Microsoft.StorageMover/storageMovers/testmoverpreview1/agents/testagent1?api-version=2023-10-01",
+      "Content": "{\r\n  \"properties\": {\r\n    \"description\": \"update agent description\"\r\n  }\r\n}",
+      "isContentBase64": false,
+      "Headers": {
+      },
+      "ContentHeaders": {
+        "Content-Type": [ "application/json" ],
+        "Content-Length": [ "75" ]
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "ETag": [ "\"1d007206-0000-3400-0000-64ba09fe0000\"" ],
+        "x-ms-ratelimit-remaining-subscription-writes": [ "1177" ],
+        "x-ms-providerhub-traffic": [ "True" ],
+        "mise-correlation-id": [ "6089b363-7541-4455-b906-0b37248eaaa4" ],
+        "x-ms-request-id": [ "16f48e23-ac9f-43cb-a389-5bac55339b33" ],
+        "x-ms-correlation-request-id": [ "0300959b-0125-4811-9b18-c78025613940" ],
+        "x-ms-routing-request-id": [ "EASTUS2EUAP:20230721T043054Z:0300959b-0125-4811-9b18-c78025613940" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "Date": [ "Fri, 21 Jul 2023 04:30:54 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "995" ],
+        "Content-Type": [ "application/json; charset=utf-8" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\"id\":\"/subscriptions/45b60d85-fd72-427a-a708-f994d26e593e/resourceGroups/teststoragemover/providers/Microsoft.StorageMover/storageMovers/testmoverpreview1/agents/testagent1\",\"name\":\"testagent1\",\"type\":\"microsoft.storagemover/storagemovers/agents\",\"systemData\":{\"createdBy\":\"yifanzhang@microsoft.com\",\"createdByType\":\"User\",\"createdAt\":\"2023-07-21T04:27:22.5834022Z\",\"lastModifiedBy\":\"a000255f-5f09-45e0-a970-9d9ed9cc6453\",\"lastModifiedByType\":\"Application\",\"lastModifiedAt\":\"2023-07-21T04:30:54.0851898Z\"},\"properties\":{\"arcResourceId\":\"/subscriptions/45b60d85-fd72-427a-a708-f994d26e593e/resourceGroups/teststoragemover/providers/Microsoft.HybridCompute/machines/testagent1\",\"arcVmUuid\":\"c026168f-4f75-c847-aa19-2dfc4185d74e\",\"agentStatus\":\"Online\",\"provisioningState\":\"Succeeded\",\"agentVersion\":\"1.1.256_amd64\",\"localIPAddress\":\"10.172.2.82\",\"memoryInMB\":2748,\"numberOfCores\":1,\"uptimeInSeconds\":479,\"lastStatusUpdate\":\"2023-07-21T04:30:39.3651408Z\",\"description\":\"update agent description\"}}",
+      "isContentBase64": false
+    }
+  },
+  "Update-AzStorageMoverAgent+[NoContext]+UpdateExpanded+$GET+https://management.azure.com/subscriptions/45b60d85-fd72-427a-a708-f994d26e593e/resourceGroups/teststoragemover/providers/Microsoft.StorageMover/storageMovers/testmoverpreview1/agents/testagent1?api-version=2023-10-01+2": {
+    "Request": {
+      "Method": "GET",
+      "RequestUri": "https://management.azure.com/subscriptions/45b60d85-fd72-427a-a708-f994d26e593e/resourceGroups/teststoragemover/providers/Microsoft.StorageMover/storageMovers/testmoverpreview1/agents/testagent1?api-version=2023-10-01",
+      "Content": null,
+      "isContentBase64": false,
+      "Headers": {
+        "x-ms-unique-id": [ "62" ],
+        "x-ms-client-request-id": [ "91dae14e-429e-45e2-b4f9-cadad79e00e9" ],
+        "CommandName": [ "Get-AzStorageMoverAgent" ],
+        "FullCommandName": [ "Get-AzStorageMoverAgent_Get" ],
+        "ParameterSetName": [ "__AllParameterSets" ],
+        "User-Agent": [ "AzurePowershell/v0.0.0", "PSVersion/v7.2.12", "Az.StorageMover/1.0.1" ],
+        "Authorization": [ "[Filtered]" ]
+      },
+      "ContentHeaders": {
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "ETag": [ "\"1d007206-0000-3400-0000-64ba09fe0000\"" ],
+        "x-ms-ratelimit-remaining-subscription-reads": [ "11967" ],
+        "x-ms-providerhub-traffic": [ "True" ],
+        "mise-correlation-id": [ "854d6d98-748b-44b4-8fcf-39ccbadd157d" ],
+        "x-ms-request-id": [ "a576a2b2-1e6a-4ef3-8630-0b59d13ba6cb" ],
+        "x-ms-correlation-request-id": [ "c3256448-7708-4b4a-944e-86c03d57d2b2" ],
+        "x-ms-routing-request-id": [ "EASTUS2EUAP:20230721T043055Z:c3256448-7708-4b4a-944e-86c03d57d2b2" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "Date": [ "Fri, 21 Jul 2023 04:30:54 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "995" ],
+        "Content-Type": [ "application/json; charset=utf-8" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\"id\":\"/subscriptions/45b60d85-fd72-427a-a708-f994d26e593e/resourceGroups/teststoragemover/providers/Microsoft.StorageMover/storageMovers/testmoverpreview1/agents/testagent1\",\"name\":\"testagent1\",\"type\":\"microsoft.storagemover/storagemovers/agents\",\"systemData\":{\"createdBy\":\"yifanzhang@microsoft.com\",\"createdByType\":\"User\",\"createdAt\":\"2023-07-21T04:27:22.5834022Z\",\"lastModifiedBy\":\"a000255f-5f09-45e0-a970-9d9ed9cc6453\",\"lastModifiedByType\":\"Application\",\"lastModifiedAt\":\"2023-07-21T04:30:54.0851898Z\"},\"properties\":{\"agentVersion\":\"1.1.256_amd64\",\"arcResourceId\":\"/subscriptions/45b60d85-fd72-427a-a708-f994d26e593e/resourceGroups/teststoragemover/providers/Microsoft.HybridCompute/machines/testagent1\",\"arcVmUuid\":\"c026168f-4f75-c847-aa19-2dfc4185d74e\",\"localIPAddress\":\"10.172.2.82\",\"memoryInMB\":2748,\"numberOfCores\":1,\"uptimeInSeconds\":479,\"lastStatusUpdate\":\"2023-07-21T04:30:39.3651408Z\",\"agentStatus\":\"Online\",\"description\":\"update agent description\",\"provisioningState\":\"Succeeded\"}}",
+      "isContentBase64": false
+    }
+  }
+}

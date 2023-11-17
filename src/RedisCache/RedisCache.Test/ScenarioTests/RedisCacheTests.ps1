@@ -499,7 +499,7 @@ function Test-ImportExportReboot
     $resourceGroupName = "PowerShellTest-15"
     $cacheName = "redisteam006"
     $location = Get-Location -providerNamespace "Microsoft.Cache" -resourceType "redis" -preferredLocation "West US"
-    $storageName = "redisteam005s"
+    $storageName = getAssetName
     $storageContainerName = "exportimport"
     $prefix = "sunny"
 
@@ -568,7 +568,7 @@ function Test-DiagnosticOperations
     $resourceGroupName = "PowerShellTest-16"
     $cacheName = "redisteam006"
     $location = Get-Location -providerNamespace "Microsoft.Cache" -resourceType "redis" -preferredLocation "West US"
-    $storageName = "redisteam006s"
+    $storageName = getAssetName
 
     ############################# Initial Creation #############################
     # Create resource group
@@ -901,15 +901,13 @@ function Test-ManagedIdentity
     # Setup
     $resourceGroupName = "PowerShellTest-20"
     $cacheName = "redisteam010"
-    $userIdentity1 = "test"                                                       
-    $userIdentity2 = "test2"
     $location = Get-Location -providerNamespace "Microsoft.Cache" -resourceType "redis" -preferredLocation "East US"
 
     # Create resource group
     New-AzResourceGroup -Name $resourceGroupName -Location $location
 
     # Creating Cache
-    $cacheCreated = New-AzRedisCache -ResourceGroupName $resourceGroupName -Name $cacheName -Location $location -Size 1GB -Sku Standard -IdentityType SystemAssignedUserAssigned -UserAssignedIdentity "/subscriptions/7c4785eb-d3cf-4349-b811-8d756312d1ff/resourcegroups/$resourceGroupName/providers/Microsoft.ManagedIdentity/userAssignedIdentities/$userIdentity1","/subscriptions/7c4785eb-d3cf-4349-b811-8d756312d1ff/resourcegroups/$resourceGroupName/providers/Microsoft.ManagedIdentity/userAssignedIdentities/$userIdentity2"
+    $cacheCreated = New-AzRedisCache -ResourceGroupName $resourceGroupName -Name $cacheName -Location $location -Size 1GB -Sku Standard -IdentityType SystemAssignedUserAssigned -UserAssignedIdentity "/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourcegroups/rg-managedidentities/providers/Microsoft.ManagedIdentity/userAssignedIdentities/rediscache1","/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourcegroups/rg-managedidentities/providers/Microsoft.ManagedIdentity/userAssignedIdentities/rediscache2"
     
     Assert-AreEqual $cacheName $cacheCreated.Name
     Assert-AreEqual $location $cacheCreated.Location
@@ -919,8 +917,8 @@ function Test-ManagedIdentity
     Assert-NotNull $cacheCreated.SystemAssignedIdentity.Item("PrincipalId")
     Assert-NotNull $cacheCreated.SystemAssignedIdentity.Item("TenantId")
     Assert-AreEqual 2 $cacheCreated.UserAssignedIdentity.Count
-    Assert-AreEqual $True ($cacheCreated.UserAssignedIdentity -contains "/subscriptions/7c4785eb-d3cf-4349-b811-8d756312d1ff/resourcegroups/$resourceGroupName/providers/Microsoft.ManagedIdentity/userAssignedIdentities/$userIdentity1")
-    Assert-AreEqual $True ($cacheCreated.UserAssignedIdentity -contains "/subscriptions/7c4785eb-d3cf-4349-b811-8d756312d1ff/resourcegroups/$resourceGroupName/providers/Microsoft.ManagedIdentity/userAssignedIdentities/$userIdentity2")
+    Assert-AreEqual $True ($cacheCreated.UserAssignedIdentity -contains "/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourcegroups/rg-managedidentities/providers/Microsoft.ManagedIdentity/userAssignedIdentities/rediscache1")
+    Assert-AreEqual $True ($cacheCreated.UserAssignedIdentity -contains "/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourcegroups/rg-managedidentities/providers/Microsoft.ManagedIdentity/userAssignedIdentities/rediscache2")
     
     
     $cacheCreated =  Get-AzRedisCache -ResourceGroupName $resourceGroupName -Name $cacheName
@@ -929,8 +927,8 @@ function Test-ManagedIdentity
     Assert-NotNull $cacheCreated.SystemAssignedIdentity.Item("PrincipalId")
     Assert-NotNull $cacheCreated.SystemAssignedIdentity.Item("TenantId")
     Assert-AreEqual 2 $cacheCreated.UserAssignedIdentity.Count
-    Assert-AreEqual $True ($cacheCreated.UserAssignedIdentity -contains "/subscriptions/7c4785eb-d3cf-4349-b811-8d756312d1ff/resourcegroups/$resourceGroupName/providers/Microsoft.ManagedIdentity/userAssignedIdentities/$userIdentity1")
-    Assert-AreEqual $True ($cacheCreated.UserAssignedIdentity -contains "/subscriptions/7c4785eb-d3cf-4349-b811-8d756312d1ff/resourcegroups/$resourceGroupName/providers/Microsoft.ManagedIdentity/userAssignedIdentities/$userIdentity2")
+    Assert-AreEqual $True ($cacheCreated.UserAssignedIdentity -contains "/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourcegroups/rg-managedidentities/providers/Microsoft.ManagedIdentity/userAssignedIdentities/rediscache1")
+    Assert-AreEqual $True ($cacheCreated.UserAssignedIdentity -contains "/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourcegroups/rg-managedidentities/providers/Microsoft.ManagedIdentity/userAssignedIdentities/rediscache2")
 
 
     # In loop to check if cache exists
@@ -947,13 +945,13 @@ function Test-ManagedIdentity
 
 
     # Test updating user assigned identity
-    $cacheCreated = Set-AzRedisCache -ResourceGroupName $resourceGroupName -Name $cacheName -IdentityType SystemAssignedUserAssigned -UserAssignedIdentity "/subscriptions/7c4785eb-d3cf-4349-b811-8d756312d1ff/resourcegroups/$resourceGroupName/providers/Microsoft.ManagedIdentity/userAssignedIdentities/$userIdentity2"
+    $cacheCreated = Set-AzRedisCache -ResourceGroupName $resourceGroupName -Name $cacheName -IdentityType SystemAssignedUserAssigned -UserAssignedIdentity "/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourcegroups/rg-managedidentities/providers/Microsoft.ManagedIdentity/userAssignedIdentities/rediscache2"
     
     Assert-AreEqual "SystemAssignedUserAssigned" $cacheCreated.IdentityType
     Assert-NotNull $cacheCreated.SystemAssignedIdentity.Item("PrincipalId")
     Assert-NotNull $cacheCreated.SystemAssignedIdentity.Item("TenantId")
     Assert-AreEqual 1 $cacheCreated.UserAssignedIdentity.Count
-    Assert-AreEqual $True ($cacheCreated.UserAssignedIdentity -contains "/subscriptions/7c4785eb-d3cf-4349-b811-8d756312d1ff/resourcegroups/$resourceGroupName/providers/Microsoft.ManagedIdentity/userAssignedIdentities/$userIdentity2")
+    Assert-AreEqual $True ($cacheCreated.UserAssignedIdentity -contains "/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourcegroups/rg-managedidentities/providers/Microsoft.ManagedIdentity/userAssignedIdentities/rediscache2")
 
     Start-TestSleep -Seconds 200
     # Test removing user assigned identity
@@ -966,12 +964,12 @@ function Test-ManagedIdentity
 
     Start-TestSleep -Seconds 200
     # Test removing system assigned identity
-    $cacheCreated = Set-AzRedisCache -ResourceGroupName $resourceGroupName -Name $cacheName -IdentityType UserAssigned -UserAssignedIdentity "/subscriptions/7c4785eb-d3cf-4349-b811-8d756312d1ff/resourcegroups/$resourceGroupName/providers/Microsoft.ManagedIdentity/userAssignedIdentities/$userIdentity2"
+    $cacheCreated = Set-AzRedisCache -ResourceGroupName $resourceGroupName -Name $cacheName -IdentityType UserAssigned -UserAssignedIdentity "/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourcegroups/rg-managedidentities/providers/Microsoft.ManagedIdentity/userAssignedIdentities/rediscache2"
     
     Assert-AreEqual "UserAssigned" $cacheCreated.IdentityType
     Assert-Null $cacheCreated.SystemAssignedIdentity
     Assert-AreEqual 1 $cacheCreated.UserAssignedIdentity.Count
-    Assert-AreEqual $True ($cacheCreated.UserAssignedIdentity -contains "/subscriptions/7c4785eb-d3cf-4349-b811-8d756312d1ff/resourcegroups/$resourceGroupName/providers/Microsoft.ManagedIdentity/userAssignedIdentities/$userIdentity2")
+    Assert-AreEqual $True ($cacheCreated.UserAssignedIdentity -contains "/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourcegroups/rg-managedidentities/providers/Microsoft.ManagedIdentity/userAssignedIdentities/rediscache2")
 
     Start-TestSleep -Seconds 200
     # Test removing identity

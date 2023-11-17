@@ -172,7 +172,7 @@ namespace Microsoft.Azure.Commands.NetAppFiles.Pool
 
             if (ShouldProcess(Name, string.Format(PowerShell.Cmdlets.NetAppFiles.Properties.Resources.UpdateResourceMessage, ResourceGroupName)))
             {
-                var anfPool = AzureNetAppFilesManagementClient.Pools.Update(capacityPoolBody, ResourceGroupName, AccountName, Name).ToPsNetAppFilesPool();
+                var anfPool = AzureNetAppFilesManagementClient.Pools.Update(ResourceGroupName, AccountName, Name, capacityPoolBody).ToPsNetAppFilesPool();
                 WriteObject(anfPool);
             }
         }

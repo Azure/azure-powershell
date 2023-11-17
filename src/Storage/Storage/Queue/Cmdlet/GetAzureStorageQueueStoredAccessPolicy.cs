@@ -14,11 +14,15 @@
 
 namespace Microsoft.WindowsAzure.Commands.Storage.Queue.Cmdlet
 {
-    using Microsoft.WindowsAzure.Commands.Storage.Common;
-    using Microsoft.WindowsAzure.Commands.Storage.Model.Contract;
+    using global::Azure.Storage.Queues;
+    using global::Azure.Storage.Queues.Models;
     using Microsoft.Azure.Storage.Queue;
     using Microsoft.Azure.Storage.Queue.Protocol;
+    using Microsoft.WindowsAzure.Commands.Common.CustomAttributes;
+    using Microsoft.WindowsAzure.Commands.Storage.Common;
+    using Microsoft.WindowsAzure.Commands.Storage.Model.Contract;
     using System;
+    using System.Collections.Generic;
     using System.Globalization;
     using System.Management.Automation;
     using System.Security.Permissions;
@@ -57,26 +61,36 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Queue.Cmdlet
             Channel = channel;
         }
 
-        internal async Task GetAzureQueueStoredAccessPolicyAsync(long taskId, IStorageQueueManagement localChannel, string queueName, string policyName)
+        internal async Task GetAzureQueueStoredAccessPolicyAsync(IStorageQueueManagement localChannel, long taskId, string queueName, string policyName)
         {
-            SharedAccessQueuePolicies shareAccessPolicies = await GetPoliciesAsync(localChannel, queueName, policyName).ConfigureAwait(false);
+
+            QueueClient queueClient = Util.GetTrack2QueueClient(queueName, (AzureStorageContext)this.Context, this.ClientOptions);
+            IEnumerable<QueueSignedIdentifier> signedIdentifiers = (await queueClient.GetAccessPolicyAsync(this.CmdletCancellationToken)).Value;
 
             if (!String.IsNullOrEmpty(policyName))
             {
-                if (shareAccessPolicies.Keys.Contains(policyName))
+                QueueSignedIdentifier queueSignedIdentifier = null;
+                foreach (QueueSignedIdentifier identifier in signedIdentifiers)
                 {
-                    OutputStream.WriteObject(taskId, AccessPolicyHelper.ConstructPolicyOutputPSObject<SharedAccessQueuePolicy>(shareAccessPolicies, policyName));
+                    if (identifier.Id == policyName)
+                    {
+                        queueSignedIdentifier = identifier;
+                    }
+                }
+                if (queueSignedIdentifier == null)
+                {
+                    throw new ResourceNotFoundException(String.Format(CultureInfo.CurrentCulture, Resources.PolicyNotFound, policyName));
                 }
                 else
                 {
-                    throw new ResourceNotFoundException(String.Format(CultureInfo.CurrentCulture, Resources.PolicyNotFound, policyName));
+                    OutputStream.WriteObject(taskId, AccessPolicyHelper.ConstructPolicyOutputPSObject<QueueSignedIdentifier>(queueSignedIdentifier));
                 }
             }
             else
             {
-                foreach (string key in shareAccessPolicies.Keys)
+                foreach (QueueSignedIdentifier identifier in signedIdentifiers)
                 {
-                    OutputStream.WriteObject(taskId, AccessPolicyHelper.ConstructPolicyOutputPSObject<SharedAccessQueuePolicy>(shareAccessPolicies, key));
+                    OutputStream.WriteObject(taskId, AccessPolicyHelper.ConstructPolicyOutputPSObject<QueueSignedIdentifier>(identifier));
                 }
             }
         }
@@ -95,10 +109,10 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Queue.Cmdlet
         public override void ExecuteCmdlet()
         {
             if (String.IsNullOrEmpty(Queue)) return;
-            Func<long, Task> taskGenerator = (taskId) => GetAzureQueueStoredAccessPolicyAsync(taskId, Channel, Queue, Policy);
+            Task taskGenerator(long taskId) => GetAzureQueueStoredAccessPolicyAsync(Channel, taskId, Queue, Policy);
             RunTask(taskGenerator);
+
+
         }
-
-
     }
 }

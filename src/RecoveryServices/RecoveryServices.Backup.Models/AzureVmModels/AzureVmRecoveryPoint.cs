@@ -86,6 +86,8 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.Models
         /// </summary>
         public IDictionary<string, RecoveryPointMoveReadinessInfo> RecoveryPointMoveReadinessInfo;
 
+        // TODO: public extendedLocation for edge zone support
+
         public AzureVmRecoveryPoint()
         {
 

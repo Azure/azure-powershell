@@ -42,7 +42,7 @@
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
     <PackageReference Include="Microsoft.Azure.Management.SecurityCenter" Version="3.0.0" />
-    <PackageReference Include="Microsoft.Azure.Management.Compute" Version="60.0.0" />
+    <PackageReference Include="Microsoft.Azure.Management.Compute" Version="61.0.0" />
     <PackageReference Include="Microsoft.Azure.Management.OperationalInsights" Version="0.25.0-preview" />
   </ItemGroup>
 </Project>

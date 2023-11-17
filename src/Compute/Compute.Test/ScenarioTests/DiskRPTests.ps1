@@ -1520,6 +1520,35 @@ function Test-SecurityProfile
 
 <#
 .SYNOPSIS
+Test Set-AzDiskSecurityProfile with the Standard securityType.
+There should be no securityProfile made for Standard at this time. 
+#>
+function Test-SecurityProfileStandard
+{
+    $rgname = Get-ComputeTestResourceName;
+    $loc = "eastus2";
+
+    try
+    {
+        New-AzResourceGroup -Name $rgname -Location $loc -Force;
+
+        # Standard SecurityType
+        $diskconfig = New-AzDiskConfig -Location $loc -DiskSizeGB 1 -AccountType "Premium_LRS" -OsType "Windows" -CreateOption "Empty" -HyperVGeneration "V1";
+        $diskname = "diskstnd" + $rgname;
+        $diskconfig = Set-AzDiskSecurityProfile -Disk $diskconfig -SecurityType "Standard";
+        $diskPr = New-AzDisk -ResourceGroupName $rgname -DiskName $diskname -Disk $diskconfig;
+        $disk = Get-AzDisk -ResourceGroupName $rgname -DiskName $diskname;
+        Assert-Null $disk.SecurityProfile;
+    }
+    finally 
+    {
+        # Cleanup
+        Clean-ResourceGroup $rgname
+    }
+}
+
+<#
+.SYNOPSIS
 Test SupportsHibernation Parameter
 #>
 function Test-SupportsHibernation
@@ -1665,6 +1694,41 @@ function Test-DiskAcceleratedNetworkAndPublicNetworkAccess
         $snapshotconfigC = New-AzSnapshotConfig -Location $otherRegion -CreateOption CopyStart -Incremental -SourceResourceId $snapSourceId;
         $snapC = New-AzSnapshot -ResourceGroupName $rgname -SnapshotName $snapName2 -Snapshot $snapshotconfigC;
         Assert-NotNull $snapC.CompletionPercent;
+	}
+    finally 
+    {
+		# Cleanup
+		Clean-ResourceGroup $rgname;
+	}
+}
+
+<#
+.SYNOPSIS
+Disk creation defaults to TL when being created from an Image that is HyperVGeneration V2.
+Feature request 1248
+#>
+function Test-NewDiskSecurityTypeDefaulting
+{
+    $rgname = Get-ComputeTestResourceName;
+	$loc = 'eastus2';
+
+	try
+    {
+		New-AzResourceGroup -Name $rgname -Location $loc -Force;
+        
+        $diskname = "d" + $rgname;
+        $securityTypeTL = "TrustedLaunch";
+        $hyperVGen2 = "V2";
+        
+        $image = Get-AzVMImage -Skus 2022-datacenter-azure-edition -Offer WindowsServer -PublisherName MicrosoftWindowsServer -Location $loc -Version latest;
+        $diskconfig = New-AzDiskConfig -DiskSizeGB 127 -AccountType Premium_LRS -OsType Windows -CreateOption FromImage -Location $loc;
+
+        $diskconfig = Set-AzDiskImageReference -Disk $diskconfig -Id $image.Id;
+
+        $disk = New-AzDisk -ResourceGroupName $rgname -DiskName $diskname -Disk $diskconfig;
+        Assert-AreEqual $disk.SecurityProfile.securityType $securityTypeTL;
+        Assert-AreEqual $disk.HyperVGeneration $hyperVGen2;
+        
 	}
     finally 
     {

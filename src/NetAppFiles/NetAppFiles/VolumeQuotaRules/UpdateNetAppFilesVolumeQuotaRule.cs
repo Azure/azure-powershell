@@ -190,7 +190,7 @@ namespace Microsoft.Azure.Commands.NetAppFiles.Backup
 
             if (ShouldProcess(Name, string.Format(PowerShell.Cmdlets.NetAppFiles.Properties.Resources.CreateResourceMessage, Name)))
             {
-                var anfVolumeQuotaRule = AzureNetAppFilesManagementClient.VolumeQuotaRules.Update(volumeQuotaRulePatchBody, ResourceGroupName, AccountName, poolName: PoolName, volumeName: VolumeName, volumeQuotaRuleName: Name);
+                var anfVolumeQuotaRule = AzureNetAppFilesManagementClient.VolumeQuotaRules.Update( ResourceGroupName, AccountName, poolName: PoolName, volumeName: VolumeName, volumeQuotaRuleName: Name, volumeQuotaRulePatchBody);
                 WriteObject(anfVolumeQuotaRule.ConvertToPs());
             }
         }

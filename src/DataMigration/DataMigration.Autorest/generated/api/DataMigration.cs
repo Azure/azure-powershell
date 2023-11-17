@@ -306,7 +306,11 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DataMigration
             }
         }
 
-        /// <summary>Create a new database migration to a given SQL Db.</summary>
+        /// <summary>
+        /// Create a new database migration to a given SQL Db. This command can migrate data from the selected source database tables
+        /// to the target database tables. If the target database have no table existing, please use [New-AzDataMigrationSqlServerSchema](https://learn.microsoft.com/powershell/module/az.datamigration/new-azdatamigrationsqlserverschema)
+        /// command to migrate schema objects from source database to target databse.
+        /// </summary>
         /// <param name="resourceGroupName">Name of the resource group that contains the resource. You can obtain this value from
         /// the Azure Resource Manager API or the portal.</param>
         /// <param name="sqlDbInstanceName"></param>
@@ -358,7 +362,11 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DataMigration
             }
         }
 
-        /// <summary>Create a new database migration to a given SQL Db.</summary>
+        /// <summary>
+        /// Create a new database migration to a given SQL Db. This command can migrate data from the selected source database tables
+        /// to the target database tables. If the target database have no table existing, please use [New-AzDataMigrationSqlServerSchema](https://learn.microsoft.com/powershell/module/az.datamigration/new-azdatamigrationsqlserverschema)
+        /// command to migrate schema objects from source database to target databse.
+        /// </summary>
         /// <param name="viaIdentity"></param>
         /// <param name="body">Details of Sql Db migration resource.</param>
         /// <param name="onOk">a delegate that is called when the remote service returns 200 (OK).</param>

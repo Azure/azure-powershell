@@ -69,9 +69,9 @@ namespace Microsoft.Azure.Commands.Profile
         [Parameter(Mandatory = false, ParameterSetName = ListAllParameterSet, HelpMessage = "Refresh contexts from token cache")]
         public SwitchParameter RefreshContextFromTokenCache { get; set; }
 
-        protected override void BeginProcessing()
+        protected override bool RequireDefaultContext()
         {
-            // Skip BeginProcessing()
+            return false;
         }
 
         public override void ExecuteCmdlet()

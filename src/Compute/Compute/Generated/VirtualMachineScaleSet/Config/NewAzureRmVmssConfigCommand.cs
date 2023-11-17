@@ -329,8 +329,8 @@ namespace Microsoft.Azure.Commands.Compute.Automation
            HelpMessage = "Specifies the SecurityType of the virtual machine. It has to be set to any specified value to enable UefiSettings. Default: UefiSettings will not be enabled unless this property is set.",
            ValueFromPipelineByPropertyName = true,
            Mandatory = false)]
-        [ValidateSet(ValidateSetValues.TrustedLaunch, ValidateSetValues.ConfidentialVM, IgnoreCase = true)]
-        [PSArgumentCompleter("TrustedLaunch", "ConfidentialVM")]
+        [ValidateSet(ValidateSetValues.TrustedLaunch, ValidateSetValues.ConfidentialVM, ValidateSetValues.Standard, IgnoreCase = true)]
+        [PSArgumentCompleter("TrustedLaunch", "ConfidentialVM", "Standard")]
         public string SecurityType { get; set; }
 
         [Parameter(
@@ -586,7 +586,7 @@ namespace Microsoft.Azure.Commands.Compute.Automation
                 }
                 vVirtualMachineProfile.NetworkProfile.NetworkInterfaceConfigurations = this.NetworkInterfaceConfiguration;
             }
-            
+
             if (this.IsParameterBound(c => c.SecurityType))
             {
                 if (vVirtualMachineProfile == null)
@@ -597,13 +597,14 @@ namespace Microsoft.Azure.Commands.Compute.Automation
                 {
                     vVirtualMachineProfile.SecurityProfile = new SecurityProfile();
                 }
-                if (vVirtualMachineProfile.SecurityProfile.UefiSettings == null)
-                {
-                    vVirtualMachineProfile.SecurityProfile.UefiSettings = new UefiSettings();
-                }
                 vVirtualMachineProfile.SecurityProfile.SecurityType = this.SecurityType;
-                if (vVirtualMachineProfile.SecurityProfile.SecurityType == "TrustedLaunch" || vVirtualMachineProfile.SecurityProfile.SecurityType == "ConfidentialVM")
+                if (vVirtualMachineProfile.SecurityProfile.SecurityType != null
+                    && vVirtualMachineProfile.SecurityProfile.SecurityType.ToLower() == ConstantValues.TrustedLaunchSecurityType || vVirtualMachineProfile.SecurityProfile.SecurityType.ToLower() == ConstantValues.ConfidentialVMSecurityType)
                 {
+                    if (vVirtualMachineProfile.SecurityProfile.UefiSettings == null)
+                    {
+                        vVirtualMachineProfile.SecurityProfile.UefiSettings = new UefiSettings();
+                    }
                     vVirtualMachineProfile.SecurityProfile.UefiSettings.VTpmEnabled = vVirtualMachineProfile.SecurityProfile.UefiSettings.VTpmEnabled == null ? true : this.EnableVtpm;
                     vVirtualMachineProfile.SecurityProfile.UefiSettings.SecureBootEnabled = vVirtualMachineProfile.SecurityProfile.UefiSettings.SecureBootEnabled == null ? true : this.EnableSecureBoot;
                 }
@@ -642,7 +643,6 @@ namespace Microsoft.Azure.Commands.Compute.Automation
                 }
                 vVirtualMachineProfile.SecurityProfile.UefiSettings.SecureBootEnabled = this.EnableSecureBoot;
             }
-
             if (this.IsParameterBound(c => c.BootDiagnostic))
             {
                 if (vVirtualMachineProfile == null)

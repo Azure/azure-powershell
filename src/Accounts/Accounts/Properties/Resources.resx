@@ -592,4 +592,7 @@
   <data name="TenantDomainToTenantIdMessage" xml:space="preserve">
     <value>The input domain is {0} and the tenant Id is {1}</value>
   </data>
+  <data name="ProfileCredentialsWriteWarning" xml:space="preserve">
+    <value>Personally identifiable information and confidential data may be written to the file located at '{0}'. Please ensure that appropriate access controls are assigned to the saved file.</value>
+  </data>
 </root>

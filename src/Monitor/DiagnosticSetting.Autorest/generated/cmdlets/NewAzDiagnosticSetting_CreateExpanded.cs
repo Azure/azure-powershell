@@ -16,6 +16,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Monitor.DiagnosticSetting.Cmdlets
     [global::System.Management.Automation.OutputType(typeof(Microsoft.Azure.PowerShell.Cmdlets.Monitor.DiagnosticSetting.Models.Api20210501Preview.IDiagnosticSettingsResource))]
     [global::Microsoft.Azure.PowerShell.Cmdlets.Monitor.DiagnosticSetting.Description(@"Creates or updates diagnostic settings for the specified resource.")]
     [global::Microsoft.Azure.PowerShell.Cmdlets.Monitor.DiagnosticSetting.Generated]
+    [global::Microsoft.Azure.PowerShell.Cmdlets.Monitor.DiagnosticSetting.HttpPath(Path = "/{resourceUri}/providers/Microsoft.Insights/diagnosticSettings/{name}", ApiVersion = "2021-05-01-preview")]
     public partial class NewAzDiagnosticSetting_CreateExpanded : global::System.Management.Automation.PSCmdlet,
         Microsoft.Azure.PowerShell.Cmdlets.Monitor.DiagnosticSetting.Runtime.IEventListener
     {

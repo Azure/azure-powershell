@@ -259,7 +259,7 @@ namespace Microsoft.Azure.Commands.NetAppFiles.ActiveDirectory
                 anfADConfig.OrganizationalUnit = OrganizationalUnit ?? anfADConfig.Site;
                 anfADConfig.BackupOperators = BackupOperator ?? anfADConfig.BackupOperators;
                 anfADConfig.KdcIP = KdcIP ?? anfADConfig.KdcIP;
-                anfADConfig.ServerRootCACertificate = ServerRootCACertificate ?? anfADConfig.ServerRootCACertificate;
+                anfADConfig.ServerRootCaCertificate = ServerRootCACertificate ?? anfADConfig.ServerRootCaCertificate;
                 anfADConfig.SecurityOperators = SecurityOperator ?? anfADConfig.SecurityOperators;
                 if (AesEncryption)
                 {
@@ -271,7 +271,7 @@ namespace Microsoft.Azure.Commands.NetAppFiles.ActiveDirectory
                 }
                 if (LdapOverTLS)
                 {
-                    anfADConfig.LdapOverTLS = LdapOverTLS;
+                    anfADConfig.LdapOverTls = LdapOverTLS;
                 }
                 if (AllowLocalNfsUsersWithLdap)
                 {
@@ -280,7 +280,7 @@ namespace Microsoft.Azure.Commands.NetAppFiles.ActiveDirectory
                 anfADConfig.Administrators = Administrator ?? anfADConfig.Administrators;
                 if (EncryptDCConnection)
                 {
-                    anfADConfig.EncryptDCConnections = EncryptDCConnection;
+                    anfADConfig.EncryptDcConnections = EncryptDCConnection;
                 }
                 anfADConfig.LdapSearchScope = LdapSearchScope?.ConvertFromPs();
                 anfADConfig.PreferredServersForLdapClient = PreferredServersForLdapClient is null ? null : string.Join(",", PreferredServersForLdapClient);
@@ -289,7 +289,7 @@ namespace Microsoft.Azure.Commands.NetAppFiles.ActiveDirectory
                 {
                     ActiveDirectories = anfAccount.ActiveDirectories                    
                 };
-                var updatedAnfAccount = AzureNetAppFilesManagementClient.Accounts.Update(netAppAccountBody, ResourceGroupName, AccountName);
+                var updatedAnfAccount = AzureNetAppFilesManagementClient.Accounts.Update(ResourceGroupName, AccountName, netAppAccountBody);
                 var updatedActiveDirectory = updatedAnfAccount.ActiveDirectories.FirstOrDefault<Management.NetApp.Models.ActiveDirectory>(e => e.ActiveDirectoryId == ActiveDirectoryId);
                 WriteObject(updatedActiveDirectory.ConvertToPs(ResourceGroupName, AccountName));
             }

@@ -259,7 +259,7 @@ namespace Microsoft.Azure.Commands.NetAppFiles.Volume
 
             if (ShouldProcess(Name, string.Format(PowerShell.Cmdlets.NetAppFiles.Properties.Resources.UpdateResourceMessage, ResourceGroupName)))
             {
-                var anfVolume = AzureNetAppFilesManagementClient.Volumes.Update(volumePatchBody, ResourceGroupName, AccountName, PoolName, Name);
+                var anfVolume = AzureNetAppFilesManagementClient.Volumes.Update(ResourceGroupName, AccountName, PoolName, Name, volumePatchBody);
                 WriteObject(anfVolume.ToPsNetAppFilesVolume());
             }
         }

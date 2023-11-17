@@ -24,7 +24,6 @@ using Microsoft.Azure.Commands.HDInsight.Models.Management;
 using Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters;
 using Microsoft.Azure.Management.HDInsight.Models;
 using Microsoft.WindowsAzure.Commands.Common;
-using Microsoft.WindowsAzure.Commands.Common.CustomAttributes;
 using System;
 using System.Collections;
 using System.Collections.Generic;
@@ -312,7 +311,7 @@ namespace Microsoft.Azure.Commands.HDInsight
         [Parameter(HelpMessage = "Gets or sets the Service Principal Certificate Password for accessing Azure Data Lake.")]
         public string CertificatePassword { get; set; }
 
-        [Parameter(HelpMessage = "Gets or sets the Service Principal AAD Tenant Id for accessing Azure Data Lake.")]
+        [Parameter(HelpMessage = "Gets or sets the Service Principal Microsoft Entra Tenant Id for accessing Azure Data Lake.")]
         public Guid AadTenantId { get; set; }
 
         [Parameter(HelpMessage = "Gets or sets Security Profile which is used for creating secure cluster.")]

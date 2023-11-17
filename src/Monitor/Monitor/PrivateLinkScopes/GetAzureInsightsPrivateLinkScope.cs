@@ -81,7 +81,7 @@ namespace Microsoft.Azure.Commands.Insights.PrivateLinkScopes
                     WriteObject(response.Body.Select(scope => PSMonitorPrivateLinkScope.ToPSMonitorPrivateLinkScope(scope)).ToList(), true);
                 }
             }
-            else if (ParameterSetName.Equals(ByResourceNameParameterSet) || ParameterSetName.Equals(ResourceId))
+            else if (ParameterSetName.Equals(ByResourceNameParameterSet) || ParameterSetName.Equals(ByResourceIdParameterSet))
             {
                 if (this.IsParameterBound(c => c.ResourceId))
                 {

@@ -46,9 +46,9 @@ namespace Microsoft.Azure.Commands.Profile
         [ValidateNotNullOrEmpty]
         public string Path { get; set; }
 
-        protected override void BeginProcessing()
+        protected override bool RequireDefaultContext()
         {
-            // Do not access the DefaultContext when loading a profile
+            return false;
         }
 
         void CopyProfile(AzureRmProfile source, IProfileOperations target)

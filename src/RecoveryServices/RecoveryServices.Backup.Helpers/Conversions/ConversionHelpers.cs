@@ -187,9 +187,9 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Helpers
             }
             
             iaasPolicyModel.AzureBackupRGName = 
-                ((ServiceClientModel.AzureIaaSVMProtectionPolicy)serviceClientResponse.Properties).InstantRPDetails.AzureBackupRGNamePrefix;
+                ((ServiceClientModel.AzureIaaSVMProtectionPolicy)serviceClientResponse.Properties).InstantRpDetails.AzureBackupRgNamePrefix;
             iaasPolicyModel.AzureBackupRGNameSuffix = 
-                ((ServiceClientModel.AzureIaaSVMProtectionPolicy)serviceClientResponse.Properties).InstantRPDetails.AzureBackupRGNameSuffix;
+                ((ServiceClientModel.AzureIaaSVMProtectionPolicy)serviceClientResponse.Properties).InstantRpDetails.AzureBackupRgNameSuffix;
 
             // fetch the smart tiering details          
             if (((ServiceClientModel.AzureIaaSVMProtectionPolicy)serviceClientResponse.Properties).TieringPolicy != null &&

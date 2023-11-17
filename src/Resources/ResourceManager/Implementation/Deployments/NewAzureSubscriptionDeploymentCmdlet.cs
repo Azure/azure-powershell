@@ -72,7 +72,7 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Implementation
             typeof(NewAzureSubscriptionDeploymentCmdlet),
             typeof(CmdletAttribute))).ConfirmImpact;
 
-        protected override PSDeploymentCmdletParameters DeploymentParameters => new PSDeploymentCmdletParameters()
+        protected override PSDeploymentCmdletParameters BuildDeploymentParameters() => new PSDeploymentCmdletParameters()
         {
             ScopeType = DeploymentScopeType.Subscription,
             Location = this.Location,
@@ -82,13 +82,13 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Implementation
             TemplateObject = this.TemplateObject,
             TemplateSpecId = TemplateSpecId,
             QueryString = QueryString,
-            TemplateParameterObject = this.GetTemplateParameterObject(this.TemplateParameterObject),
+            TemplateParameterObject = this.GetTemplateParameterObject(),
             ParameterUri = this.TemplateParameterUri,
             DeploymentDebugLogLevel = this.GetDeploymentDebugLogLevel(this.DeploymentDebugLogLevel),
             Tags = TagsHelper.ConvertToTagsDictionary(this.Tag)
         };
 
-        protected override PSDeploymentWhatIfCmdletParameters WhatIfParameters => new PSDeploymentWhatIfCmdletParameters(
+        protected override PSDeploymentWhatIfCmdletParameters BuildWhatIfParameters() => new PSDeploymentWhatIfCmdletParameters(
             DeploymentScopeType.Subscription,
             deploymentName: this.Name,
             location: this.Location,
@@ -98,7 +98,7 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Implementation
             templateSpecId: TemplateSpecId,
             queryString: QueryString,
             templateParametersUri: this.TemplateParameterUri,
-            templateParametersObject: GetTemplateParameterObject(this.TemplateParameterObject),
+            templateParametersObject: GetTemplateParameterObject(),
             resultFormat: this.WhatIfResultFormat,
             excludeChangeTypes: this.WhatIfExcludeChangeType);
 

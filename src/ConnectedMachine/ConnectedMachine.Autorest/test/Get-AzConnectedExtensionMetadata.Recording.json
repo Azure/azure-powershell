@@ -1,0 +1,80 @@
+{
+  "Get-AzConnectedExtensionMetadata+[NoContext]+List+$GET+https://management.azure.com/subscriptions/e6fe6705-4c9c-4b54-81d2-e455780e20b8/providers/Microsoft.HybridCompute/locations/eastus2euap/publishers/Microsoft.Compute/extensionTypes/CustomScriptExtension/versions?api-version=2022-12-27+1": {
+    "Request": {
+      "Method": "GET",
+      "RequestUri": "https://management.azure.com/subscriptions/e6fe6705-4c9c-4b54-81d2-e455780e20b8/providers/Microsoft.HybridCompute/locations/eastus2euap/publishers/Microsoft.Compute/extensionTypes/CustomScriptExtension/versions?api-version=2022-12-27",
+      "Content": null,
+      "Headers": {
+        "x-ms-unique-id": [ "2" ],
+        "x-ms-client-request-id": [ "241a3301-b750-47b0-b270-c5cb2cf7f5dd" ],
+        "CommandName": [ "Get-AzConnectedExtensionMetadata" ],
+        "FullCommandName": [ "Get-AzConnectedExtensionMetadata_List" ],
+        "ParameterSetName": [ "__AllParameterSets" ],
+        "User-Agent": [ "AzurePowershell/Az4.0.0-preview" ],
+        "Authorization": [ "[Filtered]" ]
+      },
+      "ContentHeaders": {
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "x-ms-ratelimit-remaining-subscription-reads": [ "11999" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "x-ms-request-id": [ "95f61bcc-5c57-4bb9-b5cd-1ff23618d537" ],
+        "Server": [ "Kestrel" ],
+        "x-ms-correlation-request-id": [ "62596e4e-0fa2-48c2-ae45-bb350201ff65" ],
+        "x-ms-routing-request-id": [ "CENTRALUS:20230802T053331Z:62596e4e-0fa2-48c2-ae45-bb350201ff65" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "Date": [ "Wed, 02 Aug 2023 05:33:31 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "1974" ],
+        "Content-Type": [ "application/json; charset=utf-8" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\"value\":[{\"id\":\"/providers/Microsoft.HybridCompute/locations/eastus2euap/publishers/microsoft.compute/extensionTypes/customscriptextension/versions/1.10.15\",\"location\":\"eastus2euap\",\"properties\":{\"version\":\"1.10.15\",\"extensionType\":\"customscriptextension\",\"publisher\":\"microsoft.compute\"}},{\"id\":\"/providers/Microsoft.HybridCompute/locations/eastus2euap/publishers/microsoft.compute/extensionTypes/customscriptextension/versions/1.10.14\",\"location\":\"eastus2euap\",\"properties\":{\"version\":\"1.10.14\",\"extensionType\":\"customscriptextension\",\"publisher\":\"microsoft.compute\"}},{\"id\":\"/providers/Microsoft.HybridCompute/locations/eastus2euap/publishers/microsoft.compute/extensionTypes/customscriptextension/versions/1.10.12\",\"location\":\"eastus2euap\",\"properties\":{\"version\":\"1.10.12\",\"extensionType\":\"customscriptextension\",\"publisher\":\"microsoft.compute\"}},{\"id\":\"/providers/Microsoft.HybridCompute/locations/eastus2euap/publishers/microsoft.compute/extensionTypes/customscriptextension/versions/1.10.11\",\"location\":\"eastus2euap\",\"properties\":{\"version\":\"1.10.11\",\"extensionType\":\"customscriptextension\",\"publisher\":\"microsoft.compute\"}},{\"id\":\"/providers/Microsoft.HybridCompute/locations/eastus2euap/publishers/microsoft.compute/extensionTypes/customscriptextension/versions/1.10.10\",\"location\":\"eastus2euap\",\"properties\":{\"version\":\"1.10.10\",\"extensionType\":\"customscriptextension\",\"publisher\":\"microsoft.compute\"}},{\"id\":\"/providers/Microsoft.HybridCompute/locations/eastus2euap/publishers/microsoft.compute/extensionTypes/customscriptextension/versions/1.10.9\",\"location\":\"eastus2euap\",\"properties\":{\"version\":\"1.10.9\",\"extensionType\":\"customscriptextension\",\"publisher\":\"microsoft.compute\"}},{\"id\":\"/providers/Microsoft.HybridCompute/locations/eastus2euap/publishers/microsoft.compute/extensionTypes/customscriptextension/versions/1.10.8\",\"location\":\"eastus2euap\",\"properties\":{\"version\":\"1.10.8\",\"extensionType\":\"customscriptextension\",\"publisher\":\"microsoft.compute\"}}]}"
+    }
+  },
+  "Get-AzConnectedExtensionMetadata+[NoContext]+Get+$GET+https://management.azure.com/subscriptions/e6fe6705-4c9c-4b54-81d2-e455780e20b8/providers/Microsoft.HybridCompute/locations/eastus2euap/publishers/Microsoft.Compute/extensionTypes/CustomScriptExtension/versions/1.10.10?api-version=2022-12-27+1": {
+    "Request": {
+      "Method": "GET",
+      "RequestUri": "https://management.azure.com/subscriptions/e6fe6705-4c9c-4b54-81d2-e455780e20b8/providers/Microsoft.HybridCompute/locations/eastus2euap/publishers/Microsoft.Compute/extensionTypes/CustomScriptExtension/versions/1.10.10?api-version=2022-12-27",
+      "Content": null,
+      "Headers": {
+        "x-ms-unique-id": [ "3" ],
+        "x-ms-client-request-id": [ "1caa998d-add8-461c-b845-158c225abaa2" ],
+        "CommandName": [ "Get-AzConnectedExtensionMetadata" ],
+        "FullCommandName": [ "Get-AzConnectedExtensionMetadata_Get" ],
+        "ParameterSetName": [ "__AllParameterSets" ],
+        "User-Agent": [ "AzurePowershell/Az4.0.0-preview" ],
+        "Authorization": [ "[Filtered]" ]
+      },
+      "ContentHeaders": {
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "x-ms-ratelimit-remaining-subscription-reads": [ "11998" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "x-ms-request-id": [ "5ad024a8-10c3-4777-b2b7-1eace90128e3" ],
+        "Server": [ "Kestrel" ],
+        "x-ms-correlation-request-id": [ "0427227a-54e8-42af-80d3-f8251e31ff42" ],
+        "x-ms-routing-request-id": [ "CENTRALUS:20230802T053332Z:0427227a-54e8-42af-80d3-f8251e31ff42" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "Date": [ "Wed, 02 Aug 2023 05:33:31 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "280" ],
+        "Content-Type": [ "application/json; charset=utf-8" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\"id\":\"/providers/Microsoft.HybridCompute/locations/eastus2euap/publishers/microsoft.compute/extensionTypes/customscriptextension/versions/1.10.10\",\"location\":\"eastus2euap\",\"properties\":{\"version\":\"1.10.10\",\"extensionType\":\"customscriptextension\",\"publisher\":\"microsoft.compute\"}}"
+    }
+  }
+}

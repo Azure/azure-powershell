@@ -86,8 +86,8 @@ namespace Microsoft.Azure.Commands.Batch.Test.ComputeNodes
             startComputeNodeServiceLogUploadCommand.ExecuteCmdlet();
 
             Assert.NotNull(result);
-            Assert.Equal(result.NumberOfFilesUploaded, numberOfFilesUploaded);
-            Assert.Equal(result.VirtualDirectoryName, virtualDirectoryName);
+            Assert.Equal(numberOfFilesUploaded, result.NumberOfFilesUploaded);
+            Assert.Equal(virtualDirectoryName, result.VirtualDirectoryName);
         }
 
         [Fact]
@@ -144,8 +144,8 @@ namespace Microsoft.Azure.Commands.Batch.Test.ComputeNodes
             startComputeNodeServiceLogUploadCommand.ExecuteCmdlet();
 
             Assert.NotNull(result);
-            Assert.Equal(result.NumberOfFilesUploaded, numberOfFilesUploaded);
-            Assert.Equal(result.VirtualDirectoryName, virtualDirectoryName);
+            Assert.Equal(numberOfFilesUploaded, result.NumberOfFilesUploaded);
+            Assert.Equal(virtualDirectoryName, result.VirtualDirectoryName);
         }
     }
 }

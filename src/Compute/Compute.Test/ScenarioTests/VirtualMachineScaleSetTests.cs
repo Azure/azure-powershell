@@ -271,7 +271,7 @@ namespace Microsoft.Azure.Commands.Compute.Test.ScenarioTests
         }
 
         [Fact]
-        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        [Trait(Category.AcceptanceType, Category.LiveOnly)]
         public void TestVirtualMachineScaleSetGuestAttestation()
         {
             TestRunner.RunTestScript("Test-VirtualMachineScaleSetGuestAttestation");
@@ -338,6 +338,83 @@ namespace Microsoft.Azure.Commands.Compute.Test.ScenarioTests
         public void TestVirtualMachineScaleSetSecurityTypeWithoutConfig()
         {
             TestRunner.RunTestScript("Test-VirtualMachineScaleSetSecurityTypeWithoutConfig");
+        }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void TestVirtualMachineScaleSetSecurityTypeStandard()
+        {
+            TestRunner.RunTestScript("Test-VirtualMachineScaleSetSecurityTypeStandard");
+        }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void TestVirtualMachineScaleSetSecurityTypeStandardWithConfig()
+        {
+            TestRunner.RunTestScript("Test-VirtualMachineScaleSetSecurityTypeStandardWithConfig");
+        }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void TestVirtualMachineScaleSetImageReferenceSkuUpdate()
+        {
+            TestRunner.RunTestScript("Test-VirtualMachineScaleSetImageReferenceSkuUpdate");
+        }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void TestVirtualMachineScaleSetSecurityTypeWithoutConfigUpdate()
+        {
+            TestRunner.RunTestScript("Test-VirtualMachineScaleSetSecurityTypeWithoutConfigUpdate");
+        }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void TestVirtualMachineScaleSetSecurityTypeUpdate()
+        {
+            TestRunner.RunTestScript("Test-VirtualMachineScaleSetSecurityTypeUpdate");
+        }
+        
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void TestVirtualMachineScaleSetDefaultToFlexibleOrchestrationMode()
+        {
+            TestRunner.RunTestScript("Test-VirtualMachineScaleSetDefaultToFlexibleOrchestrationMode");
+        }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void TestVirtualMachineScaleSetAttachAndDetach()
+        {
+            TestRunner.RunTestScript("Test-VirtualMachineScaleSetAttachAndDetach");
+        }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void TestVirtualMachineScaleSetSecurityTypeDefaulting()
+        {
+            TestRunner.RunTestScript("Test-VirtualMachineScaleSetSecurityTypeDefaulting");
+        }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void TestVirtualMachineScaleSetSecurityTypeDefaultingFromImage()
+        {
+            TestRunner.RunTestScript("Test-VirtualMachineScaleSetSecurityTypeDefaultingFromImage");
+        }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void TestVirtualMachineScaleSetSecurityTypeAndFlexDefaults()
+        {
+            TestRunner.RunTestScript("Test-VirtualMachineScaleSetSecurityTypeAndFlexDefaults");
+        }
+        
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void TestVirtualMachineScaleSetSecurityTypeNoVMProfile()
+        {
+            TestRunner.RunTestScript("Test-VirtualMachineScaleSetSecurityTypeNoVMProfile");
         }
     }
 }

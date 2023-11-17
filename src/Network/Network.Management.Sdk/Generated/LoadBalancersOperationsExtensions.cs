@@ -348,6 +348,52 @@ namespace Microsoft.Azure.Management.Network
             }
 
             /// <summary>
+            /// Migrate load balancer to IP Based
+            /// </summary>
+            /// <param name='operations'>
+            /// The operations group for this extension method.
+            /// </param>
+            /// <param name='groupName'>
+            /// The name of the resource group.
+            /// </param>
+            /// <param name='loadBalancerName'>
+            /// The name of the load balancer.
+            /// </param>
+            /// <param name='parameters'>
+            /// Parameters supplied to the migrateToIpBased Api.
+            /// </param>
+            public static MigratedPools MigrateToIpBased(this ILoadBalancersOperations operations, string groupName, string loadBalancerName, MigrateLoadBalancerToIpBasedRequest parameters = default(MigrateLoadBalancerToIpBasedRequest))
+            {
+                return operations.MigrateToIpBasedAsync(groupName, loadBalancerName, parameters).GetAwaiter().GetResult();
+            }
+
+            /// <summary>
+            /// Migrate load balancer to IP Based
+            /// </summary>
+            /// <param name='operations'>
+            /// The operations group for this extension method.
+            /// </param>
+            /// <param name='groupName'>
+            /// The name of the resource group.
+            /// </param>
+            /// <param name='loadBalancerName'>
+            /// The name of the load balancer.
+            /// </param>
+            /// <param name='parameters'>
+            /// Parameters supplied to the migrateToIpBased Api.
+            /// </param>
+            /// <param name='cancellationToken'>
+            /// The cancellation token.
+            /// </param>
+            public static async Task<MigratedPools> MigrateToIpBasedAsync(this ILoadBalancersOperations operations, string groupName, string loadBalancerName, MigrateLoadBalancerToIpBasedRequest parameters = default(MigrateLoadBalancerToIpBasedRequest), CancellationToken cancellationToken = default(CancellationToken))
+            {
+                using (var _result = await operations.MigrateToIpBasedWithHttpMessagesAsync(groupName, loadBalancerName, parameters, null, cancellationToken).ConfigureAwait(false))
+                {
+                    return _result.Body;
+                }
+            }
+
+            /// <summary>
             /// Deletes the specified load balancer.
             /// </summary>
             /// <param name='operations'>

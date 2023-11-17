@@ -86,7 +86,7 @@ Accept wildcard characters: False
 ```
 
 ### -Force
-Forcefully Remove Option
+Forces the command to run without asking for user confirmation.
 
 ```yaml
 Type: System.Management.Automation.SwitchParameter

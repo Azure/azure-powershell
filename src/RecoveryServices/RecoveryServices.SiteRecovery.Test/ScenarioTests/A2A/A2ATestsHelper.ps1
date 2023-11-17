@@ -198,9 +198,10 @@ function createAzureVm{
         $VMLocation = if ($primaryLocation) { $primaryLocation } else { getPrimaryLocation }
         $VMName = getAzureVmName
 		$domain = "domain"+ $seed
+        $stnd = "Standard"
         $password=$VMLocalAdminSecurePassword|ConvertTo-SecureString -AsPlainText -Force
         $Credential = New-Object System.Management.Automation.PSCredential ($VMLocalAdminUser, $password);
-        $vm = New-AzVM -Name $VMName -Credential $Credential -location $VMLocation -Image RHEL -DomainNameLabel $domain
+        $vm = New-AzVM -Name $VMName -Credential $Credential -location $VMLocation -Image RHELRaw8LVMGen2 -DomainNameLabel $domain -SecurityType $stnd
         return $vm.Id
 }
 
@@ -214,10 +215,11 @@ function createAzureVmInProximityPlacementgroup{
 		$VMLocation = getPrimaryLocation
 		$VMName = getAzureVmName
 		$domain = "domain"+ $seed
+        $stnd = "Standard"
         $password=$VMLocalAdminSecurePassword|ConvertTo-SecureString -AsPlainText -Force
         $Credential = New-Object System.Management.Automation.PSCredential ($VMLocalAdminUser, $password);
 		$ppg =  New-AzProximityPlacementGroup -ResourceGroupName $vmName -Name $VMName -Location $VMLocation
-        $vm = New-AzVM -Name $VMName -Credential $Credential -location $VMLocation -Image RHEL -DomainNameLabel $domain -ProximityPlacementGroupId $ppg.Id
+        $vm = New-AzVM -Name $VMName -Credential $Credential -location $VMLocation -Image RHELRaw8LVMGen2 -DomainNameLabel $domain -ProximityPlacementGroupId $ppg.Id -SecurityType $stnd
 		return $vm.Id
 }
 
@@ -231,9 +233,10 @@ function createAzureVmForCRG{
 		$VMLocation = getPrimaryLocation
 		$VMName = getAzureVmName
 		$domain = "domain"+ $seed
+        $stnd = "Standard"
         $password=$VMLocalAdminSecurePassword|ConvertTo-SecureString -AsPlainText -Force
         $Credential = New-Object System.Management.Automation.PSCredential ($VMLocalAdminUser, $password);
-        $vm = New-AzVM -Name $VMName -Credential $Credential -location $VMLocation -Image RHEL -DomainNameLabel $domain -Size "Standard_Ds1_v2"
+        $vm = New-AzVM -Name $VMName -Credential $Credential -location $VMLocation -Image RHELRaw8LVMGen2 -DomainNameLabel $domain -Size "Standard_Ds1_v2" -SecurityType $stnd
 		return $vm.Id
 }
 
@@ -249,9 +252,10 @@ function createAzureVmInAvailabilityZone{
 		$VMZone = getPrimaryZone
     $VMName = getAzureVmName
 		$domain = "domain"+ $seed
+        $stnd = "Standard"
         $password=$VMLocalAdminSecurePassword|ConvertTo-SecureString -AsPlainText -Force
     $Credential = New-Object System.Management.Automation.PSCredential ($VMLocalAdminUser, $password);
-        $vm = New-AzVM -Name $VMName -Credential $Credential -location $VMLocation -Image RHEL -DomainNameLabel $domain -Zone $VMZone
+        $vm = New-AzVM -Name $VMName -Credential $Credential -location $VMLocation -Image RHELRaw8LVMGen2 -DomainNameLabel $domain -Zone $VMZone -SecurityType $stnd
     return $vm.Id
 }
 
@@ -271,6 +275,7 @@ function createAzureVmInEdgeZone {
     $ComputerName = $VMName
     $primaryResourceGroupName = $VMName
     $domain = "domain" + $seed
+    $stnd = "Standard"
     $password = $VMLocalAdminSecurePassword | ConvertTo-SecureString -AsPlainText -Force
     $Credential = New-Object System.Management.Automation.PSCredential ($VMLocalAdminUser, $password);
 
@@ -300,7 +305,7 @@ function createAzureVmInEdgeZone {
     $IpConfigVm = New-AzNetworkInterfaceIpConfig -Name "IpConfigVm" -Subnet $subnet -PublicIpAddress $pip -Primary
     $NIC = New-AzNetworkInterface -Name $NICName -ResourceGroupName $primaryResourceGroupName -Location $VMLocation -EdgeZone $VMExtendedLocation -IpConfiguration $IpConfigVm
 
-    $VirtualMachine = New-AzVMConfig -VMName $VMName -VMSize $VMSize
+    $VirtualMachine = New-AzVMConfig -VMName $VMName -VMSize $VMSize -SecurityType $stnd
     $VirtualMachine = Add-AzVMNetworkInterface -VM $VirtualMachine -Id $NIC.Id
     $VirtualMachine = Set-AzVMOperatingSystem -VM $VirtualMachine -Windows -ComputerName $ComputerName -Credential $Credential -ProvisionVMAgent -EnableAutoUpdate
     $VirtualMachine = Set-AzVMSourceImage -VM $VirtualMachine -PublisherName 'MicrosoftWindowsServer' -Offer 'WindowsServer' -Skus '2019-Datacenter' -Version latest

@@ -419,7 +419,7 @@ namespace Microsoft.Azure.Commands.Network
 
             }
             vnetGateway.GatewayType = this.GatewayType;
-            if (vnetGateway.GatewayType == "LocalGateway" || vnetGateway.GatewayType == "ExpressRoute")
+            if (this.ExtendedLocation != null && (vnetGateway.GatewayType == "LocalGateway" || vnetGateway.GatewayType == "ExpressRoute"))
             {
                 vnetGateway.ExtendedLocation = new PSExtendedLocation(this.ExtendedLocation);
                 vnetGateway.VNetExtendedLocationResourceId = this.VNetExtendedLocationResourceId;

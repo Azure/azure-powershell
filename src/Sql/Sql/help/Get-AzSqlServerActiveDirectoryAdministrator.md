@@ -9,7 +9,7 @@ schema: 2.0.0
 # Get-AzSqlServerActiveDirectoryAdministrator
 
 ## SYNOPSIS
-Gets information about an Azure AD administrator for SQL Server.
+Gets information about a Microsoft Entra administrator for SQL Server.
 
 ## SYNTAX
 
@@ -19,7 +19,7 @@ Get-AzSqlServerActiveDirectoryAdministrator [-ServerName] <String> [-ResourceGro
 ```
 
 ## DESCRIPTION
-The **Get-AzSqlServerActiveDirectoryAdministrator** cmdlet gets information about an Azure Active Directory (Azure AD) administrator for an AzureSQL Server in the current subscription.
+The **Get-AzSqlServerActiveDirectoryAdministrator** cmdlet gets information about a Microsoft Entra administrator for an AzureSQL Server in the current subscription.
 
 ## EXAMPLES
 
@@ -34,7 +34,7 @@ ResourceGroupName ServerName DisplayName ObjectId IsAzureADOnlyAuthentication
 ResourceGroup01   Server01   DBAs        40b79501-b343-44ed-9ce7-da4c8cc7353b true
 ```
 
-This command gets information about an Azure AD administrator for a server named Server01 that is associated with a resource group named ResourceGroup01.
+This command gets information about a Microsoft Entra administrator for a server named Server01 that is associated with a resource group named ResourceGroup01.
 
 ## PARAMETERS
 
@@ -136,5 +136,3 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 [Disable-AzSqlServerActiveDirectoryOnlyAuthentication](./Disable-AzSqlServerActiveDirectoryOnlyAuthentication.md)
 
 [SQL Database Documentation](https://learn.microsoft.com/azure/sql-database/)
-
-

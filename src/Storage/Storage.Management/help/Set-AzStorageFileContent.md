@@ -180,7 +180,7 @@ Accept wildcard characters: False
 ```
 
 ### -DisAllowTrailingDot
-Disallow trailing dot (.) to suffex directory and file names.
+Disallow trailing dot (.) to suffix directory and file names.
 
 ```yaml
 Type: System.Management.Automation.SwitchParameter

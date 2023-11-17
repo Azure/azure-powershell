@@ -445,7 +445,7 @@ namespace Microsoft.Azure.Commands.Compute.Test.ScenarioTests
             TestRunner.RunTestScript("Test-CapacityReservation");
         }
 
-        [Fact]
+        [Fact(Skip = "Cannot run on Github Platform due to ACL API")]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestVMwithSSHKey()
         {
@@ -513,13 +513,6 @@ namespace Microsoft.Azure.Commands.Compute.Test.ScenarioTests
         public void TestVirtualMachinePlatformFaultDomain()
         {
             TestRunner.RunTestScript("Test-VirtualMachinePlatformFaultDomain");
-        }
-
-        [Fact]
-        [Trait(Category.AcceptanceType, Category.CheckIn)]
-        public void TestVirtualMachineGuestAttestation()
-        {
-            TestRunner.RunTestScript("Test-VirtualMachineGuestAttestation");
         }
         
         [Fact]
@@ -590,6 +583,41 @@ namespace Microsoft.Azure.Commands.Compute.Test.ScenarioTests
         public void TestVirtualMachineSecurityTypeWithoutConfig()
         {
             TestRunner.RunTestScript("Test-VirtualMachineSecurityTypeWithoutConfig");
+        }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void TestVirtualMachineSecurityTypeStandard()
+        {
+            TestRunner.RunTestScript("Test-VirtualMachineSecurityTypeStandard");
+        }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void TestVirtualMachineSecurityTypeStandardWithConfig()
+        {
+            TestRunner.RunTestScript("Test-VirtualMachineSecurityTypeStandardWithConfig");
+        }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void TestVMDefaultsToTrustedLaunch()
+        {
+            TestRunner.RunTestScript("Test-VMDefaultsToTrustedLaunch");
+        }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.LiveOnly)]
+        public void TestVMDefaultsToTrustedLaunchWithManagedDisk()
+        {
+            TestRunner.RunTestScript("Test-VMDefaultsToTrustedLaunchWithManagedDisk");
+        }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void TestVMDefaultsToTrustedLaunchWithGen2Image()
+        {
+            TestRunner.RunTestScript("Test-VMDefaultsToTrustedLaunchWithGen2Image");
         }
     }
 }

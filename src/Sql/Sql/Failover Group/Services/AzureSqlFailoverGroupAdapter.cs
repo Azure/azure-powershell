@@ -19,6 +19,7 @@ using Microsoft.Azure.Commands.Sql.FailoverGroup.Model;
 using Microsoft.Azure.Commands.Sql.Server.Adapter;
 using Microsoft.Azure.Commands.Sql.Services;
 using Microsoft.Azure.Management.Sql.LegacySdk.Models;
+using Microsoft.Azure.Management.Sql.Models;
 using System.Collections.Generic;
 using System;
 using System.Linq;
@@ -63,9 +64,15 @@ namespace Microsoft.Azure.Commands.Sql.FailoverGroup.Services
         /// <param name="resourceGroupName">The name of the resource group</param>
         /// <param name="serverName">The name of the Azure Sql Database Server</param>
         /// <param name="failoverGroupName">The name of the Azure Sql Database FailoverGroup</param>
+        /// <param name="useV2Get">Whether to use the V2 get with current model, or the legacy get and model.</param>
         /// <returns>The Azure Sql Database FailoverGroup object</returns>
-        internal AzureSqlFailoverGroupModel GetFailoverGroup(string resourceGroupName, string serverName, string failoverGroupName)
+        internal AzureSqlFailoverGroupModel GetFailoverGroup(string resourceGroupName, string serverName, string failoverGroupName, bool useV2Get = false)
         {
+            if (useV2Get)
+            {
+                var response = Communicator.GetV2(resourceGroupName, serverName, failoverGroupName);
+                return CreateCurrentFailoverGroupModelFromResponse(response);
+            }
             var resp = Communicator.Get(resourceGroupName, serverName, failoverGroupName);
 
             return CreateFailoverGroupModelFromResponse(resp);
@@ -91,17 +98,27 @@ namespace Microsoft.Azure.Commands.Sql.FailoverGroup.Services
         /// Creates or updates an Azure Sql Database FailoverGroup.
         /// </summary>
         /// <param name="model">The input parameters for the create/update operation</param>
+        /// <param name="useV2">Whether to use the V2 function and current model, or the legacy functaion and model</param>
         /// <returns>The upserted Azure Sql Database FailoverGroup</returns>
-        internal AzureSqlFailoverGroupModel UpsertFailoverGroup(AzureSqlFailoverGroupModel model)
+        internal AzureSqlFailoverGroupModel UpsertFailoverGroup(AzureSqlFailoverGroupModel model, bool useV2 = false)
         {
-            List < FailoverGroupPartnerServer >  partnerServers = new List<FailoverGroupPartnerServer>();
-            FailoverGroupPartnerServer partnerServer = new FailoverGroupPartnerServer();
-            partnerServer.Id = string.Format(
-                AzureSqlFailoverGroupModel.PartnerServerIdTemplate,
-                model.PartnerSubscriptionId == null ? _subscription.Id.ToString() : model.PartnerSubscriptionId.ToString(),
-                model.PartnerResourceGroupName,
-                model.PartnerServerName);
-            partnerServers.Add(partnerServer);
+            List<FailoverGroupPartnerServer> partnerServers;
+
+            if (model.PartnerServers != null)
+            {
+                partnerServers = model.PartnerServers.ToList();
+            }
+            else
+            {
+                partnerServers = new List<FailoverGroupPartnerServer>();
+                FailoverGroupPartnerServer partnerServer = new FailoverGroupPartnerServer();
+                partnerServer.Id = string.Format(
+                    AzureSqlFailoverGroupModel.PartnerServerIdTemplate,
+                    model.PartnerSubscriptionId == null ? _subscription.Id.ToString() : model.PartnerSubscriptionId.ToString(),
+                    model.PartnerResourceGroupName,
+                    model.PartnerServerName);
+                partnerServers.Add(partnerServer);
+            }
 
             ReadOnlyEndpoint readOnlyEndpoint = new ReadOnlyEndpoint();
             readOnlyEndpoint.FailoverPolicy = model.ReadOnlyFailoverPolicy;
@@ -111,6 +128,19 @@ namespace Microsoft.Azure.Commands.Sql.FailoverGroup.Services
             if (model.FailoverWithDataLossGracePeriodHours.HasValue)
             {
                 readWriteEndpoint.FailoverWithDataLossGracePeriodMinutes = checked(model.FailoverWithDataLossGracePeriodHours * 60);
+            }
+
+            if (useV2)
+            {
+                Management.Sql.Models.FailoverGroup updateV2Params = new Management.Sql.Models.FailoverGroup()
+                {
+                    ReadWriteEndpoint = model.FailoverGroupReadWriteEndpointV2,
+                    ReadOnlyEndpoint = model.FailoverGroupReadOnlyEndpointV2,
+                    Databases = model.Databases,
+                    PartnerServers = ConvertPartnerServerList(partnerServers)
+                };
+                var response = Communicator.CreateOrUpdateV2(model.ResourceGroupName, model.ServerName, model.FailoverGroupName, updateV2Params);
+                return CreateCurrentFailoverGroupModelFromResponse(response);
             }
 
             var resp = Communicator.CreateOrUpdate(model.ResourceGroupName, model.ServerName, model.FailoverGroupName, new FailoverGroupCreateOrUpdateParameters()
@@ -131,8 +161,9 @@ namespace Microsoft.Azure.Commands.Sql.FailoverGroup.Services
         /// Patch updates an Azure Sql Database FailoverGroup.
         /// </summary>
         /// <param name="model">The input parameters for the create/update operation</param>
+        /// <param name="useV2">Whether to use the V2 function and current model, or the legacy functaion and model</param>
         /// <returns>The upserted Azure Sql Database FailoverGroup</returns>
-        internal AzureSqlFailoverGroupModel PatchUpdateFailoverGroup(AzureSqlFailoverGroupModel model)
+        internal AzureSqlFailoverGroupModel PatchUpdateFailoverGroup(AzureSqlFailoverGroupModel model, bool useV2 = false)
         {
             ReadOnlyEndpoint readOnlyEndpoint = new ReadOnlyEndpoint();
             readOnlyEndpoint.FailoverPolicy = model.ReadOnlyFailoverPolicy;
@@ -143,6 +174,20 @@ namespace Microsoft.Azure.Commands.Sql.FailoverGroup.Services
             if (model.FailoverWithDataLossGracePeriodHours.HasValue)
             {
                 readWriteEndpoint.FailoverWithDataLossGracePeriodMinutes = checked(model.FailoverWithDataLossGracePeriodHours * 60);
+            }
+
+            if (useV2)
+            {
+                FailoverGroupUpdate updateV2Params = new FailoverGroupUpdate()
+                {
+                    ReadOnlyEndpoint = model.FailoverGroupReadOnlyEndpointV2,
+                    ReadWriteEndpoint = model.FailoverGroupReadWriteEndpointV2,
+                    PartnerServers = ConvertPartnerServerList(model.PartnerServers.ToList()),
+                    Databases = model.Databases
+
+                };
+                var response = Communicator.PatchUpdateV2(model.ResourceGroupName, model.ServerName, model.FailoverGroupName, updateV2Params);
+                return CreateCurrentFailoverGroupModelFromResponse(response);
             }
 
             var resp = Communicator.PatchUpdate(model.ResourceGroupName, model.ServerName, model.FailoverGroupName, new FailoverGroupPatchUpdateParameters()
@@ -288,6 +333,49 @@ namespace Microsoft.Azure.Commands.Sql.FailoverGroup.Services
             return model;
         }
 
+        /// <summary>
+        /// Converts the response from the service to a powershell database object.
+        /// Accepts current client model instead of legacy.
+        /// </summary>
+        /// <param name="failoverGroup">Recommended Action object</param>
+        /// <returns>The converted model</returns>
+        private AzureSqlFailoverGroupModel CreateCurrentFailoverGroupModelFromResponse(Management.Sql.Models.FailoverGroup failoverGroup)
+        {
+            AzureSqlFailoverGroupModel model = new AzureSqlFailoverGroupModel();
+
+            model.FailoverGroupName = failoverGroup.Name;
+            model.Databases = failoverGroup.Databases;
+            model.ReadOnlyFailoverPolicy = failoverGroup.ReadOnlyEndpoint.FailoverPolicy;
+            model.ReadWriteFailoverPolicy = failoverGroup.ReadWriteEndpoint.FailoverPolicy;
+            model.FailoverGroupReadOnlyEndpointV2 = failoverGroup.ReadOnlyEndpoint;
+            model.ReplicationRole = failoverGroup.ReplicationRole;
+            model.ReplicationState = failoverGroup.ReplicationState;
+            model.PartnerServers = ConvertPartnerInfoList(failoverGroup.PartnerServers.ToList());
+            model.FailoverWithDataLossGracePeriodHours = failoverGroup.ReadWriteEndpoint.FailoverWithDataLossGracePeriodMinutes == null ?
+                                                        null : failoverGroup.ReadWriteEndpoint.FailoverWithDataLossGracePeriodMinutes / 60;
+
+            model.Id = failoverGroup.Id;
+            model.Location = failoverGroup.Location;
+
+            model.DatabaseNames = failoverGroup.Databases
+                .Select(dbId => GetUriSegment(dbId, 10))
+                .ToList();
+
+            model.ResourceGroupName = GetUriSegment(failoverGroup.Id, 4);
+            model.ServerName = GetUriSegment(failoverGroup.Id, 8);
+
+            PartnerInfo partnerServer = failoverGroup.PartnerServers.FirstOrDefault();
+            if (partnerServer != null)
+            {
+                model.PartnerSubscriptionId = GetUriSegment(partnerServer.Id, 2);
+                model.PartnerResourceGroupName = GetUriSegment(partnerServer.Id, 4);
+                model.PartnerServerName = GetUriSegment(partnerServer.Id, 8);
+                model.PartnerLocation = partnerServer.Location;
+            }
+
+            return model;
+        }
+
         private string GetUriSegment(string uri, int segmentNum)
         {
             if (uri != null)
@@ -301,6 +389,33 @@ namespace Microsoft.Azure.Commands.Sql.FailoverGroup.Services
             }
 
             return null;
+        }
+
+        private List<PartnerInfo> ConvertPartnerServerList(List<FailoverGroupPartnerServer> partnerServersLegacy)
+        {
+            List<PartnerInfo> partnerServersV2 = new List<PartnerInfo>();
+
+            foreach (FailoverGroupPartnerServer partnerServer in partnerServersLegacy)
+            {
+                partnerServersV2.Add(new PartnerInfo(partnerServer.Id, partnerServer.Location, partnerServer.ReplicationRole));
+            }
+            return partnerServersV2;
+        }
+
+        private List<FailoverGroupPartnerServer> ConvertPartnerInfoList(List<PartnerInfo> partnerServersV2)
+        {
+            List<FailoverGroupPartnerServer> partnerServersLegacy = new List<FailoverGroupPartnerServer>();
+
+            foreach (PartnerInfo partnerServer in partnerServersV2)
+            {
+                partnerServersLegacy.Add(new FailoverGroupPartnerServer() 
+                {
+                    Id = partnerServer.Id, 
+                    Location = partnerServer.Location, 
+                    ReplicationRole = partnerServer.ReplicationRole
+                });
+            }
+            return partnerServersLegacy;
         }
     }
 }

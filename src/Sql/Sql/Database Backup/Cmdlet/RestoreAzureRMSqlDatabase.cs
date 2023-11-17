@@ -311,7 +311,7 @@ namespace Microsoft.Azure.Commands.Sql.Backup.Cmdlet
         public Hashtable Tag { get; set; }
 
         [Parameter(Mandatory = false,
-            HelpMessage = "Generate and assign an Azure Active Directory Identity for this database for use with key management services like Azure KeyVault.")]
+            HelpMessage = "Generate and assign a Microsoft Entra Identity for this database for use with key management services like Azure KeyVault.")]
         public SwitchParameter AssignIdentity { get; set; }
 
         [Parameter(Mandatory = false,
@@ -329,6 +329,14 @@ namespace Microsoft.Azure.Commands.Sql.Backup.Cmdlet
         [Parameter(Mandatory = false,
             HelpMessage = "The federated client id for the SQL Database. It is used for cross tenant CMK scenario.")]
         public Guid? FederatedClientId { get; set; }
+
+        /// <summary>
+        /// Gets or sets the encryption protector key auto rotation status
+        /// </summary>
+        [Parameter(Mandatory = false,
+        ValueFromPipelineByPropertyName = true,
+            HelpMessage = "The AKV Key Auto Rotation status")]
+        public SwitchParameter EncryptionProtectorAutoRotation { get; set; }
 
         protected static readonly string[] ListOfRegionsToShowWarningMessageForGeoBackupStorage = { "eastasia", "southeastasia", "brazilsouth", "east asia", "southeast asia", "brazil south" };
 
@@ -415,6 +423,7 @@ namespace Microsoft.Azure.Commands.Sql.Backup.Cmdlet
                 Keys = DatabaseIdentityAndKeysHelper.GetDatabaseKeysDictionary(this.KeyList),
                 EncryptionProtector = this.EncryptionProtector,
                 FederatedClientId = this.FederatedClientId,
+                EncryptionProtectorAutoRotation = this.IsParameterBound(p => p.EncryptionProtectorAutoRotation) ? EncryptionProtectorAutoRotation.ToBool() : (bool?)null
             };
 
             if (ParameterSetName == FromPointInTimeBackupWithVcoreSetName || ParameterSetName == FromDeletedDatabaseBackupWithVcoreSetName ||

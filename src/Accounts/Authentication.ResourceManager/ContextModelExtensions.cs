@@ -150,6 +150,11 @@ namespace Microsoft.Azure.Commands.Common.Authentication.ResourceManager
             return mergedEnvironment;
         }
 
-
+        public static IAzureEnvironment DeepCopy(this IAzureEnvironment environment)
+        {
+            var copy = new AzureEnvironment(environment);
+            copy.Type = (environment as AzureEnvironment)?.Type ?? copy.Type;
+            return copy;
+        }
     }
 }

@@ -39,7 +39,6 @@ namespace Microsoft.Azure.Commands.Websites.Test.ScenarioTests
                     helper.RMProfileModule,
                     helper.GetRMModulePath("Az.Websites.psd1"),
                     helper.GetRMModulePath("Az.Network.psd1"),
-                    helper.GetRMModulePath("Az.KeyVault.psd1")
                 })
                 .WithNewRecordMatcherArguments(
                     userAgentsToIgnore: new Dictionary<string, string>

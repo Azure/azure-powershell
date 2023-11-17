@@ -132,6 +132,16 @@ New-AzResourceGroupDeploymentStack -Name <String> -ResourceGroupName <String> [-
  [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
+### ByParameterFileWithNoTemplate
+```
+New-AzResourceGroupDeploymentStack -Name <String> -ResourceGroupName <String> [-Description <String>]
+ [-DeleteAll] [-DeleteResources] [-DeleteResourceGroups] -DenySettingsMode <PSDenySettingsMode>
+ [-DenySettingsExcludedPrincipal <String[]>] [-DenySettingsExcludedAction <String[]>]
+ [-DenySettingsApplyToChildScopes] [-Tag <Hashtable>] [-Force] [-AsJob] -TemplateParameterFile <String>
+ [-SkipTemplateParameterPrompt] [-QueryString <String>] [-Pre] [-DefaultProfile <IAzureContextContainer>]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
+```
+
 ## DESCRIPTION
 Create a resource group scoped deployment stack.
 
@@ -143,6 +153,13 @@ New-AzResourceGroupDeploymentStack -Name MyRGStack -ResourceGroupName MyResource
 ```
 
 Create a new resource group scoped deployment stack named 'MyRGStack' in management group 'MyResoourceGroup,' with deny settings being DenyDelete. 
+
+### Example 2: Use a .bicepparam file to create a stack
+```powershell
+New-AzResourceGroupDeploymentStack -Name MyRGStack -ResourceGroupName MyResourceGroup -DenySettingsMode DenyDelete -TemplateParameterFile "./parameters.bicepparam"
+```
+
+This command creates a new stack at the resource group scope by using a .bicepparam file on disk.
 
 ## PARAMETERS
 
@@ -423,7 +440,7 @@ Parameter file to use for the template.
 
 ```yaml
 Type: System.String
-Parameter Sets: ByTemplateFileWithParameterFile, ByTemplateUriWithParameterFile, ByTemplateSpecWithParameterFile
+Parameter Sets: ByTemplateFileWithParameterFile, ByTemplateUriWithParameterFile, ByTemplateSpecWithParameterFile, ByParameterFileWithNoTemplate
 Aliases:
 
 Required: True

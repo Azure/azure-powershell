@@ -77,6 +77,15 @@ Gets pricing details of the specific resource ID. Where ResourceId is one of the
 Get-AzSecurityPricing -Name 'VirtualMachines'
 ```
 
+```output
+Id                     : /subscriptions/10329fc1-5a3b-443c-9054-83d13abd64db/providers/Microsoft.Security/pricings/VirtualMachines
+Name                   : VirtualMachines
+PricingTier            : Standard
+FreeTrialRemainingTime : 00:00:00
+SubPlan                : P2
+Extensions             : [{"name":"MdeDesignatedSubscription","isEnabled":"False","additionalExtensionProperties":null,"operationStatus":null},{"name":"AgentlessVmScanning","isEnabled":"True","additionalExtensionProperties":{"ExclusionTags":"[{\"key\":\"Microsoft\",\"value\":\"Defender\"},{\"key\":\"For\",\"value\":\"Cloud\"}]"},"operationStatus":null}]
+```
+
 Gets pricing details of the named Azure Defender plan. Where `name` is one of the names returned by `Get-AzSecurityPricing`.
 
 ## PARAMETERS

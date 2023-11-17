@@ -26,6 +26,13 @@ Remove-AzResourceGroupDeploymentStack -ResourceId <String> [-DeleteAll] [-Delete
  [-Confirm] [<CommonParameters>]
 ```
 
+### RemoveByStackObject
+```
+Remove-AzResourceGroupDeploymentStack [-InputObjet] <PSDeploymentStack> [-DeleteAll] [-DeleteResources]
+ [-DeleteResourceGroups] [-PassThru] [-Force] [-Pre] [-DefaultProfile <IAzureContextContainer>] [-WhatIf]
+ [-Confirm] [<CommonParameters>]
+```
+
 ## DESCRIPTION
 Delete a resource group scoped deployment stack.
 
@@ -112,6 +119,21 @@ Required: False
 Position: Named
 Default value: None
 Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -InputObjet
+The stack PS object.
+
+```yaml
+Type: Microsoft.Azure.Commands.ResourceManager.Cmdlets.SdkModels.PSDeploymentStack
+Parameter Sets: RemoveByStackObject
+Aliases:
+
+Required: True
+Position: 0
+Default value: None
+Accept pipeline input: True (ByValue)
 Accept wildcard characters: False
 ```
 

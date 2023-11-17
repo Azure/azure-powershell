@@ -58,7 +58,7 @@ namespace Microsoft.Azure.Commands.HDInsight.ManagementCommands
 
         [Parameter(Position = 4,
             Mandatory = false,
-            HelpMessage = "The Service Principal AAD Tenant Id for accessing Azure Data Lake.")]
+            HelpMessage = "The Service Principal Microsoft Entra Tenant Id for accessing Azure Data Lake.")]
         public Guid AadTenantId { get; set; }
 
         [Parameter(Position = 5,

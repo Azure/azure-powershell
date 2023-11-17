@@ -1,18 +1,18 @@
 {
   "Entries": [
     {
-      "RequestUri": "/subscriptions/487bb485-b5b0-471e-9c0d-10717612f869/providers/Microsoft.Security/pricings/VirtualMachines?api-version=2022-03-01",
-      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvNDg3YmI0ODUtYjViMC00NzFlLTljMGQtMTA3MTc2MTJmODY5L3Byb3ZpZGVycy9NaWNyb3NvZnQuU2VjdXJpdHkvcHJpY2luZ3MvVmlydHVhbE1hY2hpbmVzP2FwaS12ZXJzaW9uPTIwMjItMDMtMDE=",
+      "RequestUri": "/subscriptions/487bb485-b5b0-471e-9c0d-10717612f869/providers/Microsoft.Security/pricings/VirtualMachines?api-version=2023-01-01",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvNDg3YmI0ODUtYjViMC00NzFlLTljMGQtMTA3MTc2MTJmODY5L3Byb3ZpZGVycy9NaWNyb3NvZnQuU2VjdXJpdHkvcHJpY2luZ3MvVmlydHVhbE1hY2hpbmVzP2FwaS12ZXJzaW9uPTIwMjMtMDEtMDE=",
       "RequestMethod": "PUT",
       "RequestHeaders": {
         "x-ms-client-request-id": [
-          "1d54e1e9-7588-4aac-ba4c-22174433ebf8"
+          "cc538fd7-9dfd-4953-847f-a62fb0eaeb37"
         ],
         "Accept-Language": [
           "en-US"
         ],
         "User-Agent": [
-          "FxVersion/4.700.22.51102",
+          "FxVersion/6.0.2223.42425",
           "OSName/Windows",
           "OSVersion/Microsoft.Windows.10.0.22621",
           "Microsoft.Azure.Management.Security.SecurityCenterClient/4.0.0.0"
@@ -42,25 +42,25 @@
           "1.0"
         ],
         "x-ms-request-id": [
-          "171a77a2-f499-4e9b-9b6e-982995207ac3"
+          "bffca129-10e6-4d60-b328-f400d27a55aa"
         ],
         "Server": [
           "Kestrel"
         ],
         "x-ms-correlation-request-id": [
-          "124f8c25-2c1a-4c38-93aa-3b0fdf388b4f"
+          "12edec8a-ed6a-42e9-90b9-b5a00c2c6d83"
         ],
         "x-ms-routing-request-id": [
-          "FRANCESOUTH:20221117T094356Z:124f8c25-2c1a-4c38-93aa-3b0fdf388b4f"
+          "FRANCESOUTH:20230928T143339Z:12edec8a-ed6a-42e9-90b9-b5a00c2c6d83"
         ],
         "X-Content-Type-Options": [
           "nosniff"
         ],
         "Date": [
-          "Thu, 17 Nov 2022 09:43:56 GMT"
+          "Thu, 28 Sep 2023 14:33:39 GMT"
         ],
         "Content-Length": [
-          "263"
+          "606"
         ],
         "Content-Type": [
           "application/json; charset=utf-8"
@@ -69,7 +69,7 @@
           "-1"
         ]
       },
-      "ResponseBody": "{\r\n  \"id\": \"/subscriptions/487bb485-b5b0-471e-9c0d-10717612f869/providers/Microsoft.Security/pricings/VirtualMachines\",\r\n  \"name\": \"VirtualMachines\",\r\n  \"type\": \"Microsoft.Security/pricings\",\r\n  \"properties\": {\r\n    \"subPlan\": \"P2\",\r\n    \"pricingTier\": \"Standard\",\r\n    \"freeTrialRemainingTime\": \"PT0S\"\r\n  }\r\n}",
+      "ResponseBody": "{\r\n  \"id\": \"/subscriptions/487bb485-b5b0-471e-9c0d-10717612f869/providers/Microsoft.Security/pricings/VirtualMachines\",\r\n  \"name\": \"VirtualMachines\",\r\n  \"type\": \"Microsoft.Security/pricings\",\r\n  \"properties\": {\r\n    \"extensions\": [\r\n      {\r\n        \"name\": \"MdeDesignatedSubscription\",\r\n        \"isEnabled\": \"False\"\r\n      },\r\n      {\r\n        \"name\": \"AgentlessVmScanning\",\r\n        \"isEnabled\": \"True\",\r\n        \"additionalExtensionProperties\": {\r\n          \"ExclusionTags\": \"[{\\\"key\\\":\\\"Microsoft\\\",\\\"value\\\":\\\"Defender\\\"},{\\\"key\\\":\\\"For\\\",\\\"value\\\":\\\"Cloud\\\"}]\"\r\n        },\r\n        \"operationStatus\": {\r\n          \"code\": \"Succeeded\",\r\n          \"message\": \"Successfully enabled extension\"\r\n        }\r\n      }\r\n    ],\r\n    \"subPlan\": \"P2\",\r\n    \"pricingTier\": \"Standard\",\r\n    \"freeTrialRemainingTime\": \"PT0S\"\r\n  }\r\n}",
       "StatusCode": 200
     },
     {
@@ -78,13 +78,13 @@
       "RequestMethod": "PUT",
       "RequestHeaders": {
         "x-ms-client-request-id": [
-          "db4e0feb-d13f-45e7-8cff-b66e801c85a3"
+          "9dda49d7-1fa7-44e3-953f-b230d94d94bd"
         ],
         "Accept-Language": [
           "en-US"
         ],
         "User-Agent": [
-          "FxVersion/4.700.22.51102",
+          "FxVersion/6.0.2223.42425",
           "OSName/Windows",
           "OSVersion/Microsoft.Windows.10.0.22621",
           "Microsoft.Azure.Management.Security.SecurityCenterClient/4.0.0.0"
@@ -117,16 +117,16 @@
           "1199"
         ],
         "x-ms-correlation-request-id": [
-          "30d97073-8a66-4e5c-828e-a1dece2739aa"
+          "0914cfa9-1933-490b-8e5e-1dc89489a78a"
         ],
         "x-ms-routing-request-id": [
-          "FRANCESOUTH:20221117T094413Z:30d97073-8a66-4e5c-828e-a1dece2739aa"
+          "FRANCESOUTH:20230928T143342Z:0914cfa9-1933-490b-8e5e-1dc89489a78a"
         ],
         "X-Content-Type-Options": [
           "nosniff"
         ],
         "Date": [
-          "Thu, 17 Nov 2022 09:44:12 GMT"
+          "Thu, 28 Sep 2023 14:33:41 GMT"
         ],
         "Content-Length": [
           "645"
@@ -147,13 +147,13 @@
       "RequestMethod": "GET",
       "RequestHeaders": {
         "x-ms-client-request-id": [
-          "f5618083-bc21-4b11-b8ab-258112724503"
+          "320a7937-138c-4ac9-86a0-2ab456d8f202"
         ],
         "Accept-Language": [
           "en-US"
         ],
         "User-Agent": [
-          "FxVersion/4.700.22.51102",
+          "FxVersion/6.0.2223.42425",
           "OSName/Windows",
           "OSVersion/Microsoft.Windows.10.0.22621",
           "Microsoft.Azure.Management.Security.SecurityCenterClient/4.0.0.0"
@@ -180,16 +180,16 @@
           "749"
         ],
         "x-ms-correlation-request-id": [
-          "b56185e8-d03c-49ad-af93-7fb8ffc0c652"
+          "d4a9cc40-3e5a-4c2d-964d-a00462125f2e"
         ],
         "x-ms-routing-request-id": [
-          "FRANCESOUTH:20221117T094414Z:b56185e8-d03c-49ad-af93-7fb8ffc0c652"
+          "FRANCESOUTH:20230928T143343Z:d4a9cc40-3e5a-4c2d-964d-a00462125f2e"
         ],
         "X-Content-Type-Options": [
           "nosniff"
         ],
         "Date": [
-          "Thu, 17 Nov 2022 09:44:14 GMT"
+          "Thu, 28 Sep 2023 14:33:42 GMT"
         ],
         "Content-Length": [
           "645"

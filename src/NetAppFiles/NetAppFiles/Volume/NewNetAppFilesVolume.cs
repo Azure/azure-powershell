@@ -414,7 +414,7 @@ namespace Microsoft.Azure.Commands.NetAppFiles.Volume
             }
             if (ShouldProcess(PoolName, string.Format(PowerShell.Cmdlets.NetAppFiles.Properties.Resources.CreateResourceMessage, Name)))
             {
-                var anfVolume = AzureNetAppFilesManagementClient.Volumes.CreateOrUpdate(volumeBody, ResourceGroupName, AccountName, PoolName, Name);
+                var anfVolume = AzureNetAppFilesManagementClient.Volumes.CreateOrUpdate(ResourceGroupName, AccountName, PoolName, Name, volumeBody);
                 WriteObject(anfVolume.ToPsNetAppFilesVolume());
             }
         }

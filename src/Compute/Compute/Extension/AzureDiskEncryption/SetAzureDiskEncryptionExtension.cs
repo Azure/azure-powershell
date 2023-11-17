@@ -57,13 +57,13 @@ namespace Microsoft.Azure.Commands.Compute.Extension.AzureDiskEncryption
            Position = 2,
            ValueFromPipelineByPropertyName = true,
            ParameterSetName = AzureDiskEncryptionExtensionConstants.aadClientSecretParameterSet,
-           HelpMessage = "Client ID of AAD app with permissions to write secrets to KeyVault")]
+           HelpMessage = "Client ID of Microsoft Entra app with permissions to write secrets to KeyVault")]
         [Parameter(
            Mandatory = true,
            Position = 2,
            ValueFromPipelineByPropertyName = true,
            ParameterSetName = AzureDiskEncryptionExtensionConstants.aadClientCertParameterSet,
-           HelpMessage = "Client ID of AAD app with permissions to write secrets to KeyVault")]
+           HelpMessage = "Client ID of Microsoft Entra app with permissions to write secrets to KeyVault")]
         public string AadClientID { get; set; }
 
         [Parameter(
@@ -71,7 +71,7 @@ namespace Microsoft.Azure.Commands.Compute.Extension.AzureDiskEncryption
             Position = 3,
             ValueFromPipelineByPropertyName = true,
             ParameterSetName = AzureDiskEncryptionExtensionConstants.aadClientSecretParameterSet,
-            HelpMessage = "Client Secret of AAD app with permissions to write secrets to KeyVault")]
+            HelpMessage = "Client Secret of Microsoft Entra app with permissions to write secrets to KeyVault")]
         [ValidateNotNullOrEmpty]
         public string AadClientSecret { get; set; }
 
@@ -80,7 +80,7 @@ namespace Microsoft.Azure.Commands.Compute.Extension.AzureDiskEncryption
             Position = 3,
             ValueFromPipelineByPropertyName = true,
              ParameterSetName = AzureDiskEncryptionExtensionConstants.aadClientCertParameterSet,
-            HelpMessage = "Thumbprint of AAD app certificate with permissions to write secrets to KeyVault")]
+            HelpMessage = "Thumbprint of Microsoft Entra app certificate with permissions to write secrets to KeyVault")]
         [ValidateNotNullOrEmpty]
         public string AadClientCertThumbprint { get; set; }
 
@@ -260,7 +260,7 @@ namespace Microsoft.Azure.Commands.Compute.Extension.AzureDiskEncryption
             Mandatory = true,
             ValueFromPipelineByPropertyName = true,
             ParameterSetName = AzureDiskEncryptionExtensionConstants.migrateAdeVersionParameterSet,
-            HelpMessage = "Migrate VM to newer version of ADE. Specify this parameter only to migrate from ADE with AAD credentials to ADE without AAD credentials.")]
+            HelpMessage = "Migrate VM to newer version of ADE. Specify this parameter only to migrate from ADE with Microsoft Entra credentials to ADE without Microsoft Entra credentials.")]
         public SwitchParameter Migrate { get; set; }
 
         [Parameter(
@@ -769,7 +769,7 @@ namespace Microsoft.Azure.Commands.Compute.Extension.AzureDiskEncryption
             if (!configureVMforMigrate.Response.IsSuccessStatusCode)
             {
                 ThrowTerminatingError(new ErrorRecord(new ApplicationException(string.Format(CultureInfo.CurrentUICulture,
-                                                                                "Migration failed while installing Azure Disk Encryption extension (with AAD). Error {0}",
+                                                                                "Migration failed while installing Azure Disk Encryption extension (with Microsoft Entra ID). Error {0}",
                                                                                 configureVMforMigrate.Response.Content.ReadAsStringAsync().GetAwaiter().GetResult())),
                                                         "InvalidResult",
                                                         ErrorCategory.InvalidResult,
@@ -777,7 +777,7 @@ namespace Microsoft.Azure.Commands.Compute.Extension.AzureDiskEncryption
             }
 
             // Update EncryptionSettings.Enabled to False
-            this.WriteObject("ADE extension (with AAD) is now complete. Updating VM model..");
+            this.WriteObject("ADE extension (with Microsoft Entra ID) is now complete. Updating VM model..");
             var setEncryptionEnabledFalse = UpdateVmEncryptionSettingsForMigration();
             if (!setEncryptionEnabledFalse.Response.IsSuccessStatusCode)
             {
@@ -790,7 +790,7 @@ namespace Microsoft.Azure.Commands.Compute.Extension.AzureDiskEncryption
 
         private void EnableSinglePassADEForMigration(PSVirtualMachineExtension adeExtensionInstanceView, Hashtable vmPublicSettings)
         {
-            this.WriteObject("Running ADE extension (without AAD) for -Migrate..");
+            this.WriteObject("Running ADE extension (without Microsoft Entra ID) for -Migrate..");
             string typeHandlerVersionForMigration;
             if (OperatingSystemTypes.Linux.Equals(currentOSType))
             {

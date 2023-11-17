@@ -22,6 +22,7 @@ using System.Collections.Generic;
 using System;
 using SubResource = Microsoft.Azure.Management.Compute.Models.SubResource;
 using Microsoft.Azure.Commands.Compute.Models;
+using Microsoft.Azure.Commands.Compute.Common;
 
 namespace Microsoft.Azure.Commands.Compute.Strategies.ComputeRp
 {
@@ -115,16 +116,23 @@ namespace Microsoft.Azure.Commands.Compute.Strategies.ComputeRp
                         },
                         StorageProfile = new StorageProfile
                         {
-                            //ImageReference = (imageReferenceId.Contains("CommunityGalleries")) ? new ImageReference { CommunityGalleryImageId = imageReferenceId}
-                            ImageReference = (imageReferenceId == null) ? imageAndOsType?.Image : (imageReferenceId.ToLower().StartsWith("/communitygalleries/") ? new ImageReference
-                            {
-                                CommunityGalleryImageId = imageReferenceId,
-                                SharedGalleryImageId = sharedGalleryImageId
-                            }: new ImageReference
-                            {
-                                Id = imageReferenceId,
-                                SharedGalleryImageId = sharedGalleryImageId
-                            }),
+                            ImageReference = (imageReferenceId == null && sharedGalleryImageId == null) ? imageAndOsType?.Image
+                                : (sharedGalleryImageId != null ? new ImageReference
+                                {
+                                    SharedGalleryImageId = sharedGalleryImageId
+                                }
+                                : (imageReferenceId.ToLower().StartsWith("/communitygalleries/") ? new ImageReference
+                                {
+                                    CommunityGalleryImageId = imageReferenceId,
+                                }
+                                : (imageReferenceId.ToLower().StartsWith("/sharedgalleries/") ? new ImageReference
+                                {
+                                    SharedGalleryImageId = imageReferenceId
+                                }
+                                : new ImageReference
+                                {
+                                    Id = imageReferenceId
+                                }))),
                             OsDisk = new OSDisk(
                                 createOption: DiskCreateOptionTypes.FromImage,
                                 deleteOption: osDiskDeleteOption),
@@ -142,7 +150,7 @@ namespace Microsoft.Azure.Commands.Compute.Strategies.ComputeRp
                         Priority = priority,
                         EvictionPolicy = evictionPolicy,
                         BillingProfile = (maxPrice == null) ? null : new BillingProfile(maxPrice),
-                        SecurityProfile = (encryptionAtHostPresent == true || enableVtpm != null || enableSecureBoot != null || securityType != null)
+                        SecurityProfile = ((encryptionAtHostPresent == true || enableVtpm != null || enableSecureBoot != null || securityType != null) && (securityType?.ToLower() != ConstantValues.StandardSecurityType))
                     ? new SecurityProfile
                     {
                         EncryptionAtHost = encryptionAtHostPresent,
@@ -242,7 +250,7 @@ namespace Microsoft.Azure.Commands.Compute.Strategies.ComputeRp
                     Priority = priority,
                     EvictionPolicy = evictionPolicy,
                     BillingProfile = (maxPrice == null) ? null : new BillingProfile(maxPrice),
-                    SecurityProfile = (encryptionAtHostPresent == true || enableVtpm != null || enableSecureBoot != null || securityType!= null) 
+                    SecurityProfile = ((encryptionAtHostPresent == true || enableVtpm != null || enableSecureBoot != null || securityType!= null) && (securityType?.ToLower() != ConstantValues.StandardSecurityType)) 
                     ? new SecurityProfile
                     {
                         EncryptionAtHost = encryptionAtHostPresent,

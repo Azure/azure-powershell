@@ -21,6 +21,7 @@ using System.Collections.Generic;
 using System;
 using Microsoft.Azure.Commands.Common.Strategies;
 using CM = Microsoft.Azure.Management.Compute.Models;
+using Microsoft.Azure.Commands.Compute.Common;
 
 namespace Microsoft.Azure.Commands.Compute.Strategies.ComputeRp
 {
@@ -99,7 +100,7 @@ namespace Microsoft.Azure.Commands.Compute.Strategies.ComputeRp
                         PlatformFaultDomainCount = platformFaultDomainCount,
                         VirtualMachineProfile = new VirtualMachineScaleSetVMProfile
                         {
-                            SecurityProfile = (encryptionAtHost == true || enableVtpm != null || enableSecureBoot != null || securityType != null) 
+                            SecurityProfile = ((encryptionAtHost == true || enableVtpm != null || enableSecureBoot != null || securityType != null) && (securityType?.ToLower() != ConstantValues.StandardSecurityType)) 
                             ? new SecurityProfile
                             {
                                 EncryptionAtHost = encryptionAtHost,
@@ -116,15 +117,23 @@ namespace Microsoft.Azure.Commands.Compute.Strategies.ComputeRp
                             },
                             StorageProfile = new VirtualMachineScaleSetStorageProfile
                             {
-                                ImageReference = (imageReferenceId == null) ? imageAndOsType?.Image : (imageReferenceId.ToLower().StartsWith("/communitygalleries/") ? new ImageReference
+                                ImageReference = (imageReferenceId == null && sharedImageGalleryId == null) ? imageAndOsType?.Image 
+                                : (sharedImageGalleryId != null ? new ImageReference
+                                {
+                                    SharedGalleryImageId = sharedImageGalleryId
+                                }
+                                : (imageReferenceId.ToLower().StartsWith("/communitygalleries/") ? new ImageReference
                                 {
                                     CommunityGalleryImageId = imageReferenceId,
-                                    SharedGalleryImageId = sharedImageGalleryId
-                                } : new ImageReference
+                                } 
+                                : (imageReferenceId.ToLower().StartsWith("/sharedgalleries/") ? new ImageReference
                                 {
-                                    Id = imageReferenceId,
-                                    SharedGalleryImageId = sharedImageGalleryId
-                                }),
+                                    SharedGalleryImageId = imageReferenceId
+                                }
+                                : new ImageReference
+                                {
+                                    Id = imageReferenceId
+                                }))),
                                 DataDisks = DataDiskStrategy.CreateVmssDataDisks(
                                     imageAndOsType?.DataDiskLuns, dataDisks),
                                 DiskControllerType = diskControllerType
@@ -231,7 +240,7 @@ namespace Microsoft.Azure.Commands.Compute.Strategies.ComputeRp
                     PlatformFaultDomainCount = platformFaultDomainCount,
                     VirtualMachineProfile = new VirtualMachineScaleSetVMProfile
                     {
-                        SecurityProfile = (encryptionAtHost == true || enableVtpm != null || enableSecureBoot != null || securityType != null) 
+                        SecurityProfile = ((encryptionAtHost == true || enableVtpm != null || enableSecureBoot != null || securityType != null) && (securityType?.ToLower() != ConstantValues.StandardSecurityType)) 
                         ? new SecurityProfile
                         {
                             EncryptionAtHost = encryptionAtHost,

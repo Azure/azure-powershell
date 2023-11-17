@@ -101,7 +101,7 @@ namespace Microsoft.Azure.Commands.Sql.ServerConfigurationOptions.Services
                 Id = serverConfigurationOption.Id,
                 Type = serverConfigurationOption.Type,
                 Name = serverConfigurationOption.Name,
-                Value = serverConfigurationOption.ServerConfigurationOptionValue
+                Value = serverConfigurationOption.ServerConfigurationOptionValue.Value
             };
             return serverConfigurationOptionsModel;
         }

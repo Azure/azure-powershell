@@ -36,12 +36,6 @@ namespace Microsoft.Azure.Management.KeyVault
 
 
         /// <summary>
-        /// The API version to use for this operation.
-        /// </summary>
-        string ApiVersion { get;}
-
-
-        /// <summary>
         /// Subscription credentials which uniquely identify Microsoft Azure subscription. The subscription ID forms part of the URI for every service call.
         /// </summary>
         string SubscriptionId { get; set;}
@@ -97,6 +91,11 @@ namespace Microsoft.Azure.Management.KeyVault
         /// Gets the IMhsmPrivateLinkResourcesOperations
         /// </summary>
         IMhsmPrivateLinkResourcesOperations MhsmPrivateLinkResources { get; }
+
+        /// <summary>
+        /// Gets the IMhsmRegionsOperations
+        /// </summary>
+        IMhsmRegionsOperations MhsmRegions { get; }
 
     }
 }

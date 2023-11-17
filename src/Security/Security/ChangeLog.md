@@ -20,6 +20,12 @@
 
 ## Upcoming Release
 
+## Version 1.5.0
+* Fixed some minor issues
+* Updated Pricing cmdlets to support extensions
+    `Get-AzSecurityPricing`
+    `Set-AzSecurityPricing`
+
 ## Version 1.4.0
 * Updated Alerts cmdlets:
     `Get-AzSecurityAlert`

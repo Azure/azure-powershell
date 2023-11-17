@@ -1,0 +1,52 @@
+{
+  "resourceType": "flexibleServers/configurations",
+  "apiVersion": "2021-06-01",
+  "learnMore": {
+    "url": "https://learn.microsoft.com/powershell/module/az.postgresql"
+  },
+  "commands": [
+    {
+      "name": "Get-AzPostgreSqlFlexibleServerConfiguration",
+      "description": "Gets information about a configuration of server.",
+      "path": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DBforPostgreSQL/flexibleServers/{serverName}/configurations/{configurationName}",
+      "help": {
+        "learnMore": {
+          "url": "https://learn.microsoft.com/powershell/module/az.postgresql/get-azpostgresqlflexibleserverconfiguration"
+        },
+        "parameterSets": [
+          {
+            "parameters": [
+              "-Name <String>",
+              "-ResourceGroupName <String>",
+              "-ServerName <String>",
+              "[-SubscriptionId <String[]>]"
+            ]
+          }
+        ]
+      },
+      "examples": [
+        {
+          "description": "Gets information about a configuration of server.",
+          "parameters": [
+            {
+              "name": "-Name",
+              "value": "[Path.configurationName]"
+            },
+            {
+              "name": "-ResourceGroupName",
+              "value": "[Path.resourceGroupName]"
+            },
+            {
+              "name": "-ServerName",
+              "value": "[Path.serverName]"
+            },
+            {
+              "name": "-SubscriptionId",
+              "value": "[Path.subscriptionId]"
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

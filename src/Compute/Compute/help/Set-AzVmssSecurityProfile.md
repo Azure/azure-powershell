@@ -405,12 +405,13 @@ Accept wildcard characters: False
 ```
 
 ### -SecurityType
-Parameter to set the SecurityType on the VMs of the scale set. Possible values are TrustedLaunch, ConfidentialVM
+Parameter to set the SecurityType on the VMs of the scale set.
 
 ```yaml
 Type: System.String
 Parameter Sets: (All)
 Aliases:
+Accepted values: TrustedLaunch, ConfidentialVM, Standard
 
 Required: False
 Position: 1

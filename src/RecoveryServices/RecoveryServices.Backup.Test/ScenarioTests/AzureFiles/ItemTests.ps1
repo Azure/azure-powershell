@@ -52,6 +52,38 @@ $newPolicyName = "NewAFSBackupPolicy"
 #		-RetentionPolicy $retentionPolicy `
 #		-SchedulePolicy $schedulePolicy
 
+function Test-AzureFSRestoreToAnotherRegion
+{
+	# testing AFS restore to different region and resource group than the source
+	$targetFileShareName = "drfs"
+	$targetSaName = "afsrestorediffregion2"
+
+	try
+	{
+		$vault = Get-AzRecoveryServicesVault -ResourceGroupName $resourceGroupName -Name $vaultName
+		$items = Get-AzRecoveryServicesBackupItem -VaultId $vault.ID -BackupManagementType AzureStorage -WorkloadType AzureFiles
+
+		$backupJob = Backup-Item $vault $items[0]
+
+		$backupStartTime = $backupJob.StartTime.AddMinutes(-1);
+		$backupEndTime = $backupJob.EndTime.AddMinutes(1);
+
+		$rp = Get-AzRecoveryServicesBackupRecoveryPoint `
+			-VaultId $vault.ID `
+			-StartDate $backupStartTime `
+			-EndDate $backupEndTime `
+			-Item $items[0];
+			
+		$restoreJob = Restore-AzRecoveryServicesBackupItem -RecoveryPoint $rp[0] -ResolveConflict Overwrite -VaultId $vault.ID -VaultLocation $vault.Location -TargetStorageAccountName $targetSaName -TargetFileShareName $targetFileShareName | Wait-AzRecoveryServicesBackupJob -VaultId $vault.ID
+
+		Assert-True { $restoreJob.Status -eq "Completed" }
+	}
+	finally
+	{
+		# no cleanup
+	}
+}
+
 function Test-AzureFSItem
 {
 	try

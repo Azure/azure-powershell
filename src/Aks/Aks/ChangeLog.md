@@ -19,6 +19,9 @@
 -->
 ## Upcoming Release
 
+## Version 6.0.0
+* Removed parameter `DockerBridgeCidr` from `New-AzAksCluster`
+
 ## Version 5.5.1
 * Fixed the issue of handling `nextLink` in `Set-AzAksCluster`. [#21846]
 * Fixed the issue of parameter `AcrNameToDetach` in `Set-AzAksCluster` due to role assignment name is a guid.

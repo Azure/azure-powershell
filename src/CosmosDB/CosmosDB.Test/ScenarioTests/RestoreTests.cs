@@ -32,6 +32,13 @@ namespace Microsoft.Azure.Commands.CosmosDB.Test.ScenarioTests.ScenarioTest
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void TestSqlRestoreAccountPublicNetworkAccessCmdlets()
+        {
+            TestRunner.RunTestScript("Test-SqlRestoreAccountPublicNetworkAccessCmdlets");
+        }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestSqlRestoreFromNewAccountCmdlets()
         {
             TestRunner.RunTestScript("Test-SqlRestoreFromNewAccountCmdlets");

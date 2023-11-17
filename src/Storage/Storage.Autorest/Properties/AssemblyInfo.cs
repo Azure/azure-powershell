@@ -23,6 +23,6 @@ using System.Runtime.InteropServices;
 
 [assembly: ComVisible(false)]
 [assembly: CLSCompliant(false)]
-[assembly: Guid("f2403abc-a889-4f45-8d2b-f816c3878da4")]
-[assembly: AssemblyVersion("5.9.1")]
-[assembly: AssemblyFileVersion("5.9.1")]
+[assembly: Guid("d662e7dc-4c4c-46f3-84cf-b1513ab052d1")]
+[assembly: AssemblyVersion("6.0.0")]
+[assembly: AssemblyFileVersion("6.0.0")]

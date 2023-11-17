@@ -100,7 +100,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets
 
                 string backupManagementType = "";
                 string workloadType = "";
-                ODataQuery<BMSPOQueryObject> queryParam = null;
+                ODataQuery<BmspoQueryObject> queryParam = null;
 
                 if (ParameterSetName == IdParamSet)
                 {
@@ -114,7 +114,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets
                     {
                         workloadType = ServiceClientModel.WorkloadType.SQLDataBase;
                     }
-                    queryParam = new ODataQuery<BMSPOQueryObject>(
+                    queryParam = new ODataQuery<BmspoQueryObject>(
                     q => q.BackupManagementType
                      == backupManagementType &&
                      q.WorkloadType == workloadType &&
@@ -128,7 +128,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets
                         backupManagementType = Container.BackupManagementType.ToString();
                         workloadType = ConversionUtils.GetServiceClientWorkloadType(WorkloadType.ToString());
                         containerName = Container.Name;
-                        queryParam = new ODataQuery<BMSPOQueryObject>(
+                        queryParam = new ODataQuery<BmspoQueryObject>(
                         q => q.BackupManagementType
                             == backupManagementType &&
                             q.WorkloadType == workloadType &&
@@ -138,7 +138,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets
                     {
                         backupManagementType = "AzureWorkload";
                         workloadType = ConversionUtils.GetServiceClientWorkloadType(WorkloadType.ToString());
-                        queryParam = new ODataQuery<BMSPOQueryObject>(
+                        queryParam = new ODataQuery<BmspoQueryObject>(
                         q => q.BackupManagementType
                          == backupManagementType &&
                          q.WorkloadType == workloadType);
@@ -241,7 +241,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets
 
                         if(sqlAGContainer != null)
                         {
-                            AzureSQLAGWorkloadContainerProtectionContainer protectionContainer = (AzureSQLAGWorkloadContainerProtectionContainer)sqlAGContainer.Properties;
+                            AzureSqlagWorkloadContainerProtectionContainer protectionContainer = (AzureSqlagWorkloadContainerProtectionContainer)sqlAGContainer.Properties;
 
                             if (protectionContainer != null && protectionContainer.ExtendedInfo != null)
                             {

@@ -212,7 +212,7 @@ Accept wildcard characters: False
 ```
 
 ### -AzureActiveDirectoryApplicationIdOrUri
-The Azure Active Directory (AAD) Application Id or Uri to get the access token that will be included as the bearer token in delivery requests.Applicable only for webhook as a destination.
+The Microsoft Entra Application Id or Uri to get the access token that will be included as the bearer token in delivery requests.Applicable only for webhook as a destination.
 
 ```yaml
 Type: System.String
@@ -239,7 +239,7 @@ Accept wildcard characters: False
 ```
 
 ### -AzureActiveDirectoryTenantId
-The Azure Active Directory (AAD) Tenant Id to get the access token that will be included as the bearer token in delivery requests.Applicable only for webhook as a destination.
+The Microsoft Entra tenant Id to get the access token that will be included as the bearer token in delivery requests.Applicable only for webhook as a destination.
 
 ```yaml
 Type: System.String

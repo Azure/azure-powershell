@@ -78,7 +78,7 @@ namespace Microsoft.Azure.Commands.WebApps.Cmdlets.AppServicePlans
         public override void ExecuteCmdlet()
         {
             if (HyperV.IsPresent &&
-                (Tier != "PremiumContainer" && Tier != "PremiumV3" && Tier != "IsolatedV2"))
+                (Tier != "PremiumContainer" && Tier != "PremiumV3" && Tier != "IsolatedV2" && Tier != "PremiumMV3"))
             {
                 throw new Exception("HyperV switch is only allowed for PremiumContainer ,  PremiumV3 or IsolatedV2 tiers");
             }

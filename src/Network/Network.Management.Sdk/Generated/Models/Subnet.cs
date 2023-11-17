@@ -77,13 +77,17 @@ namespace Microsoft.Azure.Management.Network.Models
         /// Possible values include: 'Enabled', 'Disabled'</param>
         /// <param name="applicationGatewayIPConfigurations">Application
         /// gateway IP configurations of virtual network resource.</param>
+        /// <param name="defaultOutboundAccess">Set this property to false to
+        /// disable default outbound connectivity for all VMs in the subnet.
+        /// This property can only be set at the time of subnet creation and
+        /// cannot be updated for an existing subnet.</param>
         /// <param name="name">The name of the resource that is unique within a
         /// resource group. This name can be used to access the
         /// resource.</param>
         /// <param name="etag">A unique read-only string that changes whenever
         /// the resource is updated.</param>
         /// <param name="type">Resource type.</param>
-        public Subnet(string id = default(string), string addressPrefix = default(string), IList<string> addressPrefixes = default(IList<string>), NetworkSecurityGroup networkSecurityGroup = default(NetworkSecurityGroup), RouteTable routeTable = default(RouteTable), SubResource natGateway = default(SubResource), IList<ServiceEndpointPropertiesFormat> serviceEndpoints = default(IList<ServiceEndpointPropertiesFormat>), IList<ServiceEndpointPolicy> serviceEndpointPolicies = default(IList<ServiceEndpointPolicy>), IList<PrivateEndpoint> privateEndpoints = default(IList<PrivateEndpoint>), IList<IPConfiguration> ipConfigurations = default(IList<IPConfiguration>), IList<IPConfigurationProfile> ipConfigurationProfiles = default(IList<IPConfigurationProfile>), IList<SubResource> ipAllocations = default(IList<SubResource>), IList<ResourceNavigationLink> resourceNavigationLinks = default(IList<ResourceNavigationLink>), IList<ServiceAssociationLink> serviceAssociationLinks = default(IList<ServiceAssociationLink>), IList<Delegation> delegations = default(IList<Delegation>), string purpose = default(string), string provisioningState = default(string), string privateEndpointNetworkPolicies = default(string), string privateLinkServiceNetworkPolicies = default(string), IList<ApplicationGatewayIPConfiguration> applicationGatewayIPConfigurations = default(IList<ApplicationGatewayIPConfiguration>), string name = default(string), string etag = default(string), string type = default(string))
+        public Subnet(string id = default(string), string addressPrefix = default(string), IList<string> addressPrefixes = default(IList<string>), NetworkSecurityGroup networkSecurityGroup = default(NetworkSecurityGroup), RouteTable routeTable = default(RouteTable), SubResource natGateway = default(SubResource), IList<ServiceEndpointPropertiesFormat> serviceEndpoints = default(IList<ServiceEndpointPropertiesFormat>), IList<ServiceEndpointPolicy> serviceEndpointPolicies = default(IList<ServiceEndpointPolicy>), IList<PrivateEndpoint> privateEndpoints = default(IList<PrivateEndpoint>), IList<IPConfiguration> ipConfigurations = default(IList<IPConfiguration>), IList<IPConfigurationProfile> ipConfigurationProfiles = default(IList<IPConfigurationProfile>), IList<SubResource> ipAllocations = default(IList<SubResource>), IList<ResourceNavigationLink> resourceNavigationLinks = default(IList<ResourceNavigationLink>), IList<ServiceAssociationLink> serviceAssociationLinks = default(IList<ServiceAssociationLink>), IList<Delegation> delegations = default(IList<Delegation>), string purpose = default(string), string provisioningState = default(string), string privateEndpointNetworkPolicies = default(string), string privateLinkServiceNetworkPolicies = default(string), IList<ApplicationGatewayIPConfiguration> applicationGatewayIPConfigurations = default(IList<ApplicationGatewayIPConfiguration>), bool? defaultOutboundAccess = default(bool?), string name = default(string), string etag = default(string), string type = default(string))
             : base(id)
         {
             AddressPrefix = addressPrefix;
@@ -105,6 +109,7 @@ namespace Microsoft.Azure.Management.Network.Models
             PrivateEndpointNetworkPolicies = privateEndpointNetworkPolicies;
             PrivateLinkServiceNetworkPolicies = privateLinkServiceNetworkPolicies;
             ApplicationGatewayIPConfigurations = applicationGatewayIPConfigurations;
+            DefaultOutboundAccess = defaultOutboundAccess;
             Name = name;
             Etag = etag;
             Type = type;
@@ -239,6 +244,15 @@ namespace Microsoft.Azure.Management.Network.Models
         /// </summary>
         [JsonProperty(PropertyName = "properties.applicationGatewayIPConfigurations")]
         public IList<ApplicationGatewayIPConfiguration> ApplicationGatewayIPConfigurations { get; set; }
+
+        /// <summary>
+        /// Gets or sets set this property to false to disable default outbound
+        /// connectivity for all VMs in the subnet. This property can only be
+        /// set at the time of subnet creation and cannot be updated for an
+        /// existing subnet.
+        /// </summary>
+        [JsonProperty(PropertyName = "properties.defaultOutboundAccess")]
+        public bool? DefaultOutboundAccess { get; set; }
 
         /// <summary>
         /// Gets or sets the name of the resource that is unique within a

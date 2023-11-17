@@ -33,7 +33,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets
 
         [Parameter(Mandatory = false, ValueFromPipeline = false, ParameterSetName = AzureRSVaultSoftDelteParameterSet)]
         [ValidateNotNullOrEmpty]
-        [ValidateSet("Enable", "Disable")]
+        [ValidateSet("Enable", "Disable", "AlwaysON")]
         public string SoftDeleteFeatureState { get; set; }
 
         [Parameter(Mandatory = false, ValueFromPipeline = false, ParameterSetName = AzureRSVaultSoftDelteParameterSet, HelpMessage = ParamHelpMsgs.ResourceGuard.AuxiliaryAccessToken)]
@@ -80,9 +80,10 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets
                     {
                         BackupResourceVaultConfigResource currentConfig = ServiceClientAdapter.GetVaultProperty(vaultName, resourceGroupName);
                         BackupResourceVaultConfigResource param = new BackupResourceVaultConfigResource();
-                        param.Properties = new BackupResourceVaultConfig();                        
+                        param.Properties = new BackupResourceVaultConfig();
 
-                        param.Properties.SoftDeleteFeatureState = (SoftDeleteFeatureState != null) ? SoftDeleteFeatureState + "d" : currentConfig.Properties.SoftDeleteFeatureState;
+                        param.Properties.SoftDeleteFeatureState = (SoftDeleteFeatureState.ToLower() == "alwayson") ? "AlwaysON" : ((SoftDeleteFeatureState != null) ? SoftDeleteFeatureState + "d" : currentConfig.Properties.SoftDeleteFeatureState);
+
                         param.Properties.EnhancedSecurityState = (DisableHybridBackupSecurityFeature != null) ? (((bool)DisableHybridBackupSecurityFeature) ? "Disabled" : "Enabled") : currentConfig.Properties.EnhancedSecurityState;
 
                         bool isMUAProtected = checkMUAForSoftDelete(currentConfig, param);
