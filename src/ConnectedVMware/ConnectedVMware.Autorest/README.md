@@ -33,7 +33,7 @@ For information on how to develop for `Az.ConnectedVMware`, see [how-to.md](how-
 branch: bab2f4389eb5ca73cdf366ec0a4af3f3eb6e1f6d
 require:
 # readme.azure.noprofile.md is the common configuration file
-  - $(this-folder)/../readme.azure.noprofile.md
+  - $(this-folder)/../../readme.azure.noprofile.md
 input-file:
 # You need to specify your swagger files here.
   # - $(repo)/specification/connectedvmware/resource-manager/Microsoft.ConnectedVMwarevSphere/preview/2022-01-10-preview/connectedvmware.json
