@@ -19,21 +19,25 @@ namespace Microsoft.Azure.PowerShell.Tools.AzPredictor.Test.Mocks
 {
     sealed class MockAzContext : IAzContext
     {
+        public string InstallationId => Guid.Empty.ToString();
+
         public string HashUserId => "TestUserId";
 
         public string MacAddress => "TestMacAddress";
 
         public string OSVersion => "TestOSVersion";
 
-        public Version PowerShellVersion => Version.Parse("0.0.0.0");
+        public Version PowerShellVersion => new();
 
-        public Version ModuleVersion => Version.Parse("0.0.0.0");
+        public Version ModuleVersion => new();
 
-        public Version AzVersion => Version.Parse("0.0.0.0");
+        public Version AzVersion => new();
 
         public int Cohort { get; set; } = -1;
 
         public bool IsInternal => true;
+
+        public string HostEnvironment => "TestEnvironment";
 
         public Runspace DefaultRunspace => default;
 

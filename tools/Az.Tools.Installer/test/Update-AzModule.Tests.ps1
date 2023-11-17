@@ -31,8 +31,11 @@ Describe 'Update-AzModule' {
         $modules.Name | Should -Contain 'Az.Attestation'
         $modules.Name | Should -Contain 'Az.Compute'
         $modules.Name | Should -Contain 'Az.Resources'
-        $modules.Name | Should -Contain 'Az.Network'  
-        $modules.Name | Should -Contain 'Az.Storage'         
+        $modules.Name | Should -Contain 'Az.Network'
+        $modules.Name | Should -Contain 'Az.Storage'
+
+        $allmoduleInstalled = @('Az.Accounts', 'Az.Attestation', 'Az.Compute', 'Az.Resources', 'Az.Storage', 'Az.Network')
+        (Get-InstalledModule -Name $allmoduleInstalled).Repository | Sort-Object -Unique | Should -Be 'PSGallery'
     }
 
     It 'UpdateAllKeepPrevious' {
@@ -44,8 +47,11 @@ Describe 'Update-AzModule' {
         $modules.Name | Should -Contain 'Az.Attestation'
         $modules.Name | Should -Contain 'Az.Compute'
         $modules.Name | Should -Contain 'Az.Resources'
-        $modules.Name | Should -Contain 'Az.Network'  
-        $modules.Name | Should -Contain 'Az.Storage'              
+        $modules.Name | Should -Contain 'Az.Network'
+        $modules.Name | Should -Contain 'Az.Storage'
+
+        $allmoduleInstalled = @('Az.Accounts', 'Az.Attestation', 'Az.Compute', 'Az.Resources', 'Az.Storage', 'Az.Network')
+        (Get-InstalledModule -Name $allmoduleInstalled).Repository | Sort-Object -Unique | Should -Be 'PSGallery'
     }
 
     It 'UpdateAllReplacePrevious' {
@@ -56,12 +62,15 @@ Describe 'Update-AzModule' {
         $modules.Name | Should -Contain 'Az.Attestation'
         $modules.Name | Should -Contain 'Az.Compute'
         $modules.Name | Should -Contain 'Az.Resources'
-        $modules.Name | Should -Contain 'Az.Network'  
-        $modules.Name | Should -Contain 'Az.Storage'  
-        
-        foreach($module in $output) {
+        $modules.Name | Should -Contain 'Az.Network'
+        $modules.Name | Should -Contain 'Az.Storage'
+
+        foreach ($module in $output) {
             (Find-Module -Name $module.Name -Repository PSGallery).Version | Should -Be $module.VersionUpdate
         }
+
+        $allmoduleInstalled = @('Az.Accounts', 'Az.Attestation', 'Az.Compute', 'Az.Resources', 'Az.Storage', 'Az.Network')
+        (Get-InstalledModule -Name $allmoduleInstalled).Repository | Sort-Object -Unique | Should -Be 'PSGallery'
     }
 
     It 'UpdateByUnexistingName' {
@@ -73,8 +82,11 @@ Describe 'Update-AzModule' {
         $modules.Name | Should -Contain 'Az.Attestation'
         $modules.Name | Should -Contain 'Az.Compute'
         $modules.Name | Should -Contain 'Az.Resources'
-        $modules.Name | Should -Contain 'Az.Network'  
+        $modules.Name | Should -Contain 'Az.Network'
         $modules.Name | Should -Contain 'Az.Storage'
+
+        $allmoduleInstalled = @('Az.Accounts', 'Az.Attestation', 'Az.Compute', 'Az.Resources', 'Az.Storage', 'Az.Network')
+        (Get-InstalledModule -Name $allmoduleInstalled).Repository | Sort-Object -Unique | Should -Be 'PSGallery'
     }
 
     It 'UpdateWithoutAzAccounts' {
@@ -82,10 +94,35 @@ Describe 'Update-AzModule' {
         $output.Count | Should -Be 2
         $output = [Array] (Update-AzModule -Name compute -Repository PSGallery -Scope 'CurrentUser')
         $output.Count | Should -Be 1
+
+        (Get-InstalledModule -Name Az.Storage).Repository | Should -Be 'PSGallery'
+    }
+
+    It 'UpdateWithoutRepository' {
+        $repos = [Array](Get-PSRepository | Where-Object {$_.Name -ne 'PSGallery'})
+        if ($repos -ne $null) {
+            $repos | Unregister-PSRepository
+        }
+        try {
+            $output = Update-AzModule -Name storage -Scope 'CurrentUser'
+            $output.Count | Should -Be 2
+            (Get-InstalledModule -Name Az.Storage).Repository | Should -Be 'PSGallery'
+        }
+        finally {
+            foreach ($repo in $repos) {
+                if ($repo.Name -ne 'PSGallery') {
+                    $parameters = @{
+                        Name = $repo.Name
+                        SourceLocation = $repo.SourceLocation
+                        InstallationPolicy = $repo.InstallationPolicy
+                    }
+                    Register-PSRepository @parameters
+                }
+            }
+        }
     }
 
     AfterEach {
-        Remove-AllAzModule       
+        Remove-AllAzModule
     }
 }
-

@@ -1,0 +1,1624 @@
+{
+  "New-AzBillingBenefitsReservationOrderAlias+[NoContext]+CreateExpanded+$PUT+https://management.azure.com/providers/Microsoft.BillingBenefits/reservationOrderAliases/PSRITest1?api-version=2022-11-01+1": {
+    "Request": {
+      "Method": "PUT",
+      "RequestUri": "https://management.azure.com/providers/Microsoft.BillingBenefits/reservationOrderAliases/PSRITest1?api-version=2022-11-01",
+      "Content": "{\r\n  \"sku\": {\r\n    \"name\": \"Standard_B1ls\"\r\n  },\r\n  \"properties\": {\r\n    \"displayName\": \"PSRITest1\",\r\n    \"billingScopeId\": \"/subscriptions/eef82110-c91b-4395-9420-fcfcbefc5a47\",\r\n    \"term\": \"P1Y\",\r\n    \"billingPlan\": \"P1M\",\r\n    \"appliedScopeType\": \"Shared\",\r\n    \"quantity\": 1,\r\n    \"reservedResourceType\": \"VirtualMachines\"\r\n  },\r\n  \"location\": \"westus\"\r\n}",
+      "isContentBase64": false,
+      "Headers": {},
+      "ContentHeaders": {
+        "Content-Type": [
+          "application/json"
+        ],
+        "Content-Length": [
+          "360"
+        ]
+      }
+    },
+    "Response": {
+      "StatusCode": 201,
+      "Headers": {
+        "Cache-Control": [
+          "no-cache"
+        ],
+        "Pragma": [
+          "no-cache"
+        ],
+        "Retry-After": [
+          "5"
+        ],
+        "Azure-AsyncOperation": [
+          "https://management.azure.com/providers/Microsoft.Capacity/operationResults/5f91a83e-f430-4cff-8e57-0fca9a63dd47?api-version=2020-10-01-preview"
+        ],
+        "x-ms-request-id": [
+          "910a0a00-ac6c-4180-a01d-e535453b8a96"
+        ],
+        "x-ms-version": [
+          "1.0.2141.1412"
+        ],
+        "x-ms-ratelimit-remaining-tenant-writes": [
+          "1199"
+        ],
+        "x-ms-correlation-request-id": [
+          "9346d382-3973-44bd-b84e-1e2dbe1a11f2"
+        ],
+        "x-ms-routing-request-id": [
+          "WESTCENTRALUS:20221130T005801Z:9346d382-3973-44bd-b84e-1e2dbe1a11f2"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
+        ],
+        "X-Content-Type-Options": [
+          "nosniff"
+        ],
+        "Date": [
+          "Wed, 30 Nov 2022 00:58:01 GMT"
+        ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [
+          "684"
+        ],
+        "Content-Type": [
+          "application/json; charset=utf-8"
+        ],
+        "Expires": [
+          "-1"
+        ]
+      },
+      "Content": "{\"id\":\"/providers/Microsoft.BillingBenefits/reservationOrderAliases/PSRITest1\",\"name\":\"PSRITest1\",\"type\":\"Microsoft.BillingBenefits/reservationOrderAliases\",\"location\":\"westus\",\"kind\":null,\"sku\":{\"name\":\"Standard_B1ls\"},\"properties\":{\"reservationOrderId\":\"/providers/Microsoft.Capacity/reservationOrders/2dc02437-0edb-4574-8188-b6bbf588f099\",\"billingScopeId\":\"/subscriptions/eef82110-c91b-4395-9420-fcfcbefc5a47\",\"appliedScopeProperties\":null,\"quantity\":1,\"renew\":null,\"billingPlan\":\"P1M\",\"reservedResourceProperties\":null,\"reservedResourceType\":\"VirtualMachines\",\"reviewDateTime\":null,\"appliedScopeType\":\"Shared\",\"displayName\":\"PSRITest1\",\"provisioningState\":\"Created\",\"term\":\"P1Y\"}}",
+      "isContentBase64": false
+    }
+  },
+  "New-AzBillingBenefitsReservationOrderAlias+[NoContext]+CreateExpanded+$GET+https://management.azure.com/providers/Microsoft.Capacity/operationResults/5f91a83e-f430-4cff-8e57-0fca9a63dd47?api-version=2020-10-01-preview+2": {
+    "Request": {
+      "Method": "GET",
+      "RequestUri": "https://management.azure.com/providers/Microsoft.Capacity/operationResults/5f91a83e-f430-4cff-8e57-0fca9a63dd47?api-version=2020-10-01-preview",
+      "Content": null,
+      "isContentBase64": false,
+      "Headers": {
+        "Authorization": [
+          "[Filtered]"
+        ],
+        "x-ms-unique-id": [
+          "2"
+        ],
+        "x-ms-client-request-id": [
+          "910a0a00-ac6c-4180-a01d-e535453b8a96"
+        ],
+        "CommandName": [
+          "New-AzBillingBenefitsReservationOrderAlias"
+        ],
+        "FullCommandName": [
+          "New-AzBillingBenefitsReservationOrderAlias_CreateExpanded"
+        ],
+        "ParameterSetName": [
+          "__AllParameterSets"
+        ],
+        "User-Agent": [
+          "AzurePowershell/v0.0.0",
+          "PSVersion/v7.2.7",
+          "Az.BillingBenefits/0.1.0"
+        ]
+      },
+      "ContentHeaders": {}
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Cache-Control": [
+          "no-cache"
+        ],
+        "Pragma": [
+          "no-cache"
+        ],
+        "Location": [
+          "https://management.azure.com/providers/Microsoft.Capacity/operationResults/5f91a83e-f430-4cff-8e57-0fca9a63dd47?api-version=2020-10-01-preview"
+        ],
+        "Retry-After": [
+          "5"
+        ],
+        "Vary": [
+          "Accept-Encoding"
+        ],
+        "x-ms-ratelimit-remaining-tenant-reads": [
+          "11838"
+        ],
+        "Azure-AsyncOperation": [
+          "https://management.azure.com/providers/Microsoft.Capacity/operationResults/5f91a83e-f430-4cff-8e57-0fca9a63dd47?api-version=2020-10-01-preview"
+        ],
+        "x-ms-request-id": [
+          "910a0a00-ac6c-4180-a01d-e535453b8a96"
+        ],
+        "x-ms-version": [
+          "1.0.2141.1412"
+        ],
+        "x-ms-correlation-request-id": [
+          "1fc3728e-507f-48dc-ae2f-23ec7c97609f"
+        ],
+        "x-ms-routing-request-id": [
+          "WESTCENTRALUS:20221130T011306Z:1fc3728e-507f-48dc-ae2f-23ec7c97609f"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
+        ],
+        "X-Content-Type-Options": [
+          "nosniff"
+        ],
+        "Date": [
+          "Wed, 30 Nov 2022 01:13:05 GMT"
+        ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [
+          "166"
+        ],
+        "Content-Type": [
+          "application/json; charset=utf-8"
+        ],
+        "Expires": [
+          "-1"
+        ]
+      },
+      "Content": "{\"id\":\"/providers/Microsoft.Capacity/operationResults/5f91a83e-f430-4cff-8e57-0fca9a63dd47\",\"name\":\"5f91a83e-f430-4cff-8e57-0fca9a63dd47\",\"status\":\"PendingPurchases\"}",
+      "isContentBase64": false
+    }
+  },
+  "New-AzBillingBenefitsReservationOrderAlias+[NoContext]+CreateExpanded+$GET+https://management.azure.com/providers/Microsoft.Capacity/operationResults/5f91a83e-f430-4cff-8e57-0fca9a63dd47?api-version=2020-10-01-preview+3": {
+    "Request": {
+      "Method": "GET",
+      "RequestUri": "https://management.azure.com/providers/Microsoft.Capacity/operationResults/5f91a83e-f430-4cff-8e57-0fca9a63dd47?api-version=2020-10-01-preview",
+      "Content": null,
+      "isContentBase64": false,
+      "Headers": {
+        "Authorization": [
+          "[Filtered]"
+        ],
+        "x-ms-unique-id": [
+          "3"
+        ],
+        "x-ms-client-request-id": [
+          "910a0a00-ac6c-4180-a01d-e535453b8a96"
+        ],
+        "CommandName": [
+          "New-AzBillingBenefitsReservationOrderAlias"
+        ],
+        "FullCommandName": [
+          "New-AzBillingBenefitsReservationOrderAlias_CreateExpanded"
+        ],
+        "ParameterSetName": [
+          "__AllParameterSets"
+        ],
+        "User-Agent": [
+          "AzurePowershell/v0.0.0",
+          "PSVersion/v7.2.7",
+          "Az.BillingBenefits/0.1.0"
+        ]
+      },
+      "ContentHeaders": {}
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Cache-Control": [
+          "no-cache"
+        ],
+        "Pragma": [
+          "no-cache"
+        ],
+        "Vary": [
+          "Accept-Encoding"
+        ],
+        "x-ms-ratelimit-remaining-tenant-reads": [
+          "11831"
+        ],
+        "x-ms-request-id": [
+          "910a0a00-ac6c-4180-a01d-e535453b8a96"
+        ],
+        "x-ms-version": [
+          "1.0.2141.1412"
+        ],
+        "x-ms-correlation-request-id": [
+          "862a8446-f835-435a-90d1-8a852315f9dd"
+        ],
+        "x-ms-routing-request-id": [
+          "WESTCENTRALUS:20221130T011345Z:862a8446-f835-435a-90d1-8a852315f9dd"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
+        ],
+        "X-Content-Type-Options": [
+          "nosniff"
+        ],
+        "Date": [
+          "Wed, 30 Nov 2022 01:13:45 GMT"
+        ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [
+          "159"
+        ],
+        "Content-Type": [
+          "application/json; charset=utf-8"
+        ],
+        "Expires": [
+          "-1"
+        ]
+      },
+      "Content": "{\"id\":\"/providers/Microsoft.Capacity/operationResults/5f91a83e-f430-4cff-8e57-0fca9a63dd47\",\"name\":\"5f91a83e-f430-4cff-8e57-0fca9a63dd47\",\"status\":\"Succeeded\"}",
+      "isContentBase64": false
+    }
+  },
+  "New-AzBillingBenefitsReservationOrderAlias+[NoContext]+CreateExpanded+$GET+https://management.azure.com/providers/Microsoft.BillingBenefits/reservationOrderAliases/PSRITest1?api-version=2022-11-01+4": {
+    "Request": {
+      "Method": "GET",
+      "RequestUri": "https://management.azure.com/providers/Microsoft.BillingBenefits/reservationOrderAliases/PSRITest1?api-version=2022-11-01",
+      "Content": null,
+      "isContentBase64": false,
+      "Headers": {
+        "Authorization": [
+          "[Filtered]"
+        ],
+        "x-ms-unique-id": [
+          "4"
+        ],
+        "x-ms-client-request-id": [
+          "910a0a00-ac6c-4180-a01d-e535453b8a96"
+        ],
+        "CommandName": [
+          "New-AzBillingBenefitsReservationOrderAlias"
+        ],
+        "FullCommandName": [
+          "New-AzBillingBenefitsReservationOrderAlias_CreateExpanded"
+        ],
+        "ParameterSetName": [
+          "__AllParameterSets"
+        ],
+        "User-Agent": [
+          "AzurePowershell/v0.0.0",
+          "PSVersion/v7.2.7",
+          "Az.BillingBenefits/0.1.0"
+        ]
+      },
+      "ContentHeaders": {}
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Cache-Control": [
+          "no-cache"
+        ],
+        "Pragma": [
+          "no-cache"
+        ],
+        "Vary": [
+          "Accept-Encoding"
+        ],
+        "x-ms-ratelimit-remaining-tenant-reads": [
+          "11830"
+        ],
+        "x-ms-request-id": [
+          "910a0a00-ac6c-4180-a01d-e535453b8a96"
+        ],
+        "x-ms-version": [
+          "1.0.2141.1412"
+        ],
+        "x-ms-correlation-request-id": [
+          "28b36766-1e46-46c0-bcaf-10b41dc6a827"
+        ],
+        "x-ms-routing-request-id": [
+          "WESTCENTRALUS:20221130T011345Z:28b36766-1e46-46c0-bcaf-10b41dc6a827"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
+        ],
+        "X-Content-Type-Options": [
+          "nosniff"
+        ],
+        "Date": [
+          "Wed, 30 Nov 2022 01:13:45 GMT"
+        ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [
+          "684"
+        ],
+        "Content-Type": [
+          "application/json; charset=utf-8"
+        ],
+        "Expires": [
+          "-1"
+        ]
+      },
+      "Content": "{\"id\":\"/providers/Microsoft.BillingBenefits/reservationOrderAliases/PSRITest1\",\"name\":\"PSRITest1\",\"type\":\"Microsoft.BillingBenefits/reservationOrderAliases\",\"location\":\"westus\",\"kind\":null,\"sku\":{\"name\":\"Standard_B1ls\"},\"properties\":{\"reservationOrderId\":\"/providers/Microsoft.Capacity/reservationOrders/2dc02437-0edb-4574-8188-b6bbf588f099\",\"billingScopeId\":\"/subscriptions/eef82110-c91b-4395-9420-fcfcbefc5a47\",\"appliedScopeProperties\":null,\"quantity\":1,\"renew\":null,\"billingPlan\":\"P1M\",\"reservedResourceProperties\":null,\"reservedResourceType\":\"VirtualMachines\",\"reviewDateTime\":null,\"appliedScopeType\":\"Shared\",\"displayName\":\"PSRITest1\",\"provisioningState\":\"Created\",\"term\":\"P1Y\"}}",
+      "isContentBase64": false
+    }
+  },
+  "New-AzBillingBenefitsReservationOrderAlias+[NoContext]+Create+$PUT+https://management.azure.com/providers/Microsoft.BillingBenefits/reservationOrderAliases/PSRITest2?api-version=2022-11-01+1": {
+    "Request": {
+      "Method": "PUT",
+      "RequestUri": "https://management.azure.com/providers/Microsoft.BillingBenefits/reservationOrderAliases/PSRITest2?api-version=2022-11-01",
+      "Content": "{\r\n  \"sku\": {\r\n    \"name\": \"Standard_B1ls\"\r\n  },\r\n  \"properties\": {\r\n    \"displayName\": \"PSRITest2\",\r\n    \"billingScopeId\": \"/subscriptions/eef82110-c91b-4395-9420-fcfcbefc5a47\",\r\n    \"term\": \"P1Y\",\r\n    \"billingPlan\": \"P1M\",\r\n    \"appliedScopeType\": \"Shared\",\r\n    \"quantity\": 1,\r\n    \"reservedResourceType\": \"VirtualMachines\"\r\n  },\r\n  \"location\": \"westus\"\r\n}",
+      "isContentBase64": false,
+      "Headers": {},
+      "ContentHeaders": {
+        "Content-Type": [
+          "application/json"
+        ],
+        "Content-Length": [
+          "360"
+        ]
+      }
+    },
+    "Response": {
+      "StatusCode": 201,
+      "Headers": {
+        "Cache-Control": [
+          "no-cache"
+        ],
+        "Pragma": [
+          "no-cache"
+        ],
+        "Retry-After": [
+          "5"
+        ],
+        "Azure-AsyncOperation": [
+          "https://management.azure.com/providers/Microsoft.Capacity/operationResults/a1705edd-768e-4493-8c15-32b4895fb1a8?api-version=2020-10-01-preview"
+        ],
+        "x-ms-request-id": [
+          "9910e39a-9842-4339-b62e-a2e9d5ea3281"
+        ],
+        "x-ms-version": [
+          "1.0.2141.1412"
+        ],
+        "x-ms-ratelimit-remaining-tenant-writes": [
+          "1199"
+        ],
+        "x-ms-correlation-request-id": [
+          "14a04eee-9572-4442-87a7-3f459c088c0f"
+        ],
+        "x-ms-routing-request-id": [
+          "WESTUS:20221130T011917Z:14a04eee-9572-4442-87a7-3f459c088c0f"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
+        ],
+        "X-Content-Type-Options": [
+          "nosniff"
+        ],
+        "Date": [
+          "Wed, 30 Nov 2022 01:19:17 GMT"
+        ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [
+          "684"
+        ],
+        "Content-Type": [
+          "application/json; charset=utf-8"
+        ],
+        "Expires": [
+          "-1"
+        ]
+      },
+      "Content": "{\"id\":\"/providers/Microsoft.BillingBenefits/reservationOrderAliases/PSRITest2\",\"name\":\"PSRITest2\",\"type\":\"Microsoft.BillingBenefits/reservationOrderAliases\",\"location\":\"westus\",\"kind\":null,\"sku\":{\"name\":\"Standard_B1ls\"},\"properties\":{\"reservationOrderId\":\"/providers/Microsoft.Capacity/reservationOrders/8d5aacd0-f098-4202-8d4d-1e7cb8a3ac97\",\"billingScopeId\":\"/subscriptions/eef82110-c91b-4395-9420-fcfcbefc5a47\",\"appliedScopeProperties\":null,\"quantity\":1,\"renew\":null,\"billingPlan\":\"P1M\",\"reservedResourceProperties\":null,\"reservedResourceType\":\"VirtualMachines\",\"reviewDateTime\":null,\"appliedScopeType\":\"Shared\",\"displayName\":\"PSRITest2\",\"provisioningState\":\"Created\",\"term\":\"P1Y\"}}",
+      "isContentBase64": false
+    }
+  },
+  "New-AzBillingBenefitsReservationOrderAlias+[NoContext]+Create+$GET+https://management.azure.com/providers/Microsoft.Capacity/operationResults/a1705edd-768e-4493-8c15-32b4895fb1a8?api-version=2020-10-01-preview+2": {
+    "Request": {
+      "Method": "GET",
+      "RequestUri": "https://management.azure.com/providers/Microsoft.Capacity/operationResults/a1705edd-768e-4493-8c15-32b4895fb1a8?api-version=2020-10-01-preview",
+      "Content": null,
+      "isContentBase64": false,
+      "Headers": {
+        "Authorization": [
+          "[Filtered]"
+        ],
+        "x-ms-unique-id": [
+          "2"
+        ],
+        "x-ms-client-request-id": [
+          "9910e39a-9842-4339-b62e-a2e9d5ea3281"
+        ],
+        "CommandName": [
+          "New-AzBillingBenefitsReservationOrderAlias"
+        ],
+        "FullCommandName": [
+          "New-AzBillingBenefitsReservationOrderAlias_Create"
+        ],
+        "ParameterSetName": [
+          "__AllParameterSets"
+        ],
+        "User-Agent": [
+          "AzurePowershell/v0.0.0",
+          "PSVersion/v7.2.7",
+          "Az.BillingBenefits/0.1.0"
+        ]
+      },
+      "ContentHeaders": {}
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Cache-Control": [
+          "no-cache"
+        ],
+        "Pragma": [
+          "no-cache"
+        ],
+        "Location": [
+          "https://management.azure.com/providers/Microsoft.Capacity/operationResults/a1705edd-768e-4493-8c15-32b4895fb1a8?api-version=2020-10-01-preview"
+        ],
+        "Retry-After": [
+          "5"
+        ],
+        "Vary": [
+          "Accept-Encoding"
+        ],
+        "x-ms-ratelimit-remaining-tenant-reads": [
+          "11999"
+        ],
+        "Azure-AsyncOperation": [
+          "https://management.azure.com/providers/Microsoft.Capacity/operationResults/a1705edd-768e-4493-8c15-32b4895fb1a8?api-version=2020-10-01-preview"
+        ],
+        "x-ms-request-id": [
+          "9910e39a-9842-4339-b62e-a2e9d5ea3281"
+        ],
+        "x-ms-version": [
+          "1.0.2141.1412"
+        ],
+        "x-ms-correlation-request-id": [
+          "8f54818c-6a44-4649-9677-adcd1c550d0d"
+        ],
+        "x-ms-routing-request-id": [
+          "WESTUS:20221130T011925Z:8f54818c-6a44-4649-9677-adcd1c550d0d"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
+        ],
+        "X-Content-Type-Options": [
+          "nosniff"
+        ],
+        "Date": [
+          "Wed, 30 Nov 2022 01:19:24 GMT"
+        ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [
+          "157"
+        ],
+        "Content-Type": [
+          "application/json; charset=utf-8"
+        ],
+        "Expires": [
+          "-1"
+        ]
+      },
+      "Content": "{\"id\":\"/providers/Microsoft.Capacity/operationResults/a1705edd-768e-4493-8c15-32b4895fb1a8\",\"name\":\"a1705edd-768e-4493-8c15-32b4895fb1a8\",\"status\":\"Pending\"}",
+      "isContentBase64": false
+    }
+  },
+  "New-AzBillingBenefitsReservationOrderAlias+[NoContext]+Create+$GET+https://management.azure.com/providers/Microsoft.Capacity/operationResults/a1705edd-768e-4493-8c15-32b4895fb1a8?api-version=2020-10-01-preview+3": {
+    "Request": {
+      "Method": "GET",
+      "RequestUri": "https://management.azure.com/providers/Microsoft.Capacity/operationResults/a1705edd-768e-4493-8c15-32b4895fb1a8?api-version=2020-10-01-preview",
+      "Content": null,
+      "isContentBase64": false,
+      "Headers": {
+        "Authorization": [
+          "[Filtered]"
+        ],
+        "x-ms-unique-id": [
+          "3"
+        ],
+        "x-ms-client-request-id": [
+          "9910e39a-9842-4339-b62e-a2e9d5ea3281"
+        ],
+        "CommandName": [
+          "New-AzBillingBenefitsReservationOrderAlias"
+        ],
+        "FullCommandName": [
+          "New-AzBillingBenefitsReservationOrderAlias_Create"
+        ],
+        "ParameterSetName": [
+          "__AllParameterSets"
+        ],
+        "User-Agent": [
+          "AzurePowershell/v0.0.0",
+          "PSVersion/v7.2.7",
+          "Az.BillingBenefits/0.1.0"
+        ]
+      },
+      "ContentHeaders": {}
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Cache-Control": [
+          "no-cache"
+        ],
+        "Pragma": [
+          "no-cache"
+        ],
+        "Location": [
+          "https://management.azure.com/providers/Microsoft.Capacity/operationResults/a1705edd-768e-4493-8c15-32b4895fb1a8?api-version=2020-10-01-preview"
+        ],
+        "Retry-After": [
+          "5"
+        ],
+        "Vary": [
+          "Accept-Encoding"
+        ],
+        "x-ms-ratelimit-remaining-tenant-reads": [
+          "11951"
+        ],
+        "Azure-AsyncOperation": [
+          "https://management.azure.com/providers/Microsoft.Capacity/operationResults/a1705edd-768e-4493-8c15-32b4895fb1a8?api-version=2020-10-01-preview"
+        ],
+        "x-ms-request-id": [
+          "9910e39a-9842-4339-b62e-a2e9d5ea3281"
+        ],
+        "x-ms-version": [
+          "1.0.2141.1412"
+        ],
+        "x-ms-correlation-request-id": [
+          "8a8e154f-3f3b-4ff0-8f2c-dc4911d27fe4"
+        ],
+        "x-ms-routing-request-id": [
+          "WESTUS:20221130T012346Z:8a8e154f-3f3b-4ff0-8f2c-dc4911d27fe4"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
+        ],
+        "X-Content-Type-Options": [
+          "nosniff"
+        ],
+        "Date": [
+          "Wed, 30 Nov 2022 01:23:46 GMT"
+        ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [
+          "166"
+        ],
+        "Content-Type": [
+          "application/json; charset=utf-8"
+        ],
+        "Expires": [
+          "-1"
+        ]
+      },
+      "Content": "{\"id\":\"/providers/Microsoft.Capacity/operationResults/a1705edd-768e-4493-8c15-32b4895fb1a8\",\"name\":\"a1705edd-768e-4493-8c15-32b4895fb1a8\",\"status\":\"PendingPurchases\"}",
+      "isContentBase64": false
+    }
+  },
+  "New-AzBillingBenefitsReservationOrderAlias+[NoContext]+Create+$GET+https://management.azure.com/providers/Microsoft.Capacity/operationResults/a1705edd-768e-4493-8c15-32b4895fb1a8?api-version=2020-10-01-preview+4": {
+    "Request": {
+      "Method": "GET",
+      "RequestUri": "https://management.azure.com/providers/Microsoft.Capacity/operationResults/a1705edd-768e-4493-8c15-32b4895fb1a8?api-version=2020-10-01-preview",
+      "Content": null,
+      "isContentBase64": false,
+      "Headers": {
+        "Authorization": [
+          "[Filtered]"
+        ],
+        "x-ms-unique-id": [
+          "4"
+        ],
+        "x-ms-client-request-id": [
+          "9910e39a-9842-4339-b62e-a2e9d5ea3281"
+        ],
+        "CommandName": [
+          "New-AzBillingBenefitsReservationOrderAlias"
+        ],
+        "FullCommandName": [
+          "New-AzBillingBenefitsReservationOrderAlias_Create"
+        ],
+        "ParameterSetName": [
+          "__AllParameterSets"
+        ],
+        "User-Agent": [
+          "AzurePowershell/v0.0.0",
+          "PSVersion/v7.2.7",
+          "Az.BillingBenefits/0.1.0"
+        ]
+      },
+      "ContentHeaders": {}
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Cache-Control": [
+          "no-cache"
+        ],
+        "Pragma": [
+          "no-cache"
+        ],
+        "Vary": [
+          "Accept-Encoding"
+        ],
+        "x-ms-ratelimit-remaining-tenant-reads": [
+          "11950"
+        ],
+        "x-ms-request-id": [
+          "9910e39a-9842-4339-b62e-a2e9d5ea3281"
+        ],
+        "x-ms-version": [
+          "1.0.2141.1412"
+        ],
+        "x-ms-correlation-request-id": [
+          "13d9d1c9-96b9-4e44-94df-cb731fd970e9"
+        ],
+        "x-ms-routing-request-id": [
+          "WESTUS:20221130T012352Z:13d9d1c9-96b9-4e44-94df-cb731fd970e9"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
+        ],
+        "X-Content-Type-Options": [
+          "nosniff"
+        ],
+        "Date": [
+          "Wed, 30 Nov 2022 01:23:51 GMT"
+        ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [
+          "159"
+        ],
+        "Content-Type": [
+          "application/json; charset=utf-8"
+        ],
+        "Expires": [
+          "-1"
+        ]
+      },
+      "Content": "{\"id\":\"/providers/Microsoft.Capacity/operationResults/a1705edd-768e-4493-8c15-32b4895fb1a8\",\"name\":\"a1705edd-768e-4493-8c15-32b4895fb1a8\",\"status\":\"Succeeded\"}",
+      "isContentBase64": false
+    }
+  },
+  "New-AzBillingBenefitsReservationOrderAlias+[NoContext]+Create+$GET+https://management.azure.com/providers/Microsoft.BillingBenefits/reservationOrderAliases/PSRITest2?api-version=2022-11-01+5": {
+    "Request": {
+      "Method": "GET",
+      "RequestUri": "https://management.azure.com/providers/Microsoft.BillingBenefits/reservationOrderAliases/PSRITest2?api-version=2022-11-01",
+      "Content": null,
+      "isContentBase64": false,
+      "Headers": {
+        "Authorization": [
+          "[Filtered]"
+        ],
+        "x-ms-unique-id": [
+          "5"
+        ],
+        "x-ms-client-request-id": [
+          "9910e39a-9842-4339-b62e-a2e9d5ea3281"
+        ],
+        "CommandName": [
+          "New-AzBillingBenefitsReservationOrderAlias"
+        ],
+        "FullCommandName": [
+          "New-AzBillingBenefitsReservationOrderAlias_Create"
+        ],
+        "ParameterSetName": [
+          "__AllParameterSets"
+        ],
+        "User-Agent": [
+          "AzurePowershell/v0.0.0",
+          "PSVersion/v7.2.7",
+          "Az.BillingBenefits/0.1.0"
+        ]
+      },
+      "ContentHeaders": {}
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Cache-Control": [
+          "no-cache"
+        ],
+        "Pragma": [
+          "no-cache"
+        ],
+        "Vary": [
+          "Accept-Encoding"
+        ],
+        "x-ms-ratelimit-remaining-tenant-reads": [
+          "11949"
+        ],
+        "x-ms-request-id": [
+          "9910e39a-9842-4339-b62e-a2e9d5ea3281"
+        ],
+        "x-ms-version": [
+          "1.0.2141.1412"
+        ],
+        "x-ms-correlation-request-id": [
+          "fd70b68b-dd74-4981-80de-04e4ff44d23c"
+        ],
+        "x-ms-routing-request-id": [
+          "WESTUS:20221130T012354Z:fd70b68b-dd74-4981-80de-04e4ff44d23c"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
+        ],
+        "X-Content-Type-Options": [
+          "nosniff"
+        ],
+        "Date": [
+          "Wed, 30 Nov 2022 01:23:54 GMT"
+        ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [
+          "684"
+        ],
+        "Content-Type": [
+          "application/json; charset=utf-8"
+        ],
+        "Expires": [
+          "-1"
+        ]
+      },
+      "Content": "{\"id\":\"/providers/Microsoft.BillingBenefits/reservationOrderAliases/PSRITest2\",\"name\":\"PSRITest2\",\"type\":\"Microsoft.BillingBenefits/reservationOrderAliases\",\"location\":\"westus\",\"kind\":null,\"sku\":{\"name\":\"Standard_B1ls\"},\"properties\":{\"reservationOrderId\":\"/providers/Microsoft.Capacity/reservationOrders/8d5aacd0-f098-4202-8d4d-1e7cb8a3ac97\",\"billingScopeId\":\"/subscriptions/eef82110-c91b-4395-9420-fcfcbefc5a47\",\"appliedScopeProperties\":null,\"quantity\":1,\"renew\":null,\"billingPlan\":\"P1M\",\"reservedResourceProperties\":null,\"reservedResourceType\":\"VirtualMachines\",\"reviewDateTime\":null,\"appliedScopeType\":\"Shared\",\"displayName\":\"PSRITest2\",\"provisioningState\":\"Created\",\"term\":\"P1Y\"}}",
+      "isContentBase64": false
+    }
+  },
+  "New-AzBillingBenefitsReservationOrderAlias+[NoContext]+CreateViaIdentityExpanded+$PUT+https://management.azure.com/providers/Microsoft.BillingBenefits/reservationOrderAliases/PSRITest5?api-version=2022-11-01+1": {
+    "Request": {
+      "Method": "PUT",
+      "RequestUri": "https://management.azure.com/providers/Microsoft.BillingBenefits/reservationOrderAliases/PSRITest5?api-version=2022-11-01",
+      "Content": "{\r\n  \"sku\": {\r\n    \"name\": \"Standard_B1ls\"\r\n  },\r\n  \"properties\": {\r\n    \"displayName\": \"PSRITest5\",\r\n    \"billingScopeId\": \"/subscriptions/eef82110-c91b-4395-9420-fcfcbefc5a47\",\r\n    \"term\": \"P1Y\",\r\n    \"billingPlan\": \"P1M\",\r\n    \"appliedScopeType\": \"Shared\",\r\n    \"quantity\": 1,\r\n    \"reservedResourceType\": \"VirtualMachines\"\r\n  },\r\n  \"location\": \"westus\"\r\n}",
+      "isContentBase64": false,
+      "Headers": {},
+      "ContentHeaders": {
+        "Content-Type": [
+          "application/json"
+        ],
+        "Content-Length": [
+          "360"
+        ]
+      }
+    },
+    "Response": {
+      "StatusCode": 201,
+      "Headers": {
+        "Cache-Control": [
+          "no-cache"
+        ],
+        "Pragma": [
+          "no-cache"
+        ],
+        "Retry-After": [
+          "5"
+        ],
+        "Azure-AsyncOperation": [
+          "https://management.azure.com/providers/Microsoft.Capacity/operationResults/a9f6f0ad-b695-41aa-8129-7542e0c5d098?api-version=2020-10-01-preview"
+        ],
+        "x-ms-request-id": [
+          "6d2df885-be49-48ab-a9b4-087a354e19c4"
+        ],
+        "x-ms-version": [
+          "1.0.2141.1412"
+        ],
+        "x-ms-ratelimit-remaining-tenant-writes": [
+          "1199"
+        ],
+        "x-ms-correlation-request-id": [
+          "9930e4fd-7f4e-4399-bd4a-0c5d0c63f356"
+        ],
+        "x-ms-routing-request-id": [
+          "WESTCENTRALUS:20221130T022216Z:9930e4fd-7f4e-4399-bd4a-0c5d0c63f356"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
+        ],
+        "X-Content-Type-Options": [
+          "nosniff"
+        ],
+        "Date": [
+          "Wed, 30 Nov 2022 02:22:15 GMT"
+        ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [
+          "684"
+        ],
+        "Content-Type": [
+          "application/json; charset=utf-8"
+        ],
+        "Expires": [
+          "-1"
+        ]
+      },
+      "Content": "{\"id\":\"/providers/Microsoft.BillingBenefits/reservationOrderAliases/PSRITest5\",\"name\":\"PSRITest5\",\"type\":\"Microsoft.BillingBenefits/reservationOrderAliases\",\"location\":\"westus\",\"kind\":null,\"sku\":{\"name\":\"Standard_B1ls\"},\"properties\":{\"reservationOrderId\":\"/providers/Microsoft.Capacity/reservationOrders/f331eb9e-1190-43b7-9a4d-106fd90a438a\",\"billingScopeId\":\"/subscriptions/eef82110-c91b-4395-9420-fcfcbefc5a47\",\"appliedScopeProperties\":null,\"quantity\":1,\"renew\":null,\"billingPlan\":\"P1M\",\"reservedResourceProperties\":null,\"reservedResourceType\":\"VirtualMachines\",\"reviewDateTime\":null,\"appliedScopeType\":\"Shared\",\"displayName\":\"PSRITest5\",\"provisioningState\":\"Created\",\"term\":\"P1Y\"}}",
+      "isContentBase64": false
+    }
+  },
+  "New-AzBillingBenefitsReservationOrderAlias+[NoContext]+CreateViaIdentityExpanded+$GET+https://management.azure.com/providers/Microsoft.Capacity/operationResults/a9f6f0ad-b695-41aa-8129-7542e0c5d098?api-version=2020-10-01-preview+2": {
+    "Request": {
+      "Method": "GET",
+      "RequestUri": "https://management.azure.com/providers/Microsoft.Capacity/operationResults/a9f6f0ad-b695-41aa-8129-7542e0c5d098?api-version=2020-10-01-preview",
+      "Content": null,
+      "isContentBase64": false,
+      "Headers": {
+        "Authorization": [
+          "[Filtered]"
+        ],
+        "x-ms-unique-id": [
+          "2"
+        ],
+        "x-ms-client-request-id": [
+          "6d2df885-be49-48ab-a9b4-087a354e19c4"
+        ],
+        "CommandName": [
+          "New-AzBillingBenefitsReservationOrderAlias"
+        ],
+        "FullCommandName": [
+          "New-AzBillingBenefitsReservationOrderAlias_CreateViaIdentityExpanded"
+        ],
+        "ParameterSetName": [
+          "__AllParameterSets"
+        ],
+        "User-Agent": [
+          "AzurePowershell/v0.0.0",
+          "PSVersion/v7.2.7",
+          "Az.BillingBenefits/0.1.0"
+        ]
+      },
+      "ContentHeaders": {}
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Cache-Control": [
+          "no-cache"
+        ],
+        "Pragma": [
+          "no-cache"
+        ],
+        "Location": [
+          "https://management.azure.com/providers/Microsoft.Capacity/operationResults/a9f6f0ad-b695-41aa-8129-7542e0c5d098?api-version=2020-10-01-preview"
+        ],
+        "Retry-After": [
+          "5"
+        ],
+        "Vary": [
+          "Accept-Encoding"
+        ],
+        "x-ms-ratelimit-remaining-tenant-reads": [
+          "11999"
+        ],
+        "Azure-AsyncOperation": [
+          "https://management.azure.com/providers/Microsoft.Capacity/operationResults/a9f6f0ad-b695-41aa-8129-7542e0c5d098?api-version=2020-10-01-preview"
+        ],
+        "x-ms-request-id": [
+          "6d2df885-be49-48ab-a9b4-087a354e19c4"
+        ],
+        "x-ms-version": [
+          "1.0.2141.1412"
+        ],
+        "x-ms-correlation-request-id": [
+          "72ac57c9-fb65-45c7-afce-0dfc62fb6004"
+        ],
+        "x-ms-routing-request-id": [
+          "WESTCENTRALUS:20221130T022221Z:72ac57c9-fb65-45c7-afce-0dfc62fb6004"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
+        ],
+        "X-Content-Type-Options": [
+          "nosniff"
+        ],
+        "Date": [
+          "Wed, 30 Nov 2022 02:22:21 GMT"
+        ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [
+          "157"
+        ],
+        "Content-Type": [
+          "application/json; charset=utf-8"
+        ],
+        "Expires": [
+          "-1"
+        ]
+      },
+      "Content": "{\"id\":\"/providers/Microsoft.Capacity/operationResults/a9f6f0ad-b695-41aa-8129-7542e0c5d098\",\"name\":\"a9f6f0ad-b695-41aa-8129-7542e0c5d098\",\"status\":\"Pending\"}",
+      "isContentBase64": false
+    }
+  },
+  "New-AzBillingBenefitsReservationOrderAlias+[NoContext]+CreateViaIdentityExpanded+$GET+https://management.azure.com/providers/Microsoft.Capacity/operationResults/a9f6f0ad-b695-41aa-8129-7542e0c5d098?api-version=2020-10-01-preview+3": {
+    "Request": {
+      "Method": "GET",
+      "RequestUri": "https://management.azure.com/providers/Microsoft.Capacity/operationResults/a9f6f0ad-b695-41aa-8129-7542e0c5d098?api-version=2020-10-01-preview",
+      "Content": null,
+      "isContentBase64": false,
+      "Headers": {
+        "Authorization": [
+          "[Filtered]"
+        ],
+        "x-ms-unique-id": [
+          "3"
+        ],
+        "x-ms-client-request-id": [
+          "6d2df885-be49-48ab-a9b4-087a354e19c4"
+        ],
+        "CommandName": [
+          "New-AzBillingBenefitsReservationOrderAlias"
+        ],
+        "FullCommandName": [
+          "New-AzBillingBenefitsReservationOrderAlias_CreateViaIdentityExpanded"
+        ],
+        "ParameterSetName": [
+          "__AllParameterSets"
+        ],
+        "User-Agent": [
+          "AzurePowershell/v0.0.0",
+          "PSVersion/v7.2.7",
+          "Az.BillingBenefits/0.1.0"
+        ]
+      },
+      "ContentHeaders": {}
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Cache-Control": [
+          "no-cache"
+        ],
+        "Pragma": [
+          "no-cache"
+        ],
+        "Location": [
+          "https://management.azure.com/providers/Microsoft.Capacity/operationResults/a9f6f0ad-b695-41aa-8129-7542e0c5d098?api-version=2020-10-01-preview"
+        ],
+        "Retry-After": [
+          "5"
+        ],
+        "Vary": [
+          "Accept-Encoding"
+        ],
+        "x-ms-ratelimit-remaining-tenant-reads": [
+          "11954"
+        ],
+        "Azure-AsyncOperation": [
+          "https://management.azure.com/providers/Microsoft.Capacity/operationResults/a9f6f0ad-b695-41aa-8129-7542e0c5d098?api-version=2020-10-01-preview"
+        ],
+        "x-ms-request-id": [
+          "6d2df885-be49-48ab-a9b4-087a354e19c4"
+        ],
+        "x-ms-version": [
+          "1.0.2141.1412"
+        ],
+        "x-ms-correlation-request-id": [
+          "49862c26-dfb8-4710-9c52-6df8f3dc1d90"
+        ],
+        "x-ms-routing-request-id": [
+          "WESTCENTRALUS:20221130T022634Z:49862c26-dfb8-4710-9c52-6df8f3dc1d90"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
+        ],
+        "X-Content-Type-Options": [
+          "nosniff"
+        ],
+        "Date": [
+          "Wed, 30 Nov 2022 02:26:33 GMT"
+        ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [
+          "166"
+        ],
+        "Content-Type": [
+          "application/json; charset=utf-8"
+        ],
+        "Expires": [
+          "-1"
+        ]
+      },
+      "Content": "{\"id\":\"/providers/Microsoft.Capacity/operationResults/a9f6f0ad-b695-41aa-8129-7542e0c5d098\",\"name\":\"a9f6f0ad-b695-41aa-8129-7542e0c5d098\",\"status\":\"PendingPurchases\"}",
+      "isContentBase64": false
+    }
+  },
+  "New-AzBillingBenefitsReservationOrderAlias+[NoContext]+CreateViaIdentityExpanded+$GET+https://management.azure.com/providers/Microsoft.Capacity/operationResults/a9f6f0ad-b695-41aa-8129-7542e0c5d098?api-version=2020-10-01-preview+4": {
+    "Request": {
+      "Method": "GET",
+      "RequestUri": "https://management.azure.com/providers/Microsoft.Capacity/operationResults/a9f6f0ad-b695-41aa-8129-7542e0c5d098?api-version=2020-10-01-preview",
+      "Content": null,
+      "isContentBase64": false,
+      "Headers": {
+        "Authorization": [
+          "[Filtered]"
+        ],
+        "x-ms-unique-id": [
+          "4"
+        ],
+        "x-ms-client-request-id": [
+          "6d2df885-be49-48ab-a9b4-087a354e19c4"
+        ],
+        "CommandName": [
+          "New-AzBillingBenefitsReservationOrderAlias"
+        ],
+        "FullCommandName": [
+          "New-AzBillingBenefitsReservationOrderAlias_CreateViaIdentityExpanded"
+        ],
+        "ParameterSetName": [
+          "__AllParameterSets"
+        ],
+        "User-Agent": [
+          "AzurePowershell/v0.0.0",
+          "PSVersion/v7.2.7",
+          "Az.BillingBenefits/0.1.0"
+        ]
+      },
+      "ContentHeaders": {}
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Cache-Control": [
+          "no-cache"
+        ],
+        "Pragma": [
+          "no-cache"
+        ],
+        "Vary": [
+          "Accept-Encoding"
+        ],
+        "x-ms-ratelimit-remaining-tenant-reads": [
+          "11953"
+        ],
+        "x-ms-request-id": [
+          "6d2df885-be49-48ab-a9b4-087a354e19c4"
+        ],
+        "x-ms-version": [
+          "1.0.2141.1412"
+        ],
+        "x-ms-correlation-request-id": [
+          "5110377b-82c0-40c9-8e08-9dd70baa2252"
+        ],
+        "x-ms-routing-request-id": [
+          "WESTCENTRALUS:20221130T022639Z:5110377b-82c0-40c9-8e08-9dd70baa2252"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
+        ],
+        "X-Content-Type-Options": [
+          "nosniff"
+        ],
+        "Date": [
+          "Wed, 30 Nov 2022 02:26:38 GMT"
+        ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [
+          "159"
+        ],
+        "Content-Type": [
+          "application/json; charset=utf-8"
+        ],
+        "Expires": [
+          "-1"
+        ]
+      },
+      "Content": "{\"id\":\"/providers/Microsoft.Capacity/operationResults/a9f6f0ad-b695-41aa-8129-7542e0c5d098\",\"name\":\"a9f6f0ad-b695-41aa-8129-7542e0c5d098\",\"status\":\"Succeeded\"}",
+      "isContentBase64": false
+    }
+  },
+  "New-AzBillingBenefitsReservationOrderAlias+[NoContext]+CreateViaIdentityExpanded+$GET+https://management.azure.com/providers/Microsoft.BillingBenefits/reservationOrderAliases/PSRITest5?api-version=2022-11-01+5": {
+    "Request": {
+      "Method": "GET",
+      "RequestUri": "https://management.azure.com/providers/Microsoft.BillingBenefits/reservationOrderAliases/PSRITest5?api-version=2022-11-01",
+      "Content": null,
+      "isContentBase64": false,
+      "Headers": {
+        "Authorization": [
+          "[Filtered]"
+        ],
+        "x-ms-unique-id": [
+          "5"
+        ],
+        "x-ms-client-request-id": [
+          "6d2df885-be49-48ab-a9b4-087a354e19c4"
+        ],
+        "CommandName": [
+          "New-AzBillingBenefitsReservationOrderAlias"
+        ],
+        "FullCommandName": [
+          "New-AzBillingBenefitsReservationOrderAlias_CreateViaIdentityExpanded"
+        ],
+        "ParameterSetName": [
+          "__AllParameterSets"
+        ],
+        "User-Agent": [
+          "AzurePowershell/v0.0.0",
+          "PSVersion/v7.2.7",
+          "Az.BillingBenefits/0.1.0"
+        ]
+      },
+      "ContentHeaders": {}
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Cache-Control": [
+          "no-cache"
+        ],
+        "Pragma": [
+          "no-cache"
+        ],
+        "Vary": [
+          "Accept-Encoding"
+        ],
+        "x-ms-ratelimit-remaining-tenant-reads": [
+          "11952"
+        ],
+        "x-ms-request-id": [
+          "6d2df885-be49-48ab-a9b4-087a354e19c4"
+        ],
+        "x-ms-version": [
+          "1.0.2141.1412"
+        ],
+        "x-ms-correlation-request-id": [
+          "ae867fce-a778-4c31-95ab-21fec6436ef8"
+        ],
+        "x-ms-routing-request-id": [
+          "WESTCENTRALUS:20221130T022642Z:ae867fce-a778-4c31-95ab-21fec6436ef8"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
+        ],
+        "X-Content-Type-Options": [
+          "nosniff"
+        ],
+        "Date": [
+          "Wed, 30 Nov 2022 02:26:41 GMT"
+        ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [
+          "684"
+        ],
+        "Content-Type": [
+          "application/json; charset=utf-8"
+        ],
+        "Expires": [
+          "-1"
+        ]
+      },
+      "Content": "{\"id\":\"/providers/Microsoft.BillingBenefits/reservationOrderAliases/PSRITest5\",\"name\":\"PSRITest5\",\"type\":\"Microsoft.BillingBenefits/reservationOrderAliases\",\"location\":\"westus\",\"kind\":null,\"sku\":{\"name\":\"Standard_B1ls\"},\"properties\":{\"reservationOrderId\":\"/providers/Microsoft.Capacity/reservationOrders/f331eb9e-1190-43b7-9a4d-106fd90a438a\",\"billingScopeId\":\"/subscriptions/eef82110-c91b-4395-9420-fcfcbefc5a47\",\"appliedScopeProperties\":null,\"quantity\":1,\"renew\":null,\"billingPlan\":\"P1M\",\"reservedResourceProperties\":null,\"reservedResourceType\":\"VirtualMachines\",\"reviewDateTime\":null,\"appliedScopeType\":\"Shared\",\"displayName\":\"PSRITest5\",\"provisioningState\":\"Created\",\"term\":\"P1Y\"}}",
+      "isContentBase64": false
+    }
+  },
+  "New-AzBillingBenefitsReservationOrderAlias+[NoContext]+CreateViaIdentity+$PUT+https://management.azure.com/providers/Microsoft.BillingBenefits/reservationOrderAliases/PSRITest4?api-version=2022-11-01+1": {
+    "Request": {
+      "Method": "PUT",
+      "RequestUri": "https://management.azure.com/providers/Microsoft.BillingBenefits/reservationOrderAliases/PSRITest4?api-version=2022-11-01",
+      "Content": "{\r\n  \"sku\": {\r\n    \"name\": \"Standard_B1ls\"\r\n  },\r\n  \"properties\": {\r\n    \"displayName\": \"PSRITest4\",\r\n    \"billingScopeId\": \"/subscriptions/eef82110-c91b-4395-9420-fcfcbefc5a47\",\r\n    \"term\": \"P1Y\",\r\n    \"billingPlan\": \"P1M\",\r\n    \"appliedScopeType\": \"Shared\",\r\n    \"quantity\": 1,\r\n    \"reservedResourceType\": \"VirtualMachines\"\r\n  },\r\n  \"location\": \"westus\"\r\n}",
+      "isContentBase64": false,
+      "Headers": {},
+      "ContentHeaders": {
+        "Content-Type": [
+          "application/json"
+        ],
+        "Content-Length": [
+          "360"
+        ]
+      }
+    },
+    "Response": {
+      "StatusCode": 201,
+      "Headers": {
+        "Cache-Control": [
+          "no-cache"
+        ],
+        "Pragma": [
+          "no-cache"
+        ],
+        "Retry-After": [
+          "5"
+        ],
+        "Azure-AsyncOperation": [
+          "https://management.azure.com/providers/Microsoft.Capacity/operationResults/7ce8bf77-0a9a-4d38-a5e6-c6573ba462ea?api-version=2020-10-01-preview"
+        ],
+        "x-ms-request-id": [
+          "778098b1-57c7-4dde-8b58-6ab6d88cdf10"
+        ],
+        "x-ms-version": [
+          "1.0.2141.1412"
+        ],
+        "x-ms-ratelimit-remaining-tenant-writes": [
+          "1199"
+        ],
+        "x-ms-correlation-request-id": [
+          "a1a60213-db5f-4fcc-92e7-71413d56f785"
+        ],
+        "x-ms-routing-request-id": [
+          "WESTCENTRALUS:20221130T015539Z:a1a60213-db5f-4fcc-92e7-71413d56f785"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
+        ],
+        "X-Content-Type-Options": [
+          "nosniff"
+        ],
+        "Date": [
+          "Wed, 30 Nov 2022 01:55:38 GMT"
+        ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [
+          "684"
+        ],
+        "Content-Type": [
+          "application/json; charset=utf-8"
+        ],
+        "Expires": [
+          "-1"
+        ]
+      },
+      "Content": "{\"id\":\"/providers/Microsoft.BillingBenefits/reservationOrderAliases/PSRITest4\",\"name\":\"PSRITest4\",\"type\":\"Microsoft.BillingBenefits/reservationOrderAliases\",\"location\":\"westus\",\"kind\":null,\"sku\":{\"name\":\"Standard_B1ls\"},\"properties\":{\"reservationOrderId\":\"/providers/Microsoft.Capacity/reservationOrders/bed2a999-6163-4205-a3db-42b3bcadfc6d\",\"billingScopeId\":\"/subscriptions/eef82110-c91b-4395-9420-fcfcbefc5a47\",\"appliedScopeProperties\":null,\"quantity\":1,\"renew\":null,\"billingPlan\":\"P1M\",\"reservedResourceProperties\":null,\"reservedResourceType\":\"VirtualMachines\",\"reviewDateTime\":null,\"appliedScopeType\":\"Shared\",\"displayName\":\"PSRITest4\",\"provisioningState\":\"Created\",\"term\":\"P1Y\"}}",
+      "isContentBase64": false
+    }
+  },
+  "New-AzBillingBenefitsReservationOrderAlias+[NoContext]+CreateViaIdentity+$GET+https://management.azure.com/providers/Microsoft.Capacity/operationResults/7ce8bf77-0a9a-4d38-a5e6-c6573ba462ea?api-version=2020-10-01-preview+2": {
+    "Request": {
+      "Method": "GET",
+      "RequestUri": "https://management.azure.com/providers/Microsoft.Capacity/operationResults/7ce8bf77-0a9a-4d38-a5e6-c6573ba462ea?api-version=2020-10-01-preview",
+      "Content": null,
+      "isContentBase64": false,
+      "Headers": {
+        "Authorization": [
+          "[Filtered]"
+        ],
+        "x-ms-unique-id": [
+          "2"
+        ],
+        "x-ms-client-request-id": [
+          "778098b1-57c7-4dde-8b58-6ab6d88cdf10"
+        ],
+        "CommandName": [
+          "New-AzBillingBenefitsReservationOrderAlias"
+        ],
+        "FullCommandName": [
+          "New-AzBillingBenefitsReservationOrderAlias_CreateViaIdentity"
+        ],
+        "ParameterSetName": [
+          "__AllParameterSets"
+        ],
+        "User-Agent": [
+          "AzurePowershell/v0.0.0",
+          "PSVersion/v7.2.7",
+          "Az.BillingBenefits/0.1.0"
+        ]
+      },
+      "ContentHeaders": {}
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Cache-Control": [
+          "no-cache"
+        ],
+        "Pragma": [
+          "no-cache"
+        ],
+        "Location": [
+          "https://management.azure.com/providers/Microsoft.Capacity/operationResults/7ce8bf77-0a9a-4d38-a5e6-c6573ba462ea?api-version=2020-10-01-preview"
+        ],
+        "Retry-After": [
+          "5"
+        ],
+        "Vary": [
+          "Accept-Encoding"
+        ],
+        "x-ms-ratelimit-remaining-tenant-reads": [
+          "11999"
+        ],
+        "Azure-AsyncOperation": [
+          "https://management.azure.com/providers/Microsoft.Capacity/operationResults/7ce8bf77-0a9a-4d38-a5e6-c6573ba462ea?api-version=2020-10-01-preview"
+        ],
+        "x-ms-request-id": [
+          "778098b1-57c7-4dde-8b58-6ab6d88cdf10"
+        ],
+        "x-ms-version": [
+          "1.0.2141.1412"
+        ],
+        "x-ms-correlation-request-id": [
+          "64dbc7cd-1686-43c4-82e1-bff2f6d39ef4"
+        ],
+        "x-ms-routing-request-id": [
+          "WESTCENTRALUS:20221130T015544Z:64dbc7cd-1686-43c4-82e1-bff2f6d39ef4"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
+        ],
+        "X-Content-Type-Options": [
+          "nosniff"
+        ],
+        "Date": [
+          "Wed, 30 Nov 2022 01:55:43 GMT"
+        ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [
+          "157"
+        ],
+        "Content-Type": [
+          "application/json; charset=utf-8"
+        ],
+        "Expires": [
+          "-1"
+        ]
+      },
+      "Content": "{\"id\":\"/providers/Microsoft.Capacity/operationResults/7ce8bf77-0a9a-4d38-a5e6-c6573ba462ea\",\"name\":\"7ce8bf77-0a9a-4d38-a5e6-c6573ba462ea\",\"status\":\"Pending\"}",
+      "isContentBase64": false
+    }
+  },
+  "New-AzBillingBenefitsReservationOrderAlias+[NoContext]+CreateViaIdentity+$GET+https://management.azure.com/providers/Microsoft.Capacity/operationResults/7ce8bf77-0a9a-4d38-a5e6-c6573ba462ea?api-version=2020-10-01-preview+3": {
+    "Request": {
+      "Method": "GET",
+      "RequestUri": "https://management.azure.com/providers/Microsoft.Capacity/operationResults/7ce8bf77-0a9a-4d38-a5e6-c6573ba462ea?api-version=2020-10-01-preview",
+      "Content": null,
+      "isContentBase64": false,
+      "Headers": {
+        "Authorization": [
+          "[Filtered]"
+        ],
+        "x-ms-unique-id": [
+          "3"
+        ],
+        "x-ms-client-request-id": [
+          "778098b1-57c7-4dde-8b58-6ab6d88cdf10"
+        ],
+        "CommandName": [
+          "New-AzBillingBenefitsReservationOrderAlias"
+        ],
+        "FullCommandName": [
+          "New-AzBillingBenefitsReservationOrderAlias_CreateViaIdentity"
+        ],
+        "ParameterSetName": [
+          "__AllParameterSets"
+        ],
+        "User-Agent": [
+          "AzurePowershell/v0.0.0",
+          "PSVersion/v7.2.7",
+          "Az.BillingBenefits/0.1.0"
+        ]
+      },
+      "ContentHeaders": {}
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Cache-Control": [
+          "no-cache"
+        ],
+        "Pragma": [
+          "no-cache"
+        ],
+        "Location": [
+          "https://management.azure.com/providers/Microsoft.Capacity/operationResults/7ce8bf77-0a9a-4d38-a5e6-c6573ba462ea?api-version=2020-10-01-preview"
+        ],
+        "Retry-After": [
+          "5"
+        ],
+        "Vary": [
+          "Accept-Encoding"
+        ],
+        "x-ms-ratelimit-remaining-tenant-reads": [
+          "11969"
+        ],
+        "Azure-AsyncOperation": [
+          "https://management.azure.com/providers/Microsoft.Capacity/operationResults/7ce8bf77-0a9a-4d38-a5e6-c6573ba462ea?api-version=2020-10-01-preview"
+        ],
+        "x-ms-request-id": [
+          "778098b1-57c7-4dde-8b58-6ab6d88cdf10"
+        ],
+        "x-ms-version": [
+          "1.0.2141.1412"
+        ],
+        "x-ms-correlation-request-id": [
+          "99e10963-769f-4c8f-8a7a-ca755a533159"
+        ],
+        "x-ms-routing-request-id": [
+          "WESTCENTRALUS:20221130T015832Z:99e10963-769f-4c8f-8a7a-ca755a533159"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
+        ],
+        "X-Content-Type-Options": [
+          "nosniff"
+        ],
+        "Date": [
+          "Wed, 30 Nov 2022 01:58:32 GMT"
+        ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [
+          "166"
+        ],
+        "Content-Type": [
+          "application/json; charset=utf-8"
+        ],
+        "Expires": [
+          "-1"
+        ]
+      },
+      "Content": "{\"id\":\"/providers/Microsoft.Capacity/operationResults/7ce8bf77-0a9a-4d38-a5e6-c6573ba462ea\",\"name\":\"7ce8bf77-0a9a-4d38-a5e6-c6573ba462ea\",\"status\":\"PendingPurchases\"}",
+      "isContentBase64": false
+    }
+  },
+  "New-AzBillingBenefitsReservationOrderAlias+[NoContext]+CreateViaIdentity+$GET+https://management.azure.com/providers/Microsoft.Capacity/operationResults/7ce8bf77-0a9a-4d38-a5e6-c6573ba462ea?api-version=2020-10-01-preview+4": {
+    "Request": {
+      "Method": "GET",
+      "RequestUri": "https://management.azure.com/providers/Microsoft.Capacity/operationResults/7ce8bf77-0a9a-4d38-a5e6-c6573ba462ea?api-version=2020-10-01-preview",
+      "Content": null,
+      "isContentBase64": false,
+      "Headers": {
+        "Authorization": [
+          "[Filtered]"
+        ],
+        "x-ms-unique-id": [
+          "4"
+        ],
+        "x-ms-client-request-id": [
+          "778098b1-57c7-4dde-8b58-6ab6d88cdf10"
+        ],
+        "CommandName": [
+          "New-AzBillingBenefitsReservationOrderAlias"
+        ],
+        "FullCommandName": [
+          "New-AzBillingBenefitsReservationOrderAlias_CreateViaIdentity"
+        ],
+        "ParameterSetName": [
+          "__AllParameterSets"
+        ],
+        "User-Agent": [
+          "AzurePowershell/v0.0.0",
+          "PSVersion/v7.2.7",
+          "Az.BillingBenefits/0.1.0"
+        ]
+      },
+      "ContentHeaders": {}
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Cache-Control": [
+          "no-cache"
+        ],
+        "Pragma": [
+          "no-cache"
+        ],
+        "Vary": [
+          "Accept-Encoding"
+        ],
+        "x-ms-ratelimit-remaining-tenant-reads": [
+          "11968"
+        ],
+        "x-ms-request-id": [
+          "778098b1-57c7-4dde-8b58-6ab6d88cdf10"
+        ],
+        "x-ms-version": [
+          "1.0.2141.1412"
+        ],
+        "x-ms-correlation-request-id": [
+          "079074dc-23aa-4165-8b77-581c77b190e0"
+        ],
+        "x-ms-routing-request-id": [
+          "WESTCENTRALUS:20221130T015838Z:079074dc-23aa-4165-8b77-581c77b190e0"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
+        ],
+        "X-Content-Type-Options": [
+          "nosniff"
+        ],
+        "Date": [
+          "Wed, 30 Nov 2022 01:58:37 GMT"
+        ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [
+          "159"
+        ],
+        "Content-Type": [
+          "application/json; charset=utf-8"
+        ],
+        "Expires": [
+          "-1"
+        ]
+      },
+      "Content": "{\"id\":\"/providers/Microsoft.Capacity/operationResults/7ce8bf77-0a9a-4d38-a5e6-c6573ba462ea\",\"name\":\"7ce8bf77-0a9a-4d38-a5e6-c6573ba462ea\",\"status\":\"Succeeded\"}",
+      "isContentBase64": false
+    }
+  },
+  "New-AzBillingBenefitsReservationOrderAlias+[NoContext]+CreateViaIdentity+$GET+https://management.azure.com/providers/Microsoft.BillingBenefits/reservationOrderAliases/PSRITest4?api-version=2022-11-01+5": {
+    "Request": {
+      "Method": "GET",
+      "RequestUri": "https://management.azure.com/providers/Microsoft.BillingBenefits/reservationOrderAliases/PSRITest4?api-version=2022-11-01",
+      "Content": null,
+      "isContentBase64": false,
+      "Headers": {
+        "Authorization": [
+          "[Filtered]"
+        ],
+        "x-ms-unique-id": [
+          "5"
+        ],
+        "x-ms-client-request-id": [
+          "778098b1-57c7-4dde-8b58-6ab6d88cdf10"
+        ],
+        "CommandName": [
+          "New-AzBillingBenefitsReservationOrderAlias"
+        ],
+        "FullCommandName": [
+          "New-AzBillingBenefitsReservationOrderAlias_CreateViaIdentity"
+        ],
+        "ParameterSetName": [
+          "__AllParameterSets"
+        ],
+        "User-Agent": [
+          "AzurePowershell/v0.0.0",
+          "PSVersion/v7.2.7",
+          "Az.BillingBenefits/0.1.0"
+        ]
+      },
+      "ContentHeaders": {}
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Cache-Control": [
+          "no-cache"
+        ],
+        "Pragma": [
+          "no-cache"
+        ],
+        "Vary": [
+          "Accept-Encoding"
+        ],
+        "x-ms-ratelimit-remaining-tenant-reads": [
+          "11967"
+        ],
+        "x-ms-request-id": [
+          "778098b1-57c7-4dde-8b58-6ab6d88cdf10"
+        ],
+        "x-ms-version": [
+          "1.0.2141.1412"
+        ],
+        "x-ms-correlation-request-id": [
+          "4bce682e-04cf-4785-adcb-27b6e338724b"
+        ],
+        "x-ms-routing-request-id": [
+          "WESTCENTRALUS:20221130T015839Z:4bce682e-04cf-4785-adcb-27b6e338724b"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
+        ],
+        "X-Content-Type-Options": [
+          "nosniff"
+        ],
+        "Date": [
+          "Wed, 30 Nov 2022 01:58:39 GMT"
+        ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [
+          "684"
+        ],
+        "Content-Type": [
+          "application/json; charset=utf-8"
+        ],
+        "Expires": [
+          "-1"
+        ]
+      },
+      "Content": "{\"id\":\"/providers/Microsoft.BillingBenefits/reservationOrderAliases/PSRITest4\",\"name\":\"PSRITest4\",\"type\":\"Microsoft.BillingBenefits/reservationOrderAliases\",\"location\":\"westus\",\"kind\":null,\"sku\":{\"name\":\"Standard_B1ls\"},\"properties\":{\"reservationOrderId\":\"/providers/Microsoft.Capacity/reservationOrders/bed2a999-6163-4205-a3db-42b3bcadfc6d\",\"billingScopeId\":\"/subscriptions/eef82110-c91b-4395-9420-fcfcbefc5a47\",\"appliedScopeProperties\":null,\"quantity\":1,\"renew\":null,\"billingPlan\":\"P1M\",\"reservedResourceProperties\":null,\"reservedResourceType\":\"VirtualMachines\",\"reviewDateTime\":null,\"appliedScopeType\":\"Shared\",\"displayName\":\"PSRITest4\",\"provisioningState\":\"Created\",\"term\":\"P1Y\"}}",
+      "isContentBase64": false
+    }
+  }
+}

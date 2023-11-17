@@ -23,7 +23,7 @@ Create an in-memory object for AzureStorageScanRuleset.
 .Outputs
 Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Models.Api20211001Preview.AzureStorageScanRuleset
 .Link
-https://docs.microsoft.com/powershell/module/az.Purview/new-AzPurviewAzureStorageScanRulesetObject
+https://learn.microsoft.com/powershell/module/az.Purview/new-AzPurviewAzureStorageScanRulesetObject
 #>
 function New-AzPurviewAzureStorageScanRulesetObject {
     [OutputType('Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Models.Api20211001Preview.AzureStorageScanRuleset')]

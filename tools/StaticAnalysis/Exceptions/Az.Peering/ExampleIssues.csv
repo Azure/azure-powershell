@@ -1,0 +1,6 @@
+"Module","Cmdlet","Example","Line","RuleName","ProblemId","Severity","Description","Extent","Remediation"
+"Az.Peering","New-AzPeering","1","1","Unbinded_Expression","5014","1","New-AzPeeringDirectConnectionObject ... is not explicitly assigned to a parameter.","...","Assign ... explicitly to the parameter."
+"Az.Peering","Remove-AzPeeringServicePrefix","1","1","Invalid_Parameter_Name","5011","1","Remove-AzPeeringServicePrefix -ResourceGroup is not a valid parameter name.","-ResourceGroup","Check validity of the parameter -ResourceGroup."
+"Az.Peering","New-AzPeering","1","3","Unassigned_Variable","5110","2","New-AzPeering -DirectPeerAsnId $peerAsnId is a null-valued parameter value.","-DirectPeerAsnId","Assign value for $peerAsnId."
+"Az.Peering","New-AzPeeringDirectConnectionObject","1","1","Unassigned_Variable","5110","2","New-AzPeeringDirectConnectionObject -BgpSessionMd5AuthenticationKey $md5Key is a null-valued parameter value.","-BgpSessionMd5AuthenticationKey","Assign value for $md5Key."
+"Az.Peering","New-AzPeeringExchangeConnectionObject","1","1","Unassigned_Variable","5110","2","New-AzPeeringExchangeConnectionObject -BgpSessionMd5AuthenticationKey $md5Key is a null-valued parameter value.","-BgpSessionMd5AuthenticationKey","Assign value for $md5Key."

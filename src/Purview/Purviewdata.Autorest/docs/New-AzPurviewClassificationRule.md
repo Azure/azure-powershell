@@ -1,7 +1,7 @@
 ---
 external help file:
 Module Name: Az.Purview
-online version: https://docs.microsoft.com/powershell/module/az.purview/new-azpurviewclassificationrule
+online version: https://learn.microsoft.com/powershell/module/az.purview/new-azpurviewclassificationrule
 schema: 2.0.0
 ---
 

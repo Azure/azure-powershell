@@ -19,7 +19,7 @@ Removes key credentials or password credentials for an service principal.
 .Description
 Removes key credentials or password credentials for an service principal.
 .Link
-https://docs.microsoft.com/powershell/module/az.resources/remove-azadspcredential
+https://learn.microsoft.com/powershell/module/az.resources/remove-azadspcredential
 #>
 
 function Remove-AzADSpCredential {

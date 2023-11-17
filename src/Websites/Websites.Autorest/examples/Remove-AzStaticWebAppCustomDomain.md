@@ -13,4 +13,3 @@ Get-AzStaticWebAppCustomDomain -ResourceGroupName resourceGroup -Name staticweb0
 ```
 
 This command deletes a custom domain by pipeline.
-

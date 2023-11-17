@@ -1,0 +1,95 @@
+{
+  "resourceType": "flexibleServers/firewallRules",
+  "apiVersion": "2021-05-01",
+  "learnMore": {
+    "url": "https://learn.microsoft.com/powershell/module/az.mysql"
+  },
+  "commands": [
+    {
+      "name": "Get-AzMySqlFlexibleServerFirewallRule",
+      "description": "Gets information about a server firewall rule.",
+      "path": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DBforMySQL/flexibleServers/{serverName}/firewallRules/{firewallRuleName}",
+      "help": {
+        "learnMore": {
+          "url": "https://learn.microsoft.com/powershell/module/az.mysql/get-azmysqlflexibleserverfirewallrule"
+        },
+        "parameterSets": [
+          {
+            "parameters": [
+              "-Name <String>",
+              "-ResourceGroupName <String>",
+              "-ServerName <String>",
+              "[-SubscriptionId <String[]>]"
+            ]
+          }
+        ]
+      },
+      "examples": [
+        {
+          "description": "Gets information about a server firewall rule.",
+          "parameters": [
+            {
+              "name": "-Name",
+              "value": "[Path.firewallRuleName]"
+            },
+            {
+              "name": "-ResourceGroupName",
+              "value": "[Path.resourceGroupName]"
+            },
+            {
+              "name": "-ServerName",
+              "value": "[Path.serverName]"
+            },
+            {
+              "name": "-SubscriptionId",
+              "value": "[Path.subscriptionId]"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Remove-AzMySqlFlexibleServerFirewallRule",
+      "description": "Deletes a firewall rule.",
+      "path": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DBforMySQL/flexibleServers/{serverName}/firewallRules/{firewallRuleName}",
+      "help": {
+        "learnMore": {
+          "url": "https://learn.microsoft.com/powershell/module/az.mysql/remove-azmysqlflexibleserverfirewallrule"
+        },
+        "parameterSets": [
+          {
+            "parameters": [
+              "-Name <String>",
+              "-ResourceGroupName <String>",
+              "-ServerName <String>",
+              "[-SubscriptionId <String>]"
+            ]
+          }
+        ]
+      },
+      "examples": [
+        {
+          "description": "Deletes a firewall rule.",
+          "parameters": [
+            {
+              "name": "-Name",
+              "value": "[Path.firewallRuleName]"
+            },
+            {
+              "name": "-ResourceGroupName",
+              "value": "[Path.resourceGroupName]"
+            },
+            {
+              "name": "-ServerName",
+              "value": "[Path.serverName]"
+            },
+            {
+              "name": "-SubscriptionId",
+              "value": "[Path.subscriptionId]"
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

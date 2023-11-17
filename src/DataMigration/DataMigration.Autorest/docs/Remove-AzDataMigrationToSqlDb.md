@@ -1,7 +1,7 @@
 ---
 external help file:
 Module Name: Az.DataMigration
-online version: https://docs.microsoft.com/powershell/module/az.datamigration/remove-azdatamigrationtosqldb
+online version: https://learn.microsoft.com/powershell/module/az.datamigration/remove-azdatamigrationtosqldb
 schema: 2.0.0
 ---
 

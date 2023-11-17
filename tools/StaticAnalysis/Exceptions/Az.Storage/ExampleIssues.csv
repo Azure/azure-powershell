@@ -1,0 +1,4 @@
+"Module","Cmdlet","Example","Line","RuleName","ProblemId","Severity","Description","Extent","Remediation"
+"Az.Storage","Set-AzStorageAccount","5","4","Invalid_Cmdlet","5000","1","New-AzKeyVault is not a valid command name.","New-AzKeyVault -VaultName 'MyKeyVault' -ResourceGroupName 'MyResourceGroup' -Location 'EastUS2'","Check the spell of New-AzKeyVault."
+"Az.Storage","Set-AzStorageAccount","5","5","Invalid_Cmdlet","5000","1","Add-AzKeyVaultKey is not a valid command name.","Add-AzKeyVaultKey -VaultName 'MyKeyVault' -Name 'MyKey' -Destination 'Software'","Check the spell of Add-AzKeyVaultKey."
+"Az.Storage","Set-AzStorageAccount","5","6","Invalid_Cmdlet","5000","1","Set-AzKeyVaultAccessPolicy is not a valid command name.","Set-AzKeyVaultAccessPolicy -VaultName 'MyKeyVault' -ObjectId $account.Identity.PrincipalId -PermissionsToKeys wrapkey,unwrapkey,get","Check the spell of Set-AzKeyVaultAccessPolicy."

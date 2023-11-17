@@ -1,0 +1,4 @@
+"Module","Severity","ResourceType","SubResourceType","Command","Description"
+"Az.KeyVault","1","Microsoft.KeyVault","vaults","Get-AzKeyVaultKey","resourceGroupName is defined in path but cannot find in example"
+"Az.KeyVault","1","Microsoft.KeyVault","vaults","Get-AzKeyVaultCertificate","resourceGroupName is defined in path but cannot find in example"
+"Az.KeyVault","1","Microsoft.KeyVault","vaults","Get-AzKeyVaultSecret","resourceGroupName is defined in path but cannot find in example"

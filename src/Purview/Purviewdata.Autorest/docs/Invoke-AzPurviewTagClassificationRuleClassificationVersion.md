@@ -1,7 +1,7 @@
 ---
 external help file:
 Module Name: Az.Purview
-online version: https://docs.microsoft.com/powershell/module/az.purview/invoke-azpurviewtagclassificationruleclassificationversion
+online version: https://learn.microsoft.com/powershell/module/az.purview/invoke-azpurviewtagclassificationruleclassificationversion
 schema: 2.0.0
 ---
 

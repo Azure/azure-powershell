@@ -1,0 +1,232 @@
+{
+  "New-AzWcfRelay+[NoContext]+Create+$PUT+https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/relay-0basr8/providers/Microsoft.Relay/namespaces/namespace-076s28/wcfRelays/wcfRelay-dip4k0?api-version=2021-11-01+1": {
+    "Request": {
+      "Method": "PUT",
+      "RequestUri": "https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/relay-0basr8/providers/Microsoft.Relay/namespaces/namespace-076s28/wcfRelays/wcfRelay-dip4k0?api-version=2021-11-01",
+      "Content": "{\r\n  \"properties\": {\r\n    \"relayType\": \"NetTcp\",\r\n    \"userMetadata\": \"Test 01\"\r\n  }\r\n}",
+      "isContentBase64": false,
+      "Headers": {
+      },
+      "ContentHeaders": {
+        "Content-Type": [ "application/json" ],
+        "Content-Length": [ "87" ]
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "Server": [ "Microsoft-HTTPAPI/2.0" ],
+        "x-ms-ratelimit-remaining-subscription-writes": [ "1177" ],
+        "x-ms-request-id": [ "172b7e0d-4bad-4b8c-b86e-0f1d9177a72d" ],
+        "x-ms-correlation-request-id": [ "172b7e0d-4bad-4b8c-b86e-0f1d9177a72d" ],
+        "x-ms-routing-request-id": [ "SOUTHEASTASIA:20230403T093733Z:172b7e0d-4bad-4b8c-b86e-0f1d9177a72d" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "Date": [ "Mon, 03 Apr 2023 09:37:32 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "512" ],
+        "Content-Type": [ "application/json; charset=utf-8" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\"id\":\"/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/relay-0basr8/providers/Microsoft.Relay/namespaces/namespace-076s28/wcfrelays/wcfRelay-dip4k0\",\"name\":\"wcfRelay-dip4k0\",\"type\":\"Microsoft.Relay/namespaces/wcfrelays\",\"location\":\"eastus\",\"properties\":{\"createdAt\":\"2023-04-03T09:37:32.7173016Z\",\"updatedAt\":\"2023-04-03T09:37:32.7173016Z\",\"listenerCount\":0,\"requiresClientAuthorization\":false,\"relayType\":\"NetTcp\",\"requiresTransportSecurity\":false,\"isDynamic\":false,\"userMetadata\":\"Test 01\"}}",
+      "isContentBase64": false
+    }
+  },
+  "New-AzWcfRelay+[NoContext]+Create+$GET+https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/relay-0basr8/providers/Microsoft.Relay/namespaces/namespace-076s28/wcfRelays/wcfRelay-dip4k0?api-version=2021-11-01+2": {
+    "Request": {
+      "Method": "GET",
+      "RequestUri": "https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/relay-0basr8/providers/Microsoft.Relay/namespaces/namespace-076s28/wcfRelays/wcfRelay-dip4k0?api-version=2021-11-01",
+      "Content": null,
+      "isContentBase64": false,
+      "Headers": {
+        "x-ms-unique-id": [ "71" ],
+        "x-ms-client-request-id": [ "33d36885-466c-46e5-907f-b26c623970b9" ],
+        "CommandName": [ "Get-AzWcfRelay" ],
+        "FullCommandName": [ "Get-AzWcfRelay_GetViaIdentity" ],
+        "ParameterSetName": [ "__AllParameterSets" ],
+        "User-Agent": [ "AzurePowershell/v0.0.0", "PSVersion/v7.3.3", "Az.Relay/0.1.0" ],
+        "Authorization": [ "[Filtered]" ]
+      },
+      "ContentHeaders": {
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "Server": [ "Microsoft-HTTPAPI/2.0" ],
+        "x-ms-ratelimit-remaining-subscription-reads": [ "11972" ],
+        "x-ms-request-id": [ "82760198-d1d3-42c2-a480-95f48c1fc90b" ],
+        "x-ms-correlation-request-id": [ "82760198-d1d3-42c2-a480-95f48c1fc90b" ],
+        "x-ms-routing-request-id": [ "SOUTHEASTASIA:20230403T093733Z:82760198-d1d3-42c2-a480-95f48c1fc90b" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "Date": [ "Mon, 03 Apr 2023 09:37:33 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "512" ],
+        "Content-Type": [ "application/json; charset=utf-8" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\"id\":\"/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/relay-0basr8/providers/Microsoft.Relay/namespaces/namespace-076s28/wcfrelays/wcfRelay-dip4k0\",\"name\":\"wcfRelay-dip4k0\",\"type\":\"Microsoft.Relay/namespaces/wcfrelays\",\"location\":\"eastus\",\"properties\":{\"createdAt\":\"2023-04-03T09:37:32.7173016Z\",\"updatedAt\":\"2023-04-03T09:37:32.7173016Z\",\"listenerCount\":0,\"requiresClientAuthorization\":false,\"relayType\":\"NetTcp\",\"requiresTransportSecurity\":false,\"isDynamic\":false,\"userMetadata\":\"Test 01\"}}",
+      "isContentBase64": false
+    }
+  },
+  "New-AzWcfRelay+[NoContext]+Create+$PUT+https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/relay-0basr8/providers/Microsoft.Relay/namespaces/namespace-076s28/wcfRelays/wcfRelay-dip4k0?api-version=2021-11-01+3": {
+    "Request": {
+      "Method": "PUT",
+      "RequestUri": "https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/relay-0basr8/providers/Microsoft.Relay/namespaces/namespace-076s28/wcfRelays/wcfRelay-dip4k0?api-version=2021-11-01",
+      "Content": "{\r\n  \"properties\": {\r\n    \"relayType\": \"NetTcp\",\r\n    \"requiresClientAuthorization\": false,\r\n    \"requiresTransportSecurity\": false,\r\n    \"userMetadata\": \"Test 02\"\r\n  }\r\n}",
+      "isContentBase64": false,
+      "Headers": {
+      },
+      "ContentHeaders": {
+        "Content-Type": [ "application/json" ],
+        "Content-Length": [ "171" ]
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "Server": [ "Microsoft-HTTPAPI/2.0" ],
+        "x-ms-ratelimit-remaining-subscription-writes": [ "1176" ],
+        "x-ms-request-id": [ "4f1d2fbc-bfed-48aa-92c2-c12a831b8717" ],
+        "x-ms-correlation-request-id": [ "4f1d2fbc-bfed-48aa-92c2-c12a831b8717" ],
+        "x-ms-routing-request-id": [ "SOUTHEASTASIA:20230403T093734Z:4f1d2fbc-bfed-48aa-92c2-c12a831b8717" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "Date": [ "Mon, 03 Apr 2023 09:37:33 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "494" ],
+        "Content-Type": [ "application/json; charset=utf-8" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\"id\":\"/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/relay-0basr8/providers/Microsoft.Relay/namespaces/namespace-076s28/wcfrelays/wcfRelay-dip4k0\",\"name\":\"wcfRelay-dip4k0\",\"type\":\"Microsoft.Relay/namespaces/wcfrelays\",\"location\":\"eastus\",\"properties\":{\"createdAt\":\"0001-01-01T00:00:00\",\"updatedAt\":\"0001-01-01T00:00:00\",\"listenerCount\":0,\"requiresClientAuthorization\":false,\"relayType\":\"NetTcp\",\"requiresTransportSecurity\":false,\"isDynamic\":false,\"userMetadata\":\"Test 02\"}}",
+      "isContentBase64": false
+    }
+  },
+  "New-AzWcfRelay+[NoContext]+Create+$GET+https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/relay-0basr8/providers/Microsoft.Relay/namespaces/namespace-076s28/wcfRelays/wcfRelay-dip4k0?api-version=2021-11-01+4": {
+    "Request": {
+      "Method": "GET",
+      "RequestUri": "https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/relay-0basr8/providers/Microsoft.Relay/namespaces/namespace-076s28/wcfRelays/wcfRelay-dip4k0?api-version=2021-11-01",
+      "Content": null,
+      "isContentBase64": false,
+      "Headers": {
+        "x-ms-unique-id": [ "73" ],
+        "x-ms-client-request-id": [ "3a023294-d801-463a-92a7-81b1d767e502" ],
+        "CommandName": [ "Get-AzWcfRelay" ],
+        "FullCommandName": [ "Get-AzWcfRelay_Get" ],
+        "ParameterSetName": [ "__AllParameterSets" ],
+        "User-Agent": [ "AzurePowershell/v0.0.0", "PSVersion/v7.3.3", "Az.Relay/0.1.0" ],
+        "Authorization": [ "[Filtered]" ]
+      },
+      "ContentHeaders": {
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "Server": [ "Microsoft-HTTPAPI/2.0" ],
+        "x-ms-ratelimit-remaining-subscription-reads": [ "11971" ],
+        "x-ms-request-id": [ "1432fd31-7399-4cfd-b187-0278bf219154" ],
+        "x-ms-correlation-request-id": [ "1432fd31-7399-4cfd-b187-0278bf219154" ],
+        "x-ms-routing-request-id": [ "SOUTHEASTASIA:20230403T093735Z:1432fd31-7399-4cfd-b187-0278bf219154" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "Date": [ "Mon, 03 Apr 2023 09:37:34 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "512" ],
+        "Content-Type": [ "application/json; charset=utf-8" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\"id\":\"/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/relay-0basr8/providers/Microsoft.Relay/namespaces/namespace-076s28/wcfrelays/wcfRelay-dip4k0\",\"name\":\"wcfRelay-dip4k0\",\"type\":\"Microsoft.Relay/namespaces/wcfrelays\",\"location\":\"eastus\",\"properties\":{\"createdAt\":\"2023-04-03T09:37:32.7173016Z\",\"updatedAt\":\"2023-04-03T09:37:34.4208233Z\",\"listenerCount\":0,\"requiresClientAuthorization\":false,\"relayType\":\"NetTcp\",\"requiresTransportSecurity\":false,\"isDynamic\":false,\"userMetadata\":\"Test 02\"}}",
+      "isContentBase64": false
+    }
+  },
+  "New-AzWcfRelay+[NoContext]+Create+$PUT+https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/relay-0basr8/providers/Microsoft.Relay/namespaces/namespace-076s28/wcfRelays/wcfRelay-dip4k0?api-version=2021-11-01+5": {
+    "Request": {
+      "Method": "PUT",
+      "RequestUri": "https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/relay-0basr8/providers/Microsoft.Relay/namespaces/namespace-076s28/wcfRelays/wcfRelay-dip4k0?api-version=2021-11-01",
+      "Content": "{\r\n  \"properties\": {\r\n    \"relayType\": \"NetTcp\",\r\n    \"requiresClientAuthorization\": false,\r\n    \"requiresTransportSecurity\": false,\r\n    \"userMetadata\": \"Test 03\"\r\n  }\r\n}",
+      "isContentBase64": false,
+      "Headers": {
+      },
+      "ContentHeaders": {
+        "Content-Type": [ "application/json" ],
+        "Content-Length": [ "171" ]
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "Server": [ "Microsoft-HTTPAPI/2.0" ],
+        "x-ms-ratelimit-remaining-subscription-writes": [ "1175" ],
+        "x-ms-request-id": [ "f88cd8d3-0aab-40d0-852a-0b526c08f83f" ],
+        "x-ms-correlation-request-id": [ "f88cd8d3-0aab-40d0-852a-0b526c08f83f" ],
+        "x-ms-routing-request-id": [ "SOUTHEASTASIA:20230403T093735Z:f88cd8d3-0aab-40d0-852a-0b526c08f83f" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "Date": [ "Mon, 03 Apr 2023 09:37:35 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "494" ],
+        "Content-Type": [ "application/json; charset=utf-8" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\"id\":\"/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/relay-0basr8/providers/Microsoft.Relay/namespaces/namespace-076s28/wcfrelays/wcfRelay-dip4k0\",\"name\":\"wcfRelay-dip4k0\",\"type\":\"Microsoft.Relay/namespaces/wcfrelays\",\"location\":\"eastus\",\"properties\":{\"createdAt\":\"0001-01-01T00:00:00\",\"updatedAt\":\"0001-01-01T00:00:00\",\"listenerCount\":0,\"requiresClientAuthorization\":false,\"relayType\":\"NetTcp\",\"requiresTransportSecurity\":false,\"isDynamic\":false,\"userMetadata\":\"Test 03\"}}",
+      "isContentBase64": false
+    }
+  },
+  "New-AzWcfRelay+[NoContext]+Create+$DELETE+https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/relay-0basr8/providers/Microsoft.Relay/namespaces/namespace-076s28/wcfRelays/wcfRelay-dip4k0?api-version=2021-11-01+6": {
+    "Request": {
+      "Method": "DELETE",
+      "RequestUri": "https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/relay-0basr8/providers/Microsoft.Relay/namespaces/namespace-076s28/wcfRelays/wcfRelay-dip4k0?api-version=2021-11-01",
+      "Content": null,
+      "isContentBase64": false,
+      "Headers": {
+        "x-ms-unique-id": [ "75" ],
+        "x-ms-client-request-id": [ "ddca97de-4de7-4c4b-871a-8f70a6580d6c" ],
+        "CommandName": [ "Remove-AzWcfRelay" ],
+        "FullCommandName": [ "Remove-AzWcfRelay_DeleteViaIdentity" ],
+        "ParameterSetName": [ "__AllParameterSets" ],
+        "User-Agent": [ "AzurePowershell/v0.0.0", "PSVersion/v7.3.3", "Az.Relay/0.1.0" ],
+        "Authorization": [ "[Filtered]" ]
+      },
+      "ContentHeaders": {
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "Server": [ "Microsoft-HTTPAPI/2.0" ],
+        "x-ms-ratelimit-remaining-subscription-deletes": [ "14991" ],
+        "x-ms-request-id": [ "67db9bf4-d12a-415d-8028-ebaf9a14c3f4" ],
+        "x-ms-correlation-request-id": [ "67db9bf4-d12a-415d-8028-ebaf9a14c3f4" ],
+        "x-ms-routing-request-id": [ "SOUTHEASTASIA:20230403T093736Z:67db9bf4-d12a-415d-8028-ebaf9a14c3f4" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "Date": [ "Mon, 03 Apr 2023 09:37:36 GMT" ]
+      },
+      "ContentHeaders": {
+        "Expires": [ "-1" ],
+        "Content-Length": [ "0" ]
+      },
+      "Content": null,
+      "isContentBase64": false
+    }
+  }
+}

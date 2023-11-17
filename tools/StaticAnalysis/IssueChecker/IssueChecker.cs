@@ -26,6 +26,8 @@ using StaticAnalysis.BreakingChangeAnalyzer;
 using StaticAnalysis.DependencyAnalyzer;
 using StaticAnalysis.SignatureVerifier;
 using StaticAnalysis.ExampleAnalyzer;
+using StaticAnalysis.UXMetadataAnalyzer;
+using StaticAnalysis.GeneratedSdkAnalyzer;
 
 namespace StaticAnalysis.IssueChecker
 {
@@ -41,6 +43,8 @@ namespace StaticAnalysis.IssueChecker
             ("ExtraAssemblies.csv", typeof(ExtraAssembly).FullName),
             ("SignatureIssues.csv", typeof(SignatureIssue).FullName),
             ("ExampleIssues.csv", typeof(ExampleIssue).FullName),
+            ("UXMetadataIssues.csv", typeof(UXMetadataIssue).FullName),
+            ("GeneratedSdkIssues.csv", typeof(GeneratedSdkIssue).FullName)
         };
         public AnalysisLogger Logger { get; set; }
 

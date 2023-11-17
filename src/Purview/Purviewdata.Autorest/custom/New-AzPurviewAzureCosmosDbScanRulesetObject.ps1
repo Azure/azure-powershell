@@ -23,7 +23,7 @@ Create an in-memory object for AzureCosmosDbScanRuleset.
 .Outputs
 Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Models.Api20211001Preview.AzureCosmosDbScanRuleset
 .Link
-https://docs.microsoft.com/powershell/module/az.Purview/new-AzPurviewAzureCosmosDbScanRulesetObject
+https://learn.microsoft.com/powershell/module/az.Purview/new-AzPurviewAzureCosmosDbScanRulesetObject
 #>
 function New-AzPurviewAzureCosmosDbScanRulesetObject {
     [OutputType('Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Models.Api20211001Preview.AzureCosmosDbScanRuleset')]

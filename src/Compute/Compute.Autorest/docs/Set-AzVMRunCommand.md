@@ -1,7 +1,7 @@
 ---
 external help file:
 Module Name: Az.Compute
-online version: https://docs.microsoft.com/powershell/module/az.compute/set-azvmruncommand
+online version: https://learn.microsoft.com/powershell/module/az.compute/set-azvmruncommand
 schema: 2.0.0
 ---
 
@@ -12,13 +12,32 @@ The operation to create or update the run command.
 
 ## SYNTAX
 
+### UpdateExpanded (Default)
 ```
 Set-AzVMRunCommand -ResourceGroupName <String> -RunCommandName <String> -VMName <String> -Location <String>
- [-SubscriptionId <String>] [-AsyncExecution] [-ErrorBlobUri <String>] [-OutputBlobUri <String>]
+ [-SubscriptionId <String>] [-AsyncExecution] [-ErrorBlobManagedIdentityClientId <String>]
+ [-ErrorBlobManagedIdentityObjectId <String>] [-ErrorBlobUri <String>]
+ [-OutputBlobManagedIdentityClientId <String>] [-OutputBlobManagedIdentityObjectId <String>]
+ [-OutputBlobUri <String>] [-Parameter <IRunCommandInputParameter[]>]
+ [-ProtectedParameter <IRunCommandInputParameter[]>] [-RunAsPassword <String>] [-RunAsUser <String>]
+ [-ScriptUriManagedIdentityClientId <String>] [-ScriptUriManagedIdentityObjectId <String>]
+ [-SourceCommandId <String>] [-SourceScript <String>] [-SourceScriptUri <String>] [-Tag <Hashtable>]
+ [-TimeoutInSecond <Int32>] [-TreatFailureAsDeploymentFailure] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
+ [-Confirm] [-WhatIf] [<CommonParameters>]
+```
+
+### ScriptLocalPath
+```
+Set-AzVMRunCommand -ResourceGroupName <String> -RunCommandName <String> -VMName <String> -Location <String>
+ -ScriptLocalPath <String> [-SubscriptionId <String>] [-AsyncExecution]
+ [-ErrorBlobManagedIdentityClientId <String>] [-ErrorBlobManagedIdentityObjectId <String>]
+ [-ErrorBlobUri <String>] [-OutputBlobManagedIdentityClientId <String>]
+ [-OutputBlobManagedIdentityObjectId <String>] [-OutputBlobUri <String>]
  [-Parameter <IRunCommandInputParameter[]>] [-ProtectedParameter <IRunCommandInputParameter[]>]
- [-RunAsPassword <String>] [-RunAsUser <String>] [-SourceCommandId <String>] [-SourceScript <String>]
- [-SourceScriptUri <String>] [-Tag <Hashtable>] [-TimeoutInSecond <Int32>] [-DefaultProfile <PSObject>]
- [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
+ [-RunAsPassword <String>] [-RunAsUser <String>] [-ScriptUriManagedIdentityClientId <String>]
+ [-ScriptUriManagedIdentityObjectId <String>] [-Tag <Hashtable>] [-TimeoutInSecond <Int32>]
+ [-TreatFailureAsDeploymentFailure] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf]
+ [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -26,18 +45,95 @@ The operation to create or update the run command.
 
 ## EXAMPLES
 
-### Example 1: Simple Example
+### Example 1: Create or update Run Command on a VM using a storage blob SAS URL
 ```powershell
-Set-AzVMRunCommand -ResourceGroupName $rgname -VMName $vmname -RunCommandName 'firstruncommand' 
+Set-AzVMRunCommand -ResourceGroupName MyRG0 -VMName MyVMEE -RunCommandName MyRunCommand -Location EastUS2EUAP -SourceScriptUri "https://myst.blob.core.windows.net/mycontainer/myscript.ps1?sp=r&st=2022-10-27T21:02:35Z&se=2022-10-28T05:02:35Z&spr=https&sv=2021-06-08&sr=b&sig=0I%2FIiYayRwHasfasasfdasdfasdeTsQjLnpZjA%3D"
 ```
 
 ```output
-Location Name             Type
--------- ----             ----
-eastus   firstruncommand2 Microsoft.Compute/virtualMachines/runCommands
+Location      Name         Type
+--------      ----         ----
+eastus2euap   MyRunCommand Microsoft.Compute/virtualMachines/runCommands
 ```
 
-The Set-AzVMRunCommand cmdlet updates properties for existing run command or adds a new run command to a virtual machine.
+Create or update Run Command on a Windows VM using a SAS URL of a storage blob that contains .ps1 script.
+Note SAS URL must provide read access to the blob.
+An expiry time of 24 hours is suggested for SAS URL.
+SAS URLs can be generated on Azure portal using blob's options , or SAS token using New-AzStorageBlobSASToken.
+If generating SAS token using New-AzStorageBlobSASToken, your SAS URL = base blob URL + "?" + SAS token from New-AzStorageBlobSASToken.
+
+### Example 2: Create or update Run Command on a VM using a local script file.
+```powershell
+Set-AzVMRunCommand -ResourceGroupName MyRG0 -VMName MyVMEE -RunCommandName MyRunCommand -Location EastUS2EUAP -ScriptLocalPath "C:\MyScriptsDir\MyScript.ps1"
+```
+
+```output
+Location      Name         Type
+--------      ----         ----
+eastus2euap   MyRunCommand Microsoft.Compute/virtualMachines/runCommands
+```
+
+Create or update Run Command on a VM using a local script file that is on the client machine where cmdlet is executed.
+
+### Example 3: Create or update Run Command on a VM using script text.
+```powershell
+Set-AzVMRunCommand -ResourceGroupName MyRG0 -VMName MyVML -RunCommandName MyRunCommand2 -Location EastUS2EUAP -SourceScript "id; echo HelloWorld"
+```
+
+```output
+Location      Name          Type
+--------      ----          ----
+eastus2euap   MyRunCommand2 Microsoft.Compute/virtualMachines/runCommands
+```
+
+Create or update Run Command on a VM passing the script content directly to -SourceScript parameter.
+Use ';' to delimit multiple commands.
+
+### Example 4: Create or update Run Command on a VM using commandId.
+```powershell
+Set-AzVMRunCommand -ResourceGroupName MyRG0 -VMName MyVMEE -RunCommandName MyRunCommand -Location EastUS2EUAP -SourceCommandId DisableWindowsUpdate
+```
+
+```output
+Location      Name         Type
+--------      ----         ----
+eastus2euap   MyRunCommand Microsoft.Compute/virtualMachines/runCommands
+```
+
+Create or update Run Command on a VM using pre-existing commandId.
+Available commandIds can be retrieved using Get-AzVMRunCommandDocument.
+
+### Example 5: Create or update Run Command on a VM and stream standard output and standard error messages to output and error Append blobs.
+```powershell
+Set-AzVMRunCommand -ResourceGroupName MyRG0 -VMName MyVML -RunCommandName MyRunCommand3 -Location EastUS2EUAP -ScriptLocalPath "C:\MyScriptsDir\MyScript.ps1" -OutputBlobUri "https://vivst.blob.core.windows.net/vivcontainer/output.txt?sp=racw&st=2022-10-27T22:18:36Z&se=2022-10-28T06:18:36Z&spr=https&sv=2021-06-08&sr=b&sig=HQAu3Bl%2BKMofYTjMo8o5hasfadsfasdF4jIkRJra4S5FlEo%3D" -ErrorBlobUri "https://vivst.blob.core.windows.net/vivcontainer/error.txt?sp=racw&st=2022-10-27T22:18:36Z&se=2022-10-28T06:18:36Z&spr=https&sv=2021-06-08&sr=b&sig=HQAu3Bl%2BKMofYTjMo8o5h%asfasdfgdT%2F4jasfasdf5FlEo%3D"
+```
+
+```output
+Location      Name          Type
+--------      ----         ----
+eastus2euap   MyRunCommand3 Microsoft.Compute/virtualMachines/runCommands
+```
+
+Create or update Run Command on a VM and stream standard output and standard error messages to output and error Append blobs.
+Note output and error blobs must be of type AppendBlob and their  SAS URLs must provide read, append, create, write access to the blob.
+An expiry time of 24 hours is suggested for SAS URL.
+If output or error blob does not exist, a blob of type AppendBlob will be created.
+SAS URLs can be generated on Azure portal using blob's options , or SAS token using New-AzStorageBlobSASToken.
+If generating SAS token using New-AzStorageBlobSASToken, your SAS URL = base blob URL + "?" + SAS token from New-AzStorageBlobSASToken.
+
+### Example 6: Create or update Run Command on a VM, run the Run Command as a different user using RunAsUser and RunAsPassword parameters.
+```powershell
+Set-AzVMRunCommand -ResourceGroupName MyRG0 -VMName MyVMEE -RunCommandName MyRunCommand -Location EastUS2EUAP -ScriptLocalPath "C:\MyScriptsDir\MyScript.ps1" -RunAsUser myusername -RunAsPassword mypassword
+```
+
+```output
+Location      Name         Type
+--------      ----         ----
+eastus2euap   MyRunCommand Microsoft.Compute/virtualMachines/runCommands
+```
+
+Create or update Run Command on a VM, run the Run Command as a different user using RunAsUser and RunAsPassword parameters.
+For RunAs to work properly, contact admin of VM and make sure user is added on the VM, user has access to resources accessed by the Run Command (Directories, Files, Network etc.), and in case of Windows VM, 'Secondary Logon' service is running on the VM.
 
 ## PARAMETERS
 
@@ -73,7 +169,8 @@ Accept wildcard characters: False
 ```
 
 ### -DefaultProfile
-The credentials, account, tenant, and subscription used for communication with Azure.
+The DefaultProfile parameter is not functional.
+Use the SubscriptionId parameter when available if executing the cmdlet against a different subscription.
 
 ```yaml
 Type: System.Management.Automation.PSObject
@@ -87,8 +184,42 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### -ErrorBlobManagedIdentityClientId
+Client Id (GUID value) of the user-assigned managed identity.
+ObjectId should not be used if this is provided.
+
+```yaml
+Type: System.String
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -ErrorBlobManagedIdentityObjectId
+Object Id (GUID value) of the user-assigned managed identity.
+ClientId should not be used if this is provided.
+
+```yaml
+Type: System.String
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
 ### -ErrorBlobUri
 Specifies the Azure storage blob where script error stream will be uploaded.
+Use a SAS URI with read, append, create, write access OR use managed identity to provide the VM access to the blob.
+Refer errorBlobManagedIdentity parameter.
 
 ```yaml
 Type: System.String
@@ -132,8 +263,42 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### -OutputBlobManagedIdentityClientId
+Client Id (GUID value) of the user-assigned managed identity.
+ObjectId should not be used if this is provided.
+
+```yaml
+Type: System.String
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -OutputBlobManagedIdentityObjectId
+Object Id (GUID value) of the user-assigned managed identity.
+ClientId should not be used if this is provided.
+
+```yaml
+Type: System.String
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
 ### -OutputBlobUri
 Specifies the Azure storage blob where script output stream will be uploaded.
+Use a SAS URI with read, append, create, write access OR use managed identity to provide the VM access to the blob.
+Refer outputBlobManagedIdentity parameter.
 
 ```yaml
 Type: System.String
@@ -152,7 +317,7 @@ The parameters used by the script.
 To construct, see NOTES section for PARAMETER properties and create a hash table.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.Api20210701.IRunCommandInputParameter[]
+Type: Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.Api20230701.IRunCommandInputParameter[]
 Parameter Sets: (All)
 Aliases:
 
@@ -168,7 +333,7 @@ The parameters used by the script.
 To construct, see NOTES section for PROTECTEDPARAMETER properties and create a hash table.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.Api20210701.IRunCommandInputParameter[]
+Type: Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.Api20230701.IRunCommandInputParameter[]
 Parameter Sets: (All)
 Aliases:
 
@@ -239,12 +404,59 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### -ScriptLocalPath
+
+
+```yaml
+Type: System.String
+Parameter Sets: ScriptLocalPath
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -ScriptUriManagedIdentityClientId
+Client Id (GUID value) of the user-assigned managed identity.
+ObjectId should not be used if this is provided.
+
+```yaml
+Type: System.String
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -ScriptUriManagedIdentityObjectId
+Object Id (GUID value) of the user-assigned managed identity.
+ClientId should not be used if this is provided.
+
+```yaml
+Type: System.String
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
 ### -SourceCommandId
 Specifies a commandId of predefined built-in script.
 
 ```yaml
 Type: System.String
-Parameter Sets: (All)
+Parameter Sets: UpdateExpanded
 Aliases:
 
 Required: False
@@ -259,7 +471,7 @@ Specifies the script content to be executed on the VM.
 
 ```yaml
 Type: System.String
-Parameter Sets: (All)
+Parameter Sets: UpdateExpanded
 Aliases:
 
 Required: False
@@ -271,10 +483,11 @@ Accept wildcard characters: False
 
 ### -SourceScriptUri
 Specifies the script download location.
+It can be either SAS URI of an Azure storage blob with read access or public URI.
 
 ```yaml
 Type: System.String
-Parameter Sets: (All)
+Parameter Sets: UpdateExpanded
 Aliases:
 
 Required: False
@@ -320,6 +533,24 @@ The timeout in seconds to execute the run command.
 
 ```yaml
 Type: System.Int32
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -TreatFailureAsDeploymentFailure
+Optional.
+If set to true, any failure in the script will fail the deployment and ProvisioningState will be marked as Failed.
+If set to false, ProvisioningState would only reflect whether the run command was run or not by the extensions platform, it would not indicate whether script failed in case of script failures.
+See instance view of run command in case of script failures to see executionMessage, output, error: https://aka.ms/runcommandmanaged#get-execution-status-and-results
+
+```yaml
+Type: System.Management.Automation.SwitchParameter
 Parameter Sets: (All)
 Aliases:
 
@@ -383,7 +614,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.Api20210701.IVirtualMachineRunCommand
+### Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.Api20230701.IVirtualMachineRunCommand
 
 ## NOTES
 
@@ -394,11 +625,11 @@ COMPLEX PARAMETER PROPERTIES
 To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
 
 
-PARAMETER <IRunCommandInputParameter[]>: The parameters used by the script.
+`PARAMETER <IRunCommandInputParameter[]>`: The parameters used by the script.
   - `Name <String>`: The run command parameter name.
   - `Value <String>`: The run command parameter value.
 
-PROTECTEDPARAMETER <IRunCommandInputParameter[]>: The parameters used by the script.
+`PROTECTEDPARAMETER <IRunCommandInputParameter[]>`: The parameters used by the script.
   - `Name <String>`: The run command parameter name.
   - `Value <String>`: The run command parameter value.
 

@@ -1,0 +1,201 @@
+{
+  "resourceType": "sites/slots/continuouswebjobs",
+  "apiVersion": "2021-02-01",
+  "learnMore": {
+    "url": "https://learn.microsoft.com/powershell/module/az.websites"
+  },
+  "commands": [
+    {
+      "name": "Get-AzWebAppSlotContinuousWebJob",
+      "description": "Get or list continuous web for a deployment slot.",
+      "path": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/sites/{name}/slots/{slot}/continuouswebjobs/{webJobName}",
+      "help": {
+        "learnMore": {
+          "url": "https://learn.microsoft.com/powershell/module/az.websites/get-azwebappslotcontinuouswebjob"
+        },
+        "parameterSets": [
+          {
+            "parameters": [
+              "-AppName <String>",
+              "-Name <String>",
+              "-ResourceGroupName <String>",
+              "-SlotName <String>",
+              "[-SubscriptionId <String[]>]"
+            ]
+          }
+        ]
+      },
+      "examples": [
+        {
+          "description": "Get or list continuous web for a deployment slot.",
+          "parameters": [
+            {
+              "name": "-AppName",
+              "value": "[Path.name]"
+            },
+            {
+              "name": "-Name",
+              "value": "[Path.webJobName]"
+            },
+            {
+              "name": "-ResourceGroupName",
+              "value": "[Path.resourceGroupName]"
+            },
+            {
+              "name": "-SlotName",
+              "value": "[Path.slot]"
+            },
+            {
+              "name": "-SubscriptionId",
+              "value": "[Path.subscriptionId]"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Remove-AzWebAppSlotContinuousWebJob",
+      "description": "Delete a continuous web job for a deployment slot.",
+      "path": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/sites/{name}/slots/{slot}/continuouswebjobs/{webJobName}",
+      "help": {
+        "learnMore": {
+          "url": "https://learn.microsoft.com/powershell/module/az.websites/remove-azwebappslotcontinuouswebjob"
+        },
+        "parameterSets": [
+          {
+            "parameters": [
+              "-AppName <String>",
+              "-Name <String>",
+              "-ResourceGroupName <String>",
+              "-SlotName <String>",
+              "[-SubscriptionId <String>]"
+            ]
+          }
+        ]
+      },
+      "examples": [
+        {
+          "description": "Delete a continuous web job for a deployment slot.",
+          "parameters": [
+            {
+              "name": "-AppName",
+              "value": "[Path.name]"
+            },
+            {
+              "name": "-Name",
+              "value": "[Path.webJobName]"
+            },
+            {
+              "name": "-ResourceGroupName",
+              "value": "[Path.resourceGroupName]"
+            },
+            {
+              "name": "-SlotName",
+              "value": "[Path.slot]"
+            },
+            {
+              "name": "-SubscriptionId",
+              "value": "[Path.subscriptionId]"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Start-AzWebAppSlotContinuousWebJob",
+      "description": "Start a continuous web job for a deployment slot.",
+      "path": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/sites/{name}/slots/{slot}/continuouswebjobs/{webJobName}/start",
+      "help": {
+        "learnMore": {
+          "url": "https://learn.microsoft.com/powershell/module/az.websites/start-azwebappslotcontinuouswebjob"
+        },
+        "parameterSets": [
+          {
+            "parameters": [
+              "-AppName <String>",
+              "-Name <String>",
+              "-ResourceGroupName <String>",
+              "-SlotName <String>",
+              "[-SubscriptionId <String>]"
+            ]
+          }
+        ]
+      },
+      "examples": [
+        {
+          "description": "Start a continuous web job for a deployment slot.",
+          "parameters": [
+            {
+              "name": "-AppName",
+              "value": "[Path.name]"
+            },
+            {
+              "name": "-Name",
+              "value": "[Path.webJobName]"
+            },
+            {
+              "name": "-ResourceGroupName",
+              "value": "[Path.resourceGroupName]"
+            },
+            {
+              "name": "-SlotName",
+              "value": "[Path.slot]"
+            },
+            {
+              "name": "-SubscriptionId",
+              "value": "[Path.subscriptionId]"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Stop-AzWebAppSlotContinuousWebJob",
+      "description": "Stop a continuous web job for a deployment slot.",
+      "path": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/sites/{name}/slots/{slot}/continuouswebjobs/{webJobName}/stop",
+      "help": {
+        "learnMore": {
+          "url": "https://learn.microsoft.com/powershell/module/az.websites/stop-azwebappslotcontinuouswebjob"
+        },
+        "parameterSets": [
+          {
+            "parameters": [
+              "-AppName <String>",
+              "-Name <String>",
+              "-ResourceGroupName <String>",
+              "-SlotName <String>",
+              "[-SubscriptionId <String>]"
+            ]
+          }
+        ]
+      },
+      "examples": [
+        {
+          "description": "Stop a continuous web job for a deployment slot.",
+          "parameters": [
+            {
+              "name": "-AppName",
+              "value": "[Path.name]"
+            },
+            {
+              "name": "-Name",
+              "value": "[Path.webJobName]"
+            },
+            {
+              "name": "-ResourceGroupName",
+              "value": "[Path.resourceGroupName]"
+            },
+            {
+              "name": "-SlotName",
+              "value": "[Path.slot]"
+            },
+            {
+              "name": "-SubscriptionId",
+              "value": "[Path.subscriptionId]"
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

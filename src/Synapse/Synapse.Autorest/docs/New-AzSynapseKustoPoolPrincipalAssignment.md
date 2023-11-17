@@ -1,7 +1,7 @@
 ---
 external help file:
 Module Name: Az.Synapse
-online version: https://docs.microsoft.com/powershell/module/az.synapse/new-azsynapsekustopoolprincipalassignment
+online version: https://learn.microsoft.com/powershell/module/az.synapse/new-azsynapsekustopoolprincipalassignment
 schema: 2.0.0
 ---
 

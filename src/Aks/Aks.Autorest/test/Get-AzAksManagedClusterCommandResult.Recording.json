@@ -1,0 +1,84 @@
+{
+  "Get-AzAksManagedClusterCommandResult+[NoContext]+Get+$GET+https://management.azure.com/subscriptions/0b1f6471-1bf0-4dda-aec3-cb9272f09590/resourceGroups/aks-test/providers/Microsoft.ContainerService/managedClusters/aks/commandResults/706de66629b14267b4962cf015122c12?api-version=2023-02-01+1": {
+    "Request": {
+      "Method": "GET",
+      "RequestUri": "https://management.azure.com/subscriptions/0b1f6471-1bf0-4dda-aec3-cb9272f09590/resourceGroups/aks-test/providers/Microsoft.ContainerService/managedClusters/aks/commandResults/706de66629b14267b4962cf015122c12?api-version=2023-02-01",
+      "Content": null,
+      "isContentBase64": false,
+      "Headers": {
+        "x-ms-unique-id": [ "1" ],
+        "x-ms-client-request-id": [ "5c10a838-a5b3-48dd-9d8a-abc1c55e98ec" ],
+        "CommandName": [ "Get-AzAksManagedClusterCommandResult" ],
+        "FullCommandName": [ "Get-AzAksManagedClusterCommandResult_Get" ],
+        "ParameterSetName": [ "__AllParameterSets" ],
+        "User-Agent": [ "AzurePowershell/v0.0.0", "PSVersion/v7.2.9", "Az.Aks/0.1.0" ],
+        "Authorization": [ "[Filtered]" ]
+      },
+      "ContentHeaders": {
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "x-ms-ratelimit-remaining-subscription-reads": [ "11999" ],
+        "x-ms-correlation-request-id": [ "85fe9439-cb35-4941-b66d-740ddeb2c6c9" ],
+        "x-ms-request-id": [ "cffa4110-004f-4a33-8af2-a402ebdf5855" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "Server": [ "nginx" ],
+        "x-ms-routing-request-id": [ "SOUTHEASTASIA:20230331T092050Z:85fe9439-cb35-4941-b66d-740ddeb2c6c9" ],
+        "Date": [ "Fri, 31 Mar 2023 09:20:50 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "418" ],
+        "Content-Type": [ "application/json" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\n  \"id\": \"706de66629b14267b4962cf015122c12\",\n  \"properties\": {\n   \"provisioningState\": \"Succeeded\",\n   \"exitCode\": 0,\n   \"startedAt\": \"2023-03-31T09:14:38Z\",\n   \"finishedAt\": \"2023-03-31T09:14:40Z\",\n   \"logs\": \"NAME                              STATUS   ROLES   AGE   VERSION\\naks-default-40136599-vmss000000   Ready    agent   68m   v1.24.9\\naks-pool2-22198594-vmss000000     Ready    agent   65m   v1.24.9\\n\"\n  }\n }",
+      "isContentBase64": false
+    }
+  },
+  "Get-AzAksManagedClusterCommandResult+[NoContext]+GetViaIdentity+$GET+https://management.azure.com/subscriptions/0b1f6471-1bf0-4dda-aec3-cb9272f09590/resourceGroups/aks-test/providers/Microsoft.ContainerService/managedClusters/aks/commandResults/706de66629b14267b4962cf015122c12?api-version=2023-02-01+1": {
+    "Request": {
+      "Method": "GET",
+      "RequestUri": "https://management.azure.com/subscriptions/0b1f6471-1bf0-4dda-aec3-cb9272f09590/resourceGroups/aks-test/providers/Microsoft.ContainerService/managedClusters/aks/commandResults/706de66629b14267b4962cf015122c12?api-version=2023-02-01",
+      "Content": null,
+      "isContentBase64": false,
+      "Headers": {
+        "x-ms-unique-id": [ "2" ],
+        "x-ms-client-request-id": [ "8c6d7a5a-57f8-4a80-a7fe-e8867c1c88c4" ],
+        "CommandName": [ "Get-AzAksManagedClusterCommandResult" ],
+        "FullCommandName": [ "Get-AzAksManagedClusterCommandResult_GetViaIdentity" ],
+        "ParameterSetName": [ "__AllParameterSets" ],
+        "User-Agent": [ "AzurePowershell/v0.0.0", "PSVersion/v7.2.9", "Az.Aks/0.1.0" ],
+        "Authorization": [ "[Filtered]" ]
+      },
+      "ContentHeaders": {
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "x-ms-ratelimit-remaining-subscription-reads": [ "11998" ],
+        "x-ms-correlation-request-id": [ "24ac4275-f9e8-47ef-8f20-0339d1f8ac73" ],
+        "x-ms-request-id": [ "20c8c538-9503-4784-ba18-da325c8f77ae" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "Server": [ "nginx" ],
+        "x-ms-routing-request-id": [ "SOUTHEASTASIA:20230331T092051Z:24ac4275-f9e8-47ef-8f20-0339d1f8ac73" ],
+        "Date": [ "Fri, 31 Mar 2023 09:20:51 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "418" ],
+        "Content-Type": [ "application/json" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\n  \"id\": \"706de66629b14267b4962cf015122c12\",\n  \"properties\": {\n   \"provisioningState\": \"Succeeded\",\n   \"exitCode\": 0,\n   \"startedAt\": \"2023-03-31T09:14:38Z\",\n   \"finishedAt\": \"2023-03-31T09:14:40Z\",\n   \"logs\": \"NAME                              STATUS   ROLES   AGE   VERSION\\naks-default-40136599-vmss000000   Ready    agent   68m   v1.24.9\\naks-pool2-22198594-vmss000000     Ready    agent   65m   v1.24.9\\n\"\n  }\n }",
+      "isContentBase64": false
+    }
+  }
+}

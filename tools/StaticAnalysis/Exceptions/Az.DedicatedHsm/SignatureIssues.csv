@@ -1,4 +1,4 @@
-"AssemblyFileName","ClassName","Target","Severity","ProblemId","Description","Remediation"
+"Module","ClassName","Target","Severity","ProblemId","Description","Remediation"
 "Az.DedicatedHsm","Get-AzDedicatedHsm","Get-AzDedicatedHsm","1","8410","Parameter ProxyUseDefaultCredentials of cmdlet Get-AzDedicatedHsm does not follow the enforced naming convention of using a singular noun for a parameter name.","Consider using a singular noun for the parameter name."
 "Az.DedicatedHsm","New-AzDedicatedHsm","New-AzDedicatedHsm","1","8100","New-AzDedicatedHsm Does not support ShouldProcess but the cmdlet verb New indicates that it should.","Determine if the cmdlet should implement ShouldProcess and if so determine if it should implement Force / ShouldContinue"
 "Az.DedicatedHsm","New-AzDedicatedHsm","New-AzDedicatedHsm","1","8410","Parameter ProxyUseDefaultCredentials of cmdlet New-AzDedicatedHsm does not follow the enforced naming convention of using a singular noun for a parameter name.","Consider using a singular noun for the parameter name."

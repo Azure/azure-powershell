@@ -41,7 +41,7 @@ function Install-AzModule {
         [string]
         ${RequiredAzVersion},
 
-        [Parameter(ParameterSetName = 'Default', HelpMessage = 'The Registered Repostory.')]
+        [Parameter(ParameterSetName = 'Default', HelpMessage = 'The Registered Repository to install module from. If only one repository is registered in PowerShell, Install-AzModule will use it. If more than one, please specify the Repository.')]
         [ValidateNotNullOrEmpty()]
         [string]
         ${Repository},
@@ -59,7 +59,7 @@ function Install-AzModule {
         [string]
         ${Path},
 
-        [Parameter(HelpMessage = 'Scope to install modules. Accepted values: CurrentUser, AllUser.')]
+        [Parameter(HelpMessage = 'Scope to install modules. Default value is `CurrentUser` for all the Powershell platforms. Accepted values: CurrentUser, AllUser.')]
         [ValidateSet('CurrentUser', 'AllUsers')]
         [string]
         ${Scope},
@@ -82,18 +82,39 @@ function Install-AzModule {
         $Invoker = $MyInvocation.MyCommand
         $ppsedition = $PSVersionTable.PSEdition
         Write-Debug "Powershell $ppsedition Version $($PSVersionTable.PSVersion)"
+        $IsSuccess = $false
+        $errorRecords = @()
 
-        $Invoker = $MyInvocation.MyCommand
-        if ($PSCmdlet.ParameterSetName -eq 'Default') {
-            Install-AzModule_Default @PSBoundParameters -Invoker $Invoker
+        try {
+            $Invoker = $MyInvocation.MyCommand
+            if ($PSCmdlet.ParameterSetName -eq 'Default') {
+                Install-AzModule_Default @PSBoundParameters -Invoker $Invoker
+            }
+            else {
+                Install-AzModule_ByPath @PSBoundParameters -Invoker $Invoker
+            }
+            $IsSuccess = $true
         }
-        else {
-            Install-AzModule_ByPath @PSBoundParameters -Invoker $Invoker
+        catch
+        {
+            Write-Error $PSItem.ToString() -ErrorVariable +errorRecords
+            throw $PSItem
         }
-
-        Send-PageViewTelemetry -SourcePSCmdlet $PSCmdlet `
-            -IsSuccess $true `
-            -StartDateTime $cmdStarted `
-            -Duration ((Get-Date) - $cmdStarted)
+        finally {
+            if ($errorRecords.Count -gt 0)
+            {
+                Send-PageViewTelemetry -SourcePSCmdlet $PSCmdlet `
+                -IsSuccess $false `
+                -StartDateTime $cmdStarted `
+                -Duration ((Get-Date) - $cmdStarted)
+            }
+            else
+            {
+                Send-PageViewTelemetry -SourcePSCmdlet $PSCmdlet `
+                -IsSuccess $IsSuccess `
+                -StartDateTime $cmdStarted `
+                -Duration ((Get-Date) - $cmdStarted)
+            }
+        }
     }
 }

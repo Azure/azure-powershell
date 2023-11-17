@@ -268,7 +268,7 @@ TOKENLIFETIMEPOLICY <IMicrosoftGraphTokenLifetimePolicy[]>: The tokenLifetimePol
 TRANSITIVEMEMBEROF <IMicrosoftGraphDirectoryObject[]>: .
   [DeletedDateTime <DateTime?>]: 
 .Link
-https://docs.microsoft.com/powershell/module/az.resources/new-azadserviceprincipal
+https://learn.microsoft.com/powershell/module/az.resources/new-azadserviceprincipal
 #>
 function New-AzADServicePrincipal {
   [OutputType([Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Models.ApiV10.IMicrosoftGraphServicePrincipal])]

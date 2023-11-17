@@ -1,7 +1,7 @@
 ---
 Module Name: Az.SignalR
 Module Guid: 887a3597-2c6e-46ff-a239-c56a20f0bf79
-Download Help Link: https://docs.microsoft.com/powershell/module/az.signalr
+Download Help Link: https://learn.microsoft.com/powershell/module/az.signalr
 Help Version: 1.0.0.0
 Locale: en-US
 ---
@@ -13,6 +13,12 @@ Microsoft Azure PowerShell: WebPubSub cmdlets
 ## Az.SignalR Cmdlets
 ### [Get-AzWebPubSub](Get-AzWebPubSub.md)
 Get the resource and its properties.
+
+### [Get-AzWebPubSubCustomCertificate](Get-AzWebPubSubCustomCertificate.md)
+Get a custom certificate.
+
+### [Get-AzWebPubSubCustomDomain](Get-AzWebPubSubCustomDomain.md)
+Get a custom domain.
 
 ### [Get-AzWebPubSubHub](Get-AzWebPubSubHub.md)
 Get a hub setting.
@@ -29,6 +35,18 @@ List resource usage quotas by location.
 ### [New-AzWebPubSub](New-AzWebPubSub.md)
 Create or update a resource.
 
+### [New-AzWebPubSubCustomCertificate](New-AzWebPubSubCustomCertificate.md)
+Create or update a custom certificate.
+
+### [New-AzWebPubSubCustomDomain](New-AzWebPubSubCustomDomain.md)
+Create or update a custom domain.
+
+### [New-AzWebPubSubEventHubEndpointObject](New-AzWebPubSubEventHubEndpointObject.md)
+Create an in-memory object for EventHubEndpoint.
+
+### [New-AzWebPubSubEventNameFilterObject](New-AzWebPubSubEventNameFilterObject.md)
+Create an in-memory object for EventNameFilter.
+
 ### [New-AzWebPubSubHub](New-AzWebPubSubHub.md)
 Create or update a hub setting.
 
@@ -38,6 +56,12 @@ PrimaryKey and SecondaryKey cannot be regenerated at the same time.
 
 ### [Remove-AzWebPubSub](Remove-AzWebPubSub.md)
 Operation to delete a resource.
+
+### [Remove-AzWebPubSubCustomCertificate](Remove-AzWebPubSubCustomCertificate.md)
+Delete a custom certificate.
+
+### [Remove-AzWebPubSubCustomDomain](Remove-AzWebPubSubCustomDomain.md)
+Delete a custom domain.
 
 ### [Remove-AzWebPubSubHub](Remove-AzWebPubSubHub.md)
 Delete a hub setting.

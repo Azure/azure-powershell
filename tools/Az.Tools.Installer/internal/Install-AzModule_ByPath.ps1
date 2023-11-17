@@ -55,7 +55,7 @@ function Install-AzModule_ByPath {
         }
 
         if ($Force -or $PSCmdlet.ShouldProcess('Remove Az if installed', 'Az', 'Remove')) {
-            PowerShellGet\Uninstall-Module -Name 'Az' -AllVersion -AllowPrerelease -ErrorAction SilentlyContinue
+            PowerShellGet\Uninstall-Module -Name 'Az' -AllVersion -AllowPrerelease -ErrorAction 'SilentlyContinue'
         }
 
         try {
@@ -70,8 +70,8 @@ function Install-AzModule_ByPath {
                 $null = Microsoft.PowerShell.Management\New-Item -ItemType Directory -Path $tempRepo -WhatIf:$false
                 Write-Debug "[$Invoker] The repository folder $tempRepo is created."
 
-                PowerShellGet\Unregister-PSRepository -Name $script:AzTempRepoName -ErrorAction 'SilentlyContinue'
-                PowerShellGet\Register-PSRepository -Name $script:AzTempRepoName -SourceLocation $tempRepo -ErrorAction 'Stop'
+                $null = PowerShellGet\Unregister-PSRepository -Name $script:AzTempRepoName -ErrorAction 'SilentlyContinue'
+                $null = PowerShellGet\Register-PSRepository -Name $script:AzTempRepoName -SourceLocation $tempRepo -ErrorAction 'Stop' -ErrorVariable +errorRecords
                 PowerShellGet\Set-PSRepository -Name $script:AzTempRepoName -InstallationPolicy Trusted
                 Write-Debug "[$Invoker] The temporary repository $script:AzTempRepoName is registered."
 
@@ -81,7 +81,7 @@ function Install-AzModule_ByPath {
                     Scope = if ($Scope) {$Scope} else {'CurrentUser'}
                     RemovePrevious = $RemovePrevious
                     Force = $Force
-                    Invoker = $Invoker             
+                    Invoker = $Invoker
                 }
                 Install-SingleModuleFromPackage @installModuleParams
             }
@@ -90,7 +90,7 @@ function Install-AzModule_ByPath {
             if ($Force -or !$WhatIfPreference) {
                 if (!$DontClean) {
                     Write-Debug "[$Invoker] The temporary repository $script:AzTempRepoName is unregistered."
-                    PowerShellGet\Unregister-PSRepository -Name $script:AzTempRepoName -ErrorAction 'Continue'
+                    $null = PowerShellGet\Unregister-PSRepository -Name $script:AzTempRepoName -ErrorAction 'Continue'
 
                     Write-Debug "[$Invoker] The Repository folder $tempRepo is removed."
                     if (Test-Path -Path $tempRepo) {

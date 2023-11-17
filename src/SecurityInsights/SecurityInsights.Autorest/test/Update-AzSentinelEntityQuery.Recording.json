@@ -1,0 +1,115 @@
+{
+  "Update-AzSentinelEntityQuery+[NoContext]+UpdateExpanded+$PUT+https://management.azure.com/subscriptions/51a36d38-3b14-471f-8dde-a5867f5e51eb/resourceGroups/aspstest7ptmcr/providers/Microsoft.OperationalInsights/workspaces/asptest4wysui/providers/Microsoft.SecurityInsights/entityQueries/105c6ccb-e733-4602-ad28-20c44e2cf4ae?api-version=2021-09-01-preview+1": {
+    "Request": {
+      "Method": "PUT",
+      "RequestUri": "https://management.azure.com/subscriptions/51a36d38-3b14-471f-8dde-a5867f5e51eb/resourceGroups/aspstest7ptmcr/providers/Microsoft.OperationalInsights/workspaces/asptest4wysui/providers/Microsoft.SecurityInsights/entityQueries/105c6ccb-e733-4602-ad28-20c44e2cf4ae?api-version=2021-09-01-preview",
+      "Content": "{\n  \"etag\": \"\\\"0c006a0f-0000-0100-0000-62fbbe440000\\\"\",\n  \"kind\": \"Activity\",\n  \"properties\": {\n    \"queryDefinitions\": {\n      \"query\": \"let GetAccountActions = (v_Host_Name:string, v_Host_NTDomain:string, v_Host_DnsDomain:string, v_Host_AzureID:string, v_Host_OMSAgentID:string){\\nSecurityEvent\\n| where EventID in (4725, 4726, 4767, 4720, 4722, 4723, 4724)\\n// parsing for Host to handle variety of conventions coming from data\\n| extend Host_HostName = case(\\nComputer has \\u0027@\\u0027, tostring(split(Computer, \\u0027@\\u0027)[0]),\\nComputer has \\u0027\\\\\\\\\\u0027, tostring(split(Computer, \\u0027\\\\\\\\\\u0027)[1]),\\nComputer has \\u0027.\\u0027, tostring(split(Computer, \\u0027.\\u0027)[0]),\\nComputer\\n)\\n| extend Host_NTDomain = case(\\nComputer has \\u0027\\\\\\\\\\u0027, tostring(split(Computer, \\u0027\\\\\\\\\\u0027)[0]), \\nComputer has \\u0027.\\u0027, tostring(split(Computer, \\u0027.\\u0027)[-2]), \\nComputer\\n)\\n| extend Host_DnsDomain = case(\\nComputer has \\u0027\\\\\\\\\\u0027, tostring(split(Computer, \\u0027\\\\\\\\\\u0027)[0]), \\nComputer has \\u0027.\\u0027, strcat_array(array_slice(split(Computer,\\u0027.\\u0027),-2,-1),\\u0027.\\u0027), \\nComputer\\n)\\n| where (Host_HostName =~ v_Host_Name and Host_NTDomain =~ v_Host_NTDomain) \\nor (Host_HostName =~ v_Host_Name and Host_DnsDomain =~ v_Host_DnsDomain) \\nor v_Host_AzureID =~ _ResourceId \\nor v_Host_OMSAgentID == SourceComputerId\\n| project TimeGenerated, EventID, Activity, Computer, TargetAccount, TargetUserName, TargetDomainName, TargetSid, SubjectUserName, SubjectUserSid};\\nGetAccountActions(\\u0027{{Host_HostName}}\\u0027, \\u0027{{Host_NTDomain}}\\u0027, \\u0027{{Host_DnsDomain}}\\u0027, \\u0027{{Host_AzureID}}\\u0027, \\u0027{{Host_OMSAgentID}}\\u0027)\\n \\n| where EventID == 4726 \"\n    },\n    \"title\": \"UpdateEntityQueryPSTest\",\n    \"content\": \"On \\u0027{{Computer}}\\u0027 the account \\u0027{{TargetAccount}}\\u0027 was deleted by \",\n    \"description\": \"Account deleted on host\",\n    \"inputEntityType\": \"Host\",\n    \"requiredInputFieldsSets\": [\n      [ \"Host_HostName\", \"Host_NTDomain\" ],\n      [ \"Host_HostName\", \"Host_DnsDomain\" ],\n      [ \"Host_AzureID\" ],\n      [ \"Host_OMSAgentID\" ]\n    ],\n    \"enabled\": true\n  }\n}",
+      "isContentBase64": false,
+      "Headers": {
+      },
+      "ContentHeaders": {
+        "Content-Type": [ "application/json" ],
+        "Content-Length": [ "2162" ]
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "Server": [ "Kestrel" ],
+        "x-ms-ratelimit-remaining-subscription-writes": [ "1187" ],
+        "x-ms-request-id": [ "30d8182a-90f6-4622-8f9a-665e3825b8b9" ],
+        "x-ms-correlation-request-id": [ "30d8182a-90f6-4622-8f9a-665e3825b8b9" ],
+        "x-ms-routing-request-id": [ "EASTUS2:20220816T160900Z:30d8182a-90f6-4622-8f9a-665e3825b8b9" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "Date": [ "Tue, 16 Aug 2022 16:09:00 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "2287" ],
+        "Content-Type": [ "application/json; charset=utf-8" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\"id\":\"/subscriptions/51a36d38-3b14-471f-8dde-a5867f5e51eb/resourceGroups/aspstest7ptmcr/providers/Microsoft.OperationalInsights/workspaces/asptest4wysui/providers/Microsoft.SecurityInsights/entityQueries/105c6ccb-e733-4602-ad28-20c44e2cf4ae\",\"name\":\"105c6ccb-e733-4602-ad28-20c44e2cf4ae\",\"etag\":\"\\\"0c00d913-0000-0100-0000-62fbc11c0000\\\"\",\"type\":\"Microsoft.SecurityInsights/entityQueries\",\"kind\":\"Activity\",\"properties\":{\"title\":\"UpdateEntityQueryPSTest\",\"content\":\"On \u0027{{Computer}}\u0027 the account \u0027{{TargetAccount}}\u0027 was deleted by \",\"description\":\"Account deleted on host\",\"queryDefinitions\":{\"query\":\"let GetAccountActions = (v_Host_Name:string, v_Host_NTDomain:string, v_Host_DnsDomain:string, v_Host_AzureID:string, v_Host_OMSAgentID:string){\\nSecurityEvent\\n| where EventID in (4725, 4726, 4767, 4720, 4722, 4723, 4724)\\n// parsing for Host to handle variety of conventions coming from data\\n| extend Host_HostName = case(\\nComputer has \u0027@\u0027, tostring(split(Computer, \u0027@\u0027)[0]),\\nComputer has \u0027\\\\\\\\\u0027, tostring(split(Computer, \u0027\\\\\\\\\u0027)[1]),\\nComputer has \u0027.\u0027, tostring(split(Computer, \u0027.\u0027)[0]),\\nComputer\\n)\\n| extend Host_NTDomain = case(\\nComputer has \u0027\\\\\\\\\u0027, tostring(split(Computer, \u0027\\\\\\\\\u0027)[0]), \\nComputer has \u0027.\u0027, tostring(split(Computer, \u0027.\u0027)[-2]), \\nComputer\\n)\\n| extend Host_DnsDomain = case(\\nComputer has \u0027\\\\\\\\\u0027, tostring(split(Computer, \u0027\\\\\\\\\u0027)[0]), \\nComputer has \u0027.\u0027, strcat_array(array_slice(split(Computer,\u0027.\u0027),-2,-1),\u0027.\u0027), \\nComputer\\n)\\n| where (Host_HostName =~ v_Host_Name and Host_NTDomain =~ v_Host_NTDomain) \\nor (Host_HostName =~ v_Host_Name and Host_DnsDomain =~ v_Host_DnsDomain) \\nor v_Host_AzureID =~ _ResourceId \\nor v_Host_OMSAgentID == SourceComputerId\\n| project TimeGenerated, EventID, Activity, Computer, TargetAccount, TargetUserName, TargetDomainName, TargetSid, SubjectUserName, SubjectUserSid};\\nGetAccountActions(\u0027{{Host_HostName}}\u0027, \u0027{{Host_NTDomain}}\u0027, \u0027{{Host_DnsDomain}}\u0027, \u0027{{Host_AzureID}}\u0027, \u0027{{Host_OMSAgentID}}\u0027)\\n \\n| where EventID == 4726 \"},\"requiredInputFieldsSets\":[[\"Host_HostName\",\"Host_NTDomain\"],[\"Host_HostName\",\"Host_DnsDomain\"],[\"Host_AzureID\"],[\"Host_OMSAgentID\"]],\"entitiesFilter\":{},\"enabled\":true,\"createdTimeUtc\":\"2022-08-16T15:56:52.6157717Z\",\"lastModifiedTimeUtc\":\"2022-08-16T16:09:00.3224499Z\",\"inputEntityType\":\"Host\"}}",
+      "isContentBase64": false
+    }
+  },
+  "Update-AzSentinelEntityQuery+[NoContext]+UpdateViaIdentityExpanded+$GET+https://management.azure.com/subscriptions/51a36d38-3b14-471f-8dde-a5867f5e51eb/resourceGroups/aspstest7ptmcr/providers/Microsoft.OperationalInsights/workspaces/asptest4wysui/providers/Microsoft.SecurityInsights/entityQueries/023cc70e-538f-416e-af6e-ec0833b69894?api-version=2021-09-01-preview+1": {
+    "Request": {
+      "Method": "GET",
+      "RequestUri": "https://management.azure.com/subscriptions/51a36d38-3b14-471f-8dde-a5867f5e51eb/resourceGroups/aspstest7ptmcr/providers/Microsoft.OperationalInsights/workspaces/asptest4wysui/providers/Microsoft.SecurityInsights/entityQueries/023cc70e-538f-416e-af6e-ec0833b69894?api-version=2021-09-01-preview",
+      "Content": null,
+      "isContentBase64": false,
+      "Headers": {
+        "x-ms-unique-id": [ "311" ],
+        "x-ms-client-request-id": [ "93fd97ca-6b9b-4e41-9898-f234be1f46e9" ],
+        "CommandName": [ "Get-AzSentinelEntityQuery" ],
+        "FullCommandName": [ "Get-AzSentinelEntityQuery_Get" ],
+        "ParameterSetName": [ "__AllParameterSets" ],
+        "User-Agent": [ "AzurePowershell/v0.0.0", "PSVersion/v7.1.3", "Az.SecurityInsights/1.2.0" ],
+        "Authorization": [ "[Filtered]" ]
+      },
+      "ContentHeaders": {
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "Server": [ "Kestrel" ],
+        "x-ms-ratelimit-remaining-subscription-reads": [ "11930" ],
+        "x-ms-request-id": [ "6fc14431-ca00-406a-853a-d24777fd1429" ],
+        "x-ms-correlation-request-id": [ "6fc14431-ca00-406a-853a-d24777fd1429" ],
+        "x-ms-routing-request-id": [ "EASTUS2:20220816T160900Z:6fc14431-ca00-406a-853a-d24777fd1429" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "Date": [ "Tue, 16 Aug 2022 16:09:00 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "2326" ],
+        "Content-Type": [ "application/json; charset=utf-8" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\"id\":\"/subscriptions/51a36d38-3b14-471f-8dde-a5867f5e51eb/resourceGroups/aspstest7ptmcr/providers/Microsoft.OperationalInsights/workspaces/asptest4wysui/providers/Microsoft.SecurityInsights/entityQueries/023cc70e-538f-416e-af6e-ec0833b69894\",\"name\":\"023cc70e-538f-416e-af6e-ec0833b69894\",\"etag\":\"\\\"0c008f0f-0000-0100-0000-62fbbe630000\\\"\",\"type\":\"Microsoft.SecurityInsights/entityQueries\",\"kind\":\"Activity\",\"properties\":{\"title\":\"An account was deleted on this host\",\"content\":\"On \u0027{{Computer}}\u0027 the account \u0027{{TargetAccount}}\u0027 was deleted by \",\"description\":\"Account deleted on host\",\"queryDefinitions\":{\"query\":\"let GetAccountActions = (v_Host_Name:string, v_Host_NTDomain:string, v_Host_DnsDomain:string, v_Host_AzureID:string, v_Host_OMSAgentID:string){\\nSecurityEvent\\n| where EventID in (4725, 4726, 4767, 4720, 4722, 4723, 4724)\\n// parsing for Host to handle variety of conventions coming from data\\n| extend Host_HostName = case(\\nComputer has \u0027@\u0027, tostring(split(Computer, \u0027@\u0027)[0]),\\nComputer has \u0027\\\\\\\\\u0027, tostring(split(Computer, \u0027\\\\\\\\\u0027)[1]),\\nComputer has \u0027.\u0027, tostring(split(Computer, \u0027.\u0027)[0]),\\nComputer\\n)\\n| extend Host_NTDomain = case(\\nComputer has \u0027\\\\\\\\\u0027, tostring(split(Computer, \u0027\\\\\\\\\u0027)[0]), \\nComputer has \u0027.\u0027, tostring(split(Computer, \u0027.\u0027)[-2]), \\nComputer\\n)\\n| extend Host_DnsDomain = case(\\nComputer has \u0027\\\\\\\\\u0027, tostring(split(Computer, \u0027\\\\\\\\\u0027)[0]), \\nComputer has \u0027.\u0027, strcat_array(array_slice(split(Computer,\u0027.\u0027),-2,-1),\u0027.\u0027), \\nComputer\\n)\\n| where (Host_HostName =~ v_Host_Name and Host_NTDomain =~ v_Host_NTDomain) \\nor (Host_HostName =~ v_Host_Name and Host_DnsDomain =~ v_Host_DnsDomain) \\nor v_Host_AzureID =~ _ResourceId \\nor v_Host_OMSAgentID == SourceComputerId\\n| project TimeGenerated, EventID, Activity, Computer, TargetAccount, TargetUserName, TargetDomainName, TargetSid, SubjectUserName, SubjectUserSid};\\nGetAccountActions(\u0027{{Host_HostName}}\u0027, \u0027{{Host_NTDomain}}\u0027, \u0027{{Host_DnsDomain}}\u0027, \u0027{{Host_AzureID}}\u0027, \u0027{{Host_OMSAgentID}}\u0027)\\n \\n| where EventID == 4726 \"},\"requiredInputFieldsSets\":[[\"Host_HostName\",\"Host_NTDomain\"],[\"Host_HostName\",\"Host_DnsDomain\"],[\"Host_AzureID\"],[\"Host_OMSAgentID\"]],\"entitiesFilter\":{\"Host_OsFamily\":[\"Windows\"]},\"enabled\":true,\"createdTimeUtc\":\"2022-08-16T15:57:23.7657228Z\",\"lastModifiedTimeUtc\":\"2022-08-16T15:57:23.7657228Z\",\"inputEntityType\":\"Host\"}}",
+      "isContentBase64": false
+    }
+  },
+  "Update-AzSentinelEntityQuery+[NoContext]+UpdateViaIdentityExpanded+$PUT+https://management.azure.com/subscriptions/51a36d38-3b14-471f-8dde-a5867f5e51eb/resourceGroups/aspstest7ptmcr/providers/Microsoft.OperationalInsights/workspaces/asptest4wysui/providers/Microsoft.SecurityInsights/entityQueries/023cc70e-538f-416e-af6e-ec0833b69894?api-version=2021-09-01-preview+2": {
+    "Request": {
+      "Method": "PUT",
+      "RequestUri": "https://management.azure.com/subscriptions/51a36d38-3b14-471f-8dde-a5867f5e51eb/resourceGroups/aspstest7ptmcr/providers/Microsoft.OperationalInsights/workspaces/asptest4wysui/providers/Microsoft.SecurityInsights/entityQueries/023cc70e-538f-416e-af6e-ec0833b69894?api-version=2021-09-01-preview",
+      "Content": "{\n  \"etag\": \"\\\"0c008f0f-0000-0100-0000-62fbbe630000\\\"\",\n  \"kind\": \"Activity\",\n  \"properties\": {\n    \"queryDefinitions\": {\n      \"query\": \"let GetAccountActions = (v_Host_Name:string, v_Host_NTDomain:string, v_Host_DnsDomain:string, v_Host_AzureID:string, v_Host_OMSAgentID:string){\\nSecurityEvent\\n| where EventID in (4725, 4726, 4767, 4720, 4722, 4723, 4724)\\n// parsing for Host to handle variety of conventions coming from data\\n| extend Host_HostName = case(\\nComputer has \\u0027@\\u0027, tostring(split(Computer, \\u0027@\\u0027)[0]),\\nComputer has \\u0027\\\\\\\\\\u0027, tostring(split(Computer, \\u0027\\\\\\\\\\u0027)[1]),\\nComputer has \\u0027.\\u0027, tostring(split(Computer, \\u0027.\\u0027)[0]),\\nComputer\\n)\\n| extend Host_NTDomain = case(\\nComputer has \\u0027\\\\\\\\\\u0027, tostring(split(Computer, \\u0027\\\\\\\\\\u0027)[0]), \\nComputer has \\u0027.\\u0027, tostring(split(Computer, \\u0027.\\u0027)[-2]), \\nComputer\\n)\\n| extend Host_DnsDomain = case(\\nComputer has \\u0027\\\\\\\\\\u0027, tostring(split(Computer, \\u0027\\\\\\\\\\u0027)[0]), \\nComputer has \\u0027.\\u0027, strcat_array(array_slice(split(Computer,\\u0027.\\u0027),-2,-1),\\u0027.\\u0027), \\nComputer\\n)\\n| where (Host_HostName =~ v_Host_Name and Host_NTDomain =~ v_Host_NTDomain) \\nor (Host_HostName =~ v_Host_Name and Host_DnsDomain =~ v_Host_DnsDomain) \\nor v_Host_AzureID =~ _ResourceId \\nor v_Host_OMSAgentID == SourceComputerId\\n| project TimeGenerated, EventID, Activity, Computer, TargetAccount, TargetUserName, TargetDomainName, TargetSid, SubjectUserName, SubjectUserSid};\\nGetAccountActions(\\u0027{{Host_HostName}}\\u0027, \\u0027{{Host_NTDomain}}\\u0027, \\u0027{{Host_DnsDomain}}\\u0027, \\u0027{{Host_AzureID}}\\u0027, \\u0027{{Host_OMSAgentID}}\\u0027)\\n \\n| where EventID == 4726 \"\n    },\n    \"title\": \"UpdateEntityQueryPSTest\",\n    \"content\": \"On \\u0027{{Computer}}\\u0027 the account \\u0027{{TargetAccount}}\\u0027 was deleted by \",\n    \"description\": \"Account deleted on host\",\n    \"inputEntityType\": \"Host\",\n    \"requiredInputFieldsSets\": [\n      [ \"Host_HostName\", \"Host_NTDomain\" ],\n      [ \"Host_HostName\", \"Host_DnsDomain\" ],\n      [ \"Host_AzureID\" ],\n      [ \"Host_OMSAgentID\" ]\n    ],\n    \"enabled\": true\n  }\n}",
+      "isContentBase64": false,
+      "Headers": {
+      },
+      "ContentHeaders": {
+        "Content-Type": [ "application/json" ],
+        "Content-Length": [ "2162" ]
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "Server": [ "Kestrel" ],
+        "x-ms-ratelimit-remaining-subscription-writes": [ "1186" ],
+        "x-ms-request-id": [ "012499d2-6a05-4f48-ad75-54b6a68dd803" ],
+        "x-ms-correlation-request-id": [ "012499d2-6a05-4f48-ad75-54b6a68dd803" ],
+        "x-ms-routing-request-id": [ "EASTUS2:20220816T160902Z:012499d2-6a05-4f48-ad75-54b6a68dd803" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "Date": [ "Tue, 16 Aug 2022 16:09:01 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "2286" ],
+        "Content-Type": [ "application/json; charset=utf-8" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\"id\":\"/subscriptions/51a36d38-3b14-471f-8dde-a5867f5e51eb/resourceGroups/aspstest7ptmcr/providers/Microsoft.OperationalInsights/workspaces/asptest4wysui/providers/Microsoft.SecurityInsights/entityQueries/023cc70e-538f-416e-af6e-ec0833b69894\",\"name\":\"023cc70e-538f-416e-af6e-ec0833b69894\",\"etag\":\"\\\"0c00db13-0000-0100-0000-62fbc11e0000\\\"\",\"type\":\"Microsoft.SecurityInsights/entityQueries\",\"kind\":\"Activity\",\"properties\":{\"title\":\"UpdateEntityQueryPSTest\",\"content\":\"On \u0027{{Computer}}\u0027 the account \u0027{{TargetAccount}}\u0027 was deleted by \",\"description\":\"Account deleted on host\",\"queryDefinitions\":{\"query\":\"let GetAccountActions = (v_Host_Name:string, v_Host_NTDomain:string, v_Host_DnsDomain:string, v_Host_AzureID:string, v_Host_OMSAgentID:string){\\nSecurityEvent\\n| where EventID in (4725, 4726, 4767, 4720, 4722, 4723, 4724)\\n// parsing for Host to handle variety of conventions coming from data\\n| extend Host_HostName = case(\\nComputer has \u0027@\u0027, tostring(split(Computer, \u0027@\u0027)[0]),\\nComputer has \u0027\\\\\\\\\u0027, tostring(split(Computer, \u0027\\\\\\\\\u0027)[1]),\\nComputer has \u0027.\u0027, tostring(split(Computer, \u0027.\u0027)[0]),\\nComputer\\n)\\n| extend Host_NTDomain = case(\\nComputer has \u0027\\\\\\\\\u0027, tostring(split(Computer, \u0027\\\\\\\\\u0027)[0]), \\nComputer has \u0027.\u0027, tostring(split(Computer, \u0027.\u0027)[-2]), \\nComputer\\n)\\n| extend Host_DnsDomain = case(\\nComputer has \u0027\\\\\\\\\u0027, tostring(split(Computer, \u0027\\\\\\\\\u0027)[0]), \\nComputer has \u0027.\u0027, strcat_array(array_slice(split(Computer,\u0027.\u0027),-2,-1),\u0027.\u0027), \\nComputer\\n)\\n| where (Host_HostName =~ v_Host_Name and Host_NTDomain =~ v_Host_NTDomain) \\nor (Host_HostName =~ v_Host_Name and Host_DnsDomain =~ v_Host_DnsDomain) \\nor v_Host_AzureID =~ _ResourceId \\nor v_Host_OMSAgentID == SourceComputerId\\n| project TimeGenerated, EventID, Activity, Computer, TargetAccount, TargetUserName, TargetDomainName, TargetSid, SubjectUserName, SubjectUserSid};\\nGetAccountActions(\u0027{{Host_HostName}}\u0027, \u0027{{Host_NTDomain}}\u0027, \u0027{{Host_DnsDomain}}\u0027, \u0027{{Host_AzureID}}\u0027, \u0027{{Host_OMSAgentID}}\u0027)\\n \\n| where EventID == 4726 \"},\"requiredInputFieldsSets\":[[\"Host_HostName\",\"Host_NTDomain\"],[\"Host_HostName\",\"Host_DnsDomain\"],[\"Host_AzureID\"],[\"Host_OMSAgentID\"]],\"entitiesFilter\":{},\"enabled\":true,\"createdTimeUtc\":\"2022-08-16T15:57:23.7657228Z\",\"lastModifiedTimeUtc\":\"2022-08-16T16:09:02.033204Z\",\"inputEntityType\":\"Host\"}}",
+      "isContentBase64": false
+    }
+  }
+}

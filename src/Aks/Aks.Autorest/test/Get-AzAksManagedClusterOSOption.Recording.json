@@ -1,0 +1,43 @@
+{
+  "Get-AzAksManagedClusterOSOption+[NoContext]+Get+$GET+https://management.azure.com/subscriptions/0b1f6471-1bf0-4dda-aec3-cb9272f09590/providers/Microsoft.ContainerService/locations/eastus/osOptions/default?api-version=2023-02-01+1": {
+    "Request": {
+      "Method": "GET",
+      "RequestUri": "https://management.azure.com/subscriptions/0b1f6471-1bf0-4dda-aec3-cb9272f09590/providers/Microsoft.ContainerService/locations/eastus/osOptions/default?api-version=2023-02-01",
+      "Content": null,
+      "isContentBase64": false,
+      "Headers": {
+        "x-ms-unique-id": [ "1" ],
+        "x-ms-client-request-id": [ "1d40d7d8-ff03-433e-a396-3bc8007ef748" ],
+        "CommandName": [ "Get-AzAksManagedClusterOSOption" ],
+        "FullCommandName": [ "Get-AzAksManagedClusterOSOption_Get" ],
+        "ParameterSetName": [ "__AllParameterSets" ],
+        "User-Agent": [ "AzurePowershell/v0.0.0", "PSVersion/v7.2.9", "Az.Aks/0.1.0" ],
+        "Authorization": [ "[Filtered]" ]
+      },
+      "ContentHeaders": {
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "x-ms-ratelimit-remaining-subscription-reads": [ "11999" ],
+        "x-ms-correlation-request-id": [ "9e8a24fd-c9e9-4878-a473-e39cf7d098a6" ],
+        "x-ms-request-id": [ "867ab95a-64a7-4b1e-b024-66540434b06e" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "Server": [ "nginx" ],
+        "x-ms-routing-request-id": [ "SOUTHEASTASIA:20230331T093409Z:9e8a24fd-c9e9-4878-a473-e39cf7d098a6" ],
+        "Date": [ "Fri, 31 Mar 2023 09:34:08 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "744" ],
+        "Content-Type": [ "application/json" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\n  \"id\": \"/subscriptions/0b1f6471-1bf0-4dda-aec3-cb9272f09590/providers/Microsoft.ContainerService/locations/eastus/osOptions/default\",\n  \"name\": \"default\",\n  \"type\": \"Microsoft.ContainerService/locations/osOptions\",\n  \"properties\": {\n   \"osOptionPropertyList\": [\n    {\n     \"os-type\": \"Linux\",\n     \"os-sku\": \"Ubuntu\",\n     \"enable-fips-image\": false\n    },\n    {\n     \"os-type\": \"Linux\",\n     \"os-sku\": \"Ubuntu\",\n     \"enable-fips-image\": true\n    },\n    {\n     \"os-type\": \"Windows\",\n     \"os-sku\": \"\",\n     \"enable-fips-image\": false\n    },\n    {\n     \"os-type\": \"Windows\",\n     \"os-sku\": \"\",\n     \"enable-fips-image\": true\n    },\n    {\n     \"os-type\": \"Linux\",\n     \"os-sku\": \"CBLMariner\",\n     \"enable-fips-image\": false\n    }\n   ]\n  }\n }",
+      "isContentBase64": false
+    }
+  }
+}

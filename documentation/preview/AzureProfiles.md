@@ -57,4 +57,4 @@ If you are encountering issues, please [create an issue][GitHubIssues] in this r
 <!-- Exteral -->
 
 <!-- Docs -->
-[ConnectAzAccount]: https://docs.microsoft.com/en-us/powershell/module/az.accounts/connect-azaccount
+[ConnectAzAccount]: https://learn.microsoft.com/en-us/powershell/module/az.accounts/connect-azaccount

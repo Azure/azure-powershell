@@ -13,4 +13,3 @@ Register-AzStaticWebAppUserProvidedFunctionApp -ResourceGroupName 'resourceGroup
 ```
 
 This command unregisters the user provided function app from the static site build by pipeline.
-

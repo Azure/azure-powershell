@@ -20,6 +20,7 @@ namespace Microsoft.WindowsAzure.Build.Tasks
     {
         public List<Rule> Rules { get; set; }
         public List<string> SelectModuleList { get; set; }
+        public string ArtifactPipelineInfoFolder { get; set; }
     }
 
     class Rule

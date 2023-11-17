@@ -5,8 +5,8 @@
 azure: true
 powershell: true
 license-header: MICROSOFT_MIT_NO_VERSION
-branch: resource-hybrid-profile-fix
-repo: https://github.com/Azure/azure-rest-api-specs/blob/$(branch)
+commit: resource-hybrid-profile-fix
+repo: https://github.com/Azure/azure-rest-api-specs/blob/$(commit)
 metadata:
   authors: Microsoft Corporation
   owners: Microsoft Corporation
@@ -44,6 +44,24 @@ profile:
 > Directives
 ``` yaml
 directive:
+  - from: swagger-document
+    where: $.paths..responses.202.headers
+    transform: delete $["Location"]
+  - from: swagger-document
+    where: $.paths..responses.202.headers
+    transform: delete $["Retry-After"]
+  - from: swagger-document
+    where: $.paths..responses.202.headers
+    transform: delete $["Azure-AsyncOperation"]
+  - from: swagger-document
+    where: $.paths..responses.201.headers
+    transform: delete $["Location"]
+  - from: swagger-document
+    where: $.paths..responses.201.headers
+    transform: delete $["Retry-After"]
+  - from: swagger-document
+    where: $.paths..responses.201.headers
+    transform: delete $["Azure-AsyncOperation"]
   - where:
       subject: Operation
     hide: true

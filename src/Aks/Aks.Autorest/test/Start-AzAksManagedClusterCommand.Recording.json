@@ -1,0 +1,238 @@
+{
+  "Start-AzAksManagedClusterCommand+[NoContext]+RunExpanded+$POST+https://management.azure.com/subscriptions/0b1f6471-1bf0-4dda-aec3-cb9272f09590/resourceGroups/aks-test/providers/Microsoft.ContainerService/managedClusters/aks/runCommand?api-version=2023-02-01+1": {
+    "Request": {
+      "Method": "POST",
+      "RequestUri": "https://management.azure.com/subscriptions/0b1f6471-1bf0-4dda-aec3-cb9272f09590/resourceGroups/aks-test/providers/Microsoft.ContainerService/managedClusters/aks/runCommand?api-version=2023-02-01",
+      "Content": "{\r\n  \"command\": \"kubectl get pods --all-namespaces -o wide\"\r\n}",
+      "isContentBase64": false,
+      "Headers": {
+      },
+      "ContentHeaders": {
+        "Content-Type": [ "application/json" ],
+        "Content-Length": [ "62" ]
+      }
+    },
+    "Response": {
+      "StatusCode": 202,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "Location": [ "https://management.azure.com/subscriptions/0b1f6471-1bf0-4dda-aec3-cb9272f09590/resourceGroups/aks-test/providers/Microsoft.ContainerService/managedclusters/aks/commandResults/b3d43a270409499498a409a2ee4a3fb4?api-version=2023-02-01" ],
+        "x-ms-ratelimit-remaining-subscription-writes": [ "1199" ],
+        "x-ms-correlation-request-id": [ "722386ab-9cc9-4a11-9125-17d2452c9f1d" ],
+        "x-ms-request-id": [ "b3d43a27-0409-4994-98a4-09a2ee4a3fb4" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "Server": [ "nginx" ],
+        "x-ms-routing-request-id": [ "SOUTHEASTASIA:20230331T085143Z:722386ab-9cc9-4a11-9125-17d2452c9f1d" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "Date": [ "Fri, 31 Mar 2023 08:51:42 GMT" ]
+      },
+      "ContentHeaders": {
+        "Expires": [ "-1" ],
+        "Content-Length": [ "0" ]
+      },
+      "Content": null,
+      "isContentBase64": false
+    }
+  },
+  "Start-AzAksManagedClusterCommand+[NoContext]+RunExpanded+$GET+https://management.azure.com/subscriptions/0b1f6471-1bf0-4dda-aec3-cb9272f09590/resourceGroups/aks-test/providers/Microsoft.ContainerService/managedclusters/aks/commandResults/b3d43a270409499498a409a2ee4a3fb4?api-version=2023-02-01+2": {
+    "Request": {
+      "Method": "GET",
+      "RequestUri": "https://management.azure.com/subscriptions/0b1f6471-1bf0-4dda-aec3-cb9272f09590/resourceGroups/aks-test/providers/Microsoft.ContainerService/managedclusters/aks/commandResults/b3d43a270409499498a409a2ee4a3fb4?api-version=2023-02-01",
+      "Content": null,
+      "isContentBase64": false,
+      "Headers": {
+        "Authorization": [ "[Filtered]" ],
+        "x-ms-unique-id": [ "2" ],
+        "x-ms-client-request-id": [ "67bd9f10-c83a-4595-9be9-ea16062c7a78" ],
+        "CommandName": [ "Start-AzAksManagedClusterCommand" ],
+        "FullCommandName": [ "Start-AzAksManagedClusterCommand_RunExpanded" ],
+        "ParameterSetName": [ "__AllParameterSets" ],
+        "User-Agent": [ "AzurePowershell/v0.0.0", "PSVersion/v7.2.9", "Az.Aks/0.1.0" ]
+      },
+      "ContentHeaders": {
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "x-ms-routing-request-id": [ "SOUTHEASTASIA:20230331T085213Z:7c66cfce-8896-4cc9-b0cb-c2c5c6f95c40" ],
+        "x-ms-ratelimit-remaining-subscription-reads": [ "11999" ],
+        "x-ms-correlation-request-id": [ "7c66cfce-8896-4cc9-b0cb-c2c5c6f95c40" ],
+        "x-ms-request-id": [ "3d3956f7-3979-4310-a489-47e600bd5bcb" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "Server": [ "nginx" ],
+        "Date": [ "Fri, 31 Mar 2023 08:52:13 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "4745" ],
+        "Content-Type": [ "application/json" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\n  \"id\": \"b3d43a270409499498a409a2ee4a3fb4\",\n  \"properties\": {\n   \"provisioningState\": \"Succeeded\",\n   \"exitCode\": 0,\n   \"startedAt\": \"2023-03-31T08:51:44Z\",\n   \"finishedAt\": \"2023-03-31T08:51:45Z\",\n   \"logs\": \"NAMESPACE     NAME                                       READY   STATUS      RESTARTS   AGE     IP            NODE                              NOMINATED NODE   READINESS GATES\\naks-command   command-33ddee0548b342bcbd2f0b6e997bb538   0/1     Completed   0          81s     10.224.0.44   aks-pool2-22198594-vmss000000     \\u003cnone\\u003e           \\u003cnone\\u003e\\naks-command   command-836aff9b9f2d4be8ac6b424cf302204f   0/1     Error       0          15m     10.224.0.44   aks-pool2-22198594-vmss000000     \\u003cnone\\u003e           \\u003cnone\\u003e\\naks-command   command-b3d43a270409499498a409a2ee4a3fb4   1/1     Running     0          2s      10.224.0.60   aks-pool2-22198594-vmss000000     \\u003cnone\\u003e           \\u003cnone\\u003e\\naks-command   command-e4b2b1c20a4a42c095051f2fd88215cc   0/1     Completed   0          3m30s   10.224.0.42   aks-pool2-22198594-vmss000000     \\u003cnone\\u003e           \\u003cnone\\u003e\\naks-command   command-f479e67f0f894b6b8f4346b25d7c37a2   0/1     Error       0          13m     10.224.0.41   aks-pool2-22198594-vmss000000     \\u003cnone\\u003e           \\u003cnone\\u003e\\naks-command   command-f4a7168c91444783b6859ef340bcc4d2   0/1     Completed   0          8m49s   10.224.0.56   aks-pool2-22198594-vmss000000     \\u003cnone\\u003e           \\u003cnone\\u003e\\nkube-system   azure-ip-masq-agent-qxkm7                  1/1     Running     0          45m     10.224.0.4    aks-default-40136599-vmss000000   \\u003cnone\\u003e           \\u003cnone\\u003e\\nkube-system   azure-ip-masq-agent-r4vck                  1/1     Running     0          42m     10.224.0.33   aks-pool2-22198594-vmss000000     \\u003cnone\\u003e           \\u003cnone\\u003e\\nkube-system   cloud-node-manager-2hzb5                   1/1     Running     0          45m     10.224.0.4    aks-default-40136599-vmss000000   \\u003cnone\\u003e           \\u003cnone\\u003e\\nkube-system   cloud-node-manager-vzc5c                   1/1     Running     0          42m     10.224.0.33   aks-pool2-22198594-vmss000000     \\u003cnone\\u003e           \\u003cnone\\u003e\\nkube-system   coredns-59b6bf8b4f-5fbhk                   1/1     Running     0          46m     10.224.0.7    aks-default-40136599-vmss000000   \\u003cnone\\u003e           \\u003cnone\\u003e\\nkube-system   coredns-59b6bf8b4f-qzznn                   1/1     Running     0          45m     10.224.0.16   aks-default-40136599-vmss000000   \\u003cnone\\u003e           \\u003cnone\\u003e\\nkube-system   coredns-autoscaler-5655d66f64-tlksg        1/1     Running     0          46m     10.224.0.17   aks-default-40136599-vmss000000   \\u003cnone\\u003e           \\u003cnone\\u003e\\nkube-system   csi-azuredisk-node-cl6nj                   3/3     Running     0          42m     10.224.0.33   aks-pool2-22198594-vmss000000     \\u003cnone\\u003e           \\u003cnone\\u003e\\nkube-system   csi-azuredisk-node-sgnc6                   3/3     Running     0          45m     10.224.0.4    aks-default-40136599-vmss000000   \\u003cnone\\u003e           \\u003cnone\\u003e\\nkube-system   csi-azurefile-node-7bfjl                   3/3     Running     0          45m     10.224.0.4    aks-default-40136599-vmss000000   \\u003cnone\\u003e           \\u003cnone\\u003e\\nkube-system   csi-azurefile-node-whw8w                   3/3     Running     0          42m     10.224.0.33   aks-pool2-22198594-vmss000000     \\u003cnone\\u003e           \\u003cnone\\u003e\\nkube-system   konnectivity-agent-bbf6c99bf-fpsxt         1/1     Running     0          13m     10.224.0.43   aks-pool2-22198594-vmss000000     \\u003cnone\\u003e           \\u003cnone\\u003e\\nkube-system   konnectivity-agent-bbf6c99bf-jhlxf         1/1     Running     0          13m     10.224.0.25   aks-default-40136599-vmss000000   \\u003cnone\\u003e           \\u003cnone\\u003e\\nkube-system   kube-proxy-2glr5                           1/1     Running     0          42m     10.224.0.33   aks-pool2-22198594-vmss000000     \\u003cnone\\u003e           \\u003cnone\\u003e\\nkube-system   kube-proxy-bmwws                           1/1     Running     0          45m     10.224.0.4    aks-default-40136599-vmss000000   \\u003cnone\\u003e           \\u003cnone\\u003e\\nkube-system   metrics-server-8655f897d8-2t6bt            2/2     Running     0          42m     10.224.0.11   aks-default-40136599-vmss000000   \\u003cnone\\u003e           \\u003cnone\\u003e\\nkube-system   metrics-server-8655f897d8-mnrbj            2/2     Running     0          42m     10.224.0.38   aks-pool2-22198594-vmss000000     \\u003cnone\\u003e           \\u003cnone\\u003e\\n\"\n  }\n }",
+      "isContentBase64": false
+    }
+  },
+  "Start-AzAksManagedClusterCommand+[NoContext]+RunExpanded+$GET+https://management.azure.com/subscriptions/0b1f6471-1bf0-4dda-aec3-cb9272f09590/resourceGroups/aks-test/providers/Microsoft.ContainerService/managedclusters/aks/commandResults/b3d43a270409499498a409a2ee4a3fb4?api-version=2023-02-01+3": {
+    "Request": {
+      "Method": "GET",
+      "RequestUri": "https://management.azure.com/subscriptions/0b1f6471-1bf0-4dda-aec3-cb9272f09590/resourceGroups/aks-test/providers/Microsoft.ContainerService/managedclusters/aks/commandResults/b3d43a270409499498a409a2ee4a3fb4?api-version=2023-02-01",
+      "Content": null,
+      "isContentBase64": false,
+      "Headers": {
+        "Authorization": [ "[Filtered]" ],
+        "x-ms-unique-id": [ "3" ],
+        "x-ms-client-request-id": [ "67bd9f10-c83a-4595-9be9-ea16062c7a78" ],
+        "CommandName": [ "Start-AzAksManagedClusterCommand" ],
+        "FullCommandName": [ "Start-AzAksManagedClusterCommand_RunExpanded" ],
+        "ParameterSetName": [ "__AllParameterSets" ],
+        "User-Agent": [ "AzurePowershell/v0.0.0", "PSVersion/v7.2.9", "Az.Aks/0.1.0" ]
+      },
+      "ContentHeaders": {
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "x-ms-routing-request-id": [ "SOUTHEASTASIA:20230331T085214Z:c64ce113-8d97-43e9-a1c6-5b20e220f79d" ],
+        "x-ms-ratelimit-remaining-subscription-reads": [ "11998" ],
+        "x-ms-correlation-request-id": [ "c64ce113-8d97-43e9-a1c6-5b20e220f79d" ],
+        "x-ms-request-id": [ "f9d9795a-95ad-49d0-997f-60fc1e99f517" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "Server": [ "nginx" ],
+        "Date": [ "Fri, 31 Mar 2023 08:52:14 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "4745" ],
+        "Content-Type": [ "application/json" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\n  \"id\": \"b3d43a270409499498a409a2ee4a3fb4\",\n  \"properties\": {\n   \"provisioningState\": \"Succeeded\",\n   \"exitCode\": 0,\n   \"startedAt\": \"2023-03-31T08:51:44Z\",\n   \"finishedAt\": \"2023-03-31T08:51:45Z\",\n   \"logs\": \"NAMESPACE     NAME                                       READY   STATUS      RESTARTS   AGE     IP            NODE                              NOMINATED NODE   READINESS GATES\\naks-command   command-33ddee0548b342bcbd2f0b6e997bb538   0/1     Completed   0          81s     10.224.0.44   aks-pool2-22198594-vmss000000     \\u003cnone\\u003e           \\u003cnone\\u003e\\naks-command   command-836aff9b9f2d4be8ac6b424cf302204f   0/1     Error       0          15m     10.224.0.44   aks-pool2-22198594-vmss000000     \\u003cnone\\u003e           \\u003cnone\\u003e\\naks-command   command-b3d43a270409499498a409a2ee4a3fb4   1/1     Running     0          2s      10.224.0.60   aks-pool2-22198594-vmss000000     \\u003cnone\\u003e           \\u003cnone\\u003e\\naks-command   command-e4b2b1c20a4a42c095051f2fd88215cc   0/1     Completed   0          3m30s   10.224.0.42   aks-pool2-22198594-vmss000000     \\u003cnone\\u003e           \\u003cnone\\u003e\\naks-command   command-f479e67f0f894b6b8f4346b25d7c37a2   0/1     Error       0          13m     10.224.0.41   aks-pool2-22198594-vmss000000     \\u003cnone\\u003e           \\u003cnone\\u003e\\naks-command   command-f4a7168c91444783b6859ef340bcc4d2   0/1     Completed   0          8m49s   10.224.0.56   aks-pool2-22198594-vmss000000     \\u003cnone\\u003e           \\u003cnone\\u003e\\nkube-system   azure-ip-masq-agent-qxkm7                  1/1     Running     0          45m     10.224.0.4    aks-default-40136599-vmss000000   \\u003cnone\\u003e           \\u003cnone\\u003e\\nkube-system   azure-ip-masq-agent-r4vck                  1/1     Running     0          42m     10.224.0.33   aks-pool2-22198594-vmss000000     \\u003cnone\\u003e           \\u003cnone\\u003e\\nkube-system   cloud-node-manager-2hzb5                   1/1     Running     0          45m     10.224.0.4    aks-default-40136599-vmss000000   \\u003cnone\\u003e           \\u003cnone\\u003e\\nkube-system   cloud-node-manager-vzc5c                   1/1     Running     0          42m     10.224.0.33   aks-pool2-22198594-vmss000000     \\u003cnone\\u003e           \\u003cnone\\u003e\\nkube-system   coredns-59b6bf8b4f-5fbhk                   1/1     Running     0          46m     10.224.0.7    aks-default-40136599-vmss000000   \\u003cnone\\u003e           \\u003cnone\\u003e\\nkube-system   coredns-59b6bf8b4f-qzznn                   1/1     Running     0          45m     10.224.0.16   aks-default-40136599-vmss000000   \\u003cnone\\u003e           \\u003cnone\\u003e\\nkube-system   coredns-autoscaler-5655d66f64-tlksg        1/1     Running     0          46m     10.224.0.17   aks-default-40136599-vmss000000   \\u003cnone\\u003e           \\u003cnone\\u003e\\nkube-system   csi-azuredisk-node-cl6nj                   3/3     Running     0          42m     10.224.0.33   aks-pool2-22198594-vmss000000     \\u003cnone\\u003e           \\u003cnone\\u003e\\nkube-system   csi-azuredisk-node-sgnc6                   3/3     Running     0          45m     10.224.0.4    aks-default-40136599-vmss000000   \\u003cnone\\u003e           \\u003cnone\\u003e\\nkube-system   csi-azurefile-node-7bfjl                   3/3     Running     0          45m     10.224.0.4    aks-default-40136599-vmss000000   \\u003cnone\\u003e           \\u003cnone\\u003e\\nkube-system   csi-azurefile-node-whw8w                   3/3     Running     0          42m     10.224.0.33   aks-pool2-22198594-vmss000000     \\u003cnone\\u003e           \\u003cnone\\u003e\\nkube-system   konnectivity-agent-bbf6c99bf-fpsxt         1/1     Running     0          13m     10.224.0.43   aks-pool2-22198594-vmss000000     \\u003cnone\\u003e           \\u003cnone\\u003e\\nkube-system   konnectivity-agent-bbf6c99bf-jhlxf         1/1     Running     0          13m     10.224.0.25   aks-default-40136599-vmss000000   \\u003cnone\\u003e           \\u003cnone\\u003e\\nkube-system   kube-proxy-2glr5                           1/1     Running     0          42m     10.224.0.33   aks-pool2-22198594-vmss000000     \\u003cnone\\u003e           \\u003cnone\\u003e\\nkube-system   kube-proxy-bmwws                           1/1     Running     0          45m     10.224.0.4    aks-default-40136599-vmss000000   \\u003cnone\\u003e           \\u003cnone\\u003e\\nkube-system   metrics-server-8655f897d8-2t6bt            2/2     Running     0          42m     10.224.0.11   aks-default-40136599-vmss000000   \\u003cnone\\u003e           \\u003cnone\\u003e\\nkube-system   metrics-server-8655f897d8-mnrbj            2/2     Running     0          42m     10.224.0.38   aks-pool2-22198594-vmss000000     \\u003cnone\\u003e           \\u003cnone\\u003e\\n\"\n  }\n }",
+      "isContentBase64": false
+    }
+  },
+  "Start-AzAksManagedClusterCommand+[NoContext]+RunViaIdentityExpanded+$POST+https://management.azure.com/subscriptions/0b1f6471-1bf0-4dda-aec3-cb9272f09590/resourceGroups/aks-test/providers/Microsoft.ContainerService/managedClusters/aks/runCommand?api-version=2023-02-01+1": {
+    "Request": {
+      "Method": "POST",
+      "RequestUri": "https://management.azure.com/subscriptions/0b1f6471-1bf0-4dda-aec3-cb9272f09590/resourceGroups/aks-test/providers/Microsoft.ContainerService/managedClusters/aks/runCommand?api-version=2023-02-01",
+      "Content": "{\r\n  \"command\": \"kubectl get nodes\"\r\n}",
+      "isContentBase64": false,
+      "Headers": {
+      },
+      "ContentHeaders": {
+        "Content-Type": [ "application/json" ],
+        "Content-Length": [ "38" ]
+      }
+    },
+    "Response": {
+      "StatusCode": 202,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "Location": [ "https://management.azure.com/subscriptions/0b1f6471-1bf0-4dda-aec3-cb9272f09590/resourceGroups/aks-test/providers/Microsoft.ContainerService/managedclusters/aks/commandResults/0a3991475d9744fcbfdc2595b40e517f?api-version=2023-02-01" ],
+        "x-ms-ratelimit-remaining-subscription-writes": [ "1198" ],
+        "x-ms-correlation-request-id": [ "afec4173-8b17-42b7-8459-da1e54025fd9" ],
+        "x-ms-request-id": [ "0a399147-5d97-44fc-bfdc-2595b40e517f" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "Server": [ "nginx" ],
+        "x-ms-routing-request-id": [ "SOUTHEASTASIA:20230331T085215Z:afec4173-8b17-42b7-8459-da1e54025fd9" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "Date": [ "Fri, 31 Mar 2023 08:52:15 GMT" ]
+      },
+      "ContentHeaders": {
+        "Expires": [ "-1" ],
+        "Content-Length": [ "0" ]
+      },
+      "Content": null,
+      "isContentBase64": false
+    }
+  },
+  "Start-AzAksManagedClusterCommand+[NoContext]+RunViaIdentityExpanded+$GET+https://management.azure.com/subscriptions/0b1f6471-1bf0-4dda-aec3-cb9272f09590/resourceGroups/aks-test/providers/Microsoft.ContainerService/managedclusters/aks/commandResults/0a3991475d9744fcbfdc2595b40e517f?api-version=2023-02-01+2": {
+    "Request": {
+      "Method": "GET",
+      "RequestUri": "https://management.azure.com/subscriptions/0b1f6471-1bf0-4dda-aec3-cb9272f09590/resourceGroups/aks-test/providers/Microsoft.ContainerService/managedclusters/aks/commandResults/0a3991475d9744fcbfdc2595b40e517f?api-version=2023-02-01",
+      "Content": null,
+      "isContentBase64": false,
+      "Headers": {
+        "Authorization": [ "[Filtered]" ],
+        "x-ms-unique-id": [ "5" ],
+        "x-ms-client-request-id": [ "15cc242a-5c77-4f1e-b179-e2939214870f" ],
+        "CommandName": [ "Start-AzAksManagedClusterCommand" ],
+        "FullCommandName": [ "Start-AzAksManagedClusterCommand_RunViaIdentityExpanded" ],
+        "ParameterSetName": [ "__AllParameterSets" ],
+        "User-Agent": [ "AzurePowershell/v0.0.0", "PSVersion/v7.2.9", "Az.Aks/0.1.0" ]
+      },
+      "ContentHeaders": {
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "x-ms-ratelimit-remaining-subscription-reads": [ "11997" ],
+        "x-ms-correlation-request-id": [ "913c251f-9ebf-4070-a1fd-17c8b626b1eb" ],
+        "x-ms-request-id": [ "37c3e7c7-fab3-481e-81b2-5f7ee0020817" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "Server": [ "nginx" ],
+        "x-ms-routing-request-id": [ "SOUTHEASTASIA:20230331T085246Z:913c251f-9ebf-4070-a1fd-17c8b626b1eb" ],
+        "Date": [ "Fri, 31 Mar 2023 08:52:46 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "418" ],
+        "Content-Type": [ "application/json" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\n  \"id\": \"0a3991475d9744fcbfdc2595b40e517f\",\n  \"properties\": {\n   \"provisioningState\": \"Succeeded\",\n   \"exitCode\": 0,\n   \"startedAt\": \"2023-03-31T08:52:16Z\",\n   \"finishedAt\": \"2023-03-31T08:52:17Z\",\n   \"logs\": \"NAME                              STATUS   ROLES   AGE   VERSION\\naks-default-40136599-vmss000000   Ready    agent   46m   v1.24.9\\naks-pool2-22198594-vmss000000     Ready    agent   43m   v1.24.9\\n\"\n  }\n }",
+      "isContentBase64": false
+    }
+  },
+  "Start-AzAksManagedClusterCommand+[NoContext]+RunViaIdentityExpanded+$GET+https://management.azure.com/subscriptions/0b1f6471-1bf0-4dda-aec3-cb9272f09590/resourceGroups/aks-test/providers/Microsoft.ContainerService/managedclusters/aks/commandResults/0a3991475d9744fcbfdc2595b40e517f?api-version=2023-02-01+3": {
+    "Request": {
+      "Method": "GET",
+      "RequestUri": "https://management.azure.com/subscriptions/0b1f6471-1bf0-4dda-aec3-cb9272f09590/resourceGroups/aks-test/providers/Microsoft.ContainerService/managedclusters/aks/commandResults/0a3991475d9744fcbfdc2595b40e517f?api-version=2023-02-01",
+      "Content": null,
+      "isContentBase64": false,
+      "Headers": {
+        "Authorization": [ "[Filtered]" ],
+        "x-ms-unique-id": [ "6" ],
+        "x-ms-client-request-id": [ "15cc242a-5c77-4f1e-b179-e2939214870f" ],
+        "CommandName": [ "Start-AzAksManagedClusterCommand" ],
+        "FullCommandName": [ "Start-AzAksManagedClusterCommand_RunViaIdentityExpanded" ],
+        "ParameterSetName": [ "__AllParameterSets" ],
+        "User-Agent": [ "AzurePowershell/v0.0.0", "PSVersion/v7.2.9", "Az.Aks/0.1.0" ]
+      },
+      "ContentHeaders": {
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "x-ms-ratelimit-remaining-subscription-reads": [ "11996" ],
+        "x-ms-correlation-request-id": [ "95da8b1f-073e-4668-b401-139650bce4be" ],
+        "x-ms-request-id": [ "a2b3f061-43df-43a7-96a1-615981d8deaf" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "Server": [ "nginx" ],
+        "x-ms-routing-request-id": [ "SOUTHEASTASIA:20230331T085246Z:95da8b1f-073e-4668-b401-139650bce4be" ],
+        "Date": [ "Fri, 31 Mar 2023 08:52:46 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "418" ],
+        "Content-Type": [ "application/json" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\n  \"id\": \"0a3991475d9744fcbfdc2595b40e517f\",\n  \"properties\": {\n   \"provisioningState\": \"Succeeded\",\n   \"exitCode\": 0,\n   \"startedAt\": \"2023-03-31T08:52:16Z\",\n   \"finishedAt\": \"2023-03-31T08:52:17Z\",\n   \"logs\": \"NAME                              STATUS   ROLES   AGE   VERSION\\naks-default-40136599-vmss000000   Ready    agent   46m   v1.24.9\\naks-pool2-22198594-vmss000000     Ready    agent   43m   v1.24.9\\n\"\n  }\n }",
+      "isContentBase64": false
+    }
+  }
+}

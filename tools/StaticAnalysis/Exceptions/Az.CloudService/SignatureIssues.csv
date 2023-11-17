@@ -1,4 +1,4 @@
-"AssemblyFileName","ClassName","Target","Severity","ProblemId","Description","Remediation"
+"Module","ClassName","Target","Severity","ProblemId","Description","Remediation"
 "Az.CloudService","Get-AzCloudService","Get-AzCloudService","1","8410","Parameter ProxyUseDefaultCredentials of cmdlet Get-AzCloudService does not follow the enforced naming convention of using a singular noun for a parameter name.","Consider using a singular noun for the parameter name."
 "Az.CloudService","Get-AzCloudServiceInstanceView","Get-AzCloudServiceInstanceView","1","8410","Parameter ProxyUseDefaultCredentials of cmdlet Get-AzCloudServiceInstanceView does not follow the enforced naming convention of using a singular noun for a parameter name.","Consider using a singular noun for the parameter name."
 "Az.CloudService","Get-AzCloudServiceNetworkInterfaces","Get-AzCloudServiceNetworkInterfaces","2","8010","Get-AzCloudServiceNetworkInterfaces Changes the ConfirmImpact but does not set the SupportsShouldProcess property to true in the cmdlet attribute.","Determine if the cmdlet should implement ShouldProcess and if so determine if it should implement Force / ShouldContinue"

@@ -341,6 +341,7 @@ function Get-AzModuleFromRemote {
         if ($modules.Count -gt 1) {
             Throw "[$Invoker] You have multiple modules matched 'Az' in the registered reposistory $($modules.Repository). Please specify a single -Repository."
         }
+        $Repository = $modules.Repository
 
         $accountVersion = 0
         if (!$UseExactAccountVersion) {
@@ -355,7 +356,7 @@ function Get-AzModuleFromRemote {
         $modulesWithVersion = @()
         $containValidModule = if ($Name) {$Name -Contains 'Az.Accounts'} else {$false}
         $module = $null
-        foreach($module in $modules.Dependencies) {
+        foreach ($module in $modules.Dependencies) {
             if ($module.Name -eq 'Az.Accounts') {
                 if ($UseExactAccountVersion) {
                     $version = $accountVersion
@@ -365,16 +366,16 @@ function Get-AzModuleFromRemote {
                     elseif ($module.Keys -Contains 'RequiredVersion') {
                         $version = $module.RequiredVersion
                     }
-                    $modulesWithVersion += [PSCustomObject]@{Name = $module.Name; Version = $version}
+                    $modulesWithVersion += [PSCustomObject]@{Name = $module.Name; Version = $version; Repository = $Repository}
                 }
                 else {
-                    $modulesWithVersion += [PSCustomObject]@{Name = $module.Name; Version = $accountVersion}
+                    $modulesWithVersion += [PSCustomObject]@{Name = $module.Name; Version = $accountVersion; Repository = $Repository}
                 }
             }
             elseif (!$Name -or $Name -Contains $module.Name)
             {
                 if ($module.RequiredVersion) {
-                    $modulesWithVersion += [PSCustomObject]@{Name = $module.Name; Version = $module.RequiredVersion}
+                    $modulesWithVersion += [PSCustomObject]@{Name = $module.Name; Version = $module.RequiredVersion; Repository = $Repository}
                     $containValidModule = $true
                 }
             }
@@ -398,8 +399,8 @@ class ModuleInfo
 function Remove-AzureRM {
     process {
         try {
-            $azureModuleNames = (Get-InstalledModule -Name Azure* -ErrorAction Stop).Name | Where-Object {$_ -match "Azure(\.[a-zA-Z0-9]+)?" -or $_ -match "AzureRM(\.[a-zA-Z0-9]+)?"}
-            foreach($moduleName in $azureModuleNames) {
+            $azureModuleNames = (Microsoft.PowerShell.Core\Get-Module -ListAvailable -Name Azure* -ErrorAction Stop).Name | Where-Object {$_ -match "(Azure|AzureRM)(\.[a-zA-Z0-9]+)*$"}
+            foreach ($moduleName in $azureModuleNames) {
                 PowerShellGet\Uninstall-Module -Name $moduleName -AllVersion -AllowPrerelease -ErrorAction Continue
             }
         }
@@ -422,11 +423,50 @@ function Get-RepositoryUrl {
     }
 }
 
-$exportedFunctions = @( Get-ChildItem -Path $PSScriptRoot/exports/*.ps1 -Recurse -ErrorAction SilentlyContinue )
-$internalFunctions = @( Get-ChildItem -Path $PSScriptRoot/internal/*.ps1 -ErrorAction SilentlyContinue )
+function Update-ModuleInstallationRepository {
+    param (
+        [Parameter()]
+        [ValidateNotNullOrEmpty()]
+        [string]
+        ${ModuleName},
+
+        [Parameter()]
+        [ValidateNotNullOrEmpty()]
+        [Version]
+        ${InstalledVersion},
+
+        [Parameter()]
+        [ValidateNotNullOrEmpty()]
+        [string]
+        ${Repository}
+    )
+
+    process {
+        try {
+            $moduleBase = (Microsoft.PowerShell.Core\Get-Module -ListAvailable -Name $ModuleName | Where-Object {$_.Version -eq $InstalledVersion}).ModuleBase
+            $moduleInfoFile = Join-Path -Path $moduleBase -ChildPath 'PSGetModuleInfo.xml'
+            Write-Debug "Checking file: $moduleInfoFile"
+            $xmlText = Get-Content $moduleInfoFile
+            $xmlText = $xmlText -Replace $script:AzTempRepoName, $Repository
+            $repositoryUrl = Get-RepositoryUrl $Repository
+            $destString = '"RepositorySourceLocation">' + $repositoryUrl + '<'
+            $xmlText = $xmlText -Replace
+    '"RepositorySourceLocation">.*<', $destString
+            Write-Debug "Write new xml to $moduleInfoFile"
+            Microsoft.PowerShell.Management\Set-Content -Path $moduleInfoFile -Value $xmlText -Force
+        }
+        catch {
+            Write-Error $PSItem.ToString() -ErrorVariable +errorRecords
+            throw $PSItem
+        }
+    }
+}
+
+$exportedFunctions = @( Get-ChildItem -Path $PSScriptRoot/exports/*.ps1 -Recurse -ErrorAction 'SilentlyContinue' )
+$internalFunctions = @( Get-ChildItem -Path $PSScriptRoot/internal/*.ps1 -ErrorAction 'SilentlyContinue' )
 
 $allFunctions = $internalFunctions + $exportedFunctions
-foreach($function in $allFunctions) {
+foreach ($function in $allFunctions) {
     try {
         . $function.Fullname
     }

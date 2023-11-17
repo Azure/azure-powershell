@@ -1,0 +1,95 @@
+{
+  "resourceType": "privateClouds/authorizations",
+  "apiVersion": "2021-12-01",
+  "learnMore": {
+    "url": "https://learn.microsoft.com/powershell/module/az.vmware"
+  },
+  "commands": [
+    {
+      "name": "Get-AzVMwareAuthorization",
+      "description": "Get an ExpressRoute Circuit Authorization by name in a private cloud",
+      "path": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AVS/privateClouds/{privateCloudName}/authorizations/{authorizationName}",
+      "help": {
+        "learnMore": {
+          "url": "https://learn.microsoft.com/powershell/module/az.vmware/get-azvmwareauthorization"
+        },
+        "parameterSets": [
+          {
+            "parameters": [
+              "-Name <String>",
+              "-PrivateCloudName <String>",
+              "-ResourceGroupName <String>",
+              "[-SubscriptionId <String[]>]"
+            ]
+          }
+        ]
+      },
+      "examples": [
+        {
+          "description": "Get an ExpressRoute Circuit Authorization by name in a private cloud",
+          "parameters": [
+            {
+              "name": "-Name",
+              "value": "[Path.authorizationName]"
+            },
+            {
+              "name": "-PrivateCloudName",
+              "value": "[Path.privateCloudName]"
+            },
+            {
+              "name": "-ResourceGroupName",
+              "value": "[Path.resourceGroupName]"
+            },
+            {
+              "name": "-SubscriptionId",
+              "value": "[Path.subscriptionId]"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Remove-AzVMwareAuthorization",
+      "description": "Delete an ExpressRoute Circuit Authorization in a private cloud",
+      "path": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AVS/privateClouds/{privateCloudName}/authorizations/{authorizationName}",
+      "help": {
+        "learnMore": {
+          "url": "https://learn.microsoft.com/powershell/module/az.vmware/remove-azvmwareauthorization"
+        },
+        "parameterSets": [
+          {
+            "parameters": [
+              "-Name <String>",
+              "-PrivateCloudName <String>",
+              "-ResourceGroupName <String>",
+              "[-SubscriptionId <String>]"
+            ]
+          }
+        ]
+      },
+      "examples": [
+        {
+          "description": "Delete an ExpressRoute Circuit Authorization in a private cloud",
+          "parameters": [
+            {
+              "name": "-Name",
+              "value": "[Path.authorizationName]"
+            },
+            {
+              "name": "-PrivateCloudName",
+              "value": "[Path.privateCloudName]"
+            },
+            {
+              "name": "-ResourceGroupName",
+              "value": "[Path.resourceGroupName]"
+            },
+            {
+              "name": "-SubscriptionId",
+              "value": "[Path.subscriptionId]"
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

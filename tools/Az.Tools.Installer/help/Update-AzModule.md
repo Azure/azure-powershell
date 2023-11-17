@@ -18,26 +18,28 @@ Update-AzModule [[-Name] <String[]>] [-Repository <String>] [-Scope <String>] [-
 ```
 
 ## DESCRIPTION
+
 Update Azure PowerShell modules.
 
 ## EXAMPLES
 
 ### EXAMPLE 1
-```
+
+```powershell
 Update-AzModule -Repository PSGallery
 ```
 
 ### EXAMPLE 2
-```
+
+```powershell
 Update-AzModule -Name desktopVirtualization,RecoveryServices -Repository PSGallery
 ```
 
 ## PARAMETERS
 
 ### -Name
-Az modules name to update.
-Can be the names without Az.
-prefix
+
+Az modules name to update. Can be the names without **Az.** prefix.
 
 ```yaml
 Type: String[]
@@ -52,7 +54,9 @@ Accept wildcard characters: False
 ```
 
 ### -Repository
-The Registered Repostory.
+
+The registered repository to install module from. If only one repository is registered in
+PowerShell, `Update-AzModule` will use it. If more than one, please specify the Repository.
 
 ```yaml
 Type: String
@@ -67,8 +71,9 @@ Accept wildcard characters: False
 ```
 
 ### -Scope
-Scope to update modules.
-Accepted values: CurrentUser, AllUser.
+
+Scope to update modules. Default value is `CurrentUser` for all the PowerShell platforms. Accepted
+values: `CurrentUser`, `AllUser`.
 
 ```yaml
 Type: String
@@ -83,6 +88,7 @@ Accept wildcard characters: False
 ```
 
 ### -KeepPrevious
+
 Present to keep the previous versions of the modules.
 
 ```yaml
@@ -98,6 +104,7 @@ Accept wildcard characters: False
 ```
 
 ### -Force
+
 Installs modules and overrides the confirmation messages of each step.
 
 ```yaml
@@ -113,8 +120,8 @@ Accept wildcard characters: False
 ```
 
 ### -WhatIf
-Shows what would happen if the cmdlet runs.
-The cmdlet is not run.
+
+Shows what would happen if the cmdlet runs. The cmdlet is not run.
 
 ```yaml
 Type: SwitchParameter
@@ -129,6 +136,7 @@ Accept wildcard characters: False
 ```
 
 ### -Confirm
+
 Prompts you for confirmation before running the cmdlet.
 
 ```yaml
@@ -144,13 +152,18 @@ Accept wildcard characters: False
 ```
 
 ### CommonParameters
-This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable. For more information, see [about_CommonParameters](http://go.microsoft.com/fwlink/?LinkID=113216).
+
+This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable,
+-InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose,
+-WarningAction, and -WarningVariable. For more information, see
+[about_CommonParameters](http://go.microsoft.com/fwlink/?LinkID=113216).
 
 ## INPUTS
 
 ## OUTPUTS
 
 ### System.Management.Automation.PSObject[]
+
 ## NOTES
 
 ## RELATED LINKS

@@ -39,7 +39,7 @@ Describe "Test-NewCredentialNewServicePrincipal"{
         It "creates correctly formatted environment string" {
             $Env:AZURE_TEST_MODE | Should Match "Playback"
             $Env:TEST_CSM_ORGID_AUTHENTICATION | Should Match "SubscriptionId=" + $context.Subscription.Id + ";HttpRecorderMode=Playback;Environment=Prod;ServicePrincipal=" + 
-            "8bc48661-1801-4b7a-8ca1-6a3cadfb4870" + ";ServicePrincipalSecret=testpassword;" + "AADTenant=" + $context.Tenant.Id
+            "8bc48661-1801-4b7a-8ca1-6a3cadfb4870" + ";ServicePrincipalSecret=testpassword;" + "TenantId=" + $context.Tenant.Id
         }
     }
 
@@ -78,7 +78,7 @@ Describe "Test-NewCredentialExistingServicePrincipal" {
         It "creates correctly formatted environment string" {
             $Env:AZURE_TEST_MODE | Should Match "Record"
             $Env:TEST_CSM_ORGID_AUTHENTICATION | Should Match "SubscriptionId=" + $context.Subscription.Id + ";HttpRecorderMode=Record;Environment=Prod;ServicePrincipal=" + 
-                "1234" + ";ServicePrincipalSecret=testpassword;" + "AADTenant=" + $context.Tenant.Id
+                "1234" + ";ServicePrincipalSecret=testpassword;" + "TenantId=" + $context.Tenant.Id
         }
     }
 
@@ -137,7 +137,7 @@ Describe "Test-SetEnvironmentServicePrincipal" {
 		Set-TestEnvironment -ServicePrincipalId $NewServicePrincipal.ApplicationId -ServicePrincipalSecret "testpassword" -SubscriptionId $context.Subscription.Id -TenantId $context.Tenant.Id -RecordMode "Record"
 		It "creates correctly formatted environment string" {
             $Env:AZURE_TEST_MODE | Should Match "Record"
-			$Env:TEST_CSM_ORGID_AUTHENTICATION | Should Match "SubscriptionId=" + $context.Subscription.Id + ";HttpRecorderMode=Record;Environment=Prod;AADTenant=" +
+			$Env:TEST_CSM_ORGID_AUTHENTICATION | Should Match "SubscriptionId=" + $context.Subscription.Id + ";HttpRecorderMode=Record;Environment=Prod;TenantId=" +
 				$context.Tenant.Id + ";ServicePrincipal=" + "1234" + ";ServicePrincipalSecret=testpassword"
 		}
 	}

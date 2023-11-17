@@ -1,0 +1,38 @@
+{
+  "New-AzUserAssignedIdentity+[NoContext]+CreateExpanded+$PUT+https://management.azure.com/subscriptions/0336439f-0e9d-44ec-975e-62accb9b3901/resourceGroups/identity-wmbx18cj/providers/Microsoft.ManagedIdentity/userAssignedIdentities/identityeo64yq?api-version=2023-01-31+1": {
+    "Request": {
+      "Method": "PUT",
+      "RequestUri": "https://management.azure.com/subscriptions/0336439f-0e9d-44ec-975e-62accb9b3901/resourceGroups/identity-wmbx18cj/providers/Microsoft.ManagedIdentity/userAssignedIdentities/identityeo64yq?api-version=2023-01-31",
+      "Content": "{\n  \"location\": \"Central US\"\n}",
+      "isContentBase64": false,
+      "Headers": {
+      },
+      "ContentHeaders": {
+        "Content-Type": [ "application/json" ],
+        "Content-Length": [ "30" ]
+      }
+    },
+    "Response": {
+      "StatusCode": 201,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "Location": [ "/subscriptions/0336439f-0e9d-44ec-975e-62accb9b3901/resourcegroups/identity-wmbx18cj/providers/Microsoft.ManagedIdentity/userAssignedIdentities/identityeo64yq" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "x-ms-ratelimit-remaining-subscription-writes": [ "1195" ],
+        "x-ms-request-id": [ "69fd6833-dd7c-40d6-ae60-851f5e29e977" ],
+        "x-ms-correlation-request-id": [ "69fd6833-dd7c-40d6-ae60-851f5e29e977" ],
+        "x-ms-routing-request-id": [ "NORTHEUROPE:20230214T115930Z:69fd6833-dd7c-40d6-ae60-851f5e29e977" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "Date": [ "Tue, 14 Feb 2023 11:59:30 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "450" ],
+        "Content-Type": [ "application/json; charset=utf-8" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\"id\":\"/subscriptions/0336439f-0e9d-44ec-975e-62accb9b3901/resourcegroups/identity-wmbx18cj/providers/Microsoft.ManagedIdentity/userAssignedIdentities/identityeo64yq\",\"name\":\"identityeo64yq\",\"type\":\"Microsoft.ManagedIdentity/userAssignedIdentities\",\"location\":\"centralus\",\"tags\":{},\"properties\":{\"tenantId\":\"a66b4d27-b1b3-4b60-8b06-7fb4fd05bc3c\",\"principalId\":\"c1de5485-bf9c-4d72-9e37-532feeddb801\",\"clientId\":\"009f4c8e-e907-4483-bb04-34b54042df1d\"}}",
+      "isContentBase64": false
+    }
+  }
+}

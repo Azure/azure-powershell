@@ -1,7 +1,7 @@
 ---
 external help file:
 Module Name: Az.Websites
-online version: https://docs.microsoft.com/powershell/module/az.websites/remove-azstaticwebappuser
+online version: https://learn.microsoft.com/powershell/module/az.websites/remove-azstaticwebappuser
 schema: 2.0.0
 ---
 
@@ -39,7 +39,7 @@ This command deletes the user entry from the static site.
 
 ### Example 2: Delete all users from the static site
 ```powershell
-$userList = Get-AzStaticWebAppUser -ResourceGroupName resourceGroup -Name staticweb01 -Authprovider all    
+$userList = Get-AzStaticWebAppUser -ResourceGroupName resourceGroup -Name staticweb01 -Authprovider all
 Remove-AzStaticWebAppUser -InputObject $userList
 
 ```

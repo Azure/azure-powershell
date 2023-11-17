@@ -108,7 +108,8 @@ $resourceTestCommands = @(
     @{Name = "Az.ContainerRegistry [DataPlane]"; Command = {Get-Command Get-AzContainerRegistryManifest}},
     @{Name = "Az.DataBoxEdge";                Command = {Get-AzDataBoxEdgeDevice -ResourceGroupName $resourceGroupName}},
     @{Name = "Az.Databricks";                 Command = {Get-AzDatabricksWorkspace -ResourceGroupName $resourceGroupName}},
-    @{Name = "Az.DataFactory [V1]";           Command = {Get-AzDataFactory -ResourceGroupName $resourceGroupName}},
+    # The resource type could not be found in the namespace 'Microsoft.DataFactory' for api version '2015-10-01'.
+    # @{Name = "Az.DataFactory [V1]";           Command = {Get-AzDataFactory -ResourceGroupName $resourceGroupName}},
     @{Name = "Az.DataFactoryV2 [V2]";         Command = {Get-AzDataFactoryV2}},
     @{Name = "Az.DataLakeAnalytics";          Command = {Get-AzDataLakeAnalyticsAccount}},
     @{Name = "Az.DataLakeStore [MngmPlane]";  Command = {Get-AzDataLakeStoreAccount}},
@@ -141,7 +142,6 @@ $resourceTestCommands = @(
     @{Name = "Az.OperationalInsights [DataPlane]"; Command = {Get-Command Invoke-AzOperationalInsightsQuery}},
     @{Name = "Az.PolicyInsights";             Command = {Get-AzPolicyEvent -Top 10}}, # without -Top service may return 400: ResponseTooLarge
     @{Name = "Az.PowerBIEmbedded";            Command = {Get-AzPowerBIEmbeddedCapacity}},
-    @{Name = "Az.PowerBIUEmbedded";           Command = {Get-AzPowerBIWorkspaceCollection}},
     @{Name = "Az.PrivateDns";                 Command = {Get-AzPrivateDnsZone}},
     @{Name = "Az.RecoveryServices";           Command = {Get-AzRecoveryServicesVault}},
     @{Name = "Az.RedisCache";                 Command = {Get-AzRedisCache}},
@@ -164,7 +164,7 @@ $resourceTestCommands = @(
 
 $generalCommands = @(
     @{
-        Name = "Import Az.Accounts in Parallel";
+        Name = "Import Az.Accounts in Parallel (Process)";
         Command = {
             if ($null -ne $env:SYSTEM_DEFINITIONID -or $null -ne $env:Release_DefinitionId -or $null -ne $env:AZUREPS_HOST_ENVIRONMENT) {
                 Write-Warning "Skipping because 'Start-Job' is not supported by design in scenarios where PowerShell is being hosted in other applications."
@@ -173,6 +173,24 @@ $generalCommands = @(
             $importJobs = @()
             1..10 | ForEach-Object {
                 $importJobs += Start-Job -name "import-no.$_" -ScriptBlock { Import-Module Az.Accounts; Get-AzConfig; }
+            }
+            $importJobs | Wait-Job
+            $importJobs | Receive-Job
+            $importJobs | ForEach-Object {
+                if ("Completed" -ne $_.State) {
+                    throw "Some jobs have failed."
+                }
+            }
+        };
+        Retry = 0; # no need to retry
+    }
+    @{
+        Name = "Import Az.Accounts in Parallel (Thread)";
+
+        Command = {
+            $importJobs = @()
+            1..50 | ForEach-Object {
+                $importJobs += Start-ThreadJob -name "import-no.$_" -ScriptBlock { Import-Module Az.Accounts; Get-AzTenant; }
             }
             $importJobs | Wait-Job
             $importJobs | Receive-Job

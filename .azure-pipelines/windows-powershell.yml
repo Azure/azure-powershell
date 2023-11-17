@@ -1,13 +1,17 @@
 variables:
+  AgentPoolName: pool-windows-2019
   WindowsName: windows
   WindowsImage: windows-2019
-  TestFramework: netcoreapp3.1
+  TestFramework: net6.0
   TestTarget: Test
   Configuration: Debug
   DebugLocalBuildTasks: true
   IsGenerateBased: $[eq(variables['system.pullRequest.targetBranch'], 'generation')]
   BuildTimeoutInMinutes: 120
   AnalysisTimeoutInMinutes: 120
+  EnableTestCoverage: true
+  TestCoverageLocation: $(Build.SourcesDirectory)/artifacts
+  PowerShellPlatform: Windows PowerShell
 
 trigger: none
 
@@ -23,8 +27,7 @@ jobs:
   displayName: Build
   condition: and(eq(variables.IsGenerateBased, false), succeeded())
   timeoutInMinutes: ${{ variables.BuildTimeoutInMinutes }}
-  pool:
-    vmImage: ${{ variables.WindowsImage }}
+  pool: ${{ variables.AgentPoolName }}
 
   steps:
   - task: ms.vss-governance-buildtask.governance-build-task-component-detection.ComponentGovernanceComponentDetection@0
@@ -32,47 +35,36 @@ jobs:
     continueOnError: true
   - template: util/build-steps.yml
     parameters:
-      osName: ${{ variables.WindowsName }}
       testFramework: ${{ variables.TestFramework }}
       configuration: ${{ variables.Configuration }}
+      powerShellPlatform: ${{ variables.PowerShellPlatform }}
 
 - job: Analyze
   displayName: Analyze
   dependsOn: Build
   condition: succeeded()
   timeoutInMinutes: ${{ variables.AnalysisTimeoutInMinutes }}
-  strategy:
-    matrix:
-      windows:
-        OSName: ${{ variables.WindowsName }}
-        ImageName: ${{ variables.WindowsImage }}
-  pool:
-    vmImage: $(ImageName)
+  pool: ${{ variables.AgentPoolName }}
 
   steps:
   - template: util/analyze-steps.yml
     parameters:
-      osName: $(OSName)
       configuration: ${{ variables.Configuration }}
       testFramework: ${{ variables.TestFramework }}
+      powerShellPlatform: ${{ variables.PowerShellPlatform }}
+      IsGenerateBased: ${{ variables.IsGenerateBased }}
 
 - job: Test
   displayName: Test
   dependsOn: Build
-  condition: and(eq(variables.IsGenerateBased, false), succeeded())
   timeoutInMinutes: 180
-  strategy:
-    matrix:
-      windows:
-        OSName: ${{ variables.WindowsName }}
-        ImageName: ${{ variables.WindowsImage }}
-  pool:
-    vmImage: $(ImageName)
+  pool: ${{ variables.AgentPoolName }}
 
   steps:
   - template: util/test-steps.yml
     parameters:
-      osName: $(OSName)
+      osName: ${{ variables.WindowsName }}
       testFramework: ${{ variables.TestFramework }}
       testTarget: ${{ variables.TestTarget }}
       configuration: ${{ variables.Configuration }}
+      powerShellPlatform: ${{ variables.PowerShellPlatform }}

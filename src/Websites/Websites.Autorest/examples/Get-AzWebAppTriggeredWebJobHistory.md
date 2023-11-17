@@ -35,4 +35,3 @@ Kind Name                                                 ResourceGroupName
 ```
 
 This command get triggered web job's history for an app by pipeline.
-

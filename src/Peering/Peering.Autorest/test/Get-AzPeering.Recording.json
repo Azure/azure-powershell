@@ -1,0 +1,124 @@
+{
+  "Get-AzPeering+[NoContext]+List1+$GET+https://management.azure.com/subscriptions/e815e305-b43a-49c4-8b1a-4e61f1aec1e8/providers/Microsoft.Peering/peerings?api-version=2022-10-01+1": {
+    "Request": {
+      "Method": "GET",
+      "RequestUri": "https://management.azure.com/subscriptions/e815e305-b43a-49c4-8b1a-4e61f1aec1e8/providers/Microsoft.Peering/peerings?api-version=2022-10-01",
+      "Content": null,
+      "isContentBase64": false,
+      "Headers": {
+        "x-ms-unique-id": [ "1" ],
+        "x-ms-client-request-id": [ "0bcfff77-6b6b-4e51-b939-ab76aec1416a" ],
+        "CommandName": [ "Get-AzPeering" ],
+        "FullCommandName": [ "Get-AzPeering_List1" ],
+        "ParameterSetName": [ "__AllParameterSets" ],
+        "User-Agent": [ "AzurePowershell/v0.0.0", "PSVersion/v7.1.3", "Az.Peering/0.1.0" ],
+        "Authorization": [ "[Filtered]" ]
+      },
+      "ContentHeaders": {
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "x-ms-original-request-ids": [ "93ba0a69-df5a-4f5c-812e-5d19ddca47a7", "23bda89c-c67d-4289-998a-dbd860746e1c", "9e743b87-e4e8-4d66-9818-2aa874f85468", "7920d641-c223-44fa-a070-90d75db48bd5" ],
+        "x-ms-ratelimit-remaining-subscription-resource-requests": [ "599" ],
+        "x-ms-request-id": [ "af958be4-78a1-41b8-91c9-92b58d667f81" ],
+        "x-ms-correlation-request-id": [ "af958be4-78a1-41b8-91c9-92b58d667f81" ],
+        "x-ms-routing-request-id": [ "WESTUS:20230113T012513Z:af958be4-78a1-41b8-91c9-92b58d667f81" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "Date": [ "Fri, 13 Jan 2023 01:25:12 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Type": [ "application/json; charset=utf-8" ],
+        "Expires": [ "-1" ],
+        "Content-Length": [ "8059" ]
+      },
+      "Content": "{\"value\":[{\"sku\":{\"name\":\"Premium_Direct_Free\",\"tier\":\"Premium\",\"family\":\"Direct\",\"size\":\"Free\"},\"kind\":\"Direct\",\"properties\":{\"direct\":{\"connections\":[{\"billableBandwidthInMbps\":0,\"bandwidthInMbps\":10000,\"provisionedBandwidthInMbps\":0,\"sessionAddressProvider\":\"Microsoft\",\"useForPeeringService\":true,\"peeringDBFacilityId\":69,\"connectionState\":\"PendingApproval\",\"connectionIdentifier\":\"362f1f7a-ff7a-4dc3-84da-0e20846e5f99\"}],\"useForPeeringService\":true,\"peerAsn\":{\"id\":\"/subscriptions/e815e305-b43a-49c4-8b1a-4e61f1aec1e8/providers/Microsoft.Peering/peerAsns/ContosoEdgeTest\"},\"directPeeringType\":\"Edge\"},\"peeringLocation\":\"Dallas\",\"provisioningState\":\"Succeeded\"},\"location\":\"South Central US\",\"tags\":{},\"name\":\"DemoComp1\",\"id\":\"/subscriptions/e815e305-b43a-49c4-8b1a-4e61f1aec1e8/resourceGroups/DemoRG/providers/Microsoft.Peering/peerings/DemoComp1\",\"type\":\"Microsoft.Peering/peerings\"},{\"sku\":{\"name\":\"Premium_Direct_Free\",\"tier\":\"Premium\",\"family\":\"Direct\",\"size\":\"Free\"},\"kind\":\"Direct\",\"properties\":{\"direct\":{\"connections\":[{\"billableBandwidthInMbps\":0,\"bandwidthInMbps\":200000,\"provisionedBandwidthInMbps\":200000,\"sessionAddressProvider\":\"Peer\",\"useForPeeringService\":true,\"peeringDBFacilityId\":69,\"connectionState\":\"Active\",\"bgpSession\":{\"sessionPrefixV4\":\"12.90.152.68/30\",\"sessionPrefixV6\":\"\",\"microsoftSessionIPv4Address\":\"12.90.152.70\",\"peerSessionIPv4Address\":\"12.90.152.69\",\"sessionStateV4\":\"Established\",\"sessionStateV6\":\"None\",\"maxPrefixesAdvertisedV4\":200000,\"maxPrefixesAdvertisedV6\":0},\"connectionIdentifier\":\"815870d0-938d-4355-b6b9-dd007999b8f5\"},{\"billableBandwidthInMbps\":0,\"bandwidthInMbps\":200000,\"provisionedBandwidthInMbps\":200000,\"sessionAddressProvider\":\"Peer\",\"useForPeeringService\":true,\"peeringDBFacilityId\":69,\"connectionState\":\"Active\",\"bgpSession\":{\"sessionPrefixV4\":\"12.125.145.32/30\",\"sessionPrefixV6\":\"\",\"microsoftSessionIPv4Address\":\"12.125.145.34\",\"peerSessionIPv4Address\":\"12.125.145.33\",\"sessionStateV4\":\"Established\",\"sessionStateV6\":\"None\",\"maxPrefixesAdvertisedV4\":200000,\"maxPrefixesAdvertisedV6\":0},\"connectionIdentifier\":\"0720b596-dca1-4d58-8628-58191be00cc3\"}],\"useForPeeringService\":true,\"peerAsn\":{\"id\":\"/subscriptions/e815e305-b43a-49c4-8b1a-4e61f1aec1e8/providers/Microsoft.Peering/peerAsns/AS7018\"},\"directPeeringType\":\"Edge\"},\"peeringLocation\":\"Dallas\",\"provisioningState\":\"Succeeded\"},\"location\":\"South Central US\",\"tags\":{\"hello\":\"world\"},\"name\":\"DemoPeering\",\"id\":\"/subscriptions/e815e305-b43a-49c4-8b1a-4e61f1aec1e8/resourceGroups/DemoRG/providers/Microsoft.Peering/peerings/DemoPeering\",\"type\":\"Microsoft.Peering/peerings\"},{\"sku\":{\"name\":\"Premium_Direct_Free\",\"tier\":\"Premium\",\"family\":\"Direct\",\"size\":\"Free\"},\"kind\":\"Direct\",\"properties\":{\"direct\":{\"connections\":[{\"billableBandwidthInMbps\":0,\"bandwidthInMbps\":100000,\"provisionedBandwidthInMbps\":0,\"sessionAddressProvider\":\"Microsoft\",\"useForPeeringService\":true,\"peeringDBFacilityId\":11,\"connectionState\":\"PendingApproval\",\"connectionIdentifier\":\"1b14538c-04ea-4cee-a094-54823e556806\"}],\"useForPeeringService\":true,\"peerAsn\":{\"id\":\"/subscriptions/e815e305-b43a-49c4-8b1a-4e61f1aec1e8/providers/Microsoft.Peering/peerAsns/ContosoEdgeTest\"},\"directPeeringType\":\"EdgeZoneForOperators\"},\"peeringLocation\":\"Atlanta\",\"provisioningState\":\"Succeeded\"},\"location\":\"East US 2\",\"tags\":{},\"name\":\"TestEdgeZone\",\"id\":\"/subscriptions/e815e305-b43a-49c4-8b1a-4e61f1aec1e8/resourceGroups/DemoRG/providers/Microsoft.Peering/peerings/TestEdgeZone\",\"type\":\"Microsoft.Peering/peerings\"},{\"sku\":{\"name\":\"Premium_Direct_Free\",\"tier\":\"Premium\",\"family\":\"Direct\",\"size\":\"Free\"},\"kind\":\"Direct\",\"properties\":{\"direct\":{\"connections\":[{\"billableBandwidthInMbps\":0,\"bandwidthInMbps\":100000,\"provisionedBandwidthInMbps\":0,\"sessionAddressProvider\":\"Peer\",\"useForPeeringService\":true,\"peeringDBFacilityId\":1,\"connectionState\":\"PendingApproval\",\"bgpSession\":{\"sessionPrefixV4\":\"43.243.21.20/30\",\"sessionPrefixV6\":\"\",\"microsoftSessionIPv4Address\":\"43.243.21.22\",\"microsoftSessionIPv6Address\":\"\",\"peerSessionIPv4Address\":\"43.243.21.21\",\"peerSessionIPv6Address\":\"\",\"sessionStateV4\":\"None\",\"sessionStateV6\":\"None\",\"maxPrefixesAdvertisedV4\":20000,\"maxPrefixesAdvertisedV6\":0,\"md5AuthenticationKey\":\"\"},\"connectionIdentifier\":\"2ce397a2-4888-4a89-aa68-34810d8a1919\"}],\"useForPeeringService\":true,\"peerAsn\":{\"id\":\"/subscriptions/e815e305-b43a-49c4-8b1a-4e61f1aec1e8/providers/Microsoft.Peering/peerAsns/ContosoEdgeTest\"},\"directPeeringType\":\"IxRs\"},\"peeringLocation\":\"Ashburn\",\"provisioningState\":\"Succeeded\"},\"location\":\"East US\",\"tags\":{},\"name\":\"MapsIxRs\",\"id\":\"/subscriptions/e815e305-b43a-49c4-8b1a-4e61f1aec1e8/resourceGroups/MAPSDemo/providers/Microsoft.Peering/peerings/MapsIxRs\",\"type\":\"Microsoft.Peering/peerings\"},{\"sku\":{\"name\":\"Premium_Direct_Free\",\"tier\":\"Premium\",\"family\":\"Direct\",\"size\":\"Free\"},\"kind\":\"Direct\",\"properties\":{\"direct\":{\"connections\":[{\"billableBandwidthInMbps\":0,\"bandwidthInMbps\":10000,\"provisionedBandwidthInMbps\":0,\"sessionAddressProvider\":\"Microsoft\",\"useForPeeringService\":true,\"peeringDBFacilityId\":71,\"connectionState\":\"PendingApproval\",\"connectionIdentifier\":\"a4d998de-7fff-4ee7-be72-13e8004f2d4f\"}],\"useForPeeringService\":true,\"peerAsn\":{\"id\":\"/subscriptions/e815e305-b43a-49c4-8b1a-4e61f1aec1e8/providers/Microsoft.Peering/peerAsns/ContosoEdgeTest\"},\"directPeeringType\":\"Edge\"},\"peeringLocation\":\"Seattle\",\"provisioningState\":\"Succeeded\"},\"location\":\"West US 2\",\"tags\":{},\"name\":\"DemoMapsConfig\",\"id\":\"/subscriptions/e815e305-b43a-49c4-8b1a-4e61f1aec1e8/resourceGroups/DemoRG/providers/Microsoft.Peering/peerings/DemoMapsConfig\",\"type\":\"Microsoft.Peering/peerings\"},{\"sku\":{\"name\":\"Basic_Exchange_Free\",\"tier\":\"Basic\",\"family\":\"Exchange\",\"size\":\"Free\"},\"kind\":\"Exchange\",\"properties\":{\"exchange\":{\"connections\":[{\"peeringDBFacilityId\":64,\"connectionState\":\"ProvisioningFailed\",\"bgpSession\":{\"sessionPrefixV4\":\"193.239.116.0/22\",\"microsoftSessionIPv4Address\":\"193.239.118.173\",\"peerSessionIPv4Address\":\"193.239.116.1\",\"peerSessionIPv6Address\":\"\",\"sessionStateV4\":\"None\",\"sessionStateV6\":\"None\",\"maxPrefixesAdvertisedV4\":20000,\"maxPrefixesAdvertisedV6\":0,\"md5AuthenticationKey\":\"\"},\"connectionIdentifier\":\"9e5e4dc9-979a-45ce-b251-f7ef7fd64caf\",\"errorMessage\":\"This request was not approved by the Microsoft\u0027s peering team.\"},{\"peeringDBFacilityId\":64,\"connectionState\":\"ProvisioningFailed\",\"bgpSession\":{\"sessionPrefixV6\":\"2001:7f8:13::/64\",\"microsoftSessionIPv6Address\":\"2001:7f8:13::a500:8075:5\",\"peerSessionIPv4Address\":\"\",\"peerSessionIPv6Address\":\"2001:7f8:13::a504:1480:1\",\"sessionStateV4\":\"None\",\"sessionStateV6\":\"None\",\"maxPrefixesAdvertisedV4\":0,\"maxPrefixesAdvertisedV6\":2000,\"md5AuthenticationKey\":\"\"},\"connectionIdentifier\":\"1a782c34-dc52-4f7d-97cd-a7ea7e3f87c1\",\"errorMessage\":\"This request was not approved by the Microsoft\u0027s peering team.\"}],\"peerAsn\":{\"id\":\"/subscriptions/e815e305-b43a-49c4-8b1a-4e61f1aec1e8/providers/Microsoft.Peering/peerAsns/ContosoEdgeTest\"}},\"peeringLocation\":\"Amsterdam\",\"provisioningState\":\"Succeeded\"},\"location\":\"West Europe\",\"tags\":{},\"name\":\"testexchange\",\"id\":\"/subscriptions/e815e305-b43a-49c4-8b1a-4e61f1aec1e8/resourceGroups/DemoRG/providers/Microsoft.Peering/peerings/testexchange\",\"type\":\"Microsoft.Peering/peerings\"},{\"sku\":{\"name\":\"Basic_Direct_Free\",\"tier\":\"Basic\",\"family\":\"Direct\",\"size\":\"Free\"},\"kind\":\"Direct\",\"properties\":{\"direct\":{\"connections\":[{\"billableBandwidthInMbps\":0,\"bandwidthInMbps\":10000,\"provisionedBandwidthInMbps\":0,\"sessionAddressProvider\":\"Microsoft\",\"useForPeeringService\":false,\"peeringDBFacilityId\":1949,\"connectionState\":\"PendingApproval\",\"connectionIdentifier\":\"3025377f-1886-4af5-88c7-4b4d74941d40\"}],\"useForPeeringService\":false,\"peerAsn\":{\"id\":\"/subscriptions/e815e305-b43a-49c4-8b1a-4e61f1aec1e8/providers/Microsoft.Peering/peerAsns/AS7018\"},\"directPeeringType\":\"Edge\"},\"peeringLocation\":\"Athens\",\"provisioningState\":\"Succeeded\"},\"location\":\"France Central\",\"tags\":{},\"name\":\"test1\",\"id\":\"/subscriptions/e815e305-b43a-49c4-8b1a-4e61f1aec1e8/resourceGroups/AnomalyDetection/providers/Microsoft.Peering/peerings/test1\",\"type\":\"Microsoft.Peering/peerings\"}]}",
+      "isContentBase64": false
+    }
+  },
+  "Get-AzPeering+[NoContext]+Get+$GET+https://management.azure.com/subscriptions/e815e305-b43a-49c4-8b1a-4e61f1aec1e8/resourceGroups/DemoRG/providers/Microsoft.Peering/peerings/DemoPeering?api-version=2022-10-01+1": {
+    "Request": {
+      "Method": "GET",
+      "RequestUri": "https://management.azure.com/subscriptions/e815e305-b43a-49c4-8b1a-4e61f1aec1e8/resourceGroups/DemoRG/providers/Microsoft.Peering/peerings/DemoPeering?api-version=2022-10-01",
+      "Content": null,
+      "isContentBase64": false,
+      "Headers": {
+        "x-ms-unique-id": [ "2" ],
+        "x-ms-client-request-id": [ "40945a58-570c-4d6f-af0c-5766fbd470b0" ],
+        "CommandName": [ "Get-AzPeering" ],
+        "FullCommandName": [ "Get-AzPeering_Get" ],
+        "ParameterSetName": [ "__AllParameterSets" ],
+        "User-Agent": [ "AzurePowershell/v0.0.0", "PSVersion/v7.1.3", "Az.Peering/0.1.0" ],
+        "Authorization": [ "[Filtered]" ]
+      },
+      "ContentHeaders": {
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "x-ms-request-id": [ "08e8a20e-6bcf-4bc7-b23f-d647e26ac1a3" ],
+        "x-ms-ratelimit-remaining-subscription-resource-requests": [ "598" ],
+        "x-ms-correlation-request-id": [ "f5a53061-7b3d-4e7a-b997-1454da8379e0" ],
+        "x-ms-routing-request-id": [ "WESTUS:20230113T012513Z:f5a53061-7b3d-4e7a-b997-1454da8379e0" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "Date": [ "Fri, 13 Jan 2023 01:25:13 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "2412" ],
+        "Content-Type": [ "application/json; charset=utf-8" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\r\n  \"sku\": {\r\n    \"name\": \"Premium_Direct_Free\",\r\n    \"tier\": \"Premium\",\r\n    \"family\": \"Direct\",\r\n    \"size\": \"Free\"\r\n  },\r\n  \"kind\": \"Direct\",\r\n  \"properties\": {\r\n    \"direct\": {\r\n      \"connections\": [\r\n        {\r\n          \"billableBandwidthInMbps\": 0,\r\n          \"bandwidthInMbps\": 200000,\r\n          \"provisionedBandwidthInMbps\": 200000,\r\n          \"sessionAddressProvider\": \"Peer\",\r\n          \"useForPeeringService\": true,\r\n          \"peeringDBFacilityId\": 69,\r\n          \"connectionState\": \"Active\",\r\n          \"bgpSession\": {\r\n            \"sessionPrefixV4\": \"12.90.152.68/30\",\r\n            \"sessionPrefixV6\": \"\",\r\n            \"microsoftSessionIPv4Address\": \"12.90.152.70\",\r\n            \"peerSessionIPv4Address\": \"12.90.152.69\",\r\n            \"sessionStateV4\": \"Established\",\r\n            \"sessionStateV6\": \"None\",\r\n            \"maxPrefixesAdvertisedV4\": 200000,\r\n            \"maxPrefixesAdvertisedV6\": 0\r\n          },\r\n          \"connectionIdentifier\": \"815870d0-938d-4355-b6b9-dd007999b8f5\"\r\n        },\r\n        {\r\n          \"billableBandwidthInMbps\": 0,\r\n          \"bandwidthInMbps\": 200000,\r\n          \"provisionedBandwidthInMbps\": 200000,\r\n          \"sessionAddressProvider\": \"Peer\",\r\n          \"useForPeeringService\": true,\r\n          \"peeringDBFacilityId\": 69,\r\n          \"connectionState\": \"Active\",\r\n          \"bgpSession\": {\r\n            \"sessionPrefixV4\": \"12.125.145.32/30\",\r\n            \"sessionPrefixV6\": \"\",\r\n            \"microsoftSessionIPv4Address\": \"12.125.145.34\",\r\n            \"peerSessionIPv4Address\": \"12.125.145.33\",\r\n            \"sessionStateV4\": \"Established\",\r\n            \"sessionStateV6\": \"None\",\r\n            \"maxPrefixesAdvertisedV4\": 200000,\r\n            \"maxPrefixesAdvertisedV6\": 0\r\n          },\r\n          \"connectionIdentifier\": \"0720b596-dca1-4d58-8628-58191be00cc3\"\r\n        }\r\n      ],\r\n      \"useForPeeringService\": true,\r\n      \"peerAsn\": {\r\n        \"id\": \"/subscriptions/e815e305-b43a-49c4-8b1a-4e61f1aec1e8/providers/Microsoft.Peering/peerAsns/AS7018\"\r\n      },\r\n      \"directPeeringType\": \"Edge\"\r\n    },\r\n    \"peeringLocation\": \"Dallas\",\r\n    \"provisioningState\": \"Succeeded\"\r\n  },\r\n  \"location\": \"South Central US\",\r\n  \"tags\": {\r\n    \"hello\": \"world\"\r\n  },\r\n  \"name\": \"DemoPeering\",\r\n  \"id\": \"/subscriptions/e815e305-b43a-49c4-8b1a-4e61f1aec1e8/resourceGroups/DemoRG/providers/Microsoft.Peering/peerings/DemoPeering\",\r\n  \"type\": \"Microsoft.Peering/peerings\"\r\n}",
+      "isContentBase64": false
+    }
+  },
+  "Get-AzPeering+[NoContext]+List+$GET+https://management.azure.com/subscriptions/e815e305-b43a-49c4-8b1a-4e61f1aec1e8/resourceGroups/DemoRG/providers/Microsoft.Peering/peerings?api-version=2022-10-01+1": {
+    "Request": {
+      "Method": "GET",
+      "RequestUri": "https://management.azure.com/subscriptions/e815e305-b43a-49c4-8b1a-4e61f1aec1e8/resourceGroups/DemoRG/providers/Microsoft.Peering/peerings?api-version=2022-10-01",
+      "Content": null,
+      "isContentBase64": false,
+      "Headers": {
+        "x-ms-unique-id": [ "3" ],
+        "x-ms-client-request-id": [ "7ae25d28-1fc0-49b6-af2f-77fbdf64a7cc" ],
+        "CommandName": [ "Get-AzPeering" ],
+        "FullCommandName": [ "Get-AzPeering_List" ],
+        "ParameterSetName": [ "__AllParameterSets" ],
+        "User-Agent": [ "AzurePowershell/v0.0.0", "PSVersion/v7.1.3", "Az.Peering/0.1.0" ],
+        "Authorization": [ "[Filtered]" ]
+      },
+      "ContentHeaders": {
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "x-ms-original-request-ids": [ "9cade4f2-8e45-48c5-a594-dfd9ecc84213", "096259cd-7650-4320-884e-39053ba8f2a5", "d1e3f9d8-4a4b-4ced-80a8-fd98cc4ffa11" ],
+        "x-ms-ratelimit-remaining-subscription-resource-requests": [ "597" ],
+        "x-ms-request-id": [ "e7a81052-00f7-459f-bab5-44007d4c6320" ],
+        "x-ms-correlation-request-id": [ "e7a81052-00f7-459f-bab5-44007d4c6320" ],
+        "x-ms-routing-request-id": [ "WESTUS:20230113T012514Z:e7a81052-00f7-459f-bab5-44007d4c6320" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "Date": [ "Fri, 13 Jan 2023 01:25:14 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Type": [ "application/json; charset=utf-8" ],
+        "Expires": [ "-1" ],
+        "Content-Length": [ "5969" ]
+      },
+      "Content": "{\"value\":[{\"sku\":{\"name\":\"Premium_Direct_Free\",\"tier\":\"Premium\",\"family\":\"Direct\",\"size\":\"Free\"},\"kind\":\"Direct\",\"properties\":{\"direct\":{\"connections\":[{\"billableBandwidthInMbps\":0,\"bandwidthInMbps\":10000,\"provisionedBandwidthInMbps\":0,\"sessionAddressProvider\":\"Microsoft\",\"useForPeeringService\":true,\"peeringDBFacilityId\":69,\"connectionState\":\"PendingApproval\",\"connectionIdentifier\":\"362f1f7a-ff7a-4dc3-84da-0e20846e5f99\"}],\"useForPeeringService\":true,\"peerAsn\":{\"id\":\"/subscriptions/e815e305-b43a-49c4-8b1a-4e61f1aec1e8/providers/Microsoft.Peering/peerAsns/ContosoEdgeTest\"},\"directPeeringType\":\"Edge\"},\"peeringLocation\":\"Dallas\",\"provisioningState\":\"Succeeded\"},\"location\":\"South Central US\",\"tags\":{},\"name\":\"DemoComp1\",\"id\":\"/subscriptions/e815e305-b43a-49c4-8b1a-4e61f1aec1e8/resourceGroups/DemoRG/providers/Microsoft.Peering/peerings/DemoComp1\",\"type\":\"Microsoft.Peering/peerings\"},{\"sku\":{\"name\":\"Premium_Direct_Free\",\"tier\":\"Premium\",\"family\":\"Direct\",\"size\":\"Free\"},\"kind\":\"Direct\",\"properties\":{\"direct\":{\"connections\":[{\"billableBandwidthInMbps\":0,\"bandwidthInMbps\":200000,\"provisionedBandwidthInMbps\":200000,\"sessionAddressProvider\":\"Peer\",\"useForPeeringService\":true,\"peeringDBFacilityId\":69,\"connectionState\":\"Active\",\"bgpSession\":{\"sessionPrefixV4\":\"12.90.152.68/30\",\"sessionPrefixV6\":\"\",\"microsoftSessionIPv4Address\":\"12.90.152.70\",\"peerSessionIPv4Address\":\"12.90.152.69\",\"sessionStateV4\":\"Established\",\"sessionStateV6\":\"None\",\"maxPrefixesAdvertisedV4\":200000,\"maxPrefixesAdvertisedV6\":0},\"connectionIdentifier\":\"815870d0-938d-4355-b6b9-dd007999b8f5\"},{\"billableBandwidthInMbps\":0,\"bandwidthInMbps\":200000,\"provisionedBandwidthInMbps\":200000,\"sessionAddressProvider\":\"Peer\",\"useForPeeringService\":true,\"peeringDBFacilityId\":69,\"connectionState\":\"Active\",\"bgpSession\":{\"sessionPrefixV4\":\"12.125.145.32/30\",\"sessionPrefixV6\":\"\",\"microsoftSessionIPv4Address\":\"12.125.145.34\",\"peerSessionIPv4Address\":\"12.125.145.33\",\"sessionStateV4\":\"Established\",\"sessionStateV6\":\"None\",\"maxPrefixesAdvertisedV4\":200000,\"maxPrefixesAdvertisedV6\":0},\"connectionIdentifier\":\"0720b596-dca1-4d58-8628-58191be00cc3\"}],\"useForPeeringService\":true,\"peerAsn\":{\"id\":\"/subscriptions/e815e305-b43a-49c4-8b1a-4e61f1aec1e8/providers/Microsoft.Peering/peerAsns/AS7018\"},\"directPeeringType\":\"Edge\"},\"peeringLocation\":\"Dallas\",\"provisioningState\":\"Succeeded\"},\"location\":\"South Central US\",\"tags\":{\"hello\":\"world\"},\"name\":\"DemoPeering\",\"id\":\"/subscriptions/e815e305-b43a-49c4-8b1a-4e61f1aec1e8/resourceGroups/DemoRG/providers/Microsoft.Peering/peerings/DemoPeering\",\"type\":\"Microsoft.Peering/peerings\"},{\"sku\":{\"name\":\"Premium_Direct_Free\",\"tier\":\"Premium\",\"family\":\"Direct\",\"size\":\"Free\"},\"kind\":\"Direct\",\"properties\":{\"direct\":{\"connections\":[{\"billableBandwidthInMbps\":0,\"bandwidthInMbps\":100000,\"provisionedBandwidthInMbps\":0,\"sessionAddressProvider\":\"Microsoft\",\"useForPeeringService\":true,\"peeringDBFacilityId\":11,\"connectionState\":\"PendingApproval\",\"connectionIdentifier\":\"1b14538c-04ea-4cee-a094-54823e556806\"}],\"useForPeeringService\":true,\"peerAsn\":{\"id\":\"/subscriptions/e815e305-b43a-49c4-8b1a-4e61f1aec1e8/providers/Microsoft.Peering/peerAsns/ContosoEdgeTest\"},\"directPeeringType\":\"EdgeZoneForOperators\"},\"peeringLocation\":\"Atlanta\",\"provisioningState\":\"Succeeded\"},\"location\":\"East US 2\",\"tags\":{},\"name\":\"TestEdgeZone\",\"id\":\"/subscriptions/e815e305-b43a-49c4-8b1a-4e61f1aec1e8/resourceGroups/DemoRG/providers/Microsoft.Peering/peerings/TestEdgeZone\",\"type\":\"Microsoft.Peering/peerings\"},{\"sku\":{\"name\":\"Premium_Direct_Free\",\"tier\":\"Premium\",\"family\":\"Direct\",\"size\":\"Free\"},\"kind\":\"Direct\",\"properties\":{\"direct\":{\"connections\":[{\"billableBandwidthInMbps\":0,\"bandwidthInMbps\":10000,\"provisionedBandwidthInMbps\":0,\"sessionAddressProvider\":\"Microsoft\",\"useForPeeringService\":true,\"peeringDBFacilityId\":71,\"connectionState\":\"PendingApproval\",\"connectionIdentifier\":\"a4d998de-7fff-4ee7-be72-13e8004f2d4f\"}],\"useForPeeringService\":true,\"peerAsn\":{\"id\":\"/subscriptions/e815e305-b43a-49c4-8b1a-4e61f1aec1e8/providers/Microsoft.Peering/peerAsns/ContosoEdgeTest\"},\"directPeeringType\":\"Edge\"},\"peeringLocation\":\"Seattle\",\"provisioningState\":\"Succeeded\"},\"location\":\"West US 2\",\"tags\":{},\"name\":\"DemoMapsConfig\",\"id\":\"/subscriptions/e815e305-b43a-49c4-8b1a-4e61f1aec1e8/resourceGroups/DemoRG/providers/Microsoft.Peering/peerings/DemoMapsConfig\",\"type\":\"Microsoft.Peering/peerings\"},{\"sku\":{\"name\":\"Basic_Exchange_Free\",\"tier\":\"Basic\",\"family\":\"Exchange\",\"size\":\"Free\"},\"kind\":\"Exchange\",\"properties\":{\"exchange\":{\"connections\":[{\"peeringDBFacilityId\":64,\"connectionState\":\"ProvisioningFailed\",\"bgpSession\":{\"sessionPrefixV4\":\"193.239.116.0/22\",\"microsoftSessionIPv4Address\":\"193.239.118.173\",\"peerSessionIPv4Address\":\"193.239.116.1\",\"peerSessionIPv6Address\":\"\",\"sessionStateV4\":\"None\",\"sessionStateV6\":\"None\",\"maxPrefixesAdvertisedV4\":20000,\"maxPrefixesAdvertisedV6\":0,\"md5AuthenticationKey\":\"\"},\"connectionIdentifier\":\"9e5e4dc9-979a-45ce-b251-f7ef7fd64caf\",\"errorMessage\":\"This request was not approved by the Microsoft\u0027s peering team.\"},{\"peeringDBFacilityId\":64,\"connectionState\":\"ProvisioningFailed\",\"bgpSession\":{\"sessionPrefixV6\":\"2001:7f8:13::/64\",\"microsoftSessionIPv6Address\":\"2001:7f8:13::a500:8075:5\",\"peerSessionIPv4Address\":\"\",\"peerSessionIPv6Address\":\"2001:7f8:13::a504:1480:1\",\"sessionStateV4\":\"None\",\"sessionStateV6\":\"None\",\"maxPrefixesAdvertisedV4\":0,\"maxPrefixesAdvertisedV6\":2000,\"md5AuthenticationKey\":\"\"},\"connectionIdentifier\":\"1a782c34-dc52-4f7d-97cd-a7ea7e3f87c1\",\"errorMessage\":\"This request was not approved by the Microsoft\u0027s peering team.\"}],\"peerAsn\":{\"id\":\"/subscriptions/e815e305-b43a-49c4-8b1a-4e61f1aec1e8/providers/Microsoft.Peering/peerAsns/ContosoEdgeTest\"}},\"peeringLocation\":\"Amsterdam\",\"provisioningState\":\"Succeeded\"},\"location\":\"West Europe\",\"tags\":{},\"name\":\"testexchange\",\"id\":\"/subscriptions/e815e305-b43a-49c4-8b1a-4e61f1aec1e8/resourceGroups/DemoRG/providers/Microsoft.Peering/peerings/testexchange\",\"type\":\"Microsoft.Peering/peerings\"}]}",
+      "isContentBase64": false
+    }
+  }
+}

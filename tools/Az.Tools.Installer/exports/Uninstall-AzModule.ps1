@@ -36,7 +36,7 @@ function Uninstall-AzModule {
         [string[]]
         ${Name},
 
-        [Parameter(ParameterSetName = 'Default',HelpMessage = 'Az modules to exclude from uninstallation.', ValueFromPipelineByPropertyName = $true)]
+        [Parameter(ParameterSetName = 'Default', HelpMessage = 'Az modules to exclude from uninstallation.', ValueFromPipelineByPropertyName = $true)]
         [ValidateNotNullOrEmpty()]
         [string[]]
         ${ExcludeModule},
@@ -62,87 +62,108 @@ function Uninstall-AzModule {
         $Invoker = $MyInvocation.MyCommand
         $ppsedition = $PSVersionTable.PSEdition
         Write-Debug "Powershell $ppsedition Version $($PSVersionTable.PSVersion)"
+        $IsSuccess = $false
+        $errorRecords = @()
 
-        if ($RemoveAzureRm -and ($Force -or $PSCmdlet.ShouldProcess('Remove AzureRm modules', 'AzureRm modules', 'Remove'))) {
-            Write-Progress -Id $script:FixProgressBarId "Uninstall Azure and AzureRM."
-            Remove-AzureRM
-        }
-
-        if ($Force -or $PSCmdlet.ShouldProcess('Remove Az if installed', 'Az', 'Remove')) {
-            Uninstall-Module -Name 'Az' -AllVersion -ErrorAction SilentlyContinue
-        }
-
-        Write-Progress -Id $script:FixProgressBarId "Check currently installed Az modules."
-
-        $allInstalled = @()
-        $allInstalled += Get-AllAzModule -PrereleaseOnly:$PrereleaseOnly
-
-        $moduleToUninstall = $allInstalled | Foreach-Object {[PSCustomObject]@{Name = $_.Name; Version = $_.Version}}
-        if ($Name) {
-            $Name = Normalize-ModuleName $Name
-            $moduleToUninstall = $moduleToUninstall | Where-Object {$Name -Contains $_.Name}
-            $modulesNotInstalled = $Name | Where-Object {!$allInstalled -or $allInstalled.Name -NotContains $_}
-            if ($modulesNotInstalled) {
-                Write-Warning "[$Invoker] $modulesNotInstalled are not installed."
+        try {
+            if ($RemoveAzureRm -and ($Force -or $PSCmdlet.ShouldProcess('Remove AzureRm modules', 'AzureRm modules', 'Remove'))) {
+                Write-Progress -Id $script:FixProgressBarId "Uninstall Azure and AzureRM."
+                Remove-AzureRM
             }
-        }
-        else {
-            if ($ExcludeModule) {
-                $ExcludeModule = Normalize-ModuleName $ExcludeModule
-                $moduleToUninstall = $moduleToUninstall | Where-Object {$ExcludeModule -NotContains $_.Name}
-                $modulesNotInstalled = $ExcludeModule | Where-Object {!$allInstalled -or $allInstalled.Name -NotContains $_}
+
+            if ($Force -or $PSCmdlet.ShouldProcess('Remove Az if installed', 'Az', 'Remove')) {
+                Uninstall-Module -Name 'Az' -AllVersion -ErrorAction 'SilentlyContinue'
+            }
+
+            Write-Progress -Id $script:FixProgressBarId "Check currently installed Az modules."
+
+            $allInstalled = @()
+            $allInstalled += Get-AllAzModule -PrereleaseOnly:$PrereleaseOnly
+
+            $moduleToUninstall = $allInstalled | Foreach-Object {[PSCustomObject]@{Name = $_.Name; Version = $_.Version}}
+            if ($Name) {
+                $Name = Normalize-ModuleName $Name
+                $moduleToUninstall = $moduleToUninstall | Where-Object {$Name -Contains $_.Name}
+                $modulesNotInstalled = $Name | Where-Object {!$allInstalled -or $allInstalled.Name -NotContains $_}
                 if ($modulesNotInstalled) {
-                    Throw "[$Invoker] $modulesNotInstalled are not installed."
+                    Write-Warning "[$Invoker] $modulesNotInstalled are not installed."
                 }
             }
-        }
-
-        Write-Progress -Id $script:FixProgressBarId "Uninstall specified Az modules."
-
-        if ($moduleToUninstall) {
-            $moduleNotToUninstall = $allInstalled.Name | Where-Object{$moduleToUninstall.Name -NotContains $_ }
-            if ($null -ne $moduleNotToUninstall -and $null -ne $Name -and $Name -Contains 'Az.Accounts') {
-                $moduleToUninstall = $moduleToUninstall | Where-Object{ $_.Name -ne 'Az.Accounts'}
-                Write-Warning "[$Invoker] 'Az.Accounts cannot be uninstalled now for other modules are still dependent of it."
-            }
-
-            $groupSet = @{}
-            $moduleToUninstall | Group-Object -Property Name | Foreach-Object {$groupSet[$_.Name] = ($_.Group.Version | Sort-Object -Descending) }
-
-            $started = Get-Date
-            $moduleName  = $null
-            $index = 1
-            foreach ($moduleName in $groupSet.Keys) {
-                $versions = $groupSet[$moduleName]
-                if ($Force -or $PSCmdlet.ShouldProcess("Uninstalling module $moduleName version $versions", "$moduleName version $versions", "Uninstall")) {
-                    Write-Progress -ParentId $script:FixProgressBarId -Activity "Uninstall Module" -Status "$moduleName version $versions" -PercentComplete ($index / $groupSet.Count * 100)
-                    if ($PrereleaseOnly) {
-                        $versionStrings = $versions | ForEach-Object {
-                            if ($_ -ge [Version] "1.0") {
-                                "$($_)-preview"
-                            }
-                            else {
-                                "$_"
-                            }
-                        }
-                        foreach($versionString in $versionStrings) {
-                            PowerShellGet\Uninstall-Module -Name $moduleName -RequiredVersion $versionString -AllowPrerelease -ErrorAction 'Continue'
-                        }
+            else {
+                if ($ExcludeModule) {
+                    $ExcludeModule = Normalize-ModuleName $ExcludeModule
+                    $moduleToUninstall = $moduleToUninstall | Where-Object {$ExcludeModule -NotContains $_.Name}
+                    $modulesNotInstalled = $ExcludeModule | Where-Object {!$allInstalled -or $allInstalled.Name -NotContains $_}
+                    if ($modulesNotInstalled) {
+                        Throw "[$Invoker] $modulesNotInstalled are not installed."
                     }
-                    else {
-                        PowerShellGet\Uninstall-Module -Name $moduleName -AllVersion -AllowPrerelease -ErrorAction 'Continue'
-                    }
-                    Write-Debug "[$Invoker] Uninstalling $moduleName version $versions is completed."
-                    $index += 1
                 }
             }
-            $duration = (Get-Date) - $started
-            Write-Debug "[$Invoker] All uninstallation tasks are finished; Time Elapsed Total: $($duration.TotalSeconds)s."
-        }
 
-        Send-PageViewTelemetry -SourcePSCmdlet $PSCmdlet `
-            -IsSuccess $true `
-            -StartDateTime $cmdStarted `
-            -Duration ((Get-Date) - $cmdStarted)
+            Write-Progress -Id $script:FixProgressBarId "Uninstall specified Az modules."
+
+            if ($moduleToUninstall) {
+                $moduleNotToUninstall = $allInstalled.Name | Where-Object{$moduleToUninstall.Name -NotContains $_ }
+                if ($null -ne $moduleNotToUninstall -and $null -ne $Name -and $Name -Contains 'Az.Accounts') {
+                    $moduleToUninstall = $moduleToUninstall | Where-Object{ $_.Name -ne 'Az.Accounts'}
+                    Write-Warning "[$Invoker] 'Az.Accounts cannot be uninstalled now for other modules are still dependent of it."
+                }
+
+                $groupSet = @{}
+                $moduleToUninstall | Group-Object -Property Name | Foreach-Object {$groupSet[$_.Name] = ($_.Group.Version | Sort-Object -Descending) }
+
+                $started = Get-Date
+                $moduleName  = $null
+                $index = 1
+                foreach ($moduleName in $groupSet.Keys) {
+                    $versions = $groupSet[$moduleName]
+                    if ($Force -or $PSCmdlet.ShouldProcess("Uninstalling module $moduleName version $versions", "$moduleName version $versions", "Uninstall")) {
+                        Write-Progress -ParentId $script:FixProgressBarId -Activity "Uninstall Module" -Status "$moduleName version $versions" -PercentComplete ($index / $groupSet.Count * 100)
+                        if ($PrereleaseOnly) {
+                            $versionStrings = $versions | ForEach-Object {
+                                if ($_ -ge [Version] "1.0") {
+                                    "$($_)-preview"
+                                }
+                                else {
+                                    "$_"
+                                }
+                            }
+                            foreach ($versionString in $versionStrings) {
+                                PowerShellGet\Uninstall-Module -Name $moduleName -RequiredVersion $versionString -AllowPrerelease -ErrorAction 'Continue'
+                            }
+                        }
+                        else {
+                            PowerShellGet\Uninstall-Module -Name $moduleName -AllVersion -AllowPrerelease -ErrorAction 'Continue'
+                        }
+                        Write-Debug "[$Invoker] Uninstalling $moduleName version $versions is completed."
+                        $index += 1
+                    }
+                }
+                $duration = (Get-Date) - $started
+                Write-Debug "[$Invoker] All uninstallation tasks are finished; Time Elapsed Total: $($duration.TotalSeconds)s."
+            }
+            $IsSuccess = $true
+        }
+        catch
+        {
+            Write-Error $PSItem.ToString() -ErrorVariable +errorRecords
+            throw $PSItem
+        }
+        finally {
+            if ($errorRecords.Count -gt 0)
+            {
+                Send-PageViewTelemetry -SourcePSCmdlet $PSCmdlet `
+                -IsSuccess $false `
+                -StartDateTime $cmdStarted `
+                -Duration ((Get-Date) - $cmdStarted)
+            }
+            else
+            {
+                Send-PageViewTelemetry -SourcePSCmdlet $PSCmdlet `
+                -IsSuccess $IsSuccess `
+                -StartDateTime $cmdStarted `
+                -Duration ((Get-Date) - $cmdStarted)
+            }
+        }
     }
 }

@@ -1,0 +1,150 @@
+{
+  "Update-AzWorkloadsSapLandscapeMonitor+[NoContext]+UpdateExpanded+$PUT+https://management.azure.com/subscriptions/49d64d54-e966-4c46-a868-1999802b762c/resourceGroups/suha-0802-rg1/providers/Microsoft.Workloads/monitors/suha-160323-ams7/sapLandscapeMonitor/default?api-version=2023-04-01+1": {
+    "Request": {
+      "Method": "PUT",
+      "RequestUri": "https://management.azure.com/subscriptions/49d64d54-e966-4c46-a868-1999802b762c/resourceGroups/suha-0802-rg1/providers/Microsoft.Workloads/monitors/suha-160323-ams7/sapLandscapeMonitor/default?api-version=2023-04-01",
+      "Content": "{\r\n  \"properties\": {\r\n    \"grouping\": {\r\n      \"landscape\": [\r\n        {\r\n          \"name\": \"Prod\",\r\n          \"topSid\": [ \"SID1\", \"SID2\" ]\r\n        }\r\n      ],\r\n      \"sapApplication\": [\r\n        {\r\n          \"name\": \"ERP1\",\r\n          \"topSid\": [ \"SID1\", \"SID2\" ]\r\n        }\r\n      ]\r\n    },\r\n    \"topMetricsThresholds\": [\r\n      {\r\n        \"name\": \"Instance Availability\",\r\n        \"green\": 90,\r\n        \"yellow\": 75,\r\n        \"red\": 50\r\n      }\r\n    ]\r\n  }\r\n}",
+      "isContentBase64": false,
+      "Headers": {
+      },
+      "ContentHeaders": {
+        "Content-Type": [ "application/json" ],
+        "Content-Length": [ "463" ]
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "ETag": [ "\"0000ac15-0000-3400-0000-641833fb0000\"" ],
+        "x-ms-ratelimit-remaining-subscription-writes": [ "1199" ],
+        "x-ms-providerhub-traffic": [ "True" ],
+        "x-ms-request-id": [ "bf73766a-b89e-43ab-a47e-6ed048bfe466" ],
+        "x-ms-correlation-request-id": [ "ff971b34-5d10-4aa3-b24c-3113a507a31d" ],
+        "x-ms-routing-request-id": [ "SOUTHINDIA:20230320T102251Z:ff971b34-5d10-4aa3-b24c-3113a507a31d" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "Date": [ "Mon, 20 Mar 2023 10:22:51 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "757" ],
+        "Content-Type": [ "application/json; charset=utf-8" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\"id\":\"/subscriptions/49d64d54-e966-4c46-a868-1999802b762c/resourceGroups/suha-0802-rg1/providers/Microsoft.Workloads/monitors/suha-160323-ams7/sapLandscapeMonitor/default\",\"name\":\"default\",\"type\":\"microsoft.workloads/monitors/saplandscapemonitor\",\"systemData\":{\"createdBy\":\"sshrivastava@microsoft.com\",\"createdByType\":\"User\",\"createdAt\":\"2023-03-20T10:22:49.8861623Z\",\"lastModifiedBy\":\"sshrivastava@microsoft.com\",\"lastModifiedByType\":\"User\",\"lastModifiedAt\":\"2023-03-20T10:22:49.8861623Z\"},\"properties\":{\"grouping\":{\"landscape\":[{\"name\":\"Prod\",\"topSid\":[\"SID1\",\"SID2\"]}],\"sapApplication\":[{\"name\":\"ERP1\",\"topSid\":[\"SID1\",\"SID2\"]}]},\"topMetricsThresholds\":[{\"name\":\"Instance Availability\",\"green\":90,\"yellow\":75,\"red\":50}],\"provisioningState\":\"Succeeded\"}}",
+      "isContentBase64": false
+    }
+  },
+  "Update-AzWorkloadsSapLandscapeMonitor+[NoContext]+UpdateExpanded+$PUT+https://management.azure.com/subscriptions/49d64d54-e966-4c46-a868-1999802b762c/resourceGroups/suha-0802-rg1/providers/Microsoft.Workloads/monitors/suha-160323-ams7/sapLandscapeMonitor/default?api-version=2023-04-01+2": {
+    "Request": {
+      "Method": "PUT",
+      "RequestUri": "https://management.azure.com/subscriptions/49d64d54-e966-4c46-a868-1999802b762c/resourceGroups/suha-0802-rg1/providers/Microsoft.Workloads/monitors/suha-160323-ams7/sapLandscapeMonitor/default?api-version=2023-04-01",
+      "Content": "{\r\n  \"properties\": {\r\n    \"grouping\": {\r\n      \"landscape\": [\r\n        {\r\n          \"name\": \"NonProd\",\r\n          \"topSid\": [ \"SID1\", \"SID2\" ]\r\n        }\r\n      ],\r\n      \"sapApplication\": [\r\n        {\r\n          \"name\": \"ERP1\",\r\n          \"topSid\": [ \"SID1\", \"SID2\" ]\r\n        }\r\n      ]\r\n    },\r\n    \"topMetricsThresholds\": [\r\n      {\r\n        \"name\": \"Instance Availability\",\r\n        \"green\": 90,\r\n        \"yellow\": 75,\r\n        \"red\": 50\r\n      }\r\n    ]\r\n  }\r\n}",
+      "isContentBase64": false,
+      "Headers": {
+      },
+      "ContentHeaders": {
+        "Content-Type": [ "application/json" ],
+        "Content-Length": [ "466" ]
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "ETag": [ "\"0000ad15-0000-3400-0000-641833fc0000\"" ],
+        "x-ms-ratelimit-remaining-subscription-writes": [ "1198" ],
+        "x-ms-providerhub-traffic": [ "True" ],
+        "x-ms-request-id": [ "da8f5585-e5cb-425d-a2e5-c1b7a2b95d62" ],
+        "x-ms-correlation-request-id": [ "1b410e9b-f581-4eaf-8789-f5b5fa1246a1" ],
+        "x-ms-routing-request-id": [ "SOUTHINDIA:20230320T102252Z:1b410e9b-f581-4eaf-8789-f5b5fa1246a1" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "Date": [ "Mon, 20 Mar 2023 10:22:52 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "759" ],
+        "Content-Type": [ "application/json; charset=utf-8" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\"id\":\"/subscriptions/49d64d54-e966-4c46-a868-1999802b762c/resourceGroups/suha-0802-rg1/providers/Microsoft.Workloads/monitors/suha-160323-ams7/sapLandscapeMonitor/default\",\"name\":\"default\",\"type\":\"microsoft.workloads/monitors/saplandscapemonitor\",\"systemData\":{\"createdBy\":\"sshrivastava@microsoft.com\",\"createdByType\":\"User\",\"createdAt\":\"2023-03-20T10:22:49.8861623Z\",\"lastModifiedBy\":\"sshrivastava@microsoft.com\",\"lastModifiedByType\":\"User\",\"lastModifiedAt\":\"2023-03-20T10:22:52.229971Z\"},\"properties\":{\"provisioningState\":\"Succeeded\",\"grouping\":{\"landscape\":[{\"name\":\"NonProd\",\"topSid\":[\"SID1\",\"SID2\"]}],\"sapApplication\":[{\"name\":\"ERP1\",\"topSid\":[\"SID1\",\"SID2\"]}]},\"topMetricsThresholds\":[{\"name\":\"Instance Availability\",\"green\":90,\"yellow\":75,\"red\":50}]}}",
+      "isContentBase64": false
+    }
+  },
+  "Update-AzWorkloadsSapLandscapeMonitor+[NoContext]+UpdateViaIdentityExpanded+$PUT+https://management.azure.com/subscriptions/49d64d54-e966-4c46-a868-1999802b762c/resourceGroups/suha-0802-rg1/providers/Microsoft.Workloads/monitors/suha-160323-ams7/sapLandscapeMonitor/default?api-version=2023-04-01+1": {
+    "Request": {
+      "Method": "PUT",
+      "RequestUri": "https://management.azure.com/subscriptions/49d64d54-e966-4c46-a868-1999802b762c/resourceGroups/suha-0802-rg1/providers/Microsoft.Workloads/monitors/suha-160323-ams7/sapLandscapeMonitor/default?api-version=2023-04-01",
+      "Content": "{\r\n  \"properties\": {\r\n    \"grouping\": {\r\n      \"landscape\": [\r\n        {\r\n          \"name\": \"Prod\",\r\n          \"topSid\": [ \"SID1\", \"SID2\" ]\r\n        }\r\n      ],\r\n      \"sapApplication\": [\r\n        {\r\n          \"name\": \"ERP1\",\r\n          \"topSid\": [ \"SID1\", \"SID2\" ]\r\n        }\r\n      ]\r\n    },\r\n    \"topMetricsThresholds\": [\r\n      {\r\n        \"name\": \"Instance Availability\",\r\n        \"green\": 90,\r\n        \"yellow\": 75,\r\n        \"red\": 50\r\n      }\r\n    ]\r\n  }\r\n}",
+      "isContentBase64": false,
+      "Headers": {
+      },
+      "ContentHeaders": {
+        "Content-Type": [ "application/json" ],
+        "Content-Length": [ "463" ]
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "ETag": [ "\"0000ae15-0000-3400-0000-641833fd0000\"" ],
+        "x-ms-ratelimit-remaining-subscription-writes": [ "1197" ],
+        "x-ms-providerhub-traffic": [ "True" ],
+        "x-ms-request-id": [ "a19d2e38-5c05-426d-81d5-e688a12e6a7d" ],
+        "x-ms-correlation-request-id": [ "32de34b4-b22c-4b9b-b198-1cf560443e7f" ],
+        "x-ms-routing-request-id": [ "SOUTHINDIA:20230320T102254Z:32de34b4-b22c-4b9b-b198-1cf560443e7f" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "Date": [ "Mon, 20 Mar 2023 10:22:53 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "756" ],
+        "Content-Type": [ "application/json; charset=utf-8" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\"id\":\"/subscriptions/49d64d54-e966-4c46-a868-1999802b762c/resourceGroups/suha-0802-rg1/providers/Microsoft.Workloads/monitors/suha-160323-ams7/sapLandscapeMonitor/default\",\"name\":\"default\",\"type\":\"microsoft.workloads/monitors/saplandscapemonitor\",\"systemData\":{\"createdBy\":\"sshrivastava@microsoft.com\",\"createdByType\":\"User\",\"createdAt\":\"2023-03-20T10:22:49.8861623Z\",\"lastModifiedBy\":\"sshrivastava@microsoft.com\",\"lastModifiedByType\":\"User\",\"lastModifiedAt\":\"2023-03-20T10:22:53.386265Z\"},\"properties\":{\"provisioningState\":\"Succeeded\",\"grouping\":{\"landscape\":[{\"name\":\"Prod\",\"topSid\":[\"SID1\",\"SID2\"]}],\"sapApplication\":[{\"name\":\"ERP1\",\"topSid\":[\"SID1\",\"SID2\"]}]},\"topMetricsThresholds\":[{\"name\":\"Instance Availability\",\"green\":90,\"yellow\":75,\"red\":50}]}}",
+      "isContentBase64": false
+    }
+  },
+  "Update-AzWorkloadsSapLandscapeMonitor+[NoContext]+UpdateViaIdentityExpanded+$PUT+https://management.azure.com/subscriptions/49d64d54-e966-4c46-a868-1999802b762c/resourceGroups/suha-0802-rg1/providers/Microsoft.Workloads/monitors/suha-160323-ams7/sapLandscapeMonitor/default?api-version=2023-04-01+2": {
+    "Request": {
+      "Method": "PUT",
+      "RequestUri": "https://management.azure.com/subscriptions/49d64d54-e966-4c46-a868-1999802b762c/resourceGroups/suha-0802-rg1/providers/Microsoft.Workloads/monitors/suha-160323-ams7/sapLandscapeMonitor/default?api-version=2023-04-01",
+      "Content": "{\r\n  \"properties\": {\r\n    \"grouping\": {\r\n      \"landscape\": [\r\n        {\r\n          \"name\": \"NonProd\",\r\n          \"topSid\": [ \"SID1\", \"SID2\" ]\r\n        }\r\n      ],\r\n      \"sapApplication\": [\r\n        {\r\n          \"name\": \"ERP1\",\r\n          \"topSid\": [ \"SID1\", \"SID2\" ]\r\n        }\r\n      ]\r\n    },\r\n    \"topMetricsThresholds\": [\r\n      {\r\n        \"name\": \"Instance Availability\",\r\n        \"green\": 90,\r\n        \"yellow\": 75,\r\n        \"red\": 50\r\n      }\r\n    ]\r\n  }\r\n}",
+      "isContentBase64": false,
+      "Headers": {
+      },
+      "ContentHeaders": {
+        "Content-Type": [ "application/json" ],
+        "Content-Length": [ "466" ]
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "ETag": [ "\"0000af15-0000-3400-0000-641833fe0000\"" ],
+        "x-ms-ratelimit-remaining-subscription-writes": [ "1196" ],
+        "x-ms-providerhub-traffic": [ "True" ],
+        "x-ms-request-id": [ "24a59cdb-4521-4469-9d5f-eb86ad6f71f4" ],
+        "x-ms-correlation-request-id": [ "d063f8f6-dd0d-47e1-9d32-b3cedeb65562" ],
+        "x-ms-routing-request-id": [ "SOUTHINDIA:20230320T102254Z:d063f8f6-dd0d-47e1-9d32-b3cedeb65562" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "Date": [ "Mon, 20 Mar 2023 10:22:54 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "760" ],
+        "Content-Type": [ "application/json; charset=utf-8" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\"id\":\"/subscriptions/49d64d54-e966-4c46-a868-1999802b762c/resourceGroups/suha-0802-rg1/providers/Microsoft.Workloads/monitors/suha-160323-ams7/sapLandscapeMonitor/default\",\"name\":\"default\",\"type\":\"microsoft.workloads/monitors/saplandscapemonitor\",\"systemData\":{\"createdBy\":\"sshrivastava@microsoft.com\",\"createdByType\":\"User\",\"createdAt\":\"2023-03-20T10:22:49.8861623Z\",\"lastModifiedBy\":\"sshrivastava@microsoft.com\",\"lastModifiedByType\":\"User\",\"lastModifiedAt\":\"2023-03-20T10:22:54.4019279Z\"},\"properties\":{\"provisioningState\":\"Succeeded\",\"grouping\":{\"landscape\":[{\"name\":\"NonProd\",\"topSid\":[\"SID1\",\"SID2\"]}],\"sapApplication\":[{\"name\":\"ERP1\",\"topSid\":[\"SID1\",\"SID2\"]}]},\"topMetricsThresholds\":[{\"name\":\"Instance Availability\",\"green\":90,\"yellow\":75,\"red\":50}]}}",
+      "isContentBase64": false
+    }
+  }
+}

@@ -1,0 +1,252 @@
+{
+  "Invoke-AzAksAbortManagedClusterLatestOperation+[NoContext]+Abort+$POST+https://management.azure.com/subscriptions/0b1f6471-1bf0-4dda-aec3-cb9272f09590/resourceGroups/aks-test/providers/Microsoft.ContainerService/managedclusters/aks/abort?api-version=2023-02-01+1": {
+    "Request": {
+      "Method": "POST",
+      "RequestUri": "https://management.azure.com/subscriptions/0b1f6471-1bf0-4dda-aec3-cb9272f09590/resourceGroups/aks-test/providers/Microsoft.ContainerService/managedclusters/aks/abort?api-version=2023-02-01",
+      "Content": null,
+      "isContentBase64": false,
+      "Headers": {
+        "x-ms-unique-id": [ "1" ],
+        "x-ms-client-request-id": [ "64d26905-6cd2-43dc-95b1-5373fabf72c1" ],
+        "CommandName": [ "Invoke-AzAksAbortManagedClusterLatestOperation" ],
+        "FullCommandName": [ "Invoke-AzAksAbortManagedClusterLatestOperation_Abort" ],
+        "ParameterSetName": [ "__AllParameterSets" ],
+        "User-Agent": [ "AzurePowershell/v0.0.0", "PSVersion/v7.2.9", "Az.Aks/0.1.0" ],
+        "Authorization": [ "[Filtered]" ]
+      },
+      "ContentHeaders": {
+      }
+    },
+    "Response": {
+      "StatusCode": 202,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "Location": [ "https://management.azure.com/subscriptions/0b1f6471-1bf0-4dda-aec3-cb9272f09590/providers/Microsoft.ContainerService/locations/eastus/operationresults/d8d7c50b-05e7-4485-803f-50e0af8eab35?api-version=2017-08-31" ],
+        "x-ms-routing-request-id": [ "SOUTHEASTASIA:20230331T101015Z:664faf46-ced4-4be4-94b8-db454926a37d" ],
+        "x-ms-ratelimit-remaining-subscription-writes": [ "1199" ],
+        "azure-asyncoperation": [ "https://management.azure.com/subscriptions/0b1f6471-1bf0-4dda-aec3-cb9272f09590/providers/Microsoft.ContainerService/locations/eastus/operations/d8d7c50b-05e7-4485-803f-50e0af8eab35?api-version=2017-08-31" ],
+        "x-ms-correlation-request-id": [ "664faf46-ced4-4be4-94b8-db454926a37d" ],
+        "x-ms-request-id": [ "d8d7c50b-05e7-4485-803f-50e0af8eab35" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "Server": [ "nginx" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "Date": [ "Fri, 31 Mar 2023 10:10:15 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "6330" ],
+        "Content-Type": [ "application/json" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\n  \"id\": \"/subscriptions/0b1f6471-1bf0-4dda-aec3-cb9272f09590/resourcegroups/aks-test/providers/Microsoft.ContainerService/managedClusters/aks\",\n  \"location\": \"eastus\",\n  \"name\": \"aks\",\n  \"type\": \"Microsoft.ContainerService/ManagedClusters\",\n  \"properties\": {\n   \"provisioningState\": \"Updating\",\n   \"powerState\": {\n    \"code\": \"Running\"\n   },\n   \"kubernetesVersion\": \"1.24.9\",\n   \"currentKubernetesVersion\": \"1.24.9\",\n   \"dnsPrefix\": \"aks0b1f\",\n   \"fqdn\": \"aks0b1f-idb7vuoi.hcp.eastus.azmk8s.io\",\n   \"azurePortalFQDN\": \"aks0b1f-idb7vuoi.portal.hcp.eastus.azmk8s.io\",\n   \"agentPoolProfiles\": [\n    {\n     \"name\": \"cancelpool1\",\n     \"count\": 1,\n     \"vmSize\": \"Standard_D2_v2\",\n     \"osDiskSizeGB\": 128,\n     \"osDiskType\": \"Managed\",\n     \"kubeletDiskType\": \"OS\",\n     \"maxPods\": 30,\n     \"type\": \"VirtualMachineScaleSets\",\n     \"scaleDownMode\": \"Delete\",\n     \"provisioningState\": \"Updating\",\n     \"powerState\": {\n      \"code\": \"Running\"\n     },\n     \"orchestratorVersion\": \"1.24.9\",\n     \"currentOrchestratorVersion\": \"1.24.9\",\n     \"mode\": \"User\",\n     \"osType\": \"Linux\",\n     \"osSKU\": \"Ubuntu\",\n     \"nodeImageVersion\": \"AKSUbuntu-1804containerd-202303.13.0\",\n     \"enableFIPS\": false\n    },\n    {\n     \"name\": \"cancelpool2\",\n     \"count\": 1,\n     \"vmSize\": \"Standard_D2_v2\",\n     \"osDiskSizeGB\": 128,\n     \"osDiskType\": \"Managed\",\n     \"kubeletDiskType\": \"OS\",\n     \"maxPods\": 30,\n     \"type\": \"VirtualMachineScaleSets\",\n     \"scaleDownMode\": \"Delete\",\n     \"provisioningState\": \"Updating\",\n     \"powerState\": {\n      \"code\": \"Running\"\n     },\n     \"orchestratorVersion\": \"1.24.9\",\n     \"currentOrchestratorVersion\": \"1.24.9\",\n     \"mode\": \"User\",\n     \"osType\": \"Linux\",\n     \"osSKU\": \"Ubuntu\",\n     \"nodeImageVersion\": \"AKSUbuntu-1804containerd-202303.13.0\",\n     \"enableFIPS\": false\n    },\n    {\n     \"name\": \"default\",\n     \"count\": 3,\n     \"vmSize\": \"Standard_D2_v2\",\n     \"osDiskSizeGB\": 128,\n     \"osDiskType\": \"Managed\",\n     \"kubeletDiskType\": \"OS\",\n     \"maxPods\": 30,\n     \"type\": \"VirtualMachineScaleSets\",\n     \"provisioningState\": \"Updating\",\n     \"powerState\": {\n      \"code\": \"Running\"\n     },\n     \"orchestratorVersion\": \"1.24.9\",\n     \"currentOrchestratorVersion\": \"1.24.9\",\n     \"mode\": \"System\",\n     \"osType\": \"Linux\",\n     \"osSKU\": \"Ubuntu\",\n     \"nodeImageVersion\": \"AKSUbuntu-1804containerd-202303.13.0\",\n     \"enableFIPS\": false\n    },\n    {\n     \"name\": \"pool2\",\n     \"count\": 1,\n     \"vmSize\": \"Standard_D2_v2\",\n     \"osDiskSizeGB\": 128,\n     \"osDiskType\": \"Managed\",\n     \"kubeletDiskType\": \"OS\",\n     \"maxPods\": 30,\n     \"type\": \"VirtualMachineScaleSets\",\n     \"scaleDownMode\": \"Delete\",\n     \"provisioningState\": \"Updating\",\n     \"powerState\": {\n      \"code\": \"Running\"\n     },\n     \"orchestratorVersion\": \"1.24.9\",\n     \"currentOrchestratorVersion\": \"1.24.9\",\n     \"mode\": \"User\",\n     \"osType\": \"Linux\",\n     \"osSKU\": \"Ubuntu\",\n     \"nodeImageVersion\": \"AKSUbuntu-1804containerd-202303.13.0\",\n     \"enableFIPS\": false\n    },\n    {\n     \"name\": \"pool3\",\n     \"count\": 1,\n     \"vmSize\": \"Standard_D2_v2\",\n     \"osDiskSizeGB\": 128,\n     \"osDiskType\": \"Managed\",\n     \"kubeletDiskType\": \"OS\",\n     \"maxPods\": 30,\n     \"type\": \"VirtualMachineScaleSets\",\n     \"scaleDownMode\": \"Delete\",\n     \"provisioningState\": \"Updating\",\n     \"powerState\": {\n      \"code\": \"Running\"\n     },\n     \"orchestratorVersion\": \"1.24.9\",\n     \"currentOrchestratorVersion\": \"1.24.9\",\n     \"mode\": \"User\",\n     \"osType\": \"Linux\",\n     \"osSKU\": \"Ubuntu\",\n     \"nodeImageVersion\": \"AKSUbuntu-1804containerd-202303.13.0\",\n     \"enableFIPS\": false\n    },\n    {\n     \"name\": \"pool4\",\n     \"count\": 1,\n     \"vmSize\": \"Standard_D2_v2\",\n     \"osDiskSizeGB\": 128,\n     \"osDiskType\": \"Managed\",\n     \"kubeletDiskType\": \"OS\",\n     \"maxPods\": 30,\n     \"type\": \"VirtualMachineScaleSets\",\n     \"scaleDownMode\": \"Delete\",\n     \"provisioningState\": \"Updating\",\n     \"powerState\": {\n      \"code\": \"Running\"\n     },\n     \"orchestratorVersion\": \"1.24.9\",\n     \"currentOrchestratorVersion\": \"1.24.9\",\n     \"mode\": \"User\",\n     \"osType\": \"Linux\",\n     \"osSKU\": \"Ubuntu\",\n     \"nodeImageVersion\": \"AKSUbuntu-1804containerd-202303.13.0\",\n     \"enableFIPS\": false\n    }\n   ],\n   \"linuxProfile\": {\n    \"adminUsername\": \"azureuser\",\n    \"ssh\": {\n     \"publicKeys\": [\n      {\n       \"keyData\": \"ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABgQDKqmxYucPFYdhu0O/x3coL2G3XHy+o5XvGJUteWoquL2Bd1ZyAIKKR+Pgv+jK5N8GRnNKrvK6zWEzuQiIrgrVUIFy7JIv20MSk2NmxWERZpOCdVDNMKQq22Lcsz6iTX31ixEI6cFGOh5RrZq87oPrqIc/O1HqPWfgYO2Jjhfzec/pKaNXklw8k2cquk3ykvgvaln4KFGL6tMe8+osW1bQZDynlt/4uApg3k3VoCJTYypi4vsAqqN1Kgbx3pTTgfNA3EwLy3wnsT6p3gjeptOeWonh3MpBa4djXho14nPMhr32wvudHZWVLODwGEyiGTTY2RH793QZMTbvVLfTV1wi16KezfN+AzMRZzdCJ2HIwGaYq4A2QLZidnwouPp1M5uLaI+Cn+O3J0kFQfi4SkRS6llguMeDsu1MeXhCwJC+4ehlmxw3RNOaGXqvVK5o4ff3kNXKr8AMOEUd3az+2A8QCYoc5uNjPxEwl4ZU+gPF795RBtcLzlz4pmwY3CV4z6ik= fareast\\\\yanxu1@yanxu1\\r\\n\"\n      }\n     ]\n    }\n   },\n   \"windowsProfile\": {\n    \"adminUsername\": \"azureuser\",\n    \"enableCSIProxy\": true\n   },\n   \"servicePrincipalProfile\": {\n    \"clientId\": \"b6fe7f21-8eb3-4d62-acab-b089c80c11e9\"\n   },\n   \"addonProfiles\": {\n    \"keda\": {\n     \"enabled\": true,\n     \"config\": {\n      \"addonv2\": \"true\"\n     }\n    }\n   },\n   \"nodeResourceGroup\": \"MC_aks-test_aks_eastus\",\n   \"enableRBAC\": true,\n   \"networkProfile\": {\n    \"networkPlugin\": \"azure\",\n    \"networkDataplane\": \"azure\",\n    \"loadBalancerSku\": \"Standard\",\n    \"loadBalancerProfile\": {\n     \"managedOutboundIPs\": {\n      \"count\": 1\n     },\n     \"effectiveOutboundIPs\": [\n      {\n       \"id\": \"/subscriptions/0b1f6471-1bf0-4dda-aec3-cb9272f09590/resourceGroups/MC_aks-test_aks_eastus/providers/Microsoft.Network/publicIPAddresses/da08011a-37cd-43fe-8345-9548c2674639\"\n      }\n     ]\n    },\n    \"serviceCidr\": \"10.0.0.0/16\",\n    \"dnsServiceIP\": \"10.0.0.10\",\n    \"dockerBridgeCidr\": \"172.17.0.1/16\",\n    \"outboundType\": \"loadBalancer\",\n    \"serviceCidrs\": [\n     \"10.0.0.0/16\"\n    ],\n    \"ipFamilies\": [\n     \"IPv4\"\n    ]\n   },\n   \"maxAgentPools\": 100,\n   \"securityProfile\": {},\n   \"storageProfile\": {\n    \"diskCSIDriver\": {\n     \"enabled\": true\n    },\n    \"fileCSIDriver\": {\n     \"enabled\": true\n    },\n    \"snapshotController\": {\n     \"enabled\": true\n    }\n   },\n   \"oidcIssuerProfile\": {\n    \"enabled\": false\n   },\n   \"workloadAutoScalerProfile\": {}\n  },\n  \"sku\": {\n   \"name\": \"Base\",\n   \"tier\": \"Free\"\n  }\n }",
+      "isContentBase64": false
+    }
+  },
+  "Invoke-AzAksAbortManagedClusterLatestOperation+[NoContext]+Abort+$GET+https://management.azure.com/subscriptions/0b1f6471-1bf0-4dda-aec3-cb9272f09590/providers/Microsoft.ContainerService/locations/eastus/operations/d8d7c50b-05e7-4485-803f-50e0af8eab35?api-version=2017-08-31+2": {
+    "Request": {
+      "Method": "GET",
+      "RequestUri": "https://management.azure.com/subscriptions/0b1f6471-1bf0-4dda-aec3-cb9272f09590/providers/Microsoft.ContainerService/locations/eastus/operations/d8d7c50b-05e7-4485-803f-50e0af8eab35?api-version=2017-08-31",
+      "Content": null,
+      "isContentBase64": false,
+      "Headers": {
+        "Authorization": [ "[Filtered]" ],
+        "x-ms-unique-id": [ "2" ],
+        "x-ms-client-request-id": [ "64d26905-6cd2-43dc-95b1-5373fabf72c1" ],
+        "CommandName": [ "Invoke-AzAksAbortManagedClusterLatestOperation" ],
+        "FullCommandName": [ "Invoke-AzAksAbortManagedClusterLatestOperation_Abort" ],
+        "ParameterSetName": [ "__AllParameterSets" ],
+        "User-Agent": [ "AzurePowershell/v0.0.0", "PSVersion/v7.2.9", "Az.Aks/0.1.0" ]
+      },
+      "ContentHeaders": {
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "x-ms-ratelimit-remaining-subscription-reads": [ "11999" ],
+        "x-ms-correlation-request-id": [ "4ea30bdb-6a10-4d88-baad-d1bedd5ddb19" ],
+        "x-ms-request-id": [ "fd899f96-a790-4d03-8abb-0af1a6bb72a3" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "Server": [ "nginx" ],
+        "x-ms-routing-request-id": [ "SOUTHEASTASIA:20230331T101046Z:4ea30bdb-6a10-4d88-baad-d1bedd5ddb19" ],
+        "Date": [ "Fri, 31 Mar 2023 10:10:45 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "170" ],
+        "Content-Type": [ "application/json" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\n  \"name\": \"0bc5d7d8-e705-8544-803f-50e0af8eab35\",\n  \"status\": \"Succeeded\",\n  \"startTime\": \"2023-03-31T10:10:15.5627753Z\",\n  \"endTime\": \"2023-03-31T10:10:20.6922786Z\"\n }",
+      "isContentBase64": false
+    }
+  },
+  "Invoke-AzAksAbortManagedClusterLatestOperation+[NoContext]+Abort+$GET+https://management.azure.com/subscriptions/0b1f6471-1bf0-4dda-aec3-cb9272f09590/providers/Microsoft.ContainerService/locations/eastus/operationresults/d8d7c50b-05e7-4485-803f-50e0af8eab35?api-version=2017-08-31+3": {
+    "Request": {
+      "Method": "GET",
+      "RequestUri": "https://management.azure.com/subscriptions/0b1f6471-1bf0-4dda-aec3-cb9272f09590/providers/Microsoft.ContainerService/locations/eastus/operationresults/d8d7c50b-05e7-4485-803f-50e0af8eab35?api-version=2017-08-31",
+      "Content": null,
+      "isContentBase64": false,
+      "Headers": {
+        "Authorization": [ "[Filtered]" ],
+        "x-ms-unique-id": [ "3" ],
+        "x-ms-client-request-id": [ "64d26905-6cd2-43dc-95b1-5373fabf72c1" ],
+        "CommandName": [ "Invoke-AzAksAbortManagedClusterLatestOperation" ],
+        "FullCommandName": [ "Invoke-AzAksAbortManagedClusterLatestOperation_Abort" ],
+        "ParameterSetName": [ "__AllParameterSets" ],
+        "User-Agent": [ "AzurePowershell/v0.0.0", "PSVersion/v7.2.9", "Az.Aks/0.1.0" ]
+      },
+      "ContentHeaders": {
+      }
+    },
+    "Response": {
+      "StatusCode": 204,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "Location": [ "https://management.azure.com/subscriptions/0b1f6471-1bf0-4dda-aec3-cb9272f09590/providers/Microsoft.ContainerService/locations/eastus/operationresults/d8d7c50b-05e7-4485-803f-50e0af8eab35?api-version=2017-08-31" ],
+        "x-ms-ratelimit-remaining-subscription-reads": [ "11998" ],
+        "x-ms-correlation-request-id": [ "16ddc19c-e0e6-4669-86b8-3944cdf82a73" ],
+        "x-ms-request-id": [ "6b5bea16-393e-4b59-9150-42cacd9442a5" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "Server": [ "nginx" ],
+        "x-ms-routing-request-id": [ "SOUTHEASTASIA:20230331T101046Z:16ddc19c-e0e6-4669-86b8-3944cdf82a73" ],
+        "Date": [ "Fri, 31 Mar 2023 10:10:46 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Type": [ "application/json" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": null,
+      "isContentBase64": false
+    }
+  },
+  "Invoke-AzAksAbortManagedClusterLatestOperation+[NoContext]+AbortViaIdentity+$POST+https://management.azure.com/subscriptions/0b1f6471-1bf0-4dda-aec3-cb9272f09590/resourceGroups/aks-test/providers/Microsoft.ContainerService/managedclusters/aks2/abort?api-version=2023-02-01+1": {
+    "Request": {
+      "Method": "POST",
+      "RequestUri": "https://management.azure.com/subscriptions/0b1f6471-1bf0-4dda-aec3-cb9272f09590/resourceGroups/aks-test/providers/Microsoft.ContainerService/managedclusters/aks2/abort?api-version=2023-02-01",
+      "Content": null,
+      "isContentBase64": false,
+      "Headers": {
+        "x-ms-unique-id": [ "4" ],
+        "x-ms-client-request-id": [ "99864c99-de49-4e0b-b3ae-942963294201" ],
+        "CommandName": [ "Invoke-AzAksAbortManagedClusterLatestOperation" ],
+        "FullCommandName": [ "Invoke-AzAksAbortManagedClusterLatestOperation_AbortViaIdentity" ],
+        "ParameterSetName": [ "__AllParameterSets" ],
+        "User-Agent": [ "AzurePowershell/v0.0.0", "PSVersion/v7.2.9", "Az.Aks/0.1.0" ],
+        "Authorization": [ "[Filtered]" ]
+      },
+      "ContentHeaders": {
+      }
+    },
+    "Response": {
+      "StatusCode": 202,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "Location": [ "https://management.azure.com/subscriptions/0b1f6471-1bf0-4dda-aec3-cb9272f09590/providers/Microsoft.ContainerService/locations/eastus/operationresults/12ef6be9-d5df-4e53-adb0-e5664e63ae28?api-version=2017-08-31" ],
+        "x-ms-routing-request-id": [ "SOUTHEASTASIA:20230331T101047Z:63d8bbb0-8426-45ab-8931-656e5d58d40b" ],
+        "x-ms-ratelimit-remaining-subscription-writes": [ "1198" ],
+        "azure-asyncoperation": [ "https://management.azure.com/subscriptions/0b1f6471-1bf0-4dda-aec3-cb9272f09590/providers/Microsoft.ContainerService/locations/eastus/operations/12ef6be9-d5df-4e53-adb0-e5664e63ae28?api-version=2017-08-31" ],
+        "x-ms-correlation-request-id": [ "63d8bbb0-8426-45ab-8931-656e5d58d40b" ],
+        "x-ms-request-id": [ "12ef6be9-d5df-4e53-adb0-e5664e63ae28" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "Server": [ "nginx" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "Date": [ "Fri, 31 Mar 2023 10:10:47 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "3345" ],
+        "Content-Type": [ "application/json" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\n  \"id\": \"/subscriptions/0b1f6471-1bf0-4dda-aec3-cb9272f09590/resourcegroups/aks-test/providers/Microsoft.ContainerService/managedClusters/aks2\",\n  \"location\": \"eastus\",\n  \"name\": \"aks2\",\n  \"type\": \"Microsoft.ContainerService/ManagedClusters\",\n  \"properties\": {\n   \"provisioningState\": \"Updating\",\n   \"powerState\": {\n    \"code\": \"Running\"\n   },\n   \"kubernetesVersion\": \"1.24.9\",\n   \"currentKubernetesVersion\": \"1.24.9\",\n   \"dnsPrefix\": \"aks20b1f\",\n   \"fqdn\": \"aks20b1f-x0kuwv60.hcp.eastus.azmk8s.io\",\n   \"azurePortalFQDN\": \"aks20b1f-x0kuwv60.portal.hcp.eastus.azmk8s.io\",\n   \"agentPoolProfiles\": [\n    {\n     \"name\": \"default\",\n     \"count\": 3,\n     \"vmSize\": \"Standard_D2_v2\",\n     \"osDiskSizeGB\": 128,\n     \"osDiskType\": \"Managed\",\n     \"kubeletDiskType\": \"OS\",\n     \"maxPods\": 30,\n     \"type\": \"VirtualMachineScaleSets\",\n     \"provisioningState\": \"Updating\",\n     \"powerState\": {\n      \"code\": \"Running\"\n     },\n     \"orchestratorVersion\": \"1.24.9\",\n     \"currentOrchestratorVersion\": \"1.24.9\",\n     \"mode\": \"System\",\n     \"osType\": \"Linux\",\n     \"osSKU\": \"Ubuntu\",\n     \"nodeImageVersion\": \"AKSUbuntu-1804containerd-202303.13.0\",\n     \"enableFIPS\": false\n    }\n   ],\n   \"linuxProfile\": {\n    \"adminUsername\": \"azureuser\",\n    \"ssh\": {\n     \"publicKeys\": [\n      {\n       \"keyData\": \"ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABgQDKqmxYucPFYdhu0O/x3coL2G3XHy+o5XvGJUteWoquL2Bd1ZyAIKKR+Pgv+jK5N8GRnNKrvK6zWEzuQiIrgrVUIFy7JIv20MSk2NmxWERZpOCdVDNMKQq22Lcsz6iTX31ixEI6cFGOh5RrZq87oPrqIc/O1HqPWfgYO2Jjhfzec/pKaNXklw8k2cquk3ykvgvaln4KFGL6tMe8+osW1bQZDynlt/4uApg3k3VoCJTYypi4vsAqqN1Kgbx3pTTgfNA3EwLy3wnsT6p3gjeptOeWonh3MpBa4djXho14nPMhr32wvudHZWVLODwGEyiGTTY2RH793QZMTbvVLfTV1wi16KezfN+AzMRZzdCJ2HIwGaYq4A2QLZidnwouPp1M5uLaI+Cn+O3J0kFQfi4SkRS6llguMeDsu1MeXhCwJC+4ehlmxw3RNOaGXqvVK5o4ff3kNXKr8AMOEUd3az+2A8QCYoc5uNjPxEwl4ZU+gPF795RBtcLzlz4pmwY3CV4z6ik= fareast\\\\yanxu1@yanxu1\\r\\n\"\n      }\n     ]\n    }\n   },\n   \"windowsProfile\": {\n    \"adminUsername\": \"azureuser\",\n    \"enableCSIProxy\": true\n   },\n   \"servicePrincipalProfile\": {\n    \"clientId\": \"b6fe7f21-8eb3-4d62-acab-b089c80c11e9\"\n   },\n   \"addonProfiles\": {\n    \"keda\": {\n     \"enabled\": true,\n     \"config\": {\n      \"addonv2\": \"true\"\n     }\n    }\n   },\n   \"nodeResourceGroup\": \"MC_aks-test_aks2_eastus\",\n   \"enableRBAC\": true,\n   \"networkProfile\": {\n    \"networkPlugin\": \"azure\",\n    \"networkDataplane\": \"azure\",\n    \"loadBalancerSku\": \"Standard\",\n    \"loadBalancerProfile\": {\n     \"managedOutboundIPs\": {\n      \"count\": 1\n     },\n     \"effectiveOutboundIPs\": [\n      {\n       \"id\": \"/subscriptions/0b1f6471-1bf0-4dda-aec3-cb9272f09590/resourceGroups/MC_aks-test_aks2_eastus/providers/Microsoft.Network/publicIPAddresses/925dd52a-b4d0-40ad-99b0-b4c22877d0d8\"\n      }\n     ]\n    },\n    \"serviceCidr\": \"10.0.0.0/16\",\n    \"dnsServiceIP\": \"10.0.0.10\",\n    \"dockerBridgeCidr\": \"172.17.0.1/16\",\n    \"outboundType\": \"loadBalancer\",\n    \"serviceCidrs\": [\n     \"10.0.0.0/16\"\n    ],\n    \"ipFamilies\": [\n     \"IPv4\"\n    ]\n   },\n   \"maxAgentPools\": 100,\n   \"securityProfile\": {},\n   \"storageProfile\": {\n    \"diskCSIDriver\": {\n     \"enabled\": true\n    },\n    \"fileCSIDriver\": {\n     \"enabled\": true\n    },\n    \"snapshotController\": {\n     \"enabled\": true\n    }\n   },\n   \"oidcIssuerProfile\": {\n    \"enabled\": false\n   },\n   \"workloadAutoScalerProfile\": {}\n  },\n  \"sku\": {\n   \"name\": \"Base\",\n   \"tier\": \"Free\"\n  }\n }",
+      "isContentBase64": false
+    }
+  },
+  "Invoke-AzAksAbortManagedClusterLatestOperation+[NoContext]+AbortViaIdentity+$GET+https://management.azure.com/subscriptions/0b1f6471-1bf0-4dda-aec3-cb9272f09590/providers/Microsoft.ContainerService/locations/eastus/operations/12ef6be9-d5df-4e53-adb0-e5664e63ae28?api-version=2017-08-31+2": {
+    "Request": {
+      "Method": "GET",
+      "RequestUri": "https://management.azure.com/subscriptions/0b1f6471-1bf0-4dda-aec3-cb9272f09590/providers/Microsoft.ContainerService/locations/eastus/operations/12ef6be9-d5df-4e53-adb0-e5664e63ae28?api-version=2017-08-31",
+      "Content": null,
+      "isContentBase64": false,
+      "Headers": {
+        "Authorization": [ "[Filtered]" ],
+        "x-ms-unique-id": [ "5" ],
+        "x-ms-client-request-id": [ "99864c99-de49-4e0b-b3ae-942963294201" ],
+        "CommandName": [ "Invoke-AzAksAbortManagedClusterLatestOperation" ],
+        "FullCommandName": [ "Invoke-AzAksAbortManagedClusterLatestOperation_AbortViaIdentity" ],
+        "ParameterSetName": [ "__AllParameterSets" ],
+        "User-Agent": [ "AzurePowershell/v0.0.0", "PSVersion/v7.2.9", "Az.Aks/0.1.0" ]
+      },
+      "ContentHeaders": {
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "x-ms-ratelimit-remaining-subscription-reads": [ "11997" ],
+        "x-ms-correlation-request-id": [ "0f0dc4ca-2483-4ec9-900a-929302c6f1f0" ],
+        "x-ms-request-id": [ "2375b488-86e3-4352-9b7b-6e625264f91a" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "Server": [ "nginx" ],
+        "x-ms-routing-request-id": [ "SOUTHEASTASIA:20230331T101117Z:0f0dc4ca-2483-4ec9-900a-929302c6f1f0" ],
+        "Date": [ "Fri, 31 Mar 2023 10:11:17 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "170" ],
+        "Content-Type": [ "application/json" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\n  \"name\": \"e96bef12-dfd5-534e-adb0-e5664e63ae28\",\n  \"status\": \"Succeeded\",\n  \"startTime\": \"2023-03-31T10:10:47.2190425Z\",\n  \"endTime\": \"2023-03-31T10:10:53.7539344Z\"\n }",
+      "isContentBase64": false
+    }
+  },
+  "Invoke-AzAksAbortManagedClusterLatestOperation+[NoContext]+AbortViaIdentity+$GET+https://management.azure.com/subscriptions/0b1f6471-1bf0-4dda-aec3-cb9272f09590/providers/Microsoft.ContainerService/locations/eastus/operationresults/12ef6be9-d5df-4e53-adb0-e5664e63ae28?api-version=2017-08-31+3": {
+    "Request": {
+      "Method": "GET",
+      "RequestUri": "https://management.azure.com/subscriptions/0b1f6471-1bf0-4dda-aec3-cb9272f09590/providers/Microsoft.ContainerService/locations/eastus/operationresults/12ef6be9-d5df-4e53-adb0-e5664e63ae28?api-version=2017-08-31",
+      "Content": null,
+      "isContentBase64": false,
+      "Headers": {
+        "Authorization": [ "[Filtered]" ],
+        "x-ms-unique-id": [ "6" ],
+        "x-ms-client-request-id": [ "99864c99-de49-4e0b-b3ae-942963294201" ],
+        "CommandName": [ "Invoke-AzAksAbortManagedClusterLatestOperation" ],
+        "FullCommandName": [ "Invoke-AzAksAbortManagedClusterLatestOperation_AbortViaIdentity" ],
+        "ParameterSetName": [ "__AllParameterSets" ],
+        "User-Agent": [ "AzurePowershell/v0.0.0", "PSVersion/v7.2.9", "Az.Aks/0.1.0" ]
+      },
+      "ContentHeaders": {
+      }
+    },
+    "Response": {
+      "StatusCode": 204,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "Location": [ "https://management.azure.com/subscriptions/0b1f6471-1bf0-4dda-aec3-cb9272f09590/providers/Microsoft.ContainerService/locations/eastus/operationresults/12ef6be9-d5df-4e53-adb0-e5664e63ae28?api-version=2017-08-31" ],
+        "x-ms-ratelimit-remaining-subscription-reads": [ "11996" ],
+        "x-ms-correlation-request-id": [ "cf02459f-c918-4767-890d-94199dc7d0de" ],
+        "x-ms-request-id": [ "176734e5-df5b-48c8-b5a0-ba6283cd0bc4" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "Server": [ "nginx" ],
+        "x-ms-routing-request-id": [ "SOUTHEASTASIA:20230331T101118Z:cf02459f-c918-4767-890d-94199dc7d0de" ],
+        "Date": [ "Fri, 31 Mar 2023 10:11:17 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Type": [ "application/json" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": null,
+      "isContentBase64": false
+    }
+  }
+}

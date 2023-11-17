@@ -1,7 +1,7 @@
 ---
 Module Name: Az.Resources
 Module Guid: 93636a0e-efd5-4d60-8498-b5fcd41f28d2
-Download Help Link: https://docs.microsoft.com/powershell/module/az.resources
+Download Help Link: https://learn.microsoft.com/powershell/module/az.resources
 Help Version: 1.0.0.0
 Locale: en-US
 ---

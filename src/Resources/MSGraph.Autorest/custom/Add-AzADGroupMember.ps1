@@ -12,10 +12,10 @@ Adds member to group.
 .Description
 Adds member to group.
 .Link
-https://docs.microsoft.com/powershell/module/az.resources/add-azadgroupmember
+https://learn.microsoft.com/powershell/module/az.resources/add-azadgroupmember
 #>
 function Add-AzADGroupMember {
-    [Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Runtime.PreviewMessageAttribute("This cmdlet is using API version beta which is under preview.")]
+    [Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Runtime.PreviewMessageAttribute("This cmdlet is using a preview API version and is subject to breaking change in a future release.")]
     [OutputType([System.Boolean])]
     [CmdletBinding(DefaultParameterSetName='MemberObjectIdWithGroupObjectIdParameterSet', PositionalBinding=$false, SupportsShouldProcess, ConfirmImpact='Medium')]
     param(

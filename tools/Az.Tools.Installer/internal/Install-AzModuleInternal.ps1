@@ -23,7 +23,7 @@ function Install-AzModuleInternal {
         [Parameter(Mandatory)]
         [ValidateNotNullOrEmpty()]
         [string]
-        ${RepositoryUrl},
+        ${Repository},
 
         [Parameter()]
         [Switch]
@@ -55,6 +55,7 @@ function Install-AzModuleInternal {
 
         try {
             Write-Progress -Id $script:FixProgressBarId "Download packages from $Repository."
+            $RepositoryUrl = Get-RepositoryUrl $Repository
 
             if ($Force -or !$WhatIfPreference) {
                 [string]$tempRepo = Join-Path ([Path]::GetTempPath()) ((New-Guid).Guid)
@@ -65,8 +66,8 @@ function Install-AzModuleInternal {
                 $null = Microsoft.PowerShell.Management\New-Item -ItemType Directory -Path $tempRepo -WhatIf:$false
                 Write-Debug "[$Invoker] The repository folder $tempRepo is created."
 
-                PowerShellGet\Unregister-PSRepository -Name $script:AzTempRepoName -ErrorAction 'SilentlyContinue'
-                PowerShellGet\Register-PSRepository -Name $script:AzTempRepoName -SourceLocation $tempRepo -ErrorAction 'Stop'
+                $null = PowerShellGet\Unregister-PSRepository -Name $script:AzTempRepoName -ErrorAction 'SilentlyContinue'
+                $null = PowerShellGet\Register-PSRepository -Name $script:AzTempRepoName -SourceLocation $tempRepo -ErrorAction 'Stop' -ErrorVariable +errorRecords
                 PowerShellGet\Set-PSRepository -Name $script:AzTempRepoName -InstallationPolicy Trusted
                 Write-Debug "[$Invoker] The temporary repository $script:AzTempRepoName is registered."
 
@@ -86,7 +87,7 @@ function Install-AzModuleInternal {
                     }
                     $downloader.WaitForAllTasks()
                     $file = $null
-                    foreach($file in $fileList) {
+                    foreach ($file in $fileList) {
                         if (!(Test-Path -Path $file.Path)) {
                             Throw "[$Invoker] Fail to download $($file.Name) to $tempRepo. Please check your network connection and retry."
                         }
@@ -127,6 +128,7 @@ function Install-AzModuleInternal {
                         PowerShellGet\Uninstall-Module -Name "Az.Accounts" -AllVersion -AllowPrerelease -ErrorAction 'SilentlyContinue'
                     }
                     PowerShellGet\Install-Module @installModuleParams -Name "Az.Accounts" -RequiredVersion "$($modules[0].Version)"
+                    Update-ModuleInstallationRepository -ModuleName "Az.Accounts" -InstalledVersion "$($modules[0].Version)" -Repository $Repository
                 }
                 $moduleInstalled += [PSCustomObject]@{
                     Name = "Az.Accounts"
@@ -179,6 +181,7 @@ function Install-AzModuleInternal {
                             catch {
                                 $state = "failed"
                                 $errorString = $_
+                                Write-Error $errorString -ErrorVariable +errorRecords
                             }
                             finally {
                                 Write-Output @{
@@ -207,7 +210,6 @@ function Install-AzModuleInternal {
                                 $result = Install-SingleModule -ModuleName $tmodule.Name -ModuleVersion $tmodule.Version -InstallModuleParam $tInstallModuleParam -RemovePrevious:($using:confirmUninstallation)
                                 Write-Output $result
                             } -ThrottleLimit $maxJobCount
-                             #-StreamingHost $Host
                         }
                     }
                     else {
@@ -253,6 +255,7 @@ function Install-AzModuleInternal {
                                 Name = $result.ModuleName
                                 Version = ($result.ModuleVersion | Select-Object -First 1)
                             }
+                            Update-ModuleInstallationRepository -ModuleName $result.ModuleName -InstalledVersion $result.ModuleVersion[0] -Repository $Repository
                         }
                         else {
                             Write-Error "[$Invoker] Installing $($result.ModuleName) of version $($result.ModuleVersion) is failed. `n$($result.Error)"
@@ -282,7 +285,7 @@ function Install-AzModuleInternal {
             if ($Force -or !$WhatIfPreference) {
                 if (!$DontClean) {
                     Write-Debug "[$Invoker] The temporary repository $script:AzTempRepoName is unregistered."
-                    PowerShellGet\Unregister-PSRepository -Name $script:AzTempRepoName -ErrorAction 'Continue'
+                    $null = PowerShellGet\Unregister-PSRepository -Name $script:AzTempRepoName -ErrorAction 'Continue'
 
                     Write-Debug "[$Invoker] The Repository folder $tempRepo is removed."
                     if (Test-Path -Path $tempRepo) {

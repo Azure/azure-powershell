@@ -19,7 +19,7 @@ Lists entities from users or get entity from users by key
 .Description
 Lists entities from users or get entity from users by key
 .Link
-https://docs.microsoft.com/powershell/module/az.resources/get-azaduser
+https://learn.microsoft.com/powershell/module/az.resources/get-azaduser
 #>
 function Get-AzADUser {
     [OutputType([Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Models.ApiV10.IMicrosoftGraphUser])]
@@ -95,10 +95,17 @@ function Get-AzADUser {
         [Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Category('Body')]
         [System.Management.Automation.SwitchParameter]
         ${AppendSelected},
+
+        [Parameter(ParameterSetName='List')]
+        [Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Category('Runtime')]
+        [System.String]
+        # Specifies a count of the total number of items in a collection.
+        # By default, this variable will be set in the global scope.
+        ${CountVariable},
     
         [Parameter(ParameterSetName='List')]
         [System.String]
-        # Filter items by property values
+        # Filter items by property values, for more detail about filter query please see: https://learn.microsoft.com/en-us/graph/filter-query-parameter
         ${Filter},
     
         [Parameter(ParameterSetName='List')]

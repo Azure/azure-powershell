@@ -1,0 +1,82 @@
+{
+  "Get-AzPeeringRegisteredAsn+[NoContext]+List+$GET+https://management.azure.com/subscriptions/e815e305-b43a-49c4-8b1a-4e61f1aec1e8/resourceGroups/MAPSDemo/providers/Microsoft.Peering/peerings/MapsIxRs/registeredAsns?api-version=2022-10-01+1": {
+    "Request": {
+      "Method": "GET",
+      "RequestUri": "https://management.azure.com/subscriptions/e815e305-b43a-49c4-8b1a-4e61f1aec1e8/resourceGroups/MAPSDemo/providers/Microsoft.Peering/peerings/MapsIxRs/registeredAsns?api-version=2022-10-01",
+      "Content": null,
+      "isContentBase64": false,
+      "Headers": {
+        "x-ms-unique-id": [ "11" ],
+        "x-ms-client-request-id": [ "7a45c7c5-95ca-4347-8739-981946896caf" ],
+        "CommandName": [ "Get-AzPeeringRegisteredAsn" ],
+        "FullCommandName": [ "Get-AzPeeringRegisteredAsn_List" ],
+        "ParameterSetName": [ "__AllParameterSets" ],
+        "User-Agent": [ "AzurePowershell/v0.0.0", "PSVersion/v7.1.3", "Az.Peering/0.1.0" ],
+        "Authorization": [ "[Filtered]" ]
+      },
+      "ContentHeaders": {
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "x-ms-request-id": [ "1a449030-4a85-47be-a942-17ef2d85d806" ],
+        "x-ms-ratelimit-remaining-subscription-reads": [ "11997" ],
+        "x-ms-correlation-request-id": [ "928eb76f-45fa-4459-9123-bec563b2e05e" ],
+        "x-ms-routing-request-id": [ "WESTUS:20230113T012517Z:928eb76f-45fa-4459-9123-bec563b2e05e" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "Date": [ "Fri, 13 Jan 2023 01:25:16 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "897" ],
+        "Content-Type": [ "application/json; charset=utf-8" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\r\n  \"value\": [\r\n    {\r\n      \"properties\": {\r\n        \"asn\": 6500,\r\n        \"peeringServicePrefixKey\": \"767c9f30-7388-49ef-ba8e-e2d16d1c08e4\",\r\n        \"provisioningState\": \"Succeeded\"\r\n      },\r\n      \"name\": \"fgfg\",\r\n      \"id\": \"/subscriptions/e815e305-b43a-49c4-8b1a-4e61f1aec1e8/resourceGroups/MAPSDemo/providers/Microsoft.Peering/peerings/MapsIxRs/registeredAsns/fgfg\",\r\n      \"type\": \"Microsoft.Peering/peerings/registeredAsns\"\r\n    },\r\n    {\r\n      \"properties\": {\r\n        \"asn\": 65000,\r\n        \"peeringServicePrefixKey\": \"32259ee0-ea01-495e-8279-06c24ef7aae0\",\r\n        \"provisioningState\": \"Succeeded\"\r\n      },\r\n      \"name\": \"homedepottest\",\r\n      \"id\": \"/subscriptions/e815e305-b43a-49c4-8b1a-4e61f1aec1e8/resourceGroups/MAPSDemo/providers/Microsoft.Peering/peerings/MapsIxRs/registeredAsns/homedepottest\",\r\n      \"type\": \"Microsoft.Peering/peerings/registeredAsns\"\r\n    }\r\n  ]\r\n}",
+      "isContentBase64": false
+    }
+  },
+  "Get-AzPeeringRegisteredAsn+[NoContext]+Get+$GET+https://management.azure.com/subscriptions/e815e305-b43a-49c4-8b1a-4e61f1aec1e8/resourceGroups/MAPSDemo/providers/Microsoft.Peering/peerings/MapsIxRs/registeredAsns/fgfg?api-version=2022-10-01+1": {
+    "Request": {
+      "Method": "GET",
+      "RequestUri": "https://management.azure.com/subscriptions/e815e305-b43a-49c4-8b1a-4e61f1aec1e8/resourceGroups/MAPSDemo/providers/Microsoft.Peering/peerings/MapsIxRs/registeredAsns/fgfg?api-version=2022-10-01",
+      "Content": null,
+      "isContentBase64": false,
+      "Headers": {
+        "x-ms-unique-id": [ "12" ],
+        "x-ms-client-request-id": [ "5e5261da-668c-44b1-b692-4186aa9d9a64" ],
+        "CommandName": [ "Get-AzPeeringRegisteredAsn" ],
+        "FullCommandName": [ "Get-AzPeeringRegisteredAsn_Get" ],
+        "ParameterSetName": [ "__AllParameterSets" ],
+        "User-Agent": [ "AzurePowershell/v0.0.0", "PSVersion/v7.1.3", "Az.Peering/0.1.0" ],
+        "Authorization": [ "[Filtered]" ]
+      },
+      "ContentHeaders": {
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "x-ms-request-id": [ "daf75a4c-dd2a-441e-b53a-729f6201efe3" ],
+        "x-ms-ratelimit-remaining-subscription-reads": [ "11996" ],
+        "x-ms-correlation-request-id": [ "a13cf023-95e9-4a08-bcb1-8a43d4b55bd0" ],
+        "x-ms-routing-request-id": [ "WESTUS:20230113T012517Z:a13cf023-95e9-4a08-bcb1-8a43d4b55bd0" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "Date": [ "Fri, 13 Jan 2023 01:25:17 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "385" ],
+        "Content-Type": [ "application/json; charset=utf-8" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\r\n  \"properties\": {\r\n    \"asn\": 6500,\r\n    \"peeringServicePrefixKey\": \"767c9f30-7388-49ef-ba8e-e2d16d1c08e4\",\r\n    \"provisioningState\": \"Succeeded\"\r\n  },\r\n  \"name\": \"fgfg\",\r\n  \"id\": \"/subscriptions/e815e305-b43a-49c4-8b1a-4e61f1aec1e8/resourceGroups/MAPSDemo/providers/Microsoft.Peering/peerings/MapsIxRs/registeredAsns/fgfg\",\r\n  \"type\": \"Microsoft.Peering/peerings/registeredAsns\"\r\n}",
+      "isContentBase64": false
+    }
+  }
+}

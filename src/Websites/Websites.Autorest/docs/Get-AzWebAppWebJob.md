@@ -1,7 +1,7 @@
 ---
 external help file:
 Module Name: Az.Websites
-online version: https://docs.microsoft.com/powershell/module/az.websites/get-azwebappwebjob
+online version: https://learn.microsoft.com/powershell/module/az.websites/get-azwebappwebjob
 schema: 2.0.0
 ---
 
@@ -26,6 +26,7 @@ List webjobs for an app.
 ```powershell
 Get-AzWebAppWebJob -ResourceGroupName webjob-rg-test -AppName appService-test01 
 ```
+
 ```output
 Name                               Kind WebJobType
 ----                               ---- ----------

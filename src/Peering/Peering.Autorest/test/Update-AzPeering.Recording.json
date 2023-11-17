@@ -1,0 +1,37 @@
+{
+  "Update-AzPeering+[NoContext]+UpdateExpanded+$PATCH+https://management.azure.com/subscriptions/e815e305-b43a-49c4-8b1a-4e61f1aec1e8/resourceGroups/DemoRG/providers/Microsoft.Peering/peerings/DemoPeering?api-version=2022-10-01+1": {
+    "Request": {
+      "Method": "PATCH",
+      "RequestUri": "https://management.azure.com/subscriptions/e815e305-b43a-49c4-8b1a-4e61f1aec1e8/resourceGroups/DemoRG/providers/Microsoft.Peering/peerings/DemoPeering?api-version=2022-10-01",
+      "Content": "{\n  \"tags\": {\n    \"hello\": \"world\"\n  }\n}",
+      "isContentBase64": false,
+      "Headers": {
+      },
+      "ContentHeaders": {
+        "Content-Type": [ "application/json" ],
+        "Content-Length": [ "40" ]
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "x-ms-request-id": [ "6f10dba0-a482-474d-ae9f-74c0b965cb2b" ],
+        "x-ms-ratelimit-remaining-subscription-resource-requests": [ "99" ],
+        "x-ms-correlation-request-id": [ "2176849c-db5d-47f7-afe5-f5f96bc9369d" ],
+        "x-ms-routing-request-id": [ "WESTUS:20230113T021001Z:2176849c-db5d-47f7-afe5-f5f96bc9369d" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "Date": [ "Fri, 13 Jan 2023 02:10:01 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "2412" ],
+        "Content-Type": [ "application/json; charset=utf-8" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\r\n  \"sku\": {\r\n    \"name\": \"Premium_Direct_Free\",\r\n    \"tier\": \"Premium\",\r\n    \"family\": \"Direct\",\r\n    \"size\": \"Free\"\r\n  },\r\n  \"kind\": \"Direct\",\r\n  \"properties\": {\r\n    \"direct\": {\r\n      \"connections\": [\r\n        {\r\n          \"billableBandwidthInMbps\": 0,\r\n          \"bandwidthInMbps\": 200000,\r\n          \"provisionedBandwidthInMbps\": 200000,\r\n          \"sessionAddressProvider\": \"Peer\",\r\n          \"useForPeeringService\": true,\r\n          \"peeringDBFacilityId\": 69,\r\n          \"connectionState\": \"Active\",\r\n          \"bgpSession\": {\r\n            \"sessionPrefixV4\": \"12.90.152.68/30\",\r\n            \"sessionPrefixV6\": \"\",\r\n            \"microsoftSessionIPv4Address\": \"12.90.152.70\",\r\n            \"peerSessionIPv4Address\": \"12.90.152.69\",\r\n            \"sessionStateV4\": \"Established\",\r\n            \"sessionStateV6\": \"None\",\r\n            \"maxPrefixesAdvertisedV4\": 200000,\r\n            \"maxPrefixesAdvertisedV6\": 0\r\n          },\r\n          \"connectionIdentifier\": \"815870d0-938d-4355-b6b9-dd007999b8f5\"\r\n        },\r\n        {\r\n          \"billableBandwidthInMbps\": 0,\r\n          \"bandwidthInMbps\": 200000,\r\n          \"provisionedBandwidthInMbps\": 200000,\r\n          \"sessionAddressProvider\": \"Peer\",\r\n          \"useForPeeringService\": true,\r\n          \"peeringDBFacilityId\": 69,\r\n          \"connectionState\": \"Active\",\r\n          \"bgpSession\": {\r\n            \"sessionPrefixV4\": \"12.125.145.32/30\",\r\n            \"sessionPrefixV6\": \"\",\r\n            \"microsoftSessionIPv4Address\": \"12.125.145.34\",\r\n            \"peerSessionIPv4Address\": \"12.125.145.33\",\r\n            \"sessionStateV4\": \"Established\",\r\n            \"sessionStateV6\": \"None\",\r\n            \"maxPrefixesAdvertisedV4\": 200000,\r\n            \"maxPrefixesAdvertisedV6\": 0\r\n          },\r\n          \"connectionIdentifier\": \"0720b596-dca1-4d58-8628-58191be00cc3\"\r\n        }\r\n      ],\r\n      \"useForPeeringService\": true,\r\n      \"peerAsn\": {\r\n        \"id\": \"/subscriptions/e815e305-b43a-49c4-8b1a-4e61f1aec1e8/providers/Microsoft.Peering/peerAsns/AS7018\"\r\n      },\r\n      \"directPeeringType\": \"Edge\"\r\n    },\r\n    \"peeringLocation\": \"Dallas\",\r\n    \"provisioningState\": \"Succeeded\"\r\n  },\r\n  \"location\": \"South Central US\",\r\n  \"tags\": {\r\n    \"hello\": \"world\"\r\n  },\r\n  \"name\": \"DemoPeering\",\r\n  \"id\": \"/subscriptions/e815e305-b43a-49c4-8b1a-4e61f1aec1e8/resourceGroups/DemoRG/providers/Microsoft.Peering/peerings/DemoPeering\",\r\n  \"type\": \"Microsoft.Peering/peerings\"\r\n}",
+      "isContentBase64": false
+    }
+  }
+}

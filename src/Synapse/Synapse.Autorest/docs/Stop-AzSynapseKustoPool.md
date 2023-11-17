@@ -1,7 +1,7 @@
 ---
 external help file:
 Module Name: Az.Synapse
-online version: https://docs.microsoft.com/powershell/module/az.synapse/stop-azsynapsekustopool
+online version: https://learn.microsoft.com/powershell/module/az.synapse/stop-azsynapsekustopool
 schema: 2.0.0
 ---
 

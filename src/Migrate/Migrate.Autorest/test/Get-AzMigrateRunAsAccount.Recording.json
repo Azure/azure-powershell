@@ -1,0 +1,78 @@
+{
+  "Get-AzMigrateRunAsAccount+[NoContext]+List+$GET+https://management.azure.com/subscriptions/7c943c1b-5122-4097-90c8-861411bdd574/resourceGroups/cbtsignoff2201rg/providers/Microsoft.OffAzure/VMwareSites/signoffccyapp3352site/runAsAccounts?api-version=2020-01-01+1": {
+    "Request": {
+      "Method": "GET",
+      "RequestUri": "https://management.azure.com/subscriptions/7c943c1b-5122-4097-90c8-861411bdd574/resourceGroups/cbtsignoff2201rg/providers/Microsoft.OffAzure/VMwareSites/signoffccyapp3352site/runAsAccounts?api-version=2020-01-01",
+      "Content": null,
+      "Headers": {
+        "x-ms-unique-id": [ "33" ],
+        "x-ms-client-request-id": [ "66ad781b-a9c5-4eb7-926f-9284bf0ac2f0" ],
+        "CommandName": [ "Get-AzMigrateRunAsAccount" ],
+        "FullCommandName": [ "Get-AzMigrateRunAsAccount_List" ],
+        "ParameterSetName": [ "__AllParameterSets" ],
+        "User-Agent": [ "AzurePowershell/Az4.0.0-preview" ],
+        "Authorization": [ "[Filtered]" ]
+      },
+      "ContentHeaders": {
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "x-ms-request-id": [ "a6660b63-994d-4e30-9585-4ef4bf391cb3" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "x-ms-ratelimit-remaining-subscription-reads": [ "11964" ],
+        "x-ms-correlation-request-id": [ "24dce222-16ff-4439-b3d6-6ea155209704" ],
+        "x-ms-routing-request-id": [ "CENTRALINDIA:20220926T112428Z:24dce222-16ff-4439-b3d6-6ea155209704" ],
+        "Date": [ "Mon, 26 Sep 2022 11:24:27 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "2507" ],
+        "Content-Type": [ "application/json; charset=utf-8" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\"value\":[{\"id\":\"/subscriptions/7c943c1b-5122-4097-90c8-861411bdd574/resourceGroups/cbtsignoff2201rg/providers/Microsoft.OffAzure/VMwareSites/signoffccyapp3352site/runasaccounts/525f32f1-97ab-5073-8c0b-b6634ae24347\",\"name\":\"525f32f1-97ab-5073-8c0b-b6634ae24347\",\"type\":\"Microsoft.OffAzure/VMwareSites/runasaccounts\",\"properties\":{\"displayName\":\"cred\",\"credentialType\":\"VMwareFabric\",\"createdTimestamp\":\"2022-07-24T18:30:26.9113499Z\",\"updatedTimestamp\":\"2022-08-19T10:11:57.3253867Z\",\"applianceName\":null}},{\"id\":\"/subscriptions/7c943c1b-5122-4097-90c8-861411bdd574/resourceGroups/cbtsignoff2201rg/providers/Microsoft.OffAzure/VMwareSites/signoffccyapp3352site/runasaccounts/a6f1b41f-0883-543b-b0cb-b739fcfa3ce5\",\"name\":\"a6f1b41f-0883-543b-b0cb-b739fcfa3ce5\",\"type\":\"Microsoft.OffAzure/VMwareSites/runasaccounts\",\"properties\":{\"displayName\":\"win1\",\"credentialType\":\"WindowsGuest\",\"createdTimestamp\":\"2022-08-03T07:38:49.5772232Z\",\"updatedTimestamp\":\"2022-08-19T10:11:56.3409533Z\",\"applianceName\":null}},{\"id\":\"/subscriptions/7c943c1b-5122-4097-90c8-861411bdd574/resourceGroups/cbtsignoff2201rg/providers/Microsoft.OffAzure/VMwareSites/signoffccyapp3352site/runasaccounts/eadd0438-854f-55e9-bed5-bd0f184bf9cf\",\"name\":\"eadd0438-854f-55e9-bed5-bd0f184bf9cf\",\"type\":\"Microsoft.OffAzure/VMwareSites/runasaccounts\",\"properties\":{\"displayName\":\"win4\",\"credentialType\":\"WindowsGuest\",\"createdTimestamp\":\"2022-08-03T07:38:49.8272254Z\",\"updatedTimestamp\":\"2022-08-19T10:11:56.5754012Z\",\"applianceName\":null}},{\"id\":\"/subscriptions/7c943c1b-5122-4097-90c8-861411bdd574/resourceGroups/cbtsignoff2201rg/providers/Microsoft.OffAzure/VMwareSites/signoffccyapp3352site/runasaccounts/fa70adc8-de12-5bc4-8496-0c51ee05c588\",\"name\":\"fa70adc8-de12-5bc4-8496-0c51ee05c588\",\"type\":\"Microsoft.OffAzure/VMwareSites/runasaccounts\",\"properties\":{\"displayName\":\"win3\",\"credentialType\":\"WindowsGuest\",\"createdTimestamp\":\"2022-08-03T07:38:50.0928649Z\",\"updatedTimestamp\":\"2022-08-19T10:11:56.8254170Z\",\"applianceName\":null}},{\"id\":\"/subscriptions/7c943c1b-5122-4097-90c8-861411bdd574/resourceGroups/cbtsignoff2201rg/providers/Microsoft.OffAzure/VMwareSites/signoffccyapp3352site/runasaccounts/c57e127d-a8b5-5ff8-9650-1478800dcad3\",\"name\":\"c57e127d-a8b5-5ff8-9650-1478800dcad3\",\"type\":\"Microsoft.OffAzure/VMwareSites/runasaccounts\",\"properties\":{\"displayName\":\"win2\",\"credentialType\":\"WindowsGuest\",\"createdTimestamp\":\"2022-08-03T07:38:50.3272321Z\",\"updatedTimestamp\":\"2022-08-19T10:11:57.0754537Z\",\"applianceName\":null}}],\"nextLink\":null}"
+    }
+  },
+  "Get-AzMigrateRunAsAccount+[NoContext]+Get+$GET+https://management.azure.com/subscriptions/7c943c1b-5122-4097-90c8-861411bdd574/resourceGroups/cbtsignoff2201rg/providers/Microsoft.OffAzure/VMwareSites/signoffccyapp3352site/runAsAccounts/525f32f1-97ab-5073-8c0b-b6634ae24347?api-version=2020-01-01+1": {
+    "Request": {
+      "Method": "GET",
+      "RequestUri": "https://management.azure.com/subscriptions/7c943c1b-5122-4097-90c8-861411bdd574/resourceGroups/cbtsignoff2201rg/providers/Microsoft.OffAzure/VMwareSites/signoffccyapp3352site/runAsAccounts/525f32f1-97ab-5073-8c0b-b6634ae24347?api-version=2020-01-01",
+      "Content": null,
+      "Headers": {
+        "x-ms-unique-id": [ "34" ],
+        "x-ms-client-request-id": [ "5be4bc08-2f95-440b-9f01-b26267a27c58" ],
+        "CommandName": [ "Get-AzMigrateRunAsAccount" ],
+        "FullCommandName": [ "Get-AzMigrateRunAsAccount_Get" ],
+        "ParameterSetName": [ "__AllParameterSets" ],
+        "User-Agent": [ "AzurePowershell/Az4.0.0-preview" ],
+        "Authorization": [ "[Filtered]" ]
+      },
+      "ContentHeaders": {
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "x-ms-request-id": [ "767a3a6c-d48d-4987-ab9b-14795e6c2fa9" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "x-ms-ratelimit-remaining-subscription-reads": [ "11963" ],
+        "x-ms-correlation-request-id": [ "2575cb27-8e7f-4ca2-b8da-a3d99867d06c" ],
+        "x-ms-routing-request-id": [ "CENTRALINDIA:20220926T112429Z:2575cb27-8e7f-4ca2-b8da-a3d99867d06c" ],
+        "Date": [ "Mon, 26 Sep 2022 11:24:28 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "495" ],
+        "Content-Type": [ "application/json; charset=utf-8" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\"id\":\"/subscriptions/7c943c1b-5122-4097-90c8-861411bdd574/resourceGroups/cbtsignoff2201rg/providers/Microsoft.OffAzure/VMwareSites/signoffccyapp3352site/runasaccounts/525f32f1-97ab-5073-8c0b-b6634ae24347\",\"name\":\"525f32f1-97ab-5073-8c0b-b6634ae24347\",\"type\":\"Microsoft.OffAzure/VMwareSites/runasaccounts\",\"properties\":{\"displayName\":\"cred\",\"credentialType\":\"VMwareFabric\",\"createdTimestamp\":\"2022-07-24T18:30:26.9113499Z\",\"updatedTimestamp\":\"2022-08-19T10:11:57.3253867Z\",\"applianceName\":null}}"
+    }
+  }
+}

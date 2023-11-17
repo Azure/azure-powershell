@@ -1,7 +1,7 @@
 ---
 external help file:
 Module Name: Az.Synapse
-online version: https://docs.microsoft.com/powershell/module/az.synapse/update-azsynapsekustopooldatabase
+online version: https://learn.microsoft.com/powershell/module/az.synapse/update-azsynapsekustopooldatabase
 schema: 2.0.0
 ---
 

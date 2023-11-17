@@ -1,0 +1,36 @@
+{
+  "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentParameters.json#",
+  "contentVersion": "1.0.0.0",
+  "parameters": {
+    "namespace_name": {
+      "value": "namespaceNamed5orf8"
+    },
+    "system_assigned_namespace_name": {
+      "value": "namespaceNamewze84s"
+    },
+    "namespace_auth_rule_name": {
+      "value": "auth-ruleju0nd3"
+    },
+    "eventhub_auth_rule_name": {
+      "value": "auth-rulepjiaoe"
+    },
+    "eventhub_name": {
+      "value": "eventHub504uah"
+    },
+    "schema_group_name": {
+      "value": "schemaGroup7ezg61"
+    },
+    "appgroup_name": {
+      "value": "appGroupdchk16"
+    },
+    "peName1": {
+      "value": "privateEndpoint-qyfutj"
+    },
+    "peName2": {
+      "value": "privateEndpoint-352l4o"
+    },
+    "namespaceResourceId": {
+      "value": "/subscriptions/326100e2-f69d-4268-8503-075374f62b6e/resourceGroups/resourceGroupAutoresta2s9gd/providers/Microsoft.EventHub/namespaces/namespaceNamed5orf8"
+    }
+  }
+}

@@ -1,4 +1,4 @@
-"AssemblyFileName","ClassName","Target","Severity","ProblemId","Description","Remediation"
+"Module","ClassName","Target","Severity","ProblemId","Description","Remediation"
 "Az.MySql","Get-AzMySqlConfiguration","Get-AzMySqlConfiguration","1","8410","Parameter ProxyUseDefaultCredentials of cmdlet Get-AzMySqlConfiguration does not follow the enforced naming convention of using a singular noun for a parameter name.","Consider using a singular noun for the parameter name."
 "Az.MySql","Get-AzMySqlConnectionString","Get-AzMySqlConnectionString","1","8410","Parameter ProxyUseDefaultCredentials of cmdlet Get-AzMySqlConnectionString does not follow the enforced naming convention of using a singular noun for a parameter name.","Consider using a singular noun for the parameter name."
 "Az.MySql","Get-AzMySqlFirewallRule","Get-AzMySqlFirewallRule","1","8410","Parameter ProxyUseDefaultCredentials of cmdlet Get-AzMySqlFirewallRule does not follow the enforced naming convention of using a singular noun for a parameter name.","Consider using a singular noun for the parameter name."

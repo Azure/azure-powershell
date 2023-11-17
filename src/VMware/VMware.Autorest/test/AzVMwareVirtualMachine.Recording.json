@@ -1,0 +1,66 @@
+{
+  "AzVMwareVirtualMachine+[NoContext]+List+$GET+https://management.azure.com/subscriptions/cef41485-ad1e-4cc3-a652-4c2620b8a2d0/resourceGroups/testgroup5q2kvd/providers/Microsoft.AVS/privateClouds/azps_test_cloudme6g/clusters/xdn238/virtualMachines?api-version=2021-12-01+1": {
+    "Request": {
+      "Method": "GET",
+      "RequestUri": "https://management.azure.com/subscriptions/cef41485-ad1e-4cc3-a652-4c2620b8a2d0/resourceGroups/testgroup5q2kvd/providers/Microsoft.AVS/privateClouds/azps_test_cloudme6g/clusters/xdn238/virtualMachines?api-version=2021-12-01",
+      "Content": null,
+      "isContentBase64": false,
+      "Headers": {
+        "x-ms-unique-id": [ "92" ],
+        "x-ms-client-request-id": [ "4946c755-4741-490b-90e4-f5ff1687cb69" ],
+        "CommandName": [ "Get-AzVMwareVirtualMachine" ],
+        "FullCommandName": [ "Get-AzVMwareVirtualMachine_List" ],
+        "ParameterSetName": [ "__AllParameterSets" ],
+        "User-Agent": [ "AzurePowershell/v0.0.0", "PSVersion/v7.1.2", "Az.VMware/0.4.0" ],
+        "Authorization": [ "[Filtered]" ]
+      },
+      "ContentHeaders": {
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Date": [ "Thu, 22 Sep 2022 07:18:39 GMT" ],
+        "Server": [ "Rocket" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "695" ],
+        "Content-Type": [ "application/json" ]
+      },
+      "Content": "{\"value\":[{\"id\":\"/subscriptions/{subscription-id}/resourceGroups/group1/providers/Microsoft.AVS/privateClouds/cloud1/clusters/cluster1/virtualMachines/vm-209\",\"name\":\"vm-209\",\"type\":\"Microsoft.AVS/privateClouds/clusters/virtualMachines\",\"properties\":{\"displayName\":\"contoso-vm1\",\"moRefId\":\"vm-209\",\"folderPath\":\"vm/folder-1\",\"restrictMovement\":\"Disabled\"}},{\"id\":\"/subscriptions/{subscription-id}/resourceGroups/group1/providers/Microsoft.AVS/privateClouds/cloud1/clusters/cluster1/virtualMachines/vm-128\",\"name\":\"vm-128\",\"type\":\"Microsoft.AVS/privateClouds/clusters/virtualMachines\",\"properties\":{\"displayName\":\"contoso-vm2\",\"moRefId\":\"vm-128\",\"folderPath\":\"vm\",\"restrictMovement\":\"Enabled\"}}]}",
+      "isContentBase64": false
+    }
+  },
+  "AzVMwareVirtualMachine+[NoContext]+Get+$GET+https://management.azure.com/subscriptions/cef41485-ad1e-4cc3-a652-4c2620b8a2d0/resourceGroups/testgroup5q2kvd/providers/Microsoft.AVS/privateClouds/azps_test_cloudme6g/clusters/xdn238/virtualMachines/vm-209?api-version=2021-12-01+1": {
+    "Request": {
+      "Method": "GET",
+      "RequestUri": "https://management.azure.com/subscriptions/cef41485-ad1e-4cc3-a652-4c2620b8a2d0/resourceGroups/testgroup5q2kvd/providers/Microsoft.AVS/privateClouds/azps_test_cloudme6g/clusters/xdn238/virtualMachines/vm-209?api-version=2021-12-01",
+      "Content": null,
+      "isContentBase64": false,
+      "Headers": {
+        "x-ms-unique-id": [ "93" ],
+        "x-ms-client-request-id": [ "82925d7b-077e-4c2f-b721-72c569ecfebf" ],
+        "CommandName": [ "Get-AzVMwareVirtualMachine" ],
+        "FullCommandName": [ "Get-AzVMwareVirtualMachine_Get" ],
+        "ParameterSetName": [ "__AllParameterSets" ],
+        "User-Agent": [ "AzurePowershell/v0.0.0", "PSVersion/v7.1.2", "Az.VMware/0.4.0" ],
+        "Authorization": [ "[Filtered]" ]
+      },
+      "ContentHeaders": {
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Date": [ "Thu, 22 Sep 2022 07:18:39 GMT" ],
+        "Server": [ "Rocket" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "345" ],
+        "Content-Type": [ "application/json" ]
+      },
+      "Content": "{\"id\":\"/subscriptions/{subscription-id}/resourceGroups/group1/providers/Microsoft.AVS/privateClouds/cloud1/clusters/cluster1/virtualMachines/vm-209\",\"name\":\"vm-209\",\"type\":\"Microsoft.AVS/privateClouds/clusters/virtualMachines\",\"properties\":{\"displayName\":\"contoso-vm\",\"moRefId\":\"vm-209\",\"folderPath\":\"vm/folder-1\",\"restrictMovement\":\"Disabled\"}}",
+      "isContentBase64": false
+    }
+  }
+}

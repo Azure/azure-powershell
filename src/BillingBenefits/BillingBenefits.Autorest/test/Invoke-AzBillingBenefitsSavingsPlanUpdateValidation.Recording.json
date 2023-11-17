@@ -1,0 +1,150 @@
+{
+  "Invoke-AzBillingBenefitsSavingsPlanUpdateValidation+[NoContext]+ValidateExpanded+$POST+https://management.azure.com/providers/Microsoft.BillingBenefits/savingsPlanOrders/d7ea1620-2bba-46e2-8434-11f31bfb984d/savingsPlans/9fde2a72-776b-49fc-869c-dca8859d7d62/validate?api-version=2022-11-01+1": {
+    "Request": {
+      "Method": "POST",
+      "RequestUri": "https://management.azure.com/providers/Microsoft.BillingBenefits/savingsPlanOrders/d7ea1620-2bba-46e2-8434-11f31bfb984d/savingsPlans/9fde2a72-776b-49fc-869c-dca8859d7d62/validate?api-version=2022-11-01",
+      "Content": "{\r\n  \"benefits\": [\r\n    {\r\n      \"appliedScopeProperties\": {\r\n        \"subscriptionId\": \"/subscriptions/eef82110-c91b-4395-9420-fcfcbefc5a47\"\r\n      },\r\n      \"appliedScopeType\": \"Single\"\r\n    }\r\n  ]\r\n}",
+      "isContentBase64": false,
+      "Headers": {
+      },
+      "ContentHeaders": {
+        "Content-Type": [ "application/json" ],
+        "Content-Length": [ "202" ]
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "Vary": [ "Accept-Encoding" ],
+        "x-ms-ratelimit-remaining-tenant-writes": [ "1199" ],
+        "x-ms-request-id": [ "3fa5f18f-2506-4131-8278-8d4558c71b9f" ],
+        "x-ms-version": [ "1.0.2141.1412" ],
+        "x-ms-correlation-request-id": [ "3d91c3b9-31bc-47c1-9fe3-3082b8678f3f" ],
+        "x-ms-routing-request-id": [ "WESTCENTRALUS:20221201T010226Z:3d91c3b9-31bc-47c1-9fe3-3082b8678f3f" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "Date": [ "Thu, 01 Dec 2022 01:02:26 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "29" ],
+        "Content-Type": [ "application/json; charset=utf-8" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\"benefits\":[{\"valid\":true}]}",
+      "isContentBase64": false
+    }
+  },
+  "Invoke-AzBillingBenefitsSavingsPlanUpdateValidation+[NoContext]+Validate+$POST+https://management.azure.com/providers/Microsoft.BillingBenefits/savingsPlanOrders/d7ea1620-2bba-46e2-8434-11f31bfb984d/savingsPlans/9fde2a72-776b-49fc-869c-dca8859d7d62/validate?api-version=2022-11-01+1": {
+    "Request": {
+      "Method": "POST",
+      "RequestUri": "https://management.azure.com/providers/Microsoft.BillingBenefits/savingsPlanOrders/d7ea1620-2bba-46e2-8434-11f31bfb984d/savingsPlans/9fde2a72-776b-49fc-869c-dca8859d7d62/validate?api-version=2022-11-01",
+      "Content": "{\r\n  \"benefits\": [\r\n    {\r\n      \"appliedScopeProperties\": {\r\n        \"subscriptionId\": \"/subscriptions/eef82110-c91b-4395-9420-fcfcbefc5a47\"\r\n      },\r\n      \"appliedScopeType\": \"Single\"\r\n    }\r\n  ]\r\n}",
+      "isContentBase64": false,
+      "Headers": {
+      },
+      "ContentHeaders": {
+        "Content-Type": [ "application/json" ],
+        "Content-Length": [ "202" ]
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "Vary": [ "Accept-Encoding" ],
+        "x-ms-ratelimit-remaining-tenant-writes": [ "1198" ],
+        "x-ms-request-id": [ "4b59cbc7-f5e6-4f15-bb43-a5ab4732df4a" ],
+        "x-ms-version": [ "1.0.2141.1412" ],
+        "x-ms-correlation-request-id": [ "85866f94-06d8-4ae3-a1db-6967f4de7a0e" ],
+        "x-ms-routing-request-id": [ "WESTCENTRALUS:20221201T010227Z:85866f94-06d8-4ae3-a1db-6967f4de7a0e" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "Date": [ "Thu, 01 Dec 2022 01:02:27 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "29" ],
+        "Content-Type": [ "application/json; charset=utf-8" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\"benefits\":[{\"valid\":true}]}",
+      "isContentBase64": false
+    }
+  },
+  "Invoke-AzBillingBenefitsSavingsPlanUpdateValidation+[NoContext]+ValidateViaIdentityExpanded+$POST+https://management.azure.com/providers/Microsoft.BillingBenefits/savingsPlanOrders/d7ea1620-2bba-46e2-8434-11f31bfb984d/savingsPlans/9fde2a72-776b-49fc-869c-dca8859d7d62/validate?api-version=2022-11-01+1": {
+    "Request": {
+      "Method": "POST",
+      "RequestUri": "https://management.azure.com/providers/Microsoft.BillingBenefits/savingsPlanOrders/d7ea1620-2bba-46e2-8434-11f31bfb984d/savingsPlans/9fde2a72-776b-49fc-869c-dca8859d7d62/validate?api-version=2022-11-01",
+      "Content": "{\r\n  \"benefits\": [\r\n    {\r\n      \"appliedScopeProperties\": {\r\n        \"subscriptionId\": \"/subscriptions/eef82110-c91b-4395-9420-fcfcbefc5a47\"\r\n      },\r\n      \"appliedScopeType\": \"Single\"\r\n    }\r\n  ]\r\n}",
+      "isContentBase64": false,
+      "Headers": {
+      },
+      "ContentHeaders": {
+        "Content-Type": [ "application/json" ],
+        "Content-Length": [ "202" ]
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "Vary": [ "Accept-Encoding" ],
+        "x-ms-ratelimit-remaining-tenant-writes": [ "1197" ],
+        "x-ms-request-id": [ "fde3dfc1-f30c-4f4d-835c-78af8d9c2db3" ],
+        "x-ms-version": [ "1.0.2141.1412" ],
+        "x-ms-correlation-request-id": [ "1e721e0d-33ee-472c-b992-bad98eab3292" ],
+        "x-ms-routing-request-id": [ "WESTCENTRALUS:20221201T010228Z:1e721e0d-33ee-472c-b992-bad98eab3292" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "Date": [ "Thu, 01 Dec 2022 01:02:28 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "29" ],
+        "Content-Type": [ "application/json; charset=utf-8" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\"benefits\":[{\"valid\":true}]}",
+      "isContentBase64": false
+    }
+  },
+  "Invoke-AzBillingBenefitsSavingsPlanUpdateValidation+[NoContext]+ValidateViaIdentity+$POST+https://management.azure.com/providers/Microsoft.BillingBenefits/savingsPlanOrders/d7ea1620-2bba-46e2-8434-11f31bfb984d/savingsPlans/9fde2a72-776b-49fc-869c-dca8859d7d62/validate?api-version=2022-11-01+1": {
+    "Request": {
+      "Method": "POST",
+      "RequestUri": "https://management.azure.com/providers/Microsoft.BillingBenefits/savingsPlanOrders/d7ea1620-2bba-46e2-8434-11f31bfb984d/savingsPlans/9fde2a72-776b-49fc-869c-dca8859d7d62/validate?api-version=2022-11-01",
+      "Content": "{\r\n  \"benefits\": [\r\n    {\r\n      \"appliedScopeProperties\": {\r\n        \"subscriptionId\": \"/subscriptions/eef82110-c91b-4395-9420-fcfcbefc5a47\"\r\n      },\r\n      \"appliedScopeType\": \"Single\"\r\n    }\r\n  ]\r\n}",
+      "isContentBase64": false,
+      "Headers": {
+      },
+      "ContentHeaders": {
+        "Content-Type": [ "application/json" ],
+        "Content-Length": [ "202" ]
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "Vary": [ "Accept-Encoding" ],
+        "x-ms-ratelimit-remaining-tenant-writes": [ "1196" ],
+        "x-ms-request-id": [ "6d1dfe65-3420-48b7-941e-e3894453ec17" ],
+        "x-ms-version": [ "1.0.2141.1412" ],
+        "x-ms-correlation-request-id": [ "9aae6f57-18c6-4740-a83e-9b542629e672" ],
+        "x-ms-routing-request-id": [ "WESTCENTRALUS:20221201T010229Z:9aae6f57-18c6-4740-a83e-9b542629e672" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "Date": [ "Thu, 01 Dec 2022 01:02:29 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "29" ],
+        "Content-Type": [ "application/json; charset=utf-8" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\"benefits\":[{\"valid\":true}]}",
+      "isContentBase64": false
+    }
+  }
+}

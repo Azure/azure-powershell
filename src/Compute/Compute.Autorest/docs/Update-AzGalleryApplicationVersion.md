@@ -1,7 +1,7 @@
 ---
 external help file:
 Module Name: Az.Compute
-online version: https://docs.microsoft.com/powershell/module/az.compute/update-azgalleryapplicationversion
+online version: https://learn.microsoft.com/powershell/module/az.compute/update-azgalleryapplicationversion
 schema: 2.0.0
 ---
 
@@ -44,7 +44,7 @@ $storAcc = Get-AzStorageAccount -ResourceGroupName $rgName -Name $storAccName
 $blob = Get-AzStorageBlob -Container $containerName -Blob $blobName -Context $storAcc.Context
 $SASToken = New-AzStorageBlobSASToken -Container $containerName -Blob $blobName -Permission rwd -Context $storAcc.Context
 $SASUri = $blob.ICloudBlob.Uri.AbsoluteUri + "?" +$SASToken 
-Update-AzGalleryApplicationVersion -ResourceGroupName $rgname -Location EastUS -GalleryName $galleryName -GalleryApplicationName $galleryApplicationName -name "0.1.0" -PackageFileLink $SASUri -ReplicaCount 3 
+Update-AzGalleryApplicationVersion -ResourceGroupName $rgname -GalleryName $galleryName -GalleryApplicationName $galleryApplicationName -name "0.1.0" -PackageFileLink $SASUri -ReplicaCount 3 
 ```
 
 Updating a Gallery Application Version's replica count.

@@ -1,0 +1,1468 @@
+{
+  "AzPaloAltoNetworks+[NoContext]+CreateLocalRulestack+$PUT+https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/azps-testcase-pan/providers/PaloAltoNetworks.Cloudngfw/localRulestacks/azps-oxi4?api-version=2022-08-29+1": {
+    "Request": {
+      "Method": "PUT",
+      "RequestUri": "https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/azps-testcase-pan/providers/PaloAltoNetworks.Cloudngfw/localRulestacks/azps-oxi4?api-version=2022-08-29",
+      "Content": "{\r\n  \"location\": \"eastus\",\r\n  \"properties\": {\r\n    \"description\": \"testing powershell\",\r\n    \"defaultMode\": \"NONE\"\r\n  }\r\n}",
+      "isContentBase64": false,
+      "Headers": {
+      },
+      "ContentHeaders": {
+        "Content-Type": [ "application/json" ],
+        "Content-Length": [ "122" ]
+      }
+    },
+    "Response": {
+      "StatusCode": 201,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "ETag": [ "\"0a009dde-0000-0100-0000-64ba5aa70000\"" ],
+        "Location": [ "https://management.azure.com/providers/PaloAltoNetworks.Cloudngfw/locations/EASTUS/operationStatuses/76f3f185-d71b-4980-8b67-67a37a083346*5DCC27F99ABFF975BF4D2FE042D693EFB07C106E8C7AEEB7B639C79E42AD8583?api-version=2022-08-29" ],
+        "x-ms-ratelimit-remaining-subscription-writes": [ "1199" ],
+        "x-ms-providerhub-traffic": [ "True" ],
+        "Request-Context": [ "appId=cid-v1:4aa06bd6-38f4-4944-9612-cd84d39b5e90" ],
+        "mise-correlation-id": [ "0c489f5f-7930-4e9f-a5b9-b2d23ed9a51a" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "Azure-AsyncOperation": [ "https://management.azure.com/providers/PaloAltoNetworks.Cloudngfw/locations/EASTUS/operationStatuses/76f3f185-d71b-4980-8b67-67a37a083346*5DCC27F99ABFF975BF4D2FE042D693EFB07C106E8C7AEEB7B639C79E42AD8583?api-version=2022-08-29" ],
+        "x-ms-request-id": [ "76f3f185-d71b-4980-8b67-67a37a083346" ],
+        "x-ms-correlation-request-id": [ "d1a7a58e-6add-4153-8242-6fd4c9b3fd52" ],
+        "x-ms-routing-request-id": [ "SOUTHEASTASIA:20230721T101504Z:d1a7a58e-6add-4153-8242-6fd4c9b3fd52" ],
+        "Date": [ "Fri, 21 Jul 2023 10:15:04 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "601" ],
+        "Content-Type": [ "application/json; charset=utf-8" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\"id\":\"/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/azps-testcase-pan/providers/PaloAltoNetworks.Cloudngfw/localRulestacks/azps-oxi4\",\"name\":\"azps-oxi4\",\"type\":\"paloaltonetworks.cloudngfw/localrulestacks\",\"location\":\"eastus\",\"systemData\":{\"createdBy\":\"v-jinpel@microsoft.com\",\"createdByType\":\"User\",\"createdAt\":\"2023-07-21T10:15:01.8376738Z\",\"lastModifiedBy\":\"v-jinpel@microsoft.com\",\"lastModifiedByType\":\"User\",\"lastModifiedAt\":\"2023-07-21T10:15:01.8376738Z\"},\"properties\":{\"scope\":\"LOCAL\",\"description\":\"testing powershell\",\"provisioningState\":\"Accepted\",\"defaultMode\":\"NONE\"}}",
+      "isContentBase64": false
+    }
+  },
+  "AzPaloAltoNetworks+[NoContext]+CreateLocalRulestack+$GET+https://management.azure.com/providers/PaloAltoNetworks.Cloudngfw/locations/EASTUS/operationStatuses/76f3f185-d71b-4980-8b67-67a37a083346*5DCC27F99ABFF975BF4D2FE042D693EFB07C106E8C7AEEB7B639C79E42AD8583?api-version=2022-08-29+2": {
+    "Request": {
+      "Method": "GET",
+      "RequestUri": "https://management.azure.com/providers/PaloAltoNetworks.Cloudngfw/locations/EASTUS/operationStatuses/76f3f185-d71b-4980-8b67-67a37a083346*5DCC27F99ABFF975BF4D2FE042D693EFB07C106E8C7AEEB7B639C79E42AD8583?api-version=2022-08-29",
+      "Content": null,
+      "isContentBase64": false,
+      "Headers": {
+        "Authorization": [ "[Filtered]" ],
+        "x-ms-unique-id": [ "3" ],
+        "x-ms-client-request-id": [ "f0eff98a-3d94-4793-b976-ab1028807611" ],
+        "CommandName": [ "New-AzPaloAltoNetworksLocalRulestack" ],
+        "FullCommandName": [ "New-AzPaloAltoNetworksLocalRulestack_CreateExpanded" ],
+        "ParameterSetName": [ "__AllParameterSets" ],
+        "User-Agent": [ "AzurePowershell/v0.0.0", "PSVersion/v7.3.5", "Az.PaloAltoNetworks/0.2.0" ]
+      },
+      "ContentHeaders": {
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "ETag": [ "\"6a0056ae-0000-0100-0000-64ba5ac60000\"" ],
+        "x-ms-ratelimit-remaining-tenant-reads": [ "11999" ],
+        "x-ms-request-id": [ "be1ba894-7074-4e6a-9655-0732e6601fa8" ],
+        "x-ms-correlation-request-id": [ "21b45201-f929-490d-80f4-bc49ddc3676a" ],
+        "x-ms-routing-request-id": [ "SOUTHEASTASIA:20230721T101535Z:21b45201-f929-490d-80f4-bc49ddc3676a" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "Date": [ "Fri, 21 Jul 2023 10:15:34 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "591" ],
+        "Content-Type": [ "application/json; charset=utf-8" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\"id\":\"/providers/PaloAltoNetworks.Cloudngfw/locations/EASTUS/operationStatuses/76f3f185-d71b-4980-8b67-67a37a083346*5DCC27F99ABFF975BF4D2FE042D693EFB07C106E8C7AEEB7B639C79E42AD8583\",\"name\":\"76f3f185-d71b-4980-8b67-67a37a083346*5DCC27F99ABFF975BF4D2FE042D693EFB07C106E8C7AEEB7B639C79E42AD8583\",\"resourceId\":\"/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/azps-testcase-pan/providers/PaloAltoNetworks.Cloudngfw/localRulestacks/azps-oxi4\",\"status\":\"Succeeded\",\"startTime\":\"2023-07-21T10:15:03.0080969Z\",\"endTime\":\"2023-07-21T10:15:34.2110056Z\",\"error\":{},\"properties\":null}",
+      "isContentBase64": false
+    }
+  },
+  "AzPaloAltoNetworks+[NoContext]+CreateLocalRulestack+$GET+https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/azps-testcase-pan/providers/PaloAltoNetworks.Cloudngfw/localRulestacks/azps-oxi4?api-version=2022-08-29+3": {
+    "Request": {
+      "Method": "GET",
+      "RequestUri": "https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/azps-testcase-pan/providers/PaloAltoNetworks.Cloudngfw/localRulestacks/azps-oxi4?api-version=2022-08-29",
+      "Content": null,
+      "isContentBase64": false,
+      "Headers": {
+        "Authorization": [ "[Filtered]" ],
+        "x-ms-unique-id": [ "4" ],
+        "x-ms-client-request-id": [ "f0eff98a-3d94-4793-b976-ab1028807611" ],
+        "CommandName": [ "New-AzPaloAltoNetworksLocalRulestack" ],
+        "FullCommandName": [ "New-AzPaloAltoNetworksLocalRulestack_CreateExpanded" ],
+        "ParameterSetName": [ "__AllParameterSets" ],
+        "User-Agent": [ "AzurePowershell/v0.0.0", "PSVersion/v7.3.5", "Az.PaloAltoNetworks/0.2.0" ]
+      },
+      "ContentHeaders": {
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "ETag": [ "\"0a00a8de-0000-0100-0000-64ba5ac60000\"" ],
+        "x-ms-ratelimit-remaining-subscription-reads": [ "11999" ],
+        "x-ms-providerhub-traffic": [ "True" ],
+        "x-ms-request-id": [ "4ad0007c-212a-427a-98af-cac1c5d23e20" ],
+        "x-ms-correlation-request-id": [ "25500d72-b66c-4766-87c1-5244d48ab3f9" ],
+        "x-ms-routing-request-id": [ "SOUTHEASTASIA:20230721T101535Z:25500d72-b66c-4766-87c1-5244d48ab3f9" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "Date": [ "Fri, 21 Jul 2023 10:15:35 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "917" ],
+        "Content-Type": [ "application/json; charset=utf-8" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\"id\":\"/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/azps-testcase-pan/providers/PaloAltoNetworks.Cloudngfw/localRulestacks/azps-oxi4\",\"name\":\"azps-oxi4\",\"type\":\"paloaltonetworks.cloudngfw/localrulestacks\",\"location\":\"eastus\",\"systemData\":{\"createdBy\":\"v-jinpel@microsoft.com\",\"createdByType\":\"User\",\"createdAt\":\"2023-07-21T10:15:01.8376738Z\",\"lastModifiedBy\":\"v-jinpel@microsoft.com\",\"lastModifiedByType\":\"User\",\"lastModifiedAt\":\"2023-07-21T10:15:01.8376738Z\"},\"properties\":{\"scope\":\"LOCAL\",\"description\":\"testing powershell\",\"provisioningState\":\"Succeeded\",\"defaultMode\":\"NONE\",\"panEtag\":\"7d55b11e-27af-11ee-b7e4-8a5ff8983af4\",\"minAppIdVersion\":\"8595-7473\",\"securityServices\":{\"vulnerabilityProfile\":\"BestPractice\",\"antiSpywareProfile\":\"BestPractice\",\"antiVirusProfile\":\"BestPractice\",\"urlFilteringProfile\":\"BestPractice\",\"fileBlockingProfile\":\"BestPractice\",\"dnsSubscription\":\"BestPractice\"}}}",
+      "isContentBase64": false
+    }
+  },
+  "AzPaloAltoNetworks+[NoContext]+ListLocalRulestack+$GET+https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/providers/PaloAltoNetworks.Cloudngfw/localRulestacks?api-version=2022-08-29+1": {
+    "Request": {
+      "Method": "GET",
+      "RequestUri": "https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/providers/PaloAltoNetworks.Cloudngfw/localRulestacks?api-version=2022-08-29",
+      "Content": null,
+      "isContentBase64": false,
+      "Headers": {
+        "x-ms-unique-id": [ "5" ],
+        "x-ms-client-request-id": [ "ad48b96e-eff7-4978-bc5a-72edd2ba84ee" ],
+        "CommandName": [ "Get-AzPaloAltoNetworksLocalRulestack" ],
+        "FullCommandName": [ "Get-AzPaloAltoNetworksLocalRulestack_List" ],
+        "ParameterSetName": [ "__AllParameterSets" ],
+        "User-Agent": [ "AzurePowershell/v0.0.0", "PSVersion/v7.3.5", "Az.PaloAltoNetworks/0.2.0" ],
+        "Authorization": [ "[Filtered]" ]
+      },
+      "ContentHeaders": {
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "x-ms-original-request-ids": [ "8c78fc34-a878-4e10-b127-6a47fa5dfe17", "6a82272a-493c-49a2-8e89-fc4c07465926", "6c2f7589-7517-4faa-a2bc-5c9b464e90f7", "270dd0c0-b21c-485e-9b5d-30bb3e2f6c71", "380621b5-955a-4ebf-a398-00e6abc79809", "983efa35-9b84-43c0-ac39-f2257f40c7d1", "534c1a71-8740-4e74-8567-3db18ad3189b", "8d6ed93e-8b86-4148-af82-3c5b1256a1bd", "bb8dd60a-fcba-41fa-a0b4-79ea9cbaf75c", "2f59a0eb-5e96-44c2-8ed2-a2a372d64739", "cdda4b1b-10eb-4396-b725-26e91aee47cd" ],
+        "x-ms-ratelimit-remaining-subscription-reads": [ "11998" ],
+        "x-ms-request-id": [ "350b9361-ca3c-4903-ad2f-1f7f672dbf63" ],
+        "x-ms-correlation-request-id": [ "350b9361-ca3c-4903-ad2f-1f7f672dbf63" ],
+        "x-ms-routing-request-id": [ "SOUTHEASTASIA:20230721T101537Z:350b9361-ca3c-4903-ad2f-1f7f672dbf63" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "Date": [ "Fri, 21 Jul 2023 10:15:36 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Type": [ "application/json; charset=utf-8" ],
+        "Expires": [ "-1" ],
+        "Content-Length": [ "2763" ]
+      },
+      "Content": "{\"value\":[{\"id\":\"/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/azps_test_group_pan/providers/PaloAltoNetworks.Cloudngfw/localRulestacks/azps-firewall-0718-lrs\",\"name\":\"azps-firewall-0718-lrs\",\"type\":\"paloaltonetworks.cloudngfw/localrulestacks\",\"location\":\"eastus\",\"tags\":{},\"systemData\":{\"createdBy\":\"v-jinpel@microsoft.com\",\"createdByType\":\"User\",\"createdAt\":\"2023-07-18T12:20:42.1905176Z\",\"lastModifiedBy\":\"v-jinpel@microsoft.com\",\"lastModifiedByType\":\"User\",\"lastModifiedAt\":\"2023-07-18T12:20:42.1905176Z\"},\"properties\":{\"scope\":\"LOCAL\",\"provisioningState\":\"Failed\",\"defaultMode\":\"IPS\",\"panEtag\":\"8ae3ae86-2565-11ee-aae6-4e7d13114b13\",\"minAppIdVersion\":\"8595-7473\",\"securityServices\":{\"vulnerabilityProfile\":\"BestPractice\",\"antiSpywareProfile\":\"BestPractice\",\"antiVirusProfile\":\"BestPractice\",\"urlFilteringProfile\":\"BestPractice\",\"fileBlockingProfile\":\"BestPractice\",\"dnsSubscription\":\"BestPractice\"}}},{\"id\":\"/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/azps_test_group_pan/providers/PaloAltoNetworks.Cloudngfw/localRulestacks/azps-firewall-0719-lrs\",\"name\":\"azps-firewall-0719-lrs\",\"type\":\"paloaltonetworks.cloudngfw/localrulestacks\",\"location\":\"eastus\",\"tags\":{},\"systemData\":{\"createdBy\":\"v-jinpel@microsoft.com\",\"createdByType\":\"User\",\"createdAt\":\"2023-07-19T04:11:46.8749632Z\",\"lastModifiedBy\":\"v-jinpel@microsoft.com\",\"lastModifiedByType\":\"User\",\"lastModifiedAt\":\"2023-07-19T04:11:46.8749632Z\"},\"properties\":{\"scope\":\"LOCAL\",\"provisioningState\":\"Failed\",\"defaultMode\":\"IPS\",\"panEtag\":\"69bf8c40-25ea-11ee-9e57-c6c4341c48d9\",\"minAppIdVersion\":\"8595-7473\",\"securityServices\":{\"vulnerabilityProfile\":\"BestPractice\",\"antiSpywareProfile\":\"BestPractice\",\"antiVirusProfile\":\"BestPractice\",\"urlFilteringProfile\":\"BestPractice\",\"fileBlockingProfile\":\"BestPractice\",\"dnsSubscription\":\"BestPractice\"}}},{\"id\":\"/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/azps-testcase-pan/providers/PaloAltoNetworks.Cloudngfw/localRulestacks/azps-oxi4\",\"name\":\"azps-oxi4\",\"type\":\"paloaltonetworks.cloudngfw/localrulestacks\",\"location\":\"eastus\",\"systemData\":{\"createdBy\":\"v-jinpel@microsoft.com\",\"createdByType\":\"User\",\"createdAt\":\"2023-07-21T10:15:01.8376738Z\",\"lastModifiedBy\":\"v-jinpel@microsoft.com\",\"lastModifiedByType\":\"User\",\"lastModifiedAt\":\"2023-07-21T10:15:01.8376738Z\"},\"properties\":{\"scope\":\"LOCAL\",\"description\":\"testing powershell\",\"provisioningState\":\"Succeeded\",\"defaultMode\":\"NONE\",\"panEtag\":\"7d55b11e-27af-11ee-b7e4-8a5ff8983af4\",\"minAppIdVersion\":\"8595-7473\",\"securityServices\":{\"vulnerabilityProfile\":\"BestPractice\",\"antiSpywareProfile\":\"BestPractice\",\"antiVirusProfile\":\"BestPractice\",\"urlFilteringProfile\":\"BestPractice\",\"fileBlockingProfile\":\"BestPractice\",\"dnsSubscription\":\"BestPractice\"}}}]}",
+      "isContentBase64": false
+    }
+  },
+  "AzPaloAltoNetworks+[NoContext]+GetLocalRulestack+$GET+https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/azps-testcase-pan/providers/PaloAltoNetworks.Cloudngfw/localRulestacks/azps-oxi4?api-version=2022-08-29+1": {
+    "Request": {
+      "Method": "GET",
+      "RequestUri": "https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/azps-testcase-pan/providers/PaloAltoNetworks.Cloudngfw/localRulestacks/azps-oxi4?api-version=2022-08-29",
+      "Content": null,
+      "isContentBase64": false,
+      "Headers": {
+        "x-ms-unique-id": [ "6" ],
+        "x-ms-client-request-id": [ "15342cb0-65c2-4b78-847e-f17fe457e3c7" ],
+        "CommandName": [ "Get-AzPaloAltoNetworksLocalRulestack" ],
+        "FullCommandName": [ "Get-AzPaloAltoNetworksLocalRulestack_Get" ],
+        "ParameterSetName": [ "__AllParameterSets" ],
+        "User-Agent": [ "AzurePowershell/v0.0.0", "PSVersion/v7.3.5", "Az.PaloAltoNetworks/0.2.0" ],
+        "Authorization": [ "[Filtered]" ]
+      },
+      "ContentHeaders": {
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "ETag": [ "\"0a00a8de-0000-0100-0000-64ba5ac60000\"" ],
+        "x-ms-ratelimit-remaining-subscription-reads": [ "11997" ],
+        "x-ms-providerhub-traffic": [ "True" ],
+        "x-ms-request-id": [ "2bb7403d-e1eb-4b84-9d47-641073f0c285" ],
+        "x-ms-correlation-request-id": [ "44d62e61-d93b-43c1-b084-040efa1c2649" ],
+        "x-ms-routing-request-id": [ "SOUTHEASTASIA:20230721T101538Z:44d62e61-d93b-43c1-b084-040efa1c2649" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "Date": [ "Fri, 21 Jul 2023 10:15:37 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "917" ],
+        "Content-Type": [ "application/json; charset=utf-8" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\"id\":\"/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/azps-testcase-pan/providers/PaloAltoNetworks.Cloudngfw/localRulestacks/azps-oxi4\",\"name\":\"azps-oxi4\",\"type\":\"paloaltonetworks.cloudngfw/localrulestacks\",\"location\":\"eastus\",\"systemData\":{\"createdBy\":\"v-jinpel@microsoft.com\",\"createdByType\":\"User\",\"createdAt\":\"2023-07-21T10:15:01.8376738Z\",\"lastModifiedBy\":\"v-jinpel@microsoft.com\",\"lastModifiedByType\":\"User\",\"lastModifiedAt\":\"2023-07-21T10:15:01.8376738Z\"},\"properties\":{\"scope\":\"LOCAL\",\"description\":\"testing powershell\",\"provisioningState\":\"Succeeded\",\"defaultMode\":\"NONE\",\"panEtag\":\"7d55b11e-27af-11ee-b7e4-8a5ff8983af4\",\"minAppIdVersion\":\"8595-7473\",\"securityServices\":{\"vulnerabilityProfile\":\"BestPractice\",\"antiSpywareProfile\":\"BestPractice\",\"antiVirusProfile\":\"BestPractice\",\"urlFilteringProfile\":\"BestPractice\",\"fileBlockingProfile\":\"BestPractice\",\"dnsSubscription\":\"BestPractice\"}}}",
+      "isContentBase64": false
+    }
+  },
+  "AzPaloAltoNetworks+[NoContext]+GetViaIdentityLocalRulestack+$GET+https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/azps-testcase-pan/providers/PaloAltoNetworks.Cloudngfw/localRulestacks?api-version=2022-08-29+1": {
+    "Request": {
+      "Method": "GET",
+      "RequestUri": "https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/azps-testcase-pan/providers/PaloAltoNetworks.Cloudngfw/localRulestacks?api-version=2022-08-29",
+      "Content": null,
+      "isContentBase64": false,
+      "Headers": {
+        "x-ms-unique-id": [ "7" ],
+        "x-ms-client-request-id": [ "2c907a96-26ba-41c7-aa1b-75385042a8aa" ],
+        "CommandName": [ "Get-AzPaloAltoNetworksLocalRulestack" ],
+        "FullCommandName": [ "Get-AzPaloAltoNetworksLocalRulestack_List1" ],
+        "ParameterSetName": [ "__AllParameterSets" ],
+        "User-Agent": [ "AzurePowershell/v0.0.0", "PSVersion/v7.3.5", "Az.PaloAltoNetworks/0.2.0" ],
+        "Authorization": [ "[Filtered]" ]
+      },
+      "ContentHeaders": {
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "x-ms-original-request-ids": [ "b063537d-d03d-4e1f-9361-c4c294272d3a", "0be57f25-8039-46d2-8f58-65b585070d18", "2963f2aa-c6aa-4948-8d56-e52e91f01f0f", "fc98b5a8-09ed-4a41-b88b-0cfbad7469c4", "cb96368b-e524-4f60-9d17-943f4ded0a72", "204f2067-0f65-48b4-b264-a192ceda42e4", "5462b589-d3ee-454e-be25-516cb78d343f", "9ad00c21-9924-494e-ab5c-94ff622b7ea1", "66f64234-d187-46ca-991a-a00aaf5c2355", "bb887870-c207-4f14-9969-4cd8bcc754ea", "6461cd78-4d0c-4ff4-b214-8d062d7c1197" ],
+        "x-ms-ratelimit-remaining-subscription-reads": [ "11996" ],
+        "x-ms-request-id": [ "d6ac3b56-5714-4c51-937b-9b67a74cbabe" ],
+        "x-ms-correlation-request-id": [ "d6ac3b56-5714-4c51-937b-9b67a74cbabe" ],
+        "x-ms-routing-request-id": [ "SOUTHEASTASIA:20230721T101538Z:d6ac3b56-5714-4c51-937b-9b67a74cbabe" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "Date": [ "Fri, 21 Jul 2023 10:15:38 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Type": [ "application/json; charset=utf-8" ],
+        "Expires": [ "-1" ],
+        "Content-Length": [ "929" ]
+      },
+      "Content": "{\"value\":[{\"id\":\"/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/azps-testcase-pan/providers/PaloAltoNetworks.Cloudngfw/localRulestacks/azps-oxi4\",\"name\":\"azps-oxi4\",\"type\":\"paloaltonetworks.cloudngfw/localrulestacks\",\"location\":\"eastus\",\"systemData\":{\"createdBy\":\"v-jinpel@microsoft.com\",\"createdByType\":\"User\",\"createdAt\":\"2023-07-21T10:15:01.8376738Z\",\"lastModifiedBy\":\"v-jinpel@microsoft.com\",\"lastModifiedByType\":\"User\",\"lastModifiedAt\":\"2023-07-21T10:15:01.8376738Z\"},\"properties\":{\"scope\":\"LOCAL\",\"description\":\"testing powershell\",\"provisioningState\":\"Succeeded\",\"defaultMode\":\"NONE\",\"panEtag\":\"7d55b11e-27af-11ee-b7e4-8a5ff8983af4\",\"minAppIdVersion\":\"8595-7473\",\"securityServices\":{\"vulnerabilityProfile\":\"BestPractice\",\"antiSpywareProfile\":\"BestPractice\",\"antiVirusProfile\":\"BestPractice\",\"urlFilteringProfile\":\"BestPractice\",\"fileBlockingProfile\":\"BestPractice\",\"dnsSubscription\":\"BestPractice\"}}}]}",
+      "isContentBase64": false
+    }
+  },
+  "AzPaloAltoNetworks+[NoContext]+UpdateLocalRulestack+$PATCH+https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/azps-testcase-pan/providers/PaloAltoNetworks.Cloudngfw/localRulestacks/azps-oxi4?api-version=2022-08-29+1": {
+    "Request": {
+      "Method": "PATCH",
+      "RequestUri": "https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/azps-testcase-pan/providers/PaloAltoNetworks.Cloudngfw/localRulestacks/azps-oxi4?api-version=2022-08-29",
+      "Content": "{\r\n  \"tags\": {\r\n    \"abc\": \"123\"\r\n  }\r\n}",
+      "isContentBase64": false,
+      "Headers": {
+      },
+      "ContentHeaders": {
+        "Content-Type": [ "application/json" ],
+        "Content-Length": [ "40" ]
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "ETag": [ "\"0a00a9de-0000-0100-0000-64ba5acb0000\"" ],
+        "x-ms-ratelimit-remaining-subscription-writes": [ "1198" ],
+        "x-ms-providerhub-traffic": [ "True" ],
+        "Request-Context": [ "appId=cid-v1:4aa06bd6-38f4-4944-9612-cd84d39b5e90" ],
+        "mise-correlation-id": [ "98c8c5e7-bf5e-4cbb-a7fc-6efd55ca7d90" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "x-ms-request-id": [ "1ea9d28c-5093-4f1d-906b-04159f3e2db7" ],
+        "x-ms-correlation-request-id": [ "6125451e-25e5-49ff-85d0-3d6ce6c1bfc1" ],
+        "x-ms-routing-request-id": [ "SOUTHEASTASIA:20230721T101541Z:6125451e-25e5-49ff-85d0-3d6ce6c1bfc1" ],
+        "Date": [ "Fri, 21 Jul 2023 10:15:40 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "938" ],
+        "Content-Type": [ "application/json; charset=utf-8" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\"id\":\"/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/azps-testcase-pan/providers/PaloAltoNetworks.Cloudngfw/localRulestacks/azps-oxi4\",\"name\":\"azps-oxi4\",\"type\":\"paloaltonetworks.cloudngfw/localrulestacks\",\"location\":\"eastus\",\"tags\":{\"abc\":\"123\"},\"systemData\":{\"createdBy\":\"v-jinpel@microsoft.com\",\"createdByType\":\"User\",\"createdAt\":\"2023-07-21T10:15:01.8376738Z\",\"lastModifiedBy\":\"v-jinpel@microsoft.com\",\"lastModifiedByType\":\"User\",\"lastModifiedAt\":\"2023-07-21T10:15:39.1359477Z\"},\"properties\":{\"scope\":\"LOCAL\",\"description\":\"testing powershell\",\"provisioningState\":\"Succeeded\",\"defaultMode\":\"NONE\",\"panEtag\":\"7d55b11e-27af-11ee-b7e4-8a5ff8983af4\",\"minAppIdVersion\":\"8595-7473\",\"securityServices\":{\"vulnerabilityProfile\":\"BestPractice\",\"antiSpywareProfile\":\"BestPractice\",\"antiVirusProfile\":\"BestPractice\",\"urlFilteringProfile\":\"BestPractice\",\"fileBlockingProfile\":\"BestPractice\",\"dnsSubscription\":\"BestPractice\"}}}",
+      "isContentBase64": false
+    }
+  },
+  "AzPaloAltoNetworks+[NoContext]+UpdateViaIdentityLocalRulestack+$GET+https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/azps-testcase-pan/providers/PaloAltoNetworks.Cloudngfw/localRulestacks/azps-oxi4?api-version=2022-08-29+1": {
+    "Request": {
+      "Method": "GET",
+      "RequestUri": "https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/azps-testcase-pan/providers/PaloAltoNetworks.Cloudngfw/localRulestacks/azps-oxi4?api-version=2022-08-29",
+      "Content": null,
+      "isContentBase64": false,
+      "Headers": {
+        "x-ms-unique-id": [ "9" ],
+        "x-ms-client-request-id": [ "85211cd0-3eb1-49a4-bd4d-e9ec6106924e" ],
+        "CommandName": [ "Get-AzPaloAltoNetworksLocalRulestack" ],
+        "FullCommandName": [ "Get-AzPaloAltoNetworksLocalRulestack_Get" ],
+        "ParameterSetName": [ "__AllParameterSets" ],
+        "User-Agent": [ "AzurePowershell/v0.0.0", "PSVersion/v7.3.5", "Az.PaloAltoNetworks/0.2.0" ],
+        "Authorization": [ "[Filtered]" ]
+      },
+      "ContentHeaders": {
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "ETag": [ "\"0a00a9de-0000-0100-0000-64ba5acb0000\"" ],
+        "x-ms-ratelimit-remaining-subscription-reads": [ "11995" ],
+        "x-ms-providerhub-traffic": [ "True" ],
+        "x-ms-request-id": [ "7b8189a4-9bca-48c6-b72d-4b9acb46c31d" ],
+        "x-ms-correlation-request-id": [ "5fa6c21d-729b-4deb-8696-2a3d0197eb7f" ],
+        "x-ms-routing-request-id": [ "SOUTHEASTASIA:20230721T101541Z:5fa6c21d-729b-4deb-8696-2a3d0197eb7f" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "Date": [ "Fri, 21 Jul 2023 10:15:41 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "938" ],
+        "Content-Type": [ "application/json; charset=utf-8" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\"id\":\"/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/azps-testcase-pan/providers/PaloAltoNetworks.Cloudngfw/localRulestacks/azps-oxi4\",\"name\":\"azps-oxi4\",\"type\":\"paloaltonetworks.cloudngfw/localrulestacks\",\"location\":\"eastus\",\"tags\":{\"abc\":\"123\"},\"systemData\":{\"createdBy\":\"v-jinpel@microsoft.com\",\"createdByType\":\"User\",\"createdAt\":\"2023-07-21T10:15:01.8376738Z\",\"lastModifiedBy\":\"v-jinpel@microsoft.com\",\"lastModifiedByType\":\"User\",\"lastModifiedAt\":\"2023-07-21T10:15:39.1359477Z\"},\"properties\":{\"scope\":\"LOCAL\",\"description\":\"testing powershell\",\"provisioningState\":\"Succeeded\",\"defaultMode\":\"NONE\",\"panEtag\":\"7d55b11e-27af-11ee-b7e4-8a5ff8983af4\",\"minAppIdVersion\":\"8595-7473\",\"securityServices\":{\"vulnerabilityProfile\":\"BestPractice\",\"antiSpywareProfile\":\"BestPractice\",\"antiVirusProfile\":\"BestPractice\",\"urlFilteringProfile\":\"BestPractice\",\"fileBlockingProfile\":\"BestPractice\",\"dnsSubscription\":\"BestPractice\"}}}",
+      "isContentBase64": false
+    }
+  },
+  "AzPaloAltoNetworks+[NoContext]+UpdateViaIdentityLocalRulestack+$PATCH+https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/azps-testcase-pan/providers/PaloAltoNetworks.Cloudngfw/localRulestacks/azps-oxi4?api-version=2022-08-29+2": {
+    "Request": {
+      "Method": "PATCH",
+      "RequestUri": "https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/azps-testcase-pan/providers/PaloAltoNetworks.Cloudngfw/localRulestacks/azps-oxi4?api-version=2022-08-29",
+      "Content": "{\r\n  \"tags\": {\r\n    \"abc\": \"123\"\r\n  }\r\n}",
+      "isContentBase64": false,
+      "Headers": {
+      },
+      "ContentHeaders": {
+        "Content-Type": [ "application/json" ],
+        "Content-Length": [ "40" ]
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "ETag": [ "\"0a00aade-0000-0100-0000-64ba5ace0000\"" ],
+        "x-ms-ratelimit-remaining-subscription-writes": [ "1197" ],
+        "x-ms-providerhub-traffic": [ "True" ],
+        "Request-Context": [ "appId=cid-v1:4aa06bd6-38f4-4944-9612-cd84d39b5e90" ],
+        "mise-correlation-id": [ "e1acf48a-3d49-4c73-bff6-a5326f03a8a2" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "x-ms-request-id": [ "dd3eb809-48bd-4d34-ad94-a61748e05658" ],
+        "x-ms-correlation-request-id": [ "b8952104-d89c-4c27-beba-dd8ea2f0da8c" ],
+        "x-ms-routing-request-id": [ "SOUTHEASTASIA:20230721T101543Z:b8952104-d89c-4c27-beba-dd8ea2f0da8c" ],
+        "Date": [ "Fri, 21 Jul 2023 10:15:43 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "938" ],
+        "Content-Type": [ "application/json; charset=utf-8" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\"id\":\"/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/azps-testcase-pan/providers/PaloAltoNetworks.Cloudngfw/localRulestacks/azps-oxi4\",\"name\":\"azps-oxi4\",\"type\":\"paloaltonetworks.cloudngfw/localrulestacks\",\"location\":\"eastus\",\"tags\":{\"abc\":\"123\"},\"systemData\":{\"createdBy\":\"v-jinpel@microsoft.com\",\"createdByType\":\"User\",\"createdAt\":\"2023-07-21T10:15:01.8376738Z\",\"lastModifiedBy\":\"v-jinpel@microsoft.com\",\"lastModifiedByType\":\"User\",\"lastModifiedAt\":\"2023-07-21T10:15:42.3547454Z\"},\"properties\":{\"scope\":\"LOCAL\",\"description\":\"testing powershell\",\"provisioningState\":\"Succeeded\",\"defaultMode\":\"NONE\",\"panEtag\":\"7d55b11e-27af-11ee-b7e4-8a5ff8983af4\",\"minAppIdVersion\":\"8595-7473\",\"securityServices\":{\"vulnerabilityProfile\":\"BestPractice\",\"antiSpywareProfile\":\"BestPractice\",\"antiVirusProfile\":\"BestPractice\",\"urlFilteringProfile\":\"BestPractice\",\"fileBlockingProfile\":\"BestPractice\",\"dnsSubscription\":\"BestPractice\"}}}",
+      "isContentBase64": false
+    }
+  },
+  "AzPaloAltoNetworks+[NoContext]+CreatePrefixListLocalRulestack+$PUT+https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/azps-testcase-pan/providers/PaloAltoNetworks.Cloudngfw/localRulestacks/azps-oxi4/prefixlists/azps-i2lm?api-version=2022-08-29+1": {
+    "Request": {
+      "Method": "PUT",
+      "RequestUri": "https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/azps-testcase-pan/providers/PaloAltoNetworks.Cloudngfw/localRulestacks/azps-oxi4/prefixlists/azps-i2lm?api-version=2022-08-29",
+      "Content": "{\r\n  \"properties\": {\r\n    \"description\": \"creating prefix list\",\r\n    \"prefixList\": [ \"10.10.10.0/24\" ]\r\n  }\r\n}",
+      "isContentBase64": false,
+      "Headers": {
+      },
+      "ContentHeaders": {
+        "Content-Type": [ "application/json" ],
+        "Content-Length": [ "111" ]
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "x-ms-ratelimit-remaining-subscription-writes": [ "1196" ],
+        "x-ms-providerhub-traffic": [ "True" ],
+        "Request-Context": [ "appId=cid-v1:4aa06bd6-38f4-4944-9612-cd84d39b5e90" ],
+        "mise-correlation-id": [ "270acfac-82fe-4bd9-b1f6-818857fc206b" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "x-ms-request-id": [ "5ca268b9-afca-4d0c-8cfc-4e2dd9b5d406" ],
+        "x-ms-correlation-request-id": [ "cbce8843-0da4-47f7-81b2-60b2fd92d099" ],
+        "x-ms-routing-request-id": [ "SOUTHEASTASIA:20230721T101547Z:cbce8843-0da4-47f7-81b2-60b2fd92d099" ],
+        "Date": [ "Fri, 21 Jul 2023 10:15:46 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "656" ],
+        "Content-Type": [ "application/json; charset=utf-8" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\"id\":\"/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/azps-testcase-pan/providers/PaloAltoNetworks.Cloudngfw/localRulestacks/azps-oxi4/prefixlists/azps-i2lm\",\"name\":\"azps-i2lm\",\"type\":\"paloaltonetworks.cloudngfw/localrulestacks/prefixlists\",\"systemData\":{\"createdBy\":\"v-jinpel@microsoft.com\",\"createdByType\":\"User\",\"createdAt\":\"2023-07-21T10:15:44.104715Z\",\"lastModifiedBy\":\"v-jinpel@microsoft.com\",\"lastModifiedByType\":\"User\",\"lastModifiedAt\":\"2023-07-21T10:15:44.104715Z\"},\"properties\":{\"description\":\"creating prefix list\",\"prefixList\":[\"10.10.10.0/24\"],\"etag\":\"8f0b2574-27af-11ee-a8fb-8a5ff8983af4\",\"provisioningState\":\"Succeeded\"}}",
+      "isContentBase64": false
+    }
+  },
+  "AzPaloAltoNetworks+[NoContext]+CreatePrefixListLocalRulestack+$GET+https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/azps-testcase-pan/providers/PaloAltoNetworks.Cloudngfw/localRulestacks/azps-oxi4/prefixlists/azps-i2lm?api-version=2022-08-29+2": {
+    "Request": {
+      "Method": "GET",
+      "RequestUri": "https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/azps-testcase-pan/providers/PaloAltoNetworks.Cloudngfw/localRulestacks/azps-oxi4/prefixlists/azps-i2lm?api-version=2022-08-29",
+      "Content": null,
+      "isContentBase64": false,
+      "Headers": {
+        "Authorization": [ "[Filtered]" ],
+        "x-ms-unique-id": [ "12" ],
+        "x-ms-client-request-id": [ "fef96765-10e8-4c67-8dd5-c7bdc4bcc4b9" ],
+        "CommandName": [ "New-AzPaloAltoNetworksPrefixListLocalRulestack" ],
+        "FullCommandName": [ "New-AzPaloAltoNetworksPrefixListLocalRulestack_CreateExpanded" ],
+        "ParameterSetName": [ "__AllParameterSets" ],
+        "User-Agent": [ "AzurePowershell/v0.0.0", "PSVersion/v7.3.5", "Az.PaloAltoNetworks/0.2.0" ]
+      },
+      "ContentHeaders": {
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "x-ms-ratelimit-remaining-subscription-reads": [ "11994" ],
+        "x-ms-providerhub-traffic": [ "True" ],
+        "Request-Context": [ "appId=cid-v1:4aa06bd6-38f4-4944-9612-cd84d39b5e90" ],
+        "mise-correlation-id": [ "507baae1-eb5e-4fb9-8ea7-ca72d907b78d" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "x-ms-request-id": [ "e4b90077-a746-4e07-9c59-6a3263e49d52" ],
+        "x-ms-correlation-request-id": [ "4eb86a6d-8076-4c59-b1b7-1828ead6733a" ],
+        "x-ms-routing-request-id": [ "SOUTHEASTASIA:20230721T101618Z:4eb86a6d-8076-4c59-b1b7-1828ead6733a" ],
+        "Date": [ "Fri, 21 Jul 2023 10:16:17 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "395" ],
+        "Content-Type": [ "application/json; charset=utf-8" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\"id\":\"/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/azps-testcase-pan/providers/PaloAltoNetworks.Cloudngfw/localRulestacks/azps-oxi4/prefixlists/azps-i2lm\",\"name\":\"azps-i2lm\",\"type\":\"localRulestacks/prefixlists\",\"properties\":{\"description\":\"creating prefix list\",\"prefixList\":[\"10.10.10.0/24\"],\"etag\":\"8f0b2574-27af-11ee-a8fb-8a5ff8983af4\",\"provisioningState\":\"Succeeded\"}}",
+      "isContentBase64": false
+    }
+  },
+  "AzPaloAltoNetworks+[NoContext]+CreatePrefixListLocalRulestack+$GET+https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/azps-testcase-pan/providers/PaloAltoNetworks.Cloudngfw/localRulestacks/azps-oxi4/prefixlists/azps-i2lm?api-version=2022-08-29+3": {
+    "Request": {
+      "Method": "GET",
+      "RequestUri": "https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/azps-testcase-pan/providers/PaloAltoNetworks.Cloudngfw/localRulestacks/azps-oxi4/prefixlists/azps-i2lm?api-version=2022-08-29",
+      "Content": null,
+      "isContentBase64": false,
+      "Headers": {
+        "Authorization": [ "[Filtered]" ],
+        "x-ms-unique-id": [ "13" ],
+        "x-ms-client-request-id": [ "fef96765-10e8-4c67-8dd5-c7bdc4bcc4b9" ],
+        "CommandName": [ "New-AzPaloAltoNetworksPrefixListLocalRulestack" ],
+        "FullCommandName": [ "New-AzPaloAltoNetworksPrefixListLocalRulestack_CreateExpanded" ],
+        "ParameterSetName": [ "__AllParameterSets" ],
+        "User-Agent": [ "AzurePowershell/v0.0.0", "PSVersion/v7.3.5", "Az.PaloAltoNetworks/0.2.0" ]
+      },
+      "ContentHeaders": {
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "x-ms-ratelimit-remaining-subscription-reads": [ "11993" ],
+        "x-ms-providerhub-traffic": [ "True" ],
+        "Request-Context": [ "appId=cid-v1:4aa06bd6-38f4-4944-9612-cd84d39b5e90" ],
+        "mise-correlation-id": [ "4f7b7d31-8350-4231-a0e7-693220cab3e8" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "x-ms-request-id": [ "35617c1a-faea-44f7-9ca3-21f5c7d7adee" ],
+        "x-ms-correlation-request-id": [ "ad45343f-f98e-4cb8-abd5-2383455324f0" ],
+        "x-ms-routing-request-id": [ "SOUTHEASTASIA:20230721T101619Z:ad45343f-f98e-4cb8-abd5-2383455324f0" ],
+        "Date": [ "Fri, 21 Jul 2023 10:16:18 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "395" ],
+        "Content-Type": [ "application/json; charset=utf-8" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\"id\":\"/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/azps-testcase-pan/providers/PaloAltoNetworks.Cloudngfw/localRulestacks/azps-oxi4/prefixlists/azps-i2lm\",\"name\":\"azps-i2lm\",\"type\":\"localRulestacks/prefixlists\",\"properties\":{\"description\":\"creating prefix list\",\"prefixList\":[\"10.10.10.0/24\"],\"etag\":\"8f0b2574-27af-11ee-a8fb-8a5ff8983af4\",\"provisioningState\":\"Succeeded\"}}",
+      "isContentBase64": false
+    }
+  },
+  "AzPaloAltoNetworks+[NoContext]+ListPrefixListLocalRulestack+$GET+https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/azps-testcase-pan/providers/PaloAltoNetworks.Cloudngfw/localRulestacks/azps-oxi4/prefixlists?api-version=2022-08-29+1": {
+    "Request": {
+      "Method": "GET",
+      "RequestUri": "https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/azps-testcase-pan/providers/PaloAltoNetworks.Cloudngfw/localRulestacks/azps-oxi4/prefixlists?api-version=2022-08-29",
+      "Content": null,
+      "isContentBase64": false,
+      "Headers": {
+        "x-ms-unique-id": [ "14" ],
+        "x-ms-client-request-id": [ "d133ce19-1506-47a2-92b7-c2631faa7266" ],
+        "CommandName": [ "Get-AzPaloAltoNetworksPrefixListLocalRulestack" ],
+        "FullCommandName": [ "Get-AzPaloAltoNetworksPrefixListLocalRulestack_List" ],
+        "ParameterSetName": [ "__AllParameterSets" ],
+        "User-Agent": [ "AzurePowershell/v0.0.0", "PSVersion/v7.3.5", "Az.PaloAltoNetworks/0.2.0" ],
+        "Authorization": [ "[Filtered]" ]
+      },
+      "ContentHeaders": {
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "x-ms-ratelimit-remaining-subscription-reads": [ "11992" ],
+        "x-ms-providerhub-traffic": [ "True" ],
+        "Request-Context": [ "appId=cid-v1:4aa06bd6-38f4-4944-9612-cd84d39b5e90" ],
+        "mise-correlation-id": [ "1272bea8-c4c7-4595-909a-fd8a52093e41" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "x-ms-request-id": [ "159c2ab1-ee49-43a0-a415-6704bd23bb90" ],
+        "x-ms-correlation-request-id": [ "0b6e4153-0376-4794-9e9e-f95f7d3b0af2" ],
+        "x-ms-routing-request-id": [ "SOUTHEASTASIA:20230721T101620Z:0b6e4153-0376-4794-9e9e-f95f7d3b0af2" ],
+        "Date": [ "Fri, 21 Jul 2023 10:16:19 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "407" ],
+        "Content-Type": [ "application/json; charset=utf-8" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\"value\":[{\"id\":\"/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/azps-testcase-pan/providers/PaloAltoNetworks.Cloudngfw/localRulestacks/azps-oxi4/prefixlists/azps-i2lm\",\"name\":\"azps-i2lm\",\"type\":\"localRulestacks/prefixlists\",\"properties\":{\"description\":\"creating prefix list\",\"prefixList\":[\"10.10.10.0/24\"],\"etag\":\"8f0b2574-27af-11ee-a8fb-8a5ff8983af4\",\"provisioningState\":\"Succeeded\"}}]}",
+      "isContentBase64": false
+    }
+  },
+  "AzPaloAltoNetworks+[NoContext]+GetPrefixListLocalRulestack+$GET+https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/azps-testcase-pan/providers/PaloAltoNetworks.Cloudngfw/localRulestacks/azps-oxi4/prefixlists/azps-i2lm?api-version=2022-08-29+1": {
+    "Request": {
+      "Method": "GET",
+      "RequestUri": "https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/azps-testcase-pan/providers/PaloAltoNetworks.Cloudngfw/localRulestacks/azps-oxi4/prefixlists/azps-i2lm?api-version=2022-08-29",
+      "Content": null,
+      "isContentBase64": false,
+      "Headers": {
+        "x-ms-unique-id": [ "15" ],
+        "x-ms-client-request-id": [ "f3d7633a-8b32-4db6-afa0-0a55c2f65afc" ],
+        "CommandName": [ "Get-AzPaloAltoNetworksPrefixListLocalRulestack" ],
+        "FullCommandName": [ "Get-AzPaloAltoNetworksPrefixListLocalRulestack_Get" ],
+        "ParameterSetName": [ "__AllParameterSets" ],
+        "User-Agent": [ "AzurePowershell/v0.0.0", "PSVersion/v7.3.5", "Az.PaloAltoNetworks/0.2.0" ],
+        "Authorization": [ "[Filtered]" ]
+      },
+      "ContentHeaders": {
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "x-ms-ratelimit-remaining-subscription-reads": [ "11991" ],
+        "x-ms-providerhub-traffic": [ "True" ],
+        "Request-Context": [ "appId=cid-v1:4aa06bd6-38f4-4944-9612-cd84d39b5e90" ],
+        "mise-correlation-id": [ "b34aff0e-edf0-40ee-9e80-fd0b56260161" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "x-ms-request-id": [ "bb207c3d-77a0-41f5-9743-8b98b635176f" ],
+        "x-ms-correlation-request-id": [ "0eca5f19-f6e6-4b8e-9e73-acbc202b330d" ],
+        "x-ms-routing-request-id": [ "SOUTHEASTASIA:20230721T101621Z:0eca5f19-f6e6-4b8e-9e73-acbc202b330d" ],
+        "Date": [ "Fri, 21 Jul 2023 10:16:20 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "395" ],
+        "Content-Type": [ "application/json; charset=utf-8" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\"id\":\"/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/azps-testcase-pan/providers/PaloAltoNetworks.Cloudngfw/localRulestacks/azps-oxi4/prefixlists/azps-i2lm\",\"name\":\"azps-i2lm\",\"type\":\"localRulestacks/prefixlists\",\"properties\":{\"description\":\"creating prefix list\",\"prefixList\":[\"10.10.10.0/24\"],\"etag\":\"8f0b2574-27af-11ee-a8fb-8a5ff8983af4\",\"provisioningState\":\"Succeeded\"}}",
+      "isContentBase64": false
+    }
+  },
+  "AzPaloAltoNetworks+[NoContext]+CreateFqdnListLocalRulestack+$PUT+https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/azps-testcase-pan/providers/PaloAltoNetworks.Cloudngfw/localRulestacks/azps-oxi4/fqdnlists/azps-hqpn?api-version=2022-08-29+1": {
+    "Request": {
+      "Method": "PUT",
+      "RequestUri": "https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/azps-testcase-pan/providers/PaloAltoNetworks.Cloudngfw/localRulestacks/azps-oxi4/fqdnlists/azps-hqpn?api-version=2022-08-29",
+      "Content": "{\r\n  \"properties\": {\r\n    \"fqdnList\": [ \"www.google.com\" ]\r\n  }\r\n}",
+      "isContentBase64": false,
+      "Headers": {
+      },
+      "ContentHeaders": {
+        "Content-Type": [ "application/json" ],
+        "Content-Length": [ "66" ]
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "x-ms-ratelimit-remaining-subscription-writes": [ "1195" ],
+        "x-ms-providerhub-traffic": [ "True" ],
+        "Request-Context": [ "appId=cid-v1:4aa06bd6-38f4-4944-9612-cd84d39b5e90" ],
+        "mise-correlation-id": [ "f0e82bf9-f8fd-4206-912a-bb47d777f169" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "x-ms-request-id": [ "25c440b5-429a-435d-bb7b-2fb77fd18e61" ],
+        "x-ms-correlation-request-id": [ "151e073d-bd34-463c-93f6-c664086a5a33" ],
+        "x-ms-routing-request-id": [ "SOUTHEASTASIA:20230721T101622Z:151e073d-bd34-463c-93f6-c664086a5a33" ],
+        "Date": [ "Fri, 21 Jul 2023 10:16:21 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "616" ],
+        "Content-Type": [ "application/json; charset=utf-8" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\"id\":\"/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/azps-testcase-pan/providers/PaloAltoNetworks.Cloudngfw/localRulestacks/azps-oxi4/fqdnlists/azps-hqpn\",\"name\":\"azps-hqpn\",\"type\":\"paloaltonetworks.cloudngfw/localrulestacks/fqdnlists\",\"systemData\":{\"createdBy\":\"v-jinpel@microsoft.com\",\"createdByType\":\"User\",\"createdAt\":\"2023-07-21T10:16:21.4489924Z\",\"lastModifiedBy\":\"v-jinpel@microsoft.com\",\"lastModifiedByType\":\"User\",\"lastModifiedAt\":\"2023-07-21T10:16:21.4489924Z\"},\"properties\":{\"fqdnList\":[\"www.google.com\"],\"etag\":\"a4350c9e-27af-11ee-a896-8a5ff8983af4\",\"provisioningState\":\"Succeeded\"}}",
+      "isContentBase64": false
+    }
+  },
+  "AzPaloAltoNetworks+[NoContext]+CreateFqdnListLocalRulestack+$GET+https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/azps-testcase-pan/providers/PaloAltoNetworks.Cloudngfw/localRulestacks/azps-oxi4/fqdnlists/azps-hqpn?api-version=2022-08-29+2": {
+    "Request": {
+      "Method": "GET",
+      "RequestUri": "https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/azps-testcase-pan/providers/PaloAltoNetworks.Cloudngfw/localRulestacks/azps-oxi4/fqdnlists/azps-hqpn?api-version=2022-08-29",
+      "Content": null,
+      "isContentBase64": false,
+      "Headers": {
+        "Authorization": [ "[Filtered]" ],
+        "x-ms-unique-id": [ "17" ],
+        "x-ms-client-request-id": [ "da486924-63e8-4dc2-9d09-691eafeb15f0" ],
+        "CommandName": [ "New-AzPaloAltoNetworksFqdnListLocalRulestack" ],
+        "FullCommandName": [ "New-AzPaloAltoNetworksFqdnListLocalRulestack_CreateExpanded" ],
+        "ParameterSetName": [ "__AllParameterSets" ],
+        "User-Agent": [ "AzurePowershell/v0.0.0", "PSVersion/v7.3.5", "Az.PaloAltoNetworks/0.2.0" ]
+      },
+      "ContentHeaders": {
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "x-ms-ratelimit-remaining-subscription-reads": [ "11990" ],
+        "x-ms-providerhub-traffic": [ "True" ],
+        "Request-Context": [ "appId=cid-v1:4aa06bd6-38f4-4944-9612-cd84d39b5e90" ],
+        "mise-correlation-id": [ "14ffcbab-f3f1-4966-a228-c39903e9b546" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "x-ms-request-id": [ "4da5ebe4-7e6f-4b1a-8c7e-7589712d65fe" ],
+        "x-ms-correlation-request-id": [ "259e2d05-399f-4b32-b68c-26047ab8a2a9" ],
+        "x-ms-routing-request-id": [ "SOUTHEASTASIA:20230721T101654Z:259e2d05-399f-4b32-b68c-26047ab8a2a9" ],
+        "Date": [ "Fri, 21 Jul 2023 10:16:54 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "355" ],
+        "Content-Type": [ "application/json; charset=utf-8" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\"id\":\"/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/azps-testcase-pan/providers/PaloAltoNetworks.Cloudngfw/localRulestacks/azps-oxi4/fqdnlists/azps-hqpn\",\"name\":\"azps-hqpn\",\"type\":\"localRulestacks/prefixlists\",\"properties\":{\"fqdnList\":[\"www.google.com\"],\"etag\":\"a4350c9e-27af-11ee-a896-8a5ff8983af4\",\"provisioningState\":\"Succeeded\"}}",
+      "isContentBase64": false
+    }
+  },
+  "AzPaloAltoNetworks+[NoContext]+CreateFqdnListLocalRulestack+$GET+https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/azps-testcase-pan/providers/PaloAltoNetworks.Cloudngfw/localRulestacks/azps-oxi4/fqdnlists/azps-hqpn?api-version=2022-08-29+3": {
+    "Request": {
+      "Method": "GET",
+      "RequestUri": "https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/azps-testcase-pan/providers/PaloAltoNetworks.Cloudngfw/localRulestacks/azps-oxi4/fqdnlists/azps-hqpn?api-version=2022-08-29",
+      "Content": null,
+      "isContentBase64": false,
+      "Headers": {
+        "Authorization": [ "[Filtered]" ],
+        "x-ms-unique-id": [ "18" ],
+        "x-ms-client-request-id": [ "da486924-63e8-4dc2-9d09-691eafeb15f0" ],
+        "CommandName": [ "New-AzPaloAltoNetworksFqdnListLocalRulestack" ],
+        "FullCommandName": [ "New-AzPaloAltoNetworksFqdnListLocalRulestack_CreateExpanded" ],
+        "ParameterSetName": [ "__AllParameterSets" ],
+        "User-Agent": [ "AzurePowershell/v0.0.0", "PSVersion/v7.3.5", "Az.PaloAltoNetworks/0.2.0" ]
+      },
+      "ContentHeaders": {
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "x-ms-ratelimit-remaining-subscription-reads": [ "11989" ],
+        "x-ms-providerhub-traffic": [ "True" ],
+        "Request-Context": [ "appId=cid-v1:4aa06bd6-38f4-4944-9612-cd84d39b5e90" ],
+        "mise-correlation-id": [ "1f8df158-d22f-488d-bf3d-afb9166d706c" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "x-ms-request-id": [ "44ea9f89-f91a-45ee-80d6-be420ff088b8" ],
+        "x-ms-correlation-request-id": [ "ebcc3663-ad27-4943-85aa-b0104476d0cd" ],
+        "x-ms-routing-request-id": [ "SOUTHEASTASIA:20230721T101655Z:ebcc3663-ad27-4943-85aa-b0104476d0cd" ],
+        "Date": [ "Fri, 21 Jul 2023 10:16:55 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "355" ],
+        "Content-Type": [ "application/json; charset=utf-8" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\"id\":\"/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/azps-testcase-pan/providers/PaloAltoNetworks.Cloudngfw/localRulestacks/azps-oxi4/fqdnlists/azps-hqpn\",\"name\":\"azps-hqpn\",\"type\":\"localRulestacks/prefixlists\",\"properties\":{\"fqdnList\":[\"www.google.com\"],\"etag\":\"a4350c9e-27af-11ee-a896-8a5ff8983af4\",\"provisioningState\":\"Succeeded\"}}",
+      "isContentBase64": false
+    }
+  },
+  "AzPaloAltoNetworks+[NoContext]+ListFqdnListLocalRulestack+$GET+https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/azps-testcase-pan/providers/PaloAltoNetworks.Cloudngfw/localRulestacks/azps-oxi4/fqdnlists?api-version=2022-08-29+1": {
+    "Request": {
+      "Method": "GET",
+      "RequestUri": "https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/azps-testcase-pan/providers/PaloAltoNetworks.Cloudngfw/localRulestacks/azps-oxi4/fqdnlists?api-version=2022-08-29",
+      "Content": null,
+      "isContentBase64": false,
+      "Headers": {
+        "x-ms-unique-id": [ "19" ],
+        "x-ms-client-request-id": [ "020208f4-48c0-4bc1-8bfc-cf47a7946741" ],
+        "CommandName": [ "Get-AzPaloAltoNetworksFqdnListLocalRulestack" ],
+        "FullCommandName": [ "Get-AzPaloAltoNetworksFqdnListLocalRulestack_List" ],
+        "ParameterSetName": [ "__AllParameterSets" ],
+        "User-Agent": [ "AzurePowershell/v0.0.0", "PSVersion/v7.3.5", "Az.PaloAltoNetworks/0.2.0" ],
+        "Authorization": [ "[Filtered]" ]
+      },
+      "ContentHeaders": {
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "x-ms-ratelimit-remaining-subscription-reads": [ "11988" ],
+        "x-ms-providerhub-traffic": [ "True" ],
+        "Request-Context": [ "appId=cid-v1:4aa06bd6-38f4-4944-9612-cd84d39b5e90" ],
+        "mise-correlation-id": [ "852b3ffc-8bd4-4579-ad38-b050d03a5408" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "x-ms-request-id": [ "763dbc23-3421-4345-8e9e-828b0e9d00ee" ],
+        "x-ms-correlation-request-id": [ "bcfe0e9c-61f4-47b3-9ea9-ed762f3d64ec" ],
+        "x-ms-routing-request-id": [ "SOUTHEASTASIA:20230721T101656Z:bcfe0e9c-61f4-47b3-9ea9-ed762f3d64ec" ],
+        "Date": [ "Fri, 21 Jul 2023 10:16:56 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "367" ],
+        "Content-Type": [ "application/json; charset=utf-8" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\"value\":[{\"id\":\"/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/azps-testcase-pan/providers/PaloAltoNetworks.Cloudngfw/localRulestacks/azps-oxi4/fqdnlists/azps-hqpn\",\"name\":\"azps-hqpn\",\"type\":\"localRulestacks/prefixlists\",\"properties\":{\"fqdnList\":[\"www.google.com\"],\"etag\":\"a4350c9e-27af-11ee-a896-8a5ff8983af4\",\"provisioningState\":\"Succeeded\"}}]}",
+      "isContentBase64": false
+    }
+  },
+  "AzPaloAltoNetworks+[NoContext]+GetFqdnListLocalRulestack+$GET+https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/azps-testcase-pan/providers/PaloAltoNetworks.Cloudngfw/localRulestacks/azps-oxi4/fqdnlists/azps-hqpn?api-version=2022-08-29+1": {
+    "Request": {
+      "Method": "GET",
+      "RequestUri": "https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/azps-testcase-pan/providers/PaloAltoNetworks.Cloudngfw/localRulestacks/azps-oxi4/fqdnlists/azps-hqpn?api-version=2022-08-29",
+      "Content": null,
+      "isContentBase64": false,
+      "Headers": {
+        "x-ms-unique-id": [ "20" ],
+        "x-ms-client-request-id": [ "a3be34b4-3384-454b-8648-3f9cfa595027" ],
+        "CommandName": [ "Get-AzPaloAltoNetworksFqdnListLocalRulestack" ],
+        "FullCommandName": [ "Get-AzPaloAltoNetworksFqdnListLocalRulestack_Get" ],
+        "ParameterSetName": [ "__AllParameterSets" ],
+        "User-Agent": [ "AzurePowershell/v0.0.0", "PSVersion/v7.3.5", "Az.PaloAltoNetworks/0.2.0" ],
+        "Authorization": [ "[Filtered]" ]
+      },
+      "ContentHeaders": {
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "x-ms-ratelimit-remaining-subscription-reads": [ "11987" ],
+        "x-ms-providerhub-traffic": [ "True" ],
+        "Request-Context": [ "appId=cid-v1:4aa06bd6-38f4-4944-9612-cd84d39b5e90" ],
+        "mise-correlation-id": [ "2ee714e1-d85b-4e22-8b5f-8b81565d4c78" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "x-ms-request-id": [ "5ca2ae5d-4767-486c-98e3-a0037fb26b2c" ],
+        "x-ms-correlation-request-id": [ "1d2fd407-87dc-4749-aba7-1ef76914c90f" ],
+        "x-ms-routing-request-id": [ "SOUTHEASTASIA:20230721T101657Z:1d2fd407-87dc-4749-aba7-1ef76914c90f" ],
+        "Date": [ "Fri, 21 Jul 2023 10:16:57 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "355" ],
+        "Content-Type": [ "application/json; charset=utf-8" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\"id\":\"/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/azps-testcase-pan/providers/PaloAltoNetworks.Cloudngfw/localRulestacks/azps-oxi4/fqdnlists/azps-hqpn\",\"name\":\"azps-hqpn\",\"type\":\"localRulestacks/prefixlists\",\"properties\":{\"fqdnList\":[\"www.google.com\"],\"etag\":\"a4350c9e-27af-11ee-a896-8a5ff8983af4\",\"provisioningState\":\"Succeeded\"}}",
+      "isContentBase64": false
+    }
+  },
+  "AzPaloAltoNetworks+[NoContext]+CreateLocalRule+$PUT+https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/azps-testcase-pan/providers/PaloAltoNetworks.Cloudngfw/localRulestacks/azps-oxi4/localRules/1?api-version=2022-08-29+1": {
+    "Request": {
+      "Method": "PUT",
+      "RequestUri": "https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/azps-testcase-pan/providers/PaloAltoNetworks.Cloudngfw/localRulestacks/azps-oxi4/localRules/1?api-version=2022-08-29",
+      "Content": "{\r\n  \"properties\": {\r\n    \"ruleName\": \"azps-1us2\",\r\n    \"description\": \"testing\"\r\n  }\r\n}",
+      "isContentBase64": false,
+      "Headers": {
+      },
+      "ContentHeaders": {
+        "Content-Type": [ "application/json" ],
+        "Content-Length": [ "88" ]
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "x-ms-ratelimit-remaining-subscription-writes": [ "1194" ],
+        "x-ms-providerhub-traffic": [ "True" ],
+        "Request-Context": [ "appId=cid-v1:4aa06bd6-38f4-4944-9612-cd84d39b5e90" ],
+        "mise-correlation-id": [ "16443a35-441b-446e-86b1-b48db7687a1f" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "x-ms-request-id": [ "604c2a7a-460a-4fac-ad61-134c8b8777e2" ],
+        "x-ms-correlation-request-id": [ "99228c6c-fb68-481c-9031-8206df04fe26" ],
+        "x-ms-routing-request-id": [ "SOUTHEASTASIA:20230721T101659Z:99228c6c-fb68-481c-9031-8206df04fe26" ],
+        "Date": [ "Fri, 21 Jul 2023 10:16:59 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "1011" ],
+        "Content-Type": [ "application/json; charset=utf-8" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\"id\":\"/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/azps-testcase-pan/providers/PaloAltoNetworks.Cloudngfw/localRulestacks/azps-oxi4/localRules/1\",\"name\":\"1\",\"type\":\"paloaltonetworks.cloudngfw/localrulestacks/localrules\",\"systemData\":{\"createdBy\":\"v-jinpel@microsoft.com\",\"createdByType\":\"User\",\"createdAt\":\"2023-07-21T10:16:57.8401807Z\",\"lastModifiedBy\":\"v-jinpel@microsoft.com\",\"lastModifiedByType\":\"User\",\"lastModifiedAt\":\"2023-07-21T10:16:57.8401807Z\"},\"properties\":{\"ruleName\":\"azps-1us2\",\"priority\":1,\"description\":\"testing\",\"ruleState\":\"ENABLED\",\"source\":{\"cidrs\":[\"any\"],\"countries\":null,\"feeds\":null,\"prefixLists\":null},\"negateSource\":\"FALSE\",\"destination\":{\"cidrs\":[\"any\"],\"countries\":null,\"feeds\":null,\"prefixLists\":null,\"fqdnLists\":null},\"negateDestination\":\"FALSE\",\"applications\":[\"any\"],\"protocol\":\"application-default\",\"actionType\":\"Allow\",\"enableLogging\":\"DISABLED\",\"decryptionRuleType\":\"None\",\"etag\":\"ba3126cc-27af-11ee-88fe-8a5ff8983af4\",\"provisioningState\":\"Succeeded\"}}",
+      "isContentBase64": false
+    }
+  },
+  "AzPaloAltoNetworks+[NoContext]+CreateLocalRule+$GET+https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/azps-testcase-pan/providers/PaloAltoNetworks.Cloudngfw/localRulestacks/azps-oxi4/localRules/1?api-version=2022-08-29+2": {
+    "Request": {
+      "Method": "GET",
+      "RequestUri": "https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/azps-testcase-pan/providers/PaloAltoNetworks.Cloudngfw/localRulestacks/azps-oxi4/localRules/1?api-version=2022-08-29",
+      "Content": null,
+      "isContentBase64": false,
+      "Headers": {
+        "Authorization": [ "[Filtered]" ],
+        "x-ms-unique-id": [ "22" ],
+        "x-ms-client-request-id": [ "0468c84a-8dec-4d47-9c1c-4ff200f4a56d" ],
+        "CommandName": [ "New-AzPaloAltoNetworksLocalRule" ],
+        "FullCommandName": [ "New-AzPaloAltoNetworksLocalRule_CreateExpanded" ],
+        "ParameterSetName": [ "__AllParameterSets" ],
+        "User-Agent": [ "AzurePowershell/v0.0.0", "PSVersion/v7.3.5", "Az.PaloAltoNetworks/0.2.0" ]
+      },
+      "ContentHeaders": {
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "x-ms-ratelimit-remaining-subscription-reads": [ "11986" ],
+        "x-ms-providerhub-traffic": [ "True" ],
+        "Request-Context": [ "appId=cid-v1:4aa06bd6-38f4-4944-9612-cd84d39b5e90" ],
+        "mise-correlation-id": [ "9229e456-e7bb-47a0-bdd0-09af78baff65" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "x-ms-request-id": [ "3d59b738-51e1-47d8-a7cd-ec308d70c74d" ],
+        "x-ms-correlation-request-id": [ "f22da1fb-6896-478e-a566-beca5b2ae91b" ],
+        "x-ms-routing-request-id": [ "SOUTHEASTASIA:20230721T101730Z:f22da1fb-6896-478e-a566-beca5b2ae91b" ],
+        "Date": [ "Fri, 21 Jul 2023 10:17:30 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "716" ],
+        "Content-Type": [ "application/json; charset=utf-8" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\"id\":\"/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/azps-testcase-pan/providers/PaloAltoNetworks.Cloudngfw/localRulestacks/azps-oxi4/localRules/1\",\"name\":\"1\",\"type\":\"localRulestacks/localRules\",\"properties\":{\"ruleName\":\"azps-1us2\",\"priority\":1,\"description\":\"testing\",\"ruleState\":\"ENABLED\",\"source\":{\"cidrs\":[\"any\"],\"countries\":null,\"feeds\":null,\"prefixLists\":null},\"negateSource\":\"FALSE\",\"destination\":{\"cidrs\":[\"any\"],\"countries\":null,\"feeds\":null,\"prefixLists\":null,\"fqdnLists\":null},\"negateDestination\":\"FALSE\",\"applications\":[\"any\"],\"protocol\":\"application-default\",\"actionType\":\"Allow\",\"enableLogging\":\"DISABLED\",\"decryptionRuleType\":\"None\",\"etag\":\"ba3126cc-27af-11ee-88fe-8a5ff8983af4\"}}",
+      "isContentBase64": false
+    }
+  },
+  "AzPaloAltoNetworks+[NoContext]+ListLocalRule+$GET+https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/azps-testcase-pan/providers/PaloAltoNetworks.Cloudngfw/localRulestacks/azps-oxi4/localRules?api-version=2022-08-29+1": {
+    "Request": {
+      "Method": "GET",
+      "RequestUri": "https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/azps-testcase-pan/providers/PaloAltoNetworks.Cloudngfw/localRulestacks/azps-oxi4/localRules?api-version=2022-08-29",
+      "Content": null,
+      "isContentBase64": false,
+      "Headers": {
+        "x-ms-unique-id": [ "23" ],
+        "x-ms-client-request-id": [ "8e30efe5-f8dc-408c-8459-131cf817c165" ],
+        "CommandName": [ "Get-AzPaloAltoNetworksLocalRule" ],
+        "FullCommandName": [ "Get-AzPaloAltoNetworksLocalRule_List" ],
+        "ParameterSetName": [ "__AllParameterSets" ],
+        "User-Agent": [ "AzurePowershell/v0.0.0", "PSVersion/v7.3.5", "Az.PaloAltoNetworks/0.2.0" ],
+        "Authorization": [ "[Filtered]" ]
+      },
+      "ContentHeaders": {
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "x-ms-ratelimit-remaining-subscription-reads": [ "11985" ],
+        "x-ms-providerhub-traffic": [ "True" ],
+        "Request-Context": [ "appId=cid-v1:4aa06bd6-38f4-4944-9612-cd84d39b5e90" ],
+        "mise-correlation-id": [ "898d3994-1f14-412c-b46e-657d31f31e44" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "x-ms-request-id": [ "35e726c5-5054-4014-827b-b20f15604856" ],
+        "x-ms-correlation-request-id": [ "081cce42-4695-48bf-907d-f54876b1c3c2" ],
+        "x-ms-routing-request-id": [ "SOUTHEASTASIA:20230721T101731Z:081cce42-4695-48bf-907d-f54876b1c3c2" ],
+        "Date": [ "Fri, 21 Jul 2023 10:17:31 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "728" ],
+        "Content-Type": [ "application/json; charset=utf-8" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\"value\":[{\"id\":\"/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/azps-testcase-pan/providers/PaloAltoNetworks.Cloudngfw/localRulestacks/azps-oxi4/localRules/1\",\"name\":\"1\",\"type\":\"localRulestacks/localRules\",\"properties\":{\"ruleName\":\"azps-1us2\",\"priority\":1,\"description\":\"testing\",\"ruleState\":\"ENABLED\",\"source\":{\"cidrs\":[\"any\"],\"countries\":null,\"feeds\":null,\"prefixLists\":null},\"negateSource\":\"FALSE\",\"destination\":{\"cidrs\":[\"any\"],\"countries\":null,\"feeds\":null,\"prefixLists\":null,\"fqdnLists\":null},\"negateDestination\":\"FALSE\",\"applications\":[\"any\"],\"protocol\":\"application-default\",\"actionType\":\"Allow\",\"enableLogging\":\"DISABLED\",\"decryptionRuleType\":\"None\",\"etag\":\"ba3126cc-27af-11ee-88fe-8a5ff8983af4\"}}]}",
+      "isContentBase64": false
+    }
+  },
+  "AzPaloAltoNetworks+[NoContext]+GetLocalRule+$GET+https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/azps-testcase-pan/providers/PaloAltoNetworks.Cloudngfw/localRulestacks/azps-oxi4/localRules/1?api-version=2022-08-29+1": {
+    "Request": {
+      "Method": "GET",
+      "RequestUri": "https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/azps-testcase-pan/providers/PaloAltoNetworks.Cloudngfw/localRulestacks/azps-oxi4/localRules/1?api-version=2022-08-29",
+      "Content": null,
+      "isContentBase64": false,
+      "Headers": {
+        "x-ms-unique-id": [ "24" ],
+        "x-ms-client-request-id": [ "5fb25d22-40ee-4809-bef7-1a18e2e63a30" ],
+        "CommandName": [ "Get-AzPaloAltoNetworksLocalRule" ],
+        "FullCommandName": [ "Get-AzPaloAltoNetworksLocalRule_Get" ],
+        "ParameterSetName": [ "__AllParameterSets" ],
+        "User-Agent": [ "AzurePowershell/v0.0.0", "PSVersion/v7.3.5", "Az.PaloAltoNetworks/0.2.0" ],
+        "Authorization": [ "[Filtered]" ]
+      },
+      "ContentHeaders": {
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "x-ms-ratelimit-remaining-subscription-reads": [ "11984" ],
+        "x-ms-providerhub-traffic": [ "True" ],
+        "Request-Context": [ "appId=cid-v1:4aa06bd6-38f4-4944-9612-cd84d39b5e90" ],
+        "mise-correlation-id": [ "f5194361-6cfd-44e5-b883-621e74daace9" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "x-ms-request-id": [ "f13b2cec-70bf-4314-84b0-b1866eb46d02" ],
+        "x-ms-correlation-request-id": [ "36372729-2d51-40b3-bde1-bfd395209b62" ],
+        "x-ms-routing-request-id": [ "SOUTHEASTASIA:20230721T101732Z:36372729-2d51-40b3-bde1-bfd395209b62" ],
+        "Date": [ "Fri, 21 Jul 2023 10:17:32 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "716" ],
+        "Content-Type": [ "application/json; charset=utf-8" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\"id\":\"/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/azps-testcase-pan/providers/PaloAltoNetworks.Cloudngfw/localRulestacks/azps-oxi4/localRules/1\",\"name\":\"1\",\"type\":\"localRulestacks/localRules\",\"properties\":{\"ruleName\":\"azps-1us2\",\"priority\":1,\"description\":\"testing\",\"ruleState\":\"ENABLED\",\"source\":{\"cidrs\":[\"any\"],\"countries\":null,\"feeds\":null,\"prefixLists\":null},\"negateSource\":\"FALSE\",\"destination\":{\"cidrs\":[\"any\"],\"countries\":null,\"feeds\":null,\"prefixLists\":null,\"fqdnLists\":null},\"negateDestination\":\"FALSE\",\"applications\":[\"any\"],\"protocol\":\"application-default\",\"actionType\":\"Allow\",\"enableLogging\":\"DISABLED\",\"decryptionRuleType\":\"None\",\"etag\":\"ba3126cc-27af-11ee-88fe-8a5ff8983af4\"}}",
+      "isContentBase64": false
+    }
+  },
+  "AzPaloAltoNetworks+[NoContext]+CreateCertificateObjectLocalRulestack+$PUT+https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/azps-testcase-pan/providers/PaloAltoNetworks.Cloudngfw/localRulestacks/azps-oxi4/certificates/azps-vlq2?api-version=2022-08-29+1": {
+    "Request": {
+      "Method": "PUT",
+      "RequestUri": "https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/azps-testcase-pan/providers/PaloAltoNetworks.Cloudngfw/localRulestacks/azps-oxi4/certificates/azps-vlq2?api-version=2022-08-29",
+      "Content": "{\r\n  \"properties\": {\r\n    \"certificateSelfSigned\": \"TRUE\"\r\n  }\r\n}",
+      "isContentBase64": false,
+      "Headers": {
+      },
+      "ContentHeaders": {
+        "Content-Type": [ "application/json" ],
+        "Content-Length": [ "65" ]
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "x-ms-ratelimit-remaining-subscription-writes": [ "1193" ],
+        "x-ms-providerhub-traffic": [ "True" ],
+        "Request-Context": [ "appId=cid-v1:4aa06bd6-38f4-4944-9612-cd84d39b5e90" ],
+        "mise-correlation-id": [ "c5208d9d-f3f0-4939-8a74-34afedff628e" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "x-ms-request-id": [ "f08bce9e-be02-4ad2-b451-f64f99084777" ],
+        "x-ms-correlation-request-id": [ "cc9b1a08-9356-4b35-8a34-5b5b9d70e1eb" ],
+        "x-ms-routing-request-id": [ "SOUTHEASTASIA:20230721T101734Z:cc9b1a08-9356-4b35-8a34-5b5b9d70e1eb" ],
+        "Date": [ "Fri, 21 Jul 2023 10:17:34 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "623" ],
+        "Content-Type": [ "application/json; charset=utf-8" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\"id\":\"/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/azps-testcase-pan/providers/PaloAltoNetworks.Cloudngfw/localRulestacks/azps-oxi4/certificates/azps-vlq2\",\"name\":\"azps-vlq2\",\"type\":\"paloaltonetworks.cloudngfw/localrulestacks/certificates\",\"systemData\":{\"createdBy\":\"v-jinpel@microsoft.com\",\"createdByType\":\"User\",\"createdAt\":\"2023-07-21T10:17:32.8562485Z\",\"lastModifiedBy\":\"v-jinpel@microsoft.com\",\"lastModifiedByType\":\"User\",\"lastModifiedAt\":\"2023-07-21T10:17:32.8562485Z\"},\"properties\":{\"certificateSelfSigned\":\"TRUE\",\"etag\":\"cefac874-27af-11ee-8036-8a5ff8983af4\",\"provisioningState\":\"Succeeded\"}}",
+      "isContentBase64": false
+    }
+  },
+  "AzPaloAltoNetworks+[NoContext]+CreateCertificateObjectLocalRulestack+$GET+https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/azps-testcase-pan/providers/PaloAltoNetworks.Cloudngfw/localRulestacks/azps-oxi4/certificates/azps-vlq2?api-version=2022-08-29+2": {
+    "Request": {
+      "Method": "GET",
+      "RequestUri": "https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/azps-testcase-pan/providers/PaloAltoNetworks.Cloudngfw/localRulestacks/azps-oxi4/certificates/azps-vlq2?api-version=2022-08-29",
+      "Content": null,
+      "isContentBase64": false,
+      "Headers": {
+        "Authorization": [ "[Filtered]" ],
+        "x-ms-unique-id": [ "26" ],
+        "x-ms-client-request-id": [ "acbf3168-5bd8-4150-8b59-64b0ef4c08fd" ],
+        "CommandName": [ "New-AzPaloAltoNetworksCertificateObjectLocalRulestack" ],
+        "FullCommandName": [ "New-AzPaloAltoNetworksCertificateObjectLocalRulestack_CreateExpanded" ],
+        "ParameterSetName": [ "__AllParameterSets" ],
+        "User-Agent": [ "AzurePowershell/v0.0.0", "PSVersion/v7.3.5", "Az.PaloAltoNetworks/0.2.0" ]
+      },
+      "ContentHeaders": {
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "x-ms-ratelimit-remaining-subscription-reads": [ "11983" ],
+        "x-ms-providerhub-traffic": [ "True" ],
+        "Request-Context": [ "appId=cid-v1:4aa06bd6-38f4-4944-9612-cd84d39b5e90" ],
+        "mise-correlation-id": [ "35437d22-2f45-4371-b9a5-94b872bb4f37" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "x-ms-request-id": [ "664eb69b-e983-4d6a-8c6a-5cfa02c31f79" ],
+        "x-ms-correlation-request-id": [ "66a2faac-68dc-4ee2-b551-ff703bafc9d1" ],
+        "x-ms-routing-request-id": [ "SOUTHEASTASIA:20230721T101805Z:66a2faac-68dc-4ee2-b551-ff703bafc9d1" ],
+        "Date": [ "Fri, 21 Jul 2023 10:18:04 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "360" ],
+        "Content-Type": [ "application/json; charset=utf-8" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\"id\":\"/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/azps-testcase-pan/providers/PaloAltoNetworks.Cloudngfw/localRulestacks/azps-oxi4/certificates/azps-vlq2\",\"name\":\"azps-vlq2\",\"type\":\"localRulestacks/certificates\",\"properties\":{\"certificateSelfSigned\":\"TRUE\",\"etag\":\"cefac874-27af-11ee-8036-8a5ff8983af4\",\"provisioningState\":\"Succeeded\"}}",
+      "isContentBase64": false
+    }
+  },
+  "AzPaloAltoNetworks+[NoContext]+CreateCertificateObjectLocalRulestack+$GET+https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/azps-testcase-pan/providers/PaloAltoNetworks.Cloudngfw/localRulestacks/azps-oxi4/certificates/azps-vlq2?api-version=2022-08-29+3": {
+    "Request": {
+      "Method": "GET",
+      "RequestUri": "https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/azps-testcase-pan/providers/PaloAltoNetworks.Cloudngfw/localRulestacks/azps-oxi4/certificates/azps-vlq2?api-version=2022-08-29",
+      "Content": null,
+      "isContentBase64": false,
+      "Headers": {
+        "Authorization": [ "[Filtered]" ],
+        "x-ms-unique-id": [ "27" ],
+        "x-ms-client-request-id": [ "acbf3168-5bd8-4150-8b59-64b0ef4c08fd" ],
+        "CommandName": [ "New-AzPaloAltoNetworksCertificateObjectLocalRulestack" ],
+        "FullCommandName": [ "New-AzPaloAltoNetworksCertificateObjectLocalRulestack_CreateExpanded" ],
+        "ParameterSetName": [ "__AllParameterSets" ],
+        "User-Agent": [ "AzurePowershell/v0.0.0", "PSVersion/v7.3.5", "Az.PaloAltoNetworks/0.2.0" ]
+      },
+      "ContentHeaders": {
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "x-ms-ratelimit-remaining-subscription-reads": [ "11982" ],
+        "x-ms-providerhub-traffic": [ "True" ],
+        "Request-Context": [ "appId=cid-v1:4aa06bd6-38f4-4944-9612-cd84d39b5e90" ],
+        "mise-correlation-id": [ "91dd26c1-449d-425a-a4b4-355154c3f604" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "x-ms-request-id": [ "73ce62a3-d65a-46f5-95d0-c09392a2ca23" ],
+        "x-ms-correlation-request-id": [ "147eb368-3267-4ff6-960b-8a997faa9969" ],
+        "x-ms-routing-request-id": [ "SOUTHEASTASIA:20230721T101806Z:147eb368-3267-4ff6-960b-8a997faa9969" ],
+        "Date": [ "Fri, 21 Jul 2023 10:18:05 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "360" ],
+        "Content-Type": [ "application/json; charset=utf-8" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\"id\":\"/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/azps-testcase-pan/providers/PaloAltoNetworks.Cloudngfw/localRulestacks/azps-oxi4/certificates/azps-vlq2\",\"name\":\"azps-vlq2\",\"type\":\"localRulestacks/certificates\",\"properties\":{\"certificateSelfSigned\":\"TRUE\",\"etag\":\"cefac874-27af-11ee-8036-8a5ff8983af4\",\"provisioningState\":\"Succeeded\"}}",
+      "isContentBase64": false
+    }
+  },
+  "AzPaloAltoNetworks+[NoContext]+ListCertificateObjectLocalRulestack+$GET+https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/azps-testcase-pan/providers/PaloAltoNetworks.Cloudngfw/localRulestacks/azps-oxi4/certificates?api-version=2022-08-29+1": {
+    "Request": {
+      "Method": "GET",
+      "RequestUri": "https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/azps-testcase-pan/providers/PaloAltoNetworks.Cloudngfw/localRulestacks/azps-oxi4/certificates?api-version=2022-08-29",
+      "Content": null,
+      "isContentBase64": false,
+      "Headers": {
+        "x-ms-unique-id": [ "28" ],
+        "x-ms-client-request-id": [ "ea46dcd1-a6e4-4752-b933-c0b89cdc3dff" ],
+        "CommandName": [ "Get-AzPaloAltoNetworksCertificateObjectLocalRulestack" ],
+        "FullCommandName": [ "Get-AzPaloAltoNetworksCertificateObjectLocalRulestack_List" ],
+        "ParameterSetName": [ "__AllParameterSets" ],
+        "User-Agent": [ "AzurePowershell/v0.0.0", "PSVersion/v7.3.5", "Az.PaloAltoNetworks/0.2.0" ],
+        "Authorization": [ "[Filtered]" ]
+      },
+      "ContentHeaders": {
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "x-ms-ratelimit-remaining-subscription-reads": [ "11981" ],
+        "x-ms-providerhub-traffic": [ "True" ],
+        "Request-Context": [ "appId=cid-v1:4aa06bd6-38f4-4944-9612-cd84d39b5e90" ],
+        "mise-correlation-id": [ "0adf58cd-95ca-4def-acd7-0eae4874fdbc" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "x-ms-request-id": [ "7e807cc8-855f-4338-a181-38b524ecc2fa" ],
+        "x-ms-correlation-request-id": [ "76df69b6-15a2-4287-b555-ce731f585ee5" ],
+        "x-ms-routing-request-id": [ "SOUTHEASTASIA:20230721T101807Z:76df69b6-15a2-4287-b555-ce731f585ee5" ],
+        "Date": [ "Fri, 21 Jul 2023 10:18:06 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "372" ],
+        "Content-Type": [ "application/json; charset=utf-8" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\"value\":[{\"id\":\"/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/azps-testcase-pan/providers/PaloAltoNetworks.Cloudngfw/localRulestacks/azps-oxi4/certificates/azps-vlq2\",\"name\":\"azps-vlq2\",\"type\":\"localRulestacks/certificates\",\"properties\":{\"certificateSelfSigned\":\"TRUE\",\"etag\":\"cefac874-27af-11ee-8036-8a5ff8983af4\",\"provisioningState\":\"Succeeded\"}}]}",
+      "isContentBase64": false
+    }
+  },
+  "AzPaloAltoNetworks+[NoContext]+GetCertificateObjectLocalRulestack+$GET+https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/azps-testcase-pan/providers/PaloAltoNetworks.Cloudngfw/localRulestacks/azps-oxi4/certificates/azps-vlq2?api-version=2022-08-29+1": {
+    "Request": {
+      "Method": "GET",
+      "RequestUri": "https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/azps-testcase-pan/providers/PaloAltoNetworks.Cloudngfw/localRulestacks/azps-oxi4/certificates/azps-vlq2?api-version=2022-08-29",
+      "Content": null,
+      "isContentBase64": false,
+      "Headers": {
+        "x-ms-unique-id": [ "29" ],
+        "x-ms-client-request-id": [ "79929b79-7b15-4e90-8339-abee490c280e" ],
+        "CommandName": [ "Get-AzPaloAltoNetworksCertificateObjectLocalRulestack" ],
+        "FullCommandName": [ "Get-AzPaloAltoNetworksCertificateObjectLocalRulestack_Get" ],
+        "ParameterSetName": [ "__AllParameterSets" ],
+        "User-Agent": [ "AzurePowershell/v0.0.0", "PSVersion/v7.3.5", "Az.PaloAltoNetworks/0.2.0" ],
+        "Authorization": [ "[Filtered]" ]
+      },
+      "ContentHeaders": {
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "x-ms-ratelimit-remaining-subscription-reads": [ "11980" ],
+        "x-ms-providerhub-traffic": [ "True" ],
+        "Request-Context": [ "appId=cid-v1:4aa06bd6-38f4-4944-9612-cd84d39b5e90" ],
+        "mise-correlation-id": [ "fda22a8c-c5f7-4eef-a6ca-2c37ca5cea19" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "x-ms-request-id": [ "c2ae426a-40d3-4572-bf8f-8abf6387e7eb" ],
+        "x-ms-correlation-request-id": [ "2de87904-37af-4bea-9a7e-6d6943b4f912" ],
+        "x-ms-routing-request-id": [ "SOUTHEASTASIA:20230721T101808Z:2de87904-37af-4bea-9a7e-6d6943b4f912" ],
+        "Date": [ "Fri, 21 Jul 2023 10:18:07 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "360" ],
+        "Content-Type": [ "application/json; charset=utf-8" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\"id\":\"/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/azps-testcase-pan/providers/PaloAltoNetworks.Cloudngfw/localRulestacks/azps-oxi4/certificates/azps-vlq2\",\"name\":\"azps-vlq2\",\"type\":\"localRulestacks/certificates\",\"properties\":{\"certificateSelfSigned\":\"TRUE\",\"etag\":\"cefac874-27af-11ee-8036-8a5ff8983af4\",\"provisioningState\":\"Succeeded\"}}",
+      "isContentBase64": false
+    }
+  },
+  "AzPaloAltoNetworks+[NoContext]+DeleteCertificateObjectLocalRulestack+$DELETE+https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/azps-testcase-pan/providers/PaloAltoNetworks.Cloudngfw/localRulestacks/azps-oxi4/certificates/azps-vlq2?api-version=2022-08-29+1": {
+    "Request": {
+      "Method": "DELETE",
+      "RequestUri": "https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/azps-testcase-pan/providers/PaloAltoNetworks.Cloudngfw/localRulestacks/azps-oxi4/certificates/azps-vlq2?api-version=2022-08-29",
+      "Content": null,
+      "isContentBase64": false,
+      "Headers": {
+        "x-ms-unique-id": [ "30" ],
+        "x-ms-client-request-id": [ "36a02dac-e205-4aef-9c6e-ab169bb50ebd" ],
+        "CommandName": [ "Remove-AzPaloAltoNetworksCertificateObjectLocalRulestack" ],
+        "FullCommandName": [ "Remove-AzPaloAltoNetworksCertificateObjectLocalRulestack_Delete" ],
+        "ParameterSetName": [ "__AllParameterSets" ],
+        "User-Agent": [ "AzurePowershell/v0.0.0", "PSVersion/v7.3.5", "Az.PaloAltoNetworks/0.2.0" ],
+        "Authorization": [ "[Filtered]" ]
+      },
+      "ContentHeaders": {
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "x-ms-ratelimit-remaining-subscription-deletes": [ "14999" ],
+        "x-ms-providerhub-traffic": [ "True" ],
+        "Request-Context": [ "appId=cid-v1:4aa06bd6-38f4-4944-9612-cd84d39b5e90" ],
+        "mise-correlation-id": [ "61ec13f2-fd8d-4072-894f-70734c2665a4" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "x-ms-request-id": [ "21092643-7d30-4ce4-9028-db895a4ce4f7" ],
+        "x-ms-correlation-request-id": [ "895be06b-f5b3-4541-9d05-2a319fc4b549" ],
+        "x-ms-routing-request-id": [ "SOUTHEASTASIA:20230721T101809Z:895be06b-f5b3-4541-9d05-2a319fc4b549" ],
+        "Date": [ "Fri, 21 Jul 2023 10:18:09 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "4" ],
+        "Content-Type": [ "application/json; charset=utf-8" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "bnVsbA==",
+      "isContentBase64": false
+    }
+  },
+  "AzPaloAltoNetworks+[NoContext]+DeleteLocalRule+$DELETE+https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/azps-testcase-pan/providers/PaloAltoNetworks.Cloudngfw/localRulestacks/azps-oxi4/localRules/1?api-version=2022-08-29+1": {
+    "Request": {
+      "Method": "DELETE",
+      "RequestUri": "https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/azps-testcase-pan/providers/PaloAltoNetworks.Cloudngfw/localRulestacks/azps-oxi4/localRules/1?api-version=2022-08-29",
+      "Content": null,
+      "isContentBase64": false,
+      "Headers": {
+        "x-ms-unique-id": [ "31" ],
+        "x-ms-client-request-id": [ "9a3f6022-d4a6-4b87-886c-c15860b773a3" ],
+        "CommandName": [ "Remove-AzPaloAltoNetworksLocalRule" ],
+        "FullCommandName": [ "Remove-AzPaloAltoNetworksLocalRule_Delete" ],
+        "ParameterSetName": [ "__AllParameterSets" ],
+        "User-Agent": [ "AzurePowershell/v0.0.0", "PSVersion/v7.3.5", "Az.PaloAltoNetworks/0.2.0" ],
+        "Authorization": [ "[Filtered]" ]
+      },
+      "ContentHeaders": {
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "x-ms-ratelimit-remaining-subscription-deletes": [ "14998" ],
+        "x-ms-providerhub-traffic": [ "True" ],
+        "Request-Context": [ "appId=cid-v1:4aa06bd6-38f4-4944-9612-cd84d39b5e90" ],
+        "mise-correlation-id": [ "c9ada74e-10df-4f94-9efd-e658208bb6f4" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "x-ms-request-id": [ "3934ff18-9012-49b2-81f8-534a87c885eb" ],
+        "x-ms-correlation-request-id": [ "acc92491-786f-4aa9-961b-9f64375c85ae" ],
+        "x-ms-routing-request-id": [ "SOUTHEASTASIA:20230721T101811Z:acc92491-786f-4aa9-961b-9f64375c85ae" ],
+        "Date": [ "Fri, 21 Jul 2023 10:18:10 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "4" ],
+        "Content-Type": [ "application/json; charset=utf-8" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "bnVsbA==",
+      "isContentBase64": false
+    }
+  },
+  "AzPaloAltoNetworks+[NoContext]+DeleteFqdnListLocalRulestack+$DELETE+https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/azps-testcase-pan/providers/PaloAltoNetworks.Cloudngfw/localRulestacks/azps-oxi4/fqdnlists/azps-hqpn?api-version=2022-08-29+1": {
+    "Request": {
+      "Method": "DELETE",
+      "RequestUri": "https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/azps-testcase-pan/providers/PaloAltoNetworks.Cloudngfw/localRulestacks/azps-oxi4/fqdnlists/azps-hqpn?api-version=2022-08-29",
+      "Content": null,
+      "isContentBase64": false,
+      "Headers": {
+        "x-ms-unique-id": [ "32" ],
+        "x-ms-client-request-id": [ "769b8bb9-8712-4a45-b71f-3ade3be65bbe" ],
+        "CommandName": [ "Remove-AzPaloAltoNetworksFqdnListLocalRulestack" ],
+        "FullCommandName": [ "Remove-AzPaloAltoNetworksFqdnListLocalRulestack_Delete" ],
+        "ParameterSetName": [ "__AllParameterSets" ],
+        "User-Agent": [ "AzurePowershell/v0.0.0", "PSVersion/v7.3.5", "Az.PaloAltoNetworks/0.2.0" ],
+        "Authorization": [ "[Filtered]" ]
+      },
+      "ContentHeaders": {
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "x-ms-ratelimit-remaining-subscription-deletes": [ "14997" ],
+        "x-ms-providerhub-traffic": [ "True" ],
+        "Request-Context": [ "appId=cid-v1:4aa06bd6-38f4-4944-9612-cd84d39b5e90" ],
+        "mise-correlation-id": [ "b2944d02-89dc-466b-b690-7cbcb9ca342d" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "x-ms-request-id": [ "1a994742-4bc0-4bc8-a282-d91100c81d04" ],
+        "x-ms-correlation-request-id": [ "4ce3b665-a31c-4dd6-b418-06156745c37e" ],
+        "x-ms-routing-request-id": [ "SOUTHEASTASIA:20230721T101812Z:4ce3b665-a31c-4dd6-b418-06156745c37e" ],
+        "Date": [ "Fri, 21 Jul 2023 10:18:11 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "4" ],
+        "Content-Type": [ "application/json; charset=utf-8" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "bnVsbA==",
+      "isContentBase64": false
+    }
+  },
+  "AzPaloAltoNetworks+[NoContext]+DeletePrefixListLocalRulestack+$DELETE+https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/azps-testcase-pan/providers/PaloAltoNetworks.Cloudngfw/localRulestacks/azps-oxi4/prefixlists/azps-i2lm?api-version=2022-08-29+1": {
+    "Request": {
+      "Method": "DELETE",
+      "RequestUri": "https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/azps-testcase-pan/providers/PaloAltoNetworks.Cloudngfw/localRulestacks/azps-oxi4/prefixlists/azps-i2lm?api-version=2022-08-29",
+      "Content": null,
+      "isContentBase64": false,
+      "Headers": {
+        "x-ms-unique-id": [ "33" ],
+        "x-ms-client-request-id": [ "4b465d97-7b83-41f0-afb7-e4c29b3f7101" ],
+        "CommandName": [ "Remove-AzPaloAltoNetworksPrefixListLocalRulestack" ],
+        "FullCommandName": [ "Remove-AzPaloAltoNetworksPrefixListLocalRulestack_Delete" ],
+        "ParameterSetName": [ "__AllParameterSets" ],
+        "User-Agent": [ "AzurePowershell/v0.0.0", "PSVersion/v7.3.5", "Az.PaloAltoNetworks/0.2.0" ],
+        "Authorization": [ "[Filtered]" ]
+      },
+      "ContentHeaders": {
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "x-ms-ratelimit-remaining-subscription-deletes": [ "14996" ],
+        "x-ms-providerhub-traffic": [ "True" ],
+        "Request-Context": [ "appId=cid-v1:4aa06bd6-38f4-4944-9612-cd84d39b5e90" ],
+        "mise-correlation-id": [ "a396ee0d-28e6-4827-b690-66199ee2ab85" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "x-ms-request-id": [ "31843063-37a3-42f4-a655-6d99ff04b323" ],
+        "x-ms-correlation-request-id": [ "ebd0b34f-9b36-4d78-bf23-131ad502b1ab" ],
+        "x-ms-routing-request-id": [ "SOUTHEASTASIA:20230721T101814Z:ebd0b34f-9b36-4d78-bf23-131ad502b1ab" ],
+        "Date": [ "Fri, 21 Jul 2023 10:18:13 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "4" ],
+        "Content-Type": [ "application/json; charset=utf-8" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "bnVsbA==",
+      "isContentBase64": false
+    }
+  },
+  "AzPaloAltoNetworks+[NoContext]+DeleteLocalRulestack+$DELETE+https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/azps-testcase-pan/providers/PaloAltoNetworks.Cloudngfw/localRulestacks/azps-oxi4?api-version=2022-08-29+1": {
+    "Request": {
+      "Method": "DELETE",
+      "RequestUri": "https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/azps-testcase-pan/providers/PaloAltoNetworks.Cloudngfw/localRulestacks/azps-oxi4?api-version=2022-08-29",
+      "Content": null,
+      "isContentBase64": false,
+      "Headers": {
+        "x-ms-unique-id": [ "34" ],
+        "x-ms-client-request-id": [ "85a2196b-0121-4895-9b3c-ba0fb86bb068" ],
+        "CommandName": [ "Remove-AzPaloAltoNetworksLocalRulestack" ],
+        "FullCommandName": [ "Remove-AzPaloAltoNetworksLocalRulestack_Delete" ],
+        "ParameterSetName": [ "__AllParameterSets" ],
+        "User-Agent": [ "AzurePowershell/v0.0.0", "PSVersion/v7.3.5", "Az.PaloAltoNetworks/0.2.0" ],
+        "Authorization": [ "[Filtered]" ]
+      },
+      "ContentHeaders": {
+      }
+    },
+    "Response": {
+      "StatusCode": 202,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "ETag": [ "\"0a00b7de-0000-0100-0000-64ba5b670000\"" ],
+        "Location": [ "https://management.azure.com/providers/PaloAltoNetworks.Cloudngfw/locations/EASTUS/operationStatuses/fc7e9f00-2bfc-4341-bd5a-964a61c24fe9*5DCC27F99ABFF975BF4D2FE042D693EFB07C106E8C7AEEB7B639C79E42AD8583?api-version=2022-08-29" ],
+        "x-ms-ratelimit-remaining-subscription-deletes": [ "14995" ],
+        "x-ms-providerhub-traffic": [ "True" ],
+        "Request-Context": [ "appId=cid-v1:4aa06bd6-38f4-4944-9612-cd84d39b5e90" ],
+        "mise-correlation-id": [ "a1db6899-8f11-4eee-8f95-cafdb57085b0" ],
+        "x-ms-correlation-request-id": [ "04084aba-7584-4958-99de-5e7f76c128c2" ],
+        "x-ms-client-request-id": [ "85a2196b-0121-4895-9b3c-ba0fb86bb068" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "Azure-AsyncOperation": [ "https://management.azure.com/providers/PaloAltoNetworks.Cloudngfw/locations/EASTUS/operationStatuses/fc7e9f00-2bfc-4341-bd5a-964a61c24fe9*5DCC27F99ABFF975BF4D2FE042D693EFB07C106E8C7AEEB7B639C79E42AD8583?api-version=2022-08-29" ],
+        "x-ms-request-id": [ "fc7e9f00-2bfc-4341-bd5a-964a61c24fe9" ],
+        "x-ms-routing-request-id": [ "SOUTHEASTASIA:20230721T101815Z:04084aba-7584-4958-99de-5e7f76c128c2" ],
+        "Date": [ "Fri, 21 Jul 2023 10:18:14 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "4" ],
+        "Content-Type": [ "application/json; charset=utf-8" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "bnVsbA==",
+      "isContentBase64": false
+    }
+  },
+  "AzPaloAltoNetworks+[NoContext]+DeleteLocalRulestack+$GET+https://management.azure.com/providers/PaloAltoNetworks.Cloudngfw/locations/EASTUS/operationStatuses/fc7e9f00-2bfc-4341-bd5a-964a61c24fe9*5DCC27F99ABFF975BF4D2FE042D693EFB07C106E8C7AEEB7B639C79E42AD8583?api-version=2022-08-29+2": {
+    "Request": {
+      "Method": "GET",
+      "RequestUri": "https://management.azure.com/providers/PaloAltoNetworks.Cloudngfw/locations/EASTUS/operationStatuses/fc7e9f00-2bfc-4341-bd5a-964a61c24fe9*5DCC27F99ABFF975BF4D2FE042D693EFB07C106E8C7AEEB7B639C79E42AD8583?api-version=2022-08-29",
+      "Content": null,
+      "isContentBase64": false,
+      "Headers": {
+        "Authorization": [ "[Filtered]" ],
+        "x-ms-unique-id": [ "35" ],
+        "x-ms-client-request-id": [ "85a2196b-0121-4895-9b3c-ba0fb86bb068" ],
+        "CommandName": [ "Remove-AzPaloAltoNetworksLocalRulestack" ],
+        "FullCommandName": [ "Remove-AzPaloAltoNetworksLocalRulestack_Delete" ],
+        "ParameterSetName": [ "__AllParameterSets" ],
+        "User-Agent": [ "AzurePowershell/v0.0.0", "PSVersion/v7.3.5", "Az.PaloAltoNetworks/0.2.0" ]
+      },
+      "ContentHeaders": {
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "ETag": [ "\"6a0086b1-0000-0100-0000-64ba5b6b0000\"" ],
+        "x-ms-ratelimit-remaining-tenant-reads": [ "11998" ],
+        "x-ms-request-id": [ "b6927010-8432-411c-bb27-c3b1a0fc87b4" ],
+        "x-ms-correlation-request-id": [ "da80384c-56f2-414c-b95d-7b2c1f262177" ],
+        "x-ms-routing-request-id": [ "SOUTHEASTASIA:20230721T101845Z:da80384c-56f2-414c-b95d-7b2c1f262177" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "Date": [ "Fri, 21 Jul 2023 10:18:45 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "591" ],
+        "Content-Type": [ "application/json; charset=utf-8" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\"id\":\"/providers/PaloAltoNetworks.Cloudngfw/locations/EASTUS/operationStatuses/fc7e9f00-2bfc-4341-bd5a-964a61c24fe9*5DCC27F99ABFF975BF4D2FE042D693EFB07C106E8C7AEEB7B639C79E42AD8583\",\"name\":\"fc7e9f00-2bfc-4341-bd5a-964a61c24fe9*5DCC27F99ABFF975BF4D2FE042D693EFB07C106E8C7AEEB7B639C79E42AD8583\",\"resourceId\":\"/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/azps-testcase-pan/providers/PaloAltoNetworks.Cloudngfw/localRulestacks/azps-oxi4\",\"status\":\"Succeeded\",\"startTime\":\"2023-07-21T10:18:14.8917763Z\",\"endTime\":\"2023-07-21T10:18:19.5050014Z\",\"error\":{},\"properties\":null}",
+      "isContentBase64": false
+    }
+  },
+  "AzPaloAltoNetworks+[NoContext]+DeleteLocalRulestack+$GET+https://management.azure.com/providers/PaloAltoNetworks.Cloudngfw/locations/EASTUS/operationStatuses/fc7e9f00-2bfc-4341-bd5a-964a61c24fe9*5DCC27F99ABFF975BF4D2FE042D693EFB07C106E8C7AEEB7B639C79E42AD8583?api-version=2022-08-29+3": {
+    "Request": {
+      "Method": "GET",
+      "RequestUri": "https://management.azure.com/providers/PaloAltoNetworks.Cloudngfw/locations/EASTUS/operationStatuses/fc7e9f00-2bfc-4341-bd5a-964a61c24fe9*5DCC27F99ABFF975BF4D2FE042D693EFB07C106E8C7AEEB7B639C79E42AD8583?api-version=2022-08-29",
+      "Content": null,
+      "isContentBase64": false,
+      "Headers": {
+        "Authorization": [ "[Filtered]" ],
+        "x-ms-unique-id": [ "36" ],
+        "x-ms-client-request-id": [ "85a2196b-0121-4895-9b3c-ba0fb86bb068" ],
+        "CommandName": [ "Remove-AzPaloAltoNetworksLocalRulestack" ],
+        "FullCommandName": [ "Remove-AzPaloAltoNetworksLocalRulestack_Delete" ],
+        "ParameterSetName": [ "__AllParameterSets" ],
+        "User-Agent": [ "AzurePowershell/v0.0.0", "PSVersion/v7.3.5", "Az.PaloAltoNetworks/0.2.0" ]
+      },
+      "ContentHeaders": {
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "ETag": [ "\"6a0086b1-0000-0100-0000-64ba5b6b0000\"" ],
+        "x-ms-ratelimit-remaining-tenant-reads": [ "11997" ],
+        "x-ms-request-id": [ "794a84cc-303e-4256-8eb0-c98d3b817442" ],
+        "x-ms-correlation-request-id": [ "b343679d-ad7b-4dbd-a73b-9cbfc265dff4" ],
+        "x-ms-routing-request-id": [ "SOUTHEASTASIA:20230721T101846Z:b343679d-ad7b-4dbd-a73b-9cbfc265dff4" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "Date": [ "Fri, 21 Jul 2023 10:18:45 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "591" ],
+        "Content-Type": [ "application/json; charset=utf-8" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\"id\":\"/providers/PaloAltoNetworks.Cloudngfw/locations/EASTUS/operationStatuses/fc7e9f00-2bfc-4341-bd5a-964a61c24fe9*5DCC27F99ABFF975BF4D2FE042D693EFB07C106E8C7AEEB7B639C79E42AD8583\",\"name\":\"fc7e9f00-2bfc-4341-bd5a-964a61c24fe9*5DCC27F99ABFF975BF4D2FE042D693EFB07C106E8C7AEEB7B639C79E42AD8583\",\"resourceId\":\"/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/azps-testcase-pan/providers/PaloAltoNetworks.Cloudngfw/localRulestacks/azps-oxi4\",\"status\":\"Succeeded\",\"startTime\":\"2023-07-21T10:18:14.8917763Z\",\"endTime\":\"2023-07-21T10:18:19.5050014Z\",\"error\":{},\"properties\":null}",
+      "isContentBase64": false
+    }
+  }
+}

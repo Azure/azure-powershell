@@ -45,12 +45,17 @@ namespace Tools.Common.Loaders
             AssemblyMetadata result = null;
             try
             {
-                result = new AssemblyMetadata(Assembly.ReflectionOnlyLoad(assemblyName));
+                var resolver = new PathAssemblyResolver(new string[] { assemblyName, typeof(object).Assembly.Location });
+                using (var mlc = new MetadataLoadContext(resolver))
+                {
+                    // Load assembly into MetadataLoadContext.
+                    Assembly assembly = mlc.LoadFromAssemblyPath(assemblyName);
+                    result = new AssemblyMetadata(assembly);
+                }
             }
             catch
             {
             }
-
             return result;
         }
 

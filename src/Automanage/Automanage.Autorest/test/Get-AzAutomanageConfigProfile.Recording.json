@@ -1,0 +1,128 @@
+{
+  "Get-AzAutomanageConfigProfile+[NoContext]+List1+$GET+https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/providers/Microsoft.Automanage/configurationProfiles?api-version=2022-05-04+1": {
+    "Request": {
+      "Method": "GET",
+      "RequestUri": "https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/providers/Microsoft.Automanage/configurationProfiles?api-version=2022-05-04",
+      "Content": null,
+      "isContentBase64": false,
+      "Headers": {
+        "x-ms-unique-id": [ "3" ],
+        "x-ms-client-request-id": [ "00814e6d-a8fe-496d-8475-16cbfc564df2" ],
+        "CommandName": [ "Get-AzAutomanageConfigProfile" ],
+        "FullCommandName": [ "Get-AzAutomanageConfigProfile_List1" ],
+        "ParameterSetName": [ "__AllParameterSets" ],
+        "User-Agent": [ "AzurePowershell/v0.0.0", "PSVersion/v7.1.4", "Az.Automanage/0.1.0" ],
+        "Authorization": [ "[Filtered]" ]
+      },
+      "ContentHeaders": {
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "Request-Context": [ "appId=cid-v1:a4d240dc-d543-4b4e-a019-0a571290b85d" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "Server": [ "Kestrel" ],
+        "x-ms-ratelimit-remaining-subscription-reads": [ "11999" ],
+        "x-ms-request-id": [ "0b0fa8b5-b778-4dec-8f87-1183627ac7ad" ],
+        "x-ms-correlation-request-id": [ "0b0fa8b5-b778-4dec-8f87-1183627ac7ad" ],
+        "x-ms-routing-request-id": [ "SOUTHEASTASIA:20221008T082206Z:0b0fa8b5-b778-4dec-8f87-1183627ac7ad" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "Date": [ "Sat, 08 Oct 2022 08:22:05 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "2515" ],
+        "Content-Type": [ "application/json; charset=utf-8" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\"value\":[{\"id\":\"/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/automangerg/providers/Microsoft.Automanage/configurationProfiles/confpro-pwsh01\",\"name\":\"confpro-pwsh01\",\"type\":\"Microsoft.Automanage/configurationProfiles\",\"location\":\"eastus\",\"properties\":{\"configuration\":{\"Antimalware/Enable\":\"false\",\"LogAnalytics/Enable\":\"true\",\"Backup/Enable\":\"false\",\"ChangeTrackingAndInventory/Enable\":\"true\",\"UpdateManagement/Enable\":\"true\",\"AzureSecurityCenter/Enable\":\"true\",\"BootDiagnostics/Enable\":\"true\",\"GuestConfiguration/Enable\":\"true\",\"VMInsights/Enable\":\"true\"}},\"systemData\":{\"createdAt\":\"0001-01-01T00:00:00+00:00\",\"lastModifiedAt\":\"2022-09-08T06:36:00.6350397+00:00\",\"lastModifiedBy\":\"v-diya@microsoft.com\",\"lastModifiedByType\":\"User\"}},{\"id\":\"/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/automangerg/providers/Microsoft.Automanage/configurationProfiles/lucas-best-practices-devtest\",\"name\":\"lucas-best-practices-devtest\",\"type\":\"Microsoft.Automanage/configurationProfiles\",\"location\":\"eastus\",\"properties\":{\"configuration\":{\"Antimalware/Enable\":true,\"Antimalware/Exclusions/Paths\":\"\",\"Antimalware/Exclusions/Extensions\":\"\",\"Antimalware/Exclusions/Processes\":\"\",\"Antimalware/EnableRealTimeProtection\":true,\"Antimalware/RunScheduledScan\":true,\"Antimalware/ScanType\":\"Quick\",\"Antimalware/ScanDay\":7,\"Antimalware/ScanTimeInMinutes\":120,\"Backup/Enable\":true,\"Backup/PolicyName\":\"dailyBackupPolicy\",\"Backup/TimeZone\":\"UTC\",\"Backup/InstantRpRetentionRangeInDays\":2,\"Backup/SchedulePolicy/ScheduleRunFrequency\":\"Daily\",\"Backup/SchedulePolicy/ScheduleRunTimes\":[\"2022-09-13T12:00:00Z\"],\"Backup/SchedulePolicy/SchedulePolicyType\":\"SimpleSchedulePolicy\",\"Backup/RetentionPolicy/RetentionPolicyType\":\"LongTermRetentionPolicy\",\"Backup/RetentionPolicy/DailySchedule/RetentionTimes\":[\"2022-09-13T12:00:00Z\"],\"Backup/RetentionPolicy/DailySchedule/RetentionDuration/Count\":180,\"Backup/RetentionPolicy/DailySchedule/RetentionDuration/DurationType\":\"Days\",\"WindowsAdminCenter/Enable\":false,\"VMInsights/Enable\":true,\"AzureSecurityCenter/Enable\":true,\"UpdateManagement/Enable\":true,\"ChangeTrackingAndInventory/Enable\":true,\"GuestConfiguration/Enable\":true,\"AutomationAccount/Enable\":true,\"LogAnalytics/Enable\":true,\"BootDiagnostics/Enable\":true}},\"systemData\":{\"createdAt\":\"2022-09-13T01:49:52.7359039+00:00\",\"createdBy\":\"v-diya@microsoft.com\",\"createdByType\":\"User\",\"lastModifiedAt\":\"2022-09-13T01:49:52.7359039+00:00\",\"lastModifiedBy\":\"v-diya@microsoft.com\",\"lastModifiedByType\":\"User\"}}]}",
+      "isContentBase64": false
+    }
+  },
+  "Get-AzAutomanageConfigProfile+[NoContext]+Get+$GET+https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/automangerg/providers/Microsoft.Automanage/configurationProfiles?api-version=2022-05-04+1": {
+    "Request": {
+      "Method": "GET",
+      "RequestUri": "https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/automangerg/providers/Microsoft.Automanage/configurationProfiles?api-version=2022-05-04",
+      "Content": null,
+      "isContentBase64": false,
+      "Headers": {
+        "x-ms-unique-id": [ "4" ],
+        "x-ms-client-request-id": [ "98af8d96-0a2b-439d-9bd5-91d3c3e53fbf" ],
+        "CommandName": [ "Get-AzAutomanageConfigProfile" ],
+        "FullCommandName": [ "Get-AzAutomanageConfigProfile_List" ],
+        "ParameterSetName": [ "__AllParameterSets" ],
+        "User-Agent": [ "AzurePowershell/v0.0.0", "PSVersion/v7.1.4", "Az.Automanage/0.1.0" ],
+        "Authorization": [ "[Filtered]" ]
+      },
+      "ContentHeaders": {
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "Request-Context": [ "appId=cid-v1:a4d240dc-d543-4b4e-a019-0a571290b85d" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "Server": [ "Kestrel" ],
+        "x-ms-ratelimit-remaining-subscription-reads": [ "11998" ],
+        "x-ms-request-id": [ "bb25cfe7-08e9-47f5-a778-e0db7b1a9e21" ],
+        "x-ms-correlation-request-id": [ "bb25cfe7-08e9-47f5-a778-e0db7b1a9e21" ],
+        "x-ms-routing-request-id": [ "SOUTHEASTASIA:20221008T082206Z:bb25cfe7-08e9-47f5-a778-e0db7b1a9e21" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "Date": [ "Sat, 08 Oct 2022 08:22:06 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "2515" ],
+        "Content-Type": [ "application/json; charset=utf-8" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\"value\":[{\"id\":\"/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/automangerg/providers/Microsoft.Automanage/configurationProfiles/confpro-pwsh01\",\"name\":\"confpro-pwsh01\",\"type\":\"Microsoft.Automanage/configurationProfiles\",\"location\":\"eastus\",\"properties\":{\"configuration\":{\"Antimalware/Enable\":\"false\",\"LogAnalytics/Enable\":\"true\",\"Backup/Enable\":\"false\",\"ChangeTrackingAndInventory/Enable\":\"true\",\"UpdateManagement/Enable\":\"true\",\"AzureSecurityCenter/Enable\":\"true\",\"BootDiagnostics/Enable\":\"true\",\"GuestConfiguration/Enable\":\"true\",\"VMInsights/Enable\":\"true\"}},\"systemData\":{\"createdAt\":\"0001-01-01T00:00:00+00:00\",\"lastModifiedAt\":\"2022-09-08T06:36:00.6350397+00:00\",\"lastModifiedBy\":\"v-diya@microsoft.com\",\"lastModifiedByType\":\"User\"}},{\"id\":\"/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/automangerg/providers/Microsoft.Automanage/configurationProfiles/lucas-best-practices-devtest\",\"name\":\"lucas-best-practices-devtest\",\"type\":\"Microsoft.Automanage/configurationProfiles\",\"location\":\"eastus\",\"properties\":{\"configuration\":{\"Antimalware/Enable\":true,\"Antimalware/Exclusions/Paths\":\"\",\"Antimalware/Exclusions/Extensions\":\"\",\"Antimalware/Exclusions/Processes\":\"\",\"Antimalware/EnableRealTimeProtection\":true,\"Antimalware/RunScheduledScan\":true,\"Antimalware/ScanType\":\"Quick\",\"Antimalware/ScanDay\":7,\"Antimalware/ScanTimeInMinutes\":120,\"Backup/Enable\":true,\"Backup/PolicyName\":\"dailyBackupPolicy\",\"Backup/TimeZone\":\"UTC\",\"Backup/InstantRpRetentionRangeInDays\":2,\"Backup/SchedulePolicy/ScheduleRunFrequency\":\"Daily\",\"Backup/SchedulePolicy/ScheduleRunTimes\":[\"2022-09-13T12:00:00Z\"],\"Backup/SchedulePolicy/SchedulePolicyType\":\"SimpleSchedulePolicy\",\"Backup/RetentionPolicy/RetentionPolicyType\":\"LongTermRetentionPolicy\",\"Backup/RetentionPolicy/DailySchedule/RetentionTimes\":[\"2022-09-13T12:00:00Z\"],\"Backup/RetentionPolicy/DailySchedule/RetentionDuration/Count\":180,\"Backup/RetentionPolicy/DailySchedule/RetentionDuration/DurationType\":\"Days\",\"WindowsAdminCenter/Enable\":false,\"VMInsights/Enable\":true,\"AzureSecurityCenter/Enable\":true,\"UpdateManagement/Enable\":true,\"ChangeTrackingAndInventory/Enable\":true,\"GuestConfiguration/Enable\":true,\"AutomationAccount/Enable\":true,\"LogAnalytics/Enable\":true,\"BootDiagnostics/Enable\":true}},\"systemData\":{\"createdAt\":\"2022-09-13T01:49:52.7359039+00:00\",\"createdBy\":\"v-diya@microsoft.com\",\"createdByType\":\"User\",\"lastModifiedAt\":\"2022-09-13T01:49:52.7359039+00:00\",\"lastModifiedBy\":\"v-diya@microsoft.com\",\"lastModifiedByType\":\"User\"}}]}",
+      "isContentBase64": false
+    }
+  },
+  "Get-AzAutomanageConfigProfile+[NoContext]+List+$GET+https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/automangerg/providers/Microsoft.Automanage/configurationProfiles/lucas-best-practices-devtest?api-version=2022-05-04+1": {
+    "Request": {
+      "Method": "GET",
+      "RequestUri": "https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/automangerg/providers/Microsoft.Automanage/configurationProfiles/lucas-best-practices-devtest?api-version=2022-05-04",
+      "Content": null,
+      "isContentBase64": false,
+      "Headers": {
+        "x-ms-unique-id": [ "5" ],
+        "x-ms-client-request-id": [ "79ba6614-b4cf-4201-83cf-ab6f4b1a4d5c" ],
+        "CommandName": [ "Get-AzAutomanageConfigProfile" ],
+        "FullCommandName": [ "Get-AzAutomanageConfigProfile_Get" ],
+        "ParameterSetName": [ "__AllParameterSets" ],
+        "User-Agent": [ "AzurePowershell/v0.0.0", "PSVersion/v7.1.4", "Az.Automanage/0.1.0" ],
+        "Authorization": [ "[Filtered]" ]
+      },
+      "ContentHeaders": {
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "Request-Context": [ "appId=cid-v1:a4d240dc-d543-4b4e-a019-0a571290b85d" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "Server": [ "Kestrel" ],
+        "x-ms-ratelimit-remaining-subscription-reads": [ "11997" ],
+        "x-ms-request-id": [ "5d014b63-d1f8-4411-aee4-b98bdea6ad8a" ],
+        "x-ms-correlation-request-id": [ "5d014b63-d1f8-4411-aee4-b98bdea6ad8a" ],
+        "x-ms-routing-request-id": [ "SOUTHEASTASIA:20221008T082207Z:5d014b63-d1f8-4411-aee4-b98bdea6ad8a" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "Date": [ "Sat, 08 Oct 2022 08:22:07 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "1754" ],
+        "Content-Type": [ "application/json; charset=utf-8" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\"id\":\"/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/automangerg/providers/Microsoft.Automanage/configurationProfiles/lucas-best-practices-devtest\",\"name\":\"lucas-best-practices-devtest\",\"type\":\"Microsoft.Automanage/configurationProfiles\",\"location\":\"eastus\",\"properties\":{\"configuration\":{\"Antimalware/Enable\":true,\"Antimalware/Exclusions/Paths\":\"\",\"Antimalware/Exclusions/Extensions\":\"\",\"Antimalware/Exclusions/Processes\":\"\",\"Antimalware/EnableRealTimeProtection\":true,\"Antimalware/RunScheduledScan\":true,\"Antimalware/ScanType\":\"Quick\",\"Antimalware/ScanDay\":7,\"Antimalware/ScanTimeInMinutes\":120,\"Backup/Enable\":true,\"Backup/PolicyName\":\"dailyBackupPolicy\",\"Backup/TimeZone\":\"UTC\",\"Backup/InstantRpRetentionRangeInDays\":2,\"Backup/SchedulePolicy/ScheduleRunFrequency\":\"Daily\",\"Backup/SchedulePolicy/ScheduleRunTimes\":[\"2022-09-13T12:00:00Z\"],\"Backup/SchedulePolicy/SchedulePolicyType\":\"SimpleSchedulePolicy\",\"Backup/RetentionPolicy/RetentionPolicyType\":\"LongTermRetentionPolicy\",\"Backup/RetentionPolicy/DailySchedule/RetentionTimes\":[\"2022-09-13T12:00:00Z\"],\"Backup/RetentionPolicy/DailySchedule/RetentionDuration/Count\":180,\"Backup/RetentionPolicy/DailySchedule/RetentionDuration/DurationType\":\"Days\",\"WindowsAdminCenter/Enable\":false,\"VMInsights/Enable\":true,\"AzureSecurityCenter/Enable\":true,\"UpdateManagement/Enable\":true,\"ChangeTrackingAndInventory/Enable\":true,\"GuestConfiguration/Enable\":true,\"AutomationAccount/Enable\":true,\"LogAnalytics/Enable\":true,\"BootDiagnostics/Enable\":true}},\"systemData\":{\"createdAt\":\"2022-09-13T01:49:52.7359039+00:00\",\"createdBy\":\"v-diya@microsoft.com\",\"createdByType\":\"User\",\"lastModifiedAt\":\"2022-09-13T01:49:52.7359039+00:00\",\"lastModifiedBy\":\"v-diya@microsoft.com\",\"lastModifiedByType\":\"User\"}}",
+      "isContentBase64": false
+    }
+  }
+}

@@ -1,7 +1,7 @@
 ---
 external help file:
 Module Name: Az.Resources
-online version: https://docs.microsoft.com/powershell/module/az.resources/get-azadgroup
+online version: https://learn.microsoft.com/powershell/module/az.resources/get-azadgroup
 schema: 2.0.0
 ---
 
@@ -14,9 +14,9 @@ Lists entities from groups or get entity from groups by key
 
 ### EmptyParameterSet (Default)
 ```
-Get-AzADGroup [-AppendSelected] [-ConsistencyLevel <String>] [-Expand <String[]>] [-Filter <String>]
+Get-AzADGroup [-Count] [-AppendSelected] [-ConsistencyLevel <String>] [-Expand <String[]>] [-Filter <String>]
  [-First <UInt64>] [-Orderby <String[]>] [-Search <String>] [-Select <String[]>] [-Skip <UInt64>]
- [-DefaultProfile <PSObject>] [<CommonParameters>]
+ [-DefaultProfile <PSObject>] [-CountVariable <String>] [<CommonParameters>]
 ```
 
 ### DisplayNameParameterSet
@@ -64,6 +64,21 @@ Get-AzADGroup -ObjectId $id -Select groupTypes -AppendSelected
 
 Get group by object id and append property 'groupTypes' after default properties: 'DisplayName', 'Id', 'DeletedDateTime', 'SecurityEnabled', 'MailEnabled', 'MailNickname', 'Description'
 
+### Example 4: Get group with filter
+```powershell
+Get-AzADGroup -Filter "startsWith(DisplayName,'some-name')"
+```
+
+Get group with filter
+
+### Example 5: Assign OdataCount to a variable
+```powershell
+Get-AzADGroup -First 10 -ConsistencyLevel eventual -Count -CountVariable 'result'
+$result
+```
+
+Assign OdataCount to a variable
+
 ## PARAMETERS
 
 ### -AppendSelected
@@ -88,6 +103,37 @@ Documentation URL: https://developer.microsoft.com/en-us/office/blogs/microsoft-
 ```yaml
 Type: System.String
 Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -Count
+Include count of items
+
+```yaml
+Type: System.Management.Automation.SwitchParameter
+Parameter Sets: EmptyParameterSet
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -CountVariable
+Specifies a count of the total number of items in a collection.
+By default, this variable will be set in the global scope.
+
+```yaml
+Type: System.String
+Parameter Sets: EmptyParameterSet
 Aliases:
 
 Required: False
@@ -158,7 +204,7 @@ Accept wildcard characters: False
 ```
 
 ### -Filter
-Filter items by property values
+Filter items by property values, for more detail about filter query please see: https://learn.microsoft.com/en-us/graph/filter-query-parameter
 
 ```yaml
 Type: System.String

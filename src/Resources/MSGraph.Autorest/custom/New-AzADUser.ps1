@@ -21,7 +21,7 @@ Adds new entity to users
 .Notes
 
 .Link
-https://docs.microsoft.com/powershell/module/az.resources/new-azaduser
+https://learn.microsoft.com/powershell/module/az.resources/new-azaduser
 #>
 function New-AzADUser {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Models.ApiV10.IMicrosoftGraphUser])]

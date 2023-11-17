@@ -1,0 +1,85 @@
+{
+  "resourceType": "monitors/tagRules",
+  "apiVersion": "2021-09-01",
+  "learnMore": {
+    "url": "https://learn.microsoft.com/powershell/module/az.dynatraceobservability"
+  },
+  "commands": [
+    {
+      "name": "Get-AzDynatraceMonitorTagRule",
+      "description": "Get a TagRule",
+      "path": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Dynatrace.Observability/monitors/{monitorName}/tagRules/{ruleSetName}",
+      "help": {
+        "learnMore": {
+          "url": "https://learn.microsoft.com/powershell/module/az.dynatraceobservability/get-azdynatracemonitortagrule"
+        },
+        "parameterSets": [
+          {
+            "parameters": [
+              "-MonitorName <String>",
+              "-ResourceGroupName <String>",
+              "[-SubscriptionId <String[]>]"
+            ]
+          }
+        ]
+      },
+      "examples": [
+        {
+          "description": "Get a TagRule",
+          "parameters": [
+            {
+              "name": "-MonitorName",
+              "value": "[Path.monitorName]"
+            },
+            {
+              "name": "-ResourceGroupName",
+              "value": "[Path.resourceGroupName]"
+            },
+            {
+              "name": "-SubscriptionId",
+              "value": "[Path.subscriptionId]"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Remove-AzDynatraceMonitorTagRule",
+      "description": "Delete a TagRule",
+      "path": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Dynatrace.Observability/monitors/{monitorName}/tagRules/{ruleSetName}",
+      "help": {
+        "learnMore": {
+          "url": "https://learn.microsoft.com/powershell/module/az.dynatraceobservability/remove-azdynatracemonitortagrule"
+        },
+        "parameterSets": [
+          {
+            "parameters": [
+              "-MonitorName <String>",
+              "-ResourceGroupName <String>",
+              "[-SubscriptionId <String>]"
+            ]
+          }
+        ]
+      },
+      "examples": [
+        {
+          "description": "Delete a TagRule",
+          "parameters": [
+            {
+              "name": "-MonitorName",
+              "value": "[Path.monitorName]"
+            },
+            {
+              "name": "-ResourceGroupName",
+              "value": "[Path.resourceGroupName]"
+            },
+            {
+              "name": "-SubscriptionId",
+              "value": "[Path.subscriptionId]"
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,18 @@
+{
+  "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentParameters.json#",
+  "contentVersion": "1.0.0.0",
+  "parameters": {
+    "solarigateRuleGuid": {
+      "value": "6692b8a1-d2bc-4cd6-b724-5dd2e4293ab3"
+    },
+    "disabledRuleGuid": {
+      "value": "5c8dc0ac-8808-40f3-a6b4-1401369a9e1e"
+    },
+    "mlRuleGuid": {
+      "value": "75c9560c-ce08-4332-aa4a-0e675fc0b17c"
+    },
+    "workspaceName": {
+      "value": "asptest1qlb2s"
+    }
+  }
+}

@@ -1,7 +1,7 @@
 ---
 external help file:
 Module Name: Az.Websites
-online version: https://docs.microsoft.com/powershell/module/az.websites/new-azstaticwebappbuildappsetting
+online version: https://learn.microsoft.com/powershell/module/az.websites/new-azstaticwebappbuildappsetting
 schema: 2.0.0
 ---
 
@@ -34,6 +34,7 @@ Description for Creates or updates the app settings of a static site build.
 ```powershell
 New-AzStaticWebAppBuildAppSetting -ResourceGroupName azure-rg-test -Name staticweb-pwsh01 -EnvironmentName 'default'  -AppSetting @{'buildsetting1' = 'someval'; 'buildsetting2' = 'someval2' }
 ```
+
 ```output
 Kind Name        Type
 ---- ----        ----
@@ -46,6 +47,7 @@ This command creates or updates the app settings of a static site build.
 ```powershell
 Get-AzStaticWebAppBuildAppSetting -ResourceGroupName resourceGroup -Name taticweb00 -EnvironmentName 'default' | New-AzStaticWebAppBuildAppSetting -AppSetting @{'buildsetting1' = 'someval'; 'buildsetting2' = 'someval2' }
 ```
+
 ```output
 Kind Name        Type
 ---- ----        ----

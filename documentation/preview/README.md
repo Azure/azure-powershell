@@ -136,4 +136,4 @@ If there is a feature you would like to see in Azure PowerShell or if your encou
 [AzGallery]: https://www.powershellgallery.com/packages/Az/
 
 <!-- Docs -->
-[ConnectAzAccount]: https://docs.microsoft.com/en-us/powershell/module/az.accounts/connect-azaccount
+[ConnectAzAccount]: https://learn.microsoft.com/en-us/powershell/module/az.accounts/connect-azaccount

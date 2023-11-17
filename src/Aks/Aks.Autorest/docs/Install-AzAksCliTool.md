@@ -1,7 +1,7 @@
 ---
 external help file:
 Module Name: Az.Aks
-online version: https://docs.microsoft.com/powershell/module/az.aks/install-azaksclitool
+online version: https://learn.microsoft.com/powershell/module/az.aks/install-azaksclitool
 schema: 2.0.0
 ---
 
@@ -223,8 +223,6 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ## NOTES
 
 ALIASES
-
-Install-AzAksKubectl
 
 ## RELATED LINKS
 

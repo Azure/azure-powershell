@@ -28,7 +28,7 @@ East US 2 testws/testnewkustopool Microsoft.Synapse/workspaces/kustoPools
 .Outputs
 Microsoft.Azure.PowerShell.Cmdlets.Synapse.Models.Api20210601Preview.IKustoPool
 .Link
-https://docs.microsoft.com/powershell/module/az.synapse/new-azsynapsekustopool
+https://learn.microsoft.com/powershell/module/az.synapse/new-azsynapsekustopool
 #>
 function New-AzSynapseKustoPool {
     [OutputType([Microsoft.Azure.PowerShell.Cmdlets.Synapse.Models.Api20210601Preview.IKustoPool])]

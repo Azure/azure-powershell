@@ -1,7 +1,7 @@
 ---
 external help file:
 Module Name: Az.Purview
-online version: https://docs.microsoft.com/powershell/module/az.Purview/new-AzPurviewOracleDataSourceObject
+online version: https://learn.microsoft.com/powershell/module/az.Purview/new-AzPurviewOracleDataSourceObject
 schema: 2.0.0
 ---
 

@@ -12,7 +12,7 @@ This command lists the details of the user provided function apps registered wit
 
 ### Example 2: List the details of the user provided function apps registered with a static site build
 ```powershell
- Get-AzStaticWebAppUserProvidedFunctionApp -ResourceGroupName resourceGroup -Name staticweb00 -EnvironmentName 'default'
+Get-AzStaticWebAppUserProvidedFunctionApp -ResourceGroupName resourceGroup -Name staticweb00 -EnvironmentName 'default'
 ```
 ```output
 Kind Name               Type

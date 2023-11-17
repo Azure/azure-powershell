@@ -1,2 +1,2 @@
-"AssemblyFileName","ClassName","Target","Severity","ProblemId","Description","Remediation"
+"Module","ClassName","Target","Severity","ProblemId","Description","Remediation"
 "Microsoft.Azure.PowerShell.Cmdlets.DeviceProvisioningServices.dll","Microsoft.Azure.Commands.Management.DeviceProvisioningServices.SetAzureRmIoTDeviceProvisioningServiceCertificate","Set-AzIoTDeviceProvisioningServiceCertificate","1","8420","Parameter set 'ResourceSet' of cmdlet 'Set-AzIoTDeviceProvisioningServiceCertificate' contains at least one parameter with a position larger than four, which is discouraged.","Limit the number of positional parameters in a single parameter set to four or fewer."

@@ -11,8 +11,8 @@
   DotNetFrameworkVersion = '4.7.2'
   RequiredAssemblies = './bin/Az.Aks.private.dll'
   FormatsToProcess = './Az.Aks.format.ps1xml'
-  FunctionsToExport = 'Get-AzAksNodePoolUpgradeProfile', 'Get-AzAksUpgradeProfile', 'Get-AzAksVersion', 'Install-AzAksCliTool', 'Start-AzAksCluster', 'Stop-AzAksCluster', '*'
-  AliasesToExport = 'Get-AzAksClusterUpgradeProfile', 'Install-AzAksKubectl', '*'
+  FunctionsToExport = 'Get-AzAksMaintenanceConfiguration', 'Get-AzAksManagedClusterCommandResult', 'Get-AzAksManagedClusterOSOption', 'Get-AzAksManagedClusterOutboundNetworkDependencyEndpoint', 'Get-AzAksNodePoolUpgradeProfile', 'Get-AzAksSnapshot', 'Get-AzAksUpgradeProfile', 'Get-AzAksVersion', 'Install-AzAksCliTool', 'Invoke-AzAksAbortAgentPoolLatestOperation', 'Invoke-AzAksAbortManagedClusterLatestOperation', 'Invoke-AzAksRotateManagedClusterServiceAccountSigningKey', 'New-AzAksMaintenanceConfiguration', 'New-AzAksSnapshot', 'New-AzAksTimeInWeekObject', 'New-AzAksTimeSpanObject', 'Remove-AzAksMaintenanceConfiguration', 'Remove-AzAksSnapshot', 'Start-AzAksCluster', 'Start-AzAksManagedClusterCommand', 'Stop-AzAksCluster', '*'
+  AliasesToExport = 'Get-AzAksClusterUpgradeProfile', '*'
   PrivateData = @{
     PSData = @{
       Tags = 'Azure', 'ResourceManager', 'ARM', 'PSModule', 'Aks'

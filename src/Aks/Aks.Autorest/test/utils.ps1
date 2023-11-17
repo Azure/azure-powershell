@@ -13,6 +13,7 @@ function setupEnv() {
     $env.Tenant = (Get-AzContext).Tenant.Id
     $env.ResourceGroupName = 'aks-test'
     $env.AksName = 'aks'
+    $env.location = 'eastus'
     # For any resources you created for test, you should add it to $env here.
     $envFile = 'env.json'
     if ($TestMode -eq 'live') {

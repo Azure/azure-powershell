@@ -1,0 +1,20 @@
+﻿{
+  "supportedDatasourceTypes": [
+    {
+      "serviceDatasourceType": "Microsoft.Compute/disks",
+      "clientDatasourceType": "AzureDisk"
+    },
+    {
+      "serviceDatasourceType": "Microsoft.DBforPostgreSQL/servers/databases",
+      "clientDatasourceType": "AzureDatabaseForPostgreSQL"
+    },
+    {
+      "serviceDatasourceType": "Microsoft.Storage/storageAccounts/blobServices",
+      "clientDatasourceType": "AzureBlob"
+    },
+    {
+      "serviceDatasourceType": "Microsoft.ContainerService/managedClusters",
+      "clientDatasourceType": "AzureKubernetesService"
+    }
+  ]
+}

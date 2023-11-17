@@ -1,4 +1,4 @@
-"AssemblyFileName","ClassName","Target","Severity","ProblemId","Description","Remediation"
+"Module","ClassName","Target","Severity","ProblemId","Description","Remediation"
 "Az.RedisEnterpriseCache","Export-AzRedisEnterpriseCache","Export-AzRedisEnterpriseCache","1","8100","Export-AzRedisEnterpriseCache Does not support ShouldProcess but the cmdlet verb Export indicates that it should.","Determine if the cmdlet should implement ShouldProcess and if so determine if it should implement Force / ShouldContinue"
 "Az.RedisEnterpriseCache","Export-AzRedisEnterpriseCache","Export-AzRedisEnterpriseCache","1","8410","Parameter ProxyUseDefaultCredentials of cmdlet Export-AzRedisEnterpriseCache does not follow the enforced naming convention of using a singular noun for a parameter name.","Consider using a singular noun for the parameter name."
 "Az.RedisEnterpriseCache","Get-AzRedisEnterpriseCache","Get-AzRedisEnterpriseCache","1","8410","Parameter ProxyUseDefaultCredentials of cmdlet Get-AzRedisEnterpriseCache does not follow the enforced naming convention of using a singular noun for a parameter name.","Consider using a singular noun for the parameter name."

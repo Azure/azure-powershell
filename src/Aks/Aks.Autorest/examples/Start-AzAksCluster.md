@@ -11,3 +11,5 @@ Get-AzAksCluster -ResourceGroupName group -Name myCluster | Start-AzAksCluster
 ```
 
 Start Aks cluster with pipeline.
+
+
