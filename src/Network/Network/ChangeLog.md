@@ -29,6 +29,7 @@
 	- `Add-AzApplicationGatewayListener`
 	- `New-AzApplicationGatewayListener`
 * Added cmdlet 'Remove-AzApplicationGatewayFirewallCustomRule' to support removing custom rule in Firewall Policy.
+* Added property 'size' to firewallPolicy and firewallPolicyRuleCollectionGroup.
 * Updated cmdlet `New-AzBastion`, `Set-AzBastion` and `Get-AzBastion` to support Bastion features for CRUD operations
 
 ## Version 6.2.0
