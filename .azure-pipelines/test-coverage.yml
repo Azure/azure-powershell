@@ -60,7 +60,6 @@ jobs:
     vmImage: ${{ parameters.testPoolVMImage }}
 
   steps:
-  - template: util/get-github-pat-steps.yml
   - task: UseDotNet@2
     displayName: 'Install .NET 6.0 SDK'
     inputs:
@@ -115,6 +114,13 @@ jobs:
       filePath: ./tools/TestFx/Coverage/AnalyzeTestCoverage.ps1
       arguments: -CalcBaseline
 
+  - template: util/get-keyvault-secret-steps.yml
+    parameters:
+      serviceConnectionName: $(AzureSubscription)
+      keyVaultName: $(KustoServicePrincipalKeyVaultName)
+      secretName: $(KustoServicePrincipalSecretName)
+      outVar: 'KustoServicePrincipalSecret'
+
   - task: PowerShell@2
     displayName: Save Test Coverage Results
     condition: succeeded()
@@ -123,6 +129,8 @@ jobs:
       targetType: filePath
       filePath: ./tools/TestFx/Coverage/SaveTestCoverageResult.ps1
       arguments: CITest $(KustoTenantId) $(KustoServicePrincipalId) $(KustoServicePrincipalSecret) $(KustoClusterName) $(KustoClusterRegion)
+
+  - template: util/get-github-pat-steps.yml
 
   - task: PowerShell@2
     displayName: Update Test Coverage Baseline
