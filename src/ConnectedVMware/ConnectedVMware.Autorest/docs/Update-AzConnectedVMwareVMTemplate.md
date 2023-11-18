@@ -43,8 +43,7 @@ API to update certain properties of the virtual machine template resource.
 
 ### Example 1: Update VM Template Resource
 ```powershell
-Update-AzConnectedVMwareVMTemplate -Name "test-vmtmpl" -ResourceGroupName "test-rg" -SubscriptionId "204898ee-cd13-4332-b9d4-55ca5c25496d" 
--Tag @{"vmtmpl"="test"}
+Update-AzConnectedVMwareVMTemplate -Name "test-vmtmpl" -ResourceGroupName "test-rg" -SubscriptionId "204898ee-cd13-4332-b9d4-55ca5c25496d" -Tag @{"vmtmpl"="test"}
 ```
 
 ```output

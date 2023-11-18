@@ -41,7 +41,7 @@ Create virtual network.
 
 ### Example 1: Create Virtual Network
 ```powershell
-New-AzConnectedVMwareVNet -Name "test-vnet" -ResourceGroupName "test-rg" -Location "eastus" -ExtendedLocationName "/subscriptions/204898ee-cd13-4332-b9d4-55ca5c25496d/resourcegroups/test-rg/providers/microsoft.extendedlocation/customlocations/test-cl" -ExtendedLocationType "CustomLocation" -InventoryItemId "/subscriptions/204898ee-cd13-4332-b9d4-55ca5c25496d/resourceGroups/test-rg/providers/Microsoft.ConnectedVMwarevSphere/VCenters/test-vc/InventoryItems/network-563661" -s "204898ee-cd13-4332-b9d4-55ca5c25496d"
+New-AzConnectedVMwareVNet -Name "test-vnet" -ResourceGroupName "test-rg" -Location "eastus" -ExtendedLocationName "/subscriptions/204898ee-cd13-4332-b9d4-55ca5c25496d/resourcegroups/test-rg/providers/microsoft.extendedlocation/customlocations/test-cl" -ExtendedLocationType "CustomLocation" -InventoryItemId "/subscriptions/204898ee-cd13-4332-b9d4-55ca5c25496d/resourceGroups/test-rg/providers/Microsoft.ConnectedVMwarevSphere/VCenters/test-vc/InventoryItems/network-563661" -SubscriptionId "204898ee-cd13-4332-b9d4-55ca5c25496d"
 ```
 
 ```output

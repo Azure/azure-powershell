@@ -43,8 +43,7 @@ API to update certain properties of the resourcePool resource.
 
 ### Example 1: Update Resource Pool
 ```powershell
-Update-AzConnectedVMwareResourcePool -Name "test-rp" -ResourceGroupName "test-rg" -SubscriptionId "204898ee-cd13-4332-b9d4-55ca5c25496d"
--Tag @{"rp"="test"}
+Update-AzConnectedVMwareResourcePool -Name "test-rp" -ResourceGroupName "test-rg" -SubscriptionId "204898ee-cd13-4332-b9d4-55ca5c25496d" -Tag @{"rp"="test"}
 ```
 
 ```output
