@@ -18,9 +18,7 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
-
-## Version 3.3.1
-* Fixing bug in Get commands
+* Fixed a bug that Get commands do not return all resources.
 
 ## Version 3.3.0
 * Fixed minor issues
