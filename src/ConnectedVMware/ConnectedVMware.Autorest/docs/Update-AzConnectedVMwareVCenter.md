@@ -43,8 +43,7 @@ API to update certain properties of the vCenter resource.
 
 ### Example 1: Update VCenter
 ```powershell
-Update-AzConnectedVMwareVCenter -Name "test-vc" -ResourceGroupName "test-rg" -SubscriptionId "204898ee-cd13-4332-b9d4-55ca5c25496d" 
--Tag @{"vc"="test"}
+Update-AzConnectedVMwareVCenter -Name "test-vc" -ResourceGroupName "test-rg" -SubscriptionId "204898ee-cd13-4332-b9d4-55ca5c25496d" -Tag @{"vc"="test"}
 ```
 
 ```output

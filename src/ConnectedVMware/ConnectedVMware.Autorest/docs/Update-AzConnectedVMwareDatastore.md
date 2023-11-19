@@ -43,8 +43,7 @@ API to update certain properties of the datastore resource.
 
 ### Example 1: Update Datastore
 ```powershell
-Update-AzConnectedVMwareDatastore -Name "test-datastore" -ResourceGroupName "test-rg" -SubscriptionId "204898ee-cd13-4332-b9d4-55ca5c25496d"
--Tag @{"datastore"="test"}
+Update-AzConnectedVMwareDatastore -Name "test-datastore" -ResourceGroupName "test-rg" -SubscriptionId "204898ee-cd13-4332-b9d4-55ca5c25496d" -Tag @{"datastore"="test"}
 ```
 
 ```output

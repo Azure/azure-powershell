@@ -1,7 +1,6 @@
 ### Example 1: Update Virtual Network Resource
 ```powershell
-Update-AzConnectedVMwareVNet -Name "test-vnet" -ResourceGroupName "test-rg" -SubscriptionId "204898ee-cd13-4332-b9d4-55ca5c25496d" 
--Tag @{"vnet"="test"}
+Update-AzConnectedVMwareVNet -Name "test-vnet" -ResourceGroupName "test-rg" -SubscriptionId "204898ee-cd13-4332-b9d4-55ca5c25496d" -Tag @{"vnet"="test"}
 ```
 
 ```output

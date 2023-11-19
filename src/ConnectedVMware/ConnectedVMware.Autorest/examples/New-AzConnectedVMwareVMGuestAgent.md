@@ -1,6 +1,6 @@
 ### Example 1: Enable Guest Agent on VM Instances
 ```powershell
-New-AzConnectedVMwareVMGuestAgent -MachineId "/subscriptions/204898ee-cd13-4332-b9d4-55ca5c25496d/resourceGroups/test-rg/providers/Microsoft.HybridCompute/machines/test-machine" -CredentialsUsername $VM_User_Name -CredentialsPassword $Secure_String_Pwd -ProvisioningAction "install"
+New-AzConnectedVMwareVMGuestAgent -MachineId "/subscriptions/204898ee-cd13-4332-b9d4-55ca5c25496d/resourceGroups/test-rg/providers/Microsoft.HybridCompute/machines/test-machine" -CredentialsUsername "test-user" -CredentialsPassword "test-pw" -ProvisioningAction "install"
 ```
 
 ```output
