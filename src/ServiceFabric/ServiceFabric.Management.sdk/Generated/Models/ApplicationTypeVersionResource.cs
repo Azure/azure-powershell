@@ -58,9 +58,9 @@ namespace Microsoft.Azure.Management.ServiceFabric.Models
         /// <param name="defaultParameterList">List of application type parameters that can be overridden when creating or
         /// updating the application.
         /// </param>
-        public ApplicationTypeVersionResource(string appPackageUrl, string id = default(string), string name = default(string), string type = default(string), string location = default(string), System.Collections.Generic.IDictionary<string, string> tags = default(System.Collections.Generic.IDictionary<string, string>), string etag = default(string), SystemData systemData = default(SystemData), string provisioningState = default(string), System.Collections.Generic.IDictionary<string, string> defaultParameterList = default(System.Collections.Generic.IDictionary<string, string>))
+        public ApplicationTypeVersionResource(string id = default(string), string name = default(string), string type = default(string), string location = default(string), System.Collections.Generic.IDictionary<string, string> tags = default(System.Collections.Generic.IDictionary<string, string>), string etag = default(string), SystemData systemData = default(SystemData), string provisioningState = default(string), string appPackageUrl = default(string), System.Collections.Generic.IDictionary<string, string> defaultParameterList = default(System.Collections.Generic.IDictionary<string, string>))
 
-            : base(id, name, type, location, tags, etag, systemData)
+        : base(id, name, type, location, tags, etag, systemData)
         {
             this.ProvisioningState = provisioningState;
             this.AppPackageUrl = appPackageUrl;

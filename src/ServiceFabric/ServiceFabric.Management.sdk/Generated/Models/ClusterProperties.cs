@@ -53,8 +53,9 @@ namespace Microsoft.Azure.Management.ServiceFabric.Models
         /// <param name="clusterCodeVersion">The Service Fabric runtime version of the cluster. This property can only
         /// by set the user when **upgradeMode** is set to &#39;Manual&#39;. To get list of
         /// available Service Fabric versions for new clusters use [ClusterVersion
-        /// API](./ClusterVersion.md). To get the list of available version for
-        /// existing clusters use **availableClusterVersions**.
+        /// API](https://learn.microsoft.com/rest/api/servicefabric/cluster-versions/list).
+        /// To get the list of available version for existing clusters use
+        /// **availableClusterVersions**.
         /// </param>
 
         /// <param name="clusterEndpoint">The Azure Resource Provider endpoint. A system service in the cluster
@@ -273,8 +274,10 @@ namespace Microsoft.Azure.Management.ServiceFabric.Models
         /// Gets or sets the Service Fabric runtime version of the cluster. This
         /// property can only by set the user when **upgradeMode** is set to &#39;Manual&#39;.
         /// To get list of available Service Fabric versions for new clusters use
-        /// [ClusterVersion API](./ClusterVersion.md). To get the list of available
-        /// version for existing clusters use **availableClusterVersions**.
+        /// [ClusterVersion
+        /// API](https://learn.microsoft.com/rest/api/servicefabric/cluster-versions/list).
+        /// To get the list of available version for existing clusters use
+        /// **availableClusterVersions**.
         /// </summary>
         [Newtonsoft.Json.JsonProperty(PropertyName = "clusterCodeVersion")]
         public string ClusterCodeVersion {get; set; }

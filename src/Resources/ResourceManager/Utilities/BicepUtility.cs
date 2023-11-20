@@ -143,11 +143,11 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Utilities
                 throw new AzPSArgumentException(Properties.Resources.InvalidBicepFilePath, "File");
             }
 
-            string bicepPublishCommand = $"publish {GetQuotedFilePath(bicepFilePath)} --target '{target}'";
+            string bicepPublishCommand = $"publish {GetQuotedFilePath(bicepFilePath)} --target {GetQuotedFilePath(target)}";
             if (!string.IsNullOrWhiteSpace(documentationUri))
             {
                 CheckMinimalVersionRequirement(MinimalVersionRequirementForBicepPublishWithOptionalDocumentationUriParameter);
-                bicepPublishCommand += $" --documentationUri '{documentationUri}'";
+                bicepPublishCommand += $" --documentationUri {GetQuotedFilePath(documentationUri)}";
             }
 
             if (force)
