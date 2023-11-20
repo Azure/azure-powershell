@@ -1024,7 +1024,7 @@ function Test-NewDeploymentWithCustomTypesAndInlineOverrides
         $deployment = New-AzResourceGroupDeployment -Name $rname -ResourceGroupName $rgname -TemplateParameterFile deployWithCustomTypes.bicepparam -array @(123) -enum "abc" -enumRef "abc" -int2 342 -object @{ "def" = "hello" } -objectRef @{ "abc" = "blah" }
 
         # Assert
-        Assert-AreEqual Succeesded $deployment.ProvisioningState
+        Assert-AreEqual Succeeded $deployment.ProvisioningState
     }
     finally
     {
