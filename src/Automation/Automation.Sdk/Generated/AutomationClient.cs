@@ -196,6 +196,10 @@ namespace Microsoft.Azure.Management.Automation
         /// </summary>
         public virtual ITestJobOperations TestJob { get; private set; }
         /// <summary>
+        /// Gets the IPowerShell72ModuleOperations
+        /// </summary>
+        public virtual IPowerShell72ModuleOperations PowerShell72Module { get; private set; }
+        /// <summary>
         /// Gets the IHybridRunbookWorkersOperations
         /// </summary>
         public virtual IHybridRunbookWorkersOperations HybridRunbookWorkers { get; private set; }
@@ -477,6 +481,7 @@ namespace Microsoft.Azure.Management.Automation
             this.Runbook = new RunbookOperations(this);
             this.TestJobStreams = new TestJobStreamsOperations(this);
             this.TestJob = new TestJobOperations(this);
+            this.PowerShell72Module = new PowerShell72ModuleOperations(this);
             this.HybridRunbookWorkers = new HybridRunbookWorkersOperations(this);
             this.HybridRunbookWorkerGroup = new HybridRunbookWorkerGroupOperations(this);
             this.Python3Package = new Python3PackageOperations(this);

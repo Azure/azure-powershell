@@ -14,8 +14,47 @@ $testNonGlobalModule = @{
     Name = 'Pester'
 	Version = '3.0.3'
     ContentLinkUri = 'https://devopsgallerystorage.blob.core.windows.net/packages/pester.3.0.3.nupkg'
-	Size = 74921
+	Size = 74921}
+
 }
+
+$testNonGlobalPowershell72Module = @{
+    Name = 'Pester'
+	Version = '3.0.3'
+    ContentLinkUri = 'https://devopsgallerystorage.blob.core.windows.net/packages/pester.3.0.3.nupkg'
+	Size = 74921}
+
+
+function EnsureTestPowershell72ModuleImported {
+	$foundModule = Get-AzAutomationModule -Name $testNonGlobaPowershell72lModule.Name @testAutomationAccount -ErrorAction Ignore
+    if ($foundModule) {
+		if ($foundModule.ProvisioningState -ne 'Succeeded') {
+			Remove-AzAutomationModule -Name $testNonGlobalPowershell72Module.Name @testAutomationAccount -Force
+			$foundModule = $null
+		}
+	}
+
+    if (-not $foundModule) {
+        $output = New-AzAutomationModule -Name $testNonGlobalPowershell72Module.Name -ContentLinkUri $testNonGlobalPowershell72Module.ContentLinkUri @testAutomationAccount
+		Write-Verbose "Module $($testNonGlobalPowershell72Module.Name) provisioning state: $($output.ProvisioningState)"
+
+		$startTime = Get-Date
+		$timeout = New-TimeSpan -Minutes 3
+		$endTime = $startTime + $timeout
+
+        while ($output.ProvisioningState -ne 'Succeeded') {
+            [Microsoft.WindowsAzure.Commands.Utilities.Common.TestMockSupport]::Delay(10*1000)
+
+            $output = Get-AzAutomationModule -Name $testNonGlobalPowershell72Module.Name @testAutomationAccount
+			Write-Verbose "Module $($testNonGlobalPowershell72Module.Name) provisioning state: $($output.ProvisioningState)"
+
+			if ((Get-Date) -gt $endTime) {
+				throw "Module $($testNonGlobalPowershell72Module.Name) took longer than $timeout to import"
+			}
+        }
+    }
+}
+
 
 function EnsureTestModuleImported {
 	$foundModule = Get-AzAutomationModule -Name $testNonGlobalModule.Name @testAutomationAccount -ErrorAction Ignore
@@ -50,6 +89,12 @@ function EnsureTestModuleImported {
 function Remove-TestNonGlobalModule {
     if (Get-AzAutomationModule -Name $testNonGlobalModule.Name @testAutomationAccount -ErrorAction Ignore) {
         Remove-AzAutomationModule -Name $testNonGlobalModule.Name @testAutomationAccount -Force
+    }
+}
+
+function Remove-TestNonGlobalPowershell72Module {
+    if (Get-AzAutomationModule -Name $testNonGlobalPowershell72Module.Name @testAutomationAccount -ErrorAction Ignore) {
+        Remove-AzAutomationModule -Name $testNonGlobalPowershell72Module.Name @testAutomationAccount -Force
     }
 }
 
@@ -100,6 +145,7 @@ function Test-GetModuleByName {
 	Assert-AreEqual $output.ProvisioningState 'Succeeded'
 }
 
+
 <#
 .SYNOPSIS
 Tests importing a new module into an Automation account.
@@ -116,6 +162,31 @@ function Test-NewModule {
 	Assert-AreEqual $output.AutomationAccountName $testAutomationAccount.AutomationAccountName
 	Assert-AreEqual $output.ResourceGroupName $testAutomationAccount.ResourceGroupName
 	Assert-AreEqual $output.Name $testNonGlobalModule.Name
+	Assert-False { $output.IsGlobal }
+	Assert-Null $output.Version
+	Assert-AreEqual $output.SizeInBytes 0
+	Assert-AreEqual $output.ActivityCount 0
+	Assert-NotNull $output.CreationTime
+	Assert-NotNull $output.LastModifiedTime
+	Assert-AreEqual $output.ProvisioningState 'Creating'
+}
+
+<#
+.SYNOPSIS
+Tests importing a new Powershell72 module into an Automation account.
+#>
+function Test-NewPowershell72Module {
+	Remove-TestNonGlobalPowershell72Module
+
+	$output = New-AzAutomationModule -Name $testNonGlobalPowershell72Module.Name -ContentLinkUri $testNonGlobalPowershell72Module.ContentLinkUri @testAutomationAccount -RuntimeVersion "7.2"
+
+	Assert-NotNull $output
+	$outputCount = $output | Measure-Object | % Count;
+	Assert-AreEqual $outputCount 1
+
+	Assert-AreEqual $output.AutomationAccountName $testAutomationAccount.AutomationAccountName
+	Assert-AreEqual $output.ResourceGroupName $testAutomationAccount.ResourceGroupName
+	Assert-AreEqual $output.Name $testNonGlobalPowershell72Module.Name
 	Assert-False { $output.IsGlobal }
 	Assert-Null $output.Version
 	Assert-AreEqual $output.SizeInBytes 0
@@ -162,6 +233,28 @@ function Test-SetModule {
 
 <#
 .SYNOPSIS
+Tests updating a Powershell72 module already imported into an Automation account.
+#>
+function Test-SetPowershell72Module {
+	EnsureTestModuleImported
+
+	$output = Set-AzAutomationModule -Name $testNonGlobalPowershell72Module.Name -ContentLinkUri $testNonGlobalPowershell72Module.ContentLinkUri @testAutomationAccount -ContentLinkVersion $testNonGlobalPowershell72Module.Version -RuntimeVersion "7.2"
+
+	Assert-NotNull $output
+	$outputCount = $output | Measure-Object | % Count;
+	Assert-AreEqual $outputCount 1
+
+	Assert-AreEqual $output.AutomationAccountName $testAutomationAccount.AutomationAccountName
+	Assert-AreEqual $output.ResourceGroupName $testAutomationAccount.ResourceGroupName
+	Assert-AreEqual $output.Name $testNonGlobalPowershell72Module.Name
+	Assert-False { $output.IsGlobal }
+	Assert-NotNull $output.CreationTime
+	Assert-NotNull $output.LastModifiedTime
+	Assert-AreEqual $output.ProvisioningState 'Creating'
+}
+
+<#
+.SYNOPSIS
 Tests removing a module from an Automation account.
 #>
 function Test-RemoveModule {
@@ -171,5 +264,19 @@ function Test-RemoveModule {
 
 	Assert-Null $output
 	$moduleFound = Get-AzAutomationModule -Name $testNonGlobalModule.Name @testAutomationAccount -ErrorAction Ignore
+	Assert-Null $moduleFound
+}
+
+<#
+.SYNOPSIS
+Tests removing a Powershell72 module from an Automation account.
+#>
+function Test-RemovePowershell72Module {
+	EnsureTestPowershell72ModuleImported
+
+	$output = Remove-AzAutomationModule -Name $testNonGlobalPowershell72Module.Name @testAutomationAccount -Force -RuntimeVersion "7.2"
+
+	Assert-Null $output
+	$moduleFound = Get-AzAutomationModule -Name $testNonGlobalPowershell72Module.Name @testAutomationAccount -ErrorAction Ignore -RuntimeVersion "7.2"
 	Assert-Null $moduleFound
 }

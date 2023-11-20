@@ -238,6 +238,11 @@ namespace Microsoft.Azure.Management.Automation
         ITestJobOperations TestJob { get; }
 
         /// <summary>
+        /// Gets the IPowerShell72ModuleOperations
+        /// </summary>
+        IPowerShell72ModuleOperations PowerShell72Module { get; }
+
+        /// <summary>
         /// Gets the IHybridRunbookWorkersOperations
         /// </summary>
         IHybridRunbookWorkersOperations HybridRunbookWorkers { get; }

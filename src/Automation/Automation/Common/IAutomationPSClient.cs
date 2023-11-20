@@ -144,6 +144,20 @@ namespace Microsoft.Azure.Commands.Automation.Common
 
         #endregion
 
+        #region PowerShell72Modules
+
+        Module CreatePowerShell72Module(string resourceGroupName, string automationAccountName, Uri contentLink, string moduleName);
+
+        Module GetPowerShell72Module(string resourceGroupName, string automationAccountName, string name);
+
+        Module UpdatePowerShell72Module(string resourceGroupName, string automationAccountName, string name, Uri contentLink, string contentLinkVersion);
+
+        IEnumerable<Module> ListPowerShell72Modules(string resourceGroupName, string automationAccountName, ref string nextLink);
+
+        void DeletePowerShell72Module(string resourceGroupName, string automationAccountName, string name);
+
+        #endregion
+
         #region dscreports
 
         DscNodeReport GetLatestDscNodeReport(string resourceGroupName, string automationAccountName, Guid nodeId);

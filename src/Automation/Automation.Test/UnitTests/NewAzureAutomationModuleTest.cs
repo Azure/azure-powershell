@@ -17,25 +17,28 @@ using Microsoft.Azure.Commands.Automation.Common;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using Microsoft.WindowsAzure.Commands.Common.Test.Mocks;
 using Microsoft.WindowsAzure.Commands.Test.Utilities.Common;
+using Microsoft.WindowsAzure.Commands.Utilities.Common;
 using Moq;
+using System;
+using System.Collections.Generic;
 
 namespace Microsoft.Azure.Commands.ResourceManager.Automation.Test.UnitTests
 {
     [TestClass]
-    public class RemoveAzureAutomationModuleTest : RMTestBase
+    public class NewAzureAutomationModuleTest : RMTestBase
     {
         private Mock<IAutomationPSClient> mockAutomationClient;
 
         private MockCommandRuntime mockCommandRuntime;
 
-        private RemoveAzureAutomationModule cmdlet;
+        private NewAzureAutomationModule cmdlet;
 
         [TestInitialize]
         public void SetupTest()
         {
             this.mockAutomationClient = new Mock<IAutomationPSClient>();
             this.mockCommandRuntime = new MockCommandRuntime();
-            this.cmdlet = new RemoveAzureAutomationModule
+            this.cmdlet = new NewAzureAutomationModule
             {
                 AutomationClient = this.mockAutomationClient.Object,
                 CommandRuntime = this.mockCommandRuntime
@@ -43,48 +46,48 @@ namespace Microsoft.Azure.Commands.ResourceManager.Automation.Test.UnitTests
         }
 
         [TestMethod]
-        public void RemoveAzureAutomationModuleByNameSuccessfull()
+        public void NewAzureAutomationModuleByNameSuccessful()
         {
             // Setup
             string resourceGroupName = "resourceGroup";
             string accountName = "automation";
-            string moduleName = "module";
+            string packageName = "module";
+            Uri contentLinkUri = new Uri("https://azure.com/");
 
-            this.mockAutomationClient.Setup(f => f.DeleteModule(resourceGroupName, accountName, moduleName));
+            this.mockAutomationClient.Setup(
+                f => f.CreateModule(resourceGroupName, accountName, contentLinkUri, packageName));
 
-            // Test
             this.cmdlet.ResourceGroupName = resourceGroupName;
             this.cmdlet.AutomationAccountName = accountName;
-            this.cmdlet.Name = moduleName;
-            this.cmdlet.Force = true;
-            
+            this.cmdlet.Name = packageName;
+            this.cmdlet.ContentLinkUri = contentLinkUri;
             this.cmdlet.ExecuteCmdlet();
 
             // Assert
-            this.mockAutomationClient.Verify(f => f.DeleteModule(resourceGroupName, accountName, moduleName), Times.Once());
-
+            this.mockAutomationClient.Verify(f => f.CreateModule(resourceGroupName, accountName, contentLinkUri, packageName), Times.Once());
         }
 
         [TestMethod]
-        public void RemoveAzureAutomationPowershell72ModuleByNameSuccessfull()
+        public void NewAzureAutomationPowershell72ModuleByNameSuccessful()
         {
             // Setup
             string resourceGroupName = "resourceGroup";
             string accountName = "automation";
-            string moduleName = "module";
+            string packageName = "module";
+            Uri contentLinkUri = new Uri("https://azure.com/");
 
-            this.mockAutomationClient.Setup(f => f.DeleteModule(resourceGroupName, accountName, moduleName));
+            this.mockAutomationClient.Setup(
+                f => f.CreatePowerShell72Module(resourceGroupName, accountName, contentLinkUri, packageName));
 
-            // Test
             this.cmdlet.ResourceGroupName = resourceGroupName;
             this.cmdlet.AutomationAccountName = accountName;
-            this.cmdlet.Name = moduleName;
-            this.cmdlet.Force = true;
+            this.cmdlet.Name = packageName;
+            this.cmdlet.ContentLinkUri = contentLinkUri;
             this.cmdlet.RuntimeVersion = "7.2";
             this.cmdlet.ExecuteCmdlet();
 
             // Assert
-            this.mockAutomationClient.Verify(f => f.DeletePowerShell72Module(resourceGroupName, accountName, moduleName), Times.Once());
+            this.mockAutomationClient.Verify(f => f.CreatePowerShell72Module(resourceGroupName, accountName, contentLinkUri, packageName), Times.Once());
         }
     }
 }

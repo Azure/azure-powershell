@@ -50,15 +50,33 @@ namespace Microsoft.Azure.Commands.Automation.Cmdlet
             HelpMessage = "The ContentLink version.")]
         public string ContentLinkVersion { get; set; }
 
+
+        /// <summary>
+        /// Gets or sets the runbook version type
+        /// </summary>
+        [Parameter(Position = 4, Mandatory = false, HelpMessage = "Runtime Environment of module ")]
+        [ValidateSet(Constants.RuntimeVersion.PowerShell51,
+            Constants.RuntimeVersion.PowerShell72,
+            IgnoreCase = true)]
+        [ValidateNotNullOrEmpty]
+        public string RuntimeVersion { get; set; }
+
         /// <summary>
         /// Execute this cmdlet.
         /// </summary>
         [PermissionSet(SecurityAction.Demand, Name = "FullTrust")]
         protected override void AutomationProcessRecord()
-        {
-            var updatedModule = this.AutomationClient.UpdateModule(this.ResourceGroupName, this.AutomationAccountName, Name, ContentLinkUri, ContentLinkVersion);
-
-            this.WriteObject(updatedModule);
+        {            
+            if (string.IsNullOrWhiteSpace(RuntimeVersion) || RuntimeVersion.Equals(Constants.RuntimeVersion.PowerShell51))
+            {
+                var updatedModule = this.AutomationClient.UpdateModule(this.ResourceGroupName, this.AutomationAccountName, Name, ContentLinkUri, ContentLinkVersion);
+                this.WriteObject(updatedModule);
+            }
+            else
+            {
+                var updatedModule = this.AutomationClient.UpdatePowerShell72Module(this.ResourceGroupName, this.AutomationAccountName, Name, ContentLinkUri, ContentLinkVersion);
+                this.WriteObject(updatedModule);
+            }
         }
     }
 }
