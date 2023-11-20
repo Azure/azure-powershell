@@ -21,27 +21,27 @@ Gets a gallery image
 
 
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.StackHCIVm.Models.Api20230901Preview.IGalleryImages
-Microsoft.Azure.PowerShell.Cmdlets.StackHCIVm.Models.Api20230901Preview.IMarketplaceGalleryImages
+Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Models.Api20230901Preview.IGalleryImages
+Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Models.Api20230901Preview.IMarketplaceGalleryImages
 
 .Link
 https://learn.microsoft.com/powershell/module/az.stackhcivm/get-azstackhcivmimage
 #>
 
-function Get-AzStackHCIVmImage{    
+function Get-AzStackHCIVMImage{    
     [CmdletBinding(DefaultParameterSetName='BySubscription', PositionalBinding=$false)]
-    [OutputType([Microsoft.Azure.PowerShell.Cmdlets.StackHCIVm.Models.Api20230901Preview.IMarketplaceGalleryImages])]
-    [OutputType([Microsoft.Azure.PowerShell.Cmdlets.StackHCIVm.Models.Api20230901Preview.IGalleryImages])]
+    [OutputType([Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Models.Api20230901Preview.IMarketplaceGalleryImages])]
+    [OutputType([Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Models.Api20230901Preview.IGalleryImages])]
     param(
     [Parameter(ParameterSetName='ByName', Mandatory)]
-    [Microsoft.Azure.PowerShell.Cmdlets.StackHCIVm.Category('Path')]
+    [Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Category('Path')]
     [System.String]
     # Name of the image
     ${Name},
 
     [Parameter(ParameterSetName='ByName', Mandatory)]
     [Parameter(ParameterSetName='ByResourceGroup', Mandatory)]
-    [Microsoft.Azure.PowerShell.Cmdlets.StackHCIVm.Category('Path')]
+    [Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Category('Path')]
     [System.String]
     # The name of the resource group.
     # The name is case insensitive.
@@ -51,15 +51,15 @@ function Get-AzStackHCIVmImage{
     [Parameter(ParameterSetName='ByResourceGroup')]
     [Parameter(ParameterSetName='ByResourceId')]
     [Parameter(ParameterSetName='BySubscription')]
-    [Microsoft.Azure.PowerShell.Cmdlets.StackHCIVm.Category('Path')]
-    [Microsoft.Azure.PowerShell.Cmdlets.StackHCIVm.Runtime.DefaultInfo(Script='(Get-AzContext).Subscription.Id')]
+    [Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Category('Path')]
+    [Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Runtime.DefaultInfo(Script='(Get-AzContext).Subscription.Id')]
     [System.String[]]
     # The ID of the target subscription.
     ${SubscriptionId},
 
  
     [Parameter(ParameterSetName='ByResourceId', Mandatory)]
-    [Microsoft.Azure.PowerShell.Cmdlets.StackHCIVm.Category('Path')]
+    [Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Category('Path')]
     [System.String]
     # The ARM Resource Id of the Image 
     ${ResourceId},
@@ -67,52 +67,52 @@ function Get-AzStackHCIVmImage{
     [Parameter()]
     [Alias('AzureRMContext', 'AzureCredential')]
     [ValidateNotNull()]
-    [Microsoft.Azure.PowerShell.Cmdlets.StackHCIVm.Category('Azure')]
+    [Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Category('Azure')]
     [System.Management.Automation.PSObject]
     # The credentials, account, tenant, and subscription used for communication with Azure.
     ${DefaultProfile},
 
     [Parameter(DontShow)]
-    [Microsoft.Azure.PowerShell.Cmdlets.StackHCIVm.Category('Runtime')]
+    [Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Category('Runtime')]
     [System.Management.Automation.SwitchParameter]
     # Wait for .NET debugger to attach
     ${Break},
 
     [Parameter(DontShow)]
     [ValidateNotNull()]
-    [Microsoft.Azure.PowerShell.Cmdlets.StackHCIVm.Category('Runtime')]
-    [Microsoft.Azure.PowerShell.Cmdlets.StackHCIVm.Runtime.SendAsyncStep[]]
+    [Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Category('Runtime')]
+    [Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Runtime.SendAsyncStep[]]
     # SendAsync Pipeline Steps to be appended to the front of the pipeline
     ${HttpPipelineAppend},
 
     [Parameter(DontShow)]
     [ValidateNotNull()]
-    [Microsoft.Azure.PowerShell.Cmdlets.StackHCIVm.Category('Runtime')]
-    [Microsoft.Azure.PowerShell.Cmdlets.StackHCIVm.Runtime.SendAsyncStep[]]
+    [Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Category('Runtime')]
+    [Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Runtime.SendAsyncStep[]]
     # SendAsync Pipeline Steps to be prepended to the front of the pipeline
     ${HttpPipelinePrepend},
 
     [Parameter()]
-    [Microsoft.Azure.PowerShell.Cmdlets.StackHCIVm.Category('Runtime')]
+    [Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Category('Runtime')]
     [System.Management.Automation.SwitchParameter]
     # Run the command asynchronously
     ${NoWait},
 
     [Parameter(DontShow)]
-    [Microsoft.Azure.PowerShell.Cmdlets.StackHCIVm.Category('Runtime')]
+    [Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Category('Runtime')]
     [System.Uri]
     # The URI for the proxy server to use
     ${Proxy},
 
     [Parameter(DontShow)]
     [ValidateNotNull()]
-    [Microsoft.Azure.PowerShell.Cmdlets.StackHCIVm.Category('Runtime')]
+    [Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Category('Runtime')]
     [System.Management.Automation.PSCredential]
     # Credentials for a proxy server to use for the remote call
     ${ProxyCredential},
 
     [Parameter(DontShow)]
-    [Microsoft.Azure.PowerShell.Cmdlets.StackHCIVm.Category('Runtime')]
+    [Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Category('Runtime')]
     [System.Management.Automation.SwitchParameter]
     # Use the default credentials for the proxy
     ${ProxyUseDefaultCredentials}
@@ -125,11 +125,11 @@ function Get-AzStackHCIVmImage{
             $isMarketplaceGalleryImage = $false
 
             
-            $galImage = Az.StackHCIVm.internal\Get-AzStackHCIVmGalleryImage @PSBoundParameters -ErrorAction SilentlyContinue
+            $galImage = Az.StackHCIVM.internal\Get-AzStackHCIVMGalleryImage @PSBoundParameters -ErrorAction SilentlyContinue
             if ($galImage -ne $null){
                 $isGalleryImage = $true 
             } else {
-                $marketplaceGalImage = Az.StackHCIVm.internal\Get-AzStackHCIVmMarketplaceGalleryImage @PSBoundParameters -ErrorAction SilentlyContinue
+                $marketplaceGalImage = Az.StackHCIVM.internal\Get-AzStackHCIVMMarketplaceGalleryImage @PSBoundParameters -ErrorAction SilentlyContinue
                 if ($marketplaceGalImage -ne $null){
                     $isMarketplaceGalleryImage = $true 
                 }
@@ -158,7 +158,7 @@ function Get-AzStackHCIVmImage{
                     $null = $PSBoundParameters.Remove("SubscriptionId")
                     $PSBoundParameters.Add("SubscriptionId", $subscriptionId)
 
-                    return  Az.StackHCIVm.internal\Get-AzStackHCIVmGalleryImage @PSBoundParameters
+                    return  Az.StackHCIVM.internal\Get-AzStackHCIVMGalleryImage @PSBoundParameters
                 } elseif ($ResourceId -match $marketplaceGalImageRegex){
                     $subscriptionId = $($Matches['subscriptionId'])
                     $resourceGroupName = $($Matches['resourceGroupName'])
@@ -169,23 +169,23 @@ function Get-AzStackHCIVmImage{
                     $null = $PSBoundParameters.Remove("SubscriptionId")
                     $PSBoundParameters.Add("SubscriptionId", $subscriptionId)
 
-                    return  Az.StackHCIVm.internal\Get-AzStackHCIVmMarketplaceGalleryImage @PSBoundParameters
+                    return  Az.StackHCIVM.internal\Get-AzStackHCIVMMarketplaceGalleryImage @PSBoundParameters
                 } else {
                     Write-Error "Resource ID is invalid: $ResourceId"
                 }
 
         } elseif ($PSCmdlet.ParameterSetName -eq "ByResourceGroup"){
             $allImages = @()
-            $galImages = Az.StackHCIVm.internal\Get-AzStackHCIVmGalleryImage @PSBoundParameters
-            $marketplaceGalImages =  Az.StackHCIVm.internal\Get-AzStackHCIVmMarketplaceGalleryImage @PSBoundParameters
+            $galImages = Az.StackHCIVM.internal\Get-AzStackHCIVMGalleryImage @PSBoundParameters
+            $marketplaceGalImages =  Az.StackHCIVM.internal\Get-AzStackHCIVMMarketplaceGalleryImage @PSBoundParameters
             $allImages = $allImages + $galImages
             $allImages = $allImages + $marketplaceGalImages
             return $allImages
         }
 
         $allImages = @()
-        $galImages = Az.StackHCIVm.internal\Get-AzStackHCIVmGalleryImage @PSBoundParameters
-        $marketplaceGalImages =  Az.StackHCIVm.internal\Get-AzStackHCIVmMarketplaceGalleryImage @PSBoundParameters
+        $galImages = Az.StackHCIVM.internal\Get-AzStackHCIVMGalleryImage @PSBoundParameters
+        $marketplaceGalImages =  Az.StackHCIVM.internal\Get-AzStackHCIVMMarketplaceGalleryImage @PSBoundParameters
         $allImages = $allImages + $galImages
         $allImages = $allImages + $marketplaceGalImages
         return $allImages

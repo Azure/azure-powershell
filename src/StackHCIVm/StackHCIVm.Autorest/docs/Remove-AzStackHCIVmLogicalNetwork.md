@@ -1,11 +1,11 @@
 ---
 external help file:
-Module Name: Az.StackHCIVm
+Module Name: Az.StackHCIVM
 online version: https://learn.microsoft.com/powershell/module/az.stackhcivm/remove-azstackhcivmlogicalnetwork
 schema: 2.0.0
 ---
 
-# Remove-AzStackHCIVmLogicalNetwork
+# Remove-AzStackHCIVMLogicalNetwork
 
 ## SYNOPSIS
 The operation to delete a logical network.
@@ -14,12 +14,12 @@ The operation to delete a logical network.
 
 ### ByResourceId (Default)
 ```
-Remove-AzStackHCIVmLogicalNetwork -ResourceId <String> [-Force] [-Confirm] [-WhatIf] [<CommonParameters>]
+Remove-AzStackHCIVMLogicalNetwork -ResourceId <String> [-Force] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ### Delete
 ```
-Remove-AzStackHCIVmLogicalNetwork -Name <String> -ResourceGroupName <String> [-SubscriptionId <String>]
+Remove-AzStackHCIVMLogicalNetwork -Name <String> -ResourceGroupName <String> [-SubscriptionId <String>]
  [-Force] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
@@ -30,7 +30,7 @@ The operation to delete a logical network.
 
 ### Example 1: Remove a logical network.
 ```powershell
-Remove-AzStackHCIVmLogicalNetwork -Name  "testLnet" -ResourceGroupName "test-rg"
+Remove-AzStackHCIVMLogicalNetwork -Name  "testLnet" -ResourceGroupName "test-rg"
 ```
 
 This command removes the logical network from the specified resource group.

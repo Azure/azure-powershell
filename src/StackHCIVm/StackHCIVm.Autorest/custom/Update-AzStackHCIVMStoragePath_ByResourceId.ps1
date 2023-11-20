@@ -20,26 +20,26 @@ The operation to update a storage path.
 The operation to update a storage path.
 
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.StackHCIVm.Models.Api20230901Preview.IVStorageContainers
+Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Models.Api20230901Preview.IVStorageContainers
 
 .Link
 https://learn.microsoft.com/powershell/module/az.stackhcivm/update-azstackhcivmstoragepath
 #>
-function Update-AzStackHCIVmStoragePath_ByResourceId {
-[OutputType([Microsoft.Azure.PowerShell.Cmdlets.StackHCIVm.Models.Api20230901Preview.IStorageContainers])]
+function Update-AzStackHCIVMStoragePath_ByResourceId {
+[OutputType([Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Models.Api20230901Preview.IStorageContainers])]
 [CmdletBinding(PositionalBinding=$false)]
 
 param(
  
     
-    [Microsoft.Azure.PowerShell.Cmdlets.StackHCIVm.Category('Path')]
+    [Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Category('Path')]
     [System.String]
     # The ARM Resource ID of the storage path.
     ${ResourceId},
 
     
-    [Microsoft.Azure.PowerShell.Cmdlets.StackHCIVm.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.StackHCIVm.Runtime.Info(PossibleTypes=([Microsoft.Azure.PowerShell.Cmdlets.StackHCIVm.Models.Api20230901Preview.IStorageContainersUpdateRequestTags]))]
+    [Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Category('Body')]
+    [Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Runtime.Info(PossibleTypes=([Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Models.Api20230901Preview.IStorageContainersUpdateRequestTags]))]
     [System.Collections.Hashtable]
     # Resource tags
     ${Tag}
@@ -60,7 +60,7 @@ param(
             $null = $PSBoundParameters.Remove("SubscriptionId")
             $PSBoundParameters.Add("SubscriptionId", $subscriptionId)
 
-            return  Az.StackHCIVm\Update-AzStackHCIVmStoragePath @PSBoundParameters
+            return  Az.StackHCIVM\Update-AzStackHCIVMStoragePath @PSBoundParameters
 
         } else {             
             Write-Error "Resource ID is invalid: $ResourceId"

@@ -26,18 +26,18 @@ System.Boolean
 https://learn.microsoft.com/powershell/module/az.stackhcivm/remove-azstackhcivmimage
 #>
 
-function Remove-AzStackHCIVmImage{
+function Remove-AzStackHCIVMImage{
     [OutputType([System.Boolean])]
     [CmdletBinding(PositionalBinding=$false, SupportsShouldProcess, ConfirmImpact='Medium')]
     param(
     [Parameter(ParameterSetName='ByName', Mandatory)]
-    [Microsoft.Azure.PowerShell.Cmdlets.StackHCIVm.Category('Path')]
+    [Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Category('Path')]
     [System.String]
     # Name of the gallery image
     ${Name},
 
     [Parameter(ParameterSetName='ByName', Mandatory)]
-    [Microsoft.Azure.PowerShell.Cmdlets.StackHCIVm.Category('Path')]
+    [Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Category('Path')]
     [System.String]
     # The name of the resource group.
     # The name is case insensitive.
@@ -45,15 +45,15 @@ function Remove-AzStackHCIVmImage{
 
     [Parameter(ParameterSetName='ByName')]
     [Parameter(ParameterSetName='ByResourceId')] 
-    [Microsoft.Azure.PowerShell.Cmdlets.StackHCIVm.Category('Path')]
-    [Microsoft.Azure.PowerShell.Cmdlets.StackHCIVm.Runtime.DefaultInfo(Script='(Get-AzContext).Subscription.Id')]
+    [Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Category('Path')]
+    [Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Runtime.DefaultInfo(Script='(Get-AzContext).Subscription.Id')]
     [System.String]
     # The ID of the target subscription.
     ${SubscriptionId},
 
  
     [Parameter(ParameterSetName='ByResourceId', Mandatory)]
-    [Microsoft.Azure.PowerShell.Cmdlets.StackHCIVm.Category('Path')]
+    [Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Category('Path')]
     [System.String]
     # The ARM Resource ID of the image.
     ${ResourceId},
@@ -73,11 +73,11 @@ function Remove-AzStackHCIVmImage{
         $isMarketplaceGalleryImage = $false
 
         
-        $galImage = Az.StackHCIVm.internal\Get-AzStackHCIVmGalleryImage -Name $Name -ResourceGroupName $ResourceGroupName -SubscriptionId $SubscriptionId -ErrorAction SilentlyContinue
+        $galImage = Az.StackHCIVM.internal\Get-AzStackHCIVMGalleryImage -Name $Name -ResourceGroupName $ResourceGroupName -SubscriptionId $SubscriptionId -ErrorAction SilentlyContinue
         if ($galImage -ne $null){
             $isGalleryImage = $true 
         } else {
-            $marketplaceGalImage = Az.StackHCIVm.internal\Get-AzStackHCIVmMarketplaceGalleryImage -Name $Name -ResourceGroupName $ResourceGroupName -SubscriptionId $SubscriptionId -ErrorAction SilentlyContinue 
+            $marketplaceGalImage = Az.StackHCIVM.internal\Get-AzStackHCIVMMarketplaceGalleryImage -Name $Name -ResourceGroupName $ResourceGroupName -SubscriptionId $SubscriptionId -ErrorAction SilentlyContinue 
             if ($marketplaceGalImage -ne $null){
                 $isMarketplaceGalleryImage = $true 
             }
@@ -129,12 +129,12 @@ function Remove-AzStackHCIVmImage{
 
         if ($isMarketplaceGalleryImage)
         {
-            return Az.StackHCIVm.internal\Remove-AzStackHCIVmMarketplaceGalleryImage @PSBoundParameters
+            return Az.StackHCIVM.internal\Remove-AzStackHCIVMMarketplaceGalleryImage @PSBoundParameters
         }
 
         if ($isGalleryImage)
         {
-            return Az.StackHCIVm.internal\Remove-AzStackHCIVmGalleryImage @PSBoundParameters
+            return Az.StackHCIVM.internal\Remove-AzStackHCIVMGalleryImage @PSBoundParameters
         }
     }
 

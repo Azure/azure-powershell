@@ -1,11 +1,11 @@
 ---
 external help file:
-Module Name: Az.StackHCIVm
+Module Name: Az.StackHCIVM
 online version: https://learn.microsoft.com/powershell/module/az.stackhcivm/remove-azstackhcivmnetworkinterface
 schema: 2.0.0
 ---
 
-# Remove-AzStackHCIVmNetworkInterface
+# Remove-AzStackHCIVMNetworkInterface
 
 ## SYNOPSIS
 The operation to delete a network interface.
@@ -14,13 +14,13 @@ The operation to delete a network interface.
 
 ### ByResourceId (Default)
 ```
-Remove-AzStackHCIVmNetworkInterface -ResourceId <String> [-SubscriptionId <String>] [-Force] [-Confirm]
+Remove-AzStackHCIVMNetworkInterface -ResourceId <String> [-SubscriptionId <String>] [-Force] [-Confirm]
  [-WhatIf] [<CommonParameters>]
 ```
 
 ### ByName
 ```
-Remove-AzStackHCIVmNetworkInterface -Name <String> -ResourceGroupName <String> [-SubscriptionId <String>]
+Remove-AzStackHCIVMNetworkInterface -Name <String> -ResourceGroupName <String> [-SubscriptionId <String>]
  [-Force] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
@@ -31,7 +31,7 @@ The operation to delete a network interface.
 
 ### Example 1: Remove a network interface.
 ```powershell
-Remove-AzStackHCIVmLogicalNetwork -Name  "testNic" -ResourceGroupName "test-rg"
+Remove-AzStackHCIVMLogicalNetwork -Name  "testNic" -ResourceGroupName "test-rg"
 ```
 
 This command removes the network interface from the specified resource group.
@@ -150,7 +150,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.StackHCIVm.Models.IStackHCIVmIdentity
+### Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Models.IStackHCIVMIdentity
 
 ## OUTPUTS
 

@@ -23,7 +23,7 @@ The operation to create or update a virtual machine.
 Please note some properties can be set only during virtual machine creation.
 
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.StackHCIVm.Models.Api20230901Preview.IVirtualMachineInstance
+Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Models.Api20230901Preview.IVirtualMachineInstance
 .Notes
 COMPLEX PARAMETER PROPERTIES
 
@@ -45,57 +45,57 @@ WINDOWSCONFIGURATIONSSHPUBLICKEY <IVirtualMachinePropertiesOSProfileWindowsConfi
 .Link
 https://learn.microsoft.com/powershell/module/az.stackhcivm/new-azstackhcivmvirtualmachine
 #>
-function New-AzStackHCIVmVirtualMachine {
-  [OutputType([Microsoft.Azure.PowerShell.Cmdlets.StackHCIVm.Models.Api20230901Preview.IVirtualMachineInstance])]
+function New-AzStackHCIVMVirtualMachine {
+  [OutputType([Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Models.Api20230901Preview.IVirtualMachineInstance])]
   [CmdletBinding(PositionalBinding=$false, SupportsShouldProcess, ConfirmImpact='Medium')]
   param(
       [Parameter(Mandatory)]
       [Alias('VirtualMachineName')]
-      [Microsoft.Azure.PowerShell.Cmdlets.StackHCIVm.Category('Path')]
+      [Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Category('Path')]
       [System.String]
       # Name of the virtual machine
       ${Name},
     
       [Parameter(Mandatory)]
-      [Microsoft.Azure.PowerShell.Cmdlets.StackHCIVm.Category('Path')]
+      [Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Category('Path')]
       [System.String]
       # The name of the resource group.
       # The name is case insensitive.
       ${ResourceGroupName},
 
       [Parameter()]
-      [Microsoft.Azure.PowerShell.Cmdlets.StackHCIVm.Category('Path')]
-      [Microsoft.Azure.PowerShell.Cmdlets.StackHCIVm.Runtime.DefaultInfo(Script='(Get-AzContext).Subscription.Id')]
+      [Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Category('Path')]
+      [Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Runtime.DefaultInfo(Script='(Get-AzContext).Subscription.Id')]
       [System.String]
       # The ID of the target subscription.
       ${SubscriptionId},
 
       [Parameter(Mandatory)]
-      [Microsoft.Azure.PowerShell.Cmdlets.StackHCIVm.Category('Body')]
+      [Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Category('Body')]
       [System.String]
       # The geo-location where the resource lives
       ${Location},
 
       [Parameter(Mandatory)]
-      [Microsoft.Azure.PowerShell.Cmdlets.StackHCIVm.Category('Body')]
+      [Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Category('Body')]
       [System.String]
       # The name of the extended location.
       ${CustomLocationId},
 
       [Parameter()]
-      [Microsoft.Azure.PowerShell.Cmdlets.StackHCIVm.Category('Body')]
+      [Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Category('Body')]
       [System.Int64]
       # Maximum Dynamic Memory
       ${DynamicMemoryMaximumMemoryInMb},
 
       [Parameter()]
-      [Microsoft.Azure.PowerShell.Cmdlets.StackHCIVm.Category('Body')]
+      [Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Category('Body')]
       [System.Int64]
       # Minimum Dynamic Memory
       ${DynamicMemoryMinimumMemoryInMb},
 
       [Parameter()]
-      [Microsoft.Azure.PowerShell.Cmdlets.StackHCIVm.Category('Body')]
+      [Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Category('Body')]
       [System.Int32]
       # Defines the amount of extra memory that should be reserved for a virtual machine at runtime, as a percentage of the total memory that the virtual machine is thought to need.
       # This only applies to virtual systems with dynamic memory enabled.
@@ -103,203 +103,203 @@ function New-AzStackHCIVmVirtualMachine {
       ${DynamicMemoryTargetBuffer},
 
       [Parameter()]
-      [Microsoft.Azure.PowerShell.Cmdlets.StackHCIVm.Category('Body')]
+      [Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Category('Body')]
       [System.Int64]
       # RAM in MB for the virtual machine
       ${VmMemoryInMB},
 
       [Parameter()]
-      [Microsoft.Azure.PowerShell.Cmdlets.StackHCIVm.Category('Body')]
+      [Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Category('Body')]
       [System.Int32]
       # Number of processors for the virtual machine
       ${VmProcessor},
 
       [Parameter()]
-      [Microsoft.Azure.PowerShell.Cmdlets.StackHCIVm.Category('Body')]
-      [Microsoft.Azure.PowerShell.Cmdlets.StackHCIVm.Support.VMSizeEnum]
+      [Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Category('Body')]
+      [Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Support.VMSizeEnum]
       # Size of the VM. Can be a Predefined size or Custom. Possible Predefined Sizes include - Custom,Standard_A2_v2,Standard_A4_v2,Standard_D16s_v3,Standard_D2s_v3,Standard_D32s_v3,Standard_D4s_v3,Standard_D8s_v3,Standard_DS13_v2,Standard_DS2_v2,Standard_DS3_v2,Standard_DS4_v2,Standard_DS5_v2,Standard_K8S2_v1,Standard_K8S3_v1,Standard_K8S4_v1,Standard_K8S5_v1,Standard_K8S_v1,Standard_NK12,Standard_NK6,Standard_NV12, StandardNv6  
 
       ${VmSize},
 
       [Parameter()]
-      [ArgumentCompleter([Microsoft.Azure.PowerShell.Cmdlets.StackHCIVm.Support.ResourceIdentityType])]
-      [Microsoft.Azure.PowerShell.Cmdlets.StackHCIVm.Category('Body')]
-      [Microsoft.Azure.PowerShell.Cmdlets.StackHCIVm.Support.ResourceIdentityType]
+      [ArgumentCompleter([Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Support.ResourceIdentityType])]
+      [Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Category('Body')]
+      [Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Support.ResourceIdentityType]
       # The identity type.
       ${IdentityType},
 
       [Parameter(ParameterSetName='ByImageId', Mandatory)]
-      [Microsoft.Azure.PowerShell.Cmdlets.StackHCIVm.Category('Body')]
+      [Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Category('Body')]
       [System.String]
       # Resource ID of the image to create the VM with. 
       ${ImageId}, 
 
       [Parameter(ParameterSetName='ByImageName',Mandatory)]
-      [Microsoft.Azure.PowerShell.Cmdlets.StackHCIVm.Category('Body')]
+      [Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Category('Body')]
       [System.String]
       # Name of the image to create the VM with. 
       ${ImageName},
 
       [Parameter(ParameterSetName='ByImageName')]
-      [Microsoft.Azure.PowerShell.Cmdlets.StackHCIVm.Category('Body')]
+      [Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Category('Body')]
       [System.String]
       # Resource group of the image to create the VM from. 
       ${ImageResourceGroup},
 
       [Parameter()]
-      [Microsoft.Azure.PowerShell.Cmdlets.StackHCIVm.Category('Body')]
+      [Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Category('Body')]
       [System.Management.Automation.SwitchParameter]
       # DisablePasswordAuthentication - whether password authentication should be disabled
       ${DisablePasswordAuthentication},
 
       [Parameter()]
-      [Microsoft.Azure.PowerShell.Cmdlets.StackHCIVm.Category('Body')]
+      [Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Category('Body')]
       [System.Management.Automation.SwitchParameter]
       # Used to indicate whether Arc for Servers agent onboarding should be triggered during the virtual machine creation process. VM Agent is provsioned by default. Please pass -ProvisionVMAgent:$false to disable. 
       ${ProvisionVMAgent},
 
       [Parameter()]
-      [Microsoft.Azure.PowerShell.Cmdlets.StackHCIVm.Category('Body')]
+      [Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Category('Body')]
       [System.Management.Automation.SwitchParameter]
       # Indicates whether virtual machine configuration agent should be provisioned on the virtual machine. When this property is not specified, default behavior is to set it to true. VM Config Agent is provisioned by default. Please pass -ProvisionVMConfigAgent:$false to disable.
       ${ProvisionVMConfigAgent},
 
       [Parameter()]
       [AllowEmptyCollection()]
-      [Microsoft.Azure.PowerShell.Cmdlets.StackHCIVm.Category('Body')]
+      [Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Category('Body')]
       [System.String[]]
       # NetworkInterfaces - list of network interfaces to be attached to the virtual machine in ARM Id format. 
       ${NicId},
 
       [Parameter()]
       [AllowEmptyCollection()]
-      [Microsoft.Azure.PowerShell.Cmdlets.StackHCIVm.Category('Body')]
+      [Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Category('Body')]
       [System.String[]]
       # NetworkInterfaces - list of network interfaces to be attached to the virtual machine in name format. 
       ${NicName},
 
       [Parameter()]
       [AllowEmptyCollection()]
-      [Microsoft.Azure.PowerShell.Cmdlets.StackHCIVm.Category('Body')]
+      [Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Category('Body')]
       [System.String]
       # NetworkInterfaces - Resource Group of Network Interfaces. 
       ${NicResourceGroup},
 
       [Parameter()]
       [AllowEmptyCollection()]
-      [Microsoft.Azure.PowerShell.Cmdlets.StackHCIVm.Category('Body')]
+      [Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Category('Body')]
       [System.String[]]
       # Data Disks - List of data disks to be attached to the virtual machine in id format. 
       ${DataDiskId},
 
       [Parameter()]
       [AllowEmptyCollection()]
-      [Microsoft.Azure.PowerShell.Cmdlets.StackHCIVm.Category('Body')]
+      [Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Category('Body')]
       [System.String[]]
       # Data Disks - List of data disks to be attached to the virtual machine in name format .
       ${DataDiskName},
 
       [Parameter()]
       [AllowEmptyCollection()]
-      [Microsoft.Azure.PowerShell.Cmdlets.StackHCIVm.Category('Body')]
+      [Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Category('Body')]
       [System.String]
       # Data Disks - Resource Group of Data Disks. 
       ${DataDiskResourceGroup},
 
       [Parameter(ParameterSetName='ByOsDiskId',Mandatory)]
-      [Microsoft.Azure.PowerShell.Cmdlets.StackHCIVm.Category('Body')]
+      [Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Category('Body')]
       [System.String]
       # Resource ID of the OS disk
       ${OSDiskId},
 
       [Parameter(ParameterSetName='ByOsDiskName',Mandatory)]
-      [Microsoft.Azure.PowerShell.Cmdlets.StackHCIVm.Category('Body')]
+      [Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Category('Body')]
       [System.String]
       # Name of the OS disk
       ${OSDiskName},
 
       [Parameter(ParameterSetName='ByOsDiskName')]
-      [Microsoft.Azure.PowerShell.Cmdlets.StackHCIVm.Category('Body')]
+      [Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Category('Body')]
       [System.String]
       # Resource Group of the OS disk
       ${OSDiskResourceGroup},
 
       [Parameter()]
-      [Microsoft.Azure.PowerShell.Cmdlets.StackHCIVm.Category('Body')]
+      [Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Category('Body')]
       [System.String]
       # AdminPassword - admin password
       ${AdminPassword},
 
       [Parameter()]
-      [Microsoft.Azure.PowerShell.Cmdlets.StackHCIVm.Category('Body')]
+      [Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Category('Body')]
       [System.String]
       # AdminUsername - admin username
       ${AdminUsername},
 
       [Parameter()]
-      [Microsoft.Azure.PowerShell.Cmdlets.StackHCIVm.Category('Body')]
+      [Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Category('Body')]
       [System.String]
       # ComputerName - name of the computer
       ${ComputerName},
 
       [Parameter(Mandatory)]
-      [ArgumentCompleter([Microsoft.Azure.PowerShell.Cmdlets.StackHCIVm.Support.OperatingSystemTypes])]
-      [Microsoft.Azure.PowerShell.Cmdlets.StackHCIVm.Category('Body')]
+      [ArgumentCompleter([Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Support.OperatingSystemTypes])]
+      [Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Category('Body')]
       [System.String]
       # OsType - string specifying whether the OS is Linux or Windows
       ${OsType},
 
       [Parameter()]
-      [Microsoft.Azure.PowerShell.Cmdlets.StackHCIVm.Category('Body')]
+      [Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Category('Body')]
       [System.Management.Automation.SwitchParameter]
       # Used to indicate whether or not to enable TPM
       ${EnableTpm},
 
       [Parameter()]
-      [Microsoft.Azure.PowerShell.Cmdlets.StackHCIVm.Category('Body')]
+      [Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Category('Body')]
       [System.String[]]
       # PublicKeys - The list of SSH public keys used to authenticate with VMs
       ${SshPublicKey},
 
       [Parameter()]
-      [Microsoft.Azure.PowerShell.Cmdlets.StackHCIVm.Category('Body')]
+      [Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Category('Body')]
       [System.String]
       # Id of the storage container that hosts the VM configuration file
       ${StoragePathId},
 
       [Parameter()]
-      [Microsoft.Azure.PowerShell.Cmdlets.StackHCIVm.Category('Body')]
+      [Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Category('Body')]
       [System.String]
       # Name of the storage container that hosts the VM configuration file
       ${StoragePathName},
 
       [Parameter()]
-      [Microsoft.Azure.PowerShell.Cmdlets.StackHCIVm.Category('Body')]
+      [Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Category('Body')]
       [System.String]
       # Storage Container resource group. The resource group of the virtual machine will be used if this value is not provided. 
       ${StoragePathResourceGroup},
 
       [Parameter()]
-      [Microsoft.Azure.PowerShell.Cmdlets.StackHCIVm.Category('Body')]
-      [Microsoft.Azure.PowerShell.Cmdlets.StackHCIVm.Runtime.Info(PossibleTypes=([Microsoft.Azure.PowerShell.Cmdlets.StackHCIVm.Models.Api30.ITrackedResourceTags]))]
+      [Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Category('Body')]
+      [Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Runtime.Info(PossibleTypes=([Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Models.Api30.ITrackedResourceTags]))]
       [System.Collections.Hashtable]
       # Resource tags.
       ${Tag},
 
       [Parameter()]
-      [Microsoft.Azure.PowerShell.Cmdlets.StackHCIVm.Category('Body')]
+      [Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Category('Body')]
       [System.Management.Automation.SwitchParameter]
       # Specifies whether secure boot should be enabled on the virtual machine.
       ${SecureBootEnabled},
 
       [Parameter()]
-      [Microsoft.Azure.PowerShell.Cmdlets.StackHCIVm.Category('Body')]
+      [Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Category('Body')]
       [System.Management.Automation.SwitchParameter]
       # Specifies Whether to EnableAutomaticUpdates on the machine.
       ${EnableAutomaticUpdate},
 
       [Parameter()]
-      [Microsoft.Azure.PowerShell.Cmdlets.StackHCIVm.Category('Body')]
+      [Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Category('Body')]
       [System.String]
       # TimeZone for the virtual machine
       ${TimeZone},
@@ -307,58 +307,58 @@ function New-AzStackHCIVmVirtualMachine {
       [Parameter()]
       [Alias('AzureRMContext', 'AzureCredential')]
       [ValidateNotNull()]
-      [Microsoft.Azure.PowerShell.Cmdlets.StackHCIVm.Category('Azure')]
+      [Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Category('Azure')]
       [System.Management.Automation.PSObject]
       # The credentials, account, tenant, and subscription used for communication with Azure.
       ${DefaultProfile},
   
       [Parameter()]
-      [Microsoft.Azure.PowerShell.Cmdlets.StackHCIVm.Category('Runtime')]
+      [Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Category('Runtime')]
       [System.Management.Automation.SwitchParameter]
       # Run the command as a job
       ${AsJob},
   
       [Parameter(DontShow)]
-      [Microsoft.Azure.PowerShell.Cmdlets.StackHCIVm.Category('Runtime')]
+      [Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Category('Runtime')]
       [System.Management.Automation.SwitchParameter]
       # Wait for .NET debugger to attach
       ${Break},
   
       [Parameter(DontShow)]
       [ValidateNotNull()]
-      [Microsoft.Azure.PowerShell.Cmdlets.StackHCIVm.Category('Runtime')]
-      [Microsoft.Azure.PowerShell.Cmdlets.StackHCIVm.Runtime.SendAsyncStep[]]
+      [Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Category('Runtime')]
+      [Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Runtime.SendAsyncStep[]]
       # SendAsync Pipeline Steps to be appended to the front of the pipeline
       ${HttpPipelineAppend},
   
       [Parameter(DontShow)]
       [ValidateNotNull()]
-      [Microsoft.Azure.PowerShell.Cmdlets.StackHCIVm.Category('Runtime')]
-      [Microsoft.Azure.PowerShell.Cmdlets.StackHCIVm.Runtime.SendAsyncStep[]]
+      [Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Category('Runtime')]
+      [Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Runtime.SendAsyncStep[]]
       # SendAsync Pipeline Steps to be prepended to the front of the pipeline
       ${HttpPipelinePrepend},
   
       [Parameter()]
-      [Microsoft.Azure.PowerShell.Cmdlets.StackHCIVm.Category('Runtime')]
+      [Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Category('Runtime')]
       [System.Management.Automation.SwitchParameter]
       # Run the command asynchronously
       ${NoWait},
   
       [Parameter(DontShow)]
-      [Microsoft.Azure.PowerShell.Cmdlets.StackHCIVm.Category('Runtime')]
+      [Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Category('Runtime')]
       [System.Uri]
       # The URI for the proxy server to use
       ${Proxy},
   
       [Parameter(DontShow)]
       [ValidateNotNull()]
-      [Microsoft.Azure.PowerShell.Cmdlets.StackHCIVm.Category('Runtime')]
+      [Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Category('Runtime')]
       [System.Management.Automation.PSCredential]
       # Credentials for a proxy server to use for the remote call
       ${ProxyCredential},
   
       [Parameter(DontShow)]
-      [Microsoft.Azure.PowerShell.Cmdlets.StackHCIVm.Category('Runtime')]
+      [Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Category('Runtime')]
       [System.Management.Automation.SwitchParameter]
       # Use the default credentials for the proxy
       ${ProxyUseDefaultCredentials}
@@ -422,7 +422,7 @@ function New-AzStackHCIVmVirtualMachine {
    }
 
 
-    Az.StackHCIVm.internal\New-AzStackHCIVmMachine @PSBoundParameters  | Out-Null
+    Az.StackHCIVM.internal\New-AzStackHCIVMMachine @PSBoundParameters  | Out-Null
 
     if ($PSCmdlet.ParameterSetName -eq "ByImageId"){
       if($ImageId -notmatch $marketplaceGalImageRegex -and $ImageId -notmatch $galImageRegex){
@@ -437,9 +437,9 @@ function New-AzStackHCIVmVirtualMachine {
         $isGalleryImage = $false
         $isMarketplaceGalleryImage = $false
       
-      $galImage = Az.StackHCIVm.internal\Get-AzStackHCIVmGalleryImage -Name $ImageName -ResourceGroupName $rg -SubscriptionId $SubscriptionId -ErrorAction SilentlyContinue
+      $galImage = Az.StackHCIVM.internal\Get-AzStackHCIVMGalleryImage -Name $ImageName -ResourceGroupName $rg -SubscriptionId $SubscriptionId -ErrorAction SilentlyContinue
       if($galImage -eq $null){
-        $marketplaceGalImage = Az.StackHCIVm.internal\Get-AzStackHCIVmMarketplaceGalleryImage -Name $ImageName -ResourceGroupName $rg -SubscriptionId $SubscriptionId -ErrorAction SilentlyContinue
+        $marketplaceGalImage = Az.StackHCIVM.internal\Get-AzStackHCIVMMarketplaceGalleryImage -Name $ImageName -ResourceGroupName $rg -SubscriptionId $SubscriptionId -ErrorAction SilentlyContinue
         if ($marketplacegalImage -eq $null){
           Write-Error "An Image with name: $ImageName does not exist in Resource Group: $rg" -ErrorAction Stop
         } else {
@@ -505,7 +505,7 @@ function New-AzStackHCIVmVirtualMachine {
         Write-Error "Invalid Nic Id provided: $NId." -ErrorAction Stop
       }
       
-      $nic = Az.StackHCIVm\Get-AzStackHCIVmNetworkInterface  -ResourceId $NId -ErrorAction SilentlyContinue  
+      $nic = Az.StackHCIVM\Get-AzStackHCIVMNetworkInterface  -ResourceId $NId -ErrorAction SilentlyContinue  
       if ($nic -eq $null){
         Write-Error "A Network Interface with id: $NId does not exist." -ErrorAction Stop
       }
@@ -524,7 +524,7 @@ function New-AzStackHCIVmVirtualMachine {
       $NetworkProfileNetworkInterface =  [System.Collections.ArrayList]::new()
       foreach ($NName in $NicName){
         $NicIdNew = "/subscriptions/$SubscriptionId/resourceGroups/$rg/providers/Microsoft.AzureStackHCI/networkinterfaces/$NName"
-        $nic = Az.StackHCIVm\Get-AzStackHCIVmNetworkInterface -ResourceId $NicIdNew  -ErrorAction SilentlyContinue
+        $nic = Az.StackHCIVM\Get-AzStackHCIVMNetworkInterface -ResourceId $NicIdNew  -ErrorAction SilentlyContinue
    
         if ($nic -eq $null){
           Write-Error "A Network Interface with id: $NicIdNew does not exist." -ErrorAction Stop
@@ -690,6 +690,6 @@ function New-AzStackHCIVmVirtualMachine {
   $null = $PSBoundParameters.Remove("Location") 
   $null = $PSBoundParameters.Remove("OSType")
   $null = $PSBoundParameters.Remove("IdentityType")
-  return Az.StackHCIVm.internal\New-AzStackHCIVmVirtualMachine @PSBoundParameters
+  return Az.StackHCIVM.internal\New-AzStackHCIVMVirtualMachine @PSBoundParameters
 }
 

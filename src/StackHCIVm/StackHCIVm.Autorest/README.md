@@ -1,10 +1,10 @@
 <!-- region Generated -->
-# Az.StackHCIVm
-This directory contains the PowerShell module for the StackHciVM service.
+# Az.StackHCIVM
+This directory contains the PowerShell module for the StackHcivm service.
 
 ---
 ## Status
-[![Az.StackHCIVm](https://img.shields.io/powershellgallery/v/Az.StackHCIVm.svg?style=flat-square&label=Az.StackHCIVm "Az.StackHCIVm")](https://www.powershellgallery.com/packages/Az.StackHCIVm/)
+[![Az.StackHCIVM](https://img.shields.io/powershellgallery/v/Az.StackHCIVM.svg?style=flat-square&label=Az.StackHCIVM "Az.StackHCIVM")](https://www.powershellgallery.com/packages/Az.StackHCIVM/)
 
 ## Info
 - Modifiable: yes
@@ -23,7 +23,7 @@ This module was primarily generated via [AutoRest](https://github.com/Azure/auto
 AutoRest does not generate authentication code for the module. Authentication is handled via Az.Accounts by altering the HTTP payload before it is sent.
 
 ## Development
-For information on how to develop for `Az.StackHCIVm`, see [how-to.md](how-to.md).
+For information on how to develop for `Az.StackHCIVM`, see [how-to.md](how-to.md).
 <!-- endregion -->
 
 ---
@@ -55,7 +55,7 @@ In this directory, run AutoRest:
 
 ```yaml
 require:
-  - $(this-folder)/../readme.azure.noprofile.md
+  - $(this-folder)/../../readme.azure.noprofile.md
 repo: azure-rest-api-specs
 # lock the commit
 input-file:
@@ -70,8 +70,8 @@ input-file:
   - $(repo)/specification/hybridcompute/resource-manager/Microsoft.HybridCompute/preview/2023-03-15-preview/HybridCompute.json
 
 module-version: 0.1.0
-title: StackHCIVm
-service-name: StackHCIVm
+title: StackHCIVM
+service-name: StackHCIVM
 subject-prefix: $(service-name)
 
 inlining-threshold: 50

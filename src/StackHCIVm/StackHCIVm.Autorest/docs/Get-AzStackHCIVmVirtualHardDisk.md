@@ -1,38 +1,20 @@
 ---
 external help file:
-Module Name: Az.StackHCIVm
+Module Name: Az.StackHCIVM
 online version: https://learn.microsoft.com/powershell/module/az.stackhcivm/get-azstackhcivmvirtualharddisk
 schema: 2.0.0
 ---
 
-# Get-AzStackHCIVmVirtualHardDisk
+# Get-AzStackHCIVMVirtualHardDisk
 
 ## SYNOPSIS
 Gets a virtual hard disk
 
 ## SYNTAX
 
-### List1 (Default)
 ```
-Get-AzStackHCIVmVirtualHardDisk [-SubscriptionId <String[]>] [-DefaultProfile <PSObject>] [<CommonParameters>]
-```
-
-### ByResourceId
-```
-Get-AzStackHCIVmVirtualHardDisk [-ResourceId <String>] [-DefaultProfile <PSObject>] [-NoWait]
+Get-AzStackHCIVMVirtualHardDisk [-ResourceId <String>] [-DefaultProfile <PSObject>] [-NoWait]
  [<CommonParameters>]
-```
-
-### Get
-```
-Get-AzStackHCIVmVirtualHardDisk -Name <String> -ResourceGroupName <String> [-SubscriptionId <String[]>]
- [-DefaultProfile <PSObject>] [<CommonParameters>]
-```
-
-### List
-```
-Get-AzStackHCIVmVirtualHardDisk -ResourceGroupName <String> [-SubscriptionId <String[]>]
- [-DefaultProfile <PSObject>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -42,7 +24,7 @@ Gets a virtual hard disk
 
 ### Example 1: Get a Virtual Hard Disk
 ```powershell
-Get-AzStackHCIVmVirtualHardDisk -Name  "testVhd" -ResourceGroupName "test-rg"
+Get-AzStackHCIVMVirtualHardDisk -Name  "testVhd" -ResourceGroupName "test-rg"
 ```
 
 ```output
@@ -55,7 +37,7 @@ This command gets a specific virtual hard disk in the specified resource group.
 
 ### Example 2: List all Virtual Hard Disks in a Resource Group
 ```powershell
-Get-AzStackHCIVmVirtualHardDisk -ResourceGroupName "test-rg"
+Get-AzStackHCIVMVirtualHardDisk -ResourceGroupName "test-rg"
 ```
 
 ```output
@@ -83,46 +65,15 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -Name
-Name of the virtual hard disk
-
-```yaml
-Type: System.String
-Parameter Sets: Get
-Aliases: VirtualHardDiskName
-
-Required: True
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
 ### -NoWait
 Run the command asynchronously
 
 ```yaml
 Type: System.Management.Automation.SwitchParameter
-Parameter Sets: ByResourceId
+Parameter Sets: (All)
 Aliases:
 
 Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -ResourceGroupName
-The name of the resource group.
-The name is case insensitive.
-
-```yaml
-Type: System.String
-Parameter Sets: Get, List
-Aliases:
-
-Required: True
 Position: Named
 Default value: None
 Accept pipeline input: False
@@ -134,27 +85,12 @@ The ARM ID of the virtual hard disk.
 
 ```yaml
 Type: System.String
-Parameter Sets: ByResourceId
+Parameter Sets: (All)
 Aliases:
 
 Required: False
 Position: Named
 Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -SubscriptionId
-The ID of the target subscription.
-
-```yaml
-Type: System.String[]
-Parameter Sets: Get, List, List1
-Aliases:
-
-Required: False
-Position: Named
-Default value: (Get-AzContext).Subscription.Id
 Accept pipeline input: False
 Accept wildcard characters: False
 ```
@@ -166,7 +102,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.StackHCIVm.Models.Api20230901Preview.IVirtualHardDisks
+### Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Models.Api20230901Preview.IVirtualHardDisks
 
 ## NOTES
 

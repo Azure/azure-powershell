@@ -1,6 +1,6 @@
 ### Example 1: Add a Data Disk to a Virtual Machine
 ```powershell
- Add-AzStackHCIVmVirtualMachineDataDisk  -Name 'testVm' -ResourceGroupName 'test-rg'  -DataDiskName 'testVhd'
+ Add-AzStackHCIVMVirtualMachineDataDisk  -Name 'testVm' -ResourceGroupName 'test-rg'  -DataDiskName 'testVhd'
 
 ```
 ```output

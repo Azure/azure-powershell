@@ -1,11 +1,11 @@
 ---
 external help file:
-Module Name: Az.StackHCIVm
+Module Name: Az.StackHCIVM
 online version: https://learn.microsoft.com/powershell/module/az.stackhcivm/get-azstackhcivmimage
 schema: 2.0.0
 ---
 
-# Get-AzStackHCIVmImage
+# Get-AzStackHCIVMImage
 
 ## SYNOPSIS
 Gets a gallery image
@@ -14,24 +14,24 @@ Gets a gallery image
 
 ### BySubscription (Default)
 ```
-Get-AzStackHCIVmImage [-SubscriptionId <String[]>] [-DefaultProfile <PSObject>] [-NoWait] [<CommonParameters>]
+Get-AzStackHCIVMImage [-SubscriptionId <String[]>] [-DefaultProfile <PSObject>] [-NoWait] [<CommonParameters>]
 ```
 
 ### ByName
 ```
-Get-AzStackHCIVmImage -Name <String> -ResourceGroupName <String> [-SubscriptionId <String[]>]
+Get-AzStackHCIVMImage -Name <String> -ResourceGroupName <String> [-SubscriptionId <String[]>]
  [-DefaultProfile <PSObject>] [-NoWait] [<CommonParameters>]
 ```
 
 ### ByResourceGroup
 ```
-Get-AzStackHCIVmImage -ResourceGroupName <String> [-SubscriptionId <String[]>] [-DefaultProfile <PSObject>]
+Get-AzStackHCIVMImage -ResourceGroupName <String> [-SubscriptionId <String[]>] [-DefaultProfile <PSObject>]
  [-NoWait] [<CommonParameters>]
 ```
 
 ### ByResourceId
 ```
-Get-AzStackHCIVmImage -ResourceId <String> [-SubscriptionId <String[]>] [-DefaultProfile <PSObject>] [-NoWait]
+Get-AzStackHCIVMImage -ResourceId <String> [-SubscriptionId <String[]>] [-DefaultProfile <PSObject>] [-NoWait]
  [<CommonParameters>]
 ```
 
@@ -42,7 +42,7 @@ Gets a gallery image
 
 ### Example 1:  Get an Image 
 ```powershell
-Get-AzStackHCIVmImage -Name "testimage" -ResourceGroupName "test-rg" 
+Get-AzStackHCIVMImage -Name "testimage" -ResourceGroupName "test-rg" 
 ```
 
 ```output
@@ -55,7 +55,7 @@ This command gets a specific image in the specified resource group.
 
 ### Example 2: List all Images in a Resource Group  
 ```powershell
-Get-AzStackHCIVmImage -ResourceGroupName 'test-rg'
+Get-AzStackHCIVMImage -ResourceGroupName 'test-rg'
 ```
 
 ```output
@@ -165,9 +165,9 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.StackHCIVm.Models.Api20230901Preview.IGalleryImages
+### Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Models.Api20230901Preview.IGalleryImages
 
-### Microsoft.Azure.PowerShell.Cmdlets.StackHCIVm.Models.Api20230901Preview.IMarketplaceGalleryImages
+### Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Models.Api20230901Preview.IMarketplaceGalleryImages
 
 ## NOTES
 

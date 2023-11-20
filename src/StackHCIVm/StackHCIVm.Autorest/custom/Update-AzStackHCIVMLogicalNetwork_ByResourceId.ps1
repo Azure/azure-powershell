@@ -20,26 +20,26 @@ The operation to update a logical network.
 The operation to update a logical network.
 
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.StackHCIVm.Models.Api20230901Preview.ILogicalNetworks
+Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Models.Api20230901Preview.ILogicalNetworks
 
 .Link
 https://learn.microsoft.com/powershell/module/az.stackhcivm/update-azstackhcivmlogicalnetwork
 #>
-function Update-AzStackHCIVmLogicalNetwork_ByResourceId {
-[OutputType([Microsoft.Azure.PowerShell.Cmdlets.StackHCIVm.Models.Api20230901Preview.ILogicalNetworks])]
+function Update-AzStackHCIVMLogicalNetwork_ByResourceId {
+[OutputType([Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Models.Api20230901Preview.ILogicalNetworks])]
 [CmdletBinding(PositionalBinding=$false)]
 
 param(
  
     
-    [Microsoft.Azure.PowerShell.Cmdlets.StackHCIVm.Category('Path')]
+    [Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Category('Path')]
     [System.String]
     # The ARM Resource ID of the virtual network.
     ${ResourceId},
 
     
-    [Microsoft.Azure.PowerShell.Cmdlets.StackHCIVm.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.StackHCIVm.Runtime.Info(PossibleTypes=([Microsoft.Azure.PowerShell.Cmdlets.StackHCIVm.Models.Api20230901Preview.ILogicalNetworksUpdateRequestTags]))]
+    [Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Category('Body')]
+    [Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Runtime.Info(PossibleTypes=([Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Models.Api20230901Preview.ILogicalNetworksUpdateRequestTags]))]
     [System.Collections.Hashtable]
     # Resource tags
     ${Tag}
@@ -60,7 +60,7 @@ param(
         $null = $PSBoundParameters.Remove("SubscriptionId")
         $PSBoundParameters.Add("SubscriptionId", $subscriptionId)
         
-        return  Az.StackHCIVm\Update-AzStackHCIVmLogicalNetwork @PSBoundParameters
+        return  Az.StackHCIVM\Update-AzStackHCIVMLogicalNetwork @PSBoundParameters
 
        } else {
           Write-Error "Resource ID is invalid: $ResourceId"

@@ -1,11 +1,11 @@
 ---
 external help file:
-Module Name: Az.StackHCIVm
+Module Name: Az.StackHCIVM
 online version: https://learn.microsoft.com/powershell/module/az.stackhcivm/add-azstackhcivmvirtualmachinedatadisk
 schema: 2.0.0
 ---
 
-# Add-AzStackHCIVmVirtualMachineDataDisk
+# Add-AzStackHCIVMVirtualMachineDataDisk
 
 ## SYNOPSIS
 The operation to add a data disk to a virtual machine.
@@ -14,13 +14,13 @@ The operation to add a data disk to a virtual machine.
 
 ### ByResourceId (Default)
 ```
-Add-AzStackHCIVmVirtualMachineDataDisk -ResourceId <String> [-DataDiskId <String[]>]
+Add-AzStackHCIVMVirtualMachineDataDisk -ResourceId <String> [-DataDiskId <String[]>]
  [-DataDiskName <String[]>] [-DataDiskResourceGroup <String>] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ### ByName
 ```
-Add-AzStackHCIVmVirtualMachineDataDisk -Name <String> -ResourceGroupName <String> [-SubscriptionId <String>]
+Add-AzStackHCIVMVirtualMachineDataDisk -Name <String> -ResourceGroupName <String> [-SubscriptionId <String>]
  [-DataDiskId <String[]>] [-DataDiskName <String[]>] [-DataDiskResourceGroup <String>] [-Confirm] [-WhatIf]
  [<CommonParameters>]
 ```
@@ -32,7 +32,7 @@ The operation to add a data disk to a virtual machine.
 
 ### Example 1: Add a Data Disk to a Virtual Machine
 ```powershell
- Add-AzStackHCIVmVirtualMachineDataDisk  -Name 'testVm' -ResourceGroupName 'test-rg'  -DataDiskName 'testVhd'
+ Add-AzStackHCIVMVirtualMachineDataDisk  -Name 'testVm' -ResourceGroupName 'test-rg'  -DataDiskName 'testVhd'
 
 ```
 
@@ -189,7 +189,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.StackHCIVm.Models.Api20230901Preview.IVirtualMachineInstance
+### Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Models.Api20230901Preview.IVirtualMachineInstance
 
 ## NOTES
 

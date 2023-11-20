@@ -1,11 +1,11 @@
 ---
 external help file:
-Module Name: Az.StackHCIVm
+Module Name: Az.StackHCIVM
 online version: https://learn.microsoft.com/powershell/module/az.stackhcivm/remove-azstackhcivmimage
 schema: 2.0.0
 ---
 
-# Remove-AzStackHCIVmImage
+# Remove-AzStackHCIVMImage
 
 ## SYNOPSIS
 The operation to delete an image.
@@ -14,13 +14,13 @@ The operation to delete an image.
 
 ### ByResourceId (Default)
 ```
-Remove-AzStackHCIVmImage -ResourceId <String> [-SubscriptionId <String>] [-Force] [-Confirm] [-WhatIf]
+Remove-AzStackHCIVMImage -ResourceId <String> [-SubscriptionId <String>] [-Force] [-Confirm] [-WhatIf]
  [<CommonParameters>]
 ```
 
 ### ByName
 ```
-Remove-AzStackHCIVmImage -Name <String> -ResourceGroupName <String> [-SubscriptionId <String>] [-Force]
+Remove-AzStackHCIVMImage -Name <String> -ResourceGroupName <String> [-SubscriptionId <String>] [-Force]
  [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
@@ -31,7 +31,7 @@ The operation to delete an image.
 
 ### Example 1:  Remove an image.
 ```powershell
-Remove-AzStackHCIVmImage -Name  "testImage" -ResourceGroupName "test-rg"
+Remove-AzStackHCIVMImage -Name  "testImage" -ResourceGroupName "test-rg"
 ```
 
 This command removes the image from the specified resource group.

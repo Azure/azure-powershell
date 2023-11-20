@@ -28,33 +28,33 @@ COMPLEX PARAMETER PROPERTIES
 .Link
 https://learn.microsoft.com/powershell/module/az.stackhcivm/remove-azstackhcivmlogicalnetwork
 #>
-function Remove-AzStackHCIVmLogicalNetwork {
+function Remove-AzStackHCIVMLogicalNetwork {
     [OutputType([System.Boolean])]
     [CmdletBinding(PositionalBinding=$false, SupportsShouldProcess, ConfirmImpact='Medium')]
     param(
         [Parameter(ParameterSetName='Delete', Mandatory)]
         [Alias('LogicalNetworkName')]
-        [Microsoft.Azure.PowerShell.Cmdlets.StackHCIVm.Category('Path')]
+        [Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Category('Path')]
         [System.String]
         # Name of the virtual network
         ${Name},
     
         [Parameter(ParameterSetName='Delete', Mandatory)]
-        [Microsoft.Azure.PowerShell.Cmdlets.StackHCIVm.Category('Path')]
+        [Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Category('Path')]
         [System.String]
         # The name of the resource group.
         # The name is case insensitive.
         ${ResourceGroupName},
     
         [Parameter(ParameterSetName='Delete')]
-        [Microsoft.Azure.PowerShell.Cmdlets.StackHCIVm.Category('Path')]
-        [Microsoft.Azure.PowerShell.Cmdlets.StackHCIVm.Runtime.DefaultInfo(Script='(Get-AzContext).Subscription.Id')]
+        [Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Category('Path')]
+        [Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Runtime.DefaultInfo(Script='(Get-AzContext).Subscription.Id')]
         [System.String]
         # The ID of the target subscription.
         ${SubscriptionId},
     
         [Parameter(ParameterSetName='ByResourceId',Mandatory)]
-        [Microsoft.Azure.PowerShell.Cmdlets.StackHCIVm.Category('Path')]
+        [Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Category('Path')]
         [System.String]
         # The ARM Resource ID of the virtual network.
         ${ResourceId},
@@ -89,7 +89,7 @@ function Remove-AzStackHCIVmLogicalNetwork {
             $null = $PSBoundParameters.Remove("Force")
         }
 
-        Az.StackHCIVm.internal\Remove-AzStackHCIVmLogicalNetwork @PSBoundParameters
+        Az.StackHCIVM.internal\Remove-AzStackHCIVMLogicalNetwork @PSBoundParameters
     }
     
 }

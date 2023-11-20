@@ -1,6 +1,6 @@
 ### Example 1: Removes a Network Interface from a  Virtual Machine
 ```powershell
-Remove-AzStackHCIVmVirtualMachineNetworkInterface  -Name "testVm" -ResourceGroupName "test-rg"  -NicName 'testNic'
+Remove-AzStackHCIVMVirtualMachineNetworkInterface  -Name "testVm" -ResourceGroupName "test-rg"  -NicName 'testNic'
 
 ```
 ```output

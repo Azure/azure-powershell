@@ -1,11 +1,11 @@
 ---
 external help file:
-Module Name: Az.StackHCIVm
+Module Name: Az.StackHCIVM
 online version: https://learn.microsoft.com/powershell/module/az.stackhcivm/remove-azstackhcivmstoragepath
 schema: 2.0.0
 ---
 
-# Remove-AzStackHCIVmStoragePath
+# Remove-AzStackHCIVMStoragePath
 
 ## SYNOPSIS
 The operation to delete a storage container.
@@ -14,14 +14,14 @@ The operation to delete a storage container.
 
 ### ByResourceId (Default)
 ```
-Remove-AzStackHCIVmStoragePath -ResourceId <String> [-InputObject <IStackHciVMIdentity>]
+Remove-AzStackHCIVMStoragePath -ResourceId <String> [-InputObject <IStackHcivmIdentity>]
  [-SubscriptionId <String>] [-Force] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-PassThru] [-Confirm]
  [-WhatIf] [<CommonParameters>]
 ```
 
 ### ByName
 ```
-Remove-AzStackHCIVmStoragePath -Name <String> -ResourceGroupName <String> [-InputObject <IStackHciVMIdentity>]
+Remove-AzStackHCIVMStoragePath -Name <String> -ResourceGroupName <String> [-InputObject <IStackHcivmIdentity>]
  [-SubscriptionId <String>] [-Force] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-PassThru] [-Confirm]
  [-WhatIf] [<CommonParameters>]
 ```
@@ -33,7 +33,7 @@ The operation to delete a storage container.
 
 ### Example 1: Remove a Storage Path
 ```powershell
- Remove-AzStackHCIVmStoragePath  -Name "testStoragePath" -ResourceGroupName "test-rg"
+ Remove-AzStackHCIVMStoragePath  -Name "testStoragePath" -ResourceGroupName "test-rg"
 
 ```
 
@@ -91,7 +91,7 @@ Identity Parameter
 To construct, see NOTES section for INPUTOBJECT properties and create a hash table.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.StackHCIVm.Models.IStackHciVMIdentity
+Type: Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Models.IStackHcivmIdentity
 Parameter Sets: (All)
 Aliases:
 
@@ -229,7 +229,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.StackHCIVm.Models.IStackHCIVmIdentity
+### Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Models.IStackHCIVMIdentity
 
 ## OUTPUTS
 
@@ -244,7 +244,7 @@ COMPLEX PARAMETER PROPERTIES
 To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
 
 
-INPUTOBJECT <IStackHciVMIdentity>: Identity Parameter
+INPUTOBJECT <IStackHcivmIdentity>: Identity Parameter
   - `[ExtensionName <String>]`: The name of the machine extension.
   - `[ExtensionType <String>]`: The extensionType of the Extension being received.
   - `[GalleryImageName <String>]`: Name of the gallery image

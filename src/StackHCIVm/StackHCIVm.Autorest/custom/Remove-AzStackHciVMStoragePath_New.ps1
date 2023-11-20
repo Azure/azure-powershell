@@ -20,7 +20,7 @@ The operation to delete a storage container.
 The operation to delete a storage container.
 
 .Inputs
-Microsoft.Azure.PowerShell.Cmdlets.StackHCIVm.Models.IStackHCIVmIdentity
+Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Models.IStackHCIVMIdentity
 .Outputs
 System.Boolean
 .Notes
@@ -28,7 +28,7 @@ COMPLEX PARAMETER PROPERTIES
 
 To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
 
-INPUTOBJECT <IStackHCIVmIdentity>: Identity Parameter
+INPUTOBJECT <IStackHCIVMIdentity>: Identity Parameter
   [ExtensionName <String>]: The name of the machine extension.
   [GalleryImageName <String>]: Name of the gallery image
   [Id <String>]: Resource identity path
@@ -45,19 +45,19 @@ INPUTOBJECT <IStackHCIVmIdentity>: Identity Parameter
 .Link
 https://learn.microsoft.com/powershell/module/az.stackhcivm/remove-azstackhcivmstoragepath
 #>
-function Remove-AzStackHCIVmStoragePath {
+function Remove-AzStackHCIVMStoragePath {
     [OutputType([System.Boolean])]
     [CmdletBinding(PositionalBinding=$false, SupportsShouldProcess, ConfirmImpact='Medium')]
     param(
         [Parameter(ParameterSetName='ByName',Mandatory)]
         [Alias('StorageContainerName')]
-        [Microsoft.Azure.PowerShell.Cmdlets.StackHCIVm.Category('Path')]
+        [Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Category('Path')]
         [System.String]
         # Name of the storage container
         ${Name},
     
         [Parameter(ParameterSetName='ByName',Mandatory)]
-        [Microsoft.Azure.PowerShell.Cmdlets.StackHCIVm.Category('Path')]
+        [Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Category('Path')]
         [System.String]
         # The name of the resource group.
         # The name is case insensitive.
@@ -65,22 +65,22 @@ function Remove-AzStackHCIVmStoragePath {
     
         [Parameter(ParameterSetName='ByName')]
         [Parameter(ParameterSetName='ByResourceId')]
-        [Microsoft.Azure.PowerShell.Cmdlets.StackHCIVm.Category('Path')]
-        [Microsoft.Azure.PowerShell.Cmdlets.StackHCIVm.Runtime.DefaultInfo(Script='(Get-AzContext).Subscription.Id')]
+        [Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Category('Path')]
+        [Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Runtime.DefaultInfo(Script='(Get-AzContext).Subscription.Id')]
         [System.String]
         # The ID of the target subscription.
         ${SubscriptionId},
     
         [Parameter(ParameterSetName='ByName')]
         [Parameter(ParameterSetName='ByResourceId')]
-        [Microsoft.Azure.PowerShell.Cmdlets.StackHCIVm.Category('Path')]
-        [Microsoft.Azure.PowerShell.Cmdlets.StackHCIVm.Models.IStackHCIVmIdentity]
+        [Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Category('Path')]
+        [Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Models.IStackHCIVMIdentity]
         # Identity Parameter
         # To construct, see NOTES section for INPUTOBJECT properties and create a hash table.
         ${InputObject},
     
         [Parameter(ParameterSetName='ByResourceId',Mandatory)]
-        [Microsoft.Azure.PowerShell.Cmdlets.StackHCIVm.Category('Path')]
+        [Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Category('Path')]
         [System.String]
         # The ARM Resource ID of the storage path.
         ${ResourceId},
@@ -93,20 +93,20 @@ function Remove-AzStackHCIVmStoragePath {
         [Parameter(ParameterSetName='ByResourceId')]
         [Alias('AzureRMContext', 'AzureCredential')]
         [ValidateNotNull()]
-        [Microsoft.Azure.PowerShell.Cmdlets.StackHCIVm.Category('Azure')]
+        [Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Category('Azure')]
         [System.Management.Automation.PSObject]
         # The credentials, account, tenant, and subscription used for communication with Azure.
         ${DefaultProfile},
     
         [Parameter(ParameterSetName='ByName')]
         [Parameter(ParameterSetName='ByResourceId')]
-        [Microsoft.Azure.PowerShell.Cmdlets.StackHCIVm.Category('Runtime')]
+        [Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Category('Runtime')]
         [System.Management.Automation.SwitchParameter]
         # Run the command as a job
         ${AsJob},
     
         [Parameter(DontShow)]
-        [Microsoft.Azure.PowerShell.Cmdlets.StackHCIVm.Category('Runtime')]
+        [Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Category('Runtime')]
         [System.Management.Automation.SwitchParameter]
         # Wait for .NET debugger to attach
         ${Break},
@@ -115,8 +115,8 @@ function Remove-AzStackHCIVmStoragePath {
         [Parameter(ParameterSetName='ByResourceId')]
         [Parameter(DontShow)]
         [ValidateNotNull()]
-        [Microsoft.Azure.PowerShell.Cmdlets.StackHCIVm.Category('Runtime')]
-        [Microsoft.Azure.PowerShell.Cmdlets.StackHCIVm.Runtime.SendAsyncStep[]]
+        [Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Category('Runtime')]
+        [Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Runtime.SendAsyncStep[]]
         # SendAsync Pipeline Steps to be appended to the front of the pipeline
         ${HttpPipelineAppend},
     
@@ -124,21 +124,21 @@ function Remove-AzStackHCIVmStoragePath {
         [Parameter(ParameterSetName='ByResourceId')]
         [Parameter(DontShow)]
         [ValidateNotNull()]
-        [Microsoft.Azure.PowerShell.Cmdlets.StackHCIVm.Category('Runtime')]
-        [Microsoft.Azure.PowerShell.Cmdlets.StackHCIVm.Runtime.SendAsyncStep[]]
+        [Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Category('Runtime')]
+        [Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Runtime.SendAsyncStep[]]
         # SendAsync Pipeline Steps to be prepended to the front of the pipeline
         ${HttpPipelinePrepend},
     
         [Parameter(ParameterSetName='ByName')]
         [Parameter(ParameterSetName='ByResourceId')]
-        [Microsoft.Azure.PowerShell.Cmdlets.StackHCIVm.Category('Runtime')]
+        [Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Category('Runtime')]
         [System.Management.Automation.SwitchParameter]
         # Run the command asynchronously
         ${NoWait},
     
         [Parameter(ParameterSetName='ByName')]
         [Parameter(ParameterSetName='ByResourceId')]
-        [Microsoft.Azure.PowerShell.Cmdlets.StackHCIVm.Category('Runtime')]
+        [Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Category('Runtime')]
         [System.Management.Automation.SwitchParameter]
         # Returns true when the command succeeds
         ${PassThru},
@@ -146,7 +146,7 @@ function Remove-AzStackHCIVmStoragePath {
         [Parameter(ParameterSetName='ByName')]
         [Parameter(ParameterSetName='ByResourceId')]
         [Parameter(DontShow)]
-        [Microsoft.Azure.PowerShell.Cmdlets.StackHCIVm.Category('Runtime')]
+        [Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Category('Runtime')]
         [System.Uri]
         # The URI for the proxy server to use
         ${Proxy},
@@ -155,7 +155,7 @@ function Remove-AzStackHCIVmStoragePath {
         [Parameter(ParameterSetName='ByResourceId')]
         [Parameter(DontShow)]
         [ValidateNotNull()]
-        [Microsoft.Azure.PowerShell.Cmdlets.StackHCIVm.Category('Runtime')]
+        [Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Category('Runtime')]
         [System.Management.Automation.PSCredential]
         # Credentials for a proxy server to use for the remote call
         ${ProxyCredential},
@@ -163,7 +163,7 @@ function Remove-AzStackHCIVmStoragePath {
         [Parameter(ParameterSetName='ByName')]
         [Parameter(ParameterSetName='ByResourceId')]
         [Parameter(DontShow)]
-        [Microsoft.Azure.PowerShell.Cmdlets.StackHCIVm.Category('Runtime')]
+        [Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Category('Runtime')]
         [System.Management.Automation.SwitchParameter]
         # Use the default credentials for the proxy
         ${ProxyUseDefaultCredentials}
@@ -194,7 +194,7 @@ function Remove-AzStackHCIVmStoragePath {
             $null = $PSBoundParameters.Remove("Force")
         }
 
-        Az.StackHCIVm.internal\Remove-AzStackHCIVmStoragePath @PSBoundParameters
+        Az.StackHCIVM.internal\Remove-AzStackHCIVMStoragePath @PSBoundParameters
     }
 }
     

@@ -1,11 +1,11 @@
 ---
 external help file:
-Module Name: Az.StackHCIVm
+Module Name: Az.StackHCIVM
 online version: https://learn.microsoft.com/powershell/module/az.stackhcivm/remove-azstackhcivmvirtualmachinedatadisk
 schema: 2.0.0
 ---
 
-# Remove-AzStackHCIVmVirtualMachineDataDisk
+# Remove-AzStackHCIVMVirtualMachineDataDisk
 
 ## SYNOPSIS
 The operation to delete a data disk from a virtual machine.
@@ -14,13 +14,13 @@ The operation to delete a data disk from a virtual machine.
 
 ### ByResourceId (Default)
 ```
-Remove-AzStackHCIVmVirtualMachineDataDisk -ResourceId <String> [-DataDiskId <String[]>]
+Remove-AzStackHCIVMVirtualMachineDataDisk -ResourceId <String> [-DataDiskId <String[]>]
  [-DataDiskName <String[]>] [-DataDiskResourceGroup <String>] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ### ByName
 ```
-Remove-AzStackHCIVmVirtualMachineDataDisk -Name <String> -ResourceGroupName <String>
+Remove-AzStackHCIVMVirtualMachineDataDisk -Name <String> -ResourceGroupName <String>
  [-SubscriptionId <String>] [-DataDiskId <String[]>] [-DataDiskName <String[]>]
  [-DataDiskResourceGroup <String>] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
@@ -32,7 +32,7 @@ The operation to delete a data disk from a  virtual machine.
 
 ### Example 1: Removes a Data Disk from a Virtual Machine
 ```powershell
-Remove-AzStackHCIVmVirtualMachineDataDisk  -Name "testVm" -ResourceGroupName "test-rg"  -DataDiskName "testVhd"
+Remove-AzStackHCIVMVirtualMachineDataDisk  -Name "testVm" -ResourceGroupName "test-rg"  -DataDiskName "testVhd"
 
 ```
 
@@ -189,7 +189,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.StackHCIVm.Models.Api20230901Preview.IVirtualMachineInstance
+### Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Models.Api20230901Preview.IVirtualMachineInstance
 
 ## NOTES
 

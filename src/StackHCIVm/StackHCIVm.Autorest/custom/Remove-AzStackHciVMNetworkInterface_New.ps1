@@ -20,7 +20,7 @@ The operation to delete a network interface.
 The operation to delete a network interface.
 
 .Inputs
-Microsoft.Azure.PowerShell.Cmdlets.StackHCIVm.Models.IStackHCIVmIdentity
+Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Models.IStackHCIVMIdentity
 .Outputs
 System.Boolean
 .Notes
@@ -28,7 +28,7 @@ COMPLEX PARAMETER PROPERTIES
 
 To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
 
-INPUTOBJECT <IStackHCIVmIdentity>: Identity Parameter
+INPUTOBJECT <IStackHCIVMIdentity>: Identity Parameter
   [ExtensionName <String>]: The name of the machine extension.
   [GalleryImageName <String>]: Name of the gallery image
   [Id <String>]: Resource identity path
@@ -45,19 +45,19 @@ INPUTOBJECT <IStackHCIVmIdentity>: Identity Parameter
 .Link
 https://learn.microsoft.com/powershell/module/az.stackhcivm/remove-azstackhcivmnetworkinterface
 #>
-function Remove-AzStackHCIVmNetworkInterface {
+function Remove-AzStackHCIVMNetworkInterface {
     [OutputType([System.Boolean])]
     [CmdletBinding(DefaultParameterSetName='ByResourceId', PositionalBinding=$false, SupportsShouldProcess, ConfirmImpact='Medium')]
     param(
         [Parameter(ParameterSetName='ByName',Mandatory)]
         [Alias('NetworkInterfaceName')]
-        [Microsoft.Azure.PowerShell.Cmdlets.StackHCIVm.Category('Path')]
+        [Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Category('Path')]
         [System.String]
         # Name of the network interface
         ${Name},
     
         [Parameter(ParameterSetName='ByName',Mandatory)]
-        [Microsoft.Azure.PowerShell.Cmdlets.StackHCIVm.Category('Path')]
+        [Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Category('Path')]
         [System.String]
         # The name of the resource group.
         # The name is case insensitive.
@@ -65,14 +65,14 @@ function Remove-AzStackHCIVmNetworkInterface {
     
         [Parameter(ParameterSetName='ByName')]
         [Parameter(ParameterSetName='ByResourceId')]
-        [Microsoft.Azure.PowerShell.Cmdlets.StackHCIVm.Category('Path')]
-        [Microsoft.Azure.PowerShell.Cmdlets.StackHCIVm.Runtime.DefaultInfo(Script='(Get-AzContext).Subscription.Id')]
+        [Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Category('Path')]
+        [Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Runtime.DefaultInfo(Script='(Get-AzContext).Subscription.Id')]
         [System.String]
         # The ID of the target subscription.
         ${SubscriptionId},
     
         [Parameter(ParameterSetName='ByResourceId',Mandatory)]
-        [Microsoft.Azure.PowerShell.Cmdlets.StackHCIVm.Category('Path')]
+        [Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Category('Path')]
         [System.String]
         # The ARM Resource ID of the network interface.
         ${ResourceId},
@@ -105,7 +105,7 @@ function Remove-AzStackHCIVmNetworkInterface {
             $null = $PSBoundParameters.Remove("Force")
         }
 
-        Az.StackHCIVm.internal\Remove-AzStackHCIVmNetworkInterface @PSBoundParameters
+        Az.StackHCIVM.internal\Remove-AzStackHCIVMNetworkInterface @PSBoundParameters
     }
     
    

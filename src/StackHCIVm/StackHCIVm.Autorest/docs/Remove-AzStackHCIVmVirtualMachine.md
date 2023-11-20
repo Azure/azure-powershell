@@ -1,11 +1,11 @@
 ---
 external help file:
-Module Name: Az.StackHCIVm
+Module Name: Az.StackHCIVM
 online version: https://learn.microsoft.com/powershell/module/az.stackhcivm/remove-azstackhcivmvirtualmachine
 schema: 2.0.0
 ---
 
-# Remove-AzStackHCIVmVirtualMachine
+# Remove-AzStackHCIVMVirtualMachine
 
 ## SYNOPSIS
 The operation to delete a virtual machine.
@@ -14,15 +14,15 @@ The operation to delete a virtual machine.
 
 ### ByResourceId (Default)
 ```
-Remove-AzStackHCIVmVirtualMachine -ResourceId <String> [-InputObject <IStackHciVMIdentity>]
+Remove-AzStackHCIVMVirtualMachine -ResourceId <String> [-InputObject <IStackHcivmIdentity>]
  [-SubscriptionId <String>] [-Force] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf]
  [<CommonParameters>]
 ```
 
 ### ByName
 ```
-Remove-AzStackHCIVmVirtualMachine -Name <String> -ResourceGroupName <String>
- [-InputObject <IStackHciVMIdentity>] [-SubscriptionId <String>] [-Force] [-DefaultProfile <PSObject>]
+Remove-AzStackHCIVMVirtualMachine -Name <String> -ResourceGroupName <String>
+ [-InputObject <IStackHcivmIdentity>] [-SubscriptionId <String>] [-Force] [-DefaultProfile <PSObject>]
  [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
@@ -33,7 +33,7 @@ The operation to delete a virtual machine.
 
 ### Example 1: Remove a Virtual Machine 
 ```powershell
-Remove-AzStackHCIVmVirtualMachine  -Name "testVm" -ResourceGroupName "test-rg"
+Remove-AzStackHCIVMVirtualMachine  -Name "testVm" -ResourceGroupName "test-rg"
 
 ```
 
@@ -91,7 +91,7 @@ Identity Parameter
 To construct, see NOTES section for INPUTOBJECT properties and create a hash table.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.StackHCIVm.Models.IStackHciVMIdentity
+Type: Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Models.IStackHcivmIdentity
 Parameter Sets: (All)
 Aliases:
 
@@ -214,7 +214,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.StackHCIVm.Models.IStackHCIVmIdentity
+### Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Models.IStackHCIVMIdentity
 
 ## OUTPUTS
 
@@ -229,7 +229,7 @@ COMPLEX PARAMETER PROPERTIES
 To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
 
 
-INPUTOBJECT <IStackHciVMIdentity>: Identity Parameter
+INPUTOBJECT <IStackHcivmIdentity>: Identity Parameter
   - `[ExtensionName <String>]`: The name of the machine extension.
   - `[ExtensionType <String>]`: The extensionType of the Extension being received.
   - `[GalleryImageName <String>]`: Name of the gallery image

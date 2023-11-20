@@ -1,39 +1,20 @@
 ---
 external help file:
-Module Name: Az.StackHCIVm
+Module Name: Az.StackHCIVM
 online version: https://learn.microsoft.com/powershell/module/az.stackhcivm/get-azstackhcivmnetworkinterface
 schema: 2.0.0
 ---
 
-# Get-AzStackHCIVmNetworkInterface
+# Get-AzStackHCIVMNetworkInterface
 
 ## SYNOPSIS
 Gets a network interface
 
 ## SYNTAX
 
-### List1 (Default)
 ```
-Get-AzStackHCIVmNetworkInterface [-SubscriptionId <String[]>] [-DefaultProfile <PSObject>]
+Get-AzStackHCIVMNetworkInterface [-ResourceId <String>] [-DefaultProfile <PSObject>] [-NoWait]
  [<CommonParameters>]
-```
-
-### ByResourceId
-```
-Get-AzStackHCIVmNetworkInterface [-ResourceId <String>] [-DefaultProfile <PSObject>] [-NoWait]
- [<CommonParameters>]
-```
-
-### Get
-```
-Get-AzStackHCIVmNetworkInterface -Name <String> -ResourceGroupName <String> [-SubscriptionId <String[]>]
- [-DefaultProfile <PSObject>] [<CommonParameters>]
-```
-
-### List
-```
-Get-AzStackHCIVmNetworkInterface -ResourceGroupName <String> [-SubscriptionId <String[]>]
- [-DefaultProfile <PSObject>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -43,7 +24,7 @@ Gets a network interface
 
 ### Example 1:  Get a Network Interface
 ```powershell
-Get-AzStackHCIVmNetworkInterface -Name 'testNic' -ResourceGroupName 'test-rg' 
+Get-AzStackHCIVMNetworkInterface -Name 'testNic' -ResourceGroupName 'test-rg' 
 ```
 
 ```output
@@ -56,7 +37,7 @@ This command gets a specific network interface in the specified resource group.
 
 ### Example 2: List all Logical Networks in a Resource Group  
 ```powershell
-Get-AzStackHCIVmNetworkInterface -ResourceGroupName 'test-rg'
+Get-AzStackHCIVMNetworkInterface -ResourceGroupName 'test-rg'
 ```
 
 ```output
@@ -83,46 +64,15 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -Name
-Name of the network interface
-
-```yaml
-Type: System.String
-Parameter Sets: Get
-Aliases: NetworkInterfaceName
-
-Required: True
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
 ### -NoWait
 Run the command asynchronously
 
 ```yaml
 Type: System.Management.Automation.SwitchParameter
-Parameter Sets: ByResourceId
+Parameter Sets: (All)
 Aliases:
 
 Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -ResourceGroupName
-The name of the resource group.
-The name is case insensitive.
-
-```yaml
-Type: System.String
-Parameter Sets: Get, List
-Aliases:
-
-Required: True
 Position: Named
 Default value: None
 Accept pipeline input: False
@@ -134,27 +84,12 @@ The ARM Id of the network interface.
 
 ```yaml
 Type: System.String
-Parameter Sets: ByResourceId
+Parameter Sets: (All)
 Aliases:
 
 Required: False
 Position: Named
 Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -SubscriptionId
-The ID of the target subscription.
-
-```yaml
-Type: System.String[]
-Parameter Sets: Get, List, List1
-Aliases:
-
-Required: False
-Position: Named
-Default value: (Get-AzContext).Subscription.Id
 Accept pipeline input: False
 Accept wildcard characters: False
 ```
@@ -166,7 +101,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.StackHCIVm.Models.Api20230901Preview.INetworkInterfaces
+### Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Models.Api20230901Preview.INetworkInterfaces
 
 ## NOTES
 

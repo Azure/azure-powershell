@@ -1,11 +1,11 @@
 ---
 external help file:
-Module Name: Az.StackHCIVm
+Module Name: Az.StackHCIVM
 online version: https://learn.microsoft.com/powershell/module/az.stackhcivm/new-azstackhcivmlogicalnetwork
 schema: 2.0.0
 ---
 
-# New-AzStackHCIVmLogicalNetwork
+# New-AzStackHCIVMLogicalNetwork
 
 ## SYNOPSIS
 The operation to create or update a logical network.
@@ -14,7 +14,7 @@ Please note some properties can be set only during logical network creation.
 ## SYNTAX
 
 ```
-New-AzStackHCIVmLogicalNetwork -Name <String> -ResourceGroupName <String> -CustomLocationId <String>
+New-AzStackHCIVMLogicalNetwork -Name <String> -ResourceGroupName <String> -CustomLocationId <String>
  -Location <String> [-SubscriptionId <String>] [-AddressPrefix <String[]>] [-DnsServer <String[]>]
  [-IpAllocationMethod <String>] [-IpPool <Hashtable[]>] [-IpPoolEnd <String>] [-IpPoolStart <String>]
  [-IpPoolType <String>] [-Route <Hashtable[]>] [-Subnet <Hashtable[]>] [-SubnetName <String>]
@@ -30,7 +30,7 @@ Please note some properties can be set only during logical network creation.
 
 ### Example 1: Create a Logical Network 
 ```powershell
-New-AzStackHCIVmLogicalNetwork  -Name "testLnet" -ResourceGroupName "test-rg" -CustomLocationId "/subscriptions/{subscriptionID}/resourcegroups/{resourceGroupName}/providers/microsoft.extendedlocation/customlocations/{customLocationName}"  -Location "eastus" -VmSwitchName "testswitch"
+New-AzStackHCIVMLogicalNetwork  -Name "testLnet" -ResourceGroupName "test-rg" -CustomLocationId "/subscriptions/{subscriptionID}/resourcegroups/{resourceGroupName}/providers/microsoft.extendedlocation/customlocations/{customLocationName}"  -Location "eastus" -VmSwitchName "testswitch"
 ```
 
 ```output
@@ -397,7 +397,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.StackHCIVm.Models.Api20230901Preview.ILogicalNetworks
+### Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Models.Api20230901Preview.ILogicalNetworks
 
 ## NOTES
 

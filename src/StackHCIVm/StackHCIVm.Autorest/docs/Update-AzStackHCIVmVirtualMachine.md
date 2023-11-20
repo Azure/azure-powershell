@@ -1,11 +1,11 @@
 ---
 external help file:
-Module Name: Az.StackHCIVm
+Module Name: Az.StackHCIVM
 online version: https://learn.microsoft.com/powershell/module/az.stackhcivm/update-azstackhcivmvirtualmachine
 schema: 2.0.0
 ---
 
-# Update-AzStackHCIVmVirtualMachine
+# Update-AzStackHCIVMVirtualMachine
 
 ## SYNOPSIS
 The operation to update a virtual machine instance.
@@ -14,7 +14,7 @@ The operation to update a virtual machine instance.
 
 ### ByName (Default)
 ```
-Update-AzStackHCIVmVirtualMachine -Name <String> -ResourceGroupName <String> [-SubscriptionId <String>]
+Update-AzStackHCIVMVirtualMachine -Name <String> -ResourceGroupName <String> [-SubscriptionId <String>]
  [-ProvisionVMAgent] [-ProvisionVMConfigAgent] [-VmMemoryInMB <Int64>] [-VmProcessor <Int32>]
  [-VmSize <VMSizeEnum>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf]
  [<CommonParameters>]
@@ -22,7 +22,7 @@ Update-AzStackHCIVmVirtualMachine -Name <String> -ResourceGroupName <String> [-S
 
 ### ByResourceId
 ```
-Update-AzStackHCIVmVirtualMachine -ResourceId <String> [-ProvisionVMAgent] [-ProvisionVMConfigAgent]
+Update-AzStackHCIVMVirtualMachine -ResourceId <String> [-ProvisionVMAgent] [-ProvisionVMConfigAgent]
  [-VmMemoryInMB <Int64>] [-VmProcessor <Int32>] [-VmSize <VMSizeEnum>] [-DefaultProfile <PSObject>] [-AsJob]
  [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
@@ -34,7 +34,7 @@ The operation to update a virtual machine instance.
 
 ### Example 1: Update the Size of the Virtual Machine. 
 ```powershell
-Update-AzStackHCIVmVirtualMachine  -Name "testVm" -ResourceGroupName "test-rg" -VmMemoryInMB "4"
+Update-AzStackHCIVMVirtualMachine  -Name "testVm" -ResourceGroupName "test-rg" -VmMemoryInMB "4"
 ```
 
 ```output
@@ -217,7 +217,7 @@ Accept wildcard characters: False
 .
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.StackHCIVm.Support.VMSizeEnum
+Type: Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Support.VMSizeEnum
 Parameter Sets: (All)
 Aliases:
 
@@ -266,7 +266,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.StackHCIVm.Models.Api20230901Preview.IVirtualMachineInstance
+### Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Models.Api20230901Preview.IVirtualMachineInstance
 
 ## NOTES
 

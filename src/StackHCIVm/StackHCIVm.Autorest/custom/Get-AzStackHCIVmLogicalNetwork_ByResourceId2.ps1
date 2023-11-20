@@ -21,12 +21,12 @@ Gets a logical network
 
 
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.StackHCIVm.Models.Api20230901Preview.ILogicalNetworks
+Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Models.Api20230901Preview.ILogicalNetworks
 
 .Link
 https://learn.microsoft.com/powershell/module/az.stackhcivm/get-azstackhcivmlogicalnetwork
 #>
-function Get-AzStackHCIVmLogicalNetwork_ByResourceId {
+function Get-AzStackHCIVMLogicalNetwork_ByResourceId {
     [OutputType([Microsoft.Azure.PowerShell.Cmdlets.StackHciVM.Models.Api20230901Preview.ILogicalNetworks])]
     [CmdletBinding(PositionalBinding=$false)]
     
@@ -40,52 +40,52 @@ function Get-AzStackHCIVmLogicalNetwork_ByResourceId {
         [Parameter()]
         [Alias('AzureRMContext', 'AzureCredential')]
         [ValidateNotNull()]
-        [Microsoft.Azure.PowerShell.Cmdlets.StackHCIVm.Category('Azure')]
+        [Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Category('Azure')]
         [System.Management.Automation.PSObject]
         # The credentials, account, tenant, and subscription used for communication with Azure.
         ${DefaultProfile},
 
         [Parameter(DontShow)]
-        [Microsoft.Azure.PowerShell.Cmdlets.StackHCIVm.Category('Runtime')]
+        [Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Category('Runtime')]
         [System.Management.Automation.SwitchParameter]
         # Wait for .NET debugger to attach
         ${Break},
 
         [Parameter(DontShow)]
         [ValidateNotNull()]
-        [Microsoft.Azure.PowerShell.Cmdlets.StackHCIVm.Category('Runtime')]
-        [Microsoft.Azure.PowerShell.Cmdlets.StackHCIVm.Runtime.SendAsyncStep[]]
+        [Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Category('Runtime')]
+        [Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Runtime.SendAsyncStep[]]
         # SendAsync Pipeline Steps to be appended to the front of the pipeline
         ${HttpPipelineAppend},
 
         [Parameter(DontShow)]
         [ValidateNotNull()]
-        [Microsoft.Azure.PowerShell.Cmdlets.StackHCIVm.Category('Runtime')]
-        [Microsoft.Azure.PowerShell.Cmdlets.StackHCIVm.Runtime.SendAsyncStep[]]
+        [Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Category('Runtime')]
+        [Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Runtime.SendAsyncStep[]]
         # SendAsync Pipeline Steps to be prepended to the front of the pipeline
         ${HttpPipelinePrepend},
 
         [Parameter()]
-        [Microsoft.Azure.PowerShell.Cmdlets.StackHCIVm.Category('Runtime')]
+        [Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Category('Runtime')]
         [System.Management.Automation.SwitchParameter]
         # Run the command asynchronously
         ${NoWait},
 
         [Parameter(DontShow)]
-        [Microsoft.Azure.PowerShell.Cmdlets.StackHCIVm.Category('Runtime')]
+        [Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Category('Runtime')]
         [System.Uri]
         # The URI for the proxy server to use
         ${Proxy},
 
         [Parameter(DontShow)]
         [ValidateNotNull()]
-        [Microsoft.Azure.PowerShell.Cmdlets.StackHCIVm.Category('Runtime')]
+        [Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Category('Runtime')]
         [System.Management.Automation.PSCredential]
         # Credentials for a proxy server to use for the remote call
         ${ProxyCredential},
 
         [Parameter(DontShow)]
-        [Microsoft.Azure.PowerShell.Cmdlets.StackHCIVm.Category('Runtime')]
+        [Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Category('Runtime')]
         [System.Management.Automation.SwitchParameter]
         # Use the default credentials for the proxy
         ${ProxyUseDefaultCredentials}
@@ -104,7 +104,7 @@ function Get-AzStackHCIVmLogicalNetwork_ByResourceId {
                 $null = $PSBoundParameters.Remove("SubscriptionId")
                 $PSBoundParameters.Add("SubscriptionId", $subscriptionId)
                 
-                return  Az.StackHCIVm\Get-AzStackHCIVmLogicalNetwork @PSBoundParameters
+                return  Az.StackHCIVM\Get-AzStackHCIVMLogicalNetwork @PSBoundParameters
     
             } else {             
                 Write-Error "Resource ID is invalid: $ResourceId"

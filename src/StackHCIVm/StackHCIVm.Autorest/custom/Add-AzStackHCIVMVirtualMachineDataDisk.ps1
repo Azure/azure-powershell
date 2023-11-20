@@ -20,7 +20,7 @@ The operation to add a data disk to a virtual machine.
 The operation to add a data disk to a virtual machine. 
 
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.StackHCIVm.Models.Api20230901Preview.IVirtualMachineInstances
+Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Models.Api20230901Preview.IVirtualMachineInstances
 
 .Notes
 COMPLEX PARAMETER PROPERTIES
@@ -29,33 +29,33 @@ COMPLEX PARAMETER PROPERTIES
 https://learn.microsoft.com/powershell/module/az.stackhcivm/add-azstackhcivmvirtualmachinedatadisk
 #>
 
-function Add-AzStackHCIVmVirtualMachineDataDisk {
-    [OutputType([Microsoft.Azure.PowerShell.Cmdlets.StackHCIVm.Models.Api20230901Preview.IVirtualMachineInstance])]
+function Add-AzStackHCIVMVirtualMachineDataDisk {
+    [OutputType([Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Models.Api20230901Preview.IVirtualMachineInstance])]
     [CmdletBinding(PositionalBinding=$false, SupportsShouldProcess, ConfirmImpact='Medium')]
     param(
         [Parameter(ParameterSetName='ByName', Mandatory)]
         [Alias('VirtualMachineName')]
-        [Microsoft.Azure.PowerShell.Cmdlets.StackHCIVm.Category('Path')]
+        [Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Category('Path')]
         [System.String]
         # Name of the virtual machine
         ${Name},
     
         [Parameter(ParameterSetName='ByName', Mandatory)]
-        [Microsoft.Azure.PowerShell.Cmdlets.StackHCIVm.Category('Path')]
+        [Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Category('Path')]
         [System.String]
         # The name of the resource group.
         # The name is case insensitive.
         ${ResourceGroupName},
     
         [Parameter(ParameterSetName='ByResourceId', Mandatory)]
-        [Microsoft.Azure.PowerShell.Cmdlets.StackHCIVm.Category('Path')]
+        [Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Category('Path')]
         [System.String]
         # The ARM Resource ID of the VM
         ${ResourceId},
     
         [Parameter(ParameterSetName='ByName')]
-        [Microsoft.Azure.PowerShell.Cmdlets.StackHCIVm.Category('Path')]
-        [Microsoft.Azure.PowerShell.Cmdlets.StackHCIVm.Runtime.DefaultInfo(Script='(Get-AzContext).Subscription.Id')]
+        [Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Category('Path')]
+        [Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Runtime.DefaultInfo(Script='(Get-AzContext).Subscription.Id')]
         [System.String]
         # The ID of the target subscription.
         ${SubscriptionId},
@@ -63,7 +63,7 @@ function Add-AzStackHCIVmVirtualMachineDataDisk {
         [Parameter(ParameterSetName='ByResourceId')]
         [Parameter(ParameterSetName='ByName')]
         [AllowEmptyCollection()]
-        [Microsoft.Azure.PowerShell.Cmdlets.StackHCIVm.Category('Body')]
+        [Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Category('Body')]
         [System.String[]]
         # List of data disks to be attached to the virtual machine passed in Id format
         ${DataDiskId},
@@ -71,7 +71,7 @@ function Add-AzStackHCIVmVirtualMachineDataDisk {
         [Parameter(ParameterSetName='ByResourceId')]
         [Parameter(ParameterSetName='ByName')]
         [AllowEmptyCollection()]
-        [Microsoft.Azure.PowerShell.Cmdlets.StackHCIVm.Category('Body')]
+        [Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Category('Body')]
         [System.String[]]
         # List of data disks to be attached to the virtual machine passed by Name 
         ${DataDiskName},
@@ -79,7 +79,7 @@ function Add-AzStackHCIVmVirtualMachineDataDisk {
         [Parameter(ParameterSetName='ByResourceId')]
         [Parameter(ParameterSetName='ByName')]
         [AllowEmptyCollection()]
-        [Microsoft.Azure.PowerShell.Cmdlets.StackHCIVm.Category('Body')]
+        [Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Category('Body')]
         [System.String]
         # Resource Group of the Data Disks
         ${DataDiskResourceGroup}
@@ -129,7 +129,7 @@ function Add-AzStackHCIVmVirtualMachineDataDisk {
             $null = $PSBoundParameters.Remove("DataDiskResourceGroup")
         }
     
-        $vm = Az.StackHCIVm.internal\Get-AzStackHCIVmVirtualMachine @PSBoundParameters
+        $vm = Az.StackHCIVM.internal\Get-AzStackHCIVMVirtualMachine @PSBoundParameters
         $disks = $vm.StorageProfileDataDisk
     
         foreach ($disk in $disks){
@@ -138,5 +138,5 @@ function Add-AzStackHCIVmVirtualMachineDataDisk {
         }
     
         $PSBoundParameters.Add('StorageProfileDataDisk',  $StorageProfileDataDisk)
-        return Az.StackHCIVm.internal\Update-AzStackHCIVmVirtualMachine @PSBoundParameters
+        return Az.StackHCIVM.internal\Update-AzStackHCIVMVirtualMachine @PSBoundParameters
     }

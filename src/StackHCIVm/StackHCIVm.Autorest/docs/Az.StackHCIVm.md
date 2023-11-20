@@ -1,113 +1,137 @@
 ---
-Module Name: Az.StackHCIVm
+Module Name: Az.StackHCIVM
 Module Guid: 7389f67c-ec9d-4c13-9c9a-308834413af6
 Download Help Link: https://learn.microsoft.com/powershell/module/az.stackhcivm
 Help Version: 1.0.0.0
 Locale: en-US
 ---
 
-# Az.StackHCIVm Module
+# Az.StackHCIVM Module
 ## Description
-Microsoft Azure PowerShell: StackHciVM cmdlets
+Microsoft Azure PowerShell: StackHcivm cmdlets
 
-## Az.StackHCIVm Cmdlets
-### [Add-AzStackHCIVmVirtualMachineDataDisk](Add-AzStackHCIVmVirtualMachineDataDisk.md)
+## Az.StackHCIVM Cmdlets
+### [Add-AzStackHCIVMVirtualMachineDataDisk](Add-AzStackHCIVMVirtualMachineDataDisk.md)
 The operation to add a data disk to a virtual machine.
 
-### [Add-AzStackHCIVmVirtualMachineNetworkInterface](Add-AzStackHCIVmVirtualMachineNetworkInterface.md)
+### [Add-AzStackHCIVMVirtualMachineNetworkInterface](Add-AzStackHCIVMVirtualMachineNetworkInterface.md)
 The operation to add a network interface to a virtual machine.
 
-### [Get-AzStackHCIVmImage](Get-AzStackHCIVmImage.md)
+### [Get-AzStackHCIVMImage](Get-AzStackHCIVMImage.md)
 Gets a gallery image
 
 ### [Get-AzStackHCIVmLogicalNetwork](Get-AzStackHCIVmLogicalNetwork.md)
 Gets a logical network
 
+### [Get-AzStackHCIVMLogicalNetwork](Get-AzStackHCIVMLogicalNetwork.md)
+Gets a logical network
+
 ### [Get-AzStackHCIVmNetworkInterface](Get-AzStackHCIVmNetworkInterface.md)
+Gets a network interface
+
+### [Get-AzStackHCIVMNetworkInterface](Get-AzStackHCIVMNetworkInterface.md)
 Gets a network interface
 
 ### [Get-AzStackHCIVmStoragePath](Get-AzStackHCIVmStoragePath.md)
 Gets a storage container
 
+### [Get-AzStackHCIVMStoragePath](Get-AzStackHCIVMStoragePath.md)
+Gets a storage path blah
+
 ### [Get-AzStackHCIVmVirtualHardDisk](Get-AzStackHCIVmVirtualHardDisk.md)
 Gets a virtual hard disk
 
-### [Get-AzStackHCIVmVirtualMachine](Get-AzStackHCIVmVirtualMachine.md)
+### [Get-AzStackHCIVMVirtualHardDisk](Get-AzStackHCIVMVirtualHardDisk.md)
+Gets a virtual hard disk
+
+### [Get-AzStackHCIVMVirtualMachine](Get-AzStackHCIVMVirtualMachine.md)
 Gets a virtual machine
 
-### [New-AzStackHCIVmImage](New-AzStackHCIVmImage.md)
+### [New-AzStackHCIVMImage](New-AzStackHCIVMImage.md)
 The operation to create an image.
 Please note some properties can be set only during image creation.
 
-### [New-AzStackHCIVmLogicalNetwork](New-AzStackHCIVmLogicalNetwork.md)
+### [New-AzStackHCIVMLogicalNetwork](New-AzStackHCIVMLogicalNetwork.md)
 The operation to create or update a logical network.
 Please note some properties can be set only during logical network creation.
 
-### [New-AzStackHCIVmNetworkInterface](New-AzStackHCIVmNetworkInterface.md)
+### [New-AzStackHCIVMNetworkInterface](New-AzStackHCIVMNetworkInterface.md)
 The operation to create or update a network interface.
 Please note some properties can be set only during network interface creation.
 
-### [New-AzStackHCIVmStoragePath](New-AzStackHCIVmStoragePath.md)
+### [New-AzStackHCIVMStoragePath](New-AzStackHCIVMStoragePath.md)
 The operation to create or update a storage container.
 Please note some properties can be set only during storage container creation.
 
-### [New-AzStackHCIVmVirtualHardDisk](New-AzStackHCIVmVirtualHardDisk.md)
+### [New-AzStackHCIVMVirtualHardDisk](New-AzStackHCIVMVirtualHardDisk.md)
 The operation to create or update a virtual hard disk.
 Please note some properties can be set only during virtual hard disk creation.
 
-### [New-AzStackHCIVmVirtualMachine](New-AzStackHCIVmVirtualMachine.md)
+### [New-AzStackHCIVMVirtualMachine](New-AzStackHCIVMVirtualMachine.md)
 The operation to create or update a virtual machine.
 Please note some properties can be set only during virtual machine creation.
 
-### [Remove-AzStackHCIVmImage](Remove-AzStackHCIVmImage.md)
+### [Remove-AzStackHCIVMImage](Remove-AzStackHCIVMImage.md)
 The operation to delete an image.
 
-### [Remove-AzStackHCIVmLogicalNetwork](Remove-AzStackHCIVmLogicalNetwork.md)
+### [Remove-AzStackHCIVMLogicalNetwork](Remove-AzStackHCIVMLogicalNetwork.md)
 The operation to delete a logical network.
 
-### [Remove-AzStackHCIVmNetworkInterface](Remove-AzStackHCIVmNetworkInterface.md)
+### [Remove-AzStackHCIVMNetworkInterface](Remove-AzStackHCIVMNetworkInterface.md)
 The operation to delete a network interface.
 
-### [Remove-AzStackHCIVmStoragePath](Remove-AzStackHCIVmStoragePath.md)
+### [Remove-AzStackHCIVMStoragePath](Remove-AzStackHCIVMStoragePath.md)
 The operation to delete a storage container.
 
-### [Remove-AzStackHCIVmVirtualHardDisk](Remove-AzStackHCIVmVirtualHardDisk.md)
+### [Remove-AzStackHCIVMVirtualHardDisk](Remove-AzStackHCIVMVirtualHardDisk.md)
 The operation to delete a virtual hard disk.
 
-### [Remove-AzStackHCIVmVirtualMachine](Remove-AzStackHCIVmVirtualMachine.md)
+### [Remove-AzStackHCIVMVirtualMachine](Remove-AzStackHCIVMVirtualMachine.md)
 The operation to delete a virtual machine.
 
-### [Remove-AzStackHCIVmVirtualMachineDataDisk](Remove-AzStackHCIVmVirtualMachineDataDisk.md)
+### [Remove-AzStackHCIVMVirtualMachineDataDisk](Remove-AzStackHCIVMVirtualMachineDataDisk.md)
 The operation to delete a data disk from a  virtual machine.
 
-### [Remove-AzStackHCIVmVirtualMachineNetworkInterface](Remove-AzStackHCIVmVirtualMachineNetworkInterface.md)
+### [Remove-AzStackHCIVMVirtualMachineNetworkInterface](Remove-AzStackHCIVMVirtualMachineNetworkInterface.md)
 The operation to delete a network interface from a  virtual machine.
 
-### [Restart-AzStackHCIVmVirtualMachine](Restart-AzStackHCIVmVirtualMachine.md)
+### [Restart-AzStackHCIVMVirtualMachine](Restart-AzStackHCIVMVirtualMachine.md)
 The operation to restart a virtual machine instance.
 
-### [Start-AzStackHCIVmVirtualMachine](Start-AzStackHCIVmVirtualMachine.md)
+### [Start-AzStackHCIVMVirtualMachine](Start-AzStackHCIVMVirtualMachine.md)
 The operation to start a virtual machine instance.
 
-### [Stop-AzStackHCIVmVirtualMachine](Stop-AzStackHCIVmVirtualMachine.md)
+### [Stop-AzStackHCIVMVirtualMachine](Stop-AzStackHCIVMVirtualMachine.md)
 The operation to stop a virtual machine instance.
 
-### [Update-AzStackHCIVmImage](Update-AzStackHCIVmImage.md)
+### [Update-AzStackHCIVMImage](Update-AzStackHCIVMImage.md)
 The operation to update an image.
 Please note some properties can be set only during image creation.
 
 ### [Update-AzStackHCIVmLogicalNetwork](Update-AzStackHCIVmLogicalNetwork.md)
 The operation to update a logical network.
 
+### [Update-AzStackHCIVMLogicalNetwork](Update-AzStackHCIVMLogicalNetwork.md)
+The operation to update a logical network.
+
 ### [Update-AzStackHCIVmNetworkInterface](Update-AzStackHCIVmNetworkInterface.md)
+The operation to update a network interface.
+
+### [Update-AzStackHCIVMNetworkInterface](Update-AzStackHCIVMNetworkInterface.md)
 The operation to update a network interface.
 
 ### [Update-AzStackHCIVmStoragePath](Update-AzStackHCIVmStoragePath.md)
 The operation to update a storage container.
 
+### [Update-AzStackHCIVMStoragePath](Update-AzStackHCIVMStoragePath.md)
+The operation to update a storage path.
+
 ### [Update-AzStackHCIVmVirtualHardDisk](Update-AzStackHCIVmVirtualHardDisk.md)
 The operation to update a virtual hard disk.
 
-### [Update-AzStackHCIVmVirtualMachine](Update-AzStackHCIVmVirtualMachine.md)
+### [Update-AzStackHCIVMVirtualHardDisk](Update-AzStackHCIVMVirtualHardDisk.md)
+The operation to update a virtual hard disk.
+
+### [Update-AzStackHCIVMVirtualMachine](Update-AzStackHCIVMVirtualMachine.md)
 The operation to update a virtual machine instance.
 

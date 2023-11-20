@@ -22,7 +22,7 @@ The operation to create or update a logical network.
 Please note some properties can be set only during logical network creation.
 
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.StackHCIVm.Models.Api20230901Preview.ILogicalNetworks
+Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Models.Api20230901Preview.ILogicalNetworks
 .Notes
 COMPLEX PARAMETER PROPERTIES
 
@@ -49,122 +49,122 @@ SUBNET <ISubnet[]>: Subnet - list of subnets under the logical network
 https://learn.microsoft.com/powershell/module/az.stackhcivm/new-azstackhcivmlogicalnetwork
 #>
 
-function New-AzStackHCIVmLogicalNetwork {
-  [OutputType([Microsoft.Azure.PowerShell.Cmdlets.StackHCIVm.Models.Api20230901Preview.ILogicalNetworks])]
+function New-AzStackHCIVMLogicalNetwork {
+  [OutputType([Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Models.Api20230901Preview.ILogicalNetworks])]
   [CmdletBinding( PositionalBinding=$false, SupportsShouldProcess, ConfirmImpact='Medium')]
   param(
       [Parameter(Mandatory)]
       [Alias('LogicalNetworkName')]
-      [Microsoft.Azure.PowerShell.Cmdlets.StackHCIVm.Category('Path')]
+      [Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Category('Path')]
       [System.String]
       # Name of the virtual network
       ${Name},
   
       [Parameter(Mandatory)]
-      [Microsoft.Azure.PowerShell.Cmdlets.StackHCIVm.Category('Path')]
+      [Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Category('Path')]
       [System.String]
       # The name of the resource group.
       # The name is case insensitive.
       ${ResourceGroupName},
 
       [Parameter()]
-      [Microsoft.Azure.PowerShell.Cmdlets.StackHCIVm.Category('Path')]
-      [Microsoft.Azure.PowerShell.Cmdlets.StackHCIVm.Runtime.DefaultInfo(Script='(Get-AzContext).Subscription.Id')]
+      [Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Category('Path')]
+      [Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Runtime.DefaultInfo(Script='(Get-AzContext).Subscription.Id')]
       [System.String]
       # The ID of the target subscription.
       ${SubscriptionId},
   
       [Parameter(Mandatory)]
-      [Microsoft.Azure.PowerShell.Cmdlets.StackHCIVm.Category('Body')]
+      [Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Category('Body')]
       [System.String]
       # The geo-location where the resource lives
       ${Location},
   
       [Parameter(Mandatory)]
-      [Microsoft.Azure.PowerShell.Cmdlets.StackHCIVm.Category('Body')]
+      [Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Category('Body')]
       [System.String]
       # The name of the extended location.
       ${CustomLocationId},
    
       [Parameter()]
       [AllowEmptyCollection()]
-      [Microsoft.Azure.PowerShell.Cmdlets.StackHCIVm.Category('Body')]
+      [Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Category('Body')]
       [System.String[]]
       # The list of DNS servers IP addresses.
       ${DnsServer},
   
       [Parameter()]
-      [Microsoft.Azure.PowerShell.Cmdlets.StackHCIVm.Category('Body')]
-      [Microsoft.Azure.PowerShell.Cmdlets.StackHCIVm.Runtime.Info(PossibleTypes=([Microsoft.Azure.PowerShell.Cmdlets.StackHCIVm.Models.Api30.ITrackedResourceTags]))]
+      [Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Category('Body')]
+      [Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Runtime.Info(PossibleTypes=([Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Models.Api30.ITrackedResourceTags]))]
       [System.Collections.Hashtable]
       # Resource tags.
       ${Tag},
   
       [Parameter()]
-      [Microsoft.Azure.PowerShell.Cmdlets.StackHCIVm.Category('Body')]
+      [Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Category('Body')]
       [System.String]
       # Name of the network switch to be used for VMs
       ${VMSwitchName},
   
   
       [Parameter()]
-      [Microsoft.Azure.PowerShell.Cmdlets.StackHCIVm.Category('Body')]
+      [Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Category('Body')]
       [System.String[]]
       # List of address prefixes for the subnet.
       $AddressPrefix,
   
       [Parameter()]
-      [ArgumentCompleter([Microsoft.Azure.PowerShell.Cmdlets.StackHCIVm.Support.IPAllocationMethodEnum])]
-      [Microsoft.Azure.PowerShell.Cmdlets.StackHCIVm.Category('Body')]
+      [ArgumentCompleter([Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Support.IPAllocationMethodEnum])]
+      [Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Category('Body')]
       [System.String]
       # The IP address allocation method. Possible values include: 'Static', 'Dynamic'
       $IpAllocationMethod, 
   
       [Parameter()]
-      [Microsoft.Azure.PowerShell.Cmdlets.StackHCIVm.Category('Body')]
+      [Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Category('Body')]
       [System.String]
       # End of the ip address pool
       $IpPoolEnd, 
   
       [Parameter()]
-      [Microsoft.Azure.PowerShell.Cmdlets.StackHCIVm.Category('Body')]
+      [Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Category('Body')]
       [System.String]
       # Start of the ip address pool
       $IpPoolStart, 
   
       [Parameter()]
-      [ArgumentCompleter([Microsoft.Azure.PowerShell.Cmdlets.StackHCIVm.Support.IPPoolTypeEnum])]
-      [Microsoft.Azure.PowerShell.Cmdlets.StackHCIVm.Category('Body')]
+      [ArgumentCompleter([Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Support.IPPoolTypeEnum])]
+      [Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Category('Body')]
       [System.String]
       # Ip pool type
       $IpPoolType, 
   
       [Parameter()]
-      [Microsoft.Azure.PowerShell.Cmdlets.StackHCIVm.Category('Body')]
+      [Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Category('Body')]
       [System.Collections.Hashtable[]]
       # Network associated pool of IP Addresses
       $IpPool,
   
       [Parameter()]
-      [Microsoft.Azure.PowerShell.Cmdlets.StackHCIVm.Category('Body')]
+      [Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Category('Body')]
       [System.Collections.Hashtable[]]
       # Collection of routes contained within a route table.
       $Route, 
   
       [Parameter()]
-      [Microsoft.Azure.PowerShell.Cmdlets.StackHCIVm.Category('Body')]
+      [Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Category('Body')]
       [System.String]
       # Name of the subnet
       $SubnetName, 
   
       [Parameter()]
-      [Microsoft.Azure.PowerShell.Cmdlets.StackHCIVm.Category('Body')]
+      [Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Category('Body')]
       [System.Collections.Hashtable[]]
       # List of subnets under the virtual network
       $Subnet, 
   
       [Parameter()]
-      [Microsoft.Azure.PowerShell.Cmdlets.StackHCIVm.Category('Body')]
+      [Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Category('Body')]
       [System.Int32]
       # Vlan to use for the subnet
       $Vlan ,
@@ -172,58 +172,58 @@ function New-AzStackHCIVmLogicalNetwork {
       [Parameter()]
       [Alias('AzureRMContext', 'AzureCredential')]
       [ValidateNotNull()]
-      [Microsoft.Azure.PowerShell.Cmdlets.StackHCIVm.Category('Azure')]
+      [Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Category('Azure')]
       [System.Management.Automation.PSObject]
       # The credentials, account, tenant, and subscription used for communication with Azure.
       ${DefaultProfile},
   
       [Parameter()]
-      [Microsoft.Azure.PowerShell.Cmdlets.StackHCIVm.Category('Runtime')]
+      [Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Category('Runtime')]
       [System.Management.Automation.SwitchParameter]
       # Run the command as a job
       ${AsJob},
   
       [Parameter(DontShow)]
-      [Microsoft.Azure.PowerShell.Cmdlets.StackHCIVm.Category('Runtime')]
+      [Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Category('Runtime')]
       [System.Management.Automation.SwitchParameter]
       # Wait for .NET debugger to attach
       ${Break},
   
       [Parameter(DontShow)]
       [ValidateNotNull()]
-      [Microsoft.Azure.PowerShell.Cmdlets.StackHCIVm.Category('Runtime')]
-      [Microsoft.Azure.PowerShell.Cmdlets.StackHCIVm.Runtime.SendAsyncStep[]]
+      [Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Category('Runtime')]
+      [Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Runtime.SendAsyncStep[]]
       # SendAsync Pipeline Steps to be appended to the front of the pipeline
       ${HttpPipelineAppend},
   
       [Parameter(DontShow)]
       [ValidateNotNull()]
-      [Microsoft.Azure.PowerShell.Cmdlets.StackHCIVm.Category('Runtime')]
-      [Microsoft.Azure.PowerShell.Cmdlets.StackHCIVm.Runtime.SendAsyncStep[]]
+      [Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Category('Runtime')]
+      [Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Runtime.SendAsyncStep[]]
       # SendAsync Pipeline Steps to be prepended to the front of the pipeline
       ${HttpPipelinePrepend},
   
       [Parameter()]
-      [Microsoft.Azure.PowerShell.Cmdlets.StackHCIVm.Category('Runtime')]
+      [Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Category('Runtime')]
       [System.Management.Automation.SwitchParameter]
       # Run the command asynchronously
       ${NoWait},
   
       [Parameter(DontShow)]
-      [Microsoft.Azure.PowerShell.Cmdlets.StackHCIVm.Category('Runtime')]
+      [Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Category('Runtime')]
       [System.Uri]
       # The URI for the proxy server to use
       ${Proxy},
   
       [Parameter(DontShow)]
       [ValidateNotNull()]
-      [Microsoft.Azure.PowerShell.Cmdlets.StackHCIVm.Category('Runtime')]
+      [Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Category('Runtime')]
       [System.Management.Automation.PSCredential]
       # Credentials for a proxy server to use for the remote call
       ${ProxyCredential},
   
       [Parameter(DontShow)]
-      [Microsoft.Azure.PowerShell.Cmdlets.StackHCIVm.Category('Runtime')]
+      [Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Category('Runtime')]
       [System.Management.Automation.SwitchParameter]
       # Use the default credentials for the proxy
       ${ProxyUseDefaultCredentials}
@@ -341,6 +341,6 @@ function New-AzStackHCIVmLogicalNetwork {
   
       } 
      
-      return Az.StackHCIVm.internal\New-AzStackHCIVmLogicalNetwork @PSBoundParameters
+      return Az.StackHCIVM.internal\New-AzStackHCIVMLogicalNetwork @PSBoundParameters
   }
   

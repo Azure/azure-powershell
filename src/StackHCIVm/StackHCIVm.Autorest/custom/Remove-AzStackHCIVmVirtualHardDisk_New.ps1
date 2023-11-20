@@ -27,19 +27,19 @@ COMPLEX PARAMETER PROPERTIES
 .Link
 https://learn.microsoft.com/powershell/module/az.stackhcivm/remove-azstackhcivmvirtualharddisk
 #>
-function Remove-AzStackHCIVmVirtualHardDisk {
+function Remove-AzStackHCIVMVirtualHardDisk {
     [OutputType([System.Boolean])]
     [CmdletBinding(PositionalBinding=$false, SupportsShouldProcess=$true, ConfirmImpact='Medium')]
     param(
         [Parameter(ParameterSetName='ByName',Mandatory)]
         [Alias('VirtualHardDiskName')]
-        [Microsoft.Azure.PowerShell.Cmdlets.StackHCIVm.Category('Path')]
+        [Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Category('Path')]
         [System.String]
         # Name of the virtual hard disk
         ${Name},
     
         [Parameter(ParameterSetName='ByName',Mandatory)]
-        [Microsoft.Azure.PowerShell.Cmdlets.StackHCIVm.Category('Path')]
+        [Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Category('Path')]
         [System.String]
         # The name of the resource group.
         # The name is case insensitive.
@@ -47,8 +47,8 @@ function Remove-AzStackHCIVmVirtualHardDisk {
     
         [Parameter(ParameterSetName='ByName')]
         [Parameter(ParameterSetName='ByResourceId')]
-        [Microsoft.Azure.PowerShell.Cmdlets.StackHCIVm.Category('Path')]
-        [Microsoft.Azure.PowerShell.Cmdlets.StackHCIVm.Runtime.DefaultInfo(Script='(Get-AzContext).Subscription.Id')]
+        [Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Category('Path')]
+        [Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Runtime.DefaultInfo(Script='(Get-AzContext).Subscription.Id')]
         [System.String]
         # The ID of the target subscription.
         ${SubscriptionId},
@@ -93,7 +93,7 @@ function Remove-AzStackHCIVmVirtualHardDisk {
                 $null = $PSBoundParameters.Remove("Force")
             }
 
-            Az.StackHCIVm.internal\Remove-AzStackHCIVmVirtualHardDisk @PSBoundParameters
+            Az.StackHCIVM.internal\Remove-AzStackHCIVMVirtualHardDisk @PSBoundParameters
         }
 
     }

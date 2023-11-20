@@ -1,11 +1,11 @@
 ---
 external help file:
-Module Name: Az.StackHCIVm
+Module Name: Az.StackHCIVM
 online version: https://learn.microsoft.com/powershell/module/az.stackhcivm/new-azstackhcivmvirtualharddisk
 schema: 2.0.0
 ---
 
-# New-AzStackHCIVmVirtualHardDisk
+# New-AzStackHCIVMVirtualHardDisk
 
 ## SYNOPSIS
 The operation to create or update a virtual hard disk.
@@ -14,7 +14,7 @@ Please note some properties can be set only during virtual hard disk creation.
 ## SYNTAX
 
 ```
-New-AzStackHCIVmVirtualHardDisk -Name <String> -ResourceGroupName <String> -CustomLocationId <String>
+New-AzStackHCIVMVirtualHardDisk -Name <String> -ResourceGroupName <String> -CustomLocationId <String>
  -Location <String> [-SubscriptionId <String>] [-BlockSizeByte <Int32>] [-DiskFileFormat <DiskFileFormat>]
  [-Dynamic] [-HyperVGeneration <HyperVGeneration>] [-LogicalSectorByte <Int32>] [-PhysicalSectorByte <Int32>]
  [-SizeGb <Int64>] [-StoragePathId <String>] [-StoragePathName <String>] [-StoragePathResourceGroup <String>]
@@ -29,7 +29,7 @@ Please note some properties can be set only during virtual hard disk creation.
 
 ### Example 1: Create a Virtual Hard Disk
 ```powershell
-New-AzStackHCIVmVirtualHardDisk -Name "testVhd" -ResourceGroupName "test-rg" -CustomLocationId "/subscriptions/{subscriptionID}/resourcegroups/{resourceGroupName}/providers/microsoft.extendedlocation/customlocations/{customLocationName}" -Location "eastus" -SizeGb 2
+New-AzStackHCIVMVirtualHardDisk -Name "testVhd" -ResourceGroupName "test-rg" -CustomLocationId "/subscriptions/{subscriptionID}/resourcegroups/{resourceGroupName}/providers/microsoft.extendedlocation/customlocations/{customLocationName}" -Location "eastus" -SizeGb 2
 ```
 
 ```output
@@ -105,7 +105,7 @@ Accept wildcard characters: False
 The format of the actual VHD file [vhd, vhdx]
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.StackHCIVm.Support.DiskFileFormat
+Type: Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Support.DiskFileFormat
 Parameter Sets: (All)
 Aliases:
 
@@ -135,7 +135,7 @@ Accept wildcard characters: False
 The hypervisor generation of the Virtual Machine [V1, V2]
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.StackHCIVm.Support.HyperVGeneration
+Type: Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Support.HyperVGeneration
 Parameter Sets: (All)
 Aliases:
 
@@ -369,7 +369,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.StackHCIVm.Models.Api20230901Preview.IVirtualHardDisks
+### Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Models.Api20230901Preview.IVirtualHardDisks
 
 ## NOTES
 

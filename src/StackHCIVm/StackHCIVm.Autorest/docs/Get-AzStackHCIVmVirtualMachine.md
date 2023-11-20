@@ -1,11 +1,11 @@
 ---
 external help file:
-Module Name: Az.StackHCIVm
+Module Name: Az.StackHCIVM
 online version: https://learn.microsoft.com/powershell/module/az.stackhcivm/get-azstackhcivmvirtualmachine
 schema: 2.0.0
 ---
 
-# Get-AzStackHCIVmVirtualMachine
+# Get-AzStackHCIVMVirtualMachine
 
 ## SYNOPSIS
 Gets a virtual machine
@@ -14,25 +14,25 @@ Gets a virtual machine
 
 ### BySubscription (Default)
 ```
-Get-AzStackHCIVmVirtualMachine [-SubscriptionId <String>] [-DefaultProfile <PSObject>] [-NoWait] [-Confirm]
+Get-AzStackHCIVMVirtualMachine [-SubscriptionId <String>] [-DefaultProfile <PSObject>] [-NoWait] [-Confirm]
  [-WhatIf] [<CommonParameters>]
 ```
 
 ### ByName
 ```
-Get-AzStackHCIVmVirtualMachine -Name <String> -ResourceGroupName <String> [-SubscriptionId <String>]
+Get-AzStackHCIVMVirtualMachine -Name <String> -ResourceGroupName <String> [-SubscriptionId <String>]
  [-DefaultProfile <PSObject>] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ### ByResourceGroup
 ```
-Get-AzStackHCIVmVirtualMachine -ResourceGroupName <String> [-SubscriptionId <String>]
+Get-AzStackHCIVMVirtualMachine -ResourceGroupName <String> [-SubscriptionId <String>]
  [-DefaultProfile <PSObject>] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ### ByResourceId
 ```
-Get-AzStackHCIVmVirtualMachine -ResourceId <String> [-DefaultProfile <PSObject>] [-NoWait] [-Confirm]
+Get-AzStackHCIVMVirtualMachine -ResourceId <String> [-DefaultProfile <PSObject>] [-NoWait] [-Confirm]
  [-WhatIf] [<CommonParameters>]
 ```
 
@@ -43,7 +43,7 @@ Gets a virtual machine
 
 ### Example 2: Get a Virtual Machine. 
 ```powershell
-Get-AzStackHCIVmVirtualMachine -Name "testVm" -ResourceGroupName "test-rg"
+Get-AzStackHCIVMVirtualMachine -Name "testVm" -ResourceGroupName "test-rg"
 ```
 
 ```output
@@ -56,7 +56,7 @@ This commnad gets a virtual machine in a specified resource group.
 
 ### Example 2: List Virtual Machines in a Resource Group
 ```powershell
-Get-AzStackHCIVmVirtualMachine -ResourceGroupName "test-rg"
+Get-AzStackHCIVMVirtualMachine -ResourceGroupName "test-rg"
 ```
 
 ```output
@@ -198,9 +198,9 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.StackHCIVm.Models.Api20230315Preview.Machine
+### Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Models.Api20230315Preview.Machine
 
-### Microsoft.Azure.PowerShell.Cmdlets.StackHCIVm.Models.Api20230901Preview.IVirtualMachineInstance
+### Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Models.Api20230901Preview.IVirtualMachineInstance
 
 ## NOTES
 

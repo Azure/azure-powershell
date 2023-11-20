@@ -1,11 +1,11 @@
 ---
 external help file:
-Module Name: Az.StackHCIVm
+Module Name: Az.StackHCIVM
 online version: https://learn.microsoft.com/powershell/module/az.stackhcivm/stop-azstackhcivmvirtualmachine
 schema: 2.0.0
 ---
 
-# Stop-AzStackHCIVmVirtualMachine
+# Stop-AzStackHCIVMVirtualMachine
 
 ## SYNOPSIS
 The operation to stop a virtual machine instance.
@@ -14,13 +14,13 @@ The operation to stop a virtual machine instance.
 
 ### ByResourceId (Default)
 ```
-Stop-AzStackHCIVmVirtualMachine -ResourceId <String> [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
+Stop-AzStackHCIVMVirtualMachine -ResourceId <String> [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
  [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ### ByName
 ```
-Stop-AzStackHCIVmVirtualMachine -Name <String> -ResourceGroupName <String> [-SubscriptionId <String>]
+Stop-AzStackHCIVMVirtualMachine -Name <String> -ResourceGroupName <String> [-SubscriptionId <String>]
  [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
@@ -31,7 +31,7 @@ The operation to stop a virtual machine instance.
 
 ### Example 1: Stop Virtual Machine 
 ```powershell
-Stop-AzStackHCIVmVirtualMachine  -Name "testVm" -ResourceGroupName "test-rg"
+Stop-AzStackHCIVMVirtualMachine  -Name "testVm" -ResourceGroupName "test-rg"
 
 ```
 
@@ -181,11 +181,11 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.StackHCIVm.Models.IStackHCIVmIdentity
+### Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Models.IStackHCIVMIdentity
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.StackHCIVm.Models.Api20230901Preview.IVirtualMachineInstance
+### Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Models.Api20230901Preview.IVirtualMachineInstance
 
 ## NOTES
 

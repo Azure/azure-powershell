@@ -1,11 +1,11 @@
 ---
 external help file:
-Module Name: Az.StackHCIVm
+Module Name: Az.StackHCIVM
 online version: https://learn.microsoft.com/powershell/module/az.stackhcivm/update-azstackhcivmimage
 schema: 2.0.0
 ---
 
-# Update-AzStackHCIVmImage
+# Update-AzStackHCIVMImage
 
 ## SYNOPSIS
 The operation to update an image.
@@ -14,18 +14,18 @@ The operation to update an image.
 
 ### GalleryImage (Default)
 ```
-Update-AzStackHCIVmImage [-Confirm] [-WhatIf] [<CommonParameters>]
+Update-AzStackHCIVMImage [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ### ByName
 ```
-Update-AzStackHCIVmImage -Name <String> -ResourceGroupName <String> [-SubscriptionId <String>]
+Update-AzStackHCIVMImage -Name <String> -ResourceGroupName <String> [-SubscriptionId <String>]
  [-Tag <Hashtable>] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ### ByResourceId
 ```
-Update-AzStackHCIVmImage -ResourceId <String> [-SubscriptionId <String>] [-Tag <Hashtable>] [-Confirm]
+Update-AzStackHCIVMImage -ResourceId <String> [-SubscriptionId <String>] [-Tag <Hashtable>] [-Confirm]
  [-WhatIf] [<CommonParameters>]
 ```
 
@@ -37,7 +37,7 @@ Please note some properties can be set only during image creation.
 
 ### Example 1: Update an Image.
 ```powershell
-Update-AzStackHCIVmImage  -Name "testImage" -ResourceGroupName "test-rg" -Tag @{"tagname" = "tagvalue"}
+Update-AzStackHCIVMImage  -Name "testImage" -ResourceGroupName "test-rg" -Tag @{"tagname" = "tagvalue"}
 ```
 
 ```output
@@ -164,9 +164,9 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.StackHCIVm.Models.Api20230901Preview.IGalleryImages
+### Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Models.Api20230901Preview.IGalleryImages
 
-### Microsoft.Azure.PowerShell.Cmdlets.StackHCIVm.Models.Api20230901Preview.IMarketplaceGalleryImages
+### Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Models.Api20230901Preview.IMarketplaceGalleryImages
 
 ## NOTES
 

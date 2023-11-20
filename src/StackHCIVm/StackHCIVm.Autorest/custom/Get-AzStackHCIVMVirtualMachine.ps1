@@ -21,26 +21,26 @@ Gets a virtual machine
 
 
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.StackHCIVm.Models.Api20230901Preview.IVirtualMachineInstance
+Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Models.Api20230901Preview.IVirtualMachineInstance
 .Link
 https://learn.microsoft.com/powershell/module/az.stackhcivm/get-azstackhcivmvirtualmachine
 #>
-function Get-AzStackHCIVmVirtualMachine {
-    [OutputType([Microsoft.Azure.PowerShell.Cmdlets.StackHCIVm.Models.Api20230315Preview.Machine],ParameterSetName='ByResourceGroup' )]
-    [OutputType([Microsoft.Azure.PowerShell.Cmdlets.StackHCIVm.Models.Api20230901Preview.IVirtualMachineInstance],ParameterSetName='ByName' )]
+function Get-AzStackHCIVMVirtualMachine {
+    [OutputType([Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Models.Api20230315Preview.Machine],ParameterSetName='ByResourceGroup' )]
+    [OutputType([Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Models.Api20230901Preview.IVirtualMachineInstance],ParameterSetName='ByName' )]
     [CmdletBinding( PositionalBinding=$false, SupportsShouldProcess, ConfirmImpact='Medium')]
     param(
 
         [Parameter(ParameterSetName='ByName', Mandatory)]
         [Alias('VirtualMachineName')]
-        [Microsoft.Azure.PowerShell.Cmdlets.StackHCIVm.Category('Path')]
+        [Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Category('Path')]
         [System.String]
         # Name of the virtual machine
         ${Name},
         
         [Parameter(ParameterSetName='ByName', Mandatory)]
         [Parameter(ParameterSetName='ByResourceGroup', Mandatory)]
-        [Microsoft.Azure.PowerShell.Cmdlets.StackHCIVm.Category('Path')]
+        [Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Category('Path')]
         [System.String]
         # The name of the resource group.
         # The name is case insensitive.
@@ -49,14 +49,14 @@ function Get-AzStackHCIVmVirtualMachine {
         [Parameter(ParameterSetName='ByName')]
         [Parameter(ParameterSetName='ByResourceGroup')]
         [Parameter(ParameterSetName='BySubscription')]
-        [Microsoft.Azure.PowerShell.Cmdlets.StackHCIVm.Category('Path')]
-        [Microsoft.Azure.PowerShell.Cmdlets.StackHCIVm.Runtime.DefaultInfo(Script='(Get-AzContext).Subscription.Id')]
+        [Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Category('Path')]
+        [Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Runtime.DefaultInfo(Script='(Get-AzContext).Subscription.Id')]
         [System.String]
         # The ID of the target subscription.
         ${SubscriptionId},
 
         [Parameter(ParameterSetName='ByResourceId', Mandatory)]
-        [Microsoft.Azure.PowerShell.Cmdlets.StackHCIVm.Category('Path')]
+        [Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Category('Path')]
         [System.String]
         # The ARM ID of the virtual machine.
         ${ResourceId},
@@ -64,52 +64,52 @@ function Get-AzStackHCIVmVirtualMachine {
         [Parameter()]
         [Alias('AzureRMContext', 'AzureCredential')]
         [ValidateNotNull()]
-        [Microsoft.Azure.PowerShell.Cmdlets.StackHCIVm.Category('Azure')]
+        [Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Category('Azure')]
         [System.Management.Automation.PSObject]
         # The credentials, account, tenant, and subscription used for communication with Azure.
         ${DefaultProfile},
     
         [Parameter(DontShow)]
-        [Microsoft.Azure.PowerShell.Cmdlets.StackHCIVm.Category('Runtime')]
+        [Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Category('Runtime')]
         [System.Management.Automation.SwitchParameter]
         # Wait for .NET debugger to attach
         ${Break},
     
         [Parameter(DontShow)]
         [ValidateNotNull()]
-        [Microsoft.Azure.PowerShell.Cmdlets.StackHCIVm.Category('Runtime')]
-        [Microsoft.Azure.PowerShell.Cmdlets.StackHCIVm.Runtime.SendAsyncStep[]]
+        [Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Category('Runtime')]
+        [Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Runtime.SendAsyncStep[]]
         # SendAsync Pipeline Steps to be appended to the front of the pipeline
         ${HttpPipelineAppend},
     
         [Parameter(DontShow)]
         [ValidateNotNull()]
-        [Microsoft.Azure.PowerShell.Cmdlets.StackHCIVm.Category('Runtime')]
-        [Microsoft.Azure.PowerShell.Cmdlets.StackHCIVm.Runtime.SendAsyncStep[]]
+        [Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Category('Runtime')]
+        [Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Runtime.SendAsyncStep[]]
         # SendAsync Pipeline Steps to be prepended to the front of the pipeline
         ${HttpPipelinePrepend},
     
         [Parameter()]
-        [Microsoft.Azure.PowerShell.Cmdlets.StackHCIVm.Category('Runtime')]
+        [Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Category('Runtime')]
         [System.Management.Automation.SwitchParameter]
         # Run the command asynchronously
         ${NoWait},
     
         [Parameter(DontShow)]
-        [Microsoft.Azure.PowerShell.Cmdlets.StackHCIVm.Category('Runtime')]
+        [Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Category('Runtime')]
         [System.Uri]
         # The URI for the proxy server to use
         ${Proxy},
     
         [Parameter(DontShow)]
         [ValidateNotNull()]
-        [Microsoft.Azure.PowerShell.Cmdlets.StackHCIVm.Category('Runtime')]
+        [Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Category('Runtime')]
         [System.Management.Automation.PSCredential]
         # Credentials for a proxy server to use for the remote call
         ${ProxyCredential},
     
         [Parameter(DontShow)]
-        [Microsoft.Azure.PowerShell.Cmdlets.StackHCIVm.Category('Runtime')]
+        [Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Category('Runtime')]
         [System.Management.Automation.SwitchParameter]
         # Use the default credentials for the proxy
         ${ProxyUseDefaultCredentials}
@@ -129,13 +129,13 @@ function Get-AzStackHCIVmVirtualMachine {
                 $null = $PSBoundParameters.Remove("ResourceGroupName")
                 $null = $PSBoundParameters.Remove("ResourceId")
                 $null = $PSBoundParameters.Remove("Name")
-                return  Az.StackHCIVm.internal\Get-AzStackHCIVmVirtualMachine @PSBoundParameters
+                return  Az.StackHCIVM.internal\Get-AzStackHCIVMVirtualMachine @PSBoundParameters
             } else {             
                 Write-Error "One or more input parameters are invalid. Resource ID is: $ResourceId, name is $name, resource group name is $resourcegroupname, subscription id is $subscriptionid"
             }   
         } elseif ($PSCmdlet.ParameterSetName -eq "ByResourceGroup") {
             $allHCIMachines = [System.Collections.ArrayList]::new()
-            $machines = Az.StackHCIVm.internal\Get-AzStackHCIVmMachine -ResourceGroupName $ResourceGroupName -SubscriptionId $SubscriptionId
+            $machines = Az.StackHCIVM.internal\Get-AzStackHCIVMMachine -ResourceGroupName $ResourceGroupName -SubscriptionId $SubscriptionId
             foreach ($machine in $machines){
                 if ($machine.Kind.ToString() -eq "HCI"){
                     [void]$allHCIMachines.Add($machine) 
@@ -145,7 +145,7 @@ function Get-AzStackHCIVmVirtualMachine {
 
         } else {
             $allHCIMachines = [System.Collections.ArrayList]::new()
-            $machines = Az.StackHCIVm.internal\Get-AzStackHCIVmMachine -SubscriptionId $SubscriptionId
+            $machines = Az.StackHCIVM.internal\Get-AzStackHCIVMMachine -SubscriptionId $SubscriptionId
             foreach ($machine in $machines){
                 if ($machine.Kind.ToString() -eq "HCI"){
                     [void]$allHCIMachines.Add($machine) 
