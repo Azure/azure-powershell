@@ -18,49 +18,52 @@ Describe 'AzContainerAppManagedEnvStorage' {
 
     # Contains confidential information, please run it locally
 
-    It 'CreateExpanded' -skip {
+    It 'CreateExpanded' {
         {
-            $storageAccountKey = (Get-AzStorageAccountKey -ResourceGroupName $env.resourceGroupManaged -AccountName $env.storageAccount1).Value[0]
+            # $storageAccountKey = (Get-AzStorageAccountKey -ResourceGroupName $env.resourceGroupManaged -AccountName $env.storageAccount1).Value[0]
+            $storageAccountKey = "1234"
 
             $config = New-AzContainerAppManagedEnvStorage -EnvName $env.managedEnv1 -ResourceGroupName $env.resourceGroupManaged -Name $env.managedEnvStorage -AzureFileAccessMode 'ReadWrite' -AzureFileAccountKey $storageAccountKey -AzureFileAccountName $env.storageAccount1 -AzureFileShareName azps-rw-sharename
             $config.AzureFileShareName | Should -Be "azps-rw-sharename"
         } | Should -Not -Throw
     }
 
-    It 'List' -skip {
+    It 'List' {
         {
             $config = Get-AzContainerAppManagedEnvStorage -EnvName $env.managedEnv1 -ResourceGroupName $env.resourceGroupManaged
             $config.Count | Should -BeGreaterThan 0
         } | Should -Not -Throw
     }
 
-    It 'Get' -skip {
+    It 'Get' {
         {
             $config = Get-AzContainerAppManagedEnvStorage -EnvName $env.managedEnv1 -ResourceGroupName $env.resourceGroupManaged -Name $env.managedEnvStorage
             $config.AzureFileShareName | Should -Be "azps-rw-sharename"
         } | Should -Not -Throw
     }
 
-    It 'UpdateExpanded' -skip {
+    It 'UpdateExpanded' {
         {
-            $storageAccountKey = (Get-AzStorageAccountKey -ResourceGroupName $env.resourceGroupManaged -AccountName $env.storageAccount1).Value[0]
+            # $storageAccountKey = (Get-AzStorageAccountKey -ResourceGroupName $env.resourceGroupManaged -AccountName $env.storageAccount1).Value[0]
+            $storageAccountKey = "1234"
 
-            $config = Update-AzContainerAppManagedEnvStorage -EnvName $env.managedEnv1 -ResourceGroupName $env.resourceGroupManaged -Name $env.managedEnvStorage -AzureFileAccessMode 'ReadWrite' -AzureFileAccountKey $storageAccountKey -AzureFileAccountName azpstestsa -AzureFileShareName azps-rw-sharename
+            $config = Update-AzContainerAppManagedEnvStorage -EnvName $env.managedEnv1 -ResourceGroupName $env.resourceGroupManaged -Name $env.managedEnvStorage -AzureFileAccessMode 'ReadWrite' -AzureFileAccountKey $storageAccountKey -AzureFileAccountName $env.storageAccount1 -AzureFileShareName azps-rw-sharename
             $config.AzureFileShareName | Should -Be "azps-rw-sharename"
         } | Should -Not -Throw
     }
 
-    It 'UpdateViaIdentityExpanded' -skip {
+    It 'UpdateViaIdentityExpanded' {
         {
-            $storageAccountKey = (Get-AzStorageAccountKey -ResourceGroupName $env.resourceGroupManaged -AccountName $env.storageAccount1).Value[0]
+            # $storageAccountKey = (Get-AzStorageAccountKey -ResourceGroupName $env.resourceGroupManaged -AccountName $env.storageAccount1).Value[0]
+            $storageAccountKey = "1234"
             $config = Get-AzContainerAppManagedEnvStorage -EnvName $env.managedEnv1 -ResourceGroupName $env.resourceGroupManaged -Name $env.managedEnvStorage
 
-            $config = Update-AzContainerAppManagedEnvStorage -InputObject $config -AzureFileAccessMode 'ReadWrite' -AzureFileAccountKey $storageAccountKey -AzureFileAccountName azpstestsa -AzureFileShareName azps-rw-sharename
+            $config = Update-AzContainerAppManagedEnvStorage -InputObject $config -AzureFileAccessMode 'ReadWrite' -AzureFileAccountKey $storageAccountKey -AzureFileAccountName $env.storageAccount1 -AzureFileShareName azps-rw-sharename
             $config.AzureFileShareName | Should -Be "azps-rw-sharename"
         } | Should -Not -Throw
     }
 
-    It 'Delete' -skip {
+    It 'Delete' {
         {
             Remove-AzContainerAppManagedEnvStorage -EnvName $env.managedEnv1 -ResourceGroupName $env.resourceGroupManaged -Name $env.managedEnvStorage
         } | Should -Not -Throw

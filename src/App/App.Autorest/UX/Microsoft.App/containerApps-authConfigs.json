@@ -1,6 +1,6 @@
 {
   "resourceType": "containerApps/authConfigs",
-  "apiVersion": "2022-03-01",
+  "apiVersion": "2023-05-01",
   "learnMore": {
     "url": "https://learn.microsoft.com/powershell/module/az.app"
   },
@@ -16,8 +16,8 @@
         "parameterSets": [
           {
             "parameters": [
-              "-AuthConfigName <String>",
               "-ContainerAppName <String>",
+              "-Name <String>",
               "-ResourceGroupName <String>",
               "[-SubscriptionId <String[]>]"
             ]
@@ -29,12 +29,12 @@
           "description": "Get a AuthConfig of a Container App.",
           "parameters": [
             {
-              "name": "-AuthConfigName",
-              "value": "[Path.authConfigName]"
-            },
-            {
               "name": "-ContainerAppName",
               "value": "[Path.containerAppName]"
+            },
+            {
+              "name": "-Name",
+              "value": "[Path.authConfigName]"
             },
             {
               "name": "-ResourceGroupName",
@@ -59,8 +59,8 @@
         "parameterSets": [
           {
             "parameters": [
-              "-AuthConfigName <String>",
               "-ContainerAppName <String>",
+              "-Name <String>",
               "-ResourceGroupName <String>",
               "[-SubscriptionId <String>]"
             ]
@@ -72,12 +72,12 @@
           "description": "Delete a Container App AuthConfig.",
           "parameters": [
             {
-              "name": "-AuthConfigName",
-              "value": "[Path.authConfigName]"
-            },
-            {
               "name": "-ContainerAppName",
               "value": "[Path.containerAppName]"
+            },
+            {
+              "name": "-Name",
+              "value": "[Path.authConfigName]"
             },
             {
               "name": "-ResourceGroupName",

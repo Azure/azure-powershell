@@ -15,7 +15,7 @@ if(($null -eq $TestName) -or ($TestName -contains 'AzContainerAppDiagnosticRevis
 }
 
 Describe 'AzContainerAppDiagnosticRevision' {
-    It 'List' -skip {
+    It 'List' {
         {
             $config = Get-AzContainerAppDiagnosticRevision -ContainerAppName $env.containerApp1 -ResourceGroupName $env.resourceGroupManaged
             $config.Count | Should -BeGreaterThan 0
