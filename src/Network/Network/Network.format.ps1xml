@@ -6877,11 +6877,11 @@
                 <PropertyName>Location</PropertyName>
               </ListItem>
               <ListItem>
-                <Label>Tag</Label>
+                <Label>Tags</Label>
                 <PropertyName>Tag</PropertyName>
               </ListItem>
               <ListItem>
-                <Label>TagsTable</Label>
+                <Label>Tags Table</Label>
                 <PropertyName>TagsTable</PropertyName>
               </ListItem>
               <ListItem>
@@ -6911,6 +6911,26 @@
               <ListItem>
                 <Label>Scale Units</Label>
                 <PropertyName>ScaleUnit</PropertyName>
+              </ListItem>
+              <ListItem>
+                <Label>Kerberos</Label>
+                <PropertyName>EnableKerberos</PropertyName>
+              </ListItem>
+              <ListItem>
+                  <Label>Copy/Paste</Label>
+				  <PropertyName>DisableCopyPaste</PropertyName>
+              </ListItem>
+              <ListItem>
+				  <Label>Native Client</Label>
+				  <PropertyName>EnableTunneling</PropertyName>
+              </ListItem>
+              <ListItem>
+				  <Label>IP Connect</Label>
+				  <PropertyName>EnableIpConnect</PropertyName>
+              </ListItem>
+              <ListItem>
+				  <Label>Shareable Link</Label>
+				  <PropertyName>EnableShareableLink</PropertyName>
               </ListItem>
             </ListItems>
           </ListEntry>
