@@ -20,6 +20,7 @@
 
 ## Upcoming Release
 * Used utf8 encoding for reading stdout & stderr when invoking Bicep. [#23246]
+* Fixed regression in `Publish-AzBicepModule` [Azure/bicep/12461](https://github.com/Azure/bicep/issues/12461)
 
 ## Version 6.12.0
 * Supported $ref statements for user-defined types in Bicep files.
