@@ -48,15 +48,7 @@ require:
 try-require: 
   - $(repo)/specification/servicenetworking/resource-manager/readme.powershell.md
 
-# For new modules, please avoid setting 3.x using the use-extension method and instead, use 4.x as the default option
-use-extension:
-  "@autorest/powershell": "3.x"
-
 directive:
-  # Bug: https://github.com/Azure/autorest.powershell/issues/983
-  - from: source-file-csharp
-    where: $
-    transform: $ = $.replace('((Microsoft.Azure.PowerShell.Cmdlets.Alb.Models.Api20231101.IAssociationPropertiesInternal)Property).AssociationType = value;', '((Microsoft.Azure.PowerShell.Cmdlets.Alb.Models.Api20231101.IAssociationPropertiesInternal)Property).AssociationType = value ?? "";');
   # Fix swagger issues
   - from: swagger-document
     where: $.definitions.TrafficControllerUpdateProperties
