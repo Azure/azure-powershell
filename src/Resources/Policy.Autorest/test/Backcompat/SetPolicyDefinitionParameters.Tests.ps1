@@ -1,7 +1,7 @@
 # setup the Pester environment for policy backcompat tests
 . (Join-Path $PSScriptRoot 'Common.ps1') 'SetPolicyDefinitionParameters'
 
-Describe 'SetPolicyDefinitionParameters' {
+Describe 'SetPolicyDefinitionParameters' -Tag 'LiveOnly' {
 
     BeforeAll {
         $goodScope = "/subscriptions/$subscriptionId"

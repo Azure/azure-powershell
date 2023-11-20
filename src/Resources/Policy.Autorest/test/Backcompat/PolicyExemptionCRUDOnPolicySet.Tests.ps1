@@ -1,7 +1,7 @@
 # setup the Pester environment for policy backcompat tests
 . (Join-Path $PSScriptRoot 'Common.ps1') 'PolicyExemptionCRUDOnPolicySet'
 
-Describe 'PolicyExemptionCRUDOnPolicySet' {
+Describe 'PolicyExemptionCRUDOnPolicySet' -Tag 'LiveOnly' {
 
     BeforeAll {
         # Get built-in Audit resource location matches resource group location
