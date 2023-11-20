@@ -97,11 +97,7 @@ namespace Microsoft.Azure.Management.ServiceFabric
         /// </param>
         public static async System.Threading.Tasks.Task<ApplicationTypeResource> CreateOrUpdateAsync(this IApplicationTypesOperations operations, string resourceGroupName, string clusterName, string applicationTypeName, string location = default(string), System.Collections.Generic.IDictionary<string, string> tags = default(System.Collections.Generic.IDictionary<string, string>), System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
-            ApplicationTypeResource applicationTypeResource = new ApplicationTypeResource(
-                location: location,
-                tags: tags);
-
-            using (var _result = await operations.CreateOrUpdateWithHttpMessagesAsync(resourceGroupName, clusterName, applicationTypeName, applicationTypeResource, null, cancellationToken).ConfigureAwait(false))
+            using (var _result = await operations.CreateOrUpdateWithHttpMessagesAsync(resourceGroupName, clusterName, applicationTypeName, location, tags, null, cancellationToken).ConfigureAwait(false))
             {
                 return _result.Body;
             }
@@ -160,7 +156,7 @@ namespace Microsoft.Azure.Management.ServiceFabric
         /// <param name='clusterName'>
         /// The name of the cluster resource.
         /// </param>
-        public static ApplicationTypeResourceList List(this IApplicationTypesOperations operations, string resourceGroupName, string clusterName)
+        public static Microsoft.Rest.Azure.IPage<ApplicationTypeResource> List(this IApplicationTypesOperations operations, string resourceGroupName, string clusterName)
         {
                 return ((IApplicationTypesOperations)operations).ListAsync(resourceGroupName, clusterName).GetAwaiter().GetResult();
         }
@@ -180,7 +176,7 @@ namespace Microsoft.Azure.Management.ServiceFabric
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        public static async System.Threading.Tasks.Task<ApplicationTypeResourceList> ListAsync(this IApplicationTypesOperations operations, string resourceGroupName, string clusterName, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public static async System.Threading.Tasks.Task<Microsoft.Rest.Azure.IPage<ApplicationTypeResource>> ListAsync(this IApplicationTypesOperations operations, string resourceGroupName, string clusterName, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
             using (var _result = await operations.ListWithHttpMessagesAsync(resourceGroupName, clusterName, null, cancellationToken).ConfigureAwait(false))
             {
@@ -228,6 +224,39 @@ namespace Microsoft.Azure.Management.ServiceFabric
         public static async System.Threading.Tasks.Task BeginDeleteAsync(this IApplicationTypesOperations operations, string resourceGroupName, string clusterName, string applicationTypeName, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
             (await operations.BeginDeleteWithHttpMessagesAsync(resourceGroupName, clusterName, applicationTypeName, null, cancellationToken).ConfigureAwait(false)).Dispose();
+        }
+        /// <summary>
+        /// Gets all application type name resources created or in the process of being created in the Service Fabric cluster resource.
+        /// </summary>
+        /// <param name='operations'>
+        /// The operations group for this extension method.
+        /// </param>
+        /// <param name='nextPageLink'>
+        /// The NextLink from the previous successful call to List operation.
+        /// </param>
+        public static Microsoft.Rest.Azure.IPage<ApplicationTypeResource> ListNext(this IApplicationTypesOperations operations, string nextPageLink)
+        {
+                return ((IApplicationTypesOperations)operations).ListNextAsync(nextPageLink).GetAwaiter().GetResult();
+        }
+
+        /// <summary>
+        /// Gets all application type name resources created or in the process of being created in the Service Fabric cluster resource.
+        /// </summary>
+        /// <param name='operations'>
+        /// The operations group for this extension method.
+        /// </param>
+        /// <param name='nextPageLink'>
+        /// The NextLink from the previous successful call to List operation.
+        /// </param>
+        /// <param name='cancellationToken'>
+        /// The cancellation token.
+        /// </param>
+        public static async System.Threading.Tasks.Task<Microsoft.Rest.Azure.IPage<ApplicationTypeResource>> ListNextAsync(this IApplicationTypesOperations operations, string nextPageLink, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        {
+            using (var _result = await operations.ListNextWithHttpMessagesAsync(nextPageLink, null, cancellationToken).ConfigureAwait(false))
+            {
+                return _result.Body;
+            }
         }
     }
 }

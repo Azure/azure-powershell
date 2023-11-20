@@ -70,9 +70,7 @@ namespace Microsoft.Azure.Management.ServiceFabric.Models
         /// prior to closing the instance. This delay enables existing requests to
         /// drain gracefully before the instance actually goes down
         /// (https://docs.microsoft.com/en-us/azure/service-fabric/service-fabric-application-upgrade-advanced#avoid-connection-drops-during-stateless-service-planned-downtime-preview).
-        /// It is first interpreted as a string representing an ISO 8601 duration. If
-        /// that fails, then it is interpreted as a number representing the total
-        /// number of milliseconds.
+        /// It is represented in ISO 8601 format (hh:mm:ss.s).
         /// </param>
         public StatelessServiceProperties(string placementConstraints = default(string), System.Collections.Generic.IList<ServiceCorrelationDescription> correlationScheme = default(System.Collections.Generic.IList<ServiceCorrelationDescription>), System.Collections.Generic.IList<ServiceLoadMetricDescription> serviceLoadMetrics = default(System.Collections.Generic.IList<ServiceLoadMetricDescription>), System.Collections.Generic.IList<ServicePlacementPolicyDescription> servicePlacementPolicies = default(System.Collections.Generic.IList<ServicePlacementPolicyDescription>), string defaultMoveCost = default(string), string provisioningState = default(string), string serviceTypeName = default(string), PartitionSchemeDescription partitionDescription = default(PartitionSchemeDescription), string servicePackageActivationMode = default(string), string serviceDnsName = default(string), int? instanceCount = default(int?), string instanceCloseDelayDuration = default(string))
 
@@ -101,9 +99,7 @@ namespace Microsoft.Azure.Management.ServiceFabric.Models
         /// starts prior to closing the instance. This delay enables existing requests
         /// to drain gracefully before the instance actually goes down
         /// (https://docs.microsoft.com/en-us/azure/service-fabric/service-fabric-application-upgrade-advanced#avoid-connection-drops-during-stateless-service-planned-downtime-preview).
-        /// It is first interpreted as a string representing an ISO 8601 duration. If
-        /// that fails, then it is interpreted as a number representing the total
-        /// number of milliseconds.
+        /// It is represented in ISO 8601 format (hh:mm:ss.s).
         /// </summary>
         [Newtonsoft.Json.JsonProperty(PropertyName = "instanceCloseDelayDuration")]
         public string InstanceCloseDelayDuration {get; set; }
