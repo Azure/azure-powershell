@@ -9,7 +9,7 @@ schema: 2.0.0
 # New-AzVmss
 
 ## SYNOPSIS
-Creates a VMSS.
+Creates a virtual machine scale set.
 
 ## SYNTAX
 
@@ -209,14 +209,13 @@ Create a VMSS with a UserData value
 
 ### Example 4: Create a Vmss with the security type TrustedLaunch
 ```powershell
-$rgname = "rganme";
+$rgname = "rgname";
 $loc = "eastus";
 
 # VMSS Profile & Hardware requirements for the TrustedLaunch default behavior.
 $vmssSize = 'Standard_D4s_v3';
 $vmssName1 = 'vmss1' + $rgname;
-$vmssName2 = 'vmss2' + $rgname;
-$imageName = "Win2016DataCenterGenSecond";
+$imageName = "Win2022AzureEdition";
 $adminUsername = "<Username>";
 $adminPassword = "<Password>" | ConvertTo-SecureString -AsPlainText -Force;
 $vmCred = New-Object System.Management.Automation.PSCredential ($adminUsername, $adminPassword);
@@ -228,7 +227,7 @@ $result = New-AzVmss -Credential $vmCred -VMScaleSetName $vmssName1 -ImageName $
 # $result.VirtualMachineProfile.SecurityProfile.UefiSettings.SecureBootEnabled;
 ```
 
-This example Creates a new VMSS with the new Security Type 'TrustedLaunch' and the necessary UEFISettings values,
+This example Creates a new VMSS with the new Security Type 'TrustedLaunch' and the necessary UEFISettings values, VTpmEnabled and SecureBootEnalbed are true. Please check [the Trusted Launch feature page](aka.ms/trustedlaunch) for more information.
 
 ### Example 5: Create a Vmss in Orchestration Mode: Flexible by default
 ```powershell
@@ -237,10 +236,48 @@ $vmssConfig = New-AzVmssConfig -Location EastUs2 -UpgradePolicyMode Manual -Sing
 
 # VMSS Creation 
 New-AzVmss -ResourceGroupName TestRg -VMScaleSetName myVMSS -VirtualMachineScaleSet $vmssConfig
-
 ```
-
 This example Creates a new VMSS and it will default to OrchestrationMode Flexible. 
+
+### Example 6: Create a new VMSS with TrustedLaunch turned on by default. 
+```powershell
+$rgname = "<Resource Group>";
+$loc = "<Azure Region>";
+New-AzResourceGroup -Name $rgname -Location $loc -Force;
+
+$vmssName = 'vmss' + $rgname;
+$vmssSize = 'Standard_D4s_v3';
+$imageName = "Win2022AzureEdition";
+$publisherName = "MicrosoftWindowsServer";
+$offer = "WindowsServer";
+$sku = "2022-Datacenter-Azure-Edition";
+$adminUsername = "<Username>";
+$password = "<Password>";
+
+# NRP
+$vnetworkName = 'vnet' + $rgname;
+$subnetName = 'subnet' + $rgname;
+$subnet = New-AzVirtualNetworkSubnetConfig -Name $subnetName -AddressPrefix "10.0.0.0/24";
+$vnet = New-AzVirtualNetwork -Name $vnetworkName -ResourceGroupName $rgname -Location $loc -AddressPrefix "10.0.0.0/16" -Subnet $subnet;
+$vnet = Get-AzVirtualNetwork -Name $vnetworkName -ResourceGroupName $rgname;
+$subnetId = $vnet.Subnets[0].Id;
+
+$ipCfg = New-AzVmssIpConfig -Name 'test' -SubnetId $subnetId;
+
+$vmss = New-AzVmssConfig -Location $loc -SkuCapacity 2 -SkuName $vmssSize -UpgradePolicyMode 'Manual' `
+    | Add-AzVmssNetworkInterfaceConfiguration -Name 'test' -Primary $true -IPConfiguration $ipCfg `
+    | Set-AzVmssOsProfile -ComputerNamePrefix 'test' -AdminUsername $adminUsername -AdminPassword $password;
+    
+# Create TL Vmss
+$result = New-AzVmss -ResourceGroupName $rgname -VMScaleSetName $vmssName -VirtualMachineScaleSet $vmss;
+$vmssGet = Get-AzVmss -ResourceGroupName $rgname -VMScaleSetName $vmssName;
+
+# Verify $vmssGet.VirtualMachineProfile.SecurityProfile.SecurityType is TrustedLaunch.
+# Verify $vmssGet.VirtualMachineProfile.SecurityProfile.UefiSettings.VTpmEnabled is True.
+# Verify $vmssGet.VirtualMachineProfile.SecurityProfile.UefiSettings.SecureBootEnabled is True.
+# Verify $vmssGet.VirtualMachineProfile.StorageProfile.ImageReference.Sku is 2022-Datacenter-Azure-Edition.
+```
+The virtual machine scale set above has Trusted Launch enabled by default. Please check [the Trusted Launch feature page](aka.ms/trustedlaunch) for more information.
 
 ## PARAMETERS
 
@@ -527,7 +564,7 @@ Accept wildcard characters: False
 ```
 
 ### -ImageName
-The alias of the image for VMs in this Scale Set. If no value is provided, the "Windows Server 2016 DataCenter" image will be used. The available aliases are: Win2022AzureEditionCore, Win2019Datacenter, Win2016Datacenter, Win2012R2Datacenter, Win2012Datacenter, UbuntuLTS, Ubuntu2204, CentOS85Gen2, Debian11, OpenSuseLeap154Gen2, RHELRaw8LVMGen2, SuseSles15SP3, FlatcarLinuxFreeGen2.
+The alias of the image for VMs in this Scale Set. If no value is provided, the "Windows Server 2016 DataCenter" image will be used. The available aliases are: Win2022AzureEdition, Win2022AzureEditionCore, Win2019Datacenter, Win2016Datacenter, Win2012R2Datacenter, Win2012Datacenter, UbuntuLTS, Ubuntu2204, CentOS85Gen2, Debian11, OpenSuseLeap154Gen2, RHELRaw8LVMGen2, SuseSles15SP3, FlatcarLinuxFreeGen2.
 
 ```yaml
 Type: System.String

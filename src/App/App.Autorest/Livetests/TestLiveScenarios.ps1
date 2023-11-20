@@ -5,7 +5,7 @@ Invoke-LiveTestScenario -Name "List ContainerApp" -Description "Test listing Con
     $appName = New-LiveTestResourceName
     $workspaceName = New-LiveTestResourceName
     $envName = New-LiveTestResourceName
-    $appLocation = "westus"
+    $appLocation = "northcentralusstage"
 
     $null = New-AzOperationalInsightsWorkspace -ResourceGroupName $rgName -Name $workspaceName -Sku PerGB2018 -Location $appLocation -PublicNetworkAccessForIngestion "Enabled" -PublicNetworkAccessForQuery "Enabled"
     $CustomId = (Get-AzOperationalInsightsWorkspace -ResourceGroupName $rgName -Name $workspaceName).CustomerId
