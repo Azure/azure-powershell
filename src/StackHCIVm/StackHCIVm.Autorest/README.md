@@ -69,7 +69,7 @@ input-file:
   - $(repo)/specification/azurestackhci/resource-manager/Microsoft.AzureStackHCI/preview/2023-09-01-preview/logicalNetworks.json
   - $(repo)/specification/hybridcompute/resource-manager/Microsoft.HybridCompute/preview/2023-03-15-preview/HybridCompute.json
 
-module-version: 1.1.0
+module-version: 0.1.0
 title: StackHCIVm
 service-name: StackHCIVm
 subject-prefix: $(service-name)
