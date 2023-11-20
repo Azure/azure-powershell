@@ -1,5 +1,5 @@
 ---
-external help file:
+external help file: Az.App-help.xml
 Module Name: Az.App
 online version: https://learn.microsoft.com/powershell/module/az.app/new-azcontainerappmanagedenv
 schema: 2.0.0
@@ -14,17 +14,29 @@ Create a Managed Environment used to host container apps.
 
 ### CreateExpanded (Default)
 ```
-New-AzContainerAppManagedEnv -Name <String> -ResourceGroupName <String> -Location <String>
- [-SubscriptionId <String>] [-AppLogConfigurationDestination <String>]
+New-AzContainerAppManagedEnv -Name <String> -ResourceGroupName <String> [-SubscriptionId <String>]
+ -Location <String> [-AppLogConfigurationDestination <String>]
  [-CustomDomainConfigurationCertificateValueInputFile <String>] [-CustomDomainConfigurationDnsSuffix <String>]
- [-CustomDomainPassword <SecureString>] [-DaprAiConnectionString <String>]
- [-DaprAiInstrumentationKey <String>] [-InfrastructureResourceGroup <String>] [-Kind <String>]
- [-LogAnalyticConfigurationCustomerId <String>] [-LogAnalyticConfigurationSharedKey <String>] [-MtlEnabled]
- [-Tag <Hashtable>] [-VnetConfigurationDockerBridgeCidr <String>]
- [-VnetConfigurationInfrastructureSubnetId <String>] [-VnetConfigurationInternal]
- [-VnetConfigurationPlatformReservedCidr <String>] [-VnetConfigurationPlatformReservedDnsIP <String>]
- [-WorkloadProfile <IWorkloadProfile[]>] [-ZoneRedundant] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
- [-Confirm] [-WhatIf] [<CommonParameters>]
+ [-CustomDomainPassword <SecureString>] [-DaprAiConnectionString <String>] [-DaprAiInstrumentationKey <String>]
+ [-InfrastructureResourceGroup <String>] [-Kind <String>] [-LogAnalyticConfigurationCustomerId <String>]
+ [-LogAnalyticConfigurationSharedKey <String>] [-MtlEnabled] [-Tag <Hashtable>]
+ [-VnetConfigurationDockerBridgeCidr <String>] [-VnetConfigurationInfrastructureSubnetId <String>]
+ [-VnetConfigurationInternal] [-VnetConfigurationPlatformReservedCidr <String>]
+ [-VnetConfigurationPlatformReservedDnsIP <String>] [-WorkloadProfile <IWorkloadProfile[]>] [-ZoneRedundant]
+ [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-WhatIf] [-Confirm] [<CommonParameters>]
+```
+
+### CreateViaJsonString
+```
+New-AzContainerAppManagedEnv -Name <String> -ResourceGroupName <String> [-SubscriptionId <String>]
+ -JsonString <String> [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-WhatIf] [-Confirm] [<CommonParameters>]
+```
+
+### CreateViaJsonFilePath
+```
+New-AzContainerAppManagedEnv -Name <String> -ResourceGroupName <String> [-SubscriptionId <String>]
+ -JsonFilePath <String> [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-WhatIf] [-Confirm]
+ [<CommonParameters>]
 ```
 
 ### CreateViaIdentityExpanded
@@ -38,21 +50,7 @@ New-AzContainerAppManagedEnv -InputObject <IAppIdentity> -Location <String>
  [-VnetConfigurationDockerBridgeCidr <String>] [-VnetConfigurationInfrastructureSubnetId <String>]
  [-VnetConfigurationInternal] [-VnetConfigurationPlatformReservedCidr <String>]
  [-VnetConfigurationPlatformReservedDnsIP <String>] [-WorkloadProfile <IWorkloadProfile[]>] [-ZoneRedundant]
- [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
-```
-
-### CreateViaJsonFilePath
-```
-New-AzContainerAppManagedEnv -Name <String> -ResourceGroupName <String> -JsonFilePath <String>
- [-SubscriptionId <String>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf]
- [<CommonParameters>]
-```
-
-### CreateViaJsonString
-```
-New-AzContainerAppManagedEnv -Name <String> -ResourceGroupName <String> -JsonString <String>
- [-SubscriptionId <String>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf]
- [<CommonParameters>]
+ [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -344,7 +342,7 @@ Name of the Environment.
 
 ```yaml
 Type: System.String
-Parameter Sets: CreateExpanded, CreateViaJsonFilePath, CreateViaJsonString
+Parameter Sets: CreateExpanded, CreateViaJsonString, CreateViaJsonFilePath
 Aliases: EnvName
 
 Required: True
@@ -375,7 +373,7 @@ The name is case insensitive.
 
 ```yaml
 Type: System.String
-Parameter Sets: CreateExpanded, CreateViaJsonFilePath, CreateViaJsonString
+Parameter Sets: CreateExpanded, CreateViaJsonString, CreateViaJsonFilePath
 Aliases:
 
 Required: True
@@ -390,7 +388,7 @@ The ID of the target subscription.
 
 ```yaml
 Type: System.String
-Parameter Sets: CreateExpanded, CreateViaJsonFilePath, CreateViaJsonString
+Parameter Sets: CreateExpanded, CreateViaJsonString, CreateViaJsonFilePath
 Aliases:
 
 Required: False
@@ -571,4 +569,3 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ## NOTES
 
 ## RELATED LINKS
-

@@ -6,12 +6,12 @@
       "Content": null,
       "isContentBase64": false,
       "Headers": {
-        "x-ms-unique-id": [ "58" ],
-        "x-ms-client-request-id": [ "f0079d6c-c83e-42fa-8f51-93d41421a53c" ],
+        "x-ms-unique-id": [ "55" ],
+        "x-ms-client-request-id": [ "19091ba0-c486-4859-b9a4-1d6db43c58e4" ],
         "CommandName": [ "Get-AzContainerAppAvailableWorkloadProfile" ],
         "FullCommandName": [ "Get-AzContainerAppAvailableWorkloadProfile_Get" ],
         "ParameterSetName": [ "__AllParameterSets" ],
-        "User-Agent": [ "AzurePowershell/v0.0.0", "PSVersion/v7.3.8", "Az.App/0.2.0" ],
+        "User-Agent": [ "AzurePowershell/v0.0.0", "PSVersion/v7.3.9", "Az.App/0.2.0" ],
         "Authorization": [ "[Filtered]" ]
       },
       "ContentHeaders": {
@@ -23,16 +23,16 @@
         "Cache-Control": [ "no-cache" ],
         "Pragma": [ "no-cache" ],
         "Vary": [ "Accept-Encoding" ],
-        "x-ms-ratelimit-remaining-subscription-reads": [ "11955" ],
-        "api-supported-versions": [ "2022-06-01-preview, 2022-10-01, 2022-11-01-preview, 2023-04-01-preview, 2023-05-01, 2023-05-02-preview, 2023-08-01-preview" ],
+        "x-ms-ratelimit-remaining-subscription-reads": [ "11959" ],
+        "api-supported-versions": [ "2022-06-01-preview, 2022-10-01, 2022-11-01-preview, 2023-04-01-preview, 2023-05-01, 2023-05-02-preview, 2023-08-01-preview, 2023-11-02-preview" ],
         "Server": [ "Microsoft-IIS/10.0" ],
         "X-Powered-By": [ "ASP.NET" ],
-        "x-ms-request-id": [ "50ddbce8-1523-48d0-aa95-cd6d36613637" ],
-        "x-ms-correlation-request-id": [ "50ddbce8-1523-48d0-aa95-cd6d36613637" ],
-        "x-ms-routing-request-id": [ "JAPANEAST:20231030T102926Z:50ddbce8-1523-48d0-aa95-cd6d36613637" ],
+        "x-ms-request-id": [ "be88b7c4-264b-4ad4-a4f2-0159404b739e" ],
+        "x-ms-correlation-request-id": [ "be88b7c4-264b-4ad4-a4f2-0159404b739e" ],
+        "x-ms-routing-request-id": [ "JAPANEAST:20231114T093538Z:be88b7c4-264b-4ad4-a4f2-0159404b739e" ],
         "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
         "X-Content-Type-Options": [ "nosniff" ],
-        "Date": [ "Mon, 30 Oct 2023 10:29:25 GMT" ]
+        "Date": [ "Tue, 14 Nov 2023 09:35:37 GMT" ]
       },
       "ContentHeaders": {
         "Content-Length": [ "3089" ],

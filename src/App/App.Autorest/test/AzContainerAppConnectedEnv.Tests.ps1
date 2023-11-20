@@ -25,7 +25,7 @@ Describe 'AzContainerAppConnectedEnv' {
         } | Should -Not -Throw
     }
 
-    It 'List' -Skip {
+    It 'List' {
         {
             $config = Get-AzContainerAppConnectedEnv
             $config.Count | Should -BeGreaterThan 0
@@ -39,14 +39,14 @@ Describe 'AzContainerAppConnectedEnv' {
         } | Should -Not -Throw
     }
 
-    It 'List1' -Skip {
+    It 'List1' {
         {
             $config = Get-AzContainerAppConnectedEnv -ResourceGroupName $env.resourceGroupConnected
             $config.Count | Should -BeGreaterThan 0
         } | Should -Not -Throw
     }
 
-    It 'Delete' -Skip {
+    It 'Delete' {
         {
             Remove-AzContainerAppConnectedEnv -Name $env.connectedEnv2 -ResourceGroupName $env.resourceGroupConnected
         } | Should -Not -Throw

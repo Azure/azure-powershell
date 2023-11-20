@@ -15,19 +15,9 @@ if(($null -eq $TestName) -or ($TestName -contains 'AzContainerAppManagedEnvDiagn
 }
 
 Describe 'AzContainerAppManagedEnvDiagnosticDetector' {
-    It 'List' -skip {
-        { throw [System.NotImplementedException] } | Should -Not -Throw
-    }
-
-    It 'Get' -skip {
-        { throw [System.NotImplementedException] } | Should -Not -Throw
-    }
-
-    It 'GetViaIdentityManagedEnvironment' -skip {
-        { throw [System.NotImplementedException] } | Should -Not -Throw
-    }
-
-    It 'GetViaIdentity' -skip {
-        { throw [System.NotImplementedException] } | Should -Not -Throw
+    It 'List' {
+        {
+            Get-AzContainerAppManagedEnvDiagnosticDetector -EnvName $env.managedEnv1 -ResourceGroupName $env.resourceGroupManaged 
+        } | Should -Not -Throw
     }
 }
