@@ -1,7 +1,7 @@
 ---
 external help file:
 Module Name: Az.ConnectedVMware
-online version: https://learn.microsoft.com/powershell/module/az.connectedvmware/get-azconnectedvmwaredatastore
+online version: https://docs.microsoft.com/powershell/module/az.connectedvmware/get-azconnectedvmwaredatastore
 schema: 2.0.0
 ---
 

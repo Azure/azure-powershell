@@ -1,7 +1,7 @@
 ---
 Module Name: Az.ConnectedVMware
 Module Guid: a0ad279a-4e68-428d-8864-28b698ac90f8
-Download Help Link: https://learn.microsoft.com/powershell/module/az.connectedvmware
+Download Help Link: https://docs.microsoft.com/powershell/module/az.connectedvmware
 Help Version: 1.0.0.0
 Locale: en-US
 ---
