@@ -54,10 +54,11 @@ In this directory, run AutoRest:
 > see https://aka.ms/autorest
 
 ```yaml
+commit: 59883fd93ea3f0911d2070a533a3724bf9c2516a
 require:
   - $(this-folder)/../../readme.azure.noprofile.md
 repo: azure-rest-api-specs
-# lock the commit
+
 input-file:
   - $(repo)/specification/azurestackhci/resource-manager/Microsoft.AzureStackHCI/preview/2023-09-01-preview/common.json
   - $(repo)/specification/azurestackhci/resource-manager/Microsoft.AzureStackHCI/preview/2023-09-01-preview/galleryImages.json 
