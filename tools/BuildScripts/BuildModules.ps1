@@ -14,7 +14,18 @@ function Include-CsprojFiles {
         [string]$Path,
         [string]$Exclude = ""
     )
-    Get-ChildItem -Path $Path -Filter "*.csproj" -Recurse | Where-Object { -not $_.FullName.Contains($Exclude) }
+
+    $excludeItems = $Exclude -split ";"
+    Get-ChildItem -Path $Path -Filter "*.csproj" -Recurse | Where-Object {
+        $include = $true
+        foreach ($item in $excludeItems) {
+            if ($_ -match $item) {
+                $include = $false
+                break
+            }
+        }
+        return $include
+    }
 }
 
 $csprojFiles = @()
@@ -22,11 +33,11 @@ $csprojFiles = @()
 if ($PullRequestNumber -eq 'null' -and $TargetModule -eq 'null' -and $ModifiedModuleBuild -eq 'false') {
     $csprojFiles += Include-CsprojFiles -Path "$RepoRoot/src/" -Exclude ".Test.csproj;Authenticators.csproj"
     if ($Configuration -ne 'Release' -and $TestsToRun -eq 'All') {
-        $csprojFiles += Include-CsprojFiles -Path "$RepoRoot/src/**/*.Test.csproj"
+        $csprojFiles += Include-CsprojFiles -Path "$RepoRoot/src/**/**/*.Test.csproj"
     }
 
     if ($Configuration -ne 'Release' -and $TestsToRun -eq 'NonCore') {
-        $csprojFiles += Include-CsprojFiles -Path "$RepoRoot/src/**/*.Test.csproj" -Exclude $CoreTests
+        $csprojFiles += Include-CsprojFiles -Path "$RepoRoot/src/**/**/*.Test.csproj" -Exclude $CoreTests
     }
 
     if ($Configuration -ne 'Release' -and $TestsToRun -eq 'Core') {
@@ -34,8 +45,9 @@ if ($PullRequestNumber -eq 'null' -and $TargetModule -eq 'null' -and $ModifiedMo
     }
 
     if ($env:OS -eq "Windows_NT") {
-        $csprojFiles += Include-CsprojFiles -Path "$RepoRoot/src/**/Authenticators.csproj"
+        $csprojFiles += Include-CsprojFiles -Path "$RepoRoot/src/**/**/Authenticators.csproj"
     }
+
 }
 
 if ($ModifiedModuleBuild -eq "true" -or $TargetModule -ne 'null') {

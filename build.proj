@@ -169,8 +169,8 @@
       <BuildAction Condition="'$(Configuration)' == 'Release'">publish</BuildAction>
     </PropertyGroup>
 
-    <Exec Command="$(PowerShellCoreCommandPrefix) &quot;.\tools\ExecuteCIStep.ps1 -Build -RepoArtifacts $(RepoArtifacts) -Configuration $(Configuration) -GenerateDocumentationFile $(GenerateDocumentationFile) -EnableTestCoverage $(TurnOnTestCoverage) -BuildAction $(BuildAction)&quot;" Condition="$(PullRequestNumber) == ''"/>
-    <Exec Command="$(PowerShellCoreCommandPrefix) &quot;.\tools\ExecuteCIStep.ps1 -Build -PullRequestNumber $(PullRequestNumber) -RepoArtifacts $(RepoArtifacts) -Configuration $(Configuration) -GenerateDocumentationFile $(GenerateDocumentationFile) -EnableTestCoverage $(TurnOnTestCoverage) -BuildAction $(BuildAction)&quot;" Condition="$(PullRequestNumber) != ''"/>
+    <Exec Command="$(PowerShellCoreCommandPrefix) &quot;.\tools\ExecuteCIStep.ps1 -Build -RepoArtifacts $(RepoArtifacts) -Configuration $(Configuration) -GenerateDocumentationFile $(GenerateDocumentationFile) -EnableTestCoverage $(TurnOnTestCoverage) -BuildAction $(BuildAction)&quot;" Condition="$(PullRequestNumber) == 'null'"/>
+    <Exec Command="$(PowerShellCoreCommandPrefix) &quot;.\tools\ExecuteCIStep.ps1 -Build -PullRequestNumber $(PullRequestNumber) -RepoArtifacts $(RepoArtifacts) -Configuration $(Configuration) -GenerateDocumentationFile $(GenerateDocumentationFile) -EnableTestCoverage $(TurnOnTestCoverage) -BuildAction $(BuildAction)&quot;" Condition="$(PullRequestNumber) != 'null'"/>
 
     <!-- Build version controller -->
     <Exec Command="dotnet build $(RepoTools)VersionController/VersionController.Netcore.csproj -c $(Configuration)" />
