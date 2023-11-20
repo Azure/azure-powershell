@@ -559,7 +559,6 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Blob
                         while (offset < fileSize)
                         {
                             // Get chunk size and prepare cache
-                            //int chunksize = size4MB;
                             if (chunksize <= (fileSize - offset)) // Chunk size will be 4MB
                             {
                                 if (uploadcacheLong == null)
