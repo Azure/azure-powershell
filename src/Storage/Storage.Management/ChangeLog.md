@@ -18,6 +18,9 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
+* Supported high throughput append blob
+    - `Set-AzStorageBlobContent`
+    - `Copy-AzStorageBlob`    
 
 ## Version 6.0.0
 * Supported customer initiated migration

@@ -544,12 +544,11 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Blob
                         }
 
                         // Upload blob content
-
                         //For page blob will always use 4MB
                         long chunksize = size4MB;
 
-                        // for append blob, the chunksize can be at most 100MB, will make it multiple of 4MB.
-                        if (string.Equals(blobType, AppendBlobType, StringComparison.InvariantCultureIgnoreCase) && fileSize > (long)size4MB * maxBlockCount)
+                        // for append blob, the chunksize can be at most 100MB, will make it multiple of 8MB.
+                        if (string.Equals(blobType, AppendBlobType, StringComparison.InvariantCultureIgnoreCase))
                         {
                             chunksize = GetAppendBlockLength(fileSize);
                         }

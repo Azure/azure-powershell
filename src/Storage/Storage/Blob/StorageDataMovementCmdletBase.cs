@@ -206,16 +206,20 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Blob
         /// </summary>
         public static long GetAppendBlockLength(long contentLength)
         {
-            if (contentLength <= size4MB)
+            if (contentLength <= size8MB)
             {
                 return contentLength;
             }
             long blockLength = contentLength / maxBlockCount;
+            if (blockLength <= size8MB)
+            {
+                return size8MB;
+            }
             if (blockLength % (size4MB) != 0)
             {
                 blockLength = (blockLength / (size4MB) + 1) * (size4MB);
             }
-            return blockLength > 0 ? blockLength : contentLength;
+            return blockLength;
         }
 
         /// <summary>
