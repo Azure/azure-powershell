@@ -174,11 +174,11 @@ namespace Microsoft.Azure.Management.ServiceFabric
         /// <param name='resourceGroupName'>
         /// The name of the resource group.
         /// </param>
-        public static ClusterListResult ListByResourceGroup(this IClustersOperations operations, string resourceGroupName)
+        public static Microsoft.Rest.Azure.IPage<Cluster> ListByResourceGroup(this IClustersOperations operations, string resourceGroupName)
         {
                 return ((IClustersOperations)operations).ListByResourceGroupAsync(resourceGroupName).GetAwaiter().GetResult();
         }
-        
+
         /// <summary>
         /// Gets all Service Fabric cluster resources created or in the process of being created in the resource group.
         /// </summary>
@@ -191,7 +191,7 @@ namespace Microsoft.Azure.Management.ServiceFabric
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        public static async System.Threading.Tasks.Task<ClusterListResult> ListByResourceGroupAsync(this IClustersOperations operations, string resourceGroupName, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public static async System.Threading.Tasks.Task<Microsoft.Rest.Azure.IPage<Cluster>> ListByResourceGroupAsync(this IClustersOperations operations, string resourceGroupName, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
             using (var _result = await operations.ListByResourceGroupWithHttpMessagesAsync(resourceGroupName, null, cancellationToken).ConfigureAwait(false))
             {
@@ -204,7 +204,7 @@ namespace Microsoft.Azure.Management.ServiceFabric
         /// <param name='operations'>
         /// The operations group for this extension method.
         /// </param>
-        public static ClusterListResult List(this IClustersOperations operations)
+        public static Microsoft.Rest.Azure.IPage<Cluster> List(this IClustersOperations operations)
         {
                 return ((IClustersOperations)operations).ListAsync().GetAwaiter().GetResult();
         }
@@ -218,7 +218,7 @@ namespace Microsoft.Azure.Management.ServiceFabric
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        public static async System.Threading.Tasks.Task<ClusterListResult> ListAsync(this IClustersOperations operations, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public static async System.Threading.Tasks.Task<Microsoft.Rest.Azure.IPage<Cluster>> ListAsync(this IClustersOperations operations, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
             using (var _result = await operations.ListWithHttpMessagesAsync(null, cancellationToken).ConfigureAwait(false))
             {
@@ -338,6 +338,72 @@ namespace Microsoft.Azure.Management.ServiceFabric
         public static async System.Threading.Tasks.Task<Cluster> BeginUpdateAsync(this IClustersOperations operations, string resourceGroupName, string clusterName, ClusterUpdateParameters parameters, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
             using (var _result = await operations.BeginUpdateWithHttpMessagesAsync(resourceGroupName, clusterName, parameters, null, cancellationToken).ConfigureAwait(false))
+            {
+                return _result.Body;
+            }
+        }
+        /// <summary>
+        /// Gets all Service Fabric cluster resources created or in the process of being created in the resource group.
+        /// </summary>
+        /// <param name='operations'>
+        /// The operations group for this extension method.
+        /// </param>
+        /// <param name='nextPageLink'>
+        /// The NextLink from the previous successful call to List operation.
+        /// </param>
+        public static Microsoft.Rest.Azure.IPage<Cluster> ListByResourceGroupNext(this IClustersOperations operations, string nextPageLink)
+        {
+                return ((IClustersOperations)operations).ListByResourceGroupNextAsync(nextPageLink).GetAwaiter().GetResult();
+        }
+
+        /// <summary>
+        /// Gets all Service Fabric cluster resources created or in the process of being created in the resource group.
+        /// </summary>
+        /// <param name='operations'>
+        /// The operations group for this extension method.
+        /// </param>
+        /// <param name='nextPageLink'>
+        /// The NextLink from the previous successful call to List operation.
+        /// </param>
+        /// <param name='cancellationToken'>
+        /// The cancellation token.
+        /// </param>
+        public static async System.Threading.Tasks.Task<Microsoft.Rest.Azure.IPage<Cluster>> ListByResourceGroupNextAsync(this IClustersOperations operations, string nextPageLink, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        {
+            using (var _result = await operations.ListByResourceGroupNextWithHttpMessagesAsync(nextPageLink, null, cancellationToken).ConfigureAwait(false))
+            {
+                return _result.Body;
+            }
+        }
+        /// <summary>
+        /// Gets all Service Fabric cluster resources created or in the process of being created in the subscription.
+        /// </summary>
+        /// <param name='operations'>
+        /// The operations group for this extension method.
+        /// </param>
+        /// <param name='nextPageLink'>
+        /// The NextLink from the previous successful call to List operation.
+        /// </param>
+        public static Microsoft.Rest.Azure.IPage<Cluster> ListNext(this IClustersOperations operations, string nextPageLink)
+        {
+                return ((IClustersOperations)operations).ListNextAsync(nextPageLink).GetAwaiter().GetResult();
+        }
+
+        /// <summary>
+        /// Gets all Service Fabric cluster resources created or in the process of being created in the subscription.
+        /// </summary>
+        /// <param name='operations'>
+        /// The operations group for this extension method.
+        /// </param>
+        /// <param name='nextPageLink'>
+        /// The NextLink from the previous successful call to List operation.
+        /// </param>
+        /// <param name='cancellationToken'>
+        /// The cancellation token.
+        /// </param>
+        public static async System.Threading.Tasks.Task<Microsoft.Rest.Azure.IPage<Cluster>> ListNextAsync(this IClustersOperations operations, string nextPageLink, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        {
+            using (var _result = await operations.ListNextWithHttpMessagesAsync(nextPageLink, null, cancellationToken).ConfigureAwait(false))
             {
                 return _result.Body;
             }
