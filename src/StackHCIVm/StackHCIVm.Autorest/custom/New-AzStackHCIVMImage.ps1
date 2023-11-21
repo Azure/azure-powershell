@@ -31,8 +31,8 @@ PS C:\> {{ Add code here }}
 
 
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Models.Api20230901Preview.IGalleryImages
-Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Models.Api20230901Preview.IMarketplaceGalleryImages
+Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Models.IGalleryImages
+Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Models.IMarketplaceGalleryImages
 .Notes
 COMPLEX PARAMETER PROPERTIES
 
@@ -40,9 +40,9 @@ COMPLEX PARAMETER PROPERTIES
 https://learn.microsoft.com/powershell/module/az.stackhcivm/new-azstackhcivmimage
 #>
 function New-AzStackHCIVMImage{
-    [OutputType([Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Models.Api20230901Preview.IMarketplaceGalleryImages],ParameterSetName='Marketplace' )]
-    [OutputType([Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Models.Api20230901Preview.IMarketplaceGalleryImages],ParameterSetName='MarketplaceURN' )]
-    [OutputType([Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Models.Api20230901Preview.IGalleryImages],ParameterSetName='GalleryImage' )]
+    [OutputType([Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Models.IMarketplaceGalleryImages],ParameterSetName='Marketplace' )]
+    [OutputType([Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Models.IMarketplaceGalleryImages],ParameterSetName='MarketplaceURN' )]
+    [OutputType([Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Models.IGalleryImages],ParameterSetName='GalleryImage' )]
     [CmdletBinding(PositionalBinding=$false, SupportsShouldProcess, ConfirmImpact='Medium')]
     param(
 
@@ -85,9 +85,9 @@ function New-AzStackHCIVMImage{
     [Parameter(ParameterSetName='Marketplace')]
     [Parameter(ParameterSetName='GalleryImage')]
     [Parameter(ParameterSetName='MarketplaceURN')]
-    [ArgumentCompleter([Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Support.CloudInitDataSource])]
+    [Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.PSArgumentCompleterAttribute("NoCloud", "Azure")]
     [Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Support.CloudInitDataSource]
+    [System.String]
     # Datasource for the gallery image when provisioning with cloud-init [NoCloud, Azure]
     ${CloudInitDataSource},
 
@@ -110,9 +110,8 @@ function New-AzStackHCIVMImage{
     [Parameter(ParameterSetName='GalleryImage', Mandatory)]
     [Parameter(ParameterSetName='Marketplace', Mandatory)]
     [Parameter(ParameterSetName='MarketplaceURN', Mandatory)]
-    [ArgumentCompleter([Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Support.OperatingSystemTypes])]
-    [Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Support.OperatingSystemTypes]
+    [Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.PSArgumentCompleterAttribute("Windows", "Linux")]
+    [Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Category('Body')] 
     # Operating system type that the gallery image uses [Windows, Linux]
     ${OSType},
 
@@ -162,7 +161,7 @@ function New-AzStackHCIVMImage{
     [Parameter(ParameterSetName='Marketplace')]
     [Parameter(ParameterSetName='MarketplaceURN')]
     [Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Runtime.Info(PossibleTypes=([Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Models.Api30.ITrackedResourceTags]))]
+    [Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Runtime.Info(PossibleTypes=([Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Models.ITrackedResourceTags]))]
     [System.Collections.Hashtable]
     # Resource tags.
     ${Tag},

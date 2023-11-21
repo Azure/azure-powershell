@@ -21,13 +21,13 @@ Gets a virtual machine
 
 
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Models.Api20230901Preview.IVirtualMachineInstance
+Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Models.IVirtualMachineInstance
 .Link
 https://learn.microsoft.com/powershell/module/az.stackhcivm/get-azstackhcivmvirtualmachine
 #>
 function Get-AzStackHCIVMVirtualMachine {
-    [OutputType([Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Models.Api20230315Preview.Machine],ParameterSetName='ByResourceGroup' )]
-    [OutputType([Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Models.Api20230901Preview.IVirtualMachineInstance],ParameterSetName='ByName' )]
+    [OutputType([Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Models.Machine],ParameterSetName='ByResourceGroup' )]
+    [OutputType([Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Models.IVirtualMachineInstance],ParameterSetName='ByName' )]
     [CmdletBinding( PositionalBinding=$false, SupportsShouldProcess, ConfirmImpact='Medium')]
     param(
 

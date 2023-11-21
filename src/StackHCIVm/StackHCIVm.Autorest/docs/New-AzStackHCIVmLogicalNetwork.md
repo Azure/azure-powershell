@@ -38,6 +38,7 @@ Name            ResourceGroupName
 ----            -----------------
 testLnet       test-rg
 ```
+
 This command creates a logical network in the specified resource group.
 
 ## PARAMETERS
@@ -397,11 +398,9 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Models.Api20230901Preview.ILogicalNetworks
+### Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Models.ILogicalNetworks
 
 ## NOTES
-
-ALIASES
 
 ## RELATED LINKS
 

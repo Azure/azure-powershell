@@ -7,15 +7,15 @@ The operation to update an image.
 Please note some properties can be set only during image creation.
 
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Models.Api20221215Preview.IGalleryImages
-Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Models.Api20221215Preview.IMarketplaceGalleryImages
+Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Models.IGalleryImages
+Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Models.IMarketplaceGalleryImages
 .Link
 https://learn.microsoft.com/powershell/module/az.stackhcivm/update-azstackhcivmimage
 #>
 
 function Update-AzStackHCIVMImage{
-    [OutputType([Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Models.Api20230901Preview.IMarketplaceGalleryImages],ParameterSetName='Marketplace' )]
-    [OutputType([Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Models.Api20230901Preview.IGalleryImages],ParameterSetName='GalleryImage' )]
+    [OutputType([Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Models.IMarketplaceGalleryImages],ParameterSetName='Marketplace' )]
+    [OutputType([Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Models.IGalleryImages],ParameterSetName='GalleryImage' )]
     [CmdletBinding(DefaultParameterSetName='GalleryImage', PositionalBinding=$false, SupportsShouldProcess, ConfirmImpact='Medium')]
    
   param(
@@ -49,7 +49,7 @@ function Update-AzStackHCIVMImage{
     [Parameter(ParameterSetName='ByName')]
     [Parameter(ParameterSetName='ByResourceId')] 
     [Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Runtime.Info(PossibleTypes=([Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Models.Api20230901Preview.IGalleryImagesUpdateRequestTags]))]
+    [Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Runtime.Info(PossibleTypes=([Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Models.IGalleryImagesUpdateRequestTags]))]
     [System.Collections.Hashtable]
     # Resource tags
     ${Tag}

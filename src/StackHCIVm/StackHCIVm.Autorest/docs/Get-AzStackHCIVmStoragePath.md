@@ -101,11 +101,9 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Models.Api20230901Preview.IStorageContainers
+### Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Models.IStorageContainers
 
 ## NOTES
-
-ALIASES
 
 ## RELATED LINKS
 

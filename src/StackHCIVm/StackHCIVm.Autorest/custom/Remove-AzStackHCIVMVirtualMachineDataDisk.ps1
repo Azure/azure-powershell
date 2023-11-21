@@ -20,13 +20,13 @@ The operation to delete a data disk from a virtual machine.
 The operation to delete a data disk from a  virtual machine.
 
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Models.Api20230901Preview.IVirtualMachineInstance
+Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Models.IVirtualMachineInstance
 .Link
 https://learn.microsoft.com/powershell/module/az.stackhcivm/remove-azstackhcivmvirtualmachinedatadisk
 #>
 
 function Remove-AzStackHCIVMVirtualMachineDataDisk {
-    [OutputType([Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Models.Api20230901Preview.IVirtualMachineInstance])]
+    [OutputType([Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Models.IVirtualMachineInstance])]
     [CmdletBinding(PositionalBinding=$false, SupportsShouldProcess, ConfirmImpact='Medium')]
     param(
         [Parameter(ParameterSetName='ByName', Mandatory)]

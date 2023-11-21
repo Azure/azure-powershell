@@ -22,7 +22,7 @@ The operation to create or update a network interface.
 Please note some properties can be set only during network interface creation.
 
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Models.Api20230901Preview.INetworkInterfaces
+Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Models.INetworkInterfaces
 .Notes
 COMPLEX PARAMETER PROPERTIES
 
@@ -36,7 +36,7 @@ IPCONFIGURATION <IIPConfiguration[]>: IPConfigurations - A list of IPConfigurati
 https://learn.microsoft.com/powershell/module/az.stackhcivm/new-azstackhcivmnetworkinterface
 #>
 function New-AzStackHCIVMNetworkInterface {
-[OutputType([Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Models.Api20230901Preview.INetworkInterfaces])]
+[OutputType([Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Models.INetworkInterfaces])]
 [CmdletBinding(PositionalBinding=$false, SupportsShouldProcess, ConfirmImpact='Medium')]
 param(
     [Parameter(Mandatory)]
@@ -117,7 +117,7 @@ param(
 
     [Parameter()]
     [Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Runtime.Info(PossibleTypes=([Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Models.Api30.ITrackedResourceTags]))]
+    [Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Runtime.Info(PossibleTypes=([Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Models.ITrackedResourceTags]))]
     [System.Collections.Hashtable]
     # Resource tags.
     ${Tag},

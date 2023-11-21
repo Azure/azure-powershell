@@ -20,12 +20,11 @@ New-AzStackHCIVMVirtualMachine -Name <String> -ResourceGroupName <String> -Custo
  [-AdminUsername <String>] [-ComputerName <String>] [-DataDiskId <String[]>] [-DataDiskName <String[]>]
  [-DataDiskResourceGroup <String>] [-DisablePasswordAuthentication] [-DynamicMemoryMaximumMemoryInMb <Int64>]
  [-DynamicMemoryMinimumMemoryInMb <Int64>] [-DynamicMemoryTargetBuffer <Int32>] [-EnableAutomaticUpdate]
- [-EnableTpm] [-IdentityType <ResourceIdentityType>] [-NicId <String[]>] [-NicName <String[]>]
- [-NicResourceGroup <String>] [-ProvisionVMAgent] [-ProvisionVMConfigAgent] [-SecureBootEnabled]
- [-SshPublicKey <String[]>] [-StoragePathId <String>] [-StoragePathName <String>]
- [-StoragePathResourceGroup <String>] [-Tag <Hashtable>] [-TimeZone <String>] [-VmMemoryInMB <Int64>]
- [-VmProcessor <Int32>] [-VmSize <VMSizeEnum>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm]
- [-WhatIf] [<CommonParameters>]
+ [-EnableTpm] [-IdentityType <String>] [-NicId <String[]>] [-NicName <String[]>] [-NicResourceGroup <String>]
+ [-ProvisionVMAgent] [-ProvisionVMConfigAgent] [-SecureBootEnabled] [-SshPublicKey <String[]>]
+ [-StoragePathId <String>] [-StoragePathName <String>] [-StoragePathResourceGroup <String>]
+ [-TimeZone <String>] [-VmMemoryInMB <Int64>] [-VmProcessor <Int32>] [-VmSize <String>]
+ [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ### ByImageName
@@ -35,12 +34,11 @@ New-AzStackHCIVMVirtualMachine -Name <String> -ResourceGroupName <String> -Custo
  [-AdminUsername <String>] [-ComputerName <String>] [-DataDiskId <String[]>] [-DataDiskName <String[]>]
  [-DataDiskResourceGroup <String>] [-DisablePasswordAuthentication] [-DynamicMemoryMaximumMemoryInMb <Int64>]
  [-DynamicMemoryMinimumMemoryInMb <Int64>] [-DynamicMemoryTargetBuffer <Int32>] [-EnableAutomaticUpdate]
- [-EnableTpm] [-IdentityType <ResourceIdentityType>] [-ImageResourceGroup <String>] [-NicId <String[]>]
+ [-EnableTpm] [-IdentityType <String>] [-ImageResourceGroup <String>] [-NicId <String[]>]
  [-NicName <String[]>] [-NicResourceGroup <String>] [-ProvisionVMAgent] [-ProvisionVMConfigAgent]
  [-SecureBootEnabled] [-SshPublicKey <String[]>] [-StoragePathId <String>] [-StoragePathName <String>]
- [-StoragePathResourceGroup <String>] [-Tag <Hashtable>] [-TimeZone <String>] [-VmMemoryInMB <Int64>]
- [-VmProcessor <Int32>] [-VmSize <VMSizeEnum>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm]
- [-WhatIf] [<CommonParameters>]
+ [-StoragePathResourceGroup <String>] [-TimeZone <String>] [-VmMemoryInMB <Int64>] [-VmProcessor <Int32>]
+ [-VmSize <String>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ### ByOsDiskId
@@ -50,12 +48,11 @@ New-AzStackHCIVMVirtualMachine -Name <String> -ResourceGroupName <String> -Custo
  [-AdminUsername <String>] [-ComputerName <String>] [-DataDiskId <String[]>] [-DataDiskName <String[]>]
  [-DataDiskResourceGroup <String>] [-DisablePasswordAuthentication] [-DynamicMemoryMaximumMemoryInMb <Int64>]
  [-DynamicMemoryMinimumMemoryInMb <Int64>] [-DynamicMemoryTargetBuffer <Int32>] [-EnableAutomaticUpdate]
- [-EnableTpm] [-IdentityType <ResourceIdentityType>] [-NicId <String[]>] [-NicName <String[]>]
- [-NicResourceGroup <String>] [-ProvisionVMAgent] [-ProvisionVMConfigAgent] [-SecureBootEnabled]
- [-SshPublicKey <String[]>] [-StoragePathId <String>] [-StoragePathName <String>]
- [-StoragePathResourceGroup <String>] [-Tag <Hashtable>] [-TimeZone <String>] [-VmMemoryInMB <Int64>]
- [-VmProcessor <Int32>] [-VmSize <VMSizeEnum>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm]
- [-WhatIf] [<CommonParameters>]
+ [-EnableTpm] [-IdentityType <String>] [-NicId <String[]>] [-NicName <String[]>] [-NicResourceGroup <String>]
+ [-ProvisionVMAgent] [-ProvisionVMConfigAgent] [-SecureBootEnabled] [-SshPublicKey <String[]>]
+ [-StoragePathId <String>] [-StoragePathName <String>] [-StoragePathResourceGroup <String>]
+ [-TimeZone <String>] [-VmMemoryInMB <Int64>] [-VmProcessor <Int32>] [-VmSize <String>]
+ [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ### ByOsDiskName
@@ -65,12 +62,11 @@ New-AzStackHCIVMVirtualMachine -Name <String> -ResourceGroupName <String> -Custo
  [-AdminUsername <String>] [-ComputerName <String>] [-DataDiskId <String[]>] [-DataDiskName <String[]>]
  [-DataDiskResourceGroup <String>] [-DisablePasswordAuthentication] [-DynamicMemoryMaximumMemoryInMb <Int64>]
  [-DynamicMemoryMinimumMemoryInMb <Int64>] [-DynamicMemoryTargetBuffer <Int32>] [-EnableAutomaticUpdate]
- [-EnableTpm] [-IdentityType <ResourceIdentityType>] [-NicId <String[]>] [-NicName <String[]>]
- [-NicResourceGroup <String>] [-OSDiskResourceGroup <String>] [-ProvisionVMAgent] [-ProvisionVMConfigAgent]
- [-SecureBootEnabled] [-SshPublicKey <String[]>] [-StoragePathId <String>] [-StoragePathName <String>]
- [-StoragePathResourceGroup <String>] [-Tag <Hashtable>] [-TimeZone <String>] [-VmMemoryInMB <Int64>]
- [-VmProcessor <Int32>] [-VmSize <VMSizeEnum>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm]
- [-WhatIf] [<CommonParameters>]
+ [-EnableTpm] [-IdentityType <String>] [-NicId <String[]>] [-NicName <String[]>] [-NicResourceGroup <String>]
+ [-OSDiskResourceGroup <String>] [-ProvisionVMAgent] [-ProvisionVMConfigAgent] [-SecureBootEnabled]
+ [-SshPublicKey <String[]>] [-StoragePathId <String>] [-StoragePathName <String>]
+ [-StoragePathResourceGroup <String>] [-TimeZone <String>] [-VmMemoryInMB <Int64>] [-VmProcessor <Int32>]
+ [-VmSize <String>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -102,6 +98,7 @@ Name            ResourceGroupName
 ----            -----------------
 testVm          test-rg
 ```
+
 This command creates a virtual machine from a disk.
 
 ## PARAMETERS
@@ -337,7 +334,7 @@ Accept wildcard characters: False
 The identity type.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Support.ResourceIdentityType
+Type: System.String
 Parameter Sets: (All)
 Aliases:
 
@@ -685,21 +682,6 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -Tag
-Resource tags.
-
-```yaml
-Type: System.Collections.Hashtable
-Parameter Sets: (All)
-Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
 ### -TimeZone
 TimeZone for the virtual machine
 
@@ -751,7 +733,7 @@ Can be a Predefined size or Custom.
 Possible Predefined Sizes include - Custom,Standard_A2_v2,Standard_A4_v2,Standard_D16s_v3,Standard_D2s_v3,Standard_D32s_v3,Standard_D4s_v3,Standard_D8s_v3,Standard_DS13_v2,Standard_DS2_v2,Standard_DS3_v2,Standard_DS4_v2,Standard_DS5_v2,Standard_K8S2_v1,Standard_K8S3_v1,Standard_K8S4_v1,Standard_K8S5_v1,Standard_K8S_v1,Standard_NK12,Standard_NK6,Standard_NV12, StandardNv6
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Support.VMSizeEnum
+Type: System.String
 Parameter Sets: (All)
 Aliases:
 
@@ -800,11 +782,9 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Models.Api20230901Preview.IVirtualMachineInstance
+### Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Models.IVirtualMachineInstance
 
 ## NOTES
-
-ALIASES
 
 ## RELATED LINKS
 

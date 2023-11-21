@@ -20,7 +20,7 @@ The operation to start a virtual machine instance.
 The operation to start a virtual machine instance.
 
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Models.Api20230901Preview.IVirtualMachineInstance
+Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Models.IVirtualMachineInstance
 .Notes
 COMPLEX PARAMETER PROPERTIES
 
@@ -29,7 +29,7 @@ COMPLEX PARAMETER PROPERTIES
 https://learn.microsoft.com/powershell/module/az.stackhcivm/start-azstackhcivmvirtualmachine
 #>
 function Start-AzStackHCIVMVirtualMachine {
-    [OutputType([Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Models.Api20230901Preview.IVirtualMachineInstance])]
+    [OutputType([Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Models.IVirtualMachineInstance])]
     [CmdletBinding( PositionalBinding=$false, SupportsShouldProcess, ConfirmImpact='Medium')]
     param(
 

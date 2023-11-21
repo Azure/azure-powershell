@@ -23,7 +23,7 @@ The operation to create or update a virtual machine.
 Please note some properties can be set only during virtual machine creation.
 
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Models.Api20230901Preview.IVirtualMachineInstance
+Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Models.IVirtualMachineInstance
 .Notes
 COMPLEX PARAMETER PROPERTIES
 
@@ -46,7 +46,7 @@ WINDOWSCONFIGURATIONSSHPUBLICKEY <IVirtualMachinePropertiesOSProfileWindowsConfi
 https://learn.microsoft.com/powershell/module/az.stackhcivm/new-azstackhcivmvirtualmachine
 #>
 function New-AzStackHCIVMVirtualMachine {
-  [OutputType([Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Models.Api20230901Preview.IVirtualMachineInstance])]
+  [OutputType([Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Models.IVirtualMachineInstance])]
   [CmdletBinding(PositionalBinding=$false, SupportsShouldProcess, ConfirmImpact='Medium')]
   param(
       [Parameter(Mandatory)]
@@ -115,16 +115,17 @@ function New-AzStackHCIVMVirtualMachine {
       ${VmProcessor},
 
       [Parameter()]
+      [Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.PSArgumentCompleterAttribute("Default", "Standard_A2_v2", "Standard_A4_v2", "Standard_D2s_v3", "Standard_D4s_v3", "Standard_D8s_v3", "Standard_D16s_v3", "Standard_D32s_v3", "Standard_DS2_v2", "Standard_DS3_v2", "Standard_DS4_v2", "Standard_DS5_v2", "Standard_DS13_v2", "Standard_K8S_v1", "Standard_K8S2_v1", "Standard_K8S3_v1", "Standard_K8S4_v1", "Standard_NK6", "Standard_NK12", "Standard_NV6", "Standard_NV12", "Standard_K8S5_v1", "Custom")]
       [Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Category('Body')]
-      [Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Support.VMSizeEnum]
+      [System.String]
       # Size of the VM. Can be a Predefined size or Custom. Possible Predefined Sizes include - Custom,Standard_A2_v2,Standard_A4_v2,Standard_D16s_v3,Standard_D2s_v3,Standard_D32s_v3,Standard_D4s_v3,Standard_D8s_v3,Standard_DS13_v2,Standard_DS2_v2,Standard_DS3_v2,Standard_DS4_v2,Standard_DS5_v2,Standard_K8S2_v1,Standard_K8S3_v1,Standard_K8S4_v1,Standard_K8S5_v1,Standard_K8S_v1,Standard_NK12,Standard_NK6,Standard_NV12, StandardNv6  
 
       ${VmSize},
 
       [Parameter()]
-      [ArgumentCompleter([Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Support.ResourceIdentityType])]
+      [Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.PSArgumentCompleterAttribute("SystemAssigned")]
       [Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Category('Body')]
-      [Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Support.ResourceIdentityType]
+      [System.String]
       # The identity type.
       ${IdentityType},
 
@@ -243,7 +244,7 @@ function New-AzStackHCIVMVirtualMachine {
       ${ComputerName},
 
       [Parameter(Mandatory)]
-      [ArgumentCompleter([Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Support.OperatingSystemTypes])]
+      [Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.PSArgumentCompleterAttribute("Windows", "Linux")]
       [Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Category('Body')]
       [System.String]
       # OsType - string specifying whether the OS is Linux or Windows
@@ -278,13 +279,6 @@ function New-AzStackHCIVMVirtualMachine {
       [System.String]
       # Storage Container resource group. The resource group of the virtual machine will be used if this value is not provided. 
       ${StoragePathResourceGroup},
-
-      [Parameter()]
-      [Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Category('Body')]
-      [Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Runtime.Info(PossibleTypes=([Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Models.Api30.ITrackedResourceTags]))]
-      [System.Collections.Hashtable]
-      # Resource tags.
-      ${Tag},
 
       [Parameter()]
       [Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Category('Body')]

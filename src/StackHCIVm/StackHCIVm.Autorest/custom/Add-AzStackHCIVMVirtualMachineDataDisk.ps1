@@ -30,7 +30,7 @@ https://learn.microsoft.com/powershell/module/az.stackhcivm/add-azstackhcivmvirt
 #>
 
 function Add-AzStackHCIVMVirtualMachineDataDisk {
-    [OutputType([Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Models.Api20230901Preview.IVirtualMachineInstance])]
+    [OutputType([Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Models.IVirtualMachineInstance])]
     [CmdletBinding(PositionalBinding=$false, SupportsShouldProcess, ConfirmImpact='Medium')]
     param(
         [Parameter(ParameterSetName='ByName', Mandatory)]

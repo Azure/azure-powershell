@@ -20,13 +20,13 @@ The operation to update a logical network.
 The operation to update a logical network.
 
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Models.Api20230901Preview.ILogicalNetworks
+Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Models.ILogicalNetworks
 
 .Link
 https://learn.microsoft.com/powershell/module/az.stackhcivm/update-azstackhcivmlogicalnetwork
 #>
 function Update-AzStackHCIVMLogicalNetwork_ByResourceId {
-[OutputType([Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Models.Api20230901Preview.ILogicalNetworks])]
+[OutputType([Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Models.ILogicalNetworks])]
 [CmdletBinding(PositionalBinding=$false)]
 
 param(
@@ -39,7 +39,7 @@ param(
 
     
     [Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Runtime.Info(PossibleTypes=([Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Models.Api20230901Preview.ILogicalNetworksUpdateRequestTags]))]
+    [Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Runtime.Info(PossibleTypes=([Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Models.ILogicalNetworksUpdateRequestTags]))]
     [System.Collections.Hashtable]
     # Resource tags
     ${Tag}

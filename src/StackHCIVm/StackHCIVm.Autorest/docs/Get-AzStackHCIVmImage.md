@@ -63,6 +63,7 @@ Name            ResourceGroupName
 ----            -----------------
 testImage       test-rg
 ```
+
 This command lists all images in the specified resource group.
 
 ## PARAMETERS
@@ -165,13 +166,11 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Models.Api20230901Preview.IGalleryImages
+### Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Models.IGalleryImages
 
-### Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Models.Api20230901Preview.IMarketplaceGalleryImages
+### Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Models.IMarketplaceGalleryImages
 
 ## NOTES
-
-ALIASES
 
 ## RELATED LINKS
 

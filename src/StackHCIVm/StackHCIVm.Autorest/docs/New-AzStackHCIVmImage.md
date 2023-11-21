@@ -16,17 +16,16 @@ Please note some properties can be set only during  image creation.
 ### MarketplaceURN (Default)
 ```
 New-AzStackHCIVMImage -Name <String> -ResourceGroupName <String> -CustomLocationId <String> -Location <String>
- -OSType <OperatingSystemTypes> -URN <String> [-SubscriptionId <String>]
- [-CloudInitDataSource <CloudInitDataSource>] [-StoragePathId <String>] [-StoragePathName <String>]
- [-StoragePathResourceGroup <String>] [-Tag <Hashtable>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
- [-Confirm] [-WhatIf] [<CommonParameters>]
+ -OSType <Object> -URN <String> [-SubscriptionId <String>] [-CloudInitDataSource <String>]
+ [-StoragePathId <String>] [-StoragePathName <String>] [-StoragePathResourceGroup <String>] [-Tag <Hashtable>]
+ [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ### GalleryImage
 ```
 New-AzStackHCIVMImage -Name <String> -ResourceGroupName <String> -CustomLocationId <String>
- -ImagePath <String> -Location <String> -OSType <OperatingSystemTypes> [-SubscriptionId <String>]
- [-CloudInitDataSource <CloudInitDataSource>] [-StoragePathId <String>] [-StoragePathName <String>]
+ -ImagePath <String> -Location <String> -OSType <Object> [-SubscriptionId <String>]
+ [-CloudInitDataSource <String>] [-StoragePathId <String>] [-StoragePathName <String>]
  [-StoragePathResourceGroup <String>] [-Tag <Hashtable>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
  [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
@@ -34,8 +33,8 @@ New-AzStackHCIVMImage -Name <String> -ResourceGroupName <String> -CustomLocation
 ### Marketplace
 ```
 New-AzStackHCIVMImage -Name <String> -ResourceGroupName <String> -CustomLocationId <String> -Location <String>
- -Offer <String> -OSType <OperatingSystemTypes> -Publisher <String> -Sku <String> -Version <String>
- [-SubscriptionId <String>] [-CloudInitDataSource <CloudInitDataSource>] [-StoragePathId <String>]
+ -Offer <String> -OSType <Object> -Publisher <String> -Sku <String> -Version <String>
+ [-SubscriptionId <String>] [-CloudInitDataSource <String>] [-StoragePathId <String>]
  [-StoragePathName <String>] [-StoragePathResourceGroup <String>] [-Tag <Hashtable>]
  [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
@@ -56,6 +55,7 @@ Name            ResourceGroupName
 ----            -----------------
 testImage       test-rg
 ```
+
 This command creates a gallery image from a local path.
 
 ### Example 2:  Create a Marketplace Gallery Image 
@@ -68,6 +68,7 @@ Name            ResourceGroupName
 ----            -----------------
 testMarketplaceImage       test-rg
 ```
+
 This command creates a marketplace gallery image using the specified offer , publisher, sku and version.
 
 ### Example 3: {Create a  Marketplace Gallery Image From URN 
@@ -80,6 +81,7 @@ Name            ResourceGroupName
 ----            -----------------
 testMarketplaceImageURN       test-rg
 ```
+
 This command creates a marketplace gallery image using the specified urn.
 
 ## PARAMETERS
@@ -103,7 +105,7 @@ Accept wildcard characters: False
 Datasource for the gallery image when provisioning with cloud-init [NoCloud, Azure]
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Support.CloudInitDataSource
+Type: System.String
 Parameter Sets: (All)
 Aliases:
 
@@ -227,7 +229,7 @@ Accept wildcard characters: False
 Operating system type that the gallery image uses [Windows, Linux]
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Support.OperatingSystemTypes
+Type: System.Object
 Parameter Sets: (All)
 Aliases:
 
@@ -428,13 +430,11 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Models.Api20230901Preview.IGalleryImages
+### Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Models.IGalleryImages
 
-### Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Models.Api20230901Preview.IMarketplaceGalleryImages
+### Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Models.IMarketplaceGalleryImages
 
 ## NOTES
-
-ALIASES
 
 ## RELATED LINKS
 

@@ -16,14 +16,13 @@ The operation to update a virtual machine instance.
 ```
 Update-AzStackHCIVMVirtualMachine -Name <String> -ResourceGroupName <String> [-SubscriptionId <String>]
  [-ProvisionVMAgent] [-ProvisionVMConfigAgent] [-VmMemoryInMB <Int64>] [-VmProcessor <Int32>]
- [-VmSize <VMSizeEnum>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf]
- [<CommonParameters>]
+ [-VmSize <String>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ### ByResourceId
 ```
 Update-AzStackHCIVMVirtualMachine -ResourceId <String> [-ProvisionVMAgent] [-ProvisionVMConfigAgent]
- [-VmMemoryInMB <Int64>] [-VmProcessor <Int32>] [-VmSize <VMSizeEnum>] [-DefaultProfile <PSObject>] [-AsJob]
+ [-VmMemoryInMB <Int64>] [-VmProcessor <Int32>] [-VmSize <String>] [-DefaultProfile <PSObject>] [-AsJob]
  [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
@@ -217,7 +216,7 @@ Accept wildcard characters: False
 .
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Support.VMSizeEnum
+Type: System.String
 Parameter Sets: (All)
 Aliases:
 
@@ -266,11 +265,9 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Models.Api20230901Preview.IVirtualMachineInstance
+### Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Models.IVirtualMachineInstance
 
 ## NOTES
-
-ALIASES
 
 ## RELATED LINKS
 

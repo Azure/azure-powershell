@@ -21,13 +21,13 @@ Gets a logical network
 
 
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Models.Api20230901Preview.ILogicalNetworks
+Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Models.ILogicalNetworks
 
 .Link
 https://learn.microsoft.com/powershell/module/az.stackhcivm/get-azstackhcivmlogicalnetwork
 #>
 function Get-AzStackHCIVMLogicalNetwork_ByResourceId {
-    [OutputType([Microsoft.Azure.PowerShell.Cmdlets.StackHciVM.Models.Api20230901Preview.ILogicalNetworks])]
+    [OutputType([Microsoft.Azure.PowerShell.Cmdlets.StackHciVM.Models.ILogicalNetworks])]
     [CmdletBinding(PositionalBinding=$false)]
     
     param(

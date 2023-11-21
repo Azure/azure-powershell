@@ -20,13 +20,13 @@ The operation to update a storage path.
 The operation to update a storage path.
 
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Models.Api20230901Preview.IVStorageContainers
+Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Models.IVStorageContainers
 
 .Link
 https://learn.microsoft.com/powershell/module/az.stackhcivm/update-azstackhcivmstoragepath
 #>
 function Update-AzStackHCIVMStoragePath_ByResourceId {
-[OutputType([Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Models.Api20230901Preview.IStorageContainers])]
+[OutputType([Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Models.IStorageContainers])]
 [CmdletBinding(PositionalBinding=$false)]
 
 param(
@@ -39,7 +39,7 @@ param(
 
     
     [Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Runtime.Info(PossibleTypes=([Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Models.Api20230901Preview.IStorageContainersUpdateRequestTags]))]
+    [Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Runtime.Info(PossibleTypes=([Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Models.IStorageContainersUpdateRequestTags]))]
     [System.Collections.Hashtable]
     # Resource tags
     ${Tag}

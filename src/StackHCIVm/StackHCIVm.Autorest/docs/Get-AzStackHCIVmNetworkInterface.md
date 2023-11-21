@@ -45,6 +45,7 @@ Name            ResourceGroupName
 ----            -----------------
 testNic       test-rg
 ```
+
 This command lists all network interfaces in the specified resource group.
 
 ## PARAMETERS
@@ -101,11 +102,9 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Models.Api20230901Preview.INetworkInterfaces
+### Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Models.INetworkInterfaces
 
 ## NOTES
-
-ALIASES
 
 ## RELATED LINKS
 

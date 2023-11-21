@@ -20,13 +20,13 @@ The operation to update a network interface.
 The operation to update a network interface.
 
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Models.Api20230901Preview.INetworkInterfaces
+Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Models.INetworkInterfaces
 
 .Link
 https://learn.microsoft.com/powershell/module/az.stackhcivm/update-azstackhcivmnetworkinterface
 #>
 function Update-AzStackHCIVMNetworkInterface_ByResourceId {
-[OutputType([Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Models.Api20230901Preview.INetworkInterfaces])]
+[OutputType([Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Models.INetworkInterfaces])]
 [CmdletBinding(PositionalBinding=$false)]
 
 param(
@@ -39,7 +39,7 @@ param(
 
     
     [Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Runtime.Info(PossibleTypes=([Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Models.Api20230901Preview.INetworkInterfacesUpdateRequestTags]))]
+    [Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Runtime.Info(PossibleTypes=([Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Models.INetworkInterfacesUpdateRequestTags]))]
     [System.Collections.Hashtable]
     # Resource tags
     ${Tag}

@@ -15,10 +15,10 @@ Please note some properties can be set only during virtual hard disk creation.
 
 ```
 New-AzStackHCIVMVirtualHardDisk -Name <String> -ResourceGroupName <String> -CustomLocationId <String>
- -Location <String> [-SubscriptionId <String>] [-BlockSizeByte <Int32>] [-DiskFileFormat <DiskFileFormat>]
- [-Dynamic] [-HyperVGeneration <HyperVGeneration>] [-LogicalSectorByte <Int32>] [-PhysicalSectorByte <Int32>]
- [-SizeGb <Int64>] [-StoragePathId <String>] [-StoragePathName <String>] [-StoragePathResourceGroup <String>]
- [-Tag <Hashtable>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
+ -Location <String> [-SubscriptionId <String>] [-BlockSizeByte <Int32>] [-DiskFileFormat <Object>] [-Dynamic]
+ [-HyperVGeneration <Object>] [-LogicalSectorByte <Int32>] [-PhysicalSectorByte <Int32>] [-SizeGb <Int64>]
+ [-StoragePathId <String>] [-StoragePathName <String>] [-StoragePathResourceGroup <String>] [-Tag <Hashtable>]
+ [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -37,6 +37,7 @@ Name            ResourceGroupName
 ----            -----------------
 testVhd       test-rg
 ```
+
 This command creates a virtual hard disk in the specified resource group.
 
 ## PARAMETERS
@@ -105,7 +106,7 @@ Accept wildcard characters: False
 The format of the actual VHD file [vhd, vhdx]
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Support.DiskFileFormat
+Type: System.Object
 Parameter Sets: (All)
 Aliases:
 
@@ -135,7 +136,7 @@ Accept wildcard characters: False
 The hypervisor generation of the Virtual Machine [V1, V2]
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Support.HyperVGeneration
+Type: System.Object
 Parameter Sets: (All)
 Aliases:
 
@@ -369,11 +370,9 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Models.Api20230901Preview.IVirtualHardDisks
+### Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Models.IVirtualHardDisks
 
 ## NOTES
-
-ALIASES
 
 ## RELATED LINKS
 

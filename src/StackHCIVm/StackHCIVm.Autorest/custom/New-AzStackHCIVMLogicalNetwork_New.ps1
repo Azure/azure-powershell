@@ -22,7 +22,7 @@ The operation to create or update a logical network.
 Please note some properties can be set only during logical network creation.
 
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Models.Api20230901Preview.ILogicalNetworks
+Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Models.ILogicalNetworks
 .Notes
 COMPLEX PARAMETER PROPERTIES
 
@@ -50,7 +50,7 @@ https://learn.microsoft.com/powershell/module/az.stackhcivm/new-azstackhcivmlogi
 #>
 
 function New-AzStackHCIVMLogicalNetwork {
-  [OutputType([Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Models.Api20230901Preview.ILogicalNetworks])]
+  [OutputType([Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Models.ILogicalNetworks])]
   [CmdletBinding( PositionalBinding=$false, SupportsShouldProcess, ConfirmImpact='Medium')]
   param(
       [Parameter(Mandatory)]
@@ -95,7 +95,7 @@ function New-AzStackHCIVMLogicalNetwork {
   
       [Parameter()]
       [Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Category('Body')]
-      [Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Runtime.Info(PossibleTypes=([Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Models.Api30.ITrackedResourceTags]))]
+      [Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Runtime.Info(PossibleTypes=([Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Models.ITrackedResourceTags]))]
       [System.Collections.Hashtable]
       # Resource tags.
       ${Tag},
@@ -114,7 +114,7 @@ function New-AzStackHCIVMLogicalNetwork {
       $AddressPrefix,
   
       [Parameter()]
-      [ArgumentCompleter([Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Support.IPAllocationMethodEnum])]
+      [Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.PSArgumentCompleterAttribute("Static", "Dynamic")]
       [Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Category('Body')]
       [System.String]
       # The IP address allocation method. Possible values include: 'Static', 'Dynamic'
@@ -133,7 +133,7 @@ function New-AzStackHCIVMLogicalNetwork {
       $IpPoolStart, 
   
       [Parameter()]
-      [ArgumentCompleter([Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Support.IPPoolTypeEnum])]
+      [Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.PSArgumentCompleterAttribute("vm", "vippool")]
       [Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Category('Body')]
       [System.String]
       # Ip pool type

@@ -20,7 +20,7 @@ The operation to update a virtual machine instance.
 The operation to update a virtual machine instance.
 
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Models.Api20230901Preview.IVirtualMachineInstance
+Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Models.IVirtualMachineInstance
 .Notes
 COMPLEX PARAMETER PROPERTIES
 
@@ -35,7 +35,7 @@ STORAGEPROFILEDATADISK <IStorageProfileUpdateDataDisksItem[]>: adds data disks t
 https://learn.microsoft.com/powershell/module/az.stackhcivm/update-azstackhcivmvirtualmachine
 #>
 function Update-AzStackHCIVMVirtualMachine {
-    [OutputType([Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Models.Api20230901Preview.IVirtualMachineInstance])]
+    [OutputType([Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Models.IVirtualMachineInstance])]
     [CmdletBinding(DefaultParameterSetName='ByName', PositionalBinding=$false, SupportsShouldProcess, ConfirmImpact='Medium')]   
 
     param( 
@@ -91,9 +91,9 @@ function Update-AzStackHCIVMVirtualMachine {
         ${VmProcessor},
     
         [Parameter()]
-        [ArgumentCompleter([Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Support.VMSizeEnum])]
+        [Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.PSArgumentCompleterAttribute("Default", "Standard_A2_v2", "Standard_A4_v2", "Standard_D2s_v3", "Standard_D4s_v3", "Standard_D8s_v3", "Standard_D16s_v3", "Standard_D32s_v3", "Standard_DS2_v2", "Standard_DS3_v2", "Standard_DS4_v2", "Standard_DS5_v2", "Standard_DS13_v2", "Standard_K8S_v1", "Standard_K8S2_v1", "Standard_K8S3_v1", "Standard_K8S4_v1", "Standard_NK6", "Standard_NK12", "Standard_NV6", "Standard_NV12", "Standard_K8S5_v1", "Custom")]
         [Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Category('Body')]
-        [Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Support.VMSizeEnum]
+        [System.String]
         # .
         ${VmSize},
 
@@ -201,7 +201,7 @@ function Update-AzStackHCIVMVirtualMachine {
             $null = $PSBoundParameters.Remove("ResourceGroupName")
             $null = $PSBoundParameters.Remove("ResourceId")
             $null = $PSBoundParameters.Remove("Name")
-            return  Az.StackHCIVM.internal\Update-AzStackHCIVMVirtualMachine @PSBoundParameters   
+            return  Az.StackHCIVM.internal\Update-AzStackHCIVmVirtualMachine @PSBoundParameters   
             } else {             
                 Write-Error "One or more input parameters are invalid. Resource ID is: $ResourceId, name is $name, resource group name is $resourcegroupname, subscription id is $subscriptionid"
             }  

@@ -22,7 +22,7 @@ The operation to stop a virtual machine instance.
 .Inputs
 Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Models.IStackHCIVMIdentity
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Models.Api20230901Preview.IVirtualMachineInstance
+Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Models.IVirtualMachineInstance
 .Notes
 COMPLEX PARAMETER PROPERTIES
 
@@ -31,7 +31,7 @@ To create the parameters described below, construct a hash table containing the 
 https://learn.microsoft.com/powershell/module/az.stackhcivm/stop-azstackhcivmvirtualmachine
 #>
 function Stop-AzStackHCIVMVirtualMachine {
-    [OutputType([Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Models.Api20230901Preview.IVirtualMachineInstance])]
+    [OutputType([Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Models.IVirtualMachineInstance])]
     [CmdletBinding( PositionalBinding=$false, SupportsShouldProcess, ConfirmImpact='Medium')]
     param(
 

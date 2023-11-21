@@ -22,13 +22,13 @@ Gets a network interface
 
 
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Models.Api20230901Preview.INetworkInterfaces
+Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Models.INetworkInterfaces
 
 .Link
 https://learn.microsoft.com/powershell/module/az.stackhcivm/get-azstackhcivmnetworkinterface
 #>
 function Get-AzStackHCIVMNetworkInterface_ByResourceId {
-[OutputType([Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Models.Api20230901Preview.INetworkInterfaces])]
+[OutputType([Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Models.INetworkInterfaces])]
 [CmdletBinding( PositionalBinding=$false)]
 param(
 

@@ -21,8 +21,8 @@ Gets a gallery image
 
 
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Models.Api20230901Preview.IGalleryImages
-Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Models.Api20230901Preview.IMarketplaceGalleryImages
+Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Models.IGalleryImages
+Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Models.IMarketplaceGalleryImages
 
 .Link
 https://learn.microsoft.com/powershell/module/az.stackhcivm/get-azstackhcivmimage
@@ -30,8 +30,8 @@ https://learn.microsoft.com/powershell/module/az.stackhcivm/get-azstackhcivmimag
 
 function Get-AzStackHCIVMImage{    
     [CmdletBinding(DefaultParameterSetName='BySubscription', PositionalBinding=$false)]
-    [OutputType([Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Models.Api20230901Preview.IMarketplaceGalleryImages])]
-    [OutputType([Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Models.Api20230901Preview.IGalleryImages])]
+    [OutputType([Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Models.IMarketplaceGalleryImages])]
+    [OutputType([Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Models.IGalleryImages])]
     param(
     [Parameter(ParameterSetName='ByName', Mandatory)]
     [Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Category('Path')]
