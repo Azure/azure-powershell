@@ -6269,7 +6269,7 @@ function Test-ManualConfidentialVMSetAzVmOsDiskDesIdDiskWithVMGuest
     finally
     {
         # Cleanup
-        # Clean-ResourceGroup $rgname;
+        Clean-ResourceGroup $rgname;
     }
 }
 
