@@ -7215,3 +7215,54 @@ function Test-VMDefaultsToTrustedLaunchWithGen2Image
         Clean-ResourceGroup $rgname;
     }
 }
+
+<#
+.SYNOPSIS
+Test Virtual Machines default to SecurityType = TrustedLaunch.
+Other necessary defaults also occur for TL support.
+EncryptionAtHost (a feature requiring a feature flag) must be null.
+#>
+function Test-VMDefaultsToTrustedLaunchWithNullEncryptionAtHost
+{
+    # Setup
+    $rgname = Get-ComputeTestResourceName;
+    $loc = Get-ComputeVMLocation;
+
+    try
+    {
+        New-AzResourceGroup -Name $rgname -Location $loc -Force;
+        # SimpleParameterSet, no config, scenario.
+        # create credential 
+        $password = Get-PasswordForVM;
+        $securePassword = $password | ConvertTo-SecureString -AsPlainText -Force;  
+        $user = Get-ComputeTestResourceName;
+        $cred = New-Object System.Management.Automation.PSCredential ($user, $securePassword);
+
+        # Add one VM from creation 
+        $vmname = 'vm' + $rgname;
+        $domainNameLabel = "d1" + $rgname;
+        $securityType_TL = "TrustedLaunch";
+        $PublisherName = "MicrosoftWindowsServer";
+        $Offer = "WindowsServer";
+        $SKU = "2022-datacenter-azure-edition";
+        $version = "latest";
+        $disable = $false;
+        $enable = $true;
+
+        $vm = New-AzVM -ResourceGroupName $rgname -Name $vmname -Credential $cred -DomainNameLabel $domainNameLabel; 
+
+        $vm = Get-AzVm -ResourceGroupName $rgname -Name $vmname;
+
+        # Validate
+        Assert-AreEqual $vm.SecurityProfile.SecurityType $securityType_TL;
+        Assert-AreEqual $vm.SecurityProfile.UefiSettings.SecureBootEnabled $enable;
+        Assert-AreEqual $vm.SecurityProfile.UefiSettings.VTpmEnabled $enable;
+        Assert-AreEqual $vm.StorageProfile.ImageReference.Sku $SKU;
+        Assert-Null $vm.SecurityProfile.EncryptionAtHost;
+    }
+    finally 
+    {
+        # Cleanup
+        Clean-ResourceGroup $rgname;
+    }
+}

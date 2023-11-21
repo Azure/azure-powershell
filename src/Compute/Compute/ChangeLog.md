@@ -23,6 +23,7 @@
 * Added new parameter `-ElasticSanResourceId` to `New-AzSnapshotConfig` cmdlet.
 * Added new parameter `-OptimizedForFrequentAttach` to `New-AzDiskConfig` cmdlet.
 * Added new examples in `New-AzVM` and `New-AzVmss` for TrustedLaunch default usage.
+* Fixed the `New-AzVM` bug to avoid accessing the `EncryptionAtHost` property for subscriptions who cannot access it since it is behind a feature flag.
 * Updated `Get-AzVmExtension` to return instanceView when used with `-Status`.
 
 ## Version 7.0.0
