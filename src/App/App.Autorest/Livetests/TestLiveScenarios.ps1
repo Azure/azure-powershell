@@ -6,8 +6,9 @@ Invoke-LiveTestScenario -Name "List ContainerApp" -Description "Test listing Con
     $workspaceName = New-LiveTestResourceName
     $envName = New-LiveTestResourceName
     $appLocation = "northcentralusstage"
+    $location = "eastus"
 
-    $null = New-AzOperationalInsightsWorkspace -ResourceGroupName $rgName -Name $workspaceName -Sku PerGB2018 -Location $appLocation -PublicNetworkAccessForIngestion "Enabled" -PublicNetworkAccessForQuery "Enabled"
+    $null = New-AzOperationalInsightsWorkspace -ResourceGroupName $rgName -Name $workspaceName -Sku PerGB2018 -Location $location -PublicNetworkAccessForIngestion "Enabled" -PublicNetworkAccessForQuery "Enabled"
     $CustomId = (Get-AzOperationalInsightsWorkspace -ResourceGroupName $rgName -Name $workspaceName).CustomerId
     $SharedKey = (Get-AzOperationalInsightsWorkspaceSharedKey -ResourceGroupName $rgName -Name $workspaceName).PrimarySharedKey
     $workloadProfile = New-AzContainerAppWorkloadProfileObject -Name "Consumption" -Type "Consumption"
@@ -17,7 +18,7 @@ Invoke-LiveTestScenario -Name "List ContainerApp" -Description "Test listing Con
     $probeHttpGetHttpHeader = New-AzContainerAppProbeHeaderObject -Name "Custom-Header" -Value "Awesome"
     $probe = New-AzContainerAppProbeObject -HttpGetPath "/health" -HttpGetPort 8080 -InitialDelaySecond 3 -PeriodSecond 3 -Type Liveness -HttpGetHttpHeader $probeHttpGetHttpHeader
     $temp = New-AzContainerAppTemplateObject -Name $appName -Image "mcr.microsoft.com/k8se/quickstart-jobs:latest" -Probe $probe -ResourceCpu 0.25 -ResourceMemory "0.5Gi"
-    $configuration = New-AzContainerAppConfigurationObject -DaprEnabled:$True -DaprAppPort 3000 -DaprAppProtocol "http" -DaprHttpReadBufferSize 30 -DaprHttpMaxRequestSize 10 -DaprLogLevel "debug" -DaprEnableApiLogging:$True -MaxInactiveRevision 10 -ServiceType "redis" -Secret $secretObject 
+    $configuration = New-AzContainerAppConfigurationObject -DaprEnabled:$True -DaprAppPort 3000 -DaprAppProtocol "http" -DaprHttpReadBufferSize 30 -DaprHttpMaxRequestSize 10 -DaprLogLevel "debug" -DaprEnableApiLogging:$True -MaxInactiveRevision 10 -ServiceType "redis" -Secret $secretObject
 
     # Test creating AzContainerApp
     $actual = New-AzContainerApp -Name $appName -ResourceGroupName $rgName -Location $appLocation -Configuration $configuration -TemplateContainer $temp -EnvironmentId $EnvId
