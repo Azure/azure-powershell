@@ -51,6 +51,7 @@ Function Move-Generation2Master {
             'test' = 'test'
             'utils' = 'utils'
             'docs' = 'help'
+            'UX' = 'UX'
         }
         $File2Copy = @('*.ps1', 'how-to.md', 'readme.md', 'README.md', '*.psm1', '*.ps1xml', '*.psd1')
         $submoduleDirs = Get-ChildItem -Filter *.Autorest -Directory -Path $SourcePath
