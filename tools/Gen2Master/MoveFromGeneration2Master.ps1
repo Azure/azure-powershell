@@ -189,7 +189,7 @@ Function Unique-PathList {
         $PathList
     )
 
-    return $PathList | ForEach-Object { return $_.Replace('/', '\') } | Select-Object -Unique | Sort-Object
+    return $PathList | ForEach-Object { return $_.Replace('\', '/') } | Select-Object -Unique | Sort-Object
 }
 
 Function Update-MappingJson {
