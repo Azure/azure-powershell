@@ -29,16 +29,17 @@ For information on how to develop for `Az.Compute`, see [how-to.md](how-to.md).
 ### AutoRest Configuration
 > see https://aka.ms/autorest
 ``` yaml
-branch: 4640dfc655f8641962814663fd03fd667e5c1a88
+commit: 1a925d1afe288a5f20d078bbc89214a36a0e4287
 require:
 # readme.azure.noprofile.md is the common configuration file
   - $(this-folder)/../../readme.azure.noprofile.md
 input-file:
 # You need to specify your swagger files here.
-  - $(repo)/specification/compute/resource-manager/Microsoft.Compute/stable/2022-01-03/GalleryRP/gallery.json
-  - $(repo)/specification/compute/resource-manager/Microsoft.Compute/stable/2021-07-01/runCommands.json
+  - $(repo)/specification/compute/resource-manager/Microsoft.Compute/GalleryRP/stable/2022-01-03/gallery.json
+  - $(repo)/specification/compute/resource-manager/Microsoft.Compute/ComputeRP/stable/2023-07-01/runCommand.json
+  - $(repo)/specification/compute/resource-manager/Microsoft.Compute/common-types/v1/common.json
 # If the swagger has not been put in the repo, you may uncomment the following line and refer to it locally
-module-version: 0.2.0
+module-version: 0.3.0
 # Normally, title is the service name
 title: Compute
 subject-prefix: ""
@@ -46,6 +47,10 @@ subject-prefix: ""
 # If there are post APIs for some kinds of actions in the RP, you may need to 
 # uncomment following line to support viaIdentity for these post APIs
 # identity-correction-for-post: true
+
+# For new modules, please avoid setting 3.x using the use-extension method and instead, use 4.x as the default option
+use-extension:
+  "@autorest/powershell": "3.x"
 
 directive:
   # Following is two common directive which are normally required in all the RPs

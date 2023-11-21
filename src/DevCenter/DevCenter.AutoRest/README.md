@@ -31,7 +31,7 @@ For information on how to develop for `Az.DevCenter`, see [how-to.md](how-to.md)
 
 ```yaml
 # pin the swagger version by using the commit id instead of branch name
-branch: 4f6418dca8c15697489bbe6f855558bb79ca5bf5
+commit: 4f6418dca8c15697489bbe6f855558bb79ca5bf5
 require:
 # readme.azure.noprofile.md is the common configuration file
   - $(this-folder)/../../readme.azure.noprofile.md
@@ -39,6 +39,10 @@ input-file:
   - $(repo)/specification/devcenter/resource-manager/Microsoft.DevCenter/stable/2023-04-01/commonDefinitions.json
   - $(repo)/specification/devcenter/resource-manager/Microsoft.DevCenter/stable/2023-04-01/devcenter.json
   - $(repo)/specification/devcenter/resource-manager/Microsoft.DevCenter/stable/2023-04-01/vdi.json
+# For new modules, please avoid setting 3.x using the use-extension method and instead, use 4.x as the default option
+use-extension:
+  "@autorest/powershell": "3.x"
+
 directive:
   - from: swagger-document
     where: $.paths["/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DevCenter/devcenters/{devCenterName}/catalogs/{catalogName}/sync"].post.responses

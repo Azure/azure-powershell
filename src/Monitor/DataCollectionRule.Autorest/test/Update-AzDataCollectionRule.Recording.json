@@ -1,15 +1,60 @@
 {
-  "Update-AzDataCollectionRule+[NoContext]+UpdateExpanded+$PATCH+https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/AMCS-TEST/providers/Microsoft.Insights/dataCollectionRules/testCollectionRule1?api-version=2022-06-01+1": {
+  "Update-AzDataCollectionRule+[NoContext]+UpdateExpanded+$GET+https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/AMCS-TEST/providers/Microsoft.Insights/dataCollectionRules/testCollectionRule1?api-version=2022-06-01+1": {
     "Request": {
-      "Method": "PATCH",
+      "Method": "GET",
       "RequestUri": "https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/AMCS-TEST/providers/Microsoft.Insights/dataCollectionRules/testCollectionRule1?api-version=2022-06-01",
-      "Content": "{\r\n  \"tags\": {\r\n    \"123\": \"abc\"\r\n  }\r\n}",
+      "Content": null,
+      "isContentBase64": false,
+      "Headers": {
+        "x-ms-unique-id": [ "32" ],
+        "x-ms-client-request-id": [ "957cc936-e173-4a3e-95b1-5dd82daf67db" ],
+        "CommandName": [ "Update-AzDataCollectionRule" ],
+        "FullCommandName": [ "Update-AzDataCollectionRule_UpdateExpanded" ],
+        "ParameterSetName": [ "__AllParameterSets" ],
+        "User-Agent": [ "AzurePowershell/v11.0.0", "PSVersion/v7.3.9", "Az.DataCollectionRule/0.1.0" ],
+        "Authorization": [ "[Filtered]" ]
+      },
+      "ContentHeaders": {
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "Vary": [ "Accept-Encoding" ],
+        "x-ms-ratelimit-remaining-subscription-reads": [ "11986" ],
+        "Request-Context": [ "appId=cid-v1:2bbfbac8-e1b0-44af-b9c6-3a40669d37e3" ],
+        "x-ms-correlation-request-id": [ "1686d7bc-4dc8-4abc-bede-c0490563d41e" ],
+        "x-ms-client-request-id": [ "957cc936-e173-4a3e-95b1-5dd82daf67db" ],
+        "x-ms-routing-request-id": [ "SOUTHEASTASIA:20231109T064139Z:1686d7bc-4dc8-4abc-bede-c0490563d41e" ],
+        "x-ms-request-id": [ "70370c66-b210-4ae7-865c-38172f702410" ],
+        "api-supported-versions": [ "2019-11-01-preview, 2021-04-01, 2021-09-01-preview, 2022-06-01, 2023-03-11" ],
+        "Server": [ "Microsoft-HTTPAPI/2.0" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "Date": [ "Thu, 09 Nov 2023 06:41:39 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "1288" ],
+        "Content-Type": [ "application/json; charset=utf-8" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\"properties\":{\"immutableId\":\"dcr-adff752e0b41485fa9aab4c046eb628b\",\"dataSources\":{\"performanceCounters\":[{\"streams\":[\"Microsoft-InsightsMetrics\"],\"samplingFrequencyInSeconds\":60,\"counterSpecifiers\":[\"\\\\Processor(_Total)\\\\% Processor Time\"],\"name\":\"perfCounter01\"},{\"streams\":[\"Microsoft-Perf\"],\"samplingFrequencyInSeconds\":15,\"counterSpecifiers\":[\"\\\\Processor(_Total)\\\\% Processor Time\",\"\\\\Memory\\\\Committed Bytes\",\"\\\\LogicalDisk(_Total)\\\\Free Megabytes\",\"\\\\PhysicalDisk(_Total)\\\\Avg. Disk Queue Length\"],\"name\":\"cloudTeamCoreCounters\"}]},\"destinations\":{\"azureMonitorMetrics\":{\"name\":\"azureMonitorMetrics-default\"}},\"dataFlows\":[{\"streams\":[\"Microsoft-InsightsMetrics\"],\"destinations\":[\"azureMonitorMetrics-default\"]}],\"provisioningState\":\"Succeeded\"},\"location\":\"eastus\",\"id\":\"/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/AMCS-TEST/providers/Microsoft.Insights/dataCollectionRules/testCollectionRule1\",\"name\":\"testCollectionRule1\",\"type\":\"Microsoft.Insights/dataCollectionRules\",\"etag\":\"\\\"920082e1-0000-0100-0000-654c7ef10000\\\"\",\"systemData\":{\"createdBy\":\"v-jiaji@microsoft.com\",\"createdByType\":\"User\",\"createdAt\":\"2023-11-09T06:40:48.2614378Z\",\"lastModifiedBy\":\"v-jiaji@microsoft.com\",\"lastModifiedByType\":\"User\",\"lastModifiedAt\":\"2023-11-09T06:40:48.2614378Z\"}}",
+      "isContentBase64": false
+    }
+  },
+  "Update-AzDataCollectionRule+[NoContext]+UpdateExpanded+$PUT+https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/AMCS-TEST/providers/Microsoft.Insights/dataCollectionRules/testCollectionRule1?api-version=2022-06-01+2": {
+    "Request": {
+      "Method": "PUT",
+      "RequestUri": "https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/AMCS-TEST/providers/Microsoft.Insights/dataCollectionRules/testCollectionRule1?api-version=2022-06-01",
+      "Content": "{\r\n  \"properties\": {\r\n    \"dataSources\": {\r\n      \"performanceCounters\": [\r\n        {\r\n          \"streams\": [ \"Microsoft-InsightsMetrics\" ],\r\n          \"samplingFrequencyInSeconds\": 60,\r\n          \"counterSpecifiers\": [ \"\\\\Processor(_Total)\\\\% Processor Time\" ],\r\n          \"name\": \"perfCounter01\"\r\n        },\r\n        {\r\n          \"streams\": [ \"Microsoft-Perf\" ],\r\n          \"samplingFrequencyInSeconds\": 15,\r\n          \"counterSpecifiers\": [ \"\\\\Processor(_Total)\\\\% Processor Time\", \"\\\\Memory\\\\Committed Bytes\", \"\\\\LogicalDisk(_Total)\\\\Free Megabytes\", \"\\\\PhysicalDisk(_Total)\\\\Avg. Disk Queue Length\" ],\r\n          \"name\": \"cloudTeamCoreCounters\"\r\n        }\r\n      ],\r\n      \"syslog\": [\r\n        {\r\n          \"streams\": [ \"Microsoft-Syslog\" ],\r\n          \"facilityNames\": [ \"syslog\" ],\r\n          \"logLevels\": [ \"Alert\", \"Critical\", \"Emergency\" ],\r\n          \"name\": \"syslogBase\"\r\n        }\r\n      ]\r\n    },\r\n    \"destinations\": {\r\n      \"azureMonitorMetrics\": {\r\n        \"name\": \"azureMonitorMetrics-default\"\r\n      }\r\n    },\r\n    \"dataFlows\": [\r\n      {\r\n        \"streams\": [ \"Microsoft-InsightsMetrics\" ],\r\n        \"destinations\": [ \"azureMonitorMetrics-default\" ]\r\n      }\r\n    ]\r\n  },\r\n  \"location\": \"eastus\",\r\n  \"tags\": {\r\n    \"123\": \"abc\"\r\n  }\r\n}",
       "isContentBase64": false,
       "Headers": {
       },
       "ContentHeaders": {
         "Content-Type": [ "application/json" ],
-        "Content-Length": [ "40" ]
+        "Content-Length": [ "1256" ]
       }
     },
     "Response": {
@@ -20,22 +65,152 @@
         "Vary": [ "Accept-Encoding" ],
         "x-ms-ratelimit-remaining-subscription-resource-requests": [ "145" ],
         "Request-Context": [ "appId=cid-v1:2bbfbac8-e1b0-44af-b9c6-3a40669d37e3" ],
-        "x-ms-correlation-request-id": [ "16573969-39d0-471d-8bb2-ecd63ef38c9b" ],
-        "x-ms-client-request-id": [ "8617bcd6-2a0a-46d2-901b-fdcb05b7fa31" ],
-        "x-ms-routing-request-id": [ "KOREASOUTH:20231010T065322Z:16573969-39d0-471d-8bb2-ecd63ef38c9b" ],
-        "x-ms-request-id": [ "1c951ad1-c57a-4443-8be5-adc4454b098b" ],
+        "x-ms-correlation-request-id": [ "055b0d19-c73a-4a6a-9c42-bc9a1df3f2f3" ],
+        "x-ms-client-request-id": [ "957cc936-e173-4a3e-95b1-5dd82daf67db" ],
+        "x-ms-routing-request-id": [ "SOUTHEASTASIA:20231109T064139Z:055b0d19-c73a-4a6a-9c42-bc9a1df3f2f3" ],
+        "x-ms-request-id": [ "3ca3617b-467d-459f-bffc-1545faedf50b" ],
         "api-supported-versions": [ "2019-11-01-preview, 2021-04-01, 2021-09-01-preview, 2022-06-01, 2023-03-11" ],
         "Server": [ "Microsoft-HTTPAPI/2.0" ],
         "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
         "X-Content-Type-Options": [ "nosniff" ],
-        "Date": [ "Tue, 10 Oct 2023 06:53:24 GMT" ]
+        "Date": [ "Thu, 09 Nov 2023 06:41:41 GMT" ]
       },
       "ContentHeaders": {
-        "Content-Length": [ "1308" ],
+        "Content-Length": [ "1445" ],
         "Content-Type": [ "application/json; charset=utf-8" ],
         "Expires": [ "-1" ]
       },
-      "Content": "{\"properties\":{\"immutableId\":\"dcr-9e21f349ac9a405ebb10223c17e9aec8\",\"dataSources\":{\"performanceCounters\":[{\"streams\":[\"Microsoft-InsightsMetrics\"],\"samplingFrequencyInSeconds\":60,\"counterSpecifiers\":[\"\\\\Processor(_Total)\\\\% Processor Time\"],\"name\":\"perfCounter01\"},{\"streams\":[\"Microsoft-Perf\"],\"samplingFrequencyInSeconds\":15,\"counterSpecifiers\":[\"\\\\Processor(_Total)\\\\% Processor Time\",\"\\\\Memory\\\\Committed Bytes\",\"\\\\LogicalDisk(_Total)\\\\Free Megabytes\",\"\\\\PhysicalDisk(_Total)\\\\Avg. Disk Queue Length\"],\"name\":\"cloudTeamCoreCounters\"}]},\"destinations\":{\"azureMonitorMetrics\":{\"name\":\"azureMonitorMetrics-default\"}},\"dataFlows\":[{\"streams\":[\"Microsoft-InsightsMetrics\"],\"destinations\":[\"azureMonitorMetrics-default\"]}],\"provisioningState\":\"Succeeded\"},\"location\":\"eastus\",\"tags\":{\"123\":\"abc\"},\"id\":\"/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/AMCS-TEST/providers/Microsoft.Insights/dataCollectionRules/testCollectionRule1\",\"name\":\"testCollectionRule1\",\"type\":\"Microsoft.Insights/dataCollectionRules\",\"etag\":\"\\\"7501d6f1-0000-0100-0000-6524f4e30000\\\"\",\"systemData\":{\"createdBy\":\"v-jiaji@microsoft.com\",\"createdByType\":\"User\",\"createdAt\":\"2023-10-10T06:52:34.9989389Z\",\"lastModifiedBy\":\"v-jiaji@microsoft.com\",\"lastModifiedByType\":\"User\",\"lastModifiedAt\":\"2023-10-10T06:53:22.839837Z\"}}",
+      "Content": "{\"properties\":{\"immutableId\":\"dcr-adff752e0b41485fa9aab4c046eb628b\",\"dataSources\":{\"performanceCounters\":[{\"streams\":[\"Microsoft-InsightsMetrics\"],\"samplingFrequencyInSeconds\":60,\"counterSpecifiers\":[\"\\\\Processor(_Total)\\\\% Processor Time\"],\"name\":\"perfCounter01\"},{\"streams\":[\"Microsoft-Perf\"],\"samplingFrequencyInSeconds\":15,\"counterSpecifiers\":[\"\\\\Processor(_Total)\\\\% Processor Time\",\"\\\\Memory\\\\Committed Bytes\",\"\\\\LogicalDisk(_Total)\\\\Free Megabytes\",\"\\\\PhysicalDisk(_Total)\\\\Avg. Disk Queue Length\"],\"name\":\"cloudTeamCoreCounters\"}],\"syslog\":[{\"streams\":[\"Microsoft-Syslog\"],\"facilityNames\":[\"syslog\"],\"logLevels\":[\"Alert\",\"Critical\",\"Emergency\"],\"name\":\"syslogBase\"}]},\"destinations\":{\"azureMonitorMetrics\":{\"name\":\"azureMonitorMetrics-default\"}},\"dataFlows\":[{\"streams\":[\"Microsoft-InsightsMetrics\"],\"destinations\":[\"azureMonitorMetrics-default\"]}],\"provisioningState\":\"Succeeded\"},\"location\":\"eastus\",\"tags\":{\"123\":\"abc\"},\"id\":\"/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/AMCS-TEST/providers/Microsoft.Insights/dataCollectionRules/testCollectionRule1\",\"name\":\"testCollectionRule1\",\"type\":\"Microsoft.Insights/dataCollectionRules\",\"etag\":\"\\\"9200d6e1-0000-0100-0000-654c7f240000\\\"\",\"systemData\":{\"createdBy\":\"v-jiaji@microsoft.com\",\"createdByType\":\"User\",\"createdAt\":\"2023-11-09T06:40:48.2614378Z\",\"lastModifiedBy\":\"v-jiaji@microsoft.com\",\"lastModifiedByType\":\"User\",\"lastModifiedAt\":\"2023-11-09T06:41:39.9651125Z\"}}",
+      "isContentBase64": false
+    }
+  },
+  "Update-AzDataCollectionRule+[NoContext]+UpdateViaIdentityExpanded+$GET+https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/AMCS-TEST/providers/Microsoft.Insights/dataCollectionRules/testCollectionRule1?api-version=2022-06-01+1": {
+    "Request": {
+      "Method": "GET",
+      "RequestUri": "https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/AMCS-TEST/providers/Microsoft.Insights/dataCollectionRules/testCollectionRule1?api-version=2022-06-01",
+      "Content": null,
+      "isContentBase64": false,
+      "Headers": {
+        "x-ms-unique-id": [ "34" ],
+        "x-ms-client-request-id": [ "9dceef6f-833f-43ba-9de1-fea4eca19752" ],
+        "CommandName": [ "Get-AzDataCollectionRule" ],
+        "FullCommandName": [ "Get-AzDataCollectionRule_Get" ],
+        "ParameterSetName": [ "__AllParameterSets" ],
+        "User-Agent": [ "AzurePowershell/v11.0.0", "PSVersion/v7.3.9", "Az.DataCollectionRule/0.1.0" ],
+        "Authorization": [ "[Filtered]" ]
+      },
+      "ContentHeaders": {
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "Vary": [ "Accept-Encoding" ],
+        "x-ms-ratelimit-remaining-subscription-reads": [ "11985" ],
+        "Request-Context": [ "appId=cid-v1:2bbfbac8-e1b0-44af-b9c6-3a40669d37e3" ],
+        "x-ms-correlation-request-id": [ "246c837b-0d93-43cd-b6fd-15b8059621ff" ],
+        "x-ms-client-request-id": [ "9dceef6f-833f-43ba-9de1-fea4eca19752" ],
+        "x-ms-routing-request-id": [ "SOUTHEASTASIA:20231109T064141Z:246c837b-0d93-43cd-b6fd-15b8059621ff" ],
+        "x-ms-request-id": [ "1415c756-3d8a-4229-b27c-bbec491bbc6e" ],
+        "api-supported-versions": [ "2019-11-01-preview, 2021-04-01, 2021-09-01-preview, 2022-06-01, 2023-03-11" ],
+        "Server": [ "Microsoft-HTTPAPI/2.0" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "Date": [ "Thu, 09 Nov 2023 06:41:41 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "1445" ],
+        "Content-Type": [ "application/json; charset=utf-8" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\"properties\":{\"immutableId\":\"dcr-adff752e0b41485fa9aab4c046eb628b\",\"dataSources\":{\"performanceCounters\":[{\"streams\":[\"Microsoft-InsightsMetrics\"],\"samplingFrequencyInSeconds\":60,\"counterSpecifiers\":[\"\\\\Processor(_Total)\\\\% Processor Time\"],\"name\":\"perfCounter01\"},{\"streams\":[\"Microsoft-Perf\"],\"samplingFrequencyInSeconds\":15,\"counterSpecifiers\":[\"\\\\Processor(_Total)\\\\% Processor Time\",\"\\\\Memory\\\\Committed Bytes\",\"\\\\LogicalDisk(_Total)\\\\Free Megabytes\",\"\\\\PhysicalDisk(_Total)\\\\Avg. Disk Queue Length\"],\"name\":\"cloudTeamCoreCounters\"}],\"syslog\":[{\"streams\":[\"Microsoft-Syslog\"],\"facilityNames\":[\"syslog\"],\"logLevels\":[\"Alert\",\"Critical\",\"Emergency\"],\"name\":\"syslogBase\"}]},\"destinations\":{\"azureMonitorMetrics\":{\"name\":\"azureMonitorMetrics-default\"}},\"dataFlows\":[{\"streams\":[\"Microsoft-InsightsMetrics\"],\"destinations\":[\"azureMonitorMetrics-default\"]}],\"provisioningState\":\"Succeeded\"},\"location\":\"eastus\",\"tags\":{\"123\":\"abc\"},\"id\":\"/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/AMCS-TEST/providers/Microsoft.Insights/dataCollectionRules/testCollectionRule1\",\"name\":\"testCollectionRule1\",\"type\":\"Microsoft.Insights/dataCollectionRules\",\"etag\":\"\\\"9200d6e1-0000-0100-0000-654c7f240000\\\"\",\"systemData\":{\"createdBy\":\"v-jiaji@microsoft.com\",\"createdByType\":\"User\",\"createdAt\":\"2023-11-09T06:40:48.2614378Z\",\"lastModifiedBy\":\"v-jiaji@microsoft.com\",\"lastModifiedByType\":\"User\",\"lastModifiedAt\":\"2023-11-09T06:41:39.9651125Z\"}}",
+      "isContentBase64": false
+    }
+  },
+  "Update-AzDataCollectionRule+[NoContext]+UpdateViaIdentityExpanded+$GET+https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/AMCS-TEST/providers/Microsoft.Insights/dataCollectionRules/testCollectionRule1?api-version=2022-06-01+2": {
+    "Request": {
+      "Method": "GET",
+      "RequestUri": "https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/AMCS-TEST/providers/Microsoft.Insights/dataCollectionRules/testCollectionRule1?api-version=2022-06-01",
+      "Content": null,
+      "isContentBase64": false,
+      "Headers": {
+        "x-ms-unique-id": [ "35" ],
+        "x-ms-client-request-id": [ "a64e8831-d291-412a-bb5e-323cc42532be" ],
+        "CommandName": [ "Update-AzDataCollectionRule" ],
+        "FullCommandName": [ "Update-AzDataCollectionRule_UpdateViaIdentityExpanded" ],
+        "ParameterSetName": [ "__AllParameterSets" ],
+        "User-Agent": [ "AzurePowershell/v11.0.0", "PSVersion/v7.3.9", "Az.DataCollectionRule/0.1.0" ],
+        "Authorization": [ "[Filtered]" ]
+      },
+      "ContentHeaders": {
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "Vary": [ "Accept-Encoding" ],
+        "x-ms-ratelimit-remaining-subscription-reads": [ "11984" ],
+        "Request-Context": [ "appId=cid-v1:2bbfbac8-e1b0-44af-b9c6-3a40669d37e3" ],
+        "x-ms-correlation-request-id": [ "9828481d-02be-43fe-bec9-c74a2d9ae031" ],
+        "x-ms-client-request-id": [ "a64e8831-d291-412a-bb5e-323cc42532be" ],
+        "x-ms-routing-request-id": [ "SOUTHEASTASIA:20231109T064142Z:9828481d-02be-43fe-bec9-c74a2d9ae031" ],
+        "x-ms-request-id": [ "7e2779a6-ecf7-4de8-98d4-51e7610ec21a" ],
+        "api-supported-versions": [ "2019-11-01-preview, 2021-04-01, 2021-09-01-preview, 2022-06-01, 2023-03-11" ],
+        "Server": [ "Microsoft-HTTPAPI/2.0" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "Date": [ "Thu, 09 Nov 2023 06:41:42 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "1445" ],
+        "Content-Type": [ "application/json; charset=utf-8" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\"properties\":{\"immutableId\":\"dcr-adff752e0b41485fa9aab4c046eb628b\",\"dataSources\":{\"performanceCounters\":[{\"streams\":[\"Microsoft-InsightsMetrics\"],\"samplingFrequencyInSeconds\":60,\"counterSpecifiers\":[\"\\\\Processor(_Total)\\\\% Processor Time\"],\"name\":\"perfCounter01\"},{\"streams\":[\"Microsoft-Perf\"],\"samplingFrequencyInSeconds\":15,\"counterSpecifiers\":[\"\\\\Processor(_Total)\\\\% Processor Time\",\"\\\\Memory\\\\Committed Bytes\",\"\\\\LogicalDisk(_Total)\\\\Free Megabytes\",\"\\\\PhysicalDisk(_Total)\\\\Avg. Disk Queue Length\"],\"name\":\"cloudTeamCoreCounters\"}],\"syslog\":[{\"streams\":[\"Microsoft-Syslog\"],\"facilityNames\":[\"syslog\"],\"logLevels\":[\"Alert\",\"Critical\",\"Emergency\"],\"name\":\"syslogBase\"}]},\"destinations\":{\"azureMonitorMetrics\":{\"name\":\"azureMonitorMetrics-default\"}},\"dataFlows\":[{\"streams\":[\"Microsoft-InsightsMetrics\"],\"destinations\":[\"azureMonitorMetrics-default\"]}],\"provisioningState\":\"Succeeded\"},\"location\":\"eastus\",\"tags\":{\"123\":\"abc\"},\"id\":\"/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/AMCS-TEST/providers/Microsoft.Insights/dataCollectionRules/testCollectionRule1\",\"name\":\"testCollectionRule1\",\"type\":\"Microsoft.Insights/dataCollectionRules\",\"etag\":\"\\\"9200d6e1-0000-0100-0000-654c7f240000\\\"\",\"systemData\":{\"createdBy\":\"v-jiaji@microsoft.com\",\"createdByType\":\"User\",\"createdAt\":\"2023-11-09T06:40:48.2614378Z\",\"lastModifiedBy\":\"v-jiaji@microsoft.com\",\"lastModifiedByType\":\"User\",\"lastModifiedAt\":\"2023-11-09T06:41:39.9651125Z\"}}",
+      "isContentBase64": false
+    }
+  },
+  "Update-AzDataCollectionRule+[NoContext]+UpdateViaIdentityExpanded+$PUT+https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/AMCS-TEST/providers/Microsoft.Insights/dataCollectionRules/testCollectionRule1?api-version=2022-06-01+3": {
+    "Request": {
+      "Method": "PUT",
+      "RequestUri": "https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/AMCS-TEST/providers/Microsoft.Insights/dataCollectionRules/testCollectionRule1?api-version=2022-06-01",
+      "Content": "{\r\n  \"properties\": {\r\n    \"dataSources\": {\r\n      \"performanceCounters\": [\r\n        {\r\n          \"streams\": [ \"Microsoft-InsightsMetrics\" ],\r\n          \"samplingFrequencyInSeconds\": 60,\r\n          \"counterSpecifiers\": [ \"\\\\Processor(_Total)\\\\% Processor Time\" ],\r\n          \"name\": \"perfCounter01\"\r\n        },\r\n        {\r\n          \"streams\": [ \"Microsoft-Perf\" ],\r\n          \"samplingFrequencyInSeconds\": 15,\r\n          \"counterSpecifiers\": [ \"\\\\Processor(_Total)\\\\% Processor Time\", \"\\\\Memory\\\\Committed Bytes\", \"\\\\LogicalDisk(_Total)\\\\Free Megabytes\", \"\\\\PhysicalDisk(_Total)\\\\Avg. Disk Queue Length\" ],\r\n          \"name\": \"cloudTeamCoreCounters\"\r\n        }\r\n      ],\r\n      \"syslog\": [\r\n        {\r\n          \"streams\": [ \"Microsoft-Syslog\" ],\r\n          \"facilityNames\": [ \"cron\" ],\r\n          \"logLevels\": [ \"Debug\", \"Critical\", \"Emergency\" ],\r\n          \"name\": \"cronSyslog\"\r\n        }\r\n      ]\r\n    },\r\n    \"destinations\": {\r\n      \"azureMonitorMetrics\": {\r\n        \"name\": \"azureMonitorMetrics-default\"\r\n      }\r\n    },\r\n    \"dataFlows\": [\r\n      {\r\n        \"streams\": [ \"Microsoft-InsightsMetrics\" ],\r\n        \"destinations\": [ \"azureMonitorMetrics-default\" ]\r\n      }\r\n    ]\r\n  },\r\n  \"location\": \"eastus\",\r\n  \"tags\": {\r\n    \"123\": \"abc\"\r\n  }\r\n}",
+      "isContentBase64": false,
+      "Headers": {
+      },
+      "ContentHeaders": {
+        "Content-Type": [ "application/json" ],
+        "Content-Length": [ "1254" ]
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "Vary": [ "Accept-Encoding" ],
+        "x-ms-ratelimit-remaining-subscription-resource-requests": [ "144" ],
+        "Request-Context": [ "appId=cid-v1:2bbfbac8-e1b0-44af-b9c6-3a40669d37e3" ],
+        "x-ms-correlation-request-id": [ "6f907925-e665-4e4c-b6bb-4d6a137d3b0f" ],
+        "x-ms-client-request-id": [ "a64e8831-d291-412a-bb5e-323cc42532be" ],
+        "x-ms-routing-request-id": [ "SOUTHEASTASIA:20231109T064143Z:6f907925-e665-4e4c-b6bb-4d6a137d3b0f" ],
+        "x-ms-request-id": [ "71562469-4581-424f-be22-80a2bd6c094e" ],
+        "api-supported-versions": [ "2019-11-01-preview, 2021-04-01, 2021-09-01-preview, 2022-06-01, 2023-03-11" ],
+        "Server": [ "Microsoft-HTTPAPI/2.0" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "Date": [ "Thu, 09 Nov 2023 06:41:43 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "1443" ],
+        "Content-Type": [ "application/json; charset=utf-8" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\"properties\":{\"immutableId\":\"dcr-adff752e0b41485fa9aab4c046eb628b\",\"dataSources\":{\"performanceCounters\":[{\"streams\":[\"Microsoft-InsightsMetrics\"],\"samplingFrequencyInSeconds\":60,\"counterSpecifiers\":[\"\\\\Processor(_Total)\\\\% Processor Time\"],\"name\":\"perfCounter01\"},{\"streams\":[\"Microsoft-Perf\"],\"samplingFrequencyInSeconds\":15,\"counterSpecifiers\":[\"\\\\Processor(_Total)\\\\% Processor Time\",\"\\\\Memory\\\\Committed Bytes\",\"\\\\LogicalDisk(_Total)\\\\Free Megabytes\",\"\\\\PhysicalDisk(_Total)\\\\Avg. Disk Queue Length\"],\"name\":\"cloudTeamCoreCounters\"}],\"syslog\":[{\"streams\":[\"Microsoft-Syslog\"],\"facilityNames\":[\"cron\"],\"logLevels\":[\"Debug\",\"Critical\",\"Emergency\"],\"name\":\"cronSyslog\"}]},\"destinations\":{\"azureMonitorMetrics\":{\"name\":\"azureMonitorMetrics-default\"}},\"dataFlows\":[{\"streams\":[\"Microsoft-InsightsMetrics\"],\"destinations\":[\"azureMonitorMetrics-default\"]}],\"provisioningState\":\"Succeeded\"},\"location\":\"eastus\",\"tags\":{\"123\":\"abc\"},\"id\":\"/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/AMCS-TEST/providers/Microsoft.Insights/dataCollectionRules/testCollectionRule1\",\"name\":\"testCollectionRule1\",\"type\":\"Microsoft.Insights/dataCollectionRules\",\"etag\":\"\\\"9200d7e1-0000-0100-0000-654c7f270000\\\"\",\"systemData\":{\"createdBy\":\"v-jiaji@microsoft.com\",\"createdByType\":\"User\",\"createdAt\":\"2023-11-09T06:40:48.2614378Z\",\"lastModifiedBy\":\"v-jiaji@microsoft.com\",\"lastModifiedByType\":\"User\",\"lastModifiedAt\":\"2023-11-09T06:41:43.0588997Z\"}}",
       "isContentBase64": false
     }
   }

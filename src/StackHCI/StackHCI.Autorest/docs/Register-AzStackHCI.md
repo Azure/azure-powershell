@@ -416,7 +416,5 @@ PortalResourceURL: Azure Portal Resource URL.
 
 ## NOTES
 
-ALIASES
-
 ## RELATED LINKS
 
