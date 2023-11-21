@@ -33,6 +33,13 @@ Update-AzSqlDatabaseLongTermRetentionBackup [-BackupStorageRedundancy <String>]
  [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
+### UpdateBackupStorageAccessTierSet
+```
+Update-AzSqlDatabaseLongTermRetentionBackup [-Location] <String> [-ServerName] <String> [-DatabaseName] <String>
+ [-BackupName] <String>  [-BackupStorageAccessTier] <String> [-OperationMode] <String> [-ResourceGroupName <String>]
+ [-AsJob] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
+```
+
 ## DESCRIPTION
 Updates the properties of a long term retention backup.
   
@@ -80,6 +87,18 @@ BackupStorageRedundancy			 : Geo
 ```
 
 This command sets the Backup Storage Redundancy of the specified backup using a backup Resource Id. 
+
+### Example 3: Update Backup Storage Access Tier and Operation Mode of a long term retention backup.
+```powershell
+Update-AzSqlDatabaseLongTermRetentionBackup -Location southeastasia -ServerName testsvr -DatabaseName testdb -BackupName 'e5c20f43-494c-4925-89d1-58e0f4569fb3;132579992320000000;Hot' -ResourceGroupName testrg -BackupStorageAccessTier Archive -OperationMode Copy
+```
+
+```output
+202 Requst Accepted.
+Request Id: e5c20f43-494c-4925-89d1-58e0f4569fb1.
+```
+
+This command sets the Backup Storage Access Tier of the specified backup.
 
 ## PARAMETERS
 
@@ -200,6 +219,36 @@ Aliases:
 
 Required: False
 Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -BackupStorageAccessTier
+The name of the resource group.
+
+```yaml
+Type: System.String
+Parameter Sets: UpdateBackupStorageAccessTierSet
+Aliases:
+
+Required: True
+Position: 4
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -OperationMode
+The name of the resource group.
+
+```yaml
+Type: System.String
+Parameter Sets: UpdateBackupStorageAccessTierSet
+Aliases:
+
+Required: True
+Position: 5
 Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False

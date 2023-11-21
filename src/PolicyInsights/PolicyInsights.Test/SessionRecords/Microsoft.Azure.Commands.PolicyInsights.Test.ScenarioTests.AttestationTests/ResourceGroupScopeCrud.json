@@ -1,7 +1,7 @@
 {
   "Entries": [
     {
-      "RequestUri": "//subscriptions/086aecf4-23d6-4dfd-99a8-a5c6299f0322/resourceGroups/ps-attestation-test-rg/providers/Microsoft.PolicyInsights/attestations/Attestation-RGScope-Crud?api-version=2022-09-01",
+      "RequestUri": "/086aecf4-23d6-4dfd-99a8-a5c6299f0322/resourceGroups/ps-attestation-test-rg/providers/Microsoft.PolicyInsights/attestations/Attestation-RGScope-Crud%3Fapi-version=2022-09-01",
       "EncodedRequestUri": "Ly9zdWJzY3JpcHRpb25zLzA4NmFlY2Y0LTIzZDYtNGRmZC05OWE4LWE1YzYyOTlmMDMyMi9yZXNvdXJjZUdyb3Vwcy9wcy1hdHRlc3RhdGlvbi10ZXN0LXJnL3Byb3ZpZGVycy9NaWNyb3NvZnQuUG9saWN5SW5zaWdodHMvYXR0ZXN0YXRpb25zL0F0dGVzdGF0aW9uLVJHU2NvcGUtQ3J1ZD9hcGktdmVyc2lvbj0yMDIyLTA5LTAx",
       "RequestMethod": "GET",
       "RequestHeaders": {
@@ -64,7 +64,7 @@
       "StatusCode": 404
     },
     {
-      "RequestUri": "//subscriptions/086aecf4-23d6-4dfd-99a8-a5c6299f0322/resourceGroups/ps-attestation-test-rg/providers/Microsoft.PolicyInsights/attestations/Attestation-RGScope-Crud?api-version=2022-09-01",
+      "RequestUri": "/086aecf4-23d6-4dfd-99a8-a5c6299f0322/resourceGroups/ps-attestation-test-rg/providers/Microsoft.PolicyInsights/attestations/Attestation-RGScope-Crud%3Fapi-version=2022-09-01",
       "EncodedRequestUri": "Ly9zdWJzY3JpcHRpb25zLzA4NmFlY2Y0LTIzZDYtNGRmZC05OWE4LWE1YzYyOTlmMDMyMi9yZXNvdXJjZUdyb3Vwcy9wcy1hdHRlc3RhdGlvbi10ZXN0LXJnL3Byb3ZpZGVycy9NaWNyb3NvZnQuUG9saWN5SW5zaWdodHMvYXR0ZXN0YXRpb25zL0F0dGVzdGF0aW9uLVJHU2NvcGUtQ3J1ZD9hcGktdmVyc2lvbj0yMDIyLTA5LTAx",
       "RequestMethod": "GET",
       "RequestHeaders": {
@@ -130,7 +130,7 @@
       "StatusCode": 200
     },
     {
-      "RequestUri": "//subscriptions/086aecf4-23d6-4dfd-99a8-a5c6299f0322/resourceGroups/ps-attestation-test-rg/providers/Microsoft.PolicyInsights/attestations/Attestation-RGScope-Crud?api-version=2022-09-01",
+      "RequestUri": "/086aecf4-23d6-4dfd-99a8-a5c6299f0322/resourceGroups/ps-attestation-test-rg/providers/Microsoft.PolicyInsights/attestations/Attestation-RGScope-Crud%3Fapi-version=2022-09-01",
       "EncodedRequestUri": "Ly9zdWJzY3JpcHRpb25zLzA4NmFlY2Y0LTIzZDYtNGRmZC05OWE4LWE1YzYyOTlmMDMyMi9yZXNvdXJjZUdyb3Vwcy9wcy1hdHRlc3RhdGlvbi10ZXN0LXJnL3Byb3ZpZGVycy9NaWNyb3NvZnQuUG9saWN5SW5zaWdodHMvYXR0ZXN0YXRpb25zL0F0dGVzdGF0aW9uLVJHU2NvcGUtQ3J1ZD9hcGktdmVyc2lvbj0yMDIyLTA5LTAx",
       "RequestMethod": "GET",
       "RequestHeaders": {
@@ -196,7 +196,7 @@
       "StatusCode": 200
     },
     {
-      "RequestUri": "//subscriptions/086aecf4-23d6-4dfd-99a8-a5c6299f0322/resourceGroups/ps-attestation-test-rg/providers/Microsoft.PolicyInsights/attestations/Attestation-RGScope-Crud?api-version=2022-09-01",
+      "RequestUri": "/086aecf4-23d6-4dfd-99a8-a5c6299f0322/resourceGroups/ps-attestation-test-rg/providers/Microsoft.PolicyInsights/attestations/Attestation-RGScope-Crud%3Fapi-version=2022-09-01",
       "EncodedRequestUri": "Ly9zdWJzY3JpcHRpb25zLzA4NmFlY2Y0LTIzZDYtNGRmZC05OWE4LWE1YzYyOTlmMDMyMi9yZXNvdXJjZUdyb3Vwcy9wcy1hdHRlc3RhdGlvbi10ZXN0LXJnL3Byb3ZpZGVycy9NaWNyb3NvZnQuUG9saWN5SW5zaWdodHMvYXR0ZXN0YXRpb25zL0F0dGVzdGF0aW9uLVJHU2NvcGUtQ3J1ZD9hcGktdmVyc2lvbj0yMDIyLTA5LTAx",
       "RequestMethod": "PUT",
       "RequestHeaders": {
@@ -268,7 +268,7 @@
       "StatusCode": 201
     },
     {
-      "RequestUri": "//subscriptions/086aecf4-23d6-4dfd-99a8-a5c6299f0322/resourceGroups/ps-attestation-test-rg/providers/Microsoft.PolicyInsights/attestations/Attestation-RGScope-Crud?api-version=2022-09-01",
+      "RequestUri": "/086aecf4-23d6-4dfd-99a8-a5c6299f0322/resourceGroups/ps-attestation-test-rg/providers/Microsoft.PolicyInsights/attestations/Attestation-RGScope-Crud%3Fapi-version=2022-09-01",
       "EncodedRequestUri": "Ly9zdWJzY3JpcHRpb25zLzA4NmFlY2Y0LTIzZDYtNGRmZC05OWE4LWE1YzYyOTlmMDMyMi9yZXNvdXJjZUdyb3Vwcy9wcy1hdHRlc3RhdGlvbi10ZXN0LXJnL3Byb3ZpZGVycy9NaWNyb3NvZnQuUG9saWN5SW5zaWdodHMvYXR0ZXN0YXRpb25zL0F0dGVzdGF0aW9uLVJHU2NvcGUtQ3J1ZD9hcGktdmVyc2lvbj0yMDIyLTA5LTAx",
       "RequestMethod": "PUT",
       "RequestHeaders": {
@@ -340,7 +340,7 @@
       "StatusCode": 200
     },
     {
-      "RequestUri": "//subscriptions/086aecf4-23d6-4dfd-99a8-a5c6299f0322/resourcegroups/ps-attestation-test-rg//providers/Microsoft.PolicyInsights/attestations/attestation-rgscope-crud?api-version=2022-09-01",
+      "RequestUri": "/086aecf4-23d6-4dfd-99a8-a5c6299f0322/resourcegroups/ps-attestation-test-rg//providers/Microsoft.PolicyInsights/attestations/attestation-rgscope-crud%3Fapi-version=2022-09-01",
       "EncodedRequestUri": "Ly9zdWJzY3JpcHRpb25zLzA4NmFlY2Y0LTIzZDYtNGRmZC05OWE4LWE1YzYyOTlmMDMyMi9yZXNvdXJjZWdyb3Vwcy9wcy1hdHRlc3RhdGlvbi10ZXN0LXJnLy9wcm92aWRlcnMvTWljcm9zb2Z0LlBvbGljeUluc2lnaHRzL2F0dGVzdGF0aW9ucy9hdHRlc3RhdGlvbi1yZ3Njb3BlLWNydWQ/YXBpLXZlcnNpb249MjAyMi0wOS0wMQ==",
       "RequestMethod": "GET",
       "RequestHeaders": {
@@ -406,7 +406,7 @@
       "StatusCode": 200
     },
     {
-      "RequestUri": "//subscriptions/086aecf4-23d6-4dfd-99a8-a5c6299f0322/resourcegroups/ps-attestation-test-rg//providers/Microsoft.PolicyInsights/attestations/attestation-rgscope-crud?api-version=2022-09-01",
+      "RequestUri": "/086aecf4-23d6-4dfd-99a8-a5c6299f0322/resourcegroups/ps-attestation-test-rg//providers/Microsoft.PolicyInsights/attestations/attestation-rgscope-crud%3Fapi-version=2022-09-01",
       "EncodedRequestUri": "Ly9zdWJzY3JpcHRpb25zLzA4NmFlY2Y0LTIzZDYtNGRmZC05OWE4LWE1YzYyOTlmMDMyMi9yZXNvdXJjZWdyb3Vwcy9wcy1hdHRlc3RhdGlvbi10ZXN0LXJnLy9wcm92aWRlcnMvTWljcm9zb2Z0LlBvbGljeUluc2lnaHRzL2F0dGVzdGF0aW9ucy9hdHRlc3RhdGlvbi1yZ3Njb3BlLWNydWQ/YXBpLXZlcnNpb249MjAyMi0wOS0wMQ==",
       "RequestMethod": "GET",
       "RequestHeaders": {
@@ -472,7 +472,7 @@
       "StatusCode": 200
     },
     {
-      "RequestUri": "//subscriptions/086aecf4-23d6-4dfd-99a8-a5c6299f0322/resourcegroups/ps-attestation-test-rg//providers/Microsoft.PolicyInsights/attestations/attestation-rgscope-crud?api-version=2022-09-01",
+      "RequestUri": "/086aecf4-23d6-4dfd-99a8-a5c6299f0322/resourcegroups/ps-attestation-test-rg//providers/Microsoft.PolicyInsights/attestations/attestation-rgscope-crud%3Fapi-version=2022-09-01",
       "EncodedRequestUri": "Ly9zdWJzY3JpcHRpb25zLzA4NmFlY2Y0LTIzZDYtNGRmZC05OWE4LWE1YzYyOTlmMDMyMi9yZXNvdXJjZWdyb3Vwcy9wcy1hdHRlc3RhdGlvbi10ZXN0LXJnLy9wcm92aWRlcnMvTWljcm9zb2Z0LlBvbGljeUluc2lnaHRzL2F0dGVzdGF0aW9ucy9hdHRlc3RhdGlvbi1yZ3Njb3BlLWNydWQ/YXBpLXZlcnNpb249MjAyMi0wOS0wMQ==",
       "RequestMethod": "PUT",
       "RequestHeaders": {
@@ -544,7 +544,7 @@
       "StatusCode": 200
     },
     {
-      "RequestUri": "//subscriptions/086aecf4-23d6-4dfd-99a8-a5c6299f0322/resourcegroups/ps-attestation-test-rg//providers/Microsoft.PolicyInsights/attestations/attestation-rgscope-crud?api-version=2022-09-01",
+      "RequestUri": "/086aecf4-23d6-4dfd-99a8-a5c6299f0322/resourcegroups/ps-attestation-test-rg//providers/Microsoft.PolicyInsights/attestations/attestation-rgscope-crud%3Fapi-version=2022-09-01",
       "EncodedRequestUri": "Ly9zdWJzY3JpcHRpb25zLzA4NmFlY2Y0LTIzZDYtNGRmZC05OWE4LWE1YzYyOTlmMDMyMi9yZXNvdXJjZWdyb3Vwcy9wcy1hdHRlc3RhdGlvbi10ZXN0LXJnLy9wcm92aWRlcnMvTWljcm9zb2Z0LlBvbGljeUluc2lnaHRzL2F0dGVzdGF0aW9ucy9hdHRlc3RhdGlvbi1yZ3Njb3BlLWNydWQ/YXBpLXZlcnNpb249MjAyMi0wOS0wMQ==",
       "RequestMethod": "PUT",
       "RequestHeaders": {
@@ -616,7 +616,7 @@
       "StatusCode": 200
     },
     {
-      "RequestUri": "//subscriptions/086aecf4-23d6-4dfd-99a8-a5c6299f0322/resourceGroups/ps-attestation-test-rg/providers/Microsoft.PolicyInsights/attestations/Attestation-RG-Full?api-version=2022-09-01",
+      "RequestUri": "/086aecf4-23d6-4dfd-99a8-a5c6299f0322/resourceGroups/ps-attestation-test-rg/providers/Microsoft.PolicyInsights/attestations/Attestation-RG-Full%3Fapi-version=2022-09-01",
       "EncodedRequestUri": "Ly9zdWJzY3JpcHRpb25zLzA4NmFlY2Y0LTIzZDYtNGRmZC05OWE4LWE1YzYyOTlmMDMyMi9yZXNvdXJjZUdyb3Vwcy9wcy1hdHRlc3RhdGlvbi10ZXN0LXJnL3Byb3ZpZGVycy9NaWNyb3NvZnQuUG9saWN5SW5zaWdodHMvYXR0ZXN0YXRpb25zL0F0dGVzdGF0aW9uLVJHLUZ1bGw/YXBpLXZlcnNpb249MjAyMi0wOS0wMQ==",
       "RequestMethod": "GET",
       "RequestHeaders": {
@@ -679,7 +679,7 @@
       "StatusCode": 404
     },
     {
-      "RequestUri": "//subscriptions/086aecf4-23d6-4dfd-99a8-a5c6299f0322/resourceGroups/ps-attestation-test-rg/providers/Microsoft.PolicyInsights/attestations/Attestation-RG-Full?api-version=2022-09-01",
+      "RequestUri": "/086aecf4-23d6-4dfd-99a8-a5c6299f0322/resourceGroups/ps-attestation-test-rg/providers/Microsoft.PolicyInsights/attestations/Attestation-RG-Full%3Fapi-version=2022-09-01",
       "EncodedRequestUri": "Ly9zdWJzY3JpcHRpb25zLzA4NmFlY2Y0LTIzZDYtNGRmZC05OWE4LWE1YzYyOTlmMDMyMi9yZXNvdXJjZUdyb3Vwcy9wcy1hdHRlc3RhdGlvbi10ZXN0LXJnL3Byb3ZpZGVycy9NaWNyb3NvZnQuUG9saWN5SW5zaWdodHMvYXR0ZXN0YXRpb25zL0F0dGVzdGF0aW9uLVJHLUZ1bGw/YXBpLXZlcnNpb249MjAyMi0wOS0wMQ==",
       "RequestMethod": "GET",
       "RequestHeaders": {
@@ -745,7 +745,7 @@
       "StatusCode": 200
     },
     {
-      "RequestUri": "//subscriptions/086aecf4-23d6-4dfd-99a8-a5c6299f0322/resourceGroups/ps-attestation-test-rg/providers/Microsoft.PolicyInsights/attestations/Attestation-RG-Full?api-version=2022-09-01",
+      "RequestUri": "/086aecf4-23d6-4dfd-99a8-a5c6299f0322/resourceGroups/ps-attestation-test-rg/providers/Microsoft.PolicyInsights/attestations/Attestation-RG-Full%3Fapi-version=2022-09-01",
       "EncodedRequestUri": "Ly9zdWJzY3JpcHRpb25zLzA4NmFlY2Y0LTIzZDYtNGRmZC05OWE4LWE1YzYyOTlmMDMyMi9yZXNvdXJjZUdyb3Vwcy9wcy1hdHRlc3RhdGlvbi10ZXN0LXJnL3Byb3ZpZGVycy9NaWNyb3NvZnQuUG9saWN5SW5zaWdodHMvYXR0ZXN0YXRpb25zL0F0dGVzdGF0aW9uLVJHLUZ1bGw/YXBpLXZlcnNpb249MjAyMi0wOS0wMQ==",
       "RequestMethod": "GET",
       "RequestHeaders": {
@@ -811,7 +811,7 @@
       "StatusCode": 200
     },
     {
-      "RequestUri": "//subscriptions/086aecf4-23d6-4dfd-99a8-a5c6299f0322/resourceGroups/ps-attestation-test-rg/providers/Microsoft.PolicyInsights/attestations/Attestation-RG-Full?api-version=2022-09-01",
+      "RequestUri": "/086aecf4-23d6-4dfd-99a8-a5c6299f0322/resourceGroups/ps-attestation-test-rg/providers/Microsoft.PolicyInsights/attestations/Attestation-RG-Full%3Fapi-version=2022-09-01",
       "EncodedRequestUri": "Ly9zdWJzY3JpcHRpb25zLzA4NmFlY2Y0LTIzZDYtNGRmZC05OWE4LWE1YzYyOTlmMDMyMi9yZXNvdXJjZUdyb3Vwcy9wcy1hdHRlc3RhdGlvbi10ZXN0LXJnL3Byb3ZpZGVycy9NaWNyb3NvZnQuUG9saWN5SW5zaWdodHMvYXR0ZXN0YXRpb25zL0F0dGVzdGF0aW9uLVJHLUZ1bGw/YXBpLXZlcnNpb249MjAyMi0wOS0wMQ==",
       "RequestMethod": "PUT",
       "RequestHeaders": {
@@ -883,7 +883,7 @@
       "StatusCode": 201
     },
     {
-      "RequestUri": "//subscriptions/086aecf4-23d6-4dfd-99a8-a5c6299f0322/resourceGroups/ps-attestation-test-rg/providers/Microsoft.PolicyInsights/attestations/Attestation-RG-Full?api-version=2022-09-01",
+      "RequestUri": "/086aecf4-23d6-4dfd-99a8-a5c6299f0322/resourceGroups/ps-attestation-test-rg/providers/Microsoft.PolicyInsights/attestations/Attestation-RG-Full%3Fapi-version=2022-09-01",
       "EncodedRequestUri": "Ly9zdWJzY3JpcHRpb25zLzA4NmFlY2Y0LTIzZDYtNGRmZC05OWE4LWE1YzYyOTlmMDMyMi9yZXNvdXJjZUdyb3Vwcy9wcy1hdHRlc3RhdGlvbi10ZXN0LXJnL3Byb3ZpZGVycy9NaWNyb3NvZnQuUG9saWN5SW5zaWdodHMvYXR0ZXN0YXRpb25zL0F0dGVzdGF0aW9uLVJHLUZ1bGw/YXBpLXZlcnNpb249MjAyMi0wOS0wMQ==",
       "RequestMethod": "PUT",
       "RequestHeaders": {
@@ -955,7 +955,7 @@
       "StatusCode": 200
     },
     {
-      "RequestUri": "//subscriptions/086aecf4-23d6-4dfd-99a8-a5c6299f0322/resourcegroups/ps-attestation-test-rg//providers/Microsoft.PolicyInsights/attestations/attestation-rg-full?api-version=2022-09-01",
+      "RequestUri": "/086aecf4-23d6-4dfd-99a8-a5c6299f0322/resourcegroups/ps-attestation-test-rg//providers/Microsoft.PolicyInsights/attestations/attestation-rg-full%3Fapi-version=2022-09-01",
       "EncodedRequestUri": "Ly9zdWJzY3JpcHRpb25zLzA4NmFlY2Y0LTIzZDYtNGRmZC05OWE4LWE1YzYyOTlmMDMyMi9yZXNvdXJjZWdyb3Vwcy9wcy1hdHRlc3RhdGlvbi10ZXN0LXJnLy9wcm92aWRlcnMvTWljcm9zb2Z0LlBvbGljeUluc2lnaHRzL2F0dGVzdGF0aW9ucy9hdHRlc3RhdGlvbi1yZy1mdWxsP2FwaS12ZXJzaW9uPTIwMjItMDktMDE=",
       "RequestMethod": "GET",
       "RequestHeaders": {
@@ -1021,7 +1021,7 @@
       "StatusCode": 200
     },
     {
-      "RequestUri": "//subscriptions/086aecf4-23d6-4dfd-99a8-a5c6299f0322/resourcegroups/ps-attestation-test-rg//providers/Microsoft.PolicyInsights/attestations/attestation-rg-full?api-version=2022-09-01",
+      "RequestUri": "/086aecf4-23d6-4dfd-99a8-a5c6299f0322/resourcegroups/ps-attestation-test-rg//providers/Microsoft.PolicyInsights/attestations/attestation-rg-full%3Fapi-version=2022-09-01",
       "EncodedRequestUri": "Ly9zdWJzY3JpcHRpb25zLzA4NmFlY2Y0LTIzZDYtNGRmZC05OWE4LWE1YzYyOTlmMDMyMi9yZXNvdXJjZWdyb3Vwcy9wcy1hdHRlc3RhdGlvbi10ZXN0LXJnLy9wcm92aWRlcnMvTWljcm9zb2Z0LlBvbGljeUluc2lnaHRzL2F0dGVzdGF0aW9ucy9hdHRlc3RhdGlvbi1yZy1mdWxsP2FwaS12ZXJzaW9uPTIwMjItMDktMDE=",
       "RequestMethod": "GET",
       "RequestHeaders": {
@@ -1087,7 +1087,7 @@
       "StatusCode": 200
     },
     {
-      "RequestUri": "//subscriptions/086aecf4-23d6-4dfd-99a8-a5c6299f0322/resourcegroups/ps-attestation-test-rg//providers/Microsoft.PolicyInsights/attestations/attestation-rg-full?api-version=2022-09-01",
+      "RequestUri": "/086aecf4-23d6-4dfd-99a8-a5c6299f0322/resourcegroups/ps-attestation-test-rg//providers/Microsoft.PolicyInsights/attestations/attestation-rg-full%3Fapi-version=2022-09-01",
       "EncodedRequestUri": "Ly9zdWJzY3JpcHRpb25zLzA4NmFlY2Y0LTIzZDYtNGRmZC05OWE4LWE1YzYyOTlmMDMyMi9yZXNvdXJjZWdyb3Vwcy9wcy1hdHRlc3RhdGlvbi10ZXN0LXJnLy9wcm92aWRlcnMvTWljcm9zb2Z0LlBvbGljeUluc2lnaHRzL2F0dGVzdGF0aW9ucy9hdHRlc3RhdGlvbi1yZy1mdWxsP2FwaS12ZXJzaW9uPTIwMjItMDktMDE=",
       "RequestMethod": "PUT",
       "RequestHeaders": {
@@ -1159,7 +1159,7 @@
       "StatusCode": 200
     },
     {
-      "RequestUri": "//subscriptions/086aecf4-23d6-4dfd-99a8-a5c6299f0322/resourcegroups/ps-attestation-test-rg//providers/Microsoft.PolicyInsights/attestations/attestation-rg-full?api-version=2022-09-01",
+      "RequestUri": "/086aecf4-23d6-4dfd-99a8-a5c6299f0322/resourcegroups/ps-attestation-test-rg//providers/Microsoft.PolicyInsights/attestations/attestation-rg-full%3Fapi-version=2022-09-01",
       "EncodedRequestUri": "Ly9zdWJzY3JpcHRpb25zLzA4NmFlY2Y0LTIzZDYtNGRmZC05OWE4LWE1YzYyOTlmMDMyMi9yZXNvdXJjZWdyb3Vwcy9wcy1hdHRlc3RhdGlvbi10ZXN0LXJnLy9wcm92aWRlcnMvTWljcm9zb2Z0LlBvbGljeUluc2lnaHRzL2F0dGVzdGF0aW9ucy9hdHRlc3RhdGlvbi1yZy1mdWxsP2FwaS12ZXJzaW9uPTIwMjItMDktMDE=",
       "RequestMethod": "PUT",
       "RequestHeaders": {
@@ -1231,7 +1231,7 @@
       "StatusCode": 200
     },
     {
-      "RequestUri": "//subscriptions/086aecf4-23d6-4dfd-99a8-a5c6299f0322/resourceGroups/ps-attestation-test-rg/providers/Microsoft.PolicyInsights/attestations?api-version=2022-09-01",
+      "RequestUri": "/086aecf4-23d6-4dfd-99a8-a5c6299f0322/resourceGroups/ps-attestation-test-rg/providers/Microsoft.PolicyInsights/attestations%3Fapi-version=2022-09-01",
       "EncodedRequestUri": "Ly9zdWJzY3JpcHRpb25zLzA4NmFlY2Y0LTIzZDYtNGRmZC05OWE4LWE1YzYyOTlmMDMyMi9yZXNvdXJjZUdyb3Vwcy9wcy1hdHRlc3RhdGlvbi10ZXN0LXJnL3Byb3ZpZGVycy9NaWNyb3NvZnQuUG9saWN5SW5zaWdodHMvYXR0ZXN0YXRpb25zP2FwaS12ZXJzaW9uPTIwMjItMDktMDE=",
       "RequestMethod": "GET",
       "RequestHeaders": {
@@ -1297,7 +1297,7 @@
       "StatusCode": 200
     },
     {
-      "RequestUri": "//subscriptions/086aecf4-23d6-4dfd-99a8-a5c6299f0322/resourceGroups/ps-attestation-test-rg/providers/Microsoft.PolicyInsights/attestations?api-version=2022-09-01",
+      "RequestUri": "/086aecf4-23d6-4dfd-99a8-a5c6299f0322/resourceGroups/ps-attestation-test-rg/providers/Microsoft.PolicyInsights/attestations%3Fapi-version=2022-09-01",
       "EncodedRequestUri": "Ly9zdWJzY3JpcHRpb25zLzA4NmFlY2Y0LTIzZDYtNGRmZC05OWE4LWE1YzYyOTlmMDMyMi9yZXNvdXJjZUdyb3Vwcy9wcy1hdHRlc3RhdGlvbi10ZXN0LXJnL3Byb3ZpZGVycy9NaWNyb3NvZnQuUG9saWN5SW5zaWdodHMvYXR0ZXN0YXRpb25zP2FwaS12ZXJzaW9uPTIwMjItMDktMDE=",
       "RequestMethod": "GET",
       "RequestHeaders": {
@@ -1363,7 +1363,7 @@
       "StatusCode": 200
     },
     {
-      "RequestUri": "//subscriptions/086aecf4-23d6-4dfd-99a8-a5c6299f0322/resourceGroups/ps-attestation-test-rg/providers/Microsoft.PolicyInsights/attestations?api-version=2022-09-01",
+      "RequestUri": "/086aecf4-23d6-4dfd-99a8-a5c6299f0322/resourceGroups/ps-attestation-test-rg/providers/Microsoft.PolicyInsights/attestations%3Fapi-version=2022-09-01",
       "EncodedRequestUri": "Ly9zdWJzY3JpcHRpb25zLzA4NmFlY2Y0LTIzZDYtNGRmZC05OWE4LWE1YzYyOTlmMDMyMi9yZXNvdXJjZUdyb3Vwcy9wcy1hdHRlc3RhdGlvbi10ZXN0LXJnL3Byb3ZpZGVycy9NaWNyb3NvZnQuUG9saWN5SW5zaWdodHMvYXR0ZXN0YXRpb25zP2FwaS12ZXJzaW9uPTIwMjItMDktMDE=",
       "RequestMethod": "GET",
       "RequestHeaders": {
@@ -1429,7 +1429,7 @@
       "StatusCode": 200
     },
     {
-      "RequestUri": "//subscriptions/086aecf4-23d6-4dfd-99a8-a5c6299f0322/resourcegroups/ps-attestation-test-rg//providers/Microsoft.PolicyInsights/attestations/Attestation-RGScope-Crud?api-version=2022-09-01",
+      "RequestUri": "/086aecf4-23d6-4dfd-99a8-a5c6299f0322/resourcegroups/ps-attestation-test-rg//providers/Microsoft.PolicyInsights/attestations/Attestation-RGScope-Crud%3Fapi-version=2022-09-01",
       "EncodedRequestUri": "Ly9zdWJzY3JpcHRpb25zLzA4NmFlY2Y0LTIzZDYtNGRmZC05OWE4LWE1YzYyOTlmMDMyMi9yZXNvdXJjZWdyb3Vwcy9wcy1hdHRlc3RhdGlvbi10ZXN0LXJnLy9wcm92aWRlcnMvTWljcm9zb2Z0LlBvbGljeUluc2lnaHRzL2F0dGVzdGF0aW9ucy9BdHRlc3RhdGlvbi1SR1Njb3BlLUNydWQ/YXBpLXZlcnNpb249MjAyMi0wOS0wMQ==",
       "RequestMethod": "DELETE",
       "RequestHeaders": {
@@ -1492,7 +1492,7 @@
       "StatusCode": 200
     },
     {
-      "RequestUri": "//subscriptions/086aecf4-23d6-4dfd-99a8-a5c6299f0322/resourcegroups/ps-attestation-test-rg//providers/Microsoft.PolicyInsights/attestations/Attestation-RG-Full?api-version=2022-09-01",
+      "RequestUri": "/086aecf4-23d6-4dfd-99a8-a5c6299f0322/resourcegroups/ps-attestation-test-rg//providers/Microsoft.PolicyInsights/attestations/Attestation-RG-Full%3Fapi-version=2022-09-01",
       "EncodedRequestUri": "Ly9zdWJzY3JpcHRpb25zLzA4NmFlY2Y0LTIzZDYtNGRmZC05OWE4LWE1YzYyOTlmMDMyMi9yZXNvdXJjZWdyb3Vwcy9wcy1hdHRlc3RhdGlvbi10ZXN0LXJnLy9wcm92aWRlcnMvTWljcm9zb2Z0LlBvbGljeUluc2lnaHRzL2F0dGVzdGF0aW9ucy9BdHRlc3RhdGlvbi1SRy1GdWxsP2FwaS12ZXJzaW9uPTIwMjItMDktMDE=",
       "RequestMethod": "DELETE",
       "RequestHeaders": {
@@ -1557,6 +1557,6 @@
   ],
   "Names": {},
   "Variables": {
-    "SubscriptionId": "086aecf4-23d6-4dfd-99a8-a5c6299f0322"
+    "SubscriptionId": "dc1789a8-0762-4dfb-8901-4c0da08b83d3"
   }
 }

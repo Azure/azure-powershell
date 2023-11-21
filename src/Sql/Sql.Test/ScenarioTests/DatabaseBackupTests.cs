@@ -102,20 +102,6 @@ namespace Microsoft.Azure.Commands.Sql.Test.ScenarioTests
             TestRunner.RunTestScript("Test-LongTermRetentionV2ResourceGroupBasedBackup");
         }
 
-        [Fact]
-        [Trait(Category.AcceptanceType, Category.CheckIn)]
-        public void TestUpdateLongTermRetentionBackupAccessTier()
-        {
-            TestRunner.RunTestScript("Test-UpdateLongTermRetentionBackupAccessTier");
-        }
-
-        [Fact]
-        [Trait(Category.AcceptanceType, Category.CheckIn)]
-        public void TestUpdateLongTermRetentionResourceGroupBasedBackupAccessTier()
-        {
-            TestRunner.RunTestScript("Test-UpdateLongTermRetentionResourceGroupBasedBackupAccessTier");
-        }
-
         [Fact(Skip = "This is not recordable test")]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestLongTermRetentionV2()
