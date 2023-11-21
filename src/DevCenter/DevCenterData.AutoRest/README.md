@@ -180,7 +180,7 @@ directive:
   - where:
       subject: ^(.*)
     hide: true
- - where: 
+  - where: 
      parameter-name: DevCenter 
    set: 
      parameter-name: DevCenterName 
