@@ -21,6 +21,7 @@ using Microsoft.Azure.Commands.StorageSync.Interfaces;
 using Microsoft.Azure.Test.HttpRecorder;
 using Microsoft.Rest.ClientRuntime.Azure.TestFramework;
 using System;
+using System.Management.Automation.Runspaces;
 using System.Text.RegularExpressions;
 
 namespace StorageSync.Test.Common
@@ -144,6 +145,8 @@ namespace StorageSync.Test.Common
 
             if (IsPlaybackMode)
             {
+                // The TestFx framework defaults to a dummy tenant id in their automation pipeline, so default to our test tenant in Playback mode if not set.
+                // Failure to do this will cause cross tenant CloudEndpoint creation errors in PR validation automation.
                 tenantId = HttpMockServer.GetVariable(StorageSyncConstants.TenantId, "0483643a-cb2f-462a-bc27-1a270e5bdc0a");
             }
             return tenantId;
