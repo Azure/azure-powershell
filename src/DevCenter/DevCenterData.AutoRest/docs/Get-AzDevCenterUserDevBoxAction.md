@@ -182,7 +182,7 @@ The name of an action that will take place on a Dev Box.
 ```yaml
 Type: System.String
 Parameter Sets: Get, GetByDevCenter
-Aliases:
+Aliases: ActionName
 
 Required: True
 Position: Named

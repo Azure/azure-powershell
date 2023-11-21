@@ -68,6 +68,7 @@ function Skip-AzDevCenterUserDevBoxAction {
 
     [Parameter(ParameterSetName = 'Skip', Mandatory)]
     [Parameter(ParameterSetName = 'SkipByDevCenter', Mandatory)]
+    [Alias('ActionName')]
     [Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Category('Path')]
     [System.String]
     # The name of an action that will take place on a Dev Box.

@@ -158,7 +158,7 @@ The name of an action that will take place on an Environment.
 ```yaml
 Type: System.String
 Parameter Sets: Skip, SkipByDevCenter
-Aliases:
+Aliases: ActionName
 
 Required: True
 Position: Named
