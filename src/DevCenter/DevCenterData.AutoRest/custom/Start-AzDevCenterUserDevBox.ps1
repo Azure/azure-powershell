@@ -60,6 +60,7 @@ function Start-AzDevCenterUserDevBox {
 
     [Parameter(ParameterSetName = 'StartViaIdentityByDevCenter', Mandatory)]
     [Parameter(ParameterSetName = 'StartByDevCenter', Mandatory)]
+    [Alias('DevCenter')]
     [Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Category('Uri')]
     [System.String]
     # The DevCenter upon which to execute operations.

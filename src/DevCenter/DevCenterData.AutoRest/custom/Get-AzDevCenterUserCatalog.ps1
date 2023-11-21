@@ -64,6 +64,7 @@ function Get-AzDevCenterUserCatalog {
     [Parameter(ParameterSetName = 'GetViaIdentityByDevCenter', Mandatory)]
     [Parameter(ParameterSetName = 'ListByDevCenter', Mandatory)]
     [Parameter(ParameterSetName = 'GetByDevCenter', Mandatory)]
+    [Alias('DevCenter')]
     [Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Category('Uri')]
     [System.String]
     # The DevCenter upon which to execute operations.

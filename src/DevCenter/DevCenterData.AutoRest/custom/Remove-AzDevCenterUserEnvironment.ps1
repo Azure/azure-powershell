@@ -61,6 +61,7 @@ function Remove-AzDevCenterUserEnvironment {
     [Parameter(ParameterSetName = 'DeleteViaIdentityByDevCenter', Mandatory)]
     [Parameter(ParameterSetName = 'DeleteByDevCenter', Mandatory)]
     [Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Category('Uri')]
+    [Alias('DevCenter')]
     [System.String]
     # The DevCenter upon which to execute operations.
     ${DevCenterName},

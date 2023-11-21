@@ -62,6 +62,7 @@ function Get-AzDevCenterUserPool {
         [Parameter(ParameterSetName = 'GetByDevCenter', Mandatory)]
         [Parameter(ParameterSetName = 'ListByDevCenter', Mandatory)]
         [Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Category('Uri')]
+        [Alias('DevCenter')]
         [System.String]
         # The DevCenter upon which to execute operations.
         ${DevCenterName},

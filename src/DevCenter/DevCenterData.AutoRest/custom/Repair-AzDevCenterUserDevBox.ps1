@@ -63,6 +63,7 @@ function Repair-AzDevCenterUserDevBox {
 
         [Parameter(ParameterSetName = 'RepairViaIdentityByDevCenter', Mandatory)]
         [Parameter(ParameterSetName = 'RepairByDevCenter', Mandatory)]
+        [Alias('DevCenter')]
         [Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Category('Uri')]
         [System.String]
         # The DevCenter upon which to execute operations.

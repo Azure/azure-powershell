@@ -77,6 +77,7 @@ function Deploy-AzDevCenterUserEnvironment {
   
     [Parameter(ParameterSetName = 'CreateViaIdentityExpandedByDevCenter', Mandatory)]
     [Parameter(ParameterSetName = 'CreateExpandedByDevCenter', Mandatory)]
+    [Alias('DevCenter')]
     [Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Category('Uri')]
     [System.String]
     # The DevCenter upon which to execute operations.

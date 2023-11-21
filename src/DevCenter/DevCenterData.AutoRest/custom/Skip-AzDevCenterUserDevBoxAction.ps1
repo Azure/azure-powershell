@@ -60,6 +60,7 @@ function Skip-AzDevCenterUserDevBoxAction {
 
     [Parameter(ParameterSetName = 'SkipViaIdentityByDevCenter', Mandatory)]
     [Parameter(ParameterSetName = 'SkipByDevCenter', Mandatory)]
+    [Alias('DevCenter')]
     [Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Category('Uri')]
     [System.String]
     # The DevCenter upon which to execute operations.

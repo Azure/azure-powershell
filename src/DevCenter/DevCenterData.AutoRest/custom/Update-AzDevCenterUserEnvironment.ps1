@@ -83,6 +83,7 @@ param(
 
     [Parameter(ParameterSetName = 'PatchExpandedByDevCenter', Mandatory)]
     [Parameter(ParameterSetName='PatchViaIdentityExpandedByDevCenter', Mandatory)]
+    [Alias('DevCenter')]
     [Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Category('Uri')]
     [System.String]
     # The DevCenter upon which to execute operations.

@@ -62,6 +62,7 @@ function Remove-AzDevCenterUserDevBox {
     [Parameter(ParameterSetName = 'DeleteByDevCenter', Mandatory)]
     [Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Category('Uri')]
     [System.String]
+    [Alias('DevCenter')]
     # The DevCenter upon which to execute operations.
     ${DevCenterName},
 

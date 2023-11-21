@@ -60,6 +60,7 @@ function Restart-AzDevCenterUserDevBox {
 
     [Parameter(ParameterSetName = 'RestartViaIdentityByDevCenter', Mandatory)]
     [Parameter(ParameterSetName = 'RestartByDevCenter', Mandatory)]
+    [Alias('DevCenter')]
     [Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Category('Uri')]
     [System.String]
     # The DevCenter upon which to execute operations.

@@ -63,6 +63,7 @@ function Invoke-AzDevCenterUserDelayDevBoxAction {
     [Parameter(ParameterSetName = 'Delay1ByDevCenter', Mandatory)]
     [Parameter(ParameterSetName = 'DelayByDevCenter', Mandatory)]
     [Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Category('Uri')]
+    [Alias('DevCenter')]
     [System.String]
     # The DevCenter upon which to execute operations.
     ${DevCenterName},

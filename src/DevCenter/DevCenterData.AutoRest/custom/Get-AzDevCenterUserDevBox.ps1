@@ -66,6 +66,7 @@ function Get-AzDevCenterUserDevBox {
         [Parameter(ParameterSetName='List2ByDevCenter', Mandatory)]
         [Parameter(ParameterSetName='List1ByDevCenter', Mandatory)]
         [Parameter(ParameterSetName='GetByDevCenter', Mandatory)]
+        [Alias('DevCenter')]
         [Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Category('Uri')]
         [System.String]
         # The DevCenter upon which to execute operations.

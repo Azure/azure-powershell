@@ -64,6 +64,7 @@ function Get-AzDevCenterUserSchedule {
         [Parameter(ParameterSetName = 'GetViaIdentityByDevCenter', Mandatory)]
         [Parameter(ParameterSetName='List1ByDevCenter', Mandatory)]
         [Parameter(ParameterSetName='ListByDevCenter', Mandatory)]
+        [Alias('DevCenter')]
         [Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Category('Uri')]
         [System.String]
         # The DevCenter upon which to execute operations.

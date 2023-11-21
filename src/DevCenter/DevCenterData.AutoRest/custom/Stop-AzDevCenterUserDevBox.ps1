@@ -60,6 +60,7 @@ function Stop-AzDevCenterUserDevBox {
 
     [Parameter(ParameterSetName = 'StopViaIdentityByDevCenter', Mandatory)]
     [Parameter(ParameterSetName = 'StopByDevCenter', Mandatory)]
+    [Alias('DevCenter')]
     [Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Category('Uri')]
     [System.String]
     # The DevCenter upon which to execute operations.
