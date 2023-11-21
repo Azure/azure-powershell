@@ -144,10 +144,7 @@ namespace StorageSync.Test.Common
 
             if (IsPlaybackMode)
             {
-                if (HttpMockServer.Variables.ContainsKey(StorageSyncConstants.TenantId))
-                {
-                    tenantId = HttpMockServer.GetVariable(StorageSyncConstants.TenantId, "0483643a-cb2f-462a-bc27-1a270e5bdc0a");
-                }
+                tenantId = HttpMockServer.GetVariable(StorageSyncConstants.TenantId, "0483643a-cb2f-462a-bc27-1a270e5bdc0a");
             }
             return tenantId;
         }
