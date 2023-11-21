@@ -47,49 +47,6 @@
           ]
         }
       ]
-    },
-    {
-      "name": "Remove-AzConnectedVMwareInventoryItem",
-      "description": "Implements inventoryItem DELETE method.",
-      "path": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ConnectedVMwarevSphere/vcenters/{vcenterName}/inventoryItems/{inventoryItemName}",
-      "help": {
-        "learnMore": {
-          "url": "https://learn.microsoft.com/powershell/module/az.connectedvmware/remove-azconnectedvmwareinventoryitem"
-        },
-        "parameterSets": [
-          {
-            "parameters": [
-              "-Name <String>",
-              "-ResourceGroupName <String>",
-              "[-SubscriptionId <String>]",
-              "-VcenterName <String>"
-            ]
-          }
-        ]
-      },
-      "examples": [
-        {
-          "description": "Implements inventoryItem DELETE method.",
-          "parameters": [
-            {
-              "name": "-Name",
-              "value": "[Path.inventoryItemName]"
-            },
-            {
-              "name": "-ResourceGroupName",
-              "value": "[Path.resourceGroupName]"
-            },
-            {
-              "name": "-SubscriptionId",
-              "value": "[Path.subscriptionId]"
-            },
-            {
-              "name": "-VcenterName",
-              "value": "[Path.vcenterName]"
-            }
-          ]
-        }
-      ]
     }
   ]
 }

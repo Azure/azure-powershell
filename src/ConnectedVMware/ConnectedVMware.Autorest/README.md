@@ -130,4 +130,17 @@ directive:
     set:
       parameter-name: HardwareProfileNumCpus
 
+  # Hide unnecessary 
+  - where:
+      verb: New$|Remove$|Update$ 
+      subject: ^InventoryItem$
+    remove: true
+  - where:
+      verb: Remove$|Update$
+      subject: ^VMGuestAgent$
+    remove: true
+  - where:
+      verb: Get$
+      subject: ^VMHybridIdentityMetadata$
+    remove: true
 ```

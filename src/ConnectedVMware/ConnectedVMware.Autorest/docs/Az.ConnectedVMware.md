@@ -35,9 +35,6 @@ Retrieves information about a virtual machine instance.
 ### [Get-AzConnectedVMwareVMGuestAgent](Get-AzConnectedVMwareVMGuestAgent.md)
 Implements GuestAgent GET method.
 
-### [Get-AzConnectedVMwareVMHybridIdentityMetadata](Get-AzConnectedVMwareVMHybridIdentityMetadata.md)
-Implements HybridIdentityMetadata GET method.
-
 ### [Get-AzConnectedVMwareVMTemplate](Get-AzConnectedVMwareVMTemplate.md)
 Implements virtual machine template GET method.
 
@@ -52,9 +49,6 @@ Create datastore.
 
 ### [New-AzConnectedVMwareHost](New-AzConnectedVMwareHost.md)
 Create host.
-
-### [New-AzConnectedVMwareInventoryItem](New-AzConnectedVMwareInventoryItem.md)
-Create InventoryItem.
 
 ### [New-AzConnectedVMwareResourcePool](New-AzConnectedVMwareResourcePool.md)
 Create resourcePool.
@@ -84,9 +78,6 @@ Implements datastore DELETE method.
 ### [Remove-AzConnectedVMwareHost](Remove-AzConnectedVMwareHost.md)
 Implements host DELETE method.
 
-### [Remove-AzConnectedVMwareInventoryItem](Remove-AzConnectedVMwareInventoryItem.md)
-Implements inventoryItem DELETE method.
-
 ### [Remove-AzConnectedVMwareResourcePool](Remove-AzConnectedVMwareResourcePool.md)
 Implements resourcePool DELETE method.
 
@@ -95,9 +86,6 @@ Implements vCenter DELETE method.
 
 ### [Remove-AzConnectedVMwareVM](Remove-AzConnectedVMwareVM.md)
 The operation to delete a virtual machine instance.
-
-### [Remove-AzConnectedVMwareVMGuestAgent](Remove-AzConnectedVMwareVMGuestAgent.md)
-Implements GuestAgent DELETE method.
 
 ### [Remove-AzConnectedVMwareVMTemplate](Remove-AzConnectedVMwareVMTemplate.md)
 Implements virtual machine template DELETE method.
@@ -123,9 +111,6 @@ API to update certain properties of the datastore resource.
 ### [Update-AzConnectedVMwareHost](Update-AzConnectedVMwareHost.md)
 API to update certain properties of the host resource.
 
-### [Update-AzConnectedVMwareInventoryItem](Update-AzConnectedVMwareInventoryItem.md)
-Create InventoryItem.
-
 ### [Update-AzConnectedVMwareResourcePool](Update-AzConnectedVMwareResourcePool.md)
 API to update certain properties of the resourcePool resource.
 
@@ -134,9 +119,6 @@ API to update certain properties of the vCenter resource.
 
 ### [Update-AzConnectedVMwareVM](Update-AzConnectedVMwareVM.md)
 The operation to update a virtual machine instance.
-
-### [Update-AzConnectedVMwareVMGuestAgent](Update-AzConnectedVMwareVMGuestAgent.md)
-Create GuestAgent.
 
 ### [Update-AzConnectedVMwareVMTemplate](Update-AzConnectedVMwareVMTemplate.md)
 API to update certain properties of the virtual machine template resource.
