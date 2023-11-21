@@ -181,10 +181,10 @@ directive:
       subject: ^(.*)
     hide: true
   - where: 
-     parameter-name: DevCenter 
-   set: 
-     parameter-name: DevCenterName 
-     alias: DevCenter 
+      parameter-name: DevCenter 
+    set: 
+      parameter-name: DevCenterName 
+      alias: DevCenter 
   - where:
       subject: ^(.*)
     set:
