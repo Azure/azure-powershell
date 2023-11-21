@@ -50,9 +50,8 @@ Describe 'RemovePolicySetDefinitionParameters' -Tag 'LiveOnly' {
         {
             # validate parameter combinations starting with -SubscriptionId
             #Assert-ThrowsContains { Remove-AzPolicySetDefinition -SubscriptionId $subscriptionId -Force } $httpMethodNotSupported
-            # Autorest error response is better
-            $bad = Remove-AzPolicySetDefinition -SubscriptionId $subscriptionId -Force -BackwardCompatible
-            Assert-AreEqual False $bad
+            # Improved error response
+            Assert-ThrowsContains { Remove-AzPolicySetDefinition -SubscriptionId $subscriptionId -Force } $missingParameters
         } | Should -Not -Throw
     }
 }

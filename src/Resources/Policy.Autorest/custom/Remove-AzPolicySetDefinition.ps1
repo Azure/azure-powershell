@@ -35,8 +35,8 @@ function Remove-AzPolicySetDefinition {
 [CmdletBinding(DefaultParameterSetName='Name', SupportsShouldProcess, ConfirmImpact='High')]
 param(
     [Parameter(ParameterSetName='Name', Mandatory, ValueFromPipelineByPropertyName)]
-    [Parameter(ParameterSetName='ManagementGroupName', ValueFromPipelineByPropertyName)]
-    [Parameter(ParameterSetName='SubscriptionId', ValueFromPipelineByPropertyName)]
+    [Parameter(ParameterSetName='ManagementGroupName', Mandatory)]
+    [Parameter(ParameterSetName='SubscriptionId', Mandatory)]
     [ValidateNotNullOrEmpty()]
     [Alias('PolicySetDefinitionName')]
     [Microsoft.Azure.PowerShell.Cmdlets.Policy.Category('Path')]

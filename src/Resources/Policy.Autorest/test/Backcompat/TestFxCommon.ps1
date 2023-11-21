@@ -579,7 +579,7 @@ function getSubscriptionFromEnvironment
 
    return $subscription
 }
-
+<#
 function Get-Location
 {
     param([string]$providerNamespace, [string]$resourceType, [string]$preferredLocation, [switch]$UseCanonical)
@@ -629,7 +629,7 @@ function Get-Location
         return $location
     }
 }
-
+#>
 function Normalize-Location
 {
     param([string]$location)

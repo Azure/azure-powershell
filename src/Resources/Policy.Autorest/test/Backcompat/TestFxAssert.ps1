@@ -23,6 +23,7 @@ function Assert-Throws {
   param([scriptblock] $script, [string] $message)
   try {
     & $script
+    throw "No exception occurred"
   }
   catch {
     if ($message -ne "") {
@@ -40,8 +41,6 @@ function Assert-Throws {
       return $true
     }
   }
-
-  throw "No exception occurred"
 }
 
 ######################
@@ -55,6 +54,7 @@ function Assert-ThrowsContains {
   param([scriptblock] $script, [string] $compare)
   try {
     & $script
+    throw "No exception occurred"
   }
   catch {
     if ($compare -ne "") {
@@ -72,8 +72,6 @@ function Assert-ThrowsContains {
       return $true
     }
   }
-
-  throw "No exception occurred"
 }
 
 ######################
@@ -87,6 +85,7 @@ function Assert-ThrowsLike {
   param([scriptblock] $script, [string] $compare)
   try {
     & $script
+    throw "No exception occurred"
   }
   catch {
     if ($compare -ne "") {
@@ -104,8 +103,6 @@ function Assert-ThrowsLike {
       return $true
     }
   }
-
-  throw "No exception occurred"
 }
 
 <#
