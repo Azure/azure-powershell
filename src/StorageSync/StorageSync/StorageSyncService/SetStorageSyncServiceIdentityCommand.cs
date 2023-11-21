@@ -156,7 +156,12 @@ namespace Microsoft.Azure.Commands.StorageSync.StorageSyncService
                     var candidateServersLookup = new Dictionary<string, StorageSyncModels.RegisteredServer>(StringComparer.InvariantCultureIgnoreCase);
                     foreach (var registeredServer in registeredServers)
                     {
-                        if (Guid.TryParse(registeredServer.LatestApplicationId, out Guid latestApplicationId))
+                        // Scenario : Server is running in certificate mode
+                        if(registeredServer.ActiveAuthType == StorageSyncModels.ServerAuthType.Certificate && !string.IsNullOrEmpty(registeredServer.ApplicationId))
+                        {
+                            candidateServersLookup.Add(registeredServer.Id, registeredServer);
+                        }
+                        else if (Guid.TryParse(registeredServer.LatestApplicationId, out Guid latestApplicationId))
                         {
                             candidateServersLookup.Add(registeredServer.Id, registeredServer);
                         }
@@ -217,6 +222,7 @@ namespace Microsoft.Azure.Commands.StorageSync.StorageSyncService
                         IEnumerable<StorageSyncModels.ServerEndpoint> serverEndpoints = StorageSyncClientWrapper.StorageSyncManagementClient.ServerEndpoints.ListBySyncGroup(resourceGroupName, resourceName, syncGroup.Name);
                         foreach (var serverEndpoint in serverEndpoints)
                         {
+                            // It is expected that multiple migration script might have caused to have role assignment already in the system. We are fault tolerant to existing role assignment.
                             if (candidateServersLookup.ContainsKey(serverEndpoint.ServerResourceId))
                             {
                                 // Identity , RoleDef, Scope

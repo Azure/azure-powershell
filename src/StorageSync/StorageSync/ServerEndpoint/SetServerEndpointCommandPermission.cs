@@ -199,7 +199,10 @@ namespace Microsoft.Azure.Commands.StorageSync.Cmdlets
                             throw new PSArgumentException(StorageSyncResources.MissingServerResourceIdErrorMessage);
                         }
 
-                        if (!String.IsNullOrEmpty(registeredServer.ApplicationId) && Guid.TryParse(registeredServer.ApplicationId, out Guid serverIdentityGuid))
+                        StorageSyncClientWrapper.VerboseLogger.Invoke($"Registered Server Auth Type : {registeredServer.ActiveAuthType}");
+
+                        if (registeredServer.ActiveAuthType == StorageSyncModels.ServerAuthType.ManagedIdentity && 
+                            !String.IsNullOrEmpty(registeredServer.ApplicationId) && Guid.TryParse(registeredServer.ApplicationId, out Guid serverIdentityGuid))
                         {
                             StorageSyncModels.CloudEndpoint cloudEndpoint = StorageSyncClientWrapper.StorageSyncManagementClient.CloudEndpoints
                             .ListBySyncGroup(resourceGroupName, storageSyncServiceName, parentResourceName).FirstOrDefault();
