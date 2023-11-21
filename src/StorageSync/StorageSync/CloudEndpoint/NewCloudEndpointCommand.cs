@@ -250,7 +250,8 @@ namespace Microsoft.Azure.Commands.StorageSync.CloudEndpoint
                     throw new PSArgumentException(StorageSyncResources.MissingParentResourceIdErrorMessage);
                 }
 
-                if (storageSyncService.Identity != null && storageSyncService.Identity.PrincipalId.GetValueOrDefault(Guid.Empty) != Guid.Empty)
+                if (storageSyncService.Identity != null && storageSyncService.Identity.PrincipalId.GetValueOrDefault(Guid.Empty) != Guid.Empty
+                && storageSyncService.UseIdentity.GetValueOrDefault(false))
                 {
                     // Identity , RoleDef, Scope
                     var scope = StorageAccountResourceId;
