@@ -1,3 +1,17 @@
+# ----------------------------------------------------------------------------------
+#
+# Copyright Microsoft Corporation
+# Licensed under the Apache License, Version 2.0 (the "License");
+# you may not use this file except in compliance with the License.
+# You may obtain a copy of the License at
+# http://www.apache.org/licenses/LICENSE-2.0
+# Unless required by applicable law or agreed to in writing, software
+# distributed under the License is distributed on an "AS IS" BASIS,
+# WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+# See the License for the specific language governing permissions and
+# limitations under the License.
+# ----------------------------------------------------------------------------------
+
 # Move-Generation2Master -SourcePath .\src\Storage -DestPath ..\tmp\src\Storage
 
 Function Move-Generation2Master {
@@ -28,7 +42,16 @@ Function Move-Generation2Master {
             New-Item "$DestPath\$ModuleName\Properties" -ItemType Directory
             New-Item "$DestPath\$ModuleName\help" -ItemType Directory
         }
-        $Dir2Copy = @('custom', 'examples', 'exports', 'generated', 'internal', 'test', 'utils', 'docs')
+        $Dir2Copy = @{
+            'custom' = 'custom'
+            'examples' = 'examples'
+            'exports' = 'exports'
+            'generated' = 'generated'
+            'internal' = 'internal'
+            'test' = 'test'
+            'utils' = 'utils'
+            'docs' = 'help'
+        }
         $File2Copy = @('*.ps1', 'how-to.md', 'readme.md', 'README.md', '*.psm1', '*.ps1xml', '*.psd1')
         $submoduleDirs = Get-ChildItem -Filter *.Autorest -Directory -Path $SourcePath
         $Psd1FolderPostfix = '';
@@ -46,9 +69,9 @@ Function Move-Generation2Master {
             $psd1File = Get-ChildItem -Filter *.psd1 -File -Path $submoduleDir
             write-host ("psd1 file name {0}" -f $psd1File.Name)
             $submoduleName = $psd1File.Name.Split('.')[-2]
-            Foreach ($Dir in $Dir2Copy) {
-                $SourceItem = Join-Path -Path (Join-Path -Path $SourcePath -ChildPath $submoduleDir.Name) -ChildPath $Dir
-                $DestItem = Join-Path -Path (Join-Path -Path $DestPath -ChildPath $submoduleDir.Name) -ChildPath $Dir
+            Foreach ($Dir in $Dir2Copy.GetEnumerator()) {
+                $SourceItem = Join-Path -Path (Join-Path -Path $SourcePath -ChildPath $submoduleDir.Name) -ChildPath $Dir.Name
+                $DestItem = Join-Path -Path (Join-Path -Path $DestPath -ChildPath $submoduleDir.Name) -ChildPath $Dir.Value
                 If (Test-Path $DestItem) {
                     Remove-Item -Path $DestItem -Recurse
                 }
@@ -75,9 +98,6 @@ Function Move-Generation2Master {
             }
 
             #copy generated docs to help folder
-            #Assume psd1 and help are in the same folder.
-            # Write-Host "Copying file from $SourcePath\$($submoduleDir.Name)\docs\* to $DestPath\$ModuleName$Psd1FolderPostfix\help"
-            # Copy-Item -Path "$SourcePath\$($submoduleDir.Name)\docs\*" -Destination "$DestPath\$ModuleName$Psd1FolderPostfix\help" -Filter *-* -Force
 
             # Update psd1
             $SubModulePsd1MetaData = Import-LocalizedData -BaseDirectory (Join-Path -Path $SourcePath -ChildPath $submoduleDir.Name) -FileName "Az.$submoduleName.psd1"
@@ -112,7 +132,6 @@ Function Move-Generation2Master {
             Copy-Template -SourceName ChangeLog.md -DestPath $DestPath\$ModuleName -DestName ChangeLog.md -ModuleName $ModuleName
             Copy-Template -SourceName Module.psd1 -DestPath $DestPath\$ModuleName -DestName "Az.$ModuleName.psd1" -ModuleName $ModuleName
             Copy-Template -SourceName HandcraftedModule.csproj -DestPath $DestPath\$ModuleName -DestName "$ModuleName.csproj" -ModuleName $ModuleName
-            Copy-Template -SourceName ModulePage.md -DestPath $DestPath\$ModuleName\help -DestName "Az.$ModuleName.md" -ModuleName $ModuleName
             Copy-Template -SourceName AssemblyInfo.cs -DestPath $DestPath\$ModuleName\Properties -DestName AssemblyInfo.cs -ModuleName $ModuleName
 
             dotnet new sln -n $ModuleName -o $DestPath
@@ -139,7 +158,7 @@ Function Move-Generation2Master {
             Copy-Template -SourceName AssemblyInfo.cs -DestPath "$DestPath\$ModuleName\Properties" -DestName AssemblyInfo.cs -ModuleName $submoduleName
             
         }
-        #update module page
+        # update module page
         dotnet build $slnFilePath
         # start a job to update markdown help module, since we can not uninstall a module in the same process.
         $job = start-job {
