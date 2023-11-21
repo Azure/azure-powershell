@@ -56,7 +56,7 @@ if ($TargetTestName -and (!$TestName -or ($TestName -eq $TargetTestName))) {
             $loadEnvPath = Join-Path $currentDir.Parent 'loadEnv.ps1'
         }
 
-        . ($loadEnvPath)
+        #. ($loadEnvPath)
 
         # set up the recording file path
         $TestRecordingFile = Join-Path $currentDir "$($TargetTestName).Recording.json"
