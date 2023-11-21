@@ -1,9 +1,10 @@
 {
   "Entries": [
     {
-      "RequestUri": "/Microsoft.Management/managementGroups/AzBlueprint/providers/Microsoft.Blueprint/blueprints/Filiz_Powershell_Test/versions%3Fapi-version=2018-11-01-preview",
+      "RequestUri": "//providers/Microsoft.Management/managementGroups/AzBlueprint/providers/Microsoft.Blueprint/blueprints/Filiz_Powershell_Test/versions?api-version=2018-11-01-preview",
       "EncodedRequestUri": "Ly9wcm92aWRlcnMvTWljcm9zb2Z0Lk1hbmFnZW1lbnQvbWFuYWdlbWVudEdyb3Vwcy9BekJsdWVwcmludC9wcm92aWRlcnMvTWljcm9zb2Z0LkJsdWVwcmludC9ibHVlcHJpbnRzL0ZpbGl6X1Bvd2Vyc2hlbGxfVGVzdC92ZXJzaW9ucz9hcGktdmVyc2lvbj0yMDE4LTExLTAxLXByZXZpZXc=",
       "RequestMethod": "GET",
+      "RequestBody": "",
       "RequestHeaders": {
         "x-ms-client-request-id": [
           "e4cca8dd-fca0-489d-9c95-ae26a6fb2dd1"
@@ -18,7 +19,6 @@
           "Microsoft.Azure.Management.Blueprint.BlueprintManagementClient/0.10.0.0"
         ]
       },
-      "RequestBody": "",
       "ResponseHeaders": {
         "Cache-Control": [
           "no-cache"
@@ -66,6 +66,6 @@
   ],
   "Names": {},
   "Variables": {
-    "SubscriptionId": "dc1789a8-0762-4dfb-8901-4c0da08b83d3"
+    "SubscriptionId": "28cbf98f-381d-4425-9ac4-cf342dab9753"
   }
 }

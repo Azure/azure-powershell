@@ -225,7 +225,7 @@ Accept wildcard characters: False
 ```
 
 ### -BackupStorageAccessTier
-The name of the resource group.
+The target storage access tier of the backup.
 
 ```yaml
 Type: System.String
@@ -240,7 +240,7 @@ Accept wildcard characters: False
 ```
 
 ### -OperationMode
-The name of the resource group.
+The target operation mode of the backup.
 
 ```yaml
 Type: System.String
