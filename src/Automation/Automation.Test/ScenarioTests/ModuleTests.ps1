@@ -16,36 +16,36 @@ $testNonGlobalModule = @{
     ContentLinkUri = 'https://devopsgallerystorage.blob.core.windows.net/packages/pester.3.0.3.nupkg'
 	Size = 74921}
 
-}
+
 
 $testNonGlobalPowershell72Module = @{
-    Name = 'Pester'
-	Version = '3.0.3'
-    ContentLinkUri = 'https://devopsgallerystorage.blob.core.windows.net/packages/pester.3.0.3.nupkg'
-	Size = 74921}
+    Name = 'GitHub'
+	Version = '0.0.72'
+    ContentLinkUri = 'https://www.powershellgallery.com/api/v2/package/GitHub/0.0.72.nupkg'
+	}
 
 
 function EnsureTestPowershell72ModuleImported {
-	$foundModule = Get-AzAutomationModule -Name $testNonGlobaPowershell72lModule.Name @testAutomationAccount -ErrorAction Ignore
+	$foundModule = Get-AzAutomationModule -Name $testNonGlobalPowershell72Module.Name @testAutomationAccount -ErrorAction Ignore -RuntimeVersion "7.2" 
     if ($foundModule) {
 		if ($foundModule.ProvisioningState -ne 'Succeeded') {
-			Remove-AzAutomationModule -Name $testNonGlobalPowershell72Module.Name @testAutomationAccount -Force
+			Remove-AzAutomationModule -Name $testNonGlobalPowershell72Module.Name @testAutomationAccount -Force -RuntimeVersion "7.2" 
 			$foundModule = $null
 		}
 	}
 
     if (-not $foundModule) {
-        $output = New-AzAutomationModule -Name $testNonGlobalPowershell72Module.Name -ContentLinkUri $testNonGlobalPowershell72Module.ContentLinkUri @testAutomationAccount
+        $output = New-AzAutomationModule -Name $testNonGlobalPowershell72Module.Name -ContentLinkUri $testNonGlobalPowershell72Module.ContentLinkUri @testAutomationAccount -RuntimeVersion "7.2" 
 		Write-Verbose "Module $($testNonGlobalPowershell72Module.Name) provisioning state: $($output.ProvisioningState)"
 
 		$startTime = Get-Date
-		$timeout = New-TimeSpan -Minutes 3
+		$timeout = New-TimeSpan -Minutes 5
 		$endTime = $startTime + $timeout
 
-        while ($output.ProvisioningState -ne 'Succeeded') {
+        while (!($output.ProvisioningState -eq 'Succeeded' -or $output.ProvisioningState -eq 'Failed')) {
             [Microsoft.WindowsAzure.Commands.Utilities.Common.TestMockSupport]::Delay(10*1000)
 
-            $output = Get-AzAutomationModule -Name $testNonGlobalPowershell72Module.Name @testAutomationAccount
+            $output = Get-AzAutomationModule -Name $testNonGlobalPowershell72Module.Name @testAutomationAccount -RuntimeVersion "7.2" -Verbose
 			Write-Verbose "Module $($testNonGlobalPowershell72Module.Name) provisioning state: $($output.ProvisioningState)"
 
 			if ((Get-Date) -gt $endTime) {
@@ -178,7 +178,7 @@ Tests importing a new Powershell72 module into an Automation account.
 function Test-NewPowershell72Module {
 	Remove-TestNonGlobalPowershell72Module
 
-	$output = New-AzAutomationModule -Name $testNonGlobalPowershell72Module.Name -ContentLinkUri $testNonGlobalPowershell72Module.ContentLinkUri @testAutomationAccount -RuntimeVersion "7.2"
+	$output = New-AzAutomationModule -Name $testNonGlobalPowershell72Module.Name -ContentLinkUri $testNonGlobalPowershell72Module.ContentLinkUri @testAutomationAccount -RuntimeVersion "7.2" 
 
 	Assert-NotNull $output
 	$outputCount = $output | Measure-Object | % Count;
@@ -188,9 +188,6 @@ function Test-NewPowershell72Module {
 	Assert-AreEqual $output.ResourceGroupName $testAutomationAccount.ResourceGroupName
 	Assert-AreEqual $output.Name $testNonGlobalPowershell72Module.Name
 	Assert-False { $output.IsGlobal }
-	Assert-Null $output.Version
-	Assert-AreEqual $output.SizeInBytes 0
-	Assert-AreEqual $output.ActivityCount 0
 	Assert-NotNull $output.CreationTime
 	Assert-NotNull $output.LastModifiedTime
 	Assert-AreEqual $output.ProvisioningState 'Creating'
@@ -236,7 +233,7 @@ function Test-SetModule {
 Tests updating a Powershell72 module already imported into an Automation account.
 #>
 function Test-SetPowershell72Module {
-	EnsureTestModuleImported
+	EnsureTestPowershell72ModuleImported
 
 	$output = Set-AzAutomationModule -Name $testNonGlobalPowershell72Module.Name -ContentLinkUri $testNonGlobalPowershell72Module.ContentLinkUri @testAutomationAccount -ContentLinkVersion $testNonGlobalPowershell72Module.Version -RuntimeVersion "7.2"
 

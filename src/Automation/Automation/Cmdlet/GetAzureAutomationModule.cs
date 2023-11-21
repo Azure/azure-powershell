@@ -53,7 +53,7 @@ namespace Microsoft.Azure.Commands.Automation.Cmdlet
             IEnumerable<Module> ret = null;
             if (!string.IsNullOrEmpty(this.Name))
             {
-                if (string.IsNullOrWhiteSpace(RuntimeVersion) || RuntimeVersion.Equals(Constants.RuntimeVersion.PowerShell51))
+                if (Utils.CheckIfRuntimeVersionIsEmptyOrPowershell5(RuntimeVersion))
                 {
                     ret = new List<Module>
                 {
@@ -66,7 +66,7 @@ namespace Microsoft.Azure.Commands.Automation.Cmdlet
                 {
                    this.AutomationClient.GetPowerShell72Module(this.ResourceGroupName, this.AutomationAccountName, this.Name)
                 };
-                }                   
+                }
                 this.GenerateCmdletOutput(ret);
             }
             else
@@ -74,14 +74,14 @@ namespace Microsoft.Azure.Commands.Automation.Cmdlet
                 string nextLink = string.Empty;
                 do
                 {
-                    if (string.IsNullOrWhiteSpace(RuntimeVersion) || RuntimeVersion.Equals(Constants.RuntimeVersion.PowerShell51))
+                    if (Utils.CheckIfRuntimeVersionIsEmptyOrPowershell5(RuntimeVersion))
                     {
                         ret = this.AutomationClient.ListModules(this.ResourceGroupName, this.AutomationAccountName, ref nextLink);
                     }
                     else
                     {
                         ret = this.AutomationClient.ListPowerShell72Modules(this.ResourceGroupName, this.AutomationAccountName, ref nextLink);
-                    }                        
+                    }
                     this.GenerateCmdletOutput(ret);
                 } while (!string.IsNullOrEmpty(nextLink));
             }

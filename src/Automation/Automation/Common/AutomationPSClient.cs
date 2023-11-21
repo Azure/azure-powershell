@@ -93,9 +93,9 @@ namespace Microsoft.Azure.Commands.Automation.Common
         public IEnumerable<Model.AutomationAccount> ListAutomationAccounts(string resourceGroupName, ref string nextLink)
         {
             Rest.Azure.IPage<AutomationManagement.Models.AutomationAccount> response;
-            if(!string.IsNullOrWhiteSpace(resourceGroupName))
+            if (!string.IsNullOrWhiteSpace(resourceGroupName))
             {
-                if(string.IsNullOrWhiteSpace(nextLink))
+                if (string.IsNullOrWhiteSpace(nextLink))
                 {
                     response = this.automationManagementClient.AutomationAccount.ListByResourceGroup(resourceGroupName);
                 }
@@ -103,7 +103,7 @@ namespace Microsoft.Azure.Commands.Automation.Common
                 {
                     response = this.automationManagementClient.AutomationAccount.ListByResourceGroupNext(nextLink);
                 }
-                
+
             }
             else
             {
@@ -340,9 +340,9 @@ namespace Microsoft.Azure.Commands.Automation.Common
                     Name = moduleName,
                     ContentLink = new AutomationManagement.Models.ContentLink()
                     {
-                         Uri = contentLink.ToString(),
-                         ContentHash = null,
-                         Version = null
+                        Uri = contentLink.ToString(),
+                        ContentHash = null,
+                        Version = null
                     },
                 });
 
@@ -413,21 +413,21 @@ namespace Microsoft.Azure.Commands.Automation.Common
                         },
                     });
                 }
-            var updatedModule =
-            this.automationManagementClient.Module.Get(resourceGroupName, automationAccountName, name);
-            return new Module(resourceGroupName, automationAccountName, updatedModule);
+                var updatedModule =
+                this.automationManagementClient.Module.Get(resourceGroupName, automationAccountName, name);
+                return new Module(resourceGroupName, automationAccountName, updatedModule);
             }
             catch (ErrorResponseException cloudException)
             {
-                 if (cloudException.Response.StatusCode == System.Net.HttpStatusCode.NotFound)
-                 {
-                     throw new ResourceNotFoundException(typeof(Module),
-                         string.Format(CultureInfo.CurrentCulture, Resources.ModuleNotFound, name));
+                if (cloudException.Response.StatusCode == System.Net.HttpStatusCode.NotFound)
+                {
+                    throw new ResourceNotFoundException(typeof(Module),
+                        string.Format(CultureInfo.CurrentCulture, Resources.ModuleNotFound, name));
 
-                 }
+                }
 
-                 throw;
-             }
+                throw;
+            }
         }
 
         public void DeleteModule(string resourceGroupName, string automationAccountName, string name)
@@ -477,7 +477,7 @@ namespace Microsoft.Azure.Commands.Automation.Common
             try
             {
                 var module =
-                    this.automationManagementClient.Module.Get(resourceGroupName, automationAccountName, name);
+                    this.automationManagementClient.PowerShell72Module.Get(resourceGroupName, automationAccountName, name);
                 return new Module(resourceGroupName, automationAccountName, module);
             }
             catch (ErrorResponseException cloudException)
@@ -499,11 +499,11 @@ namespace Microsoft.Azure.Commands.Automation.Common
 
             if (string.IsNullOrEmpty(nextLink))
             {
-                response = this.automationManagementClient.Module.ListByAutomationAccount(resourceGroupName, automationAccountName);
+                response = this.automationManagementClient.PowerShell72Module.ListByAutomationAccount(resourceGroupName, automationAccountName);
             }
             else
             {
-                response = this.automationManagementClient.Module.ListByAutomationAccountNext(nextLink);
+                response = this.automationManagementClient.PowerShell72Module.ListByAutomationAccountNext(nextLink);
             }
 
             nextLink = response.NextPageLink;
@@ -516,7 +516,7 @@ namespace Microsoft.Azure.Commands.Automation.Common
             try
             {
                 var moduleModel =
-                this.automationManagementClient.Module.Get(resourceGroupName, automationAccountName, name);
+                this.automationManagementClient.PowerShell72Module.Get(resourceGroupName, automationAccountName, name);
                 if (contentLinkUri != null)
                 {
                     var updateModule = this.automationManagementClient.Module.CreateOrUpdate(resourceGroupName,
@@ -557,7 +557,7 @@ namespace Microsoft.Azure.Commands.Automation.Common
         {
             try
             {
-                this.automationManagementClient.Module.Delete(resourceGroupName, automationAccountName, name);
+                this.automationManagementClient.PowerShell72Module.Delete(resourceGroupName, automationAccountName, name);
             }
             catch (ErrorResponseException cloudException)
             {
@@ -579,14 +579,14 @@ namespace Microsoft.Azure.Commands.Automation.Common
         {
             var scheduleCreateOrUpdateParameters = new ScheduleCreateOrUpdateParameters
             {
-               Name = schedule.Name,
-               StartTime = schedule.StartTime,
-               ExpiryTime = schedule.ExpiryTime,
-               Description = schedule.Description,
-               Interval = schedule.Interval,
-               Frequency = schedule.Frequency.ToString(),
-               AdvancedSchedule = schedule.GetAdvancedSchedule(),
-               TimeZone = schedule.TimeZone,
+                Name = schedule.Name,
+                StartTime = schedule.StartTime,
+                ExpiryTime = schedule.ExpiryTime,
+                Description = schedule.Description,
+                Interval = schedule.Interval,
+                Frequency = schedule.Frequency.ToString(),
+                AdvancedSchedule = schedule.GetAdvancedSchedule(),
+                TimeZone = schedule.TimeZone,
             };
 
             var scheduleCreateResponse = this.automationManagementClient.Schedule.CreateOrUpdate(
@@ -629,7 +629,7 @@ namespace Microsoft.Azure.Commands.Automation.Common
 
             if (string.IsNullOrEmpty(nextLink))
             {
-                response = this.automationManagementClient.Schedule.ListByAutomationAccount(resourceGroupName, automationAccountName);;
+                response = this.automationManagementClient.Schedule.ListByAutomationAccount(resourceGroupName, automationAccountName); ;
             }
             else
             {
@@ -672,7 +672,7 @@ namespace Microsoft.Azure.Commands.Automation.Common
 
             if (string.IsNullOrEmpty(nextLink))
             {
-                response = this.automationManagementClient.Runbook.ListByAutomationAccount(resourceGroupName, automationAccountName);;
+                response = this.automationManagementClient.Runbook.ListByAutomationAccount(resourceGroupName, automationAccountName); ;
             }
             else
             {
@@ -735,7 +735,7 @@ namespace Microsoft.Azure.Commands.Automation.Common
             }
 
             // if graph runbook make sure type is not null and has right value
-            if (0 == string.Compare(fileExtension, Constants.SupportedFileExtensions.Graph, StringComparison.OrdinalIgnoreCase) 
+            if (0 == string.Compare(fileExtension, Constants.SupportedFileExtensions.Graph, StringComparison.OrdinalIgnoreCase)
                 && (string.IsNullOrWhiteSpace(type) || !IsGraphRunbook(type)))
             {
                 throw new ResourceCommonException(typeof(Runbook),
@@ -762,7 +762,7 @@ namespace Microsoft.Azure.Commands.Automation.Common
             {
                 var runbook = this.CreateRunbookByName(resourceGroupName, automationAccountName, runbookName, description, tags, type, logProgress, logVerbose, overwrite);
 
-                using(FileStream SourceStream = File.Open(runbookPath, FileMode.Open))
+                using (FileStream SourceStream = File.Open(runbookPath, FileMode.Open))
                 {
                     this.automationManagementClient.RunbookDraft.ReplaceContent(resourceGroupName, automationAccountName, runbookName, SourceStream);
                 }
@@ -1185,7 +1185,7 @@ namespace Microsoft.Azure.Commands.Automation.Common
                 response.Select(
                     stream => this.CreateJobStreamFromJobStreamModel(stream, resourceGroupName, automationAccountName, jobId));
         }
-        
+
         public JobStreamRecord GetJobStreamRecord(string resourceGroupName, string automationAccountName, Guid jobId, string jobStreamId)
         {
             var response = this.automationManagementClient.JobStream.Get(resourceGroupName, automationAccountName, jobId.ToString(), jobStreamId);
@@ -1280,7 +1280,7 @@ namespace Microsoft.Azure.Commands.Automation.Common
             nextLink = response.NextPageLink;
             return response.Select(c => new Job(resourceGroupName, automationAccountName, c));
         }
-                
+
         public IEnumerable<Job> ListJobs(string resourceGroupName, string automationAccountName, DateTimeOffset? startTime,
             DateTimeOffset? endTime, string jobStatus, ref string nextLink)
         {
@@ -1439,7 +1439,9 @@ namespace Microsoft.Azure.Commands.Automation.Common
                     string.Format(CultureInfo.CurrentCulture, Resources.ConnectionAlreadyExists, name));
             }
 
-            var ccparam = new ConnectionCreateOrUpdateParameters() { Name = name,
+            var ccparam = new ConnectionCreateOrUpdateParameters()
+            {
+                Name = name,
                 Description = description,
                 ConnectionType = new ConnectionTypeAssociationProperty() { Name = connectionTypeName },
                 FieldDefinitionValues =
@@ -1598,7 +1600,7 @@ namespace Microsoft.Azure.Commands.Automation.Common
 
             if (string.IsNullOrEmpty(nextLink))
             {
-                response = this.automationManagementClient.HybridRunbookWorkerGroup.ListByAutomationAccount(resourceGroupName, automationAccountName);;
+                response = this.automationManagementClient.HybridRunbookWorkerGroup.ListByAutomationAccount(resourceGroupName, automationAccountName); ;
             }
             else
             {
@@ -1607,7 +1609,7 @@ namespace Microsoft.Azure.Commands.Automation.Common
 
             nextLink = response.NextPageLink;
 
-            return response.Select(c =>  c);
+            return response.Select(c => c);
         }
 
         public Management.Automation.Models.HybridRunbookWorkerGroup GetHybridRunbookWorkerGroup(string resourceGroupName, string automationAccountName, string name)
@@ -1620,7 +1622,7 @@ namespace Microsoft.Azure.Commands.Automation.Common
             }
 
             return hybridRunbookWorkerGroupModel;
-            
+
         }
 
         public void DeleteHybridRunbookWorkerGroup(string resourceGroupName, string automationAccountName, string name)
@@ -1784,7 +1786,7 @@ namespace Microsoft.Azure.Commands.Automation.Common
 
             if (string.IsNullOrEmpty(nextLink))
             {
-                response = this.automationManagementClient.JobSchedule.ListByAutomationAccount(resourceGroupName, automationAccountName);;
+                response = this.automationManagementClient.JobSchedule.ListByAutomationAccount(resourceGroupName, automationAccountName); ;
             }
             else
             {
@@ -1838,10 +1840,10 @@ namespace Microsoft.Azure.Commands.Automation.Common
                 Guid.NewGuid(),
                 new JobScheduleCreateParameters
                 {
-                     Schedule = new ScheduleAssociationProperty { Name = scheduleName },
-                     Runbook = new RunbookAssociationProperty { Name = runbookName },
-                     Parameters = processedParameters,
-                     RunOn = runOn
+                    Schedule = new ScheduleAssociationProperty { Name = scheduleName },
+                    Runbook = new RunbookAssociationProperty { Name = runbookName },
+                    Parameters = processedParameters,
+                    RunOn = runOn
                 });
 
             return new JobSchedule(resourceGroupName, automationAccountName, sdkJobSchedule);
@@ -1929,7 +1931,7 @@ namespace Microsoft.Azure.Commands.Automation.Common
 
             if (string.IsNullOrEmpty(nextLink))
             {
-                response = (IPage<AutomationManagement.Models.Module>)( this.automationManagementClient.Python3Package.ListByAutomationAccount(resourceGroupName, automationAccountName));
+                response = (IPage<AutomationManagement.Models.Module>)(this.automationManagementClient.Python3Package.ListByAutomationAccount(resourceGroupName, automationAccountName));
             }
             else
             {
@@ -1987,8 +1989,8 @@ namespace Microsoft.Azure.Commands.Automation.Common
                 automationAccountName,
                 moduleName,
                 new AutomationManagement.Models.PythonPackageCreateParameters()
-                { 
-                    ContentLink =  new AutomationManagement.Models.ContentLink()
+                {
+                    ContentLink = new AutomationManagement.Models.ContentLink()
                     {
                         Uri = contentLink.ToString(),
                         ContentHash = null,
@@ -2138,7 +2140,7 @@ namespace Microsoft.Azure.Commands.Automation.Common
             return hybridRunbookWorker;
         }
 
-        private Azure.Management.Automation.Models.Certificate TryGetCertificateModel(string resourceGroupName, string automationAccountName, 
+        private Azure.Management.Automation.Models.Certificate TryGetCertificateModel(string resourceGroupName, string automationAccountName,
             string certificateName)
         {
             Azure.Management.Automation.Models.Certificate certificate = null;
@@ -2169,7 +2171,7 @@ namespace Microsoft.Azure.Commands.Automation.Common
             {
                 runbook = this.GetRunbook(resourceGroupName, automationAccountName, runbookName);
             }
-            catch(ResourceCommonException)
+            catch (ResourceCommonException)
             {
                 // Ignore if runbook does not exists in the account. This is to start global runbooks by name
                 return new Dictionary<string, RunbookParameter>();
@@ -2192,7 +2194,7 @@ namespace Microsoft.Azure.Commands.Automation.Common
             IEnumerable<KeyValuePair<string, RunbookParameter>> runbookParameters = null;
             parameters = parameters ?? new Dictionary<string, string>();
             var filteredParameters = new Dictionary<string, string>();
-            
+
             try
             {
                 runbook = this.GetRunbook(resourceGroupName, automationAccountName, runbookName);
@@ -2202,29 +2204,33 @@ namespace Microsoft.Azure.Commands.Automation.Common
                 // Ignore if runbook does not exists in the account. This is to start global runbooks by name
                 runbookParameters = new Dictionary<string, RunbookParameter>();
             }
-            
+
             if (runbook != null && 0 == String.Compare(runbook.State, RunbookState.New, CultureInfo.InvariantCulture, CompareOptions.IgnoreCase))
             {
                 throw new InvalidOperationException(string.Format(CultureInfo.CurrentCulture,
                     Resources.RunbookHasNoPublishedVersion, runbookName));
             }
-            
-            if (runbook != null && (runbook.RunbookType == "Python2" || runbook.RunbookType == "Python3")) {
+
+            if (runbook != null && (runbook.RunbookType == "Python2" || runbook.RunbookType == "Python3"))
+            {
                 int i = 1;
 
-                foreach (var key in parameters.Keys) {
+                foreach (var key in parameters.Keys)
+                {
                     object paramValue = parameters[key];
-                    try {
+                    try
+                    {
                         filteredParameters.Add("[Parameter " + i.ToString() + "]", PowerShellJsonConverter.Serialize(paramValue));
                     }
-                    catch(JsonSerializationException)
+                    catch (JsonSerializationException)
                     {
                         throw new ArgumentException(string.Format(CultureInfo.CurrentCulture, Resources.RunbookParameterCannotBeSerializedToJson, key));
                     }
                     i++;
                 }
             }
-            else {
+            else
+            {
                 runbookParameters = runbook.Parameters.Cast<DictionaryEntry>().ToDictionary(k => k.Key.ToString(), k => (RunbookParameter)k.Value);
 
                 foreach (var runbookParameter in runbookParameters)
@@ -2258,7 +2264,7 @@ namespace Microsoft.Azure.Commands.Automation.Common
                         string.Format(CultureInfo.CurrentCulture, Resources.InvalidRunbookParameters));
                 }
             }
-            
+
             return filteredParameters;
         }
 
@@ -2303,7 +2309,7 @@ namespace Microsoft.Azure.Commands.Automation.Common
             return filteredParameters;
         }
 
-        
+
         private AutomationManagement.Models.Schedule GetScheduleModel(string resourceGroupName, string automationAccountName, string scheduleName)
         {
             AutomationManagement.Models.Schedule scheduleModel;

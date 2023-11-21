@@ -49,7 +49,7 @@ namespace Microsoft.Azure.Commands.Automation.Cmdlet
         /// <summary>
         /// Gets or sets the runbook version type
         /// </summary>
-        [Parameter(Position = 4,Mandatory = false, HelpMessage = "Runtime Environment of module ")]
+        [Parameter(Mandatory = false, HelpMessage = "Runtime Environment of module ")]
         [ValidateSet(Constants.RuntimeVersion.PowerShell51,
             Constants.RuntimeVersion.PowerShell72,
             IgnoreCase = true)]
@@ -62,7 +62,7 @@ namespace Microsoft.Azure.Commands.Automation.Cmdlet
         [PermissionSet(SecurityAction.Demand, Name = "FullTrust")]
         protected override void AutomationProcessRecord()
         {
-            if(string.IsNullOrWhiteSpace(RuntimeVersion) || RuntimeVersion.Equals(Constants.RuntimeVersion.PowerShell51))
+            if (Utils.CheckIfRuntimeVersionIsEmptyOrPowershell5(RuntimeVersion))
             {
                 var createdModule = this.AutomationClient.CreateModule(this.ResourceGroupName, this.AutomationAccountName, ContentLinkUri, Name);
                 this.WriteObject(createdModule);
@@ -71,8 +71,8 @@ namespace Microsoft.Azure.Commands.Automation.Cmdlet
             {
                 var createdModule = this.AutomationClient.CreatePowerShell72Module(this.ResourceGroupName, this.AutomationAccountName, ContentLinkUri, Name);
                 this.WriteObject(createdModule);
-            }          
-            
+            }
+
         }
     }
 }

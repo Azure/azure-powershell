@@ -67,7 +67,7 @@ namespace Microsoft.Azure.Commands.Automation.Cmdlet
         [PermissionSet(SecurityAction.Demand, Name = "FullTrust")]
         protected override void AutomationProcessRecord()
         {            
-            if (string.IsNullOrWhiteSpace(RuntimeVersion) || RuntimeVersion.Equals(Constants.RuntimeVersion.PowerShell51))
+            if (Utils.CheckIfRuntimeVersionIsEmptyOrPowershell5(RuntimeVersion))
             {
                 var updatedModule = this.AutomationClient.UpdateModule(this.ResourceGroupName, this.AutomationAccountName, Name, ContentLinkUri, ContentLinkVersion);
                 this.WriteObject(updatedModule);

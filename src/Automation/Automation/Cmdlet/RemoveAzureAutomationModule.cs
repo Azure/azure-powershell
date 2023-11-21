@@ -59,7 +59,7 @@ namespace Microsoft.Azure.Commands.Automation.Cmdlet
                        Name,
                        () =>
                        {
-                           if (string.IsNullOrWhiteSpace(RuntimeVersion) || RuntimeVersion.Equals(Constants.RuntimeVersion.PowerShell51))
+                           if (Utils.CheckIfRuntimeVersionIsEmptyOrPowershell5(RuntimeVersion))
                            {
                                this.AutomationClient.DeleteModule(this.ResourceGroupName, this.AutomationAccountName, Name);
                            }
