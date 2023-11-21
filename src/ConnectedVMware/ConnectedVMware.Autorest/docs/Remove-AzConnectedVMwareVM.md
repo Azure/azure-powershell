@@ -1,7 +1,7 @@
 ---
 external help file:
 Module Name: Az.ConnectedVMware
-online version: https://docs.microsoft.com/powershell/module/az.connectedvmware/remove-azconnectedvmwarevm
+online version: https://learn.microsoft.com/powershell/module/az.connectedvmware/remove-azconnectedvmwarevm
 schema: 2.0.0
 ---
 

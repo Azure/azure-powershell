@@ -1,7 +1,7 @@
 ---
 external help file:
 Module Name: Az.ConnectedVMware
-online version: https://docs.microsoft.com/powershell/module/az.connectedvmware/restart-azconnectedvmwarevm
+online version: https://learn.microsoft.com/powershell/module/az.connectedvmware/restart-azconnectedvmwarevm
 schema: 2.0.0
 ---
 

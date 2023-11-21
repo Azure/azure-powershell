@@ -1,7 +1,7 @@
 ---
 external help file:
 Module Name: Az.ConnectedVMware
-online version: https://docs.microsoft.com/powershell/module/az.connectedvmware/new-azconnectedvmwarevm
+online version: https://learn.microsoft.com/powershell/module/az.connectedvmware/new-azconnectedvmwarevm
 schema: 2.0.0
 ---
 
@@ -48,7 +48,7 @@ Please note some properties can be set only during virtual machine instance crea
 
 ### Example 1: Create Virtual Machine Instances on the given Resource Pool
 ```powershell
-New-AzConnectedVMwareVM -ExtendedLocationName "/subscriptions/204898ee-cd13-4332-b9d4-55ca5c25496d/resourcegroups/test-rg/providers/microsoft.extendedlocation/customlocations/test-cl" -ExtendedLocationType "CustomLocation" -InfrastructureProfileTemplateId "/subscriptions/204898ee-cd13-4332-b9d4-55ca5c25496d/resourceGroups/test-rg/providers/Microsoft.ConnectedVMwarevSphere/virtualMachineTemplates/test-vmtmpl" -InfrastructureProfileVCenterId "/subscriptions/204898ee-cd13-4332-b9d4-55ca5c25496d/resourceGroups/test-rg/providers/Microsoft.ConnectedVMwarevSphere/vcenters/test-vc" -PlacementProfileResourcePoolId "/subscriptions/204898ee-cd13-4332-b9d4-55ca5c25496d/resourceGroups/test-rg/providers/Microsoft.ConnectedVMwarevSphere/resourcepools/test-rp" -MachineId "/subscriptions/204898ee-cd13-4332-b9d4-55ca5c25496d/resourceGroups/test-rg/providers/Microsoft.HybridCompute/machines/test-machine" -SubscriptionId "204898ee-cd13-4332-b9d4-55ca5c25496d"
+New-AzConnectedVMwareVM -ExtendedLocationName "/subscriptions/204898ee-cd13-4332-b9d4-55ca5c25496d/resourcegroups/test-rg/providers/microsoft.extendedlocation/customlocations/test-cl" -ExtendedLocationType "CustomLocation" -InfrastructureProfileTemplateId "/subscriptions/204898ee-cd13-4332-b9d4-55ca5c25496d/resourceGroups/test-rg/providers/Microsoft.ConnectedVMwarevSphere/virtualMachineTemplates/test-vmtmpl" -InfrastructureProfileVCenterId "/subscriptions/204898ee-cd13-4332-b9d4-55ca5c25496d/resourceGroups/test-rg/providers/Microsoft.ConnectedVMwarevSphere/vcenters/test-vc" -PlacementProfileResourcePoolId "/subscriptions/204898ee-cd13-4332-b9d4-55ca5c25496d/resourceGroups/test-rg/providers/Microsoft.ConnectedVMwarevSphere/resourcepools/test-rp" -MachineId "/subscriptions/204898ee-cd13-4332-b9d4-55ca5c25496d/resourceGroups/test-rg/providers/Microsoft.HybridCompute/machines/test-machine"
 ```
 
 ```output
@@ -59,7 +59,7 @@ HardwareProfileCpuHotRemoveEnabled      : False
 HardwareProfileMemoryHotAddEnabled      : True
 HardwareProfileMemorySizeMb             : 1024
 HardwareProfileNumCoresPerSocket        : 1
-HardwareProfileNumCpus                  : 1
+HardwareProfileNumCpUs                  : 1
 Id                                      : /subscriptions/204898ee-cd13-4332-b9d4-55ca5c25496d/resourceGroups/test-rg/providers/Microsoft.HybridCompute/machines/test-machine/providers/Microsoft.ConnectedVMwarevSphere/virtualMachineInstances/default
 InfrastructureProfileCustomResourceName : d04a3534-2dfa-42c8-8959-83796a1bcac1
 InfrastructureProfileFirmwareType       : bios
@@ -158,7 +158,7 @@ HardwareProfileCpuHotRemoveEnabled      : False
 HardwareProfileMemoryHotAddEnabled      : True
 HardwareProfileMemorySizeMb             : 1024
 HardwareProfileNumCoresPerSocket        : 1
-HardwareProfileNumCpus                  : 1
+HardwareProfileNumCpUs                  : 1
 Id                                      : /subscriptions/204898ee-cd13-4332-b9d4-55ca5c25496d/resourceGroups/test-rg/providers/Microsoft.HybridCompute/machines/test-machine/providers/Microsoft.ConnectedVMwarevSphere/virtualMachineInstances/default
 InfrastructureProfileCustomResourceName : d04a3534-2dfa-42c8-8959-83796a1bcac1
 InfrastructureProfileFirmwareType       : bios
@@ -257,7 +257,7 @@ HardwareProfileCpuHotRemoveEnabled      : False
 HardwareProfileMemoryHotAddEnabled      : True
 HardwareProfileMemorySizeMb             : 1024
 HardwareProfileNumCoresPerSocket        : 1
-HardwareProfileNumCpus                  : 1
+HardwareProfileNumCpUs                  : 1
 Id                                      : /subscriptions/204898ee-cd13-4332-b9d4-55ca5c25496d/resourceGroups/test-rg/providers/Microsoft.HybridCompute/machines/test-machine/providers/Microsoft.ConnectedVMwarevSphere/virtualMachineInstances/default
 InfrastructureProfileCustomResourceName : d04a3534-2dfa-42c8-8959-83796a1bcac1
 InfrastructureProfileFirmwareType       : bios
@@ -356,7 +356,7 @@ HardwareProfileCpuHotRemoveEnabled      : False
 HardwareProfileMemoryHotAddEnabled      : False
 HardwareProfileMemorySizeMb             : 8192
 HardwareProfileNumCoresPerSocket        : 1
-HardwareProfileNumCpus                  : 4
+HardwareProfileNumCpUs                  : 4
 Id                                      : /subscriptions/204898ee-cd13-4332-b9d4-55ca5c25496d/resourceGroups/test-rg/providers/Microsoft.HybridCompute/machines/test-machine-ps/providers/Microsoft.ConnectedVMwarevSphere/virtualMachineInstances/default
 InfrastructureProfileCustomResourceName : 9d8766c2-6e02-4553-8ae2-7c37a19cb45b
 InfrastructureProfileFirmwareType       : bios

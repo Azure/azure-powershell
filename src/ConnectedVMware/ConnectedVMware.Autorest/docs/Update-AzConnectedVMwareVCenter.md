@@ -1,7 +1,7 @@
 ---
 external help file:
 Module Name: Az.ConnectedVMware
-online version: https://docs.microsoft.com/powershell/module/az.connectedvmware/update-azconnectedvmwarevcenter
+online version: https://learn.microsoft.com/powershell/module/az.connectedvmware/update-azconnectedvmwarevcenter
 schema: 2.0.0
 ---
 

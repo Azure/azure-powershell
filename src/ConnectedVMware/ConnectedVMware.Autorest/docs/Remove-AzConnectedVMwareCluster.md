@@ -1,7 +1,7 @@
 ---
 external help file:
 Module Name: Az.ConnectedVMware
-online version: https://docs.microsoft.com/powershell/module/az.connectedvmware/remove-azconnectedvmwarecluster
+online version: https://learn.microsoft.com/powershell/module/az.connectedvmware/remove-azconnectedvmwarecluster
 schema: 2.0.0
 ---
 

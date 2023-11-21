@@ -99,6 +99,7 @@ directive:
       parameter-name: Force
     set:
       parameter-name: ForceDeletion
+  
   # Shorten cmdlet name
   - where:
       subject: VMInstance(.*)
@@ -121,5 +122,12 @@ directive:
       parameter-name: ResourceUri
     set:
       parameter-name: MachineId 
+
+  # Rename HardwareProfileNumCpUs to HardwareProfileNumCpus
+  - where:
+      subject: VM
+      parameter-name: HardwareProfileNumCpUs
+    set:
+      parameter-name: HardwareProfileNumCpus
 
 ```

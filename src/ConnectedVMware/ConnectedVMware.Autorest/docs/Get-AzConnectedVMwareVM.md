@@ -1,7 +1,7 @@
 ---
 external help file:
 Module Name: Az.ConnectedVMware
-online version: https://docs.microsoft.com/powershell/module/az.connectedvmware/get-azconnectedvmwarevm
+online version: https://learn.microsoft.com/powershell/module/az.connectedvmware/get-azconnectedvmwarevm
 schema: 2.0.0
 ---
 
@@ -40,7 +40,7 @@ HardwareProfileCpuHotRemoveEnabled      : False
 HardwareProfileMemoryHotAddEnabled      : True
 HardwareProfileMemorySizeMb             : 1024
 HardwareProfileNumCoresPerSocket        : 1
-HardwareProfileNumCpUs                  : 1
+HardwareProfileNumCpus                  : 1
 Id                                      : /subscriptions/204898ee-cd13-4332-b9d4-55ca5c25496d/resourceGroups/test-rg/providers/Microsoft.HybridCompute/machines/test-machine/providers/Microsoft.ConnectedVMwarevSphere/virtualMachineInstances/default
 InfrastructureProfileCustomResourceName : d04a3534-2dfa-42c8-8959-83796a1bcac1
 InfrastructureProfileFirmwareType       : bios
