@@ -654,7 +654,7 @@ namespace Microsoft.Azure.Commands.Network
                    throw new PSArgumentException(string.Format(Properties.Resources.InvalidAutoScaleConfiguration, this.MinScaleUnit, this.MaxScaleUnit));
                 }
 
-                if (this.MinScaleUnit > 40 || this.MaxScaleUnit > 40) {
+                if (this.MaxScaleUnit > 40) {
                    throw new PSArgumentException(Properties.Resources.InvalidAutoScaleConfigurationBounds);          
                 }
 
