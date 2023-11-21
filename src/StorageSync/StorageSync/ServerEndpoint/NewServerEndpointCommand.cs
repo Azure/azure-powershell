@@ -291,7 +291,8 @@ namespace Microsoft.Azure.Commands.StorageSync.Cmdlets
                 StorageSyncClientWrapper.VerboseLogger.Invoke($"Registered Server Auth Type : {registeredServer.ActiveAuthType}");
 
                 if (registeredServer.ActiveAuthType == StorageSyncModels.ServerAuthType.ManagedIdentity &&
-                    !String.IsNullOrEmpty(registeredServer.ApplicationId) && Guid.TryParse(registeredServer.ApplicationId, out Guid serverIdentityGuid))
+                    !String.IsNullOrEmpty(registeredServer.ApplicationId) && Guid.TryParse(registeredServer.ApplicationId, out Guid serverIdentityGuid)
+                    && serverIdentityGuid != Guid.Empty)
                 {
                     StorageSyncModels.CloudEndpoint cloudEndpoint = StorageSyncClientWrapper.StorageSyncManagementClient.CloudEndpoints.ListBySyncGroup(resourceGroupName, storageSyncServiceName, syncGroupName).FirstOrDefault();
 

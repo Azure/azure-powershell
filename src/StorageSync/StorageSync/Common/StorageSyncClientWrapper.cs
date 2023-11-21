@@ -392,6 +392,11 @@ namespace Microsoft.Azure.Commands.StorageSync.Common
         /// <returns>Role Assignment</returns>
         public RoleAssignment EnsureRoleAssignmentWithIdentity(string storageAccountSubscriptionId, Guid principalId, string roleDefinitionId, string scope)
         {
+            if(principalId == Guid.Empty)
+            { 
+                throw new ArgumentException(nameof(principalId));
+            }
+
             string currentSubscriptionId = AuthorizationManagementClient.SubscriptionId;
             bool hasMismatchSubscription = currentSubscriptionId != storageAccountSubscriptionId;
 
