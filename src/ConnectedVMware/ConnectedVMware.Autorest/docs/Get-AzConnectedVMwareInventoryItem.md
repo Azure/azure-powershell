@@ -43,7 +43,7 @@ Implements InventoryItem GET method.
 
 ### Example 1: List Inventory Items in a resource group of a vcenter
 ```powershell
-Get-AzConnectedVMwareInventoryItem -ResourceGroupName "test-rg" -SubscriptionId "204898ee-cd13-4332-b9d4-55ca5c25496d" -VcenterName "test-vc"
+Get-AzConnectedVMwareInventoryItem -ResourceGroupName "test-rg" -VcenterName "test-vc"
 ```
 
 ```output
@@ -62,7 +62,6 @@ This command list all the inventory items of vcenter `test-vc` in a resource gro
 ### Example 2: Get a specific Inventory Item
 ```powershell
 Get-AzConnectedVMwareInventoryItem -Name "vm-1528708" -VcenterName "test-vc" -ResourceGroupName "test-rg"
--SubscriptionId "204898ee-cd13-4332-b9d4-55ca5c25496d"
 ```
 
 ```output
