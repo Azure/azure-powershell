@@ -20,6 +20,11 @@ Similar to cmdlets, parameters should follow pascal casing.From the [_Strongly E
 
 > _Use Pascal case for parameter names. In other words, capitalize the first letter of each word in the parameter name, including the first letter of the name._
 
+#### Acronyms
+Do capitalize both characters of two-character acronyms. For example,-*VM*ScaleSetName.
+
+Do capitalize only the first character of acronyms with three or more characters, which aligned with Pascal case. For example, -*Fqdn* and -*Vmss*Name.
+
 #### Singularity
 
 From the [_Strongly Encouraged Development Guidelines_](https://learn.microsoft.com/en-us/powershell/scripting/developer/cmdlet/strongly-encouraged-development-guidelines#use-singular-parameter-names):
