@@ -228,7 +228,7 @@ DynamicParam
     }
 
     # load nested module containing common code
-    Import-Module ((Get-Module -Name 'Az.Policy').NestedModules | ?{ $_.Name -eq 'Helpers' })
+    Import-Module (Join-Path $PSScriptRoot 'Helpers.psm1')
 
     # generate dynamic parameters for assignement based on the policy definition being assigned
     if ($PolicyDefinition)
@@ -299,7 +299,7 @@ begin {
     }
 
     # load nested module containing common code
-    Import-Module ((Get-Module -Name 'Az.Policy').NestedModules | ?{ $_.Name -eq 'Helpers' })
+    Import-Module (Join-Path $PSScriptRoot 'Helpers.psm1')
 
     # make mapping table
     $mapping = @{

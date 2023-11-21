@@ -176,7 +176,7 @@ begin {
     }
 
     # load nested module containing common code
-    Import-Module ((Get-Module -Name 'Az.Policy').NestedModules | Where-Object { $_.Name -eq 'Helpers' })
+    Import-Module (Join-Path $PSScriptRoot 'Helpers.psm1')
 }
 
 process {
