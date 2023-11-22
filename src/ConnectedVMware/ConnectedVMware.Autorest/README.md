@@ -30,15 +30,15 @@ For information on how to develop for `Az.ConnectedVMware`, see [how-to.md](how-
 > see https://aka.ms/autorest
 
 ``` yaml
-branch: bab2f4389eb5ca73cdf366ec0a4af3f3eb6e1f6d
+commit: 7fdf99373e805b477b7e09b7b54e441e34b4717a
 require:
 # readme.azure.noprofile.md is the common configuration file
   - $(this-folder)/../../readme.azure.noprofile.md
 input-file:
 # You need to specify your swagger files here.
-  # - $(repo)/specification/connectedvmware/resource-manager/Microsoft.ConnectedVMwarevSphere/preview/2022-01-10-preview/connectedvmware.json
+  - $(repo)/specification/connectedvmware/resource-manager/Microsoft.ConnectedVMwarevSphere/stable/2023-10-01/connectedvmware.json
 # If the swagger has not been put in the repo, you may uncomment the following line and refer to it locally 
-  - $(this-folder)/custom/connectedvmware.json
+  # - $(this-folder)/custom/connectedvmware.json
 
 # For new RP, the version is 0.1.0
 module-version: 0.1.0
