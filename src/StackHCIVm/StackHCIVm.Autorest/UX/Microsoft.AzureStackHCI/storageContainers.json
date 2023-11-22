@@ -6,8 +6,8 @@
   },
   "commands": [
     {
-      "name": "Get-AzStackHCIVmStoragePath",
-      "description": "Gets a storage path blah",
+      "name": "Get-AzStackHCIVMStoragePath",
+      "description": "Gets a storage container",
       "path": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AzureStackHCI/storageContainers/{storageContainerName}",
       "help": {
         "learnMore": {
@@ -44,7 +44,7 @@
       ]
     },
     {
-      "name": "Remove-AzStackHCIVmStoragePath",
+      "name": "Remove-AzStackHCIVMStoragePath",
       "description": "The operation to delete a storage container.",
       "path": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AzureStackHCI/storageContainers/{storageContainerName}",
       "help": {

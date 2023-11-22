@@ -6,7 +6,7 @@
   },
   "commands": [
     {
-      "name": "Get-AzStackHCIVmNetworkInterface",
+      "name": "Get-AzStackHCIVMNetworkInterface",
       "description": "Gets a network interface",
       "path": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AzureStackHCI/networkInterfaces/{networkInterfaceName}",
       "help": {
@@ -44,7 +44,7 @@
       ]
     },
     {
-      "name": "Remove-AzStackHCIVmNetworkInterface",
+      "name": "Remove-AzStackHCIVMNetworkInterface",
       "description": "The operation to delete a network interface.",
       "path": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AzureStackHCI/networkInterfaces/{networkInterfaceName}",
       "help": {

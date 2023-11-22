@@ -6,7 +6,7 @@
   },
   "commands": [
     {
-      "name": "Get-AzStackHCIVmLogicalNetwork",
+      "name": "Get-AzStackHCIVMLogicalNetwork",
       "description": "Gets a logical network",
       "path": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AzureStackHCI/logicalNetworks/{logicalNetworkName}",
       "help": {
@@ -44,7 +44,7 @@
       ]
     },
     {
-      "name": "Remove-AzStackHCIVmLogicalNetwork",
+      "name": "Remove-AzStackHCIVMLogicalNetwork",
       "description": "The operation to delete a logical network.",
       "path": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AzureStackHCI/logicalNetworks/{logicalNetworkName}",
       "help": {

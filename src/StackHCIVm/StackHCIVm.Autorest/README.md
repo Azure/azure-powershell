@@ -642,6 +642,6 @@ directive:
  -  where:
       subject-prefix: StackHciVM
     set:
-      subject-prefix: StackHCIVm
+      subject-prefix: StackHCIVM
 
 ```

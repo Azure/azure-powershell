@@ -6,7 +6,7 @@
   },
   "commands": [
     {
-      "name": "Get-AzStackHCIVmVirtualHardDisk",
+      "name": "Get-AzStackHCIVMVirtualHardDisk",
       "description": "Gets a virtual hard disk",
       "path": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AzureStackHCI/virtualHardDisks/{virtualHardDiskName}",
       "help": {
@@ -44,7 +44,7 @@
       ]
     },
     {
-      "name": "Remove-AzStackHCIVmVirtualHardDisk",
+      "name": "Remove-AzStackHCIVMVirtualHardDisk",
       "description": "The operation to delete a virtual hard disk.",
       "path": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AzureStackHCI/virtualHardDisks/{virtualHardDiskName}",
       "help": {

@@ -20,26 +20,14 @@ The operation to add a network interface to a virtual machine.
 ### [Get-AzStackHCIVMImage](Get-AzStackHCIVMImage.md)
 Gets a gallery image
 
-### [Get-AzStackHCIVmLogicalNetwork](Get-AzStackHCIVmLogicalNetwork.md)
-Gets a logical network
-
 ### [Get-AzStackHCIVMLogicalNetwork](Get-AzStackHCIVMLogicalNetwork.md)
 Gets a logical network
-
-### [Get-AzStackHCIVmNetworkInterface](Get-AzStackHCIVmNetworkInterface.md)
-Gets a network interface
 
 ### [Get-AzStackHCIVMNetworkInterface](Get-AzStackHCIVMNetworkInterface.md)
 Gets a network interface
 
-### [Get-AzStackHCIVmStoragePath](Get-AzStackHCIVmStoragePath.md)
-Gets a storage container
-
 ### [Get-AzStackHCIVMStoragePath](Get-AzStackHCIVMStoragePath.md)
-Gets a storage path blah
-
-### [Get-AzStackHCIVmVirtualHardDisk](Get-AzStackHCIVmVirtualHardDisk.md)
-Gets a virtual hard disk
+Gets a storage container
 
 ### [Get-AzStackHCIVMVirtualHardDisk](Get-AzStackHCIVMVirtualHardDisk.md)
 Gets a virtual hard disk
@@ -107,26 +95,14 @@ The operation to stop a virtual machine instance.
 ### [Update-AzStackHCIVMImage](Update-AzStackHCIVMImage.md)
 The operation to update an image.
 
-### [Update-AzStackHCIVmLogicalNetwork](Update-AzStackHCIVmLogicalNetwork.md)
-The operation to update a logical network.
-
 ### [Update-AzStackHCIVMLogicalNetwork](Update-AzStackHCIVMLogicalNetwork.md)
 The operation to update a logical network.
-
-### [Update-AzStackHCIVmNetworkInterface](Update-AzStackHCIVmNetworkInterface.md)
-The operation to update a network interface.
 
 ### [Update-AzStackHCIVMNetworkInterface](Update-AzStackHCIVMNetworkInterface.md)
 The operation to update a network interface.
 
-### [Update-AzStackHCIVmStoragePath](Update-AzStackHCIVmStoragePath.md)
-The operation to update a storage container.
-
 ### [Update-AzStackHCIVMStoragePath](Update-AzStackHCIVMStoragePath.md)
-The operation to update a storage path.
-
-### [Update-AzStackHCIVmVirtualHardDisk](Update-AzStackHCIVmVirtualHardDisk.md)
-The operation to update a virtual hard disk.
+The operation to update a storage container.
 
 ### [Update-AzStackHCIVMVirtualHardDisk](Update-AzStackHCIVMVirtualHardDisk.md)
 The operation to update a virtual hard disk.
