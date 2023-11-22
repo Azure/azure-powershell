@@ -6,7 +6,7 @@
       "RequestMethod": "GET",
       "RequestHeaders": {
         "x-ms-client-request-id": [
-          "de7a29a3-1973-4deb-b68d-df895788bba2"
+          "a6900b10-2a45-4599-914a-8de5eeaf98db"
         ],
         "Accept-Language": [
           "en-US"
@@ -27,19 +27,19 @@
           "no-cache"
         ],
         "x-ms-request-id": [
-          "de7a29a3-1973-4deb-b68d-df895788bba2"
+          "a6900b10-2a45-4599-914a-8de5eeaf98db"
         ],
         "Server": [
           "Microsoft-HTTPAPI/2.0"
         ],
         "x-ms-ratelimit-remaining-subscription-reads": [
-          "11993"
+          "11999"
         ],
         "x-ms-correlation-request-id": [
-          "88ef73ea-80dc-4b71-a04f-a7ff18110e49"
+          "90d81413-b534-4902-b371-e2b42745d2ff"
         ],
         "x-ms-routing-request-id": [
-          "WESTINDIA:20231121T125037Z:88ef73ea-80dc-4b71-a04f-a7ff18110e49"
+          "WESTINDIA:20231122T105101Z:90d81413-b534-4902-b371-e2b42745d2ff"
         ],
         "Strict-Transport-Security": [
           "max-age=31536000; includeSubDomains"
@@ -48,7 +48,133 @@
           "nosniff"
         ],
         "Date": [
-          "Tue, 21 Nov 2023 12:50:36 GMT"
+          "Wed, 22 Nov 2023 10:51:01 GMT"
+        ],
+        "Content-Length": [
+          "32"
+        ],
+        "Content-Type": [
+          "application/json; charset=utf-8"
+        ],
+        "Expires": [
+          "-1"
+        ]
+      },
+      "ResponseBody": "{\r\n  \"code\": \"NotFound\",\r\n  \"message\": \"\"\r\n}",
+      "StatusCode": 404
+    },
+    {
+      "RequestUri": "/subscriptions/0b35c512-e1ea-4c38-bd26-41d0e9d5b54f/resourceGroups/to-delete-01/providers/Microsoft.Automation/automationAccounts/fbs-aa-01/modules/GitHub?api-version=2023-11-01",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvMGIzNWM1MTItZTFlYS00YzM4LWJkMjYtNDFkMGU5ZDViNTRmL3Jlc291cmNlR3JvdXBzL3RvLWRlbGV0ZS0wMS9wcm92aWRlcnMvTWljcm9zb2Z0LkF1dG9tYXRpb24vYXV0b21hdGlvbkFjY291bnRzL2Zicy1hYS0wMS9tb2R1bGVzL0dpdEh1Yj9hcGktdmVyc2lvbj0yMDIzLTExLTAx",
+      "RequestMethod": "GET",
+      "RequestHeaders": {
+        "x-ms-client-request-id": [
+          "a714691e-b4f2-4031-9397-53ff63c78b00"
+        ],
+        "Accept-Language": [
+          "en-US"
+        ],
+        "User-Agent": [
+          "FxVersion/6.0.2523.51912",
+          "OSName/Windows",
+          "OSVersion/Microsoft.Windows.10.0.22631",
+          "Microsoft.Azure.Management.Automation.AutomationClient/1.9.1"
+        ]
+      },
+      "RequestBody": "",
+      "ResponseHeaders": {
+        "Cache-Control": [
+          "no-cache"
+        ],
+        "Pragma": [
+          "no-cache"
+        ],
+        "x-ms-request-id": [
+          "a714691e-b4f2-4031-9397-53ff63c78b00"
+        ],
+        "Server": [
+          "Microsoft-HTTPAPI/2.0"
+        ],
+        "x-ms-ratelimit-remaining-subscription-reads": [
+          "11998"
+        ],
+        "x-ms-correlation-request-id": [
+          "b54400ea-a983-49e7-bfaa-c3202c25709a"
+        ],
+        "x-ms-routing-request-id": [
+          "WESTINDIA:20231122T105106Z:b54400ea-a983-49e7-bfaa-c3202c25709a"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
+        ],
+        "X-Content-Type-Options": [
+          "nosniff"
+        ],
+        "Date": [
+          "Wed, 22 Nov 2023 10:51:05 GMT"
+        ],
+        "Content-Length": [
+          "32"
+        ],
+        "Content-Type": [
+          "application/json; charset=utf-8"
+        ],
+        "Expires": [
+          "-1"
+        ]
+      },
+      "ResponseBody": "{\r\n  \"code\": \"NotFound\",\r\n  \"message\": \"\"\r\n}",
+      "StatusCode": 404
+    },
+    {
+      "RequestUri": "/subscriptions/0b35c512-e1ea-4c38-bd26-41d0e9d5b54f/resourceGroups/to-delete-01/providers/Microsoft.Automation/automationAccounts/fbs-aa-01/modules/Pester?api-version=2023-11-01",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvMGIzNWM1MTItZTFlYS00YzM4LWJkMjYtNDFkMGU5ZDViNTRmL3Jlc291cmNlR3JvdXBzL3RvLWRlbGV0ZS0wMS9wcm92aWRlcnMvTWljcm9zb2Z0LkF1dG9tYXRpb24vYXV0b21hdGlvbkFjY291bnRzL2Zicy1hYS0wMS9tb2R1bGVzL1Blc3Rlcj9hcGktdmVyc2lvbj0yMDIzLTExLTAx",
+      "RequestMethod": "GET",
+      "RequestHeaders": {
+        "x-ms-client-request-id": [
+          "a7f2761b-2c70-43a7-a093-0ed86e38b589"
+        ],
+        "Accept-Language": [
+          "en-US"
+        ],
+        "User-Agent": [
+          "FxVersion/6.0.2523.51912",
+          "OSName/Windows",
+          "OSVersion/Microsoft.Windows.10.0.22631",
+          "Microsoft.Azure.Management.Automation.AutomationClient/1.9.1"
+        ]
+      },
+      "RequestBody": "",
+      "ResponseHeaders": {
+        "Cache-Control": [
+          "no-cache"
+        ],
+        "Pragma": [
+          "no-cache"
+        ],
+        "x-ms-request-id": [
+          "a7f2761b-2c70-43a7-a093-0ed86e38b589"
+        ],
+        "Server": [
+          "Microsoft-HTTPAPI/2.0"
+        ],
+        "x-ms-ratelimit-remaining-subscription-reads": [
+          "11998"
+        ],
+        "x-ms-correlation-request-id": [
+          "8b669aab-2e92-46d5-b980-46dba23fe9f0"
+        ],
+        "x-ms-routing-request-id": [
+          "WESTINDIA:20231122T105103Z:8b669aab-2e92-46d5-b980-46dba23fe9f0"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
+        ],
+        "X-Content-Type-Options": [
+          "nosniff"
+        ],
+        "Date": [
+          "Wed, 22 Nov 2023 10:51:03 GMT"
         ],
         "Content-Length": [
           "32"
@@ -69,7 +195,7 @@
       "RequestMethod": "PUT",
       "RequestHeaders": {
         "x-ms-client-request-id": [
-          "6ec2c586-fa0a-49d0-9b06-1a30250feb87"
+          "dd56d18b-2388-47e3-b3d4-d72f739642c4"
         ],
         "Accept-Language": [
           "en-US"
@@ -99,7 +225,7 @@
           "https://management.azure.com/subscriptions/0b35c512-e1ea-4c38-bd26-41d0e9d5b54f/resourceGroups/to-delete-01/providers/Microsoft.Automation/automationAccounts/fbs-aa-01/powerShell72Modules/GitHub?api-version=2023-11-01"
         ],
         "x-ms-request-id": [
-          "6ec2c586-fa0a-49d0-9b06-1a30250feb87"
+          "dd56d18b-2388-47e3-b3d4-d72f739642c4"
         ],
         "Server": [
           "Microsoft-HTTPAPI/2.0"
@@ -108,10 +234,10 @@
           "1199"
         ],
         "x-ms-correlation-request-id": [
-          "c5358660-38df-41dc-919e-f7c901e5a1f5"
+          "53c021b8-f5e8-479d-a8af-7a5344804ea8"
         ],
         "x-ms-routing-request-id": [
-          "WESTINDIA:20231121T125038Z:c5358660-38df-41dc-919e-f7c901e5a1f5"
+          "WESTINDIA:20231122T105104Z:53c021b8-f5e8-479d-a8af-7a5344804ea8"
         ],
         "Strict-Transport-Security": [
           "max-age=31536000; includeSubDomains"
@@ -120,10 +246,10 @@
           "nosniff"
         ],
         "Date": [
-          "Tue, 21 Nov 2023 12:50:38 GMT"
+          "Wed, 22 Nov 2023 10:51:03 GMT"
         ],
         "Content-Length": [
-          "567"
+          "577"
         ],
         "Content-Type": [
           "application/json; charset=utf-8"
@@ -132,7 +258,7 @@
           "-1"
         ]
       },
-      "ResponseBody": "{\r\n  \"id\": \"/subscriptions/0b35c512-e1ea-4c38-bd26-41d0e9d5b54f/resourceGroups/to-delete-01/providers/Microsoft.Automation/automationAccounts/fbs-aa-01/powerShell72Modules/GitHub\",\r\n  \"name\": \"GitHub\",\r\n  \"type\": \"Microsoft.Automation/AutomationAccounts/PowerShell72Modules\",\r\n  \"location\": \"eastus\",\r\n  \"tags\": {},\r\n  \"etag\": null,\r\n  \"properties\": {\r\n    \"isGlobal\": false,\r\n    \"version\": null,\r\n    \"sizeInBytes\": 0,\r\n    \"activityCount\": 0,\r\n    \"creationTime\": \"2023-11-21T18:20:38.56+05:30\",\r\n    \"lastModifiedTime\": \"2023-11-21T18:20:38.62+05:30\",\r\n    \"error\": {\r\n      \"code\": null,\r\n      \"message\": null\r\n    },\r\n    \"provisioningState\": \"Creating\",\r\n    \"isComposite\": false\r\n  }\r\n}",
+      "ResponseBody": "{\r\n  \"id\": \"/subscriptions/0b35c512-e1ea-4c38-bd26-41d0e9d5b54f/resourceGroups/to-delete-01/providers/Microsoft.Automation/automationAccounts/fbs-aa-01/powerShell72Modules/GitHub\",\r\n  \"name\": \"GitHub\",\r\n  \"type\": \"Microsoft.Automation/AutomationAccounts/PowerShell72Modules\",\r\n  \"location\": \"eastus\",\r\n  \"tags\": {},\r\n  \"etag\": null,\r\n  \"properties\": {\r\n    \"isGlobal\": false,\r\n    \"version\": null,\r\n    \"sizeInBytes\": 0,\r\n    \"activityCount\": 0,\r\n    \"creationTime\": \"2023-11-22T16:21:03.9666667+05:30\",\r\n    \"lastModifiedTime\": \"2023-11-22T16:21:04.0233333+05:30\",\r\n    \"error\": {\r\n      \"code\": null,\r\n      \"message\": null\r\n    },\r\n    \"provisioningState\": \"Creating\",\r\n    \"isComposite\": false\r\n  }\r\n}",
       "StatusCode": 201
     },
     {
@@ -141,7 +267,7 @@
       "RequestMethod": "GET",
       "RequestHeaders": {
         "x-ms-client-request-id": [
-          "6ec2c586-fa0a-49d0-9b06-1a30250feb87"
+          "dd56d18b-2388-47e3-b3d4-d72f739642c4"
         ],
         "Accept-Language": [
           "en-US"
@@ -162,19 +288,19 @@
           "no-cache"
         ],
         "x-ms-request-id": [
-          "6ec2c586-fa0a-49d0-9b06-1a30250feb87"
+          "dd56d18b-2388-47e3-b3d4-d72f739642c4"
         ],
         "Server": [
           "Microsoft-HTTPAPI/2.0"
         ],
         "x-ms-ratelimit-remaining-subscription-reads": [
-          "11993"
+          "11999"
         ],
         "x-ms-correlation-request-id": [
-          "04733b30-6060-4071-b501-cd551c82baf2"
+          "504b4c8b-44f8-496d-aa53-0cf78c78f020"
         ],
         "x-ms-routing-request-id": [
-          "WESTINDIA:20231121T125039Z:04733b30-6060-4071-b501-cd551c82baf2"
+          "WESTINDIA:20231122T105105Z:504b4c8b-44f8-496d-aa53-0cf78c78f020"
         ],
         "Strict-Transport-Security": [
           "max-age=31536000; includeSubDomains"
@@ -183,10 +309,10 @@
           "nosniff"
         ],
         "Date": [
-          "Tue, 21 Nov 2023 12:50:38 GMT"
+          "Wed, 22 Nov 2023 10:51:04 GMT"
         ],
         "Content-Length": [
-          "565"
+          "575"
         ],
         "Content-Type": [
           "application/json; charset=utf-8"
@@ -195,7 +321,70 @@
           "-1"
         ]
       },
-      "ResponseBody": "{\r\n  \"id\": \"/subscriptions/0b35c512-e1ea-4c38-bd26-41d0e9d5b54f/resourceGroups/to-delete-01/providers/Microsoft.Automation/automationAccounts/fbs-aa-01/powerShell72Modules/GitHub\",\r\n  \"name\": \"GitHub\",\r\n  \"type\": \"Microsoft.Automation/AutomationAccounts/PowerShell72Modules\",\r\n  \"location\": \"eastus\",\r\n  \"tags\": {},\r\n  \"etag\": null,\r\n  \"properties\": {\r\n    \"isGlobal\": false,\r\n    \"version\": null,\r\n    \"sizeInBytes\": 0,\r\n    \"activityCount\": 0,\r\n    \"creationTime\": \"2023-11-21T18:20:38.56+05:30\",\r\n    \"lastModifiedTime\": \"2023-11-21T18:20:38.62+05:30\",\r\n    \"error\": {\r\n      \"code\": null,\r\n      \"message\": \"\"\r\n    },\r\n    \"provisioningState\": \"Creating\",\r\n    \"isComposite\": false\r\n  }\r\n}",
+      "ResponseBody": "{\r\n  \"id\": \"/subscriptions/0b35c512-e1ea-4c38-bd26-41d0e9d5b54f/resourceGroups/to-delete-01/providers/Microsoft.Automation/automationAccounts/fbs-aa-01/powerShell72Modules/GitHub\",\r\n  \"name\": \"GitHub\",\r\n  \"type\": \"Microsoft.Automation/AutomationAccounts/PowerShell72Modules\",\r\n  \"location\": \"eastus\",\r\n  \"tags\": {},\r\n  \"etag\": null,\r\n  \"properties\": {\r\n    \"isGlobal\": false,\r\n    \"version\": null,\r\n    \"sizeInBytes\": 0,\r\n    \"activityCount\": 0,\r\n    \"creationTime\": \"2023-11-22T16:21:03.9666667+05:30\",\r\n    \"lastModifiedTime\": \"2023-11-22T16:21:04.0233333+05:30\",\r\n    \"error\": {\r\n      \"code\": null,\r\n      \"message\": \"\"\r\n    },\r\n    \"provisioningState\": \"Creating\",\r\n    \"isComposite\": false\r\n  }\r\n}",
+      "StatusCode": 200
+    },
+    {
+      "RequestUri": "/subscriptions/0b35c512-e1ea-4c38-bd26-41d0e9d5b54f/resourceGroups/to-delete-01/providers/Microsoft.Automation/automationAccounts/fbs-aa-01/powerShell72Modules/GitHub?api-version=2023-11-01",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvMGIzNWM1MTItZTFlYS00YzM4LWJkMjYtNDFkMGU5ZDViNTRmL3Jlc291cmNlR3JvdXBzL3RvLWRlbGV0ZS0wMS9wcm92aWRlcnMvTWljcm9zb2Z0LkF1dG9tYXRpb24vYXV0b21hdGlvbkFjY291bnRzL2Zicy1hYS0wMS9wb3dlclNoZWxsNzJNb2R1bGVzL0dpdEh1Yj9hcGktdmVyc2lvbj0yMDIzLTExLTAx",
+      "RequestMethod": "GET",
+      "RequestHeaders": {
+        "x-ms-client-request-id": [
+          "05893044-4dd9-4763-84ba-76de85a898f3"
+        ],
+        "Accept-Language": [
+          "en-US"
+        ],
+        "User-Agent": [
+          "FxVersion/6.0.2523.51912",
+          "OSName/Windows",
+          "OSVersion/Microsoft.Windows.10.0.22631",
+          "Microsoft.Azure.Management.Automation.AutomationClient/1.9.1"
+        ]
+      },
+      "RequestBody": "",
+      "ResponseHeaders": {
+        "Cache-Control": [
+          "no-cache"
+        ],
+        "Pragma": [
+          "no-cache"
+        ],
+        "x-ms-request-id": [
+          "05893044-4dd9-4763-84ba-76de85a898f3"
+        ],
+        "Server": [
+          "Microsoft-HTTPAPI/2.0"
+        ],
+        "x-ms-ratelimit-remaining-subscription-reads": [
+          "11996"
+        ],
+        "x-ms-correlation-request-id": [
+          "d9493fef-5433-4312-95bc-b1757428bda7"
+        ],
+        "x-ms-routing-request-id": [
+          "WESTINDIA:20231122T105107Z:d9493fef-5433-4312-95bc-b1757428bda7"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
+        ],
+        "X-Content-Type-Options": [
+          "nosniff"
+        ],
+        "Date": [
+          "Wed, 22 Nov 2023 10:51:06 GMT"
+        ],
+        "Content-Length": [
+          "575"
+        ],
+        "Content-Type": [
+          "application/json; charset=utf-8"
+        ],
+        "Expires": [
+          "-1"
+        ]
+      },
+      "ResponseBody": "{\r\n  \"id\": \"/subscriptions/0b35c512-e1ea-4c38-bd26-41d0e9d5b54f/resourceGroups/to-delete-01/providers/Microsoft.Automation/automationAccounts/fbs-aa-01/powerShell72Modules/GitHub\",\r\n  \"name\": \"GitHub\",\r\n  \"type\": \"Microsoft.Automation/AutomationAccounts/PowerShell72Modules\",\r\n  \"location\": \"eastus\",\r\n  \"tags\": {},\r\n  \"etag\": null,\r\n  \"properties\": {\r\n    \"isGlobal\": false,\r\n    \"version\": null,\r\n    \"sizeInBytes\": 0,\r\n    \"activityCount\": 0,\r\n    \"creationTime\": \"2023-11-22T16:21:03.9666667+05:30\",\r\n    \"lastModifiedTime\": \"2023-11-22T16:21:04.0233333+05:30\",\r\n    \"error\": {\r\n      \"code\": null,\r\n      \"message\": \"\"\r\n    },\r\n    \"provisioningState\": \"Creating\",\r\n    \"isComposite\": false\r\n  }\r\n}",
       "StatusCode": 200
     }
   ],

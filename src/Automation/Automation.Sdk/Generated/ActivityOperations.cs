@@ -39,7 +39,8 @@ namespace Microsoft.Azure.Management.Automation
         public AutomationClient Client { get; private set; }
 
         /// <summary>
-        /// Retrieve the activity in the module identified by module name and activity name.
+        /// Retrieve the activity in the module identified by module name and activity
+        /// name.
         /// </summary>
         /// <param name='resourceGroupName'>
         /// Name of an Azure Resource group.

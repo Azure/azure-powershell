@@ -59,12 +59,12 @@ namespace Microsoft.Azure.Management.Automation.Models
         /// </param>
 
         /// <param name="provisioningState">Gets the provisioning state of the module.
-        /// Possible values include: 'Created', 'Creating',
-        /// 'StartingImportModuleRunbook', 'RunningImportModuleRunbook',
-        /// 'ContentRetrieved', 'ContentDownloaded', 'ContentValidated',
-        /// 'ConnectionTypeImported', 'ContentStored', 'ModuleDataStored',
-        /// 'ActivitiesStored', 'ModuleImportRunbookComplete', 'Succeeded', 'Failed',
-        /// 'Canceled', 'Updating'</param>
+        /// Possible values include: &#39;Created&#39;, &#39;Creating&#39;,
+        /// &#39;StartingImportModuleRunbook&#39;, &#39;RunningImportModuleRunbook&#39;,
+        /// &#39;ContentRetrieved&#39;, &#39;ContentDownloaded&#39;, &#39;ContentValidated&#39;,
+        /// &#39;ConnectionTypeImported&#39;, &#39;ContentStored&#39;, &#39;ModuleDataStored&#39;,
+        /// &#39;ActivitiesStored&#39;, &#39;ModuleImportRunbookComplete&#39;, &#39;Succeeded&#39;, &#39;Failed&#39;,
+        /// &#39;Canceled&#39;, &#39;Updating&#39;</param>
 
         /// <param name="error">Gets the error info of the module.
         /// </param>

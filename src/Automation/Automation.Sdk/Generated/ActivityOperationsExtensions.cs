@@ -13,7 +13,8 @@ namespace Microsoft.Azure.Management.Automation
     public static partial class ActivityOperationsExtensions
     {
         /// <summary>
-        /// Retrieve the activity in the module identified by module name and activity name.
+        /// Retrieve the activity in the module identified by module name and activity
+        /// name.
         /// </summary>
         /// <param name='operations'>
         /// The operations group for this extension method.
@@ -36,7 +37,8 @@ namespace Microsoft.Azure.Management.Automation
         }
 
         /// <summary>
-        /// Retrieve the activity in the module identified by module name and activity name.
+        /// Retrieve the activity in the module identified by module name and activity
+        /// name.
         /// </summary>
         /// <param name='operations'>
         /// The operations group for this extension method.

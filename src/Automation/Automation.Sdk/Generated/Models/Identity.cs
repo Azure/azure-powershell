@@ -31,8 +31,8 @@ namespace Microsoft.Azure.Management.Automation.Models
         /// </param>
 
         /// <param name="type">The identity type.
-        /// Possible values include: 'SystemAssigned', 'UserAssigned', 'SystemAssigned,
-        /// UserAssigned', 'None'</param>
+        /// Possible values include: &#39;SystemAssigned&#39;, &#39;UserAssigned&#39;, &#39;SystemAssigned,
+        /// UserAssigned&#39;, &#39;None&#39;</param>
 
         /// <param name="userAssignedIdentities">The list of user identities associated with the resource. The user identity
         /// dictionary key references will be ARM resource ids in the form:

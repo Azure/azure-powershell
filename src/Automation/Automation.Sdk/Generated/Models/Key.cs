@@ -25,10 +25,10 @@ namespace Microsoft.Azure.Management.Automation.Models
         /// </summary>
 
         /// <param name="keyName">Automation key name.
-        /// Possible values include: 'Primary', 'Secondary'</param>
+        /// Possible values include: &#39;Primary&#39;, &#39;Secondary&#39;</param>
 
         /// <param name="permissions">Automation key permissions.
-        /// Possible values include: 'Read', 'Full'</param>
+        /// Possible values include: &#39;Read&#39;, &#39;Full&#39;</param>
 
         /// <param name="value">Value of the Automation Key used for registration.
         /// </param>

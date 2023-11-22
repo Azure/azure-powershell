@@ -39,7 +39,8 @@ namespace Microsoft.Azure.Management.Automation
         public AutomationClient Client { get; private set; }
 
         /// <summary>
-        /// Retrieve a test job stream of the test job identified by runbook name and stream id.
+        /// Retrieve a test job stream of the test job identified by runbook name and
+        /// stream id.
         /// </summary>
         /// <param name='resourceGroupName'>
         /// Name of an Azure Resource group.

@@ -152,6 +152,7 @@ Tests importing a new module into an Automation account.
 #>
 function Test-NewModule {
 	Remove-TestNonGlobalModule
+	Remove-TestNonGlobalPowershell72Module
 
 	$output = New-AzAutomationModule -Name $testNonGlobalModule.Name -ContentLinkUri $testNonGlobalModule.ContentLinkUri @testAutomationAccount
 
@@ -169,6 +170,12 @@ function Test-NewModule {
 	Assert-NotNull $output.CreationTime
 	Assert-NotNull $output.LastModifiedTime
 	Assert-AreEqual $output.ProvisioningState 'Creating'
+
+	#Asserting Powershell7 module is not imported 
+	$PS5Module = Get-AzAutomationModule -Name $testNonGlobalModule.Name  @testAutomationAccount -ErrorAction Ignore
+	$PS72Module = Get-AzAutomationModule -Name $testNonGlobalModule.Name @testAutomationAccount -RuntimeVersion "7.2" -ErrorAction Ignore
+    Assert-NotNull $PS5Module
+	Assert-Null $PS72Module
 }
 
 <#
@@ -177,6 +184,7 @@ Tests importing a new Powershell72 module into an Automation account.
 #>
 function Test-NewPowershell72Module {
 	Remove-TestNonGlobalPowershell72Module
+	Remove-TestNonGlobalModule
 
 	$output = New-AzAutomationModule -Name $testNonGlobalPowershell72Module.Name -ContentLinkUri $testNonGlobalPowershell72Module.ContentLinkUri @testAutomationAccount -RuntimeVersion "7.2" 
 
@@ -191,6 +199,13 @@ function Test-NewPowershell72Module {
 	Assert-NotNull $output.CreationTime
 	Assert-NotNull $output.LastModifiedTime
 	Assert-AreEqual $output.ProvisioningState 'Creating'
+
+	#Asserting Powershell5 module is not imported 
+	$PS5Module = Get-AzAutomationModule -Name $testNonGlobalPowershell72Module.Name  @testAutomationAccount -ErrorAction Ignore
+	$PS72Module = Get-AzAutomationModule -Name $testNonGlobalPowershell72Module.Name  @testAutomationAccount -RuntimeVersion "7.2" -ErrorAction Ignore
+    Assert-Null $PS5Module
+	Assert-NotNull $PS72Module
+
 }
 
 <#
@@ -209,6 +224,7 @@ Tests updating a module already imported into an Automation account.
 #>
 function Test-SetModule {
 	EnsureTestModuleImported
+	Remove-TestNonGlobalPowershell72Module
 
 	$output = Set-AzAutomationModule -Name $testNonGlobalModule.Name -ContentLinkUri $testNonGlobalModule.ContentLinkUri @testAutomationAccount -ContentLinkVersion $testNonGlobalModule.Version
 
@@ -226,6 +242,12 @@ function Test-SetModule {
 	Assert-NotNull $output.CreationTime
 	Assert-NotNull $output.LastModifiedTime
 	Assert-AreEqual $output.ProvisioningState 'Creating'
+
+	#Asserting Powershell7 module is not imported 
+	$PS5Module = Get-AzAutomationModule -Name $testNonGlobalModule.Name  @testAutomationAccount -ErrorAction Ignore
+	$PS72Module = Get-AzAutomationModule -Name $testNonGlobalModule.Name  @testAutomationAccount -RuntimeVersion "7.2" -ErrorAction Ignore
+    Assert-NotNull $PS5Module
+	Assert-Null $PS72Module
 }
 
 <#
@@ -234,6 +256,7 @@ Tests updating a Powershell72 module already imported into an Automation account
 #>
 function Test-SetPowershell72Module {
 	EnsureTestPowershell72ModuleImported
+	Remove-TestNonGlobalModule
 
 	$output = Set-AzAutomationModule -Name $testNonGlobalPowershell72Module.Name -ContentLinkUri $testNonGlobalPowershell72Module.ContentLinkUri @testAutomationAccount -ContentLinkVersion $testNonGlobalPowershell72Module.Version -RuntimeVersion "7.2"
 
@@ -248,6 +271,12 @@ function Test-SetPowershell72Module {
 	Assert-NotNull $output.CreationTime
 	Assert-NotNull $output.LastModifiedTime
 	Assert-AreEqual $output.ProvisioningState 'Creating'
+
+	#Asserting Powershell5 module is not imported 
+	$PS5Module = Get-AzAutomationModule -Name $testNonGlobalPowershell72Module.Name  @testAutomationAccount -ErrorAction Ignore
+	$PS72Module = Get-AzAutomationModule -Name $testNonGlobalPowershell72Module.Name  @testAutomationAccount -RuntimeVersion "7.2" -ErrorAction Ignore
+    Assert-Null $PS5Module
+	Assert-NotNull $PS72Module
 }
 
 <#

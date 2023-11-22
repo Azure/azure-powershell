@@ -519,7 +519,7 @@ namespace Microsoft.Azure.Commands.Automation.Common
                 this.automationManagementClient.PowerShell72Module.Get(resourceGroupName, automationAccountName, name);
                 if (contentLinkUri != null)
                 {
-                    var updateModule = this.automationManagementClient.Module.CreateOrUpdate(resourceGroupName,
+                    var updateModule = this.automationManagementClient.PowerShell72Module.CreateOrUpdate(resourceGroupName,
                     automationAccountName,
                     name,
                     new AutomationManagement.Models.ModuleCreateOrUpdateParameters()
@@ -537,7 +537,7 @@ namespace Microsoft.Azure.Commands.Automation.Common
                     });
                 }
                 var updatedModule =
-                this.automationManagementClient.Module.Get(resourceGroupName, automationAccountName, name);
+                this.automationManagementClient.PowerShell72Module.Get(resourceGroupName, automationAccountName, name);
                 return new Module(resourceGroupName, automationAccountName, updatedModule);
             }
             catch (ErrorResponseException cloudException)

@@ -13,8 +13,8 @@
 # ----------------------------------------------------------------------------------
 
 # Automation account information
-$resourceGroupName = "hw-RG"
-$automationAccountName = "hw-aa123"
+$resourceGroupName = "to-delete-01"
+$automationAccountName = "fbs-aa-01"
 $hybridWorkerGroupName = "hw-grp3"
 
 function Test-E2EHybridWorkerGroup

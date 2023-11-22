@@ -106,9 +106,9 @@ namespace Microsoft.Azure.Management.Automation
             }
             if (moduleName != null)
             {
-                if (!System.Text.RegularExpressions.Regex.IsMatch(moduleName, "^[a-zA-Z][a-zA-Z-_0-9]*$"))
+                if (!System.Text.RegularExpressions.Regex.IsMatch(moduleName, "^[a-zA-Z][a-zA-Z-._0-9]*$"))
                 {
-                    throw new Microsoft.Rest.ValidationException(Microsoft.Rest.ValidationRules.Pattern, "moduleName", "^[a-zA-Z][a-zA-Z-_0-9]*$");
+                    throw new Microsoft.Rest.ValidationException(Microsoft.Rest.ValidationRules.Pattern, "moduleName", "^[a-zA-Z][a-zA-Z-._0-9]*$");
                 }
             }
             if (this.Client.SubscriptionId == null)
@@ -325,9 +325,9 @@ namespace Microsoft.Azure.Management.Automation
             }
             if (moduleName != null)
             {
-                if (!System.Text.RegularExpressions.Regex.IsMatch(moduleName, "^[a-zA-Z][a-zA-Z-_0-9]*$"))
+                if (!System.Text.RegularExpressions.Regex.IsMatch(moduleName, "^[a-zA-Z][a-zA-Z-._0-9]*$"))
                 {
-                    throw new Microsoft.Rest.ValidationException(Microsoft.Rest.ValidationRules.Pattern, "moduleName", "^[a-zA-Z][a-zA-Z-_0-9]*$");
+                    throw new Microsoft.Rest.ValidationException(Microsoft.Rest.ValidationRules.Pattern, "moduleName", "^[a-zA-Z][a-zA-Z-._0-9]*$");
                 }
             }
             if (this.Client.SubscriptionId == null)
@@ -573,9 +573,9 @@ namespace Microsoft.Azure.Management.Automation
             }
             if (moduleName != null)
             {
-                if (!System.Text.RegularExpressions.Regex.IsMatch(moduleName, "^[a-zA-Z][a-zA-Z-_0-9]*$"))
+                if (!System.Text.RegularExpressions.Regex.IsMatch(moduleName, "^[a-zA-Z][a-zA-Z-._0-9]*$"))
                 {
-                    throw new Microsoft.Rest.ValidationException(Microsoft.Rest.ValidationRules.Pattern, "moduleName", "^[a-zA-Z][a-zA-Z-_0-9]*$");
+                    throw new Microsoft.Rest.ValidationException(Microsoft.Rest.ValidationRules.Pattern, "moduleName", "^[a-zA-Z][a-zA-Z-._0-9]*$");
                 }
             }
             if (this.Client.SubscriptionId == null)
@@ -842,9 +842,9 @@ namespace Microsoft.Azure.Management.Automation
             }
             if (moduleName != null)
             {
-                if (!System.Text.RegularExpressions.Regex.IsMatch(moduleName, "^[a-zA-Z][a-zA-Z-_0-9]*$"))
+                if (!System.Text.RegularExpressions.Regex.IsMatch(moduleName, "^[a-zA-Z][a-zA-Z-._0-9]*$"))
                 {
-                    throw new Microsoft.Rest.ValidationException(Microsoft.Rest.ValidationRules.Pattern, "moduleName", "^[a-zA-Z][a-zA-Z-_0-9]*$");
+                    throw new Microsoft.Rest.ValidationException(Microsoft.Rest.ValidationRules.Pattern, "moduleName", "^[a-zA-Z][a-zA-Z-._0-9]*$");
                 }
             }
             if (this.Client.SubscriptionId == null)

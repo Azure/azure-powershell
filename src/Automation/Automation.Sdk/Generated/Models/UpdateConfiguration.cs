@@ -25,7 +25,7 @@ namespace Microsoft.Azure.Management.Automation.Models
         /// </summary>
 
         /// <param name="operatingSystem">operating system of target machines
-        /// Possible values include: 'Windows', 'Linux'</param>
+        /// Possible values include: &#39;Windows&#39;, &#39;Linux&#39;</param>
 
         /// <param name="windows">Windows specific update configuration.
         /// </param>
