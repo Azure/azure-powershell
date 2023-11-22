@@ -53,7 +53,7 @@ namespace Microsoft.Azure.Management.Network.Models
         /// indicating the associated and propagated route tables on this
         /// connection.</param>
         /// <param name="name">The name of the resource.</param>
-        public NetworkVirtualApplianceConnection(string id = default(string), string networkVirtualApplianceConnectionPropertiesName = default(string), string provisioningState = default(string), long? asn = default(long?), long? tunnelIdentifier = default(long?), IList<string> bgpPeerAddress = default(IList<string>), bool? enableInternetSecurity = default(bool?), RoutingConfigurationNfv routingConfiguration = default(RoutingConfigurationNfv), string name = default(string))
+        public NetworkVirtualApplianceConnection(string id = default(string), string networkVirtualApplianceConnectionPropertiesName = default(string), string provisioningState = default(string), long? asn = default(long?), long? tunnelIdentifier = default(long?), IList<string> bgpPeerAddress = default(IList<string>), bool? enableInternetSecurity = default(bool?), RoutingConfiguration routingConfiguration = default(RoutingConfiguration), string name = default(string))
             : base(id)
         {
             NetworkVirtualApplianceConnectionPropertiesName = networkVirtualApplianceConnectionPropertiesName;
@@ -115,7 +115,7 @@ namespace Microsoft.Azure.Management.Network.Models
         /// and propagated route tables on this connection.
         /// </summary>
         [JsonProperty(PropertyName = "properties.routingConfiguration")]
-        public RoutingConfigurationNfv RoutingConfiguration { get; set; }
+        public RoutingConfiguration RoutingConfiguration { get; set; }
 
         /// <summary>
         /// Gets or sets the name of the resource.

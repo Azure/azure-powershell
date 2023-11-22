@@ -11,32 +11,31 @@
 namespace Microsoft.Azure.Management.Network.Models
 {
     using Newtonsoft.Json;
-    using System.Collections;
-    using System.Collections.Generic;
     using System.Linq;
 
     /// <summary>
-    /// Post request for Create/Delete/Get Bastion Shareable Link endpoints.
+    /// Defines headers for Delete operation.
     /// </summary>
-    public partial class BastionShareableLinkListRequest
+    public partial class DdosCustomPoliciesDeleteHeaders
     {
         /// <summary>
-        /// Initializes a new instance of the BastionShareableLinkListRequest
+        /// Initializes a new instance of the DdosCustomPoliciesDeleteHeaders
         /// class.
         /// </summary>
-        public BastionShareableLinkListRequest()
+        public DdosCustomPoliciesDeleteHeaders()
         {
             CustomInit();
         }
 
         /// <summary>
-        /// Initializes a new instance of the BastionShareableLinkListRequest
+        /// Initializes a new instance of the DdosCustomPoliciesDeleteHeaders
         /// class.
         /// </summary>
-        /// <param name="vms">List of VM references.</param>
-        public BastionShareableLinkListRequest(IList<BastionShareableLink> vms = default(IList<BastionShareableLink>))
+        /// <param name="location">The URL of the resource used to check the
+        /// status of the asynchronous operation.</param>
+        public DdosCustomPoliciesDeleteHeaders(string location = default(string))
         {
-            Vms = vms;
+            Location = location;
             CustomInit();
         }
 
@@ -46,10 +45,11 @@ namespace Microsoft.Azure.Management.Network.Models
         partial void CustomInit();
 
         /// <summary>
-        /// Gets or sets list of VM references.
+        /// Gets or sets the URL of the resource used to check the status of
+        /// the asynchronous operation.
         /// </summary>
-        [JsonProperty(PropertyName = "vms")]
-        public IList<BastionShareableLink> Vms { get; set; }
+        [JsonProperty(PropertyName = "Location")]
+        public string Location { get; set; }
 
     }
 }

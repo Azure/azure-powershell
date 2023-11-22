@@ -11,32 +11,33 @@
 namespace Microsoft.Azure.Management.Network.Models
 {
     using Newtonsoft.Json;
-    using System.Collections;
-    using System.Collections.Generic;
     using System.Linq;
 
     /// <summary>
-    /// Post request for Create/Delete/Get Bastion Shareable Link endpoints.
+    /// Internet Ingress Public Ip Properties
     /// </summary>
-    public partial class BastionShareableLinkListRequest
+    /// <remarks>
+    /// Resource Uri of Public Ip for Standard Load Balancer Frontend End.
+    /// </remarks>
+    public partial class InternetIngressPublicIpsProperties
     {
         /// <summary>
-        /// Initializes a new instance of the BastionShareableLinkListRequest
-        /// class.
+        /// Initializes a new instance of the
+        /// InternetIngressPublicIpsProperties class.
         /// </summary>
-        public BastionShareableLinkListRequest()
+        public InternetIngressPublicIpsProperties()
         {
             CustomInit();
         }
 
         /// <summary>
-        /// Initializes a new instance of the BastionShareableLinkListRequest
-        /// class.
+        /// Initializes a new instance of the
+        /// InternetIngressPublicIpsProperties class.
         /// </summary>
-        /// <param name="vms">List of VM references.</param>
-        public BastionShareableLinkListRequest(IList<BastionShareableLink> vms = default(IList<BastionShareableLink>))
+        /// <param name="id">Resource Uri of Public Ip</param>
+        public InternetIngressPublicIpsProperties(string id = default(string))
         {
-            Vms = vms;
+            Id = id;
             CustomInit();
         }
 
@@ -46,10 +47,10 @@ namespace Microsoft.Azure.Management.Network.Models
         partial void CustomInit();
 
         /// <summary>
-        /// Gets or sets list of VM references.
+        /// Gets or sets resource Uri of Public Ip
         /// </summary>
-        [JsonProperty(PropertyName = "vms")]
-        public IList<BastionShareableLink> Vms { get; set; }
+        [JsonProperty(PropertyName = "id")]
+        public string Id { get; set; }
 
     }
 }

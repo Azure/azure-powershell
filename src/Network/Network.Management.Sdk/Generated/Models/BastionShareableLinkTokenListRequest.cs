@@ -16,27 +16,27 @@ namespace Microsoft.Azure.Management.Network.Models
     using System.Linq;
 
     /// <summary>
-    /// Post request for Create/Delete/Get Bastion Shareable Link endpoints.
+    /// Post request for Delete Bastion Shareable Link By Token endpoint.
     /// </summary>
-    public partial class BastionShareableLinkListRequest
+    public partial class BastionShareableLinkTokenListRequest
     {
         /// <summary>
-        /// Initializes a new instance of the BastionShareableLinkListRequest
-        /// class.
+        /// Initializes a new instance of the
+        /// BastionShareableLinkTokenListRequest class.
         /// </summary>
-        public BastionShareableLinkListRequest()
+        public BastionShareableLinkTokenListRequest()
         {
             CustomInit();
         }
 
         /// <summary>
-        /// Initializes a new instance of the BastionShareableLinkListRequest
-        /// class.
+        /// Initializes a new instance of the
+        /// BastionShareableLinkTokenListRequest class.
         /// </summary>
-        /// <param name="vms">List of VM references.</param>
-        public BastionShareableLinkListRequest(IList<BastionShareableLink> vms = default(IList<BastionShareableLink>))
+        /// <param name="tokens">List of Bastion Shareable Link Token.</param>
+        public BastionShareableLinkTokenListRequest(IList<string> tokens = default(IList<string>))
         {
-            Vms = vms;
+            Tokens = tokens;
             CustomInit();
         }
 
@@ -46,10 +46,10 @@ namespace Microsoft.Azure.Management.Network.Models
         partial void CustomInit();
 
         /// <summary>
-        /// Gets or sets list of VM references.
+        /// Gets or sets list of Bastion Shareable Link Token.
         /// </summary>
-        [JsonProperty(PropertyName = "vms")]
-        public IList<BastionShareableLink> Vms { get; set; }
+        [JsonProperty(PropertyName = "tokens")]
+        public IList<string> Tokens { get; set; }
 
     }
 }

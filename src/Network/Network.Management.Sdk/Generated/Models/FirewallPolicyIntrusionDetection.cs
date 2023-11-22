@@ -31,13 +31,20 @@ namespace Microsoft.Azure.Management.Network.Models
         /// Initializes a new instance of the FirewallPolicyIntrusionDetection
         /// class.
         /// </summary>
-        /// <param name="mode">Intrusion detection general state. Possible
-        /// values include: 'Off', 'Alert', 'Deny'</param>
+        /// <param name="mode">Intrusion detection general state. When attached
+        /// to a parent policy, the firewall's effective IDPS mode is the
+        /// stricter mode of the two. Possible values include: 'Off', 'Alert',
+        /// 'Deny'</param>
+        /// <param name="profile">IDPS profile name. When attached to a parent
+        /// policy, the firewall's effective profile is the profile name of the
+        /// parent policy. Possible values include: 'Basic', 'Standard',
+        /// 'Advanced', 'Extended'</param>
         /// <param name="configuration">Intrusion detection configuration
         /// properties.</param>
-        public FirewallPolicyIntrusionDetection(string mode = default(string), FirewallPolicyIntrusionDetectionConfiguration configuration = default(FirewallPolicyIntrusionDetectionConfiguration))
+        public FirewallPolicyIntrusionDetection(string mode = default(string), string profile = default(string), FirewallPolicyIntrusionDetectionConfiguration configuration = default(FirewallPolicyIntrusionDetectionConfiguration))
         {
             Mode = mode;
+            Profile = profile;
             Configuration = configuration;
             CustomInit();
         }
@@ -48,11 +55,21 @@ namespace Microsoft.Azure.Management.Network.Models
         partial void CustomInit();
 
         /// <summary>
-        /// Gets or sets intrusion detection general state. Possible values
-        /// include: 'Off', 'Alert', 'Deny'
+        /// Gets or sets intrusion detection general state. When attached to a
+        /// parent policy, the firewall's effective IDPS mode is the stricter
+        /// mode of the two. Possible values include: 'Off', 'Alert', 'Deny'
         /// </summary>
         [JsonProperty(PropertyName = "mode")]
         public string Mode { get; set; }
+
+        /// <summary>
+        /// Gets or sets IDPS profile name. When attached to a parent policy,
+        /// the firewall's effective profile is the profile name of the parent
+        /// policy. Possible values include: 'Basic', 'Standard', 'Advanced',
+        /// 'Extended'
+        /// </summary>
+        [JsonProperty(PropertyName = "profile")]
+        public string Profile { get; set; }
 
         /// <summary>
         /// Gets or sets intrusion detection configuration properties.

@@ -12,14 +12,13 @@ namespace Microsoft.Azure.Management.Network.Models
 {
 
     /// <summary>
-    /// Defines values for ActionType.
+    /// Defines values for FirewallPolicyIntrusionDetectionProfileType.
     /// </summary>
-    public static class ActionType
+    public static class FirewallPolicyIntrusionDetectionProfileType
     {
-        public const string AnomalyScoring = "AnomalyScoring";
-        public const string Allow = "Allow";
-        public const string Block = "Block";
-        public const string Log = "Log";
-        public const string JSChallenge = "JSChallenge";
+        public const string Basic = "Basic";
+        public const string Standard = "Standard";
+        public const string Advanced = "Advanced";
+        public const string Extended = "Extended";
     }
 }
