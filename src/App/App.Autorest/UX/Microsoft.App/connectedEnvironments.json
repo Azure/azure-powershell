@@ -1,0 +1,147 @@
+{
+  "resourceType": "connectedEnvironments",
+  "apiVersion": "2023-05-01",
+  "learnMore": {
+    "url": "https://learn.microsoft.com/powershell/module/az.app"
+  },
+  "commands": [
+    {
+      "name": "Get-AzContainerAppConnectedEnv",
+      "description": "Get the properties of an connectedEnvironment.",
+      "path": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.App/connectedEnvironments/{connectedEnvironmentName}",
+      "help": {
+        "learnMore": {
+          "url": "https://learn.microsoft.com/powershell/module/az.app/get-azcontainerappconnectedenv"
+        },
+        "parameterSets": [
+          {
+            "parameters": [
+              "-Name <String>",
+              "-ResourceGroupName <String>",
+              "[-SubscriptionId <String[]>]"
+            ]
+          }
+        ]
+      },
+      "examples": [
+        {
+          "description": "Get the properties of an connectedEnvironment.",
+          "parameters": [
+            {
+              "name": "-Name",
+              "value": "[Path.connectedEnvironmentName]"
+            },
+            {
+              "name": "-ResourceGroupName",
+              "value": "[Path.resourceGroupName]"
+            },
+            {
+              "name": "-SubscriptionId",
+              "value": "[Path.subscriptionId]"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Remove-AzContainerAppConnectedEnv",
+      "description": "Delete an connectedEnvironment.",
+      "path": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.App/connectedEnvironments/{connectedEnvironmentName}",
+      "help": {
+        "learnMore": {
+          "url": "https://learn.microsoft.com/powershell/module/az.app/remove-azcontainerappconnectedenv"
+        },
+        "parameterSets": [
+          {
+            "parameters": [
+              "-Name <String>",
+              "-ResourceGroupName <String>",
+              "[-SubscriptionId <String>]"
+            ]
+          }
+        ]
+      },
+      "examples": [
+        {
+          "description": "Delete an connectedEnvironment.",
+          "parameters": [
+            {
+              "name": "-Name",
+              "value": "[Path.connectedEnvironmentName]"
+            },
+            {
+              "name": "-ResourceGroupName",
+              "value": "[Path.resourceGroupName]"
+            },
+            {
+              "name": "-SubscriptionId",
+              "value": "[Path.subscriptionId]"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Test-AzContainerAppConnectedEnvNameAvailability",
+      "description": "Checks if resource connectedEnvironmentName is available.",
+      "path": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.App/connectedEnvironments/{connectedEnvironmentName}/checkNameAvailability",
+      "help": {
+        "learnMore": {
+          "url": "https://learn.microsoft.com/powershell/module/az.app/test-azcontainerappconnectedenvnameavailability"
+        },
+        "parameterSets": [
+          {
+            "parameters": [
+              "-ConnectedEnvironmentName <String>",
+              "-ResourceGroupName <String>",
+              "[-SubscriptionId <String>]"
+            ]
+          },
+          {
+            "parameters": [
+              "-ConnectedEnvironmentName <String>",
+              "-ResourceGroupName <String>",
+              "[-SubscriptionId <String>]"
+            ]
+          }
+        ]
+      },
+      "examples": [
+        {
+          "description": "Checks if resource connectedEnvironmentName is available.",
+          "parameters": [
+            {
+              "name": "-ConnectedEnvironmentName",
+              "value": "[Path.connectedEnvironmentName]"
+            },
+            {
+              "name": "-ResourceGroupName",
+              "value": "[Path.resourceGroupName]"
+            },
+            {
+              "name": "-SubscriptionId",
+              "value": "[Path.subscriptionId]"
+            }
+          ]
+        },
+        {
+          "description": "Checks if resource connectedEnvironmentName is available.",
+          "parameters": [
+            {
+              "name": "-ConnectedEnvironmentName",
+              "value": "[Path.connectedEnvironmentName]"
+            },
+            {
+              "name": "-ResourceGroupName",
+              "value": "[Path.resourceGroupName]"
+            },
+            {
+              "name": "-SubscriptionId",
+              "value": "[Path.subscriptionId]"
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}
