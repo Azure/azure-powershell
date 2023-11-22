@@ -35,8 +35,8 @@ function Remove-AzPolicySetDefinition {
 [CmdletBinding(DefaultParameterSetName='Name', SupportsShouldProcess, ConfirmImpact='High')]
 param(
     [Parameter(ParameterSetName='Name', Mandatory, ValueFromPipelineByPropertyName)]
-    [Parameter(ParameterSetName='ManagementGroupName', ValueFromPipelineByPropertyName)]
-    [Parameter(ParameterSetName='SubscriptionId', ValueFromPipelineByPropertyName)]
+    [Parameter(ParameterSetName='ManagementGroupName', Mandatory)]
+    [Parameter(ParameterSetName='SubscriptionId', Mandatory)]
     [ValidateNotNullOrEmpty()]
     [Alias('PolicySetDefinitionName')]
     [Microsoft.Azure.PowerShell.Cmdlets.Policy.Category('Path')]
@@ -146,9 +146,6 @@ begin {
         Write-Host -ForegroundColor Cyan "begin:Remove-AzPolicySetDefinition(" $PSBoundParameters ") - (ParameterSet: $($PSCmdlet.ParameterSetName))"
     }
 
-    # load nested module containing common code
-    Import-Module ((Get-Module -Name 'Az.Policy').NestedModules | Where-Object { $_.Name -eq 'Helpers' })
-
     # mapping table of generated cmdlet parameter sets
     $mapping = @{
         Delete = 'Az.Policy.private\Remove-AzPolicySetDefinition_Delete';
@@ -172,7 +169,7 @@ process {
     }
 
     # construct confirmation prompt
-    $resolved = Helpers\ResolvePolicySetDefinition $Name $SubscriptionId $ManagementGroupName $thisId
+    $resolved = ResolvePolicySetDefinition $Name $SubscriptionId $ManagementGroupName $thisId
     $result = $false
 
     # make a friendly prompt

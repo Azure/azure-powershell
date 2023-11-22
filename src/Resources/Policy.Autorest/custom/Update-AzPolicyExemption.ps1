@@ -171,9 +171,6 @@ begin {
     if ($writeln) {
         Write-Host -ForegroundColor Cyan "begin:Update-AzPolicyExemption(" $PSBoundParameters ") - (ParameterSet: $($PSCmdlet.ParameterSetName))"
     }
-
-    # load nested module containing common code
-    Import-Module ((Get-Module -Name 'Az.Policy').NestedModules | ?{ $_.Name -eq 'Helpers' })
 }
 
 process {
@@ -189,7 +186,7 @@ process {
     }
 
     # construct id for exemption to update
-    $resolved = Helpers\ResolvePolicyExemption $Name $Scope $thisId
+    $resolved = ResolvePolicyExemption $Name $Scope $thisId
     $getParameters = @{ Id = $resolved.ResourceId }
 
     if ($writeln) {

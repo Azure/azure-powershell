@@ -378,7 +378,7 @@ directive:
     hide: true
 
 metadata:
-  nestedModules:
-  - ./custom/Helpers
+  scriptsToProcess:
+  - ./custom/Helpers.ps1
 
 ```

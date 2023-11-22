@@ -10,8 +10,8 @@
   PowerShellVersion = '5.1'
   DotNetFrameworkVersion = '4.7.2'
   RequiredAssemblies = './bin/Az.Policy.private.dll'
-  NestedModules = @('./custom/Helpers')
   FormatsToProcess = './Az.Policy.format.ps1xml'
+  ScriptsToProcess = @('./custom/Helpers.ps1')
   FunctionsToExport = 'Get-AzPolicyAssignment', 'Get-AzPolicyDefinition', 'Get-AzPolicyExemption', 'Get-AzPolicySetDefinition', 'New-AzPolicyAssignment', 'New-AzPolicyDefinition', 'New-AzPolicyExemption', 'New-AzPolicySetDefinition', 'Remove-AzPolicyAssignment', 'Remove-AzPolicyDefinition', 'Remove-AzPolicyExemption', 'Remove-AzPolicySetDefinition', 'Update-AzPolicyAssignment', 'Update-AzPolicyDefinition', 'Update-AzPolicyExemption', 'Update-AzPolicySetDefinition', '*'
   AliasesToExport = 'Set-AzPolicyAssignment', 'Set-AzPolicyDefinition', 'Set-AzPolicyExemption', 'Set-AzPolicySetDefinition', '*'
   PrivateData = @{

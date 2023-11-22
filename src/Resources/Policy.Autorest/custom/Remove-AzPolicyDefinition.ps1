@@ -146,9 +146,6 @@ begin {
         Write-Host -ForegroundColor Cyan "begin:Remove-AzPolicyDefinition(" $PSBoundParameters ") - (ParameterSet: $($PSCmdlet.ParameterSetName))"
     }
 
-    # load nested module containing common code
-    Import-Module ((Get-Module -Name 'Az.Policy').NestedModules | Where-Object { $_.Name -eq 'Helpers' })
-
     # mapping table of generated cmdlet parameter sets
     $mapping = @{
         Delete = 'Az.Policy.private\Remove-AzPolicyDefinition_Delete';
@@ -172,7 +169,7 @@ process {
     }
 
     # construct confirmation prompt
-    $resolved = Helpers\ResolvePolicyDefinition $Name $SubscriptionId $ManagementGroupName $thisId
+    $resolved = ResolvePolicyDefinition $Name $SubscriptionId $ManagementGroupName $thisId
     $result = $false
 
     # make a friendly prompt

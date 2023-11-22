@@ -193,9 +193,6 @@ begin {
         Write-Host -ForegroundColor Cyan "begin:Get-AzPolicyExemption(" $PSBoundParameters ") - (ParameterSet: $($PSCmdlet.ParameterSetName))"
     }
 
-    # load nested module containing common code
-    Import-Module ((Get-Module -Name 'Az.Policy').NestedModules | ?{ $_.Name -eq 'Helpers' })
-
     # make mapping table
     $mapping = @{
         Get = 'Az.Policy.private\Get-AzPolicyExemption_Get';
@@ -219,7 +216,7 @@ process {
     $null = $calledParameters.Remove('SubscriptionId')
 
     if ($Id) {
-        $parsed = Helpers\ParsePolicyExemptionId $Id
+        $parsed = ParsePolicyExemptionId $Id
 
         if ($parsed.Name) {
             $Name = $parsed.Name
@@ -249,7 +246,7 @@ process {
         }
 
         if ($Scope) {
-            $resolved = Helpers\ResolvePolicyExemption $null $Scope $null
+            $resolved = ResolvePolicyExemption $null $Scope $null
             switch ($resolved.ScopeType) {
                 'mgName' {
                     if ($IncludeDescendent) {
@@ -313,8 +310,8 @@ process {
                 DisplayName = $item.DisplayName;
                 ExpiresOn = $item.ExpiresOn;
                 ExemptionCategory = $item.ExemptionCategory;
-                Metadata = (Helpers\ConvertObjectToPSObject $item.Metadata);
-                PolicyDefinitionReferenceIds = (Helpers\ConvertObjectToPSObject $item.PolicyDefinitionReferenceId);
+                Metadata = (ConvertObjectToPSObject $item.Metadata);
+                PolicyDefinitionReferenceIds = (ConvertObjectToPSObject $item.PolicyDefinitionReferenceId);
                 PolicyAssignmentId = $item.PolicyAssignmentId
             }
 
@@ -324,8 +321,8 @@ process {
             $item | Add-Member -MemberType NoteProperty -Name 'ResourceType' -Value $item.Type
         }
 
-        $item | Add-Member -MemberType NoteProperty -Name 'Metadata' -Value (Helpers\ConvertObjectToPSObject $item.Metadata) -Force
-        $item | Add-Member -MemberType NoteProperty -Name 'PolicyDefinitionReferenceId' -Value (Helpers\ConvertObjectToPSObject $item.PolicyDefinitionReferenceId) -Force
+        $item | Add-Member -MemberType NoteProperty -Name 'Metadata' -Value (ConvertObjectToPSObject $item.Metadata) -Force
+        $item | Add-Member -MemberType NoteProperty -Name 'PolicyDefinitionReferenceId' -Value (ConvertObjectToPSObject $item.PolicyDefinitionReferenceId) -Force
         $PSCmdlet.WriteObject($item)
     }
 }

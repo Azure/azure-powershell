@@ -174,9 +174,6 @@ begin {
     if ($writeln) {
         Write-Host -ForegroundColor Cyan "begin:Update-AzPolicySetDefinition(" $PSBoundParameters ") - (ParameterSet: $($PSCmdlet.ParameterSetName))"
     }
-
-    # load nested module containing common code
-    Import-Module ((Get-Module -Name 'Az.Policy').NestedModules | Where-Object { $_.Name -eq 'Helpers' })
 }
 
 process {
@@ -192,7 +189,7 @@ process {
     }
 
     # construct id for definition to update
-    $resolved = Helpers\ResolvePolicySetDefinition $Name $SubscriptionId $ManagementGroupName $thisId
+    $resolved = ResolvePolicySetDefinition $Name $SubscriptionId $ManagementGroupName $thisId
     $getParameters = @{ Id = $resolved.ResourceId }
 
     if ($writeln) {

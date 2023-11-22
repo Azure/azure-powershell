@@ -167,10 +167,7 @@ begin {
         Write-Host -ForegroundColor Cyan "begin:New-AzPolicyDefinition(" $PSBoundParameters ") - (ParameterSet: $($PSCmdlet.ParameterSetName))"
     }
 
-    # load nested module containing common code
-    Import-Module ((Get-Module -Name 'Az.Policy').NestedModules | Where-Object { $_.Name -eq 'Helpers' })
     # mapping table of generated cmdlet parameter sets
-
     $mapping = @{
         CreateExpanded = 'Az.Policy.private\New-AzPolicyDefinition_CreateExpanded';
         CreateExpanded1 = 'Az.Policy.private\New-AzPolicyDefinition_CreateExpanded1';
@@ -191,7 +188,7 @@ process {
 
     # convert input/legacy policy parameter to correct set of parameters and remove
     if ($Policy) {
-        $resolved = Helpers\resolvePolicyParameter -ParameterName 'Policy' -ParameterValue $Policy -Debug $writeln
+        $resolved = resolvePolicyParameter -ParameterName 'Policy' -ParameterValue $Policy -Debug $writeln
         if ($resolved.policyRule) {
             foreach ($key in $resolved.Keys) {
 
@@ -223,17 +220,17 @@ process {
 
     # resolve [string] 'metadata' input parameter to [hashtable]
     if ($Metadata) {
-        $calledParameters.MetadataTable = (Helpers\ResolvePolicyMetadataParameter -MetadataValue $Metadata -Debug $writeln)
+        $calledParameters.MetadataTable = (ResolvePolicyMetadataParameter -MetadataValue $Metadata -Debug $writeln)
     }
     elseif ($calledParameters.Metadata) {
-        $calledParameters.MetadataTable = (Helpers\ResolvePolicyMetadataParameter -MetadataValue $calledParameters.Metadata -Debug $writeln)
+        $calledParameters.MetadataTable = (ResolvePolicyMetadataParameter -MetadataValue $calledParameters.Metadata -Debug $writeln)
     }
 
     $null = $calledParameters.Remove('Metadata')
 
     # resolve [string] 'parameter' input parameter (could be a path)
     if ($Parameter) {
-        $calledParameters.Parameter = (Helpers\resolvePolicyParameter -ParameterName 'Parameter' -ParameterValue $Parameter -Debug $writeln)
+        $calledParameters.Parameter = (resolvePolicyParameter -ParameterName 'Parameter' -ParameterValue $Parameter -Debug $writeln)
     }
 
     # rename [string] 'parameter' parameter to 'parametertable' (needs to be string to construct properly)
@@ -280,10 +277,10 @@ process {
         $propertyBag = @{
             Description = $item.Description;
             DisplayName = $item.DisplayName;
-            Metadata = (Helpers\ConvertObjectToPSObject $item.Metadata);  # (ConvertFrom-Json $item.Metadata.ToJsonString() -Depth 100);
+            Metadata = (ConvertObjectToPSObject $item.Metadata);  # (ConvertFrom-Json $item.Metadata.ToJsonString() -Depth 100);
             Mode = $item.Mode;
-            Parameters = (Helpers\ConvertObjectToPSObject $item.Parameter);  # (ConvertFrom-Json $item.Parameter.ToJsonString() -Depth 100);
-            PolicyRule = (Helpers\ConvertObjectToPSObject $item.PolicyRule);   # (ConvertFrom-Json $item.PolicyRule.ToJsonString() -Depth 100);
+            Parameters = (ConvertObjectToPSObject $item.Parameter);  # (ConvertFrom-Json $item.Parameter.ToJsonString() -Depth 100);
+            PolicyRule = (ConvertObjectToPSObject $item.PolicyRule);   # (ConvertFrom-Json $item.PolicyRule.ToJsonString() -Depth 100);
             PolicyType = $item.PolicyType
         }
 
@@ -294,9 +291,9 @@ process {
         $item | Add-Member -MemberType NoteProperty -Name 'PolicyDefinitionId' -Value $item.Id
     }
 
-    $item | Add-Member -MemberType NoteProperty -Name 'Metadata' -Value (Helpers\ConvertObjectToPSObject $item.Metadata) -Force
-    $item | Add-Member -MemberType NoteProperty -Name 'Parameter' -Value (Helpers\ConvertObjectToPSObject $item.Parameter) -Force
-    $item | Add-Member -MemberType NoteProperty -Name 'PolicyRule' -Value (Helpers\ConvertObjectToPSObject $item.PolicyRule) -Force
+    $item | Add-Member -MemberType NoteProperty -Name 'Metadata' -Value (ConvertObjectToPSObject $item.Metadata) -Force
+    $item | Add-Member -MemberType NoteProperty -Name 'Parameter' -Value (ConvertObjectToPSObject $item.Parameter) -Force
+    $item | Add-Member -MemberType NoteProperty -Name 'PolicyRule' -Value (ConvertObjectToPSObject $item.PolicyRule) -Force
     $PSCmdlet.WriteObject($item)
 }
 

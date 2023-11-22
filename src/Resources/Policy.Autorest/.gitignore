@@ -5,7 +5,7 @@ generated
 internal
 exports
 tools
-custom/Az.Policy.custom.psm1
+custom/*.psm1
 custom/autogen-model-cmdlets
 test/*-TestResults.xml
 /*.ps1

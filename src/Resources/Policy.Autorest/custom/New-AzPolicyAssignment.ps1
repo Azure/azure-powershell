@@ -227,9 +227,6 @@ DynamicParam
         Write-Host -ForegroundColor Cyan "begin:New-AzPolicyAssignment(" $PSBoundParameters ") - (ParameterSet: $($PSCmdlet.ParameterSetName))"
     }
 
-    # load nested module containing common code
-    Import-Module ((Get-Module -Name 'Az.Policy').NestedModules | ?{ $_.Name -eq 'Helpers' })
-
     # generate dynamic parameters for assignement based on the policy definition being assigned
     if ($PolicyDefinition)
     {
@@ -253,7 +250,7 @@ DynamicParam
                     $typeString = $type.Value
                 }
 
-                $description = Helpers\GetPSObjectProperty $paramValue 'metadata.description'
+                $description = GetPSObjectProperty $paramValue 'metadata.description'
                 if ($description) {
                     $helpString = $description
                 }
@@ -297,9 +294,6 @@ begin {
     if ($writeln) {
         Write-Host -ForegroundColor Cyan "begin:New-AzPolicyAssignment(" $PSBoundParameters ") - (ParameterSet: $($PSCmdlet.ParameterSetName))"
     }
-
-    # load nested module containing common code
-    Import-Module ((Get-Module -Name 'Az.Policy').NestedModules | ?{ $_.Name -eq 'Helpers' })
 
     # make mapping table
     $mapping = @{
@@ -372,29 +366,29 @@ process {
 
     # resolve [string] 'metadata' input parameter to [hashtable]
     if ($Metadata) {
-        $calledParameters.MetadataTable = (Helpers\ResolvePolicyMetadataParameter -MetadataValue $Metadata -Debug $writeln)
+        $calledParameters.MetadataTable = (ResolvePolicyMetadataParameter -MetadataValue $Metadata -Debug $writeln)
     }
     elseif ($calledParameters.Metadata) {
-        $calledParameters.MetadataTable = (Helpers\ResolvePolicyMetadataParameter -MetadataValue $calledParameters.Metadata -Debug $writeln)
+        $calledParameters.MetadataTable = (ResolvePolicyMetadataParameter -MetadataValue $calledParameters.Metadata -Debug $writeln)
     }
 
     $null = $calledParameters.Remove('Metadata')
 
     # resolve [string] 'policyparameter' input parameter to [hashtable]
     if ($PolicyParameter) {
-        $calledParameters.ParameterTable = (Helpers\ResolvePolicyParameter -ParameterName 'PolicyParameter' -ParameterValue $PolicyParameter -Debug $writeln)
+        $calledParameters.ParameterTable = (ResolvePolicyParameter -ParameterName 'PolicyParameter' -ParameterValue $PolicyParameter -Debug $writeln)
         $null = $calledParameters.Remove('PolicyParameter')
     }
 
     # resolve [hashtable] 'PolicyParameterObject' input parameter
     if ($PolicyParameterObject) {
-        $calledParameters.ParameterTable = Helpers\ConvertParameterObject -InputObject $PolicyParameterObject
+        $calledParameters.ParameterTable = ConvertParameterObject -InputObject $PolicyParameterObject
         $null = $calledParameters.Remove('PolicyParameterObject')
     }
 
     # resolve [PSCustomObject[]] 'NonComplianceMessage' input parameter to [hashtable]
     if ($NonComplianceMessage) {
-        $calledParameters.NonComplianceMessageTable = Helpers\ConvertParameterArray $NonComplianceMessage
+        $calledParameters.NonComplianceMessageTable = ConvertParameterArray $NonComplianceMessage
         $null = $calledParameters.Remove('NonComplianceMessage')
     }
 
@@ -434,10 +428,10 @@ process {
             Description = $item.Description;
             DisplayName = $item.DisplayName;
             EnforcementMode = $item.EnforcementMode;
-            Metadata = (Helpers\ConvertObjectToPSObject $item.Metadata);
-            NonComplianceMessages = (Helpers\ConvertObjectToPSObject $item.NonComplianceMessage);
-            NotScopes = (Helpers\ConvertObjectToPSObject $item.NotScope);
-            Parameters = (Helpers\ConvertObjectToPSObject $item.Parameter);
+            Metadata = (ConvertObjectToPSObject $item.Metadata);
+            NonComplianceMessages = (ConvertObjectToPSObject $item.NonComplianceMessage);
+            NotScopes = (ConvertObjectToPSObject $item.NotScope);
+            Parameters = (ConvertObjectToPSObject $item.Parameter);
             PolicyDefinitionId = $item.PolicyDefinitionId;
             Scope = $item.Scope
         }
@@ -459,10 +453,10 @@ process {
         $item | Add-Member -MemberType NoteProperty -Name 'PolicyAssignmentId' -Value $item.Id
     }
 
-    $item | Add-Member -MemberType NoteProperty -Name 'Metadata' -Value (Helpers\ConvertObjectToPSObject $item.Metadata) -Force
-    $item | Add-Member -MemberType NoteProperty -Name 'NonComplianceMessage' -Value (Helpers\ConvertObjectToPSObject $item.NonComplianceMessage) -Force
-    $item | Add-Member -MemberType NoteProperty -Name 'NotScope' -Value (Helpers\ConvertObjectToPSObject $item.NotScope) -Force
-    $item | Add-Member -MemberType NoteProperty -Name 'Parameter' -Value (Helpers\ConvertObjectToPSObject $item.Parameter) -Force
+    $item | Add-Member -MemberType NoteProperty -Name 'Metadata' -Value (ConvertObjectToPSObject $item.Metadata) -Force
+    $item | Add-Member -MemberType NoteProperty -Name 'NonComplianceMessage' -Value (ConvertObjectToPSObject $item.NonComplianceMessage) -Force
+    $item | Add-Member -MemberType NoteProperty -Name 'NotScope' -Value (ConvertObjectToPSObject $item.NotScope) -Force
+    $item | Add-Member -MemberType NoteProperty -Name 'Parameter' -Value (ConvertObjectToPSObject $item.Parameter) -Force
     $PSCmdlet.WriteObject($item)
 }
 

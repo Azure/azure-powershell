@@ -32,13 +32,13 @@ Remove-AzPolicySetDefinition -InputObject <IPolicyIdentity> [-BackwardCompatible
 
 ### ManagementGroupName
 ```
-Remove-AzPolicySetDefinition -ManagementGroupName <String> [-Name <String>] [-BackwardCompatible] [-Force]
+Remove-AzPolicySetDefinition -ManagementGroupName <String> -Name <String> [-BackwardCompatible] [-Force]
  [-DefaultProfile <PSObject>] [-PassThru] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ### SubscriptionId
 ```
-Remove-AzPolicySetDefinition -SubscriptionId <String> [-Name <String>] [-BackwardCompatible] [-Force]
+Remove-AzPolicySetDefinition -Name <String> -SubscriptionId <String> [-BackwardCompatible] [-Force]
  [-DefaultProfile <PSObject>] [-PassThru] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
