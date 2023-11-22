@@ -209,9 +209,6 @@ begin {
         Write-Host -ForegroundColor Cyan "begin:Get-AzPolicyAssignment(" $PSBoundParameters ") - (ParameterSet: $($PSCmdlet.ParameterSetName))"
     }
 
-    # load nested module containing common code
-    Import-Module (Join-Path $PSScriptRoot 'Helpers.psm1')
-
     # make mapping table
     $mapping = @{
         Get = 'Az.Policy.private\Get-AzPolicyAssignment_Get';
@@ -262,7 +259,7 @@ process {
         $calledParameterSet = 'List3'
 
         if ($Scope) {
-            $resolved = Helpers\ResolvePolicyAssignment $null $Scope $null
+            $resolved = ResolvePolicyAssignment $null $Scope $null
             switch ($resolved.ScopeType) {
                 'mgName' {
                     if ($IncludeDescendent) {
@@ -328,10 +325,10 @@ process {
                 Description = $item.Description;
                 DisplayName = $item.DisplayName;
                 EnforcementMode = $item.EnforcementMode;
-                Metadata = (Helpers\ConvertObjectToPSObject $item.Metadata);
-                NonComplianceMessages = (Helpers\ConvertObjectToPSObject $item.NonComplianceMessage);
-                NotScopes = (Helpers\ConvertObjectToPSObject $item.NotScope);
-                Parameters = (Helpers\ConvertObjectToPSObject $item.Parameter);
+                Metadata = (ConvertObjectToPSObject $item.Metadata);
+                NonComplianceMessages = (ConvertObjectToPSObject $item.NonComplianceMessage);
+                NotScopes = (ConvertObjectToPSObject $item.NotScope);
+                Parameters = (ConvertObjectToPSObject $item.Parameter);
                 PolicyDefinitionId = $item.PolicyDefinitionId;
                 Scope = $item.Scope
             }
@@ -351,10 +348,10 @@ process {
             $item | Add-Member -MemberType NoteProperty -Name 'PolicyAssignmentId' -Value $item.Id
         }
 
-        $item | Add-Member -MemberType NoteProperty -Name 'Metadata' -Value (Helpers\ConvertObjectToPSObject $item.Metadata) -Force
-        $item | Add-Member -MemberType NoteProperty -Name 'NonComplianceMessage' -Value (Helpers\ConvertObjectToPSObject $item.NonComplianceMessage) -Force
-        $item | Add-Member -MemberType NoteProperty -Name 'NotScope' -Value (Helpers\ConvertObjectToPSObject $item.NotScope) -Force
-        $item | Add-Member -MemberType NoteProperty -Name 'Parameter' -Value (Helpers\ConvertObjectToPSObject $item.Parameter) -Force
+        $item | Add-Member -MemberType NoteProperty -Name 'Metadata' -Value (ConvertObjectToPSObject $item.Metadata) -Force
+        $item | Add-Member -MemberType NoteProperty -Name 'NonComplianceMessage' -Value (ConvertObjectToPSObject $item.NonComplianceMessage) -Force
+        $item | Add-Member -MemberType NoteProperty -Name 'NotScope' -Value (ConvertObjectToPSObject $item.NotScope) -Force
+        $item | Add-Member -MemberType NoteProperty -Name 'Parameter' -Value (ConvertObjectToPSObject $item.Parameter) -Force
         $PSCmdlet.WriteObject($item)
     }
 }

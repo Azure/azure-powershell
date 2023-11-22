@@ -214,9 +214,6 @@ begin {
     if ($writeln) {
         Write-Host -ForegroundColor Cyan "begin:Update-AzPolicyAssignment(" $PSBoundParameters ") - (ParameterSet: $($PSCmdlet.ParameterSetName))"
     }
-
-    # load nested module containing common code
-    Import-Module (Join-Path $PSScriptRoot 'Helpers.psm1')
 }
 
 process {
@@ -241,7 +238,7 @@ process {
     }
 
     # construct id for assignment to update
-    $resolved = Helpers\ResolvePolicyAssignment $Name $Scope $thisId
+    $resolved = ResolvePolicyAssignment $Name $Scope $thisId
     $getParameters = @{ Id = $resolved.ResourceId }
 
     if ($writeln) {

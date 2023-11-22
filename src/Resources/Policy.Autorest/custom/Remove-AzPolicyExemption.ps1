@@ -141,9 +141,6 @@ begin {
         Write-Host -ForegroundColor Cyan "begin:Remove-AzPolicyExemption(" $PSBoundParameters ") - (ParameterSet: $($PSCmdlet.ParameterSetName))"
     }
 
-    # load nested module containing common code
-    Import-Module (Join-Path $PSScriptRoot 'Helpers.psm1')
-
     $mapping = @{
         Delete = 'Az.Policy.private\Remove-AzPolicyExemption_Delete';
         DeleteViaIdentity = 'Az.Policy.private\Remove-AzPolicyExemption_DeleteViaIdentity';
@@ -163,7 +160,7 @@ process {
     }
 
     # construct confirmation prompt
-    $resolved = Helpers\ResolvePolicyExemption $Name $Scope $thisId
+    $resolved = ResolvePolicyExemption $Name $Scope $thisId
     $result = $false
 
     # make a friendly prompt

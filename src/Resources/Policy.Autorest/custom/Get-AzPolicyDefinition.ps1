@@ -184,9 +184,6 @@ begin {
         Write-Host -ForegroundColor Cyan "begin:Get-AzPolicyDefinition(" $PSBoundParameters ") - (ParameterSet: $($PSCmdlet.ParameterSetName))"
     }
 
-    # load nested module containing common code
-    Import-Module (Join-Path $PSScriptRoot 'Helpers.psm1')
-
     # mapping table of generated cmdlet parameter sets
     $mapping = @{
         Get='Az.Policy.private\Get-AzPolicyDefinition_Get';
@@ -224,7 +221,7 @@ process {
             $PSBoundParameters.Add('Filter', "policyType eq 'Static'")
         }
         'Id' {
-            $parsed = Helpers\ParsePolicyDefinitionId $Id   # function is imported from Helpers.psm1
+            $parsed = ParsePolicyDefinitionId $Id   # function is imported from Helpers.psm1
             switch ($parsed.ScopeType)
             {
                 'subid' {
@@ -327,10 +324,10 @@ process {
             $propertyBag = @{
                 Description = $item.Description;
                 DisplayName = $item.DisplayName;
-                Metadata = Helpers\ConvertObjectToPSObject $item.Metadata;
+                Metadata = ConvertObjectToPSObject $item.Metadata;
                 Mode = $item.Mode;
-                Parameters = Helpers\ConvertObjectToPSObject $item.Parameter;
-                PolicyRule = Helpers\ConvertObjectToPSObject $item.PolicyRule;
+                Parameters = ConvertObjectToPSObject $item.Parameter;
+                PolicyRule = ConvertObjectToPSObject $item.PolicyRule;
                 PolicyType = $item.PolicyType
             }
 
@@ -342,9 +339,9 @@ process {
         }
 
         # use PSCustomObject for JSON properties
-        $item | Add-Member -MemberType NoteProperty -Name 'Metadata' -Value (Helpers\ConvertObjectToPSObject $item.Metadata) -Force
-        $item | Add-Member -MemberType NoteProperty -Name 'Parameter' -Value (Helpers\ConvertObjectToPSObject $item.Parameter) -Force
-        $item | Add-Member -MemberType NoteProperty -Name 'PolicyRule' -Value (Helpers\ConvertObjectToPSObject $item.PolicyRule) -Force
+        $item | Add-Member -MemberType NoteProperty -Name 'Metadata' -Value (ConvertObjectToPSObject $item.Metadata) -Force
+        $item | Add-Member -MemberType NoteProperty -Name 'Parameter' -Value (ConvertObjectToPSObject $item.Parameter) -Force
+        $item | Add-Member -MemberType NoteProperty -Name 'PolicyRule' -Value (ConvertObjectToPSObject $item.PolicyRule) -Force
         $PSCmdlet.WriteObject($item)
     }
 }

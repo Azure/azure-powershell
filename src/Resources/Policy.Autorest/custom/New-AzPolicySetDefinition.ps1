@@ -171,9 +171,6 @@ begin {
         Write-Host -ForegroundColor Cyan "begin:New-AzPolicySetDefinition(" $PSBoundParameters ") - (ParameterSet: $($PSCmdlet.ParameterSetName))"
     }
 
-    # load nested module containing common code
-    Import-Module (Join-Path $PSScriptRoot 'Helpers.psm1')
-
     # mapping table of generated cmdlet parameter sets
     $mapping = @{
         CreateExpanded = 'Az.Policy.private\New-AzPolicySetDefinition_CreateExpanded';
@@ -195,7 +192,7 @@ process {
 
     # convert input/legacy policy parameter to correct set of parameters and remove
     if ($PolicyDefinition) {
-        $calledParameters.PolicyDefinition = (Helpers\GetFileUriOrStringParameterValue $PolicyDefinition)
+        $calledParameters.PolicyDefinition = (GetFileUriOrStringParameterValue $PolicyDefinition)
     }
 
     # rename [hashtable] PolicyDefinition parameter to [hashtable] PolicyDefinitionTable parameter
@@ -206,17 +203,17 @@ process {
 
     # resolve [string] 'metadata' input parameter to [hashtable]
     if ($Metadata) {
-        $calledParameters.MetadataTable = (Helpers\ResolvePolicyMetadataParameter -MetadataValue $Metadata -Debug $writeln)
+        $calledParameters.MetadataTable = (ResolvePolicyMetadataParameter -MetadataValue $Metadata -Debug $writeln)
     }
     elseif ($calledParameters.Metadata) {
-        $calledParameters.MetadataTable = (Helpers\ResolvePolicyMetadataParameter -MetadataValue $calledParameters.Metadata -Debug $writeln)
+        $calledParameters.MetadataTable = (ResolvePolicyMetadataParameter -MetadataValue $calledParameters.Metadata -Debug $writeln)
     }
 
     $null = $calledParameters.Remove('Metadata')
 
     # resolve [string] 'parameter' input parameter (could be a path)
     if ($Parameter) {
-        $calledParameters.Parameter = (Helpers\GetFileUriOrStringParameterValue $Parameter)
+        $calledParameters.Parameter = (GetFileUriOrStringParameterValue $Parameter)
     }
 
     # rename [string] 'parameter' parameter to 'parametertable' (needs to be string to construct properly)
@@ -228,7 +225,7 @@ process {
 
     # resolve [string] 'PolicyDefinitionGroup' input parameter to [hashtable]
     if ($PolicyDefinitionGroup) {
-        $calledParameters.PolicyDefinitionGroup = (Helpers\GetFileUriOrStringParameterValue $PolicyDefinitionGroup)
+        $calledParameters.PolicyDefinitionGroup = (GetFileUriOrStringParameterValue $PolicyDefinitionGroup)
     }
 
     # rename [hashtable] 'PolicyDefinitionGroup' parameter to [hashtable] 'PolicyDefinitionGroupTable' parameter
@@ -275,10 +272,10 @@ process {
         $propertyBag = @{
             Description = $item.Description;
             DisplayName = $item.DisplayName;
-            Metadata = (Helpers\ConvertObjectToPSObject $item.Metadata);  # (ConvertFrom-Json $item.Metadata.ToJsonString() -Depth 100);
-            Parameters = (Helpers\ConvertObjectToPSObject $item.Parameter);  # (ConvertFrom-Json $item.Parameter.ToJsonString() -Depth 100);
-            PolicyDefinitions = (Helpers\ConvertObjectToPSObject $item.PolicyDefinition);  # (ConvertFrom-Json $item.PolicyDefinition.ToJsonString() -Depth 100);
-            PolicyDefinitionGroups = (Helpers\ConvertObjectToPSObject $item.PolicyDefinitionGroup)  # (ConvertFrom-Json $item.PolicyDefinitionGroup.ToJsonString() -Depth 100);
+            Metadata = (ConvertObjectToPSObject $item.Metadata);  # (ConvertFrom-Json $item.Metadata.ToJsonString() -Depth 100);
+            Parameters = (ConvertObjectToPSObject $item.Parameter);  # (ConvertFrom-Json $item.Parameter.ToJsonString() -Depth 100);
+            PolicyDefinitions = (ConvertObjectToPSObject $item.PolicyDefinition);  # (ConvertFrom-Json $item.PolicyDefinition.ToJsonString() -Depth 100);
+            PolicyDefinitionGroups = (ConvertObjectToPSObject $item.PolicyDefinitionGroup)  # (ConvertFrom-Json $item.PolicyDefinitionGroup.ToJsonString() -Depth 100);
         }
 
         $item | Add-Member -MemberType NoteProperty -Name 'Properties' -Value ([PSCustomObject]($propertyBag))
@@ -288,10 +285,10 @@ process {
         $item | Add-Member -MemberType NoteProperty -Name 'PolicySetDefinitionId' -Value $item.Id
     }
 
-    $item | Add-Member -MemberType NoteProperty -Name 'Metadata' -Value (Helpers\ConvertObjectToPSObject $item.Metadata) -Force
-    $item | Add-Member -MemberType NoteProperty -Name 'Parameter' -Value (Helpers\ConvertObjectToPSObject $item.Parameter) -Force
-    $item | Add-Member -MemberType NoteProperty -Name 'PolicyDefinition' -Value (Helpers\ConvertObjectToPSObject $item.PolicyDefinition) -Force
-    $item | Add-Member -MemberType NoteProperty -Name 'PolicyDefinitionGroup' -Value (Helpers\ConvertObjectToPSObject $item.PolicyDefinitionGroup) -Force
+    $item | Add-Member -MemberType NoteProperty -Name 'Metadata' -Value (ConvertObjectToPSObject $item.Metadata) -Force
+    $item | Add-Member -MemberType NoteProperty -Name 'Parameter' -Value (ConvertObjectToPSObject $item.Parameter) -Force
+    $item | Add-Member -MemberType NoteProperty -Name 'PolicyDefinition' -Value (ConvertObjectToPSObject $item.PolicyDefinition) -Force
+    $item | Add-Member -MemberType NoteProperty -Name 'PolicyDefinitionGroup' -Value (ConvertObjectToPSObject $item.PolicyDefinitionGroup) -Force
     $PSCmdlet.WriteObject($item)
 }
 

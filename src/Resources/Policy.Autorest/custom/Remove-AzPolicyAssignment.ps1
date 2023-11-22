@@ -141,9 +141,6 @@ begin {
         Write-Host -ForegroundColor Cyan "begin:Remove-AzPolicyAssignment(" $PSBoundParameters ") - (ParameterSet: $($PSCmdlet.ParameterSetName))"
     }
 
-    # load nested module containing common code
-    Import-Module (Join-Path $PSScriptRoot 'Helpers.psm1')
-
     # make mapping table
     $mapping = @{
         Delete = 'Az.Policy.private\Remove-AzPolicyAssignment_Delete';
@@ -166,7 +163,7 @@ process {
     }
 
     # construct confirmation prompt
-    $resolved = Helpers\ResolvePolicyAssignment $Name $Scope $thisId
+    $resolved = ResolvePolicyAssignment $Name $Scope $thisId
     $result = $false
 
     # make a friendly prompt

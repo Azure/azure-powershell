@@ -16,6 +16,7 @@
 
 # split policy ids into usable parts (only used internally in this file)
 function parsePolicyId {
+    [Microsoft.Azure.PowerShell.Cmdlets.Policy.DoNotExportAttribute()]
     # the resource Id of a policy definition
     param($resourceId, $typeName)
 
@@ -85,6 +86,7 @@ function parsePolicyId {
 
 # split policy definition resourceId into its parts (used externally)
 function ParsePolicyDefinitionId {
+    [Microsoft.Azure.PowerShell.Cmdlets.Policy.DoNotExportAttribute()]
     # the resource Id of a policy definition
     param($ResourceId)
 
@@ -93,6 +95,7 @@ function ParsePolicyDefinitionId {
 
 # split policy set definition resourceId into its parts
 function ParsePolicySetDefinitionId {
+    [Microsoft.Azure.PowerShell.Cmdlets.Policy.DoNotExportAttribute()]
     # the resource Id of a policy set definition
     param($ResourceId)
 
@@ -101,6 +104,7 @@ function ParsePolicySetDefinitionId {
 
 # split policy assignment resourceId into its parts
 function ParsePolicyAssignmentId {
+    [Microsoft.Azure.PowerShell.Cmdlets.Policy.DoNotExportAttribute()]
     # the resource Id of a policy set definition
     param($ResourceId)
 
@@ -109,6 +113,7 @@ function ParsePolicyAssignmentId {
 
 # split policy assignment resourceId into its parts
 function ParsePolicyExemptionId {
+    [Microsoft.Azure.PowerShell.Cmdlets.Policy.DoNotExportAttribute()]
     # the resource Id of a policy set definition
     param($resourceId)
 
@@ -118,6 +123,7 @@ function ParsePolicyExemptionId {
 # Convert input parameter value to hashtable type expected by the autorest serializers
 function ConvertParameterArray
 {
+    [Microsoft.Azure.PowerShell.Cmdlets.Policy.DoNotExportAttribute()]
     param ($InputObject)
 
     if ($InputObject -is [array])
@@ -151,6 +157,7 @@ function ConvertParameterArray
 # convert various input formats to policy-formatted hashtable suitable for autorest serializers
 function ConvertParameterObject
 {
+    [Microsoft.Azure.PowerShell.Cmdlets.Policy.DoNotExportAttribute()]
     param ($InputObject)
 
     if (!$InputObject)
@@ -188,6 +195,7 @@ function ConvertParameterObject
 
 # Convert output hashtable object output by autorest serializers to PSCustomObject format for legacy support
 function ConvertObjectToPSObject {
+    [Microsoft.Azure.PowerShell.Cmdlets.Policy.DoNotExportAttribute()]
     param($InputObject)
 
     if ($null -eq $InputObject) {
@@ -210,11 +218,13 @@ function ConvertObjectToPSObject {
     ConvertFrom-Json $jsonString -Depth 100
 }
 
-function GetPSObjectProperty(
-    [PSObject]$PropertyObject,
-    [string]$PropertyPath
-)
-{
+function GetPSObjectProperty {
+    [Microsoft.Azure.PowerShell.Cmdlets.Policy.DoNotExportAttribute()]
+    param (
+        [PSObject]$PropertyObject,
+        [string]$PropertyPath
+    )
+
     $propertyNames = $PropertyPath.Split('.')
     $tmpObject = $PropertyObject
     foreach ($propertyName in $propertyNames)
@@ -237,6 +247,7 @@ function GetPSObjectProperty(
 
 # tests whether the given string is a Uri
 function Test-Uri {
+    [Microsoft.Azure.PowerShell.Cmdlets.Policy.DoNotExportAttribute()]
     param([string]$Value)
 
     $uri = ''
@@ -245,6 +256,7 @@ function Test-Uri {
 
 # issues a GET to the given address and returns the contents
 function Get-UriContent {
+    [Microsoft.Azure.PowerShell.Cmdlets.Policy.DoNotExportAttribute()]
     param([string]$UriAddress)
 
     $response = Invoke-WebRequest $UriAddress -DisableKeepAlive -Method Get
@@ -256,6 +268,7 @@ function Get-UriContent {
 # if the given string is a file path or URI, returns the contents of the file or web page
 # otherwise returns the original string
 function GetFileUriOrStringParameterValue {
+    [Microsoft.Azure.PowerShell.Cmdlets.Policy.DoNotExportAttribute()]
     param([string]$parameterValue)
 
     if (Test-Path $parameterValue) {
@@ -272,6 +285,7 @@ function GetFileUriOrStringParameterValue {
 }
 
 function ResolvePolicyParameter {
+    [Microsoft.Azure.PowerShell.Cmdlets.Policy.DoNotExportAttribute()]
     param(
         [string]$ParameterName,
         [string]$ParameterValue,
@@ -292,6 +306,7 @@ function ResolvePolicyParameter {
 }
 
 function ResolvePolicyMetadataParameter {
+    [Microsoft.Azure.PowerShell.Cmdlets.Policy.DoNotExportAttribute()]
     param(
         $MetadataValue,
         [bool]$Debug = $false
@@ -325,6 +340,7 @@ function ResolvePolicyMetadataParameter {
 
 # construct the full Id of a resource given the various parts (only used internally in this file)
 function resolvePolicyArtifact {
+    [Microsoft.Azure.PowerShell.Cmdlets.Policy.DoNotExportAttribute()]
     param(
         [string]$name,
         [string]$subscriptionId,
@@ -417,6 +433,7 @@ function resolvePolicyArtifact {
 }
 
 function ResolvePolicyDefinition {
+    [Microsoft.Azure.PowerShell.Cmdlets.Policy.DoNotExportAttribute()]
     param(
         [string]$Name,
         [string]$SubscriptionId,
@@ -428,6 +445,7 @@ function ResolvePolicyDefinition {
 }
 
 function ResolvePolicySetDefinition {
+    [Microsoft.Azure.PowerShell.Cmdlets.Policy.DoNotExportAttribute()]
     param(
         [string]$Name,
         [string]$SubscriptionId,
@@ -439,6 +457,7 @@ function ResolvePolicySetDefinition {
 }
 
 function ResolvePolicyAssignment {
+    [Microsoft.Azure.PowerShell.Cmdlets.Policy.DoNotExportAttribute()]
     param(
         [string]$Name,
         [string]$Scope,
@@ -459,6 +478,7 @@ function ResolvePolicyAssignment {
 }
 
 function ResolvePolicyExemption {
+    [Microsoft.Azure.PowerShell.Cmdlets.Policy.DoNotExportAttribute()]
     param(
         [string]$Name,
         [string]$Scope,
