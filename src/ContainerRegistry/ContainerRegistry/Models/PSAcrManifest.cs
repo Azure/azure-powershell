@@ -13,8 +13,11 @@
 // ----------------------------------------------------------------------------------
 
 using Microsoft.Azure.ContainerRegistry.Models;
+using Microsoft.Azure.Management.WebSites.Version2016_09_01.Models;
 using System.Collections.Generic;
 using System.Linq;
+using Azure.Containers.ContainerRegistry;
+using Azure;
 
 namespace Microsoft.Azure.Commands.ContainerRegistry.Models
 {
@@ -34,6 +37,18 @@ namespace Microsoft.Azure.Commands.ContainerRegistry.Models
             if (manifest != null && manifest.ManifestsAttributes != null)
             {
                 ManifestsAttributes = manifest.ManifestsAttributes.Select(x => new PSManifestAttributeBase(x)).ToList();
+            }
+        }
+
+        public PSAcrManifest(Pageable<ArtifactManifestProperties> properties)
+        {
+            this.ManifestsAttributes = new List<PSManifestAttributeBase>();
+            foreach (ArtifactManifestProperties property in properties)
+            {
+                this.ImageName = property.RepositoryName;
+                this.Registry = property.RegistryLoginServer;
+                this.ManifestsAttributes.Add(new PSManifestAttributeBase(property.Digest, property.SizeInBytes, property.CreatedOn.ToString(), property.LastUpdatedOn.ToString(), property.Architecture.ToString(), property.OperatingSystem.ToString(),
+                   null, null, new List<string>(property.Tags), new PSChangeableAttribute(property.CanDelete, property.CanWrite, property.CanList, property.CanRead)));
             }
         }
 

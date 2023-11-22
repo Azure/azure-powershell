@@ -170,7 +170,11 @@ namespace Microsoft.Azure.Commands.ContainerRegistry
 
         public PSAcrManifest ListManifest(string repository)
         {
-            return new ContainerRegistryManifestListOperation(this, repository).ProcessRequest();
+            ContainerRepository image = _track2Client.GetRepository(repository);
+
+            Pageable<ArtifactManifestProperties> properties = image.GetAllManifestProperties();
+
+            return new PSAcrManifest(properties);
         }
 
         public PSManifestAttribute GetManifest(string repository, string manifest)
