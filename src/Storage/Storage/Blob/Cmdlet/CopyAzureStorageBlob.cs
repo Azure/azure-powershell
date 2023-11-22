@@ -466,9 +466,10 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Blob.Cmdlet
                         long appendCopyOffset = 0;
                         progressHandler.Report(appendCopyOffset);
                         long appendContentLenLeft = srcProperties.ContentLength;
+                        long appendChunkSize = GetAppendBlockLength(srcProperties.ContentLength);
                         while (appendContentLenLeft > 0)
                         {
-                            long appendContentSize = appendContentLenLeft < size4MB ? appendContentLenLeft : size4MB;
+                            long appendContentSize = appendContentLenLeft < appendChunkSize ? appendContentLenLeft : appendChunkSize;
 
                             Track2Models.AppendBlobAppendBlockFromUriOptions appendBlobAppendBlockFromUriOptions = new Track2Models.AppendBlobAppendBlockFromUriOptions
                             {
