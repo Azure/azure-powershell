@@ -99,12 +99,10 @@ namespace Microsoft.Azure.Commands.Sql.Database_Backup.Cmdlet
         [Parameter(Mandatory = true,
             ParameterSetName = UpdateBackupDefaultSet,
             ValueFromPipelineByPropertyName = true,
-            Position = 3,
             HelpMessage = "The name of the backup.")]
         [Parameter(Mandatory = true,
             ParameterSetName = UpdateBackupStorageAccessTierSet,
             ValueFromPipelineByPropertyName = true,
-            Position = 3,
             HelpMessage = "The name of the backup.")]
         [ValidateNotNullOrEmpty]
         public string BackupName { get; set; }
@@ -142,7 +140,6 @@ namespace Microsoft.Azure.Commands.Sql.Database_Backup.Cmdlet
         [Parameter(Mandatory = true,
             ParameterSetName = UpdateBackupStorageAccessTierSet,
             ValueFromPipelineByPropertyName = true,
-            Position = 4,
             HelpMessage = "The target backup storage access tier.")]
         [ValidateSet("Hot", "Archive")]
         public string BackupStorageAccessTier { get; set; }
@@ -153,7 +150,6 @@ namespace Microsoft.Azure.Commands.Sql.Database_Backup.Cmdlet
         [Parameter(Mandatory = true,
             ParameterSetName = UpdateBackupStorageAccessTierSet,
             ValueFromPipelineByPropertyName = true,
-            Position = 5,
             HelpMessage = "The target backup operation mode when changing storage access tier.")]
         [ValidateSet("Copy", "Move")]
         public string OperationMode { get; set; }
