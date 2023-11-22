@@ -55,14 +55,15 @@ Please check the URI in location header for the detailed status of the request.
 
 ### Example 1: Create or update the quota limit for the specified resource with the requested value
 ```powershell
-$limit = New-AzQuotaLimitObject -Value 1003
-New-AzQuota -Scope "subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/providers/Microsoft.Network/locations/eastus2" -ResourceName "PublicIPAddresses" -Name "PublicIPAddresses" -Limit $limit
+$quota = Get-AzQuota -Scope "subscriptions/{subId}/providers/Microsoft.Network/locations/eastus2" -ResourceName "PublicIPAddresses"
+$limit = New-AzQuotaLimitObject -Value ($quota.Limit.Value + 1)
+New-AzQuota -Scope "subscriptions/{subId}/providers/Microsoft.Network/locations/eastus2" -ResourceName "PublicIPAddresses" -Name "PublicIPAddresses" -Limit $limit
 ```
 
 ```output
-Name              NameLocalizedValue          Unit  ETag
-----              ------------------          ----  ----
-PublicIPAddresses Public IP Addresses - Basic Count
+Name              NameLocalizedValue  Unit  ETag
+----              ------------------  ----  ----
+PublicIPAddresses Public IP Addresses Count
 ```
 
 This command create or update the quota limit for the specified resource with the requested value.
