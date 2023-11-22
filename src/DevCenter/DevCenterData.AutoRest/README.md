@@ -180,11 +180,6 @@ directive:
   - where:
       subject: ^(.*)
     hide: true
-  - where: 
-      parameter-name: DevCenter 
-    set: 
-      parameter-name: DevCenterName 
-      alias: DevCenter 
   - where:
       subject: ^(.*)
     set:
