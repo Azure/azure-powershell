@@ -37,6 +37,12 @@ namespace Microsoft.Azure.Commands.StorageSync.Common
         public IEcsManagement CreateEcsManagement() => new EcsManagementInteropClient();
 
         /// <summary>
+        /// Creates the ecs management.
+        /// </summary>
+        /// <returns>IEcsManagement.</returns>
+        public ISyncServerRegistration CreateSyncServerManagement() => new SyncServerRegistrationClient(CreateEcsManagement());
+
+        /// <summary>
         /// Gets the afs agent installer path.
         /// </summary>
         /// <param name="afsAgentInstallerPath">The afs agent installer path.</param>

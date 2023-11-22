@@ -92,6 +92,12 @@ namespace StorageSync.Test.Common
         public IEcsManagement CreateEcsManagement() => IsPlaybackMode ? new MockEcsManagementInteropClient() as IEcsManagement : new EcsManagementInteropClient();
 
         /// <summary>
+        /// Creates the Sync Server Registration management.
+        /// </summary>
+        /// <returns>IEcsManagement.</returns>
+        public ISyncServerRegistration CreateSyncServerManagement() => IsPlaybackMode ? new MockSyncServerRegistrationClient(CreateEcsManagement()) as ISyncServerRegistration : new SyncServerRegistrationClient(CreateEcsManagement());
+
+        /// <summary>
         /// Gets the unique identifier.
         /// </summary>
         /// <returns>Guid.</returns>

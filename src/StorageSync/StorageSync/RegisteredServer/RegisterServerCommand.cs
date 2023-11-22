@@ -179,7 +179,7 @@ namespace Microsoft.Azure.Commands.StorageSync.Cmdlets
         /// <exception cref="PSArgumentException">AfsAgentInstallerPath</exception>
         private RegisteredServer PerformServerRegistration(string resourceGroupName, Guid subscriptionId, string storageSyncServiceName)
         {
-            using (ISyncServerRegistration syncServerRegistrationClient = new SyncServerRegistrationClient(StorageSyncClientWrapper.StorageSyncResourceManager.CreateEcsManagement()))
+            using (ISyncServerRegistration syncServerRegistrationClient = StorageSyncClientWrapper.StorageSyncResourceManager.CreateSyncServerManagement())
             {
                 if (string.IsNullOrEmpty(StorageSyncClientWrapper.AfsAgentInstallerPath))
                 {
