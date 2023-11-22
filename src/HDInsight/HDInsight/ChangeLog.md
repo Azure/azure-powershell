@@ -18,6 +18,8 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
+
+## Version 6.0.2
 * Fixed a bug where the get cluster command does not display abfss storage information.
 
 ## Version 6.0.1

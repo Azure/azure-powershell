@@ -271,7 +271,7 @@ namespace Microsoft.Azure.Commands.Compute.Test.ScenarioTests
         }
 
         [Fact]
-        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        [Trait(Category.AcceptanceType, Category.LiveOnly)]
         public void TestVirtualMachineScaleSetGuestAttestation()
         {
             TestRunner.RunTestScript("Test-VirtualMachineScaleSetGuestAttestation");
@@ -374,6 +374,47 @@ namespace Microsoft.Azure.Commands.Compute.Test.ScenarioTests
         {
             TestRunner.RunTestScript("Test-VirtualMachineScaleSetSecurityTypeUpdate");
         }
+        
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void TestVirtualMachineScaleSetDefaultToFlexibleOrchestrationMode()
+        {
+            TestRunner.RunTestScript("Test-VirtualMachineScaleSetDefaultToFlexibleOrchestrationMode");
+        }
 
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void TestVirtualMachineScaleSetAttachAndDetach()
+        {
+            TestRunner.RunTestScript("Test-VirtualMachineScaleSetAttachAndDetach");
+        }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void TestVirtualMachineScaleSetSecurityTypeDefaulting()
+        {
+            TestRunner.RunTestScript("Test-VirtualMachineScaleSetSecurityTypeDefaulting");
+        }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void TestVirtualMachineScaleSetSecurityTypeDefaultingFromImage()
+        {
+            TestRunner.RunTestScript("Test-VirtualMachineScaleSetSecurityTypeDefaultingFromImage");
+        }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void TestVirtualMachineScaleSetSecurityTypeAndFlexDefaults()
+        {
+            TestRunner.RunTestScript("Test-VirtualMachineScaleSetSecurityTypeAndFlexDefaults");
+        }
+        
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void TestVirtualMachineScaleSetSecurityTypeNoVMProfile()
+        {
+            TestRunner.RunTestScript("Test-VirtualMachineScaleSetSecurityTypeNoVMProfile");
+        }
     }
 }

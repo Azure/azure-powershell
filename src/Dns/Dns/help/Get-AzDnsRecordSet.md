@@ -128,7 +128,7 @@ This cmdlet then returns all record sets in the zone (of all names and types).
 Type: System.Nullable`1[Microsoft.Azure.Management.Dns.Models.RecordType]
 Parameter Sets: (All)
 Aliases:
-Accepted values: A, AAAA, CAA, CNAME, MX, NS, PTR, SOA, SRV, TXT
+Accepted values: A, Aaaa, CAA, Cname, MX, NS, PTR, SOA, SRV, TXT, Tlsa, DS, Naptr
 
 Required: False
 Position: Named

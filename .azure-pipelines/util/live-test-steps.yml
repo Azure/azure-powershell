@@ -106,6 +106,14 @@ jobs:
       filePath: ./tools/TestFx/Live/InvokeLiveTestCITask.ps1
       arguments: -UseWindowsPowerShell ('${{ parameters.psVersion }}' -eq '5.1') -ScriptFile './tools/TestFx/Live/InstallLiveTestAzModules.ps1 -Source $(GalleryName) -AzPackagesLocation (Join-Path -Path $(DataLocation) -ChildPath AzPreviewPackages)'
 
+  - template: get-keyvault-secret-steps.yml
+    parameters:
+      serviceConnectionName: $(LiveTestServiceConnectionName)
+      keyVaultName: $(LiveTestServicePrincipalKeyVaultName)
+      secretName: $(LiveTestServicePrincipalSecretName)
+      outVar: 'LiveTestServicePrincipalSecret'
+      execCondition: and(succeeded(), ne(variables['skipLatest'], 'true'))
+
   - task: PowerShell@2
     displayName: Connect Azure with live test service principal
     condition: and(succeeded(), ne(variables['skipLatest'], 'true'))
@@ -125,6 +133,14 @@ jobs:
       targetType: filePath
       filePath: ./tools/TestFx/Live/InvokeLiveTestCITask.ps1
       arguments: -UseWindowsPowerShell ('${{ parameters.psVersion }}' -eq '5.1') -ScriptFile './tools/TestFx/Live/InvokeLiveTestScenarios.ps1 -OSVersion ${{ parameters.vmImage }} -RunPlatform ${{ parameters.osType }} -RunPowerShell ${{ parameters.psVersion }}'
+
+  - template: get-keyvault-secret-steps.yml
+    parameters:
+      serviceConnectionName: $(KustoServiceConnectionName)
+      keyVaultName: $(KustoServicePrincipalKeyVaultName)
+      secretName: $(KustoServicePrincipalSecretName)
+      outVar: 'KustoServicePrincipalSecret'
+      execCondition: and(succeeded(), ne(variables['skipLatest'], 'true'))
 
   - task: PowerShell@2
     displayName: Save live test results to Kusto
