@@ -6232,14 +6232,14 @@ function Test-ManualConfidentialVMSetAzVmOsDiskDesIdDiskWithVMGuest
     # Setup
     #$rgname = Get-ComputeTestResourceName;
     $loc = "northeurope";
-    $rgname = "adsandwiki56";
+    $rgname = "adsandwiki57";
 
     try
     {
         <#
         The below script runs assuming that these below steps were manually run beforehand.
         This script uses Data Plane Operations, which our test framework does not support.
-        $rgname = "adsandwiki56";
+        $rgname = "adsandwiki57";
         $loc = 'northeurope';
         New-AzResourceGroup -Name $rgname -Location $loc -Force;
 
@@ -6304,8 +6304,8 @@ function Test-ManualConfidentialVMSetAzVmOsDiskDesIdDiskWithVMGuest
         $keyname = "k" + $rgname;
         $desName= "des" + $rgname;
 
-        $encryptionKeyVaultId = "/subscriptions/e37510d7-33b6-4676-886f-ee75bcc01871/resourceGroups/adsandwiki56/providers/Microsoft.KeyVault/vaults/kvadsandwiki56";
-        $encryptionKeyURL = "https://kvadsandwiki56.vault.azure.net/keys/kadsandwiki56/9f7681150d6b4dd8bf86cd0c6256a3ee";
+        $encryptionKeyVaultId = "/subscriptions/e37510d7-33b6-4676-886f-ee75bcc01871/resourceGroups/adsandwiki57/providers/Microsoft.KeyVault/vaults/kvadsandwiki57";
+        $encryptionKeyURL = "https://kvadsandwiki57.vault.azure.net/keys/kadsandwiki57/3bacce5d72d147a785ecf79d4b1dc9b0";
         
         # Create new DES Config and DES
         $diskEncryptionType = "ConfidentialVmEncryptedWithCustomerKey";
