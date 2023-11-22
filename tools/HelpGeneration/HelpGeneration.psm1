@@ -92,7 +92,7 @@ function Test-AzMarkdownHelp
         $Exceptions = Import-Csv "$SuppressedExceptionsPath\ValidateHelpIssues.csv"
         [String[]]$errors = @()
         $MarkdownFiles = Get-ChildItem -Path $HelpFolder -Filter "*.md"
-        if ($HelpFolder.FullName -contains "artifacts")
+        if ($HelpFolder.FullName -match "artifacts")
         {
             $ModuleName = $HelpFolder.FullName.Replace("\", "/").split('artifacts/')[1].split('/')[1]
         }
