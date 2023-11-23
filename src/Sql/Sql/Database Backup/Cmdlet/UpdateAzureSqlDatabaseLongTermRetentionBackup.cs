@@ -57,7 +57,6 @@ namespace Microsoft.Azure.Commands.Sql.Database_Backup.Cmdlet
             HelpMessage = "The location of the backups' source server.")]
         [Parameter(Mandatory = true,
             ParameterSetName = UpdateBackupStorageAccessTierSet,
-            Position = 0,
             HelpMessage = "The location of the backups' source server.")]
         [ValidateNotNullOrEmpty]
         [LocationCompleter("Microsoft.Sql/locations/longTermRetentionServers")]
@@ -72,7 +71,6 @@ namespace Microsoft.Azure.Commands.Sql.Database_Backup.Cmdlet
             HelpMessage = "The name of the Azure SQL Server the backup is under.")]
         [Parameter(Mandatory = true,
             ParameterSetName = UpdateBackupStorageAccessTierSet,
-            Position = 1,
             HelpMessage = "The name of the Azure SQL Server the backup is under.")]
         [ResourceNameCompleter("Microsoft.Sql/servers", "ResourceGroupName")]
         [ValidateNotNullOrEmpty]
@@ -87,7 +85,6 @@ namespace Microsoft.Azure.Commands.Sql.Database_Backup.Cmdlet
             HelpMessage = "The name of the Azure SQL Database the backup is from.")]
         [Parameter(Mandatory = true,
             ParameterSetName = UpdateBackupStorageAccessTierSet,
-            Position = 2,
             HelpMessage = "The name of the Azure SQL Database the backup is from.")]
         [ResourceNameCompleter("Microsoft.Sql/servers/databases", "ResourceGroupName", "ServerName")]
         [ValidateNotNullOrEmpty]
@@ -99,6 +96,7 @@ namespace Microsoft.Azure.Commands.Sql.Database_Backup.Cmdlet
         [Parameter(Mandatory = true,
             ParameterSetName = UpdateBackupDefaultSet,
             ValueFromPipelineByPropertyName = true,
+            Position = 3,
             HelpMessage = "The name of the backup.")]
         [Parameter(Mandatory = true,
             ParameterSetName = UpdateBackupStorageAccessTierSet,
