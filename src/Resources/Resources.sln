@@ -59,6 +59,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Resources", "Resources\Reso
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Tags", "Tags\Tags.csproj", "{EEE8C0CF-DEBF-463D-ABBF-ECC16A5A1EBF}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Az.Policy", "Policy.Autorest\Az.Policy.csproj", "{6AFC32EF-7340-4154-9EEC-73FAE6293389}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -168,6 +170,10 @@ Global
 		{EEE8C0CF-DEBF-463D-ABBF-ECC16A5A1EBF}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{EEE8C0CF-DEBF-463D-ABBF-ECC16A5A1EBF}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{EEE8C0CF-DEBF-463D-ABBF-ECC16A5A1EBF}.Release|Any CPU.Build.0 = Release|Any CPU
+		{6AFC32EF-7340-4154-9EEC-73FAE6293389}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{6AFC32EF-7340-4154-9EEC-73FAE6293389}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{6AFC32EF-7340-4154-9EEC-73FAE6293389}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{6AFC32EF-7340-4154-9EEC-73FAE6293389}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(NestedProjects) = preSolution
 		{E972F78F-7126-4D09-A665-98E1175F98DF} = {0A84FC2A-D3FA-43AB-9E14-0894BD310838}
