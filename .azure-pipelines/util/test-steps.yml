@@ -50,6 +50,8 @@ steps:
    if ($IsWindows) { $sp = ";" } else { $sp = ":" }
    $env:PSModulePath = $env:PSModulePath + $sp + (pwd).Path
    $rootFolder = (Get-item $PWD).Parent.Parent
+   Write-Host $rootFolder
+   Write-Host $PWD
    Get-ChildItem -File -Recurse test-module.ps1 | ForEach-Object {
     Write-Host $_.Directory.FullName
     cd $rootFolder
