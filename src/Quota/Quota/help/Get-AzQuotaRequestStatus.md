@@ -1,5 +1,5 @@
 ---
-external help file:
+external help file: Az.Quota-help.xml
 Module Name: Az.Quota
 online version: https://learn.microsoft.com/powershell/module/az.quota/get-azquotarequeststatus
 schema: 2.0.0
@@ -21,7 +21,7 @@ Get-AzQuotaRequestStatus -Scope <String> [-Filter <String>] [-Skiptoken <String>
 
 ### Get
 ```
-Get-AzQuotaRequestStatus -Id <String> -Scope <String> [-DefaultProfile <PSObject>] [<CommonParameters>]
+Get-AzQuotaRequestStatus -Scope <String> -Id <String> [-DefaultProfile <PSObject>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -180,4 +180,3 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ALIASES
 
 ## RELATED LINKS
-
