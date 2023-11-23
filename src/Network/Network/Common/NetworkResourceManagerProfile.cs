@@ -229,8 +229,6 @@ namespace Microsoft.Azure.Commands.Network
                 cfg.AddProfile<NetworkResourceManagerProfile>();
                 cfg.CreateMap<CNM.PSResourceId, MNM.SubResource>();
                 cfg.CreateMap<MNM.SubResource, CNM.PSResourceId>();
-                cfg.CreateMap<CNM.PSResourceIdNfv, MNM.RoutingConfigurationNfvSubResource>();
-                cfg.CreateMap<MNM.RoutingConfigurationNfvSubResource, CNM.PSResourceIdNfv>();
 
                 // Map request error exceptions between SDK and PowerShell
                 cfg.CreateMap<MNM.Error, Rest.Azure.CloudError>();
@@ -1269,8 +1267,6 @@ namespace Microsoft.Azure.Commands.Network
                 cfg.CreateMap<CNM.PSVnetRoute, MNM.VnetRoute>();
                 cfg.CreateMap<CNM.PSStaticRoute, MNM.StaticRoute>();
                 cfg.CreateMap<CNM.PSStaticRoutesConfig, MNM.StaticRoutesConfig>();
-                cfg.CreateMap<CNM.PSRoutingConfigurationNfv, MNM.RoutingConfigurationNfv>();
-                cfg.CreateMap<CNM.PSPropagatedRouteTableNfv, MNM.PropagatedRouteTableNfv>();
 
                 // MNM to CNM
                 cfg.CreateMap<MNM.HubRouteTable, CNM.PSVHubRouteTable>();
@@ -1279,8 +1275,6 @@ namespace Microsoft.Azure.Commands.Network
                 cfg.CreateMap<MNM.PropagatedRouteTable, CNM.PSPropagatedRouteTable>();
                 cfg.CreateMap<MNM.StaticRoute, CNM.PSStaticRoute>();
                 cfg.CreateMap<MNM.StaticRoutesConfig, CNM.PSStaticRoutesConfig>();
-                cfg.CreateMap<MNM.RoutingConfigurationNfv, CNM.PSRoutingConfigurationNfv>();
-                cfg.CreateMap<MNM.PropagatedRouteTableNfv, CNM.PSPropagatedRouteTableNfv>();
 
                 //// Virtual Hub Routing Intent
                 // CNM to MNM
