@@ -177,7 +177,15 @@ Function Move-Generation2Master {
             }
             Import-Module $psd1Path
             Import-Module platyPS
-            Update-MarkdownHelpModule -Path "$DestPath\$ModuleName$Psd1FolderPostfix\help" -RefreshModulePage -AlphabeticParamsOrder -UseFullTypeName -ExcludeDontShow
+            $HelpFolder = "$DestPath\$ModuleName$Psd1FolderPostfix\help"
+            if ((Get-ChildItem $HelpFolder).Length -ne 0)
+            {
+                Update-MarkdownHelpModule -Path $HelpFolder -RefreshModulePage -AlphabeticParamsOrder -UseFullTypeName -ExcludeDontShow
+            }
+            else
+            {
+                New-MarkdownHelp -UseFullTypeName -AlphabeticParamsOrder -Module "Az.$ModuleName" -OutputFolder $HelpFolder
+            }
         } -ArgumentList $ModuleName, $DestPath, $Psd1FolderPostfix
 
         $job | Wait-Job | Receive-Job
