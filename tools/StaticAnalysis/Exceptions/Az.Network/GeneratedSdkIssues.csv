@@ -1,3 +1,0 @@
-"Module","Sdk","Severity","ProblemId","Description","Remediation"
-"Az.Network","src/Network/Network.Management.Sdk","1","9090","Failed to generate Sdk for Az.Network.",""
-"Az.Network","src/Network/Network.Management.Sdk","1","9090","Failed to set autorest.csharp@2.3.90 for Az.Network.",""

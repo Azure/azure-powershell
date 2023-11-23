@@ -16,8 +16,8 @@ namespace Microsoft.Azure.Management.Network.Models
     /// </summary>
     public static class VirtualNetworkGatewaySkuTier
     {
-      public const string Basic = "Basic";
-          public const string HighPerformance = "HighPerformance";
+        public const string Basic = "Basic";
+        public const string HighPerformance = "HighPerformance";
         public const string Standard = "Standard";
         public const string UltraPerformance = "UltraPerformance";
         public const string VpnGw1 = "VpnGw1";
