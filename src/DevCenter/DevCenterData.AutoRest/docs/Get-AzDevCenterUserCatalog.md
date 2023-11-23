@@ -26,7 +26,7 @@ Get-AzDevCenterUserCatalog -Endpoint <String> -CatalogName <String> -ProjectName
 
 ### GetByDevCenter
 ```
-Get-AzDevCenterUserCatalog -DevCenter <String> -CatalogName <String> -ProjectName <String>
+Get-AzDevCenterUserCatalog -DevCenterName <String> -CatalogName <String> -ProjectName <String>
  [-DefaultProfile <PSObject>] [<CommonParameters>]
 ```
 
@@ -38,13 +38,13 @@ Get-AzDevCenterUserCatalog -Endpoint <String> -InputObject <IDevCenterdataIdenti
 
 ### GetViaIdentityByDevCenter
 ```
-Get-AzDevCenterUserCatalog -DevCenter <String> -InputObject <IDevCenterdataIdentity>
+Get-AzDevCenterUserCatalog -DevCenterName <String> -InputObject <IDevCenterdataIdentity>
  [-DefaultProfile <PSObject>] [<CommonParameters>]
 ```
 
 ### ListByDevCenter
 ```
-Get-AzDevCenterUserCatalog -DevCenter <String> -ProjectName <String> [-DefaultProfile <PSObject>]
+Get-AzDevCenterUserCatalog -DevCenterName <String> -ProjectName <String> [-DefaultProfile <PSObject>]
  [<CommonParameters>]
 ```
 
@@ -62,7 +62,7 @@ This command lists catalogs in the project "DevProject".
 
 ### Example 2: List catalogs by dev center
 ```powershell
-Get-AzDevCenterUserCatalog -DevCenter Contoso -ProjectName DevProject
+Get-AzDevCenterUserCatalog -DevCenterName Contoso -ProjectName DevProject
 ```
 
 This command lists catalogs in the project "DevProject".
@@ -76,7 +76,7 @@ This command gets a catalog named "CentralCatalog" in the project "DevProject".
 
 ### Example 4: Get a catalog by dev center
 ```powershell
-Get-AzDevCenterUserCatalog -DevCenter Contoso -ProjectName DevProject -CatalogName CentralCatalog 
+Get-AzDevCenterUserCatalog -DevCenterName Contoso -ProjectName DevProject -CatalogName CentralCatalog 
 ```
 
 This command gets a catalog named "CentralCatalog" in the project "DevProject".
@@ -92,7 +92,7 @@ This command gets a catalog named "CentralCatalog" in the project "DevProject".
 ### Example 6: Get a catalog by dev center and InputObject
 ```powershell
 $catalogInput = @{"CatalogName" = "CentralCatalog"; "ProjectName" = "DevProject" }
-Get-AzDevCenterUserCatalog -DevCenter Contoso -InputObject $catalogInput 
+Get-AzDevCenterUserCatalog -DevCenterName Contoso -InputObject $catalogInput 
 ```
 
 This command gets a catalog named "CentralCatalog" in the project "DevProject".
@@ -130,13 +130,13 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -DevCenter
+### -DevCenterName
 The DevCenter upon which to execute operations.
 
 ```yaml
 Type: System.String
 Parameter Sets: GetByDevCenter, GetViaIdentityByDevCenter, ListByDevCenter
-Aliases:
+Aliases: DevCenter
 
 Required: True
 Position: Named
@@ -200,30 +200,11 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Models.Api20230401.ICatalog
+### Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Models.Api20231001Preview.ICatalog
 
 ### System.String
 
 ## NOTES
-
-ALIASES
-
-COMPLEX PARAMETER PROPERTIES
-
-To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
-
-
-`INPUTOBJECT <IDevCenterdataIdentity>`: Identity Parameter
-  - `[ActionName <String>]`: The name of an action that will take place on a Dev Box.
-  - `[CatalogName <String>]`: The name of the catalog
-  - `[DefinitionName <String>]`: The name of the environment definition
-  - `[DevBoxName <String>]`: The name of a Dev Box.
-  - `[EnvironmentName <String>]`: The name of the environment.
-  - `[Id <String>]`: Resource identity path
-  - `[PoolName <String>]`: The name of a pool of Dev Boxes.
-  - `[ProjectName <String>]`: The DevCenter Project upon which to execute operations.
-  - `[ScheduleName <String>]`: The name of a schedule.
-  - `[UserId <String>]`: The AAD object id of the user. If value is 'me', the identity is taken from the authentication context.
 
 ## RELATED LINKS
 

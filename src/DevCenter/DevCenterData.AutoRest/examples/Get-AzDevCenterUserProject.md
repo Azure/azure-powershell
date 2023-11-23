@@ -6,7 +6,7 @@ This command lists the projects under the endpoint.
 
 ### Example 2: List projects by dev center
 ```powershell
-Get-AzDevCenterUserProject -DevCenter Contoso -ProjectName DevProject
+Get-AzDevCenterUserProject -DevCenterName Contoso -ProjectName DevProject
 ```
 This command lists the projects under the dev center.
 
@@ -18,7 +18,7 @@ This command gets the project "DevProject".
 
 ### Example 4: Get project by dev center
 ```powershell
-Get-AzDevCenterUserProject -DevCenter Contoso -ProjectName DevProject 
+Get-AzDevCenterUserProject -DevCenterName Contoso -ProjectName DevProject 
 ```
 This command gets the project "DevProject".
 
@@ -32,6 +32,6 @@ This command gets the project "DevProject".
 ### Example 6: Get project by dev center and InputObject
 ```powershell
 $devBoxInput = @{"ProjectName" = "DevProject";}
-Get-AzDevCenterUserProject -DevCenter Contoso -InputObject $devBoxInput
+Get-AzDevCenterUserProject -DevCenterName Contoso -InputObject $devBoxInput
 ```
 This command gets the project "DevProject".

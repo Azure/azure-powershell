@@ -20,7 +20,7 @@ Get-AzDevCenterUserDevBoxRemoteConnection -Endpoint <String> -DevBoxName <String
 
 ### GetByDevCenter
 ```
-Get-AzDevCenterUserDevBoxRemoteConnection -DevCenter <String> -DevBoxName <String> -ProjectName <String>
+Get-AzDevCenterUserDevBoxRemoteConnection -DevCenterName <String> -DevBoxName <String> -ProjectName <String>
  [-UserId <String>] [-DefaultProfile <PSObject>] [<CommonParameters>]
 ```
 
@@ -32,7 +32,7 @@ Get-AzDevCenterUserDevBoxRemoteConnection -Endpoint <String> -InputObject <IDevC
 
 ### GetViaIdentityByDevCenter
 ```
-Get-AzDevCenterUserDevBoxRemoteConnection -DevCenter <String> -InputObject <IDevCenterdataIdentity>
+Get-AzDevCenterUserDevBoxRemoteConnection -DevCenterName <String> -InputObject <IDevCenterdataIdentity>
  [-DefaultProfile <PSObject>] [<CommonParameters>]
 ```
 
@@ -50,7 +50,7 @@ This commands gets the remote connection for the dev box "myDevBox".
 
 ### Example 2: Get the remote connection on the dev box by dev center
 ```powershell
-Get-AzDevCenterUserDevBoxRemoteConnection -DevCenter Contoso -DevBoxName myDevBox -ProjectName DevProject
+Get-AzDevCenterUserDevBoxRemoteConnection -DevCenterName Contoso -DevBoxName myDevBox -ProjectName DevProject
 ```
 
 This commands gets the remote connection for the dev box "myDevBox".
@@ -66,7 +66,7 @@ This commands gets the remote connection for the dev box "myDevBox".
 ### Example 4: Get the remote connection on the dev box by dev center and InputObject
 ```powershell
 $devBoxInput = @{"DevBoxName" = "myDevBox"; "UserId" = "me"; "ProjectName" = "DevProject" }
-Get-AzDevCenterUserDevBoxRemoteConnection -DevCenter Contoso -InputObject $devBoxInput
+Get-AzDevCenterUserDevBoxRemoteConnection -DevCenterName Contoso -InputObject $devBoxInput
 ```
 
 This commands gets the remote connection for the dev box "myDevBox".
@@ -104,13 +104,13 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -DevCenter
+### -DevCenterName
 The DevCenter upon which to execute operations.
 
 ```yaml
 Type: System.String
 Parameter Sets: GetByDevCenter, GetViaIdentityByDevCenter
-Aliases:
+Aliases: DevCenter
 
 Required: True
 Position: Named
@@ -190,28 +190,9 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Models.Api20230401.IRemoteConnection
+### Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Models.Api20231001Preview.IRemoteConnection
 
 ## NOTES
-
-ALIASES
-
-COMPLEX PARAMETER PROPERTIES
-
-To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
-
-
-`INPUTOBJECT <IDevCenterdataIdentity>`: Identity Parameter
-  - `[ActionName <String>]`: The name of an action that will take place on a Dev Box.
-  - `[CatalogName <String>]`: The name of the catalog
-  - `[DefinitionName <String>]`: The name of the environment definition
-  - `[DevBoxName <String>]`: The name of a Dev Box.
-  - `[EnvironmentName <String>]`: The name of the environment.
-  - `[Id <String>]`: Resource identity path
-  - `[PoolName <String>]`: The name of a pool of Dev Boxes.
-  - `[ProjectName <String>]`: The DevCenter Project upon which to execute operations.
-  - `[ScheduleName <String>]`: The name of a schedule.
-  - `[UserId <String>]`: The AAD object id of the user. If value is 'me', the identity is taken from the authentication context.
 
 ## RELATED LINKS
 
