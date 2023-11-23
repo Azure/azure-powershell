@@ -21,7 +21,7 @@ New-AzDevCenterUserDevBox -Endpoint <String> -Name <String> -ProjectName <String
 
 ### CreateExpandedByDevCenter
 ```
-New-AzDevCenterUserDevBox -DevCenter <String> -Name <String> -ProjectName <String> -PoolName <String>
+New-AzDevCenterUserDevBox -DevCenterName <String> -Name <String> -ProjectName <String> -PoolName <String>
  [-UserId <String>] [-LocalAdministrator <LocalAdminStatus>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
  [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
@@ -35,7 +35,7 @@ New-AzDevCenterUserDevBox -Endpoint <String> -InputObject <IDevCenterdataIdentit
 
 ### CreateViaIdentityExpandedByDevCenter
 ```
-New-AzDevCenterUserDevBox -DevCenter <String> -InputObject <IDevCenterdataIdentity> -PoolName <String>
+New-AzDevCenterUserDevBox -DevCenterName <String> -InputObject <IDevCenterdataIdentity> -PoolName <String>
  [-LocalAdministrator <LocalAdminStatus>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf]
  [<CommonParameters>]
 ```
@@ -54,7 +54,7 @@ This command creates the dev box "myDevBox" for the user "786a823c-8037-48ab-89b
 
 ### Example 2: Create a dev box by dev center
 ```powershell
-New-AzDevCenterUserDevBox -DevCenter Contoso -ProjectName DevProject -UserId "me" -Name myDevBox -PoolName DevPool
+New-AzDevCenterUserDevBox -DevCenterName Contoso -ProjectName DevProject -UserId "me" -Name myDevBox -PoolName DevPool
 ```
 
 This command creates the dev box "myDevBox" for the currently signed-in user.
@@ -70,7 +70,7 @@ This command creates the dev box "myDevBox" for the currently signed-in user.
 ### Example 4: Create a dev box by dev center and InputObject
 ```powershell
 $devBoxInput = @{"DevBoxName" = "myDevBox"; "UserId" = "786a823c-8037-48ab-89b8-8599901e67d0"; "ProjectName" = "DevProject" }
-New-AzDevCenterUserDevBox -DevCenter Contoso -InputObject $devBoxInput -PoolName DevPool
+New-AzDevCenterUserDevBox -DevCenterName Contoso -InputObject $devBoxInput -PoolName DevPool
 ```
 
 This command creates the dev box "myDevBox" for the user "786a823c-8037-48ab-89b8-8599901e67d0".
@@ -108,13 +108,13 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -DevCenter
+### -DevCenterName
 The DevCenter upon which to execute operations.
 
 ```yaml
 Type: System.String
 Parameter Sets: CreateExpandedByDevCenter, CreateViaIdentityExpandedByDevCenter
-Aliases:
+Aliases: DevCenter
 
 Required: True
 Position: Named
@@ -285,28 +285,9 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Models.Api20230401.IDevBox
+### Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Models.Api20231001Preview.IDevBox
 
 ## NOTES
-
-ALIASES
-
-COMPLEX PARAMETER PROPERTIES
-
-To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
-
-
-`INPUTOBJECT <IDevCenterdataIdentity>`: Identity Parameter
-  - `[ActionName <String>]`: The name of an action that will take place on a Dev Box.
-  - `[CatalogName <String>]`: The name of the catalog
-  - `[DefinitionName <String>]`: The name of the environment definition
-  - `[DevBoxName <String>]`: The name of a Dev Box.
-  - `[EnvironmentName <String>]`: The name of the environment.
-  - `[Id <String>]`: Resource identity path
-  - `[PoolName <String>]`: The name of a pool of Dev Boxes.
-  - `[ProjectName <String>]`: The DevCenter Project upon which to execute operations.
-  - `[ScheduleName <String>]`: The name of a schedule.
-  - `[UserId <String>]`: The AAD object id of the user. If value is 'me', the identity is taken from the authentication context.
 
 ## RELATED LINKS
 

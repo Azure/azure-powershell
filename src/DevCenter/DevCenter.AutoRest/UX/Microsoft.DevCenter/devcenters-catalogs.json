@@ -1,10 +1,53 @@
 {
   "resourceType": "devcenters/catalogs",
-  "apiVersion": "2023-04-01",
+  "apiVersion": "2023-10-01-preview",
   "learnMore": {
     "url": "https://learn.microsoft.com/powershell/module/az.devcenter"
   },
   "commands": [
+    {
+      "name": "Get-AzDevCenterAdminCatalogSyncErrorDetail",
+      "description": "Gets catalog synchronization error details",
+      "path": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DevCenter/devcenters/{devCenterName}/catalogs/{catalogName}/getSyncErrorDetails",
+      "help": {
+        "learnMore": {
+          "url": "https://learn.microsoft.com/powershell/module/az.devcenter/get-azdevcenteradmincatalogsyncerrordetail"
+        },
+        "parameterSets": [
+          {
+            "parameters": [
+              "-CatalogName <String>",
+              "-DevCenterName <String>",
+              "-ResourceGroupName <String>",
+              "[-SubscriptionId <String[]>]"
+            ]
+          }
+        ]
+      },
+      "examples": [
+        {
+          "description": "Gets catalog synchronization error details",
+          "parameters": [
+            {
+              "name": "-CatalogName",
+              "value": "[Path.catalogName]"
+            },
+            {
+              "name": "-DevCenterName",
+              "value": "[Path.devCenterName]"
+            },
+            {
+              "name": "-ResourceGroupName",
+              "value": "[Path.resourceGroupName]"
+            },
+            {
+              "name": "-SubscriptionId",
+              "value": "[Path.subscriptionId]"
+            }
+          ]
+        }
+      ]
+    },
     {
       "name": "Get-AzDevCenterAdminCatalog",
       "description": "Gets a catalog",

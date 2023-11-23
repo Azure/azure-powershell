@@ -17,11 +17,20 @@ Gets an attached NetworkConnection.
 ### [Get-AzDevCenterAdminCatalog](Get-AzDevCenterAdminCatalog.md)
 Gets a catalog
 
+### [Get-AzDevCenterAdminCatalogSyncErrorDetail](Get-AzDevCenterAdminCatalogSyncErrorDetail.md)
+Gets catalog synchronization error details
+
 ### [Get-AzDevCenterAdminDevBoxDefinition](Get-AzDevCenterAdminDevBoxDefinition.md)
 Gets a Dev Box definition
 
 ### [Get-AzDevCenterAdminDevCenter](Get-AzDevCenterAdminDevCenter.md)
 Gets a devcenter.
+
+### [Get-AzDevCenterAdminEnvironmentDefinition](Get-AzDevCenterAdminEnvironmentDefinition.md)
+Gets an environment definition from the catalog.
+
+### [Get-AzDevCenterAdminEnvironmentDefinitionErrorDetail](Get-AzDevCenterAdminEnvironmentDefinitionErrorDetail.md)
+Gets Environment Definition error details
 
 ### [Get-AzDevCenterAdminEnvironmentType](Get-AzDevCenterAdminEnvironmentType.md)
 Gets an environment type.
@@ -141,6 +150,9 @@ Deletes a Scheduled.
 ### [Start-AzDevCenterAdminNetworkConnectionHealthCheck](Start-AzDevCenterAdminNetworkConnectionHealthCheck.md)
 Triggers a new health check run.
 The execution and health check result can be tracked via the network Connection health check details
+
+### [Start-AzDevCenterAdminPoolHealthCheck](Start-AzDevCenterAdminPoolHealthCheck.md)
+Triggers a refresh of the pool status.
 
 ### [Sync-AzDevCenterAdminCatalog](Sync-AzDevCenterAdminCatalog.md)
 Syncs templates for a template source.
