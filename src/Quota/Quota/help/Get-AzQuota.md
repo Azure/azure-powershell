@@ -1,5 +1,5 @@
 ---
-external help file:
+external help file: Az.Quota-help.xml
 Module Name: Az.Quota
 online version: https://learn.microsoft.com/powershell/module/az.quota/get-azquota
 schema: 2.0.0
@@ -126,7 +126,7 @@ If a `{resourceName}` is added after `/quotas`, then it's the target Azure resou
 
 ```yaml
 Type: System.String
-Parameter Sets: Get, List
+Parameter Sets: List, Get
 Aliases:
 
 Required: True
@@ -163,4 +163,3 @@ INPUTOBJECT `<IQuotaIdentity>`: Identity Parameter
   - `[Scope <String>]`: The target Azure resource URI. For example, `/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/qms-test/providers/Microsoft.Batch/batchAccounts/testAccount/`. This is the target Azure resource URI for the List GET operation. If a `{resourceName}` is added after `/quotas`, then it's the target Azure resource URI in the GET operation for the specific resource.
 
 ## RELATED LINKS
-
