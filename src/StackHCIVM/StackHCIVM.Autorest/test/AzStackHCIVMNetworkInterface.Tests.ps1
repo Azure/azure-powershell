@@ -1,11 +1,11 @@
-if(($null -eq $TestName) -or ($TestName -contains 'AzStackHCIVmNetworkInterface'))
+if(($null -eq $TestName) -or ($TestName -contains 'AzStackHCIVMNetworkInterface'))
 {
   $loadEnvPath = Join-Path $PSScriptRoot 'loadEnv.ps1'
   if (-Not (Test-Path -Path $loadEnvPath)) {
       $loadEnvPath = Join-Path $PSScriptRoot '..\loadEnv.ps1'
   }
   . ($loadEnvPath)
-  $TestRecordingFile = Join-Path $PSScriptRoot 'AzStackHCIVmNetworkInterface.Recording.json'
+  $TestRecordingFile = Join-Path $PSScriptRoot 'AzStackHCIVMNetworkInterface.Recording.json'
   $currentPath = $PSScriptRoot
   while(-not $mockingPath) {
       $mockingPath = Get-ChildItem -Path $currentPath -Recurse -Include 'HttpPipelineMocking.ps1' -File
@@ -14,7 +14,7 @@ if(($null -eq $TestName) -or ($TestName -contains 'AzStackHCIVmNetworkInterface'
   . ($mockingPath | Select-Object -First 1).FullName
 }
 
-Describe 'AzStackHCIVmNetworkInterface' {
+Describe 'AzStackHCIVMNetworkInterface' {
     It 'Create Network Interface  '  {
         New-AzStackHciVMNetworkInterface  -Name $env.nicName -SubscriptionId $env.subscriptionId -ResourceGroupName $env.resourceGroupName -CustomLocationId $env.customLocationId -Location $env.location -SubnetId "/subscriptions/0709bd7a-8383-4e1d-98c8-f81d1b3443fc/resourceGroups/AltaylSnClus-rg/providers/Microsoft.AzureStackHCI/logicalNetworks/bugbashlnet"  | Select-Object -Property ProvisioningState | Should -BeExactly "@{ProvisioningState=Succeeded}"
     }

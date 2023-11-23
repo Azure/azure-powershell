@@ -1,11 +1,11 @@
-if(($null -eq $TestName) -or ($TestName -contains 'AzStackHCIVmLogicalNetwork'))
+if(($null -eq $TestName) -or ($TestName -contains 'AzStackHCIVMLogicalNetwork'))
 {
   $loadEnvPath = Join-Path $PSScriptRoot 'loadEnv.ps1'
   if (-Not (Test-Path -Path $loadEnvPath)) {
       $loadEnvPath = Join-Path $PSScriptRoot '..\loadEnv.ps1'
   }
   . ($loadEnvPath)
-  $TestRecordingFile = Join-Path $PSScriptRoot 'AzStackHCIVmLogicalNetwork.Recording.json'
+  $TestRecordingFile = Join-Path $PSScriptRoot 'AzStackHCIVMLogicalNetwork.Recording.json'
   $currentPath = $PSScriptRoot
   while(-not $mockingPath) {
       $mockingPath = Get-ChildItem -Path $currentPath -Recurse -Include 'HttpPipelineMocking.ps1' -File
@@ -14,7 +14,7 @@ if(($null -eq $TestName) -or ($TestName -contains 'AzStackHCIVmLogicalNetwork'))
   . ($mockingPath | Select-Object -First 1).FullName
 }
 
-Describe 'AzStackHCIVmLogicalNetwork' {
+Describe 'AzStackHCIVMLogicalNetwork' {
     It 'Create Logical Network '  {
         New-AzStackHciVMLogicalNetwork  -Name $env.lnetName -SubscriptionId $env.subscriptionId -ResourceGroupName $env.resourceGroupName -CustomLocationId $env.customLocationId -Location $env.location -VmSwitchName $env.vmSwitchName | Select-Object -Property ProvisioningState | Should -BeExactly "@{ProvisioningState=Succeeded}"
     }
