@@ -19,6 +19,9 @@
 -->
 
 ## Upcoming Release
+* Fixed bug for `Set-AzSecurityPricing`
+
+## Version 1.5.0
 * Fixed some minor issues
 * Updated Pricing cmdlets to support extensions
     `Get-AzSecurityPricing`

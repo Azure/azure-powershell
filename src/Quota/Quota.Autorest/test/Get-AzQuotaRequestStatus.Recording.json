@@ -1,0 +1,85 @@
+{
+  "Get-AzQuotaRequestStatus+[NoContext]+List+$GET+https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/providers/Microsoft.Network/locations/eastus/providers/Microsoft.Quota/quotaRequests?api-version=2021-03-15-preview+1": {
+    "Request": {
+      "Method": "GET",
+      "RequestUri": "https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/providers/Microsoft.Network/locations/eastus/providers/Microsoft.Quota/quotaRequests?api-version=2021-03-15-preview",
+      "Content": null,
+      "isContentBase64": false,
+      "Headers": {
+        "x-ms-unique-id": [ "1" ],
+        "x-ms-client-request-id": [ "ed60640d-686d-4331-ae7a-203324483431" ],
+        "CommandName": [ "Get-AzQuotaRequestStatus" ],
+        "FullCommandName": [ "Get-AzQuotaRequestStatus_List" ],
+        "ParameterSetName": [ "__AllParameterSets" ],
+        "User-Agent": [ "AzurePowershell/v0.0.0", "Az.Quota/0.1.0" ],
+        "Authorization": [ "[Filtered]" ]
+      },
+      "ContentHeaders": {
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Cache-Control": [ "no-store, must-revalidate, no-cache" ],
+        "Vary": [ "Accept-Encoding" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "MS-RequestId": [ "MPa7QcwqLkeX1Sm6kxiIlg.0" ],
+        "Server": [ "Kestrel" ],
+        "x-ms-ratelimit-remaining-subscription-resource-requests": [ "99" ],
+        "x-ms-request-id": [ "846dc063-0503-441b-9549-3aa2f7986400" ],
+        "x-ms-correlation-request-id": [ "846dc063-0503-441b-9549-3aa2f7986400" ],
+        "x-ms-routing-request-id": [ "KOREACENTRAL:20220121T063017Z:846dc063-0503-441b-9549-3aa2f7986400" ],
+        "Date": [ "Fri, 21 Jan 2022 06:30:16 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "717" ],
+        "Content-Type": [ "application/json" ]
+      },
+      "Content": "{\"value\":[{\"properties\":{\"error\":{\"code\":\"QuotaReductionNotSupported\",\"message\":\"Request failed.\"},\"message\":\"Request failed.\",\"provisioningState\":\"Failed\",\"requestSubmitTime\":\"2022-01-19T02:22:05Z\",\"value\":[{\"limit\":{\"limitObjectType\":\"LimitValue\",\"limitType\":\"Independent\",\"value\":10},\"message\":\"Request failed.\",\"name\":{\"value\":\"STANDARDSKUPUBLICIPADDRESSES\"},\"provisioningState\":\"Failed\",\"subRequestId\":\"6cf5716a-3df8-421a-8457-719e10381dbc\"}]},\"id\":\"/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/providers/Microsoft.Network/locations/eastus/providers/Microsoft.Quota/quotaRequests/6cf5716a-3df8-421a-8457-719e10381dbc\",\"type\":\"Microsoft.Quota/QuotaRequests\",\"name\":\"6cf5716a-3df8-421a-8457-719e10381dbc\"}]}",
+      "isContentBase64": false
+    }
+  },
+  "Get-AzQuotaRequestStatus+[NoContext]+Get+$GET+https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/providers/Microsoft.Network/locations/eastus/providers/Microsoft.Quota/quotaRequests/6cf5716a-3df8-421a-8457-719e10381dbc?api-version=2021-03-15-preview+1": {
+    "Request": {
+      "Method": "GET",
+      "RequestUri": "https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/providers/Microsoft.Network/locations/eastus/providers/Microsoft.Quota/quotaRequests/6cf5716a-3df8-421a-8457-719e10381dbc?api-version=2021-03-15-preview",
+      "Content": null,
+      "isContentBase64": false,
+      "Headers": {
+        "x-ms-unique-id": [ "2" ],
+        "x-ms-client-request-id": [ "33e40da2-0e36-483e-b08d-1e69f7db6a06" ],
+        "CommandName": [ "Get-AzQuotaRequestStatus" ],
+        "FullCommandName": [ "Get-AzQuotaRequestStatus_Get" ],
+        "ParameterSetName": [ "__AllParameterSets" ],
+        "User-Agent": [ "AzurePowershell/v0.0.0", "Az.Quota/0.1.0" ],
+        "Authorization": [ "[Filtered]" ]
+      },
+      "ContentHeaders": {
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Cache-Control": [ "no-store, must-revalidate, no-cache" ],
+        "Location": [ "https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/providers/Microsoft.Network/locations/eastus/providers/Microsoft.Quota/quotaRequests/6cf5716a-3df8-421a-8457-719e10381dbc?api-version=2021-03-15-preview" ],
+        "Vary": [ "Accept-Encoding" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "MS-RequestId": [ "crrgAHrfiUeSB13P9ixcJQ.0" ],
+        "Server": [ "Kestrel" ],
+        "x-ms-ratelimit-remaining-subscription-resource-requests": [ "98" ],
+        "x-ms-request-id": [ "2b8ba891-91b0-4368-8c98-02663d54de7c" ],
+        "x-ms-correlation-request-id": [ "2b8ba891-91b0-4368-8c98-02663d54de7c" ],
+        "x-ms-routing-request-id": [ "KOREACENTRAL:20220121T063022Z:2b8ba891-91b0-4368-8c98-02663d54de7c" ],
+        "Date": [ "Fri, 21 Jan 2022 06:30:21 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "705" ],
+        "Content-Type": [ "application/json" ]
+      },
+      "Content": "{\"properties\":{\"error\":{\"code\":\"QuotaReductionNotSupported\",\"message\":\"Request failed.\"},\"message\":\"Request failed.\",\"provisioningState\":\"Failed\",\"requestSubmitTime\":\"2022-01-19T02:22:05Z\",\"value\":[{\"limit\":{\"limitObjectType\":\"LimitValue\",\"limitType\":\"Independent\",\"value\":10},\"message\":\"Request failed.\",\"name\":{\"value\":\"STANDARDSKUPUBLICIPADDRESSES\"},\"provisioningState\":\"Failed\",\"subRequestId\":\"6cf5716a-3df8-421a-8457-719e10381dbc\"}]},\"id\":\"/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/providers/Microsoft.Network/locations/eastus/providers/Microsoft.Quota/quotaRequests/6cf5716a-3df8-421a-8457-719e10381dbc\",\"type\":\"Microsoft.Quota/QuotaRequests\",\"name\":\"6cf5716a-3df8-421a-8457-719e10381dbc\"}",
+      "isContentBase64": false
+    }
+  }
+}

@@ -18,6 +18,8 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
+
+## Version 6.6.1
 * Fixed minor issues
 
 ## Version 6.6.0

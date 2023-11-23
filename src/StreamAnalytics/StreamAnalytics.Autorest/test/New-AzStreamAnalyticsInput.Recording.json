@@ -1,0 +1,85 @@
+{
+  "New-AzStreamAnalyticsInput+[NoContext]+CreateExpanded+$PUT+https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/streamanalytics-rg-qrine6/providers/Microsoft.StreamAnalytics/streamingjobs/jobneqhcm/inputs/inputnlga1c?api-version=2017-04-01-preview+1": {
+    "Request": {
+      "Method": "PUT",
+      "RequestUri": "https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/streamanalytics-rg-qrine6/providers/Microsoft.StreamAnalytics/streamingjobs/jobneqhcm/inputs/inputnlga1c?api-version=2017-04-01-preview",
+      "Content": "{\r\n  \"properties\": {\r\n    \"type\": \"Stream\",\r\n    \"serialization\": {\r\n      \"type\": \"Json\",\r\n      \"properties\": {\r\n        \"encoding\": \"UTF8\"\r\n      }\r\n    },\r\n    \"compression\": {\r\n      \"type\": \"None\"\r\n    },\r\n    \"partitionKey\": \"\",\r\n    \"datasource\": {\r\n      \"type\": \"Microsoft.Devices/IotHubs\",\r\n      \"properties\": {\r\n        \"iotHubNamespace\": \"iothubn0lj1p\",\r\n        \"sharedAccessPolicyName\": \"iothubowner\",\r\n        \"sharedAccessPolicyKey\": \"jmCxPVMQC1Fp4tGJh4Kz70mIXPfG5rsf8j7qP0kqIsY=\",\r\n        \"consumerGroupName\": \"$Default\",\r\n        \"endpoint\": \"messages/events\"\r\n      }\r\n    }\r\n  }\r\n}",
+      "isContentBase64": false,
+      "Headers": {
+      },
+      "ContentHeaders": {
+        "Content-Type": [ "application/json" ],
+        "Content-Length": [ "604" ]
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Cache-Control": [ "no-store, no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "ETag": [ "27b822a8-5633-4bd4-bcf8-e43a9fa0dce9" ],
+        "X-AspNetMvc-Version": [ "5.0" ],
+        "x-ms-request-id": [ "7e43fa4a-8dc7-480b-bd01-0e0285ebcfa1" ],
+        "Server": [ "Microsoft-IIS/10.0" ],
+        "X-Powered-By": [ "ASP.NET" ],
+        "x-ms-ratelimit-remaining-subscription-writes": [ "1198" ],
+        "x-ms-correlation-request-id": [ "5ff92792-f048-481d-b718-1fbc934e98c3" ],
+        "x-ms-routing-request-id": [ "SOUTHEASTASIA:20210316T032011Z:5ff92792-f048-481d-b718-1fbc934e98c3" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "Date": [ "Tue, 16 Mar 2021 03:20:10 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "598" ],
+        "Content-Type": [ "application/json; charset=utf-8" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\"id\":\"/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/streamanalytics-rg-qrine6/providers/Microsoft.StreamAnalytics/streamingjobs/jobneqhcm/inputs/inputnlga1c\",\"name\":\"inputnlga1c\",\"type\":\"Microsoft.StreamAnalytics/streamingjobs/inputs\",\"properties\":{\"type\":\"Stream\",\"datasource\":{\"type\":\"Microsoft.Devices/IotHubs\",\"properties\":{\"iotHubNamespace\":\"iothubn0lj1p\",\"sharedAccessPolicyName\":\"iothubowner\",\"endpoint\":\"messages/events\",\"consumerGroupName\":\"$Default\"}},\"compression\":{\"type\":\"None\"},\"partitionKey\":\"\",\"serialization\":{\"type\":\"Json\",\"properties\":{\"encoding\":\"UTF8\"}}}}",
+      "isContentBase64": false
+    }
+  },
+  "New-AzStreamAnalyticsInput+[NoContext]+CreateExpanded+$GET+https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/streamanalytics-rg-qrine6/providers/Microsoft.StreamAnalytics/streamingjobs/jobneqhcm/inputs/inputnlga1c?api-version=2017-04-01-preview+2": {
+    "Request": {
+      "Method": "GET",
+      "RequestUri": "https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/streamanalytics-rg-qrine6/providers/Microsoft.StreamAnalytics/streamingjobs/jobneqhcm/inputs/inputnlga1c?api-version=2017-04-01-preview",
+      "Content": null,
+      "isContentBase64": false,
+      "Headers": {
+        "x-ms-unique-id": [ "32" ],
+        "x-ms-client-request-id": [ "f9a86a9e-9eaa-4d62-ad32-524d38293476" ],
+        "CommandName": [ "Get-AzStreamAnalyticsInput" ],
+        "FullCommandName": [ "Get-AzStreamAnalyticsInput_Get" ],
+        "ParameterSetName": [ "__AllParameterSets" ],
+        "User-Agent": [ "AzurePowershell/Az4.0.0-preview" ],
+        "Authorization": [ "[Filtered]" ]
+      },
+      "ContentHeaders": {
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Cache-Control": [ "no-store, no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "ETag": [ "27b822a8-5633-4bd4-bcf8-e43a9fa0dce9" ],
+        "X-AspNetMvc-Version": [ "5.0" ],
+        "x-ms-request-id": [ "f9a86a9e-9eaa-4d62-ad32-524d38293476" ],
+        "Server": [ "Microsoft-IIS/10.0" ],
+        "X-Powered-By": [ "ASP.NET" ],
+        "x-ms-ratelimit-remaining-subscription-reads": [ "11933" ],
+        "x-ms-correlation-request-id": [ "8c1e79b9-887f-44e5-b1e0-b15e088e3c14" ],
+        "x-ms-routing-request-id": [ "SOUTHEASTASIA:20210316T032011Z:8c1e79b9-887f-44e5-b1e0-b15e088e3c14" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "Date": [ "Tue, 16 Mar 2021 03:20:11 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "598" ],
+        "Content-Type": [ "application/json; charset=utf-8" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\"id\":\"/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/streamanalytics-rg-qrine6/providers/Microsoft.StreamAnalytics/streamingjobs/jobneqhcm/inputs/inputnlga1c\",\"name\":\"inputnlga1c\",\"type\":\"Microsoft.StreamAnalytics/streamingjobs/inputs\",\"properties\":{\"type\":\"Stream\",\"datasource\":{\"type\":\"Microsoft.Devices/IotHubs\",\"properties\":{\"iotHubNamespace\":\"iothubn0lj1p\",\"sharedAccessPolicyName\":\"iothubowner\",\"endpoint\":\"messages/events\",\"consumerGroupName\":\"$Default\"}},\"compression\":{\"type\":\"None\"},\"partitionKey\":\"\",\"serialization\":{\"type\":\"Json\",\"properties\":{\"encoding\":\"UTF8\"}}}}",
+      "isContentBase64": false
+    }
+  }
+}

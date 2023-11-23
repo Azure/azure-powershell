@@ -1,6 +1,7 @@
 ---
-external help file: Az.Resources-help.xml
+external help file: Microsoft.Azure.PowerShell.Cmdlets.ResourceManager.dll-Help.xml
 Module Name: Az.Resources
+ms.assetid: DEC01722-EB1A-45CE-BD30-9DB861718573
 online version: https://learn.microsoft.com/powershell/module/az.resources/remove-azpolicydefinition
 schema: 2.0.0
 ---
@@ -8,42 +9,42 @@ schema: 2.0.0
 # Remove-AzPolicyDefinition
 
 ## SYNOPSIS
-This operation deletes the policy definition in the given subscription with the given name.
+Removes a policy definition.
 
 ## SYNTAX
 
-### Name (Default)
+### NameParameterSet (Default)
 ```
-Remove-AzPolicyDefinition -Name <String> [-Force] [-BackwardCompatible] [-DefaultProfile <PSObject>]
- [-PassThru] [-WhatIf] [-Confirm] [<CommonParameters>]
-```
-
-### ManagementGroupName
-```
-Remove-AzPolicyDefinition -Name <String> -ManagementGroupName <String> [-Force] [-BackwardCompatible]
- [-DefaultProfile <PSObject>] [-PassThru] [-WhatIf] [-Confirm] [<CommonParameters>]
+Remove-AzPolicyDefinition -Name <String> [-Force] [-ApiVersion <String>] [-Pre]
+ [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
-### SubscriptionId
+### ManagementGroupNameParameterSet
 ```
-Remove-AzPolicyDefinition -Name <String> -SubscriptionId <String> [-Force] [-BackwardCompatible]
- [-DefaultProfile <PSObject>] [-PassThru] [-WhatIf] [-Confirm] [<CommonParameters>]
-```
-
-### Id
-```
-Remove-AzPolicyDefinition -Id <String> [-Force] [-BackwardCompatible] [-DefaultProfile <PSObject>] [-PassThru]
- [-WhatIf] [-Confirm] [<CommonParameters>]
+Remove-AzPolicyDefinition -Name <String> [-Force] -ManagementGroupName <String> [-ApiVersion <String>] [-Pre]
+ [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
-### InputObject
+### SubscriptionIdParameterSet
 ```
-Remove-AzPolicyDefinition -InputObject <IPolicyIdentity> [-Force] [-BackwardCompatible]
- [-DefaultProfile <PSObject>] [-PassThru] [-WhatIf] [-Confirm] [<CommonParameters>]
+Remove-AzPolicyDefinition -Name <String> [-Force] -SubscriptionId <Guid> [-ApiVersion <String>] [-Pre]
+ [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
+```
+
+### IdParameterSet
+```
+Remove-AzPolicyDefinition -Id <String> [-Force] [-ApiVersion <String>] [-Pre]
+ [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
+```
+
+### InputObjectParameterSet
+```
+Remove-AzPolicyDefinition [-Force] -InputObject <PsPolicyDefinition> [-ApiVersion <String>] [-Pre]
+ [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-This operation deletes the policy definition in the given subscription with the given name.
+The **Remove-AzPolicyDefinition** cmdlet removes a policy definition.
 
 ## EXAMPLES
 
@@ -60,24 +61,18 @@ $PolicyDefinition = Get-AzPolicyDefinition -Name 'VMPolicyDefinition'
 Remove-AzPolicyDefinition -Id $PolicyDefinition.ResourceId -Force
 ```
 
-This command removes the given policy definition without prompting the user.
-
-### Example 3: [Backcompat] Remove policy definition by resource ID
-```powershell
-$PolicyDefinition = Get-AzPolicyDefinition -Name 'VMPolicyDefinition' 
-Remove-AzPolicyDefinition -Id $PolicyDefinition.ResourceId -Force -BackwardCompatible
-True
-```
-
-This command removes the given policy definition without prompting the user.
+The first command gets a policy definition named VMPolicyDefinition by using the Get-AzPolicyDefinition cmdlet.
+The command stores it in the $PolicyDefinition variable.
+The second command removes the policy definition identified by the **ResourceId** property of $PolicyDefinition.
 
 ## PARAMETERS
 
-### -BackwardCompatible
-Causes cmdlet to return artifacts using legacy format placing policy-specific properties in a property bag object.
+### -ApiVersion
+Specifies the version of the resource provider API to use.
+If you do not specify a version, this cmdlet uses the latest available version.
 
 ```yaml
-Type: System.Management.Automation.SwitchParameter
+Type: System.String
 Parameter Sets: (All)
 Aliases:
 
@@ -89,13 +84,12 @@ Accept wildcard characters: False
 ```
 
 ### -DefaultProfile
-The DefaultProfile parameter is not functional.
-Use the SubscriptionId parameter when available if executing the cmdlet against a different subscription.
+The credentials, account, tenant, and subscription used for communication with azure
 
 ```yaml
-Type: System.Management.Automation.PSObject
+Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer
 Parameter Sets: (All)
-Aliases: AzureRMContext, AzureCredential
+Aliases: AzContext, AzureRmContext, AzureCredential
 
 Required: False
 Position: Named
@@ -105,7 +99,7 @@ Accept wildcard characters: False
 ```
 
 ### -Force
-When $true, skip confirmation prompts
+Forces the command to run without asking for user confirmation.
 
 ```yaml
 Type: System.Management.Automation.SwitchParameter
@@ -120,11 +114,11 @@ Accept wildcard characters: False
 ```
 
 ### -Id
-The full Id of the policy definition to get.
+Specifies the fully qualified resource ID for the policy definition that this cmdlet removes.
 
 ```yaml
 Type: System.String
-Parameter Sets: Id
+Parameter Sets: IdParameterSet
 Aliases: ResourceId
 
 Required: True
@@ -135,12 +129,11 @@ Accept wildcard characters: False
 ```
 
 ### -InputObject
-Identity Parameter
-To construct, see NOTES section for INPUTOBJECT properties and create a hash table.
+The policy definition object to remove that was output from another cmdlet.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.Policy.Models.IPolicyIdentity
-Parameter Sets: InputObject
+Type: Microsoft.Azure.Commands.ResourceManager.Cmdlets.Implementation.Policy.PsPolicyDefinition
+Parameter Sets: InputObjectParameterSet
 Aliases:
 
 Required: True
@@ -151,11 +144,11 @@ Accept wildcard characters: False
 ```
 
 ### -ManagementGroupName
-The name of the management group.
+The name of the management group of the policy definition to delete.
 
 ```yaml
 Type: System.String
-Parameter Sets: ManagementGroupName
+Parameter Sets: ManagementGroupNameParameterSet
 Aliases:
 
 Required: True
@@ -166,12 +159,12 @@ Accept wildcard characters: False
 ```
 
 ### -Name
-The name of the policy definition to get.
+Specifies the name of the policy definition that this cmdlet removes.
 
 ```yaml
 Type: System.String
-Parameter Sets: Name
-Aliases: PolicyDefinitionName
+Parameter Sets: NameParameterSet
+Aliases:
 
 Required: True
 Position: Named
@@ -182,8 +175,8 @@ Accept wildcard characters: False
 
 ```yaml
 Type: System.String
-Parameter Sets: ManagementGroupName, SubscriptionId
-Aliases: PolicyDefinitionName
+Parameter Sets: ManagementGroupNameParameterSet, SubscriptionIdParameterSet
+Aliases:
 
 Required: True
 Position: Named
@@ -192,8 +185,8 @@ Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
 ```
 
-### -PassThru
-Returns true when the command succeeds
+### -Pre
+Indicates that this cmdlet considers pre-release API versions when it automatically determines which version to use.
 
 ```yaml
 Type: System.Management.Automation.SwitchParameter
@@ -208,11 +201,11 @@ Accept wildcard characters: False
 ```
 
 ### -SubscriptionId
-The ID of the target subscription.
+The subscription ID of the policy definition to delete.
 
 ```yaml
-Type: System.String
-Parameter Sets: SubscriptionId
+Type: System.Nullable`1[System.Guid]
+Parameter Sets: SubscriptionIdParameterSet
 Aliases:
 
 Required: True
@@ -232,7 +225,7 @@ Aliases: cf
 
 Required: False
 Position: Named
-Default value: None
+Default value: False
 Accept pipeline input: False
 Accept wildcard characters: False
 ```
@@ -248,7 +241,7 @@ Aliases: wi
 
 Required: False
 Position: Named
-Default value: None
+Default value: False
 Accept pipeline input: False
 Accept wildcard characters: False
 ```
@@ -258,9 +251,9 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.Policy.Models.IPolicyIdentity
-
 ### System.String
+
+### System.Nullable`1[[System.Guid, System.Private.CoreLib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]]
 
 ## OUTPUTS
 
@@ -269,3 +262,11 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ## NOTES
 
 ## RELATED LINKS
+
+[Get-AzPolicyDefinition](./Get-AzPolicyDefinition.md)
+
+[New-AzPolicyDefinition](./New-AzPolicyDefinition.md)
+
+[Set-AzPolicyDefinition](./Set-AzPolicyDefinition.md)
+
+

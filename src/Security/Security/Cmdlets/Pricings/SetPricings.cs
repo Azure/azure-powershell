@@ -69,7 +69,7 @@ namespace Microsoft.Azure.Commands.Security.Cmdlets.Pricings
 
             if (ShouldProcess(name, VerbsCommon.Set))
             {
-                var pricing = SecurityCenterClient.Pricings.UpdateWithHttpMessagesAsync(name, new Pricing(tier, subPlan:subPlan, name:name, extensions: string.IsNullOrEmpty(extensions) ? null : JsonConvert.DeserializeObject<IList<Extension>>(extensions))).GetAwaiter().GetResult().Body;
+                var pricing = SecurityCenterClient.Pricings.UpdateWithHttpMessagesAsync(name, new Pricing(pricingTier:tier, subPlan:subPlan, name:name, extensions: string.IsNullOrEmpty(extensions) ? null : JsonConvert.DeserializeObject<IList<Extension>>(extensions))).GetAwaiter().GetResult().Body;
 
                 WriteObject(pricing.ConvertToPSType(), enumerateCollection: false); 
             }

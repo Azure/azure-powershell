@@ -1,0 +1,42 @@
+{
+  "Get-AzPeeringCdnPrefix+[NoContext]+List+$GET+https://management.azure.com/subscriptions/e815e305-b43a-49c4-8b1a-4e61f1aec1e8/providers/Microsoft.Peering/cdnPeeringPrefixes?peeringLocation=Seattle\u0026api-version=2022-10-01+1": {
+    "Request": {
+      "Method": "GET",
+      "RequestUri": "https://management.azure.com/subscriptions/e815e305-b43a-49c4-8b1a-4e61f1aec1e8/providers/Microsoft.Peering/cdnPeeringPrefixes?peeringLocation=Seattle\u0026api-version=2022-10-01",
+      "Content": null,
+      "isContentBase64": false,
+      "Headers": {
+        "x-ms-unique-id": [ "8" ],
+        "x-ms-client-request-id": [ "a9834d72-37c0-44b8-9e72-e9f21eb487cf" ],
+        "CommandName": [ "Get-AzPeeringCdnPrefix" ],
+        "FullCommandName": [ "Get-AzPeeringCdnPrefix_List" ],
+        "ParameterSetName": [ "__AllParameterSets" ],
+        "User-Agent": [ "AzurePowershell/v0.0.0", "PSVersion/v7.1.3", "Az.Peering/0.1.0" ],
+        "Authorization": [ "[Filtered]" ]
+      },
+      "ContentHeaders": {
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "x-ms-request-id": [ "9662f7b8-ec2e-4761-99bb-34831bae7562" ],
+        "x-ms-ratelimit-remaining-subscription-resource-requests": [ "599" ],
+        "x-ms-correlation-request-id": [ "cd8bd89a-afce-4f31-922d-ed72dc662224" ],
+        "x-ms-routing-request-id": [ "WESTUS:20230113T012515Z:cd8bd89a-afce-4f31-922d-ed72dc662224" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "Date": [ "Fri, 13 Jan 2023 01:25:15 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "3807" ],
+        "Content-Type": [ "application/json; charset=utf-8" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\r\n  \"value\": [\r\n    {\r\n      \"properties\": {\r\n        \"prefix\": \"20.157.110.0/24\",\r\n        \"azureRegion\": \"West US 2\",\r\n        \"azureService\": \"AzureCompute\",\r\n        \"isPrimaryRegion\": true,\r\n        \"bgpCommunity\": \"8069:51026\"\r\n      },\r\n      \"name\": \"CdnPrefix_20_157_110_0_24\",\r\n      \"id\": \"/subscriptions/e815e305-b43a-49c4-8b1a-4e61f1aec1e8/providers/Microsoft.Peering/cdnPeeringPrefixes/CdnPrefix_20_157_110_0_24\",\r\n      \"type\": \"Microsoft.Peering/cdnPeeringPrefixes\"\r\n    },\r\n    {\r\n      \"properties\": {\r\n        \"prefix\": \"20.157.118.0/24\",\r\n        \"azureRegion\": \"West US 2\",\r\n        \"azureService\": \"AzureCompute\",\r\n        \"isPrimaryRegion\": true,\r\n        \"bgpCommunity\": \"8069:51026\"\r\n      },\r\n      \"name\": \"CdnPrefix_20_157_118_0_24\",\r\n      \"id\": \"/subscriptions/e815e305-b43a-49c4-8b1a-4e61f1aec1e8/providers/Microsoft.Peering/cdnPeeringPrefixes/CdnPrefix_20_157_118_0_24\",\r\n      \"type\": \"Microsoft.Peering/cdnPeeringPrefixes\"\r\n    },\r\n    {\r\n      \"properties\": {\r\n        \"prefix\": \"20.157.125.0/24\",\r\n        \"azureRegion\": \"West US 2\",\r\n        \"azureService\": \"AzureCompute\",\r\n        \"isPrimaryRegion\": true,\r\n        \"bgpCommunity\": \"8069:51026\"\r\n      },\r\n      \"name\": \"CdnPrefix_20_157_125_0_24\",\r\n      \"id\": \"/subscriptions/e815e305-b43a-49c4-8b1a-4e61f1aec1e8/providers/Microsoft.Peering/cdnPeeringPrefixes/CdnPrefix_20_157_125_0_24\",\r\n      \"type\": \"Microsoft.Peering/cdnPeeringPrefixes\"\r\n    },\r\n    {\r\n      \"properties\": {\r\n        \"prefix\": \"20.157.180.0/24\",\r\n        \"azureRegion\": \"West US 2\",\r\n        \"azureService\": \"AzureStorage\",\r\n        \"isPrimaryRegion\": true,\r\n        \"bgpCommunity\": \"8069:52026\"\r\n      },\r\n      \"name\": \"CdnPrefix_20_157_180_0_24\",\r\n      \"id\": \"/subscriptions/e815e305-b43a-49c4-8b1a-4e61f1aec1e8/providers/Microsoft.Peering/cdnPeeringPrefixes/CdnPrefix_20_157_180_0_24\",\r\n      \"type\": \"Microsoft.Peering/cdnPeeringPrefixes\"\r\n    },\r\n    {\r\n      \"properties\": {\r\n        \"prefix\": \"20.157.25.0/24\",\r\n        \"azureRegion\": \"West US 2\",\r\n        \"azureService\": \"AzureCompute\",\r\n        \"isPrimaryRegion\": true,\r\n        \"bgpCommunity\": \"8069:51026\"\r\n      },\r\n      \"name\": \"CdnPrefix_20_157_25_0_24\",\r\n      \"id\": \"/subscriptions/e815e305-b43a-49c4-8b1a-4e61f1aec1e8/providers/Microsoft.Peering/cdnPeeringPrefixes/CdnPrefix_20_157_25_0_24\",\r\n      \"type\": \"Microsoft.Peering/cdnPeeringPrefixes\"\r\n    },\r\n    {\r\n      \"properties\": {\r\n        \"prefix\": \"20.157.50.0/23\",\r\n        \"azureRegion\": \"West US 2\",\r\n        \"azureService\": \"AzureStorage\",\r\n        \"isPrimaryRegion\": true,\r\n        \"bgpCommunity\": \"8069:52026\"\r\n      },\r\n      \"name\": \"CdnPrefix_20_157_50_0_23\",\r\n      \"id\": \"/subscriptions/e815e305-b43a-49c4-8b1a-4e61f1aec1e8/providers/Microsoft.Peering/cdnPeeringPrefixes/CdnPrefix_20_157_50_0_23\",\r\n      \"type\": \"Microsoft.Peering/cdnPeeringPrefixes\"\r\n    },\r\n    {\r\n      \"properties\": {\r\n        \"prefix\": \"20.47.120.0/23\",\r\n        \"azureRegion\": \"West US 2\",\r\n        \"azureService\": \"AzureCompute\",\r\n        \"isPrimaryRegion\": true,\r\n        \"bgpCommunity\": \"8069:51026\"\r\n      },\r\n      \"name\": \"CdnPrefix_20_47_120_0_23\",\r\n      \"id\": \"/subscriptions/e815e305-b43a-49c4-8b1a-4e61f1aec1e8/providers/Microsoft.Peering/cdnPeeringPrefixes/CdnPrefix_20_47_120_0_23\",\r\n      \"type\": \"Microsoft.Peering/cdnPeeringPrefixes\"\r\n    },\r\n    {\r\n      \"properties\": {\r\n        \"prefix\": \"20.47.62.0/23\",\r\n        \"azureRegion\": \"West US 2\",\r\n        \"azureService\": \"AzureStorage\",\r\n        \"isPrimaryRegion\": true,\r\n        \"bgpCommunity\": \"8069:52026\"\r\n      },\r\n      \"name\": \"CdnPrefix_20_47_62_0_23\",\r\n      \"id\": \"/subscriptions/e815e305-b43a-49c4-8b1a-4e61f1aec1e8/providers/Microsoft.Peering/cdnPeeringPrefixes/CdnPrefix_20_47_62_0_23\",\r\n      \"type\": \"Microsoft.Peering/cdnPeeringPrefixes\"\r\n    }\r\n  ]\r\n}",
+      "isContentBase64": false
+    }
+  }
+}

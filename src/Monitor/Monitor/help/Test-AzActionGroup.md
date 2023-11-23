@@ -1,5 +1,5 @@
 ---
-external help file: Microsoft.Azure.PowerShell.Cmdlets.Monitor.dll-Help.xml
+external help file: Az.ActionGroup.psm1-help.xml
 Module Name: Az.Monitor
 online version: https://learn.microsoft.com/powershell/module/az.monitor/test-azactiongroup
 schema: 2.0.0
@@ -8,47 +8,66 @@ schema: 2.0.0
 # Test-AzActionGroup
 
 ## SYNOPSIS
-Sends test notifications
+Send test notifications to a set of provided receivers
 
 ## SYNTAX
 
+### CreateExpanded (Default)
 ```
-Test-AzActionGroup -AlertType <String> -ResourceGroupName <String> -ActionGroupName <String>
- -Receiver <System.Collections.Generic.List`1[Microsoft.Azure.Commands.Insights.OutputClasses.PSActionGroupReceiverBase]>
- [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
+Test-AzActionGroup -ActionGroupName <String> -ResourceGroupName <String> [-SubscriptionId <String>]
+ -AlertType <String> -Receiver <IActionGroupReceiver[]> [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
+```
+
+### CreateViaIdentityExpanded
+```
+Test-AzActionGroup -InputObject <IActionGroupIdentity> -AlertType <String> -Receiver <IActionGroupReceiver[]>
+ [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-This Test-AzActionGroup cmdlet send test notifications
+Send test notifications to a set of provided receivers
 
 ## EXAMPLES
 
-### Send Service Health alert test notifications to email
+### Example 1: Send test notifications to provided receiver
 ```powershell
-$email = New-AzActionGroupReceiver -Name 'user1' -EmailReceiver -EmailAddress 'test@test.example.com'
-Test-AzActionGroup -AlertType servicehealth -Receiver $email -ResourceGroupName "test-RG" -ActionGroupName "test-AG"
+$sms1 = New-AzActionGroupSmsReceiverObject -CountryCode 86 -Name user1 -PhoneNumber 'phonenumber'
+$email2 = New-AzActionGroupEmailReceiverObject -EmailAddress user@example.com -Name user2
+Test-AzActionGroup -ActionGroupName actiongroup1 -ResourceGroupName monitor-action -AlertType servicehealth -Receiver $email2,$sms1
 ```
 
-```yaml
-Type: System.String
-Parameter Sets: (All)
-Aliases:
-
-Required: True
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
+```output
+ActionDetail              : {{
+                              "MechanismType": "Email",
+                              "Name": "user2",
+                              "Status": "Succeeded",
+                              "SubState": "Default",
+                              "SendTime": "2023-11-08T05:16:09.6280455+00:00"
+                            }, {
+                              "MechanismType": "Sms",
+                              "Name": "user1",
+                              "Status": "Succeeded",
+                              "SubState": "Default",
+                              "SendTime": "2023-11-08T05:16:09.642967+00:00"
+                            }}
+CompletedTime             : 2023-11-08T05:18:10.6755827+00:00
+ContextNotificationSource : Microsoft.Insights/TestNotification
+ContextType               : Microsoft.Insights/ServiceHealth
+CreatedTime               : 2023-11-08T05:16:00.7951739+00:00
+State                     : Complete
 ```
+
+This command sends test notifications to a set of provided receivers.
 
 ## PARAMETERS
 
 ### -ActionGroupName
-The required action group name
+The name of the action group.
 
 ```yaml
 Type: System.String
-Parameter Sets: (All)
+Parameter Sets: CreateExpanded
 Aliases:
 
 Required: True
@@ -59,8 +78,8 @@ Accept wildcard characters: False
 ```
 
 ### -AlertType
-The required alert type name. The supported values are:
-servicehealth, metricstaticthreshold, metricsdynamicthreshold, logalertv2, smartalert, webtestalert, logalertv1numresult, logalertv1metricmeasurement, activitylog, resourcehealth, budget, actualcostbudget, forecastedbudget
+The value of the supported alert type.
+Supported alert type values are: servicehealth, metricstaticthreshold, metricsdynamicthreshold, logalertv2, smartalert, webtestalert, logalertv1numresult, logalertv1metricmeasurement, resourcehealth, activitylog, actualcostbudget, forecastedbudget
 
 ```yaml
 Type: System.String
@@ -74,13 +93,60 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -DefaultProfile
-The credentials, account, tenant, and subscription used for communication with Azure.
+### -AsJob
+Run the command as a job
 
 ```yaml
-Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer
+Type: System.Management.Automation.SwitchParameter
 Parameter Sets: (All)
-Aliases: AzContext, AzureRmContext, AzureCredential
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -DefaultProfile
+The DefaultProfile parameter is not functional.
+Use the SubscriptionId parameter when available if executing the cmdlet against a different subscription.
+
+```yaml
+Type: System.Management.Automation.PSObject
+Parameter Sets: (All)
+Aliases: AzureRMContext, AzureCredential
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -InputObject
+Identity Parameter
+To construct, see NOTES section for INPUTOBJECT properties and create a hash table.
+
+```yaml
+Type: Microsoft.Azure.PowerShell.Cmdlets.Monitor.ActionGroup.Models.IActionGroupIdentity
+Parameter Sets: CreateViaIdentityExpanded
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: True (ByValue)
+Accept wildcard characters: False
+```
+
+### -NoWait
+Run the command asynchronously
+
+```yaml
+Type: System.Management.Automation.SwitchParameter
+Parameter Sets: (All)
+Aliases:
 
 Required: False
 Position: Named
@@ -90,10 +156,10 @@ Accept wildcard characters: False
 ```
 
 ### -Receiver
-The required list of receivers
+The list of receivers that are part of this action group.
 
 ```yaml
-Type: System.Collections.Generic.List`1[Microsoft.Azure.Commands.Insights.OutputClasses.PSActionGroupReceiverBase]
+Type: Microsoft.Azure.PowerShell.Cmdlets.Monitor.ActionGroup.Models.IActionGroupReceiver[]
 Parameter Sets: (All)
 Aliases:
 
@@ -105,16 +171,32 @@ Accept wildcard characters: False
 ```
 
 ### -ResourceGroupName
-The required resource group name
+The name of the resource group.
+The name is case insensitive.
 
 ```yaml
 Type: System.String
-Parameter Sets: (All)
+Parameter Sets: CreateExpanded
 Aliases:
 
 Required: True
 Position: Named
 Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -SubscriptionId
+The ID of the target subscription.
+
+```yaml
+Type: System.String
+Parameter Sets: CreateExpanded
+Aliases:
+
+Required: False
+Position: Named
+Default value: (Get-AzContext).Subscription.Id
 Accept pipeline input: False
 Accept wildcard characters: False
 ```
@@ -135,7 +217,8 @@ Accept wildcard characters: False
 ```
 
 ### -WhatIf
-Shows what would happen if the cmdlet runs. The cmdlet is not run.
+Shows what would happen if the cmdlet runs.
+The cmdlet is not run.
 
 ```yaml
 Type: System.Management.Automation.SwitchParameter
@@ -154,11 +237,11 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
-### None
+### Microsoft.Azure.PowerShell.Cmdlets.Monitor.ActionGroup.Models.IActionGroupIdentity
 
 ## OUTPUTS
 
-### Microsoft.Azure.Commands.Insights.OutputClasses.PSTestNotificationDetailsResponse
+### Microsoft.Azure.PowerShell.Cmdlets.Monitor.ActionGroup.Models.ITestNotificationDetailsResponse
 
 ## NOTES
 

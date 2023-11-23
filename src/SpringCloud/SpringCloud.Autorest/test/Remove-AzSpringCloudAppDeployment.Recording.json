@@ -1,0 +1,477 @@
+{
+  "Remove-AzSpringCloudAppDeployment+[NoContext]+Delete+$DELETE+https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/springcloud-rg-0zquav/providers/Microsoft.AppPlatform/Spring/spring-jasdec/apps/gateway/deployments/green?api-version=2022-04-01+1": {
+    "Request": {
+      "Method": "DELETE",
+      "RequestUri": "https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/springcloud-rg-0zquav/providers/Microsoft.AppPlatform/Spring/spring-jasdec/apps/gateway/deployments/green?api-version=2022-04-01",
+      "Content": null,
+      "isContentBase64": false,
+      "Headers": {
+        "x-ms-unique-id": [ "1" ],
+        "x-ms-client-request-id": [ "08abbb76-16a0-4705-b97c-8bc62ceb42e1" ],
+        "CommandName": [ "Remove-AzSpringCloudAppDeployment" ],
+        "FullCommandName": [ "Remove-AzSpringCloudAppDeployment_Delete" ],
+        "ParameterSetName": [ "__AllParameterSets" ],
+        "User-Agent": [ "AzurePowershell/v0.0.0", "PSVersion/v7.1.4", "Az.SpringCloud/0.1.0" ],
+        "Authorization": [ "[Filtered]" ]
+      },
+      "ContentHeaders": {
+      }
+    },
+    "Response": {
+      "StatusCode": 202,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "Location": [ "https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/springcloud-rg-0zquav/providers/Microsoft.AppPlatform/locations/eastus/operationResults/97064b9f-8c42-443c-b9e1-3e516101c342/Spring/green?api-version=2022-04-01" ],
+        "x-ms-ratelimit-remaining-subscription-deletes": [ "14999" ],
+        "Request-Context": [ "appId=cid-v1:797d7e4e-8180-497e-a254-780fbd39ba4d" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "x-ms-client-request-id": [ "08abbb76-16a0-4705-b97c-8bc62ceb42e1" ],
+        "x-rp-server-mvid": [ "b4692fb5-75b2-4001-b951-6c09037b5614" ],
+        "Azure-AsyncOperation": [ "https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/springcloud-rg-0zquav/providers/Microsoft.AppPlatform/locations/eastus/operationStatus/green/operationId/97064b9f-8c42-443c-b9e1-3e516101c342?api-version=2022-04-01" ],
+        "x-ms-request-id": [ "0788ea8a-5cfe-424e-8524-f97f7b6f3fa7" ],
+        "x-ms-correlation-request-id": [ "0788ea8a-5cfe-424e-8524-f97f7b6f3fa7" ],
+        "x-ms-routing-request-id": [ "SOUTHEASTASIA:20220729T110728Z:0788ea8a-5cfe-424e-8524-f97f7b6f3fa7" ],
+        "Date": [ "Fri, 29 Jul 2022 11:07:27 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "910" ],
+        "Content-Type": [ "application/json; charset=utf-8" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\"properties\":{\"source\":{\"type\":\"Jar\",\"relativePath\":\"\u003cdefault\u003e\",\"runtimeVersion\":\"Java_8\"},\"appName\":\"gateway\",\"deploymentSettings\":{\"cpu\":1,\"memoryInGB\":1,\"resourceRequests\":{\"cpu\":\"1\",\"memory\":\"1Gi\"},\"instanceCount\":1,\"environmentVariables\":{\"env\":\"test\"},\"terminationGracePeriodSeconds\":90},\"provisioningState\":\"Deleting\",\"status\":\"Running\",\"active\":false,\"instances\":null},\"type\":\"Microsoft.AppPlatform/Spring/apps/deployments\",\"sku\":{\"name\":\"S0\",\"tier\":\"Standard\",\"capacity\":1},\"id\":\"/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/springcloud-rg-0zquav/providers/Microsoft.AppPlatform/Spring/spring-jasdec/apps/gateway/deployments/green\",\"name\":\"green\",\"systemData\":{\"createdBy\":\"v-diya@microsoft.com\",\"createdByType\":\"User\",\"createdAt\":\"2022-07-29T11:05:08.919811Z\",\"lastModifiedBy\":\"v-diya@microsoft.com\",\"lastModifiedByType\":\"User\",\"lastModifiedAt\":\"2022-07-29T11:07:27.4220666Z\"}}",
+      "isContentBase64": false
+    }
+  },
+  "Remove-AzSpringCloudAppDeployment+[NoContext]+Delete+$GET+https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/springcloud-rg-0zquav/providers/Microsoft.AppPlatform/locations/eastus/operationStatus/green/operationId/97064b9f-8c42-443c-b9e1-3e516101c342?api-version=2022-04-01+2": {
+    "Request": {
+      "Method": "GET",
+      "RequestUri": "https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/springcloud-rg-0zquav/providers/Microsoft.AppPlatform/locations/eastus/operationStatus/green/operationId/97064b9f-8c42-443c-b9e1-3e516101c342?api-version=2022-04-01",
+      "Content": null,
+      "isContentBase64": false,
+      "Headers": {
+        "Authorization": [ "[Filtered]" ],
+        "x-ms-unique-id": [ "2" ],
+        "x-ms-client-request-id": [ "08abbb76-16a0-4705-b97c-8bc62ceb42e1" ],
+        "CommandName": [ "Remove-AzSpringCloudAppDeployment" ],
+        "FullCommandName": [ "Remove-AzSpringCloudAppDeployment_Delete" ],
+        "ParameterSetName": [ "__AllParameterSets" ],
+        "User-Agent": [ "AzurePowershell/v0.0.0", "PSVersion/v7.1.4", "Az.SpringCloud/0.1.0" ]
+      },
+      "ContentHeaders": {
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "Retry-After": [ "10" ],
+        "x-ms-ratelimit-remaining-subscription-reads": [ "11998" ],
+        "Request-Context": [ "appId=cid-v1:797d7e4e-8180-497e-a254-780fbd39ba4d" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "x-ms-client-request-id": [ "08abbb76-16a0-4705-b97c-8bc62ceb42e1" ],
+        "x-rp-server-mvid": [ "b4692fb5-75b2-4001-b951-6c09037b5614" ],
+        "x-ms-request-id": [ "31249895-9ef7-4a0f-9dec-545ce3bdeb43" ],
+        "x-ms-correlation-request-id": [ "31249895-9ef7-4a0f-9dec-545ce3bdeb43" ],
+        "x-ms-routing-request-id": [ "SOUTHEASTASIA:20220729T110759Z:31249895-9ef7-4a0f-9dec-545ce3bdeb43" ],
+        "Date": [ "Fri, 29 Jul 2022 11:07:59 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "324" ],
+        "Content-Type": [ "application/json; charset=utf-8" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\"id\":\"subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/springcloud-rg-0zquav/providers/Microsoft.AppPlatform/locations/eastus/operationStatus/green/operationId/97064b9f-8c42-443c-b9e1-3e516101c342\",\"name\":\"97064b9f-8c42-443c-b9e1-3e516101c342\",\"status\":\"Running\",\"startTime\":\"2022-07-29T11:07:28.4345411Z\"}",
+      "isContentBase64": false
+    }
+  },
+  "Remove-AzSpringCloudAppDeployment+[NoContext]+Delete+$GET+https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/springcloud-rg-0zquav/providers/Microsoft.AppPlatform/locations/eastus/operationStatus/green/operationId/97064b9f-8c42-443c-b9e1-3e516101c342?api-version=2022-04-01+3": {
+    "Request": {
+      "Method": "GET",
+      "RequestUri": "https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/springcloud-rg-0zquav/providers/Microsoft.AppPlatform/locations/eastus/operationStatus/green/operationId/97064b9f-8c42-443c-b9e1-3e516101c342?api-version=2022-04-01",
+      "Content": null,
+      "isContentBase64": false,
+      "Headers": {
+        "Authorization": [ "[Filtered]" ],
+        "x-ms-unique-id": [ "3" ],
+        "x-ms-client-request-id": [ "08abbb76-16a0-4705-b97c-8bc62ceb42e1" ],
+        "CommandName": [ "Remove-AzSpringCloudAppDeployment" ],
+        "FullCommandName": [ "Remove-AzSpringCloudAppDeployment_Delete" ],
+        "ParameterSetName": [ "__AllParameterSets" ],
+        "User-Agent": [ "AzurePowershell/v0.0.0", "PSVersion/v7.1.4", "Az.SpringCloud/0.1.0" ]
+      },
+      "ContentHeaders": {
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "x-ms-ratelimit-remaining-subscription-reads": [ "11997" ],
+        "Request-Context": [ "appId=cid-v1:797d7e4e-8180-497e-a254-780fbd39ba4d" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "x-ms-client-request-id": [ "08abbb76-16a0-4705-b97c-8bc62ceb42e1" ],
+        "x-rp-server-mvid": [ "b4692fb5-75b2-4001-b951-6c09037b5614" ],
+        "x-ms-request-id": [ "80d1679a-8185-43a2-b296-4e7edd21f75f" ],
+        "x-ms-correlation-request-id": [ "80d1679a-8185-43a2-b296-4e7edd21f75f" ],
+        "x-ms-routing-request-id": [ "SOUTHEASTASIA:20220729T110809Z:80d1679a-8185-43a2-b296-4e7edd21f75f" ],
+        "Date": [ "Fri, 29 Jul 2022 11:08:09 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "367" ],
+        "Content-Type": [ "application/json; charset=utf-8" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\"id\":\"subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/springcloud-rg-0zquav/providers/Microsoft.AppPlatform/locations/eastus/operationStatus/green/operationId/97064b9f-8c42-443c-b9e1-3e516101c342\",\"name\":\"97064b9f-8c42-443c-b9e1-3e516101c342\",\"status\":\"Succeeded\",\"startTime\":\"2022-07-29T11:07:28.4345411Z\",\"endTime\":\"2022-07-29T11:08:05.6234464Z\"}",
+      "isContentBase64": false
+    }
+  },
+  "Remove-AzSpringCloudAppDeployment+[NoContext]+Delete+$GET+https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/springcloud-rg-0zquav/providers/Microsoft.AppPlatform/locations/eastus/operationResults/97064b9f-8c42-443c-b9e1-3e516101c342/Spring/green?api-version=2022-04-01+4": {
+    "Request": {
+      "Method": "GET",
+      "RequestUri": "https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/springcloud-rg-0zquav/providers/Microsoft.AppPlatform/locations/eastus/operationResults/97064b9f-8c42-443c-b9e1-3e516101c342/Spring/green?api-version=2022-04-01",
+      "Content": null,
+      "isContentBase64": false,
+      "Headers": {
+        "Authorization": [ "[Filtered]" ],
+        "x-ms-unique-id": [ "4" ],
+        "x-ms-client-request-id": [ "08abbb76-16a0-4705-b97c-8bc62ceb42e1" ],
+        "CommandName": [ "Remove-AzSpringCloudAppDeployment" ],
+        "FullCommandName": [ "Remove-AzSpringCloudAppDeployment_Delete" ],
+        "ParameterSetName": [ "__AllParameterSets" ],
+        "User-Agent": [ "AzurePowershell/v0.0.0", "PSVersion/v7.1.4", "Az.SpringCloud/0.1.0" ]
+      },
+      "ContentHeaders": {
+      }
+    },
+    "Response": {
+      "StatusCode": 204,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "x-ms-ratelimit-remaining-subscription-reads": [ "11996" ],
+        "Request-Context": [ "appId=cid-v1:797d7e4e-8180-497e-a254-780fbd39ba4d" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "x-ms-client-request-id": [ "08abbb76-16a0-4705-b97c-8bc62ceb42e1" ],
+        "x-rp-server-mvid": [ "b4692fb5-75b2-4001-b951-6c09037b5614" ],
+        "x-ms-request-id": [ "47d98313-0905-4b13-a740-c480477a94df" ],
+        "x-ms-correlation-request-id": [ "47d98313-0905-4b13-a740-c480477a94df" ],
+        "x-ms-routing-request-id": [ "SOUTHEASTASIA:20220729T110810Z:47d98313-0905-4b13-a740-c480477a94df" ],
+        "Date": [ "Fri, 29 Jul 2022 11:08:10 GMT" ]
+      },
+      "ContentHeaders": {
+        "Expires": [ "-1" ]
+      },
+      "Content": null,
+      "isContentBase64": false
+    }
+  },
+  "Remove-AzSpringCloudAppDeployment+[NoContext]+Delete+$GET+https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/springcloud-rg-0zquav/providers/Microsoft.AppPlatform/Spring/spring-jasdec/apps/gateway/deployments?api-version=2022-04-01+5": {
+    "Request": {
+      "Method": "GET",
+      "RequestUri": "https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/springcloud-rg-0zquav/providers/Microsoft.AppPlatform/Spring/spring-jasdec/apps/gateway/deployments?api-version=2022-04-01",
+      "Content": null,
+      "isContentBase64": false,
+      "Headers": {
+        "x-ms-unique-id": [ "5" ],
+        "x-ms-client-request-id": [ "0e5e1a33-8605-475b-a04f-247be3767c4d" ],
+        "CommandName": [ "Get-AzSpringCloudAppDeployment" ],
+        "FullCommandName": [ "Get-AzSpringCloudAppDeployment_List" ],
+        "ParameterSetName": [ "__AllParameterSets" ],
+        "User-Agent": [ "AzurePowershell/v0.0.0", "PSVersion/v7.1.4", "Az.SpringCloud/0.1.0" ],
+        "Authorization": [ "[Filtered]" ]
+      },
+      "ContentHeaders": {
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "x-ms-ratelimit-remaining-subscription-resource-requests": [ "11998" ],
+        "Request-Context": [ "appId=cid-v1:797d7e4e-8180-497e-a254-780fbd39ba4d" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "x-ms-client-request-id": [ "0e5e1a33-8605-475b-a04f-247be3767c4d" ],
+        "x-rp-server-mvid": [ "b4692fb5-75b2-4001-b951-6c09037b5614" ],
+        "x-ms-request-id": [ "cf341cb0-182f-40bb-a7fc-8cec3368ece4" ],
+        "x-ms-correlation-request-id": [ "cf341cb0-182f-40bb-a7fc-8cec3368ece4" ],
+        "x-ms-routing-request-id": [ "SOUTHEASTASIA:20220729T110814Z:cf341cb0-182f-40bb-a7fc-8cec3368ece4" ],
+        "Date": [ "Fri, 29 Jul 2022 11:08:14 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "951" ],
+        "Content-Type": [ "application/json; charset=utf-8" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\"value\":[{\"properties\":{\"deploymentSettings\":{\"resourceRequests\":{\"cpu\":\"1\",\"memory\":\"1Gi\"},\"environmentVariables\":{\"env\":\"prod\"}},\"source\":{\"type\":\"Jar\",\"relativePath\":\"\u003cdefault\u003e\",\"runtimeVersion\":\"Java_8\"},\"provisioningState\":\"Succeeded\",\"status\":\"Running\",\"active\":false,\"instances\":[{\"name\":\"gateway-bule-7-66b58c4947-pbkld\",\"status\":\"Running\",\"discoveryStatus\":\"UNREGISTERED\",\"startTime\":\"2022-07-29T11:05:50Z\"}]},\"type\":\"Microsoft.AppPlatform/Spring/apps/deployments\",\"sku\":{\"name\":\"S0\",\"tier\":\"Standard\",\"capacity\":1},\"id\":\"/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/springcloud-rg-0zquav/providers/Microsoft.AppPlatform/Spring/spring-jasdec/apps/gateway/deployments/bule\",\"name\":\"bule\",\"systemData\":{\"createdBy\":\"v-diya@microsoft.com\",\"createdByType\":\"User\",\"createdAt\":\"2022-07-29T11:05:44.373147Z\",\"lastModifiedBy\":\"v-diya@microsoft.com\",\"lastModifiedByType\":\"User\",\"lastModifiedAt\":\"2022-07-29T11:05:44.373147Z\"}}]}",
+      "isContentBase64": false
+    }
+  },
+  "Remove-AzSpringCloudAppDeployment+[NoContext]+DeleteViaIdentity+$GET+https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/springcloud-rg-0zquav/providers/Microsoft.AppPlatform/Spring/spring-jasdec/apps/gateway/deployments/bule?api-version=2022-04-01+1": {
+    "Request": {
+      "Method": "GET",
+      "RequestUri": "https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/springcloud-rg-0zquav/providers/Microsoft.AppPlatform/Spring/spring-jasdec/apps/gateway/deployments/bule?api-version=2022-04-01",
+      "Content": null,
+      "isContentBase64": false,
+      "Headers": {
+        "x-ms-unique-id": [ "6" ],
+        "x-ms-client-request-id": [ "470085d0-6f79-446a-867d-9387d98132ed" ],
+        "CommandName": [ "Get-AzSpringCloudAppDeployment" ],
+        "FullCommandName": [ "Get-AzSpringCloudAppDeployment_Get" ],
+        "ParameterSetName": [ "__AllParameterSets" ],
+        "User-Agent": [ "AzurePowershell/v0.0.0", "PSVersion/v7.1.4", "Az.SpringCloud/0.1.0" ],
+        "Authorization": [ "[Filtered]" ]
+      },
+      "ContentHeaders": {
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "x-ms-ratelimit-remaining-subscription-resource-requests": [ "11997" ],
+        "Request-Context": [ "appId=cid-v1:797d7e4e-8180-497e-a254-780fbd39ba4d" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "x-ms-client-request-id": [ "470085d0-6f79-446a-867d-9387d98132ed" ],
+        "x-rp-server-mvid": [ "b4692fb5-75b2-4001-b951-6c09037b5614" ],
+        "x-ms-request-id": [ "ce801e1d-cfcc-48bc-a602-4e4f3e7d0d7e" ],
+        "x-ms-correlation-request-id": [ "ce801e1d-cfcc-48bc-a602-4e4f3e7d0d7e" ],
+        "x-ms-routing-request-id": [ "SOUTHEASTASIA:20220729T110817Z:ce801e1d-cfcc-48bc-a602-4e4f3e7d0d7e" ],
+        "Date": [ "Fri, 29 Jul 2022 11:08:17 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "939" ],
+        "Content-Type": [ "application/json; charset=utf-8" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\"properties\":{\"deploymentSettings\":{\"resourceRequests\":{\"cpu\":\"1\",\"memory\":\"1Gi\"},\"environmentVariables\":{\"env\":\"prod\"}},\"source\":{\"type\":\"Jar\",\"relativePath\":\"\u003cdefault\u003e\",\"runtimeVersion\":\"Java_8\"},\"provisioningState\":\"Succeeded\",\"status\":\"Running\",\"active\":false,\"instances\":[{\"name\":\"gateway-bule-7-66b58c4947-pbkld\",\"status\":\"Running\",\"discoveryStatus\":\"UNREGISTERED\",\"startTime\":\"2022-07-29T11:05:50Z\"}]},\"type\":\"Microsoft.AppPlatform/Spring/apps/deployments\",\"sku\":{\"name\":\"S0\",\"tier\":\"Standard\",\"capacity\":1},\"id\":\"/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/springcloud-rg-0zquav/providers/Microsoft.AppPlatform/Spring/spring-jasdec/apps/gateway/deployments/bule\",\"name\":\"bule\",\"systemData\":{\"createdBy\":\"v-diya@microsoft.com\",\"createdByType\":\"User\",\"createdAt\":\"2022-07-29T11:05:44.373147Z\",\"lastModifiedBy\":\"v-diya@microsoft.com\",\"lastModifiedByType\":\"User\",\"lastModifiedAt\":\"2022-07-29T11:05:44.373147Z\"}}",
+      "isContentBase64": false
+    }
+  },
+  "Remove-AzSpringCloudAppDeployment+[NoContext]+DeleteViaIdentity+$DELETE+https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/springcloud-rg-0zquav/providers/Microsoft.AppPlatform/Spring/spring-jasdec/apps/gateway/deployments/bule?api-version=2022-04-01+2": {
+    "Request": {
+      "Method": "DELETE",
+      "RequestUri": "https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/springcloud-rg-0zquav/providers/Microsoft.AppPlatform/Spring/spring-jasdec/apps/gateway/deployments/bule?api-version=2022-04-01",
+      "Content": null,
+      "isContentBase64": false,
+      "Headers": {
+        "x-ms-unique-id": [ "7" ],
+        "x-ms-client-request-id": [ "117da476-0e82-4a81-9374-64cc6b0940c9" ],
+        "CommandName": [ "Remove-AzSpringCloudAppDeployment" ],
+        "FullCommandName": [ "Remove-AzSpringCloudAppDeployment_DeleteViaIdentity" ],
+        "ParameterSetName": [ "__AllParameterSets" ],
+        "User-Agent": [ "AzurePowershell/v0.0.0", "PSVersion/v7.1.4", "Az.SpringCloud/0.1.0" ],
+        "Authorization": [ "[Filtered]" ]
+      },
+      "ContentHeaders": {
+      }
+    },
+    "Response": {
+      "StatusCode": 202,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "Location": [ "https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/springcloud-rg-0zquav/providers/Microsoft.AppPlatform/locations/eastus/operationResults/e605600e-bcdb-4a4c-a688-f5528c847142/Spring/bule?api-version=2022-04-01" ],
+        "x-ms-ratelimit-remaining-subscription-deletes": [ "14998" ],
+        "Request-Context": [ "appId=cid-v1:797d7e4e-8180-497e-a254-780fbd39ba4d" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "x-ms-client-request-id": [ "117da476-0e82-4a81-9374-64cc6b0940c9" ],
+        "x-rp-server-mvid": [ "b4692fb5-75b2-4001-b951-6c09037b5614" ],
+        "Azure-AsyncOperation": [ "https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/springcloud-rg-0zquav/providers/Microsoft.AppPlatform/locations/eastus/operationStatus/bule/operationId/e605600e-bcdb-4a4c-a688-f5528c847142?api-version=2022-04-01" ],
+        "x-ms-request-id": [ "47259067-db12-4352-834b-5128dff843be" ],
+        "x-ms-correlation-request-id": [ "47259067-db12-4352-834b-5128dff843be" ],
+        "x-ms-routing-request-id": [ "SOUTHEASTASIA:20220729T110818Z:47259067-db12-4352-834b-5128dff843be" ],
+        "Date": [ "Fri, 29 Jul 2022 11:08:17 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "908" ],
+        "Content-Type": [ "application/json; charset=utf-8" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\"properties\":{\"source\":{\"type\":\"Jar\",\"relativePath\":\"\u003cdefault\u003e\",\"runtimeVersion\":\"Java_8\"},\"appName\":\"gateway\",\"deploymentSettings\":{\"cpu\":1,\"memoryInGB\":1,\"resourceRequests\":{\"cpu\":\"1\",\"memory\":\"1Gi\"},\"instanceCount\":1,\"environmentVariables\":{\"env\":\"prod\"},\"terminationGracePeriodSeconds\":90},\"provisioningState\":\"Deleting\",\"status\":\"Running\",\"active\":false,\"instances\":null},\"type\":\"Microsoft.AppPlatform/Spring/apps/deployments\",\"sku\":{\"name\":\"S0\",\"tier\":\"Standard\",\"capacity\":1},\"id\":\"/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/springcloud-rg-0zquav/providers/Microsoft.AppPlatform/Spring/spring-jasdec/apps/gateway/deployments/bule\",\"name\":\"bule\",\"systemData\":{\"createdBy\":\"v-diya@microsoft.com\",\"createdByType\":\"User\",\"createdAt\":\"2022-07-29T11:05:44.373147Z\",\"lastModifiedBy\":\"v-diya@microsoft.com\",\"lastModifiedByType\":\"User\",\"lastModifiedAt\":\"2022-07-29T11:08:17.6566118Z\"}}",
+      "isContentBase64": false
+    }
+  },
+  "Remove-AzSpringCloudAppDeployment+[NoContext]+DeleteViaIdentity+$GET+https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/springcloud-rg-0zquav/providers/Microsoft.AppPlatform/locations/eastus/operationStatus/bule/operationId/e605600e-bcdb-4a4c-a688-f5528c847142?api-version=2022-04-01+3": {
+    "Request": {
+      "Method": "GET",
+      "RequestUri": "https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/springcloud-rg-0zquav/providers/Microsoft.AppPlatform/locations/eastus/operationStatus/bule/operationId/e605600e-bcdb-4a4c-a688-f5528c847142?api-version=2022-04-01",
+      "Content": null,
+      "isContentBase64": false,
+      "Headers": {
+        "Authorization": [ "[Filtered]" ],
+        "x-ms-unique-id": [ "8" ],
+        "x-ms-client-request-id": [ "117da476-0e82-4a81-9374-64cc6b0940c9" ],
+        "CommandName": [ "Remove-AzSpringCloudAppDeployment" ],
+        "FullCommandName": [ "Remove-AzSpringCloudAppDeployment_DeleteViaIdentity" ],
+        "ParameterSetName": [ "__AllParameterSets" ],
+        "User-Agent": [ "AzurePowershell/v0.0.0", "PSVersion/v7.1.4", "Az.SpringCloud/0.1.0" ]
+      },
+      "ContentHeaders": {
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "Retry-After": [ "10" ],
+        "x-ms-ratelimit-remaining-subscription-reads": [ "11995" ],
+        "Request-Context": [ "appId=cid-v1:797d7e4e-8180-497e-a254-780fbd39ba4d" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "x-ms-client-request-id": [ "117da476-0e82-4a81-9374-64cc6b0940c9" ],
+        "x-rp-server-mvid": [ "b4692fb5-75b2-4001-b951-6c09037b5614" ],
+        "x-ms-request-id": [ "1fbcefa0-bd4d-4f6c-833a-df5400e284ec" ],
+        "x-ms-correlation-request-id": [ "1fbcefa0-bd4d-4f6c-833a-df5400e284ec" ],
+        "x-ms-routing-request-id": [ "SOUTHEASTASIA:20220729T110848Z:1fbcefa0-bd4d-4f6c-833a-df5400e284ec" ],
+        "Date": [ "Fri, 29 Jul 2022 11:08:48 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "323" ],
+        "Content-Type": [ "application/json; charset=utf-8" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\"id\":\"subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/springcloud-rg-0zquav/providers/Microsoft.AppPlatform/locations/eastus/operationStatus/bule/operationId/e605600e-bcdb-4a4c-a688-f5528c847142\",\"name\":\"e605600e-bcdb-4a4c-a688-f5528c847142\",\"status\":\"Running\",\"startTime\":\"2022-07-29T11:08:17.9706468Z\"}",
+      "isContentBase64": false
+    }
+  },
+  "Remove-AzSpringCloudAppDeployment+[NoContext]+DeleteViaIdentity+$GET+https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/springcloud-rg-0zquav/providers/Microsoft.AppPlatform/locations/eastus/operationStatus/bule/operationId/e605600e-bcdb-4a4c-a688-f5528c847142?api-version=2022-04-01+4": {
+    "Request": {
+      "Method": "GET",
+      "RequestUri": "https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/springcloud-rg-0zquav/providers/Microsoft.AppPlatform/locations/eastus/operationStatus/bule/operationId/e605600e-bcdb-4a4c-a688-f5528c847142?api-version=2022-04-01",
+      "Content": null,
+      "isContentBase64": false,
+      "Headers": {
+        "Authorization": [ "[Filtered]" ],
+        "x-ms-unique-id": [ "9" ],
+        "x-ms-client-request-id": [ "117da476-0e82-4a81-9374-64cc6b0940c9" ],
+        "CommandName": [ "Remove-AzSpringCloudAppDeployment" ],
+        "FullCommandName": [ "Remove-AzSpringCloudAppDeployment_DeleteViaIdentity" ],
+        "ParameterSetName": [ "__AllParameterSets" ],
+        "User-Agent": [ "AzurePowershell/v0.0.0", "PSVersion/v7.1.4", "Az.SpringCloud/0.1.0" ]
+      },
+      "ContentHeaders": {
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "x-ms-ratelimit-remaining-subscription-reads": [ "11994" ],
+        "Request-Context": [ "appId=cid-v1:797d7e4e-8180-497e-a254-780fbd39ba4d" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "x-ms-client-request-id": [ "117da476-0e82-4a81-9374-64cc6b0940c9" ],
+        "x-rp-server-mvid": [ "b4692fb5-75b2-4001-b951-6c09037b5614" ],
+        "x-ms-request-id": [ "dd733fe5-dddf-415c-940b-3fc2a32f68f7" ],
+        "x-ms-correlation-request-id": [ "dd733fe5-dddf-415c-940b-3fc2a32f68f7" ],
+        "x-ms-routing-request-id": [ "SOUTHEASTASIA:20220729T110859Z:dd733fe5-dddf-415c-940b-3fc2a32f68f7" ],
+        "Date": [ "Fri, 29 Jul 2022 11:08:58 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "366" ],
+        "Content-Type": [ "application/json; charset=utf-8" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\"id\":\"subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/springcloud-rg-0zquav/providers/Microsoft.AppPlatform/locations/eastus/operationStatus/bule/operationId/e605600e-bcdb-4a4c-a688-f5528c847142\",\"name\":\"e605600e-bcdb-4a4c-a688-f5528c847142\",\"status\":\"Succeeded\",\"startTime\":\"2022-07-29T11:08:17.9706468Z\",\"endTime\":\"2022-07-29T11:08:54.8879369Z\"}",
+      "isContentBase64": false
+    }
+  },
+  "Remove-AzSpringCloudAppDeployment+[NoContext]+DeleteViaIdentity+$GET+https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/springcloud-rg-0zquav/providers/Microsoft.AppPlatform/locations/eastus/operationResults/e605600e-bcdb-4a4c-a688-f5528c847142/Spring/bule?api-version=2022-04-01+5": {
+    "Request": {
+      "Method": "GET",
+      "RequestUri": "https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/springcloud-rg-0zquav/providers/Microsoft.AppPlatform/locations/eastus/operationResults/e605600e-bcdb-4a4c-a688-f5528c847142/Spring/bule?api-version=2022-04-01",
+      "Content": null,
+      "isContentBase64": false,
+      "Headers": {
+        "Authorization": [ "[Filtered]" ],
+        "x-ms-unique-id": [ "10" ],
+        "x-ms-client-request-id": [ "117da476-0e82-4a81-9374-64cc6b0940c9" ],
+        "CommandName": [ "Remove-AzSpringCloudAppDeployment" ],
+        "FullCommandName": [ "Remove-AzSpringCloudAppDeployment_DeleteViaIdentity" ],
+        "ParameterSetName": [ "__AllParameterSets" ],
+        "User-Agent": [ "AzurePowershell/v0.0.0", "PSVersion/v7.1.4", "Az.SpringCloud/0.1.0" ]
+      },
+      "ContentHeaders": {
+      }
+    },
+    "Response": {
+      "StatusCode": 204,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "x-ms-ratelimit-remaining-subscription-reads": [ "11993" ],
+        "Request-Context": [ "appId=cid-v1:797d7e4e-8180-497e-a254-780fbd39ba4d" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "x-ms-client-request-id": [ "117da476-0e82-4a81-9374-64cc6b0940c9" ],
+        "x-rp-server-mvid": [ "b4692fb5-75b2-4001-b951-6c09037b5614" ],
+        "x-ms-request-id": [ "88ebff95-792f-4b43-9bf6-9634244859c8" ],
+        "x-ms-correlation-request-id": [ "88ebff95-792f-4b43-9bf6-9634244859c8" ],
+        "x-ms-routing-request-id": [ "SOUTHEASTASIA:20220729T110859Z:88ebff95-792f-4b43-9bf6-9634244859c8" ],
+        "Date": [ "Fri, 29 Jul 2022 11:08:59 GMT" ]
+      },
+      "ContentHeaders": {
+        "Expires": [ "-1" ]
+      },
+      "Content": null,
+      "isContentBase64": false
+    }
+  },
+  "Remove-AzSpringCloudAppDeployment+[NoContext]+DeleteViaIdentity+$GET+https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/springcloud-rg-0zquav/providers/Microsoft.AppPlatform/Spring/spring-jasdec/apps/gateway/deployments?api-version=2022-04-01+6": {
+    "Request": {
+      "Method": "GET",
+      "RequestUri": "https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/springcloud-rg-0zquav/providers/Microsoft.AppPlatform/Spring/spring-jasdec/apps/gateway/deployments?api-version=2022-04-01",
+      "Content": null,
+      "isContentBase64": false,
+      "Headers": {
+        "x-ms-unique-id": [ "11" ],
+        "x-ms-client-request-id": [ "73fe1118-ca63-4041-aa3a-06509299ecdd" ],
+        "CommandName": [ "Get-AzSpringCloudAppDeployment" ],
+        "FullCommandName": [ "Get-AzSpringCloudAppDeployment_List" ],
+        "ParameterSetName": [ "__AllParameterSets" ],
+        "User-Agent": [ "AzurePowershell/v0.0.0", "PSVersion/v7.1.4", "Az.SpringCloud/0.1.0" ],
+        "Authorization": [ "[Filtered]" ]
+      },
+      "ContentHeaders": {
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "x-ms-ratelimit-remaining-subscription-resource-requests": [ "11996" ],
+        "Request-Context": [ "appId=cid-v1:797d7e4e-8180-497e-a254-780fbd39ba4d" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "x-ms-client-request-id": [ "73fe1118-ca63-4041-aa3a-06509299ecdd" ],
+        "x-rp-server-mvid": [ "b4692fb5-75b2-4001-b951-6c09037b5614" ],
+        "x-ms-request-id": [ "c427b780-9edd-46ff-b4b5-8eac9087b36f" ],
+        "x-ms-correlation-request-id": [ "c427b780-9edd-46ff-b4b5-8eac9087b36f" ],
+        "x-ms-routing-request-id": [ "SOUTHEASTASIA:20220729T110900Z:c427b780-9edd-46ff-b4b5-8eac9087b36f" ],
+        "Date": [ "Fri, 29 Jul 2022 11:09:00 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "12" ],
+        "Content-Type": [ "application/json; charset=utf-8" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\"value\":[]}",
+      "isContentBase64": false
+    }
+  }
+}

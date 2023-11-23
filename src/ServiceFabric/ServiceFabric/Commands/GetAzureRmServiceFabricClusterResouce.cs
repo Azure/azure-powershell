@@ -57,17 +57,20 @@ namespace Microsoft.Azure.Commands.ServiceFabric.Commands
                     }
                 case ByResourceGroup:
                     {
-                        var clusters = SFRPClient.Clusters.
-                            ListByResourceGroup(ResourceGroupName).Value.
-                            Select(c => new PSCluster(c)).ToList();
+                        var clusters = this.ReturnListByPageResponse(
+                            this.SFRPClient.Clusters.ListByResourceGroup(this.ResourceGroupName),
+                            this.SFRPClient.Clusters.ListByResourceGroupNext);
 
-                        WriteObject(clusters, true);
+                        WriteObject(clusters.Select(c => new PSCluster(c)), true);
                         break;
                     }
                 default:
                     {
-                        var clusters = SFRPClient.Clusters.List().Value.Select(c => new PSCluster(c)).ToList();
-                        WriteObject(clusters, true);
+                        var clusters = this.ReturnListByPageResponse(
+                           this.SFRPClient.Clusters.List(),
+                           this.SFRPClient.Clusters.ListNext);
+
+                        WriteObject(clusters.Select(c => new PSCluster(c)), true);
                         break;
                     }
             }

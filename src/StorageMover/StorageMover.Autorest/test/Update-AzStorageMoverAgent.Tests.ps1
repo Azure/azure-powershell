@@ -1,0 +1,28 @@
+if(($null -eq $TestName) -or ($TestName -contains 'Update-AzStorageMoverAgent'))
+{
+  $loadEnvPath = Join-Path $PSScriptRoot 'loadEnv.ps1'
+  if (-Not (Test-Path -Path $loadEnvPath)) {
+      $loadEnvPath = Join-Path $PSScriptRoot '..\loadEnv.ps1'
+  }
+  . ($loadEnvPath)
+  $TestRecordingFile = Join-Path $PSScriptRoot 'Update-AzStorageMoverAgent.Recording.json'
+  $currentPath = $PSScriptRoot
+  while(-not $mockingPath) {
+      $mockingPath = Get-ChildItem -Path $currentPath -Recurse -Include 'HttpPipelineMocking.ps1' -File
+      $currentPath = Split-Path -Path $currentPath -Parent
+  }
+  . ($mockingPath | Select-Object -First 1).FullName
+}
+
+Describe 'Update-AzStorageMoverAgent' {
+    It 'UpdateExpanded' {
+        $updateDescription = "update agent description"
+        $agent = Update-AzStorageMoverAgent -ResourceGroupName $env.ResourceGroupName -StorageMoverName $env.StorageMoverNameWithAgent -Name $env.AgentName -Description $updateDescription
+        $agent.Name | Should -Be $env.AgentName 
+        $agent.Description | Should -Be $updateDescription
+
+        $agent = Get-AzStorageMoverAgent -ResourceGroupName $env.ResourceGroupName -StorageMoverName $env.StorageMoverNameWithAgent -Name $env.AgentName
+        $agent.Name | Should -Be $env.AgentName 
+        $agent.Description | Should -Be $updateDescription
+    }
+}

@@ -1,0 +1,24 @@
+{
+  "properties": {
+    "type": "Scalar",
+    "properties": {
+      "inputs": [
+        {
+          "dataType": "any"
+        },
+        {
+          "dataType": "any"
+        }
+      ],
+      "output": {
+        "dataType": "any"
+      },
+      "binding": {
+        "type": "Microsoft.StreamAnalytics/JavascriptUdf",
+        "properties": {
+          "script": "// Sample UDF which returns sum of two values.\nfunction main(arg3, arg4) {\n    return arg1 + arg2;\n}"
+        }
+      }
+    }
+  }
+}

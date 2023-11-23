@@ -1,0 +1,95 @@
+{
+  "resourceType": "nginxDeployments/configurations",
+  "apiVersion": "2022-08-01",
+  "learnMore": {
+    "url": "https://learn.microsoft.com/powershell/module/az.nginx"
+  },
+  "commands": [
+    {
+      "name": "Get-AzNginxConfiguration",
+      "description": "Get the Nginx configuration of given Nginx deployment",
+      "path": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Nginx.NginxPlus/nginxDeployments/{deploymentName}/configurations/{configurationName}",
+      "help": {
+        "learnMore": {
+          "url": "https://learn.microsoft.com/powershell/module/az.nginx/get-aznginxconfiguration"
+        },
+        "parameterSets": [
+          {
+            "parameters": [
+              "-DeploymentName <String>",
+              "-Name <String>",
+              "-ResourceGroupName <String>",
+              "[-SubscriptionId <String[]>]"
+            ]
+          }
+        ]
+      },
+      "examples": [
+        {
+          "description": "Get the Nginx configuration of given Nginx deployment",
+          "parameters": [
+            {
+              "name": "-DeploymentName",
+              "value": "[Path.deploymentName]"
+            },
+            {
+              "name": "-Name",
+              "value": "[Path.configurationName]"
+            },
+            {
+              "name": "-ResourceGroupName",
+              "value": "[Path.resourceGroupName]"
+            },
+            {
+              "name": "-SubscriptionId",
+              "value": "[Path.subscriptionId]"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Remove-AzNginxConfiguration",
+      "description": "Reset the Nginx configuration of given Nginx deployment to default",
+      "path": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Nginx.NginxPlus/nginxDeployments/{deploymentName}/configurations/{configurationName}",
+      "help": {
+        "learnMore": {
+          "url": "https://learn.microsoft.com/powershell/module/az.nginx/remove-aznginxconfiguration"
+        },
+        "parameterSets": [
+          {
+            "parameters": [
+              "-DeploymentName <String>",
+              "-Name <String>",
+              "-ResourceGroupName <String>",
+              "[-SubscriptionId <String>]"
+            ]
+          }
+        ]
+      },
+      "examples": [
+        {
+          "description": "Reset the Nginx configuration of given Nginx deployment to default",
+          "parameters": [
+            {
+              "name": "-DeploymentName",
+              "value": "[Path.deploymentName]"
+            },
+            {
+              "name": "-Name",
+              "value": "[Path.configurationName]"
+            },
+            {
+              "name": "-ResourceGroupName",
+              "value": "[Path.resourceGroupName]"
+            },
+            {
+              "name": "-SubscriptionId",
+              "value": "[Path.subscriptionId]"
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

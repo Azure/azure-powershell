@@ -1,0 +1,205 @@
+{
+  "Get-AzWindowsIotServicesDevice+[NoContext]+List1+$GET+https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/providers/Microsoft.WindowsIoT/deviceServices?api-version=2019-06-01+1": {
+    "Request": {
+      "Method": "GET",
+      "RequestUri": "https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/providers/Microsoft.WindowsIoT/deviceServices?api-version=2019-06-01",
+      "Content": null,
+      "Headers": {
+        "x-ms-unique-id": [ "4" ],
+        "x-ms-client-request-id": [ "1de7b3ad-f980-4a6e-8bbb-a2ed33fb3b78" ],
+        "CommandName": [ "Get-AzWindowsIotServicesDevice" ],
+        "FullCommandName": [ "Get-AzWindowsIotServicesDevice_List1" ],
+        "ParameterSetName": [ "__AllParameterSets" ],
+        "User-Agent": [ "AzurePowershell/Az4.0.0-preview" ],
+        "Authorization": [ "[Filtered]" ]
+      },
+      "ContentHeaders": {
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "Vary": [ "Accept-Encoding" ],
+        "x-ms-ratelimit-remaining-subscription-reads": [ "11999" ],
+        "x-ms-request-id": [ "91a9c2c4-7039-41d4-a353-7f7730be2df7" ],
+        "X-Powered-By": [ "ASP.NET" ],
+        "x-ms-correlation-request-id": [ "9f268130-7c74-463d-9157-6c3f95e7ef00" ],
+        "x-ms-routing-request-id": [ "SOUTHEASTASIA:20201117T061816Z:9f268130-7c74-463d-9157-6c3f95e7ef00" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "Date": [ "Tue, 17 Nov 2020 06:18:15 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "1001" ],
+        "Content-Type": [ "application/json; charset=utf-8" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\"value\":[{\"id\":\"/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/wis-f4v98a-test/providers/Microsoft.WindowsIoT/DeviceServices/wis-imsg4v\",\"name\":\"wis-imsg4v\",\"type\":\"Microsoft.WindowsIoT/DeviceServices\",\"etag\":\"\\\"a900b565-0000-0700-0000-5fb36b1d0000\\\"\",\"location\":\"eastus\",\"properties\":{\"adminDomainName\":\"microsoft.onmicrosoft.com\",\"billingDomainName\":\"microsoft.onmicrosoft.com\",\"quantity\":10,\"notes\":null,\"startDate\":\"2020-11-17T06:18:01.7321539Z\",\"provisioningState\":\"Succeeded\"}},{\"id\":\"/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/wis-f4v98a-test/providers/Microsoft.WindowsIoT/DeviceServices/wis-uo7z4w\",\"name\":\"wis-uo7z4w\",\"type\":\"Microsoft.WindowsIoT/DeviceServices\",\"etag\":\"\\\"a9000066-0000-0700-0000-5fb36b260000\\\"\",\"location\":\"eastus\",\"properties\":{\"adminDomainName\":\"microsoft.onmicrosoft.com\",\"billingDomainName\":\"microsoft.onmicrosoft.com\",\"quantity\":10,\"notes\":null,\"startDate\":\"2020-11-17T06:18:10.9414703Z\",\"provisioningState\":\"Succeeded\"}}]}"
+    }
+  },
+  "Get-AzWindowsIotServicesDevice+[NoContext]+List+$GET+https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/wis-f4v98a-test/providers/Microsoft.WindowsIoT/DeviceServices?api-version=2019-06-01+1": {
+    "Request": {
+      "Method": "GET",
+      "RequestUri": "https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/wis-f4v98a-test/providers/Microsoft.WindowsIoT/DeviceServices?api-version=2019-06-01",
+      "Content": null,
+      "Headers": {
+        "x-ms-unique-id": [ "5" ],
+        "x-ms-client-request-id": [ "7815ab6e-f58b-41d8-9f85-9e87d4f99226" ],
+        "CommandName": [ "Get-AzWindowsIotServicesDevice" ],
+        "FullCommandName": [ "Get-AzWindowsIotServicesDevice_List" ],
+        "ParameterSetName": [ "__AllParameterSets" ],
+        "User-Agent": [ "AzurePowershell/Az4.0.0-preview" ],
+        "Authorization": [ "[Filtered]" ]
+      },
+      "ContentHeaders": {
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "Vary": [ "Accept-Encoding" ],
+        "x-ms-ratelimit-remaining-subscription-reads": [ "11998" ],
+        "x-ms-request-id": [ "3ff2b28e-eb7a-4348-93cf-6363bfec7738" ],
+        "X-Powered-By": [ "ASP.NET" ],
+        "x-ms-correlation-request-id": [ "95280812-d550-43ad-97bd-628f73f68025" ],
+        "x-ms-routing-request-id": [ "SOUTHEASTASIA:20201117T061816Z:95280812-d550-43ad-97bd-628f73f68025" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "Date": [ "Tue, 17 Nov 2020 06:18:16 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "1001" ],
+        "Content-Type": [ "application/json; charset=utf-8" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\"value\":[{\"id\":\"/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/wis-f4v98a-test/providers/Microsoft.WindowsIoT/DeviceServices/wis-imsg4v\",\"name\":\"wis-imsg4v\",\"type\":\"Microsoft.WindowsIoT/DeviceServices\",\"etag\":\"\\\"a900b565-0000-0700-0000-5fb36b1d0000\\\"\",\"location\":\"eastus\",\"properties\":{\"adminDomainName\":\"microsoft.onmicrosoft.com\",\"billingDomainName\":\"microsoft.onmicrosoft.com\",\"quantity\":10,\"notes\":null,\"startDate\":\"2020-11-17T06:18:01.7321539Z\",\"provisioningState\":\"Succeeded\"}},{\"id\":\"/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/wis-f4v98a-test/providers/Microsoft.WindowsIoT/DeviceServices/wis-uo7z4w\",\"name\":\"wis-uo7z4w\",\"type\":\"Microsoft.WindowsIoT/DeviceServices\",\"etag\":\"\\\"a9000066-0000-0700-0000-5fb36b260000\\\"\",\"location\":\"eastus\",\"properties\":{\"adminDomainName\":\"microsoft.onmicrosoft.com\",\"billingDomainName\":\"microsoft.onmicrosoft.com\",\"quantity\":10,\"notes\":null,\"startDate\":\"2020-11-17T06:18:10.9414703Z\",\"provisioningState\":\"Succeeded\"}}]}"
+    }
+  },
+  "Get-AzWindowsIotServicesDevice+[NoContext]+Get+$GET+https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/wis-f4v98a-test/providers/Microsoft.WindowsIoT/DeviceServices/wis-imsg4v?api-version=2019-06-01+1": {
+    "Request": {
+      "Method": "GET",
+      "RequestUri": "https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/wis-f4v98a-test/providers/Microsoft.WindowsIoT/DeviceServices/wis-imsg4v?api-version=2019-06-01",
+      "Content": null,
+      "Headers": {
+        "x-ms-unique-id": [ "6" ],
+        "x-ms-client-request-id": [ "f676e98d-0be4-4d19-93cc-0f05e5efc324" ],
+        "CommandName": [ "Get-AzWindowsIotServicesDevice" ],
+        "FullCommandName": [ "Get-AzWindowsIotServicesDevice_Get" ],
+        "ParameterSetName": [ "__AllParameterSets" ],
+        "User-Agent": [ "AzurePowershell/Az4.0.0-preview" ],
+        "Authorization": [ "[Filtered]" ]
+      },
+      "ContentHeaders": {
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "ETag": [ "\"a900b565-0000-0700-0000-5fb36b1d0000\"" ],
+        "Vary": [ "Accept-Encoding" ],
+        "x-ms-ratelimit-remaining-subscription-reads": [ "11997" ],
+        "x-ms-request-id": [ "be6ebbca-18d5-4bde-8d0f-b698d2693e55" ],
+        "X-Powered-By": [ "ASP.NET" ],
+        "x-ms-correlation-request-id": [ "34ea2d83-af40-4868-835c-fc53d09f3bf5" ],
+        "x-ms-routing-request-id": [ "SOUTHEASTASIA:20201117T061817Z:34ea2d83-af40-4868-835c-fc53d09f3bf5" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "Date": [ "Tue, 17 Nov 2020 06:18:16 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "494" ],
+        "Content-Type": [ "application/json; charset=utf-8" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\"id\":\"/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/wis-f4v98a-test/providers/Microsoft.WindowsIoT/DeviceServices/wis-imsg4v\",\"name\":\"wis-imsg4v\",\"type\":\"Microsoft.WindowsIoT/DeviceServices\",\"etag\":\"\\\"a900b565-0000-0700-0000-5fb36b1d0000\\\"\",\"location\":\"eastus\",\"properties\":{\"adminDomainName\":\"microsoft.onmicrosoft.com\",\"billingDomainName\":\"microsoft.onmicrosoft.com\",\"quantity\":10,\"notes\":null,\"startDate\":\"2020-11-17T06:18:01.7321539Z\",\"provisioningState\":\"Succeeded\"}}"
+    }
+  },
+  "Get-AzWindowsIotServicesDevice+[NoContext]+GetViaIdentity+$GET+https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/wis-f4v98a-test/providers/Microsoft.WindowsIoT/DeviceServices/wis-imsg4v?api-version=2019-06-01+1": {
+    "Request": {
+      "Method": "GET",
+      "RequestUri": "https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/wis-f4v98a-test/providers/Microsoft.WindowsIoT/DeviceServices/wis-imsg4v?api-version=2019-06-01",
+      "Content": null,
+      "Headers": {
+        "x-ms-unique-id": [ "7" ],
+        "x-ms-client-request-id": [ "b596afd7-5d5b-41e2-93b8-fedcd39525d4" ],
+        "CommandName": [ "Get-AzWindowsIotServicesDevice" ],
+        "FullCommandName": [ "Get-AzWindowsIotServicesDevice_Get" ],
+        "ParameterSetName": [ "__AllParameterSets" ],
+        "User-Agent": [ "AzurePowershell/Az4.0.0-preview" ],
+        "Authorization": [ "[Filtered]" ]
+      },
+      "ContentHeaders": {
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "ETag": [ "\"a900b565-0000-0700-0000-5fb36b1d0000\"" ],
+        "Vary": [ "Accept-Encoding" ],
+        "x-ms-ratelimit-remaining-subscription-reads": [ "11996" ],
+        "x-ms-request-id": [ "db7e60b9-465c-456d-8855-b2cc99685463" ],
+        "X-Powered-By": [ "ASP.NET" ],
+        "x-ms-correlation-request-id": [ "76bc4d81-a9e4-44c4-a5c9-d0eb2b91ab7b" ],
+        "x-ms-routing-request-id": [ "SOUTHEASTASIA:20201117T061817Z:76bc4d81-a9e4-44c4-a5c9-d0eb2b91ab7b" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "Date": [ "Tue, 17 Nov 2020 06:18:16 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "494" ],
+        "Content-Type": [ "application/json; charset=utf-8" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\"id\":\"/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/wis-f4v98a-test/providers/Microsoft.WindowsIoT/DeviceServices/wis-imsg4v\",\"name\":\"wis-imsg4v\",\"type\":\"Microsoft.WindowsIoT/DeviceServices\",\"etag\":\"\\\"a900b565-0000-0700-0000-5fb36b1d0000\\\"\",\"location\":\"eastus\",\"properties\":{\"adminDomainName\":\"microsoft.onmicrosoft.com\",\"billingDomainName\":\"microsoft.onmicrosoft.com\",\"quantity\":10,\"notes\":null,\"startDate\":\"2020-11-17T06:18:01.7321539Z\",\"provisioningState\":\"Succeeded\"}}"
+    }
+  },
+  "Get-AzWindowsIotServicesDevice+[NoContext]+GetViaIdentity+$GET+https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/wis-f4v98a-test/providers/Microsoft.WindowsIoT/DeviceServices/wis-imsg4v?api-version=2019-06-01+2": {
+    "Request": {
+      "Method": "GET",
+      "RequestUri": "https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/wis-f4v98a-test/providers/Microsoft.WindowsIoT/DeviceServices/wis-imsg4v?api-version=2019-06-01",
+      "Content": null,
+      "Headers": {
+        "x-ms-unique-id": [ "8" ],
+        "x-ms-client-request-id": [ "bacd0607-93fe-4131-bdd6-51e55a277254" ],
+        "CommandName": [ "Get-AzWindowsIotServicesDevice" ],
+        "FullCommandName": [ "Get-AzWindowsIotServicesDevice_GetViaIdentity" ],
+        "ParameterSetName": [ "__AllParameterSets" ],
+        "User-Agent": [ "AzurePowershell/Az4.0.0-preview" ],
+        "Authorization": [ "[Filtered]" ]
+      },
+      "ContentHeaders": {
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "ETag": [ "\"a900b565-0000-0700-0000-5fb36b1d0000\"" ],
+        "Vary": [ "Accept-Encoding" ],
+        "x-ms-ratelimit-remaining-subscription-reads": [ "11995" ],
+        "x-ms-request-id": [ "24ee05cd-8ef3-4762-9a6c-aa8ba38021b4" ],
+        "X-Powered-By": [ "ASP.NET" ],
+        "x-ms-correlation-request-id": [ "c7c2d4a7-8103-4590-987e-f05ea804dcc7" ],
+        "x-ms-routing-request-id": [ "SOUTHEASTASIA:20201117T061817Z:c7c2d4a7-8103-4590-987e-f05ea804dcc7" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "Date": [ "Tue, 17 Nov 2020 06:18:17 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "494" ],
+        "Content-Type": [ "application/json; charset=utf-8" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\"id\":\"/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/wis-f4v98a-test/providers/Microsoft.WindowsIoT/DeviceServices/wis-imsg4v\",\"name\":\"wis-imsg4v\",\"type\":\"Microsoft.WindowsIoT/DeviceServices\",\"etag\":\"\\\"a900b565-0000-0700-0000-5fb36b1d0000\\\"\",\"location\":\"eastus\",\"properties\":{\"adminDomainName\":\"microsoft.onmicrosoft.com\",\"billingDomainName\":\"microsoft.onmicrosoft.com\",\"quantity\":10,\"notes\":null,\"startDate\":\"2020-11-17T06:18:01.7321539Z\",\"provisioningState\":\"Succeeded\"}}"
+    }
+  }
+}

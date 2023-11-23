@@ -1,0 +1,37 @@
+{
+  "Test-AzPeeringServiceProviderAvailability+[NoContext]+Check+$POST+https://management.azure.com/subscriptions/e815e305-b43a-49c4-8b1a-4e61f1aec1e8/providers/Microsoft.Peering/checkServiceProviderAvailability?api-version=2022-10-01+1": {
+    "Request": {
+      "Method": "POST",
+      "RequestUri": "https://management.azure.com/subscriptions/e815e305-b43a-49c4-8b1a-4e61f1aec1e8/providers/Microsoft.Peering/checkServiceProviderAvailability?api-version=2022-10-01",
+      "Content": "{\n  \"peeringServiceLocation\": \"Osaka\",\n  \"peeringServiceProvider\": \"IIJ\"\n}",
+      "isContentBase64": false,
+      "Headers": {
+      },
+      "ContentHeaders": {
+        "Content-Type": [ "application/json" ],
+        "Content-Length": [ "74" ]
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "x-ms-request-id": [ "31bd50ed-0748-42ae-8ae4-80536d8e1c3a" ],
+        "x-ms-ratelimit-remaining-subscription-writes": [ "1199" ],
+        "x-ms-correlation-request-id": [ "5a9db759-edda-4940-aa21-4ec705d4c614" ],
+        "x-ms-routing-request-id": [ "WESTUS:20230113T020038Z:5a9db759-edda-4940-aa21-4ec705d4c614" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "Date": [ "Fri, 13 Jan 2023 02:00:38 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "11" ],
+        "Content-Type": [ "application/json; charset=utf-8" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "\"Available\"",
+      "isContentBase64": false
+    }
+  }
+}

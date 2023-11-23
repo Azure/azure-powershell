@@ -1,0 +1,82 @@
+{
+  "Get-AzPeeringServicePrefix+[NoContext]+List+$GET+https://management.azure.com/subscriptions/e815e305-b43a-49c4-8b1a-4e61f1aec1e8/resourceGroups/DemoRG/providers/Microsoft.Peering/peeringServices/TestDRInterCloudZurich/prefixes?api-version=2022-10-01+1": {
+    "Request": {
+      "Method": "GET",
+      "RequestUri": "https://management.azure.com/subscriptions/e815e305-b43a-49c4-8b1a-4e61f1aec1e8/resourceGroups/DemoRG/providers/Microsoft.Peering/peeringServices/TestDRInterCloudZurich/prefixes?api-version=2022-10-01",
+      "Content": null,
+      "isContentBase64": false,
+      "Headers": {
+        "x-ms-unique-id": [ "21" ],
+        "x-ms-client-request-id": [ "bffb4689-41d8-419e-bb55-647db2a4c9db" ],
+        "CommandName": [ "Get-AzPeeringServicePrefix" ],
+        "FullCommandName": [ "Get-AzPeeringServicePrefix_List" ],
+        "ParameterSetName": [ "__AllParameterSets" ],
+        "User-Agent": [ "AzurePowershell/v0.0.0", "PSVersion/v7.1.3", "Az.Peering/0.1.0" ],
+        "Authorization": [ "[Filtered]" ]
+      },
+      "ContentHeaders": {
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "x-ms-request-id": [ "e30aadc3-8485-4fe0-a6b7-998d22823d73" ],
+        "x-ms-ratelimit-remaining-subscription-reads": [ "11993" ],
+        "x-ms-correlation-request-id": [ "adce3b33-cfd5-4d98-b790-d7e1385f9397" ],
+        "x-ms-routing-request-id": [ "WESTUS:20230113T012521Z:adce3b33-cfd5-4d98-b790-d7e1385f9397" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "Date": [ "Fri, 13 Jan 2023 01:25:21 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "1150" ],
+        "Content-Type": [ "application/json; charset=utf-8" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\r\n  \"value\": [\r\n    {\r\n      \"properties\": {\r\n        \"prefix\": \"91.194.255.0/24\",\r\n        \"prefixValidationState\": \"Failed\",\r\n        \"learnedType\": \"None\",\r\n        \"errorMessage\": \"Peering service provider not found\",\r\n        \"peeringServicePrefixKey\": \"6a7f0d42-e49c-4eea-a930-280610671c3f\",\r\n        \"provisioningState\": \"Succeeded\"\r\n      },\r\n      \"name\": \"TestPrefix\",\r\n      \"id\": \"/subscriptions/e815e305-b43a-49c4-8b1a-4e61f1aec1e8/resourceGroups/DemoRG/providers/Microsoft.Peering/peeringServices/TestDRInterCloudZurich/prefixes/TestPrefix\",\r\n      \"type\": \"Microsoft.Peering/peeringServices/prefixes\"\r\n    },\r\n    {\r\n      \"properties\": {\r\n        \"prefix\": \"240.0.0.0/24\",\r\n        \"prefixValidationState\": \"Pending\",\r\n        \"learnedType\": \"None\",\r\n        \"errorMessage\": \"Deletion in progress\",\r\n        \"provisioningState\": \"Succeeded\"\r\n      },\r\n      \"name\": \"TestPrefix2\",\r\n      \"id\": \"/subscriptions/e815e305-b43a-49c4-8b1a-4e61f1aec1e8/resourceGroups/DemoRG/providers/Microsoft.Peering/peeringServices/TestDRInterCloudZurich/prefixes/TestPrefix2\",\r\n      \"type\": \"Microsoft.Peering/peeringServices/prefixes\"\r\n    }\r\n  ]\r\n}",
+      "isContentBase64": false
+    }
+  },
+  "Get-AzPeeringServicePrefix+[NoContext]+Get+$GET+https://management.azure.com/subscriptions/e815e305-b43a-49c4-8b1a-4e61f1aec1e8/resourceGroups/DemoRG/providers/Microsoft.Peering/peeringServices/TestDRInterCloudZurich/prefixes/TestPrefix?api-version=2022-10-01+1": {
+    "Request": {
+      "Method": "GET",
+      "RequestUri": "https://management.azure.com/subscriptions/e815e305-b43a-49c4-8b1a-4e61f1aec1e8/resourceGroups/DemoRG/providers/Microsoft.Peering/peeringServices/TestDRInterCloudZurich/prefixes/TestPrefix?api-version=2022-10-01",
+      "Content": null,
+      "isContentBase64": false,
+      "Headers": {
+        "x-ms-unique-id": [ "22" ],
+        "x-ms-client-request-id": [ "fa81dc9e-2209-4725-896b-564c59a9251c" ],
+        "CommandName": [ "Get-AzPeeringServicePrefix" ],
+        "FullCommandName": [ "Get-AzPeeringServicePrefix_Get" ],
+        "ParameterSetName": [ "__AllParameterSets" ],
+        "User-Agent": [ "AzurePowershell/v0.0.0", "PSVersion/v7.1.3", "Az.Peering/0.1.0" ],
+        "Authorization": [ "[Filtered]" ]
+      },
+      "ContentHeaders": {
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "x-ms-request-id": [ "d7534262-746a-4cc4-a4cb-c2d23cd5ae35" ],
+        "x-ms-ratelimit-remaining-subscription-reads": [ "11992" ],
+        "x-ms-correlation-request-id": [ "f4d04cad-ace2-406f-b4cb-f60df2ec8ee8" ],
+        "x-ms-routing-request-id": [ "WESTUS:20230113T012521Z:f4d04cad-ace2-406f-b4cb-f60df2ec8ee8" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "Date": [ "Fri, 13 Jan 2023 01:25:21 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "554" ],
+        "Content-Type": [ "application/json; charset=utf-8" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\r\n  \"properties\": {\r\n    \"prefix\": \"91.194.255.0/24\",\r\n    \"prefixValidationState\": \"Failed\",\r\n    \"learnedType\": \"None\",\r\n    \"errorMessage\": \"Peering service provider not found\",\r\n    \"peeringServicePrefixKey\": \"6a7f0d42-e49c-4eea-a930-280610671c3f\",\r\n    \"provisioningState\": \"Succeeded\"\r\n  },\r\n  \"name\": \"TestPrefix\",\r\n  \"id\": \"/subscriptions/e815e305-b43a-49c4-8b1a-4e61f1aec1e8/resourceGroups/DemoRG/providers/Microsoft.Peering/peeringServices/TestDRInterCloudZurich/prefixes/TestPrefix\",\r\n  \"type\": \"Microsoft.Peering/peeringServices/prefixes\"\r\n}",
+      "isContentBase64": false
+    }
+  }
+}

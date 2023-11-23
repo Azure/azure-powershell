@@ -1,0 +1,124 @@
+{
+  "Update-AzStreamAnalyticsCluster+[NoContext]+UpdateExpanded+$PATCH+https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/streamanalytics-rg-qrine6/providers/Microsoft.StreamAnalytics/clusters/sac-h2rlmb?api-version=2020-03-01-preview+1": {
+    "Request": {
+      "Method": "PATCH",
+      "RequestUri": "https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/streamanalytics-rg-qrine6/providers/Microsoft.StreamAnalytics/clusters/sac-h2rlmb?api-version=2020-03-01-preview",
+      "Content": "{\r\n  \"tags\": {\r\n    \"key1\": \"1\",\r\n    \"key2\": \"2\"\r\n  }\r\n}",
+      "isContentBase64": false,
+      "Headers": {
+      },
+      "ContentHeaders": {
+        "Content-Type": [ "application/json" ],
+        "Content-Length": [ "57" ]
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Cache-Control": [ "no-store, no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "ETag": [ "18b2a53e-e2ff-4497-9b0e-1b3d31a8aaaf" ],
+        "X-AspNetMvc-Version": [ "5.0" ],
+        "x-ms-request-id": [ "1b1c9188-4d1c-4f1d-bf9c-77e03cb2736e" ],
+        "Server": [ "Microsoft-IIS/10.0" ],
+        "X-Powered-By": [ "ASP.NET" ],
+        "x-ms-ratelimit-remaining-subscription-writes": [ "1187" ],
+        "x-ms-correlation-request-id": [ "54c58b5c-271a-4ac9-a87e-cc831271ed92" ],
+        "x-ms-routing-request-id": [ "SOUTHEASTASIA:20210316T032319Z:54c58b5c-271a-4ac9-a87e-cc831271ed92" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "Date": [ "Tue, 16 Mar 2021 03:23:19 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "502" ],
+        "Content-Type": [ "application/json; charset=utf-8" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\"id\":\"/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/streamanalytics-rg-qrine6/providers/Microsoft.StreamAnalytics/clusters/sac-h2rlmb\",\"name\":\"sac-h2rlmb\",\"type\":\"Microsoft.StreamAnalytics/clusters\",\"location\":\"West Central US\",\"tags\":{\"key1\":\"1\",\"key2\":\"2\"},\"properties\":{\"createdDate\":\"2021-03-16T01:48:03.567Z\",\"clusterId\":\"49064985-fc6c-41e7-856d-de3fac4095da\",\"provisioningState\":\"Succeeded\",\"capacityAllocated\":0,\"capacityAssigned\":6},\"sku\":{\"name\":\"Default\",\"capacity\":36}}",
+      "isContentBase64": false
+    }
+  },
+  "Update-AzStreamAnalyticsCluster+[NoContext]+UpdateViaIdentityExpanded+$GET+https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/streamanalytics-rg-qrine6/providers/Microsoft.StreamAnalytics/clusters/sac-h2rlmb?api-version=2020-03-01-preview+1": {
+    "Request": {
+      "Method": "GET",
+      "RequestUri": "https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/streamanalytics-rg-qrine6/providers/Microsoft.StreamAnalytics/clusters/sac-h2rlmb?api-version=2020-03-01-preview",
+      "Content": null,
+      "isContentBase64": false,
+      "Headers": {
+        "x-ms-unique-id": [ "94" ],
+        "x-ms-client-request-id": [ "dae8a1ec-a452-4e92-9c5a-81c42832e310" ],
+        "CommandName": [ "Get-AzStreamAnalyticsCluster" ],
+        "FullCommandName": [ "Get-AzStreamAnalyticsCluster_Get" ],
+        "ParameterSetName": [ "__AllParameterSets" ],
+        "User-Agent": [ "AzurePowershell/Az4.0.0-preview" ],
+        "Authorization": [ "[Filtered]" ]
+      },
+      "ContentHeaders": {
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Cache-Control": [ "no-store, no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "ETag": [ "18b2a53e-e2ff-4497-9b0e-1b3d31a8aaaf" ],
+        "X-AspNetMvc-Version": [ "5.0" ],
+        "x-ms-request-id": [ "dae8a1ec-a452-4e92-9c5a-81c42832e310" ],
+        "Server": [ "Microsoft-IIS/10.0" ],
+        "X-Powered-By": [ "ASP.NET" ],
+        "x-ms-ratelimit-remaining-subscription-reads": [ "11893" ],
+        "x-ms-correlation-request-id": [ "0bdf1ff0-bf9b-448c-a26e-a7be316638ed" ],
+        "x-ms-routing-request-id": [ "SOUTHEASTASIA:20210316T032319Z:0bdf1ff0-bf9b-448c-a26e-a7be316638ed" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "Date": [ "Tue, 16 Mar 2021 03:23:19 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "502" ],
+        "Content-Type": [ "application/json; charset=utf-8" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\"id\":\"/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/streamanalytics-rg-qrine6/providers/Microsoft.StreamAnalytics/clusters/sac-h2rlmb\",\"name\":\"sac-h2rlmb\",\"type\":\"Microsoft.StreamAnalytics/clusters\",\"location\":\"West Central US\",\"tags\":{\"key1\":\"1\",\"key2\":\"2\"},\"properties\":{\"createdDate\":\"2021-03-16T01:48:03.567Z\",\"clusterId\":\"49064985-fc6c-41e7-856d-de3fac4095da\",\"provisioningState\":\"Succeeded\",\"capacityAllocated\":0,\"capacityAssigned\":6},\"sku\":{\"name\":\"Default\",\"capacity\":36}}",
+      "isContentBase64": false
+    }
+  },
+  "Update-AzStreamAnalyticsCluster+[NoContext]+UpdateViaIdentityExpanded+$PATCH+https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/streamanalytics-rg-qrine6/providers/Microsoft.StreamAnalytics/clusters/sac-h2rlmb?api-version=2020-03-01-preview+2": {
+    "Request": {
+      "Method": "PATCH",
+      "RequestUri": "https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/streamanalytics-rg-qrine6/providers/Microsoft.StreamAnalytics/clusters/sac-h2rlmb?api-version=2020-03-01-preview",
+      "Content": "{\r\n  \"tags\": {\r\n    \"key1\": \"1\",\r\n    \"key2\": \"2\",\r\n    \"key3\": \"3\"\r\n  }\r\n}",
+      "isContentBase64": false,
+      "Headers": {
+      },
+      "ContentHeaders": {
+        "Content-Type": [ "application/json" ],
+        "Content-Length": [ "75" ]
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Cache-Control": [ "no-store, no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "ETag": [ "bba67fd7-ca79-4cd1-95cd-44b9eeafceed" ],
+        "X-AspNetMvc-Version": [ "5.0" ],
+        "x-ms-request-id": [ "ce9713fe-0910-41e6-9e76-24fe0618d5eb" ],
+        "Server": [ "Microsoft-IIS/10.0" ],
+        "X-Powered-By": [ "ASP.NET" ],
+        "x-ms-ratelimit-remaining-subscription-writes": [ "1186" ],
+        "x-ms-correlation-request-id": [ "321a9824-c9f2-4f23-95c9-41a0b962d6bf" ],
+        "x-ms-routing-request-id": [ "SOUTHEASTASIA:20210316T032322Z:321a9824-c9f2-4f23-95c9-41a0b962d6bf" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "Date": [ "Tue, 16 Mar 2021 03:23:22 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "513" ],
+        "Content-Type": [ "application/json; charset=utf-8" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\"id\":\"/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/streamanalytics-rg-qrine6/providers/Microsoft.StreamAnalytics/clusters/sac-h2rlmb\",\"name\":\"sac-h2rlmb\",\"type\":\"Microsoft.StreamAnalytics/clusters\",\"location\":\"West Central US\",\"tags\":{\"key1\":\"1\",\"key2\":\"2\",\"key3\":\"3\"},\"properties\":{\"createdDate\":\"2021-03-16T01:48:03.567Z\",\"clusterId\":\"49064985-fc6c-41e7-856d-de3fac4095da\",\"provisioningState\":\"Succeeded\",\"capacityAllocated\":0,\"capacityAssigned\":6},\"sku\":{\"name\":\"Default\",\"capacity\":36}}",
+      "isContentBase64": false
+    }
+  }
+}

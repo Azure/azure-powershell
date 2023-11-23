@@ -1,0 +1,76 @@
+{
+  "New-AzRedisEnterpriseCacheKey+[NoContext]+Regenerate+$POST+https://management.azure.com/subscriptions/b3e4e86c-59f5-46c5-8b86-e97530eac8fb/resourceGroups/ps-redisenterprise-rg-heap2v5k/providers/Microsoft.Cache/redisEnterprise/ps-cache-test1-ukqivzwn/databases/default/regenerateKey?api-version=2023-03-01-preview+1": {
+    "Request": {
+      "Method": "POST",
+      "RequestUri": "https://management.azure.com/subscriptions/b3e4e86c-59f5-46c5-8b86-e97530eac8fb/resourceGroups/ps-redisenterprise-rg-heap2v5k/providers/Microsoft.Cache/redisEnterprise/ps-cache-test1-ukqivzwn/databases/default/regenerateKey?api-version=2023-03-01-preview",
+      "Content": "{\r\n  \"keyType\": \"Primary\"\r\n}",
+      "isContentBase64": false,
+      "Headers": {
+      },
+      "ContentHeaders": {
+        "Content-Type": [ "application/json" ],
+        "Content-Length": [ "28" ]
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "x-ms-request-id": [ "de3525f0-eaac-4427-ac1c-f40f088d7476" ],
+        "x-rp-server-mvid": [ "394d8f0c-0bbe-4942-b962-0ddcd147e40a" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "Server": [ "Microsoft-HTTPAPI/2.0" ],
+        "x-ms-ratelimit-remaining-subscription-writes": [ "1197" ],
+        "x-ms-correlation-request-id": [ "0851dae4-1185-44dd-bf6c-d0754ec386cd" ],
+        "x-ms-routing-request-id": [ "JIOINDIACENTRAL:20230406T083959Z:0851dae4-1185-44dd-bf6c-d0754ec386cd" ],
+        "Date": [ "Thu, 06 Apr 2023 08:39:58 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "135" ],
+        "Content-Type": [ "application/json; charset=utf-8" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\r\n  \"primaryKey\": \"TsMx4KRFBqLrVGYZNXosHF4ng3wmtrqAZy6dZmJU9Pc=\",\r\n  \"secondaryKey\": \"K8YhQCoRsuekCFRu2lw8T0RevbNxl66q1zFYvwUcoz4=\"\r\n}",
+      "isContentBase64": false
+    }
+  },
+  "New-AzRedisEnterpriseCacheKey+[NoContext]+Regenerate+$POST+https://management.azure.com/subscriptions/b3e4e86c-59f5-46c5-8b86-e97530eac8fb/resourceGroups/ps-redisenterprise-rg-heap2v5k/providers/Microsoft.Cache/redisEnterprise/ps-cache-test1-ukqivzwn/databases/default/regenerateKey?api-version=2023-03-01-preview+2": {
+    "Request": {
+      "Method": "POST",
+      "RequestUri": "https://management.azure.com/subscriptions/b3e4e86c-59f5-46c5-8b86-e97530eac8fb/resourceGroups/ps-redisenterprise-rg-heap2v5k/providers/Microsoft.Cache/redisEnterprise/ps-cache-test1-ukqivzwn/databases/default/regenerateKey?api-version=2023-03-01-preview",
+      "Content": "{\r\n  \"keyType\": \"Secondary\"\r\n}",
+      "isContentBase64": false,
+      "Headers": {
+      },
+      "ContentHeaders": {
+        "Content-Type": [ "application/json" ],
+        "Content-Length": [ "30" ]
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "x-ms-request-id": [ "45604f99-b45c-4e59-917a-24658ea2c253" ],
+        "x-rp-server-mvid": [ "394d8f0c-0bbe-4942-b962-0ddcd147e40a" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "Server": [ "Microsoft-HTTPAPI/2.0" ],
+        "x-ms-ratelimit-remaining-subscription-writes": [ "1196" ],
+        "x-ms-correlation-request-id": [ "260a90b5-fdae-4cc2-a098-ec89e19c2caf" ],
+        "x-ms-routing-request-id": [ "JIOINDIACENTRAL:20230406T084000Z:260a90b5-fdae-4cc2-a098-ec89e19c2caf" ],
+        "Date": [ "Thu, 06 Apr 2023 08:39:59 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "135" ],
+        "Content-Type": [ "application/json; charset=utf-8" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\r\n  \"primaryKey\": \"TsMx4KRFBqLrVGYZNXosHF4ng3wmtrqAZy6dZmJU9Pc=\",\r\n  \"secondaryKey\": \"vp1WL+n2Fm/W+BNRN7GV+JBiVOncdKG/xY92vPxUqOw=\"\r\n}",
+      "isContentBase64": false
+    }
+  }
+}

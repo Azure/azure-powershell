@@ -1,0 +1,162 @@
+{
+  "Get-AzPeeringAsn+[NoContext]+List+$GET+https://management.azure.com/subscriptions/e815e305-b43a-49c4-8b1a-4e61f1aec1e8/providers/Microsoft.Peering/peerAsns?api-version=2022-10-01+1": {
+    "Request": {
+      "Method": "GET",
+      "RequestUri": "https://management.azure.com/subscriptions/e815e305-b43a-49c4-8b1a-4e61f1aec1e8/providers/Microsoft.Peering/peerAsns?api-version=2022-10-01",
+      "Content": null,
+      "isContentBase64": false,
+      "Headers": {
+        "x-ms-unique-id": [ "4" ],
+        "x-ms-client-request-id": [ "3f8dd36b-9a36-4475-8154-9d9fddc388b1" ],
+        "CommandName": [ "Get-AzPeeringAsn" ],
+        "FullCommandName": [ "Get-AzPeeringAsn_List" ],
+        "ParameterSetName": [ "__AllParameterSets" ],
+        "User-Agent": [ "AzurePowershell/v0.0.0", "PSVersion/v7.1.3", "Az.Peering/0.1.0" ],
+        "Authorization": [ "[Filtered]" ]
+      },
+      "ContentHeaders": {
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "x-ms-request-id": [ "981f8bc5-3453-4076-b2c3-8985ce268cb7" ],
+        "x-ms-ratelimit-remaining-subscription-resource-requests": [ "599" ],
+        "x-ms-correlation-request-id": [ "8216bf35-5de8-490f-a4db-68eabce65ffd" ],
+        "x-ms-routing-request-id": [ "WESTUS:20230113T012515Z:8216bf35-5de8-490f-a4db-68eabce65ffd" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "Date": [ "Fri, 13 Jan 2023 01:25:14 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "546" ],
+        "Content-Type": [ "application/json; charset=utf-8" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\r\n  \"value\": [\r\n    {\r\n      \"properties\": {\r\n        \"peerAsn\": 65000,\r\n        \"peerContactDetail\": [\r\n          {\r\n            \"role\": \"Noc\",\r\n            \"email\": \"test@microsoft.com\",\r\n            \"phone\": \"+12345678900\"\r\n          }\r\n        ],\r\n        \"peerName\": \"Contoso\",\r\n        \"validationState\": \"Approved\"\r\n      },\r\n      \"name\": \"ContosoEdgeTest\",\r\n      \"id\": \"/subscriptions/e815e305-b43a-49c4-8b1a-4e61f1aec1e8/providers/Microsoft.Peering/peerAsns/ContosoEdgeTest\",\r\n      \"type\": \"Microsoft.Peering/peerAsns\"\r\n    }\r\n  ]\r\n}",
+      "isContentBase64": false
+    }
+  },
+  "Get-AzPeeringAsn+[NoContext]+Get+$GET+https://management.azure.com/subscriptions/e815e305-b43a-49c4-8b1a-4e61f1aec1e8/providers/Microsoft.Peering/peerAsns/ContosoEdgeTest?api-version=2022-10-01+1": {
+    "Request": {
+      "Method": "GET",
+      "RequestUri": "https://management.azure.com/subscriptions/e815e305-b43a-49c4-8b1a-4e61f1aec1e8/providers/Microsoft.Peering/peerAsns/ContosoEdgeTest?api-version=2022-10-01",
+      "Content": null,
+      "isContentBase64": false,
+      "Headers": {
+        "x-ms-unique-id": [ "5" ],
+        "x-ms-client-request-id": [ "131c133d-202f-404c-bde4-45f64e712552" ],
+        "CommandName": [ "Get-AzPeeringAsn" ],
+        "FullCommandName": [ "Get-AzPeeringAsn_Get" ],
+        "ParameterSetName": [ "__AllParameterSets" ],
+        "User-Agent": [ "AzurePowershell/v0.0.0", "PSVersion/v7.1.3", "Az.Peering/0.1.0" ],
+        "Authorization": [ "[Filtered]" ]
+      },
+      "ContentHeaders": {
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "x-ms-request-id": [ "fe128aa3-e7a4-45cb-aa8a-4cd871654942" ],
+        "x-ms-ratelimit-remaining-subscription-resource-requests": [ "598" ],
+        "x-ms-correlation-request-id": [ "9da12ea7-4728-4310-958d-3d71802f4d93" ],
+        "x-ms-routing-request-id": [ "WESTUS:20230113T012515Z:9da12ea7-4728-4310-958d-3d71802f4d93" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "Date": [ "Fri, 13 Jan 2023 01:25:14 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "453" ],
+        "Content-Type": [ "application/json; charset=utf-8" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\r\n  \"properties\": {\r\n    \"peerAsn\": 65000,\r\n    \"peerContactDetail\": [\r\n      {\r\n        \"role\": \"Noc\",\r\n        \"email\": \"test@microsoft.com\",\r\n        \"phone\": \"+12345678900\"\r\n      }\r\n    ],\r\n    \"peerName\": \"Contoso\",\r\n    \"validationState\": \"Approved\"\r\n  },\r\n  \"name\": \"ContosoEdgeTest\",\r\n  \"id\": \"/subscriptions/e815e305-b43a-49c4-8b1a-4e61f1aec1e8/providers/Microsoft.Peering/peerAsns/ContosoEdgeTest\",\r\n  \"type\": \"Microsoft.Peering/peerAsns\"\r\n}",
+      "isContentBase64": false
+    }
+  },
+  "Get-AzPeeringAsn+[NoContext]+GetViaIdentity+$GET+https://management.azure.com/subscriptions/e815e305-b43a-49c4-8b1a-4e61f1aec1e8/providers/Microsoft.Peering/peerAsns/ContosoEdgeTest?api-version=2022-10-01+1": {
+    "Request": {
+      "Method": "GET",
+      "RequestUri": "https://management.azure.com/subscriptions/e815e305-b43a-49c4-8b1a-4e61f1aec1e8/providers/Microsoft.Peering/peerAsns/ContosoEdgeTest?api-version=2022-10-01",
+      "Content": null,
+      "isContentBase64": false,
+      "Headers": {
+        "x-ms-unique-id": [ "6" ],
+        "x-ms-client-request-id": [ "069bd14a-1bc3-4ee4-97b7-e9c60a5608f0" ],
+        "CommandName": [ "Get-AzPeeringAsn" ],
+        "FullCommandName": [ "Get-AzPeeringAsn_Get" ],
+        "ParameterSetName": [ "__AllParameterSets" ],
+        "User-Agent": [ "AzurePowershell/v0.0.0", "PSVersion/v7.1.3", "Az.Peering/0.1.0" ],
+        "Authorization": [ "[Filtered]" ]
+      },
+      "ContentHeaders": {
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "x-ms-request-id": [ "b72463c8-f5c8-4961-b222-876b2f1773d2" ],
+        "x-ms-ratelimit-remaining-subscription-resource-requests": [ "597" ],
+        "x-ms-correlation-request-id": [ "ed932401-8970-461b-8d27-99264ed547cf" ],
+        "x-ms-routing-request-id": [ "WESTUS:20230113T012515Z:ed932401-8970-461b-8d27-99264ed547cf" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "Date": [ "Fri, 13 Jan 2023 01:25:14 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "453" ],
+        "Content-Type": [ "application/json; charset=utf-8" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\r\n  \"properties\": {\r\n    \"peerAsn\": 65000,\r\n    \"peerContactDetail\": [\r\n      {\r\n        \"role\": \"Noc\",\r\n        \"email\": \"test@microsoft.com\",\r\n        \"phone\": \"+12345678900\"\r\n      }\r\n    ],\r\n    \"peerName\": \"Contoso\",\r\n    \"validationState\": \"Approved\"\r\n  },\r\n  \"name\": \"ContosoEdgeTest\",\r\n  \"id\": \"/subscriptions/e815e305-b43a-49c4-8b1a-4e61f1aec1e8/providers/Microsoft.Peering/peerAsns/ContosoEdgeTest\",\r\n  \"type\": \"Microsoft.Peering/peerAsns\"\r\n}",
+      "isContentBase64": false
+    }
+  },
+  "Get-AzPeeringAsn+[NoContext]+GetViaIdentity+$GET+https://management.azure.com/subscriptions/e815e305-b43a-49c4-8b1a-4e61f1aec1e8/providers/Microsoft.Peering/peerAsns/ContosoEdgeTest?api-version=2022-10-01+2": {
+    "Request": {
+      "Method": "GET",
+      "RequestUri": "https://management.azure.com/subscriptions/e815e305-b43a-49c4-8b1a-4e61f1aec1e8/providers/Microsoft.Peering/peerAsns/ContosoEdgeTest?api-version=2022-10-01",
+      "Content": null,
+      "isContentBase64": false,
+      "Headers": {
+        "x-ms-unique-id": [ "7" ],
+        "x-ms-client-request-id": [ "32f946b4-19f4-4ce0-afb2-d8b7e5a2f20c" ],
+        "CommandName": [ "Get-AzPeeringAsn" ],
+        "FullCommandName": [ "Get-AzPeeringAsn_GetViaIdentity" ],
+        "ParameterSetName": [ "__AllParameterSets" ],
+        "User-Agent": [ "AzurePowershell/v0.0.0", "PSVersion/v7.1.3", "Az.Peering/0.1.0" ],
+        "Authorization": [ "[Filtered]" ]
+      },
+      "ContentHeaders": {
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "x-ms-request-id": [ "d46805bd-12ef-4089-a19c-2fd58a0aab90" ],
+        "x-ms-ratelimit-remaining-subscription-resource-requests": [ "596" ],
+        "x-ms-correlation-request-id": [ "a737b245-101d-4ce1-8327-5bc12c0c2d51" ],
+        "x-ms-routing-request-id": [ "WESTUS:20230113T012515Z:a737b245-101d-4ce1-8327-5bc12c0c2d51" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "Date": [ "Fri, 13 Jan 2023 01:25:14 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "453" ],
+        "Content-Type": [ "application/json; charset=utf-8" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\r\n  \"properties\": {\r\n    \"peerAsn\": 65000,\r\n    \"peerContactDetail\": [\r\n      {\r\n        \"role\": \"Noc\",\r\n        \"email\": \"test@microsoft.com\",\r\n        \"phone\": \"+12345678900\"\r\n      }\r\n    ],\r\n    \"peerName\": \"Contoso\",\r\n    \"validationState\": \"Approved\"\r\n  },\r\n  \"name\": \"ContosoEdgeTest\",\r\n  \"id\": \"/subscriptions/e815e305-b43a-49c4-8b1a-4e61f1aec1e8/providers/Microsoft.Peering/peerAsns/ContosoEdgeTest\",\r\n  \"type\": \"Microsoft.Peering/peerAsns\"\r\n}",
+      "isContentBase64": false
+    }
+  }
+}

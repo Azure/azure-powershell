@@ -18,13 +18,10 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
-<<<<<<< HEAD
 * Reduced number of MSGraph API calls for access policy.
-=======
 
 ## Version 5.0.0
 * Removed non-core types creation in PowerShell scripts to be compatible in constrained language mode.
->>>>>>> ade2970015326259bae9628de8bf884fcaae5763
 * Supported user assigned identity for Managed HSM in `New/Update-AzKeyVaultManagedHsm` 
 * [Breaking Change] Changed parameter `SoftDeleteRetentionInDays` in `New-AzKeyVaultManagedHsm` to mandatory.
 * Upgraded Azure.Core to 1.35.0.

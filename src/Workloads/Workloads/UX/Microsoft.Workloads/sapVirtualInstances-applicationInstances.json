@@ -1,0 +1,95 @@
+{
+  "resourceType": "sapVirtualInstances/applicationInstances",
+  "apiVersion": "2023-04-01",
+  "learnMore": {
+    "url": "https://learn.microsoft.com/powershell/module/az.workloads"
+  },
+  "commands": [
+    {
+      "name": "Get-AzWorkloadsSapApplicationInstance",
+      "description": "Gets the SAP Application Server Instance corresponding to the Virtual Instance for SAP solutions resource.",
+      "path": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Workloads/sapVirtualInstances/{sapVirtualInstanceName}/applicationInstances/{applicationInstanceName}",
+      "help": {
+        "learnMore": {
+          "url": "https://learn.microsoft.com/powershell/module/az.workloads/get-azworkloadssapapplicationinstance"
+        },
+        "parameterSets": [
+          {
+            "parameters": [
+              "-Name <String>",
+              "-ResourceGroupName <String>",
+              "-SapVirtualInstanceName <String>",
+              "[-SubscriptionId <String[]>]"
+            ]
+          }
+        ]
+      },
+      "examples": [
+        {
+          "description": "Gets the SAP Application Server Instance corresponding to the Virtual Instance for SAP solutions resource.",
+          "parameters": [
+            {
+              "name": "-Name",
+              "value": "[Path.applicationInstanceName]"
+            },
+            {
+              "name": "-ResourceGroupName",
+              "value": "[Path.resourceGroupName]"
+            },
+            {
+              "name": "-SapVirtualInstanceName",
+              "value": "[Path.sapVirtualInstanceName]"
+            },
+            {
+              "name": "-SubscriptionId",
+              "value": "[Path.subscriptionId]"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Start-AzWorkloadsSapApplicationInstance",
+      "description": "Starts the SAP Application Server Instance.",
+      "path": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Workloads/sapVirtualInstances/{sapVirtualInstanceName}/applicationInstances/{applicationInstanceName}/start",
+      "help": {
+        "learnMore": {
+          "url": "https://learn.microsoft.com/powershell/module/az.workloads/start-azworkloadssapapplicationinstance"
+        },
+        "parameterSets": [
+          {
+            "parameters": [
+              "-Name <String>",
+              "-ResourceGroupName <String>",
+              "-SapVirtualInstanceName <String>",
+              "[-SubscriptionId <String>]"
+            ]
+          }
+        ]
+      },
+      "examples": [
+        {
+          "description": "Starts the SAP Application Server Instance.",
+          "parameters": [
+            {
+              "name": "-Name",
+              "value": "[Path.applicationInstanceName]"
+            },
+            {
+              "name": "-ResourceGroupName",
+              "value": "[Path.resourceGroupName]"
+            },
+            {
+              "name": "-SapVirtualInstanceName",
+              "value": "[Path.sapVirtualInstanceName]"
+            },
+            {
+              "name": "-SubscriptionId",
+              "value": "[Path.subscriptionId]"
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

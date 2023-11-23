@@ -1,0 +1,156 @@
+{
+  "Update-AzSentinelBookmark+[NoContext]+UpdateExpanded+$GET+https://management.azure.com/subscriptions/51a36d38-3b14-471f-8dde-a5867f5e51eb/resourceGroups/aspstest7ptmcr/providers/Microsoft.OperationalInsights/workspaces/asptest4wysui/providers/Microsoft.SecurityInsights/bookmarks/4a1c3550-81e9-42ae-8302-a2234a8d3168?api-version=2021-09-01-preview+1": {
+    "Request": {
+      "Method": "GET",
+      "RequestUri": "https://management.azure.com/subscriptions/51a36d38-3b14-471f-8dde-a5867f5e51eb/resourceGroups/aspstest7ptmcr/providers/Microsoft.OperationalInsights/workspaces/asptest4wysui/providers/Microsoft.SecurityInsights/bookmarks/4a1c3550-81e9-42ae-8302-a2234a8d3168?api-version=2021-09-01-preview",
+      "Content": null,
+      "isContentBase64": false,
+      "Headers": {
+        "x-ms-unique-id": [ "295" ],
+        "x-ms-client-request-id": [ "165b612f-242b-49ea-827b-b12b2dfeda1a" ],
+        "CommandName": [ "Get-AzSentinelBookmark" ],
+        "FullCommandName": [ "Get-AzSentinelBookmark_Get" ],
+        "ParameterSetName": [ "__AllParameterSets" ],
+        "User-Agent": [ "AzurePowershell/v0.0.0", "PSVersion/v7.1.3", "Az.SecurityInsights/1.2.0" ],
+        "Authorization": [ "[Filtered]" ]
+      },
+      "ContentHeaders": {
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "Server": [ "Kestrel" ],
+        "x-ms-ratelimit-remaining-subscription-reads": [ "11934" ],
+        "x-ms-request-id": [ "29d8829b-da75-405d-8b42-d6cf036d8e3f" ],
+        "x-ms-correlation-request-id": [ "29d8829b-da75-405d-8b42-d6cf036d8e3f" ],
+        "x-ms-routing-request-id": [ "EASTUS2:20220816T160847Z:29d8829b-da75-405d-8b42-d6cf036d8e3f" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "Date": [ "Tue, 16 Aug 2022 16:08:47 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "5291" ],
+        "Content-Type": [ "application/json; charset=utf-8" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\"id\":\"/subscriptions/51a36d38-3b14-471f-8dde-a5867f5e51eb/resourceGroups/aspstest7ptmcr/providers/Microsoft.OperationalInsights/workspaces/asptest4wysui/providers/Microsoft.SecurityInsights/Bookmarks/4a1c3550-81e9-42ae-8302-a2234a8d3168\",\"name\":\"4a1c3550-81e9-42ae-8302-a2234a8d3168\",\"etag\":\"\\\"3c005b8a-0000-0100-0000-62fbbcc60000\\\"\",\"type\":\"Microsoft.SecurityInsights/Bookmarks\",\"properties\":{\"displayName\":\"Updatebookmarkd4t6g3\",\"created\":\"2022-08-16T15:50:30.6003748+00:00\",\"updated\":\"2022-08-16T15:50:30.6003748+00:00\",\"createdBy\":{\"objectId\":\"9419133c-aaf2-4fe6-b8d9-dd32829396b9\",\"email\":\"nicholas@zeronetworks.com\",\"name\":\"Nicholas DiCola\"},\"updatedBy\":{\"objectId\":\"9419133c-aaf2-4fe6-b8d9-dd32829396b9\",\"email\":\"nicholas@zeronetworks.com\",\"name\":\"Nicholas DiCola\"},\"eventTime\":\"2022-08-16T03:00:00+00:00\",\"notes\":\"Notes go here\",\"labels\":[\"asptest\"],\"query\":\"SigninLogs_CL\",\"queryResult\":\"{\\\"TenantId\\\":\\\"6ad64079-1c3e-4672-bc2d-08df98ad5751\\\",\\\"SourceSystem\\\":\\\"RestAPI\\\",\\\"MG\\\":\\\"\\\",\\\"ManagementGroupName\\\":\\\"\\\",\\\"TimeGenerated\\\":\\\"2021-12-08T03:59:19.262Z\\\",\\\"Computer\\\":\\\"\\\",\\\"RawData\\\":\\\"\\\",\\\"ResourceId\\\":\\\"/tenants/2ad3fc79-1859-42fa-9011-6f8df2251b22/providers/Microsoft.aadiam\\\",\\\"OperationName\\\":\\\"Sign-in activity\\\",\\\"OperationVersion\\\":\\\"1\\\",\\\"Category\\\":\\\"SignInLogs\\\",\\\"ResultType\\\":\\\"0\\\",\\\"ResultSignature\\\":\\\"None\\\",\\\"ResultDescription\\\":\\\"\\\",\\\"DurationMs\\\":0,\\\"CorrelationId\\\":\\\"f9ff9ee8-d565-478b-bc95-8b4f0d468fe1\\\",\\\"Resource\\\":\\\"Microsoft.aadiam\\\",\\\"ResourceGroup\\\":\\\"Microsoft.aadiam\\\",\\\"ResourceProvider\\\":\\\"\\\",\\\"Identity_s\\\":\\\"Adele Vance\\\",\\\"Level\\\":\\\"4\\\",\\\"Location_s\\\":\\\"IL\\\",\\\"AlternateSignInName_s\\\":\\\"\\\",\\\"AppDisplayName_s\\\":\\\"Azure Portal\\\",\\\"AppId_g\\\":\\\"c44b4083-3bb0-49c1-b47d-974e53cbdf3c\\\",\\\"AuthenticationDetails_s\\\":\\\"[\\\\r\\\\n  {\\\\r\\\\n    \\\\\\\"authenticationStepDateTime\\\\\\\": \\\\\\\"2021-04-28T14:08:45.2213421+00:00\\\\\\\",\\\\r\\\\n    \\\\\\\"authenticationMethod\\\\\\\": \\\\\\\"Previously satisfied\\\\\\\",\\\\r\\\\n    \\\\\\\"succeeded\\\\\\\": true,\\\\r\\\\n    \\\\\\\"authenticationStepResultDetail\\\\\\\": \\\\\\\"First factor requirement satisfied by claim in the token\\\\\\\",\\\\r\\\\n    \\\\\\\"authenticationStepRequirement\\\\\\\": \\\\\\\"Primary authentication\\\\\\\",\\\\r\\\\n    \\\\\\\"StatusSequence\\\\\\\": 0,\\\\r\\\\n    \\\\\\\"RequestSequence\\\\\\\": 0\\\\r\\\\n  }\\\\r\\\\n]\\\",\\\"AuthenticationMethodsUsed_s\\\":\\\"\\\",\\\"AuthenticationProcessingDetails_s\\\":\\\"[\\\\r\\\\n  {\\\\r\\\\n    \\\\\\\"key\\\\\\\": \\\\\\\"IsCAEToken\\\\\\\",\\\\r\\\\n    \\\\\\\"value\\\\\\\": \\\\\\\"False\\\\\\\"\\\\r\\\\n  }\\\\r\\\\n]\\\",\\\"AuthenticationRequirement_s\\\":\\\"singleFactorAuthentication\\\",\\\"AuthenticationRequirementPolicies_s\\\":\\\"[]\\\",\\\"ClientAppUsed_s\\\":\\\"Browser\\\",\\\"ConditionalAccessPolicies_dynamic_s\\\":\\\"[{\\\\\\\"enforcedSessionControls\\\\\\\":[],\\\\\\\"conditionsNotSatisfied\\\\\\\":0,\\\\\\\"enforcedGrantControls\\\\\\\":[],\\\\\\\"conditionsSatisfied\\\\\\\":0,\\\\\\\"displayName\\\\\\\":\\\\\\\"Exchange Online Requires Compliant Device\\\\\\\",\\\\\\\"result\\\\\\\":\\\\\\\"notEnabled\\\\\\\",\\\\\\\"id\\\\\\\":\\\\\\\"defb835a-eb9f-4346-a2ca-7a9184867bf1\\\\\\\"}]\\\",\\\"ConditionalAccessPolicies_string_s\\\":\\\"\\\",\\\"ConditionalAccessStatus_s\\\":\\\"notApplied\\\",\\\"CreatedDateTime_UTC__s\\\":\\\"4/28/2021, 2:08:45.221 PM\\\",\\\"DeviceDetail_dynamic_s\\\":\\\"{\\\\\\\"operatingSystem\\\\\\\":\\\\\\\"Windows 10\\\\\\\",\\\\\\\"deviceId\\\\\\\":\\\\\\\"\\\\\\\",\\\\\\\"browser\\\\\\\":\\\\\\\"Edge 90.0.818\\\\\\\"}\\\",\\\"DeviceDetail_string_s\\\":\\\"\\\",\\\"IsInteractive_s\\\":\\\"TRUE\\\",\\\"Id_g\\\":\\\"cfb68155-70f5-4e28-b046-0a3a7086c401\\\",\\\"IPAddress\\\":\\\"175.45.176.99\\\",\\\"IsRisky_s\\\":\\\"\\\",\\\"LocationDetails_dynamic_s\\\":\\\"{\\\\\\\"countryOrRegion\\\\\\\":\\\\\\\"IL\\\\\\\",\\\\\\\"geoCoordinates\\\\\\\":{\\\\\\\"longitude\\\\\\\":34.79964828491211,\\\\\\\"latitude\\\\\\\":32.02956008911133},\\\\\\\"state\\\\\\\":\\\\\\\"Tel Aviv\\\\\\\",\\\\\\\"city\\\\\\\":\\\\\\\"Azor\\\\\\\"}\\\",\\\"LocationDetails_string_s\\\":\\\"\\\",\\\"MfaDetail_dynamic_s\\\":\\\"{}\\\",\\\"MfaDetail_string_s\\\":\\\"\\\",\\\"NetworkLocationDetails_s\\\":\\\"[]\\\",\\\"OriginalRequestId_g\\\":\\\"cfb68155-70f5-4e28-b046-0a3a7086c401\\\",\\\"ProcessingTimeInMilliseconds_s\\\":\\\"3535\\\",\\\"RiskDetail_s\\\":\\\"none\\\",\\\"RiskEventTypes_s\\\":\\\"[]\\\",\\\"RiskEventTypes_V2_s\\\":\\\"[]\\\",\\\"RiskLevelAggregated_s\\\":\\\"none\\\",\\\"RiskLevelDuringSignIn_s\\\":\\\"none\\\",\\\"RiskState_s\\\":\\\"none\\\",\\\"ResourceDisplayName_s\\\":\\\"Windows Azure Service Management API\\\",\\\"ResourceIdentity_g\\\":\\\"797f4846-ba00-4fd7-ba43-dac1f8f63013\\\",\\\"ServicePrincipalId_s\\\":\\\"\\\",\\\"ServicePrincipalName_s\\\":\\\"\\\",\\\"Status_dynamic_s\\\":\\\"{\\\\\\\"errorCode\\\\\\\":0}\\\",\\\"Status_string_s\\\":\\\"\\\",\\\"TokenIssuerName_s\\\":\\\"\\\",\\\"TokenIssuerType_s\\\":\\\"AzureAD\\\",\\\"UserAgent_s\\\":\\\"Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/90.0.4430.85 Safari/537.36 Edg/90.0.818.49\\\",\\\"UserDisplayName_s\\\":\\\"Adele Vance\\\",\\\"UserId_g\\\":\\\"9b117c67-170e-4aed-9702-658b3fddc889\\\",\\\"UserPrincipalName_s\\\":\\\"adelev@m365x816222.onmicrosoft.com\\\",\\\"AADTenantId_g\\\":\\\"2ad3fc79-1859-42fa-9011-6f8df2251b22\\\",\\\"UserType_s\\\":\\\"Member\\\",\\\"FlaggedForReview_s\\\":\\\"\\\",\\\"SignInIdentifier_s\\\":\\\"\\\",\\\"SignInIdentifierType_s\\\":\\\"\\\",\\\"ResourceTenantId_g\\\":\\\"2ad3fc79-1859-42fa-9011-6f8df2251b22\\\",\\\"HomeTenantId_g\\\":\\\"2ad3fc79-1859-42fa-9011-6f8df2251b22\\\",\\\"Type_s\\\":\\\"SigninLogs\\\",\\\"AdditionalDetails_s\\\":\\\"\\\",\\\"InitiatedBy_s\\\":\\\"\\\",\\\"ResourceIdentity_s\\\":\\\"\\\",\\\"HomeTenantId_s\\\":\\\"\\\",\\\"Type\\\":\\\"SigninLogs_CL\\\",\\\"_ResourceId\\\":\\\"\\\"}\",\"queryStartTime\":\"2022-08-15T03:00:00+00:00\",\"queryEndTime\":\"2022-08-16T03:00:00+00:00\",\"incidentInfo\":{\"incidentId\":null,\"title\":null,\"relationName\":null,\"severity\":null}}}",
+      "isContentBase64": false
+    }
+  },
+  "Update-AzSentinelBookmark+[NoContext]+UpdateExpanded+$PUT+https://management.azure.com/subscriptions/51a36d38-3b14-471f-8dde-a5867f5e51eb/resourceGroups/aspstest7ptmcr/providers/Microsoft.OperationalInsights/workspaces/asptest4wysui/providers/Microsoft.SecurityInsights/bookmarks/4a1c3550-81e9-42ae-8302-a2234a8d3168?api-version=2021-09-01-preview+2": {
+    "Request": {
+      "Method": "PUT",
+      "RequestUri": "https://management.azure.com/subscriptions/51a36d38-3b14-471f-8dde-a5867f5e51eb/resourceGroups/aspstest7ptmcr/providers/Microsoft.OperationalInsights/workspaces/asptest4wysui/providers/Microsoft.SecurityInsights/bookmarks/4a1c3550-81e9-42ae-8302-a2234a8d3168?api-version=2021-09-01-preview",
+      "Content": "{\n  \"properties\": {\n    \"displayName\": \"UpdateBookmarkPSTest\"\n  }\n}",
+      "isContentBase64": false,
+      "Headers": {
+      },
+      "ContentHeaders": {
+        "Content-Type": [ "application/json" ],
+        "Content-Length": [ "67" ]
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "Server": [ "Kestrel" ],
+        "x-ms-ratelimit-remaining-subscription-writes": [ "1191" ],
+        "x-ms-request-id": [ "2183b76b-1d63-47c8-9403-02c677093447" ],
+        "x-ms-correlation-request-id": [ "2183b76b-1d63-47c8-9403-02c677093447" ],
+        "x-ms-routing-request-id": [ "EASTUS2:20220816T160847Z:2183b76b-1d63-47c8-9403-02c677093447" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "Date": [ "Tue, 16 Aug 2022 16:08:47 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "911" ],
+        "Content-Type": [ "application/json; charset=utf-8" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\"id\":\"/subscriptions/51a36d38-3b14-471f-8dde-a5867f5e51eb/resourceGroups/aspstest7ptmcr/providers/Microsoft.OperationalInsights/workspaces/asptest4wysui/providers/Microsoft.SecurityInsights/Bookmarks/4a1c3550-81e9-42ae-8302-a2234a8d3168\",\"name\":\"4a1c3550-81e9-42ae-8302-a2234a8d3168\",\"etag\":\"\\\"3c00bf8c-0000-0100-0000-62fbc10f0000\\\"\",\"type\":\"Microsoft.SecurityInsights/Bookmarks\",\"properties\":{\"displayName\":\"UpdateBookmarkPSTest\",\"created\":\"2022-08-16T15:50:30.6003748+00:00\",\"updated\":\"2022-08-16T16:08:47+00:00\",\"createdBy\":{\"objectId\":\"9419133c-aaf2-4fe6-b8d9-dd32829396b9\",\"email\":\"nicholas@zeronetworks.com\",\"name\":\"Nicholas DiCola\"},\"updatedBy\":{\"objectId\":\"9419133c-aaf2-4fe6-b8d9-dd32829396b9\",\"email\":\"nicholas@zeronetworks.com\",\"name\":\"Nicholas DiCola\"},\"eventTime\":\"2022-08-16T16:08:47.6051639+00:00\",\"labels\":[],\"incidentInfo\":{\"incidentId\":null,\"title\":null,\"relationName\":null,\"severity\":null}}}",
+      "isContentBase64": false
+    }
+  },
+  "Update-AzSentinelBookmark+[NoContext]+UpdateViaIdentityExpanded+$GET+https://management.azure.com/subscriptions/51a36d38-3b14-471f-8dde-a5867f5e51eb/resourceGroups/aspstest7ptmcr/providers/Microsoft.OperationalInsights/workspaces/asptest4wysui/providers/Microsoft.SecurityInsights/bookmarks/4a1c3550-81e9-42ae-8302-a2234a8d3168?api-version=2021-09-01-preview+1": {
+    "Request": {
+      "Method": "GET",
+      "RequestUri": "https://management.azure.com/subscriptions/51a36d38-3b14-471f-8dde-a5867f5e51eb/resourceGroups/aspstest7ptmcr/providers/Microsoft.OperationalInsights/workspaces/asptest4wysui/providers/Microsoft.SecurityInsights/bookmarks/4a1c3550-81e9-42ae-8302-a2234a8d3168?api-version=2021-09-01-preview",
+      "Content": null,
+      "isContentBase64": false,
+      "Headers": {
+        "x-ms-unique-id": [ "297" ],
+        "x-ms-client-request-id": [ "8eb31be2-b64e-4c46-a569-8f0038a4a6ad" ],
+        "CommandName": [ "Get-AzSentinelBookmark" ],
+        "FullCommandName": [ "Get-AzSentinelBookmark_Get" ],
+        "ParameterSetName": [ "__AllParameterSets" ],
+        "User-Agent": [ "AzurePowershell/v0.0.0", "PSVersion/v7.1.3", "Az.SecurityInsights/1.2.0" ],
+        "Authorization": [ "[Filtered]" ]
+      },
+      "ContentHeaders": {
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "Server": [ "Kestrel" ],
+        "x-ms-ratelimit-remaining-subscription-reads": [ "11933" ],
+        "x-ms-request-id": [ "276c7dc4-1a62-49cc-b155-f0ab065800c9" ],
+        "x-ms-correlation-request-id": [ "276c7dc4-1a62-49cc-b155-f0ab065800c9" ],
+        "x-ms-routing-request-id": [ "EASTUS2:20220816T160847Z:276c7dc4-1a62-49cc-b155-f0ab065800c9" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "Date": [ "Tue, 16 Aug 2022 16:08:47 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "919" ],
+        "Content-Type": [ "application/json; charset=utf-8" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\"id\":\"/subscriptions/51a36d38-3b14-471f-8dde-a5867f5e51eb/resourceGroups/aspstest7ptmcr/providers/Microsoft.OperationalInsights/workspaces/asptest4wysui/providers/Microsoft.SecurityInsights/Bookmarks/4a1c3550-81e9-42ae-8302-a2234a8d3168\",\"name\":\"4a1c3550-81e9-42ae-8302-a2234a8d3168\",\"etag\":\"\\\"3c00bf8c-0000-0100-0000-62fbc10f0000\\\"\",\"type\":\"Microsoft.SecurityInsights/Bookmarks\",\"properties\":{\"displayName\":\"UpdateBookmarkPSTest\",\"created\":\"2022-08-16T15:50:30.6003748+00:00\",\"updated\":\"2022-08-16T16:08:47.6053435+00:00\",\"createdBy\":{\"objectId\":\"9419133c-aaf2-4fe6-b8d9-dd32829396b9\",\"email\":\"nicholas@zeronetworks.com\",\"name\":\"Nicholas DiCola\"},\"updatedBy\":{\"objectId\":\"9419133c-aaf2-4fe6-b8d9-dd32829396b9\",\"email\":\"nicholas@zeronetworks.com\",\"name\":\"Nicholas DiCola\"},\"eventTime\":\"2022-08-16T16:08:47.6051639+00:00\",\"labels\":[],\"incidentInfo\":{\"incidentId\":null,\"title\":null,\"relationName\":null,\"severity\":null}}}",
+      "isContentBase64": false
+    }
+  },
+  "Update-AzSentinelBookmark+[NoContext]+UpdateViaIdentityExpanded+$PUT+https://management.azure.com/subscriptions/51a36d38-3b14-471f-8dde-a5867f5e51eb/resourceGroups/aspstest7ptmcr/providers/Microsoft.OperationalInsights/workspaces/asptest4wysui/providers/Microsoft.SecurityInsights/bookmarks/4a1c3550-81e9-42ae-8302-a2234a8d3168?api-version=2021-09-01-preview+2": {
+    "Request": {
+      "Method": "PUT",
+      "RequestUri": "https://management.azure.com/subscriptions/51a36d38-3b14-471f-8dde-a5867f5e51eb/resourceGroups/aspstest7ptmcr/providers/Microsoft.OperationalInsights/workspaces/asptest4wysui/providers/Microsoft.SecurityInsights/bookmarks/4a1c3550-81e9-42ae-8302-a2234a8d3168?api-version=2021-09-01-preview",
+      "Content": "{\n  \"properties\": {\n    \"displayName\": \"UpdateBookmarkPSTest\"\n  }\n}",
+      "isContentBase64": false,
+      "Headers": {
+      },
+      "ContentHeaders": {
+        "Content-Type": [ "application/json" ],
+        "Content-Length": [ "67" ]
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "Server": [ "Kestrel" ],
+        "x-ms-ratelimit-remaining-subscription-writes": [ "1190" ],
+        "x-ms-request-id": [ "09b10842-f1a5-4598-aef7-4fa3a54d0c6c" ],
+        "x-ms-correlation-request-id": [ "09b10842-f1a5-4598-aef7-4fa3a54d0c6c" ],
+        "x-ms-routing-request-id": [ "EASTUS2:20220816T160848Z:09b10842-f1a5-4598-aef7-4fa3a54d0c6c" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "Date": [ "Tue, 16 Aug 2022 16:08:48 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "911" ],
+        "Content-Type": [ "application/json; charset=utf-8" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\"id\":\"/subscriptions/51a36d38-3b14-471f-8dde-a5867f5e51eb/resourceGroups/aspstest7ptmcr/providers/Microsoft.OperationalInsights/workspaces/asptest4wysui/providers/Microsoft.SecurityInsights/Bookmarks/4a1c3550-81e9-42ae-8302-a2234a8d3168\",\"name\":\"4a1c3550-81e9-42ae-8302-a2234a8d3168\",\"etag\":\"\\\"3c00c08c-0000-0100-0000-62fbc1100000\\\"\",\"type\":\"Microsoft.SecurityInsights/Bookmarks\",\"properties\":{\"displayName\":\"UpdateBookmarkPSTest\",\"created\":\"2022-08-16T15:50:30.6003748+00:00\",\"updated\":\"2022-08-16T16:08:48+00:00\",\"createdBy\":{\"objectId\":\"9419133c-aaf2-4fe6-b8d9-dd32829396b9\",\"email\":\"nicholas@zeronetworks.com\",\"name\":\"Nicholas DiCola\"},\"updatedBy\":{\"objectId\":\"9419133c-aaf2-4fe6-b8d9-dd32829396b9\",\"email\":\"nicholas@zeronetworks.com\",\"name\":\"Nicholas DiCola\"},\"eventTime\":\"2022-08-16T16:08:48.0260156+00:00\",\"labels\":[],\"incidentInfo\":{\"incidentId\":null,\"title\":null,\"relationName\":null,\"severity\":null}}}",
+      "isContentBase64": false
+    }
+  }
+}

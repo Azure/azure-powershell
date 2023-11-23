@@ -28,7 +28,7 @@ New-AzVirtualNetworkGateway -Name <String> -ResourceGroupName <String> -Location
  [-RadiusServerAddress <String>] [-RadiusServerSecret <SecureString>] [-RadiusServerList <PSRadiusServer[]>]
  [-AadTenantUri <String>] [-AadAudienceId <String>] [-AadIssuerUri <String>] [-CustomRoute <String[]>]
  [-VpnGatewayGeneration <String>] [-VirtualNetworkGatewayPolicyGroup <PSVirtualNetworkGatewayPolicyGroup[]>]
- [-ClientConnectionConfiguration <PSClientConnectionConfiguration[]>] [-AsJob]
+ [-ClientConnectionConfiguration <PSClientConnectionConfiguration[]>] [-AdminState <String>] [-AsJob]
  [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 

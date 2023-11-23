@@ -1,0 +1,9 @@
+{
+  "SubscriptionId": "45b60d85-fd72-427a-a708-f994d26e593e",
+  "ResourceGroupName": "StorageMoverTestfw6x8kzd",
+  "InitialSMName": "testSMInitial",
+  "RandomString": "fw6x8kzd",
+  "Location": "eastus2euap",
+  "Tenant": "72f988bf-86f1-41af-91ab-2d7cd011db47",
+  "InitialSMDescription": "initial test SM description"
+}
