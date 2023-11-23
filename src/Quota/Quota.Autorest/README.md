@@ -125,6 +125,6 @@ directive:
     - LimitJsonObject
     
   - model-cmdlet:
-    - model-name: LimitObject  # Successfull generated then hide it to custom(Rename cmdlet and parameter).
+    - model-name: LimitObject
       cmdlet-name: New-AzQuotaLimitObject
 ```
