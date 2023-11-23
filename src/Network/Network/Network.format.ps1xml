@@ -5967,29 +5967,6 @@
       </ListControl>
     </View>
     <View>
-		  <Name>Microsoft.Azure.Commands.Network.Models.PSRoutingConfigurationNfv</Name>
-		  <ViewSelectedBy>
-			  <TypeName>Microsoft.Azure.Commands.Network.Models.PSRoutingConfigurationNfv</TypeName>
-		  </ViewSelectedBy>
-		  <ListControl>
-			  <ListEntries>
-				  <ListEntry>
-					  <ListItems>
-						  <ListItem>
-							  <Label>AssociatedRouteTable</Label>
-							  <PropertyName>AssociatedRouteTable</PropertyName>
-						  </ListItem>
-						  <ListItem>
-							  <Label>PropagatedRouteTables</Label>
-							  <PropertyName>PropagatedRouteTablesText</PropertyName>
-						  </ListItem>
-					  </ListItems>
-				  </ListEntry>
-			  </ListEntries>
-		  </ListControl>
-	  </View>
-  
-	  <View>
       <Name>Microsoft.Azure.Commands.Network.Models.PSVHubRouteTable</Name>
       <ViewSelectedBy>
         <TypeName>Microsoft.Azure.Commands.Network.Models.PSVHubRouteTable</TypeName>
