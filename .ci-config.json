@@ -317,19 +317,6 @@
     }
   ],
   "selectModuleList": [
-    "Accounts",
-    "Aks",
-    "ApplicationInsights",
-    "Compute",
-    "Functions",
-    "KeyVault",
-    "KubernetersConfiguration",
-    "Network",
-    "PostgreSql",
-    "Purview",
-    "Resources",
-    "Storage",
-    "Websites"
   ],
   "artifactPipelineInfoFolder": "artifacts/PipelineResult"
 }

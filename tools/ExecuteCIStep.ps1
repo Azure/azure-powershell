@@ -332,6 +332,9 @@ If ($TestAutorest)
         }
         Set-ModuleTestStatusInPipelineResult -ModuleName $ModuleName -Status $Status
     }
+    Else {
+        Write-Warning "There is no CIPlan.json found in the folder: $RepoArtifacts/PipelineResult"
+    }
     Return
 }
 
