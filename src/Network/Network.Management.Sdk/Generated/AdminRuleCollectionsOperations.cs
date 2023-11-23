@@ -8,6 +8,7 @@
 // regenerated.
 // </auto-generated>
 
+
 namespace Microsoft.Azure.Management.Network
 {
     using Microsoft.Rest;
