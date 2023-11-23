@@ -75,11 +75,11 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Models
             {
                 return;
             }
-            {_id = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Runtime.Json.JsonString>("id"), out var __jsonId) ? (string)__jsonId : (string)Id;}
-            {_name = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Runtime.Json.JsonString>("name"), out var __jsonName) ? (string)__jsonName : (string)Name;}
-            {_type = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Runtime.Json.JsonString>("type"), out var __jsonType) ? (string)__jsonType : (string)Type;}
-            {_location = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Runtime.Json.JsonString>("location"), out var __jsonLocation) ? (string)__jsonLocation : (string)Location;}
-            {_tag = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Runtime.Json.JsonObject>("tags"), out var __jsonTags) ? Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Models.ResourceTags.FromJson(__jsonTags) : Tag;}
+            {_id = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Runtime.Json.JsonString>("id"), out var __jsonId) ? (string)__jsonId : (string)_id;}
+            {_name = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Runtime.Json.JsonString>("name"), out var __jsonName) ? (string)__jsonName : (string)_name;}
+            {_type = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Runtime.Json.JsonString>("type"), out var __jsonType) ? (string)__jsonType : (string)_type;}
+            {_location = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Runtime.Json.JsonString>("location"), out var __jsonLocation) ? (string)__jsonLocation : (string)_location;}
+            {_tag = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Runtime.Json.JsonObject>("tags"), out var __jsonTags) ? Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Models.ResourceTags.FromJson(__jsonTags) : _tag;}
             AfterFromJson(json);
         }
 

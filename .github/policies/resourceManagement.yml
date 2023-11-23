@@ -1332,7 +1332,7 @@ configuration:
         then:
         - mentionUsers:
             mentionees:
-            - calvinsID
+            - howang-ms
             replyTemplate: Thanks for the feedback! We are routing this to the appropriate team for follow-up. cc ${mentionees}.
             assignMentionees: False
       - if:
@@ -2211,6 +2211,24 @@ configuration:
             mentionees:
             - ambhatna
             - savjani
+            replyTemplate: Thanks for the feedback! We are routing this to the appropriate team for follow-up. cc ${mentionees}.
+            assignMentionees: False
+      - if:
+        - or:
+          - labelAdded:
+              label: Service Attention
+          - labelAdded:
+              label: Marketplace
+        - hasLabel:
+            label: Service Attention
+        - hasLabel:
+            label: Marketplace
+        then:
+        - mentionUsers:
+            mentionees:
+            - saviesacov
+            - gupele
+            - mikamine
             replyTemplate: Thanks for the feedback! We are routing this to the appropriate team for follow-up. cc ${mentionees}.
             assignMentionees: False
       - if:

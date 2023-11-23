@@ -251,12 +251,6 @@ namespace Microsoft.Azure.Commands.Compute.Automation
         [Parameter(
             Mandatory = false,
             ValueFromPipelineByPropertyName = true,
-            HelpMessage = "Required if createOption is CopyFromSanSnapshot. this is the ARM id of the source elastic san volume snapshot.")]
-        public string ElasticSanResourceId { get; set; }
-
-        [Parameter(
-            Mandatory = false,
-            ValueFromPipelineByPropertyName = true,
             HelpMessage = "Setting this property to true improves reliability and performance of data disks that are frequently (more than 5 times a day) by detached from one virtual machine and attached to another. This property should not be set for disks that are not detached and attached frequently as it causes the disks to not align with the fault domain of the virtual machine.")]
         public bool? OptimizedForFrequentAttach { get; set; }
 
@@ -349,15 +343,6 @@ namespace Microsoft.Azure.Commands.Compute.Automation
                     vCreationData = new CreationData();
                 }
                 vCreationData.SourceResourceId = this.SourceResourceId;
-            }
-
-            if (this.IsParameterBound(c => c.ElasticSanResourceId))
-            {
-                if (vCreationData == null)
-                {
-                    vCreationData = new CreationData();
-                }
-                vCreationData.ElasticSanResourceId = this.ElasticSanResourceId;
             }
 
             if (this.IsParameterBound(c => c.UploadSizeInBytes))

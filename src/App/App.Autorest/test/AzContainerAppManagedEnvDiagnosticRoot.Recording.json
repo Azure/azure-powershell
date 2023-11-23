@@ -1,0 +1,46 @@
+{
+  "AzContainerAppManagedEnvDiagnosticRoot+[NoContext]+Get+$GET+https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/a5hfaey/providers/Microsoft.App/managedEnvironments/a360na/detectorProperties/rootApi/?api-version=2023-05-01+1": {
+    "Request": {
+      "Method": "GET",
+      "RequestUri": "https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/a5hfaey/providers/Microsoft.App/managedEnvironments/a360na/detectorProperties/rootApi/?api-version=2023-05-01",
+      "Content": null,
+      "isContentBase64": false,
+      "Headers": {
+        "x-ms-unique-id": [ "106" ],
+        "x-ms-client-request-id": [ "736fc4ec-7a80-45ed-ae88-27259ce22673" ],
+        "CommandName": [ "Get-AzContainerAppManagedEnvDiagnosticRoot" ],
+        "FullCommandName": [ "Get-AzContainerAppManagedEnvDiagnosticRoot_Get" ],
+        "ParameterSetName": [ "__AllParameterSets" ],
+        "User-Agent": [ "AzurePowershell/v0.0.0", "PSVersion/v7.3.8", "Az.App/0.2.0" ],
+        "Authorization": [ "[Filtered]" ]
+      },
+      "ContentHeaders": {
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "Vary": [ "Accept-Encoding" ],
+        "x-ms-ratelimit-remaining-subscription-reads": [ "11923" ],
+        "api-supported-versions": [ "2022-03-01, 2022-06-01-preview, 2022-10-01, 2022-11-01-preview, 2023-04-01-preview, 2023-05-01, 2023-05-02-preview, 2023-08-01-preview" ],
+        "Server": [ "Microsoft-IIS/10.0" ],
+        "X-Powered-By": [ "ASP.NET" ],
+        "x-ms-request-id": [ "53a68ec5-42a9-42b8-bffa-3d2fc92454e8" ],
+        "x-ms-correlation-request-id": [ "53a68ec5-42a9-42b8-bffa-3d2fc92454e8" ],
+        "x-ms-routing-request-id": [ "JAPANEAST:20231030T103108Z:53a68ec5-42a9-42b8-bffa-3d2fc92454e8" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "Date": [ "Mon, 30 Oct 2023 10:31:07 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "1561" ],
+        "Content-Type": [ "application/json; charset=utf-8" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\"id\":\"/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/a5hfaey/providers/Microsoft.App/managedEnvironments/a360na\",\"name\":\"a360na\",\"type\":\"Microsoft.App/managedEnvironments\",\"location\":\"East US\",\"systemData\":{\"createdBy\":\"v-jinpel@microsoft.com\",\"createdByType\":\"User\",\"createdAt\":\"2023-10-30T10:21:29.2927568\",\"lastModifiedBy\":\"v-jinpel@microsoft.com\",\"lastModifiedByType\":\"User\",\"lastModifiedAt\":\"2023-10-30T10:21:29.2927568\"},\"properties\":{\"provisioningState\":\"Succeeded\",\"daprAIInstrumentationKey\":null,\"daprAIConnectionString\":null,\"vnetConfiguration\":null,\"defaultDomain\":\"victoriousground-d454dbe5.eastus.azurecontainerapps.io\",\"staticIp\":\"20.253.76.92\",\"appLogsConfiguration\":{\"destination\":\"log-analytics\",\"logAnalyticsConfiguration\":{\"customerId\":\"27d868cc-9032-4042-991a-19de8706cc44\",\"sharedKey\":null}},\"zoneRedundant\":false,\"kedaConfiguration\":{\"version\":\"2.10.0\"},\"daprConfiguration\":{\"version\":\"1.11.2\"},\"eventStreamEndpoint\":\"https://eastus.azurecontainerapps.dev/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/a5hfaey/managedEnvironments/a360na/eventstream\",\"customDomainConfiguration\":{\"customDomainVerificationId\":\"70240F0BA32B9DD28948DBEC834A732C467825FB279A572BFED6A386F1954E0A\",\"dnsSuffix\":null,\"certificateValue\":null,\"certificatePassword\":null,\"thumbprint\":null,\"subjectName\":null,\"expirationDate\":null},\"workloadProfiles\":[{\"workloadProfileType\":\"Consumption\",\"name\":\"Consumption\"}],\"firstPartyConfiguration\":null,\"infrastructureResourceGroup\":null,\"peerAuthentication\":{\"mtls\":{\"enabled\":false}}}}",
+      "isContentBase64": false
+    }
+  }
+}

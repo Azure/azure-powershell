@@ -77,9 +77,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Models
             {
                 return;
             }
-            {_status = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Runtime.Json.JsonString>("status"), out var __jsonStatus) ? (string)__jsonStatus : (string)Status;}
-            {_description = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Runtime.Json.JsonString>("description"), out var __jsonDescription) ? (string)__jsonDescription : (string)Description;}
-            {_actionsRequired = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Runtime.Json.JsonString>("actionsRequired"), out var __jsonActionsRequired) ? (string)__jsonActionsRequired : (string)ActionsRequired;}
+            {_status = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Runtime.Json.JsonString>("status"), out var __jsonStatus) ? (string)__jsonStatus : (string)_status;}
+            {_description = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Runtime.Json.JsonString>("description"), out var __jsonDescription) ? (string)__jsonDescription : (string)_description;}
+            {_actionsRequired = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Runtime.Json.JsonString>("actionsRequired"), out var __jsonActionsRequired) ? (string)__jsonActionsRequired : (string)_actionsRequired;}
             AfterFromJson(json);
         }
 

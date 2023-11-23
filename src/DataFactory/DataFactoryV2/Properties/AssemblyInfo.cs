@@ -25,8 +25,8 @@ using System.Runtime.InteropServices;
 [assembly: ComVisible(false)]
 [assembly: CLSCompliant(false)]
 [assembly: Guid("5d024af0-81c9-44f0-b3b0-7080f103fb4d")]
-[assembly: AssemblyVersion("1.17.0")]
-[assembly: AssemblyFileVersion("1.17.0")]
+[assembly: AssemblyVersion("1.17.1")]
+[assembly: AssemblyFileVersion("1.17.1")]
 #if !SIGN
 [assembly: InternalsVisibleTo("Microsoft.Azure.PowerShell.Cmdlets.DataFactoryV2.Test")]
 #endif
