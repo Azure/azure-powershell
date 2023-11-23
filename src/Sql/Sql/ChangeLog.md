@@ -18,7 +18,7 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
-* Update exist cmdlets 'UpdateAzureSqlDatabaseLongTermRetentionBackup' for Azure SQL sterling DB to change long-term retention backup storage access tier
+* Updated exist cmdlets 'UpdateAzureSqlDatabaseLongTermRetentionBackup' for Azure SQL sterling DB to change long-term retention backup storage access tier
 * Added new parameters `MaintenanceConfigurationId`, `DnsZone` to `AzSqlInstancePool` cmdlets
 
 ## Version 4.11.0
