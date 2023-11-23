@@ -117,14 +117,6 @@ directive:
       default:
         script: '"Windows_Client"'
   - where:
-      subject: Pool
-      parameter-name: StopOnDisconnectGracePeriodMinute
-    hide: true
-  - where:
-      subject: Pool
-      parameter-name: StopOnDisconnectStatus
-    hide: true
-  - where:
       subject: DevCenter
       parameter-name: CustomerManagedKeyEncryptionKeyUrl
     hide: true
