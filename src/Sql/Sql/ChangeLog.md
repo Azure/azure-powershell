@@ -19,6 +19,7 @@
 -->
 ## Upcoming Release
 * Added new parameters `MaintenanceConfigurationId`, `DnsZone` to `AzSqlInstancePool` cmdlets
+* Add "1.3" into set of valid TLS versions and made TLS 1.2 default wheb creating server.
 
 ## Version 4.11.0
 * Added new parameters to `New-AzSqlDatabaseFailoverGroup`, `Set-AzSqlDatabaseFailoverGroup`

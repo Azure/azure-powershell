@@ -90,8 +90,8 @@ namespace Microsoft.Azure.Commands.Sql.Server.Cmdlet
         /// </summary>
         [Parameter(Mandatory = false,
             HelpMessage = "The Minimal Tls Version for the Sql Azure Managed Instance. Options are: 1.0, 1.1 and 1.2 ")]
-        [ValidateSet("None", "1.0", "1.1", "1.2")]
-        [PSArgumentCompleter("None", "1.0", "1.1", "1.2")]
+        [ValidateSet("None", "1.0", "1.1", "1.2", "1.3")]
+        [PSArgumentCompleter("None", "1.0", "1.1", "1.2", "1.3")]
         public string MinimalTlsVersion { get; set; }
 
         /// <summary>
@@ -226,7 +226,7 @@ namespace Microsoft.Azure.Commands.Sql.Server.Cmdlet
                 SqlAdministratorLogin = (this.SqlAdministratorCredentials != null) ? this.SqlAdministratorCredentials.UserName : null,
                 Tags = TagsConversionHelper.CreateTagDictionary(Tags, validate: true),
                 Identity = ResourceIdentityHelper.GetIdentityObjectFromType(this.AssignIdentity.IsPresent, this.IdentityType ?? null, UserAssignedIdentityId, null),
-                MinimalTlsVersion = this.MinimalTlsVersion,
+                MinimalTlsVersion = (this.MinimalTlsVersion != null) ? this.MinimalTlsVersion : "1.2",
                 PublicNetworkAccess = this.PublicNetworkAccess,
                 RestrictOutboundNetworkAccess = this.RestrictOutboundNetworkAccess,
                 PrimaryUserAssignedIdentityId = this.PrimaryUserAssignedIdentityId,
