@@ -26,7 +26,8 @@ namespace Microsoft.Azure.Management.Sql
         /// Whether or not to only get the latest backup for each database.
         /// </param>
         /// <param name='databaseState'>
-        /// Whether to query against just live databases, just deleted databases, or all databases.
+        /// Whether to query against just live databases, just deleted databases, or
+        /// all databases.
         /// </param>
         /// <param name='customHeaders'>
         /// The headers that will be added to request.
@@ -58,7 +59,8 @@ namespace Microsoft.Azure.Management.Sql
         /// Whether or not to only get the latest backup for each database.
         /// </param>
         /// <param name='databaseState'>
-        /// Whether to query against just live databases, just deleted databases, or all databases.
+        /// Whether to query against just live databases, just deleted databases, or
+        /// all databases.
         /// </param>
         /// <param name='customHeaders'>
         /// The headers that will be added to request.
@@ -93,7 +95,8 @@ namespace Microsoft.Azure.Management.Sql
         /// Whether or not to only get the latest backup for each database.
         /// </param>
         /// <param name='databaseState'>
-        /// Whether to query against just live databases, just deleted databases, or all databases.
+        /// Whether to query against just live databases, just deleted databases, or
+        /// all databases.
         /// </param>
         /// <param name='customHeaders'>
         /// The headers that will be added to request.
@@ -276,13 +279,16 @@ namespace Microsoft.Azure.Management.Sql
         System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse<LongTermRetentionBackupOperationResult>> UpdateWithHttpMessagesAsync(string locationName, string longTermRetentionServerName, string longTermRetentionDatabaseName, string backupName, UpdateLongTermRetentionBackupParameters parameters, System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
 
         /// <summary>
-        /// Lists the long term retention backups for a given location based on resource group.
+        /// Lists the long term retention backups for a given location based on
+        /// resource group.
         /// </summary>
         /// <remarks>
-        /// Lists the long term retention backups for a given location based on resource group.
+        /// Lists the long term retention backups for a given location based on
+        /// resource group.
         /// </remarks>
         /// <param name='resourceGroupName'>
-        /// The name of the resource group that contains the resource. You can obtain this value from the Azure Resource Manager API or the portal.
+        /// The name of the resource group that contains the resource. You can obtain
+        /// this value from the Azure Resource Manager API or the portal.
         /// </param>
         /// <param name='locationName'>
         /// The location of the database
@@ -291,7 +297,8 @@ namespace Microsoft.Azure.Management.Sql
         /// Whether or not to only get the latest backup for each database.
         /// </param>
         /// <param name='databaseState'>
-        /// Whether to query against just live databases, just deleted databases, or all databases.
+        /// Whether to query against just live databases, just deleted databases, or
+        /// all databases.
         /// </param>
         /// <param name='customHeaders'>
         /// The headers that will be added to request.
@@ -308,13 +315,16 @@ namespace Microsoft.Azure.Management.Sql
         System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse<Microsoft.Rest.Azure.IPage<LongTermRetentionBackup>>> ListByResourceGroupLocationWithHttpMessagesAsync(string resourceGroupName, string locationName, bool? onlyLatestPerDatabase = default(bool?), string databaseState = default(string), System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
 
         /// <summary>
-        /// Lists the long term retention backups for a given server based on resource groups.
+        /// Lists the long term retention backups for a given server based on resource
+        /// groups.
         /// </summary>
         /// <remarks>
-        /// Lists the long term retention backups for a given server based on resource groups.
+        /// Lists the long term retention backups for a given server based on resource
+        /// groups.
         /// </remarks>
         /// <param name='resourceGroupName'>
-        /// The name of the resource group that contains the resource. You can obtain this value from the Azure Resource Manager API or the portal.
+        /// The name of the resource group that contains the resource. You can obtain
+        /// this value from the Azure Resource Manager API or the portal.
         /// </param>
         /// <param name='locationName'>
         /// The location of the database
@@ -326,7 +336,8 @@ namespace Microsoft.Azure.Management.Sql
         /// Whether or not to only get the latest backup for each database.
         /// </param>
         /// <param name='databaseState'>
-        /// Whether to query against just live databases, just deleted databases, or all databases.
+        /// Whether to query against just live databases, just deleted databases, or
+        /// all databases.
         /// </param>
         /// <param name='customHeaders'>
         /// The headers that will be added to request.
@@ -343,13 +354,16 @@ namespace Microsoft.Azure.Management.Sql
         System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse<Microsoft.Rest.Azure.IPage<LongTermRetentionBackup>>> ListByResourceGroupServerWithHttpMessagesAsync(string resourceGroupName, string locationName, string longTermRetentionServerName, bool? onlyLatestPerDatabase = default(bool?), string databaseState = default(string), System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
 
         /// <summary>
-        /// Lists all long term retention backups for a database based on a particular resource group.
+        /// Lists all long term retention backups for a database based on a particular
+        /// resource group.
         /// </summary>
         /// <remarks>
-        /// Lists all long term retention backups for a database based on a particular resource group.
+        /// Lists all long term retention backups for a database based on a particular
+        /// resource group.
         /// </remarks>
         /// <param name='resourceGroupName'>
-        /// The name of the resource group that contains the resource. You can obtain this value from the Azure Resource Manager API or the portal.
+        /// The name of the resource group that contains the resource. You can obtain
+        /// this value from the Azure Resource Manager API or the portal.
         /// </param>
         /// <param name='locationName'>
         /// The location of the database
@@ -364,7 +378,8 @@ namespace Microsoft.Azure.Management.Sql
         /// Whether or not to only get the latest backup for each database.
         /// </param>
         /// <param name='databaseState'>
-        /// Whether to query against just live databases, just deleted databases, or all databases.
+        /// Whether to query against just live databases, just deleted databases, or
+        /// all databases.
         /// </param>
         /// <param name='customHeaders'>
         /// The headers that will be added to request.
@@ -387,7 +402,8 @@ namespace Microsoft.Azure.Management.Sql
         /// Gets a long term retention backup.
         /// </remarks>
         /// <param name='resourceGroupName'>
-        /// The name of the resource group that contains the resource. You can obtain this value from the Azure Resource Manager API or the portal.
+        /// The name of the resource group that contains the resource. You can obtain
+        /// this value from the Azure Resource Manager API or the portal.
         /// </param>
         /// <param name='locationName'>
         /// The location of the database.
@@ -422,7 +438,8 @@ namespace Microsoft.Azure.Management.Sql
         /// Deletes a long term retention backup.
         /// </remarks>
         /// <param name='resourceGroupName'>
-        /// The name of the resource group that contains the resource. You can obtain this value from the Azure Resource Manager API or the portal.
+        /// The name of the resource group that contains the resource. You can obtain
+        /// this value from the Azure Resource Manager API or the portal.
         /// </param>
         /// <param name='locationName'>
         /// The location of the database
@@ -454,7 +471,8 @@ namespace Microsoft.Azure.Management.Sql
         /// Change a long term retention backup access tier.
         /// </remarks>
         /// <param name='resourceGroupName'>
-        /// The name of the resource group that contains the resource. You can obtain this value from the Azure Resource Manager API or the portal.
+        /// The name of the resource group that contains the resource. You can obtain
+        /// this value from the Azure Resource Manager API or the portal.
         /// </param>
         /// <param name='locationName'>
         /// 
@@ -492,7 +510,8 @@ namespace Microsoft.Azure.Management.Sql
         /// Copy an existing long term retention backup to a different server.
         /// </remarks>
         /// <param name='resourceGroupName'>
-        /// The name of the resource group that contains the resource. You can obtain this value from the Azure Resource Manager API or the portal.
+        /// The name of the resource group that contains the resource. You can obtain
+        /// this value from the Azure Resource Manager API or the portal.
         /// </param>
         /// <param name='locationName'>
         /// The location of the database.
@@ -530,7 +549,8 @@ namespace Microsoft.Azure.Management.Sql
         /// Updates an existing long term retention backup.
         /// </remarks>
         /// <param name='resourceGroupName'>
-        /// The name of the resource group that contains the resource. You can obtain this value from the Azure Resource Manager API or the portal.
+        /// The name of the resource group that contains the resource. You can obtain
+        /// this value from the Azure Resource Manager API or the portal.
         /// </param>
         /// <param name='locationName'>
         /// The location of the database.
@@ -702,7 +722,8 @@ namespace Microsoft.Azure.Management.Sql
         /// Deletes a long term retention backup.
         /// </remarks>
         /// <param name='resourceGroupName'>
-        /// The name of the resource group that contains the resource. You can obtain this value from the Azure Resource Manager API or the portal.
+        /// The name of the resource group that contains the resource. You can obtain
+        /// this value from the Azure Resource Manager API or the portal.
         /// </param>
         /// <param name='locationName'>
         /// The location of the database
@@ -734,7 +755,8 @@ namespace Microsoft.Azure.Management.Sql
         /// Change a long term retention backup access tier.
         /// </remarks>
         /// <param name='resourceGroupName'>
-        /// The name of the resource group that contains the resource. You can obtain this value from the Azure Resource Manager API or the portal.
+        /// The name of the resource group that contains the resource. You can obtain
+        /// this value from the Azure Resource Manager API or the portal.
         /// </param>
         /// <param name='locationName'>
         /// 
@@ -772,7 +794,8 @@ namespace Microsoft.Azure.Management.Sql
         /// Copy an existing long term retention backup to a different server.
         /// </remarks>
         /// <param name='resourceGroupName'>
-        /// The name of the resource group that contains the resource. You can obtain this value from the Azure Resource Manager API or the portal.
+        /// The name of the resource group that contains the resource. You can obtain
+        /// this value from the Azure Resource Manager API or the portal.
         /// </param>
         /// <param name='locationName'>
         /// The location of the database.
@@ -810,7 +833,8 @@ namespace Microsoft.Azure.Management.Sql
         /// Updates an existing long term retention backup.
         /// </remarks>
         /// <param name='resourceGroupName'>
-        /// The name of the resource group that contains the resource. You can obtain this value from the Azure Resource Manager API or the portal.
+        /// The name of the resource group that contains the resource. You can obtain
+        /// this value from the Azure Resource Manager API or the portal.
         /// </param>
         /// <param name='locationName'>
         /// The location of the database.
@@ -911,10 +935,12 @@ namespace Microsoft.Azure.Management.Sql
         System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse<Microsoft.Rest.Azure.IPage<LongTermRetentionBackup>>> ListByDatabaseNextWithHttpMessagesAsync(string nextPageLink, System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
 
         /// <summary>
-        /// Lists the long term retention backups for a given location based on resource group.
+        /// Lists the long term retention backups for a given location based on
+        /// resource group.
         /// </summary>
         /// <remarks>
-        /// Lists the long term retention backups for a given location based on resource group.
+        /// Lists the long term retention backups for a given location based on
+        /// resource group.
         /// </remarks>
         /// <param name='nextPageLink'>
         /// The NextLink from the previous successful call to List operation.
@@ -934,10 +960,12 @@ namespace Microsoft.Azure.Management.Sql
         System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse<Microsoft.Rest.Azure.IPage<LongTermRetentionBackup>>> ListByResourceGroupLocationNextWithHttpMessagesAsync(string nextPageLink, System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
 
         /// <summary>
-        /// Lists the long term retention backups for a given server based on resource groups.
+        /// Lists the long term retention backups for a given server based on resource
+        /// groups.
         /// </summary>
         /// <remarks>
-        /// Lists the long term retention backups for a given server based on resource groups.
+        /// Lists the long term retention backups for a given server based on resource
+        /// groups.
         /// </remarks>
         /// <param name='nextPageLink'>
         /// The NextLink from the previous successful call to List operation.
@@ -957,10 +985,12 @@ namespace Microsoft.Azure.Management.Sql
         System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse<Microsoft.Rest.Azure.IPage<LongTermRetentionBackup>>> ListByResourceGroupServerNextWithHttpMessagesAsync(string nextPageLink, System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
 
         /// <summary>
-        /// Lists all long term retention backups for a database based on a particular resource group.
+        /// Lists all long term retention backups for a database based on a particular
+        /// resource group.
         /// </summary>
         /// <remarks>
-        /// Lists all long term retention backups for a database based on a particular resource group.
+        /// Lists all long term retention backups for a database based on a particular
+        /// resource group.
         /// </remarks>
         /// <param name='nextPageLink'>
         /// The NextLink from the previous successful call to List operation.
