@@ -303,7 +303,8 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Common
                     }
                     else
                     {
-                        throw new InvalidOperationException("Could not get the storage context.  Please pass in a storage context or set the current storage context.");
+                        throw new InvalidOperationException("Could not get the storage context. Please pass in a storage context with \"-Context\" parameter (can be created with New-AzStorageContext cmdlet), " +
+                            "or set the current storage context with Set-AzCurrentStorageAccount cmdlet.");
                     }
                 }
                 catch (Exception e)

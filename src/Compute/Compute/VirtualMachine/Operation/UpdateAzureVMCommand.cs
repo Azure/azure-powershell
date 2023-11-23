@@ -104,6 +104,12 @@ namespace Microsoft.Azure.Commands.Compute
         public string ProximityPlacementGroupId { get; set; }
 
         [Parameter(
+            Mandatory = false,
+            HelpMessage = "Attached Virtual Machine Scale Set Id.")]
+        [AllowEmptyString]
+        public string VirtualMachineScaleSetId { get; set; }
+
+        [Parameter(
             ValueFromPipelineByPropertyName = true,
             HelpMessage = "The Id of Host")]
         public string HostId { get; set; }
@@ -223,7 +229,9 @@ namespace Microsoft.Azure.Commands.Compute
                         Host = this.IsParameterBound(c => c.HostId)
                              ? new SubResource(this.HostId)
                              : this.VM.Host,
-                        VirtualMachineScaleSet = this.VM.VirtualMachineScaleSet,
+                        VirtualMachineScaleSet = this.IsParameterBound(c => c.VirtualMachineScaleSetId)
+                                                ? new SubResource(this.VirtualMachineScaleSetId)
+                                                : this.VM.VirtualMachineScaleSet,
                         AdditionalCapabilities = this.VM.AdditionalCapabilities,
                         EvictionPolicy = this.VM.EvictionPolicy,
                         Priority = this.VM.Priority,
@@ -242,6 +250,12 @@ namespace Microsoft.Azure.Commands.Compute
                     if (parameters.ProximityPlacementGroup != null && string.IsNullOrWhiteSpace(parameters.ProximityPlacementGroup.Id))
                     {
                         parameters.ProximityPlacementGroup.Id = null;
+                    }
+
+                    // when vm.virtualMachineScaleSet.Id is set to null, powershell interprets it as empty so converting it back to null
+                    if (parameters.VirtualMachineScaleSet != null && string.IsNullOrWhiteSpace(parameters.VirtualMachineScaleSet.Id))
+                    {
+                        parameters.VirtualMachineScaleSet.Id = null;
                     }
 
                     if (this.IsParameterBound(c => c.IdentityType))

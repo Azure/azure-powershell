@@ -1,21 +1,9 @@
 {
     "Linux":  {
-                  "CentOS":  {
-                                 "publisher":  "OpenLogic",
-                                 "offer":  "CentOS",
-                                 "sku":  "7.5",
-                                 "version":  "latest"
-                             },
                   "CentOS85Gen2":  {
                                  "publisher":  "OpenLogic",
                                  "offer":  "CentOS",
                                  "sku":  "8_5-gen2",
-                                 "version":  "latest"
-                             },
-                  "Debian":  {
-                                 "publisher":  "credativ",
-                                 "offer":  "Debian",
-                                 "sku":  "8",
                                  "version":  "latest"
                              },
                   "Debian11":  {
@@ -30,12 +18,6 @@
                                         "sku":  "gen2",
                                         "version":  "latest"
                                     },
-                  "RHEL":  {
-                               "publisher":  "RedHat",
-                               "offer":  "RHEL",
-                               "sku":  "7-RAW",
-                               "version":  "latest"
-                           },
                   "RHELRaw8LVMGen2":  {
                                "publisher":  "RedHat",
                                "offer":  "RHEL",
@@ -48,12 +30,6 @@
                                "sku":  "gen2",
                                "version":  "latest"
                            },
-                  "UbuntuLTS":  {
-                                    "publisher":  "Canonical",
-                                    "offer":  "UbuntuServer",
-                                    "sku":  "16.04-LTS",
-                                    "version":  "latest"
-                                },
                   "Ubuntu2204":  {
                                     "publisher":  "Canonical",
                                     "offer":  "0001-com-ubuntu-server-jammy",
@@ -68,6 +44,12 @@
                                 }
     },
   "Windows": {
+    "Win2022AzureEdition": {
+      "publisher": "MicrosoftWindowsServer",
+      "offer": "WindowsServer",
+      "sku": "2022-datacenter-azure-edition",
+      "version": "latest"
+    },
     "Win2022AzureEditionCore": {
       "publisher": "MicrosoftWindowsServer",
       "offer": "WindowsServer",

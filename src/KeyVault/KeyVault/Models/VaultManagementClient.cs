@@ -12,19 +12,21 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Net;
 using Microsoft.Azure.Commands.Common.Authentication;
+using Microsoft.Azure.Commands.Common.Authentication.Abstractions;
+using Microsoft.Azure.Commands.Common.MSGraph.Version1_0;
 using Microsoft.Azure.Commands.ResourceManager.Common.Tags;
 using Microsoft.Azure.Management.KeyVault;
-using PSKeyVaultProperties = Microsoft.Azure.Commands.KeyVault.Properties;
 using Microsoft.Azure.Management.KeyVault.Models;
-using Microsoft.Azure.Commands.Common.Authentication.Abstractions;
 using Microsoft.Rest.Azure;
+
+using System;
+using System.Collections.Generic;
 using System.ComponentModel;
-using Microsoft.Azure.Commands.Common.MSGraph.Version1_0;
+using System.Linq;
+using System.Net;
+
+using PSKeyVaultProperties = Microsoft.Azure.Commands.KeyVault.Properties;
 
 namespace Microsoft.Azure.Commands.KeyVault.Models
 {
@@ -460,6 +462,7 @@ namespace Microsoft.Azure.Commands.KeyVault.Models
                     properties.NetworkAcls.DefaultAction = NetworkRuleAction.Deny.ToString();
                 }
 
+                ManagedServiceIdentity managedServiceIdentity = parameters.ManagedServiceIdentity;
                 response = KeyVaultManagementClient.ManagedHsms.CreateOrUpdate(
                     resourceGroupName: parameters.ResourceGroupName,
                     name: parameters.Name,
@@ -468,7 +471,8 @@ namespace Microsoft.Azure.Commands.KeyVault.Models
                         Location = parameters.Location,
                         Sku = managedHsmSku,
                         Tags = TagsConversionHelper.CreateTagDictionary(parameters.Tags, validate: true),
-                        Properties = properties
+                        Properties = properties,
+                        Identity = managedServiceIdentity
                     });
             }
             else
@@ -650,7 +654,8 @@ namespace Microsoft.Azure.Commands.KeyVault.Models
                         Name = (ManagedHsmSkuName)Enum.Parse(typeof(ManagedHsmSkuName), existingManagedHsm.Sku)
                     },
                     Tags = TagsConversionHelper.CreateTagDictionary(parameters.Tags, validate: true),
-                    Properties = properties
+                    Properties = properties,
+                    Identity = parameters.ManagedServiceIdentity
                 });
 
             return new PSManagedHsm(response, graphClient);

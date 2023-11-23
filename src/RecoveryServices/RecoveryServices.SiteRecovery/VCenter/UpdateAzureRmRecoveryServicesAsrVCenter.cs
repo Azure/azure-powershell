@@ -106,7 +106,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery
                  new UpdateVCenterRequestProperties()
                  {
                      FriendlyName = vcenterResponse.Properties.FriendlyName,
-                     IpAddress = vcenterResponse.Properties.IpAddress,
+                     IPAddress = vcenterResponse.Properties.IPAddress,
                      ProcessServerId = vcenterResponse.Properties.ProcessServerId,
                      Port = vcenterResponse.Properties.Port,
                      RunAsAccountId = vcenterResponse.Properties.RunAsAccountId

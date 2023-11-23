@@ -32,7 +32,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.ServiceClient
         /// <param name="resourceGroupName"></param>
         /// <returns>List of protectable items</returns>
         public List<WorkloadProtectableItemResource> ListProtectableItem(
-            ODataQuery<BMSPOQueryObject> queryFilter,
+            ODataQuery<BmspoQueryObject> queryFilter,
             string skipToken = default(string),
             string vaultName = null,
             string resourceGroupName = null)

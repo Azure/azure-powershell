@@ -19,6 +19,9 @@
 -->
 ## Upcoming Release
 
+## Version 3.1.2
+* Adjusted `Publish-AzWebApp` default behavior
+
 ## Version 3.1.1
 * Added support for XenonMV3 webapps
 

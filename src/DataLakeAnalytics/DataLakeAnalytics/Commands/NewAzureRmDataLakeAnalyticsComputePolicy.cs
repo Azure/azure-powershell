@@ -46,12 +46,12 @@ namespace Microsoft.Azure.Commands.DataLakeAnalytics
         public string Name { get; set; }
 
         [Parameter(ValueFromPipelineByPropertyName = true, Position = 2, Mandatory = true,
-            HelpMessage = "The Azure Active Directory object id for the user or group to apply the policy to.")]
+            HelpMessage = "The Microsoft Entra object id for the user or group to apply the policy to.")]
         [ValidateNotNull]
         public Guid ObjectId { get; set; }
 
         [Parameter(ValueFromPipelineByPropertyName = true, Position = 3, Mandatory = true,
-            HelpMessage = "The Azure Active Directory object type for the object ID passed in.")]
+            HelpMessage = "The Microsoft Entra object type for the object ID passed in.")]
         [ValidateNotNull]
         [ValidateSet("User", "Group", "ServicePrincipal", IgnoreCase = true)]
         public string ObjectType { get; set; }

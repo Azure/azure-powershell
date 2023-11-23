@@ -8,7 +8,7 @@ schema: 2.0.0
 # Remove-AzSynapseSqlActiveDirectoryAdministrator
 
 ## SYNOPSIS
-Removes an Azure AD administrator for Synapse Analytics Workspace.
+Removes a Microsoft Entra administrator for Synapse Analytics Workspace.
 
 ## SYNTAX
 
@@ -32,7 +32,7 @@ Remove-AzSynapseSqlActiveDirectoryAdministrator -ResourceId <String> [-PassThru]
 ```
 
 ## DESCRIPTION
-The **Remove-AzSynapseSqlActiveDirectoryAdministrator** cmdlet removes an Azure Active Directory (Azure AD) administrator for Azure Synapse Analytics Workspace.
+The **Remove-AzSynapseSqlActiveDirectoryAdministrator** cmdlet removes a Microsoft Entra administrator for Azure Synapse Analytics Workspace.
 
 ## EXAMPLES
 
@@ -41,7 +41,7 @@ The **Remove-AzSynapseSqlActiveDirectoryAdministrator** cmdlet removes an Azure 
 Remove-AzSynapseSqlActiveDirectoryAdministrator -WorkspaceName ContosoWorkspace
 ```
 
-This command removes the Azure AD administrator for the workspace named ContosoWorkspace.
+This command removes the Microsoft Entra administrator for the workspace named ContosoWorkspace.
 
 ## PARAMETERS
 

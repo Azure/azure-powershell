@@ -135,8 +135,8 @@ namespace Microsoft.Azure.Commands.EventGrid.Utilities
         public const string MaxEventsPerBatchHelp = "The maximum number of events in a batch. This value must be between 1 and 5000. This parameter is valid when Endpint Type is webhook only.";
         public const string PreferredBatchSizeInKiloByteHelp = "The preferred batch size in kilobytes. This value must be between 1 and 1024. This parameter is valid when Endpint Type is webhook only.";
 
-        public const string AzureActiveDirectoryTenantIdHelp = "The Azure Active Directory (AAD) Tenant Id to get the access token that will be included as the bearer token in delivery requests.Applicable only for webhook as a destination.";
-        public const string AzureActiveDirectoryApplicationIdOrUriHelp = "The Azure Active Directory (AAD) Application Id or Uri to get the access token that will be included as the bearer token in delivery requests.Applicable only for webhook as a destination.";
+        public const string AzureActiveDirectoryTenantIdHelp = "The Microsoft Entra Tenant Id to get the access token that will be included as the bearer token in delivery requests.Applicable only for webhook as a destination.";
+        public const string AzureActiveDirectoryApplicationIdOrUriHelp = "The Microsoft Entra Application Id or Uri to get the access token that will be included as the bearer token in delivery requests.Applicable only for webhook as a destination.";
 
         public const string InboundIpRuleHelp = "Hashtable which represents list of inbound IP rules. Each rule specifies the IP Address in CIDR notation e.g., 10.0.0.0/8 along with the corresponding Action to be performed based on the match or no match of the IpMask. Possible Action values include Allow only";
         public const string PublicNetworkAccessHelp = "This determines if traffic is allowed over public network. By default it is enabled. You can further restrict to specific IPs by configuring InboundIpRule parameters. Allowed values are disabled and enabled.";

@@ -14,11 +14,12 @@
 
 namespace Microsoft.WindowsAzure.Commands.Storage.Queue.Cmdlet
 {
+    using global::Azure.Storage.Queues;
+    using global::Azure.Storage.Queues.Models;
     using Microsoft.WindowsAzure.Commands.Storage.Common;
     using Microsoft.WindowsAzure.Commands.Storage.Model.Contract;
-    using Microsoft.Azure.Storage.Queue;
-    using Microsoft.Azure.Storage.Queue.Protocol;
     using System;
+    using System.Collections.Generic;
     using System.Globalization;
     using System.Management.Automation;
     using System.Security.Permissions;
@@ -66,33 +67,6 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Queue.Cmdlet
             EnableMultiThread = false;
         }
 
-        internal string CreateAzureQueueStoredAccessPolicy(IStorageQueueManagement localChannel, string queueName, string policyName, DateTime? startTime, DateTime? expiryTime, string permission)
-        {
-
-            if (!NameUtil.IsValidStoredAccessPolicyName(policyName))
-            {
-                throw new ArgumentException(String.Format(CultureInfo.CurrentCulture, Resources.InvalidAccessPolicyName, policyName));
-            }
-
-            //Get existing permissions
-            CloudQueue queue = Channel.GetQueueReference(queueName);
-            QueuePermissions queuePermissions = localChannel.GetPermissions(queue, this.RequestOptions, this.OperationContext);
-
-            //Add new policy
-            if (queuePermissions.SharedAccessPolicies.Keys.Contains(policyName))
-            {
-                throw new ResourceAlreadyExistException(String.Format(CultureInfo.CurrentCulture, Resources.PolicyAlreadyExists, policyName));
-            }
-
-            SharedAccessQueuePolicy policy = new SharedAccessQueuePolicy();
-            AccessPolicyHelper.SetupAccessPolicy<SharedAccessQueuePolicy>(policy, startTime, expiryTime, permission);
-            queuePermissions.SharedAccessPolicies.Add(policyName, policy);
-
-            //Set permissions back to queue
-            localChannel.SetPermissions(queue, queuePermissions, null, OperationContext);
-            return policyName;
-        }
-
         /// <summary>
         /// Execute command
         /// </summary>
@@ -100,10 +74,43 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Queue.Cmdlet
         public override void ExecuteCmdlet()
         {
             if (String.IsNullOrEmpty(Queue) || String.IsNullOrEmpty(Policy)) return;
-            string resultPolicy = CreateAzureQueueStoredAccessPolicy(Channel, Queue, Policy, StartTime, ExpiryTime, Permission);
-            WriteObject(resultPolicy);
+
+            QueueClient queueClient = Util.GetTrack2QueueClient(this.Queue, (AzureStorageContext)this.Context, this.ClientOptions);
+            IEnumerable<QueueSignedIdentifier> signedIdentifiers = queueClient.GetAccessPolicy(cancellationToken: CmdletCancellationToken).Value;
+
+            // Check if the policy already exists
+            foreach (QueueSignedIdentifier identifier in signedIdentifiers)
+            {
+                if (identifier.Id == this.Policy)
+                {
+                    throw new ResourceAlreadyExistException(String.Format(CultureInfo.CurrentCulture, Resources.PolicyAlreadyExists, this.Policy));
+                }
+            }
+
+            QueueSignedIdentifier signedIdentifier = new QueueSignedIdentifier();
+            signedIdentifier.Id = this.Policy;
+            signedIdentifier.AccessPolicy = new QueueAccessPolicy();
+            if (this.StartTime != null)
+            {
+                signedIdentifier.AccessPolicy.StartsOn = this.StartTime;
+            }
+            if (this.ExpiryTime != null)
+            {
+                signedIdentifier.AccessPolicy.ExpiresOn = this.ExpiryTime;
+            }
+            if (!string.IsNullOrEmpty(this.Permission))
+            {
+                signedIdentifier.AccessPolicy.Permissions = AccessPolicyHelper.OrderQueuePermission(this.Permission);
+            }
+
+            List<QueueSignedIdentifier> newSignedIdentifiers = new List<QueueSignedIdentifier>(signedIdentifiers)
+            {
+                signedIdentifier
+            };
+
+            queueClient.SetAccessPolicy(newSignedIdentifiers);
+
+            WriteObject(this.Policy);
         }
-
-
     }
 }

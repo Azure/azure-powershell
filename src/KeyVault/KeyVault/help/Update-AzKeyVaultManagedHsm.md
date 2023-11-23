@@ -15,22 +15,24 @@ Update the state of an Azure managed HSM.
 ### UpdateByNameParameterSet (Default)
 ```
 Update-AzKeyVaultManagedHsm -Name <String> -ResourceGroupName <String> [-EnablePurgeProtection]
- [-PublicNetworkAccess <String>] [-Tag <Hashtable>] [-DefaultProfile <IAzureContextContainer>] [-WhatIf]
- [-Confirm] [-SubscriptionId <String>] [<CommonParameters>]
+ [-PublicNetworkAccess <String>] [-UserAssignedIdentity <String[]>] [-Tag <Hashtable>]
+ [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [-SubscriptionId <String>]
+ [<CommonParameters>]
 ```
 
 ### UpdateByInputObjectParameterSet
 ```
 Update-AzKeyVaultManagedHsm -InputObject <PSManagedHsm> [-EnablePurgeProtection]
- [-PublicNetworkAccess <String>] [-Tag <Hashtable>] [-DefaultProfile <IAzureContextContainer>] [-WhatIf]
- [-Confirm] [-SubscriptionId <String>] [<CommonParameters>]
+ [-PublicNetworkAccess <String>] [-UserAssignedIdentity <String[]>] [-Tag <Hashtable>]
+ [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [-SubscriptionId <String>]
+ [<CommonParameters>]
 ```
 
 ### UpdateByResourceIdParameterSet
 ```
 Update-AzKeyVaultManagedHsm -ResourceId <String> [-EnablePurgeProtection] [-PublicNetworkAccess <String>]
- [-Tag <Hashtable>] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [-SubscriptionId <String>]
- [<CommonParameters>]
+ [-UserAssignedIdentity <String[]>] [-Tag <Hashtable>] [-DefaultProfile <IAzureContextContainer>] [-WhatIf]
+ [-Confirm] [-SubscriptionId <String>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -97,6 +99,37 @@ Tags                                :
 ```
 
 Enables purge protection for the managed Hsm named `$hsmName` in resource group `$resourceGroupName`.
+
+### Example 4: Update user assigned identity for a managed Hsm
+```powershell
+Update-AzKeyVaultManagedHsm -Name testmhsm -ResourceGroupName test-rg -UserAssignedIdentity /subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx/resourceGroups/bez-rg/providers/Microsoft.ManagedIdentity/userAssignedIdentities/bez-id02 | Format-List
+```
+
+```output
+Managed HSM Name                        : testmshm
+Resource Group Name                     : test-rg
+Location                                : eastus2euap
+Resource ID                             : /subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx/resourceGroups/test-rg/pro
+                                          viders/Microsoft.KeyVault/managedHSMs/testmhsm
+HSM Pool URI                            :
+Tenant ID                               : xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx
+Initial Admin Object Ids                : {xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx}
+SKU                                     : StandardB1
+Soft Delete Enabled?                    : True
+Enabled Purge Protection?               : False
+Soft Delete Retention Period (days)     : 70
+Public Network Access                   : Enabled
+IdentityType                            : UserAssigned
+UserAssignedIdentities                  : /subscriptions/xxxx/resourceGroups/xxxx/providers/Microsoft.ManagedIdentity/userAssignedIdentities/identityName
+Provisioning State                      : Succeeded
+Status Message                          : The Managed HSM is provisioned and ready to use.
+Security Domain ActivationStatus        : Active
+Security Domain ActivationStatusMessage : Your HSM has been activated and can be used for cryptographic operations.
+Regions                                 : 
+Tags
+```
+
+This command adds an user assigned identity for the managed Hsm named `testmshm` in resource group `test-rg`.
 
 ## PARAMETERS
 
@@ -234,6 +267,21 @@ Required: False
 Position: Named
 Default value: None
 Accept pipeline input: True (ByPropertyName)
+Accept wildcard characters: False
+```
+
+### -UserAssignedIdentity
+The set of user assigned identities associated with the managed HSM. Its value will be ARM resource ids in the form: '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedIdentity/userAssignedIdentities/{identityName}'.
+
+```yaml
+Type: System.String[]
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
 Accept wildcard characters: False
 ```
 

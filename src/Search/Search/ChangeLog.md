@@ -19,6 +19,9 @@
 -->
 ## Upcoming Release
 
+## Version 0.10.0
+* Added support for semantic search option
+
 ## Version 0.9.0
 * Added support for RBAC authentication
 

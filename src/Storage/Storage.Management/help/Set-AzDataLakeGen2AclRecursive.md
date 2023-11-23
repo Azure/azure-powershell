@@ -45,6 +45,8 @@ This command first creates an ACL object with 3 acl entries, then sets ACL recur
 
 ### Example 2: Set ACL recursively on a root directory of filesystem
 <!-- Skip: Output cannot be splitted from code -->
+
+
 ```
 PS C:\> $result = Set-AzDataLakeGen2AclRecursive -FileSystem "filesystem1" -Acl $acl  -Context $ctx
 
@@ -79,6 +81,8 @@ This command first sets ACL recursively to a root directory and failed, then res
 
 ### Example 3: Set ACL recursively chunk by chunk
 <!-- Skip: Output cannot be splitted from code -->
+
+
 ```powershell
 $token = $null
 $TotalDirectoriesSuccess = 0
@@ -109,6 +113,8 @@ This script sets ACL rescursively on directory chunk by chunk, with chunk size a
 
 ### Example 4: Set ACL recursively on a directory and ContinueOnFailure, then resume from failures one by one
 <!-- Skip: Output cannot be splitted from code -->
+
+
 ```
 PS C:\> $result = Set-AzDataLakeGen2AclRecursive -FileSystem "filesystem1" -Path "dir1" -Acl $acl -ContinueOnFailure -Context $ctx
 
@@ -329,7 +335,7 @@ Accept wildcard characters: False
 ```
 
 ### CommonParameters
-This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable. For more information, see about_CommonParameters (http://go.microsoft.com/fwlink/?LinkID=113216).
+This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable. For more information, see [about_CommonParameters](http://go.microsoft.com/fwlink/?LinkID=113216).
 
 ## INPUTS
 

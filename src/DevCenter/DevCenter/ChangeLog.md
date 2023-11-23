@@ -19,6 +19,8 @@
 -->
 ## Upcoming Release
 
+## Version 1.0.0
+* General availability for module Az.DevCenter
+
 ## Version 0.1.0
 * First preview release for module Az.DevCenter
-

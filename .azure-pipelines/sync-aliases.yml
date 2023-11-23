@@ -1,4 +1,4 @@
-# Variable 'BotAccessToken', 'KeyVaultName' and 'ADOTokenName' was defined in the Variables tab
+# Variable 'KeyVaultName' and 'ADOTokenName' was defined in the Variables tab
 schedules:
 - cron: "50 15 * * *"
   displayName: 11:50 PM (UTC + 8:00) China Daily Run
@@ -13,26 +13,24 @@ jobs:
 
   steps:
   - task: UseDotNet@2
-    displayName: Install .NET 7 SDK
+    displayName: Install .NET 8 SDK
     inputs:
       packageType: sdk
-      version: 7.0.x
+      version: 8.0.x
+  - template: util/get-github-pat-steps.yml
 
   - pwsh: |
       dotnet --version
       dotnet new tool-manifest --force
-      dotnet tool install powershell
-    displayName: Install Latest PowerShell (7.3+)
+      dotnet tool install powershell --version 7.4.*
+    displayName: Install PowerShell 7.4.x
 
-  - task: AzurePowerShell@5
-    inputs:
-      azureSubscription: 'Azure SDK Infrastructure'
-      ScriptType: 'InlineScript'
-      Inline: |
-        $ADOTokenValue = Get-AzKeyVaultSecret -VaultName ${env:KEYVAULTNAME} -Name ${env:ADOTOKENNAME} -AsPlainText
-        Write-Host "##vso[task.setvariable variable=ADOToken;issecret=true]$ADOTokenValue"
-      azurePowerShellVersion: 'LatestVersion'
-    displayName: Get ADOToken from Key Vault
+  - template: util/get-keyvault-secret-steps.yml
+    parameters:
+      serviceConnectionName: $(AzureSubscription)
+      keyVaultName: $(KeyVaultName)
+      secretName: $(ADOTokenName)
+      outVar: 'ADOToken'
 
   - pwsh: |
       dotnet tool run pwsh -NoLogo -NoProfile -NonInteractive -File "./tools/Github/ParseServiceContactsList.ps1 -ADOToken $(ADOToken)"
@@ -57,7 +55,7 @@ jobs:
       git add .github/policies
       git commit -m "Sync resourceManagement.yml"
 
-      git remote set-url origin https://azure-powershell-bot:$(BotAccessToken)@github.com/Azure/azure-powershell.git;
+      git remote set-url origin https://azure-powershell-bot:$(GithubToken)@github.com/Azure/azure-powershell.git;
       git push origin internal/sync-resourcemanagement-yml --force
     displayName: Git commit and push
     condition: and(succeeded(), eq(variables['ChangesDetected'], 'true'))
@@ -67,6 +65,6 @@ jobs:
       $HeadBranch = "internal/sync-resourcemanagement-yml"
       $BaseBranch = "main"
       $Description = "This PR synchronizes the task: 'Triage issues to the service team' part of resourceManagement.yml from table of Service Contact List in ADO wiki page"
-      ./tools/Github/CreatePR.ps1 -Title $Title -HeadBranch $HeadBranch -BaseBranch $BaseBranch -BotAccessToken $(BotAccessToken) -Description $Description
+      ./tools/Github/CreatePR.ps1 -Title $Title -HeadBranch $HeadBranch -BaseBranch $BaseBranch -BotAccessToken $(GithubToken) -Description $Description
     displayName: Create PR to main branch
     condition: and(succeeded(), eq(variables['ChangesDetected'], 'true'))

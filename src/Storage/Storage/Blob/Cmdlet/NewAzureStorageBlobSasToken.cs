@@ -30,7 +30,6 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Blob.Cmdlet
     using global::Azure.Storage;
     using Microsoft.WindowsAzure.Commands.Common.CustomAttributes;
 
-    [GenericBreakingChangeWithVersion("The leading question mark '?' of the created SAS token will be removed in a future release.", "11.0.0", "6.0.0")]
     [Cmdlet("New", Azure.Commands.ResourceManager.Common.AzureRMConstants.AzurePrefix + "StorageBlobSASToken", DefaultParameterSetName = BlobNamePipelineParmeterSetWithPermission, SupportsShouldProcess = true), OutputType(typeof(String))]
     public class NewAzureStorageBlobSasTokenCommand : StorageCloudBlobCmdletBase
     {
@@ -182,7 +181,7 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Blob.Cmdlet
 
             // When the input context is Oauth bases, can't generate normal SAS, but UserDelegationSas
             bool generateUserDelegationSas = false;
-            if (Channel != null && Channel.StorageContext != null && Channel.StorageContext.StorageAccount.Credentials !=null && Channel.StorageContext.StorageAccount.Credentials.IsToken)
+            if (Channel != null && Channel.StorageContext != null && Channel.StorageContext.StorageAccount.Credentials != null && Channel.StorageContext.StorageAccount.Credentials.IsToken)
             {
                 if (ShouldProcess(blob.Name, "Generate User Delegation SAS, since input Storage Context is OAuth based."))
                 {
@@ -197,83 +196,42 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Blob.Cmdlet
                     return;
                 }
             }
-
-            if (!(blob is InvalidCloudBlob) && !UseTrack2Sdk())
+            //Get blob instance
+            BlobBaseClient blobClient;
+            if (this.BlobBaseClient != null)
             {
-
-                SharedAccessBlobPolicy accessPolicy = new SharedAccessBlobPolicy();
-                bool shouldSetExpiryTime = SasTokenHelper.ValidateContainerAccessPolicy(Channel, blob.Container.Name, accessPolicy, accessPolicyIdentifier);
-                SetupAccessPolicy(accessPolicy, shouldSetExpiryTime);
-                string sasToken = GetBlobSharedAccessSignature(blob, accessPolicy, accessPolicyIdentifier, Protocol, Util.SetupIPAddressOrRangeForSAS(IPAddressOrRange), generateUserDelegationSas);
-
-                if (FullUri)
-                {
-                    string fullUri = blob.SnapshotQualifiedUri.ToString();
-                    if (blob.IsSnapshot)
-                    {
-                        // Since snapshot URL already has '?', need remove '?' in the first char of sas
-                        fullUri = fullUri + "&" + sasToken.Substring(1);
-                    }
-                    else
-                    {
-                        fullUri = fullUri + sasToken;
-                    }
-                    WriteObject(fullUri);
-                }
-                else
-                {
-                    WriteObject(sasToken);
-                }
+                blobClient = this.BlobBaseClient;
             }
-            else // Use Track2 SDk
+            else
             {
-                //Get blob instance
-                BlobBaseClient blobClient;
-                if (this.BlobBaseClient != null)
-                {
-                    blobClient = this.BlobBaseClient;
-                }
-                else
-                {
-                    blobClient = AzureStorageBlob.GetTrack2BlobClient(blob, Channel.StorageContext, this.ClientOptions);
-                }
+                blobClient = AzureStorageBlob.GetTrack2BlobClient(blob, Channel.StorageContext, this.ClientOptions);
+            }
 
-                // Get contaienr saved policy if any
-                BlobSignedIdentifier identifier = null;
-                if (ParameterSetName == BlobNamePipelineParmeterSetWithPolicy || ParameterSetName == BlobPipelineParameterSetWithPolicy)
-                {
-                    BlobContainerClient container = AzureStorageContainer.GetTrack2BlobContainerClient(Channel.GetContainerReference(blobClient.BlobContainerName), Channel.StorageContext, ClientOptions);
-                    identifier = SasTokenHelper.GetBlobSignedIdentifier(container, this.Policy, CmdletCancellationToken);
-                }
+            // Get contaienr saved policy if any
+            BlobSignedIdentifier identifier = null;
+            if (ParameterSetName == BlobNamePipelineParmeterSetWithPolicy || ParameterSetName == BlobPipelineParameterSetWithPolicy)
+            {
+                BlobContainerClient container = AzureStorageContainer.GetTrack2BlobContainerClient(Channel.GetContainerReference(blobClient.BlobContainerName), Channel.StorageContext, ClientOptions);
+                identifier = SasTokenHelper.GetBlobSignedIdentifier(container, this.Policy, CmdletCancellationToken);
+            }
 
-                //Create SAS builder
-                BlobSasBuilder sasBuilder = SasTokenHelper.SetBlobSasBuilder_FromBlob(blobClient, identifier, this.Permission, this.StartTime, this.ExpiryTime, this.IPAddressOrRange, this.Protocol, this.EncryptionScope);                
+            //Create SAS builder
+            BlobSasBuilder sasBuilder = SasTokenHelper.SetBlobSasBuilder_FromBlob(blobClient, identifier, this.Permission, this.StartTime, this.ExpiryTime, this.IPAddressOrRange, this.Protocol, this.EncryptionScope);
 
-                //Create SAS and ourput
-                string sasToken = SasTokenHelper.GetBlobSharedAccessSignature(Channel.StorageContext, sasBuilder, generateUserDelegationSas, ClientOptions, CmdletCancellationToken);
-                if (sasToken[0] != '?')
-                {
-                    sasToken = "?" + sasToken;
-                }
+            //Create SAS and output
+            string sasToken = SasTokenHelper.GetBlobSharedAccessSignature(Channel.StorageContext, sasBuilder, generateUserDelegationSas, ClientOptions, CmdletCancellationToken);
+            
+            // remove prefix "?" of SAS if any
+            sasToken = Util.GetSASStringWithoutQuestionMark(sasToken);
 
-                if (FullUri)
-                {
-                    string fullUri = blobClient.Uri.ToString();
-                    if (blob.IsSnapshot)
-                    {
-                        // Since snapshot URL already has '?', need remove '?' in the first char of sas
-                        fullUri = fullUri + "&" + sasToken.Substring(1);
-                    }
-                    else
-                    {
-                        fullUri = fullUri + sasToken;
-                    }
-                    WriteObject(fullUri);
-                }
-                else
-                {
-                    WriteObject(sasToken);
-                }
+            if (FullUri)
+            {
+                string fullUri = SasTokenHelper.GetFullUriWithSASToken(blobClient.Uri.ToString(), sasToken);
+                WriteObject(fullUri);
+            }
+            else
+            {
+                WriteObject(sasToken);
             }
         }
 

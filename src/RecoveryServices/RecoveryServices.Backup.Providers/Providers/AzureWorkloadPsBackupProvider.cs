@@ -468,7 +468,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.ProviderModel
             AzureWorkloadSQLDatabaseProtectedItem azureWorkloadProtectedItem = item as AzureWorkloadSQLDatabaseProtectedItem;
             BackupRequestResource triggerBackupRequest = new BackupRequestResource();
             AzureWorkloadBackupRequest azureWorkloadBackupRequest = new AzureWorkloadBackupRequest();
-            azureWorkloadBackupRequest.RecoveryPointExpiryTimeInUTC = expiryDateTime;
+            azureWorkloadBackupRequest.RecoveryPointExpiryTimeInUtc = expiryDateTime;
             azureWorkloadBackupRequest.BackupType = backupType;
             azureWorkloadBackupRequest.EnableCompression = enableCompression;
             triggerBackupRequest.Properties = azureWorkloadBackupRequest;

@@ -9,7 +9,7 @@ schema: 2.0.0
 # Set-AzSqlServerActiveDirectoryAdministrator
 
 ## SYNOPSIS
-Provisions an Azure AD administrator for SQL Server.
+Provisions a Microsoft Entra administrator for SQL Server.
 
 ## SYNTAX
 
@@ -20,16 +20,16 @@ Set-AzSqlServerActiveDirectoryAdministrator [-DisplayName] <String> [[-ObjectId]
 ```
 
 ## DESCRIPTION
-The **Set-AzSqlServerActiveDirectoryAdministrator** cmdlet provisions an Azure Active Directory (Azure AD) administrator for AzureSQL Server in the current subscription.
+The **Set-AzSqlServerActiveDirectoryAdministrator** cmdlet provisions a Microsoft Entra administrator for AzureSQL Server in the current subscription.
 You can provision only one administrator at a time.
-The following members of Azure AD can be provisioned as a SQL Server administrator:
-- Native members of Azure AD 
-- Federated members of Azure AD 
+The following members of Microsoft Entra ID can be provisioned as a SQL Server administrator:
+- Native members of Microsoft Entra ID 
+- Federated members of Microsoft Entra ID 
 - Imported members from other Azure ADs who are native or federated members 
-- Azure AD groups created as security groups
+- Microsoft Entra groups created as security groups
 Microsoft accounts, such as those in the Outlook.com, Hotmail.com, or Live.com domains, are not supported as administrators.
 Other guest accounts, such as those in the Gmail.com or Yahoo.com domains, are not supported as administrators.
-We recommend that you provision a dedicated Azure AD group as an administrator.
+We recommend that you provision a dedicated Microsoft Entra group as an administrator.
 
 ## EXAMPLES
 
@@ -44,7 +44,7 @@ ResourceGroupName ServerName DisplayName ObjectId IsAzureADOnlyAuthentication
 ResourceGroup01   Server01   DBAs        40b79501-b343-44ed-9ce7-da4c8cc7353b False
 ```
 
-This command provisions an Azure AD administrator group named DBAs for the server named Server01.
+This command provisions a Microsoft Entra administrator group named DBAs for the server named Server01.
 This server is associated with resource group ResourceGroup01.
 
 ### Example 2: Provision an administrator user for a server
@@ -58,7 +58,7 @@ ResourceGroupName ServerName DisplayName ObjectId IsAzureADOnlyAuthentication
 resourcegroup01   server01   David Chew  11E95548-B179-4FE1-9AF4-ACA49D13ABB9 False
 ```
 
-This command provisions an Azure AD user as an administrator for the server named Server01.
+This command provisions a Microsoft Entra user as an administrator for the server named Server01.
 
 ### Example 3: Provision an administrator group by specifying its ID
 ```powershell
@@ -71,7 +71,7 @@ ResourceGroupName ServerName DisplayName ObjectId IsAzureADOnlyAuthentication
 ResourceGroup01   Server01   DBAs        40b79501-b343-44ed-9ce7-da4c8cc7353b False
 ```
 
-This command provisions an Azure AD administrator group named DBAs for the server named Server01.
+This command provisions a Microsoft Entra administrator group named DBAs for the server named Server01.
 The command specifies an ID for the *ObjectId* parameter.
 This makes sure that the command succeeds even if the display name of the group is not unique.
 
@@ -93,7 +93,7 @@ Accept wildcard characters: False
 ```
 
 ### -DisplayName
-Specifies the display name of the Azure AD administrator that this cmdlet provisions.
+Specifies the display name of the Microsoft Entra administrator that this cmdlet provisions.
 
 ```yaml
 Type: System.String
@@ -108,7 +108,7 @@ Accept wildcard characters: False
 ```
 
 ### -ObjectId
-Specifies the unique ID of the Azure AD administrator that this cmdlet provisions.
+Specifies the unique ID of the Microsoft Entra administrator that this cmdlet provisions.
 If the display name is not unique, you must specify a value for this parameter.
 
 ```yaml
@@ -208,5 +208,3 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 [Disable-AzSqlServerActiveDirectoryOnlyAuthentication](./Disable-AzSqlServerActiveDirectoryOnlyAuthentication.md)
 
 [SQL Database Documentation](https://learn.microsoft.com/azure/sql-database/)
-
-

@@ -172,7 +172,7 @@ Set-AzStorageAccount -ResourceGroupName "MyResourceGroup" -Name "mystorageaccoun
 
 The command upgrade a Storage account with Kind "Storage" or "BlobStorage" to "StorageV2" kind Storage account.
 
-### Example 10: Update a Storage account by enable Azure Files AAD DS Authentication and set DefaultSharePermission.
+### Example 10: Update a Storage account by enable Azure Files Microsoft Entra Domain Services Authentication and set DefaultSharePermission.
 ```powershell
 $account = Set-AzStorageAccount -ResourceGroupName "MyResourceGroup" -Name "mystorageaccount" -EnableAzureActiveDirectoryDomainServicesForFile $true -DefaultSharePermission StorageFileDataSmbShareContributor
 
@@ -185,7 +185,7 @@ DirectoryServiceOptions ActiveDirectoryProperties                               
 AADDS                   Microsoft.Azure.Commands.Management.Storage.Models.PSActiveDirectoryProperties StorageFileDataSmbShareContributor
 ```
 
-The command update a Storage account by enable Azure Files AAD DS Authentication.
+The command update a Storage account by enable Azure Files Microsoft Entra Domain Services Authentication.
 
 ### Example 11: Update a Storage account by enable Files Active Directory Domain Service Authentication, and then show the File Identity Based authentication setting
 <!-- Skip: Output cannot be splitted from code -->
@@ -605,7 +605,7 @@ Accept wildcard characters: False
 ```
 
 ### -AllowCrossTenantReplication
-Gets or sets allow or disallow cross AAD tenant object replication. The default interpretation is true for this property.
+Gets or sets allow or disallow cross Microsoft Entra tenant object replication. The default interpretation is true for this property.
 
 ```yaml
 Type: System.Boolean
@@ -620,7 +620,7 @@ Accept wildcard characters: False
 ```
 
 ### -AllowedCopyScope
-Set restrict copy to and from Storage Accounts within an AAD tenant or with Private Links to the same VNet. Possible values include: 'PrivateLink', 'AAD'
+Set restrict copy to and from Storage Accounts within a Microsoft Entra tenant or with Private Links to the same VNet. Possible values include: 'PrivateLink', 'AAD'
 
 ```yaml
 Type: System.String
@@ -635,7 +635,7 @@ Accept wildcard characters: False
 ```
 
 ### -AllowSharedKeyAccess
-Indicates whether the storage account permits requests to be authorized with the account access key via Shared Key. If false, then all requests, including shared access signatures, must be authorized with Azure Active Directory (Azure AD). The default value is null, which is equivalent to true.
+Indicates whether the storage account permits requests to be authorized with the account access key via Shared Key. If false, then all requests, including shared access signatures, must be authorized with Microsoft Entra ID. The default value is null, which is equivalent to true.
 
 ```yaml
 Type: System.Boolean

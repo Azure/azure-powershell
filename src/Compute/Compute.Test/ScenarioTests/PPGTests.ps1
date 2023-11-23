@@ -255,7 +255,8 @@ function Test-ProximityPlacementGroupVM
         $cred = New-Object System.Management.Automation.PSCredential ($user, $securePassword);
 
         # Create a virtual machine configuration
-        $p = New-AzVMConfig -VMName $vmName -VMSize Standard_A1 -ProximityPlacementGroupId $ppg.Id `
+        $stnd = "Standard";
+        $p = New-AzVMConfig -VMName $vmName -VMSize Standard_A1 -ProximityPlacementGroupId $ppg.Id -SecurityType $stnd `
                   | Set-AzVMOperatingSystem -Windows -ComputerName $vmName -Credential $cred `
                   | Add-AzVMNetworkInterface -Id $nic.Id;
 
@@ -359,6 +360,7 @@ function Test-PPGVMIntentAndZoneFeatures
         $vmIntentListUpdate3 = 'Standard_DS3_v2';
         $zone = '1';
         $zone2 = '2';
+        $stnd = "Standard";
 
         $proxgroup = New-AzProximityPlacementGroup -ResourceGroupName $rgname -Name $ppgname -Location $loc -Zone $zone -IntentVMSizeList $vmIntentList1, $vmIntentList2 ;
 
@@ -396,7 +398,7 @@ function Test-PPGVMIntentAndZoneFeatures
         $vmSize = 'Standard_D4ds_v5';
 
         # Create a virtual machine configuration
-        $p = New-AzVMConfig -VMName $vmName -VMSize $vmSize -ProximityPlacementGroupId $ppg.Id `
+        $p = New-AzVMConfig -VMName $vmName -VMSize $vmSize -ProximityPlacementGroupId $ppg.Id -SecurityType $stnd `
                   | Set-AzVMOperatingSystem -Windows -ComputerName $vmName -Credential $cred `
                   | Add-AzVMNetworkInterface -Id $nic.Id;
 
@@ -417,7 +419,7 @@ function Test-PPGVMIntentAndZoneFeatures
         
         # Create a virtual machine using Simple Parameter set.
         $domainNameLabel = "d" + $rgname;
-        New-AzVM -ResourceGroupName $rgname -Location $loc -name $vmname -credential $cred -DomainNameLabel $domainNameLabel -ProximityPlacementGroupId $ppg.Id ;
+        New-AzVM -ResourceGroupName $rgname -Location $loc -name $vmname -credential $cred -DomainNameLabel $domainNameLabel -ProximityPlacementGroupId $ppg.Id -SecurityType $stnd;
         $vm = Get-AzVM -ResourceGroupName $rgname -Name $vmName;
         Assert-AreEqual $ppg.Id $vm.ProximityPlacementGroup.Id;
     }

@@ -19,6 +19,9 @@
 -->
 ## Upcoming Release
 
+## Version 6.6.1
+* Fixed minor issues
+
 ## Version 6.6.0
 * Added support for custom RG with suffix while creating or modifying policy for workload type AzureVM.
 * Added TLaD warning https://aka.ms/TLaD for Azure Site Recovery and Backup.
