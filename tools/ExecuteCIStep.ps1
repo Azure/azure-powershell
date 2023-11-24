@@ -594,6 +594,8 @@ If ($StaticAnalysisGeneratedSdk)
         Write-Host "Running static analysis to verify generated sdk..."
         $result = .($PSScriptRoot + "/StaticAnalysis/GeneratedSdkAnalyzer/SDKGeneratedCodeVerify.ps1")
         Write-Host "Static analysis to verify generated sdk result: $result"
+        dotnet $RepoArtifacts/StaticAnalysis/StaticAnalysis.Netcore.dll -p $RepoArtifacts/$Configuration -r $StaticAnalysisOutputDirectory --analyzers generated-sdk -u -m $GeneratedSdkModuleList
+        
         If ($LASTEXITCODE -ne 0)
         {
             Return $LASTEXITCODE

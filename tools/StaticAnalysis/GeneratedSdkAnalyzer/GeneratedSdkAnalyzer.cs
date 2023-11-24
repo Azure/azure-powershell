@@ -75,14 +75,34 @@ namespace StaticAnalysis.GeneratedSdkAnalyzer
         }
 
         /// <summary>
-        /// These methods will be added in a new work item that has enhancements for Static Analysis tool
+        /// Given a set of directory paths containing PowerShell module folders, analyze the GeneratedSdk
+        /// in the module folders and report any issues
         /// </summary>
-        /// <param name="cmdletProbingDirs"></param>
-        /// <param name="directoryFilter"></param>
-        /// <param name="cmdletFilter"></param>
-        void IStaticAnalyzer.Analyze(IEnumerable<string> cmdletProbingDirs, Func<IEnumerable<string>, IEnumerable<string>> directoryFilter, Func<string, bool> cmdletFilter)
+        /// <param name="scopes"></param>
+        public void Analyze(IEnumerable<string> scopes, IEnumerable<string> modulesToAnalyze)
         {
-            throw new NotImplementedException();
+            var savedDirectory = Directory.GetCurrentDirectory();
+            var processedGeneratedSdkFiles = new List<string>();
+            var GeneratedSdkLogger = Logger.CreateLogger<GeneratedSdkIssue>("GeneratedSdkIssues.csv");
+            foreach (var baseDirectory in scopes.Where(s => Directory.Exists(Path.GetFullPath(s))))
+            {
+                SharedAssemblyLoader.Load(baseDirectory);
+                foreach (var directory in Directory.EnumerateDirectories(Path.GetFullPath(baseDirectory)))
+                {
+                    if (modulesToAnalyze != null &&
+                        modulesToAnalyze.Any() &&
+                        !modulesToAnalyze.Any(m => directory.EndsWith(m)))
+                    {
+                        continue;
+                    }
+
+                    var dirs = Directory.EnumerateDirectories(directory);
+                    if (dirs != null && dirs.Any(d => string.Equals(Path.GetFileName(d), "GeneratedSdk", StringComparison.OrdinalIgnoreCase)))
+                    {
+                        Console.WriteLine($"Analyzed module under {directory} ...");
+                    }
+                }
+            }
         }
 
         /// <summary>
