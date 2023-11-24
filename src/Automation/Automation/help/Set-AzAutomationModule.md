@@ -15,7 +15,7 @@ Updates a module in Automation.
 
 ```
 Set-AzAutomationModule [-Name] <String> [-ContentLinkUri <Uri>] [-ContentLinkVersion <String>]
- [[-RuntimeVersion] <String>] [-ResourceGroupName] <String> [-AutomationAccountName] <String>
+ [-RuntimeVersion <String>] [-ResourceGroupName] <String> [-AutomationAccountName] <String>
  [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
@@ -144,7 +144,7 @@ Aliases:
 Accepted values: 5.1, 7.2
 
 Required: False
-Position: 4
+Position: Named
 Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False

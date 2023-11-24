@@ -55,7 +55,7 @@ namespace Microsoft.Azure.Commands.ResourceManager.Automation.Test.UnitTests
             Uri contentLinkUri = new Uri("https://azure.com/");
 
             this.mockAutomationClient.Setup(
-                f => f.CreateModule(resourceGroupName, accountName, contentLinkUri, packageName));
+                f => f.CreateModule(resourceGroupName, accountName, contentLinkUri, packageName, false));
 
             this.cmdlet.ResourceGroupName = resourceGroupName;
             this.cmdlet.AutomationAccountName = accountName;
@@ -64,7 +64,7 @@ namespace Microsoft.Azure.Commands.ResourceManager.Automation.Test.UnitTests
             this.cmdlet.ExecuteCmdlet();
 
             // Assert
-            this.mockAutomationClient.Verify(f => f.CreateModule(resourceGroupName, accountName, contentLinkUri, packageName), Times.Once());
+            this.mockAutomationClient.Verify(f => f.CreateModule(resourceGroupName, accountName, contentLinkUri, packageName, false), Times.Once());
         }
 
         [TestMethod]
@@ -77,7 +77,7 @@ namespace Microsoft.Azure.Commands.ResourceManager.Automation.Test.UnitTests
             Uri contentLinkUri = new Uri("https://azure.com/");
 
             this.mockAutomationClient.Setup(
-                f => f.CreatePowerShell72Module(resourceGroupName, accountName, contentLinkUri, packageName));
+                f => f.CreateModule(resourceGroupName, accountName, contentLinkUri, packageName, true));
 
             this.cmdlet.ResourceGroupName = resourceGroupName;
             this.cmdlet.AutomationAccountName = accountName;
@@ -87,7 +87,7 @@ namespace Microsoft.Azure.Commands.ResourceManager.Automation.Test.UnitTests
             this.cmdlet.ExecuteCmdlet();
 
             // Assert
-            this.mockAutomationClient.Verify(f => f.CreatePowerShell72Module(resourceGroupName, accountName, contentLinkUri, packageName), Times.Once());
+            this.mockAutomationClient.Verify(f => f.CreateModule(resourceGroupName, accountName, contentLinkUri, packageName, true), Times.Once());
         }
     }
 }

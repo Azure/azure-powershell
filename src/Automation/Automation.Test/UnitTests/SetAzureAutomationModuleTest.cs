@@ -53,7 +53,7 @@ namespace Microsoft.Azure.Commands.ResourceManager.Automation.Test.UnitTests
             string packageName = "module";
             Uri contentLinkURI = new Uri("https://azure.com/");
 
-            this.mockAutomationClient.Setup(f => f.UpdateModule(resourceGroupName, accountName, packageName, contentLinkURI, string.Empty));
+            this.mockAutomationClient.Setup(f => f.UpdateModule(resourceGroupName, accountName, packageName, contentLinkURI, string.Empty, false));
 
             // Test
             this.cmdlet.ResourceGroupName = resourceGroupName;
@@ -64,7 +64,7 @@ namespace Microsoft.Azure.Commands.ResourceManager.Automation.Test.UnitTests
             this.cmdlet.ExecuteCmdlet();
 
             // Assert
-            this.mockAutomationClient.Verify(f => f.UpdateModule(resourceGroupName, accountName, packageName, contentLinkURI, string.Empty), Times.Once());
+            this.mockAutomationClient.Verify(f => f.UpdateModule(resourceGroupName, accountName, packageName, contentLinkURI, string.Empty, false), Times.Once());
         }
 
 
@@ -77,7 +77,7 @@ namespace Microsoft.Azure.Commands.ResourceManager.Automation.Test.UnitTests
             string packageName = "module";
             Uri contentLinkURI = new Uri("https://azure.com/");
 
-            this.mockAutomationClient.Setup(f => f.UpdatePowerShell72Module(resourceGroupName, accountName, packageName, contentLinkURI, string.Empty));
+            this.mockAutomationClient.Setup(f => f.UpdateModule(resourceGroupName, accountName, packageName, contentLinkURI, string.Empty, true));
 
             // Test
             this.cmdlet.ResourceGroupName = resourceGroupName;
@@ -89,7 +89,7 @@ namespace Microsoft.Azure.Commands.ResourceManager.Automation.Test.UnitTests
             this.cmdlet.ExecuteCmdlet();
 
             // Assert
-            this.mockAutomationClient.Verify(f => f.UpdatePowerShell72Module(resourceGroupName, accountName, packageName, contentLinkURI, string.Empty), Times.Once());
+            this.mockAutomationClient.Verify(f => f.UpdateModule(resourceGroupName, accountName, packageName, contentLinkURI, string.Empty, true), Times.Once());
         }
     }
 }

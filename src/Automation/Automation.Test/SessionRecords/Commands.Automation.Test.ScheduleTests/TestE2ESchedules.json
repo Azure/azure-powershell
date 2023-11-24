@@ -6,7 +6,7 @@
       "RequestMethod": "GET",
       "RequestHeaders": {
         "x-ms-client-request-id": [
-          "f94d3c60-3712-455c-a1d5-943700e908bf"
+          "a15de767-ed59-41b1-a412-163fcf64c4f5"
         ],
         "Accept-Language": [
           "en-US"
@@ -27,22 +27,22 @@
           "no-cache"
         ],
         "ocp-automation-accountid": [
-          "83913890-dddc-4f93-b69e-d27173b8f399"
+          "0f84710a-f5e8-4faf-bac2-b498165d32f8"
         ],
         "x-ms-request-id": [
-          "f94d3c60-3712-455c-a1d5-943700e908bf"
+          "a15de767-ed59-41b1-a412-163fcf64c4f5"
         ],
         "Server": [
           "Microsoft-HTTPAPI/2.0"
         ],
         "x-ms-ratelimit-remaining-subscription-reads": [
-          "11995"
+          "11999"
         ],
         "x-ms-correlation-request-id": [
-          "093dbfab-f14a-4cdc-980f-4e54224d8ff3"
+          "7924703f-ac23-4c12-80c5-3d44e17868c6"
         ],
         "x-ms-routing-request-id": [
-          "WESTINDIA:20231122T105934Z:093dbfab-f14a-4cdc-980f-4e54224d8ff3"
+          "WESTINDIA:20231124T111746Z:7924703f-ac23-4c12-80c5-3d44e17868c6"
         ],
         "Strict-Transport-Security": [
           "max-age=31536000; includeSubDomains"
@@ -51,7 +51,7 @@
           "nosniff"
         ],
         "Date": [
-          "Wed, 22 Nov 2023 10:59:33 GMT"
+          "Fri, 24 Nov 2023 11:17:45 GMT"
         ],
         "Content-Length": [
           "1354"
@@ -63,7 +63,7 @@
           "-1"
         ]
       },
-      "ResponseBody": "{\r\n  \"name\": \"fbs-aa-01\",\r\n  \"systemData\": {\r\n    \"createdAt\": \"2023-11-21T10:24:36.41+05:30\",\r\n    \"lastModifiedAt\": \"2023-11-21T10:24:36.41+05:30\"\r\n  },\r\n  \"id\": \"/subscriptions/0b35c512-e1ea-4c38-bd26-41d0e9d5b54f/resourceGroups/to-delete-01/providers/Microsoft.Automation/automationAccounts/fbs-aa-01\",\r\n  \"type\": \"Microsoft.Automation/AutomationAccounts\",\r\n  \"location\": \"eastus\",\r\n  \"identity\": {\r\n    \"type\": \"SystemAssigned\",\r\n    \"principalId\": \"75094e1e-e2ee-4ffd-a7ba-870f1b4e2232\",\r\n    \"tenantId\": \"72f988bf-86f1-41af-91ab-2d7cd011db47\"\r\n  },\r\n  \"tags\": {},\r\n  \"etag\": null,\r\n  \"properties\": {\r\n    \"publicNetworkAccess\": true,\r\n    \"disableLocalAuth\": false,\r\n    \"sku\": {\r\n      \"name\": \"Basic\",\r\n      \"family\": null,\r\n      \"capacity\": null\r\n    },\r\n    \"state\": \"Ok\",\r\n    \"RegistrationUrl\": \"https://83913890-dddc-4f93-b69e-d27173b8f399.agentsvc.eus.azure-automation.net/accounts/83913890-dddc-4f93-b69e-d27173b8f399\",\r\n    \"encryption\": {\r\n      \"keySource\": \"Microsoft.Automation\",\r\n      \"identity\": {\r\n        \"userAssignedIdentity\": null\r\n      }\r\n    },\r\n    \"privateEndpointConnections\": [],\r\n    \"automationHybridServiceUrl\": \"https://83913890-dddc-4f93-b69e-d27173b8f399.jrds.eus.azure-automation.net/automationAccounts/83913890-dddc-4f93-b69e-d27173b8f399\",\r\n    \"RuntimeConfiguration\": {\r\n      \"powershell\": {\r\n        \"builtinModules\": {\r\n          \"Az\": \"8.0.0\"\r\n        }\r\n      },\r\n      \"powershell7\": {\r\n        \"builtinModules\": {\r\n          \"Az\": \"8.0.0\"\r\n        }\r\n      },\r\n      \"powershell72\": {\r\n        \"builtinModules\": {\r\n          \"Az\": \"8.3.0\"\r\n        }\r\n      }\r\n    },\r\n    \"creationTime\": \"2023-11-21T10:24:36.41+05:30\",\r\n    \"lastModifiedBy\": null,\r\n    \"lastModifiedTime\": \"2023-11-21T10:24:36.41+05:30\"\r\n  }\r\n}",
+      "ResponseBody": "{\r\n  \"name\": \"fbs-aa-01\",\r\n  \"systemData\": {\r\n    \"createdAt\": \"2023-11-24T14:37:55.92+05:30\",\r\n    \"lastModifiedAt\": \"2023-11-24T14:37:55.92+05:30\"\r\n  },\r\n  \"id\": \"/subscriptions/0b35c512-e1ea-4c38-bd26-41d0e9d5b54f/resourceGroups/to-delete-01/providers/Microsoft.Automation/automationAccounts/fbs-aa-01\",\r\n  \"type\": \"Microsoft.Automation/AutomationAccounts\",\r\n  \"location\": \"eastus\",\r\n  \"identity\": {\r\n    \"type\": \"SystemAssigned\",\r\n    \"principalId\": \"0e72b0f2-d5f1-428c-a006-f407e8dbbfcf\",\r\n    \"tenantId\": \"72f988bf-86f1-41af-91ab-2d7cd011db47\"\r\n  },\r\n  \"tags\": {},\r\n  \"etag\": null,\r\n  \"properties\": {\r\n    \"publicNetworkAccess\": true,\r\n    \"disableLocalAuth\": false,\r\n    \"sku\": {\r\n      \"name\": \"Basic\",\r\n      \"family\": null,\r\n      \"capacity\": null\r\n    },\r\n    \"state\": \"Ok\",\r\n    \"RegistrationUrl\": \"https://0f84710a-f5e8-4faf-bac2-b498165d32f8.agentsvc.eus.azure-automation.net/accounts/0f84710a-f5e8-4faf-bac2-b498165d32f8\",\r\n    \"encryption\": {\r\n      \"keySource\": \"Microsoft.Automation\",\r\n      \"identity\": {\r\n        \"userAssignedIdentity\": null\r\n      }\r\n    },\r\n    \"privateEndpointConnections\": [],\r\n    \"automationHybridServiceUrl\": \"https://0f84710a-f5e8-4faf-bac2-b498165d32f8.jrds.eus.azure-automation.net/automationAccounts/0f84710a-f5e8-4faf-bac2-b498165d32f8\",\r\n    \"RuntimeConfiguration\": {\r\n      \"powershell\": {\r\n        \"builtinModules\": {\r\n          \"Az\": \"8.0.0\"\r\n        }\r\n      },\r\n      \"powershell7\": {\r\n        \"builtinModules\": {\r\n          \"Az\": \"8.0.0\"\r\n        }\r\n      },\r\n      \"powershell72\": {\r\n        \"builtinModules\": {\r\n          \"Az\": \"8.3.0\"\r\n        }\r\n      }\r\n    },\r\n    \"creationTime\": \"2023-11-24T14:37:55.92+05:30\",\r\n    \"lastModifiedBy\": null,\r\n    \"lastModifiedTime\": \"2023-11-24T14:37:55.92+05:30\"\r\n  }\r\n}",
       "StatusCode": 200
     },
     {
@@ -72,7 +72,7 @@
       "RequestMethod": "PUT",
       "RequestHeaders": {
         "x-ms-client-request-id": [
-          "2a165ffe-a792-46e3-b57e-ef910c12ac2a"
+          "2d653461-7f6e-4bdd-a831-d602cdce5ce2"
         ],
         "Accept-Language": [
           "en-US"
@@ -90,7 +90,7 @@
           "220"
         ]
       },
-      "RequestBody": "{\r\n  \"name\": \"Schedule3\",\r\n  \"properties\": {\r\n    \"description\": \"Hello\",\r\n    \"startTime\": \"2023-11-23T13:00:00+05:30\",\r\n    \"expiryTime\": \"2024-11-23T13:00:00+05:30\",\r\n    \"interval\": 1,\r\n    \"frequency\": \"Day\"\r\n  }\r\n}",
+      "RequestBody": "{\r\n  \"name\": \"Schedule3\",\r\n  \"properties\": {\r\n    \"description\": \"Hello\",\r\n    \"startTime\": \"2023-11-25T13:00:00+05:30\",\r\n    \"expiryTime\": \"2024-11-25T13:00:00+05:30\",\r\n    \"interval\": 1,\r\n    \"frequency\": \"Day\"\r\n  }\r\n}",
       "ResponseHeaders": {
         "Cache-Control": [
           "no-cache"
@@ -102,7 +102,7 @@
           "https://management.azure.com/subscriptions/0b35c512-e1ea-4c38-bd26-41d0e9d5b54f/resourceGroups/to-delete-01/providers/Microsoft.Automation/automationAccounts/fbs-aa-01/schedules/Schedule3?api-version=2023-11-01"
         ],
         "x-ms-request-id": [
-          "2a165ffe-a792-46e3-b57e-ef910c12ac2a"
+          "2d653461-7f6e-4bdd-a831-d602cdce5ce2"
         ],
         "Server": [
           "Microsoft-HTTPAPI/2.0"
@@ -111,10 +111,10 @@
           "1199"
         ],
         "x-ms-correlation-request-id": [
-          "f0eb6e10-9f4f-498f-9275-e00b2ff59a21"
+          "807b5e40-504a-46a9-a5aa-99be16f8d9ca"
         ],
         "x-ms-routing-request-id": [
-          "WESTINDIA:20231122T105935Z:f0eb6e10-9f4f-498f-9275-e00b2ff59a21"
+          "WESTINDIA:20231124T111748Z:807b5e40-504a-46a9-a5aa-99be16f8d9ca"
         ],
         "Strict-Transport-Security": [
           "max-age=31536000; includeSubDomains"
@@ -123,10 +123,10 @@
           "nosniff"
         ],
         "Date": [
-          "Wed, 22 Nov 2023 10:59:35 GMT"
+          "Fri, 24 Nov 2023 11:17:48 GMT"
         ],
         "Content-Length": [
-          "677"
+          "687"
         ],
         "Content-Type": [
           "application/json; charset=utf-8"
@@ -135,7 +135,7 @@
           "-1"
         ]
       },
-      "ResponseBody": "{\r\n  \"id\": \"/subscriptions/0b35c512-e1ea-4c38-bd26-41d0e9d5b54f/resourceGroups/to-delete-01/providers/Microsoft.Automation/automationAccounts/fbs-aa-01/schedules/Schedule3\",\r\n  \"name\": \"Schedule3\",\r\n  \"type\": \"Microsoft.Automation/AutomationAccounts/Schedules\",\r\n  \"properties\": {\r\n    \"description\": \"Hello\",\r\n    \"startTime\": \"2023-11-23T13:00:00+05:30\",\r\n    \"startTimeOffsetMinutes\": 0.0,\r\n    \"expiryTime\": \"2024-11-23T13:00:00+05:30\",\r\n    \"expiryTimeOffsetMinutes\": 0.0,\r\n    \"isEnabled\": true,\r\n    \"nextRun\": \"2023-11-23T13:00:00+05:30\",\r\n    \"nextRunOffsetMinutes\": 0.0,\r\n    \"interval\": 1,\r\n    \"frequency\": \"Day\",\r\n    \"creationTime\": \"2023-11-22T16:29:35.65+05:30\",\r\n    \"lastModifiedTime\": \"2023-11-22T16:29:35.65+05:30\",\r\n    \"timeZone\": \"Etc/UTC\",\r\n    \"advancedSchedule\": null\r\n  }\r\n}",
+      "ResponseBody": "{\r\n  \"id\": \"/subscriptions/0b35c512-e1ea-4c38-bd26-41d0e9d5b54f/resourceGroups/to-delete-01/providers/Microsoft.Automation/automationAccounts/fbs-aa-01/schedules/Schedule3\",\r\n  \"name\": \"Schedule3\",\r\n  \"type\": \"Microsoft.Automation/AutomationAccounts/Schedules\",\r\n  \"properties\": {\r\n    \"description\": \"Hello\",\r\n    \"startTime\": \"2023-11-25T13:00:00+05:30\",\r\n    \"startTimeOffsetMinutes\": 0.0,\r\n    \"expiryTime\": \"2024-11-25T13:00:00+05:30\",\r\n    \"expiryTimeOffsetMinutes\": 0.0,\r\n    \"isEnabled\": true,\r\n    \"nextRun\": \"2023-11-25T13:00:00+05:30\",\r\n    \"nextRunOffsetMinutes\": 0.0,\r\n    \"interval\": 1,\r\n    \"frequency\": \"Day\",\r\n    \"creationTime\": \"2023-11-24T16:47:48.6933333+05:30\",\r\n    \"lastModifiedTime\": \"2023-11-24T16:47:48.6933333+05:30\",\r\n    \"timeZone\": \"Etc/UTC\",\r\n    \"advancedSchedule\": null\r\n  }\r\n}",
       "StatusCode": 201
     },
     {
@@ -144,7 +144,7 @@
       "RequestMethod": "PUT",
       "RequestHeaders": {
         "x-ms-client-request-id": [
-          "e9dc7c18-6835-4d53-a0cd-31a2fe62d34c"
+          "01d0cc77-9db3-44f3-8946-23cced1d90fb"
         ],
         "Accept-Language": [
           "en-US"
@@ -162,7 +162,7 @@
           "227"
         ]
       },
-      "RequestBody": "{\r\n  \"name\": \"Schedule3\",\r\n  \"properties\": {\r\n    \"description\": \"Hello Again\",\r\n    \"startTime\": \"2023-11-23T13:00:00+05:30\",\r\n    \"expiryTime\": \"2024-11-23T13:00:00+05:30\",\r\n    \"interval\": 3,\r\n    \"frequency\": \"Week\"\r\n  }\r\n}",
+      "RequestBody": "{\r\n  \"name\": \"Schedule3\",\r\n  \"properties\": {\r\n    \"description\": \"Hello Again\",\r\n    \"startTime\": \"2023-11-25T13:00:00+05:30\",\r\n    \"expiryTime\": \"2024-11-25T13:00:00+05:30\",\r\n    \"interval\": 3,\r\n    \"frequency\": \"Week\"\r\n  }\r\n}",
       "ResponseHeaders": {
         "Cache-Control": [
           "no-cache"
@@ -171,19 +171,19 @@
           "no-cache"
         ],
         "x-ms-request-id": [
-          "e9dc7c18-6835-4d53-a0cd-31a2fe62d34c"
+          "01d0cc77-9db3-44f3-8946-23cced1d90fb"
         ],
         "Server": [
           "Microsoft-HTTPAPI/2.0"
         ],
         "x-ms-ratelimit-remaining-subscription-writes": [
-          "1198"
+          "1199"
         ],
         "x-ms-correlation-request-id": [
-          "5e301c73-94a9-4db3-ad59-f0e05974c1e7"
+          "0c9d729a-3f69-4e17-8d3f-46772fed3885"
         ],
         "x-ms-routing-request-id": [
-          "WESTINDIA:20231122T105937Z:5e301c73-94a9-4db3-ad59-f0e05974c1e7"
+          "WESTINDIA:20231124T111750Z:0c9d729a-3f69-4e17-8d3f-46772fed3885"
         ],
         "Strict-Transport-Security": [
           "max-age=31536000; includeSubDomains"
@@ -192,10 +192,10 @@
           "nosniff"
         ],
         "Date": [
-          "Wed, 22 Nov 2023 10:59:36 GMT"
+          "Fri, 24 Nov 2023 11:17:50 GMT"
         ],
         "Content-Length": [
-          "740"
+          "750"
         ],
         "Content-Type": [
           "application/json; charset=utf-8"
@@ -204,7 +204,7 @@
           "-1"
         ]
       },
-      "ResponseBody": "{\r\n  \"id\": \"/subscriptions/0b35c512-e1ea-4c38-bd26-41d0e9d5b54f/resourceGroups/to-delete-01/providers/Microsoft.Automation/automationAccounts/fbs-aa-01/schedules/Schedule3\",\r\n  \"name\": \"Schedule3\",\r\n  \"type\": \"Microsoft.Automation/AutomationAccounts/Schedules\",\r\n  \"properties\": {\r\n    \"description\": \"Hello Again\",\r\n    \"startTime\": \"2023-11-23T13:00:00+05:30\",\r\n    \"startTimeOffsetMinutes\": 0.0,\r\n    \"expiryTime\": \"2024-11-23T13:00:00+05:30\",\r\n    \"expiryTimeOffsetMinutes\": 0.0,\r\n    \"isEnabled\": true,\r\n    \"nextRun\": \"2023-11-23T13:00:00+05:30\",\r\n    \"nextRunOffsetMinutes\": 0.0,\r\n    \"interval\": 3,\r\n    \"frequency\": \"Week\",\r\n    \"creationTime\": \"2023-11-22T16:29:35.65+05:30\",\r\n    \"lastModifiedTime\": \"2023-11-22T16:29:35.65+05:30\",\r\n    \"timeZone\": \"Etc/UTC\",\r\n    \"advancedSchedule\": {\r\n      \"monthDays\": null,\r\n      \"monthlyOccurrences\": null,\r\n      \"weekDays\": null\r\n    }\r\n  }\r\n}",
+      "ResponseBody": "{\r\n  \"id\": \"/subscriptions/0b35c512-e1ea-4c38-bd26-41d0e9d5b54f/resourceGroups/to-delete-01/providers/Microsoft.Automation/automationAccounts/fbs-aa-01/schedules/Schedule3\",\r\n  \"name\": \"Schedule3\",\r\n  \"type\": \"Microsoft.Automation/AutomationAccounts/Schedules\",\r\n  \"properties\": {\r\n    \"description\": \"Hello Again\",\r\n    \"startTime\": \"2023-11-25T13:00:00+05:30\",\r\n    \"startTimeOffsetMinutes\": 0.0,\r\n    \"expiryTime\": \"2024-11-25T13:00:00+05:30\",\r\n    \"expiryTimeOffsetMinutes\": 0.0,\r\n    \"isEnabled\": true,\r\n    \"nextRun\": \"2023-11-25T13:00:00+05:30\",\r\n    \"nextRunOffsetMinutes\": 0.0,\r\n    \"interval\": 3,\r\n    \"frequency\": \"Week\",\r\n    \"creationTime\": \"2023-11-24T16:47:48.6933333+05:30\",\r\n    \"lastModifiedTime\": \"2023-11-24T16:47:48.6933333+05:30\",\r\n    \"timeZone\": \"Etc/UTC\",\r\n    \"advancedSchedule\": {\r\n      \"monthDays\": null,\r\n      \"monthlyOccurrences\": null,\r\n      \"weekDays\": null\r\n    }\r\n  }\r\n}",
       "StatusCode": 200
     },
     {
@@ -213,7 +213,7 @@
       "RequestMethod": "GET",
       "RequestHeaders": {
         "x-ms-client-request-id": [
-          "2a165ffe-a792-46e3-b57e-ef910c12ac2a"
+          "2d653461-7f6e-4bdd-a831-d602cdce5ce2"
         ],
         "Accept-Language": [
           "en-US"
@@ -234,19 +234,19 @@
           "no-cache"
         ],
         "x-ms-request-id": [
-          "2a165ffe-a792-46e3-b57e-ef910c12ac2a"
+          "2d653461-7f6e-4bdd-a831-d602cdce5ce2"
         ],
         "Server": [
           "Microsoft-HTTPAPI/2.0"
         ],
         "x-ms-ratelimit-remaining-subscription-reads": [
-          "11996"
+          "11999"
         ],
         "x-ms-correlation-request-id": [
-          "07e45346-861e-468d-beea-2ccb27078b03"
+          "3bef43eb-ea74-45e1-ba65-d53fbd0c020c"
         ],
         "x-ms-routing-request-id": [
-          "WESTINDIA:20231122T105936Z:07e45346-861e-468d-beea-2ccb27078b03"
+          "WESTINDIA:20231124T111749Z:3bef43eb-ea74-45e1-ba65-d53fbd0c020c"
         ],
         "Strict-Transport-Security": [
           "max-age=31536000; includeSubDomains"
@@ -255,10 +255,10 @@
           "nosniff"
         ],
         "Date": [
-          "Wed, 22 Nov 2023 10:59:35 GMT"
+          "Fri, 24 Nov 2023 11:17:49 GMT"
         ],
         "Content-Length": [
-          "677"
+          "687"
         ],
         "Content-Type": [
           "application/json; charset=utf-8"
@@ -267,7 +267,7 @@
           "-1"
         ]
       },
-      "ResponseBody": "{\r\n  \"id\": \"/subscriptions/0b35c512-e1ea-4c38-bd26-41d0e9d5b54f/resourceGroups/to-delete-01/providers/Microsoft.Automation/automationAccounts/fbs-aa-01/schedules/Schedule3\",\r\n  \"name\": \"Schedule3\",\r\n  \"type\": \"Microsoft.Automation/AutomationAccounts/Schedules\",\r\n  \"properties\": {\r\n    \"description\": \"Hello\",\r\n    \"startTime\": \"2023-11-23T13:00:00+05:30\",\r\n    \"startTimeOffsetMinutes\": 0.0,\r\n    \"expiryTime\": \"2024-11-23T13:00:00+05:30\",\r\n    \"expiryTimeOffsetMinutes\": 0.0,\r\n    \"isEnabled\": true,\r\n    \"nextRun\": \"2023-11-23T13:00:00+05:30\",\r\n    \"nextRunOffsetMinutes\": 0.0,\r\n    \"interval\": 1,\r\n    \"frequency\": \"Day\",\r\n    \"creationTime\": \"2023-11-22T16:29:35.65+05:30\",\r\n    \"lastModifiedTime\": \"2023-11-22T16:29:35.65+05:30\",\r\n    \"timeZone\": \"Etc/UTC\",\r\n    \"advancedSchedule\": null\r\n  }\r\n}",
+      "ResponseBody": "{\r\n  \"id\": \"/subscriptions/0b35c512-e1ea-4c38-bd26-41d0e9d5b54f/resourceGroups/to-delete-01/providers/Microsoft.Automation/automationAccounts/fbs-aa-01/schedules/Schedule3\",\r\n  \"name\": \"Schedule3\",\r\n  \"type\": \"Microsoft.Automation/AutomationAccounts/Schedules\",\r\n  \"properties\": {\r\n    \"description\": \"Hello\",\r\n    \"startTime\": \"2023-11-25T13:00:00+05:30\",\r\n    \"startTimeOffsetMinutes\": 0.0,\r\n    \"expiryTime\": \"2024-11-25T13:00:00+05:30\",\r\n    \"expiryTimeOffsetMinutes\": 0.0,\r\n    \"isEnabled\": true,\r\n    \"nextRun\": \"2023-11-25T13:00:00+05:30\",\r\n    \"nextRunOffsetMinutes\": 0.0,\r\n    \"interval\": 1,\r\n    \"frequency\": \"Day\",\r\n    \"creationTime\": \"2023-11-24T16:47:48.6933333+05:30\",\r\n    \"lastModifiedTime\": \"2023-11-24T16:47:48.6933333+05:30\",\r\n    \"timeZone\": \"Etc/UTC\",\r\n    \"advancedSchedule\": null\r\n  }\r\n}",
       "StatusCode": 200
     },
     {
@@ -276,7 +276,7 @@
       "RequestMethod": "GET",
       "RequestHeaders": {
         "x-ms-client-request-id": [
-          "e9dc7c18-6835-4d53-a0cd-31a2fe62d34c"
+          "01d0cc77-9db3-44f3-8946-23cced1d90fb"
         ],
         "Accept-Language": [
           "en-US"
@@ -297,19 +297,19 @@
           "no-cache"
         ],
         "x-ms-request-id": [
-          "e9dc7c18-6835-4d53-a0cd-31a2fe62d34c"
+          "01d0cc77-9db3-44f3-8946-23cced1d90fb"
         ],
         "Server": [
           "Microsoft-HTTPAPI/2.0"
         ],
         "x-ms-ratelimit-remaining-subscription-reads": [
-          "11996"
+          "11998"
         ],
         "x-ms-correlation-request-id": [
-          "2742315e-ddd3-450c-bfe3-73c0d1e62e90"
+          "c23207a4-c40e-43eb-adba-4c83616e6787"
         ],
         "x-ms-routing-request-id": [
-          "WESTINDIA:20231122T105938Z:2742315e-ddd3-450c-bfe3-73c0d1e62e90"
+          "WESTINDIA:20231124T111751Z:c23207a4-c40e-43eb-adba-4c83616e6787"
         ],
         "Strict-Transport-Security": [
           "max-age=31536000; includeSubDomains"
@@ -318,10 +318,10 @@
           "nosniff"
         ],
         "Date": [
-          "Wed, 22 Nov 2023 10:59:37 GMT"
+          "Fri, 24 Nov 2023 11:17:50 GMT"
         ],
         "Content-Length": [
-          "745"
+          "750"
         ],
         "Content-Type": [
           "application/json; charset=utf-8"
@@ -330,7 +330,7 @@
           "-1"
         ]
       },
-      "ResponseBody": "{\r\n  \"id\": \"/subscriptions/0b35c512-e1ea-4c38-bd26-41d0e9d5b54f/resourceGroups/to-delete-01/providers/Microsoft.Automation/automationAccounts/fbs-aa-01/schedules/Schedule3\",\r\n  \"name\": \"Schedule3\",\r\n  \"type\": \"Microsoft.Automation/AutomationAccounts/Schedules\",\r\n  \"properties\": {\r\n    \"description\": \"Hello Again\",\r\n    \"startTime\": \"2023-11-23T13:00:00+05:30\",\r\n    \"startTimeOffsetMinutes\": 0.0,\r\n    \"expiryTime\": \"2024-11-23T13:00:00+05:30\",\r\n    \"expiryTimeOffsetMinutes\": 0.0,\r\n    \"isEnabled\": true,\r\n    \"nextRun\": \"2023-11-23T13:00:00+05:30\",\r\n    \"nextRunOffsetMinutes\": 0.0,\r\n    \"interval\": 3,\r\n    \"frequency\": \"Week\",\r\n    \"creationTime\": \"2023-11-22T16:29:35.65+05:30\",\r\n    \"lastModifiedTime\": \"2023-11-22T16:29:37.4333333+05:30\",\r\n    \"timeZone\": \"Etc/UTC\",\r\n    \"advancedSchedule\": {\r\n      \"monthDays\": null,\r\n      \"monthlyOccurrences\": null,\r\n      \"weekDays\": null\r\n    }\r\n  }\r\n}",
+      "ResponseBody": "{\r\n  \"id\": \"/subscriptions/0b35c512-e1ea-4c38-bd26-41d0e9d5b54f/resourceGroups/to-delete-01/providers/Microsoft.Automation/automationAccounts/fbs-aa-01/schedules/Schedule3\",\r\n  \"name\": \"Schedule3\",\r\n  \"type\": \"Microsoft.Automation/AutomationAccounts/Schedules\",\r\n  \"properties\": {\r\n    \"description\": \"Hello Again\",\r\n    \"startTime\": \"2023-11-25T13:00:00+05:30\",\r\n    \"startTimeOffsetMinutes\": 0.0,\r\n    \"expiryTime\": \"2024-11-25T13:00:00+05:30\",\r\n    \"expiryTimeOffsetMinutes\": 0.0,\r\n    \"isEnabled\": true,\r\n    \"nextRun\": \"2023-11-25T13:00:00+05:30\",\r\n    \"nextRunOffsetMinutes\": 0.0,\r\n    \"interval\": 3,\r\n    \"frequency\": \"Week\",\r\n    \"creationTime\": \"2023-11-24T16:47:48.6933333+05:30\",\r\n    \"lastModifiedTime\": \"2023-11-24T16:47:50.4533333+05:30\",\r\n    \"timeZone\": \"Etc/UTC\",\r\n    \"advancedSchedule\": {\r\n      \"monthDays\": null,\r\n      \"monthlyOccurrences\": null,\r\n      \"weekDays\": null\r\n    }\r\n  }\r\n}",
       "StatusCode": 200
     },
     {
@@ -339,7 +339,7 @@
       "RequestMethod": "GET",
       "RequestHeaders": {
         "x-ms-client-request-id": [
-          "1b1303c1-90dc-44b4-b00c-63be39673c59"
+          "dee66472-917a-4e5f-8109-fc5c2ec19175"
         ],
         "Accept-Language": [
           "en-US"
@@ -360,19 +360,19 @@
           "no-cache"
         ],
         "x-ms-request-id": [
-          "1b1303c1-90dc-44b4-b00c-63be39673c59"
+          "dee66472-917a-4e5f-8109-fc5c2ec19175"
         ],
         "Server": [
           "Microsoft-HTTPAPI/2.0"
         ],
         "x-ms-ratelimit-remaining-subscription-reads": [
-          "11997"
+          "11999"
         ],
         "x-ms-correlation-request-id": [
-          "bc03aa05-9b40-42ff-907d-d4b9e5f00675"
+          "12275933-e557-46e8-bee2-a0e7ba090ac1"
         ],
         "x-ms-routing-request-id": [
-          "WESTINDIA:20231122T105938Z:bc03aa05-9b40-42ff-907d-d4b9e5f00675"
+          "JIOINDIAWEST:20231124T111751Z:12275933-e557-46e8-bee2-a0e7ba090ac1"
         ],
         "Strict-Transport-Security": [
           "max-age=31536000; includeSubDomains"
@@ -381,10 +381,10 @@
           "nosniff"
         ],
         "Date": [
-          "Wed, 22 Nov 2023 10:59:38 GMT"
+          "Fri, 24 Nov 2023 11:17:51 GMT"
         ],
         "Content-Length": [
-          "745"
+          "750"
         ],
         "Content-Type": [
           "application/json; charset=utf-8"
@@ -393,7 +393,7 @@
           "-1"
         ]
       },
-      "ResponseBody": "{\r\n  \"id\": \"/subscriptions/0b35c512-e1ea-4c38-bd26-41d0e9d5b54f/resourceGroups/to-delete-01/providers/Microsoft.Automation/automationAccounts/fbs-aa-01/schedules/Schedule3\",\r\n  \"name\": \"Schedule3\",\r\n  \"type\": \"Microsoft.Automation/AutomationAccounts/Schedules\",\r\n  \"properties\": {\r\n    \"description\": \"Hello Again\",\r\n    \"startTime\": \"2023-11-23T13:00:00+05:30\",\r\n    \"startTimeOffsetMinutes\": 0.0,\r\n    \"expiryTime\": \"2024-11-23T13:00:00+05:30\",\r\n    \"expiryTimeOffsetMinutes\": 0.0,\r\n    \"isEnabled\": true,\r\n    \"nextRun\": \"2023-11-23T13:00:00+05:30\",\r\n    \"nextRunOffsetMinutes\": 0.0,\r\n    \"interval\": 3,\r\n    \"frequency\": \"Week\",\r\n    \"creationTime\": \"2023-11-22T16:29:35.65+05:30\",\r\n    \"lastModifiedTime\": \"2023-11-22T16:29:37.4333333+05:30\",\r\n    \"timeZone\": \"Etc/UTC\",\r\n    \"advancedSchedule\": {\r\n      \"monthDays\": null,\r\n      \"monthlyOccurrences\": null,\r\n      \"weekDays\": null\r\n    }\r\n  }\r\n}",
+      "ResponseBody": "{\r\n  \"id\": \"/subscriptions/0b35c512-e1ea-4c38-bd26-41d0e9d5b54f/resourceGroups/to-delete-01/providers/Microsoft.Automation/automationAccounts/fbs-aa-01/schedules/Schedule3\",\r\n  \"name\": \"Schedule3\",\r\n  \"type\": \"Microsoft.Automation/AutomationAccounts/Schedules\",\r\n  \"properties\": {\r\n    \"description\": \"Hello Again\",\r\n    \"startTime\": \"2023-11-25T13:00:00+05:30\",\r\n    \"startTimeOffsetMinutes\": 0.0,\r\n    \"expiryTime\": \"2024-11-25T13:00:00+05:30\",\r\n    \"expiryTimeOffsetMinutes\": 0.0,\r\n    \"isEnabled\": true,\r\n    \"nextRun\": \"2023-11-25T13:00:00+05:30\",\r\n    \"nextRunOffsetMinutes\": 0.0,\r\n    \"interval\": 3,\r\n    \"frequency\": \"Week\",\r\n    \"creationTime\": \"2023-11-24T16:47:48.6933333+05:30\",\r\n    \"lastModifiedTime\": \"2023-11-24T16:47:50.4533333+05:30\",\r\n    \"timeZone\": \"Etc/UTC\",\r\n    \"advancedSchedule\": {\r\n      \"monthDays\": null,\r\n      \"monthlyOccurrences\": null,\r\n      \"weekDays\": null\r\n    }\r\n  }\r\n}",
       "StatusCode": 200
     },
     {
@@ -402,7 +402,7 @@
       "RequestMethod": "GET",
       "RequestHeaders": {
         "x-ms-client-request-id": [
-          "646a362f-0136-4b6c-8c24-1f46fce6487d"
+          "6eecd5c6-4b64-4c3b-9f40-421d8efffd4b"
         ],
         "Accept-Language": [
           "en-US"
@@ -423,19 +423,19 @@
           "no-cache"
         ],
         "x-ms-request-id": [
-          "646a362f-0136-4b6c-8c24-1f46fce6487d"
+          "6eecd5c6-4b64-4c3b-9f40-421d8efffd4b"
         ],
         "Server": [
           "Microsoft-HTTPAPI/2.0"
         ],
         "x-ms-ratelimit-remaining-subscription-reads": [
-          "11995"
+          "11999"
         ],
         "x-ms-correlation-request-id": [
-          "d685c90a-641e-442c-a3bf-dd1b4680efc3"
+          "93648d6a-67f7-4f1c-93db-f97867527726"
         ],
         "x-ms-routing-request-id": [
-          "WESTINDIA:20231122T105939Z:d685c90a-641e-442c-a3bf-dd1b4680efc3"
+          "WESTINDIA:20231124T111753Z:93648d6a-67f7-4f1c-93db-f97867527726"
         ],
         "Strict-Transport-Security": [
           "max-age=31536000; includeSubDomains"
@@ -444,10 +444,10 @@
           "nosniff"
         ],
         "Date": [
-          "Wed, 22 Nov 2023 10:59:39 GMT"
+          "Fri, 24 Nov 2023 11:17:52 GMT"
         ],
         "Content-Length": [
-          "745"
+          "750"
         ],
         "Content-Type": [
           "application/json; charset=utf-8"
@@ -456,7 +456,7 @@
           "-1"
         ]
       },
-      "ResponseBody": "{\r\n  \"id\": \"/subscriptions/0b35c512-e1ea-4c38-bd26-41d0e9d5b54f/resourceGroups/to-delete-01/providers/Microsoft.Automation/automationAccounts/fbs-aa-01/schedules/Schedule3\",\r\n  \"name\": \"Schedule3\",\r\n  \"type\": \"Microsoft.Automation/AutomationAccounts/Schedules\",\r\n  \"properties\": {\r\n    \"description\": \"Hello Again\",\r\n    \"startTime\": \"2023-11-23T13:00:00+05:30\",\r\n    \"startTimeOffsetMinutes\": 0.0,\r\n    \"expiryTime\": \"2024-11-23T13:00:00+05:30\",\r\n    \"expiryTimeOffsetMinutes\": 0.0,\r\n    \"isEnabled\": true,\r\n    \"nextRun\": \"2023-11-23T13:00:00+05:30\",\r\n    \"nextRunOffsetMinutes\": 0.0,\r\n    \"interval\": 3,\r\n    \"frequency\": \"Week\",\r\n    \"creationTime\": \"2023-11-22T16:29:35.65+05:30\",\r\n    \"lastModifiedTime\": \"2023-11-22T16:29:37.4333333+05:30\",\r\n    \"timeZone\": \"Etc/UTC\",\r\n    \"advancedSchedule\": {\r\n      \"monthDays\": null,\r\n      \"monthlyOccurrences\": null,\r\n      \"weekDays\": null\r\n    }\r\n  }\r\n}",
+      "ResponseBody": "{\r\n  \"id\": \"/subscriptions/0b35c512-e1ea-4c38-bd26-41d0e9d5b54f/resourceGroups/to-delete-01/providers/Microsoft.Automation/automationAccounts/fbs-aa-01/schedules/Schedule3\",\r\n  \"name\": \"Schedule3\",\r\n  \"type\": \"Microsoft.Automation/AutomationAccounts/Schedules\",\r\n  \"properties\": {\r\n    \"description\": \"Hello Again\",\r\n    \"startTime\": \"2023-11-25T13:00:00+05:30\",\r\n    \"startTimeOffsetMinutes\": 0.0,\r\n    \"expiryTime\": \"2024-11-25T13:00:00+05:30\",\r\n    \"expiryTimeOffsetMinutes\": 0.0,\r\n    \"isEnabled\": true,\r\n    \"nextRun\": \"2023-11-25T13:00:00+05:30\",\r\n    \"nextRunOffsetMinutes\": 0.0,\r\n    \"interval\": 3,\r\n    \"frequency\": \"Week\",\r\n    \"creationTime\": \"2023-11-24T16:47:48.6933333+05:30\",\r\n    \"lastModifiedTime\": \"2023-11-24T16:47:50.4533333+05:30\",\r\n    \"timeZone\": \"Etc/UTC\",\r\n    \"advancedSchedule\": {\r\n      \"monthDays\": null,\r\n      \"monthlyOccurrences\": null,\r\n      \"weekDays\": null\r\n    }\r\n  }\r\n}",
       "StatusCode": 200
     },
     {
@@ -465,7 +465,7 @@
       "RequestMethod": "GET",
       "RequestHeaders": {
         "x-ms-client-request-id": [
-          "646a362f-0136-4b6c-8c24-1f46fce6487d"
+          "6eecd5c6-4b64-4c3b-9f40-421d8efffd4b"
         ],
         "Accept-Language": [
           "en-US"
@@ -486,19 +486,19 @@
           "no-cache"
         ],
         "x-ms-request-id": [
-          "646a362f-0136-4b6c-8c24-1f46fce6487d"
+          "6eecd5c6-4b64-4c3b-9f40-421d8efffd4b"
         ],
         "Server": [
           "Microsoft-HTTPAPI/2.0"
         ],
         "x-ms-ratelimit-remaining-subscription-reads": [
-          "11994"
+          "11998"
         ],
         "x-ms-correlation-request-id": [
-          "de965fe6-7fa8-4463-9ae8-e845beee14aa"
+          "9c027a58-70b6-4fca-b0aa-9ad0c8c838f5"
         ],
         "x-ms-routing-request-id": [
-          "WESTINDIA:20231122T105940Z:de965fe6-7fa8-4463-9ae8-e845beee14aa"
+          "WESTINDIA:20231124T111754Z:9c027a58-70b6-4fca-b0aa-9ad0c8c838f5"
         ],
         "Strict-Transport-Security": [
           "max-age=31536000; includeSubDomains"
@@ -507,10 +507,10 @@
           "nosniff"
         ],
         "Date": [
-          "Wed, 22 Nov 2023 10:59:40 GMT"
+          "Fri, 24 Nov 2023 11:17:53 GMT"
         ],
         "Content-Length": [
-          "742"
+          "747"
         ],
         "Content-Type": [
           "application/json; charset=utf-8"
@@ -519,7 +519,7 @@
           "-1"
         ]
       },
-      "ResponseBody": "{\r\n  \"id\": \"/subscriptions/0b35c512-e1ea-4c38-bd26-41d0e9d5b54f/resourceGroups/to-delete-01/providers/Microsoft.Automation/automationAccounts/fbs-aa-01/schedules/Schedule3\",\r\n  \"name\": \"Schedule3\",\r\n  \"type\": \"Microsoft.Automation/AutomationAccounts/Schedules\",\r\n  \"properties\": {\r\n    \"description\": \"Goodbye\",\r\n    \"startTime\": \"2023-11-23T13:00:00+05:30\",\r\n    \"startTimeOffsetMinutes\": 0.0,\r\n    \"expiryTime\": \"2024-11-23T13:00:00+05:30\",\r\n    \"expiryTimeOffsetMinutes\": 0.0,\r\n    \"isEnabled\": false,\r\n    \"nextRun\": \"2023-11-23T13:00:00+05:30\",\r\n    \"nextRunOffsetMinutes\": 0.0,\r\n    \"interval\": 3,\r\n    \"frequency\": \"Week\",\r\n    \"creationTime\": \"2023-11-22T16:29:35.65+05:30\",\r\n    \"lastModifiedTime\": \"2023-11-22T16:29:40.3033333+05:30\",\r\n    \"timeZone\": \"Etc/UTC\",\r\n    \"advancedSchedule\": {\r\n      \"monthDays\": null,\r\n      \"monthlyOccurrences\": null,\r\n      \"weekDays\": null\r\n    }\r\n  }\r\n}",
+      "ResponseBody": "{\r\n  \"id\": \"/subscriptions/0b35c512-e1ea-4c38-bd26-41d0e9d5b54f/resourceGroups/to-delete-01/providers/Microsoft.Automation/automationAccounts/fbs-aa-01/schedules/Schedule3\",\r\n  \"name\": \"Schedule3\",\r\n  \"type\": \"Microsoft.Automation/AutomationAccounts/Schedules\",\r\n  \"properties\": {\r\n    \"description\": \"Goodbye\",\r\n    \"startTime\": \"2023-11-25T13:00:00+05:30\",\r\n    \"startTimeOffsetMinutes\": 0.0,\r\n    \"expiryTime\": \"2024-11-25T13:00:00+05:30\",\r\n    \"expiryTimeOffsetMinutes\": 0.0,\r\n    \"isEnabled\": false,\r\n    \"nextRun\": \"2023-11-25T13:00:00+05:30\",\r\n    \"nextRunOffsetMinutes\": 0.0,\r\n    \"interval\": 3,\r\n    \"frequency\": \"Week\",\r\n    \"creationTime\": \"2023-11-24T16:47:48.6933333+05:30\",\r\n    \"lastModifiedTime\": \"2023-11-24T16:47:53.6266667+05:30\",\r\n    \"timeZone\": \"Etc/UTC\",\r\n    \"advancedSchedule\": {\r\n      \"monthDays\": null,\r\n      \"monthlyOccurrences\": null,\r\n      \"weekDays\": null\r\n    }\r\n  }\r\n}",
       "StatusCode": 200
     },
     {
@@ -528,7 +528,7 @@
       "RequestMethod": "GET",
       "RequestHeaders": {
         "x-ms-client-request-id": [
-          "b09a2674-44b4-41b7-ad11-90442427ff04"
+          "cc2eddab-f7fc-4b92-a0bf-54f05f988983"
         ],
         "Accept-Language": [
           "en-US"
@@ -549,19 +549,19 @@
           "no-cache"
         ],
         "x-ms-request-id": [
-          "b09a2674-44b4-41b7-ad11-90442427ff04"
+          "cc2eddab-f7fc-4b92-a0bf-54f05f988983"
         ],
         "Server": [
           "Microsoft-HTTPAPI/2.0"
         ],
         "x-ms-ratelimit-remaining-subscription-reads": [
-          "11993"
+          "11999"
         ],
         "x-ms-correlation-request-id": [
-          "d6fa4b3b-db83-4d2a-b4ee-320bcff6d985"
+          "df60bfb0-aef1-4c90-8d9c-9ebb516d17dc"
         ],
         "x-ms-routing-request-id": [
-          "JIOINDIAWEST:20231122T105942Z:d6fa4b3b-db83-4d2a-b4ee-320bcff6d985"
+          "WESTINDIA:20231124T111755Z:df60bfb0-aef1-4c90-8d9c-9ebb516d17dc"
         ],
         "Strict-Transport-Security": [
           "max-age=31536000; includeSubDomains"
@@ -570,10 +570,10 @@
           "nosniff"
         ],
         "Date": [
-          "Wed, 22 Nov 2023 10:59:41 GMT"
+          "Fri, 24 Nov 2023 11:17:54 GMT"
         ],
         "Content-Length": [
-          "742"
+          "747"
         ],
         "Content-Type": [
           "application/json; charset=utf-8"
@@ -582,7 +582,7 @@
           "-1"
         ]
       },
-      "ResponseBody": "{\r\n  \"id\": \"/subscriptions/0b35c512-e1ea-4c38-bd26-41d0e9d5b54f/resourceGroups/to-delete-01/providers/Microsoft.Automation/automationAccounts/fbs-aa-01/schedules/Schedule3\",\r\n  \"name\": \"Schedule3\",\r\n  \"type\": \"Microsoft.Automation/AutomationAccounts/Schedules\",\r\n  \"properties\": {\r\n    \"description\": \"Goodbye\",\r\n    \"startTime\": \"2023-11-23T13:00:00+05:30\",\r\n    \"startTimeOffsetMinutes\": 0.0,\r\n    \"expiryTime\": \"2024-11-23T13:00:00+05:30\",\r\n    \"expiryTimeOffsetMinutes\": 0.0,\r\n    \"isEnabled\": false,\r\n    \"nextRun\": \"2023-11-23T13:00:00+05:30\",\r\n    \"nextRunOffsetMinutes\": 0.0,\r\n    \"interval\": 3,\r\n    \"frequency\": \"Week\",\r\n    \"creationTime\": \"2023-11-22T16:29:35.65+05:30\",\r\n    \"lastModifiedTime\": \"2023-11-22T16:29:40.3033333+05:30\",\r\n    \"timeZone\": \"Etc/UTC\",\r\n    \"advancedSchedule\": {\r\n      \"monthDays\": null,\r\n      \"monthlyOccurrences\": null,\r\n      \"weekDays\": null\r\n    }\r\n  }\r\n}",
+      "ResponseBody": "{\r\n  \"id\": \"/subscriptions/0b35c512-e1ea-4c38-bd26-41d0e9d5b54f/resourceGroups/to-delete-01/providers/Microsoft.Automation/automationAccounts/fbs-aa-01/schedules/Schedule3\",\r\n  \"name\": \"Schedule3\",\r\n  \"type\": \"Microsoft.Automation/AutomationAccounts/Schedules\",\r\n  \"properties\": {\r\n    \"description\": \"Goodbye\",\r\n    \"startTime\": \"2023-11-25T13:00:00+05:30\",\r\n    \"startTimeOffsetMinutes\": 0.0,\r\n    \"expiryTime\": \"2024-11-25T13:00:00+05:30\",\r\n    \"expiryTimeOffsetMinutes\": 0.0,\r\n    \"isEnabled\": false,\r\n    \"nextRun\": \"2023-11-25T13:00:00+05:30\",\r\n    \"nextRunOffsetMinutes\": 0.0,\r\n    \"interval\": 3,\r\n    \"frequency\": \"Week\",\r\n    \"creationTime\": \"2023-11-24T16:47:48.6933333+05:30\",\r\n    \"lastModifiedTime\": \"2023-11-24T16:47:53.6266667+05:30\",\r\n    \"timeZone\": \"Etc/UTC\",\r\n    \"advancedSchedule\": {\r\n      \"monthDays\": null,\r\n      \"monthlyOccurrences\": null,\r\n      \"weekDays\": null\r\n    }\r\n  }\r\n}",
       "StatusCode": 200
     },
     {
@@ -591,7 +591,7 @@
       "RequestMethod": "GET",
       "RequestHeaders": {
         "x-ms-client-request-id": [
-          "6e80f3bb-c662-499b-9137-d5d5c19acd00"
+          "db48e41c-6944-49a0-8530-b1be962141dc"
         ],
         "Accept-Language": [
           "en-US"
@@ -612,19 +612,19 @@
           "no-cache"
         ],
         "x-ms-request-id": [
-          "6e80f3bb-c662-499b-9137-d5d5c19acd00"
+          "db48e41c-6944-49a0-8530-b1be962141dc"
         ],
         "Server": [
           "Microsoft-HTTPAPI/2.0"
         ],
         "x-ms-ratelimit-remaining-subscription-reads": [
-          "11987"
+          "11999"
         ],
         "x-ms-correlation-request-id": [
-          "e65e95a0-0649-47b9-b879-9e64db9b6f2c"
+          "07a0c4b9-526d-49f7-9e19-9416c5a5c2bb"
         ],
         "x-ms-routing-request-id": [
-          "JIOINDIAWEST:20231122T105944Z:e65e95a0-0649-47b9-b879-9e64db9b6f2c"
+          "WESTINDIA:20231124T111759Z:07a0c4b9-526d-49f7-9e19-9416c5a5c2bb"
         ],
         "Strict-Transport-Security": [
           "max-age=31536000; includeSubDomains"
@@ -633,7 +633,7 @@
           "nosniff"
         ],
         "Date": [
-          "Wed, 22 Nov 2023 10:59:44 GMT"
+          "Fri, 24 Nov 2023 11:17:58 GMT"
         ],
         "Content-Length": [
           "32"
@@ -654,7 +654,7 @@
       "RequestMethod": "PATCH",
       "RequestHeaders": {
         "x-ms-client-request-id": [
-          "646a362f-0136-4b6c-8c24-1f46fce6487d"
+          "6eecd5c6-4b64-4c3b-9f40-421d8efffd4b"
         ],
         "Accept-Language": [
           "en-US"
@@ -681,19 +681,19 @@
           "no-cache"
         ],
         "x-ms-request-id": [
-          "646a362f-0136-4b6c-8c24-1f46fce6487d"
+          "6eecd5c6-4b64-4c3b-9f40-421d8efffd4b"
         ],
         "Server": [
           "Microsoft-HTTPAPI/2.0"
         ],
         "x-ms-ratelimit-remaining-subscription-writes": [
-          "1198"
+          "1199"
         ],
         "x-ms-correlation-request-id": [
-          "151a61ad-d74d-4c17-aee5-75381a2715b3"
+          "e13fa45f-08e1-407d-916f-8ca23ba9ea80"
         ],
         "x-ms-routing-request-id": [
-          "WESTINDIA:20231122T105940Z:151a61ad-d74d-4c17-aee5-75381a2715b3"
+          "WESTINDIA:20231124T111753Z:e13fa45f-08e1-407d-916f-8ca23ba9ea80"
         ],
         "Strict-Transport-Security": [
           "max-age=31536000; includeSubDomains"
@@ -702,10 +702,10 @@
           "nosniff"
         ],
         "Date": [
-          "Wed, 22 Nov 2023 10:59:40 GMT"
+          "Fri, 24 Nov 2023 11:17:53 GMT"
         ],
         "Content-Length": [
-          "742"
+          "747"
         ],
         "Content-Type": [
           "application/json; charset=utf-8"
@@ -714,7 +714,7 @@
           "-1"
         ]
       },
-      "ResponseBody": "{\r\n  \"id\": \"/subscriptions/0b35c512-e1ea-4c38-bd26-41d0e9d5b54f/resourceGroups/to-delete-01/providers/Microsoft.Automation/automationAccounts/fbs-aa-01/schedules/Schedule3\",\r\n  \"name\": \"Schedule3\",\r\n  \"type\": \"Microsoft.Automation/AutomationAccounts/Schedules\",\r\n  \"properties\": {\r\n    \"description\": \"Goodbye\",\r\n    \"startTime\": \"2023-11-23T13:00:00+05:30\",\r\n    \"startTimeOffsetMinutes\": 0.0,\r\n    \"expiryTime\": \"2024-11-23T13:00:00+05:30\",\r\n    \"expiryTimeOffsetMinutes\": 0.0,\r\n    \"isEnabled\": false,\r\n    \"nextRun\": \"2023-11-23T13:00:00+05:30\",\r\n    \"nextRunOffsetMinutes\": 0.0,\r\n    \"interval\": 3,\r\n    \"frequency\": \"Week\",\r\n    \"creationTime\": \"2023-11-22T16:29:35.65+05:30\",\r\n    \"lastModifiedTime\": \"2023-11-22T16:29:37.4333333+05:30\",\r\n    \"timeZone\": \"Etc/UTC\",\r\n    \"advancedSchedule\": {\r\n      \"monthDays\": null,\r\n      \"monthlyOccurrences\": null,\r\n      \"weekDays\": null\r\n    }\r\n  }\r\n}",
+      "ResponseBody": "{\r\n  \"id\": \"/subscriptions/0b35c512-e1ea-4c38-bd26-41d0e9d5b54f/resourceGroups/to-delete-01/providers/Microsoft.Automation/automationAccounts/fbs-aa-01/schedules/Schedule3\",\r\n  \"name\": \"Schedule3\",\r\n  \"type\": \"Microsoft.Automation/AutomationAccounts/Schedules\",\r\n  \"properties\": {\r\n    \"description\": \"Goodbye\",\r\n    \"startTime\": \"2023-11-25T13:00:00+05:30\",\r\n    \"startTimeOffsetMinutes\": 0.0,\r\n    \"expiryTime\": \"2024-11-25T13:00:00+05:30\",\r\n    \"expiryTimeOffsetMinutes\": 0.0,\r\n    \"isEnabled\": false,\r\n    \"nextRun\": \"2023-11-25T13:00:00+05:30\",\r\n    \"nextRunOffsetMinutes\": 0.0,\r\n    \"interval\": 3,\r\n    \"frequency\": \"Week\",\r\n    \"creationTime\": \"2023-11-24T16:47:48.6933333+05:30\",\r\n    \"lastModifiedTime\": \"2023-11-24T16:47:50.4533333+05:30\",\r\n    \"timeZone\": \"Etc/UTC\",\r\n    \"advancedSchedule\": {\r\n      \"monthDays\": null,\r\n      \"monthlyOccurrences\": null,\r\n      \"weekDays\": null\r\n    }\r\n  }\r\n}",
       "StatusCode": 200
     },
     {
@@ -723,7 +723,7 @@
       "RequestMethod": "DELETE",
       "RequestHeaders": {
         "x-ms-client-request-id": [
-          "53e50553-4be2-4e43-94c8-698412bce05a"
+          "138ba1a5-c8cf-4cac-a465-0eb2f722dfe5"
         ],
         "Accept-Language": [
           "en-US"
@@ -744,19 +744,19 @@
           "no-cache"
         ],
         "x-ms-request-id": [
-          "53e50553-4be2-4e43-94c8-698412bce05a"
+          "138ba1a5-c8cf-4cac-a465-0eb2f722dfe5"
         ],
         "Server": [
           "Microsoft-HTTPAPI/2.0"
         ],
         "x-ms-ratelimit-remaining-subscription-deletes": [
-          "14998"
+          "14999"
         ],
         "x-ms-correlation-request-id": [
-          "f41b549a-2a9c-4a78-844c-76b8c3aabdc0"
+          "b97d8982-0331-4502-8036-45fab5e67fc8"
         ],
         "x-ms-routing-request-id": [
-          "JIOINDIAWEST:20231122T105944Z:f41b549a-2a9c-4a78-844c-76b8c3aabdc0"
+          "WESTINDIA:20231124T111758Z:b97d8982-0331-4502-8036-45fab5e67fc8"
         ],
         "Strict-Transport-Security": [
           "max-age=31536000; includeSubDomains"
@@ -765,7 +765,7 @@
           "nosniff"
         ],
         "Date": [
-          "Wed, 22 Nov 2023 10:59:43 GMT"
+          "Fri, 24 Nov 2023 11:17:57 GMT"
         ],
         "Expires": [
           "-1"

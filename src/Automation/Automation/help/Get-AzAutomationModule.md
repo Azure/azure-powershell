@@ -15,13 +15,13 @@ Gets metadata for modules from Automation.
 
 ### ByAll (Default)
 ```
-Get-AzAutomationModule [[-RuntimeVersion] <String>] [-ResourceGroupName] <String>
+Get-AzAutomationModule [-RuntimeVersion <String>] [-ResourceGroupName] <String>
  [-AutomationAccountName] <String> [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
 ### ByName
 ```
-Get-AzAutomationModule [-Name] <String> [[-RuntimeVersion] <String>] [-ResourceGroupName] <String>
+Get-AzAutomationModule [-Name] <String> [-RuntimeVersion <String>] [-ResourceGroupName] <String>
  [-AutomationAccountName] <String> [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
@@ -116,7 +116,7 @@ Aliases:
 Accepted values: 5.1, 7.2
 
 Required: False
-Position: 4
+Position: Named
 Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False

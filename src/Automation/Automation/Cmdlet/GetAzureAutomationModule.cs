@@ -37,7 +37,7 @@ namespace Microsoft.Azure.Commands.Automation.Cmdlet
         /// <summary>
         /// Gets or sets the runbook version type
         /// </summary>
-        [Parameter(Position = 4, Mandatory = false, HelpMessage = "Runtime Environment of module ")]
+        [Parameter(Mandatory = false, HelpMessage = "Runtime Environment of module ")]
         [ValidateSet(Constants.RuntimeVersion.PowerShell51,
             Constants.RuntimeVersion.PowerShell72,
             IgnoreCase = true)]
@@ -53,20 +53,10 @@ namespace Microsoft.Azure.Commands.Automation.Cmdlet
             IEnumerable<Module> ret = null;
             if (!string.IsNullOrEmpty(this.Name))
             {
-                if (Utils.CheckIfRuntimeVersionIsEmptyOrPowershell5(RuntimeVersion))
+                ret = new List<Module>
                 {
-                    ret = new List<Module>
-                {
-                   this.AutomationClient.GetModule(this.ResourceGroupName, this.AutomationAccountName, this.Name)
+                   this.AutomationClient.GetModule(this.ResourceGroupName, this.AutomationAccountName, this.Name, Utils.isRuntimeVersionPowerShell72(RuntimeVersion))
                 };
-                }
-                else
-                {
-                    ret = new List<Module>
-                {
-                   this.AutomationClient.GetPowerShell72Module(this.ResourceGroupName, this.AutomationAccountName, this.Name)
-                };
-                }
                 this.GenerateCmdletOutput(ret);
             }
             else
@@ -74,14 +64,7 @@ namespace Microsoft.Azure.Commands.Automation.Cmdlet
                 string nextLink = string.Empty;
                 do
                 {
-                    if (Utils.CheckIfRuntimeVersionIsEmptyOrPowershell5(RuntimeVersion))
-                    {
-                        ret = this.AutomationClient.ListModules(this.ResourceGroupName, this.AutomationAccountName, ref nextLink);
-                    }
-                    else
-                    {
-                        ret = this.AutomationClient.ListPowerShell72Modules(this.ResourceGroupName, this.AutomationAccountName, ref nextLink);
-                    }
+                    ret = this.AutomationClient.ListModules(this.ResourceGroupName, this.AutomationAccountName, ref nextLink, Utils.isRuntimeVersionPowerShell72(RuntimeVersion));                    
                     this.GenerateCmdletOutput(ret);
                 } while (!string.IsNullOrEmpty(nextLink));
             }

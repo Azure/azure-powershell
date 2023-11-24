@@ -50,7 +50,7 @@ namespace Microsoft.Azure.Commands.ResourceManager.Automation.Test.UnitTests
             string accountName = "automation";
             string moduleName = "module";
 
-            this.mockAutomationClient.Setup(f => f.DeleteModule(resourceGroupName, accountName, moduleName));
+            this.mockAutomationClient.Setup(f => f.DeleteModule(resourceGroupName, accountName, moduleName, false));
 
             // Test
             this.cmdlet.ResourceGroupName = resourceGroupName;
@@ -61,7 +61,7 @@ namespace Microsoft.Azure.Commands.ResourceManager.Automation.Test.UnitTests
             this.cmdlet.ExecuteCmdlet();
 
             // Assert
-            this.mockAutomationClient.Verify(f => f.DeleteModule(resourceGroupName, accountName, moduleName), Times.Once());
+            this.mockAutomationClient.Verify(f => f.DeleteModule(resourceGroupName, accountName, moduleName, false), Times.Once());
 
         }
 
@@ -73,7 +73,7 @@ namespace Microsoft.Azure.Commands.ResourceManager.Automation.Test.UnitTests
             string accountName = "automation";
             string moduleName = "module";
 
-            this.mockAutomationClient.Setup(f => f.DeleteModule(resourceGroupName, accountName, moduleName));
+            this.mockAutomationClient.Setup(f => f.DeleteModule(resourceGroupName, accountName, moduleName, true));
 
             // Test
             this.cmdlet.ResourceGroupName = resourceGroupName;
@@ -84,7 +84,7 @@ namespace Microsoft.Azure.Commands.ResourceManager.Automation.Test.UnitTests
             this.cmdlet.ExecuteCmdlet();
 
             // Assert
-            this.mockAutomationClient.Verify(f => f.DeletePowerShell72Module(resourceGroupName, accountName, moduleName), Times.Once());
+            this.mockAutomationClient.Verify(f => f.DeleteModule(resourceGroupName, accountName, moduleName, true), Times.Once());
         }
     }
 }

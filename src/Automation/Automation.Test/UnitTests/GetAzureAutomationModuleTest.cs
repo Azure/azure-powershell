@@ -53,7 +53,7 @@ namespace Microsoft.Azure.Commands.ResourceManager.Automation.Test.UnitTests
             string accountName = "automation";
             string packageName = "module";
 
-            this.mockAutomationClient.Setup(f => f.GetModule(resourceGroupName, accountName, packageName));
+            this.mockAutomationClient.Setup(f => f.GetModule(resourceGroupName, accountName, packageName, false));
 
             // Test
             this.cmdlet.ResourceGroupName = resourceGroupName;
@@ -62,7 +62,7 @@ namespace Microsoft.Azure.Commands.ResourceManager.Automation.Test.UnitTests
             this.cmdlet.ExecuteCmdlet();
 
             // Assert
-            this.mockAutomationClient.Verify(f => f.GetModule(resourceGroupName, accountName, packageName), Times.Once());
+            this.mockAutomationClient.Verify(f => f.GetModule(resourceGroupName, accountName, packageName, false), Times.Once());
         }
 
         [TestMethod]
@@ -73,7 +73,7 @@ namespace Microsoft.Azure.Commands.ResourceManager.Automation.Test.UnitTests
             string accountName = "automation";
             string nextLink = string.Empty;
 
-            this.mockAutomationClient.Setup(f => f.ListModules(resourceGroupName, accountName, ref nextLink)).Returns((string a, string b, string c) => new List<Module>()); ;
+            this.mockAutomationClient.Setup(f => f.ListModules(resourceGroupName, accountName, ref nextLink, false)).Returns(new List<Module>()) ;
 
             // Test
             this.cmdlet.ResourceGroupName = resourceGroupName;
@@ -81,7 +81,7 @@ namespace Microsoft.Azure.Commands.ResourceManager.Automation.Test.UnitTests
             this.cmdlet.ExecuteCmdlet();
 
             // Assert
-            this.mockAutomationClient.Verify(f => f.ListModules(resourceGroupName, accountName, ref nextLink), Times.Once());
+            this.mockAutomationClient.Verify(f => f.ListModules(resourceGroupName, accountName, ref nextLink, false), Times.Once());
         }
 
         [TestMethod]
@@ -92,7 +92,7 @@ namespace Microsoft.Azure.Commands.ResourceManager.Automation.Test.UnitTests
             string accountName = "automation";
             string packageName = "module";
 
-            this.mockAutomationClient.Setup(f => f.GetModule(resourceGroupName, accountName, packageName));
+            this.mockAutomationClient.Setup(f => f.GetModule(resourceGroupName, accountName, packageName, true));
 
             // Test
             this.cmdlet.ResourceGroupName = resourceGroupName;
@@ -102,7 +102,7 @@ namespace Microsoft.Azure.Commands.ResourceManager.Automation.Test.UnitTests
             this.cmdlet.ExecuteCmdlet();
 
             // Assert
-            this.mockAutomationClient.Verify(f => f.GetPowerShell72Module(resourceGroupName, accountName, packageName), Times.Once());
+            this.mockAutomationClient.Verify(f => f.GetModule(resourceGroupName, accountName, packageName, true), Times.Once());
         }
 
         [TestMethod]
@@ -113,7 +113,7 @@ namespace Microsoft.Azure.Commands.ResourceManager.Automation.Test.UnitTests
             string accountName = "automation";
             string nextLink = string.Empty;
 
-            this.mockAutomationClient.Setup(f => f.ListModules(resourceGroupName, accountName, ref nextLink)).Returns((string a, string b, string c) => new List<Module>()); ;
+            this.mockAutomationClient.Setup(f => f.ListModules(resourceGroupName, accountName, ref nextLink, true)).Returns(new List<Module>());
 
             // Test
             this.cmdlet.ResourceGroupName = resourceGroupName;
@@ -122,7 +122,7 @@ namespace Microsoft.Azure.Commands.ResourceManager.Automation.Test.UnitTests
             this.cmdlet.ExecuteCmdlet();
 
             // Assert
-            this.mockAutomationClient.Verify(f => f.ListPowerShell72Modules(resourceGroupName, accountName, ref nextLink), Times.Once());
+            this.mockAutomationClient.Verify(f => f.ListModules(resourceGroupName, accountName, ref nextLink, true), Times.Once());
         }
     }
 }

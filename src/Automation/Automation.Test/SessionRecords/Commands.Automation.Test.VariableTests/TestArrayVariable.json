@@ -6,7 +6,7 @@
       "RequestMethod": "GET",
       "RequestHeaders": {
         "x-ms-client-request-id": [
-          "75bf4759-a32d-4194-8fec-955a9128f56b"
+          "b202847f-3144-4ec1-96be-3482682a7468"
         ],
         "Accept-Language": [
           "en-US"
@@ -27,22 +27,22 @@
           "no-cache"
         ],
         "ocp-automation-accountid": [
-          "83913890-dddc-4f93-b69e-d27173b8f399"
+          "0f84710a-f5e8-4faf-bac2-b498165d32f8"
         ],
         "x-ms-request-id": [
-          "75bf4759-a32d-4194-8fec-955a9128f56b"
+          "b202847f-3144-4ec1-96be-3482682a7468"
         ],
         "Server": [
           "Microsoft-HTTPAPI/2.0"
         ],
         "x-ms-ratelimit-remaining-subscription-reads": [
-          "11997"
+          "11999"
         ],
         "x-ms-correlation-request-id": [
-          "39d4ad4b-3845-4a6c-8397-727e425f1f4a"
+          "5ac3d2f4-0992-4b4c-a098-8782d83a0733"
         ],
         "x-ms-routing-request-id": [
-          "WESTINDIA:20231122T105904Z:39d4ad4b-3845-4a6c-8397-727e425f1f4a"
+          "WESTINDIA:20231124T111908Z:5ac3d2f4-0992-4b4c-a098-8782d83a0733"
         ],
         "Strict-Transport-Security": [
           "max-age=31536000; includeSubDomains"
@@ -51,7 +51,7 @@
           "nosniff"
         ],
         "Date": [
-          "Wed, 22 Nov 2023 10:59:04 GMT"
+          "Fri, 24 Nov 2023 11:19:08 GMT"
         ],
         "Content-Length": [
           "1354"
@@ -63,7 +63,7 @@
           "-1"
         ]
       },
-      "ResponseBody": "{\r\n  \"name\": \"fbs-aa-01\",\r\n  \"systemData\": {\r\n    \"createdAt\": \"2023-11-21T10:24:36.41+05:30\",\r\n    \"lastModifiedAt\": \"2023-11-21T10:24:36.41+05:30\"\r\n  },\r\n  \"id\": \"/subscriptions/0b35c512-e1ea-4c38-bd26-41d0e9d5b54f/resourceGroups/to-delete-01/providers/Microsoft.Automation/automationAccounts/fbs-aa-01\",\r\n  \"type\": \"Microsoft.Automation/AutomationAccounts\",\r\n  \"location\": \"eastus\",\r\n  \"identity\": {\r\n    \"type\": \"SystemAssigned\",\r\n    \"principalId\": \"75094e1e-e2ee-4ffd-a7ba-870f1b4e2232\",\r\n    \"tenantId\": \"72f988bf-86f1-41af-91ab-2d7cd011db47\"\r\n  },\r\n  \"tags\": {},\r\n  \"etag\": null,\r\n  \"properties\": {\r\n    \"publicNetworkAccess\": true,\r\n    \"disableLocalAuth\": false,\r\n    \"sku\": {\r\n      \"name\": \"Basic\",\r\n      \"family\": null,\r\n      \"capacity\": null\r\n    },\r\n    \"state\": \"Ok\",\r\n    \"RegistrationUrl\": \"https://83913890-dddc-4f93-b69e-d27173b8f399.agentsvc.eus.azure-automation.net/accounts/83913890-dddc-4f93-b69e-d27173b8f399\",\r\n    \"encryption\": {\r\n      \"keySource\": \"Microsoft.Automation\",\r\n      \"identity\": {\r\n        \"userAssignedIdentity\": null\r\n      }\r\n    },\r\n    \"privateEndpointConnections\": [],\r\n    \"automationHybridServiceUrl\": \"https://83913890-dddc-4f93-b69e-d27173b8f399.jrds.eus.azure-automation.net/automationAccounts/83913890-dddc-4f93-b69e-d27173b8f399\",\r\n    \"RuntimeConfiguration\": {\r\n      \"powershell\": {\r\n        \"builtinModules\": {\r\n          \"Az\": \"8.0.0\"\r\n        }\r\n      },\r\n      \"powershell7\": {\r\n        \"builtinModules\": {\r\n          \"Az\": \"8.0.0\"\r\n        }\r\n      },\r\n      \"powershell72\": {\r\n        \"builtinModules\": {\r\n          \"Az\": \"8.3.0\"\r\n        }\r\n      }\r\n    },\r\n    \"creationTime\": \"2023-11-21T10:24:36.41+05:30\",\r\n    \"lastModifiedBy\": null,\r\n    \"lastModifiedTime\": \"2023-11-21T10:24:36.41+05:30\"\r\n  }\r\n}",
+      "ResponseBody": "{\r\n  \"name\": \"fbs-aa-01\",\r\n  \"systemData\": {\r\n    \"createdAt\": \"2023-11-24T14:37:55.92+05:30\",\r\n    \"lastModifiedAt\": \"2023-11-24T14:37:55.92+05:30\"\r\n  },\r\n  \"id\": \"/subscriptions/0b35c512-e1ea-4c38-bd26-41d0e9d5b54f/resourceGroups/to-delete-01/providers/Microsoft.Automation/automationAccounts/fbs-aa-01\",\r\n  \"type\": \"Microsoft.Automation/AutomationAccounts\",\r\n  \"location\": \"eastus\",\r\n  \"identity\": {\r\n    \"type\": \"SystemAssigned\",\r\n    \"principalId\": \"0e72b0f2-d5f1-428c-a006-f407e8dbbfcf\",\r\n    \"tenantId\": \"72f988bf-86f1-41af-91ab-2d7cd011db47\"\r\n  },\r\n  \"tags\": {},\r\n  \"etag\": null,\r\n  \"properties\": {\r\n    \"publicNetworkAccess\": true,\r\n    \"disableLocalAuth\": false,\r\n    \"sku\": {\r\n      \"name\": \"Basic\",\r\n      \"family\": null,\r\n      \"capacity\": null\r\n    },\r\n    \"state\": \"Ok\",\r\n    \"RegistrationUrl\": \"https://0f84710a-f5e8-4faf-bac2-b498165d32f8.agentsvc.eus.azure-automation.net/accounts/0f84710a-f5e8-4faf-bac2-b498165d32f8\",\r\n    \"encryption\": {\r\n      \"keySource\": \"Microsoft.Automation\",\r\n      \"identity\": {\r\n        \"userAssignedIdentity\": null\r\n      }\r\n    },\r\n    \"privateEndpointConnections\": [],\r\n    \"automationHybridServiceUrl\": \"https://0f84710a-f5e8-4faf-bac2-b498165d32f8.jrds.eus.azure-automation.net/automationAccounts/0f84710a-f5e8-4faf-bac2-b498165d32f8\",\r\n    \"RuntimeConfiguration\": {\r\n      \"powershell\": {\r\n        \"builtinModules\": {\r\n          \"Az\": \"8.0.0\"\r\n        }\r\n      },\r\n      \"powershell7\": {\r\n        \"builtinModules\": {\r\n          \"Az\": \"8.0.0\"\r\n        }\r\n      },\r\n      \"powershell72\": {\r\n        \"builtinModules\": {\r\n          \"Az\": \"8.3.0\"\r\n        }\r\n      }\r\n    },\r\n    \"creationTime\": \"2023-11-24T14:37:55.92+05:30\",\r\n    \"lastModifiedBy\": null,\r\n    \"lastModifiedTime\": \"2023-11-24T14:37:55.92+05:30\"\r\n  }\r\n}",
       "StatusCode": 200
     },
     {
@@ -72,7 +72,7 @@
       "RequestMethod": "GET",
       "RequestHeaders": {
         "x-ms-client-request-id": [
-          "c5087576-3738-40cc-ba85-93ca5798303e"
+          "99d3a818-f4f1-4a3e-9f4b-d43252f63e49"
         ],
         "Accept-Language": [
           "en-US"
@@ -93,19 +93,19 @@
           "no-cache"
         ],
         "x-ms-request-id": [
-          "c5087576-3738-40cc-ba85-93ca5798303e"
+          "99d3a818-f4f1-4a3e-9f4b-d43252f63e49"
         ],
         "Server": [
           "Microsoft-HTTPAPI/2.0"
         ],
         "x-ms-ratelimit-remaining-subscription-reads": [
-          "11997"
+          "11998"
         ],
         "x-ms-correlation-request-id": [
-          "f622bd2e-e424-40e1-bb37-173bd52eaa31"
+          "5d2f7430-26af-4e6b-8f89-f4778e50e7a7"
         ],
         "x-ms-routing-request-id": [
-          "WESTINDIA:20231122T105906Z:f622bd2e-e424-40e1-bb37-173bd52eaa31"
+          "WESTINDIA:20231124T111909Z:5d2f7430-26af-4e6b-8f89-f4778e50e7a7"
         ],
         "Strict-Transport-Security": [
           "max-age=31536000; includeSubDomains"
@@ -114,7 +114,7 @@
           "nosniff"
         ],
         "Date": [
-          "Wed, 22 Nov 2023 10:59:05 GMT"
+          "Fri, 24 Nov 2023 11:19:08 GMT"
         ],
         "Content-Length": [
           "51"
@@ -135,7 +135,7 @@
       "RequestMethod": "GET",
       "RequestHeaders": {
         "x-ms-client-request-id": [
-          "21f40b3a-48fd-44b8-bc2d-ab878220bb38"
+          "17227bee-a663-4e6e-9442-428dd5b5223c"
         ],
         "Accept-Language": [
           "en-US"
@@ -156,7 +156,70 @@
           "no-cache"
         ],
         "x-ms-request-id": [
-          "21f40b3a-48fd-44b8-bc2d-ab878220bb38"
+          "17227bee-a663-4e6e-9442-428dd5b5223c"
+        ],
+        "Server": [
+          "Microsoft-HTTPAPI/2.0"
+        ],
+        "x-ms-ratelimit-remaining-subscription-reads": [
+          "11997"
+        ],
+        "x-ms-correlation-request-id": [
+          "a7c03b48-82c5-4093-af63-6c5f03fd600a"
+        ],
+        "x-ms-routing-request-id": [
+          "WESTINDIA:20231124T111910Z:a7c03b48-82c5-4093-af63-6c5f03fd600a"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
+        ],
+        "X-Content-Type-Options": [
+          "nosniff"
+        ],
+        "Date": [
+          "Fri, 24 Nov 2023 11:19:09 GMT"
+        ],
+        "Content-Length": [
+          "491"
+        ],
+        "Content-Type": [
+          "application/json; charset=utf-8"
+        ],
+        "Expires": [
+          "-1"
+        ]
+      },
+      "ResponseBody": "{\r\n  \"id\": \"/subscriptions/0b35c512-e1ea-4c38-bd26-41d0e9d5b54f/resourceGroups/to-delete-01/providers/Microsoft.Automation/automationAccounts/fbs-aa-01/variables/NewArrayVariable\",\r\n  \"name\": \"NewArrayVariable\",\r\n  \"type\": \"Microsoft.Automation/AutomationAccounts/Variables\",\r\n  \"properties\": {\r\n    \"creationTime\": \"2023-11-24T16:49:09.72+05:30\",\r\n    \"lastModifiedTime\": \"2023-11-24T16:49:09.72+05:30\",\r\n    \"isEncrypted\": false,\r\n    \"value\": \"[{\\\"key1\\\":\\\"value1\\\"},{\\\"key2\\\":\\\"value2\\\"},{\\\"key3\\\":\\\"value3\\\"}]\",\r\n    \"description\": \"array\"\r\n  }\r\n}",
+      "StatusCode": 200
+    },
+    {
+      "RequestUri": "/subscriptions/0b35c512-e1ea-4c38-bd26-41d0e9d5b54f/resourceGroups/to-delete-01/providers/Microsoft.Automation/automationAccounts/fbs-aa-01/variables/NewArrayVariable?api-version=2023-11-01",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvMGIzNWM1MTItZTFlYS00YzM4LWJkMjYtNDFkMGU5ZDViNTRmL3Jlc291cmNlR3JvdXBzL3RvLWRlbGV0ZS0wMS9wcm92aWRlcnMvTWljcm9zb2Z0LkF1dG9tYXRpb24vYXV0b21hdGlvbkFjY291bnRzL2Zicy1hYS0wMS92YXJpYWJsZXMvTmV3QXJyYXlWYXJpYWJsZT9hcGktdmVyc2lvbj0yMDIzLTExLTAx",
+      "RequestMethod": "GET",
+      "RequestHeaders": {
+        "x-ms-client-request-id": [
+          "17227bee-a663-4e6e-9442-428dd5b5223c"
+        ],
+        "Accept-Language": [
+          "en-US"
+        ],
+        "User-Agent": [
+          "FxVersion/6.0.2523.51912",
+          "OSName/Windows",
+          "OSVersion/Microsoft.Windows.10.0.22631",
+          "Microsoft.Azure.Management.Automation.AutomationClient/1.9.1"
+        ]
+      },
+      "RequestBody": "",
+      "ResponseHeaders": {
+        "Cache-Control": [
+          "no-cache"
+        ],
+        "Pragma": [
+          "no-cache"
+        ],
+        "x-ms-request-id": [
+          "17227bee-a663-4e6e-9442-428dd5b5223c"
         ],
         "Server": [
           "Microsoft-HTTPAPI/2.0"
@@ -165,10 +228,10 @@
           "11996"
         ],
         "x-ms-correlation-request-id": [
-          "3b766ced-0d8f-4775-9570-678b79164c63"
+          "cf9987a3-9e0f-4381-8e0c-022477456015"
         ],
         "x-ms-routing-request-id": [
-          "WESTINDIA:20231122T105907Z:3b766ced-0d8f-4775-9570-678b79164c63"
+          "WESTINDIA:20231124T111911Z:cf9987a3-9e0f-4381-8e0c-022477456015"
         ],
         "Strict-Transport-Security": [
           "max-age=31536000; includeSubDomains"
@@ -177,10 +240,10 @@
           "nosniff"
         ],
         "Date": [
-          "Wed, 22 Nov 2023 10:59:07 GMT"
+          "Fri, 24 Nov 2023 11:19:10 GMT"
         ],
         "Content-Length": [
-          "501"
+          "474"
         ],
         "Content-Type": [
           "application/json; charset=utf-8"
@@ -189,7 +252,7 @@
           "-1"
         ]
       },
-      "ResponseBody": "{\r\n  \"id\": \"/subscriptions/0b35c512-e1ea-4c38-bd26-41d0e9d5b54f/resourceGroups/to-delete-01/providers/Microsoft.Automation/automationAccounts/fbs-aa-01/variables/NewArrayVariable\",\r\n  \"name\": \"NewArrayVariable\",\r\n  \"type\": \"Microsoft.Automation/AutomationAccounts/Variables\",\r\n  \"properties\": {\r\n    \"creationTime\": \"2023-11-22T16:29:06.6466667+05:30\",\r\n    \"lastModifiedTime\": \"2023-11-22T16:29:06.6466667+05:30\",\r\n    \"isEncrypted\": false,\r\n    \"value\": \"[{\\\"key1\\\":\\\"value1\\\"},{\\\"key2\\\":\\\"value2\\\"},{\\\"key3\\\":\\\"value3\\\"}]\",\r\n    \"description\": \"array\"\r\n  }\r\n}",
+      "ResponseBody": "{\r\n  \"id\": \"/subscriptions/0b35c512-e1ea-4c38-bd26-41d0e9d5b54f/resourceGroups/to-delete-01/providers/Microsoft.Automation/automationAccounts/fbs-aa-01/variables/NewArrayVariable\",\r\n  \"name\": \"NewArrayVariable\",\r\n  \"type\": \"Microsoft.Automation/AutomationAccounts/Variables\",\r\n  \"properties\": {\r\n    \"creationTime\": \"2023-11-24T16:49:09.72+05:30\",\r\n    \"lastModifiedTime\": \"2023-11-24T16:49:11.0366667+05:30\",\r\n    \"isEncrypted\": false,\r\n    \"value\": \"[{\\\"key1\\\":\\\"value1\\\"},{\\\"key2\\\":\\\"value2\\\"}]\",\r\n    \"description\": \"array\"\r\n  }\r\n}",
       "StatusCode": 200
     },
     {
@@ -198,7 +261,7 @@
       "RequestMethod": "GET",
       "RequestHeaders": {
         "x-ms-client-request-id": [
-          "21f40b3a-48fd-44b8-bc2d-ab878220bb38"
+          "bd545f80-ec2a-469f-aa51-03e0189c68e4"
         ],
         "Accept-Language": [
           "en-US"
@@ -219,19 +282,19 @@
           "no-cache"
         ],
         "x-ms-request-id": [
-          "21f40b3a-48fd-44b8-bc2d-ab878220bb38"
+          "bd545f80-ec2a-469f-aa51-03e0189c68e4"
         ],
         "Server": [
           "Microsoft-HTTPAPI/2.0"
         ],
         "x-ms-ratelimit-remaining-subscription-reads": [
-          "11995"
+          "11999"
         ],
         "x-ms-correlation-request-id": [
-          "149068e2-af73-4875-b70a-2f68b11680e6"
+          "88072860-068d-4cec-a4da-7be89f375ed7"
         ],
         "x-ms-routing-request-id": [
-          "WESTINDIA:20231122T105908Z:149068e2-af73-4875-b70a-2f68b11680e6"
+          "JIOINDIAWEST:20231124T111916Z:88072860-068d-4cec-a4da-7be89f375ed7"
         ],
         "Strict-Transport-Security": [
           "max-age=31536000; includeSubDomains"
@@ -240,70 +303,7 @@
           "nosniff"
         ],
         "Date": [
-          "Wed, 22 Nov 2023 10:59:08 GMT"
-        ],
-        "Content-Length": [
-          "479"
-        ],
-        "Content-Type": [
-          "application/json; charset=utf-8"
-        ],
-        "Expires": [
-          "-1"
-        ]
-      },
-      "ResponseBody": "{\r\n  \"id\": \"/subscriptions/0b35c512-e1ea-4c38-bd26-41d0e9d5b54f/resourceGroups/to-delete-01/providers/Microsoft.Automation/automationAccounts/fbs-aa-01/variables/NewArrayVariable\",\r\n  \"name\": \"NewArrayVariable\",\r\n  \"type\": \"Microsoft.Automation/AutomationAccounts/Variables\",\r\n  \"properties\": {\r\n    \"creationTime\": \"2023-11-22T16:29:06.6466667+05:30\",\r\n    \"lastModifiedTime\": \"2023-11-22T16:29:07.8733333+05:30\",\r\n    \"isEncrypted\": false,\r\n    \"value\": \"[{\\\"key1\\\":\\\"value1\\\"},{\\\"key2\\\":\\\"value2\\\"}]\",\r\n    \"description\": \"array\"\r\n  }\r\n}",
-      "StatusCode": 200
-    },
-    {
-      "RequestUri": "/subscriptions/0b35c512-e1ea-4c38-bd26-41d0e9d5b54f/resourceGroups/to-delete-01/providers/Microsoft.Automation/automationAccounts/fbs-aa-01/variables/NewArrayVariable?api-version=2023-11-01",
-      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvMGIzNWM1MTItZTFlYS00YzM4LWJkMjYtNDFkMGU5ZDViNTRmL3Jlc291cmNlR3JvdXBzL3RvLWRlbGV0ZS0wMS9wcm92aWRlcnMvTWljcm9zb2Z0LkF1dG9tYXRpb24vYXV0b21hdGlvbkFjY291bnRzL2Zicy1hYS0wMS92YXJpYWJsZXMvTmV3QXJyYXlWYXJpYWJsZT9hcGktdmVyc2lvbj0yMDIzLTExLTAx",
-      "RequestMethod": "GET",
-      "RequestHeaders": {
-        "x-ms-client-request-id": [
-          "487c5d43-b46a-4642-968a-727aa7c75524"
-        ],
-        "Accept-Language": [
-          "en-US"
-        ],
-        "User-Agent": [
-          "FxVersion/6.0.2523.51912",
-          "OSName/Windows",
-          "OSVersion/Microsoft.Windows.10.0.22631",
-          "Microsoft.Azure.Management.Automation.AutomationClient/1.9.1"
-        ]
-      },
-      "RequestBody": "",
-      "ResponseHeaders": {
-        "Cache-Control": [
-          "no-cache"
-        ],
-        "Pragma": [
-          "no-cache"
-        ],
-        "x-ms-request-id": [
-          "487c5d43-b46a-4642-968a-727aa7c75524"
-        ],
-        "Server": [
-          "Microsoft-HTTPAPI/2.0"
-        ],
-        "x-ms-ratelimit-remaining-subscription-reads": [
-          "11998"
-        ],
-        "x-ms-correlation-request-id": [
-          "3bc8243e-271c-4c4f-a9c5-1c1cc740479c"
-        ],
-        "x-ms-routing-request-id": [
-          "WESTINDIA:20231122T105914Z:3bc8243e-271c-4c4f-a9c5-1c1cc740479c"
-        ],
-        "Strict-Transport-Security": [
-          "max-age=31536000; includeSubDomains"
-        ],
-        "X-Content-Type-Options": [
-          "nosniff"
-        ],
-        "Date": [
-          "Wed, 22 Nov 2023 10:59:13 GMT"
+          "Fri, 24 Nov 2023 11:19:16 GMT"
         ],
         "Content-Length": [
           "51"
@@ -324,7 +324,7 @@
       "RequestMethod": "PUT",
       "RequestHeaders": {
         "x-ms-client-request-id": [
-          "c5087576-3738-40cc-ba85-93ca5798303e"
+          "99d3a818-f4f1-4a3e-9f4b-d43252f63e49"
         ],
         "Accept-Language": [
           "en-US"
@@ -354,7 +354,7 @@
           "https://management.azure.com/subscriptions/0b35c512-e1ea-4c38-bd26-41d0e9d5b54f/resourceGroups/to-delete-01/providers/Microsoft.Automation/automationAccounts/fbs-aa-01/variables/NewArrayVariable?api-version=2023-11-01"
         ],
         "x-ms-request-id": [
-          "c5087576-3738-40cc-ba85-93ca5798303e"
+          "99d3a818-f4f1-4a3e-9f4b-d43252f63e49"
         ],
         "Server": [
           "Microsoft-HTTPAPI/2.0"
@@ -363,10 +363,10 @@
           "1199"
         ],
         "x-ms-correlation-request-id": [
-          "5bf5b326-9cb1-45a1-a376-ff069c20e11b"
+          "1df45e26-403f-4272-ba49-65c1a5280a6e"
         ],
         "x-ms-routing-request-id": [
-          "WESTINDIA:20231122T105906Z:5bf5b326-9cb1-45a1-a376-ff069c20e11b"
+          "WESTINDIA:20231124T111909Z:1df45e26-403f-4272-ba49-65c1a5280a6e"
         ],
         "Strict-Transport-Security": [
           "max-age=31536000; includeSubDomains"
@@ -375,10 +375,10 @@
           "nosniff"
         ],
         "Date": [
-          "Wed, 22 Nov 2023 10:59:06 GMT"
+          "Fri, 24 Nov 2023 11:19:08 GMT"
         ],
         "Content-Length": [
-          "501"
+          "491"
         ],
         "Content-Type": [
           "application/json; charset=utf-8"
@@ -387,7 +387,7 @@
           "-1"
         ]
       },
-      "ResponseBody": "{\r\n  \"id\": \"/subscriptions/0b35c512-e1ea-4c38-bd26-41d0e9d5b54f/resourceGroups/to-delete-01/providers/Microsoft.Automation/automationAccounts/fbs-aa-01/variables/NewArrayVariable\",\r\n  \"name\": \"NewArrayVariable\",\r\n  \"type\": \"Microsoft.Automation/AutomationAccounts/Variables\",\r\n  \"properties\": {\r\n    \"creationTime\": \"2023-11-22T16:29:06.6466667+05:30\",\r\n    \"lastModifiedTime\": \"2023-11-22T16:29:06.6466667+05:30\",\r\n    \"isEncrypted\": false,\r\n    \"value\": \"[{\\\"key1\\\":\\\"value1\\\"},{\\\"key2\\\":\\\"value2\\\"},{\\\"key3\\\":\\\"value3\\\"}]\",\r\n    \"description\": \"array\"\r\n  }\r\n}",
+      "ResponseBody": "{\r\n  \"name\": \"NewArrayVariable\",\r\n  \"id\": \"/subscriptions/0b35c512-e1ea-4c38-bd26-41d0e9d5b54f/resourceGroups/to-delete-01/providers/Microsoft.Automation/automationAccounts/fbs-aa-01/variables/NewArrayVariable\",\r\n  \"type\": \"Microsoft.Automation/AutomationAccounts/Variables\",\r\n  \"properties\": {\r\n    \"creationTime\": \"2023-11-24T16:49:09.72+05:30\",\r\n    \"lastModifiedTime\": \"2023-11-24T16:49:09.72+05:30\",\r\n    \"isEncrypted\": false,\r\n    \"value\": \"[{\\\"key1\\\":\\\"value1\\\"},{\\\"key2\\\":\\\"value2\\\"},{\\\"key3\\\":\\\"value3\\\"}]\",\r\n    \"description\": \"array\"\r\n  }\r\n}",
       "StatusCode": 201
     },
     {
@@ -396,7 +396,7 @@
       "RequestMethod": "PATCH",
       "RequestHeaders": {
         "x-ms-client-request-id": [
-          "21f40b3a-48fd-44b8-bc2d-ab878220bb38"
+          "17227bee-a663-4e6e-9442-428dd5b5223c"
         ],
         "Accept-Language": [
           "en-US"
@@ -423,7 +423,7 @@
           "no-cache"
         ],
         "x-ms-request-id": [
-          "21f40b3a-48fd-44b8-bc2d-ab878220bb38"
+          "17227bee-a663-4e6e-9442-428dd5b5223c"
         ],
         "Server": [
           "Microsoft-HTTPAPI/2.0"
@@ -432,10 +432,10 @@
           "1199"
         ],
         "x-ms-correlation-request-id": [
-          "3590daa5-592d-4aa4-a734-1077295fb537"
+          "29f13a0d-7b5f-4cb2-bb81-94e1d719bc53"
         ],
         "x-ms-routing-request-id": [
-          "WESTINDIA:20231122T105907Z:3590daa5-592d-4aa4-a734-1077295fb537"
+          "WESTINDIA:20231124T111911Z:29f13a0d-7b5f-4cb2-bb81-94e1d719bc53"
         ],
         "Strict-Transport-Security": [
           "max-age=31536000; includeSubDomains"
@@ -444,10 +444,10 @@
           "nosniff"
         ],
         "Date": [
-          "Wed, 22 Nov 2023 10:59:07 GMT"
+          "Fri, 24 Nov 2023 11:19:10 GMT"
         ],
         "Content-Length": [
-          "479"
+          "474"
         ],
         "Content-Type": [
           "application/json; charset=utf-8"
@@ -456,7 +456,7 @@
           "-1"
         ]
       },
-      "ResponseBody": "{\r\n  \"id\": \"/subscriptions/0b35c512-e1ea-4c38-bd26-41d0e9d5b54f/resourceGroups/to-delete-01/providers/Microsoft.Automation/automationAccounts/fbs-aa-01/variables/NewArrayVariable\",\r\n  \"name\": \"NewArrayVariable\",\r\n  \"type\": \"Microsoft.Automation/AutomationAccounts/Variables\",\r\n  \"properties\": {\r\n    \"creationTime\": \"2023-11-22T16:29:06.6466667+05:30\",\r\n    \"lastModifiedTime\": \"2023-11-22T16:29:07.8733333+05:30\",\r\n    \"isEncrypted\": false,\r\n    \"value\": \"[{\\\"key1\\\":\\\"value1\\\"},{\\\"key2\\\":\\\"value2\\\"}]\",\r\n    \"description\": \"array\"\r\n  }\r\n}",
+      "ResponseBody": "{\r\n  \"id\": \"/subscriptions/0b35c512-e1ea-4c38-bd26-41d0e9d5b54f/resourceGroups/to-delete-01/providers/Microsoft.Automation/automationAccounts/fbs-aa-01/variables/NewArrayVariable\",\r\n  \"name\": \"NewArrayVariable\",\r\n  \"type\": \"Microsoft.Automation/AutomationAccounts/Variables\",\r\n  \"properties\": {\r\n    \"creationTime\": \"2023-11-24T16:49:09.72+05:30\",\r\n    \"lastModifiedTime\": \"2023-11-24T16:49:11.0366667+05:30\",\r\n    \"isEncrypted\": false,\r\n    \"value\": \"[{\\\"key1\\\":\\\"value1\\\"},{\\\"key2\\\":\\\"value2\\\"}]\",\r\n    \"description\": \"array\"\r\n  }\r\n}",
       "StatusCode": 200
     },
     {
@@ -465,7 +465,7 @@
       "RequestMethod": "DELETE",
       "RequestHeaders": {
         "x-ms-client-request-id": [
-          "3350a9d5-70b6-4fc1-ae4a-88f988d42fe2"
+          "f7d88f55-4c52-43dd-b4d2-8e0fbd78756b"
         ],
         "Accept-Language": [
           "en-US"
@@ -486,19 +486,19 @@
           "no-cache"
         ],
         "x-ms-request-id": [
-          "3350a9d5-70b6-4fc1-ae4a-88f988d42fe2"
+          "f7d88f55-4c52-43dd-b4d2-8e0fbd78756b"
         ],
         "Server": [
           "Microsoft-HTTPAPI/2.0"
         ],
         "x-ms-ratelimit-remaining-subscription-deletes": [
-          "14998"
+          "14999"
         ],
         "x-ms-correlation-request-id": [
-          "5223d80b-b3a6-473c-abdf-82fdabdc3d09"
+          "4d4c0e0b-6673-4b6d-907b-b6bb9dc4bbd9"
         ],
         "x-ms-routing-request-id": [
-          "WESTINDIA:20231122T105912Z:5223d80b-b3a6-473c-abdf-82fdabdc3d09"
+          "WESTINDIA:20231124T111915Z:4d4c0e0b-6673-4b6d-907b-b6bb9dc4bbd9"
         ],
         "Strict-Transport-Security": [
           "max-age=31536000; includeSubDomains"
@@ -507,7 +507,7 @@
           "nosniff"
         ],
         "Date": [
-          "Wed, 22 Nov 2023 10:59:12 GMT"
+          "Fri, 24 Nov 2023 11:19:15 GMT"
         ],
         "Expires": [
           "-1"

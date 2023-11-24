@@ -330,31 +330,51 @@ namespace Microsoft.Azure.Commands.Automation.Common
         #region Module
 
         public Module CreateModule(string resourceGroupName, string automationAccountName, Uri contentLink,
-            string moduleName)
+            string moduleName,bool isPowershell72Module = false)
         {
-            var createdModule = this.automationManagementClient.Module.CreateOrUpdate(resourceGroupName,
+            ModuleCreateOrUpdateParameters moduleCreateOrUpdateParameters = new AutomationManagement.Models.ModuleCreateOrUpdateParameters()
+            {
+                Name = moduleName,
+                ContentLink = new AutomationManagement.Models.ContentLink()
+                {
+                    Uri = contentLink.ToString(),
+                    ContentHash = null,
+                    Version = null
+                },
+            };
+            if (isPowershell72Module)
+            {
+                this.automationManagementClient.PowerShell72Module.CreateOrUpdate(resourceGroupName,
                 automationAccountName,
                 moduleName,
-                new AutomationManagement.Models.ModuleCreateOrUpdateParameters()
-                {
-                    Name = moduleName,
-                    ContentLink = new AutomationManagement.Models.ContentLink()
-                    {
-                        Uri = contentLink.ToString(),
-                        ContentHash = null,
-                        Version = null
-                    },
-                });
-
-            return this.GetModule(resourceGroupName, automationAccountName, moduleName);
+                moduleCreateOrUpdateParameters
+                );
+            }
+            else
+            {
+                this.automationManagementClient.Module.CreateOrUpdate(resourceGroupName,
+                automationAccountName,
+                moduleName,
+                moduleCreateOrUpdateParameters
+                );
+            }
+            return this.GetModule(resourceGroupName, automationAccountName, moduleName, isPowershell72Module);
         }
 
-        public Module GetModule(string resourceGroupName, string automationAccountName, string name)
+        public Module GetModule(string resourceGroupName, string automationAccountName, string name, bool isPowershell72Module = false)
         {
             try
             {
-                var module =
-                    this.automationManagementClient.Module.Get(resourceGroupName, automationAccountName, name);
+                AutomationManagement.Models.Module module =null;
+                if (isPowershell72Module)
+                {
+                    module = this.automationManagementClient.PowerShell72Module.Get(resourceGroupName, automationAccountName, name);
+                }
+                else
+                {
+                    module = this.automationManagementClient.Module.Get(resourceGroupName, automationAccountName, name);
+                }
+                
                 return new Module(resourceGroupName, automationAccountName, module);
             }
             catch (ErrorResponseException cloudException)
@@ -370,17 +390,31 @@ namespace Microsoft.Azure.Commands.Automation.Common
         }
 
         public IEnumerable<Module> ListModules(string resourceGroupName, string automationAccountName,
-            ref string nextLink)
+            ref string nextLink, bool isPowershell72Module = false)
         {
             Rest.Azure.IPage<AutomationManagement.Models.Module> response;
 
             if (string.IsNullOrEmpty(nextLink))
             {
-                response = this.automationManagementClient.Module.ListByAutomationAccount(resourceGroupName, automationAccountName);
+                if (isPowershell72Module)
+                {
+                    response = this.automationManagementClient.PowerShell72Module.ListByAutomationAccount(resourceGroupName, automationAccountName);
+                }
+                else
+                {
+                    response = this.automationManagementClient.Module.ListByAutomationAccount(resourceGroupName, automationAccountName);
+                }                
             }
             else
             {
-                response = this.automationManagementClient.Module.ListByAutomationAccountNext(nextLink);
+                if (isPowershell72Module)
+                {
+                    response = this.automationManagementClient.PowerShell72Module.ListByAutomationAccountNext(nextLink);
+                }
+                else
+                {
+                    response = this.automationManagementClient.Module.ListByAutomationAccountNext(nextLink);
+                }                
             }
 
             nextLink = response.NextPageLink;
@@ -388,157 +422,45 @@ namespace Microsoft.Azure.Commands.Automation.Common
         }
 
         public Module UpdateModule(string resourceGroupName, string automationAccountName, string name,
-            Uri contentLinkUri, string contentLinkVersion)
+            Uri contentLinkUri, string contentLinkVersion, bool isPowershell72Module = false)
         {
             try
             {
-                var moduleModel =
-                this.automationManagementClient.Module.Get(resourceGroupName, automationAccountName, name);
-                if (contentLinkUri != null)
+                ModuleCreateOrUpdateParameters moduleCreateOrUpdateParameters = new AutomationManagement.Models.ModuleCreateOrUpdateParameters()
                 {
-                    var updateModule = this.automationManagementClient.Module.CreateOrUpdate(resourceGroupName,
-                    automationAccountName,
-                    name,
-                    new AutomationManagement.Models.ModuleCreateOrUpdateParameters()
-                    {
-                        Name = name,
-                        ContentLink = new AutomationManagement.Models.ContentLink()
-                        {
-                            Uri = contentLinkUri.ToString(),
-                            ContentHash = null,
-                            Version =
-                            (String.IsNullOrWhiteSpace(contentLinkVersion))
-                            ? Guid.NewGuid().ToString()
-                            : contentLinkVersion
-                        },
-                    });
-                }
-                var updatedModule =
-                this.automationManagementClient.Module.Get(resourceGroupName, automationAccountName, name);
-                return new Module(resourceGroupName, automationAccountName, updatedModule);
-            }
-            catch (ErrorResponseException cloudException)
-            {
-                if (cloudException.Response.StatusCode == System.Net.HttpStatusCode.NotFound)
-                {
-                    throw new ResourceNotFoundException(typeof(Module),
-                        string.Format(CultureInfo.CurrentCulture, Resources.ModuleNotFound, name));
-
-                }
-
-                throw;
-            }
-        }
-
-        public void DeleteModule(string resourceGroupName, string automationAccountName, string name)
-        {
-            try
-            {
-                this.automationManagementClient.Module.Delete(resourceGroupName, automationAccountName, name);
-            }
-            catch (ErrorResponseException cloudException)
-            {
-                if (cloudException.Response.StatusCode == System.Net.HttpStatusCode.NoContent)
-                {
-                    throw new ResourceNotFoundException(typeof(Module),
-                        string.Format(CultureInfo.CurrentCulture, Resources.ModuleNotFound, name));
-                }
-
-                throw;
-            }
-        }
-
-        #endregion
-
-        #region PowerShell72Module
-
-        public Module CreatePowerShell72Module(string resourceGroupName, string automationAccountName, Uri contentLink,
-            string moduleName)
-        {
-            var createdModule = this.automationManagementClient.PowerShell72Module.CreateOrUpdate(resourceGroupName,
-                automationAccountName,
-                moduleName,
-                new AutomationManagement.Models.ModuleCreateOrUpdateParameters()
-                {
-                    Name = moduleName,
+                    Name = name,
                     ContentLink = new AutomationManagement.Models.ContentLink()
                     {
-                        Uri = contentLink.ToString(),
+                        Uri = contentLinkUri.ToString(),
                         ContentHash = null,
-                        Version = null
-                    },
-                });
-
-            return this.GetPowerShell72Module(resourceGroupName, automationAccountName, moduleName);
-        }
-
-        public Module GetPowerShell72Module(string resourceGroupName, string automationAccountName, string name)
-        {
-            try
-            {
-                var module =
-                    this.automationManagementClient.PowerShell72Module.Get(resourceGroupName, automationAccountName, name);
-                return new Module(resourceGroupName, automationAccountName, module);
-            }
-            catch (ErrorResponseException cloudException)
-            {
-                if (cloudException.Response.StatusCode == System.Net.HttpStatusCode.NotFound)
-                {
-                    throw new ResourceNotFoundException(typeof(Module),
-                        string.Format(CultureInfo.CurrentCulture, Resources.ModuleNotFound, name));
-                }
-
-                throw;
-            }
-        }
-
-        public IEnumerable<Module> ListPowerShell72Modules(string resourceGroupName, string automationAccountName,
-            ref string nextLink)
-        {
-            Rest.Azure.IPage<AutomationManagement.Models.Module> response;
-
-            if (string.IsNullOrEmpty(nextLink))
-            {
-                response = this.automationManagementClient.PowerShell72Module.ListByAutomationAccount(resourceGroupName, automationAccountName);
-            }
-            else
-            {
-                response = this.automationManagementClient.PowerShell72Module.ListByAutomationAccountNext(nextLink);
-            }
-
-            nextLink = response.NextPageLink;
-            return response.Select(c => new Module(resourceGroupName, automationAccountName, c));
-        }
-
-        public Module UpdatePowerShell72Module(string resourceGroupName, string automationAccountName, string name,
-            Uri contentLinkUri, string contentLinkVersion)
-        {
-            try
-            {
-                var moduleModel =
-                this.automationManagementClient.PowerShell72Module.Get(resourceGroupName, automationAccountName, name);
-                if (contentLinkUri != null)
-                {
-                    var updateModule = this.automationManagementClient.PowerShell72Module.CreateOrUpdate(resourceGroupName,
-                    automationAccountName,
-                    name,
-                    new AutomationManagement.Models.ModuleCreateOrUpdateParameters()
-                    {
-                        Name = name,
-                        ContentLink = new AutomationManagement.Models.ContentLink()
-                        {
-                            Uri = contentLinkUri.ToString(),
-                            ContentHash = null,
-                            Version =
+                        Version =
                             (String.IsNullOrWhiteSpace(contentLinkVersion))
                             ? Guid.NewGuid().ToString()
                             : contentLinkVersion
-                        },
-                    });
+                    },
+                };
+                if (contentLinkUri != null)
+                {
+                    if (isPowershell72Module)
+                    {
+                         this.automationManagementClient.PowerShell72Module.CreateOrUpdate(resourceGroupName,
+                    automationAccountName,
+                    name,
+                    moduleCreateOrUpdateParameters
+                    );
+
+                    }
+                    else
+                    {
+                        this.automationManagementClient.Module.CreateOrUpdate(resourceGroupName,
+                    automationAccountName,
+                    name,
+                    moduleCreateOrUpdateParameters
+                    );
+                    }
+                    
                 }
-                var updatedModule =
-                this.automationManagementClient.PowerShell72Module.Get(resourceGroupName, automationAccountName, name);
-                return new Module(resourceGroupName, automationAccountName, updatedModule);
+                return this.GetModule(resourceGroupName, automationAccountName, name, isPowershell72Module);
             }
             catch (ErrorResponseException cloudException)
             {
@@ -553,11 +475,18 @@ namespace Microsoft.Azure.Commands.Automation.Common
             }
         }
 
-        public void DeletePowerShell72Module(string resourceGroupName, string automationAccountName, string name)
+        public void DeleteModule(string resourceGroupName, string automationAccountName, string name, bool isPowershell72Module = false)
         {
             try
             {
-                this.automationManagementClient.PowerShell72Module.Delete(resourceGroupName, automationAccountName, name);
+                if (isPowershell72Module)
+                {
+                    this.automationManagementClient.PowerShell72Module.Delete(resourceGroupName, automationAccountName, name);
+                }
+                else
+                {
+                    this.automationManagementClient.Module.Delete(resourceGroupName, automationAccountName, name);
+                }                
             }
             catch (ErrorResponseException cloudException)
             {

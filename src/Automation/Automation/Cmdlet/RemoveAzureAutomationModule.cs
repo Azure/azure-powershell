@@ -39,7 +39,7 @@ namespace Microsoft.Azure.Commands.Automation.Cmdlet
         /// <summary>
         /// Gets or sets the runbook version type
         /// </summary>
-        [Parameter(Position = 4, Mandatory = false, HelpMessage = "Runtime Environment of module ")]
+        [Parameter(Mandatory = false, HelpMessage = "Runtime Environment of module ")]
         [ValidateSet(Constants.RuntimeVersion.PowerShell51,
             Constants.RuntimeVersion.PowerShell72,
             IgnoreCase = true)]
@@ -59,14 +59,7 @@ namespace Microsoft.Azure.Commands.Automation.Cmdlet
                        Name,
                        () =>
                        {
-                           if (Utils.CheckIfRuntimeVersionIsEmptyOrPowershell5(RuntimeVersion))
-                           {
-                               this.AutomationClient.DeleteModule(this.ResourceGroupName, this.AutomationAccountName, Name);
-                           }
-                           else
-                           {
-                               this.AutomationClient.DeletePowerShell72Module(this.ResourceGroupName, this.AutomationAccountName, Name);
-                           }                               
+                           this.AutomationClient.DeleteModule(this.ResourceGroupName, this.AutomationAccountName, Name, Utils.isRuntimeVersionPowerShell72(RuntimeVersion));                               
                        });
         }
     }

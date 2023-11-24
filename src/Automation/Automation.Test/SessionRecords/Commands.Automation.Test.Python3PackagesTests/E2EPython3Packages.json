@@ -6,7 +6,7 @@
       "RequestMethod": "PUT",
       "RequestHeaders": {
         "x-ms-client-request-id": [
-          "806edecb-25ee-41db-9762-ddc67c73994d"
+          "817f4dc2-670e-4df8-8c05-9635c3c7af23"
         ],
         "Accept-Language": [
           "en-US"
@@ -36,19 +36,19 @@
           "https://management.azure.com/subscriptions/0b35c512-e1ea-4c38-bd26-41d0e9d5b54f/resourceGroups/to-delete-01/providers/Microsoft.Automation/automationAccounts/fbs-aa-01/python3Packages/py3-package?api-version=2023-11-01"
         ],
         "x-ms-request-id": [
-          "806edecb-25ee-41db-9762-ddc67c73994d"
+          "817f4dc2-670e-4df8-8c05-9635c3c7af23"
         ],
         "Server": [
           "Microsoft-HTTPAPI/2.0"
         ],
         "x-ms-ratelimit-remaining-subscription-writes": [
-          "1198"
+          "1199"
         ],
         "x-ms-correlation-request-id": [
-          "7602bec8-5147-4b54-98f7-1c76a3e15e06"
+          "7e2434fa-0355-4ce9-8aa9-4dd5a009f4e1"
         ],
         "x-ms-routing-request-id": [
-          "JIOINDIAWEST:20231122T111603Z:7602bec8-5147-4b54-98f7-1c76a3e15e06"
+          "WESTINDIA:20231124T111433Z:7e2434fa-0355-4ce9-8aa9-4dd5a009f4e1"
         ],
         "Strict-Transport-Security": [
           "max-age=31536000; includeSubDomains"
@@ -57,10 +57,10 @@
           "nosniff"
         ],
         "Date": [
-          "Wed, 22 Nov 2023 11:16:02 GMT"
+          "Fri, 24 Nov 2023 11:14:32 GMT"
         ],
         "Content-Length": [
-          "579"
+          "574"
         ],
         "Content-Type": [
           "application/json; charset=utf-8"
@@ -69,7 +69,7 @@
           "-1"
         ]
       },
-      "ResponseBody": "{\r\n  \"id\": \"/subscriptions/0b35c512-e1ea-4c38-bd26-41d0e9d5b54f/resourceGroups/to-delete-01/providers/Microsoft.Automation/automationAccounts/fbs-aa-01/python3Packages/py3-package\",\r\n  \"name\": \"py3-package\",\r\n  \"type\": \"Microsoft.Automation/AutomationAccounts/Python3Packages\",\r\n  \"location\": \"eastus\",\r\n  \"tags\": {},\r\n  \"etag\": null,\r\n  \"properties\": {\r\n    \"isGlobal\": false,\r\n    \"version\": null,\r\n    \"sizeInBytes\": 0,\r\n    \"activityCount\": 0,\r\n    \"creationTime\": \"2023-11-22T16:46:02.9533333+05:30\",\r\n    \"lastModifiedTime\": \"2023-11-22T16:46:03.0166667+05:30\",\r\n    \"error\": {\r\n      \"code\": null,\r\n      \"message\": null\r\n    },\r\n    \"provisioningState\": \"Creating\",\r\n    \"isComposite\": false\r\n  }\r\n}",
+      "ResponseBody": "{\r\n  \"id\": \"/subscriptions/0b35c512-e1ea-4c38-bd26-41d0e9d5b54f/resourceGroups/to-delete-01/providers/Microsoft.Automation/automationAccounts/fbs-aa-01/python3Packages/py3-package\",\r\n  \"name\": \"py3-package\",\r\n  \"type\": \"Microsoft.Automation/AutomationAccounts/Python3Packages\",\r\n  \"location\": \"eastus\",\r\n  \"tags\": {},\r\n  \"etag\": null,\r\n  \"properties\": {\r\n    \"isGlobal\": false,\r\n    \"version\": null,\r\n    \"sizeInBytes\": 0,\r\n    \"activityCount\": 0,\r\n    \"creationTime\": \"2023-11-24T16:44:32.71+05:30\",\r\n    \"lastModifiedTime\": \"2023-11-24T16:44:32.7566667+05:30\",\r\n    \"error\": {\r\n      \"code\": null,\r\n      \"message\": null\r\n    },\r\n    \"provisioningState\": \"Creating\",\r\n    \"isComposite\": false\r\n  }\r\n}",
       "StatusCode": 201
     },
     {
@@ -78,7 +78,7 @@
       "RequestMethod": "GET",
       "RequestHeaders": {
         "x-ms-client-request-id": [
-          "806edecb-25ee-41db-9762-ddc67c73994d"
+          "817f4dc2-670e-4df8-8c05-9635c3c7af23"
         ],
         "Accept-Language": [
           "en-US"
@@ -99,133 +99,7 @@
           "no-cache"
         ],
         "x-ms-request-id": [
-          "806edecb-25ee-41db-9762-ddc67c73994d"
-        ],
-        "Server": [
-          "Microsoft-HTTPAPI/2.0"
-        ],
-        "x-ms-ratelimit-remaining-subscription-reads": [
-          "11994"
-        ],
-        "x-ms-correlation-request-id": [
-          "4ade2475-1878-4d91-83c0-c6d8a907ffa5"
-        ],
-        "x-ms-routing-request-id": [
-          "JIOINDIAWEST:20231122T111604Z:4ade2475-1878-4d91-83c0-c6d8a907ffa5"
-        ],
-        "Strict-Transport-Security": [
-          "max-age=31536000; includeSubDomains"
-        ],
-        "X-Content-Type-Options": [
-          "nosniff"
-        ],
-        "Date": [
-          "Wed, 22 Nov 2023 11:16:03 GMT"
-        ],
-        "Content-Length": [
-          "577"
-        ],
-        "Content-Type": [
-          "application/json; charset=utf-8"
-        ],
-        "Expires": [
-          "-1"
-        ]
-      },
-      "ResponseBody": "{\r\n  \"id\": \"/subscriptions/0b35c512-e1ea-4c38-bd26-41d0e9d5b54f/resourceGroups/to-delete-01/providers/Microsoft.Automation/automationAccounts/fbs-aa-01/python3Packages/py3-package\",\r\n  \"name\": \"py3-package\",\r\n  \"type\": \"Microsoft.Automation/AutomationAccounts/Python3Packages\",\r\n  \"location\": \"eastus\",\r\n  \"tags\": {},\r\n  \"etag\": null,\r\n  \"properties\": {\r\n    \"isGlobal\": false,\r\n    \"version\": null,\r\n    \"sizeInBytes\": 0,\r\n    \"activityCount\": 0,\r\n    \"creationTime\": \"2023-11-22T16:46:02.9533333+05:30\",\r\n    \"lastModifiedTime\": \"2023-11-22T16:46:03.0166667+05:30\",\r\n    \"error\": {\r\n      \"code\": null,\r\n      \"message\": \"\"\r\n    },\r\n    \"provisioningState\": \"Creating\",\r\n    \"isComposite\": false\r\n  }\r\n}",
-      "StatusCode": 200
-    },
-    {
-      "RequestUri": "/subscriptions/0b35c512-e1ea-4c38-bd26-41d0e9d5b54f/resourceGroups/to-delete-01/providers/Microsoft.Automation/automationAccounts/fbs-aa-01/python3Packages/py3-package?api-version=2023-11-01",
-      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvMGIzNWM1MTItZTFlYS00YzM4LWJkMjYtNDFkMGU5ZDViNTRmL3Jlc291cmNlR3JvdXBzL3RvLWRlbGV0ZS0wMS9wcm92aWRlcnMvTWljcm9zb2Z0LkF1dG9tYXRpb24vYXV0b21hdGlvbkFjY291bnRzL2Zicy1hYS0wMS9weXRob24zUGFja2FnZXMvcHkzLXBhY2thZ2U/YXBpLXZlcnNpb249MjAyMy0xMS0wMQ==",
-      "RequestMethod": "GET",
-      "RequestHeaders": {
-        "x-ms-client-request-id": [
-          "3d6628e1-0d3c-4851-b88f-97edf7bdea39"
-        ],
-        "Accept-Language": [
-          "en-US"
-        ],
-        "User-Agent": [
-          "FxVersion/6.0.2523.51912",
-          "OSName/Windows",
-          "OSVersion/Microsoft.Windows.10.0.22631",
-          "Microsoft.Azure.Management.Automation.AutomationClient/1.9.1"
-        ]
-      },
-      "RequestBody": "",
-      "ResponseHeaders": {
-        "Cache-Control": [
-          "no-cache"
-        ],
-        "Pragma": [
-          "no-cache"
-        ],
-        "x-ms-request-id": [
-          "3d6628e1-0d3c-4851-b88f-97edf7bdea39"
-        ],
-        "Server": [
-          "Microsoft-HTTPAPI/2.0"
-        ],
-        "x-ms-ratelimit-remaining-subscription-reads": [
-          "11998"
-        ],
-        "x-ms-correlation-request-id": [
-          "d2316fba-0074-474b-b0ed-a3a15b00d92d"
-        ],
-        "x-ms-routing-request-id": [
-          "WESTINDIA:20231122T111605Z:d2316fba-0074-474b-b0ed-a3a15b00d92d"
-        ],
-        "Strict-Transport-Security": [
-          "max-age=31536000; includeSubDomains"
-        ],
-        "X-Content-Type-Options": [
-          "nosniff"
-        ],
-        "Date": [
-          "Wed, 22 Nov 2023 11:16:04 GMT"
-        ],
-        "Content-Length": [
-          "577"
-        ],
-        "Content-Type": [
-          "application/json; charset=utf-8"
-        ],
-        "Expires": [
-          "-1"
-        ]
-      },
-      "ResponseBody": "{\r\n  \"id\": \"/subscriptions/0b35c512-e1ea-4c38-bd26-41d0e9d5b54f/resourceGroups/to-delete-01/providers/Microsoft.Automation/automationAccounts/fbs-aa-01/python3Packages/py3-package\",\r\n  \"name\": \"py3-package\",\r\n  \"type\": \"Microsoft.Automation/AutomationAccounts/Python3Packages\",\r\n  \"location\": \"eastus\",\r\n  \"tags\": {},\r\n  \"etag\": null,\r\n  \"properties\": {\r\n    \"isGlobal\": false,\r\n    \"version\": null,\r\n    \"sizeInBytes\": 0,\r\n    \"activityCount\": 0,\r\n    \"creationTime\": \"2023-11-22T16:46:02.9533333+05:30\",\r\n    \"lastModifiedTime\": \"2023-11-22T16:46:03.0166667+05:30\",\r\n    \"error\": {\r\n      \"code\": null,\r\n      \"message\": \"\"\r\n    },\r\n    \"provisioningState\": \"Creating\",\r\n    \"isComposite\": false\r\n  }\r\n}",
-      "StatusCode": 200
-    },
-    {
-      "RequestUri": "/subscriptions/0b35c512-e1ea-4c38-bd26-41d0e9d5b54f/resourceGroups/to-delete-01/providers/Microsoft.Automation/automationAccounts/fbs-aa-01/python3Packages/py3-package?api-version=2023-11-01",
-      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvMGIzNWM1MTItZTFlYS00YzM4LWJkMjYtNDFkMGU5ZDViNTRmL3Jlc291cmNlR3JvdXBzL3RvLWRlbGV0ZS0wMS9wcm92aWRlcnMvTWljcm9zb2Z0LkF1dG9tYXRpb24vYXV0b21hdGlvbkFjY291bnRzL2Zicy1hYS0wMS9weXRob24zUGFja2FnZXMvcHkzLXBhY2thZ2U/YXBpLXZlcnNpb249MjAyMy0xMS0wMQ==",
-      "RequestMethod": "GET",
-      "RequestHeaders": {
-        "x-ms-client-request-id": [
-          "1b3bd272-7b40-48d3-a253-6ceefe12bdd4"
-        ],
-        "Accept-Language": [
-          "en-US"
-        ],
-        "User-Agent": [
-          "FxVersion/6.0.2523.51912",
-          "OSName/Windows",
-          "OSVersion/Microsoft.Windows.10.0.22631",
-          "Microsoft.Azure.Management.Automation.AutomationClient/1.9.1"
-        ]
-      },
-      "RequestBody": "",
-      "ResponseHeaders": {
-        "Cache-Control": [
-          "no-cache"
-        ],
-        "Pragma": [
-          "no-cache"
-        ],
-        "x-ms-request-id": [
-          "1b3bd272-7b40-48d3-a253-6ceefe12bdd4"
+          "817f4dc2-670e-4df8-8c05-9635c3c7af23"
         ],
         "Server": [
           "Microsoft-HTTPAPI/2.0"
@@ -234,10 +108,10 @@
           "11999"
         ],
         "x-ms-correlation-request-id": [
-          "1c548a20-3b63-4112-87ae-17449de2afca"
+          "c3007aa7-19ef-4dda-8cdd-87c67c0e2a4a"
         ],
         "x-ms-routing-request-id": [
-          "WESTINDIA:20231122T111608Z:1c548a20-3b63-4112-87ae-17449de2afca"
+          "WESTINDIA:20231124T111433Z:c3007aa7-19ef-4dda-8cdd-87c67c0e2a4a"
         ],
         "Strict-Transport-Security": [
           "max-age=31536000; includeSubDomains"
@@ -246,7 +120,133 @@
           "nosniff"
         ],
         "Date": [
-          "Wed, 22 Nov 2023 11:16:07 GMT"
+          "Fri, 24 Nov 2023 11:14:32 GMT"
+        ],
+        "Content-Length": [
+          "572"
+        ],
+        "Content-Type": [
+          "application/json; charset=utf-8"
+        ],
+        "Expires": [
+          "-1"
+        ]
+      },
+      "ResponseBody": "{\r\n  \"id\": \"/subscriptions/0b35c512-e1ea-4c38-bd26-41d0e9d5b54f/resourceGroups/to-delete-01/providers/Microsoft.Automation/automationAccounts/fbs-aa-01/python3Packages/py3-package\",\r\n  \"name\": \"py3-package\",\r\n  \"type\": \"Microsoft.Automation/AutomationAccounts/Python3Packages\",\r\n  \"location\": \"eastus\",\r\n  \"tags\": {},\r\n  \"etag\": null,\r\n  \"properties\": {\r\n    \"isGlobal\": false,\r\n    \"version\": null,\r\n    \"sizeInBytes\": 0,\r\n    \"activityCount\": 0,\r\n    \"creationTime\": \"2023-11-24T16:44:32.71+05:30\",\r\n    \"lastModifiedTime\": \"2023-11-24T16:44:32.7566667+05:30\",\r\n    \"error\": {\r\n      \"code\": null,\r\n      \"message\": \"\"\r\n    },\r\n    \"provisioningState\": \"Creating\",\r\n    \"isComposite\": false\r\n  }\r\n}",
+      "StatusCode": 200
+    },
+    {
+      "RequestUri": "/subscriptions/0b35c512-e1ea-4c38-bd26-41d0e9d5b54f/resourceGroups/to-delete-01/providers/Microsoft.Automation/automationAccounts/fbs-aa-01/python3Packages/py3-package?api-version=2023-11-01",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvMGIzNWM1MTItZTFlYS00YzM4LWJkMjYtNDFkMGU5ZDViNTRmL3Jlc291cmNlR3JvdXBzL3RvLWRlbGV0ZS0wMS9wcm92aWRlcnMvTWljcm9zb2Z0LkF1dG9tYXRpb24vYXV0b21hdGlvbkFjY291bnRzL2Zicy1hYS0wMS9weXRob24zUGFja2FnZXMvcHkzLXBhY2thZ2U/YXBpLXZlcnNpb249MjAyMy0xMS0wMQ==",
+      "RequestMethod": "GET",
+      "RequestHeaders": {
+        "x-ms-client-request-id": [
+          "d4034fac-6363-43e3-b529-a8aa68db7862"
+        ],
+        "Accept-Language": [
+          "en-US"
+        ],
+        "User-Agent": [
+          "FxVersion/6.0.2523.51912",
+          "OSName/Windows",
+          "OSVersion/Microsoft.Windows.10.0.22631",
+          "Microsoft.Azure.Management.Automation.AutomationClient/1.9.1"
+        ]
+      },
+      "RequestBody": "",
+      "ResponseHeaders": {
+        "Cache-Control": [
+          "no-cache"
+        ],
+        "Pragma": [
+          "no-cache"
+        ],
+        "x-ms-request-id": [
+          "d4034fac-6363-43e3-b529-a8aa68db7862"
+        ],
+        "Server": [
+          "Microsoft-HTTPAPI/2.0"
+        ],
+        "x-ms-ratelimit-remaining-subscription-reads": [
+          "11998"
+        ],
+        "x-ms-correlation-request-id": [
+          "ef9735c0-977b-430a-9bc2-5aa35510a894"
+        ],
+        "x-ms-routing-request-id": [
+          "WESTINDIA:20231124T111434Z:ef9735c0-977b-430a-9bc2-5aa35510a894"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
+        ],
+        "X-Content-Type-Options": [
+          "nosniff"
+        ],
+        "Date": [
+          "Fri, 24 Nov 2023 11:14:34 GMT"
+        ],
+        "Content-Length": [
+          "572"
+        ],
+        "Content-Type": [
+          "application/json; charset=utf-8"
+        ],
+        "Expires": [
+          "-1"
+        ]
+      },
+      "ResponseBody": "{\r\n  \"name\": \"py3-package\",\r\n  \"id\": \"/subscriptions/0b35c512-e1ea-4c38-bd26-41d0e9d5b54f/resourceGroups/to-delete-01/providers/Microsoft.Automation/automationAccounts/fbs-aa-01/python3Packages/py3-package\",\r\n  \"type\": \"Microsoft.Automation/AutomationAccounts/Python3Packages\",\r\n  \"location\": \"eastus\",\r\n  \"tags\": {},\r\n  \"etag\": null,\r\n  \"properties\": {\r\n    \"isGlobal\": false,\r\n    \"version\": null,\r\n    \"sizeInBytes\": 0,\r\n    \"activityCount\": 0,\r\n    \"creationTime\": \"2023-11-24T16:44:32.71+05:30\",\r\n    \"lastModifiedTime\": \"2023-11-24T16:44:32.7566667+05:30\",\r\n    \"error\": {\r\n      \"code\": null,\r\n      \"message\": \"\"\r\n    },\r\n    \"provisioningState\": \"Creating\",\r\n    \"isComposite\": false\r\n  }\r\n}",
+      "StatusCode": 200
+    },
+    {
+      "RequestUri": "/subscriptions/0b35c512-e1ea-4c38-bd26-41d0e9d5b54f/resourceGroups/to-delete-01/providers/Microsoft.Automation/automationAccounts/fbs-aa-01/python3Packages/py3-package?api-version=2023-11-01",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvMGIzNWM1MTItZTFlYS00YzM4LWJkMjYtNDFkMGU5ZDViNTRmL3Jlc291cmNlR3JvdXBzL3RvLWRlbGV0ZS0wMS9wcm92aWRlcnMvTWljcm9zb2Z0LkF1dG9tYXRpb24vYXV0b21hdGlvbkFjY291bnRzL2Zicy1hYS0wMS9weXRob24zUGFja2FnZXMvcHkzLXBhY2thZ2U/YXBpLXZlcnNpb249MjAyMy0xMS0wMQ==",
+      "RequestMethod": "GET",
+      "RequestHeaders": {
+        "x-ms-client-request-id": [
+          "a31a2275-8792-47d9-aabe-48ffc5593df4"
+        ],
+        "Accept-Language": [
+          "en-US"
+        ],
+        "User-Agent": [
+          "FxVersion/6.0.2523.51912",
+          "OSName/Windows",
+          "OSVersion/Microsoft.Windows.10.0.22631",
+          "Microsoft.Azure.Management.Automation.AutomationClient/1.9.1"
+        ]
+      },
+      "RequestBody": "",
+      "ResponseHeaders": {
+        "Cache-Control": [
+          "no-cache"
+        ],
+        "Pragma": [
+          "no-cache"
+        ],
+        "x-ms-request-id": [
+          "a31a2275-8792-47d9-aabe-48ffc5593df4"
+        ],
+        "Server": [
+          "Microsoft-HTTPAPI/2.0"
+        ],
+        "x-ms-ratelimit-remaining-subscription-reads": [
+          "11999"
+        ],
+        "x-ms-correlation-request-id": [
+          "240b3918-f3e7-4718-ab37-34c172a43c6a"
+        ],
+        "x-ms-routing-request-id": [
+          "WESTINDIA:20231124T111436Z:240b3918-f3e7-4718-ab37-34c172a43c6a"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
+        ],
+        "X-Content-Type-Options": [
+          "nosniff"
+        ],
+        "Date": [
+          "Fri, 24 Nov 2023 11:14:35 GMT"
         ],
         "Content-Length": [
           "32"
@@ -267,7 +267,7 @@
       "RequestMethod": "DELETE",
       "RequestHeaders": {
         "x-ms-client-request-id": [
-          "73ab2954-b5b5-4b29-9492-3fd453eceda0"
+          "64391a8d-e910-4608-80ed-9a8946a195f5"
         ],
         "Accept-Language": [
           "en-US"
@@ -288,7 +288,7 @@
           "no-cache"
         ],
         "x-ms-request-id": [
-          "73ab2954-b5b5-4b29-9492-3fd453eceda0"
+          "64391a8d-e910-4608-80ed-9a8946a195f5"
         ],
         "Server": [
           "Microsoft-HTTPAPI/2.0"
@@ -297,10 +297,10 @@
           "14999"
         ],
         "x-ms-correlation-request-id": [
-          "3a7d5206-5c57-4a6f-ab9a-611e1a255106"
+          "57abd93d-7b8d-4c59-8076-40d9ba928ae6"
         ],
         "x-ms-routing-request-id": [
-          "WESTINDIA:20231122T111606Z:3a7d5206-5c57-4a6f-ab9a-611e1a255106"
+          "WESTINDIA:20231124T111435Z:57abd93d-7b8d-4c59-8076-40d9ba928ae6"
         ],
         "Strict-Transport-Security": [
           "max-age=31536000; includeSubDomains"
@@ -309,7 +309,7 @@
           "nosniff"
         ],
         "Date": [
-          "Wed, 22 Nov 2023 11:16:06 GMT"
+          "Fri, 24 Nov 2023 11:14:34 GMT"
         ],
         "Expires": [
           "-1"
