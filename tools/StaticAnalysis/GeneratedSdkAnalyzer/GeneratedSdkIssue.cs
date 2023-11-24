@@ -75,16 +75,5 @@ namespace StaticAnalysis.GeneratedSdkAnalyzer
             Remediation = match.Groups[6].Value;
             return this;
         }
-        
-        /// <summary>
-        /// Given a set of directory paths containing PowerShell module folders,
-        /// analyze the breaking changes in the modules and report any issues
-        /// </summary>
-        /// <param name="cmdletProbingDirs">Set of directory paths containing PowerShell module folders to be checked for breaking changes.</param>
-        /// <param name="modulesToAnalyze">The set of modules to analyze</param>
-        public void Analyze(IEnumerable<string> cmdletProbingDirs, IEnumerable<string> modulesToAnalyze)
-        {
-            Analyze(cmdletProbingDirs, null, null, modulesToAnalyze);
-        }
     }
 }

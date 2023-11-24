@@ -88,6 +88,22 @@ namespace StaticAnalysis.GeneratedSdkAnalyzer
         }
 
         /// <summary>
+        /// These methods will be added in a new work item that has enhancements for Static Analysis tool
+        /// </summary>
+        /// <param name="cmdletProbingDirs"></param>
+        /// <param name="directoryFilter"></param>
+        /// <param name="cmdletFilter"></param>
+        void IStaticAnalyzer.Analyze(IEnumerable<string> cmdletProbingDirs, Func<IEnumerable<string>, IEnumerable<string>> directoryFilter, Func<string, bool> cmdletFilter)
+        {
+            throw new NotImplementedException();
+        }
+
+        public void Analyze(IEnumerable<string> cmdletProbingDirs, Func<IEnumerable<string>, IEnumerable<string>> directoryFilter, Func<string, bool> cmdletFilter, IEnumerable<string> modulesToAnalyze)
+        {
+            throw new NotImplementedException();
+        }
+
+        /// <summary>
         /// Serialize the cmdlets so they can be compared to change modules later
         /// </summary>
         /// <param name="fileName">Name of the file cmdlets are being serialized to.</param>
