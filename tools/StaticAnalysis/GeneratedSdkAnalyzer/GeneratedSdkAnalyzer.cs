@@ -51,27 +51,9 @@ namespace StaticAnalysis.GeneratedSdkAnalyzer
             GeneratedSdkIssueReportLoggerName = "GeneratedSdkIssues.csv";
         }
 
-        /// <summary>
-        /// Given a set of directory paths containing PowerShell module folders,
-        /// analyze the Generated Sdk issues in the modules and report any issues
-        /// </summary>
-        /// <param name="cmdletProbingDirs">Set of directory paths containing PowerShell module folders to be checked for breaking changes.</param>
-        public void Analyze(IEnumerable<string> cmdletProbingDirs)
+        public void Analyze(IEnumerable<string> scopes)
         {
-            Analyze(cmdletProbingDirs, null, null);
-        }
-
-        public void Analyze(IEnumerable<string> cmdletProbingDirs, IEnumerable<string> modulesToAnalyze)
-        {
-            Analyze(cmdletProbingDirs, null, null, modulesToAnalyze);
-        }
-
-        public void Analyze(
-            IEnumerable<string> cmdletProbingDirs,
-            Func<IEnumerable<string>, IEnumerable<string>> directoryFilter,
-            Func<string, bool> cmdletFilter)
-        {
-            Analyze(cmdletProbingDirs, directoryFilter, cmdletFilter, null);
+            Analyze(scopes, null);
         }
 
         /// <summary>
