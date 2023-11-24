@@ -32,6 +32,15 @@ $SavePath = $PWD
 $MissReadMe = 9000
 $GenSdkChanged = 9090
 
+function EnsureModuleName {
+    param([string]$moduleName)
+    if (-not [System.String]::IsNullOrEmpty($moduleName) -and -not $moduleName.StartsWith("Az."))
+    {
+        return "Az.$moduleName"
+    }
+    return $moduleName
+}
+
 function Get-NonExceptionSdkRecord{
     param(
         [GeneratedSdkIssue[]]$records
