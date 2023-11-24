@@ -1,5 +1,5 @@
 ---
-external help file:
+external help file: Az.App-help.xml
 Module Name: Az.App
 online version: https://learn.microsoft.com/powershell/module/az.app/remove-azcontainerappauthconfig
 schema: 2.0.0
@@ -15,19 +15,19 @@ Delete a Container App AuthConfig.
 ### Delete (Default)
 ```
 Remove-AzContainerAppAuthConfig -ContainerAppName <String> -Name <String> -ResourceGroupName <String>
- [-SubscriptionId <String>] [-DefaultProfile <PSObject>] [-PassThru] [-Confirm] [-WhatIf] [<CommonParameters>]
-```
-
-### DeleteViaIdentity
-```
-Remove-AzContainerAppAuthConfig -InputObject <IAppIdentity> [-DefaultProfile <PSObject>] [-PassThru]
- [-Confirm] [-WhatIf] [<CommonParameters>]
+ [-SubscriptionId <String>] [-DefaultProfile <PSObject>] [-PassThru] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### DeleteViaIdentityContainerApp
 ```
-Remove-AzContainerAppAuthConfig -ContainerAppInputObject <IAppIdentity> -Name <String>
- [-DefaultProfile <PSObject>] [-PassThru] [-Confirm] [-WhatIf] [<CommonParameters>]
+Remove-AzContainerAppAuthConfig -Name <String> -ContainerAppInputObject <IAppIdentity>
+ [-DefaultProfile <PSObject>] [-PassThru] [-WhatIf] [-Confirm] [<CommonParameters>]
+```
+
+### DeleteViaIdentity
+```
+Remove-AzContainerAppAuthConfig -InputObject <IAppIdentity> [-DefaultProfile <PSObject>] [-PassThru] [-WhatIf]
+ [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -231,4 +231,3 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ## NOTES
 
 ## RELATED LINKS
-

@@ -1,5 +1,5 @@
 ---
-external help file:
+external help file: Az.App-help.xml
 Module Name: Az.App
 online version: https://learn.microsoft.com/powershell/module/az.app/new-azcontainerappmanagedcert
 schema: 2.0.0
@@ -14,37 +14,38 @@ Create a Managed Certificate.
 
 ### CreateExpanded (Default)
 ```
-New-AzContainerAppManagedCert -EnvName <String> -Name <String> -ResourceGroupName <String> -Location <String>
- [-SubscriptionId <String>] [-DomainControlValidation <String>] [-SubjectName <String>] [-Tag <Hashtable>]
- [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-PassThru] [-Confirm] [-WhatIf] [<CommonParameters>]
+New-AzContainerAppManagedCert -EnvName <String> -Name <String> -ResourceGroupName <String>
+ [-SubscriptionId <String>] -Location <String> [-DomainControlValidation <String>] [-SubjectName <String>]
+ [-Tag <Hashtable>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-PassThru] [-WhatIf] [-Confirm]
+ [<CommonParameters>]
+```
+
+### CreateViaJsonString
+```
+New-AzContainerAppManagedCert -EnvName <String> -Name <String> -ResourceGroupName <String>
+ [-SubscriptionId <String>] -JsonString <String> [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-PassThru]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
+```
+
+### CreateViaJsonFilePath
+```
+New-AzContainerAppManagedCert -EnvName <String> -Name <String> -ResourceGroupName <String>
+ [-SubscriptionId <String>] -JsonFilePath <String> [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-PassThru]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
+```
+
+### CreateViaIdentityManagedEnvironmentExpanded
+```
+New-AzContainerAppManagedCert -Name <String> -ManagedEnvironmentInputObject <IAppIdentity> -Location <String>
+ [-DomainControlValidation <String>] [-SubjectName <String>] [-Tag <Hashtable>] [-DefaultProfile <PSObject>]
+ [-AsJob] [-NoWait] [-PassThru] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### CreateViaIdentityExpanded
 ```
 New-AzContainerAppManagedCert -InputObject <IAppIdentity> -Location <String>
  [-DomainControlValidation <String>] [-SubjectName <String>] [-Tag <Hashtable>] [-DefaultProfile <PSObject>]
- [-AsJob] [-NoWait] [-PassThru] [-Confirm] [-WhatIf] [<CommonParameters>]
-```
-
-### CreateViaIdentityManagedEnvironmentExpanded
-```
-New-AzContainerAppManagedCert -ManagedEnvironmentInputObject <IAppIdentity> -Name <String> -Location <String>
- [-DomainControlValidation <String>] [-SubjectName <String>] [-Tag <Hashtable>] [-DefaultProfile <PSObject>]
- [-AsJob] [-NoWait] [-PassThru] [-Confirm] [-WhatIf] [<CommonParameters>]
-```
-
-### CreateViaJsonFilePath
-```
-New-AzContainerAppManagedCert -EnvName <String> -Name <String> -ResourceGroupName <String>
- -JsonFilePath <String> [-SubscriptionId <String>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-PassThru]
- [-Confirm] [-WhatIf] [<CommonParameters>]
-```
-
-### CreateViaJsonString
-```
-New-AzContainerAppManagedCert -EnvName <String> -Name <String> -ResourceGroupName <String>
- -JsonString <String> [-SubscriptionId <String>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-PassThru]
- [-Confirm] [-WhatIf] [<CommonParameters>]
+ [-AsJob] [-NoWait] [-PassThru] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -105,7 +106,7 @@ Selected type of domain control validation for managed certificates.
 
 ```yaml
 Type: System.String
-Parameter Sets: CreateExpanded, CreateViaIdentityExpanded, CreateViaIdentityManagedEnvironmentExpanded
+Parameter Sets: CreateExpanded, CreateViaIdentityManagedEnvironmentExpanded, CreateViaIdentityExpanded
 Aliases:
 
 Required: False
@@ -120,7 +121,7 @@ Name of the Managed Environment.
 
 ```yaml
 Type: System.String
-Parameter Sets: CreateExpanded, CreateViaJsonFilePath, CreateViaJsonString
+Parameter Sets: CreateExpanded, CreateViaJsonString, CreateViaJsonFilePath
 Aliases:
 
 Required: True
@@ -181,7 +182,7 @@ The geo-location where the resource lives
 
 ```yaml
 Type: System.String
-Parameter Sets: CreateExpanded, CreateViaIdentityExpanded, CreateViaIdentityManagedEnvironmentExpanded
+Parameter Sets: CreateExpanded, CreateViaIdentityManagedEnvironmentExpanded, CreateViaIdentityExpanded
 Aliases:
 
 Required: True
@@ -212,7 +213,7 @@ Name of the Managed Certificate.
 
 ```yaml
 Type: System.String
-Parameter Sets: CreateExpanded, CreateViaIdentityManagedEnvironmentExpanded, CreateViaJsonFilePath, CreateViaJsonString
+Parameter Sets: CreateExpanded, CreateViaJsonString, CreateViaJsonFilePath, CreateViaIdentityManagedEnvironmentExpanded
 Aliases: ManagedCertificateName
 
 Required: True
@@ -258,7 +259,7 @@ The name is case insensitive.
 
 ```yaml
 Type: System.String
-Parameter Sets: CreateExpanded, CreateViaJsonFilePath, CreateViaJsonString
+Parameter Sets: CreateExpanded, CreateViaJsonString, CreateViaJsonFilePath
 Aliases:
 
 Required: True
@@ -273,7 +274,7 @@ Subject name of the certificate.
 
 ```yaml
 Type: System.String
-Parameter Sets: CreateExpanded, CreateViaIdentityExpanded, CreateViaIdentityManagedEnvironmentExpanded
+Parameter Sets: CreateExpanded, CreateViaIdentityManagedEnvironmentExpanded, CreateViaIdentityExpanded
 Aliases:
 
 Required: False
@@ -288,7 +289,7 @@ The ID of the target subscription.
 
 ```yaml
 Type: System.String
-Parameter Sets: CreateExpanded, CreateViaJsonFilePath, CreateViaJsonString
+Parameter Sets: CreateExpanded, CreateViaJsonString, CreateViaJsonFilePath
 Aliases:
 
 Required: False
@@ -303,7 +304,7 @@ Resource tags.
 
 ```yaml
 Type: System.Collections.Hashtable
-Parameter Sets: CreateExpanded, CreateViaIdentityExpanded, CreateViaIdentityManagedEnvironmentExpanded
+Parameter Sets: CreateExpanded, CreateViaIdentityManagedEnvironmentExpanded, CreateViaIdentityExpanded
 Aliases:
 
 Required: False
@@ -358,4 +359,3 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ## NOTES
 
 ## RELATED LINKS
-
