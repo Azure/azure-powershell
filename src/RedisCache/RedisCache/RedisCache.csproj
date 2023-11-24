@@ -11,10 +11,6 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <PackageReference Include="Microsoft.Azure.Insights" Version="0.16.0-preview" />
-  </ItemGroup>
-
-  <ItemGroup>
     <ProjectReference Include="..\RedisCache.Management.Sdk\RedisCache.Management.Sdk.csproj" />
   </ItemGroup>
 
