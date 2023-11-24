@@ -37,14 +37,9 @@ input-file:
   - $(repo)/specification/paloaltonetworks/resource-manager/PaloAltoNetworks.Cloudngfw/stable/2023-09-01/PaloAltoNetworks.Cloudngfw.json
 
 title: PaloAltoNetworks
-module-version: 0.3.0
+module-version: 0.2.0
 subject-prefix: $(service-name)
 
-identity-correction-for-post: true
-resourcegroup-append: true
-nested-object-to-string: true
-
-# For new modules, please avoid setting 3.x using the use-extension method and instead, use 4.x as the default option
 use-extension:
   "@autorest/powershell": "4.x"
 
@@ -86,12 +81,15 @@ directive:
       }
 
   - where:
-      variant: ^Create$|^CreateViaIdentity$|^CreateViaIdentityExpanded$|^Update$|^UpdateViaIdentity$|^Save$|^SaveViaIdentity$
+      variant: ^(Create|Update|Save)(?!.*?Expanded)
     remove: true
+  - where:
+      variant: ^CreateViaIdentity.*$
+    remove: true
+
   - where:
       verb: Set
     remove: true
-
 # # Some of the parameters are of type Object and need to be expanded into a command for the convenience of the user
 # # The following are commented out and their generated cmdlets may be renamed and custom logic
 # # Do not delete this code
