@@ -33,19 +33,11 @@ namespace Microsoft.Azure.Commands.KeyVault.Models
             PermissionsToStorage = permissionsToStorage == null ? new List<string>() : new List<string>(permissionsToStorage);
         }
 
-        public PSKeyVaultAccessPolicy(KeyVaultManagement.Models.AccessPolicyEntry s, IMicrosoftGraphClient graphClient)
-        {
-            ObjectId = s.ObjectId;
-            DisplayName = ModelExtensions.GetDisplayNameForADObject(s.ObjectId, graphClient);
-            ApplicationId = s.ApplicationId;
-            TenantId = s.TenantId;
-            TenantName = s.TenantId.ToString();
-            PermissionsToSecrets = s.Permissions.Secrets == null ? new List<string>() : new List<string>(s.Permissions.Secrets);
-            PermissionsToKeys = s.Permissions.Keys == null ? new List<string>() : new List<string>(s.Permissions.Keys);
-            PermissionsToCertificates = s.Permissions.Certificates == null ? new List<string>() : new List<string>(s.Permissions.Certificates);
-            PermissionsToStorage = s.Permissions.Storage == null ? new List<string>() : new List<string>(s.Permissions.Storage);
+        public PSKeyVaultAccessPolicy(KeyVaultManagement.Models.AccessPolicyEntry s, IMicrosoftGraphClient graphClient) :
+            this(s, ModelExtensions.GetDisplayNameForADObject(s.ObjectId, graphClient))
+        { 
         }
-
+       
         public PSKeyVaultAccessPolicy(KeyVaultManagement.Models.AccessPolicyEntry s, string displayName)
         {
             ObjectId = s.ObjectId;
