@@ -63,28 +63,6 @@ namespace StaticAnalysis.GeneratedSdkAnalyzer
         /// <param name="scopes"></param>
         public void Analyze(IEnumerable<string> scopes, IEnumerable<string> modulesToAnalyze)
         {
-            var savedDirectory = Directory.GetCurrentDirectory();
-            var processedGeneratedSdkFiles = new List<string>();
-            var GeneratedSdkLogger = Logger.CreateLogger<GeneratedSdkIssue>("GeneratedSdkIssues.csv");
-            foreach (var baseDirectory in scopes.Where(s => Directory.Exists(Path.GetFullPath(s))))
-            {
-                SharedAssemblyLoader.Load(baseDirectory);
-                foreach (var directory in Directory.EnumerateDirectories(Path.GetFullPath(baseDirectory)))
-                {
-                    if (modulesToAnalyze != null &&
-                        modulesToAnalyze.Any() &&
-                        !modulesToAnalyze.Any(m => directory.EndsWith(m)))
-                    {
-                        continue;
-                    }
-
-                    var dirs = Directory.EnumerateDirectories(directory);
-                    if (dirs != null && dirs.Any(d => string.Equals(Path.GetFileName(d), "GeneratedSdk", StringComparison.OrdinalIgnoreCase)))
-                    {
-                        Console.WriteLine($"Analyzed module under {directory} ...");
-                    }
-                }
-            }
         }
 
         /// <summary>
