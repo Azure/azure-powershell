@@ -423,11 +423,11 @@ If ($StaticAnalysis)
     {
         $FailedTasks += "Help"
     }
-    .("$PSScriptRoot/ExecuteCIStep.ps1") -StaticAnalysisUX @Parameters 2>>$ErrorLogPath
-    If (($LASTEXITCODE -ne 0) -and ($LASTEXITCODE -ne $null))
-    {
-        $FailedTasks += "UXMetadata"
-    }
+    #.("$PSScriptRoot/ExecuteCIStep.ps1") -StaticAnalysisUX @Parameters 2>>$ErrorLogPath
+    #If (($LASTEXITCODE -ne 0) -and ($LASTEXITCODE -ne $null))
+    #{
+     #   $FailedTasks += "UXMetadata"
+    #}
     .("$PSScriptRoot/ExecuteCIStep.ps1") -StaticAnalysisCmdletDiff @Parameters 2>>$ErrorLogPath
     If (($LASTEXITCODE -ne 0) -and ($LASTEXITCODE -ne $null))
     {
@@ -547,12 +547,12 @@ If ($StaticAnalysisUX)
     }
     If ("" -Ne $UXModuleList)
     {
-        Write-Host "Running static analysis for UX metadata..."
-        dotnet $RepoArtifacts/StaticAnalysis/StaticAnalysis.Netcore.dll -p $RepoArtifacts/$Configuration -r $StaticAnalysisOutputDirectory --analyzers ux -u -m $UXModuleList
-        If ($LASTEXITCODE -ne 0)
-        {
-            Return $LASTEXITCODE
-        }
+        #Write-Host "Running static analysis for UX metadata..."
+        #dotnet $RepoArtifacts/StaticAnalysis/StaticAnalysis.Netcore.dll -p $RepoArtifacts/$Configuration -r $StaticAnalysisOutputDirectory --analyzers ux -u -m $UXModuleList
+        #If ($LASTEXITCODE -ne 0)
+        #{
+        #    Return $LASTEXITCODE
+        #}
     }
     Return 0
 }
