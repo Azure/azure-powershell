@@ -170,6 +170,7 @@ try {
         }
         Set-Location $SavePath
     }
+    $ExceptionList = Get-NonExceptionSdkRecord $ExceptionList
 }
 catch {
     Write-Host "An error occurred: $_"
@@ -186,7 +187,6 @@ finally {
     # }
 
     if ($ExceptionList.Length -ne 0) {
-        $ExceptionList = Get-NonExceptionSdkRecord $ExceptionList
         $ExceptionList | Sort-Object -Unique -Property Module,Sdk,Description | Export-Csv $ExceptionFilePath -NoTypeInformation
     }
 }
