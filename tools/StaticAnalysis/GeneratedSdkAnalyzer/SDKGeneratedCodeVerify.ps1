@@ -152,6 +152,32 @@ finally {
     # }
 
     if ($ExceptionList.Length -ne 0) {
+        $ExceptionList = Get-NonExceptionSdkRecord $ExceptionList
         $ExceptionList | Sort-Object -Unique -Property Module,Sdk,Description | Export-Csv $ExceptionFilePath -NoTypeInformation
     }
+}
+
+
+function Get-NonExceptionSdkRecord{
+    param(
+        [GeneratedSdkIssue[]]$records
+    )
+    $exceptionPaths = "$PSScriptRoot\..\..\..\tools\StaticAnalysis\Exceptions"
+    $errors = @()
+    foreach($record in $records){        
+        $exceptionPath = Join-Path -Path $exceptionPaths -ChildPath (EnsureModuleName($record.Module)) -AdditionalChildPath "GeneratedSdkIssues.csv"
+        if(Test-Path -Path $exceptionPath){
+            $exceptionContents = Import-Csv -Path $exceptionPath
+            foreach($exceptionContent in $exceptionContents) {
+                if($exceptionContent.Module -eq $record.Module -and $exceptionContent.Sdk -eq $record.Sdk -and $exceptionContent.Severity -eq $record.Severity -and $exceptionContent.ProblemId -eq $record.ProblemId -and $exceptionContent.Description -eq $record.Description){
+                    $needAdd = $false
+                    break
+                }
+            }
+        }
+        if($needAdd){
+            $errors += $record
+        }
+    }
+    return $errors
 }
