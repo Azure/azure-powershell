@@ -150,12 +150,7 @@ namespace StaticAnalysis
                         }
                         if (analyzerName.ToLower().Equals("ux"))
                         {
-                            // Analyzers.Add(new UXMetadataAnalyzer.UXMetadataAnalyzer());
-                        }
-                        if (analyzerName.ToLower().Equals("generated-sdk"))
-                        {
-                            Analyzers.Add(new GeneratedSdkAnalyzer.GeneratedSdkAnalyzer());
-                            Console.WriteLine("added-----------------------sdk______________");
+                            Analyzers.Add(new UXMetadataAnalyzer.UXMetadataAnalyzer());
                         }
                         if (analyzerName.ToLower().Equals("check-error"))
                         {
@@ -170,9 +165,7 @@ namespace StaticAnalysis
                     Analyzers.Add(new SignatureVerifier.SignatureVerifier());
                     Analyzers.Add(new CmdletDiffAnalyzer.CmdletDiffAnalyzer());
                     Analyzers.Add(new HelpAnalyzer.HelpAnalyzer());
-                    // Analyzers.Add(new UXMetadataAnalyzer.UXMetadataAnalyzer());
-                    Analyzers.Add(new GeneratedSdkAnalyzer.GeneratedSdkAnalyzer());
-                    Console.WriteLine("added-----------------------sdk______________222");
+                    Analyzers.Add(new UXMetadataAnalyzer.UXMetadataAnalyzer());
                     needToCheckIssue = true;
                 }
 
