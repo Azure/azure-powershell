@@ -48,7 +48,7 @@ Describe 'AzContainerAppManagedCert' {
         } | Should -Not -Throw
     }
 
-    It 'Delete' -Skip {
+    It 'Delete' {
         {
             Remove-AzContainerAppManagedCert -EnvName $env.managedEnv1 -Name $env.managedCert1 -ResourceGroupName $env.resourceGroupManaged
         } | Should -Not -Throw

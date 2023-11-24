@@ -1,5 +1,5 @@
 ---
-external help file:
+external help file: Az.App-help.xml
 Module Name: Az.App
 online version: https://learn.microsoft.com/powershell/module/az.app/start-azcontainerappjob
 schema: 2.0.0
@@ -16,41 +16,40 @@ Start a Container Apps Job
 ```
 Start-AzContainerAppJob -Name <String> -ResourceGroupName <String> [-SubscriptionId <String>]
  [-Container <IJobExecutionContainer[]>] [-InitContainer <IJobExecutionContainer[]>]
- [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
+ [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-WhatIf] [-Confirm] [<CommonParameters>]
+```
+
+### StartViaJsonString
+```
+Start-AzContainerAppJob -Name <String> -ResourceGroupName <String> [-SubscriptionId <String>]
+ -JsonString <String> [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-WhatIf] [-Confirm] [<CommonParameters>]
+```
+
+### StartViaJsonFilePath
+```
+Start-AzContainerAppJob -Name <String> -ResourceGroupName <String> [-SubscriptionId <String>]
+ -JsonFilePath <String> [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-WhatIf] [-Confirm]
+ [<CommonParameters>]
 ```
 
 ### Start
 ```
-Start-AzContainerAppJob -Name <String> -ResourceGroupName <String> -Template <IJobExecutionTemplate>
- [-SubscriptionId <String>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf]
+Start-AzContainerAppJob -Name <String> -ResourceGroupName <String> [-SubscriptionId <String>]
+ -Template <IJobExecutionTemplate> [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-WhatIf] [-Confirm]
  [<CommonParameters>]
-```
-
-### StartViaIdentity
-```
-Start-AzContainerAppJob -InputObject <IAppIdentity> -Template <IJobExecutionTemplate>
- [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ### StartViaIdentityExpanded
 ```
 Start-AzContainerAppJob -InputObject <IAppIdentity> [-Container <IJobExecutionContainer[]>]
- [-InitContainer <IJobExecutionContainer[]>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm]
- [-WhatIf] [<CommonParameters>]
+ [-InitContainer <IJobExecutionContainer[]>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-WhatIf]
+ [-Confirm] [<CommonParameters>]
 ```
 
-### StartViaJsonFilePath
+### StartViaIdentity
 ```
-Start-AzContainerAppJob -Name <String> -ResourceGroupName <String> -JsonFilePath <String>
- [-SubscriptionId <String>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf]
- [<CommonParameters>]
-```
-
-### StartViaJsonString
-```
-Start-AzContainerAppJob -Name <String> -ResourceGroupName <String> -JsonString <String>
- [-SubscriptionId <String>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf]
- [<CommonParameters>]
+Start-AzContainerAppJob -InputObject <IAppIdentity> -Template <IJobExecutionTemplate>
+ [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -143,7 +142,7 @@ To construct, see NOTES section for INPUTOBJECT properties and create a hash tab
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.App.Models.IAppIdentity
-Parameter Sets: StartViaIdentity, StartViaIdentityExpanded
+Parameter Sets: StartViaIdentityExpanded, StartViaIdentity
 Aliases:
 
 Required: True
@@ -188,7 +187,7 @@ Job Name
 
 ```yaml
 Type: System.String
-Parameter Sets: Start, StartExpanded, StartViaJsonFilePath, StartViaJsonString
+Parameter Sets: StartExpanded, StartViaJsonString, StartViaJsonFilePath, Start
 Aliases: JobName
 
 Required: True
@@ -219,7 +218,7 @@ The name is case insensitive.
 
 ```yaml
 Type: System.String
-Parameter Sets: Start, StartExpanded, StartViaJsonFilePath, StartViaJsonString
+Parameter Sets: StartExpanded, StartViaJsonString, StartViaJsonFilePath, Start
 Aliases:
 
 Required: True
@@ -234,7 +233,7 @@ The ID of the target subscription.
 
 ```yaml
 Type: System.String
-Parameter Sets: Start, StartExpanded, StartViaJsonFilePath, StartViaJsonString
+Parameter Sets: StartExpanded, StartViaJsonString, StartViaJsonFilePath, Start
 Aliases:
 
 Required: False
@@ -307,4 +306,3 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ## NOTES
 
 ## RELATED LINKS
-

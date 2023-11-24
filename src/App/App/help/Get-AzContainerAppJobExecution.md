@@ -1,5 +1,5 @@
 ---
-external help file:
+external help file: Az.App-help.xml
 Module Name: Az.App
 online version: https://learn.microsoft.com/powershell/module/az.app/get-azcontainerappjobexecution
 schema: 2.0.0
@@ -18,15 +18,15 @@ Get-AzContainerAppJobExecution -JobName <String> -Name <String> -ResourceGroupNa
  [-SubscriptionId <String[]>] [-DefaultProfile <PSObject>] [<CommonParameters>]
 ```
 
+### JobViaIdentityJob
+```
+Get-AzContainerAppJobExecution -Name <String> -JobInputObject <IAppIdentity> [-DefaultProfile <PSObject>]
+ [<CommonParameters>]
+```
+
 ### JobViaIdentity
 ```
 Get-AzContainerAppJobExecution -InputObject <IAppIdentity> [-DefaultProfile <PSObject>] [<CommonParameters>]
-```
-
-### JobViaIdentityJob
-```
-Get-AzContainerAppJobExecution -JobInputObject <IAppIdentity> -Name <String> [-DefaultProfile <PSObject>]
- [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -172,4 +172,3 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ## NOTES
 
 ## RELATED LINKS
-
