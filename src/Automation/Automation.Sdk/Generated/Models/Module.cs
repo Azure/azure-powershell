@@ -40,45 +40,45 @@ namespace Microsoft.Azure.Management.Automation.Models
         /// <param name="location">The Azure Region where the resource lives
         /// </param>
 
-        /// <param name="etag">Gets or sets the etag of the resource.
+        /// <param name="etag">Gets the etag of the resource.
         /// </param>
 
         /// <param name="contentLink">Gets or sets the contentLink of the module.
         /// </param>
 
-        /// <param name="isGlobal">Gets or sets the isGlobal flag of the module.
+        /// <param name="isGlobal">Gets the isGlobal flag of the module.
         /// </param>
 
-        /// <param name="version">Gets or sets the version of the module.
+        /// <param name="version">Gets the version of the module.
         /// </param>
 
-        /// <param name="sizeInBytes">Gets or sets the size in bytes of the module.
+        /// <param name="sizeInBytes">Gets the size in bytes of the module.
         /// </param>
 
-        /// <param name="activityCount">Gets or sets the activity count of the module.
+        /// <param name="activityCount">Gets the activity count of the module.
         /// </param>
 
-        /// <param name="provisioningState">Gets or sets the provisioning state of the module.
-        /// Possible values include: 'Created', 'Creating',
-        /// 'StartingImportModuleRunbook', 'RunningImportModuleRunbook',
-        /// 'ContentRetrieved', 'ContentDownloaded', 'ContentValidated',
-        /// 'ConnectionTypeImported', 'ContentStored', 'ModuleDataStored',
-        /// 'ActivitiesStored', 'ModuleImportRunbookComplete', 'Succeeded', 'Failed',
-        /// 'Cancelled', 'Updating'</param>
+        /// <param name="provisioningState">Gets the provisioning state of the module.
+        /// Possible values include: &#39;Created&#39;, &#39;Creating&#39;,
+        /// &#39;StartingImportModuleRunbook&#39;, &#39;RunningImportModuleRunbook&#39;,
+        /// &#39;ContentRetrieved&#39;, &#39;ContentDownloaded&#39;, &#39;ContentValidated&#39;,
+        /// &#39;ConnectionTypeImported&#39;, &#39;ContentStored&#39;, &#39;ModuleDataStored&#39;,
+        /// &#39;ActivitiesStored&#39;, &#39;ModuleImportRunbookComplete&#39;, &#39;Succeeded&#39;, &#39;Failed&#39;,
+        /// &#39;Canceled&#39;, &#39;Updating&#39;</param>
 
-        /// <param name="error">Gets or sets the error info of the module.
+        /// <param name="error">Gets the error info of the module.
         /// </param>
 
-        /// <param name="creationTime">Gets or sets the creation time.
+        /// <param name="creationTime">Gets the creation time.
         /// </param>
 
-        /// <param name="lastModifiedTime">Gets or sets the last modified time.
+        /// <param name="lastModifiedTime">Gets the last modified time.
         /// </param>
 
         /// <param name="description">Gets or sets the description.
         /// </param>
 
-        /// <param name="isComposite">Gets or sets type of module, if its composite or not.
+        /// <param name="isComposite">Gets type of module, if its composite or not.
         /// </param>
         public Module(string id = default(string), string name = default(string), string type = default(string), System.Collections.Generic.IDictionary<string, string> tags = default(System.Collections.Generic.IDictionary<string, string>), string location = default(string), string etag = default(string), ContentLink contentLink = default(ContentLink), bool? isGlobal = default(bool?), string version = default(string), long? sizeInBytes = default(long?), int? activityCount = default(int?), string provisioningState = default(string), ModuleErrorInfo error = default(ModuleErrorInfo), System.DateTimeOffset creationTime = default(System.DateTimeOffset), System.DateTimeOffset lastModifiedTime = default(System.DateTimeOffset), string description = default(string), bool? isComposite = default(bool?))
 
@@ -106,7 +106,7 @@ namespace Microsoft.Azure.Management.Automation.Models
 
 
         /// <summary>
-        /// Gets or sets gets or sets the etag of the resource.
+        /// Gets or sets gets the etag of the resource.
         /// </summary>
         [Newtonsoft.Json.JsonProperty(PropertyName = "etag")]
         public string Etag {get; set; }
@@ -118,49 +118,49 @@ namespace Microsoft.Azure.Management.Automation.Models
         public ContentLink ContentLink {get; set; }
 
         /// <summary>
-        /// Gets or sets gets or sets the isGlobal flag of the module.
+        /// Gets or sets gets the isGlobal flag of the module.
         /// </summary>
         [Newtonsoft.Json.JsonProperty(PropertyName = "properties.isGlobal")]
         public bool? IsGlobal {get; set; }
 
         /// <summary>
-        /// Gets or sets gets or sets the version of the module.
+        /// Gets or sets gets the version of the module.
         /// </summary>
         [Newtonsoft.Json.JsonProperty(PropertyName = "properties.version")]
         public string Version {get; set; }
 
         /// <summary>
-        /// Gets or sets gets or sets the size in bytes of the module.
+        /// Gets or sets gets the size in bytes of the module.
         /// </summary>
         [Newtonsoft.Json.JsonProperty(PropertyName = "properties.sizeInBytes")]
         public long? SizeInBytes {get; set; }
 
         /// <summary>
-        /// Gets or sets gets or sets the activity count of the module.
+        /// Gets or sets gets the activity count of the module.
         /// </summary>
         [Newtonsoft.Json.JsonProperty(PropertyName = "properties.activityCount")]
         public int? ActivityCount {get; set; }
 
         /// <summary>
-        /// Gets or sets gets or sets the provisioning state of the module. Possible values include: &#39;Created&#39;, &#39;Creating&#39;, &#39;StartingImportModuleRunbook&#39;, &#39;RunningImportModuleRunbook&#39;, &#39;ContentRetrieved&#39;, &#39;ContentDownloaded&#39;, &#39;ContentValidated&#39;, &#39;ConnectionTypeImported&#39;, &#39;ContentStored&#39;, &#39;ModuleDataStored&#39;, &#39;ActivitiesStored&#39;, &#39;ModuleImportRunbookComplete&#39;, &#39;Succeeded&#39;, &#39;Failed&#39;, &#39;Cancelled&#39;, &#39;Updating&#39;
+        /// Gets or sets gets the provisioning state of the module. Possible values include: &#39;Created&#39;, &#39;Creating&#39;, &#39;StartingImportModuleRunbook&#39;, &#39;RunningImportModuleRunbook&#39;, &#39;ContentRetrieved&#39;, &#39;ContentDownloaded&#39;, &#39;ContentValidated&#39;, &#39;ConnectionTypeImported&#39;, &#39;ContentStored&#39;, &#39;ModuleDataStored&#39;, &#39;ActivitiesStored&#39;, &#39;ModuleImportRunbookComplete&#39;, &#39;Succeeded&#39;, &#39;Failed&#39;, &#39;Canceled&#39;, &#39;Updating&#39;
         /// </summary>
         [Newtonsoft.Json.JsonProperty(PropertyName = "properties.provisioningState")]
         public string ProvisioningState {get; set; }
 
         /// <summary>
-        /// Gets or sets gets or sets the error info of the module.
+        /// Gets or sets gets the error info of the module.
         /// </summary>
         [Newtonsoft.Json.JsonProperty(PropertyName = "properties.error")]
         public ModuleErrorInfo Error {get; set; }
 
         /// <summary>
-        /// Gets or sets gets or sets the creation time.
+        /// Gets or sets gets the creation time.
         /// </summary>
         [Newtonsoft.Json.JsonProperty(PropertyName = "properties.creationTime")]
         public System.DateTimeOffset CreationTime {get; set; }
 
         /// <summary>
-        /// Gets or sets gets or sets the last modified time.
+        /// Gets or sets gets the last modified time.
         /// </summary>
         [Newtonsoft.Json.JsonProperty(PropertyName = "properties.lastModifiedTime")]
         public System.DateTimeOffset LastModifiedTime {get; set; }
@@ -172,7 +172,7 @@ namespace Microsoft.Azure.Management.Automation.Models
         public string Description {get; set; }
 
         /// <summary>
-        /// Gets or sets gets or sets type of module, if its composite or not.
+        /// Gets or sets gets type of module, if its composite or not.
         /// </summary>
         [Newtonsoft.Json.JsonProperty(PropertyName = "properties.isComposite")]
         public bool? IsComposite {get; set; }

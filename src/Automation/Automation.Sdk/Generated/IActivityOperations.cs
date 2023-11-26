@@ -14,10 +14,12 @@ namespace Microsoft.Azure.Management.Automation
     public partial interface IActivityOperations
     {
         /// <summary>
-        /// Retrieve the activity in the module identified by module name and activity name.
+        /// Retrieve the activity in the module identified by module name and activity
+        /// name.
         /// </summary>
         /// <remarks>
-        /// Retrieve the activity in the module identified by module name and activity name.
+        /// Retrieve the activity in the module identified by module name and activity
+        /// name.
         /// </remarks>
         /// <param name='resourceGroupName'>
         /// Name of an Azure Resource group.

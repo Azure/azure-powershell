@@ -28,7 +28,7 @@ namespace Microsoft.Azure.Management.Automation.Models
         /// </param>
 
         /// <param name="type">Gets or sets the content source type.
-        /// Possible values include: 'embeddedContent', 'uri'</param>
+        /// Possible values include: &#39;embeddedContent&#39;, &#39;uri&#39;</param>
 
         /// <param name="value">Gets or sets the value of the content. This is based on the content source
         /// type.

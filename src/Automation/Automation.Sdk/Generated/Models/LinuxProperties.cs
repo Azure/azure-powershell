@@ -25,7 +25,7 @@ namespace Microsoft.Azure.Management.Automation.Models
         /// </summary>
 
         /// <param name="includedPackageClassifications">Update classifications included in the software update configuration.
-        /// Possible values include: 'Unclassified', 'Critical', 'Security', 'Other'</param>
+        /// Possible values include: &#39;Unclassified&#39;, &#39;Critical&#39;, &#39;Security&#39;, &#39;Other&#39;</param>
 
         /// <param name="excludedPackageNameMasks">packages excluded from the software update configuration.
         /// </param>

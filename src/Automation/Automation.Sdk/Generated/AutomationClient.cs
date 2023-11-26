@@ -33,7 +33,9 @@ namespace Microsoft.Azure.Management.Automation
         public Microsoft.Rest.ServiceClientCredentials Credentials { get; private set; }
 
         /// <summary>
-        /// Gets subscription credentials which uniquely identify Microsoft Azure subscription. The subscription ID forms part of the URI for every service call.
+        /// Gets subscription credentials which uniquely identify Microsoft Azure
+        /// subscription. The subscription ID forms part of the URI for every service
+        /// call.
         /// </summary>
         public string SubscriptionId { get; set;}
 
@@ -44,14 +46,14 @@ namespace Microsoft.Azure.Management.Automation
 
         /// <summary>
         /// The retry timeout in seconds for Long Running Operations. Default
-        /// value is 30.
+        /// /// value is 30.
         /// </summary>
         public int? LongRunningOperationRetryTimeout { get; set;}
 
         /// <summary>
-        /// Whether a unique x-ms-client-request-id should be generated. When 
-        /// set to true a unique x-ms-client-request-id value is generated and 
-        /// included in each request. Default is true.
+        /// Whether a unique x-ms-client-request-id should be generated. When
+        /// /// set to true a unique x-ms-client-request-id value is generated and
+        /// /// included in each request. Default is true.
         /// </summary>
         public bool? GenerateClientRequestId { get; set;}
 
@@ -195,6 +197,10 @@ namespace Microsoft.Azure.Management.Automation
         /// Gets the ITestJobOperations
         /// </summary>
         public virtual ITestJobOperations TestJob { get; private set; }
+        /// <summary>
+        /// Gets the IPowerShell72ModuleOperations
+        /// </summary>
+        public virtual IPowerShell72ModuleOperations PowerShell72Module { get; private set; }
         /// <summary>
         /// Gets the IHybridRunbookWorkersOperations
         /// </summary>
@@ -477,6 +483,7 @@ namespace Microsoft.Azure.Management.Automation
             this.Runbook = new RunbookOperations(this);
             this.TestJobStreams = new TestJobStreamsOperations(this);
             this.TestJob = new TestJobOperations(this);
+            this.PowerShell72Module = new PowerShell72ModuleOperations(this);
             this.HybridRunbookWorkers = new HybridRunbookWorkersOperations(this);
             this.HybridRunbookWorkerGroup = new HybridRunbookWorkerGroupOperations(this);
             this.Python3Package = new Python3PackageOperations(this);

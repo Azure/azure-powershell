@@ -44,7 +44,7 @@ namespace Microsoft.Azure.Management.Automation.Models
         /// </param>
 
         /// <param name="provisioningState">Gets or sets the provisioning state of the configuration.
-        /// Possible values include: 'Succeeded'</param>
+        /// Possible values include: &#39;Succeeded&#39;</param>
 
         /// <param name="jobCount">Gets or sets the job count of the configuration.
         /// </param>
@@ -56,7 +56,7 @@ namespace Microsoft.Azure.Management.Automation.Models
         /// </param>
 
         /// <param name="state">Gets or sets the state of the configuration.
-        /// Possible values include: 'New', 'Edit', 'Published'</param>
+        /// Possible values include: &#39;New&#39;, &#39;Edit&#39;, &#39;Published&#39;</param>
 
         /// <param name="logVerbose">Gets or sets verbose log option.
         /// </param>

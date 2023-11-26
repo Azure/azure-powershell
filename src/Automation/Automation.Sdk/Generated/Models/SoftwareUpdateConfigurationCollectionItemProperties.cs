@@ -32,8 +32,8 @@ namespace Microsoft.Azure.Management.Automation.Models
 
         /// <param name="frequency">execution frequency of the schedule associated with the software update
         /// configuration
-        /// Possible values include: 'OneTime', 'Day', 'Hour', 'Week', 'Month',
-        /// 'Minute'</param>
+        /// Possible values include: &#39;OneTime&#39;, &#39;Day&#39;, &#39;Hour&#39;, &#39;Week&#39;, &#39;Month&#39;,
+        /// &#39;Minute&#39;</param>
 
         /// <param name="startTime">the start time of the update.
         /// </param>
