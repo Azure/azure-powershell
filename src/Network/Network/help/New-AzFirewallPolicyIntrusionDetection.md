@@ -14,6 +14,7 @@ Creates a new Azure Firewall Policy Intrusion Detection to associate with Firewa
 
 ```
 New-AzFirewallPolicyIntrusionDetection -Mode <String>
+ [-Profile <String>]
  [-SignatureOverride <PSAzureFirewallPolicyIntrusionDetectionSignatureOverride[]>]
  [-BypassTraffic <PSAzureFirewallPolicyIntrusionDetectionBypassTrafficSetting[]>] [-PrivateRange <String[]>]
  [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
@@ -55,6 +56,15 @@ New-AzFirewallPolicy -Name fp1 -Location "westus2" -ResourceGroupName TestRg -Sk
 ```
 
 This example creates intrusion detection with bypass traffic setting
+
+### Example 5: Create firewall policy with intrusion detection configured with profile "standard"
+```powershell
+$intrusionDetection = New-AzFirewallPolicyIntrusionDetection -Mode "Deny" -Profile "Standard"
+New-AzFirewallPolicy -Name fp1 -Location "westus2" -ResourceGroupName TestRg -SkuTier "Premium" -IntrusionDetection $intrusionDetection
+```
+
+This example creates intrusion detection with profile "standard", all signatures that are not in the profile will be disabled be default
+
 
 ## PARAMETERS
 
