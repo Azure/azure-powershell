@@ -1,6 +1,6 @@
 ### Example 1: Get the lab for a Virtual machine.
 ```powershell
-Get-AzLabServicesLabForVM -ResourceId '/subscriptions/<SubscriptionID>/resourceGroups/<GroupName>/providers/Microsoft.LabServices/labs/<labName>/virtualMachines/<VMName>'
+Get-AzLabServicesLabForVm -ResourceId '/subscriptions/<SubscriptionID>/resourceGroups/<GroupName>/providers/Microsoft.LabServices/labs/<labName>/virtualMachines/<VMName>'
 ```
 
 ```output
