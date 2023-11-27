@@ -24,6 +24,17 @@ Describe 'Get-AzDataProtectionJob' {
         $job.Id | Should be $jobs[0].Id
     }
 
+    It 'ListCRR' {
+        $resourceGroupName  = $env.TestCrossRegionRestoreScenario.ResourceGroupName
+        $vaultName = $env.TestCrossRegionRestoreScenario.VaultName
+        $subscriptionId = $env.TestCrossRegionRestoreScenario.SubscriptionId
+
+        $jobs = Get-AzDataProtectionJob -SubscriptionId $subscriptionId -ResourceGroupName $resourceGroupName -VaultName $vaultName -UseSecondaryRegion
+        
+        $jobs.Length | Should -BeGreaterThan 0
+        ($jobs[0].OperationCategory -eq "CrossRegionRestore") | Should be $true
+    }
+
     It 'GetViaIdentity' -skip {
         { throw [System.NotImplementedException] } | Should -Not -Throw
     }

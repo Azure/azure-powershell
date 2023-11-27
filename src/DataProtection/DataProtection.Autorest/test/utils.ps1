@@ -205,6 +205,16 @@ function setupEnv() {
         FileNamePrefix = "oss-csr-pstest-restoreasfiles"
     }
 
+    $CrossRegionRestoreVariables = @{
+        ResourceGroupName =  "adigupt-rg"
+        VaultName = "crr-wala-ecy-vault"
+        SubscriptionId = "62b829ee-7936-40c9-a1c9-47a93f9f3965"
+        TargetResourceId = "/subscriptions/62b829ee-7936-40c9-a1c9-47a93f9f3965/resourceGroups/DppCrrRG/providers/Microsoft.DBforPostgreSQL/servers/crr-ccy-1/databases/oss-pstestrun-crr-1"
+        SecretURI = "https://crr-ccy-kv.vault.azure.net/secrets/secret-for-crr-ccy-1"
+        TargetContainerURI = "https://zftccypod01otds1.blob.core.windows.net/oss-crr-pstest"
+        FileNamePrefix = "oss-pstest-crrasfiles-1"
+    }
+
     $MUAVariables = @{
         SubscriptionId = "38304e13-357e-405e-9e9a-220351dcce8c"
         ResourceGroupName = "hiagarg"
@@ -231,6 +241,7 @@ function setupEnv() {
     $env.add("TestAksRestoreScenario", $AksRestoreVariables) | Out-Null
     $env.add("TestBlobHardeningScenario", $BlobHardeningVariables) | Out-Null
     $env.add("TestCrossSubscriptionRestoreScenario", $CrossSubscriptionRestoreVariables) | Out-Null
+    $env.add("TestCrossRegionRestoreScenario", $CrossRegionRestoreVariables) | Out-Null
     $env.add("TestSoftDelete", $SoftDeleteVariables) | Out-Null
     $env.add("TestBackupConfig", $BackupConfigVariables) | Out-Null
     $env.add("TestMUA", $MUAVariables) | Out-Null
