@@ -33,12 +33,12 @@ namespace Microsoft.Azure.Management.Network.Models
         /// 'Basic', 'HighPerformance', 'Standard', 'UltraPerformance',
         /// 'VpnGw1', 'VpnGw2', 'VpnGw3', 'VpnGw4', 'VpnGw5', 'VpnGw1AZ',
         /// 'VpnGw2AZ', 'VpnGw3AZ', 'VpnGw4AZ', 'VpnGw5AZ', 'ErGw1AZ',
-        /// 'ErGw2AZ', 'ErGw3AZ'</param>
+        /// 'ErGw2AZ', 'ErGw3AZ', 'ErGwScale'</param>
         /// <param name="tier">Gateway SKU tier. Possible values include:
         /// 'Basic', 'HighPerformance', 'Standard', 'UltraPerformance',
         /// 'VpnGw1', 'VpnGw2', 'VpnGw3', 'VpnGw4', 'VpnGw5', 'VpnGw1AZ',
         /// 'VpnGw2AZ', 'VpnGw3AZ', 'VpnGw4AZ', 'VpnGw5AZ', 'ErGw1AZ',
-        /// 'ErGw2AZ', 'ErGw3AZ'</param>
+        /// 'ErGw2AZ', 'ErGw3AZ', 'ErGwScale'</param>
         /// <param name="capacity">The capacity.</param>
         public VirtualNetworkGatewaySku(string name = default(string), string tier = default(string), int? capacity = default(int?))
         {
@@ -57,7 +57,8 @@ namespace Microsoft.Azure.Management.Network.Models
         /// Gets or sets gateway SKU name. Possible values include: 'Basic',
         /// 'HighPerformance', 'Standard', 'UltraPerformance', 'VpnGw1',
         /// 'VpnGw2', 'VpnGw3', 'VpnGw4', 'VpnGw5', 'VpnGw1AZ', 'VpnGw2AZ',
-        /// 'VpnGw3AZ', 'VpnGw4AZ', 'VpnGw5AZ', 'ErGw1AZ', 'ErGw2AZ', 'ErGw3AZ'
+        /// 'VpnGw3AZ', 'VpnGw4AZ', 'VpnGw5AZ', 'ErGw1AZ', 'ErGw2AZ',
+        /// 'ErGw3AZ', 'ErGwScale'
         /// </summary>
         [JsonProperty(PropertyName = "name")]
         public string Name { get; set; }
@@ -66,7 +67,8 @@ namespace Microsoft.Azure.Management.Network.Models
         /// Gets or sets gateway SKU tier. Possible values include: 'Basic',
         /// 'HighPerformance', 'Standard', 'UltraPerformance', 'VpnGw1',
         /// 'VpnGw2', 'VpnGw3', 'VpnGw4', 'VpnGw5', 'VpnGw1AZ', 'VpnGw2AZ',
-        /// 'VpnGw3AZ', 'VpnGw4AZ', 'VpnGw5AZ', 'ErGw1AZ', 'ErGw2AZ', 'ErGw3AZ'
+        /// 'VpnGw3AZ', 'VpnGw4AZ', 'VpnGw5AZ', 'ErGw1AZ', 'ErGw2AZ',
+        /// 'ErGw3AZ', 'ErGwScale'
         /// </summary>
         [JsonProperty(PropertyName = "tier")]
         public string Tier { get; set; }

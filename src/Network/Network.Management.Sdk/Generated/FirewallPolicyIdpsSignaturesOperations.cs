@@ -51,7 +51,8 @@ namespace Microsoft.Azure.Management.Network
         public NetworkManagementClient Client { get; private set; }
 
         /// <summary>
-        /// Retrieves the current status of IDPS signatures for the relevant policy
+        /// Retrieves the current status of IDPS signatures for the relevant policy.
+        /// Maximal amount of returned signatures is 1000.
         /// </summary>
         /// <param name='resourceGroupName'>
         /// The name of the resource group.
@@ -104,7 +105,7 @@ namespace Microsoft.Azure.Management.Network
             {
                 parameters.Validate();
             }
-            string apiVersion = "2023-05-01";
+            string apiVersion = "2023-06-01";
             // Tracing
             bool _shouldTrace = ServiceClientTracing.IsEnabled;
             string _invocationId = null;

@@ -110,7 +110,7 @@ try {
             else
             {
                 Write-Host "Using autorest csharp v3:`nRe-generating SDK under Generated folder for $ModuleName..."
-                npx autorest --use:@microsoft.azure/autorest.csharp@2.3.90
+                npx autorest --use:@microsoft.azure/autorest.csharp@2.3.90 --memory=16g
             }
             
             If (($LASTEXITCODE -ne 0) -and ($LASTEXITCODE -ne $null))

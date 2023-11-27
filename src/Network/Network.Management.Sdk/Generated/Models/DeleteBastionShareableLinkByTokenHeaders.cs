@@ -14,27 +14,26 @@ namespace Microsoft.Azure.Management.Network.Models
     using System.Linq;
 
     /// <summary>
-    /// Reference to RouteTableV3 associated with the connection.
+    /// Defines headers for DeleteBastionShareableLinkByToken operation.
     /// </summary>
-    public partial class RoutingConfigurationNfvSubResource
+    public partial class DeleteBastionShareableLinkByTokenHeaders
     {
         /// <summary>
         /// Initializes a new instance of the
-        /// RoutingConfigurationNfvSubResource class.
+        /// DeleteBastionShareableLinkByTokenHeaders class.
         /// </summary>
-        public RoutingConfigurationNfvSubResource()
+        public DeleteBastionShareableLinkByTokenHeaders()
         {
             CustomInit();
         }
 
         /// <summary>
         /// Initializes a new instance of the
-        /// RoutingConfigurationNfvSubResource class.
+        /// DeleteBastionShareableLinkByTokenHeaders class.
         /// </summary>
-        /// <param name="resourceUri">Resource ID.</param>
-        public RoutingConfigurationNfvSubResource(string resourceUri = default(string))
+        public DeleteBastionShareableLinkByTokenHeaders(string location = default(string))
         {
-            ResourceUri = resourceUri;
+            Location = location;
             CustomInit();
         }
 
@@ -44,10 +43,9 @@ namespace Microsoft.Azure.Management.Network.Models
         partial void CustomInit();
 
         /// <summary>
-        /// Gets or sets resource ID.
         /// </summary>
-        [JsonProperty(PropertyName = "resourceUri")]
-        public string ResourceUri { get; set; }
+        [JsonProperty(PropertyName = "Location")]
+        public string Location { get; set; }
 
     }
 }
