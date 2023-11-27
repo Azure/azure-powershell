@@ -25,7 +25,7 @@ namespace Microsoft.Azure.Management.Network
     {
         /// <summary>
         /// Retrieves the current status of IDPS signatures for the relevant
-        /// policy
+        /// policy. Maximal amount of returned signatures is 1000.
         /// </summary>
         /// <param name='resourceGroupName'>
         /// The name of the resource group.

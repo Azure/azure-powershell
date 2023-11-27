@@ -148,6 +148,7 @@ function Test-DedicatedHostVirtualMachine
         # VM Profile & Hardware
         $vmsize = 'Standard_E2s_v3';
         $vmname0 = 'v' + $rgname;
+        $stnd = "Standard";
 
         # Creating a VM using simple parameter set
         $username = "admin01"
@@ -155,7 +156,7 @@ function Test-DedicatedHostVirtualMachine
         $cred = new-object -typename System.Management.Automation.PSCredential -argumentlist $username, $password
         [string]$domainNameLabel = "$vmname0-$vmname0".tolower();
 
-        New-AzVM -ResourceGroupName $rgname -Name $vmname0 -Credential $cred -Zone "2" -Size $vmsize -HostId $dedicatedHostId -DomainNameLabel $domainNameLabel;
+        New-AzVM -ResourceGroupName $rgname -Name $vmname0 -Credential $cred -Zone "2" -Size $vmsize -HostId $dedicatedHostId -DomainNameLabel $domainNameLabel -SecurityType $stnd;
         $vm0 = Get-AzVM -ResourceGroupName $rgname -Name $vmname0;
         Assert-AreEqual $dedicatedHostId $vm0.Host.Id;
 
@@ -177,7 +178,7 @@ function Test-DedicatedHostVirtualMachine
         $cred = New-Object System.Management.Automation.PSCredential ($user, $securePassword);
         $computerName = 'test';
 
-        $p = New-AzVMConfig -VMName $vmname1 -VMSize $vmsize -Zone "2" -HostId $dedicatedHostId `
+        $p = New-AzVMConfig -VMName $vmname1 -VMSize $vmsize -Zone "2" -HostId $dedicatedHostId -SecurityType $stnd `
              | Add-AzVMNetworkInterface -Id $nicId -Primary `
              | Set-AzVMOperatingSystem -Windows -ComputerName $computerName -Credential $cred;
 

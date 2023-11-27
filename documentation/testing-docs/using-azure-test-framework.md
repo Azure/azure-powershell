@@ -38,7 +38,7 @@
 
 Azure PowerShell repo now has its own test framework located under `tools\TestFx`, which supports recording all the HTTP requests from behind Azure PowerShell cmdlets and then playing them back.
 
-The target framework of test is .Net Core 3.1, please ensure .Net runtime Microsoft.NETCore.App 3.1 is installed. You can list all installed version via `dotnet --info`.
+The target framework of test is .Net 6, please ensure .Net runtime Microsoft.NETCore.App 6.0 is installed. You can list all installed version via `dotnet --info`.
 
 ## Setup prior to Record or Playback of tests
 

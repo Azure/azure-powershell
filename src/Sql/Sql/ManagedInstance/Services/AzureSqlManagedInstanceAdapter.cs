@@ -154,7 +154,7 @@ namespace Microsoft.Azure.Commands.Sql.ManagedInstance.Adapter
                 AdministratorLoginPassword = model.AdministratorPassword != null ? ConversionUtilities.SecureStringToString(model.AdministratorPassword) : null,
                 Sku = model.Sku != null ? new Management.Sql.Models.Sku(model.Sku.Name, model.Sku.Tier) : null,
                 LicenseType = model.LicenseType,
-                StorageSizeInGB = model.StorageSizeInGB,
+                StorageSizeInGb = model.StorageSizeInGB,
                 SubnetId = model.SubnetId,
                 VCores = model.VCores,
                 Identity = model.Identity,
@@ -193,7 +193,7 @@ namespace Microsoft.Azure.Commands.Sql.ManagedInstance.Adapter
                 AdministratorLoginPassword = model.AdministratorPassword != null ? ConversionUtilities.SecureStringToString(model.AdministratorPassword) : null,
                 Sku = model.Sku != null ? new Management.Sql.Models.Sku(model.Sku.Name, model.Sku.Tier) : null,
                 LicenseType = model.LicenseType,
-                StorageSizeInGB = model.StorageSizeInGB,
+                StorageSizeInGb = model.StorageSizeInGB,
                 SubnetId = model.SubnetId,
                 VCores = model.VCores,
                 PublicDataEndpointEnabled = model.PublicDataEndpointEnabled,
@@ -250,7 +250,7 @@ namespace Microsoft.Azure.Commands.Sql.ManagedInstance.Adapter
             managedInstance.SubnetId = resp.SubnetId;
             managedInstance.LicenseType = resp.LicenseType;
             managedInstance.VCores = resp.VCores;
-            managedInstance.StorageSizeInGB = resp.StorageSizeInGB;
+            managedInstance.StorageSizeInGB = resp.StorageSizeInGb;
             managedInstance.Collation = resp.Collation;
             managedInstance.PublicDataEndpointEnabled = resp.PublicDataEndpointEnabled;
             managedInstance.ProxyOverride = resp.ProxyOverride;
@@ -316,7 +316,7 @@ namespace Microsoft.Azure.Commands.Sql.ManagedInstance.Adapter
 
             Guid? objectId = input.Sid;
             string displayName = input.Login;
-            bool? adOnlyAuth = input.AzureADOnlyAuthentication;
+            bool? adOnlyAuth = input.AzureAdOnlyAuthentication;
 
             // Gets the default Tenant id for the subscriptions
             Guid tenantId = GetTenantId();
@@ -393,7 +393,7 @@ namespace Microsoft.Azure.Commands.Sql.ManagedInstance.Adapter
                     Sid = new Guid(app.AppId),
                     TenantId = tenantId,
                     PrincipalType = "Application",
-                    AzureADOnlyAuthentication = adOnlyAuth
+                    AzureAdOnlyAuthentication = adOnlyAuth
                 };
             }
 
@@ -405,7 +405,7 @@ namespace Microsoft.Azure.Commands.Sql.ManagedInstance.Adapter
                     Sid = new Guid(group.Id),
                     TenantId = tenantId,
                     PrincipalType = "Group",
-                    AzureADOnlyAuthentication = adOnlyAuth
+                    AzureAdOnlyAuthentication = adOnlyAuth
                 };
             }
 
@@ -469,7 +469,7 @@ namespace Microsoft.Azure.Commands.Sql.ManagedInstance.Adapter
                     Sid = new Guid(obj.Id),
                     TenantId = tenantId,
                     PrincipalType = "User",
-                    AzureADOnlyAuthentication = adOnlyAuth
+                    AzureAdOnlyAuthentication = adOnlyAuth
                 };
             }
         }

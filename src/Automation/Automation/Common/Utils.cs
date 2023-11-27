@@ -41,5 +41,10 @@ namespace Microsoft.Azure.Commands.Automation.Common
 
             return plainTextString;
         }
+
+        internal static bool isRuntimeVersionPowerShell72(string runtimeVersion)
+        {
+            return Constants.RuntimeVersion.PowerShell72.Equals(runtimeVersion);
+        }
     }
 }

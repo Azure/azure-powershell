@@ -63,7 +63,7 @@ namespace Microsoft.Azure.Commands.Compute.Strategies.ComputeRp
             double? maxPrice,
             string[] scaleInPolicy,
             bool doNotRunExtensionsOnOverprovisionedVMs,
-            bool encryptionAtHost,
+            bool? encryptionAtHost,
             int? platformFaultDomainCount,
             string edgeZone,
             string orchestrationMode,
@@ -117,15 +117,23 @@ namespace Microsoft.Azure.Commands.Compute.Strategies.ComputeRp
                             },
                             StorageProfile = new VirtualMachineScaleSetStorageProfile
                             {
-                                ImageReference = (imageReferenceId == null) ? imageAndOsType?.Image : (imageReferenceId.ToLower().StartsWith("/communitygalleries/") ? new ImageReference
+                                ImageReference = (imageReferenceId == null && sharedImageGalleryId == null) ? imageAndOsType?.Image 
+                                : (sharedImageGalleryId != null ? new ImageReference
+                                {
+                                    SharedGalleryImageId = sharedImageGalleryId
+                                }
+                                : (imageReferenceId.ToLower().StartsWith("/communitygalleries/") ? new ImageReference
                                 {
                                     CommunityGalleryImageId = imageReferenceId,
-                                    SharedGalleryImageId = sharedImageGalleryId
-                                } : new ImageReference
+                                } 
+                                : (imageReferenceId.ToLower().StartsWith("/sharedgalleries/") ? new ImageReference
                                 {
-                                    Id = imageReferenceId,
-                                    SharedGalleryImageId = sharedImageGalleryId
-                                }),
+                                    SharedGalleryImageId = imageReferenceId
+                                }
+                                : new ImageReference
+                                {
+                                    Id = imageReferenceId
+                                }))),
                                 DataDisks = DataDiskStrategy.CreateVmssDataDisks(
                                     imageAndOsType?.DataDiskLuns, dataDisks),
                                 DiskControllerType = diskControllerType
@@ -205,7 +213,7 @@ namespace Microsoft.Azure.Commands.Compute.Strategies.ComputeRp
             double? maxPrice,
             string[] scaleInPolicy,
             bool doNotRunExtensionsOnOverprovisionedVMs,
-            bool encryptionAtHost,
+            bool? encryptionAtHost,
             int? platformFaultDomainCount,
             string edgeZone,
             string orchestrationMode,

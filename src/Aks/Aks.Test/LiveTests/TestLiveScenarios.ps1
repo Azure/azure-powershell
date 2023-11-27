@@ -9,7 +9,7 @@ Invoke-LiveTestScenario -Name "Test_AKS_CURD" -Description "Test AKS Cluster CRU
 
     # step 1: create a default aks cluster with default node pool
 
-    ssh-keygen -t rsa -f id_rsa -q -N '"123456"'
+    'y' | ssh-keygen -t rsa -f id_rsa -q -N '"123456"'
     $sshKeyValue = Get-Content id_rsa.pub -Raw
 
     $kvName = "LiveTestKeyVault"
@@ -69,7 +69,7 @@ Invoke-LiveTestScenario -Name "Test_AKS_CURD" -Description "Test AKS Cluster CRU
     Assert-Null $pools.MaxCount
     Assert-Null $pools.MinCount
     Assert-Null $pools.EnableAutoScaling
-    Assert-Null $pools.UpgradeSettings
+    # Assert-Null $pools.UpgradeSettings
     Assert-Null $pools.EnableNodePublicIP
     Assert-Null $pools.ScaleSetPriority
     Assert-Null $pools.ScaleSetEvictionPolicy

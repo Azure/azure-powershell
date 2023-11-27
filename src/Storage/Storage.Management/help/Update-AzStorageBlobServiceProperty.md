@@ -140,12 +140,12 @@ AllowedHeaders  : {x-ms-meta-customheader, x-ms-meta-target*}
 The first command assigns an array of rules to the $CorsRules variable. This command uses standard extends over several lines in this code block.
 The second command sets the rules in $CorsRules to the Blob service of a Storage account.
 
-### Example 5: Clean up CORS rules 
+### Example 5: Clean up CORS rules
 ```powershell
 Update-AzStorageBlobServiceProperty -ResourceGroupName myresourcegroup -StorageAccountName mystorageaccount -CorsRule @()
 ```
-This command cleans up the CORS rules of a Storage account by inputting @() to parameter CorsRule
 
+This command cleans up the CORS rules of a Storage account by inputting @() to parameter CorsRule
 
 ## PARAMETERS
 

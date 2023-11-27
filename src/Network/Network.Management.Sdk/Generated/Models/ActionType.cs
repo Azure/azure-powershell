@@ -20,5 +20,6 @@ namespace Microsoft.Azure.Management.Network.Models
         public const string Allow = "Allow";
         public const string Block = "Block";
         public const string Log = "Log";
+        public const string JSChallenge = "JSChallenge";
     }
 }

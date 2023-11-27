@@ -350,7 +350,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery
 
                 if (ipConfig.RecoveryLBBackendAddressPoolIds == null)
                 {
-                    ipConfig.RecoveryLBBackendAddressPoolIds = vmNicIPConfig.RecoveryLBBackendAddressPoolIds;
+                    ipConfig.RecoveryLBBackendAddressPoolIds = vmNicIPConfig.RecoveryLbBackendAddressPoolIds;
                 }
 
                 if (string.IsNullOrEmpty(ipConfig.TfoSubnetName))
@@ -370,7 +370,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery
 
                 if (ipConfig.TfoLBBackendAddressPoolIds == null)
                 {
-                    ipConfig.TfoLBBackendAddressPoolIds = vmNicIPConfig.TfoLBBackendAddressPoolIds;
+                    ipConfig.TfoLBBackendAddressPoolIds = vmNicIPConfig.TfoLbBackendAddressPoolIds;
                 }
             }
 
@@ -399,11 +399,11 @@ namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery
                 RecoverySubnetName = ipConfig.RecoverySubnetName,
                 RecoveryStaticIPAddress = ipConfig.RecoveryStaticIPAddress,
                 RecoveryPublicIPAddressId = ipConfig.RecoveryPublicIPAddressId,
-                RecoveryLBBackendAddressPoolIds = ipConfig.RecoveryLBBackendAddressPoolIds,
+                RecoveryLBBackendAddressPoolIds = ipConfig.RecoveryLbBackendAddressPoolIds,
                 TfoSubnetName = ipConfig.TfoSubnetName,
                 TfoStaticIPAddress = ipConfig.TfoStaticIPAddress,
                 TfoPublicIPAddressId = ipConfig.TfoPublicIPAddressId,
-                TfoLBBackendAddressPoolIds = ipConfig.TfoLBBackendAddressPoolIds
+                TfoLBBackendAddressPoolIds = ipConfig.TfoLbBackendAddressPoolIds
             };
         }
     }

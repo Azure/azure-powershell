@@ -16,6 +16,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Monitor.Autoscale.Cmdlets
     [global::System.Management.Automation.OutputType(typeof(Microsoft.Azure.PowerShell.Cmdlets.Monitor.Autoscale.Models.Api20221001.IAutoscaleSettingResource))]
     [global::Microsoft.Azure.PowerShell.Cmdlets.Monitor.Autoscale.Description(@"Creates or updates an autoscale setting.")]
     [global::Microsoft.Azure.PowerShell.Cmdlets.Monitor.Autoscale.Generated]
+    [global::Microsoft.Azure.PowerShell.Cmdlets.Monitor.Autoscale.HttpPath(Path = "/subscriptions/{subscriptionId}/resourcegroups/{resourceGroupName}/providers/Microsoft.Insights/autoscalesettings/{autoscaleSettingName}", ApiVersion = "2022-10-01")]
     public partial class NewAzAutoscaleSetting_CreateViaIdentity : global::System.Management.Automation.PSCmdlet,
         Microsoft.Azure.PowerShell.Cmdlets.Monitor.Autoscale.Runtime.IEventListener
     {

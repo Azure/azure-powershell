@@ -25,7 +25,7 @@ namespace Microsoft.Azure.Management.Automation.Models
         /// </summary>
 
         /// <param name="name">Gets or sets the SKU name of the account.
-        /// Possible values include: 'Free', 'Basic'</param>
+        /// Possible values include: &#39;Free&#39;, &#39;Basic&#39;</param>
 
         /// <param name="family">Gets or sets the SKU family.
         /// </param>

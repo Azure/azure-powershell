@@ -1,0 +1,85 @@
+{
+  "resourceType": "networkFunctions",
+  "apiVersion": "2021-05-01",
+  "learnMore": {
+    "url": "https://learn.microsoft.com/powershell/module/az.connectednetwork"
+  },
+  "commands": [
+    {
+      "name": "Get-AzConnectedNetworkFunction",
+      "description": "Gets information about the specified network function resource.",
+      "path": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.HybridNetwork/networkFunctions/{networkFunctionName}",
+      "help": {
+        "learnMore": {
+          "url": "https://learn.microsoft.com/powershell/module/az.connectednetwork/get-azconnectednetworkfunction"
+        },
+        "parameterSets": [
+          {
+            "parameters": [
+              "-Name <String>",
+              "-ResourceGroupName <String>",
+              "[-SubscriptionId <String[]>]"
+            ]
+          }
+        ]
+      },
+      "examples": [
+        {
+          "description": "Gets information about the specified network function resource.",
+          "parameters": [
+            {
+              "name": "-Name",
+              "value": "[Path.networkFunctionName]"
+            },
+            {
+              "name": "-ResourceGroupName",
+              "value": "[Path.resourceGroupName]"
+            },
+            {
+              "name": "-SubscriptionId",
+              "value": "[Path.subscriptionId]"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Remove-AzConnectedNetworkFunction",
+      "description": "Deletes the specified network function resource.\nThis operation can take up to 1 hour to complete.\nThis is expected service behavior.",
+      "path": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.HybridNetwork/networkFunctions/{networkFunctionName}",
+      "help": {
+        "learnMore": {
+          "url": "https://learn.microsoft.com/powershell/module/az.connectednetwork/remove-azconnectednetworkfunction"
+        },
+        "parameterSets": [
+          {
+            "parameters": [
+              "-Name <String>",
+              "-ResourceGroupName <String>",
+              "[-SubscriptionId <String>]"
+            ]
+          }
+        ]
+      },
+      "examples": [
+        {
+          "description": "Deletes the specified network function resource. This operation can take up to 1 hour to complete. This is expected service behavior.",
+          "parameters": [
+            {
+              "name": "-Name",
+              "value": "[Path.networkFunctionName]"
+            },
+            {
+              "name": "-ResourceGroupName",
+              "value": "[Path.resourceGroupName]"
+            },
+            {
+              "name": "-SubscriptionId",
+              "value": "[Path.subscriptionId]"
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

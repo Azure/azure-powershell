@@ -25,8 +25,8 @@ New-AzDiskConfig [[-SkuName] <String>] [-Tier <String>] [-LogicalSectorSize <Int
  [-DiskEncryptionSetId <String>] [-EncryptionType <String>] [-DiskAccessId <String>]
  [-NetworkAccessPolicy <String>] [-BurstingEnabled <Boolean>] [-PublicNetworkAccess <String>]
  [-AcceleratedNetwork <Boolean>] [-DataAccessAuthMode <String>] [-Architecture <String>]
- [-PerformancePlus <Boolean>] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
- [<CommonParameters>]
+ [-PerformancePlus <Boolean>] [-OptimizedForFrequentAttach <Boolean>]
+ [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -83,6 +83,14 @@ New-AzDisk -ResourceGroupName 'ResourceGroup01' -DiskName 'Disk01' -Disk $diskCo
 ```
 
 Create a disk from a Shared Gallery Image Version.  Id is the id of the shared gallery image version. Lun is needed only if the source is a data disk.
+
+### Example 4
+```powershell
+$diskconfig = New-AzDiskConfig -Location 'Central US' -SkuName 'Standard_LRS' -OsType 'Windows' -UploadSizeInBytes 35183298347520 -CreateOption 'Upload' -OptimizedForFrequentAttach $true
+New-AzDisk -ResourceGroupName 'ResourceGroup01' -DiskName 'Disk01' -Disk $diskConfig
+```
+
+Create a disk with OptimizedForFrequentAttach as true, to improves reliability and performance of the data disks that will be frequently (more than 5 times a day) detached from one virtual machine and attached to another.
 
 ## PARAMETERS
 
@@ -459,6 +467,21 @@ Possible values include: 'AllowAll', 'AllowPrivate', 'DenyAll'
 
 ```yaml
 Type: System.String
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: True (ByPropertyName)
+Accept wildcard characters: False
+```
+
+### -OptimizedForFrequentAttach
+Setting this property to true improves reliability and performance of data disks that are frequently (more than 5 times a day) by detached from one virtual machine and attached to another. This property should not be set for disks that are not detached and attached frequently as it causes the disks to not align with the fault domain of the virtual machine.
+
+```yaml
+Type: System.Nullable`1[System.Boolean]
 Parameter Sets: (All)
 Aliases:
 

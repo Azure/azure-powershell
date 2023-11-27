@@ -119,6 +119,15 @@
     },
     {
       "patterns": [
+        "src/{ModuleName}/*UX/*.json$"
+      ],
+      "phases": [
+        "build:module",
+        "ux:module"
+      ]
+    },
+    {
+      "patterns": [
         "src/{ModuleName}/*"
       ],
       "phases": [
@@ -131,6 +140,12 @@
         "ux:module",
         "cmdlet-diff:module"
       ]
+    },
+    {
+      "patterns": [
+        "tools/StaticAnalysis/Exceptions/{ModuleName}/*"
+      ],
+      "phases": []
     },
     {
       "patterns": [

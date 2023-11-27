@@ -32,10 +32,10 @@ namespace Microsoft.Azure.Management.Network.Models
         /// <param name="mode">The current mode enforced, 0 - Disabled, 1 -
         /// Alert, 2 -Deny</param>
         /// <param name="severity">Describes the severity of signature: 1 -
-        /// Low, 2 - Medium, 3 - High</param>
+        /// High, 2 - Medium, 3 - Low</param>
         /// <param name="direction">Describes in which direction signature is
-        /// being enforced: 0 - Inbound, 1 - OutBound, 2 -
-        /// Bidirectional</param>
+        /// being enforced: 0 - OutBound, 1 - InBound, 2 - Any, 3 - Internal, 4
+        /// - InternalOutbound</param>
         /// <param name="group">Describes the groups the signature belongs
         /// to</param>
         /// <param name="description">Describes what is the signature
@@ -85,15 +85,16 @@ namespace Microsoft.Azure.Management.Network.Models
         public int? Mode { get; set; }
 
         /// <summary>
-        /// Gets or sets describes the severity of signature: 1 - Low, 2 -
-        /// Medium, 3 - High
+        /// Gets or sets describes the severity of signature: 1 - High, 2 -
+        /// Medium, 3 - Low
         /// </summary>
         [JsonProperty(PropertyName = "severity")]
         public int? Severity { get; set; }
 
         /// <summary>
         /// Gets or sets describes in which direction signature is being
-        /// enforced: 0 - Inbound, 1 - OutBound, 2 - Bidirectional
+        /// enforced: 0 - OutBound, 1 - InBound, 2 - Any, 3 - Internal, 4 -
+        /// InternalOutbound
         /// </summary>
         [JsonProperty(PropertyName = "direction")]
         public int? Direction { get; set; }

@@ -291,7 +291,7 @@ Accept wildcard characters: False
 
 ### -Owner
 The person responsible for setting the state of the resource.
-This value is typically an Azure Active Directory object ID.
+This value is typically a Microsoft Entra object ID.
 
 ```yaml
 Type: System.String

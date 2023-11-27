@@ -83,7 +83,7 @@ namespace Microsoft.Azure.Commands.Sql.ServerActiveDirectoryOnlyAuthentication.S
         /// <returns>The upserted Azure SQL Server Active Directory administrator</returns>
         internal AzureSqlServerActiveDirectoryOnlyAuthenticationModel UpsertAzureADOnlyAuthenticaion(string resourceGroup, string serverName, AzureSqlServerActiveDirectoryOnlyAuthenticationModel model)
         {
-            var resp = Communicator.CreateOrUpdate(resourceGroup, serverName, new ServerAzureADOnlyAuthentication(model.AzureADOnlyAuthentication));
+            var resp = Communicator.CreateOrUpdate(resourceGroup, serverName, new ServerAzureADOnlyAuthentication(azureAdOnlyAuthentication: model.AzureADOnlyAuthentication));
 
             return CreateServerActiveDirectoryOnlyAuthenticationModelFromResponse(resourceGroup, serverName, resp);
         }
@@ -103,7 +103,7 @@ namespace Microsoft.Azure.Commands.Sql.ServerActiveDirectoryOnlyAuthentication.S
 
                 model.ResourceGroupName = resourceGroup;
                 model.ServerName = serverName;
-                model.AzureADOnlyAuthentication = serverAzureADOnlyAuthentication.AzureADOnlyAuthentication;
+                model.AzureADOnlyAuthentication = serverAzureADOnlyAuthentication.AzureAdOnlyAuthentication.Value;
                 return model;
             }
 

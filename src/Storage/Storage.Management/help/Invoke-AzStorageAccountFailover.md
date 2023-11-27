@@ -36,6 +36,8 @@ Please understand the following impact to your storage account before you initia
 
 ### Example 1: Invoke failover of a Storage account
 <!-- Skip: Output cannot be splitted from code -->
+
+
 ```
 PS C:\>$account = Get-AzStorageAccount -ResourceGroupName "MyResourceGroup" -Name "mystorageaccount" -IncludeGeoReplicationStats
 PS C:\>$account.GeoReplicationStats
@@ -174,7 +176,7 @@ Accept wildcard characters: False
 ```
 
 ### CommonParameters
-This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable. For more information, see about_CommonParameters (http://go.microsoft.com/fwlink/?LinkID=113216).
+This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable. For more information, see [about_CommonParameters](http://go.microsoft.com/fwlink/?LinkID=113216).
 
 ## INPUTS
 

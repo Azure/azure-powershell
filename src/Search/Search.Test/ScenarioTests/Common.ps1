@@ -27,5 +27,5 @@ Gets the default location for creating storage accounts
 #>
 function Get-StorageLocation()
 {
-    "centraluseuap"
+    "westcentralus"
 }

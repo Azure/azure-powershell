@@ -18,6 +18,10 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
+* Fixed a bug that Get commands do not return all resources.
+
+## Version 3.3.0
+* Fixed minor issues
 
 ## Version 3.2.0
 * Added new cmdlet `Add-AzServiceFabricManagedClusterNetworkSecurityRule` to update network security rules in managed cluster resource

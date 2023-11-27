@@ -1,0 +1,47 @@
+{
+  "resourceType": "appAttachPackages",
+  "apiVersion": "2023-10-04-preview",
+  "learnMore": {
+    "url": "https://learn.microsoft.com/powershell/module/az.desktopvirtualization"
+  },
+  "commands": [
+    {
+      "name": "Get-AzWvdAppAttachPackage",
+      "description": "Get an app attach package.",
+      "path": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DesktopVirtualization/appAttachPackages/{appAttachPackageName}",
+      "help": {
+        "learnMore": {
+          "url": "https://learn.microsoft.com/powershell/module/az.desktopvirtualization/get-azwvdappattachpackage"
+        },
+        "parameterSets": [
+          {
+            "parameters": [
+              "-Name <String>",
+              "-ResourceGroupName <String>",
+              "[-SubscriptionId <String[]>]"
+            ]
+          }
+        ]
+      },
+      "examples": [
+        {
+          "description": "Get an app attach package.",
+          "parameters": [
+            {
+              "name": "-Name",
+              "value": "[Path.appAttachPackageName]"
+            },
+            {
+              "name": "-ResourceGroupName",
+              "value": "[Path.resourceGroupName]"
+            },
+            {
+              "name": "-SubscriptionId",
+              "value": "[Path.subscriptionId]"
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

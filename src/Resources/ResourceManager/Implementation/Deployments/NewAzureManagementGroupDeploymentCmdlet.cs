@@ -75,7 +75,7 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Implementation
             typeof(NewAzureManagementGroupDeploymentCmdlet),
             typeof(CmdletAttribute))).ConfirmImpact;
 
-        protected override PSDeploymentCmdletParameters DeploymentParameters => new PSDeploymentCmdletParameters()
+        protected override PSDeploymentCmdletParameters BuildDeploymentParameters() => new PSDeploymentCmdletParameters()
         {
             ScopeType = DeploymentScopeType.ManagementGroup,
             ManagementGroupId = this.ManagementGroupId,
@@ -86,13 +86,13 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Implementation
             TemplateFile = this.TemplateUri ?? this.TryResolvePath(this.TemplateFile),
             TemplateObject = this.TemplateObject,
             TemplateSpecId = TemplateSpecId,
-            TemplateParameterObject = this.GetTemplateParameterObject(this.TemplateParameterObject),
+            TemplateParameterObject = this.GetTemplateParameterObject(),
             ParameterUri = this.TemplateParameterUri,
             DeploymentDebugLogLevel = this.GetDeploymentDebugLogLevel(this.DeploymentDebugLogLevel),
             Tags = TagsHelper.ConvertToTagsDictionary(this.Tag)
         };
 
-        protected override PSDeploymentWhatIfCmdletParameters WhatIfParameters => new PSDeploymentWhatIfCmdletParameters(
+        protected override PSDeploymentWhatIfCmdletParameters BuildWhatIfParameters() => new PSDeploymentWhatIfCmdletParameters(
             DeploymentScopeType.ManagementGroup,
             managementGroupId: this.ManagementGroupId,
             deploymentName: this.Name,
@@ -103,7 +103,7 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Implementation
             templateUri: this.TemplateUri ?? this.TryResolvePath(this.TemplateFile),
             templateObject: this.TemplateObject,
             templateParametersUri: this.TemplateParameterUri,
-            templateParametersObject: GetTemplateParameterObject(this.TemplateParameterObject),
+            templateParametersObject: GetTemplateParameterObject(),
             resultFormat: this.WhatIfResultFormat,
             excludeChangeTypes: this.WhatIfExcludeChangeType);
 

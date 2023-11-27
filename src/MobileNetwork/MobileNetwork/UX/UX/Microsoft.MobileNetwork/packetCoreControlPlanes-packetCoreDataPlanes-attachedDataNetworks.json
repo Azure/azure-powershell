@@ -1,0 +1,105 @@
+{
+  "resourceType": "packetCoreControlPlanes/packetCoreDataPlanes/attachedDataNetworks",
+  "apiVersion": "2022-11-01",
+  "learnMore": {
+    "url": "https://learn.microsoft.com/powershell/module/az.mobilenetwork"
+  },
+  "commands": [
+    {
+      "name": "Get-AzMobileNetworkAttachedDataNetwork",
+      "description": "Gets information about the specified attached data network.",
+      "path": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.MobileNetwork/packetCoreControlPlanes/{packetCoreControlPlaneName}/packetCoreDataPlanes/{packetCoreDataPlaneName}/attachedDataNetworks/{attachedDataNetworkName}",
+      "help": {
+        "learnMore": {
+          "url": "https://learn.microsoft.com/powershell/module/az.mobilenetwork/get-azmobilenetworkattacheddatanetwork"
+        },
+        "parameterSets": [
+          {
+            "parameters": [
+              "-Name <String>",
+              "-PacketCoreControlPlaneName <String>",
+              "-PacketCoreDataPlaneName <String>",
+              "-ResourceGroupName <String>",
+              "[-SubscriptionId <String[]>]"
+            ]
+          }
+        ]
+      },
+      "examples": [
+        {
+          "description": "Gets information about the specified attached data network.",
+          "parameters": [
+            {
+              "name": "-Name",
+              "value": "[Path.attachedDataNetworkName]"
+            },
+            {
+              "name": "-PacketCoreControlPlaneName",
+              "value": "[Path.packetCoreControlPlaneName]"
+            },
+            {
+              "name": "-PacketCoreDataPlaneName",
+              "value": "[Path.packetCoreDataPlaneName]"
+            },
+            {
+              "name": "-ResourceGroupName",
+              "value": "[Path.resourceGroupName]"
+            },
+            {
+              "name": "-SubscriptionId",
+              "value": "[Path.subscriptionId]"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Remove-AzMobileNetworkAttachedDataNetwork",
+      "description": "Deletes the specified attached data network.",
+      "path": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.MobileNetwork/packetCoreControlPlanes/{packetCoreControlPlaneName}/packetCoreDataPlanes/{packetCoreDataPlaneName}/attachedDataNetworks/{attachedDataNetworkName}",
+      "help": {
+        "learnMore": {
+          "url": "https://learn.microsoft.com/powershell/module/az.mobilenetwork/remove-azmobilenetworkattacheddatanetwork"
+        },
+        "parameterSets": [
+          {
+            "parameters": [
+              "-Name <String>",
+              "-PacketCoreControlPlaneName <String>",
+              "-PacketCoreDataPlaneName <String>",
+              "-ResourceGroupName <String>",
+              "[-SubscriptionId <String>]"
+            ]
+          }
+        ]
+      },
+      "examples": [
+        {
+          "description": "Deletes the specified attached data network.",
+          "parameters": [
+            {
+              "name": "-Name",
+              "value": "[Path.attachedDataNetworkName]"
+            },
+            {
+              "name": "-PacketCoreControlPlaneName",
+              "value": "[Path.packetCoreControlPlaneName]"
+            },
+            {
+              "name": "-PacketCoreDataPlaneName",
+              "value": "[Path.packetCoreDataPlaneName]"
+            },
+            {
+              "name": "-ResourceGroupName",
+              "value": "[Path.resourceGroupName]"
+            },
+            {
+              "name": "-SubscriptionId",
+              "value": "[Path.subscriptionId]"
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

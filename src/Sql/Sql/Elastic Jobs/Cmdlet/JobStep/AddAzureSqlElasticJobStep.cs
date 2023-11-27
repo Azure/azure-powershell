@@ -225,44 +225,44 @@ namespace Microsoft.Azure.Commands.Sql.ElasticJobs.Cmdlet
         /// Gets or sets the credential name
         /// </summary>
         [Parameter(
-            Mandatory = true,
+            Mandatory = false,
             ParameterSetName = DefaultParameterSet,
             HelpMessage = "The credential name")]
         [Parameter(
-            Mandatory = true,
+            Mandatory = false,
             ParameterSetName = DefaultOutputDatabaseObject,
             HelpMessage = "The credential name")]
         [Parameter(
-            Mandatory = true,
+            Mandatory = false,
             ParameterSetName = DefaultOutputDatabaseId,
             HelpMessage = "The credential name")]
         [Parameter(
-            Mandatory = true,
+            Mandatory = false,
             Position = 3,
             ParameterSetName = InputObjectParameterSet,
             HelpMessage = "The credential name")]
         [Parameter(
-            Mandatory = true,
+            Mandatory = false,
             Position = 3,
             ParameterSetName = ParentObjectOutputDatabaseObject,
             HelpMessage = "The credential name")]
         [Parameter(
-            Mandatory = true,
+            Mandatory = false,
             Position = 3,
             ParameterSetName = ParentObjectOutputDatabaseId,
             HelpMessage = "The credential name")]
         [Parameter(
-            Mandatory = true,
+            Mandatory = false,
             Position = 3,
             ParameterSetName = ResourceIdParameterSet,
             HelpMessage = "The credential name")]
         [Parameter(
-            Mandatory = true,
+            Mandatory = false,
             Position = 3,
             ParameterSetName = ParentResourceIdOutputDatabaseObject,
             HelpMessage = "The credential name")]
         [Parameter(
-            Mandatory = true,
+            Mandatory = false,
             Position = 3,
             ParameterSetName = ParentResourceIdOutputDatabaseId,
             HelpMessage = "The credential name")]
@@ -347,27 +347,27 @@ namespace Microsoft.Azure.Commands.Sql.ElasticJobs.Cmdlet
         /// Gets or sets the output credential name
         /// </summary>
         [Parameter(
-            Mandatory = true,
+            Mandatory = false,
             ParameterSetName = DefaultOutputDatabaseObject,
             HelpMessage = "The output credential name")]
         [Parameter(
-            Mandatory = true,
+            Mandatory = false,
             ParameterSetName = DefaultOutputDatabaseId,
             HelpMessage = "The output credential name")]
         [Parameter(
-            Mandatory = true,
+            Mandatory = false,
             ParameterSetName = ParentObjectOutputDatabaseObject,
             HelpMessage = "The output credential name")]
         [Parameter(
-            Mandatory = true,
+            Mandatory = false,
             ParameterSetName = ParentObjectOutputDatabaseId,
             HelpMessage = "The output credential name")]
         [Parameter(
-            Mandatory = true,
+            Mandatory = false,
             ParameterSetName = ParentResourceIdOutputDatabaseObject,
             HelpMessage = "The output credential name")]
         [Parameter(
-            Mandatory = true,
+            Mandatory = false,
             ParameterSetName = ParentResourceIdOutputDatabaseId,
             HelpMessage = "The output credential name")]
         public string OutputCredentialName { get; set; }

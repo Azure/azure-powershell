@@ -27,7 +27,7 @@ Set-AzVirtualNetworkGateway -VirtualNetworkGateway <PSVirtualNetworkGateway> [-G
  [-AadAudienceId <String>] [-AadIssuerUri <String>] [-RemoveAadAuthentication] [-CustomRoute <String[]>]
  [-NatRule <PSVirtualNetworkGatewayNatRule[]>] [-BgpRouteTranslationForNat <Boolean>]
  [-VirtualNetworkGatewayPolicyGroup <PSVirtualNetworkGatewayPolicyGroup[]>]
- [-ClientConnectionConfiguration <PSClientConnectionConfiguration[]>] [-AsJob]
+ [-ClientConnectionConfiguration <PSClientConnectionConfiguration[]>] [-AdminState <String>] [-AsJob]
  [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 

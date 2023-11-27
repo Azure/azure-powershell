@@ -21,6 +21,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DataMigration.Cmdlets
     [global::System.Management.Automation.OutputType(typeof(Microsoft.Azure.PowerShell.Cmdlets.DataMigration.Models.Api20220330Preview.IDatabaseMigrationSqlDb))]
     [global::Microsoft.Azure.PowerShell.Cmdlets.DataMigration.Description(@"Create a new database migration to a given SQL Db. This command can migrate data from the selected source database tables to the target database tables. If the target database have no table existing, please use [New-AzDataMigrationSqlServerSchema](https://learn.microsoft.com/powershell/module/az.datamigration/new-azdatamigrationsqlserverschema) command to migrate schema objects from source database to target databse.")]
     [global::Microsoft.Azure.PowerShell.Cmdlets.DataMigration.Generated]
+    [global::Microsoft.Azure.PowerShell.Cmdlets.DataMigration.HttpPath(Path = "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Sql/servers/{sqlDbInstanceName}/providers/Microsoft.DataMigration/databaseMigrations/{targetDbName}", ApiVersion = "2022-03-30-preview")]
     public partial class NewAzDataMigrationToSqlDb_CreateExpanded : global::System.Management.Automation.PSCmdlet,
         Microsoft.Azure.PowerShell.Cmdlets.DataMigration.Runtime.IEventListener
     {

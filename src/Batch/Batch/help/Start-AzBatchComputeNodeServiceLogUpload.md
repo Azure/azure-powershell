@@ -93,7 +93,7 @@ Upload compute node service logs written on or after January 1, 2018 midnight an
 
 ### -BatchContext
 The BatchAccountContext instance to use when interacting with the Batch service.
-If you use the Get-AzBatchAccount cmdlet to get your BatchAccountContext, then Azure Active Directory authentication will be used when interacting with the Batch service.
+If you use the Get-AzBatchAccount cmdlet to get your BatchAccountContext, then Microsoft Entra authentication will be used when interacting with the Batch service.
 To use shared key authentication instead, use the Get-AzBatchAccountKey cmdlet to get a BatchAccountContext object with its access keys populated.
 When using shared key authentication, the primary access key is used by default.
 To change the key to use, set the BatchAccountContext.KeyInUse property.

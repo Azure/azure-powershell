@@ -497,9 +497,9 @@ namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery
                 {
                     var reprotectInput = new HyperVReplicaAzureReprotectInput
                     {
-                        HvHostVmId = asrProtectableItem.FabricObjectId,
-                        VmName = asrProtectableItem.FriendlyName,
-                        OsType = string.Compare(
+                        HvHostVMId = asrProtectableItem.FabricObjectId,
+                        VMName = asrProtectableItem.FriendlyName,
+                        OSType = string.Compare(
                                 asrProtectableItem.OS,
                                 "Windows") ==
                             0 ||
@@ -509,7 +509,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery
                             0
                                 ? asrProtectableItem.OS
                                 : "Windows",
-                        VHDId = asrProtectableItem.OSDiskId
+                        VHdId = asrProtectableItem.OSDiskId
                     };
 
                     var providerSpecificDetails =
@@ -775,8 +775,8 @@ namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery
                     PolicyId = this.ProtectionContainerMapping.PolicyId,
                     RecoveryContainerId =
                         this.ProtectionContainerMapping.TargetProtectionContainerId,
-                    VmDisks = new List<A2AVmDiskInputDetails>(),
-                    VmManagedDisks = new List<A2AVmManagedDiskInputDetails>(),
+                    VMDisks = new List<A2AVmDiskInputDetails>(),
+                    VMManagedDisks = new List<A2AVmManagedDiskInputDetails>(),
                     RecoveryResourceGroupId = this.RecoveryResourceGroupId,
                     RecoveryCloudServiceId = this.RecoveryCloudServiceId,
                     RecoveryAvailabilitySetId = this.RecoveryAvailabilitySetId,
@@ -858,7 +858,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery
 
                 // Passing all managedDisk data if no details is passed.
                 var osDisk = virtualMachine.StorageProfile.OsDisk;
-                a2aSwitchInput.VmManagedDisks.Add(new A2AVmManagedDiskInputDetails
+                a2aSwitchInput.VMManagedDisks.Add(new A2AVmManagedDiskInputDetails
                 {
                     DiskId = osDisk.ManagedDisk.Id,
                     RecoveryResourceGroupId = this.RecoveryResourceGroupId,
@@ -870,7 +870,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery
                 {
                     foreach (var dataDisk in virtualMachine.StorageProfile.DataDisks)
                     {
-                        a2aSwitchInput.VmManagedDisks.Add(new A2AVmManagedDiskInputDetails
+                        a2aSwitchInput.VMManagedDisks.Add(new A2AVmManagedDiskInputDetails
                         {
                             DiskId = dataDisk.ManagedDisk.Id,
                             RecoveryResourceGroupId = this.RecoveryResourceGroupId,
@@ -885,7 +885,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery
             {
                 foreach (ASRAzuretoAzureDiskReplicationConfig disk in this.AzureToAzureDiskReplicationConfiguration)
                 {
-                    a2aSwitchInput.VmManagedDisks.Add(new A2AVmManagedDiskInputDetails
+                    a2aSwitchInput.VMManagedDisks.Add(new A2AVmManagedDiskInputDetails
                     {
                         DiskId = disk.DiskId,
                         RecoveryResourceGroupId = disk.RecoveryResourceGroupId,
@@ -921,7 +921,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery
                     .Properties.ProviderSpecificDetails)
                     .ProtectedDisks)
                 {
-                    a2aSwitchInput.VmDisks.Add(new A2AVmDiskInputDetails
+                    a2aSwitchInput.VMDisks.Add(new A2AVmDiskInputDetails
                     {
                         DiskUri = disk.RecoveryDiskUri,
                         RecoveryAzureStorageAccountId =
@@ -948,7 +948,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery
                                 disk.VhdUri));
                     }
 
-                    a2aSwitchInput.VmDisks.Add(new A2AVmDiskInputDetails
+                    a2aSwitchInput.VMDisks.Add(new A2AVmDiskInputDetails
                     {
                         DiskUri = disk.VhdUri,
                         RecoveryAzureStorageAccountId = disk.RecoveryAzureStorageAccountId,

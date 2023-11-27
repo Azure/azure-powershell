@@ -201,6 +201,10 @@ namespace Microsoft.WindowsAzure.Commands.Storage.File.Cmdlet
             HelpMessage = "Azure Storage Context Object")]
         public override IStorageContext Context { get; set; }
 
+        [Parameter(Mandatory = false, HelpMessage = "Disallow trailing dot (.) to suffix directory and file names.", ParameterSetName = ShareNameCloseAllParameterSetName)]
+        [Parameter(Mandatory = false, HelpMessage = "Disallow trailing dot (.) to suffix directory and file names.", ParameterSetName = ShareNameCloseSingleParameterSetName)]
+        public override SwitchParameter DisAllowTrailingDot { get; set; }
+
         [Parameter(Mandatory = false, HelpMessage = "Return the count of closed file handles.")]
         public SwitchParameter PassThru { get; set; }
 

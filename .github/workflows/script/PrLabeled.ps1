@@ -18,8 +18,9 @@ This PR was labeled "Do Not Merge" because it contains code change that cannot b
     "Breaking Change Release" = @"
 To the author of the pull request,
 This PR was labeled "Breaking Change Release" because it contains breaking changes.
-According to our [policy](https://eng.ms/docs/cloud-ai-platform/azure-core/azure-management-and-platforms/control-plane-bburns/azure-cli-tools-azure-cli-powershell-and-terraform/azure-cli-tools/devguide/azps/breaking-change/breaking-changes-policy), breaking changes can only take place during major release and they must be preannounced.
-Please follow our [guide](https://eng.ms/docs/cloud-ai-platform/azure-core/azure-management-and-platforms/control-plane-bburns/azure-cli-tools-azure-cli-powershell-and-terraform/azure-cli-tools/devguide/azps/breaking-change/breaking-changes-process) on the detailed steps.
+- According to our [policy](https://eng.ms/docs/cloud-ai-platform/azure-core/azure-management-and-platforms/control-plane-bburns/azure-cli-tools-azure-cli-powershell-and-terraform/azure-cli-tools/devguide/azps/breaking-change/breaking-changes-policy), breaking changes can only take place during major release and they must be preannounced.
+- Please follow our [guide](https://eng.ms/docs/cloud-ai-platform/azure-core/azure-management-and-platforms/control-plane-bburns/azure-cli-tools-azure-cli-powershell-and-terraform/azure-cli-tools/devguide/azps/breaking-change/breaking-changes-process) on the detailed steps.
+- [ ] **Required**: Please fill in the [task](https://msazure.visualstudio.com/One/_workitems/create/Task?templateId=030c9f4f-a13e-4393-9b87-ae6fd458692b&ownerId=5439f061-9499-4da9-8c5a-659bd6db3188) below to facilitate our contact,you will receive notifications related to breaking changes.
 "@
     "needs-revision" = @"
 This PR was labeled "needs-revision" because it has unresolved review comments or CI failures.

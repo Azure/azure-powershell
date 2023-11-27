@@ -34,6 +34,14 @@
 * Updated cmdlet `New-AzBastion`, `Set-AzBastion` and `Get-AzBastion` to support Bastion features for CRUD operations
 * Added optional property 'Profile' to `New-AzFirewallPolicyIntrusionDetection` 
 
+## Version 7.0.0
+* [Breaking Change] Removed `Geo` as a valid input for parameter `VariableName` in `NewAzureApplicationGatewayFirewallCustomRuleGroupByVariable`.
+* Added AllowBranchToBranchTraffic property to New-AzRouteServer
+* Added AllowBranchToBranchTraffic property to Get-AzRouteServer
+* Changed Update-AzRouteServer functionality to fix bugs
+    - AllowBranchToBranchTraffic is now a bool
+    - Updating HubRoutingPreference property will not effect AllowBranchToBranchTraffic
+
 ## Version 6.2.0
 * Added support for new Application Gateway SKU type, Basic SKU
 * Onboarded `Microsoft.EventGrid/partnerNamespaces` to private link cmdlets

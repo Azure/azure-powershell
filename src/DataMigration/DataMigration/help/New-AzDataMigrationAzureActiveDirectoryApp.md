@@ -8,7 +8,7 @@ schema: 2.0.0
 # New-AzDataMigrationAzureActiveDirectoryApp
 
 ## SYNOPSIS
-Create a new instance DataMigration Azure ActiveDirectory Application details.
+Create a new instance DataMigration Microsoft Entra Application details.
 
 ## SYNTAX
 
@@ -18,7 +18,7 @@ New-AzDataMigrationAzureActiveDirectoryApp -ApplicationId <String> -AppKey <Secu
 ```
 
 ## DESCRIPTION
-Create a new instance DataMigration Azure ActiveDirectory Application details.
+Create a new instance DataMigration Microsoft Entra Application details.
 
 ## EXAMPLES
 
@@ -37,7 +37,7 @@ TenantId      : "Tenant Id"
 ## PARAMETERS
 
 ### -AppKey
-Azure Active Directory Key
+Microsoft Entra ID Key
 
 ```yaml
 Type: System.Security.SecureString
@@ -52,7 +52,7 @@ Accept wildcard characters: False
 ```
 
 ### -ApplicationId
-Azure Active Directory Application Id
+Microsoft Entra Application Id
 
 ```yaml
 Type: System.String
