@@ -416,7 +416,7 @@ namespace Microsoft.Azure.Commands.ResourceManager.Common
             return tenants.Where(t => string.IsNullOrEmpty(tenant) ||
                                          tenant.Equals(t.Id.ToString(), StringComparison.OrdinalIgnoreCase) ||
                                          Array.Exists(t.GetPropertyAsArray(AzureTenant.Property.Domains), e => tenant.Equals(e, StringComparison.OrdinalIgnoreCase)))
-                                 .ToList();
+                                 .OrderBy(t => t.GetProperty(AzureTenant.Property.DisplayName) ?? string.Empty).ToList();
         }
 
         public IEnumerable<IAzureSubscription> TryGetSubscriptionById(string tenantId, string subscriptionId)
@@ -475,7 +475,7 @@ namespace Microsoft.Azure.Commands.ResourceManager.Common
         public bool TryGetSubscriptionListByName(string tenantId, string subscriptionName, out IEnumerable<IAzureSubscription> subscriptions)
         {
             subscriptions = ListSubscriptions(tenantId).Where(s => s.Name.Equals(subscriptionName, StringComparison.OrdinalIgnoreCase));
-            List<IAzureSubscription>  subscriptionList = new List<IAzureSubscription>();
+            List<IAzureSubscription> subscriptionList = new List<IAzureSubscription>();
             HashSet<Guid> existedSubscriptionIds = new HashSet<Guid>();
 
             // Consider subscription in Home tenant first, exclude duplicate subscriptions by id.

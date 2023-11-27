@@ -18,20 +18,28 @@ using System.Net;
 using System.Net.Http;
 using System.Net.Http.Headers;
 using Microsoft.Rest.Azure;
+using Microsoft.WindowsAzure.Commands.Common.Attributes;
+using Newtonsoft.Json;
 
 namespace Microsoft.Azure.Commands.Profile.Models
 {
     public class PSHttpResponse
     {
-        public HttpResponseHeaders Headers { get; }
 
-        public string Version { get; set; }
-
+        [Ps1Xml(Target = ViewControl.List ,Label = "StatusCode", Position = 0)]
         public int StatusCode { get; set; }
 
+        [Ps1Xml(Target = ViewControl.List, Label = "Content", Position = 1)]
+        public string Content { get; set; }
+
+        [Ps1Xml(Target = ViewControl.List, Label = "Headers", ScriptBlock = "[Newtonsoft.Json.JsonConvert]::SerializeObject($_.Headers, [Newtonsoft.Json.Formatting]::Indented)", Position = 2)]
+        public HttpResponseHeaders Headers { get; }
+
+        [Ps1Xml(Target = ViewControl.List, Label = "Method", Position = 3)]
         public string Method { get; set; }
 
-        public string Content { get; set; }
+        [Ps1Xml(Target = ViewControl.List, Label = "Version", Position = 4)]
+        public string Version { get; set; }
 
         public PSHttpResponse(AzureOperationResponse<string> response)
         {         
@@ -40,6 +48,6 @@ namespace Microsoft.Azure.Commands.Profile.Models
             this.StatusCode = (int)response.Response.StatusCode;
             this.Method = response.Response.RequestMessage.Method.Method;
             this.Content = response.Body;
-        }
+        }        
     }
 }

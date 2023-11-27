@@ -137,7 +137,6 @@ namespace Microsoft.Azure.Commands.Profile.Models.Core
         /// <summary>
         /// The name of the context. The context may be selected by name
         /// </summary>
-        [Ps1Xml(Label = "Name", Target = ViewControl.Table, Position = 0)]
         public string Name { get; set; }
         /// <summary>
         /// The account used to connect to Azure.
@@ -148,25 +147,26 @@ namespace Microsoft.Azure.Commands.Profile.Models.Core
         /// <summary>
         /// The endpoint and connection metadata for the targeted instance of the Azure cloud.
         /// </summary>
-        [Ps1Xml(Label = "Environment", Target = ViewControl.Table, Position = 3)]
+        [Ps1Xml(Label = "Environment", Target = ViewControl.Table, Position = 2)]
         public IAzureEnvironment Environment { get; set; }
 
         /// <summary>
         /// The subscription targeted in Azure.
         /// </summary>
-        [Ps1Xml(Label = "SubscriptionName", Target = ViewControl.Table, ScriptBlock = "$_.Subscription.Name", Position = 2)]
+        [Ps1Xml(Label = "SubscriptionName", Target = ViewControl.Table, ScriptBlock = "$_.Subscription.Name", Position = 0)]
         public IAzureSubscription Subscription { get; set; }
 
         /// <summary>
         /// The targeted tenant in Azure.
         /// </summary>
-        [Ps1Xml(Label = "TenantId", Target = ViewControl.Table, ScriptBlock = "$_.Tenant.ToString()", Position = 4)]
+        [Ps1Xml(Label = "TenantId", GroupByThis = true, Target = ViewControl.Table, ScriptBlock = "$_.Tenant.Id", Position = 3)]
         public IAzureTenant Tenant { get; set; }
 
         public IAzureTokenCache TokenCache { get; set; } = null;
 
         public string VersionProfile { get; set; }
 
+        [Ps1Xml(Label = "ExtendedProperties", Target = ViewControl.Table, Position = 4)]
         public IDictionary<string, string> ExtendedProperties { get; } = new Dictionary<string, string>(StringComparer.OrdinalIgnoreCase);
     }
 }
