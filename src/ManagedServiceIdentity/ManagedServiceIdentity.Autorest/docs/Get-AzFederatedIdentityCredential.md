@@ -1,11 +1,11 @@
 ---
 external help file:
 Module Name: Az.ManagedServiceIdentity
-online version: https://learn.microsoft.com/powershell/module/az.managedserviceidentity/get-azfederatedidentitycredentials
+online version: https://learn.microsoft.com/powershell/module/az.managedserviceidentity/get-azfederatedidentitycredential
 schema: 2.0.0
 ---
 
-# Get-AzFederatedIdentityCredentials
+# Get-AzFederatedIdentityCredential
 
 ## SYNOPSIS
 Gets the federated identity credential.
@@ -14,20 +14,20 @@ Gets the federated identity credential.
 
 ### List (Default)
 ```
-Get-AzFederatedIdentityCredentials -IdentityName <String> -ResourceGroupName <String>
+Get-AzFederatedIdentityCredential -IdentityName <String> -ResourceGroupName <String>
  [-SubscriptionId <String[]>] [-Skiptoken <String>] [-Top <Int32>] [-DefaultProfile <PSObject>]
  [<CommonParameters>]
 ```
 
 ### Get
 ```
-Get-AzFederatedIdentityCredentials -IdentityName <String> -Name <String> -ResourceGroupName <String>
+Get-AzFederatedIdentityCredential -IdentityName <String> -Name <String> -ResourceGroupName <String>
  [-SubscriptionId <String[]>] [-DefaultProfile <PSObject>] [<CommonParameters>]
 ```
 
 ### GetViaIdentity
 ```
-Get-AzFederatedIdentityCredentials -InputObject <IManagedServiceIdentity> [-DefaultProfile <PSObject>]
+Get-AzFederatedIdentityCredential -InputObject <IManagedServiceIdentity> [-DefaultProfile <PSObject>]
  [<CommonParameters>]
 ```
 
@@ -38,7 +38,7 @@ Gets the federated identity credential.
 
 ### Example 1: List federated identity credentials under a user assigned identity
 ```powershell
-Get-AzFederatedIdentityCredentials -ResourceGroupName azure-rg-test -IdentityName uai-pwsh01
+Get-AzFederatedIdentityCredential -ResourceGroupName azure-rg-test -IdentityName uai-pwsh01
 ```
 
 ```output
@@ -52,7 +52,7 @@ This command lists federated identity credentials under a user assigned identity
 
 ### Example 2: Get a federated identity credential
 ```powershell
-Get-AzFederatedIdentityCredentials -ResourceGroupName azure-rg-test -IdentityName uai-pwsh01 -Name fic-pwsh01
+Get-AzFederatedIdentityCredential -ResourceGroupName azure-rg-test -IdentityName uai-pwsh01 -Name fic-pwsh01
 ```
 
 ```output
@@ -65,9 +65,9 @@ This command gets a federated identity credential by name.
 
 ### Example 3: Get a federated identity credential by pipeline
 ```powershell
-New-AzFederatedIdentityCredentials -ResourceGroupName azure-rg-test -IdentityName uai-pwsh01 `
+New-AzFederatedIdentityCredential -ResourceGroupName azure-rg-test -IdentityName uai-pwsh01 `
     -Name fic-pwsh03 -Issuer "https://kubernetes-oauth-3.azure.com" -Subject "system:serviceaccount-3:ns:svcaccount" `
-        | Get-AzFederatedIdentityCredentials
+        | Get-AzFederatedIdentityCredential
 ```
 
 ```output
@@ -81,7 +81,8 @@ This command creates and gets a federated identity credential by pipeline.
 ## PARAMETERS
 
 ### -DefaultProfile
-The credentials, account, tenant, and subscription used for communication with Azure.
+The DefaultProfile parameter is not functional.
+Use the SubscriptionId parameter when available if executing the cmdlet against a different subscription.
 
 ```yaml
 Type: System.Management.Automation.PSObject
@@ -218,18 +219,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ALIASES
 
-COMPLEX PARAMETER PROPERTIES
-
-To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
-
-
-`INPUTOBJECT <IManagedServiceIdentity>`: Identity Parameter
-  - `[FederatedIdentityCredentialResourceName <String>]`: The name of the federated identity credential resource.
-  - `[Id <String>]`: Resource identity path
-  - `[ResourceGroupName <String>]`: The name of the Resource Group to which the identity belongs.
-  - `[ResourceName <String>]`: The name of the identity resource.
-  - `[Scope <String>]`: The resource provider scope of the resource. Parent resource being extended by Managed Identities.
-  - `[SubscriptionId <String>]`: The Id of the Subscription to which the identity belongs.
+Get-AzFederatedIdentityCredentials
 
 ## RELATED LINKS
 

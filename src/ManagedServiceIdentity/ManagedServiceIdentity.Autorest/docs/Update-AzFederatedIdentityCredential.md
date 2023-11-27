@@ -1,11 +1,11 @@
 ---
 external help file:
 Module Name: Az.ManagedServiceIdentity
-online version: https://learn.microsoft.com/powershell/module/az.managedserviceidentity/update-azfederatedidentitycredentials
+online version: https://learn.microsoft.com/powershell/module/az.managedserviceidentity/update-azfederatedidentitycredential
 schema: 2.0.0
 ---
 
-# Update-AzFederatedIdentityCredentials
+# Update-AzFederatedIdentityCredential
 
 ## SYNOPSIS
 Create or update a federated identity credential under the specified user assigned identity.
@@ -14,14 +14,14 @@ Create or update a federated identity credential under the specified user assign
 
 ### UpdateExpanded (Default)
 ```
-Update-AzFederatedIdentityCredentials -IdentityName <String> -Name <String> -ResourceGroupName <String>
+Update-AzFederatedIdentityCredential -IdentityName <String> -Name <String> -ResourceGroupName <String>
  [-SubscriptionId <String>] [-Audience <String[]>] [-Issuer <String>] [-Subject <String>]
  [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ### UpdateViaIdentityExpanded
 ```
-Update-AzFederatedIdentityCredentials -InputObject <IManagedServiceIdentity> [-Audience <String[]>]
+Update-AzFederatedIdentityCredential -InputObject <IManagedServiceIdentity> [-Audience <String[]>]
  [-Issuer <String>] [-Subject <String>] [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
@@ -32,7 +32,7 @@ Create or update a federated identity credential under the specified user assign
 
 ### Example 1: Update federated identity credential under the specified user assigned identity
 ```powershell
-Update-AzFederatedIdentityCredentials -ResourceGroupName azure-rg-test -IdentityName uai-pwsh01 `
+Update-AzFederatedIdentityCredential -ResourceGroupName azure-rg-test -IdentityName uai-pwsh01 `
     -Name fic-pwsh01 -Issuer "https://kubernetes-oauth-upd.azure.com" -Subject "system:serviceaccount-upd:ns:svcaccount"
 ```
 
@@ -46,8 +46,8 @@ This command updates a federated identity credential under the specified user as
 
 ### Example 2: Update federated identity credential under the specified user assigned identity by pipeline
 ```powershell
-Get-AzFederatedIdentityCredentials -ResourceGroupName azure-rg-test -IdentityName uai-pwsh01 -Name fic-pwsh01 `
-    | Update-AzFederatedIdentityCredentials -Issuer "https://kubernetes-oauth-upd.azure.com" -Subject "system:serviceaccount-upd:ns:svcaccount"
+Get-AzFederatedIdentityCredential -ResourceGroupName azure-rg-test -IdentityName uai-pwsh01 -Name fic-pwsh01 `
+    | Update-AzFederatedIdentityCredential -Issuer "https://kubernetes-oauth-upd.azure.com" -Subject "system:serviceaccount-upd:ns:svcaccount"
 ```
 
 ```output
@@ -76,7 +76,8 @@ Accept wildcard characters: False
 ```
 
 ### -DefaultProfile
-The credentials, account, tenant, and subscription used for communication with Azure.
+The DefaultProfile parameter is not functional.
+Use the SubscriptionId parameter when available if executing the cmdlet against a different subscription.
 
 ```yaml
 Type: System.Management.Automation.PSObject
@@ -243,18 +244,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ALIASES
 
-COMPLEX PARAMETER PROPERTIES
-
-To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
-
-
-`INPUTOBJECT <IManagedServiceIdentity>`: Identity Parameter
-  - `[FederatedIdentityCredentialResourceName <String>]`: The name of the federated identity credential resource.
-  - `[Id <String>]`: Resource identity path
-  - `[ResourceGroupName <String>]`: The name of the Resource Group to which the identity belongs.
-  - `[ResourceName <String>]`: The name of the identity resource.
-  - `[Scope <String>]`: The resource provider scope of the resource. Parent resource being extended by Managed Identities.
-  - `[SubscriptionId <String>]`: The Id of the Subscription to which the identity belongs.
+Update-AzFederatedIdentityCredentials
 
 ## RELATED LINKS
 

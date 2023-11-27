@@ -23,38 +23,33 @@ Lists the associated resources for this identity.
 
 ## EXAMPLES
 
-### Example 1: List all azure resources associated with given identity.
+### Example 1: {{ Add title here }}
 ```powershell
-Get-AzUserAssignedIdentityAssociatedResource -ResourceGroupName azure-rg-test -Name uai-pwsh01
+{{ Add code here }}
 ```
 
 ```output
-Name             ResourceGroup     SubscriptionDisplayName               SubscriptionId                       ResourceType
-----             -------------     -----------------------               --------------                       ------------
-appServicej6ocml identity-xcsbyfid Visual Studio Enterprise Subscription 0336439f-0e9d-44ec-975e-62accb9b3901 microsoft.web/sites
-default          test-resources    Visual Studio Enterprise Subscription 0336439f-0e9d-44ec-975e-62accb9b3901 microsoft.compute/virtualmachines
+{{ Add output here }}
 ```
 
-This command lists all azure resources associated with given identity.
+{{ Add description here }}
 
-### Example 2: List azure resources associated with given identity with OData expression that allows to filter by: name, type, resourceGroup, subscriptionId, subscriptionDisplayName
+### Example 2: {{ Add title here }}
 ```powershell
-Get-AzUserAssignedIdentityAssociatedResource -ResourceGroupName azure-rg-test -Name uai-pwsh01 `
-    -Filter "type eq 'microsoft.compute/virtualmachines' and contains(name, 'default')"
+{{ Add code here }}
 ```
 
 ```output
-Name    ResourceGroup  SubscriptionDisplayName               SubscriptionId                       ResourceType
-----    -------------  -----------------------               --------------                       ------------
-default test-resources Visual Studio Enterprise Subscription 0336439f-0e9d-44ec-975e-62accb9b3901 microsoft.compute/virtualmachines
+{{ Add output here }}
 ```
 
-This command lists azure resources associated with given identity with OData expression that allows to filter by: name, type, resourceGroup, subscriptionId, subscriptionDisplayName
+{{ Add description here }}
 
 ## PARAMETERS
 
 ### -DefaultProfile
-The credentials, account, tenant, and subscription used for communication with Azure.
+The DefaultProfile parameter is not functional.
+Use the SubscriptionId parameter when available if executing the cmdlet against a different subscription.
 
 ```yaml
 Type: System.Management.Automation.PSObject
@@ -230,8 +225,6 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ### Microsoft.Azure.PowerShell.Cmdlets.ManagedServiceIdentity.Models.Api20220131Preview.IAzureResource
 
 ## NOTES
-
-ALIASES
 
 ## RELATED LINKS
 

@@ -21,6 +21,6 @@ Describe 'Get-AzSystemAssignedIdentity' {
         $resourcesList[0].Name | Should -Be $env.appServiceName
         $resourcesList[0].ResourceGroup | Should -Be $env.resourceGroup
         $resourcesList[0].SubscriptionId | Should -Be $env.SubscriptionId
-        $resourcesList[0].ResourceType | Should -Be "Microsoft.Web/sites"
+        $resourcesList[0].Type | Should -Be "Microsoft.Web/sites"
     }
 }
