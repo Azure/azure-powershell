@@ -44,11 +44,19 @@ namespace Microsoft.Azure.Commands.Sql.Database_Backup.Cmdlet
         private const string UpdateBackupByInputObjectSet = "UpdateByInputObjectSet";
 
         /// <summary>
+        /// Parameter set name for update storage access tier.
+        /// </summary>
+        private const string UpdateBackupStorageAccessTierSet = "UpdateBackupStorageAccessTierSet";
+
+        /// <summary>
         /// Gets or sets the name of the location the backup is in.
         /// </summary>
         [Parameter(Mandatory = true,
             ParameterSetName = UpdateBackupDefaultSet,
             Position = 0,
+            HelpMessage = "The location of the backups' source server.")]
+        [Parameter(Mandatory = true,
+            ParameterSetName = UpdateBackupStorageAccessTierSet,
             HelpMessage = "The location of the backups' source server.")]
         [ValidateNotNullOrEmpty]
         [LocationCompleter("Microsoft.Sql/locations/longTermRetentionServers")]
@@ -61,6 +69,9 @@ namespace Microsoft.Azure.Commands.Sql.Database_Backup.Cmdlet
             ParameterSetName = UpdateBackupDefaultSet,
             Position = 1,
             HelpMessage = "The name of the Azure SQL Server the backup is under.")]
+        [Parameter(Mandatory = true,
+            ParameterSetName = UpdateBackupStorageAccessTierSet,
+            HelpMessage = "The name of the Azure SQL Server the backup is under.")]
         [ResourceNameCompleter("Microsoft.Sql/servers", "ResourceGroupName")]
         [ValidateNotNullOrEmpty]
         public string ServerName { get; set; }
@@ -72,20 +83,12 @@ namespace Microsoft.Azure.Commands.Sql.Database_Backup.Cmdlet
             ParameterSetName = UpdateBackupDefaultSet,
             Position = 2,
             HelpMessage = "The name of the Azure SQL Database the backup is from.")]
+        [Parameter(Mandatory = true,
+            ParameterSetName = UpdateBackupStorageAccessTierSet,
+            HelpMessage = "The name of the Azure SQL Database the backup is from.")]
         [ResourceNameCompleter("Microsoft.Sql/servers/databases", "ResourceGroupName", "ServerName")]
         [ValidateNotNullOrEmpty]
         public string DatabaseName { get; set; }
-
-        /// <summary>
-        /// Gets or sets the resource ID of the LTR Backup to update.
-        /// </summary>
-        [Parameter(ParameterSetName = UpdateBackupByResourceIdSet,
-            Mandatory = true,
-            Position = 0,
-            ValueFromPipelineByPropertyName = true,
-            HelpMessage = "The Resource ID of the Database Long Term Retention Backup to remove.")]
-        [ValidateNotNullOrEmpty]
-        public string ResourceId { get; set; }
 
         /// <summary>
         /// Gets or sets the backup name.
@@ -95,6 +98,10 @@ namespace Microsoft.Azure.Commands.Sql.Database_Backup.Cmdlet
             ValueFromPipelineByPropertyName = true,
             Position = 3,
             HelpMessage = "The name of the backup.")]
+        [Parameter(Mandatory = true,
+            ParameterSetName = UpdateBackupStorageAccessTierSet,
+            ValueFromPipelineByPropertyName = true,
+            HelpMessage = "The name of the backup.")]
         [ValidateNotNullOrEmpty]
         public string BackupName { get; set; }
 
@@ -103,6 +110,9 @@ namespace Microsoft.Azure.Commands.Sql.Database_Backup.Cmdlet
         /// </summary>
         [Parameter(Mandatory = false,
             ParameterSetName = UpdateBackupDefaultSet,
+            HelpMessage = "The name of the resource group.")]
+        [Parameter(Mandatory = false,
+            ParameterSetName = UpdateBackupStorageAccessTierSet,
             HelpMessage = "The name of the resource group.")]
         [ResourceGroupCompleter]
         public override string ResourceGroupName { get; set; }
@@ -121,6 +131,37 @@ namespace Microsoft.Azure.Commands.Sql.Database_Backup.Cmdlet
             ParameterSetName = UpdateBackupByInputObjectSet)]
         [ValidateSet("Local", "Zone", "Geo")]
         public string BackupStorageRedundancy { get; set; }
+
+        /// <summary>
+        /// Gets or sets the backup storage access tier of the long term retention backup.
+        /// </summary>
+        [Parameter(Mandatory = true,
+            ParameterSetName = UpdateBackupStorageAccessTierSet,
+            ValueFromPipelineByPropertyName = true,
+            HelpMessage = "The target backup storage access tier.")]
+        [ValidateSet("Hot", "Archive")]
+        public string BackupStorageAccessTier { get; set; }
+
+        /// <summary>
+        /// Gets or sets the backup operation mode when changing storage access tier.
+        /// </summary>
+        [Parameter(Mandatory = true,
+            ParameterSetName = UpdateBackupStorageAccessTierSet,
+            ValueFromPipelineByPropertyName = true,
+            HelpMessage = "The target backup operation mode when changing storage access tier.")]
+        [ValidateSet("Copy", "Move")]
+        public string OperationMode { get; set; }
+
+        /// <summary>
+        /// Gets or sets the resource ID of the LTR Backup to update.
+        /// </summary>
+        [Parameter(ParameterSetName = UpdateBackupByResourceIdSet,
+            Mandatory = true,
+            Position = 0,
+            ValueFromPipelineByPropertyName = true,
+            HelpMessage = "The Resource ID of the Database Long Term Retention Backup to remove.")]
+        [ValidateNotNullOrEmpty]
+        public string ResourceId { get; set; }
 
         /// <summary>
         /// Gets or sets the LTR Backup object to update.
@@ -174,6 +215,16 @@ namespace Microsoft.Azure.Commands.Sql.Database_Backup.Cmdlet
         protected override IEnumerable<AzureSqlDatabaseLongTermRetentionBackupModel> PersistChanges(
             IEnumerable<AzureSqlDatabaseLongTermRetentionBackupModel> entity)
         {
+            if (ShouldProcess(BackupStorageAccessTier))
+            {
+                Management.Sql.Models.ChangeLongTermRetentionBackupAccessTierParameters updateParameters = new Management.Sql.Models.ChangeLongTermRetentionBackupAccessTierParameters(BackupStorageAccessTier, OperationMode);
+
+                return new List<AzureSqlDatabaseLongTermRetentionBackupModel>()
+                {
+                    ModelAdapter.UpdateDatabaeLongTermRetentionBackupAccessTier(entity.First(), updateParameters)
+                };
+            }
+
             if (ShouldProcess(DatabaseName))
             {
                 Management.Sql.Models.UpdateLongTermRetentionBackupParameters updateParameters = new Management.Sql.Models.UpdateLongTermRetentionBackupParameters(BackupStorageRedundancy);

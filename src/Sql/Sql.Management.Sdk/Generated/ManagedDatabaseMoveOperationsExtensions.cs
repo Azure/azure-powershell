@@ -22,13 +22,15 @@ namespace Microsoft.Azure.Management.Sql
         /// 
         /// </param>
         /// <param name='resourceGroupName'>
-        /// The name of the resource group that contains the resource. You can obtain this value from the Azure Resource Manager API or the portal.
+        /// The name of the resource group that contains the resource. You can obtain
+        /// this value from the Azure Resource Manager API or the portal.
         /// </param>
         /// <param name='locationName'>
         /// 
         /// </param>
         /// <param name='onlyLatestPerDatabase'>
-        /// Whether or not to only get the latest operation for each database. Has higher priority than $filter.
+        /// Whether or not to only get the latest operation for each database. Has
+        /// higher priority than $filter.
         /// </param>
         public static Microsoft.Rest.Azure.IPage<ManagedDatabaseMoveOperationResult> ListByLocation(this IManagedDatabaseMoveOperations operations, string resourceGroupName, string locationName, Microsoft.Rest.Azure.OData.ODataQuery<ManagedDatabaseMoveOperationResult> odataQuery = default(Microsoft.Rest.Azure.OData.ODataQuery<ManagedDatabaseMoveOperationResult>), bool? onlyLatestPerDatabase = default(bool?))
         {
@@ -45,13 +47,15 @@ namespace Microsoft.Azure.Management.Sql
         /// 
         /// </param>
         /// <param name='resourceGroupName'>
-        /// The name of the resource group that contains the resource. You can obtain this value from the Azure Resource Manager API or the portal.
+        /// The name of the resource group that contains the resource. You can obtain
+        /// this value from the Azure Resource Manager API or the portal.
         /// </param>
         /// <param name='locationName'>
         /// 
         /// </param>
         /// <param name='onlyLatestPerDatabase'>
-        /// Whether or not to only get the latest operation for each database. Has higher priority than $filter.
+        /// Whether or not to only get the latest operation for each database. Has
+        /// higher priority than $filter.
         /// </param>
         /// <param name='cancellationToken'>
         /// The cancellation token.
@@ -70,7 +74,8 @@ namespace Microsoft.Azure.Management.Sql
         /// The operations group for this extension method.
         /// </param>
         /// <param name='resourceGroupName'>
-        /// The name of the resource group that contains the resource. You can obtain this value from the Azure Resource Manager API or the portal.
+        /// The name of the resource group that contains the resource. You can obtain
+        /// this value from the Azure Resource Manager API or the portal.
         /// </param>
         /// <param name='locationName'>
         /// 
@@ -90,7 +95,8 @@ namespace Microsoft.Azure.Management.Sql
         /// The operations group for this extension method.
         /// </param>
         /// <param name='resourceGroupName'>
-        /// The name of the resource group that contains the resource. You can obtain this value from the Azure Resource Manager API or the portal.
+        /// The name of the resource group that contains the resource. You can obtain
+        /// this value from the Azure Resource Manager API or the portal.
         /// </param>
         /// <param name='locationName'>
         /// 

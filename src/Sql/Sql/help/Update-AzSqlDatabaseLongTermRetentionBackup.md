@@ -33,6 +33,13 @@ Update-AzSqlDatabaseLongTermRetentionBackup [-BackupStorageRedundancy <String>]
  [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
+### UpdateBackupStorageAccessTierSet
+```
+Update-AzSqlDatabaseLongTermRetentionBackup [-Location] <String> [-ServerName] <String> [-DatabaseName] <String>
+ [-BackupName] <String>  [-BackupStorageAccessTier] <String> [-OperationMode] <String> [-ResourceGroupName <String>]
+ [-AsJob] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
+```
+
 ## DESCRIPTION
 Updates the properties of a long term retention backup.
   
@@ -81,6 +88,17 @@ BackupStorageRedundancy			 : Geo
 
 This command sets the Backup Storage Redundancy of the specified backup using a backup Resource Id. 
 
+### Example 3: Update Backup Storage Access Tier and Operation Mode of a long term retention backup.
+```powershell
+Update-AzSqlDatabaseLongTermRetentionBackup -Location southeastasia -ServerName testsvr -DatabaseName testdb -BackupName 'e5c20f43-494c-4925-89d1-58e0f4569fb3;132579992320000000;Hot' -ResourceGroupName testrg -BackupStorageAccessTier Archive -OperationMode Copy
+```
+
+```output
+Request Id = 9849cc7e-0d08-4adb-8946-68b7ed9b0ad8
+```
+
+This command sets the Backup Storage Access Tier of the specified backup.
+
 ## PARAMETERS
 
 ### -AsJob
@@ -107,9 +125,24 @@ Parameter Sets: UpdateBackupDefault
 Aliases:
 
 Required: True
-Position: 3
+Position: Named
 Default value: None
 Accept pipeline input: True (ByPropertyName)
+Accept wildcard characters: False
+```
+
+### -BackupStorageAccessTier
+The target storage access tier of the backup.
+
+```yaml
+Type: System.String
+Parameter Sets: UpdateBackupStorageAccessTierSet
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
@@ -122,6 +155,21 @@ Type: System.String
 Parameter Sets: (All)
 Aliases:
 Accepted values: Local, Zone, Geo
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -Confirm
+Prompts you for confirmation before running the cmdlet.
+
+```yaml
+Type: System.Management.Automation.SwitchParameter
+Parameter Sets: (All)
+Aliases: cf
 
 Required: False
 Position: Named
@@ -190,6 +238,21 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### -OperationMode
+The target operation mode of the backup.
+
+```yaml
+Type: System.String
+Parameter Sets: UpdateBackupStorageAccessTierSet
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
 ### -ResourceGroupName
 The name of the resource group.
 
@@ -230,21 +293,6 @@ Aliases:
 
 Required: True
 Position: 1
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -Confirm
-Prompts you for confirmation before running the cmdlet.
-
-```yaml
-Type: System.Management.Automation.SwitchParameter
-Parameter Sets: (All)
-Aliases: cf
-
-Required: False
-Position: Named
 Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False

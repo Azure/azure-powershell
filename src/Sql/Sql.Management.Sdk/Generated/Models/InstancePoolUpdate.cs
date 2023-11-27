@@ -39,7 +39,7 @@ namespace Microsoft.Azure.Management.Sql.Models
 
         /// <param name="licenseType">The license type. Possible values are &#39;LicenseIncluded&#39; (price for SQL
         /// license is included) and &#39;BasePrice&#39; (without SQL license price).
-        /// Possible values include: 'LicenseIncluded', 'BasePrice'</param>
+        /// Possible values include: &#39;LicenseIncluded&#39;, &#39;BasePrice&#39;</param>
 
         /// <param name="dnsZone">The Dns Zone that the managed instance pool is in.
         /// </param>

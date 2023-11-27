@@ -76,5 +76,15 @@ namespace Microsoft.Azure.Commands.Sql.Backup.Model
         /// Gets or sets the current backup storage redundancy for the database
         /// </summary>
         public string BackupStorageRedundancy { get; set; }
+
+        /// <summary>
+        /// Gets or sets the current backup storage access tier for the database
+        /// </summary>
+        public string BackupStorageAccessTier { get; set; }
+
+        /// <summary>
+        /// Gets or sets the current backup OperationModefor the database
+        /// </summary>
+        public string OperationMode { get; set; }
     }
 }
