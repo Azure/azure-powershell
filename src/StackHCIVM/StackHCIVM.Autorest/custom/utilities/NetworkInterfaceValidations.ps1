@@ -1,5 +1,5 @@
 function Confirm-IpConfigrations{
-[Microsoft.Azure.PowerShell.Cmdlets.StackHCIVm.DoNotExportAttribute()]
+[Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.DoNotExportAttribute()]
 param(
     [Parameter()]
     [System.Collections.Hashtable[]]

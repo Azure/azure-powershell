@@ -201,7 +201,7 @@ function Update-AzStackHCIVMVirtualMachine {
             $null = $PSBoundParameters.Remove("ResourceGroupName")
             $null = $PSBoundParameters.Remove("ResourceId")
             $null = $PSBoundParameters.Remove("Name")
-            return  Az.StackHCIVM.internal\Update-AzStackHCIVmVirtualMachine @PSBoundParameters   
+            return  Az.StackHCIVM.internal\Update-AzStackHCIVMVirtualMachine @PSBoundParameters   
             } else {             
                 Write-Error "One or more input parameters are invalid. Resource ID is: $ResourceId, name is $name, resource group name is $resourcegroupname, subscription id is $subscriptionid"
             }  

@@ -1,5 +1,5 @@
 function Confirm-IpPools{
-[Microsoft.Azure.PowerShell.Cmdlets.StackHCIVm.DoNotExportAttribute()]
+[Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.DoNotExportAttribute()]
 param(
     [Parameter()]
     [System.Collections.Hashtable[]]
@@ -30,7 +30,7 @@ param(
 } 
 
 function Confirm-Routes{
-[Microsoft.Azure.PowerShell.Cmdlets.StackHCIVm.DoNotExportAttribute()]
+[Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.DoNotExportAttribute()]
 param(
     [Parameter()]
     [System.Collections.Hashtable[]]
@@ -61,7 +61,7 @@ param(
 } 
 
 function Confirm-Subnets{
-[Microsoft.Azure.PowerShell.Cmdlets.StackHCIVm.DoNotExportAttribute()]
+[Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.DoNotExportAttribute()]
 param(
     [Parameter()]
     [System.Collections.Hashtable[]]
