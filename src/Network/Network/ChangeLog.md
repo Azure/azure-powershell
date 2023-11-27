@@ -32,7 +32,7 @@
 * Added support for new ErGWScale SKU - ErGwScale
 * Added property 'size' to firewallPolicy and firewallPolicyRuleCollectionGroup.
 * Updated cmdlet `New-AzBastion`, `Set-AzBastion` and `Get-AzBastion` to support Bastion features for CRUD operations
-* Added optional 'Profile' to `New-AzFirewallPolicyIntrusionDetection` 
+* Added optional property 'Profile' to `New-AzFirewallPolicyIntrusionDetection` 
 
 ## Version 6.2.0
 * Added support for new Application Gateway SKU type, Basic SKU
