@@ -14,14 +14,14 @@ The operation to delete an image.
 
 ### ByResourceId (Default)
 ```
-Remove-AzStackHCIVMImage -ResourceId <String> [-SubscriptionId <String>] [-Force] [-Confirm] [-WhatIf]
- [<CommonParameters>]
+Remove-AzStackHCIVMImage -ResourceId <String> [-SubscriptionId <String>] [-Force] [-NoWait] [-Confirm]
+ [-WhatIf] [<CommonParameters>]
 ```
 
 ### ByName
 ```
 Remove-AzStackHCIVMImage -Name <String> -ResourceGroupName <String> [-SubscriptionId <String>] [-Force]
- [-Confirm] [-WhatIf] [<CommonParameters>]
+ [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -62,6 +62,21 @@ Parameter Sets: ByName
 Aliases:
 
 Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -NoWait
+Run the command asynchronously
+
+```yaml
+Type: System.Management.Automation.SwitchParameter
+Parameter Sets: (All)
+Aliases:
+
+Required: False
 Position: Named
 Default value: None
 Accept pipeline input: False

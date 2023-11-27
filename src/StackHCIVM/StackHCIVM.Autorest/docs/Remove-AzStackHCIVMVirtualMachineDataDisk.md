@@ -15,14 +15,15 @@ The operation to delete a data disk from a virtual machine.
 ### ByResourceId (Default)
 ```
 Remove-AzStackHCIVMVirtualMachineDataDisk -ResourceId <String> [-DataDiskId <String[]>]
- [-DataDiskName <String[]>] [-DataDiskResourceGroup <String>] [-Confirm] [-WhatIf] [<CommonParameters>]
+ [-DataDiskName <String[]>] [-DataDiskResourceGroup <String>] [-NoWait] [-Confirm] [-WhatIf]
+ [<CommonParameters>]
 ```
 
 ### ByName
 ```
 Remove-AzStackHCIVMVirtualMachineDataDisk -Name <String> -ResourceGroupName <String>
  [-SubscriptionId <String>] [-DataDiskId <String[]>] [-DataDiskName <String[]>]
- [-DataDiskResourceGroup <String>] [-Confirm] [-WhatIf] [<CommonParameters>]
+ [-DataDiskResourceGroup <String>] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -100,6 +101,21 @@ Parameter Sets: ByName
 Aliases: VirtualMachineName
 
 Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -NoWait
+Run the command asynchronously
+
+```yaml
+Type: System.Management.Automation.SwitchParameter
+Parameter Sets: (All)
+Aliases:
+
+Required: False
 Position: Named
 Default value: None
 Accept pipeline input: False

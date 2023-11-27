@@ -14,7 +14,7 @@ The operation to update a virtual hard disk.
 
 ### ByResourceId (Default)
 ```
-Update-AzStackHCIVMVirtualHardDisk [-ResourceId <String>] [-Tag <Hashtable>] [<CommonParameters>]
+Update-AzStackHCIVMVirtualHardDisk [-ResourceId <String>] [-Tag <Hashtable>] [-NoWait] [<CommonParameters>]
 ```
 
 ### UpdateExpanded
@@ -160,7 +160,7 @@ Run the command asynchronously
 
 ```yaml
 Type: System.Management.Automation.SwitchParameter
-Parameter Sets: UpdateExpanded, UpdateViaIdentityExpanded, UpdateViaJsonFilePath, UpdateViaJsonString
+Parameter Sets: (All)
 Aliases:
 
 Required: False

@@ -14,7 +14,7 @@ The operation to update a network interface.
 
 ### ByResourceId (Default)
 ```
-Update-AzStackHCIVMNetworkInterface [-ResourceId <String>] [-Tag <Hashtable>] [<CommonParameters>]
+Update-AzStackHCIVMNetworkInterface [-ResourceId <String>] [-Tag <Hashtable>] [-NoWait] [<CommonParameters>]
 ```
 
 ### UpdateExpanded
@@ -160,7 +160,7 @@ Run the command asynchronously
 
 ```yaml
 Type: System.Management.Automation.SwitchParameter
-Parameter Sets: UpdateExpanded, UpdateViaIdentityExpanded, UpdateViaJsonFilePath, UpdateViaJsonString
+Parameter Sets: (All)
 Aliases:
 
 Required: False

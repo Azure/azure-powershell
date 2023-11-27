@@ -15,14 +15,14 @@ The operation to add a network interface to a virtual machine.
 ### ByResourceId (Default)
 ```
 Add-AzStackHCIVMVirtualMachineNetworkInterface -ResourceId <String> [-NicId <String[]>] [-NicName <String[]>]
- [-NicResourceGroup <String>] [-Confirm] [-WhatIf] [<CommonParameters>]
+ [-NicResourceGroup <String>] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ### ByName
 ```
 Add-AzStackHCIVMVirtualMachineNetworkInterface -Name <String> -ResourceGroupName <String>
- [-SubscriptionId <String>] [-NicId <String[]>] [-NicName <String[]>] [-NicResourceGroup <String>] [-Confirm]
- [-WhatIf] [<CommonParameters>]
+ [-SubscriptionId <String>] [-NicId <String[]>] [-NicName <String[]>] [-NicResourceGroup <String>] [-NoWait]
+ [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -96,6 +96,21 @@ Resource Group of the Network Interfaces
 
 ```yaml
 Type: System.String
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -NoWait
+Run the command asynchronously
+
+```yaml
+Type: System.Management.Automation.SwitchParameter
 Parameter Sets: (All)
 Aliases:
 

@@ -14,14 +14,14 @@ The operation to delete a virtual hard disk.
 
 ### ByResourceId (Default)
 ```
-Remove-AzStackHCIVMVirtualHardDisk -ResourceId <String> [-SubscriptionId <String>] [-Force] [-Confirm]
- [-WhatIf] [<CommonParameters>]
+Remove-AzStackHCIVMVirtualHardDisk -ResourceId <String> [-SubscriptionId <String>] [-Force] [-NoWait]
+ [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ### ByName
 ```
 Remove-AzStackHCIVMVirtualHardDisk -Name <String> -ResourceGroupName <String> [-SubscriptionId <String>]
- [-Force] [-Confirm] [-WhatIf] [<CommonParameters>]
+ [-Force] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -63,6 +63,21 @@ Parameter Sets: ByName
 Aliases: VirtualHardDiskName
 
 Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -NoWait
+Run the command asynchronously
+
+```yaml
+Type: System.Management.Automation.SwitchParameter
+Parameter Sets: (All)
+Aliases:
+
+Required: False
 Position: Named
 Default value: None
 Accept pipeline input: False

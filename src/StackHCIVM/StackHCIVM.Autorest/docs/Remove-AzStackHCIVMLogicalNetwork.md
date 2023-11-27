@@ -14,13 +14,14 @@ The operation to delete a logical network.
 
 ### ByResourceId (Default)
 ```
-Remove-AzStackHCIVMLogicalNetwork -ResourceId <String> [-Force] [-Confirm] [-WhatIf] [<CommonParameters>]
+Remove-AzStackHCIVMLogicalNetwork -ResourceId <String> [-Force] [-NoWait] [-Confirm] [-WhatIf]
+ [<CommonParameters>]
 ```
 
 ### Delete
 ```
 Remove-AzStackHCIVMLogicalNetwork -Name <String> -ResourceGroupName <String> [-SubscriptionId <String>]
- [-Force] [-Confirm] [-WhatIf] [<CommonParameters>]
+ [-Force] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -61,6 +62,21 @@ Parameter Sets: Delete
 Aliases: LogicalNetworkName
 
 Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -NoWait
+Run the command asynchronously
+
+```yaml
+Type: System.Management.Automation.SwitchParameter
+Parameter Sets: (All)
+Aliases:
+
+Required: False
 Position: Named
 Default value: None
 Accept pipeline input: False
