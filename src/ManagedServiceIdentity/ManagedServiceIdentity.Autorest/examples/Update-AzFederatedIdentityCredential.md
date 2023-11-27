@@ -1,6 +1,6 @@
 ### Example 1: Update federated identity credential under the specified user assigned identity
 ```powershell
-Update-AzFederatedIdentityCredentials -ResourceGroupName azure-rg-test -IdentityName uai-pwsh01 `
+Update-AzFederatedIdentityCredential -ResourceGroupName azure-rg-test -IdentityName uai-pwsh01 `
     -Name fic-pwsh01 -Issuer "https://kubernetes-oauth-upd.azure.com" -Subject "system:serviceaccount-upd:ns:svcaccount"
 ```
 
@@ -14,8 +14,8 @@ This command updates a federated identity credential under the specified user as
 
 ### Example 2: Update federated identity credential under the specified user assigned identity by pipeline
 ```powershell
-Get-AzFederatedIdentityCredentials -ResourceGroupName azure-rg-test -IdentityName uai-pwsh01 -Name fic-pwsh01 `
-    | Update-AzFederatedIdentityCredentials -Issuer "https://kubernetes-oauth-upd.azure.com" -Subject "system:serviceaccount-upd:ns:svcaccount"
+Get-AzFederatedIdentityCredential -ResourceGroupName azure-rg-test -IdentityName uai-pwsh01 -Name fic-pwsh01 `
+    | Update-AzFederatedIdentityCredential -Issuer "https://kubernetes-oauth-upd.azure.com" -Subject "system:serviceaccount-upd:ns:svcaccount"
 ```
 
 ```output

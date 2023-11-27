@@ -1,11 +1,11 @@
 ---
 external help file:
 Module Name: Az.ManagedServiceIdentity
-online version: https://learn.microsoft.com/powershell/module/az.managedserviceidentity/new-azfederatedidentitycredentials
+online version: https://learn.microsoft.com/powershell/module/az.managedserviceidentity/new-azfederatedidentitycredential
 schema: 2.0.0
 ---
 
-# New-AzFederatedIdentityCredentials
+# New-AzFederatedIdentityCredential
 
 ## SYNOPSIS
 Create or update a federated identity credential under the specified user assigned identity.
@@ -13,7 +13,7 @@ Create or update a federated identity credential under the specified user assign
 ## SYNTAX
 
 ```
-New-AzFederatedIdentityCredentials -IdentityName <String> -Name <String> -ResourceGroupName <String>
+New-AzFederatedIdentityCredential -IdentityName <String> -Name <String> -ResourceGroupName <String>
  [-SubscriptionId <String>] [-Audience <String[]>] [-Issuer <String>] [-Subject <String>]
  [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
@@ -25,7 +25,7 @@ Create or update a federated identity credential under the specified user assign
 
 ### Example 1: Create a federated identity credential under the specified user assigned identity
 ```powershell
-New-AzFederatedIdentityCredentials -ResourceGroupName azure-rg-test -IdentityName uai-pwsh01 `
+New-AzFederatedIdentityCredential -ResourceGroupName azure-rg-test -IdentityName uai-pwsh01 `
     -Name fic-pwsh01 -Issuer "https://kubernetes-oauth.azure.com" -Subject "system:serviceaccount:ns:svcaccount"
 ```
 
@@ -39,7 +39,7 @@ This command creates a federated identity credential under the specified user as
 
 ### Example 2: Create a federated identity credential under the specified user assigned identity with 'Audience' override
 ```powershell
-New-AzFederatedIdentityCredentials -ResourceGroupName azure-rg-test -IdentityName uai-pwsh01 `
+New-AzFederatedIdentityCredential -ResourceGroupName azure-rg-test -IdentityName uai-pwsh01 `
     -Name fic-pwsh01 -Issuer "https://kubernetes-oauth.azure.com" -Subject "system:serviceaccount:ns:svcaccount" `
     -Audience @("api://AzureADTokenExchange-Modified")
 ```
@@ -70,7 +70,8 @@ Accept wildcard characters: False
 ```
 
 ### -DefaultProfile
-The credentials, account, tenant, and subscription used for communication with Azure.
+The DefaultProfile parameter is not functional.
+Use the SubscriptionId parameter when available if executing the cmdlet against a different subscription.
 
 ```yaml
 Type: System.Management.Automation.PSObject
@@ -218,6 +219,8 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ## NOTES
 
 ALIASES
+
+New-AzFederatedIdentityCredentials
 
 ## RELATED LINKS
 

@@ -1,11 +1,11 @@
-if(($null -eq $TestName) -or ($TestName -contains 'New-AzFederatedIdentityCredentials'))
+if(($null -eq $TestName) -or ($TestName -contains 'New-AzFederatedIdentityCredential'))
 {
   $loadEnvPath = Join-Path $PSScriptRoot 'loadEnv.ps1'
   if (-Not (Test-Path -Path $loadEnvPath)) {
       $loadEnvPath = Join-Path $PSScriptRoot '..\loadEnv.ps1'
   }
   . ($loadEnvPath)
-  $TestRecordingFile = Join-Path $PSScriptRoot 'New-AzFederatedIdentityCredentials.Recording.json'
+  $TestRecordingFile = Join-Path $PSScriptRoot 'New-AzFederatedIdentityCredential.Recording.json'
   $currentPath = $PSScriptRoot
   while(-not $mockingPath) {
       $mockingPath = Get-ChildItem -Path $currentPath -Recurse -Include 'HttpPipelineMocking.ps1' -File
@@ -14,8 +14,16 @@ if(($null -eq $TestName) -or ($TestName -contains 'New-AzFederatedIdentityCreden
   . ($mockingPath | Select-Object -First 1).FullName
 }
 
-Describe 'New-AzFederatedIdentityCredentials' {
+Describe 'New-AzFederatedIdentityCredential' {
     It 'CreateExpanded' {
+        $fic = New-AzFederatedIdentityCredential -ResourceGroupName $env.ficResourceGroup -IdentityName $env.ficUserIdentityName -Name $env.ficName02 -Issuer $env.Issuer02 -Subject $env.Subject02
+        $fic.Name | Should -Be $env.ficName02
+        $fic.Issuer | Should -Be $env.Issuer02
+        $fic.Subject | Should -Be $env.Subject02
+        $fic.Audience | Should -Be $env.ficAudience
+    }
+
+    It 'CreateExpandedAlias' {
         $fic = New-AzFederatedIdentityCredentials -ResourceGroupName $env.ficResourceGroup -IdentityName $env.ficUserIdentityName -Name $env.ficName02 -Issuer $env.Issuer02 -Subject $env.Subject02
         $fic.Name | Should -Be $env.ficName02
         $fic.Issuer | Should -Be $env.Issuer02
