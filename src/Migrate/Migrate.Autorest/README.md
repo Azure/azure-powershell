@@ -59,6 +59,9 @@ module-version: 1.0.1
 title: Migrate 
 subject-prefix: 'Migrate'
 
+use-extension:
+  "@autorest/powershell": "3.x"
+
 directive:
   # Correct some swagger operationIds
   - from: Microsoft.OffAzure/stable/2020-01-01/migrate.json
