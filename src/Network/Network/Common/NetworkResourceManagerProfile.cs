@@ -2124,6 +2124,9 @@ namespace Microsoft.Azure.Commands.Network
                     .ForMember(
                         dest => dest.IPConfigurations,
                         opt => opt.MapFrom(src => src.IpConfigurations)
+                    ).ForMember(
+                        dest => dest.EnableIPConnect,
+                        opt => opt.MapFrom(src => src.EnableIpConnect)
                     );
                 cfg.CreateMap<CNM.PSBastionIPConfiguration, MNM.BastionHostIPConfiguration>();
 
@@ -2132,6 +2135,9 @@ namespace Microsoft.Azure.Commands.Network
                     .ForMember(
                         dest => dest.IpConfigurations,
                         opt => opt.MapFrom(src => src.IPConfigurations)
+                    ).ForMember(
+                        dest => dest.EnableIpConnect,
+                        opt => opt.MapFrom(src => src.EnableIPConnect)
                     );
                 cfg.CreateMap<MNM.BastionHostIPConfiguration, CNM.PSBastionIPConfiguration>();
 
