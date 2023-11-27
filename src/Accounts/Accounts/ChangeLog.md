@@ -19,6 +19,7 @@
 -->
 
 ## Upcoming Release
+* Adjusted output format to more user-friendly for `Get-AzContext/Tenant/Subscription` and `Invoke-AzRestMethod`
 
 ## Version 2.13.2
 * Enabled in-tool notification for version upgrade by default.
