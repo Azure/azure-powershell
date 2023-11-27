@@ -6,12 +6,12 @@
 
 ## Checklist
 
-- **Mandatory**: please state whether this PR targets a **stable** release / a **preview** release / an **engineering build** of Azure PowerShell?
+- **Mandatory**: please state whether this PR targets a [**general** release](../blob/main/CONTRIBUTING.md#target-release-types) / [**public preview**](../blob/main/CONTRIBUTING.md#target-release-types) / [**private preview**]((../blob/main/CONTRIBUTING.md#target-release-types)) / [**engineering build**](../blob/main/CONTRIBUTING.md#target-release-types) of Azure PowerShell?
     - `{Enter your answer here}`
 - [ ] Check this box to confirm: **I have read the [_Submitting Changes_](../blob/main/CONTRIBUTING.md#submitting-changes) section of [`CONTRIBUTING.md`](../blob/main/CONTRIBUTING.md) and reviewed the following information:**
 
-* **SHOULD** select appropriate branch. Cmdlets from Autorest.PowerShell should go to [`generation`](https://github.com/Azure/azure-powershell/tree/generation) branch. 
-* **SHOULD** make the title of PR clear and informative, and in the present imperative tense. 
+* **SHOULD** select appropriate branch. Cmdlets from Autorest.PowerShell should go to [`generation`](https://github.com/Azure/azure-powershell/tree/generation) branch.
+* **SHOULD** make the title of PR clear and informative, and in the present imperative tense.
 * **SHOULD** update `ChangeLog.md` file(s) appropriately
     * For any service, the `ChangeLog.md` file can be found at `src/{{SERVICE}}/{{SERVICE}}/ChangeLog.md`
     * A snippet outlining the change(s) made in the PR should be written under the `## Upcoming Release` header in the past tense. Add changelog in description section if PR goes into [`generation`](https://github.com/Azure/azure-powershell/tree/generation) branch.
