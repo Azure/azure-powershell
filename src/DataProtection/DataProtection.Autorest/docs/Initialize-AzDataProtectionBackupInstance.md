@@ -92,7 +92,7 @@ Similarly use datasourcetype AzureDatabaseForMySQL to initialize backup instance
 
 ### -BackupConfiguration
 Backup configuration for backup.
-Use this parameter to configure protection for AzureKubernetesService.
+Use this parameter to configure protection for AzureKubernetesService,AzureBlob.
 To construct, see NOTES section for BACKUPCONFIGURATION properties and create a hash table.
 
 ```yaml
