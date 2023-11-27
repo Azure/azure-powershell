@@ -1,8 +1,12 @@
 ﻿{
   "datasourcePermissions": [ "Storage Account Backup Contributor" ],
+  "datasourceRGPermissions": [],
   "snapshotRGPermissions": [],
   "keyVaultPermissions": [],
   "dataSourceOverSnapshotRGPermissions": [],
+  "supportRestoreGrantPermission": false,
+  "datasourcePermissionsForRestore": [],
+  "storageAccountPermissionsForRestore": [],
   "isProxyResource": false,
   "enableDataSourceSetInfo": false,
   "resourceType": "Microsoft.Storage/storageAccounts",
@@ -15,6 +19,7 @@
   "backupConfigurationRequired": false,
   "addDataStoreParametersList": false,
   "friendlyNameRequired": false,
+  "customFriendlyNameAllowed": false,
   "supportSecretStoreAuthentication": false,
   "supportCrossRegionRestore": false,
   "policySettings": {

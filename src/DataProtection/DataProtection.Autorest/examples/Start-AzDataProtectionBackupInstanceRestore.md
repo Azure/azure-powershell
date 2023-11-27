@@ -129,7 +129,7 @@ while($jobstatus -ne "Completed")
 ```
 
 The first, second commands fetch the backup instance and recovery point for the backup instance.
-The third command initializes the ARM Id for target container. This parameter is needed for cross sub restore for AzureDatabaseForPostgreSQL and not needed for same susbscription restore.
+The third command initializes the ARM Id for target container. This parameter is needed for vaults where cross subscription restore is disabled and optional for  CSR enabled vaults.
 The fourth, fifth command initializes targetContainerURI and fileNamePrefix for restore.
 The sixth command initializes the restore request object for AzureDatabaseForPostgreSQL restore.
 The seventh command triggers validate before restore.

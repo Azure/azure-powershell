@@ -1,48 +1,66 @@
 ﻿{
-  "datasourcePermissions": [ "Reader" ],
-  "datasourceRGPermissions": [],
+  "datasourcePermissions": [ "PostgreSQL Flexible Server Long Term Retention Backup Role" ],
+  "datasourceRGPermissions": [ "Reader" ],
   "snapshotRGPermissions": [],
-  "keyVaultPermissions": [ "Key Vault Secrets User" ],
+  "keyVaultPermissions": [],
   "dataSourceOverSnapshotRGPermissions": [],
-  "supportRestoreGrantPermission": false,
+  "supportRestoreGrantPermission": true,
   "datasourcePermissionsForRestore": [],
-  "storageAccountPermissionsForRestore": [],
+  "storageAccountPermissionsForRestore": [ "Storage Blob Data Contributor" ],
   "isProxyResource": true,
-  "enableDataSourceSetInfo": false,
-  "resourceType": "Microsoft.DBforPostgreSQL/servers/databases",
-  "parentResourceType": "Microsoft.DBforPostgreSQL/servers",
-  "datasourceType": "Microsoft.DBforPostgreSQL/servers/databases",
+  "enableDataSourceSetInfo": true,
+  "resourceType": "Microsoft.DBforPostgreSQL/flexibleServers",
+  "parentResourceType": "Microsoft.DBforPostgreSQL/flexibleServers",
+  "datasourceType": "Microsoft.DBforPostgreSQL/flexibleServers",
   "allowedRestoreModes": [ "RecoveryPointBased" ],
-  "allowedRestoreTargetTypes": [ "AlternateLocation", "RestoreAsFiles" ],
+  "allowedRestoreTargetTypes": [ "RestoreAsFiles" ],
   "itemLevelRecoveyEnabled": false,
   "addBackupDatasourceParametersList": false,
   "backupConfigurationRequired": false,
   "addDataStoreParametersList": false,
   "friendlyNameRequired": false,
-  "customFriendlyNameAllowed": false,
-  "supportSecretStoreAuthentication": true,
+  "customFriendlyNameAllowed": true,
+  "supportSecretStoreAuthentication": false,
   "supportCrossRegionRestore": true,
   "policySettings": {
     "supportedRetentionTags": [ "Weekly", "Monthly", "Yearly" ],
-    "supportedDatastoreTypes": [ "VaultStore", "ArchiveStore" ],
+    "supportedDatastoreTypes": [ "VaultStore" ],
     "disableAddRetentionRule": false,
     "disableCustomRetentionTag": false,
     "backupScheduleSupported": true,
-    "supportedBackupFrequency": [ "Weekly" ],
+    "supportedBackupFrequency": [ "Weekly", "Monthly" ],
     "defaultPolicy": {
-      "name": "OssPolicy1",
-      "datasourceTypes": [ "Microsoft.DBforPostgreSQL/servers/databases" ],
+      "name": "PGFlexPolicy1",
+      "datasourceTypes": [ "Microsoft.DBforPostgreSQL/flexibleServers" ],
       "objectType": "BackupPolicy",
       "policyRules": [
         {
+          "lifecycles": [
+            {
+              "deleteAfter": {
+                "objectType": "AbsoluteDeleteOption",
+                "duration": "P10Y"
+              },
+              "targetDataStoreCopySettings": [],
+              "sourceDataStore": {
+                "dataStoreType": "VaultStore",
+                "objectType": "DataStoreInfoBase"
+              }
+            }
+          ],
+          "isDefault": true,
+          "name": "Default",
+          "objectType": "AzureRetentionRule"
+        },
+        {
           "backupParameters": {
-            "backupType": "Full",
+            "backupType": "full",
             "objectType": "AzureBackupParams"
           },
           "trigger": {
             "schedule": {
               "repeatingTimeIntervals": [
-                "R/2021-08-22T02:00:00+00:00/P1W"
+                "R/2024-01-07T23:00:00+00:00/P1W"
               ],
               "timeZone": "UTC"
             },
@@ -64,24 +82,6 @@
           },
           "name": "BackupWeekly",
           "objectType": "AzureBackupRule"
-        },
-        {
-          "lifecycles": [
-            {
-              "deleteAfter": {
-                "objectType": "AbsoluteDeleteOption",
-                "duration": "P3M"
-              },
-              "targetDataStoreCopySettings": [],
-              "sourceDataStore": {
-                "dataStoreType": "VaultStore",
-                "objectType": "DataStoreInfoBase"
-              }
-            }
-          ],
-          "isDefault": true,
-          "name": "Default",
-          "objectType": "AzureRetentionRule"
         }
       ]
     }

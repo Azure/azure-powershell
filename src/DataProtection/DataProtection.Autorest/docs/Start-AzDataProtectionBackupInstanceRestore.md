@@ -169,7 +169,7 @@ while($jobstatus -ne "Completed")
 
 The first, second commands fetch the backup instance and recovery point for the backup instance.
 The third command initializes the ARM Id for target container.
-This parameter is needed for cross sub restore for AzureDatabaseForPostgreSQL and not needed for same susbscription restore.
+This parameter is needed for vaults where cross subscription restore is disabled and optional for  CSR enabled vaults.
 The fourth, fifth command initializes targetContainerURI and fileNamePrefix for restore.
 The sixth command initializes the restore request object for AzureDatabaseForPostgreSQL restore.
 The seventh command triggers validate before restore.
@@ -303,7 +303,7 @@ Restore request object to be initialized using Initialize-AzDataProtectionRestor
 To construct, see NOTES section for PARAMETER properties and create a hash table.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20231101.IAzureBackupRestoreRequest
+Type: Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20231201.IAzureBackupRestoreRequest
 Parameter Sets: Trigger
 Aliases:
 
@@ -334,7 +334,7 @@ Gets or sets the restore target information
 To construct, see NOTES section for RESTORETARGETINFO properties and create a hash table.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20231101.IRestoreTargetInfoBase
+Type: Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20231201.IRestoreTargetInfoBase
 Parameter Sets: TriggerExpanded
 Aliases:
 
@@ -456,11 +456,11 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20231101.IAzureBackupRestoreRequest
+### Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20231201.IAzureBackupRestoreRequest
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20231101.IOperationJobExtendedInfo
+### Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20231201.IOperationJobExtendedInfo
 
 ## NOTES
 

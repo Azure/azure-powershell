@@ -1,8 +1,12 @@
 ﻿{
   "datasourcePermissions": [ "Reader" ],
+  "datasourceRGPermissions": [],
   "snapshotRGPermissions": [ "Reader" ],
   "keyVaultPermissions": [],
   "dataSourceOverSnapshotRGPermissions": [ "Contributor" ],
+  "supportRestoreGrantPermission": true,
+  "datasourcePermissionsForRestore": [ "Reader" ],
+  "storageAccountPermissionsForRestore": [],
   "isProxyResource": true,
   "enableDataSourceSetInfo": true,
   "resourceType": "Microsoft.ContainerService/managedclusters",
@@ -15,6 +19,7 @@
   "backupConfigurationRequired": true,
   "addDataStoreParametersList": true,
   "friendlyNameRequired": true,
+  "customFriendlyNameAllowed": false,
   "supportSecretStoreAuthentication": false,
   "supportCrossRegionRestore": false,
   "policySettings": {
