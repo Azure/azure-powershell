@@ -16,8 +16,9 @@ Triggers restore for a BackupInstance
 ```
 Start-AzDataProtectionBackupInstanceRestore -BackupInstanceName <String>
  -Parameter <IAzureBackupRestoreRequest> -ResourceGroupName <String> -VaultName <String> [-AsJob]
- [-DefaultProfile <PSObject>] [-NoWait] [-RestoreToSecondaryRegion] [-SubscriptionId <String>] [-Confirm]
- [-WhatIf] [<CommonParameters>]
+ [-DefaultProfile <PSObject>] [-NoWait] [-ResourceGuardOperationRequest <String[]>]
+ [-RestoreToSecondaryRegion] [-SubscriptionId <String>] [-Token <String>] [-Confirm] [-WhatIf]
+ [<CommonParameters>]
 ```
 
 ### TriggerExpanded
@@ -26,8 +27,8 @@ Start-AzDataProtectionBackupInstanceRestore -BackupInstanceName <String> -Object
  -ResourceGroupName <String> -RestoreTargetInfo <IRestoreTargetInfoBase>
  -SourceDataStoreType <SourceDataStoreType> -VaultName <String> [-AsJob] [-DefaultProfile <PSObject>]
  [-IdentityDetailUserAssignedIdentityArmUrl <String>] [-IdentityDetailUseSystemAssignedIdentity] [-NoWait]
- [-RestoreToSecondaryRegion] [-SourceResourceId <String>] [-SubscriptionId <String>] [-Confirm] [-WhatIf]
- [<CommonParameters>]
+ [-ResourceGuardOperationRequest <String[]>] [-RestoreToSecondaryRegion] [-SourceResourceId <String>]
+ [-SubscriptionId <String>] [-Token <String>] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -346,7 +347,7 @@ Restore request object to be initialized using Initialize-AzDataProtectionRestor
 To construct, see NOTES section for PARAMETER properties and create a hash table.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20240301.IAzureBackupRestoreRequest
+Type: Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20240401.IAzureBackupRestoreRequest
 Parameter Sets: Trigger
 Aliases:
 
@@ -372,12 +373,28 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### -ResourceGuardOperationRequest
+Resource guard operation request in the format similar to \<resourceguard-ARMID\>/dppTriggerRestoreRequests/default.
+Use this parameter when the operation is MUA protected.
+
+```yaml
+Type: System.String[]
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
 ### -RestoreTargetInfo
 Gets or sets the restore target information
 To construct, see NOTES section for RESTORETARGETINFO properties and create a hash table.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20240301.IRestoreTargetInfoBase
+Type: Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20240401.IRestoreTargetInfoBase
 Parameter Sets: TriggerExpanded
 Aliases:
 
@@ -448,6 +465,22 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### -Token
+Parameter to authorize operations protected by cross tenant resource guard.
+Use command (Get-AzAccessToken -TenantId "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx").Token to fetch authorization token for different tenant.
+
+```yaml
+Type: System.String
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
 ### -VaultName
 The name of the backup vault
 
@@ -499,11 +532,11 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20240301.IAzureBackupRestoreRequest
+### Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20240401.IAzureBackupRestoreRequest
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20240301.IOperationJobExtendedInfo
+### Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20240401.IOperationJobExtendedInfo
 
 ## NOTES
 

@@ -29,6 +29,9 @@ Finds the valid recovery point in time ranges for the restore.
 ### [Get-AzDataProtectionBackupInstance](Get-AzDataProtectionBackupInstance.md)
 Gets a backup instance with name in a backup vault
 
+### [Get-AzDataProtectionBackupInstancesExtensionRouting](Get-AzDataProtectionBackupInstancesExtensionRouting.md)
+Gets a list of backup instances associated with a tracked resource
+
 ### [Get-AzDataProtectionBackupPolicy](Get-AzDataProtectionBackupPolicy.md)
 Gets a backup policy belonging to a backup vault
 

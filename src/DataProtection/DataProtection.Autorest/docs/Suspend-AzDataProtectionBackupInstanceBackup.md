@@ -15,14 +15,16 @@ This operation will stop backup for a backup instance and retains the backup dat
 ### Suspend (Default)
 ```
 Suspend-AzDataProtectionBackupInstanceBackup -BackupInstanceName <String> -ResourceGroupName <String>
- -VaultName <String> [-SubscriptionId <String>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-PassThru]
- [-Confirm] [-WhatIf] [<CommonParameters>]
+ -VaultName <String> [-Token <String>] [-AsJob] [-DefaultProfile <PSObject>] [-NoWait] [-PassThru]
+ [-ResourceGuardOperationRequest <String[]>] [-SubscriptionId <String>] [-Confirm] [-WhatIf]
+ [<CommonParameters>]
 ```
 
 ### SuspendViaIdentity
 ```
 Suspend-AzDataProtectionBackupInstanceBackup -InputObject <IDataProtectionIdentity>
- [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-PassThru] [-Confirm] [-WhatIf] [<CommonParameters>]
+ -Parameter <ISuspendBackupRequest> [-Token <String>] [-AsJob] [-DefaultProfile <PSObject>] [-NoWait]
+ [-PassThru] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -30,12 +32,27 @@ This operation will stop backup for a backup instance and retains the backup dat
 
 ## EXAMPLES
 
-### Example 1: Suspend backups for a backup instance
+### Example 1: {{ Add title here }}
 ```powershell
-Suspend-AzDataProtectionBackupInstanceBackup -ResourceGroupName "rgName" -SubscriptionId "xxxxxxxx-xxxx-xxxx-xxxxxxxxxxxx" -VaultName "vaultName" -BackupInstanceName $backupInstance.BackupInstanceName
+{{ Add code here }}
 ```
 
-The above command can be used to stop backups of a backup instance, this will move the backup instance to a suspended state.
+```output
+{{ Add output here }}
+```
+
+{{ Add description here }}
+
+### Example 2: {{ Add title here }}
+```powershell
+{{ Add code here }}
+```
+
+```output
+{{ Add output here }}
+```
+
+{{ Add description here }}
 
 ## PARAMETERS
 
@@ -55,7 +72,7 @@ Accept wildcard characters: False
 ```
 
 ### -BackupInstanceName
-The name of the backup instance.
+The name of the backup instance
 
 ```yaml
 Type: System.String
@@ -116,6 +133,22 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### -Parameter
+Request body of Suspend backup when MUA is Enabled
+To construct, see NOTES section for PARAMETER properties and create a hash table.
+
+```yaml
+Type: Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20240401.ISuspendBackupRequest
+Parameter Sets: SuspendViaIdentity
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: True (ByValue)
+Accept wildcard characters: False
+```
+
 ### -PassThru
 Returns true when the command succeeds
 
@@ -132,8 +165,7 @@ Accept wildcard characters: False
 ```
 
 ### -ResourceGroupName
-The name of the resource group.
-The name is case insensitive.
+The name of the resource group where the backup vault is present
 
 ```yaml
 Type: System.String
@@ -147,9 +179,24 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### -ResourceGuardOperationRequest
+Resource guard operation request in the format similar to \<ResourceGuard-ARMID\>/dppDisableSuspendBackupsRequests/default.
+Use this parameter when the operation is MUA protected.
+
+```yaml
+Type: System.String[]
+Parameter Sets: Suspend
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
 ### -SubscriptionId
-The ID of the target subscription.
-The value must be an UUID.
+Subscription Id of the backup vault
 
 ```yaml
 Type: System.String
@@ -158,13 +205,29 @@ Aliases:
 
 Required: False
 Position: Named
-Default value: (Get-AzContext).Subscription.Id
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -Token
+Parameter to authorize operations protected by cross tenant resource guard.
+Use command (Get-AzAccessToken -TenantId "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx").Token to fetch authorization token for different tenant.
+
+```yaml
+Type: System.String
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
 ### -VaultName
-The name of the backup vault.
+The name of the backup vault
 
 ```yaml
 Type: System.String
@@ -213,6 +276,8 @@ Accept wildcard characters: False
 This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable. For more information, see [about_CommonParameters](http://go.microsoft.com/fwlink/?LinkID=113216).
 
 ## INPUTS
+
+### Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20240401.ISuspendBackupRequest
 
 ### Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.IDataProtectionIdentity
 

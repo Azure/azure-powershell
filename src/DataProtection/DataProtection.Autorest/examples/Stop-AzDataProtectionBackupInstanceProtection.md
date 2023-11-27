@@ -1,7 +1,22 @@
-### Example 1: Stop protection for a backup instance
+### Example 1: {{ Add title here }}
 ```powershell
-Stop-AzDataProtectionBackupInstanceProtection -ResourceGroupName "rgName" -SubscriptionId "xxxxxxxx-xxxx-xxxx-xxxxxxxxxxxx" -VaultName "vaultName" -BackupInstanceName $backupInstance.BackupInstanceName
+{{ Add code here }}
 ```
 
-The above command can be used to stop protection of a backup instance
+```output
+{{ Add output here }}
+```
+
+{{ Add description here }}
+
+### Example 2: {{ Add title here }}
+```powershell
+{{ Add code here }}
+```
+
+```output
+{{ Add output here }}
+```
+
+{{ Add description here }}
 

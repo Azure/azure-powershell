@@ -36,7 +36,7 @@ function setupEnv() {
     # as default. You could change them if needed.
     $env.SubscriptionId = (Get-AzContext).Subscription.Id
     $env.Tenant = (Get-AzContext).Tenant.Id
-    $env.RecordDate = (Get-Date -Year 2024 -Month 03 -Day 25 -Hour 13 -Minute 11 -Second 11).ToString('dd-MM-yyyy-h-m-s')
+    $env.RecordDate = (Get-Date -Year 2024 -Month 04 -Day 22 -Hour 15 -Minute 11 -Second 11).ToString('dd-MM-yyyy-h-m-s')
     # For any resources you created for test, you should add it to $env here.
 
     $BackupInstanceTestVariables = @{
@@ -238,21 +238,23 @@ function setupEnv() {
     }
 
     $PGFlexVariables = @{
-        SubscriptionId = "62b829ee-7936-40c9-a1c9-47a93f9f3965"
-        ResourceGroupName = "vdhingraRG"
-        VaultName = "vdhingraBackupVault"
+        SubscriptionId = "38304e13-357e-405e-9e9a-220351dcce8c" # "62b829ee-7936-40c9-a1c9-47a93f9f3965"
+        ResourceGroupName = "zubairRG" #"vdhingraRG"
+        VaultName = "zpgflex" #"vdhingraBackupVault"
         NewPolicyName = "pstest-pgflex-policy"
-        PolicyName = "pgflexArchivePolicy1"
-        TargetContainerURI = "https://vdhingra1psa.blob.core.windows.net/powershellpgflexrestore"
+        PolicyName = "OssFlexiblePolicy1" # "pgflexArchivePolicy1"
+        TargetContainerURI = "https://akneemasaecy.blob.core.windows.net/oss-csr-container" # "https://vdhingra1psa.blob.core.windows.net/powershellpgflexrestore"
+        BackupInstanceName = "zubair-pgflex-cli1" # "archive-test"
     }
 
     $MySQLVariables = @{
         SubscriptionId = "62b829ee-7936-40c9-a1c9-47a93f9f3965"
-        ResourceGroupName = "vdhingraRG"
-        VaultName = "vdhingraBackupVault"
+        ResourceGroupName = "MySQLTest" # "vdhingraRG"
+        VaultName = "MYSQLBugBashCCY" #"vdhingraBackupVault"
         NewPolicyName = "pstest-mysql-policy"
-        PolicyName = "pstest-simple-mysql"
-        TargetContainerURI = "https://vdhingra1psa.blob.core.windows.net/powershellpgflexrestore"
+        PolicyName = "LowRetention" #"pstest-simple-mysql"
+        TargetContainerURI = "https://adityaccy.blob.core.windows.net/ads" # "https://vdhingra1psa.blob.core.windows.net/powershellpgflexrestore"
+        BackupInstanceName = "bugbash-02" # "arhive-test"
     }
 
     $CmkEncryptionVariables = @{

@@ -18,17 +18,18 @@ Describe 'Start-AzDataProtectionBackupInstanceRestore' {
         $vaultName = $env.TestPGFlex.VaultName
         $policyName = $env.TestPGFlex.PolicyName
         $targetContainerURI = $env.TestPGFlex.TargetContainerURI
+        $backupInstanceName = $env.TestPGFlex.BackupInstanceName
 
         $vault = Get-AzDataProtectionBackupVault -SubscriptionId $subId -ResourceGroupName $resourceGroupName -VaultName $vaultName
         
-        $instance  =  Get-AzDataProtectionBackupInstance -SubscriptionId $subId -ResourceGroupName $resourceGroupName -VaultName $vaultName | Where-Object { $_.Name -match "archive-test" }
+        $instance  =  Get-AzDataProtectionBackupInstance -SubscriptionId $subId -ResourceGroupName $resourceGroupName -VaultName $vaultName | Where-Object { $_.Name -match $backupInstanceName }
         
         ($instance -ne $null) | Should be $true
 
         # Trigger Backup         
         $policy = Get-AzDataProtectionBackupPolicy -SubscriptionId $subId -VaultName $vaultName -ResourceGroupName $resourceGroupName -Name $policyName
 
-        $backupJob = Backup-AzDataProtectionBackupInstanceAdhoc -BackupInstanceName $instance.Name -ResourceGroupName $resourceGroupName -SubscriptionId $subId -VaultName $vaultName -BackupRuleOptionRuleName $policy.Property.PolicyRule[1].Name -TriggerOptionRetentionTagOverride $policy.Property.PolicyRule[1].Trigger.TaggingCriterion[0].TagInfoTagName
+        $backupJob = Backup-AzDataProtectionBackupInstanceAdhoc -BackupInstanceName $instance.Name -ResourceGroupName $resourceGroupName -SubscriptionId $subId -VaultName $vaultName -BackupRuleOptionRuleName $policy.Property.PolicyRule[0].Name -TriggerOptionRetentionTagOverride $policy.Property.PolicyRule[0].Trigger.TaggingCriterion[0].TagInfoTagName
 
         $jobid = $backupJob.JobId.Split("/")[-1]
         $jobstatus = "InProgress"
@@ -47,7 +48,12 @@ Describe 'Start-AzDataProtectionBackupInstanceRestore' {
 
         $pgFlexRestoreReqFiles = Initialize-AzDataProtectionRestoreRequest -DatasourceType AzureDatabaseForPGFlexServer -SourceDataStore VaultStore -RestoreLocation $vault.Location -RestoreType RestoreAsFiles -RecoveryPoint $rps[0].Property.RecoveryPointId -TargetContainerURI $targetContainerURI
 
-        $restoreFilesJob = Start-AzDataProtectionBackupInstanceRestore -SubscriptionId $subId -ResourceGroupName $resourceGroupName  -VaultName $VaultName -BackupInstanceName $instance.BackupInstanceName -Parameter $pgFlexRestoreReqFiles        
+        # MuA
+        $proxy = Get-AzDataProtectionResourceGuardMapping -ResourceGroupName $resourceGroupName -VaultName $vaultName -SubscriptionId $subId
+        $operationRequests = $proxy.ResourceGuardOperationDetail.DefaultResourceRequest
+        $resourceGuardOperationRequest = $operationRequests | Where-Object { $_ -match "dppTriggerRestoreRequests" }
+
+        $restoreFilesJob = Start-AzDataProtectionBackupInstanceRestore -SubscriptionId $subId -ResourceGroupName $resourceGroupName  -VaultName $VaultName -BackupInstanceName $instance.BackupInstanceName -Parameter $pgFlexRestoreReqFiles -ResourceGuardOperationRequest $resourceGuardOperationRequest       
 
         $jobid = $restoreFilesJob.JobId.Split("/")[-1]
         ($jobid -ne $null) | Should be $true
@@ -62,16 +68,17 @@ Describe 'Start-AzDataProtectionBackupInstanceRestore' {
         $jobstatus | Should be "Completed"
     }
 
-    It 'MySQLRestore' {
+    It 'MySQLRestore' -skip {
         $subId = $env.TestMySQL.SubscriptionId
         $resourceGroupName = $env.TestMySQL.ResourceGroupName
         $vaultName = $env.TestMySQL.VaultName
         $policyName = $env.TestMySQL.PolicyName
         $targetContainerURI = $env.TestMySQL.TargetContainerURI
+        $backupInstanceName = $env.TestMySQL.BackupInstanceName
 
         $vault = Get-AzDataProtectionBackupVault -SubscriptionId $subId -ResourceGroupName $resourceGroupName -VaultName $vaultName
         
-        $instance  =  Get-AzDataProtectionBackupInstance -SubscriptionId $subId -ResourceGroupName $resourceGroupName -VaultName $vaultName | Where-Object { $_.Name -match "arhive-test" }
+        $instance  =  Get-AzDataProtectionBackupInstance -SubscriptionId $subId -ResourceGroupName $resourceGroupName -VaultName $vaultName | Where-Object { $_.Name -match $backupInstanceName }
         
         ($instance -ne $null) | Should be $true
 

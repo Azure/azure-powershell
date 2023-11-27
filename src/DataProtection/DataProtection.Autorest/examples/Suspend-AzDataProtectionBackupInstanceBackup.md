@@ -1,7 +1,22 @@
-### Example 1: Suspend backups for a backup instance
+### Example 1: {{ Add title here }}
 ```powershell
-Suspend-AzDataProtectionBackupInstanceBackup -ResourceGroupName "rgName" -SubscriptionId "xxxxxxxx-xxxx-xxxx-xxxxxxxxxxxx" -VaultName "vaultName" -BackupInstanceName $backupInstance.BackupInstanceName
+{{ Add code here }}
 ```
 
-The above command can be used to stop backups of a backup instance, this will move the backup instance to a suspended state.
+```output
+{{ Add output here }}
+```
+
+{{ Add description here }}
+
+### Example 2: {{ Add title here }}
+```powershell
+{{ Add code here }}
+```
+
+```output
+{{ Add output here }}
+```
+
+{{ Add description here }}
 

@@ -75,6 +75,14 @@
         [System.String]
         ${CmkEncryptionKeyUri},
         
+        [Parameter(ParameterSetName="UpdateExpanded", Mandatory=$false, HelpMessage='Resource guard operation request in the format similar to <ResourceGuard-ARMID>/operationName/default. Here operationName can be any of dppReduceImmutabilityStateRequests, dppReduceSoftDeleteSecurityRequests, dppModifyEncryptionSettingsRequests. Use this parameter when the operation is MUA protected.')]
+        [System.String[]]
+        ${ResourceGuardOperationRequest},
+
+        [Parameter(Mandatory=$false, HelpMessage='Parameter to authorize operations protected by cross tenant resource guard. Use command (Get-AzAccessToken -TenantId "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx").Token to fetch authorization token for different tenant.')]
+        [System.String]        
+        ${Token},
+
         [Parameter(HelpMessage='The DefaultProfile parameter is not functional. Use the SubscriptionId parameter when available if executing the cmdlet against a different subscription.')]
         [Alias('AzureRMContext', 'AzureCredential')]
         [ValidateNotNull()]
@@ -129,6 +137,12 @@
 
     process
     {
+        if($PSBoundParameters.ContainsKey("Token"))
+        {            
+            $null = $PSBoundParameters.Remove("Token")
+            $null = $PSBoundParameters.Add("Token", "Bearer $Token")
+        }
+
         $hasCmkEncryptionState = $PSBoundParameters.Remove("CmkEncryptionState")
         $hasCmkIdentityType = $PSBoundParameters.Remove("CmkIdentityType")
         $hasCmkUserAssignedIdentityId = $PSBoundParameters.Remove("CmkUserAssignedIdentityId")
@@ -181,7 +195,6 @@
         if ($hasSoftDeleteState) { $PSBoundParameters.Add("SoftDeleteState", $SoftDeleteState) }
         if ($hasTag) { $PSBoundParameters.Add("Tag", $Tag) }
         if ($hasUserAssignedIdentity) { $PSBoundParameters.Add("UserAssignedIdentity", $UserAssignedIdentity) }
-        
 
         Az.DataProtection.Internal\Update-AzDataProtectionBackupVault @PSBoundParameters
     }
