@@ -29,8 +29,8 @@ namespace Microsoft.Azure.Management.Automation.Models
 
         /// <param name="day">Day of the occurrence. Must be one of monday, tuesday, wednesday, thursday,
         /// friday, saturday, sunday.
-        /// Possible values include: 'Monday', 'Tuesday', 'Wednesday', 'Thursday',
-        /// 'Friday', 'Saturday', 'Sunday'</param>
+        /// Possible values include: &#39;Monday&#39;, &#39;Tuesday&#39;, &#39;Wednesday&#39;, &#39;Thursday&#39;,
+        /// &#39;Friday&#39;, &#39;Saturday&#39;, &#39;Sunday&#39;</param>
         public AdvancedScheduleMonthlyOccurrence(int? occurrence = default(int?), string day = default(string))
 
         {

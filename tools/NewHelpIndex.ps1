@@ -73,7 +73,7 @@ $RMpsd1s += Get-ChildItem -Path $resourceManagerPath -Depth 1 | Where-Object {
 }
 
 .($PSScriptRoot + "\PreloadToolDll.ps1")
-$HelpFolders += Get-ChildItem -Path "$PSScriptRoot/../src" -Recurse -Directory | where { $_.Name -eq "help" -and (-not [Tools.Common.Utilities.ModuleFilter]::IsAzureStackModule($_.FullName)) -and $_.FullName -notlike "*\bin\*"}
+$HelpFolders += Get-ChildItem -Path "$PSScriptRoot/../src" -Recurse -Directory | where { $_.Name -eq "help" -and (-not [Tools.Common.Utilities.ModuleFilter]::IsAzureStackModule($_.FullName)) -and $_.FullName -notlike "*\bin\*" -and (-not $_.Parent.BaseName.EndsWith(".Autorest"))}
 
 
 # Map the name of the cmdlet to the location of the help file

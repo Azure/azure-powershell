@@ -44,15 +44,15 @@ namespace Microsoft.Azure.Management.Automation.Models
         /// </param>
 
         /// <param name="runbookType">Gets or sets the type of the runbook.
-        /// Possible values include: 'Script', 'Graph', 'PowerShellWorkflow',
-        /// 'PowerShell', 'GraphPowerShellWorkflow', 'GraphPowerShell', 'Python2',
-        /// 'Python3'</param>
+        /// Possible values include: &#39;Script&#39;, &#39;Graph&#39;, &#39;PowerShellWorkflow&#39;,
+        /// &#39;PowerShell&#39;, &#39;GraphPowerShellWorkflow&#39;, &#39;GraphPowerShell&#39;, &#39;Python2&#39;,
+        /// &#39;Python3&#39;, &#39;PowerShell72&#39;</param>
 
         /// <param name="publishContentLink">Gets or sets the published runbook content link.
         /// </param>
 
         /// <param name="state">Gets or sets the state of the runbook.
-        /// Possible values include: 'New', 'Edit', 'Published'</param>
+        /// Possible values include: &#39;New&#39;, &#39;Edit&#39;, &#39;Published&#39;</param>
 
         /// <param name="logVerbose">Gets or sets verbose log option.
         /// </param>
@@ -76,7 +76,7 @@ namespace Microsoft.Azure.Management.Automation.Models
         /// </param>
 
         /// <param name="provisioningState">Gets or sets the provisioning state of the runbook.
-        /// Possible values include: 'Succeeded'</param>
+        /// Possible values include: &#39;Succeeded&#39;</param>
 
         /// <param name="lastModifiedBy">Gets or sets the last modified by.
         /// </param>
@@ -125,7 +125,7 @@ namespace Microsoft.Azure.Management.Automation.Models
         public string Etag {get; set; }
 
         /// <summary>
-        /// Gets or sets gets or sets the type of the runbook. Possible values include: &#39;Script&#39;, &#39;Graph&#39;, &#39;PowerShellWorkflow&#39;, &#39;PowerShell&#39;, &#39;GraphPowerShellWorkflow&#39;, &#39;GraphPowerShell&#39;, &#39;Python2&#39;, &#39;Python3&#39;
+        /// Gets or sets gets or sets the type of the runbook. Possible values include: &#39;Script&#39;, &#39;Graph&#39;, &#39;PowerShellWorkflow&#39;, &#39;PowerShell&#39;, &#39;GraphPowerShellWorkflow&#39;, &#39;GraphPowerShell&#39;, &#39;Python2&#39;, &#39;Python3&#39;, &#39;PowerShell72&#39;
         /// </summary>
         [Newtonsoft.Json.JsonProperty(PropertyName = "properties.runbookType")]
         public string RunbookType {get; set; }

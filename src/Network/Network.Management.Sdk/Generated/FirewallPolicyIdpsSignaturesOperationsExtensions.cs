@@ -22,7 +22,8 @@ namespace Microsoft.Azure.Management.Network
     public static partial class FirewallPolicyIdpsSignaturesOperationsExtensions
     {
             /// <summary>
-            /// Retrieves the current status of IDPS signatures for the relevant policy
+            /// Retrieves the current status of IDPS signatures for the relevant policy.
+            /// Maximal amount of returned signatures is 1000.
             /// </summary>
             /// <param name='operations'>
             /// The operations group for this extension method.
@@ -41,7 +42,8 @@ namespace Microsoft.Azure.Management.Network
             }
 
             /// <summary>
-            /// Retrieves the current status of IDPS signatures for the relevant policy
+            /// Retrieves the current status of IDPS signatures for the relevant policy.
+            /// Maximal amount of returned signatures is 1000.
             /// </summary>
             /// <param name='operations'>
             /// The operations group for this extension method.

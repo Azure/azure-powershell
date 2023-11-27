@@ -12,16 +12,16 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-
 namespace Microsoft.Azure.Commands.Network.Bastion
 {
+    using System;
+    using System.Collections.Generic;
+    using System.Management.Automation;
+
     using Microsoft.Azure.Commands.Network.Models;
     using Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters;
     using Microsoft.Azure.Management.Internal.Resources.Utilities.Models;
     using Microsoft.Azure.Management.Network.Models;
-    using System;
-    using System.Collections.Generic;
-    using System.Management.Automation;
 
     [Cmdlet(VerbsCommon.Get,
          ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "Bastion",
@@ -66,14 +66,14 @@ namespace Microsoft.Azure.Commands.Network.Bastion
             {
                 WriteObject(this.GetBastion(this.ResourceGroupName, this.Name));
             }
-            else if ((ParameterSetName.Equals(BastionParameterSetNames.ByResourceId, StringComparison.OrdinalIgnoreCase)))
+            else if (ParameterSetName.Equals(BastionParameterSetNames.ByResourceId, StringComparison.OrdinalIgnoreCase))
             {
                 var parsedResourceId = new ResourceIdentifier(this.ResourceId);
                 this.Name = parsedResourceId.ResourceName;
                 this.ResourceGroupName = parsedResourceId.ResourceGroupName;
                 WriteObject(this.GetBastion(this.ResourceGroupName, this.Name));
             }
-            else 
+            else
             {
                 WriteObject(TopLevelWildcardFilter(ResourceGroupName, Name, this.ListBastions(this.ResourceGroupName)), true);
             }

@@ -16,7 +16,7 @@ namespace Microsoft.Azure.Management.Network.Models
     using System.Linq;
 
     /// <summary>
-    /// Post request for all the Bastion Shareable Link endpoints.
+    /// Post request for Create/Delete/Get Bastion Shareable Link endpoints.
     /// </summary>
     public partial class BastionShareableLinkListRequest
     {

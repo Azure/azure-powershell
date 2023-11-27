@@ -16,9 +16,23 @@ namespace Microsoft.Azure.Management.Network.Models
     /// </summary>
     public static class ApplicationGatewayProtocol
     {
+        /// <summary>
+        /// Supported for httpListeners and  backendHttpSettingsCollection
+        /// properties.
+        /// </summary>
         public const string Http = "Http";
+        /// <summary>
+        /// Supported for httpListeners and  backendHttpSettingsCollection
+        /// properties.
+        /// </summary>
         public const string Https = "Https";
+        /// <summary>
+        /// Supported for listeners and backendSettingsCollection properties.
+        /// </summary>
         public const string Tcp = "Tcp";
+        /// <summary>
+        /// Supported for listeners and backendSettingsCollection properties.
+        /// </summary>
         public const string Tls = "Tls";
     }
 }

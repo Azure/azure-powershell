@@ -31,6 +31,8 @@ namespace Microsoft.Azure.Commands.Network.Models
         public string Type { get; set; }
         public PSResourceId SslProfile { get; set; }
 
+        public List<string> HostNames { get; set; }
+
         [JsonIgnore]
         public string FrontendIpConfigurationText
         {

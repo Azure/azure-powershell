@@ -13,8 +13,8 @@
 # ----------------------------------------------------------------------------------
 
 # Automation account information
-$resourceGroupName = "py3-RG"
-$automationAccountName = "py3-aa123"
+$resourceGroupName = "to-delete-01"
+$automationAccountName = "fbs-aa-01"
 $py3PackageName = "py3-package"
 $contentLinkUri = "https://files.pythonhosted.org/packages/7f/e2/85dfb9f7364cbd7a9213caea0e91fc948da3c912a2b222a3e43bc9cc6432/requires.io-0.2.6-py2.py3-none-any.whl"
 

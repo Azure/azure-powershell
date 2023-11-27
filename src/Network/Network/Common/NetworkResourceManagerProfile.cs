@@ -229,8 +229,6 @@ namespace Microsoft.Azure.Commands.Network
                 cfg.AddProfile<NetworkResourceManagerProfile>();
                 cfg.CreateMap<CNM.PSResourceId, MNM.SubResource>();
                 cfg.CreateMap<MNM.SubResource, CNM.PSResourceId>();
-                cfg.CreateMap<CNM.PSResourceIdNfv, MNM.RoutingConfigurationNfvSubResource>();
-                cfg.CreateMap<MNM.RoutingConfigurationNfvSubResource, CNM.PSResourceIdNfv>();
 
                 // Map request error exceptions between SDK and PowerShell
                 cfg.CreateMap<MNM.Error, Rest.Azure.CloudError>();
@@ -1269,8 +1267,6 @@ namespace Microsoft.Azure.Commands.Network
                 cfg.CreateMap<CNM.PSVnetRoute, MNM.VnetRoute>();
                 cfg.CreateMap<CNM.PSStaticRoute, MNM.StaticRoute>();
                 cfg.CreateMap<CNM.PSStaticRoutesConfig, MNM.StaticRoutesConfig>();
-                cfg.CreateMap<CNM.PSRoutingConfigurationNfv, MNM.RoutingConfigurationNfv>();
-                cfg.CreateMap<CNM.PSPropagatedRouteTableNfv, MNM.PropagatedRouteTableNfv>();
 
                 // MNM to CNM
                 cfg.CreateMap<MNM.HubRouteTable, CNM.PSVHubRouteTable>();
@@ -1279,8 +1275,6 @@ namespace Microsoft.Azure.Commands.Network
                 cfg.CreateMap<MNM.PropagatedRouteTable, CNM.PSPropagatedRouteTable>();
                 cfg.CreateMap<MNM.StaticRoute, CNM.PSStaticRoute>();
                 cfg.CreateMap<MNM.StaticRoutesConfig, CNM.PSStaticRoutesConfig>();
-                cfg.CreateMap<MNM.RoutingConfigurationNfv, CNM.PSRoutingConfigurationNfv>();
-                cfg.CreateMap<MNM.PropagatedRouteTableNfv, CNM.PSPropagatedRouteTableNfv>();
 
                 //// Virtual Hub Routing Intent
                 // CNM to MNM
@@ -1570,6 +1564,7 @@ namespace Microsoft.Azure.Commands.Network
                 cfg.CreateMap<CNM.PSVirtualApplianceSite, MNM.VirtualApplianceSite>();
                 cfg.CreateMap<CNM.PSVirtualApplianceSkuProperties, MNM.VirtualApplianceSkuProperties>();
                 cfg.CreateMap<CNM.PSNetworkVirtualApplianceConnection, MNM.NetworkVirtualApplianceConnection>();
+                cfg.CreateMap<CNM.PSNetworkVirtualApplianceDelegationProperties, MNM.DelegationProperties>();
 
                 // MNM to CNM
                 // Where CNM - models from Powershell
@@ -1584,6 +1579,7 @@ namespace Microsoft.Azure.Commands.Network
                 cfg.CreateMap<MNM.VirtualApplianceSkuProperties, CNM.PSVirtualApplianceSkuProperties>();
                 cfg.CreateMap<MNM.VirtualApplianceAdditionalNicProperties, CNM.PSVirtualApplianceAdditionalNicProperties>();
                 cfg.CreateMap<MNM.NetworkVirtualApplianceConnection,CNM.PSNetworkVirtualApplianceConnection>();
+                cfg.CreateMap<MNM.DelegationProperties, CNM.PSNetworkVirtualApplianceDelegationProperties>();
 
                 // NetworkManager
                 // CNM to MNMs

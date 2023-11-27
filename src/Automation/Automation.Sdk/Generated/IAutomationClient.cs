@@ -36,7 +36,9 @@ namespace Microsoft.Azure.Management.Automation
 
 
         /// <summary>
-        /// Gets subscription credentials which uniquely identify Microsoft Azure subscription. The subscription ID forms part of the URI for every service call.
+        /// Gets subscription credentials which uniquely identify Microsoft Azure
+        /// subscription. The subscription ID forms part of the URI for every service
+        /// call.
         /// </summary>
         string SubscriptionId { get; set;}
 
@@ -49,15 +51,15 @@ namespace Microsoft.Azure.Management.Automation
 
         /// <summary>
         /// The retry timeout in seconds for Long Running Operations. Default
-        /// value is 30.
+        /// /// value is 30.
         /// </summary>
         int? LongRunningOperationRetryTimeout { get; set;}
 
 
         /// <summary>
-        /// Whether a unique x-ms-client-request-id should be generated. When 
-        /// set to true a unique x-ms-client-request-id value is generated and 
-        /// included in each request. Default is true.
+        /// Whether a unique x-ms-client-request-id should be generated. When
+        /// /// set to true a unique x-ms-client-request-id value is generated and
+        /// /// included in each request. Default is true.
         /// </summary>
         bool? GenerateClientRequestId { get; set;}
 
@@ -236,6 +238,11 @@ namespace Microsoft.Azure.Management.Automation
         /// Gets the ITestJobOperations
         /// </summary>
         ITestJobOperations TestJob { get; }
+
+        /// <summary>
+        /// Gets the IPowerShell72ModuleOperations
+        /// </summary>
+        IPowerShell72ModuleOperations PowerShell72Module { get; }
 
         /// <summary>
         /// Gets the IHybridRunbookWorkersOperations

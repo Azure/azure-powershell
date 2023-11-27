@@ -26,9 +26,9 @@ namespace Microsoft.Azure.Management.Automation.Models
 
         /// <param name="includedUpdateClassifications">Update classification included in the software update configuration. A
         /// comma separated string with required values
-        /// Possible values include: 'Unclassified', 'Critical', 'Security',
-        /// 'UpdateRollup', 'FeaturePack', 'ServicePack', 'Definition', 'Tools',
-        /// 'Updates'</param>
+        /// Possible values include: &#39;Unclassified&#39;, &#39;Critical&#39;, &#39;Security&#39;,
+        /// &#39;UpdateRollup&#39;, &#39;FeaturePack&#39;, &#39;ServicePack&#39;, &#39;Definition&#39;, &#39;Tools&#39;,
+        /// &#39;Updates&#39;</param>
 
         /// <param name="excludedKbNumbers">KB numbers excluded from the software update configuration.
         /// </param>
