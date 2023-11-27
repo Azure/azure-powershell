@@ -17,6 +17,7 @@ using Microsoft.Azure.Commands.Sql.Backup.Model;
 using Microsoft.Azure.Commands.Sql.Database.Model;
 using Microsoft.Azure.Commands.Sql.Server.Adapter;
 using Microsoft.Azure.Management.Sql.LegacySdk.Models;
+using Microsoft.Azure.Management.Sql.Models;
 using Microsoft.Rest.Azure.OData;
 using System;
 using System.Collections.Generic;
@@ -418,6 +419,35 @@ namespace Microsoft.Azure.Commands.Sql.Backup.Services
 
             AzureSqlDatabaseLongTermRetentionBackupModel backupModel = GetBackupModel(backup, model.Location);
             return backupModel;
+        }
+
+        /// <summary>
+        /// Update a Long Term Retention backup storage access tier.
+        /// </summary>
+        /// <param name="model"></param>
+        /// <param name="updateParameters"></param>
+        internal AzureSqlDatabaseLongTermRetentionBackupModel UpdateDatabaeLongTermRetentionBackupAccessTier(
+            AzureSqlDatabaseLongTermRetentionBackupModel model,
+            Management.Sql.Models.ChangeLongTermRetentionBackupAccessTierParameters updateParameters)
+        {
+            LongTermRetentionBackup response = Communicator.UpdateDatabaseLongTermRetentionBackupAccessTier(
+                model.Location,
+                model.ServerName,
+                model.DatabaseName,
+                model.BackupName,
+                model.ResourceGroupName,
+                updateParameters);
+
+            return new AzureSqlDatabaseLongTermRetentionBackupModel()
+            {
+                Location = model.Location,
+                ServerName = response.ServerName,
+                DatabaseName = response.DatabaseName,
+                BackupName = model.BackupName,
+                ResourceGroupName = model.ResourceGroupName,
+                BackupStorageAccessTier = response.BackupStorageAccessTier,
+                OperationMode = model.OperationMode
+            };
         }
 
         /// <summary>

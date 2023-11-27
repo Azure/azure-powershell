@@ -40,7 +40,7 @@ namespace Microsoft.Azure.Management.Sql.Models
         /// </param>
 
         /// <param name="status">The status of the capability.
-        /// Possible values include: 'Visible', 'Available', 'Default', 'Disabled'</param>
+        /// Possible values include: &#39;Visible&#39;, &#39;Available&#39;, &#39;Default&#39;, &#39;Disabled&#39;</param>
 
         /// <param name="reason">The reason for the capability not being available.
         /// </param>

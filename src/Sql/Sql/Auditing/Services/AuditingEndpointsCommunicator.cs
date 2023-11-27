@@ -197,7 +197,7 @@ namespace Microsoft.Azure.Commands.Sql.Auditing.Services
             }
             catch (AggregateException ex)
             {
-                if (!(ex.InnerException is ErrorResponseException ex1) ||
+                if (!(ex.InnerException is Management.Monitor.Version2018_09_01.Models.ErrorResponseException ex1) ||
                     ex1.Response.StatusCode != System.Net.HttpStatusCode.NotFound)
                 {
                     throw ex.InnerException ?? ex;

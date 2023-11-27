@@ -38,16 +38,16 @@ namespace Microsoft.Azure.Management.Sql.Models
         /// </param>
 
         /// <param name="provisioningState">
-        /// Possible values include: 'Creating', 'Deleting', 'Updating', 'Unknown',
-        /// 'Succeeded', 'Failed', 'Accepted', 'Created', 'Deleted', 'Unrecognized',
-        /// 'Running', 'Canceled', 'NotSpecified', 'Registering', 'TimedOut'</param>
+        /// Possible values include: &#39;Creating&#39;, &#39;Deleting&#39;, &#39;Updating&#39;, &#39;Unknown&#39;,
+        /// &#39;Succeeded&#39;, &#39;Failed&#39;, &#39;Accepted&#39;, &#39;Created&#39;, &#39;Deleted&#39;, &#39;Unrecognized&#39;,
+        /// &#39;Running&#39;, &#39;Canceled&#39;, &#39;NotSpecified&#39;, &#39;Registering&#39;, &#39;TimedOut&#39;</param>
 
         /// <param name="managedInstanceCreateMode">Specifies the mode of database creation.
         /// Default: Regular instance creation.
         /// Restore: Creates an instance by restoring a set of backups to specific
         /// point in time. RestorePointInTime and SourceManagedInstanceId must be
         /// specified.
-        /// Possible values include: 'Default', 'PointInTimeRestore'</param>
+        /// Possible values include: &#39;Default&#39;, &#39;PointInTimeRestore&#39;</param>
 
         /// <param name="fullyQualifiedDomainName">The fully qualified domain name of the managed instance.
         /// </param>
@@ -68,7 +68,7 @@ namespace Microsoft.Azure.Management.Sql.Models
         /// <param name="licenseType">The license type. Possible values are &#39;LicenseIncluded&#39; (regular price
         /// inclusive of a new SQL license) and &#39;BasePrice&#39; (discounted AHB price for
         /// bringing your own SQL licenses).
-        /// Possible values include: 'LicenseIncluded', 'BasePrice'</param>
+        /// Possible values include: &#39;LicenseIncluded&#39;, &#39;BasePrice&#39;</param>
 
         /// <param name="vCores">The number of vCores. Allowed values: 8, 16, 24, 32, 40, 64, 80.
         /// </param>
@@ -100,7 +100,7 @@ namespace Microsoft.Azure.Management.Sql.Models
         /// </param>
 
         /// <param name="proxyOverride">Connection type used for connecting to the instance.
-        /// Possible values include: 'Proxy', 'Redirect', 'Default'</param>
+        /// Possible values include: &#39;Proxy&#39;, &#39;Redirect&#39;, &#39;Default&#39;</param>
 
         /// <param name="timezoneId">Id of the timezone. Allowed values are timezones supported by Windows.
         /// Windows keeps details on supported timezones, including the id, in registry
@@ -129,12 +129,12 @@ namespace Microsoft.Azure.Management.Sql.Models
         /// <param name="currentBackupStorageRedundancy">The storage account type used to store backups for this instance. The
         /// options are Local (LocallyRedundantStorage), Zone (ZoneRedundantStorage),
         /// Geo (GeoRedundantStorage) and GeoZone(GeoZoneRedundantStorage)
-        /// Possible values include: 'Geo', 'Local', 'Zone', 'GeoZone'</param>
+        /// Possible values include: &#39;Geo&#39;, &#39;Local&#39;, &#39;Zone&#39;, &#39;GeoZone&#39;</param>
 
         /// <param name="requestedBackupStorageRedundancy">The storage account type to be used to store backups for this instance. The
         /// options are Local (LocallyRedundantStorage), Zone (ZoneRedundantStorage),
         /// Geo (GeoRedundantStorage) and GeoZone(GeoZoneRedundantStorage)
-        /// Possible values include: 'Geo', 'Local', 'Zone', 'GeoZone'</param>
+        /// Possible values include: &#39;Geo&#39;, &#39;Local&#39;, &#39;Zone&#39;, &#39;GeoZone&#39;</param>
 
         /// <param name="zoneRedundant">Whether or not the multi-az is enabled.
         /// </param>

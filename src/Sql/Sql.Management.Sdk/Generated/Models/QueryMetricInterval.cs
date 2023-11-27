@@ -28,7 +28,7 @@ namespace Microsoft.Azure.Management.Sql.Models
         /// </param>
 
         /// <param name="intervalType">Interval type (length).
-        /// Possible values include: 'PT1H', 'P1D'</param>
+        /// Possible values include: &#39;PT1H&#39;, &#39;P1D&#39;</param>
 
         /// <param name="executionCount">Execution count of a query in this interval.
         /// </param>

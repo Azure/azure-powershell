@@ -43,11 +43,17 @@ namespace Microsoft.Azure.Management.Sql.Models
         /// </param>
 
         /// <param name="backupStorageRedundancy">The storage redundancy type of the backup
-        /// Possible values include: 'Geo', 'Local', 'Zone', 'GeoZone'</param>
+        /// Possible values include: &#39;Geo&#39;, &#39;Local&#39;, &#39;Zone&#39;, &#39;GeoZone&#39;</param>
 
         /// <param name="requestedBackupStorageRedundancy">The storage redundancy type of the backup
-        /// Possible values include: 'Geo', 'Local', 'Zone', 'GeoZone'</param>
-        public LongTermRetentionBackupProperties(string serverName = default(string), System.DateTime? serverCreateTime = default(System.DateTime?), string databaseName = default(string), System.DateTime? databaseDeletionTime = default(System.DateTime?), System.DateTime? backupTime = default(System.DateTime?), System.DateTime? backupExpirationTime = default(System.DateTime?), string backupStorageRedundancy = default(string), string requestedBackupStorageRedundancy = default(string))
+        /// Possible values include: &#39;Geo&#39;, &#39;Local&#39;, &#39;Zone&#39;, &#39;GeoZone&#39;</param>
+
+        /// <param name="isBackupImmutable">The setting whether the LTR backup is immutable
+        /// </param>
+
+        /// <param name="backupStorageAccessTier">The BackupStorageAccessTier for the LTR backup
+        /// Possible values include: &#39;Hot&#39;, &#39;Archive&#39;</param>
+        public LongTermRetentionBackupProperties(string serverName = default(string), System.DateTime? serverCreateTime = default(System.DateTime?), string databaseName = default(string), System.DateTime? databaseDeletionTime = default(System.DateTime?), System.DateTime? backupTime = default(System.DateTime?), System.DateTime? backupExpirationTime = default(System.DateTime?), string backupStorageRedundancy = default(string), string requestedBackupStorageRedundancy = default(string), bool? isBackupImmutable = default(bool?), string backupStorageAccessTier = default(string))
 
         {
             this.ServerName = serverName;
@@ -58,6 +64,8 @@ namespace Microsoft.Azure.Management.Sql.Models
             this.BackupExpirationTime = backupExpirationTime;
             this.BackupStorageRedundancy = backupStorageRedundancy;
             this.RequestedBackupStorageRedundancy = requestedBackupStorageRedundancy;
+            this.IsBackupImmutable = isBackupImmutable;
+            this.BackupStorageAccessTier = backupStorageAccessTier;
             CustomInit();
         }
 
@@ -114,5 +122,17 @@ namespace Microsoft.Azure.Management.Sql.Models
         /// </summary>
         [Newtonsoft.Json.JsonProperty(PropertyName = "requestedBackupStorageRedundancy")]
         public string RequestedBackupStorageRedundancy {get; set; }
+
+        /// <summary>
+        /// Gets or sets the setting whether the LTR backup is immutable
+        /// </summary>
+        [Newtonsoft.Json.JsonProperty(PropertyName = "isBackupImmutable")]
+        public bool? IsBackupImmutable {get; set; }
+
+        /// <summary>
+        /// Gets the BackupStorageAccessTier for the LTR backup Possible values include: &#39;Hot&#39;, &#39;Archive&#39;
+        /// </summary>
+        [Newtonsoft.Json.JsonProperty(PropertyName = "backupStorageAccessTier")]
+        public string BackupStorageAccessTier {get; private set; }
     }
 }

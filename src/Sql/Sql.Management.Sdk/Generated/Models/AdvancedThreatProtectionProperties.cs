@@ -27,7 +27,7 @@ namespace Microsoft.Azure.Management.Sql.Models
         /// <param name="state">Specifies the state of the Advanced Threat Protection, whether it is
         /// enabled or disabled or a state has not been applied yet on the specific
         /// database or server.
-        /// Possible values include: 'New', 'Enabled', 'Disabled'</param>
+        /// Possible values include: &#39;New&#39;, &#39;Enabled&#39;, &#39;Disabled&#39;</param>
 
         /// <param name="creationTime">Specifies the UTC creation time of the policy.
         /// </param>

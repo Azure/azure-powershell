@@ -14,6 +14,201 @@ namespace Microsoft.Azure.Management.Sql
     public partial interface ILongTermRetentionBackupsOperations
     {
         /// <summary>
+        /// Lists the long term retention backups for a given location.
+        /// </summary>
+        /// <remarks>
+        /// Lists the long term retention backups for a given location.
+        /// </remarks>
+        /// <param name='locationName'>
+        /// The location of the database
+        /// </param>
+        /// <param name='onlyLatestPerDatabase'>
+        /// Whether or not to only get the latest backup for each database.
+        /// </param>
+        /// <param name='databaseState'>
+        /// Whether to query against just live databases, just deleted databases, or
+        /// all databases.
+        /// </param>
+        /// <param name='customHeaders'>
+        /// The headers that will be added to request.
+        /// </param>
+        /// <param name='cancellationToken'>
+        /// The cancellation token.
+        /// </param>
+        /// <exception cref="Microsoft.Rest.Azure.CloudException">
+        /// Thrown when the operation returned an invalid status code
+        /// </exception>
+        /// <exception cref="Microsoft.Rest.SerializationException">
+        /// Thrown when unable to deserialize the response
+        /// </exception>
+        System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse<Microsoft.Rest.Azure.IPage<LongTermRetentionBackup>>> ListByLocationWithHttpMessagesAsync(string locationName, bool? onlyLatestPerDatabase = default(bool?), string databaseState = default(string), System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+
+        /// <summary>
+        /// Lists the long term retention backups for a given server.
+        /// </summary>
+        /// <remarks>
+        /// Lists the long term retention backups for a given server.
+        /// </remarks>
+        /// <param name='locationName'>
+        /// The location of the database
+        /// </param>
+        /// <param name='longTermRetentionServerName'>
+        /// The name of the server
+        /// </param>
+        /// <param name='onlyLatestPerDatabase'>
+        /// Whether or not to only get the latest backup for each database.
+        /// </param>
+        /// <param name='databaseState'>
+        /// Whether to query against just live databases, just deleted databases, or
+        /// all databases.
+        /// </param>
+        /// <param name='customHeaders'>
+        /// The headers that will be added to request.
+        /// </param>
+        /// <param name='cancellationToken'>
+        /// The cancellation token.
+        /// </param>
+        /// <exception cref="Microsoft.Rest.Azure.CloudException">
+        /// Thrown when the operation returned an invalid status code
+        /// </exception>
+        /// <exception cref="Microsoft.Rest.SerializationException">
+        /// Thrown when unable to deserialize the response
+        /// </exception>
+        System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse<Microsoft.Rest.Azure.IPage<LongTermRetentionBackup>>> ListByServerWithHttpMessagesAsync(string locationName, string longTermRetentionServerName, bool? onlyLatestPerDatabase = default(bool?), string databaseState = default(string), System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+
+        /// <summary>
+        /// Lists all long term retention backups for a database.
+        /// </summary>
+        /// <remarks>
+        /// Lists all long term retention backups for a database.
+        /// </remarks>
+        /// <param name='locationName'>
+        /// The location of the database
+        /// </param>
+        /// <param name='longTermRetentionServerName'>
+        /// The name of the server
+        /// </param>
+        /// <param name='longTermRetentionDatabaseName'>
+        /// The name of the database
+        /// </param>
+        /// <param name='onlyLatestPerDatabase'>
+        /// Whether or not to only get the latest backup for each database.
+        /// </param>
+        /// <param name='databaseState'>
+        /// Whether to query against just live databases, just deleted databases, or
+        /// all databases.
+        /// </param>
+        /// <param name='customHeaders'>
+        /// The headers that will be added to request.
+        /// </param>
+        /// <param name='cancellationToken'>
+        /// The cancellation token.
+        /// </param>
+        /// <exception cref="Microsoft.Rest.Azure.CloudException">
+        /// Thrown when the operation returned an invalid status code
+        /// </exception>
+        /// <exception cref="Microsoft.Rest.SerializationException">
+        /// Thrown when unable to deserialize the response
+        /// </exception>
+        System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse<Microsoft.Rest.Azure.IPage<LongTermRetentionBackup>>> ListByDatabaseWithHttpMessagesAsync(string locationName, string longTermRetentionServerName, string longTermRetentionDatabaseName, bool? onlyLatestPerDatabase = default(bool?), string databaseState = default(string), System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+
+        /// <summary>
+        /// Gets a long term retention backup.
+        /// </summary>
+        /// <remarks>
+        /// Gets a long term retention backup.
+        /// </remarks>
+        /// <param name='locationName'>
+        /// The location of the database.
+        /// </param>
+        /// <param name='longTermRetentionServerName'>
+        /// The name of the server
+        /// </param>
+        /// <param name='longTermRetentionDatabaseName'>
+        /// The name of the database
+        /// </param>
+        /// <param name='backupName'>
+        /// The backup name.
+        /// </param>
+        /// <param name='customHeaders'>
+        /// The headers that will be added to request.
+        /// </param>
+        /// <param name='cancellationToken'>
+        /// The cancellation token.
+        /// </param>
+        /// <exception cref="Microsoft.Rest.Azure.CloudException">
+        /// Thrown when the operation returned an invalid status code
+        /// </exception>
+        /// <exception cref="Microsoft.Rest.SerializationException">
+        /// Thrown when unable to deserialize the response
+        /// </exception>
+        System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse<LongTermRetentionBackup>> GetWithHttpMessagesAsync(string locationName, string longTermRetentionServerName, string longTermRetentionDatabaseName, string backupName, System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+
+        /// <summary>
+        /// Deletes a long term retention backup.
+        /// </summary>
+        /// <remarks>
+        /// Deletes a long term retention backup.
+        /// </remarks>
+        /// <param name='locationName'>
+        /// The location of the database
+        /// </param>
+        /// <param name='longTermRetentionServerName'>
+        /// The name of the server
+        /// </param>
+        /// <param name='longTermRetentionDatabaseName'>
+        /// The name of the database
+        /// </param>
+        /// <param name='backupName'>
+        /// The backup name.
+        /// </param>
+        /// <param name='customHeaders'>
+        /// The headers that will be added to request.
+        /// </param>
+        /// <param name='cancellationToken'>
+        /// The cancellation token.
+        /// </param>
+        /// <exception cref="Microsoft.Rest.Azure.CloudException">
+        /// Thrown when the operation returned an invalid status code
+        /// </exception>
+        System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse> DeleteWithHttpMessagesAsync(string locationName, string longTermRetentionServerName, string longTermRetentionDatabaseName, string backupName, System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+
+        /// <summary>
+        /// Change a long term retention backup access tier.
+        /// </summary>
+        /// <remarks>
+        /// Change a long term retention backup access tier.
+        /// </remarks>
+        /// <param name='locationName'>
+        /// 
+        /// </param>
+        /// <param name='longTermRetentionServerName'>
+        /// 
+        /// </param>
+        /// <param name='longTermRetentionDatabaseName'>
+        /// 
+        /// </param>
+        /// <param name='backupName'>
+        /// 
+        /// </param>
+        /// <param name='parameters'>
+        /// 
+        /// </param>
+        /// <param name='customHeaders'>
+        /// The headers that will be added to request.
+        /// </param>
+        /// <param name='cancellationToken'>
+        /// The cancellation token.
+        /// </param>
+        /// <exception cref="Microsoft.Rest.Azure.CloudException">
+        /// Thrown when the operation returned an invalid status code
+        /// </exception>
+        /// <exception cref="Microsoft.Rest.SerializationException">
+        /// Thrown when unable to deserialize the response
+        /// </exception>
+        System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse<LongTermRetentionBackup>> ChangeAccessTierWithHttpMessagesAsync(string locationName, string longTermRetentionServerName, string longTermRetentionDatabaseName, string backupName, ChangeLongTermRetentionBackupAccessTierParameters parameters, System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+
+        /// <summary>
         /// Copy an existing long term retention backup.
         /// </summary>
         /// <remarks>
@@ -84,11 +279,132 @@ namespace Microsoft.Azure.Management.Sql
         System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse<LongTermRetentionBackupOperationResult>> UpdateWithHttpMessagesAsync(string locationName, string longTermRetentionServerName, string longTermRetentionDatabaseName, string backupName, UpdateLongTermRetentionBackupParameters parameters, System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
 
         /// <summary>
+        /// Lists the long term retention backups for a given location based on
+        /// resource group.
+        /// </summary>
+        /// <remarks>
+        /// Lists the long term retention backups for a given location based on
+        /// resource group.
+        /// </remarks>
+        /// <param name='resourceGroupName'>
+        /// The name of the resource group that contains the resource. You can obtain
+        /// this value from the Azure Resource Manager API or the portal.
+        /// </param>
+        /// <param name='locationName'>
+        /// The location of the database
+        /// </param>
+        /// <param name='onlyLatestPerDatabase'>
+        /// Whether or not to only get the latest backup for each database.
+        /// </param>
+        /// <param name='databaseState'>
+        /// Whether to query against just live databases, just deleted databases, or
+        /// all databases.
+        /// </param>
+        /// <param name='customHeaders'>
+        /// The headers that will be added to request.
+        /// </param>
+        /// <param name='cancellationToken'>
+        /// The cancellation token.
+        /// </param>
+        /// <exception cref="Microsoft.Rest.Azure.CloudException">
+        /// Thrown when the operation returned an invalid status code
+        /// </exception>
+        /// <exception cref="Microsoft.Rest.SerializationException">
+        /// Thrown when unable to deserialize the response
+        /// </exception>
+        System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse<Microsoft.Rest.Azure.IPage<LongTermRetentionBackup>>> ListByResourceGroupLocationWithHttpMessagesAsync(string resourceGroupName, string locationName, bool? onlyLatestPerDatabase = default(bool?), string databaseState = default(string), System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+
+        /// <summary>
+        /// Lists the long term retention backups for a given server based on resource
+        /// groups.
+        /// </summary>
+        /// <remarks>
+        /// Lists the long term retention backups for a given server based on resource
+        /// groups.
+        /// </remarks>
+        /// <param name='resourceGroupName'>
+        /// The name of the resource group that contains the resource. You can obtain
+        /// this value from the Azure Resource Manager API or the portal.
+        /// </param>
+        /// <param name='locationName'>
+        /// The location of the database
+        /// </param>
+        /// <param name='longTermRetentionServerName'>
+        /// The name of the server
+        /// </param>
+        /// <param name='onlyLatestPerDatabase'>
+        /// Whether or not to only get the latest backup for each database.
+        /// </param>
+        /// <param name='databaseState'>
+        /// Whether to query against just live databases, just deleted databases, or
+        /// all databases.
+        /// </param>
+        /// <param name='customHeaders'>
+        /// The headers that will be added to request.
+        /// </param>
+        /// <param name='cancellationToken'>
+        /// The cancellation token.
+        /// </param>
+        /// <exception cref="Microsoft.Rest.Azure.CloudException">
+        /// Thrown when the operation returned an invalid status code
+        /// </exception>
+        /// <exception cref="Microsoft.Rest.SerializationException">
+        /// Thrown when unable to deserialize the response
+        /// </exception>
+        System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse<Microsoft.Rest.Azure.IPage<LongTermRetentionBackup>>> ListByResourceGroupServerWithHttpMessagesAsync(string resourceGroupName, string locationName, string longTermRetentionServerName, bool? onlyLatestPerDatabase = default(bool?), string databaseState = default(string), System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+
+        /// <summary>
+        /// Lists all long term retention backups for a database based on a particular
+        /// resource group.
+        /// </summary>
+        /// <remarks>
+        /// Lists all long term retention backups for a database based on a particular
+        /// resource group.
+        /// </remarks>
+        /// <param name='resourceGroupName'>
+        /// The name of the resource group that contains the resource. You can obtain
+        /// this value from the Azure Resource Manager API or the portal.
+        /// </param>
+        /// <param name='locationName'>
+        /// The location of the database
+        /// </param>
+        /// <param name='longTermRetentionServerName'>
+        /// The name of the server
+        /// </param>
+        /// <param name='longTermRetentionDatabaseName'>
+        /// The name of the database
+        /// </param>
+        /// <param name='onlyLatestPerDatabase'>
+        /// Whether or not to only get the latest backup for each database.
+        /// </param>
+        /// <param name='databaseState'>
+        /// Whether to query against just live databases, just deleted databases, or
+        /// all databases.
+        /// </param>
+        /// <param name='customHeaders'>
+        /// The headers that will be added to request.
+        /// </param>
+        /// <param name='cancellationToken'>
+        /// The cancellation token.
+        /// </param>
+        /// <exception cref="Microsoft.Rest.Azure.CloudException">
+        /// Thrown when the operation returned an invalid status code
+        /// </exception>
+        /// <exception cref="Microsoft.Rest.SerializationException">
+        /// Thrown when unable to deserialize the response
+        /// </exception>
+        System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse<Microsoft.Rest.Azure.IPage<LongTermRetentionBackup>>> ListByResourceGroupDatabaseWithHttpMessagesAsync(string resourceGroupName, string locationName, string longTermRetentionServerName, string longTermRetentionDatabaseName, bool? onlyLatestPerDatabase = default(bool?), string databaseState = default(string), System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+
+        /// <summary>
         /// Gets a long term retention backup.
         /// </summary>
         /// <remarks>
         /// Gets a long term retention backup.
         /// </remarks>
+        /// <param name='resourceGroupName'>
+        /// The name of the resource group that contains the resource. You can obtain
+        /// this value from the Azure Resource Manager API or the portal.
+        /// </param>
         /// <param name='locationName'>
         /// The location of the database.
         /// </param>
@@ -113,7 +429,7 @@ namespace Microsoft.Azure.Management.Sql
         /// <exception cref="Microsoft.Rest.SerializationException">
         /// Thrown when unable to deserialize the response
         /// </exception>
-        System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse<LongTermRetentionBackup>> GetWithHttpMessagesAsync(string locationName, string longTermRetentionServerName, string longTermRetentionDatabaseName, string backupName, System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse<LongTermRetentionBackup>> GetByResourceGroupWithHttpMessagesAsync(string resourceGroupName, string locationName, string longTermRetentionServerName, string longTermRetentionDatabaseName, string backupName, System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
 
         /// <summary>
         /// Deletes a long term retention backup.
@@ -121,6 +437,10 @@ namespace Microsoft.Azure.Management.Sql
         /// <remarks>
         /// Deletes a long term retention backup.
         /// </remarks>
+        /// <param name='resourceGroupName'>
+        /// The name of the resource group that contains the resource. You can obtain
+        /// this value from the Azure Resource Manager API or the portal.
+        /// </param>
         /// <param name='locationName'>
         /// The location of the database
         /// </param>
@@ -142,57 +462,32 @@ namespace Microsoft.Azure.Management.Sql
         /// <exception cref="Microsoft.Rest.Azure.CloudException">
         /// Thrown when the operation returned an invalid status code
         /// </exception>
-        System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse> DeleteWithHttpMessagesAsync(string locationName, string longTermRetentionServerName, string longTermRetentionDatabaseName, string backupName, System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse> DeleteByResourceGroupWithHttpMessagesAsync(string resourceGroupName, string locationName, string longTermRetentionServerName, string longTermRetentionDatabaseName, string backupName, System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
 
         /// <summary>
-        /// Lists all long term retention backups for a database.
+        /// Change a long term retention backup access tier.
         /// </summary>
         /// <remarks>
-        /// Lists all long term retention backups for a database.
+        /// Change a long term retention backup access tier.
         /// </remarks>
+        /// <param name='resourceGroupName'>
+        /// The name of the resource group that contains the resource. You can obtain
+        /// this value from the Azure Resource Manager API or the portal.
+        /// </param>
         /// <param name='locationName'>
-        /// The location of the database
+        /// 
         /// </param>
         /// <param name='longTermRetentionServerName'>
-        /// The name of the server
+        /// 
         /// </param>
         /// <param name='longTermRetentionDatabaseName'>
-        /// The name of the database
+        /// 
         /// </param>
-        /// <param name='onlyLatestPerDatabase'>
-        /// Whether or not to only get the latest backup for each database.
+        /// <param name='backupName'>
+        /// 
         /// </param>
-        /// <param name='databaseState'>
-        /// Whether to query against just live databases, just deleted databases, or all databases.
-        /// </param>
-        /// <param name='customHeaders'>
-        /// The headers that will be added to request.
-        /// </param>
-        /// <param name='cancellationToken'>
-        /// The cancellation token.
-        /// </param>
-        /// <exception cref="Microsoft.Rest.Azure.CloudException">
-        /// Thrown when the operation returned an invalid status code
-        /// </exception>
-        /// <exception cref="Microsoft.Rest.SerializationException">
-        /// Thrown when unable to deserialize the response
-        /// </exception>
-        System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse<Microsoft.Rest.Azure.IPage<LongTermRetentionBackup>>> ListByDatabaseWithHttpMessagesAsync(string locationName, string longTermRetentionServerName, string longTermRetentionDatabaseName, bool? onlyLatestPerDatabase = default(bool?), string databaseState = default(string), System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
-
-        /// <summary>
-        /// Lists the long term retention backups for a given location.
-        /// </summary>
-        /// <remarks>
-        /// Lists the long term retention backups for a given location.
-        /// </remarks>
-        /// <param name='locationName'>
-        /// The location of the database
-        /// </param>
-        /// <param name='onlyLatestPerDatabase'>
-        /// Whether or not to only get the latest backup for each database.
-        /// </param>
-        /// <param name='databaseState'>
-        /// Whether to query against just live databases, just deleted databases, or all databases.
+        /// <param name='parameters'>
+        /// 
         /// </param>
         /// <param name='customHeaders'>
         /// The headers that will be added to request.
@@ -206,39 +501,7 @@ namespace Microsoft.Azure.Management.Sql
         /// <exception cref="Microsoft.Rest.SerializationException">
         /// Thrown when unable to deserialize the response
         /// </exception>
-        System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse<Microsoft.Rest.Azure.IPage<LongTermRetentionBackup>>> ListByLocationWithHttpMessagesAsync(string locationName, bool? onlyLatestPerDatabase = default(bool?), string databaseState = default(string), System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
-
-        /// <summary>
-        /// Lists the long term retention backups for a given server.
-        /// </summary>
-        /// <remarks>
-        /// Lists the long term retention backups for a given server.
-        /// </remarks>
-        /// <param name='locationName'>
-        /// The location of the database
-        /// </param>
-        /// <param name='longTermRetentionServerName'>
-        /// The name of the server
-        /// </param>
-        /// <param name='onlyLatestPerDatabase'>
-        /// Whether or not to only get the latest backup for each database.
-        /// </param>
-        /// <param name='databaseState'>
-        /// Whether to query against just live databases, just deleted databases, or all databases.
-        /// </param>
-        /// <param name='customHeaders'>
-        /// The headers that will be added to request.
-        /// </param>
-        /// <param name='cancellationToken'>
-        /// The cancellation token.
-        /// </param>
-        /// <exception cref="Microsoft.Rest.Azure.CloudException">
-        /// Thrown when the operation returned an invalid status code
-        /// </exception>
-        /// <exception cref="Microsoft.Rest.SerializationException">
-        /// Thrown when unable to deserialize the response
-        /// </exception>
-        System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse<Microsoft.Rest.Azure.IPage<LongTermRetentionBackup>>> ListByServerWithHttpMessagesAsync(string locationName, string longTermRetentionServerName, bool? onlyLatestPerDatabase = default(bool?), string databaseState = default(string), System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse<LongTermRetentionBackup>> ChangeAccessTierByResourceGroupWithHttpMessagesAsync(string resourceGroupName, string locationName, string longTermRetentionServerName, string longTermRetentionDatabaseName, string backupName, ChangeLongTermRetentionBackupAccessTierParameters parameters, System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
 
         /// <summary>
         /// Copy an existing long term retention backup to a different server.
@@ -247,7 +510,8 @@ namespace Microsoft.Azure.Management.Sql
         /// Copy an existing long term retention backup to a different server.
         /// </remarks>
         /// <param name='resourceGroupName'>
-        /// The name of the resource group that contains the resource. You can obtain this value from the Azure Resource Manager API or the portal.
+        /// The name of the resource group that contains the resource. You can obtain
+        /// this value from the Azure Resource Manager API or the portal.
         /// </param>
         /// <param name='locationName'>
         /// The location of the database.
@@ -285,7 +549,8 @@ namespace Microsoft.Azure.Management.Sql
         /// Updates an existing long term retention backup.
         /// </remarks>
         /// <param name='resourceGroupName'>
-        /// The name of the resource group that contains the resource. You can obtain this value from the Azure Resource Manager API or the portal.
+        /// The name of the resource group that contains the resource. You can obtain
+        /// this value from the Azure Resource Manager API or the portal.
         /// </param>
         /// <param name='locationName'>
         /// The location of the database.
@@ -317,49 +582,11 @@ namespace Microsoft.Azure.Management.Sql
         System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse<LongTermRetentionBackupOperationResult>> UpdateByResourceGroupWithHttpMessagesAsync(string resourceGroupName, string locationName, string longTermRetentionServerName, string longTermRetentionDatabaseName, string backupName, UpdateLongTermRetentionBackupParameters parameters, System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
 
         /// <summary>
-        /// Gets a long term retention backup.
-        /// </summary>
-        /// <remarks>
-        /// Gets a long term retention backup.
-        /// </remarks>
-        /// <param name='resourceGroupName'>
-        /// The name of the resource group that contains the resource. You can obtain this value from the Azure Resource Manager API or the portal.
-        /// </param>
-        /// <param name='locationName'>
-        /// The location of the database.
-        /// </param>
-        /// <param name='longTermRetentionServerName'>
-        /// The name of the server
-        /// </param>
-        /// <param name='longTermRetentionDatabaseName'>
-        /// The name of the database
-        /// </param>
-        /// <param name='backupName'>
-        /// The backup name.
-        /// </param>
-        /// <param name='customHeaders'>
-        /// The headers that will be added to request.
-        /// </param>
-        /// <param name='cancellationToken'>
-        /// The cancellation token.
-        /// </param>
-        /// <exception cref="Microsoft.Rest.Azure.CloudException">
-        /// Thrown when the operation returned an invalid status code
-        /// </exception>
-        /// <exception cref="Microsoft.Rest.SerializationException">
-        /// Thrown when unable to deserialize the response
-        /// </exception>
-        System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse<LongTermRetentionBackup>> GetByResourceGroupWithHttpMessagesAsync(string resourceGroupName, string locationName, string longTermRetentionServerName, string longTermRetentionDatabaseName, string backupName, System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
-
-        /// <summary>
         /// Deletes a long term retention backup.
         /// </summary>
         /// <remarks>
         /// Deletes a long term retention backup.
         /// </remarks>
-        /// <param name='resourceGroupName'>
-        /// The name of the resource group that contains the resource. You can obtain this value from the Azure Resource Manager API or the portal.
-        /// </param>
         /// <param name='locationName'>
         /// The location of the database
         /// </param>
@@ -381,63 +608,28 @@ namespace Microsoft.Azure.Management.Sql
         /// <exception cref="Microsoft.Rest.Azure.CloudException">
         /// Thrown when the operation returned an invalid status code
         /// </exception>
-        System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse> DeleteByResourceGroupWithHttpMessagesAsync(string resourceGroupName, string locationName, string longTermRetentionServerName, string longTermRetentionDatabaseName, string backupName, System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse> BeginDeleteWithHttpMessagesAsync(string locationName, string longTermRetentionServerName, string longTermRetentionDatabaseName, string backupName, System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
 
         /// <summary>
-        /// Lists all long term retention backups for a database.
+        /// Change a long term retention backup access tier.
         /// </summary>
         /// <remarks>
-        /// Lists all long term retention backups for a database.
+        /// Change a long term retention backup access tier.
         /// </remarks>
-        /// <param name='resourceGroupName'>
-        /// The name of the resource group that contains the resource. You can obtain this value from the Azure Resource Manager API or the portal.
-        /// </param>
         /// <param name='locationName'>
-        /// The location of the database
+        /// 
         /// </param>
         /// <param name='longTermRetentionServerName'>
-        /// The name of the server
+        /// 
         /// </param>
         /// <param name='longTermRetentionDatabaseName'>
-        /// The name of the database
+        /// 
         /// </param>
-        /// <param name='onlyLatestPerDatabase'>
-        /// Whether or not to only get the latest backup for each database.
+        /// <param name='backupName'>
+        /// 
         /// </param>
-        /// <param name='databaseState'>
-        /// Whether to query against just live databases, just deleted databases, or all databases.
-        /// </param>
-        /// <param name='customHeaders'>
-        /// The headers that will be added to request.
-        /// </param>
-        /// <param name='cancellationToken'>
-        /// The cancellation token.
-        /// </param>
-        /// <exception cref="Microsoft.Rest.Azure.CloudException">
-        /// Thrown when the operation returned an invalid status code
-        /// </exception>
-        /// <exception cref="Microsoft.Rest.SerializationException">
-        /// Thrown when unable to deserialize the response
-        /// </exception>
-        System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse<Microsoft.Rest.Azure.IPage<LongTermRetentionBackup>>> ListByResourceGroupDatabaseWithHttpMessagesAsync(string resourceGroupName, string locationName, string longTermRetentionServerName, string longTermRetentionDatabaseName, bool? onlyLatestPerDatabase = default(bool?), string databaseState = default(string), System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
-
-        /// <summary>
-        /// Lists the long term retention backups for a given location.
-        /// </summary>
-        /// <remarks>
-        /// Lists the long term retention backups for a given location.
-        /// </remarks>
-        /// <param name='resourceGroupName'>
-        /// The name of the resource group that contains the resource. You can obtain this value from the Azure Resource Manager API or the portal.
-        /// </param>
-        /// <param name='locationName'>
-        /// The location of the database
-        /// </param>
-        /// <param name='onlyLatestPerDatabase'>
-        /// Whether or not to only get the latest backup for each database.
-        /// </param>
-        /// <param name='databaseState'>
-        /// Whether to query against just live databases, just deleted databases, or all databases.
+        /// <param name='parameters'>
+        /// 
         /// </param>
         /// <param name='customHeaders'>
         /// The headers that will be added to request.
@@ -451,42 +643,7 @@ namespace Microsoft.Azure.Management.Sql
         /// <exception cref="Microsoft.Rest.SerializationException">
         /// Thrown when unable to deserialize the response
         /// </exception>
-        System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse<Microsoft.Rest.Azure.IPage<LongTermRetentionBackup>>> ListByResourceGroupLocationWithHttpMessagesAsync(string resourceGroupName, string locationName, bool? onlyLatestPerDatabase = default(bool?), string databaseState = default(string), System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
-
-        /// <summary>
-        /// Lists the long term retention backups for a given server.
-        /// </summary>
-        /// <remarks>
-        /// Lists the long term retention backups for a given server.
-        /// </remarks>
-        /// <param name='resourceGroupName'>
-        /// The name of the resource group that contains the resource. You can obtain this value from the Azure Resource Manager API or the portal.
-        /// </param>
-        /// <param name='locationName'>
-        /// The location of the database
-        /// </param>
-        /// <param name='longTermRetentionServerName'>
-        /// The name of the server
-        /// </param>
-        /// <param name='onlyLatestPerDatabase'>
-        /// Whether or not to only get the latest backup for each database.
-        /// </param>
-        /// <param name='databaseState'>
-        /// Whether to query against just live databases, just deleted databases, or all databases.
-        /// </param>
-        /// <param name='customHeaders'>
-        /// The headers that will be added to request.
-        /// </param>
-        /// <param name='cancellationToken'>
-        /// The cancellation token.
-        /// </param>
-        /// <exception cref="Microsoft.Rest.Azure.CloudException">
-        /// Thrown when the operation returned an invalid status code
-        /// </exception>
-        /// <exception cref="Microsoft.Rest.SerializationException">
-        /// Thrown when unable to deserialize the response
-        /// </exception>
-        System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse<Microsoft.Rest.Azure.IPage<LongTermRetentionBackup>>> ListByResourceGroupServerWithHttpMessagesAsync(string resourceGroupName, string locationName, string longTermRetentionServerName, bool? onlyLatestPerDatabase = default(bool?), string databaseState = default(string), System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse<LongTermRetentionBackup>> BeginChangeAccessTierWithHttpMessagesAsync(string locationName, string longTermRetentionServerName, string longTermRetentionDatabaseName, string backupName, ChangeLongTermRetentionBackupAccessTierParameters parameters, System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
 
         /// <summary>
         /// Copy an existing long term retention backup.
@@ -564,6 +721,10 @@ namespace Microsoft.Azure.Management.Sql
         /// <remarks>
         /// Deletes a long term retention backup.
         /// </remarks>
+        /// <param name='resourceGroupName'>
+        /// The name of the resource group that contains the resource. You can obtain
+        /// this value from the Azure Resource Manager API or the portal.
+        /// </param>
         /// <param name='locationName'>
         /// The location of the database
         /// </param>
@@ -585,7 +746,46 @@ namespace Microsoft.Azure.Management.Sql
         /// <exception cref="Microsoft.Rest.Azure.CloudException">
         /// Thrown when the operation returned an invalid status code
         /// </exception>
-        System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse> BeginDeleteWithHttpMessagesAsync(string locationName, string longTermRetentionServerName, string longTermRetentionDatabaseName, string backupName, System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse> BeginDeleteByResourceGroupWithHttpMessagesAsync(string resourceGroupName, string locationName, string longTermRetentionServerName, string longTermRetentionDatabaseName, string backupName, System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+
+        /// <summary>
+        /// Change a long term retention backup access tier.
+        /// </summary>
+        /// <remarks>
+        /// Change a long term retention backup access tier.
+        /// </remarks>
+        /// <param name='resourceGroupName'>
+        /// The name of the resource group that contains the resource. You can obtain
+        /// this value from the Azure Resource Manager API or the portal.
+        /// </param>
+        /// <param name='locationName'>
+        /// 
+        /// </param>
+        /// <param name='longTermRetentionServerName'>
+        /// 
+        /// </param>
+        /// <param name='longTermRetentionDatabaseName'>
+        /// 
+        /// </param>
+        /// <param name='backupName'>
+        /// 
+        /// </param>
+        /// <param name='parameters'>
+        /// 
+        /// </param>
+        /// <param name='customHeaders'>
+        /// The headers that will be added to request.
+        /// </param>
+        /// <param name='cancellationToken'>
+        /// The cancellation token.
+        /// </param>
+        /// <exception cref="Microsoft.Rest.Azure.CloudException">
+        /// Thrown when the operation returned an invalid status code
+        /// </exception>
+        /// <exception cref="Microsoft.Rest.SerializationException">
+        /// Thrown when unable to deserialize the response
+        /// </exception>
+        System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse<LongTermRetentionBackup>> BeginChangeAccessTierByResourceGroupWithHttpMessagesAsync(string resourceGroupName, string locationName, string longTermRetentionServerName, string longTermRetentionDatabaseName, string backupName, ChangeLongTermRetentionBackupAccessTierParameters parameters, System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
 
         /// <summary>
         /// Copy an existing long term retention backup to a different server.
@@ -594,7 +794,8 @@ namespace Microsoft.Azure.Management.Sql
         /// Copy an existing long term retention backup to a different server.
         /// </remarks>
         /// <param name='resourceGroupName'>
-        /// The name of the resource group that contains the resource. You can obtain this value from the Azure Resource Manager API or the portal.
+        /// The name of the resource group that contains the resource. You can obtain
+        /// this value from the Azure Resource Manager API or the portal.
         /// </param>
         /// <param name='locationName'>
         /// The location of the database.
@@ -632,7 +833,8 @@ namespace Microsoft.Azure.Management.Sql
         /// Updates an existing long term retention backup.
         /// </remarks>
         /// <param name='resourceGroupName'>
-        /// The name of the resource group that contains the resource. You can obtain this value from the Azure Resource Manager API or the portal.
+        /// The name of the resource group that contains the resource. You can obtain
+        /// this value from the Azure Resource Manager API or the portal.
         /// </param>
         /// <param name='locationName'>
         /// The location of the database.
@@ -662,61 +864,6 @@ namespace Microsoft.Azure.Management.Sql
         /// Thrown when unable to deserialize the response
         /// </exception>
         System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse<LongTermRetentionBackupOperationResult>> BeginUpdateByResourceGroupWithHttpMessagesAsync(string resourceGroupName, string locationName, string longTermRetentionServerName, string longTermRetentionDatabaseName, string backupName, UpdateLongTermRetentionBackupParameters parameters, System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
-
-        /// <summary>
-        /// Deletes a long term retention backup.
-        /// </summary>
-        /// <remarks>
-        /// Deletes a long term retention backup.
-        /// </remarks>
-        /// <param name='resourceGroupName'>
-        /// The name of the resource group that contains the resource. You can obtain this value from the Azure Resource Manager API or the portal.
-        /// </param>
-        /// <param name='locationName'>
-        /// The location of the database
-        /// </param>
-        /// <param name='longTermRetentionServerName'>
-        /// The name of the server
-        /// </param>
-        /// <param name='longTermRetentionDatabaseName'>
-        /// The name of the database
-        /// </param>
-        /// <param name='backupName'>
-        /// The backup name.
-        /// </param>
-        /// <param name='customHeaders'>
-        /// The headers that will be added to request.
-        /// </param>
-        /// <param name='cancellationToken'>
-        /// The cancellation token.
-        /// </param>
-        /// <exception cref="Microsoft.Rest.Azure.CloudException">
-        /// Thrown when the operation returned an invalid status code
-        /// </exception>
-        System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse> BeginDeleteByResourceGroupWithHttpMessagesAsync(string resourceGroupName, string locationName, string longTermRetentionServerName, string longTermRetentionDatabaseName, string backupName, System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
-
-        /// <summary>
-        /// Lists all long term retention backups for a database.
-        /// </summary>
-        /// <remarks>
-        /// Lists all long term retention backups for a database.
-        /// </remarks>
-        /// <param name='nextPageLink'>
-        /// The NextLink from the previous successful call to List operation.
-        /// </param>
-        /// <param name='customHeaders'>
-        /// The headers that will be added to request.
-        /// </param>
-        /// <param name='cancellationToken'>
-        /// The cancellation token.
-        /// </param>
-        /// <exception cref="Microsoft.Rest.Azure.CloudException">
-        /// Thrown when the operation returned an invalid status code
-        /// </exception>
-        /// <exception cref="Microsoft.Rest.SerializationException">
-        /// Thrown when unable to deserialize the response
-        /// </exception>
-        System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse<Microsoft.Rest.Azure.IPage<LongTermRetentionBackup>>> ListByDatabaseNextWithHttpMessagesAsync(string nextPageLink, System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
 
         /// <summary>
         /// Lists the long term retention backups for a given location.
@@ -785,13 +932,15 @@ namespace Microsoft.Azure.Management.Sql
         /// <exception cref="Microsoft.Rest.SerializationException">
         /// Thrown when unable to deserialize the response
         /// </exception>
-        System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse<Microsoft.Rest.Azure.IPage<LongTermRetentionBackup>>> ListByResourceGroupDatabaseNextWithHttpMessagesAsync(string nextPageLink, System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse<Microsoft.Rest.Azure.IPage<LongTermRetentionBackup>>> ListByDatabaseNextWithHttpMessagesAsync(string nextPageLink, System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
 
         /// <summary>
-        /// Lists the long term retention backups for a given location.
+        /// Lists the long term retention backups for a given location based on
+        /// resource group.
         /// </summary>
         /// <remarks>
-        /// Lists the long term retention backups for a given location.
+        /// Lists the long term retention backups for a given location based on
+        /// resource group.
         /// </remarks>
         /// <param name='nextPageLink'>
         /// The NextLink from the previous successful call to List operation.
@@ -811,10 +960,12 @@ namespace Microsoft.Azure.Management.Sql
         System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse<Microsoft.Rest.Azure.IPage<LongTermRetentionBackup>>> ListByResourceGroupLocationNextWithHttpMessagesAsync(string nextPageLink, System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
 
         /// <summary>
-        /// Lists the long term retention backups for a given server.
+        /// Lists the long term retention backups for a given server based on resource
+        /// groups.
         /// </summary>
         /// <remarks>
-        /// Lists the long term retention backups for a given server.
+        /// Lists the long term retention backups for a given server based on resource
+        /// groups.
         /// </remarks>
         /// <param name='nextPageLink'>
         /// The NextLink from the previous successful call to List operation.
@@ -832,6 +983,31 @@ namespace Microsoft.Azure.Management.Sql
         /// Thrown when unable to deserialize the response
         /// </exception>
         System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse<Microsoft.Rest.Azure.IPage<LongTermRetentionBackup>>> ListByResourceGroupServerNextWithHttpMessagesAsync(string nextPageLink, System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+
+        /// <summary>
+        /// Lists all long term retention backups for a database based on a particular
+        /// resource group.
+        /// </summary>
+        /// <remarks>
+        /// Lists all long term retention backups for a database based on a particular
+        /// resource group.
+        /// </remarks>
+        /// <param name='nextPageLink'>
+        /// The NextLink from the previous successful call to List operation.
+        /// </param>
+        /// <param name='customHeaders'>
+        /// The headers that will be added to request.
+        /// </param>
+        /// <param name='cancellationToken'>
+        /// The cancellation token.
+        /// </param>
+        /// <exception cref="Microsoft.Rest.Azure.CloudException">
+        /// Thrown when the operation returned an invalid status code
+        /// </exception>
+        /// <exception cref="Microsoft.Rest.SerializationException">
+        /// Thrown when unable to deserialize the response
+        /// </exception>
+        System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse<Microsoft.Rest.Azure.IPage<LongTermRetentionBackup>>> ListByResourceGroupDatabaseNextWithHttpMessagesAsync(string nextPageLink, System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
 
     }
 }

@@ -25,7 +25,7 @@ namespace Microsoft.Azure.Management.Sql.Models
         /// </summary>
 
         /// <param name="storageKeyType">Storage key type.
-        /// Possible values include: 'SharedAccessKey', 'StorageAccessKey'</param>
+        /// Possible values include: &#39;SharedAccessKey&#39;, &#39;StorageAccessKey&#39;</param>
 
         /// <param name="storageKey">Storage key.
         /// </param>

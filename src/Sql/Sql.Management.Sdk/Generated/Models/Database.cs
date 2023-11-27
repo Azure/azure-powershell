@@ -87,18 +87,18 @@ namespace Microsoft.Azure.Management.Sql.Models
         /// specified as the recovery point resource ID.
         /// Copy, Secondary, and RestoreLongTermRetentionBackup are not supported for
         /// DataWarehouse edition.
-        /// Possible values include: 'Default', 'Copy', 'Secondary',
-        /// 'PointInTimeRestore', 'Restore', 'Recovery', 'RestoreExternalBackup',
-        /// 'RestoreExternalBackupSecondary', 'RestoreLongTermRetentionBackup',
-        /// 'OnlineSecondary'</param>
+        /// Possible values include: &#39;Default&#39;, &#39;Copy&#39;, &#39;Secondary&#39;,
+        /// &#39;PointInTimeRestore&#39;, &#39;Restore&#39;, &#39;Recovery&#39;, &#39;RestoreExternalBackup&#39;,
+        /// &#39;RestoreExternalBackupSecondary&#39;, &#39;RestoreLongTermRetentionBackup&#39;,
+        /// &#39;OnlineSecondary&#39;</param>
 
         /// <param name="sampleName">The name of the sample schema to apply when creating this database.
-        /// Possible values include: 'AdventureWorksLT', 'WideWorldImportersStd',
-        /// 'WideWorldImportersFull'</param>
+        /// Possible values include: &#39;AdventureWorksLT&#39;, &#39;WideWorldImportersStd&#39;,
+        /// &#39;WideWorldImportersFull&#39;</param>
 
         /// <param name="secondaryType">The secondary type of the database if it is a secondary.  Valid values are
         /// Geo, Named and Standby.
-        /// Possible values include: 'Geo', 'Named', 'Standby'</param>
+        /// Possible values include: &#39;Geo&#39;, &#39;Named&#39;, &#39;Standby&#39;</param>
 
         /// <param name="collation">The collation of the database.
         /// </param>
@@ -114,12 +114,12 @@ namespace Microsoft.Azure.Management.Sql.Models
         /// </param>
 
         /// <param name="status">The status of the database.
-        /// Possible values include: 'Online', 'Restoring', 'RecoveryPending',
-        /// 'Recovering', 'Suspect', 'Offline', 'Standby', 'Shutdown', 'EmergencyMode',
-        /// 'AutoClosed', 'Copying', 'Creating', 'Inaccessible', 'OfflineSecondary',
-        /// 'Pausing', 'Paused', 'Resuming', 'Scaling',
-        /// 'OfflineChangingDwPerformanceTiers', 'OnlineChangingDwPerformanceTiers',
-        /// 'Disabled', 'Stopping', 'Stopped', 'Starting'</param>
+        /// Possible values include: &#39;Online&#39;, &#39;Restoring&#39;, &#39;RecoveryPending&#39;,
+        /// &#39;Recovering&#39;, &#39;Suspect&#39;, &#39;Offline&#39;, &#39;Standby&#39;, &#39;Shutdown&#39;, &#39;EmergencyMode&#39;,
+        /// &#39;AutoClosed&#39;, &#39;Copying&#39;, &#39;Creating&#39;, &#39;Inaccessible&#39;, &#39;OfflineSecondary&#39;,
+        /// &#39;Pausing&#39;, &#39;Paused&#39;, &#39;Resuming&#39;, &#39;Scaling&#39;,
+        /// &#39;OfflineChangingDwPerformanceTiers&#39;, &#39;OnlineChangingDwPerformanceTiers&#39;,
+        /// &#39;Disabled&#39;, &#39;Stopping&#39;, &#39;Stopped&#39;, &#39;Starting&#39;</param>
 
         /// <param name="databaseId">The ID of the database.
         /// </param>
@@ -163,7 +163,7 @@ namespace Microsoft.Azure.Management.Sql.Models
         /// </param>
 
         /// <param name="catalogCollation">Collation of the metadata catalog.
-        /// Possible values include: 'DATABASE_DEFAULT', 'SQL_Latin1_General_CP1_CI_AS'</param>
+        /// Possible values include: &#39;DATABASE_DEFAULT&#39;, &#39;SQL_Latin1_General_CP1_CI_AS&#39;</param>
 
         /// <param name="zoneRedundant">Whether or not this database is zone redundant, which means the replicas of
         /// this database will be spread across multiple availability zones.
@@ -172,7 +172,7 @@ namespace Microsoft.Azure.Management.Sql.Models
         /// <param name="licenseType">The license type to apply for this database. `LicenseIncluded` if you need
         /// a license, or `BasePrice` if you have a license and are eligible for the
         /// Azure Hybrid Benefit.
-        /// Possible values include: 'LicenseIncluded', 'BasePrice'</param>
+        /// Possible values include: &#39;LicenseIncluded&#39;, &#39;BasePrice&#39;</param>
 
         /// <param name="maxLogSizeBytes">The max log size for this database.
         /// </param>
@@ -185,7 +185,7 @@ namespace Microsoft.Azure.Management.Sql.Models
         /// application intent set to readonly in their connection string may be routed
         /// to a readonly secondary replica in the same region. Not applicable to a
         /// Hyperscale database within an elastic pool.
-        /// Possible values include: 'Enabled', 'Disabled'</param>
+        /// Possible values include: &#39;Enabled&#39;, &#39;Disabled&#39;</param>
 
         /// <param name="highAvailabilityReplicaCount">The number of secondary replicas associated with the database that are used
         /// to provide high availability. Not applicable to a Hyperscale database
@@ -200,10 +200,10 @@ namespace Microsoft.Azure.Management.Sql.Models
         /// </param>
 
         /// <param name="currentBackupStorageRedundancy">The storage account type used to store backups for this database.
-        /// Possible values include: 'Geo', 'Local', 'Zone', 'GeoZone'</param>
+        /// Possible values include: &#39;Geo&#39;, &#39;Local&#39;, &#39;Zone&#39;, &#39;GeoZone&#39;</param>
 
         /// <param name="requestedBackupStorageRedundancy">The storage account type to be used to store backups for this database.
-        /// Possible values include: 'Geo', 'Local', 'Zone', 'GeoZone'</param>
+        /// Possible values include: &#39;Geo&#39;, &#39;Local&#39;, &#39;Zone&#39;, &#39;GeoZone&#39;</param>
 
         /// <param name="minCapacity">Minimal capacity that database will always have allocated, if not paused
         /// </param>
@@ -239,7 +239,7 @@ namespace Microsoft.Azure.Management.Sql.Models
         /// </param>
 
         /// <param name="preferredEnclaveType">Type of enclave requested on the database i.e. Default or VBS enclaves.
-        /// Possible values include: 'Default', 'VBS'</param>
+        /// Possible values include: &#39;Default&#39;, &#39;VBS&#39;</param>
 
         /// <param name="useFreeLimit">Whether or not the database uses free monthly limits. Allowed on one
         /// database in a subscription.
@@ -251,7 +251,7 @@ namespace Microsoft.Azure.Management.Sql.Models
         /// for remainder of the month.
         /// BillForUsage: The database will continue to be online upon exhaustion of
         /// free limits and any overage will be billed.
-        /// Possible values include: 'AutoPause', 'BillOverUsage'</param>
+        /// Possible values include: &#39;AutoPause&#39;, &#39;BillOverUsage&#39;</param>
 
         /// <param name="sourceResourceId">The resource identifier of the source associated with the create operation
         /// of this database.
@@ -297,7 +297,7 @@ namespace Microsoft.Azure.Management.Sql.Models
         /// </param>
 
         /// <param name="availabilityZone">Specifies the availability zone the database is pinned to.
-        /// Possible values include: 'NoPreference', '1', '2', '3'</param>
+        /// Possible values include: &#39;NoPreference&#39;, &#39;1&#39;, &#39;2&#39;, &#39;3&#39;</param>
 
         /// <param name="encryptionProtectorAutoRotation">The flag to enable or disable auto rotation of database encryption
         /// protector AKV key.

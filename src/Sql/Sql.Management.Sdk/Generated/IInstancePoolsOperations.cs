@@ -40,7 +40,8 @@ namespace Microsoft.Azure.Management.Sql
         /// Gets a list of instance pools in the resource group
         /// </remarks>
         /// <param name='resourceGroupName'>
-        /// The name of the resource group that contains the resource. You can obtain this value from the Azure Resource Manager API or the portal.
+        /// The name of the resource group that contains the resource. You can obtain
+        /// this value from the Azure Resource Manager API or the portal.
         /// </param>
         /// <param name='customHeaders'>
         /// The headers that will be added to request.
@@ -63,7 +64,8 @@ namespace Microsoft.Azure.Management.Sql
         /// Gets an instance pool.
         /// </remarks>
         /// <param name='resourceGroupName'>
-        /// The name of the resource group that contains the resource. You can obtain this value from the Azure Resource Manager API or the portal.
+        /// The name of the resource group that contains the resource. You can obtain
+        /// this value from the Azure Resource Manager API or the portal.
         /// </param>
         /// <param name='instancePoolName'>
         /// The name of the instance pool to be retrieved.
@@ -89,7 +91,8 @@ namespace Microsoft.Azure.Management.Sql
         /// Creates or updates an instance pool.
         /// </remarks>
         /// <param name='resourceGroupName'>
-        /// The name of the resource group that contains the resource. You can obtain this value from the Azure Resource Manager API or the portal.
+        /// The name of the resource group that contains the resource. You can obtain
+        /// this value from the Azure Resource Manager API or the portal.
         /// </param>
         /// <param name='instancePoolName'>
         /// The name of the instance pool to be created or updated.
@@ -118,7 +121,8 @@ namespace Microsoft.Azure.Management.Sql
         /// Deletes an instance pool
         /// </remarks>
         /// <param name='resourceGroupName'>
-        /// The name of the resource group that contains the resource. You can obtain this value from the Azure Resource Manager API or the portal.
+        /// The name of the resource group that contains the resource. You can obtain
+        /// this value from the Azure Resource Manager API or the portal.
         /// </param>
         /// <param name='instancePoolName'>
         /// The name of the instance pool to be deleted
@@ -141,7 +145,8 @@ namespace Microsoft.Azure.Management.Sql
         /// Updates an instance pool.
         /// </remarks>
         /// <param name='resourceGroupName'>
-        /// The name of the resource group that contains the resource. You can obtain this value from the Azure Resource Manager API or the portal.
+        /// The name of the resource group that contains the resource. You can obtain
+        /// this value from the Azure Resource Manager API or the portal.
         /// </param>
         /// <param name='instancePoolName'>
         /// The name of the instance pool to be updated.
@@ -170,7 +175,8 @@ namespace Microsoft.Azure.Management.Sql
         /// Creates or updates an instance pool.
         /// </remarks>
         /// <param name='resourceGroupName'>
-        /// The name of the resource group that contains the resource. You can obtain this value from the Azure Resource Manager API or the portal.
+        /// The name of the resource group that contains the resource. You can obtain
+        /// this value from the Azure Resource Manager API or the portal.
         /// </param>
         /// <param name='instancePoolName'>
         /// The name of the instance pool to be created or updated.
@@ -199,7 +205,8 @@ namespace Microsoft.Azure.Management.Sql
         /// Deletes an instance pool
         /// </remarks>
         /// <param name='resourceGroupName'>
-        /// The name of the resource group that contains the resource. You can obtain this value from the Azure Resource Manager API or the portal.
+        /// The name of the resource group that contains the resource. You can obtain
+        /// this value from the Azure Resource Manager API or the portal.
         /// </param>
         /// <param name='instancePoolName'>
         /// The name of the instance pool to be deleted
@@ -222,7 +229,8 @@ namespace Microsoft.Azure.Management.Sql
         /// Updates an instance pool.
         /// </remarks>
         /// <param name='resourceGroupName'>
-        /// The name of the resource group that contains the resource. You can obtain this value from the Azure Resource Manager API or the portal.
+        /// The name of the resource group that contains the resource. You can obtain
+        /// this value from the Azure Resource Manager API or the portal.
         /// </param>
         /// <param name='instancePoolName'>
         /// The name of the instance pool to be updated.
