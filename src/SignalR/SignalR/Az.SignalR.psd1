@@ -57,21 +57,21 @@ RequiredModules = @(@{ModuleName = 'Az.Accounts'; ModuleVersion = '2.12.3'; })
 
 # Assemblies that must be loaded prior to importing this module
 RequiredAssemblies = 'Microsoft.Azure.Management.SignalR.dll', 
-               'SignalR.Autorest\bin\Az.SignalR.private.dll'
+               'SignalR.Autorest/bin/Az.SignalR.private.dll'
 
 # Script files (.ps1) that are run in the caller's environment prior to importing this module.
-# ScriptsToProcess = @()
+ScriptsToProcess = @()
 
 # Type files (.ps1xml) to be loaded when importing this module
-# TypesToProcess = @()
+TypesToProcess = @()
 
 # Format files (.ps1xml) to be loaded when importing this module
-FormatsToProcess = 'SignalR.format.ps1xml', 
-               'SignalR.Autorest\Az.SignalR.format.ps1xml'
+FormatsToProcess = 'SignalR.Autorest/Az.SignalR.format.ps1xml', 
+               'SignalR.format.ps1xml'
 
 # Modules to import as nested modules of the module specified in RootModule/ModuleToProcess
 NestedModules = @('Az.SignalR.psm1', 
-               'SignalR.Autorest\Az.SignalR.psm1')
+               'SignalR.Autorest/Az.SignalR.psm1')
 
 # Functions to export from this module, for best performance, do not use wildcards and do not delete the entry, use an empty array if there are no functions to export.
 FunctionsToExport = 'Get-AzWebPubSub', 'Get-AzWebPubSubCustomCertificate', 
@@ -94,7 +94,7 @@ CmdletsToExport = 'Get-AzSignalR', 'Get-AzSignalRKey', 'Get-AzSignalRUsage',
                'Update-AzSignalR', 'Update-AzSignalRNetworkAcl'
 
 # Variables to export from this module
-VariablesToExport = '*'
+# VariablesToExport = @()
 
 # Aliases to export from this module, for best performance, do not use wildcards and do not delete the entry, use an empty array if there are no aliases to export.
 AliasesToExport = 'Test-AzSignalR'

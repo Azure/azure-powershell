@@ -56,37 +56,37 @@ DotNetFrameworkVersion = '4.7.2'
 RequiredModules = @(@{ModuleName = 'Az.Accounts'; ModuleVersion = '2.13.2'; })
 
 # Assemblies that must be loaded prior to importing this module
-RequiredAssemblies = 'Microsoft.Azure.PowerShell.Storage.Management.Sdk.dll', 
-               'Microsoft.Azure.Storage.Common.dll', 
-               'Microsoft.Azure.Storage.Blob.dll', 
-               'Microsoft.Azure.Storage.File.dll', 
-               'Microsoft.Azure.Storage.Queue.dll', 
+RequiredAssemblies = 'Azure.Data.Tables.dll', 'Azure.Storage.Blobs.dll', 
+               'Azure.Storage.Common.dll', 'Azure.Storage.Files.DataLake.dll', 
+               'Azure.Storage.Files.Shares.dll', 'Azure.Storage.Queues.dll', 
                'Microsoft.Azure.Cosmos.Table.dll', 
                'Microsoft.Azure.DocumentDB.Core.dll', 
+               'Microsoft.Azure.KeyVault.Core.dll', 
+               'Microsoft.Azure.PowerShell.Storage.Management.Sdk.dll', 
+               'Microsoft.Azure.Storage.Blob.dll', 
+               'Microsoft.Azure.Storage.Common.dll', 
                'Microsoft.Azure.Storage.DataMovement.dll', 
-               'Microsoft.Azure.DocumentDB.Core.dll', 'Microsoft.OData.Core.dll', 
+               'Microsoft.Azure.Storage.File.dll', 
+               'Microsoft.Azure.Storage.Queue.dll', 'Microsoft.OData.Core.dll', 
                'Microsoft.OData.Edm.dll', 'Microsoft.Spatial.dll', 
-               'Microsoft.Azure.KeyVault.Core.dll', 'Azure.Storage.Blobs.dll', 
-               'Azure.Storage.Common.dll', 'Azure.Storage.Files.DataLake.dll', 
-               'Azure.Storage.Queues.dll', 'Azure.Storage.Files.Shares.dll', 
-               'Azure.Data.Tables.dll', 'System.IO.Hashing.dll', 
-               'Storage.Autorest\bin\Az.Storage.private.dll'
+               'Storage.Autorest/bin/Az.Storage.private.dll', 
+               'System.IO.Hashing.dll'
 
 # Script files (.ps1) that are run in the caller's environment prior to importing this module.
-# ScriptsToProcess = @()
+ScriptsToProcess = @()
 
 # Type files (.ps1xml) to be loaded when importing this module
-# TypesToProcess = @()
+TypesToProcess = @()
 
 # Format files (.ps1xml) to be loaded when importing this module
-FormatsToProcess = 'Storage.Management.format.ps1xml', 'Storage.format.ps1xml', 
-               'Storage.generated.format.ps1xml', 
-               'Storage.Autorest\Az.Storage.format.ps1xml'
+FormatsToProcess = 'Storage.Autorest/Az.Storage.format.ps1xml', 
+               'Storage.format.ps1xml', 'Storage.generated.format.ps1xml', 
+               'Storage.Management.format.ps1xml'
 
 # Modules to import as nested modules of the module specified in RootModule/ModuleToProcess
-NestedModules = @('Microsoft.Azure.PowerShell.Cmdlets.Storage.Management.dll', 
-               'Microsoft.Azure.PowerShell.Cmdlets.Storage.dll', 
-               'Storage.Autorest\Az.Storage.psm1')
+NestedModules = @('Microsoft.Azure.PowerShell.Cmdlets.Storage.dll', 
+               'Microsoft.Azure.PowerShell.Cmdlets.Storage.Management.dll', 
+               'Storage.Autorest/Az.Storage.psm1')
 
 # Functions to export from this module, for best performance, do not use wildcards and do not delete the entry, use an empty array if there are no functions to export.
 FunctionsToExport = 'Get-AzStorageAccountMigration', 'Start-AzStorageAccountMigration'
@@ -206,7 +206,7 @@ CmdletsToExport = 'Add-AzRmStorageContainerLegalHold',
                'Update-AzStorageServiceProperty'
 
 # Variables to export from this module
-VariablesToExport = '*'
+# VariablesToExport = @()
 
 # Aliases to export from this module, for best performance, do not use wildcards and do not delete the entry, use an empty array if there are no aliases to export.
 AliasesToExport = 'Disable-AzStorageSoftDelete', 'Enable-AzStorageSoftDelete', 

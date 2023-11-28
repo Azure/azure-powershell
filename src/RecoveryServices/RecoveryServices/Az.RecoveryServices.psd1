@@ -58,30 +58,30 @@ RequiredModules = @(@{ModuleName = 'Az.Accounts'; ModuleVersion = '2.13.2'; })
 
 # Assemblies that must be loaded prior to importing this module
 RequiredAssemblies = 'Microsoft.Azure.PowerShell.AutoMapper.dll', 
-               'Microsoft.Azure.PowerShell.Cmdlets.RecoveryServices.Backup.Models.dll', 
                'Microsoft.Azure.PowerShell.Cmdlets.RecoveryServices.Backup.Helpers.dll', 
                'Microsoft.Azure.PowerShell.Cmdlets.RecoveryServices.Backup.Logger.dll', 
+               'Microsoft.Azure.PowerShell.Cmdlets.RecoveryServices.Backup.Models.dll', 
                'Microsoft.Azure.PowerShell.Cmdlets.RecoveryServices.Backup.Providers.dll', 
                'Microsoft.Azure.PowerShell.Cmdlets.RecoveryServices.Backup.ServiceClientAdapter.dll', 
-               'Microsoft.Azure.PowerShell.RecoveryServices.Management.Sdk.dll', 
-               'Microsoft.Azure.PowerShell.RecoveryServices.Backup.Management.Sdk.dll', 
                'Microsoft.Azure.PowerShell.RecoveryServices.Backup.CrossRegionRestore.Management.Sdk.dll', 
+               'Microsoft.Azure.PowerShell.RecoveryServices.Backup.Management.Sdk.dll', 
+               'Microsoft.Azure.PowerShell.RecoveryServices.Management.Sdk.dll', 
                'Microsoft.Azure.PowerShell.RecoveryServices.SiteRecovery.Management.Sdk.dll', 
                'System.Configuration.ConfigurationManager.dll', 
                'TimeZoneConverter.dll'
 
 # Script files (.ps1) that are run in the caller's environment prior to importing this module.
-# ScriptsToProcess = @()
+ScriptsToProcess = @()
 
 # Type files (.ps1xml) to be loaded when importing this module
-# TypesToProcess = @()
+TypesToProcess = @()
 
 # Format files (.ps1xml) to be loaded when importing this module
 FormatsToProcess = 'RecoveryServices.Backup.format.ps1xml'
 
 # Modules to import as nested modules of the module specified in RootModule/ModuleToProcess
-NestedModules = @('Microsoft.Azure.PowerShell.Cmdlets.RecoveryServices.dll', 
-               'Microsoft.Azure.PowerShell.Cmdlets.RecoveryServices.Backup.dll', 
+NestedModules = @('Microsoft.Azure.PowerShell.Cmdlets.RecoveryServices.Backup.dll', 
+               'Microsoft.Azure.PowerShell.Cmdlets.RecoveryServices.dll', 
                'Microsoft.Azure.PowerShell.Cmdlets.RecoveryServices.SiteRecovery.dll')
 
 # Functions to export from this module, for best performance, do not use wildcards and do not delete the entry, use an empty array if there are no functions to export.
@@ -207,7 +207,7 @@ CmdletsToExport = 'Add-AzRecoveryServicesAsrReplicationProtectedItemDisk',
                'Wait-AzRecoveryServicesBackupJob'
 
 # Variables to export from this module
-VariablesToExport = '*'
+# VariablesToExport = @()
 
 # Aliases to export from this module, for best performance, do not use wildcards and do not delete the entry, use an empty array if there are no aliases to export.
 AliasesToExport = 'Add-ASRReplicationProtectedItemDisk', 'Edit-ASRRecoveryPlan', 

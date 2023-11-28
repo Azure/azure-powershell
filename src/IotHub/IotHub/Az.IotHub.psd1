@@ -56,21 +56,21 @@ DotNetFrameworkVersion = '4.7.2'
 RequiredModules = @(@{ModuleName = 'Az.Accounts'; ModuleVersion = '2.12.0'; })
 
 # Assemblies that must be loaded prior to importing this module
-RequiredAssemblies = 'Microsoft.Azure.Management.IotHub.dll', 
-               'Microsoft.Azure.Devices.Shared.dll', 'Microsoft.Azure.Devices.dll', 
+RequiredAssemblies = 'DotNetty.Buffers.dll', 'DotNetty.Codecs.dll', 
+               'DotNetty.Codecs.Mqtt.dll', 'DotNetty.Common.dll', 
+               'DotNetty.Handlers.dll', 'DotNetty.Transport.dll', 
                'Microsoft.Azure.Amqp.dll', 'Microsoft.Azure.Devices.Client.dll', 
-               'DotNetty.Codecs.Mqtt.dll', 'DotNetty.Buffers.dll', 
-               'DotNetty.Common.dll', 'Microsoft.Extensions.Logging.dll', 
+               'Microsoft.Azure.Devices.dll', 'Microsoft.Azure.Devices.Shared.dll', 
+               'Microsoft.Azure.Management.IotHub.dll', 
                'Microsoft.Extensions.DependencyInjection.Abstractions.dll', 
                'Microsoft.Extensions.Logging.Abstractions.dll', 
-               'DotNetty.Codecs.dll', 'DotNetty.Transport.dll', 
-               'DotNetty.Handlers.dll'
+               'Microsoft.Extensions.Logging.dll'
 
 # Script files (.ps1) that are run in the caller's environment prior to importing this module.
-# ScriptsToProcess = @()
+ScriptsToProcess = @()
 
 # Type files (.ps1xml) to be loaded when importing this module
-# TypesToProcess = @()
+TypesToProcess = @()
 
 # Format files (.ps1xml) to be loaded when importing this module
 FormatsToProcess = 'IotHub.format.ps1xml'
@@ -123,7 +123,7 @@ CmdletsToExport = 'Add-AzIotHubCertificate', 'Add-AzIotHubConfiguration',
                'Update-AzIotHubModuleTwin'
 
 # Variables to export from this module
-VariablesToExport = '*'
+# VariablesToExport = @()
 
 # Aliases to export from this module, for best performance, do not use wildcards and do not delete the entry, use an empty array if there are no aliases to export.
 AliasesToExport = 'Add-AzIotHubDCL', 'Add-AzIotHubEHCG', 'Add-AzIotHubMsgEnrich', 

@@ -54,22 +54,22 @@ DotNetFrameworkVersion = '4.7.2'
 # RequiredModules = @()
 
 # Assemblies that must be loaded prior to importing this module
-RequiredAssemblies = 'DevCenter.AutoRest\bin\Az.DevCenter.private.dll', 
-               'DevCenterData.AutoRest\bin\Az.DevCenterdata.private.dll'
+RequiredAssemblies = 'DevCenter.AutoRest/bin/Az.DevCenter.private.dll', 
+               'DevCenterData.AutoRest/bin/Az.DevCenterdata.private.dll'
 
 # Script files (.ps1) that are run in the caller's environment prior to importing this module.
-# ScriptsToProcess = @()
+ScriptsToProcess = @()
 
 # Type files (.ps1xml) to be loaded when importing this module
-# TypesToProcess = @()
+TypesToProcess = @()
 
 # Format files (.ps1xml) to be loaded when importing this module
-FormatsToProcess = 'DevCenter.AutoRest\Az.DevCenter.format.ps1xml', 
-               'DevCenterData.AutoRest\Az.DevCenterdata.format.ps1xml'
+FormatsToProcess = 'DevCenter.AutoRest/Az.DevCenter.format.ps1xml', 
+               'DevCenterData.AutoRest/Az.DevCenterdata.format.ps1xml'
 
 # Modules to import as nested modules of the module specified in RootModule/ModuleToProcess
-NestedModules = @('DevCenter.AutoRest\Az.DevCenter.psm1', 
-               'DevCenterData.AutoRest\Az.DevCenterdata.psm1')
+NestedModules = @('DevCenter.AutoRest/Az.DevCenter.psm1', 
+               'DevCenterData.AutoRest/Az.DevCenterdata.psm1')
 
 # Functions to export from this module, for best performance, do not use wildcards and do not delete the entry, use an empty array if there are no functions to export.
 FunctionsToExport = 'Deploy-AzDevCenterUserEnvironment', 
@@ -135,7 +135,7 @@ FunctionsToExport = 'Deploy-AzDevCenterUserEnvironment',
 CmdletsToExport = @()
 
 # Variables to export from this module
-VariablesToExport = '*'
+# VariablesToExport = @()
 
 # Aliases to export from this module, for best performance, do not use wildcards and do not delete the entry, use an empty array if there are no aliases to export.
 AliasesToExport = @()

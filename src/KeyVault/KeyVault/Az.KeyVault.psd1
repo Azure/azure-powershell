@@ -56,29 +56,28 @@ DotNetFrameworkVersion = '4.7.2'
 RequiredModules = @(@{ModuleName = 'Az.Accounts'; ModuleVersion = '2.13.2'; })
 
 # Assemblies that must be loaded prior to importing this module
-RequiredAssemblies = 'Microsoft.Azure.KeyVault.dll', 
-               'Microsoft.Azure.KeyVault.WebKey.dll', 
-               'Microsoft.Azure.PowerShell.KeyVault.Management.Sdk.dll', 
-               'Azure.Security.KeyVault.Keys.dll', 
+RequiredAssemblies = 'Azure.Security.KeyVault.Administration.dll', 
                'Azure.Security.KeyVault.Certificates.dll', 
-               'Azure.Security.KeyVault.Administration.dll', 
-               'BouncyCastle.Crypto.dll', 
-               'KeyVault.Autorest\bin\Az.KeyVault.private.dll'
+               'Azure.Security.KeyVault.Keys.dll', 'BouncyCastle.Crypto.dll', 
+               'KeyVault.Autorest/bin/Az.KeyVault.private.dll', 
+               'Microsoft.Azure.KeyVault.dll', 
+               'Microsoft.Azure.KeyVault.WebKey.dll', 
+               'Microsoft.Azure.PowerShell.KeyVault.Management.Sdk.dll'
 
 # Script files (.ps1) that are run in the caller's environment prior to importing this module.
-# ScriptsToProcess = @()
+ScriptsToProcess = @()
 
 # Type files (.ps1xml) to be loaded when importing this module
-# TypesToProcess = @()
+TypesToProcess = @()
 
 # Format files (.ps1xml) to be loaded when importing this module
-FormatsToProcess = 'KeyVault.format.ps1xml', 
-               'KeyVault.Autorest\Az.KeyVault.format.ps1xml'
+FormatsToProcess = 'KeyVault.Autorest/Az.KeyVault.format.ps1xml', 
+               'KeyVault.format.ps1xml'
 
 # Modules to import as nested modules of the module specified in RootModule/ModuleToProcess
-NestedModules = @('Microsoft.Azure.PowerShell.Cmdlets.KeyVault.dll', 
-               '.\Az.KeyVault.Extension', 
-               'KeyVault.Autorest\Az.KeyVault.psm1')
+NestedModules = @('./Az.KeyVault.Extension', 
+               'KeyVault.Autorest/Az.KeyVault.psm1', 
+               'Microsoft.Azure.PowerShell.Cmdlets.KeyVault.dll')
 
 # Functions to export from this module, for best performance, do not use wildcards and do not delete the entry, use an empty array if there are no functions to export.
 FunctionsToExport = 'Add-AzKeyVaultManagedHsmRegion', 'Get-AzKeyVaultManagedHsmRegion', 
@@ -141,7 +140,7 @@ CmdletsToExport = 'Add-AzKeyVaultCertificate', 'Add-AzKeyVaultCertificateContact
                'Update-AzKeyVaultSetting'
 
 # Variables to export from this module
-VariablesToExport = '*'
+# VariablesToExport = @()
 
 # Aliases to export from this module, for best performance, do not use wildcards and do not delete the entry, use an empty array if there are no aliases to export.
 AliasesToExport = 'Set-AzKeyVaultCertificateAttribute', 'Set-AzKeyVaultKey', 

@@ -56,25 +56,25 @@ DotNetFrameworkVersion = '4.7.2'
 RequiredModules = @(@{ModuleName = 'Az.Accounts'; ModuleVersion = '2.10.2'; })
 
 # Assemblies that must be loaded prior to importing this module
-RequiredAssemblies = 'Microsoft.Azure.Management.Attestation.dll', 
+RequiredAssemblies = 'Attestation.Autorest/bin/Az.Attestation.private.dll', 
                'Microsoft.Azure.Attestation.dll', 
+               'Microsoft.Azure.Management.Attestation.dll', 
                'Microsoft.IdentityModel.JsonWebTokens.dll', 
-               'Microsoft.IdentityModel.Tokens.dll', 
                'Microsoft.IdentityModel.Logging.dll', 
-               'Attestation.Autorest\bin\Az.Attestation.private.dll'
+               'Microsoft.IdentityModel.Tokens.dll'
 
 # Script files (.ps1) that are run in the caller's environment prior to importing this module.
-# ScriptsToProcess = @()
+ScriptsToProcess = @()
 
 # Type files (.ps1xml) to be loaded when importing this module
-# TypesToProcess = @()
+TypesToProcess = @()
 
 # Format files (.ps1xml) to be loaded when importing this module
-FormatsToProcess = 'Attestation.Autorest\Az.Attestation.format.ps1xml'
+FormatsToProcess = 'Attestation.Autorest/Az.Attestation.format.ps1xml'
 
 # Modules to import as nested modules of the module specified in RootModule/ModuleToProcess
-NestedModules = @('Microsoft.Azure.PowerShell.Cmdlets.Attestation.dll', 
-               'Attestation.Autorest\Az.Attestation.psm1')
+NestedModules = @('Attestation.Autorest/Az.Attestation.psm1', 
+               'Microsoft.Azure.PowerShell.Cmdlets.Attestation.dll')
 
 # Functions to export from this module, for best performance, do not use wildcards and do not delete the entry, use an empty array if there are no functions to export.
 FunctionsToExport = 'Get-AzAttestationDefaultProvider', 'Get-AzAttestationProvider', 
@@ -88,7 +88,7 @@ CmdletsToExport = 'Add-AzAttestationPolicySigner', 'Get-AzAttestationPolicy',
                'Set-AzAttestationPolicy'
 
 # Variables to export from this module
-VariablesToExport = '*'
+# VariablesToExport = @()
 
 # Aliases to export from this module, for best performance, do not use wildcards and do not delete the entry, use an empty array if there are no aliases to export.
 AliasesToExport = @()

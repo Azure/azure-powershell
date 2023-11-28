@@ -56,21 +56,21 @@ DotNetFrameworkVersion = '4.7.2'
 RequiredModules = @(@{ModuleName = 'Az.Accounts'; ModuleVersion = '2.7.4'; })
 
 # Assemblies that must be loaded prior to importing this module
-RequiredAssemblies = 'Microsoft.Azure.Management.Marketplace.dll', 
-               'Marketplace.Autorest\bin\Az.Marketplace.private.dll'
+RequiredAssemblies = 'Marketplace.Autorest/bin/Az.Marketplace.private.dll', 
+               'Microsoft.Azure.Management.Marketplace.dll'
 
 # Script files (.ps1) that are run in the caller's environment prior to importing this module.
-# ScriptsToProcess = @()
+ScriptsToProcess = @()
 
 # Type files (.ps1xml) to be loaded when importing this module
-# TypesToProcess = @()
+TypesToProcess = @()
 
 # Format files (.ps1xml) to be loaded when importing this module
-FormatsToProcess = 'Marketplace.Autorest\Az.Marketplace.format.ps1xml'
+FormatsToProcess = 'Marketplace.Autorest/Az.Marketplace.format.ps1xml'
 
 # Modules to import as nested modules of the module specified in RootModule/ModuleToProcess
-NestedModules = @('Microsoft.Azure.PowerShell.Cmdlets.Marketplace.dll', 
-               'Marketplace.Autorest\Az.Marketplace.psm1')
+NestedModules = @('Marketplace.Autorest/Az.Marketplace.psm1', 
+               'Microsoft.Azure.PowerShell.Cmdlets.Marketplace.dll')
 
 # Functions to export from this module, for best performance, do not use wildcards and do not delete the entry, use an empty array if there are no functions to export.
 FunctionsToExport = 'Copy-AzMarketplacePrivateStoreCollectionOffer', 
@@ -97,7 +97,7 @@ CmdletsToExport = 'Get-AzMarketplacePrivateStore',
                'Set-AzMarketplacePrivateStoreOffer'
 
 # Variables to export from this module
-VariablesToExport = '*'
+# VariablesToExport = @()
 
 # Aliases to export from this module, for best performance, do not use wildcards and do not delete the entry, use an empty array if there are no aliases to export.
 AliasesToExport = @()

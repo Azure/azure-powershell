@@ -56,23 +56,23 @@ DotNetFrameworkVersion = '4.7.2'
 RequiredModules = @(@{ModuleName = 'Az.Accounts'; ModuleVersion = '2.13.2'; })
 
 # Assemblies that must be loaded prior to importing this module
-RequiredAssemblies = 'Microsoft.Azure.ContainerRegistry.dll', 
-               'Azure.Containers.ContainerRegistry.dll', 
-               'ContainerRegistry.Autorest\bin\Az.ContainerRegistry.private.dll'
+RequiredAssemblies = 'Azure.Containers.ContainerRegistry.dll', 
+               'ContainerRegistry.Autorest/bin/Az.ContainerRegistry.private.dll', 
+               'Microsoft.Azure.ContainerRegistry.dll'
 
 # Script files (.ps1) that are run in the caller's environment prior to importing this module.
-# ScriptsToProcess = @()
+ScriptsToProcess = @()
 
 # Type files (.ps1xml) to be loaded when importing this module
-# TypesToProcess = @()
+TypesToProcess = @()
 
 # Format files (.ps1xml) to be loaded when importing this module
-FormatsToProcess = 'ContainerRegistry.format.ps1xml', 
-               'ContainerRegistry.Autorest\Az.ContainerRegistry.format.ps1xml'
+FormatsToProcess = 'ContainerRegistry.Autorest/Az.ContainerRegistry.format.ps1xml', 
+               'ContainerRegistry.format.ps1xml'
 
 # Modules to import as nested modules of the module specified in RootModule/ModuleToProcess
-NestedModules = @('Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry.dll', 
-               'ContainerRegistry.Autorest\Az.ContainerRegistry.psm1')
+NestedModules = @('ContainerRegistry.Autorest/Az.ContainerRegistry.psm1', 
+               'Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry.dll')
 
 # Functions to export from this module, for best performance, do not use wildcards and do not delete the entry, use an empty array if there are no functions to export.
 FunctionsToExport = 'Get-AzContainerRegistry', 'Get-AzContainerRegistryAgentPool', 
@@ -120,7 +120,7 @@ CmdletsToExport = 'Connect-AzContainerRegistry', 'Get-AzContainerRegistryManifes
                'Update-AzContainerRegistryTag'
 
 # Variables to export from this module
-VariablesToExport = '*'
+# VariablesToExport = @()
 
 # Aliases to export from this module, for best performance, do not use wildcards and do not delete the entry, use an empty array if there are no aliases to export.
 AliasesToExport = @()

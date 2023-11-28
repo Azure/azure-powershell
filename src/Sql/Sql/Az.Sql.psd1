@@ -56,11 +56,11 @@ DotNetFrameworkVersion = '4.7.2'
 RequiredModules = @(@{ModuleName = 'Az.Accounts'; ModuleVersion = '2.13.2'; })
 
 # Assemblies that must be loaded prior to importing this module
-RequiredAssemblies = 'Microsoft.Azure.PowerShell.Sql.Management.Sdk.dll', 
-               'Microsoft.Azure.PowerShell.Cmdlets.Sql.LegacySdk.dll'
+RequiredAssemblies = 'Microsoft.Azure.PowerShell.Cmdlets.Sql.LegacySdk.dll', 
+               'Microsoft.Azure.PowerShell.Sql.Management.Sdk.dll'
 
 # Script files (.ps1) that are run in the caller's environment prior to importing this module.
-# ScriptsToProcess = @()
+ScriptsToProcess = @()
 
 # Type files (.ps1xml) to be loaded when importing this module
 TypesToProcess = 'Sql.types.ps1xml'
@@ -319,7 +319,7 @@ CmdletsToExport = 'Add-AzSqlDatabaseToFailoverGroup', 'Add-AzSqlElasticJobStep',
                'Update-AzSqlSyncSchema'
 
 # Variables to export from this module
-VariablesToExport = '*'
+# VariablesToExport = @()
 
 # Aliases to export from this module, for best performance, do not use wildcards and do not delete the entry, use an empty array if there are no aliases to export.
 AliasesToExport = 'Get-AzSqlDatabaseLongTermRetentionPolicy', 

@@ -57,10 +57,10 @@ RequiredModules = @(@{ModuleName = 'Az.Accounts'; ModuleVersion = '2.8.0'; })
 RequiredAssemblies = 'FluidRelay.Autorest/bin/Az.FluidRelay.private.dll'
 
 # Script files (.ps1) that are run in the caller's environment prior to importing this module.
-# ScriptsToProcess = @()
+ScriptsToProcess = @()
 
 # Type files (.ps1xml) to be loaded when importing this module
-# TypesToProcess = @()
+TypesToProcess = @()
 
 # Format files (.ps1xml) to be loaded when importing this module
 FormatsToProcess = 'FluidRelay.Autorest/Az.FluidRelay.format.ps1xml'
@@ -78,7 +78,7 @@ FunctionsToExport = 'Get-AzFluidRelayContainer', 'Get-AzFluidRelayServer',
 CmdletsToExport = @()
 
 # Variables to export from this module
-VariablesToExport = '*'
+# VariablesToExport = @()
 
 # Aliases to export from this module, for best performance, do not use wildcards and do not delete the entry, use an empty array if there are no aliases to export.
 AliasesToExport = @()

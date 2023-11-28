@@ -54,22 +54,22 @@ DotNetFrameworkVersion = '4.7.2'
 RequiredModules = @(@{ModuleName = 'Az.Accounts'; ModuleVersion = '2.12.5'; })
 
 # Assemblies that must be loaded prior to importing this module
-RequiredAssemblies = 'AppConfiguration.Autorest\bin\Az.AppConfiguration.private.dll', 
-               'AppConfigurationData.Autorest\bin\Az.AppConfigurationdata.private.dll'
+RequiredAssemblies = 'AppConfiguration.Autorest/bin/Az.AppConfiguration.private.dll', 
+               'AppConfigurationData.Autorest/bin/Az.AppConfigurationdata.private.dll'
 
 # Script files (.ps1) that are run in the caller's environment prior to importing this module.
-# ScriptsToProcess = @()
+ScriptsToProcess = @()
 
 # Type files (.ps1xml) to be loaded when importing this module
-# TypesToProcess = @()
+TypesToProcess = @()
 
 # Format files (.ps1xml) to be loaded when importing this module
-FormatsToProcess = 'AppConfiguration.Autorest\Az.AppConfiguration.format.ps1xml', 
-               'AppConfigurationData.Autorest\Az.AppConfigurationdata.format.ps1xml'
+FormatsToProcess = 'AppConfiguration.Autorest/Az.AppConfiguration.format.ps1xml', 
+               'AppConfigurationData.Autorest/Az.AppConfigurationdata.format.ps1xml'
 
 # Modules to import as nested modules of the module specified in RootModule/ModuleToProcess
-NestedModules = @('AppConfiguration.Autorest\Az.AppConfiguration.psm1', 
-               'AppConfigurationData.Autorest\Az.AppConfigurationdata.psm1')
+NestedModules = @('AppConfiguration.Autorest/Az.AppConfiguration.psm1', 
+               'AppConfigurationData.Autorest/Az.AppConfigurationdata.psm1')
 
 # Functions to export from this module, for best performance, do not use wildcards and do not delete the entry, use an empty array if there are no functions to export.
 FunctionsToExport = 'Clear-AzAppConfigurationDeletedStore', 
@@ -89,7 +89,7 @@ FunctionsToExport = 'Clear-AzAppConfigurationDeletedStore',
 CmdletsToExport = @()
 
 # Variables to export from this module
-VariablesToExport = '*'
+# VariablesToExport = @()
 
 # Aliases to export from this module, for best performance, do not use wildcards and do not delete the entry, use an empty array if there are no aliases to export.
 AliasesToExport = @()

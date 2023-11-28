@@ -59,13 +59,13 @@ RequiredModules = @(@{ModuleName = 'Az.Accounts'; ModuleVersion = '2.13.0'; })
 RequiredAssemblies = 'Microsoft.Azure.Management.Media.dll'
 
 # Script files (.ps1) that are run in the caller's environment prior to importing this module.
-# ScriptsToProcess = @()
+ScriptsToProcess = @()
 
 # Type files (.ps1xml) to be loaded when importing this module
-# TypesToProcess = @()
+TypesToProcess = @()
 
 # Format files (.ps1xml) to be loaded when importing this module
-# FormatsToProcess = @()
+FormatsToProcess = @()
 
 # Modules to import as nested modules of the module specified in RootModule/ModuleToProcess
 NestedModules = @('Microsoft.Azure.PowerShell.Cmdlets.Media.dll')
@@ -81,7 +81,7 @@ CmdletsToExport = 'Get-AzMediaService', 'Get-AzMediaServiceKey',
                'Sync-AzMediaServiceStorageKey'
 
 # Variables to export from this module
-VariablesToExport = '*'
+# VariablesToExport = @()
 
 # Aliases to export from this module, for best performance, do not use wildcards and do not delete the entry, use an empty array if there are no aliases to export.
 AliasesToExport = 'Get-AzMediaServiceKeys', 'Sync-AzMediaServiceStorageKeys'

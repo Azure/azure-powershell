@@ -56,18 +56,18 @@ DotNetFrameworkVersion = '4.7.2'
 RequiredModules = @(@{ModuleName = 'Az.Accounts'; ModuleVersion = '2.12.5'; })
 
 # Assemblies that must be loaded prior to importing this module
-RequiredAssemblies = 'Microsoft.Azure.Batch.dll', 'Microsoft.Azure.Management.Batch.dll', 
+RequiredAssemblies = 'Microsoft.AspNetCore.WebUtilities.dll', 
+               'Microsoft.Azure.Batch.dll', 'Microsoft.Azure.Management.Batch.dll', 
                'Microsoft.Extensions.Primitives.dll', 
-               'System.Runtime.CompilerServices.Unsafe.dll', 
+               'Microsoft.Net.Http.Headers.dll', 
                'Microsoft.WindowsAzure.Storage.dll', 
-               'Microsoft.AspNetCore.WebUtilities.dll', 
-               'Microsoft.Net.Http.Headers.dll'
+               'System.Runtime.CompilerServices.Unsafe.dll'
 
 # Script files (.ps1) that are run in the caller's environment prior to importing this module.
-# ScriptsToProcess = @()
+ScriptsToProcess = @()
 
 # Type files (.ps1xml) to be loaded when importing this module
-# TypesToProcess = @()
+TypesToProcess = @()
 
 # Format files (.ps1xml) to be loaded when importing this module
 FormatsToProcess = 'Batch.format.ps1xml'
@@ -117,7 +117,7 @@ CmdletsToExport = 'Disable-AzBatchAutoScale', 'Disable-AzBatchComputeNodeSchedul
                'Stop-AzBatchPoolResize', 'Stop-AzBatchTask', 'Test-AzBatchAutoScale'
 
 # Variables to export from this module
-VariablesToExport = '*'
+# VariablesToExport = @()
 
 # Aliases to export from this module, for best performance, do not use wildcards and do not delete the entry, use an empty array if there are no aliases to export.
 AliasesToExport = 'Get-AzBatchAccountKeys', 'Get-AzBatchLocationQuotas', 

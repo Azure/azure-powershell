@@ -56,27 +56,27 @@ DotNetFrameworkVersion = '4.7.2'
 RequiredModules = @(@{ModuleName = 'Az.Accounts'; ModuleVersion = '2.13.2'; })
 
 # Assemblies that must be loaded prior to importing this module
-RequiredAssemblies = 'Microsoft.Azure.Management.Synapse.dll', 
-               'Azure.Analytics.Synapse.Spark.dll', 
-               'Azure.Analytics.Synapse.AccessControl.dll', 
+RequiredAssemblies = 'Azure.Analytics.Synapse.AccessControl.dll', 
                'Azure.Analytics.Synapse.Artifacts.dll', 
                'Azure.Analytics.Synapse.ManagedPrivateEndpoints.dll', 
+               'Azure.Analytics.Synapse.Spark.dll', 
+               'Microsoft.Azure.Management.Synapse.dll', 
                'Microsoft.DataTransfer.Gateway.Encryption.dll', 
-               'Synapse.Autorest\bin\Az.Synapse.private.dll'
+               'Synapse.Autorest/bin/Az.Synapse.private.dll'
 
 # Script files (.ps1) that are run in the caller's environment prior to importing this module.
-# ScriptsToProcess = @()
+ScriptsToProcess = @()
 
 # Type files (.ps1xml) to be loaded when importing this module
-# TypesToProcess = @()
+TypesToProcess = @()
 
 # Format files (.ps1xml) to be loaded when importing this module
-FormatsToProcess = 'Synapse.format.ps1xml', 
-               'Synapse.Autorest\Az.Synapse.format.ps1xml'
+FormatsToProcess = 'Synapse.Autorest/Az.Synapse.format.ps1xml', 
+               'Synapse.format.ps1xml'
 
 # Modules to import as nested modules of the module specified in RootModule/ModuleToProcess
 NestedModules = @('Az.Synapse.psm1', 
-               'Synapse.Autorest\Az.Synapse.psm1')
+               'Synapse.Autorest/Az.Synapse.psm1')
 
 # Functions to export from this module, for best performance, do not use wildcards and do not delete the entry, use an empty array if there are no functions to export.
 FunctionsToExport = 'Add-AzSynapseKustoPoolLanguageExtension', 'Get-AzSynapseKustoPool', 
@@ -239,7 +239,7 @@ CmdletsToExport = 'Add-AzSynapseDataFlowDebugSessionPackage',
                'Update-AzSynapseWorkspace', 'Wait-AzSynapseSparkJob'
 
 # Variables to export from this module
-VariablesToExport = '*'
+# VariablesToExport = @()
 
 # Aliases to export from this module, for best performance, do not use wildcards and do not delete the entry, use an empty array if there are no aliases to export.
 AliasesToExport = 'Clear-AzSynapseSqlAdvancedThreatProtectionSetting', 

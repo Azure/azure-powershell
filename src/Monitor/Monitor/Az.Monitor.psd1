@@ -56,40 +56,40 @@ DotNetFrameworkVersion = '4.7.2'
 RequiredModules = @(@{ModuleName = 'Az.Accounts'; ModuleVersion = '2.13.2'; })
 
 # Assemblies that must be loaded prior to importing this module
-RequiredAssemblies = 'Microsoft.Azure.Management.Monitor.dll', 
-               'ActivityLogAlert.Autorest\bin\Az.ActivityLogAlert.private.dll', 
-               'DiagnosticSetting.Autorest\bin\Az.DiagnosticSetting.private.dll', 
-               'ScheduledQueryRule.Autorest\bin\Az.ScheduledQueryRule.private.dll', 
-               'Autoscale.Autorest\bin\Az.Autoscale.private.dll', 
-               'MonitorWorkspace.Autorest\bin\Az.MonitorWorkspace.private.dll', 
-               'DataCollectionRule.Autorest\bin\Az.DataCollectionRule.private.dll', 
-               'ActionGroup.Autorest\bin\Az.ActionGroup.private.dll'
+RequiredAssemblies = 'ActionGroup.Autorest/bin/Az.ActionGroup.private.dll', 
+               'ActivityLogAlert.Autorest/bin/Az.ActivityLogAlert.private.dll', 
+               'Autoscale.Autorest/bin/Az.Autoscale.private.dll', 
+               'DataCollectionRule.Autorest/bin/Az.DataCollectionRule.private.dll', 
+               'DiagnosticSetting.Autorest/bin/Az.DiagnosticSetting.private.dll', 
+               'Microsoft.Azure.Management.Monitor.dll', 
+               'MonitorWorkspace.Autorest/bin/Az.MonitorWorkspace.private.dll', 
+               'ScheduledQueryRule.Autorest/bin/Az.ScheduledQueryRule.private.dll'
 
 # Script files (.ps1) that are run in the caller's environment prior to importing this module.
-# ScriptsToProcess = @()
+ScriptsToProcess = @()
 
 # Type files (.ps1xml) to be loaded when importing this module
-# TypesToProcess = @()
+TypesToProcess = @()
 
 # Format files (.ps1xml) to be loaded when importing this module
-FormatsToProcess = 'Monitor.format.ps1xml', 
-               'ActivityLogAlert.Autorest\Az.ActivityLogAlert.format.ps1xml', 
-               'DiagnosticSetting.Autorest\Az.DiagnosticSetting.format.ps1xml', 
-               'ScheduledQueryRule.Autorest\Az.ScheduledQueryRule.format.ps1xml', 
-               'Autoscale.Autorest\Az.Autoscale.format.ps1xml', 
-               'MonitorWorkspace.Autorest\Az.MonitorWorkspace.format.ps1xml', 
-               'DataCollectionRule.Autorest\Az.DataCollectionRule.format.ps1xml', 
-               'ActionGroup.Autorest\Az.ActionGroup.format.ps1xml'
+FormatsToProcess = 'ActionGroup.Autorest/Az.ActionGroup.format.ps1xml', 
+               'ActivityLogAlert.Autorest/Az.ActivityLogAlert.format.ps1xml', 
+               'Autoscale.Autorest/Az.Autoscale.format.ps1xml', 
+               'DataCollectionRule.Autorest/Az.DataCollectionRule.format.ps1xml', 
+               'DiagnosticSetting.Autorest/Az.DiagnosticSetting.format.ps1xml', 
+               'Monitor.format.ps1xml', 
+               'MonitorWorkspace.Autorest/Az.MonitorWorkspace.format.ps1xml', 
+               'ScheduledQueryRule.Autorest/Az.ScheduledQueryRule.format.ps1xml'
 
 # Modules to import as nested modules of the module specified in RootModule/ModuleToProcess
-NestedModules = @('Microsoft.Azure.PowerShell.Cmdlets.Monitor.dll', 
-               'ActivityLogAlert.Autorest\Az.ActivityLogAlert.psm1', 
-               'DiagnosticSetting.Autorest\Az.DiagnosticSetting.psm1', 
-               'ScheduledQueryRule.Autorest\Az.ScheduledQueryRule.psm1', 
-               'Autoscale.Autorest\Az.Autoscale.psm1', 
-               'MonitorWorkspace.Autorest\Az.MonitorWorkspace.psm1', 
-               'DataCollectionRule.Autorest\Az.DataCollectionRule.psm1', 
-               'ActionGroup.Autorest\Az.ActionGroup.psm1')
+NestedModules = @('ActionGroup.Autorest/Az.ActionGroup.psm1', 
+               'ActivityLogAlert.Autorest/Az.ActivityLogAlert.psm1', 
+               'Autoscale.Autorest/Az.Autoscale.psm1', 
+               'DataCollectionRule.Autorest/Az.DataCollectionRule.psm1', 
+               'DiagnosticSetting.Autorest/Az.DiagnosticSetting.psm1', 
+               'Microsoft.Azure.PowerShell.Cmdlets.Monitor.dll', 
+               'MonitorWorkspace.Autorest/Az.MonitorWorkspace.psm1', 
+               'ScheduledQueryRule.Autorest/Az.ScheduledQueryRule.psm1')
 
 # Functions to export from this module, for best performance, do not use wildcards and do not delete the entry, use an empty array if there are no functions to export.
 FunctionsToExport = 'Enable-AzActionGroupReceiver', 'Get-AzActionGroup', 
@@ -170,7 +170,7 @@ CmdletsToExport = 'Add-AzLogProfile', 'Add-AzMetricAlertRule',
                'Remove-AzMetricAlertRuleV2', 'Update-AzInsightsPrivateLinkScope'
 
 # Variables to export from this module
-VariablesToExport = '*'
+# VariablesToExport = @()
 
 # Aliases to export from this module, for best performance, do not use wildcards and do not delete the entry, use an empty array if there are no aliases to export.
 AliasesToExport = 'Get-AzLog'

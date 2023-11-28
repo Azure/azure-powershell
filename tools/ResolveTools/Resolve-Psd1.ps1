@@ -41,23 +41,46 @@ foreach ($ExposedHelpFile in $ExposedHelpFiles)
 # Remove the deprecated commands from the module manifest.
 $Psd1Metadata = Import-LocalizedData -BaseDirectory $Psd1Folder -FileName "Az.$ModuleName.psd1"
 
-$Psd1Metadata.FunctionsToExport = $ModuleMatadata.ExportedFunctions.Keys | Sort-Object
-if ($Psd1Metadata.FunctionsToExport.Length -eq 0)
+$Properties = @("ScriptsToProcess", "TypesToProcess", "RequiredAssemblies", "FormatsToProcess", "NestedModules")
+foreach ($PropertyName in $Properties)
 {
-    $Psd1Metadata.FunctionsToExport = @()
+    $PropertyValue = @()
+    if ($Psd1Metadata.ContainsKey($PropertyName))
+    {
+        $PropertyValue = $Psd1Metadata.$PropertyName
+        if ($PropertyValue.Length -eq 0)
+        {
+            $PropertyValue = @()
+        }
+        else
+        {
+            $PropertyValue = $PropertyValue | ForEach-Object { $_.Replace("\", "/") } | Sort-Object -Unique
+        }
+    }
+    $Psd1Metadata.$PropertyName = $PropertyValue
 }
 
-$Psd1Metadata.CmdletsToExport = $ModuleMatadata.ExportedCmdlets.Keys | Sort-Object
-if ($Psd1Metadata.CmdletsToExport.Length -eq 0)
+$PropertyMapping = @{
+    "FunctionsToExport" = "ExportedFunctions"
+    "CmdletsToExport" = "ExportedCmdlets"
+    "AliasesToExport" = "ExportedAliases"
+    "VariablesToExport" = "ExportedVariables"
+}
+foreach ($Psd1PropertyName in $PropertyMapping.Keys)
 {
-    $Psd1Metadata.CmdletsToExport = @()
+    $MetadataPropertyName = $PropertyMapping[$Psd1PropertyName]
+    $PropertyValue = @()
+    if ($Psd1Metadata.ContainsKey($Psd1PropertyName))
+    {
+        $PropertyValue = $ModuleMatadata.$MetadataPropertyName.Keys | Sort-Object
+        if ($PropertyValue.Length -eq 0)
+        {
+            $PropertyValue = @()
+        }
+    }
+    $Psd1Metadata.$Psd1PropertyName = $PropertyValue
 }
 
-$Psd1Metadata.AliasesToExport = $ModuleMatadata.ExportedAliases.Keys | Sort-Object
-if ($Psd1Metadata.AliasesToExport.Length -eq 0)
-{
-    $Psd1Metadata.AliasesToExport = @()
-}
 
 if ($null -ne $Psd1Metadata.PrivateData) {
     foreach ($pKey in $Psd1Metadata.PrivateData.PSData.Keys) {

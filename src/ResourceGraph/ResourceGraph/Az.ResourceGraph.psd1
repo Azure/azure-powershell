@@ -57,22 +57,22 @@ RequiredModules = @(@{ModuleName = 'Az.Accounts'; ModuleVersion = '2.9.1'; })
 
 # Assemblies that must be loaded prior to importing this module
 RequiredAssemblies = 'Microsoft.Azure.Management.ResourceGraph.dll', 
-               'ResourceGraph.Autorest\bin\Az.ResourceGraph.private.dll'
+               'ResourceGraph.Autorest/bin/Az.ResourceGraph.private.dll'
 
 # Script files (.ps1) that are run in the caller's environment prior to importing this module.
-# ScriptsToProcess = @()
+ScriptsToProcess = @()
 
 # Type files (.ps1xml) to be loaded when importing this module
-# TypesToProcess = @()
+TypesToProcess = @()
 
 # Format files (.ps1xml) to be loaded when importing this module
 FormatsToProcess = 
                'Microsoft.Azure.PowerShell.Cmdlets.ResourceGraph.generated.format.ps1xml', 
-               'ResourceGraph.Autorest\Az.ResourceGraph.format.ps1xml'
+               'ResourceGraph.Autorest/Az.ResourceGraph.format.ps1xml'
 
 # Modules to import as nested modules of the module specified in RootModule/ModuleToProcess
 NestedModules = @('Microsoft.Azure.PowerShell.Cmdlets.ResourceGraph.dll', 
-               'ResourceGraph.Autorest\Az.ResourceGraph.psm1')
+               'ResourceGraph.Autorest/Az.ResourceGraph.psm1')
 
 # Functions to export from this module, for best performance, do not use wildcards and do not delete the entry, use an empty array if there are no functions to export.
 FunctionsToExport = 'Get-AzResourceGraphQuery', 'New-AzResourceGraphQuery', 
@@ -82,7 +82,7 @@ FunctionsToExport = 'Get-AzResourceGraphQuery', 'New-AzResourceGraphQuery',
 CmdletsToExport = 'Search-AzGraph'
 
 # Variables to export from this module
-VariablesToExport = '*'
+# VariablesToExport = @()
 
 # Aliases to export from this module, for best performance, do not use wildcards and do not delete the entry, use an empty array if there are no aliases to export.
 AliasesToExport = @()

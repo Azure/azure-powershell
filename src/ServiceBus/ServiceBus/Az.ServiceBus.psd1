@@ -57,21 +57,21 @@ RequiredModules = @(@{ModuleName = 'Az.Accounts'; ModuleVersion = '2.12.3'; })
 
 # Assemblies that must be loaded prior to importing this module
 RequiredAssemblies = 'Microsoft.Azure.Management.ServiceBus.dll', 
-               'ServiceBus.Autorest\bin\Az.ServiceBus.private.dll'
+               'ServiceBus.Autorest/bin/Az.ServiceBus.private.dll'
 
 # Script files (.ps1) that are run in the caller's environment prior to importing this module.
-# ScriptsToProcess = @()
+ScriptsToProcess = @()
 
 # Type files (.ps1xml) to be loaded when importing this module
-# TypesToProcess = @()
+TypesToProcess = @()
 
 # Format files (.ps1xml) to be loaded when importing this module
-FormatsToProcess = 'ServiceBus.format.ps1xml', 
-               'ServiceBus.Autorest\Az.ServiceBus.format.ps1xml'
+FormatsToProcess = 'ServiceBus.Autorest/Az.ServiceBus.format.ps1xml', 
+               'ServiceBus.format.ps1xml'
 
 # Modules to import as nested modules of the module specified in RootModule/ModuleToProcess
 NestedModules = @('Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.dll', 
-               'ServiceBus.Autorest\Az.ServiceBus.psm1')
+               'ServiceBus.Autorest/Az.ServiceBus.psm1')
 
 # Functions to export from this module, for best performance, do not use wildcards and do not delete the entry, use an empty array if there are no functions to export.
 FunctionsToExport = 'Approve-AzServiceBusPrivateEndpointConnection', 
@@ -111,7 +111,7 @@ CmdletsToExport = 'New-AzServiceBusAuthorizationRuleSASToken',
                'Test-AzServiceBusNameAvailability'
 
 # Variables to export from this module
-VariablesToExport = '*'
+# VariablesToExport = @()
 
 # Aliases to export from this module, for best performance, do not use wildcards and do not delete the entry, use an empty array if there are no aliases to export.
 AliasesToExport = 'Get-AzServiceBusNamespaceV2', 'New-AzServiceBusNamespaceV2', 

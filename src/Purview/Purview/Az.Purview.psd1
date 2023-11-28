@@ -55,27 +55,21 @@ RequiredModules = @(@{ModuleName = 'Az.Accounts'; ModuleVersion = '2.7.2'; })
 
 # Assemblies that must be loaded prior to importing this module
 RequiredAssemblies = 'Purview.Autorest/bin/Az.Purview.private.dll', 
-               'Purviewdata.Autorest/bin/Az.Purviewdata.private.dll', 
-               'Purview.Autorest\bin\Az.Purview.private.dll', 
-               'Purviewdata.Autorest\bin\Az.Purviewdata.private.dll'
+               'Purviewdata.Autorest/bin/Az.Purviewdata.private.dll'
 
 # Script files (.ps1) that are run in the caller's environment prior to importing this module.
-# ScriptsToProcess = @()
+ScriptsToProcess = @()
 
 # Type files (.ps1xml) to be loaded when importing this module
-# TypesToProcess = @()
+TypesToProcess = @()
 
 # Format files (.ps1xml) to be loaded when importing this module
 FormatsToProcess = 'Purview.Autorest/Az.Purview.format.ps1xml', 
-               'Purviewdata.Autorest/Az.Purviewdata.format.ps1xml', 
-               'Purview.Autorest\Az.Purview.format.ps1xml', 
-               'Purviewdata.Autorest\Az.Purviewdata.format.ps1xml'
+               'Purviewdata.Autorest/Az.Purviewdata.format.ps1xml'
 
 # Modules to import as nested modules of the module specified in RootModule/ModuleToProcess
 NestedModules = @('Purview.Autorest/Az.Purview.psm1', 
-               'Purviewdata.Autorest/Az.Purviewdata.psm1', 
-               'Purview.Autorest\Az.Purview.psm1', 
-               'Purviewdata.Autorest\Az.Purviewdata.psm1')
+               'Purviewdata.Autorest/Az.Purviewdata.psm1')
 
 # Functions to export from this module, for best performance, do not use wildcards and do not delete the entry, use an empty array if there are no functions to export.
 FunctionsToExport = 'Add-AzPurviewAccountRootCollectionAdmin', 'Get-AzPurviewAccount', 
@@ -180,7 +174,7 @@ FunctionsToExport = 'Add-AzPurviewAccountRootCollectionAdmin', 'Get-AzPurviewAcc
 CmdletsToExport = @()
 
 # Variables to export from this module
-VariablesToExport = '*'
+# VariablesToExport = @()
 
 # Aliases to export from this module, for best performance, do not use wildcards and do not delete the entry, use an empty array if there are no aliases to export.
 AliasesToExport = @()
