@@ -178,12 +178,26 @@ Function Move-Generation2Master {
             Import-Module $psd1Path
             Import-Module platyPS
             $HelpFolder = "$DestPath\$ModuleName$Psd1FolderPostfix\help"
+            
             if ((Get-ChildItem $HelpFolder).Length -ne 0)
             {
+                # Clean up the help folder and remove the help files which are not exported by the module.
+                $ModuleMatadata = Get-Module "Az.$ModuleName"
+                $ExportedCommands = $ModuleMatadata.ExportedCommands.Values | Where-Object {$_.CommandType -ne 'Alias'} | ForEach-Object { $_.Name}
                 Update-MarkdownHelpModule -Path $HelpFolder -RefreshModulePage -AlphabeticParamsOrder -UseFullTypeName -ExcludeDontShow
+                $ExposedHelpFiles = Get-ChildItem $HelpFolder -Recurse -Filter "*-*.md"
+                foreach ($ExposedHelpFile in $ExposedHelpFiles)
+                {
+                    $CmdletName = $ExposedHelpFile.Name.Replace(".md", "")
+                    if ($ExportedCommands -notcontains $CmdletName)
+                    {
+                        Remove-Item $ExposedHelpFile.FullName
+                    }
+                }
             }
             else
             {
+                Copy-Item -Path "$DestPath\$ModuleName.Autorest\help\Az.$ModuleName.md" -Destination $HelpFolder -Recurse
                 New-MarkdownHelp -UseFullTypeName -AlphabeticParamsOrder -Module "Az.$ModuleName" -OutputFolder $HelpFolder
             }
         } -ArgumentList $ModuleName, $DestPath, $Psd1FolderPostfix
