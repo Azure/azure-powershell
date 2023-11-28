@@ -209,6 +209,36 @@ function Get-AzMigrateServerMigrationStatus {
             }
         }
 
+        function Convert-ToMbps {
+            param (
+                [double]$UploadSpeedInBytesPerSecond
+            )
+
+            if ($UploadSpeedInBytesPerSecond -eq $null -or $UploadSpeedInBytesPerSecond -eq 0) {
+                return "    -"
+            }
+
+            # Conversion factor: 1 byte = 8 bits
+            $UploadSpeedInBitsPerSecond = $UploadSpeedInBytesPerSecond * 8
+
+            # Conversion factor: 1 megabit = 1,000,000 bits
+            $UploadSpeedInMbps = [math]::Round($UploadSpeedInBitsPerSecond / 1e6)
+
+            return "$UploadSpeedInMbps Mbps"
+        }
+
+        function Add-Percent {
+            param (
+                [double]$Value
+            )
+
+            if ($Value -ne $null -and $Value -ne 0) {
+                return "$Value%"
+            } else {
+                return "    -"
+            }
+        }
+
         $parameterSet = $PSCmdlet.ParameterSetName
         $null = $PSBoundParameters.Remove('ResourceGroupName')
         $null = $PSBoundParameters.Remove('ProjectName')
@@ -320,15 +350,10 @@ function Get-AzMigrateServerMigrationStatus {
             }
             elseif ($ReplicationMigrationItem.ReplicationStatus -match "Resum") {
                 $row1["State"] = $ReplicationMigrationItem.ReplicationStatus
-                $row1["TimeRemaining"] = "     -"
-                $row1["UploadSpeed"] = "     -"
-                if ($ReplicationMigrationItem.ProviderSpecificDetail.GatewayOperationDetailProgressPercentage -ne $null) {
-                    $row1["Progress"] = $ReplicationMigrationItem.ProviderSpecificDetail.GatewayOperationDetailProgressPercentage
-                }
-                else {
-                    $row1["Progress"] = "    -"
-                }
-                $row1["TimeElapsed"] = "     -"
+                $row1["TimeRemaining"] = Convert-MillisecondsToTime -Milliseconds $ReplicationMigrationItem.ProviderSpecificDetail.GatewayOperationDetailTimeRemaining
+                $row1["UploadSpeed"] = Convert-ToMbps -UploadSpeedInBytesPerSecond $ReplicationMigrationItem.ProviderSpecificDetail.GatewayOperationDetailUploadSpeed
+                $row1["Progress"] = Add-Percent -Value $ReplicationMigrationItem.ProviderSpecificDetail.GatewayOperationDetailProgressPercentage
+                $row1["TimeElapsed"] = Convert-MillisecondsToTime -Milliseconds $ReplicationMigrationItem.ProviderSpecificDetail.GatewayOperationDetailTimeElapsed
             }
             elseif ($ReplicationMigrationItem.ProviderSpecificDetail.GatewayOperationDetailState -match "Completed") {
                 $row1["TimeRemaining"] = "     -"
@@ -338,8 +363,8 @@ function Get-AzMigrateServerMigrationStatus {
             }
             else {
                 $row1["TimeRemaining"] = Convert-MillisecondsToTime -Milliseconds $ReplicationMigrationItem.ProviderSpecificDetail.GatewayOperationDetailTimeRemaining
-                $row1["UploadSpeed"] = $ReplicationMigrationItem.ProviderSpecificDetail.GatewayOperationDetailUploadSpeed
-            $row1["Progress"] = $ReplicationMigrationItem.ProviderSpecificDetail.GatewayOperationDetailProgressPercentage
+                $row1["UploadSpeed"] = Convert-ToMbps -UploadSpeedInBytesPerSecond $ReplicationMigrationItem.ProviderSpecificDetail.GatewayOperationDetailUploadSpeed
+                $row1["Progress"] = Add-Percent -Value $ReplicationMigrationItem.ProviderSpecificDetail.GatewayOperationDetailProgressPercentage
                 $row1["TimeElapsed"] = Convert-MillisecondsToTime -Milliseconds $ReplicationMigrationItem.ProviderSpecificDetail.GatewayOperationDetailTimeElapsed
             }
             #$row1["ESXiHost"] = $ReplicationMigrationItem.ProviderSpecificDetail.GatewayOperationDetailHostName
@@ -373,21 +398,10 @@ function Get-AzMigrateServerMigrationStatus {
                     }
                     elseif ($ReplicationMigrationItem.ReplicationStatus -match "Resum") {
                         $row["State"] = $ReplicationMigrationItem.ReplicationStatus
-                        $row["TimeRemaining"] = "     -"
-                        $row["UploadSpeed"] = "     -"
-                        if ($disk.GatewayOperationDetailProgressPercentage -ne $null) {
-                            $row["Progress"] = $disk.GatewayOperationDetailProgressPercentage
-                        }
-                        else {
-                            $row["Progress"] = "    -"
-                        }
-                        $row["TimeElapsed"] = "     -"
-                        if ($disk.GatewayOperationDetailProgressPercentage -ne $null) {
-                            $row["Progress"] =$disk.GatewayOperationDetailProgressPercentage
-                        }
-                        else {
-                :           $row["Progress"] = "    -"
-                       }
+                        $row["TimeRemaining"] = Convert-MillisecondsToTime -Milliseconds $disk.GatewayOperationDetailTimeRemaining
+                        $row["UploadSpeed"] = Convert-ToMbps -UploadSpeedInBytesPerSecond $disk.GatewayOperationDetailUploadSpeed
+                        $row["Progress"] = Add-Percent -Value $disk.GatewayOperationDetailProgressPercentage
+                        $row["TimeElapsed"] = Convert-MillisecondsToTime -Milliseconds $disk.GatewayOperationDetailTimeElapsed
                     }
                     elseif ($disk.GatewayOperationDetailState -match "Completed") {
                         $row["Progress"] = "    -"
@@ -397,11 +411,11 @@ function Get-AzMigrateServerMigrationStatus {
                     }
                     else {
                         $row["TimeRemaining"] = Convert-MillisecondsToTime -Milliseconds $disk.GatewayOperationDetailTimeRemaining
-                        $row["UploadSpeed"] = $disk.GatewayOperationDetailUploadSpeed
-                    $row["Progress"] = $disk.GatewayOperationDetailProgressPercentage
+                        $row["UploadSpeed"] = Convert-ToMbps -UploadSpeedInBytesPerSecond $disk.GatewayOperationDetailUploadSpeed
+                        $row["Progress"] = Add-Percent -Value $disk.GatewayOperationDetailProgressPercentage
                         $row["TimeElapsed"] = Convert-MillisecondsToTime -Milliseconds $disk.GatewayOperationDetailTimeElapsed
                     }
-                    $row["Datastore"] = $disk.GatewayOperationDetailDataStore[0]
+                    $row["Datastore"] = $disk.GatewayOperationDetailDataStore -join ', '
                     $diskStatusTable.Rows.Add($row)
                 }
 
