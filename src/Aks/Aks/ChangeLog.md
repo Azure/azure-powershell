@@ -18,6 +18,8 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
+
+## Version 6.0.0
 * Removed parameter `DockerBridgeCidr` from `New-AzAksCluster`
 
 ## Version 5.5.1

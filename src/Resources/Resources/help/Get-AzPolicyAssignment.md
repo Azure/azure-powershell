@@ -1,6 +1,7 @@
 ---
-external help file: Az.Resources-help.xml
+external help file: Microsoft.Azure.PowerShell.Cmdlets.ResourceManager.dll-Help.xml
 Module Name: Az.Resources
+ms.assetid: 2DBAF415-A039-479E-B3CA-E00FD5E476C9
 online version: https://learn.microsoft.com/powershell/module/az.resources/get-azpolicyassignment
 schema: 2.0.0
 ---
@@ -12,37 +13,28 @@ Gets policy assignments.
 
 ## SYNTAX
 
-### Default (Default)
+### DefaultParameterSet (Default)
 ```
-Get-AzPolicyAssignment [-BackwardCompatible] [-DefaultProfile <PSObject>] [<CommonParameters>]
-```
-
-### Name
-```
-Get-AzPolicyAssignment -Name <String> [-Scope <String>] [-BackwardCompatible] [-DefaultProfile <PSObject>]
+Get-AzPolicyAssignment [-ApiVersion <String>] [-Pre] [-DefaultProfile <IAzureContextContainer>]
  [<CommonParameters>]
 ```
 
-### PolicyDefinitionId
+### NameParameterSet
 ```
-Get-AzPolicyAssignment [-Scope <String>] -PolicyDefinitionId <String> [-BackwardCompatible]
- [-DefaultProfile <PSObject>] [<CommonParameters>]
-```
-
-### IncludeDescendent
-```
-Get-AzPolicyAssignment [-Scope <String>] [-IncludeDescendent] [-BackwardCompatible]
- [-DefaultProfile <PSObject>] [<CommonParameters>]
+Get-AzPolicyAssignment [-Name <String>] [-Scope <String>] [-PolicyDefinitionId <String>] [-ApiVersion <String>]
+ [-Pre] [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
-### Scope
+### IncludeDescendentParameterSet
 ```
-Get-AzPolicyAssignment -Scope <String> [-BackwardCompatible] [-DefaultProfile <PSObject>] [<CommonParameters>]
+Get-AzPolicyAssignment [-Scope <String>] [-IncludeDescendent] [-ApiVersion <String>] [-Pre]
+ [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
-### Id
+### IdParameterSet
 ```
-Get-AzPolicyAssignment -Id <String> [-BackwardCompatible] [-DefaultProfile <PSObject>] [<CommonParameters>]
+Get-AzPolicyAssignment -Id <String> [-PolicyDefinitionId <String>] [-ApiVersion <String>] [-Pre]
+ [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -77,16 +69,9 @@ The first command specifies the ID of the management group to query.
 The second command gets all of the policy assignments that are assigned to the management group with ID 'myManagementGroup'.
 
 ### Example 4: Get the scope, policy set definition identifier, and display name of all policy assignments formatted as a list
-```powershell
-Get-AzPolicyAssignment | Select-Object -Property Scope, PolicyDefinitionID, DisplayName | Format-List
-```
 
-This command is useful when you need to find the reader-friendly **DisplayName** property of an Azure
-Policy assignment.
-
-### Example 5: [Backcompat] Get the scope, policy set definition identifier, and display name of all policy assignments formatted as a list
 ```powershell
-Get-AzPolicyAssignment -BackwardCompatible | Select-Object -ExpandProperty properties | Select-Object -Property Scope, PolicyDefinitionID, DisplayName | Format-List
+Get-AzPolicyAssignment | Select-Object -ExpandProperty properties | Select-Object -Property Scope, PolicyDefinitionID, DisplayName | Format-List
 ```
 
 This command is useful when you need to find the reader-friendly **DisplayName** property of an Azure
@@ -94,11 +79,12 @@ Policy assignment.
 
 ## PARAMETERS
 
-### -BackwardCompatible
-Causes cmdlet to return artifacts using legacy format placing policy-specific properties in a property bag object.
+### -ApiVersion
+Specifies the version of the resource provider API to use.
+If you do not specify a version, this cmdlet uses the latest available version.
 
 ```yaml
-Type: System.Management.Automation.SwitchParameter
+Type: System.String
 Parameter Sets: (All)
 Aliases:
 
@@ -110,13 +96,12 @@ Accept wildcard characters: False
 ```
 
 ### -DefaultProfile
-The DefaultProfile parameter is not functional.
-Use the SubscriptionId parameter when available if executing the cmdlet against a different subscription.
+The credentials, account, tenant, and subscription used for communication with azure
 
 ```yaml
-Type: System.Management.Automation.PSObject
+Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer
 Parameter Sets: (All)
-Aliases: AzureRMContext, AzureCredential
+Aliases: AzContext, AzureRmContext, AzureCredential
 
 Required: False
 Position: Named
@@ -126,13 +111,12 @@ Accept wildcard characters: False
 ```
 
 ### -Id
-The ID of the policy assignment to get.
-Use the format '{scope}/providers/Microsoft.Authorization/policyAssignments/{policyAssignmentName}'.
+Specifies the fully qualified resource ID for the policy assignment that this cmdlet gets.
 
 ```yaml
 Type: System.String
-Parameter Sets: Id
-Aliases: ResourceId, PolicyAssignmentId
+Parameter Sets: IdParameterSet
+Aliases: ResourceId
 
 Required: True
 Position: Named
@@ -142,11 +126,11 @@ Accept wildcard characters: False
 ```
 
 ### -IncludeDescendent
-Get all policy assignments that target the given policy definition [fully qualified] ID.
+Causes the list of returned policy assignments to include all assignments related to the given scope, including those from ancestor scopes and those from descendent scopes.
 
 ```yaml
 Type: System.Management.Automation.SwitchParameter
-Parameter Sets: IncludeDescendent
+Parameter Sets: IncludeDescendentParameterSet
 Aliases:
 
 Required: True
@@ -157,42 +141,11 @@ Accept wildcard characters: False
 ```
 
 ### -Name
-The name of the policy assignment to get.
+Specifies the name of the policy assignment that this cmdlet gets.
 
 ```yaml
 Type: System.String
-Parameter Sets: Name
-Aliases: PolicyAssignmentName
-
-Required: True
-Position: Named
-Default value: None
-Accept pipeline input: True (ByPropertyName)
-Accept wildcard characters: False
-```
-
-### -PolicyDefinitionId
-Get all policy assignments that target the given policy definition [fully qualified] ID.
-
-```yaml
-Type: System.String
-Parameter Sets: PolicyDefinitionId
-Aliases:
-
-Required: True
-Position: Named
-Default value: None
-Accept pipeline input: True (ByPropertyName)
-Accept wildcard characters: False
-```
-
-### -Scope
-The scope of the policy assignment.
-Valid scopes are: management group (format: '/providers/Microsoft.Management/managementGroups/{managementGroup}'), subscription (format: '/subscriptions/{subscriptionId}'), resource group (format: '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}', or resource (format: '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/[{parentResourcePath}/]{resourceType}/{resourceName}'
-
-```yaml
-Type: System.String
-Parameter Sets: Name, PolicyDefinitionId, IncludeDescendent
+Parameter Sets: NameParameterSet
 Aliases:
 
 Required: False
@@ -202,12 +155,45 @@ Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
 ```
 
+### -PolicyDefinitionId
+Specifies the ID of the policy definition of the policy assignments that this cmdlet gets.
+
 ```yaml
 Type: System.String
-Parameter Sets: Scope
+Parameter Sets: NameParameterSet, IdParameterSet
 Aliases:
 
-Required: True
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: True (ByPropertyName)
+Accept wildcard characters: False
+```
+
+### -Pre
+Indicates that this cmdlet considers pre-release API versions when it automatically determines which version to use.
+
+```yaml
+Type: System.Management.Automation.SwitchParameter
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -Scope
+Specifies the scope at which the policy is applied for the assignment that this cmdlet gets.
+
+```yaml
+Type: System.String
+Parameter Sets: NameParameterSet, IncludeDescendentParameterSet
+Aliases:
+
+Required: False
 Position: Named
 Default value: None
 Accept pipeline input: True (ByPropertyName)
@@ -219,14 +205,22 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
-### System.Management.Automation.SwitchParameter
-
 ### System.String
+
+### System.Management.Automation.SwitchParameter
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.Policy.Models.Api20220601.IPolicyAssignment
+### Microsoft.Azure.Commands.ResourceManager.Cmdlets.Implementation.Policy.PsPolicyAssignment
 
 ## NOTES
 
 ## RELATED LINKS
+
+[New-AzPolicyAssignment](./New-AzPolicyAssignment.md)
+
+[Remove-AzPolicyAssignment](./Remove-AzPolicyAssignment.md)
+
+[Set-AzPolicyAssignment](./Set-AzPolicyAssignment.md)
+
+

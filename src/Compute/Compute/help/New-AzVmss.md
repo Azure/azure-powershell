@@ -16,14 +16,14 @@ Creates a VMSS.
 ### DefaultParameter (Default)
 ```
 New-AzVmss [-ResourceGroupName] <String> [-VMScaleSetName] <String>
- [-VirtualMachineScaleSet] <PSVirtualMachineScaleSet> [-AsJob] [-DisableIntegrityMonitoring]
+ [-VirtualMachineScaleSet] <PSVirtualMachineScaleSet> [-AsJob]
  [-EdgeZone <String>] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### SimpleParameterSet
 ```
 New-AzVmss [[-ResourceGroupName] <String>] [-VMScaleSetName] <String> [-AsJob] [-UserData <String>]
- [-DisableIntegrityMonitoring] [-ImageName <String>] -Credential <PSCredential> [-InstanceCount <Int32>]
+ [-ImageName <String>] -Credential <PSCredential> [-InstanceCount <Int32>]
  [-VirtualNetworkName <String>] [-SubnetName <String>] [-PublicIpAddressName <String>]
  [-DomainNameLabel <String>] [-SecurityGroupName <String>] [-LoadBalancerName <String>]
  [-BackendPort <Int32[]>] [-Location <String>] [-EdgeZone <String>] [-VmSize <String>]
@@ -207,62 +207,10 @@ $vmss = Get-AzVmss -ResourceGroupName $ResourceGroupName -VMScaleSetName $vmssNa
 
 Create a VMSS with a UserData value
 
-### Example 4: Create a VMSS with the Guest Attestation extension installed and with the TrustedLaunch security type.
-```powershell
-# Common setup
-$rgname = <RESOURCE GROUP NAME>;
-$loc = <AZURE REGION>;
-New-AzResourceGroup -Name $rgname -Location $loc -Force;
-$vmssSize = 'Standard_DS3_v2';
-$PublisherName = "MicrosoftWindowsServer";
-$Offer = "WindowsServer";
-$SKU = "2019-DATACENTER-GENSECOND";
-$securityType = "TrustedLaunch";
-$secureboot = $true;
-$vtpm = $true;
-
-# NRP
-$subnet = New-AzVirtualNetworkSubnetConfig -Name ('subnet' + $rgname) -AddressPrefix "10.0.0.0/24";
-$vnet = New-AzVirtualNetwork -Force -Name ('vnet' + $rgname) -ResourceGroupName $rgname -Location $loc -AddressPrefix "10.0.0.0/16" -Subnet $subnet;
-$vnet = Get-AzVirtualNetwork -Name ('vnet' + $rgname) -ResourceGroupName $rgname;
-$subnetId = $vnet.Subnets[0].Id;
-
-# New VMSS Parameters
-$vmssName = 'vmss' + $rgname;
-$vmssType = 'Microsoft.Compute/virtualMachineScaleSets';
-$adminUsername = <USER NAME>;
-$adminPassword = <PASSWORD>;
-$imgRef = New-Object -TypeName 'Microsoft.Azure.Commands.Compute.Models.PSVirtualMachineImage';
-$imgRef.PublisherName = $PublisherName;
-$imgRef.Offer = $Offer;
-$imgRef.Skus = $SKU;
-$imgRef.Version = "latest";
-$ipCfg = New-AzVmssIpConfig -Name 'test' -SubnetId $subnetId;
-
-$vmss = New-AzVmssConfig -Location $loc -SkuCapacity 2 -SkuName $vmssSize -UpgradePolicyMode 'Manual'  `
-| Add-AzVmssNetworkInterfaceConfiguration -Name 'test' -Primary $true -IPConfiguration $ipCfg `
-| Set-AzVmssOsProfile -ComputerNamePrefix 'test' -AdminUsername $adminUsername -AdminPassword $adminPassword `
-| Set-AzVmssStorageProfile -OsDiskCreateOption 'FromImage' -OsDiskCaching 'ReadOnly' `
-    -ImageReferenceOffer $imgRef.Offer -ImageReferenceSku $imgRef.Skus -ImageReferenceVersion $imgRef.Version `
-    -ImageReferencePublisher $imgRef.PublisherName ;
-
-# Requirements for the Guest Attestation defaulting behavior.
-# SecurityType is TrustedLaunch, EnableVtpm is true, EnableSecureBoot is true.
-# DisableIntegrityMonitoring is not true.
-$vmss = Set-AzVmssSecurityProfile -VirtualMachineScaleSet $vmss -SecurityType $securityType;
-$vmss = Set-AzVmssUefi -VirtualMachineScaleSet $VMSS -EnableVtpm $vtpm -EnableSecureBoot $secureboot;
-
-# Create Vmss
-$result = New-AzVmss -ResourceGroupName $rgname -Name $vmssName -VirtualMachineScaleSet $vmss;
-```
-
-Create a VMSS with the TrustedLaunch security type and the necessary UEFISettings values using a VmssConfig object. 
-
-### Example 5: Create a Vmss with the security type TrustedLaunch
+### Example 4: Create a Vmss with the security type TrustedLaunch
 ```powershell
 $rgname = "rganme";
 $loc = "eastus";
-New-AzResourceGroup -Name $rgname -Location $loc -Force;
 
 # VMSS Profile & Hardware requirements for the TrustedLaunch default behavior.
 $vmssSize = 'Standard_D4s_v3';
@@ -276,11 +224,23 @@ $vmCred = New-Object System.Management.Automation.PSCredential ($adminUsername, 
 # VMSS Creation 
 $result = New-AzVmss -Credential $vmCred -VMScaleSetName $vmssName1 -ImageName $imageName -SecurityType "TrustedLaunch";
 # Validate that for -SecurityType "TrustedLaunch", "-Vtpm" and -"SecureBoot" are "Enabled/true"
-# $result.VirtualMachineProfile.SecurityProfile.UefiSettings.VTpmEnabled $true;
-# $result.VirtualMachineProfile.SecurityProfile.UefiSettings.SecureBootEnabled $true;
+# $result.VirtualMachineProfile.SecurityProfile.UefiSettings.VTpmEnabled;
+# $result.VirtualMachineProfile.SecurityProfile.UefiSettings.SecureBootEnabled;
 ```
 
 This example Creates a new VMSS with the new Security Type 'TrustedLaunch' and the necessary UEFISettings values,
+
+### Example 5: Create a Vmss in Orchestration Mode: Flexible by default
+```powershell
+# Create configration object
+$vmssConfig = New-AzVmssConfig -Location EastUs2 -UpgradePolicyMode Manual -SinglePlacementGroup $true
+
+# VMSS Creation 
+New-AzVmss -ResourceGroupName TestRg -VMScaleSetName myVMSS -VirtualMachineScaleSet $vmssConfig
+
+```
+
+This example Creates a new VMSS and it will default to OrchestrationMode Flexible. 
 
 ## PARAMETERS
 
@@ -412,21 +372,6 @@ Required: False
 Position: Named
 Default value: None
 Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -DisableIntegrityMonitoring
-This flag disables the default behavior to install the Guest Attestation extension to the virtual machine scale set and its vm instances if: 1) SecurityType is TrustedLaunch, 2) SecureBootEnabled on the SecurityProfile is true, 3) VTpmEnabled on the SecurityProfile is true.
-
-```yaml
-Type: System.Management.Automation.SwitchParameter
-Parameter Sets: (All)
-Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
 ```
 

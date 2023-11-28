@@ -35,7 +35,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Resources.Authorization.Runtime
          * the boundParameterNames is a list of parameters bound to the cmdlet at runtime, 
          * We only process the Parameter beaking change attributes attached only params listed in this list (if present)
          * */
-        public static void ProcessCustomAttributesAtRuntime(CommandInfo commandInfo, InvocationInfo invocationInfo, String parameterSet, System.Management.Automation.PSCmdlet psCmdlet, bool showPreviewMessage = true)
+        public static void ProcessCustomAttributesAtRuntime(CommandInfo commandInfo, InvocationInfo invocationInfo, String parameterSet, System.Management.Automation.PSCmdlet psCmdlet)
         {
             bool supressWarningOrError = false;
 
@@ -57,48 +57,35 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Resources.Authorization.Runtime
             {
                 psCmdlet.WriteWarning("The DefaultProfile parameter is not functional. Use the SubscriptionId parameter when available if executing the cmdlet against a different subscription.");
             }
-
-            ProcessBreakingChangeAttributesAtRuntime(commandInfo, invocationInfo, parameterSet, psCmdlet);
-
-        }
-
-        private static void ProcessBreakingChangeAttributesAtRuntime(CommandInfo commandInfo, InvocationInfo invocationInfo, String parameterSet, System.Management.Automation.PSCmdlet psCmdlet)
-        {
             List<GenericBreakingChangeAttribute> attributes = new List<GenericBreakingChangeAttribute>(GetAllBreakingChangeAttributesInType(commandInfo, invocationInfo, parameterSet));
             StringBuilder sb = new StringBuilder();
-            Action<string> appendAttributeMessage = (string s) => sb.Append(s);
+            Action<string> appendBreakingChangeInfo = (string s) => sb.Append(s);
 
             if (attributes != null && attributes.Count > 0)
             {
-                appendAttributeMessage(string.Format(Resources.BreakingChangesAttributesHeaderMessage, commandInfo.Name.Split('_')[0]));
+                appendBreakingChangeInfo(string.Format(Resources.BreakingChangesAttributesHeaderMessage, commandInfo.Name.Split('_')[0]));
 
                 foreach (GenericBreakingChangeAttribute attribute in attributes)
                 {
-                    attribute.PrintCustomAttributeInfo(appendAttributeMessage);
+                    attribute.PrintCustomAttributeInfo(appendBreakingChangeInfo);
                 }
 
-                appendAttributeMessage(string.Format(Resources.BreakingChangesAttributesFooterMessage, BREAKING_CHANGE_ATTRIBUTE_INFORMATION_LINK));
+                appendBreakingChangeInfo(string.Format(Resources.BreakingChangesAttributesFooterMessage, BREAKING_CHANGE_ATTRIBUTE_INFORMATION_LINK));
 
                 psCmdlet.WriteWarning(sb.ToString());
             }
-        }
 
-
-        public static void ProcessPreviewMessageAttributesAtRuntime(CommandInfo commandInfo, InvocationInfo invocationInfo, String parameterSet, System.Management.Automation.PSCmdlet psCmdlet)
-        {
             List<PreviewMessageAttribute> previewAttributes = new List<PreviewMessageAttribute>(GetAllPreviewAttributesInType(commandInfo, invocationInfo));
-            StringBuilder sb = new StringBuilder();
-            Action<string> appendAttributeMessage = (string s) => sb.Append(s);
 
             if (previewAttributes != null && previewAttributes.Count > 0)
             {
                 foreach (PreviewMessageAttribute attribute in previewAttributes)
                 {
-                    attribute.PrintCustomAttributeInfo(appendAttributeMessage);
+                    attribute.PrintCustomAttributeInfo(psCmdlet);
                 }
-                psCmdlet.WriteWarning(sb.ToString());
             }
         }
+
 
         /**
          * This function takes in a CommandInfo (CmdletInfo or FunctionInfo)
@@ -141,12 +128,6 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Resources.Authorization.Runtime
             }
             return invocationInfo == null ? attributeList : attributeList.Where(e => e.GetType() == typeof(ParameterSetBreakingChangeAttribute) ? ((ParameterSetBreakingChangeAttribute)e).IsApplicableToInvocation(invocationInfo, parameterSet) : e.IsApplicableToInvocation(invocationInfo));
         }
-
-        public static bool ContainsPreviewAttribute(CommandInfo commandInfo, InvocationInfo invocationInfo)
-        {
-            return GetAllPreviewAttributesInType(commandInfo, invocationInfo)?.Count() > 0;
-        }
-
         private static IEnumerable<PreviewMessageAttribute> GetAllPreviewAttributesInType(CommandInfo commandInfo, InvocationInfo invocationInfo)
         {
             List<PreviewMessageAttribute> attributeList = new List<PreviewMessageAttribute>();

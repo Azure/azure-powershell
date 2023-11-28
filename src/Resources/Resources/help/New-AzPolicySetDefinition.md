@@ -1,5 +1,5 @@
 ---
-external help file: Az.Resources-help.xml
+external help file: Microsoft.Azure.PowerShell.Cmdlets.ResourceManager.dll-Help.xml
 Module Name: Az.Resources
 online version: https://learn.microsoft.com/powershell/module/az.resources/new-azpolicysetdefinition
 schema: 2.0.0
@@ -8,41 +8,42 @@ schema: 2.0.0
 # New-AzPolicySetDefinition
 
 ## SYNOPSIS
-Creates or updates a policy set definition.
+Creates a policy set definition.
 
 ## SYNTAX
 
-### Name (Default)
+### NameParameterSet (Default)
 ```
-New-AzPolicySetDefinition -Name <String> -PolicyDefinition <String> [-DisplayName <String>]
- [-Description <String>] [-Metadata <String>] [-Parameter <String>] [-PolicyDefinitionGroup <String>]
- [-BackwardCompatible] [-DefaultProfile <PSObject>] [-WhatIf] [-Confirm] [<CommonParameters>]
+New-AzPolicySetDefinition -Name <String> [-DisplayName <String>] [-Description <String>] [-Metadata <String>]
+ -PolicyDefinition <String> [-Parameter <String>] [-GroupDefinition <String>] [-ApiVersion <String>] [-Pre]
+ [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
-### ManagementGroupName
+### ManagementGroupNameParameterSet
 ```
-New-AzPolicySetDefinition -Name <String> -ManagementGroupName <String> -PolicyDefinition <String>
- [-DisplayName <String>] [-Description <String>] [-Metadata <String>] [-Parameter <String>]
- [-PolicyDefinitionGroup <String>] [-BackwardCompatible] [-DefaultProfile <PSObject>] [-WhatIf] [-Confirm]
+New-AzPolicySetDefinition -Name <String> [-DisplayName <String>] [-Description <String>] [-Metadata <String>]
+ -PolicyDefinition <String> [-Parameter <String>] -ManagementGroupName <String> [-GroupDefinition <String>]
+ [-ApiVersion <String>] [-Pre] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
  [<CommonParameters>]
 ```
 
-### SubscriptionId
+### SubscriptionIdParameterSet
 ```
-New-AzPolicySetDefinition -Name <String> -SubscriptionId <String> -PolicyDefinition <String>
- [-DisplayName <String>] [-Description <String>] [-Metadata <String>] [-Parameter <String>]
- [-PolicyDefinitionGroup <String>] [-BackwardCompatible] [-DefaultProfile <PSObject>] [-WhatIf] [-Confirm]
+New-AzPolicySetDefinition -Name <String> [-DisplayName <String>] [-Description <String>] [-Metadata <String>]
+ -PolicyDefinition <String> [-Parameter <String>] -SubscriptionId <Guid> [-GroupDefinition <String>]
+ [-ApiVersion <String>] [-Pre] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
  [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-The **New-AzPolicySetDefinition** cmdlet creates or updates a policy set definition in the given subscription or management group with the given name.
+The **New-AzPolicySetDefinition** cmdlet creates a policy set definition.
 
 ## EXAMPLES
 
 ### Example 1: Create a policy set definition with metadata by using a policy set file
+
 ```powershell
-[
+<#[
    {
       "policyDefinitionId": "/providers/Microsoft.Authorization/policyDefinitions/2a0e14a6-b0a6-4fab-991a-187a4f81c498",
       "parameters": {
@@ -57,17 +58,16 @@ The **New-AzPolicySetDefinition** cmdlet creates or updates a policy set definit
    {
       "policyDefinitionId": "/providers/Microsoft.Authorization/policyDefinitions/464dbb85-3d5f-4a1d-bb09-95a9b5dd19cf"
    }
-]
-
+]#>
 New-AzPolicySetDefinition -Name 'VMPolicySetDefinition' -Metadata '{"category":"Virtual Machine"}' -PolicyDefinition C:\VMPolicySet.json
 ```
 
-This command creates a policy set definition named VMPolicySetDefinition with metadata indicating its category is "Virtual Machine" that contains the policy definitions specified in C:\VMPolicy.json.
-Example content of the VMPolicy.json is provided above.
+This command creates a policy set definition named VMPolicySetDefinition with metadata indicating its category is "Virtual Machine" that contains the policy definitions specified in C:\VMPolicy.json. Example content of the VMPolicy.json is provided above.
 
 ### Example 2: Create a parameterized policy set definition
+
 ```powershell
-[
+<#[
    {
       "policyDefinitionId": "/providers/Microsoft.Authorization/policyDefinitions/2a0e14a6-b0a6-4fab-991a-187a4f81c498",
       "parameters": {
@@ -82,17 +82,16 @@ Example content of the VMPolicy.json is provided above.
    {
       "policyDefinitionId": "/providers/Microsoft.Authorization/policyDefinitions/464dbb85-3d5f-4a1d-bb09-95a9b5dd19cf"
    }
-]
-
+]#>
 New-AzPolicySetDefinition -Name 'VMPolicySetDefinition' -PolicyDefinition C:\VMPolicySet.json -Parameter '{ "buTagValue": { "type": "string" } }'
 ```
 
-This command creates a parameterized policy set definition named VMPolicySetDefinition that contains the policy definitions specified in C:\VMPolicy.json.
-Example content of the VMPolicy.json is provided above.
+This command creates a parameterized policy set definition named VMPolicySetDefinition that contains the policy definitions specified in C:\VMPolicy.json. Example content of the VMPolicy.json is provided above.
 
 ### Example 3: Create a policy set definition with policy definition groups
+
 ```powershell
-[
+<#[
    {
       "policyDefinitionId": "/providers/Microsoft.Authorization/policyDefinitions/2a0e14a6-b0a6-4fab-991a-187a4f81c498",
       "groupNames": [ "group1" ]
@@ -101,22 +100,21 @@ Example content of the VMPolicy.json is provided above.
       "policyDefinitionId": "/providers/Microsoft.Authorization/policyDefinitions/464dbb85-3d5f-4a1d-bb09-95a9b5dd19cf",
       "groupNames": [ "group2" ]
    }
-]
-
+]#>
 $groupsJson = ConvertTo-Json @{ name = "group1" }, @{ name = "group2" }
 New-AzPolicySetDefinition -Name 'VMPolicySetDefinition' -GroupDefinition $groupsJson -PolicyDefinition C:\VMPolicySet.json
 ```
 
-This command creates a policy set definition named VMPolicySetDefinition with grouping of policy definitions specified in C:\VMPolicy.json.
-Example content of the VMPolicy.json is provided above.
+This command creates a policy set definition named VMPolicySetDefinition with grouping of policy definitions specified in C:\VMPolicy.json. Example content of the VMPolicy.json is provided above.
 
 ## PARAMETERS
 
-### -BackwardCompatible
-Causes cmdlet to return artifacts using legacy format placing policy-specific properties in a property bag object.
+### -ApiVersion
+When set, indicates the version of the resource provider API to use.
+If not specified, the API version is automatically determined as the latest available.
 
 ```yaml
-Type: System.Management.Automation.SwitchParameter
+Type: System.String
 Parameter Sets: (All)
 Aliases:
 
@@ -128,13 +126,12 @@ Accept wildcard characters: False
 ```
 
 ### -DefaultProfile
-The DefaultProfile parameter is not functional.
-Use the SubscriptionId parameter when available if executing the cmdlet against a different subscription.
+The credentials, account, tenant, and subscription used for communication with azure
 
 ```yaml
-Type: System.Management.Automation.PSObject
+Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer
 Parameter Sets: (All)
-Aliases: AzureRMContext, AzureCredential
+Aliases: AzContext, AzureRmContext, AzureCredential
 
 Required: False
 Position: Named
@@ -144,7 +141,7 @@ Accept wildcard characters: False
 ```
 
 ### -Description
-The policy set definition description.
+The description for policy set definition.
 
 ```yaml
 Type: System.String
@@ -159,7 +156,22 @@ Accept wildcard characters: False
 ```
 
 ### -DisplayName
-The display name of the policy set definition.
+The display name for policy set definition.
+
+```yaml
+Type: System.String
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: True (ByPropertyName)
+Accept wildcard characters: False
+```
+
+### -GroupDefinition
+The policy definition groups for the new policy set definition. This can either be a path to a file containing the groups, or the groups as a JSON string.
 
 ```yaml
 Type: System.String
@@ -174,11 +186,11 @@ Accept wildcard characters: False
 ```
 
 ### -ManagementGroupName
-The ID of the management group.
+The name of the management group of the new policy set definition.
 
 ```yaml
 Type: System.String
-Parameter Sets: ManagementGroupName
+Parameter Sets: ManagementGroupNameParameterSet
 Aliases:
 
 Required: True
@@ -189,8 +201,7 @@ Accept wildcard characters: False
 ```
 
 ### -Metadata
-The policy set definition metadata.
-Metadata is an open ended object and is typically a collection of key value pairs.
+The metadata for policy set definition. This can either be a path to a file name containing the metadata, or the metadata as a JSON string.
 
 ```yaml
 Type: System.String
@@ -205,12 +216,12 @@ Accept wildcard characters: False
 ```
 
 ### -Name
-The name of the policy set definition to create.
+The policy set definition name.
 
 ```yaml
 Type: System.String
 Parameter Sets: (All)
-Aliases: PolicySetDefinitionName
+Aliases:
 
 Required: True
 Position: Named
@@ -220,9 +231,8 @@ Accept wildcard characters: False
 ```
 
 ### -Parameter
-[Microsoft.Azure.PowerShell.Cmdlets.Policy.Runtime.Info(PossibleTypes=([Microsoft.Azure.PowerShell.Cmdlets.Policy.Models.Api20210601.IParameterDefinitions]))]
- The parameter definitions for parameters used in the policy rule.
- The keys are the parameter names.
+The parameters declaration for policy set definition.
+This can either be a path to a file name containing the parameters declaration, or the parameters declaration as a JSON string.
 
 ```yaml
 Type: System.String
@@ -232,13 +242,12 @@ Aliases:
 Required: False
 Position: Named
 Default value: None
-Accept pipeline input: False
+Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
 ```
 
 ### -PolicyDefinition
-[Microsoft.Azure.PowerShell.Cmdlets.Policy.Runtime.Info(PossibleTypes=([Microsoft.Azure.PowerShell.Cmdlets.Policy.Models.Api20210601.IPolicyDefinitionReference[]]))]
- The policy definition array in JSON string form.
+The policy definitions. This can either be a path to a file name containing the policy definitions, or the policy definitions as a JSON string.
 
 ```yaml
 Type: System.String
@@ -248,17 +257,17 @@ Aliases:
 Required: True
 Position: Named
 Default value: None
-Accept pipeline input: False
+Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
 ```
 
-### -PolicyDefinitionGroup
-The metadata describing groups of policy definition references within the policy set definition.
+### -Pre
+When set, indicates that the cmdlet should use pre-release API versions when automatically determining which version to use.
 
 ```yaml
-Type: System.String
+Type: System.Management.Automation.SwitchParameter
 Parameter Sets: (All)
-Aliases: GroupDefinition
+Aliases:
 
 Required: False
 Position: Named
@@ -268,11 +277,11 @@ Accept wildcard characters: False
 ```
 
 ### -SubscriptionId
-The ID of the target subscription.
+The subscription ID of the new policy set definition.
 
 ```yaml
-Type: System.String
-Parameter Sets: SubscriptionId
+Type: System.Nullable`1[System.Guid]
+Parameter Sets: SubscriptionIdParameterSet
 Aliases:
 
 Required: True
@@ -298,8 +307,7 @@ Accept wildcard characters: False
 ```
 
 ### -WhatIf
-Shows what would happen if the cmdlet runs.
-The cmdlet is not run.
+Shows what would happen if the cmdlet runs. The cmdlet is not run.
 
 ```yaml
 Type: System.Management.Automation.SwitchParameter
@@ -320,9 +328,11 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ### System.String
 
+### System.Nullable`1[[System.Guid, System.Private.CoreLib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]]
+
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.Policy.Models.Api20210601.IPolicySetDefinition
+### System.Management.Automation.PSObject
 
 ## NOTES
 

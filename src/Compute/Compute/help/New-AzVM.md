@@ -37,7 +37,7 @@ New-AzVM [[-ResourceGroupName] <String>] [[-Location] <String>] [-EdgeZone <Stri
 New-AzVM [-ResourceGroupName] <String> [-Location] <String> [-EdgeZone <String>] [-VM] <PSVirtualMachine>
  [[-Zone] <String[]>] [-DisableBginfoExtension] [-Tag <Hashtable>] [-LicenseType <String>] [-AsJob]
  [-OSDiskDeleteOption <String>] [-DataDiskDeleteOption <String>] [-SshKeyName <String>] [-GenerateSshKey]
- [-vCPUCountAvailable <Int32>] [-vCPUCountPerCore <Int32>] [-DisableIntegrityMonitoring]
+ [-vCPUCountAvailable <Int32>] [-vCPUCountPerCore <Int32>]
  [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
@@ -262,62 +262,7 @@ $vm = New-AzVM -ResourceGroupName $resourceGroupName -Name $vmname -Credential $
 
 This example creates a new VM as part of a VMSS with a PlatformFaultDomain value.
 
-### Example 7: Creating a new VM with the GuestAttestation extension installed by default, then recreating the VM with DisableIntegrityMonitoring to prevent this.
-```
-$rgname = <RESOURCE GROUP NAME>;
-$loc = <AZURE REGION>;
-New-AzResourceGroup -Name $rgname -Location $loc -Force;
-# VM Profile & Hardware
-$vmname = 'vm' + $rgname;
-$domainNameLabel = "d1" + $rgname;
-$vnetname = "myVnet";
-$vnetAddress = "10.0.0.0/16";
-$subnetname = "slb" + $rgname;
-$subnetAddress = "10.0.2.0/24";
-$OSDiskName = $vmname + "-osdisk";
-$NICName = $vmname+ "-nic";
-$NSGName = $vmname + "-NSG";
-$OSDiskSizeinGB = 128;
-$VMSize = "Standard_DS2_v2";
-$PublisherName = "MicrosoftWindowsServer";
-$Offer = "WindowsServer";
-$SKU = "2019-DATACENTER-GENSECOND";
-$securityType = "TrustedLaunch";
-$secureboot = $true;
-$vtpm = $true;
-# Default extension and identity values.
-$extDefaultName = "GuestAttestation";
-$vmGADefaultIDentity = "SystemAssigned";
-# Credential
-$password = <PASSWORD>;
-$securePassword = $password | ConvertTo-SecureString -AsPlainText -Force;  
-$user = <USER NAME>;
-$cred = New-Object System.Management.Automation.PSCredential ($user, $securePassword);
-# Network resources
-$frontendSubnet = New-AzVirtualNetworkSubnetConfig -Name $subnetname -AddressPrefix $subnetAddress;
-$vnet = New-AzVirtualNetwork -Name $vnetname -ResourceGroupName $rgname -Location $loc -AddressPrefix $vnetAddress -Subnet $frontendSubnet;
-$nsgRuleRDP = New-AzNetworkSecurityRuleConfig -Name RDP  -Protocol Tcp  -Direction Inbound -Priority 1001 -SourceAddressPrefix * -SourcePortRange * -DestinationAddressPrefix * -DestinationPortRange 3389 -Access Allow;
-$nsg = New-AzNetworkSecurityGroup -ResourceGroupName $RGName -Location $loc -Name $NSGName  -SecurityRules $nsgRuleRDP;
-$nic = New-AzNetworkInterface -Name $NICName -ResourceGroupName $RGName -Location $loc -SubnetId $vnet.Subnets[0].Id -NetworkSecurityGroupId $nsg.Id -EnableAcceleratedNetworking;
-# VM creation
-$vmConfig = New-AzVMConfig -VMName $vmName -VMSize $VMSize;
-Set-AzVMOperatingSystem -VM $vmConfig -Windows -ComputerName $vmName -Credential $cred;
-Set-AzVMSourceImage -VM $vmConfig -PublisherName $PublisherName -Offer $Offer -Skus $SKU -Version latest;
-Add-AzVMNetworkInterface -VM $vmConfig -Id $nic.Id;
-$vmConfig = Set-AzVMSecurityProfile -VM $vmConfig -SecurityType $securityType;
-$vmConfig = Set-AzVMUefi -VM $vmConfig -EnableVtpm $vtpm -EnableSecureBoot $secureboot;
-New-AzVM -ResourceGroupName $RGName -Location $loc -VM $vmConfig -DisableIntegrityMonitoring:$false;
-# Verify values
-$vm = Get-AzVM -ResourceGroupName $rgname -Name $vmName;
-$vmExt = Get-AzVMExtension -ResourceGroupName $rgname -VMName $vmName -Name $extDefaultName;
-# Check the default extension has been installed, and the Identity.Type defaulted to SystemAssigned.
-# $vmExt.Name
-# $vm.Identity.Type
-```
-
-This example creates a new VM with the GuestAttestation extension installed.
-
-### Example 8: Create a VM using the -Image alias.
+### Example 7: Create a VM using the -Image alias.
 ```powershell
 $resourceGroupName= "<Resource Group Name>"
 $loc = "<Azure Region>"
@@ -340,7 +285,7 @@ $vm = Get-AzVM -ResourceGroupName $resourceGroupName -Name $vmname
 
 This example creates a new VM using the -Image parameter, providing many default values to the VM. 
 
-### Example 9: Creating a VM for Trusted Launch SecurityType.
+### Example 8: Creating a VM for Trusted Launch SecurityType.
 ```powershell
 $rgname = <Resource Group Name>;
 $loc = "eastus";
@@ -540,21 +485,6 @@ Required: False
 Position: Named
 Default value: None
 Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -DisableIntegrityMonitoring
-This flag disables the default behavior to install the Guest Attestation extension to the virtual machine if: 1) SecurityType is TrustedLaunch, 2) SecureBootEnabled on the SecurityProfile is true, 3) VTpmEnabled on the SecurityProfile is true.
-
-```yaml
-Type: System.Management.Automation.SwitchParameter
-Parameter Sets: DefaultParameterSet
-Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
 ```
 
