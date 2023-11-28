@@ -194,6 +194,30 @@ Function Move-Generation2Master {
                         Remove-Item $ExposedHelpFile.FullName
                     }
                 }
+                # Remove the invalid commands from the module manifest.
+                $Psd1Metadata = Import-LocalizedData -BaseDirectory "$DestPath/$ModuleName$Psd1FolderPostfix" -FileName "Az.$ModuleName.psd1"
+                $Psd1Metadata.FunctionsToExport = $ModuleMatadata.ExportedFunctions.Keys | Sort-Object
+                if ($Psd1Metadata.FunctionsToExport.Length -eq 0)
+                {
+                    $Psd1Metadata.FunctionsToExport = @()
+                }
+                $Psd1Metadata.CmdletsToExport = $ModuleMatadata.ExportedCmdlets.Keys | Sort-Object
+                if ($Psd1Metadata.CmdletsToExport.Length -eq 0)
+                {
+                    $Psd1Metadata.CmdletsToExport = @()
+                }
+                $Psd1Metadata.AliasesToExport = $ModuleMatadata.ExportedAliases.Keys | Sort-Object
+                if ($Psd1Metadata.AliasesToExport.Length -eq 0)
+                {
+                    $Psd1Metadata.AliasesToExport = @()
+                }
+                if ($null -ne $Psd1Metadata.PrivateData) {
+                    foreach ($pKey in $Psd1Metadata.PrivateData.PSData.Keys) {
+                        $Psd1Metadata.$pKey = $Psd1Metadata.PrivateData.PSData.$pKey
+                    }
+                    $Psd1Metadata.Remove("PrivateData")
+                }
+                New-ModuleManifest -Path "$DestPath/$ModuleName$Psd1FolderPostfix/Az.$ModuleName.psd1" @Psd1Metadata
             }
             else
             {
