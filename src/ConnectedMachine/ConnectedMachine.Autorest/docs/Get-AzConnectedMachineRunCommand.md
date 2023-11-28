@@ -1,61 +1,55 @@
 ---
 external help file:
 Module Name: Az.ConnectedMachine
-online version: https://learn.microsoft.com/powershell/module/az.connectedmachine/get-azconnectedmachineextension
+online version: https://learn.microsoft.com/powershell/module/az.connectedmachine/get-azconnectedmachineruncommand
 schema: 2.0.0
 ---
 
-# Get-AzConnectedMachineExtension
+# Get-AzConnectedMachineRunCommand
 
 ## SYNOPSIS
-The operation to get the extension.
+The operation to get a run command.
 
 ## SYNTAX
 
 ### List (Default)
 ```
-Get-AzConnectedMachineExtension -MachineName <String> -ResourceGroupName <String> [-SubscriptionId <String[]>]
- [-Expand <String>] [-DefaultProfile <PSObject>] [<CommonParameters>]
+Get-AzConnectedMachineRunCommand -MachineName <String> -ResourceGroupName <String>
+ [-SubscriptionId <String[]>] [-Expand <String>] [-DefaultProfile <PSObject>] [<CommonParameters>]
 ```
 
 ### Get
 ```
-Get-AzConnectedMachineExtension -MachineName <String> -Name <String> -ResourceGroupName <String>
+Get-AzConnectedMachineRunCommand -MachineName <String> -ResourceGroupName <String> -RunCommandName <String>
  [-SubscriptionId <String[]>] [-DefaultProfile <PSObject>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-The operation to get the extension.
+The operation to get a run command.
 
 ## EXAMPLES
 
-### Example 1: List all extensions for a machine
+### Example 1: {{ Add title here }}
 ```powershell
-Get-AzConnectedMachineExtension -ResourceGroupName contoso-connected-machines -MachineName winwestus2_2
+{{ Add code here }}
 ```
 
 ```output
-Name    Location  PropertiesType        ProvisioningState
-----    --------  --------------        -----------------
-custom  westus2   CustomScriptExtension Succeeded
-custom  westus2   CustomScriptExtension Succeeded
-dsc     westus2   DSC                   Succeeded
+{{ Add output here }}
 ```
 
-Lists all extensions for a specific machine.
+{{ Add description here }}
 
-### Example 2: Get a specific extension on a machine
+### Example 2: {{ Add title here }}
 ```powershell
-Get-AzConnectedMachineExtension -ResourceGroupName contoso-connected-machines -MachineName winwestus2_2 -Name dsc
+{{ Add code here }}
 ```
 
 ```output
-Name  Location  PropertiesType        ProvisioningState
-----  --------  --------------        -----------------
-dsc   westus2   CustomScriptExtension Succeeded
+{{ Add output here }}
 ```
 
-Gets a specific extension on a machine.
+{{ Add description here }}
 
 ## PARAMETERS
 
@@ -91,26 +85,11 @@ Accept wildcard characters: False
 ```
 
 ### -MachineName
-The name of the machine containing the extension.
+The name of the hybrid machine.
 
 ```yaml
 Type: System.String
 Parameter Sets: (All)
-Aliases:
-
-Required: True
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -Name
-The name of the machine extension.
-
-```yaml
-Type: System.String
-Parameter Sets: Get
 Aliases:
 
 Required: True
@@ -127,6 +106,21 @@ The name is case insensitive.
 ```yaml
 Type: System.String
 Parameter Sets: (All)
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -RunCommandName
+The name of the run command.
+
+```yaml
+Type: System.String
+Parameter Sets: Get
 Aliases:
 
 Required: True
@@ -158,7 +152,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.Api20231003Preview.IMachineExtension
+### Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.Api20231003Preview.IMachineRunCommand
 
 ## NOTES
 

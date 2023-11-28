@@ -306,7 +306,7 @@ directive:
       subject: NetworkConfiguration
     remove: true
   - where:
-      subject: NetworkSecurityPerimeterConfiguration
+      subject: NetworkSecurityPerimeterConfiguration$
     remove: true
  
   # Removing non-expand commands

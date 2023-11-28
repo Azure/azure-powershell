@@ -1,49 +1,72 @@
 ---
 external help file:
 Module Name: Az.ConnectedMachine
-online version: https://learn.microsoft.com/powershell/module/az.connectedmachine/remove-azconnectedmachine
+online version: https://learn.microsoft.com/powershell/module/az.connectedmachine/remove-azconnectedlicense
 schema: 2.0.0
 ---
 
-# Remove-AzConnectedMachine
+# Remove-AzConnectedLicense
 
 ## SYNOPSIS
-The operation to delete a hybrid machine.
+The operation to delete a license.
 
 ## SYNTAX
 
 ### Delete (Default)
 ```
-Remove-AzConnectedMachine -Name <String> -ResourceGroupName <String> [-SubscriptionId <String>]
- [-DefaultProfile <PSObject>] [-PassThru] [-Confirm] [-WhatIf] [<CommonParameters>]
+Remove-AzConnectedLicense -Name <String> -ResourceGroupName <String> [-SubscriptionId <String>]
+ [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-PassThru] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ### DeleteViaIdentity
 ```
-Remove-AzConnectedMachine -InputObject <IConnectedMachineIdentity> [-DefaultProfile <PSObject>] [-PassThru]
- [-Confirm] [-WhatIf] [<CommonParameters>]
+Remove-AzConnectedLicense -InputObject <IConnectedMachineIdentity> [-DefaultProfile <PSObject>] [-AsJob]
+ [-NoWait] [-PassThru] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-The operation to delete a hybrid machine.
+The operation to delete a license.
 
 ## EXAMPLES
 
-### Example 1: Remove a connected machine
+### Example 1: {{ Add title here }}
 ```powershell
-Remove-AzConnectedMachine -Name myMachine -ResourceGroupName myRG
+{{ Add code here }}
 ```
 
-Deletes the connected machine.
-
-### Example 2: Remove connected machines via the pipeline
-```powershell
-Get-AzConnectedMachine -ResourceGroupName contoso-connected-machines | Remove-AzConnectedMachine
+```output
+{{ Add output here }}
 ```
 
-Removes all machines in the `contoso-connected-machines` resource group.
+{{ Add description here }}
+
+### Example 2: {{ Add title here }}
+```powershell
+{{ Add code here }}
+```
+
+```output
+{{ Add output here }}
+```
+
+{{ Add description here }}
 
 ## PARAMETERS
+
+### -AsJob
+Run the command as a job
+
+```yaml
+Type: System.Management.Automation.SwitchParameter
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
 
 ### -DefaultProfile
 The DefaultProfile parameter is not functional.
@@ -78,14 +101,29 @@ Accept wildcard characters: False
 ```
 
 ### -Name
-The name of the hybrid machine.
+The name of the license.
 
 ```yaml
 Type: System.String
 Parameter Sets: Delete
-Aliases: MachineName
+Aliases: LicenseName
 
 Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -NoWait
+Run the command asynchronously
+
+```yaml
+Type: System.Management.Automation.SwitchParameter
+Parameter Sets: (All)
+Aliases:
+
+Required: False
 Position: Named
 Default value: None
 Accept pipeline input: False

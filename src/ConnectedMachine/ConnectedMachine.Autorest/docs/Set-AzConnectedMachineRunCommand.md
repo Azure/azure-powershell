@@ -1,69 +1,64 @@
 ---
 external help file:
 Module Name: Az.ConnectedMachine
-online version: https://learn.microsoft.com/powershell/module/az.connectedmachine/set-azconnectedmachineextension
+online version: https://learn.microsoft.com/powershell/module/az.connectedmachine/set-azconnectedmachineruncommand
 schema: 2.0.0
 ---
 
-# Set-AzConnectedMachineExtension
+# Set-AzConnectedMachineRunCommand
 
 ## SYNOPSIS
-The operation to create or update the extension.
+The operation to create or update a run command.
 
 ## SYNTAX
 
 ### UpdateExpanded (Default)
 ```
-Set-AzConnectedMachineExtension -MachineName <String> -Name <String> -ResourceGroupName <String>
- -Location <String> [-SubscriptionId <String>] [-AutoUpgradeMinorVersion] [-EnableAutomaticUpgrade]
- [-ExtensionType <String>] [-ForceRerun <String>] [-InstanceViewName <String>] [-InstanceViewType <String>]
- [-InstanceViewTypeHandlerVersion <String>] [-ProtectedSetting <Hashtable>] [-Publisher <String>]
- [-Setting <Hashtable>] [-StatusCode <String>] [-StatusDisplayStatus <String>]
- [-StatusLevel <StatusLevelTypes>] [-StatusMessage <String>] [-StatusTime <DateTime>] [-Tag <Hashtable>]
- [-TypeHandlerVersion <String>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf]
+Set-AzConnectedMachineRunCommand -MachineName <String> -ResourceGroupName <String> -RunCommandName <String>
+ -Location <String> [-SubscriptionId <String>] [-AsyncExecution] [-ErrorBlobManagedIdentityClientId <String>]
+ [-ErrorBlobManagedIdentityObjectId <String>] [-ErrorBlobUri <String>]
+ [-OutputBlobManagedIdentityClientId <String>] [-OutputBlobManagedIdentityObjectId <String>]
+ [-OutputBlobUri <String>] [-Parameter <IRunCommandInputParameter[]>]
+ [-ProtectedParameter <IRunCommandInputParameter[]>] [-RunAsPassword <String>] [-RunAsUser <String>]
+ [-ScriptUriManagedIdentityClientId <String>] [-ScriptUriManagedIdentityObjectId <String>]
+ [-SourceCommandId <String>] [-SourceScript <String>] [-SourceScriptUri <String>] [-Tag <Hashtable>]
+ [-TimeoutInSecond <Int32>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf]
  [<CommonParameters>]
 ```
 
 ### Update
 ```
-Set-AzConnectedMachineExtension -MachineName <String> -Name <String> -ResourceGroupName <String>
- -ExtensionParameter <IMachineExtension> [-SubscriptionId <String>] [-DefaultProfile <PSObject>] [-AsJob]
+Set-AzConnectedMachineRunCommand -MachineName <String> -ResourceGroupName <String> -RunCommandName <String>
+ -RunCommandProperty <IMachineRunCommand> [-SubscriptionId <String>] [-DefaultProfile <PSObject>] [-AsJob]
  [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-The operation to create or update the extension.
+The operation to create or update a run command.
 
 ## EXAMPLES
 
-### Example 1: Set an extension on a machine
+### Example 1: {{ Add title here }}
 ```powershell
-$Settings = @{ "commandToExecute" = "powershell.exe -c Get-Process" }
-Set-AzConnectedMachineExtension -Name custom -ResourceGroupName ContosoTest -MachineName win-eastus1 -Location eastus -Publisher "Microsoft.Compute" -TypeHandlerVersion 1.10 -Settings $Settings -ExtensionType CustomScriptExtension
+{{ Add code here }}
 ```
 
 ```output
-Name   Location ProvisioningState
-----   -------- -----------------
-custom eastus   Succeeded
+{{ Add output here }}
 ```
 
-Sets an extension on a machine.
+{{ Add description here }}
 
-### Example 2: Set an extension with extension parameters specified via the pipeline
+### Example 2: {{ Add title here }}
 ```powershell
-$otherExtension = Get-AzConnectedMachineExtension -Name custom -ResourceGroupName ContosoTest -MachineName other
-$otherExtension | Set-AzConnectedMachineExtension -Name custom -ResourceGroupName ContosoTest -MachineName important
+{{ Add code here }}
 ```
 
 ```output
-Name   Location ProvisioningState
-----   -------- -----------------
-custom eastus   Succeeded
+{{ Add output here }}
 ```
 
-This sets an extension with the extension parameters provided by the object passed in via the pipeline.
-This is great if you want to grab the parameters of one machine and apply it to another machine.
+{{ Add description here }}
 
 ## PARAMETERS
 
@@ -82,9 +77,9 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -AutoUpgradeMinorVersion
-Indicates whether the extension should use a newer minor version if one is available at deployment time.
-Once deployed, however, the extension will not upgrade minor versions unless redeployed, even with this property set to true.
+### -AsyncExecution
+Optional.
+If set to true, provisioning will complete as soon as script starts and will not wait for script to complete.
 
 ```yaml
 Type: System.Management.Automation.SwitchParameter
@@ -114,39 +109,9 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -EnableAutomaticUpgrade
-Indicates whether the extension should be automatically upgraded by the platform if there is a newer version available.
-
-```yaml
-Type: System.Management.Automation.SwitchParameter
-Parameter Sets: UpdateExpanded
-Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -ExtensionParameter
-Describes a Machine Extension.
-To construct, see NOTES section for EXTENSIONPARAMETER properties and create a hash table.
-
-```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.Api20231003Preview.IMachineExtension
-Parameter Sets: Update
-Aliases:
-
-Required: True
-Position: Named
-Default value: None
-Accept pipeline input: True (ByValue)
-Accept wildcard characters: False
-```
-
-### -ExtensionType
-Specifies the type of the extension; an example is "CustomScriptExtension".
+### -ErrorBlobManagedIdentityClientId
+Client Id (GUID value) of the user-assigned managed identity.
+ObjectId should not be used if this is provided.
 
 ```yaml
 Type: System.String
@@ -160,8 +125,9 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -ForceRerun
-How the extension handler should be forced to update even if the extension configuration has not changed.
+### -ErrorBlobManagedIdentityObjectId
+Object Id (GUID value) of the user-assigned managed identity.
+ClientId should not be used if this is provided.
 
 ```yaml
 Type: System.String
@@ -175,38 +141,10 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -InstanceViewName
-The machine extension name.
-
-```yaml
-Type: System.String
-Parameter Sets: UpdateExpanded
-Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -InstanceViewType
-Specifies the type of the extension; an example is "CustomScriptExtension".
-
-```yaml
-Type: System.String
-Parameter Sets: UpdateExpanded
-Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -InstanceViewTypeHandlerVersion
-Specifies the version of the script handler.
+### -ErrorBlobUri
+Specifies the Azure storage blob where script error stream will be uploaded.
+Use a SAS URI with read, append, create, write access OR use managed identity to provide the VM access to the blob.
+Refer errorBlobManagedIdentity parameter.
 
 ```yaml
 Type: System.String
@@ -236,22 +174,7 @@ Accept wildcard characters: False
 ```
 
 ### -MachineName
-The name of the machine where the extension should be created or updated.
-
-```yaml
-Type: System.String
-Parameter Sets: (All)
-Aliases:
-
-Required: True
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -Name
-The name of the machine extension.
+The name of the hybrid machine.
 
 ```yaml
 Type: System.String
@@ -280,13 +203,14 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -ProtectedSetting
-The extension can contain either protectedSettings or protectedSettingsFromKeyVault or no protected settings at all.
+### -OutputBlobManagedIdentityClientId
+Client Id (GUID value) of the user-assigned managed identity.
+ObjectId should not be used if this is provided.
 
 ```yaml
-Type: System.Collections.Hashtable
+Type: System.String
 Parameter Sets: UpdateExpanded
-Aliases: ProtectedSettings
+Aliases:
 
 Required: False
 Position: Named
@@ -295,11 +219,61 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -Publisher
-The name of the extension handler publisher.
+### -OutputBlobManagedIdentityObjectId
+Object Id (GUID value) of the user-assigned managed identity.
+ClientId should not be used if this is provided.
 
 ```yaml
 Type: System.String
+Parameter Sets: UpdateExpanded
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -OutputBlobUri
+Specifies the Azure storage blob where script output stream will be uploaded.
+Use a SAS URI with read, append, create, write access OR use managed identity to provide the VM access to the blob.
+Refer outputBlobManagedIdentity parameter.
+
+```yaml
+Type: System.String
+Parameter Sets: UpdateExpanded
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -Parameter
+The parameters used by the script.
+To construct, see NOTES section for PARAMETER properties and create a hash table.
+
+```yaml
+Type: Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.Api20231003Preview.IRunCommandInputParameter[]
+Parameter Sets: UpdateExpanded
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -ProtectedParameter
+The parameters used by the script.
+To construct, see NOTES section for PROTECTEDPARAMETER properties and create a hash table.
+
+```yaml
+Type: Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.Api20231003Preview.IRunCommandInputParameter[]
 Parameter Sets: UpdateExpanded
 Aliases:
 
@@ -326,23 +300,8 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -Setting
-Json formatted public settings for the extension.
-
-```yaml
-Type: System.Collections.Hashtable
-Parameter Sets: UpdateExpanded
-Aliases: Settings
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -StatusCode
-The status code.
+### -RunAsPassword
+Specifies the user account password on the machine when executing the run command.
 
 ```yaml
 Type: System.String
@@ -356,8 +315,8 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -StatusDisplayStatus
-The short localizable label for the status.
+### -RunAsUser
+Specifies the user account on the machine when executing the run command.
 
 ```yaml
 Type: System.String
@@ -371,23 +330,40 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -StatusLevel
-The level code.
+### -RunCommandName
+The name of the run command.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Support.StatusLevelTypes
-Parameter Sets: UpdateExpanded
+Type: System.String
+Parameter Sets: (All)
 Aliases:
 
-Required: False
+Required: True
 Position: Named
 Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -StatusMessage
-The detailed status message, including for alerts and error messages.
+### -RunCommandProperty
+Describes a Run Command
+To construct, see NOTES section for RUNCOMMANDPROPERTY properties and create a hash table.
+
+```yaml
+Type: Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.Api20231003Preview.IMachineRunCommand
+Parameter Sets: Update
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: True (ByValue)
+Accept wildcard characters: False
+```
+
+### -ScriptUriManagedIdentityClientId
+Client Id (GUID value) of the user-assigned managed identity.
+ObjectId should not be used if this is provided.
 
 ```yaml
 Type: System.String
@@ -401,11 +377,58 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -StatusTime
-The time of the status.
+### -ScriptUriManagedIdentityObjectId
+Object Id (GUID value) of the user-assigned managed identity.
+ClientId should not be used if this is provided.
 
 ```yaml
-Type: System.DateTime
+Type: System.String
+Parameter Sets: UpdateExpanded
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -SourceCommandId
+Specifies the commandId of predefined built-in script.
+
+```yaml
+Type: System.String
+Parameter Sets: UpdateExpanded
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -SourceScript
+Specifies the script content to be executed on the machine.
+
+```yaml
+Type: System.String
+Parameter Sets: UpdateExpanded
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -SourceScriptUri
+Specifies the script download location.
+It can be either SAS URI of an Azure storage blob with read access or public URI.
+
+```yaml
+Type: System.String
 Parameter Sets: UpdateExpanded
 Aliases:
 
@@ -446,11 +469,11 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -TypeHandlerVersion
-Specifies the version of the script handler.
+### -TimeoutInSecond
+The timeout in seconds to execute the run command.
 
 ```yaml
-Type: System.String
+Type: System.Int32
 Parameter Sets: UpdateExpanded
 Aliases:
 
@@ -497,11 +520,11 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.Api20231003Preview.IMachineExtension
+### Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.Api20231003Preview.IMachineRunCommand
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.Api20231003Preview.IMachineExtension
+### Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.Api20231003Preview.IMachineRunCommand
 
 ## NOTES
 
