@@ -23,7 +23,7 @@ Param(
     [Parameter(Mandatory = $true)]
     [string] $Psd1Folder
 )
-# Import-Module "$PSScriptRoot/../../artifacts/Debug/Az.$ModuleName/Az.$ModuleName.psd1" -Force
+Import-Module "$PSScriptRoot/../../artifacts/Debug/Az.$ModuleName/Az.$ModuleName.psd1" -Force
 $HelpFolder = "$Psd1Folder/help"
 $ModuleMatadata = Get-Module "Az.$ModuleName"
 
