@@ -996,7 +996,7 @@ namespace Microsoft.Azure.Commands.Compute.Automation
                 {
                     this.VirtualMachineScaleSetUpdate.Plan = new Plan();
                 }
-                this.VirtualMachineScaleSetUpdate.Plan.PromotionCode = this.PlanPromotionCode; // at this point
+                this.VirtualMachineScaleSetUpdate.Plan.PromotionCode = this.PlanPromotionCode;
             }
 
             if (this.IsParameterBound(c => c.PlanPublisher))
@@ -2134,6 +2134,40 @@ namespace Microsoft.Azure.Commands.Compute.Automation
                     this.VirtualMachineScaleSet.PriorityMixPolicy = new PriorityMixPolicy();
                 }
                 this.VirtualMachineScaleSet.PriorityMixPolicy.RegularPriorityPercentageAboveBase = this.RegularPriorityPercentage;
+            }
+
+            if (this.IsParameterBound(c => c.OSImageScheduledEventEnabled))
+            {
+                if (this.VirtualMachineScaleSet.VirtualMachineProfile == null)
+                {
+                    this.VirtualMachineScaleSet.VirtualMachineProfile = new PSVirtualMachineScaleSetVMProfile();
+                }
+                if (this.VirtualMachineScaleSet.VirtualMachineProfile.ScheduledEventsProfile == null)
+                {
+                    this.VirtualMachineScaleSet.VirtualMachineProfile.ScheduledEventsProfile = new ScheduledEventsProfile();
+                }
+                if (this.VirtualMachineScaleSet.VirtualMachineProfile.ScheduledEventsProfile.OsImageNotificationProfile == null)
+                {
+                    this.VirtualMachineScaleSet.VirtualMachineProfile.ScheduledEventsProfile.OsImageNotificationProfile = new OSImageNotificationProfile();
+                }
+                this.VirtualMachineScaleSet.VirtualMachineProfile.ScheduledEventsProfile.OsImageNotificationProfile.Enable = this.OSImageScheduledEventEnabled;
+            }
+
+            if (this.IsParameterBound(c => c.OSImageScheduledEventNotBeforeTimeoutInMinutes))
+            {
+                if (this.VirtualMachineScaleSet.VirtualMachineProfile == null)
+                {
+                    this.VirtualMachineScaleSet.VirtualMachineProfile = new PSVirtualMachineScaleSetVMProfile();
+                }
+                if (this.VirtualMachineScaleSet.VirtualMachineProfile.ScheduledEventsProfile == null)
+                {
+                    this.VirtualMachineScaleSet.VirtualMachineProfile.ScheduledEventsProfile = new ScheduledEventsProfile();
+                }
+                if (this.VirtualMachineScaleSet.VirtualMachineProfile.ScheduledEventsProfile.OsImageNotificationProfile == null)
+                {
+                    this.VirtualMachineScaleSet.VirtualMachineProfile.ScheduledEventsProfile.OsImageNotificationProfile = new OSImageNotificationProfile();
+                }
+                this.VirtualMachineScaleSet.VirtualMachineProfile.ScheduledEventsProfile.OsImageNotificationProfile.NotBeforeTimeout = this.OSImageScheduledEventNotBeforeTimeoutInMinutes;
             }
 
             if (this.IsParameterBound(c => c.SecurityType))

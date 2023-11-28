@@ -5474,9 +5474,166 @@ function Test-VirtualMachineScaleSetUpdateTest
             -VirtualMachineScaleSet $vmssConfig;
 
         # New-AzVmss -ResourcegroupName $rgname -Credential $cred -VMScaleSetName $vmssName -DomainNameLabel $domainNameLabel;
-
+        # TODO: the update operation. 
         $vmssResult = Get-AzVmss -ResourceGroupName $rgname -VMScaleSetName $vmssName;
         Update-AzVmss -ResourceGroupName $rgname -VmScaleSetName $vmssname -BaseRegularPriorityCount 1 -RegularPriorityPercentage 10 ;
+    }
+    finally
+    {
+        # Cleanup
+        Clean-ResourceGroup $rgname;
+    }
+}
+
+<#
+.SYNOPSIS
+Vmss Os Image Scheduled Events tests in additional update Scenario
+with vmss object.
+#>
+function Test-VirtualMachineScaleSetOSImageScheduledEventsUpdateVMSS
+{
+
+    # Setup
+    $rgname = Get-ComputeTestResourceName;
+    $loc = Get-ComputeVMLocation;
+
+    try
+    {
+        $rgname = "adsandtest3";
+        $loc = "eastus";
+        New-AzResourceGroup -Name $rgname -Location $loc -Force;
+
+        # Setup variables
+        $publisher = "MicrosoftWindowsServer";
+        $offer = "WindowsServer";
+        $imgSku = "2019-Datacenter";
+        $version = "latest";
+        $vmssName = 'vmss' + $rgname;
+        $vmssSku = "Standard_D2s_v3";
+        $vmssname = "vmss" + $rgname;
+        $domainNameLabel = "d" + $rgname;
+        $stnd = "Standard";
+        $username = "admin01";
+        $password = "Testing1234567";#Get-PasswordForVM;
+        $securePassword = $password | ConvertTo-SecureString -AsPlainText -Force
+
+        $credential = New-Object System.Management.Automation.PSCredential ($username, $securePassword);
+
+        $vnetname = "vn" + $rgname;
+        $vnetAddress = "10.0.0.0/16";
+        $subnetname = "ds" + $rgname;
+        $subnetAddress = "10.0.2.0/24";
+        $publicIpName = "pub" + $rgname;
+        $frontendPoolName = "fr" + $rgname;
+        $backendPoolName = "ba" + $rgname;
+        $loadBalancerName = "lb" + $rgname;
+        $healthProbeName = "he" + $rgname;
+        $loadBalancerRuleName = "lbr" + $rgname;
+        $outboundName = "ou" + $rgname;
+        $ipconfigName = "ip" + $rgname;
+        $nicName = "ni" + $rgname;
+        $vmcompname = "compnam";
+
+        # SRP
+        $stoname = 'sto' + $rgname;
+        $stotype = 'Standard_GRS';
+        New-AzStorageAccount -ResourceGroupName $rgname -Name $stoname -Location $loc -Type $stotype;
+        $stoaccount = Get-AzStorageAccount -ResourceGroupName $rgname -Name $stoname;
+
+        # NRP
+        $subnet = New-AzVirtualNetworkSubnetConfig -Name ('subnet' + $rgname) -AddressPrefix "10.0.0.0/24";
+        $vnet = New-AzVirtualNetwork -Force -Name ('vnet' + $rgname) -ResourceGroupName $rgname -Location $loc -AddressPrefix "10.0.0.0/16" -Subnet $subnet;
+        $vnet = Get-AzVirtualNetwork -Name ('vnet' + $rgname) -ResourceGroupName $rgname;
+        $subnetId = $vnet.Subnets[0].Id;
+
+        $publicIP = New-AzPublicIpAddress `
+            -ResourceGroupName $rgname `
+            -Location $loc `
+            -AllocationMethod Static `
+            -Sku "Standard" `
+            -IpAddressVersion "IPv4" `
+            -Name $publicIpName;
+
+        # Create a frontend and backend IP pool
+        $frontendIP = New-AzLoadBalancerFrontendIpConfig `
+            -Name $frontendPoolName `
+            -PublicIpAddress $publicIP;
+
+        $backendPool = New-AzLoadBalancerBackendAddressPoolConfig `
+            -Name $backendPoolName ;
+
+        # Create the load balancer
+        $lb = New-AzLoadBalancer `
+            -ResourceGroupName $rgname `
+            -Name $loadBalancerName `
+            -Sku "Standard" `
+            -Tier "Regional" `
+            -Location $loc `
+            -FrontendIpConfiguration $frontendIP `
+            -BackendAddressPool $backendPool ;
+
+        # # Create a load balancer health probe for TCP port 80
+        Add-AzLoadBalancerProbeConfig -Name $healthProbeName `
+            -LoadBalancer $lb `
+            -Protocol TCP `
+            -Port 80 `
+            -IntervalInSeconds 15 `
+            -ProbeCount 2;
+
+        # # Create a load balancer rule to distribute traffic on port TCP 80
+        # # The health probe from the previous step is used to make sure that traffic is
+        # # only directed to healthy VM instances
+        Add-AzLoadBalancerRuleConfig `
+            -Name $loadBalancerRuleName `
+            -LoadBalancer $lb `
+            -FrontendIpConfiguration $lb.FrontendIpConfigurations[0] `
+            -BackendAddressPool $lb.BackendAddressPools[0] `
+            -Protocol TCP `
+            -FrontendPort 80 `
+            -BackendPort 80 `
+            -DisableOutboundSNAT `
+            -Probe (Get-AzLoadBalancerProbeConfig -Name $healthProbeName -LoadBalancer $lb);
+
+        # Add outbound connectivity rule
+        Add-AzLoadBalancerOutboundRuleConfig `
+            -Name $outboundName `
+            -LoadBalancer $lb `
+            -AllocatedOutboundPort '9000' `
+            -Protocol 'All' `
+            -IdleTimeoutInMinutes '15' `
+            -FrontendIpConfiguration $lb.FrontendIpConfigurations[0] `
+            -BackendAddressPool $lb.BackendAddressPools[0] ;
+
+        # Update the load balancer configuration
+        Set-AzLoadBalancer -LoadBalancer $lb;
+
+        # Create VMSS with managed disk
+        $ipCfg = New-AzVmssIpConfig `
+            -Name $ipconfigName `
+            -SubnetId $vnet.Subnets[0].Id `
+            -LoadBalancerBackendAddressPoolsId $lb.BackendAddressPools[0].Id `
+            -Primary;
+        #$ipCfg = New-AzVmssIPConfig -Name 'test' -SubnetId $subnetId;
+
+        # Update-AzVmss test
+        $vmssName2 = 'vs2' + $rgname;
+        $vmss2 = New-AzVmssConfig -Location $loc -SkuCapacity 2 -SkuName $vmssSku -UpgradePolicyMode "Manual" `
+            | Add-AzVmssNetworkInterfaceConfiguration -Name 'test2' -Primary $true -IPConfiguration $ipCfg `
+            | Set-AzVmssOSProfile -ComputerNamePrefix 'test2' -AdminUsername $username -AdminPassword $password `
+            | Set-AzVmssStorageProfile -OsDiskCreateOption 'FromImage' -OsDiskCaching 'None' `
+            -ImageReferenceOffer $offer -ImageReferenceSku $imgSku -ImageReferenceVersion $version `
+            -ImageReferencePublisher $publisher;
+        $result = New-AzVmss -ResourceGroupName $rgname -Name $vmssName2 -VirtualMachineScaleSet $vmss2;
+        $vmss = Get-AzVmss -ResourceGroupName $rgname -VMScaleSetName $vmssName2;
+
+        Assert-False {$vmss.VirtualMachineProfile.ScheduledEventsProfile.OsImageNotificationProfile.Enable};
+        Assert-Null $vmss.VirtualMachineProfile.ScheduledEventsProfile.OsImageNotificationProfile.NotBeforeTimeout;
+
+        Update-AzVmss -VMScaleSetName $vmssName2 -ResourceGroupName $rgname -OSImageScheduledEventEnabled -OSImageScheduledEventNotBeforeTimeoutInMinutes "PT15M" -VirtualMachineScaleSet $vmss;
+        $vmss = Get-AzVmss -ResourceGroupName $rgname -VMScaleSetName $vmssName2;
+        
+        Assert-True {$vmss.VirtualMachineProfile.ScheduledEventsProfile.OsImageNotificationProfile.Enable};
+        Assert-AreEqual 'PT15M' $vmss.VirtualMachineProfile.ScheduledEventsProfile.OsImageNotificationProfile.NotBeforeTimeout;
     }
     finally
     {
