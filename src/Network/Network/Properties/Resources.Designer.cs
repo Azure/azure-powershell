@@ -671,6 +671,15 @@ namespace Microsoft.Azure.Commands.Network.Properties {
                 return ResourceManager.GetString("InvalidAutoScaleConfiguration", resourceCulture);
             }
         }
+
+        /// <summary>
+        ///   MinScaleUnit and MaxScaleUnit must be between 1 and 40, inclusive..
+        /// </summary>
+        internal static string InvalidAutoScaleConfigurationBounds {
+            get {
+                return ResourceManager.GetString("InvalidAutoScaleConfigurationBounds", resourceCulture);
+            }
+        }
         
         /// <summary>
         ///   Looks up a localized string similar to Invalid connection monitor output type. Only &apos;Workspace&apos; now is supported..

@@ -228,7 +228,7 @@ namespace Microsoft.Azure.Management.ServiceFabric
         /// <param name='applicationName'>
         /// The name of the application resource.
         /// </param>
-        public static ServiceResourceList List(this IServicesOperations operations, string resourceGroupName, string clusterName, string applicationName)
+        public static Microsoft.Rest.Azure.IPage<ServiceResource> List(this IServicesOperations operations, string resourceGroupName, string clusterName, string applicationName)
         {
                 return ((IServicesOperations)operations).ListAsync(resourceGroupName, clusterName, applicationName).GetAwaiter().GetResult();
         }
@@ -251,7 +251,7 @@ namespace Microsoft.Azure.Management.ServiceFabric
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        public static async System.Threading.Tasks.Task<ServiceResourceList> ListAsync(this IServicesOperations operations, string resourceGroupName, string clusterName, string applicationName, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public static async System.Threading.Tasks.Task<Microsoft.Rest.Azure.IPage<ServiceResource>> ListAsync(this IServicesOperations operations, string resourceGroupName, string clusterName, string applicationName, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
             using (var _result = await operations.ListWithHttpMessagesAsync(resourceGroupName, clusterName, applicationName, null, cancellationToken).ConfigureAwait(false))
             {
@@ -407,6 +407,39 @@ namespace Microsoft.Azure.Management.ServiceFabric
         public static async System.Threading.Tasks.Task BeginDeleteAsync(this IServicesOperations operations, string resourceGroupName, string clusterName, string applicationName, string serviceName, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
             (await operations.BeginDeleteWithHttpMessagesAsync(resourceGroupName, clusterName, applicationName, serviceName, null, cancellationToken).ConfigureAwait(false)).Dispose();
+        }
+        /// <summary>
+        /// Gets all service resources created or in the process of being created in the Service Fabric application resource.
+        /// </summary>
+        /// <param name='operations'>
+        /// The operations group for this extension method.
+        /// </param>
+        /// <param name='nextPageLink'>
+        /// The NextLink from the previous successful call to List operation.
+        /// </param>
+        public static Microsoft.Rest.Azure.IPage<ServiceResource> ListNext(this IServicesOperations operations, string nextPageLink)
+        {
+                return ((IServicesOperations)operations).ListNextAsync(nextPageLink).GetAwaiter().GetResult();
+        }
+
+        /// <summary>
+        /// Gets all service resources created or in the process of being created in the Service Fabric application resource.
+        /// </summary>
+        /// <param name='operations'>
+        /// The operations group for this extension method.
+        /// </param>
+        /// <param name='nextPageLink'>
+        /// The NextLink from the previous successful call to List operation.
+        /// </param>
+        /// <param name='cancellationToken'>
+        /// The cancellation token.
+        /// </param>
+        public static async System.Threading.Tasks.Task<Microsoft.Rest.Azure.IPage<ServiceResource>> ListNextAsync(this IServicesOperations operations, string nextPageLink, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        {
+            using (var _result = await operations.ListNextWithHttpMessagesAsync(nextPageLink, null, cancellationToken).ConfigureAwait(false))
+            {
+                return _result.Body;
+            }
         }
     }
 }

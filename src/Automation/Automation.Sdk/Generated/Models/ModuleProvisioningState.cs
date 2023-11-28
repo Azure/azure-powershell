@@ -27,7 +27,7 @@ namespace Microsoft.Azure.Management.Automation.Models
         public const string ModuleImportRunbookComplete = "ModuleImportRunbookComplete";
         public const string Succeeded = "Succeeded";
         public const string Failed = "Failed";
-        public const string Cancelled = "Cancelled";
+        public const string Canceled = "Canceled";
         public const string Updating = "Updating";
     }
 }

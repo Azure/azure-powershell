@@ -13,7 +13,8 @@ namespace Microsoft.Azure.Management.Automation
     public static partial class TestJobStreamsOperationsExtensions
     {
         /// <summary>
-        /// Retrieve a test job stream of the test job identified by runbook name and stream id.
+        /// Retrieve a test job stream of the test job identified by runbook name and
+        /// stream id.
         /// </summary>
         /// <param name='operations'>
         /// The operations group for this extension method.
@@ -36,7 +37,8 @@ namespace Microsoft.Azure.Management.Automation
         }
 
         /// <summary>
-        /// Retrieve a test job stream of the test job identified by runbook name and stream id.
+        /// Retrieve a test job stream of the test job identified by runbook name and
+        /// stream id.
         /// </summary>
         /// <param name='operations'>
         /// The operations group for this extension method.

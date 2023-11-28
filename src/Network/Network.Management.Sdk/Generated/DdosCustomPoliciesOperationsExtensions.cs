@@ -33,9 +33,9 @@ namespace Microsoft.Azure.Management.Network
             /// <param name='ddosCustomPolicyName'>
             /// The name of the DDoS custom policy.
             /// </param>
-            public static void Delete(this IDdosCustomPoliciesOperations operations, string resourceGroupName, string ddosCustomPolicyName)
+            public static DdosCustomPoliciesDeleteHeaders Delete(this IDdosCustomPoliciesOperations operations, string resourceGroupName, string ddosCustomPolicyName)
             {
-                operations.DeleteAsync(resourceGroupName, ddosCustomPolicyName).GetAwaiter().GetResult();
+                return operations.DeleteAsync(resourceGroupName, ddosCustomPolicyName).GetAwaiter().GetResult();
             }
 
             /// <summary>
@@ -53,9 +53,12 @@ namespace Microsoft.Azure.Management.Network
             /// <param name='cancellationToken'>
             /// The cancellation token.
             /// </param>
-            public static async Task DeleteAsync(this IDdosCustomPoliciesOperations operations, string resourceGroupName, string ddosCustomPolicyName, CancellationToken cancellationToken = default(CancellationToken))
+            public static async Task<DdosCustomPoliciesDeleteHeaders> DeleteAsync(this IDdosCustomPoliciesOperations operations, string resourceGroupName, string ddosCustomPolicyName, CancellationToken cancellationToken = default(CancellationToken))
             {
-                (await operations.DeleteWithHttpMessagesAsync(resourceGroupName, ddosCustomPolicyName, null, cancellationToken).ConfigureAwait(false)).Dispose();
+                using (var _result = await operations.DeleteWithHttpMessagesAsync(resourceGroupName, ddosCustomPolicyName, null, cancellationToken).ConfigureAwait(false))
+                {
+                    return _result.Headers;
+                }
             }
 
             /// <summary>
@@ -202,9 +205,9 @@ namespace Microsoft.Azure.Management.Network
             /// <param name='ddosCustomPolicyName'>
             /// The name of the DDoS custom policy.
             /// </param>
-            public static void BeginDelete(this IDdosCustomPoliciesOperations operations, string resourceGroupName, string ddosCustomPolicyName)
+            public static DdosCustomPoliciesDeleteHeaders BeginDelete(this IDdosCustomPoliciesOperations operations, string resourceGroupName, string ddosCustomPolicyName)
             {
-                operations.BeginDeleteAsync(resourceGroupName, ddosCustomPolicyName).GetAwaiter().GetResult();
+                return operations.BeginDeleteAsync(resourceGroupName, ddosCustomPolicyName).GetAwaiter().GetResult();
             }
 
             /// <summary>
@@ -222,9 +225,12 @@ namespace Microsoft.Azure.Management.Network
             /// <param name='cancellationToken'>
             /// The cancellation token.
             /// </param>
-            public static async Task BeginDeleteAsync(this IDdosCustomPoliciesOperations operations, string resourceGroupName, string ddosCustomPolicyName, CancellationToken cancellationToken = default(CancellationToken))
+            public static async Task<DdosCustomPoliciesDeleteHeaders> BeginDeleteAsync(this IDdosCustomPoliciesOperations operations, string resourceGroupName, string ddosCustomPolicyName, CancellationToken cancellationToken = default(CancellationToken))
             {
-                (await operations.BeginDeleteWithHttpMessagesAsync(resourceGroupName, ddosCustomPolicyName, null, cancellationToken).ConfigureAwait(false)).Dispose();
+                using (var _result = await operations.BeginDeleteWithHttpMessagesAsync(resourceGroupName, ddosCustomPolicyName, null, cancellationToken).ConfigureAwait(false))
+                {
+                    return _result.Headers;
+                }
             }
 
             /// <summary>

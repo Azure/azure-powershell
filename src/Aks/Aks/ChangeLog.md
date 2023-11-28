@@ -21,6 +21,7 @@
 
 ## Version 6.0.0
 * Removed parameter `DockerBridgeCidr` from `New-AzAksCluster`
+* Fixed the resolve path issue in `Install-AzAksCliTool`. [#22853]
 
 ## Version 5.5.1
 * Fixed the issue of handling `nextLink` in `Set-AzAksCluster`. [#21846]

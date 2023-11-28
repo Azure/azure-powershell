@@ -12,6 +12,7 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
+using Microsoft.Azure.Commands.Automation.Common;
 using Microsoft.Azure.Commands.Automation.Model;
 using System;
 using System.Management.Automation;
@@ -44,13 +45,24 @@ namespace Microsoft.Azure.Commands.Automation.Cmdlet
         [ValidateNotNullOrEmpty]
         public Uri ContentLinkUri { get; set; }
 
+
+        /// <summary>
+        /// Gets or sets the runbook version type
+        /// </summary>
+        [Parameter(Mandatory = false, HelpMessage = "Runtime Environment of module ")]
+        [ValidateSet(Constants.RuntimeVersion.PowerShell51,
+            Constants.RuntimeVersion.PowerShell72,
+            IgnoreCase = true)]
+        [ValidateNotNullOrEmpty]
+        public string RuntimeVersion { get; set; }
+
         /// <summary>
         /// Execute this cmdlet.
         /// </summary>
         [PermissionSet(SecurityAction.Demand, Name = "FullTrust")]
         protected override void AutomationProcessRecord()
         {
-            var createdModule = this.AutomationClient.CreateModule(this.ResourceGroupName, this.AutomationAccountName, ContentLinkUri, Name);
+            var createdModule = this.AutomationClient.CreateModule(this.ResourceGroupName, this.AutomationAccountName, ContentLinkUri, Name, Utils.isRuntimeVersionPowerShell72(RuntimeVersion));
             this.WriteObject(createdModule);
         }
     }

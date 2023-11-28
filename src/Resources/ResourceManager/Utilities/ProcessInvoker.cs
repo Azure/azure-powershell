@@ -17,6 +17,7 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Utilities
     using System.Collections.Generic;
     using System.Diagnostics;
     using System.Management.Automation;
+    using System.Text;
 
     public class ProcessOutput
     {
@@ -84,6 +85,8 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Utilities
                     UseShellExecute = false,
                     RedirectStandardOutput = true,
                     RedirectStandardError = true,
+                    StandardOutputEncoding = Encoding.UTF8,
+                    StandardErrorEncoding = Encoding.UTF8,
                     CreateNoWindow = true,
                 }
             };

@@ -20,7 +20,8 @@
   <ItemGroup>
     <ProjectReference Include="..\..\Storage\Storage.Management\Storage.Management.csproj" />
     <ProjectReference Include="..\..\Storage\Storage\Storage.csproj" />
-    <ProjectReference Include="..\..\ManagedServiceIdentity\Az.ManagedServiceIdentity.csproj" />
+    <ProjectReference Include="..\..\ManagedServiceIdentity\ManagedServiceIdentity\ManagedServiceIdentity.csproj" />
+    <ProjectReference Include="..\..\ManagedServiceIdentity\ManagedServiceIdentity.Autorest\Az.ManagedServiceIdentity.csproj" />
     <ProjectReference Include="..\DeploymentManager\DeploymentManager.csproj" />
   </ItemGroup>
 

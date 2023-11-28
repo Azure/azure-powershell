@@ -13,6 +13,8 @@ namespace Microsoft.Azure.Management.Network.Models
     using Microsoft.Rest;
     using Microsoft.Rest.Serialization;
     using Newtonsoft.Json;
+    using System.Collections;
+    using System.Collections.Generic;
     using System.Linq;
 
     /// <summary>
@@ -46,12 +48,15 @@ namespace Microsoft.Azure.Management.Network.Models
         /// <param name="provisioningState">The provisioning state of the
         /// listener resource. Possible values include: 'Succeeded',
         /// 'Updating', 'Deleting', 'Failed'</param>
+        /// <param name="hostNames">List of Server Name Indications(SNI) for
+        /// TLS Multi-site Listener that allows special wildcard characters as
+        /// well.</param>
         /// <param name="name">Name of the listener that is unique within an
         /// Application Gateway.</param>
         /// <param name="etag">A unique read-only string that changes whenever
         /// the resource is updated.</param>
         /// <param name="type">Type of the resource.</param>
-        public ApplicationGatewayListener(string id = default(string), SubResource frontendIPConfiguration = default(SubResource), SubResource frontendPort = default(SubResource), string protocol = default(string), SubResource sslCertificate = default(SubResource), SubResource sslProfile = default(SubResource), string provisioningState = default(string), string name = default(string), string etag = default(string), string type = default(string))
+        public ApplicationGatewayListener(string id = default(string), SubResource frontendIPConfiguration = default(SubResource), SubResource frontendPort = default(SubResource), string protocol = default(string), SubResource sslCertificate = default(SubResource), SubResource sslProfile = default(SubResource), string provisioningState = default(string), IList<string> hostNames = default(IList<string>), string name = default(string), string etag = default(string), string type = default(string))
             : base(id)
         {
             FrontendIPConfiguration = frontendIPConfiguration;
@@ -60,6 +65,7 @@ namespace Microsoft.Azure.Management.Network.Models
             SslCertificate = sslCertificate;
             SslProfile = sslProfile;
             ProvisioningState = provisioningState;
+            HostNames = hostNames;
             Name = name;
             Etag = etag;
             Type = type;
@@ -109,6 +115,14 @@ namespace Microsoft.Azure.Management.Network.Models
         /// </summary>
         [JsonProperty(PropertyName = "properties.provisioningState")]
         public string ProvisioningState { get; private set; }
+
+        /// <summary>
+        /// Gets or sets list of Server Name Indications(SNI) for TLS
+        /// Multi-site Listener that allows special wildcard characters as
+        /// well.
+        /// </summary>
+        [JsonProperty(PropertyName = "properties.hostNames")]
+        public IList<string> HostNames { get; set; }
 
         /// <summary>
         /// Gets or sets name of the listener that is unique within an

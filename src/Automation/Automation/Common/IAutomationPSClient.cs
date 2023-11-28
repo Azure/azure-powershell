@@ -132,15 +132,15 @@ namespace Microsoft.Azure.Commands.Automation.Common
 
         #region Modules
 
-        Module CreateModule(string resourceGroupName, string automationAccountName, Uri contentLink, string moduleName);
+        Module CreateModule(string resourceGroupName, string automationAccountName, Uri contentLink, string moduleName, bool isPowershell72Module = false);
 
-        Module GetModule(string resourceGroupName, string automationAccountName, string name);
+        Module GetModule(string resourceGroupName, string automationAccountName, string name, bool isPowershell72Module = false);
 
-        Module UpdateModule(string resourceGroupName, string automationAccountName, string name, Uri contentLink, string contentLinkVersion);
+        Module UpdateModule(string resourceGroupName, string automationAccountName, string name, Uri contentLink, string contentLinkVersion, bool isPowershell72Module = false);
 
-        IEnumerable<Module> ListModules(string resourceGroupName, string automationAccountName, ref string nextLink);
+        IEnumerable<Module> ListModules(string resourceGroupName, string automationAccountName, ref string nextLink, bool isPowershell72Module = false);
 
-        void DeleteModule(string resourceGroupName, string automationAccountName, string name);
+        void DeleteModule(string resourceGroupName, string automationAccountName, string name, bool isPowershell72Module = false);
 
         #endregion
 
