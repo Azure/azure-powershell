@@ -25,7 +25,7 @@ namespace Commands.HDInsight.Test.ScenarioTests
         {
         }
 
-        [Fact(Skip ="need to create resource manually")]
+        [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestHostRelatedCommands()
         {

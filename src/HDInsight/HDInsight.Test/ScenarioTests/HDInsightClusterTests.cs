@@ -46,28 +46,28 @@ namespace Commands.HDInsight.Test.ScenarioTests
             TestRunner.RunTestScript("Test-CmkClusterRelatedCommands");
         }
 
-        [Fact(Skip = "need to create resource manually")]
+        [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestCreateClusterWithEncryptionInTransit()
         {
             TestRunner.RunTestScript("Test-CreateClusterWithEncryptionInTransit");
         }
 
-        [Fact(Skip = "need to create resource manually")]
+        [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestCreateClusterWithEncryptionAtHost()
         {
             TestRunner.RunTestScript("Test-CreateClusterWithEncryptionAtHost");
         }
 
-        [Fact(Skip = "need to create resource manually")]
+        [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestCreateClusterWithLoadBasedAutoscale()
         {
             TestRunner.RunTestScript("Test-CreateClusterWithLoadBasedAutoscale");
         }
 
-        [Fact(Skip ="need to create resource manually")]
+        [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestCreateClusterWithScheduleBasedAutoscale()
         {
@@ -81,14 +81,14 @@ namespace Commands.HDInsight.Test.ScenarioTests
             TestRunner.RunTestScript("Test-CreateClusterWithKafkaRestProxy");
         }
 
-        [Fact(Skip ="need to create resource manually")]
+        [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestCreateClusterWithRelayOutoundAndPrivateLink()
         {
             TestRunner.RunTestScript("Test-CreateClusterWithRelayOutoundAndPrivateLink");
         }
 
-        [Fact(Skip = "need to create resource manually")]
+        [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestCreateClusterWithCustomAmbariDatabase()
         {
