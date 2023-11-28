@@ -27,6 +27,8 @@ namespace Microsoft.Azure.Commands.Network.Models
         [Ps1Xml(Label = "Policy Name", Target = ViewControl.Table, ScriptBlock = "$_.SslPolicy.PolicyName")]
         public PSApplicationGatewaySslPolicy SslPolicy { get; set; }
 
+        public PSApplicationGatewayGlobalConfiguration GlobalConfiguration { get; set; }
+
         public List<PSApplicationGatewayIPConfiguration> GatewayIPConfigurations { get; set; }
 
         public List<PSApplicationGatewayAuthenticationCertificate> AuthenticationCertificates { get; set; }

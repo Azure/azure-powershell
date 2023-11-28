@@ -20,6 +20,7 @@
 
 ## Upcoming Release
 * Updated `New-AzVirtualNetworkGateway` to remove validation for `ExtendedLocation` parameter
+* Updated `New-AzApplicationGateway` to include `EnableRequestBuffering` and `EnableResponseBuffering` parameters
 
 ## Version 6.0.0
 * Added new cmdlets for RouteMap child resource of VirtualHub.

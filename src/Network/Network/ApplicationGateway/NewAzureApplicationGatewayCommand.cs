@@ -215,6 +215,16 @@ namespace Microsoft.Azure.Commands.Network
 
         [Parameter(
             Mandatory = false,
+            HelpMessage = " Whether Request Buffering is enabled.")]
+        public bool? EnableRequestBuffering { get; set; }
+
+        [Parameter(
+            Mandatory = false,
+            HelpMessage = " Whether Response Buffering is enabled.")]
+        public bool? EnableResponseBuffering { get; set; }
+
+        [Parameter(
+            Mandatory = false,
             HelpMessage = " Whether Force firewallPolicy association is enabled.")]
         public SwitchParameter ForceFirewallPolicyAssociation { get; set; }
         
@@ -426,6 +436,24 @@ namespace Microsoft.Azure.Commands.Network
             if (this.EnableFIPS.IsPresent)
             {
                 applicationGateway.EnableFips = true;
+            }
+
+            if (this.EnableRequestBuffering.HasValue)
+            {
+                applicationGateway.GlobalConfiguration.EnableRequestBuffering = this.EnableRequestBuffering.Value;
+            }
+            else
+            {
+                applicationGateway.GlobalConfiguration.EnableRequestBuffering = true;
+            }
+
+            if (this.EnableResponseBuffering.HasValue)
+            {
+                applicationGateway.GlobalConfiguration.EnableResponseBuffering = this.EnableResponseBuffering.Value;
+            }
+            else
+            {
+                applicationGateway.GlobalConfiguration.EnableResponseBuffering = true;
             }
 
             if (this.ForceFirewallPolicyAssociation.IsPresent)
