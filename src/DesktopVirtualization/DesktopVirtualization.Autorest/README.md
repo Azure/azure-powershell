@@ -103,4 +103,39 @@ directive:
       parameter-name: Force
     set:
       parameter-description: 'Specify to force userSession deletion.'
+  - where:
+      verb: Get
+      subject: AppAttachPackage
+    set:
+      preview-announcement:
+        preview-message: This cmdlet is currently in preview, behavior is subject to change.
+        estimated-ga-date: 2024-04-01
+  - where:
+      verb: Import
+      subject: AppAttachPackageInfo
+    set:
+      preview-announcement:
+        preview-message: This cmdlet is currently in preview, behavior is subject to change.
+        estimated-ga-date: 2024-04-01
+  - where:
+      verb: New
+      subject: AppAttachPackage
+    set:
+      preview-announcement:
+        preview-message: This cmdlet is currently in preview, behavior is subject to change.
+        estimated-ga-date: 2024-04-01
+  - where:
+      verb: Remove
+      subject: AppAttachPackage
+    set:
+      preview-announcement:
+        preview-message: This cmdlet is currently in preview, behavior is subject to change.
+        estimated-ga-date: 2024-04-01
+  - where:
+      verb: Update
+      subject: AppAttachPackage
+    set:
+      preview-announcement:
+        preview-message: This cmdlet is currently in preview, behavior is subject to change.
+        estimated-ga-date: 2024-04-01
 ```
