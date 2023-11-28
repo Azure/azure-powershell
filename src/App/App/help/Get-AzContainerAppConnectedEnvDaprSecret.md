@@ -1,5 +1,5 @@
 ---
-external help file:
+external help file: Az.App-help.xml
 Module Name: Az.App
 online version: https://learn.microsoft.com/powershell/module/az.app/get-azcontainerappconnectedenvdaprsecret
 schema: 2.0.0
@@ -14,7 +14,7 @@ List secrets for a dapr component
 
 ```
 Get-AzContainerAppConnectedEnvDaprSecret -ConnectedEnvironmentName <String> -DaprName <String>
- -ResourceGroupName <String> [-SubscriptionId <String[]>] [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf]
+ -ResourceGroupName <String> [-SubscriptionId <String[]>] [-DefaultProfile <PSObject>] [-WhatIf] [-Confirm]
  [<CommonParameters>]
 ```
 
@@ -158,4 +158,3 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ## NOTES
 
 ## RELATED LINKS
-

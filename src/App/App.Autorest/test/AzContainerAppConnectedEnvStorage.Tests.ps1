@@ -18,42 +18,45 @@ Describe 'AzContainerAppConnectedEnvStorage' {
 
     # Contains confidential information, please run it locally
 
-    It 'CreateExpanded' -skip {
+    It 'CreateExpanded' {
         {
-            $storageAccountKey = (Get-AzStorageAccountKey -ResourceGroupName $env.resourceGroupConnected -AccountName $env.storageAccount2).Value[0]
+            # $storageAccountKey = (Get-AzStorageAccountKey -ResourceGroupName $env.resourceGroupConnected -AccountName $env.storageAccount2).Value[0]
+            $storageAccountKey = "1234"
 
             $config = New-AzContainerAppConnectedEnvStorage -ConnectedEnvironmentName $env.connectedEnv1 -ResourceGroupName $env.resourceGroupConnected -Name $env.connectedEnvStorage -AzureFileAccessMode 'ReadWrite' -AzureFileAccountKey $storageAccountKey -AzureFileAccountName azpstestsa -AzureFileShareName azps-rw-sharename
             $config.AzureFileShareName | Should -Be "azps-rw-sharename"
         } | Should -Not -Throw
     }
 
-    It 'List' -skip {
+    It 'List' {
         {
             $config = Get-AzContainerAppConnectedEnvStorage -ConnectedEnvironmentName $env.connectedEnv1 -ResourceGroupName $env.resourceGroupConnected
             $config.Count | Should -BeGreaterThan 0
         } | Should -Not -Throw
     }
 
-    It 'Get' -skip {
+    It 'Get' {
         {
             $config = Get-AzContainerAppConnectedEnvStorage -ConnectedEnvironmentName $env.connectedEnv1 -ResourceGroupName $env.resourceGroupConnected -Name $env.connectedEnvStorage
             $config.Name | Should -Be $env.connectedEnvStorage
         } | Should -Not -Throw
     }
 
-    It 'UpdateExpanded' -skip {
+    It 'UpdateExpanded' {
         {
-            $storageAccountKey = (Get-AzStorageAccountKey -ResourceGroupName $env.resourceGroupConnected -AccountName $env.storageAccount2).Value[0]
-
+            # $storageAccountKey = (Get-AzStorageAccountKey -ResourceGroupName $env.resourceGroupConnected -AccountName $env.storageAccount2).Value[0]
+            $storageAccountKey = "1234"
+            
             $config = Update-AzContainerAppConnectedEnvStorage -ConnectedEnvironmentName $env.connectedEnv1 -ResourceGroupName $env.resourceGroupConnected -Name $env.connectedEnvStorage -AzureFileAccessMode 'ReadWrite' -AzureFileAccountKey $storageAccountKey -AzureFileAccountName azpstestsa -AzureFileShareName azps-rw-sharename
             $config.AzureFileShareName | Should -Be "azps-rw-sharename"
 
         } | Should -Not -Throw
     }
 
-    It 'UpdateViaIdentityExpanded' -skip {
+    It 'UpdateViaIdentityExpanded' {
         {
-            $storageAccountKey = (Get-AzStorageAccountKey -ResourceGroupName $env.resourceGroupConnected -AccountName $env.storageAccount2).Value[0]
+            # $storageAccountKey = (Get-AzStorageAccountKey -ResourceGroupName $env.resourceGroupConnected -AccountName $env.storageAccount2).Value[0]
+            $storageAccountKey = "1234"
             $config = Get-AzContainerAppConnectedEnvStorage -ConnectedEnvironmentName $env.connectedEnv1 -ResourceGroupName $env.resourceGroupConnected -Name $env.connectedEnvStorage
 
             $config = Update-AzContainerAppConnectedEnvStorage -InputObject $config -AzureFileAccessMode 'ReadWrite' -AzureFileAccountKey $storageAccountKey -AzureFileAccountName azpstestsa -AzureFileShareName azps-rw-sharename
@@ -61,7 +64,7 @@ Describe 'AzContainerAppConnectedEnvStorage' {
         } | Should -Not -Throw
     }
 
-    It 'Delete' -skip {
+    It 'Delete' {
         {
             Remove-AzContainerAppConnectedEnvStorage -ConnectedEnvironmentName $env.connectedEnv1 -ResourceGroupName $env.resourceGroupConnected -Name $env.connectedEnvStorage
         } | Should -Not -Throw

@@ -1,5 +1,5 @@
 ---
-external help file:
+external help file: Az.App-help.xml
 Module Name: Az.App
 online version: https://learn.microsoft.com/powershell/module/az.app/get-azcontainerapprevisionreplica
 schema: 2.0.0
@@ -14,8 +14,8 @@ Get a replica for a Container App Revision.
 
 ### List (Default)
 ```
-Get-AzContainerAppRevisionReplica -ContainerAppName <String> -ResourceGroupName <String>
- -RevisionName <String> [-SubscriptionId <String[]>] [-DefaultProfile <PSObject>] [<CommonParameters>]
+Get-AzContainerAppRevisionReplica -ContainerAppName <String> -ResourceGroupName <String> -RevisionName <String>
+ [-SubscriptionId <String[]>] [-DefaultProfile <PSObject>] [<CommonParameters>]
 ```
 
 ### Get
@@ -24,22 +24,21 @@ Get-AzContainerAppRevisionReplica -ContainerAppName <String> -Name <String> -Res
  -RevisionName <String> [-SubscriptionId <String[]>] [-DefaultProfile <PSObject>] [<CommonParameters>]
 ```
 
-### GetViaIdentity
-```
-Get-AzContainerAppRevisionReplica -InputObject <IAppIdentity> [-DefaultProfile <PSObject>]
- [<CommonParameters>]
-```
-
-### GetViaIdentityContainerApp
-```
-Get-AzContainerAppRevisionReplica -ContainerAppInputObject <IAppIdentity> -Name <String>
- -RevisionName <String> [-DefaultProfile <PSObject>] [<CommonParameters>]
-```
-
 ### GetViaIdentityRevision
 ```
 Get-AzContainerAppRevisionReplica -Name <String> -RevisionInputObject <IAppIdentity>
  [-DefaultProfile <PSObject>] [<CommonParameters>]
+```
+
+### GetViaIdentityContainerApp
+```
+Get-AzContainerAppRevisionReplica -Name <String> -RevisionName <String> -ContainerAppInputObject <IAppIdentity>
+ [-DefaultProfile <PSObject>] [<CommonParameters>]
+```
+
+### GetViaIdentity
+```
+Get-AzContainerAppRevisionReplica -InputObject <IAppIdentity> [-DefaultProfile <PSObject>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -126,7 +125,7 @@ Name of the Container App.
 
 ```yaml
 Type: System.String
-Parameter Sets: Get, List
+Parameter Sets: List, Get
 Aliases:
 
 Required: True
@@ -173,7 +172,7 @@ Name of the Container App Revision Replica.
 
 ```yaml
 Type: System.String
-Parameter Sets: Get, GetViaIdentityContainerApp, GetViaIdentityRevision
+Parameter Sets: Get, GetViaIdentityRevision, GetViaIdentityContainerApp
 Aliases: ReplicaName
 
 Required: True
@@ -189,7 +188,7 @@ The name is case insensitive.
 
 ```yaml
 Type: System.String
-Parameter Sets: Get, List
+Parameter Sets: List, Get
 Aliases:
 
 Required: True
@@ -220,7 +219,7 @@ Name of the Container App Revision.
 
 ```yaml
 Type: System.String
-Parameter Sets: Get, GetViaIdentityContainerApp, List
+Parameter Sets: List, Get, GetViaIdentityContainerApp
 Aliases:
 
 Required: True
@@ -235,7 +234,7 @@ The ID of the target subscription.
 
 ```yaml
 Type: System.String[]
-Parameter Sets: Get, List
+Parameter Sets: List, Get
 Aliases:
 
 Required: False
@@ -261,4 +260,3 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ## NOTES
 
 ## RELATED LINKS
-

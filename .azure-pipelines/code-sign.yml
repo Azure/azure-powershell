@@ -62,7 +62,7 @@ jobs:
       Copy-Item .\setup\InstallerChecks.dll -Destination $Env:RepoArtifacts/
       Copy-Item .\setup\Microsoft.Deployment.WindowsInstaller.dll -Destination $Env:RepoArtifacts/
     displayName: 'Before Signing'
-  - task: SFP.build-tasks.custom-build-task-1.EsrpCodeSigning@1
+  - task: SFP.build-tasks.custom-build-task-1.EsrpCodeSigning@4
     displayName: 'Sign Dll [Authenticode + Strong Name]'
     inputs:
       ConnectedServiceName: 'ESRP Signing Service'
@@ -119,7 +119,7 @@ jobs:
           }
         ]
 
-  - task: SFP.build-tasks.custom-build-task-1.EsrpCodeSigning@1
+  - task: SFP.build-tasks.custom-build-task-1.EsrpCodeSigning@4
     displayName: 'Sign Scripts [Authenticode]'
     inputs:
       ConnectedServiceName: 'ESRP Signing Service'
@@ -155,7 +155,7 @@ jobs:
           }
         ]
 
-  - task: SFP.build-tasks.custom-build-task-1.EsrpCodeSigning@1
+  - task: SFP.build-tasks.custom-build-task-1.EsrpCodeSigning@4
     displayName: 'Sign 3rd Party [Strong Name]'
     inputs:
       ConnectedServiceName: 'ESRP Signing Service'
@@ -181,7 +181,7 @@ jobs:
           }
         ]
 
-  - task: SFP.build-tasks.custom-build-task-1.EsrpCodeSigning@1
+  - task: SFP.build-tasks.custom-build-task-1.EsrpCodeSigning@4
     displayName: 'Sign 3rd Party [Authenticode]'
     inputs:
       ConnectedServiceName: 'ESRP Signing Service'
@@ -244,7 +244,7 @@ jobs:
   - script: '"%wix%\sdk\MakeSfxCA.exe" "%cd%\setup\InstallerChecks.CA.dll" "%cd%\setup\SfxCA.dll" "%cd%\setup\InstallerChecks.dll" "%cd%\setup\Microsoft.Deployment.WindowsInstaller.dll;%cd%\setup\InstallerChecks\InstallerChecks\CustomAction.config"'
     displayName: 'Generate InstallerCheck.CA.dll'
 
-  - task: SFP.build-tasks.custom-build-task-1.EsrpCodeSigning@1
+  - task: SFP.build-tasks.custom-build-task-1.EsrpCodeSigning@4
     displayName: 'Sign Installercheck.CA.dll [Authenticode]'
     inputs:
       ConnectedServiceName: 'ESRP Signing Service'
@@ -317,7 +317,7 @@ jobs:
     displayName: 'Expand modules'
     condition: and(succeeded(), ne(variables['SignPsd1'], 'false'))
 
-  - task: SFP.build-tasks.custom-build-task-1.EsrpCodeSigning@1
+  - task: SFP.build-tasks.custom-build-task-1.EsrpCodeSigning@4
     displayName: 'Psd1 Signing [Authenticode]'
     inputs:
       ConnectedServiceName: 'ESRP Signing Service'
@@ -369,7 +369,7 @@ jobs:
     displayName: 'Build Installer'
     condition: eq(${{ parameters.buildInstaller }}, true)
 
-  - task: SFP.build-tasks.custom-build-task-1.EsrpCodeSigning@1
+  - task: SFP.build-tasks.custom-build-task-1.EsrpCodeSigning@4
     displayName: 'Installer Signing [Authenticode]'
     condition: eq(${{ parameters.buildInstaller }}, true)
     inputs:

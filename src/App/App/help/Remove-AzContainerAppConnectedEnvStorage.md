@@ -1,5 +1,5 @@
 ---
-external help file:
+external help file: Az.App-help.xml
 Module Name: Az.App
 online version: https://learn.microsoft.com/powershell/module/az.app/remove-azcontainerappconnectedenvstorage
 schema: 2.0.0
@@ -15,20 +15,20 @@ Delete storage for a connectedEnvironment.
 ### Delete (Default)
 ```
 Remove-AzContainerAppConnectedEnvStorage -ConnectedEnvironmentName <String> -Name <String>
- -ResourceGroupName <String> [-SubscriptionId <String>] [-DefaultProfile <PSObject>] [-PassThru] [-Confirm]
- [-WhatIf] [<CommonParameters>]
+ -ResourceGroupName <String> [-SubscriptionId <String>] [-DefaultProfile <PSObject>] [-PassThru] [-WhatIf]
+ [-Confirm] [<CommonParameters>]
+```
+
+### DeleteViaIdentityConnectedEnvironment
+```
+Remove-AzContainerAppConnectedEnvStorage -Name <String> -ConnectedEnvironmentInputObject <IAppIdentity>
+ [-DefaultProfile <PSObject>] [-PassThru] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### DeleteViaIdentity
 ```
 Remove-AzContainerAppConnectedEnvStorage -InputObject <IAppIdentity> [-DefaultProfile <PSObject>] [-PassThru]
- [-Confirm] [-WhatIf] [<CommonParameters>]
-```
-
-### DeleteViaIdentityConnectedEnvironment
-```
-Remove-AzContainerAppConnectedEnvStorage -ConnectedEnvironmentInputObject <IAppIdentity> -Name <String>
- [-DefaultProfile <PSObject>] [-PassThru] [-Confirm] [-WhatIf] [<CommonParameters>]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -232,4 +232,3 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ## NOTES
 
 ## RELATED LINKS
-

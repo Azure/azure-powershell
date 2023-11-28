@@ -18,7 +18,7 @@ Describe 'AzContainerAppManagedEnv' {
 
     # Contains confidential information, please run it locally
 
-    It 'CreateExpanded' -skip {
+    It 'CreateExpanded' -Skip {
         {
             $CustomId = (Get-AzOperationalInsightsWorkspace -ResourceGroupName $env.resourceGroupManaged -Name $env.managedWorkSpace).CustomerId
             $SharedKey = (Get-AzOperationalInsightsWorkspaceSharedKey -ResourceGroupName $env.resourceGroupManaged -Name $env.managedWorkSpace).PrimarySharedKey
@@ -29,34 +29,34 @@ Describe 'AzContainerAppManagedEnv' {
         } | Should -Not -Throw
     }
 
-    It 'List' -skip {
+    It 'List' {
         {
             $config = Get-AzContainerAppManagedEnv
             $config.Count | Should -BeGreaterThan 0
         } | Should -Not -Throw
     }
 
-    It 'Get' -skip {
+    It 'Get' {
         {
             $config = Get-AzContainerAppManagedEnv -ResourceGroupName $env.resourceGroupManaged -Name $env.managedEnv2
             $config.Name | Should -Be $env.managedEnv2
         } | Should -Not -Throw
     }
 
-    It 'List1' -skip {
+    It 'List1' {
         {
             $config = Get-AzContainerAppManagedEnv -ResourceGroupName $env.resourceGroupManaged
             $config.Count | Should -BeGreaterThan 0
         } | Should -Not -Throw
     }
 
-    It 'UpdateExpanded' -skip {
+    It 'UpdateExpanded' -Skip {
         {
             Update-AzContainerAppManagedEnv -ResourceGroupName $env.resourceGroupManaged -Name $env.managedEnv2 -Tag @{"123"="abc"}
         } | Should -Not -Throw
     }
 
-    It 'Delete' -skip {
+    It 'Delete' {
         {
             Remove-AzContainerAppManagedEnv -ResourceGroupName $env.resourceGroupManaged -Name $env.managedEnv2
         } | Should -Not -Throw

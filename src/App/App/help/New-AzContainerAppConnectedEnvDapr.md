@@ -1,5 +1,5 @@
 ---
-external help file:
+external help file: Az.App-help.xml
 Module Name: Az.App
 online version: https://learn.microsoft.com/powershell/module/az.app/new-azcontainerappconnectedenvdapr
 schema: 2.0.0
@@ -17,38 +17,38 @@ Create a Dapr Component in a connected environment.
 New-AzContainerAppConnectedEnvDapr -ConnectedEnvironmentName <String> -Name <String>
  -ResourceGroupName <String> [-SubscriptionId <String>] [-ComponentType <String>] [-IgnoreError]
  [-InitTimeout <String>] [-Metadata <IDaprMetadata[]>] [-Scope <String[]>] [-Secret <ISecret[]>]
- [-SecretStoreComponent <String>] [-Version <String>] [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf]
+ [-SecretStoreComponent <String>] [-Version <String>] [-DefaultProfile <PSObject>] [-WhatIf] [-Confirm]
  [<CommonParameters>]
+```
+
+### CreateViaJsonString
+```
+New-AzContainerAppConnectedEnvDapr -ConnectedEnvironmentName <String> -Name <String>
+ -ResourceGroupName <String> [-SubscriptionId <String>] -JsonString <String> [-DefaultProfile <PSObject>]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
+```
+
+### CreateViaJsonFilePath
+```
+New-AzContainerAppConnectedEnvDapr -ConnectedEnvironmentName <String> -Name <String>
+ -ResourceGroupName <String> [-SubscriptionId <String>] -JsonFilePath <String> [-DefaultProfile <PSObject>]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### CreateViaIdentityConnectedEnvironmentExpanded
 ```
-New-AzContainerAppConnectedEnvDapr -ConnectedEnvironmentInputObject <IAppIdentity> -Name <String>
+New-AzContainerAppConnectedEnvDapr -Name <String> -ConnectedEnvironmentInputObject <IAppIdentity>
  [-ComponentType <String>] [-IgnoreError] [-InitTimeout <String>] [-Metadata <IDaprMetadata[]>]
  [-Scope <String[]>] [-Secret <ISecret[]>] [-SecretStoreComponent <String>] [-Version <String>]
- [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
+ [-DefaultProfile <PSObject>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### CreateViaIdentityExpanded
 ```
 New-AzContainerAppConnectedEnvDapr -InputObject <IAppIdentity> [-ComponentType <String>] [-IgnoreError]
  [-InitTimeout <String>] [-Metadata <IDaprMetadata[]>] [-Scope <String[]>] [-Secret <ISecret[]>]
- [-SecretStoreComponent <String>] [-Version <String>] [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf]
+ [-SecretStoreComponent <String>] [-Version <String>] [-DefaultProfile <PSObject>] [-WhatIf] [-Confirm]
  [<CommonParameters>]
-```
-
-### CreateViaJsonFilePath
-```
-New-AzContainerAppConnectedEnvDapr -ConnectedEnvironmentName <String> -Name <String>
- -ResourceGroupName <String> -JsonFilePath <String> [-SubscriptionId <String>] [-DefaultProfile <PSObject>]
- [-Confirm] [-WhatIf] [<CommonParameters>]
-```
-
-### CreateViaJsonString
-```
-New-AzContainerAppConnectedEnvDapr -ConnectedEnvironmentName <String> -Name <String>
- -ResourceGroupName <String> -JsonString <String> [-SubscriptionId <String>] [-DefaultProfile <PSObject>]
- [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -111,7 +111,7 @@ Name of the connected environment.
 
 ```yaml
 Type: System.String
-Parameter Sets: CreateExpanded, CreateViaJsonFilePath, CreateViaJsonString
+Parameter Sets: CreateExpanded, CreateViaJsonString, CreateViaJsonFilePath
 Aliases:
 
 Required: True
@@ -234,7 +234,7 @@ Name of the Dapr Component.
 
 ```yaml
 Type: System.String
-Parameter Sets: CreateExpanded, CreateViaIdentityConnectedEnvironmentExpanded, CreateViaJsonFilePath, CreateViaJsonString
+Parameter Sets: CreateExpanded, CreateViaJsonString, CreateViaJsonFilePath, CreateViaIdentityConnectedEnvironmentExpanded
 Aliases: DaprName
 
 Required: True
@@ -250,7 +250,7 @@ The name is case insensitive.
 
 ```yaml
 Type: System.String
-Parameter Sets: CreateExpanded, CreateViaJsonFilePath, CreateViaJsonString
+Parameter Sets: CreateExpanded, CreateViaJsonString, CreateViaJsonFilePath
 Aliases:
 
 Required: True
@@ -311,7 +311,7 @@ The ID of the target subscription.
 
 ```yaml
 Type: System.String
-Parameter Sets: CreateExpanded, CreateViaJsonFilePath, CreateViaJsonString
+Parameter Sets: CreateExpanded, CreateViaJsonString, CreateViaJsonFilePath
 Aliases:
 
 Required: False
@@ -381,4 +381,3 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ## NOTES
 
 ## RELATED LINKS
-

@@ -2,43 +2,9 @@
 <Configuration>
   <ViewDefinitions>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.Quota.Models.QuotaIdentity</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.Quota.Models.CommonResourceProperties</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.Quota.Models.QuotaIdentity</TypeName>
-      </ViewSelectedBy>
-      <TableControl>
-        <TableHeaders>
-          <TableColumnHeader>
-            <Label>Id1</Label>
-          </TableColumnHeader>
-          <TableColumnHeader>
-            <Label>ResourceName</Label>
-          </TableColumnHeader>
-          <TableColumnHeader>
-            <Label>Scope</Label>
-          </TableColumnHeader>
-        </TableHeaders>
-        <TableRowEntries>
-          <TableRowEntry>
-            <TableColumnItems>
-              <TableColumnItem>
-                <PropertyName>Id1</PropertyName>
-              </TableColumnItem>
-              <TableColumnItem>
-                <PropertyName>ResourceName</PropertyName>
-              </TableColumnItem>
-              <TableColumnItem>
-                <PropertyName>Scope</PropertyName>
-              </TableColumnItem>
-            </TableColumnItems>
-          </TableRowEntry>
-        </TableRowEntries>
-      </TableControl>
-    </View>
-    <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.Quota.Models.Api20210315Preview.CommonResourceProperties</Name>
-      <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.Quota.Models.Api20210315Preview.CommonResourceProperties</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.Quota.Models.CommonResourceProperties</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -58,9 +24,9 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.Quota.Models.Api20210315Preview.CurrentQuotaLimitBase</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.Quota.Models.CurrentQuotaLimitBase</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.Quota.Models.Api20210315Preview.CurrentQuotaLimitBase</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.Quota.Models.CurrentQuotaLimitBase</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -98,9 +64,9 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.Quota.Models.Api20210315Preview.CurrentUsagesBase</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.Quota.Models.CurrentUsagesBase</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.Quota.Models.Api20210315Preview.CurrentUsagesBase</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.Quota.Models.CurrentUsagesBase</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -144,9 +110,9 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.Quota.Models.Api20210315Preview.LimitObject</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.Quota.Models.LimitObject</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.Quota.Models.Api20210315Preview.LimitObject</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.Quota.Models.LimitObject</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -172,9 +138,9 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.Quota.Models.Api20210315Preview.OperationDisplay</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.Quota.Models.OperationDisplay</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.Quota.Models.Api20210315Preview.OperationDisplay</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.Quota.Models.OperationDisplay</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -212,9 +178,9 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.Quota.Models.Api20210315Preview.OperationList</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.Quota.Models.OperationList</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.Quota.Models.Api20210315Preview.OperationList</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.Quota.Models.OperationList</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -234,9 +200,9 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.Quota.Models.Api20210315Preview.OperationResponse</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.Quota.Models.OperationResponse</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.Quota.Models.Api20210315Preview.OperationResponse</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.Quota.Models.OperationResponse</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -262,9 +228,43 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.Quota.Models.Api20210315Preview.QuotaLimits</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.Quota.Models.QuotaIdentity</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.Quota.Models.Api20210315Preview.QuotaLimits</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.Quota.Models.QuotaIdentity</TypeName>
+      </ViewSelectedBy>
+      <TableControl>
+        <TableHeaders>
+          <TableColumnHeader>
+            <Label>Id1</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>ResourceName</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>Scope</Label>
+          </TableColumnHeader>
+        </TableHeaders>
+        <TableRowEntries>
+          <TableRowEntry>
+            <TableColumnItems>
+              <TableColumnItem>
+                <PropertyName>Id1</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>ResourceName</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>Scope</PropertyName>
+              </TableColumnItem>
+            </TableColumnItems>
+          </TableRowEntry>
+        </TableRowEntries>
+      </TableControl>
+    </View>
+    <View>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.Quota.Models.QuotaLimits</Name>
+      <ViewSelectedBy>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.Quota.Models.QuotaLimits</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -290,9 +290,9 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.Quota.Models.Api20210315Preview.QuotaLimitsResponse</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.Quota.Models.QuotaLimitsResponse</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.Quota.Models.Api20210315Preview.QuotaLimitsResponse</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.Quota.Models.QuotaLimitsResponse</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -312,9 +312,9 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.Quota.Models.Api20210315Preview.QuotaProperties</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.Quota.Models.QuotaProperties</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.Quota.Models.Api20210315Preview.QuotaProperties</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.Quota.Models.QuotaProperties</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -352,9 +352,9 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.Quota.Models.Api20210315Preview.QuotaRequestDetails</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.Quota.Models.QuotaRequestDetails</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.Quota.Models.Api20210315Preview.QuotaRequestDetails</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.Quota.Models.QuotaRequestDetails</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -392,9 +392,9 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.Quota.Models.Api20210315Preview.QuotaRequestDetailsList</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.Quota.Models.QuotaRequestDetailsList</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.Quota.Models.Api20210315Preview.QuotaRequestDetailsList</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.Quota.Models.QuotaRequestDetailsList</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -414,9 +414,9 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.Quota.Models.Api20210315Preview.QuotaRequestOneResourceProperties</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.Quota.Models.QuotaRequestOneResourceProperties</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.Quota.Models.Api20210315Preview.QuotaRequestOneResourceProperties</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.Quota.Models.QuotaRequestOneResourceProperties</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -478,9 +478,9 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.Quota.Models.Api20210315Preview.QuotaRequestOneResourceSubmitResponse</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.Quota.Models.QuotaRequestOneResourceSubmitResponse</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.Quota.Models.Api20210315Preview.QuotaRequestOneResourceSubmitResponse</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.Quota.Models.QuotaRequestOneResourceSubmitResponse</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -500,9 +500,9 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.Quota.Models.Api20210315Preview.QuotaRequestProperties</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.Quota.Models.QuotaRequestProperties</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.Quota.Models.Api20210315Preview.QuotaRequestProperties</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.Quota.Models.QuotaRequestProperties</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -534,9 +534,9 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.Quota.Models.Api20210315Preview.QuotaRequestStatusDetails</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.Quota.Models.QuotaRequestStatusDetails</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.Quota.Models.Api20210315Preview.QuotaRequestStatusDetails</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.Quota.Models.QuotaRequestStatusDetails</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -580,9 +580,9 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.Quota.Models.Api20210315Preview.QuotaRequestSubmitResponse</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.Quota.Models.QuotaRequestSubmitResponse</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.Quota.Models.Api20210315Preview.QuotaRequestSubmitResponse</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.Quota.Models.QuotaRequestSubmitResponse</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -602,9 +602,9 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.Quota.Models.Api20210315Preview.QuotaRequestSubmitResponse202</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.Quota.Models.QuotaRequestSubmitResponse202</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.Quota.Models.Api20210315Preview.QuotaRequestSubmitResponse202</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.Quota.Models.QuotaRequestSubmitResponse202</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -624,9 +624,9 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.Quota.Models.Api20210315Preview.ResourceName</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.Quota.Models.ResourceName</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.Quota.Models.Api20210315Preview.ResourceName</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.Quota.Models.ResourceName</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -652,9 +652,9 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.Quota.Models.Api20210315Preview.ServiceError</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.Quota.Models.ServiceError</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.Quota.Models.Api20210315Preview.ServiceError</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.Quota.Models.ServiceError</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -680,9 +680,9 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.Quota.Models.Api20210315Preview.ServiceErrorDetail</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.Quota.Models.ServiceErrorDetail</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.Quota.Models.Api20210315Preview.ServiceErrorDetail</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.Quota.Models.ServiceErrorDetail</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -708,9 +708,9 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.Quota.Models.Api20210315Preview.SubRequest</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.Quota.Models.SubRequest</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.Quota.Models.Api20210315Preview.SubRequest</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.Quota.Models.SubRequest</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -748,9 +748,9 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.Quota.Models.Api20210315Preview.UsagesLimits</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.Quota.Models.UsagesLimits</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.Quota.Models.Api20210315Preview.UsagesLimits</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.Quota.Models.UsagesLimits</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -776,9 +776,9 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.Quota.Models.Api20210315Preview.UsagesObject</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.Quota.Models.UsagesObject</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.Quota.Models.Api20210315Preview.UsagesObject</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.Quota.Models.UsagesObject</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -804,9 +804,9 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.Quota.Models.Api20210315Preview.UsagesProperties</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.Quota.Models.UsagesProperties</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.Quota.Models.Api20210315Preview.UsagesProperties</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.Quota.Models.UsagesProperties</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
