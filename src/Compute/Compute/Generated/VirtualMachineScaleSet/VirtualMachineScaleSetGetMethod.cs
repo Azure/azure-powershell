@@ -165,6 +165,7 @@ namespace Microsoft.Azure.Commands.Compute.Automation
             ParameterSetName = OSUpgradeHistoryMethodParameter,
             ValueFromPipelineByPropertyName = true)]
         [ResourceGroupCompleter]
+        [ValidateNotNullOrEmpty]
         [SupportsWildcards]
         public string ResourceGroupName { get; set; }
 
@@ -182,6 +183,7 @@ namespace Microsoft.Azure.Commands.Compute.Automation
             ValueFromPipelineByPropertyName = true)]
         [ResourceNameCompleter("Microsoft.Compute/virtualMachineScaleSets", "ResourceGroupName")]
         [SupportsWildcards]
+        [ValidateNotNullOrEmpty]
         [Alias("Name")]
         public string VMScaleSetName { get; set; }
 
