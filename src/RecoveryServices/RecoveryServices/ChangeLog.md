@@ -18,6 +18,7 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
+* Removed outdated upcoming breaking change warning
 
 ## Version 6.6.1
 * Fixed minor issues
