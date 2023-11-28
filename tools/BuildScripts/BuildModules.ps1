@@ -1,78 +1,88 @@
+[CmdletBinding(DefaultParameterSetName="AllSet")]
 param (
     [string]$RepoRoot,
     [string]$Configuration,
     [string]$TestsToRun,
-    [string]$PullRequestNumber,
-    [string]$TargetModule,
-    [string]$ModifiedModuleBuild,
+    [string]$RepoArtifacts,
     [string]$CoreTests,
-    [string]$RepoArtifacts
+    [Parameter(ParameterSetName="PullRequestSet", Mandatory=$true)]
+    [string]$BuildCsprojList,
+	[Parameter(ParameterSetName="PullRequestSet", Mandatory=$true)]
+    [string]$TestCsprojList,
+	[Parameter(ParameterSetName="TargetModuleSet", Mandatory=$true)]
+    [string]$TargetModule,
+	[Parameter(ParameterSetName="ModifiedBuildSet", Mandatory=$true)]
+    [string]$ModifiedModuleBuild
+
+
 )
 
 function Include-CsprojFiles {
     param (
         [string]$Path,
-        [string]$Exclude = ""
+        [string]$Exclude = "",
+        [string]$Include = "",
+        [string]$Filter = "*.csproj"
+
     )
 
     $excludeItems = $Exclude -split ";"
-    Get-ChildItem -Path $Path -Filter "*.csproj" -Recurse | Where-Object {
-        $include = $true
-        foreach ($item in $excludeItems) {
-            if ($_ -match $item) {
-                $include = $false
-                break
-            }
-        }
-        return $include
-    }
+    $includeItems = $Include -split ";"
+
+    Get-ChildItem -Path $Path -Filter $Filter -Recurse -Exclude $excludeItems -Include $includeItems
 }
 
 $csprojFiles = @()
 
-if ($PullRequestNumber -eq 'null' -and $TargetModule -eq 'null' -and $ModifiedModuleBuild -eq 'false') {
-    $csprojFiles += Include-CsprojFiles -Path "$RepoRoot/src/" -Exclude ".Test.csproj;Authenticators.csproj"
+if ($PSCmdlet.ParameterSetName -eq 'AllSet') {
+    $csprojFiles += Include-CsprojFiles -Path "$RepoRoot/src/" -Exclude "*.Test.csproj;Authenticators.csproj" -Filter "*.csproj"
     if ($Configuration -ne 'Release' -and $TestsToRun -eq 'All') {
-        $csprojFiles += Include-CsprojFiles -Path "$RepoRoot/src/**/**/*.Test.csproj"
+        $csprojFiles += Include-CsprojFiles -Path "$RepoRoot/src/" -Filter "*.Test.csproj"
     }
 
     if ($Configuration -ne 'Release' -and $TestsToRun -eq 'NonCore') {
-        $csprojFiles += Include-CsprojFiles -Path "$RepoRoot/src/**/**/*.Test.csproj" -Exclude $CoreTests
+        $csprojFiles += Include-CsprojFiles -Path "$RepoRoot/src" -Exclude $CoreTests -Filter "*.Test.csproj"
     }
 
     if ($Configuration -ne 'Release' -and $TestsToRun -eq 'Core') {
-        $csprojFiles += Include-CsprojFiles -Path $CoreTests
+        $csprojFiles += Include-CsprojFiles -Path "$RepoRoot/src" -Include $CoreTests
     }
 
     if ($env:OS -eq "Windows_NT") {
-        $csprojFiles += Include-CsprojFiles -Path "$RepoRoot/src/**/**/Authenticators.csproj"
+        $csprojFiles += Include-CsprojFiles -Path "$RepoRoot/src" -Filter "Authenticators.csproj"
     }
 
 }
 
-if ($ModifiedModuleBuild -eq "true" -or $TargetModule -ne 'null') {
+if ($PSCmdlet.ParameterSetName -eq 'ModifiedBuildSet' -or $PSCmdlet.ParameterSetName -eq 'TargetModuleSet') {
     .$RepoRoot\tools\BuildScripts\CheckChangeLogs.ps1 -outputFile $RepoArtifacts/ModifiedModule.txt -rootPath $RepoRoot -TargetModuleList $TargetModule
     $ModuleList = Get-Content $RepoArtifacts/ModifiedModule.txt
     foreach ($module in $ModuleList) {
         $modulePath = "$RepoRoot/src/$module"
-        $csprojFiles += Get-ChildItem -Path "$modulePath/**/" -Recurse | Where-Object { -not $_.FullName.Contains(".Test.csproj") -and -not $_.FullName.Contains("Authenticators.csproj") }
-
+        $csprojFiles += Include-CsprojFiles -Path "$modulePath" -Exclude "*.Test.csproj;Authenticators.csproj" -Filter "*.csproj"
         if ($Configuration -ne 'Release') {
             if ($TestsToRun -eq 'All') {
-                $csprojFiles += Get-ChildItem -Path "$modulePath/**/*.Test.csproj" -Recurse
+                $csprojFiles += Include-CsprojFiles -Path $modulePath -Filter "*.Test.csproj"
             } elseif ($TestsToRun -eq 'NonCore') {
-                $csprojFiles += Get-ChildItem -Path "$modulePath/**/*.Test.csproj" -Recurse | Where-Object { -not $_.FullName.Contains($CoreTests) }
+                $csprojFiles += Include-CsprojFiles -Path $modulePath -Exclude $CoreTests -Filter "*.Test.csproj"
             } elseif ($TestsToRun -eq 'Core') {
-                $csprojFiles += Get-ChildItem -Path $CoreTests -Recurse
+                $csprojFiles += Include-CsprojFiles -Path $modulePath -Include $CoreTests
             }
         }
 
         if ($env:OS -eq "Windows_NT") {
-            $csprojFiles += Get-ChildItem -Path "$modulePath/**/Authenticators.csproj" -Recurse
+            $csprojFiles += Include-CsprojFiles -Path "$modulePath" -Filter "Authenticators.csproj"
         }
     }
 }
-
+if ($PSCmdlet.ParameterSetName -eq 'PullRequestSet') {
+    $BuildCsprojList = $BuildCsprojList -replace ' ', ';'
+    $TestCsprojList = $TestCsprojList -replace ' ', ';'
+    $csprojFiles += Include-CsprojFiles -Path "$RepoRoot/src/" -Include $BuildCsprojList
+    $csprojFiles += Include-CsprojFiles -Path "$RepoRoot/src/" -Include $TestCsprojList
+}
 foreach ($file in $csprojFiles) {
     & dotnet sln $RepoArtifacts/Azure.PowerShell.sln add "$file"
 }
+
+Write-Output "Modules are added to sln file"
