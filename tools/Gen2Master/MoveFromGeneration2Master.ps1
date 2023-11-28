@@ -194,7 +194,7 @@ Function Move-Generation2Master {
                         Remove-Item $ExposedHelpFile.FullName
                     }
                 }
-                # Remove the invalid commands from the module manifest.
+                # Remove the deprecated commands from the module manifest.
                 $Psd1Metadata = Import-LocalizedData -BaseDirectory "$DestPath/$ModuleName$Psd1FolderPostfix" -FileName "Az.$ModuleName.psd1"
                 $Psd1Metadata.FunctionsToExport = $ModuleMatadata.ExportedFunctions.Keys | Sort-Object
                 if ($Psd1Metadata.FunctionsToExport.Length -eq 0)
