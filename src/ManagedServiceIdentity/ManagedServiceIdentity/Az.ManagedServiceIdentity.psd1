@@ -71,13 +71,9 @@ FormatsToProcess =
 NestedModules = @('ManagedServiceIdentity.Autorest/Az.ManagedServiceIdentity.psm1')
 
 # Functions to export from this module, for best performance, do not use wildcards and do not delete the entry, use an empty array if there are no functions to export.
-FunctionsToExport = 'Get-AzFederatedIdentityCredentials', 
-               'Get-AzSystemAssignedIdentity', 'Get-AzUserAssignedIdentity', 
-               'Get-AzUserAssignedIdentityAssociatedResource', 
-               'New-AzFederatedIdentityCredentials', 'New-AzUserAssignedIdentity', 
-               'Remove-AzFederatedIdentityCredentials', 
+FunctionsToExport = 'Get-AzSystemAssignedIdentity', 'Get-AzUserAssignedIdentity', 
+               'Get-AzUserAssignedIdentityAssociatedResource','New-AzUserAssignedIdentity',
                'Remove-AzUserAssignedIdentity', 
-               'Update-AzFederatedIdentityCredentials', 
                'Update-AzUserAssignedIdentity', 
                'Get-AzFederatedIdentityCredential', 
                'New-AzFederatedIdentityCredential', 
@@ -91,7 +87,7 @@ CmdletsToExport = @()
 VariablesToExport = '*'
 
 # Aliases to export from this module, for best performance, do not use wildcards and do not delete the entry, use an empty array if there are no aliases to export.
-AliasesToExport = '*', 'Get-AzFederatedIdentityCredentials', 
+AliasesToExport = 'Get-AzFederatedIdentityCredentials', 
                'New-AzFederatedIdentityCredentials', 
                'Remove-AzFederatedIdentityCredentials', 
                'Update-AzFederatedIdentityCredentials'
