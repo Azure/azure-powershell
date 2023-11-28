@@ -18,6 +18,7 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
+* Renamed `*-AzFederatedIdentityCredentials` to `*-AzFederatedIdentityCredential`, and kept `*-AzFederatedIdentityCredentials` as an alias.
 
 ## Version 1.1.1
 * Upgraded to API version 2023-01-31.
