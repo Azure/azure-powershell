@@ -1,11 +1,11 @@
-if(($null -eq $TestName) -or ($TestName -contains 'New-AzCustomLocation'))
+if(($null -eq $TestName) -or ($TestName -contains 'Find-AzCustomLocationTargetResourceGroup'))
 {
   $loadEnvPath = Join-Path $PSScriptRoot 'loadEnv.ps1'
   if (-Not (Test-Path -Path $loadEnvPath)) {
       $loadEnvPath = Join-Path $PSScriptRoot '..\loadEnv.ps1'
   }
   . ($loadEnvPath)
-  $TestRecordingFile = Join-Path $PSScriptRoot 'New-AzCustomLocation.Recording.json'
+  $TestRecordingFile = Join-Path $PSScriptRoot 'Find-AzCustomLocationTargetResourceGroup.Recording.json'
   $currentPath = $PSScriptRoot
   while(-not $mockingPath) {
       $mockingPath = Get-ChildItem -Path $currentPath -Recurse -Include 'HttpPipelineMocking.ps1' -File
@@ -14,20 +14,20 @@ if(($null -eq $TestName) -or ($TestName -contains 'New-AzCustomLocation'))
   . ($mockingPath | Select-Object -First 1).FullName
 }
 
-Describe 'New-AzCustomLocation' {
-    It 'CreateExpanded' -skip {
+Describe 'Find-AzCustomLocationTargetResourceGroup' {
+    It 'FindExpanded' -skip {
         { throw [System.NotImplementedException] } | Should -Not -Throw
     }
 
-    It 'CreateViaJsonFilePath' -skip {
+    It 'FindViaJsonString' -skip {
         { throw [System.NotImplementedException] } | Should -Not -Throw
     }
 
-    It 'CreateViaJsonString' -skip {
+    It 'FindViaJsonFilePath' -skip {
         { throw [System.NotImplementedException] } | Should -Not -Throw
     }
 
-    It 'CreateViaIdentityExpanded' -skip {
+    It 'FindViaIdentityExpanded' -skip {
         { throw [System.NotImplementedException] } | Should -Not -Throw
     }
 }

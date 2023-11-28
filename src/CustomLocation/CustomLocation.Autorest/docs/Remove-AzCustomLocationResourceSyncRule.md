@@ -1,60 +1,91 @@
 ---
 external help file:
 Module Name: Az.CustomLocation
-online version: https://learn.microsoft.com/powershell/module/az.customlocation/remove-azcustomlocation
+online version: https://learn.microsoft.com/powershell/module/az.customlocation/remove-azcustomlocationresourcesyncrule
 schema: 2.0.0
 ---
 
-# Remove-AzCustomLocation
+# Remove-AzCustomLocationResourceSyncRule
 
 ## SYNOPSIS
-Deletes the Custom Location with the specified Resource Name, Resource Group, and Subscription Id.
+Deletes the Resource Sync Rule with the specified Resource Sync Rule Name, Custom Location Resource Name, Resource Group, and Subscription Id.
 
 ## SYNTAX
 
 ### Delete (Default)
 ```
-Remove-AzCustomLocation -Name <String> -ResourceGroupName <String> [-SubscriptionId <String>]
- [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-PassThru] [-Confirm] [-WhatIf] [<CommonParameters>]
+Remove-AzCustomLocationResourceSyncRule -CustomLocationName <String> -Name <String>
+ -ResourceGroupName <String> [-SubscriptionId <String>] [-DefaultProfile <PSObject>] [-PassThru] [-Confirm]
+ [-WhatIf] [<CommonParameters>]
 ```
 
 ### DeleteViaIdentity
 ```
-Remove-AzCustomLocation -InputObject <ICustomLocationIdentity> [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
+Remove-AzCustomLocationResourceSyncRule -InputObject <ICustomLocationIdentity> [-DefaultProfile <PSObject>]
  [-PassThru] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
+### DeleteViaIdentityCustomlocation
+```
+Remove-AzCustomLocationResourceSyncRule -CustomlocationInputObject <ICustomLocationIdentity> -Name <String>
+ [-DefaultProfile <PSObject>] [-PassThru] [-Confirm] [-WhatIf] [<CommonParameters>]
+```
+
 ## DESCRIPTION
-Deletes the Custom Location with the specified Resource Name, Resource Group, and Subscription Id.
+Deletes the Resource Sync Rule with the specified Resource Sync Rule Name, Custom Location Resource Name, Resource Group, and Subscription Id.
 
 ## EXAMPLES
 
-### Example 1: Deletes the Custom Location.
+### Example 1: Deletes the Resource Sync Rule with the specified Resource Sync Rule Name, Custom Location Resource Name, Resource Group, and Subscription Id.
 ```powershell
-Remove-AzCustomLocation -ResourceGroupName azps_test_cluster -Name azps-customlocation
+Remove-AzCustomLocationResourceSyncRule -CustomLocationName azps-customlocation -Name azps-resourcesyncrule -ResourceGroupName azps_test_cluster
 ```
 
-Deletes the Custom Location.
+Deletes the Resource Sync Rule with the specified Resource Sync Rule Name, Custom Location Resource Name, Resource Group, and Subscription Id.
 
-### Example 2: Deletes the Custom Location.
+### Example 2: Deletes the Resource Sync Rule with the specified Resource Sync Rule Name, Custom Location Resource Name, Resource Group, and Subscription Id.
+```powershell
+$obj = Get-AzCustomLocationResourceSyncRule -ResourceGroupName azps_test_cluster -CustomLocationName azps-customlocation -Name azps-resourcesyncrule
+Remove-AzCustomLocationResourceSyncRule -InputObject $obj
+```
+
+Deletes the Resource Sync Rule with the specified Resource Sync Rule Name, Custom Location Resource Name, Resource Group, and Subscription Id.
+
+### Example 3: Deletes the Resource Sync Rule with the specified Resource Sync Rule Name, Custom Location Resource Name, Resource Group, and Subscription Id.
 ```powershell
 $obj = Get-AzCustomLocation -ResourceGroupName azps_test_cluster -Name azps-customlocation
-Remove-AzCustomLocation -InputObject $obj
+Remove-AzCustomLocationResourceSyncRule -CustomlocationInputObject $obj -Name azps-resourcesyncrule
 ```
 
-Deletes the Custom Location.
+Deletes the Resource Sync Rule with the specified Resource Sync Rule Name, Custom Location Resource Name, Resource Group, and Subscription Id.
 
 ## PARAMETERS
 
-### -AsJob
-Run the command as a job
+### -CustomlocationInputObject
+Identity Parameter
+To construct, see NOTES section for CUSTOMLOCATIONINPUTOBJECT properties and create a hash table.
 
 ```yaml
-Type: System.Management.Automation.SwitchParameter
-Parameter Sets: (All)
+Type: Microsoft.Azure.PowerShell.Cmdlets.CustomLocation.Models.ICustomLocationIdentity
+Parameter Sets: DeleteViaIdentityCustomlocation
 Aliases:
 
-Required: False
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: True (ByValue)
+Accept wildcard characters: False
+```
+
+### -CustomLocationName
+Custom Locations name.
+
+```yaml
+Type: System.String
+Parameter Sets: Delete
+Aliases:
+
+Required: True
 Position: Named
 Default value: None
 Accept pipeline input: False
@@ -94,29 +125,14 @@ Accept wildcard characters: False
 ```
 
 ### -Name
-Custom Locations name.
+Resource Sync Rule name.
 
 ```yaml
 Type: System.String
-Parameter Sets: Delete
+Parameter Sets: Delete, DeleteViaIdentityCustomlocation
 Aliases:
 
 Required: True
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -NoWait
-Run the command asynchronously
-
-```yaml
-Type: System.Management.Automation.SwitchParameter
-Parameter Sets: (All)
-Aliases:
-
-Required: False
 Position: Named
 Default value: None
 Accept pipeline input: False

@@ -1,10 +1,72 @@
 {
   "resourceType": "customlocations",
-  "apiVersion": "2021-08-15",
+  "apiVersion": "2021-08-31-preview",
   "learnMore": {
     "url": "https://learn.microsoft.com/powershell/module/az.customlocation"
   },
   "commands": [
+    {
+      "name": "Find-AzCustomLocationTargetResourceGroup",
+      "description": "Returns the target resource group associated with the resource sync rules of the Custom Location that match the rules passed in with the Find Target Resource Group Request.",
+      "path": "/subscriptions/{subscriptionId}/resourcegroups/{resourceGroupName}/providers/microsoft.extendedlocation/customlocations/{resourceName}/findTargetResourceGroup",
+      "help": {
+        "learnMore": {
+          "url": "https://learn.microsoft.com/powershell/module/az.customlocation/find-azcustomlocationtargetresourcegroup"
+        },
+        "parameterSets": [
+          {
+            "parameters": [
+              "-CustomLocationName <String>",
+              "-ResourceGroupName <String>",
+              "[-SubscriptionId <String>]"
+            ]
+          },
+          {
+            "parameters": [
+              "-CustomLocationName <String>",
+              "-ResourceGroupName <String>",
+              "[-SubscriptionId <String>]"
+            ]
+          }
+        ]
+      },
+      "examples": [
+        {
+          "description": "Returns the target resource group associated with the resource sync rules of the Custom Location that match the rules passed in with the Find Target Resource Group Request.",
+          "parameters": [
+            {
+              "name": "-CustomLocationName",
+              "value": "[Path.resourceName]"
+            },
+            {
+              "name": "-ResourceGroupName",
+              "value": "[Path.resourceGroupName]"
+            },
+            {
+              "name": "-SubscriptionId",
+              "value": "[Path.subscriptionId]"
+            }
+          ]
+        },
+        {
+          "description": "Returns the target resource group associated with the resource sync rules of the Custom Location that match the rules passed in with the Find Target Resource Group Request.",
+          "parameters": [
+            {
+              "name": "-CustomLocationName",
+              "value": "[Path.resourceName]"
+            },
+            {
+              "name": "-ResourceGroupName",
+              "value": "[Path.resourceGroupName]"
+            },
+            {
+              "name": "-SubscriptionId",
+              "value": "[Path.subscriptionId]"
+            }
+          ]
+        }
+      ]
+    },
     {
       "name": "Get-AzCustomLocation",
       "description": "Gets the details of the customLocation with a specified resource group and name.",
