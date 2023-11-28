@@ -75,6 +75,7 @@ function Get-AzDevCenterUserEnvironmentAction {
         [Parameter(ParameterSetName = 'Get', Mandatory)]
         [Parameter(ParameterSetName = 'GetByDevCenter', Mandatory)]
         [Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Category('Path')]
+        [Alias('ActionName')]
         [System.String]
         # The name of an action that will take place on an Environment.
         ${Name},

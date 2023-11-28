@@ -12,7 +12,13 @@ Gets a schedule.
 
 ## SYNTAX
 
-### Get (Default)
+### List (Default)
+```
+Get-AzDevCenterUserSchedule -Endpoint <String> -ProjectName <String> [-DefaultProfile <PSObject>]
+ [<CommonParameters>]
+```
+
+### Get
 ```
 Get-AzDevCenterUserSchedule -Endpoint <String> -PoolName <String> -ProjectName <String> -ScheduleName <String>
  [-DefaultProfile <PSObject>] [<CommonParameters>]
@@ -34,12 +40,6 @@ Get-AzDevCenterUserSchedule -Endpoint <String> -InputObject <IDevCenterdataIdent
 ```
 Get-AzDevCenterUserSchedule -DevCenterName <String> -InputObject <IDevCenterdataIdentity>
  [-DefaultProfile <PSObject>] [<CommonParameters>]
-```
-
-### List
-```
-Get-AzDevCenterUserSchedule -Endpoint <String> -ProjectName <String> [-DefaultProfile <PSObject>]
- [<CommonParameters>]
 ```
 
 ### List1
