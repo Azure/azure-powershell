@@ -86,6 +86,36 @@ namespace Microsoft.Azure.Commands.Network.Models
         public bool? EnableFips { get; set; }
 
         [Ps1Xml(Target = ViewControl.Table)]
+        public bool? EnableRequestBuffering
+        {
+            get
+            {
+                return this.GlobalConfiguration.EnableRequestBuffering;
+            }
+
+            set
+            {
+                this.GlobalConfiguration.EnableRequestBuffering = value;
+            }
+
+        }
+
+        [Ps1Xml(Target = ViewControl.Table)]
+        public bool? EnableResponseBuffering 
+        {
+            get
+            {
+                return this.GlobalConfiguration.EnableResponseBuffering;
+            }
+                
+            set
+            {
+                this.GlobalConfiguration.EnableResponseBuffering = value;
+            }
+        
+        }
+
+        [Ps1Xml(Target = ViewControl.Table)]
         public bool? ForceFirewallPolicyAssociation { get; set; }
         
         public List<string> Zones { get; set; }

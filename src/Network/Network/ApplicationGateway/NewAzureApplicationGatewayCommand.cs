@@ -438,6 +438,8 @@ namespace Microsoft.Azure.Commands.Network
                 applicationGateway.EnableFips = true;
             }
 
+            applicationGateway.GlobalConfiguration = new PSApplicationGatewayGlobalConfiguration();
+
             if (this.EnableRequestBuffering.HasValue)
             {
                 applicationGateway.GlobalConfiguration.EnableRequestBuffering = this.EnableRequestBuffering.Value;
