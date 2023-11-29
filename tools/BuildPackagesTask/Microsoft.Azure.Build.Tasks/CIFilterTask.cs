@@ -38,11 +38,6 @@ namespace Microsoft.WindowsAzure.Build.Tasks
         public string[] FilesChanged { get; set; }
 
         /// <summary>
-        /// Gets or set the TargetModule, e.g. Storage
-        /// </summary>
-        public string TargetModule { get; set; }
-
-        /// <summary>
         /// Gets or set the Mode, e.g. Release
         /// </summary>
         [Required]
@@ -184,27 +179,6 @@ namespace Microsoft.WindowsAzure.Build.Tasks
                 csprojList.Add(moduleName);
             }
             return csprojList;
-        }
-
-        private bool ProcessTargetModule(Dictionary<string, string[]> csprojMap)
-        {
-            Dictionary<string, HashSet<string>> influencedModuleInfo = new Dictionary<string, HashSet<string>>
-            {
-                [BUILD_PHASE] = new HashSet<string>(GetBuildCsprojList(TargetModule, csprojMap).ToList()),
-                [TEST_PHASE] = new HashSet<string>(GetTestCsprojList(TargetModule, csprojMap).ToList())
-            };
-
-            Console.WriteLine("----------------- InfluencedModuleInfo TargetModule -----------------");
-            foreach (string phaseName in influencedModuleInfo.Keys)
-            {
-                Console.WriteLine(string.Format("{0}: [{1}]", phaseName, string.Join(", ", influencedModuleInfo[phaseName].ToList())));
-            }
-            Console.WriteLine("--------------------------------------------------------");
-
-            BuildCsprojList = influencedModuleInfo[BUILD_PHASE].ToArray();
-            TestCsprojList = influencedModuleInfo[TEST_PHASE].ToArray();
-
-            return true;
         }
 
         private string ProcessSinglePattern(string pattern)
@@ -449,11 +423,7 @@ namespace Microsoft.WindowsAzure.Build.Tasks
             var csprojMap = ReadMapFile(CsprojMapFilePath, "CsprojMapFilePath");
 
             Console.WriteLine(string.Format("FilesChanged: {0}", FilesChanged.Length));
-            if (!string.IsNullOrWhiteSpace(TargetModule))
-            {
-                return ProcessTargetModule(csprojMap);
-            }
-            else if (FilesChanged != null)
+            if (FilesChanged != null)
             {
                 if (FilesChanged.Length <= 0)
                 {
