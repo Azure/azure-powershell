@@ -91,6 +91,9 @@ if (-not [System.String]::IsNullOrEmpty($AlcRefAssembly)) {
             else {
                 Copy-Item -Path $refAssemblyPath -Destination $alcDestinationDir -Force
             }
+        } 
+        else {
+            Write-Warning "Cannot find the AssemblyPath $refAssemblyPath"
         }
     }
 }

@@ -36,17 +36,15 @@ $csprojFiles = @()
 
 if ($PSCmdlet.ParameterSetName -eq 'AllSet') {
     $csprojFiles += Include-CsprojFiles -Path "$RepoRoot/src/" -Exclude "*.Test.csproj;Authenticators.csproj" -Filter "*.csproj"
-    if ($Configuration -ne 'Release' -and $TestsToRun -eq 'All') {
-        $csprojFiles += Include-CsprojFiles -Path "$RepoRoot/src/" -Filter "*.Test.csproj"
-    }
-
-    if ($Configuration -ne 'Release' -and $TestsToRun -eq 'NonCore') {
-        $csprojFiles += Include-CsprojFiles -Path "$RepoRoot/src" -Exclude $CoreTests -Filter "*.Test.csproj"
-    }
-
-    if ($Configuration -ne 'Release' -and $TestsToRun -eq 'Core') {
-        $csprojFiles += Include-CsprojFiles -Path "$RepoRoot/src" -Include $CoreTests
-    }
+        if ($Configuration -ne 'Release') {
+            if ($TestsToRun -eq 'All') {
+                $csprojFiles += Include-CsprojFiles -Path "$RepoRoot/src/" -Filter "*.Test.csproj"
+            } elseif ($TestsToRun -eq 'NonCore') {
+                $csprojFiles += Include-CsprojFiles -Path "$RepoRoot/src/" -Exclude $CoreTests -Filter "*.Test.csproj"
+            } elseif ($TestsToRun -eq 'Core') {
+                $csprojFiles += Include-CsprojFiles -Path "$RepoRoot/src/" -Include $CoreTests
+            }
+        }
 
     if ($env:OS -eq "Windows_NT") {
         $csprojFiles += Include-CsprojFiles -Path "$RepoRoot/src" -Filter "Authenticators.csproj"
