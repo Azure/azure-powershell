@@ -279,7 +279,7 @@ namespace Microsoft.Azure.Commands.Compute
                 vm.HardwareProfile.VmSizeProperties.VCPUsPerCore = this.vCPUCountPerCore;
             }
 
-            if (this.EnableUltraSSD.IsPresent)
+            if (this.EnableUltraSSD == true)
             {
                 if (vm.AdditionalCapabilities == null)
                 {
@@ -288,7 +288,7 @@ namespace Microsoft.Azure.Commands.Compute
                 vm.AdditionalCapabilities.UltraSSDEnabled = this.EnableUltraSSD;
             }
 
-            if (this.HibernationEnabled.IsPresent)
+            if (this.HibernationEnabled == true)
             {
                 if (vm.AdditionalCapabilities == null)
                 {
@@ -317,12 +317,12 @@ namespace Microsoft.Azure.Commands.Compute
                 vm.BillingProfile = new BillingProfile(this.MaxPrice);
             }
             
-            if (this.EncryptionAtHost.IsPresent)
+            if (this.EncryptionAtHost == true)
             {
                 if (vm.SecurityProfile == null)
                     vm.SecurityProfile = new SecurityProfile();
 
-                vm.SecurityProfile.EncryptionAtHost = this.EncryptionAtHost.IsPresent;
+                vm.SecurityProfile.EncryptionAtHost = this.EncryptionAtHost;
             }
 
             if (this.IsParameterBound(c => c.CapacityReservationGroupId))
