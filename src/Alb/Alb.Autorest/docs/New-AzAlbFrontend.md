@@ -12,12 +12,37 @@ Create a Frontend
 
 ## SYNTAX
 
+### CreateExpanded (Default)
 ```
 New-AzAlbFrontend -AlbName <String> -Name <String> -ResourceGroupName <String> -Location <String>
- [-SubscriptionId <String>] [-SystemDataCreatedAt <DateTime>] [-SystemDataCreatedBy <String>]
- [-SystemDataCreatedByType <CreatedByType>] [-SystemDataLastModifiedAt <DateTime>]
- [-SystemDataLastModifiedBy <String>] [-SystemDataLastModifiedByType <CreatedByType>] [-Tag <Hashtable>]
+ [-SubscriptionId <String>] [-Tag <Hashtable>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm]
+ [-WhatIf] [<CommonParameters>]
+```
+
+### CreateViaIdentityTrafficController
+```
+New-AzAlbFrontend -Name <String> -TrafficControllerInputObject <IAlbIdentity> -Resource <IFrontend>
  [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
+```
+
+### CreateViaIdentityTrafficControllerExpanded
+```
+New-AzAlbFrontend -Name <String> -TrafficControllerInputObject <IAlbIdentity> -Location <String>
+ [-Tag <Hashtable>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
+```
+
+### CreateViaJsonFilePath
+```
+New-AzAlbFrontend -AlbName <String> -Name <String> -ResourceGroupName <String> -JsonFilePath <String>
+ [-SubscriptionId <String>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf]
+ [<CommonParameters>]
+```
+
+### CreateViaJsonString
+```
+New-AzAlbFrontend -AlbName <String> -Name <String> -ResourceGroupName <String> -JsonString <String>
+ [-SubscriptionId <String>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf]
+ [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -45,7 +70,7 @@ traffic controller name for path
 
 ```yaml
 Type: System.String
-Parameter Sets: (All)
+Parameter Sets: CreateExpanded, CreateViaJsonFilePath, CreateViaJsonString
 Aliases:
 
 Required: True
@@ -71,7 +96,8 @@ Accept wildcard characters: False
 ```
 
 ### -DefaultProfile
-The credentials, account, tenant, and subscription used for communication with Azure.
+The DefaultProfile parameter is not functional.
+Use the SubscriptionId parameter when available if executing the cmdlet against a different subscription.
 
 ```yaml
 Type: System.Management.Automation.PSObject
@@ -85,12 +111,42 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### -JsonFilePath
+Path of Json file supplied to the Create operation
+
+```yaml
+Type: System.String
+Parameter Sets: CreateViaJsonFilePath
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -JsonString
+Json string supplied to the Create operation
+
+```yaml
+Type: System.String
+Parameter Sets: CreateViaJsonString
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
 ### -Location
 The geo-location where the resource lives
 
 ```yaml
 Type: System.String
-Parameter Sets: (All)
+Parameter Sets: CreateExpanded, CreateViaIdentityTrafficControllerExpanded
 Aliases:
 
 Required: True
@@ -130,13 +186,29 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### -Resource
+Frontend Subresource of Traffic Controller.
+To construct, see NOTES section for RESOURCE properties and create a hash table.
+
+```yaml
+Type: Microsoft.Azure.PowerShell.Cmdlets.Alb.Models.IFrontend
+Parameter Sets: CreateViaIdentityTrafficController
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: True (ByValue)
+Accept wildcard characters: False
+```
+
 ### -ResourceGroupName
 The name of the resource group.
 The name is case insensitive.
 
 ```yaml
 Type: System.String
-Parameter Sets: (All)
+Parameter Sets: CreateExpanded, CreateViaJsonFilePath, CreateViaJsonString
 Aliases:
 
 Required: True
@@ -151,7 +223,7 @@ The ID of the target subscription.
 
 ```yaml
 Type: System.String
-Parameter Sets: (All)
+Parameter Sets: CreateExpanded, CreateViaJsonFilePath, CreateViaJsonString
 Aliases:
 
 Required: False
@@ -161,108 +233,34 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -SystemDataCreatedAt
-The timestamp of resource creation (UTC).
-
-```yaml
-Type: System.DateTime
-Parameter Sets: (All)
-Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -SystemDataCreatedBy
-The identity that created the resource.
-
-```yaml
-Type: System.String
-Parameter Sets: (All)
-Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -SystemDataCreatedByType
-The type of identity that created the resource.
-
-```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.Alb.Support.CreatedByType
-Parameter Sets: (All)
-Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -SystemDataLastModifiedAt
-The timestamp of resource last modification (UTC)
-
-```yaml
-Type: System.DateTime
-Parameter Sets: (All)
-Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -SystemDataLastModifiedBy
-The identity that last modified the resource.
-
-```yaml
-Type: System.String
-Parameter Sets: (All)
-Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -SystemDataLastModifiedByType
-The type of identity that last modified the resource.
-
-```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.Alb.Support.CreatedByType
-Parameter Sets: (All)
-Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
 ### -Tag
 Resource tags.
 
 ```yaml
 Type: System.Collections.Hashtable
-Parameter Sets: (All)
+Parameter Sets: CreateExpanded, CreateViaIdentityTrafficControllerExpanded
 Aliases:
 
 Required: False
 Position: Named
 Default value: None
 Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -TrafficControllerInputObject
+Identity Parameter
+To construct, see NOTES section for TRAFFICCONTROLLERINPUTOBJECT properties and create a hash table.
+
+```yaml
+Type: Microsoft.Azure.PowerShell.Cmdlets.Alb.Models.IAlbIdentity
+Parameter Sets: CreateViaIdentityTrafficController, CreateViaIdentityTrafficControllerExpanded
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: True (ByValue)
 Accept wildcard characters: False
 ```
 
@@ -302,13 +300,15 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
+### Microsoft.Azure.PowerShell.Cmdlets.Alb.Models.IAlbIdentity
+
+### Microsoft.Azure.PowerShell.Cmdlets.Alb.Models.IFrontend
+
 ## OUTPUTS
 
 ### Microsoft.Azure.PowerShell.Cmdlets.Alb.Models.IFrontend
 
 ## NOTES
-
-ALIASES
 
 ## RELATED LINKS
 
