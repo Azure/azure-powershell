@@ -1,22 +1,22 @@
 {
-  "resourceType": "managedEnvironments/daprComponents",
+  "resourceType": "connectedEnvironments/daprComponents",
   "apiVersion": "2023-05-01",
   "learnMore": {
     "url": "https://learn.microsoft.com/powershell/module/az.app"
   },
   "commands": [
     {
-      "name": "Get-AzContainerAppManagedEnvDapr",
+      "name": "Get-AzContainerAppConnectedEnvDapr",
       "description": "Get a dapr component.",
-      "path": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.App/managedEnvironments/{environmentName}/daprComponents/{componentName}",
+      "path": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.App/connectedEnvironments/{connectedEnvironmentName}/daprComponents/{componentName}",
       "help": {
         "learnMore": {
-          "url": "https://learn.microsoft.com/powershell/module/az.app/get-azcontainerappmanagedenvdapr"
+          "url": "https://learn.microsoft.com/powershell/module/az.app/get-azcontainerappconnectedenvdapr"
         },
         "parameterSets": [
           {
             "parameters": [
-              "-EnvName <String>",
+              "-ConnectedEnvironmentName <String>",
               "-Name <String>",
               "-ResourceGroupName <String>",
               "[-SubscriptionId <String[]>]"
@@ -29,8 +29,8 @@
           "description": "Get a dapr component.",
           "parameters": [
             {
-              "name": "-EnvName",
-              "value": "[Path.environmentName]"
+              "name": "-ConnectedEnvironmentName",
+              "value": "[Path.connectedEnvironmentName]"
             },
             {
               "name": "-Name",
@@ -49,17 +49,17 @@
       ]
     },
     {
-      "name": "Remove-AzContainerAppManagedEnvDapr",
-      "description": "Delete a Dapr Component from a Managed Environment.",
-      "path": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.App/managedEnvironments/{environmentName}/daprComponents/{componentName}",
+      "name": "Remove-AzContainerAppConnectedEnvDapr",
+      "description": "Delete a Dapr Component from a connected environment.",
+      "path": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.App/connectedEnvironments/{connectedEnvironmentName}/daprComponents/{componentName}",
       "help": {
         "learnMore": {
-          "url": "https://learn.microsoft.com/powershell/module/az.app/remove-azcontainerappmanagedenvdapr"
+          "url": "https://learn.microsoft.com/powershell/module/az.app/remove-azcontainerappconnectedenvdapr"
         },
         "parameterSets": [
           {
             "parameters": [
-              "-EnvName <String>",
+              "-ConnectedEnvironmentName <String>",
               "-Name <String>",
               "-ResourceGroupName <String>",
               "[-SubscriptionId <String>]"
@@ -69,11 +69,11 @@
       },
       "examples": [
         {
-          "description": "Delete a Dapr Component from a Managed Environment.",
+          "description": "Delete a Dapr Component from a connected environment.",
           "parameters": [
             {
-              "name": "-EnvName",
-              "value": "[Path.environmentName]"
+              "name": "-ConnectedEnvironmentName",
+              "value": "[Path.connectedEnvironmentName]"
             },
             {
               "name": "-Name",

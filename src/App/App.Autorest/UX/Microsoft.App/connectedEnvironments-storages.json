@@ -1,22 +1,22 @@
 {
-  "resourceType": "managedEnvironments/daprComponents",
+  "resourceType": "connectedEnvironments/storages",
   "apiVersion": "2023-05-01",
   "learnMore": {
     "url": "https://learn.microsoft.com/powershell/module/az.app"
   },
   "commands": [
     {
-      "name": "Get-AzContainerAppManagedEnvDapr",
-      "description": "Get a dapr component.",
-      "path": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.App/managedEnvironments/{environmentName}/daprComponents/{componentName}",
+      "name": "Get-AzContainerAppConnectedEnvStorage",
+      "description": "Get storage for a connectedEnvironment.",
+      "path": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.App/connectedEnvironments/{connectedEnvironmentName}/storages/{storageName}",
       "help": {
         "learnMore": {
-          "url": "https://learn.microsoft.com/powershell/module/az.app/get-azcontainerappmanagedenvdapr"
+          "url": "https://learn.microsoft.com/powershell/module/az.app/get-azcontainerappconnectedenvstorage"
         },
         "parameterSets": [
           {
             "parameters": [
-              "-EnvName <String>",
+              "-ConnectedEnvironmentName <String>",
               "-Name <String>",
               "-ResourceGroupName <String>",
               "[-SubscriptionId <String[]>]"
@@ -26,15 +26,15 @@
       },
       "examples": [
         {
-          "description": "Get a dapr component.",
+          "description": "Get storage for a connectedEnvironment.",
           "parameters": [
             {
-              "name": "-EnvName",
-              "value": "[Path.environmentName]"
+              "name": "-ConnectedEnvironmentName",
+              "value": "[Path.connectedEnvironmentName]"
             },
             {
               "name": "-Name",
-              "value": "[Path.componentName]"
+              "value": "[Path.storageName]"
             },
             {
               "name": "-ResourceGroupName",
@@ -49,17 +49,17 @@
       ]
     },
     {
-      "name": "Remove-AzContainerAppManagedEnvDapr",
-      "description": "Delete a Dapr Component from a Managed Environment.",
-      "path": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.App/managedEnvironments/{environmentName}/daprComponents/{componentName}",
+      "name": "Remove-AzContainerAppConnectedEnvStorage",
+      "description": "Delete storage for a connectedEnvironment.",
+      "path": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.App/connectedEnvironments/{connectedEnvironmentName}/storages/{storageName}",
       "help": {
         "learnMore": {
-          "url": "https://learn.microsoft.com/powershell/module/az.app/remove-azcontainerappmanagedenvdapr"
+          "url": "https://learn.microsoft.com/powershell/module/az.app/remove-azcontainerappconnectedenvstorage"
         },
         "parameterSets": [
           {
             "parameters": [
-              "-EnvName <String>",
+              "-ConnectedEnvironmentName <String>",
               "-Name <String>",
               "-ResourceGroupName <String>",
               "[-SubscriptionId <String>]"
@@ -69,15 +69,15 @@
       },
       "examples": [
         {
-          "description": "Delete a Dapr Component from a Managed Environment.",
+          "description": "Delete storage for a connectedEnvironment.",
           "parameters": [
             {
-              "name": "-EnvName",
-              "value": "[Path.environmentName]"
+              "name": "-ConnectedEnvironmentName",
+              "value": "[Path.connectedEnvironmentName]"
             },
             {
               "name": "-Name",
-              "value": "[Path.componentName]"
+              "value": "[Path.storageName]"
             },
             {
               "name": "-ResourceGroupName",
