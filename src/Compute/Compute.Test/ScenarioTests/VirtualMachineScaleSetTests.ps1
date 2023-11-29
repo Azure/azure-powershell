@@ -5287,9 +5287,10 @@ function Test-VirtualMachineScaleSetSecurityTypeAndFlexDefaults
 
 <#
 .SYNOPSIS
-Test Virtual Machine Scale Set updates work in both scenarios
+Test Virtual Machine Scale Set updates work in both scenarios. 
+This one is if a vmss object is passed in and updating the RegularPriority properties.
 #>
-function Test-VirtualMachineScaleSetUpdateTest
+function Test-VirtualMachineScaleSetRegularPriorityUpdate
 {
     # Setup
     $rgname = Get-ComputeTestResourceName;
@@ -5298,8 +5299,6 @@ function Test-VirtualMachineScaleSetUpdateTest
     try
     {
         # Common
-        $rgname = "adsandt10";
-        $loc = "eastus";
         New-AzResourceGroup -Name $rgname -Location $loc -Force;
 
         # With Config scenario:
@@ -5311,8 +5310,8 @@ function Test-VirtualMachineScaleSetUpdateTest
         $vmssSku = "Standard_D2s_v3";
         $vmssname = "vmss" + $rgname;
         $domainNameLabel = "d" + $rgname;
-        $username = "admin01";
-        $password = "Testing1234567";
+        $username = Get-ComputeTestResourceName;
+        $password = Get-PasswordForVM;
         $securePassword = $password | ConvertTo-SecureString -AsPlainText -Force
 
         $cred = New-Object System.Management.Automation.PSCredential ($username, $securePassword);
@@ -5412,9 +5411,6 @@ function Test-VirtualMachineScaleSetUpdateTest
             -LoadBalancerBackendAddressPoolsId $lb.BackendAddressPools[0].Id `
             -Primary;
 
-        $baseRegularPriorityVMCount = 0;
-        $regularPriorityVMPercentage = 50;
-
         # Create a config object
         # The VMSS config object stores the core information for creating a scale set
         $vmssConfig = New-AzVmssConfig `
@@ -5475,8 +5471,18 @@ function Test-VirtualMachineScaleSetUpdateTest
 
         # New-AzVmss -ResourcegroupName $rgname -Credential $cred -VMScaleSetName $vmssName -DomainNameLabel $domainNameLabel;
         # TODO: the update operation. 
-        $vmssResult = Get-AzVmss -ResourceGroupName $rgname -VMScaleSetName $vmssName;
-        Update-AzVmss -ResourceGroupName $rgname -VmScaleSetName $vmssname -BaseRegularPriorityCount 1 -RegularPriorityPercentage 10 ;
+        $regularPriorityVMCount = 1;
+        $regularPriorityVMPercentage = 10;
+        $vmss = Get-AzVmss -ResourceGroupName $rgname -VMScaleSetName $vmssName;
+        
+        Assert-Null $vmss.PriorityMixPolicy.BaseRegularPriorityCount;
+        Assert-Null $vmss.PriorityMixPolicy.RegularPriorityPercentageAboveBase;
+
+        Update-AzVmss -ResourceGroupName $rgname -VmScaleSetName $vmssname -BaseRegularPriorityCount $regularPriorityVMCount -RegularPriorityPercentage $regularPriorityVMPercentage -VirtualMachineScaleSet $vmss;
+        
+        $vmss = Get-AzVmss -ResourceGroupName $rgname -VMScaleSetName $vmssName;
+        Assert-AreEqual $vmss.PriorityMixPolicy.BaseRegularPriorityCount $regularPriorityVMCount;
+        Assert-AreEqual $vmss.PriorityMixPolicy.RegularPriorityPercentageAboveBase $regularPriorityVMPercentage;
     }
     finally
     {
@@ -5490,7 +5496,7 @@ function Test-VirtualMachineScaleSetUpdateTest
 Vmss Os Image Scheduled Events tests in additional update Scenario
 with vmss object.
 #>
-function Test-VirtualMachineScaleSetOSImageScheduledEventsUpdateVMSS
+function Test-VirtualMachineScaleSetOSImageScheduledEventsUpdate
 {
 
     # Setup
@@ -5499,8 +5505,6 @@ function Test-VirtualMachineScaleSetOSImageScheduledEventsUpdateVMSS
 
     try
     {
-        $rgname = "adsandtest3";
-        $loc = "eastus";
         New-AzResourceGroup -Name $rgname -Location $loc -Force;
 
         # Setup variables
@@ -5513,8 +5517,8 @@ function Test-VirtualMachineScaleSetOSImageScheduledEventsUpdateVMSS
         $vmssname = "vmss" + $rgname;
         $domainNameLabel = "d" + $rgname;
         $stnd = "Standard";
-        $username = "admin01";
-        $password = "Testing1234567";#Get-PasswordForVM;
+        $username = Get-ComputeTestResourceName;
+        $password = Get-PasswordForVM;
         $securePassword = $password | ConvertTo-SecureString -AsPlainText -Force
 
         $credential = New-Object System.Management.Automation.PSCredential ($username, $securePassword);
@@ -5616,7 +5620,7 @@ function Test-VirtualMachineScaleSetOSImageScheduledEventsUpdateVMSS
         #$ipCfg = New-AzVmssIPConfig -Name 'test' -SubnetId $subnetId;
 
         # Update-AzVmss test
-        $vmssName2 = 'vs2' + $rgname;
+        $vmssName2 = 'vs' + $rgname;
         $vmss2 = New-AzVmssConfig -Location $loc -SkuCapacity 2 -SkuName $vmssSku -UpgradePolicyMode "Manual" `
             | Add-AzVmssNetworkInterfaceConfiguration -Name 'test2' -Primary $true -IPConfiguration $ipCfg `
             | Set-AzVmssOSProfile -ComputerNamePrefix 'test2' -AdminUsername $username -AdminPassword $password `

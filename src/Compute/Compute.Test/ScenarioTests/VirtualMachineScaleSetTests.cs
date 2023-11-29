@@ -416,5 +416,19 @@ namespace Microsoft.Azure.Commands.Compute.Test.ScenarioTests
         {
             TestRunner.RunTestScript("Test-VirtualMachineScaleSetSecurityTypeNoVMProfile");
         }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void TestVirtualMachineScaleSetOSImageScheduledEventsUpdate()
+        {
+            TestRunner.RunTestScript("Test-VirtualMachineScaleSetOSImageScheduledEventsUpdate");
+        }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void TestVirtualMachineScaleSetRegularPriorityUpdate()
+        {
+            TestRunner.RunTestScript("Test-VirtualMachineScaleSetRegularPriorityUpdate");
+        }
     }
 }
