@@ -25,8 +25,8 @@ Create or update a Cognitive Services Account RaiPolicy
 
 ### Example 1
 ```powershell
-PS C:\> $properties = New-AzCognitiveServicesObject -Type RaiPolicyProperties
-PS C:\> New-AzCognitiveServicesAccountRaiPolicy -ResourceGroupName ResourceGroupName -AccountName AccountName -Name Name -Properties $properties
+$properties = New-AzCognitiveServicesObject -Type RaiPolicyProperties
+New-AzCognitiveServicesAccountRaiPolicy -ResourceGroupName ResourceGroupName -AccountName AccountName -Name Name -Properties $properties
 ```
 
 Create a Cognitive Services Account RaiPolicy

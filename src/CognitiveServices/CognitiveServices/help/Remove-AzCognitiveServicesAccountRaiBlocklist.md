@@ -38,7 +38,7 @@ Delete a Cognitive Services Account RaiBlocklist
 
 ### Example 1
 ```powershell
-PS C:\> Remove-AzCognitiveServicesAccountRaiBlocklist -ResourceGroupName ResourceGroupName -AccountName AccountName -Name Name
+Remove-AzCognitiveServicesAccountRaiBlocklist -ResourceGroupName ResourceGroupName -AccountName AccountName -Name Name
 ```
 
 Delete a Cognitive Services Account RaiBlocklist

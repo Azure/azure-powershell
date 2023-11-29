@@ -31,14 +31,14 @@ Get or list Cognitive Services Account RaiBlocklist(s).
 
 ### Example 1
 ```powershell
-PS C:\> Get-AzCognitiveServicesAccountRaiBlocklist -ResourceGroupName ResourceGroupName -AccountName AccountName
+Get-AzCognitiveServicesAccountRaiBlocklist -ResourceGroupName ResourceGroupName -AccountName AccountName
 ```
 
 List Cognitive Services Account RaiBlocklist(s) under an Account.
 
 ### Example 2
 ```powershell
-PS C:\> Get-AzCognitiveServicesAccountRaiBlocklist -ResourceGroupName ResourceGroupName -AccountName AccountName -Name Name
+Get-AzCognitiveServicesAccountRaiBlocklist -ResourceGroupName ResourceGroupName -AccountName AccountName -Name Name
 ```
 
 Get a Cognitive Services Account RaiBlocklist.
