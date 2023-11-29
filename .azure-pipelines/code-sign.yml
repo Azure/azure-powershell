@@ -43,14 +43,14 @@ jobs:
     inputs:
       command: custom
       custom: msbuild
-      arguments: 'build.proj /t:"Build;CopyAboutTopics;GenerateHelp" /p:"Configuration=Release;GenerateDocumentationFile=true;TargetModule=${{ parameters.TargetModule }};"'
+      arguments: 'build.proj /t:"Build;CopyAboutTopics;GenerateHelp" /p:"Configuration=Release;GenerateDocumentationFile=true;TargetModule=${{ parameters.TargetModule }}"'
   - task: DotNetCoreCLI@2
     displayName: Build
     condition: eq('${{ parameters.TargetModule }}', 'none') 
     inputs:
       command: custom
       custom: msbuild
-      arguments: 'build.proj /t:"Build;CopyAboutTopics;GenerateHelp" /p:"Configuration=Release;GenerateDocumentationFile=true;ModifiedModuleBuild=true;"'
+      arguments: 'build.proj /t:"Build;CopyAboutTopics;GenerateHelp" /p:"Configuration=Release;GenerateDocumentationFile=true;ModifiedModuleBuild=true"'
 
 
   - task: AzureArtifacts.manifest-generator-task.manifest-generator-task.ManifestGeneratorTask@0
