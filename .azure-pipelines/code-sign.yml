@@ -39,14 +39,14 @@ jobs:
 
   - task: DotNetCoreCLI@2
     displayName: Build
-    condition: ne(${{ parameters.TargetModule }}, 'none') 
+    condition: ne('${{ parameters.TargetModule }}', 'none') 
     inputs:
       command: custom
       custom: msbuild
       arguments: 'build.proj /t:"Build;CopyAboutTopics;GenerateHelp" /p:"Configuration=Release;GenerateDocumentationFile=true;TargetModule=${{ parameters.TargetModule }};"'
   - task: DotNetCoreCLI@2
     displayName: Build
-    condition: eq(${{ parameters.TargetModule }}, 'none') 
+    condition: eq('${{ parameters.TargetModule }}', 'none') 
     inputs:
       command: custom
       custom: msbuild
