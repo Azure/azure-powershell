@@ -23,11 +23,28 @@ function Include-CsprojFiles {
         [string]$Filter = "*.csproj"
 
     )
-
-    $excludeItems = $Exclude -split ";"
-    $includeItems = $Include -split ";"
-
-    Get-ChildItem -Path $Path -Filter $Filter -Recurse -Exclude $excludeItems -Include $includeItems
+    $excludeItems = $Exclude -split ';' | Where-Object { $_ -ne '' } | ForEach-Object {
+        try {
+            (Resolve-Path $_ -ErrorAction Stop).Path
+        } catch {
+            Write-Warning "Cannot find path: $_"
+            $_
+        }
+    }
+    
+    $includeItems = $Include -split ';' | Where-Object { $_ -ne '' } | ForEach-Object {
+        try {
+            (Resolve-Path $_ -ErrorAction Stop).Path
+        } catch {
+            Write-Warning "Cannot find path: $_"
+            $_
+        }
+    }
+    
+    $allItems = Get-ChildItem -Path $Path -Filter $Filter -Recurse
+    $includedFiltered = $allItems | Where-Object { $includeItems -contains $_.FullName }
+    $finalFiltered = $includedFiltered | Where-Object { $excludeItems -notcontains $_.FullName}
+    $finalFiltered
 }
 
 $csprojFiles = @()
@@ -72,8 +89,8 @@ if ($PSCmdlet.ParameterSetName -eq 'ModifiedBuildSet' -or $PSCmdlet.ParameterSet
     }
 }
 if ($PSCmdlet.ParameterSetName -eq 'PullRequestSet') {
-    $BuildCsprojList = $BuildCsprojList -replace ' ', ';'
-    $TestCsprojList = $TestCsprojList -replace ' ', ';'
+    $BuildCsprojList = (($BuildCsprojList -split ';' | ForEach-Object { Resolve-Path $_ }).Path) -join ';'
+    $TestCsprojList = (($TestCsprojList -split ';' | ForEach-Object { Resolve-Path $_ }).Path) -join ';'
     $csprojFiles += Include-CsprojFiles -Path "$RepoRoot/src/" -Include $BuildCsprojList
     $csprojFiles += Include-CsprojFiles -Path "$RepoRoot/src/" -Include $TestCsprojList
 }
@@ -82,5 +99,4 @@ if ($PSCmdlet.ParameterSetName -eq 'PullRequestSet') {
 foreach ($file in $csprojFiles) {
     & dotnet sln $RepoArtifacts/Azure.PowerShell.sln add "$file"
 }
-& dotnet build $RepoArtifacts/Azure.PowerShell.sln -c $Configuration
 Write-Output "Modules are added to sln file"
