@@ -37,16 +37,16 @@ namespace Microsoft.Azure.Management.Automation.Models
         /// </param>
 
         /// <param name="provisioningState">The current provisioning state of the job.
-        /// Possible values include: 'Failed', 'Succeeded', 'Suspended', 'Processing'</param>
+        /// Possible values include: &#39;Failed&#39;, &#39;Succeeded&#39;, &#39;Suspended&#39;, &#39;Processing&#39;</param>
 
         /// <param name="runOn">Gets or sets the runOn which specifies the group name where the job is to
         /// be executed.
         /// </param>
 
         /// <param name="status">Gets or sets the status of the job.
-        /// Possible values include: 'New', 'Activating', 'Running', 'Completed',
-        /// 'Failed', 'Stopped', 'Blocked', 'Suspended', 'Disconnected', 'Suspending',
-        /// 'Stopping', 'Resuming', 'Removing'</param>
+        /// Possible values include: &#39;New&#39;, &#39;Activating&#39;, &#39;Running&#39;, &#39;Completed&#39;,
+        /// &#39;Failed&#39;, &#39;Stopped&#39;, &#39;Blocked&#39;, &#39;Suspended&#39;, &#39;Disconnected&#39;, &#39;Suspending&#39;,
+        /// &#39;Stopping&#39;, &#39;Resuming&#39;, &#39;Removing&#39;</param>
 
         /// <param name="statusDetails">Gets or sets the status details of the job.
         /// </param>

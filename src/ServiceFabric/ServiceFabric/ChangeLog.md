@@ -19,6 +19,7 @@
 -->
 ## Upcoming Release
 * Fixed a bug that Get commands do not return all resources.
+* Updated sfmc to latest api preview version `2023-11-01-preview`.
 
 ## Version 3.3.0
 * Fixed minor issues

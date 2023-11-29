@@ -686,3 +686,54 @@ function Test-NICBasedBackendPoolQueryInboundNatRulePortMapping
         Clean-ResourceGroup $rgname
     }
 }
+
+<#
+.SYNOPSIS
+Tests 
+#>
+function Test-ManagedIpBasedLoadBalancerBackendPoolCreate
+{
+
+    # Setup
+    $rgname = Get-ResourceGroupName
+    $vnetName = Get-ResourceName
+    $subnetName = Get-ResourceName
+    $publicIpName = Get-ResourceName
+    $lbName = Get-ResourceName
+    $frontendName = Get-ResourceName
+    $backendAddressPoolName = Get-ResourceName
+    $rglocation = Get-ProviderLocation ResourceManagement
+    $resourceTypeParent = "Microsoft.Network/loadBalancers"
+    $location = Get-ProviderLocation $resourceTypeParent
+    $backendAddressConfigName = "TestVNetRef"
+
+    $backendPool1 = Get-ResourceName
+    $backendPool2 = Get-ResourceName
+   
+    try
+    {
+        # Create the resource group
+        $resourceGroup = New-AzResourceGroup -Name $rgname -Location $rglocation -Tags @{ testtag = "testval"} 
+
+        # Create the Virtual Network
+        $subnet = New-AzVirtualNetworkSubnetConfig -Name $subnetName -AddressPrefix 10.0.1.0/24
+        $vnet = New-AzVirtualNetwork -Name $vnetName -ResourceGroupName $rgname -Location $location -AddressPrefix 10.0.0.0/16 -Subnet $subnet
+
+        # Create Standard Azure load balancer
+        $lb = New-AzLoadBalancer -Name $lbName -ResourceGroupName $rgname -Location $location -SKU Standard
+
+        ## create by passing loadbalancer without Ips
+        $create1 = $lb | New-AzLoadBalancerBackendAddressPool -Name $backendPool1 -SyncMode "Automatic" -VirtualNetworkId $vnet.Id
+
+        Assert-NotNull $create1
+
+        ## create by Name without ip's
+        $create2 = New-AzLoadBalancerBackendAddressPool -ResourceGroupName $rgname -LoadBalancerName $lbName -Name $backendPool2 -SyncMode "Automatic" -VirtualNetworkId $vnet.Id
+
+        Assert-NotNull $create2
+    }
+    finally {
+        # Cleanup
+        Clean-ResourceGroup $rgname
+    }
+}

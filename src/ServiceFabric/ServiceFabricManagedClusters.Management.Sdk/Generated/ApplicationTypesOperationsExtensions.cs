@@ -76,7 +76,7 @@ namespace Microsoft.Azure.Management.ServiceFabricManagedClusters
         /// </param>
         public static ApplicationTypeResource CreateOrUpdate(this IApplicationTypesOperations operations, string resourceGroupName, string clusterName, string applicationTypeName, string id = default(string), string name = default(string), string type = default(string), string location = default(string), System.Collections.Generic.IDictionary<string, string> tags = default(System.Collections.Generic.IDictionary<string, string>), SystemData systemData = default(SystemData), string provisioningState = default(string))
         {
-                return ((IApplicationTypesOperations)operations).CreateOrUpdateAsync(resourceGroupName, clusterName, applicationTypeName, id, name, type, location, tags, systemData, provisioningState).GetAwaiter().GetResult();
+            return ((IApplicationTypesOperations)operations).CreateOrUpdateAsync(resourceGroupName, clusterName, applicationTypeName, id, name, type, location, tags, systemData, provisioningState).GetAwaiter().GetResult();
         }
 
         /// <summary>

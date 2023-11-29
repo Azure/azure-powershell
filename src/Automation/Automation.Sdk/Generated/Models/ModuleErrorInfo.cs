@@ -24,10 +24,10 @@ namespace Microsoft.Azure.Management.Automation.Models
         /// Initializes a new instance of the ModuleErrorInfo class.
         /// </summary>
 
-        /// <param name="code">Gets or sets the error code.
+        /// <param name="code">Gets the error code.
         /// </param>
 
-        /// <param name="message">Gets or sets the error message.
+        /// <param name="message">Gets the error message.
         /// </param>
         public ModuleErrorInfo(string code = default(string), string message = default(string))
 
@@ -44,13 +44,13 @@ namespace Microsoft.Azure.Management.Automation.Models
 
 
         /// <summary>
-        /// Gets or sets gets or sets the error code.
+        /// Gets or sets gets the error code.
         /// </summary>
         [Newtonsoft.Json.JsonProperty(PropertyName = "code")]
         public string Code {get; set; }
 
         /// <summary>
-        /// Gets or sets gets or sets the error message.
+        /// Gets or sets gets the error message.
         /// </summary>
         [Newtonsoft.Json.JsonProperty(PropertyName = "message")]
         public string Message {get; set; }

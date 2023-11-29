@@ -18,6 +18,7 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
+* Removed redundant Microsoft Graph API calls for access policy in `Get-AzKeyVault`.
 
 ## Version 5.0.0
 * Removed non-core types creation in PowerShell scripts to be compatible in constrained language mode.

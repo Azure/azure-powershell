@@ -49,8 +49,8 @@ namespace Microsoft.Azure.Management.Automation.Models
         /// </param>
 
         /// <param name="frequency">Gets or sets the frequency of the schedule.
-        /// Possible values include: 'OneTime', 'Day', 'Hour', 'Week', 'Month',
-        /// 'Minute'</param>
+        /// Possible values include: &#39;OneTime&#39;, &#39;Day&#39;, &#39;Hour&#39;, &#39;Week&#39;, &#39;Month&#39;,
+        /// &#39;Minute&#39;</param>
 
         /// <param name="timeZone">Gets or sets the time zone of the schedule.
         /// </param>

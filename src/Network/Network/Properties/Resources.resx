@@ -405,6 +405,9 @@
   <data name="InvalidAutoScaleConfiguration" xml:space="preserve">
     <value>Min {0} cannot be greater than Max {1}.</value>
   </data>
+  <data name="InvalidAutoScaleConfigurationBounds" xml:space="preserve">
+    <value>MinScaleUnit and MaxScaleUnit must be between 1 and 40, inclusive. </value>
+  </data>
   <data name="ExpressRouteGatewayNotFound" xml:space="preserve">
     <value>The ExpressRouteGateway to modify could not be found</value>
   </data>
