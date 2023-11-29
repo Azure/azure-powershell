@@ -98,8 +98,8 @@ function New-AzCustomLocation {
         # The kubeconfig value.
         ${AuthenticationValue},
 
-        [Parameter(ParameterSetName='CreateExpanded')]
-        [Parameter(ParameterSetName='CreateViaIdentityExpanded')]
+        [Parameter(ParameterSetName='CreateExpanded', Mandatory)]
+        [Parameter(ParameterSetName='CreateViaIdentityExpanded', Mandatory)]
         [AllowEmptyCollection()]
         [Microsoft.Azure.PowerShell.Cmdlets.CustomLocation.Category('Body')]
         [System.String[]]
@@ -113,8 +113,8 @@ function New-AzCustomLocation {
         # Display name for the Custom Locations location.
         ${DisplayName},
 
-        [Parameter(ParameterSetName='CreateExpanded')]
-        [Parameter(ParameterSetName='CreateViaIdentityExpanded')]
+        [Parameter(ParameterSetName='CreateExpanded', Mandatory)]
+        [Parameter(ParameterSetName='CreateViaIdentityExpanded', Mandatory)]
         [Microsoft.Azure.PowerShell.Cmdlets.CustomLocation.Category('Body')]
         [System.String]
         # Connected Cluster or AKS Cluster.
@@ -129,8 +129,8 @@ function New-AzCustomLocation {
         # The identity type.
         ${IdentityType},
 
-        [Parameter(ParameterSetName='CreateExpanded')]
-        [Parameter(ParameterSetName='CreateViaIdentityExpanded')]
+        [Parameter(ParameterSetName='CreateExpanded', Mandatory)]
+        [Parameter(ParameterSetName='CreateViaIdentityExpanded', Mandatory)]
         [Microsoft.Azure.PowerShell.Cmdlets.CustomLocation.Category('Body')]
         [System.String]
         # Kubernetes namespace that will be created on the specified cluster.

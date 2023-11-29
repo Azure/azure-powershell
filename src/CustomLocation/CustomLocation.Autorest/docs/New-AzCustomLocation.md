@@ -14,17 +14,18 @@ Create a Custom Location in the specified Subscription and Resource Group
 
 ### CreateExpanded (Default)
 ```
-New-AzCustomLocation -Name <String> -ResourceGroupName <String> -Location <String> [-SubscriptionId <String>]
- [-AuthenticationType <String>] [-AuthenticationValue <String>] [-ClusterExtensionId <String[]>]
- [-DisplayName <String>] [-HostResourceId <String>] [-IdentityType <String>] [-Namespace <String>]
- [-Tag <Hashtable>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
+New-AzCustomLocation -Name <String> -ResourceGroupName <String> -ClusterExtensionId <String[]>
+ -HostResourceId <String> -Location <String> -Namespace <String> [-SubscriptionId <String>]
+ [-AuthenticationType <String>] [-AuthenticationValue <String>] [-DisplayName <String>]
+ [-IdentityType <String>] [-Tag <Hashtable>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm]
+ [-WhatIf] [<CommonParameters>]
 ```
 
 ### CreateViaIdentityExpanded
 ```
-New-AzCustomLocation -InputObject <ICustomLocationIdentity> -Location <String> [-AuthenticationType <String>]
- [-AuthenticationValue <String>] [-ClusterExtensionId <String[]>] [-DisplayName <String>]
- [-HostResourceId <String>] [-IdentityType <String>] [-Namespace <String>] [-Tag <Hashtable>]
+New-AzCustomLocation -InputObject <ICustomLocationIdentity> -ClusterExtensionId <String[]>
+ -HostResourceId <String> -Location <String> -Namespace <String> [-AuthenticationType <String>]
+ [-AuthenticationValue <String>] [-DisplayName <String>] [-IdentityType <String>] [-Tag <Hashtable>]
  [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
@@ -117,7 +118,7 @@ Type: System.String[]
 Parameter Sets: CreateExpanded, CreateViaIdentityExpanded
 Aliases:
 
-Required: False
+Required: True
 Position: Named
 Default value: None
 Accept pipeline input: False
@@ -164,7 +165,7 @@ Type: System.String
 Parameter Sets: CreateExpanded, CreateViaIdentityExpanded
 Aliases:
 
-Required: False
+Required: True
 Position: Named
 Default value: None
 Accept pipeline input: False
@@ -270,7 +271,7 @@ Type: System.String
 Parameter Sets: CreateExpanded, CreateViaIdentityExpanded
 Aliases:
 
-Required: False
+Required: True
 Position: Named
 Default value: None
 Accept pipeline input: False
