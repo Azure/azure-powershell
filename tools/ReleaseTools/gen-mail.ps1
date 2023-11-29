@@ -146,9 +146,9 @@ Hi everyone, `
 `
 **The release candidate $RCNum for Az $AzVersion** is now available for testing: `
 `
-* [Az-Cmdlets-11.1.0.38060-x64.msi](https://azpspackage.blob.core.windows.net/release/Az-Cmdlets-11.1.0.38060-x64.msi) `
-* [Az-Cmdlets-11.1.0.38060-x86.msi](https://azpspackage.blob.core.windows.net/release/Az-Cmdlets-11.1.0.38060-x86.msi) `
-* [Az-Cmdlets-11.1.0.38060.tar.gz](https://azpspackage.blob.core.windows.net/release/Az-Cmdlets-11.1.0.38060.tar.gz) `
+* [$x64Msi](https://azpspackage.blob.core.windows.net/release/$x64Msi) `
+* [$x86Msi](https://azpspackage.blob.core.windows.net/release/$x86Msi) `
+* [$tarGz](https://azpspackage.blob.core.windows.net/release/$tarGz) `
 `
 If you want to install module by compressed package, please run ``./InstallModule.ps1 -ModuleName Az.{ModuleName}`` after decompressing the package. If you have any questions or find any issues, please little ‘r’ the azdevxps alias. Thanks! `
 `
@@ -159,7 +159,7 @@ $changelog
 $($1stGAModules | Out-String)
 $($previewModules | Out-String)
 The preview modules (whose versions are lower than 1.0.0) are available as below: `
-* [Az-Cmdlets-11.1.0.38060-preview.zip](https://azpspackage.blob.core.windows.net/release/Az-Cmdlets-11.1.0.38060-preview.zip)  `
+* [$previewZip](https://azpspackage.blob.core.windows.net/release/$previewZip)  `
 `
 Known issues: `
 * {any} `
@@ -185,6 +185,3 @@ Thanks,`
 else{
     Write-Host "#TODO: Publish email"
 }
-
-
-
