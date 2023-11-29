@@ -28,7 +28,7 @@ pac26,[ps=true;customSource=https://azpspackage.blob.core.windows.net/docs-relea
 pac27,[ps=true;customSource=https://azpspackage.blob.core.windows.net/docs-release/Az.ConfidentialLedger.1.0.0.nupkg;sourceType=sa]Az.ConfidentialLedger,1.0.0
 pac28,[ps=true;customSource=https://azpspackage.blob.core.windows.net/docs-release/Az.Confluent.0.2.0.nupkg;sourceType=sa]Az.Confluent,0.2.0
 pac29,[ps=true;customSource=https://azpspackage.blob.core.windows.net/docs-release/Az.ConnectedKubernetes.0.10.0.nupkg;sourceType=sa]Az.ConnectedKubernetes,0.10.0
-pac30,[ps=true;customSource=https://azpspackage.blob.core.windows.net/docs-release/Az.ConnectedMachine.0.5.2.nupkg;sourceType=sa]Az.ConnectedMachine,0.5.2
+pac30,[ps=true;customSource=https://azpspackage.blob.core.windows.net/docs-release/Az.ConnectedMachine.0.5.1.nupkg;sourceType=sa]Az.ConnectedMachine,0.5.1
 pac31,[ps=true;customSource=https://azpspackage.blob.core.windows.net/docs-release/Az.ConnectedNetwork.0.1.0.nupkg;sourceType=sa]Az.ConnectedNetwork,0.1.0
 pac32,[ps=true;customSource=https://azpspackage.blob.core.windows.net/docs-release/Az.ContainerInstance.4.0.0.nupkg;sourceType=sa]Az.ContainerInstance,4.0.0
 pac33,[ps=true;customSource=https://azpspackage.blob.core.windows.net/docs-release/Az.ContainerRegistry.4.1.2.nupkg;sourceType=sa]Az.ContainerRegistry,4.1.2
@@ -135,7 +135,7 @@ pac133,[ps=true;customSource=https://azpspackage.blob.core.windows.net/docs-rele
 pac134,[ps=true;customSource=https://azpspackage.blob.core.windows.net/docs-release/Az.ResourceMover.1.2.0.nupkg;sourceType=sa]Az.ResourceMover,1.2.0
 pac135,[ps=true;customSource=https://azpspackage.blob.core.windows.net/docs-release/Az.Resources.6.12.0.nupkg;sourceType=sa]Az.Resources,6.12.0
 pac136,[ps=true;customSource=https://azpspackage.blob.core.windows.net/docs-release/Az.Search.0.10.0.nupkg;sourceType=sa]Az.Search,0.10.0
-pac137,[ps=true;customSource=https://azpspackage.blob.core.windows.net/docs-release/Az.Security.1.5.0.nupkg;sourceType=sa]Az.Security,1.5.0
+pac137,[ps=true;customSource=https://azpspackage.blob.core.windows.net/docs-release/Az.Security.1.5.1.nupkg;sourceType=sa]Az.Security,1.5.1
 pac138,[ps=true;customSource=https://azpspackage.blob.core.windows.net/docs-release/Az.SecurityInsights.3.1.1.nupkg;sourceType=sa]Az.SecurityInsights,3.1.1
 pac139,[ps=true;customSource=https://azpspackage.blob.core.windows.net/docs-release/Az.SelfHelp.0.1.1.nupkg;sourceType=sa]Az.SelfHelp,0.1.1
 pac140,[ps=true;customSource=https://azpspackage.blob.core.windows.net/docs-release/Az.ServiceBus.3.0.0.nupkg;sourceType=sa]Az.ServiceBus,3.0.0
