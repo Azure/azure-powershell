@@ -13,7 +13,10 @@ param (
     [System.String]$StorageResourceGroup,
 
     [Parameter(Mandatory = $true)]
-    [System.String]$StorageAccountName
+    [System.String]$StorageAccountName,
+
+    [Parameter(Mandatory = $true)]
+    [System.String]$StorageContianerName,
 )
 
 function GetCommitNumber
@@ -56,7 +59,7 @@ if ($Phase -ne 'Pulish')
     # Get link from storage account
     $storageContext = (Get-AzStorageAccount -Name $StorageAccountName -ResourceGroupName $StorageResourceGroup).Context
     # $null = Set-AzCurrentStorageAccount -context $storageContext.Context
-    $PkgList = Get-AzStorageBlob -Container release -blob Az-Cmdlets-$AzVersion* -Context $storageContext.Context
+    $PkgList = Get-AzStorageBlob -Container $StorageContianerName -blob Az-Cmdlets-$AzVersion* -Context $storageContext.Context
     $x64Msi = ""
     $x86Msi = ""
     $previewZip = ""
