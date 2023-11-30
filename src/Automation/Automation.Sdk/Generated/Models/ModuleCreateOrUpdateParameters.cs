@@ -25,16 +25,16 @@ namespace Microsoft.Azure.Management.Automation.Models
         /// Initializes a new instance of the ModuleCreateOrUpdateParameters class.
         /// </summary>
 
-        /// <param name="name">Gets or sets name of the resource.
+        /// <param name="name">Sets name of the resource.
         /// </param>
 
-        /// <param name="location">Gets or sets the location of the resource.
+        /// <param name="location">Sets the location of the resource.
         /// </param>
 
-        /// <param name="tags">Gets or sets the tags attached to the resource.
+        /// <param name="tags">Sets the tags attached to the resource.
         /// </param>
 
-        /// <param name="contentLink">Gets or sets the module content link.
+        /// <param name="contentLink">Sets the hash.
         /// </param>
         public ModuleCreateOrUpdateParameters(ContentLink contentLink, string name = default(string), string location = default(string), System.Collections.Generic.IDictionary<string, string> tags = default(System.Collections.Generic.IDictionary<string, string>))
 
@@ -53,25 +53,25 @@ namespace Microsoft.Azure.Management.Automation.Models
 
 
         /// <summary>
-        /// Gets or sets gets or sets name of the resource.
+        /// Gets or sets sets name of the resource.
         /// </summary>
         [Newtonsoft.Json.JsonProperty(PropertyName = "name")]
         public string Name {get; set; }
 
         /// <summary>
-        /// Gets or sets gets or sets the location of the resource.
+        /// Gets or sets sets the location of the resource.
         /// </summary>
         [Newtonsoft.Json.JsonProperty(PropertyName = "location")]
         public string Location {get; set; }
 
         /// <summary>
-        /// Gets or sets gets or sets the tags attached to the resource.
+        /// Gets or sets sets the tags attached to the resource.
         /// </summary>
         [Newtonsoft.Json.JsonProperty(PropertyName = "tags")]
         public System.Collections.Generic.IDictionary<string, string> Tags {get; set; }
 
         /// <summary>
-        /// Gets or sets gets or sets the module content link.
+        /// Gets or sets sets the hash.
         /// </summary>
         [Newtonsoft.Json.JsonProperty(PropertyName = "properties.contentLink")]
         public ContentLink ContentLink {get; set; }

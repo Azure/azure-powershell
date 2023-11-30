@@ -40,7 +40,7 @@ namespace Microsoft.Azure.Management.Network.Models
         /// 'MatchRule', 'RateLimitRule', 'Invalid'</param>
         /// <param name="matchConditions">List of match conditions.</param>
         /// <param name="action">Type of Actions. Possible values include:
-        /// 'Allow', 'Block', 'Log'</param>
+        /// 'Allow', 'Block', 'Log', 'JSChallenge'</param>
         /// <param name="name">The name of the resource that is unique within a
         /// policy. This name can be used to access the resource.</param>
         /// <param name="etag">A unique read-only string that changes whenever
@@ -142,7 +142,7 @@ namespace Microsoft.Azure.Management.Network.Models
 
         /// <summary>
         /// Gets or sets type of Actions. Possible values include: 'Allow',
-        /// 'Block', 'Log'
+        /// 'Block', 'Log', 'JSChallenge'
         /// </summary>
         [JsonProperty(PropertyName = "action")]
         public string Action { get; set; }

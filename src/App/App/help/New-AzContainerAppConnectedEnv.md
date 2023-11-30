@@ -1,5 +1,5 @@
 ---
-external help file:
+external help file: Az.App-help.xml
 Module Name: Az.App
 online version: https://learn.microsoft.com/powershell/module/az.app/new-azcontainerappconnectedenv
 schema: 2.0.0
@@ -14,11 +14,24 @@ Create an connectedEnvironment.
 
 ### CreateExpanded (Default)
 ```
-New-AzContainerAppConnectedEnv -Name <String> -ResourceGroupName <String> -Location <String>
- [-SubscriptionId <String>] [-CustomDomainConfigurationCertificateValueInputFile <String>]
+New-AzContainerAppConnectedEnv -Name <String> -ResourceGroupName <String> [-SubscriptionId <String>]
+ -Location <String> [-CustomDomainConfigurationCertificateValueInputFile <String>]
  [-CustomDomainConfigurationDnsSuffix <String>] [-CustomDomainPassword <SecureString>]
  [-DaprAiConnectionString <String>] [-ExtendedLocationName <String>] [-ExtendedLocationType <String>]
- [-StaticIP <String>] [-Tag <Hashtable>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf]
+ [-StaticIP <String>] [-Tag <Hashtable>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-WhatIf] [-Confirm]
+ [<CommonParameters>]
+```
+
+### CreateViaJsonString
+```
+New-AzContainerAppConnectedEnv -Name <String> -ResourceGroupName <String> [-SubscriptionId <String>]
+ -JsonString <String> [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-WhatIf] [-Confirm] [<CommonParameters>]
+```
+
+### CreateViaJsonFilePath
+```
+New-AzContainerAppConnectedEnv -Name <String> -ResourceGroupName <String> [-SubscriptionId <String>]
+ -JsonFilePath <String> [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-WhatIf] [-Confirm]
  [<CommonParameters>]
 ```
 
@@ -27,22 +40,8 @@ New-AzContainerAppConnectedEnv -Name <String> -ResourceGroupName <String> -Locat
 New-AzContainerAppConnectedEnv -InputObject <IAppIdentity> -Location <String>
  [-CustomDomainConfigurationCertificateValueInputFile <String>] [-CustomDomainConfigurationDnsSuffix <String>]
  [-CustomDomainPassword <SecureString>] [-DaprAiConnectionString <String>] [-ExtendedLocationName <String>]
- [-ExtendedLocationType <String>] [-StaticIP <String>] [-Tag <Hashtable>] [-DefaultProfile <PSObject>]
- [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
-```
-
-### CreateViaJsonFilePath
-```
-New-AzContainerAppConnectedEnv -Name <String> -ResourceGroupName <String> -JsonFilePath <String>
- [-SubscriptionId <String>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf]
- [<CommonParameters>]
-```
-
-### CreateViaJsonString
-```
-New-AzContainerAppConnectedEnv -Name <String> -ResourceGroupName <String> -JsonString <String>
- [-SubscriptionId <String>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf]
- [<CommonParameters>]
+ [-ExtendedLocationType <String>] [-StaticIP <String>] [-Tag <Hashtable>] [-DefaultProfile <PSObject>] [-AsJob]
+ [-NoWait] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -53,7 +52,6 @@ Create an connectedEnvironment.
 ### Example 1: Create an connectedEnvironment.
 ```powershell
 New-AzContainerAppConnectedEnv -Name azps-connectedenv -ResourceGroupName azps_test_group_app -Location eastus -ExtendedLocationName "/subscriptions/{subId}/resourceGroups/azps_test_group_app/providers/Microsoft.ExtendedLocation/customLocations/my-custom-location" -ExtendedLocationType CustomLocation
-
 ```
 
 ```output
@@ -254,7 +252,7 @@ Name of the connectedEnvironment.
 
 ```yaml
 Type: System.String
-Parameter Sets: CreateExpanded, CreateViaJsonFilePath, CreateViaJsonString
+Parameter Sets: CreateExpanded, CreateViaJsonString, CreateViaJsonFilePath
 Aliases: ConnectedEnvironmentName
 
 Required: True
@@ -285,7 +283,7 @@ The name is case insensitive.
 
 ```yaml
 Type: System.String
-Parameter Sets: CreateExpanded, CreateViaJsonFilePath, CreateViaJsonString
+Parameter Sets: CreateExpanded, CreateViaJsonString, CreateViaJsonFilePath
 Aliases:
 
 Required: True
@@ -315,7 +313,7 @@ The ID of the target subscription.
 
 ```yaml
 Type: System.String
-Parameter Sets: CreateExpanded, CreateViaJsonFilePath, CreateViaJsonString
+Parameter Sets: CreateExpanded, CreateViaJsonString, CreateViaJsonFilePath
 Aliases:
 
 Required: False
@@ -385,4 +383,3 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ## NOTES
 
 ## RELATED LINKS
-

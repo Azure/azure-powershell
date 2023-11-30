@@ -22,6 +22,9 @@
     - `Set-AzStorageBlobContent`
     - `Copy-AzStorageBlob`    
 
+## Version 6.0.1
+* Updated error message when storage context is missing in a cmdlet input 
+
 ## Version 6.0.0
 * Supported customer initiated migration
 * Supported creationTime filter in Blob Inventory

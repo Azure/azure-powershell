@@ -177,7 +177,7 @@ namespace Microsoft.Azure.Management.ServiceFabric
         /// <param name='applicationTypeName'>
         /// The name of the application type name resource.
         /// </param>
-        public static ApplicationTypeVersionResourceList List(this IApplicationTypeVersionsOperations operations, string resourceGroupName, string clusterName, string applicationTypeName)
+        public static Microsoft.Rest.Azure.IPage<ApplicationTypeVersionResource> List(this IApplicationTypeVersionsOperations operations, string resourceGroupName, string clusterName, string applicationTypeName)
         {
                 return ((IApplicationTypeVersionsOperations)operations).ListAsync(resourceGroupName, clusterName, applicationTypeName).GetAwaiter().GetResult();
         }
@@ -200,7 +200,7 @@ namespace Microsoft.Azure.Management.ServiceFabric
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        public static async System.Threading.Tasks.Task<ApplicationTypeVersionResourceList> ListAsync(this IApplicationTypeVersionsOperations operations, string resourceGroupName, string clusterName, string applicationTypeName, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public static async System.Threading.Tasks.Task<Microsoft.Rest.Azure.IPage<ApplicationTypeVersionResource>> ListAsync(this IApplicationTypeVersionsOperations operations, string resourceGroupName, string clusterName, string applicationTypeName, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
             using (var _result = await operations.ListWithHttpMessagesAsync(resourceGroupName, clusterName, applicationTypeName, null, cancellationToken).ConfigureAwait(false))
             {
@@ -305,6 +305,39 @@ namespace Microsoft.Azure.Management.ServiceFabric
         public static async System.Threading.Tasks.Task BeginDeleteAsync(this IApplicationTypeVersionsOperations operations, string resourceGroupName, string clusterName, string applicationTypeName, string version, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
             (await operations.BeginDeleteWithHttpMessagesAsync(resourceGroupName, clusterName, applicationTypeName, version, null, cancellationToken).ConfigureAwait(false)).Dispose();
+        }
+        /// <summary>
+        /// Gets all application type version resources created or in the process of being created in the Service Fabric application type name resource.
+        /// </summary>
+        /// <param name='operations'>
+        /// The operations group for this extension method.
+        /// </param>
+        /// <param name='nextPageLink'>
+        /// The NextLink from the previous successful call to List operation.
+        /// </param>
+        public static Microsoft.Rest.Azure.IPage<ApplicationTypeVersionResource> ListNext(this IApplicationTypeVersionsOperations operations, string nextPageLink)
+        {
+                return ((IApplicationTypeVersionsOperations)operations).ListNextAsync(nextPageLink).GetAwaiter().GetResult();
+        }
+
+        /// <summary>
+        /// Gets all application type version resources created or in the process of being created in the Service Fabric application type name resource.
+        /// </summary>
+        /// <param name='operations'>
+        /// The operations group for this extension method.
+        /// </param>
+        /// <param name='nextPageLink'>
+        /// The NextLink from the previous successful call to List operation.
+        /// </param>
+        /// <param name='cancellationToken'>
+        /// The cancellation token.
+        /// </param>
+        public static async System.Threading.Tasks.Task<Microsoft.Rest.Azure.IPage<ApplicationTypeVersionResource>> ListNextAsync(this IApplicationTypeVersionsOperations operations, string nextPageLink, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        {
+            using (var _result = await operations.ListNextWithHttpMessagesAsync(nextPageLink, null, cancellationToken).ConfigureAwait(false))
+            {
+                return _result.Body;
+            }
         }
     }
 }

@@ -1,5 +1,5 @@
 ---
-external help file:
+external help file: Az.App-help.xml
 Module Name: Az.App
 online version: https://learn.microsoft.com/powershell/module/Az.App/new-azcontainerappconfigurationobject
 schema: 2.0.0
@@ -14,11 +14,11 @@ Create an in-memory object for Configuration.
 
 ```
 New-AzContainerAppConfigurationObject [-ActiveRevisionsMode <String>] [-CorPolicyAllowCredentials <Boolean>]
- [-CorPolicyAllowedHeader <String[]>] [-CorPolicyAllowedMethod <String[]>]
- [-CorPolicyAllowedOrigin <String[]>] [-CorPolicyExposeHeader <String[]>] [-CorPolicyMaxAge <Int32>]
- [-DaprAppId <String>] [-DaprAppPort <Int32>] [-DaprAppProtocol <String>] [-DaprEnableApiLogging <Boolean>]
- [-DaprEnabled <Boolean>] [-DaprHttpMaxRequestSize <Int32>] [-DaprHttpReadBufferSize <Int32>]
- [-DaprLogLevel <String>] [-IngressAllowInsecure <Boolean>] [-IngressClientCertificateMode <String>]
+ [-CorPolicyAllowedHeader <String[]>] [-CorPolicyAllowedMethod <String[]>] [-CorPolicyAllowedOrigin <String[]>]
+ [-CorPolicyExposeHeader <String[]>] [-CorPolicyMaxAge <Int32>] [-DaprAppId <String>] [-DaprAppPort <Int32>]
+ [-DaprAppProtocol <String>] [-DaprEnableApiLogging <Boolean>] [-DaprEnabled <Boolean>]
+ [-DaprHttpMaxRequestSize <Int32>] [-DaprHttpReadBufferSize <Int32>] [-DaprLogLevel <String>]
+ [-IngressAllowInsecure <Boolean>] [-IngressClientCertificateMode <String>]
  [-IngressCustomDomain <ICustomDomain[]>] [-IngressExposedPort <Int32>] [-IngressExternal <Boolean>]
  [-IngressIPSecurityRestriction <IIPSecurityRestrictionRule[]>] [-IngressTargetPort <Int32>]
  [-IngressTraffic <ITrafficWeight[]>] [-IngressTransport <String>] [-MaxInactiveRevision <Int32>]
@@ -516,4 +516,3 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ## NOTES
 
 ## RELATED LINKS
-

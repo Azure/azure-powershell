@@ -25,7 +25,7 @@ namespace Microsoft.Azure.Management.Automation.Models
         /// </summary>
 
         /// <param name="groupType">Type of the HybridWorkerGroup.
-        /// Possible values include: 'User', 'System'</param>
+        /// Possible values include: &#39;User&#39;, &#39;System&#39;</param>
 
         /// <param name="credential">Sets the credential of a worker group.
         /// </param>

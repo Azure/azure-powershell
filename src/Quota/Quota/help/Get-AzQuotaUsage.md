@@ -1,5 +1,5 @@
 ---
-external help file:
+external help file: Az.Quota-help.xml
 Module Name: Az.Quota
 online version: https://learn.microsoft.com/powershell/module/az.quota/get-azquotausage
 schema: 2.0.0
@@ -19,7 +19,7 @@ Get-AzQuotaUsage -Scope <String> [-DefaultProfile <PSObject>] [<CommonParameters
 
 ### Get
 ```
-Get-AzQuotaUsage -Name <String> -Scope <String> [-DefaultProfile <PSObject>] [<CommonParameters>]
+Get-AzQuotaUsage -Scope <String> -Name <String> [-DefaultProfile <PSObject>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -29,7 +29,7 @@ Get the current usage of a resource.
 
 ### Example 1: List the currents usage of a resource
 ```powershell
-Get-AzQuotaUsage -Scope "subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/providers/Microsoft.Network/locations/eastus" 
+Get-AzQuotaUsage -Scope "subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/providers/Microsoft.Network/locations/eastus"
 ```
 
 ```output
@@ -135,4 +135,3 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ALIASES
 
 ## RELATED LINKS
-

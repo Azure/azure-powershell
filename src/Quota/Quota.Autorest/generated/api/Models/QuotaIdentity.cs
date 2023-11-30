@@ -62,6 +62,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Quota.Models
         [Microsoft.Azure.PowerShell.Cmdlets.Quota.Runtime.Info(
         Required = false,
         ReadOnly = false,
+        Read = true,
+        Create = true,
+        Update = true,
         Description = @"Quota request ID.",
         SerializedName = @"id",
         PossibleTypes = new [] { typeof(string) })]
@@ -70,6 +73,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Quota.Models
         [Microsoft.Azure.PowerShell.Cmdlets.Quota.Runtime.Info(
         Required = false,
         ReadOnly = false,
+        Read = true,
+        Create = true,
+        Update = true,
         Description = @"Resource identity path",
         SerializedName = @"id",
         PossibleTypes = new [] { typeof(string) })]
@@ -83,6 +89,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Quota.Models
         [Microsoft.Azure.PowerShell.Cmdlets.Quota.Runtime.Info(
         Required = false,
         ReadOnly = false,
+        Read = true,
+        Create = true,
+        Update = true,
         Description = @"Resource name for a given resource provider. For example:
         - SKU name for Microsoft.Compute
         - SKU or TotalLowPriorityCores for Microsoft.MachineLearningServices
@@ -98,6 +107,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Quota.Models
         [Microsoft.Azure.PowerShell.Cmdlets.Quota.Runtime.Info(
         Required = false,
         ReadOnly = false,
+        Read = true,
+        Create = true,
+        Update = true,
         Description = @"The target Azure resource URI. For example, `/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/qms-test/providers/Microsoft.Batch/batchAccounts/testAccount/`. This is the target Azure resource URI for the List GET operation. If a `{resourceName}` is added after `/quotas`, then it's the target Azure resource URI in the GET operation for the specific resource.",
         SerializedName = @"scope",
         PossibleTypes = new [] { typeof(string) })]

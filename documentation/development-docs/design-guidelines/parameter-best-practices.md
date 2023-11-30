@@ -20,6 +20,11 @@ Similar to cmdlets, parameters should follow pascal casing.From the [_Strongly E
 
 > _Use Pascal case for parameter names. In other words, capitalize the first letter of each word in the parameter name, including the first letter of the name._
 
+#### Acronyms
+Do capitalize both characters of two-character acronyms. For example,-*VM*ScaleSetName.
+
+Do capitalize only the first character of acronyms with three or more characters, which aligned with Pascal case. For example, -*Fqdn* and -*Vmss*Name.
+
 #### Singularity
 
 From the [_Strongly Encouraged Development Guidelines_](https://learn.microsoft.com/en-us/powershell/scripting/developer/cmdlet/strongly-encouraged-development-guidelines#use-singular-parameter-names):
@@ -54,7 +59,13 @@ From the [_Strongly Encouraged Development Guidelines_](https://learn.microsoft.
 
 #### Secret Parameters
 
-For parameters that represent a value that should be kept secret in some fashion (such as a password, secret, key, etc.), the type of the parameter should be `SecureString` to avoid any sensitive information about the parameter from leaking during cmdlet execution.
+For parameters whose type is string and which represent a value that should be kept secret in some fashion (such as a password, secret, key, etc.), the type of the parameter should be [SecureString](https://learn.microsoft.com/dotnet/api/system.security.securestring) to limit the exposure of sensitive string data from unexpected leakage during cmdlet execution. The practice also applies to output properties whose type is string and that should be kept in secret.
+
+Please notice that DO NOT use `SecureString` for encryption purposes. We only recommend to use `SecureString` as a wrapper of string to prevent unexpected leakage of information as string may still be exposed to any process or operation that has access to raw memory. 
+
+From [How secure is SecureString?](https://learn.microsoft.com/dotnet/api/system.security.securestring#how-secure-is-securestring)
+
+> _SecureString is more secure than String because it limits the exposure of sensitive string data. However, those strings may still be exposed to any process or operation that has access to raw memory, such as a malicious process running on the host computer, a process dump, or a user-viewable swap file. Instead of using SecureString to protect passwords, the recommended alternative is to use an opaque handle to credentials that are stored outside of the process._
 
 #### Bool vs. SwitchParameter
 

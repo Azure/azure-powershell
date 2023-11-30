@@ -1,5 +1,5 @@
 ---
-external help file:
+external help file: Az.App-help.xml
 Module Name: Az.App
 online version: https://learn.microsoft.com/powershell/module/az.app/get-azcontainerappcustomhostname
 schema: 2.0.0
@@ -14,7 +14,7 @@ Analyzes a custom hostname for a Container App
 
 ```
 Get-AzContainerAppCustomHostName -ContainerAppName <String> -ResourceGroupName <String>
- [-SubscriptionId <String[]>] [-CustomHostname <String>] [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf]
+ [-SubscriptionId <String[]>] [-CustomHostname <String>] [-DefaultProfile <PSObject>] [-WhatIf] [-Confirm]
  [<CommonParameters>]
 ```
 
@@ -158,4 +158,3 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ## NOTES
 
 ## RELATED LINKS
-

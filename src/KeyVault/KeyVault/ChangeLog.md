@@ -19,6 +19,9 @@
 -->
 ## Upcoming Release
 
+## Version 5.0.1
+* Removed redundant Microsoft Graph API calls for access policy in `Get-AzKeyVault`.
+
 ## Version 5.0.0
 * Removed non-core types creation in PowerShell scripts to be compatible in constrained language mode.
 * Supported user assigned identity for Managed HSM in `New/Update-AzKeyVaultManagedHsm` 

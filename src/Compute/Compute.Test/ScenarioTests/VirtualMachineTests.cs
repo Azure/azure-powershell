@@ -445,7 +445,7 @@ namespace Microsoft.Azure.Commands.Compute.Test.ScenarioTests
             TestRunner.RunTestScript("Test-CapacityReservation");
         }
 
-        [Fact(Skip = "Cannot run on Github Platform due to ACL API")]
+        [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestVMwithSSHKey()
         {
@@ -618,6 +618,13 @@ namespace Microsoft.Azure.Commands.Compute.Test.ScenarioTests
         public void TestVMDefaultsToTrustedLaunchWithGen2Image()
         {
             TestRunner.RunTestScript("Test-VMDefaultsToTrustedLaunchWithGen2Image");
+        }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void TestVMDefaultsToTrustedLaunchWithNullEncryptionAtHost()
+        {
+            TestRunner.RunTestScript("Test-VMDefaultsToTrustedLaunchWithNullEncryptionAtHost");
         }
     }
 }

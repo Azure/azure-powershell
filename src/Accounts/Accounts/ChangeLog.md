@@ -19,6 +19,7 @@
 -->
 
 ## Upcoming Release
+* Added upcoming breaking change warning for deprecation of config parameter `DisableErrorRecordsPersistence`.
 
 ## Version 2.13.2
 * Enabled in-tool notification for version upgrade by default.
