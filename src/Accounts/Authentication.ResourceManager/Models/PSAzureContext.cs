@@ -138,10 +138,18 @@ namespace Microsoft.Azure.Commands.Profile.Models.Core
         /// The name of the context. The context may be selected by name
         /// </summary>
         public string Name { get; set; }
+
+        /// <summary>
+        /// The subscription targeted in Azure.
+        /// </summary>
+        [Ps1Xml(Label = "SubscriptionName", Target = ViewControl.Table, ScriptBlock = "$_.Subscription.Name", Position = 0)]
+        [Ps1Xml(Label = "SubscriptionId", Target = ViewControl.Table, ScriptBlock = "$_.Subscription.Id", Position = 1)]
+        public IAzureSubscription Subscription { get; set; }
+
         /// <summary>
         /// The account used to connect to Azure.
         /// </summary>
-        [Ps1Xml(Label = "Account", Target = ViewControl.Table, Position = 1)]
+        [Ps1Xml(Label = "Account", Target = ViewControl.Table, Position = 2)]
         public IAzureAccount Account { get; set; }
 
         /// <summary>
@@ -151,22 +159,15 @@ namespace Microsoft.Azure.Commands.Profile.Models.Core
         public IAzureEnvironment Environment { get; set; }
 
         /// <summary>
-        /// The subscription targeted in Azure.
-        /// </summary>
-        [Ps1Xml(Label = "SubscriptionName", Target = ViewControl.Table, ScriptBlock = "$_.Subscription.Name", Position = 0)]
-        public IAzureSubscription Subscription { get; set; }
-
-        /// <summary>
         /// The targeted tenant in Azure.
         /// </summary>
-        [Ps1Xml(Label = "TenantId", GroupByThis = true, Target = ViewControl.Table, ScriptBlock = "$_.Tenant.Id", Position = 3)]
+        [Ps1Xml(Label = "TenantId", GroupByThis = true, Target = ViewControl.Table, ScriptBlock = "$_.Tenant.Id")]
         public IAzureTenant Tenant { get; set; }
 
         public IAzureTokenCache TokenCache { get; set; } = null;
 
         public string VersionProfile { get; set; }
 
-        [Ps1Xml(Label = "ExtendedProperties", Target = ViewControl.Table, Position = 4)]
         public IDictionary<string, string> ExtendedProperties { get; } = new Dictionary<string, string>(StringComparer.OrdinalIgnoreCase);
     }
 }

@@ -20,6 +20,9 @@ using System.Net.Http.Headers;
 using Microsoft.Rest.Azure;
 using Microsoft.WindowsAzure.Commands.Common.Attributes;
 using Newtonsoft.Json;
+using Microsoft.Rest;
+using System.Linq;
+using Newtonsoft.Json.Linq;
 
 namespace Microsoft.Azure.Commands.Profile.Models
 {
@@ -32,13 +35,16 @@ namespace Microsoft.Azure.Commands.Profile.Models
         [Ps1Xml(Target = ViewControl.List, Label = "Content", Position = 1)]
         public string Content { get; set; }
 
-        [Ps1Xml(Target = ViewControl.List, Label = "Headers", ScriptBlock = "[Newtonsoft.Json.JsonConvert]::SerializeObject($_.Headers, [Newtonsoft.Json.Formatting]::Indented)", Position = 2)]
+        [Ps1Xml(Target = ViewControl.List, Label = "Headers", ScriptBlock = "[Microsoft.Rest.HttpExtensions]::ToJson($_.Headers).ToString()", Position = 2)]
         public HttpResponseHeaders Headers { get; }
 
         [Ps1Xml(Target = ViewControl.List, Label = "Method", Position = 3)]
         public string Method { get; set; }
 
-        [Ps1Xml(Target = ViewControl.List, Label = "Version", Position = 4)]
+        [Ps1Xml(Target = ViewControl.List, Label = "RequestUri", Position = 4)]
+        public string RequestUri { get; set; }
+
+        [Ps1Xml(Target = ViewControl.List, Label = "Version", Position = 5)]
         public string Version { get; set; }
 
         public PSHttpResponse(AzureOperationResponse<string> response)
@@ -47,7 +53,8 @@ namespace Microsoft.Azure.Commands.Profile.Models
             this.Version = response.Response.Version.ToString();
             this.StatusCode = (int)response.Response.StatusCode;
             this.Method = response.Response.RequestMessage.Method.Method;
-            this.Content = response.Body;
+            this.Content = JObject.Parse(response.Body).ToString();
+            this.RequestUri = response.Request.RequestUri.ToString();
         }        
     }
 }

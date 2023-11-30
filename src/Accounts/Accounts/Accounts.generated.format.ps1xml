@@ -62,15 +62,15 @@
           </TableColumnHeader>
           <TableColumnHeader>
             <Alignment>Left</Alignment>
+            <Label>SubscriptionId</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Alignment>Left</Alignment>
             <Label>Account</Label>
           </TableColumnHeader>
           <TableColumnHeader>
             <Alignment>Left</Alignment>
             <Label>Environment</Label>
-          </TableColumnHeader>
-          <TableColumnHeader>
-            <Alignment>Left</Alignment>
-            <Label>ExtendedProperties</Label>
           </TableColumnHeader>
         </TableHeaders>
         <TableRowEntries>
@@ -79,7 +79,11 @@
               <TableColumnItem>
                 <Alignment>Left</Alignment>
                 <ScriptBlock>$_.Subscription.Name</ScriptBlock>
-              </TableColumnItem>
+			  </TableColumnItem>
+			  <TableColumnItem>
+				  <Alignment>Left</Alignment>
+				  <ScriptBlock>$_.Subscription.Id</ScriptBlock>
+			  </TableColumnItem>
               <TableColumnItem>
                 <Alignment>Left</Alignment>
                 <PropertyName>Account</PropertyName>
@@ -87,10 +91,6 @@
               <TableColumnItem>
                 <Alignment>Left</Alignment>
                 <PropertyName>Environment</PropertyName>
-              </TableColumnItem>
-              <TableColumnItem>
-                <Alignment>Left</Alignment>
-                <PropertyName>ExtendedProperties</PropertyName>
               </TableColumnItem>
             </TableColumnItems>
           </TableRowEntry>
@@ -251,12 +251,16 @@
                 <Label>Content</Label>
               </ListItem>
               <ListItem>
-                <ScriptBlock>[Newtonsoft.Json.JsonConvert]::SerializeObject($_.Headers, [Newtonsoft.Json.Formatting]::Indented)</ScriptBlock>
+                <ScriptBlock>[Microsoft.Rest.HttpExtensions]::ToJson($_.Headers).ToString()</ScriptBlock>
                 <Label>Headers</Label>
               </ListItem>
               <ListItem>
                 <PropertyName>Method</PropertyName>
                 <Label>Method</Label>
+              </ListItem>
+              <ListItem>
+                <PropertyName>RequestUri</PropertyName>
+                <Label>RequestUri</Label>
               </ListItem>
               <ListItem>
                 <PropertyName>Version</PropertyName>
