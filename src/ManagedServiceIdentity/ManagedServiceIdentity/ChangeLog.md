@@ -19,6 +19,9 @@
 -->
 ## Upcoming Release
 
+## Version 1.2.0
+* Renamed `*-AzFederatedIdentityCredentials` to `*-AzFederatedIdentityCredential`, and kept `*-AzFederatedIdentityCredentials` as an alias.
+
 ## Version 1.1.1
 * Upgraded to API version 2023-01-31.
 * Federated identity credentials GA version is available now.

@@ -17,6 +17,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ManagedServiceIdentity.Cmdlets
     [global::System.Management.Automation.OutputType(typeof(Microsoft.Azure.PowerShell.Cmdlets.ManagedServiceIdentity.Models.Api20220131Preview.IOperation))]
     [global::Microsoft.Azure.PowerShell.Cmdlets.ManagedServiceIdentity.Description(@"Lists available operations for the Microsoft.ManagedIdentity provider")]
     [global::Microsoft.Azure.PowerShell.Cmdlets.ManagedServiceIdentity.Generated]
+    [global::Microsoft.Azure.PowerShell.Cmdlets.ManagedServiceIdentity.HttpPath(Path = "/providers/Microsoft.ManagedIdentity/operations", ApiVersion = "2023-01-31")]
     public partial class GetAzOperation_List : global::System.Management.Automation.PSCmdlet,
         Microsoft.Azure.PowerShell.Cmdlets.ManagedServiceIdentity.Runtime.IEventListener
     {
@@ -49,9 +50,10 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ManagedServiceIdentity.Cmdlets
         public Microsoft.Azure.PowerShell.Cmdlets.ManagedServiceIdentity.ManagedServiceIdentityClient Client => Microsoft.Azure.PowerShell.Cmdlets.ManagedServiceIdentity.Module.Instance.ClientAPI;
 
         /// <summary>
-        /// The credentials, account, tenant, and subscription used for communication with Azure
+        /// The DefaultProfile parameter is not functional. Use the SubscriptionId parameter when available if executing the cmdlet
+        /// against a different subscription
         /// </summary>
-        [global::System.Management.Automation.Parameter(Mandatory = false, HelpMessage = "The credentials, account, tenant, and subscription used for communication with Azure.")]
+        [global::System.Management.Automation.Parameter(Mandatory = false, HelpMessage = "The DefaultProfile parameter is not functional. Use the SubscriptionId parameter when available if executing the cmdlet against a different subscription.")]
         [global::System.Management.Automation.ValidateNotNull]
         [global::System.Management.Automation.Alias("AzureRMContext", "AzureCredential")]
         [global::Microsoft.Azure.PowerShell.Cmdlets.ManagedServiceIdentity.Category(global::Microsoft.Azure.PowerShell.Cmdlets.ManagedServiceIdentity.ParameterCategory.Azure)]
