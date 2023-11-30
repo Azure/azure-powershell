@@ -19,7 +19,8 @@
 -->
 
 ## Upcoming Release
-* Adjusted output format to more user-friendly for `Get-AzContext/Tenant/Subscription` and `Invoke-AzRestMethod`
+* Adjusted output format to be more user-friendly for `Get-AzContext/Tenant/Subscription` and `Invoke-AzRestMethod`
+* Added upcoming breaking change warning for deprecation of config parameter `DisableErrorRecordsPersistence`.
 
 ## Version 2.13.2
 * Enabled in-tool notification for version upgrade by default.

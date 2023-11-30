@@ -1,5 +1,5 @@
 ---
-external help file:
+external help file: Az.ManagedServiceIdentity-help.xml
 Module Name: Az.ManagedServiceIdentity
 online version: https://learn.microsoft.com/powershell/module/az.managedserviceidentity/remove-azuserassignedidentity
 schema: 2.0.0
@@ -15,13 +15,13 @@ Deletes the identity.
 ### Delete (Default)
 ```
 Remove-AzUserAssignedIdentity -Name <String> -ResourceGroupName <String> [-SubscriptionId <String>]
- [-DefaultProfile <PSObject>] [-PassThru] [-Confirm] [-WhatIf] [<CommonParameters>]
+ [-DefaultProfile <PSObject>] [-PassThru] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### DeleteViaIdentity
 ```
 Remove-AzUserAssignedIdentity -InputObject <IManagedServiceIdentity> [-DefaultProfile <PSObject>] [-PassThru]
- [-Confirm] [-WhatIf] [<CommonParameters>]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -196,4 +196,3 @@ To create the parameters described below, construct a hash table containing the 
   - `[SubscriptionId <String>]`: The Id of the Subscription to which the identity belongs.
 
 ## RELATED LINKS
-
