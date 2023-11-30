@@ -155,7 +155,7 @@ namespace Microsoft.Azure.Commands.Profile.Models.Core
         /// <summary>
         /// The endpoint and connection metadata for the targeted instance of the Azure cloud.
         /// </summary>
-        [Ps1Xml(Label = "Environment", Target = ViewControl.Table, Position = 2)]
+        [Ps1Xml(Label = "Environment", Target = ViewControl.Table, Position = 3)]
         public IAzureEnvironment Environment { get; set; }
 
         /// <summary>
