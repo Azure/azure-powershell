@@ -19,6 +19,8 @@
 --->
 
 ## Upcoming Release
+
+## Version 7.1.0
 * Added DefaultOutboundAccess parameter on subnet creation
 * Updated cmdlet `New-AzPublicIpPrefix` and `New-PublicIpAddress` to require Location parameter
 * Updated cmdlet `New-AzLoadBalancerBackendAddressPool` to support managed IP based backend

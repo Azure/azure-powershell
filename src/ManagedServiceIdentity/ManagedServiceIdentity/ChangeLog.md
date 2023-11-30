@@ -18,6 +18,8 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
+
+## Version 1.2.0
 * Renamed `*-AzFederatedIdentityCredentials` to `*-AzFederatedIdentityCredential`, and kept `*-AzFederatedIdentityCredentials` as an alias.
 
 ## Version 1.1.1

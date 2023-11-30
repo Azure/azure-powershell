@@ -18,6 +18,8 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
+
+## Version 4.12.0
 * Added new parameters `MaintenanceConfigurationId`, `DnsZone` to `AzSqlInstancePool` cmdlets
 
 ## Version 4.11.0

@@ -18,6 +18,8 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
+
+## Version 5.0.1
 * Removed redundant Microsoft Graph API calls for access policy in `Get-AzKeyVault`.
 
 ## Version 5.0.0
