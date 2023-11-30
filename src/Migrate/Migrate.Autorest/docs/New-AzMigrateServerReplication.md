@@ -543,32 +543,5 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## NOTES
 
-ALIASES
-
-COMPLEX PARAMETER PROPERTIES
-
-To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
-
-
-`DISKTAG <IVMwareCbtEnableMigrationInputTargetDiskTags>`: Specifies the tag to be used for disk creation.
-  - `[(Any) <String>]`: This indicates any property can be added to this object.
-
-`DISKTOINCLUDE <IVMwareCbtDiskInput[]>`: Specifies the disks on the source server to be included for replication.
-  - `DiskId <String>`: The disk Id.
-  - `IsOSDisk <String>`: A value indicating whether the disk is the OS disk.
-  - `LogStorageAccountId <String>`: The log storage account ARM Id.
-  - `LogStorageAccountSasSecretName <String>`: The key vault secret name of the log storage account.
-  - `[DiskEncryptionSetId <String>]`: The DiskEncryptionSet ARM Id.
-  - `[DiskType <DiskAccountType?>]`: The disk type.
-
-`INPUTOBJECT <IVMwareMachine>`: Specifies the discovered server to be migrated. The server object can be retrieved using the Get-AzMigrateServer cmdlet.
-  - `[GuestOSDetailOstype <String>]`: Type of the operating system.
-
-`NICTAG <IVMwareCbtEnableMigrationInputTargetNicTags>`: Specifies the tag to be used for NIC creation.
-  - `[(Any) <String>]`: This indicates any property can be added to this object.
-
-`VMTAG <IVMwareCbtEnableMigrationInputTargetVmtags>`: Specifies the tag to be used for VM creation.
-  - `[(Any) <String>]`: This indicates any property can be added to this object.
-
 ## RELATED LINKS
 

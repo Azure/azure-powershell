@@ -23,13 +23,13 @@ The Set-AzMigrateDiskMapping cmdlet updates a mapping of the source disk attache
 
 ### Example 1: Make disks
 ```powershell
-Set-AzMigrateDiskMapping -DiskID "6000C294-1217-dec3-bc18-81f117220424" -DiskName "ContosoDisk_1"
+Set-AzMigrateDiskMapping -DiskID "6000C294-1217-dec3-bc18-81f117220424" -DiskName "ContosoDisk_1" -IsOSDisk "True"
 ```
 
 ```output
-DiskId                               TargetDiskName
-------                               --------------
-6000C294-1217-dec3-bc18-81f117220424 ContosoDisk_1
+DiskId                               IsOSDisk TargetDiskName
+------                               -------- --------------
+6000C294-1217-dec3-bc18-81f117220424 True     ContosoDisk_1
 ```
 
 Get disks object to provide input for Set-AzMigrateServerReplication
@@ -91,8 +91,6 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ### Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api202301.IVMwareCbtUpdateDiskInput
 
 ## NOTES
-
-ALIASES
 
 ## RELATED LINKS
 
