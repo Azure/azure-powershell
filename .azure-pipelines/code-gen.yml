@@ -81,7 +81,12 @@ jobs:
       Install-Module -Name platyPS -RequiredVersion 0.14.2 -Force;
       Install-Module -Name Az.Accounts -Force;
       Import-Module .\tools\Gen2Master\MoveFromGeneration2Master.ps1;
-      Move-Generation2Master -SourcePath .\artifacts\src\${{ parameters.ServiceName }} -DestPath .\src\${{ parameters.ServiceName }};
+      $subModuleFolders = Get-ChildItem .\artifacts\src\${{ parameters.ServiceName }} -Directory -Filter *.Autorest;
+      if ($subModuleFolders -eq $null) {
+        Move-Generation2Master -SourcePath .\artifacts\src\${{ parameters.ServiceName }} -DestPath .\src\${{ parameters.ServiceName }};
+      } else {
+        Move-Generation2MasterHybrid -SourcePath .\artifacts\src\${{ parameters.ServiceName }} -DestPath .\src\${{ parameters.ServiceName }};
+      }
       git config user.email "65331932+azure-powershell-bot@users.noreply.github.com";
       git config user.name "azure-powershell-bot";
       git add ./src;

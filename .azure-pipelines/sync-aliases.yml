@@ -13,24 +13,27 @@ jobs:
 
   steps:
   - task: UseDotNet@2
-    displayName: Install .NET 8 SDK
+    displayName: Install .NET 7 SDK
     inputs:
       packageType: sdk
-      version: 8.0.x
+      version: 7.0.x
   - template: util/get-github-pat-steps.yml
 
   - pwsh: |
       dotnet --version
       dotnet new tool-manifest --force
-      dotnet tool install powershell --version 7.4.*
-    displayName: Install PowerShell 7.4.x
+      dotnet tool install powershell
+    displayName: Install Latest PowerShell (7.3+)
 
-  - template: util/get-keyvault-secret-steps.yml
-    parameters:
-      serviceConnectionName: $(AzureSubscription)
-      keyVaultName: $(KeyVaultName)
-      secretName: $(ADOTokenName)
-      outVar: 'ADOToken'
+  - task: AzurePowerShell@5
+    inputs:
+      azureSubscription: 'Azure SDK Infrastructure'
+      ScriptType: 'InlineScript'
+      Inline: |
+        $ADOTokenValue = Get-AzKeyVaultSecret -VaultName ${env:KEYVAULTNAME} -Name ${env:ADOTOKENNAME} -AsPlainText
+        Write-Host "##vso[task.setvariable variable=ADOToken;issecret=true]$ADOTokenValue"
+      azurePowerShellVersion: 'LatestVersion'
+    displayName: Get ADOToken from Key Vault
 
   - pwsh: |
       dotnet tool run pwsh -NoLogo -NoProfile -NonInteractive -File "./tools/Github/ParseServiceContactsList.ps1 -ADOToken $(ADOToken)"
