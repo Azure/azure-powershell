@@ -20,16 +20,16 @@ Describe 'Remove-AzDataMigrationToSqlDb' {
         $sourcePassword = ConvertTo-SecureString $env.TestDeleteDatabaseMigrationDb.SourceSqlConnectionPassword -AsPlainText -Force
 
         $instance = New-AzDataMigrationToSqlDb -ResourceGroupName $env.TestDeleteDatabaseMigrationDb.ResourceGroupName -SqlDbInstanceName $env.TestDeleteDatabaseMigrationDb.SqlDbInstanceName -MigrationService  $env.TestDeleteDatabaseMigrationDb.MigrationService -TargetSqlConnectionAuthentication $env.TestDeleteDatabaseMigrationDb.TargetSqlConnectionAuthentication -TargetSqlConnectionDataSource $env.TestDeleteDatabaseMigrationDb.TargetSqlConnectionDataSource -TargetSqlConnectionPassword $targetPassword -TargetSqlConnectionUserName $env.TestDeleteDatabaseMigrationDb.TargetSqlConnectionUserName -SourceSqlConnectionAuthentication $env.TestDeleteDatabaseMigrationDb.SourceSqlConnectionAuthentication -SourceSqlConnectionDataSource $env.TestDeleteDatabaseMigrationDb.SourceSqlConnectionDataSource -SourceSqlConnectionUserName $env.TestDeleteDatabaseMigrationDb.SourceSqlConnectionUserName -SourceSqlConnectionPassword $sourcePassword -SourceDatabaseName $env.TestDeleteDatabaseMigrationDb.SourceDatabaseName -TargetDbName $env.TestDeleteDatabaseMigrationDb.TargetDbName -Scope  $env.TestDeleteDatabaseMigrationDb.Scope
-        
-        Start-Sleep -Seconds 5
+
+        Start-TestSleep -Seconds 5
 
         Remove-AzDataMigrationToSqlDb -ResourceGroupName $env.TestDeleteDatabaseMigrationDb.ResourceGroupName -SqlDbInstanceName $env.TestDeleteDatabaseMigrationDb.SqlDbInstanceName -TargetDbName $env.TestDeleteDatabaseMigrationDb.TargetDbName -Force
 
-        Start-Sleep -Seconds 5
-        
-        
+        Start-TestSleep -Seconds 5
+
+
         $dbMig = Get-AzDataMigrationToSqlDb -ResourceGroupName $env.TestDeleteDatabaseMigrationDb.ResourceGroupName -SqlDbInstanceName $env.TestDeleteDatabaseMigrationDb.SqlDbInstanceName -TargetDbName $env.TestDeleteDatabaseMigrationDb.TargetDbName -ErrorAction SilentlyContinue
-        
+
 
         $assert =  ($dbMig -eq $null)
         $assert | Should be $true

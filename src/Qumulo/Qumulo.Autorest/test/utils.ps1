@@ -5,6 +5,31 @@ function RandomString([bool]$allChars, [int32]$len) {
         return -join ((48..57) + (97..122) | Get-Random -Count $len | % {[char]$_})
     }
 }
+function Start-TestSleep {
+    [CmdletBinding(DefaultParameterSetName = 'SleepBySeconds')]
+    param(
+        [parameter(Mandatory = $true, Position = 0, ParameterSetName = 'SleepBySeconds')]
+        [ValidateRange(0.0, 2147483.0)]
+        [double] $Seconds,
+
+        [parameter(Mandatory = $true, ParameterSetName = 'SleepByMilliseconds')]
+        [ValidateRange('NonNegative')]
+        [Alias('ms')]
+        [int] $Milliseconds
+    )
+
+    if ($TestMode -ne 'playback') {
+        switch ($PSCmdlet.ParameterSetName) {
+            'SleepBySeconds' {
+                Start-Sleep -Seconds $Seconds
+            }
+            'SleepByMilliseconds' {
+                Start-Sleep -Milliseconds $Milliseconds
+            }
+        }
+    }
+}
+
 $env = @{}
 if ($UsePreviousConfigForRecord) {
     $previousEnv = Get-Content (Join-Path $PSScriptRoot 'env.json') | ConvertFrom-Json
@@ -19,7 +44,7 @@ function setupEnv() {
     #provided by service, ID:fc35d936-3b89-41f8-8110-a24b56826c37
     $env.SubscriptionId = (Get-AzContext).Subscription.Id
     $env.Tenant = (Get-AzContext).Tenant.Id
-    
+
     $virtualNetworkName = 'eastus-ps-vnet'
     $env.Add('virtualNetworkName', $virtualNetworkName)
 
@@ -60,7 +85,7 @@ function setupEnv() {
     #manually create VirtualNetwork env
     # New VirtualNetwork { Name $env.virtualNetworkName, ResourceGroup $env.resourceGroup, Location $env.region, AddressPrefix "10.23.0.0/16"}
     # Add VirtualNetwork SubnetConfig { Name $env.subnetName, AddressPrefix "10.23.1.0/24", Delegation Service Name "Qumulo.Storage/fileSystems"}
-    
+
     # For any resources you created for test, you should add it to $env here.
     $envFile = 'env.json'
     if ($TestMode -eq 'live') {

@@ -5,6 +5,31 @@ function RandomString([bool]$allChars, [int32]$len) {
         return -join ((48..57) + (97..122) | Get-Random -Count $len | % {[char]$_})
     }
 }
+function Start-TestSleep {
+    [CmdletBinding(DefaultParameterSetName = 'SleepBySeconds')]
+    param(
+        [parameter(Mandatory = $true, Position = 0, ParameterSetName = 'SleepBySeconds')]
+        [ValidateRange(0.0, 2147483.0)]
+        [double] $Seconds,
+
+        [parameter(Mandatory = $true, ParameterSetName = 'SleepByMilliseconds')]
+        [ValidateRange('NonNegative')]
+        [Alias('ms')]
+        [int] $Milliseconds
+    )
+
+    if ($TestMode -ne 'playback') {
+        switch ($PSCmdlet.ParameterSetName) {
+            'SleepBySeconds' {
+                Start-Sleep -Seconds $Seconds
+            }
+            'SleepByMilliseconds' {
+                Start-Sleep -Milliseconds $Milliseconds
+            }
+        }
+    }
+}
+
 $env = @{}
 if ($UsePreviousConfigForRecord) {
     $previousEnv = Get-Content (Join-Path $PSScriptRoot 'env.json') | ConvertFrom-Json
@@ -31,14 +56,14 @@ function setupEnv() {
     $env.Add("FqdnListLocalRulestack", $FqdnListLocalRulestack)
     $env.Add("LocalRuleName", $LocalRuleName)
     $env.Add("CertificateObjectLocalRulestackName", $CertificateObjectLocalRulestackName)
-    
+
     $env.Add("location", "eastus")
 
     # Create the test group
     write-host "start to create test group"
     $resourceGroup = "azps-testcase-pan"
     $env.Add("resourceGroup", $resourceGroup)
-    
+
     # Use mock environment, so we donnot run this cmdlet.
     New-AzResourceGroup -Name $env.resourceGroup -Location $env.location
 
