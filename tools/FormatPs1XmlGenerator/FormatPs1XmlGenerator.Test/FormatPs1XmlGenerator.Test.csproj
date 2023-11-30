@@ -1,11 +1,22 @@
 <Project Sdk="Microsoft.NET.Sdk">
-	<Import Project="$(MSBuildThisFileDirectory)..\..\Common.Netcore.Dependencies.Test.targets" />
+	<Import Project="$(MSBuildThisFileDirectory)..\..\..\Repo.props" />
+	<Import Project="$(RepoTools)Common.Netcore.Dependencies.Test.targets" />
 
-  <PropertyGroup>
-    <TargetFramework>netcoreapp3.1</TargetFramework>
+	<PropertyGroup>
+    <TargetFramework>netstandard2.0</TargetFramework>
     <IsPackable>false</IsPackable>
   </PropertyGroup>
 
+	<ItemGroup>
+		<AssemblyAttribute Include="System.Reflection.AssemblyMetadataAttribute">
+			<_Parameter1>TestProjectPath</_Parameter1>
+			<_Parameter2>$(MSBuildProjectDirectory)</_Parameter2>
+		</AssemblyAttribute>
+	</ItemGroup>
+	
+	<ItemGroup>
+		<PackageReference Include="System.Runtime.Loader" Version="4.3.0" />
+	</ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\CmdletsForTest\CmdletsForTest.csproj" />
     <ProjectReference Include="..\FormatPs1XmlGenerator\FormatPs1XmlGenerator.csproj" />
