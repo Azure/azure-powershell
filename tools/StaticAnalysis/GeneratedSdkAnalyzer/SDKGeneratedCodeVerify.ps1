@@ -48,13 +48,14 @@ function Get-NonExceptionSdkRecord{
     )
     $exceptionPaths = "$PSScriptRoot\..\..\..\tools\StaticAnalysis\Exceptions"
     $errors = @()
-    foreach($record in $records){        
+    foreach($record in $records){    
+        $needAdd = true    
         $exceptionPath = Join-Path -Path $exceptionPaths -ChildPath (EnsureModuleName($record.Module)) -AdditionalChildPath "GeneratedSdkIssues.csv"
         if(Test-Path -Path $exceptionPath){
             $exceptionContents = Import-Csv -Path $exceptionPath
             foreach($exceptionContent in $exceptionContents) {
                 if($exceptionContent.Module -eq $record.Module -and $exceptionContent.Sdk -eq $record.Sdk -and $exceptionContent.Severity -eq $record.Severity -and $exceptionContent.ProblemId -eq $record.ProblemId -and $exceptionContent.Description -eq $record.Description){
-                    $needAdd = $false
+                    c = $false
                     break
                 }
             }
@@ -110,20 +111,17 @@ try {
             }
             elseif ([regex]::Matches($readMeContent, '\s*csharp\s*:\s*true\s*'))
             {
-                Write-Host "Do not support updating SDK using autorest csharp v3."
                 $ExceptionList += [GeneratedSdkIssue]@{
                     Module = $ModuleName;
                     Sdk = $_;
                     Severity = 1;
-                    ProblemId = $GenSdkChanged
+                    ProblemId = $AutorestCSharpDetected
                     Description = "Do not support updating SDK using autorest csharp v3."
                     Remediation = "Please update the Readme.md to generate code by autorest powershell v4."
                 }
-                Write-Host "Do not support updating SDK using autorest csharp v3."
             }
             else
             {
-                Write-Host "Do not find correct autorest version, please check Readme.md"
                 $ExceptionList += [GeneratedSdkIssue]@{
                     Module = $ModuleName;
                     Sdk = $_;
@@ -168,6 +166,7 @@ try {
                     Remediation = "Make sure that the ReadMe file of Sdk is loaded."
             }
         }
+
 
         # See if the code is completely the same as we generated
         $changes = git status ".\Generated" --porcelain
