@@ -2034,6 +2034,9 @@ namespace Microsoft.Azure.Management.CognitiveServices
         /// <param name='commitmentPlanAssociationName'>
         /// The name of the commitment plan association with the Cognitive Services Account
         /// </param>
+        /// <param name='tags'>
+        /// Resource tags.
+        /// </param>
         /// <param name='accountId'>
         /// The Azure resource id of the account.
         /// </param>
@@ -2043,10 +2046,10 @@ namespace Microsoft.Azure.Management.CognitiveServices
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        public async System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse<CommitmentPlanAccountAssociation>> CreateOrUpdateAssociationWithHttpMessagesAsync(string resourceGroupName, string commitmentPlanName, string commitmentPlanAssociationName, string accountId = default(string), System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public async System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse<CommitmentPlanAccountAssociation>> CreateOrUpdateAssociationWithHttpMessagesAsync(string resourceGroupName, string commitmentPlanName, string commitmentPlanAssociationName, System.Collections.Generic.IDictionary<string, string> tags = default(System.Collections.Generic.IDictionary<string, string>), string accountId = default(string), System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
                 // Send Request
-                Microsoft.Rest.Azure.AzureOperationResponse<CommitmentPlanAccountAssociation> _response = await BeginCreateOrUpdateAssociationWithHttpMessagesAsync(resourceGroupName, commitmentPlanName, commitmentPlanAssociationName, accountId, customHeaders, cancellationToken).ConfigureAwait(false);
+                Microsoft.Rest.Azure.AzureOperationResponse<CommitmentPlanAccountAssociation> _response = await BeginCreateOrUpdateAssociationWithHttpMessagesAsync(resourceGroupName, commitmentPlanName, commitmentPlanAssociationName, tags, accountId, customHeaders, cancellationToken).ConfigureAwait(false);
                 return await this.Client.GetPutOrPatchOperationResultAsync(_response, customHeaders, cancellationToken).ConfigureAwait(false);
         }
 
@@ -3064,6 +3067,9 @@ namespace Microsoft.Azure.Management.CognitiveServices
         /// <param name='commitmentPlanAssociationName'>
         /// The name of the commitment plan association with the Cognitive Services Account
         /// </param>
+        /// <param name='tags'>
+        /// Resource tags.
+        /// </param>
         /// <param name='accountId'>
         /// The Azure resource id of the account.
         /// </param>
@@ -3088,7 +3094,7 @@ namespace Microsoft.Azure.Management.CognitiveServices
         /// <return>
         /// A response object containing the response body and response headers.
         /// </return>
-        public async System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse<CommitmentPlanAccountAssociation>> BeginCreateOrUpdateAssociationWithHttpMessagesAsync(string resourceGroupName, string commitmentPlanName, string commitmentPlanAssociationName, string accountId = default(string), System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public async System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse<CommitmentPlanAccountAssociation>> BeginCreateOrUpdateAssociationWithHttpMessagesAsync(string resourceGroupName, string commitmentPlanName, string commitmentPlanAssociationName, System.Collections.Generic.IDictionary<string, string> tags = default(System.Collections.Generic.IDictionary<string, string>), string accountId = default(string), System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
 
 
@@ -3148,8 +3154,9 @@ namespace Microsoft.Azure.Management.CognitiveServices
                 }
             }
             CommitmentPlanAccountAssociation association = new CommitmentPlanAccountAssociation();
-            if(accountId != null)
+            if(tags != null||accountId != null)
             {
+                association.Tags = tags;
                 association.AccountId = accountId;
             }
             // Tracing
