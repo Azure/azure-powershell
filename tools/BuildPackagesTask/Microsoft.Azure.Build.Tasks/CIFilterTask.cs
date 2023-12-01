@@ -179,10 +179,7 @@ namespace Microsoft.WindowsAzure.Build.Tasks
         {
             List<string> csprojList = GetRelatedCsprojList(moduleName, csprojMap)
                 .Where(x => x.Contains("Test")).ToList();
-            if (csprojList.Count == 0)
-            {
-                csprojList.Add(moduleName);
-            }
+
             return csprojList;
         }
 
