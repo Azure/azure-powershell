@@ -90,6 +90,27 @@ completed checklist.
 The following set of guidelines must be adhered to when opening pull requests in the Azure
 PowerShell repository.
 
+#### Target Release Types
+
+Here are all types of releases of **Azure PowerShell**. Note that the type of release isn't necessarily aligned to the state of the swagger or service feature.
+
+- **General** release
+  - This PR targets an [official general release](https://github.com/Azure/azure-powershell/milestones) of Azure PowerShell.
+  - Target version is `x.y.z`, no suffix.
+    - Note: versions < 1.0.0 are also included in this category.
+  - Target branch should be `main` or `generation` depending on the development approach.
+- **Preview** release
+  - **Public preview**
+    - This PR targets a preview release of Azure PowerShell. It is independent to the normal release cycle.
+    - Target version is `x.y.z-preview`.
+      - Note: if the major version is 0, it is considered a general release rather than preview.
+    - Target branch should not be `main` nor `generation`. Please contact [sprint master](https://github.com/Azure/azure-powershell/milestones) if you are unsure about which branch to target.
+  - **Private preview** / **Embargoed preview**
+    - This PR is related to some business secret. It should not be submitted to this repository. Contact [sprint master](https://github.com/Azure/azure-powershell/milestones) for more details.
+- **Engineering build**
+  - This PR does not require any kind of releases. It's for internal or private distribution.
+  - Target branch should not be `main` nor `generation`. Please contact [sprint master](https://github.com/Azure/azure-powershell/milestones) if you are unsure about which branch to target.
+
 #### General guidelines
 
 The following guidelines must be followed for **every** pull request that is opened.
