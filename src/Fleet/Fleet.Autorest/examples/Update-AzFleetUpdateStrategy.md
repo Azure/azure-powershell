@@ -2,7 +2,7 @@
 ```powershell
 $f = Get-AzFleet -Name testfleet01 -ResourceGroupName K8sFleet-Test
 $stage = New-AzFleetUpdateStageObject -Name stag1 -Group @{name='group-a'} -AfterStageWaitInSecond 3600
-Update-AzFleetUpdateStrategy -FleetInputObject $f -UpdateStrategyName strartegy3 -StrategyStage $stage
+Update-AzFleetUpdateStrategy -FleetInputObject $f -Name strartegy3 -StrategyStage $stage
 ```
 
 ```output

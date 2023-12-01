@@ -1,4 +1,4 @@
-### Example 1: {{ Add title here }}
+### Example 1: Update fleet member with specified member name and fleet name
 ```powershell
 Update-AzFleetMember -FleetName testfleet01 -ResourceGroupName K8sFleet-Test -Name testmember -Group 'group-a'
 ```
@@ -20,9 +20,9 @@ SystemDataLastModifiedByType : User
 Type                         : Microsoft.ContainerService/fleets/members
 ```
 
-{{ Add description here }}
+This command updates fleet member with specified member name and fleet name.
 
-### Example 2: {{ Add title here }}
+### Example 2: Update fleet member with specified fleet object and member name
 ```powershell
 $member = Get-AzFleetMember -FleetName testfleet01 -ResourceGroupName K8sFleet-Test -Name testmember
 Update-AzFleetMember -InputObject $member -Group 'group-a'
@@ -45,5 +45,5 @@ SystemDataLastModifiedByType : User
 Type                         : Microsoft.ContainerService/fleets/members
 ```
 
-{{ Add description here }}
+The first command get a fleet. The second command updates fleet member with specified fleet object and member name.
 
