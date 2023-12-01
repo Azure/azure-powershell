@@ -24,7 +24,7 @@ Create an in-memory object for UpdateStage.
 
 ### Example 1: create fleet update stage object with group string array
 ```powershell
-New-AzFleetUpdateStageObject -Name stag1 -Group @{name='group-a'} -AfterStageWaitInSecond 3600 | fl
+New-AzFleetUpdateStageObject -Name stag1 -Group @{name='group-a'} -AfterStageWaitInSecond 3600 | Format-List
 ```
 
 ```output
@@ -42,7 +42,7 @@ This command create a fleet update stage object and shows as list.
 $a = New-AzFleetUpdateGroupObject -Name 'Group-a'
 $b = New-AzFleetUpdateGroupObject -Name 'Group-b'                                                                           
 $c = New-AzFleetUpdateGroupObject -Name 'Group-c'                                                                           
-New-AzFleetUpdateStageObject -Name stag1 -Group $a,$b,$c -AfterStageWaitInSecond 3600 | fl
+New-AzFleetUpdateStageObject -Name stag1 -Group $a,$b,$c -AfterStageWaitInSecond 3600 | Format-List
 ```
 
 ```output
