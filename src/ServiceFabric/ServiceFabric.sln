@@ -25,7 +25,7 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ServiceFabric.Test", "Servi
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ServiceFabric", "ServiceFabric\ServiceFabric.csproj", "{A6D65551-1992-4BC9-8605-904FB9375885}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ServiceFabricManagedClusters.Management.sdk", "ServiceFabricManagedClusters.Management.Sdk\ServiceFabricManagedClusters.Management.sdk.csproj", "{428ED0C8-8FAA-4166-ACAC-6AC10C170E13}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ServiceFabricManagedClusters.Management.sdk", "ServiceFabricManagedClusters.Management.Sdk\ServiceFabricManagedClusters.Management.Sdk.csproj", "{428ED0C8-8FAA-4166-ACAC-6AC10C170E13}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TestFx", "..\..\tools\TestFx\TestFx.csproj", "{5A70ECA9-827A-4397-9022-68E5858C03DA}"
 EndProject
