@@ -18,6 +18,7 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
+* Marked AppAttach cmdlets as preview
 
 ## Version 4.2.0
 * Added cmdlets:
