@@ -59,7 +59,7 @@ namespace Microsoft.Azure.Commands.Network
                 }
 
                 // Execute the PUT NetworkManagerSecurityAdminRule call
-                var adminRuleResponse = this.NetworkManagerSecurityAdminRuleOperationClient.CreateOrUpdate(adminRuleModel, this.InputObject.ResourceGroupName, this.InputObject.NetworkManagerName, this.InputObject.SecurityAdminConfigurationName, this.InputObject.RuleCollectionName, this.InputObject.Name);
+                var adminRuleResponse = this.NetworkManagerSecurityAdminRuleOperationClient.CreateOrUpdate(this.InputObject.ResourceGroupName, this.InputObject.NetworkManagerName, this.InputObject.SecurityAdminConfigurationName, this.InputObject.RuleCollectionName, this.InputObject.Name, adminRuleModel);
                 var psAdminRule = this.ToPSSecurityAdminRule(adminRuleResponse);
                 WriteObject(psAdminRule);
             }
