@@ -1,22 +1,21 @@
 {
-  "resourceType": "applicationGroups/desktops",
+  "resourceType": "appAttachPackages",
   "apiVersion": "2023-10-04-preview",
   "learnMore": {
     "url": "https://learn.microsoft.com/powershell/module/az.desktopvirtualization"
   },
   "commands": [
     {
-      "name": "Get-AzWvdDesktop",
-      "description": "Get a desktop.",
-      "path": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DesktopVirtualization/applicationGroups/{applicationGroupName}/desktops/{desktopName}",
+      "name": "Get-AzWvdAppAttachPackage",
+      "description": "Get an app attach package.",
+      "path": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DesktopVirtualization/appAttachPackages/{appAttachPackageName}",
       "help": {
         "learnMore": {
-          "url": "https://learn.microsoft.com/powershell/module/az.desktopvirtualization/get-azwvddesktop"
+          "url": "https://learn.microsoft.com/powershell/module/az.desktopvirtualization/get-azwvdappattachpackage"
         },
         "parameterSets": [
           {
             "parameters": [
-              "-ApplicationGroupName <String>",
               "-Name <String>",
               "-ResourceGroupName <String>",
               "[-SubscriptionId <String[]>]"
@@ -26,15 +25,11 @@
       },
       "examples": [
         {
-          "description": "Get a desktop.",
+          "description": "Get an app attach package.",
           "parameters": [
             {
-              "name": "-ApplicationGroupName",
-              "value": "[Path.applicationGroupName]"
-            },
-            {
               "name": "-Name",
-              "value": "[Path.desktopName]"
+              "value": "[Path.appAttachPackageName]"
             },
             {
               "name": "-ResourceGroupName",

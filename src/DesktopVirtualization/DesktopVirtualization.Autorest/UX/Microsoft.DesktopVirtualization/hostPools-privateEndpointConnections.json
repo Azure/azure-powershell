@@ -1,23 +1,23 @@
 {
-  "resourceType": "hostPools/msixPackages",
+  "resourceType": "hostPools/privateEndpointConnections",
   "apiVersion": "2023-10-04-preview",
   "learnMore": {
     "url": "https://learn.microsoft.com/powershell/module/az.desktopvirtualization"
   },
   "commands": [
     {
-      "name": "Get-AzWvdMsixPackage",
-      "description": "Get a msixpackage.",
-      "path": "/subscriptions/{subscriptionId}/resourcegroups/{resourceGroupName}/providers/Microsoft.DesktopVirtualization/hostPools/{hostPoolName}/msixPackages/{msixPackageFullName}",
+      "name": "Get-AzWvdPrivateEndpointConnection",
+      "description": "Get a private endpoint connection.",
+      "path": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DesktopVirtualization/hostPools/{hostPoolName}/privateEndpointConnections/{privateEndpointConnectionName}",
       "help": {
         "learnMore": {
-          "url": "https://learn.microsoft.com/powershell/module/az.desktopvirtualization/get-azwvdmsixpackage"
+          "url": "https://learn.microsoft.com/powershell/module/az.desktopvirtualization/get-azwvdprivateendpointconnection"
         },
         "parameterSets": [
           {
             "parameters": [
-              "-FullName <String>",
               "-HostPoolName <String>",
+              "-Name <String>",
               "-ResourceGroupName <String>",
               "[-SubscriptionId <String[]>]"
             ]
@@ -26,15 +26,15 @@
       },
       "examples": [
         {
-          "description": "Get a msixpackage.",
+          "description": "Get a private endpoint connection.",
           "parameters": [
-            {
-              "name": "-FullName",
-              "value": "[Path.msixPackageFullName]"
-            },
             {
               "name": "-HostPoolName",
               "value": "[Path.hostPoolName]"
+            },
+            {
+              "name": "-Name",
+              "value": "[Path.privateEndpointConnectionName]"
             },
             {
               "name": "-ResourceGroupName",
@@ -49,18 +49,18 @@
       ]
     },
     {
-      "name": "Remove-AzWvdMsixPackage",
-      "description": "Remove an MSIX Package.",
-      "path": "/subscriptions/{subscriptionId}/resourcegroups/{resourceGroupName}/providers/Microsoft.DesktopVirtualization/hostPools/{hostPoolName}/msixPackages/{msixPackageFullName}",
+      "name": "Remove-AzWvdPrivateEndpointConnection",
+      "description": "Remove a connection.",
+      "path": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DesktopVirtualization/hostPools/{hostPoolName}/privateEndpointConnections/{privateEndpointConnectionName}",
       "help": {
         "learnMore": {
-          "url": "https://learn.microsoft.com/powershell/module/az.desktopvirtualization/remove-azwvdmsixpackage"
+          "url": "https://learn.microsoft.com/powershell/module/az.desktopvirtualization/remove-azwvdprivateendpointconnection"
         },
         "parameterSets": [
           {
             "parameters": [
-              "-FullName <String>",
               "-HostPoolName <String>",
+              "-Name <String>",
               "-ResourceGroupName <String>",
               "[-SubscriptionId <String>]"
             ]
@@ -69,15 +69,15 @@
       },
       "examples": [
         {
-          "description": "Remove an MSIX Package.",
+          "description": "Remove a connection.",
           "parameters": [
-            {
-              "name": "-FullName",
-              "value": "[Path.msixPackageFullName]"
-            },
             {
               "name": "-HostPoolName",
               "value": "[Path.hostPoolName]"
+            },
+            {
+              "name": "-Name",
+              "value": "[Path.privateEndpointConnectionName]"
             },
             {
               "name": "-ResourceGroupName",
