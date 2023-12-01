@@ -49,7 +49,7 @@ function Get-NonExceptionSdkRecord{
     $exceptionPaths = "$PSScriptRoot\..\..\..\tools\StaticAnalysis\Exceptions"
     $errors = @()
     foreach($record in $records){    
-        $needAdd = true    
+        $needAdd = $true    
         $exceptionPath = Join-Path -Path $exceptionPaths -ChildPath (EnsureModuleName($record.Module)) -AdditionalChildPath "GeneratedSdkIssues.csv"
         if(Test-Path -Path $exceptionPath){
             $exceptionContents = Import-Csv -Path $exceptionPath
