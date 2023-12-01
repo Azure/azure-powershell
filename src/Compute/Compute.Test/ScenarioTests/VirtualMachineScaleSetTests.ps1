@@ -5298,8 +5298,8 @@ function Test-VirtualMachineScaleSetIsPresentRemovedTests
     try
     {
         # Common
-        #$rgname = "adsandtest14";
-        #$loc = "eastus";
+        $rgname = "adsandtest16";
+        $loc = "eastus";
         New-AzResourceGroup -Name $rgname -Location $loc -Force;
 
         # New VMSS Parameters
@@ -5307,8 +5307,8 @@ function Test-VirtualMachineScaleSetIsPresentRemovedTests
         $domainNameLabel = "d" + $rgname;
         $vmSize = "Standard_D2s_v3";
         
-        $user = Get-ComputeTestResourceName;
-        $password = Get-PasswordForVM;
+        $user = "admin01";#Get-ComputeTestResourceName;
+        $password = "TEsting1234567";# Get-PasswordForVM;
         $securePassword = $password | ConvertTo-SecureString -AsPlainText -Force;
         $cred = New-Object System.Management.Automation.PSCredential ($user, $securePassword);
 
@@ -5344,8 +5344,8 @@ function Test-VirtualMachineScaleSetIsPresentRemovedTests
         # SkipExtensionsOnOverprovisionedVMs true
         $vmssName4 = "vs4" + $rgname;
         $domainNameLabel = "d4" + $rgname;
-        $vmss = New-AzVmss -Name $vmssname4 -Location $loc -Credential $cred -DomainNameLabel $domainNameLabel4 `
-                   -SkipExtensionsOnOverprovisionedVMs;
+        $loc = "westus2";
+        $vmss = New-AzVmss -Name $vmssname4 -Location $loc -Credential $cred -DomainNameLabel $domainNameLabel4 -SkipExtensionsOnOverprovisionedVMs;
         Assert-True { $vmss.DoNotRunExtensionsOnOverprovisionedVMs };
         # SkipExtensionsOnOverprovisionedVMs null
         $vmssName5 = "vs5" + $rgname;
