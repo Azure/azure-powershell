@@ -7266,3 +7266,81 @@ function Test-VMDefaultsToTrustedLaunchWithNullEncryptionAtHost
         Clean-ResourceGroup $rgname;
     }
 }
+
+<#
+.SYNOPSIS
+Test Virtual Machines default to SecurityType = TrustedLaunch.
+Other necessary defaults also occur for TL support.
+EncryptionAtHost (a feature requiring a feature flag) must be null.
+#>
+<#
+.SYNOPSIS
+Test EncryptionAtHost Virtual Machine
+#>
+function Test-IsPresentRemovedVMScenarios
+{
+    # Setup
+    $rgname = Get-ComputeTestResourceName
+
+    try
+    {
+        $rgname = "adsandt8";
+        $loc = "eastus";#Get-ComputeVMLocation;
+        New-AzResourceGroup -Name $rgname -Location $loc -Force;
+
+        # VM Profile & Hardware
+        $vmsize = 'Standard_DS2_v2';
+        $vmname = 'vm' + $rgname;
+        [string]$domainNameLabel = "d" + $rgname;
+
+        $user = "admin01";#Get-ComputeTestResourceName;
+        $password = "Testing1234567";#Get-PasswordForVM;
+        $securePassword = $password | ConvertTo-SecureString -AsPlainText -Force;  
+        $cred = New-Object System.Management.Automation.PSCredential ($user, $securePassword);
+        $computerName = 'test';
+        $stnd = "Standard";
+
+        New-AzVM -ResourceGroupName $rgname -Name $vmname -Credential $cred -DomainNameLabel $domainNameLabel -EncryptionAtHost;
+
+        # Get VM
+        $vm = Get-AzVM -ResourceGroupName $rgname -Name $vmname;
+        Assert-AreEqual True $vm.SecurityProfile.encryptionAtHost;
+        Assert-ThrowsContains { Update-AzVM -ResourceGroupName $rgname -VM $vm -EncryptionAtHost $false; } "can be updated only when VM is in deallocated state"
+        
+        #update vm with encryptionathost false
+        Stop-AzVM -ResourceGroupName $rgname -Name $vmname -Force;
+        Update-AzVM -ResourceGroupName $rgname -VM $vm -EncryptionAtHost $false;
+        $vm = Get-AzVM -ResourceGroupName $rgname -Name $vmname;
+        Assert-AreEqual $false $vm.SecurityProfile.encryptionAtHost;
+        
+        #update vm with encryptionathost false
+        Update-AzVM -ResourceGroupName $rgname -VM $vm -EncryptionAtHost $true;
+        $vm = Get-AzVM -ResourceGroupName $rgname -Name $vmname;
+        Assert-AreEqual $true $vm.SecurityProfile.encryptionAtHost;
+
+        # EncryptionAtHost Null Check
+        $vmname2 = $vmname + "2";
+        $domainNameLabel2 = $domainNameLabel + "2";
+        $vm = New-AzVM -ResourceGroupName $rgname -Name $vmname2 -Credential $cred -DomainNameLabel $domainNameLabel2;
+        $vm = Get-AzVM -ResourceGroupName $rgname -Name $vmname2;
+        Assert-AreEqual $null $vm.SecurityProfile.encryptionathost;
+
+        # SystemAssignedIdentity 
+        $vmname3 = $vmname + "3";
+        $domainNameLabel3 = $domainNameLabel + "3";
+        $vm = New-AzVM -ResourceGroupName $rgname -Name $vmname3 -Credential $cred -DomainNameLabel $domainNameLabel3 -SystemAssignedIdentity;
+        $vm = Get-AzVM -ResourceGroupName $rgname -Name $vmname3;
+        Assert-AreEqual "SystemAssigned" $vm.Identity.Type;
+        # SystemAssignedIdentity false Check
+        $vmname4 = $vmname + "4";
+        $domainNameLabel4 = $domainNameLabel + "4";
+        $vm = New-AzVM -ResourceGroupName $rgname -Name $vmname4 -Credential $cred -DomainNameLabel $domainNameLabel4 -SystemAssignedIdentity:$false;
+        $vm = Get-AzVM -ResourceGroupName $rgname -Name $vmname4;
+        Assert-Null $vm.Identity;
+    }
+    finally
+    {
+        # Cleanup
+        Clean-ResourceGroup $rgname
+    }
+}
