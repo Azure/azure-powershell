@@ -160,11 +160,18 @@
 
   <Target Name="BuildNormalModules">
     <!-- https://github.com/dotnet/cli/issues/6295#issuecomment-346973582 -->
-    <Exec Command="$(PowerShellCoreCommandPrefix) &quot;.\tools\BuildScripts\BuildModules.ps1 -RepoRoot $(RepoRoot) -Configuration $(Configuration) -TestsToRun $(TestsToRun) -CoreTests $(CoreTests) -RepoArtifacts $(RepoArtifacts) &quot;" Condition="$(PullRequestNumber) == '' AND $(TargetModule) == '' AND $(ModifiedModuleBuild) == 'false'"/>
-    <Exec Command="$(PowerShellCoreCommandPrefix) &quot;.\tools\BuildScripts\BuildModules.ps1 -RepoRoot $(RepoRoot) -Configuration $(Configuration) -TestsToRun $(TestsToRun) -CoreTests $(CoreTests) -RepoArtifacts $(RepoArtifacts) -BuildCsprojList '@(BuildCsprojList)' -TestCsprojList '@(TestCsprojList)'&quot;" Condition="$(PullRequestNumber) != ''"/>
-    <Exec Command="$(PowerShellCoreCommandPrefix) &quot;.\tools\BuildScripts\BuildModules.ps1 -RepoRoot $(RepoRoot) -Configuration $(Configuration) -TestsToRun $(TestsToRun) -CoreTests $(CoreTests) -RepoArtifacts $(RepoArtifacts) -ModifiedModuleBuild $(ModifiedModuleBuild) &quot;"  Condition="$(ModifiedModuleBuild) != 'false'"/>
-    <Exec Command="$(PowerShellCoreCommandPrefix) &quot;.\tools\BuildScripts\BuildModules.ps1 -RepoRoot $(RepoRoot) -Configuration $(Configuration) -TestsToRun $(TestsToRun) -CoreTests $(CoreTests) -RepoArtifacts $(RepoArtifacts) -TargetModule $(TargetModule)&quot;" Condition="$(TargetModule) != ''"/>
-    
+    <Exec Condition="$(PullRequestNumber) == '' AND $(TargetModule) == '' AND $(ModifiedModuleBuild) == 'false'"
+      Command="$(PowerShellCoreCommandPrefix) &quot;.\tools\BuildScripts\BuildModules.ps1 -RepoRoot $(RepoRoot) -Configuration $(Configuration) -TestsToRun $(TestsToRun) -CoreTests $(CoreTests) -RepoArtifacts $(RepoArtifacts) &quot;"
+    />
+    <Exec Condition="$(PullRequestNumber) != ''"
+      Command="$(PowerShellCoreCommandPrefix) &quot;.\tools\BuildScripts\BuildModules.ps1 -RepoRoot $(RepoRoot) -Configuration $(Configuration) -TestsToRun $(TestsToRun) -CoreTests $(CoreTests) -RepoArtifacts $(RepoArtifacts) -BuildCsprojList '@(BuildCsprojList)' -TestCsprojList '@(TestCsprojList)'&quot;"
+    />
+    <Exec Condition="$(ModifiedModuleBuild) != 'false'"
+      Command="$(PowerShellCoreCommandPrefix) &quot;.\tools\BuildScripts\BuildModules.ps1 -RepoRoot $(RepoRoot) -Configuration $(Configuration) -TestsToRun $(TestsToRun) -CoreTests $(CoreTests) -RepoArtifacts $(RepoArtifacts) -ModifiedModuleBuild $(ModifiedModuleBuild) &quot;"
+    />
+    <Exec Condition="$(TargetModule) != ''"
+      Command="$(PowerShellCoreCommandPrefix) &quot;.\tools\BuildScripts\BuildModules.ps1 -RepoRoot $(RepoRoot) -Configuration $(Configuration) -TestsToRun $(TestsToRun) -CoreTests $(CoreTests) -RepoArtifacts $(RepoArtifacts) -TargetModule $(TargetModule)&quot;"
+    />
     <PropertyGroup>
       <BuildAction Condition="'$(Configuration)' != 'Release'">build</BuildAction>
       <BuildAction Condition="'$(Configuration)' == 'Release'">publish</BuildAction>
