@@ -7281,20 +7281,19 @@ function Test-IsPresentRemovedVMScenarios
 {
     # Setup
     $rgname = Get-ComputeTestResourceName
+    $loc = Get-ComputeVMLocation;
 
     try
     {
-        $rgname = "adsandt8";
-        $loc = "eastus";#Get-ComputeVMLocation;
         New-AzResourceGroup -Name $rgname -Location $loc -Force;
 
         # VM Profile & Hardware
         $vmsize = 'Standard_DS2_v2';
         $vmname = 'vm' + $rgname;
-        [string]$domainNameLabel = "d" + $rgname;
+        $domainNameLabel = "d" + $rgname;
 
-        $user = "admin01";#Get-ComputeTestResourceName;
-        $password = "Testing1234567";#Get-PasswordForVM;
+        $user = Get-ComputeTestResourceName;
+        $password = Get-PasswordForVM;
         $securePassword = $password | ConvertTo-SecureString -AsPlainText -Force;  
         $cred = New-Object System.Management.Automation.PSCredential ($user, $securePassword);
         $computerName = 'test';

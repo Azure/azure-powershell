@@ -5284,3 +5284,78 @@ function Test-VirtualMachineScaleSetSecurityTypeAndFlexDefaults
         Clean-ResourceGroup $rgname;
     }
 }
+
+<#
+.SYNOPSIS
+Test Virtual Machine Scale Set test scenarios where IsPresent was removed from vmss creation. 
+#>
+function Test-VirtualMachineScaleSetIsPresentRemovedTests
+{
+    # Setup
+    $rgname = Get-ComputeTestResourceName;
+    $loc = Get-ComputeVMLocation;
+
+    try
+    {
+        # Common
+        #$rgname = "adsandtest14";
+        #$loc = "eastus";
+        New-AzResourceGroup -Name $rgname -Location $loc -Force;
+
+        # New VMSS Parameters
+        $vmssName1 = 'vmss1' + $rgname;
+        $domainNameLabel = "d" + $rgname;
+        $vmSize = "Standard_D2s_v3";
+        
+        $user = Get-ComputeTestResourceName;
+        $password = Get-PasswordForVM;
+        $securePassword = $password | ConvertTo-SecureString -AsPlainText -Force;
+        $cred = New-Object System.Management.Automation.PSCredential ($user, $securePassword);
+
+        ## $vmss = New-AzVmss -ResourceGroupName $rgname -Location $loc -VMScaleSetName $vmssName1 -Credential $cred `
+        ##        -DomainNameLabel $domainNameLabel -SinglePlacementGroup -UpgradePolicyMode "Manual";
+        # $vmssConfig = New-AzVmssConfig -Location $loc -UpgradePolicyMode 'Manual' -SinglePlacementGroup $true;
+        # $vmss = New-AzVmss -ResourceGroupName $rgname -VMScaleSetName $vmssName1 -VirtualMachineScaleSet $vmssConfig;
+
+        # Asserts 
+        # check SinglePlacementGroup
+        ## Assert-AreEqual $vmss.SinglePlacementGroup $true;
+        <#
+          "error": {
+            "details": [],
+            "code": "BasicLBNotSupportedWithNetworkInterfaceConfigurations",
+            "message": "Network Interfaces managed with Network Interface Configurations cannot 
+	        be be in the Backend Address Pools of Basic SKU Load Balancers."
+        #>
+
+        # EnableUltraSSD Test
+        $vmssName2 = "vs2" + $rgname;
+        $domainNameLabel = "d2" + $rgname;
+        $vmss = New-AzVmss -ResourceGroupName $rgname -Location $loc -VMScaleSetName $vmssName2 -Credential $cred `
+                -DomainNameLabel $domainNameLabel2 -Zone "1" -SecurityType "Standard" -EnableUltraSSD -VMSize $vmSize;
+        Assert-AreEqual $true $vmss.AdditionalCapabilities.UltraSSDEnabled;
+
+        $vmssName3 = "vs3" + $rgname;
+        $domainNameLabel = "d3" + $rgname;
+        $vmss = New-AzVmss -ResourceGroupName $rgname -Location $loc -VMScaleSetName $vmssName3 -Credential $cred `
+                -DomainNameLabel $domainNameLabel3 -Zone "1" -SecurityType "Standard" -VMSize $vmSize;
+        Assert-Null $vmss.AdditionalCapabilities.UltraSSDEnabled;
+
+        # SkipExtensionsOnOverprovisionedVMs true
+        $vmssName4 = "vs4" + $rgname;
+        $domainNameLabel = "d4" + $rgname;
+        $vmss = New-AzVmss -Name $vmssname4 -Location $loc -Credential $cred -DomainNameLabel $domainNameLabel4 `
+                   -SkipExtensionsOnOverprovisionedVMs;
+        Assert-True { $vmss.DoNotRunExtensionsOnOverprovisionedVMs };
+        # SkipExtensionsOnOverprovisionedVMs null
+        $vmssName5 = "vs5" + $rgname;
+        $domainNameLabel5 = "d5" + $rgname;
+        $vmss = New-AzVmss -Name $vmssname5 -Location $loc -Credential $cred -DomainNameLabel $domainNameLabel5;
+        Assert-Null $vmss.DoNotRunExtensionsOnOverprovisionedVMs;
+    }
+    finally
+    {
+        # Cleanup
+        Clean-ResourceGroup $rgname;
+    }
+}
