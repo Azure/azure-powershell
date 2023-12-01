@@ -159,7 +159,6 @@
   </Target>
 
   <Target Name="BuildNormalModules">
-    <!-- https://github.com/dotnet/cli/issues/6295#issuecomment-346973582 -->
     <Exec Condition="$(PullRequestNumber) == '' AND $(TargetModule) == '' AND $(ModifiedModuleBuild) == 'false'"
       Command="$(PowerShellCoreCommandPrefix) &quot;.\tools\BuildScripts\BuildModules.ps1 -RepoRoot $(RepoRoot) -Configuration $(Configuration) -TestsToRun $(TestsToRun) -CoreTests $(CoreTests) -RepoArtifacts $(RepoArtifacts) &quot;"
     />

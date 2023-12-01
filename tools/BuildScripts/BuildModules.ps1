@@ -23,69 +23,79 @@ function Include-CsprojFiles {
         [string]$Filter = "*.csproj"
 
     )
-    $excludeItems = $Exclude -split ';' | Where-Object { $_ -ne '' } | ForEach-Object {
-        try {
-            (Resolve-Path $_ -ErrorAction Stop).Path
-        } catch {
-            Write-Warning "Cannot find path: $_"
-            $_
+    $excludeItems = @()
+    foreach ($item in ($Exclude -split ';')) {
+        if (-not $item) { continue }
+        if (Test-Path -Path $item -PathType Leaf) {
+            $excludeItems += Resolve-Path -Path $item
+        }
+        else {
+            try {
+                $excludeItems += Get-ChildItem -Path $Path -Filter $item -Recurse
+            } catch {
+                Write-Warning "Cannot find path or pattern: $item"
+            }
         }
     }
-    
-    $includeItems = $Include -split ';' | Where-Object { $_ -ne '' } | ForEach-Object {
-        try {
-            (Resolve-Path $_ -ErrorAction Stop).Path
-        } catch {
-            Write-Warning "Cannot find path: $_"
-            $_
+    $includeItems = @()
+    foreach ($item in ($Include -split ';')) {
+        if (-not $item) { continue }
+        if (Test-Path -Path $item -PathType Leaf) {
+            $includeItems += Resolve-Path -Path $item
+        }
+        else {
+            try {
+                $includeItems += Get-ChildItem -Path $Path -Filter $item -Recurse
+            } catch {
+                Write-Warning "Cannot find path or pattern: $item"
+            }
         }
     }
-    
     $allItems = Get-ChildItem -Path $Path -Filter $Filter -Recurse
-    $includedFiltered = $allItems | Where-Object { $includeItems -contains $_.FullName }
-    $finalFiltered = $includedFiltered | Where-Object { $excludeItems -notcontains $_.FullName}
-    $finalFiltered
+    if ($null -ne $includeItems -and $includeItems.Count -gt 0) {
+        $allItems = $allItems | Where-Object { $includeItems.Path -contains $_.FullName }
+    }
+    $allItems = $allItems | Where-Object { $excludeItems.Path -notcontains $_.FullName}
+    $allItems
+}
+
+function Add-Project {
+    param (
+        [string]$Path
+    )
+    $result = @()
+
+    if ($PSCmdlet.ParameterSetName -eq 'AllSet') {
+        $result += Include-CsprojFiles -Path $Path -Exclude "*.Test.csproj;Authenticators.csproj" -Filter "*.csproj"
+        if ($Configuration -ne 'Release') {
+            if ($TestsToRun -eq 'All') {
+                $result += Include-CsprojFiles -Path $Path -Filter "*.Test.csproj"
+            } elseif ($TestsToRun -eq 'NonCore') {
+                $result += Include-CsprojFiles -Path $Path -Exclude $CoreTests -Filter "*.Test.csproj"
+            } elseif ($TestsToRun -eq 'Core') {
+                $result += Include-CsprojFiles -Path $Path -Include $CoreTests
+            }
+        }
+
+        if ($env:OS -eq "Windows_NT") {
+            $result += Include-CsprojFiles -Path $Path -Filter "Authenticators.csproj"
+        }
+    }   
+    Write-Output $result
+    $result
 }
 
 $csprojFiles = @()
 
 if ($PSCmdlet.ParameterSetName -eq 'AllSet') {
-    $csprojFiles += Include-CsprojFiles -Path "$RepoRoot/src/" -Exclude "*.Test.csproj;Authenticators.csproj" -Filter "*.csproj"
-        if ($Configuration -ne 'Release') {
-            if ($TestsToRun -eq 'All') {
-                $csprojFiles += Include-CsprojFiles -Path "$RepoRoot/src/" -Filter "*.Test.csproj"
-            } elseif ($TestsToRun -eq 'NonCore') {
-                $csprojFiles += Include-CsprojFiles -Path "$RepoRoot/src/" -Exclude $CoreTests -Filter "*.Test.csproj"
-            } elseif ($TestsToRun -eq 'Core') {
-                $csprojFiles += Include-CsprojFiles -Path "$RepoRoot/src/" -Include $CoreTests
-            }
-        }
-
-    if ($env:OS -eq "Windows_NT") {
-        $csprojFiles += Include-CsprojFiles -Path "$RepoRoot/src" -Filter "Authenticators.csproj"
-    }
-
+    $csprojFiles += Add-Project -Path "$RepoRoot/src/"
 }
 
 if ($PSCmdlet.ParameterSetName -eq 'ModifiedBuildSet' -or $PSCmdlet.ParameterSetName -eq 'TargetModuleSet') {
     .$RepoRoot\tools\BuildScripts\CheckChangeLogs.ps1 -outputFile $RepoArtifacts/ModifiedModule.txt -rootPath $RepoRoot -TargetModuleList $TargetModule
     $ModuleList = Get-Content $RepoArtifacts/ModifiedModule.txt
     foreach ($module in $ModuleList) {
-        $modulePath = "$RepoRoot/src/$module"
-        $csprojFiles += Include-CsprojFiles -Path "$modulePath" -Exclude "*.Test.csproj;Authenticators.csproj" -Filter "*.csproj"
-        if ($Configuration -ne 'Release') {
-            if ($TestsToRun -eq 'All') {
-                $csprojFiles += Include-CsprojFiles -Path $modulePath -Filter "*.Test.csproj"
-            } elseif ($TestsToRun -eq 'NonCore') {
-                $csprojFiles += Include-CsprojFiles -Path $modulePath -Exclude $CoreTests -Filter "*.Test.csproj"
-            } elseif ($TestsToRun -eq 'Core') {
-                $csprojFiles += Include-CsprojFiles -Path $modulePath -Include $CoreTests
-            }
-        }
-
-        if ($env:OS -eq "Windows_NT") {
-            $csprojFiles += Include-CsprojFiles -Path "$modulePath" -Filter "Authenticators.csproj"
-        }
+        $csprojFiles += Add-Project -Path "$RepoRoot/src/$module"
     }
 }
 if ($PSCmdlet.ParameterSetName -eq 'PullRequestSet') {
