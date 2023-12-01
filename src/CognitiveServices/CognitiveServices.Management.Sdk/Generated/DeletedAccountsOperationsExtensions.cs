@@ -58,7 +58,7 @@ namespace Microsoft.Azure.Management.CognitiveServices
             }
         }
         /// <summary>
-        /// Deletes a Cognitive Services account from the resource group. 
+        /// Deletes a Cognitive Services account from the resource group.
         /// </summary>
         /// <param name='operations'>
         /// The operations group for this extension method.
@@ -78,7 +78,7 @@ namespace Microsoft.Azure.Management.CognitiveServices
         }
 
         /// <summary>
-        /// Deletes a Cognitive Services account from the resource group. 
+        /// Deletes a Cognitive Services account from the resource group.
         /// </summary>
         /// <param name='operations'>
         /// The operations group for this extension method.
@@ -127,7 +127,7 @@ namespace Microsoft.Azure.Management.CognitiveServices
             }
         }
         /// <summary>
-        /// Deletes a Cognitive Services account from the resource group. 
+        /// Deletes a Cognitive Services account from the resource group.
         /// </summary>
         /// <param name='operations'>
         /// The operations group for this extension method.
@@ -147,7 +147,7 @@ namespace Microsoft.Azure.Management.CognitiveServices
         }
 
         /// <summary>
-        /// Deletes a Cognitive Services account from the resource group. 
+        /// Deletes a Cognitive Services account from the resource group.
         /// </summary>
         /// <param name='operations'>
         /// The operations group for this extension method.

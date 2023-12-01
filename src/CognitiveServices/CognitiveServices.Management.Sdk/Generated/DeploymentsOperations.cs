@@ -277,7 +277,8 @@ namespace Microsoft.Azure.Management.CognitiveServices
 
         }
         /// <summary>
-        /// Gets the specified deployments associated with the Cognitive Services account.
+        /// Gets the specified deployments associated with the Cognitive Services
+        /// account.
         /// </summary>
         /// <param name='resourceGroupName'>
         /// The name of the resource group. The name is case insensitive.
@@ -609,7 +610,8 @@ namespace Microsoft.Azure.Management.CognitiveServices
         }
 
         /// <summary>
-        /// Lists the specified deployments skus associated with the Cognitive Services account.
+        /// Lists the specified deployments skus associated with the Cognitive Services
+        /// account.
         /// </summary>
         /// <param name='resourceGroupName'>
         /// The name of the resource group. The name is case insensitive.
@@ -857,7 +859,8 @@ namespace Microsoft.Azure.Management.CognitiveServices
 
         }
         /// <summary>
-        /// Update the state of specified deployments associated with the Cognitive Services account.
+        /// Update the state of specified deployments associated with the Cognitive
+        /// Services account.
         /// </summary>
         /// <param name='resourceGroupName'>
         /// The name of the resource group. The name is case insensitive.
@@ -1141,7 +1144,8 @@ namespace Microsoft.Azure.Management.CognitiveServices
 
         }
         /// <summary>
-        /// Update specified deployments associated with the Cognitive Services account.
+        /// Update specified deployments associated with the Cognitive Services
+        /// account.
         /// </summary>
         /// <param name='resourceGroupName'>
         /// The name of the resource group. The name is case insensitive.
@@ -1421,7 +1425,8 @@ namespace Microsoft.Azure.Management.CognitiveServices
 
         }
         /// <summary>
-        /// Deletes the specified deployment associated with the Cognitive Services account.
+        /// Deletes the specified deployment associated with the Cognitive Services
+        /// account.
         /// </summary>
         /// <param name='resourceGroupName'>
         /// The name of the resource group. The name is case insensitive.
@@ -1825,7 +1830,8 @@ namespace Microsoft.Azure.Management.CognitiveServices
 
         }
         /// <summary>
-        /// Lists the specified deployments skus associated with the Cognitive Services account.
+        /// Lists the specified deployments skus associated with the Cognitive Services
+        /// account.
         /// </summary>
         /// <param name='nextPageLink'>
         /// The NextLink from the previous successful call to List operation.

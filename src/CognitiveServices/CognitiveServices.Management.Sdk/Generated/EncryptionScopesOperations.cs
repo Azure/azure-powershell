@@ -277,7 +277,8 @@ namespace Microsoft.Azure.Management.CognitiveServices
 
         }
         /// <summary>
-        /// Gets the specified EncryptionScope associated with the Cognitive Services account.
+        /// Gets the specified EncryptionScope associated with the Cognitive Services
+        /// account.
         /// </summary>
         /// <param name='resourceGroupName'>
         /// The name of the resource group. The name is case insensitive.
@@ -286,7 +287,8 @@ namespace Microsoft.Azure.Management.CognitiveServices
         /// The name of Cognitive Services account.
         /// </param>
         /// <param name='encryptionScopeName'>
-        /// The name of the encryptionScope associated with the Cognitive Services Account
+        /// The name of the encryptionScope associated with the Cognitive Services
+        /// Account
         /// </param>
         /// <param name='customHeaders'>
         /// Headers that will be added to request.
@@ -531,7 +533,8 @@ namespace Microsoft.Azure.Management.CognitiveServices
 
         }
         /// <summary>
-        /// Update the state of specified encryptionScope associated with the Cognitive Services account.
+        /// Update the state of specified encryptionScope associated with the Cognitive
+        /// Services account.
         /// </summary>
         /// <param name='resourceGroupName'>
         /// The name of the resource group. The name is case insensitive.
@@ -540,7 +543,8 @@ namespace Microsoft.Azure.Management.CognitiveServices
         /// The name of Cognitive Services account.
         /// </param>
         /// <param name='encryptionScopeName'>
-        /// The name of the encryptionScope associated with the Cognitive Services Account
+        /// The name of the encryptionScope associated with the Cognitive Services
+        /// Account
         /// </param>
         /// <param name='tags'>
         /// Resource tags.
@@ -831,7 +835,8 @@ namespace Microsoft.Azure.Management.CognitiveServices
         /// The name of Cognitive Services account.
         /// </param>
         /// <param name='encryptionScopeName'>
-        /// The name of the encryptionScope associated with the Cognitive Services Account
+        /// The name of the encryptionScope associated with the Cognitive Services
+        /// Account
         /// </param>
         /// <param name='customHeaders'>
         /// Headers that will be added to request.
@@ -847,7 +852,8 @@ namespace Microsoft.Azure.Management.CognitiveServices
         }
 
         /// <summary>
-        /// Deletes the specified encryptionScope associated with the Cognitive Services account.
+        /// Deletes the specified encryptionScope associated with the Cognitive
+        /// Services account.
         /// </summary>
         /// <param name='resourceGroupName'>
         /// The name of the resource group. The name is case insensitive.
@@ -856,7 +862,8 @@ namespace Microsoft.Azure.Management.CognitiveServices
         /// The name of Cognitive Services account.
         /// </param>
         /// <param name='encryptionScopeName'>
-        /// The name of the encryptionScope associated with the Cognitive Services Account
+        /// The name of the encryptionScope associated with the Cognitive Services
+        /// Account
         /// </param>
         /// <param name='customHeaders'>
         /// Headers that will be added to request.

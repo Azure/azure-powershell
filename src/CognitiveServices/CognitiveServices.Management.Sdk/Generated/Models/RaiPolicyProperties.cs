@@ -25,10 +25,10 @@ namespace Microsoft.Azure.Management.CognitiveServices.Models
         /// </summary>
 
         /// <param name="policyType">Content Filters policy type.
-        /// Possible values include: 'UserManaged', 'SystemManaged'</param>
+        /// Possible values include: &#39;UserManaged&#39;, &#39;SystemManaged&#39;</param>
 
         /// <param name="mode">Content Filters mode.
-        /// Possible values include: 'Default', 'Deferred', 'Blocking'</param>
+        /// Possible values include: &#39;Default&#39;, &#39;Deferred&#39;, &#39;Blocking&#39;</param>
 
         /// <param name="basePolicyName">Name of the base Content Filters.
         /// </param>
