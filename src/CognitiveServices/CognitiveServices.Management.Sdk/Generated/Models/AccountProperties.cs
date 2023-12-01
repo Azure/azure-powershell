@@ -62,6 +62,9 @@ namespace Microsoft.Azure.Management.CognitiveServices.Models
         /// <param name="userOwnedStorage">The storage accounts for this resource.
         /// </param>
 
+        /// <param name="amlWorkspace">The user owned AML workspace properties.
+        /// </param>
+
         /// <param name="privateEndpointConnections">The private endpoint connection associated with the Cognitive Services
         /// account.
         /// </param>
@@ -113,7 +116,7 @@ namespace Microsoft.Azure.Management.CognitiveServices.Models
 
         /// <param name="abusePenalty">The abuse penalty.
         /// </param>
-        public AccountProperties(string provisioningState = default(string), string endpoint = default(string), string internalId = default(string), System.Collections.Generic.IList<SkuCapability> capabilities = default(System.Collections.Generic.IList<SkuCapability>), bool? isMigrated = default(bool?), string migrationToken = default(string), SkuChangeInfo skuChangeInfo = default(SkuChangeInfo), string customSubDomainName = default(string), NetworkRuleSet networkAcls = default(NetworkRuleSet), Encryption encryption = default(Encryption), System.Collections.Generic.IList<UserOwnedStorage> userOwnedStorage = default(System.Collections.Generic.IList<UserOwnedStorage>), System.Collections.Generic.IList<PrivateEndpointConnection> privateEndpointConnections = default(System.Collections.Generic.IList<PrivateEndpointConnection>), string publicNetworkAccess = default(string), ApiProperties apiProperties = default(ApiProperties), string dateCreated = default(string), CallRateLimit callRateLimit = default(CallRateLimit), bool? dynamicThrottlingEnabled = default(bool?), QuotaLimit quotaLimit = default(QuotaLimit), bool? restrictOutboundNetworkAccess = default(bool?), System.Collections.Generic.IList<string> allowedFqdnList = default(System.Collections.Generic.IList<string>), bool? disableLocalAuth = default(bool?), System.Collections.Generic.IDictionary<string, string> endpoints = default(System.Collections.Generic.IDictionary<string, string>), bool? restore = default(bool?), string deletionDate = default(string), string scheduledPurgeDate = default(string), MultiRegionSettings locations = default(MultiRegionSettings), System.Collections.Generic.IList<CommitmentPlanAssociation> commitmentPlanAssociations = default(System.Collections.Generic.IList<CommitmentPlanAssociation>), AbusePenalty abusePenalty = default(AbusePenalty))
+        public AccountProperties(string provisioningState = default(string), string endpoint = default(string), string internalId = default(string), System.Collections.Generic.IList<SkuCapability> capabilities = default(System.Collections.Generic.IList<SkuCapability>), bool? isMigrated = default(bool?), string migrationToken = default(string), SkuChangeInfo skuChangeInfo = default(SkuChangeInfo), string customSubDomainName = default(string), NetworkRuleSet networkAcls = default(NetworkRuleSet), Encryption encryption = default(Encryption), System.Collections.Generic.IList<UserOwnedStorage> userOwnedStorage = default(System.Collections.Generic.IList<UserOwnedStorage>), UserOwnedAmlWorkspace amlWorkspace = default(UserOwnedAmlWorkspace), System.Collections.Generic.IList<PrivateEndpointConnection> privateEndpointConnections = default(System.Collections.Generic.IList<PrivateEndpointConnection>), string publicNetworkAccess = default(string), ApiProperties apiProperties = default(ApiProperties), string dateCreated = default(string), CallRateLimit callRateLimit = default(CallRateLimit), bool? dynamicThrottlingEnabled = default(bool?), QuotaLimit quotaLimit = default(QuotaLimit), bool? restrictOutboundNetworkAccess = default(bool?), System.Collections.Generic.IList<string> allowedFqdnList = default(System.Collections.Generic.IList<string>), bool? disableLocalAuth = default(bool?), System.Collections.Generic.IDictionary<string, string> endpoints = default(System.Collections.Generic.IDictionary<string, string>), bool? restore = default(bool?), string deletionDate = default(string), string scheduledPurgeDate = default(string), MultiRegionSettings locations = default(MultiRegionSettings), System.Collections.Generic.IList<CommitmentPlanAssociation> commitmentPlanAssociations = default(System.Collections.Generic.IList<CommitmentPlanAssociation>), AbusePenalty abusePenalty = default(AbusePenalty))
 
         {
             this.ProvisioningState = provisioningState;
@@ -127,6 +130,7 @@ namespace Microsoft.Azure.Management.CognitiveServices.Models
             this.NetworkAcls = networkAcls;
             this.Encryption = encryption;
             this.UserOwnedStorage = userOwnedStorage;
+            this.AmlWorkspace = amlWorkspace;
             this.PrivateEndpointConnections = privateEndpointConnections;
             this.PublicNetworkAccess = publicNetworkAccess;
             this.ApiProperties = apiProperties;
@@ -222,6 +226,12 @@ namespace Microsoft.Azure.Management.CognitiveServices.Models
         /// </summary>
         [Newtonsoft.Json.JsonProperty(PropertyName = "userOwnedStorage")]
         public System.Collections.Generic.IList<UserOwnedStorage> UserOwnedStorage {get; set; }
+
+        /// <summary>
+        /// Gets or sets the user owned AML workspace properties.
+        /// </summary>
+        [Newtonsoft.Json.JsonProperty(PropertyName = "amlWorkspace")]
+        public UserOwnedAmlWorkspace AmlWorkspace {get; set; }
 
         /// <summary>
         /// Gets the private endpoint connection associated with the Cognitive Services
@@ -334,6 +344,7 @@ namespace Microsoft.Azure.Management.CognitiveServices.Models
         /// </exception>
         public virtual void Validate()
         {
+
 
 
 

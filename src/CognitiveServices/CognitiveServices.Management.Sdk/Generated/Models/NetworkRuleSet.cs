@@ -28,15 +28,19 @@ namespace Microsoft.Azure.Management.CognitiveServices.Models
         /// match. This is only used after the bypass property has been evaluated.
         /// Possible values include: 'Allow', 'Deny'</param>
 
+        /// <param name="bypass">Setting for trusted services.
+        /// Possible values include: 'None', 'AzureServices'</param>
+
         /// <param name="ipRules">The list of IP address rules.
         /// </param>
 
         /// <param name="virtualNetworkRules">The list of virtual network rules.
         /// </param>
-        public NetworkRuleSet(string defaultAction = default(string), System.Collections.Generic.IList<IpRule> ipRules = default(System.Collections.Generic.IList<IpRule>), System.Collections.Generic.IList<VirtualNetworkRule> virtualNetworkRules = default(System.Collections.Generic.IList<VirtualNetworkRule>))
+        public NetworkRuleSet(string defaultAction = default(string), string bypass = default(string), System.Collections.Generic.IList<IpRule> ipRules = default(System.Collections.Generic.IList<IpRule>), System.Collections.Generic.IList<VirtualNetworkRule> virtualNetworkRules = default(System.Collections.Generic.IList<VirtualNetworkRule>))
 
         {
             this.DefaultAction = defaultAction;
+            this.Bypass = bypass;
             this.IPRules = ipRules;
             this.VirtualNetworkRules = virtualNetworkRules;
             CustomInit();
@@ -55,6 +59,12 @@ namespace Microsoft.Azure.Management.CognitiveServices.Models
         /// </summary>
         [Newtonsoft.Json.JsonProperty(PropertyName = "defaultAction")]
         public string DefaultAction {get; set; }
+
+        /// <summary>
+        /// Gets or sets setting for trusted services. Possible values include: &#39;None&#39;, &#39;AzureServices&#39;
+        /// </summary>
+        [Newtonsoft.Json.JsonProperty(PropertyName = "bypass")]
+        public string Bypass {get; set; }
 
         /// <summary>
         /// Gets or sets the list of IP address rules.

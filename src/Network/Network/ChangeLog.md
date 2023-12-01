@@ -19,6 +19,7 @@
 --->
 
 ## Upcoming Release
+* Fixed a few minor issues
 
 ## Version 7.1.0
 * Added DefaultOutboundAccess parameter on subnet creation

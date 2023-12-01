@@ -13,6 +13,7 @@
 // ----------------------------------------------------------------------------------
 
 using Microsoft.Azure.Management.CognitiveServices.Models;
+using System;
 using System.Collections.Generic;
 using System.Management.Automation;
 
@@ -22,7 +23,7 @@ namespace Microsoft.Azure.Commands.Management.CognitiveServices
     /// Generate Cognitive Services Object by Type.
     /// Some commands need complex objects, this command is used to generate these objects with default parameters.
     /// </summary>
-    [Cmdlet("New", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "CognitiveServicesObject", SupportsShouldProcess = true), OutputType(typeof(DeploymentProperties), typeof(CommitmentPlanProperties), typeof(MultiRegionSettings), typeof(RegionSetting))]
+    [Cmdlet("New", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "CognitiveServicesObject", SupportsShouldProcess = true), OutputType(typeof(DeploymentProperties), typeof(CommitmentPlanProperties), typeof(MultiRegionSettings), typeof(RegionSetting), typeof(Sku), typeof(RaiPolicyProperties), typeof(RaiBlocklistProperties), typeof(RaiBlocklistItemProperties), typeof(RaiBlocklistConfig), typeof(RaiPolicyContentFilter), typeof(List<RaiBlocklistConfig>))]
     public class NewAzureCognitiveServicesObjectCommand : CognitiveServicesAccountBaseCmdlet
     {
         [Parameter(
@@ -31,9 +32,33 @@ namespace Microsoft.Azure.Commands.Management.CognitiveServices
                HelpMessage = "Cognitive Services Object Type.")]
         public CognitiveServicesObjectType Type { get; set; }
 
+        [Parameter(
+               Position = 1,
+               Mandatory = false,
+               HelpMessage = "Return the object as a List.")]
+        public SwitchParameter AsList { get; set; }
+
         public override void ExecuteCmdlet()
         {
             base.ExecuteCmdlet();
+
+            if (AsList.IsPresent)
+            {
+                switch (Type)
+                {
+                    case CognitiveServicesObjectType.RaiBlocklistConfig:
+                        {
+                            var obj = new List<RaiBlocklistConfig>();
+                            WriteObject(obj);
+                        }
+                        break;
+                    default:
+                        WriteError(new ErrorRecord(new Exception($"ObjectType {Type} not supported for -AsList parameter"), string.Empty, ErrorCategory.NotSpecified, null));
+                        break;
+                }
+
+                return;
+            }
 
             switch (Type)
             {
@@ -71,6 +96,39 @@ namespace Microsoft.Azure.Commands.Management.CognitiveServices
                         WriteObject(obj);
                     }
                     break;
+                case CognitiveServicesObjectType.RaiPolicyProperties:
+                    {
+                        var obj = new RaiPolicyProperties();
+                        obj.PromptBlocklists = new List<RaiBlocklistConfig>();
+                        obj.CompletionBlocklists = new List<RaiBlocklistConfig>();
+                        obj.ContentFilters = new List<RaiPolicyContentFilter>();
+                        WriteObject(obj);
+                    }
+                    break;
+                case CognitiveServicesObjectType.RaiBlocklistProperties:
+                    {
+                        var obj = new RaiBlocklistProperties();
+                        WriteObject(obj);
+                    }
+                    break;
+                case CognitiveServicesObjectType.RaiBlocklistItemProperties:
+                    {
+                        var obj = new RaiBlocklistItemProperties();
+                        WriteObject(obj);
+                    }
+                    break;
+                case CognitiveServicesObjectType.RaiBlocklistConfig:
+                    {
+                        var obj = new RaiBlocklistConfig();
+                        WriteObject(obj);
+                    }
+                    break;
+                case CognitiveServicesObjectType.RaiPolicyContentFilter:
+                    {
+                        var obj = new RaiPolicyContentFilter();
+                        WriteObject(obj);
+                    }
+                    break;
             }
         }
     }
@@ -81,6 +139,11 @@ namespace Microsoft.Azure.Commands.Management.CognitiveServices
         CommitmentPlanProperties,
         MultiRegionSettings,
         RegionSetting,
-        Sku
+        Sku,
+        RaiPolicyProperties,
+        RaiBlocklistProperties,
+        RaiBlocklistItemProperties,
+        RaiBlocklistConfig,
+        RaiPolicyContentFilter
     }
 }
