@@ -7,7 +7,7 @@
 // Changes may cause incorrect behavior and will be lost if the code is
 // regenerated.
 // </auto-generated>
-
+// unexpected changes
 namespace Microsoft.Azure.Management.Resources
 {
     using Microsoft.Rest;
