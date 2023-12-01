@@ -108,8 +108,9 @@ try {
                 Write-Host "Using autorest powershell v4:`nRe-generating SDK under Generated folder for $ModuleName..."
                 npx autorest
             }
-            elseif ([regex]::Matches($readMeContent, '--use:@microsoft.azure/autorest.csharp@2.3.90'))
+            elseif ([regex]::Matches($readMeContent, 'use:@microsoft.azure/autorest.csharp@2.3.90'))
             {
+                Write-Host "Do not support updating SDK using autorest csharp v3."
                 $ExceptionList += [GeneratedSdkIssue]@{
                     Module = $ModuleName;
                     Sdk = $_;
@@ -121,6 +122,7 @@ try {
             }
             else
             {
+                Write-Host "Do not find correct autorest version, please check Readme.md"
                 $ExceptionList += [GeneratedSdkIssue]@{
                     Module = $ModuleName;
                     Sdk = $_;
