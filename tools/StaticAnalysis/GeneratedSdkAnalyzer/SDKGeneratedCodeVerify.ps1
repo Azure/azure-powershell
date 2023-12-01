@@ -55,7 +55,7 @@ function Get-NonExceptionSdkRecord{
             $exceptionContents = Import-Csv -Path $exceptionPath
             foreach($exceptionContent in $exceptionContents) {
                 if($exceptionContent.Module -eq $record.Module -and $exceptionContent.Sdk -eq $record.Sdk -and $exceptionContent.Severity -eq $record.Severity -and $exceptionContent.ProblemId -eq $record.ProblemId -and $exceptionContent.Description -eq $record.Description){
-                    c = $false
+                    $needAdd = $false
                     break
                 }
             }
