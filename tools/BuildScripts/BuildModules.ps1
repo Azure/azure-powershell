@@ -69,26 +69,23 @@ function Include-CsprojFiles {
 function Add-Project {
     param (
         [string]$Path,
-        [string]$Configuration
+        [string]$Configuration = "Release"
     )
     $result = @()
-
-    if ($PSCmdlet.ParameterSetName -eq 'AllSet') {
-        $result += Include-CsprojFiles -Path $Path -Exclude "*.Test.csproj;Authenticators.csproj" -Filter "*.csproj"
-        if ($Configuration -ne 'Release') {
-            if ($TestsToRun -eq 'All') {
-                $result += Include-CsprojFiles -Path $Path -Filter "*.Test.csproj"
-            } elseif ($TestsToRun -eq 'NonCore') {
-                $result += Include-CsprojFiles -Path $Path -Exclude $CoreTests -Filter "*.Test.csproj"
-            } elseif ($TestsToRun -eq 'Core') {
-                $result += Include-CsprojFiles -Path $Path -Include $CoreTests
-            }
+    $result += Include-CsprojFiles -Path $Path -Exclude "*.Test.csproj;Authenticators.csproj" -Filter "*.csproj"
+    if ($Configuration -ne 'Release') {
+        if ($TestsToRun -eq 'All') {
+            $result += Include-CsprojFiles -Path $Path -Filter "*.Test.csproj"
+        } elseif ($TestsToRun -eq 'NonCore') {
+            $result += Include-CsprojFiles -Path $Path -Exclude $CoreTests -Filter "*.Test.csproj"
+        } elseif ($TestsToRun -eq 'Core') {
+            $result += Include-CsprojFiles -Path $Path -Include $CoreTests
         }
+    }
 
-        if ($env:OS -eq "Windows_NT") {
-            $result += Include-CsprojFiles -Path $Path -Filter "Authenticators.csproj"
-        }
-    }   
+    if ($env:OS -eq "Windows_NT") {
+        $result += Include-CsprojFiles -Path $Path -Filter "Authenticators.csproj"
+    }
     $result
 }
 
@@ -102,7 +99,7 @@ if ($PSCmdlet.ParameterSetName -eq 'ModifiedBuildSet' -or $PSCmdlet.ParameterSet
     .$RepoRoot\tools\BuildScripts\CheckChangeLogs.ps1 -outputFile $RepoArtifacts/ModifiedModule.txt -rootPath $RepoRoot -TargetModuleList $TargetModule
     $ModuleList = Get-Content $RepoArtifacts/ModifiedModule.txt
     foreach ($module in $ModuleList) {
-        $csprojFiles += Add-Project -Path "$RepoRoot/src/$module"
+        $csprojFiles += Add-Project -Path "$RepoRoot/src/$module" -Configuration $Configuration
     }
 }
 if ($PSCmdlet.ParameterSetName -eq 'PullRequestSet') {
