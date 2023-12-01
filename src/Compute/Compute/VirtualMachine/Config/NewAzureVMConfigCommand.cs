@@ -279,7 +279,7 @@ namespace Microsoft.Azure.Commands.Compute
                 vm.HardwareProfile.VmSizeProperties.VCPUsPerCore = this.vCPUCountPerCore;
             }
 
-            if (this.EnableUltraSSD == true)
+            if (this.EnableUltraSSD.IsPresent)
             {
                 if (vm.AdditionalCapabilities == null)
                 {
@@ -288,7 +288,7 @@ namespace Microsoft.Azure.Commands.Compute
                 vm.AdditionalCapabilities.UltraSSDEnabled = this.EnableUltraSSD;
             }
 
-            if (this.HibernationEnabled == true)
+            if (this.HibernationEnabled.IsPresent)
             {
                 if (vm.AdditionalCapabilities == null)
                 {
@@ -317,7 +317,7 @@ namespace Microsoft.Azure.Commands.Compute
                 vm.BillingProfile = new BillingProfile(this.MaxPrice);
             }
             
-            if (this.EncryptionAtHost == true)
+            if (this.EncryptionAtHost.IsPresent)
             {
                 if (vm.SecurityProfile == null)
                     vm.SecurityProfile = new SecurityProfile();

@@ -479,7 +479,7 @@ namespace Microsoft.Azure.Commands.Compute.Automation
                 {
                     vUpgradePolicy.AutomaticOSUpgradePolicy = new AutomaticOSUpgradePolicy();
                 }
-                vUpgradePolicy.AutomaticOSUpgradePolicy.EnableAutomaticOSUpgrade = this.AutoOSUpgrade.IsPresent;
+                vUpgradePolicy.AutomaticOSUpgradePolicy.EnableAutomaticOSUpgrade = this.AutoOSUpgrade;
             }
 
             if (this.EnableAutomaticRepair.IsPresent)
@@ -488,7 +488,7 @@ namespace Microsoft.Azure.Commands.Compute.Automation
                 {
                     vAutomaticRepairsPolicy = new AutomaticRepairsPolicy();
                 }
-                vAutomaticRepairsPolicy.Enabled = this.EnableAutomaticRepair.IsPresent;
+                vAutomaticRepairsPolicy.Enabled = this.EnableAutomaticRepair;
             }
 
             if (this.EncryptionAtHost.IsPresent)
@@ -724,7 +724,7 @@ namespace Microsoft.Azure.Commands.Compute.Automation
                 {
                     vVirtualMachineProfile.ScheduledEventsProfile.TerminateNotificationProfile = new TerminateNotificationProfile();
                 }
-                vVirtualMachineProfile.ScheduledEventsProfile.TerminateNotificationProfile.Enable = this.TerminateScheduledEvents.IsPresent;
+                vVirtualMachineProfile.ScheduledEventsProfile.TerminateNotificationProfile.Enable = this.TerminateScheduledEvents;
             }
 
             if (this.IsParameterBound(c => c.TerminateScheduledEventNotBeforeTimeoutInMinutes))
@@ -916,9 +916,9 @@ namespace Microsoft.Azure.Commands.Compute.Automation
             var vVirtualMachineScaleSet = new PSVirtualMachineScaleSet
             {
                 Overprovision = this.IsParameterBound(c => c.Overprovision) ? this.Overprovision : (bool?)null,
-                DoNotRunExtensionsOnOverprovisionedVMs = this.SkipExtensionsOnOverprovisionedVMs.IsPresent ? true : (bool?)null,
+                DoNotRunExtensionsOnOverprovisionedVMs = this.SkipExtensionsOnOverprovisionedVMs ? true : (bool?)null,
                 SinglePlacementGroup = this.IsParameterBound(c => c.SinglePlacementGroup) ? this.SinglePlacementGroup : (bool?)null,
-                ZoneBalance = this.ZoneBalance.IsPresent ? true : (bool?)null,
+                ZoneBalance = this.ZoneBalance ? true : (bool?)null,
                 PlatformFaultDomainCount = this.IsParameterBound(c => c.PlatformFaultDomainCount) ? this.PlatformFaultDomainCount : (int?)null,
                 Zones = this.IsParameterBound(c => c.Zone) ? this.Zone : null,
                 Location = this.IsParameterBound(c => c.Location) ? this.Location : null,
