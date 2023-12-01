@@ -140,7 +140,7 @@ stages:
   - template: ./code-sign.yml
     parameters:
       OOBBranch: $(BumpUpBranch)
-      ChangedModule: ${{ parameters.ServiceName }}
+      TargetModule: ${{ parameters.ServiceName }}
       BuildInstaller: false
   - job: PulishForTest
     dependsOn: Release
