@@ -115,10 +115,11 @@ try {
                     Module = $ModuleName;
                     Sdk = $_;
                     Severity = 1;
-                    ProblemId = $AutorestCSharpDetected
+                    ProblemId = $GenSdkChanged
                     Description = "Do not support updating SDK using autorest csharp v3."
                     Remediation = "Please update the Readme.md to generate code by autorest powershell v4."
                 }
+                Write-Host "Do not support updating SDK using autorest csharp v3."
             }
             else
             {
