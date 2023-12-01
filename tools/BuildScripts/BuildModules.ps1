@@ -53,15 +53,23 @@ function Include-CsprojFiles {
     }
     $allItems = Get-ChildItem -Path $Path -Filter $Filter -Recurse
     if ($null -ne $includeItems -and $includeItems.Count -gt 0) {
-        $allItems = $allItems | Where-Object { $includeItems.Path -contains $_.FullName }
+        $allItems = $allItems | Where-Object { 
+            ($includeItems.Path -contains $_.FullName) -or 
+            ($includeItems.FullName -contains $_.FullName) 
+        }
     }
-    $allItems = $allItems | Where-Object { $excludeItems.Path -notcontains $_.FullName}
+    $allItems = $allItems | Where-Object { 
+        ($excludeItems.Path -notcontains $_.FullName) -and 
+        ($excludeItems.FullName -notcontains $_.FullName) 
+    }
     $allItems
+    
 }
 
 function Add-Project {
     param (
-        [string]$Path
+        [string]$Path,
+        [string]$Configuration
     )
     $result = @()
 
@@ -81,14 +89,13 @@ function Add-Project {
             $result += Include-CsprojFiles -Path $Path -Filter "Authenticators.csproj"
         }
     }   
-    Write-Output $result
     $result
 }
 
 $csprojFiles = @()
 
 if ($PSCmdlet.ParameterSetName -eq 'AllSet') {
-    $csprojFiles += Add-Project -Path "$RepoRoot/src/"
+    $csprojFiles += Add-Project -Path "$RepoRoot/src/" -Configuration $Configuration
 }
 
 if ($PSCmdlet.ParameterSetName -eq 'ModifiedBuildSet' -or $PSCmdlet.ParameterSetName -eq 'TargetModuleSet') {
