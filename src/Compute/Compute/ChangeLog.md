@@ -20,6 +20,8 @@
 
 -->
 ## Upcoming Release
+
+## Version 7.1.0
 * Added new parameter `-ElasticSanResourceId` to `New-AzSnapshotConfig` cmdlet.
 * Added new parameter `-OptimizedForFrequentAttach` to `New-AzDiskConfig` cmdlet.
 * Added new examples in `New-AzVM` and `New-AzVmss` for TrustedLaunch default usage.

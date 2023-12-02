@@ -1,5 +1,5 @@
 ---
-external help file:
+external help file: Az.DesktopVirtualization-help.xml
 Module Name: Az.DesktopVirtualization
 online version: https://learn.microsoft.com/powershell/module/az.desktopvirtualization/get-azwvdscalingplan
 schema: 2.0.0
@@ -24,10 +24,10 @@ Get-AzWvdScalingPlan -Name <String> -ResourceGroupName <String> [-SubscriptionId
  [-DefaultProfile <PSObject>] [<CommonParameters>]
 ```
 
-### GetViaIdentity
+### List2
 ```
-Get-AzWvdScalingPlan -InputObject <IDesktopVirtualizationIdentity> [-DefaultProfile <PSObject>]
- [<CommonParameters>]
+Get-AzWvdScalingPlan -ResourceGroupName <String> [-SubscriptionId <String[]>] -HostPoolName <String>
+ [-InitialSkip <Int32>] [-IsDescending] [-PageSize <Int32>] [-DefaultProfile <PSObject>] [<CommonParameters>]
 ```
 
 ### List
@@ -36,10 +36,10 @@ Get-AzWvdScalingPlan -ResourceGroupName <String> [-SubscriptionId <String[]>] [-
  [-IsDescending] [-PageSize <Int32>] [-DefaultProfile <PSObject>] [<CommonParameters>]
 ```
 
-### List2
+### GetViaIdentity
 ```
-Get-AzWvdScalingPlan -HostPoolName <String> -ResourceGroupName <String> [-SubscriptionId <String[]>]
- [-InitialSkip <Int32>] [-IsDescending] [-PageSize <Int32>] [-DefaultProfile <PSObject>] [<CommonParameters>]
+Get-AzWvdScalingPlan -InputObject <IDesktopVirtualizationIdentity> [-DefaultProfile <PSObject>]
+ [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -112,7 +112,7 @@ Initial number of items to skip.
 
 ```yaml
 Type: System.Int32
-Parameter Sets: List, List1, List2
+Parameter Sets: List1, List2, List
 Aliases:
 
 Required: False
@@ -143,7 +143,7 @@ Indicates whether the collection is descending.
 
 ```yaml
 Type: System.Management.Automation.SwitchParameter
-Parameter Sets: List, List1, List2
+Parameter Sets: List1, List2, List
 Aliases:
 
 Required: False
@@ -173,7 +173,7 @@ Number of items per page.
 
 ```yaml
 Type: System.Int32
-Parameter Sets: List, List1, List2
+Parameter Sets: List1, List2, List
 Aliases:
 
 Required: False
@@ -189,7 +189,7 @@ The name is case insensitive.
 
 ```yaml
 Type: System.String
-Parameter Sets: Get, List, List2
+Parameter Sets: Get, List2, List
 Aliases:
 
 Required: True
@@ -204,7 +204,7 @@ The ID of the target subscription.
 
 ```yaml
 Type: System.String[]
-Parameter Sets: Get, List, List1, List2
+Parameter Sets: List1, Get, List2, List
 Aliases:
 
 Required: False
@@ -228,4 +228,3 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ## NOTES
 
 ## RELATED LINKS
-

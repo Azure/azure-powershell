@@ -16,6 +16,7 @@ using Microsoft.Azure.Commands.Management.CognitiveServices.Models;
 using Microsoft.Azure.Commands.ResourceManager.Common;
 using Microsoft.Azure.Management.CognitiveServices;
 using Microsoft.Azure.Management.CognitiveServices.Models;
+using Microsoft.Rest.Azure;
 using Microsoft.WindowsAzure.Commands.Utilities.Common;
 using System;
 using System.Collections;
@@ -28,12 +29,6 @@ namespace Microsoft.Azure.Commands.Management.CognitiveServices
     public abstract class CognitiveServicesAccountBaseCmdlet : AzureRMCmdlet
     {
         private CognitiveServicesManagementClientWrapper cognitiveServicesClientWrapper;
-
-         protected const string CognitiveServicesAccountNounStr = ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "CognitiveServicesAccount";
-        protected const string CognitiveServicesAccountKeyNounStr = CognitiveServicesAccountNounStr + "Key";
-        protected const string CognitiveServicesAccountSkusNounStr = CognitiveServicesAccountNounStr + "Skus";
-        protected const string CognitiveServicesAccountTypeNounStr = CognitiveServicesAccountNounStr + "Type";
-        protected const string CognitiveServicesAccountUsagesNounStr = CognitiveServicesAccountNounStr + "Usage";
 
         protected const string CognitiveServicesAccountNameAlias = "CognitiveServicesAccountName";
         protected const string AccountNameAlias = "AccountName";
@@ -93,6 +88,33 @@ namespace Microsoft.Azure.Commands.Management.CognitiveServices
             }
         }
 
+        public IEnumerable<T> ListAll<T>(IPage<T> firstPage, Func<string, IPage<T>> listNext)
+        {
+            var results = new List<T>(firstPage);
+            IPage<T> nextPage;
+            for (var nextLink = firstPage.NextPageLink; !string.IsNullOrEmpty(nextLink); nextLink = nextPage.NextPageLink)
+            {
+                nextPage = listNext(nextLink);
+                results.AddRange(nextPage);
+            }
+
+            return results;
+        }
+
+        public IEnumerable<T> ListAll<T>(Func<string, IPage<T>> listFirst, string para0, Func<string, IPage<T>> listNext)
+        {
+            return ListAll<T>(listFirst(para0), listNext);
+        }
+
+        public IEnumerable<T> ListAll<T>(Func<string, string, IPage<T>> listFirst, string para0, string para1, Func<string, IPage<T>> listNext)
+        {
+            return ListAll<T>(listFirst(para0, para1), listNext);
+        }
+
+        public IEnumerable<T> ListAll<T>(Func<string, string, string, IPage<T>> listFirst, string para0, string para1, string para2, Func<string, IPage<T>> listNext)
+        {
+            return ListAll<T>(listFirst(para0, para1, para2), listNext);
+        }
 
         protected void WriteCognitiveServicesAccount(
             CognitiveServicesModels.Account cognitiveServicesAccount)

@@ -82,7 +82,7 @@ namespace Microsoft.Azure.Commands.Network
                 parameter.SkipToken = this.SkipToken;
             }
 
-            var networkManagerDeploymentStatusResult = this.NetworkClient.NetworkManagementClient.NetworkManagerDeploymentStatus.List(parameter, this.ResourceGroupName, this.NetworkManagerName);
+            var networkManagerDeploymentStatusResult = this.NetworkClient.NetworkManagementClient.NetworkManagerDeploymentStatus.List(this.ResourceGroupName, this.NetworkManagerName, parameter);
             var pSNetworkManagerDeploymentStatusResult = NetworkResourceManagerProfile.Mapper.Map<PSNetworkManagerDeploymentStatusResult>(networkManagerDeploymentStatusResult);
             WriteObject(pSNetworkManagerDeploymentStatusResult);
         }

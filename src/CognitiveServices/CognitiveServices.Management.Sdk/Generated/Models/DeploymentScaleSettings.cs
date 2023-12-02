@@ -8,7 +8,8 @@ namespace Microsoft.Azure.Management.CognitiveServices.Models
     using System.Linq;
 
     /// <summary>
-    /// Properties of Cognitive Services account deployment model.
+    /// Properties of Cognitive Services account deployment model. (Deprecated,
+    /// please use Deployment.sku instead.)
     /// </summary>
     public partial class DeploymentScaleSettings
     {
