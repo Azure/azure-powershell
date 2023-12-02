@@ -103,7 +103,14 @@
         
         $null = $PSBoundParameters.Remove('NoWait')
 
-        $operationStatus = GetOperationStatus -Target $refreshOperationResponse.Target
+        $null = $PSBoundParameters.Remove('FabricName')
+        $null = $PSBoundParameters.Remove('Filter')
+        $null = $PSBoundParameters.Remove('SubscriptionId')
+        $null = $PSBoundParameters.Remove('ResourceGroupName')
+        $null = $PSBoundParameters.Remove('VaultName')
+        $PSBoundParameters.Add('Target', $refreshOperationResponse.Target)
+
+        $operationStatus = GetOperationStatus @PSBoundParameters
         if($operationStatus -ne "Succeeded"){
             $errormsg= "Refresh container operation failed with operationStatus: $operationStatus"
             throw $errormsg
@@ -111,7 +118,14 @@
         
         # Get protectable containers  (register) / container (re-register)
 
-        $protectableContainers = $null                
+        $protectableContainers = $null
+        $null = $PSBoundParameters.Remove('Target')
+        $PSBoundParameters.Add('FabricName', 'Azure')
+        $PSBoundParameters.Add('Filter', $filter)
+        $PSBoundParameters.Add('SubscriptionId', $SubscriptionId)
+        $PSBoundParameters.Add('ResourceGroupName', $ResourceGroupName)
+        $PSBoundParameters.Add('VaultName', $VaultName)
+
         $protectableContainers = Az.RecoveryServices.Internal\Get-AzRecoveryServicesProtectableContainer @PSBoundParameters | Where-Object { ($_.Name -split ";")[-1] -eq $containerName -or $_.Name -eq $containerName }
         
         $null = $PSBoundParameters.Remove('Filter')
@@ -145,7 +159,13 @@
             $null = $PSBoundParameters.Remove('Parameter')
             $null = $PSBoundParameters.Remove('NoWait')
 
-            $operationStatus = GetOperationStatus -Target $registerOperationResponse.Target -RefreshAfter 30    
+             $null = $PSBoundParameters.Remove('SubscriptionId')
+            $null = $PSBoundParameters.Remove('ResourceGroupName')
+            $null = $PSBoundParameters.Remove('VaultName')
+            $PSBoundParameters.Add('Target', $registerOperationResponse.Target)
+            $PSBoundParameters.Add('RefreshAfter', 30)
+
+            $operationStatus = GetOperationStatus @PSBoundParameters    
 
             if($operationStatus -ne "Succeeded"){
                 $errormsg= "Register container operation failed with operationStatus: $operationStatus"
@@ -162,6 +182,12 @@
         $registeredContainer = $null        
         $PSBoundParameters.Add('ContainerType', 'AzureVMAppContainer')
         $PSBoundParameters.Add('DatasourceType', $DatasourceType)
+
+        $null = $PSBoundParameters.Remove('Target')
+        $null = $PSBoundParameters.Remove('RefreshAfter')
+        $PSBoundParameters.Add('SubscriptionId', $SubscriptionId)
+        $PSBoundParameters.Add('ResourceGroupName', $ResourceGroupName)
+        $PSBoundParameters.Add('VaultName', $VaultName)
 
         $registeredContainer = Get-AzRecoveryServicesBackupContainer @PSBoundParameters | Where-Object { $_.Name -eq $containerFullName }
 
