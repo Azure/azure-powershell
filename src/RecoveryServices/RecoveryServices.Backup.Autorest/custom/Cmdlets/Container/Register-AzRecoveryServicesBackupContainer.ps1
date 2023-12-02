@@ -105,7 +105,7 @@
 
         $null = $PSBoundParameters.Remove('FabricName')
         $null = $PSBoundParameters.Remove('Filter')
-        $null = $PSBoundParameters.Remove('SubscriptionId')
+        $hasSubscriptionId = $PSBoundParameters.Remove('SubscriptionId')
         $null = $PSBoundParameters.Remove('ResourceGroupName')
         $null = $PSBoundParameters.Remove('VaultName')
         $PSBoundParameters.Add('Target', $refreshOperationResponse.Target)
@@ -122,7 +122,11 @@
         $null = $PSBoundParameters.Remove('Target')
         $PSBoundParameters.Add('FabricName', 'Azure')
         $PSBoundParameters.Add('Filter', $filter)
-        $PSBoundParameters.Add('SubscriptionId', $SubscriptionId)
+
+        if($hasSubscriptionId){
+            $PSBoundParameters.Add('SubscriptionId', $SubscriptionId)
+        }
+
         $PSBoundParameters.Add('ResourceGroupName', $ResourceGroupName)
         $PSBoundParameters.Add('VaultName', $VaultName)
 
@@ -185,7 +189,10 @@
 
         $null = $PSBoundParameters.Remove('Target')
         $null = $PSBoundParameters.Remove('RefreshAfter')
-        $PSBoundParameters.Add('SubscriptionId', $SubscriptionId)
+        
+        if($hasSubscriptionId){
+            $PSBoundParameters.Add('SubscriptionId', $SubscriptionId)
+        }
         $PSBoundParameters.Add('ResourceGroupName', $ResourceGroupName)
         $PSBoundParameters.Add('VaultName', $VaultName)
 

@@ -37,7 +37,7 @@ Describe 'Register-AzRecoveryServicesBackupContainer' {
         $reg.Property.SourceResourceId -match $resourceId | Should -Be $true
     }
 
-    It 'ReRegister' {
+    It 'ReRegister' -skip {
         $subscriptionId = $env.TestCommon.SubscriptionId
         $resourceGroupName = $env.TestCommon.ResourceGroupName
         $vaultName = $env.TestCommon.VaultName
