@@ -20,7 +20,7 @@ $windowsPowershellVersion = "5.1.14"
 
 $script += " -ErrorAction Stop"
 if($requiredPsVersion -eq $windowsPowershellVersion){
-    Invoke-Command -ScriptBlock { param ($command) &"powershell.exe" -Command $command } -ArgumentList $script 
+    Invoke-Command -ScriptBlock { param ($command) &"powershell.exe" -NonInteractive -Command $command } -ArgumentList $script
 }else{
     $command = "`$PSVersionTable `
                   $script `
@@ -28,7 +28,7 @@ if($requiredPsVersion -eq $windowsPowershellVersion){
     if ($requiredPsVersion -eq "preview") {
       # Change the mode of 'pwsh' to 'rwxr-xr-x' to allow execution
       if ( $AgentOS -ne $IsWinEnv) { chmod 755 "$PowerShellPath/pwsh" }
-      . "$PowerShellPath/pwsh" -Command $command
+      . "$PowerShellPath/pwsh" -NonInteractive -Command $command
     } else {
       dotnet tool run pwsh -c $command
     }

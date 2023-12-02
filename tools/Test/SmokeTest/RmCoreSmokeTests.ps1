@@ -54,6 +54,7 @@ function Retry-AzCommand {
         try {
             $script = "`$ErrorActionPreference='Continue' `n"
             $script += $Command.ToString()
+            Write-Output "$script"
             &([ScriptBlock]::Create($script))
             break
         }
@@ -75,8 +76,10 @@ $resourceGroupName = "azpssmokerg$randomValue"
 # The name of storage account should be 3~24 lowercase letters and numbers.
 $storageAccountName = "azpssmokesa$randomValue"
 
+Write-Output "resourceGroupName=$resourceGroupName; storageAccountName=$storageAccountName"
+
 $resourceSetUpCommands=@(
-    @{Name = "Az.Resources";                  Command = {New-AzResourceGroup -Name $resourceGroupName -Location westus}}
+    @{Name = "Az.Resources";                  Command = {New-AzResourceGroup -Name $resourceGroupName -Location westus -Verbose}}
 )
 
 $resourceCleanUpCommands = @(
@@ -225,7 +228,7 @@ $resourceCommands | ForEach-Object {
     $testStart = Get-Date
     try
     {
-        Retry-AzCommand -Name $testName -Command $script -Retry $retry -Sleep $sleep
+        Retry-AzCommand -Name $testName -Command $script -Retry 0 -Sleep 0
         $testInfo.PassedCount += 1
         $testInfo.PassedTests += $testName
     }
