@@ -19,6 +19,11 @@ param (
 $PreErrorActionPreference = $ErrorActionPreference
 $ErrorActionPreference = "Stop"
 
+if ($PSVersionTable.PSEdition -eq 'Core' -and $IsMacOS)
+{
+    Disable-AzContextAutosave -Scope Process
+}
+
 $servicePrincipalSecureSecret = ConvertTo-SecureString -String $ServicePrincipalSecret -AsPlainText -Force
 $servicePrincipalCredential = New-Object -TypeName System.Management.Automation.PSCredential -ArgumentList $ServicePrincipalId, $servicePrincipalSecureSecret
 Connect-AzAccount -SubscriptionId $SubscriptionId -TenantId $TenantId -Credential $servicePrincipalCredential -ServicePrincipal
