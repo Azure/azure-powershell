@@ -128,6 +128,13 @@ jobs:
       arguments: '-RequiredPsVersion ${{ parameters.psVersion }} -Script "./tools/Test/SmokeTest/RmCoreSmokeTests.ps1 " -PowerShellPath "${{ parameters.PowerShellPath }}" -AgentOS "$(Agent.OS)"'
       failOnStderr: true
 
+  - task: CmdLine@2
+    displayName: 'Capture screenshot'
+    inputs:
+      script: |
+        screencapture $(Pipeline.Workspace)/screenshot.jpg
+    condition: always()
+
   - task: PowerShell@2
     displayName: 'Run Smoke Test Reversely'
     inputs:
@@ -208,3 +215,10 @@ jobs:
     inputs:
       filePath: 'tools/Test/SmokeTest/ScriptsCaller.ps1'
       arguments: '-RequiredPsVersion ${{ parameters.psVersion }} -Script "./tools/Test/SmokeTest/InstallAnIndividualModuleOnTopOfAz.ps1 -Gallery $(GalleryName) -AllowEquality $(AllowEquality) " -PowerShellPath "${{ parameters.PowerShellPath }}" -AgentOS "$(Agent.OS)"'
+
+  - task: PublishPipelineArtifact@1
+    displayName: Publish smoke test results to pipeline artifact
+    inputs:
+      artifact: smoketest-os-${{ parameters.vmImage }}-ps-${{ replace(parameters.psVersion, '*', 'x') }}
+      targetPath: $(Pipeline.Workspace)
+    condition: always()
