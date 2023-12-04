@@ -31,8 +31,7 @@ namespace Microsoft.Azure.Management.CognitiveServices.Models
         /// <param name="model">Properties of Cognitive Services account deployment model.
         /// </param>
 
-        /// <param name="scaleSettings">Properties of Cognitive Services account deployment model. (Deprecated,
-        /// please use Deployment.sku instead.)
+        /// <param name="scaleSettings">Properties of Cognitive Services account deployment model.
         /// </param>
 
         /// <param name="capabilities">The capabilities.
@@ -50,16 +49,7 @@ namespace Microsoft.Azure.Management.CognitiveServices.Models
         /// <param name="versionUpgradeOption">Deployment model version upgrade option.
         /// Possible values include: 'OnceNewDefaultVersionAvailable',
         /// 'OnceCurrentVersionExpired', 'NoAutoUpgrade'</param>
-
-        /// <param name="dynamicThrottlingEnabled">If the dynamic throttling is enabled.
-        /// </param>
-
-        /// <param name="currentCapacity">The current capacity.
-        /// </param>
-
-        /// <param name="capacitySettings">Internal use only.
-        /// </param>
-        public DeploymentProperties(string provisioningState = default(string), DeploymentModel model = default(DeploymentModel), DeploymentScaleSettings scaleSettings = default(DeploymentScaleSettings), System.Collections.Generic.IDictionary<string, string> capabilities = default(System.Collections.Generic.IDictionary<string, string>), string raiPolicyName = default(string), CallRateLimit callRateLimit = default(CallRateLimit), System.Collections.Generic.IList<ThrottlingRule> rateLimits = default(System.Collections.Generic.IList<ThrottlingRule>), string versionUpgradeOption = default(string), bool? dynamicThrottlingEnabled = default(bool?), int? currentCapacity = default(int?), DeploymentCapacitySettings capacitySettings = default(DeploymentCapacitySettings))
+        public DeploymentProperties(string provisioningState = default(string), DeploymentModel model = default(DeploymentModel), DeploymentScaleSettings scaleSettings = default(DeploymentScaleSettings), System.Collections.Generic.IDictionary<string, string> capabilities = default(System.Collections.Generic.IDictionary<string, string>), string raiPolicyName = default(string), CallRateLimit callRateLimit = default(CallRateLimit), System.Collections.Generic.IList<ThrottlingRule> rateLimits = default(System.Collections.Generic.IList<ThrottlingRule>), string versionUpgradeOption = default(string))
 
         {
             this.ProvisioningState = provisioningState;
@@ -70,9 +60,6 @@ namespace Microsoft.Azure.Management.CognitiveServices.Models
             this.CallRateLimit = callRateLimit;
             this.RateLimits = rateLimits;
             this.VersionUpgradeOption = versionUpgradeOption;
-            this.DynamicThrottlingEnabled = dynamicThrottlingEnabled;
-            this.CurrentCapacity = currentCapacity;
-            this.CapacitySettings = capacitySettings;
             CustomInit();
         }
 
@@ -96,7 +83,6 @@ namespace Microsoft.Azure.Management.CognitiveServices.Models
 
         /// <summary>
         /// Gets or sets properties of Cognitive Services account deployment model.
-        /// (Deprecated, please use Deployment.sku instead.)
         /// </summary>
         [Newtonsoft.Json.JsonProperty(PropertyName = "scaleSettings")]
         public DeploymentScaleSettings ScaleSettings {get; set; }
@@ -130,44 +116,5 @@ namespace Microsoft.Azure.Management.CognitiveServices.Models
         /// </summary>
         [Newtonsoft.Json.JsonProperty(PropertyName = "versionUpgradeOption")]
         public string VersionUpgradeOption {get; set; }
-
-        /// <summary>
-        /// Gets if the dynamic throttling is enabled.
-        /// </summary>
-        [Newtonsoft.Json.JsonProperty(PropertyName = "dynamicThrottlingEnabled")]
-        public bool? DynamicThrottlingEnabled {get; private set; }
-
-        /// <summary>
-        /// Gets or sets the current capacity.
-        /// </summary>
-        [Newtonsoft.Json.JsonProperty(PropertyName = "currentCapacity")]
-        public int? CurrentCapacity {get; set; }
-
-        /// <summary>
-        /// Gets or sets internal use only.
-        /// </summary>
-        [Newtonsoft.Json.JsonProperty(PropertyName = "capacitySettings")]
-        public DeploymentCapacitySettings CapacitySettings {get; set; }
-        /// <summary>
-        /// Validate the object.
-        /// </summary>
-        /// <exception cref="Microsoft.Rest.ValidationException">
-        /// Thrown if validation fails
-        /// </exception>
-        public virtual void Validate()
-        {
-
-
-
-
-
-
-
-
-            if (this.CapacitySettings != null)
-            {
-                this.CapacitySettings.Validate();
-            }
-        }
     }
 }

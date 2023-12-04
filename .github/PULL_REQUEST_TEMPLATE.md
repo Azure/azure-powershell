@@ -4,10 +4,15 @@
 
 <!-- Please add a brief description of the changes made in this PR. If you have an ongoing or finished cmdlet design, please paste the link below. -->
 
-## Checklist
+## Mandatory Checklist
 
-- **Mandatory**: please state whether this PR targets a [**general** release](../blob/main/CONTRIBUTING.md#target-release-types) / [**public preview**](../blob/main/CONTRIBUTING.md#target-release-types) / [**private preview**]((../blob/main/CONTRIBUTING.md#target-release-types)) / [**engineering build**](../blob/main/CONTRIBUTING.md#target-release-types) of Azure PowerShell?
-    - `{Enter your answer here}`
+- Please choose the target release of Azure PowerShell
+  - [ ] [General release](../blob/main/CONTRIBUTING.md#target-release-types)
+  - [ ] [Public preview](../blob/main/CONTRIBUTING.md#target-release-types)
+  - [ ] [Private preview](../blob/main/CONTRIBUTING.md#target-release-types)
+  - [ ] [Engineering build](../blob/main/CONTRIBUTING.md#target-release-types)
+  - [ ] N/A
+
 - [ ] Check this box to confirm: **I have read the [_Submitting Changes_](../blob/main/CONTRIBUTING.md#submitting-changes) section of [`CONTRIBUTING.md`](../blob/main/CONTRIBUTING.md) and reviewed the following information:**
 
 * **SHOULD** update `ChangeLog.md` file(s) appropriately
