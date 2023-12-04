@@ -49,14 +49,14 @@ namespace Microsoft.Azure.Management.CognitiveServices
 
         /// <summary>
         /// The retry timeout in seconds for Long Running Operations. Default
-        /// value is 30.
+        /// /// value is 30.
         /// </summary>
         public int? LongRunningOperationRetryTimeout { get; set;}
 
         /// <summary>
-        /// Whether a unique x-ms-client-request-id should be generated. When 
-        /// set to true a unique x-ms-client-request-id value is generated and 
-        /// included in each request. Default is true.
+        /// Whether a unique x-ms-client-request-id should be generated. When
+        /// /// set to true a unique x-ms-client-request-id value is generated and
+        /// /// included in each request. Default is true.
         /// </summary>
         public bool? GenerateClientRequestId { get; set;}
 
@@ -104,6 +104,26 @@ namespace Microsoft.Azure.Management.CognitiveServices
         /// Gets the ICommitmentPlansOperations
         /// </summary>
         public virtual ICommitmentPlansOperations CommitmentPlans { get; private set; }
+        /// <summary>
+        /// Gets the IEncryptionScopesOperations
+        /// </summary>
+        public virtual IEncryptionScopesOperations EncryptionScopes { get; private set; }
+        /// <summary>
+        /// Gets the IRaiPoliciesOperations
+        /// </summary>
+        public virtual IRaiPoliciesOperations RaiPolicies { get; private set; }
+        /// <summary>
+        /// Gets the IRaiBlocklistsOperations
+        /// </summary>
+        public virtual IRaiBlocklistsOperations RaiBlocklists { get; private set; }
+        /// <summary>
+        /// Gets the IRaiBlocklistItemsOperations
+        /// </summary>
+        public virtual IRaiBlocklistItemsOperations RaiBlocklistItems { get; private set; }
+        /// <summary>
+        /// Gets the IRaiContentFiltersOperations
+        /// </summary>
+        public virtual IRaiContentFiltersOperations RaiContentFilters { get; private set; }
         /// <summary>
         /// Initializes a new instance of the CognitiveServicesManagementClient class.
         /// </summary>
@@ -350,8 +370,13 @@ namespace Microsoft.Azure.Management.CognitiveServices
             this.PrivateLinkResources = new PrivateLinkResourcesOperations(this);
             this.Deployments = new DeploymentsOperations(this);
             this.CommitmentPlans = new CommitmentPlansOperations(this);
+            this.EncryptionScopes = new EncryptionScopesOperations(this);
+            this.RaiPolicies = new RaiPoliciesOperations(this);
+            this.RaiBlocklists = new RaiBlocklistsOperations(this);
+            this.RaiBlocklistItems = new RaiBlocklistItemsOperations(this);
+            this.RaiContentFilters = new RaiContentFiltersOperations(this);
             this.BaseUri = new System.Uri("https://management.azure.com");
-            this.ApiVersion = "2023-05-01";
+            this.ApiVersion = "2023-10-01-preview";
             this.AcceptLanguage = "en-US";
             this.LongRunningOperationRetryTimeout = 30;
             this.GenerateClientRequestId = true;

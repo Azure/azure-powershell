@@ -31,8 +31,8 @@ namespace Microsoft.Azure.Management.CognitiveServices.Models
         /// </param>
 
         /// <param name="hostingModel">Account hosting model.
-        /// Possible values include: 'Web', 'ConnectedContainer',
-        /// 'DisconnectedContainer', 'ProvisionedWeb'</param>
+        /// Possible values include: &#39;Web&#39;, &#39;ConnectedContainer&#39;,
+        /// &#39;DisconnectedContainer&#39;, &#39;ProvisionedWeb&#39;</param>
 
         /// <param name="planType">Commitment plan type.
         /// </param>

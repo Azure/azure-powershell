@@ -69,14 +69,14 @@ namespace Microsoft.Azure.Commands.Network
             ValueFromPipelineByPropertyName = true,
             HelpMessage = "The customIpPrefix GEO code.")]
         [ValidateSet(
-            MNM.Geo.AFRI,
-            MNM.Geo.APAC,
+            MNM.Geo.Afri,
+            MNM.Geo.Apac,
             MNM.Geo.AQ,
-            MNM.Geo.EURO,
-            MNM.Geo.LATAM,
+            MNM.Geo.Euro,
+            MNM.Geo.Latam,
             MNM.Geo.ME,
             MNM.Geo.NAM,
-            MNM.Geo.OCEANIA,
+            MNM.Geo.Oceania,
             IgnoreCase = true)]
         public string Geo { get; set; }
 

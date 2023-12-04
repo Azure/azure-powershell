@@ -59,7 +59,7 @@ namespace Microsoft.Azure.Commands.Network
                 // Map to the sdk object
                 var scopeConnectionModel = NetworkResourceManagerProfile.Mapper.Map<MNM.ScopeConnection>(psScopeConnectionModel);
                 // Execute the PUT NetworkManagerScopeConnection call
-                this.NetworkManagerScopeConnectionClient.CreateOrUpdate(scopeConnectionModel, this.InputObject.ResourceGroupName, this.InputObject.NetworkManagerName, this.InputObject.Name);
+                this.NetworkManagerScopeConnectionClient.CreateOrUpdate(this.InputObject.ResourceGroupName, this.InputObject.NetworkManagerName, this.InputObject.Name, scopeConnectionModel);
                 var psScopeConnection = this.GetNetworkManagerScopeConnection(this.InputObject.ResourceGroupName, this.InputObject.NetworkManagerName, this.InputObject.Name);
                 WriteObject(psScopeConnection);
             }

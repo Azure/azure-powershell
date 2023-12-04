@@ -55,15 +55,15 @@ namespace Microsoft.Azure.Management.CognitiveServices
 
         /// <summary>
         /// The retry timeout in seconds for Long Running Operations. Default
-        /// value is 30.
+        /// /// value is 30.
         /// </summary>
         int? LongRunningOperationRetryTimeout { get; set;}
 
 
         /// <summary>
-        /// Whether a unique x-ms-client-request-id should be generated. When 
-        /// set to true a unique x-ms-client-request-id value is generated and 
-        /// included in each request. Default is true.
+        /// Whether a unique x-ms-client-request-id should be generated. When
+        /// /// set to true a unique x-ms-client-request-id value is generated and
+        /// /// included in each request. Default is true.
         /// </summary>
         bool? GenerateClientRequestId { get; set;}
 
@@ -122,6 +122,31 @@ namespace Microsoft.Azure.Management.CognitiveServices
         /// Gets the ICommitmentPlansOperations
         /// </summary>
         ICommitmentPlansOperations CommitmentPlans { get; }
+
+        /// <summary>
+        /// Gets the IEncryptionScopesOperations
+        /// </summary>
+        IEncryptionScopesOperations EncryptionScopes { get; }
+
+        /// <summary>
+        /// Gets the IRaiPoliciesOperations
+        /// </summary>
+        IRaiPoliciesOperations RaiPolicies { get; }
+
+        /// <summary>
+        /// Gets the IRaiBlocklistsOperations
+        /// </summary>
+        IRaiBlocklistsOperations RaiBlocklists { get; }
+
+        /// <summary>
+        /// Gets the IRaiBlocklistItemsOperations
+        /// </summary>
+        IRaiBlocklistItemsOperations RaiBlocklistItems { get; }
+
+        /// <summary>
+        /// Gets the IRaiContentFiltersOperations
+        /// </summary>
+        IRaiContentFiltersOperations RaiContentFilters { get; }
 
         /// <summary>
         /// Check available SKUs.

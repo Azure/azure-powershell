@@ -13,8 +13,8 @@ Create a Cognitive Services Object
 ## SYNTAX
 
 ```
-New-AzCognitiveServicesObject [-Type] <CognitiveServicesObjectType> [-DefaultProfile <IAzureContextContainer>]
- [-WhatIf] [-Confirm] [<CommonParameters>]
+New-AzCognitiveServicesObject [-Type] <CognitiveServicesObjectType> [-AsList]
+ [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -30,6 +30,21 @@ New-AzCognitiveServicesObject -Type DeploymentProperties
 Create a Cognitive Services DeploymentProperties Object
 
 ## PARAMETERS
+
+### -AsList
+Return the object as a List.
+
+```yaml
+Type: System.Management.Automation.SwitchParameter
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: 1
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
 
 ### -DefaultProfile
 The credentials, account, tenant, and subscription used for communication with Azure.
@@ -53,7 +68,7 @@ Cognitive Services Object Type.
 Type: Microsoft.Azure.Commands.Management.CognitiveServices.CognitiveServicesObjectType
 Parameter Sets: (All)
 Aliases:
-Accepted values: DeploymentProperties, CommitmentPlanProperties, MultiRegionSettings, RegionSetting, Sku
+Accepted values: DeploymentProperties, CommitmentPlanProperties, MultiRegionSettings, RegionSetting, Sku, RaiPolicyProperties, RaiBlocklistProperties, RaiBlocklistItemProperties, RaiBlocklistConfig, RaiPolicyContentFilter
 
 Required: True
 Position: 0
