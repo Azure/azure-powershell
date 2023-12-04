@@ -26,10 +26,10 @@ namespace Microsoft.Azure.Management.CognitiveServices.Models
 
         /// <param name="defaultAction">The default action when no rule from ipRules and from virtualNetworkRules
         /// match. This is only used after the bypass property has been evaluated.
-        /// Possible values include: &#39;Allow&#39;, &#39;Deny&#39;</param>
+        /// Possible values include: 'Allow', 'Deny'</param>
 
         /// <param name="bypass">Setting for trusted services.
-        /// Possible values include: &#39;None&#39;, &#39;AzureServices&#39;</param>
+        /// Possible values include: 'None', 'AzureServices'</param>
 
         /// <param name="ipRules">The list of IP address rules.
         /// </param>

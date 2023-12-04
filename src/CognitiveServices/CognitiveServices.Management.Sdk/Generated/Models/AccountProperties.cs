@@ -26,8 +26,8 @@ namespace Microsoft.Azure.Management.CognitiveServices.Models
 
         /// <param name="provisioningState">Gets the status of the cognitive services account at the time the operation
         /// was called.
-        /// Possible values include: &#39;Accepted&#39;, &#39;Creating&#39;, &#39;Deleting&#39;, &#39;Moving&#39;,
-        /// &#39;Failed&#39;, &#39;Succeeded&#39;, &#39;ResolvingDNS&#39;</param>
+        /// Possible values include: 'Accepted', 'Creating', 'Deleting', 'Moving',
+        /// 'Failed', 'Succeeded', 'ResolvingDNS'</param>
 
         /// <param name="endpoint">Endpoint of the created account.
         /// </param>
@@ -70,7 +70,7 @@ namespace Microsoft.Azure.Management.CognitiveServices.Models
         /// </param>
 
         /// <param name="publicNetworkAccess">Whether or not public endpoint access is allowed for this account.
-        /// Possible values include: &#39;Enabled&#39;, &#39;Disabled&#39;</param>
+        /// Possible values include: 'Enabled', 'Disabled'</param>
 
         /// <param name="apiProperties">The api properties for special APIs.
         /// </param>

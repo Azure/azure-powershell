@@ -31,7 +31,7 @@ namespace Microsoft.Azure.Management.CognitiveServices.Models
         /// </param>
 
         /// <param name="filterType">Content Filter type.
-        /// Possible values include: &#39;MultiLevel&#39;, &#39;Switch&#39;</param>
+        /// Possible values include: 'MultiLevel', 'Switch'</param>
         public RaiContentFilter(string policyName = default(string), string description = default(string), string filterType = default(string))
 
         {

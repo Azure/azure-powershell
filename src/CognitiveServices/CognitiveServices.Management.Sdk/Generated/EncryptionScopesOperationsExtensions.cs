@@ -52,8 +52,7 @@ namespace Microsoft.Azure.Management.CognitiveServices
             }
         }
         /// <summary>
-        /// Gets the specified EncryptionScope associated with the Cognitive Services
-        /// account.
+        /// Gets the specified EncryptionScope associated with the Cognitive Services account.
         /// </summary>
         /// <param name='operations'>
         /// The operations group for this extension method.
@@ -65,8 +64,7 @@ namespace Microsoft.Azure.Management.CognitiveServices
         /// The name of Cognitive Services account.
         /// </param>
         /// <param name='encryptionScopeName'>
-        /// The name of the encryptionScope associated with the Cognitive Services
-        /// Account
+        /// The name of the encryptionScope associated with the Cognitive Services Account
         /// </param>
         public static EncryptionScope Get(this IEncryptionScopesOperations operations, string resourceGroupName, string accountName, string encryptionScopeName)
         {
@@ -74,8 +72,7 @@ namespace Microsoft.Azure.Management.CognitiveServices
         }
 
         /// <summary>
-        /// Gets the specified EncryptionScope associated with the Cognitive Services
-        /// account.
+        /// Gets the specified EncryptionScope associated with the Cognitive Services account.
         /// </summary>
         /// <param name='operations'>
         /// The operations group for this extension method.
@@ -87,8 +84,7 @@ namespace Microsoft.Azure.Management.CognitiveServices
         /// The name of Cognitive Services account.
         /// </param>
         /// <param name='encryptionScopeName'>
-        /// The name of the encryptionScope associated with the Cognitive Services
-        /// Account
+        /// The name of the encryptionScope associated with the Cognitive Services Account
         /// </param>
         /// <param name='cancellationToken'>
         /// The cancellation token.
@@ -101,8 +97,7 @@ namespace Microsoft.Azure.Management.CognitiveServices
             }
         }
         /// <summary>
-        /// Update the state of specified encryptionScope associated with the Cognitive
-        /// Services account.
+        /// Update the state of specified encryptionScope associated with the Cognitive Services account.
         /// </summary>
         /// <param name='operations'>
         /// The operations group for this extension method.
@@ -114,8 +109,7 @@ namespace Microsoft.Azure.Management.CognitiveServices
         /// The name of Cognitive Services account.
         /// </param>
         /// <param name='encryptionScopeName'>
-        /// The name of the encryptionScope associated with the Cognitive Services
-        /// Account
+        /// The name of the encryptionScope associated with the Cognitive Services Account
         /// </param>
         public static EncryptionScope CreateOrUpdate(this IEncryptionScopesOperations operations, string resourceGroupName, string accountName, string encryptionScopeName, System.Collections.Generic.IDictionary<string, string> tags = default(System.Collections.Generic.IDictionary<string, string>), EncryptionScopeProperties properties = default(EncryptionScopeProperties))
         {
@@ -123,8 +117,7 @@ namespace Microsoft.Azure.Management.CognitiveServices
         }
 
         /// <summary>
-        /// Update the state of specified encryptionScope associated with the Cognitive
-        /// Services account.
+        /// Update the state of specified encryptionScope associated with the Cognitive Services account.
         /// </summary>
         /// <param name='operations'>
         /// The operations group for this extension method.
@@ -136,8 +129,7 @@ namespace Microsoft.Azure.Management.CognitiveServices
         /// The name of Cognitive Services account.
         /// </param>
         /// <param name='encryptionScopeName'>
-        /// The name of the encryptionScope associated with the Cognitive Services
-        /// Account
+        /// The name of the encryptionScope associated with the Cognitive Services Account
         /// </param>
         /// <param name='cancellationToken'>
         /// The cancellation token.
@@ -150,8 +142,7 @@ namespace Microsoft.Azure.Management.CognitiveServices
             }
         }
         /// <summary>
-        /// Deletes the specified encryptionScope associated with the Cognitive
-        /// Services account.
+        /// Deletes the specified encryptionScope associated with the Cognitive Services account.
         /// </summary>
         /// <param name='operations'>
         /// The operations group for this extension method.
@@ -163,8 +154,7 @@ namespace Microsoft.Azure.Management.CognitiveServices
         /// The name of Cognitive Services account.
         /// </param>
         /// <param name='encryptionScopeName'>
-        /// The name of the encryptionScope associated with the Cognitive Services
-        /// Account
+        /// The name of the encryptionScope associated with the Cognitive Services Account
         /// </param>
         public static EncryptionScopesDeleteHeaders Delete(this IEncryptionScopesOperations operations, string resourceGroupName, string accountName, string encryptionScopeName)
         {
@@ -172,8 +162,7 @@ namespace Microsoft.Azure.Management.CognitiveServices
         }
 
         /// <summary>
-        /// Deletes the specified encryptionScope associated with the Cognitive
-        /// Services account.
+        /// Deletes the specified encryptionScope associated with the Cognitive Services account.
         /// </summary>
         /// <param name='operations'>
         /// The operations group for this extension method.
@@ -185,8 +174,7 @@ namespace Microsoft.Azure.Management.CognitiveServices
         /// The name of Cognitive Services account.
         /// </param>
         /// <param name='encryptionScopeName'>
-        /// The name of the encryptionScope associated with the Cognitive Services
-        /// Account
+        /// The name of the encryptionScope associated with the Cognitive Services Account
         /// </param>
         /// <param name='cancellationToken'>
         /// The cancellation token.
@@ -199,8 +187,7 @@ namespace Microsoft.Azure.Management.CognitiveServices
             }
         }
         /// <summary>
-        /// Deletes the specified encryptionScope associated with the Cognitive
-        /// Services account.
+        /// Deletes the specified encryptionScope associated with the Cognitive Services account.
         /// </summary>
         /// <param name='operations'>
         /// The operations group for this extension method.
@@ -212,8 +199,7 @@ namespace Microsoft.Azure.Management.CognitiveServices
         /// The name of Cognitive Services account.
         /// </param>
         /// <param name='encryptionScopeName'>
-        /// The name of the encryptionScope associated with the Cognitive Services
-        /// Account
+        /// The name of the encryptionScope associated with the Cognitive Services Account
         /// </param>
         public static EncryptionScopesDeleteHeaders BeginDelete(this IEncryptionScopesOperations operations, string resourceGroupName, string accountName, string encryptionScopeName)
         {
@@ -221,8 +207,7 @@ namespace Microsoft.Azure.Management.CognitiveServices
         }
 
         /// <summary>
-        /// Deletes the specified encryptionScope associated with the Cognitive
-        /// Services account.
+        /// Deletes the specified encryptionScope associated with the Cognitive Services account.
         /// </summary>
         /// <param name='operations'>
         /// The operations group for this extension method.
@@ -234,8 +219,7 @@ namespace Microsoft.Azure.Management.CognitiveServices
         /// The name of Cognitive Services account.
         /// </param>
         /// <param name='encryptionScopeName'>
-        /// The name of the encryptionScope associated with the Cognitive Services
-        /// Account
+        /// The name of the encryptionScope associated with the Cognitive Services Account
         /// </param>
         /// <param name='cancellationToken'>
         /// The cancellation token.
