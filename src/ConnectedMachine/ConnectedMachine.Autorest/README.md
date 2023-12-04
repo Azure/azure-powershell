@@ -284,7 +284,6 @@ directive:
       subject: PrivateLinkScopeValidationDetail
     remove: true
   - where:
-      verb: Get
       subject: NetworkProfile
     remove: true
   - where:
@@ -296,7 +295,6 @@ directive:
 
   # add back when swagger change is checked in
   - where:
-      verb: Post
       subject: License
     remove: true
   - where:

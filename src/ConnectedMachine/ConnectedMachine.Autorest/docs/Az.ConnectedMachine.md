@@ -17,9 +17,6 @@ API to register a new machine and thereby create a tracked resource in ARM
 ### [Get-AzConnectedExtensionMetadata](Get-AzConnectedExtensionMetadata.md)
 Gets an Extension Metadata based on location, publisher, extensionType and version
 
-### [Get-AzConnectedLicense](Get-AzConnectedLicense.md)
-Retrieves information about the view of a license.
-
 ### [Get-AzConnectedMachine](Get-AzConnectedMachine.md)
 Retrieves information about the model view or the instance view of a hybrid machine.
 
@@ -38,9 +35,6 @@ The operation to install patches on a hybrid machine identity in Azure.
 ### [Invoke-AzConnectedAssessMachinePatch](Invoke-AzConnectedAssessMachinePatch.md)
 The operation to assess patches on a hybrid machine identity in Azure.
 
-### [New-AzConnectedLicense](New-AzConnectedLicense.md)
-The operation to create or update a license.
-
 ### [New-AzConnectedMachineExtension](New-AzConnectedMachineExtension.md)
 The operation to create or update the extension.
 
@@ -50,9 +44,6 @@ The operation to create or update a run command.
 ### [New-AzConnectedPrivateLinkScope](New-AzConnectedPrivateLinkScope.md)
 Creates (or updates) a Azure Arc PrivateLinkScope.
 Note: You cannot specify a different value for InstrumentationKey nor AppId in the Put operation.
-
-### [Remove-AzConnectedLicense](Remove-AzConnectedLicense.md)
-The operation to delete a license.
 
 ### [Remove-AzConnectedMachine](Remove-AzConnectedMachine.md)
 The operation to delete a hybrid machine.
@@ -66,9 +57,6 @@ The operation to delete a run command.
 ### [Remove-AzConnectedPrivateLinkScope](Remove-AzConnectedPrivateLinkScope.md)
 Deletes a Azure Arc PrivateLinkScope.
 
-### [Set-AzConnectedLicense](Set-AzConnectedLicense.md)
-The operation to create or update a license.
-
 ### [Set-AzConnectedMachineExtension](Set-AzConnectedMachineExtension.md)
 The operation to create or update the extension.
 
@@ -79,14 +67,8 @@ The operation to create or update a run command.
 Creates (or updates) a Azure Arc PrivateLinkScope.
 Note: You cannot specify a different value for InstrumentationKey nor AppId in the Put operation.
 
-### [Test-AzConnectedLicense](Test-AzConnectedLicense.md)
-The operation to validate a license.
-
 ### [Update-AzConnectedExtension](Update-AzConnectedExtension.md)
 The operation to Upgrade Machine Extensions.
-
-### [Update-AzConnectedLicense](Update-AzConnectedLicense.md)
-The operation to update a license.
 
 ### [Update-AzConnectedMachine](Update-AzConnectedMachine.md)
 The operation to update a hybrid machine.
