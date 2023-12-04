@@ -60,7 +60,7 @@ The operation to create or update a run command.
 
 ### Example 1: Create a run-command for a machine
 ```powershell
-New-AzConnectedMachineRunCommand -ResourceGroupName "az-sdk-test" -Location "eastus2euap" -SourceScript "Write-Host Hello World!" -RunCommandName "myRunCommand3" -MachineName "testmachine" -Subscription "e6fe6705-4c9c-4b54-81d2-e455780e20b8"
+New-AzConnectedMachineRunCommand -ResourceGroupName "az-sdk-test" -Location "eastus2euap" -SourceScript "Write-Host Hello World!" -RunCommandName "myRunCommand3" -MachineName "testmachine" -SubscriptionId "e6fe6705-4c9c-4b54-81d2-e455780e20b8"
 ```
 
 ```output
