@@ -76,7 +76,8 @@ $resourceGroupName = "azpssmokerg$randomValue"
 # The name of storage account should be 3~24 lowercase letters and numbers.
 $storageAccountName = "azpssmokesa$randomValue"
 
-Write-Output "resourceGroupName=$resourceGroupName; storageAccountName=$storageAccountName"
+Write-Information "resourceGroupName=$resourceGroupName; storageAccountName=$storageAccountName"
+Get-AzContextAutosaveSetting
 
 $resourceSetUpCommands=@(
     @{Name = "Az.Resources";                  Command = {New-AzResourceGroup -Name $resourceGroupName -Location westus -Verbose}}

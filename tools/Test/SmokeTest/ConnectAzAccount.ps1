@@ -18,6 +18,7 @@ param(
 )
 
 Write-Host "Connecting Az.Account..."
+Get-AzAccessToken
 if ($PSVersionTable.PSEdition -eq 'Core' -and $IsMacOS)
 {
     Write-Host "This is MacOs. Disable context autosaving temporarily."

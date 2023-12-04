@@ -132,7 +132,7 @@ jobs:
     displayName: 'Capture screenshot'
     inputs:
       script: |
-        screencapture $(Pipeline.Workspace)/screenshot.jpg
+        screencapture $(Pipeline.Workspace)/TestResults/screenshot.jpg
     condition: always()
 
   - task: PowerShell@2
@@ -219,6 +219,6 @@ jobs:
   - task: PublishPipelineArtifact@1
     displayName: Publish smoke test results to pipeline artifact
     inputs:
-      artifact: smoketest-os-${{ parameters.vmImage }}-ps-${{ replace(parameters.psVersion, '*', 'x') }}
-      targetPath: $(Pipeline.Workspace)
+      artifact: smoketest-os-${{ parameters.agentPoolVMImage }}-ps-${{ replace(parameters.psVersion, '*', 'x') }}
+      targetPath: $(Pipeline.Workspace)/TestResults
     condition: always()
