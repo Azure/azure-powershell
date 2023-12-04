@@ -330,57 +330,5 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## NOTES
 
-ALIASES
-
-COMPLEX PARAMETER PROPERTIES
-
-To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
-
-
-`HOSTPOOLREFERENCE <IScalingHostPoolReference[]>`: List of ScalingHostPoolReference definitions.
-  - `[HostPoolArmPath <String>]`: Arm path of referenced hostpool.
-  - `[ScalingPlanEnabled <Boolean?>]`: Is the scaling plan enabled for this hostpool.
-
-`INPUTOBJECT <IDesktopVirtualizationIdentity>`: Identity Parameter
-  - `[AppAttachPackageName <String>]`: The name of the App Attach package arm object
-  - `[ApplicationGroupName <String>]`: The name of the application group
-  - `[ApplicationName <String>]`: The name of the application within the specified application group
-  - `[DesktopName <String>]`: The name of the desktop within the specified desktop group
-  - `[HostPoolName <String>]`: The name of the host pool within the specified resource group
-  - `[Id <String>]`: Resource identity path
-  - `[MsixPackageFullName <String>]`: The version specific package full name of the MSIX package within specified hostpool
-  - `[PrivateEndpointConnectionName <String>]`: The name of the private endpoint connection associated with the Azure resource
-  - `[ResourceGroupName <String>]`: The name of the resource group. The name is case insensitive.
-  - `[ScalingPlanName <String>]`: The name of the scaling plan.
-  - `[ScalingPlanScheduleName <String>]`: The name of the ScalingPlanSchedule
-  - `[SessionHostName <String>]`: The name of the session host within the specified host pool
-  - `[SubscriptionId <String>]`: The ID of the target subscription.
-  - `[UserSessionId <String>]`: The name of the user session within the specified session host
-  - `[WorkspaceName <String>]`: The name of the workspace
-
-`SCHEDULE <IScalingSchedule[]>`: List of ScalingSchedule definitions.
-  - `[DaysOfWeek <String[]>]`: Set of days of the week on which this schedule is active.
-  - `[Name <String>]`: Name of the ScalingPlanPooledSchedule.
-  - `[OffPeakLoadBalancingAlgorithm <SessionHostLoadBalancingAlgorithm?>]`: Load balancing algorithm for off-peak period.
-  - `[OffPeakStartTimeHour <Int32?>]`: The hour.
-  - `[OffPeakStartTimeMinute <Int32?>]`: The minute.
-  - `[PeakLoadBalancingAlgorithm <SessionHostLoadBalancingAlgorithm?>]`: Load balancing algorithm for peak period.
-  - `[PeakStartTimeHour <Int32?>]`: The hour.
-  - `[PeakStartTimeMinute <Int32?>]`: The minute.
-  - `[RampDownCapacityThresholdPct <Int32?>]`: Capacity threshold for ramp down period.
-  - `[RampDownForceLogoffUser <Boolean?>]`: Should users be logged off forcefully from hosts.
-  - `[RampDownLoadBalancingAlgorithm <SessionHostLoadBalancingAlgorithm?>]`: Load balancing algorithm for ramp down period.
-  - `[RampDownMinimumHostsPct <Int32?>]`: Minimum host percentage for ramp down period.
-  - `[RampDownNotificationMessage <String>]`: Notification message for users during ramp down period.
-  - `[RampDownStartTimeHour <Int32?>]`: The hour.
-  - `[RampDownStartTimeMinute <Int32?>]`: The minute.
-  - `[RampDownStopHostsWhen <StopHostsWhen?>]`: Specifies when to stop hosts during ramp down period.
-  - `[RampDownWaitTimeMinute <Int32?>]`: Number of minutes to wait to stop hosts during ramp down period.
-  - `[RampUpCapacityThresholdPct <Int32?>]`: Capacity threshold for ramp up period.
-  - `[RampUpLoadBalancingAlgorithm <SessionHostLoadBalancingAlgorithm?>]`: Load balancing algorithm for ramp up period.
-  - `[RampUpMinimumHostsPct <Int32?>]`: Minimum host percentage for ramp up period.
-  - `[RampUpStartTimeHour <Int32?>]`: The hour.
-  - `[RampUpStartTimeMinute <Int32?>]`: The minute.
-
 ## RELATED LINKS
 

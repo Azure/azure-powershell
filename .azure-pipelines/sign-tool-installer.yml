@@ -24,7 +24,7 @@ steps:
     custom: msbuild
     arguments: 'tools\Az.Tools.Installer\build.proj /t:"Clean;Build;GenerateHelp" /p:Configuration=Release'
 
-- task: SFP.build-tasks.custom-build-task-1.EsrpCodeSigning@1
+- task: SFP.build-tasks.custom-build-task-1.EsrpCodeSigning@4
   displayName: 'Signing'
   inputs:
     ConnectedServiceName: $(signServiceConnection)

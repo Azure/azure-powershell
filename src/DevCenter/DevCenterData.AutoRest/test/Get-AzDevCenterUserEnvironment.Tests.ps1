@@ -18,7 +18,7 @@ Describe 'Get-AzDevCenterUserEnvironment' {
         $listOfEnvs.Count | Should -BeGreaterOrEqual 2
 
         if ($Record -or $Live) {
-            $listOfEnvs = Get-AzDevCenterUserEnvironment -DevCenter $env.devCenterName -ProjectName $env.projectName
+            $listOfEnvs = Get-AzDevCenterUserEnvironment -DevCenterName $env.devCenterName -ProjectName $env.projectName
             $listOfEnvs.Count | Should -BeGreaterOrEqual 2
         }
     }
@@ -32,7 +32,7 @@ Describe 'Get-AzDevCenterUserEnvironment' {
         $environment.User | Should -Be $env.userObjectId
 
         if ($Record -or $Live) {
-            $environment = Get-AzDevCenterUserEnvironment -DevCenter $env.devCenterName -ProjectName $env.projectName -UserId "me" -Name $env.envName2
+            $environment = Get-AzDevCenterUserEnvironment -DevCenterName $env.devCenterName -ProjectName $env.projectName -UserId "me" -Name $env.envName2
             $environment.Parameter.Keys[0] | Should -Be "name"
             $environment.Parameter.Values[0] | Should -Be $env.functionAppName1
             $environment.CatalogName | Should -Be $env.catalogName
@@ -48,7 +48,7 @@ Describe 'Get-AzDevCenterUserEnvironment' {
         $listOfEnvs.Count | Should -BeGreaterOrEqual 2
 
         if ($Record -or $Live) {
-            $listOfEnvs = Get-AzDevCenterUserEnvironment -DevCenter $env.devCenterName -ProjectName $env.projectName -UserId "me"
+            $listOfEnvs = Get-AzDevCenterUserEnvironment -DevCenterName $env.devCenterName -ProjectName $env.projectName -UserId "me"
             $listOfEnvs.Count | Should -BeGreaterOrEqual 2
         }
     
@@ -65,7 +65,7 @@ Describe 'Get-AzDevCenterUserEnvironment' {
         $environment.User | Should -Be $env.userObjectId
         
         if ($Record -or $Live) {
-            $environment = Get-AzDevCenterUserEnvironment -DevCenter $env.devCenterName -InputObject $envInput
+            $environment = Get-AzDevCenterUserEnvironment -DevCenterName $env.devCenterName -InputObject $envInput
             $environment.CatalogName | Should -Be $env.catalogName
             $environment.DefinitionName | Should -Be $env.sandbox
             $environment.Name | Should -Be $env.envName

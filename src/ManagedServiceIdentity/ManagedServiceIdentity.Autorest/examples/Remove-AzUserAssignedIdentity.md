@@ -11,4 +11,3 @@ Get-AzUserAssignedIdentity -ResourceGroupName azure-rg-test -Name uai-pwsh01 | R
 ```
 
 This command deletes an user assigned identity by pipeline.
-
