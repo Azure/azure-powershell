@@ -28,8 +28,8 @@ namespace Microsoft.Azure.Management.CognitiveServices.Models
         /// </param>
 
         /// <param name="keySource">Enumerates the possible value of keySource for Encryption
-        /// Possible values include: 'Microsoft.CognitiveServices',
-        /// 'Microsoft.KeyVault'</param>
+        /// Possible values include: &#39;Microsoft.CognitiveServices&#39;,
+        /// &#39;Microsoft.KeyVault&#39;</param>
         public Encryption(KeyVaultProperties keyVaultProperties = default(KeyVaultProperties), string keySource = default(string))
 
         {

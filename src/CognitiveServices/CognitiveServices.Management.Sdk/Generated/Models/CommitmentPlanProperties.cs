@@ -25,15 +25,15 @@ namespace Microsoft.Azure.Management.CognitiveServices.Models
         /// </summary>
 
         /// <param name="provisioningState">Gets the status of the resource at the time the operation was called.
-        /// Possible values include: 'Accepted', 'Creating', 'Deleting', 'Moving',
-        /// 'Failed', 'Succeeded', 'Canceled'</param>
+        /// Possible values include: &#39;Accepted&#39;, &#39;Creating&#39;, &#39;Deleting&#39;, &#39;Moving&#39;,
+        /// &#39;Failed&#39;, &#39;Succeeded&#39;, &#39;Canceled&#39;</param>
 
         /// <param name="commitmentPlanGuid">Commitment plan guid.
         /// </param>
 
         /// <param name="hostingModel">Account hosting model.
-        /// Possible values include: 'Web', 'ConnectedContainer',
-        /// 'DisconnectedContainer', 'ProvisionedWeb'</param>
+        /// Possible values include: &#39;Web&#39;, &#39;ConnectedContainer&#39;,
+        /// &#39;DisconnectedContainer&#39;, &#39;ProvisionedWeb&#39;</param>
 
         /// <param name="planType">Commitment plan type.
         /// </param>

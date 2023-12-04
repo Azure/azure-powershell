@@ -277,7 +277,8 @@ namespace Microsoft.Azure.Management.CognitiveServices
 
         }
         /// <summary>
-        /// Gets the specified Content Filters associated with the Azure OpenAI account.
+        /// Gets the specified Content Filters associated with the Azure OpenAI
+        /// account.
         /// </summary>
         /// <param name='resourceGroupName'>
         /// The name of the resource group. The name is case insensitive.
@@ -531,7 +532,8 @@ namespace Microsoft.Azure.Management.CognitiveServices
 
         }
         /// <summary>
-        /// Update the state of specified Content Filters associated with the Azure OpenAI account.
+        /// Update the state of specified Content Filters associated with the Azure
+        /// OpenAI account.
         /// </summary>
         /// <param name='resourceGroupName'>
         /// The name of the resource group. The name is case insensitive.
@@ -847,7 +849,8 @@ namespace Microsoft.Azure.Management.CognitiveServices
         }
 
         /// <summary>
-        /// Deletes the specified Content Filters associated with the Azure OpenAI account.
+        /// Deletes the specified Content Filters associated with the Azure OpenAI
+        /// account.
         /// </summary>
         /// <param name='resourceGroupName'>
         /// The name of the resource group. The name is case insensitive.
@@ -1030,7 +1033,7 @@ namespace Microsoft.Azure.Management.CognitiveServices
             cancellationToken.ThrowIfCancellationRequested();
             string _responseContent = null;
 
-            if ((int)_statusCode != 202 && (int)_statusCode != 204 && (int)_statusCode != 200)
+            if ((int)_statusCode != 202 && (int)_statusCode != 204)
             {
                 var ex = new ErrorResponseException(string.Format("Operation returned an invalid status code '{0}'", _statusCode));
                 try
