@@ -30,27 +30,23 @@ The operation to delete a run command.
 
 ## EXAMPLES
 
-### Example 1: {{ Add title here }}
+### Example 1: Remove a run-command for a machine
 ```powershell
-{{ Add code here }}
+Remove-AzConnectedMachineRunCommand -ResourceGroupName "az-sdk-test" -RunCommandName "myRunCommand" -MachineName "testmachine"
 ```
 
 ```output
-{{ Add output here }}
+Location    Name          SystemDataCreatedAt SystemDataCreatedBy SystemDataCreatedByType SystemDataLastModifiedAt Syst
+                                                                                                                   emDa
+                                                                                                                   taLa
+                                                                                                                   stMo
+                                                                                                                   difi
+                                                                                                                   edBy
+--------    ----          ------------------- ------------------- ----------------------- ------------------------ ----
+eastus2euap myRunCommand2
 ```
 
-{{ Add description here }}
-
-### Example 2: {{ Add title here }}
-```powershell
-{{ Add code here }}
-```
-
-```output
-{{ Add output here }}
-```
-
-{{ Add description here }}
+Remove a run-command for a machine
 
 ## PARAMETERS
 

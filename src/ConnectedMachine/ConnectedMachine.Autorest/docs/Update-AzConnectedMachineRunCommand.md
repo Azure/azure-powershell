@@ -44,27 +44,24 @@ The operation to update the run command.
 
 ## EXAMPLES
 
-### Example 1: {{ Add title here }}
+### Example 1: Update a run-command for a machine
 ```powershell
-{{ Add code here }}
+Update-AzConnectedMachineRunCommand -ResourceGroupName "az-sdk-test" -RunCommandName "myRunCommand2" -MachineName "testmachine" -Subscription "e6fe6705-4c9c-4b54-81d2-e455780e20b8" -Tag @{Tag1="tag1"; Tag2="tag2"}
+
 ```
 
 ```output
-{{ Add output here }}
+Location    Name          SystemDataCreatedAt SystemDataCreatedBy SystemDataCreatedByType SystemDataLastModifiedAt Syst
+                                                                                                                   emDa
+                                                                                                                   taLa
+                                                                                                                   stMo
+                                                                                                                   difi
+                                                                                                                   edBy
+--------    ----          ------------------- ------------------- ----------------------- ------------------------ ----
+eastus2euap myRunCommand2
 ```
 
-{{ Add description here }}
-
-### Example 2: {{ Add title here }}
-```powershell
-{{ Add code here }}
-```
-
-```output
-{{ Add output here }}
-```
-
-{{ Add description here }}
+Update a run-command for a machine
 
 ## PARAMETERS
 

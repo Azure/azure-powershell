@@ -58,27 +58,23 @@ The operation to create or update a run command.
 
 ## EXAMPLES
 
-### Example 1: {{ Add title here }}
+### Example 1: Create a run-command for a machine
 ```powershell
-{{ Add code here }}
+New-AzConnectedMachineRunCommand -ResourceGroupName "az-sdk-test" -Location "eastus2euap" -SourceScript "Write-Host Hello World!" -RunCommandName "myRunCommand3" -MachineName "testmachine" -Subscription "e6fe6705-4c9c-4b54-81d2-e455780e20b8"
 ```
 
 ```output
-{{ Add output here }}
+Location    Name          SystemDataCreatedAt SystemDataCreatedBy SystemDataCreatedByType SystemDataLastModifiedAt Syst
+                                                                                                                   emDa
+                                                                                                                   taLa
+                                                                                                                   stMo
+                                                                                                                   difi
+                                                                                                                   edBy
+--------    ----          ------------------- ------------------- ----------------------- ------------------------ ----
+eastus2euap myRunCommand3
 ```
 
-{{ Add description here }}
-
-### Example 2: {{ Add title here }}
-```powershell
-{{ Add code here }}
-```
-
-```output
-{{ Add output here }}
-```
-
-{{ Add description here }}
+Create a run-command for a machine
 
 ## PARAMETERS
 
