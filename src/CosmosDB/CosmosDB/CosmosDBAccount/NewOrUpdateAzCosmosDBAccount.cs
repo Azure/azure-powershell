@@ -73,6 +73,9 @@ namespace Microsoft.Azure.Commands.CosmosDB
         [Parameter(Mandatory = false, HelpMessage = Constants.EnablePartitionMergeHelpMessage)]
         public bool? EnablePartitionMerge { get; set; }
 
+        [Parameter(Mandatory = false, HelpMessage = Constants.EnableBurstCapacityHelpMessage)]
+        public bool? EnableBurstCapacity { get; set; }
+
         [Parameter(Mandatory = false, HelpMessage = Constants.AsJobHelpMessage)]
         public SwitchParameter AsJob { get; set; }
 
@@ -85,7 +88,7 @@ namespace Microsoft.Azure.Commands.CosmosDB
         public string[] NetworkAclBypassResourceId { get; set; }
 
         [Parameter(Mandatory = false, HelpMessage = Constants.ServerVersionHelpMessage)]
-        [PSArgumentCompleter(SDKModel.ServerVersion.ThreeFullStopTwo, SDKModel.ServerVersion.ThreeFullStopSix, SDKModel.ServerVersion.FourFullStopZero)]
+        [PSArgumentCompleter(SDKModel.ServerVersion.Three2, SDKModel.ServerVersion.Three6, SDKModel.ServerVersion.Four0)]
         public string ServerVersion { get; set; }
 
         [Parameter(Mandatory = false, HelpMessage = Constants.BackupIntervalInMinHelpMessage)]
@@ -109,6 +112,10 @@ namespace Microsoft.Azure.Commands.CosmosDB
         [Parameter(Mandatory = false, HelpMessage = Constants.AnalyticalStorageSchemaTypeHelpMessage)]
         [PSArgumentCompleter(SDKModel.AnalyticalStorageSchemaType.WellDefined, SDKModel.AnalyticalStorageSchemaType.FullFidelity)]
         public string AnalyticalStorageSchemaType { get; set; }
+
+        [Parameter(Mandatory = false, HelpMessage = Constants.MinimalTlsVersionHelpMessage)]
+        [PSArgumentCompleter(SDKModel.MinimalTlsVersion.Tls, SDKModel.MinimalTlsVersion.Tls11, SDKModel.MinimalTlsVersion.Tls12)]
+        public string MinimalTlsVersion { get; set; }
 
         public ConsistencyPolicy PopoulateConsistencyPolicy(string DefaultConsistencyLevel, int? MaxStalenessIntervalInSeconds, int? MaxStalenessPrefix)
         {

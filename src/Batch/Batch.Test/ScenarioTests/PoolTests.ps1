@@ -43,6 +43,7 @@ function Test-PoolCRUD
         $iaasConfiguration.ContainerConfiguration = New-Object Microsoft.Azure.Commands.Batch.Models.PSContainerConfiguration
         $iaasConfiguration.ContainerConfiguration.ContainerImageNames = New-Object System.Collections.Generic.List[string]
         $iaasConfiguration.ContainerConfiguration.ContainerImageNames.Add("test")
+        $iaasConfiguration.ContainerConfiguration.type = "dockerCompatible"
         New-AzBatchPool $poolId2 -VirtualMachineConfiguration $iaasConfiguration -TargetDedicated $targetDedicated -VirtualMachineSize $vmSize -BatchContext $context
 
         # List the pools to ensure they were created

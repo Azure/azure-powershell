@@ -143,7 +143,7 @@ namespace Microsoft.Azure.Commands.HDInsight
             set { _config.CertificatePassword = value; }
         }
 
-        [Parameter(HelpMessage = "Gets or sets the Service Principal AAD Tenant Id for accessing Azure Data Lake.")]
+        [Parameter(HelpMessage = "Gets or sets the Service Principal Microsoft Entra Tenant Id for accessing Azure Data Lake.")]
         public Guid AadTenantId
         {
             get { return _config.AADTenantId; }

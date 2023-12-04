@@ -188,7 +188,7 @@ List of IpRules
 To construct, see NOTES section for IPRULE properties and create a hash table.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.EventHub.Models.Api20221001Preview.INwRuleSetIPRules[]
+Type: Microsoft.Azure.PowerShell.Cmdlets.EventHub.Models.Api202301Preview.INwRuleSetIPRules[]
 Parameter Sets: (All)
 Aliases:
 
@@ -297,7 +297,7 @@ List of VirtualNetwork Rules
 To construct, see NOTES section for VIRTUALNETWORKRULE properties and create a hash table.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.EventHub.Models.Api20221001Preview.INwRuleSetVirtualNetworkRules[]
+Type: Microsoft.Azure.PowerShell.Cmdlets.EventHub.Models.Api202301Preview.INwRuleSetVirtualNetworkRules[]
 Parameter Sets: (All)
 Aliases:
 
@@ -348,38 +348,8 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.EventHub.Models.Api20221001Preview.INetworkRuleSet
+### Microsoft.Azure.PowerShell.Cmdlets.EventHub.Models.Api202301Preview.INetworkRuleSet
 
 ## NOTES
-
-ALIASES
-
-COMPLEX PARAMETER PROPERTIES
-
-To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
-
-
-`INPUTOBJECT <IEventHubIdentity>`: Identity parameter.
-  - `[Alias <String>]`: The Disaster Recovery configuration name
-  - `[ApplicationGroupName <String>]`: The Application Group name 
-  - `[AuthorizationRuleName <String>]`: The authorization rule name.
-  - `[ClusterName <String>]`: The name of the Event Hubs Cluster.
-  - `[ConsumerGroupName <String>]`: The consumer group name
-  - `[EventHubName <String>]`: The Event Hub name
-  - `[Id <String>]`: Resource identity path
-  - `[NamespaceName <String>]`: The Namespace name
-  - `[PrivateEndpointConnectionName <String>]`: The PrivateEndpointConnection name
-  - `[ResourceAssociationName <String>]`: The ResourceAssociation Name
-  - `[ResourceGroupName <String>]`: Name of the resource group within the azure subscription.
-  - `[SchemaGroupName <String>]`: The Schema Group name 
-  - `[SubscriptionId <String>]`: Subscription credentials that uniquely identify a Microsoft Azure subscription. The subscription ID forms part of the URI for every service call.
-
-`IPRULE <INwRuleSetIPRules[]>`: List of IpRules
-  - `[Action <NetworkRuleIPAction?>]`: The IP Filter Action
-  - `[IPMask <String>]`: IP Mask
-
-`VIRTUALNETWORKRULE <INwRuleSetVirtualNetworkRules[]>`: List of VirtualNetwork Rules
-  - `[IgnoreMissingVnetServiceEndpoint <Boolean?>]`: Value that indicates whether to ignore missing Vnet Service Endpoint
-  - `[SubnetId <String>]`: Resource ID of Virtual Network Subnet
 
 ## RELATED LINKS

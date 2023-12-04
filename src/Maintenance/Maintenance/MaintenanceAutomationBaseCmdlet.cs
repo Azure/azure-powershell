@@ -15,6 +15,7 @@
 using Microsoft.Azure.Commands.Maintenance.Models;
 using Microsoft.Azure.Management.Maintenance;
 using Microsoft.Azure.Management.Maintenance.Models;
+using Microsoft.Azure.Management.ResourceManager.Version2021_01_01.Models;
 using System;
 using System.Collections;
 using System.Collections.Generic;
@@ -87,6 +88,22 @@ namespace Microsoft.Azure.Commands.Maintenance
             get
             {
                 return MaintenanceClient.MaintenanceManagementClient.ConfigurationAssignments;
+            }
+        }
+
+        public IConfigurationAssignmentsForSubscriptionsOperations ConfigurationAssignmentsForSubscriptionsClient
+        {
+            get
+            {
+                return MaintenanceClient.MaintenanceManagementClient.ConfigurationAssignmentsForSubscriptions;
+            }
+        }
+
+        public IConfigurationAssignmentsForResourceGroupOperations ConfigurationAssignmentsForResourceGroupClient
+        {
+            get
+            {
+                return MaintenanceClient.MaintenanceManagementClient.ConfigurationAssignmentsForResourceGroup;
             }
         }
 
@@ -264,6 +281,27 @@ namespace Microsoft.Azure.Commands.Maintenance
             Match m = r.Match(resourceId);
             return m.Success ? m.Groups["version"].Value : null;
         }
+
+        protected static bool IsSubcriptionAssignment(string ResourceGroupName, string ProviderName, string ResourceType, string ResourceName)
+        {
+            if (string.IsNullOrEmpty(ResourceGroupName) && string.IsNullOrEmpty(ProviderName) && string.IsNullOrEmpty(ResourceType) && string.IsNullOrEmpty(ResourceName))
+            {
+                return true;
+            }
+
+            return false;
+        }
+
+        protected static bool IsResourceGroupAssignment(string ResourceGroupName, string ProviderName, string ResourceType, string ResourceName)
+        {
+            if (string.IsNullOrEmpty(ResourceName) && !string.IsNullOrEmpty(ResourceGroupName) && string.IsNullOrEmpty(ProviderName) && string.IsNullOrEmpty(ResourceType))
+            {
+                return true;
+            }
+
+            return false;
+        }
+
     }
     public static class LocationStringExtensions
     {

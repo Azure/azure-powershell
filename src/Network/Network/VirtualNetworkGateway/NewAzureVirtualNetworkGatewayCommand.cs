@@ -29,7 +29,7 @@ using System.Linq;
 
 namespace Microsoft.Azure.Commands.Network
 {
-    [Cmdlet("New", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "VirtualNetworkGateway",SupportsShouldProcess = true,DefaultParameterSetName = VirtualNetworkGatewayParameterSets.Default),OutputType(typeof(PSVirtualNetworkGateway))]
+    [Cmdlet("New", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "VirtualNetworkGateway", SupportsShouldProcess = true, DefaultParameterSetName = VirtualNetworkGatewayParameterSets.Default), OutputType(typeof(PSVirtualNetworkGateway))]
     public class NewAzureVirtualNetworkGatewayCommand : VirtualNetworkGatewayBaseCmdlet
     {
         [Alias("ResourceName")]
@@ -69,7 +69,7 @@ namespace Microsoft.Azure.Commands.Network
         [Parameter(
             Mandatory = false,
             ValueFromPipelineByPropertyName = true,
-            HelpMessage = "The type of this virtual network gateway: Vpn, ExoressRoute, LocalGateway")]
+            HelpMessage = "The type of this virtual network gateway: Vpn, ExpressRoute, LocalGateway")]
         [ValidateSet(
             MNM.VirtualNetworkGatewayType.Vpn,
             MNM.VirtualNetworkGatewayType.ExpressRoute,
@@ -144,6 +144,7 @@ namespace Microsoft.Azure.Commands.Network
             MNM.VirtualNetworkGatewaySkuTier.ErGw1AZ,
             MNM.VirtualNetworkGatewaySkuTier.ErGw2AZ,
             MNM.VirtualNetworkGatewaySkuTier.ErGw3AZ,
+            MNM.VirtualNetworkGatewaySkuTier.ErGwScale,
             IgnoreCase = true)]
         public string GatewaySku { get; set; }
 
@@ -165,7 +166,7 @@ namespace Microsoft.Azure.Commands.Network
             ValueFromPipelineByPropertyName = true,
             HelpMessage = "The list of P2S VPN client tunneling protocols")]
         [ValidateSet(
-            MNM.VpnClientProtocol.SSTP,
+            MNM.VpnClientProtocol.Sstp,
             MNM.VpnClientProtocol.IkeV2,
             MNM.VpnClientProtocol.OpenVPN)]
         [ValidateNotNullOrEmpty]
@@ -313,6 +314,25 @@ namespace Microsoft.Azure.Commands.Network
         [Parameter(Mandatory = false, HelpMessage = "Run cmdlet in the background")]
         public SwitchParameter AsJob { get; set; }
 
+        [Parameter(
+            Mandatory = false,
+            ValueFromPipelineByPropertyName = true,
+            HelpMessage = "Property to indicate if the Express Route Gateway serves traffic when there are multiple Express Route Gateways in the vnet: Enabled/Disabled")]
+        [ValidateSet(
+            "Enabled",
+            "Disabled",
+            IgnoreCase = true)]
+        [PSArgumentCompleter(
+            "Enabled",
+            "Disabled")]
+        public string AdminState  { get; set; }
+
+        [Parameter(Mandatory = false, HelpMessage = "Set min scale units for scalable gateways")]
+        public Int32 MinScaleUnit { get; set; }
+
+        [Parameter(Mandatory = false, HelpMessage = "Set max scale units for scalable gateways")]
+        public Int32 MaxScaleUnit { get; set; }
+
         public override void Execute()
         {
             base.Execute();
@@ -406,7 +426,7 @@ namespace Microsoft.Azure.Commands.Network
 
             }
             vnetGateway.GatewayType = this.GatewayType;
-            if (vnetGateway.GatewayType == "LocalGateway" || vnetGateway.GatewayType == "ExpressRoute")
+            if (this.ExtendedLocation != null && (vnetGateway.GatewayType == "LocalGateway" || vnetGateway.GatewayType == "ExpressRoute"))
             {
                 vnetGateway.ExtendedLocation = new PSExtendedLocation(this.ExtendedLocation);
                 vnetGateway.VNetExtendedLocationResourceId = this.VNetExtendedLocationResourceId;
@@ -617,6 +637,33 @@ namespace Microsoft.Azure.Commands.Network
                 vnetGateway.NatRules = this.NatRule?.ToList();
             }
 
+            if (this.AdminState != null)
+            {
+                if (!GatewayType.Equals(MNM.VirtualNetworkGatewayType.ExpressRoute.ToString(), StringComparison.InvariantCultureIgnoreCase))
+                {
+                    throw new ArgumentException("AdminState parameter is only supported for Express Route gateways.");
+                }
+
+                vnetGateway.AdminState = this.AdminState;
+            }
+
+            if (!string.IsNullOrEmpty(this.GatewaySku) && this.GatewaySku.Equals(MNM.VirtualNetworkGatewaySkuTier.ErGwScale))
+            {
+                if (this.MaxScaleUnit > 0 && this.MinScaleUnit > this.MaxScaleUnit)
+                {
+                   throw new PSArgumentException(string.Format(Properties.Resources.InvalidAutoScaleConfiguration, this.MinScaleUnit, this.MaxScaleUnit));
+                }
+
+                if (this.MaxScaleUnit > 40) {
+                   throw new PSArgumentException(Properties.Resources.InvalidAutoScaleConfigurationBounds);          
+                }
+
+                vnetGateway.AutoScaleConfiguration = new PSVirtualNetworkGatewayAutoscaleConfiguration();
+                vnetGateway.AutoScaleConfiguration.Bounds = new PSVirtualNetworkGatewayPropertiesAutoScaleConfigurationBounds();
+                vnetGateway.AutoScaleConfiguration.Bounds.Min = Convert.ToInt32(this.MinScaleUnit);
+                vnetGateway.AutoScaleConfiguration.Bounds.Max = (this.MaxScaleUnit > 0) ? Convert.ToInt32(this.MaxScaleUnit) : Convert.ToInt32(this.MinScaleUnit);    
+            }
+                
             // Set the EnableBgpRouteTranslationForNat, if it is specified by customer.
             vnetGateway.EnableBgpRouteTranslationForNat = EnableBgpRouteTranslationForNat.IsPresent;
 

@@ -71,7 +71,7 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Implementation
             typeof(NewAzureTenantDeploymentCmdlet),
             typeof(CmdletAttribute))).ConfirmImpact;
 
-        protected override PSDeploymentCmdletParameters DeploymentParameters => new PSDeploymentCmdletParameters()
+        protected override PSDeploymentCmdletParameters BuildDeploymentParameters() => new PSDeploymentCmdletParameters()
         {
             ScopeType = DeploymentScopeType.Tenant,
             Location = this.Location,
@@ -81,13 +81,13 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Implementation
             TemplateFile = this.TemplateUri ?? this.TryResolvePath(this.TemplateFile),
             TemplateObject = this.TemplateObject,
             TemplateSpecId = this.TemplateSpecId,
-            TemplateParameterObject = this.GetTemplateParameterObject(this.TemplateParameterObject),
+            TemplateParameterObject = this.GetTemplateParameterObject(),
             ParameterUri = this.TemplateParameterUri,
             DeploymentDebugLogLevel = GetDeploymentDebugLogLevel(this.DeploymentDebugLogLevel),
             Tags = TagsHelper.ConvertToTagsDictionary(this.Tag)
         };
 
-        protected override PSDeploymentWhatIfCmdletParameters WhatIfParameters => new PSDeploymentWhatIfCmdletParameters(
+        protected override PSDeploymentWhatIfCmdletParameters BuildWhatIfParameters() => new PSDeploymentWhatIfCmdletParameters(
             DeploymentScopeType.Tenant,
             deploymentName : this.Name,
             location : this.Location,
@@ -97,7 +97,7 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Implementation
             templateObject : this.TemplateObject,
             templateSpecId: TemplateSpecId,
             templateParametersUri : this.TemplateParameterUri,
-            templateParametersObject : GetTemplateParameterObject(this.TemplateParameterObject),
+            templateParametersObject : GetTemplateParameterObject(),
             resultFormat : this.WhatIfResultFormat,
             excludeChangeTypes: this.WhatIfExcludeChangeType
         );

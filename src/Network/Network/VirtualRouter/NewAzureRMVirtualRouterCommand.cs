@@ -29,7 +29,6 @@ using Microsoft.WindowsAzure.Commands.Common.CustomAttributes;
 
 namespace Microsoft.Azure.Commands.Network
 {
-    [CmdletDeprecation(ReplacementCmdletName = "New-AzRouteServer")]
     [Cmdlet(VerbsCommon.New, ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "VirtualRouter", SupportsShouldProcess = true, DefaultParameterSetName = VirtualRouterParameterSetNames.ByVirtualRouterName), OutputType(typeof(PSVirtualRouter))]
     public partial class NewAzureRmVirtualRouter : VirtualRouterBaseCmdlet
     {
@@ -130,7 +129,7 @@ namespace Microsoft.Azure.Commands.Network
                     virtualHubModel.Sku = "Standard";
 
                     this.NetworkClient.NetworkManagementClient.VirtualHubs.CreateOrUpdate(this.ResourceGroupName, this.Name, virtualHubModel);
-                    this.NetworkClient.NetworkManagementClient.VirtualHubIpConfiguration.CreateOrUpdate(this.ResourceGroupName, this.Name, ipConfigName, ipconfig);
+                    this.NetworkClient.NetworkManagementClient.VirtualHubIPConfiguration.CreateOrUpdate(this.ResourceGroupName, this.Name, ipConfigName, ipconfig);
                     virtualHubModel = this.NetworkClient.NetworkManagementClient.VirtualHubs.Get(this.ResourceGroupName, this.Name);
 
                     virtualHub = NetworkResourceManagerProfile.Mapper.Map<PSVirtualHub>(virtualHubModel);

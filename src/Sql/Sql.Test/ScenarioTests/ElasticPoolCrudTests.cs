@@ -76,7 +76,7 @@ namespace Microsoft.Azure.Commands.Sql.Test.ScenarioTests
             TestRunner.RunTestScript("Test-CreateHyperscaleElasticPoolWithReplica");
         }
 
-        [Fact(Skip = "Cannot re-record. Need MS changes to deploy till canary region.")]
+        [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestElasticPoolCreateWithPreferredEnclaveType()
         {
@@ -125,7 +125,7 @@ namespace Microsoft.Azure.Commands.Sql.Test.ScenarioTests
             TestRunner.RunTestScript("Test-UpdateHyperscaleElasticPoolReplicaCount");
         }
 
-        [Fact(Skip = "Cannot re-record. Need MS changes to deploy till canary region.")]
+        [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestElasticPoolUpdateWithPreferredEnclaveType()
         {
@@ -160,7 +160,7 @@ namespace Microsoft.Azure.Commands.Sql.Test.ScenarioTests
             TestRunner.RunTestScript("Test-GetElasticPoolWithMaintenanceConfigurationId");
         }
 
-        [Fact(Skip = "Cannot re-record. Need MS changes to deploy till canary region.")]
+        [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestElasticPoolGetWithPreferredEnclaveType()
         {

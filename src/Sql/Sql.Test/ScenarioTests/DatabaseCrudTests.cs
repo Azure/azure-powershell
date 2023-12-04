@@ -116,7 +116,7 @@ namespace Microsoft.Azure.Commands.Sql.Test.ScenarioTests
             TestRunner.RunTestScript("Test-UpdateDatabaseWithMaintenanceConfigurationId");
         }
 
-        [Fact(Skip = "Cannot re-record.")]
+        [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestDatabaseUpdateWithPreferredEnclaveType()
         {
@@ -233,6 +233,20 @@ namespace Microsoft.Azure.Commands.Sql.Test.ScenarioTests
         public void TestRevalidateAndRevertAKVKeyForDatabaseWithPerDBCMK()
         {
             TestRunner.RunTestScript("Test-RevalidateAndRevertAKVKeyForDatabaseWithPerDBCMK");
+        }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void TestFreeLimitDatabaseCreate()
+        {
+            TestRunner.RunTestScript("Test-FreeLimitDatabaseCreate");
+        }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void TestFreeLimitDatabaseUpdateFreeLimitExhaustionBehavior()
+        {
+            TestRunner.RunTestScript("Test-FreeLimitDatabaseUpdateFreeLimitExhaustionBehavior");
         }
     }
 }

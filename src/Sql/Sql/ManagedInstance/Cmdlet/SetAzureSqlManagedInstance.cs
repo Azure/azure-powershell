@@ -33,10 +33,6 @@ namespace Microsoft.Azure.Commands.Sql.ManagedInstance.Cmdlet
     /// <summary>
     /// Defines the Set-AzSqlInstance cmdlet
     /// </summary>
-    [CmdletOutputBreakingChange(
-        deprecatedCmdletOutputTypeName: typeof(AzureSqlManagedInstanceModel),
-        DeprecatedOutputProperties = new String[] { "BackupStorageRedundancy" },
-        NewOutputProperties = new String[] { "CurrentBackupStorageRedundancy", "RequestedBackupStorageRedundancy" })]
     [Cmdlet(VerbsCommon.Set, ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "SqlInstance",
         DefaultParameterSetName = SetByNameAndResourceGroupParameterSet,
         SupportsShouldProcess = true),
@@ -174,7 +170,7 @@ namespace Microsoft.Azure.Commands.Sql.ManagedInstance.Cmdlet
         /// Gets or sets whether or not to assign identity for instance
         /// </summary>
         [Parameter(Mandatory = false,
-            HelpMessage = "Generate and assign an Azure Active Directory Identity for this instance for use with key management services like Azure KeyVault.")]
+            HelpMessage = "Generate and assign a Microsoft Entra identity for this instance for use with key management services like Azure KeyVault.")]
         public SwitchParameter AssignIdentity { get; set; }
 
         /// <summary>

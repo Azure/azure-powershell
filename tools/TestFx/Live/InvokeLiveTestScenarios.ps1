@@ -112,7 +112,9 @@ while ($queuedJobs.Count -gt 0) {
                 }
 
                 if ("" -ne $liveJobStreams.Error) {
-                    $liveJobStreams.Error
+                    $liveJobStreams.Error | ForEach-Object {
+                        $_ | Format-List * -Force
+                    }
                 }
             }
         }

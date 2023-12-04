@@ -31,7 +31,6 @@ using Microsoft.WindowsAzure.Commands.Common.CustomAttributes;
 
 namespace Microsoft.Azure.Commands.Network
 {
-    [CmdletDeprecation(ReplacementCmdletName = "Update-AzRouteServerPeer")]
     [Cmdlet("Update", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "VirtualRouterPeer", SupportsShouldProcess = true, DefaultParameterSetName = VirtualRouterPeerParameterSetNames.ByVirtualRouterName), OutputType(typeof(PSVirtualRouter))]
     public partial class UpdateAzureRmVirtualRouterPeer : VirtualRouterBaseCmdlet
     {
@@ -144,7 +143,7 @@ namespace Microsoft.Azure.Commands.Network
             {
                 var parsedResourceId = new ResourceIdentifier(ResourceId);
                 PeerAsn = (uint)existingBgpConnection.PeerAsn;
-                PeerIp = existingBgpConnection.PeerIp;
+                PeerIp = existingBgpConnection.PeerIP;
             }
 
             ConfirmAction(

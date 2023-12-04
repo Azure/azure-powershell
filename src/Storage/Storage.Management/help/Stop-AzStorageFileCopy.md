@@ -16,15 +16,15 @@ Stops a copy operation to the specified destination file.
 ### ShareName
 ```
 Stop-AzStorageFileCopy [-ShareName] <String> [-FilePath] <String> [-CopyId <String>] [-Force]
- [-Context <IStorageContext>] [-ServerTimeoutPerRequest <Int32>] [-ClientTimeoutPerRequest <Int32>]
- [-DefaultProfile <IAzureContextContainer>] [-ConcurrentTaskCount <Int32>] [-WhatIf] [-Confirm]
- [<CommonParameters>]
+ [-DisAllowTrailingDot] [-Context <IStorageContext>] [-ServerTimeoutPerRequest <Int32>]
+ [-ClientTimeoutPerRequest <Int32>] [-DefaultProfile <IAzureContextContainer>] [-ConcurrentTaskCount <Int32>]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### File
 ```
-Stop-AzStorageFileCopy [-File] <CloudFile> [-CopyId <String>] [-Force] [-Context <IStorageContext>]
- [-ServerTimeoutPerRequest <Int32>] [-ClientTimeoutPerRequest <Int32>]
+Stop-AzStorageFileCopy [-File] <CloudFile> [-ShareFileClient <ShareFileClient>] [-CopyId <String>] [-Force]
+ [-Context <IStorageContext>] [-ServerTimeoutPerRequest <Int32>] [-ClientTimeoutPerRequest <Int32>]
  [-DefaultProfile <IAzureContextContainer>] [-ConcurrentTaskCount <Int32>] [-WhatIf] [-Confirm]
  [<CommonParameters>]
 ```
@@ -125,6 +125,21 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### -DisAllowTrailingDot
+Disallow trailing dot (.) to suffix directory and file names.
+
+```yaml
+Type: System.Management.Automation.SwitchParameter
+Parameter Sets: ShareName
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
 ### -File
 Specifies a **CloudFile** object.
 You can create a cloud file or obtain one by using the Get-AzStorageFile cmdlet.
@@ -183,6 +198,21 @@ Required: False
 Position: Named
 Default value: None
 Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -ShareFileClient
+ShareFileClient object indicated the file to Stop Copy.
+
+```yaml
+Type: Azure.Storage.Files.Shares.ShareFileClient
+Parameter Sets: File
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: True (ByPropertyName, ByValue)
 Accept wildcard characters: False
 ```
 

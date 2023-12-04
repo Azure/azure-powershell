@@ -30,7 +30,6 @@ function Test-AzureFirewallPolicyCRUD {
     $appRcName = "appRc"
     $appRcPriority = 400
     $appRcActionType = "Allow"
-
     $pipelineRcPriority = 154
 
     # AzureFirewallPolicyApplicationRule 1
@@ -1778,6 +1777,7 @@ function Test-AzureFirewallSnat {
     $vnetName = Get-ResourceName
     $privateRange = @("3.3.0.0/24", "98.0.0.0/8","10.227.16.0/20")
     $privateRange2 = @("0.0.0.0/0", "66.92.0.0/16")
+    $emptyPrivateRange = @()
    
     try {
         
@@ -1801,7 +1801,7 @@ function Test-AzureFirewallSnat {
         Assert-AreEqualArray $privateRange $getAzureFirewallPolicy.Snat.PrivateRanges
         Assert-AreEqual "Enabled" $getAzureFirewallPolicy.Snat.AutoLearnPrivateRanges
 
-        # Modify
+         # Modify
         $snat = New-AzFirewallPolicySnat -PrivateRange $privateRange2
         # Set AzureFirewallPolicy
         $azureFirewallPolicy.Snat = $snat
@@ -1811,6 +1811,13 @@ function Test-AzureFirewallSnat {
         Assert-NotNull $policy.Snat
         Assert-AreEqualArray $privateRange2 $policy.Snat.PrivateRanges
         Assert-AreEqual "Disabled" $policy.Snat.AutoLearnPrivateRanges
+
+          # Modify
+        $snat = New-AzFirewallPolicySnat -AutoLearnPrivateRange
+        Assert-AreEqual $emptyPrivateRange $snat.PrivateRanges
+        Assert-NotNull $snat.PrivateRanges
+        Assert-AreEqual $snat.PrivateRanges.count 0
+     
     }
     finally {
         # Cleanup
@@ -1927,6 +1934,94 @@ function Test-AzureFirewallPolicyApplicationRuleCustomHttpHeader {
         Assert-AreEqual 1 $getAppRule3.HttpHeadersToInsert.Count
         Assert-AreEqual $headerName3 $getAppRule3.HttpHeadersToInsert[0].HeaderName
         Assert-AreEqual $headerValue3 $getAppRule3.HttpHeadersToInsert[0].HeaderValue
+    }
+    finally {
+        # Cleanup
+        Clean-ResourceGroup $rgname
+    }
+}
+
+function Test-AzureFirewallPolicySizeProperty {
+    # Setup
+    $rgname = Get-ResourceGroupName
+    $azureFirewallPolicyName = Get-ResourceName
+    $location = "westus2"
+
+    try {
+        # Create the resource group
+        $resourceGroup = New-AzResourceGroup -Name $rgname -Location $location -Tags @{ testtag = "testval" }
+        
+        # Create AzureFirewallPolicy (with no rules, ThreatIntel is in Alert mode by default)
+        $azureFirewallPolicy = New-AzFirewallPolicy -Name $azureFirewallPolicyName -ResourceGroupName $rgname -Location $location 
+
+        # Get AzureFirewallPolicy
+        $getAzureFirewallPolicy = Get-AzFirewallPolicy -Name $azureFirewallPolicyName -ResourceGroupName $rgname
+
+        #verification
+        Assert-NotNull $getAzureFirewallPolicy.Size
+    }
+    finally {
+        # Cleanup
+        Clean-ResourceGroup $rgname
+    }
+}
+
+function Test-AzureFirewallPolicyRuleCollectionGroupSizeProperty {
+    # Setup
+    $rgname = Get-ResourceGroupName
+    $azureFirewallPolicyName = Get-ResourceName
+    $azureFirewallPolicyAsJobName = Get-ResourceName
+    $resourceTypeParent = "Microsoft.Network/FirewallPolicies"
+    $location = "westus2"
+
+    $ruleGroupName = Get-ResourceName
+
+    # AzureFirewallPolicyApplicationRuleCollection
+    $appRcName = "appRc"
+    $appRcPriority = 400
+    $appRcActionType = "Allow"
+
+    $pipelineRcPriority = 154
+
+    # AzureFirewallPolicyApplicationRule 1
+    $appRule1Name = "appRule"
+    $appRule1Desc = "desc1"
+    $appRule1Fqdn1 = "*google.com"
+    $appRule1Fqdn2 = "*microsoft.com"
+    $appRule1Protocol1 = "http:80"
+    $appRule1Port1 = 80
+    $appRule1ProtocolType1 = "http"
+    $appRule1Protocol2 = "https:443"
+    $appRule1Port2 = 443
+    $appRule1ProtocolType2 = "https"
+    $appRule1SourceAddress1 = "192.168.0.0/16"
+
+    try {
+        # Create the resource group
+        $resourceGroup = New-AzResourceGroup -Name $rgname -Location $location -Tags @{ testtag = "testval" }
+
+        # Create AzureFirewallPolicy (with no rules, ThreatIntel is in Alert mode by default)
+        $azureFirewallPolicy = New-AzFirewallPolicy -Name $azureFirewallPolicyName -ResourceGroupName $rgname -Location $location -SkuTier Premium
+
+        # Get AzureFirewallPolicy
+        $getAzureFirewallPolicy = Get-AzFirewallPolicy -Name $azureFirewallPolicyName -ResourceGroupName $rgname
+
+        # Create Application Rules
+        $appRule = New-AzFirewallPolicyApplicationRule -Name $appRule1Name -Description $appRule1Desc -Protocol $appRule1Protocol1, $appRule1Protocol2 -TargetFqdn $appRule1Fqdn1, $appRule1Fqdn2 -SourceAddress $appRule1SourceAddress1 -TerminateTLS
+        
+        # Create Filter Rule with 1 application rule
+        $appRc = New-AzFirewallPolicyFilterRuleCollection -Name $appRcName -Priority $appRcPriority -Rule $appRule -ActionType $appRcActionType
+
+        New-AzFirewallPolicyRuleCollectionGroup -Name $ruleGroupName -Priority 100 -RuleCollection $appRc -FirewallPolicyObject $azureFirewallPolicy
+
+        # Set AzureFirewallPolicy
+        Set-AzFirewallPolicy -InputObject $azureFirewallPolicy
+        # Get AzureFirewallPolicy
+        $getAzureFirewallPolicy = Get-AzFirewallPolicy -Name $azureFirewallPolicyName -ResourceGroupName $rgName
+
+        $getRg = Get-AzFirewallPolicyRuleCollectionGroup -Name $ruleGroupName -AzureFirewallPolicy $getAzureFirewallPolicy
+        Assert-NotNull $getRg.properties.priority
+        Assert-NotNull $getRg.properties.size
     }
     finally {
         # Cleanup

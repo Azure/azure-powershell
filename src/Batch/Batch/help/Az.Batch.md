@@ -68,9 +68,6 @@ Gets Batch job preparation and release task status.
 ### [Get-AzBatchJobSchedule](Get-AzBatchJobSchedule.md)
 Gets Batch job schedules.
 
-### [Get-AzBatchJobStatistic](Get-AzBatchJobStatistic.md)
-Gets job summary statistics for a Batch account.
-
 ### [Get-AzBatchLocationQuota](Get-AzBatchLocationQuota.md)
 Gets the Batch service quotas for your subscription at the given location.
 
@@ -85,9 +82,6 @@ Gets Batch pools under the specified Batch account.
 
 ### [Get-AzBatchPoolNodeCount](Get-AzBatchPoolNodeCount.md)
 Gets Batch node counts per node state grouped by pool id.
-
-### [Get-AzBatchPoolStatistic](Get-AzBatchPoolStatistic.md)
-Gets pool summary statistics for a Batch account.
 
 ### [Get-AzBatchPoolUsageMetric](Get-AzBatchPoolUsageMetric.md)
 Gets pool usage metrics for a Batch account.

@@ -1,4 +1,4 @@
-﻿// ----------------------------------------------------------------------------------
+// ----------------------------------------------------------------------------------
 //
 // Copyright Microsoft Corporation
 // Licensed under the Apache License, Version 2.0 (the "License");
@@ -29,7 +29,6 @@ using Microsoft.WindowsAzure.Commands.Common.CustomAttributes;
 
 namespace Microsoft.WindowsAzure.Commands.Storage.File.Cmdlet
 {
-    [GenericBreakingChange("The leading question mark '?' of the created SAS token will be removed in a future release.")]
     [Cmdlet("New", Azure.Commands.ResourceManager.Common.AzureRMConstants.AzurePrefix + "StorageFileSASToken"), OutputType(typeof(String))]
     public class NewAzureStorageFileSasToken : AzureStorageFileCmdletBase
     {
@@ -150,6 +149,7 @@ namespace Microsoft.WindowsAzure.Commands.Storage.File.Cmdlet
         public override int? ServerTimeoutPerRequest { get; set; }
         public override int? ClientTimeoutPerRequest { get; set; }
         public override int? ConcurrentTaskCount { get; set; }
+        public override SwitchParameter DisAllowTrailingDot { get; set; }
 
         /// <summary>
         /// Execute command
@@ -183,6 +183,12 @@ namespace Microsoft.WindowsAzure.Commands.Storage.File.Cmdlet
                 fileClient = shareClient.GetRootDirectoryClient().GetFileClient(this.Path);
             }
 
+
+            if (this.Context != null && this.Context is AzureStorageContext && ((AzureStorageContext)this.Context).StorageAccount != null && !((AzureStorageContext)this.Context).StorageAccount.Credentials.IsSharedKey)
+            {
+                throw new InvalidOperationException("Create File service SAS only supported with SharedKey credentail.");
+            }
+
             // Get share saved policy if any
             ShareSignedIdentifier identifier = null;
             if (!string.IsNullOrEmpty(this.Policy))
@@ -195,10 +201,9 @@ namespace Microsoft.WindowsAzure.Commands.Storage.File.Cmdlet
 
             //Create SAS and output it
             string sasToken = SasTokenHelper.GetFileSharedAccessSignature((AzureStorageContext)this.Context, sasBuilder, CmdletCancellationToken);
-            if (sasToken[0] != '?')
-            {
-                sasToken = "?" + sasToken;
-            }
+
+            // remove prefix "?" of SAS if any
+            sasToken = Util.GetSASStringWithoutQuestionMark(sasToken);
 
             if (FullUri)
             {

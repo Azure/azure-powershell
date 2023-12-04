@@ -20,6 +20,18 @@
 
 ## Upcoming Release
 
+## Version 1.4.1
+* Removed outdated upcoming breaking change warning
+
+## Version 1.4.0
+* Added support for maintenance configuration cancellation.
+
+## Version 1.3.1
+* Fixed breaking change information
+  
+## Version 1.3.0
+* Added support for Resource Group and Subscription configuration assignment.
+
 ## Version 1.2.1
 * Upgraded AutoMapper to Microsoft.Azure.PowerShell.AutoMapper 6.2.2 with fix [#18721]
 
@@ -47,4 +59,3 @@
 * Preview release of `Az.Maintenance` module
 
 ## Version 0.1.0
-

@@ -69,5 +69,10 @@ namespace Microsoft.Azure.PowerShell.Ssh.Helpers.HybridConnectivity
         /// </summary>
         IEndpointsOperations Endpoints { get; }
 
+        /// <summary>
+        /// Gets the IServiceConfigurationsOperations.
+        /// </summary>
+        IServiceConfigurationsOperations ServiceConfigurations { get; }
+
     }
 }

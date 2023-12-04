@@ -52,7 +52,7 @@ namespace Microsoft.Azure.Commands.CosmosDB
 
             if (ShouldProcess(Name, "Deleting CosmosDB MongoDB Collection"))
             {
-                CosmosDBManagementClient.MongoDBResources.DeleteMongoDBCollectionWithHttpMessagesAsync(ResourceGroupName, AccountName, DatabaseName, Name).GetAwaiter().GetResult();
+                CosmosDBManagementClient.MongoDbResources.DeleteMongoDBCollectionWithHttpMessagesAsync(ResourceGroupName, AccountName, DatabaseName, Name).GetAwaiter().GetResult();
 
                 if (PassThru)
                     WriteObject(true);

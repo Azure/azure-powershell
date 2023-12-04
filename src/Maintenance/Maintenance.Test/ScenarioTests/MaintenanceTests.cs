@@ -57,5 +57,26 @@ namespace Microsoft.Azure.Commands.Maintenance.Test.ScenarioTests
         {
             TestRunner.RunTestScript("Test-AzMaintenancePublicConfiguration");
         }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void TestAzConfigurationAssignmentDynamicGroupForSubscription()
+        {
+            TestRunner.RunTestScript("Test-AzConfigurationAssignmentDynamicGroupForSubscription");
+        }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void TestAzConfigurationAssignmentDynamicGroupForResourceGroup()
+        {
+            TestRunner.RunTestScript("Test-AzConfigurationAssignmentDynamicGroupForResourceGroup");
+        }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void TestAzApplyUpdateCancelConfiguration()
+        {
+            TestRunner.RunTestScript("Test-AzApplyUpdateCancelConfiguration");
+        }
     }
 }

@@ -397,7 +397,7 @@ namespace Microsoft.Azure.Commands.TestFx
             AzureEnvironment environment = new AzureEnvironment { Name = TestEnvironmentName };
             Debug.Assert(currentEnvironment != null);
             environment.ActiveDirectoryAuthority = currentEnvironment.Endpoints.AADAuthUri.AbsoluteUri;
-            environment.GalleryUrl = currentEnvironment.Endpoints.GalleryUri.AbsoluteUri;
+            environment.GalleryUrl = currentEnvironment.Endpoints.GalleryUri?.AbsoluteUri;
             environment.ServiceManagementUrl = currentEnvironment.BaseUri.AbsoluteUri;
             environment.ResourceManagerUrl = currentEnvironment.Endpoints.ResourceManagementUri.AbsoluteUri;
             environment.GraphUrl = currentEnvironment.Endpoints.GraphUri.AbsoluteUri;

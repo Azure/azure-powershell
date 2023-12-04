@@ -131,6 +131,27 @@ This commands updates workspace with user assigned managed identites $uamilist t
 
 ### Example 9
 ```powershell
+
+##Add a temp key to the workspace
+New-AzSynapseWorkspaceKey -ResourceGroupName ContosoResourceGroup -WorkspaceName ContosoWorkspace -Name TempKey -EncryptionKeyIdentifier https://contosoKeyVault.vault.azure.net/keys/TempKey
+
+##Update the workspace and set the temp key as the TDE protector
+Update-AzSynapseWorkspace -WorkspaceName ContosoWorkspace -EncryptionKeyName TempKey -UseSystemAssignedIdentityInEncryption $true
+
+##Note, we need to create a new key version for the original encrytion key of the Azure key vault before moving to next steps. 
+
+##Update the workspace and set the encryption key back after we created a new key version. 
+Update-AzSynapseWorkspace -WorkspaceName ContosoWorkspace -EncryptionKeyName default -UseSystemAssignedIdentityInEncryption $true
+
+##Remove the temp key
+Remove-AzSynapseWorkspaceKey -WorkspaceName ContosoWorkspace -Name TempKey
+
+```
+
+This commands demonstrate how to rotate the encryption key of a Synapse workspace, and it is using System Assigned Managed Identity to access the Azure Key Vault.
+
+### Example 10
+```powershell
 $uamis = Get-AzUserAssignedIdentity -ResourceGroupName ContosoResourceGroup
 $identityId = $uamis[0].Id
 $ws = Get-AzSynapseWorkspace -Name ContosoWorkspace

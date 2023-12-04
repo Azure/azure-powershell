@@ -1,4 +1,4 @@
-﻿//  
+//  
 // Copyright (c) Microsoft.  All rights reserved.
 // 
 //  Licensed under the Apache License, Version 2.0 (the "License");
@@ -90,7 +90,6 @@ namespace Microsoft.Azure.Commands.ApiManagement.ServiceManagement.Commands
         public PsApiManagementParameter[] TemplateParameters { get; set; }
 
         public const String ChangeDesc = "Change Request.Representations.Sample to Request.Representations.Example";
-        [CmdletParameterBreakingChange("Request.Representations.Sample", ChangeDescription = ChangeDesc)]
         [Parameter(
             ValueFromPipelineByPropertyName = true,
             Mandatory = false,
@@ -98,7 +97,6 @@ namespace Microsoft.Azure.Commands.ApiManagement.ServiceManagement.Commands
         public PsApiManagementRequest Request { get; set; }
 
         public const String ChangeDesc2 = "Change Responses.Representations.Sample to Responses.Representations.Example";
-        [CmdletParameterBreakingChange("Responses.Representations.Sample", ChangeDescription = ChangeDesc2)]
         [Parameter(
             ValueFromPipelineByPropertyName = true,
             Mandatory = false,

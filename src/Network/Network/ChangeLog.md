@@ -19,6 +19,54 @@
 --->
 
 ## Upcoming Release
+* Fixed a few minor issues
+
+## Version 7.1.0
+* Added DefaultOutboundAccess parameter on subnet creation
+* Updated cmdlet `New-AzPublicIpPrefix` and `New-PublicIpAddress` to require Location parameter
+* Updated cmdlet `New-AzLoadBalancerBackendAddressPool` to support managed IP based backend
+* Added cmdlet `New-AzSaaSNetworkVirtualAppliance` for creating a NetworkVirtualAppliance of SaaS type.
+* Added control knobs to virtual network gateways and ExpressRoute gateways as well to cmdlets operating on those.
+* Updated cmdlets to add Hostnames property for Application gateway Listener Configuration
+	- `Set-AzApplicationGatewayListener`
+	- `Add-AzApplicationGatewayListener`
+	- `New-AzApplicationGatewayListener`
+* Added cmdlet 'Remove-AzApplicationGatewayFirewallCustomRule' to support removing custom rule in Firewall Policy.
+* Added support for new ErGWScale SKU - ErGwScale
+* Added property 'size' to firewallPolicy and firewallPolicyRuleCollectionGroup.
+* Updated cmdlet `New-AzBastion`, `Set-AzBastion` and `Get-AzBastion` to support Bastion features for CRUD operations
+
+## Version 7.0.0
+* [Breaking Change] Removed `Geo` as a valid input for parameter `VariableName` in `NewAzureApplicationGatewayFirewallCustomRuleGroupByVariable`.
+* Added AllowBranchToBranchTraffic property to New-AzRouteServer
+* Added AllowBranchToBranchTraffic property to Get-AzRouteServer
+* Changed Update-AzRouteServer functionality to fix bugs
+    - AllowBranchToBranchTraffic is now a bool
+    - Updating HubRoutingPreference property will not effect AllowBranchToBranchTraffic
+
+## Version 6.2.0
+* Added support for new Application Gateway SKU type, Basic SKU
+* Onboarded `Microsoft.EventGrid/partnerNamespaces` to private link cmdlets
+* Onboarded `Microsoft.EventGrid/namespaces` to private link cmdlets
+* Fixed bug in `NewAzureApplicationGatewayFirewallCustomRuleGroupByVariable` to add "GeoLocation" as a valid input for VariableName
+* Added breaking change message for parameter `VariableName` in `NewAzureApplicationGatewayFirewallCustomRuleGroupByVariable` to remove "Geo" as a valid input.
+
+## Version 6.1.1
+* Onboarded `Microsoft.ElasticSan/elasticSans` to private link cmdlets
+* Fixed bug in `New-AzVirtualNetworkGateway` to include only non-empty `ExtendedLocation`
+
+## Version 6.1.0
+* Added new cmdlets to get Connection child resource of Network Virtual Appliance.
+    -`Get-AzNetworkVirtualApplianceConnection`
+* Updated cmdlets to return connections in Network Virtual Appliance
+    -`Network Virtual Appliance`
+* Allowed not to provide `Rules` in `PSApplicationGatewayFirewallPolicyManagedRuleGroupOverride`, which would return an empty `RuleID` to be passed to NRP.
+* Added optional parameter 'AdminState' to Express Route Virtual Network Gateway
+* Fixed bug that caused `Remove-AzApplicationGatewayAutoscaleConfiguration` to always fails
+* Added read-only property `DefaultPredefinedSslPolicy` in PSApplicationGateway
+* Updated cmdlet to added optional parameter `DomainNameLabelScope` to Public Ip Address
+    - `New-AzPublicIpAddress`
+* Fixed bug where HubRoutingPreference didn't show up when running 'Get-AzRouteServer'
 * Updated `New-AzVirtualNetworkGateway` to remove validation for `ExtendedLocation` parameter
 * Updated `New-AzApplicationGateway` to include `EnableRequestBuffering` and `EnableResponseBuffering` parameters
 
@@ -47,10 +95,10 @@
 * Added new cmdlets to support Log Scrubbing Feature for Application Gateway WAF Firewall Policy
     - `New-AzApplicationGatewayFirewallPolicyLogScrubbingConfiguration`,
     - `New-AzApplicationGatewayFirewallPolicyLogScrubbingRule`,
-    - Also updated cmdlet to add the property of `LogScrubbing` 
+    - Also updated cmdlet to add the property of `LogScrubbing`
     - `New-AzApplicationGatewayFirewallPolicySetting`
 * Onboarded `Microsoft.HardwareSecurityModules/cloudHsmClusters` to private link cmdlets
-* Updated cmdlet to add the property of `DisableRequestBodyEnforcement`, `RequestBodyInspectLimitInKB` and `DisableFileUploadEnforcement` 
+* Updated cmdlet to add the property of `DisableRequestBodyEnforcement`, `RequestBodyInspectLimitInKB` and `DisableFileUploadEnforcement`
     - `New-AzApplicationGatewayFirewallPolicySetting`
 * Added optional property `AuxiliarySku` to cmdlet `New-AzNetworkInterface` to help choose performance on an `AuxiliaryMode` enabled Network Interface.
 * Added a new value `AcceleratedConnections` for existing property `AuxiliaryMode` for `New-AzNetworkInterface`

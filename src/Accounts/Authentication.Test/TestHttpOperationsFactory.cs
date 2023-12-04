@@ -13,13 +13,13 @@
 // ----------------------------------------------------------------------------------
 
 using Microsoft.Rest.Azure;
+
 using System;
 using System.Collections.Concurrent;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
+
 using Xunit.Abstractions;
 
 namespace Microsoft.Azure.Commands.Common.Authentication.Test
@@ -55,6 +55,11 @@ namespace Microsoft.Azure.Commands.Common.Authentication.Test
             }
 
             return factory;
+        }
+
+        Task<string> IHttpOperationsFactory.ReadAsStringAsync(Uri requestUri)
+        {
+            throw new NotImplementedException();
         }
 
         class TestHttpOperations<T> : IHttpOperations<T>

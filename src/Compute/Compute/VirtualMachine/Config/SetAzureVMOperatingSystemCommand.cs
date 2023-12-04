@@ -51,25 +51,25 @@ namespace Microsoft.Azure.Commands.Compute
 
         [Parameter(
             ParameterSetName = WindowsParamSet,
-            Mandatory = true,
+            Mandatory = false,
             Position = 1,
             ValueFromPipelineByPropertyName = true,
             HelpMessage = "Windows")]
         [Parameter(
             ParameterSetName = WinRmHttpsParamSet,
-            Mandatory = true,
+            Mandatory = false,
             Position = 1,
             ValueFromPipelineByPropertyName = true,
             HelpMessage = "Windows")]
         [Parameter(
             ParameterSetName = WindowsDisableVMAgentParamSet,
-            Mandatory = true,
+            Mandatory = false,
             Position = 1,
             ValueFromPipelineByPropertyName = true,
             HelpMessage = "Windows")]
         [Parameter(
             ParameterSetName = WindowsDisableVMAgentWinRmHttpsParamSet,
-            Mandatory = true,
+            Mandatory = false,
             Position = 1,
             ValueFromPipelineByPropertyName = true,
             HelpMessage = "Windows")]
@@ -78,7 +78,7 @@ namespace Microsoft.Azure.Commands.Compute
 
         [Parameter(
             ParameterSetName = LinuxParamSet,
-            Mandatory = true,
+            Mandatory = false,
             Position = 1,
             ValueFromPipelineByPropertyName = true,
             HelpMessage = "Linux")]
@@ -86,7 +86,7 @@ namespace Microsoft.Azure.Commands.Compute
         public SwitchParameter Linux { get; set; }
 
         [Parameter(
-            Mandatory = true,
+            Mandatory = false,
             Position = 2,
             ValueFromPipelineByPropertyName = true,
             HelpMessage = HelpMessages.VMComputerName)]
@@ -94,7 +94,7 @@ namespace Microsoft.Azure.Commands.Compute
         public string ComputerName { get; set; }
 
         [Parameter(
-            Mandatory = true,
+            Mandatory = false,
             Position = 3,
             ValueFromPipelineByPropertyName = true,
             HelpMessage = HelpMessages.VMCredential)]

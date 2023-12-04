@@ -36,12 +36,19 @@ $cvgMessageHeader80 = "|Type|Title|Current Coverage|Last Coverage|Description|`n
 
 $rptData | Where-Object Module -in $testedModules | ForEach-Object {
     $module = $_.Module
-    Write-Host "##[section]Validating test coverage for module $module..."
+    Write-Host "##[section]Validating test coverage for module $module ..."
 
     $cmdCvg = $_.CommandCoverage
     $cmdCvgD = [decimal]$cmdCvg.TrimEnd("%") / 100
 
-    Write-Host "Test coverage for module $module is $cmdCvg."
+    $psetCvg = $_.ParameterSetCoverage
+    $pCvg = $_.ParameterCoverage
+
+    Write-Host "Test coverage for Module: $module"
+    Write-Host "- Cmdlet-Level Coverage: $cmdCvg."
+    Write-Host "- Parameter Set-Level Coverage: $psetCvg."
+    Write-Host "- Parameter-Level Coverage: $pCvg."
+
     if ($cmdCvgD -lt 0.5) {
         Write-Warning "Test coverage for module $module is less than 50% !"
         $cvgMessageBody50 = "|⚠️|Test Coverage Less Than 50%|$cmdCvg|Test coverage for the module cannot be lower than 50%.|`n"

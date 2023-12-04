@@ -71,6 +71,10 @@ $Steps = @(
     @{
         PhaseName = "ux"
         IssuePath = "$StaticAnalysisOutputDirectory/UXMetadataIssues.csv"
+    },
+    @{
+        PhaseName = "generated-sdk"
+        IssuePath = "$StaticAnalysisOutputDirectory/GeneratedSdkIssues.csv"
     }
 )
 
@@ -147,6 +151,9 @@ ForEach ($Step In $Steps) {
                 ElseIf ($PhaseName -Eq "ux") {
                     $Content = "|Type|Module|ResourceType|SubResourceType|Command|Description|`n|---|---|---|---|---|---|`n"
                 }
+                ElseIf ($PhaseName -Eq "generated-sdk") {
+                    $Content = "|Type|Module|Sdk|Description|Remediation|`n|---|---|---|---|---|`n"
+                }
                 #EndRegion
 
                 ForEach ($Issue In $MatchedIssues) {
@@ -161,10 +168,13 @@ ForEach ($Step In $Steps) {
                         $Content += "|$ErrorTypeEmoji|$($Issue.Target)|$($Issue.Description)|$($Issue.Remediation)|`n"
                     }
                     ElseIf ($PhaseName -Eq "help-example") {
-                        $Content += "|$ErrorTypeEmoji|$($Issue.Target)|$($Issue.Example)|$($Issue.Line)|$($Issue.RuleName)|$($Issue.Description)|$($Issue.Extent)|$($Issue.Remediation)|`n"
+                        $Content += "|$ErrorTypeEmoji|$($Issue.Cmdlet)|$($Issue.Example)|$($Issue.Line)|$($Issue.RuleName)|$($Issue.Description)|$($Issue.Extent)|$($Issue.Remediation)|`n"
                     }
                     ElseIf ($PhaseName -Eq "ux") {
                         $Content += "|$ErrorTypeEmoji|$($Issue.Module)|$($Issue.ResourceType)|$($Issue.SubResourceType)|$($Issue.Command)|$($Issue.Description)|`n"
+                    }
+                    ElseIf ($PhaseName -Eq "generated-sdk") {
+                        $Content += "|$ErrorTypeEmoji|$($Issue.Module)|$($Issue.Sdk)|$($Issue.Description)|$($Issue.Remediation)|`n"
                     }
                     #EndRegion
                 }

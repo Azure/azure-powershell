@@ -219,7 +219,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery
                         DataSyncOption =
                             this.Optimize == Constants.ForDownTime ? Constants.ForDownTime
                                 : Constants.ForSynchronization,
-                        RecoveryVmCreationOption = string.Compare(
+                        RecoveryVMCreationOption = string.Compare(
                                                        this.CreateVmIfNotFound,
                                                        Constants.Yes,
                                                        StringComparison.OrdinalIgnoreCase) ==
@@ -359,7 +359,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery
                                     this.Optimize == Constants.ForDownTime
                                         ? DataSyncStatus.ForDownTime
                                         : DataSyncStatus.ForSynchronization,
-                                RecoveryVmCreationOption = string.Compare(
+                                RecoveryVMCreationOption = string.Compare(
                                                                this.CreateVmIfNotFound,
                                                                Constants.Yes,
                                                                StringComparison
@@ -394,7 +394,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery
                             new RecoveryPlanInMageRcmFailbackFailoverInput
                             {
                                 RecoveryPointType = recoveryPointType,
-                                UseMultiVmSyncPoint =
+                                UseMultiVMSyncPoint =
                                     this.MultiVmSyncPoint == Constants.Enable ?
                                         Constants.True :
                                         Constants.False

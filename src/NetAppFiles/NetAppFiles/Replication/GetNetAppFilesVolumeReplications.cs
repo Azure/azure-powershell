@@ -108,7 +108,7 @@ namespace Microsoft.Azure.Commands.NetAppFiles.Volume
                 PoolName = NameParts[1];
             }
 
-            var volumeReplications = AzureNetAppFilesManagementClient.Volumes.ListReplicationsMethod(ResourceGroupName, AccountName, PoolName, Name).Select(e => e.ConvertToPs());
+            var volumeReplications = AzureNetAppFilesManagementClient.Volumes.ListReplications(ResourceGroupName, AccountName, PoolName, Name).Select(e => e.ConvertToPs());
             WriteObject(volumeReplications, true);
         }
     }

@@ -415,6 +415,11 @@ namespace Microsoft.Azure.Commands.DataFactoryV2
         public string LastCommitId { get; set; }
 
         #region Attributes
+        [Parameter(Mandatory = false, HelpMessage = Constants.HelpRepoConfigurationDisablePublish)]
+        #endregion
+        public SwitchParameter DisablePublish { get; set; }
+
+        #region Attributes
         [Parameter(
             ParameterSetName = ParameterSetNames.ByInputObjectFactoryRepoVstsConfig,
             Mandatory = true,
@@ -493,6 +498,11 @@ namespace Microsoft.Azure.Commands.DataFactoryV2
                 repoConfiguration.LastCommitId = this.LastCommitId;
                 repoConfiguration.RootFolder = this.RootFolder;
                 repoConfiguration.RepositoryName = this.RepositoryName;
+
+                if (this.DisablePublish.IsPresent)
+                {
+                    repoConfiguration.DisablePublish = true;
+                }
             }
 
             string factoryIdentityType = FactoryIdentityType.SystemAssigned;
@@ -575,6 +585,12 @@ namespace Microsoft.Azure.Commands.DataFactoryV2
                     this.LastCommitId = this.LastCommitId ?? InputObject.RepoConfiguration.LastCommitId;
                     this.RepositoryName = this.RepositoryName ?? InputObject.RepoConfiguration.RepositoryName;
                     this.RootFolder = this.RootFolder ?? InputObject.RepoConfiguration.RootFolder;
+
+                    if (InputObject.RepoConfiguration.DisablePublish.HasValue)
+                    {
+                        this.DisablePublish = this.DisablePublish.IsPresent ? true : InputObject.RepoConfiguration.DisablePublish.Value;
+                    }
+
 
                     var factoryVSTSConfiguration = InputObject.RepoConfiguration as FactoryVSTSConfiguration;
                     if (factoryVSTSConfiguration != null)

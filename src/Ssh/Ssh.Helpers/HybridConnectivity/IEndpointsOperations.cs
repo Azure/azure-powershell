@@ -65,6 +65,9 @@ namespace Microsoft.Azure.PowerShell.Ssh.Helpers.HybridConnectivity
         /// <param name='expiresin'>
         /// The is how long the endpoint access token is valid (in seconds).
         /// </param>
+        /// <param name='listCredentialsRequest'>
+        /// Object of type ListCredentialsRequest
+        /// </param>
         /// <param name='customHeaders'>
         /// The headers that will be added to request.
         /// </param>
@@ -80,6 +83,6 @@ namespace Microsoft.Azure.PowerShell.Ssh.Helpers.HybridConnectivity
         /// <exception cref="Microsoft.Rest.ValidationException">
         /// Thrown when a required parameter is null
         /// </exception>
-        Task<AzureOperationResponse<EndpointAccessResource>> ListCredentialsWithHttpMessagesAsync(string resourceUri, string endpointName, long? expiresin = 10800, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
+        Task<AzureOperationResponse<EndpointAccessResource>> ListCredentialsWithHttpMessagesAsync(string resourceUri, string endpointName, long? expiresin = 10800, ListCredentialsRequest listCredentialsRequest = default(ListCredentialsRequest), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
     }
 }

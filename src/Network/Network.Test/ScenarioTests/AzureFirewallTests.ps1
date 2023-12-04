@@ -2058,6 +2058,31 @@ function Test-AzureFirewallCRUDRouteServerId {
 
 <#
 .SYNOPSIS
+Tests AzureFirewall RouteServerId on Hub Firewall
+#>
+function Test-AzureFirewallCRUDRouteServerIdHub {
+    # Setup
+    $rgname = Get-ResourceGroupName
+    $azureFirewallName = Get-ResourceName
+    $resourceTypeParent = "Microsoft.Network/AzureFirewalls"
+    $location = Get-ProviderLocation $resourceTypeParent
+    $skuName = "AZFW_Hub"
+    $skuTier = "Standard"
+    $routeServerId="/subscriptions/aeb5b02a-0f18-45a4-86d6-81808115cacf/resourceGroups/testRG/providers/Microsoft.Network/virtualHubs/TestRS"
+
+    try {
+
+         Assert-ThrowsContains { New-AzFirewall -Name $azureFirewallName -ResourceGroupName $rgname -Location $location -SkuName $skuName -SkuTier $skuTier -RouteServerId $routeServerId } "The Route Server is not supported on AZFW_Hub SKU Firewalls"
+
+    }
+    finally {
+        # Cleanup
+        Clean-ResourceGroup $rgname
+    }
+}
+
+<#
+.SYNOPSIS
 Tests  Get Azure Firewall LearnedPrefixes
 #>
 function Test-GetAzureFirewallLearnedIpPrefixes {

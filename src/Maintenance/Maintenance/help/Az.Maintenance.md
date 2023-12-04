@@ -20,6 +20,9 @@ List configurationAssignments for resource.
 ### [Get-AzMaintenanceConfiguration](Get-AzMaintenanceConfiguration.md)
 Get Maintenance configuration record
 
+### [Get-AzMaintenancePublicConfiguration](Get-AzMaintenancePublicConfiguration.md)
+Get Public Maintenance Configuration record
+
 ### [Get-AzMaintenanceUpdate](Get-AzMaintenanceUpdate.md)
 Get pending maintenance updates to resource.
 
@@ -40,7 +43,4 @@ Delete Configuration record
 
 ### [Update-AzMaintenanceConfiguration](Update-AzMaintenanceConfiguration.md)
 Patch configuration record
-
-### [Get-AzMaintenancePublicConfiguration](Get-AzMaintenancePublicConfiguration.md)
-Get Public Maintenance configuration record
 

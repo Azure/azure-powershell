@@ -65,7 +65,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.ServiceClient
         public List<RecoveryPointResource> GetRecoveryPoints(
             string containerName,
             string protectedItemName,
-            ODataQuery<BMSRPQueryObject> queryFilter,
+            ODataQuery<BmsrpQueryObject> queryFilter,
             string vaultName = null,
             string resourceGroupName = null)
         {
@@ -100,7 +100,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.ServiceClient
         public List<CrrModel.RecoveryPointResource> GetRecoveryPointsFromSecondaryRegion(
             string containerName,
             string protectedItemName,
-            ODataQuery<CrrModel.BMSRPQueryObject> queryFilter,
+            ODataQuery<CrrModel.BmsrpQueryObject> queryFilter,
             string vaultName = null,
             string resourceGroupName = null)
         {
@@ -120,6 +120,34 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.ServiceClient
                     cancellationToken: BmsAdapter.CmdletCancellationToken).Result.Body;
 
             var response = HelperUtils.GetPagedListCrr(listAsync, listNextAsync);
+            return response;
+        }
+
+        /// <summary>
+        /// Gets detail about the recovery point from Secondary region for CRR
+        /// </summary>
+        /// <param name="containerName">Name of the container which the item belongs to</param>
+        /// <param name="protectedItemName">Name of the item</param>
+        /// <param name="recoveryPointId">ID of the recovery point</param>
+        /// <param name="vaultName"></param>
+        /// <param name="resourceGroupName"></param>
+        /// <returns>Recovery point response returned by the service</returns>
+        public CrrModel.RecoveryPointResource GetRecoveryPointDetailsFromSecondaryRegion(
+            string containerName,
+            string protectedItemName,
+            string recoveryPointId,
+            string vaultName = null,
+            string resourceGroupName = null)
+        {
+            var response = CrrAdapter.Client.RecoveryPointsCrr.GetWithHttpMessagesAsync(
+                vaultName ?? BmsAdapter.GetResourceName(),
+                resourceGroupName ?? BmsAdapter.GetResourceGroupName(),
+                AzureFabricName,
+                containerName,
+                protectedItemName,
+                recoveryPointId,
+                cancellationToken: BmsAdapter.CmdletCancellationToken).Result.Body;
+
             return response;
         }
 
@@ -147,7 +175,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.ServiceClient
                 containerName,
                 protectedItemName,
                 moveRequest.ObjectType,
-                moveRequest.ExcludedRPList
+                moveRequest.ExcludedRpList
                 ).Result.Body;
 
             Func<string, RestAzureNS.IPage<RecoveryPointResource>> listNextAsync =
@@ -187,7 +215,6 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.ServiceClient
                 moveRPAcrossTiersRequest
                 ).Result;
         }
-
 
         /// <summary>
         /// provision item level recovery connection identified by the input parameters

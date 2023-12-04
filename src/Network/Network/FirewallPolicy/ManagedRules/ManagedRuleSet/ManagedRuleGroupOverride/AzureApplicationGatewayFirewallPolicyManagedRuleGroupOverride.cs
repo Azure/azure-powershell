@@ -28,13 +28,18 @@ namespace Microsoft.Azure.Commands.Network
         public string RuleGroupName { get; set; }
 
         [Parameter(
-            Mandatory = true,
+            Mandatory = false,
             HelpMessage = "List of Rules.")]
         [ValidateNotNullOrEmpty]
         public PSApplicationGatewayFirewallPolicyManagedRuleOverride[] Rule { get; set; }
         public override void ExecuteCmdlet()
         {
             base.ExecuteCmdlet();
+
+            if (!this.MyInvocation.BoundParameters.ContainsKey("Rule"))
+            {
+                this.Rule = new PSApplicationGatewayFirewallPolicyManagedRuleOverride[] { };
+            }
         }
 
         protected PSApplicationGatewayFirewallPolicyManagedRuleGroupOverride NewObject()

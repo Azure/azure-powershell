@@ -9,22 +9,22 @@ schema: 2.0.0
 # Set-AzVMOperatingSystem
 
 ## SYNOPSIS
-Sets operating system properties during the creation of a new virtual machine.
+Sets operating system properties during the creation of a new virtual machine or updating a virtual machine.
 
 ## SYNTAX
 
 ### Windows (Default)
 ```
-Set-AzVMOperatingSystem [-VM] <PSVirtualMachine> [-Windows] [-ComputerName] <String>
- [-Credential] <PSCredential> [[-CustomData] <String>] [-ProvisionVMAgent] [-EnableAutoUpdate]
+Set-AzVMOperatingSystem [-VM] <PSVirtualMachine> [-Windows] [[-ComputerName] <String>]
+ [[-Credential] <PSCredential>] [[-CustomData] <String>] [-ProvisionVMAgent] [-EnableAutoUpdate]
  [[-TimeZone] <String>] [-WinRMHttp] [-PatchMode <String>] [-EnableHotpatching] [-AssessmentMode <String>]
  [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
 ### WindowsWinRmHttps
 ```
-Set-AzVMOperatingSystem [-VM] <PSVirtualMachine> [-Windows] [-ComputerName] <String>
- [-Credential] <PSCredential> [[-CustomData] <String>] [-ProvisionVMAgent] [-EnableAutoUpdate]
+Set-AzVMOperatingSystem [-VM] <PSVirtualMachine> [-Windows] [[-ComputerName] <String>]
+ [[-Credential] <PSCredential>] [[-CustomData] <String>] [-ProvisionVMAgent] [-EnableAutoUpdate]
  [[-TimeZone] <String>] [-WinRMHttp] [-WinRMHttps] [-WinRMCertificateUrl] <Uri> [-PatchMode <String>]
  [-EnableHotpatching] [-AssessmentMode <String>] [-DefaultProfile <IAzureContextContainer>]
  [<CommonParameters>]
@@ -32,16 +32,16 @@ Set-AzVMOperatingSystem [-VM] <PSVirtualMachine> [-Windows] [-ComputerName] <Str
 
 ### WindowsDisableVMAgent
 ```
-Set-AzVMOperatingSystem [-VM] <PSVirtualMachine> [-Windows] [-ComputerName] <String>
- [-Credential] <PSCredential> [[-CustomData] <String>] [-DisableVMAgent] [-EnableAutoUpdate]
+Set-AzVMOperatingSystem [-VM] <PSVirtualMachine> [-Windows] [[-ComputerName] <String>]
+ [[-Credential] <PSCredential>] [[-CustomData] <String>] [-DisableVMAgent] [-EnableAutoUpdate]
  [[-TimeZone] <String>] [-WinRMHttp] [-PatchMode <String>] [-EnableHotpatching] [-AssessmentMode <String>]
  [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
 ### WindowsDisableVMAgentWinRmHttps
 ```
-Set-AzVMOperatingSystem [-VM] <PSVirtualMachine> [-Windows] [-ComputerName] <String>
- [-Credential] <PSCredential> [[-CustomData] <String>] [-DisableVMAgent] [-EnableAutoUpdate]
+Set-AzVMOperatingSystem [-VM] <PSVirtualMachine> [-Windows] [[-ComputerName] <String>]
+ [[-Credential] <PSCredential>] [[-CustomData] <String>] [-DisableVMAgent] [-EnableAutoUpdate]
  [[-TimeZone] <String>] [-WinRMHttp] [-WinRMHttps] [-WinRMCertificateUrl] <Uri> [-PatchMode <String>]
  [-EnableHotpatching] [-AssessmentMode <String>] [-DefaultProfile <IAzureContextContainer>]
  [<CommonParameters>]
@@ -49,9 +49,9 @@ Set-AzVMOperatingSystem [-VM] <PSVirtualMachine> [-Windows] [-ComputerName] <Str
 
 ### Linux
 ```
-Set-AzVMOperatingSystem [-VM] <PSVirtualMachine> [-Linux] [-ComputerName] <String> [-Credential] <PSCredential>
- [[-CustomData] <String>] [-PatchMode <String>] [-DisablePasswordAuthentication] [-AssessmentMode <String>]
- [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
+Set-AzVMOperatingSystem [-VM] <PSVirtualMachine> [-Linux] [[-ComputerName] <String>]
+ [[-Credential] <PSCredential>] [[-CustomData] <String>] [-PatchMode <String>] [-DisablePasswordAuthentication]
+ [-AssessmentMode <String>] [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -167,7 +167,7 @@ Type: System.String
 Parameter Sets: (All)
 Aliases:
 
-Required: True
+Required: False
 Position: 2
 Default value: None
 Accept pipeline input: True (ByPropertyName)
@@ -184,7 +184,7 @@ Type: System.Management.Automation.PSCredential
 Parameter Sets: (All)
 Aliases:
 
-Required: True
+Required: False
 Position: 3
 Default value: None
 Accept pipeline input: True (ByPropertyName)
@@ -291,7 +291,7 @@ Type: System.Management.Automation.SwitchParameter
 Parameter Sets: Linux
 Aliases:
 
-Required: True
+Required: False
 Position: 1
 Default value: None
 Accept pipeline input: True (ByPropertyName)
@@ -374,7 +374,7 @@ Type: System.Management.Automation.SwitchParameter
 Parameter Sets: Windows, WindowsWinRmHttps, WindowsDisableVMAgent, WindowsDisableVMAgentWinRmHttps
 Aliases:
 
-Required: True
+Required: False
 Position: 1
 Default value: None
 Accept pipeline input: True (ByPropertyName)

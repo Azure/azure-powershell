@@ -285,23 +285,26 @@ function Test-AzureRmSignalRSetUpstream {
     
         $upstream = Set-AzSignalRUpstream -ResourceGroupName $resourceGroupName -Name $signalrName `
             -Template @{UrlTemplate = 'http://host-connections1.com' }
-        Assert-AreEqualObjectProperties @{UrlTemplate = 'http://host-connections1.com' } $upstream.Templates
+        Assert-AreEqual 'http://host-connections1.com' $upstream.Templates.UrlTemplate
     
         # b. ResourceId parameter set
         $upstream = Set-AzSignalRUpstream -ResourceId $signalr.Id `
             -Template @{UrlTemplate = 'http://host-connections2.com' }
-        Assert-AreEqualObjectProperties @{UrlTemplate = 'http://host-connections2.com' } $upstream.Templates
+        Assert-AreEqual 'http://host-connections2.com' $upstream.Templates.UrlTemplate
     
         # c. InputObject parameter set
-        $signalr | Set-AzSignalRUpstream -Template @{UrlTemplate = 'http://host-connections3.com' }
-        Assert-AreEqualObjectProperties @{UrlTemplate = 'http://host-connections3.com' } $upstream.Templates
+        $upstream = $signalr | Set-AzSignalRUpstream -Template @{UrlTemplate = 'http://host-connections3.com' }
+        Assert-AreEqual 'http://host-connections3.com' $upstream.Templates.UrlTemplate
     
         # Test set multiple upstream Template
         $upstream = Set-AzSignalRUpstream  -ResourceId $signalr.Id `
             -Template @{UrlTemplate = 'http://host-connections4.com'; HubPattern = 'chat'; EventPattern = 'broadcast' }, @{UrlTemplate = 'http://host-connections5.com'; HubPattern = 'chat'; CategoryPattern = 'broadcast' } 
-        Assert-AreEqualObjectProperties @{UrlTemplate = 'http://host-connections4.com'; HubPattern = 'chat'; EventPattern = 'broadcast' }, @{UrlTemplate = 'http://host-connections5.com'; HubPattern = 'chat'; CategoryPattern = 'broadcast' }   $upstream.Templates
-    
-        # 
+        Assert-AreEqual 'http://host-connections4.com' $upstream.Templates[0].UrlTemplate
+        Assert-AreEqual 'chat' $upstream.Templates[0].HubPattern
+        Assert-AreEqual 'broadcast' $upstream.Templates[0].EventPattern
+        Assert-AreEqual 'http://host-connections5.com' $upstream.Templates[1].UrlTemplate
+        Assert-AreEqual 'chat' $upstream.Templates[1].HubPattern
+        Assert-AreEqual 'broadcast' $upstream.Templates[1].CategoryPattern
     }
     finally {
         Remove-AzResourceGroup  -Name $resourceGroupName 

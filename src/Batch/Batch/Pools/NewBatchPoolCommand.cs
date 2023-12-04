@@ -1,4 +1,4 @@
-﻿// ----------------------------------------------------------------------------------
+// ----------------------------------------------------------------------------------
 //
 // Copyright Microsoft Corporation
 // Licensed under the Apache License, Version 2.0 (the "License");
@@ -72,7 +72,6 @@ namespace Microsoft.Azure.Commands.Batch
 
         [Parameter]
         [ValidateNotNullOrEmpty]
-        [CmdletParameterBreakingChange("MaxTasksPerComputeNode", "MaxTasksPerComputeNode alias will be removed in an upcoming breaking change release.")]
         [Alias("MaxTasksPerComputeNode")]
         public int? TaskSlotsPerNode { get; set; }
 

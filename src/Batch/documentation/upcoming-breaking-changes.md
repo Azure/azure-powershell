@@ -27,13 +27,5 @@
 
 # Upcoming Breaking Changes
 
-The following cmdlets were affected this release:
-
-**Get-AzBatchApplication**
- - Removed `ApplicationPackages` property from `PSApplication` returned by the **Get-AzBatchApplication** cmdlet. This property was previously always `$null`.
- - The specific packages inside of an application now can be retrieved using **Get-AzBatchApplicationPackage**. For example: `Get-AzBatchApplication -AccountName myaccount -ResourceGroupName myresourcegroup -ApplicationId myapplication`.
-
-**New-AzBatchPool**
-- When creating a pool using **New-AzBatchPool**, the `VirtualMachineImageId` property of `PSImageReference` can now only refer to a Shared Image Gallery image.
-- When creating a pool using **New-AzBatchPool**, the pool can be provisioned without a public IP using the new `PublicIPAddressConfiguration` property of `PSNetworkConfiguration`.
-  - The `PublicIPs` property of `PSNetworkConfiguration` has moved in to `PSPublicIPAddressConfiguration` as well. This property can only be specified if `IPAddressProvisioningType` is `UserManaged`.
+* deprecated cmdlets: `Get-AzBatchCertificate` and `New-AzBatchCertificate`
+  - The Batch account certificates feature is deprecated. Please transition to using Azure Key Vault to securely access and install certificates on your Batch pools, [learn more](https://learn.microsoft.com/azure/batch/batch-certificate-migration-guide)

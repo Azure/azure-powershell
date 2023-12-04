@@ -15,11 +15,11 @@ if(($null -eq $TestName) -or ($TestName -contains 'New-AzContainerRegistryWebhoo
 }
 
 Describe 'New-AzContainerRegistryWebhook' {
-    It 'CreateExpanded' -skip {
+    It 'CreateExpanded' {
         {New-AzContainerRegistryWebhook -RegistryName $env.rstr1 -ResourceGroupName $env.resourceGroup -Name $env.rstr2 -ServiceUri http://www.bing.com -Action Delete,Push -Location "east us" -Status Enabled -Scope "foo:*" } | Should -Not -Throw
     }
 
-    It 'CreateByRegistry' -skip {
+    It 'CreateByRegistry' {
         $obj = Get-AzContainerRegistry -Name $env.rstr1 -ResourceGroupName $env.ResourceGroup 
         {New-AzContainerRegistryWebhook -Registry $obj -Name $env.rstr3 -ServiceUri http://www.bing.com -Action Delete,Push -Location "east us" -Status Enabled -Scope "foo:*"  } | Should -Not -Throw
     }

@@ -18,7 +18,7 @@
             PrincipalId = identity.PrincipalId;
             TenantId = identity.TenantId;
 
-            var userAssignedIdentityId = identity.UserAssignedIdentities?.Take(1).Select(d => d.Key).First();
+            var userAssignedIdentityId = identity.UserAssignedIdentities?.Take(1).Select(d => d.Key).FirstOrDefault();
 
             UserAssignedIdentities = userAssignedIdentityId != null ? 
                 new Dictionary<string, PsUserAssignedIdentity>

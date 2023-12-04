@@ -1101,11 +1101,12 @@ function Test-DiskConfigDiskAccessNetworkAccess
         #Testing disk access
         $diskAccess = New-AzDiskAccess -ResourceGroupName $rgname -Name "diskaccessname" -location $loc
         $diskconfig = New-AzDiskConfig -Location $loc -SkuName 'Standard_LRS' -OsType 'Windows' `
-                                        -UploadSizeInBytes 35183298347520 -CreateOption 'Upload' -DiskAccessId $diskAccess.Id;
+                                        -UploadSizeInBytes 35183298347520 -CreateOption 'Upload' -DiskAccessId $diskAccess.Id -OptimizedForFrequentAttach $true;
         New-AzDisk -ResourceGroupName $rgname -DiskName $diskname0 -Disk $diskconfig;
         $disk = Get-AzDisk -ResourceGroupName $rgname -DiskName $diskname0;
         
         Assert-AreEqual $diskAccess.Id $disk.DiskAccessId;
+        Assert-AreEqual $true $disk.OptimizedForFrequentAttach;
 
         Remove-AzDisk -ResourceGroupName $rgname -DiskName $diskname0 -Force;
 
@@ -1422,7 +1423,7 @@ function Test-DiskPurchasePlan
 
         New-AzResourceGroup -Name $rgname -Location $loc -Force;
         $diskPurchasePlan = New-AzDiskPurchasePlanConfig -Name "planName" -Publisher "planPublisher" -Product "planPorduct" -PromotionCode "planPromotionCode";
-        $diskconfig = New-AzDiskConfig -Location $loc -DiskSizeGB 1 -AccountType "Premium_LRS" -OsType "Windows" -CreateOption "Empty" -HyperVGeneration "V1" -PurchasePlan $diskPurchasePlan;
+        $diskconfig = New-AzDiskConfig -Location $loc -DiskSizeGB 1 -AccountType "Premium_LRS" -OsType "Windows" -CreateOption "Empty" -HyperVGeneration "V1" -PurchasePlan $diskPurchasePlan -Tag @{test1 = "testval1"; test2 = "testval2" };
         $diskname = "disk" + $rgname;
         $disk = New-AzDisk -ResourceGroupName $rgname -DiskName $diskname -Disk $diskconfig;
         Assert-AreEqual $disk.PurchasePlan.Product "planPorduct";
@@ -1433,6 +1434,8 @@ function Test-DiskPurchasePlan
         $diskPurchasePlanUpdate = New-AzDiskPurchasePlanConfig -Name "planNameupdate" -Publisher "planPublisherupdate" -Product "planPorductupdate" -PromotionCode "planPromotionCodeupdate";
         $updateconfig = New-AzDiskUpdateConfig -PurchasePlan $diskPurchasePlanUpdate;
         $disk = Update-AzDisk -ResourceGroupName $rgname -DiskName $diskname -DiskUpdate $updateconfig;
+        Assert-AreEqual "testval1" $disk.Tags.test1;
+        Assert-AreEqual "testval2" $disk.Tags.test2;
         Assert-AreEqual $disk.PurchasePlan.Product "planPorductupdate";
         Assert-AreEqual $disk.PurchasePlan.PromotionCode "planPromotionCodeupdate";
         Assert-AreEqual $disk.PurchasePlan.Publisher "planPublisherupdate";
@@ -1518,6 +1521,35 @@ function Test-SecurityProfile
 
 <#
 .SYNOPSIS
+Test Set-AzDiskSecurityProfile with the Standard securityType.
+There should be no securityProfile made for Standard at this time. 
+#>
+function Test-SecurityProfileStandard
+{
+    $rgname = Get-ComputeTestResourceName;
+    $loc = "eastus2";
+
+    try
+    {
+        New-AzResourceGroup -Name $rgname -Location $loc -Force;
+
+        # Standard SecurityType
+        $diskconfig = New-AzDiskConfig -Location $loc -DiskSizeGB 1 -AccountType "Premium_LRS" -OsType "Windows" -CreateOption "Empty" -HyperVGeneration "V1";
+        $diskname = "diskstnd" + $rgname;
+        $diskconfig = Set-AzDiskSecurityProfile -Disk $diskconfig -SecurityType "Standard";
+        $diskPr = New-AzDisk -ResourceGroupName $rgname -DiskName $diskname -Disk $diskconfig;
+        $disk = Get-AzDisk -ResourceGroupName $rgname -DiskName $diskname;
+        Assert-Null $disk.SecurityProfile;
+    }
+    finally 
+    {
+        # Cleanup
+        Clean-ResourceGroup $rgname
+    }
+}
+
+<#
+.SYNOPSIS
 Test SupportsHibernation Parameter
 #>
 function Test-SupportsHibernation
@@ -1537,7 +1569,7 @@ function Test-SupportsHibernation
         $disk = Update-AzDisk -ResourceGroupName $rgname -DiskName $diskname -DiskUpdate $updateconfig;
         Assert-AreEqual $disk.SupportsHibernation $false;
 
-        $snapshotConfig = New-AzSnapshotConfig -Location $loc -DiskSizeGB 5 -AccountType Standard_LRS -OsType Windows -CreateOption Empty -SupportsHibernation $true;
+        $snapshotConfig = New-AzSnapshotConfig -Location $loc -DiskSizeGB 5 -AccountType Standard_LRS -OsType Windows -CreateOption Empty -SupportsHibernation $true -Tag @{test1 = "testval1"; test2 = "testval2" };
         $snapshotname = "snapshot" + $rgname;
         New-AzSnapshot -ResourceGroupName $rgname -SnapshotName $snapshotname  -Snapshot $snapshotConfig;
         $snapshot = Get-AzSnapshot -ResourceGroupName $rgname -SnapshotName $snapshotname;
@@ -1545,7 +1577,9 @@ function Test-SupportsHibernation
 
         $snapshot = Get-AzSnapshot -ResourceGroupName $rgname -SnapshotName $snapshotname;
         $snapshotUpdateConfig = New-AzSnapshotUpdateConfig -SupportsHibernation $false;
-        Update-AzSnapshot -ResourceGroupName $rgname -SnapshotName $snapshotname -SnapshotUpdate $snapshotUpdateConfig;
+        $snapshot = Update-AzSnapshot -ResourceGroupName $rgname -SnapshotName $snapshotname -SnapshotUpdate $snapshotUpdateConfig;
+        Assert-AreEqual "testval1" $snapshot.Tags.test1;
+        Assert-AreEqual "testval2" $snapshot.Tags.test2;
         $newSnapshot = Get-AzSnapshot -ResourceGroupName $rgname -SnapshotName $snapshotname;
         Assert-AreEqual $newSnapshot.SupportsHibernation $false;
     }
@@ -1667,4 +1701,94 @@ function Test-DiskAcceleratedNetworkAndPublicNetworkAccess
 		# Cleanup
 		Clean-ResourceGroup $rgname;
 	}
+}
+
+<#
+.SYNOPSIS
+Disk creation defaults to TL when being created from an Image that is HyperVGeneration V2.
+Feature request 1248
+#>
+function Test-NewDiskSecurityTypeDefaulting
+{
+    $rgname = Get-ComputeTestResourceName;
+	$loc = 'eastus2';
+
+	try
+    {
+		New-AzResourceGroup -Name $rgname -Location $loc -Force;
+        
+        $diskname = "d" + $rgname;
+        $securityTypeTL = "TrustedLaunch";
+        $hyperVGen2 = "V2";
+        
+        $image = Get-AzVMImage -Skus 2022-datacenter-azure-edition -Offer WindowsServer -PublisherName MicrosoftWindowsServer -Location $loc -Version latest;
+        $diskconfig = New-AzDiskConfig -DiskSizeGB 127 -AccountType Premium_LRS -OsType Windows -CreateOption FromImage -Location $loc;
+
+        $diskconfig = Set-AzDiskImageReference -Disk $diskconfig -Id $image.Id;
+
+        $disk = New-AzDisk -ResourceGroupName $rgname -DiskName $diskname -Disk $diskconfig;
+        Assert-AreEqual $disk.SecurityProfile.securityType $securityTypeTL;
+        Assert-AreEqual $disk.HyperVGeneration $hyperVGen2;
+        
+	}
+    finally 
+    {
+		# Cleanup
+		Clean-ResourceGroup $rgname;
+	}
+}
+
+<#
+.SYNOPSIS
+Testing SnapshotConfig create with ElasticSanResourceId
+#>
+function Test-SnapshotConfigElasticSanResourceId
+{
+    # Setup
+    $rgname = Get-ComputeTestResourceName;
+    $snapshotname = 'snapshot' + $rgname;
+
+    try
+    {
+        #
+        # Note: In order to record this test, you need to run the following commands to create ElasticSan volumn snapshot in a separate Powershell window.
+        # 
+        # New-AzResourceGroup -Name $rgname -Location $loc -Force;
+        # New-AzElasticSan -ResourceGroupName $rgname -Name $ElasticSanName -BaseSizeTiB 1 -SkuName 'Premium_LRS' -Location $loc -ExtendedCapacitySizeTiB 3 
+        # New-AzElasticSanVolumeGroup -ResourceGroupName $rgname -ElasticSanName $ElasticSanName  -Name $VolumeGroupName -Encryption 'EncryptionAtRestWithPlatformKey'  -ProtocolType 'Iscsi'
+        # $volumn = New-AzElasticSanVolume -ResourceGroupName $rgname -ElasticSanName $ElasticSanName -VolumeGroupName $VolumeGroupName -Name $volumnName -SizeGiB 100 
+        # $volumnSnapshot = New-AzElasticSanVolumeSnapshot -ResourceGroupName $rgname -ElasticSanName $ElasticSanName -VolumeGroupName $VolumeGroupName -Name $volumnSnapshotName -CreationDataSourceId $volumn.Id
+        # $mockElasticSanVolumeSnapshotResourceId = $volumnSnapshot.Id
+
+        # Common
+        $loc = Get-Location "Microsoft.Compute" "snapshots" "France Central"
+        New-AzResourceGroup -Name $rgname -Location $loc -Force;
+        
+        $mockElasticSanVolumeSnapshotResourceId = "/subscriptions/0000000-0000-0000-0000-000000000000/resourceGroups/ResourceGroup01/providers/Microsoft.ElasticSan/elasticSans/san1/volumeGroups/volumegroup1/snapshots/snapshot1"
+
+        # Config and create test
+        $snapshotconfig = New-AzSnapshotConfig -Location $loc -AccountType Standard_LRS -CreateOption CopyFromSanSnapshot -ElasticSanResourceId $mockElasticSanVolumeSnapshotResourceId -Incremental        
+        Assert-AreEqual CopyFromSanSnapshot $snapshotconfig.CreationData.CreateOption
+        Assert-AreEqual $mockElasticSanVolumeSnapshotResourceId $snapshotconfig.CreationData.ElasticSanResourceId
+
+        $snapshot = New-AzSnapshot -ResourceGroupName $rgname -SnapshotName $snapshotname -Snapshot $snapshotconfig
+        Assert-AreEqual CopyFromSanSnapshot $snapshot.CreationData.CreateOption
+        Assert-AreEqual $mockElasticSanVolumeSnapshotResourceId $snapshot.CreationData.ElasticSanResourceId
+
+        $snapshot = Get-AzSnapshot -ResourceGroupName $rgname
+        Assert-AreEqual CopyFromSanSnapshot $snapshot.CreationData.CreateOption
+        Assert-AreEqual $mockElasticSanVolumeSnapshotResourceId $snapshot.CreationData.ElasticSanResourceId
+
+        # Remove test
+        $job = Remove-AzSnapshot -ResourceGroupName $rgname -SnapshotName $snapshotname -Force -AsJob;
+        $result = $job | Wait-Job;
+        Assert-AreEqual "Completed" $result.State;
+        $st = $job | Receive-Job;
+        Verify-PSOperationStatusResponse $st;
+    }
+    finally
+    {
+        # Cleanup
+        Clean-ResourceGroup $rgname
+    }
 }

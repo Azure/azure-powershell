@@ -64,6 +64,18 @@ namespace Microsoft.Azure.Commands.Batch.Models
             }
         }
         
+        public System.Boolean? EnableAcceleratedNetworking
+        {
+            get
+            {
+                return this.omObject.EnableAcceleratedNetworking;
+            }
+            set
+            {
+                this.omObject.EnableAcceleratedNetworking = value;
+            }
+        }
+        
         public PSPoolEndpointConfiguration EndpointConfiguration
         {
             get

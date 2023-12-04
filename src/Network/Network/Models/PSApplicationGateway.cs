@@ -129,6 +129,9 @@ namespace Microsoft.Azure.Commands.Network.Models
         [Ps1Xml(Target = ViewControl.Table)]
         public PSManagedServiceIdentity Identity { get; set; }
 
+        [Ps1Xml(Target = ViewControl.Table)]
+        public string DefaultPredefinedSslPolicy { get; private set; }
+
         [JsonIgnore]
         public string GatewayIpConfigurationsText
         {

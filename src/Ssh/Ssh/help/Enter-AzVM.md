@@ -9,7 +9,7 @@ schema: 2.0.0
 
 ## SYNOPSIS
 Starts an interactive SSH session to an Azure Resource (such as Azure VMs or Arc Servers).
-Users can login using AAD accounts, or local user accounts via standard SSH authentication. Use AAD account login for the best security and convenience.
+Users can login using Microsoft Entra accounts, or local user accounts via standard SSH authentication. Use Microsoft Entra account login for the best security and convenience.
 
 ## SYNTAX
 
@@ -17,13 +17,14 @@ Users can login using AAD accounts, or local user accounts via standard SSH auth
 ```
 Enter-AzVM -ResourceGroupName <String> -Name <String> [-PublicKeyFile <String>] [-PrivateKeyFile <String>]
  [-UsePrivateIp] [-LocalUser <String>] [-Port <String>] [-ResourceType <String>] [-CertificateFile <String>]
- [-SshArgument <String[]>] [-Rdp] [-PassThru] [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
+ [-SshArgument <String[]>] [-Rdp] [-PassThru] [-Force] [-DefaultProfile <IAzureContextContainer>]
+ [<CommonParameters>]
 ```
 
 ### IpAddress
 ```
 Enter-AzVM -Ip <String> [-PublicKeyFile <String>] [-PrivateKeyFile <String>] [-LocalUser <String>]
- [-Port <String>] [-CertificateFile <String>] [-SshArgument <String[]>] [-Rdp] [-PassThru]
+ [-Port <String>] [-CertificateFile <String>] [-SshArgument <String[]>] [-Rdp] [-PassThru] [-Force]
  [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
@@ -31,22 +32,22 @@ Enter-AzVM -Ip <String> [-PublicKeyFile <String>] [-PrivateKeyFile <String>] [-L
 ```
 Enter-AzVM -ResourceId <String> [-PublicKeyFile <String>] [-PrivateKeyFile <String>] [-UsePrivateIp]
  [-LocalUser <String>] [-Port <String>] [-CertificateFile <String>] [-SshArgument <String[]>] [-Rdp]
- [-PassThru] [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
+ [-PassThru] [-Force] [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
 Start interactive SSH session to an Azure Resource (currently supports Azure VMs and Arc Servers).
-Users can login using AAD issued certificates or using local user credentials. We recommend login using AAD issued certificates when possible.
+Users can login using Microsoft Entra issued certificates or using local user credentials. We recommend login using Microsoft Entra issued certificates when possible.
 Important note: When connecting to Azure Arc resources, this cmdlet requires the Az.Ssh.ArcProxy module to also be installed in the client machine. The cmdlet will attempt to install the module from the PowerShell Gallery, but the user also has the option to install it themselves. It is important that the user also has permission to execute the Proxy files in the Az.Ssh.ArcProxy module, or the connection will fail. You can find the Az.Ssh.ArcServer module in the PowerShell Gallery: https://aka.ms/PowerShellGallery-Az.Ssh.ArcProxy.
 
 ## EXAMPLES
 
-### Example 1: Connect to Azure Resource using AAD issued certificates
+### Example 1: Connect to Azure Resource using Microsoft Entra issued certificates
 ```powershell
 Enter-AzVM -ResourceGroupName myRg -Name myMachine
 ```
 
-When a -LocalUser is not supplied, the cmdlet will attempt to login using Azure AD. This is currently only supported for resources running Linux OS.
+When a -LocalUser is not supplied, the cmdlet will attempt to login using Microsoft Entra ID. This is currently only supported for resources running Linux OS.
 
 ### Example 2: Connect to Local User on Azure Resource using SSH certificates for authentication
 ```powershell
@@ -59,13 +60,13 @@ Enter-AzVM -ResourceGroupName myRg -Name myMachine -LocalUser azureuser -Private
 Enter-AzVM -ResourceGroupName myRg -Name myMachine -LocalUser azureuser -PrivateKeyFile ./id_rsa
 ```
 
-### Example 4: Connect to Local User on Azure Resource using interactive username and password authetication
+### Example 4: Connect to Local User on Azure Resource using interactive username and password authentication
 
 ```powershell
 Enter-AzVM -ResourceGroupName myRg -Name myMachine -LocalUser azureuser
 ```
 
-### Example 5: Connect to the Public Ip of an Azure Virtual Machine using AAD issued certificates
+### Example 5: Connect to the Public Ip of an Azure Virtual Machine using Microsoft Entra issued certificates
 ```powershell
 Enter-AzVM -Ip 1.2.3.4
 ```
@@ -77,7 +78,7 @@ Enter-AzVM -ResourceGroupName myRg -Name myMachine -ResourceType Microsoft.Hybri
 
 This parameter is useful when there is more than one supported resource with the same name in the Resource Group.
 
-### Example 7: Connect to Azure Resource using AAD certificate issued certificates and custom key files
+### Example 7: Connect to Azure Resource using Microsoft Entra certificate issued certificates and custom key files
 ```powershell
 Enter-AzVM -ResourceGroupName myRg -Name myMachine -PrivateKeyFile ./id_rsa -PublicKeyFile ./id_rsa.pub
 ```
@@ -115,6 +116,21 @@ The credentials, account, tenant, and subscription used for communication with A
 Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer
 Parameter Sets: (All)
 Aliases: AzContext, AzureRmContext, AzureCredential
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -Force
+When connecting to Arc resources, do not prompt for confirmation before updating the allowed port for SSH connection in the Connection Endpoint to match the target port or to install Az.Ssh.ArcProxy module from the PowerShell Gallery, if needed.
+
+```yaml
+Type: System.Management.Automation.SwitchParameter
+Parameter Sets: (All)
+Aliases:
 
 Required: False
 Position: Named
@@ -335,7 +351,8 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ## NOTES
 
 ## RELATED LINKS
+
 [SSH Access to Arzure Arc-enabled servers](https://learn.microsoft.com/en-us/azure/azure-arc/servers/ssh-arc-overview?tabs=azure-cli)
 [Troubleshoot SSH access to Azure Arc Enabled Servers](https://learn.microsoft.com/en-us/azure/azure-arc/servers/ssh-arc-troubleshoot)
-[Login to a Linux VM by using Azure AD](https://learn.microsoft.com/en-us/azure/active-directory/devices/howto-vm-sign-in-azure-ad-linux)
+[Login to a Linux VM by using Microsoft Entra ID](https://learn.microsoft.com/en-us/azure/active-directory/devices/howto-vm-sign-in-azure-ad-linux)
 [Install OpenSSH for Windows](https://learn.microsoft.com/en-us/windows-server/administration/openssh/openssh_install_firstuse?tabs=gui)

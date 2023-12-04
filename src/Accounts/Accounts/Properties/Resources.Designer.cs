@@ -19,7 +19,7 @@ namespace Microsoft.Azure.Commands.Profile.Properties {
     // class via a tool like ResGen or Visual Studio.
     // To add or remove a member, edit your .ResX file then rerun ResGen
     // with the /str option, or rebuild your VS project.
-    [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Resources.Tools.StronglyTypedResourceBuilder", "16.0.0.0")]
+    [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Resources.Tools.StronglyTypedResourceBuilder", "17.0.0.0")]
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
     [global::System.Runtime.CompilerServices.CompilerGeneratedAttribute()]
     internal class Resources {
@@ -673,6 +673,15 @@ namespace Microsoft.Azure.Commands.Profile.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to The uri is invalid: {0}.
+        /// </summary>
+        internal static string InvalidOpenIDConfigUri {
+            get {
+                return ResourceManager.GetString("InvalidOpenIDConfigUri", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to The specified ResourceTypeName &quot;{0}&quot; is not supported, please provide a valid value. e.g. Arm, AadGraph, etc..
         /// </summary>
         internal static string InvalidResourceTypeName {
@@ -754,6 +763,33 @@ namespace Microsoft.Azure.Commands.Profile.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Uri of OpenID Configuration Doc for {0}: {1}.
+        /// </summary>
+        internal static string OpenIDAbsoluteUriMessage {
+            get {
+                return ResourceManager.GetString("OpenIDAbsoluteUriMessage", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Failed to query tenant information by domain name: unable to find the &apos;issuer&apos; from the OpenID configuration response: {0}..
+        /// </summary>
+        internal static string OpenIDConfigResponseError {
+            get {
+                return ResourceManager.GetString("OpenIDConfigResponseError", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to OpenID configuration doc in Json: {0}.
+        /// </summary>
+        internal static string OpenIDConfigurationDocInJsonMessage {
+            get {
+                return ResourceManager.GetString("OpenIDConfigurationDocInJsonMessage", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Overwrite context &apos;{0}&apos; with context &apos;{1}&apos;.
         /// </summary>
         internal static string OverwriteContextWarning {
@@ -822,6 +858,15 @@ namespace Microsoft.Azure.Commands.Profile.Properties {
         internal static string ProfileArgumentWrite {
             get {
                 return ResourceManager.GetString("ProfileArgumentWrite", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Personally identifiable information and confidential data may be written to the file located at &apos;{0}&apos;. Please ensure that appropriate access controls are assigned to the saved file..
+        /// </summary>
+        internal static string ProfileCredentialsWriteWarning {
+            get {
+                return ResourceManager.GetString("ProfileCredentialsWriteWarning", resourceCulture);
             }
         }
         
@@ -1249,11 +1294,29 @@ namespace Microsoft.Azure.Commands.Profile.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to The input domain is {0} and the tenant Id is {1}.
+        /// </summary>
+        internal static string TenantDomainToTenantIdMessage {
+            get {
+                return ResourceManager.GetString("TenantDomainToTenantIdMessage", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Unable to find tenant &apos;{0}&apos;..
         /// </summary>
         internal static string TenantIdNotFound {
             get {
                 return ResourceManager.GetString("TenantIdNotFound", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Failed to parse tenant ID from issuer {0}..
+        /// </summary>
+        internal static string TenantIdNotFoundinIssuer {
+            get {
+                return ResourceManager.GetString("TenantIdNotFoundinIssuer", resourceCulture);
             }
         }
         

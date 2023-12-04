@@ -15,23 +15,24 @@ Creates a directory.
 
 ### ShareName (Default)
 ```
-New-AzStorageDirectory [-ShareName] <String> [-Path] <String> [-Context <IStorageContext>]
- [-ServerTimeoutPerRequest <Int32>] [-ClientTimeoutPerRequest <Int32>]
+New-AzStorageDirectory [-ShareName] <String> [-Path] <String> [-DisAllowTrailingDot]
+ [-Context <IStorageContext>] [-ServerTimeoutPerRequest <Int32>] [-ClientTimeoutPerRequest <Int32>]
  [-DefaultProfile <IAzureContextContainer>] [-ConcurrentTaskCount <Int32>] [<CommonParameters>]
 ```
 
 ### Share
 ```
-New-AzStorageDirectory [-Share] <CloudFileShare> [-Path] <String> [-Context <IStorageContext>]
- [-ServerTimeoutPerRequest <Int32>] [-ClientTimeoutPerRequest <Int32>]
+New-AzStorageDirectory [-Share] <CloudFileShare> [-ShareClient <ShareClient>] [-Path] <String>
+ [-Context <IStorageContext>] [-ServerTimeoutPerRequest <Int32>] [-ClientTimeoutPerRequest <Int32>]
  [-DefaultProfile <IAzureContextContainer>] [-ConcurrentTaskCount <Int32>] [<CommonParameters>]
 ```
 
 ### Directory
 ```
-New-AzStorageDirectory [-Directory] <CloudFileDirectory> [-Path] <String> [-Context <IStorageContext>]
- [-ServerTimeoutPerRequest <Int32>] [-ClientTimeoutPerRequest <Int32>]
- [-DefaultProfile <IAzureContextContainer>] [-ConcurrentTaskCount <Int32>] [<CommonParameters>]
+New-AzStorageDirectory [-Directory] <CloudFileDirectory> [-ShareDirectoryClient <ShareDirectoryClient>]
+ [-Path] <String> [-Context <IStorageContext>] [-ServerTimeoutPerRequest <Int32>]
+ [-ClientTimeoutPerRequest <Int32>] [-DefaultProfile <IAzureContextContainer>] [-ConcurrentTaskCount <Int32>]
+ [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -142,6 +143,21 @@ Accept pipeline input: True (ByPropertyName, ByValue)
 Accept wildcard characters: False
 ```
 
+### -DisAllowTrailingDot
+Disallow trailing dot (.) to suffix directory and file names.
+
+```yaml
+Type: System.Management.Automation.SwitchParameter
+Parameter Sets: ShareName
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
 ### -Path
 Specifies the path of a folder.
 This cmdlet creates a folder for the path that this cmdlet specifies.
@@ -187,6 +203,36 @@ Aliases: CloudFileShare
 
 Required: True
 Position: 0
+Default value: None
+Accept pipeline input: True (ByPropertyName, ByValue)
+Accept wildcard characters: False
+```
+
+### -ShareClient
+ShareClient object indicated the share where the files/directories would be listed.
+
+```yaml
+Type: Azure.Storage.Files.Shares.ShareClient
+Parameter Sets: Share
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: True (ByPropertyName, ByValue)
+Accept wildcard characters: False
+```
+
+### -ShareDirectoryClient
+ShareDirectoryClient object indicated the base folder where the files/directories would be listed.
+
+```yaml
+Type: Azure.Storage.Files.Shares.ShareDirectoryClient
+Parameter Sets: Directory
+Aliases:
+
+Required: False
+Position: Named
 Default value: None
 Accept pipeline input: True (ByPropertyName, ByValue)
 Accept wildcard characters: False

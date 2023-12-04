@@ -100,12 +100,22 @@ namespace Microsoft.Azure.Commands.Compute.Automation.Models
                 cfg.CreateMap<TO.PSVirtualMachineScaleSetVM, TO.PSVirtualMachineScaleSetVMList>();
                 cfg.CreateMap<FROM.Disk, FROM.DiskUpdate>();
                 cfg.CreateMap<FROM.DiskUpdate, FROM.Disk>();
-                cfg.CreateMap<FROM.DiskUpdate, TO.PSDiskUpdate>();
-                cfg.CreateMap<TO.PSDiskUpdate, FROM.DiskUpdate>();
+
+                //Adding a condition to check for null because automapper maps null IDictionary Types to empty IDictionary values
+                cfg.CreateMap<FROM.DiskUpdate, TO.PSDiskUpdate>()
+                    .ForMember(c => c.Tags, o => o.Condition(r => (r.Tags != null)));
+                cfg.CreateMap<TO.PSDiskUpdate, FROM.DiskUpdate>()
+                    .ForMember(c => c.Tags, o => o.Condition(r => (r.Tags != null)));
+                
                 cfg.CreateMap<FROM.Snapshot, FROM.SnapshotUpdate>();
                 cfg.CreateMap<FROM.SnapshotUpdate, FROM.Snapshot>();
-                cfg.CreateMap<FROM.SnapshotUpdate, TO.PSSnapshotUpdate>();
-                cfg.CreateMap<TO.PSSnapshotUpdate, FROM.SnapshotUpdate>();
+                
+                //Adding a condition to check for null because automapper maps null IDictionary Types to empty IDictionary values
+                cfg.CreateMap<FROM.SnapshotUpdate, TO.PSSnapshotUpdate>()
+                    .ForMember(c => c.Tags, o => o.Condition(r => (r.Tags != null)));
+                cfg.CreateMap<TO.PSSnapshotUpdate, FROM.SnapshotUpdate>()
+                    .ForMember(c => c.Tags, o => o.Condition(r => (r.Tags != null)));
+                
                 cfg.CreateMap<FROM.DedicatedHostGroup, TO.PSHostGroup>();
                 cfg.CreateMap<TO.PSHostGroup, FROM.DedicatedHostGroup>();
                 cfg.CreateMap<FROM.DedicatedHost, TO.PSHost>();

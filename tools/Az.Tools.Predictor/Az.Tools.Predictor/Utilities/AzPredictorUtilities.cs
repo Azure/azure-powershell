@@ -38,16 +38,16 @@ namespace Microsoft.Azure.PowerShell.Tools.AzPredictor.Utilities
         public static async Task RequestPredictionAndCollectTelemetryAync(IAzPredictorService azPredictorService, ITelemetryClient telemetryClient, PredictionClient predictionClient, IEnumerable<string> commands, TaskCompletionSource telemetryWaitTask, CancellationToken cancellationToken)
         {
             var requestId = Guid.NewGuid().ToString();
-            bool? hasSentHttpRequest = default;
+            (bool, CommandLineSummary)? requestResult = default;
             Exception exception = null;
 
             try
             {
-                hasSentHttpRequest = await azPredictorService.RequestPredictionsAsync(commands, requestId, cancellationToken);
+                requestResult = await azPredictorService.RequestPredictionsAsync(commands, requestId, cancellationToken);
             }
             catch (ServiceRequestException e)
             {
-                hasSentHttpRequest = e.IsRequestSent;
+                requestResult = (e.IsRequestSent, e.PredictorSummary);
                 exception = e.InnerException;
             }
             catch (Exception e) when (!(e is OperationCanceledException))
@@ -61,13 +61,14 @@ namespace Microsoft.Azure.PowerShell.Tools.AzPredictor.Utilities
                     await telemetryWaitTask.Task;
                 }
 
-                if (hasSentHttpRequest.HasValue)
+                if (requestResult.HasValue)
                 {
                     telemetryClient.RequestId = requestId;
                     telemetryClient.OnRequestPrediction(new RequestPredictionTelemetryData(predictionClient,
                                 commands,
-                                hasSentHttpRequest.Value,
-                                exception));
+                                requestResult.Value.Item1,
+                                exception,
+                                requestResult.Value.Item2));
                 }
             }
         }

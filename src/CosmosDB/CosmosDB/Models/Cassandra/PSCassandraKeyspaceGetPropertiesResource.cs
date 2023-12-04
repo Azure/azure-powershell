@@ -26,9 +26,9 @@ namespace Microsoft.Azure.Commands.CosmosDB.Models
             }
 
             Id = cassandraKeyspaceGetPropertiesResource.Id;
-            _rid = cassandraKeyspaceGetPropertiesResource._rid;
-            _ts = cassandraKeyspaceGetPropertiesResource._ts;
-            _etag = cassandraKeyspaceGetPropertiesResource._etag;
+            _rid = cassandraKeyspaceGetPropertiesResource.Rid;
+            _ts = cassandraKeyspaceGetPropertiesResource.Ts;
+            _etag = cassandraKeyspaceGetPropertiesResource.Etag;
         }
 
         //

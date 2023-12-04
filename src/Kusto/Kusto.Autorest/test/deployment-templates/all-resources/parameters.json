@@ -1,0 +1,84 @@
+{
+  "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentParameters.json#",
+  "contentVersion": "1.0.0.0",
+  "parameters": {
+    "kustoApiVersion": {
+      "value": "2023-08-15"
+    },
+    "userAssignedManagedIdentityName": {
+      "value": "uaMi3w8cj7"
+    },
+    "kustoSkuName": {
+      "value": "Dev(No SLA)_Standard_E2a_v4"
+    },
+    "kustoFollowerSkuName": {
+      "value": "Standard_E8as_v5+1TB_PS"
+    },
+    "kustoClusterTier": {
+      "value": "Basic"
+    },
+    "kustoFollowerClusterTier": {
+      "value": "Standard"
+    },
+    "kustoClusterName": {
+      "value": "pssdk3w8cj7"
+    },
+    "kustoFollowerClusterName": {
+      "value": "pssdkfollow3w8cj7"
+    },
+    "kustoMigrationClusterName": {
+      "value": "pssdkmigr3w8cj7"
+    },
+    "kustoDatabaseName": {
+      "value": "TestDb"
+    },
+    "kustoMigrationDatabaseName": {
+      "value": "DbToMigrate"
+    },
+    "kustoDatabaseScriptName": {
+      "value": "CreateTableScript"
+    },
+    "kustoTableName": {
+      "value": "TestTable"
+    },
+    "principalAppId": {
+      "value": "713c3475-5021-4f3b-a650-eaa9a83f25a4"
+    },
+    "eventHubNameSpaceName": {
+      "value": "EHNamespace3w8cj7"
+    },
+    "eventHubName": {
+      "value": "eh3w8cj7"
+    },
+    "iotHubName": {
+      "value": "iot3w8cj7"
+    },
+    "cosmosDbAccountName": {
+      "value": "cosmos3w8cj7"
+    },
+    "cosmosDbDatabaseName": {
+      "value": "cosmostestdb"
+    },
+    "cosmosDbContainerName": {
+      "value": "cosmostestcontainer"
+    },
+    "storageAccountName": {
+      "value": "sa3w8cj7"
+    },
+    "virtualNetworkName": {
+      "value": "vnet3w8cj7"
+    },
+    "subnetName": {
+      "value": "subnet3w8cj7"
+    },
+    "privateEndpointName": {
+      "value": "pe3w8cj7"
+    },
+    "keyVaultName": {
+      "value": "kvPwsh3w8cj7"
+    },
+    "keyName": {
+      "value": "byok3w8cj7"
+    }
+  }
+}

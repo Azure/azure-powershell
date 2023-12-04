@@ -1,47 +1,67 @@
 ---
-external help file: Microsoft.Azure.PowerShell.Cmdlets.Subscription.dll-Help.xml
+external help file:
 Module Name: Az.Subscription
-online version:https://learn.microsoft.com/powershell/module/az.subscription/new-azsubscriptionalias
+online version: https://learn.microsoft.com/powershell/module/az.subscription/new-azsubscriptionalias
 schema: 2.0.0
 ---
 
 # New-AzSubscriptionAlias
 
 ## SYNOPSIS
-Creates new alias and subscription
+Create Alias Subscription.
 
 ## SYNTAX
 
+### CreateExpanded (Default)
 ```
-New-AzSubscriptionAlias -AliasName <String> [-BillingScope <String>] [-Workload <String>]
- [-SubscriptionName <String>] [-ResellerId <String>] [-SubscriptionId <String>] [-AsJob]
- [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
+New-AzSubscriptionAlias -AliasName <String> -SubscriptionId <String> [-Tag <Hashtable>]
+ [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
+```
+
+### WorkloadCreateExpanded
+```
+New-AzSubscriptionAlias -AliasName <String> -BillingScope <String> -SubscriptionName <String>
+ -Workload <Workload> [-ManagementGroupId <String>] [-ResellerId <String>] [-SubscriptionOwnerId <String>]
+ [-SubscriptionTenantId <String>] [-Tag <Hashtable>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
+ [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-The **New-AzSubscriptionAlias** cmdlet creates new alias and subscription
+Create Alias Subscription.
 
 ## EXAMPLES
 
-### Example 1
+### Example 1: Create Alias Subscription.
 ```powershell
-New-AzSubscriptionAlias -AliasName "NewAlias1" -SubscriptionName "Subscription1" -BillingScope $BillingScope -Workload Production
+New-AzSubscriptionAlias -AliasName test-subscription -SubscriptionId XXXXXXXX-XXXX-XXXX-XXXX-XXXXXXXXXXXX
 ```
 
-Creates new alias and EA subscription
-
-### Example 2
-```powershell
-New-AzSubscriptionAlias -AliasName "NewAlias2" -SubscriptionName "Subscription2" -BillingScope $BillingScope -Workload DevTest
+```output
+AliasName         SubscriptionId                       ProvisioningState
+---------         --------------                       -----------------
+test-subscription XXXXXXXX-XXXX-XXXX-XXXX-XXXXXXXXXXXX Succeeded
 ```
 
-Creates new alias and Dev/Test EA subscription
+Create Alias Subscription.
 
+### Example 2: Create Alias Subscription.
+```powershell
+New-AzSubscriptionAlias -AliasName test-subscription -SubscriptionName "createSub" -BillingScope "/billingAccounts/{billingAccountName}/billingProfiles/{billingProfileName}/invoiceSections/{invoiceSectionName}" -Workload 'Production' 
+```
+
+```output
+AliasName         SubscriptionId                       ProvisioningState
+---------         --------------                       -----------------
+test-subscription XXXXXXXX-XXXX-XXXX-XXXX-XXXXXXXXXXXX Succeeded
+```
+
+Create Alias Subscription.
 
 ## PARAMETERS
 
 ### -AliasName
-Alias for the subscription
+AliasName is the name for the subscription creation request.
+Note that this is not the same as subscription name and this doesn’t have any other lifecycle need beyond the request for subscription creation.
 
 ```yaml
 Type: System.String
@@ -56,7 +76,7 @@ Accept wildcard characters: False
 ```
 
 ### -AsJob
-Run cmdlet in the background
+Run the command as a job
 
 ```yaml
 Type: System.Management.Automation.SwitchParameter
@@ -71,11 +91,42 @@ Accept wildcard characters: False
 ```
 
 ### -BillingScope
-Billing Scope
+Billing scope of the subscription.For CustomerLed and FieldLed - /billingAccounts/{billingAccountName}/billingProfiles/{billingProfileName}/invoiceSections/{invoiceSectionName}For PartnerLed - /billingAccounts/{billingAccountName}/customers/{customerName}For Legacy EA - /billingAccounts/{billingAccountName}/enrollmentAccounts/{enrollmentAccountName}
 
 ```yaml
 Type: System.String
+Parameter Sets: WorkloadCreateExpanded
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -DefaultProfile
+The DefaultProfile parameter is not functional.
+Use the SubscriptionId parameter when available if executing the cmdlet against a different subscription.
+
+```yaml
+Type: System.Management.Automation.PSObject
 Parameter Sets: (All)
+Aliases: AzureRMContext, AzureCredential
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -ManagementGroupId
+Management group Id for the subscription.
+
+```yaml
+Type: System.String
+Parameter Sets: WorkloadCreateExpanded
 Aliases:
 
 Required: False
@@ -85,13 +136,13 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -DefaultProfile
-The credentials, account, tenant, and subscription used for communication with Azure.
+### -NoWait
+Run the command asynchronously
 
 ```yaml
-Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer
+Type: System.Management.Automation.SwitchParameter
 Parameter Sets: (All)
-Aliases: AzContext, AzureRmContext, AzureCredential
+Aliases:
 
 Required: False
 Position: Named
@@ -105,7 +156,7 @@ Reseller Id
 
 ```yaml
 Type: System.String
-Parameter Sets: (All)
+Parameter Sets: WorkloadCreateExpanded
 Aliases:
 
 Required: False
@@ -116,11 +167,41 @@ Accept wildcard characters: False
 ```
 
 ### -SubscriptionId
-Existing Subscription Id
+This parameter can be used to create alias for existing subscription Id
 
 ```yaml
 Type: System.String
-Parameter Sets: (All)
+Parameter Sets: CreateExpanded
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -SubscriptionName
+The friendly name of the subscription.
+
+```yaml
+Type: System.String
+Parameter Sets: WorkloadCreateExpanded
+Aliases: DisplayName
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -SubscriptionOwnerId
+Owner Id of the subscription
+
+```yaml
+Type: System.String
+Parameter Sets: WorkloadCreateExpanded
 Aliases:
 
 Required: False
@@ -130,11 +211,26 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -SubscriptionName
-Name of the subscription
+### -SubscriptionTenantId
+Tenant Id of the subscription
 
 ```yaml
 Type: System.String
+Parameter Sets: WorkloadCreateExpanded
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -Tag
+Tags for the subscription
+
+```yaml
+Type: System.Collections.Hashtable
 Parameter Sets: (All)
 Aliases:
 
@@ -146,11 +242,12 @@ Accept wildcard characters: False
 ```
 
 ### -Workload
-Type of Workload. Accepted values: DevTest, Production.
+The workload type of the subscription.
+It can be either Production or DevTest.
 
 ```yaml
-Type: System.String
-Parameter Sets: (All)
+Type: Microsoft.Azure.PowerShell.Cmdlets.Subscription.Support.Workload
+Parameter Sets: WorkloadCreateExpanded
 Aliases:
 
 Required: True
@@ -196,12 +293,11 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
-### None
-
 ## OUTPUTS
 
-### Microsoft.Azure.Commands.Subscription.Models.PSAzureSubscription
+### Microsoft.Azure.PowerShell.Cmdlets.Subscription.Models.Api20211001.ISubscriptionAliasResponse
 
 ## NOTES
 
 ## RELATED LINKS
+

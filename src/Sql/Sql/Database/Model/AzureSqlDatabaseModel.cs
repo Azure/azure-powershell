@@ -248,6 +248,22 @@ namespace Microsoft.Azure.Commands.Sql.Database.Model
         public Guid? FederatedClientId { get; set; }
 
         /// <summary>
+        /// Gets or sets the value of AKV key auto rotation flag.
+        /// </summary>
+        public bool? EncryptionProtectorAutoRotation { get; set; }
+
+        /// <summary>
+        /// Gets or sets the value that indicates if use free limit is selected for database 
+        /// </summary>
+        public bool? UseFreeLimit { get; set; }
+
+        /// <summary>
+        /// Gets or sets the value of free limit exhaustion behavior if use free limit is enabled
+        /// Can be AutoPause or BillOverUsage
+        /// </summary>
+        public string FreeLimitExhaustionBehavior { get; set; }
+
+        /// <summary>
         /// Construct AzureSqlDatabaseModel
         /// </summary>
         public AzureSqlDatabaseModel()
@@ -372,6 +388,9 @@ namespace Microsoft.Azure.Commands.Sql.Database.Model
             EncryptionProtector = database.EncryptionProtector;
             Identity = database.Identity;
             FederatedClientId = database.FederatedClientId;
+            EncryptionProtectorAutoRotation = database.EncryptionProtectorAutoRotation;
+            UseFreeLimit = database.UseFreeLimit;
+            FreeLimitExhaustionBehavior = database.FreeLimitExhaustionBehavior;
         }
 
         /// <summary>

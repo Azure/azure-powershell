@@ -94,7 +94,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.ServiceClient
         /// <returns>Azure Resource Storage response object.</returns>  
         public BackupResourceConfigResource GetVaultStorageType(string resouceGroupName, string vaultName)
         {
-            return BmsAdapter.Client.BackupResourceStorageConfigsNonCRR.GetWithHttpMessagesAsync(
+            return BmsAdapter.Client.BackupResourceStorageConfigsNonCrr.GetWithHttpMessagesAsync(
                 vaultName, resouceGroupName).Result.Body;
         }
 
@@ -174,11 +174,11 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.ServiceClient
         /// <returns>vault response object.</returns>
         public CrrModel.AADPropertiesResource GetAADProperties(string azureRegion, string backupManagementType = null)
         {
-            ODataQuery<CrrModel.BMSAADPropertiesQueryObject> queryParams = null;
+            ODataQuery<CrrModel.BmsaadPropertiesQueryObject> queryParams = null;
 
             if (backupManagementType == BackupManagementType.AzureWorkload)
             {
-                queryParams = new ODataQuery<CrrModel.BMSAADPropertiesQueryObject>(q => q.BackupManagementType == BackupManagementType.AzureWorkload);
+                queryParams = new ODataQuery<CrrModel.BmsaadPropertiesQueryObject>(q => q.BackupManagementType == BackupManagementType.AzureWorkload);
             }
 
             CrrModel.AADPropertiesResource aadProperties = CrrAdapter.Client.AadProperties.GetWithHttpMessagesAsync(azureRegion, queryParams).Result.Body;

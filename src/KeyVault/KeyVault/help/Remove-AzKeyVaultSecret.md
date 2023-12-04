@@ -78,7 +78,7 @@ Tags                 :
 This command removes the secret named FinanceSecret from the key vault named Contoso.
 The command specifies the *Force* and *Confirm* parameters, and, therefore, the cmdlet does not prompt you for confirmation.
 
-### Example 3: Remove a secret in azure key vault by command Remove-Secret in module Microsoft.PowerShell.SecretManagement
+### Example 3: Remove a secret in Azure Key Vault by command Remove-Secret in module Microsoft.PowerShell.SecretManagement
 ```powershell
 # Install module Microsoft.PowerShell.SecretManagement
 Install-Module Microsoft.PowerShell.SecretManagement -Repository PSGallery -AllowPrerelease
@@ -94,8 +94,7 @@ Remove-Secret -Vault AzKeyVault -Name secureSecret
 None
 ```
 
-This example removes a secret named `secureSecret` in azure key vault `test-kv` by command `Remove-Secret` in module `Microsoft.PowerShell.SecretManagement`.
-
+This example removes a secret named `secureSecret` in Azure Key Vault `test-kv` by command `Remove-Secret` in module `Microsoft.PowerShell.SecretManagement`.
 
 ### Example 4: Purge deleted secret from the key vault permanently
 ```powershell

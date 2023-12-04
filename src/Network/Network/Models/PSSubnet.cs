@@ -71,6 +71,9 @@ namespace Microsoft.Azure.Commands.Network.Models
         [JsonProperty(Order = 1)]
         public List<PSResourceId> IpAllocations { get; set; }
 
+        [JsonProperty(Order = 1)]
+        public bool? DefaultOutboundAccess { get; set; }
+
         [JsonIgnore]
         public string IpConfigurationsText
         {
@@ -170,6 +173,12 @@ namespace Microsoft.Azure.Commands.Network.Models
         public string IpAllocationsText
         {
             get { return JsonConvert.SerializeObject(IpAllocations, Formatting.Indented, new JsonSerializerSettings() { NullValueHandling = NullValueHandling.Ignore }); }
+        }
+
+        [JsonIgnore]
+        public string DefaultOutboundAccessText
+        {
+            get { return JsonConvert.SerializeObject(DefaultOutboundAccess, Formatting.Indented, new JsonSerializerSettings() { NullValueHandling = NullValueHandling.Ignore }); }
         }
     }
 }

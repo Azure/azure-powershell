@@ -8,7 +8,7 @@ schema: 2.0.0
 # Export-AzSshConfig
 
 ## SYNOPSIS
-This cmdlet exports an SSH configuration file that can be used to connect to Azure Resources through client applications that support OpenSSH config and certificates. SSH config files can be created that use AAD issued certificates or local user credentials.
+This cmdlet exports an SSH configuration file that can be used to connect to Azure Resources through client applications that support OpenSSH config and certificates. SSH config files can be created that use Microsoft Entra ID issued certificates or local user credentials.
 
 ## SYNTAX
 
@@ -16,7 +16,7 @@ This cmdlet exports an SSH configuration file that can be used to connect to Azu
 ```
 Export-AzSshConfig -ResourceGroupName <String> -Name <String> -ConfigFilePath <String>
  [-PublicKeyFile <String>] [-PrivateKeyFile <String>] [-UsePrivateIp] [-LocalUser <String>] [-Port <String>]
- [-ResourceType <String>] [-CertificateFile <String>] [-Overwrite] [-KeysDestinationFolder <String>]
+ [-ResourceType <String>] [-CertificateFile <String>] [-Overwrite] [-KeysDestinationFolder <String>] [-Force]
  [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
@@ -24,35 +24,35 @@ Export-AzSshConfig -ResourceGroupName <String> -Name <String> -ConfigFilePath <S
 ```
 Export-AzSshConfig -Ip <String> -ConfigFilePath <String> [-PublicKeyFile <String>] [-PrivateKeyFile <String>]
  [-LocalUser <String>] [-Port <String>] [-CertificateFile <String>] [-Overwrite]
- [-KeysDestinationFolder <String>] [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
+ [-KeysDestinationFolder <String>] [-Force] [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
 ### ResourceId
 ```
 Export-AzSshConfig -ResourceId <String> -ConfigFilePath <String> [-PublicKeyFile <String>]
  [-PrivateKeyFile <String>] [-UsePrivateIp] [-LocalUser <String>] [-Port <String>] [-CertificateFile <String>]
- [-Overwrite] [-KeysDestinationFolder <String>] [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
+ [-Overwrite] [-KeysDestinationFolder <String>] [-Force] [-DefaultProfile <IAzureContextContainer>]
+ [<CommonParameters>]
 ```
 
 ## DESCRIPTION
 The exported SSH configuration file can be used to connect to Azure Resources by client applications that support OpenSSH config and certificates. Applications such as git and rsync can use configuration file by setting the command to 'ssh -F /path/to/config'.
 For example:
 rsync -e 'ssh -F /path/to/config'.
-Users can create ssh config files that use AAD issued certificates or local user credentials.
+Users can create ssh config files that use Microsoft Entra ID issued certificates or local user credentials.
 Important note: When connecting to Azure Arc resources, this cmdlet requires the Az.Ssh.ArcProxy module to also be installed in the client machine. The cmdlet will attempt to install the module from the PowerShell Gallery, but the user also has the option to install it themselves. It is important that the user also has permission to execute the Proxy files in the Az.Ssh.ArcProxy module, or the connection will fail. You can find the Az.Ssh.ArcServer module in the PowerShell Gallery: https://aka.ms/PowerShellGallery-Az.Ssh.ArcProxy.
-
 
 ## EXAMPLES
 
-### Example 1: Export a SSH configuration file for connecting to a resource using AAD issued certificates for authentication.
+### Example 1: Export a SSH configuration file for connecting to a resource using Microsoft Entra ID issued certificates for authentication.
 ```powershell
 Export-AzSshConfig -ResourceGroupName myRg -Name myMachine -ConfigFilePath ./sshconfig.config
 ```
 
-When a -LocalUser is not supplied, the cmdlet will attempt to create a certificate to login using Azure AD. This is currently only supported for resources running Linux OS.
-When using Azure AD to login to resource, the Host name in the configuration entry will be "{resource group name}-{resource name}", or "{ip address}" for Azure VMs.
+When a -LocalUser is not supplied, the cmdlet will attempt to create a certificate to login using Microsoft Entra ID. This is currently only supported for resources running Linux OS.
+When using Microsoft Entra ID to login to resource, the Host name in the configuration entry will be "{resource group name}-{resource name}", or "{ip address}" for Azure VMs.
 
-### Example 2: Export a SSH configuration file for connecting to the Public Ip of an Azure Virtual Machine using AAD issued certificates.
+### Example 2: Export a SSH configuration file for connecting to the Public Ip of an Azure Virtual Machine using Microsoft Entra ID issued certificates.
 ```powershell
 Export-AzSshConfig -Ip 1.2.3.4 -ConfigFilePath ./sshconfig.config
 ```
@@ -134,6 +134,21 @@ The credentials, account, tenant, and subscription used for communication with A
 Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer
 Parameter Sets: (All)
 Aliases: AzContext, AzureRmContext, AzureCredential
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -Force
+When connecting to Arc resources, do not prompt for confirmation before updating the allowed port for SSH connection in the Connection Endpoint to match the target port or to install Az.Ssh.ArcProxy module from the PowerShell Gallery, if needed.
+
+```yaml
+Type: System.Management.Automation.SwitchParameter
+Parameter Sets: (All)
+Aliases:
 
 Required: False
 Position: Named
@@ -340,5 +355,5 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 [SSH Access to Arzure Arc-enabled servers](https://learn.microsoft.com/en-us/azure/azure-arc/servers/ssh-arc-overview?tabs=azure-cli)
 [Troubleshoot SSH access to Azure Arc Enabled Servers](https://learn.microsoft.com/en-us/azure/azure-arc/servers/ssh-arc-troubleshoot)
-[Login to a Linux VM by using Azure AD](https://learn.microsoft.com/en-us/azure/active-directory/devices/howto-vm-sign-in-azure-ad-linux)
+[Login to a Linux VM by using Microsoft Entra ID](https://learn.microsoft.com/en-us/azure/active-directory/devices/howto-vm-sign-in-azure-ad-linux)
 [Install OpenSSH for Windows](https://learn.microsoft.com/en-us/windows-server/administration/openssh/openssh_install_firstuse?tabs=gui)

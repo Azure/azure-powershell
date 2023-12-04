@@ -27,6 +27,11 @@ namespace Microsoft.Azure.PowerShell.Tools.AzPredictor
         public bool IsRequestSent { get; set; }
 
         /// <summary>
+        /// Gets and sets the value that summarize the predictor from the response.
+        /// </summary>
+        public CommandLineSummary PredictorSummary { get; set; }
+
+        /// <summary>
         /// Creates a new instance of <see cref="ServiceRequestException"/>.
         /// </summary>
         public ServiceRequestException() : base() {}

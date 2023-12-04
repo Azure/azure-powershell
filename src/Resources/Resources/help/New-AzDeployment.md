@@ -147,6 +147,14 @@ New-AzDeployment [-Name <String>] -Location <String> [-DeploymentDebugLogLevel <
  [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
+### ByParameterFileWithNoTemplate
+```
+New-AzDeployment [-Name <String>] -Location <String> [-DeploymentDebugLogLevel <String>] [-Tag <Hashtable>]
+ [-WhatIfResultFormat <WhatIfResultFormat>] [-WhatIfExcludeChangeType <String[]>] [-ProceedIfNoChange] [-AsJob]
+ [-QueryString <String>] -TemplateParameterFile <String> [-SkipTemplateParameterPrompt] [-Pre]
+ [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
+```
+
 ## DESCRIPTION
 The **New-AzDeployment** cmdlet adds a deployment at the current subscription scope.
 This includes the resources that the deployment requires.
@@ -197,6 +205,14 @@ New-AzDeployment -Location "West US" -TemplateObject $TemplateObject -TemplatePa
 This command creates a new deployment at the current subscription scope by using a custom template and a template file on disk that has been converted to an in-memory hashtable.
 The first two commands read the text for the template file on disk and convert it to an in-memory hashtable.
 The last command uses the *TemplateObject* parameter to specify this hashtable and the *TemplateParameterFile* parameter to specify a file that contains parameters and parameter values.
+
+### Example 4: Use a .bicepparam file to create a deployment
+```powershell
+New-AzDeployment -Location "West US" -TemplateParameterFile "./parameters.bicepparam"
+```
+
+This command creates a new deployment at the current subscription scope by using a .bicepparam file on disk.
+The command uses the *TemplateParameterFile* parameter to specify a .bicepparam file.
 
 ## PARAMETERS
 
@@ -381,11 +397,11 @@ Accept wildcard characters: False
 ```
 
 ### -TemplateParameterFile
-A file that has the template parameters.
+Parameter file to use for the template.
 
 ```yaml
 Type: System.String
-Parameter Sets: ByTemplateObjectAndParameterFile, ByTemplateFileAndParameterFile, ByTemplateUriAndParameterFile, ByTemplateSpecResourceIdAndParams
+Parameter Sets: ByTemplateObjectAndParameterFile, ByTemplateFileAndParameterFile, ByTemplateUriAndParameterFile, ByTemplateSpecResourceIdAndParams, ByParameterFileWithNoTemplate
 Aliases:
 
 Required: True
@@ -474,7 +490,7 @@ Accept wildcard characters: False
 The What-If result format.
 
 ```yaml
-Type: Microsoft.Azure.Management.ResourceManager.Models.WhatIfResultFormat
+Type: Microsoft.Azure.Management.Resources.Models.WhatIfResultFormat
 Parameter Sets: (All)
 Aliases:
 Accepted values: ResourceIdOnly, FullResourcePayloads

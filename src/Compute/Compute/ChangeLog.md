@@ -20,14 +20,59 @@
 
 -->
 ## Upcoming Release
+
+## Version 7.1.0
+* Added new parameter `-ElasticSanResourceId` to `New-AzSnapshotConfig` cmdlet.
+* Added new parameter `-OptimizedForFrequentAttach` to `New-AzDiskConfig` cmdlet.
+* Added new examples in `New-AzVM` and `New-AzVmss` for TrustedLaunch default usage.
+* Fixed the `New-AzVM` bug to avoid accessing the `EncryptionAtHost` property for subscriptions who cannot access it since it is behind a feature flag.
+* Updated `Get-AzVmExtension` to return instanceView when used with `-Status`.
+* Reverted SSH Private Key File permission changes in `New-AzVm`.
+
+## Version 7.0.0
+* Added update functionality in `Update-AzVmss` for parameters `SecurityType`, `EnableSecureBoot`, and `EnableVtpm` for the parameter set with the Put operation.
+* Upgraded Azure.Core to 1.35.0.
+* [Breaking change] Removed unversioned and outdated linux image aliases of `CentOS`, `RHEL`, `UbuntuLTS` and `Debian`.
+* [Breaking change] `New-AzVmss` will default to `OrchestrationMode` set as  `Flexible` if it is not set as `Uniform` explicitly.
+* `New-AzVmss` can now create VMSS with `OrchestrationMode` set to `Flexible` using `-SinglePlacementGroup` and `-UpgradePolicy`.
+* Removed unversioned and outdated images from New-AzVmss `-ImageName` argument completers.
+* [Breaking Change] Added defaulting logic for VM and VMSS creation to set SecurityType to TrustedLaunch and SecureBootEnabled and VTpmEnalbed to true when those are not set by the user.
+* [Breaking Change] Added defaulting logic for Disk creation to default to TrustedLaunch when able. Allows the user to turn this off by setting the SecurityType to Standard.
+* Added new parameter `-VirtualMachineScaleSetId` to `Update-AzVm` cmdlet.
+* Fixed `New-AzVmss` and `New-Azvm` to use `SharedGalleryImageId` parameter.
+* Reduced File Permissions from 0644 to 0600 for SSH Private Key File in `New-AzVm`.
+* Removed GuestAttestaion vm extension installation for Vmss and Vm creation cmdlets. 
+
+
+## Version 6.3.0
+* Added `-Hibernate` switch parameter to `Stop-AzVmss` default parameter set. 
+* For `Get-AzVmRunCommand`, a bug is fixed to work when returning a list of RunCommands [#22403]
+* Updated Azure.Core to 1.34.0.
+* Added new cmdlets `Get-AzHostSize` and `Update-AzHost`.
+* Added the `Standard` value to the `SecurityType` parameter to the cmdlets `Set-AzDiskSecurityType`, `New-AzvmssConfig`, `Set-AzVmssSecurityProfile`, `Update-AzVmss`, `New-AzVmss`, `New-AzVMConfig`, `Set-AzVMsecurityProfile`, and `New-AzVM`.
+* Fixed `Update-AzVMSS` to update ImageReferenceSKU [#22195]
+* Updated the above change to include `New-AzVMConfig` as 1 scenario was initially missed when only using this cmdlet.
+
+## Version 6.2.0
+* Fixed the `Update-AzVmss` cmdlet so the `AutomaticRepairGracePeriod`, `AutomaticRepairAction`, and `EnableAutomaticRepair` parameters function correctly.
+* Updated help doc for `New-AzVM`, `New-AzVMConfig`, `New-AzVmss`, `New-AzVmssConfig`, `Update-AzVM`, and `Update-AzVmss` to include parameters that were previously added for Trusted Launch features.
+* Updated Azure.Core to 1.33.0.
+
+## Version 6.1.0
 * Added useful examples to the `New-AzVMConfig` help doc.
-* Added new `ResourceId` parameter to the `Get-AzVmss` cmdlet. 
+* Added new `ResourceId` parameter to the `Get-AzVmss` cmdlet.
+* Added `-SecurityType`, `-EnableSecureBoot` and `-EnableVtpm` parameters to `New-AzVm`,`New-AzVmConfig`, `New-AzVmss`, `New-AzVmssConfig`, `Update-AzVm` and `Update-AzVmss` cmdlets.
+* Configured parameter flags `-EnableSecureBoot` and `-EnableVtpm` to default to True for TrustedLaunch and ConfidentialVM values for the `-SecurityType` parameter in `New-AzVm`,`New-AzVmConfig`, `New-AzVmss`, `New-AzVmssConfig`, `Update-AzVm` and `Update-AzVmss` cmdlets.
+* Added a message to the user when they provide an outdated image alias to `New-AzVM` via the `-Image` parameter or to `New-AzVmss` via the `-ImageName` parameter.
+  The non-versioned image aliases were updated to versioned values in October 2023, and this message is to help urge customers to use the newer versioned image alias values.
+* Changed the installation behavior for the `GuestAttestation` extension in `New-AzVM` and `New-AzVmss` to set the property `EnableAutomaticUpgrade` to true.
+* Changes to `Set-AzVMOperatingSystem` to correct unnecessary mandatory parameters.
+* Changed the region for example 3 to eastus2 in the `New-AzVM` doc to resolve SKU not available errors.
 
 ## Version 6.0.0
 * Added new switch parameter `OSImageScheduledEventEnabled` and string parameter `OSImageScheduledEventNotBeforeTimeoutInMinutes` to the cmdlets `New-AzVmssConfig` and `Update-AzVmss`.
 * Fixed an issue that `Add-AzVhd` throws `FileNotFoundException` on Windows PowerShell. [#21321]
 * Removed the `NextLink` parameter and parameter set from the `Get-AzVM` cmdlet.
-
 
 ## Version 5.7.1
 * Added a breaking change warning to the `Get-AzVM` cmdlet to show that the `NextLink` parameter and parameter set will be removed in June 2023. The parameter has been non-functional for a long time. 
@@ -48,6 +93,7 @@
 * Added `-NetworkAccessPolicy` parameter to `New-AzSnapshotUpdateConfig`.
 * Added `-SharedGalleryImageId` parameter to `New-AzVM`, `New-AzVmConfig`, `New-AzVmss`, `New-AzVmssConfig`, `Update-AzVmss`, and `Set-AzVmssStorageProfile`.
 * Updated `Set-AzVMDiagnosticsExtension` to correct capitalization by passing "StorageAccount" as configuration property instead of "storageAccount".
+* Added condition in Automapper configurations to check for null Tag values for `PSDiskUpdate` and `PSSnapshotUpdate` to fix bug in Update-AzDisk and Update-AzSnapshot.
 
 ## Version 5.5.0
 * Added breaking change message for `New-AzVmss`.

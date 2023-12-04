@@ -248,6 +248,12 @@ namespace Microsoft.Azure.Commands.Compute.Automation
             HelpMessage = "Set this flag to true to get a boost on the performance target of the disk deployed, see here on the respective performance target. This flag can only be set on disk creation time and cannot be disabled after enabled.")]
         public bool? PerformancePlus { get; set; }
 
+        [Parameter(
+            Mandatory = false,
+            ValueFromPipelineByPropertyName = true,
+            HelpMessage = "Setting this property to true improves reliability and performance of data disks that are frequently (more than 5 times a day) by detached from one virtual machine and attached to another. This property should not be set for disks that are not detached and attached frequently as it causes the disks to not align with the fault domain of the virtual machine.")]
+        public bool? OptimizedForFrequentAttach { get; set; }
+
         protected override void ProcessRecord()
         {
             if (ShouldProcess("Disk", "New"))
@@ -482,7 +488,8 @@ namespace Microsoft.Azure.Commands.Compute.Automation
                 SupportsHibernation = this.IsParameterBound(c => c.SupportsHibernation) ? SupportsHibernation : null,
                 SupportedCapabilities = vSupportedCapabilities,
                 PublicNetworkAccess = this.IsParameterBound(c => c.PublicNetworkAccess) ? PublicNetworkAccess : null,
-                DataAccessAuthMode = this.IsParameterBound(c => c.DataAccessAuthMode) ? DataAccessAuthMode : null
+                DataAccessAuthMode = this.IsParameterBound(c => c.DataAccessAuthMode) ? DataAccessAuthMode : null,
+                OptimizedForFrequentAttach = this.IsParameterBound(c => c.OptimizedForFrequentAttach) ? OptimizedForFrequentAttach : null
             };
 
             WriteObject(vDisk);

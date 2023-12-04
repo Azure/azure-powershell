@@ -628,55 +628,6 @@ function Test-RecordSetTXTNonEmpty
 	Remove-AzResourceGroup -Name $resourceGroup.ResourceGroupName -Force
 }
 
-function Test-RecordSetTXTLegacyLengthValidation
-{
-	$zoneName = Get-RandomZoneName
-	$recordName = getAssetname
-    $resourceGroup = TestSetup-CreateResourceGroup 
-	$zone = New-AzPrivateDnsZone -Name $zoneName -ResourceGroupName $resourceGroup.ResourceGroupName 
-	$longRecordTxt = Get-TxtOfSpecifiedLength 1025;
-	$maxRecordTxt = Get-TxtOfSpecifiedLength 1024;
-
-	$recordSet = New-AzPrivateDnsRecordSet -ZoneName $zone.Name -ResourceGroupName $resourceGroup.ResourceGroupName -Name $recordName -Ttl 100 -RecordType TXT ;
-		
-	Assert-Throws {$recordSet | Add-AzPrivateDnsRecordConfig -Value $longRecordTxt }
-	
-	$recordSet = $recordSet | Add-AzPrivateDnsRecordConfig -Value $maxRecordTxt
-	$setResult = $recordSet | Set-AzPrivateDnsRecordSet ;
-		
-	Assert-AreEqual $maxRecordTxt $setResult.Records[0].Value;
-
-	$getResult = Get-AzPrivateDnsRecordSet -Name $recordName -ZoneName $zoneName -ResourceGroupName $resourceGroup.ResourceGroupName -RecordType TXT ;
-	Assert-AreEqual $maxRecordTxt $getResult.Records[0].Value;
-
-	Remove-AzPrivateDnsZone -Name $zoneName -ResourceGroupName $resourceGroup.ResourceGroupName -Confirm:$false
-	Remove-AzResourceGroup -Name $resourceGroup.ResourceGroupName -Force
-}
-
-
-function Test-RecordSetTXTLengthValidation
-{
-	$zoneName = Get-RandomZoneName
-	$recordName = getAssetname
-    $resourceGroup = TestSetup-CreateResourceGroup 
-	$zone = New-AzPrivateDnsZone -Name $zoneName -ResourceGroupName $resourceGroup.ResourceGroupName 
-
-	$longRecordTxt = Get-TxtOfSpecifiedLength 1025;
-	Assert-Throws {New-AzPrivateDnsRecordConfig -Value $longRecordTxt }
-
-	$maxRecordTxt = Get-TxtOfSpecifiedLength 1024;
-	$maxRecord = New-AzPrivateDnsRecordConfig -Value $maxRecordTxt
-	$record = New-AzPrivateDnsRecordSet -ZoneName $zone.Name -ResourceGroupName $resourceGroup.ResourceGroupName -Name $recordName -Ttl 100 -RecordType TXT -PrivateDnsRecords $maxRecord ;
-	Assert-AreEqual $maxRecordTxt $record.Records[0].Value;
-
-	$getResult = Get-AzPrivateDnsRecordSet -Name $recordName -ZoneName $zoneName -ResourceGroupName $resourceGroup.ResourceGroupName -RecordType TXT ;
-	Assert-AreEqual $maxRecordTxt $getResult.Records[0].Value;
-
-	Remove-AzPrivateDnsZone -Name $zoneName -ResourceGroupName $resourceGroup.ResourceGroupName -Confirm:$false
-	Remove-AzResourceGroup -Name $resourceGroup.ResourceGroupName -Force
-}
-
-
 function Test-RecordSetPTR
 {
 	$zoneName = Get-RandomZoneName

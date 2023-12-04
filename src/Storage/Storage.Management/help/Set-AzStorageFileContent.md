@@ -16,23 +16,25 @@ Uploads the contents of a file.
 ### ShareName (Default)
 ```
 Set-AzStorageFileContent [-ShareName] <String> [-Source] <String> [[-Path] <String>] [-PassThru] [-Force]
- [-AsJob] [-Context <IStorageContext>] [-ServerTimeoutPerRequest <Int32>] [-ClientTimeoutPerRequest <Int32>]
- [-DefaultProfile <IAzureContextContainer>] [-ConcurrentTaskCount <Int32>] [-WhatIf] [-Confirm]
- [-PreserveSMBAttribute] [<CommonParameters>]
+ [-AsJob] [-DisAllowTrailingDot] [-Context <IStorageContext>] [-ServerTimeoutPerRequest <Int32>]
+ [-ClientTimeoutPerRequest <Int32>] [-DefaultProfile <IAzureContextContainer>] [-ConcurrentTaskCount <Int32>]
+ [-WhatIf] [-Confirm] [-PreserveSMBAttribute] [<CommonParameters>]
 ```
 
 ### Share
 ```
-Set-AzStorageFileContent [-Share] <CloudFileShare> [-Source] <String> [[-Path] <String>] [-PassThru] [-Force]
- [-AsJob] [-ServerTimeoutPerRequest <Int32>] [-ClientTimeoutPerRequest <Int32>]
+Set-AzStorageFileContent [-Share] <CloudFileShare> [-ShareClient <ShareClient>] [-Source] <String>
+ [[-Path] <String>] [-PassThru] [-Force] [-AsJob] [-Context <IStorageContext>]
+ [-ServerTimeoutPerRequest <Int32>] [-ClientTimeoutPerRequest <Int32>]
  [-DefaultProfile <IAzureContextContainer>] [-ConcurrentTaskCount <Int32>] [-WhatIf] [-Confirm]
  [-PreserveSMBAttribute] [<CommonParameters>]
 ```
 
 ### Directory
 ```
-Set-AzStorageFileContent [-Directory] <CloudFileDirectory> [-Source] <String> [[-Path] <String>] [-PassThru]
- [-Force] [-AsJob] [-ServerTimeoutPerRequest <Int32>] [-ClientTimeoutPerRequest <Int32>]
+Set-AzStorageFileContent [-Directory] <CloudFileDirectory> [-ShareDirectoryClient <ShareDirectoryClient>]
+ [-Source] <String> [[-Path] <String>] [-PassThru] [-Force] [-AsJob] [-Context <IStorageContext>]
+ [-ServerTimeoutPerRequest <Int32>] [-ClientTimeoutPerRequest <Int32>]
  [-DefaultProfile <IAzureContextContainer>] [-ConcurrentTaskCount <Int32>] [-WhatIf] [-Confirm]
  [-PreserveSMBAttribute] [<CommonParameters>]
 ```
@@ -134,7 +136,7 @@ To obtain a storage context, use the [New-AzStorageContext](./New-AzStorageConte
 
 ```yaml
 Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.IStorageContext
-Parameter Sets: ShareName
+Parameter Sets: (All)
 Aliases:
 
 Required: False
@@ -174,6 +176,21 @@ Required: True
 Position: 0
 Default value: None
 Accept pipeline input: True (ByPropertyName, ByValue)
+Accept wildcard characters: False
+```
+
+### -DisAllowTrailingDot
+Disallow trailing dot (.) to suffix directory and file names.
+
+```yaml
+Type: System.Management.Automation.SwitchParameter
+Parameter Sets: ShareName
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
@@ -277,6 +294,36 @@ Accept pipeline input: True (ByPropertyName, ByValue)
 Accept wildcard characters: False
 ```
 
+### -ShareClient
+ShareClient object indicated the share where the file would be uploaded to.
+
+```yaml
+Type: Azure.Storage.Files.Shares.ShareClient
+Parameter Sets: Share
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: True (ByPropertyName, ByValue)
+Accept wildcard characters: False
+```
+
+### -ShareDirectoryClient
+CloudFileDirectory object indicated the cloud directory where the file would be uploaded.
+
+```yaml
+Type: Azure.Storage.Files.Shares.ShareDirectoryClient
+Parameter Sets: Directory
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: True (ByPropertyName, ByValue)
+Accept wildcard characters: False
+```
+
 ### -ShareName
 Specifies the name of the file share.
 This cmdlet uploads to a file in the file share this parameter specifies.
@@ -341,7 +388,7 @@ Accept wildcard characters: False
 ```
 
 ### CommonParameters
-This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable. For more information, see about_CommonParameters (http://go.microsoft.com/fwlink/?LinkID=113216).
+This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable. For more information, see [about_CommonParameters](http://go.microsoft.com/fwlink/?LinkID=113216).
 
 ## INPUTS
 

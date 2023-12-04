@@ -281,7 +281,8 @@ namespace Microsoft.Azure.Commands.Resources.Test
             }
             else
             {
-                return new X509Certificate2();
+                byte[] emptyCertificateData = Array.Empty<byte>();
+                return new X509Certificate2(emptyCertificateData);
             }
         }
 

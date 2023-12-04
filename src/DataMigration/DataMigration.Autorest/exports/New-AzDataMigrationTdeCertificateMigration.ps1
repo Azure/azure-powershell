@@ -20,7 +20,7 @@ Migrate TDE certificate(s) from source SQL Server to the target Azure SQL Server
 .Description
 Migrate TDE certificate(s) from source SQL Server to the target Azure SQL Server.
 .Example
-New-AzDataMigrationTdeCertificateMigration -SourceSqlConnectionString $SourceSqlConnectionString -TargetSubscriptionId "00000000-0000-0000-0000-000000000000" -TargetResourceGroupName "ResourceGroupName" -TargetManagedInstanceName "TargetManagedInstanceName" -NetworkSharePath "\\NetworkShare\Folder" -NetworkShareDomain "NetworkShare" -NetworkShareUserName "NetworkShareUserName" -NetworkSharePassword $NetworkSharePassword -DatabaseName "TdeDb_0", "TdeDb_1", "TdeDb_2"
+New-AzDataMigrationTdeCertificateMigration -SourceSqlConnectionString "data source=servername;user id=userid;password=;initial catalog=master;TrustServerCertificate=True" -TargetSubscriptionId "00000000-0000-0000-0000-000000000000" -TargetResourceGroupName "ResourceGroupName" -TargetManagedInstanceName "TargetManagedInstanceName" -NetworkSharePath "\\NetworkShare\Folder" -NetworkShareDomain "NetworkShare" -NetworkShareUserName "NetworkShareUserName" -NetworkSharePassword "NetworkSharePassword" -DatabaseName "TdeDb_0", "TdeDb_1", "TdeDb_2"
 
 .Outputs
 System.Boolean
@@ -122,6 +122,10 @@ begin {
         }
         $cmdInfo = Get-Command -Name $mapping[$parameterSet]
         [Microsoft.Azure.PowerShell.Cmdlets.DataMigration.Runtime.MessageAttributeHelper]::ProcessCustomAttributesAtRuntime($cmdInfo, $MyInvocation, $parameterSet, $PSCmdlet)
+        if ($null -ne $MyInvocation.MyCommand -and [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PromptedPreviewMessageCmdlets -notcontains $MyInvocation.MyCommand.Name -and [Microsoft.Azure.PowerShell.Cmdlets.DataMigration.Runtime.MessageAttributeHelper]::ContainsPreviewAttribute($cmdInfo, $MyInvocation)){
+            [Microsoft.Azure.PowerShell.Cmdlets.DataMigration.Runtime.MessageAttributeHelper]::ProcessPreviewMessageAttributesAtRuntime($cmdInfo, $MyInvocation, $parameterSet, $PSCmdlet)
+            [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PromptedPreviewMessageCmdlets.Enqueue($MyInvocation.MyCommand.Name)
+        }
         $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Cmdlet)
         $scriptCmd = {& $wrappedCmd @PSBoundParameters}
         $steppablePipeline = $scriptCmd.GetSteppablePipeline($MyInvocation.CommandOrigin)

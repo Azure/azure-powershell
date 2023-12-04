@@ -11,20 +11,21 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 // ----------------------------------------------------------------------------------
-
 using Microsoft.Azure.Commands.Common.Authentication;
 using Microsoft.Azure.Commands.Common.Authentication.Abstractions;
 using Microsoft.Azure.Commands.Common.Authentication.Models;
 using Microsoft.Azure.Commands.Common.Authentication.ResourceManager;
 using Microsoft.Azure.Commands.Profile.Models;
 using Microsoft.Azure.Commands.Profile.Properties;
-using Microsoft.Azure.Commands.ResourceManager.Common.Utilities;
+using Microsoft.Azure.Commands.Profile.Utilities;
 using Microsoft.Rest.Azure;
+
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Management.Automation;
 using System.Security;
+
 using AuthenticationMessages = Microsoft.Azure.Commands.Common.Authentication.Properties.Resources;
 using ProfileMessages = Microsoft.Azure.Commands.Profile.Properties.Resources;
 using ResourceMessages = Microsoft.Azure.Commands.ResourceManager.Common.Properties.Resources;
@@ -118,6 +119,7 @@ namespace Microsoft.Azure.Commands.ResourceManager.Common
             string subscriptionName,
             SecureString password,
             bool skipValidation,
+            IOpenIDConfiguration openIDConfigDoc,
             Action<string> promptAction,
             string name = null,
             bool shouldPopulateContextList = true,
@@ -168,38 +170,54 @@ namespace Microsoft.Azure.Commands.ResourceManager.Common
                 // (tenant is present and subscription is not provided)
                 if (!string.IsNullOrEmpty(tenantIdOrName))
                 {
-                    Guid tempGuid = Guid.Empty;
-                    if (!Guid.TryParse(tenantIdOrName, out tempGuid))
+                    IAccessToken token = null;
+                    try
                     {
-                        var tenants = ListAccountTenants(account, environment, password, promptBehavior, promptAction);
-                        var matchesName = tenants.Where(t => t.GetPropertyAsArray(AzureTenant.Property.Domains)
-                                                                                           .Contains(tenantIdOrName, StringComparer.InvariantCultureIgnoreCase));
-                        var homeTenants = matchesName.FirstOrDefault(t => t.IsHome);
-                        var tenant = homeTenants ?? matchesName.FirstOrDefault();
-                        if (tenant == null || tenant.Id == null)
+                        token = AcquireAccessToken(
+                            account,
+                            environment,
+                            tenantIdOrName,
+                            password,
+                            promptBehavior,
+                            promptAction);
+
+                        if (!Guid.TryParse(tenantIdOrName, out Guid _))
                         {
-                            string baseMessage = string.Format(ProfileMessages.TenantDomainNotFound, tenantIdOrName);
-                            var typeMessageMap = new Dictionary<string, string>
+                            try
+                            {
+                                var tid = openIDConfigDoc.TenantId;
+                                token = new RawAccessToken()
+                                {
+                                    AccessToken = token.AccessToken,
+                                    LoginType = token.LoginType,
+                                    TenantId = tid,
+                                    UserId = token.UserId,
+                                    HomeAccountId = token.HomeAccountId,
+                                };
+
+                                WriteDebugMessage(string.Format(ProfileMessages.TenantDomainToTenantIdMessage, tenantIdOrName, token.TenantId));
+                                tenantIdOrName = token.TenantId;
+                            }
+                            finally
+                            {
+                                WriteDebugMessage(string.Format(ProfileMessages.OpenIDAbsoluteUriMessage, tenantIdOrName, openIDConfigDoc.AbsoluteUri));
+                                WriteDebugMessage(string.Format(ProfileMessages.OpenIDConfigurationDocInJsonMessage, openIDConfigDoc.OpenIDConfigDoc));
+                            }
+                        }
+                    }
+                    catch(Exception e)
+                    {
+                        string baseMessage = string.Format(ProfileMessages.TenantDomainNotFound, tenantIdOrName);
+                        var typeMessageMap = new Dictionary<string, string>
                             {
                                 { AzureAccount.AccountType.ServicePrincipal, string.Format(ProfileMessages.ServicePrincipalTenantDomainNotFound, account.Id) },
                                 { AzureAccount.AccountType.User, ProfileMessages.UserTenantDomainNotFound },
                                 { AzureAccount.AccountType.ManagedService, ProfileMessages.MSITenantDomainNotFound }
                             };
-                            string typeMessage = typeMessageMap.ContainsKey(account.Type) ? typeMessageMap[account.Type] : string.Empty;
-                            throw new ArgumentNullException(string.Format("{0} {1}", baseMessage, typeMessage));
-                        }
-
-                        tenantIdOrName = tenant.Id;
+                        string typeMessage = typeMessageMap.ContainsKey(account.Type) ? typeMessageMap[account.Type] : string.Empty;
+                        throw new ArgumentNullException(string.Format($"{e.Message}{Environment.NewLine}{baseMessage} {typeMessage}"), e);
                     }
 
-
-                    var token = AcquireAccessToken(
-                        account,
-                        environment,
-                        tenantIdOrName,
-                        password,
-                        promptBehavior,
-                        promptAction);
                     if (TryGetTenantSubscription(
                         token,
                         account,

@@ -1,0 +1,288 @@
+{
+  "New-AzNetworkCloudVirtualMachine+[NoContext]+Create+$PUT+https://management.azure.com/subscriptions/a3eeb848-665a-4dbf-80a4-eb460930fb23/resourceGroups/simulator-HostedResources-76B2E1D8/providers/Microsoft.NetworkCloud/virtualMachines/pstestvm?api-version=2023-07-01+1": {
+    "Request": {
+      "Method": "PUT",
+      "RequestUri": "https://management.azure.com/subscriptions/a3eeb848-665a-4dbf-80a4-eb460930fb23/resourceGroups/simulator-HostedResources-76B2E1D8/providers/Microsoft.NetworkCloud/virtualMachines/pstestvm?api-version=2023-07-01",
+      "Content": "{\n  \"tags\": {\n    \"tags\": \"tag1\"\n  },\n  \"location\": \"eastus\",\n  \"extendedLocation\": {\n    \"name\": \"/subscriptions/a3eeb848-665a-4dbf-80a4-eb460930fb23/resourcegroups/simulator-HostedResources-76B2E1D8/providers/microsoft.extendedlocation/customlocations/simulator-cstm-loc\",\n    \"type\": \"CustomLocation\"\n  },\n  \"properties\": {\n    \"cloudServicesNetworkAttachment\": {\n      \"attachedNetworkId\": \"/subscriptions/subscriptionId/resourceGroups/resourceGroupName/providers/Microsoft.NetworkCloud/cloudServicesNetworks/csn1\",\n      \"defaultGateway\": \"False\",\n      \"ipAllocationMethod\": \"Dynamic\",\n      \"networkAttachmentName\": \"l3network1\"\n    },\n    \"storageProfile\": {\n      \"osDisk\": {\n        \"createOption\": \"Ephemeral\",\n        \"deleteOption\": \"Delete\",\n        \"diskSizeGB\": 16\n      }\n    },\n    \"vmImageRepositoryCredentials\": {\n      \"password\": \"password\",\n      \"registryUrl\": \"hbusipalleacr2.azurecr.io\",\n      \"username\": \"user\"\n    },\n    \"adminUsername\": \"admin\",\n    \"bootMethod\": \"UEFI\",\n    \"cpuCores\": 2,\n    \"isolateEmulatorThread\": \"True\",\n    \"memorySizeGB\": 1,\n    \"networkAttachments\": [\n      {\n        \"attachedNetworkId\": \"/subscriptions/121213213131/resourceGroups/op317q-rg/providers/Microsoft.NetworkCloud/l3Networks/l3network1\",\n        \"ipAllocationMethod\": \"Dynamic\"\n      }\n    ],\n    \"networkData\": \"bmV0d29ya0RhdGVTYW1wbGU=\",\n    \"placementHints\": [\n      {\n        \"hintType\": \"Affinity\",\n        \"resourceId\": \"/subscriptions/a3eeb848-665a-4dbf-80a4-eb460930fb23/resourceGroups/simulator-HostedResources-76B2E1D8/providers/Microsoft.NetworkCloud/bareMetalMachines/rack1compute01\",\n        \"schedulingExecution\": \"Soft\",\n        \"scope\": \"Rack\"\n      }\n    ],\n    \"sshPublicKeys\": [\n      {\n        \"keyData\": \"ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABgQDL6v2jjsr9GrDkQn5selwh83Kn9LDoSn2XuAokqE63qLlArEo9U56an2WvR3a6ztsU45pIkVQkwaR5NrwT9uStNw+/C+g0tOZLT9OKK6YTovOnhfemuvorJ2i9djW+gfRnUfOa9aClBd/uBvG6jHB9c2sW9ugD5nS8A6/ymfK8X25DsYK6RbTxjbT5xGvKVND2NjSBIk79ll7f4/pulAvJTIngcLFadkGRem7KTkmyTyIMZBu4nYZN/yRws6AjyXWqwOgx2AH3Ts40McFYMt0uvPKcYqZeCGXfxcFaTChQqlzjMe6YyGPOEmii7UFUwLZ4W6DFipmKfql3yBylKDmN3XiY4eSxUPP7NvTgv6EU0CiE5Z1TEsHTzu88F7bLuZVWubXFm8CHdOeCDGxPIDu64z3wBH2N0qxbtla9hXaGjIV62Q4Vax61YwZJp8hc4qIdCuIJSlzr8WTj2sXqQV9mR3UR85mXstW0F1+6TQbJHs7MdCbTatm3Wr3FQirP+yk= azureuser@vm\"\n      }\n    ],\n    \"userData\": \"\",\n    \"virtioInterface\": \"Modern\",\n    \"vmDeviceModel\": \"\",\n    \"vmImage\": \"hbusipalleacr2.azurecr.io/ubuntu:20.04\"\n  }\n}",
+      "isContentBase64": false,
+      "Headers": {
+      },
+      "ContentHeaders": {
+        "Content-Type": [ "application/json" ],
+        "Content-Length": [ "2466" ]
+      }
+    },
+    "Response": {
+      "StatusCode": 201,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "ETag": [ "\"c80b845c-0000-0100-0000-64b982380000\"" ],
+        "x-ms-ratelimit-remaining-subscription-writes": [ "1199" ],
+        "x-ms-providerhub-traffic": [ "True" ],
+        "mise-correlation-id": [ "ebf658b7-8911-449a-a2e2-175c822da108" ],
+        "x-ms-request-id": [ "00000000-0000-0000-0000-000000000000" ],
+        "x-ms-correlation-request-id": [ "e37c847d-374d-4ae8-8a19-9b30184b49cd" ],
+        "Azure-AsyncOperation": [ "https://management.azure.com/subscriptions/a3eeb848-665a-4dbf-80a4-eb460930fb23/providers/Microsoft.NetworkCloud/locations/EASTUS/operationStatuses/78a3bdb8-c969-49a9-af61-eee5a3054762*CA7C42A80BDF4FA2C2E1591CFE51FBD5E923BDEF1EA726C6F6D83F768A2B6BBE?api-version=2023-07-01" ],
+        "x-ms-routing-request-id": [ "EASTUS:20230720T185136Z:e37c847d-374d-4ae8-8a19-9b30184b49cd" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "Date": [ "Thu, 20 Jul 2023 18:51:35 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "2561" ],
+        "Content-Type": [ "application/json; charset=utf-8" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\"id\":\"/subscriptions/a3eeb848-665a-4dbf-80a4-eb460930fb23/resourceGroups/simulator-HostedResources-76B2E1D8/providers/Microsoft.NetworkCloud/virtualMachines/pstestvm\",\"name\":\"pstestvm\",\"type\":\"microsoft.networkcloud/virtualmachines\",\"location\":\"eastus\",\"extendedLocation\":{\"name\":\"/subscriptions/a3eeb848-665a-4dbf-80a4-eb460930fb23/resourcegroups/simulator-HostedResources-76B2E1D8/providers/microsoft.extendedlocation/customlocations/simulator-cstm-loc\",\"type\":\"CustomLocation\"},\"tags\":{\"tags\":\"tag1\"},\"systemData\":{\"createdBy\":\"REDACTED\",\"createdByType\":\"User\",\"createdAt\":\"2023-07-20T18:51:35.9518905Z\",\"lastModifiedBy\":\"REDACTED\",\"lastModifiedByType\":\"User\",\"lastModifiedAt\":\"2023-07-20T18:51:35.9518905Z\"},\"properties\":{\"provisioningState\":\"Accepted\",\"cloudServicesNetworkAttachment\":{\"attachedNetworkId\":\"/subscriptions/subscriptionId/resourceGroups/resourceGroupName/providers/Microsoft.NetworkCloud/cloudServicesNetworks/csn1\",\"defaultGateway\":\"False\",\"ipAllocationMethod\":\"Dynamic\",\"networkAttachmentName\":\"l3network1\"},\"storageProfile\":{\"osDisk\":{\"createOption\":\"Ephemeral\",\"deleteOption\":\"Delete\",\"diskSizeGB\":16}},\"vmImageRepositoryCredentials\":{\"registryUrl\":\"hbusipalleacr2.azurecr.io\",\"username\":\"user\"},\"adminUsername\":\"admin\",\"bootMethod\":\"UEFI\",\"cpuCores\":2,\"isolateEmulatorThread\":\"True\",\"memorySizeGB\":1,\"networkAttachments\":[{\"attachedNetworkId\":\"/subscriptions/121213213131/resourceGroups/op317q-rg/providers/Microsoft.NetworkCloud/l3Networks/l3network1\",\"ipAllocationMethod\":\"Dynamic\"}],\"networkData\":\"bmV0d29ya0RhdGVTYW1wbGU=\",\"placementHints\":[{\"hintType\":\"Affinity\",\"resourceId\":\"/subscriptions/a3eeb848-665a-4dbf-80a4-eb460930fb23/resourceGroups/simulator-HostedResources-76B2E1D8/providers/Microsoft.NetworkCloud/bareMetalMachines/rack1compute01\",\"schedulingExecution\":\"Soft\",\"scope\":\"Rack\"}],\"sshPublicKeys\":[{\"keyData\":\"ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABgQDL6v2jjsr9GrDkQn5selwh83Kn9LDoSn2XuAokqE63qLlArEo9U56an2WvR3a6ztsU45pIkVQkwaR5NrwT9uStNw+/C+g0tOZLT9OKK6YTovOnhfemuvorJ2i9djW+gfRnUfOa9aClBd/uBvG6jHB9c2sW9ugD5nS8A6/ymfK8X25DsYK6RbTxjbT5xGvKVND2NjSBIk79ll7f4/pulAvJTIngcLFadkGRem7KTkmyTyIMZBu4nYZN/yRws6AjyXWqwOgx2AH3Ts40McFYMt0uvPKcYqZeCGXfxcFaTChQqlzjMe6YyGPOEmii7UFUwLZ4W6DFipmKfql3yBylKDmN3XiY4eSxUPP7NvTgv6EU0CiE5Z1TEsHTzu88F7bLuZVWubXFm8CHdOeCDGxPIDu64z3wBH2N0qxbtla9hXaGjIV62Q4Vax61YwZJp8hc4qIdCuIJSlzr8WTj2sXqQV9mR3UR85mXstW0F1+6TQbJHs7MdCbTatm3Wr3FQirP+yk= azureuser@vm\"}],\"userData\":\"\",\"virtioInterface\":\"Modern\",\"vmDeviceModel\":\"\",\"vmImage\":\"hbusipalleacr2.azurecr.io/ubuntu:20.04\"}}",
+      "isContentBase64": false
+    }
+  },
+  "New-AzNetworkCloudVirtualMachine+[NoContext]+Create+$GET+https://management.azure.com/subscriptions/a3eeb848-665a-4dbf-80a4-eb460930fb23/providers/Microsoft.NetworkCloud/locations/EASTUS/operationStatuses/78a3bdb8-c969-49a9-af61-eee5a3054762*CA7C42A80BDF4FA2C2E1591CFE51FBD5E923BDEF1EA726C6F6D83F768A2B6BBE?api-version=2023-07-01+2": {
+    "Request": {
+      "Method": "GET",
+      "RequestUri": "https://management.azure.com/subscriptions/a3eeb848-665a-4dbf-80a4-eb460930fb23/providers/Microsoft.NetworkCloud/locations/EASTUS/operationStatuses/78a3bdb8-c969-49a9-af61-eee5a3054762*CA7C42A80BDF4FA2C2E1591CFE51FBD5E923BDEF1EA726C6F6D83F768A2B6BBE?api-version=2023-07-01",
+      "Content": null,
+      "isContentBase64": false,
+      "Headers": {
+        "Authorization": [ "[Filtered]" ],
+        "x-ms-unique-id": [ "2" ],
+        "x-ms-client-request-id": [ "f099103c-b10a-4049-9f07-ea29a71a0c4c" ],
+        "CommandName": [ "New-AzNetworkCloudVirtualMachine" ],
+        "FullCommandName": [ "New-AzNetworkCloudVirtualMachine_Create" ],
+        "ParameterSetName": [ "__AllParameterSets" ],
+        "User-Agent": [ "AzurePowershell/v0.0.0", "PSVersion/v7.3.4", "Az.NetworkCloud/0.1.0" ]
+      },
+      "ContentHeaders": {
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "ETag": [ "\"e802cbb0-0000-0100-0000-64b982510000\"" ],
+        "x-ms-ratelimit-remaining-subscription-reads": [ "11998" ],
+        "x-ms-request-id": [ "840429b5-736f-40e9-aff7-42fbdd807f03" ],
+        "x-ms-correlation-request-id": [ "648d7aac-9046-4879-b4e9-f2daef9a785e" ],
+        "x-ms-routing-request-id": [ "EASTUS:20230720T185206Z:648d7aac-9046-4879-b4e9-f2daef9a785e" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "Date": [ "Thu, 20 Jul 2023 18:52:06 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "583" ],
+        "Content-Type": [ "application/json; charset=utf-8" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\"id\":\"/subscriptions/a3eeb848-665a-4dbf-80a4-eb460930fb23/providers/Microsoft.NetworkCloud/locations/EASTUS/operationStatuses/78a3bdb8-c969-49a9-af61-eee5a3054762*CA7C42A80BDF4FA2C2E1591CFE51FBD5E923BDEF1EA726C6F6D83F768A2B6BBE\",\"name\":\"78a3bdb8-c969-49a9-af61-eee5a3054762*CA7C42A80BDF4FA2C2E1591CFE51FBD5E923BDEF1EA726C6F6D83F768A2B6BBE\",\"resourceId\":\"/subscriptions/a3eeb848-665a-4dbf-80a4-eb460930fb23/resourceGroups/simulator-HostedResources-76B2E1D8/providers/Microsoft.NetworkCloud/virtualMachines/pstestvm\",\"status\":\"Provisioning\",\"startTime\":\"2023-07-20T18:51:36.0670336Z\"}",
+      "isContentBase64": false
+    }
+  },
+  "New-AzNetworkCloudVirtualMachine+[NoContext]+Create+$GET+https://management.azure.com/subscriptions/a3eeb848-665a-4dbf-80a4-eb460930fb23/providers/Microsoft.NetworkCloud/locations/EASTUS/operationStatuses/78a3bdb8-c969-49a9-af61-eee5a3054762*CA7C42A80BDF4FA2C2E1591CFE51FBD5E923BDEF1EA726C6F6D83F768A2B6BBE?api-version=2023-07-01+3": {
+    "Request": {
+      "Method": "GET",
+      "RequestUri": "https://management.azure.com/subscriptions/a3eeb848-665a-4dbf-80a4-eb460930fb23/providers/Microsoft.NetworkCloud/locations/EASTUS/operationStatuses/78a3bdb8-c969-49a9-af61-eee5a3054762*CA7C42A80BDF4FA2C2E1591CFE51FBD5E923BDEF1EA726C6F6D83F768A2B6BBE?api-version=2023-07-01",
+      "Content": null,
+      "isContentBase64": false,
+      "Headers": {
+        "Authorization": [ "[Filtered]" ],
+        "x-ms-unique-id": [ "3" ],
+        "x-ms-client-request-id": [ "f099103c-b10a-4049-9f07-ea29a71a0c4c" ],
+        "CommandName": [ "New-AzNetworkCloudVirtualMachine" ],
+        "FullCommandName": [ "New-AzNetworkCloudVirtualMachine_Create" ],
+        "ParameterSetName": [ "__AllParameterSets" ],
+        "User-Agent": [ "AzurePowershell/v0.0.0", "PSVersion/v7.3.4", "Az.NetworkCloud/0.1.0" ]
+      },
+      "ContentHeaders": {
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "ETag": [ "\"e802e8b0-0000-0100-0000-64b9826f0000\"" ],
+        "x-ms-ratelimit-remaining-subscription-reads": [ "11997" ],
+        "x-ms-request-id": [ "a57214ad-e9dd-4c43-ab02-ebb6b4ca092a" ],
+        "x-ms-correlation-request-id": [ "3696a4b0-81e0-4f2c-93dd-116eb05050b6" ],
+        "x-ms-routing-request-id": [ "EASTUS:20230720T185236Z:3696a4b0-81e0-4f2c-93dd-116eb05050b6" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "Date": [ "Thu, 20 Jul 2023 18:52:36 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "583" ],
+        "Content-Type": [ "application/json; charset=utf-8" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\"id\":\"/subscriptions/a3eeb848-665a-4dbf-80a4-eb460930fb23/providers/Microsoft.NetworkCloud/locations/EASTUS/operationStatuses/78a3bdb8-c969-49a9-af61-eee5a3054762*CA7C42A80BDF4FA2C2E1591CFE51FBD5E923BDEF1EA726C6F6D83F768A2B6BBE\",\"name\":\"78a3bdb8-c969-49a9-af61-eee5a3054762*CA7C42A80BDF4FA2C2E1591CFE51FBD5E923BDEF1EA726C6F6D83F768A2B6BBE\",\"resourceId\":\"/subscriptions/a3eeb848-665a-4dbf-80a4-eb460930fb23/resourceGroups/simulator-HostedResources-76B2E1D8/providers/Microsoft.NetworkCloud/virtualMachines/pstestvm\",\"status\":\"Provisioning\",\"startTime\":\"2023-07-20T18:51:36.0670336Z\"}",
+      "isContentBase64": false
+    }
+  },
+  "New-AzNetworkCloudVirtualMachine+[NoContext]+Create+$GET+https://management.azure.com/subscriptions/a3eeb848-665a-4dbf-80a4-eb460930fb23/providers/Microsoft.NetworkCloud/locations/EASTUS/operationStatuses/78a3bdb8-c969-49a9-af61-eee5a3054762*CA7C42A80BDF4FA2C2E1591CFE51FBD5E923BDEF1EA726C6F6D83F768A2B6BBE?api-version=2023-07-01+4": {
+    "Request": {
+      "Method": "GET",
+      "RequestUri": "https://management.azure.com/subscriptions/a3eeb848-665a-4dbf-80a4-eb460930fb23/providers/Microsoft.NetworkCloud/locations/EASTUS/operationStatuses/78a3bdb8-c969-49a9-af61-eee5a3054762*CA7C42A80BDF4FA2C2E1591CFE51FBD5E923BDEF1EA726C6F6D83F768A2B6BBE?api-version=2023-07-01",
+      "Content": null,
+      "isContentBase64": false,
+      "Headers": {
+        "Authorization": [ "[Filtered]" ],
+        "x-ms-unique-id": [ "4" ],
+        "x-ms-client-request-id": [ "f099103c-b10a-4049-9f07-ea29a71a0c4c" ],
+        "CommandName": [ "New-AzNetworkCloudVirtualMachine" ],
+        "FullCommandName": [ "New-AzNetworkCloudVirtualMachine_Create" ],
+        "ParameterSetName": [ "__AllParameterSets" ],
+        "User-Agent": [ "AzurePowershell/v0.0.0", "PSVersion/v7.3.4", "Az.NetworkCloud/0.1.0" ]
+      },
+      "ContentHeaders": {
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "ETag": [ "\"e802f3b0-0000-0100-0000-64b9828e0000\"" ],
+        "x-ms-ratelimit-remaining-subscription-reads": [ "11996" ],
+        "x-ms-request-id": [ "265614e0-fef0-4ac7-98bc-203a6978f574" ],
+        "x-ms-correlation-request-id": [ "abd07cd4-b077-40a1-8ebc-5632932c26c5" ],
+        "x-ms-routing-request-id": [ "EASTUS:20230720T185307Z:abd07cd4-b077-40a1-8ebc-5632932c26c5" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "Date": [ "Thu, 20 Jul 2023 18:53:06 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "583" ],
+        "Content-Type": [ "application/json; charset=utf-8" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\"id\":\"/subscriptions/a3eeb848-665a-4dbf-80a4-eb460930fb23/providers/Microsoft.NetworkCloud/locations/EASTUS/operationStatuses/78a3bdb8-c969-49a9-af61-eee5a3054762*CA7C42A80BDF4FA2C2E1591CFE51FBD5E923BDEF1EA726C6F6D83F768A2B6BBE\",\"name\":\"78a3bdb8-c969-49a9-af61-eee5a3054762*CA7C42A80BDF4FA2C2E1591CFE51FBD5E923BDEF1EA726C6F6D83F768A2B6BBE\",\"resourceId\":\"/subscriptions/a3eeb848-665a-4dbf-80a4-eb460930fb23/resourceGroups/simulator-HostedResources-76B2E1D8/providers/Microsoft.NetworkCloud/virtualMachines/pstestvm\",\"status\":\"Provisioning\",\"startTime\":\"2023-07-20T18:51:36.0670336Z\"}",
+      "isContentBase64": false
+    }
+  },
+  "New-AzNetworkCloudVirtualMachine+[NoContext]+Create+$GET+https://management.azure.com/subscriptions/a3eeb848-665a-4dbf-80a4-eb460930fb23/providers/Microsoft.NetworkCloud/locations/EASTUS/operationStatuses/78a3bdb8-c969-49a9-af61-eee5a3054762*CA7C42A80BDF4FA2C2E1591CFE51FBD5E923BDEF1EA726C6F6D83F768A2B6BBE?api-version=2023-07-01+5": {
+    "Request": {
+      "Method": "GET",
+      "RequestUri": "https://management.azure.com/subscriptions/a3eeb848-665a-4dbf-80a4-eb460930fb23/providers/Microsoft.NetworkCloud/locations/EASTUS/operationStatuses/78a3bdb8-c969-49a9-af61-eee5a3054762*CA7C42A80BDF4FA2C2E1591CFE51FBD5E923BDEF1EA726C6F6D83F768A2B6BBE?api-version=2023-07-01",
+      "Content": null,
+      "isContentBase64": false,
+      "Headers": {
+        "Authorization": [ "[Filtered]" ],
+        "x-ms-unique-id": [ "5" ],
+        "x-ms-client-request-id": [ "f099103c-b10a-4049-9f07-ea29a71a0c4c" ],
+        "CommandName": [ "New-AzNetworkCloudVirtualMachine" ],
+        "FullCommandName": [ "New-AzNetworkCloudVirtualMachine_Create" ],
+        "ParameterSetName": [ "__AllParameterSets" ],
+        "User-Agent": [ "AzurePowershell/v0.0.0", "PSVersion/v7.3.4", "Az.NetworkCloud/0.1.0" ]
+      },
+      "ContentHeaders": {
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "ETag": [ "\"e80203b1-0000-0100-0000-64b982ac0000\"" ],
+        "x-ms-ratelimit-remaining-subscription-reads": [ "11995" ],
+        "x-ms-request-id": [ "33fab1e5-8e07-4276-8cda-d58c924bd49d" ],
+        "x-ms-correlation-request-id": [ "5fcd838d-fd9c-4332-abe4-d27ed3f10bb3" ],
+        "x-ms-routing-request-id": [ "EASTUS:20230720T185337Z:5fcd838d-fd9c-4332-abe4-d27ed3f10bb3" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "Date": [ "Thu, 20 Jul 2023 18:53:36 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "583" ],
+        "Content-Type": [ "application/json; charset=utf-8" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\"id\":\"/subscriptions/a3eeb848-665a-4dbf-80a4-eb460930fb23/providers/Microsoft.NetworkCloud/locations/EASTUS/operationStatuses/78a3bdb8-c969-49a9-af61-eee5a3054762*CA7C42A80BDF4FA2C2E1591CFE51FBD5E923BDEF1EA726C6F6D83F768A2B6BBE\",\"name\":\"78a3bdb8-c969-49a9-af61-eee5a3054762*CA7C42A80BDF4FA2C2E1591CFE51FBD5E923BDEF1EA726C6F6D83F768A2B6BBE\",\"resourceId\":\"/subscriptions/a3eeb848-665a-4dbf-80a4-eb460930fb23/resourceGroups/simulator-HostedResources-76B2E1D8/providers/Microsoft.NetworkCloud/virtualMachines/pstestvm\",\"status\":\"Provisioning\",\"startTime\":\"2023-07-20T18:51:36.0670336Z\"}",
+      "isContentBase64": false
+    }
+  },
+  "New-AzNetworkCloudVirtualMachine+[NoContext]+Create+$GET+https://management.azure.com/subscriptions/a3eeb848-665a-4dbf-80a4-eb460930fb23/providers/Microsoft.NetworkCloud/locations/EASTUS/operationStatuses/78a3bdb8-c969-49a9-af61-eee5a3054762*CA7C42A80BDF4FA2C2E1591CFE51FBD5E923BDEF1EA726C6F6D83F768A2B6BBE?api-version=2023-07-01+6": {
+    "Request": {
+      "Method": "GET",
+      "RequestUri": "https://management.azure.com/subscriptions/a3eeb848-665a-4dbf-80a4-eb460930fb23/providers/Microsoft.NetworkCloud/locations/EASTUS/operationStatuses/78a3bdb8-c969-49a9-af61-eee5a3054762*CA7C42A80BDF4FA2C2E1591CFE51FBD5E923BDEF1EA726C6F6D83F768A2B6BBE?api-version=2023-07-01",
+      "Content": null,
+      "isContentBase64": false,
+      "Headers": {
+        "Authorization": [ "[Filtered]" ],
+        "x-ms-unique-id": [ "6" ],
+        "x-ms-client-request-id": [ "f099103c-b10a-4049-9f07-ea29a71a0c4c" ],
+        "CommandName": [ "New-AzNetworkCloudVirtualMachine" ],
+        "FullCommandName": [ "New-AzNetworkCloudVirtualMachine_Create" ],
+        "ParameterSetName": [ "__AllParameterSets" ],
+        "User-Agent": [ "AzurePowershell/v0.0.0", "PSVersion/v7.3.4", "Az.NetworkCloud/0.1.0" ]
+      },
+      "ContentHeaders": {
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "ETag": [ "\"e80211b1-0000-0100-0000-64b982c00000\"" ],
+        "x-ms-ratelimit-remaining-subscription-reads": [ "11994" ],
+        "x-ms-request-id": [ "73ba8cee-8431-43cb-b2a3-a4642076446e" ],
+        "x-ms-correlation-request-id": [ "d10455a2-fed4-4485-a715-3e307620fce2" ],
+        "x-ms-routing-request-id": [ "EASTUS:20230720T185407Z:d10455a2-fed4-4485-a715-3e307620fce2" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "Date": [ "Thu, 20 Jul 2023 18:54:07 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "639" ],
+        "Content-Type": [ "application/json; charset=utf-8" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\"id\":\"/subscriptions/a3eeb848-665a-4dbf-80a4-eb460930fb23/providers/Microsoft.NetworkCloud/locations/EASTUS/operationStatuses/78a3bdb8-c969-49a9-af61-eee5a3054762*CA7C42A80BDF4FA2C2E1591CFE51FBD5E923BDEF1EA726C6F6D83F768A2B6BBE\",\"name\":\"78a3bdb8-c969-49a9-af61-eee5a3054762*CA7C42A80BDF4FA2C2E1591CFE51FBD5E923BDEF1EA726C6F6D83F768A2B6BBE\",\"resourceId\":\"/subscriptions/a3eeb848-665a-4dbf-80a4-eb460930fb23/resourceGroups/simulator-HostedResources-76B2E1D8/providers/Microsoft.NetworkCloud/virtualMachines/pstestvm\",\"status\":\"Succeeded\",\"startTime\":\"2023-07-20T18:51:36.0670336Z\",\"endTime\":\"2023-07-20T18:53:52.6003203Z\",\"properties\":null}",
+      "isContentBase64": false
+    }
+  },
+  "New-AzNetworkCloudVirtualMachine+[NoContext]+Create+$GET+https://management.azure.com/subscriptions/a3eeb848-665a-4dbf-80a4-eb460930fb23/resourceGroups/simulator-HostedResources-76B2E1D8/providers/Microsoft.NetworkCloud/virtualMachines/pstestvm?api-version=2023-07-01+7": {
+    "Request": {
+      "Method": "GET",
+      "RequestUri": "https://management.azure.com/subscriptions/a3eeb848-665a-4dbf-80a4-eb460930fb23/resourceGroups/simulator-HostedResources-76B2E1D8/providers/Microsoft.NetworkCloud/virtualMachines/pstestvm?api-version=2023-07-01",
+      "Content": null,
+      "isContentBase64": false,
+      "Headers": {
+        "Authorization": [ "[Filtered]" ],
+        "x-ms-unique-id": [ "7" ],
+        "x-ms-client-request-id": [ "f099103c-b10a-4049-9f07-ea29a71a0c4c" ],
+        "CommandName": [ "New-AzNetworkCloudVirtualMachine" ],
+        "FullCommandName": [ "New-AzNetworkCloudVirtualMachine_Create" ],
+        "ParameterSetName": [ "__AllParameterSets" ],
+        "User-Agent": [ "AzurePowershell/v0.0.0", "PSVersion/v7.3.4", "Az.NetworkCloud/0.1.0" ]
+      },
+      "ContentHeaders": {
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "ETag": [ "\"c80bf078-0000-0100-0000-64b982c10000\"" ],
+        "x-ms-ratelimit-remaining-subscription-reads": [ "11993" ],
+        "x-ms-providerhub-traffic": [ "True" ],
+        "x-ms-request-id": [ "7b05fe96-8052-4a9c-bc7d-89ceceeb9812" ],
+        "x-ms-correlation-request-id": [ "1372111c-f7c5-456e-814a-d29f1f09981e" ],
+        "x-ms-routing-request-id": [ "EASTUS:20230720T185407Z:1372111c-f7c5-456e-814a-d29f1f09981e" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "Date": [ "Thu, 20 Jul 2023 18:54:07 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "3189" ],
+        "Content-Type": [ "application/json; charset=utf-8" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\"id\":\"/subscriptions/a3eeb848-665a-4dbf-80a4-eb460930fb23/resourceGroups/simulator-HostedResources-76B2E1D8/providers/Microsoft.NetworkCloud/virtualMachines/pstestvm\",\"name\":\"pstestvm\",\"type\":\"microsoft.networkcloud/virtualmachines\",\"location\":\"eastus\",\"extendedLocation\":{\"name\":\"/subscriptions/a3eeb848-665a-4dbf-80a4-eb460930fb23/resourcegroups/simulator-HostedResources-76B2E1D8/providers/microsoft.extendedlocation/customlocations/simulator-cstm-loc\",\"type\":\"CustomLocation\"},\"tags\":{\"tags\":\"tag1\"},\"systemData\":{\"createdBy\":\"REDACTED\",\"createdByType\":\"User\",\"createdAt\":\"2023-07-20T18:51:35.9518905Z\",\"lastModifiedBy\":\"319f651f-7ddb-4fc6-9857-7aef9250bd05\",\"lastModifiedByType\":\"Application\",\"lastModifiedAt\":\"2023-07-20T18:53:53.0074305Z\"},\"properties\":{\"provisioningState\":\"Succeeded\",\"cloudServicesNetworkAttachment\":{\"attachedNetworkId\":\"/subscriptions/subscriptionId/resourceGroups/resourceGroupName/providers/Microsoft.NetworkCloud/cloudServicesNetworks/csn1\",\"defaultGateway\":\"False\",\"ipAllocationMethod\":\"Dynamic\",\"networkAttachmentName\":\"cloudservices\",\"ipv4Address\":\"169.254.8.1\",\"macAddress\":\"02:00:00:bf:74:af\"},\"storageProfile\":{\"osDisk\":{\"createOption\":\"Ephemeral\",\"deleteOption\":\"Delete\",\"diskSizeGB\":16}},\"vmImageRepositoryCredentials\":{\"registryUrl\":\"hbusipalleacr2.azurecr.io\",\"username\":\"user\"},\"adminUsername\":\"admin\",\"bootMethod\":\"UEFI\",\"cpuCores\":2,\"isolateEmulatorThread\":\"True\",\"memorySizeGB\":1,\"networkAttachments\":[{\"attachedNetworkId\":\"/subscriptions/121213213131/resourceGroups/op317q-rg/providers/Microsoft.NetworkCloud/l3Networks/l3network1\",\"defaultGateway\":\"False\",\"ipAllocationMethod\":\"Dynamic\",\"ipv4Address\":\"10.10.100.8\",\"macAddress\":\"02:00:00:50:92:11\",\"networkAttachmentName\":\"l3netw-e0b7c\"}],\"networkData\":\"bmV0d29ya0RhdGVTYW1wbGU=\",\"placementHints\":[{\"hintType\":\"Affinity\",\"resourceId\":\"/subscriptions/a3eeb848-665a-4dbf-80a4-eb460930fb23/resourceGroups/simulator-HostedResources-76B2E1D8/providers/Microsoft.NetworkCloud/bareMetalMachines/rack1compute01\",\"schedulingExecution\":\"Soft\",\"scope\":\"Rack\"}],\"sshPublicKeys\":[{\"keyData\":\"ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABgQDL6v2jjsr9GrDkQn5selwh83Kn9LDoSn2XuAokqE63qLlArEo9U56an2WvR3a6ztsU45pIkVQkwaR5NrwT9uStNw+/C+g0tOZLT9OKK6YTovOnhfemuvorJ2i9djW+gfRnUfOa9aClBd/uBvG6jHB9c2sW9ugD5nS8A6/ymfK8X25DsYK6RbTxjbT5xGvKVND2NjSBIk79ll7f4/pulAvJTIngcLFadkGRem7KTkmyTyIMZBu4nYZN/yRws6AjyXWqwOgx2AH3Ts40McFYMt0uvPKcYqZeCGXfxcFaTChQqlzjMe6YyGPOEmii7UFUwLZ4W6DFipmKfql3yBylKDmN3XiY4eSxUPP7NvTgv6EU0CiE5Z1TEsHTzu88F7bLuZVWubXFm8CHdOeCDGxPIDu64z3wBH2N0qxbtla9hXaGjIV62Q4Vax61YwZJp8hc4qIdCuIJSlzr8WTj2sXqQV9mR3UR85mXstW0F1+6TQbJHs7MdCbTatm3Wr3FQirP+yk= azureuser@vm\"}],\"virtioInterface\":\"Modern\",\"vmImage\":\"hbusipalleacr2.azurecr.io/ubuntu:20.04\",\"clusterId\":\"/subscriptions/a3eeb848-665a-4dbf-80a4-eb460930fb23/resourceGroups/ps-test-anpankie/providers/Microsoft.NetworkCloud/clusters/simulator\",\"detailedStatus\":\"Running\",\"powerState\":\"On\",\"detailedStatusMessage\":\"Running - virtual machine is running.\",\"bareMetalMachineId\":\"/subscriptions/a3eeb848-665a-4dbf-80a4-eb460930fb23/resourceGroups/simulator-HostedResources-76B2E1D8/providers/Microsoft.NetworkCloud/bareMetalMachines/rack1compute01\"}}",
+      "isContentBase64": false
+    }
+  }
+}

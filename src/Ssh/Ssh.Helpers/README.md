@@ -68,7 +68,7 @@ directive:
 ### Tag: HybridConnectivity
 ``` yaml $(tag) == 'HybridConnectivity'
 input-file:
-  - https://github.com/Azure/azure-rest-api-specs/blob/b53cd31f04037e6f1b82dfc68d086e2d108eda13/specification/hybridconnectivity/resource-manager/Microsoft.HybridConnectivity/preview/2022-05-01-preview/hybridconnectivity.json
+  - https://github.com/Azure/azure-rest-api-specs/blob/084da0d41924cd117db8fd0f999cf204ef1e78e8/specification/hybridconnectivity/resource-manager/Microsoft.HybridConnectivity/stable/2023-03-15/hybridconnectivity.json
 
 output-folder: HybridConnectivity
 
@@ -82,7 +82,13 @@ directive:
 #    - Endpoints_CreateOrUpdate
     - Endpoints_Update
     - Endpoints_Delete
+    - ServiceConfigurations_ListByEndpointResource
+#    - ServiceConfigurations_Get
+#    - ServiceConfigurations_CreateOrupdate
+    - ServiceConfigurations_Update
+    - ServiceConfigurations_Delete
 #    - Endpoints_ListCredentials
+    - Endpoints_ListIngressGatewayCredentials
     - Endpoints_ListManagedProxyDetails
 ```
 

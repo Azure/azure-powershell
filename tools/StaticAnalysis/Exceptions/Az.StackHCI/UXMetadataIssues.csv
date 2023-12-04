@@ -1,0 +1,2 @@
+"Module","Severity","ResourceType","SubResourceType","Command","Description"
+"Az.StackHCI","1","Microsoft.AzureStackHCI","clusters-arcSettings","Invoke-AzStackHciConsentAndInstallDefaultExtension","arcSettingName is defined in path but cannot find in example"

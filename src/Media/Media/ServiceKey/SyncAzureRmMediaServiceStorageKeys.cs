@@ -1,4 +1,4 @@
-﻿//
+//
 // Copyright Microsoft Corporation
 // Licensed under the Apache License, Version 2.0 (the "License");
 // you may not use this file except in compliance with the License.
@@ -26,7 +26,6 @@ namespace Microsoft.Azure.Commands.Media.ServiceKey
     /// <summary>
     /// Synchronizes storage account keys for a storage account associated with the Media Service.
     /// </summary>
-    [GenericBreakingChange("Sync-AzMediaServiceStorageKeys alias will be removed in an upcoming breaking change release", "2.0.0")]
     [Cmdlet("Sync", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "MediaServiceStorageKey", SupportsShouldProcess = true), OutputType(typeof(bool))]
     [Alias("Sync-AzMediaServiceStorageKeys")]
     public class SyncAzureRmMediaServiceStorageKeys : AzureMediaServiceCmdletBase

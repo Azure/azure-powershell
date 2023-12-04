@@ -39,7 +39,7 @@ if ($DesiredVersion -eq "latest") {
     $curSimpleVer = "$curMajorVer.$curMinorVer"
 
     if ($curSimpleVer -eq ${env:POWERSHELLLATEST}) {
-        Write-Host "##[section]Skipping live test for PowerShell $curSimpleVer as it has already been explicitly specified in the pipeline." -ForegroundColor Green
+        Write-Host "##[warning]Skipping live test for PowerShell $curSimpleVer as it has already been explicitly specified in the pipeline."
         Write-Host "##vso[task.setvariable variable=skipLatest;isreadonly=true]true"
     }
 }

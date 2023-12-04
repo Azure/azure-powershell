@@ -90,9 +90,10 @@ namespace Microsoft.Azure.Commands.Network
                 Name = resourceInfo.ResourceName;
             }
 
+            var confirmCrossConnectMessage = "Deletion of ExpressRoute Direct requires disconnection of physical cross-connects. Please confirm that you have completed this step in coordination with your Colo provider. ";
             ConfirmAction(
                 Force.IsPresent,
-                string.Format(Properties.Resources.RemovingResource, Name),
+                string.Format(confirmCrossConnectMessage + Properties.Resources.RemovingResource , Name),
                 Properties.Resources.RemoveResourceMessage,
                 Name,
                 () =>

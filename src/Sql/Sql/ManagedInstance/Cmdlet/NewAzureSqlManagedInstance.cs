@@ -36,10 +36,6 @@ namespace Microsoft.Azure.Commands.Sql.ManagedInstance.Cmdlet
     /// <summary>
     /// Defines the New-AzSqlInstance cmdlet
     /// </summary>
-    [CmdletOutputBreakingChange(
-        deprecatedCmdletOutputTypeName: typeof(AzureSqlManagedInstanceModel),
-        DeprecatedOutputProperties = new String[] { "BackupStorageRedundancy" },
-        NewOutputProperties = new String[] { "CurrentBackupStorageRedundancy", "RequestedBackupStorageRedundancy" })]
     [Cmdlet(VerbsCommon.New, ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "SqlInstance",
         DefaultParameterSetName = NewByEditionAndComputeGenerationParameterSet,
         SupportsShouldProcess = true),
@@ -281,7 +277,7 @@ namespace Microsoft.Azure.Commands.Sql.ManagedInstance.Cmdlet
         /// Gets or sets whether or not to assign identity for instance
         /// </summary>
         [Parameter(Mandatory = false,
-            HelpMessage = "Generate and assign an Azure Active Directory Identity for this instance for use with key management services like Azure KeyVault.")]
+            HelpMessage = "Generate and assign a Microsoft Entra identity for this instance for use with key management services like Azure KeyVault.")]
         public SwitchParameter AssignIdentity { get; set; }
 
         /// <summary>
@@ -380,14 +376,14 @@ namespace Microsoft.Azure.Commands.Sql.ManagedInstance.Cmdlet
         /// Azure Active Directory display name for a user or group
         /// </summary>
         [Parameter(Mandatory = false,
-            HelpMessage = "Specifies the display name of the user, group or application which is the Azure Active Directory administrator for the server. This display name must exist in the active directory associated with the current subscription.")]
+            HelpMessage = "Specifies the display name of the user, group or application which is the Microsoft Entra administrator for the server. This display name must exist in the active directory associated with the current subscription.")]
         public string ExternalAdminName { get; set; }
 
         /// <summary>
         /// Azure Active Directory object id for a user, group or application
         /// </summary>
         [Parameter(Mandatory = false,
-            HelpMessage = "Specifies the object ID of the user, group or application which is the Azure Active Directory administrator.")]
+            HelpMessage = "Specifies the object ID of the user, group or application which is the Microsoft Entra administrator.")]
         public Guid? ExternalAdminSID { get; set; }
 
         /// <summary>
@@ -568,7 +564,7 @@ namespace Microsoft.Azure.Commands.Sql.ManagedInstance.Cmdlet
                 KeyId = this.KeyId,
                 Administrators = new Management.Sql.Models.ManagedInstanceExternalAdministrator()
                 {
-                    AzureADOnlyAuthentication = (this.EnableActiveDirectoryOnlyAuthentication.IsPresent) ? (bool?)true : null,
+                    AzureAdOnlyAuthentication = (this.EnableActiveDirectoryOnlyAuthentication.IsPresent) ? (bool?)true : null,
                     Login = this.ExternalAdminName,
                     Sid = this.ExternalAdminSID
                 },

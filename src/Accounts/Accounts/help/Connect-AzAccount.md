@@ -134,7 +134,10 @@ command connects the specified Azure tenant using the service principal credenti
 authenticates as a service principal.
 
 ```powershell
-$Credential = New-Object -TypeName System.Management.Automation.PSCredential -ArgumentList $ApplicationId, $SecuredPassword
+$SecurePassword = ConvertTo-SecureString -String "Password123!" -AsPlainText -Force
+$TenantId = 'yyyyyyyy-yyyy-yyyy-yyyy-yyyyyyy'
+$ApplicationId = 'zzzzzzzz-zzzz-zzzz-zzzz-zzzzzzzz'
+$Credential = New-Object -TypeName System.Management.Automation.PSCredential -ArgumentList $ApplicationId, $SecurePassword
 Connect-AzAccount -ServicePrincipal -TenantId $TenantId -Credential $Credential
 ```
 
@@ -160,8 +163,8 @@ azureuser@contoso.com  Subscription1    xxxx-xxxx-xxxx-xxxx     AzureCloud
 
 ### Example 5: Connect using a Managed Service Identity
 
-This example connects using the Managed Service Identity (MSI) of the host environment. For example,
-you sign into Azure from a virtual machine that has an assigned MSI.
+This example connects using a system-assigned Managed Service Identity (MSI) of the host
+environment. For example, you sign into Azure from a virtual machine that has an assigned MSI.
 
 ```powershell
 Connect-AzAccount -Identity
@@ -239,7 +242,7 @@ This example connects to an Azure account using certificate-based service princi
 The certificate file, which is specified by `CertficatePath`, should contains both certificate and private key as the input.
 
 ```powershell
-$securePassword = $plainPassword | ConvertTo-SecureString -AsPlainText -Force
+$SecurePassword = ConvertTo-SecureString -String "Password123!" -AsPlainText -Force
 $TenantId = 'yyyyyyyy-yyyy-yyyy-yyyy-yyyyyyy'
 $ApplicationId = 'zzzzzzzz-zzzz-zzzz-zzzz-zzzzzzzz'
 Connect-AzAccount -ServicePrincipal -ApplicationId $ApplicationId -TenantId $TenantId -CertificatePath './certificatefortest.pfx' -CertificatePassword $securePassword

@@ -1,4 +1,4 @@
-﻿// ----------------------------------------------------------------------------------
+// ----------------------------------------------------------------------------------
 //
 // Copyright Microsoft Corporation
 // Licensed under the Apache License, Version 2.0 (the "License");
@@ -181,7 +181,6 @@ namespace Microsoft.Azure.Commands.OperationalInsights.Models
         /// <summary>
         /// Gets or sets the regex.
         /// </summary>
-        [CmdletParameterBreakingChange(nameof(Regex), OldParamaterType = typeof(string), NewParameterTypeName = nameof(RegexDelimiter))]
         [JsonConverter(typeof(RegexDelimiterJsonConverter))]
         [JsonProperty("regex")]
         public RegexDelimiter[] RegexDelimiters { get; set; }

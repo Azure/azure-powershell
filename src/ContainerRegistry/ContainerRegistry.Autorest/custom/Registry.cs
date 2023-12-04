@@ -11,8 +11,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry.Models.Api202301P
     public partial class Registry :
         Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry.Models.Api202301Preview.IRegistry,
         Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry.Models.Api202301Preview.IRegistryInternal,
-        Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry.Runtime.IValidates,
-        Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry.Runtime.IHeaderSerializable
+        Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry.Runtime.IValidates
     {
         public Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry.Models.Api202301Preview.IRegistryUsage[] Usages {get;set;}
 

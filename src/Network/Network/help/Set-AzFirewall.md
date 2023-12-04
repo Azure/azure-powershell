@@ -231,6 +231,26 @@ Set-AzFirewall -AzureFirewall $azfw
 
 This example upgrades your existing Azure Firewall Standard to Premium Firewall. Upgrade process may take several minutes and does not require service down time. After upgrade is completed successfully you may replace your exiting standard policy with premium.
 
+### 15: Deallocate and allocate the Firewall with Availability Zones
+```powershell
+$firewall=Get-AzFirewall -ResourceGroupName rgName -Name azFw
+$firewall.Deallocate()
+$firewall | Set-AzFirewall
+
+$vnet = Get-AzVirtualNetwork -ResourceGroupName rgName -Name anotherVNetName
+$pip = Get-AzPublicIpAddress -ResourceGroupName rgName -Name publicIpName
+$firewall.Zones = "1","2","3"
+$firewall.Allocate($vnet, $pip)
+$firewall | Set-AzFirewall
+```
+
+This example retrieves a Firewall, deallocates the firewall, and saves it. The Deallocate command removes the running 
+service but preserves the firewall's configuration. For changes to be reflected in cloud, Set-AzFirewall must be called.
+If user wants to start the service again but with Availability Zones, the Zones method needs to be called defining the desired Availability Zones in quotes and separated by comma. In case Availability Zones needs to be removed, the $null parameter needs to be introduced instead. Finally, the Allocate method should be called on the firewall.
+The new VNet and Public IP must be in the same resource group as the Firewall. Again, for changes to be reflected in cloud,
+Set-AzFirewall must be called.
+
+
 ## PARAMETERS
 
 ### -AsJob

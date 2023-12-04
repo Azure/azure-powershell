@@ -174,7 +174,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets
                         string backupManagementType = ProtectableItem.BackupManagementType.ToString();
                         string workloadType = ConversionUtils.GetServiceClientWorkloadType(ProtectableItem.WorkloadType.ToString());
                         string containerName = "VMAppContainer;" + ((AzureWorkloadProtectableItem)ProtectableItem).ContainerName;
-                        ODataQuery<BMSPOQueryObject> queryParam = new ODataQuery<BMSPOQueryObject>(
+                        ODataQuery<BmspoQueryObject> queryParam = new ODataQuery<BmspoQueryObject>(
                         q => q.BackupManagementType
                              == backupManagementType &&
                              q.WorkloadType == workloadType &&

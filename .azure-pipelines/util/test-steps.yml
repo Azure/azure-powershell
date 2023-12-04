@@ -6,30 +6,23 @@ parameters:
   powerShellPlatform: ''
 
 steps:
+- template: get-github-pat-steps.yml
 - template: download-build-steps.yml
   parameters:
     artifactName: build-${{ parameters.testFramework }}
-- task: NodeTool@0
-  condition: eq(variables.IsGenerateBased, true)
-  displayName: Install Autorest
-  inputs:
-    versionSpec: '14.17.1'
-    command: custom
-    verbose: false
-    customCommand: install autorest@latest
-- task: PowerShell@2
-  condition: eq(variables.IsGenerateBased, true)
-  displayName: Setup environment for Autorest
-  inputs:
-    targetType: inline
-    script: "$env:NODE_OPTIONS=\"--max-old-space-size=65536\""
-    pwsh: true
 
 - task: UseDotNet@2
-  displayName: 'Use .NET Core sdk'
+  displayName: 'Use .NET SDK 6 for tests'
   inputs:
     packageType: sdk
-    version: 3.1.x
+    version: 6.0.x
+
+- task: PowerShell@2
+  displayName: Remove pre-installed Az modules
+  inputs:
+    pwsh: true
+    targetType: filePath
+    filePath: ./tools/TestFx/Utilities/CommonUtility.ps1
 
 - task: DotNetCoreCLI@2
   displayName: Test
@@ -38,7 +31,7 @@ steps:
     custom: msbuild
     arguments: 'build.proj /t:${{ parameters.testTarget }} /p:Configuration=${{ parameters.configuration }};TestFramework=${{ parameters.testFramework }};PullRequestNumber=$(System.PullRequest.PullRequestNumber)'
   env:
-    OCTOKITPAT: $(OCTOKITPAT)
+    OCTOKITPAT: $(GithubToken)
     PowerShellPlatform: ${{ parameters.powerShellPlatform }}
   continueOnError: true
 
@@ -54,13 +47,12 @@ steps:
 
 - pwsh: |
    Install-Module -Name Pester -RequiredVersion 4.10.1 -Force
-   Import-Module (Join-Path -Path . -ChildPath Az.Accounts | Join-Path -ChildPath Az.Accounts.psd1) -Force
    if ($IsWindows) { $sp = ";" } else { $sp = ":" }
    $env:PSModulePath = $env:PSModulePath + $sp + (pwd).Path
    $rootFolder = (Get-item $PWD).Parent.Parent
    Get-ChildItem -File -Recurse test-module.ps1 | ForEach-Object {
     Write-Host $_.Directory.FullName
-    cd $rootFolder;
+    cd $rootFolder
     .\tools\ExecuteCIStep.ps1 -TestAutorest -AutorestDirectory $_.Directory.FullName
    }
   workingDirectory: 'artifacts/Debug'

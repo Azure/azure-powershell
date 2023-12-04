@@ -46,6 +46,9 @@
             <Label>ApplicationId</Label>
           </TableColumnHeader>
           <TableColumnHeader>
+            <Label>DirectoryObjectId</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
             <Label>FederatedIdentityCredentialId</Label>
           </TableColumnHeader>
           <TableColumnHeader>
@@ -69,6 +72,9 @@
             <TableColumnItems>
               <TableColumnItem>
                 <PropertyName>ApplicationId</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>DirectoryObjectId</PropertyName>
               </TableColumnItem>
               <TableColumnItem>
                 <PropertyName>FederatedIdentityCredentialId</PropertyName>

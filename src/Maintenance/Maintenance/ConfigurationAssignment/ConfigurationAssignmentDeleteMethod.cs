@@ -46,13 +46,24 @@ namespace Microsoft.Azure.Commands.Maintenance
                     string resourceName = this.ResourceName;
                     string configurationAssignmentName = this.ConfigurationAssignmentName;
 
-                    if (!string.IsNullOrEmpty(resourceParentType) && !string.IsNullOrEmpty(resourceParentName))
+                    if (IsSubcriptionAssignment(this.ResourceGroupName, this.ProviderName, this.ResourceParentType, this.ResourceName))
                     {
-                        ConfigurationAssignmentsClient.DeleteParent(resourceGroupName, providerName, resourceParentType, resourceParentName, resourceType, resourceName, configurationAssignmentName);
+                        this.ConfigurationAssignmentsForSubscriptionsClient.Delete(this.ConfigurationAssignmentName);
+                    }
+                    else if (IsResourceGroupAssignment(this.ResourceGroupName, this.ProviderName, this.ResourceParentType, this.ResourceName))
+                    {
+                        this.ConfigurationAssignmentsForResourceGroupClient.Delete(this.ResourceGroupName, this.ConfigurationAssignmentName);
                     }
                     else
                     {
-                        ConfigurationAssignmentsClient.Delete(resourceGroupName, providerName, resourceType, resourceName, configurationAssignmentName);
+                        if (!string.IsNullOrEmpty(resourceParentType) && !string.IsNullOrEmpty(resourceParentName))
+                        {
+                            ConfigurationAssignmentsClient.DeleteParent(resourceGroupName, providerName, resourceParentType, resourceParentName, resourceType, resourceName, configurationAssignmentName);
+                        }
+                        else
+                        {
+                            ConfigurationAssignmentsClient.Delete(resourceGroupName, providerName, resourceType, resourceName, configurationAssignmentName);
+                        }
                     }
 
                     if (this.PassThru.IsPresent)
@@ -66,7 +77,7 @@ namespace Microsoft.Azure.Commands.Maintenance
         [Parameter(
             ParameterSetName = "DefaultParameter",
             Position = 0,
-            Mandatory = true,
+            Mandatory = false,
             HelpMessage = "The resource Group Name.",
             ValueFromPipelineByPropertyName = true)]
         [ResourceGroupCompleter]
@@ -75,7 +86,7 @@ namespace Microsoft.Azure.Commands.Maintenance
         [Parameter(
             ParameterSetName = "DefaultParameter",
             Position = 1,
-            Mandatory = true,
+            Mandatory = false,
             HelpMessage = "The resource provider Name.",
             ValueFromPipelineByPropertyName = true)]
         public string ProviderName { get; set; }
@@ -97,7 +108,7 @@ namespace Microsoft.Azure.Commands.Maintenance
         [Parameter(
             ParameterSetName = "DefaultParameter",
             Position = 2,
-            Mandatory = true,
+            Mandatory = false,
             HelpMessage = "The resource type.",
             ValueFromPipelineByPropertyName = true)]
         public string ResourceType { get; set; }
@@ -105,7 +116,7 @@ namespace Microsoft.Azure.Commands.Maintenance
         [Parameter(
             ParameterSetName = "DefaultParameter",
             Position = 3,
-            Mandatory = true,
+            Mandatory = false,
             HelpMessage = "The resource name.",
             ValueFromPipelineByPropertyName = true)]
         public string ResourceName { get; set; }

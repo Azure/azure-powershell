@@ -12,7 +12,9 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
+using Microsoft.Azure.PowerShell.Tools.AzPredictor.Test.Mocks;
 using Microsoft.Azure.PowerShell.Tools.AzPredictor.Utilities;
+using System.Collections.Generic;
 using System.Linq;
 using System.Management.Automation.Language;
 using Xunit;
@@ -82,10 +84,11 @@ namespace Microsoft.Azure.PowerShell.Tools.AzPredictor.Test
         /// </summary>
         [Theory]
         [InlineData("Set-AzContext -Subscription 'xxxx-xxxx-xxxx-xxxx' -Tenant <String>", null)]
-        [InlineData("Set-AzContext -Subscription 'xxxx-xxxx-xxxx-xxxx' -Tenant {String}", null)]
+        [InlineData("Set-AzContext -Subscription 'xxxx-xxxx-xxxx-xxxx' -Tenant `<String`>", null)]
         [InlineData("Set-AzContext -Subscription $subscription -Tenant [[String]]", null)]
         [InlineData("Set-AzContext -Subscription 'xxxx-xxxx-xxxx-xxxx' -Tenant TenantName", null)]
         [InlineData("Get-AzContext | Set-AzContext", "Set-AzContext")]
+        [InlineData("Get-AzDiskEncryptionSet -ResourceGroupName rg1 -Name enc1;", "Get-AzDiskEncryptionSet -ResourceGroupName rg1 -Name enc1")]
         public void VerifyGetCommandAst(string input, string expected)
         {
             if (expected == null)

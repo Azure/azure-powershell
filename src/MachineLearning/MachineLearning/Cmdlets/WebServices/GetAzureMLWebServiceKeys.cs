@@ -1,4 +1,4 @@
-﻿// ----------------------------------------------------------------------------------
+// ----------------------------------------------------------------------------------
 //
 // Copyright Microsoft Corporation
 // Licensed under the Apache License, Version 2.0 (the "License");
@@ -21,7 +21,6 @@ using Microsoft.WindowsAzure.Commands.Common.CustomAttributes;
 
 namespace Microsoft.Azure.Commands.MachineLearning.Cmdlets
 {
-    [GenericBreakingChange("Get-AzMlWebServiceKeys alias will be removed in an upcoming breaking change release", "2.0.0")]
     [Cmdlet("Get", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "MlWebServiceKey")]
     [OutputType(typeof(WebServiceKeys))]
     [Alias("Get-AzMlWebServiceKeys")]

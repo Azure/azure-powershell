@@ -28,7 +28,7 @@ function Test-QuotaLimit
         Assert-True {$retrievedLimits.Length -gt 0}
 
         # get limit by name 
-        $retrievedLimit = Get-AzNetAppFilesQuotaLimit -Location $resourceLocation -Name $quotaLimitName 
+        $retrievedLimit = Get-AzNetAppFilesQuotaLimit -Location $resourceLocation -Name $quotaLimitName
         Assert-NotNull $retrievedLimit
         Assert-AreEqual "$resourceLocation/$quotaLimitName" $retrievedLimit.Name
     }

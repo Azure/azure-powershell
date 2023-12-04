@@ -25,9 +25,9 @@ New-AzEventHubKey -ResourceGroupName myResourceGroup -NamespaceName myNamespace 
 New-AzEventHubKey -ResourceGroupName myResourceGroup -NamespaceName myNamespace -EventHubName myEventHub -Name rootmanagesharedaccesskey -KeyType SecondaryKey
 
 .Inputs
-Microsoft.Azure.PowerShell.Cmdlets.EventHub.Models.Api20221001Preview.IRegenerateAccessKeyParameters
+Microsoft.Azure.PowerShell.Cmdlets.EventHub.Models.Api202301Preview.IRegenerateAccessKeyParameters
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.EventHub.Models.Api20221001Preview.IAccessKeys
+Microsoft.Azure.PowerShell.Cmdlets.EventHub.Models.Api202301Preview.IAccessKeys
 .Notes
 COMPLEX PARAMETER PROPERTIES
 
@@ -40,7 +40,7 @@ PARAMETER <IRegenerateAccessKeyParameters>: Parameters supplied to the Regenerat
 https://learn.microsoft.com/powershell/module/az.eventhub/new-azeventhubkey
 #>
 function New-AzEventHubKey {
-[OutputType([Microsoft.Azure.PowerShell.Cmdlets.EventHub.Models.Api20221001Preview.IAccessKeys])]
+[OutputType([Microsoft.Azure.PowerShell.Cmdlets.EventHub.Models.Api202301Preview.IAccessKeys])]
 [CmdletBinding(DefaultParameterSetName='Regenerate', PositionalBinding=$false, SupportsShouldProcess, ConfirmImpact='Medium')]
 param(
     [Parameter(Mandatory)]
@@ -77,7 +77,7 @@ param(
 
     [Parameter(Mandatory, ValueFromPipeline)]
     [Microsoft.Azure.PowerShell.Cmdlets.EventHub.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.EventHub.Models.Api20221001Preview.IRegenerateAccessKeyParameters]
+    [Microsoft.Azure.PowerShell.Cmdlets.EventHub.Models.Api202301Preview.IRegenerateAccessKeyParameters]
     # Parameters supplied to the Regenerate Authorization Rule operation, specifies which key needs to be reset.
     # To construct, see NOTES section for PARAMETER properties and create a hash table.
     ${Parameter},

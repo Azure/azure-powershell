@@ -4309,12 +4309,8 @@ Generate keys for a token of a specified container registry.
 .Description
 Generate keys for a token of a specified container registry.
 .Example
-{{ Add code here }}
-.Example
-{{ Add code here }}
+ New-AzContainerRegistryCredentials -TokenId /subscriptions/xxxx/resourceGroups/MyResourceGroup/providers/Microsoft.ContainerRegistry/registries/myRegistry/tokens/mytoken -RegistryName myRegistry -ResourceGroupName MyResourceGroup
 
-.Inputs
-Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry.Models.Api202301Preview.IGenerateCredentialsParameters
 .Inputs
 Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry.Models.IContainerRegistryIdentity
 .Outputs
@@ -4323,11 +4319,6 @@ Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry.Models.Api202301Preview.IGe
 COMPLEX PARAMETER PROPERTIES
 
 To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
-
-GENERATECREDENTIALSPARAMETER <IGenerateCredentialsParameters>: The parameters used to generate credentials for a specified token or user of a container registry.
-  [Expiry <DateTime?>]: The expiry date of the generated credentials after which the credentials become invalid.
-  [Name <TokenPasswordName?>]: Specifies name of the password which should be regenerated if any -- password1 or password2.
-  [TokenId <String>]: The resource ID of the token for which credentials have to be generated.
 
 INPUTOBJECT <IContainerRegistryIdentity>: Identity Parameter
   [AgentPoolName <String>]: The name of the agent pool.
@@ -4357,14 +4348,12 @@ function New-AzContainerRegistryCredentials {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry.Models.Api202301Preview.IGenerateCredentialsResult])]
 [CmdletBinding(DefaultParameterSetName='GenerateExpanded', PositionalBinding=$false, SupportsShouldProcess, ConfirmImpact='Medium')]
 param(
-    [Parameter(ParameterSetName='Generate', Mandatory)]
     [Parameter(ParameterSetName='GenerateExpanded', Mandatory)]
     [Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry.Category('Path')]
     [System.String]
     # The name of the container registry.
     ${RegistryName},
 
-    [Parameter(ParameterSetName='Generate', Mandatory)]
     [Parameter(ParameterSetName='GenerateExpanded', Mandatory)]
     [Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry.Category('Path')]
     [System.String]
@@ -4372,7 +4361,6 @@ param(
     # The name is case insensitive.
     ${ResourceGroupName},
 
-    [Parameter(ParameterSetName='Generate')]
     [Parameter(ParameterSetName='GenerateExpanded')]
     [Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry.Category('Path')]
     [Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry.Runtime.DefaultInfo(Script='(Get-AzContext).Subscription.Id')]
@@ -4381,7 +4369,6 @@ param(
     # The value must be an UUID.
     ${SubscriptionId},
 
-    [Parameter(ParameterSetName='GenerateViaIdentity', Mandatory, ValueFromPipeline)]
     [Parameter(ParameterSetName='GenerateViaIdentityExpanded', Mandatory, ValueFromPipeline)]
     [Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry.Category('Path')]
     [Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry.Models.IContainerRegistryIdentity]
@@ -4389,31 +4376,20 @@ param(
     # To construct, see NOTES section for INPUTOBJECT properties and create a hash table.
     ${InputObject},
 
-    [Parameter(ParameterSetName='Generate', Mandatory, ValueFromPipeline)]
-    [Parameter(ParameterSetName='GenerateViaIdentity', Mandatory, ValueFromPipeline)]
-    [Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry.Models.Api202301Preview.IGenerateCredentialsParameters]
-    # The parameters used to generate credentials for a specified token or user of a container registry.
-    # To construct, see NOTES section for GENERATECREDENTIALSPARAMETER properties and create a hash table.
-    ${GenerateCredentialsParameter},
-
-    [Parameter(ParameterSetName='GenerateExpanded')]
-    [Parameter(ParameterSetName='GenerateViaIdentityExpanded')]
+    [Parameter()]
     [Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry.Category('Body')]
     [System.DateTime]
     # The expiry date of the generated credentials after which the credentials become invalid.
     ${Expiry},
 
-    [Parameter(ParameterSetName='GenerateExpanded')]
-    [Parameter(ParameterSetName='GenerateViaIdentityExpanded')]
+    [Parameter()]
     [ArgumentCompleter([Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry.Support.TokenPasswordName])]
     [Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry.Category('Body')]
     [Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry.Support.TokenPasswordName]
     # Specifies name of the password which should be regenerated if any -- password1 or password2.
     ${Name},
 
-    [Parameter(ParameterSetName='GenerateExpanded')]
-    [Parameter(ParameterSetName='GenerateViaIdentityExpanded')]
+    [Parameter()]
     [Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry.Category('Body')]
     [System.String]
     # The resource ID of the token for which credentials have to be generated.
@@ -4489,12 +4465,10 @@ begin {
         $parameterSet = $PSCmdlet.ParameterSetName
 
         $mapping = @{
-            Generate = 'Az.ContainerRegistry.private\New-AzContainerRegistryCredentials_Generate';
             GenerateExpanded = 'Az.ContainerRegistry.private\New-AzContainerRegistryCredentials_GenerateExpanded';
-            GenerateViaIdentity = 'Az.ContainerRegistry.private\New-AzContainerRegistryCredentials_GenerateViaIdentity';
             GenerateViaIdentityExpanded = 'Az.ContainerRegistry.private\New-AzContainerRegistryCredentials_GenerateViaIdentityExpanded';
         }
-        if (('Generate', 'GenerateExpanded') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId')) {
+        if (('GenerateExpanded') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId')) {
             $PSBoundParameters['SubscriptionId'] = (Get-AzContext).Subscription.Id
         }
 

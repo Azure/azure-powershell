@@ -59,7 +59,7 @@ namespace Microsoft.Azure.Commands.CosmosDB
 
             if (!string.IsNullOrEmpty(Id))
             {
-                MongoUserDefinitionGetResults mongoUserDefinitionGetResults = CosmosDBManagementClient.MongoDBResources.GetMongoUserDefinitionWithHttpMessagesAsync(MongoRoleHelper.ParseToMongoDbUserDefinitionId(Id), ResourceGroupName, AccountName).GetAwaiter().GetResult().Body;
+                MongoUserDefinitionGetResults mongoUserDefinitionGetResults = CosmosDBManagementClient.MongoDbResources.GetMongoUserDefinitionWithHttpMessagesAsync(MongoRoleHelper.ParseToMongoDbUserDefinitionId(Id), ResourceGroupName, AccountName).GetAwaiter().GetResult().Body;
                 
                 if (DatabaseName == null || (mongoUserDefinitionGetResults.DatabaseName != null && mongoUserDefinitionGetResults.DatabaseName.Equals(DatabaseName)))
                 {
@@ -68,7 +68,7 @@ namespace Microsoft.Azure.Commands.CosmosDB
             }
             else
             {
-                IEnumerable<MongoUserDefinitionGetResults> mongoUserDefinitions = CosmosDBManagementClient.MongoDBResources.ListMongoUserDefinitionsWithHttpMessagesAsync(ResourceGroupName, AccountName).GetAwaiter().GetResult().Body;
+                IEnumerable<MongoUserDefinitionGetResults> mongoUserDefinitions = CosmosDBManagementClient.MongoDbResources.ListMongoUserDefinitionsWithHttpMessagesAsync(ResourceGroupName, AccountName).GetAwaiter().GetResult().Body;
 
                 if (DatabaseName != null)
                 {

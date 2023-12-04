@@ -820,8 +820,13 @@ Please contact Microsoft for further assistance.</value>
   <data name="UnsupportedCZRForCRRVaultToPrimaryRegion" xml:space="preserve">
     <value>For triggering cross zonal restore for CRR enabled (RA-GRS) vaults, please ensure that the restore is triggered for secondary region. Please remove TargetZone parameter or try a valid scenario.</value>
   </data>
-	<data name="CantRemoveAndRetainRPsSimultaneously" xml:space="preserve">
+  <data name="CantRemoveAndRetainRPsSimultaneously" xml:space="preserve">
     <value>RemoveRecoveryPoints and RetainRecoveryPointsAsPerPolicy parameters can't be used simultaneously.</value>
   </data>
-
+  <data name="VaultLocationRequired" xml:space="preserve">
+    <value>VaultLocation can't be empty for fetching jobs from secondary region.</value>
+  </data>
+  <data name="VaultLocationRequiredForCRR" xml:space="preserve">
+    <value>VaultLocation can't be empty for cross region restore.</value>
+  </data>
 </root>

@@ -18,6 +18,7 @@ using System.Management.Automation;
 using Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.Models;
 using Microsoft.Azure.Commands.RecoveryServices.Backup.Helpers;
 using Microsoft.Azure.Commands.RecoveryServices.Backup.Properties;
+using Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters;
 using Microsoft.Azure.Management.Internal.Resources.Utilities.Models;
 using Newtonsoft.Json;
 
@@ -90,6 +91,13 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets
         [Parameter(Mandatory = false, HelpMessage = ParamHelpMsgs.Common.UseSecondaryReg)]
         [ValidateNotNullOrEmpty]
         public SwitchParameter UseSecondaryRegion { get; set; }
+
+        /// <summary>
+        /// Location of the Recovery Services Vault.
+        /// </summary>
+        [Parameter(Mandatory = false, HelpMessage = "Location of the Recovery Services Vault used to fetch the secondary region jobs.")]
+        [LocationCompleter("Microsoft.RecoveryServices/vaults")]
+        public string VaultLocation { get; set; }
 
         public override void ExecuteCmdlet()
         {
@@ -167,8 +175,12 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets
                 int resultCount = 0;
                 if (UseSecondaryRegion.IsPresent)
                 {
-                    ARSVault vault = ServiceClientAdapter.GetVault(resourceGroupName, vaultName);
-                    string secondaryRegion = BackupUtils.regionMap[vault.Location];
+                    if (VaultLocation == null || VaultLocation == "")
+                    {
+                        throw new PSArgumentException(Resources.VaultLocationRequired);
+                    }
+
+                    string secondaryRegion = BackupUtils.regionMap[VaultLocation];
 
                     WriteDebug(" Getting CRR jobs from secondary region: " + secondaryRegion);
                     var adapterResponse = ServiceClientAdapter.GetCrrJobs(VaultId,

@@ -30,6 +30,7 @@ using BatchClient = Microsoft.Azure.Commands.Batch.Models.BatchClient;
 
 namespace Microsoft.Azure.Commands.Batch.Test.Certificates
 {
+    [Obsolete]
     public class NewBatchCertificateCommandTests : WindowsAzure.Commands.Test.Utilities.Common.RMTestBase
     {
         private NewBatchCertificateCommand cmdlet;

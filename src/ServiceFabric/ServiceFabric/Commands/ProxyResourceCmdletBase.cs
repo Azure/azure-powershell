@@ -39,7 +39,11 @@ namespace Microsoft.Azure.Commands.ServiceFabric.Commands
 
         protected ApplicationTypeResource CreateApplicationType(string applicationTypeName)
         {
-            var appType = this.SFRPClient.ApplicationTypes.List(this.ResourceGroupName, this.ClusterName).Value.FirstOrDefault(
+            var appTypeList = this.ReturnListByPageResponse(
+                            this.SFRPClient.ApplicationTypes.List(this.ResourceGroupName, this.ClusterName),
+                            this.SFRPClient.ApplicationTypes.ListNext); 
+
+            var appType = appTypeList.FirstOrDefault(
                        type => type.Name.Equals(applicationTypeName, StringComparison.OrdinalIgnoreCase));
 
             if (appType != null)
@@ -49,7 +53,8 @@ namespace Microsoft.Azure.Commands.ServiceFabric.Commands
             }
 
             WriteVerbose(string.Format("Creating app type '{0}'.", applicationTypeName));
-            return this.SFRPClient.ApplicationTypes.CreateOrUpdate(this.ResourceGroupName, this.ClusterName, applicationTypeName, new ApplicationTypeResource());
+            return this.SFRPClient.ApplicationTypes.CreateOrUpdateWithHttpMessagesAsync(this.ResourceGroupName, this.ClusterName, applicationTypeName)
+                .GetAwaiter().GetResult().Body;
         }
 
         protected ApplicationTypeVersionResource CreateApplicationTypeVersion(string applicationTypeName, string typeVersion, string packageUrl, bool force, Hashtable defaultParameters = null)

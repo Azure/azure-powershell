@@ -282,7 +282,7 @@ function Test-StorageBlobContainerLegalHold
 		Assert-AreNotEqual $null $container.LegalHold.Tags[0].Timestamp
 		Assert-AreNotEqual $null $container.LegalHold.Tags[0].ObjectIdentifier
 
-		Add-AzRmStorageContainerLegalHold -ResourceGroupName $rgname -StorageAccountName $stoname -Name $containerName -Tag tag1
+		$stos | Add-AzRmStorageContainerLegalHold -Name $containerName -Tag tag1
 		$container = Get-AzRmStorageContainer -ResourceGroupName $rgname -StorageAccountName $stoname -Name $containerName
 		Assert-AreEqual $containerName $container.Name
 		Assert-AreEqual 2 $container.LegalHold.Tags.Count
@@ -293,7 +293,7 @@ function Test-StorageBlobContainerLegalHold
 		Assert-AreNotEqual $null $container.LegalHold.Tags[1].Timestamp
 		Assert-AreNotEqual $null $container.LegalHold.Tags[1].ObjectIdentifier
 
-		Remove-AzRmStorageContainerLegalHold -ResourceGroupName $rgname -StorageAccountName $stoname -Name $containerName -Tag tag1,tag3
+		$stos | Remove-AzRmStorageContainerLegalHold -Name $containerName -Tag tag1,tag3
 		$container = Get-AzRmStorageContainer -ResourceGroupName $rgname -StorageAccountName $stoname -Name $containerName
 		Assert-AreEqual $containerName $container.Name
 		Assert-AreEqual 0 $container.LegalHold.Tags.Count

@@ -17,7 +17,6 @@ using Microsoft.Azure.Commands.Common.Authentication.Abstractions;
 using Microsoft.Azure.Commands.ContainerRegistry.Models;
 using Microsoft.Azure.Commands.ContainerRegistry.DataPlaneOperations;
 using Microsoft.Azure.ContainerRegistry;
-using Microsoft.Azure.Management.ContainerRegistry;
 using Microsoft.Rest;
 using System;
 using System.Collections.Generic;

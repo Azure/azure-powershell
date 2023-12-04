@@ -40,6 +40,8 @@
 
 ## Current Breaking Changes
 
+* Removed cmdlets: `Get-AzBatchPoolStatistic` and `Get-AzBatchJobStatistic`
+
 ### Release Az 1.0.0 - December 2018
 
 The following cmdlets were affected this release:

@@ -147,7 +147,7 @@ function Get-NrpResourceName
 
 function Get-NrpResourceGroupName
 {
-	Get-ResourceGroupName "psnrp";
+   Get-ResourceGroupName "psnrp";
 }
 
 function Wait-Vm($vm)
@@ -323,10 +323,11 @@ function Test-GetNextHop
     # Setup
     $resourceGroupName = Get-NrpResourceGroupName
     $nwName = Get-NrpResourceName
+    $location = Get-PilotLocation
     $nwRgName = Get-NrpResourceGroupName
     $securityRuleName = Get-NrpResourceName
     $templateFile = (Resolve-Path ".\TestData\Deployment.json").Path
-    $location = Get-ProviderLocation "Microsoft.Network/networkWatchers" "East US"
+    $resourceTypeParent = "Microsoft.Network/networkWatchers"
     
     try 
     {
@@ -347,21 +348,26 @@ function Test-GetNextHop
         #Get Vm
         $vm = Get-AzVM -ResourceGroupName $resourceGroupName
         
-        #Get pablic IP address
+        #Get public IP address
         $address = Get-AzPublicIpAddress -ResourceGroupName $resourceGroupName
 
+        #Get Nic for Source IP address
+        $Nics = Get-AzNetworkInterface | Where-Object {$_.Id -eq $vm.NetworkProfile.NetworkInterfaces.Id.ForEach({$_})}
+        
+        #Write-Output $Nics
+
         #Get next hop
-        $job = Get-AzNetworkWatcherNextHop -NetworkWatcher $nw -TargetVirtualMachineId $vm.Id -DestinationIPAddress 10.1.3.6 -SourceIPAddress $address.IpAddress -AsJob
+        $job = Get-AzNetworkWatcherNextHop -NetworkWatcher $nw -TargetVirtualMachineId $vm.Id -DestinationIPAddress 10.1.3.6 -SourceIPAddress $Nics[0].IpConfigurations[0].PrivateIpAddress -AsJob
         $job | Wait-Job
         $nextHop1 = $job | Receive-Job
-        $nextHop2 = Get-AzNetworkWatcherNextHop -NetworkWatcher $nw -TargetVirtualMachineId $vm.Id -DestinationIPAddress 12.11.12.14 -SourceIPAddress $address.IpAddress
+        $nextHop2 = Get-AzNetworkWatcherNextHop -NetworkWatcher $nw -TargetVirtualMachineId $vm.Id -DestinationIPAddress 12.11.12.14 -SourceIPAddress $Nics[0].IpConfigurations[0].PrivateIpAddress
     
         #Verification
         Assert-AreEqual $nextHop1.NextHopType None
         Assert-AreEqual $nextHop1.NextHopIpAddress 10.0.1.2
         Assert-AreEqual $nextHop2.NextHopType Internet
         Assert-AreEqual $nextHop2.RouteTableId "System Route"
-    }
+    } 
     finally
     {
         # Cleanup
@@ -382,7 +388,7 @@ function Test-VerifyIPFlow
     $nwRgName = Get-NrpResourceGroupName
     $securityGroupName = Get-NrpResourceName
     $templateFile = (Resolve-Path ".\TestData\Deployment.json").Path
-    $location = Get-ProviderLocation "Microsoft.Network/networkWatchers" "East US"
+    $location = Get-PilotLocation
     
     try 
     {
@@ -414,7 +420,7 @@ function Test-VerifyIPFlow
 
         #Get Vm
         $vm = Get-AzVM -ResourceGroupName $resourceGroupName
-        
+       
         #Get private Ip address of nic
         $nic = Get-AzNetworkInterface -ResourceGroupName $resourceGroupName
         $address = $nic[0].IpConfigurations[0].PrivateIpAddress
@@ -529,6 +535,7 @@ function Test-PacketCapture
 
         #Get Vm
         $vm = Get-AzVM -ResourceGroupName $resourceGroupName
+        
 
         #Install networkWatcherAgent on Vm
         Set-AzVMExtension -ResourceGroupName "$resourceGroupName" -Location "$location" -VMName $vm.Name -Name "MyNetworkWatcherAgent" -Type "NetworkWatcherAgentWindows" -TypeHandlerVersion "1.4" -Publisher "Microsoft.Azure.NetworkWatcher" 
@@ -618,6 +625,9 @@ function Test-PacketCaptureV2
 
         # Deploy resources
         Get-TestResourcesDeploymentVMSS -rgn "$resourceGroupName"
+        
+        #Get public IP address
+        $address = Get-AzPublicIpAddress -ResourceGroupName $resourceGroupName
 
         # Create Resource group for Network Watcher
         New-AzResourceGroup -Name $nwRgName -Location "$location"
@@ -625,31 +635,34 @@ function Test-PacketCaptureV2
         # Get Network Watcher
 		$nw = Get-CreateTestNetworkWatcher -location $location -nwName $nwName -nwRgName $nwRgName
 
+        Wait-Seconds 600
+        
         #Get Vmss and Instances
         $vmss = Get-AzVmss -ResourceGroupName $resourceGroupName -VMScaleSetName $virtualMachineScaleSetName
 
         #Install networkWatcherAgent on Vmss and Vmss Instances
         Add-AzVmssExtension -VirtualMachineScaleSet $vmss -Name "AzureNetworkWatcherExtension" -Publisher "Microsoft.Azure.NetworkWatcher" -Type "NetworkWatcherAgentWindows" -TypeHandlerVersion "1.4" -AutoUpgradeMinorVersion $True
         Update-AzVmss -ResourceGroupName "$resourceGroupName" -Name $virtualMachineScaleSetName -VirtualMachineScaleSet $vmss
-
+        
         # Updating all VMSS instances with NW agent
         $instances = Get-AzVMSSVM -ResourceGroupName "$resourceGroupName" -VMScaleSetName $vmss.Name
         foreach($item in $instances) {
             Update-AzVmssInstance -ResourceGroupName "$resourceGroupName" -VMScaleSetName $vmss.Name -InstanceId $item.InstanceID
         }
-
+        
         #Create filters for packet capture
         $f1 = New-AzPacketCaptureFilterConfig -Protocol Tcp -RemoteIPAddress 127.0.0.1-127.0.0.255 -LocalPort 80 -RemotePort 80-120
         $f2 = New-AzPacketCaptureFilterConfig -LocalIPAddress 127.0.0.1;127.0.0.5
-
+        
         #Create Scope for packet capture
         $s1 = New-AzPacketCaptureScopeConfig -Include "0", "1"
-
+        
         #Create packet capture
         $job = New-AzNetworkWatcherPacketCaptureV2 -NetworkWatcher $nw -Name $pcName -TargetId $vmss.Id -TargetType "azurevmss" -LocalFilePath C:\tmp\Capture.cap -Filter $f1, $f2 -AsJob -TimeLimitInSecond 1200
         $job | Wait-Job
-        $job2 = New-AzNetworkWatcherPacketCaptureV2 -NetworkWatcher $nw -PacketCaptureName $pcName2 -TargetId $vmss.Id -TargetType "azurevmss" -Scope $s1 -LocalFilePath C:\tmp\Capture.cap -AsJob
+        $job2 = New-AzNetworkWatcherPacketCaptureV2 -NetworkWatcher $nw -Name $pcName2 -TargetId $vmss.Id -TargetType "azurevmss" -Scope $s1 -LocalFilePath C:\tmp\Capture.cap -AsJob
         $job2 | Wait-Job
+        
         Start-TestSleep -Seconds 2
 
         #Get packet capture
@@ -659,7 +672,7 @@ function Test-PacketCaptureV2
         $job2 = Get-AzNetworkWatcherPacketCapture -NetworkWatcher $nw -PacketCaptureName $pcName2 -AsJob
         $job2 | Wait-Job
         $pc2 = $job2 | Receive-Job
-
+        
         #Verification
         Assert-AreEqual $pc.Name $pcName
         Assert-AreEqual $pc.Filters[0].LocalPort 80
@@ -669,18 +682,18 @@ function Test-PacketCaptureV2
         Assert-AreEqual $pc.StorageLocation.FilePath C:\tmp\Capture.cap
         Assert-AreEqual "Succeeded" $pc.ProvisioningState
         Assert-AreEqual $pc.TargetType AzureVMSS
-
+        
         Assert-AreEqual $pc2.Name $pcName2
         Assert-AreEqual $pc2.StorageLocation.FilePath C:\tmp\Capture.cap
         Assert-AreEqual "Succeeded" $pc2.ProvisioningState
         Assert-AreEqual $pc2.TargetType AzureVMSS
-
+        
         #Stop packet capture
         $job = Stop-AzNetworkWatcherPacketCapture -NetworkWatcher $nw -PacketCaptureName $pcName -AsJob
         $job | Wait-Job
         $job2 = Stop-AzNetworkWatcherPacketCapture -NetworkWatcher $nw -PacketCaptureName $pcName2 -AsJob
         $job2 | Wait-Job
-
+        
         #Remove packet capture
         $job = Remove-AzNetworkWatcherPacketCapture -NetworkWatcher $nw -PacketCaptureName $pcName -AsJob
         $job | Wait-Job
@@ -1573,6 +1586,8 @@ function Test-ConnectionMonitorWithVMSSAsSource
         # Deploy resources
         Get-TestResourcesDeploymentVMSS -rgn "$resourceGroupName"
 
+        Wait-Seconds 600
+
         # Create Resource group for Network Watcher
         New-AzResourceGroup -Name $nwRgName -Location "$location"
 
@@ -1613,6 +1628,7 @@ function Test-ConnectionMonitorWithVMSSAsSource
         Assert-AreEqual $cm1.Name $cmName1
         Assert-AreEqual $cm1.ProvisioningState Succeeded
 
+        #Assert-AreEqual $tes "test"
     }
     finally
     {

@@ -19,6 +19,7 @@ using Microsoft.Azure.Management.ServiceFabricManagedClusters;
 using Microsoft.Rest.Azure;
 using Newtonsoft.Json.Linq;
 using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using System.Management.Automation;
@@ -31,12 +32,12 @@ namespace Microsoft.Azure.Commands.ServiceFabric.Commands
 {
     public class ServiceFabricManagedCmdletBase : ServiceFabricCommonCmdletBase
     {
-        private Lazy<ServiceFabricManagedClustersManagementClient> sfrpMcClient;
+        private Lazy<ServiceFabricManagementClient> sfrpMcClient;
 
-        internal ServiceFabricManagedClustersManagementClient SfrpMcClient
+        internal ServiceFabricManagementClient SfrpMcClient
         {
             get { return sfrpMcClient.Value; }
-            set { sfrpMcClient = new Lazy<ServiceFabricManagedClustersManagementClient>(() => value); }
+            set { sfrpMcClient = new Lazy<ServiceFabricManagementClient>(() => value); }
         }
 
         public ServiceFabricManagedCmdletBase()
@@ -46,10 +47,10 @@ namespace Microsoft.Azure.Commands.ServiceFabric.Commands
 
         private void InitializeManagementClients()
         {
-            this.sfrpMcClient = new Lazy<ServiceFabricManagedClustersManagementClient>(() =>
+            this.sfrpMcClient = new Lazy<ServiceFabricManagementClient>(() =>
             {
                 var armClient = AzureSession.Instance.ClientFactory.
-                CreateArmClient<ServiceFabricManagedClustersManagementClient>(
+                CreateArmClient<ServiceFabricManagementClient>(
                 DefaultContext,
                 AzureEnvironment.Endpoint.ResourceManager);
                 return armClient;
@@ -239,6 +240,14 @@ namespace Microsoft.Azure.Commands.ServiceFabric.Commands
                 }
 
                 return clone;
+            }
+        }
+
+        protected void AddToList(IDictionary<string, string> currentList, Hashtable listToAdd)
+        {
+            foreach (DictionaryEntry entry in listToAdd)
+            {
+                currentList.Add(new KeyValuePair<string, string>(entry.Key.ToString(), entry.Value.ToString()));
             }
         }
 

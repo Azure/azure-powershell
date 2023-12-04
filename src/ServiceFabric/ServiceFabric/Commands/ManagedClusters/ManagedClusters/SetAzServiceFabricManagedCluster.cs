@@ -153,6 +153,11 @@ namespace Microsoft.Azure.Commands.ServiceFabric.Commands
                 currentCluster.Tags = this.Tag?.Cast<DictionaryEntry>().ToDictionary(d => d.Key as string, d => d.Value as string);
             }
 
+            if (string.IsNullOrEmpty(currentCluster.PublicIPPrefixId))
+            {
+                currentCluster.PublicIPPrefixId = null;
+            }
+
             return currentCluster;
         }
 

@@ -15,6 +15,7 @@
 using System;
 using System.Linq;
 using System.Management.Automation;
+using System.Web;
 using Microsoft.Azure.Commands.Consumption.Common;
 using Microsoft.Azure.Commands.Consumption.Models;
 using Microsoft.Azure.Management.Consumption;
@@ -71,13 +72,7 @@ namespace Microsoft.Azure.Commands.Consumption.Cmdlets
 
                         if (!string.IsNullOrWhiteSpace(nextLink))
                         {
-                            string queryString = new Uri(nextLink).Query;
-                            var queryDictionary = System.Web.HttpUtility.ParseQueryString(queryString);
-
-                            if (queryDictionary.AllKeys.Contains("skipToken"))
-                            {
-                                skipToken = queryDictionary["skipToken"];
-                            }
+                            skipToken = ExtractContinuationToken(nextPageLink: nextLink);
                         }
                     } while (!this.Top.HasValue && !string.IsNullOrWhiteSpace(nextLink));                    
                 }
@@ -91,13 +86,7 @@ namespace Microsoft.Azure.Commands.Consumption.Cmdlets
                         
                         if (!string.IsNullOrWhiteSpace(nextLink))
                         {
-                            string queryString = new Uri(nextLink).Query;
-                            var queryDictionary = System.Web.HttpUtility.ParseQueryString(queryString);
-
-                            if (queryDictionary.AllKeys.Contains("skipToken"))
-                            {
-                                skipToken = queryDictionary["skipToken"];
-                            }
+                            skipToken = ExtractContinuationToken(nextPageLink: nextLink);
                         }
                     } while (!this.Top.HasValue && !string.IsNullOrWhiteSpace(nextLink));
                 }
@@ -120,6 +109,20 @@ namespace Microsoft.Azure.Commands.Consumption.Cmdlets
                 result.Type = priceSheet.Type;
                 result.PriceSheets.AddRange(priceSheet.Pricesheets.Select(x => new PSPriceSheetProperty(x)));
             }
+        }
+
+        private static string ExtractContinuationToken(string nextPageLink)
+        {
+            if (!string.IsNullOrWhiteSpace(nextPageLink))
+            {
+                Uri uri = new Uri(nextPageLink);
+                var queries = HttpUtility.ParseQueryString(uri.Query);
+                if (queries.HasKeys())
+                {
+                    return queries.Get("$skiptoken");
+                }
+            }
+            return null;
         }
     }
 }

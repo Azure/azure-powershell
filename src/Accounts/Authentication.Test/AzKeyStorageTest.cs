@@ -58,16 +58,16 @@ namespace Common.Authenticators.Test
         {
             using (var store = new AzKeyStore(dummpyPath, keyStoreFileName, true, storageMocker.Object))
             {
-                IKeyStoreKey servicePrincipalKey = new ServicePrincipalKey("ServicePrincipalSecret", "6c984d31-5b4f-4734-b548-e230a248e347", "54826b22-38d6-4fb2-bad9-b7b93a3e9c5a");
+                IKeyStoreKey servicePrincipalKey = new ServicePrincipalKey("ServicePrincipalSecret", "6c984d31-5b4f-4734-b548-e230a248e347", "54821234-0000-0000-0000-b7b93a3e1234");
                 var secret = "secret".ConvertToSecureString();
                 store.SaveSecureString(servicePrincipalKey, secret);
 
-                IKeyStoreKey certificatePassword = new ServicePrincipalKey("CertificatePassword", "6c984d31-5b4f-4734-b548-e230a248e347", "54826b22-38d6-4fb2-bad9-b7b93a3e9c5a");
+                IKeyStoreKey certificatePassword = new ServicePrincipalKey("CertificatePassword", "6c984d31-5b4f-4734-b548-e230a248e347", "54821234-0000-0000-0000-b7b93a3e1234");
                 var passowrd = "password".ConvertToSecureString();
                 store.SaveSecureString(certificatePassword, passowrd);
 
                 var result = Encoding.UTF8.GetString(storageChecker.ToArray());
-                const string EXPECTEDSTRING = @"[{""keyType"":""ServicePrincipalKey"",""keyStoreKey"":""{\""appId\"":\""6c984d31-5b4f-4734-b548-e230a248e347\"",\""tenantId\"":\""54826b22-38d6-4fb2-bad9-b7b93a3e9c5a\"",\""name\"":\""CertificatePassword\""}"",""valueType"":""SecureString"",""keyStoreValue"":""\""password\""""},{""keyType"":""ServicePrincipalKey"",""keyStoreKey"":""{\""appId\"":\""6c984d31-5b4f-4734-b548-e230a248e347\"",\""tenantId\"":\""54826b22-38d6-4fb2-bad9-b7b93a3e9c5a\"",\""name\"":\""ServicePrincipalSecret\""}"",""valueType"":""SecureString"",""keyStoreValue"":""\""secret\""""}]";
+                const string EXPECTEDSTRING = @"[{""keyType"":""ServicePrincipalKey"",""keyStoreKey"":""{\""appId\"":\""6c984d31-5b4f-4734-b548-e230a248e347\"",\""tenantId\"":\""54821234-0000-0000-0000-b7b93a3e1234\"",\""name\"":\""CertificatePassword\""}"",""valueType"":""SecureString"",""keyStoreValue"":""\""password\""""},{""keyType"":""ServicePrincipalKey"",""keyStoreKey"":""{\""appId\"":\""6c984d31-5b4f-4734-b548-e230a248e347\"",\""tenantId\"":\""54821234-0000-0000-0000-b7b93a3e1234\"",\""name\"":\""ServicePrincipalSecret\""}"",""valueType"":""SecureString"",""keyStoreValue"":""\""secret\""""}]";
                 Assert.True(CompareJsonObjects(EXPECTEDSTRING, result));
 
                 store.Clear();
@@ -79,13 +79,13 @@ namespace Common.Authenticators.Test
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void FindKey()
         {
-            const string EXPECTED = @"[{""keyType"":""ServicePrincipalKey"",""keyStoreKey"":""{\""appId\"":\""6c984d31-5b4f-4734-b548-e230a248e347\"",\""tenantId\"":\""54826b22-38d6-4fb2-bad9-b7b93a3e9c5a\"",\""name\"":\""ServicePrincipalSecret\""}"",""valueType"":""SecureString"",""keyStoreValue"":""\""secret\""""}]";
+            const string EXPECTED = @"[{""keyType"":""ServicePrincipalKey"",""keyStoreKey"":""{\""appId\"":\""6c984d31-5b4f-4734-b548-e230a248e347\"",\""tenantId\"":\""54821234-0000-0000-0000-b7b93a3e1234\"",\""name\"":\""ServicePrincipalSecret\""}"",""valueType"":""SecureString"",""keyStoreValue"":""\""secret\""""}]";
             storageChecker.AddRange(Encoding.UTF8.GetBytes(EXPECTED));
             using (var store = new AzKeyStore(dummpyPath, keyStoreFileName, true, storageMocker.Object))
             {
                 storageMocker.Setup(f => f.ReadData()).Returns(storageChecker.ToArray());
 
-                IKeyStoreKey servicePrincipalKey = new ServicePrincipalKey("ServicePrincipalSecret", "6c984d31-5b4f-4734-b548-e230a248e347", "54826b22-38d6-4fb2-bad9-b7b93a3e9c5a");
+                IKeyStoreKey servicePrincipalKey = new ServicePrincipalKey("ServicePrincipalSecret", "6c984d31-5b4f-4734-b548-e230a248e347", "54821234-0000-0000-0000-b7b93a3e1234");
                 var secret = store.GetSecureString(servicePrincipalKey);
                 Assert.Equal("secret", secret.ConvertToString());
 
@@ -98,7 +98,7 @@ namespace Common.Authenticators.Test
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void FindFallbackKey()
         {
-            const string EXPECTED = @"[{""keyType"":""ServicePrincipalKey"",""keyStoreKey"":""{\""appId\"":\""6c984d31-5b4f-4734-b548-e230a248e347\"",\""tenantId\"":\""54826b22-38d6-4fb2-bad9-b7b93a3e9c5a\"",\""name\"":\""ServicePrincipalSecret\""}"",""valueType"":""SecureString"",""keyStoreValue"":""\""secretFallback\""""}]";
+            const string EXPECTED = @"[{""keyType"":""ServicePrincipalKey"",""keyStoreKey"":""{\""appId\"":\""6c984d31-5b4f-4734-b548-e230a248e347\"",\""tenantId\"":\""54821234-0000-0000-0000-b7b93a3e1234\"",\""name\"":\""ServicePrincipalSecret\""}"",""valueType"":""SecureString"",""keyStoreValue"":""\""secretFallback\""""}]";
             storageChecker.AddRange(Encoding.UTF8.GetBytes(EXPECTED));
             using (var store = new AzKeyStore(dummpyPath, keyStoreFileName, true, storageMocker.Object))
             {
@@ -118,13 +118,13 @@ namespace Common.Authenticators.Test
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void FindNoKey()
         {
-            const string EXPECTED = @"[{""keyType"":""ServicePrincipalKey"",""keyStoreKey"":""{\""appId\"":\""6c984d31-5b4f-4734-b548-e230a248e347\"",\""tenantId\"":\""54826b22-38d6-4fb2-bad9-b7b93a3e9c5a\"",\""name\"":\""ServicePrincipalSecret\""}"",""valueType"":""SecureString"",""keyStoreValue"":""\""secret\""""}]";
+            const string EXPECTED = @"[{""keyType"":""ServicePrincipalKey"",""keyStoreKey"":""{\""appId\"":\""6c984d31-5b4f-4734-b548-e230a248e347\"",\""tenantId\"":\""54821234-0000-0000-0000-b7b93a3e1234\"",\""name\"":\""ServicePrincipalSecret\""}"",""valueType"":""SecureString"",""keyStoreValue"":""\""secret\""""}]";
             storageChecker.AddRange(Encoding.UTF8.GetBytes(EXPECTED));
             using (var store = new AzKeyStore(dummpyPath, keyStoreFileName, true, storageMocker.Object))
             {
                 storageMocker.Setup(f => f.ReadData()).Returns(storageChecker.ToArray());
 
-                IKeyStoreKey servicePrincipalKey = new ServicePrincipalKey("CertificatePassword", "6c984d31-5b4f-4734-b548-e230a248e347", "54826b22-38d6-4fb2-bad9-b7b93a3e9c5a");
+                IKeyStoreKey servicePrincipalKey = new ServicePrincipalKey("CertificatePassword", "6c984d31-5b4f-4734-b548-e230a248e347", "54821234-0000-0000-0000-b7b93a3e1234");
                 Assert.Throws<ArgumentException>(() => store.GetSecureString(servicePrincipalKey));
 
                 store.Clear();
@@ -136,13 +136,13 @@ namespace Common.Authenticators.Test
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void RemoveKey()
         {
-            const string EXPECTED = @"[{""keyType"":""ServicePrincipalKey"",""keyStoreKey"":""{\""appId\"":\""6c984d31-5b4f-4734-b548-e230a248e347\"",\""tenantId\"":\""54826b22-38d6-4fb2-bad9-b7b93a3e9c5a\"",\""name\"":\""ServicePrincipalSecret\""}"",""valueType"":""SecureString"",""keyStoreValue"":""\""secret\""""}]";
+            const string EXPECTED = @"[{""keyType"":""ServicePrincipalKey"",""keyStoreKey"":""{\""appId\"":\""6c984d31-5b4f-4734-b548-e230a248e347\"",\""tenantId\"":\""54821234-0000-0000-0000-b7b93a3e1234\"",\""name\"":\""ServicePrincipalSecret\""}"",""valueType"":""SecureString"",""keyStoreValue"":""\""secret\""""}]";
             storageChecker.AddRange(Encoding.UTF8.GetBytes(EXPECTED));
             using (var store = new AzKeyStore(dummpyPath, keyStoreFileName, true, storageMocker.Object))
             {
                 storageMocker.Setup(f => f.ReadData()).Returns(storageChecker.ToArray());
 
-                IKeyStoreKey servicePrincipalKey = new ServicePrincipalKey("ServicePrincipalSecret", "6c984d31-5b4f-4734-b548-e230a248e347", "54826b22-38d6-4fb2-bad9-b7b93a3e9c5a");
+                IKeyStoreKey servicePrincipalKey = new ServicePrincipalKey("ServicePrincipalSecret", "6c984d31-5b4f-4734-b548-e230a248e347", "54821234-0000-0000-0000-b7b93a3e1234");
                 store.RemoveSecureString(servicePrincipalKey);
 
                 var result = Encoding.UTF8.GetString(storageChecker.ToArray());
@@ -158,13 +158,13 @@ namespace Common.Authenticators.Test
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void RemoveNoKey()
         {
-            const string EXPECTED = @"[{""keyType"":""ServicePrincipalKey"",""keyStoreKey"":""{\""appId\"":\""6c984d31-5b4f-4734-b548-e230a248e347\"",\""tenantId\"":\""54826b22-38d6-4fb2-bad9-b7b93a3e9c5a\"",\""name\"":\""ServicePrincipalSecret\""}"",""valueType"":""SecureString"",""keyStoreValue"":""\""secret\""""}]";
+            const string EXPECTED = @"[{""keyType"":""ServicePrincipalKey"",""keyStoreKey"":""{\""appId\"":\""6c984d31-5b4f-4734-b548-e230a248e347\"",\""tenantId\"":\""54821234-0000-0000-0000-b7b93a3e1234\"",\""name\"":\""ServicePrincipalSecret\""}"",""valueType"":""SecureString"",""keyStoreValue"":""\""secret\""""}]";
             storageChecker.AddRange(Encoding.UTF8.GetBytes(EXPECTED));
             using (var store = new AzKeyStore(dummpyPath, keyStoreFileName, true, storageMocker.Object))
             {
                 storageMocker.Setup(f => f.ReadData()).Returns(storageChecker.ToArray());
 
-                IKeyStoreKey servicePrincipalKey = new ServicePrincipalKey("CertificatePassword", "6c984d31-5b4f-4734-b548-e230a248e347", "54826b22-38d6-4fb2-bad9-b7b93a3e9c5a");
+                IKeyStoreKey servicePrincipalKey = new ServicePrincipalKey("CertificatePassword", "6c984d31-5b4f-4734-b548-e230a248e347", "54821234-0000-0000-0000-b7b93a3e1234");
                 store.RemoveSecureString(servicePrincipalKey);
 
                 var result = Encoding.UTF8.GetString(storageChecker.ToArray());

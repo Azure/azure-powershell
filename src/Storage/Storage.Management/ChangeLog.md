@@ -18,13 +18,89 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
-* Supported TierToCold and TierToHot in Storage account management policy 
+
+## Version 6.0.1
+* Updated error message when storage context is missing in a cmdlet input 
+
+## Version 6.0.0
+* Supported customer initiated migration
+* Supported creationTime filter in Blob Inventory
+    - `New-AzStorageBlobInventoryPolicyRule`
+* Supported traling dot in Azure file and directory name by default
+    - `Close-AzStorageFileHandle`
+    - `Get-AzStorageFile`
+    - `Get-AzStorageFileCopyState`
+    - `Get-AzStorageFileContent`
+    - `Get-AzStorageFileHandle`
+    - `New-AzStorageDirectory`
+    - `Remove-AzStorageDirectory`
+    - `Remove-AzStorageFile`
+    - `Rename-AzStorageDirectory`
+    - `Rename-AzStorageFile`
+    - `Set-AzStorageFileContent`
+    - `Start-AzStorageFileCopy`
+    - `Stop-AzStorageFileCopy`
+* Upgraded Azure.Core to 1.35.0.
+* [Breaking Change] Removed prefix '?' of the created SAS token
+    - `New-AzStorageBlobSasToken`
+    - `New-AzStorageContainerSasToken`
+    - `New-AzStorageAccountSasToken`
+    - `New-AzStorageFileSasToken`
+    - `New-AzStorageShareSasToken`
+    - `New-AzStorageQueueSasToken`
+    - `New-AzStorageTableSasToken`
+* Migrated following Azure Queue dataplane cmdlets from 'Microsoft.Azure.Storage.Queue 11.2.2' to 'Azure.Storage.Queues 12.16.0'
+    - `New-AzStorageQueue`
+    - `Get-AzStorageQueue`
+    - `Remove-AzStorageQueue`
+    - `New-AzStorageQueueStoredAccessPolicy`
+    - `Get-AzStorageQueueStoredAccessPolicy`
+    - `Set-AzStorageQueueStoredAccessPolicy`
+    - `Remove-AzStorageQueueStoredAccessPolicy`
+
+## Version 5.10.1
+* Added warning messages for an upcoming breaking change that the output Permissions will be changed to a string when creating and updating a Queue access policy
+    - `Get-AzStorageQueueStoredAccessPolicy`
+    - `Set-AzStorageQueueStoredAccessPolicy`
+
+## Version 5.10.0
+* Updated Azure.Core to 1.34.0.
+* Added support for encryption context 
+    - `New-AzDataLakeGen2Item`
+* Updated warning messages for an upcoming breaking change when creating a storage account 
+    - `New-AzStorageAccount`
+* Updated help file of `New-AzStorageQueueSASToken`
+
+
+## Version 5.9.0
+* Supported OAuth authentication on File service cmdlets
+    - `New-AzStorageContext`
+    - `Get-AzStorageFile`
+    - `Get-AzStorageFileContent`
+    - `Get-AzStorageFileCopyState`
+    - `New-AzStorageDirectory`
+    - `Remove-AzStorageDirectory`
+    - `Remove-AzStorageFile`
+    - `Set-AzStorageFileContent`
+    - `Start-AzStorageFileCopy`
+    - `Stop-AzStorageFileCopy`
+    - `Get-AzStorageFileHandle`
+    - `Close-AzStorageFileHandle`
+* Supported get a file share object without get share properties. For pipeline to file/directory cmdlets with OAuth authentication.
+    - `Get-AzStorageShare`
+* Updated Azure.Core to 1.33.0.
+
+
+## Version 5.8.0
+* Supported TierToCold and TierToHot in Storage account management policy
     - `Add-AzStorageAccountManagementPolicyAction`
 * Supported Blob Tier Cold
     - `Copy-AzStorageBlob`
-    - `Set-AzStorageBlobContent` 
+    - `Set-AzStorageBlobContent`
     - `Start-AzStorageBlobCopy`
-* Add warning messages for an upcoming breaking change when creating SAS token
+* Migrated the following Azure Queue dataplane cmdlets from 'Microsoft.Azure.Storage.Queue' to 'Azure.Storage.Queue'
+    - `New-AzStorageQueueSASToken`
+* Added warning messages for an upcoming breaking change when creating SAS token
     - `New-AzStorageBlobSasToken`
     - `New-AzStorageContainerSasToken`
     - `New-AzStorageAccountSasToken`
@@ -34,7 +110,7 @@
     - `New-AzStorageQueueSasToken`
     - `New-AzStorageTableSasToken`
     - `New-AzDataLakeGen2SasToken`
-* Add a warning message for an upcoming breaking change when creating a storage account 
+* Added a warning message for an upcoming breaking change when creating a storage account
     - `New-AzStorageAccount`
 
 ## Version 5.7.0

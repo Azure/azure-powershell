@@ -40,7 +40,8 @@ namespace StaticAnalysis
             "MissingAssemblies.csv",
             "SignatureIssues.csv",
             "ExampleIssues.csv",
-            "UXMetadataIssues.csv"
+            "UXMetadataIssues.csv",
+            "GeneratedSdkIssues.csv"
         };
 
         private static string ExceptionsDirectory { get; set; }

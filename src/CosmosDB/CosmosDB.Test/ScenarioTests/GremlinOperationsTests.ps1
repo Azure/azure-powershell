@@ -341,7 +341,7 @@ Test Gremlin migrate throughput cmdlets
 function Test-GremlinMigrateThroughputCmdlets
 {
   $AccountName = "gremlin-db1054"
-  $rgName = "CosmosDBResourceGroup53"
+  $rgName = "CosmosDBResourceGroup54"
   $DatabaseName = "dbName4"
   $GraphName = "graphName"
   $apiKind = "Gremlin"

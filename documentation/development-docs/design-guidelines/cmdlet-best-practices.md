@@ -18,6 +18,11 @@ From the [_Strongly Encouraged Development Guidelines_](https://learn.microsoft.
 
 > _Use Pascal case for cmdlet names. In other words, capitalize the first letter of the verb and all terms used in the noun. For example, "Clear-ItemProperty"._
 
+#### Acronyms
+Do capitalize both characters of two-character acronyms. For example, New-Az*VM*, Remove-AzCosmos*DB*Table.
+
+Do capitalize only the first character of acronyms with three or more characters, which aligned with Pascal case. for example, Restart-Az*Vmss*, New-Az*Sql*Database. 
+
 #### Specific Noun and Noun Singularity
 
 From the [_Strongly Encouraged Development Guidelines_](https://learn.microsoft.com/en-us/powershell/scripting/developer/cmdlet/strongly-encouraged-development-guidelines#use-a-specific-noun-for-a-cmdlet-name-sd01):

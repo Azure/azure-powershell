@@ -1,4 +1,4 @@
-﻿// ----------------------------------------------------------------------------------
+// ----------------------------------------------------------------------------------
 //
 // Copyright Microsoft Corporation
 // Licensed under the Apache License, Version 2.0 (the "License");
@@ -21,7 +21,6 @@ using Microsoft.WindowsAzure.Commands.Common.CustomAttributes;
 
 namespace Microsoft.Azure.Commands.NotificationHubs.Commands.NotificationHub
 {
-    [GenericBreakingChange("Set-AzNotificationHubAuthorizationRules alias will be removed in an upcoming breaking change release", "2.0.0")]
     [Cmdlet("Set", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "NotificationHubAuthorizationRule", SupportsShouldProcess = true), OutputType(typeof(SharedAccessAuthorizationRuleAttributes))]
     [Alias("Set-AzNotificationHubAuthorizationRules")]
     public class SetAzureNotificationHubAuthorizationRules : AzureNotificationHubsCmdletBase

@@ -80,65 +80,77 @@ namespace Microsoft.Azure.PowerShell.Tools.AzPredictor
             // Loop through all the parameters. The first element of CommandElements is the command name, so skip it.
             bool hasSeenNamedParameter = false;
             bool hasSeenIncompleteParameter = false;
-            for (var i = 1; i < commandAst.CommandElements.Count(); ++i)
+            try
             {
-                var elem = commandAst.CommandElements[i];
-
-                if (elem is CommandParameterAst p)
+                for (var i = 1; i < commandAst.CommandElements.Count(); ++i)
                 {
-                    if (hasSeenIncompleteParameter)
+                    var elem = commandAst.CommandElements[i];
+
+                    if (elem is null)
                     {
-                        throw new CommandLineException("'-' is in the middle of the parameter list.");
+                        continue;
                     }
 
-                    hasSeenNamedParameter = true;
-                    AddNamedParameter(param, arg);
-                    // In case there is a switch parameter, we store the parameter name/value and add them when we see the next pair.
-                    param = p;
-                    arg = null;
-                }
-                else if (AzPredictorConstants.ParameterIndicator == elem?.ToString().Trim().FirstOrDefault())
-                {
-                    // We have an incomplete command line such as
-                    // `New-AzResourceGroup -Name ResourceGroup01 -Location WestUS -`
-                    // We'll ignore the incomplete parameter.
-                    AddNamedParameter(param, arg);
-                    param = null;
-                    arg = null;
-                    hasSeenIncompleteParameter = true;
-                    parameters.Add(new Parameter(AzPredictorConstants.DashParameterName, null, false));
-                }
-                else
-                {
-                    if (hasSeenIncompleteParameter || (hasSeenNamedParameter && param == null))
+                    if (elem is CommandParameterAst p)
                     {
-                        throw new CommandLineException("Positional parameters must be before named parameters.");
-                    }
+                        if (hasSeenIncompleteParameter)
+                        {
+                            throw new CommandLineException("'-' is in the middle of the parameter list.");
+                        }
 
-                    if (param == null)
-                    {
-                        // This is a positional parameter.
-                        var pair = BoundParameters.First((pair) => pair.Value.Value == elem);
-
-                        var parameterName = pair.Key;
-                        var parameterValue = CommandLineUtilities.EscapePredictionText(pair.Value.Value.ToString());
-                        parameters.Add(new Parameter(parameterName, parameterValue, true));
-                        BoundParameters.Remove(pair); // Remove it so that we can match another parameter with the same value.
+                        hasSeenNamedParameter = true;
+                        AddNamedParameter(param, arg);
+                        // In case there is a switch parameter, we store the parameter name/value and add them when we see the next pair.
+                        param = p;
+                        arg = null;
                     }
-                    else
+                    else if (elem?.ToString()?.Trim()?.Length == 1 && (AzPredictorConstants.ParameterIndicator == elem.ToString().Trim().FirstOrDefault()))
                     {
-                        arg = elem;
+                        // We have an incomplete command line such as
+                        // `New-AzResourceGroup -Name ResourceGroup01 -Location WestUS -`
+                        // We'll ignore the incomplete parameter.
                         AddNamedParameter(param, arg);
                         param = null;
                         arg = null;
+                        hasSeenIncompleteParameter = true;
+                        parameters.Add(new Parameter(AzPredictorConstants.DashParameterName, null, false));
+                    }
+                    else
+                    {
+                        if (hasSeenIncompleteParameter || (hasSeenNamedParameter && param == null))
+                        {
+                            throw new CommandLineException("Positional parameters must be before named parameters.");
+                        }
+
+                        if (param == null)
+                        {
+                            // This is a positional parameter.
+                            var pair = BoundParameters.First((pair) => pair.Value.Value == elem);
+
+                            var parameterName = pair.Key;
+                            var parameterValue = pair.Value.Value.ToString();
+                            parameters.Add(new Parameter(parameterName, parameterValue, true));
+                            BoundParameters.Remove(pair); // Remove it so that we can match another parameter with the same value.
+                        }
+                        else
+                        {
+                            arg = elem;
+                            AddNamedParameter(param, arg);
+                            param = null;
+                            arg = null;
+                        }
                     }
                 }
+
+                Validation.CheckInvariant<CommandLineException>((param != null) || (arg == null));
+                AddNamedParameter(param, arg);
+
+                Parameters = parameters;
             }
-
-            Validation.CheckInvariant<CommandLineException>((param != null) || (arg == null));
-            AddNamedParameter(param, arg);
-
-            Parameters = parameters;
+            catch (Exception e) when (!(e is CommandLineException))
+            {
+                throw new CommandLineException("There are errors in parsing the parameters.", e);
+            }
 
             void AddNamedParameter(CommandParameterAst parameter, Ast parameterValue)
             {

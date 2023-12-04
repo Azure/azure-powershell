@@ -44,13 +44,14 @@ using Microsoft.WindowsAzure.Commands.Common;
 using Microsoft.WindowsAzure.Commands.Common.Utilities;
 using Microsoft.WindowsAzure.Commands.Utilities.Common;
 using Microsoft.Azure.PowerShell.Common.Share.Survey;
+using Microsoft.Azure.Commands.Profile.Utilities;
 
 namespace Microsoft.Azure.Commands.Profile
 {
     /// <summary>
     /// Cmdlet to log into an environment and download the subscriptions
     /// </summary>
-    [Cmdlet("Connect", AzureRMConstants.AzureRMPrefix + "Account", DefaultParameterSetName = UserParameterSet, SupportsShouldProcess=true)]
+    [Cmdlet("Connect", AzureRMConstants.AzureRMPrefix + "Account", DefaultParameterSetName = UserParameterSet, SupportsShouldProcess = true)]
     [Alias("Login-AzAccount", "Login-AzureRmAccount", "Add-" + AzureRMConstants.AzureRMPrefix + "Account")]
     [OutputType(typeof(PSAzureProfile))]
     public class ConnectAzureRmAccountCommand : AzureContextModificationCmdlet, IModuleAssemblyInitializer
@@ -58,7 +59,7 @@ namespace Microsoft.Azure.Commands.Profile
         public const string UserParameterSet = "UserWithSubscriptionId";
         public const string UserWithCredentialParameterSet = "UserWithCredential";
         public const string ServicePrincipalParameterSet = "ServicePrincipalWithSubscriptionId";
-        public const string ServicePrincipalCertificateParameterSet= "ServicePrincipalCertificateWithSubscriptionId";
+        public const string ServicePrincipalCertificateParameterSet = "ServicePrincipalCertificateWithSubscriptionId";
         public const string ServicePrincipalCertificateFileParameterSet = "ServicePrincipalCertificateFileWithSubscriptionId";
         public const string AccessTokenParameterSet = "AccessTokenWithSubscriptionId";
         public const string ClientAssertionParameterSet = "ClientAssertionParameterSet";
@@ -154,7 +155,7 @@ namespace Microsoft.Azure.Commands.Profile
         [ValidateNotNullOrEmpty]
         public string AccountId { get; set; }
 
-        [Parameter(ParameterSetName = ManagedServiceParameterSet, Mandatory =true, HelpMessage = "Login using managed service identity in the current environment.")]
+        [Parameter(ParameterSetName = ManagedServiceParameterSet, Mandatory = true, HelpMessage = "Login using managed service identity in the current environment.")]
         [Alias("MSI", "ManagedService")]
         public SwitchParameter Identity { get; set; }
 
@@ -201,9 +202,9 @@ namespace Microsoft.Azure.Commands.Profile
         [Parameter(Mandatory = false, HelpMessage = "Skips context population if no contexts are found.")]
         public SwitchParameter SkipContextPopulation { get; set; }
 
-        [Parameter(Mandatory = false, HelpMessage = "Max subscription number to populate contexts after login. Default is "+ DefaultMaxContextPopulationString + ". To populate all subscriptions to contexts, set to -1.")]
+        [Parameter(Mandatory = false, HelpMessage = "Max subscription number to populate contexts after login. Default is " + DefaultMaxContextPopulationString + ". To populate all subscriptions to contexts, set to -1.")]
         [PSDefaultValue(Help = DefaultMaxContextPopulationString, Value = DefaultMaxContextPopulation)]
-        [ValidateRange(-1,int.MaxValue)]
+        [ValidateRange(-1, int.MaxValue)]
         public int MaxContextPopulation { get; set; } = DefaultMaxContextPopulation;
 
         [Parameter(ParameterSetName = UserParameterSet,
@@ -295,7 +296,8 @@ namespace Microsoft.Azure.Commands.Profile
 
         protected override void StopProcessing()
         {
-            if (AzureSession.Instance.TryGetComponent("LoginCancellationToken", out CancellationTokenSource cancellationTokenSource)) {
+            if (AzureSession.Instance.TryGetComponent("LoginCancellationToken", out CancellationTokenSource cancellationTokenSource))
+            {
                 cancellationTokenSource?.Cancel();
             }
             base.StopProcessing();
@@ -336,7 +338,7 @@ namespace Microsoft.Azure.Commands.Profile
                 }
             }
 
-            if(ClientAssertionParameterSet.Equals(ParameterSetName, StringComparison.OrdinalIgnoreCase))
+            if (ClientAssertionParameterSet.Equals(ParameterSetName, StringComparison.OrdinalIgnoreCase))
             {
                 bool suppressWarningOrError = AzureSession.Instance.TryGetComponent<IConfigManager>(nameof(IConfigManager), out var configManager) && configManager.GetConfigValue<bool>(ConfigKeys.DisplayBreakingChangeWarning);
                 if (!suppressWarningOrError)
@@ -351,7 +353,7 @@ namespace Microsoft.Azure.Commands.Profile
             {
                 case UserParameterSet:
                     azureAccount.Type = AzureAccount.AccountType.User;
-                    if(!string.IsNullOrEmpty(AccountId))
+                    if (!string.IsNullOrEmpty(AccountId))
                     {
                         azureAccount.SetProperty("LoginHint", AccountId);
                     }
@@ -399,7 +401,7 @@ namespace Microsoft.Azure.Commands.Profile
                 azureAccount.SetProperty("UseDeviceAuth", "true");
             }
 
-            if(azureAccount.Type == AzureAccount.AccountType.User && password != null)
+            if (azureAccount.Type == AzureAccount.AccountType.User && password != null)
             {
                 azureAccount.SetProperty(AzureAccount.Property.UsePasswordAuth, "true");
             }
@@ -414,7 +416,7 @@ namespace Microsoft.Azure.Commands.Profile
                 azureAccount.SetThumbprint(CertificateThumbprint);
             }
 
-            if( !string.IsNullOrWhiteSpace(CertificatePath))
+            if (!string.IsNullOrWhiteSpace(CertificatePath))
             {
                 var resolvedPath = this.SessionState.Path.GetResolvedPSPathFromPSPath(CertificatePath).FirstOrDefault()?.Path;
                 if (string.IsNullOrEmpty(resolvedPath))
@@ -452,7 +454,7 @@ namespace Microsoft.Azure.Commands.Profile
             if (azureAccount.Type == AzureAccount.AccountType.ServicePrincipal && password != null)
             {
                 keyStore?.SaveSecureString(new ServicePrincipalKey(AzureAccount.Property.ServicePrincipalSecret
-                    ,azureAccount.Id, Tenant), password);
+                    , azureAccount.Id, Tenant), password);
                 if (GetContextModificationScope() == ContextModificationScope.CurrentUser && !keyStore.IsProtected)
                 {
                     WriteWarning(string.Format(Resources.ServicePrincipalWarning, AzureSession.Instance.KeyStoreFile, AzureSession.Instance.ARMProfileDirectory));
@@ -479,28 +481,31 @@ namespace Microsoft.Azure.Commands.Profile
                     InitializeProfileProvider();
                 }
 
-                if(!AzureSession.Instance.TryGetComponent(nameof(CommonUtilities), out CommonUtilities commonUtilities))
+                if (!AzureSession.Instance.TryGetComponent(nameof(CommonUtilities), out CommonUtilities commonUtilities))
                 {
                     commonUtilities = new CommonUtilities();
                     AzureSession.Instance.RegisterComponent(nameof(CommonUtilities), () => commonUtilities);
                 }
-                if(!commonUtilities.IsDesktopSession() && IsUsingInteractiveAuthentication())
+                if (!commonUtilities.IsDesktopSession() && IsUsingInteractiveAuthentication())
                 {
                     WriteWarning(Resources.InteractiveAuthNotSupported);
                     return;
                 }
 
-                SetContextWithOverwritePrompt((localProfile, profileClient, name) =>
-               {
-                   bool shouldPopulateContextList = true;
-                   if (this.IsParameterBound(c => c.SkipContextPopulation))
-                   {
-                       shouldPopulateContextList = false;
-                   }
+                IHttpOperationsFactory httpClientFactory = null;
+                AzureSession.Instance.TryGetComponent(HttpClientOperationsFactory.Name, out httpClientFactory);
 
-                   profileClient.WarningLog = (message) => _tasks.Enqueue(new Task(() => this.WriteWarning(message)));
-                   profileClient.DebugLog = (message) => _tasks.Enqueue(new Task(() => this.WriteDebugWithTimestamp(message)));
-                   var task = new Task<AzureRmProfile>( () => profileClient.Login(
+                SetContextWithOverwritePrompt((localProfile, profileClient, name) =>
+                {
+                    bool shouldPopulateContextList = true;
+                    if (this.IsParameterBound(c => c.SkipContextPopulation))
+                    {
+                        shouldPopulateContextList = false;
+                    }
+
+                    profileClient.WarningLog = (message) => _tasks.Enqueue(new Task(() => this.WriteWarning(message)));
+                    profileClient.DebugLog = (message) => _tasks.Enqueue(new Task(() => this.WriteDebugWithTimestamp(message)));
+                    var task = new Task<AzureRmProfile>(() => profileClient.Login(
                         azureAccount,
                         _environment,
                         Tenant,
@@ -508,51 +513,52 @@ namespace Microsoft.Azure.Commands.Profile
                         subscriptionName,
                         password,
                         SkipValidation,
+                        new OpenIDConfiguration(Tenant, baseUri: _environment.ActiveDirectoryAuthority, httpClientFactory: httpClientFactory),
                         WriteWarningEvent, //Could not use WriteWarning directly because it may be in worker thread
                         name,
                         shouldPopulateContextList,
                         MaxContextPopulation,
                         resourceId));
-                   task.Start();
-                   while (!task.IsCompleted)
-                   {
-                       HandleActions();
-                       Thread.Yield();
-                   }
+                    task.Start();
+                    while (!task.IsCompleted)
+                    {
+                        HandleActions();
+                        Thread.Yield();
+                    }
 
-                   HandleActions();
+                    HandleActions();
 
-                   try
-                   {
-                       //Must not use task.Result as it wraps inner exception into AggregateException
-                       var result = (PSAzureProfile)task.GetAwaiter().GetResult();
-                       WriteObject(result);
-                   }
-                   catch (AuthenticationFailedException ex)
-                   {
-                       string message = string.Empty;
-                       if (IsUnableToOpenWebPageError(ex))
-                       {
-                           WriteWarning(Resources.InteractiveAuthNotSupported);
-                           WriteDebug(ex.ToString());
-                       }
-                       else if (TryParseUnknownAuthenticationException(ex, out message))
-                       {
-                           WriteDebug(ex.ToString());
-                           throw ex.WithAdditionalMessage(message);
-                       }
-                       else
-                       {
-                           if (IsUsingInteractiveAuthentication())
-                           {
-                               //Display only if user is using Interactive auth
-                               WriteWarning(Resources.SuggestToUseDeviceCodeAuth);
-                           }
-                           WriteDebug(ex.ToString());
-                           throw;
-                       }
-                   }
-               });
+                    try
+                    {
+                        //Must not use task.Result as it wraps inner exception into AggregateException
+                        var result = (PSAzureProfile)task.GetAwaiter().GetResult();
+                        WriteObject(result);
+                    }
+                    catch (AuthenticationFailedException ex)
+                    {
+                        string message = string.Empty;
+                        if (IsUnableToOpenWebPageError(ex))
+                        {
+                            WriteWarning(Resources.InteractiveAuthNotSupported);
+                            WriteDebug(ex.ToString());
+                        }
+                        else if (TryParseUnknownAuthenticationException(ex, out message))
+                        {
+                            WriteDebug(ex.ToString());
+                            throw ex.WithAdditionalMessage(message);
+                        }
+                        else
+                        {
+                            if (IsUsingInteractiveAuthentication())
+                            {
+                                //Display only if user is using Interactive auth
+                                WriteWarning(Resources.SuggestToUseDeviceCodeAuth);
+                            }
+                            WriteDebug(ex.ToString());
+                            throw;
+                        }
+                    }
+                });
             }
         }
 
@@ -585,7 +591,7 @@ namespace Microsoft.Azure.Commands.Profile
             var innerException = exception?.InnerException as MsalServiceException;
             bool isUnknownMsalServiceException = string.Equals(innerException?.ErrorCode, "access_denied", StringComparison.OrdinalIgnoreCase);
             message = null;
-            if(isUnknownMsalServiceException)
+            if (isUnknownMsalServiceException)
             {
                 StringBuilder messageBuilder = new StringBuilder(nameof(innerException.ErrorCode));
                 messageBuilder.Append(": ").Append(innerException.ErrorCode);
@@ -684,7 +690,7 @@ namespace Microsoft.Azure.Commands.Profile
                 var autoSaveEnabled = AzureSession.Instance.ARMContextSaveMode == ContextSaveMode.CurrentUser;
                 var autosaveVariable = System.Environment.GetEnvironmentVariable(AzureProfileConstants.AzureAutosaveVariable);
 
-                if(bool.TryParse(autosaveVariable, out bool localAutosave))
+                if (bool.TryParse(autosaveVariable, out bool localAutosave))
                 {
                     autoSaveEnabled = localAutosave;
                 }
@@ -704,7 +710,7 @@ namespace Microsoft.Azure.Commands.Profile
                         WriteInitializationWarnings(Resources.TokenCacheEncryptionNotSupportedWithFallback);
                     }
                 }
-                catch(Exception ex)
+                catch (Exception ex)
                 {
                     //Likely the exception is related permission, fall back context save mode to process
                     autoSaveEnabled = false;

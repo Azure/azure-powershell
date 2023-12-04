@@ -1,0 +1,747 @@
+{
+  "Update-AzConnectedMachineExtension+[NoContext]+UpdateExpanded parameter set+$PATCH+https://management.azure.com/subscriptions/e6fe6705-4c9c-4b54-81d2-e455780e20b8/resourceGroups/az-sdk-test/providers/Microsoft.HybridCompute/machines/testmachine/extensions/custom1?api-version=2022-12-27+1": {
+    "Request": {
+      "Method": "PATCH",
+      "RequestUri": "https://management.azure.com/subscriptions/e6fe6705-4c9c-4b54-81d2-e455780e20b8/resourceGroups/az-sdk-test/providers/Microsoft.HybridCompute/machines/testmachine/extensions/custom1?api-version=2022-12-27",
+      "Content": "{\r\n  \"properties\": {\r\n    \"settings\": {\r\n      \"commandToExecute\": \"hostname\"\r\n    }\r\n  }\r\n}",
+      "Headers": {
+      },
+      "ContentHeaders": {
+        "Content-Type": [ "application/json" ],
+        "Content-Length": [ "92" ]
+      }
+    },
+    "Response": {
+      "StatusCode": 202,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "Location": [ "https://management.azure.com/subscriptions/e6fe6705-4c9c-4b54-81d2-e455780e20b8/providers/Microsoft.HybridCompute/locations/eastus2euap/operationresults/3d24c64d-8c3f-429d-8a9a-386bc77a14fb?api-version=2022-12-27" ],
+        "Retry-After": [ "120" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "x-ms-request-id": [ "f66ae726-fdab-41e8-a10c-a18053e4b7af" ],
+        "Azure-AsyncOperation": [ "https://management.azure.com/subscriptions/e6fe6705-4c9c-4b54-81d2-e455780e20b8/providers/Microsoft.HybridCompute/locations/eastus2euap/operationstatus/3d24c64d-8c3f-429d-8a9a-386bc77a14fb?api-version=2022-12-27" ],
+        "Server": [ "Kestrel" ],
+        "x-ms-ratelimit-remaining-subscription-resource-requests": [ "319" ],
+        "x-ms-correlation-request-id": [ "3687e325-4b3a-49ad-9366-1fce642c0de7" ],
+        "x-ms-routing-request-id": [ "SOUTHCENTRALUS:20230811T054051Z:3687e325-4b3a-49ad-9366-1fce642c0de7" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "Date": [ "Fri, 11 Aug 2023 05:40:50 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Type": [ "application/json" ],
+        "Expires": [ "-1" ],
+        "Content-Length": [ "0" ]
+      },
+      "Content": null
+    }
+  },
+  "Update-AzConnectedMachineExtension+[NoContext]+UpdateExpanded parameter set+$GET+https://management.azure.com/subscriptions/e6fe6705-4c9c-4b54-81d2-e455780e20b8/providers/Microsoft.HybridCompute/locations/eastus2euap/operationstatus/3d24c64d-8c3f-429d-8a9a-386bc77a14fb?api-version=2022-12-27+2": {
+    "Request": {
+      "Method": "GET",
+      "RequestUri": "https://management.azure.com/subscriptions/e6fe6705-4c9c-4b54-81d2-e455780e20b8/providers/Microsoft.HybridCompute/locations/eastus2euap/operationstatus/3d24c64d-8c3f-429d-8a9a-386bc77a14fb?api-version=2022-12-27",
+      "Content": null,
+      "Headers": {
+        "Authorization": [ "[Filtered]" ],
+        "x-ms-unique-id": [ "11" ],
+        "x-ms-client-request-id": [ "17a60f55-be0b-4f4d-9058-adbde3d47206" ],
+        "CommandName": [ "Update-AzConnectedMachineExtension" ],
+        "FullCommandName": [ "Update-AzConnectedMachineExtension_UpdateExpanded" ],
+        "ParameterSetName": [ "__AllParameterSets" ],
+        "User-Agent": [ "AzurePowershell/Az4.0.0-preview" ]
+      },
+      "ContentHeaders": {
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "Location": [ "https://management.azure.com/subscriptions/e6fe6705-4c9c-4b54-81d2-e455780e20b8/providers/Microsoft.HybridCompute/locations/eastus2euap/operationresults/3d24c64d-8c3f-429d-8a9a-386bc77a14fb?api-version=2022-12-27" ],
+        "Retry-After": [ "120" ],
+        "x-ms-ratelimit-remaining-subscription-reads": [ "11999" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "x-ms-request-id": [ "e489e6a5-f6bf-4b49-9522-e1f1ccbd62f6" ],
+        "Azure-AsyncOperation": [ "https://management.azure.com/subscriptions/e6fe6705-4c9c-4b54-81d2-e455780e20b8/providers/Microsoft.HybridCompute/locations/eastus2euap/operationstatus/3d24c64d-8c3f-429d-8a9a-386bc77a14fb?api-version=2022-12-27" ],
+        "Server": [ "Kestrel" ],
+        "x-ms-correlation-request-id": [ "ff0a27ab-7ee2-479b-be1a-9d44a7fdee30" ],
+        "x-ms-routing-request-id": [ "SOUTHCENTRALUS:20230811T054251Z:ff0a27ab-7ee2-479b-be1a-9d44a7fdee30" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "Date": [ "Fri, 11 Aug 2023 05:42:51 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "112" ],
+        "Content-Type": [ "application/json; charset=utf-8" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\"name\":\"3d24c64d-8c3f-429d-8a9a-386bc77a14fb\",\"status\":\"InProgress\",\"startTime\":\"2023-08-11T05:40:50.9722638Z\"}"
+    }
+  },
+  "Update-AzConnectedMachineExtension+[NoContext]+UpdateExpanded parameter set+$GET+https://management.azure.com/subscriptions/e6fe6705-4c9c-4b54-81d2-e455780e20b8/providers/Microsoft.HybridCompute/locations/eastus2euap/operationstatus/3d24c64d-8c3f-429d-8a9a-386bc77a14fb?api-version=2022-12-27+3": {
+    "Request": {
+      "Method": "GET",
+      "RequestUri": "https://management.azure.com/subscriptions/e6fe6705-4c9c-4b54-81d2-e455780e20b8/providers/Microsoft.HybridCompute/locations/eastus2euap/operationstatus/3d24c64d-8c3f-429d-8a9a-386bc77a14fb?api-version=2022-12-27",
+      "Content": null,
+      "Headers": {
+        "Authorization": [ "[Filtered]" ],
+        "x-ms-unique-id": [ "12" ],
+        "x-ms-client-request-id": [ "17a60f55-be0b-4f4d-9058-adbde3d47206" ],
+        "CommandName": [ "Update-AzConnectedMachineExtension" ],
+        "FullCommandName": [ "Update-AzConnectedMachineExtension_UpdateExpanded" ],
+        "ParameterSetName": [ "__AllParameterSets" ],
+        "User-Agent": [ "AzurePowershell/Az4.0.0-preview" ]
+      },
+      "ContentHeaders": {
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "x-ms-ratelimit-remaining-subscription-reads": [ "11999" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "x-ms-request-id": [ "3925b74d-8f4e-43d4-829c-f7559fcdf201" ],
+        "Server": [ "Kestrel" ],
+        "x-ms-correlation-request-id": [ "227465ee-bc06-433d-8d12-8b072d484016" ],
+        "x-ms-routing-request-id": [ "SOUTHCENTRALUS:20230811T054452Z:227465ee-bc06-433d-8d12-8b072d484016" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "Date": [ "Fri, 11 Aug 2023 05:44:52 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "854" ],
+        "Content-Type": [ "application/json; charset=utf-8" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\"name\":\"3d24c64d-8c3f-429d-8a9a-386bc77a14fb\",\"status\":\"Succeeded\",\"startTime\":\"2023-08-11T05:40:50.9722638Z\",\"properties\":{\"id\":\"/subscriptions/e6fe6705-4c9c-4b54-81d2-e455780e20b8/resourceGroups/az-sdk-test/providers/Microsoft.HybridCompute/machines/testmachine/extensions/custom1\",\"name\":\"custom1\",\"location\":\"eastus2euap\",\"type\":\"Microsoft.HybridCompute/machines/extensions\",\"properties\":{\"publisher\":\"Microsoft.Compute\",\"type\":\"CustomScriptExtension\",\"typeHandlerVersion\":\"1.10.10\",\"autoUpgradeMinorVersion\":false,\"enableAutomaticUpgrade\":true,\"settings\":{\"commandToExecute\":\"hostname\"},\"provisioningState\":\"Succeeded\",\"instanceView\":{\"name\":\"custom1\",\"type\":\"CustomScriptExtension\",\"typeHandlerVersion\":\"1.10.10\",\"status\":{\"code\":\"0\",\"level\":\"Information\",\"message\":\"Extension Message: Command execution finished, StdOut: LAPTOP-S0HSJ7FB\\r\\n\"}}}}}"
+    }
+  },
+  "Update-AzConnectedMachineExtension+[NoContext]+UpdateExpanded parameter set+$GET+https://management.azure.com/subscriptions/e6fe6705-4c9c-4b54-81d2-e455780e20b8/resourceGroups/az-sdk-test/providers/Microsoft.HybridCompute/machines/testmachine/extensions/custom1?api-version=2022-12-27+4": {
+    "Request": {
+      "Method": "GET",
+      "RequestUri": "https://management.azure.com/subscriptions/e6fe6705-4c9c-4b54-81d2-e455780e20b8/resourceGroups/az-sdk-test/providers/Microsoft.HybridCompute/machines/testmachine/extensions/custom1?api-version=2022-12-27",
+      "Content": null,
+      "Headers": {
+        "Authorization": [ "[Filtered]" ],
+        "x-ms-unique-id": [ "13" ],
+        "x-ms-client-request-id": [ "17a60f55-be0b-4f4d-9058-adbde3d47206" ],
+        "CommandName": [ "Update-AzConnectedMachineExtension" ],
+        "FullCommandName": [ "Update-AzConnectedMachineExtension_UpdateExpanded" ],
+        "ParameterSetName": [ "__AllParameterSets" ],
+        "User-Agent": [ "AzurePowershell/Az4.0.0-preview" ]
+      },
+      "ContentHeaders": {
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "x-ms-ratelimit-remaining-subscription-reads": [ "11998" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "x-ms-request-id": [ "ef9ae5b8-5998-4f3a-90a7-8756054cdd3d" ],
+        "Server": [ "Kestrel" ],
+        "x-ms-correlation-request-id": [ "7e84307e-d9e9-4adf-a040-86459d2addd1" ],
+        "x-ms-routing-request-id": [ "SOUTHCENTRALUS:20230811T054452Z:7e84307e-d9e9-4adf-a040-86459d2addd1" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "Date": [ "Fri, 11 Aug 2023 05:44:52 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "729" ],
+        "Content-Type": [ "application/json; charset=utf-8" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\"id\":\"/subscriptions/e6fe6705-4c9c-4b54-81d2-e455780e20b8/resourceGroups/az-sdk-test/providers/Microsoft.HybridCompute/machines/testmachine/extensions/custom1\",\"name\":\"custom1\",\"type\":\"Microsoft.HybridCompute/machines/extensions\",\"location\":\"eastus2euap\",\"properties\":{\"publisher\":\"Microsoft.Compute\",\"type\":\"CustomScriptExtension\",\"typeHandlerVersion\":\"1.10.10\",\"autoUpgradeMinorVersion\":false,\"enableAutomaticUpgrade\":true,\"settings\":{\"commandToExecute\":\"hostname\"},\"provisioningState\":\"Succeeded\",\"instanceView\":{\"name\":\"custom1\",\"type\":\"CustomScriptExtension\",\"typeHandlerVersion\":\"1.10.10\",\"status\":{\"code\":\"0\",\"level\":\"Information\",\"message\":\"Extension Message: Command execution finished, StdOut: LAPTOP-S0HSJ7FB\\r\\n\"}}}}"
+    }
+  },
+  "Update-AzConnectedMachineExtension+[NoContext]+Update parameter set+$GET+https://management.azure.com/subscriptions/e6fe6705-4c9c-4b54-81d2-e455780e20b8/resourceGroups/az-sdk-test/providers/Microsoft.HybridCompute/machines/testmachine/extensions/custom1?api-version=2022-12-27+1": {
+    "Request": {
+      "Method": "GET",
+      "RequestUri": "https://management.azure.com/subscriptions/e6fe6705-4c9c-4b54-81d2-e455780e20b8/resourceGroups/az-sdk-test/providers/Microsoft.HybridCompute/machines/testmachine/extensions/custom1?api-version=2022-12-27",
+      "Content": null,
+      "Headers": {
+        "x-ms-unique-id": [ "14" ],
+        "x-ms-client-request-id": [ "8dc56ccb-2c31-4c7c-ad6b-107ae4b1902f" ],
+        "CommandName": [ "Get-AzConnectedMachineExtension" ],
+        "FullCommandName": [ "Get-AzConnectedMachineExtension_Get" ],
+        "ParameterSetName": [ "__AllParameterSets" ],
+        "User-Agent": [ "AzurePowershell/Az4.0.0-preview" ],
+        "Authorization": [ "[Filtered]" ]
+      },
+      "ContentHeaders": {
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "x-ms-ratelimit-remaining-subscription-reads": [ "11997" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "x-ms-request-id": [ "60afe722-5904-449a-91e8-bfe8cebd396a" ],
+        "Server": [ "Kestrel" ],
+        "x-ms-correlation-request-id": [ "8a4325e7-f74b-41fd-afc1-137658004ac5" ],
+        "x-ms-routing-request-id": [ "SOUTHCENTRALUS:20230811T054453Z:8a4325e7-f74b-41fd-afc1-137658004ac5" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "Date": [ "Fri, 11 Aug 2023 05:44:52 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "729" ],
+        "Content-Type": [ "application/json; charset=utf-8" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\"id\":\"/subscriptions/e6fe6705-4c9c-4b54-81d2-e455780e20b8/resourceGroups/az-sdk-test/providers/Microsoft.HybridCompute/machines/testmachine/extensions/custom1\",\"name\":\"custom1\",\"type\":\"Microsoft.HybridCompute/machines/extensions\",\"location\":\"eastus2euap\",\"properties\":{\"publisher\":\"Microsoft.Compute\",\"type\":\"CustomScriptExtension\",\"typeHandlerVersion\":\"1.10.10\",\"autoUpgradeMinorVersion\":false,\"enableAutomaticUpgrade\":true,\"settings\":{\"commandToExecute\":\"hostname\"},\"provisioningState\":\"Succeeded\",\"instanceView\":{\"name\":\"custom1\",\"type\":\"CustomScriptExtension\",\"typeHandlerVersion\":\"1.10.10\",\"status\":{\"code\":\"0\",\"level\":\"Information\",\"message\":\"Extension Message: Command execution finished, StdOut: LAPTOP-S0HSJ7FB\\r\\n\"}}}}"
+    }
+  },
+  "Update-AzConnectedMachineExtension+[NoContext]+Update parameter set+$PATCH+https://management.azure.com/subscriptions/e6fe6705-4c9c-4b54-81d2-e455780e20b8/resourceGroups/az-sdk-test/providers/Microsoft.HybridCompute/machines/testmachine/extensions/custom1?api-version=2022-12-27+2": {
+    "Request": {
+      "Method": "PATCH",
+      "RequestUri": "https://management.azure.com/subscriptions/e6fe6705-4c9c-4b54-81d2-e455780e20b8/resourceGroups/az-sdk-test/providers/Microsoft.HybridCompute/machines/testmachine/extensions/custom1?api-version=2022-12-27",
+      "Content": "{\r\n  \"properties\": {\r\n    \"publisher\": \"Microsoft.Compute\",\r\n    \"type\": \"CustomScriptExtension\",\r\n    \"enableAutomaticUpgrade\": true,\r\n    \"autoUpgradeMinorVersion\": false,\r\n    \"settings\": {\r\n      \"commandToExecute\": \"powershell.exe echo hi\"\r\n    }\r\n  },\r\n  \"type\": \"Microsoft.HybridCompute/machines/extensions\",\r\n  \"id\": \"/subscriptions/e6fe6705-4c9c-4b54-81d2-e455780e20b8/resourceGroups/az-sdk-test/providers/Microsoft.HybridCompute/machines/testmachine/extensions/custom1\",\r\n  \"location\": \"eastus2euap\",\r\n  \"name\": \"custom1\"\r\n}",
+      "Headers": {
+      },
+      "ContentHeaders": {
+        "Content-Type": [ "application/json" ],
+        "Content-Length": [ "534" ]
+      }
+    },
+    "Response": {
+      "StatusCode": 202,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "Location": [ "https://management.azure.com/subscriptions/e6fe6705-4c9c-4b54-81d2-e455780e20b8/providers/Microsoft.HybridCompute/locations/eastus2euap/operationresults/a7fa421a-a36e-4007-b423-60396df2048f?api-version=2022-12-27" ],
+        "Retry-After": [ "120" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "x-ms-request-id": [ "c4ec23d5-54b3-4f81-a9b1-24f8f0c9cf29" ],
+        "Azure-AsyncOperation": [ "https://management.azure.com/subscriptions/e6fe6705-4c9c-4b54-81d2-e455780e20b8/providers/Microsoft.HybridCompute/locations/eastus2euap/operationstatus/a7fa421a-a36e-4007-b423-60396df2048f?api-version=2022-12-27" ],
+        "Server": [ "Kestrel" ],
+        "x-ms-ratelimit-remaining-subscription-resource-requests": [ "319" ],
+        "x-ms-correlation-request-id": [ "3911ff08-478b-4e0c-89fd-dfddfb41b01d" ],
+        "x-ms-routing-request-id": [ "SOUTHCENTRALUS:20230811T054453Z:3911ff08-478b-4e0c-89fd-dfddfb41b01d" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "Date": [ "Fri, 11 Aug 2023 05:44:53 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Type": [ "application/json" ],
+        "Expires": [ "-1" ],
+        "Content-Length": [ "0" ]
+      },
+      "Content": null
+    }
+  },
+  "Update-AzConnectedMachineExtension+[NoContext]+Update parameter set+$GET+https://management.azure.com/subscriptions/e6fe6705-4c9c-4b54-81d2-e455780e20b8/providers/Microsoft.HybridCompute/locations/eastus2euap/operationstatus/a7fa421a-a36e-4007-b423-60396df2048f?api-version=2022-12-27+3": {
+    "Request": {
+      "Method": "GET",
+      "RequestUri": "https://management.azure.com/subscriptions/e6fe6705-4c9c-4b54-81d2-e455780e20b8/providers/Microsoft.HybridCompute/locations/eastus2euap/operationstatus/a7fa421a-a36e-4007-b423-60396df2048f?api-version=2022-12-27",
+      "Content": null,
+      "Headers": {
+        "Authorization": [ "[Filtered]" ],
+        "x-ms-unique-id": [ "16" ],
+        "x-ms-client-request-id": [ "56ab99e2-e021-411d-a3dd-2df287ea6fce" ],
+        "CommandName": [ "Update-AzConnectedMachineExtension" ],
+        "FullCommandName": [ "Update-AzConnectedMachineExtension_Update" ],
+        "ParameterSetName": [ "__AllParameterSets" ],
+        "User-Agent": [ "AzurePowershell/Az4.0.0-preview" ]
+      },
+      "ContentHeaders": {
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "Location": [ "https://management.azure.com/subscriptions/e6fe6705-4c9c-4b54-81d2-e455780e20b8/providers/Microsoft.HybridCompute/locations/eastus2euap/operationresults/a7fa421a-a36e-4007-b423-60396df2048f?api-version=2022-12-27" ],
+        "Retry-After": [ "120" ],
+        "x-ms-ratelimit-remaining-subscription-reads": [ "11999" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "x-ms-request-id": [ "c6ce1d13-884d-4bae-96d7-f7aea4fa3665" ],
+        "Azure-AsyncOperation": [ "https://management.azure.com/subscriptions/e6fe6705-4c9c-4b54-81d2-e455780e20b8/providers/Microsoft.HybridCompute/locations/eastus2euap/operationstatus/a7fa421a-a36e-4007-b423-60396df2048f?api-version=2022-12-27" ],
+        "Server": [ "Kestrel" ],
+        "x-ms-correlation-request-id": [ "adc64b15-6644-491a-a3c8-a2551cb15e37" ],
+        "x-ms-routing-request-id": [ "SOUTHCENTRALUS:20230811T054654Z:adc64b15-6644-491a-a3c8-a2551cb15e37" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "Date": [ "Fri, 11 Aug 2023 05:46:53 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "111" ],
+        "Content-Type": [ "application/json; charset=utf-8" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\"name\":\"a7fa421a-a36e-4007-b423-60396df2048f\",\"status\":\"InProgress\",\"startTime\":\"2023-08-11T05:44:53.333366Z\"}"
+    }
+  },
+  "Update-AzConnectedMachineExtension+[NoContext]+Update parameter set+$GET+https://management.azure.com/subscriptions/e6fe6705-4c9c-4b54-81d2-e455780e20b8/providers/Microsoft.HybridCompute/locations/eastus2euap/operationstatus/a7fa421a-a36e-4007-b423-60396df2048f?api-version=2022-12-27+4": {
+    "Request": {
+      "Method": "GET",
+      "RequestUri": "https://management.azure.com/subscriptions/e6fe6705-4c9c-4b54-81d2-e455780e20b8/providers/Microsoft.HybridCompute/locations/eastus2euap/operationstatus/a7fa421a-a36e-4007-b423-60396df2048f?api-version=2022-12-27",
+      "Content": null,
+      "Headers": {
+        "Authorization": [ "[Filtered]" ],
+        "x-ms-unique-id": [ "17" ],
+        "x-ms-client-request-id": [ "56ab99e2-e021-411d-a3dd-2df287ea6fce" ],
+        "CommandName": [ "Update-AzConnectedMachineExtension" ],
+        "FullCommandName": [ "Update-AzConnectedMachineExtension_Update" ],
+        "ParameterSetName": [ "__AllParameterSets" ],
+        "User-Agent": [ "AzurePowershell/Az4.0.0-preview" ]
+      },
+      "ContentHeaders": {
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "x-ms-ratelimit-remaining-subscription-reads": [ "11999" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "x-ms-request-id": [ "4635ce0f-89bf-4349-8f55-8dfaad8ea687" ],
+        "Server": [ "Kestrel" ],
+        "x-ms-correlation-request-id": [ "82f5b767-c49b-4420-ace4-c1e3ba81d4e5" ],
+        "x-ms-routing-request-id": [ "NORTHCENTRALUS:20230811T054854Z:82f5b767-c49b-4420-ace4-c1e3ba81d4e5" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "Date": [ "Fri, 11 Aug 2023 05:48:54 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "854" ],
+        "Content-Type": [ "application/json; charset=utf-8" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\"name\":\"a7fa421a-a36e-4007-b423-60396df2048f\",\"status\":\"Succeeded\",\"startTime\":\"2023-08-11T05:44:53.333366Z\",\"properties\":{\"id\":\"/subscriptions/e6fe6705-4c9c-4b54-81d2-e455780e20b8/resourceGroups/az-sdk-test/providers/Microsoft.HybridCompute/machines/testmachine/extensions/custom1\",\"name\":\"custom1\",\"location\":\"eastus2euap\",\"type\":\"Microsoft.HybridCompute/machines/extensions\",\"properties\":{\"publisher\":\"Microsoft.Compute\",\"type\":\"CustomScriptExtension\",\"typeHandlerVersion\":\"1.10.10\",\"autoUpgradeMinorVersion\":false,\"enableAutomaticUpgrade\":true,\"settings\":{\"commandToExecute\":\"powershell.exe echo hi\"},\"provisioningState\":\"Succeeded\",\"instanceView\":{\"name\":\"custom1\",\"type\":\"CustomScriptExtension\",\"typeHandlerVersion\":\"1.10.10\",\"status\":{\"code\":\"0\",\"level\":\"Information\",\"message\":\"Extension Message: Command execution finished, StdOut: hi\\r\\n\"}}}}}"
+    }
+  },
+  "Update-AzConnectedMachineExtension+[NoContext]+Update parameter set+$GET+https://management.azure.com/subscriptions/e6fe6705-4c9c-4b54-81d2-e455780e20b8/resourceGroups/az-sdk-test/providers/Microsoft.HybridCompute/machines/testmachine/extensions/custom1?api-version=2022-12-27+5": {
+    "Request": {
+      "Method": "GET",
+      "RequestUri": "https://management.azure.com/subscriptions/e6fe6705-4c9c-4b54-81d2-e455780e20b8/resourceGroups/az-sdk-test/providers/Microsoft.HybridCompute/machines/testmachine/extensions/custom1?api-version=2022-12-27",
+      "Content": null,
+      "Headers": {
+        "Authorization": [ "[Filtered]" ],
+        "x-ms-unique-id": [ "18" ],
+        "x-ms-client-request-id": [ "56ab99e2-e021-411d-a3dd-2df287ea6fce" ],
+        "CommandName": [ "Update-AzConnectedMachineExtension" ],
+        "FullCommandName": [ "Update-AzConnectedMachineExtension_Update" ],
+        "ParameterSetName": [ "__AllParameterSets" ],
+        "User-Agent": [ "AzurePowershell/Az4.0.0-preview" ]
+      },
+      "ContentHeaders": {
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "x-ms-ratelimit-remaining-subscription-reads": [ "11998" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "x-ms-request-id": [ "d9c38349-b6cb-4c93-b43f-779016f995be" ],
+        "Server": [ "Kestrel" ],
+        "x-ms-correlation-request-id": [ "8736d4b6-1b10-4c7f-90d2-c8d01c75fa4b" ],
+        "x-ms-routing-request-id": [ "NORTHCENTRALUS:20230811T054855Z:8736d4b6-1b10-4c7f-90d2-c8d01c75fa4b" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "Date": [ "Fri, 11 Aug 2023 05:48:54 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "730" ],
+        "Content-Type": [ "application/json; charset=utf-8" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\"id\":\"/subscriptions/e6fe6705-4c9c-4b54-81d2-e455780e20b8/resourceGroups/az-sdk-test/providers/Microsoft.HybridCompute/machines/testmachine/extensions/custom1\",\"name\":\"custom1\",\"type\":\"Microsoft.HybridCompute/machines/extensions\",\"location\":\"eastus2euap\",\"properties\":{\"publisher\":\"Microsoft.Compute\",\"type\":\"CustomScriptExtension\",\"typeHandlerVersion\":\"1.10.10\",\"autoUpgradeMinorVersion\":false,\"enableAutomaticUpgrade\":true,\"settings\":{\"commandToExecute\":\"powershell.exe echo hi\"},\"provisioningState\":\"Succeeded\",\"instanceView\":{\"name\":\"custom1\",\"type\":\"CustomScriptExtension\",\"typeHandlerVersion\":\"1.10.10\",\"status\":{\"code\":\"0\",\"level\":\"Information\",\"message\":\"Extension Message: Command execution finished, StdOut: hi\\r\\n\"}}}}"
+    }
+  },
+  "Update-AzConnectedMachineExtension+[NoContext]+UpdateViaIdentityExpanded parameter set+$GET+https://management.azure.com/subscriptions/e6fe6705-4c9c-4b54-81d2-e455780e20b8/resourceGroups/az-sdk-test/providers/Microsoft.HybridCompute/machines/testmachine/extensions/custom1?api-version=2022-12-27+1": {
+    "Request": {
+      "Method": "GET",
+      "RequestUri": "https://management.azure.com/subscriptions/e6fe6705-4c9c-4b54-81d2-e455780e20b8/resourceGroups/az-sdk-test/providers/Microsoft.HybridCompute/machines/testmachine/extensions/custom1?api-version=2022-12-27",
+      "Content": null,
+      "Headers": {
+        "x-ms-unique-id": [ "19" ],
+        "x-ms-client-request-id": [ "c11a4906-e522-4241-9ad1-c956ea40f557" ],
+        "CommandName": [ "Get-AzConnectedMachineExtension" ],
+        "FullCommandName": [ "Get-AzConnectedMachineExtension_Get" ],
+        "ParameterSetName": [ "__AllParameterSets" ],
+        "User-Agent": [ "AzurePowershell/Az4.0.0-preview" ],
+        "Authorization": [ "[Filtered]" ]
+      },
+      "ContentHeaders": {
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "x-ms-ratelimit-remaining-subscription-reads": [ "11997" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "x-ms-request-id": [ "1f4434db-356a-40aa-9021-e62ee6c852dc" ],
+        "Server": [ "Kestrel" ],
+        "x-ms-correlation-request-id": [ "653c0f3b-63ef-4ef3-9e91-ee113ec48197" ],
+        "x-ms-routing-request-id": [ "NORTHCENTRALUS:20230811T054855Z:653c0f3b-63ef-4ef3-9e91-ee113ec48197" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "Date": [ "Fri, 11 Aug 2023 05:48:54 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "730" ],
+        "Content-Type": [ "application/json; charset=utf-8" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\"id\":\"/subscriptions/e6fe6705-4c9c-4b54-81d2-e455780e20b8/resourceGroups/az-sdk-test/providers/Microsoft.HybridCompute/machines/testmachine/extensions/custom1\",\"name\":\"custom1\",\"type\":\"Microsoft.HybridCompute/machines/extensions\",\"location\":\"eastus2euap\",\"properties\":{\"publisher\":\"Microsoft.Compute\",\"type\":\"CustomScriptExtension\",\"typeHandlerVersion\":\"1.10.10\",\"autoUpgradeMinorVersion\":false,\"enableAutomaticUpgrade\":true,\"settings\":{\"commandToExecute\":\"powershell.exe echo hi\"},\"provisioningState\":\"Succeeded\",\"instanceView\":{\"name\":\"custom1\",\"type\":\"CustomScriptExtension\",\"typeHandlerVersion\":\"1.10.10\",\"status\":{\"code\":\"0\",\"level\":\"Information\",\"message\":\"Extension Message: Command execution finished, StdOut: hi\\r\\n\"}}}}"
+    }
+  },
+  "Update-AzConnectedMachineExtension+[NoContext]+UpdateViaIdentityExpanded parameter set+$PATCH+https://management.azure.com/subscriptions/e6fe6705-4c9c-4b54-81d2-e455780e20b8/resourceGroups/az-sdk-test/providers/Microsoft.HybridCompute/machines/testmachine/extensions/custom1?api-version=2022-12-27+2": {
+    "Request": {
+      "Method": "PATCH",
+      "RequestUri": "https://management.azure.com/subscriptions/e6fe6705-4c9c-4b54-81d2-e455780e20b8/resourceGroups/az-sdk-test/providers/Microsoft.HybridCompute/machines/testmachine/extensions/custom1?api-version=2022-12-27",
+      "Content": "{\r\n  \"properties\": {\r\n    \"settings\": {\r\n      \"commandToExecute\": \"powershell.exe pwd\"\r\n    }\r\n  }\r\n}",
+      "Headers": {
+      },
+      "ContentHeaders": {
+        "Content-Type": [ "application/json" ],
+        "Content-Length": [ "102" ]
+      }
+    },
+    "Response": {
+      "StatusCode": 202,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "Location": [ "https://management.azure.com/subscriptions/e6fe6705-4c9c-4b54-81d2-e455780e20b8/providers/Microsoft.HybridCompute/locations/eastus2euap/operationresults/7dee309f-97a3-425a-a948-a3a3c16a7310?api-version=2022-12-27" ],
+        "Retry-After": [ "120" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "x-ms-request-id": [ "e885efab-8873-4ab1-b51b-0797cd3cf27f" ],
+        "Azure-AsyncOperation": [ "https://management.azure.com/subscriptions/e6fe6705-4c9c-4b54-81d2-e455780e20b8/providers/Microsoft.HybridCompute/locations/eastus2euap/operationstatus/7dee309f-97a3-425a-a948-a3a3c16a7310?api-version=2022-12-27" ],
+        "Server": [ "Kestrel" ],
+        "x-ms-ratelimit-remaining-subscription-resource-requests": [ "319" ],
+        "x-ms-correlation-request-id": [ "3e40f258-7238-4e9f-9748-05dc13469a88" ],
+        "x-ms-routing-request-id": [ "NORTHCENTRALUS:20230811T054855Z:3e40f258-7238-4e9f-9748-05dc13469a88" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "Date": [ "Fri, 11 Aug 2023 05:48:55 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Type": [ "application/json" ],
+        "Expires": [ "-1" ],
+        "Content-Length": [ "0" ]
+      },
+      "Content": null
+    }
+  },
+  "Update-AzConnectedMachineExtension+[NoContext]+UpdateViaIdentityExpanded parameter set+$GET+https://management.azure.com/subscriptions/e6fe6705-4c9c-4b54-81d2-e455780e20b8/providers/Microsoft.HybridCompute/locations/eastus2euap/operationstatus/7dee309f-97a3-425a-a948-a3a3c16a7310?api-version=2022-12-27+3": {
+    "Request": {
+      "Method": "GET",
+      "RequestUri": "https://management.azure.com/subscriptions/e6fe6705-4c9c-4b54-81d2-e455780e20b8/providers/Microsoft.HybridCompute/locations/eastus2euap/operationstatus/7dee309f-97a3-425a-a948-a3a3c16a7310?api-version=2022-12-27",
+      "Content": null,
+      "Headers": {
+        "Authorization": [ "[Filtered]" ],
+        "x-ms-unique-id": [ "21" ],
+        "x-ms-client-request-id": [ "e0c670b6-6cfb-477e-b617-7ef612a66420" ],
+        "CommandName": [ "Update-AzConnectedMachineExtension" ],
+        "FullCommandName": [ "Update-AzConnectedMachineExtension_UpdateViaIdentityExpanded" ],
+        "ParameterSetName": [ "__AllParameterSets" ],
+        "User-Agent": [ "AzurePowershell/Az4.0.0-preview" ]
+      },
+      "ContentHeaders": {
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "Location": [ "https://management.azure.com/subscriptions/e6fe6705-4c9c-4b54-81d2-e455780e20b8/providers/Microsoft.HybridCompute/locations/eastus2euap/operationresults/7dee309f-97a3-425a-a948-a3a3c16a7310?api-version=2022-12-27" ],
+        "Retry-After": [ "120" ],
+        "x-ms-ratelimit-remaining-subscription-reads": [ "11999" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "x-ms-request-id": [ "4a0e620d-dedb-4455-a039-d6a6aadcef4d" ],
+        "Azure-AsyncOperation": [ "https://management.azure.com/subscriptions/e6fe6705-4c9c-4b54-81d2-e455780e20b8/providers/Microsoft.HybridCompute/locations/eastus2euap/operationstatus/7dee309f-97a3-425a-a948-a3a3c16a7310?api-version=2022-12-27" ],
+        "Server": [ "Kestrel" ],
+        "x-ms-correlation-request-id": [ "05aa759a-b1e5-4ab8-b599-f7c302f103d3" ],
+        "x-ms-routing-request-id": [ "NORTHCENTRALUS:20230811T055056Z:05aa759a-b1e5-4ab8-b599-f7c302f103d3" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "Date": [ "Fri, 11 Aug 2023 05:50:56 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "112" ],
+        "Content-Type": [ "application/json; charset=utf-8" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\"name\":\"7dee309f-97a3-425a-a948-a3a3c16a7310\",\"status\":\"InProgress\",\"startTime\":\"2023-08-11T05:48:55.6100375Z\"}"
+    }
+  },
+  "Update-AzConnectedMachineExtension+[NoContext]+UpdateViaIdentityExpanded parameter set+$GET+https://management.azure.com/subscriptions/e6fe6705-4c9c-4b54-81d2-e455780e20b8/providers/Microsoft.HybridCompute/locations/eastus2euap/operationstatus/7dee309f-97a3-425a-a948-a3a3c16a7310?api-version=2022-12-27+4": {
+    "Request": {
+      "Method": "GET",
+      "RequestUri": "https://management.azure.com/subscriptions/e6fe6705-4c9c-4b54-81d2-e455780e20b8/providers/Microsoft.HybridCompute/locations/eastus2euap/operationstatus/7dee309f-97a3-425a-a948-a3a3c16a7310?api-version=2022-12-27",
+      "Content": null,
+      "Headers": {
+        "Authorization": [ "[Filtered]" ],
+        "x-ms-unique-id": [ "22" ],
+        "x-ms-client-request-id": [ "e0c670b6-6cfb-477e-b617-7ef612a66420" ],
+        "CommandName": [ "Update-AzConnectedMachineExtension" ],
+        "FullCommandName": [ "Update-AzConnectedMachineExtension_UpdateViaIdentityExpanded" ],
+        "ParameterSetName": [ "__AllParameterSets" ],
+        "User-Agent": [ "AzurePowershell/Az4.0.0-preview" ]
+      },
+      "ContentHeaders": {
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "x-ms-ratelimit-remaining-subscription-reads": [ "11999" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "x-ms-request-id": [ "218ae3be-9a43-44b6-aad9-551984a1f615" ],
+        "Server": [ "Kestrel" ],
+        "x-ms-correlation-request-id": [ "358f1f51-29b0-4c11-a4dd-be40f4fc0bd5" ],
+        "x-ms-routing-request-id": [ "NORTHCENTRALUS:20230811T055257Z:358f1f51-29b0-4c11-a4dd-be40f4fc0bd5" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "Date": [ "Fri, 11 Aug 2023 05:52:56 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "1112" ],
+        "Content-Type": [ "application/json; charset=utf-8" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\"name\":\"7dee309f-97a3-425a-a948-a3a3c16a7310\",\"status\":\"Succeeded\",\"startTime\":\"2023-08-11T05:48:55.6100375Z\",\"properties\":{\"id\":\"/subscriptions/e6fe6705-4c9c-4b54-81d2-e455780e20b8/resourceGroups/az-sdk-test/providers/Microsoft.HybridCompute/machines/testmachine/extensions/custom1\",\"name\":\"custom1\",\"location\":\"eastus2euap\",\"type\":\"Microsoft.HybridCompute/machines/extensions\",\"properties\":{\"publisher\":\"Microsoft.Compute\",\"type\":\"CustomScriptExtension\",\"typeHandlerVersion\":\"1.10.10\",\"autoUpgradeMinorVersion\":false,\"enableAutomaticUpgrade\":true,\"settings\":{\"commandToExecute\":\"powershell.exe pwd\"},\"provisioningState\":\"Succeeded\",\"instanceView\":{\"name\":\"custom1\",\"type\":\"CustomScriptExtension\",\"typeHandlerVersion\":\"1.10.10\",\"status\":{\"code\":\"0\",\"level\":\"Information\",\"message\":\"Extension Message: Command execution finished, StdOut: \\r\\nPath                                                                           \\r\\n----                                                                           \\r\\nC:\\\\Packages\\\\Plugins\\\\Microsoft.Compute.CustomScriptExtension\\\\1.10.10\\\\Downloads\\\\3\\r\\n\\r\\n\\r\\n\"}}}}}"
+    }
+  },
+  "Update-AzConnectedMachineExtension+[NoContext]+UpdateViaIdentityExpanded parameter set+$GET+https://management.azure.com/subscriptions/e6fe6705-4c9c-4b54-81d2-e455780e20b8/resourceGroups/az-sdk-test/providers/Microsoft.HybridCompute/machines/testmachine/extensions/custom1?api-version=2022-12-27+5": {
+    "Request": {
+      "Method": "GET",
+      "RequestUri": "https://management.azure.com/subscriptions/e6fe6705-4c9c-4b54-81d2-e455780e20b8/resourceGroups/az-sdk-test/providers/Microsoft.HybridCompute/machines/testmachine/extensions/custom1?api-version=2022-12-27",
+      "Content": null,
+      "Headers": {
+        "Authorization": [ "[Filtered]" ],
+        "x-ms-unique-id": [ "23" ],
+        "x-ms-client-request-id": [ "e0c670b6-6cfb-477e-b617-7ef612a66420" ],
+        "CommandName": [ "Update-AzConnectedMachineExtension" ],
+        "FullCommandName": [ "Update-AzConnectedMachineExtension_UpdateViaIdentityExpanded" ],
+        "ParameterSetName": [ "__AllParameterSets" ],
+        "User-Agent": [ "AzurePowershell/Az4.0.0-preview" ]
+      },
+      "ContentHeaders": {
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "x-ms-ratelimit-remaining-subscription-reads": [ "11998" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "x-ms-request-id": [ "d89efa46-69b6-47ae-b60f-53e398fb5c9b" ],
+        "Server": [ "Kestrel" ],
+        "x-ms-correlation-request-id": [ "fe7fb706-8441-4121-97ab-b348eb278c5b" ],
+        "x-ms-routing-request-id": [ "NORTHCENTRALUS:20230811T055257Z:fe7fb706-8441-4121-97ab-b348eb278c5b" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "Date": [ "Fri, 11 Aug 2023 05:52:56 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "987" ],
+        "Content-Type": [ "application/json; charset=utf-8" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\"id\":\"/subscriptions/e6fe6705-4c9c-4b54-81d2-e455780e20b8/resourceGroups/az-sdk-test/providers/Microsoft.HybridCompute/machines/testmachine/extensions/custom1\",\"name\":\"custom1\",\"type\":\"Microsoft.HybridCompute/machines/extensions\",\"location\":\"eastus2euap\",\"properties\":{\"publisher\":\"Microsoft.Compute\",\"type\":\"CustomScriptExtension\",\"typeHandlerVersion\":\"1.10.10\",\"autoUpgradeMinorVersion\":false,\"enableAutomaticUpgrade\":true,\"settings\":{\"commandToExecute\":\"powershell.exe pwd\"},\"provisioningState\":\"Succeeded\",\"instanceView\":{\"name\":\"custom1\",\"type\":\"CustomScriptExtension\",\"typeHandlerVersion\":\"1.10.10\",\"status\":{\"code\":\"0\",\"level\":\"Information\",\"message\":\"Extension Message: Command execution finished, StdOut: \\r\\nPath                                                                           \\r\\n----                                                                           \\r\\nC:\\\\Packages\\\\Plugins\\\\Microsoft.Compute.CustomScriptExtension\\\\1.10.10\\\\Downloads\\\\3\\r\\n\\r\\n\\r\\n\"}}}}"
+    }
+  },
+  "Update-AzConnectedMachineExtension+[NoContext]+UpdateViaIdentity parameter set+$GET+https://management.azure.com/subscriptions/e6fe6705-4c9c-4b54-81d2-e455780e20b8/resourceGroups/az-sdk-test/providers/Microsoft.HybridCompute/machines/testmachine/extensions/custom1?api-version=2022-12-27+1": {
+    "Request": {
+      "Method": "GET",
+      "RequestUri": "https://management.azure.com/subscriptions/e6fe6705-4c9c-4b54-81d2-e455780e20b8/resourceGroups/az-sdk-test/providers/Microsoft.HybridCompute/machines/testmachine/extensions/custom1?api-version=2022-12-27",
+      "Content": null,
+      "Headers": {
+        "x-ms-unique-id": [ "24" ],
+        "x-ms-client-request-id": [ "bbd0cb57-fa2f-4a7f-a358-ff5f1b79f2c4" ],
+        "CommandName": [ "Get-AzConnectedMachineExtension" ],
+        "FullCommandName": [ "Get-AzConnectedMachineExtension_Get" ],
+        "ParameterSetName": [ "__AllParameterSets" ],
+        "User-Agent": [ "AzurePowershell/Az4.0.0-preview" ],
+        "Authorization": [ "[Filtered]" ]
+      },
+      "ContentHeaders": {
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "x-ms-ratelimit-remaining-subscription-reads": [ "11997" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "x-ms-request-id": [ "cc1b93c3-b078-43ef-b9a4-c3918686b3cc" ],
+        "Server": [ "Kestrel" ],
+        "x-ms-correlation-request-id": [ "b7f42808-b92e-42ed-971a-e252be8b8a9e" ],
+        "x-ms-routing-request-id": [ "NORTHCENTRALUS:20230811T055257Z:b7f42808-b92e-42ed-971a-e252be8b8a9e" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "Date": [ "Fri, 11 Aug 2023 05:52:57 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "987" ],
+        "Content-Type": [ "application/json; charset=utf-8" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\"id\":\"/subscriptions/e6fe6705-4c9c-4b54-81d2-e455780e20b8/resourceGroups/az-sdk-test/providers/Microsoft.HybridCompute/machines/testmachine/extensions/custom1\",\"name\":\"custom1\",\"type\":\"Microsoft.HybridCompute/machines/extensions\",\"location\":\"eastus2euap\",\"properties\":{\"publisher\":\"Microsoft.Compute\",\"type\":\"CustomScriptExtension\",\"typeHandlerVersion\":\"1.10.10\",\"autoUpgradeMinorVersion\":false,\"enableAutomaticUpgrade\":true,\"settings\":{\"commandToExecute\":\"powershell.exe pwd\"},\"provisioningState\":\"Succeeded\",\"instanceView\":{\"name\":\"custom1\",\"type\":\"CustomScriptExtension\",\"typeHandlerVersion\":\"1.10.10\",\"status\":{\"code\":\"0\",\"level\":\"Information\",\"message\":\"Extension Message: Command execution finished, StdOut: \\r\\nPath                                                                           \\r\\n----                                                                           \\r\\nC:\\\\Packages\\\\Plugins\\\\Microsoft.Compute.CustomScriptExtension\\\\1.10.10\\\\Downloads\\\\3\\r\\n\\r\\n\\r\\n\"}}}}"
+    }
+  },
+  "Update-AzConnectedMachineExtension+[NoContext]+UpdateViaIdentity parameter set+$PATCH+https://management.azure.com/subscriptions/e6fe6705-4c9c-4b54-81d2-e455780e20b8/resourceGroups/az-sdk-test/providers/Microsoft.HybridCompute/machines/testmachine/extensions/custom1?api-version=2022-12-27+2": {
+    "Request": {
+      "Method": "PATCH",
+      "RequestUri": "https://management.azure.com/subscriptions/e6fe6705-4c9c-4b54-81d2-e455780e20b8/resourceGroups/az-sdk-test/providers/Microsoft.HybridCompute/machines/testmachine/extensions/custom1?api-version=2022-12-27",
+      "Content": "{\r\n  \"properties\": {\r\n    \"publisher\": \"Microsoft.Compute\",\r\n    \"type\": \"CustomScriptExtension\",\r\n    \"enableAutomaticUpgrade\": true,\r\n    \"autoUpgradeMinorVersion\": false,\r\n    \"settings\": {\r\n      \"commandToExecute\": \"powershell.exe man\"\r\n    }\r\n  },\r\n  \"type\": \"Microsoft.HybridCompute/machines/extensions\",\r\n  \"id\": \"/subscriptions/e6fe6705-4c9c-4b54-81d2-e455780e20b8/resourceGroups/az-sdk-test/providers/Microsoft.HybridCompute/machines/testmachine/extensions/custom1\",\r\n  \"location\": \"eastus2euap\",\r\n  \"name\": \"custom1\"\r\n}",
+      "Headers": {
+      },
+      "ContentHeaders": {
+        "Content-Type": [ "application/json" ],
+        "Content-Length": [ "530" ]
+      }
+    },
+    "Response": {
+      "StatusCode": 202,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "Location": [ "https://management.azure.com/subscriptions/e6fe6705-4c9c-4b54-81d2-e455780e20b8/providers/Microsoft.HybridCompute/locations/eastus2euap/operationresults/cd5cae15-ae9e-4cea-94ea-2a41f9cf16ff?api-version=2022-12-27" ],
+        "Retry-After": [ "120" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "x-ms-request-id": [ "a5d84c65-560b-4175-8d80-0f9b1b6cd408" ],
+        "Azure-AsyncOperation": [ "https://management.azure.com/subscriptions/e6fe6705-4c9c-4b54-81d2-e455780e20b8/providers/Microsoft.HybridCompute/locations/eastus2euap/operationstatus/cd5cae15-ae9e-4cea-94ea-2a41f9cf16ff?api-version=2022-12-27" ],
+        "Server": [ "Kestrel" ],
+        "x-ms-ratelimit-remaining-subscription-resource-requests": [ "319" ],
+        "x-ms-correlation-request-id": [ "c5cc2657-8fc3-4eda-9516-b3f338f44344" ],
+        "x-ms-routing-request-id": [ "NORTHCENTRALUS:20230811T055257Z:c5cc2657-8fc3-4eda-9516-b3f338f44344" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "Date": [ "Fri, 11 Aug 2023 05:52:57 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Type": [ "application/json" ],
+        "Expires": [ "-1" ],
+        "Content-Length": [ "0" ]
+      },
+      "Content": null
+    }
+  },
+  "Update-AzConnectedMachineExtension+[NoContext]+UpdateViaIdentity parameter set+$GET+https://management.azure.com/subscriptions/e6fe6705-4c9c-4b54-81d2-e455780e20b8/providers/Microsoft.HybridCompute/locations/eastus2euap/operationstatus/cd5cae15-ae9e-4cea-94ea-2a41f9cf16ff?api-version=2022-12-27+3": {
+    "Request": {
+      "Method": "GET",
+      "RequestUri": "https://management.azure.com/subscriptions/e6fe6705-4c9c-4b54-81d2-e455780e20b8/providers/Microsoft.HybridCompute/locations/eastus2euap/operationstatus/cd5cae15-ae9e-4cea-94ea-2a41f9cf16ff?api-version=2022-12-27",
+      "Content": null,
+      "Headers": {
+        "Authorization": [ "[Filtered]" ],
+        "x-ms-unique-id": [ "26" ],
+        "x-ms-client-request-id": [ "4eebb042-7d4c-453d-ad14-56a2964a54a6" ],
+        "CommandName": [ "Update-AzConnectedMachineExtension" ],
+        "FullCommandName": [ "Update-AzConnectedMachineExtension_UpdateViaIdentity" ],
+        "ParameterSetName": [ "__AllParameterSets" ],
+        "User-Agent": [ "AzurePowershell/Az4.0.0-preview" ]
+      },
+      "ContentHeaders": {
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "Location": [ "https://management.azure.com/subscriptions/e6fe6705-4c9c-4b54-81d2-e455780e20b8/providers/Microsoft.HybridCompute/locations/eastus2euap/operationresults/cd5cae15-ae9e-4cea-94ea-2a41f9cf16ff?api-version=2022-12-27" ],
+        "Retry-After": [ "120" ],
+        "x-ms-ratelimit-remaining-subscription-reads": [ "11999" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "x-ms-request-id": [ "82f5e4ba-c362-46bd-b39c-23bb46db358c" ],
+        "Azure-AsyncOperation": [ "https://management.azure.com/subscriptions/e6fe6705-4c9c-4b54-81d2-e455780e20b8/providers/Microsoft.HybridCompute/locations/eastus2euap/operationstatus/cd5cae15-ae9e-4cea-94ea-2a41f9cf16ff?api-version=2022-12-27" ],
+        "Server": [ "Kestrel" ],
+        "x-ms-correlation-request-id": [ "a27265f0-4b9a-4fe9-b366-941623c82d96" ],
+        "x-ms-routing-request-id": [ "SOUTHCENTRALUS:20230811T055458Z:a27265f0-4b9a-4fe9-b366-941623c82d96" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "Date": [ "Fri, 11 Aug 2023 05:54:58 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "112" ],
+        "Content-Type": [ "application/json; charset=utf-8" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\"name\":\"cd5cae15-ae9e-4cea-94ea-2a41f9cf16ff\",\"status\":\"InProgress\",\"startTime\":\"2023-08-11T05:52:57.9031044Z\"}"
+    }
+  },
+  "Update-AzConnectedMachineExtension+[NoContext]+UpdateViaIdentity parameter set+$GET+https://management.azure.com/subscriptions/e6fe6705-4c9c-4b54-81d2-e455780e20b8/providers/Microsoft.HybridCompute/locations/eastus2euap/operationstatus/cd5cae15-ae9e-4cea-94ea-2a41f9cf16ff?api-version=2022-12-27+4": {
+    "Request": {
+      "Method": "GET",
+      "RequestUri": "https://management.azure.com/subscriptions/e6fe6705-4c9c-4b54-81d2-e455780e20b8/providers/Microsoft.HybridCompute/locations/eastus2euap/operationstatus/cd5cae15-ae9e-4cea-94ea-2a41f9cf16ff?api-version=2022-12-27",
+      "Content": null,
+      "Headers": {
+        "Authorization": [ "[Filtered]" ],
+        "x-ms-unique-id": [ "27" ],
+        "x-ms-client-request-id": [ "4eebb042-7d4c-453d-ad14-56a2964a54a6" ],
+        "CommandName": [ "Update-AzConnectedMachineExtension" ],
+        "FullCommandName": [ "Update-AzConnectedMachineExtension_UpdateViaIdentity" ],
+        "ParameterSetName": [ "__AllParameterSets" ],
+        "User-Agent": [ "AzurePowershell/Az4.0.0-preview" ]
+      },
+      "ContentHeaders": {
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "x-ms-ratelimit-remaining-subscription-reads": [ "11999" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "x-ms-request-id": [ "63a3c3dd-be99-43cf-9aa5-36d9159a5f28" ],
+        "Server": [ "Kestrel" ],
+        "x-ms-correlation-request-id": [ "c562f844-abb7-4f40-93d5-54642f2702b6" ],
+        "x-ms-routing-request-id": [ "SOUTHCENTRALUS:20230811T055659Z:c562f844-abb7-4f40-93d5-54642f2702b6" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "Date": [ "Fri, 11 Aug 2023 05:56:59 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "4648" ],
+        "Content-Type": [ "application/json; charset=utf-8" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\"name\":\"cd5cae15-ae9e-4cea-94ea-2a41f9cf16ff\",\"status\":\"Succeeded\",\"startTime\":\"2023-08-11T05:52:57.9031044Z\",\"properties\":{\"id\":\"/subscriptions/e6fe6705-4c9c-4b54-81d2-e455780e20b8/resourceGroups/az-sdk-test/providers/Microsoft.HybridCompute/machines/testmachine/extensions/custom1\",\"name\":\"custom1\",\"location\":\"eastus2euap\",\"type\":\"Microsoft.HybridCompute/machines/extensions\",\"properties\":{\"publisher\":\"Microsoft.Compute\",\"type\":\"CustomScriptExtension\",\"typeHandlerVersion\":\"1.10.10\",\"autoUpgradeMinorVersion\":false,\"enableAutomaticUpgrade\":true,\"settings\":{\"commandToExecute\":\"powershell.exe man\"},\"provisioningState\":\"Succeeded\",\"instanceView\":{\"name\":\"custom1\",\"type\":\"CustomScriptExtension\",\"typeHandlerVersion\":\"1.10.10\",\"status\":{\"code\":\"0\",\"level\":\"Information\",\"message\":\"Extension Message: Command execution finished, StdOut: \\r\\nTOPIC\\r\\n    Windows PowerShell Help System\\r\\n\\r\\nSHORT DESCRIPTION\\r\\n    Displays help about Windows PowerShell cmdlets and concepts. \\r\\n\\r\\nLONG DESCRIPTION\\r\\n    Windows PowerShell Help describes Windows PowerShell cmdlets,\\r\\n    functions, scripts, and modules, and explains concepts, including\\r\\n    the elements of the Windows PowerShell language.\\r\\n\\r\\n    Windows PowerShell does not include help files, but you can read the\\r\\n    help topics online, or use the Update-Help cmdlet to download help files\\r\\n    to your computer and then use the Get-Help cmdlet to display the help\\r\\n    topics at the command line.\\r\\n\\r\\n    You can also use the Update-Help cmdlet to download updated help files\\r\\n    as they are released so that your local help content is never obsolete. \\r\\n\\r\\n    Without help files, Get-Help displays auto-generated help for cmdlets, \\r\\n    functions, and scripts.\\r\\n\\r\\n\\r\\n  ONLINE HELP    \\r\\n    You can find help for Windows PowerShell online in the TechNet Library\\r\\n    beginning at http://go.microsoft.com/fwlink/?LinkID=108518. \\r\\n\\r\\n    To open online help for any cmdlet or function, type:\\r\\n\\r\\n        Get-Help \u003ccmdlet-name\u003e -Online    \\r\\n\\r\\n  UPDATE-HELP\\r\\n    To download and install help files on your computer:\\r\\n\\r\\n       1. Start Windows PowerShell with the \\\"Run as administrator\\\" option.\\r\\n       2. Type:\\r\\n\\r\\n          Update-Help\\r\\n\\r\\n    After the help files are installed, you can use the Get-Help cmdlet to\\r\\n    display the help topics. You can also use the Update-Help cmdlet to\\r\\n    download updated help files so that your local help files are always\\r\\n    up-to-date.\\r\\n    \\r\\n    For more information about the Update-Help cmdlet, type:\\r\\n\\r\\n       Get-Help Update-Help -Online\\r\\n\\r\\n    or go to: http://go.microsoft.com/fwlink/?LinkID=210614\\r\\n\\r\\n\\r\\n  GET-HELP\\r\\n    The Get-Help cmdlet displays help at the command line from content in\\r\\n    help files on your computer. Without help files, Get-Help displays basic\\r\\n    help about cmdlets and functions. You can also use Get-Help to display\\r\\n    online help for cmdlets and functions.\\r\\n\\r\\n    To get help for a cmdlet, type:\\r\\n\\r\\n        Get-Help \u003ccmdlet-name\u003e\\r\\n    \\r\\n    To get online help, type:\\r\\n   \\r\\n        Get-Help \u003ccmdlet-name\u003e -Online    \\r\\n\\r\\n    The titles of conceptual topics begin with \\\"About_\\\".\\r\\n    To get help for a concept or language element, type:\\r\\n\\r\\n        Get-Help About_\u003ctopic-name\u003e\\r\\n\\r\\n    To search for a word or phrase in all help files, type:\\r\\n\\r\\n        Get-Help \u003csearch-term\u003e\\r\\n\\r\\n    For more information about the Get-Help cmdlet, type:\\r\\n\\r\\n        Get-Help Get-Help -Online\\r\\n\\r\\n    or go to: http://go.microsoft.com/fwlink/?LinkID=113316\\r\\n\\r\\n\\r\\n  EXAMPLES:\\r\\n      Save-Help              : Download help files from the Internet and saves\\r\\n                               them on a file share.\\r\\n      Update-Help            : Downloads and installs help files from the\\r\\n                               Internet or a file share.\\r\\n      Get-Help Get-Process   : Displays help about the Get-Process cmdlet.   \\r\\n      Get-Help Get-Process -Online\\r\\n                             : Opens online help for the Get-Process cmdlet.                            \\r\\n      Help Get-Process       : Displays help about Get-Process one page at a time.\\r\\n      Get-Process -?         : Displays help about the Get-Process cmdlet.      \\r\\n      Get-Help About_Modules : Displays help about Windows PowerShell modules.\\r\\n      Get-Help remoting      : Searches the help topics for the word \\\"remoting.\\\"\\r\\n\\r\\n  SEE ALSO:\\r\\n      about_Updatable_Help\\r\\n      Get-Help\\r\\n      Save-Help\\r\\n      Update-Help\\r\\n\\r\\n\\r\\n\\r\\n\\r\\n\\r\\n\\r\\n\\r\\n\\r\\n\\r\\n\\r\\n\\r\\n\\r\\n\\r\\n\\r\\n\"}}}}}"
+    }
+  },
+  "Update-AzConnectedMachineExtension+[NoContext]+UpdateViaIdentity parameter set+$GET+https://management.azure.com/subscriptions/e6fe6705-4c9c-4b54-81d2-e455780e20b8/resourceGroups/az-sdk-test/providers/Microsoft.HybridCompute/machines/testmachine/extensions/custom1?api-version=2022-12-27+5": {
+    "Request": {
+      "Method": "GET",
+      "RequestUri": "https://management.azure.com/subscriptions/e6fe6705-4c9c-4b54-81d2-e455780e20b8/resourceGroups/az-sdk-test/providers/Microsoft.HybridCompute/machines/testmachine/extensions/custom1?api-version=2022-12-27",
+      "Content": null,
+      "Headers": {
+        "Authorization": [ "[Filtered]" ],
+        "x-ms-unique-id": [ "28" ],
+        "x-ms-client-request-id": [ "4eebb042-7d4c-453d-ad14-56a2964a54a6" ],
+        "CommandName": [ "Update-AzConnectedMachineExtension" ],
+        "FullCommandName": [ "Update-AzConnectedMachineExtension_UpdateViaIdentity" ],
+        "ParameterSetName": [ "__AllParameterSets" ],
+        "User-Agent": [ "AzurePowershell/Az4.0.0-preview" ]
+      },
+      "ContentHeaders": {
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "x-ms-ratelimit-remaining-subscription-reads": [ "11998" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "x-ms-request-id": [ "b5b635b1-1517-4be9-acea-237a25c18866" ],
+        "Server": [ "Kestrel" ],
+        "x-ms-correlation-request-id": [ "d0bf73ab-4c56-4dde-9e00-03ec2d44d274" ],
+        "x-ms-routing-request-id": [ "SOUTHCENTRALUS:20230811T055659Z:d0bf73ab-4c56-4dde-9e00-03ec2d44d274" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "Date": [ "Fri, 11 Aug 2023 05:56:59 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "4523" ],
+        "Content-Type": [ "application/json; charset=utf-8" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\"id\":\"/subscriptions/e6fe6705-4c9c-4b54-81d2-e455780e20b8/resourceGroups/az-sdk-test/providers/Microsoft.HybridCompute/machines/testmachine/extensions/custom1\",\"name\":\"custom1\",\"type\":\"Microsoft.HybridCompute/machines/extensions\",\"location\":\"eastus2euap\",\"properties\":{\"publisher\":\"Microsoft.Compute\",\"type\":\"CustomScriptExtension\",\"typeHandlerVersion\":\"1.10.10\",\"autoUpgradeMinorVersion\":false,\"enableAutomaticUpgrade\":true,\"settings\":{\"commandToExecute\":\"powershell.exe man\"},\"provisioningState\":\"Succeeded\",\"instanceView\":{\"name\":\"custom1\",\"type\":\"CustomScriptExtension\",\"typeHandlerVersion\":\"1.10.10\",\"status\":{\"code\":\"0\",\"level\":\"Information\",\"message\":\"Extension Message: Command execution finished, StdOut: \\r\\nTOPIC\\r\\n    Windows PowerShell Help System\\r\\n\\r\\nSHORT DESCRIPTION\\r\\n    Displays help about Windows PowerShell cmdlets and concepts. \\r\\n\\r\\nLONG DESCRIPTION\\r\\n    Windows PowerShell Help describes Windows PowerShell cmdlets,\\r\\n    functions, scripts, and modules, and explains concepts, including\\r\\n    the elements of the Windows PowerShell language.\\r\\n\\r\\n    Windows PowerShell does not include help files, but you can read the\\r\\n    help topics online, or use the Update-Help cmdlet to download help files\\r\\n    to your computer and then use the Get-Help cmdlet to display the help\\r\\n    topics at the command line.\\r\\n\\r\\n    You can also use the Update-Help cmdlet to download updated help files\\r\\n    as they are released so that your local help content is never obsolete. \\r\\n\\r\\n    Without help files, Get-Help displays auto-generated help for cmdlets, \\r\\n    functions, and scripts.\\r\\n\\r\\n\\r\\n  ONLINE HELP    \\r\\n    You can find help for Windows PowerShell online in the TechNet Library\\r\\n    beginning at http://go.microsoft.com/fwlink/?LinkID=108518. \\r\\n\\r\\n    To open online help for any cmdlet or function, type:\\r\\n\\r\\n        Get-Help \u003ccmdlet-name\u003e -Online    \\r\\n\\r\\n  UPDATE-HELP\\r\\n    To download and install help files on your computer:\\r\\n\\r\\n       1. Start Windows PowerShell with the \\\"Run as administrator\\\" option.\\r\\n       2. Type:\\r\\n\\r\\n          Update-Help\\r\\n\\r\\n    After the help files are installed, you can use the Get-Help cmdlet to\\r\\n    display the help topics. You can also use the Update-Help cmdlet to\\r\\n    download updated help files so that your local help files are always\\r\\n    up-to-date.\\r\\n    \\r\\n    For more information about the Update-Help cmdlet, type:\\r\\n\\r\\n       Get-Help Update-Help -Online\\r\\n\\r\\n    or go to: http://go.microsoft.com/fwlink/?LinkID=210614\\r\\n\\r\\n\\r\\n  GET-HELP\\r\\n    The Get-Help cmdlet displays help at the command line from content in\\r\\n    help files on your computer. Without help files, Get-Help displays basic\\r\\n    help about cmdlets and functions. You can also use Get-Help to display\\r\\n    online help for cmdlets and functions.\\r\\n\\r\\n    To get help for a cmdlet, type:\\r\\n\\r\\n        Get-Help \u003ccmdlet-name\u003e\\r\\n    \\r\\n    To get online help, type:\\r\\n   \\r\\n        Get-Help \u003ccmdlet-name\u003e -Online    \\r\\n\\r\\n    The titles of conceptual topics begin with \\\"About_\\\".\\r\\n    To get help for a concept or language element, type:\\r\\n\\r\\n        Get-Help About_\u003ctopic-name\u003e\\r\\n\\r\\n    To search for a word or phrase in all help files, type:\\r\\n\\r\\n        Get-Help \u003csearch-term\u003e\\r\\n\\r\\n    For more information about the Get-Help cmdlet, type:\\r\\n\\r\\n        Get-Help Get-Help -Online\\r\\n\\r\\n    or go to: http://go.microsoft.com/fwlink/?LinkID=113316\\r\\n\\r\\n\\r\\n  EXAMPLES:\\r\\n      Save-Help              : Download help files from the Internet and saves\\r\\n                               them on a file share.\\r\\n      Update-Help            : Downloads and installs help files from the\\r\\n                               Internet or a file share.\\r\\n      Get-Help Get-Process   : Displays help about the Get-Process cmdlet.   \\r\\n      Get-Help Get-Process -Online\\r\\n                             : Opens online help for the Get-Process cmdlet.                            \\r\\n      Help Get-Process       : Displays help about Get-Process one page at a time.\\r\\n      Get-Process -?         : Displays help about the Get-Process cmdlet.      \\r\\n      Get-Help About_Modules : Displays help about Windows PowerShell modules.\\r\\n      Get-Help remoting      : Searches the help topics for the word \\\"remoting.\\\"\\r\\n\\r\\n  SEE ALSO:\\r\\n      about_Updatable_Help\\r\\n      Get-Help\\r\\n      Save-Help\\r\\n      Update-Help\\r\\n\\r\\n\\r\\n\\r\\n\\r\\n\\r\\n\\r\\n\\r\\n\\r\\n\\r\\n\\r\\n\\r\\n\\r\\n\\r\\n\\r\\n\"}}}}"
+    }
+  }
+}

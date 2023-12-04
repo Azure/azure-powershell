@@ -1,0 +1,221 @@
+{
+    "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
+    "contentVersion": "1.0.0.0",
+    "parameters": {
+        "region": {
+            "type": "string",
+            "defaultValue": "NorthCentralUS",
+            "metadata": {
+                "description": "Region to deploy resources."
+            }
+        },
+        "networkApiVersion": {
+            "type": "string",
+            "defaultValue": "2022-07-01"
+        },
+        "serviceNetworkingApiVersion": {
+            "type": "string",
+            "defaultValue": "2023-05-01-preview"
+        }
+    },
+    "variables": {
+        "vnetName": "test-vnet",
+        "subnetName": "alb-subnet",
+        "extraSubnetName": "extra-alb-subnet",
+        "removeSubnetName": "remove-alb-subnet",
+        "albName": "test-alb",
+        "removeAlbName": "[concat('remove-',variables('albName'))]",
+        "deleteAlbName": "[concat('delete-',variables('albName'))]",
+        "associationAlbName": "[concat('association-',variables('albName'))]",
+        "frontendName": "test-frontend",
+        "associationName": "test-association",
+        "rgName": "test-rg"
+    },
+    "resources": [
+        {
+            "type": "Microsoft.Resources/deployments",
+            "apiVersion": "2021-04-01",
+            "name": "powershell-tests",
+            "resourceGroup": "[variables('rgName')]",
+            "properties": {
+                "mode": "Incremental",
+                "template": {
+                    "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
+                    "contentVersion": "1.0.0.0",
+                    "parameters": {},
+                    "variables": {},
+                    "resources": [
+                        {
+                            "type": "Microsoft.Network/virtualNetworks",
+                            "apiVersion": "[parameters('networkApiVersion')]",
+                            "name": "[variables('vnetName')]",
+                            "location": "[parameters('region')]",
+                            "properties": {
+                                "addressSpace": {
+                                    "addressPrefixes": [
+                                        "10.0.0.0/16"
+                                    ]
+                                },
+                                "dhcpOptions": {
+                                    "dnsServers": []
+                                },
+                                "subnets": [
+                                    {
+                                        "name": "[variables('subnetName')]",
+                                        "properties": {
+                                            "addressPrefix": "10.0.0.0/24",
+                                            "serviceEndpoints": [],
+                                            "delegations": [
+                                                {
+                                                    "name": "delegation",
+                                                    "properties": {
+                                                        "serviceName": "Microsoft.ServiceNetworking/trafficControllers"
+                                                    },
+                                                    "type": "Microsoft.Network/virtualNetworks/subnets/delegations"
+                                                }
+                                            ],
+                                            "privateEndpointNetworkPolicies": "Enabled",
+                                            "privateLinkServiceNetworkPolicies": "Enabled"
+                                        },
+                                        "type": "Microsoft.Network/virtualNetworks/subnets"
+                                    },
+                                    {
+                                        "name": "[variables('extraSubnetName')]",
+                                        "properties": {
+                                            "addressPrefix": "10.0.1.0/24",
+                                            "serviceEndpoints": [],
+                                            "delegations": [
+                                                {
+                                                    "name": "delegation",
+                                                    "properties": {
+                                                        "serviceName": "Microsoft.ServiceNetworking/trafficControllers"
+                                                    },
+                                                    "type": "Microsoft.Network/virtualNetworks/subnets/delegations"
+                                                }
+                                            ],
+                                            "privateEndpointNetworkPolicies": "Enabled",
+                                            "privateLinkServiceNetworkPolicies": "Enabled"
+                                        },
+                                        "type": "Microsoft.Network/virtualNetworks/subnets"
+                                    },
+                                    {
+                                        "name": "[variables('removeSubnetName')]",
+                                        "properties": {
+                                            "addressPrefix": "10.0.2.0/24",
+                                            "serviceEndpoints": [],
+                                            "delegations": [
+                                                {
+                                                    "name": "delegation",
+                                                    "properties": {
+                                                        "serviceName": "Microsoft.ServiceNetworking/trafficControllers"
+                                                    },
+                                                    "type": "Microsoft.Network/virtualNetworks/subnets/delegations"
+                                                }
+                                            ],
+                                            "privateEndpointNetworkPolicies": "Enabled",
+                                            "privateLinkServiceNetworkPolicies": "Enabled"
+                                        },
+                                        "type": "Microsoft.Network/virtualNetworks/subnets"
+                                    }
+                                ],
+                                "virtualNetworkPeerings": [],
+                                "enableDdosProtection": false
+                            }
+                        },
+                        {
+                            "name": "[variables('deleteAlbName')]",
+                            "type": "Microsoft.ServiceNetworking/trafficControllers",
+                            "apiVersion": "[parameters('serviceNetworkingApiVersion')]",
+                            "location": "[parameters('region')]",
+                            "properties": {}
+                        },
+                        {
+                            "name": "[variables('removeAlbName')]",
+                            "type": "Microsoft.ServiceNetworking/trafficControllers",
+                            "apiVersion": "[parameters('serviceNetworkingApiVersion')]",
+                            "location": "[parameters('region')]",
+                            "properties": {}
+                        },
+                        {
+                            "name": "[concat(variables('removeAlbName'), '/', variables('frontendName'))]",
+                            "type": "Microsoft.ServiceNetworking/trafficControllers/frontends",
+                            "apiVersion": "[parameters('serviceNetworkingApiVersion')]",
+                            "location": "[parameters('region')]",
+                            "properties": {},
+                            "dependsOn": [
+                                "[variables('removeAlbName')]"
+                            ]
+                        },
+                        {
+                            "name": "[concat(variables('removeAlbName'), '/', variables('associationName'))]",
+                            "type": "Microsoft.ServiceNetworking/trafficControllers/associations",
+                            "apiVersion": "[parameters('serviceNetworkingApiVersion')]",
+                            "location": "[parameters('region')]",
+                            "properties": {
+                                "associationType": "Subnet",
+                                "subnet": {
+                                    "id": "[concat('/subscriptions/',subscription().subscriptionId,'/resourceGroups/',variables('rgName'),'/providers/Microsoft.Network/virtualNetworks/',variables('vnetName'),'/subnets/',variables('removeSubnetName'))]"
+                                }
+                            },
+                            "dependsOn": [
+                                "[variables('vnetName')]",
+                                "[concat(variables('frontendName'))]"
+                            ]
+                        },
+                        {
+                            "name": "[variables('associationAlbName')]",
+                            "type": "Microsoft.ServiceNetworking/trafficControllers",
+                            "apiVersion": "[parameters('serviceNetworkingApiVersion')]",
+                            "location": "[parameters('region')]",
+                            "properties": {}
+                        },
+                        {
+                            "name": "[variables('albName')]",
+                            "type": "Microsoft.ServiceNetworking/trafficControllers",
+                            "apiVersion": "[parameters('serviceNetworkingApiVersion')]",
+                            "location": "[parameters('region')]",
+                            "properties": {}
+                        },
+                        {
+                            "name": "[concat(variables('albName'), '/', variables('frontendName'), '1')]",
+                            "type": "Microsoft.ServiceNetworking/trafficControllers/frontends",
+                            "apiVersion": "[parameters('serviceNetworkingApiVersion')]",
+                            "location": "[parameters('region')]",
+                            "properties": {},
+                            "dependsOn": [
+                                "[variables('albName')]"
+                            ]
+                        },
+                        {
+                            "name": "[concat(variables('albName'), '/', variables('frontendName'), '2')]",
+                            "type": "Microsoft.ServiceNetworking/trafficControllers/frontends",
+                            "apiVersion": "[parameters('serviceNetworkingApiVersion')]",
+                            "location": "[parameters('region')]",
+                            "properties": {},
+                            "dependsOn": [
+                                "[concat(variables('frontendName'), '1')]"
+                            ]
+                        },
+                        {
+                            "name": "[concat(variables('albName'), '/', variables('associationName'))]",
+                            "type": "Microsoft.ServiceNetworking/trafficControllers/associations",
+                            "apiVersion": "[parameters('serviceNetworkingApiVersion')]",
+                            "location": "[parameters('region')]",
+                            "properties": {
+                                "associationType": "Subnet",
+                                "subnet": {
+                                    "id": "[concat('/subscriptions/',subscription().subscriptionId,'/resourceGroups/',variables('rgName'),'/providers/Microsoft.Network/virtualNetworks/',variables('vnetName'),'/subnets/',variables('subnetName'))]"
+                                }
+                            },
+                            "dependsOn": [
+                                "[variables('vnetName')]",
+                                "[concat(variables('frontendName'), '2')]"
+                            ]
+                        }
+                    ]
+                }
+            }
+        }
+    ],
+    "outputs": {}
+}

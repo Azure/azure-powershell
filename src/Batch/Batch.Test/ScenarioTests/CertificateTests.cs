@@ -38,6 +38,7 @@ namespace Microsoft.Azure.Commands.Batch.Test.ScenarioTests
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
+        [Obsolete]
         public void TestCancelCertificateDelete()
         {
             BatchAccountContext context = null;

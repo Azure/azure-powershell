@@ -244,7 +244,7 @@ namespace Microsoft.Azure.Commands.Sql.ManagedDatabase.Services
             {
                 // Check if the database provided by the caller is indeed created by Log Replay migration
                 var dbRestoreDetails = Communicator.GetLogReplayStatus(parameters.ResourceGroupName, parameters.ManagedInstanceName, parameters.Name);
-                if (dbRestoreDetails.ManagedDatabaseRestoreDetailsResultType.Equals("lrsrestore", StringComparison.OrdinalIgnoreCase))
+                if (dbRestoreDetails.Type.Equals("lrsrestore", StringComparison.OrdinalIgnoreCase))
                 {
                     Communicator.Remove(parameters.ResourceGroupName, parameters.ManagedInstanceName, parameters.Name);
                 }
@@ -259,6 +259,44 @@ namespace Microsoft.Azure.Commands.Sql.ManagedDatabase.Services
                 }
                 throw ex;
             }
+        }
+
+        public void MoveManagedDatabase(MoveCopyManagedDatabaseModel model)
+        {
+            Communicator.Move(model.ResourceGroupName, model.InstanceName, model.DatabaseName, model.getTargetManagedDatabaseId(), model.OperationMode);
+        }
+
+        public void CompleteMove(MoveCopyManagedDatabaseModel model)
+        {
+            Communicator.CompleteMoveCopy(model.ResourceGroupName, model.InstanceName, model.DatabaseName, model.getTargetManagedDatabaseId());
+        }
+
+        public void CancelMove(MoveCopyManagedDatabaseModel model)
+        {
+            Communicator.CancelMoveCopy(model.ResourceGroupName, model.InstanceName, model.DatabaseName, model.getTargetManagedDatabaseId());
+        }
+
+        public IList<ManagedDatabaseMoveCopyOperation> ListMoveCopyOperations(MoveCopyManagedDatabaseModel model, bool onlyLatestPerDatabase)
+        {
+            var operations = Communicator.GetMoveOperations(
+                model.ResourceGroupName,
+                model.Location,
+                model.InstanceName,
+                model.DatabaseName,
+                model.TargetInstanceName,
+                model.OperationMode,
+                onlyLatestPerDatabase)
+                .Select(operation => new ManagedDatabaseMoveCopyOperation(operation));
+
+            // OData filter does not support 'has' or 'contains', so we do not have ability use Odata for target RG filtration
+            // Instead filteration is done on the client side
+            if (!string.IsNullOrEmpty(model.TargetResourceGroupName))
+            {
+                return operations
+                    .Where(operation => operation.TargetManagedInstanceId.ToLower().Contains($"resourceGroups/{model.TargetResourceGroupName}/".ToLower()))
+                    .ToList();
+            }
+            return operations.ToList();
         }
 
         /// <summary>

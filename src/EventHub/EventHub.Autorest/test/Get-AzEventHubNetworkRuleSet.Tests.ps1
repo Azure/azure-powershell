@@ -18,7 +18,7 @@ Describe 'Get-AzEventHubNetworkRuleSet' {
     It 'Get'  {
         $networkRuleSet = Get-AzEventHubNetworkRuleSet -ResourceGroupName $env.resourceGroup -NamespaceName $env.namespace
         $networkRuleSet.PublicNetworkAccess | Should -Be "Enabled"
-        $networkRuleSet.TrustedServiceAccessEnabled | Should -Be $null
+        $networkRuleSet.TrustedServiceAccessEnabled | Should -Be $false
         $networkRuleSet.VirtualNetworkRule.Count | Should -Be 0
         $networkRuleSet.IPRule.Count | Should -Be 0
     }

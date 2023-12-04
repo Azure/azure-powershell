@@ -16,7 +16,7 @@ namespace Microsoft.Azure.Commands.HDInsight
     internal static class Constants
     {
         public const string Hadoop = "Hadoop";
-
+     
         public static class CommandNames
         {
             public const string AzureHDInsightCluster = "AzureRmHDInsightCluster";

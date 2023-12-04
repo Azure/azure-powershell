@@ -71,22 +71,6 @@ namespace Microsoft.Azure.Commands.Batch.Models
         }
 
         /// <summary>
-        /// Gets all pools lifetime summary statistics
-        /// </summary>
-        /// <param name="context">The account to use.</param>
-        /// <param name="additionBehaviors">Additional client behaviors to perform.</param>
-        public PSPoolStatistics GetAllPoolsLifetimeStatistics(BatchAccountContext context, IEnumerable<BatchClientBehavior> additionBehaviors = null)
-        {
-            PoolOperations poolOperations = context.BatchOMClient.PoolOperations;
-
-            WriteVerbose(string.Format(Resources.GetAllPoolsLifetimeStatistics));
-
-            PoolStatistics poolStatistics = poolOperations.GetAllLifetimeStatistics(additionBehaviors);
-            PSPoolStatistics psPoolStatistics = new PSPoolStatistics(poolStatistics);
-            return psPoolStatistics;
-        }
-
-        /// <summary>
         /// Creates a new pool.
         /// </summary>
         /// <param name="parameters">The parameters to use when creating the pool.</param>

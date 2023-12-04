@@ -618,7 +618,7 @@ Configures the DSC extension on a virtual machine.
 Updates extension properties or adds an extension to a virtual machine.
 
 ### [Set-AzVMOperatingSystem](Set-AzVMOperatingSystem.md)
-Sets operating system properties during the creation of a new virtual machine.
+Sets operating system properties during the creation of a new virtual machine or updating a virtual machine.
 
 ### [Set-AzVMOSDisk](Set-AzVMOSDisk.md)
 Sets the operating system disk properties on a virtual machine.

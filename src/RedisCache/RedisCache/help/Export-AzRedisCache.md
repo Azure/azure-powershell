@@ -15,7 +15,7 @@ Exports data from Azure Redis Cache to a container.
 
 ```
 Export-AzRedisCache [-ResourceGroupName <String>] -Name <String> -Prefix <String> -Container <String>
- [-Format <String>] [-PreferredDataArchiveAuthMethod <String>] [-PassThru]
+ [-Format <String>] [-PreferredDataArchiveAuthMethod <String>] [-StorageSubscriptionId <String>] [-PassThru]
  [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
@@ -153,6 +153,21 @@ Accept wildcard characters: False
 
 ### -ResourceGroupName
 Specifies the name of the resource group that contains the cache.
+
+```yaml
+Type: System.String
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: True (ByPropertyName)
+Accept wildcard characters: False
+```
+
+### -StorageSubscriptionId
+Subscription id of the storage container for data to be exported using ManagedIdentity.
 
 ```yaml
 Type: System.String

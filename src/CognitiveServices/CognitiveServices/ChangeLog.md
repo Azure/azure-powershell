@@ -19,6 +19,21 @@
 -->
 ## Upcoming Release
 
+## Version 1.14.1
+* Updated SDK via autorest.powershell.
+* Added `Get-AzCognitiveServicesAccountRaiPolicy` cmdlet.
+* Added `New-AzCognitiveServicesAccountRaiPolicy` cmdlet.
+* Added `Remove-AzCognitiveServicesAccountRaiPolicy` cmdlet.
+* Added `Get-AzCognitiveServicesAccountRaiBlocklist` cmdlet.
+* Added `New-AzCognitiveServicesAccountRaiBlocklist` cmdlet.
+* Added `Remove-AzCognitiveServicesAccountRaiBlocklist` cmdlet.
+* Added `Get-AzCognitiveServicesAccountRaiBlocklistItem` cmdlet.
+* Added `New-AzCognitiveServicesAccountRaiBlocklistItem` cmdlet.
+* Added `Remove-AzCognitiveServicesAccountRaiBlocklistItem` cmdlet.
+
+## Version 1.14.0
+* Updated CognitiveServices PowerShell to use 2023-05-01 version.
+
 ## Version 1.13.1
 * Removed notice and attestation from `New-AzCognitiveServicesAccount`.
 

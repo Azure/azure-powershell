@@ -1,4 +1,4 @@
-﻿// ----------------------------------------------------------------------------------
+// ----------------------------------------------------------------------------------
 //
 // Copyright Microsoft Corporation
 // Licensed under the Apache License, Version 2.0 (the "License");
@@ -38,10 +38,6 @@ namespace Microsoft.Azure.Commands.Network
         [ValidateNotNullOrEmpty]
         public string Description { get; set; }
 
-        [CmdletParameterBreakingChange(
-            "SourceAddress",
-            ChangeDescription = "This parameter is becoming optional as SourceIpGroup can be provided without this.",
-            IsBecomingMandatory = false)]
         [Parameter(
             Mandatory = true,
             ParameterSetName = AzureFirewallPolicyRuleSourceParameterSets.SourceAddress,
@@ -85,7 +81,7 @@ namespace Microsoft.Azure.Commands.Network
             MNM.AzureFirewallNetworkRuleProtocol.Any,
             MNM.AzureFirewallNetworkRuleProtocol.TCP,
             MNM.AzureFirewallNetworkRuleProtocol.UDP,
-            MNM.AzureFirewallNetworkRuleProtocol.ICMP,
+            MNM.AzureFirewallNetworkRuleProtocol.Icmp,
             IgnoreCase = false)]
         public string[] Protocol { get; set; }
         

@@ -28,6 +28,7 @@ using Microsoft.Azure.Commands.Compute.Automation.Models;
 using Microsoft.Azure.Management.Compute.Models;
 using Microsoft.WindowsAzure.Commands.Utilities.Common;
 using Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters;
+using Microsoft.Azure.Commands.Compute.Common;
 
 namespace Microsoft.Azure.Commands.Compute.Automation
 {
@@ -47,7 +48,7 @@ namespace Microsoft.Azure.Commands.Compute.Automation
             Mandatory = false,
             Position = 1,
             ValueFromPipelineByPropertyName = true)]
-        [PSArgumentCompleter("TrustedLaunch", "ConfidentialVM")]
+        [PSArgumentCompleter("TrustedLaunch", "ConfidentialVM", "Standard")]
         public string SecurityType { get; set; }
 
         protected override void ProcessRecord()
@@ -72,6 +73,5 @@ namespace Microsoft.Azure.Commands.Compute.Automation
             }
             WriteObject(this.VirtualMachineScaleSet);
         }
-
     }
 }

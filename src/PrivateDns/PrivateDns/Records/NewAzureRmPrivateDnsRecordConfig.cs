@@ -48,7 +48,6 @@ namespace Microsoft.Azure.Commands.PrivateDns.Records
 
         [Parameter(Mandatory = true, HelpMessage = "The text value for the TXT record to add.", ParameterSetName = PrivateDnsUtils.TxtRecord)]
         [ValidateNotNullOrEmpty]
-        [ValidateLength(PSPrivateDnsRecordBase.TxtRecordMinLength, PSPrivateDnsRecordBase.TxtRecordMaxLength)]
         public string Value { get; set; }
 
         [Parameter(Mandatory = true, HelpMessage = "The priority value SRV record to add.", ParameterSetName = PrivateDnsUtils.SrvRecord)]

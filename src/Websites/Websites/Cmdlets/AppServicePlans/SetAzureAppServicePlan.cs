@@ -35,14 +35,14 @@ namespace Microsoft.Azure.Commands.WebApps.Cmdlets.AppServicePlans
         public string AdminSiteName { get; set; }
 
         [Parameter(ParameterSetName = ParameterSet1Name, Position = 3, Mandatory = false, HelpMessage = "The App Service plan tier. Allowed values are [Free|Shared|Basic|Standard|Premium|PremiumV2|PremiumV3] or [Isolated|IsolatedV2]")]
-        [PSArgumentCompleter("Free", "Shared", "Basic", "Standard", "Premium", "PremiumV2", "PremiumV3", "Isolated", "IsolatedV2")]
+        [PSArgumentCompleter("Free", "Shared", "Basic", "Standard", "Premium", "PremiumV2", "Premium0V3", "PremiumV3", "PremiumMV3", "Isolated", "IsolatedV2")]
         public string Tier { get; set; }
 
         [Parameter(ParameterSetName = ParameterSet1Name, Position = 4, Mandatory = false, HelpMessage = "Number of Workers to be allocated.")]
         public int NumberofWorkers { get; set; }
 
         [Parameter(ParameterSetName = ParameterSet1Name, Position = 5, Mandatory = false, HelpMessage = "Size of workers to be allocated. Allowed values are [Small|Medium|Large|ExtraLarge]")]
-        [PSArgumentCompleter("Small", "Medium", "Large", "ExtraLarge")]
+        [PSArgumentCompleter("ExtraSmall", "Small", "Medium", "Large", "ExtraLarge", "ExtraExtraLarge")]
         public string WorkerSize { get; set; }
 
         [Parameter(ParameterSetName = ParameterSet1Name, Mandatory = false, HelpMessage = "Whether or not to enable Per Site Scaling")]

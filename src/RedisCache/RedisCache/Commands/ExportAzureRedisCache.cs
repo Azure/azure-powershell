@@ -47,6 +47,9 @@ namespace Microsoft.Azure.Commands.RedisCache
         [PSArgumentCompleter("SAS", "ManagedIdentity")]
         public string PreferredDataArchiveAuthMethod { get; set; }
 
+        [Parameter(ValueFromPipelineByPropertyName = true, Mandatory = false, HelpMessage = "Subscription id of the storage container for data to be exported using ManagedIdentity.")]
+        public string StorageSubscriptionId { get; set; }
+
         [Parameter(Mandatory = false)]
         public SwitchParameter PassThru { get; set; }
 
@@ -60,7 +63,7 @@ namespace Microsoft.Azure.Commands.RedisCache
               Name,
               () =>
               {
-                  CacheClient.ExportToCache(ResourceGroupName, Name, Container, Prefix, Format,PreferredDataArchiveAuthMethod);
+                  CacheClient.ExportToCache(ResourceGroupName, Name, Container, Prefix, Format,PreferredDataArchiveAuthMethod, StorageSubscriptionId);
                   if (PassThru)
                   {
                       WriteObject(true);

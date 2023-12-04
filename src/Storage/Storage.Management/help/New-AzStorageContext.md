@@ -16,7 +16,7 @@ Creates an Azure Storage context.
 ### OAuthAccount (Default)
 ```
 New-AzStorageContext [-StorageAccountName] <String> [-UseConnectedAccount] [-Protocol <String>]
- [-Endpoint <String>] [<CommonParameters>]
+ [-Endpoint <String>] [-EnableFileBackupRequestIntent] [<CommonParameters>]
 ```
 
 ### AccountNameAndKey
@@ -58,7 +58,7 @@ New-AzStorageContext [-StorageAccountName] <String> -SasToken <String> -Environm
 ### OAuthAccountEnvironment
 ```
 New-AzStorageContext [-StorageAccountName] <String> [-UseConnectedAccount] [-Protocol <String>]
- -Environment <String> [<CommonParameters>]
+ -Environment <String> [-EnableFileBackupRequestIntent] [<CommonParameters>]
 ```
 
 ### AccountNameAndKeyServiceEndpoint
@@ -92,12 +92,12 @@ New-AzStorageContext [-Anonymous] [-BlobEndpoint <String>] [-FileEndpoint <Strin
 ### OAuthAccountServiceEndpoint
 ```
 New-AzStorageContext [-UseConnectedAccount] [-BlobEndpoint <String>] [-FileEndpoint <String>]
- [-QueueEndpoint <String>] [-TableEndpoint <String>] [<CommonParameters>]
+ [-QueueEndpoint <String>] [-TableEndpoint <String>] [-EnableFileBackupRequestIntent] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
 The **New-AzStorageContext** cmdlet creates an Azure Storage context.
-The default Authentication of a Storage Context is OAuth (Azure AD), if only input Storage account name.
+The default Authentication of a Storage Context is OAuth (Microsoft Entra ID), if only input Storage account name.
 See details of authentication of the Storage Service in https://learn.microsoft.com/rest/api/storageservices/authorization-for-the-azure-storage-services.
 
 ## EXAMPLES
@@ -185,7 +185,7 @@ Connect-AzAccount
 $Context = New-AzStorageContext -StorageAccountName "myaccountname" -UseConnectedAccount
 ```
 
-This command creates a context by using the OAuth (Azure AD) Authentication.
+This command creates a context by using the OAuth (Microsoft Entra ID) Authentication.
 
 ### Example 11: Create a context by specifying a storage account name, storage account key and custom blob endpoint
 ```powershell
@@ -216,6 +216,14 @@ New-AzStorageContext -UseConnectedAccount -BlobEndpoint  "https://myaccountname.
 ```
 
 This command creates a context by using the OAuth authentication with a specified blob endpoint.
+
+### Example 15: Create a context by using the OAuth Authentication on File service
+```powershell
+New-AzStorageContext -StorageAccountName "myaccountname" -UseConnectedAccount -EnableFileBackupRequestIntent
+```
+
+This command creates a context to use the OAuth (Microsoft Entra ID) authentication on File service.
+Parameter '-EnableFileBackupRequestIntent' is required to use OAuth (Microsoft Entra ID) Authentication for File service. This will bypass any file/directory level permission checks and allow access, based on the allowed data actions, even if there are ACLs in place for those files/directories.
 
 ## PARAMETERS
 
@@ -270,6 +278,21 @@ Parameter Sets: ConnectionString
 Aliases:
 
 Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -EnableFileBackupRequestIntent
+Required parameter to use with OAuth (Microsoft Entra ID) Authentication for Files. This will bypass any file/directory level permission checks and allow access, based on the allowed data actions, even if there are ACLs in place for those files/directories.
+
+```yaml
+Type: System.Management.Automation.SwitchParameter
+Parameter Sets: OAuthAccount, OAuthAccountEnvironment, OAuthAccountServiceEndpoint
+Aliases:
+
+Required: False
 Position: Named
 Default value: None
 Accept pipeline input: False
@@ -444,7 +467,7 @@ Accept wildcard characters: False
 ```
 
 ### -UseConnectedAccount
-Indicates that this cmdlet creates an Azure Storage context with OAuth (Azure AD) Authentication.
+Indicates that this cmdlet creates an Azure Storage context with OAuth (Microsoft Entra ID) Authentication.
 The cmdlet will use OAuth Authentication by default, when other authentication not specified.
 
 ```yaml
@@ -477,5 +500,3 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 [Get-AzStorageBlob](./Get-AzStorageBlob.md)
 
 [New-AzStorageContainerSASToken](./New-AzStorageContainerSASToken.md)
-
-

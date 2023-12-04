@@ -1,0 +1,47 @@
+{
+  "resourceType": "monitors/singleSignOnConfigurations",
+  "apiVersion": "2021-09-01",
+  "learnMore": {
+    "url": "https://learn.microsoft.com/powershell/module/az.dynatraceobservability"
+  },
+  "commands": [
+    {
+      "name": "Get-AzDynatraceMonitorSSOConfig",
+      "description": "Get a DynatraceSingleSignOnResource",
+      "path": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Dynatrace.Observability/monitors/{monitorName}/singleSignOnConfigurations/{configurationName}",
+      "help": {
+        "learnMore": {
+          "url": "https://learn.microsoft.com/powershell/module/az.dynatraceobservability/get-azdynatracemonitorssoconfig"
+        },
+        "parameterSets": [
+          {
+            "parameters": [
+              "-MonitorName <String>",
+              "-ResourceGroupName <String>",
+              "[-SubscriptionId <String[]>]"
+            ]
+          }
+        ]
+      },
+      "examples": [
+        {
+          "description": "Get a DynatraceSingleSignOnResource",
+          "parameters": [
+            {
+              "name": "-MonitorName",
+              "value": "[Path.monitorName]"
+            },
+            {
+              "name": "-ResourceGroupName",
+              "value": "[Path.resourceGroupName]"
+            },
+            {
+              "name": "-SubscriptionId",
+              "value": "[Path.subscriptionId]"
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

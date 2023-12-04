@@ -115,6 +115,30 @@ namespace Commands.Network.Test.ScenarioTests
         {
             TestRunner.RunTestScript(string.Format("Test-ApplicationGatewayGlobalConfig -baseDir '{0}'", AppDomain.CurrentDomain.BaseDirectory));
         }
+        
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        [Trait(Category.Owner, NrpTeamAlias.nvadev)]
+        public void TestApplicationGatewayBasicSkuCRUD()
+        {
+            TestRunner.RunTestScript(string.Format("Test-ApplicationGatewayBasicSkuCRUD -baseDir '{0}'", AppDomain.CurrentDomain.BaseDirectory));
+        }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        [Trait(Category.Owner, NrpTeamAlias.nvadev)]
+        public void TestApplicationGatewayBasicSkuLimitsAndUnsupportedFeatures()
+        {
+            TestRunner.RunTestScript(string.Format("Test-ApplicationGatewayBasicSkuLimitsAndUnsupportedFeatures -baseDir '{0}'", AppDomain.CurrentDomain.BaseDirectory));
+        }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        [Trait(Category.Owner, NrpTeamAlias.nvadev)]
+        public void TestApplicationGatewayBasicSkuMigration()
+        {
+            TestRunner.RunTestScript(string.Format("Test-ApplicationGatewayBasicSkuMigration -baseDir '{0}'", AppDomain.CurrentDomain.BaseDirectory));
+        }
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
@@ -200,6 +224,14 @@ namespace Commands.Network.Test.ScenarioTests
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         [Trait(Category.Owner, NrpTeamAlias.nvadev_subset1)]
+        public void TestApplicationGatewayFirewallPolicyManagedRuleGroupOverrideEmptyRule()
+        {
+            TestRunner.RunTestScript(string.Format("Test-ApplicationGatewayFirewallPolicyManagedRuleGroupOverrideEmptyRule -baseDir '{0}'", AppDomain.CurrentDomain.BaseDirectory));
+        }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        [Trait(Category.Owner, NrpTeamAlias.nvadev_subset1)]
         public void TestTopLevelWafPolicyPerRuleExclusions()
         {
             TestRunner.RunTestScript(string.Format("Test-ApplicationGatewayFirewallPolicyWithPerRuleExclusions -baseDir '{0}'", AppDomain.CurrentDomain.BaseDirectory));
@@ -259,6 +291,22 @@ namespace Commands.Network.Test.ScenarioTests
         public void TestApplicationGatewayFirewallPolicyWithRateLimitRule()
         {
             TestRunner.RunTestScript("Test-ApplicationGatewayFirewallPolicyWithRateLimitRule");
+        }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        [Trait(Category.Owner, NrpTeamAlias.nvadev_subset1)]
+        public void TestApplicationGatewayFirewallPolicyWithRateLimitRuleGeoLocation()
+        {
+            TestRunner.RunTestScript("Test-ApplicationGatewayFirewallPolicyWithRateLimitRuleGeoLocation");
+        }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        [Trait(Category.Owner, NrpTeamAlias.nvadev_subset1)]
+        public void TestApplicationGatewayFirewallPolicyCustomRuleRemoval()
+        {
+            TestRunner.RunTestScript("Test-ApplicationGatewayFirewallPolicyCustomRuleRemoval");
         }
 
         [Fact]

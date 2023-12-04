@@ -1826,7 +1826,7 @@ function Test-StorageBlobInventory
         #create rule objects
         $rule1 = New-AzStorageBlobInventoryPolicyRule -Name test1 -Disabled -BlobType blockBlob,appendBlob -PrefixMatch abc,edf,eqwewqe,eqwewqreewqe,qwewqewqewqewqewadasd -IncludeSnapshot -IncludeBlobVersion `
                     -Destination $containerName -Format Parquet -Schedule Weekly `
-                    -BlobSchemaField name,Creation-Time,Last-Modified,Content-Length,Content-MD5,BlobType,AccessTier,AccessTierChangeTime,Metadata,AccessTierInferred,Tags
+                    -BlobSchemaField name,Creation-Time,Last-Modified,Content-Length,Content-MD5,BlobType,AccessTier,AccessTierChangeTime,Metadata,AccessTierInferred,Tags -CreationTimeLastNDay 3
         $rule2 = New-AzStorageBlobInventoryPolicyRule -Name test2 -Destination $containerName -Disabled -Format Csv -Schedule Daily -ContainerSchemaField Name,Metadata,PublicAccess,Last-mOdified,LeaseStatus,LeaseState,LeaseDuration,HasImmutabilityPolicy,HasLegalHold,Etag,DefaultEncryptionScope,DenyEncryptionScopeOverride -PrefixMatch con1,con2
         $rule3 = New-AzStorageBlobInventoryPolicyRule -Name test3 -Destination $containerName -BlobType appendBlob -PrefixMatch abc1,edf1 -ExcludePrefix aaa1,bbb1  -Format Csv -Schedule Weekly -BlobSchemaField Name,Deleted,RemainingRetentionDays,Content-Type,Content-Language,Cache-Control,Content-Disposition -IncludeDeleted
 
@@ -1851,6 +1851,7 @@ function Test-StorageBlobInventory
         Assert-Null $policy1.Rules[0].Definition.Filters.IncludeDeleted
         Assert-AreEqual 2 $policy1.Rules[0].Definition.Filters.BlobTypes.Count
         Assert-AreEqual 5 $policy1.Rules[0].Definition.Filters.PrefixMatch.Count
+        Assert-AreEqual 3 $policy1.Rules[0].Definition.Filters.CreationTime.LastNDays
         Assert-AreEqual "test2" $policy1.Rules[1].Name
         Assert-AreEqual $false $policy1.Rules[1].Enabled
         Assert-AreEqual $containerName $policy1.Rules[1].Destination

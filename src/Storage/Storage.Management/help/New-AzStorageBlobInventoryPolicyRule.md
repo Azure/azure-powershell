@@ -17,7 +17,7 @@ Creates a blob inventory policy rule object, which can be used in Set-AzStorageB
 New-AzStorageBlobInventoryPolicyRule [-Name] <String> [-Disabled] -Destination <String> -Format <String>
  -Schedule <String> -BlobSchemaField <String[]> -BlobType <String[]> [-PrefixMatch <String[]>]
  [-ExcludePrefix <String[]>] [-IncludeSnapshot] [-IncludeBlobVersion] [-IncludeDeleted]
- [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
+ [-CreationTimeLastNDay <Int32>] [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
 ### ContainerRuleParameterSet
@@ -38,10 +38,10 @@ The **New-AzStorageBlobInventoryPolicyRule** cmdlet creates a blob inventory pol
 ```
 PS C:\> $rule1 = New-AzStorageBlobInventoryPolicyRule -Name Test1 -Destination $containerName -Disabled -Format Csv -Schedule Daily -ContainerSchemaField Name,Metadata,PublicAccess,Last-mOdified,LeaseStatus,LeaseState,LeaseDuration,HasImmutabilityPolicy,HasLegalHold -PrefixMatch con1,con2
 
-PS C:\> $rule2 = New-AzStorageBlobInventoryPolicyRule -Name Test2 -Destination $containerName -Format Parquet -Schedule Weekly -IncludeBlobVersion -IncludeSnapshot -BlobType blockBlob,appendBlob -PrefixMatch aaa,bbb `
-                -BlobSchemaField name,Creation-Time,Last-Modified,Content-Length,Content-MD5,BlobType,AccessTier,AccessTierChangeTime,Expiry-Time,hdi_isfolder,Owner,Group,Permissions,Acl,Metadata
-PS C:\> $rule3 = New-AzStorageBlobInventoryPolicyRule -Name Test3 -Destination $containerName -Format Parquet -Schedule Weekly -IncludeBlobVersion -IncludeSnapshot -IncludeDeleted -BlobType blockBlob,appendBlob -PrefixMatch aaa,bbb `
-                 -ExcludePrefix ccc,ddd -BlobSchemaField name,Last-Modified,BlobType,AccessTier,AccessTierChangeTime,Content-Type,Content-CRC64,CopyId,x-ms-blob-sequence-number,TagCount
+PS C:\> $rule2 = New-AzStorageBlobInventoryPolicyRule -Name Test2 -Destination $containerName -Format Parquet -Schedule Weekly  -IncludeSnapshot -BlobType blockBlob,appendBlob -PrefixMatch aaa,bbb `
+                -BlobSchemaField name,Creation-Time,Last-Modified,Content-Length,Content-MD5,BlobType,AccessTier,AccessTierChangeTime,Expiry-Time,hdi_isfolder,Owner,Group,Permissions,Acl,Metadata -CreationTimeLastNDay 30
+PS C:\> $rule3 = New-AzStorageBlobInventoryPolicyRule -Name Test3 -Destination $containerName -Format Parquet -Schedule Weekly  -IncludeSnapshot -IncludeDeleted -BlobType blockBlob,appendBlob -PrefixMatch aaa,bbb `
+                 -ExcludePrefix ccc,ddd -BlobSchemaField name,Last-Modified,BlobType,AccessTier,AccessTierChangeTime,Content-Type,Content-CRC64,CopyId,DeletionId,Deleted,DeletedTime,RemainingRetentionDays
 
 PS C:\> $policy = Set-AzStorageBlobInventoryPolicy -ResourceGroupName "myresourcegroup" -AccountName "mystorageaccount" -Disabled -Rule $rule1,$rule2
 
@@ -58,11 +58,11 @@ Rules              : {Test1, Test2, Test3}
 
 PS C:\> $policy.Rules
 
-Name  Enabled Destination   ObjectType Format  Schedule IncludeSnapshots IncludeBlobVersions IncludeDeleted BlobTypes               PrefixMatch ExcludePrefix  SchemaFields                                           
-----  ------- -----------   ---------- ------  -------- ---------------- ------------------- -------------- ---------               ----------- -------------  ------------                                           
-Test1 False   containername Container  Csv     Daily                                                                                {con1, con2}               {Name, Metadata, PublicAccess, Last-Modified...}       
-Test2 True    containername Blob       Parquet Weekly   True             True                               {blockBlob, appendBlob} {aaa, bbb}                 {Name, Creation-Time, Last-Modified, Content-Length...}
-Test3 True    containername Blob       Parquet Weekly   True             True                True           {blockBlob, appendBlob} {aaa, bbb}  {ccc, ddd}     {Name, Content-Type, Content-CRC64, Last-Modified...}
+Name  Enabled Destination   ObjectType Format  Schedule IncludeSnapshots IncludeBlobVersions IncludeDeleted BlobTypes               PrefixMatch  ExcludePrefix SchemaFields                                            CreationTime
+----  ------- -----------   ---------- ------  -------- ---------------- ------------------- -------------- ---------               -----------  ------------- ------------                                            ------------
+Test1 False   containername Container  Csv     Daily                                                                                {con1, con2}               {Name, Metadata, PublicAccess, Last-Modified...}                    
+Test2 True    containername Blob       Parquet Weekly   True                                                {blockBlob, appendBlob} {aaa, bbb}                 {Name, Creation-Time, Last-Modified, Content-Length...} LastNDays=30
+Test3 True    containername Blob       Parquet Weekly   True                                 True           {blockBlob, appendBlob} {aaa, bbb}   {ccc, ddd}    {Name, Last-Modified, BlobType, AccessTier...}
 ```
 
 This first 3 commands create 3 BlobInventoryPolicy rule objects: rule "Test1" for contaienr inventory; rule "Test2" for blob inventory; rule "Test3" for blob inventory with more schema fields, excludePrefix specified, and IncludeDeleted enabled.
@@ -116,6 +116,21 @@ Aliases:
 Accepted values: Name, Last-Modified, Metadata, LeaseStatus, LeaseState, LeaseDuration, PublicAccess, HasImmutabilityPolicy, HasLegalHold, Etag, DefaultEncryptionScope, DenyEncryptionScopeOverride, ImmutableStorageWithVersioningEnabled, Deleted, Version, DeletedTime, RemainingRetentionDays
 
 Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -CreationTimeLastNDay
+Filter the objects which has creation time in last N days. The valid value is between 1 to 36500. Inventory schema 'Creation-Time' is mandatory with this filter.
+
+```yaml
+Type: System.Int32
+Parameter Sets: BlobRuleParameterSet
+Aliases:
+
+Required: False
 Position: Named
 Default value: None
 Accept pipeline input: False

@@ -25,6 +25,7 @@ using Microsoft.WindowsAzure.Commands.Common;
 using MNM = Microsoft.Azure.Management.Network.Models;
 using System.Linq;
 using System.Collections;
+using Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters;
 
 namespace Microsoft.Azure.Commands.Network
 {
@@ -59,6 +60,7 @@ namespace Microsoft.Azure.Commands.Network
             MNM.VirtualNetworkGatewaySkuTier.ErGw1AZ,
             MNM.VirtualNetworkGatewaySkuTier.ErGw2AZ,
             MNM.VirtualNetworkGatewaySkuTier.ErGw3AZ,
+            MNM.VirtualNetworkGatewaySkuTier.ErGwScale,
             IgnoreCase = true)]
         public string GatewaySku { get; set; }
 
@@ -80,7 +82,7 @@ namespace Microsoft.Azure.Commands.Network
             ValueFromPipelineByPropertyName = true,
             HelpMessage = "A list of P2S VPN client tunneling protocols")]
         [ValidateSet(
-            MNM.VpnClientProtocol.SSTP,
+            MNM.VpnClientProtocol.Sstp,
             MNM.VpnClientProtocol.IkeV2,
             MNM.VpnClientProtocol.OpenVPN)]
         [ValidateNotNullOrEmpty]
@@ -212,6 +214,11 @@ namespace Microsoft.Azure.Commands.Network
             HelpMessage = "This will enable and disable BgpRouteTranslationForNat on this VirtualNetworkGateway.")]
         public bool? BgpRouteTranslationForNat { get; set; }
 
+        [Parameter(Mandatory = false, HelpMessage = "Set min scale units for scalable gateways")]
+        public Int32 MinScaleUnit { get; set; }
+
+        [Parameter(Mandatory = false, HelpMessage = "Set max scale units for scalable gateways")]
+        public Int32 MaxScaleUnit { get; set; }
 
         [Parameter(
             Mandatory = false,
@@ -225,6 +232,31 @@ namespace Microsoft.Azure.Commands.Network
             ValueFromPipelineByPropertyName = true,
             HelpMessage = "P2S Client Connection Configuration that assiociate between address and policy group")]
         public PSClientConnectionConfiguration[] ClientConnectionConfiguration { get; set; }
+
+        [Parameter(
+            Mandatory = false,
+            ValueFromPipelineByPropertyName = true,
+            HelpMessage = "Property to indicate if the Express Route Gateway serves traffic when there are multiple Express Route Gateways in the vnet: Enabled/Disabled")]
+        [ValidateSet(
+            "Enabled",
+            "Disabled",
+            IgnoreCase = true)]
+        [PSArgumentCompleter(
+            "Enabled",
+            "Disabled")]
+        public string AdminState { get; set; }
+
+        [Parameter(
+            Mandatory = false,
+            ValueFromPipelineByPropertyName = true,
+            HelpMessage = "Determines whether this gateway should accept traffic from other VNets.")]
+        public bool? AllowRemoteVnetTraffic { get; set; }
+
+        [Parameter(
+            Mandatory = false,
+            ValueFromPipelineByPropertyName = true,
+            HelpMessage = "Determines whether this gateway should accept traffic from other Virtual WAN networks.")]
+        public bool? AllowVirtualWanTraffic { get; set; }
 
         [Parameter(
             Mandatory = true,
@@ -507,9 +539,43 @@ namespace Microsoft.Azure.Commands.Network
                 this.VirtualNetworkGateway.NatRules = this.NatRule?.ToList();
             }
 
+            if (!string.IsNullOrEmpty(this.VirtualNetworkGateway.Sku.Name) && (this.VirtualNetworkGateway.Sku.Name.Equals(MNM.VirtualNetworkGatewaySkuTier.ErGwScale) && (this.MinScaleUnit > 0 || this.MaxScaleUnit > 0)))
+            {
+                if (this.MinScaleUnit > this.MaxScaleUnit) 
+                {
+
+                    throw new PSArgumentException(string.Format(Properties.Resources.InvalidAutoScaleConfiguration, this.MinScaleUnit, this.MaxScaleUnit));          
+                }
+
+                if (this.MaxScaleUnit > 40)
+                {
+                    throw new PSArgumentException(Properties.Resources.InvalidAutoScaleConfigurationBounds);          
+                }
+
+                this.VirtualNetworkGateway.AutoScaleConfiguration = new PSVirtualNetworkGatewayAutoscaleConfiguration();
+                this.VirtualNetworkGateway.AutoScaleConfiguration.Bounds = new PSVirtualNetworkGatewayPropertiesAutoScaleConfigurationBounds();
+                this.VirtualNetworkGateway.AutoScaleConfiguration.Bounds.Min = Convert.ToInt32(this.MinScaleUnit);
+                this.VirtualNetworkGateway.AutoScaleConfiguration.Bounds.Max = Convert.ToInt32(this.MaxScaleUnit);
+            }
+
             if (this.BgpRouteTranslationForNat.HasValue)
             {
                 this.VirtualNetworkGateway.EnableBgpRouteTranslationForNat = this.BgpRouteTranslationForNat.Value;
+            }
+
+            if (AdminState != null)
+            {
+                this.VirtualNetworkGateway.AdminState = AdminState;
+            }
+
+            if (AllowRemoteVnetTraffic.HasValue)
+            {
+                this.VirtualNetworkGateway.AllowRemoteVnetTraffic = AllowRemoteVnetTraffic.Value;
+            }
+
+            if (AllowVirtualWanTraffic.HasValue)
+            {
+                this.VirtualNetworkGateway.AllowVirtualWanTraffic = AllowVirtualWanTraffic.Value;
             }
 
             // Map to the sdk object

@@ -65,5 +65,12 @@ namespace Microsoft.Azure.Commands.NetAppFiles.Test.ScenarioTests.ScenarioTest
         {
             TestRunner.RunTestScript("Test-ResetCifsOnNfsVolume");
         }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void TestGetGroupIdListForLDAPUser()
+        {
+            TestRunner.RunTestScript("Test-GetGroupIdListForLDAPUser");
+        }
     }
 }

@@ -41,6 +41,15 @@ namespace Microsoft.WindowsAzure.Commands.Storage.File.Cmdlet
         [Alias("CloudFile")]
         public CloudFile File { get; set; }
 
+        [Parameter(
+            Mandatory = false,
+            ValueFromPipeline = true,
+            ValueFromPipelineByPropertyName = true,
+            ParameterSetName = Constants.FileParameterSetName,
+            HelpMessage = "ShareFileClient object indicated the file to Stop Copy.")]
+        [ValidateNotNull]
+        public ShareFileClient ShareFileClient { get; set; }
+
         [Parameter(HelpMessage = "Copy Id", Mandatory = false)]
         public string CopyId { get; set; }
 
@@ -68,7 +77,11 @@ namespace Microsoft.WindowsAzure.Commands.Storage.File.Cmdlet
             ShareClientOptions optionNoRetry = ClientOptions;
             optionNoRetry.Retry.MaxRetries = 0;
 
-            if (null != this.File)
+            if (this.ShareFileClient != null)
+            {
+                file = this.ShareFileClient;
+            }
+            else if (null != this.File)
             {
                 file = AzureStorageFile.GetTrack2FileClient(this.File);
             }

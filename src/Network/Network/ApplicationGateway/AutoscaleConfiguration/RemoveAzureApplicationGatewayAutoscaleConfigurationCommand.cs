@@ -43,7 +43,7 @@ namespace Microsoft.Azure.Commands.Network
                Force.IsPresent,
                "Are you sure you want to remove Autoscale Configuration",
                "Removing Autoscale Configuration..",
-               ApplicationGateway.SslPolicy.ToString(),
+               ApplicationGateway.AutoscaleConfiguration.ToString(),
                () => RemoveAutoscaleConfiguration());
         }
 

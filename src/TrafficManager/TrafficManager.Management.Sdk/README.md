@@ -5,14 +5,14 @@ This directory contains management plane service clients of Az.Storage module.
 In this directory, run AutoRest:
 ```
 autorest --reset
-autorest --use:@microsoft.azure/autorest.csharp@2.3.90
-autorest.cmd README.md --version=v2
+autorest --use:@autorest/powershell@4.x
 ```
 
 ### AutoRest Configuration
 > see https://aka.ms/autorest
 ``` yaml
-csharp: true
+isSdkGenerator: true
+powershell: true
 clear-output-folder: true
 reflect-api-versions: true
 openapi-type: arm
@@ -25,6 +25,7 @@ payload-flattening-threshold: 2
 
 ###
 ``` yaml
+commit: 4f4073bdb028bc84bc3e6405c1cbaf8e89b83caf
 directive:
   - from: trafficmanager.json
     where: $.definitions
@@ -53,7 +54,7 @@ directive:
     reason: The path parameter endpointType is defined as string in stable version, we can't change it to an enumeration.
  
 input-file:
-  - https://github.com/Azure/azure-rest-api-specs/blob/4f4073bdb028bc84bc3e6405c1cbaf8e89b83caf/specification/trafficmanager/resource-manager/Microsoft.Network/stable/2022-04-01/trafficmanager.json
+  - https://github.com/Azure/azure-rest-api-specs/blob/$(commit)/specification/trafficmanager/resource-manager/Microsoft.Network/stable/2022-04-01/trafficmanager.json
 
 output-folder: Generated
 

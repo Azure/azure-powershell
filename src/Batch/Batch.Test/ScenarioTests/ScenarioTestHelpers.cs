@@ -95,6 +95,7 @@ namespace Microsoft.Azure.Commands.Batch.Test.ScenarioTests
         /// <summary>
         /// Adds a test certificate for use in Scenario tests. Returns the thumbprint of the cert.
         /// </summary>
+        [Obsolete]
         public static string AddTestCertificate(BatchTestRunner runner, BatchAccountContext context, string filePath)
         {
             BatchClient client = new BatchClient(runner.BatchManagementClient, runner.ResourceManagementClient);
@@ -158,6 +159,7 @@ namespace Microsoft.Azure.Commands.Batch.Test.ScenarioTests
         /// <summary>
         /// Deletes a certificate.
         /// </summary>
+        [Obsolete]
         public static void WaitForCertificateToFailDeletion(BatchTestRunner runner, BatchAccountContext context, string thumbprintAlgorithm, string thumbprint)
         {
             BatchClient client = new BatchClient(runner.BatchManagementClient, runner.ResourceManagementClient);
@@ -234,9 +236,9 @@ namespace Microsoft.Azure.Commands.Batch.Test.ScenarioTests
             }
             catch (BatchException e)
             {
-                if (e.RequestInformation.BatchError.Code != "PoolAlreadyExists")
+                if (e.RequestInformation.BatchError.Code != "PoolExists")
                 {
-                    throw;
+                    throw e;
                 }
             }
         }

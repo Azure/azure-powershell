@@ -1,4 +1,4 @@
-﻿// ----------------------------------------------------------------------------------
+// ----------------------------------------------------------------------------------
 //
 // Copyright Microsoft Corporation
 // Licensed under the Apache License, Version 2.0 (the "License");
@@ -32,10 +32,6 @@ namespace Microsoft.Azure.Commands.Sql.Replication.Cmdlet
     /// <summary>
     /// Cmdlet to create a new Azure SQL Database Copy
     /// </summary>
-    [CmdletOutputBreakingChange(
-        deprecatedCmdletOutputTypeName: typeof(AzureSqlDatabaseCopyModel),
-        DeprecatedOutputProperties = new String[] { "BackupStorageRedundancy" },
-        NewOutputProperties = new String[] { "CurrentBackupStorageRedundancy", "RequestedBackupStorageRedundancy" })]
     [Cmdlet("New", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "SqlDatabaseCopy", ConfirmImpact = ConfirmImpact.Low, SupportsShouldProcess = true, DefaultParameterSetName = DtuDatabaseParameterSet), OutputType(typeof(AzureSqlDatabaseCopyModel))]
     public class NewAzureSqlDatabaseCopy : AzureSqlDatabaseCopyCmdletBase
     {
@@ -156,7 +152,7 @@ namespace Microsoft.Azure.Commands.Sql.Replication.Cmdlet
         public SwitchParameter ZoneRedundant { get; set; }
 
         [Parameter(Mandatory = false,
-            HelpMessage = "Generate and assign an Azure Active Directory Identity for this database for use with key management services like Azure KeyVault.")]
+            HelpMessage = "Generate and assign a Microsoft Entra identity for this database for use with key management services like Azure KeyVault.")]
         public SwitchParameter AssignIdentity { get; set; }
 
         [Parameter(Mandatory = false,
@@ -174,6 +170,14 @@ namespace Microsoft.Azure.Commands.Sql.Replication.Cmdlet
         [Parameter(Mandatory = false,
             HelpMessage = "The federated client id for the SQL Database. It is used for cross tenant CMK scenario.")]
         public Guid? FederatedClientId { get; set; }
+
+        /// <summary>
+        /// Gets or sets the encryption protector key auto rotation status
+        /// </summary>
+        [Parameter(Mandatory = false,
+        ValueFromPipelineByPropertyName = true,
+            HelpMessage = "The AKV Key Auto Rotation status")]
+        public SwitchParameter EncryptionProtectorAutoRotation { get; set; }
 
         protected static readonly string[] ListOfRegionsToShowWarningMessageForGeoBackupStorage = { "eastasia", "southeastasia", "brazilsouth", "east asia", "southeast asia", "brazil south" };
 
@@ -264,7 +268,8 @@ namespace Microsoft.Azure.Commands.Sql.Replication.Cmdlet
                 Identity = Common.DatabaseIdentityAndKeysHelper.GetDatabaseIdentity(this.AssignIdentity.IsPresent, this.UserAssignedIdentityId),
                 Keys = Common.DatabaseIdentityAndKeysHelper.GetDatabaseKeysDictionary(this.KeyList),
                 EncryptionProtector = this.EncryptionProtector,
-                FederatedClientId = this.FederatedClientId
+                FederatedClientId = this.FederatedClientId,
+                EncryptionProtectorAutoRotation = this.IsParameterBound(p => p.EncryptionProtectorAutoRotation) ? EncryptionProtectorAutoRotation.ToBool() : (bool?)null
             };
 
             if(ParameterSetName == DtuDatabaseParameterSet)

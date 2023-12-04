@@ -208,7 +208,7 @@ This command increases or decreases the memory size of your instance.
 ### Example 7: Scale an Azure Cache for Redis Instance - Update to different tier.
 
 ```powershell
-Set-AzRedisCache -Name "MyCache" -Size "P1" -Sku "Premium" 
+Set-AzRedisCache -Name "MyCache" -Size "P1" -Sku "Premium"
 ```
 
 ```output

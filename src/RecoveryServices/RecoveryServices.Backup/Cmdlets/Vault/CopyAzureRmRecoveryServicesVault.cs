@@ -169,7 +169,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets
                         // currently only allowing vault level data move
                         triggerMoveRequest.DataMoveLevel = "Vault";
                         triggerMoveRequest.CorrelationId = correlationId;
-                        triggerMoveRequest.PauseGC = false;
+                        triggerMoveRequest.PauseGc = false;
 
                         Logger.Instance.WriteDebug("Location of Source vault: " + SourceVault.Location);
                         ServiceClientAdapter.TriggerDataMove(TargetVault.Name, TargetVault.ResourceGroupName, triggerMoveRequest);

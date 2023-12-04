@@ -11,7 +11,7 @@ switch ($Source) {
     "PSGallery" {
         Set-PSRepository -Name $Source -InstallationPolicy Trusted
     }
-    { "DailyBuild" -or "Sign" } {
+    { $_ -in "DailyBuild", "Sign" } {
         Register-PSRepository -Name $Source -SourceLocation $AzPackagesLocation -PackageManagementProvider NuGet -InstallationPolicy Trusted
     }
 }

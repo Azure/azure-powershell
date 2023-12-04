@@ -1,4 +1,4 @@
-﻿// ----------------------------------------------------------------------------------
+// ----------------------------------------------------------------------------------
 //
 // Copyright Microsoft Corporation
 // Licensed under the Apache License, Version 2.0 (the "License");
@@ -19,7 +19,6 @@ using System.Management.Automation;
 
 namespace Microsoft.Azure.Commands.NotificationHubs.Commands.NotificationHub
 {
-    [GenericBreakingChange("Remove-AzNotificationHubAuthorizationRules alias will be removed in an upcoming breaking change release", "2.0.0")]
     [Cmdlet("Remove", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "NotificationHubAuthorizationRule", SupportsShouldProcess = true), OutputType(typeof(void))]
     [Alias("Remove-AzNotificationHubAuthorizationRules")]
     public class RemoveAzureNotificationHubAuthorizationRules : AzureNotificationHubsCmdletBase

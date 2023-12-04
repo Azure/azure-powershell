@@ -29,7 +29,8 @@ namespace Microsoft.Azure.Management.Resources.Models
         /// <summary>
         /// Initializes a new instance of the ResourceReference class.
         /// </summary>
-        /// <param name="id">The fully qualified resource Id.</param>
+        /// <param name="id">The resourceId of a resource managed by the
+        /// deployment stack.</param>
         public ResourceReference(string id = default(string))
         {
             Id = id;
@@ -42,7 +43,7 @@ namespace Microsoft.Azure.Management.Resources.Models
         partial void CustomInit();
 
         /// <summary>
-        /// Gets the fully qualified resource Id.
+        /// Gets the resourceId of a resource managed by the deployment stack.
         /// </summary>
         [JsonProperty(PropertyName = "id")]
         public string Id { get; private set; }

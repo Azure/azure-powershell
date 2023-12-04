@@ -74,7 +74,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Test.ScenarioTests
             );
         }
 
-        [Fact(Skip = "To be fixed in upcoming release")]
+        [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         [Trait(TestConstants.Workload, TestConstants.AzureVmWorkload)]
         public void TestAzureVmWorkloadBackupProtectionItem()
@@ -155,6 +155,19 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Test.ScenarioTests
                 $"Import-Module {_AzureWorkloadcommonModule.AsAbsoluteLocation()}",
                 $"Import-Module {_AzureWorkloadtestModule.AsAbsoluteLocation()}",
                 "Test-AzureVmWorkloadCrossSubscriptionRestore"
+            );
+        }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        [Trait(TestConstants.Workload, TestConstants.AzureVmWorkload)]
+        public void TestAzureVmWorkloadCrossRegionRestore()
+        {
+            
+            TestRunner.RunTestScript(
+                $"Import-Module {_AzureWorkloadcommonModule.AsAbsoluteLocation()}",
+                $"Import-Module {_AzureWorkloadtestModule.AsAbsoluteLocation()}",
+                "Test-AzureVmWorkloadCrossRegionRestore"
             );
         }
     }

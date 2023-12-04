@@ -190,6 +190,6 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 [New-AzRouteMap](./New-AzRouteMap.md)
 
-[New-AzRouteMapRuleAction](./New-RouteMapRuleAction.md)
+[New-AzRouteMapRuleAction](./New-AzRouteMapRuleAction.md)
 
 [New-AzRouteMap](./New-AzRouteMap.md)

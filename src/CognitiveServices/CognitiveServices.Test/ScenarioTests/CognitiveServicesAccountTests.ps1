@@ -62,7 +62,7 @@ function Test-AsyncAccountOperations
         # Test
         $accountname = 'csa' + $rgname;
         $skuname = 'S0';
-        $accounttype = 'Personalizer';
+        $accounttype = 'FormRecognizer';
         $loc = Get-Location -providerNamespace "Microsoft.CognitiveServices" -resourceType "accounts" -preferredLocation "West US 2";
 
         New-AzResourceGroup -Name $rgname -Location $loc;
@@ -150,6 +150,50 @@ function Test-GetAzureCognitiveServiceAccount
         Assert-True { $numberOfAccountsInSubscription -ge $numberOfAccountsInRG }
         
         Retry-IfException { Remove-AzCognitiveServicesAccount -ResourceGroupName $rgname -Name $accountname -Force; }
+    }
+    finally
+    {
+        # Cleanup
+        Clean-ResourceGroup $rgname
+    }
+}
+
+<#
+.SYNOPSIS
+Test Get-AzCognitiveServicesModel
+#>
+function Test-GetAzureCognitiveServicesModels
+{
+    # Setup
+    $rgname = Get-CognitiveServicesManagementTestResourceName;
+    try
+    {
+        $loc = Get-Location -providerNamespace "Microsoft.CognitiveServices" -resourceType "accounts" -preferredLocation "West US";
+        New-AzResourceGroup -Name $rgname -Location $loc;
+        # Test
+        Get-AzCognitiveServicesModel -Location eastus
+    }
+    finally
+    {
+        # Cleanup
+        Clean-ResourceGroup $rgname
+    }
+}
+
+<#
+.SYNOPSIS
+Test Get-AzCognitiveServicesUsage
+#>
+function Test-GetAzureCognitiveServicesUsages
+{
+    # Setup
+    $rgname = Get-CognitiveServicesManagementTestResourceName;
+    try
+    {
+        $loc = Get-Location -providerNamespace "Microsoft.CognitiveServices" -resourceType "accounts" -preferredLocation "West US";
+        New-AzResourceGroup -Name $rgname -Location $loc;
+        # Test
+        Get-AzCognitiveServicesUsage -Location $loc
     }
     finally
     {
@@ -332,7 +376,7 @@ function Test-NewAzureRmCognitiveServicesAccountWithVnet
         $vnetname = 'vnet' + $rgname;
         $skuname = 'S2';
         $accounttype = 'TextAnalytics';
-        $loc = Get-Location -providerNamespace "Microsoft.CognitiveServices" -resourceType "accounts" -preferredLocation "West Central US";
+        $loc = Get-Location -providerNamespace "Microsoft.CognitiveServices" -resourceType "accounts" -preferredLocation "West US";
 
         New-AzResourceGroup -Name $rgname -Location $loc;
 
@@ -402,7 +446,7 @@ function Test-SetAzureRmCognitiveServicesAccountWithVnet
         $vnetname = 'vnet' + $rgname;
         $skuname = 'S0';
         $accounttype = 'Face';
-        $loc = "SOUTHCENTRALUS";
+        $loc = "EastUS2";
 
         New-AzResourceGroup -Name $rgname -Location $loc;
 		
@@ -788,9 +832,9 @@ function Test-GetWithPaging
 
 <#
 .SYNOPSIS
-Test Test-GetUsages
+Test Test-GetAccountUsages
 #>
-function Test-GetUsages
+function Test-GetAccountUsages
 {
     # Setup
     $rgname = Get-CognitiveServicesManagementTestResourceName;
@@ -1018,8 +1062,8 @@ function Test-RestrictOutboundNetworkAccess
         # Test
         $accountname = 'csa' + $rgname;
         $skuname = 'S0';
-        $accounttype = 'Face';
-        $loc = "SOUTHCENTRALUS";
+        $accounttype = 'FormRecognizer';
+        $loc = "West US 2";
 
         New-AzResourceGroup -Name $rgname -Location $loc;
         $createdAccount = New-AzCognitiveServicesAccount -ResourceGroupName $rgname -Name $accountname -Type $accounttype -SkuName $skuname -Location $loc -CustomSubdomainName $accountname -RestrictOutboundNetworkAccess $true -AllowedFqdnList @("abc.com", "dfe.net") -Force;
@@ -1039,8 +1083,8 @@ function Test-RestrictOutboundNetworkAccess
         # Test
         $accountname = 'csa' + $rgname;
         $skuname = 'S0';
-        $accounttype = 'Face';
-        $loc = "SOUTHCENTRALUS";
+        $accounttype = 'FormRecognizer';
+        $loc = "West US 2";
 
         New-AzResourceGroup -Name $rgname -Location $loc;
         $createdAccount = New-AzCognitiveServicesAccount -ResourceGroupName $rgname -Name $accountname -Type $accounttype -SkuName $skuname -Location $loc -CustomSubdomainName $accountname -Force;
@@ -1078,7 +1122,7 @@ function Test-UserAssignedIdentity
         $accountname = 'csa' + $rgname;
         $skuname = 'E0';
         $accounttype = 'Face';
-        $loc = "WestUS2";
+        $loc = "EastUS2";
 
         New-AzResourceGroup -Name $rgname -Location $loc;
         $createdAccount = New-AzCognitiveServicesAccount -ResourceGroupName $rgname -Name $accountname -Type $accounttype -SkuName $skuname -Location $loc -CustomSubdomainName $accountname -AssignIdentity -IdentityType "UserAssigned" -UserAssignedIdentityId @("/subscriptions/f9b96b36-1f5e-4021-8959-51527e26e6d3/resourceGroups/yuanyang/providers/Microsoft.ManagedIdentity/userAssignedIdentities/sdk-test-mi") -Force;
@@ -1098,7 +1142,7 @@ function Test-UserAssignedIdentity
         $accountname = 'csa' + $rgname;
         $skuname = 'E0';
         $accounttype = 'Face';
-        $loc = "WestUS2";
+        $loc = "EastUS2";
 
         New-AzResourceGroup -Name $rgname -Location $loc;
         $createdAccount = New-AzCognitiveServicesAccount -ResourceGroupName $rgname -Name $accountname -Type $accounttype -SkuName $skuname -Location $loc -CustomSubdomainName $accountname -AssignIdentity -Force;
@@ -1237,14 +1281,14 @@ function Test-UserOwnedStorage
         $accountname = 'csa' + $rgname;
         $skuname = 'S0';
         $accounttype = 'SpeechServices';
-        $loc = "Central US EUAP";
+        $loc = "EastUS2";
 
         New-AzResourceGroup -Name $rgname -Location $loc;
-        $createdAccount = New-AzCognitiveServicesAccount -ResourceGroupName $rgname -Name $accountname -Type $accounttype -SkuName $skuname -Location $loc -CustomSubdomainName $accountname -AssignIdentity -StorageAccountId @("/subscriptions/f9b96b36-1f5e-4021-8959-51527e26e6d3/resourceGroups/felixwa-01/providers/Microsoft.Storage/storageAccounts/felixwatest") -Force;
+        $createdAccount = New-AzCognitiveServicesAccount -ResourceGroupName $rgname -Name $accountname -Type $accounttype -SkuName $skuname -Location $loc -CustomSubdomainName $accountname -AssignIdentity -StorageAccountId @("/subscriptions/f9b96b36-1f5e-4021-8959-51527e26e6d3/resourceGroups/felixwa-01/providers/Microsoft.Storage/storageAccounts/felixwatestml18308718583") -Force;
         Assert-NotNull $createdAccount;
         Assert-AreEqual $createdAccount.Identity.Type "SystemAssigned"
         Assert-AreEqual $createdAccount.UserOwnedStorage.Length 1
-        Assert-AreEqual $createdAccount.UserOwnedStorage[0].ResourceId "/subscriptions/f9b96b36-1f5e-4021-8959-51527e26e6d3/resourceGroups/felixwa-01/providers/Microsoft.Storage/storageAccounts/felixwatest"
+        Assert-AreEqual $createdAccount.UserOwnedStorage[0].ResourceId "/subscriptions/f9b96b36-1f5e-4021-8959-51527e26e6d3/resourceGroups/felixwa-01/providers/Microsoft.Storage/storageAccounts/felixwatestml18308718583"
     }
     finally
     {
@@ -1257,19 +1301,18 @@ function Test-UserOwnedStorage
     {
         # Test
         $accountname = 'csa' + $rgname;
-        $skuname = 'S0';
-        $accounttype = 'SpeechServices';
-        $loc = "Central US EUAP";
+        $skuname = 'S';
+        $accounttype = 'TextAnalytics';
+        $loc = "EastUS2";
 
         New-AzResourceGroup -Name $rgname -Location $loc;
         $createdAccount = New-AzCognitiveServicesAccount -ResourceGroupName $rgname -Name $accountname -Type $accounttype -SkuName $skuname -Location $loc -CustomSubdomainName $accountname -AssignIdentity -Force;
         Assert-NotNull $createdAccount;
         
-        
-        $updatedAccount = Set-AzCognitiveServicesAccount -ResourceGroupName $rgname -Name $accountname -StorageAccountId @("/subscriptions/f9b96b36-1f5e-4021-8959-51527e26e6d3/resourceGroups/felixwa-01/providers/Microsoft.Storage/storageAccounts/felixwatest") 
+        $updatedAccount = Set-AzCognitiveServicesAccount -ResourceGroupName $rgname -Name $accountname -StorageAccountId @("/subscriptions/f9b96b36-1f5e-4021-8959-51527e26e6d3/resourceGroups/felixwa-01/providers/Microsoft.Storage/storageAccounts/felixwatestml18308718583") 
         Assert-NotNull $updatedAccount;
         Assert-AreEqual $updatedAccount.UserOwnedStorage.Length 1
-        Assert-AreEqual $updatedAccount.UserOwnedStorage[0].ResourceId "/subscriptions/f9b96b36-1f5e-4021-8959-51527e26e6d3/resourceGroups/felixwa-01/providers/Microsoft.Storage/storageAccounts/felixwatest"
+        Assert-AreEqual $updatedAccount.UserOwnedStorage[0].ResourceId "/subscriptions/f9b96b36-1f5e-4021-8959-51527e26e6d3/resourceGroups/felixwa-01/providers/Microsoft.Storage/storageAccounts/felixwatestml18308718583"
     }
     finally
     {
@@ -1293,7 +1336,7 @@ function Test-PrivateEndpoint
         $accountname = 'csa' + $rgname;
         $skuname = 'S0';
         $accounttype = 'Face';
-        $loc = "SOUTHCENTRALUS";
+        $loc = "East US";
 
         New-AzResourceGroup -Name $rgname -Location $loc;
         $createdAccount = New-AzCognitiveServicesAccount -ResourceGroupName $rgname -Name $accountname -Type $accounttype -SkuName $skuname -Location $loc -CustomSubdomainName $accountname -Force;
@@ -1342,7 +1385,7 @@ function Test-PublicNetworkAccess
         $accountname = 'csa' + $rgname;
         $skuname = 'S1';
         $accounttype = 'TextAnalytics';
-        $loc = "Central US EUAP";
+        $loc = "West US 2";
 
         New-AzResourceGroup -Name $rgname -Location $loc;
         $createdAccount = New-AzCognitiveServicesAccount -ResourceGroupName $rgname -Name $accountname -Type $accounttype -SkuName $skuname -Location $loc -CustomSubdomainName $accountname -Force;
@@ -1373,7 +1416,7 @@ function Test-PublicNetworkAccess
         $accountname = 'csa' + $rgname;
         $skuname = 'S1';
         $accounttype = 'TextAnalytics';
-        $loc = "Central US EUAP";
+        $loc = "West US 2";
 
         New-AzResourceGroup -Name $rgname -Location $loc;
         $createdAccount = New-AzCognitiveServicesAccount -ResourceGroupName $rgname -Name $accountname -Type $accounttype -SkuName $skuname -Location $loc -CustomSubdomainName $accountname -PublicNetworkAccess "Enabled" -Force;
@@ -1392,7 +1435,7 @@ function Test-PublicNetworkAccess
         $accountname = 'csa' + $rgname;
         $skuname = 'S1';
         $accounttype = 'TextAnalytics';
-        $loc = "Central US EUAP";
+        $loc = "West US 2";
 
         New-AzResourceGroup -Name $rgname -Location $loc;
         $createdAccount = New-AzCognitiveServicesAccount -ResourceGroupName $rgname -Name $accountname -Type $accounttype -SkuName $skuname -Location $loc -CustomSubdomainName $accountname -PublicNetworkAccess "Disabled" -Force;
@@ -1698,7 +1741,7 @@ function Test-Deployment
         $accountname = 'csa' + $rgname;
         $skuname = 'S0';
         $accounttype = 'OpenAI';
-        $loc = "SOUTHCENTRALUS";
+        $loc = "EASTUS";
         
         # generate a account
         New-AzResourceGroup -Name $rgname -Location $loc;
@@ -1711,7 +1754,6 @@ function Test-Deployment
         $properties.Model.Format = "OpenAI"
         $properties.Model.Name = "text-ada-001"
         $properties.Model.Version = "1"
-        $properties.ScaleSettings.ScaleType = "Standard"
 
         New-AzCognitiveServicesAccountDeployment -ResourceGroupName $rgname -AccountName $accountname -Name dpy -Properties $properties
         Get-AzCognitiveServicesAccountDeployment -ResourceGroupName $rgname -AccountName $accountname
@@ -1740,7 +1782,7 @@ function Test-ListModels
         $accountname = 'csa' + $rgname;
         $skuname = 'S0';
         $accounttype = 'OpenAI';
-        $loc = "westus2";
+        $loc = "eastus";
         
         # generate a account
         New-AzResourceGroup -Name $rgname -Location $loc;
@@ -1758,6 +1800,99 @@ function Test-ListModels
     }
 }
 
+<#
+.SYNOPSIS
+Test Rai
+#>
+function Test-Rai
+{
+    $rgname = Get-CognitiveServicesManagementTestResourceName;
+
+    try
+    {
+        # Test
+        $accountname = 'csa' + $rgname;
+        $skuname = 'S0';
+        $accounttype = 'OpenAI';
+        $loc = "eastus";
+
+        # generate a account
+        New-AzResourceGroup -Name $rgname -Location $loc;
+        $account = New-AzCognitiveServicesAccount -ResourceGroupName $rgname -Name $accountname -Type $accounttype -SkuName $skuname -Location $loc;
+        Assert-NotNull $account;
+        
+        # check default policy
+        $policiesDefault = Get-AzCognitiveServicesAccountRaiPolicy -ResourceGroupName $rgname -AccountName $accountname
+        
+        # create a new policy
+		$newPolicyProperties = New-AzCognitiveServicesObject -Type RaiPolicyProperties
+        
+        $newPolicyProperties.BasePolicyName = $policiesDefault[0].Name
+        $newPolicyProperties.ContentFilters = $policiesDefault[0].Properties.ContentFilters
+        New-AzCognitiveServicesAccountRaiPolicy -ResourceGroupName $rgname -AccountName $accountname -Name "testPolicy" -Properties $newPolicyProperties
+        
+        # make sure new policy is created
+        $policies = Get-AzCognitiveServicesAccountRaiPolicy -ResourceGroupName $rgname -AccountName $accountname
+        Get-AzCognitiveServicesAccountRaiPolicy -ResourceGroupName $rgname -AccountName $accountname -Name "testPolicy"
+        
+        # check default block list
+        Get-AzCognitiveServicesAccountRaiBlocklist -ResourceGroupName $rgname -AccountName $accountname
+        
+        # create a new block list
+        $b = New-AzCognitiveServicesObject -Type RaiBlocklistProperties
+        $b.Description = "Test Block List"
+        New-AzCognitiveServicesAccountRaiBlocklist -ResourceGroupName $rgname -AccountName $accountname -Name "testBlockList" -Properties $b
+        
+        # make sure new block list is created
+        Get-AzCognitiveServicesAccountRaiBlocklist -ResourceGroupName $rgname -AccountName $accountname
+        Get-AzCognitiveServicesAccountRaiBlocklist -ResourceGroupName $rgname -AccountName $accountname -Name "testBlockList"
+        
+        # check default block list items
+        Get-AzCognitiveServicesAccountRaiBlocklistItem -ResourceGroupName $rgname -AccountName $accountname -RaiBlocklistName "testBlockList"
+        
+        # create a new block list item
+        $i = New-AzCognitiveServicesObject -Type RaiBlocklistItemProperties
+        $i.Pattern = "*aa"
+        $i.IsRegex = $False
+        New-AzCognitiveServicesAccountRaiBlocklistItem -ResourceGroupName $rgname -AccountName $accountname -RaiBlocklistName "testBlockList" -Name "testBlockListItem" -Properties $i
+
+        # make sure new block list item is created
+        Get-AzCognitiveServicesAccountRaiBlocklistItem -ResourceGroupName $rgname -AccountName $accountname -RaiBlocklistName "testBlockList"
+        #Get-AzCognitiveServicesAccountRaiBlocklistItem -ResourceGroupName $rgname -AccountName $accountname -RaiBlocklistName "testBlockList" -Name "testBlockListItem"
+
+        $policy = Get-AzCognitiveServicesAccountRaiPolicy -ResourceGroupName $rgname -AccountName $accountname -Name "testPolicy"
+        $policieProperties = $policy.Properties
+        $policieProperties.CompletionBlocklists = New-AzCognitiveServicesObject -Type RaiBlocklistConfig -AsList
+        $policieProperties.CompletionBlocklists.Add($(New-AzCognitiveServicesObject -Type RaiBlocklistConfig))
+        $policieProperties.CompletionBlocklists[0].BlocklistName = "testBlockList"
+        $policieProperties.CompletionBlocklists[0].Blocking = $True
+        $policieProperties.PromptBlocklists = New-AzCognitiveServicesObject -Type RaiBlocklistConfig -AsList
+        $policieProperties.PromptBlocklists.Add($(New-AzCognitiveServicesObject -Type RaiBlocklistConfig))
+        $policieProperties.PromptBlocklists[0].BlocklistName = "testBlockList"
+        $policieProperties.PromptBlocklists[0].Blocking = $True
+
+        # update policy to use the custom list
+        New-AzCognitiveServicesAccountRaiPolicy -ResourceGroupName $rgname -AccountName $accountname -Name "testPolicy" -Properties $policieProperties
+        $policies = Get-AzCognitiveServicesAccountRaiPolicy -ResourceGroupName $rgname -AccountName $accountname
+        
+        # delete and check policy
+        Remove-AzCognitiveServicesAccountRaiPolicy -ResourceGroupName $rgname -AccountName $accountname -Name "testPolicy"
+        $policies = Get-AzCognitiveServicesAccountRaiPolicy -ResourceGroupName $rgname -AccountName $accountname
+        
+        # delete and check block list item
+        Remove-AzCognitiveServicesAccountRaiBlocklistItem -ResourceGroupName $rgname -AccountName $accountname -RaiBlocklistName "testBlockList" -Name "testBlockListItem"
+        Get-AzCognitiveServicesAccountRaiBlocklistItem -ResourceGroupName $rgname -AccountName $accountname -RaiBlocklistName "testBlockList"
+
+        # delete and check block list
+        Remove-AzCognitiveServicesAccountRaiBlocklist -ResourceGroupName $rgname -AccountName $accountname -Name "testBlockList"
+        Get-AzCognitiveServicesAccountRaiBlocklist -ResourceGroupName $rgname -AccountName $accountname
+    }
+    finally
+    {
+        # Cleanup
+        Clean-ResourceGroup $rgname
+    }
+}
 
 <#
 .SYNOPSIS

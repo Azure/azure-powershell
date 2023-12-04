@@ -1,4 +1,4 @@
-﻿// ----------------------------------------------------------------------------------
+// ----------------------------------------------------------------------------------
 //
 // Copyright Microsoft Corporation
 // Licensed under the Apache License, Version 2.0 (the "License");
@@ -25,7 +25,6 @@ namespace Microsoft.Azure.Commands.Resources.ManagementGroups
     public class UpdateAzureRmManagementGroupsHierarchySettings : AzureManagementGroupsCmdletBase
     {
         [Alias("GroupId")]
-        [CmdletParameterBreakingChange("GroupName", ReplaceMentCmdletParameterName = "GroupId", ChangeDescription = "We will replace GroupName with GroupId to make it more clear.")]
         [Parameter(ParameterSetName = Constants.ParameterSetNames.GroupOperationsParameterSet, Mandatory = true, HelpMessage = Constants.HelpMessages.GroupName, Position = 0)]
         [Parameter(ParameterSetName = Constants.ParameterSetNames.ParentGroupParameterSet, Mandatory = true,
             HelpMessage = Constants.HelpMessages.ParentObject)]

@@ -472,10 +472,27 @@ namespace Microsoft.Azure.Commands.NetAppFiles.Models
 
         /// <summary>
         /// Gets or sets IsLargeVolume 
-        /// </summary>        
+        /// </summary>
         /// <remarks>
         /// If enabled (true) Specifies whether volume is a Large Volume or Regular Volume. Defaults to false
         /// </remarks>
-        public bool? IsLargeVolume { get; set; }        
+        public bool? IsLargeVolume { get; set; }
+
+        /// <summary>
+        /// Gets or sets ActualThroughputMibps
+        /// </summary>        
+        /// <remarks>
+        /// Actual throughput in MiB/s for auto qosType volumes calculated
+        /// based on size and serviceLevel
+        /// </remarks>
+        public double? ActualThroughputMibps { get; set; }
+
+        /// <summary>
+        /// Gets originating Resource Id
+        /// </summary>
+        /// <remarks>
+        /// Id of the snapshot or backup that the volume is restored from.
+        /// </remarks>
+        public string OriginatingResourceId { get; set; }
     }
 }

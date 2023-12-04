@@ -1,4 +1,4 @@
-﻿// ----------------------------------------------------------------------------------
+// ----------------------------------------------------------------------------------
 //
 // Copyright Microsoft Corporation
 // Licensed under the Apache License, Version 2.0 (the "License");
@@ -27,7 +27,6 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Blob.Cmdlet
     /// <summary>
     /// list azure blobs in specified azure FileSystem
     /// </summary>
-    [GenericBreakingChange("The leading question mark '?' of the created SAS token will be removed in a future release.")]
     [Cmdlet("New", Azure.Commands.ResourceManager.Common.AzureRMConstants.AzurePrefix + "DataLakeGen2SasToken", DefaultParameterSetName = ManualParameterSet), OutputType(typeof(String))]
     public class NewDataLakeGen2SasTokenCommand : StorageCloudBlobCmdletBase
     {
@@ -204,11 +203,12 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Blob.Cmdlet
             }
             string sasToken = SasTokenHelper.GetDatalakeGen2SharedAccessSignature(Channel.StorageContext, sasBuilder, generateUserDelegationSas, DataLakeClientOptions, CmdletCancellationToken);
 
+            // remove prefix "?" of SAS if any
+            sasToken = Util.GetSASStringWithoutQuestionMark(sasToken);
 
             if (FullUri)
             {
-                string fullUri = pathClient.Uri.ToString();
-                fullUri = fullUri + "?" + sasToken;
+                string fullUri = SasTokenHelper.GetFullUriWithSASToken(pathClient.Uri.ToString(), sasToken);
                 WriteObject(fullUri);
             }
             else

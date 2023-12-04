@@ -28,17 +28,17 @@ function Test-RecordSetCrud
 	Assert-NotNull $createdRecord
 	Assert-NotNull $createdRecord.Etag
 	Assert-AreEqual 100 $createdRecord.Ttl
-	Assert-AreEqual $zoneName $createdRecord.ZoneName 
-	Assert-AreEqual $recordName $createdRecord.Name 
-	Assert-AreEqual $resourceGroup.ResourceGroupName $createdRecord.ResourceGroupName 
+	Assert-AreEqual $zoneName $createdRecord.ZoneName
+	Assert-AreEqual $recordName $createdRecord.Name
+	Assert-AreEqual $resourceGroup.ResourceGroupName $createdRecord.ResourceGroupName
 	Assert-AreEqual 1 $createdRecord.Metadata.Count
 	Assert-AreEqual 0 $createdRecord.Records.Count
 
 	$retrievedRecord = Get-AzDnsRecordSet -Name $recordName -ZoneName $zoneName -ResourceGroupName $resourceGroup.ResourceGroupName -RecordType A
 
 	Assert-NotNull $retrievedRecord
-	Assert-AreEqual $recordName $retrievedRecord.Name 
-	Assert-AreEqual $zoneName $retrievedRecord.ZoneName 
+	Assert-AreEqual $recordName $retrievedRecord.Name
+	Assert-AreEqual $zoneName $retrievedRecord.ZoneName
 	Assert-AreEqual $resourceGroup.ResourceGroupName $retrievedRecord.ResourceGroupName
 	Assert-AreEqual $retrievedRecord.Etag $createdRecord.Etag
 	Assert-AreEqual 1 $retrievedRecord.Metadata.Count
@@ -53,8 +53,8 @@ function Test-RecordSetCrud
 
 	Assert-NotNull $updatedRecord
 	Assert-NotNull $updatedRecord.Etag
-	Assert-AreEqual $recordName $updatedRecord.Name 
-	Assert-AreEqual $zoneName $updatedRecord.ZoneName 
+	Assert-AreEqual $recordName $updatedRecord.Name
+	Assert-AreEqual $zoneName $updatedRecord.ZoneName
 	Assert-AreEqual $resourceGroup.ResourceGroupName $updatedRecord.ResourceGroupName
 	Assert-AreEqual 1300 $updatedRecord.Ttl
 	Assert-AreNotEqual $updatedRecord.Etag $createdRecord.Etag
@@ -65,8 +65,8 @@ function Test-RecordSetCrud
 	$retrievedRecord = Get-AzDnsRecordSet -Name $recordName -ZoneName $zoneName -ResourceGroupName $resourceGroup.ResourceGroupName -RecordType A
 
 	Assert-NotNull $retrievedRecord
-	Assert-AreEqual $recordName $retrievedRecord.Name 
-	Assert-AreEqual $zoneName $retrievedRecord.ZoneName 
+	Assert-AreEqual $recordName $retrievedRecord.Name
+	Assert-AreEqual $zoneName $retrievedRecord.ZoneName
 	Assert-AreEqual $resourceGroup.ResourceGroupName $retrievedRecord.ResourceGroupName
 	Assert-AreEqual $retrievedRecord.Etag $updatedRecord.Etag
 	Assert-AreEqual 2 $retrievedRecord.Metadata.Count
@@ -96,20 +96,20 @@ function Test-AliasRecordSet
 	$subscription = getSubscription
 	$resourceGroup = TestSetup-CreateResourceGroup
 	$recordType = "A"
-	$zone = $resourceGroup | New-AzDnsZone -Name $zoneName 
+	$zone = $resourceGroup | New-AzDnsZone -Name $zoneName
 
 	# non alias record
 	$record = $zone | New-AzDnsRecordSet -Name $recordName -Ttl 100 -RecordType $recordType -DnsRecords @()
 	$record = $record | Add-AzDnsRecordConfig -Ipv4Address 1.1.1.1
 	$record = $record | Set-AzDnsRecordSet
-	
+
 	# alias record pointing to non-alias record
 	$aliasRecordName = "alias" + $(getAssetname)
 	$createdRecord = New-AzDnsRecordSet -Name $aliasRecordName -ZoneName $zoneName -ResourceGroupName $resourceGroup.ResourceGroupName -RecordType $recordType -TargetResourceId $record.Id
 
 	Assert-NotNull $createdRecord
-	Assert-AreEqual $zoneName $createdRecord.ZoneName 
-	Assert-AreEqual $aliasRecordName $createdRecord.Name 
+	Assert-AreEqual $zoneName $createdRecord.ZoneName
+	Assert-AreEqual $aliasRecordName $createdRecord.Name
 	Assert-AreEqual $resourceGroup.ResourceGroupName $createdRecord.ResourceGroupName
 
 	$aliasRecord = $zone | Get-AzDnsRecordSet -Name $aliasRecordName -RecordType $recordType
@@ -146,22 +146,22 @@ function Test-RecordSetCrudTrimsDotFromZoneName
 	$createdRecord = New-AzDnsRecordSet -Name $recordName -ZoneName $zoneNameWithDot -ResourceGroupName $resourceGroup.ResourceGroupName -Ttl 100 -RecordType A -Metadata @{tag1 = "val1"}
 
 	Assert-NotNull $createdRecord
-	Assert-AreEqual $zoneName $createdRecord.ZoneName 
-	Assert-AreEqual $recordName $createdRecord.Name 
-	Assert-AreEqual $resourceGroup.ResourceGroupName $createdRecord.ResourceGroupName 
+	Assert-AreEqual $zoneName $createdRecord.ZoneName
+	Assert-AreEqual $recordName $createdRecord.Name
+	Assert-AreEqual $resourceGroup.ResourceGroupName $createdRecord.ResourceGroupName
 
 	$retrievedRecord = Get-AzDnsRecordSet -Name $recordName -ZoneName $zoneNameWithDot -ResourceGroupName $resourceGroup.ResourceGroupName -RecordType A
 
 	Assert-NotNull $retrievedRecord
-	Assert-AreEqual $recordName $retrievedRecord.Name 
-	Assert-AreEqual $zoneName $retrievedRecord.ZoneName 
+	Assert-AreEqual $recordName $retrievedRecord.Name
+	Assert-AreEqual $zoneName $retrievedRecord.ZoneName
 	Assert-AreEqual $resourceGroup.ResourceGroupName $retrievedRecord.ResourceGroupName
 
 	$retrievedRecord = Get-AzDnsRecordSet -Name $recordName -ZoneName $zoneNameWithDot -ResourceGroupName $resourceGroup.ResourceGroupName -RecordType A
 
 	Assert-NotNull $retrievedRecord
-	Assert-AreEqual $recordName $retrievedRecord.Name 
-	Assert-AreEqual $zoneName $retrievedRecord.ZoneName 
+	Assert-AreEqual $recordName $retrievedRecord.Name
+	Assert-AreEqual $zoneName $retrievedRecord.ZoneName
 	Assert-AreEqual $resourceGroup.ResourceGroupName $retrievedRecord.ResourceGroupName
 
 	$removed = Remove-AzDnsRecordSet -Name $recordName -ZoneName $zoneNameWithDot -ResourceGroupName $resourceGroup.ResourceGroupName -RecordType A -PassThru -Confirm:$false
@@ -187,8 +187,8 @@ function Test-RecordSetCrudWithPiping
 	$resourceGroupName = $updatedRecord.ResourceGroupName
 	Assert-NotNull $updatedRecord
 	Assert-NotNull $updatedRecord.Etag
-	Assert-AreEqual $recordName $updatedRecord.Name 
-	Assert-AreEqual $zoneName $updatedRecord.ZoneName 
+	Assert-AreEqual $recordName $updatedRecord.Name
+	Assert-AreEqual $zoneName $updatedRecord.ZoneName
 	Assert-NotNull $updatedRecord.ResourceGroupName
 	Assert-AreEqual 1 $updatedRecord.Metadata.Count
 	Assert-AreEqual 1 $updatedRecord.Records.Count
@@ -215,16 +215,16 @@ function Test-RecordSetCrudWithPipingTrimsDotFromZoneName
 
 	$recordName = getAssetname
     $zone = TestSetup-CreateResourceGroup | New-AzDnsZone -Name $zoneName
-	
+
 	$zoneObjectWithDot = New-Object Microsoft.Azure.Commands.Dns.DnsZone
 	$zoneObjectWithDot.Name = $zoneNameWithDot
 	$zoneObjectWithDot.ResourceGroupName = $zone.ResourceGroupName
-	
+
 	$createdRecord = $zoneObjectWithDot | New-AzDnsRecordSet -Name $recordName -Ttl 100 -RecordType A -Metadata @{ tag1 ="val1"}
 
 	Assert-NotNull $createdRecord
-	Assert-AreEqual $recordName $createdRecord.Name 
-	Assert-AreEqual $zoneName $createdRecord.ZoneName 
+	Assert-AreEqual $recordName $createdRecord.Name
+	Assert-AreEqual $zoneName $createdRecord.ZoneName
 	Assert-AreEqual $zone.ResourceGroupName $createdRecord.ResourceGroupName
 
 	$recordObjectWithDot = New-Object Microsoft.Azure.Commands.Dns.DnsRecordSet
@@ -236,22 +236,22 @@ function Test-RecordSetCrudWithPipingTrimsDotFromZoneName
 	$recordAfterAdd = $recordObjectWithDot | Add-AzDnsRecordConfig -Ipv4Address 13.13.0.13
 
 	# this is an offline operation, we don't check the dot and don't change the object in place
-	Assert-AreEqual $zoneNameWithDot $recordAfterAdd.ZoneName 
+	Assert-AreEqual $zoneNameWithDot $recordAfterAdd.ZoneName
 
 	$updatedRecord = $recordAfterAdd | Set-AzDnsRecordSet -Overwrite
 
 	Assert-NotNull $updatedRecord
-	Assert-AreEqual $recordName $updatedRecord.Name 
-	Assert-AreEqual $zoneName $updatedRecord.ZoneName 
+	Assert-AreEqual $recordName $updatedRecord.Name
+	Assert-AreEqual $zoneName $updatedRecord.ZoneName
 	Assert-AreEqual $zone.ResourceGroupName $updatedRecord.ResourceGroupName
 
-	$retrievedRecord = Get-AzDnsRecordSet -Name $recordName -ZoneName $zoneNameWithDot -ResourceGroupName $zone.ResourceGroupName -RecordType A 
-	
+	$retrievedRecord = Get-AzDnsRecordSet -Name $recordName -ZoneName $zoneNameWithDot -ResourceGroupName $zone.ResourceGroupName -RecordType A
+
 	Assert-NotNull $retrievedRecord
-	Assert-AreEqual $recordName $retrievedRecord.Name 
-	Assert-AreEqual $zoneName $retrievedRecord.ZoneName 
+	Assert-AreEqual $recordName $retrievedRecord.Name
+	Assert-AreEqual $zoneName $retrievedRecord.ZoneName
 	Assert-AreEqual $zone.ResourceGroupName $updatedRecord.ResourceGroupName
-	
+
 	$removed = $recordObjectWithDot | Remove-AzDnsRecordSet -Overwrite -PassThru -Confirm:$false
 
 	Assert-True { $removed }
@@ -270,8 +270,8 @@ function Test-RecordSetA
 {
 	$zoneName = Get-RandomZoneName
 	$recordName = getAssetname
-    $resourceGroup = TestSetup-CreateResourceGroup 
-	$zone = $resourceGroup | New-AzDnsZone -Name $zoneName 
+    $resourceGroup = TestSetup-CreateResourceGroup
+	$zone = $resourceGroup | New-AzDnsZone -Name $zoneName
 
 	$record = $zone | New-AzDnsRecordSet -Name $recordName -Ttl 100 -RecordType A -DnsRecords @()
 
@@ -282,8 +282,8 @@ function Test-RecordSetA
 	$record = $record | Remove-AzDnsRecordConfig -Ipv4Address 3.3.3.3
 
 	$record | Set-AzDnsRecordSet
-	$getResult = Get-AzDnsRecordSet -Name $recordName -ZoneName $zoneName -ResourceGroupName $resourceGroup.ResourceGroupName -RecordType A 
-	
+	$getResult = Get-AzDnsRecordSet -Name $recordName -ZoneName $zoneName -ResourceGroupName $resourceGroup.ResourceGroupName -RecordType A
+
 	Assert-AreEqual 1 $getResult.Records.Count
 	Assert-AreEqual "2.2.2.2" $getResult.Records[0].Ipv4Address
 
@@ -308,16 +308,16 @@ function Test-RecordSetANonEmpty
 {
 	$zoneName = Get-RandomZoneName
 	$recordName = getAssetname
-    $resourceGroup = TestSetup-CreateResourceGroup 
-	$zone = $resourceGroup | New-AzDnsZone -Name $zoneName 
+    $resourceGroup = TestSetup-CreateResourceGroup
+	$zone = $resourceGroup | New-AzDnsZone -Name $zoneName
 
 	$aRecords=@()
 	$aRecords += New-AzDnsRecordConfig -IPv4Address "192.168.0.1"
 	$aRecords += New-AzDnsRecordConfig -IPv4Address "192.168.0.2"
 	$record = $zone | New-AzDnsRecordSet -Name $recordName -Ttl 100 -RecordType A -DnsRecords $aRecords
-	
-	$getResult = Get-AzDnsRecordSet -Name $recordName -ZoneName $zoneName -ResourceGroupName $resourceGroup.ResourceGroupName -RecordType A 
-	
+
+	$getResult = Get-AzDnsRecordSet -Name $recordName -ZoneName $zoneName -ResourceGroupName $resourceGroup.ResourceGroupName -RecordType A
+
 	Assert-AreEqual 2 $getResult.Records.Count
 	Assert-AreEqual "192.168.0.1" $getResult.Records[0].Ipv4Address
 	Assert-AreEqual "192.168.0.2" $getResult.Records[1].Ipv4Address
@@ -344,8 +344,8 @@ function Test-RecordSetAAAA
 {
 	$zoneName = Get-RandomZoneName
 	$recordName = getAssetname
-    $resourceGroup = TestSetup-CreateResourceGroup 
-	$zone = $resourceGroup | New-AzDnsZone -Name $zoneName 
+    $resourceGroup = TestSetup-CreateResourceGroup
+	$zone = $resourceGroup | New-AzDnsZone -Name $zoneName
 
 	$record = $zone | New-AzDnsRecordSet -Name $recordName -Ttl 100 -RecordType AAAA
 
@@ -357,8 +357,8 @@ function Test-RecordSetAAAA
 	$record = $record | Remove-AzDnsRecordConfig -Ipv6Address 3::33
 
 	$record | Set-AzDnsRecordSet
-	$getResult = Get-AzDnsRecordSet -Name $recordName -ZoneName $zoneName -ResourceGroupName $resourceGroup.ResourceGroupName -RecordType AAAA 
-	
+	$getResult = Get-AzDnsRecordSet -Name $recordName -ZoneName $zoneName -ResourceGroupName $resourceGroup.ResourceGroupName -RecordType AAAA
+
 	Assert-AreEqual 2 $getResult.Records.Count
 	Assert-AreEqual "1::11" $getResult.Records[0].Ipv6Address
 	Assert-AreEqual "4::44" $getResult.Records[1].Ipv6Address
@@ -381,8 +381,8 @@ function Test-RecordSetAAAANonEmpty
 {
 	$zoneName = Get-RandomZoneName
 	$recordName = getAssetname
-    $resourceGroup = TestSetup-CreateResourceGroup 
-	$zone = $resourceGroup | New-AzDnsZone -Name $zoneName 
+    $resourceGroup = TestSetup-CreateResourceGroup
+	$zone = $resourceGroup | New-AzDnsZone -Name $zoneName
 
 	$aaaaRecords=@()
 	$aaaaRecords += New-AzDnsRecordConfig  -IPv6Address "2002::1"
@@ -390,7 +390,7 @@ function Test-RecordSetAAAANonEmpty
 	$record = $zone | New-AzDnsRecordSet -Name $recordName -Ttl 100 -RecordType AAAA -DnsRecords $aaaaRecords
 
 	$getResult = Get-AzDnsRecordSet -Name $recordName -ZoneName $zoneName -ResourceGroupName $resourceGroup.ResourceGroupName -RecordType AAAA
-	
+
 	Assert-AreEqual 2 $getResult.Records.Count
 	Assert-AreEqual "2002::1" $getResult.Records[0].Ipv6Address
 	Assert-AreEqual "2002::2" $getResult.Records[1].Ipv6Address
@@ -412,8 +412,8 @@ function Test-RecordSetCNAME
 {
 	$zoneName = Get-RandomZoneName
 	$recordName = getAssetname
-    $resourceGroup = TestSetup-CreateResourceGroup 
-	$zone = $resourceGroup | New-AzDnsZone -Name $zoneName 
+    $resourceGroup = TestSetup-CreateResourceGroup
+	$zone = $resourceGroup | New-AzDnsZone -Name $zoneName
 
 	$record = $zone | New-AzDnsRecordSet -Name $recordName -Ttl 100 -RecordType CNAME
 
@@ -424,8 +424,8 @@ function Test-RecordSetCNAME
 	$record = $record | Remove-AzDnsRecordConfig -Cname gibberish
 
 	$record | Set-AzDnsRecordSet
-	$getResult = Get-AzDnsRecordSet -Name $recordName -ZoneName $zoneName -ResourceGroupName $resourceGroup.ResourceGroupName -RecordType CNAME 
-	
+	$getResult = Get-AzDnsRecordSet -Name $recordName -ZoneName $zoneName -ResourceGroupName $resourceGroup.ResourceGroupName -RecordType CNAME
+
 	Assert-AreEqual 1 $getResult.Records.Count
 	Assert-AreEqual "www.contoso.com" $getResult.Records[0].Cname
 
@@ -446,14 +446,14 @@ function Test-RecordSetCNAMENonEmpty
 {
 	$zoneName = Get-RandomZoneName
 	$recordName = getAssetname
-    $resourceGroup = TestSetup-CreateResourceGroup 
-	$zone = $resourceGroup | New-AzDnsZone -Name $zoneName 
+    $resourceGroup = TestSetup-CreateResourceGroup
+	$zone = $resourceGroup | New-AzDnsZone -Name $zoneName
 
 	$records = New-AzDnsRecordConfig  -Cname "www.contoso.com"
 	$record = $zone | New-AzDnsRecordSet -Name $recordName -Ttl 100 -RecordType CNAME -DnsRecords $records
 
-	$getResult = Get-AzDnsRecordSet -Name $recordName -ZoneName $zoneName -ResourceGroupName $resourceGroup.ResourceGroupName -RecordType CNAME 
-	
+	$getResult = Get-AzDnsRecordSet -Name $recordName -ZoneName $zoneName -ResourceGroupName $resourceGroup.ResourceGroupName -RecordType CNAME
+
 	Assert-AreEqual 1 $getResult.Records.Count
 	Assert-AreEqual "www.contoso.com" $getResult.Records[0].Cname
 
@@ -473,8 +473,8 @@ function Test-RecordSetMX
 {
 	$zoneName = Get-RandomZoneName
 	$recordName = getAssetname
-    $resourceGroup = TestSetup-CreateResourceGroup 
-	$zone = $resourceGroup | New-AzDnsZone -Name $zoneName 
+    $resourceGroup = TestSetup-CreateResourceGroup
+	$zone = $resourceGroup | New-AzDnsZone -Name $zoneName
 
 	$record = $zone | New-AzDnsRecordSet -Name $recordName -Ttl 100 -RecordType MX
 
@@ -485,8 +485,8 @@ function Test-RecordSetMX
 	$record = $record | Remove-AzDnsRecordConfig -Exchange mail2.theg.com -Preference 15
 
 	$record | Set-AzDnsRecordSet
-	$getResult = Get-AzDnsRecordSet -Name $recordName -ZoneName $zoneName -ResourceGroupName $resourceGroup.ResourceGroupName -RecordType MX 
-	
+	$getResult = Get-AzDnsRecordSet -Name $recordName -ZoneName $zoneName -ResourceGroupName $resourceGroup.ResourceGroupName -RecordType MX
+
 	Assert-AreEqual 1 $getResult.Records.Count
 	Assert-AreEqual "mail2.theg.com" $getResult.Records[0].Exchange
 	Assert-AreEqual 10 $getResult.Records[0].Preference
@@ -513,15 +513,15 @@ function Test-RecordSetMXNonEmpty
 {
 	$zoneName = Get-RandomZoneName
 	$recordName = getAssetname
-    $resourceGroup = TestSetup-CreateResourceGroup 
-	$zone = $resourceGroup | New-AzDnsZone -Name $zoneName 
+    $resourceGroup = TestSetup-CreateResourceGroup
+	$zone = $resourceGroup | New-AzDnsZone -Name $zoneName
 
 	$records = @();
 	$records += New-AzDnsRecordConfig  -Exchange mail2.theg.com -Preference 0
 	$record = $zone | New-AzDnsRecordSet -Name $recordName -Ttl 100 -RecordType MX -DnsRecords $records
 
-	$getResult = Get-AzDnsRecordSet -Name $recordName -ZoneName $zoneName -ResourceGroupName $resourceGroup.ResourceGroupName -RecordType MX 
-	
+	$getResult = Get-AzDnsRecordSet -Name $recordName -ZoneName $zoneName -ResourceGroupName $resourceGroup.ResourceGroupName -RecordType MX
+
 	Assert-AreEqual 1 $getResult.Records.Count
 	Assert-AreEqual "mail2.theg.com" $getResult.Records[0].Exchange
 	Assert-AreEqual 0 $getResult.Records[0].Preference
@@ -542,8 +542,8 @@ function Test-RecordSetNS
 {
 	$zoneName = Get-RandomZoneName
 	$recordName = getAssetname
-    $resourceGroup = TestSetup-CreateResourceGroup 
-	$zone = $resourceGroup | New-AzDnsZone -Name $zoneName 
+    $resourceGroup = TestSetup-CreateResourceGroup
+	$zone = $resourceGroup | New-AzDnsZone -Name $zoneName
 
 	$record = $zone | New-AzDnsRecordSet -Name $recordName -Ttl 100 -RecordType NS
 
@@ -555,8 +555,8 @@ function Test-RecordSetNS
 	$record = $record | Remove-AzDnsRecordConfig -Nsdname ns4.example.com
 
 	$record | Set-AzDnsRecordSet
-	$getResult = Get-AzDnsRecordSet -Name $recordName -ZoneName $zoneName -ResourceGroupName $resourceGroup.ResourceGroupName -RecordType NS 
-	
+	$getResult = Get-AzDnsRecordSet -Name $recordName -ZoneName $zoneName -ResourceGroupName $resourceGroup.ResourceGroupName -RecordType NS
+
 	Assert-AreEqual 2 $getResult.Records.Count
 	Assert-AreEqual "ns1.example.com" $getResult.Records[0].Nsdname
 	Assert-AreEqual "ns2.example.com" $getResult.Records[1].Nsdname
@@ -581,16 +581,16 @@ function Test-RecordSetNSNonEmpty
 {
 	$zoneName = Get-RandomZoneName
 	$recordName = getAssetname
-    $resourceGroup = TestSetup-CreateResourceGroup 
-	$zone = $resourceGroup | New-AzDnsZone -Name $zoneName 
+    $resourceGroup = TestSetup-CreateResourceGroup
+	$zone = $resourceGroup | New-AzDnsZone -Name $zoneName
 
 	$records = @()
 	$records += New-AzDnsRecordConfig  -Nsdname ns1.example.com
     $records += New-AzDnsRecordConfig  -Nsdname ns2.example.com
 	$record = $zone | New-AzDnsRecordSet -Name $recordName -Ttl 100 -RecordType NS -DnsRecords $records
 
-	$getResult = Get-AzDnsRecordSet -Name $recordName -ZoneName $zoneName -ResourceGroupName $resourceGroup.ResourceGroupName -RecordType NS 
-	
+	$getResult = Get-AzDnsRecordSet -Name $recordName -ZoneName $zoneName -ResourceGroupName $resourceGroup.ResourceGroupName -RecordType NS
+
 	Assert-AreEqual 2 $getResult.Records.Count
 	Assert-AreEqual "ns1.example.com" $getResult.Records[0].Nsdname
 	Assert-AreEqual "ns2.example.com" $getResult.Records[1].Nsdname
@@ -619,8 +619,8 @@ function Test-RecordSetTXT
 {
 	$zoneName = Get-RandomZoneName
 	$recordName = getAssetname
-    $resourceGroup = TestSetup-CreateResourceGroup 
-	$zone = $resourceGroup | New-AzDnsZone -Name $zoneName 
+    $resourceGroup = TestSetup-CreateResourceGroup
+	$zone = $resourceGroup | New-AzDnsZone -Name $zoneName
 
 	$record = $zone | New-AzDnsRecordSet -Name $recordName -Ttl 100 -RecordType TXT
 
@@ -632,8 +632,8 @@ function Test-RecordSetTXT
 	$record = $record | Remove-AzDnsRecordConfig -Value text4
 
 	$record | Set-AzDnsRecordSet
-	$getResult = Get-AzDnsRecordSet -Name $recordName -ZoneName $zoneName -ResourceGroupName $resourceGroup.ResourceGroupName -RecordType TXT 
-	
+	$getResult = Get-AzDnsRecordSet -Name $recordName -ZoneName $zoneName -ResourceGroupName $resourceGroup.ResourceGroupName -RecordType TXT
+
 	Assert-AreEqual 2 $getResult.Records.Count
 	Assert-AreEqual text2 $getResult.Records[0].Value
 	Assert-AreEqual text3 $getResult.Records[1].Value
@@ -656,8 +656,8 @@ function Test-RecordSetTXTNonEmpty
 {
 	$zoneName = Get-RandomZoneName
 	$recordName = getAssetname
-    $resourceGroup = TestSetup-CreateResourceGroup 
-	$zone = $resourceGroup | New-AzDnsZone -Name $zoneName 
+    $resourceGroup = TestSetup-CreateResourceGroup
+	$zone = $resourceGroup | New-AzDnsZone -Name $zoneName
 
     $records = @()
 	$records += New-AzDnsRecordConfig  -Value text2
@@ -668,8 +668,8 @@ function Test-RecordSetTXTNonEmpty
 	# add three records, remove one, remove another no-op
 
 	$record | Set-AzDnsRecordSet
-	$getResult = Get-AzDnsRecordSet -Name $recordName -ZoneName $zoneName -ResourceGroupName $resourceGroup.ResourceGroupName -RecordType TXT 
-	
+	$getResult = Get-AzDnsRecordSet -Name $recordName -ZoneName $zoneName -ResourceGroupName $resourceGroup.ResourceGroupName -RecordType TXT
+
 	Assert-AreEqual 2 $getResult.Records.Count
 	Assert-AreEqual text2 $getResult.Records[0].Value
 	Assert-AreEqual text3 $getResult.Records[1].Value
@@ -682,61 +682,12 @@ function Test-RecordSetTXTNonEmpty
 	Remove-AzResourceGroup -Name $resourceGroup.ResourceGroupName -Force
 }
 
-function Test-RecordSetTXTLegacyLengthValidation
-{
-	$zoneName = Get-RandomZoneName
-	$recordName = getAssetname
-    $resourceGroup = TestSetup-CreateResourceGroup 
-	$zone = $resourceGroup | New-AzDnsZone -Name $zoneName 
-	$longRecordTxt = Get-TxtOfSpecifiedLength 1025;
-	$maxRecordTxt = Get-TxtOfSpecifiedLength 1024;
-
-	$recordSet = $zone | New-AzDnsRecordSet -Name $recordName -Ttl 100 -RecordType TXT ;
-		
-	Assert-Throws {$recordSet | Add-AzDnsRecordConfig -Value $longRecordTxt }
-	
-	$recordSet = $recordSet | Add-AzDnsRecordConfig -Value $maxRecordTxt
-	$setResult = $recordSet | Set-AzDnsRecordSet ;
-		
-	Assert-AreEqual $maxRecordTxt $setResult.Records[0].Value;
-
-	$getResult = Get-AzDnsRecordSet -Name $recordName -ZoneName $zoneName -ResourceGroupName $resourceGroup.ResourceGroupName -RecordType TXT ;
-	Assert-AreEqual $maxRecordTxt $getResult.Records[0].Value;
-
-	Remove-AzDnsZone -Name $zoneName -ResourceGroupName $resourceGroup.ResourceGroupName -Confirm:$false
-	Remove-AzResourceGroup -Name $resourceGroup.ResourceGroupName -Force
-}
-
-
-function Test-RecordSetTXTLengthValidation
-{
-	$zoneName = Get-RandomZoneName
-	$recordName = getAssetname
-    $resourceGroup = TestSetup-CreateResourceGroup 
-	$zone = $resourceGroup | New-AzDnsZone -Name $zoneName 
-
-	$longRecordTxt = Get-TxtOfSpecifiedLength 1025;
-	Assert-Throws {New-AzDnsRecordConfig -Value $longRecordTxt }
-
-	$maxRecordTxt = Get-TxtOfSpecifiedLength 1024;
-	$maxRecord = New-AzDnsRecordConfig -Value $maxRecordTxt
-	$record = $zone | New-AzDnsRecordSet -Name $recordName -Ttl 100 -RecordType TXT -DnsRecords $maxRecord ;
-	Assert-AreEqual $maxRecordTxt $record.Records[0].Value;
-
-	$getResult = Get-AzDnsRecordSet -Name $recordName -ZoneName $zoneName -ResourceGroupName $resourceGroup.ResourceGroupName -RecordType TXT ;
-	Assert-AreEqual $maxRecordTxt $getResult.Records[0].Value;
-
-	Remove-AzDnsZone -Name $zoneName -ResourceGroupName $resourceGroup.ResourceGroupName -Confirm:$false
-	Remove-AzResourceGroup -Name $resourceGroup.ResourceGroupName -Force
-}
-
-
 function Test-RecordSetPTR
 {
 	$zoneName = Get-RandomZoneName
 	$recordName = getAssetname
-    $resourceGroup = TestSetup-CreateResourceGroup 
-	$zone = $resourceGroup | New-AzDnsZone -Name $zoneName 
+    $resourceGroup = TestSetup-CreateResourceGroup
+	$zone = $resourceGroup | New-AzDnsZone -Name $zoneName
 
 	$record = $zone | New-AzDnsRecordSet -Name $recordName -Ttl 100 -RecordType PTR
 
@@ -748,8 +699,8 @@ function Test-RecordSetPTR
     $record = $record | Remove-AzDnsRecordConfig -Ptrdname  "contoso4.com"
 
 	$record | Set-AzDnsRecordSet
-	$getResult = Get-AzDnsRecordSet -Name $recordName -ZoneName $zoneName -ResourceGroupName $resourceGroup.ResourceGroupName -RecordType PTR 
-	
+	$getResult = Get-AzDnsRecordSet -Name $recordName -ZoneName $zoneName -ResourceGroupName $resourceGroup.ResourceGroupName -RecordType PTR
+
 	Assert-AreEqual 2 $getResult.Records.Count
 	Assert-AreEqual "contoso2.com" $getResult.Records[0].Ptrdname
 	Assert-AreEqual "contoso3.com" $getResult.Records[1].Ptrdname
@@ -770,8 +721,8 @@ function Test-RecordSetPTRNonEmpty
 {
 	$zoneName = Get-RandomZoneName
 	$recordName = getAssetname
-    $resourceGroup = TestSetup-CreateResourceGroup 
-	$zone = $resourceGroup | New-AzDnsZone -Name $zoneName 
+    $resourceGroup = TestSetup-CreateResourceGroup
+	$zone = $resourceGroup | New-AzDnsZone -Name $zoneName
 
     $records = @()
 	$records += New-AzDnsRecordConfig   -PtrdName "contoso.com"
@@ -798,8 +749,8 @@ function Test-RecordSetSRV
 {
 	$zoneName = Get-RandomZoneName
 	$recordName = getAssetname
-    $resourceGroup = TestSetup-CreateResourceGroup 
-	$zone = $resourceGroup | New-AzDnsZone -Name $zoneName 
+    $resourceGroup = TestSetup-CreateResourceGroup
+	$zone = $resourceGroup | New-AzDnsZone -Name $zoneName
 
 	$record = $zone | New-AzDnsRecordSet -Name $recordName -Ttl 100 -RecordType SRV
 
@@ -810,8 +761,8 @@ function Test-RecordSetSRV
 	$record = $record | Remove-AzDnsRecordConfig -Port 42 -Priority 999 -Target ns5.example.com -Weight 1600
 
 	$record | Set-AzDnsRecordSet
-	$getResult = Get-AzDnsRecordSet -Name $recordName -ZoneName $zoneName -ResourceGroupName $resourceGroup.ResourceGroupName -RecordType SRV 
-	
+	$getResult = Get-AzDnsRecordSet -Name $recordName -ZoneName $zoneName -ResourceGroupName $resourceGroup.ResourceGroupName -RecordType SRV
+
 	Assert-AreEqual 1 $getResult.Records.Count
 	Assert-AreEqual 53 $getResult.Records[0].Port
 	Assert-AreEqual 1 $getResult.Records[0].Priority
@@ -838,16 +789,16 @@ function Test-RecordSetSRVNonEmpty
 {
 	$zoneName = Get-RandomZoneName
 	$recordName = getAssetname
-    $resourceGroup = TestSetup-CreateResourceGroup 
-	$zone = $resourceGroup | New-AzDnsZone -Name $zoneName 
+    $resourceGroup = TestSetup-CreateResourceGroup
+	$zone = $resourceGroup | New-AzDnsZone -Name $zoneName
 
     $records = @()
 	$records += New-AzDnsRecordConfig  -Port 53 -Priority 1 -Target ns1.example.com -Weight 5
 	$record = $zone | New-AzDnsRecordSet -Name $recordName -Ttl 100 -RecordType SRV -DnsRecords $records
 
 	$record | Set-AzDnsRecordSet
-	$getResult = Get-AzDnsRecordSet -Name $recordName -ZoneName $zoneName -ResourceGroupName $resourceGroup.ResourceGroupName -RecordType SRV 
-	
+	$getResult = Get-AzDnsRecordSet -Name $recordName -ZoneName $zoneName -ResourceGroupName $resourceGroup.ResourceGroupName -RecordType SRV
+
 	Assert-AreEqual 1 $getResult.Records.Count
 	Assert-AreEqual 53 $getResult.Records[0].Port
 	Assert-AreEqual 1 $getResult.Records[0].Priority
@@ -871,8 +822,8 @@ function Test-RecordSetSOA
 {
 	$zoneName = Get-RandomZoneName
 	$recordName = "@"
-    $resourceGroup = TestSetup-CreateResourceGroup 
-	$zone = $resourceGroup | New-AzDnsZone -Name $zoneName 
+    $resourceGroup = TestSetup-CreateResourceGroup
+	$zone = $resourceGroup | New-AzDnsZone -Name $zoneName
 
 	$record = $zone | Get-AzDnsRecordSet -Name $recordName -RecordType SOA
 
@@ -888,8 +839,8 @@ function Test-RecordSetSOA
 	$record.Ttl = 110901
 
 	$record | Set-AzDnsRecordSet
-	$getResult = Get-AzDnsRecordSet -Name $recordName -ZoneName $zoneName -ResourceGroupName $resourceGroup.ResourceGroupName -RecordType SOA 
-	
+	$getResult = Get-AzDnsRecordSet -Name $recordName -ZoneName $zoneName -ResourceGroupName $resourceGroup.ResourceGroupName -RecordType SOA
+
 	Assert-AreEqual 1 $getResult.Records.Count
 	Assert-AreEqual 13 $getResult.Records[0].RefreshTime
 	Assert-AreEqual 666 $getResult.Records[0].RetryTime
@@ -906,7 +857,7 @@ function Test-RecordSetSOA
 	Assert-AreEqual 321 $listResult[0].Records[0].MinimumTtl
 	Assert-AreEqual 110901 $listResult[0].Ttl
 
-	Assert-Throws { $listResult[0] | Remove-AzDnsRecordSet -Confirm:$false -PassThru } "RecordSets of type 'SOA' with name '@' cannot be deleted."
+	Assert-Throws { $listResult[0] | Remove-AzDnsRecordSet -Confirm:$false -PassThru } "Record Sets of type 'SOA' with name '@' cannot be deleted."
 
 	Remove-AzDnsZone -Name $zoneName -ResourceGroupName $resourceGroup.ResourceGroupName -Confirm:$false
 	Remove-AzResourceGroup -Name $resourceGroup.ResourceGroupName -Force
@@ -931,8 +882,8 @@ function Test-RecordSetCAA
 {
 	$zoneName = Get-RandomZoneName
 	$recordName = getAssetname
-    $resourceGroup = TestSetup-CreateResourceGroup 
-	$zone = $resourceGroup | New-AzDnsZone -Name $zoneName 
+    $resourceGroup = TestSetup-CreateResourceGroup
+	$zone = $resourceGroup | New-AzDnsZone -Name $zoneName
 
 	$record = $zone | New-AzDnsRecordSet -Name $recordName -Ttl 100 -RecordType CAA
 
@@ -944,7 +895,7 @@ function Test-RecordSetCAA
 
 	$record | Set-AzDnsRecordSet
 	$getResult = Get-AzDnsRecordSet -Name $recordName -ZoneName $zoneName -ResourceGroupName $resourceGroup.ResourceGroupName -RecordType CAA
-	
+
 	Assert-AreEqual 1 $getResult.Records.Count
 	Validate-CAARecord $getResult.Records[0] 0 "issue" "contoso.org"
 
@@ -965,8 +916,8 @@ function Test-RecordSetCAANonEmpty
 {
 	$zoneName = Get-RandomZoneName
 	$recordName = getAssetname
-    $resourceGroup = TestSetup-CreateResourceGroup 
-	$zone = $resourceGroup | New-AzDnsZone -Name $zoneName 
+    $resourceGroup = TestSetup-CreateResourceGroup
+	$zone = $resourceGroup | New-AzDnsZone -Name $zoneName
 
     $records = @()
 	$records += New-AzDnsRecordConfig  -CaaFlags 1 -CaaTag issuewild -CaaValue "contoso.org"
@@ -975,10 +926,155 @@ function Test-RecordSetCAANonEmpty
 
 	$record | Set-AzDnsRecordSet
 	$getResult = Get-AzDnsRecordSet -Name $recordName -ZoneName $zoneName -ResourceGroupName $resourceGroup.ResourceGroupName -RecordType CAA
-	
+
 	Assert-AreEqual 2 $getResult.Records.Count
 	Validate-CAARecord $getResult.Records[0] 1 "issuewild" "contoso.org"
 	Validate-CAARecord $getResult.Records[1] 0 "issue" "fabrikam.com"
+
+	$removed = $getResult[0] | Remove-AzDnsRecordSet -Confirm:$false -PassThru
+
+	Assert-True { $removed }
+
+	Remove-AzDnsZone -Name $zoneName -ResourceGroupName $resourceGroup.ResourceGroupName -Confirm:$false
+	Remove-AzResourceGroup -Name $resourceGroup.ResourceGroupName -Force
+}
+
+<#
+.SYNOPSIS
+Full Record Set CRUD cycle
+#>
+function Test-RecordSetDS
+{
+	$zoneName = Get-RandomZoneName
+	$recordName = getAssetname
+    $resourceGroup = TestSetup-CreateResourceGroup
+	$zone = $resourceGroup | New-AzDnsZone -Name $zoneName
+
+	$record = $zone | New-AzDnsRecordSet -Name $recordName -Ttl 100 -RecordType DS
+
+	# add two records, remove one, remove another no-op
+	$record = $record | Add-AzDnsRecordConfig -KeyTag 12345 -Algorithm 13 -DigestType 2 -Digest 0C72AC70B745AC19998811B131D662C9AC69DBDBE7CB23E5B514B56664C5D3D6
+	$record = $record | Add-AzDnsRecordConfig -KeyTag 67890 -Algorithm 13 -DigestType 2 -Digest 0C72AC70B745AC19998811B131D662C9AC69DBDBE7CB23E5B514B56664C5D3D7
+	$record = $record | Remove-AzDnsRecordConfig -KeyTag 67890 -Algorithm 13 -DigestType 2 -Digest 0C72AC70B745AC19998811B131D662C9AC69DBDBE7CB23E5B514B56664C5D3D7
+	$record = $record | Remove-AzDnsRecordConfig -KeyTag 13579 -Algorithm 13 -DigestType 2 -Digest 0C72AC70B745AC19998811B131D662C9AC69DBDBE7CB23E5B514B56664C5D3D8
+
+	$record | Set-AzDnsRecordSet
+	$getResult = Get-AzDnsRecordSet -Name $recordName -ZoneName $zoneName -ResourceGroupName $resourceGroup.ResourceGroupName -RecordType DS
+
+	Assert-AreEqual 1 $getResult.Records.Count
+	Assert-AreEqual 12345 $getResult.Records[0].KeyTag
+	Assert-AreEqual 13 $getResult.Records[0].Algorithm
+	Assert-AreEqual 2 $getResult.Records[0].DigestType
+	Assert-AreEqual 0C72AC70B745AC19998811B131D662C9AC69DBDBE7CB23E5B514B56664C5D3D6 $getResult.Records[0].Digest
+
+	$listResult = Get-AzDnsRecordSet -ZoneName $zoneName -ResourceGroupName $resourceGroup.ResourceGroupName -RecordType DS
+
+	Assert-AreEqual 1 $listResult[0].Records.Count
+	Assert-AreEqual 12345 $listResult[0].Records[0].KeyTag
+	Assert-AreEqual 13 $listResult[0].Records[0].Algorithm
+	Assert-AreEqual 2 $listResult[0].Records[0].DigestType
+	Assert-AreEqual 0C72AC70B745AC19998811B131D662C9AC69DBDBE7CB23E5B514B56664C5D3D6 $listResult[0].Records[0].Digest
+
+	$removed = $listResult[0] | Remove-AzDnsRecordSet -Confirm:$false -PassThru
+
+	Assert-True { $removed }
+
+	Remove-AzDnsZone -Name $zoneName -ResourceGroupName $resourceGroup.ResourceGroupName -Confirm:$false
+	Remove-AzResourceGroup -Name $resourceGroup.ResourceGroupName -Force
+}
+
+function Test-RecordSetDSNonEmpty
+{
+	$zoneName = Get-RandomZoneName
+	$recordName = getAssetname
+    $resourceGroup = TestSetup-CreateResourceGroup
+	$zone = $resourceGroup | New-AzDnsZone -Name $zoneName
+
+    $records = @()
+	$records += New-AzDnsRecordConfig -KeyTag 12345 -Algorithm 13 -DigestType 2 -Digest 0C72AC70B745AC19998811B131D662C9AC69DBDBE7CB23E5B514B56664C5D3D6
+	$record = $zone | New-AzDnsRecordSet -Name $recordName -Ttl 100 -RecordType DS -DnsRecords $records
+
+	$record | Set-AzDnsRecordSet
+	$getResult = Get-AzDnsRecordSet -Name $recordName -ZoneName $zoneName -ResourceGroupName $resourceGroup.ResourceGroupName -RecordType DS
+
+	Assert-AreEqual 1 $getResult.Records.Count
+	Assert-AreEqual 12345 $getResult.Records[0].KeyTag
+	Assert-AreEqual 13 $getResult.Records[0].Algorithm
+	Assert-AreEqual 2 $getResult.Records[0].DigestType
+	Assert-AreEqual 0C72AC70B745AC19998811B131D662C9AC69DBDBE7CB23E5B514B56664C5D3D6 $getResult.Records[0].Digest
+
+	$removed = $getResult[0] | Remove-AzDnsRecordSet -Confirm:$false -PassThru
+
+	Assert-True { $removed }
+
+	Remove-AzDnsZone -Name $zoneName -ResourceGroupName $resourceGroup.ResourceGroupName -Confirm:$false
+	Remove-AzResourceGroup -Name $resourceGroup.ResourceGroupName -Force
+}
+
+
+<#
+.SYNOPSIS
+Full Record Set CRUD cycle
+#>
+function Test-RecordSetTLSA
+{
+	$zoneName = Get-RandomZoneName
+	$recordName = getAssetname
+    $resourceGroup = TestSetup-CreateResourceGroup
+	$zone = $resourceGroup | New-AzDnsZone -Name $zoneName
+
+	$record = $zone | New-AzDnsRecordSet -Name $recordName -Ttl 100 -RecordType TLSA
+
+	# add two records, remove one, remove another no-op
+	$record = $record | Add-AzDnsRecordConfig -Usage 1 -Selector 1 -MatchingType 3 -CertificateAssociationData 0C72AC70B745AC19998811B131D662C9AC69DBDBE7CB23E5B514B56664C5D3D7
+	$record = $record | Add-AzDnsRecordConfig -Usage 1 -Selector 1 -MatchingType 3 -CertificateAssociationData 0C72AC70B745AC19998811B131D662C9AC69DBDBE7CB23E5B514B56664C5D3D8
+	$record = $record | Remove-AzDnsRecordConfig -Usage 1 -Selector 1 -MatchingType 3 -CertificateAssociationData 0C72AC70B745AC19998811B131D662C9AC69DBDBE7CB23E5B514B56664C5D3D8
+	$record = $record | Remove-AzDnsRecordConfig -Usage 1 -Selector 1 -MatchingType 3 -CertificateAssociationData 0C72AC70B745AC19998811B131D662C9AC69DBDBE7CB23E5B514B56664C5D3D9
+
+	$record | Set-AzDnsRecordSet
+	$getResult = Get-AzDnsRecordSet -Name $recordName -ZoneName $zoneName -ResourceGroupName $resourceGroup.ResourceGroupName -RecordType TLSA
+
+	Assert-AreEqual 1 $getResult.Records.Count
+	Assert-AreEqual 1 $getResult.Records[0].Usage
+	Assert-AreEqual 1 $getResult.Records[0].Selector
+	Assert-AreEqual 3 $getResult.Records[0].MatchingType
+	Assert-AreEqual 0C72AC70B745AC19998811B131D662C9AC69DBDBE7CB23E5B514B56664C5D3D7 $getResult.Records[0].CertificateAssociationData
+
+	$listResult = Get-AzDnsRecordSet -ZoneName $zoneName -ResourceGroupName $resourceGroup.ResourceGroupName -RecordType TLSA
+
+	Assert-AreEqual 1 $listResult[0].Records.Count
+	Assert-AreEqual 1 $listResult[0].Records[0].Usage
+	Assert-AreEqual 1 $listResult[0].Records[0].Selector
+	Assert-AreEqual 3 $listResult[0].Records[0].MatchingType
+	Assert-AreEqual 0C72AC70B745AC19998811B131D662C9AC69DBDBE7CB23E5B514B56664C5D3D7 $listResult[0].Records[0].CertificateAssociationData
+
+	$removed = $listResult[0] | Remove-AzDnsRecordSet -Confirm:$false -PassThru
+
+	Assert-True { $removed }
+
+	Remove-AzDnsZone -Name $zoneName -ResourceGroupName $resourceGroup.ResourceGroupName -Confirm:$false
+	Remove-AzResourceGroup -Name $resourceGroup.ResourceGroupName -Force
+}
+
+function Test-RecordSetTLSANonEmpty
+{
+	$zoneName = Get-RandomZoneName
+	$recordName = getAssetname
+    $resourceGroup = TestSetup-CreateResourceGroup
+	$zone = $resourceGroup | New-AzDnsZone -Name $zoneName
+
+    $records = @()
+	$records += New-AzDnsRecordConfig -Usage 1 -Selector 1 -MatchingType 3 -CertificateAssociationData 0C72AC70B745AC19998811B131D662C9AC69DBDBE7CB23E5B514B56664C5D3D7
+	$record = $zone | New-AzDnsRecordSet -Name $recordName -Ttl 100 -RecordType TLSA -DnsRecords $records
+
+	$record | Set-AzDnsRecordSet
+	$getResult = Get-AzDnsRecordSet -Name $recordName -ZoneName $zoneName -ResourceGroupName $resourceGroup.ResourceGroupName -RecordType TLSA
+
+	Assert-AreEqual 1 $getResult.Records.Count
+	Assert-AreEqual 1 $getResult.Records[0].Usage
+	Assert-AreEqual 1 $getResult.Records[0].Selector
+	Assert-AreEqual 3 $getResult.Records[0].MatchingType
+	Assert-AreEqual 0C72AC70B745AC19998811B131D662C9AC69DBDBE7CB23E5B514B56664C5D3D7 $getResult.Records[0].CertificateAssociationData
 
 	$removed = $getResult[0] | Remove-AzDnsRecordSet -Confirm:$false -PassThru
 
@@ -996,8 +1092,8 @@ function Test-RecordSetNewAlreadyExists
 {
 	$zoneName = Get-RandomZoneName
 	$recordName = getAssetname
-    $resourceGroup = TestSetup-CreateResourceGroup 
-	$zone = $resourceGroup | New-AzDnsZone -Name $zoneName 
+    $resourceGroup = TestSetup-CreateResourceGroup
+	$zone = $resourceGroup | New-AzDnsZone -Name $zoneName
 
 	$record = $zone | New-AzDnsRecordSet -Name $recordName -Ttl 100 -RecordType A | Add-AzDnsRecordConfig -Ipv4Address 1.2.9.8
 
@@ -1026,7 +1122,7 @@ function Test-RecordSetAddRecordTypeMismatch
 	$zoneName = Get-RandomZoneName
 	$recordName = getAssetname
     $recordSet = TestSetup-CreateResourceGroup | New-AzDnsZone -Name $zoneName | New-AzDnsRecordSet -Name $recordName -Ttl 100 -RecordType MX
-	
+
 	Assert-Throws { $recordSet | Add-AzDnsRecordConfig -Ipv6Address 3::90 } "Cannot add a record of type AAAA to a record set of type MX. The types must match."
 
 	$recordSet | Remove-AzDnsRecordSet -Confirm:$false
@@ -1038,7 +1134,7 @@ function Test-RecordSetAddTwoCnames
 	$zoneName = Get-RandomZoneName
 	$recordName = getAssetname
 
-    $recordSet = TestSetup-CreateResourceGroup | New-AzDnsZone -Name $zoneName | New-AzDnsRecordSet -Name $recordName -Ttl 100 -RecordType CNAME 
+    $recordSet = TestSetup-CreateResourceGroup | New-AzDnsZone -Name $zoneName | New-AzDnsRecordSet -Name $recordName -Ttl 100 -RecordType CNAME
 	$resourceGroupName = $recordSet.ResourceGroupName
 
 	$recordSet | Add-AzDnsRecordConfig -Cname www.goril.la
@@ -1140,7 +1236,7 @@ function Test-RecordSetGet
 	$allRecords = Get-AzDnsRecordSet -Zone $zone
 
 	Assert-AreEqual 5 $allRecords.Count
-	
+
 	$zone | Remove-AzDnsRecordSet -Name $recordName1 -RecordType AAAA -Confirm:$false
 	$zone | Remove-AzDnsRecordSet -Name $recordName2 -RecordType AAAA -Confirm:$false
 	$zone | Remove-AzDnsRecordSet -Name $recordName3 -RecordType MX -Confirm:$false
@@ -1172,7 +1268,7 @@ function Test-RecordSetGetWithEndsWith
 	$rootRecords = $zone | Get-AzDnsRecordSet -EndsWith $rootRecordName
 
 	Assert-AreEqual 2 $rootRecords.Count -Message ("Expected 2 root records. Actual: " + $rootRecords.Count)
-	
+
     New-AzDnsRecordSet -Zone $zone -Name $recordName1 -Ttl 100 -RecordType AAAA
 	New-AzDnsRecordSet -Zone $zone -Name $recordName2 -Ttl 1200 -RecordType AAAA
 	New-AzDnsRecordSet -Zone $zone -Name $recordName3 -Ttl 1500 -RecordType MX
@@ -1222,13 +1318,13 @@ function Test-RecordSetNewRecordNoName
 {
 	$zoneName = Get-RandomZoneName
 	$recordName = getAssetname
-    $resourceGroup = TestSetup-CreateResourceGroup 
-	$zone = $resourceGroup | New-AzDnsZone -Name $zoneName 
+    $resourceGroup = TestSetup-CreateResourceGroup
+	$zone = $resourceGroup | New-AzDnsZone -Name $zoneName
 	$recordSet = New-AzDnsRecordSet -Name $recordName -Ttl 100 -RecordType MX -ZoneName $zoneName -ResourceGroupName $resourceGroup.ResourceGroupName
 	$recordSet = Get-AzDnsRecordSet -ResourceGroupName $resourceGroup.ResourceGroupName -ZoneName $zoneName -RecordType MX
 	$record1 = Add-AzDnsRecordConfig -Exchange mail1.theg.com -Preference 1 -RecordSet $recordSet
 	$recordSet | Set-AzDnsRecordSet
-	$getRecordSetOne = Get-AzDnsRecordSet -Name $recordName -ZoneName $zoneName -ResourceGroupName $resourceGroup.ResourceGroupName -RecordType MX 
+	$getRecordSetOne = Get-AzDnsRecordSet -Name $recordName -ZoneName $zoneName -ResourceGroupName $resourceGroup.ResourceGroupName -RecordType MX
 	Assert-AreEqual 1 $getRecordSetOne.Records.Count
 
 	$record2 = Add-AzDnsRecordConfig -Exchange mail2.theg.com -Preference 10 -RecordSet $getRecordSetOne

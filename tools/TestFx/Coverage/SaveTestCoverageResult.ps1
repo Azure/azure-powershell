@@ -49,7 +49,8 @@ if (Test-Path -LiteralPath $cvgDir -PathType Container) {
         @{ Name = "LineNumber"; Expression = { $_.LineNumber } }, `
         @{ Name = "StartDateTime"; Expression = { $_.StartDateTime } }, `
         @{ Name = "EndDateTime"; Expression = { $_.EndDateTime } }, `
-        @{ Name = "IsSuccess"; Expression = { $_.IsSuccess } } |
+        @{ Name = "IsSuccess"; Expression = { $_.IsSuccess } }, `
+        @{ Name = "ExtendedProperties"; Expression = { $null } } |
         Export-Csv -Path $_ -Encoding utf8 -NoTypeInformation -Force
     }
 

@@ -90,7 +90,7 @@ PrivateEndpointConnections            :
 ResourceGroupName                     : ContosoGroup02
 ```
 
-This command restores the API Management service using the Managed Identity credentials of APIM which are whitelisted as StorageBlobContributor on the Azure Storage Account `apimbackupmsi`
+This command restores the API Management service using the Managed Identity credentials of APIM which are allowlisted as StorageBlobContributor on the Azure Storage Account `apimbackupmsi`
 
 ## PARAMETERS
 

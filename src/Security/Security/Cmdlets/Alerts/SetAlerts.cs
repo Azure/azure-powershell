@@ -1,4 +1,4 @@
-﻿// ----------------------------------------------------------------------------------
+// ----------------------------------------------------------------------------------
 //
 // Copyright Microsoft Corporation
 // Licensed under the Apache License, Version 2.0 (the "License");
@@ -52,7 +52,6 @@ namespace Microsoft.Azure.Commands.Security.Cmdlets.Alerts
         [ValidateNotNullOrEmpty]
         public string ResourceId { get; set; }
 
-        [CmdletParameterBreakingChange("InputObject", OldParamaterType = typeof(PSSecurityAlert), NewParameterTypeName = "PSSecurityAlertV3")]
         [Parameter(ParameterSetName = ParameterSetNames.InputObject, Mandatory = true, ValueFromPipeline = true, HelpMessage = ParameterHelpMessages.InputObject)]
         [ValidateNotNullOrEmpty]
         public PSSecurityAlert InputObject { get; set; }

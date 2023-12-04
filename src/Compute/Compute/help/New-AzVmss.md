@@ -9,21 +9,21 @@ schema: 2.0.0
 # New-AzVmss
 
 ## SYNOPSIS
-Creates a VMSS.
+Creates a virtual machine scale set.
 
 ## SYNTAX
 
 ### DefaultParameter (Default)
 ```
 New-AzVmss [-ResourceGroupName] <String> [-VMScaleSetName] <String>
- [-VirtualMachineScaleSet] <PSVirtualMachineScaleSet> [-AsJob] [-DisableIntegrityMonitoring]
+ [-VirtualMachineScaleSet] <PSVirtualMachineScaleSet> [-AsJob]
  [-EdgeZone <String>] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### SimpleParameterSet
 ```
 New-AzVmss [[-ResourceGroupName] <String>] [-VMScaleSetName] <String> [-AsJob] [-UserData <String>]
- [-DisableIntegrityMonitoring] [-ImageName <String>] -Credential <PSCredential> [-InstanceCount <Int32>]
+ [-ImageName <String>] -Credential <PSCredential> [-InstanceCount <Int32>]
  [-VirtualNetworkName <String>] [-SubnetName <String>] [-PublicIpAddressName <String>]
  [-DomainNameLabel <String>] [-SecurityGroupName <String>] [-LoadBalancerName <String>]
  [-BackendPort <Int32[]>] [-Location <String>] [-EdgeZone <String>] [-VmSize <String>]
@@ -35,7 +35,8 @@ New-AzVmss [[-ResourceGroupName] <String>] [-VMScaleSetName] <String> [-AsJob] [
  [-Priority <String>] [-EvictionPolicy <String>] [-MaxPrice <Double>] [-ScaleInPolicy <String[]>]
  [-SkipExtensionsOnOverprovisionedVMs] [-EncryptionAtHost] [-PlatformFaultDomainCount <Int32>]
  [-OrchestrationMode <String>] [-CapacityReservationGroupId <String>] [-ImageReferenceId <String>]
- [-DiskControllerType <String>] [-SharedGalleryImageId <String>] [-DefaultProfile <IAzureContextContainer>]
+ [-DiskControllerType <String>] [-SharedGalleryImageId <String>] [-SecurityType <String>]
+ [-EnableVtpm <Boolean>] [-EnableSecureBoot <Boolean>] [-DefaultProfile <IAzureContextContainer>]
  [-SinglePlacementGroup] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
@@ -65,9 +66,10 @@ $vmssName = 'VMSSNAME'
 # Pick one that makes the most sense according to your use case.
 $vmPassword = ConvertTo-SecureString "PASSWORD" -AsPlainText -Force
 $vmCred = New-Object System.Management.Automation.PSCredential('USERNAME', $vmPassword)
+$securityTypeStnd = "Standard"
 
 #Create a VMSS using the default settings
-New-AzVmss -Credential $vmCred -VMScaleSetName $vmssName
+New-AzVmss -Credential $vmCred -VMScaleSetName $vmssName -SecurityType $securityTypeStnd
 ```
 
 The command above creates the following with the name `$vmssName` :
@@ -149,7 +151,8 @@ $IPCfg = New-AzVmssIpConfig -Name "Test" `
     -SubnetId $SubNetId;
 
 #VMSS Config
-$VMSS = New-AzVmssConfig -Location $LOC -SkuCapacity 2 -SkuName "Standard_E4-2ds_v4" -UpgradePolicyMode "Automatic" `
+$securityTypeStnd = "Standard";
+$VMSS = New-AzVmssConfig -Location $LOC -SkuCapacity 2 -SkuName "Standard_E4-2ds_v4" -UpgradePolicyMode "Automatic" -SecurityType $securityTypeStnd `
     | Add-AzVmssNetworkInterfaceConfiguration -Name "Test" -Primary $True -IPConfiguration $IPCfg `
     | Add-AzVmssNetworkInterfaceConfiguration -Name "Test2"  -IPConfiguration $IPCfg `
     | Set-AzVmssOsProfile -ComputerNamePrefix "Test"  -AdminUsername $AdminUsername -AdminPassword $AdminPassword `
@@ -195,64 +198,86 @@ $vmCred = New-Object System.Management.Automation.PSCredential('USERNAME', $vmPa
 $text = "UserData value to encode";
 $bytes = [System.Text.Encoding]::Unicode.GetBytes($text);
 $userData = [Convert]::ToBase64String($bytes);
+$securityTypeStnd = "Standard";
 
 #Create a VMSS
-New-AzVmss -ResourceGroupName $ResourceGroupName -Name $vmssName -Credential $vmCred -DomainNameLabel $domainNameLabel -Userdata $userData;
+New-AzVmss -ResourceGroupName $ResourceGroupName -Name $vmssName -Credential $vmCred -DomainNameLabel $domainNameLabel -Userdata $userData -SecurityType $securityTypeStnd;
 $vmss = Get-AzVmss -ResourceGroupName $ResourceGroupName -VMScaleSetName $vmssName -InstanceView:$false -Userdata;
 ```
 
 Create a VMSS with a UserData value
 
-### Example 4: Create a VMSS with the Guest Attestation extension installed with the TrustedLaunch security type.
+### Example 4: Create a Vmss with the security type TrustedLaunch
 ```powershell
-# Common setup
-$rgname = <RESOURCE GROUP NAME>;
-$loc = <AZURE REGION>;
+$rgname = "rgname";
+$loc = "eastus";
+
+# VMSS Profile & Hardware requirements for the TrustedLaunch default behavior.
+$vmssSize = 'Standard_D4s_v3';
+$vmssName1 = 'vmss1' + $rgname;
+$imageName = "Win2022AzureEdition";
+$adminUsername = "<Username>";
+$adminPassword = "<Password>" | ConvertTo-SecureString -AsPlainText -Force;
+$vmCred = New-Object System.Management.Automation.PSCredential ($adminUsername, $adminPassword);
+
+# VMSS Creation 
+$result = New-AzVmss -Credential $vmCred -VMScaleSetName $vmssName1 -ImageName $imageName -SecurityType "TrustedLaunch";
+# Validate that for -SecurityType "TrustedLaunch", "-Vtpm" and -"SecureBoot" are "Enabled/true"
+# $result.VirtualMachineProfile.SecurityProfile.UefiSettings.VTpmEnabled;
+# $result.VirtualMachineProfile.SecurityProfile.UefiSettings.SecureBootEnabled;
+```
+
+This example Creates a new VMSS with the new Security Type 'TrustedLaunch' and the necessary UEFISettings values, VTpmEnabled and SecureBootEnalbed are true. Please check [the Trusted Launch feature page](aka.ms/trustedlaunch) for more information.
+
+### Example 5: Create a Vmss in Orchestration Mode: Flexible by default
+```powershell
+# Create configration object
+$vmssConfig = New-AzVmssConfig -Location EastUs2 -UpgradePolicyMode Manual -SinglePlacementGroup $true
+
+# VMSS Creation 
+New-AzVmss -ResourceGroupName TestRg -VMScaleSetName myVMSS -VirtualMachineScaleSet $vmssConfig
+```
+This example Creates a new VMSS and it will default to OrchestrationMode Flexible. 
+
+### Example 6: Create a new VMSS with TrustedLaunch turned on by default. 
+```powershell
+$rgname = "<Resource Group>";
+$loc = "<Azure Region>";
 New-AzResourceGroup -Name $rgname -Location $loc -Force;
-$vmssSize = 'Standard_DS3_v2';
-$PublisherName = "MicrosoftWindowsServer";
-$Offer = "WindowsServer";
-$SKU = "2019-DATACENTER-GENSECOND";
-$securityType = "TrustedLaunch";
-$secureboot = $true;
-$vtpm = $true;
+
+$vmssName = 'vmss' + $rgname;
+$vmssSize = 'Standard_D4s_v3';
+$imageName = "Win2022AzureEdition";
+$publisherName = "MicrosoftWindowsServer";
+$offer = "WindowsServer";
+$sku = "2022-Datacenter-Azure-Edition";
+$adminUsername = "<Username>";
+$password = "<Password>";
 
 # NRP
-$subnet = New-AzVirtualNetworkSubnetConfig -Name ('subnet' + $rgname) -AddressPrefix "10.0.0.0/24";
-$vnet = New-AzVirtualNetwork -Force -Name ('vnet' + $rgname) -ResourceGroupName $rgname -Location $loc -AddressPrefix "10.0.0.0/16" -Subnet $subnet;
-$vnet = Get-AzVirtualNetwork -Name ('vnet' + $rgname) -ResourceGroupName $rgname;
+$vnetworkName = 'vnet' + $rgname;
+$subnetName = 'subnet' + $rgname;
+$subnet = New-AzVirtualNetworkSubnetConfig -Name $subnetName -AddressPrefix "10.0.0.0/24";
+$vnet = New-AzVirtualNetwork -Name $vnetworkName -ResourceGroupName $rgname -Location $loc -AddressPrefix "10.0.0.0/16" -Subnet $subnet;
+$vnet = Get-AzVirtualNetwork -Name $vnetworkName -ResourceGroupName $rgname;
 $subnetId = $vnet.Subnets[0].Id;
 
-# New VMSS Parameters
-$vmssName = 'vmss' + $rgname;
-$vmssType = 'Microsoft.Compute/virtualMachineScaleSets';
-$adminUsername = <USER NAME>;
-$adminPassword = <PASSWORD> | ConvertTo-SecureString -AsPlainText -Force;
-$imgRef = New-Object -TypeName 'Microsoft.Azure.Commands.Compute.Models.PSVirtualMachineImage';
-$imgRef.PublisherName = $PublisherName;
-$imgRef.Offer = $Offer;
-$imgRef.Skus = $SKU;
-$imgRef.Version = "latest";
 $ipCfg = New-AzVmssIpConfig -Name 'test' -SubnetId $subnetId;
 
 $vmss = New-AzVmssConfig -Location $loc -SkuCapacity 2 -SkuName $vmssSize -UpgradePolicyMode 'Manual' `
-| Add-AzVmssNetworkInterfaceConfiguration -Name 'test' -Primary $true -IPConfiguration $ipCfg `
-| Set-AzVmssOsProfile -ComputerNamePrefix 'test' -AdminUsername $adminUsername -AdminPassword $adminPassword `
-| Set-AzVmssStorageProfile -OsDiskCreateOption 'FromImage' -OsDiskCaching 'ReadOnly' `
-    -ImageReferenceOffer $imgRef.Offer -ImageReferenceSku $imgRef.Skus -ImageReferenceVersion $imgRef.Version `
-    -ImageReferencePublisher $imgRef.PublisherName ;
+    | Add-AzVmssNetworkInterfaceConfiguration -Name 'test' -Primary $true -IPConfiguration $ipCfg `
+    | Set-AzVmssOsProfile -ComputerNamePrefix 'test' -AdminUsername $adminUsername -AdminPassword $password;
+    
+# Create TL Vmss
+$result = New-AzVmss -ResourceGroupName $rgname -VMScaleSetName $vmssName -VirtualMachineScaleSet $vmss;
+$vmssGet = Get-AzVmss -ResourceGroupName $rgname -VMScaleSetName $vmssName;
 
-# Requirements for the Guest Attestation defaulting behavior.
-# SecurityType is TrustedLaunch, EnableVtpm is true, EnableSecureBoot is true, DisableIntegrityMonitoring is not true.
-$vmss = Set-AzVmssSecurityProfile -VirtualMachineScaleSet $vmss -SecurityType $securityType;
-$vmss = Set-AzVmssUefi -VirtualMachineScaleSet $VMSS -EnableVtpm $vtpm -EnableSecureBoot $secureboot;
-
-# Create Vmss
-$result = New-AzVmss -ResourceGroupName $rgname -Name $vmssName -VirtualMachineScaleSet $vmss;
-# This Vmss and its Vm instances has the GuestAttestation extension installed, and the Identity of SystemAssigned.
+# Verify $vmssGet.VirtualMachineProfile.SecurityProfile.SecurityType is TrustedLaunch.
+# Verify $vmssGet.VirtualMachineProfile.SecurityProfile.UefiSettings.VTpmEnabled is True.
+# Verify $vmssGet.VirtualMachineProfile.SecurityProfile.UefiSettings.SecureBootEnabled is True.
+# Verify $vmssGet.VirtualMachineProfile.StorageProfile.ImageReference.Sku is 2022-Datacenter-Azure-Edition.
 ```
-
-Create a VMSS with the Guest Attestation extension installed with the TrustedLaunch security type
+The virtual machine scale set above has Trusted Launch enabled by default. Please check [the Trusted Launch feature page](aka.ms/trustedlaunch) for more information.
 
 ## PARAMETERS
 
@@ -387,21 +412,6 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -DisableIntegrityMonitoring
-This flag disables the default behavior to install the Guest Attestation extension to the virtual machine scale set and its vm instances if: 1) SecurityType is TrustedLaunch, 2) SecureBootEnabled on the SecurityProfile is true, 3) VTpmEnabled on the SecurityProfile is true.
-
-```yaml
-Type: System.Management.Automation.SwitchParameter
-Parameter Sets: (All)
-Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: True (ByPropertyName)
-Accept wildcard characters: False
-```
-
 ### -DiskControllerType
 Specifies the disk controller type configured for the VM and VirtualMachineScaleSet. This property is only supported for virtual machines whose operating system disk and VM sku supports Generation 2 (https://learn.microsoft.com/en-us/azure/virtual-machines/generation-2), please check the HyperVGenerations capability returned as part of VM sku capabilities in the response of Microsoft.Compute SKUs api for the region contains V2 (https://learn.microsoft.com/rest/api/compute/resourceskus/list) . <br> For more information about Disk Controller Types supported please refer to https://aka.ms/azure-diskcontrollertypes.
 
@@ -447,6 +457,21 @@ Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
 ```
 
+### -EnableSecureBoot
+Specifies whether secure boot should be enabled on the virtual machine.
+
+```yaml
+Type: System.Nullable`1[System.Boolean]
+Parameter Sets: SimpleParameterSet
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: True (ByPropertyName)
+Accept wildcard characters: False
+```
+
 ### -EnableUltraSSD
 Use UltraSSD disks for the VMs in the scale set.
 
@@ -459,6 +484,21 @@ Required: False
 Position: Named
 Default value: None
 Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -EnableVtpm
+Specifies whether vTPM should be enabled on the virtual machine.
+
+```yaml
+Type: System.Nullable`1[System.Boolean]
+Parameter Sets: SimpleParameterSet
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
 ```
 
@@ -524,7 +564,7 @@ Accept wildcard characters: False
 ```
 
 ### -ImageName
-The alias of the image for VMs in this Scale Set. If no value is provided, the "Windows Server 2016 DataCenter" image will be used. The available aliases are: Win2022AzureEditionCore, Win2019Datacenter, Win2016Datacenter, Win2012R2Datacenter, Win2012Datacenter, UbuntuLTS, Ubuntu2204, CentOS, CentOS85Gen2, Debian, Debian11, OpenSuseLeap154Gen2, RHEL, RHELRaw8LVMGen2, SuseSles15SP3, FlatcarLinuxFreeGen2.
+The alias of the image for VMs in this Scale Set. If no value is provided, the "Windows Server 2016 DataCenter" image will be used. The available aliases are: Win2022AzureEdition, Win2022AzureEditionCore, Win2019Datacenter, Win2016Datacenter, Win2012R2Datacenter, Win2012Datacenter, UbuntuLTS, Ubuntu2204, CentOS85Gen2, Debian11, OpenSuseLeap154Gen2, RHELRaw8LVMGen2, SuseSles15SP3, FlatcarLinuxFreeGen2.
 
 ```yaml
 Type: System.String
@@ -760,6 +800,22 @@ Required: False
 Position: Named
 Default value: None
 Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -SecurityType
+Specifies the SecurityType of the virtual machine. It has to be set to any specified value to enable UefiSettings. UefiSettings will not be enabled unless this property is set.
+
+```yaml
+Type: System.String
+Parameter Sets: SimpleParameterSet
+Aliases:
+Accepted values: TrustedLaunch, ConfidentialVM, Standard
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
 ```
 

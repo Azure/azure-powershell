@@ -14,11 +14,13 @@
 
 namespace Microsoft.WindowsAzure.Commands.Storage.Queue.Cmdlet
 {
+    using global::Azure.Storage.Queues;
+    using global::Azure.Storage.Queues.Models;
+    using Microsoft.WindowsAzure.Commands.Common.CustomAttributes;
     using Microsoft.WindowsAzure.Commands.Storage.Common;
     using Microsoft.WindowsAzure.Commands.Storage.Model.Contract;
-    using Microsoft.Azure.Storage.Queue;
-    using Microsoft.Azure.Storage.Queue.Protocol;
     using System;
+    using System.Collections.Generic;
     using System.Globalization;
     using System.Management.Automation;
     using System.Security.Permissions;
@@ -72,25 +74,51 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Queue.Cmdlet
             EnableMultiThread = false;
         }
 
-        internal string SetAzureQueueStoredAccessPolicy(IStorageQueueManagement localChannel, string queueName, string policyName, DateTime? startTime, DateTime? expiryTime, string permission, bool noStartTime, bool noExpiryTime)
+        internal string SetAzureQueueStoredAccessPolicy(string queueName, string policyName, DateTime? startTime, DateTime? expiryTime, string permission, bool noStartTime, bool noExpiryTime)
         {
             //Get existing permissions
-            CloudQueue queue = Channel.GetQueueReference(queueName);
-            QueuePermissions queuePermissions = localChannel.GetPermissions(queue, this.RequestOptions, this.OperationContext);
+            QueueClient queueClient = Util.GetTrack2QueueClient(queueName, (AzureStorageContext)this.Context, this.ClientOptions);
+            IEnumerable<QueueSignedIdentifier> signedIdentifiers = queueClient.GetAccessPolicy(this.CmdletCancellationToken).Value;
 
-            //Set the policy with new value
-            if (!queuePermissions.SharedAccessPolicies.Keys.Contains(policyName))
+            // Find the policy to set
+            QueueSignedIdentifier signedIdentifier = null;
+            foreach (QueueSignedIdentifier identifier in signedIdentifiers)
+            {
+                if (identifier.Id == policyName)
+                {
+                    signedIdentifier = identifier;
+                }
+            }
+            if (signedIdentifier == null)
             {
                 throw new ArgumentException(string.Format(CultureInfo.CurrentCulture, Resources.PolicyNotFound, policyName));
             }
 
-            SharedAccessQueuePolicy policy = queuePermissions.SharedAccessPolicies[policyName];
-            AccessPolicyHelper.SetupAccessPolicy<SharedAccessQueuePolicy>(policy, startTime, expiryTime, permission, noStartTime, noExpiryTime);
-            queuePermissions.SharedAccessPolicies[policyName] = policy;
+            if (noStartTime)
+            {
+                signedIdentifier.AccessPolicy.StartsOn = null;
+            }
+            else if (startTime != null)
+            {
+                signedIdentifier.AccessPolicy.StartsOn = startTime.Value.ToUniversalTime();
+            }
 
-            //Set permission back to queue
-            WriteObject(AccessPolicyHelper.ConstructPolicyOutputPSObject<SharedAccessQueuePolicy>(queuePermissions.SharedAccessPolicies, policyName));
-            localChannel.SetPermissions(queue, queuePermissions, null, OperationContext);
+            if (noExpiryTime)
+            {
+                signedIdentifier.AccessPolicy.ExpiresOn = null;
+            }
+            else if (expiryTime != null)
+            {
+                signedIdentifier.AccessPolicy.ExpiresOn = expiryTime.Value.ToUniversalTime();
+            }
+
+            if (permission != null)
+            {
+                signedIdentifier.AccessPolicy.Permissions = AccessPolicyHelper.OrderQueuePermission(permission);
+            }
+
+            queueClient.SetAccessPolicy(signedIdentifiers, this.CmdletCancellationToken);
+            WriteObject(AccessPolicyHelper.ConstructPolicyOutputPSObject<QueueSignedIdentifier>(signedIdentifier));
             return policyName;
         }
 
@@ -113,7 +141,7 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Queue.Cmdlet
 
             if (ShouldProcess(Policy, "Set"))
             {
-                SetAzureQueueStoredAccessPolicy(Channel, Queue, Policy, StartTime, ExpiryTime, Permission, NoStartTime, NoExpiryTime);
+                SetAzureQueueStoredAccessPolicy(Queue, Policy, StartTime, ExpiryTime, Permission, NoStartTime, NoExpiryTime);
             }
         }
     }

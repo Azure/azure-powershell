@@ -28,12 +28,12 @@ namespace Microsoft.Azure.Management.CosmosDB.Models
             }
 
             Id = restorableSqlDatabasePropertiesResourceDatabase.Id;
-            this._rid = restorableSqlDatabasePropertiesResourceDatabase._rid;
-            this._ts = restorableSqlDatabasePropertiesResourceDatabase._ts;
-            this._etag = restorableSqlDatabasePropertiesResourceDatabase._etag;
-            this._colls = restorableSqlDatabasePropertiesResourceDatabase._colls;
-            this._users = restorableSqlDatabasePropertiesResourceDatabase._users;
-            this._self = restorableSqlDatabasePropertiesResourceDatabase._self;
+            this._rid = restorableSqlDatabasePropertiesResourceDatabase.Rid;
+            this._ts = restorableSqlDatabasePropertiesResourceDatabase.Ts;
+            this._etag = restorableSqlDatabasePropertiesResourceDatabase.Etag;
+            this._colls = restorableSqlDatabasePropertiesResourceDatabase.Colls;
+            this._users = restorableSqlDatabasePropertiesResourceDatabase.Users;
+            this._self = restorableSqlDatabasePropertiesResourceDatabase.Self;
         }
 
         /// <summary>

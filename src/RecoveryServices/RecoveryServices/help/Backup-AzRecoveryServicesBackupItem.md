@@ -34,7 +34,7 @@ This cmdlet can also be used for custom retention with or without expiry date - 
 $vault = Get-AzRecoveryServicesVault -ResourceGroupName "resourceGroup" -Name "vaultName"
 $NamedContainer = Get-AzRecoveryServicesBackupContainer -ContainerType AzureVM -FriendlyName "pstestv2vm1" -VaultId $vault.ID
 $Item = Get-AzRecoveryServicesBackupItem -Container $NamedContainer -WorkloadType AzureVM -VaultId $vault.ID
-$Job = Backup-AzRecoveryServicesBackupItem -Item $Item -VaultId $vault.ID
+$Job = Backup-AzRecoveryServicesBackupItem -Item $Item -VaultId $vault.ID -ExpiryDateTimeUTC (Get-Date).ToUniversalTime().AddDays(60)
 $Job
 ```
 
@@ -46,7 +46,7 @@ pstestv2vm1      Backup               InProgress           4/23/2016 5:00:30 PM 
 
 The first command gets the Backup container of type AzureVM named pstestv2vm1, and then stores it in the $NamedContainer variable.
 The second command gets the Backup item corresponding to the container in $NamedContainer, and then stores it in the $Item variable.
-The last command triggers the backup job for the Backup item in $Item.
+The last command triggers the backup job for the Backup item in $Item with an expiry time of 60 days from now, default value for expiry time is 30 days if not specified.
 
 ### Example 2
 

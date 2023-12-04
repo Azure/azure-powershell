@@ -1,0 +1,42 @@
+{
+  "resourceType": "diagnosticSettingsCategories",
+  "apiVersion": "2021-05-01-preview",
+  "learnMore": {
+    "url": "https://learn.microsoft.com/powershell/module/az.monitor"
+  },
+  "commands": [
+    {
+      "name": "Get-AzDiagnosticSettingCategory",
+      "description": "Gets the diagnostic settings category for the specified resource.",
+      "path": "/{resourceUri}/providers/Microsoft.Insights/diagnosticSettingsCategories/{name}",
+      "help": {
+        "learnMore": {
+          "url": "https://learn.microsoft.com/powershell/module/az.monitor/get-azdiagnosticsettingcategory"
+        },
+        "parameterSets": [
+          {
+            "parameters": [
+              "-Name <String>",
+              "-ResourceId <String>"
+            ]
+          }
+        ]
+      },
+      "examples": [
+        {
+          "description": "Gets the diagnostic settings category for the specified resource.",
+          "parameters": [
+            {
+              "name": "-Name",
+              "value": "[Path.name]"
+            },
+            {
+              "name": "-ResourceId",
+              "value": "[Path.resourceUri]"
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

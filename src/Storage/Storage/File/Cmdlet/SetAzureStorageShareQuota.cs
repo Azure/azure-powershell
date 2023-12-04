@@ -52,6 +52,9 @@ namespace Microsoft.WindowsAzure.Commands.Storage.File.Cmdlet
             HelpMessage = "Share Quota")]
         public int Quota { get; set; }
 
+        // Overwrite the useless parameter
+        public override SwitchParameter DisAllowTrailingDot { get; set; }
+
         /// <summary>
         /// execute command
         /// </summary>

@@ -19,7 +19,8 @@ namespace Microsoft.Azure.PowerShell.Ssh.Helpers.HybridConnectivity
           {
               return new Tuple<string, string, string>[]
               {
-                new Tuple<string, string, string>("HybridConnectivity", "Endpoints", "2022-05-01-preview"),
+                new Tuple<string, string, string>("HybridConnectivity", "Endpoints", "2023-03-15"),
+                new Tuple<string, string, string>("HybridConnectivity", "ServiceConfigurations", "2023-03-15"),
               }.AsEnumerable();
           }
       }

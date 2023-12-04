@@ -26,6 +26,7 @@ license-header: MICROSOFT_MIT_NO_VERSION
 ###
 ``` yaml
 input-file:
+- Microsoft.Resources/preview/2022-08-01-preview/deploymentStacks.json
 - Microsoft.Resources/stable/2022-09-01/resources.json
 - Microsoft.Resources/stable/2021-01-01/subscriptions.json
 - Microsoft.Resources/stable/2020-10-01/deploymentScripts.json

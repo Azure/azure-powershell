@@ -86,7 +86,7 @@ namespace Microsoft.Azure.Commands.Compute.Automation
                         }
                         nextPageLink = pageResult.NextPageLink;
                     }
-                    var psObject = new List<PSVirtualMachineRunCommand>();
+                    var psObject = new List<PSVirtualMachineRunCommandList>();
                     foreach (var r in resultList)
                     {
                         psObject.Add(ComputeAutomationAutoMapperProfile.Mapper.Map<VirtualMachineRunCommand, PSVirtualMachineRunCommandList>(r));

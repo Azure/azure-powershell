@@ -1,4 +1,4 @@
-<Project Sdk="Microsoft.NET.Sdk">
+﻿<Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
     <PsModuleName>CognitiveServices</PsModuleName>
@@ -16,10 +16,6 @@
 
   <ItemGroup>
     <ProjectReference Include="..\CognitiveServices\CognitiveServices.csproj" />
-  </ItemGroup>
-  
-  <ItemGroup>
-    <ProjectReference Include="..\..\Network\Network.Management.Sdk\Network.Management.Sdk.csproj" />
   </ItemGroup>
 
 </Project>

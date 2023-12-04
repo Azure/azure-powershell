@@ -1,12 +1,12 @@
 {
   "Entries": [
     {
-      "RequestUri": "/subscriptions/0661b131-4a11-479b-96bf-2f95acca2f73/providers/Microsoft.NetApp/locations/eastus/quotaLimits?api-version=2022-09-01",
-      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvMDY2MWIxMzEtNGExMS00NzliLTk2YmYtMmY5NWFjY2EyZjczL3Byb3ZpZGVycy9NaWNyb3NvZnQuTmV0QXBwL2xvY2F0aW9ucy9lYXN0dXMvcXVvdGFMaW1pdHM/YXBpLXZlcnNpb249MjAyMi0wOS0wMQ==",
+      "RequestUri": "/subscriptions/0661b131-4a11-479b-96bf-2f95acca2f73/providers/Microsoft.NetApp/locations/eastus/quotaLimits?api-version=2022-11-01",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvMDY2MWIxMzEtNGExMS00NzliLTk2YmYtMmY5NWFjY2EyZjczL3Byb3ZpZGVycy9NaWNyb3NvZnQuTmV0QXBwL2xvY2F0aW9ucy9lYXN0dXMvcXVvdGFMaW1pdHM/YXBpLXZlcnNpb249MjAyMi0xMS0wMQ==",
       "RequestMethod": "GET",
       "RequestHeaders": {
         "x-ms-client-request-id": [
-          "9aa43bf2-efdc-4e86-b670-e92f533f93f1"
+          "4504879e-d943-4114-9c6d-e10936c8bb84"
         ],
         "Accept-Language": [
           "en-US"
@@ -14,7 +14,7 @@
         "User-Agent": [
           "FxVersion/4.700.22.55902",
           "OSName/Windows",
-          "OSVersion/Microsoft.Windows.10.0.22000",
+          "OSVersion/Microsoft.Windows.10.0.22621",
           "Microsoft.Azure.Management.NetApp.AzureNetAppFilesManagementClient/0.0.0.0"
         ]
       },
@@ -27,7 +27,7 @@
           "no-cache"
         ],
         "x-ms-request-id": [
-          "44338198-644b-49d9-9b47-1b3005d72563"
+          "5f5f7e05-a39c-4e69-b91d-217e753f022e"
         ],
         "Strict-Transport-Security": [
           "max-age=31536000; includeSubDomains"
@@ -39,19 +39,19 @@
           "ASP.NET"
         ],
         "x-ms-ratelimit-remaining-subscription-reads": [
-          "11981"
+          "11953"
         ],
         "x-ms-correlation-request-id": [
-          "b4222edb-8898-426b-9f45-371c30f10439"
+          "1898eabb-ca95-4dfb-aad6-fc4d5844e57b"
         ],
         "x-ms-routing-request-id": [
-          "SWEDENSOUTH:20230315T235011Z:b4222edb-8898-426b-9f45-371c30f10439"
+          "SWEDENSOUTH:20230712T223124Z:1898eabb-ca95-4dfb-aad6-fc4d5844e57b"
         ],
         "X-Content-Type-Options": [
           "nosniff"
         ],
         "Date": [
-          "Wed, 15 Mar 2023 23:50:10 GMT"
+          "Wed, 12 Jul 2023 22:31:24 GMT"
         ],
         "Content-Length": [
           "2495"
@@ -67,12 +67,12 @@
       "StatusCode": 200
     },
     {
-      "RequestUri": "/subscriptions/0661b131-4a11-479b-96bf-2f95acca2f73/providers/Microsoft.NetApp/locations/eastus/quotaLimits/totalTiBsPerSubscription?api-version=2022-09-01",
-      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvMDY2MWIxMzEtNGExMS00NzliLTk2YmYtMmY5NWFjY2EyZjczL3Byb3ZpZGVycy9NaWNyb3NvZnQuTmV0QXBwL2xvY2F0aW9ucy9lYXN0dXMvcXVvdGFMaW1pdHMvdG90YWxUaUJzUGVyU3Vic2NyaXB0aW9uP2FwaS12ZXJzaW9uPTIwMjItMDktMDE=",
+      "RequestUri": "/subscriptions/0661b131-4a11-479b-96bf-2f95acca2f73/providers/Microsoft.NetApp/locations/eastus/quotaLimits/totalTiBsPerSubscription?api-version=2022-11-01",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvMDY2MWIxMzEtNGExMS00NzliLTk2YmYtMmY5NWFjY2EyZjczL3Byb3ZpZGVycy9NaWNyb3NvZnQuTmV0QXBwL2xvY2F0aW9ucy9lYXN0dXMvcXVvdGFMaW1pdHMvdG90YWxUaUJzUGVyU3Vic2NyaXB0aW9uP2FwaS12ZXJzaW9uPTIwMjItMTEtMDE=",
       "RequestMethod": "GET",
       "RequestHeaders": {
         "x-ms-client-request-id": [
-          "7928a9bd-69a6-4f1d-a6c4-de132f4b8fc3"
+          "9c475388-f0e0-46bd-b1b3-55f077763832"
         ],
         "Accept-Language": [
           "en-US"
@@ -80,7 +80,7 @@
         "User-Agent": [
           "FxVersion/4.700.22.55902",
           "OSName/Windows",
-          "OSVersion/Microsoft.Windows.10.0.22000",
+          "OSVersion/Microsoft.Windows.10.0.22621",
           "Microsoft.Azure.Management.NetApp.AzureNetAppFilesManagementClient/0.0.0.0"
         ]
       },
@@ -93,7 +93,7 @@
           "no-cache"
         ],
         "x-ms-request-id": [
-          "26626dd6-b8cf-4fa5-8fe8-4e2f56e9bcb4"
+          "ae7d1d05-0c54-4a3a-8190-6c1acf922b63"
         ],
         "Strict-Transport-Security": [
           "max-age=31536000; includeSubDomains"
@@ -105,19 +105,19 @@
           "ASP.NET"
         ],
         "x-ms-ratelimit-remaining-subscription-reads": [
-          "11975"
+          "11930"
         ],
         "x-ms-correlation-request-id": [
-          "cb00ca72-5537-43d2-935a-a0bcac4cf674"
+          "af6815e2-f872-4d6a-a3e9-3cca04f030ef"
         ],
         "x-ms-routing-request-id": [
-          "SWEDENSOUTH:20230315T235012Z:cb00ca72-5537-43d2-935a-a0bcac4cf674"
+          "SWEDENSOUTH:20230712T223125Z:af6815e2-f872-4d6a-a3e9-3cca04f030ef"
         ],
         "X-Content-Type-Options": [
           "nosniff"
         ],
         "Date": [
-          "Wed, 15 Mar 2023 23:50:11 GMT"
+          "Wed, 12 Jul 2023 22:31:24 GMT"
         ],
         "Content-Length": [
           "273"

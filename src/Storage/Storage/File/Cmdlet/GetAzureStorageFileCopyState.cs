@@ -59,6 +59,15 @@ namespace Microsoft.WindowsAzure.Commands.Storage.File.Cmdlet
         [Alias("CloudFile")]
         public CloudFile File { get; set; }
 
+        [Parameter(
+            Mandatory = false,
+            ValueFromPipeline = true,
+            ValueFromPipelineByPropertyName = true,
+            ParameterSetName = Constants.FileParameterSetName,
+            HelpMessage = "ShareFileClient object indicated the file to get copy status.")]
+        [ValidateNotNull]
+        public ShareFileClient ShareFileClient { get; set; }
+
         [Parameter(HelpMessage = "Indicates whether or not to wait util the copying finished.")]
         public SwitchParameter WaitForComplete { get; set; }
 
@@ -96,7 +105,11 @@ namespace Microsoft.WindowsAzure.Commands.Storage.File.Cmdlet
 
             ShareFileClient file = null;
 
-            if (null != this.File)
+            if (this.ShareFileClient != null)
+            {
+                file = this.ShareFileClient;
+            }
+            else if (null != this.File)
             {
                 file = AzureStorageFile.GetTrack2FileClient(this.File);
             }

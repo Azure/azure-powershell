@@ -26,9 +26,9 @@ namespace Microsoft.Azure.Commands.CosmosDB.Models
             }
 
             Id = gremlinDatabaseGetPropertiesResource.Id;
-            _rid = gremlinDatabaseGetPropertiesResource._rid;
-            _ts = gremlinDatabaseGetPropertiesResource._ts;
-            _etag = gremlinDatabaseGetPropertiesResource._etag;
+            _rid = gremlinDatabaseGetPropertiesResource.Rid;
+            _ts = gremlinDatabaseGetPropertiesResource.Ts;
+            _etag = gremlinDatabaseGetPropertiesResource.Etag;
         }
         //
         // Summary:

@@ -12,6 +12,8 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
+using Azure.Storage.Files.Shares;
+
 namespace Microsoft.WindowsAzure.Commands.Storage.Common
 {
     using Microsoft.Azure.Storage;
@@ -33,6 +35,9 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Common
     using global::Azure.Storage.Files.Shares.Models;
     using global::Azure.Storage.Files.DataLake;
     using global::Azure.Storage.Files.Shares;
+    using global::Azure.Storage.Queues;
+    using Microsoft.WindowsAzure.Commands.Storage.File;
+    using System.Linq;
 
     internal static class Util
     {
@@ -529,27 +534,6 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Common
             return blobServiceClient;
         }
 
-        public static DataLakeServiceClient GetTrack2DataLakeServiceClient(AzureStorageContext context, DataLakeClientOptions options = null)
-        {
-            DataLakeServiceClient serviceClient;
-            if (context != null && context.StorageAccount != null && context.StorageAccount.Credentials != null && context.StorageAccount.Credentials.IsToken) //Oauth
-            {
-                serviceClient = new DataLakeServiceClient(context.StorageAccount.BlobEndpoint, context.Track2OauthToken, options);
-            }
-            else if (context != null && context.StorageAccount != null && context.StorageAccount.Credentials != null && context.StorageAccount.Credentials.IsSharedKey) //key 
-            {
-                serviceClient = new DataLakeServiceClient(context.StorageAccount.BlobEndpoint, new StorageSharedKeyCredential(context.StorageAccountName, context.StorageAccount.Credentials.ExportBase64EncodedKey()), options);
-            }
-            else if (context != null && context.StorageAccount != null && context.StorageAccount.Credentials != null && context.StorageAccount.Credentials.IsSAS) //sas 
-            {
-                serviceClient = new DataLakeServiceClient(new Uri(context.StorageAccount.BlobEndpoint.ToString() + context.StorageAccount.Credentials.SASToken), options);
-            }
-            else // Anonymous
-            {
-                serviceClient = new DataLakeServiceClient(context.StorageAccount.BlobEndpoint, options);
-            }
-            return serviceClient;
-        }
         /// <summary>
         /// Validate if Start Time and Expire time meet the requirement of userDelegationKey
         /// </summary>
@@ -773,14 +757,25 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Common
             }
 
             ShareServiceClient shareServiceClient;
-            string connectionString = context.ConnectionString;
-
-            // remove the "?" at the begin of SAS if any
-            if (context != null && context.StorageAccount != null && context.StorageAccount.Credentials != null && context.StorageAccount.Credentials.IsSAS)
+            if (context.StorageAccount!= null && context.StorageAccount.Credentials != null && context.StorageAccount.Credentials.IsToken) //Oauth
             {
-                connectionString = connectionString.Replace("SharedAccessSignature=?", "SharedAccessSignature=");
+                if (context.ShareTokenIntent != null)
+                {
+                    options.ShareTokenIntent = context.ShareTokenIntent.Value;   
+                }
+                shareServiceClient = new ShareServiceClient(context.StorageAccount.FileEndpoint, context.Track2OauthToken, options);
             }
-            shareServiceClient = new ShareServiceClient(connectionString, options);
+            else  //sas , key or Anonymous, use connection string
+            {
+                string connectionString = context.ConnectionString;
+
+                // remove the "?" at the begin of SAS if any
+                if (context != null && context.StorageAccount != null && context.StorageAccount.Credentials != null && context.StorageAccount.Credentials.IsSAS)
+                {
+                    connectionString = connectionString.Replace("SharedAccessSignature=?", "SharedAccessSignature=");
+                }
+                shareServiceClient = new ShareServiceClient(connectionString, options);
+            }
             return shareServiceClient;
         }
 
@@ -795,6 +790,38 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Common
             {
                 return shareClient;
             }
+        }
+
+        public static QueueServiceClient GetTrack2QueueServiceClient(AzureStorageContext context, QueueClientOptions options = null)
+        {
+            if (context == null || string.IsNullOrEmpty(context.ConnectionString))
+            {
+                throw new ArgumentException(Resources.DefaultStorageCredentialsNotFound);
+            }
+
+            QueueServiceClient queueServiceClient;
+            if (context != null && context.StorageAccount != null && context.StorageAccount.Credentials != null && context.StorageAccount.Credentials.IsToken)
+            {
+                queueServiceClient = new QueueServiceClient(context.StorageAccount.QueueEndpoint, context.Track2OauthToken, options);
+            }
+            else
+            {
+                string connectionString = context.ConnectionString;
+                // remove the "?" at the begin of SAS if any
+                if (context != null && context.StorageAccount != null && context.StorageAccount.Credentials != null && context.StorageAccount.Credentials.IsSAS)
+                {
+                    connectionString = connectionString.Replace("SharedAccessSignature=?", "SharedAccessSignature=");
+                }
+                queueServiceClient = new QueueServiceClient(connectionString, options);
+            }
+            return queueServiceClient;
+        }
+
+
+        public static QueueClient GetTrack2QueueClient(string queueName, AzureStorageContext context, QueueClientOptions options)
+        {
+            QueueClient queueClient = GetTrack2QueueServiceClient(context, options).GetQueueClient(queueName);
+            return queueClient;
         }
 
         /// <summary>
@@ -821,6 +848,38 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Common
             {
                 return itemUri.ToString();
             }
+        }
+
+        /// <summary>
+        ///  Get if a file path in format "dir1/dir2/filename" contains trailingdot in any block of the path
+        /// </summary>
+        public static bool PathContainsTrailingDot(string filePath)
+        {
+            foreach (string block in filePath.Split(NamingUtil.PathSeparators))
+            {
+                if (block.EndsWith("."))
+                {
+                    return true;
+                }
+            }
+            return false;
+        }
+
+        /// <summary>
+        ///  Remove trailingdot from dir/file name from a file Uri
+        /// </summary>
+        public static Uri RemoveFileUriTrailingDot(Uri fileUri)
+        {
+            string noLastSegment = string.Format("{0}://{1}", fileUri.Scheme, fileUri.Authority);
+            for (int i = 0; i < fileUri.Segments.Length; i++)
+            {
+                noLastSegment += fileUri.Segments[i].TrimEnd('.', '/');
+                if (fileUri.Segments[i].Substring(fileUri.Segments[i].Length - 1)[0] == '/')
+                {
+                    noLastSegment += fileUri.Segments[i].Substring(fileUri.Segments[i].Length - 1)[0];
+                }
+            }
+            return new Uri(noLastSegment);
         }
     }
 }

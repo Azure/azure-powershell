@@ -96,6 +96,51 @@ The fourth command gets backup items based on backupManagementType and workloadT
 The last command gets an array of recovery points for the item in $backupItem which are ready to be moved to VaultArchive tier and 
 then stores them in the $rp variable. 
 
+### Example 4: Getting pruned recovery points in last year after modify policy opertaion
+
+```powershell
+$vault = Get-AzRecoveryServicesVault -ResourceGroupName "resourceGroup" -Name "vaultName"
+$startDate = (Get-Date).AddDays(-365).ToUniversalTime()
+$endDate = (Get-Date).ToUniversalTime()
+$item = Get-AzRecoveryServicesBackupItem -BackupManagementType "AzureVM" -WorkloadType "AzureVM" -VaultId $vault.ID
+$rpsBefore = Get-AzRecoveryServicesBackupRecoveryPoint -Item $item[0] -StartDate $startDate -EndDate $endDate -VaultId $vault.ID
+
+# update policy
+$pol = Get-AzRecoveryServicesBackupProtectionPolicy -VaultId $vault.ID -Name "policyName"
+$pol.RetentionPolicy.IsWeeklyScheduleEnabled = $false
+$pol.RetentionPolicy.IsMonthlyScheduleEnabled = $false
+$pol.RetentionPolicy.IsYearlyScheduleEnabled = $false
+Set-AzRecoveryServicesBackupProtectionPolicy -Policy $pol -VaultId $vault.ID -RetentionPolicy $pol.RetentionPolicy -Debug 
+
+# wait until policy changes are applied to recovery points and they are pruned
+$rpsAfter = Get-AzRecoveryServicesBackupRecoveryPoint -Item $item[0] -StartDate $startDate -EndDate $endDate -VaultId $vault.ID
+
+# compare the recovery points list before and after
+$diff = Compare-Object $rpsBefore $rpsAfter
+$rpsRemoved = $diff | Where-Object{ $_.SideIndicator -eq'<='} | Select-Object -ExpandProperty InputObject
+$rpsRemoved
+```
+
+```output
+RecoveryPointId    RecoveryPointType  RecoveryPointTime      ContainerName                        ContainerType
+---------------    -----------------  -----------------      -------------                        -------------
+7397781054902      CrashConsistent    5/2/2023 3:28:35 AM    iaasvmcontainerv2;test-rg;test-vm  AzureVM
+9722704411921      CrashConsistent    4/1/2023 3:32:26 AM    iaasvmcontainerv2;test-rg;test-vm  AzureVM
+6543100104464      CrashConsistent    3/1/2023 3:26:27 AM    iaasvmcontainerv2;test-rg;test-vm  AzureVM
+```
+
+The first command gets vault object based on vaultName. The second command gets the date from one year days ago, and then stores it in the $startDate variable.
+The third command gets today's date, and then stores it in the $endDate variable.
+The fourth command gets backup items based on backupManagementType and workloadType, vaultId and then stores it in the $item variable.
+The fifth command gets an array of recovery points for the item in $item which are present before the modify policy operation in last one year. 
+Now we move on to update the policy. The sixth command fetches the policy to be updated which is used to protect the backup item $item[0].
+The seventh, eight and ninth commands disable the yearly and monthly retention in the policy to prune the older recovery points.
+The tenth command finally updates the retention policy. 
+The eleventh command waits in the same powershell session until the recovery points are pruned and fetches the recovery points within the same time range, after the policy changes are applied.
+The twelth command takes a diff between recovery point list before and after pruning occurs.
+The thirteenth command read the recovery points, from the diff, which were present before and are now pruned.
+The last command displays the list of pruned recovery points.
+
 ## PARAMETERS
 
 ### -DefaultProfile

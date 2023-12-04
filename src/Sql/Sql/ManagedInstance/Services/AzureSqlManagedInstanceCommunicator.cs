@@ -16,6 +16,7 @@ using Microsoft.Azure.Commands.Common.Authentication;
 using Microsoft.Azure.Commands.Common.Authentication.Abstractions;
 using Microsoft.Azure.Management.Internal.Resources;
 using Microsoft.Azure.Management.Sql;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 
@@ -109,6 +110,17 @@ namespace Microsoft.Azure.Commands.Sql.ManagedInstance.Services
         public void Remove(string resourceGroupName, string managedInstanceName)
         {
             GetCurrentSqlClient().ManagedInstances.Delete(resourceGroupName, managedInstanceName);
+        }
+
+
+        public void Start(string resourceGroupName, string managedInstanceName)
+        {
+            GetCurrentSqlClient().ManagedInstances.Start(resourceGroupName, managedInstanceName);
+        }
+
+        public void Stop(string resourceGroupName, string managedInstanceName)
+        {
+            GetCurrentSqlClient().ManagedInstances.Stop(resourceGroupName, managedInstanceName);
         }
 
         /// <summary>

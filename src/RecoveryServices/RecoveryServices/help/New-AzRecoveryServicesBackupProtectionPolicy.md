@@ -17,8 +17,9 @@ Creates a Backup protection policy.
 New-AzRecoveryServicesBackupProtectionPolicy [-Name] <String> [-WorkloadType] <WorkloadType>
  [[-BackupManagementType] <BackupManagementType>] [[-RetentionPolicy] <RetentionPolicyBase>]
  [[-SchedulePolicy] <SchedulePolicyBase>] [[-MoveToArchiveTier] <Boolean>] [[-TieringMode] <TieringMode>]
- [[-TierAfterDuration] <Int32>] [[-TierAfterDurationType] <String>] [-VaultId <String>]
- [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
+ [[-TierAfterDuration] <Int32>] [[-TierAfterDurationType] <String>] [-BackupSnapshotResourceGroup <String>]
+ [-BackupSnapshotResourceGroupSuffix <String>] [-VaultId <String>] [-DefaultProfile <IAzureContextContainer>]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -132,6 +133,36 @@ Then, we get the **RetentionPolicyObject** and update differential and full back
 Finally we create a **BackupProtectionPolicy** object based on the schedule and retention policies created by the previous commands.
 
 ## PARAMETERS
+
+### -BackupSnapshotResourceGroup
+Custom resource group name to store the instant recovery points of managed virtual machines. This is optional
+
+```yaml
+Type: System.String
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -BackupSnapshotResourceGroupSuffix
+Custom resource group name suffix to store the instant recovery points of managed virtual machines. This is optional
+
+```yaml
+Type: System.String
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
 
 ### -BackupManagementType
 The class of resources being protected. The acceptable values for this parameter are:

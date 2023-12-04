@@ -21,6 +21,7 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Implementation
     using Microsoft.Azure.Commands.ResourceManager.Cmdlets.Entities.Policy;
     using Microsoft.Azure.Commands.ResourceManager.Cmdlets.Extensions;
     using Microsoft.Azure.Commands.ResourceManager.Common;
+    using Microsoft.WindowsAzure.Commands.Common.CustomAttributes;
 
     using Newtonsoft.Json.Linq;
     using Policy;

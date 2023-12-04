@@ -34,11 +34,12 @@ using AutoMapper;
 using Microsoft.Azure.Commands.Compute.Strategies.ComputeRp;
 using System.Linq;
 using Microsoft.WindowsAzure.Commands.Common.CustomAttributes;
+using Microsoft.Azure.Management.Internal.Resources;
+using Microsoft.Azure.Commands.Common.Authentication;
+using Microsoft.Azure.Commands.Common.Authentication.Abstractions;
 
 namespace Microsoft.Azure.Commands.Compute.Automation
 {
-    [GenericBreakingChange("Starting November 2023, the \"New-AzVmss\" cmdlet will default to Trusted Launch VMSS. For more info, visit https://aka.ms/trustedLaunchVMSS.", "6.0.0")]
-    [GenericBreakingChange("Starting November 2023, the \"New-AzVmss\" cmdlet will use new defaults: Flexible orchestration mode and enable NATv2 configuration for Load Balancer. To learn more about Flexible Orchestration modes, visit https://aka.ms/orchestrationModeVMSS.", "7.0.0")]
     [Cmdlet(VerbsCommon.New, ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "Vmss", DefaultParameterSetName = "DefaultParameter", SupportsShouldProcess = true)]
     [OutputType(typeof(PSVirtualMachineScaleSet))]
     public partial class NewAzureRmVmss : ComputeAutomationBaseCmdlet
@@ -69,6 +70,35 @@ namespace Microsoft.Azure.Commands.Compute.Automation
                     {
                         if (ShouldProcess(this.VMScaleSetName, VerbsCommon.New))
                         {
+                            if (this.VirtualMachineScaleSet?.VirtualMachineProfile != null)
+                            {
+                                // TL defaulting for default param set, config object.
+                                // if security type not set, 
+                                // if parameters.VirtualMachineProfile.StorageProfile.ImageReference.SharedGalleryImageId == null
+                                // if parameters.VirtualMachineProfile.StorageProfile.ImageReference.Id == null
+                                // if parameters.VirtualMachineProfile.StorageProfile.OsDisk == null
+                                if (this.VirtualMachineScaleSet.VirtualMachineProfile?.SecurityProfile?.SecurityType == null
+                                    && this.VirtualMachineScaleSet.VirtualMachineProfile?.StorageProfile?.ImageReference == null
+                                    && this.VirtualMachineScaleSet.VirtualMachineProfile?.StorageProfile?.OsDisk == null)
+                                {
+                                    trustedLaunchDefaultingSecurityValues();
+                                    trustedLaunchDefaultingImageValues();
+                                }
+
+                                if (this.VirtualMachineScaleSet.VirtualMachineProfile?.SecurityProfile?.SecurityType == null
+                                    //&& this.VirtualMachineScaleSet.VirtualMachineProfile?.StorageProfile?.OsDisk == null//had to remove this as it has the FromImage value from set-azvmssstorageprofile call
+                                    && this.VirtualMachineScaleSet.VirtualMachineProfile?.StorageProfile?.ImageReference?.Publisher != null
+                                    && this.VirtualMachineScaleSet.VirtualMachineProfile?.StorageProfile?.ImageReference?.Offer != null
+                                    && this.VirtualMachineScaleSet.VirtualMachineProfile?.StorageProfile?.ImageReference?.Sku != null
+                                    && this.VirtualMachineScaleSet.VirtualMachineProfile?.StorageProfile?.ImageReference?.Version != null)
+                                {
+                                    // retrieve the image that this points to and check if it is HyperVGeneration V2.
+                                    Microsoft.Rest.Azure.AzureOperationResponse<VirtualMachineImage> specificImageRespone;
+                                    specificImageRespone = retrieveSpecificImageFromNotId();
+                                    setHyperVGenForImageCheckAndTLDefaulting(specificImageRespone);
+                                }
+                            }
+
                             string resourceGroupName = this.ResourceGroupName;
                             string vmScaleSetName = this.VMScaleSetName;
                             VirtualMachineScaleSet parameters = new VirtualMachineScaleSet();
@@ -79,26 +109,27 @@ namespace Microsoft.Azure.Commands.Compute.Automation
                                     "Consider using \"latest\" as the image version. This allows VMSS to auto upgrade when a newer version is available.");
                             }
 
-                            if (parameters?.OrchestrationMode == "Flexible")
-                            {
-                                if (parameters?.VirtualMachineProfile?.NetworkProfile?.NetworkInterfaceConfigurations != null)
-                                {
-                                    foreach (var nicConfig in parameters.VirtualMachineProfile.NetworkProfile.NetworkInterfaceConfigurations)
-                                    {
-                                        if (nicConfig.IpConfigurations != null)
-                                        {
-                                            foreach (var ipConfig in nicConfig.IpConfigurations)
-                                            {
-                                                ipConfig.LoadBalancerInboundNatPools = null;
-                                            }
-                                        }
-                                    }
-                                }
+                            if (parameters.OrchestrationMode == null) { parameters.OrchestrationMode = flexibleOrchestrationMode; }
 
-                                parameters.UpgradePolicy = null;
+                            if (parameters?.OrchestrationMode == flexibleOrchestrationMode)
+                            {
 
                                 flexibleOrchestrationModeDefaultParameters(parameters);
                                 checkFlexibleOrchestrationModeParamsDefaultParamSet(parameters);
+                            }
+                            
+                            if (parameters.VirtualMachineProfile?.SecurityProfile?.SecurityType?.ToLower() == ConstantValues.TrustedLaunchSecurityType || parameters.VirtualMachineProfile?.SecurityProfile?.SecurityType?.ToLower() == ConstantValues.ConfidentialVMSecurityType)
+                            {
+                                if (parameters.VirtualMachineProfile?.SecurityProfile?.UefiSettings != null)
+                                {
+                                    parameters.VirtualMachineProfile.SecurityProfile.UefiSettings.SecureBootEnabled = parameters.VirtualMachineProfile.SecurityProfile.UefiSettings.SecureBootEnabled ?? true;
+                                    parameters.VirtualMachineProfile.SecurityProfile.UefiSettings.VTpmEnabled = parameters.VirtualMachineProfile.SecurityProfile.UefiSettings.VTpmEnabled ?? true;
+
+                                }
+                                else
+                                {
+                                    parameters.VirtualMachineProfile.SecurityProfile.UefiSettings = new UefiSettings(true, true);
+                                }
                             }
 
                             // For Cross-tenant RBAC sharing
@@ -121,11 +152,22 @@ namespace Microsoft.Azure.Commands.Compute.Automation
                                 }
                             }
                             // END: For Cross-tenant RBAC sharing
-                            // GuestAttestation install scenario
-                            if (shouldGuestAttestationExtBeInstalled(parameters) &&
-                               parameters.Identity == null)
+
+                            // Standard securityType is currently not supported in API, jsut used on client side for now,
+                            // so removing it here before API call is made. 
+                            if (parameters.VirtualMachineProfile?.SecurityProfile?.SecurityType != null
+                                && parameters.VirtualMachineProfile?.SecurityProfile?.SecurityType?.ToLower() == ConstantValues.StandardSecurityType)
                             {
-                                parameters.Identity = new VirtualMachineScaleSetIdentity(null, null, Microsoft.Azure.Management.Compute.Models.ResourceIdentityType.SystemAssigned, null);
+                                if (parameters.VirtualMachineProfile.SecurityProfile.UefiSettings?.SecureBootEnabled == null
+                                    && parameters.VirtualMachineProfile.SecurityProfile.UefiSettings?.VTpmEnabled == null
+                                    && parameters.VirtualMachineProfile.SecurityProfile.EncryptionAtHost == null)
+                                {
+                                    parameters.VirtualMachineProfile.SecurityProfile = null;
+                                }
+                                else
+                                {
+                                    parameters.VirtualMachineProfile.SecurityProfile.SecurityType = null;
+                                }
                             }
 
                             VirtualMachineScaleSet result;
@@ -144,101 +186,6 @@ namespace Microsoft.Azure.Commands.Compute.Automation
                                 result = VirtualMachineScaleSetsClient.CreateOrUpdate(resourceGroupName, vmScaleSetName, parameters);
                             }
 
-
-                            //Guest Attestation extension defaulting behavior check.
-                            if (shouldGuestAttestationExtBeInstalled(parameters))
-                            {
-                                var extensionDirect = new VirtualMachineScaleSetExtension();
-
-                                if (this.VirtualMachineScaleSet.VirtualMachineProfile == null)
-                                {
-                                    this.VirtualMachineScaleSet.VirtualMachineProfile = new PSVirtualMachineScaleSetVMProfile();
-                                }
-
-                                // ExtensionProfile
-                                if (this.VirtualMachineScaleSet.VirtualMachineProfile.ExtensionProfile == null)
-                                {
-                                    this.VirtualMachineScaleSet.VirtualMachineProfile.ExtensionProfile = new PSVirtualMachineScaleSetExtensionProfile();
-                                }
-
-                                // Extensions
-                                if (this.VirtualMachineScaleSet.VirtualMachineProfile.ExtensionProfile.Extensions == null)
-                                {
-                                    this.VirtualMachineScaleSet.VirtualMachineProfile.ExtensionProfile.Extensions = new List<PSVirtualMachineScaleSetExtension>();
-                                }
-
-                                if (parameters.VirtualMachineProfile.OsProfile != null)
-                                {
-                                    if (parameters.VirtualMachineProfile.OsProfile.LinuxConfiguration != null)
-                                    {
-
-                                        extensionDirect.Name = "GuestAttestation";
-                                        extensionDirect.Publisher = "Microsoft.Azure.Security.LinuxAttestation";
-                                        extensionDirect.Type1 = "GuestAttestation";
-                                        extensionDirect.TypeHandlerVersion = "1.0";
-                                    }
-                                    else
-                                    {
-
-                                        extensionDirect.Name = "GuestAttestation";
-                                        extensionDirect.Publisher = "Microsoft.Azure.Security.WindowsAttestation";
-                                        extensionDirect.Type1 = "GuestAttestation";
-                                        extensionDirect.TypeHandlerVersion = "1.0";
-                                    }
-                                }
-
-                                VirtualMachineScaleSetUpdate parametersupdate = new VirtualMachineScaleSetUpdate();
-                                parametersupdate.VirtualMachineProfile = new VirtualMachineScaleSetUpdateVMProfile();
-                                parametersupdate.VirtualMachineProfile.ExtensionProfile = new VirtualMachineScaleSetExtensionProfile();
-                                parametersupdate.VirtualMachineProfile.ExtensionProfile.Extensions = new List<VirtualMachineScaleSetExtension>();
-                                parametersupdate.VirtualMachineProfile.ExtensionProfile.Extensions.Add(extensionDirect);
-                                result = VirtualMachineScaleSetsClient.Update(resourceGroupName, vmScaleSetName, parametersupdate);
-
-                                var vmssVmExtParams = new VirtualMachineScaleSetVMExtension();
-                                var resultVmssVm = VirtualMachineScaleSetVMsClient.List(resourceGroupName, vmScaleSetName);
-                                var resultList = resultVmssVm.ToList();
-                                var nextPageLink = resultVmssVm.NextPageLink;
-                                while (!string.IsNullOrEmpty(nextPageLink))
-                                {
-                                    var pageResult = VirtualMachineScaleSetVMsClient.ListNext(nextPageLink);
-                                    foreach (var pageItem in pageResult)
-                                    {
-                                        resultList.Add(pageItem);
-                                    }
-                                    nextPageLink = pageResult.NextPageLink;
-                                }
-
-                                foreach (var currentVmssVm in resultList)
-                                {
-                                    if (currentVmssVm.StorageProfile != null &&
-                                        currentVmssVm.StorageProfile.OsDisk != null)
-                                    {
-                                        if (currentVmssVm.StorageProfile.OsDisk.OsType == OperatingSystemTypes.Linux)
-                                        {
-                                            vmssVmExtParams = new VirtualMachineScaleSetVMExtension
-                                            {
-                                                Publisher = "Microsoft.Azure.Security.LinuxAttestation",
-                                                Type1 = "GuestAttestation",
-                                                TypeHandlerVersion = "1.0"
-                                            };
-                                        }
-                                        else
-                                        {
-
-                                            vmssVmExtParams = new VirtualMachineScaleSetVMExtension
-                                            {
-                                                Publisher = "Microsoft.Azure.Security.WindowsAttestation",
-                                                Type1 = "GuestAttestation",
-                                                TypeHandlerVersion = "1.0"
-                                            };
-                                        }
-                                        string extensionNameGA = "GuestAttestation";
-                                        var opt = this.VirtualMachineScaleSetVMExtensionsClient.CreateOrUpdateWithHttpMessagesAsync(resourceGroupName, vmScaleSetName, currentVmssVm.InstanceId, extensionNameGA, vmssVmExtParams);
-                                    }
-
-                                }
-                            }
-
                             var psObject = new PSVirtualMachineScaleSet();
                             ComputeAutomationAutoMapperProfile.Mapper.Map<VirtualMachineScaleSet, PSVirtualMachineScaleSet>(result, psObject);
                             WriteObject(psObject);
@@ -248,53 +195,144 @@ namespace Microsoft.Azure.Commands.Compute.Automation
             }
         }
 
-        /// <summary>
-        /// Check to see if the Guest Attestation extension should be installed and Identity set to SystemAssigned.
-        /// Requirements for this scenario to be true:
-        /// 1) DisableIntegrityMonitoring is not true.
-        /// 2) SecurityType is TrustedLaunch.
-        /// 3) SecureBootEnabled is true.
-        /// 4) VTpmEnabled is true.
-        /// </summary>
-        /// <param name="vmssParameters"></param>
-        /// <returns></returns>
-        private bool shouldGuestAttestationExtBeInstalled(VirtualMachineScaleSet vmssParameters)
+        private void setHyperVGenForImageCheckAndTLDefaulting(Microsoft.Rest.Azure.AzureOperationResponse<VirtualMachineImage> specificImageRespone)
         {
-            if (this.DisableIntegrityMonitoring != true &&
-                    vmssParameters != null &&
-                    vmssParameters.VirtualMachineProfile != null &&
-                    vmssParameters.VirtualMachineProfile.SecurityProfile != null &&
-                    vmssParameters.VirtualMachineProfile.SecurityProfile.SecurityType == "TrustedLaunch" &&
-                    vmssParameters.VirtualMachineProfile.SecurityProfile.UefiSettings != null &&
-                    vmssParameters.VirtualMachineProfile.SecurityProfile.UefiSettings.SecureBootEnabled == true &&
-                    vmssParameters.VirtualMachineProfile.SecurityProfile.UefiSettings.VTpmEnabled == true)
+            if (specificImageRespone.Body.HyperVGeneration.ToUpper() == "V2")
             {
-                return true;
+                trustedLaunchDefaultingSecurityValues();
             }
-            else
+            else if (specificImageRespone.Body.HyperVGeneration.ToUpper() == "V1")
             {
-                return false;
+                if (this.VirtualMachineScaleSet.VirtualMachineProfile.SecurityProfile == null)
+                {
+                    this.VirtualMachineScaleSet.VirtualMachineProfile.SecurityProfile = new SecurityProfile();
+                }
+                this.VirtualMachineScaleSet.VirtualMachineProfile.SecurityProfile.SecurityType = ConstantValues.StandardSecurityType;
+                if (this.AsJobPresent() == false) // to avoid a failure when it is a job. Seems to fail when it is a job.
+                {
+                    WriteInformation(HelpMessages.TrustedLaunchUpgradeMessage, new string[] { "PSHOST" });
+                }
             }
         }
 
+        /// <summary>
+        /// Query for the given image if the ImageId is not used. 
+        /// </summary>
+        /// <returns> The API response of the VirtualMachineImage with the HyperVGeneration property. </returns>
+        private Microsoft.Rest.Azure.AzureOperationResponse<VirtualMachineImage> retrieveSpecificImageFromNotId()
+        {
+            var resourceClient = AzureSession.Instance.ClientFactory.CreateArmClient<ResourceManagementClient>(
+                            DefaultProfile.DefaultContext,
+                            AzureEnvironment.Endpoint.ResourceManager);
+            string loc = "";
+            if (this.Location == null)
+            {
+                loc = resourceClient.ResourceGroups.GetAsync(this.ResourceGroupName).Result.Location;
+            }
+            else
+            {
+                loc = this.Location;
+            }
+            
+            var imageVersion = retrieveImageVersion(this.VirtualMachineScaleSet.VirtualMachineProfile.StorageProfile.ImageReference.Publisher,
+                                                    this.VirtualMachineScaleSet.VirtualMachineProfile.StorageProfile.ImageReference.Offer,
+                                                    this.VirtualMachineScaleSet.VirtualMachineProfile.StorageProfile.ImageReference.Sku,
+                                                    this.VirtualMachineScaleSet.VirtualMachineProfile.StorageProfile.ImageReference.Version,
+                                                    loc);
+            var imgResponse = ComputeClient.ComputeManagementClient.VirtualMachineImages.GetWithHttpMessagesAsync(
+                    loc.Canonicalize(),
+                    this.VirtualMachineScaleSet.VirtualMachineProfile.StorageProfile.ImageReference.Publisher,
+                    this.VirtualMachineScaleSet.VirtualMachineProfile.StorageProfile.ImageReference.Offer,
+                    this.VirtualMachineScaleSet.VirtualMachineProfile.StorageProfile.ImageReference.Sku,
+                    version: imageVersion).GetAwaiter().GetResult();
+            return imgResponse;
+        }
+
+        /// <summary>
+        /// Retrieves the specific image value if the version is 'latest' to use in Get calls.
+        /// </summary>
+        /// <param name="publisher"></param>
+        /// <param name="offer"></param>
+        /// <param name="sku"></param>
+        /// <param name="version"></param>
+        /// /// <param name="location"></param>
+        /// <returns></returns>
+        private string retrieveImageVersion(string publisher, string offer, string sku, string version, string location)
+        {
+            if (version.ToLower() == "latest")
+            {
+                var imgResponse = ComputeClient.ComputeManagementClient.VirtualMachineImages.ListWithHttpMessagesAsync(
+                            location.Canonicalize(),
+                            publisher,
+                            offer,
+                            sku,
+                            top: 1,
+                            orderby: "name desc").GetAwaiter().GetResult();
+
+                var parts = imgResponse.Body[0].Id.ToString().Split(new char[] { '/' }, StringSplitOptions.RemoveEmptyEntries);
+
+                string imageVersion = parts[Array.IndexOf(parts, "Versions") + 1];
+
+                return imageVersion;
+            }
+            else
+            {
+                return version;
+            }
+        }
+
+        private void trustedLaunchDefaultingSecurityValues()
+        {
+            if (this.VirtualMachineScaleSet.VirtualMachineProfile == null)
+            {
+                this.VirtualMachineScaleSet.VirtualMachineProfile = new PSVirtualMachineScaleSetVMProfile();
+            }
+            if (this.VirtualMachineScaleSet.VirtualMachineProfile.SecurityProfile == null)
+            {
+                this.VirtualMachineScaleSet.VirtualMachineProfile.SecurityProfile = new SecurityProfile();
+            }
+            this.VirtualMachineScaleSet.VirtualMachineProfile.SecurityProfile.SecurityType = ConstantValues.TrustedLaunchSecurityType;
+
+            if (this.VirtualMachineScaleSet.VirtualMachineProfile.SecurityProfile.UefiSettings == null)
+            {
+                this.VirtualMachineScaleSet.VirtualMachineProfile.SecurityProfile.UefiSettings = new UefiSettings(true, true);
+            }
+            if (this.VirtualMachineScaleSet.VirtualMachineProfile.SecurityProfile.UefiSettings.SecureBootEnabled == null)
+            {
+                this.VirtualMachineScaleSet.VirtualMachineProfile.SecurityProfile.UefiSettings.SecureBootEnabled = true;
+            }
+            if (this.VirtualMachineScaleSet.VirtualMachineProfile.SecurityProfile.UefiSettings.VTpmEnabled == null)
+            {
+                this.VirtualMachineScaleSet.VirtualMachineProfile.SecurityProfile.UefiSettings.VTpmEnabled = true;
+            }
+        }
+
+        private void trustedLaunchDefaultingImageValues()
+        {
+            if (this.VirtualMachineScaleSet.VirtualMachineProfile.StorageProfile == null)
+            {
+                this.VirtualMachineScaleSet.VirtualMachineProfile.StorageProfile = new VirtualMachineScaleSetStorageProfile();
+            }
+            if (this.VirtualMachineScaleSet.VirtualMachineProfile.StorageProfile.ImageReference == null)
+            {
+                this.VirtualMachineScaleSet.VirtualMachineProfile.StorageProfile.ImageReference = new ImageReference();
+            }
+            this.VirtualMachineScaleSet.VirtualMachineProfile.StorageProfile.ImageReference.Publisher = ConstantValues.TrustedLaunchDefaultPublisher;
+            this.VirtualMachineScaleSet.VirtualMachineProfile.StorageProfile.ImageReference.Offer = ConstantValues.TrustedLaunchDefaultOffer;
+            this.VirtualMachineScaleSet.VirtualMachineProfile.StorageProfile.ImageReference.Sku = ConstantValues.TrustedLaunchDefaultSku;
+            this.VirtualMachineScaleSet.VirtualMachineProfile.StorageProfile.ImageReference.Version = ConstantValues.TrustedLaunchDefaultVersion;
+
+        }
 
         /// This somewhat contradicts with the above behavior that sets UpgradePolicy to null.
         /// There is some concern with the above behavior being correct or not, and requires additional testing before changing.
         private void checkFlexibleOrchestrationModeParamsDefaultParamSet(VirtualMachineScaleSet parameters)
         {
-            if (parameters?.UpgradePolicy != null)
-            {
-                throw new Exception("UpgradePolicy is not currently supported for a VMSS with OrchestrationMode set to Flexible.");
-            }
-            else if (parameters?.VirtualMachineProfile?.NetworkProfile?.NetworkApiVersion != null
+            if (parameters?.VirtualMachineProfile?.NetworkProfile?.NetworkApiVersion != null
                 && convertAPIVersionToInt(parameters?.VirtualMachineProfile?.NetworkProfile?.NetworkApiVersion) < vmssFlexibleOrchestrationModeNetworkAPIVersionMinimumInt)
             {
                 throw new Exception("The value for NetworkApiVersion is not valid for a VMSS with OrchestrationMode set to Flexible. You must use a valid Network API Version equal to or greater than " + vmssFlexibleOrchestrationModeNetworkAPIVersionMinimum);
             }
-            //else if (convertAPIVersionToInt(parameters?.VirtualMachineProfile?.NetworkProfile?.NetworkApiVersion) < vmssFlexibleOrchestrationModeNetworkAPIVersionMinimumInt)
-            //{
-            //    throw new Exception("The value for NetworkApiVersion is not valid for a VMSS with OrchestrationMode set to Flexible. You must use a valid Network API Version equal to or greater than " + vmssFlexibleOrchestrationModeNetworkAPIVersionMinimum);
-            //}
         }
 
         private void flexibleOrchestrationModeDefaultParameters(VirtualMachineScaleSet parameters)
@@ -304,10 +342,7 @@ namespace Microsoft.Azure.Commands.Compute.Automation
             {
                 parameters.VirtualMachineProfile.NetworkProfile.NetworkApiVersion = vmssFlexibleOrchestrationModeNetworkAPIVersionMinimum;
             }
-            /*if (parameters?.VirtualMachineProfile?.NetworkProfile?.NetworkApiVersion == null)
-            {
-                parameters.VirtualMachineProfile.NetworkProfile.NetworkApiVersion = vmssFlexibleOrchestrationModeNetworkAPIVersionMinimum;
-            }*/
+
             if (parameters?.PlatformFaultDomainCount == null)
             {
                 parameters.PlatformFaultDomainCount = 1;
@@ -360,11 +395,5 @@ namespace Microsoft.Azure.Commands.Compute.Automation
             HelpMessage = "UserData for the Vmss, which will be Base64 encoded. Customer should not pass any secrets in here.",
             ValueFromPipelineByPropertyName = true)]
         public string UserData { get; set; }
-
-        [Parameter(
-           Mandatory = false,
-           ValueFromPipelineByPropertyName = true,
-           HelpMessage = "This flag disables the default behavior to install the Guest Attestation extension to the virtual machine if: 1) SecurityType is TrustedLaunch, 2) SecureBootEnabled on the SecurityProfile is true, 3) VTpmEnabled on the SecurityProfile is true.")]
-        public SwitchParameter DisableIntegrityMonitoring { get; set; }
     }
 }
