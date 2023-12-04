@@ -60,9 +60,6 @@ Deletes a Azure Arc PrivateLinkScope.
 ### [Set-AzConnectedMachineExtension](Set-AzConnectedMachineExtension.md)
 The operation to create or update the extension.
 
-### [Set-AzConnectedMachineRunCommand](Set-AzConnectedMachineRunCommand.md)
-The operation to create or update a run command.
-
 ### [Set-AzConnectedPrivateLinkScope](Set-AzConnectedPrivateLinkScope.md)
 Creates (or updates) a Azure Arc PrivateLinkScope.
 Note: You cannot specify a different value for InstrumentationKey nor AppId in the Put operation.
