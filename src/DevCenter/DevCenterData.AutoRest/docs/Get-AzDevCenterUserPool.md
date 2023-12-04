@@ -26,7 +26,7 @@ Get-AzDevCenterUserPool -Endpoint <String> -PoolName <String> -ProjectName <Stri
 
 ### GetByDevCenter
 ```
-Get-AzDevCenterUserPool -DevCenter <String> -PoolName <String> -ProjectName <String>
+Get-AzDevCenterUserPool -DevCenterName <String> -PoolName <String> -ProjectName <String>
  [-DefaultProfile <PSObject>] [<CommonParameters>]
 ```
 
@@ -38,13 +38,13 @@ Get-AzDevCenterUserPool -Endpoint <String> -InputObject <IDevCenterdataIdentity>
 
 ### GetViaIdentityByDevCenter
 ```
-Get-AzDevCenterUserPool -DevCenter <String> -InputObject <IDevCenterdataIdentity> [-DefaultProfile <PSObject>]
- [<CommonParameters>]
+Get-AzDevCenterUserPool -DevCenterName <String> -InputObject <IDevCenterdataIdentity>
+ [-DefaultProfile <PSObject>] [<CommonParameters>]
 ```
 
 ### ListByDevCenter
 ```
-Get-AzDevCenterUserPool -DevCenter <String> -ProjectName <String> [-DefaultProfile <PSObject>]
+Get-AzDevCenterUserPool -DevCenterName <String> -ProjectName <String> [-DefaultProfile <PSObject>]
  [<CommonParameters>]
 ```
 
@@ -62,7 +62,7 @@ This command lists the pools in the project "DevProject".
 
 ### Example 2: List pools by dev center
 ```powershell
-Get-AzDevCenterUserPool -DevCenter Contoso -ProjectName DevProject
+Get-AzDevCenterUserPool -DevCenterName Contoso -ProjectName DevProject
 ```
 
 This command lists the pools in the project "DevProject".
@@ -76,7 +76,7 @@ This command gets the pool "DevPool" in the project "DevProject".
 
 ### Example 4: Get pool by dev center
 ```powershell
-Get-AzDevCenterUserPool -DevCenter Contoso -ProjectName DevProject -PoolName DevPool
+Get-AzDevCenterUserPool -DevCenterName Contoso -ProjectName DevProject -PoolName DevPool
 ```
 
 This command gets the pool "DevPool" in the project "DevProject".
@@ -92,7 +92,7 @@ This command gets the pool "DevPool" in the project "DevProject".
 ### Example 6: Get pool by dev center and InputObject
 ```powershell
 $devBoxInput = @{"ProjectName" = "DevProject"; "PoolName" = "DevPool" }
-Get-AzDevCenterUserPool -DevCenter Contoso -InputObject $devBoxInput
+Get-AzDevCenterUserPool -DevCenterName Contoso -InputObject $devBoxInput
 ```
 
 This command gets the pool "DevPool" in the project "DevProject".
@@ -115,13 +115,13 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -DevCenter
+### -DevCenterName
 The DevCenter upon which to execute operations.
 
 ```yaml
 Type: System.String
 Parameter Sets: GetByDevCenter, GetViaIdentityByDevCenter, ListByDevCenter
-Aliases:
+Aliases: DevCenter
 
 Required: True
 Position: Named
@@ -200,28 +200,9 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Models.Api20230401.IPool
+### Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Models.Api20231001Preview.IPool
 
 ## NOTES
-
-ALIASES
-
-COMPLEX PARAMETER PROPERTIES
-
-To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
-
-
-`INPUTOBJECT <IDevCenterdataIdentity>`: Identity Parameter
-  - `[ActionName <String>]`: The name of an action that will take place on a Dev Box.
-  - `[CatalogName <String>]`: The name of the catalog
-  - `[DefinitionName <String>]`: The name of the environment definition
-  - `[DevBoxName <String>]`: The name of a Dev Box.
-  - `[EnvironmentName <String>]`: The name of the environment.
-  - `[Id <String>]`: Resource identity path
-  - `[PoolName <String>]`: The name of a pool of Dev Boxes.
-  - `[ProjectName <String>]`: The DevCenter Project upon which to execute operations.
-  - `[ScheduleName <String>]`: The name of a schedule.
-  - `[UserId <String>]`: The AAD object id of the user. If value is 'me', the identity is taken from the authentication context.
 
 ## RELATED LINKS
 

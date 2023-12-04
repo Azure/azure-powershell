@@ -6,7 +6,7 @@ This command lists environments under the project "DevProject".
 
 ### Example 2: List environments by dev center and project
 ```powershell
-Get-AzDevCenterUserEnvironment -DevCenter Contoso -ProjectName DevProject
+Get-AzDevCenterUserEnvironment -DevCenterName Contoso -ProjectName DevProject
 ```
 This command lists environments under the project "DevProject".
 
@@ -18,7 +18,7 @@ This command lists environments under the project "DevProject" assigned to the c
 
 ### Example 4: List environments by dev center, user id, and project
 ```powershell
-Get-AzDevCenterUserEnvironment -DevCenter Contoso -ProjectName DevProject -UserId "786a823c-8037-48ab-89b8-8599901e67d0"
+Get-AzDevCenterUserEnvironment -DevCenterName Contoso -ProjectName DevProject -UserId "786a823c-8037-48ab-89b8-8599901e67d0"
 ```
 This command lists environments under the project "DevProject" assigned to the user "786a823c-8037-48ab-89b8-8599901e67d0".
 
@@ -30,7 +30,7 @@ This command gets the environment "myEnv" under the project "DevProject" assigne
 
 ### Example 6: Get an environment by dev center
 ```powershell
-Get-AzDevCenterUserEnvironment -DevCenter Contoso -ProjectName DevProject -UserId "786a823c-8037-48ab-89b8-8599901e67d0" -Name myEnv
+Get-AzDevCenterUserEnvironment -DevCenterName Contoso -ProjectName DevProject -UserId "786a823c-8037-48ab-89b8-8599901e67d0" -Name myEnv
 ```
 This command gets the environment "myEnv" under the project "DevProject" assigned to the user "786a823c-8037-48ab-89b8-8599901e67d0".
 
@@ -44,7 +44,7 @@ This command gets the environment "myEnv" under the project "DevProject" assigne
 ### Example 8: Get an environment by dev center and InputObject
 ```powershell
 $envInput = @{"UserId" = "me"; "ProjectName" = "DevProject"; "EnvironmentName" = "myEnv" }
-Get-AzDevCenterUserEnvironment -DevCenter Contoso -InputObject $envInput
+Get-AzDevCenterUserEnvironment -DevCenterName Contoso -InputObject $envInput
 ```
 This command gets the environment "myEnv" under the project "DevProject" assigned to the currently signed-in user.
 

@@ -1,0 +1,84 @@
+{
+  "Invoke-AzDevCenterUserDelayEnvironmentAction+[NoContext]+Delay+$GET+https://003b06c3-d471-4452-9686-9e7f3ca85f0a-pwshtestdevcenter.centraluseuap.devcenter.azure.com/projects/pwshProj3stxlh/users/me/environments/amlim-pwsh/actions/Delete?api-version=2023-10-01-preview+1": {
+    "Request": {
+      "Method": "GET",
+      "RequestUri": "https://003b06c3-d471-4452-9686-9e7f3ca85f0a-pwshtestdevcenter.centraluseuap.devcenter.azure.com/projects/pwshProj3stxlh/users/me/environments/amlim-pwsh/actions/Delete?api-version=2023-10-01-preview",
+      "Content": null,
+      "isContentBase64": false,
+      "Headers": {
+        "x-ms-unique-id": [ "1" ],
+        "x-ms-client-request-id": [ "bd7bab74-895f-4570-82c8-eb2a30d63c73" ],
+        "CommandName": [ "Az.DevCenterdata.internal\\Get-AzDevCenterUserEnvironmentAction" ],
+        "FullCommandName": [ "Get-AzDevCenterUserEnvironmentAction_Get" ],
+        "ParameterSetName": [ "__AllParameterSets" ],
+        "User-Agent": [ "AzurePowershell/v0.0.0", "PSVersion/v7.2.16", "Az.DevCenterdata/0.1.0" ],
+        "Authorization": [ "[Filtered]" ]
+      },
+      "ContentHeaders": {
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Date": [ "Mon, 13 Nov 2023 05:36:13 GMT" ],
+        "Connection": [ "keep-alive" ],
+        "x-ms-correlation-request-id": [ "5832591f-dde4-4600-8542-bcfe5edde5a2" ],
+        "x-ms-client-request-id": [ "bd7bab74-895f-4570-82c8-eb2a30d63c73" ],
+        "X-Rate-Limit-Limit": [ "1m" ],
+        "X-Rate-Limit-Remaining": [ "299" ],
+        "X-Rate-Limit-Reset": [ "2023-11-13T05:37:13.4766872Z" ],
+        "Strict-Transport-Security": [ "max-age=15724800; includeSubDomains" ],
+        "Access-Control-Allow-Origin": [ "*" ],
+        "Access-Control-Max-Age": [ "86400" ],
+        "Access-Control-Expose-Headers": [ "Location,Operation-Location,x-ms-correlation-request-id,x-ms-client-request-id" ]
+      },
+      "ContentHeaders": {
+        "Content-Type": [ "application/json; charset=utf-8" ],
+        "Content-Length": [ "459" ]
+      },
+      "Content": "{\n  \"name\": \"Delete\",\n  \"uri\": \"https://003b06c3-d471-4452-9686-9e7f3ca85f0a-pwshtestdevcenter.centraluseuap.devcenter.azure.com/projects/pwshproj3stxlh/users/c3c951b7-d307-4c40-9495-70bd562d98d5/environments/amlim-pwsh/environmentactions/Delete\",\n  \"actionType\": \"Delete\",\n  \"next\": {\n    \"scheduledTime\": \"2023-12-01T07:35:00.000000Z\"\n  },\n  \"lastModifiedBy\": \"c3c951b7-d307-4c40-9495-70bd562d98d5\",\n  \"lastModifiedAt\": \"2023-11-13T04:39:13.5195132+00:00\"\n}",
+      "isContentBase64": false
+    }
+  },
+  "Invoke-AzDevCenterUserDelayEnvironmentAction+[NoContext]+Delay+$POST+https://003b06c3-d471-4452-9686-9e7f3ca85f0a-pwshtestdevcenter.centraluseuap.devcenter.azure.com/projects/pwshProj3stxlh/users/me/environments/amlim-pwsh/actions/Delete:delay?api-version=2023-10-01-preview&until=2023-11-23T00:05:00.0000000Z+2": {
+    "Request": {
+      "Method": "POST",
+      "RequestUri": "https://003b06c3-d471-4452-9686-9e7f3ca85f0a-pwshtestdevcenter.centraluseuap.devcenter.azure.com/projects/pwshProj3stxlh/users/me/environments/amlim-pwsh/actions/Delete:delay?api-version=2023-10-01-preview&until=2023-12-01T07:40:00.0000000Z",
+      "Content": null,
+      "isContentBase64": false,
+      "Headers": {
+        "x-ms-unique-id": [ "3" ],
+        "x-ms-client-request-id": [ "10d1ed26-c21f-42ea-8d89-c38bbd3af6b1" ],
+        "CommandName": [ "Az.DevCenterdata.internal\\Invoke-AzDevCenterUserDelayEnvironmentAction" ],
+        "FullCommandName": [ "Invoke-AzDevCenterUserDelayEnvironmentAction_Delay" ],
+        "ParameterSetName": [ "__AllParameterSets" ],
+        "User-Agent": [ "AzurePowershell/v0.0.0", "PSVersion/v7.2.16", "Az.DevCenterdata/0.1.0" ],
+        "Authorization": [ "[Filtered]" ]
+      },
+      "ContentHeaders": {
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Date": [ "Mon, 13 Nov 2023 05:36:14 GMT" ],
+        "Connection": [ "keep-alive" ],
+        "x-ms-correlation-request-id": [ "0a8c62db-1627-4802-83a8-9ae79af7b3f8" ],
+        "x-ms-client-request-id": [ "10d1ed26-c21f-42ea-8d89-c38bbd3af6b1" ],
+        "X-Rate-Limit-Limit": [ "1m" ],
+        "X-Rate-Limit-Remaining": [ "299" ],
+        "X-Rate-Limit-Reset": [ "2023-11-13T05:37:14.5171000Z" ],
+        "Strict-Transport-Security": [ "max-age=15724800; includeSubDomains" ],
+        "Access-Control-Allow-Origin": [ "*" ],
+        "Access-Control-Max-Age": [ "86400" ],
+        "Access-Control-Expose-Headers": [ "Location,Operation-Location,x-ms-correlation-request-id,x-ms-client-request-id" ]
+      },
+      "ContentHeaders": {
+        "Content-Type": [ "application/json; charset=utf-8" ],
+        "Content-Length": [ "459" ]
+      },
+      "Content": "{\n  \"name\": \"Delete\",\n  \"uri\": \"https://003b06c3-d471-4452-9686-9e7f3ca85f0a-pwshtestdevcenter.centraluseuap.devcenter.azure.com/projects/pwshproj3stxlh/users/c3c951b7-d307-4c40-9495-70bd562d98d5/environments/amlim-pwsh/environmentactions/Delete\",\n  \"actionType\": \"Delete\",\n  \"next\": {\n    \"scheduledTime\": \"2023-12-01T07:40:00.000000Z\"\n  },\n  \"lastModifiedBy\": \"c3c951b7-d307-4c40-9495-70bd562d98d5\",\n  \"lastModifiedAt\": \"2023-11-13T05:36:14.7602565+00:00\"\n}",
+      "isContentBase64": false
+    }
+  }
+}

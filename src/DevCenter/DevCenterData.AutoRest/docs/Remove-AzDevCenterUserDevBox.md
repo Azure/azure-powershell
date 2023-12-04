@@ -20,7 +20,7 @@ Remove-AzDevCenterUserDevBox -Endpoint <String> -Name <String> -ProjectName <Str
 
 ### DeleteByDevCenter
 ```
-Remove-AzDevCenterUserDevBox -DevCenter <String> -Name <String> -ProjectName <String> [-UserId <String>]
+Remove-AzDevCenterUserDevBox -DevCenterName <String> -Name <String> -ProjectName <String> [-UserId <String>]
  [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-PassThru] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
@@ -32,7 +32,7 @@ Remove-AzDevCenterUserDevBox -Endpoint <String> -InputObject <IDevCenterdataIden
 
 ### DeleteViaIdentityByDevCenter
 ```
-Remove-AzDevCenterUserDevBox -DevCenter <String> -InputObject <IDevCenterdataIdentity>
+Remove-AzDevCenterUserDevBox -DevCenterName <String> -InputObject <IDevCenterdataIdentity>
  [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-PassThru] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
@@ -50,7 +50,7 @@ This command deletes the dev box "myDevBox" assigned to user "786a823c-8037-48ab
 
 ### Example 2: Delete a dev box by dev center
 ```powershell
-Remove-AzDevCenterUserDevBox -DevCenter Contoso -ProjectName DevProject -UserId "me" -Name myDevBox
+Remove-AzDevCenterUserDevBox -DevCenterName Contoso -ProjectName DevProject -UserId "me" -Name myDevBox
 ```
 
 This command deletes the dev box "myDevBox" assigned to the currently signed-in user.
@@ -66,7 +66,7 @@ This command deletes the dev box "myDevBox" assigned to the currently signed-in 
 ### Example 4: Delete a dev box by dev center and InputObject
 ```powershell
 $devBoxInput = @{"DevBoxName" = "myDevBox"; "UserId" = "786a823c-8037-48ab-89b8-8599901e67d0"; "ProjectName" = "DevProject" }
-Remove-AzDevCenterUserDevBox -DevCenter Contoso -InputObject $devBoxInput 
+Remove-AzDevCenterUserDevBox -DevCenterName Contoso -InputObject $devBoxInput 
 ```
 
 This command deletes the dev box "myDevBox" assigned to user "786a823c-8037-48ab-89b8-8599901e67d0".
@@ -104,13 +104,13 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -DevCenter
+### -DevCenterName
 The DevCenter upon which to execute operations.
 
 ```yaml
 Type: System.String
 Parameter Sets: DeleteByDevCenter, DeleteViaIdentityByDevCenter
-Aliases:
+Aliases: DevCenter
 
 Required: True
 Position: Named
@@ -269,25 +269,6 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ### System.Boolean
 
 ## NOTES
-
-ALIASES
-
-COMPLEX PARAMETER PROPERTIES
-
-To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
-
-
-`INPUTOBJECT <IDevCenterdataIdentity>`: Identity Parameter
-  - `[ActionName <String>]`: The name of an action that will take place on a Dev Box.
-  - `[CatalogName <String>]`: The name of the catalog
-  - `[DefinitionName <String>]`: The name of the environment definition
-  - `[DevBoxName <String>]`: The name of a Dev Box.
-  - `[EnvironmentName <String>]`: The name of the environment.
-  - `[Id <String>]`: Resource identity path
-  - `[PoolName <String>]`: The name of a pool of Dev Boxes.
-  - `[ProjectName <String>]`: The DevCenter Project upon which to execute operations.
-  - `[ScheduleName <String>]`: The name of a schedule.
-  - `[UserId <String>]`: The AAD object id of the user. If value is 'me', the identity is taken from the authentication context.
 
 ## RELATED LINKS
 

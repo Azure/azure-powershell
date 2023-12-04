@@ -19,20 +19,20 @@ Describe 'Get-AzDevCenterUserDevBoxAction' {
         $listOfActions.Count | Should -BeGreaterOrEqual 2
 
         if ($Record -or $Live) {
-            $listOfActions = Get-AzDevCenterUserDevBoxAction -DevCenter $env.devCenterName -DevBoxName $env.devboxName -ProjectName $env.projectName
+            $listOfActions = Get-AzDevCenterUserDevBoxAction -DevCenterName $env.devCenterName -DevBoxName $env.devboxName -ProjectName $env.projectName
             $listOfActions.Count | Should -BeGreaterOrEqual 2
         }
 
     }
 
     It 'Get'  {
-        $action = Get-AzDevCenterUserDevBoxAction -Endpoint $env.endpoint -DevBoxName $env.devboxName -ProjectName $env.projectName -ActionName "schedule-default"
+        $action = Get-AzDevCenterUserDevBoxAction -Endpoint $env.endpoint -DevBoxName $env.devboxName -ProjectName $env.projectName -Name "schedule-default"
         
         $action.Name | Should -Be "schedule-default"
         $action.ActionType | Should -Be "Stop"
 
         if ($Record -or $Live) {
-            $action = Get-AzDevCenterUserDevBoxAction -DevCenter $env.devCenterName -DevBoxName $env.devboxName -ProjectName $env.projectName -ActionName "schedule-default"
+            $action = Get-AzDevCenterUserDevBoxAction -DevCenterName $env.devCenterName -DevBoxName $env.devboxName -ProjectName $env.projectName -Name "schedule-default"
 
             $action.Name | Should -Be "schedule-default"
             $action.ActionType | Should -Be "Stop"
@@ -49,7 +49,7 @@ Describe 'Get-AzDevCenterUserDevBoxAction' {
         $action.ActionType | Should -Be "Stop"
 
         if ($Record -or $Live) {
-            $action = Get-AzDevCenterUserDevBoxAction -DevCenter $env.devCenterName -InputObject $devBoxInput
+            $action = Get-AzDevCenterUserDevBoxAction -DevCenterName $env.devCenterName -InputObject $devBoxInput
 
             $action.Name | Should -Be "schedule-default"
             $action.ActionType | Should -Be "Stop"
