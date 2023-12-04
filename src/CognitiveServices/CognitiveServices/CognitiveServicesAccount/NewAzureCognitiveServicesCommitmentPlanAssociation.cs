@@ -68,7 +68,6 @@ namespace Microsoft.Azure.Commands.Management.CognitiveServices
                                 ResourceGroupName,
                                 CommitmentPlanName,
                                 Name,
-                                null,
                                 AccountId);
 
                 var cognitiveServicesAccount = CognitiveServicesClient.CommitmentPlans.GetAssociation(ResourceGroupName, CommitmentPlanName, Name);

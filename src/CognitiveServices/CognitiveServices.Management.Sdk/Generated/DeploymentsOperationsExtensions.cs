@@ -52,8 +52,7 @@ namespace Microsoft.Azure.Management.CognitiveServices
             }
         }
         /// <summary>
-        /// Gets the specified deployments associated with the Cognitive Services
-        /// account.
+        /// Gets the specified deployments associated with the Cognitive Services account.
         /// </summary>
         /// <param name='operations'>
         /// The operations group for this extension method.
@@ -73,8 +72,7 @@ namespace Microsoft.Azure.Management.CognitiveServices
         }
 
         /// <summary>
-        /// Gets the specified deployments associated with the Cognitive Services
-        /// account.
+        /// Gets the specified deployments associated with the Cognitive Services account.
         /// </summary>
         /// <param name='operations'>
         /// The operations group for this extension method.
@@ -99,8 +97,7 @@ namespace Microsoft.Azure.Management.CognitiveServices
             }
         }
         /// <summary>
-        /// Update the state of specified deployments associated with the Cognitive
-        /// Services account.
+        /// Update the state of specified deployments associated with the Cognitive Services account.
         /// </summary>
         /// <param name='operations'>
         /// The operations group for this extension method.
@@ -114,14 +111,13 @@ namespace Microsoft.Azure.Management.CognitiveServices
         /// <param name='deploymentName'>
         /// The name of the deployment associated with the Cognitive Services Account
         /// </param>
-        public static Deployment CreateOrUpdate(this IDeploymentsOperations operations, string resourceGroupName, string accountName, string deploymentName, Deployment deployment)
+        public static Deployment CreateOrUpdate(this IDeploymentsOperations operations, string resourceGroupName, string accountName, string deploymentName, Sku sku = default(Sku), DeploymentProperties properties = default(DeploymentProperties))
         {
-                return ((IDeploymentsOperations)operations).CreateOrUpdateAsync(resourceGroupName, accountName, deploymentName, deployment).GetAwaiter().GetResult();
+                return ((IDeploymentsOperations)operations).CreateOrUpdateAsync(resourceGroupName, accountName, deploymentName, sku, properties).GetAwaiter().GetResult();
         }
 
         /// <summary>
-        /// Update the state of specified deployments associated with the Cognitive
-        /// Services account.
+        /// Update the state of specified deployments associated with the Cognitive Services account.
         /// </summary>
         /// <param name='operations'>
         /// The operations group for this extension method.
@@ -138,63 +134,15 @@ namespace Microsoft.Azure.Management.CognitiveServices
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        public static async System.Threading.Tasks.Task<Deployment> CreateOrUpdateAsync(this IDeploymentsOperations operations, string resourceGroupName, string accountName, string deploymentName, Deployment deployment, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public static async System.Threading.Tasks.Task<Deployment> CreateOrUpdateAsync(this IDeploymentsOperations operations, string resourceGroupName, string accountName, string deploymentName, Sku sku = default(Sku), DeploymentProperties properties = default(DeploymentProperties), System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
-            using (var _result = await operations.CreateOrUpdateWithHttpMessagesAsync(resourceGroupName, accountName, deploymentName, deployment, null, cancellationToken).ConfigureAwait(false))
+            using (var _result = await operations.CreateOrUpdateWithHttpMessagesAsync(resourceGroupName, accountName, deploymentName, sku, properties, null, cancellationToken).ConfigureAwait(false))
             {
                 return _result.Body;
             }
         }
         /// <summary>
-        /// Update specified deployments associated with the Cognitive Services
-        /// account.
-        /// </summary>
-        /// <param name='operations'>
-        /// The operations group for this extension method.
-        /// </param>
-        /// <param name='resourceGroupName'>
-        /// The name of the resource group. The name is case insensitive.
-        /// </param>
-        /// <param name='accountName'>
-        /// The name of Cognitive Services account.
-        /// </param>
-        /// <param name='deploymentName'>
-        /// The name of the deployment associated with the Cognitive Services Account
-        /// </param>
-        public static Deployment Update(this IDeploymentsOperations operations, string resourceGroupName, string accountName, string deploymentName, System.Collections.Generic.IDictionary<string, string> tags = default(System.Collections.Generic.IDictionary<string, string>), Sku sku = default(Sku))
-        {
-                return ((IDeploymentsOperations)operations).UpdateAsync(resourceGroupName, accountName, deploymentName, tags, sku).GetAwaiter().GetResult();
-        }
-
-        /// <summary>
-        /// Update specified deployments associated with the Cognitive Services
-        /// account.
-        /// </summary>
-        /// <param name='operations'>
-        /// The operations group for this extension method.
-        /// </param>
-        /// <param name='resourceGroupName'>
-        /// The name of the resource group. The name is case insensitive.
-        /// </param>
-        /// <param name='accountName'>
-        /// The name of Cognitive Services account.
-        /// </param>
-        /// <param name='deploymentName'>
-        /// The name of the deployment associated with the Cognitive Services Account
-        /// </param>
-        /// <param name='cancellationToken'>
-        /// The cancellation token.
-        /// </param>
-        public static async System.Threading.Tasks.Task<Deployment> UpdateAsync(this IDeploymentsOperations operations, string resourceGroupName, string accountName, string deploymentName, System.Collections.Generic.IDictionary<string, string> tags = default(System.Collections.Generic.IDictionary<string, string>), Sku sku = default(Sku), System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
-        {
-            using (var _result = await operations.UpdateWithHttpMessagesAsync(resourceGroupName, accountName, deploymentName, tags, sku, null, cancellationToken).ConfigureAwait(false))
-            {
-                return _result.Body;
-            }
-        }
-        /// <summary>
-        /// Deletes the specified deployment associated with the Cognitive Services
-        /// account.
+        /// Deletes the specified deployment associated with the Cognitive Services account.
         /// </summary>
         /// <param name='operations'>
         /// The operations group for this extension method.
@@ -214,8 +162,7 @@ namespace Microsoft.Azure.Management.CognitiveServices
         }
 
         /// <summary>
-        /// Deletes the specified deployment associated with the Cognitive Services
-        /// account.
+        /// Deletes the specified deployment associated with the Cognitive Services account.
         /// </summary>
         /// <param name='operations'>
         /// The operations group for this extension method.
@@ -237,8 +184,7 @@ namespace Microsoft.Azure.Management.CognitiveServices
             (await operations.DeleteWithHttpMessagesAsync(resourceGroupName, accountName, deploymentName, null, cancellationToken).ConfigureAwait(false)).Dispose();
         }
         /// <summary>
-        /// Lists the specified deployments skus associated with the Cognitive Services
-        /// account.
+        /// Update the state of specified deployments associated with the Cognitive Services account.
         /// </summary>
         /// <param name='operations'>
         /// The operations group for this extension method.
@@ -252,14 +198,13 @@ namespace Microsoft.Azure.Management.CognitiveServices
         /// <param name='deploymentName'>
         /// The name of the deployment associated with the Cognitive Services Account
         /// </param>
-        public static Microsoft.Rest.Azure.IPage<SkuResource> ListSkus(this IDeploymentsOperations operations, string resourceGroupName, string accountName, string deploymentName)
+        public static Deployment BeginCreateOrUpdate(this IDeploymentsOperations operations, string resourceGroupName, string accountName, string deploymentName, Sku sku = default(Sku), DeploymentProperties properties = default(DeploymentProperties))
         {
-                return ((IDeploymentsOperations)operations).ListSkusAsync(resourceGroupName, accountName, deploymentName).GetAwaiter().GetResult();
+                return ((IDeploymentsOperations)operations).BeginCreateOrUpdateAsync(resourceGroupName, accountName, deploymentName, sku, properties).GetAwaiter().GetResult();
         }
 
         /// <summary>
-        /// Lists the specified deployments skus associated with the Cognitive Services
-        /// account.
+        /// Update the state of specified deployments associated with the Cognitive Services account.
         /// </summary>
         /// <param name='operations'>
         /// The operations group for this extension method.
@@ -276,110 +221,15 @@ namespace Microsoft.Azure.Management.CognitiveServices
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        public static async System.Threading.Tasks.Task<Microsoft.Rest.Azure.IPage<SkuResource>> ListSkusAsync(this IDeploymentsOperations operations, string resourceGroupName, string accountName, string deploymentName, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public static async System.Threading.Tasks.Task<Deployment> BeginCreateOrUpdateAsync(this IDeploymentsOperations operations, string resourceGroupName, string accountName, string deploymentName, Sku sku = default(Sku), DeploymentProperties properties = default(DeploymentProperties), System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
-            using (var _result = await operations.ListSkusWithHttpMessagesAsync(resourceGroupName, accountName, deploymentName, null, cancellationToken).ConfigureAwait(false))
+            using (var _result = await operations.BeginCreateOrUpdateWithHttpMessagesAsync(resourceGroupName, accountName, deploymentName, sku, properties, null, cancellationToken).ConfigureAwait(false))
             {
                 return _result.Body;
             }
         }
         /// <summary>
-        /// Update the state of specified deployments associated with the Cognitive
-        /// Services account.
-        /// </summary>
-        /// <param name='operations'>
-        /// The operations group for this extension method.
-        /// </param>
-        /// <param name='resourceGroupName'>
-        /// The name of the resource group. The name is case insensitive.
-        /// </param>
-        /// <param name='accountName'>
-        /// The name of Cognitive Services account.
-        /// </param>
-        /// <param name='deploymentName'>
-        /// The name of the deployment associated with the Cognitive Services Account
-        /// </param>
-        public static Deployment BeginCreateOrUpdate(this IDeploymentsOperations operations, string resourceGroupName, string accountName, string deploymentName, Deployment deployment)
-        {
-                return ((IDeploymentsOperations)operations).BeginCreateOrUpdateAsync(resourceGroupName, accountName, deploymentName, deployment).GetAwaiter().GetResult();
-        }
-
-        /// <summary>
-        /// Update the state of specified deployments associated with the Cognitive
-        /// Services account.
-        /// </summary>
-        /// <param name='operations'>
-        /// The operations group for this extension method.
-        /// </param>
-        /// <param name='resourceGroupName'>
-        /// The name of the resource group. The name is case insensitive.
-        /// </param>
-        /// <param name='accountName'>
-        /// The name of Cognitive Services account.
-        /// </param>
-        /// <param name='deploymentName'>
-        /// The name of the deployment associated with the Cognitive Services Account
-        /// </param>
-        /// <param name='cancellationToken'>
-        /// The cancellation token.
-        /// </param>
-        public static async System.Threading.Tasks.Task<Deployment> BeginCreateOrUpdateAsync(this IDeploymentsOperations operations, string resourceGroupName, string accountName, string deploymentName, Deployment deployment, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
-        {
-            using (var _result = await operations.BeginCreateOrUpdateWithHttpMessagesAsync(resourceGroupName, accountName, deploymentName, deployment, null, cancellationToken).ConfigureAwait(false))
-            {
-                return _result.Body;
-            }
-        }
-        /// <summary>
-        /// Update specified deployments associated with the Cognitive Services
-        /// account.
-        /// </summary>
-        /// <param name='operations'>
-        /// The operations group for this extension method.
-        /// </param>
-        /// <param name='resourceGroupName'>
-        /// The name of the resource group. The name is case insensitive.
-        /// </param>
-        /// <param name='accountName'>
-        /// The name of Cognitive Services account.
-        /// </param>
-        /// <param name='deploymentName'>
-        /// The name of the deployment associated with the Cognitive Services Account
-        /// </param>
-        public static Deployment BeginUpdate(this IDeploymentsOperations operations, string resourceGroupName, string accountName, string deploymentName, System.Collections.Generic.IDictionary<string, string> tags = default(System.Collections.Generic.IDictionary<string, string>), Sku sku = default(Sku))
-        {
-                return ((IDeploymentsOperations)operations).BeginUpdateAsync(resourceGroupName, accountName, deploymentName, tags, sku).GetAwaiter().GetResult();
-        }
-
-        /// <summary>
-        /// Update specified deployments associated with the Cognitive Services
-        /// account.
-        /// </summary>
-        /// <param name='operations'>
-        /// The operations group for this extension method.
-        /// </param>
-        /// <param name='resourceGroupName'>
-        /// The name of the resource group. The name is case insensitive.
-        /// </param>
-        /// <param name='accountName'>
-        /// The name of Cognitive Services account.
-        /// </param>
-        /// <param name='deploymentName'>
-        /// The name of the deployment associated with the Cognitive Services Account
-        /// </param>
-        /// <param name='cancellationToken'>
-        /// The cancellation token.
-        /// </param>
-        public static async System.Threading.Tasks.Task<Deployment> BeginUpdateAsync(this IDeploymentsOperations operations, string resourceGroupName, string accountName, string deploymentName, System.Collections.Generic.IDictionary<string, string> tags = default(System.Collections.Generic.IDictionary<string, string>), Sku sku = default(Sku), System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
-        {
-            using (var _result = await operations.BeginUpdateWithHttpMessagesAsync(resourceGroupName, accountName, deploymentName, tags, sku, null, cancellationToken).ConfigureAwait(false))
-            {
-                return _result.Body;
-            }
-        }
-        /// <summary>
-        /// Deletes the specified deployment associated with the Cognitive Services
-        /// account.
+        /// Deletes the specified deployment associated with the Cognitive Services account.
         /// </summary>
         /// <param name='operations'>
         /// The operations group for this extension method.
@@ -399,8 +249,7 @@ namespace Microsoft.Azure.Management.CognitiveServices
         }
 
         /// <summary>
-        /// Deletes the specified deployment associated with the Cognitive Services
-        /// account.
+        /// Deletes the specified deployment associated with the Cognitive Services account.
         /// </summary>
         /// <param name='operations'>
         /// The operations group for this extension method.
@@ -450,41 +299,6 @@ namespace Microsoft.Azure.Management.CognitiveServices
         public static async System.Threading.Tasks.Task<Microsoft.Rest.Azure.IPage<Deployment>> ListNextAsync(this IDeploymentsOperations operations, string nextPageLink, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
             using (var _result = await operations.ListNextWithHttpMessagesAsync(nextPageLink, null, cancellationToken).ConfigureAwait(false))
-            {
-                return _result.Body;
-            }
-        }
-        /// <summary>
-        /// Lists the specified deployments skus associated with the Cognitive Services
-        /// account.
-        /// </summary>
-        /// <param name='operations'>
-        /// The operations group for this extension method.
-        /// </param>
-        /// <param name='nextPageLink'>
-        /// The NextLink from the previous successful call to List operation.
-        /// </param>
-        public static Microsoft.Rest.Azure.IPage<SkuResource> ListSkusNext(this IDeploymentsOperations operations, string nextPageLink)
-        {
-                return ((IDeploymentsOperations)operations).ListSkusNextAsync(nextPageLink).GetAwaiter().GetResult();
-        }
-
-        /// <summary>
-        /// Lists the specified deployments skus associated with the Cognitive Services
-        /// account.
-        /// </summary>
-        /// <param name='operations'>
-        /// The operations group for this extension method.
-        /// </param>
-        /// <param name='nextPageLink'>
-        /// The NextLink from the previous successful call to List operation.
-        /// </param>
-        /// <param name='cancellationToken'>
-        /// The cancellation token.
-        /// </param>
-        public static async System.Threading.Tasks.Task<Microsoft.Rest.Azure.IPage<SkuResource>> ListSkusNextAsync(this IDeploymentsOperations operations, string nextPageLink, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
-        {
-            using (var _result = await operations.ListSkusNextWithHttpMessagesAsync(nextPageLink, null, cancellationToken).ConfigureAwait(false))
             {
                 return _result.Body;
             }

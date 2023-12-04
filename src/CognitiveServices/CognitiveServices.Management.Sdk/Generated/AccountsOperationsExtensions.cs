@@ -13,9 +13,7 @@ namespace Microsoft.Azure.Management.CognitiveServices
     public static partial class AccountsOperationsExtensions
     {
         /// <summary>
-        /// Create Cognitive Services Account. Accounts is a resource group wide
-        /// resource type. It holds the keys for developer to access intelligent APIs.
-        /// It&#39;s also the resource type for billing.
+        /// Create Cognitive Services Account. Accounts is a resource group wide resource type. It holds the keys for developer to access intelligent APIs. It&#39;s also the resource type for billing.
         /// </summary>
         /// <param name='operations'>
         /// The operations group for this extension method.
@@ -32,9 +30,7 @@ namespace Microsoft.Azure.Management.CognitiveServices
         }
 
         /// <summary>
-        /// Create Cognitive Services Account. Accounts is a resource group wide
-        /// resource type. It holds the keys for developer to access intelligent APIs.
-        /// It&#39;s also the resource type for billing.
+        /// Create Cognitive Services Account. Accounts is a resource group wide resource type. It holds the keys for developer to access intelligent APIs. It&#39;s also the resource type for billing.
         /// </summary>
         /// <param name='operations'>
         /// The operations group for this extension method.
@@ -95,7 +91,7 @@ namespace Microsoft.Azure.Management.CognitiveServices
             }
         }
         /// <summary>
-        /// Deletes a Cognitive Services account from the resource group.
+        /// Deletes a Cognitive Services account from the resource group. 
         /// </summary>
         /// <param name='operations'>
         /// The operations group for this extension method.
@@ -112,7 +108,7 @@ namespace Microsoft.Azure.Management.CognitiveServices
         }
 
         /// <summary>
-        /// Deletes a Cognitive Services account from the resource group.
+        /// Deletes a Cognitive Services account from the resource group. 
         /// </summary>
         /// <param name='operations'>
         /// The operations group for this extension method.
@@ -170,8 +166,7 @@ namespace Microsoft.Azure.Management.CognitiveServices
             }
         }
         /// <summary>
-        /// Returns all the resources of a particular type belonging to a resource
-        /// group
+        /// Returns all the resources of a particular type belonging to a resource group
         /// </summary>
         /// <param name='operations'>
         /// The operations group for this extension method.
@@ -185,8 +180,7 @@ namespace Microsoft.Azure.Management.CognitiveServices
         }
 
         /// <summary>
-        /// Returns all the resources of a particular type belonging to a resource
-        /// group
+        /// Returns all the resources of a particular type belonging to a resource group
         /// </summary>
         /// <param name='operations'>
         /// The operations group for this extension method.
@@ -271,8 +265,7 @@ namespace Microsoft.Azure.Management.CognitiveServices
             }
         }
         /// <summary>
-        /// Regenerates the specified account key for the specified Cognitive Services
-        /// account.
+        /// Regenerates the specified account key for the specified Cognitive Services account.
         /// </summary>
         /// <param name='operations'>
         /// The operations group for this extension method.
@@ -289,8 +282,7 @@ namespace Microsoft.Azure.Management.CognitiveServices
         }
 
         /// <summary>
-        /// Regenerates the specified account key for the specified Cognitive Services
-        /// account.
+        /// Regenerates the specified account key for the specified Cognitive Services account.
         /// </summary>
         /// <param name='operations'>
         /// The operations group for this extension method.
@@ -363,9 +355,7 @@ namespace Microsoft.Azure.Management.CognitiveServices
         /// The name of Cognitive Services account.
         /// </param>
         /// <param name='filter'>
-        /// An OData filter expression that describes a subset of usages to return. The
-        /// supported parameter is name.value (name of the metric, can have an or of
-        /// multiple names).
+        /// An OData filter expression that describes a subset of usages to return. The supported parameter is name.value (name of the metric, can have an or of multiple names).
         /// </param>
         public static UsageListResult ListUsages(this IAccountsOperations operations, string resourceGroupName, string accountName, string filter = default(string))
         {
@@ -385,9 +375,7 @@ namespace Microsoft.Azure.Management.CognitiveServices
         /// The name of Cognitive Services account.
         /// </param>
         /// <param name='filter'>
-        /// An OData filter expression that describes a subset of usages to return. The
-        /// supported parameter is name.value (name of the metric, can have an or of
-        /// multiple names).
+        /// An OData filter expression that describes a subset of usages to return. The supported parameter is name.value (name of the metric, can have an or of multiple names).
         /// </param>
         /// <param name='cancellationToken'>
         /// The cancellation token.
@@ -439,9 +427,7 @@ namespace Microsoft.Azure.Management.CognitiveServices
             }
         }
         /// <summary>
-        /// Create Cognitive Services Account. Accounts is a resource group wide
-        /// resource type. It holds the keys for developer to access intelligent APIs.
-        /// It&#39;s also the resource type for billing.
+        /// Create Cognitive Services Account. Accounts is a resource group wide resource type. It holds the keys for developer to access intelligent APIs. It&#39;s also the resource type for billing.
         /// </summary>
         /// <param name='operations'>
         /// The operations group for this extension method.
@@ -458,9 +444,7 @@ namespace Microsoft.Azure.Management.CognitiveServices
         }
 
         /// <summary>
-        /// Create Cognitive Services Account. Accounts is a resource group wide
-        /// resource type. It holds the keys for developer to access intelligent APIs.
-        /// It&#39;s also the resource type for billing.
+        /// Create Cognitive Services Account. Accounts is a resource group wide resource type. It holds the keys for developer to access intelligent APIs. It&#39;s also the resource type for billing.
         /// </summary>
         /// <param name='operations'>
         /// The operations group for this extension method.
@@ -521,7 +505,7 @@ namespace Microsoft.Azure.Management.CognitiveServices
             }
         }
         /// <summary>
-        /// Deletes a Cognitive Services account from the resource group.
+        /// Deletes a Cognitive Services account from the resource group. 
         /// </summary>
         /// <param name='operations'>
         /// The operations group for this extension method.
@@ -538,7 +522,7 @@ namespace Microsoft.Azure.Management.CognitiveServices
         }
 
         /// <summary>
-        /// Deletes a Cognitive Services account from the resource group.
+        /// Deletes a Cognitive Services account from the resource group. 
         /// </summary>
         /// <param name='operations'>
         /// The operations group for this extension method.
@@ -557,8 +541,7 @@ namespace Microsoft.Azure.Management.CognitiveServices
             (await operations.BeginDeleteWithHttpMessagesAsync(resourceGroupName, accountName, null, cancellationToken).ConfigureAwait(false)).Dispose();
         }
         /// <summary>
-        /// Returns all the resources of a particular type belonging to a resource
-        /// group
+        /// Returns all the resources of a particular type belonging to a resource group
         /// </summary>
         /// <param name='operations'>
         /// The operations group for this extension method.
@@ -572,8 +555,7 @@ namespace Microsoft.Azure.Management.CognitiveServices
         }
 
         /// <summary>
-        /// Returns all the resources of a particular type belonging to a resource
-        /// group
+        /// Returns all the resources of a particular type belonging to a resource group
         /// </summary>
         /// <param name='operations'>
         /// The operations group for this extension method.
