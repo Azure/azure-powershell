@@ -5,6 +5,31 @@ function RandomString([bool]$allChars, [int32]$len) {
         return -join ((48..57) + (97..122) | Get-Random -Count $len | % {[char]$_})
     }
 }
+function Start-TestSleep {
+    [CmdletBinding(DefaultParameterSetName = 'SleepBySeconds')]
+    param(
+        [parameter(Mandatory = $true, Position = 0, ParameterSetName = 'SleepBySeconds')]
+        [ValidateRange(0.0, 2147483.0)]
+        [double] $Seconds,
+
+        [parameter(Mandatory = $true, ParameterSetName = 'SleepByMilliseconds')]
+        [ValidateRange('NonNegative')]
+        [Alias('ms')]
+        [int] $Milliseconds
+    )
+
+    if ($TestMode -ne 'playback') {
+        switch ($PSCmdlet.ParameterSetName) {
+            'SleepBySeconds' {
+                Start-Sleep -Seconds $Seconds
+            }
+            'SleepByMilliseconds' {
+                Start-Sleep -Milliseconds $Milliseconds
+            }
+        }
+    }
+}
+
 $env = @{}
 if ($UsePreviousConfigForRecord) {
     $previousEnv = Get-Content (Join-Path $PSScriptRoot 'env.json') | ConvertFrom-Json
@@ -17,7 +42,7 @@ function setupEnv() {
     Write-Host -ForegroundColor Green "Start to import module."
     Import-Module -Name Az.FrontDoor
     Import-Module -Name Az.KeyVault
-    
+
     # Preload subscriptionId and tenant from context, which will be used in test
     # as default. You could change them if needed.
     $env.SubscriptionId = (Get-AzContext).Subscription.Id
@@ -35,10 +60,10 @@ function setupEnv() {
 
     # Create profile, Standard Verizon SKU
     $verizonCdnProfileName = 'p-' + (RandomString -allChars $false -len 6);
-    Write-Host -ForegroundColor Green "Start to create Standard_Verizon SKU profile : $($verizonCdnProfileName)"    
+    Write-Host -ForegroundColor Green "Start to create Standard_Verizon SKU profile : $($verizonCdnProfileName)"
     New-AzCdnProfile -SkuName "Standard_Verizon" -Name $verizonCdnProfileName -ResourceGroupName $resourceGroupName -Location Global | Out-Null
 
-    # Create endpoint, Standard Verizon SKU 
+    # Create endpoint, Standard Verizon SKU
     $verizonEndpointName = 'e-' + (RandomString -allChars $false -len 6);
     $origin = @{
         Name = "origin1"
@@ -51,13 +76,13 @@ function setupEnv() {
 
     $env.Add("VerizonCdnProfileName", $verizonCdnProfileName)
     $env.Add("VerizonEndpointName", $verizonEndpointName)
-    Write-Host -ForegroundColor Green "Standard_Verizon SKU resources have been added to the environment." 
+    Write-Host -ForegroundColor Green "Standard_Verizon SKU resources have been added to the environment."
 
     # Create profile, Standard Microsoft SKU
     $classicCdnProfileName = 'p-' + (RandomString -allChars $false -len 6)
     Write-Host -ForegroundColor Green "Start to create Standard_Microsoft SKU profile: $($classicCdnProfileName)"
     New-AzCdnProfile -SkuName "Standard_Microsoft" -Name $classicCdnProfileName -ResourceGroupName $resourceGroupName -Location Global | Out-Null
-    
+
     # Hard-coding host and endpoint names due to requirement for DNS CNAME
     $classicCdnEndpointName = 'aa-powershell-20230421-oigr9w'
     $customDomainHostName = 'aa-powershell-20230421-oigr9w.cdne2e.azfdtest.xyz'
@@ -68,16 +93,16 @@ function setupEnv() {
         HostName = "host1.hello.com"
     };
     $originId = "/subscriptions/$subId/resourcegroups/$resourceGroupName/providers/Microsoft.Cdn/profiles/$classicCdnProfileName/endpoints/$classicCdnEndpointName/origins/$($origin.Name)"
-    $healthProbeParametersObject = New-AzCdnHealthProbeParametersObject -ProbeIntervalInSecond 240 -ProbePath "/health.aspx" -ProbeProtocol "Https" -ProbeRequestType "GET" 
+    $healthProbeParametersObject = New-AzCdnHealthProbeParametersObject -ProbeIntervalInSecond 240 -ProbePath "/health.aspx" -ProbeProtocol "Https" -ProbeRequestType "GET"
     $originGroup = @{
         Name = "originGroup1"
-        healthProbeSetting = $healthProbeParametersObject 
+        healthProbeSetting = $healthProbeParametersObject
         Origin = @(@{
             Id = $originId
         })
     }
     $defaultOriginGroup = "/subscriptions/$subId/resourcegroups/$resourceGroupName/providers/Microsoft.Cdn/profiles/$classicCdnProfileName/endpoints/$classicCdnEndpointName/origingroups/$($originGroup.Name)"
-    
+
     Write-Host -ForegroundColor Green "Create endpointName : $($classicCdnEndpointName), origin.Name : $($origin.Name), origin.HostName : $($origin.HostName)"
     New-AzCdnEndpoint -Name $classicCdnEndpointName -ResourceGroupName $resourceGroupName -ProfileName $classicCdnProfileName -Location $location `
         -Origin $origin -OriginGroup $originGroup -DefaultOriginGroupId $defaultOriginGroup | Out-Null
@@ -89,7 +114,7 @@ function setupEnv() {
     $env.Add("ClassicEndpointName", $classicCdnEndpointName)
     $env.Add("ClassicCustomDomainName", $customDomainName)
     $env.Add("ClassicCustomDomainHostName", $customDomainHostName)
-    Write-Host -ForegroundColor Green "Standard_Microsoft Standard SKU resources have been added to the environment."    
+    Write-Host -ForegroundColor Green "Standard_Microsoft Standard SKU resources have been added to the environment."
 
     $frontDoorCdnProfileName = 'fdp-' + (RandomString -allChars $false -len 6);
     Write-Host -ForegroundColor Green "Start to create Stand_AzureFrontDoor SKU profile : $($frontDoorCdnProfileName)"
@@ -107,21 +132,21 @@ function setupEnv() {
     $env.Add("FrontDoorCdnProfileName", $frontDoorCdnProfileName)
     $env.Add("FrontDoorCustomDomainName", $frontDoorCustomDomainName)
     $env.Add("FrontDoorEndpointName", $frontDoorEndpointName)
-    Write-Host -ForegroundColor Green "Standard_AzureFrontDoor SKU resources have been added to the environment." 
-    
+    Write-Host -ForegroundColor Green "Standard_AzureFrontDoor SKU resources have been added to the environment."
+
     $classicFDName01 = 'fdp-' + (RandomString -allChars $false -len 6);
     Write-Host -ForegroundColor Green "Use frontDoorName : $($classicFDName01)"
 
     $tags = @{"tag1" = "value1"; "tag2" = "value2"}
     $hostName = "$classicFDName01.azurefd.net"
     $routingrule1 = New-AzFrontDoorRoutingRuleObject -Name "routingrule1" -FrontDoorName $classicFDName01 -ResourceGroupName $env.ResourceGroupName -FrontendEndpointName "frontendEndpoint1" -BackendPoolName "backendPool1"
-    $backend1 = New-AzFrontDoorBackendObject -Address "contoso1.azurewebsites.net" 
+    $backend1 = New-AzFrontDoorBackendObject -Address "contoso1.azurewebsites.net"
     $healthProbeSetting1 = New-AzFrontDoorHealthProbeSettingObject -Name "healthProbeSetting1" -HealthProbeMethod "Head" -EnabledState "Disabled"
-    $loadBalancingSetting1 = New-AzFrontDoorLoadBalancingSettingObject -Name "loadbalancingsetting1" 
+    $loadBalancingSetting1 = New-AzFrontDoorLoadBalancingSettingObject -Name "loadbalancingsetting1"
     $frontendEndpoint1 = New-AzFrontDoorFrontendEndpointObject -Name "frontendendpoint1" -HostName $hostName
     $backendpool1 = New-AzFrontDoorBackendPoolObject -Name "backendpool1" -FrontDoorName $classicFDName01 -ResourceGroupName $env.ResourceGroupName -Backend $backend1 -HealthProbeSettingsName "healthProbeSetting1" -LoadBalancingSettingsName "loadBalancingSetting1"
     $backendPoolsSetting1 = New-AzFrontDoorBackendPoolsSettingObject -SendRecvTimeoutInSeconds 33 -EnforceCertificateNameCheck "Enabled"
-    
+
     New-AzFrontDoor -Name $classicFDName01 -ResourceGroupName $resourceGroupName -RoutingRule $routingrule1 -BackendPool $backendpool1 -BackendPoolsSetting $backendPoolsSetting1 -FrontendEndpoint $frontendEndpoint1 -LoadBalancingSetting $loadBalancingSetting1 -HealthProbeSetting $healthProbeSetting1 -Tag $tags | Out-Null
     $classicResourceId01 = "/subscriptions/$subId/resourcegroups/$resourceGroupName/providers/Microsoft.Network/Frontdoors/$classicFDName01"
 
@@ -132,13 +157,13 @@ function setupEnv() {
     $tags = @{"tag1" = "value1"; "tag2" = "value2"}
     $hostName = "$classicFDName02.azurefd.net"
     $routingrule1 = New-AzFrontDoorRoutingRuleObject -Name "routingrule1" -FrontDoorName $classicFDName02 -ResourceGroupName $env.ResourceGroupName -FrontendEndpointName "frontendEndpoint1" -BackendPoolName "backendPool1"
-    $backend1 = New-AzFrontDoorBackendObject -Address "contoso1.azurewebsites.net" 
+    $backend1 = New-AzFrontDoorBackendObject -Address "contoso1.azurewebsites.net"
     $healthProbeSetting1 = New-AzFrontDoorHealthProbeSettingObject -Name "healthProbeSetting1" -HealthProbeMethod "Head" -EnabledState "Disabled"
-    $loadBalancingSetting1 = New-AzFrontDoorLoadBalancingSettingObject -Name "loadbalancingsetting1" 
+    $loadBalancingSetting1 = New-AzFrontDoorLoadBalancingSettingObject -Name "loadbalancingsetting1"
     $frontendEndpoint1 = New-AzFrontDoorFrontendEndpointObject -Name "frontendendpoint1" -HostName $hostName
     $backendpool1 = New-AzFrontDoorBackendPoolObject -Name "backendpool1" -FrontDoorName $classicFDName02 -ResourceGroupName $env.ResourceGroupName -Backend $backend1 -HealthProbeSettingsName "healthProbeSetting1" -LoadBalancingSettingsName "loadBalancingSetting1"
     $backendPoolsSetting1 = New-AzFrontDoorBackendPoolsSettingObject -SendRecvTimeoutInSeconds 33 -EnforceCertificateNameCheck "Enabled"
-    
+
     New-AzFrontDoor -Name $classicFDName02 -ResourceGroupName $resourceGroupName -RoutingRule $routingrule1 -BackendPool $backendpool1 -BackendPoolsSetting $backendPoolsSetting1 -FrontendEndpoint $frontendEndpoint1 -LoadBalancingSetting $loadBalancingSetting1 -HealthProbeSetting $healthProbeSetting1 -Tag $tags | Out-Null
     $classicResourceId02 = "/subscriptions/$subId/resourcegroups/$resourceGroupName/providers/Microsoft.Network/Frontdoors/$classicFDName02"
 
@@ -148,13 +173,13 @@ function setupEnv() {
     $tags = @{"tag1" = "value1"; "tag2" = "value2"}
     $hostName = "$classicFDName03.azurefd.net"
     $routingrule1 = New-AzFrontDoorRoutingRuleObject -Name "routingrule1" -FrontDoorName $classicFDName03 -ResourceGroupName $env.ResourceGroupName -FrontendEndpointName "frontendEndpoint1" -BackendPoolName "backendPool1"
-    $backend1 = New-AzFrontDoorBackendObject -Address "contoso1.azurewebsites.net" 
+    $backend1 = New-AzFrontDoorBackendObject -Address "contoso1.azurewebsites.net"
     $healthProbeSetting1 = New-AzFrontDoorHealthProbeSettingObject -Name "healthProbeSetting1" -HealthProbeMethod "Head" -EnabledState "Disabled"
-    $loadBalancingSetting1 = New-AzFrontDoorLoadBalancingSettingObject -Name "loadbalancingsetting1" 
+    $loadBalancingSetting1 = New-AzFrontDoorLoadBalancingSettingObject -Name "loadbalancingsetting1"
     $frontendEndpoint1 = New-AzFrontDoorFrontendEndpointObject -Name "frontendendpoint1" -HostName $hostName
     $backendpool1 = New-AzFrontDoorBackendPoolObject -Name "backendpool1" -FrontDoorName $classicFDName03 -ResourceGroupName $env.ResourceGroupName -Backend $backend1 -HealthProbeSettingsName "healthProbeSetting1" -LoadBalancingSettingsName "loadBalancingSetting1"
     $backendPoolsSetting1 = New-AzFrontDoorBackendPoolsSettingObject -SendRecvTimeoutInSeconds 33 -EnforceCertificateNameCheck "Enabled"
-    
+
     New-AzFrontDoor -Name $classicFDName03 -ResourceGroupName $resourceGroupName -RoutingRule $routingrule1 -BackendPool $backendpool1 -BackendPoolsSetting $backendPoolsSetting1 -FrontendEndpoint $frontendEndpoint1 -LoadBalancingSetting $loadBalancingSetting1 -HealthProbeSetting $healthProbeSetting1 -Tag $tags | Out-Null
     $classicResourceId03 = "/subscriptions/$subId/resourcegroups/$resourceGroupName/providers/Microsoft.Network/Frontdoors/$classicFDName03"
 
@@ -162,9 +187,9 @@ function setupEnv() {
     $env.Add("ClassicResourceId02", $classicResourceId02)
     $env.Add("ClassicResourceId03", $classicResourceId03)
 
-    Write-Host -ForegroundColor Green "Classic Afd resources have been added to the environment." 
+    Write-Host -ForegroundColor Green "Classic Afd resources have been added to the environment."
 
-    # Create 
+    # Create
     $envFile = 'env.json'
     if ($TestMode -eq 'live') {
         $envFile = 'localEnv.json'
@@ -173,6 +198,6 @@ function setupEnv() {
 }
 function cleanupEnv() {
     # Clean resources you create for testing
-    Write-Host -ForegroundColor Green "Clean resources created for testing." 
+    Write-Host -ForegroundColor Green "Clean resources created for testing."
     Remove-AzResourceGroup -Name $env.ResourceGroupName
 }

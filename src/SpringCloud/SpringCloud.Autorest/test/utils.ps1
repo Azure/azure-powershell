@@ -6,6 +6,31 @@ function RandomString([bool]$allChars, [int32]$len) {
         return -join ((48..57) + (97..122) | Get-Random -Count $len | % {[char]$_})
     }
 }
+function Start-TestSleep {
+    [CmdletBinding(DefaultParameterSetName = 'SleepBySeconds')]
+    param(
+        [parameter(Mandatory = $true, Position = 0, ParameterSetName = 'SleepBySeconds')]
+        [ValidateRange(0.0, 2147483.0)]
+        [double] $Seconds,
+
+        [parameter(Mandatory = $true, ParameterSetName = 'SleepByMilliseconds')]
+        [ValidateRange('NonNegative')]
+        [Alias('ms')]
+        [int] $Milliseconds
+    )
+
+    if ($TestMode -ne 'playback') {
+        switch ($PSCmdlet.ParameterSetName) {
+            'SleepBySeconds' {
+                Start-Sleep -Seconds $Seconds
+            }
+            'SleepByMilliseconds' {
+                Start-Sleep -Milliseconds $Milliseconds
+            }
+        }
+    }
+}
+
 $env = @{}
 function setupEnv() {
     Write-Warning "Need to use  Az.Resources module, Please check if installed  Az.Resources(1.8.0 or Greater)."
@@ -14,14 +39,14 @@ function setupEnv() {
     # Import-Module -Name Az.Resources
     # Import-Module -Name Az.KeyVault
     # Import-Module -Name Az.CosmosDB
-    
+
     # Preload subscriptionId and tenant from context, which will be used in test
     # as default. You could change them if needed.
     $env.SubscriptionId = (Get-AzContext).Subscription.Id
     $env.Tenant = (Get-AzContext).Tenant.Id
     $env.location = 'eastus'
     $env.location2 = 'eastus2'
-    
+
     # Resource Group
     $env.resourceGroup = 'springcloud-rg-' + (RandomString -allChars $false -len 6)
     # App Platform
@@ -46,7 +71,7 @@ function setupEnv() {
     $env.deploymentName02 = 'spring-' + (RandomString -allChars $false -len 6)
     $env.deploymentName03 = 'spring-' + (RandomString -allChars $false -len 6)
 
-    # Key Vault 
+    # Key Vault
     $keyVaultName = 'app-keyvault-' + (RandomString -allChars $false -len 6)
     $env.add('name', $keyVaultName);
     $certificateName20 = 'cert-' + (RandomString -allChars $false -len 6)
@@ -72,7 +97,7 @@ function setupEnv() {
     $cosmosDbName41 = 'cosmosdb-' + (RandomString -allChars $false -len 6)
     $env.add('cosmosDbName40', $cosmosDbName40);
     $env.add('cosmosDbName41', $cosmosDbName41);
- 
+
     # Create resource group for test
     Write-Host -ForegroundColor Green "Start to creating resource group for test..."
     New-AzResourceGroup -Name $env.resourceGroup -Location $env.location
@@ -80,23 +105,23 @@ function setupEnv() {
 
     # Create spring server for test.
     Write-Host -ForegroundColor Green "Start create app platform for test..."
-    
+
     New-AzSpringCloud -ResourceGroupName $env.resourceGroup -Name $env.standardSpringName01 -Location $env.location
     New-AzSpringCloud -ResourceGroupName $env.resourceGroup -Name $env.enterpriseSpringName01 -Location $env.location -SkuTier "Enterprise" -SkuName "E0"
     $jarSource = New-AzSpringCloudAppDeploymentJarUploadedObject -RuntimeVersion "Java_8"
-    
+
     New-AzSpringCloudApp -ResourceGroupName $env.resourceGroup -ServiceName $env.standardSpringName01 -Name $env.appGateway -Location $env.location `
     -TemporaryDiskMountPath "/mytemporarydisk" -TemporaryDiskSizeInGb 2 -PersistentDiskSizeInGb 2 -PersistentDiskMountPath "/mypersistentdisk"
-    
+
     New-AzSpringCloudAppDeployment -ResourceGroupName $env.resourceGroup -ServiceName $env.standardSpringName01 -AppName $env.appGateway -Name $env.greenDeploymentName `
     -Source $jarSource -EnvironmentVariable @{"env" = "test"}
-    
+
     New-AzSpringCloudAppDeployment -ResourceGroupName $env.resourceGroup -ServiceName $env.standardSpringName01 -AppName $env.appGateway -Name $env.buleDeploymentName `
     -Source $jarSource -EnvironmentVariable @{"env" = "prod"}
 
     New-AzSpringCloudApp -ResourceGroupName $env.resourceGroup -ServiceName $env.standardSpringName01 -Name $env.appAccount -Location $env.location `
     -TemporaryDiskMountPath "/mytemporarydisk" -TemporaryDiskSizeInGb 2 -PersistentDiskSizeInGb 2 -PersistentDiskMountPath "/mypersistentdisk"
-    
+
     New-AzSpringCloudAppDeployment -ResourceGroupName $env.resourceGroup -ServiceName $env.standardSpringName01 -AppName $env.appAccount -Name $env.greenDeploymentName `
     -Source $jarSource -EnvironmentVariable @{"env" = "test"}
     New-AzSpringCloudAppDeployment -ResourceGroupName $env.resourceGroup -ServiceName $env.standardSpringName01 -AppName $env.appAccount -Name $env.buleDeploymentName `
@@ -105,7 +130,7 @@ function setupEnv() {
     New-AzSpringCloudApp -ResourceGroupName $env.resourceGroup -ServiceName $env.enterpriseSpringName01 -Name $env.appGateway -Location $env.location `
     -TemporaryDiskMountPath "/mytemporarydisk" -TemporaryDiskSizeInGb 2 -PersistentDiskSizeInGb 2 -PersistentDiskMountPath "/mypersistentdisk"
     $buildSource = New-AzSpringCloudAppDeploymentBuildResultObject
-    
+
     New-AzSpringCloudAppDeployment -ResourceGroupName $env.resourceGroup -ServiceName $env.enterpriseSpringName01 -AppName $env.appGateway -Name $env.greenDeploymentName `
     -Source $buildSource -EnvironmentVariable @{"env" = "test"}
     New-AzSpringCloudAppDeployment -ResourceGroupName $env.resourceGroup -ServiceName $env.enterpriseSpringName01 -AppName $env.appGateway -Name $env.buleDeploymentName `
@@ -113,14 +138,14 @@ function setupEnv() {
 
     New-AzSpringCloudApp -ResourceGroupName $env.resourceGroup -ServiceName $env.enterpriseSpringName01 -Name $env.appAccount -Location $env.location `
     -TemporaryDiskMountPath "/mytemporarydisk" -TemporaryDiskSizeInGb 2 -PersistentDiskSizeInGb 2 -PersistentDiskMountPath "/mypersistentdisk"
-    
+
     New-AzSpringCloudAppDeployment -ResourceGroupName $env.resourceGroup -ServiceName $env.enterpriseSpringName01 -AppName $env.appAccount -Name $env.greenDeploymentName `
     -Source $buildSource -EnvironmentVariable @{"env" = "test"}
     New-AzSpringCloudAppDeployment -ResourceGroupName $env.resourceGroup -ServiceName $env.enterpriseSpringName01 -AppName $env.appAccount -Name $env.buleDeploymentName `
     -Source $buildSource -EnvironmentVariable @{"env" = "prod"}
-    
+
     Write-Host -ForegroundColor Green "App platform created successfully."
-   
+
     <#
     # cmdlet disable service binding and identity.
     # deploy key vault
@@ -130,10 +155,10 @@ function setupEnv() {
     set-content -Path (Join-Path $PSScriptRoot '.\deployment-templates\key-vault\parameters.json') -Value (ConvertTo-Json $keyVaultPara)
     New-AzDeployment -Mode Incremental -TemplateFile (Join-Path $PSScriptRoot '.\deployment-templates\key-vault\template.json') -TemplateParameterFile (Join-Path $PSScriptRoot '.\deployment-templates\key-vault\parameters.json') -ResourceGroupName $env.resourceGroup
 
-    Start-Sleep -Seconds 60 # The keyVault not ready to create certificate 
+    Start-TestSleep -Seconds 60 # The keyVault not ready to create certificate
     $keyVault = Get-AzKeyVault -ResourceGroupName $env.resourceGroup -VaultName $env.name
     $env.add('vaultUri', $keyVault.VaultUri);
-    
+
     CreateKeyVaultCertificate -vaultName $env.name -certName $env.certificateName20 -subjectName $env.certSubjectName30
     CreateKeyVaultCertificate -vaultName $env.name -certName $env.certificateName21 -subjectName $env.certSubjectName31
     CreateKeyVaultCertificate -vaultName $env.name -certName $env.certificateName22 -subjectName $env.certSubjectName32
@@ -146,12 +171,12 @@ function setupEnv() {
     $cosmosdbPara.parameters.cosmosdb_name.value = $env.cosmosDbName40
     set-content -Path (Join-Path $PSScriptRoot '.\deployment-templates\cosmos-db\parameters-01.json') -Value (ConvertTo-Json $cosmosdbPara)
     New-AzDeployment -Mode Incremental -TemplateFile (Join-Path $PSScriptRoot '.\deployment-templates\cosmos-db\template-01.json') -TemplateParameterFile (Join-Path $PSScriptRoot '.\deployment-templates\cosmos-db\parameters-01.json') -ResourceGroupName $env.resourceGroup
-   
+
     $cosmosdbPara = Get-Content (Join-Path $PSScriptRoot '.\deployment-templates\cosmos-db\parameters-02.json') | ConvertFrom-Json
     $cosmosdbPara.parameters.cosmosdb_name.value = $env.cosmosDbName41
     set-content -Path (Join-Path $PSScriptRoot '.\deployment-templates\cosmos-db\parameters-02.json') -Value (ConvertTo-Json $cosmosdbPara)
-    New-AzDeployment -Mode Incremental -TemplateFile (Join-Path $PSScriptRoot '.\deployment-templates\cosmos-db\template-02.json') -TemplateParameterFile (Join-Path $PSScriptRoot '.\deployment-templates\cosmos-db\parameters-02.json') -ResourceGroupName $env.resourceGroup  
-    Start-Sleep -Seconds 60
+    New-AzDeployment -Mode Incremental -TemplateFile (Join-Path $PSScriptRoot '.\deployment-templates\cosmos-db\template-02.json') -TemplateParameterFile (Join-Path $PSScriptRoot '.\deployment-templates\cosmos-db\parameters-02.json') -ResourceGroupName $env.resourceGroup
+    Start-TestSleep -Seconds 60
     $cosmosdb01 = Get-AzCosmosDBAccount -ResourceGroupName $env.resourceGroup -Name $env.cosmosDbName40
     $cosmosdb02 = Get-AzCosmosDBAccount -ResourceGroupName $env.resourceGroup -Name $env.cosmosDbName41
     Write-Host -ForegroundColor Green "Wait for cosmosdb creating..."
