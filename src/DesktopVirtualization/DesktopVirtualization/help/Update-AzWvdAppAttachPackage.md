@@ -1,5 +1,5 @@
 ---
-external help file:
+external help file: Az.DesktopVirtualization-help.xml
 Module Name: Az.DesktopVirtualization
 online version: https://learn.microsoft.com/powershell/module/az.desktopvirtualization/update-azwvdappattachpackage
 schema: 2.0.0
@@ -19,19 +19,19 @@ Update-AzWvdAppAttachPackage -Name <String> -ResourceGroupName <String> [-Subscr
  [-ImageCertificateExpiry <DateTime>] [-ImageCertificateName <String>] [-ImageDisplayName <String>]
  [-ImageIsActive] [-ImageIsPackageTimestamped <PackageTimestamped>] [-ImageIsRegularRegistration]
  [-ImageLastUpdated <DateTime>] [-ImagePackageAlias <String>]
- [-ImagePackageApplication <IMsixPackageApplications[]>]
- [-ImagePackageDependency <IMsixPackageDependencies[]>] [-ImagePackageFamilyName <String>]
- [-ImagePackageFullName <String>] [-ImagePackageName <String>] [-ImagePackageRelativePath <String>]
- [-ImagePath <String>] [-ImageVersion <String>] [-KeyVaultUrl <String>] [-Tag <Hashtable>]
- [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
+ [-ImagePackageApplication <IMsixPackageApplications[]>] [-ImagePackageDependency <IMsixPackageDependencies[]>]
+ [-ImagePackageFamilyName <String>] [-ImagePackageFullName <String>] [-ImagePackageName <String>]
+ [-ImagePackageRelativePath <String>] [-ImagePath <String>] [-ImageVersion <String>] [-KeyVaultUrl <String>]
+ [-Tag <Hashtable>] [-DefaultProfile <PSObject>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### ImageObject
 ```
-Update-AzWvdAppAttachPackage [-AppAttachPackage] <AppAttachPackage> -Name <String> -ResourceGroupName <String>
- [-SubscriptionId <String>] [-FailHealthCheckOnStagingFailure <FailHealthCheckOnStagingFailure>]
- [-HostPoolReference <String[]>] [-ImageDisplayName <String>] [-ImageIsActive] [-ImageIsRegularRegistration]
- [-PassThru] [-DefaultProfile <PSObject>] [<CommonParameters>]
+Update-AzWvdAppAttachPackage -Name <String> -ResourceGroupName <String> [-SubscriptionId <String>]
+ [-FailHealthCheckOnStagingFailure <FailHealthCheckOnStagingFailure>] [-HostPoolReference <String[]>]
+ [-ImageDisplayName <String>] [-ImageIsActive] [-ImageIsRegularRegistration] [-KeyVaultUrl <String>]
+ [-AppAttachPackage] <AppAttachPackage> [-PassThru] [-DefaultProfile <PSObject>] [-WhatIf] [-Confirm]
+ [<CommonParameters>]
 ```
 
 ### UpdateViaIdentityExpanded
@@ -41,11 +41,10 @@ Update-AzWvdAppAttachPackage -InputObject <IDesktopVirtualizationIdentity>
  [-ImageCertificateExpiry <DateTime>] [-ImageCertificateName <String>] [-ImageDisplayName <String>]
  [-ImageIsActive] [-ImageIsPackageTimestamped <PackageTimestamped>] [-ImageIsRegularRegistration]
  [-ImageLastUpdated <DateTime>] [-ImagePackageAlias <String>]
- [-ImagePackageApplication <IMsixPackageApplications[]>]
- [-ImagePackageDependency <IMsixPackageDependencies[]>] [-ImagePackageFamilyName <String>]
- [-ImagePackageFullName <String>] [-ImagePackageName <String>] [-ImagePackageRelativePath <String>]
- [-ImagePath <String>] [-ImageVersion <String>] [-KeyVaultUrl <String>] [-Tag <Hashtable>]
- [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
+ [-ImagePackageApplication <IMsixPackageApplications[]>] [-ImagePackageDependency <IMsixPackageDependencies[]>]
+ [-ImagePackageFamilyName <String>] [-ImagePackageFullName <String>] [-ImagePackageName <String>]
+ [-ImagePackageRelativePath <String>] [-ImagePath <String>] [-ImageVersion <String>] [-KeyVaultUrl <String>]
+ [-Tag <Hashtable>] [-DefaultProfile <PSObject>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -120,7 +119,7 @@ Parameter Sets: ImageObject
 Aliases:
 
 Required: True
-Position: 0
+Position: 1
 Default value: None
 Accept pipeline input: True (ByValue)
 Accept wildcard characters: False
@@ -454,7 +453,7 @@ The name of the App Attach package arm object
 
 ```yaml
 Type: System.String
-Parameter Sets: ImageObject, UpdateExpanded
+Parameter Sets: UpdateExpanded, ImageObject
 Aliases: AppAttachPackageName
 
 Required: True
@@ -465,7 +464,6 @@ Accept wildcard characters: False
 ```
 
 ### -PassThru
-
 
 ```yaml
 Type: System.Management.Automation.SwitchParameter
@@ -485,7 +483,7 @@ The name is case insensitive.
 
 ```yaml
 Type: System.String
-Parameter Sets: ImageObject, UpdateExpanded
+Parameter Sets: UpdateExpanded, ImageObject
 Aliases:
 
 Required: True
@@ -500,7 +498,7 @@ The ID of the target subscription.
 
 ```yaml
 Type: System.String
-Parameter Sets: ImageObject, UpdateExpanded
+Parameter Sets: UpdateExpanded, ImageObject
 Aliases:
 
 Required: False
@@ -572,4 +570,3 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ## NOTES
 
 ## RELATED LINKS
-

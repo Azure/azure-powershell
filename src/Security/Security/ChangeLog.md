@@ -19,6 +19,8 @@
 -->
 
 ## Upcoming Release
+
+## Version 1.5.1
 * Fixed bug for `Set-AzSecurityPricing`
 
 ## Version 1.5.0

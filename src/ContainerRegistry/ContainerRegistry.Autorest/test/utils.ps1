@@ -5,6 +5,31 @@ function RandomString([bool]$allChars, [int32]$len) {
         return -join ((97..122) | Get-Random -Count $len | % {[char]$_})
     }
 }
+function Start-TestSleep {
+    [CmdletBinding(DefaultParameterSetName = 'SleepBySeconds')]
+    param(
+        [parameter(Mandatory = $true, Position = 0, ParameterSetName = 'SleepBySeconds')]
+        [ValidateRange(0.0, 2147483.0)]
+        [double] $Seconds,
+
+        [parameter(Mandatory = $true, ParameterSetName = 'SleepByMilliseconds')]
+        [ValidateRange('NonNegative')]
+        [Alias('ms')]
+        [int] $Milliseconds
+    )
+
+    if ($TestMode -ne 'playback') {
+        switch ($PSCmdlet.ParameterSetName) {
+            'SleepBySeconds' {
+                Start-Sleep -Seconds $Seconds
+            }
+            'SleepByMilliseconds' {
+                Start-Sleep -Milliseconds $Milliseconds
+            }
+        }
+    }
+}
+
 $env = @{}
 if ($UsePreviousConfigForRecord) {
     $previousEnv = Get-Content (Join-Path $PSScriptRoot 'env.json') | ConvertFrom-Json
@@ -43,20 +68,20 @@ function setupEnv() {
     New-AzResourceGroup -Name $resourceGroup -Location "eastus"
     New-AzContainerRegistry -RegistryName $env.rstr1 -sku 'Premium' -ResourceGroupName $env.ResourceGroup -Location "eastus" -EnableAdminUser
     New-AzContainerRegistry -RegistryName $env.rstr3 -sku 'Premium' -ResourceGroupName $env.ResourceGroup -Location "eastus" -EnableAdminUser
-    New-AzContainerRegistryReplication -name  $env.rstr1 -RegistryName  $env.rstr1 -ResourceGroupName $env.ResourceGroup -Location "westus"  
-    New-AzContainerRegistryReplication -name  $env.rstr3 -RegistryName  $env.rstr1 -ResourceGroupName $env.ResourceGroup -Location "eastus2"  
+    New-AzContainerRegistryReplication -name  $env.rstr1 -RegistryName  $env.rstr1 -ResourceGroupName $env.ResourceGroup -Location "westus"
+    New-AzContainerRegistryReplication -name  $env.rstr3 -RegistryName  $env.rstr1 -ResourceGroupName $env.ResourceGroup -Location "eastus2"
     New-AzContainerRegistryAgentPool -name $env.rstr1  -RegistryName $env.rstr1 -ResourceGroupName $resourceGroup -Location 'eastus' -Count 1 -Tier S1 -os 'Linux'
     New-AzContainerRegistryAgentPool -name $env.rstr3  -RegistryName $env.rstr1 -ResourceGroupName $resourceGroup -Location 'eastus' -Count 1 -Tier S1 -os 'Linux'
     New-AzContainerRegistryScopeMap  -Name $env.rstr1 -RegistryName  $env.rstr1 -ResourceGroupName $resourceGroup -Action "repositories/busybox/content/read"
     New-AzContainerRegistryScopeMap  -Name $env.rstr3 -RegistryName  $env.rstr1 -ResourceGroupName $resourceGroup -Action "repositories/busybox/content/read"
-    New-AzContainerRegistryWebhook -RegistryName $env.rstr1 -ResourceGroupName $env.resourceGroup -Name $env.rstr1 -ServiceUri http://www.bing.com -Action Delete,Push -Location "east us" -Status Enabled -Scope "foo:*" 
-    New-AzContainerRegistryWebhook -RegistryName $env.rstr1 -ResourceGroupName $env.resourceGroup -Name $env.rstr3 -ServiceUri http://www.bing.com -Action Delete,Push -Location "east us" -Status Enabled -Scope "foo:*" 
+    New-AzContainerRegistryWebhook -RegistryName $env.rstr1 -ResourceGroupName $env.resourceGroup -Name $env.rstr1 -ServiceUri http://www.bing.com -Action Delete,Push -Location "east us" -Status Enabled -Scope "foo:*"
+    New-AzContainerRegistryWebhook -RegistryName $env.rstr1 -ResourceGroupName $env.resourceGroup -Name $env.rstr3 -ServiceUri http://www.bing.com -Action Delete,Push -Location "east us" -Status Enabled -Scope "foo:*"
     $keyVaultUri = "https://lnxtestkeyvault.vault.azure.net/secrets/test/de11705d609e48b6a2faf6facc30a9e0"
     $StorageAccount = "https://acrteststorageaccount.blob.core.windows.net/test"
-    New-AzContainerRegistryExportPipeline -name $env.rstr1 -RegistryName $env.rstr1 -ResourceGroupName $env.ResourceGroup -IdentityType 'SystemAssigned' -TargetType AzureStorageBlobContainer -TargetUri $StorageAccount -TargetKeyVaultUri $keyVaultUri 
-    New-AzContainerRegistryExportPipeline -name $env.rstr3 -RegistryName $env.rstr1 -ResourceGroupName $env.ResourceGroup -IdentityType 'SystemAssigned' -TargetType AzureStorageBlobContainer -TargetUri $StorageAccount -TargetKeyVaultUri $keyVaultUri 
-    New-AzContainerRegistryImportPipeline -name $env.rstr1 -RegistryName $env.rstr1 -ResourceGroupName $env.ResourceGroup -IdentityType 'SystemAssigned' -SourceType AzureStorageBlobContainer -SourceUri $StorageAccount -SourceKeyVaultUri $keyVaultUri 
-    New-AzContainerRegistryImportPipeline -name $env.rstr3 -RegistryName $env.rstr1 -ResourceGroupName $env.ResourceGroup -IdentityType 'SystemAssigned' -SourceType AzureStorageBlobContainer -SourceUri $StorageAccount -SourceKeyVaultUri $keyVaultUri 
+    New-AzContainerRegistryExportPipeline -name $env.rstr1 -RegistryName $env.rstr1 -ResourceGroupName $env.ResourceGroup -IdentityType 'SystemAssigned' -TargetType AzureStorageBlobContainer -TargetUri $StorageAccount -TargetKeyVaultUri $keyVaultUri
+    New-AzContainerRegistryExportPipeline -name $env.rstr3 -RegistryName $env.rstr1 -ResourceGroupName $env.ResourceGroup -IdentityType 'SystemAssigned' -TargetType AzureStorageBlobContainer -TargetUri $StorageAccount -TargetKeyVaultUri $keyVaultUri
+    New-AzContainerRegistryImportPipeline -name $env.rstr1 -RegistryName $env.rstr1 -ResourceGroupName $env.ResourceGroup -IdentityType 'SystemAssigned' -SourceType AzureStorageBlobContainer -SourceUri $StorageAccount -SourceKeyVaultUri $keyVaultUri
+    New-AzContainerRegistryImportPipeline -name $env.rstr3 -RegistryName $env.rstr1 -ResourceGroupName $env.ResourceGroup -IdentityType 'SystemAssigned' -SourceType AzureStorageBlobContainer -SourceUri $StorageAccount -SourceKeyVaultUri $keyVaultUri
     $map = Get-AzContainerRegistryScopeMap -RegistryName $env.rstr1 -ResourceGroupName  $env.resourceGroup -Name $env.rstr1
     New-AzContainerRegistryToken -RegistryName $env.rstr1 -ResourceGroupName  $env.resourceGroup -Name $env.rstr3 -ScopeMapId $map.Id
     New-AzContainerRegistryToken -RegistryName $env.rstr1 -ResourceGroupName  $env.resourceGroup -Name $env.rstr4 -ScopeMapId $map.Id

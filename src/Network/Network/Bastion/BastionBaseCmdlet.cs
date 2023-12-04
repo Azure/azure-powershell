@@ -100,7 +100,7 @@ namespace Microsoft.Azure.Commands.Network.Bastion
             psBastion.EnableKerberos = bastion.EnableKerberos;
             psBastion.DisableCopyPaste = bastion.DisableCopyPaste;
             psBastion.EnableTunneling = bastion.EnableTunneling;
-            psBastion.EnableIpConnect = bastion.EnableIpConnect;
+            psBastion.EnableIpConnect = bastion.EnableIPConnect;
             psBastion.EnableShareableLink = bastion.EnableShareableLink;
 
             return psBastion;
@@ -115,7 +115,7 @@ namespace Microsoft.Azure.Commands.Network.Bastion
             bastion.EnableKerberos = bastion.EnableKerberos;
             bastion.DisableCopyPaste = host.DisableCopyPaste;
             bastion.EnableTunneling = host.EnableTunneling;
-            bastion.EnableIpConnect = host.EnableIpConnect;
+            bastion.EnableIpConnect = host.EnableIPConnect;
             bastion.EnableShareableLink = host.EnableShareableLink;
 
             return bastion;

@@ -1,5 +1,5 @@
 ---
-external help file:
+external help file: Az.DesktopVirtualization-help.xml
 Module Name: Az.DesktopVirtualization
 online version: https://learn.microsoft.com/powershell/module/az.desktopvirtualization/remove-azwvdscalingplanpersonalschedule
 schema: 2.0.0
@@ -16,13 +16,13 @@ Remove a ScalingPlanPersonalSchedule.
 ```
 Remove-AzWvdScalingPlanPersonalSchedule -ResourceGroupName <String> -ScalingPlanName <String>
  -ScalingPlanScheduleName <String> [-SubscriptionId <String>] [-DefaultProfile <PSObject>] [-PassThru]
- [-Confirm] [-WhatIf] [<CommonParameters>]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### DeleteViaIdentity
 ```
 Remove-AzWvdScalingPlanPersonalSchedule -InputObject <IDesktopVirtualizationIdentity>
- [-DefaultProfile <PSObject>] [-PassThru] [-Confirm] [-WhatIf] [<CommonParameters>]
+ [-DefaultProfile <PSObject>] [-PassThru] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -30,7 +30,7 @@ Remove a ScalingPlanPersonalSchedule.
 
 ## EXAMPLES
 
-### Example 1: Delete a Personal Schedule 
+### Example 1: Delete a Personal Schedule
 ```powershell
 Remove-AzWvdScalingPlanPersonalSchedule -ResourceGroupName rgName -ScalingPlanName spName -ScalingPlanScheduleName scheduleName
 ```
@@ -192,4 +192,3 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ## NOTES
 
 ## RELATED LINKS
-

@@ -49,7 +49,7 @@ namespace Microsoft.Azure.Commands.Network
         [ValidateSet(
             MNM.FirewallPolicyIntrusionDetectionProtocol.TCP,
             MNM.FirewallPolicyIntrusionDetectionProtocol.UDP,
-            MNM.FirewallPolicyIntrusionDetectionProtocol.ICMP,
+            MNM.FirewallPolicyIntrusionDetectionProtocol.Icmp,
             MNM.FirewallPolicyIntrusionDetectionProtocol.ANY,
             IgnoreCase = false)]
         [ValidateNotNullOrEmpty]
