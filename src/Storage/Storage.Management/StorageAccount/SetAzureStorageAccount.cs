@@ -523,6 +523,21 @@ namespace Microsoft.Azure.Commands.Management.Storage
         }
         private int? immutabilityPeriod;
 
+        [Parameter(Mandatory = false, HelpMessage = "When enabled by set it to true, new blocks can be written to an append blob while maintaining immutability protection and compliance. Only new blocks can be added and any existing blocks cannot be modified or deleted. " +
+            "This property can only be changed when account is created with '-EnableAccountLevelImmutability', and ImmutabilityPolicy State is disabled or unlocked.")]
+        public bool AllowProtectedAppendWrite
+        {
+            get
+            {
+                return allowProtectedAppendWrite is null ? false : allowProtectedAppendWrite.Value;
+            }
+            set
+            {
+                allowProtectedAppendWrite = value;
+            }
+        }
+        private bool? allowProtectedAppendWrite;
+
         [Parameter(
             Mandatory = false,
             HelpMessage = "The mode of the policy. Possible values include: 'Unlocked', 'Locked', 'Disabled. " +
@@ -840,6 +855,10 @@ namespace Microsoft.Azure.Commands.Management.Storage
                     {
                         updateParameters.LargeFileSharesState = LargeFileSharesState.Enabled;
                     }
+                    if (this.RoutingChoice != null || this.publishMicrosoftEndpoint != null || this.publishInternetEndpoint != null)
+                    { 
+                        updateParameters.RoutingPreference = new RoutingPreference(this.RoutingChoice, this.publishMicrosoftEndpoint, this.publishInternetEndpoint);
+                    }
                     if (this.minimumTlsVersion != null)
                     {
                         updateParameters.MinimumTlsVersion = this.minimumTlsVersion;
@@ -872,12 +891,13 @@ namespace Microsoft.Azure.Commands.Management.Storage
                     {
                         updateParameters.PublicNetworkAccess = this.PublicNetworkAccess;
                     }
-                    if(this.immutabilityPeriod !=null ||  this.ImmutabilityPolicyState != null)
+                    if(this.immutabilityPeriod !=null || this.allowProtectedAppendWrite != null || this.ImmutabilityPolicyState != null)
                     {
                         updateParameters.ImmutableStorageWithVersioning = new ImmutableStorageAccount();
                         updateParameters.ImmutableStorageWithVersioning.ImmutabilityPolicy = new AccountImmutabilityPolicyProperties();
                         updateParameters.ImmutableStorageWithVersioning.ImmutabilityPolicy.ImmutabilityPeriodSinceCreationInDays = this.immutabilityPeriod;
                         updateParameters.ImmutableStorageWithVersioning.ImmutabilityPolicy.State = this.ImmutabilityPolicyState;
+                        updateParameters.ImmutableStorageWithVersioning.ImmutabilityPolicy.AllowProtectedAppendWrites = this.allowProtectedAppendWrite;
                     }
                     if (this.enableSftp != null)
                     {

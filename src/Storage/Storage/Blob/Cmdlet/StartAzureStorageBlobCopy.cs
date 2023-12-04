@@ -210,7 +210,7 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Blob.Cmdlet
         }
         private PremiumPageBlobTier? pageBlobTier = null;
 
-        [Parameter(HelpMessage = "Block Blob Tier, valid values are Hot/Cool/Archive/Cold. See detail in https://learn.microsoft.com/en-us/azure/storage/blobs/storage-blob-storage-tiers", Mandatory = false)]
+        [Parameter(HelpMessage = "Block Blob Tier, valid values are Hot/Cool/Archive/Cold. See detail in https://learn.microsoft.com/azure/storage/blobs/storage-blob-storage-tiers", Mandatory = false)]
         [ValidateNotNullOrEmpty]
         [PSArgumentCompleter("Hot", "Cool", "Archive", "Cold")]
         public string StandardBlobTier
@@ -303,7 +303,7 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Blob.Cmdlet
         [ValidateNotNullOrEmpty]
         public override string TagCondition { get; set; }
 
-        public override SwitchParameter AsJob { get; set; }
+        //public override SwitchParameter AsJob { get; set; }
 
         protected override bool UseTrack2Sdk()
         {

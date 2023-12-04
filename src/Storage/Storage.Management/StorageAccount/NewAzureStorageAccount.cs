@@ -605,6 +605,21 @@ namespace Microsoft.Azure.Commands.Management.Storage
         }
         private int? immutabilityPeriod;
 
+        [Parameter(Mandatory = false, HelpMessage = "When enabled by set it to true, new blocks can be written to an append blob while maintaining immutability protection and compliance. Only new blocks can be added and any existing blocks cannot be modified or deleted. " +
+            "This property can only be specified with '-EnableAccountLevelImmutability'.")]
+        public bool AllowProtectedAppendWrite
+        {
+            get
+            {
+                return allowProtectedAppendWrite is null ? false : allowProtectedAppendWrite.Value;
+            }
+            set
+            {
+                allowProtectedAppendWrite = value;
+            }
+        }
+        private bool? allowProtectedAppendWrite;
+
         [Parameter(
             Mandatory = false,
             HelpMessage = "The mode of the policy. Possible values include: 'Unlocked', 'Disabled. " +
@@ -622,12 +637,12 @@ namespace Microsoft.Azure.Commands.Management.Storage
         public string AllowedCopyScope { get; set; }
 
         [Parameter(
-            Mandatory = false, 
-            HelpMessage = "Specify the type of endpoint. Set this to AzureDNSZone to create a large number of accounts in a single subscription, " +
-            "which creates accounts in an Azure DNS Zone and the endpoint URL will have an alphanumeric DNS Zone identifier. Possible values include: 'Standard', 'AzureDnsZone'.")]
+            Mandatory = false,
+            HelpMessage = "Specify the type of endpoint. Set this to AzureDNSZone to create a large number of accounts in a single subscription, which creates accounts in an Azure DNS Zone and the endpoint URL will have an alphanumeric DNS Zone identifier. Possible values include: 'Standard', 'AzureDnsZone'.")]
         [PSArgumentCompleter("Standard", "AzureDnsZone")]
         [ValidateNotNullOrEmpty]
         public string DnsEndpointType { get; set; }
+
 
         public override void ExecuteCmdlet()
         {
@@ -853,6 +868,10 @@ namespace Microsoft.Azure.Commands.Management.Storage
             {
                 createParameters.EnableNfsV3 = enableNfsV3;
             }
+            if (enableNfsV3 != null)
+            {
+                createParameters.EnableNfsV3 = enableNfsV3;
+            }
             if (this.EdgeZone != null)
             {
                 createParameters.ExtendedLocation = new ExtendedLocation()
@@ -877,7 +896,7 @@ namespace Microsoft.Azure.Commands.Management.Storage
             {
                 createParameters.PublicNetworkAccess = this.PublicNetworkAccess;
             }
-            if (EnableAccountLevelImmutability.IsPresent || this.immutabilityPeriod != null ||  this.ImmutabilityPolicyState != null)
+            if (EnableAccountLevelImmutability.IsPresent || this.immutabilityPeriod != null || this.allowProtectedAppendWrite != null || this.ImmutabilityPolicyState != null)
             {
                 if (!EnableAccountLevelImmutability.IsPresent)
                 {
@@ -885,11 +904,12 @@ namespace Microsoft.Azure.Commands.Management.Storage
                 }
                 createParameters.ImmutableStorageWithVersioning = new ImmutableStorageAccount();
                 createParameters.ImmutableStorageWithVersioning.Enabled = this.EnableAccountLevelImmutability.IsPresent;
-                if (this.immutabilityPeriod != null || this.ImmutabilityPolicyState != null)
+                if (this.immutabilityPeriod != null || this.allowProtectedAppendWrite != null || this.ImmutabilityPolicyState != null)
                 {
                     createParameters.ImmutableStorageWithVersioning.ImmutabilityPolicy = new AccountImmutabilityPolicyProperties();
                     createParameters.ImmutableStorageWithVersioning.ImmutabilityPolicy.ImmutabilityPeriodSinceCreationInDays = this.immutabilityPeriod;
                     createParameters.ImmutableStorageWithVersioning.ImmutabilityPolicy.State = this.ImmutabilityPolicyState;
+                    createParameters.ImmutableStorageWithVersioning.ImmutabilityPolicy.AllowProtectedAppendWrites = this.allowProtectedAppendWrite;
                 }
             }
             if (this.enableSftp != null)

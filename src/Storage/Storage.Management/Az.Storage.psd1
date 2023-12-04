@@ -197,6 +197,8 @@ CmdletsToExport = 'Get-AzStorageAccount', 'Get-AzStorageAccountKey',
                'Get-AzStorageBlobByTag', 
                'Invoke-AzStorageAccountHierarchicalNamespaceUpgrade', 
                'Stop-AzStorageAccountHierarchicalNamespaceUpgrade', 
+               'Get-AzDataLakeGen2DeletedItem', 
+               'Restore-AzDataLakeGen2DeletedItem', 
                'Set-AzStorageBlobImmutabilityPolicy', 
                'Remove-AzStorageBlobImmutabilityPolicy', 
                'Set-AzStorageBlobLegalHold', 
@@ -207,9 +209,7 @@ CmdletsToExport = 'Get-AzStorageAccount', 'Get-AzStorageAccountKey',
                'Remove-AzStorageLocalUser', 'Get-AzStorageLocalUserKey', 
                'New-AzStorageLocalUserSshPassword', 
                'New-AzStorageLocalUserSshPublicKey', 
-               'New-AzStorageLocalUserPermissionScope', 
-               'Get-AzDataLakeGen2DeletedItem', 
-               'Restore-AzDataLakeGen2DeletedItem', 'Rename-AzStorageFile', 
+               'New-AzStorageLocalUserPermissionScope', 'Rename-AzStorageFile', 
                'Rename-AzStorageDirectory'
 
 # Variables to export from this module
@@ -218,9 +218,14 @@ VariablesToExport = '*'
 # Aliases to export from this module, for best performance, do not use wildcards and do not delete the entry, use an empty array if there are no aliases to export.
 AliasesToExport = 'Get-AzStorageContainerAcl', 'Start-CopyAzureStorageBlob', 
                'Stop-CopyAzureStorageBlob', 'Enable-AzStorageSoftDelete', 
-               'Disable-AzStorageSoftDelete', 'New-AzDatalakeGen2FileSystem', 
-               'Remove-AzDatalakeGen2FileSystem', 'Get-AzDatalakeGen2FileSystem', 
-               'New-AzDataLakeGen2ItemAclObject'
+               'Disable-AzStorageSoftDelete', 'Enable-AzureStorageStaticWebsite', 
+               'Disable-AzureStorageStaticWebsite', 
+               'Invoke-AzureRmStorageAccountFailover', 
+               'Get-AzureRmStorageAccountManagementPolicy', 
+               'Set-AzureRmStorageAccountManagementPolicy', 
+               'Remove-AzureRmStorageAccountManagementPolicy', 
+               'New-AzDatalakeGen2FileSystem', 'Remove-AzDatalakeGen2FileSystem', 
+               'Get-AzDatalakeGen2FileSystem', 'New-AzDataLakeGen2ItemAclObject'
 
 # DSC resources to export from this module
 # DscResourcesToExport = @()
@@ -252,7 +257,7 @@ PrivateData = @{
         ReleaseNotes = '* Updated error message when storage context is missing in a cmdlet input '
 
         # Prerelease string of this module
-        # Prerelease = ''
+        Prerelease = 'preview'
 
         # Flag to indicate whether the module requires explicit user acceptance for install/update/save
         # RequireLicenseAcceptance = $false

@@ -188,9 +188,7 @@ Accept wildcard characters: False
 ```
 
 ### -BatchSize
-If data set size exceeds batch size then operation will be split into multiple requests so that progress can be tracked.
-Batch size should be between 1 and 2000.
-Default is 2000.
+If data set size exceeds batch size then operation will be split into multiple requests so that progress can be tracked. Batch size should be between 1 and 2000. Default is 2000.
 
 ```yaml
 Type: System.Int32
@@ -295,10 +293,7 @@ Accept wildcard characters: False
 ```
 
 ### -Path
-The path in the specified FileSystem that to change Acl recursively.
-Can be a file or directory.
-In the format 'directory/file.txt' or 'directory1/directory2/'.
-Skip set this parameter to change Acl recursively from root directory of the Filesystem.
+The path in the specified FileSystem that to change Acl recursively. Can be a file or directory. In the format 'directory/file.txt' or 'directory1/directory2/'. Skip set this parameter to change Acl recursively from root directory of the Filesystem.
 
 ```yaml
 Type: System.String
@@ -328,8 +323,7 @@ Accept wildcard characters: False
 ```
 
 ### -WhatIf
-Shows what would happen if the cmdlet runs.
-The cmdlet is not run.
+Shows what would happen if the cmdlet runs. The cmdlet is not run.
 
 ```yaml
 Type: System.Management.Automation.SwitchParameter

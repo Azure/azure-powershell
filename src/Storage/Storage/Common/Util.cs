@@ -534,6 +534,7 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Common
             return blobServiceClient;
         }
 
+
         /// <summary>
         /// Validate if Start Time and Expire time meet the requirement of userDelegationKey
         /// </summary>
@@ -747,7 +748,7 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Common
                 }
             }
             return null;
-        }
+        }        
 
         public static ShareServiceClient GetTrack2FileServiceClient(AzureStorageContext context, ShareClientOptions options = null)
         {

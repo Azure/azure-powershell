@@ -98,6 +98,12 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Common
                 file = new CloudFile(Util.RemoveFileUriTrailingDot(file.Uri), file.ServiceClient.Credentials);
             }
 
+            // When file path contains trailing dot and disableTrailingDot, need generate sas from path without .
+            if (disableTrailingDot && Util.PathContainsTrailingDot(file.Uri.AbsolutePath))
+            {
+                file = new CloudFile(Util.RemoveFileUriTrailingDot(file.Uri), file.ServiceClient.Credentials);
+            }
+
             return file.GetSharedAccessSignature(policy);
         }
 

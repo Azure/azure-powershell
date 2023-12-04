@@ -35,7 +35,6 @@ namespace Microsoft.Azure.Commands.Management.Storage
         /// Account object list parameter set 
         /// </summary>
         private const string AccountObjectParameterSet = "AccountObject";
-
         /// <summary>
         /// AccountName Parameter Set
         /// </summary>
