@@ -1,0 +1,39 @@
+{
+  "Update-AzConnectedMachineRunCommand+[NoContext]+Update+$PATCH+https://management.azure.com/subscriptions/e6fe6705-4c9c-4b54-81d2-e455780e20b8/resourceGroups/az-sdk-test/providers/Microsoft.HybridCompute/machines/testmachine/runCommands/myRunCommand?api-version=2023-10-03-preview+1": {
+    "Request": {
+      "Method": "PATCH",
+      "RequestUri": "https://management.azure.com/subscriptions/e6fe6705-4c9c-4b54-81d2-e455780e20b8/resourceGroups/az-sdk-test/providers/Microsoft.HybridCompute/machines/testmachine/runCommands/myRunCommand?api-version=2023-10-03-preview",
+      "Content": "{\r\n  \"tags\": {\r\n    \"Tag2\": \"tag2\",\r\n    \"Tag1\": \"tag1\"\r\n  }\r\n}",
+      "isContentBase64": false,
+      "Headers": {
+      },
+      "ContentHeaders": {
+        "Content-Type": [ "application/json" ],
+        "Content-Length": [ "63" ]
+      }
+    },
+    "Response": {
+      "StatusCode": 405,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "x-ms-ratelimit-remaining-subscription-resource-requests": [ "319" ],
+        "x-ms-request-id": [ "bd4196c1-5e76-4a72-aef3-7554b2594000" ],
+        "x-ms-correlation-request-id": [ "bd4196c1-5e76-4a72-aef3-7554b2594000" ],
+        "x-ms-routing-request-id": [ "WESTUS2:20231204T054332Z:bd4196c1-5e76-4a72-aef3-7554b2594000" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "X-Cache": [ "CONFIG_NOCACHE" ],
+        "X-MSEdge-Ref": [ "Ref A: F0BFA1DA54EE4461963A06EBB923AB53 Ref B: CO6AA3150218027 Ref C: 2023-12-04T05:43:31Z" ],
+        "Date": [ "Mon, 04 Dec 2023 05:43:31 GMT" ]
+      },
+      "ContentHeaders": {
+        "Allow": [ "DELETE", "GET", "PUT" ],
+        "Expires": [ "-1" ],
+        "Content-Length": [ "0" ]
+      },
+      "Content": null,
+      "isContentBase64": false
+    }
+  }
+}

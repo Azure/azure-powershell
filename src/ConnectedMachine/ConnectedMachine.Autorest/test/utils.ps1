@@ -17,6 +17,8 @@ function setupEnv() {
     $env.Location = 'eastus2euap'
     $env.MachineName = 'testmachine'
     $env.PrivateLinkScopeName = 'scope-test'
+    $env.RunCommandName = 'myRunCommand'
+    $env.Script = 'Write-Host Hello World!'
     New-AzResourceGroup -Name $env.ResourceGroupName -Location $env.Location | Out-Null
 
     if ($IsMacOS) {

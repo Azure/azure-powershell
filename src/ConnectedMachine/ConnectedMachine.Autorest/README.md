@@ -292,6 +292,10 @@ directive:
   - where:
       subject: HybridIdentityMetadata
     remove: true
+  - where:
+      subject: MachineRunCommand
+      verb: Set
+    remove: true
 
   # add back when swagger change is checked in
   - where:

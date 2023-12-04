@@ -20,7 +20,8 @@ Describe 'New-AzConnectedMachineRunCommand' {
     }
 
     It 'Create' -skip {
-        { throw [System.NotImplementedException] } | Should -Not -Throw
+        $runCommand = New-AzConnectedMachineRunCommand -ResourceGroupName $env.ResourceGroupName -Location $env.Location -SourceScript $env.Script -RunCommandName $env.RunCommandName -MachineName $env.MachineName -Subscription $env.SubscriptionId
+        $runCommand.Count | Should -Not -BeNullOrEmpty
     }
 
     It 'CreateViaIdentityExpanded' -skip {
