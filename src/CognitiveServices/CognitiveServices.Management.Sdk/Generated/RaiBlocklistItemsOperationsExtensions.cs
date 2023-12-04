@@ -58,8 +58,7 @@ namespace Microsoft.Azure.Management.CognitiveServices
             }
         }
         /// <summary>
-        /// Gets the specified custom blocklist Item associated with the custom
-        /// blocklist.
+        /// Gets the specified custom blocklist Item associated with the custom blocklist.
         /// </summary>
         /// <param name='operations'>
         /// The operations group for this extension method.
@@ -82,8 +81,7 @@ namespace Microsoft.Azure.Management.CognitiveServices
         }
 
         /// <summary>
-        /// Gets the specified custom blocklist Item associated with the custom
-        /// blocklist.
+        /// Gets the specified custom blocklist Item associated with the custom blocklist.
         /// </summary>
         /// <param name='operations'>
         /// The operations group for this extension method.
@@ -111,8 +109,7 @@ namespace Microsoft.Azure.Management.CognitiveServices
             }
         }
         /// <summary>
-        /// Update the state of specified blocklist item associated with the Azure
-        /// OpenAI account.
+        /// Update the state of specified blocklist item associated with the Azure OpenAI account.
         /// </summary>
         /// <param name='operations'>
         /// The operations group for this extension method.
@@ -135,8 +132,7 @@ namespace Microsoft.Azure.Management.CognitiveServices
         }
 
         /// <summary>
-        /// Update the state of specified blocklist item associated with the Azure
-        /// OpenAI account.
+        /// Update the state of specified blocklist item associated with the Azure OpenAI account.
         /// </summary>
         /// <param name='operations'>
         /// The operations group for this extension method.

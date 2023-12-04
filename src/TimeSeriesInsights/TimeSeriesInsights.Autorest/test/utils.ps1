@@ -6,6 +6,31 @@ function RandomString([bool]$allChars, [int32]$len) {
         return -join ((48..57) + (97..122) | Get-Random -Count $len | % {[char]$_})
     }
 }
+function Start-TestSleep {
+    [CmdletBinding(DefaultParameterSetName = 'SleepBySeconds')]
+    param(
+        [parameter(Mandatory = $true, Position = 0, ParameterSetName = 'SleepBySeconds')]
+        [ValidateRange(0.0, 2147483.0)]
+        [double] $Seconds,
+
+        [parameter(Mandatory = $true, ParameterSetName = 'SleepByMilliseconds')]
+        [ValidateRange('NonNegative')]
+        [Alias('ms')]
+        [int] $Milliseconds
+    )
+
+    if ($TestMode -ne 'playback') {
+        switch ($PSCmdlet.ParameterSetName) {
+            'SleepBySeconds' {
+                Start-Sleep -Seconds $Seconds
+            }
+            'SleepByMilliseconds' {
+                Start-Sleep -Milliseconds $Milliseconds
+            }
+        }
+    }
+}
+
 $env = @{}
 function setupEnv() {
     # Preload subscriptionId and tenant from context, which will be used in test
@@ -112,7 +137,7 @@ function setupEnv() {
     $env.Add('resourceGroup', $resourceGroup)
     $env.Add('location', $Location)
     Write-Host -ForegroundColor Green 'Resource group created successfully.'
-    
+
     Write-Host -ForegroundColor Green '--------------------------------------------'
     Write-Host -ForegroundColor Green 'Start deploying resources for testing.'
     # create storage account for test.
@@ -139,7 +164,7 @@ function setupEnv() {
     $tsiEnvParamObj01 = @{TsiEnvName = $env.tsiEnvName01;Kind='Gen2'; SkuName='L1'; Location=$env.location}
     $tsiEnv = (GetOrCreateTsiEnv -forceCreate $true -tsiEnvParamObj $tsiEnvParamObj -resourceGroup $env.resourceGroup)
     $tsiEnv01 = (GetOrCreateTsiEnv -forceCreate $true -tsiEnvParamObj $tsiEnvParamObj01 -resourceGroup $env.resourceGroup -staccountParamObj $staAccountParam)
-    
+
     # create AzTimeSeriesInsightsEventSource(Kind:EventHub) for test.
     $tsiEs = (CreateTsiEventSource -tsiEevntSourceName $env.tsiEsName -resourceGroup $env.resourceGroup -tsiEnv $tsiEnv -eventhubParam $eventHubParam)
     $tsiEs01 = (CreateTsiEventSource -tsiEevntSourceName $env.tsiEsName01 -resourceGroup $env.resourceGroup -tsiEnv $tsiEnv01 -eventhubParam $eventHubParam01)

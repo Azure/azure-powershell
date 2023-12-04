@@ -46,7 +46,7 @@ function Test-RaClassicAdminsWithScope
 <#
 .SYNOPSIS
 Tests retrieval of assignments to unknown principals/Users/Groups
-This test will fail if the objectId is changed, the role assignment deleted or user is unable to know the type of 
+This test will fail if the objectId is changed, the role assignment deleted or user is unable to know the type of
 #>
 function Test-UnknowndPrincipals
 {
@@ -137,7 +137,7 @@ function Test-RaByScope
     Assert-AreEqual $scope $newAssignment.Scope
     # Assert-AreEqual $users[0].DisplayName $newAssignment.DisplayName
 
-    # Start-Sleep -Seconds 300
+    # Start-TestSleep -Seconds 300
 
     VerifyRoleAssignmentDeleted $newAssignment
 }
@@ -199,7 +199,7 @@ function Test-RaByResourceGroup
     Assert-AreEqual $definitionName $newAssignment.RoleDefinitionName
     # Assert-AreEqual $users[0].DisplayName $newAssignment.DisplayName
 
-    # Start-Sleep -Seconds 300
+    # Start-TestSleep -Seconds 300
 
     VerifyRoleAssignmentDeleted $newAssignment
 }
@@ -300,7 +300,7 @@ function Test-RaByServicePrincipal
     $Scope = '/subscriptions/0b1f6471-1bf0-4dda-aec3-cb9272f09590'
 
     # Test
-    $newAssignment1 = New-AzRoleAssignment -ServicePrincipalName $servicePrincipals -RoleDefinitionName $definitionName -Scope $scope 
+    $newAssignment1 = New-AzRoleAssignment -ServicePrincipalName $servicePrincipals -RoleDefinitionName $definitionName -Scope $scope
 
     $definitionName = 'Contributor'
     # Test
@@ -320,8 +320,8 @@ function Test-RaByServicePrincipal
     Assert-AreEqual $definitionName $newAssignment2.RoleDefinitionName
     Assert-AreEqual $scope $newAssignment2.Scope
     # Assert-AreEqual $servicePrincipals[0].DisplayName $newAssignment2.DisplayName
-    
-    #Start-Sleep -Seconds 300
+
+    #Start-TestSleep -Seconds 300
 
     VerifyRoleAssignmentDeleted $newAssignment1
     VerifyRoleAssignmentDeleted $newAssignment2
@@ -386,7 +386,7 @@ function Test-RaGetByUPNWithExpandPrincipalGroups
     # cleanup
     DeleteRoleAssignment $newAssignment
 
-    # Start-Sleep -Seconds 300
+    # Start-TestSleep -Seconds 300
 
     VerifyRoleAssignmentDeleted $newAssignment
 }
@@ -436,7 +436,7 @@ function Test-RaDeletionByScope
     Assert-AreEqual $scope $newAssignment.Scope
     # Assert-AreEqual $users[0].DisplayName $newAssignment.DisplayName
 
-    # Start-Sleep -Seconds 300
+    # Start-TestSleep -Seconds 300
 
     VerifyRoleAssignmentDeleted $newAssignment
 }
@@ -612,7 +612,7 @@ function Test-RaGetOnlyByRoleDefinitionName
 {
     # Setup
     $definitionName = 'Owner'
-    
+
     $ras = Get-AzRoleAssignment -RoleDefinitionName $definitionName
 
     Assert-NotNull $ras
@@ -657,7 +657,7 @@ function VerifyRoleAssignmentDeleted
 {
     param([Parameter(Mandatory=$true)] [object] $roleAssignment)
 
-    # Start-Sleep -Seconds 600
+    # Start-TestSleep -Seconds 600
 
     $deletedRoleAssignment = Get-AzRoleAssignment -ObjectId $roleAssignment.ObjectId `
                                                      -Scope $roleAssignment.Scope `
@@ -698,7 +698,7 @@ function Test-RaWithV1Conditions{
     $StorageAccount = 'storagecontainer4test'
     $Condition = "@Resource[Microsoft.Storage/storageAccounts:name] StringEquals '$StorageAccount'"
     $ConditionVersion = "1.0"
-    
+
     Assert-Throws {New-AzRoleAssignment -ObjectId $PrincipalId -Scope $Scope -RoleDefinitionId $RoleDefinitionId -Description $Description -Condition $Condition -ConditionVersion $ConditionVersion} "Argument -ConditionVersion must be greater or equal than 2.0"
 }
 
@@ -803,7 +803,7 @@ function Test-UpdateRa{
     # When
     $assignment = New-AzRoleAssignmentWithId -ObjectId $PrincipalId -Scope $Scope -RoleDefinitionId $RoleDefinitionId -Description $Description1 `
     -Condition $Condition1 -ConditionVersion $ConditionVersion -RoleAssignmentId 734de5f5-c680-41c0-8beb-67b98c3539d2
-    
+
     $Description2 = "This test should have completed"
     $Condition2 = "true"
 
@@ -811,7 +811,7 @@ function Test-UpdateRa{
     $assignment.Condition = $Condition2
 
     $updatedAssignment = Set-AzRoleAssignment -InputObject $assignment -PassThru
-    
+
 
     # Then
     # Assert intended target changed
@@ -824,7 +824,7 @@ function Test-UpdateRa{
     Assert-AreEqual $PrincipalId $updatedAssignment.ObjectId "Test failed: ObjectId shouldn't have changed after update call"
     Assert-AreEqual $Scope $updatedAssignment.Scope "Test failed: Scope shouldn't have changed after update call"
     Assert-AreEqual $RoleDefinitionId $updatedAssignment.RoleDefinitionId "Test failed: RoleDefinitionId shouldn't have changed after update call"
-    
+
     # Consider deleting  bellow assert for certain tests as we might overwrite condition version behind the seams
     Assert-AreEqual $ConditionVersion $updatedAssignment.ConditionVersion "Test failed: ConditionVersion shouldn't have changed after update call"
     Assert-AreEqual $assignment.RoleAssignmentId $updatedAssignment.RoleAssignmentId "Test failed: RoleAssignmentId shouldn't have changed after update call"
@@ -838,7 +838,7 @@ function Test-UpdateRa{
 Verifies that role assignment maps to a group
 #>
 function Test-CreateRAForGroup
-{   
+{
     #Given
     $RoleDefinitionId = "acdd72a7-3385-48ef-bd42-f606fba81ae7"
     $PrincipalId ="ffa6ed11-e137-4081-ad6e-77a25ddd685a"
@@ -858,7 +858,7 @@ function Test-CreateRAForGroup
 Verifies that role assignment maps to a user (not "Guest")
 #>
 function Test-CreateRAForGuest
-{    
+{
     #Given
     $RoleDefinitionId = "acdd72a7-3385-48ef-bd42-f606fba81ae7"
     $PrincipalId ="b436a2b3-24c4-46f9-a79d-f9585a8d6f6e"
@@ -878,7 +878,7 @@ function Test-CreateRAForGuest
 Verifies that role assignment maps to a user (not "Member")
 #>
 function Test-CreateRAForMember
-{    
+{
     #Given
     $RoleDefinitionId = "acdd72a7-3385-48ef-bd42-f606fba81ae7"
     $PrincipalId ="2f153a9e-5be9-4f43-abd2-04561777c8b0"
@@ -898,7 +898,7 @@ function Test-CreateRAForMember
 Verifies that role assignment maps to a ServicePrincipal
 #>
 function Test-CreateRAForServicePrincipal
-{    
+{
     #Given
     # Built-in role "Storage Blob Data Reader"'s Id
     $RoleDefinitionId = "2a2b9908-6ea1-4ae2-8e65-a410df84e7d1"
@@ -919,7 +919,7 @@ function Test-CreateRAForServicePrincipal
 Verifies that role assignment gets created properly when using objectype
 #>
 function Test-CreateRAWithObjectType
-{    
+{
     #Given
     $RoleDefinitionId = "acdd72a7-3385-48ef-bd42-f606fba81ae7"
     # bez's PrincipalId
@@ -942,7 +942,7 @@ function Test-CreateRAWithObjectType
 Verifies that role assignment does not get created for a principal ID that doesn't exist'
 #>
 function Test-CreateRAWhenIdNotExist
-{    
+{
     #Given
     $RoleDefinitionId = "acdd72a7-3385-48ef-bd42-f606fba81ae7"
     $PrincipalId ="6d764d35-6b3b-49ea-83f8-5c223b56eac5"

@@ -40,12 +40,10 @@ namespace Microsoft.Azure.Management.CognitiveServices
         System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse<Microsoft.Rest.Azure.IPage<Deployment>>> ListWithHttpMessagesAsync(string resourceGroupName, string accountName, System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
 
         /// <summary>
-        /// Gets the specified deployments associated with the Cognitive Services
-        /// account.
+        /// Gets the specified deployments associated with the Cognitive Services account.
         /// </summary>
         /// <remarks>
-        /// Gets the specified deployments associated with the Cognitive Services
-        /// account.
+        /// Gets the specified deployments associated with the Cognitive Services account.
         /// </remarks>
         /// <param name='resourceGroupName'>
         /// The name of the resource group. The name is case insensitive.
@@ -71,12 +69,10 @@ namespace Microsoft.Azure.Management.CognitiveServices
         System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse<Deployment>> GetWithHttpMessagesAsync(string resourceGroupName, string accountName, string deploymentName, System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
 
         /// <summary>
-        /// Update the state of specified deployments associated with the Cognitive
-        /// Services account.
+        /// Update the state of specified deployments associated with the Cognitive Services account.
         /// </summary>
         /// <remarks>
-        /// Update the state of specified deployments associated with the Cognitive
-        /// Services account.
+        /// Update the state of specified deployments associated with the Cognitive Services account.
         /// </remarks>
         /// <param name='resourceGroupName'>
         /// The name of the resource group. The name is case insensitive.
@@ -105,12 +101,10 @@ namespace Microsoft.Azure.Management.CognitiveServices
         System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse<Deployment>> CreateOrUpdateWithHttpMessagesAsync(string resourceGroupName, string accountName, string deploymentName, Deployment deployment, System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
 
         /// <summary>
-        /// Update specified deployments associated with the Cognitive Services
-        /// account.
+        /// Update specified deployments associated with the Cognitive Services account.
         /// </summary>
         /// <remarks>
-        /// Update specified deployments associated with the Cognitive Services
-        /// account.
+        /// Update specified deployments associated with the Cognitive Services account.
         /// </remarks>
         /// <param name='resourceGroupName'>
         /// The name of the resource group. The name is case insensitive.
@@ -142,12 +136,10 @@ namespace Microsoft.Azure.Management.CognitiveServices
         System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse<Deployment,DeploymentsUpdateHeaders>> UpdateWithHttpMessagesAsync(string resourceGroupName, string accountName, string deploymentName, System.Collections.Generic.IDictionary<string, string> tags = default(System.Collections.Generic.IDictionary<string, string>), Sku sku = default(Sku), System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
 
         /// <summary>
-        /// Deletes the specified deployment associated with the Cognitive Services
-        /// account.
+        /// Deletes the specified deployment associated with the Cognitive Services account.
         /// </summary>
         /// <remarks>
-        /// Deletes the specified deployment associated with the Cognitive Services
-        /// account.
+        /// Deletes the specified deployment associated with the Cognitive Services account.
         /// </remarks>
         /// <param name='resourceGroupName'>
         /// The name of the resource group. The name is case insensitive.
@@ -170,12 +162,10 @@ namespace Microsoft.Azure.Management.CognitiveServices
         System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse> DeleteWithHttpMessagesAsync(string resourceGroupName, string accountName, string deploymentName, System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
 
         /// <summary>
-        /// Lists the specified deployments skus associated with the Cognitive Services
-        /// account.
+        /// Lists the specified deployments skus associated with the Cognitive Services account.
         /// </summary>
         /// <remarks>
-        /// Lists the specified deployments skus associated with the Cognitive Services
-        /// account.
+        /// Lists the specified deployments skus associated with the Cognitive Services account.
         /// </remarks>
         /// <param name='resourceGroupName'>
         /// The name of the resource group. The name is case insensitive.
@@ -201,12 +191,10 @@ namespace Microsoft.Azure.Management.CognitiveServices
         System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse<Microsoft.Rest.Azure.IPage<SkuResource>>> ListSkusWithHttpMessagesAsync(string resourceGroupName, string accountName, string deploymentName, System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
 
         /// <summary>
-        /// Update the state of specified deployments associated with the Cognitive
-        /// Services account.
+        /// Update the state of specified deployments associated with the Cognitive Services account.
         /// </summary>
         /// <remarks>
-        /// Update the state of specified deployments associated with the Cognitive
-        /// Services account.
+        /// Update the state of specified deployments associated with the Cognitive Services account.
         /// </remarks>
         /// <param name='resourceGroupName'>
         /// The name of the resource group. The name is case insensitive.
@@ -235,12 +223,10 @@ namespace Microsoft.Azure.Management.CognitiveServices
         System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse<Deployment>> BeginCreateOrUpdateWithHttpMessagesAsync(string resourceGroupName, string accountName, string deploymentName, Deployment deployment, System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
 
         /// <summary>
-        /// Update specified deployments associated with the Cognitive Services
-        /// account.
+        /// Update specified deployments associated with the Cognitive Services account.
         /// </summary>
         /// <remarks>
-        /// Update specified deployments associated with the Cognitive Services
-        /// account.
+        /// Update specified deployments associated with the Cognitive Services account.
         /// </remarks>
         /// <param name='resourceGroupName'>
         /// The name of the resource group. The name is case insensitive.
@@ -272,12 +258,10 @@ namespace Microsoft.Azure.Management.CognitiveServices
         System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse<Deployment,DeploymentsUpdateHeaders>> BeginUpdateWithHttpMessagesAsync(string resourceGroupName, string accountName, string deploymentName, System.Collections.Generic.IDictionary<string, string> tags = default(System.Collections.Generic.IDictionary<string, string>), Sku sku = default(Sku), System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
 
         /// <summary>
-        /// Deletes the specified deployment associated with the Cognitive Services
-        /// account.
+        /// Deletes the specified deployment associated with the Cognitive Services account.
         /// </summary>
         /// <remarks>
-        /// Deletes the specified deployment associated with the Cognitive Services
-        /// account.
+        /// Deletes the specified deployment associated with the Cognitive Services account.
         /// </remarks>
         /// <param name='resourceGroupName'>
         /// The name of the resource group. The name is case insensitive.
@@ -323,12 +307,10 @@ namespace Microsoft.Azure.Management.CognitiveServices
         System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse<Microsoft.Rest.Azure.IPage<Deployment>>> ListNextWithHttpMessagesAsync(string nextPageLink, System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
 
         /// <summary>
-        /// Lists the specified deployments skus associated with the Cognitive Services
-        /// account.
+        /// Lists the specified deployments skus associated with the Cognitive Services account.
         /// </summary>
         /// <remarks>
-        /// Lists the specified deployments skus associated with the Cognitive Services
-        /// account.
+        /// Lists the specified deployments skus associated with the Cognitive Services account.
         /// </remarks>
         /// <param name='nextPageLink'>
         /// The NextLink from the previous successful call to List operation.

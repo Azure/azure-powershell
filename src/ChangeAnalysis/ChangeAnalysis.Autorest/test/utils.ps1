@@ -5,6 +5,31 @@ function RandomString([bool]$allChars, [int32]$len) {
         return -join ((48..57) + (97..122) | Get-Random -Count $len | % {[char]$_})
     }
 }
+function Start-TestSleep {
+    [CmdletBinding(DefaultParameterSetName = 'SleepBySeconds')]
+    param(
+        [parameter(Mandatory = $true, Position = 0, ParameterSetName = 'SleepBySeconds')]
+        [ValidateRange(0.0, 2147483.0)]
+        [double] $Seconds,
+
+        [parameter(Mandatory = $true, ParameterSetName = 'SleepByMilliseconds')]
+        [ValidateRange('NonNegative')]
+        [Alias('ms')]
+        [int] $Milliseconds
+    )
+
+    if ($TestMode -ne 'playback') {
+        switch ($PSCmdlet.ParameterSetName) {
+            'SleepBySeconds' {
+                Start-Sleep -Seconds $Seconds
+            }
+            'SleepByMilliseconds' {
+                Start-Sleep -Milliseconds $Milliseconds
+            }
+        }
+    }
+}
+
 $env = @{}
 function setupEnv() {
     # Preload subscriptionId and tenant from context, which will be used in test
@@ -20,13 +45,13 @@ function setupEnv() {
     New-AzResourceGroup -Name $env.resourceGroup -Location $env.location
 
     # Deploy keyvault for test
-    Write-Host -ForegroundColor Green "Deloying Key Vault..." 
+    Write-Host -ForegroundColor Green "Deloying Key Vault..."
     $kvName = 'keyvalult-' + (RandomString -allChars $false -len 6)
     $kvPara = Get-Content .\test\deployment-templates\key-vault\parameters.json | ConvertFrom-Json
     $kvPara.parameters.vaults_name.value = $kvName
     set-content -Path .\test\deployment-templates\key-vault\parameters.json -Value (ConvertTo-Json $kvPara)
     New-AzDeployment -Mode Incremental -TemplateFile .\test\deployment-templates\key-vault\template.json -TemplateParameterFile .\test\deployment-templates\key-vault\parameters.json -ResourceGroupName $env.resourceGroup
-    
+
     $env.keyvaultId = "/subscriptions/$($env.SubscriptionId)/resourceGroups/$($env.resourceGroup)/providers/Microsoft.KeyVault/vaults/$kvName"
 
     $envFile = 'env.json'

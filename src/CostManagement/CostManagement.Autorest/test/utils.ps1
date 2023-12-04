@@ -5,6 +5,31 @@ function RandomString([bool]$allChars, [int32]$len) {
         return -join ((48..57) + (97..122) | Get-Random -Count $len | % {[char]$_})
     }
 }
+function Start-TestSleep {
+    [CmdletBinding(DefaultParameterSetName = 'SleepBySeconds')]
+    param(
+        [parameter(Mandatory = $true, Position = 0, ParameterSetName = 'SleepBySeconds')]
+        [ValidateRange(0.0, 2147483.0)]
+        [double] $Seconds,
+
+        [parameter(Mandatory = $true, ParameterSetName = 'SleepByMilliseconds')]
+        [ValidateRange('NonNegative')]
+        [Alias('ms')]
+        [int] $Milliseconds
+    )
+
+    if ($TestMode -ne 'playback') {
+        switch ($PSCmdlet.ParameterSetName) {
+            'SleepBySeconds' {
+                Start-Sleep -Seconds $Seconds
+            }
+            'SleepByMilliseconds' {
+                Start-Sleep -Milliseconds $Milliseconds
+            }
+        }
+    }
+}
+
 function getUseModules() {
     $usedModule = & 'gmo'
     foreach($module in $usedModule)
@@ -13,7 +38,7 @@ function getUseModules() {
       $version = $module.Version
       Write-Host -ForegroundColor Green "Using module name: $name $version"
     }
-} 
+}
 $env = @{}
 function setupEnv() {
     # Preload subscriptionId and tenant from context, which will be used in test
@@ -26,7 +51,7 @@ function setupEnv() {
     $exportName02 = 'export-' + (RandomString -allChars $false -len 6)
     $exportName03 = 'export-' + (RandomString -allChars $false -len 6)
     $exportName04 = 'export-' + (RandomString -allChars $false -len 6)
-    
+
     $null = $env.Add('exportName01', $exportName01)
     $null = $env.Add('exportName02', $exportName02)
     $null = $env.Add('exportName03', $exportName03)
@@ -44,8 +69,8 @@ function setupEnv() {
     <# Cause error: The request content was invalid and could not be deserialized: 'Error converting value "staaccountuigcan" to type
                     'Microsoft.WindowsAzure.ResourceStack.Frontdoor.Data.Definitions.DeploymentParameterDefinition'. Path
                     'properties.parameters.storageAccounts_wyunchistorageaccount_name', line 5, position 70.'.
-    
-    $staaccountName = 'staaccount' + (RandomString -allChars $false -len 6)        
+
+    $staaccountName = 'staaccount' + (RandomString -allChars $false -len 6)
     $staaccountParam = Get-Content .\test\deployment-templates\storage-account\parameters.json | ConvertFrom-Json
     $staaccountParam.parameters.storageAccounts_name = $staaccountName
     set-content -Path .\test\deployment-templates\storage-account\parameters.json -Value (ConvertTo-Json $staaccountParam)
@@ -53,7 +78,7 @@ function setupEnv() {
     New-AzDeployment -Mode Incremental -TemplateFile .\test\deployment-templates\storage-account\template.json -TemplateParameterFile .\test\deployment-templates\storage-account\parameters.json -ResourceGroupName $env.resourceGroup
     $staaccountName = 'staaccountjshubiu' # Value in template.json
     $env.storageAccountId = "/subscriptions/$($env.SubscriptionId)/resourceGroups/$($env.resourceGroup)/providers/Microsoft.Storage/storageAccounts/$($staaccountName)"
-    Start-Sleep -s 60 # Waiting storage account create complete.
+    Start-TestSleep -Seconds 60 # Waiting storage account create complete.
     Write-Host -ForegroundColor Green "The storage account deployed successfully."
 
     Write-Host -ForegroundColor Green "Create cost management export for test..."
@@ -66,7 +91,7 @@ function setupEnv() {
     -Format "Csv" `
     -DestinationResourceId $env.storageAccountId `
     -DestinationContainer "exports" -DestinationRootFolderPath "ad-hoc" -DefinitionType "Usage" `
-    -DefinitionTimeframe "MonthToDate" -DatasetGranularity "Daily" 
+    -DefinitionTimeframe "MonthToDate" -DatasetGranularity "Daily"
 
     # Invoke-AzCostManagementExecuteExport -Scope "subscriptions/$($env.SubscriptionId)" -ExportName $env.exportName01
 

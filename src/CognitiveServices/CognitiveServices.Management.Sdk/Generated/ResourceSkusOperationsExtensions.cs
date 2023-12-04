@@ -13,8 +13,7 @@ namespace Microsoft.Azure.Management.CognitiveServices
     public static partial class ResourceSkusOperationsExtensions
     {
         /// <summary>
-        /// Gets the list of Microsoft.CognitiveServices SKUs available for your
-        /// Subscription.
+        /// Gets the list of Microsoft.CognitiveServices SKUs available for your Subscription.
         /// </summary>
         /// <param name='operations'>
         /// The operations group for this extension method.
@@ -25,8 +24,7 @@ namespace Microsoft.Azure.Management.CognitiveServices
         }
 
         /// <summary>
-        /// Gets the list of Microsoft.CognitiveServices SKUs available for your
-        /// Subscription.
+        /// Gets the list of Microsoft.CognitiveServices SKUs available for your Subscription.
         /// </summary>
         /// <param name='operations'>
         /// The operations group for this extension method.
@@ -42,8 +40,7 @@ namespace Microsoft.Azure.Management.CognitiveServices
             }
         }
         /// <summary>
-        /// Gets the list of Microsoft.CognitiveServices SKUs available for your
-        /// Subscription.
+        /// Gets the list of Microsoft.CognitiveServices SKUs available for your Subscription.
         /// </summary>
         /// <param name='operations'>
         /// The operations group for this extension method.
@@ -57,8 +54,7 @@ namespace Microsoft.Azure.Management.CognitiveServices
         }
 
         /// <summary>
-        /// Gets the list of Microsoft.CognitiveServices SKUs available for your
-        /// Subscription.
+        /// Gets the list of Microsoft.CognitiveServices SKUs available for your Subscription.
         /// </summary>
         /// <param name='operations'>
         /// The operations group for this extension method.

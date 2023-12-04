@@ -52,8 +52,7 @@ namespace Microsoft.Azure.Management.CognitiveServices
             }
         }
         /// <summary>
-        /// Gets the specified Content Filters associated with the Azure OpenAI
-        /// account.
+        /// Gets the specified Content Filters associated with the Azure OpenAI account.
         /// </summary>
         /// <param name='operations'>
         /// The operations group for this extension method.
@@ -73,8 +72,7 @@ namespace Microsoft.Azure.Management.CognitiveServices
         }
 
         /// <summary>
-        /// Gets the specified Content Filters associated with the Azure OpenAI
-        /// account.
+        /// Gets the specified Content Filters associated with the Azure OpenAI account.
         /// </summary>
         /// <param name='operations'>
         /// The operations group for this extension method.
@@ -99,8 +97,7 @@ namespace Microsoft.Azure.Management.CognitiveServices
             }
         }
         /// <summary>
-        /// Update the state of specified Content Filters associated with the Azure
-        /// OpenAI account.
+        /// Update the state of specified Content Filters associated with the Azure OpenAI account.
         /// </summary>
         /// <param name='operations'>
         /// The operations group for this extension method.
@@ -120,8 +117,7 @@ namespace Microsoft.Azure.Management.CognitiveServices
         }
 
         /// <summary>
-        /// Update the state of specified Content Filters associated with the Azure
-        /// OpenAI account.
+        /// Update the state of specified Content Filters associated with the Azure OpenAI account.
         /// </summary>
         /// <param name='operations'>
         /// The operations group for this extension method.
@@ -146,8 +142,7 @@ namespace Microsoft.Azure.Management.CognitiveServices
             }
         }
         /// <summary>
-        /// Deletes the specified Content Filters associated with the Azure OpenAI
-        /// account.
+        /// Deletes the specified Content Filters associated with the Azure OpenAI account.
         /// </summary>
         /// <param name='operations'>
         /// The operations group for this extension method.
@@ -167,8 +162,7 @@ namespace Microsoft.Azure.Management.CognitiveServices
         }
 
         /// <summary>
-        /// Deletes the specified Content Filters associated with the Azure OpenAI
-        /// account.
+        /// Deletes the specified Content Filters associated with the Azure OpenAI account.
         /// </summary>
         /// <param name='operations'>
         /// The operations group for this extension method.
@@ -193,8 +187,7 @@ namespace Microsoft.Azure.Management.CognitiveServices
             }
         }
         /// <summary>
-        /// Deletes the specified Content Filters associated with the Azure OpenAI
-        /// account.
+        /// Deletes the specified Content Filters associated with the Azure OpenAI account.
         /// </summary>
         /// <param name='operations'>
         /// The operations group for this extension method.
@@ -214,8 +207,7 @@ namespace Microsoft.Azure.Management.CognitiveServices
         }
 
         /// <summary>
-        /// Deletes the specified Content Filters associated with the Azure OpenAI
-        /// account.
+        /// Deletes the specified Content Filters associated with the Azure OpenAI account.
         /// </summary>
         /// <param name='operations'>
         /// The operations group for this extension method.

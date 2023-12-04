@@ -40,12 +40,10 @@ namespace Microsoft.Azure.Management.CognitiveServices
         System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse<Microsoft.Rest.Azure.IPage<RaiPolicy>>> ListWithHttpMessagesAsync(string resourceGroupName, string accountName, System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
 
         /// <summary>
-        /// Gets the specified Content Filters associated with the Azure OpenAI
-        /// account.
+        /// Gets the specified Content Filters associated with the Azure OpenAI account.
         /// </summary>
         /// <remarks>
-        /// Gets the specified Content Filters associated with the Azure OpenAI
-        /// account.
+        /// Gets the specified Content Filters associated with the Azure OpenAI account.
         /// </remarks>
         /// <param name='resourceGroupName'>
         /// The name of the resource group. The name is case insensitive.
@@ -71,12 +69,10 @@ namespace Microsoft.Azure.Management.CognitiveServices
         System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse<RaiPolicy>> GetWithHttpMessagesAsync(string resourceGroupName, string accountName, string raiPolicyName, System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
 
         /// <summary>
-        /// Update the state of specified Content Filters associated with the Azure
-        /// OpenAI account.
+        /// Update the state of specified Content Filters associated with the Azure OpenAI account.
         /// </summary>
         /// <remarks>
-        /// Update the state of specified Content Filters associated with the Azure
-        /// OpenAI account.
+        /// Update the state of specified Content Filters associated with the Azure OpenAI account.
         /// </remarks>
         /// <param name='resourceGroupName'>
         /// The name of the resource group. The name is case insensitive.
@@ -108,12 +104,10 @@ namespace Microsoft.Azure.Management.CognitiveServices
         System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse<RaiPolicy>> CreateOrUpdateWithHttpMessagesAsync(string resourceGroupName, string accountName, string raiPolicyName, System.Collections.Generic.IDictionary<string, string> tags = default(System.Collections.Generic.IDictionary<string, string>), RaiPolicyProperties properties = default(RaiPolicyProperties), System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
 
         /// <summary>
-        /// Deletes the specified Content Filters associated with the Azure OpenAI
-        /// account.
+        /// Deletes the specified Content Filters associated with the Azure OpenAI account.
         /// </summary>
         /// <remarks>
-        /// Deletes the specified Content Filters associated with the Azure OpenAI
-        /// account.
+        /// Deletes the specified Content Filters associated with the Azure OpenAI account.
         /// </remarks>
         /// <param name='resourceGroupName'>
         /// The name of the resource group. The name is case insensitive.
@@ -136,12 +130,10 @@ namespace Microsoft.Azure.Management.CognitiveServices
         System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationHeaderResponse<RaiPoliciesDeleteHeaders>> DeleteWithHttpMessagesAsync(string resourceGroupName, string accountName, string raiPolicyName, System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
 
         /// <summary>
-        /// Deletes the specified Content Filters associated with the Azure OpenAI
-        /// account.
+        /// Deletes the specified Content Filters associated with the Azure OpenAI account.
         /// </summary>
         /// <remarks>
-        /// Deletes the specified Content Filters associated with the Azure OpenAI
-        /// account.
+        /// Deletes the specified Content Filters associated with the Azure OpenAI account.
         /// </remarks>
         /// <param name='resourceGroupName'>
         /// The name of the resource group. The name is case insensitive.

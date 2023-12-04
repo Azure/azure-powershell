@@ -24,24 +24,24 @@ namespace Microsoft.Azure.Management.CognitiveServices.Models
         /// Initializes a new instance of the RaiPolicyContentFilter class.
         /// </summary>
 
-        /// <param name="policyName">Name of ContentFilter.
+        /// <param name="name">Name of ContentFilter.
         /// </param>
 
         /// <param name="enabled">If the ContentFilter is enabled.
         /// </param>
 
         /// <param name="allowedContentLevel">Level at which content is filtered.
-        /// Possible values include: &#39;Low&#39;, &#39;Medium&#39;, &#39;High&#39;</param>
+        /// Possible values include: 'Low', 'Medium', 'High'</param>
 
         /// <param name="blocking">If blocking would occur.
         /// </param>
 
         /// <param name="source">Content source to apply the Content Filters.
-        /// Possible values include: &#39;Prompt&#39;, &#39;Completion&#39;</param>
-        public RaiPolicyContentFilter(string policyName = default(string), bool? enabled = default(bool?), string allowedContentLevel = default(string), bool? blocking = default(bool?), string source = default(string))
+        /// Possible values include: 'Prompt', 'Completion'</param>
+        public RaiPolicyContentFilter(string name = default(string), bool? enabled = default(bool?), string allowedContentLevel = default(string), bool? blocking = default(bool?), string source = default(string))
 
         {
-            this.PolicyName = policyName;
+            this.Name = name;
             this.Enabled = enabled;
             this.AllowedContentLevel = allowedContentLevel;
             this.Blocking = blocking;
@@ -58,8 +58,8 @@ namespace Microsoft.Azure.Management.CognitiveServices.Models
         /// <summary>
         /// Gets or sets name of ContentFilter.
         /// </summary>
-        [Newtonsoft.Json.JsonProperty(PropertyName = "policyName")]
-        public string PolicyName {get; set; }
+        [Newtonsoft.Json.JsonProperty(PropertyName = "name")]
+        public string Name {get; set; }
 
         /// <summary>
         /// Gets or sets if the ContentFilter is enabled.

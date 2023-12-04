@@ -52,8 +52,7 @@ namespace Microsoft.Azure.Management.CognitiveServices
             }
         }
         /// <summary>
-        /// Gets the specified deployments associated with the Cognitive Services
-        /// account.
+        /// Gets the specified deployments associated with the Cognitive Services account.
         /// </summary>
         /// <param name='operations'>
         /// The operations group for this extension method.
@@ -73,8 +72,7 @@ namespace Microsoft.Azure.Management.CognitiveServices
         }
 
         /// <summary>
-        /// Gets the specified deployments associated with the Cognitive Services
-        /// account.
+        /// Gets the specified deployments associated with the Cognitive Services account.
         /// </summary>
         /// <param name='operations'>
         /// The operations group for this extension method.
@@ -99,8 +97,7 @@ namespace Microsoft.Azure.Management.CognitiveServices
             }
         }
         /// <summary>
-        /// Update the state of specified deployments associated with the Cognitive
-        /// Services account.
+        /// Update the state of specified deployments associated with the Cognitive Services account.
         /// </summary>
         /// <param name='operations'>
         /// The operations group for this extension method.
@@ -120,8 +117,7 @@ namespace Microsoft.Azure.Management.CognitiveServices
         }
 
         /// <summary>
-        /// Update the state of specified deployments associated with the Cognitive
-        /// Services account.
+        /// Update the state of specified deployments associated with the Cognitive Services account.
         /// </summary>
         /// <param name='operations'>
         /// The operations group for this extension method.
@@ -146,8 +142,7 @@ namespace Microsoft.Azure.Management.CognitiveServices
             }
         }
         /// <summary>
-        /// Update specified deployments associated with the Cognitive Services
-        /// account.
+        /// Update specified deployments associated with the Cognitive Services account.
         /// </summary>
         /// <param name='operations'>
         /// The operations group for this extension method.
@@ -167,8 +162,7 @@ namespace Microsoft.Azure.Management.CognitiveServices
         }
 
         /// <summary>
-        /// Update specified deployments associated with the Cognitive Services
-        /// account.
+        /// Update specified deployments associated with the Cognitive Services account.
         /// </summary>
         /// <param name='operations'>
         /// The operations group for this extension method.
@@ -193,8 +187,7 @@ namespace Microsoft.Azure.Management.CognitiveServices
             }
         }
         /// <summary>
-        /// Deletes the specified deployment associated with the Cognitive Services
-        /// account.
+        /// Deletes the specified deployment associated with the Cognitive Services account.
         /// </summary>
         /// <param name='operations'>
         /// The operations group for this extension method.
@@ -214,8 +207,7 @@ namespace Microsoft.Azure.Management.CognitiveServices
         }
 
         /// <summary>
-        /// Deletes the specified deployment associated with the Cognitive Services
-        /// account.
+        /// Deletes the specified deployment associated with the Cognitive Services account.
         /// </summary>
         /// <param name='operations'>
         /// The operations group for this extension method.
@@ -237,8 +229,7 @@ namespace Microsoft.Azure.Management.CognitiveServices
             (await operations.DeleteWithHttpMessagesAsync(resourceGroupName, accountName, deploymentName, null, cancellationToken).ConfigureAwait(false)).Dispose();
         }
         /// <summary>
-        /// Lists the specified deployments skus associated with the Cognitive Services
-        /// account.
+        /// Lists the specified deployments skus associated with the Cognitive Services account.
         /// </summary>
         /// <param name='operations'>
         /// The operations group for this extension method.
@@ -258,8 +249,7 @@ namespace Microsoft.Azure.Management.CognitiveServices
         }
 
         /// <summary>
-        /// Lists the specified deployments skus associated with the Cognitive Services
-        /// account.
+        /// Lists the specified deployments skus associated with the Cognitive Services account.
         /// </summary>
         /// <param name='operations'>
         /// The operations group for this extension method.
@@ -284,8 +274,7 @@ namespace Microsoft.Azure.Management.CognitiveServices
             }
         }
         /// <summary>
-        /// Update the state of specified deployments associated with the Cognitive
-        /// Services account.
+        /// Update the state of specified deployments associated with the Cognitive Services account.
         /// </summary>
         /// <param name='operations'>
         /// The operations group for this extension method.
@@ -305,8 +294,7 @@ namespace Microsoft.Azure.Management.CognitiveServices
         }
 
         /// <summary>
-        /// Update the state of specified deployments associated with the Cognitive
-        /// Services account.
+        /// Update the state of specified deployments associated with the Cognitive Services account.
         /// </summary>
         /// <param name='operations'>
         /// The operations group for this extension method.
@@ -331,8 +319,7 @@ namespace Microsoft.Azure.Management.CognitiveServices
             }
         }
         /// <summary>
-        /// Update specified deployments associated with the Cognitive Services
-        /// account.
+        /// Update specified deployments associated with the Cognitive Services account.
         /// </summary>
         /// <param name='operations'>
         /// The operations group for this extension method.
@@ -352,8 +339,7 @@ namespace Microsoft.Azure.Management.CognitiveServices
         }
 
         /// <summary>
-        /// Update specified deployments associated with the Cognitive Services
-        /// account.
+        /// Update specified deployments associated with the Cognitive Services account.
         /// </summary>
         /// <param name='operations'>
         /// The operations group for this extension method.
@@ -378,8 +364,7 @@ namespace Microsoft.Azure.Management.CognitiveServices
             }
         }
         /// <summary>
-        /// Deletes the specified deployment associated with the Cognitive Services
-        /// account.
+        /// Deletes the specified deployment associated with the Cognitive Services account.
         /// </summary>
         /// <param name='operations'>
         /// The operations group for this extension method.
@@ -399,8 +384,7 @@ namespace Microsoft.Azure.Management.CognitiveServices
         }
 
         /// <summary>
-        /// Deletes the specified deployment associated with the Cognitive Services
-        /// account.
+        /// Deletes the specified deployment associated with the Cognitive Services account.
         /// </summary>
         /// <param name='operations'>
         /// The operations group for this extension method.
@@ -455,8 +439,7 @@ namespace Microsoft.Azure.Management.CognitiveServices
             }
         }
         /// <summary>
-        /// Lists the specified deployments skus associated with the Cognitive Services
-        /// account.
+        /// Lists the specified deployments skus associated with the Cognitive Services account.
         /// </summary>
         /// <param name='operations'>
         /// The operations group for this extension method.
@@ -470,8 +453,7 @@ namespace Microsoft.Azure.Management.CognitiveServices
         }
 
         /// <summary>
-        /// Lists the specified deployments skus associated with the Cognitive Services
-        /// account.
+        /// Lists the specified deployments skus associated with the Cognitive Services account.
         /// </summary>
         /// <param name='operations'>
         /// The operations group for this extension method.

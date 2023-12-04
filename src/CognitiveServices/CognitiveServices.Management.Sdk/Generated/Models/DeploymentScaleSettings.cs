@@ -26,7 +26,7 @@ namespace Microsoft.Azure.Management.CognitiveServices.Models
         /// </summary>
 
         /// <param name="scaleType">Deployment scale type.
-        /// Possible values include: &#39;Standard&#39;, &#39;Manual&#39;</param>
+        /// Possible values include: 'Standard', 'Manual'</param>
 
         /// <param name="capacity">Deployment capacity.
         /// </param>

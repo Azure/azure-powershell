@@ -43,12 +43,10 @@ namespace Microsoft.Azure.Management.CognitiveServices
         System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse<Microsoft.Rest.Azure.IPage<RaiBlocklistItem>>> ListWithHttpMessagesAsync(string resourceGroupName, string accountName, string raiBlocklistName, System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
 
         /// <summary>
-        /// Gets the specified custom blocklist Item associated with the custom
-        /// blocklist.
+        /// Gets the specified custom blocklist Item associated with the custom blocklist.
         /// </summary>
         /// <remarks>
-        /// Gets the specified custom blocklist Item associated with the custom
-        /// blocklist.
+        /// Gets the specified custom blocklist Item associated with the custom blocklist.
         /// </remarks>
         /// <param name='resourceGroupName'>
         /// The name of the resource group. The name is case insensitive.
@@ -77,12 +75,10 @@ namespace Microsoft.Azure.Management.CognitiveServices
         System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse<RaiBlocklistItem>> GetWithHttpMessagesAsync(string resourceGroupName, string accountName, string raiBlocklistName, string raiBlocklistItemName, System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
 
         /// <summary>
-        /// Update the state of specified blocklist item associated with the Azure
-        /// OpenAI account.
+        /// Update the state of specified blocklist item associated with the Azure OpenAI account.
         /// </summary>
         /// <remarks>
-        /// Update the state of specified blocklist item associated with the Azure
-        /// OpenAI account.
+        /// Update the state of specified blocklist item associated with the Azure OpenAI account.
         /// </remarks>
         /// <param name='resourceGroupName'>
         /// The name of the resource group. The name is case insensitive.
