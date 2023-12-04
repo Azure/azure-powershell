@@ -277,8 +277,7 @@ namespace Microsoft.Azure.Management.CognitiveServices
 
         }
         /// <summary>
-        /// Gets the specified commitmentPlans associated with the Cognitive Services
-        /// account.
+        /// Gets the specified commitmentPlans associated with the Cognitive Services account.
         /// </summary>
         /// <param name='resourceGroupName'>
         /// The name of the resource group. The name is case insensitive.
@@ -287,8 +286,7 @@ namespace Microsoft.Azure.Management.CognitiveServices
         /// The name of Cognitive Services account.
         /// </param>
         /// <param name='commitmentPlanName'>
-        /// The name of the commitmentPlan associated with the Cognitive Services
-        /// Account
+        /// The name of the commitmentPlan associated with the Cognitive Services Account
         /// </param>
         /// <param name='customHeaders'>
         /// Headers that will be added to request.
@@ -527,8 +525,7 @@ namespace Microsoft.Azure.Management.CognitiveServices
 
         }
         /// <summary>
-        /// Update the state of specified commitmentPlans associated with the Cognitive
-        /// Services account.
+        /// Update the state of specified commitmentPlans associated with the Cognitive Services account.
         /// </summary>
         /// <param name='resourceGroupName'>
         /// The name of the resource group. The name is case insensitive.
@@ -537,8 +534,7 @@ namespace Microsoft.Azure.Management.CognitiveServices
         /// The name of Cognitive Services account.
         /// </param>
         /// <param name='commitmentPlanName'>
-        /// The name of the commitmentPlan associated with the Cognitive Services
-        /// Account
+        /// The name of the commitmentPlan associated with the Cognitive Services Account
         /// </param>
         /// <param name='commitmentPlan'>
         /// The commitmentPlan properties.
@@ -822,8 +818,7 @@ namespace Microsoft.Azure.Management.CognitiveServices
         /// The name of Cognitive Services account.
         /// </param>
         /// <param name='commitmentPlanName'>
-        /// The name of the commitmentPlan associated with the Cognitive Services
-        /// Account
+        /// The name of the commitmentPlan associated with the Cognitive Services Account
         /// </param>
         /// <param name='customHeaders'>
         /// Headers that will be added to request.
@@ -845,8 +840,7 @@ namespace Microsoft.Azure.Management.CognitiveServices
         /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='commitmentPlanName'>
-        /// The name of the commitmentPlan associated with the Cognitive Services
-        /// Account
+        /// The name of the commitmentPlan associated with the Cognitive Services Account
         /// </param>
         /// <param name='commitmentPlan'>
         /// The parameters to provide for the created commitment plan.
@@ -871,8 +865,7 @@ namespace Microsoft.Azure.Management.CognitiveServices
         /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='commitmentPlanName'>
-        /// The name of the commitmentPlan associated with the Cognitive Services
-        /// Account
+        /// The name of the commitmentPlan associated with the Cognitive Services Account
         /// </param>
         /// <param name='tags'>
         /// Resource tags.
@@ -900,8 +893,7 @@ namespace Microsoft.Azure.Management.CognitiveServices
         /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='commitmentPlanName'>
-        /// The name of the commitmentPlan associated with the Cognitive Services
-        /// Account
+        /// The name of the commitmentPlan associated with the Cognitive Services Account
         /// </param>
         /// <param name='customHeaders'>
         /// Headers that will be added to request.
@@ -923,8 +915,7 @@ namespace Microsoft.Azure.Management.CognitiveServices
         /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='commitmentPlanName'>
-        /// The name of the commitmentPlan associated with the Cognitive Services
-        /// Account
+        /// The name of the commitmentPlan associated with the Cognitive Services Account
         /// </param>
         /// <param name='customHeaders'>
         /// Headers that will be added to request.
@@ -1148,8 +1139,7 @@ namespace Microsoft.Azure.Management.CognitiveServices
 
         }
         /// <summary>
-        /// Returns all the resources of a particular type belonging to a resource
-        /// group
+        /// Returns all the resources of a particular type belonging to a resource group
         /// </summary>
         /// <param name='resourceGroupName'>
         /// The name of the resource group. The name is case insensitive.
@@ -1563,8 +1553,7 @@ namespace Microsoft.Azure.Management.CognitiveServices
         /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='commitmentPlanName'>
-        /// The name of the commitmentPlan associated with the Cognitive Services
-        /// Account
+        /// The name of the commitmentPlan associated with the Cognitive Services Account
         /// </param>
         /// <param name='customHeaders'>
         /// Headers that will be added to request.
@@ -1794,12 +1783,10 @@ namespace Microsoft.Azure.Management.CognitiveServices
         /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='commitmentPlanName'>
-        /// The name of the commitmentPlan associated with the Cognitive Services
-        /// Account
+        /// The name of the commitmentPlan associated with the Cognitive Services Account
         /// </param>
         /// <param name='commitmentPlanAssociationName'>
-        /// The name of the commitment plan association with the Cognitive Services
-        /// Account
+        /// The name of the commitment plan association with the Cognitive Services Account
         /// </param>
         /// <param name='customHeaders'>
         /// Headers that will be added to request.
@@ -2042,12 +2029,10 @@ namespace Microsoft.Azure.Management.CognitiveServices
         /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='commitmentPlanName'>
-        /// The name of the commitmentPlan associated with the Cognitive Services
-        /// Account
+        /// The name of the commitmentPlan associated with the Cognitive Services Account
         /// </param>
         /// <param name='commitmentPlanAssociationName'>
-        /// The name of the commitment plan association with the Cognitive Services
-        /// Account
+        /// The name of the commitment plan association with the Cognitive Services Account
         /// </param>
         /// <param name='tags'>
         /// Resource tags.
@@ -2075,12 +2060,10 @@ namespace Microsoft.Azure.Management.CognitiveServices
         /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='commitmentPlanName'>
-        /// The name of the commitmentPlan associated with the Cognitive Services
-        /// Account
+        /// The name of the commitmentPlan associated with the Cognitive Services Account
         /// </param>
         /// <param name='commitmentPlanAssociationName'>
-        /// The name of the commitment plan association with the Cognitive Services
-        /// Account
+        /// The name of the commitment plan association with the Cognitive Services Account
         /// </param>
         /// <param name='customHeaders'>
         /// Headers that will be added to request.
@@ -2096,8 +2079,7 @@ namespace Microsoft.Azure.Management.CognitiveServices
         }
 
         /// <summary>
-        /// Deletes the specified commitmentPlan associated with the Cognitive Services
-        /// account.
+        /// Deletes the specified commitmentPlan associated with the Cognitive Services account.
         /// </summary>
         /// <param name='resourceGroupName'>
         /// The name of the resource group. The name is case insensitive.
@@ -2106,8 +2088,7 @@ namespace Microsoft.Azure.Management.CognitiveServices
         /// The name of Cognitive Services account.
         /// </param>
         /// <param name='commitmentPlanName'>
-        /// The name of the commitmentPlan associated with the Cognitive Services
-        /// Account
+        /// The name of the commitmentPlan associated with the Cognitive Services Account
         /// </param>
         /// <param name='customHeaders'>
         /// Headers that will be added to request.
@@ -2331,8 +2312,7 @@ namespace Microsoft.Azure.Management.CognitiveServices
         /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='commitmentPlanName'>
-        /// The name of the commitmentPlan associated with the Cognitive Services
-        /// Account
+        /// The name of the commitmentPlan associated with the Cognitive Services Account
         /// </param>
         /// <param name='commitmentPlan'>
         /// The parameters to provide for the created commitment plan.
@@ -2598,8 +2578,7 @@ namespace Microsoft.Azure.Management.CognitiveServices
         /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='commitmentPlanName'>
-        /// The name of the commitmentPlan associated with the Cognitive Services
-        /// Account
+        /// The name of the commitmentPlan associated with the Cognitive Services Account
         /// </param>
         /// <param name='tags'>
         /// Resource tags.
@@ -2855,14 +2834,13 @@ namespace Microsoft.Azure.Management.CognitiveServices
 
         }
         /// <summary>
-        /// Deletes a Cognitive Services commitment plan from the resource group.
+        /// Deletes a Cognitive Services commitment plan from the resource group. 
         /// </summary>
         /// <param name='resourceGroupName'>
         /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='commitmentPlanName'>
-        /// The name of the commitmentPlan associated with the Cognitive Services
-        /// Account
+        /// The name of the commitmentPlan associated with the Cognitive Services Account
         /// </param>
         /// <param name='customHeaders'>
         /// Headers that will be added to request.
@@ -3084,12 +3062,10 @@ namespace Microsoft.Azure.Management.CognitiveServices
         /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='commitmentPlanName'>
-        /// The name of the commitmentPlan associated with the Cognitive Services
-        /// Account
+        /// The name of the commitmentPlan associated with the Cognitive Services Account
         /// </param>
         /// <param name='commitmentPlanAssociationName'>
-        /// The name of the commitment plan association with the Cognitive Services
-        /// Account
+        /// The name of the commitment plan association with the Cognitive Services Account
         /// </param>
         /// <param name='tags'>
         /// Resource tags.
@@ -3369,12 +3345,10 @@ namespace Microsoft.Azure.Management.CognitiveServices
         /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='commitmentPlanName'>
-        /// The name of the commitmentPlan associated with the Cognitive Services
-        /// Account
+        /// The name of the commitmentPlan associated with the Cognitive Services Account
         /// </param>
         /// <param name='commitmentPlanAssociationName'>
-        /// The name of the commitment plan association with the Cognitive Services
-        /// Account
+        /// The name of the commitment plan association with the Cognitive Services Account
         /// </param>
         /// <param name='customHeaders'>
         /// Headers that will be added to request.
@@ -3780,8 +3754,7 @@ namespace Microsoft.Azure.Management.CognitiveServices
 
         }
         /// <summary>
-        /// Returns all the resources of a particular type belonging to a resource
-        /// group
+        /// Returns all the resources of a particular type belonging to a resource group
         /// </summary>
         /// <param name='nextPageLink'>
         /// The NextLink from the previous successful call to List operation.
