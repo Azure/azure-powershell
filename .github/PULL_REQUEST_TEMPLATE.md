@@ -11,6 +11,7 @@
   - [ ] [Public preview](../blob/main/CONTRIBUTING.md#target-release-types)
   - [ ] [Private preview](../blob/main/CONTRIBUTING.md#target-release-types)
   - [ ] [Engineering build](../blob/main/CONTRIBUTING.md#target-release-types)
+  - [ ] N/A
 
 - [ ] Check this box to confirm: **I have read the [_Submitting Changes_](../blob/main/CONTRIBUTING.md#submitting-changes) section of [`CONTRIBUTING.md`](../blob/main/CONTRIBUTING.md) and reviewed the following information:**
 
