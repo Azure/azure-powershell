@@ -50,12 +50,6 @@ Get Cognitive Services Commitment Plan Association
 ### [Get-AzCognitiveServicesCommitmentTier](Get-AzCognitiveServicesCommitmentTier.md)
 Get CommitmentTier of Cognitive Services
 
-### [Get-AzCognitiveServicesModel](Get-AzCognitiveServicesModel.md)
-Get Models of Cognitive Services
-
-### [Get-AzCognitiveServicesUsage](Get-AzCognitiveServicesUsage.md)
-Get Usage of Cognitive Services
-
 ### [New-AzCognitiveServicesAccount](New-AzCognitiveServicesAccount.md)
 Creates a Cognitive Services account.
 

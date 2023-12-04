@@ -42,18 +42,14 @@ namespace Microsoft.Azure.Management.CognitiveServices.Models
         /// <param name="etag">Resource Etag.
         /// </param>
 
-        /// <param name="tags">Resource tags.
-        /// </param>
-
         /// <param name="accountId">The Azure resource id of the account.
         /// </param>
-        public CommitmentPlanAccountAssociation(string id = default(string), string name = default(string), string type = default(string), SystemData systemData = default(SystemData), string etag = default(string), System.Collections.Generic.IDictionary<string, string> tags = default(System.Collections.Generic.IDictionary<string, string>), string accountId = default(string))
+        public CommitmentPlanAccountAssociation(string id = default(string), string name = default(string), string type = default(string), SystemData systemData = default(SystemData), string etag = default(string), string accountId = default(string))
 
         : base(id, name, type)
         {
             this.SystemData = systemData;
             this.Etag = etag;
-            this.Tags = tags;
             this.AccountId = accountId;
             CustomInit();
         }
@@ -75,12 +71,6 @@ namespace Microsoft.Azure.Management.CognitiveServices.Models
         /// </summary>
         [Newtonsoft.Json.JsonProperty(PropertyName = "etag")]
         public string Etag {get; private set; }
-
-        /// <summary>
-        /// Gets or sets resource tags.
-        /// </summary>
-        [Newtonsoft.Json.JsonProperty(PropertyName = "tags")]
-        public System.Collections.Generic.IDictionary<string, string> Tags {get; set; }
 
         /// <summary>
         /// Gets or sets the Azure resource id of the account.
