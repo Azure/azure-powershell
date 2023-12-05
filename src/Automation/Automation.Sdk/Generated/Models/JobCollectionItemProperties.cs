@@ -34,9 +34,9 @@ namespace Microsoft.Azure.Management.Automation.Models
         /// </param>
 
         /// <param name="status">The status of the job.
-        /// Possible values include: 'New', 'Activating', 'Running', 'Completed',
-        /// 'Failed', 'Stopped', 'Blocked', 'Suspended', 'Disconnected', 'Suspending',
-        /// 'Stopping', 'Resuming', 'Removing'</param>
+        /// Possible values include: &#39;New&#39;, &#39;Activating&#39;, &#39;Running&#39;, &#39;Completed&#39;,
+        /// &#39;Failed&#39;, &#39;Stopped&#39;, &#39;Blocked&#39;, &#39;Suspended&#39;, &#39;Disconnected&#39;, &#39;Suspending&#39;,
+        /// &#39;Stopping&#39;, &#39;Resuming&#39;, &#39;Removing&#39;</param>
 
         /// <param name="startTime">The start time of the job.
         /// </param>

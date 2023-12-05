@@ -1,5 +1,5 @@
 ---
-external help file:
+external help file: Az.DesktopVirtualization-help.xml
 Module Name: Az.DesktopVirtualization
 online version: https://learn.microsoft.com/powershell/module/az.desktopvirtualization/update-azwvdapplication
 schema: 2.0.0
@@ -14,28 +14,28 @@ Update an application.
 
 ### UpdateExpanded (Default)
 ```
-Update-AzWvdApplication -GroupName <String> -Name <String> -ResourceGroupName <String> [-Description <String>]
- [-FriendlyName <String>] [-ShowInPortal] [-SubscriptionId <String>]
+Update-AzWvdApplication -GroupName <String> -Name <String> -ResourceGroupName <String>
+ [-SubscriptionId <String>] [-Description <String>] [-FriendlyName <String>] [-ShowInPortal]
  [-ApplicationType <RemoteApplicationType>] [-CommandLineArgument <String>]
  [-CommandLineSetting <CommandLineSetting>] [-FilePath <String>] [-IconIndex <Int32>] [-IconPath <String>]
  [-MsixPackageApplicationId <String>] [-MsixPackageFamilyName <String>] [-Tag <Hashtable>]
- [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
+ [-DefaultProfile <PSObject>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### ResetIcon
 ```
-Update-AzWvdApplication -GroupName <String> -Name <String> -ResourceGroupName <String> [-Description <String>]
- [-FriendlyName <String>] [-SetToDefaultIcon] [-ShowInPortal] [-SubscriptionId <String>]
- [-DefaultProfile <PSObject>] [<CommonParameters>]
+Update-AzWvdApplication -GroupName <String> -Name <String> -ResourceGroupName <String>
+ [-SubscriptionId <String>] [-Description <String>] [-FriendlyName <String>] [-ShowInPortal]
+ [-SetToDefaultIcon] [-DefaultProfile <PSObject>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### UpdateViaIdentityExpanded
 ```
-Update-AzWvdApplication -InputObject <IDesktopVirtualizationIdentity> [-Description <String>]
- [-FriendlyName <String>] [-ShowInPortal] [-ApplicationType <RemoteApplicationType>]
+Update-AzWvdApplication [-Description <String>] [-FriendlyName <String>] [-ShowInPortal]
+ -InputObject <IDesktopVirtualizationIdentity> [-ApplicationType <RemoteApplicationType>]
  [-CommandLineArgument <String>] [-CommandLineSetting <CommandLineSetting>] [-FilePath <String>]
  [-IconIndex <Int32>] [-IconPath <String>] [-MsixPackageApplicationId <String>]
- [-MsixPackageFamilyName <String>] [-Tag <Hashtable>] [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf]
+ [-MsixPackageFamilyName <String>] [-Tag <Hashtable>] [-DefaultProfile <PSObject>] [-WhatIf] [-Confirm]
  [<CommonParameters>]
 ```
 
@@ -179,7 +179,7 @@ The name of the application group
 
 ```yaml
 Type: System.String
-Parameter Sets: ResetIcon, UpdateExpanded
+Parameter Sets: UpdateExpanded, ResetIcon
 Aliases: ApplicationGroupName
 
 Required: True
@@ -270,7 +270,7 @@ The name of the application within the specified application group
 
 ```yaml
 Type: System.String
-Parameter Sets: ResetIcon, UpdateExpanded
+Parameter Sets: UpdateExpanded, ResetIcon
 Aliases: ApplicationName
 
 Required: True
@@ -286,7 +286,7 @@ The name is case insensitive.
 
 ```yaml
 Type: System.String
-Parameter Sets: ResetIcon, UpdateExpanded
+Parameter Sets: UpdateExpanded, ResetIcon
 Aliases:
 
 Required: True
@@ -297,7 +297,6 @@ Accept wildcard characters: False
 ```
 
 ### -SetToDefaultIcon
-
 
 ```yaml
 Type: System.Management.Automation.SwitchParameter
@@ -331,7 +330,7 @@ The ID of the target subscription.
 
 ```yaml
 Type: System.String
-Parameter Sets: ResetIcon, UpdateExpanded
+Parameter Sets: UpdateExpanded, ResetIcon
 Aliases:
 
 Required: False
@@ -401,4 +400,3 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ## NOTES
 
 ## RELATED LINKS
-

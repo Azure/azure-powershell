@@ -1,5 +1,5 @@
 ---
-external help file:
+external help file: Az.DesktopVirtualization-help.xml
 Module Name: Az.DesktopVirtualization
 online version: https://learn.microsoft.com/powershell/module/az.desktopvirtualization/register-azwvdapplicationgroup
 schema: 2.0.0
@@ -13,8 +13,8 @@ Register a Windows virtual desktop application group.
 ## SYNTAX
 
 ```
-Register-AzWvdApplicationGroup -ApplicationGroupPath <String> -ResourceGroupName <String>
- -WorkspaceName <String> [-SubscriptionId <String>] [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf]
+Register-AzWvdApplicationGroup -ResourceGroupName <String> -WorkspaceName <String>
+ -ApplicationGroupPath <String> [-SubscriptionId <String>] [-DefaultProfile <PSObject>] [-WhatIf] [-Confirm]
  [<CommonParameters>]
 ```
 
@@ -93,7 +93,7 @@ Type: System.String
 Parameter Sets: (All)
 Aliases:
 
-Required: True
+Required: False
 Position: Named
 Default value: (Get-AzContext).Subscription.Id
 Accept pipeline input: False
@@ -158,4 +158,3 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ## NOTES
 
 ## RELATED LINKS
-

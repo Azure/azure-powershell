@@ -1,5 +1,5 @@
 ---
-external help file:
+external help file: Az.ManagedServiceIdentity-help.xml
 Module Name: Az.ManagedServiceIdentity
 online version: https://learn.microsoft.com/powershell/module/az.managedserviceidentity/update-azuserassignedidentity
 schema: 2.0.0
@@ -15,14 +15,13 @@ Update an identity in the specified subscription and resource group.
 ### UpdateExpanded (Default)
 ```
 Update-AzUserAssignedIdentity -Name <String> -ResourceGroupName <String> [-SubscriptionId <String>]
- [-Location <String>] [-Tag <Hashtable>] [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf]
- [<CommonParameters>]
+ [-Location <String>] [-Tag <Hashtable>] [-DefaultProfile <PSObject>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### UpdateViaIdentityExpanded
 ```
 Update-AzUserAssignedIdentity -InputObject <IManagedServiceIdentity> [-Location <String>] [-Tag <Hashtable>]
- [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
+ [-DefaultProfile <PSObject>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -224,4 +223,3 @@ To create the parameters described below, construct a hash table containing the 
   - `[SubscriptionId <String>]`: The Id of the Subscription to which the identity belongs.
 
 ## RELATED LINKS
-

@@ -30,7 +30,7 @@ Describe 'Invoke-AzSynapseDetachKustoPoolFollowerDatabase' {
 
         New-AzSynapseKustoPoolDatabase -ResourceGroupName $resourceGroupName -WorkspaceName $workspaceName -KustoPoolName $kustoPoolName -Name $databaseName -Kind ReadWrite -Location $location
         New-AzSynapseKustoPoolAttachedDatabaseConfiguration -ResourceGroupName $resourceGroupName -WorkspaceName $workspaceName -KustoPoolName $followerKustoPoolName -Name $attachedDatabaseConfigurationName -Location $location -KustoPoolResourceId $kustoPoolResourceId -DatabaseName $databaseName -DefaultPrincipalsModificationKind $defaultPrincipalsModificationKind
-        Start-Sleep -Seconds 180
+        Start-TestSleep -Seconds 180
         { Invoke-AzSynapseDetachKustoPoolFollowerDatabase -ResourceGroupName $resourceGroupName -WorkspaceName $workspaceName -KustoPoolName $kustoPoolName -AttachedDatabaseConfigurationName $attachedDatabaseConfigurationName -KustoPoolResourceId $followerClusterResourceId } | Should -Not -Throw
         Remove-AzSynapseKustoPoolDatabase -ResourceGroupName $resourceGroupName -WorkspaceName $workspaceName -KustoPoolName $kustoPoolName -Name $databaseName
     }

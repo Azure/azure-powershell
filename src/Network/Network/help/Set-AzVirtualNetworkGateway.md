@@ -20,14 +20,14 @@ Set-AzVirtualNetworkGateway -VirtualNetworkGateway <PSVirtualNetworkGateway> [-G
  [-VpnClientProtocol <String[]>] [-VpnAuthenticationType <String[]>]
  [-VpnClientRootCertificates <PSVpnClientRootCertificate[]>]
  [-VpnClientRevokedCertificates <PSVpnClientRevokedCertificate[]>] [-VpnClientIpsecPolicy <PSIpsecPolicy[]>]
- [-Asn <UInt32>] [-PeerWeight <Int32>]
+ [-Asn <UInt32>] [-PeerWeight <Int32>] [-MinScaleUnit <Int32>] [-MaxScaleUnit <Int32>]
  [-IpConfigurationBgpPeeringAddresses <PSIpConfigurationBgpPeeringAddress[]>] [-EnableActiveActiveFeature]
  [-EnablePrivateIpAddress <Boolean>] [-DisableActiveActiveFeature] [-RadiusServerAddress <String>]
  [-RadiusServerSecret <SecureString>] [-RadiusServerList <PSRadiusServer[]>] [-AadTenantUri <String>]
  [-AadAudienceId <String>] [-AadIssuerUri <String>] [-RemoveAadAuthentication] [-CustomRoute <String[]>]
  [-NatRule <PSVirtualNetworkGatewayNatRule[]>] [-BgpRouteTranslationForNat <Boolean>]
  [-VirtualNetworkGatewayPolicyGroup <PSVirtualNetworkGatewayPolicyGroup[]>]
- [-ClientConnectionConfiguration <PSClientConnectionConfiguration[]>] [-AsJob]
+ [-ClientConnectionConfiguration <PSClientConnectionConfiguration[]>] [-AdminState <String>] [-AsJob]
  [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
@@ -457,6 +457,67 @@ The third command shows total existing root certs on VirtualNetworkGateway.
 The forth & fifth commands print root certificates at those corresponding indices for customer to see which ones they want to delete.
 The sixth command removes expired root certificate by using that index e.g. here 1. Repeat same steps to remove multiple expired certificates from variable: $rootCerts
 The seventh command updates VirtualNetworkGateway to set valid root certificates i.e. certificates that exists in variable: $rootCerts
+
+### Example 9: Configure an ExpressRoute virtual network gateway to allow communication over ExpressRoute with other ExpressRoute virtual network gateways in Virtual Wan networks.
+
+```powershell
+# Option 1 - Retrieve the gateway object, modify the property and save the changes.  
+$gateway = Get-AzVirtualNetworkGateway -ResourceGroupName "resourceGroup001" -Name "gateway001"
+$gateway.AllowVirtualWanTraffic = $true
+$gateway = Set-AzVirtualNetworkGateway -VirtualNetworkGateway $gateway
+
+# Option 2 - Use the cmdlet switch
+$gateway = Get-AzVirtualNetworkGateway -ResourceGroupName "resourceGroup001" -Name "gateway001"
+Set-AzVirtualNetworkGateway -VirtualNetworkGateway $gateway -AllowVirtualWanTraffic $true
+```
+In both cases, the first command retrieves the gateway. You may then either modify the property directly on the object and persist it, or you may use the switch on the Set-AzVirtualNetworkGateway cmdlet.
+
+
+### Example 10: Configure an ExpressRoute virtual network gateway to block communication over ExpressRoute with other ExpressRoute virtual network gateways in Virtual Wan networks.
+
+```powershell
+# Option 1 - Retrieve the gateway object, modify the property and save the changes.  
+$gateway = Get-AzVirtualNetworkGateway -ResourceGroupName "resourceGroup001" -Name "gateway001"
+$gateway.AllowVirtualWanTraffic = $false
+$gateway = Set-AzVirtualNetworkGateway -VirtualNetworkGateway $gateway
+
+# Option 2 - Use the cmdlet switch
+$gateway = Get-AzVirtualNetworkGateway -ResourceGroupName "resourceGroup001" -Name "gateway001"
+Set-AzVirtualNetworkGateway -VirtualNetworkGateway $gateway -AllowVirtualWanTraffic $false
+```
+In both cases, the first command retrieves the gateway. You may then either modify the property directly on the object and persist it, or you may use the switch on the Set-AzVirtualNetworkGateway cmdlet.
+
+
+### Example 11: Configure an ExpressRoute virtual network gateway to allow communication over ExpressRoute with other ExpressRoute virtual network gateways in other VNets.
+
+```powershell
+# Option 1 - Retrieve the gateway object, modify the property and save the changes.  
+$gateway = Get-AzVirtualNetworkGateway -ResourceGroupName "resourceGroup001" -Name "gateway001"
+$gateway.AllowRemoteVnetTraffic = $true
+$gateway = Set-AzVirtualNetworkGateway -VirtualNetworkGateway $gateway
+
+# Option 2 - Use the cmdlet switch
+$gateway = Get-AzVirtualNetworkGateway -ResourceGroupName "resourceGroup001" -Name "gateway001"
+Set-AzVirtualNetworkGateway -VirtualNetworkGateway $gateway -AllowRemoteVnetTraffic $true
+```
+In both cases, the first command retrieves the gateway. You may then either modify the property directly on the object and persist it, or you may use the switch on the Set-AzVirtualNetworkGateway cmdlet.
+
+
+### Example 12: Configure an ExpressRoute virtual network gateway to block communication over ExpressRoute with other virtual network gateways in other VNets.
+
+```powershell
+# Option 1 - Retrieve the gateway object, modify the property and save the changes.  
+$gateway = Get-AzVirtualNetworkGateway -ResourceGroupName "resourceGroup001" -Name "gateway001"
+$gateway.AllowRemoteVnetTraffic = $false
+$gateway = Set-AzVirtualNetworkGateway -VirtualNetworkGateway $gateway
+
+# Option 2 - Use the cmdlet switch
+$gateway = Get-AzVirtualNetworkGateway -ResourceGroupName "resourceGroup001" -Name "gateway001"
+Set-AzVirtualNetworkGateway -VirtualNetworkGateway $gateway -AllowRemoteVnetTraffic $false
+```
+In both cases, the first command retrieves the gateway. You may then either modify the property directly on the object and persist it, or you may use the switch on the Set-AzVirtualNetworkGateway cmdlet.
+
+
 
 ## PARAMETERS
 

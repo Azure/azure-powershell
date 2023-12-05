@@ -19,6 +19,9 @@
 -->
 ## Upcoming Release
 
+## Version 0.1.1
+* Upgraded api version to 2023-02-01 stable.
+
 ## Version 0.1.0
 * First preview release for module Az.Quota
 

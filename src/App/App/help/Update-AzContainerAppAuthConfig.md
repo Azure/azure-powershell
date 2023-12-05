@@ -1,5 +1,5 @@
 ---
-external help file:
+external help file: Az.App-help.xml
 Module Name: Az.App
 online version: https://learn.microsoft.com/powershell/module/az.app/update-azcontainerappauthconfig
 schema: 2.0.0
@@ -15,20 +15,20 @@ Create the AuthConfig for a Container App.
 ### UpdateExpanded (Default)
 ```
 Update-AzContainerAppAuthConfig -ContainerAppName <String> -Name <String> -ResourceGroupName <String>
- [-SubscriptionId <String>] [-CookieExpirationConvention <String>]
- [-CookieExpirationTimeToExpiration <String>] [-ForwardProxyConvention <String>]
- [-ForwardProxyCustomHostHeaderName <String>] [-ForwardProxyCustomProtoHeaderName <String>]
- [-GlobalValidationExcludedPath <String[]>] [-GlobalValidationRedirectToProvider <String>]
- [-GlobalValidationUnauthenticatedClientAction <String>] [-HttpSettingRequireHttps]
- [-IdentityProvider <IIdentityProviders>] [-LoginAllowedExternalRedirectUrl <String[]>]
- [-LoginPreserveUrlFragmentsForLogin] [-NonceExpirationInterval <String>] [-NonceValidateNonce]
- [-PlatformEnabled] [-PlatformRuntimeVersion <String>] [-RouteApiPrefix <String>]
- [-RouteLogoutEndpoint <String>] [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
+ [-SubscriptionId <String>] [-CookieExpirationConvention <String>] [-CookieExpirationTimeToExpiration <String>]
+ [-ForwardProxyConvention <String>] [-ForwardProxyCustomHostHeaderName <String>]
+ [-ForwardProxyCustomProtoHeaderName <String>] [-GlobalValidationExcludedPath <String[]>]
+ [-GlobalValidationRedirectToProvider <String>] [-GlobalValidationUnauthenticatedClientAction <String>]
+ [-HttpSettingRequireHttps] [-IdentityProvider <IIdentityProviders>]
+ [-LoginAllowedExternalRedirectUrl <String[]>] [-LoginPreserveUrlFragmentsForLogin]
+ [-NonceExpirationInterval <String>] [-NonceValidateNonce] [-PlatformEnabled]
+ [-PlatformRuntimeVersion <String>] [-RouteApiPrefix <String>] [-RouteLogoutEndpoint <String>]
+ [-DefaultProfile <PSObject>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### UpdateViaIdentityContainerAppExpanded
 ```
-Update-AzContainerAppAuthConfig -ContainerAppInputObject <IAppIdentity> -Name <String>
+Update-AzContainerAppAuthConfig -Name <String> -ContainerAppInputObject <IAppIdentity>
  [-CookieExpirationConvention <String>] [-CookieExpirationTimeToExpiration <String>]
  [-ForwardProxyConvention <String>] [-ForwardProxyCustomHostHeaderName <String>]
  [-ForwardProxyCustomProtoHeaderName <String>] [-GlobalValidationExcludedPath <String[]>]
@@ -37,7 +37,7 @@ Update-AzContainerAppAuthConfig -ContainerAppInputObject <IAppIdentity> -Name <S
  [-LoginAllowedExternalRedirectUrl <String[]>] [-LoginPreserveUrlFragmentsForLogin]
  [-NonceExpirationInterval <String>] [-NonceValidateNonce] [-PlatformEnabled]
  [-PlatformRuntimeVersion <String>] [-RouteApiPrefix <String>] [-RouteLogoutEndpoint <String>]
- [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
+ [-DefaultProfile <PSObject>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### UpdateViaIdentityExpanded
@@ -50,7 +50,7 @@ Update-AzContainerAppAuthConfig -InputObject <IAppIdentity> [-CookieExpirationCo
  [-IdentityProvider <IIdentityProviders>] [-LoginAllowedExternalRedirectUrl <String[]>]
  [-LoginPreserveUrlFragmentsForLogin] [-NonceExpirationInterval <String>] [-NonceValidateNonce]
  [-PlatformEnabled] [-PlatformRuntimeVersion <String>] [-RouteApiPrefix <String>]
- [-RouteLogoutEndpoint <String>] [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
+ [-RouteLogoutEndpoint <String>] [-DefaultProfile <PSObject>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -529,4 +529,3 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ## NOTES
 
 ## RELATED LINKS
-

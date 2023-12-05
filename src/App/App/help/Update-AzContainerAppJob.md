@@ -1,5 +1,5 @@
 ---
-external help file:
+external help file: Az.App-help.xml
 Module Name: Az.App
 online version: https://learn.microsoft.com/powershell/module/az.app/update-azcontainerappjob
 schema: 2.0.0
@@ -16,17 +16,30 @@ Patches a Container Apps Job using JSON Merge Patch
 ```
 Update-AzContainerAppJob -Name <String> -ResourceGroupName <String> [-SubscriptionId <String>]
  [-ConfigurationRegistry <IRegistryCredentials[]>] [-ConfigurationReplicaRetryLimit <Int32>]
- [-ConfigurationReplicaTimeout <Int32>] [-ConfigurationSecret <ISecret[]>]
- [-ConfigurationTriggerType <String>] [-EnvironmentId <String>] [-EventStreamEndpoint <String>]
- [-EventTriggerConfigParallelism <Int32>] [-EventTriggerConfigReplicaCompletionCount <Int32>]
- [-IdentityType <String>] [-IdentityUserAssignedIdentity <Hashtable>]
- [-ManualTriggerConfigParallelism <Int32>] [-ManualTriggerConfigReplicaCompletionCount <Int32>]
- [-OutboundIPAddress <String[]>] [-ScaleMaxExecution <Int32>] [-ScaleMinExecution <Int32>]
- [-ScalePollingInterval <Int32>] [-ScaleRule <IJobScaleRule[]>]
- [-ScheduleTriggerConfigCronExpression <String>] [-ScheduleTriggerConfigParallelism <Int32>]
- [-ScheduleTriggerConfigReplicaCompletionCount <Int32>] [-Tag <Hashtable>] [-TemplateContainer <IContainer[]>]
- [-TemplateInitContainer <IInitContainer[]>] [-TemplateVolume <IVolume[]>] [-DefaultProfile <PSObject>]
- [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
+ [-ConfigurationReplicaTimeout <Int32>] [-ConfigurationSecret <ISecret[]>] [-ConfigurationTriggerType <String>]
+ [-EnvironmentId <String>] [-EventStreamEndpoint <String>] [-EventTriggerConfigParallelism <Int32>]
+ [-EventTriggerConfigReplicaCompletionCount <Int32>] [-IdentityType <String>]
+ [-IdentityUserAssignedIdentity <Hashtable>] [-ManualTriggerConfigParallelism <Int32>]
+ [-ManualTriggerConfigReplicaCompletionCount <Int32>] [-OutboundIPAddress <String[]>]
+ [-ScaleMaxExecution <Int32>] [-ScaleMinExecution <Int32>] [-ScalePollingInterval <Int32>]
+ [-ScaleRule <IJobScaleRule[]>] [-ScheduleTriggerConfigCronExpression <String>]
+ [-ScheduleTriggerConfigParallelism <Int32>] [-ScheduleTriggerConfigReplicaCompletionCount <Int32>]
+ [-Tag <Hashtable>] [-TemplateContainer <IContainer[]>] [-TemplateInitContainer <IInitContainer[]>]
+ [-TemplateVolume <IVolume[]>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-WhatIf] [-Confirm]
+ [<CommonParameters>]
+```
+
+### UpdateViaJsonString
+```
+Update-AzContainerAppJob -Name <String> -ResourceGroupName <String> [-SubscriptionId <String>]
+ -JsonString <String> [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-WhatIf] [-Confirm] [<CommonParameters>]
+```
+
+### UpdateViaJsonFilePath
+```
+Update-AzContainerAppJob -Name <String> -ResourceGroupName <String> [-SubscriptionId <String>]
+ -JsonFilePath <String> [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-WhatIf] [-Confirm]
+ [<CommonParameters>]
 ```
 
 ### UpdateViaIdentityExpanded
@@ -42,21 +55,7 @@ Update-AzContainerAppJob -InputObject <IAppIdentity> [-ConfigurationRegistry <IR
  [-ScaleRule <IJobScaleRule[]>] [-ScheduleTriggerConfigCronExpression <String>]
  [-ScheduleTriggerConfigParallelism <Int32>] [-ScheduleTriggerConfigReplicaCompletionCount <Int32>]
  [-Tag <Hashtable>] [-TemplateContainer <IContainer[]>] [-TemplateInitContainer <IInitContainer[]>]
- [-TemplateVolume <IVolume[]>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf]
- [<CommonParameters>]
-```
-
-### UpdateViaJsonFilePath
-```
-Update-AzContainerAppJob -Name <String> -ResourceGroupName <String> -JsonFilePath <String>
- [-SubscriptionId <String>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf]
- [<CommonParameters>]
-```
-
-### UpdateViaJsonString
-```
-Update-AzContainerAppJob -Name <String> -ResourceGroupName <String> -JsonString <String>
- [-SubscriptionId <String>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf]
+ [-TemplateVolume <IVolume[]>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-WhatIf] [-Confirm]
  [<CommonParameters>]
 ```
 
@@ -366,7 +365,7 @@ Job Name
 
 ```yaml
 Type: System.String
-Parameter Sets: UpdateExpanded, UpdateViaJsonFilePath, UpdateViaJsonString
+Parameter Sets: UpdateExpanded, UpdateViaJsonString, UpdateViaJsonFilePath
 Aliases: JobName
 
 Required: True
@@ -412,7 +411,7 @@ The name is case insensitive.
 
 ```yaml
 Type: System.String
-Parameter Sets: UpdateExpanded, UpdateViaJsonFilePath, UpdateViaJsonString
+Parameter Sets: UpdateExpanded, UpdateViaJsonString, UpdateViaJsonFilePath
 Aliases:
 
 Required: True
@@ -534,7 +533,7 @@ The ID of the target subscription.
 
 ```yaml
 Type: System.String
-Parameter Sets: UpdateExpanded, UpdateViaJsonFilePath, UpdateViaJsonString
+Parameter Sets: UpdateExpanded, UpdateViaJsonString, UpdateViaJsonFilePath
 Aliases:
 
 Required: False
@@ -652,4 +651,3 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ## NOTES
 
 ## RELATED LINKS
-

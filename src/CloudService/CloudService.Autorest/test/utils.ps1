@@ -5,6 +5,30 @@ function RandomString([bool]$allChars, [int32]$len) {
         return -join ((48..57) + (97..122) | Get-Random -Count $len | % {[char]$_})
     }
 }
+function Start-TestSleep {
+    [CmdletBinding(DefaultParameterSetName = 'SleepBySeconds')]
+    param(
+        [parameter(Mandatory = $true, Position = 0, ParameterSetName = 'SleepBySeconds')]
+        [ValidateRange(0.0, 2147483.0)]
+        [double] $Seconds,
+
+        [parameter(Mandatory = $true, ParameterSetName = 'SleepByMilliseconds')]
+        [ValidateRange('NonNegative')]
+        [Alias('ms')]
+        [int] $Milliseconds
+    )
+
+    if ($TestMode -ne 'playback') {
+        switch ($PSCmdlet.ParameterSetName) {
+            'SleepBySeconds' {
+                Start-Sleep -Seconds $Seconds
+            }
+            'SleepByMilliseconds' {
+                Start-Sleep -Milliseconds $Milliseconds
+            }
+        }
+    }
+}
 
 function RemoveFile([string]$fileName) {
     if (Test-Path $fileName) {
@@ -64,7 +88,7 @@ function setupEnv() {
     if ($TestMode -eq 'live') {
         $envFile = 'localEnv.json'
     }
-    
+
     $env.ResourceGroupName = "cscmdlettest" + (RandomString $false 8)
     $env.Location = "EastUS2EUAP"
     $env.CloudServiceName = "cscmdlettest" +  (RandomString $false 8)
@@ -73,11 +97,11 @@ function setupEnv() {
     $env.CspkgFile = "test-artifacts\CSCmdletTest.cspkg"
     $env.csdefFile = "test-artifacts\ServiceDefinition.txt"
     $env.RoleInstanceName = "WebRole_IN_0"
-    
+
     $env.RDPOutputFile = Join-Path $PSScriptRoot "test-artifacts\desktopdowntest.rdp"
-    
+
     $cspkgFilePath = Join-Path $PSScriptRoot $env.CspkgFile
-    
+
     # Create ResourceGroup
     Write-Host -ForegroundColor Yellow "Creating ResourceGroup" $env.ResourceGroupName
     New-AzResourceGroup -ResourceGroupName $env.ResourceGroupName -Location $env.Location

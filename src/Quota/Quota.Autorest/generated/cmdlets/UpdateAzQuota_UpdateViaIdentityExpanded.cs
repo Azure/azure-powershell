@@ -6,6 +6,8 @@
 namespace Microsoft.Azure.PowerShell.Cmdlets.Quota.Cmdlets
 {
     using static Microsoft.Azure.PowerShell.Cmdlets.Quota.Runtime.Extensions;
+    using Microsoft.Azure.PowerShell.Cmdlets.Quota.Runtime.PowerShell;
+    using Microsoft.Azure.PowerShell.Cmdlets.Quota.Runtime.Cmdlets;
     using System;
 
     /// <summary>
@@ -19,11 +21,13 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Quota.Cmdlets
     /// [OpenAPI] Update=>PATCH:"/{scope}/providers/Microsoft.Quota/quotas/{resourceName}"
     /// </remarks>
     [global::System.Management.Automation.Cmdlet(global::System.Management.Automation.VerbsData.Update, @"AzQuota_UpdateViaIdentityExpanded", SupportsShouldProcess = true)]
-    [global::System.Management.Automation.OutputType(typeof(Microsoft.Azure.PowerShell.Cmdlets.Quota.Models.Api20210315Preview.ICurrentQuotaLimitBase))]
+    [global::System.Management.Automation.OutputType(typeof(Microsoft.Azure.PowerShell.Cmdlets.Quota.Models.ICurrentQuotaLimitBase))]
     [global::Microsoft.Azure.PowerShell.Cmdlets.Quota.Description(@"Update the quota limit for a specific resource to the specified value:\n1. Use the Usages-GET and Quota-GET operations to determine the remaining quota for the specific resource and to calculate the new quota limit. These steps are detailed in [this example](https://techcommunity.microsoft.com/t5/azure-governance-and-management/using-the-new-quota-rest-api/ba-p/2183670).\n2. Use this PUT operation to update the quota limit. Please check the URI in location header for the detailed status of the request.")]
     [global::Microsoft.Azure.PowerShell.Cmdlets.Quota.Generated]
+    [global::Microsoft.Azure.PowerShell.Cmdlets.Quota.HttpPath(Path = "/{scope}/providers/Microsoft.Quota/quotas/{resourceName}", ApiVersion = "2023-02-01")]
     public partial class UpdateAzQuota_UpdateViaIdentityExpanded : global::System.Management.Automation.PSCmdlet,
-        Microsoft.Azure.PowerShell.Cmdlets.Quota.Runtime.IEventListener
+        Microsoft.Azure.PowerShell.Cmdlets.Quota.Runtime.IEventListener,
+        Microsoft.Azure.PowerShell.Cmdlets.Quota.Runtime.IContext
     {
         /// <summary>A unique id generatd for the this cmdlet when it is instantiated.</summary>
         private string __correlationId = System.Guid.NewGuid().ToString();
@@ -39,6 +43,12 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Quota.Cmdlets
         /// </summary>
         private global::System.Threading.CancellationTokenSource _cancellationTokenSource = new global::System.Threading.CancellationTokenSource();
 
+        /// <summary>Quota limit.</summary>
+        private Microsoft.Azure.PowerShell.Cmdlets.Quota.Models.ICurrentQuotaLimitBase _createQuotaRequestBody = new Microsoft.Azure.PowerShell.Cmdlets.Quota.Models.CurrentQuotaLimitBase();
+
+        /// <summary>A dictionary to carry over additional data for pipeline.</summary>
+        private global::System.Collections.Generic.Dictionary<global::System.String,global::System.Object> _extensibleParameters = new System.Collections.Generic.Dictionary<string, object>();
+
         /// <summary>Additional properties for the specific resource provider.</summary>
         [global::System.Management.Automation.Parameter(Mandatory = false, HelpMessage = "Additional properties for the specific resource provider.")]
         [global::Microsoft.Azure.PowerShell.Cmdlets.Quota.Category(global::Microsoft.Azure.PowerShell.Cmdlets.Quota.ParameterCategory.Body)]
@@ -49,7 +59,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Quota.Cmdlets
         SerializedName = @"properties",
         PossibleTypes = new [] { typeof(Microsoft.Azure.PowerShell.Cmdlets.Quota.Models.IAny) })]
         [global::Microsoft.Azure.PowerShell.Cmdlets.Quota.DoNotExport]
-        public Microsoft.Azure.PowerShell.Cmdlets.Quota.Models.IAny AnyProperty { get => CreateQuotaRequestBody.AnyProperty ?? null /* object */; set => CreateQuotaRequestBody.AnyProperty = value; }
+        public Microsoft.Azure.PowerShell.Cmdlets.Quota.Models.IAny AnyProperty { get => _createQuotaRequestBody.AnyProperty ?? null /* object */; set => _createQuotaRequestBody.AnyProperty = value; }
 
         /// <summary>when specified, runs this cmdlet as a PowerShell job</summary>
         [global::System.Management.Automation.Parameter(Mandatory = false, HelpMessage = "Run the command as a job")]
@@ -61,23 +71,24 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Quota.Cmdlets
         [global::Microsoft.Azure.PowerShell.Cmdlets.Quota.Category(global::Microsoft.Azure.PowerShell.Cmdlets.Quota.ParameterCategory.Runtime)]
         public global::System.Management.Automation.SwitchParameter Break { get; set; }
 
+        /// <summary>Accessor for cancellationTokenSource.</summary>
+        public global::System.Threading.CancellationTokenSource CancellationTokenSource { get => _cancellationTokenSource ; set { _cancellationTokenSource = value; } }
+
         /// <summary>The reference to the client API class.</summary>
         public Microsoft.Azure.PowerShell.Cmdlets.Quota.Quota Client => Microsoft.Azure.PowerShell.Cmdlets.Quota.Module.Instance.ClientAPI;
 
-        /// <summary>Backing field for <see cref="CreateQuotaRequestBody" /> property.</summary>
-        private Microsoft.Azure.PowerShell.Cmdlets.Quota.Models.Api20210315Preview.ICurrentQuotaLimitBase _createQuotaRequestBody= new Microsoft.Azure.PowerShell.Cmdlets.Quota.Models.Api20210315Preview.CurrentQuotaLimitBase();
-
-        /// <summary>Quota limit.</summary>
-        private Microsoft.Azure.PowerShell.Cmdlets.Quota.Models.Api20210315Preview.ICurrentQuotaLimitBase CreateQuotaRequestBody { get => this._createQuotaRequestBody; set => this._createQuotaRequestBody = value; }
-
         /// <summary>
-        /// The credentials, account, tenant, and subscription used for communication with Azure
+        /// The DefaultProfile parameter is not functional. Use the SubscriptionId parameter when available if executing the cmdlet
+        /// against a different subscription
         /// </summary>
-        [global::System.Management.Automation.Parameter(Mandatory = false, HelpMessage = "The credentials, account, tenant, and subscription used for communication with Azure.")]
+        [global::System.Management.Automation.Parameter(Mandatory = false, HelpMessage = "The DefaultProfile parameter is not functional. Use the SubscriptionId parameter when available if executing the cmdlet against a different subscription.")]
         [global::System.Management.Automation.ValidateNotNull]
         [global::System.Management.Automation.Alias("AzureRMContext", "AzureCredential")]
         [global::Microsoft.Azure.PowerShell.Cmdlets.Quota.Category(global::Microsoft.Azure.PowerShell.Cmdlets.Quota.ParameterCategory.Azure)]
         public global::System.Management.Automation.PSObject DefaultProfile { get; set; }
+
+        /// <summary>Accessor for extensibleParameters.</summary>
+        public global::System.Collections.Generic.IDictionary<global::System.String,global::System.Object> ExtensibleParameters { get => _extensibleParameters ; }
 
         /// <summary>SendAsync Pipeline Steps to be appended to the front of the pipeline</summary>
         [global::System.Management.Automation.Parameter(Mandatory = false, DontShow = true, HelpMessage = "SendAsync Pipeline Steps to be appended to the front of the pipeline")]
@@ -110,15 +121,15 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Quota.Cmdlets
         ReadOnly = false,
         Description = @"Resource quota limit properties.",
         SerializedName = @"limit",
-        PossibleTypes = new [] { typeof(Microsoft.Azure.PowerShell.Cmdlets.Quota.Models.Api20210315Preview.ILimitJsonObject) })]
-        public Microsoft.Azure.PowerShell.Cmdlets.Quota.Models.Api20210315Preview.ILimitJsonObject Limit { get => CreateQuotaRequestBody.Limit ?? null /* object */; set => CreateQuotaRequestBody.Limit = value; }
+        PossibleTypes = new [] { typeof(Microsoft.Azure.PowerShell.Cmdlets.Quota.Models.ILimitJsonObject) })]
+        public Microsoft.Azure.PowerShell.Cmdlets.Quota.Models.ILimitJsonObject Limit { get => _createQuotaRequestBody.Limit ?? null /* object */; set => _createQuotaRequestBody.Limit = value; }
 
         /// <summary>
-        /// <see cref="IEventListener" /> cancellation delegate. Stops the cmdlet when called.
+        /// <see cref="Microsoft.Azure.PowerShell.Cmdlets.Quota.Runtime.IEventListener" /> cancellation delegate. Stops the cmdlet when called.
         /// </summary>
         global::System.Action Microsoft.Azure.PowerShell.Cmdlets.Quota.Runtime.IEventListener.Cancel => _cancellationTokenSource.Cancel;
 
-        /// <summary><see cref="IEventListener" /> cancellation token.</summary>
+        /// <summary><see cref="Microsoft.Azure.PowerShell.Cmdlets.Quota.Runtime.IEventListener" /> cancellation token.</summary>
         global::System.Threading.CancellationToken Microsoft.Azure.PowerShell.Cmdlets.Quota.Runtime.IEventListener.Token => _cancellationTokenSource.Token;
 
         /// <summary>Resource name.</summary>
@@ -130,7 +141,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Quota.Cmdlets
         Description = @"Resource name.",
         SerializedName = @"value",
         PossibleTypes = new [] { typeof(string) })]
-        public string Name { get => CreateQuotaRequestBody.NameValue ?? null; set => CreateQuotaRequestBody.NameValue = value; }
+        public string Name { get => _createQuotaRequestBody.NameValue ?? null; set => _createQuotaRequestBody.NameValue = value; }
 
         /// <summary>
         /// when specified, will make the remote call, and return an AsyncOperationResponse, letting the remote operation continue
@@ -143,7 +154,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Quota.Cmdlets
         /// <summary>
         /// The instance of the <see cref="Microsoft.Azure.PowerShell.Cmdlets.Quota.Runtime.HttpPipeline" /> that the remote call will use.
         /// </summary>
-        private Microsoft.Azure.PowerShell.Cmdlets.Quota.Runtime.HttpPipeline Pipeline { get; set; }
+        public Microsoft.Azure.PowerShell.Cmdlets.Quota.Runtime.HttpPipeline Pipeline { get; set; }
 
         /// <summary>The URI for the proxy server to use</summary>
         [global::System.Management.Automation.Parameter(Mandatory = false, DontShow = true, HelpMessage = "The URI for the proxy server to use")]
@@ -161,46 +172,51 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Quota.Cmdlets
         [global::Microsoft.Azure.PowerShell.Cmdlets.Quota.Category(global::Microsoft.Azure.PowerShell.Cmdlets.Quota.ParameterCategory.Runtime)]
         public global::System.Management.Automation.SwitchParameter ProxyUseDefaultCredentials { get; set; }
 
-        /// <summary>Resource type name.</summary>
-        [global::System.Management.Automation.Parameter(Mandatory = false, HelpMessage = "Resource type name.")]
+        /// <summary>The name of the resource type. Optional field.</summary>
+        [global::System.Management.Automation.Parameter(Mandatory = false, HelpMessage = "The name of the resource type. Optional field.")]
         [global::Microsoft.Azure.PowerShell.Cmdlets.Quota.Category(global::Microsoft.Azure.PowerShell.Cmdlets.Quota.ParameterCategory.Body)]
         [Microsoft.Azure.PowerShell.Cmdlets.Quota.Runtime.Info(
         Required = false,
         ReadOnly = false,
-        Description = @"Resource type name.",
+        Description = @"The name of the resource type. Optional field.",
         SerializedName = @"resourceType",
         PossibleTypes = new [] { typeof(string) })]
-        public string ResourceType { get => CreateQuotaRequestBody.ResourceType ?? null; set => CreateQuotaRequestBody.ResourceType = value; }
+        public string ResourceType { get => _createQuotaRequestBody.ResourceType ?? null; set => _createQuotaRequestBody.ResourceType = value; }
 
         /// <summary>
         /// <c>overrideOnDefault</c> will be called before the regular onDefault has been processed, allowing customization of what
         /// happens on that response. Implement this method in a partial class to enable this behavior
         /// </summary>
         /// <param name="responseMessage">the raw response message as an global::System.Net.Http.HttpResponseMessage.</param>
-        /// <param name="response">the body result as a <see cref="Microsoft.Azure.PowerShell.Cmdlets.Quota.Models.Api20210315Preview.IExceptionResponse"
-        /// /> from the remote call</param>
+        /// <param name="response">the body result as a <see cref="Microsoft.Azure.PowerShell.Cmdlets.Quota.Models.IExceptionResponse">Microsoft.Azure.PowerShell.Cmdlets.Quota.Models.IExceptionResponse</see>
+        /// from the remote call</param>
         /// <param name="returnNow">/// Determines if the rest of the onDefault method should be processed, or if the method should
         /// return immediately (set to true to skip further processing )</param>
 
-        partial void overrideOnDefault(global::System.Net.Http.HttpResponseMessage responseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Quota.Models.Api20210315Preview.IExceptionResponse> response, ref global::System.Threading.Tasks.Task<bool> returnNow);
+        partial void overrideOnDefault(global::System.Net.Http.HttpResponseMessage responseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Quota.Models.IExceptionResponse> response, ref global::System.Threading.Tasks.Task<bool> returnNow);
 
         /// <summary>
         /// <c>overrideOnOk</c> will be called before the regular onOk has been processed, allowing customization of what happens
         /// on that response. Implement this method in a partial class to enable this behavior
         /// </summary>
         /// <param name="responseMessage">the raw response message as an global::System.Net.Http.HttpResponseMessage.</param>
-        /// <param name="response">the body result as a <see cref="Microsoft.Azure.PowerShell.Cmdlets.Quota.Models.Api20210315Preview.ICurrentQuotaLimitBase"
-        /// /> from the remote call</param>
+        /// <param name="response">the body result as a <see cref="Microsoft.Azure.PowerShell.Cmdlets.Quota.Models.ICurrentQuotaLimitBase">Microsoft.Azure.PowerShell.Cmdlets.Quota.Models.ICurrentQuotaLimitBase</see>
+        /// from the remote call</param>
         /// <param name="returnNow">/// Determines if the rest of the onOk method should be processed, or if the method should return
         /// immediately (set to true to skip further processing )</param>
 
-        partial void overrideOnOk(global::System.Net.Http.HttpResponseMessage responseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Quota.Models.Api20210315Preview.ICurrentQuotaLimitBase> response, ref global::System.Threading.Tasks.Task<bool> returnNow);
+        partial void overrideOnOk(global::System.Net.Http.HttpResponseMessage responseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Quota.Models.ICurrentQuotaLimitBase> response, ref global::System.Threading.Tasks.Task<bool> returnNow);
 
         /// <summary>
         /// (overrides the default BeginProcessing method in global::System.Management.Automation.PSCmdlet)
         /// </summary>
         protected override void BeginProcessing()
         {
+            var telemetryId = Microsoft.Azure.PowerShell.Cmdlets.Quota.Module.Instance.GetTelemetryId.Invoke();
+            if (telemetryId != "" && telemetryId != "internal")
+            {
+                __correlationId = telemetryId;
+            }
             Module.Instance.SetProxyConfiguration(Proxy, ProxyCredential, ProxyUseDefaultCredentials);
             if (Break)
             {
@@ -226,14 +242,14 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Quota.Cmdlets
             clone.ProxyUseDefaultCredentials = this.ProxyUseDefaultCredentials;
             clone.HttpPipelinePrepend = this.HttpPipelinePrepend;
             clone.HttpPipelineAppend = this.HttpPipelineAppend;
-            clone.CreateQuotaRequestBody = this.CreateQuotaRequestBody;
+            clone._createQuotaRequestBody = this._createQuotaRequestBody;
             return clone;
         }
 
         /// <summary>Performs clean-up after the command execution</summary>
         protected override void EndProcessing()
         {
-            ((Microsoft.Azure.PowerShell.Cmdlets.Quota.Runtime.IEventListener)this).Signal(Microsoft.Azure.PowerShell.Cmdlets.Quota.Runtime.Events.CmdletEndProcessing).Wait(); if( ((Microsoft.Azure.PowerShell.Cmdlets.Quota.Runtime.IEventListener)this).Token.IsCancellationRequested ) { return; }
+
         }
 
         /// <summary>Handles/Dispatches events during the call to the REST service.</summary>
@@ -280,11 +296,36 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Quota.Cmdlets
                         WriteError(new global::System.Management.Automation.ErrorRecord( new global::System.Exception(messageData().Message), string.Empty, global::System.Management.Automation.ErrorCategory.NotSpecified, null ) );
                         return ;
                     }
+                    case Microsoft.Azure.PowerShell.Cmdlets.Quota.Runtime.Events.Progress:
+                    {
+                        var data = messageData();
+                        int progress = (int)data.Value;
+                        string activityMessage, statusDescription;
+                        global::System.Management.Automation.ProgressRecordType recordType;
+                        if (progress < 100)
+                        {
+                            activityMessage = "In progress";
+                            statusDescription = "Checking operation status";
+                            recordType = System.Management.Automation.ProgressRecordType.Processing;
+                        }
+                        else
+                        {
+                            activityMessage = "Completed";
+                            statusDescription = "Completed";
+                            recordType = System.Management.Automation.ProgressRecordType.Completed;
+                        }
+                        WriteProgress(new global::System.Management.Automation.ProgressRecord(1, activityMessage, statusDescription)
+                        {
+                            PercentComplete = progress,
+                        RecordType = recordType
+                        });
+                        return ;
+                    }
                     case Microsoft.Azure.PowerShell.Cmdlets.Quota.Runtime.Events.DelayBeforePolling:
                     {
+                        var data = messageData();
                         if (true == MyInvocation?.BoundParameters?.ContainsKey("NoWait"))
                         {
-                            var data = messageData();
                             if (data.ResponseMessage is System.Net.Http.HttpResponseMessage response)
                             {
                                 var asyncOperation = response.GetFirstHeader(@"Azure-AsyncOperation");
@@ -296,10 +337,26 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Quota.Cmdlets
                                 return;
                             }
                         }
+                        else
+                        {
+                            if (data.ResponseMessage is System.Net.Http.HttpResponseMessage response)
+                            {
+                                int delay = (int)(response.Headers.RetryAfter?.Delta?.TotalSeconds ?? 30);
+                                WriteDebug($"Delaying {delay} seconds before polling.");
+                                for (var now = 0; now < delay; ++now)
+                                {
+                                    WriteProgress(new global::System.Management.Automation.ProgressRecord(1, "In progress", "Checking operation status")
+                                    {
+                                        PercentComplete = now * 100 / delay
+                                    });
+                                    await global::System.Threading.Tasks.Task.Delay(1000, token);
+                                }
+                            }
+                        }
                         break;
                     }
                 }
-                await Microsoft.Azure.PowerShell.Cmdlets.Quota.Module.Instance.Signal(id, token, messageData, (i,t,m) => ((Microsoft.Azure.PowerShell.Cmdlets.Quota.Runtime.IEventListener)this).Signal(i,t,()=> Microsoft.Azure.PowerShell.Cmdlets.Quota.Runtime.EventDataConverter.ConvertFrom( m() ) as Microsoft.Azure.PowerShell.Cmdlets.Quota.Runtime.EventData ), InvocationInformation, this.ParameterSetName, __correlationId, __processRecordId, null );
+                await Microsoft.Azure.PowerShell.Cmdlets.Quota.Module.Instance.Signal(id, token, messageData, (i, t, m) => ((Microsoft.Azure.PowerShell.Cmdlets.Quota.Runtime.IEventListener)this).Signal(i, t, () => Microsoft.Azure.PowerShell.Cmdlets.Quota.Runtime.EventDataConverter.ConvertFrom(m()) as Microsoft.Azure.PowerShell.Cmdlets.Quota.Runtime.EventData), InvocationInformation, this.ParameterSetName, __correlationId, __processRecordId, null );
                 if (token.IsCancellationRequested)
                 {
                     return ;
@@ -366,9 +423,8 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Quota.Cmdlets
         {
             using( NoSynchronizationContext )
             {
-                await ((Microsoft.Azure.PowerShell.Cmdlets.Quota.Runtime.IEventListener)this).Signal(Microsoft.Azure.PowerShell.Cmdlets.Quota.Runtime.Events.CmdletProcessRecordAsyncStart); if( ((Microsoft.Azure.PowerShell.Cmdlets.Quota.Runtime.IEventListener)this).Token.IsCancellationRequested ) { return; }
                 await ((Microsoft.Azure.PowerShell.Cmdlets.Quota.Runtime.IEventListener)this).Signal(Microsoft.Azure.PowerShell.Cmdlets.Quota.Runtime.Events.CmdletGetPipeline); if( ((Microsoft.Azure.PowerShell.Cmdlets.Quota.Runtime.IEventListener)this).Token.IsCancellationRequested ) { return; }
-                Pipeline = Microsoft.Azure.PowerShell.Cmdlets.Quota.Module.Instance.CreatePipeline(InvocationInformation, __correlationId, __processRecordId, this.ParameterSetName);
+                Pipeline = Microsoft.Azure.PowerShell.Cmdlets.Quota.Module.Instance.CreatePipeline(InvocationInformation, __correlationId, __processRecordId, this.ParameterSetName, this.ExtensibleParameters);
                 if (null != HttpPipelinePrepend)
                 {
                     Pipeline.Prepend((this.CommandRuntime as Microsoft.Azure.PowerShell.Cmdlets.Quota.Runtime.PowerShell.IAsyncCommandRuntimeExtensions)?.Wrap(HttpPipelinePrepend) ?? HttpPipelinePrepend);
@@ -378,31 +434,35 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Quota.Cmdlets
                     Pipeline.Append((this.CommandRuntime as Microsoft.Azure.PowerShell.Cmdlets.Quota.Runtime.PowerShell.IAsyncCommandRuntimeExtensions)?.Wrap(HttpPipelineAppend) ?? HttpPipelineAppend);
                 }
                 // get the client instance
+                if (true == this.MyInvocation?.BoundParameters?.ContainsKey("AnyProperty"))
+                {
+                    AnyProperty = (Microsoft.Azure.PowerShell.Cmdlets.Quota.Models.IAny)this.MyInvocation.BoundParameters["AnyProperty"];
+                }
                 try
                 {
                     await ((Microsoft.Azure.PowerShell.Cmdlets.Quota.Runtime.IEventListener)this).Signal(Microsoft.Azure.PowerShell.Cmdlets.Quota.Runtime.Events.CmdletBeforeAPICall); if( ((Microsoft.Azure.PowerShell.Cmdlets.Quota.Runtime.IEventListener)this).Token.IsCancellationRequested ) { return; }
                     if (InputObject?.Id != null)
                     {
-                        await this.Client.QuotaUpdateViaIdentity(InputObject.Id, CreateQuotaRequestBody, onOk, onDefault, this, Pipeline);
+                        await this.Client.QuotaUpdateViaIdentity(InputObject.Id, _createQuotaRequestBody, onOk, onDefault, this, Pipeline, Microsoft.Azure.PowerShell.Cmdlets.Quota.Runtime.SerializationMode.IncludeUpdate);
                     }
                     else
                     {
                         // try to call with PATH parameters from Input Object
-                        if (null == InputObject.ResourceName)
-                        {
-                            ThrowTerminatingError( new global::System.Management.Automation.ErrorRecord(new global::System.Exception("InputObject has null value for InputObject.ResourceName"),string.Empty, global::System.Management.Automation.ErrorCategory.InvalidArgument, InputObject) );
-                        }
                         if (null == InputObject.Scope)
                         {
                             ThrowTerminatingError( new global::System.Management.Automation.ErrorRecord(new global::System.Exception("InputObject has null value for InputObject.Scope"),string.Empty, global::System.Management.Automation.ErrorCategory.InvalidArgument, InputObject) );
                         }
-                        await this.Client.QuotaUpdate(InputObject.ResourceName ?? null, InputObject.Scope ?? null, CreateQuotaRequestBody, onOk, onDefault, this, Pipeline);
+                        if (null == InputObject.ResourceName)
+                        {
+                            ThrowTerminatingError( new global::System.Management.Automation.ErrorRecord(new global::System.Exception("InputObject has null value for InputObject.ResourceName"),string.Empty, global::System.Management.Automation.ErrorCategory.InvalidArgument, InputObject) );
+                        }
+                        await this.Client.QuotaUpdate(InputObject.Scope ?? null, InputObject.ResourceName ?? null, _createQuotaRequestBody, onOk, onDefault, this, Pipeline, Microsoft.Azure.PowerShell.Cmdlets.Quota.Runtime.SerializationMode.IncludeUpdate);
                     }
                     await ((Microsoft.Azure.PowerShell.Cmdlets.Quota.Runtime.IEventListener)this).Signal(Microsoft.Azure.PowerShell.Cmdlets.Quota.Runtime.Events.CmdletAfterAPICall); if( ((Microsoft.Azure.PowerShell.Cmdlets.Quota.Runtime.IEventListener)this).Token.IsCancellationRequested ) { return; }
                 }
                 catch (Microsoft.Azure.PowerShell.Cmdlets.Quota.Runtime.UndeclaredResponseException urexception)
                 {
-                    WriteError(new global::System.Management.Automation.ErrorRecord(urexception, urexception.StatusCode.ToString(), global::System.Management.Automation.ErrorCategory.InvalidOperation, new {  body=CreateQuotaRequestBody})
+                    WriteError(new global::System.Management.Automation.ErrorRecord(urexception, urexception.StatusCode.ToString(), global::System.Management.Automation.ErrorCategory.InvalidOperation, new { })
                     {
                       ErrorDetails = new global::System.Management.Automation.ErrorDetails(urexception.Message) { RecommendedAction = urexception.Action }
                     });
@@ -422,7 +482,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Quota.Cmdlets
         }
 
         /// <summary>
-        /// Intializes a new instance of the <see cref="UpdateAzQuota_UpdateViaIdentityExpanded" /> cmdlet class.
+        /// Initializes a new instance of the <see cref="UpdateAzQuota_UpdateViaIdentityExpanded" /> cmdlet class.
         /// </summary>
         public UpdateAzQuota_UpdateViaIdentityExpanded()
         {
@@ -433,12 +493,12 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Quota.Cmdlets
         /// a delegate that is called when the remote service returns default (any response code not handled elsewhere).
         /// </summary>
         /// <param name="responseMessage">the raw response message as an global::System.Net.Http.HttpResponseMessage.</param>
-        /// <param name="response">the body result as a <see cref="Microsoft.Azure.PowerShell.Cmdlets.Quota.Models.Api20210315Preview.IExceptionResponse"
-        /// /> from the remote call</param>
+        /// <param name="response">the body result as a <see cref="Microsoft.Azure.PowerShell.Cmdlets.Quota.Models.IExceptionResponse">Microsoft.Azure.PowerShell.Cmdlets.Quota.Models.IExceptionResponse</see>
+        /// from the remote call</param>
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the method is completed.
         /// </returns>
-        private async global::System.Threading.Tasks.Task onDefault(global::System.Net.Http.HttpResponseMessage responseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Quota.Models.Api20210315Preview.IExceptionResponse> response)
+        private async global::System.Threading.Tasks.Task onDefault(global::System.Net.Http.HttpResponseMessage responseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Quota.Models.IExceptionResponse> response)
         {
             using( NoSynchronizationContext )
             {
@@ -455,15 +515,15 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Quota.Cmdlets
                 if ((null == code || null == message))
                 {
                     // Unrecognized Response. Create an error record based on what we have.
-                    var ex = new Microsoft.Azure.PowerShell.Cmdlets.Quota.Runtime.RestException<Microsoft.Azure.PowerShell.Cmdlets.Quota.Models.Api20210315Preview.IExceptionResponse>(responseMessage, await response);
-                    WriteError( new global::System.Management.Automation.ErrorRecord(ex, ex.Code, global::System.Management.Automation.ErrorCategory.InvalidOperation, new { body=CreateQuotaRequestBody })
+                    var ex = new Microsoft.Azure.PowerShell.Cmdlets.Quota.Runtime.RestException<Microsoft.Azure.PowerShell.Cmdlets.Quota.Models.IExceptionResponse>(responseMessage, await response);
+                    WriteError( new global::System.Management.Automation.ErrorRecord(ex, ex.Code, global::System.Management.Automation.ErrorCategory.InvalidOperation, new {  })
                     {
                       ErrorDetails = new global::System.Management.Automation.ErrorDetails(ex.Message) { RecommendedAction = ex.Action }
                     });
                 }
                 else
                 {
-                    WriteError( new global::System.Management.Automation.ErrorRecord(new global::System.Exception($"[{code}] : {message}"), code?.ToString(), global::System.Management.Automation.ErrorCategory.InvalidOperation, new { body=CreateQuotaRequestBody })
+                    WriteError( new global::System.Management.Automation.ErrorRecord(new global::System.Exception($"[{code}] : {message}"), code?.ToString(), global::System.Management.Automation.ErrorCategory.InvalidOperation, new {  })
                     {
                       ErrorDetails = new global::System.Management.Automation.ErrorDetails(message) { RecommendedAction = global::System.String.Empty }
                     });
@@ -473,12 +533,12 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Quota.Cmdlets
 
         /// <summary>a delegate that is called when the remote service returns 200 (OK).</summary>
         /// <param name="responseMessage">the raw response message as an global::System.Net.Http.HttpResponseMessage.</param>
-        /// <param name="response">the body result as a <see cref="Microsoft.Azure.PowerShell.Cmdlets.Quota.Models.Api20210315Preview.ICurrentQuotaLimitBase"
-        /// /> from the remote call</param>
+        /// <param name="response">the body result as a <see cref="Microsoft.Azure.PowerShell.Cmdlets.Quota.Models.ICurrentQuotaLimitBase">Microsoft.Azure.PowerShell.Cmdlets.Quota.Models.ICurrentQuotaLimitBase</see>
+        /// from the remote call</param>
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the method is completed.
         /// </returns>
-        private async global::System.Threading.Tasks.Task onOk(global::System.Net.Http.HttpResponseMessage responseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Quota.Models.Api20210315Preview.ICurrentQuotaLimitBase> response)
+        private async global::System.Threading.Tasks.Task onOk(global::System.Net.Http.HttpResponseMessage responseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Quota.Models.ICurrentQuotaLimitBase> response)
         {
             using( NoSynchronizationContext )
             {
@@ -490,8 +550,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Quota.Cmdlets
                     return ;
                 }
                 // onOk - response for 200 / application/json
-                // (await response) // should be Microsoft.Azure.PowerShell.Cmdlets.Quota.Models.Api20210315Preview.ICurrentQuotaLimitBase
-                WriteObject((await response));
+                // (await response) // should be Microsoft.Azure.PowerShell.Cmdlets.Quota.Models.ICurrentQuotaLimitBase
+                var result = (await response);
+                WriteObject(result, false);
             }
         }
     }

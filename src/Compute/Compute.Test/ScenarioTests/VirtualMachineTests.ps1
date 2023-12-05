@@ -6232,14 +6232,14 @@ function Test-ManualConfidentialVMSetAzVmOsDiskDesIdDiskWithVMGuest
     # Setup
     #$rgname = Get-ComputeTestResourceName;
     $loc = "northeurope";
-    $rgname = "adsandwiki53";
+    $rgname = "adsandwiki57";
 
     try
     {
         <#
         The below script runs assuming that these below steps were manually run beforehand.
         This script uses Data Plane Operations, which our test framework does not support.
-        $rgname = "adsandwiki53";
+        $rgname = "adsandwiki57";
         $loc = 'northeurope';
         New-AzResourceGroup -Name $rgname -Location $loc -Force;
 
@@ -6255,8 +6255,8 @@ function Test-ManualConfidentialVMSetAzVmOsDiskDesIdDiskWithVMGuest
         $secureEncryptGuestState = 'DiskWithVMGuestState';
         $vmSecurityType = "ConfidentialVM";
         $user = "admin01";
-        #$password = Get-PasswordForVM;
-        $securePassword = "Testing1234567" | ConvertTo-SecureString -AsPlainText -Force; 
+        $password = "Testing1234567";
+        $securePassword = $password | ConvertTo-SecureString -AsPlainText -Force; 
         $cred = New-Object System.Management.Automation.PSCredential ($user, $securePassword);
 
         $kvname = "kv" + $rgname;
@@ -6300,12 +6300,12 @@ function Test-ManualConfidentialVMSetAzVmOsDiskDesIdDiskWithVMGuest
         $securePassword = $password | ConvertTo-SecureString -AsPlainText -Force; 
         $cred = New-Object System.Management.Automation.PSCredential ($user, $securePassword);
 
-        $kvname = "kvadsandwiki53";
-        $keyname = "kadsandwiki53";
-        $desName= "desadsandwiki53";
+        $kvname = "kv" + $rgname;
+        $keyname = "k" + $rgname;
+        $desName= "des" + $rgname;
 
-        $encryptionKeyVaultId = "/subscriptions/e37510d7-33b6-4676-886f-ee75bcc01871/resourceGroups/adsandwiki53/providers/Microsoft.KeyVault/vaults/kvadsandwiki53";
-        $encryptionKeyURL = "https://kvadsandwiki53.vault.azure.net/keys/kadsandwiki53/c3d6f9e802ac4a90962cf43b9718cc94";
+        $encryptionKeyVaultId = "/subscriptions/e37510d7-33b6-4676-886f-ee75bcc01871/resourceGroups/adsandwiki57/providers/Microsoft.KeyVault/vaults/kvadsandwiki57";
+        $encryptionKeyURL = "https://kvadsandwiki57.vault.azure.net/keys/kadsandwiki57/3bacce5d72d147a785ecf79d4b1dc9b0";
         
         # Create new DES Config and DES
         $diskEncryptionType = "ConfidentialVmEncryptedWithCustomerKey";
@@ -6327,7 +6327,7 @@ function Test-ManualConfidentialVMSetAzVmOsDiskDesIdDiskWithVMGuest
         $vnet = New-AzVirtualNetwork -Force -Name ($vnetPrefix + $rgname) -ResourceGroupName $rgname -Location $loc -AddressPrefix "10.0.0.0/16" -Subnet $subnet;
         $vnet = Get-AzVirtualNetwork -Name ($vnetPrefix + $rgname) -ResourceGroupName $rgname;
         $subnetId = $vnet.Subnets[0].Id;
-        $pubip = New-AzPublicIpAddress -Force -Name ($pubIpPrefix + $rgname) -ResourceGroupName $rgname -Location $loc -AllocationMethod Dynamic -DomainNameLabel $domainNameLabel2;
+        $pubip = New-AzPublicIpAddress -Force -Name ($pubIpPrefix + $rgname) -ResourceGroupName $rgname -Location $loc -AllocationMethod Static -DomainNameLabel $domainNameLabel2;
         $pubip = Get-AzPublicIpAddress -Name ($pubIpPrefix + $rgname) -ResourceGroupName $rgname;
         $pubipId = $pubip.Id;
         $nic = New-AzNetworkInterface -Force -Name ($nicPrefix + $rgname) -ResourceGroupName $rgname -Location $loc -SubnetId $subnetId -PublicIpAddressId $pubip.Id;
@@ -6468,8 +6468,8 @@ function Test-ConfVMSetAzDiskSecurityProfile
         $keyname = "key" + $rgname;
         $desName= "des" + $rgname;
         $KeySize = 3072; 
-        $keyVaultId = "/subscriptions/e37510d7-33b6-4676-886f-ee75bcc01871/resourceGroups/adsanddes2/providers/Microsoft.KeyVault/vaults/valadsanddes2";
-        $keyUrl = "https://valadsanddes2.vault.azure.net/keys/keyadsanddes2/929ebcca47fd4540a1ce06fbb35c821e";
+        $keyVaultId = "/subscriptions/0b1f6471-1bf0-4dda-aec3-cb9272f09590/resourceGroups/adsanddes2/providers/Microsoft.KeyVault/vaults/valadsanddes2";
+        $keyUrl = "https://valadsanddes2.vault.azure.net/keys/keyadsanddes2/186432bab3ba4f829f483670988a2996";
 
         # Create new DES Config and DES
         $diskEncryptionType = "ConfidentialVmEncryptedWithCustomerKey";
@@ -7208,6 +7208,57 @@ function Test-VMDefaultsToTrustedLaunchWithGen2Image
         Assert-AreEqual $vm.SecurityProfile.SecurityType $securityTypeTL;
         Assert-AreEqual $vm.SecurityProfile.UefiSettings.SecureBootEnabled $secureboot;
         Assert-AreEqual $vm.SecurityProfile.UefiSettings.VTpmEnabled $vtpm;
+    }
+    finally 
+    {
+        # Cleanup
+        Clean-ResourceGroup $rgname;
+    }
+}
+
+<#
+.SYNOPSIS
+Test Virtual Machines default to SecurityType = TrustedLaunch.
+Other necessary defaults also occur for TL support.
+EncryptionAtHost (a feature requiring a feature flag) must be null.
+#>
+function Test-VMDefaultsToTrustedLaunchWithNullEncryptionAtHost
+{
+    # Setup
+    $rgname = Get-ComputeTestResourceName;
+    $loc = Get-ComputeVMLocation;
+
+    try
+    {
+        New-AzResourceGroup -Name $rgname -Location $loc -Force;
+        # SimpleParameterSet, no config, scenario.
+        # create credential 
+        $password = Get-PasswordForVM;
+        $securePassword = $password | ConvertTo-SecureString -AsPlainText -Force;  
+        $user = Get-ComputeTestResourceName;
+        $cred = New-Object System.Management.Automation.PSCredential ($user, $securePassword);
+
+        # Add one VM from creation 
+        $vmname = 'vm' + $rgname;
+        $domainNameLabel = "d1" + $rgname;
+        $securityType_TL = "TrustedLaunch";
+        $PublisherName = "MicrosoftWindowsServer";
+        $Offer = "WindowsServer";
+        $SKU = "2022-datacenter-azure-edition";
+        $version = "latest";
+        $disable = $false;
+        $enable = $true;
+
+        $vm = New-AzVM -ResourceGroupName $rgname -Name $vmname -Credential $cred -DomainNameLabel $domainNameLabel; 
+
+        $vm = Get-AzVm -ResourceGroupName $rgname -Name $vmname;
+
+        # Validate
+        Assert-AreEqual $vm.SecurityProfile.SecurityType $securityType_TL;
+        Assert-AreEqual $vm.SecurityProfile.UefiSettings.SecureBootEnabled $enable;
+        Assert-AreEqual $vm.SecurityProfile.UefiSettings.VTpmEnabled $enable;
+        Assert-AreEqual $vm.StorageProfile.ImageReference.Sku $SKU;
+        Assert-Null $vm.SecurityProfile.EncryptionAtHost;
     }
     finally 
     {

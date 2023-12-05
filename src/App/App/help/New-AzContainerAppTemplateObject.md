@@ -1,5 +1,5 @@
 ---
-external help file:
+external help file: Az.App-help.xml
 Module Name: Az.App
 online version: https://learn.microsoft.com/powershell/module/Az.App/new-azcontainerapptemplateobject
 schema: 2.0.0
@@ -13,8 +13,8 @@ Create an in-memory object for Container.
 ## SYNTAX
 
 ```
-New-AzContainerAppTemplateObject [-Arg <String[]>] [-Command <String[]>] [-Env <IEnvironmentVar[]>]
- [-Image <String>] [-Name <String>] [-Probe <IContainerAppProbe[]>] [-ResourceCpu <Double>]
+New-AzContainerAppTemplateObject [-Probe <IContainerAppProbe[]>] [-Arg <String[]>] [-Command <String[]>]
+ [-Env <IEnvironmentVar[]>] [-Image <String>] [-Name <String>] [-ResourceCpu <Double>]
  [-ResourceMemory <String>] [-VolumeMount <IVolumeMount[]>] [<CommonParameters>]
 ```
 
@@ -193,4 +193,3 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ## NOTES
 
 ## RELATED LINKS
-

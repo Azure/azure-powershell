@@ -161,7 +161,7 @@ namespace Microsoft.Azure.Commands.Network
                     virtualHubModel.Sku = "Standard";
 
                     this.NetworkClient.NetworkManagementClient.VirtualHubs.CreateOrUpdate(this.ResourceGroupName, this.RouteServerName, virtualHubModel);
-                    this.NetworkClient.NetworkManagementClient.VirtualHubIpConfiguration.CreateOrUpdate(this.ResourceGroupName, this.RouteServerName, ipConfigName, ipconfig);
+                    this.NetworkClient.NetworkManagementClient.VirtualHubIPConfiguration.CreateOrUpdate(this.ResourceGroupName, this.RouteServerName, ipConfigName, ipconfig);
                     virtualHubModel = this.NetworkClient.NetworkManagementClient.VirtualHubs.Get(this.ResourceGroupName, this.RouteServerName);
 
                     virtualHub = NetworkResourceManagerProfile.Mapper.Map<PSVirtualHub>(virtualHubModel);

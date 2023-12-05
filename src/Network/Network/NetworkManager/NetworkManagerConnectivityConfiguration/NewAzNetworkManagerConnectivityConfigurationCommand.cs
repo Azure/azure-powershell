@@ -166,7 +166,7 @@ namespace Microsoft.Azure.Commands.Network
             this.NullifyNetworkManagerConnectivityConfigurationIfAbsent(mnccModel);
 
             // Execute the Create NetworkConnectivityGroup call
-            this.NetworkManagerConnectivityConfigurationClient.CreateOrUpdate(mnccModel, this.ResourceGroupName, this.NetworkManagerName, this.Name);
+            this.NetworkManagerConnectivityConfigurationClient.CreateOrUpdate(this.ResourceGroupName, this.NetworkManagerName, this.Name, mnccModel);
             var psNetworkManagerConnectivityConfiguration = this.GetNetworkManagerConnectivityConfiguration(this.ResourceGroupName, this.NetworkManagerName, this.Name);
             return psNetworkManagerConnectivityConfiguration;
         }
