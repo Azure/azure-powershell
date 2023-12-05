@@ -103,9 +103,9 @@ Function Move-Generation2Master {
             # Update psd1
             $SubModulePsd1MetaData = Import-LocalizedData -BaseDirectory (Join-Path -Path $SourcePath -ChildPath $submoduleDir.Name) -FileName "Az.$submoduleName.psd1"
             
-            $Psd1Metadata.RequiredAssemblies = @($Psd1Metadata.RequiredAssemblies) + ("{0}\bin\Az.${submoduleName}.private.dll" -f $submoduleDir.Name)
-            $Psd1Metadata.FormatsToProcess = @($Psd1Metadata.FormatsToProcess) + ("{0}\Az.${submoduleName}.format.ps1xml" -f $submoduleDir.Name)
-            $Psd1Metadata.NestedModules = @($Psd1Metadata.NestedModules) + ("{0}\Az.${submoduleName}.psm1" -f $submoduleDir.Name)
+            $Psd1Metadata.RequiredAssemblies = @($Psd1Metadata.RequiredAssemblies) + ("{0}/bin/Az.${submoduleName}.private.dll" -f $submoduleDir.Name)
+            $Psd1Metadata.FormatsToProcess = @($Psd1Metadata.FormatsToProcess) + ("{0}/Az.${submoduleName}.format.ps1xml" -f $submoduleDir.Name)
+            $Psd1Metadata.NestedModules = @($Psd1Metadata.NestedModules) + ("{0}/Az.${submoduleName}.psm1" -f $submoduleDir.Name)
 
             foreach ($func in $SubModulePsd1MetaData.FunctionsToExport) {
                 if (!@($Psd1Metadata.FunctionsToExport).Contains($func) -and ($func -ne '*')) {
