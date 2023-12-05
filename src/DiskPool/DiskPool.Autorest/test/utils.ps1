@@ -5,6 +5,31 @@ function RandomString([bool]$allChars, [int32]$len) {
         return -join ((48..57) + (97..122) | Get-Random -Count $len | % {[char]$_})
     }
 }
+function Start-TestSleep {
+    [CmdletBinding(DefaultParameterSetName = 'SleepBySeconds')]
+    param(
+        [parameter(Mandatory = $true, Position = 0, ParameterSetName = 'SleepBySeconds')]
+        [ValidateRange(0.0, 2147483.0)]
+        [double] $Seconds,
+
+        [parameter(Mandatory = $true, ParameterSetName = 'SleepByMilliseconds')]
+        [ValidateRange('NonNegative')]
+        [Alias('ms')]
+        [int] $Milliseconds
+    )
+
+    if ($TestMode -ne 'playback') {
+        switch ($PSCmdlet.ParameterSetName) {
+            'SleepBySeconds' {
+                Start-Sleep -Seconds $Seconds
+            }
+            'SleepByMilliseconds' {
+                Start-Sleep -Milliseconds $Milliseconds
+            }
+        }
+    }
+}
+
 $env = @{}
 function setupEnv() {
     # Preload subscriptionId and tenant from context, which will be used in test
@@ -71,7 +96,7 @@ function setupEnv() {
 
     # Create Disk 3
     $diskParams = Get-Content .\test\deployment-templates\disk\parameters.json | ConvertFrom-Json
-    $diskParams.parameters.name.value = "disk-pool-disk-3" 
+    $diskParams.parameters.name.value = "disk-pool-disk-3"
 
     Set-Content -Path .\test\deployment-templates\disk\parameters.json -Value (ConvertTo-Json $diskParams)
     New-AzDeployment -Mode Incremental `
@@ -92,7 +117,7 @@ function setupEnv() {
         -TemplateParameterFile .\test\deployment-templates\disk-pool\parameters.json `
         -Name diskPool `
         -ResourceGroupName $resourceGroup
-    Write-Host -ForegroundColor Green "Disk Pool 1 deployment completed" 
+    Write-Host -ForegroundColor Green "Disk Pool 1 deployment completed"
 
     $disks = @($env.diskId1)
     Update-AzDiskPool -Name 'disk-pool-1' -ResourceGroupName $resourceGroup -DiskId $disks
@@ -106,7 +131,7 @@ function setupEnv() {
         -ResourceGroupName $resourceGroup
     $disks = @($env.diskId2,$env.diskId3)
     Update-AzDiskPool -Name 'disk-pool-5' -ResourceGroupName $resourceGroup -DiskId $disks
-    Write-Host -ForegroundColor Green "Disk Pool 5 deployment completed" 
+    Write-Host -ForegroundColor Green "Disk Pool 5 deployment completed"
 
     Write-Host "Creating 1 target1..."
 
