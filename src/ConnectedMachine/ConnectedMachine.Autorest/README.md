@@ -51,15 +51,7 @@ input-file:
 module-version: 0.5.0
 title: ConnectedMachine
 subject-prefix: 'Connected'
- 
-identity-correction-for-post: true
-resourcegroup-append: true
-nested-object-to-string: true
- 
-# For new modules, please avoid setting 3.x using the use-extension method and instead, use 4.x as the default option
-use-extension:
-  "@autorest/powershell": "3.x"
- 
+
 directive:
   - from: swagger-document
     where: $.paths["/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.HybridCompute/machines/{machineName}"].get.parameters
@@ -193,7 +185,7 @@ directive:
   # GetViaIdentity isn't useful until Azure PowerShell supports piping of different subjects
   - where:
       verb: Get
-      variant: ^GetViaIdentity\d?$
+      variant: ^GetViaIdentity.*$
     remove: true
 
   # Make parameters friendlier for extensions
@@ -314,7 +306,7 @@ directive:
   # Removing non-expand commands
   - where:
       subject: MachinePatch
-      variant: ^Install$|^InstallViaIdentity$
+      variant: ^(Install)(?!.*?Expanded|JsonFilePath|JsonString)
     remove: true
  
   # Completers
@@ -334,6 +326,5 @@ directive:
         script: Get-AzResourceGroup | Select-Object -ExpandProperty ResourceGroupName
  
   # These APIs are used by the agent so they do not need to be in the cmdlets.
-  - remove-operation:
-    - Machines_CreateOrUpdate
+  - remove-operation: Machines_CreateOrUpdate
 ```

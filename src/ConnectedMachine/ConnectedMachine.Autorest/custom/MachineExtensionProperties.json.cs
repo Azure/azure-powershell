@@ -1,7 +1,7 @@
 using System;
 using Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Runtime.Json;
 
-namespace Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.Api20231003Preview
+namespace Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models
 {
     public partial class MachineExtensionProperties
     {
