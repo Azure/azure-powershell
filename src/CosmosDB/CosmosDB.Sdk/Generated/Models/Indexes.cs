@@ -25,14 +25,14 @@ namespace Microsoft.Azure.Management.CosmosDB.Models
         /// </summary>
 
         /// <param name="dataType">The datatype for which the indexing behavior is applied to.
-        /// Possible values include: 'String', 'Number', 'Point', 'Polygon',
-        /// 'LineString', 'MultiPolygon'</param>
+        /// Possible values include: &#39;String&#39;, &#39;Number&#39;, &#39;Point&#39;, &#39;Polygon&#39;,
+        /// &#39;LineString&#39;, &#39;MultiPolygon&#39;</param>
 
         /// <param name="precision">The precision of the index. -1 is maximum precision.
         /// </param>
 
         /// <param name="kind">Indicates the type of index.
-        /// Possible values include: 'Hash', 'Range', 'Spatial'</param>
+        /// Possible values include: &#39;Hash&#39;, &#39;Range&#39;, &#39;Spatial&#39;</param>
         public Indexes(string dataType = default(string), int? precision = default(int?), string kind = default(string))
 
         {

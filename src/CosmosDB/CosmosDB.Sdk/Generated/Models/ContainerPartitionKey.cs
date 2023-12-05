@@ -31,7 +31,7 @@ namespace Microsoft.Azure.Management.CosmosDB.Models
         /// <param name="kind">Indicates the kind of algorithm used for partitioning. For MultiHash,
         /// multiple partition keys (upto three maximum) are supported for container
         /// create
-        /// Possible values include: 'Hash', 'Range', 'MultiHash'</param>
+        /// Possible values include: &#39;Hash&#39;, &#39;Range&#39;, &#39;MultiHash&#39;</param>
 
         /// <param name="version">Indicates the version of the partition key definition
         /// </param>
