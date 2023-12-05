@@ -361,6 +361,9 @@ namespace Microsoft.WindowsAzure.Build.Tasks
             DateTime startTime = DateTime.Now;
 
             Dictionary<string, HashSet<string>> influencedModuleInfo = CalculateInfluencedModuleInfoForEachPhase(ruleList, csprojMap);
+            DateTime endOfRegularExpressionTime = DateTime.Now;
+            
+            #region Record the CI plan info to CIPlan.json under the artifacts folder
             Dictionary<string, HashSet<string>> CIPlan = new Dictionary<string, HashSet<string>>
             {
                 [BUILD_PHASE] = new HashSet<string>(influencedModuleInfo[BUILD_PHASE]),
@@ -370,17 +373,17 @@ namespace Microsoft.WindowsAzure.Build.Tasks
             {
                 CIPlan.Add(analysisPhase, influencedModuleInfo[analysisPhase]);
             }
+            if (!Directory.Exists(config.ArtifactPipelineInfoFolder))
+            {
+                Directory.CreateDirectory(config.ArtifactPipelineInfoFolder);
+            }
             File.WriteAllText(Path.Combine(config.ArtifactPipelineInfoFolder, "CIPlan.json"), JsonConvert.SerializeObject(CIPlan, Formatting.Indented));
-            DateTime endOfRegularExpressionTime = DateTime.Now;
+            #endregion
 
             influencedModuleInfo = CalculateCsprojForBuildAndTest(influencedModuleInfo, csprojMap);
             DateTime endTime = DateTime.Now;
             Console.WriteLine(string.Format("Takes {0} seconds for RE match, {1} seconds for phase config.", (endOfRegularExpressionTime - startTime).TotalSeconds, (endTime - endOfRegularExpressionTime).TotalSeconds));
 
-            if (!Directory.Exists(config.ArtifactPipelineInfoFolder))
-            {
-                Directory.CreateDirectory(config.ArtifactPipelineInfoFolder);
-            }
             influencedModuleInfo[TEST_PHASE] = new HashSet<string>(influencedModuleInfo[TEST_PHASE].Where(x => x.EndsWith(".csproj")));
 
             BuildCsprojList = influencedModuleInfo[BUILD_PHASE].ToArray();
