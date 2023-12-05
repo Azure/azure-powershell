@@ -41,7 +41,7 @@ function setupEnv() {
 
     # Build dependent resources
     New-AzResourceGroup -Name $env.resourceGroup -Location $env.region
-    New-AzDeployment -TemplateFile "/src/Alb/test/prereqs.json" -Mode Complete -ResourceGroupName $env.resourceGroup -TemplateParameterObject @{}
+    New-AzDeployment -TemplateFile (Join-Path $PSScriptRoot 'prereqs.json') -Mode Complete -ResourceGroupName $env.resourceGroup -TemplateParameterObject @{}
     
 }
 function cleanupEnv() {
