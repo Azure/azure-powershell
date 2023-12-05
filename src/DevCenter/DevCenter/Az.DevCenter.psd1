@@ -51,7 +51,7 @@ DotNetFrameworkVersion = '4.7.2'
 # ProcessorArchitecture = ''
 
 # Modules that must be imported into the global environment prior to importing this module
-# RequiredModules = @()
+RequiredModules = @(@{ModuleName = 'Az.Accounts'; ModuleVersion = '2.13.1'; })
 
 # Assemblies that must be loaded prior to importing this module
 RequiredAssemblies = 'DevCenter.AutoRest/bin/Az.DevCenter.private.dll', 

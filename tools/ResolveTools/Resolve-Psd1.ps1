@@ -41,6 +41,12 @@ foreach ($ExposedHelpFile in $ExposedHelpFiles)
 # Remove the deprecated commands from the module manifest.
 $Psd1Metadata = Import-LocalizedData -BaseDirectory $Psd1Folder -FileName "Az.$ModuleName.psd1"
 
+$Accounts = Get-Module Az.Accounts
+$Psd1Metadata.RequiredModules = @(@{
+    ModuleName = 'Az.Accounts';
+    ModuleVersion = $Accounts.Version.ToString();
+})
+
 $Properties = @("ScriptsToProcess", "TypesToProcess", "RequiredAssemblies", "FormatsToProcess", "NestedModules")
 foreach ($PropertyName in $Properties)
 {
