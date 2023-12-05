@@ -39,6 +39,20 @@ Update-AzConnectedExtension -InputObject <IConnectedMachineIdentity> [-Extension
  [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-PassThru] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
+### UpgradeViaJsonFilePath
+```
+Update-AzConnectedExtension -MachineName <String> -ResourceGroupName <String> -JsonFilePath <String>
+ [-SubscriptionId <String>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-PassThru] [-Confirm] [-WhatIf]
+ [<CommonParameters>]
+```
+
+### UpgradeViaJsonString
+```
+Update-AzConnectedExtension -MachineName <String> -ResourceGroupName <String> -JsonString <String>
+ [-SubscriptionId <String>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-PassThru] [-Confirm] [-WhatIf]
+ [<CommonParameters>]
+```
+
 ## DESCRIPTION
 The operation to Upgrade Machine Extensions.
 
@@ -109,7 +123,7 @@ Describes the Machine Extension Upgrade Properties.
 To construct, see NOTES section for EXTENSIONUPGRADEPARAMETER properties and create a hash table.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.Api20231003Preview.IMachineExtensionUpgrade
+Type: Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.IMachineExtensionUpgrade
 Parameter Sets: Upgrade, UpgradeViaIdentity
 Aliases:
 
@@ -136,12 +150,42 @@ Accept pipeline input: True (ByValue)
 Accept wildcard characters: False
 ```
 
+### -JsonFilePath
+Path of Json file supplied to the Upgrade operation
+
+```yaml
+Type: System.String
+Parameter Sets: UpgradeViaJsonFilePath
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -JsonString
+Json string supplied to the Upgrade operation
+
+```yaml
+Type: System.String
+Parameter Sets: UpgradeViaJsonString
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
 ### -MachineName
 The name of the hybrid machine.
 
 ```yaml
 Type: System.String
-Parameter Sets: Upgrade, UpgradeExpanded
+Parameter Sets: Upgrade, UpgradeExpanded, UpgradeViaJsonFilePath, UpgradeViaJsonString
 Aliases:
 
 Required: True
@@ -187,7 +231,7 @@ The name is case insensitive.
 
 ```yaml
 Type: System.String
-Parameter Sets: Upgrade, UpgradeExpanded
+Parameter Sets: Upgrade, UpgradeExpanded, UpgradeViaJsonFilePath, UpgradeViaJsonString
 Aliases:
 
 Required: True
@@ -202,7 +246,7 @@ The ID of the target subscription.
 
 ```yaml
 Type: System.String
-Parameter Sets: Upgrade, UpgradeExpanded
+Parameter Sets: Upgrade, UpgradeExpanded, UpgradeViaJsonFilePath, UpgradeViaJsonString
 Aliases:
 
 Required: False
@@ -248,9 +292,9 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.Api20231003Preview.IMachineExtensionUpgrade
-
 ### Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.IConnectedMachineIdentity
+
+### Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.IMachineExtensionUpgrade
 
 ## OUTPUTS
 

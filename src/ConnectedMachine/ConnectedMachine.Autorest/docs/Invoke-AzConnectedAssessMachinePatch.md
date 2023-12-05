@@ -191,7 +191,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.Api20231003Preview.IMachineAssessPatchesResult
+### Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.IMachineAssessPatchesResult
 
 ## NOTES
 

@@ -15,25 +15,23 @@ The operation to install patches on a hybrid machine identity in Azure.
 ### InstallExpanded (Default)
 ```
 Install-AzConnectedMachinePatch -Name <String> -ResourceGroupName <String> -MaximumDuration <String>
- -RebootSetting <VMGuestPatchRebootSetting> [-SubscriptionId <String>]
- [-LinuxParameterClassificationsToInclude <VMGuestPatchClassificationLinux[]>]
+ -RebootSetting <String> [-SubscriptionId <String>] [-LinuxParameterClassificationsToInclude <String[]>]
  [-LinuxParameterPackageNameMasksToExclude <String[]>] [-LinuxParameterPackageNameMasksToInclude <String[]>]
- [-WindowParameterClassificationsToInclude <VMGuestPatchClassificationWindows[]>]
- [-WindowParameterExcludeKbsRequiringReboot] [-WindowParameterKbNumbersToExclude <String[]>]
- [-WindowParameterKbNumbersToInclude <String[]>] [-WindowParameterMaxPatchPublishDate <DateTime>]
- [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
+ [-WindowParameterClassificationsToInclude <String[]>] [-WindowParameterExcludeKbsRequiringReboot]
+ [-WindowParameterKbNumbersToExclude <String[]>] [-WindowParameterKbNumbersToInclude <String[]>]
+ [-WindowParameterMaxPatchPublishDate <DateTime>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm]
+ [-WhatIf] [<CommonParameters>]
 ```
 
 ### InstallViaIdentityExpanded
 ```
 Install-AzConnectedMachinePatch -InputObject <IConnectedMachineIdentity> -MaximumDuration <String>
- -RebootSetting <VMGuestPatchRebootSetting>
- [-LinuxParameterClassificationsToInclude <VMGuestPatchClassificationLinux[]>]
+ -RebootSetting <String> [-LinuxParameterClassificationsToInclude <String[]>]
  [-LinuxParameterPackageNameMasksToExclude <String[]>] [-LinuxParameterPackageNameMasksToInclude <String[]>]
- [-WindowParameterClassificationsToInclude <VMGuestPatchClassificationWindows[]>]
- [-WindowParameterExcludeKbsRequiringReboot] [-WindowParameterKbNumbersToExclude <String[]>]
- [-WindowParameterKbNumbersToInclude <String[]>] [-WindowParameterMaxPatchPublishDate <DateTime>]
- [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
+ [-WindowParameterClassificationsToInclude <String[]>] [-WindowParameterExcludeKbsRequiringReboot]
+ [-WindowParameterKbNumbersToExclude <String[]>] [-WindowParameterKbNumbersToInclude <String[]>]
+ [-WindowParameterMaxPatchPublishDate <DateTime>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm]
+ [-WhatIf] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -111,7 +109,7 @@ Accept wildcard characters: False
 The update classifications to select when installing patches for Linux.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Support.VMGuestPatchClassificationLinux[]
+Type: System.String[]
 Parameter Sets: (All)
 Aliases:
 
@@ -204,7 +202,7 @@ Accept wildcard characters: False
 Defines when it is acceptable to reboot a VM during a software update operation.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Support.VMGuestPatchRebootSetting
+Type: System.String
 Parameter Sets: (All)
 Aliases:
 
@@ -249,7 +247,7 @@ Accept wildcard characters: False
 The update classifications to select when installing patches for Windows.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Support.VMGuestPatchClassificationWindows[]
+Type: System.String[]
 Parameter Sets: (All)
 Aliases:
 
@@ -360,7 +358,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.Api20231003Preview.IMachineInstallPatchesResult
+### Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.IMachineInstallPatchesResult
 
 ## NOTES
 
