@@ -19,6 +19,7 @@
 -->
 
 ## Upcoming Release
+* Redirected device code login details from warning stream to information stream if use device authentication in `Connect-AzAccount`.
 * Added upcoming breaking change warning for deprecation of config parameter `DisableErrorRecordsPersistence`.
 
 ## Version 2.13.2
