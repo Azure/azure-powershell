@@ -23,6 +23,7 @@ using Hyak.Common;
 
 using Microsoft.Azure.Commands.Common.Authentication;
 using Microsoft.Azure.Commands.Common.Authentication.Abstractions;
+using Microsoft.Azure.Commands.Common.Compute.Version2016_04_preview.Models;
 using Microsoft.Azure.Commands.ResourceManager.Common;
 
 namespace Microsoft.Azure.PowerShell.Authenticators
@@ -64,13 +65,22 @@ namespace Microsoft.Azure.PowerShell.Authenticators
 
         private Task DeviceCodeFunc(DeviceCodeInfo info, CancellationToken cancellation)
         {
-            WriteWarning(info.Message);
+            WriteInfomartion(info.Message);
             return Task.CompletedTask;
         }
 
         public override bool CanAuthenticate(AuthenticationParameters parameters)
         {
             return (parameters as DeviceCodeParameters) != null;
+        }
+
+        private void WriteInfomartion(string message)
+        {
+            EventHandler<StreamEventArgs> writeInforamtionEvent;
+            if (AzureSession.Instance.TryGetComponent(AzureRMCmdlet.WriteInformationKey, out writeInforamtionEvent))
+            {
+                writeInforamtionEvent(this, new StreamEventArgs() { Message = message });
+            }
         }
 
         private void WriteWarning(string message)
@@ -81,5 +91,6 @@ namespace Microsoft.Azure.PowerShell.Authenticators
                 writeWarningEvent(this, new StreamEventArgs() { Message = message });
             }
         }
+
     }
 }
