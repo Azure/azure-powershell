@@ -306,6 +306,7 @@ ElseIf (-Not $PSBoundParameters.ContainsKey("TargetModule"))
 # Run the test-module.ps1 in current folder and set the test status in pipeline result
 If ($TestAutorest)
 {
+    Write-Host "Running test for autorest module in $AutorestDirectory..."
     If (-not (Test-Path "$AutorestDirectory/test-module.ps1"))
     {
         Write-Warning "There is no test-module.ps1 found in the folder: $AutorestDirectory"

@@ -361,6 +361,16 @@ namespace Microsoft.WindowsAzure.Build.Tasks
             DateTime startTime = DateTime.Now;
 
             Dictionary<string, HashSet<string>> influencedModuleInfo = CalculateInfluencedModuleInfoForEachPhase(ruleList, csprojMap);
+            Dictionary<string, HashSet<string>> CIPlan = new Dictionary<string, HashSet<string>>
+            {
+                [BUILD_PHASE] = new HashSet<string>(influencedModuleInfo[BUILD_PHASE]),
+                [TEST_PHASE] = new HashSet<string>(influencedModuleInfo[TEST_PHASE])
+            };
+            foreach (var analysisPhase in ANALYSIS_PHASE_LIST)
+            {
+                CIPlan.Add(analysisPhase, influencedModuleInfo[analysisPhase]);
+            }
+            File.WriteAllText(Path.Combine(config.ArtifactPipelineInfoFolder, "CIPlan.json"), JsonConvert.SerializeObject(CIPlan, Formatting.Indented));
             DateTime endOfRegularExpressionTime = DateTime.Now;
 
             influencedModuleInfo = CalculateCsprojForBuildAndTest(influencedModuleInfo, csprojMap);
@@ -371,16 +381,6 @@ namespace Microsoft.WindowsAzure.Build.Tasks
             {
                 Directory.CreateDirectory(config.ArtifactPipelineInfoFolder);
             }
-            Dictionary<string, HashSet<string>> CIPlan = new Dictionary<string, HashSet<string>>
-            {
-                [BUILD_PHASE] = new HashSet<string>(influencedModuleInfo[BUILD_PHASE].Select(GetModuleNameFromPath).Where(x => x != null)),
-                [TEST_PHASE] = new HashSet<string>(influencedModuleInfo[TEST_PHASE].Select(GetModuleNameFromPath).Where(x => x != null))
-            };
-            foreach (var analysisPhase in ANALYSIS_PHASE_LIST)
-            {
-                CIPlan.Add(analysisPhase, influencedModuleInfo[analysisPhase]);
-            }
-            File.WriteAllText(Path.Combine(config.ArtifactPipelineInfoFolder, "CIPlan.json"), JsonConvert.SerializeObject(CIPlan, Formatting.Indented));
             influencedModuleInfo[TEST_PHASE] = new HashSet<string>(influencedModuleInfo[TEST_PHASE].Where(x => x.EndsWith(".csproj")));
 
             BuildCsprojList = influencedModuleInfo[BUILD_PHASE].ToArray();
