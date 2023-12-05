@@ -35,8 +35,6 @@ module-version: 0.1.0
 title: Alb
 subject-prefix: $(service-name)
 inlining-threshold: 100
-resourcegroup-append: true
-nested-object-to-string: true
 
 # pin the swagger version by using the commit id instead of branch name
 commit: 1b338481329645df2d9460738cbaab6109472488
@@ -65,7 +63,10 @@ directive:
       subject: $1
   # Remove the unexpanded parameter set
   - where:
-      variant: ^Create$|^CreateViaIdentity$|^CreateViaIdentityExpanded$|^Update$|^UpdateViaIdentity$
+      variant: ^(Create|Update)(?!.*?Expanded|JsonFilePath|JsonString)
+    remove: true
+  - where:
+      variant: ^CreateViaIdentity.*$
     remove: true
 # Param and table formatting
   - where:
