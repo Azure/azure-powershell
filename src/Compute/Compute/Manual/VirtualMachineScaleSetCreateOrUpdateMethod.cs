@@ -332,7 +332,8 @@ namespace Microsoft.Azure.Commands.Compute.Automation
                     //sku.Basic is not compatible with multiple placement groups
                     sku: (noZones && _cmdlet.SinglePlacementGroup.IsPresent)
                         ? LoadBalancerStrategy.Sku.Basic
-                        : LoadBalancerStrategy.Sku.Standard);
+                        : LoadBalancerStrategy.Sku.Standard,
+                    edgeZone : _cmdlet.EdgeZone);
 
                 var frontendIpConfiguration = loadBalancer.CreateFrontendIPConfiguration(
                     name: _cmdlet.FrontendPoolName,
@@ -508,7 +509,8 @@ namespace Microsoft.Azure.Commands.Compute.Automation
                     //sku.Basic is not compatible with multiple placement groups
                     sku: (noZones && _cmdlet.SinglePlacementGroup.IsPresent)
                         ? LoadBalancerStrategy.Sku.Basic
-                        : LoadBalancerStrategy.Sku.Standard);
+                        : LoadBalancerStrategy.Sku.Standard,
+                    edgeZone: _cmdlet.EdgeZone);
 
                 var frontendIpConfiguration = loadBalancer.CreateFrontendIPConfiguration(
                     name: _cmdlet.FrontendPoolName,
