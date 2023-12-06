@@ -35,6 +35,9 @@ Deletes the federated identity credential.
 ### [Remove-AzUserAssignedIdentity](Remove-AzUserAssignedIdentity.md)
 Deletes the identity.
 
+### [Revoke-AzUserAssignedIdentityToken](Revoke-AzUserAssignedIdentityToken.md)
+Revoke all tokens issued in the past for a specified user assigned identity.
+
 ### [Update-AzFederatedIdentityCredential](Update-AzFederatedIdentityCredential.md)
 Create or update a federated identity credential under the specified user assigned identity.
 
