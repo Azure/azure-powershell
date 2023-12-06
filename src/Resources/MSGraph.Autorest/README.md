@@ -78,7 +78,6 @@ exclude-tableview-properties: []
 
 inlining-threshold: 200
 
-
 directive:
   - no-inline:
     - MicrosoftGraphUser

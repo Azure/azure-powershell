@@ -50,6 +50,12 @@ Retrieve a list of organization objects.
 ### [Get-AzADServicePrincipal](Get-AzADServicePrincipal.md)
 Lists entities from service principals or get entity from service principals by key
 
+### [Get-AzADServicePrincipalAppRoleAssignedTo](Get-AzADServicePrincipalAppRoleAssignedTo.md)
+Get appRoleAssignedTo from servicePrincipals
+
+### [Get-AzADServicePrincipalAppRoleAssignment](Get-AzADServicePrincipalAppRoleAssignment.md)
+Get appRoleAssignments from servicePrincipals
+
 ### [Get-AzADSpCredential](Get-AzADSpCredential.md)
 Lists key credentials and password credentials for an service principal.
 
@@ -73,6 +79,9 @@ Create new navigation property ref to owners for groups
 
 ### [New-AzADServicePrincipal](New-AzADServicePrincipal.md)
 Adds new entity to servicePrincipals
+
+### [New-AzADServicePrincipalAppRoleAssignment](New-AzADServicePrincipalAppRoleAssignment.md)
+Create new navigation property to appRoleAssignments for servicePrincipals
 
 ### [New-AzADSpCredential](New-AzADSpCredential.md)
 Creates key credentials or password credentials for an service principal.
@@ -108,6 +117,12 @@ Delete ref of navigation property owners for groups
 ### [Remove-AzADServicePrincipal](Remove-AzADServicePrincipal.md)
 Deletes entity from service principal.
 
+### [Remove-AzADServicePrincipalAppRoleAssignedTo](Remove-AzADServicePrincipalAppRoleAssignedTo.md)
+Delete navigation property appRoleAssignedTo for servicePrincipals
+
+### [Remove-AzADServicePrincipalAppRoleAssignment](Remove-AzADServicePrincipalAppRoleAssignment.md)
+Delete navigation property appRoleAssignments for servicePrincipals
+
 ### [Remove-AzADSpCredential](Remove-AzADSpCredential.md)
 Removes key credentials or password credentials for an service principal.
 
@@ -125,6 +140,12 @@ Update entity in groups
 
 ### [Update-AzADServicePrincipal](Update-AzADServicePrincipal.md)
 Updates entity in service principal
+
+### [Update-AzADServicePrincipalAppRoleAssignedTo](Update-AzADServicePrincipalAppRoleAssignedTo.md)
+Update the navigation property appRoleAssignedTo in servicePrincipals
+
+### [Update-AzADServicePrincipalAppRoleAssignment](Update-AzADServicePrincipalAppRoleAssignment.md)
+Update the navigation property appRoleAssignments in servicePrincipals
 
 ### [Update-AzADUser](Update-AzADUser.md)
 Updates entity in users
