@@ -64,7 +64,7 @@ namespace Microsoft.Azure.Management.CognitiveServices.Models
         /// </param>
 
         /// <param name="lifecycleStatus">Model lifecycle status.
-        /// Possible values include: &#39;GenerallyAvailable&#39;, &#39;Preview&#39;</param>
+        /// Possible values include: 'GenerallyAvailable', 'Preview'</param>
 
         /// <param name="systemData">Metadata pertaining to creation and last modification of the resource.
         /// </param>

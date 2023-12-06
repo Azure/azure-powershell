@@ -6,11 +6,36 @@ function RandomString([bool]$allChars, [int32]$len) {
         return -join ((48..57) + (97..122) | Get-Random -Count $len | % {[char]$_})
     }
 }
+function Start-TestSleep {
+    [CmdletBinding(DefaultParameterSetName = 'SleepBySeconds')]
+    param(
+        [parameter(Mandatory = $true, Position = 0, ParameterSetName = 'SleepBySeconds')]
+        [ValidateRange(0.0, 2147483.0)]
+        [double] $Seconds,
+
+        [parameter(Mandatory = $true, ParameterSetName = 'SleepByMilliseconds')]
+        [ValidateRange('NonNegative')]
+        [Alias('ms')]
+        [int] $Milliseconds
+    )
+
+    if ($TestMode -ne 'playback') {
+        switch ($PSCmdlet.ParameterSetName) {
+            'SleepBySeconds' {
+                Start-Sleep -Seconds $Seconds
+            }
+            'SleepByMilliseconds' {
+                Start-Sleep -Milliseconds $Milliseconds
+            }
+        }
+    }
+}
+
 $env = @{}
 function setupEnv() {
     # Preload subscriptionId and tenant from context, which will be used in test
     # as default. You could change them if needed.
-    
+
     $env.SubscriptionId = (Get-AzContext).Subscription.Id
     $env.Tenant = (Get-AzContext).Tenant.Id
     $env.Location = 'eastus'
@@ -35,7 +60,7 @@ function setupEnv() {
     $null = $env.add('rstr06', $rstr06)
     $null = $env.add('rstr07', $rstr07)
     $null = $env.add('rstr08', $rstr08)
-    
+
     # Create test resource group.
     $resourceGroup = 'mariadb-test-' + (RandomString -allChars $false -len 6)
     Write-Host -ForegroundColor Green "Start to creating resource group for test..."
@@ -43,8 +68,8 @@ function setupEnv() {
     $null = $env.Add('ResourceGroup', $resourceGroup)
     Write-Host -ForegroundColor Green "Resource group created successfully."
     # For any resources you created for test, you should add it to $env here.
- 
-    # create mariadb for test  
+
+    # create mariadb for test
     Write-Host -ForegroundColor Green "Start to creating mariadb for test..."
     $rstrbc01 = 'mariadb-test-' + (RandomString -allChars $false -len 6)
     $rstrbc02 = 'mariadb-test-' + (RandomString -allChars $false -len 6)
@@ -66,7 +91,7 @@ function setupEnv() {
     GetOrCreateMariaDb -forceCreate $true -mariaDb $mariaDbParam04 -ResourceGroup $resourceGroup
     GetOrCreateMariaDb -forceCreate $true -mariaDb $mariaDbParam05 -ResourceGroup $resourceGroup
     GetOrCreateMariaDb -forceCreate $true -mariaDb $mariaDbParam06 -ResourceGroup $resourceGroup
-    
+
     $null = $env.add('rstrbc01', $rstrbc01)
     $null = $env.add('rstrbc02', $rstrbc02)
     $null = $env.add('rstrgp01', $rstrgp01)

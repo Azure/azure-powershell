@@ -31,7 +31,7 @@ function setupEnv() {
     $constants.psobject.Properties | ForEach-Object { $env[$_.Name] = $_.Value }
     $TemplatePath = ".\test\deployment-templates"
     $SampleDataPath = ".\test\sampleData"
-    
+
     #Load common Functions
     . (".\test\common.ps1")
 
@@ -56,8 +56,8 @@ function setupEnv() {
     $result = New-AzDeployment -Mode Incremental -TemplateFile $TemplateFile -TemplateParameterFile $TemplateParametersFile -Name Workspace -ResourceGroupName $resourceGroupName
     if($result.ProvisioningState -eq "Succeeded"){
         $null = $env.Add("workspaceName", $workspaceName)
-        $url = "https://management.azure.com/"+ ($result.Id) + "?api-version=2021-04-01"    
-        $deployResult = Invoke-RestMethod -Uri $url -Method GET -headers $header    
+        $url = "https://management.azure.com/"+ ($result.Id) + "?api-version=2021-04-01"
+        $deployResult = Invoke-RestMethod -Uri $url -Method GET -headers $header
         $null = $env.Add('workspaceId', ($deployResult.properties.outputs.workspaceId.value))
         #$null = $env.Add('workspaceKey', ($deployResult.properties.outputs.workspaceKey.value))
         $workspaceKey = ($deployResult.properties.outputs.workspaceKey.value)
@@ -65,7 +65,7 @@ function setupEnv() {
         $null = $env.Add("newOnboardingStateWS", $newOnboardingStateWS)
         $null = $env.Add("removeOnboardingStateWS", $removeOnboardingStateWS)
     }
-    
+
 
     #Custom Log Import -> Create Analytic that triggers
     Write-Host "Ingesting Sample Data"
@@ -77,7 +77,6 @@ function setupEnv() {
         Write-Host "$TableName results: $status"
     }
     write-Host "Starting sleep to allow time for ingestion"
-    #Start-Sleep -Seconds 600
     Start-WaitForData 600
 
     # Alert Rules that trigger off custom data.
@@ -98,7 +97,7 @@ function setupEnv() {
         $null = $env.Add(("solarigateRuleGuid"), $solarigateRuleGuid)
         $null = $env.Add(("disabledRuleGuid"), $disabledRuleGuid)
         $null = $env.Add(("mlRuleGuid"), $mlRuleGuid)
-    } 
+    }
 
     #Deploy Playbooks
     Write-Host "Start to create test playbooks"
@@ -106,8 +105,8 @@ function setupEnv() {
     $TemplateParametersFile = (Get-ChildItem $TemplatePath\playbooks\template.parameters.json).FullName
     $result = New-AzDeployment -Mode Incremental -TemplateFile $TemplateFile -TemplateParameterFile $TemplateParametersFile -Name Playbooks -ResourceGroupName $resourceGroupName
     if($result.ProvisioningState -eq "Succeeded"){
-        $url = "https://management.azure.com/"+ ($result.Id) + "?api-version=2021-04-01"    
-        $deployResult = Invoke-RestMethod -Uri $url -Method GET -headers $header    
+        $url = "https://management.azure.com/"+ ($result.Id) + "?api-version=2021-04-01"
+        $deployResult = Invoke-RestMethod -Uri $url -Method GET -headers $header
         $null = $env.Add('Playbook1LogicAppResourceId', ($deployResult.properties.Outputs.Playbook1LogicAppResourceId.value))
         $null = $env.Add('Playbook1TriggerUrl', ($deployResult.properties.Outputs.Playbook1triggerUrl.value))
         $null = $env.Add('Playbook2LogicAppResourceId', ($deployResult.properties.Outputs.Playbook2LogicAppResourceId.value))
@@ -117,8 +116,8 @@ function setupEnv() {
         $null = $env.Add('Playbook4LogicAppResourceId', ($deployResult.properties.Outputs.Playbook4LogicAppResourceId.value))
         $null = $env.Add('Playbook4TriggerUrl', ($deployResult.properties.Outputs.Playbook4triggerUrl.value))
     }
-    
-    
+
+
     #Create Alert Rules
     Write-Host "Start to create test alert rules"
     $null = $env.Add('NewAlertRuleName', ("NewAlertRule" + (RandomString -allChars $false -len 6)))
@@ -139,7 +138,7 @@ function setupEnv() {
     Create-AlertRuleAction -PSVerb RemoveViaId -WorkspaceName $env.workspaceName -logicAppResourceId $env.Playbook1LogicAppResourceId -triggerUrl $env.Playbook1TriggerUrl
     Create-AlertRuleAction -PSVerb Update -WorkspaceName $env.workspaceName -logicAppResourceId $env.Playbook1LogicAppResourceId -triggerUrl $env.Playbook1TriggerUrl
     Create-AlertRuleAction -PSVerb UpdateViaId -WorkspaceName $env.workspaceName -logicAppResourceId $env.Playbook1LogicAppResourceId -triggerUrl $env.Playbook1TriggerUrl
-    
+
     #Service Principal needs to be in constants.json.
     #Write-Host "Get Service Principal"
     #$ClientID = '1950a258-227b-4e31-a9cf-717495945fc2'
@@ -156,7 +155,7 @@ function setupEnv() {
     #$DeviceCodeRequest = Invoke-RestMethod @DeviceCodeRequestParams
     #Write-Host $DeviceCodeRequest.message -ForegroundColor Yellow
     #write-host "You need to go login with the data above. script will continue in "
-    #start-sleep -Seconds 120
+    #start-testsleep -Seconds 120
     #$uri = "https://login.microsoftonline.com/"+$env.Tenant+"/oauth2/token"
     #$TokenRequestParams = @{
     #    Method = 'POST'
@@ -180,7 +179,7 @@ function setupEnv() {
     #$url = "https://main.iam.ad.ext.azure.com/api/ManagedApplications/List"
     #$res = Invoke-RestMethod -Uri $url -Headers $header -Method POST -body ($body | convertto-Json) -ErrorAction Stop -ContentType "application/json"
     #$null = $env.Add('ASIServicePrinicpal', ($res.appList[0].objectId))
-    
+
     Write-Host "Deploy authorization to allow automation rules"
     $authorizationParams = Get-Content .\test\deployment-templates\authorization\template.parameters.json | ConvertFrom-Json
     $authorizationParams.parameters.ASIServicePrinicpal.value = $env.ASIServicePrinicpal
@@ -188,7 +187,7 @@ function setupEnv() {
     $TemplateFile = (Get-ChildItem $TemplatePath\authorization\template.json).FullName
     $TemplateParametersFile = (Get-ChildItem $TemplatePath\authorization\template.parameters.json).FullName
     $result = New-AzDeployment -Mode Incremental -TemplateFile $TemplateFile -TemplateParameterFile $TemplateParametersFile -Name Authorization -ResourceGroupName $resourceGroupName
-    start-sleep 60
+    Start-TestSleep 60
 
     #Create Automation Rule
     Write-Host "Start to create test automation rule"
@@ -232,7 +231,7 @@ function setupEnv() {
     Create-BookmarkRelation -PSVerb UpdateViaId -WorkspaceName $env.workspaceName
     $null = $env.Add('UpdateViaIdBookmarkRelationIncidentId2', ((New-Guid).Guid))
     $null = $env.Add('UpdateViaIdbookmarkRelationIncidentName2', ("NewbookmarkRelationIncidentName"+ (RandomString -allChars $false -len 6)))
-    
+
 
     #Create DataConnector
     Write-Host "Start to create test dataConnector"
@@ -261,13 +260,13 @@ function setupEnv() {
     #Create Entity Queriers
     Write-Host "Start to create test entityQuery"
     $null = $env.Add('NewentityQueryActivityName', ("NewentityQueryActivity"+ (RandomString -allChars $false -len 6)))
-    $null = $env.Add('NewentityQueryActivityId', ((New-Guid).Guid)) 
+    $null = $env.Add('NewentityQueryActivityId', ((New-Guid).Guid))
     Create-EntityQuery -PSVerb Get -WorkspaceName $env.workspaceName
     Create-EntityQuery -PSVerb Remove -WorkspaceName $env.workspaceName
     Create-EntityQuery -PSVerb RemoveViaId -WorkspaceName $env.workspaceName
     Create-EntityQuery -PSVerb Update -WorkspaceName $env.workspaceName
     Create-EntityQuery -PSVerb UpdateViaId -WorkspaceName $env.workspaceName
-    
+
     #Entity Relations
     #System built, can't test without data.  Find way to import data?
 
@@ -275,9 +274,9 @@ function setupEnv() {
     #System built, can't test without data.  Find way to import data?
 
     #Create Incident
-    Write-Host "Start to create test incident" 
+    Write-Host "Start to create test incident"
     $null = $env.Add('NewincidentName', ("Newincident"+ (RandomString -allChars $false -len 6)))
-    $null = $env.Add('NewincidentId', ((New-Guid).Guid))   
+    $null = $env.Add('NewincidentId', ((New-Guid).Guid))
     Create-Incident -PSVerb Get -WorkspaceName $env.workspaceName
     Create-Incident -PSVerb Remove -WorkspaceName $env.workspaceName
     Create-Incident -PSVerb RemoveViaId -WorkspaceName $env.workspaceName
@@ -322,12 +321,12 @@ function setupEnv() {
     Create-IncidentRelation -PSVerb UpdateViaId -WorkspaceName $env.workspaceName
     $null = $env.Add('UpdateViaIdincidentRelationBookmarkId2', ((New-Guid).Guid))
     $null = $env.Add('UpdateViaIdincidentRelationBookmarkName2', ("NewincidentRelationBookmarkName"+ (RandomString -allChars $false -len 6)))
-    
+
 
     #IncidentTeam
     $null = $env.Add('NewincidentTeamIncidentId', ((New-Guid).Guid))
     $null = $env.Add('NewincidentTeamIncidentName', ("NewincidentTeamIncidentName"+ (RandomString -allChars $false -len 6)))
-    
+
     #Metadata
     #"sourceId": "azuresentinel.azure-sentinel-solution-zerotrust
     Write-Host "Start to create test MetaData"
@@ -340,20 +339,20 @@ function setupEnv() {
     if($result.ProvisioningState -eq "Succeeded"){
         $null = $env.Add('metadataName', 'azuresentinel.azure-sentinel-solution-zerotrust')
     }
-    
+
     #OfficeConsent
     #cant pre-create to test.
 
     #OnboardingState
-    #create additonal workspaces in first template    
-    
+    #create additonal workspaces in first template
+
     #Setting
     #Nothing to create
 
     #SourceControl
     #SourceControlRepository
     #nothing to create
-    
+
     #ThreatIntelligeneceIndicator
     Write-Host "Start to create test threat intelligence indicator"
     Create-ThreatIntelligenceIndicator -PSVerb Get -WorkspaceName $env.workspaceName -IP "8.8.8.1"
