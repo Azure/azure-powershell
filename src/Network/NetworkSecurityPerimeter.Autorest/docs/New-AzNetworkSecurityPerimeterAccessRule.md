@@ -61,6 +61,24 @@ Location Name
 
 Creates a NetworkSecurityPerimeterAccessRule
 
+### Example 2: Creates a NetworkSecurityPerimeterAccessRule
+```powershell
+
+$emails = @("test123@microsoft.com", "test321@microsoft.com")
+New-AzNetworkSecurityPerimeterAccessRule -Name accessRule2 -ProfileName profile2 -ResourceGroupName ResourceGroup-1 -SecurityPerimeterName nsp3 -EmailAddress $emails -Direction 'Outbound' -Location eastus2euap
+
+```
+
+```output
+
+Location Name
+-------- ----
+         accessRule2
+
+```
+
+Creates a NetworkSecurityPerimeterAccessRule
+
 ## PARAMETERS
 
 ### -AccessRuleId
