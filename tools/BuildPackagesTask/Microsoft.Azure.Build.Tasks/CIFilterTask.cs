@@ -1,4 +1,4 @@
-﻿﻿//
+﻿//
 // Copyright (c) Microsoft.  All rights reserved.
 //
 // Licensed under the Apache License, Version 2.0 (the "License");
@@ -364,14 +364,14 @@ namespace Microsoft.WindowsAzure.Build.Tasks
             DateTime endOfRegularExpressionTime = DateTime.Now;
             
             #region Record the CI plan info to CIPlan.json under the artifacts folder
-            Dictionary<string, HashSet<string>> CIPlan = new Dictionary<string, HashSet<string>>
+            Dictionary<string, List<string>> CIPlan = new Dictionary<string, List<string>>
             {
-                [BUILD_PHASE] = new HashSet<string>(influencedModuleInfo[BUILD_PHASE]),
-                [TEST_PHASE] = new HashSet<string>(influencedModuleInfo[TEST_PHASE])
+                [BUILD_PHASE] = new List<string>(influencedModuleInfo[BUILD_PHASE]),
+                [TEST_PHASE] = new List<string>(influencedModuleInfo[TEST_PHASE])
             };
             foreach (var analysisPhase in ANALYSIS_PHASE_LIST)
             {
-                CIPlan.Add(analysisPhase, influencedModuleInfo[analysisPhase]);
+                CIPlan.Add(analysisPhase, new List<string>(influencedModuleInfo[analysisPhase]));
             }
             if (!Directory.Exists(config.ArtifactPipelineInfoFolder))
             {
