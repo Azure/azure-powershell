@@ -18,6 +18,8 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
+
+## Version 6.0.2
 * Supported high throughput append blob
     - `Set-AzStorageBlobContent`
     - `Copy-AzStorageBlob`    
