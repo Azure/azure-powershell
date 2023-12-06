@@ -271,9 +271,14 @@ namespace Microsoft.Azure.Management.Compute
             /// <param name='sshPublicKeyName'>
             /// The name of the SSH public key.
             /// </param>
-            public static SshPublicKeyGenerateKeyPairResult GenerateKeyPair(this ISshPublicKeysOperations operations, string resourceGroupName, string sshPublicKeyName)
+            /// <param name='encryptionType'>
+            /// The encryption type of the SSH keys to be generated. See SshEncryptionTypes
+            /// for possible set of values. If not provided, will default to RSA. Possible
+            /// values include: 'RSA', 'Ed25519'
+            /// </param>
+            public static SshPublicKeyGenerateKeyPairResult GenerateKeyPair(this ISshPublicKeysOperations operations, string resourceGroupName, string sshPublicKeyName, string encryptionType = default(string))
             {
-                return operations.GenerateKeyPairAsync(resourceGroupName, sshPublicKeyName).GetAwaiter().GetResult();
+                return operations.GenerateKeyPairAsync(resourceGroupName, sshPublicKeyName, encryptionType).GetAwaiter().GetResult();
             }
 
             /// <summary>
@@ -291,12 +296,17 @@ namespace Microsoft.Azure.Management.Compute
             /// <param name='sshPublicKeyName'>
             /// The name of the SSH public key.
             /// </param>
+            /// <param name='encryptionType'>
+            /// The encryption type of the SSH keys to be generated. See SshEncryptionTypes
+            /// for possible set of values. If not provided, will default to RSA. Possible
+            /// values include: 'RSA', 'Ed25519'
+            /// </param>
             /// <param name='cancellationToken'>
             /// The cancellation token.
             /// </param>
-            public static async Task<SshPublicKeyGenerateKeyPairResult> GenerateKeyPairAsync(this ISshPublicKeysOperations operations, string resourceGroupName, string sshPublicKeyName, CancellationToken cancellationToken = default(CancellationToken))
+            public static async Task<SshPublicKeyGenerateKeyPairResult> GenerateKeyPairAsync(this ISshPublicKeysOperations operations, string resourceGroupName, string sshPublicKeyName, string encryptionType = default(string), CancellationToken cancellationToken = default(CancellationToken))
             {
-                using (var _result = await operations.GenerateKeyPairWithHttpMessagesAsync(resourceGroupName, sshPublicKeyName, null, cancellationToken).ConfigureAwait(false))
+                using (var _result = await operations.GenerateKeyPairWithHttpMessagesAsync(resourceGroupName, sshPublicKeyName, encryptionType, null, cancellationToken).ConfigureAwait(false))
                 {
                     return _result.Body;
                 }

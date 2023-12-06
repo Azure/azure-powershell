@@ -66,7 +66,9 @@ namespace Microsoft.Azure.Management.Compute.Models
         /// <param name="statuses">The resource status information.</param>
         /// <param name="patchStatus">[Preview Feature] The status of virtual
         /// machine patch operations.</param>
-        public VirtualMachineInstanceView(int? platformUpdateDomain = default(int?), int? platformFaultDomain = default(int?), string computerName = default(string), string osName = default(string), string osVersion = default(string), string hyperVGeneration = default(string), string rdpThumbPrint = default(string), VirtualMachineAgentInstanceView vmAgent = default(VirtualMachineAgentInstanceView), MaintenanceRedeployStatus maintenanceRedeployStatus = default(MaintenanceRedeployStatus), IList<DiskInstanceView> disks = default(IList<DiskInstanceView>), IList<VirtualMachineExtensionInstanceView> extensions = default(IList<VirtualMachineExtensionInstanceView>), VirtualMachineHealthStatus vmHealth = default(VirtualMachineHealthStatus), BootDiagnosticsInstanceView bootDiagnostics = default(BootDiagnosticsInstanceView), string assignedHost = default(string), IList<InstanceViewStatus> statuses = default(IList<InstanceViewStatus>), VirtualMachinePatchStatus patchStatus = default(VirtualMachinePatchStatus))
+        /// <param name="isVMInStandbyPool">[Preview Feature] Specifies whether
+        /// the VM is currently in or out of the Standby Pool.</param>
+        public VirtualMachineInstanceView(int? platformUpdateDomain = default(int?), int? platformFaultDomain = default(int?), string computerName = default(string), string osName = default(string), string osVersion = default(string), string hyperVGeneration = default(string), string rdpThumbPrint = default(string), VirtualMachineAgentInstanceView vmAgent = default(VirtualMachineAgentInstanceView), MaintenanceRedeployStatus maintenanceRedeployStatus = default(MaintenanceRedeployStatus), IList<DiskInstanceView> disks = default(IList<DiskInstanceView>), IList<VirtualMachineExtensionInstanceView> extensions = default(IList<VirtualMachineExtensionInstanceView>), VirtualMachineHealthStatus vmHealth = default(VirtualMachineHealthStatus), BootDiagnosticsInstanceView bootDiagnostics = default(BootDiagnosticsInstanceView), string assignedHost = default(string), IList<InstanceViewStatus> statuses = default(IList<InstanceViewStatus>), VirtualMachinePatchStatus patchStatus = default(VirtualMachinePatchStatus), bool? isVMInStandbyPool = default(bool?))
         {
             PlatformUpdateDomain = platformUpdateDomain;
             PlatformFaultDomain = platformFaultDomain;
@@ -84,6 +86,7 @@ namespace Microsoft.Azure.Management.Compute.Models
             AssignedHost = assignedHost;
             Statuses = statuses;
             PatchStatus = patchStatus;
+            IsVMInStandbyPool = isVMInStandbyPool;
             CustomInit();
         }
 
@@ -197,6 +200,13 @@ namespace Microsoft.Azure.Management.Compute.Models
         /// </summary>
         [JsonProperty(PropertyName = "patchStatus")]
         public VirtualMachinePatchStatus PatchStatus { get; set; }
+
+        /// <summary>
+        /// Gets [Preview Feature] Specifies whether the VM is currently in or
+        /// out of the Standby Pool.
+        /// </summary>
+        [JsonProperty(PropertyName = "isVMInStandbyPool")]
+        public bool? IsVMInStandbyPool { get; private set; }
 
     }
 }

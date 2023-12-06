@@ -12,12 +12,11 @@ namespace Microsoft.Azure.Management.Compute.Models
 {
 
     /// <summary>
-    /// Defines values for SecurityEncryptionTypes.
+    /// Defines values for SshEncryptionTypes.
     /// </summary>
-    public static class SecurityEncryptionTypes
+    public static class SshEncryptionTypes
     {
-        public const string VMGuestStateOnly = "VMGuestStateOnly";
-        public const string DiskWithVMGuestState = "DiskWithVMGuestState";
-        public const string NonPersistedTPM = "NonPersistedTPM";
+        public const string RSA = "RSA";
+        public const string Ed25519 = "Ed25519";
     }
 }

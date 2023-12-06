@@ -12,12 +12,11 @@ namespace Microsoft.Azure.Management.Compute.Models
 {
 
     /// <summary>
-    /// Defines values for SecurityEncryptionTypes.
+    /// Defines values for Mode.
     /// </summary>
-    public static class SecurityEncryptionTypes
+    public static class Mode
     {
-        public const string VMGuestStateOnly = "VMGuestStateOnly";
-        public const string DiskWithVMGuestState = "DiskWithVMGuestState";
-        public const string NonPersistedTPM = "NonPersistedTPM";
+        public const string Audit = "Audit";
+        public const string Enforce = "Enforce";
     }
 }
