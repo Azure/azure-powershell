@@ -1,5 +1,5 @@
 ---
-external help file:
+external help file: Az.DesktopVirtualization-help.xml
 Module Name: Az.DesktopVirtualization
 online version: https://learn.microsoft.com/powershell/module/az.desktopvirtualization/remove-azwvdscalingplanpooledschedule
 schema: 2.0.0
@@ -16,13 +16,13 @@ Remove a ScalingPlanPooledSchedule.
 ```
 Remove-AzWvdScalingPlanPooledSchedule -ResourceGroupName <String> -ScalingPlanName <String>
  -ScalingPlanScheduleName <String> [-SubscriptionId <String>] [-DefaultProfile <PSObject>] [-PassThru]
- [-Confirm] [-WhatIf] [<CommonParameters>]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### DeleteViaIdentity
 ```
 Remove-AzWvdScalingPlanPooledSchedule -InputObject <IDesktopVirtualizationIdentity>
- [-DefaultProfile <PSObject>] [-PassThru] [-Confirm] [-WhatIf] [<CommonParameters>]
+ [-DefaultProfile <PSObject>] [-PassThru] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -30,7 +30,7 @@ Remove a ScalingPlanPooledSchedule.
 
 ## EXAMPLES
 
-### Example 1: Delete a Pooled Schedule 
+### Example 1: Delete a Pooled Schedule
 ```powershell
 Remove-AzWvdScalingPlanPooledSchedule -ResourceGroupName rgName -ScalingPlanName spName -ScalingPlanScheduleName scheduleName
 ```
@@ -192,4 +192,3 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ## NOTES
 
 ## RELATED LINKS
-

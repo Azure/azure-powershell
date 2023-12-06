@@ -18,6 +18,8 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
+
+## Version 6.0.1
 * Updated error message when storage context is missing in a cmdlet input 
 
 ## Version 6.0.0

@@ -124,6 +124,31 @@ namespace Microsoft.Azure.Management.CognitiveServices
         ICommitmentPlansOperations CommitmentPlans { get; }
 
         /// <summary>
+        /// Gets the IEncryptionScopesOperations
+        /// </summary>
+        IEncryptionScopesOperations EncryptionScopes { get; }
+
+        /// <summary>
+        /// Gets the IRaiPoliciesOperations
+        /// </summary>
+        IRaiPoliciesOperations RaiPolicies { get; }
+
+        /// <summary>
+        /// Gets the IRaiBlocklistsOperations
+        /// </summary>
+        IRaiBlocklistsOperations RaiBlocklists { get; }
+
+        /// <summary>
+        /// Gets the IRaiBlocklistItemsOperations
+        /// </summary>
+        IRaiBlocklistItemsOperations RaiBlocklistItems { get; }
+
+        /// <summary>
+        /// Gets the IRaiContentFiltersOperations
+        /// </summary>
+        IRaiContentFiltersOperations RaiContentFilters { get; }
+
+        /// <summary>
         /// Check available SKUs.
         /// </summary>
         /// <remarks>

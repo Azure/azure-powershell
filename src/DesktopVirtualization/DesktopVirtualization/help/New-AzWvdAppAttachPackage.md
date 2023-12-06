@@ -1,5 +1,5 @@
 ---
-external help file:
+external help file: Az.DesktopVirtualization-help.xml
 Module Name: Az.DesktopVirtualization
 online version: https://learn.microsoft.com/powershell/module/az.desktopvirtualization/new-azwvdappattachpackage
 schema: 2.0.0
@@ -15,27 +15,26 @@ Create or update an App Attach package.
 ### CreateExpanded (Default)
 ```
 New-AzWvdAppAttachPackage -Name <String> -ResourceGroupName <String> [-SubscriptionId <String>]
- [-FailHealthCheckOnStagingFailure <FailHealthCheckOnStagingFailure>] [-HostPoolReference <String[]>]
- [-IdentityType <ResourceIdentityType>] [-ImageCertificateExpiry <DateTime>] [-ImageCertificateName <String>]
- [-ImageDisplayName <String>] [-ImageIsActive] [-ImageIsPackageTimestamped <PackageTimestamped>]
- [-ImageIsRegularRegistration] [-ImageLastUpdated <DateTime>] [-ImagePackageAlias <String>]
- [-ImagePackageApplication <IMsixPackageApplications[]>]
+ [-Location <String>] [-FailHealthCheckOnStagingFailure <FailHealthCheckOnStagingFailure>]
+ [-HostPoolReference <String[]>] [-IdentityType <ResourceIdentityType>] [-ImageCertificateExpiry <DateTime>]
+ [-ImageCertificateName <String>] [-ImageDisplayName <String>] [-ImageIsActive]
+ [-ImageIsPackageTimestamped <PackageTimestamped>] [-ImageIsRegularRegistration] [-ImageLastUpdated <DateTime>]
+ [-ImagePackageAlias <String>] [-ImagePackageApplication <IMsixPackageApplications[]>]
  [-ImagePackageDependency <IMsixPackageDependencies[]>] [-ImagePackageFamilyName <String>]
  [-ImagePackageFullName <String>] [-ImagePackageName <String>] [-ImagePackageRelativePath <String>]
- [-ImagePath <String>] [-ImageVersion <String>] [-KeyVaultUrl <String>] [-Kind <String>] [-Location <String>]
- [-ManagedBy <String>] [-PlanName <String>] [-PlanProduct <String>] [-PlanPromotionCode <String>]
- [-PlanPublisher <String>] [-PlanVersion <String>] [-SkuCapacity <Int32>] [-SkuFamily <String>]
- [-SkuName <String>] [-SkuSize <String>] [-SkuTier <SkuTier>] [-Tag <Hashtable>] [-DefaultProfile <PSObject>]
- [-Confirm] [-WhatIf] [<CommonParameters>]
+ [-ImagePath <String>] [-ImageVersion <String>] [-KeyVaultUrl <String>] [-Kind <String>] [-ManagedBy <String>]
+ [-PlanName <String>] [-PlanProduct <String>] [-PlanPromotionCode <String>] [-PlanPublisher <String>]
+ [-PlanVersion <String>] [-SkuCapacity <Int32>] [-SkuFamily <String>] [-SkuName <String>] [-SkuSize <String>]
+ [-SkuTier <SkuTier>] [-Tag <Hashtable>] [-DefaultProfile <PSObject>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### ImageObject
 ```
-New-AzWvdAppAttachPackage [-AppAttachPackage] <AppAttachPackage> -Name <String> -ResourceGroupName <String>
- -Location <String> [-SubscriptionId <String>]
- [-FailHealthCheckOnStagingFailure <FailHealthCheckOnStagingFailure>] [-HostPoolReference <String[]>]
- [-ImageDisplayName <String>] [-ImageIsActive] [-ImageIsRegularRegistration] [-PassThru]
- [-DefaultProfile <PSObject>] [<CommonParameters>]
+New-AzWvdAppAttachPackage -Name <String> -ResourceGroupName <String> [-SubscriptionId <String>]
+ [-Location <String>] [-FailHealthCheckOnStagingFailure <FailHealthCheckOnStagingFailure>]
+ [-HostPoolReference <String[]>] [-ImageDisplayName <String>] [-ImageIsActive] [-ImageIsRegularRegistration]
+ [-KeyVaultUrl <String>] [-AppAttachPackage] <AppAttachPackage> [-PassThru] [-DefaultProfile <PSObject>]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -112,7 +111,7 @@ Parameter Sets: ImageObject
 Aliases:
 
 Required: True
-Position: 0
+Position: 1
 Default value: None
 Accept pipeline input: True (ByValue)
 Accept wildcard characters: False
@@ -465,7 +464,7 @@ Type: System.String
 Parameter Sets: (All)
 Aliases:
 
-Required: True
+Required: False
 Position: Named
 Default value: None
 Accept pipeline input: False
@@ -505,7 +504,6 @@ Accept wildcard characters: False
 ```
 
 ### -PassThru
-
 
 ```yaml
 Type: System.Management.Automation.SwitchParameter
@@ -769,4 +767,3 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ## NOTES
 
 ## RELATED LINKS
-

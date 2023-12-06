@@ -349,6 +349,9 @@ namespace Microsoft.Azure.Management.CognitiveServices
         /// <param name='commitmentPlanAssociationName'>
         /// The name of the commitment plan association with the Cognitive Services Account
         /// </param>
+        /// <param name='tags'>
+        /// Resource tags.
+        /// </param>
         /// <param name='accountId'>
         /// The Azure resource id of the account.
         /// </param>
@@ -364,7 +367,7 @@ namespace Microsoft.Azure.Management.CognitiveServices
         /// <exception cref="Microsoft.Rest.SerializationException">
         /// Thrown when unable to deserialize the response
         /// </exception>
-        System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse<CommitmentPlanAccountAssociation>> CreateOrUpdateAssociationWithHttpMessagesAsync(string resourceGroupName, string commitmentPlanName, string commitmentPlanAssociationName, string accountId = default(string), System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse<CommitmentPlanAccountAssociation>> CreateOrUpdateAssociationWithHttpMessagesAsync(string resourceGroupName, string commitmentPlanName, string commitmentPlanAssociationName, System.Collections.Generic.IDictionary<string, string> tags = default(System.Collections.Generic.IDictionary<string, string>), string accountId = default(string), System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
 
         /// <summary>
         /// Deletes the association of the Cognitive Services commitment plan.
@@ -517,6 +520,9 @@ namespace Microsoft.Azure.Management.CognitiveServices
         /// <param name='commitmentPlanAssociationName'>
         /// The name of the commitment plan association with the Cognitive Services Account
         /// </param>
+        /// <param name='tags'>
+        /// Resource tags.
+        /// </param>
         /// <param name='accountId'>
         /// The Azure resource id of the account.
         /// </param>
@@ -532,7 +538,7 @@ namespace Microsoft.Azure.Management.CognitiveServices
         /// <exception cref="Microsoft.Rest.SerializationException">
         /// Thrown when unable to deserialize the response
         /// </exception>
-        System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse<CommitmentPlanAccountAssociation>> BeginCreateOrUpdateAssociationWithHttpMessagesAsync(string resourceGroupName, string commitmentPlanName, string commitmentPlanAssociationName, string accountId = default(string), System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse<CommitmentPlanAccountAssociation>> BeginCreateOrUpdateAssociationWithHttpMessagesAsync(string resourceGroupName, string commitmentPlanName, string commitmentPlanAssociationName, System.Collections.Generic.IDictionary<string, string> tags = default(System.Collections.Generic.IDictionary<string, string>), string accountId = default(string), System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
 
         /// <summary>
         /// Deletes the association of the Cognitive Services commitment plan.

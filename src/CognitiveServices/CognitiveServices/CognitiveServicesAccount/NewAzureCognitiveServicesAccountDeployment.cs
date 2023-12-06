@@ -12,9 +12,12 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
+using Azure;
 using Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters;
 using Microsoft.Azure.Management.CognitiveServices;
 using Microsoft.Azure.Management.CognitiveServices.Models;
+using System.Collections;
+using System.Collections.Generic;
 using System.Management.Automation;
 
 namespace Microsoft.Azure.Commands.Management.CognitiveServices
@@ -69,6 +72,13 @@ namespace Microsoft.Azure.Commands.Management.CognitiveServices
             HelpMessage = "Cognitive Services Deployment Sku.")]
         public Sku Sku { get; set; }
 
+        [Parameter(
+            Mandatory = false,
+            HelpMessage = "Cognitive Services Deployment Tags.")]
+        [Alias(TagsAlias)]
+        [AllowEmptyCollection]
+        public Hashtable[] Tag { get; set; }
+
         public override void ExecuteCmdlet()
         {
             base.ExecuteCmdlet();
@@ -79,8 +89,12 @@ namespace Microsoft.Azure.Commands.Management.CognitiveServices
                                     ResourceGroupName,
                                     AccountName,
                                     Name,
-                                    Sku,
-                                    Properties);
+                                    new Deployment
+                                    {
+                                        Sku = Sku,
+                                        Properties = Properties,
+                                        Tags = TagsConversionHelper.CreateTagDictionary(Tag),
+                                    });
 
                     WriteObject(createAccountResponse);
             });

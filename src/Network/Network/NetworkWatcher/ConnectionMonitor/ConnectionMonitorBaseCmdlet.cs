@@ -199,7 +199,7 @@ namespace Microsoft.Azure.Commands.Network
                                     new PSNetworkWatcherConnectionMonitorSuccessThreshold()
                                     {
                                         ChecksFailedPercent = testConfiguration.SuccessThreshold.ChecksFailedPercent,
-                                        RoundTripTimeMs = testConfiguration.SuccessThreshold.RoundTripTimeMs
+                                        RoundTripTimeMs = testConfiguration.SuccessThreshold.RoundTripTimeMS
                                     },
                                 ProtocolConfiguration = this.GetPSProtocolConfiguration(testConfiguration)
                             };
@@ -633,7 +633,7 @@ namespace Microsoft.Azure.Commands.Network
                         Port = httpConfiguration.Port,
                         Method = httpConfiguration.Method,
                         Path = httpConfiguration.Path,
-                        PreferHTTPS = httpConfiguration.PreferHTTPS,
+                        PreferHttps = httpConfiguration.PreferHTTPS,
                         ValidStatusCodeRanges = httpConfiguration.ValidStatusCodeRanges,
                         RequestHeaders = this.GetRequestHeaders(httpConfiguration)
                     };
@@ -690,7 +690,7 @@ namespace Microsoft.Azure.Commands.Network
             return new ConnectionMonitorSuccessThreshold()
             {
                 ChecksFailedPercent = testConfiguration.SuccessThreshold.ChecksFailedPercent,
-                RoundTripTimeMs = testConfiguration.SuccessThreshold.RoundTripTimeMs
+                RoundTripTimeMS = testConfiguration.SuccessThreshold.RoundTripTimeMs
             };
         }
 
@@ -896,7 +896,7 @@ namespace Microsoft.Azure.Commands.Network
                     Port = testConfiguration.HttpConfiguration.Port,
                     Method = testConfiguration.HttpConfiguration.Method,
                     Path = testConfiguration.HttpConfiguration.Path,
-                    PreferHTTPS = testConfiguration.HttpConfiguration.PreferHTTPS,
+                    PreferHTTPS = testConfiguration.HttpConfiguration.PreferHttps,
                     ValidStatusCodeRanges = testConfiguration.HttpConfiguration.ValidStatusCodeRanges?.ToList(),
                     RequestHeaders = this.GetPSRequestHeaders(testConfiguration.HttpConfiguration.RequestHeaders?.ToList())
                 };
@@ -913,7 +913,7 @@ namespace Microsoft.Azure.Commands.Network
             return null;
         }
 
-        private List<PSHTTPHeader> GetPSRequestHeaders(List<HTTPHeader> headers)
+        private List<PSHTTPHeader> GetPSRequestHeaders(List<HttpHeader> headers)
         {
             if (headers == null)
             {
@@ -921,7 +921,7 @@ namespace Microsoft.Azure.Commands.Network
             }
 
             List<PSHTTPHeader> psHeaders = new List<PSHTTPHeader>();
-            foreach (HTTPHeader header in headers)
+            foreach (HttpHeader header in headers)
             {
                 psHeaders.Add(
                     new PSHTTPHeader()
@@ -991,18 +991,18 @@ namespace Microsoft.Azure.Commands.Network
             }
         }
 
-        private List<HTTPHeader> GetRequestHeaders(PSNetworkWatcherConnectionMonitorHttpConfiguration httpConfiguration)
+        private List<HttpHeader> GetRequestHeaders(PSNetworkWatcherConnectionMonitorHttpConfiguration httpConfiguration)
         {
             if (httpConfiguration.RequestHeaders == null)
             {
                 return null;
             }
 
-            var requestHeaders = new List<HTTPHeader>();
+            var requestHeaders = new List<HttpHeader>();
             foreach (PSHTTPHeader header in httpConfiguration.RequestHeaders)
             {
                 requestHeaders.Add(
-                    new HTTPHeader()
+                    new HttpHeader()
                     {
                         Name = header.Name,
                         Value = header.Value

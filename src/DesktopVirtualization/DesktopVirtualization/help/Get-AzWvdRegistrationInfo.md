@@ -1,5 +1,5 @@
 ---
-external help file:
+external help file: Az.DesktopVirtualization-help.xml
 Module Name: Az.DesktopVirtualization
 online version: https://learn.microsoft.com/powershell/module/az.desktopvirtualization/get-azwvdregistrationinfo
 schema: 2.0.0
@@ -13,7 +13,7 @@ Get the Windows virtual desktop registration info.
 ## SYNTAX
 
 ```
-Get-AzWvdRegistrationInfo -HostPoolName <String> -ResourceGroupName <String> [-SubscriptionId <String>]
+Get-AzWvdRegistrationInfo -ResourceGroupName <String> -HostPoolName <String> [-SubscriptionId <String>]
  [-DefaultProfile <PSObject>] [<CommonParameters>]
 ```
 
@@ -31,12 +31,11 @@ Get-AzWvdRegistrationInfo -ResourceGroupName rgName -HostPoolName hpName
 ExpirationTime        RegistrationTokenOperation Token
 --------------        -------------------------- -----
 5/10/2023 12:00:00 PM None                       <base64 encoded string>
-
 ```
 
 Retrieves Registration Info for the chosen hostpool.
 
-### Example 2: Get Empty Registration Info from HostPool 
+### Example 2: Get Empty Registration Info from HostPool
 ```powershell
 Get-AzWvdRegistrationInfo -ResourceGroupName rgName -HostPoolname hpName
 ```
@@ -104,7 +103,7 @@ Type: System.String
 Parameter Sets: (All)
 Aliases:
 
-Required: True
+Required: False
 Position: Named
 Default value: (Get-AzContext).Subscription.Id
 Accept pipeline input: False
@@ -123,4 +122,3 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ## NOTES
 
 ## RELATED LINKS
-

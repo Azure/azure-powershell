@@ -30,9 +30,9 @@ For information on how to develop for `Az.ManagedServiceIdentity`, see [how-to.m
 > see https://aka.ms/autorest
 
 ``` yaml
-branch: main
+commit: 78eac0bd58633028293cb1ec1709baa200bed9e2
 require:
-  - $(this-folder)/../readme.azure.noprofile.md
+  - $(this-folder)/../../readme.azure.noprofile.md
 input-file:
   - $(repo)/specification/msi/resource-manager/Microsoft.ManagedIdentity/stable/2023-01-31/ManagedIdentity.json
   - $(repo)/specification/msi/resource-manager/Microsoft.ManagedIdentity/preview/2022-01-31-preview/ManagedIdentity.json
@@ -42,6 +42,10 @@ resourcegroup-append: true
 nested-object-to-string: true
 identity-correction-for-post: true
 module-version: 0.3.0
+
+# For new modules, please avoid setting 3.x using the use-extension method and instead, use 4.x as the default option
+use-extension:
+  "@autorest/powershell": "3.x"
 
 directive:
   - where:
@@ -77,38 +81,58 @@ directive:
   - where:
       subject: UserAssignedIdentityAssociatedResource
     set:
-      preview-message: This is a preview version of the Associated Resources feature.
+      preview-announcement:
+        preview-message: This is a preview version of the Associated Resources feature.
 
-  # END     
+  # END
 
   # Federated identity credentials
-
+  # Add *-AzFederatedIdentityCredential alias, and make alias as main index.
+  - where:
+      verb: Get
+      subject: FederatedIdentityCredentials
+    set:
+      subject: FederatedIdentityCredential
+      alias: Get-AzFederatedIdentityCredentials
+  - where:
+      verb: New
+      subject: FederatedIdentityCredentials
+    set:
+      subject: FederatedIdentityCredential
+      alias: New-AzFederatedIdentityCredentials
+  - where:
+      verb: Remove
+      subject: FederatedIdentityCredentials
+    set:
+      subject: FederatedIdentityCredential
+      alias: Remove-AzFederatedIdentityCredentials
   - where:
       verb: Set
       subject: FederatedIdentityCredentials
     set:
       verb: Update
-      subject: FederatedIdentityCredentials
-    
+      subject: FederatedIdentityCredential
+      alias: Update-AzFederatedIdentityCredentials
+
   - where:
-      subject: FederatedIdentityCredentials
+      subject: FederatedIdentityCredential
       variant: ^Create$|^CreateViaIdentity$|^CreateViaIdentityExpanded$|^Update$|^UpdateViaIdentity$
     remove: true
 
   - where:
-      subject: FederatedIdentityCredentials
+      subject: FederatedIdentityCredential
       parameter-name: ResourceName
     set:
       parameter-name: IdentityName
 
   - where:
-      subject: FederatedIdentityCredentials
+      subject: FederatedIdentityCredential
       parameter-name: FederatedIdentityCredentialResourceName
     set:
       parameter-name: Name
 
   - where:
-      subject: FederatedIdentityCredentials
+      subject: FederatedIdentityCredential
       parameter-name: Audience
     required: true
     set:
@@ -116,31 +140,21 @@ directive:
         script: '@("api://AzureADTokenExchange")'
 
   - where:
-      subject: FederatedIdentityCredentials
+      subject: FederatedIdentityCredential
       parameter-name: Issuer
     required: true
 
   - where:
-      subject: FederatedIdentityCredentials
+      subject: FederatedIdentityCredential
       parameter-name: Subject
     required: true
 
-  - where:
-      model-name: FederatedIdentityCredential
-    set:
-      format-table:
-        properties:
-          - Name
-          - Issuer
-          - Subject
-          - Audience
-
-  # END          
+  # END
 
   # Below instructions remove duplicate API methods which use 2022-01-31-preview. MUST be removed when 2022-01-31-preview is removed.
 
   - where:
-      subject: FederatedIdentityCredentials
+      subject: FederatedIdentityCredential
       variant: ^Get1$|^List1$|^GetViaIdentity1$|^Create1$|^CreateExpanded1$|^CreateViaIdentity1$|^CreateViaIdentityExpanded1$|^Delete1$|^DeleteViaIdentity1$|^Update1$|^UpdateExpanded1$|^UpdateViaIdentity1$|^UpdateViaIdentityExpanded1$
     remove: true
 
@@ -157,4 +171,31 @@ directive:
 
   # END 
 
+  - where:
+      model-name: FederatedIdentityCredential
+    set:
+      format-table:
+        properties:
+          - Name
+          - Issuer
+          - Subject
+          - Audience
+
+  - where:
+      model-name: SystemAssignedIdentity
+    set:
+      format-table:
+        properties:
+          - Name
+          - Location
+          - ResourceGroupName
+
+  - where:
+      model-name: Identity
+    set:
+      format-table:
+        properties:
+          - Name
+          - Location
+          - ResourceGroupName
 ```
