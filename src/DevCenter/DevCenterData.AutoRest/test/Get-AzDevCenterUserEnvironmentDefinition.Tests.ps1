@@ -19,7 +19,7 @@ Describe 'Get-AzDevCenterUserEnvironmentDefinition' {
         $listOfEnvDefs.Count | Should -Be 3
 
         if ($Record -or $Live) {
-            $listOfEnvDefs = Get-AzDevCenterUserEnvironmentDefinition -DevCenter $env.devCenterName -ProjectName $env.projectName
+            $listOfEnvDefs = Get-AzDevCenterUserEnvironmentDefinition -DevCenterName $env.devCenterName -ProjectName $env.projectName
             $listOfEnvDefs.Count | Should -Be 3
         }
 
@@ -31,7 +31,7 @@ Describe 'Get-AzDevCenterUserEnvironmentDefinition' {
         $listOfEnvDefs.Count | Should -Be 3
         
         if ($Record -or $Live) {
-            $listOfEnvDefs = Get-AzDevCenterUserEnvironmentDefinition -DevCenter $env.devCenterName -ProjectName $env.projectName -CatalogName $env.catalogName 
+            $listOfEnvDefs = Get-AzDevCenterUserEnvironmentDefinition -DevCenterName $env.devCenterName -ProjectName $env.projectName -CatalogName $env.catalogName 
             $listOfEnvDefs.Count | Should -Be 3
         }
     }
@@ -44,7 +44,7 @@ Describe 'Get-AzDevCenterUserEnvironmentDefinition' {
 
 
         if ($Record -or $Live) {
-            $envDef = Get-AzDevCenterUserEnvironmentDefinition -DevCenter $env.devCenterName -ProjectName $env.projectName -CatalogName $env.catalogName -DefinitionName $env.functionApp
+            $envDef = Get-AzDevCenterUserEnvironmentDefinition -DevCenterName $env.devCenterName -ProjectName $env.projectName -CatalogName $env.catalogName -DefinitionName $env.functionApp
             $envDef.CatalogName | Should -Be $env.catalogName
             $envDef.Name | Should -Be $env.functionApp
             $envDef.TemplatePath | Should -Be "Environments/FunctionApp/azuredeploy.json"
@@ -62,7 +62,7 @@ Describe 'Get-AzDevCenterUserEnvironmentDefinition' {
         $envDef.TemplatePath | Should -Be "Environments/Sandbox/azuredeploy.json"
 
         if ($Record -or $Live) {
-            $envDef = Get-AzDevCenterUserEnvironmentDefinition -DevCenter $env.devCenterName -InputObject $envDefInput
+            $envDef = Get-AzDevCenterUserEnvironmentDefinition -DevCenterName $env.devCenterName -InputObject $envDefInput
             $envDef.CatalogName | Should -Be $env.catalogName
             $envDef.Name | Should -Be $env.sandbox
             $envDef.TemplatePath | Should -Be "Environments/Sandbox/azuredeploy.json"
