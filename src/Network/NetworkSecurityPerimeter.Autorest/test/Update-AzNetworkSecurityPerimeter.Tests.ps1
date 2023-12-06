@@ -15,19 +15,19 @@ if(($null -eq $TestName) -or ($TestName -contains 'Update-AzNetworkSecurityPerim
 }
 
 Describe 'Update-AzNetworkSecurityPerimeter' {
-    It 'PatchExpanded' -skip {
-        { throw [System.NotImplementedException] } | Should -Not -Throw
-    }
-
-    It 'Patch' -skip {
-        { throw [System.NotImplementedException] } | Should -Not -Throw
+    It 'PatchExpanded' {
+        {
+            $nspName = $env.randomStr + '-' + $env.nsp1
+            New-AzNetworkSecurityPerimeter -ResourceGroupName $env.rgname -Name $nspName -Location $env.location
+        } | Should -Not -Throw
     }
 
     It 'PatchViaIdentityExpanded' -skip {
-        { throw [System.NotImplementedException] } | Should -Not -Throw
-    }
-
-    It 'PatchViaIdentity' -skip {
-        { throw [System.NotImplementedException] } | Should -Not -Throw
+        {
+           $nspName = $env.randomStr + '-' + $env.nsp1
+           $nsp = Get-AzNetworkSecurityPerimeter -Name $env.nsp1 -ResourceGroupName $env.rgname
+           $GETObj = Get-AzNetworkSecurityPerimeter -Name $env.nsp1 -ResourceGroupName $env.rgname
+           $UpdateObj = Update-AzNetworkSecurityPerimeter -InputObject $GETObj
+        } | Should -Not -Throw
     }
 }
