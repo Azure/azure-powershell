@@ -64,12 +64,6 @@ function Get-AzMigrateServerMigrationStatus {
         # Specifies whether the health issues to show for replicating server.
         ${Health},
 
-        #[Parameter(ParameterSetName = 'GetByPrioritiseServer', Mandatory)]
-        [Microsoft.Azure.PowerShell.Cmdlets.Migrate.Category('Path')]
-        [System.Management.Automation.SwitchParameter]
-        # Specifies list of steps customers can take to prioritize the migration operation of the given server.
-        ${Expedite},
-
         [Parameter(ParameterSetName = 'ListByName')]
         [Microsoft.Azure.PowerShell.Cmdlets.Migrate.Category('Query')]
         [System.String]
@@ -191,9 +185,13 @@ function Get-AzMigrateServerMigrationStatus {
             )
 
             if ([string]::IsNullOrEmpty($State)) {
-                if ($ReplicationMigrationItem.MigrationState -match "InitialSeedingInProgress" -or $ReplicationMigrationItem.MigrationState -match "EnableMigrationInProgress") {
+                if ($ReplicationMigrationItem.MigrationState -match "InitialSeedingInProgress" -or $ReplicationMigrationItem.MigrationState -match "EnableMigrationInProgress" -or $ReplicationMigrationItem.MigrationState -match "Replicating") {
                     return "InitialReplication Queued"
                 }
+                elseif ($ReplicationMigrationItem.MigrationState -match "InitialSeedingFailed") {
+                    return "InitialReplication Failed"
+                }
+                return $ReplicationMigrationItem.MigrationState
             }
 
             if ($ReplicationMigrationItem.MigrationState -match "MigrationInProgress" -and $ReplicationMigrationItem.migrationProgressPercentage -eq $null) {
@@ -262,6 +260,24 @@ function Get-AzMigrateServerMigrationStatus {
             }
         }
 
+        function ConvertToCustomTimeFormat {
+            param (
+                [string]$LocalTimeString
+            )
+            
+            if ([string]::IsNullOrEmpty($LocalTimeString)) {
+                return "-"
+            }
+
+            # Parse the input string
+            $localTime = [datetime]::ParseExact($LocalTimeString, "MM/dd/yyyy HH:mm:ss", $null)
+
+            # Format the local time as desired
+            $formattedTime = Get-Date $localTime -Format "M/d/yyyy, h:mm:ss tt"
+
+            return $formattedTime
+        }
+
         $parameterSet = $PSCmdlet.ParameterSetName
         $null = $PSBoundParameters.Remove('ResourceGroupName')
         $null = $PSBoundParameters.Remove('ProjectName')
@@ -272,7 +288,7 @@ function Get-AzMigrateServerMigrationStatus {
         $null = $PSBoundParameters.Remove('MachineName')
         $null = $PSBoundParameters.Remove('ApplianceName')
         $null = $PSBoundParameters.Remove('Health')
-        $null = $PSBoundParameters.Remove('Expedite')
+        #$null = $PSBoundParameters.Remove('Expedite')
 
         $output = New-Object System.Collections.ArrayList  # Create a hashtable to store the output.
 
@@ -327,10 +343,13 @@ function Get-AzMigrateServerMigrationStatus {
         $vmMigrationStatusTable = New-Object System.Data.DataTable("")
 
         if ($parameterSet -eq "GetByApplianceName") {
-            $column = @("Server", "State", "Progress", "TimeElapsed", "TimeRemaining", "UploadSpeed", "Datastore")
+            $column = @("Server", "State", "Progress", "TimeElapsed", "TimeRemaining", "UploadSpeed", "Health", "LastSync", "Datastore")
+        }
+        elseif ($parameterSet -eq "ListByName") {
+            $column = @("Appliance", "Server", "State", "Progress", "TimeElapsed", "TimeRemaining", "UploadSpeed", "Health", "LastSync", "Datastore")
         }
         else {
-            $column = @("Appliance", "Server", "State", "Progress", "TimeElapsed", "TimeRemaining", "UploadSpeed", "Datastore")
+            $column = @("Appliance", "Server", "State", "Progress", "TimeElapsed", "TimeRemaining", "UploadSpeed", "LastSync", "Datastore")
         }
 
         MakeTable $vmMigrationStatusTable $column
@@ -390,6 +409,17 @@ function Get-AzMigrateServerMigrationStatus {
                 $row1["Progress"] = Add-Percent -Value $ReplicationMigrationItem.ProviderSpecificDetail.GatewayOperationDetailProgressPercentage
                 $row1["TimeElapsed"] = Convert-MillisecondsToTime -Milliseconds $ReplicationMigrationItem.ProviderSpecificDetail.GatewayOperationDetailTimeElapsed
             }
+
+            if ($parameterSet -eq "ListByName" -or $parameterSet -eq "GetByApplianceName") {
+                if ([string]::IsNullOrEmpty($ReplicationMigrationItem.health) -or $ReplicationMigrationItem.health -eq "None") {
+                    $row1["Health"] = "-"
+                }
+                else {
+                    $row1["Health"] = $ReplicationMigrationItem.health
+                }
+            }
+            $row1["LastSync"] = ConvertToCustomTimeFormat -LocalTimeString $ReplicationMigrationItem.ProviderSpecificDetail.lastRecoveryPointReceived
+
             #$row1["ESXiHost"] = $ReplicationMigrationItem.ProviderSpecificDetail.GatewayOperationDetailHostName
             if (-not [string]::IsNullOrEmpty($ReplicationMigrationItem.ProviderSpecificDetail.GatewayOperationDetailDataStore)) {
                 $row1["Datastore"] = $ReplicationMigrationItem.ProviderSpecificDetail.GatewayOperationDetailDataStore -join ', '
