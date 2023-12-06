@@ -181,7 +181,43 @@ directive:
           "description": "The machine extension instance view."
         }
       }
- 
+  # add 200 response to run-command delete 
+  - from: swagger-document
+    where: $.paths["/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.HybridCompute/machines/{machineName}/runCommands/{runCommandName}"].delete.responses
+    transform: >-
+      return {
+        "200": {
+          "description": "OK"
+        },
+        "202": {
+          "description": "Accepted",
+          "headers": {
+            "Location": {
+              "description": "The URL of the resource used to check the status of the asynchronous operation.",
+              "type": "string"
+            },
+            "Retry-After": {
+              "description": "The recommended number of seconds to wait before calling the URI specified in Azure-AsyncOperation.",
+              "type": "integer",
+              "format": "int32"
+            },
+            "Azure-AsyncOperation": {
+              "description": "The URI to poll for completion status.",
+              "type": "string"
+            }
+          }
+        },
+        "204": {
+          "description": "No Content"
+        },
+        "default": {
+          "description": "Error response describing why the operation failed.",
+          "schema": {
+            "$ref": "https://github.com/Azure/azure-rest-api-specs/blob/2d044b8a317aff46d45080f5a797ac376955f648/specification/common-types/resource-management/v3/types.json#/definitions/ErrorResponse"
+          }
+        }
+      }
+
   # GetViaIdentity isn't useful until Azure PowerShell supports piping of different subjects
   - where:
       verb: Get
