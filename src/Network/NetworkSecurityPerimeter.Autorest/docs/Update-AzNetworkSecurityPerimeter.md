@@ -1,66 +1,67 @@
 ---
 external help file:
 Module Name: Az.Network
-online version: https://learn.microsoft.com/powershell/module/az.network/get-aznetworksecurityperimeterlink
+online version: https://learn.microsoft.com/powershell/module/az.network/update-aznetworksecurityperimeter
 schema: 2.0.0
 ---
 
-# Get-AzNetworkSecurityPerimeterLink
+# Update-AzNetworkSecurityPerimeter
 
 ## SYNOPSIS
-Gets the specified NSP link resource.
+Patch Tags for a Network Security Perimeter.
 
 ## SYNTAX
 
-### List (Default)
+### PatchExpanded (Default)
 ```
-Get-AzNetworkSecurityPerimeterLink -ResourceGroupName <String> -SecurityPerimeterName <String>
- [-SubscriptionId <String[]>] [-SkipToken <String>] [-Top <Int32>] [-DefaultProfile <PSObject>]
- [<CommonParameters>]
-```
-
-### Get
-```
-Get-AzNetworkSecurityPerimeterLink -Name <String> -ResourceGroupName <String> -SecurityPerimeterName <String>
- [-SubscriptionId <String[]>] [-DefaultProfile <PSObject>] [<CommonParameters>]
+Update-AzNetworkSecurityPerimeter -Name <String> -ResourceGroupName <String> [-SubscriptionId <String>]
+ [-Tag <Hashtable>] [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
-### GetViaIdentity
+### Patch
 ```
-Get-AzNetworkSecurityPerimeterLink -InputObject <INetworkSecurityPerimeterIdentity>
- [-DefaultProfile <PSObject>] [<CommonParameters>]
+Update-AzNetworkSecurityPerimeter -Name <String> -ResourceGroupName <String> -Parameter <IUpdateTagsRequest>
+ [-SubscriptionId <String>] [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
+```
+
+### PatchViaIdentity
+```
+Update-AzNetworkSecurityPerimeter -InputObject <INetworkSecurityPerimeterIdentity>
+ -Parameter <IUpdateTagsRequest> [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
+```
+
+### PatchViaIdentityExpanded
+```
+Update-AzNetworkSecurityPerimeter -InputObject <INetworkSecurityPerimeterIdentity> [-Tag <Hashtable>]
+ [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-Gets the specified NSP link resource.
+Patch Tags for a Network Security Perimeter.
 
 ## EXAMPLES
 
-### Example 1: Lists Network security perimeter links
+### Example 1: {{ Add title here }}
 ```powershell
- Get-AzNetworkSecurityPerimeterLink -ResourceGroupName psrg_ex -SecurityPerimeterName ext-nsp2
+{{ Add code here }}
 ```
 
 ```output
-Etag Name
----- ----
-     t-link1
+{{ Add output here }}
 ```
 
-Lists Network security perimeter links
+{{ Add description here }}
 
-### Example 2: Get a Network security perimeter link
+### Example 2: {{ Add title here }}
 ```powershell
- Get-AzNetworkSecurityPerimeterLink -ResourceGroupName psrg_ex -SecurityPerimeterName ext-nsp2 -Name t-link1
+{{ Add code here }}
 ```
 
 ```output
-Etag Name
----- ----
-     t-link1
+{{ Add output here }}
 ```
 
-Get a Network security perimeter link
+{{ Add description here }}
 
 ## PARAMETERS
 
@@ -85,7 +86,7 @@ To construct, see NOTES section for INPUTOBJECT properties and create a hash tab
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.NetworkSecurityPerimeter.Models.INetworkSecurityPerimeterIdentity
-Parameter Sets: GetViaIdentity
+Parameter Sets: PatchViaIdentity, PatchViaIdentityExpanded
 Aliases:
 
 Required: True
@@ -96,17 +97,33 @@ Accept wildcard characters: False
 ```
 
 ### -Name
-The name of the NSP link.
+The name of the network security perimeter.
 
 ```yaml
 Type: System.String
-Parameter Sets: Get
-Aliases: LinkName
+Parameter Sets: Patch, PatchExpanded
+Aliases: NetworkSecurityPerimeterName, SecurityPerimeterName, NSPName
 
 Required: True
 Position: Named
 Default value: None
 Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -Parameter
+Update tags request.
+To construct, see NOTES section for PARAMETER properties and create a hash table.
+
+```yaml
+Type: Microsoft.Azure.PowerShell.Cmdlets.NetworkSecurityPerimeter.Models.Api20230701Preview.IUpdateTagsRequest
+Parameter Sets: Patch, PatchViaIdentity
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: True (ByValue)
 Accept wildcard characters: False
 ```
 
@@ -115,41 +132,10 @@ The name of the resource group.
 
 ```yaml
 Type: System.String
-Parameter Sets: Get, List
+Parameter Sets: Patch, PatchExpanded
 Aliases:
 
 Required: True
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -SecurityPerimeterName
-The name of the network security perimeter.
-
-```yaml
-Type: System.String
-Parameter Sets: Get, List
-Aliases: NetworkSecurityPerimeterName, NSPName
-
-Required: True
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -SkipToken
-SkipToken is only used if a previous operation returned a partial result.
-If a previous response contains a nextLink element, the value of the nextLink element will include a skipToken parameter that specifies a starting point to use for subsequent calls.
-
-```yaml
-Type: System.String
-Parameter Sets: List
-Aliases:
-
-Required: False
 Position: Named
 Default value: None
 Accept pipeline input: False
@@ -161,8 +147,8 @@ The subscription credentials which uniquely identify the Microsoft Azure subscri
 The subscription ID forms part of the URI for every service call.
 
 ```yaml
-Type: System.String[]
-Parameter Sets: Get, List
+Type: System.String
+Parameter Sets: Patch, PatchExpanded
 Aliases:
 
 Required: False
@@ -172,13 +158,44 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -Top
-An optional query parameter which specifies the maximum number of records to be returned by the server.
+### -Tag
+List of tags for Network Security Perimeter
 
 ```yaml
-Type: System.Int32
-Parameter Sets: List
+Type: System.Collections.Hashtable
+Parameter Sets: PatchExpanded, PatchViaIdentityExpanded
 Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -Confirm
+Prompts you for confirmation before running the cmdlet.
+
+```yaml
+Type: System.Management.Automation.SwitchParameter
+Parameter Sets: (All)
+Aliases: cf
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -WhatIf
+Shows what would happen if the cmdlet runs.
+The cmdlet is not run.
+
+```yaml
+Type: System.Management.Automation.SwitchParameter
+Parameter Sets: (All)
+Aliases: wi
 
 Required: False
 Position: Named
@@ -192,11 +209,13 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
+### Microsoft.Azure.PowerShell.Cmdlets.NetworkSecurityPerimeter.Models.Api20230701Preview.IUpdateTagsRequest
+
 ### Microsoft.Azure.PowerShell.Cmdlets.NetworkSecurityPerimeter.Models.INetworkSecurityPerimeterIdentity
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.NetworkSecurityPerimeter.Models.Api20230701Preview.INspLink
+### Microsoft.Azure.PowerShell.Cmdlets.NetworkSecurityPerimeter.Models.Api20230701Preview.INetworkSecurityPerimeter
 
 ## NOTES
 
@@ -218,6 +237,10 @@ To create the parameters described below, construct a hash table containing the 
   - `[ProfileName <String>]`: The name of the NSP profile.
   - `[ResourceGroupName <String>]`: The name of the resource group.
   - `[SubscriptionId <String>]`: The subscription credentials which uniquely identify the Microsoft Azure subscription. The subscription ID forms part of the URI for every service call.
+
+`PARAMETER <IUpdateTagsRequest>`: Update tags request.
+  - `[Tag <IUpdateTagsRequestTags>]`: List of tags for Network Security Perimeter
+    - `[(Any) <String>]`: This indicates any property can be added to this object.
 
 ## RELATED LINKS
 
