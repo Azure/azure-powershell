@@ -1,4 +1,4 @@
-﻿//
+﻿﻿//
 // Copyright (c) Microsoft.  All rights reserved.
 //
 // Licensed under the Apache License, Version 2.0 (the "License");
@@ -362,25 +362,28 @@ namespace Microsoft.WindowsAzure.Build.Tasks
 
             Dictionary<string, HashSet<string>> influencedModuleInfo = CalculateInfluencedModuleInfoForEachPhase(ruleList, csprojMap);
             DateTime endOfRegularExpressionTime = DateTime.Now;
-
-            influencedModuleInfo = CalculateCsprojForBuildAndTest(influencedModuleInfo, csprojMap);
-            DateTime endTime = DateTime.Now;
-            Console.WriteLine(string.Format("Takes {0} seconds for RE match, {1} seconds for phase config.", (endOfRegularExpressionTime - startTime).TotalSeconds, (endTime - endOfRegularExpressionTime).TotalSeconds));
-
-            if (!Directory.Exists(config.ArtifactPipelineInfoFolder))
-            {
-                Directory.CreateDirectory(config.ArtifactPipelineInfoFolder);
-            }
+            
+            #region Record the CI plan info to CIPlan.json under the artifacts folder
             Dictionary<string, HashSet<string>> CIPlan = new Dictionary<string, HashSet<string>>
             {
-                [BUILD_PHASE] = new HashSet<string>(influencedModuleInfo[BUILD_PHASE].Select(GetModuleNameFromPath).Where(x => x != null)),
-                [TEST_PHASE] = new HashSet<string>(influencedModuleInfo[TEST_PHASE].Select(GetModuleNameFromPath).Where(x => x != null))
+                [BUILD_PHASE] = new HashSet<string>(influencedModuleInfo[BUILD_PHASE]),
+                [TEST_PHASE] = new HashSet<string>(influencedModuleInfo[TEST_PHASE])
             };
             foreach (var analysisPhase in ANALYSIS_PHASE_LIST)
             {
                 CIPlan.Add(analysisPhase, influencedModuleInfo[analysisPhase]);
             }
+            if (!Directory.Exists(config.ArtifactPipelineInfoFolder))
+            {
+                Directory.CreateDirectory(config.ArtifactPipelineInfoFolder);
+            }
             File.WriteAllText(Path.Combine(config.ArtifactPipelineInfoFolder, "CIPlan.json"), JsonConvert.SerializeObject(CIPlan, Formatting.Indented));
+            #endregion
+
+            influencedModuleInfo = CalculateCsprojForBuildAndTest(influencedModuleInfo, csprojMap);
+            DateTime endTime = DateTime.Now;
+            Console.WriteLine(string.Format("Takes {0} seconds for RE match, {1} seconds for phase config.", (endOfRegularExpressionTime - startTime).TotalSeconds, (endTime - endOfRegularExpressionTime).TotalSeconds));
+
             influencedModuleInfo[TEST_PHASE] = new HashSet<string>(influencedModuleInfo[TEST_PHASE].Where(x => x.EndsWith(".csproj")));
 
             BuildCsprojList = influencedModuleInfo[BUILD_PHASE].ToArray();
