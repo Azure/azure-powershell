@@ -203,7 +203,7 @@ Function Move-Generation2Master {
                 Copy-Item -Path "$DestPath\$ModuleName.Autorest\help\Az.$ModuleName.md" -Destination $HelpFolder -Recurse
                 New-MarkdownHelp -UseFullTypeName -AlphabeticParamsOrder -Module "Az.$ModuleName" -OutputFolder $HelpFolder
             }
-        } -ArgumentList $ScriptRoot, $ModuleName, $DestPath, $Psd1FolderPostfix
+        } -ArgumentList $PSScriptRoot, $ModuleName, $DestPath, $Psd1FolderPostfix
 
         $job | Wait-Job | Receive-Job
     }
