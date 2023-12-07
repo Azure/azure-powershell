@@ -26,12 +26,6 @@ using StorageModels = Microsoft.Azure.Management.Storage.Models;
 
 namespace Microsoft.Azure.Commands.Management.Storage
 {
-    [GenericBreakingChangeWithVersion("Default value of AllowBlobPublicAccess and AllowCrossTenantReplication settings on storage account will be changed to False in the future release. \n" +
-        "When AllowBlobPublicAccess is False on a storage account, container ACLs cannot be configured to allow anonymous access to blobs within the storage account. \n" +
-        "When AllowCrossTenantReplication is False on a storage account, cross AAD tenant object replication is not allowed when setting up Object Replication policies. Target version is for reference only, it might be changed by service plan.",
-        "11.2.0", "6.2.0",
-        OldWay = "AllowBlobPublicAccess and AllowCrossTenantReplication are set to True by defult.", 
-        NewWay = "AllowBlobPublicAccess and AllowCrossTenantReplication are set to False by default.")]
     [Cmdlet("New", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "StorageAccount", DefaultParameterSetName = AzureActiveDirectoryDomainServicesForFileParameterSet), OutputType(typeof(PSStorageAccount))]
     public class NewAzureStorageAccountCommand : StorageAccountBaseCmdlet
     {
@@ -481,7 +475,7 @@ namespace Microsoft.Azure.Commands.Management.Storage
 
         [Parameter(
             Mandatory = false,
-            HelpMessage = "Allow public access to all blobs or containers in the storage account. The default interpretation is true for this property.")]
+            HelpMessage = "Allow public access to all blobs or containers in the storage account. The default interpretation is false for this property.")]
         [ValidateNotNullOrEmpty]
         public bool AllowBlobPublicAccess
         {
@@ -554,7 +548,7 @@ namespace Microsoft.Azure.Commands.Management.Storage
 
         [Parameter(
             Mandatory = false,
-            HelpMessage = "Gets or sets allow or disallow cross Microsoft Entra tenant object replication. The default interpretation is true for this property.")]
+            HelpMessage = "Gets or sets allow or disallow cross Microsoft Entra tenant object replication. The default interpretation is false for this property.")]
         [ValidateNotNullOrEmpty]
         public bool AllowCrossTenantReplication
         {
