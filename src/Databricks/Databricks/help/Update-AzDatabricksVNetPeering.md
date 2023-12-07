@@ -1,5 +1,5 @@
 ---
-external help file:
+external help file: Az.Databricks-help.xml
 Module Name: Az.Databricks
 online version: https://learn.microsoft.com/powershell/module/az.databricks/update-azdatabricksvnetpeering
 schema: 2.0.0
@@ -19,7 +19,7 @@ Update-AzDatabricksVNetPeering -Name <String> -ResourceGroupName <String> -Works
  [-AllowVirtualNetworkAccess <Boolean>] [-DatabricksAddressSpacePrefix <String[]>]
  [-DatabricksVirtualNetworkId <String>] [-RemoteAddressSpacePrefix <String[]>]
  [-RemoteVirtualNetworkId <String>] [-UseRemoteGateway <Boolean>] [-DefaultProfile <PSObject>] [-AsJob]
- [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
+ [-NoWait] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### UpdateViaIdentityExpanded
@@ -28,7 +28,7 @@ Update-AzDatabricksVNetPeering -InputObject <IDatabricksIdentity> [-AllowForward
  [-AllowGatewayTransit <Boolean>] [-AllowVirtualNetworkAccess <Boolean>]
  [-DatabricksAddressSpacePrefix <String[]>] [-DatabricksVirtualNetworkId <String>]
  [-RemoteAddressSpacePrefix <String[]>] [-RemoteVirtualNetworkId <String>] [-UseRemoteGateway <Boolean>]
- [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
+ [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -376,4 +376,3 @@ To create the parameters described below, construct a hash table containing the 
   - `[WorkspaceName <String>]`: The name of the workspace.
 
 ## RELATED LINKS
-
