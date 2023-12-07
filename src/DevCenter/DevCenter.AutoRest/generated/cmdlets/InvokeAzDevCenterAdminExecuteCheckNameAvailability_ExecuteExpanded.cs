@@ -16,6 +16,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Cmdlets
     [global::System.Management.Automation.OutputType(typeof(Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Models.Api30.ICheckNameAvailabilityResponse))]
     [global::Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Description(@"Check the availability of name for resource")]
     [global::Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Generated]
+    [global::Microsoft.Azure.PowerShell.Cmdlets.DevCenter.HttpPath(Path = "/subscriptions/{subscriptionId}/providers/Microsoft.DevCenter/checkNameAvailability", ApiVersion = "2023-10-01-preview")]
     public partial class InvokeAzDevCenterAdminExecuteCheckNameAvailability_ExecuteExpanded : global::System.Management.Automation.PSCmdlet,
         Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Runtime.IEventListener
     {

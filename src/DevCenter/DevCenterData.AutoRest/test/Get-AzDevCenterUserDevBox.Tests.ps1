@@ -25,13 +25,13 @@ Describe 'Get-AzDevCenterUserDevBox' {
         $listOfDevBoxes.Count | Should -BeGreaterOrEqual 1
 
         if ($Record -or $Live) {
-            $listOfDevBoxes = Get-AzDevCenterUserDevBox -DevCenter $env.devCenterName
+            $listOfDevBoxes = Get-AzDevCenterUserDevBox -DevCenterName $env.devCenterName
             $listOfDevBoxes.Count | Should -BeGreaterOrEqual 2
 
-            $listOfDevBoxes = Get-AzDevCenterUserDevBox -DevCenter $env.devCenterName -UserId "me"
+            $listOfDevBoxes = Get-AzDevCenterUserDevBox -DevCenterName $env.devCenterName -UserId "me"
             $listOfDevBoxes.Count | Should -BeGreaterOrEqual 2
 
-            $listOfDevBoxes = Get-AzDevCenterUserDevBox -DevCenter $env.devCenterName -ProjectName $env.projectName2 -UserId $env.userObjectId
+            $listOfDevBoxes = Get-AzDevCenterUserDevBox -DevCenterName $env.devCenterName -ProjectName $env.projectName2 -UserId $env.userObjectId
             $listOfDevBoxes.Count | Should -Be 1
         }
     
@@ -60,7 +60,7 @@ Describe 'Get-AzDevCenterUserDevBox' {
         $devBox.PowerState | Should -Be "Running"
 
         if ($Record -or $Live) {
-            $devBox = Get-AzDevCenterUserDevBox -DevCenter $env.devCenterName -ProjectName $env.projectName -UserId "me" -Name $env.devboxName
+            $devBox = Get-AzDevCenterUserDevBox -DevCenterName $env.devCenterName -ProjectName $env.projectName -UserId "me" -Name $env.devboxName
 
             $devBox.Name | Should -Be $env.devboxName
             $devBox.User | Should -Be $env.userObjectId
@@ -108,7 +108,7 @@ Describe 'Get-AzDevCenterUserDevBox' {
         $devBox.PowerState | Should -Be "Running"
 
         if ($Record -or $Live) {
-            $devBox = Get-AzDevCenterUserDevBox -DevCenter $env.devCenterName -InputObject $devBoxInput 
+            $devBox = Get-AzDevCenterUserDevBox -DevCenterName $env.devCenterName -InputObject $devBoxInput 
 
             $devBox.Name | Should -Be $env.devboxName
             $devBox.User | Should -Be $env.userObjectId

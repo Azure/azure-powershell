@@ -8,7 +8,7 @@ This command deploys an environment named "envtest" to the project "DevProject".
 
 ### Example 2: Deploy an environment by dev center
 ```powershell
-Deploy-AzDevCenterUserEnvironment -DevCenter Contoso -Name "envtest" -ProjectName DevProject -CatalogName CentralCatalog -EnvironmentDefinitionName Sandbox -EnvironmentType DevTest
+Deploy-AzDevCenterUserEnvironment -DevCenterName Contoso -Name "envtest" -ProjectName DevProject -CatalogName CentralCatalog -EnvironmentDefinitionName Sandbox -EnvironmentType DevTest
 ```
 This command deploys an environment named "envtest" to the project "DevProject".
 
@@ -27,6 +27,6 @@ This command deploys an environment named "envtest" to the project "DevProject".
 $functionAppParameters = @{"name" = "testfuncApp" }
 $envInput = @{"UserId" = "me"; "ProjectName" = "DevProject"; "EnvironmentName" = "envtest" }
 
-Deploy-AzDevCenterUserEnvironment -DevCenter Contoso -InputObject $envInput -CatalogName CentralCatalog -EnvironmentDefinitionName FunctionApp -EnvironmentType DevTest -Parameter $functionAppParameters
+Deploy-AzDevCenterUserEnvironment -DevCenterName Contoso -InputObject $envInput -CatalogName CentralCatalog -EnvironmentDefinitionName FunctionApp -EnvironmentType DevTest -Parameter $functionAppParameters
 ```
 This command deploys an environment named "envtest" to the project "DevProject".

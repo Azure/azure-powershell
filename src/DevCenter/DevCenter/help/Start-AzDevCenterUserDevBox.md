@@ -26,13 +26,13 @@ Start-AzDevCenterUserDevBox -Endpoint <String> -InputObject <IDevCenterdataIdent
 
 ### StartViaIdentityByDevCenter
 ```
-Start-AzDevCenterUserDevBox -DevCenter <String> -InputObject <IDevCenterdataIdentity>
+Start-AzDevCenterUserDevBox -DevCenterName <String> -InputObject <IDevCenterdataIdentity>
  [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### StartByDevCenter
 ```
-Start-AzDevCenterUserDevBox -DevCenter <String> -Name <String> -ProjectName <String> [-UserId <String>]
+Start-AzDevCenterUserDevBox -DevCenterName <String> -Name <String> -ProjectName <String> [-UserId <String>]
  [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
@@ -104,13 +104,13 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -DevCenter
+### -DevCenterName
 The DevCenter upon which to execute operations.
 
 ```yaml
 Type: System.String
 Parameter Sets: StartViaIdentityByDevCenter, StartByDevCenter
-Aliases:
+Aliases: DevCenter
 
 Required: True
 Position: Named

@@ -19,7 +19,7 @@ Describe 'Get-AzDevCenterUserEnvironmentType' {
         $listOfEnvTypes.Count | Should -Be 1
 
         if ($Record -or $Live) {
-            $listOfEnvTypes = Get-AzDevCenterUserEnvironmentType -DevCenter $env.devCenterName -ProjectName $env.projectName
+            $listOfEnvTypes = Get-AzDevCenterUserEnvironmentType -DevCenterName $env.devCenterName -ProjectName $env.projectName
             $listOfEnvTypes.Count | Should -Be 1
         }
     
