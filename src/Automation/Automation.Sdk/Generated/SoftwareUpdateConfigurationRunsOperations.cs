@@ -111,7 +111,7 @@ namespace Microsoft.Azure.Management.Automation
 
 
 
-            string apiVersion = "2022-08-08";
+            string apiVersion = "2023-11-01";
             // Tracing
             bool _shouldTrace = Microsoft.Rest.ServiceClientTracing.IsEnabled;
             string _invocationId = null;
@@ -289,7 +289,9 @@ namespace Microsoft.Azure.Management.Automation
         /// Identifies this specific client request.
         /// </param>
         /// <param name='filter'>
-        /// The filter to apply on the operation. You can use the following filters: &#39;properties/osType&#39;, &#39;properties/status&#39;, &#39;properties/startTime&#39;, and &#39;properties/softwareUpdateConfiguration/name&#39;
+        /// The filter to apply on the operation. You can use the following filters:
+        /// &#39;properties/osType&#39;, &#39;properties/status&#39;, &#39;properties/startTime&#39;, and
+        /// &#39;properties/softwareUpdateConfiguration/name&#39;
         /// </param>
         /// <param name='skip'>
         /// Number of entries you skip before returning results
@@ -357,7 +359,7 @@ namespace Microsoft.Azure.Management.Automation
 
 
 
-            string apiVersion = "2022-08-08";
+            string apiVersion = "2023-11-01";
             // Tracing
             bool _shouldTrace = Microsoft.Rest.ServiceClientTracing.IsEnabled;
             string _invocationId = null;

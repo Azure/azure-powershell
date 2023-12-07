@@ -18,7 +18,11 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
-* Updated exist cmdlets 'UpdateAzureSqlDatabaseLongTermRetentionBackup' for Azure SQL sterling DB to change long-term retention backup storage access tier
+* Fixed `Set-AzSqlDatabaseFailoverGroup` when going from multi-secondary to single secondary
+* Updated exist cmdlets 'Update-AzSqlDatabaseLongTermRetentionBackup' for Azure SQL sterling DB to update long-term retention backup's BackupStorageAccessTier
+* Updated exist cmdlets 'Set-AzSqlDatabaseBackupLongTermRetentionPolicy' for Azure SQL sterling DB to set long-term retention policy with new parameter BackupStorageAccessTier
+
+## Version 4.12.0
 * Added new parameters `MaintenanceConfigurationId`, `DnsZone` to `AzSqlInstancePool` cmdlets
 
 ## Version 4.11.0

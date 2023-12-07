@@ -34,7 +34,7 @@ namespace Microsoft.Azure.Management.Automation.Models
         /// </param>
 
         /// <param name="streamType">The type of the sync job stream.
-        /// Possible values include: 'Error', 'Output'</param>
+        /// Possible values include: &#39;Error&#39;, &#39;Output&#39;</param>
 
         /// <param name="streamText">The text of the sync job stream.
         /// </param>

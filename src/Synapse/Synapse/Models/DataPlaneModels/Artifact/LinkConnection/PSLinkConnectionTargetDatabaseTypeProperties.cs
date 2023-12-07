@@ -22,10 +22,13 @@ namespace Microsoft.Azure.Commands.Synapse.Models
         {
             this.CrossTableTransaction = properties?.CrossTableTransaction;
             this.DropExistingTargetTableOnStart = properties?.DropExistingTargetTableOnStart;
+            this.ActionOnExistingTargetTable = properties?.ActionOnExistingTargetTable;
         }
 
         public bool? CrossTableTransaction { get; set; }
 
         public bool? DropExistingTargetTableOnStart { get; set; }
+
+        public ActionOnExistingTargetTable? ActionOnExistingTargetTable { get; set; }
     }
 }

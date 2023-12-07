@@ -337,6 +337,65 @@ function Update-AzPreview
     Set-Content -Path $AzPrviewPsd1.FullName -Value $AzPreviewPsd1Content -Encoding UTF8
 }
 
+function Update-AzPreviewChangelog
+{
+    $AzPrviewVersion = (Import-PowerShellDataFile "$PSScriptRoot\Az\Az.psd1").ModuleVersion
+    $localAz = Import-PowerShellDataFile -Path "$PSScriptRoot\AzPreview\AzPreview.psd1"
+    Write-Host "Getting gallery AzPreview information..." -ForegroundColor Yellow
+    $galleryAz = Find-Module -Name AzPreview -Repository $GalleryName
+    $updatedModules = @()
+    foreach ($localDependency in $localAz.RequiredModules)
+    {
+        $galleryDependency = $galleryAz.Dependencies | where { $_.Name -eq $localDependency.ModuleName }
+        if ($null -eq $galleryDependency)
+        {
+            $updatedModules += $localDependency.ModuleName
+            Write-Host "Found new added module $($localDependency.ModuleName)"
+            continue
+        }
+
+        $galleryVersion = $galleryDependency.RequiredVersion
+        if ([string]::IsNullOrEmpty($galleryVersion))
+        {
+            $galleryVersion = $galleryDependency.MinimumVersion
+        }
+
+        $localVersion = $localDependency.RequiredVersion
+        # Az.Accounts uses ModuleVersion to annote Version
+        if ([string]::IsNullOrEmpty($localVersion))
+        {
+            $localVersion = $localDependency.ModuleVersion
+        }
+
+        if ($galleryVersion.ToString() -ne $localVersion)
+        {
+            $updatedModules += $localDependency.ModuleName
+        }
+    }
+
+    $releaseNotes = @()
+    $releaseNotes += "$AzPrviewVersion - $Release"
+    $changeLog = @()
+    $changeLog += "## $AzPrviewVersion - $Release"
+    $rootPath = "$PSScriptRoot\.."
+    foreach ($updatedModule in $updatedModules)
+    {
+        $moduleMetadata = $(Get-ModuleMetadata -Module $updatedModule -RootPath $rootPath)
+        if ($moduleMetadata.ModuleVersion -eq '0.1.0') {
+            $moduleReleaseNotes = "* First preview release for module $updatedModule"
+        } else {
+            $moduleReleaseNotes = $moduleMetadata.PrivateData.PSData.ReleaseNotes
+        }
+        $releaseNotes += $updatedModule
+        $releaseNotes += $moduleReleaseNotes + "`n"
+
+        $changeLog += "#### $updatedModule $($moduleMetadata.ModuleVersion)"
+        $changeLog += $moduleReleaseNotes + "`n"
+    }
+    Update-ChangeLog -Content $changeLog -RootPath $rootPath/tools/AzPreview
+
+}
+
 function New-CommandMappingFile
 {
     # Regenerate the cmdlet-to-module mappings for the recommendation feature of uninstalled modules
@@ -398,6 +457,7 @@ switch ($PSCmdlet.ParameterSetName)
     {
         Write-Host executing dotnet $PSScriptRoot/../artifacts/VersionController/VersionController.Netcore.dll $PSScriptRoot/../artifacts/VersionController/Exceptions $ModuleName
         dotnet $PSScriptRoot/../artifacts/VersionController/VersionController.Netcore.dll $PSScriptRoot/../artifacts/VersionController/Exceptions $ModuleName
+        Update-AzPreview
     }
 
     "ReleaseAzByMonthAndYear"
@@ -438,7 +498,10 @@ switch ($PSCmdlet.ParameterSetName)
         dotnet $PSScriptRoot/../artifacts/VersionController/VersionController.Netcore.dll
 
         $versionBump = Bump-AzVersion
-
+        # Each release needs to update AzPreview.psd1 and dotnet csv
+        # Refresh AzPreview.psd1
+        Update-AzPreview
+        Update-AzPreviewChangelog
         # We need to generate the upcoming-breaking-changes.md after the process of bump version in minor release
         if ([PSVersion]::MINOR -Eq $versionBump)
         {
@@ -447,10 +510,6 @@ switch ($PSCmdlet.ParameterSetName)
         }
     }
 }
-
-# Each release needs to update AzPreview.psd1 and dotnet csv
-# Refresh AzPreview.psd1
-Update-AzPreview
 
 # Generate dotnet csv
 &$PSScriptRoot/Docs/GenerateDotNetCsv.ps1 -FeedPsd1FullPath "$PSScriptRoot\AzPreview\AzPreview.psd1"

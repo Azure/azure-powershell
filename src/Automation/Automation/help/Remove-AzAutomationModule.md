@@ -14,7 +14,7 @@ Removes a module from Automation.
 ## SYNTAX
 
 ```
-Remove-AzAutomationModule [-Name] <String> [-Force] [-ResourceGroupName] <String>
+Remove-AzAutomationModule [-Name] <String> [-Force] [-RuntimeVersion <String>] [-ResourceGroupName] <String>
  [-AutomationAccountName] <String> [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
  [<CommonParameters>]
 ```
@@ -105,6 +105,22 @@ Required: True
 Position: 0
 Default value: None
 Accept pipeline input: True (ByPropertyName)
+Accept wildcard characters: False
+```
+
+### -RuntimeVersion
+Runtime Environment of module
+
+```yaml
+Type: System.String
+Parameter Sets: (All)
+Aliases:
+Accepted values: 5.1, 7.2
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
 Accept wildcard characters: False
 ```
 

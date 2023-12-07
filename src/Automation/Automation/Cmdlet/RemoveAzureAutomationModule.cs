@@ -16,6 +16,7 @@ using Microsoft.Azure.Commands.Automation.Common;
 using Microsoft.Azure.Commands.Automation.Properties;
 using System.Management.Automation;
 using System.Security.Permissions;
+using static Microsoft.Azure.Commands.Automation.Common.Constants;
 
 namespace Microsoft.Azure.Commands.Automation.Cmdlet
 {
@@ -36,6 +37,16 @@ namespace Microsoft.Azure.Commands.Automation.Cmdlet
         public SwitchParameter Force { get; set; }
 
         /// <summary>
+        /// Gets or sets the runbook version type
+        /// </summary>
+        [Parameter(Mandatory = false, HelpMessage = "Runtime Environment of module ")]
+        [ValidateSet(Constants.RuntimeVersion.PowerShell51,
+            Constants.RuntimeVersion.PowerShell72,
+            IgnoreCase = true)]
+        [ValidateNotNullOrEmpty]
+        public string RuntimeVersion { get; set; }
+
+        /// <summary>
         /// Execute this cmdlet.
         /// </summary>
         [PermissionSet(SecurityAction.Demand, Name = "FullTrust")]
@@ -48,7 +59,7 @@ namespace Microsoft.Azure.Commands.Automation.Cmdlet
                        Name,
                        () =>
                        {
-                           this.AutomationClient.DeleteModule(this.ResourceGroupName, this.AutomationAccountName, Name);
+                           this.AutomationClient.DeleteModule(this.ResourceGroupName, this.AutomationAccountName, Name, Utils.isRuntimeVersionPowerShell72(RuntimeVersion));                               
                        });
         }
     }

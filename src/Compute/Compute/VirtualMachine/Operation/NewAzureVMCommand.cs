@@ -57,7 +57,6 @@ using Microsoft.Azure.Commands.Common.Strategies.Compute;
 
 namespace Microsoft.Azure.Commands.Compute
 {
-    [GenericBreakingChangeWithVersion("Starting in November 2023 the \"New-AzVM\" cmdlet will deploy with the Trusted Launch configuration by default. To know more about Trusted Launch, please visit https://aka.ms/TLaD", "11.0.0", "7.0.0")]
     [Cmdlet("New", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "VM", SupportsShouldProcess = true, DefaultParameterSetName = "SimpleParameterSet")]
     [OutputType(typeof(PSAzureOperationResponse), typeof(PSVirtualMachine))]
     public class NewAzureVMCommand : VirtualMachineBaseCmdlet
@@ -211,15 +210,11 @@ namespace Microsoft.Azure.Commands.Compute
 
         [Parameter(ParameterSetName = SimpleParameterSet, Mandatory = false)]
         [PSArgumentCompleter(
-            "CentOS",
             "CentOS85Gen2",
-            "Debian",
             "Debian11",
             "OpenSuseLeap154Gen2",
-            "RHEL",
             "RHELRaw8LVMGen2",
             "SuseSles15SP3",
-            "UbuntuLTS",
             "Ubuntu2204",
             "FlatcarLinuxFreeGen2",
             "Win2022Datacenter",
@@ -685,7 +680,7 @@ namespace Microsoft.Azure.Commands.Compute
                         priority: _cmdlet.Priority,
                         evictionPolicy: _cmdlet.EvictionPolicy,
                         maxPrice: _cmdlet.IsParameterBound(c => c.MaxPrice) ? _cmdlet.MaxPrice : (double?)null,
-                        encryptionAtHostPresent: _cmdlet.EncryptionAtHost.IsPresent,
+                        encryptionAtHostPresent: (_cmdlet.EncryptionAtHost.IsPresent == true) ? true : (bool?) null ,
                         sshPublicKeys: sshPublicKeyList,
                         networkInterfaceDeleteOption: _cmdlet.NetworkInterfaceDeleteOption,
                         osDiskDeleteOption: _cmdlet.OSDiskDeleteOption,
@@ -730,7 +725,7 @@ namespace Microsoft.Azure.Commands.Compute
                         priority: _cmdlet.Priority,
                         evictionPolicy: _cmdlet.EvictionPolicy,
                         maxPrice: _cmdlet.IsParameterBound(c => c.MaxPrice) ? _cmdlet.MaxPrice : (double?)null,
-                        encryptionAtHostPresent: _cmdlet.EncryptionAtHost.IsPresent,
+                        encryptionAtHostPresent: (_cmdlet.EncryptionAtHost.IsPresent == true) ? true : (bool?)null,
                         networkInterfaceDeleteOption: _cmdlet.NetworkInterfaceDeleteOption,
                         osDiskDeleteOption: _cmdlet.OSDiskDeleteOption,
                         dataDiskDeleteOption: _cmdlet.DataDiskDeleteOption,
@@ -1038,7 +1033,6 @@ namespace Microsoft.Azure.Commands.Compute
                     this.VM.SecurityProfile.SecurityType = null;
                 }
             }
-
 
             if (ShouldProcess(this.VM.Name, VerbsCommon.New))
             {
@@ -1566,23 +1560,6 @@ namespace Microsoft.Azure.Commands.Compute
                         writer.WriteLine(keypair.PrivateKey);
                     }
                     Console.WriteLine("Private key is saved to " + privateKeyFilePath);
-
-                    FileSecurity fileSecurity = new FileSecurity(privateKeyFilePath, AccessControlSections.Access);
-                    // Define the owner's identity
-                    IdentityReference owner = new SecurityIdentifier(WellKnownSidType.BuiltinUsersSid, null);
-
-                    // Create an access rule for the owner with read and write permissions (0600)
-                    FileSystemAccessRule rule = new FileSystemAccessRule(
-                        owner,
-                        FileSystemRights.Read | FileSystemRights.Write,
-                        AccessControlType.Allow
-                    );
-
-                    // Add the access rule to the file security
-                    fileSecurity.AddAccessRule(rule);
-
-                    FileInfo fileinfo = new FileInfo(privateKeyFilePath);
-                    fileinfo.SetAccessControl(fileSecurity);
 
                     using (StreamWriter writer = new StreamWriter(publicKeyFilePath))
                     {

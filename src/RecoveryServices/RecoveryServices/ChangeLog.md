@@ -19,6 +19,9 @@
 -->
 ## Upcoming Release
 
+## Version 6.6.2
+* Removed outdated upcoming breaking change warning
+
 ## Version 6.6.1
 * Fixed minor issues
 

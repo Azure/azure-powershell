@@ -175,8 +175,8 @@ namespace Microsoft.Azure.Commands.Network
             ValueFromPipelineByPropertyName = true,
             HelpMessage = "The sku name for firewall")]
         [ValidateSet(
-                MNM.AzureFirewallSkuName.AZFWHub,
-                MNM.AzureFirewallSkuName.AZFWVNet,
+                MNM.AzureFirewallSkuName.AzfwHub,
+                MNM.AzureFirewallSkuName.AzfwVnet,
                 IgnoreCase = false)]
         public string SkuName { get; set; }
 
@@ -268,7 +268,7 @@ namespace Microsoft.Azure.Commands.Network
         {
             var firewall = new PSAzureFirewall();
             var sku = new PSAzureFirewallSku();
-            sku.Name = !string.IsNullOrEmpty(this.SkuName) ? this.SkuName : MNM.AzureFirewallSkuName.AZFWVNet;
+            sku.Name = !string.IsNullOrEmpty(this.SkuName) ? this.SkuName : MNM.AzureFirewallSkuName.AzfwVnet;
             sku.Tier = !string.IsNullOrEmpty(this.SkuTier) ? this.SkuTier : MNM.AzureFirewallSkuTier.Standard;
 
             if (sku.Tier.Equals(MNM.AzureFirewallSkuTier.Basic) && !string.IsNullOrEmpty(this.Location))
@@ -278,7 +278,7 @@ namespace Microsoft.Azure.Commands.Network
                     throw new ArgumentException("Basic Sku Firewall is not supported in this region yet - " + this.Location, nameof(this.Location));
                 }
             }
-            if (this.SkuName == MNM.AzureFirewallSkuName.AZFWHub)
+            if (this.SkuName == MNM.AzureFirewallSkuName.AzfwHub)
             {
 
                 if (VirtualHubId != null && this.Location != null)

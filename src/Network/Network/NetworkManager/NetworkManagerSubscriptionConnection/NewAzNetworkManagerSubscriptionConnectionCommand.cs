@@ -91,7 +91,7 @@ namespace Microsoft.Azure.Commands.Network
             this.NullifyNetworkManagerSubscriptionConnectionIfAbsent(mnccModel);
 
             // Execute the Create NetworkManagerSubscriptionConnection call
-            this.NetworkManagerSubscriptionConnectionClient.CreateOrUpdate(mnccModel, this.Name);
+            this.NetworkManagerSubscriptionConnectionClient.CreateOrUpdate(this.Name, mnccModel);
             var psNetworkManagerSubscriptionConnection = this.GetNetworkManagerSubscriptionConnection(this.Name);
             return psNetworkManagerSubscriptionConnection;
         }

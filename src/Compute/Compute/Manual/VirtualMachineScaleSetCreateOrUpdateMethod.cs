@@ -55,8 +55,7 @@ namespace Microsoft.Azure.Commands.Compute.Automation
             "Win2019Datacenter", 
             "Win2016Datacenter", 
             "Win2012R2Datacenter", 
-            "Win2012Datacenter", 
-            "Win2008R2SP1")]
+            "Win2012Datacenter")]
         [Alias("Image")]
         public string ImageName { get; set; } = "Win2016Datacenter";
 
@@ -332,7 +331,8 @@ namespace Microsoft.Azure.Commands.Compute.Automation
                     //sku.Basic is not compatible with multiple placement groups
                     sku: (noZones && _cmdlet.SinglePlacementGroup.IsPresent)
                         ? LoadBalancerStrategy.Sku.Basic
-                        : LoadBalancerStrategy.Sku.Standard);
+                        : LoadBalancerStrategy.Sku.Standard,
+                    edgeZone : _cmdlet.EdgeZone);
 
                 var frontendIpConfiguration = loadBalancer.CreateFrontendIPConfiguration(
                     name: _cmdlet.FrontendPoolName,
@@ -450,7 +450,7 @@ namespace Microsoft.Azure.Commands.Compute.Automation
                     maxPrice: _cmdlet.IsParameterBound(c => c.MaxPrice) ? _cmdlet.MaxPrice : (double?)null,
                     scaleInPolicy: _cmdlet.ScaleInPolicy,
                     doNotRunExtensionsOnOverprovisionedVMs: _cmdlet.SkipExtensionsOnOverprovisionedVMs.IsPresent,
-                    encryptionAtHost: _cmdlet.EncryptionAtHost.IsPresent,
+                    encryptionAtHost: (_cmdlet.EncryptionAtHost.IsPresent == true) ? true : (bool?)null,
                     platformFaultDomainCount: _cmdlet.IsParameterBound(c => c.PlatformFaultDomainCount) ? _cmdlet.PlatformFaultDomainCount : (int?)null,
                     edgeZone: _cmdlet.EdgeZone,
                     orchestrationMode: _cmdlet.IsParameterBound(c => c.OrchestrationMode) ? _cmdlet.OrchestrationMode : null,
@@ -508,7 +508,8 @@ namespace Microsoft.Azure.Commands.Compute.Automation
                     //sku.Basic is not compatible with multiple placement groups
                     sku: (noZones && _cmdlet.SinglePlacementGroup.IsPresent)
                         ? LoadBalancerStrategy.Sku.Basic
-                        : LoadBalancerStrategy.Sku.Standard);
+                        : LoadBalancerStrategy.Sku.Standard,
+                    edgeZone: _cmdlet.EdgeZone);
 
                 var frontendIpConfiguration = loadBalancer.CreateFrontendIPConfiguration(
                     name: _cmdlet.FrontendPoolName,
@@ -579,7 +580,7 @@ namespace Microsoft.Azure.Commands.Compute.Automation
                     maxPrice: _cmdlet.IsParameterBound(c => c.MaxPrice) ? _cmdlet.MaxPrice : (double?)null,
                     scaleInPolicy: _cmdlet.ScaleInPolicy,
                     doNotRunExtensionsOnOverprovisionedVMs: _cmdlet.SkipExtensionsOnOverprovisionedVMs.IsPresent,
-                    encryptionAtHost: _cmdlet.EncryptionAtHost.IsPresent,
+                    encryptionAtHost: (_cmdlet.EncryptionAtHost.IsPresent == true) ? true : (bool?)null,
                     platformFaultDomainCount: _cmdlet.IsParameterBound(c => c.PlatformFaultDomainCount) ? _cmdlet.PlatformFaultDomainCount : platformFaultDomainCountFlexibleDefault,
                     edgeZone: _cmdlet.EdgeZone,
                     orchestrationMode: flexibleOrchestrationMode,
