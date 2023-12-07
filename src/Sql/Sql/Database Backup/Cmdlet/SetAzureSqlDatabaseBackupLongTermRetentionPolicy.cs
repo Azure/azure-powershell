@@ -19,6 +19,7 @@ using System.Management.Automation;
 using Microsoft.Azure.Commands.Sql.Backup.Model;
 using Microsoft.Azure.Commands.Sql.Database.Model;
 using Microsoft.WindowsAzure.Commands.Common.CustomAttributes;
+using Microsoft.WindowsAzure.Commands.Utilities.Common;
 
 namespace Microsoft.Azure.Commands.Sql.Backup.Cmdlet
 {
@@ -113,6 +114,13 @@ namespace Microsoft.Azure.Commands.Sql.Backup.Cmdlet
         public int WeekOfYear { get; set; }
 
         /// <summary>
+        /// Gets or sets the setting whether to make LTR backups immutable.
+        /// </summary>
+        [Parameter(Mandatory = false,
+            HelpMessage = "Whether to make LTR backups immutable.")]
+        public SwitchParameter MakeBackupsImmutable { get; set; }
+
+        /// <summary>
         /// Gets or sets the BackupStorageAccessTier.
         /// </summary>
         [Parameter(Mandatory = false,
@@ -188,7 +196,8 @@ namespace Microsoft.Azure.Commands.Sql.Backup.Cmdlet
                     WeeklyRetention = WeeklyRetention,
                     MonthlyRetention = MonthlyRetention,
                     YearlyRetention = YearlyRetention,
-                    WeekOfYear = WeekOfYear
+                    WeekOfYear = WeekOfYear,
+                    MakeBackupsImmutable = this.IsParameterBound(p => p.MakeBackupsImmutable) ? MakeBackupsImmutable.ToBool() : (bool?)null
                 }
             };
         }

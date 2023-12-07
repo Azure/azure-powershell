@@ -17,6 +17,7 @@ using Microsoft.Azure.Commands.Sql.Backup.Model;
 using Microsoft.Azure.Commands.Sql.Database.Model;
 using Microsoft.Azure.Commands.Sql.Server.Adapter;
 using Microsoft.Azure.Management.Sql.LegacySdk.Models;
+using Microsoft.Azure.Management.WebSites.Version2016_09_01.Models;
 using Microsoft.Azure.Management.Sql.Models;
 using Microsoft.Rest.Azure.OData;
 using System;
@@ -344,7 +345,8 @@ namespace Microsoft.Azure.Commands.Sql.Backup.Services
                 WeeklyRetention = response.WeeklyRetention,
                 MonthlyRetention = response.MonthlyRetention,
                 YearlyRetention = response.YearlyRetention,
-                WeekOfYear = response.WeekOfYear
+                WeekOfYear = response.WeekOfYear,
+                MakeBackupsImmutable = response.MakeBackupsImmutable
             };
         }
 
@@ -506,7 +508,8 @@ namespace Microsoft.Azure.Commands.Sql.Backup.Services
                         WeeklyRetention = model.WeeklyRetention,
                         MonthlyRetention = model.MonthlyRetention,
                         YearlyRetention = model.YearlyRetention,
-                        WeekOfYear = model.WeekOfYear
+                        WeekOfYear = model.WeekOfYear,
+                        MakeBackupsImmutable = model.MakeBackupsImmutable
                     });
             return new AzureSqlDatabaseBackupLongTermRetentionPolicyModel()
             {
@@ -516,7 +519,8 @@ namespace Microsoft.Azure.Commands.Sql.Backup.Services
                 WeeklyRetention = response.WeeklyRetention,
                 MonthlyRetention = response.MonthlyRetention,
                 YearlyRetention = response.YearlyRetention,
-                WeekOfYear = response.WeekOfYear
+                WeekOfYear = response.WeekOfYear,
+                MakeBackupsImmutable = response.MakeBackupsImmutable
             };
         }
 
@@ -567,7 +571,8 @@ namespace Microsoft.Azure.Commands.Sql.Backup.Services
                 ServerCreateTime = backup.ServerCreateTime,
                 ServerName = backup.ServerName,
                 ResourceGroupName = GetResourceGroupNameFromResourceId(backup.Id),
-                BackupStorageRedundancy = backup.BackupStorageRedundancy
+                BackupStorageRedundancy = backup.BackupStorageRedundancy,
+                IsBackupImmutable = backup.IsBackupImmutable
             };
         }
 

@@ -15,7 +15,7 @@ Sets a server long term retention policy.
 ### WeeklyRetentionRequired (Default)
 ```
 Set-AzSqlDatabaseBackupLongTermRetentionPolicy -WeeklyRetention <String> [-ServerName] <String>
- [-DatabaseName] <String> [-ResourceGroupName] <String> [-DefaultProfile <IAzureContextContainer>] [-WhatIf]
+ [-DatabaseName] <String> [-ResourceGroupName] <String> [-MakeBackupsImmutable] [-DefaultProfile <IAzureContextContainer>] [-WhatIf]
  [-Confirm] [<CommonParameters>]
 ```
 
@@ -29,7 +29,7 @@ Set-AzSqlDatabaseBackupLongTermRetentionPolicy [-RemovePolicy] [-ServerName] <St
 ### MonthlyRetentionRequired
 ```
 Set-AzSqlDatabaseBackupLongTermRetentionPolicy [-WeeklyRetention <String>] -MonthlyRetention <String>
- [-ServerName] <String> [-DatabaseName] <String> [-ResourceGroupName] <String>
+ [-ServerName] <String> [-DatabaseName] <String> [-ResourceGroupName] <String> [-MakeBackupsImmutable]
  [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
@@ -37,7 +37,7 @@ Set-AzSqlDatabaseBackupLongTermRetentionPolicy [-WeeklyRetention <String>] -Mont
 ```
 Set-AzSqlDatabaseBackupLongTermRetentionPolicy [-WeeklyRetention <String>] [-MonthlyRetention <String>]
  -YearlyRetention <String> -WeekOfYear <Int32> [-ServerName] <String> [-DatabaseName] <String>
- [-ResourceGroupName] <String> [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
+ [-ResourceGroupName] <String> [-MakeBackupsImmutable] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
  [<CommonParameters>]
 ```
 
@@ -321,6 +321,22 @@ Required: True
 Position: Named
 Default value: None
 Accept pipeline input: True (ByPropertyName)
+Accept wildcard characters: False
+```
+
+### -MakeBackupsImmutable
+Make Backups Immutable.
+Whether to make LTR backups immutable.
+
+```yaml
+Type: System.Bool
+Parameter Sets: MakeBackupsImmutableSet
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
 Accept wildcard characters: False
 ```
 

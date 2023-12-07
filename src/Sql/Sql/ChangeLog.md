@@ -40,6 +40,7 @@
 * Added `EncryptionProtectorAutoRotation` parameter to `New-AzSqlDatabase`, `Get-AzSqlDatabase`, `Set-AzSqlDatabase`, `New-AzSqlDatabaseCopy`, `New-AzSqlDatabaseSecondary`, `Restore-AzSqlDatabase` cmdlets
 
 ## Version 4.9.0
+* Added `makeBackupsImmutable` optional parameter to `Set-SqlDatabaseLongTermRetentionPolicy`
 * Added new cmdlets for Azure SQL Managed Instance start/stop schedule
     - 'Start-AzSqlInstance',
     - 'Stop-AzSqlInstance',

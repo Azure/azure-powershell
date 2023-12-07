@@ -14,7 +14,9 @@
 
 using System;
 using System.Collections.Generic;
+using System.Management.Automation;
 using Microsoft.Azure.Management.Sql.Models;
+using Newtonsoft.Json;
 
 namespace Microsoft.Azure.Commands.Sql.Backup.Model
 {
@@ -59,5 +61,10 @@ namespace Microsoft.Azure.Commands.Sql.Backup.Model
         /// Gets or sets the location
         /// </summary>
         public string Location { get; set; }
+
+        /// <summary>
+        /// Gets or sets the setting whether to make LTR backups immutable
+        /// </summary>
+        public bool? MakeBackupsImmutable { get; set; }
     }
 }
