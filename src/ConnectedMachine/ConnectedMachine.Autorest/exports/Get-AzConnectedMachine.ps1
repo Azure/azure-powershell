@@ -27,12 +27,12 @@ Get-AzConnectedMachine -ResourceGroupName contoso-connected-machines
 Get-AzConnectedMachine -ResourceGroupName contoso-connected-machines -Name winwestus2_1
 
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.Api20221227.IMachine
+Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.IMachine
 .Link
 https://learn.microsoft.com/powershell/module/az.connectedmachine/get-azconnectedmachine
 #>
 function Get-AzConnectedMachine {
-[OutputType([Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.Api20221227.IMachine])]
+[OutputType([Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.IMachine])]
 [CmdletBinding(DefaultParameterSetName='List1', PositionalBinding=$false)]
 param(
     [Parameter(ParameterSetName='Get', Mandatory)]
@@ -59,9 +59,9 @@ param(
     ${SubscriptionId},
 
     [Parameter(ParameterSetName='Get')]
-    [ArgumentCompleter([Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Support.InstanceViewTypes])]
+    [Parameter(ParameterSetName='List')]
     [Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Category('Query')]
-    [Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Support.InstanceViewTypes]
+    [System.String]
     # The expand expression to apply on the operation.
     ${Expand},
 
@@ -144,7 +144,7 @@ begin {
             List = 'Az.ConnectedMachine.private\Get-AzConnectedMachine_List';
             List1 = 'Az.ConnectedMachine.private\Get-AzConnectedMachine_List1';
         }
-        if (('Get', 'List', 'List1') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId')) {
+        if (('Get', 'List', 'List1') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId') ) {
             $PSBoundParameters['SubscriptionId'] = (Get-AzContext).Subscription.Id
         }
         $cmdInfo = Get-Command -Name $mapping[$parameterSet]
