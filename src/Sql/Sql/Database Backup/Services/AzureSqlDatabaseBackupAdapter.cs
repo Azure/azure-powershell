@@ -509,7 +509,8 @@ namespace Microsoft.Azure.Commands.Sql.Backup.Services
                         MonthlyRetention = model.MonthlyRetention,
                         YearlyRetention = model.YearlyRetention,
                         WeekOfYear = model.WeekOfYear,
-                        MakeBackupsImmutable = model.MakeBackupsImmutable
+                        MakeBackupsImmutable = model.MakeBackupsImmutable,
+                        BackupStorageAccessTier = model.BackupStorageAccessTier
                     });
             return new AzureSqlDatabaseBackupLongTermRetentionPolicyModel()
             {
@@ -520,7 +521,8 @@ namespace Microsoft.Azure.Commands.Sql.Backup.Services
                 MonthlyRetention = response.MonthlyRetention,
                 YearlyRetention = response.YearlyRetention,
                 WeekOfYear = response.WeekOfYear,
-                MakeBackupsImmutable = response.MakeBackupsImmutable
+                MakeBackupsImmutable = response.MakeBackupsImmutable,
+                BackupStorageAccessTier = response.BackupStorageAccessTier
             };
         }
 
