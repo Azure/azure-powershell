@@ -21,7 +21,7 @@ Describe 'Get-AzDevCenterUserDevBoxRemoteConnection' {
         $connection.WebUrl | Should -Not -BeNullOrEmpty
 
         if ($Record -or $Live) {
-            $connection = Get-AzDevCenterUserDevBoxRemoteConnection -DevCenter $env.devCenterName -DevBoxName $env.devboxName -ProjectName $env.projectName
+            $connection = Get-AzDevCenterUserDevBoxRemoteConnection -DevCenterName $env.devCenterName -DevBoxName $env.devboxName -ProjectName $env.projectName
             $connection.RdpConnectionUrl | Should -Not -BeNullOrEmpty
             $connection.WebUrl | Should -Not -BeNullOrEmpty
         }
@@ -36,7 +36,7 @@ Describe 'Get-AzDevCenterUserDevBoxRemoteConnection' {
         $connection.WebUrl | Should -Not -BeNullOrEmpty
 
         if ($Record -or $Live) {
-            $connection = Get-AzDevCenterUserDevBoxRemoteConnection -DevCenter $env.devCenterName -InputObject $devBoxInput
+            $connection = Get-AzDevCenterUserDevBoxRemoteConnection -DevCenterName $env.devCenterName -InputObject $devBoxInput
             $connection.RdpConnectionUrl | Should -Not -BeNullOrEmpty
             $connection.WebUrl | Should -Not -BeNullOrEmpty
         }

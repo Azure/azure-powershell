@@ -20,15 +20,15 @@ Skips an occurrence of an action.
 .Description
 Skips an occurrence of an action.
 .Example
-Skip-AzDevCenterUserDevBoxAction -Endpoint "https://8a40af38-3b4c-4672-a6a4-5e964b1870ed-contosodevcenter.centralus.devcenter.azure.com/" -DevBoxName myDevBox -ProjectName DevProject -ActionName "schedule-default"
+Skip-AzDevCenterUserDevBoxAction -Endpoint "https://8a40af38-3b4c-4672-a6a4-5e964b1870ed-contosodevcenter.centralus.devcenter.azure.com/" -DevBoxName myDevBox -ProjectName DevProject -Name "schedule-default"
 .Example
-Skip-AzDevCenterUserDevBoxAction -DevCenter Contoso -DevBoxName myDevBox -ProjectName DevProject -ActionName "schedule-default"
+Skip-AzDevCenterUserDevBoxAction -DevCenterName Contoso -DevBoxName myDevBox -ProjectName DevProject -Name "schedule-default"
 .Example
 $devBoxInput = @{"DevBoxName" = "myDevBox"; "UserId" = "me"; "ProjectName" = "DevProject"; "ActionName" = "schedule-default"}
 Skip-AzDevCenterUserDevBoxAction -Endpoint "https://8a40af38-3b4c-4672-a6a4-5e964b1870ed-contosodevcenter.centralus.devcenter.azure.com/" -InputObject $devBoxInput
 .Example
 $devBoxInput = @{"DevBoxName" = "myDevBox"; "UserId" = "me"; "ProjectName" = "DevProject"; "ActionName" = "schedule-default"}
-Skip-AzDevCenterUserDevBoxAction -DevCenter Contoso -InputObject $devBoxInput
+Skip-AzDevCenterUserDevBoxAction -DevCenterName Contoso -InputObject $devBoxInput
 
 .Inputs
 Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Models.IDevCenterdataIdentity
@@ -42,13 +42,17 @@ To create the parameters described below, construct a hash table containing the 
 INPUTOBJECT <IDevCenterdataIdentity>: Identity Parameter
   [ActionName <String>]: The name of an action that will take place on a Dev Box.
   [CatalogName <String>]: The name of the catalog
+  [CustomizationGroupName <String>]: A customization group name.
+  [CustomizationTaskId <String>]: A customization task ID.
   [DefinitionName <String>]: The name of the environment definition
   [DevBoxName <String>]: The name of a Dev Box.
   [EnvironmentName <String>]: The name of the environment.
   [Id <String>]: Resource identity path
+  [OperationId <String>]: The id of the operation on a Dev Box.
   [PoolName <String>]: The name of a pool of Dev Boxes.
   [ProjectName <String>]: The DevCenter Project upon which to execute operations.
   [ScheduleName <String>]: The name of a schedule.
+  [TaskName <String>]: A customization task name.
   [UserId <String>]: The AAD object id of the user. If value is 'me', the identity is taken from the authentication context.
 .Link
 https://learn.microsoft.com/powershell/module/az.devcenterdata/skip-azdevcenteruserdevboxaction
@@ -66,14 +70,15 @@ param(
     [Parameter(ParameterSetName='Skip', Mandatory)]
     [Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Category('Path')]
     [System.String]
-    # The name of an action that will take place on a Dev Box.
-    ${ActionName},
-
-    [Parameter(ParameterSetName='Skip', Mandatory)]
-    [Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Category('Path')]
-    [System.String]
     # The name of a Dev Box.
     ${DevBoxName},
+
+    [Parameter(ParameterSetName='Skip', Mandatory)]
+    [Alias('ActionName')]
+    [Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Category('Path')]
+    [System.String]
+    # The name of an action that will take place on a Dev Box.
+    ${Name},
 
     [Parameter(ParameterSetName='Skip', Mandatory)]
     [Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Category('Path')]

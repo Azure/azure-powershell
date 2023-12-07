@@ -32,19 +32,19 @@ Get-AzDevCenterUserPool -Endpoint <String> -InputObject <IDevCenterdataIdentity>
 
 ### GetViaIdentityByDevCenter
 ```
-Get-AzDevCenterUserPool -DevCenter <String> -InputObject <IDevCenterdataIdentity> [-DefaultProfile <PSObject>]
- [<CommonParameters>]
+Get-AzDevCenterUserPool -DevCenterName <String> -InputObject <IDevCenterdataIdentity>
+ [-DefaultProfile <PSObject>] [<CommonParameters>]
 ```
 
 ### GetByDevCenter
 ```
-Get-AzDevCenterUserPool -DevCenter <String> -ProjectName <String> -PoolName <String>
+Get-AzDevCenterUserPool -DevCenterName <String> -ProjectName <String> -PoolName <String>
  [-DefaultProfile <PSObject>] [<CommonParameters>]
 ```
 
 ### ListByDevCenter
 ```
-Get-AzDevCenterUserPool -DevCenter <String> -ProjectName <String> [-DefaultProfile <PSObject>]
+Get-AzDevCenterUserPool -DevCenterName <String> -ProjectName <String> [-DefaultProfile <PSObject>]
  [<CommonParameters>]
 ```
 
@@ -115,13 +115,13 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -DevCenter
+### -DevCenterName
 The DevCenter upon which to execute operations.
 
 ```yaml
 Type: System.String
 Parameter Sets: GetViaIdentityByDevCenter, GetByDevCenter, ListByDevCenter
-Aliases:
+Aliases: DevCenter
 
 Required: True
 Position: Named

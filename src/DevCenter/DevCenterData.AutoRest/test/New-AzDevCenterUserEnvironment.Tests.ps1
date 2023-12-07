@@ -25,7 +25,7 @@ Describe 'New-AzDevCenterUserEnvironment' {
         $environment.User | Should -Be $env.userObjectId
 
         if ($Record -or $Live) {
-            $environment = New-AzDevCenterUserEnvironment -DevCenter $env.devCenterName -Name "envtest2" -ProjectName $env.projectName -CatalogName $env.catalogName -EnvironmentDefinitionName $env.sandbox -EnvironmentType $env.environmentTypeName
+            $environment = New-AzDevCenterUserEnvironment -DevCenterName $env.devCenterName -Name "envtest2" -ProjectName $env.projectName -CatalogName $env.catalogName -EnvironmentDefinitionName $env.sandbox -EnvironmentType $env.environmentTypeName
             $environment.CatalogName | Should -Be $env.catalogName
             $environment.DefinitionName | Should -Be $env.sandbox
             $environment.Name | Should -Be "envtest2"
@@ -48,7 +48,7 @@ Describe 'New-AzDevCenterUserEnvironment' {
         $environment.User | Should -Be $env.userObjectId
 
         if ($Record -or $Live) {
-            $environment = New-AzDevCenterUserEnvironment -DevCenter $env.devCenterName -InputObject $envInput2 -CatalogName $env.catalogName -EnvironmentDefinitionName $env.functionApp -EnvironmentType $env.environmentTypeName -Parameter $functionAppParameters
+            $environment = New-AzDevCenterUserEnvironment -DevCenterName $env.devCenterName -InputObject $envInput2 -CatalogName $env.catalogName -EnvironmentDefinitionName $env.functionApp -EnvironmentType $env.environmentTypeName -Parameter $functionAppParameters
             $environment.CatalogName | Should -Be $env.catalogName
             $environment.DefinitionName | Should -Be $env.functionApp
             $environment.Name | Should -Be "envtest8"

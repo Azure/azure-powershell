@@ -6,7 +6,7 @@ This command deletes the environment "myEnv" under the project "DevProject" assi
 
 ### Example 2: Delete an environment by dev center
 ```powershell
-Remove-AzDevCenterUserEnvironment -DevCenter Contoso -ProjectName DevProject -UserId "786a823c-8037-48ab-89b8-8599901e67d0" -Name myEnv
+Remove-AzDevCenterUserEnvironment -DevCenterName Contoso -ProjectName DevProject -UserId "786a823c-8037-48ab-89b8-8599901e67d0" -Name myEnv
 ```
 This command deletes the environment "myEnv" under the project "DevProject" assigned to the user "786a823c-8037-48ab-89b8-8599901e67d0".
 
@@ -20,7 +20,7 @@ This command deletes the environment "myEnv" under the project "DevProject" assi
 ### Example 4: Delete an environment by dev center and InputObject
 ```powershell
 $envInput = @{"UserId" = "me"; "ProjectName" = "DevProject"; "EnvironmentName" = "myEnv" }
-Remove-AzDevCenterUserEnvironment -DevCenter Contoso -InputObject $envInput
+Remove-AzDevCenterUserEnvironment -DevCenterName Contoso -InputObject $envInput
 ```
 This command deletes the environment "myEnv" under the project "DevProject" assigned to the currently signed-in user.
 
