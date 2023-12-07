@@ -1,0 +1,279 @@
+{
+  "Entries": [
+    {
+      "RequestUri": "/subscriptions/a1bfa635-f2bf-42f1-86b5-848c674fc321/providers/Microsoft.Resources/deployments/ps5783/validate?api-version=2022-09-01",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvYTFiZmE2MzUtZjJiZi00MmYxLTg2YjUtODQ4YzY3NGZjMzIxL3Byb3ZpZGVycy9NaWNyb3NvZnQuUmVzb3VyY2VzL2RlcGxveW1lbnRzL3BzNTc4My92YWxpZGF0ZT9hcGktdmVyc2lvbj0yMDIyLTA5LTAx",
+      "RequestMethod": "POST",
+      "RequestHeaders": {
+        "x-ms-client-request-id": [
+          "6e788f7d-3611-4bb8-a297-5f7122a6669d"
+        ],
+        "Accept-Language": [
+          "en-US"
+        ],
+        "User-Agent": [
+          "FxVersion/6.0.1523.11507",
+          "OSName/MacOs",
+          "OSVersion/Darwin.23.1.0.Darwin.Kernel.Version.23.1.0.Mon.Oct.9.21.27.24.PDT.2023.root.xnu.10002.41.9.6RELEASE.ARM64.T6000",
+          "Microsoft.Azure.Management.Resources.ResourceManagementClient/6.12.1"
+        ],
+        "Content-Type": [
+          "application/json; charset=utf-8"
+        ],
+        "Content-Length": [
+          "1733"
+        ]
+      },
+      "RequestBody": "{\n  \"location\": \"West US 2\",\n  \"properties\": {\n    \"template\": {\n      \"$schema\": \"https://schema.management.azure.com/schemas/2018-05-01/subscriptionDeploymentTemplate.json#\",\n      \"languageVersion\": \"2.0\",\n      \"contentVersion\": \"1.0.0.0\",\n      \"metadata\": {\n        \"_generator\": {\n          \"name\": \"bicep\",\n          \"version\": \"0.22.6.54827\",\n          \"templateHash\": \"10503842062982214065\"\n        }\n      },\n      \"definitions\": {\n        \"customType\": {\n          \"type\": \"object\",\n          \"properties\": {\n            \"age\": {\n              \"type\": \"int\"\n            }\n          }\n        },\n        \"nullableCustomType\": {\n          \"type\": \"object\",\n          \"properties\": {\n            \"age\": {\n              \"type\": \"int\"\n            }\n          },\n          \"nullable\": true\n        },\n        \"customTypeWithRequired\": {\n          \"$ref\": \"#/definitions/customType\",\n          \"nullable\": false\n        }\n      },\n      \"parameters\": {\n        \"yourName\": {\n          \"type\": \"string\",\n          \"nullable\": true\n        },\n        \"optionalCustomType\": {\n          \"$ref\": \"#/definitions/customType\",\n          \"nullable\": true\n        },\n        \"requiredNullableCustomType\": {\n          \"$ref\": \"#/definitions/nullableCustomType\"\n        },\n        \"optionalRequiredCustomType\": {\n          \"$ref\": \"#/definitions/customTypeWithRequired\",\n          \"nullable\": true\n        }\n      },\n      \"resources\": {},\n      \"outputs\": {\n        \"greeting\": {\n          \"type\": \"string\",\n          \"value\": \"[if(not(empty(parameters('yourName'))), format('Hello, {0}. Nice to meet you!', parameters('yourName')), 'Hey, nice to meet you!')]\"\n        }\n      }\n    },\n    \"parameters\": {},\n    \"mode\": \"Incremental\"\n  }\n}",
+      "ResponseHeaders": {
+        "Cache-Control": [
+          "no-cache"
+        ],
+        "Pragma": [
+          "no-cache"
+        ],
+        "x-ms-ratelimit-remaining-subscription-writes": [
+          "1199"
+        ],
+        "x-ms-request-id": [
+          "87c752eb-1059-40a3-905d-1d57692794b5"
+        ],
+        "x-ms-correlation-request-id": [
+          "87c752eb-1059-40a3-905d-1d57692794b5"
+        ],
+        "x-ms-routing-request-id": [
+          "CENTRALUS:20231207T152239Z:87c752eb-1059-40a3-905d-1d57692794b5"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
+        ],
+        "X-Content-Type-Options": [
+          "nosniff"
+        ],
+        "Date": [
+          "Thu, 07 Dec 2023 15:22:38 GMT"
+        ],
+        "Content-Length": [
+          "687"
+        ],
+        "Content-Type": [
+          "application/json; charset=utf-8"
+        ],
+        "Expires": [
+          "-1"
+        ],
+        "Retry-After": [
+          "0"
+        ]
+      },
+      "ResponseBody": "{\n  \"id\": \"/subscriptions/a1bfa635-f2bf-42f1-86b5-848c674fc321/providers/Microsoft.Resources/deployments/ps5783\",\n  \"name\": \"ps5783\",\n  \"type\": \"Microsoft.Resources/deployments\",\n  \"location\": \"westus2\",\n  \"properties\": {\n    \"templateHash\": \"10503842062982214065\",\n    \"parameters\": {\n      \"yourName\": {\n        \"type\": \"String\",\n        \"value\": null\n      },\n      \"optionalCustomType\": {\n        \"type\": \"Object\",\n        \"value\": null\n      },\n      \"requiredNullableCustomType\": {\n        \"type\": \"Object\",\n        \"value\": null\n      },\n      \"optionalRequiredCustomType\": {\n        \"type\": \"Object\",\n        \"value\": null\n      }\n    },\n    \"mode\": \"Incremental\",\n    \"provisioningState\": \"Succeeded\",\n    \"timestamp\": \"0001-01-01T00:00:00Z\",\n    \"duration\": \"PT0S\",\n    \"correlationId\": \"87c752eb-1059-40a3-905d-1d57692794b5\",\n    \"providers\": [],\n    \"dependencies\": [],\n    \"validatedResources\": []\n  }\n}",
+      "StatusCode": 200
+    },
+    {
+      "RequestUri": "/subscriptions/a1bfa635-f2bf-42f1-86b5-848c674fc321/providers/Microsoft.Resources/deployments/ps5783?api-version=2022-09-01",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvYTFiZmE2MzUtZjJiZi00MmYxLTg2YjUtODQ4YzY3NGZjMzIxL3Byb3ZpZGVycy9NaWNyb3NvZnQuUmVzb3VyY2VzL2RlcGxveW1lbnRzL3BzNTc4Mz9hcGktdmVyc2lvbj0yMDIyLTA5LTAx",
+      "RequestMethod": "PUT",
+      "RequestHeaders": {
+        "x-ms-client-request-id": [
+          "6e788f7d-3611-4bb8-a297-5f7122a6669d"
+        ],
+        "Accept-Language": [
+          "en-US"
+        ],
+        "User-Agent": [
+          "FxVersion/6.0.1523.11507",
+          "OSName/MacOs",
+          "OSVersion/Darwin.23.1.0.Darwin.Kernel.Version.23.1.0.Mon.Oct.9.21.27.24.PDT.2023.root.xnu.10002.41.9.6RELEASE.ARM64.T6000",
+          "Microsoft.Azure.Management.Resources.ResourceManagementClient/6.12.1"
+        ],
+        "Content-Type": [
+          "application/json; charset=utf-8"
+        ],
+        "Content-Length": [
+          "1733"
+        ]
+      },
+      "RequestBody": "{\n  \"location\": \"West US 2\",\n  \"properties\": {\n    \"template\": {\n      \"$schema\": \"https://schema.management.azure.com/schemas/2018-05-01/subscriptionDeploymentTemplate.json#\",\n      \"languageVersion\": \"2.0\",\n      \"contentVersion\": \"1.0.0.0\",\n      \"metadata\": {\n        \"_generator\": {\n          \"name\": \"bicep\",\n          \"version\": \"0.22.6.54827\",\n          \"templateHash\": \"10503842062982214065\"\n        }\n      },\n      \"definitions\": {\n        \"customType\": {\n          \"type\": \"object\",\n          \"properties\": {\n            \"age\": {\n              \"type\": \"int\"\n            }\n          }\n        },\n        \"nullableCustomType\": {\n          \"type\": \"object\",\n          \"properties\": {\n            \"age\": {\n              \"type\": \"int\"\n            }\n          },\n          \"nullable\": true\n        },\n        \"customTypeWithRequired\": {\n          \"$ref\": \"#/definitions/customType\",\n          \"nullable\": false\n        }\n      },\n      \"parameters\": {\n        \"yourName\": {\n          \"type\": \"string\",\n          \"nullable\": true\n        },\n        \"optionalCustomType\": {\n          \"$ref\": \"#/definitions/customType\",\n          \"nullable\": true\n        },\n        \"requiredNullableCustomType\": {\n          \"$ref\": \"#/definitions/nullableCustomType\"\n        },\n        \"optionalRequiredCustomType\": {\n          \"$ref\": \"#/definitions/customTypeWithRequired\",\n          \"nullable\": true\n        }\n      },\n      \"resources\": {},\n      \"outputs\": {\n        \"greeting\": {\n          \"type\": \"string\",\n          \"value\": \"[if(not(empty(parameters('yourName'))), format('Hello, {0}. Nice to meet you!', parameters('yourName')), 'Hey, nice to meet you!')]\"\n        }\n      }\n    },\n    \"parameters\": {},\n    \"mode\": \"Incremental\"\n  }\n}",
+      "ResponseHeaders": {
+        "Cache-Control": [
+          "no-cache"
+        ],
+        "Pragma": [
+          "no-cache"
+        ],
+        "Azure-AsyncOperation": [
+          "https://management.azure.com/subscriptions/a1bfa635-f2bf-42f1-86b5-848c674fc321/providers/Microsoft.Resources/deployments/ps5783/operationStatuses/08584996443257678228?api-version=2022-09-01"
+        ],
+        "x-ms-ratelimit-remaining-subscription-writes": [
+          "1199"
+        ],
+        "x-ms-request-id": [
+          "dcfcaf74-0b07-473d-9813-bbd4d6e385d3"
+        ],
+        "x-ms-correlation-request-id": [
+          "dcfcaf74-0b07-473d-9813-bbd4d6e385d3"
+        ],
+        "x-ms-routing-request-id": [
+          "CENTRALUS:20231207T152241Z:dcfcaf74-0b07-473d-9813-bbd4d6e385d3"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
+        ],
+        "X-Content-Type-Options": [
+          "nosniff"
+        ],
+        "Date": [
+          "Thu, 07 Dec 2023 15:22:40 GMT"
+        ],
+        "Content-Length": [
+          "678"
+        ],
+        "Content-Type": [
+          "application/json; charset=utf-8"
+        ],
+        "Expires": [
+          "-1"
+        ],
+        "Retry-After": [
+          "0"
+        ]
+      },
+      "ResponseBody": "{\n  \"id\": \"/subscriptions/a1bfa635-f2bf-42f1-86b5-848c674fc321/providers/Microsoft.Resources/deployments/ps5783\",\n  \"name\": \"ps5783\",\n  \"type\": \"Microsoft.Resources/deployments\",\n  \"location\": \"westus2\",\n  \"properties\": {\n    \"templateHash\": \"10503842062982214065\",\n    \"parameters\": {\n      \"yourName\": {\n        \"type\": \"String\",\n        \"value\": null\n      },\n      \"optionalCustomType\": {\n        \"type\": \"Object\",\n        \"value\": null\n      },\n      \"requiredNullableCustomType\": {\n        \"type\": \"Object\",\n        \"value\": null\n      },\n      \"optionalRequiredCustomType\": {\n        \"type\": \"Object\",\n        \"value\": null\n      }\n    },\n    \"mode\": \"Incremental\",\n    \"provisioningState\": \"Accepted\",\n    \"timestamp\": \"2023-12-07T15:22:40.8689087Z\",\n    \"duration\": \"PT0.0001992S\",\n    \"correlationId\": \"dcfcaf74-0b07-473d-9813-bbd4d6e385d3\",\n    \"providers\": [],\n    \"dependencies\": []\n  }\n}",
+      "StatusCode": 201
+    },
+    {
+      "RequestUri": "/subscriptions/a1bfa635-f2bf-42f1-86b5-848c674fc321/providers/Microsoft.Resources/deployments/ps5783/operations?api-version=2022-09-01",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvYTFiZmE2MzUtZjJiZi00MmYxLTg2YjUtODQ4YzY3NGZjMzIxL3Byb3ZpZGVycy9NaWNyb3NvZnQuUmVzb3VyY2VzL2RlcGxveW1lbnRzL3BzNTc4My9vcGVyYXRpb25zP2FwaS12ZXJzaW9uPTIwMjItMDktMDE=",
+      "RequestMethod": "GET",
+      "RequestHeaders": {
+        "x-ms-client-request-id": [
+          "6e788f7d-3611-4bb8-a297-5f7122a6669d"
+        ],
+        "Accept-Language": [
+          "en-US"
+        ],
+        "User-Agent": [
+          "FxVersion/6.0.1523.11507",
+          "OSName/MacOs",
+          "OSVersion/Darwin.23.1.0.Darwin.Kernel.Version.23.1.0.Mon.Oct.9.21.27.24.PDT.2023.root.xnu.10002.41.9.6RELEASE.ARM64.T6000",
+          "Microsoft.Azure.Management.Resources.ResourceManagementClient/6.12.1"
+        ]
+      },
+      "RequestBody": "",
+      "ResponseHeaders": {
+        "Cache-Control": [
+          "no-cache"
+        ],
+        "Pragma": [
+          "no-cache"
+        ],
+        "x-ms-ratelimit-remaining-subscription-reads": [
+          "11999"
+        ],
+        "x-ms-request-id": [
+          "00693073-a448-467b-a8a5-b570fb406f62"
+        ],
+        "x-ms-correlation-request-id": [
+          "00693073-a448-467b-a8a5-b570fb406f62"
+        ],
+        "x-ms-routing-request-id": [
+          "CENTRALUS:20231207T152241Z:00693073-a448-467b-a8a5-b570fb406f62"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
+        ],
+        "X-Content-Type-Options": [
+          "nosniff"
+        ],
+        "Date": [
+          "Thu, 07 Dec 2023 15:22:40 GMT"
+        ],
+        "Content-Type": [
+          "application/json; charset=utf-8"
+        ],
+        "Expires": [
+          "-1"
+        ],
+        "Content-Length": [
+          "427"
+        ],
+        "Retry-After": [
+          "0"
+        ]
+      },
+      "ResponseBody": "{\n  \"value\": [\n    {\n      \"id\": \"/subscriptions/a1bfa635-f2bf-42f1-86b5-848c674fc321/providers/Microsoft.Resources/deployments/ps5783/operations/08584996443257678228\",\n      \"operationId\": \"08584996443257678228\",\n      \"properties\": {\n        \"provisioningOperation\": \"EvaluateDeploymentOutput\",\n        \"provisioningState\": \"Succeeded\",\n        \"timestamp\": \"2023-12-07T15:22:41.2571819Z\",\n        \"duration\": \"PT0.0879489S\",\n        \"trackingId\": \"70a0ef5d-a190-4a79-82a9-8a8f70974781\",\n        \"statusCode\": \"OK\"\n      }\n    }\n  ]\n}",
+      "StatusCode": 200
+    },
+    {
+      "RequestUri": "/subscriptions/a1bfa635-f2bf-42f1-86b5-848c674fc321/providers/Microsoft.Resources/deployments/ps5783?api-version=2022-09-01",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvYTFiZmE2MzUtZjJiZi00MmYxLTg2YjUtODQ4YzY3NGZjMzIxL3Byb3ZpZGVycy9NaWNyb3NvZnQuUmVzb3VyY2VzL2RlcGxveW1lbnRzL3BzNTc4Mz9hcGktdmVyc2lvbj0yMDIyLTA5LTAx",
+      "RequestMethod": "GET",
+      "RequestHeaders": {
+        "x-ms-client-request-id": [
+          "6e788f7d-3611-4bb8-a297-5f7122a6669d"
+        ],
+        "Accept-Language": [
+          "en-US"
+        ],
+        "User-Agent": [
+          "FxVersion/6.0.1523.11507",
+          "OSName/MacOs",
+          "OSVersion/Darwin.23.1.0.Darwin.Kernel.Version.23.1.0.Mon.Oct.9.21.27.24.PDT.2023.root.xnu.10002.41.9.6RELEASE.ARM64.T6000",
+          "Microsoft.Azure.Management.Resources.ResourceManagementClient/6.12.1"
+        ]
+      },
+      "RequestBody": "",
+      "ResponseHeaders": {
+        "Cache-Control": [
+          "no-cache"
+        ],
+        "Pragma": [
+          "no-cache"
+        ],
+        "x-ms-ratelimit-remaining-subscription-reads": [
+          "11998"
+        ],
+        "x-ms-request-id": [
+          "64092fed-ada4-493c-a622-04329b6d15aa"
+        ],
+        "x-ms-correlation-request-id": [
+          "64092fed-ada4-493c-a622-04329b6d15aa"
+        ],
+        "x-ms-routing-request-id": [
+          "CENTRALUS:20231207T152241Z:64092fed-ada4-493c-a622-04329b6d15aa"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
+        ],
+        "X-Content-Type-Options": [
+          "nosniff"
+        ],
+        "Date": [
+          "Thu, 07 Dec 2023 15:22:40 GMT"
+        ],
+        "Content-Type": [
+          "application/json; charset=utf-8"
+        ],
+        "Expires": [
+          "-1"
+        ],
+        "Content-Length": [
+          "722"
+        ],
+        "Retry-After": [
+          "0"
+        ]
+      },
+      "ResponseBody": "{\n  \"id\": \"/subscriptions/a1bfa635-f2bf-42f1-86b5-848c674fc321/providers/Microsoft.Resources/deployments/ps5783\",\n  \"name\": \"ps5783\",\n  \"type\": \"Microsoft.Resources/deployments\",\n  \"location\": \"westus2\",\n  \"properties\": {\n    \"templateHash\": \"10503842062982214065\",\n    \"parameters\": {\n      \"yourName\": {\n        \"type\": \"String\"\n      },\n      \"optionalCustomType\": {\n        \"type\": \"Object\"\n      },\n      \"requiredNullableCustomType\": {\n        \"type\": \"Object\"\n      },\n      \"optionalRequiredCustomType\": {\n        \"type\": \"Object\"\n      }\n    },\n    \"mode\": \"Incremental\",\n    \"provisioningState\": \"Succeeded\",\n    \"timestamp\": \"2023-12-07T15:22:41.2747924Z\",\n    \"duration\": \"PT0.4060829S\",\n    \"correlationId\": \"dcfcaf74-0b07-473d-9813-bbd4d6e385d3\",\n    \"providers\": [],\n    \"dependencies\": [],\n    \"outputs\": {\n      \"greeting\": {\n        \"type\": \"String\",\n        \"value\": \"Hey, nice to meet you!\"\n      }\n    },\n    \"outputResources\": []\n  }\n}",
+      "StatusCode": 200
+    }
+  ],
+  "Names": {
+    "Test-NullableParametersAreNotRequired": [
+      "ps5783"
+    ]
+  },
+  "Variables": {
+    "SubscriptionId": "a1bfa635-f2bf-42f1-86b5-848c674fc321"
+  }
+}
