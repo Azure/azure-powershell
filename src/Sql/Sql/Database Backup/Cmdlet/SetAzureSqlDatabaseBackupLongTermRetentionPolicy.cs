@@ -113,6 +113,24 @@ namespace Microsoft.Azure.Commands.Sql.Backup.Cmdlet
         public int WeekOfYear { get; set; }
 
         /// <summary>
+        /// Gets or sets the BackupStorageAccessTier.
+        /// </summary>
+        [Parameter(Mandatory = false,
+            ParameterSetName = WeeklyRetentionRequiredSet,
+            ValueFromPipelineByPropertyName = true,
+            HelpMessage = "The BackupStorageAccessTier. If this is added in the request, the update will only targeting on the selected storage access tier type.")]
+        [Parameter(Mandatory = false,
+            ParameterSetName = MonthlyRetentionRequiredSet,
+            ValueFromPipelineByPropertyName = true,
+            HelpMessage = "The BackupStorageAccessTier. If this is added in the request, the update will only targeting on the selected storage access tier type.")]
+        [Parameter(Mandatory = false,
+            ParameterSetName = YearlyRetentionRequiredSet,
+            ValueFromPipelineByPropertyName = true,
+            HelpMessage = "The BackupStorageAccessTier. If this is added in the request, the update will only targeting on the selected storage access tier type.")]
+        [ValidateNotNullOrEmpty]
+        public string BackupStorageAccessTier { get; set; }
+
+        /// <summary>
         /// Get the entities from the service
         /// </summary>
         /// <returns>The list of entities</returns>
