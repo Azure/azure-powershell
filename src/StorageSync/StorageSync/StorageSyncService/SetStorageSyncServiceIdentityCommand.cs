@@ -157,11 +157,8 @@ namespace Microsoft.Azure.Commands.StorageSync.StorageSyncService
                     foreach (var registeredServer in registeredServers)
                     {
                         // Scenario : Server is running in certificate mode
-                        if(registeredServer.ActiveAuthType == StorageSyncModels.ServerAuthType.Certificate && !string.IsNullOrEmpty(registeredServer.ApplicationId))
-                        {
-                            candidateServersLookup.Add(registeredServer.Id, registeredServer);
-                        }
-                        else if (Guid.TryParse(registeredServer.LatestApplicationId, out Guid latestApplicationId))
+                        if((registeredServer.ActiveAuthType == StorageSyncModels.ServerAuthType.Certificate && !string.IsNullOrEmpty(registeredServer.ApplicationId))
+                            || (Guid.TryParse(registeredServer.LatestApplicationId, out Guid latestApplicationId)))
                         {
                             candidateServersLookup.Add(registeredServer.Id, registeredServer);
                         }
@@ -225,10 +222,14 @@ namespace Microsoft.Azure.Commands.StorageSync.StorageSyncService
                             // It is expected that multiple migration script might have caused to have role assignment already in the system. We are fault tolerant to existing role assignment.
                             if (candidateServersLookup.ContainsKey(serverEndpoint.ServerResourceId))
                             {
+                                if (!Guid.TryParse(candidateServersLookup[serverEndpoint.ServerResourceId].LatestApplicationId, out Guid applicationGuid))
+                                {
+                                    applicationGuid = Guid.Parse(candidateServersLookup[serverEndpoint.ServerResourceId].ApplicationId);
+                                }
                                 // Identity , RoleDef, Scope
                                 scope = $"{cloudEndpoint.StorageAccountResourceId}/fileServices/default/fileshares/{cloudEndpoint.AzureFileShareName}";
                                 identityRoleAssignmentForFilsShareScope = StorageSyncClientWrapper.EnsureRoleAssignmentWithIdentity(storageAccountResourceIdentifier.Subscription,
-                                   Guid.Parse(candidateServersLookup[serverEndpoint.ServerResourceId].LatestApplicationId),
+                                   applicationGuid,
                                    Common.StorageSyncClientWrapper.StorageFileDataPrivilegedContributorRoleDefinitionId,
                                    scope);
                             }
