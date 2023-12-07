@@ -1,2 +1,0 @@
-"Module","ClassName","Target","Severity","ProblemId","Description","Remediation"
-"Az.DevCenter","Get-AzDevCenterUserSchedule","Get-AzDevCenterUserSchedule","0","1060","The parameter set 'Get' for cmdlet 'Get-AzDevCenterUserSchedule' is no longer the default parameter set.","Change the default parameter for cmdlet 'Get-AzDevCenterUserSchedule' back to 'Get'."
