@@ -25,7 +25,6 @@ try {
     $modulePath = Join-Path $RepositoryLocation $ModuleName -Resolve
 
     Save-PackagesFromPsGallery -TempRepo $tempRepoName -TempRepoPath $RepositoryLocation -ModulePaths $modulePath
-
     Publish-Module -Path $modulePath -Repository $tempRepoName -Force
 } catch {
     $Errors = $_

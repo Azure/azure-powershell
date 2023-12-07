@@ -1,5 +1,5 @@
 ---
-external help file:
+external help file: Az.DesktopVirtualization-help.xml
 Module Name: Az.DesktopVirtualization
 online version: https://learn.microsoft.com/powershell/module/az.desktopvirtualization/new-azwvdapplication
 schema: 2.0.0
@@ -14,18 +14,20 @@ Create or update an application.
 
 ### CreateExpanded (Default)
 ```
-New-AzWvdApplication -CommandLineSetting <CommandLineSetting> -GroupName <String> -Name <String>
- -ResourceGroupName <String> [-Description <String>] [-FriendlyName <String>] [-ShowInPortal]
- [-SubscriptionId <String>] [-ApplicationType <RemoteApplicationType>] [-CommandLineArgument <String>]
- [-FilePath <String>] [-IconIndex <Int32>] [-IconPath <String>] [-MsixPackageApplicationId <String>]
- [-MsixPackageFamilyName <String>] [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
+New-AzWvdApplication -GroupName <String> -Name <String> -ResourceGroupName <String>
+ -CommandLineSetting <CommandLineSetting> [-SubscriptionId <String>] [-Description <String>]
+ [-FriendlyName <String>] [-ShowInPortal] [-ApplicationType <RemoteApplicationType>]
+ [-CommandLineArgument <String>] [-FilePath <String>] [-IconIndex <Int32>] [-IconPath <String>]
+ [-MsixPackageApplicationId <String>] [-MsixPackageFamilyName <String>] [-DefaultProfile <PSObject>] [-WhatIf]
+ [-Confirm] [<CommonParameters>]
 ```
 
 ### AppAlias
 ```
-New-AzWvdApplication -AppAlias <String> -CommandLineSetting <CommandLineSetting> -GroupName <String>
- -Name <String> -ResourceGroupName <String> [-Description <String>] [-FriendlyName <String>] [-ShowInPortal]
- [-SubscriptionId <String>] [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
+New-AzWvdApplication -GroupName <String> -Name <String> -ResourceGroupName <String>
+ -CommandLineSetting <CommandLineSetting> [-SubscriptionId <String>] [-Description <String>]
+ [-FriendlyName <String>] [-ShowInPortal] -AppAlias <String> [-DefaultProfile <PSObject>] [-WhatIf] [-Confirm]
+ [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -357,4 +359,3 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ## NOTES
 
 ## RELATED LINKS
-

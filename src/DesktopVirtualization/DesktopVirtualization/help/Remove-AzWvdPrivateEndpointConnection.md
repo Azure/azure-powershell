@@ -1,5 +1,5 @@
 ---
-external help file:
+external help file: Az.DesktopVirtualization-help.xml
 Module Name: Az.DesktopVirtualization
 online version: https://learn.microsoft.com/powershell/module/az.desktopvirtualization/remove-azwvdprivateendpointconnection
 schema: 2.0.0
@@ -14,26 +14,26 @@ Remove a connection.
 
 ### Delete (Default)
 ```
-Remove-AzWvdPrivateEndpointConnection -Name <String> -ResourceGroupName <String> -WorkspaceName <String>
- [-SubscriptionId <String>] [-DefaultProfile <PSObject>] [-PassThru] [-Confirm] [-WhatIf] [<CommonParameters>]
+Remove-AzWvdPrivateEndpointConnection -Name <String> -ResourceGroupName <String> [-SubscriptionId <String>]
+ -WorkspaceName <String> [-DefaultProfile <PSObject>] [-PassThru] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### Delete1
 ```
-Remove-AzWvdPrivateEndpointConnection -HostPoolName <String> -Name <String> -ResourceGroupName <String>
- [-SubscriptionId <String>] [-DefaultProfile <PSObject>] [-PassThru] [-Confirm] [-WhatIf] [<CommonParameters>]
-```
-
-### DeleteViaIdentity
-```
-Remove-AzWvdPrivateEndpointConnection -InputObject <IDesktopVirtualizationIdentity>
- [-DefaultProfile <PSObject>] [-PassThru] [-Confirm] [-WhatIf] [<CommonParameters>]
+Remove-AzWvdPrivateEndpointConnection -Name <String> -ResourceGroupName <String> [-SubscriptionId <String>]
+ -HostPoolName <String> [-DefaultProfile <PSObject>] [-PassThru] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### DeleteViaIdentity1
 ```
 Remove-AzWvdPrivateEndpointConnection -InputObject <IDesktopVirtualizationIdentity>
- [-DefaultProfile <PSObject>] [-PassThru] [-Confirm] [-WhatIf] [<CommonParameters>]
+ [-DefaultProfile <PSObject>] [-PassThru] [-WhatIf] [-Confirm] [<CommonParameters>]
+```
+
+### DeleteViaIdentity
+```
+Remove-AzWvdPrivateEndpointConnection -InputObject <IDesktopVirtualizationIdentity>
+ [-DefaultProfile <PSObject>] [-PassThru] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -108,7 +108,7 @@ To construct, see NOTES section for INPUTOBJECT properties and create a hash tab
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.IDesktopVirtualizationIdentity
-Parameter Sets: DeleteViaIdentity, DeleteViaIdentity1
+Parameter Sets: DeleteViaIdentity1, DeleteViaIdentity
 Aliases:
 
 Required: True
@@ -239,4 +239,3 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ## NOTES
 
 ## RELATED LINKS
-

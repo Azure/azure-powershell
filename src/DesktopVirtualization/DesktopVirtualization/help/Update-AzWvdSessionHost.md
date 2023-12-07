@@ -1,5 +1,5 @@
 ---
-external help file:
+external help file: Az.DesktopVirtualization-help.xml
 Module Name: Az.DesktopVirtualization
 online version: https://learn.microsoft.com/powershell/module/az.desktopvirtualization/update-azwvdsessionhost
 schema: 2.0.0
@@ -16,13 +16,13 @@ Update a session host.
 ```
 Update-AzWvdSessionHost -HostPoolName <String> -Name <String> -ResourceGroupName <String>
  [-SubscriptionId <String>] [-Force] [-AllowNewSession] [-AssignedUser <String>] [-FriendlyName <String>]
- [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
+ [-DefaultProfile <PSObject>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### UpdateViaIdentityExpanded
 ```
 Update-AzWvdSessionHost -InputObject <IDesktopVirtualizationIdentity> [-Force] [-AllowNewSession]
- [-AssignedUser <String>] [-FriendlyName <String>] [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf]
+ [-AssignedUser <String>] [-FriendlyName <String>] [-DefaultProfile <PSObject>] [-WhatIf] [-Confirm]
  [<CommonParameters>]
 ```
 
@@ -247,4 +247,3 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ## NOTES
 
 ## RELATED LINKS
-

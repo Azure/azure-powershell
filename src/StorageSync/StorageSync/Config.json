@@ -3,7 +3,7 @@
   "MaximumFileSizeInBytes": 100000000000,
   "MaximumPathLength": 2048,
   "MaximumTreeDepth": 250,
-  "MaximumDatasetSizeInBytes": 5000000000000,
+  "MaximumDatasetSizeInBytes": 109951162777600,
   "ValidFilesystems": [
     "NTFS"
   ],

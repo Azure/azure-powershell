@@ -1,5 +1,5 @@
 ---
-external help file:
+external help file: Az.DesktopVirtualization-help.xml
 Module Name: Az.DesktopVirtualization
 online version: https://learn.microsoft.com/powershell/module/az.desktopvirtualization/update-azwvdmsixpackage
 schema: 2.0.0
@@ -16,13 +16,13 @@ Update an  MSIX Package.
 ```
 Update-AzWvdMsixPackage -FullName <String> -HostPoolName <String> -ResourceGroupName <String>
  [-SubscriptionId <String>] [-DisplayName <String>] [-IsActive] [-IsRegularRegistration]
- [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
+ [-DefaultProfile <PSObject>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### UpdateViaIdentityExpanded
 ```
 Update-AzWvdMsixPackage -InputObject <IDesktopVirtualizationIdentity> [-DisplayName <String>] [-IsActive]
- [-IsRegularRegistration] [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
+ [-IsRegularRegistration] [-DefaultProfile <PSObject>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -30,7 +30,7 @@ Update an  MSIX Package.
 
 ## EXAMPLES
 
-### Example 1: Update a MSIX Package 
+### Example 1: Update a MSIX Package
 ```powershell
 Update-AzWvdMsixPackage -HostPoolName HostPoolName `
         -ResourceGroupName ResourceGroupName `
@@ -234,4 +234,3 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ## NOTES
 
 ## RELATED LINKS
-

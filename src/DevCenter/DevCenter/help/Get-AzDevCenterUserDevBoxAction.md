@@ -21,7 +21,7 @@ Get-AzDevCenterUserDevBoxAction -Endpoint <String> -DevBoxName <String> -Project
 ### Get
 ```
 Get-AzDevCenterUserDevBoxAction -Endpoint <String> -DevBoxName <String> -ProjectName <String>
- [-UserId <String>] -ActionName <String> [-DefaultProfile <PSObject>] [<CommonParameters>]
+ [-UserId <String>] -Name <String> [-DefaultProfile <PSObject>] [<CommonParameters>]
 ```
 
 ### GetViaIdentity
@@ -32,20 +32,20 @@ Get-AzDevCenterUserDevBoxAction -Endpoint <String> -InputObject <IDevCenterdataI
 
 ### GetViaIdentityByDevCenter
 ```
-Get-AzDevCenterUserDevBoxAction -DevCenter <String> -InputObject <IDevCenterdataIdentity>
+Get-AzDevCenterUserDevBoxAction -DevCenterName <String> -InputObject <IDevCenterdataIdentity>
  [-DefaultProfile <PSObject>] [<CommonParameters>]
 ```
 
 ### ListByDevCenter
 ```
-Get-AzDevCenterUserDevBoxAction -DevCenter <String> -DevBoxName <String> -ProjectName <String>
+Get-AzDevCenterUserDevBoxAction -DevCenterName <String> -DevBoxName <String> -ProjectName <String>
  [-UserId <String>] [-DefaultProfile <PSObject>] [<CommonParameters>]
 ```
 
 ### GetByDevCenter
 ```
-Get-AzDevCenterUserDevBoxAction -DevCenter <String> -DevBoxName <String> -ProjectName <String>
- [-UserId <String>] -ActionName <String> [-DefaultProfile <PSObject>] [<CommonParameters>]
+Get-AzDevCenterUserDevBoxAction -DevCenterName <String> -DevBoxName <String> -ProjectName <String>
+ [-UserId <String>] -Name <String> [-DefaultProfile <PSObject>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -99,21 +99,6 @@ This command gets the action "schedule-default" for the dev box "myDevBox".
 
 ## PARAMETERS
 
-### -ActionName
-The name of an action that will take place on a Dev Box.
-
-```yaml
-Type: System.String
-Parameter Sets: Get, GetByDevCenter
-Aliases:
-
-Required: True
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
 ### -DefaultProfile
 The DefaultProfile parameter is not functional.
 Use the SubscriptionId parameter when available if executing the cmdlet against a different subscription.
@@ -145,13 +130,13 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -DevCenter
+### -DevCenterName
 The DevCenter upon which to execute operations.
 
 ```yaml
 Type: System.String
 Parameter Sets: GetViaIdentityByDevCenter, ListByDevCenter, GetByDevCenter
-Aliases:
+Aliases: DevCenter
 
 Required: True
 Position: Named
@@ -188,6 +173,21 @@ Required: True
 Position: Named
 Default value: None
 Accept pipeline input: True (ByValue)
+Accept wildcard characters: False
+```
+
+### -Name
+The name of an action that will take place on a Dev Box.
+
+```yaml
+Type: System.String
+Parameter Sets: Get, GetByDevCenter
+Aliases: ActionName
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
 Accept wildcard characters: False
 ```
 

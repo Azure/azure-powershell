@@ -23,16 +23,19 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ManagedServiceIdentity.Models.Api20
         /// The id of the app associated with the identity. This is a random generated UUID by MSI.
         /// </summary>
         [Microsoft.Azure.PowerShell.Cmdlets.ManagedServiceIdentity.Origin(Microsoft.Azure.PowerShell.Cmdlets.ManagedServiceIdentity.PropertyOrigin.Inlined)]
+        [Microsoft.Azure.PowerShell.Cmdlets.ManagedServiceIdentity.DoNotFormat]
         public string ClientId { get => ((Microsoft.Azure.PowerShell.Cmdlets.ManagedServiceIdentity.Models.Api20220131Preview.IUserAssignedIdentityPropertiesInternal)Property).ClientId; }
 
         /// <summary>
         /// Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}"
         /// </summary>
         [Microsoft.Azure.PowerShell.Cmdlets.ManagedServiceIdentity.Origin(Microsoft.Azure.PowerShell.Cmdlets.ManagedServiceIdentity.PropertyOrigin.Inherited)]
+        [Microsoft.Azure.PowerShell.Cmdlets.ManagedServiceIdentity.DoNotFormat]
         public string Id { get => ((Microsoft.Azure.PowerShell.Cmdlets.ManagedServiceIdentity.Models.Api40.IResourceInternal)__trackedResource).Id; }
 
         /// <summary>The geo-location where the resource lives</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.ManagedServiceIdentity.Origin(Microsoft.Azure.PowerShell.Cmdlets.ManagedServiceIdentity.PropertyOrigin.Inherited)]
+        [Microsoft.Azure.PowerShell.Cmdlets.ManagedServiceIdentity.FormatTable(Index = 1)]
         public string Location { get => ((Microsoft.Azure.PowerShell.Cmdlets.ManagedServiceIdentity.Models.Api40.ITrackedResourceInternal)__trackedResource).Location; set => ((Microsoft.Azure.PowerShell.Cmdlets.ManagedServiceIdentity.Models.Api40.ITrackedResourceInternal)__trackedResource).Location = value ; }
 
         /// <summary>Internal Acessors for ClientId</summary>
@@ -61,10 +64,12 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ManagedServiceIdentity.Models.Api20
 
         /// <summary>The name of the resource</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.ManagedServiceIdentity.Origin(Microsoft.Azure.PowerShell.Cmdlets.ManagedServiceIdentity.PropertyOrigin.Inherited)]
+        [Microsoft.Azure.PowerShell.Cmdlets.ManagedServiceIdentity.FormatTable(Index = 0)]
         public string Name { get => ((Microsoft.Azure.PowerShell.Cmdlets.ManagedServiceIdentity.Models.Api40.IResourceInternal)__trackedResource).Name; }
 
         /// <summary>The id of the service principal object associated with the created identity.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.ManagedServiceIdentity.Origin(Microsoft.Azure.PowerShell.Cmdlets.ManagedServiceIdentity.PropertyOrigin.Inlined)]
+        [Microsoft.Azure.PowerShell.Cmdlets.ManagedServiceIdentity.DoNotFormat]
         public string PrincipalId { get => ((Microsoft.Azure.PowerShell.Cmdlets.ManagedServiceIdentity.Models.Api20220131Preview.IUserAssignedIdentityPropertiesInternal)Property).PrincipalId; }
 
         /// <summary>Backing field for <see cref="Property" /> property.</summary>
@@ -72,54 +77,66 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ManagedServiceIdentity.Models.Api20
 
         /// <summary>The properties associated with the identity.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.ManagedServiceIdentity.Origin(Microsoft.Azure.PowerShell.Cmdlets.ManagedServiceIdentity.PropertyOrigin.Owned)]
+        [Microsoft.Azure.PowerShell.Cmdlets.ManagedServiceIdentity.DoNotFormat]
         internal Microsoft.Azure.PowerShell.Cmdlets.ManagedServiceIdentity.Models.Api20220131Preview.IUserAssignedIdentityProperties Property { get => (this._property = this._property ?? new Microsoft.Azure.PowerShell.Cmdlets.ManagedServiceIdentity.Models.Api20220131Preview.UserAssignedIdentityProperties()); }
 
         /// <summary>Gets the resource group name</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.ManagedServiceIdentity.Origin(Microsoft.Azure.PowerShell.Cmdlets.ManagedServiceIdentity.PropertyOrigin.Owned)]
+        [Microsoft.Azure.PowerShell.Cmdlets.ManagedServiceIdentity.FormatTable(Index = 2)]
         public string ResourceGroupName { get => (new global::System.Text.RegularExpressions.Regex("^/subscriptions/(?<subscriptionId>[^/]+)/resourceGroups/(?<resourceGroupName>[^/]+)/providers/", global::System.Text.RegularExpressions.RegexOptions.IgnoreCase).Match(this.Id).Success ? new global::System.Text.RegularExpressions.Regex("^/subscriptions/(?<subscriptionId>[^/]+)/resourceGroups/(?<resourceGroupName>[^/]+)/providers/", global::System.Text.RegularExpressions.RegexOptions.IgnoreCase).Match(this.Id).Groups["resourceGroupName"].Value : null); }
 
         /// <summary>
         /// Azure Resource Manager metadata containing createdBy and modifiedBy information.
         /// </summary>
         [Microsoft.Azure.PowerShell.Cmdlets.ManagedServiceIdentity.Origin(Microsoft.Azure.PowerShell.Cmdlets.ManagedServiceIdentity.PropertyOrigin.Inherited)]
+        [Microsoft.Azure.PowerShell.Cmdlets.ManagedServiceIdentity.DoNotFormat]
         public Microsoft.Azure.PowerShell.Cmdlets.ManagedServiceIdentity.Models.Api40.ISystemData SystemData { get => ((Microsoft.Azure.PowerShell.Cmdlets.ManagedServiceIdentity.Models.Api40.IResourceInternal)__trackedResource).SystemData; }
 
         /// <summary>The timestamp of resource creation (UTC).</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.ManagedServiceIdentity.Origin(Microsoft.Azure.PowerShell.Cmdlets.ManagedServiceIdentity.PropertyOrigin.Inherited)]
+        [Microsoft.Azure.PowerShell.Cmdlets.ManagedServiceIdentity.DoNotFormat]
         public global::System.DateTime? SystemDataCreatedAt { get => ((Microsoft.Azure.PowerShell.Cmdlets.ManagedServiceIdentity.Models.Api40.IResourceInternal)__trackedResource).SystemDataCreatedAt; set => ((Microsoft.Azure.PowerShell.Cmdlets.ManagedServiceIdentity.Models.Api40.IResourceInternal)__trackedResource).SystemDataCreatedAt = value ?? default(global::System.DateTime); }
 
         /// <summary>The identity that created the resource.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.ManagedServiceIdentity.Origin(Microsoft.Azure.PowerShell.Cmdlets.ManagedServiceIdentity.PropertyOrigin.Inherited)]
+        [Microsoft.Azure.PowerShell.Cmdlets.ManagedServiceIdentity.DoNotFormat]
         public string SystemDataCreatedBy { get => ((Microsoft.Azure.PowerShell.Cmdlets.ManagedServiceIdentity.Models.Api40.IResourceInternal)__trackedResource).SystemDataCreatedBy; set => ((Microsoft.Azure.PowerShell.Cmdlets.ManagedServiceIdentity.Models.Api40.IResourceInternal)__trackedResource).SystemDataCreatedBy = value ?? null; }
 
         /// <summary>The type of identity that created the resource.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.ManagedServiceIdentity.Origin(Microsoft.Azure.PowerShell.Cmdlets.ManagedServiceIdentity.PropertyOrigin.Inherited)]
+        [Microsoft.Azure.PowerShell.Cmdlets.ManagedServiceIdentity.DoNotFormat]
         public Microsoft.Azure.PowerShell.Cmdlets.ManagedServiceIdentity.Support.CreatedByType? SystemDataCreatedByType { get => ((Microsoft.Azure.PowerShell.Cmdlets.ManagedServiceIdentity.Models.Api40.IResourceInternal)__trackedResource).SystemDataCreatedByType; set => ((Microsoft.Azure.PowerShell.Cmdlets.ManagedServiceIdentity.Models.Api40.IResourceInternal)__trackedResource).SystemDataCreatedByType = value ?? ((Microsoft.Azure.PowerShell.Cmdlets.ManagedServiceIdentity.Support.CreatedByType)""); }
 
         /// <summary>The timestamp of resource last modification (UTC)</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.ManagedServiceIdentity.Origin(Microsoft.Azure.PowerShell.Cmdlets.ManagedServiceIdentity.PropertyOrigin.Inherited)]
+        [Microsoft.Azure.PowerShell.Cmdlets.ManagedServiceIdentity.DoNotFormat]
         public global::System.DateTime? SystemDataLastModifiedAt { get => ((Microsoft.Azure.PowerShell.Cmdlets.ManagedServiceIdentity.Models.Api40.IResourceInternal)__trackedResource).SystemDataLastModifiedAt; set => ((Microsoft.Azure.PowerShell.Cmdlets.ManagedServiceIdentity.Models.Api40.IResourceInternal)__trackedResource).SystemDataLastModifiedAt = value ?? default(global::System.DateTime); }
 
         /// <summary>The identity that last modified the resource.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.ManagedServiceIdentity.Origin(Microsoft.Azure.PowerShell.Cmdlets.ManagedServiceIdentity.PropertyOrigin.Inherited)]
+        [Microsoft.Azure.PowerShell.Cmdlets.ManagedServiceIdentity.DoNotFormat]
         public string SystemDataLastModifiedBy { get => ((Microsoft.Azure.PowerShell.Cmdlets.ManagedServiceIdentity.Models.Api40.IResourceInternal)__trackedResource).SystemDataLastModifiedBy; set => ((Microsoft.Azure.PowerShell.Cmdlets.ManagedServiceIdentity.Models.Api40.IResourceInternal)__trackedResource).SystemDataLastModifiedBy = value ?? null; }
 
         /// <summary>The type of identity that last modified the resource.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.ManagedServiceIdentity.Origin(Microsoft.Azure.PowerShell.Cmdlets.ManagedServiceIdentity.PropertyOrigin.Inherited)]
+        [Microsoft.Azure.PowerShell.Cmdlets.ManagedServiceIdentity.DoNotFormat]
         public Microsoft.Azure.PowerShell.Cmdlets.ManagedServiceIdentity.Support.CreatedByType? SystemDataLastModifiedByType { get => ((Microsoft.Azure.PowerShell.Cmdlets.ManagedServiceIdentity.Models.Api40.IResourceInternal)__trackedResource).SystemDataLastModifiedByType; set => ((Microsoft.Azure.PowerShell.Cmdlets.ManagedServiceIdentity.Models.Api40.IResourceInternal)__trackedResource).SystemDataLastModifiedByType = value ?? ((Microsoft.Azure.PowerShell.Cmdlets.ManagedServiceIdentity.Support.CreatedByType)""); }
 
         /// <summary>Resource tags.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.ManagedServiceIdentity.Origin(Microsoft.Azure.PowerShell.Cmdlets.ManagedServiceIdentity.PropertyOrigin.Inherited)]
+        [Microsoft.Azure.PowerShell.Cmdlets.ManagedServiceIdentity.DoNotFormat]
         public Microsoft.Azure.PowerShell.Cmdlets.ManagedServiceIdentity.Models.Api10.ITrackedResourceTags Tag { get => ((Microsoft.Azure.PowerShell.Cmdlets.ManagedServiceIdentity.Models.Api40.ITrackedResourceInternal)__trackedResource).Tag; set => ((Microsoft.Azure.PowerShell.Cmdlets.ManagedServiceIdentity.Models.Api40.ITrackedResourceInternal)__trackedResource).Tag = value ?? null /* model class */; }
 
         /// <summary>The id of the tenant which the identity belongs to.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.ManagedServiceIdentity.Origin(Microsoft.Azure.PowerShell.Cmdlets.ManagedServiceIdentity.PropertyOrigin.Inlined)]
+        [Microsoft.Azure.PowerShell.Cmdlets.ManagedServiceIdentity.DoNotFormat]
         public string TenantId { get => ((Microsoft.Azure.PowerShell.Cmdlets.ManagedServiceIdentity.Models.Api20220131Preview.IUserAssignedIdentityPropertiesInternal)Property).TenantId; }
 
         /// <summary>
         /// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
         /// </summary>
         [Microsoft.Azure.PowerShell.Cmdlets.ManagedServiceIdentity.Origin(Microsoft.Azure.PowerShell.Cmdlets.ManagedServiceIdentity.PropertyOrigin.Inherited)]
+        [Microsoft.Azure.PowerShell.Cmdlets.ManagedServiceIdentity.DoNotFormat]
         public string Type { get => ((Microsoft.Azure.PowerShell.Cmdlets.ManagedServiceIdentity.Models.Api40.IResourceInternal)__trackedResource).Type; }
 
         /// <summary>Creates an new <see cref="Identity" /> instance.</summary>

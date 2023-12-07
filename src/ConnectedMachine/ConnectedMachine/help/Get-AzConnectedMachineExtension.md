@@ -1,5 +1,5 @@
 ---
-external help file:
+external help file: Az.ConnectedMachine-help.xml
 Module Name: Az.ConnectedMachine
 online version: https://learn.microsoft.com/powershell/module/az.connectedmachine/get-azconnectedmachineextension
 schema: 2.0.0
@@ -20,7 +20,7 @@ Get-AzConnectedMachineExtension -MachineName <String> -ResourceGroupName <String
 
 ### Get
 ```
-Get-AzConnectedMachineExtension -MachineName <String> -Name <String> -ResourceGroupName <String>
+Get-AzConnectedMachineExtension -MachineName <String> -ResourceGroupName <String> -Name <String>
  [-SubscriptionId <String[]>] [-DefaultProfile <PSObject>] [<CommonParameters>]
 ```
 
@@ -163,4 +163,3 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ## NOTES
 
 ## RELATED LINKS
-
