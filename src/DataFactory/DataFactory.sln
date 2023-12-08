@@ -17,21 +17,21 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AuthenticationAssemblyLoadC
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Authenticators", "..\Accounts\Authenticators\Authenticators.csproj", "{AB4B3697-55AC-411C-8EFA-A41229BD600F}"
 EndProject
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Test", "Test", "{6C954E12-1CCA-4448-BBEC-C9781C0766CA}"
-EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DataFactory.Management.Sdk", "DataFactory.Management.Sdk\DataFactory.Management.Sdk.csproj", "{451FBF9A-2667-453B-AD7D-63001D0C7509}"
-EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TestFx", "..\..\tools\TestFx\TestFx.csproj", "{606D032A-FA9D-4AD1-9926-AF86BE5FB044}"
-EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DataFactory", "DataFactory\DataFactory.csproj", "{AEEC66C5-9F79-4D6E-AB0F-DDE81DCC2B86}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Test", "Test", "{6C954E12-1CCA-4448-BBEC-C9781C0766CA}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DataFactoryV1.Test", "DataFactoryV1.Test\DataFactoryV1.Test.csproj", "{747E1386-AB01-4D81-B2A6-7FB5DA837EFC}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DataFactoryV1", "DataFactoryV1\DataFactoryV1.csproj", "{483CA50D-8B49-44D9-9FF4-BEFD7F867AA2}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DataFactory.Management.Sdk", "DataFactory.Management.Sdk\DataFactory.Management.Sdk.csproj", "{451FBF9A-2667-453B-AD7D-63001D0C7509}"
+EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DataFactoryV2.Test", "DataFactoryV2.Test\DataFactoryV2.Test.csproj", "{43318957-1D72-43B6-95B2-422B0EAEC537}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DataFactoryV2", "DataFactoryV2\DataFactoryV2.csproj", "{A7181E1C-66E2-461A-8DC2-F04E78131287}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TestFx", "..\..\tools\TestFx\TestFx.csproj", "{606D032A-FA9D-4AD1-9926-AF86BE5FB044}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
