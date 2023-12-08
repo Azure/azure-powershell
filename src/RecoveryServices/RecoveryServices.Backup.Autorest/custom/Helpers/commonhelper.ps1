@@ -130,15 +130,22 @@ function GetOperationStatus {
         $vaultName = Get-VaultNameFromArmId -Id $Target
         $subscriptionId = Get-SbscriptionIdFromArmId -Id $Target
 
+        $null = $PSBoundParameters.Remove('Target')
+        $null = $PSBoundParameters.Remove('RefreshAfter')
+
+        $PSBoundParameters.Add('OperationId', $operationId)
+        $PSBoundParameters.Add('ResourceGroupName', $resourceGroupName)
+        $PSBoundParameters.Add('SubscriptionId', $subscriptionId)
+        $PSBoundParameters.Add('VaultName', $vaultName)
 
         # operationStatus
-        While((Get-AzRecoveryServicesOperationStatus -OperationId $operationId -ResourceGroupName $resourceGroupName -SubscriptionId $subscriptionId -VaultName $vaultName).Status -eq "InProgress"){
+        While((Get-AzRecoveryServicesOperationStatus @PSBoundParameters).Status -eq "InProgress"){
 
             Write-Debug "Polling after $RefreshAfter seconds"
 	        Start-Sleep -Seconds $RefreshAfter
         }
 
-        $operationStatus = (Get-AzRecoveryServicesOperationStatus -OperationId $operationId -ResourceGroupName $resourceGroupName -SubscriptionId $subscriptionId -VaultName $vaultName).Status
+        $operationStatus = (Get-AzRecoveryServicesOperationStatus @PSBoundParameters).Status
 
         return $operationStatus
     }
