@@ -1,6 +1,6 @@
 ### Example 1: Update a Gen1 time series insights environment
 ```powershell
-PS C:\> Update-AzTimeSeriesInsightsEnvironment -ResourceGroupName testgroup -Name tsitest001 -Tag @{'key1'='val1'}
+Update-AzTimeSeriesInsightsEnvironment -ResourceGroupName testgroup -Name tsitest001 -Tag @{'key1'='val1'}
 
 DataAccessFqdn               : b6d113a4-0865-405f-b09e-ad4355b5d046.env.timeseries.azure.com
 DataAccessId                 : b6d113a4-0865-405f-b09e-ad4355b5d046
@@ -29,8 +29,8 @@ This command updates a Gen1 time series insights environment.
 
 ### Example 2:  Update a Gen1 time series insights environment
 ```powershell
-PS C:\> $env = Get-AzTimeSeriesInsightsEnvironment -ResourceGroupName testgroup -Name tsitest001
-PS C:\> Update-AzTimeSeriesInsightsEnvironment -InputObject $env -Tag @{'key2'='val2'}
+$env = Get-AzTimeSeriesInsightsEnvironment -ResourceGroupName testgroup -Name tsitest001
+Update-AzTimeSeriesInsightsEnvironment -InputObject $env -Tag @{'key2'='val2'}
 
 DataAccessFqdn               : b6d113a4-0865-405f-b09e-ad4355b5d046.env.timeseries.azure.com
 DataAccessId                 : b6d113a4-0865-405f-b09e-ad4355b5d046

@@ -1,6 +1,6 @@
 ### Example 1: List all Azure resources associated to the same Datadog organization as the target resource
 ```powershell
-PS C:\> Get-AzDatadogMonitorLinkedResource -ResourceGroupName azure-rg-Datadog -Name lucasDatadog
+Get-AzDatadogMonitorLinkedResource -ResourceGroupName azure-rg-Datadog -Name lucasDatadog
 
 Id
 --

@@ -48,9 +48,9 @@ This command first creates an ACL object with 3 acl entries, then sets ACL recur
 
 
 ```
-PS C:\> $result = Set-AzDataLakeGen2AclRecursive -FileSystem "filesystem1" -Acl $acl  -Context $ctx
+$result = Set-AzDataLakeGen2AclRecursive -FileSystem "filesystem1" -Acl $acl  -Context $ctx
 
-PS C:\> $result
+$result
 
 FailedEntries                   : {dir1/dir2/file4}
 TotalDirectoriesSuccessfulCount : 500
@@ -58,7 +58,7 @@ TotalFilesSuccessfulCount       : 2500
 TotalFailureCount               : 1
 ContinuationToken               : VBaHi5TfyO2ai1wYTRhIL2FjbGNibjA2c3RmATAxRDVEN0UzRENFQzZCRTAvYWRsc3Rlc3QyATAxRDY2M0ZCQTZBN0JGQTkvZGlyMC9kaXIxL2ZpbGUzFgAAAA==
 
-PS C:\> $result.FailedEntries
+$result.FailedEntries
 
 Name            IsDirectory ErrorMessage                                                                   
 ----            ----------- ------------                                                                   
@@ -66,9 +66,9 @@ dir0/dir2/file4       False This request is not authorized to perform this opera
 
 # user need fix the failed item , then can resume with ContinuationToken
 
-PS C:\> $result = Set-AzDataLakeGen2AclRecursive -FileSystem "filesystem1" -Acl $acl -ContinuationToken $result.ContinuationToken -Context $ctx
+$result = Set-AzDataLakeGen2AclRecursive -FileSystem "filesystem1" -Acl $acl -ContinuationToken $result.ContinuationToken -Context $ctx
 
-PS C:\> $result
+$result
 
 FailedEntries                   : 
 TotalDirectoriesSuccessfulCount : 100
@@ -116,9 +116,9 @@ This script sets ACL rescursively on directory chunk by chunk, with chunk size a
 
 
 ```
-PS C:\> $result = Set-AzDataLakeGen2AclRecursive -FileSystem "filesystem1" -Path "dir1" -Acl $acl -ContinueOnFailure -Context $ctx
+$result = Set-AzDataLakeGen2AclRecursive -FileSystem "filesystem1" -Path "dir1" -Acl $acl -ContinueOnFailure -Context $ctx
 
-PS C:\> $result
+$result
 
 FailedEntries                   : {dir0/dir1/file1, dir0/dir2/file4}
 TotalDirectoriesSuccessfulCount : 100
@@ -126,7 +126,7 @@ TotalFilesSuccessfulCount       : 500
 TotalFailureCount               : 2
 ContinuationToken               : VBaHi5TfyO2ai1wYTRhIL2FjbGNibjA2c3RmATAxRDVEN0UzRENFQzZCRTAvYWRsc3Rlc3QyATAxRDY2M0ZCQTZBN0JGQTkvZGlyMC9kaXIxL2ZpbGUzFgAAAA==
 
-PS C:\> $result.FailedEntries
+$result.FailedEntries
 
 Name            IsDirectory ErrorMessage                                                                   
 ----            ----------- ------------                                                                   
@@ -135,7 +135,7 @@ dir0/dir2/file4       False This request is not authorized to perform this opera
 
 # user need fix the failed item , then can resume with ContinuationToken
 
-PS C:\> foreach ($path in $result.FailedEntries.Name)
+foreach ($path in $result.FailedEntries.Name)
         {
             # user code to fix failed entry in $path
             

@@ -1,6 +1,6 @@
 ### Example 1:  Create or replace a transformation in a stream analytics job
 ```powershell
-PS C:\> New-AzStreamAnalyticsTransformation -ResourceGroupName azure-rg-test -JobName sajob-01-pwsh -Name tranf-01 -StreamingUnit 6 -Query "Select Id, Name from input-01"
+New-AzStreamAnalyticsTransformation -ResourceGroupName azure-rg-test -JobName sajob-01-pwsh -Name tranf-01 -StreamingUnit 6 -Query "Select Id, Name from input-01"
 
 Name     Type                                                    ETag
 ----     ----                                                    ----

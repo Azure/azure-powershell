@@ -27,13 +27,13 @@ The **New-AzStorageLocalUserSshPublicKey** cmdlet creates a SSH public key objec
 
 
 ```
-PS C:\> $sshkey1 = New-AzStorageLocalUserSshPublicKey -Key "ssh-rsa keykeykeykeykey=" -Description "sshpulickey name1"
+$sshkey1 = New-AzStorageLocalUserSshPublicKey -Key "ssh-rsa keykeykeykeykey=" -Description "sshpulickey name1"
 
-PS C:\> $sshkey2 = New-AzStorageLocalUserSshPublicKey -Key "ssh-rsa keykeykeykeykew=" -Description "sshpulickey name2"
+$sshkey2 = New-AzStorageLocalUserSshPublicKey -Key "ssh-rsa keykeykeykeykew=" -Description "sshpulickey name2"
 
-PS C:\> $localuser = Set-AzStorageLocalUser -ResourceGroupName "myresourcegroup" -AccountName "mystorageaccount" -UserName testuser1 -HomeDirectory "/" -SshAuthorizedKey $sshkey1,$sshkey2
+$localuser = Set-AzStorageLocalUser -ResourceGroupName "myresourcegroup" -AccountName "mystorageaccount" -UserName testuser1 -HomeDirectory "/" -SshAuthorizedKey $sshkey1,$sshkey2
 
-PS C:\> $localuser
+$localuser
 
    ResourceGroupName: myresourcegroup, StorageAccountName: mystorageaccount
 
@@ -41,7 +41,7 @@ Name      Sid                                          HomeDirectory HasSharedKe
 ----      ---                                          ------------- ------------ --------- -------------- ---------------- -----------------             
 testuser1 S-1-2-0-0000000000-000000000-0000000000-0000 /                                                                    [ssh-rsa keykeykeykeykey=,...]
 
-PS C:\> $localuser.SshAuthorizedKeys 
+$localuser.SshAuthorizedKeys 
 
 Description       Key                     
 -----------       ---                     

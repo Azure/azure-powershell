@@ -1,6 +1,6 @@
 ### Example 1: List availability zones for a location
 ```powershell
-PS C:\> Get-AzDiskPoolZone -Location eastus
+Get-AzDiskPoolZone -Location eastus
 
 SkuName  SkuTier  AvailabilityZone AdditionalCapability
 -------  -------  ---------------- --------------------

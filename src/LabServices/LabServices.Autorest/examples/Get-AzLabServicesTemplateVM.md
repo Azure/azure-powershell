@@ -1,6 +1,6 @@
 ### Example 1: Get the template for the lab.
 ```powershell
-PS C:\> Get-AzLabTemplateVM  -ResourceGroupName "group name" -LabName "lab name"
+Get-AzLabTemplateVM  -ResourceGroupName "group name" -LabName "lab name"
 
 Name Type
 ---- ----

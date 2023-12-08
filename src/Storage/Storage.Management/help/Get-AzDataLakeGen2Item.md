@@ -28,8 +28,8 @@ This cmdlet only works if Hierarchical Namespace is enabled for the Storage acco
 
 
 ```
-PS C:\> $dir1 = Get-AzDataLakeGen2Item -FileSystem "filesystem1" -Path "dir1/"
-PS C:\> $dir1
+$dir1 = Get-AzDataLakeGen2Item -FileSystem "filesystem1" -Path "dir1/"
+$dir1
 
    FileSystem Name: filesystem1
 
