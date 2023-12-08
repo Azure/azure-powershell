@@ -1,6 +1,6 @@
 ---
-external help file:
-Module Name: Az.ApplicationInsights
+external help file: Az.ApplicationInsights-help.xml
+Module Name: Az.Applicationinsights
 online version: https://learn.microsoft.com/powershell/module/az.applicationinsights/new-azapplicationinsightswebtest
 schema: 2.0.0
 ---
@@ -14,24 +14,24 @@ Creates or updates an Application Insights web test definition.
 
 ### CreateStandard (Default)
 ```
-New-AzApplicationInsightsWebTest -Name <String> -ResourceGroupName <String> -Location <String>
- [-SubscriptionId <String>] [-ContentIgnoreCase] [-ContentMatch <String>] [-ContentPassIfTextFound]
+New-AzApplicationInsightsWebTest -Name <String> -ResourceGroupName <String> [-SubscriptionId <String>]
+ -Location <String> [-ContentIgnoreCase] [-ContentMatch <String>] [-ContentPassIfTextFound]
  [-Description <String>] [-Enabled] [-Frequency <Int32>] [-GeoLocation <IWebTestGeolocation[]>]
  [-Kind <WebTestKindEnum>] [-RequestBody <String>] [-RequestFollowRedirect] [-RequestHeader <IHeaderField[]>]
  [-RequestHttpVerb <String>] [-RequestParseDependent] [-RequestUrl <String>] [-RetryEnabled]
  [-RuleExpectedHttpStatusCode <Int32>] [-RuleIgnoreHttpsStatusCode]
  [-RuleSslCertRemainingLifetimeCheck <Int32>] [-RuleSslCheck] [-Tag <Hashtable>] [-TestName <String>]
- [-Timeout <Int32>] [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
+ [-Timeout <Int32>] [-DefaultProfile <PSObject>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### CreateClassic
 ```
-New-AzApplicationInsightsWebTest -Name <String> -ResourceGroupName <String> -Location <String>
- [-SubscriptionId <String>] [-Configuration <String>] [-ContentMatch <String>] [-Description <String>]
- [-Enabled] [-Frequency <Int32>] [-GeoLocation <IWebTestGeolocation[]>] [-Kind <WebTestKindEnum>]
- [-RequestParseDependent] [-RequestUrl <String>] [-RetryEnabled] [-RuleExpectedHttpStatusCode <Int32>]
- [-Tag <Hashtable>] [-TestName <String>] [-Timeout <Int32>] [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf]
- [<CommonParameters>]
+New-AzApplicationInsightsWebTest -Name <String> -ResourceGroupName <String> [-SubscriptionId <String>]
+ -Location <String> [-ContentMatch <String>] [-Description <String>] [-Enabled] [-Frequency <Int32>]
+ [-GeoLocation <IWebTestGeolocation[]>] [-Kind <WebTestKindEnum>] [-RequestParseDependent]
+ [-RequestUrl <String>] [-RetryEnabled] [-RuleExpectedHttpStatusCode <Int32>] [-Tag <Hashtable>]
+ [-TestName <String>] [-Timeout <Int32>] [-Configuration <String>] [-DefaultProfile <PSObject>] [-WhatIf]
+ [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -601,4 +601,3 @@ To create the parameters described below, construct a hash table containing the 
   - `[Value <String>]`: The value of the header.
 
 ## RELATED LINKS
-
