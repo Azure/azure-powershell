@@ -36,18 +36,10 @@ require:
 # readme.azure.noprofile.md is the common configuration file
   - $(this-folder)/../../readme.azure.noprofile.md
   - $(repo)/specification/containerservice/resource-manager/Microsoft.ContainerService/fleet/readme.md
-# tag: package-2023-10
-input-file:
-  - $(repo)/specification/containerservice/resource-manager/Microsoft.ContainerService/fleet/stable/2023-10-15/fleets.json
 
 title: Fleet
 module-version: 0.1.0
 subject-prefix: $(service-name)
-resourcegroup-append: true
-nested-object-to-string: true
-
-use-extension:
-  "@autorest/powershell": "4.x"
 
 directive:
 # #   # Following is two common directive which are normally required in all the RPs
